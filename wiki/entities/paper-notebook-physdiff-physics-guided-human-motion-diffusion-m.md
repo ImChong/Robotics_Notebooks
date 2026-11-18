@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, physics-guided, motion-imitation, iccv, humanoid-paper-notebooks, nvidia]
 status: complete
-updated: 2026-10-24
+updated: 2026-11-18
 arxiv: "2212.02500"
 related:
   - ../methods/diffusion-motion-generation.md
@@ -148,6 +148,8 @@ PhysDiff 的“physics-guided”比脚滑滤波强，但仍是特定仿真人体
 - Phys-Err 是代理指标，不能替代任务成功率、能耗、扭矩裕量与真实接触安全。
 
 ## 与其他页面的关系
+
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 物理投影依赖已训练的动作模仿策略，骨架或接触配置变化可能要求重训，不能只复用 denoiser。
 
 - 方法总览：[Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
 - 空间可控生成：[GMD](./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md)、[OmniControl](./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md)、[CondMDI](./paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md)

@@ -5,7 +5,7 @@ tags:
   - computer-vision
   - benchmark
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "超大规模目标检测数据集（365 类、逾百万图像），常用作比 COCO 更强的检测预训练源，再向下游迁移。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -75,6 +75,8 @@ flowchart LR
 - 许可与人脸/版权图需在产品化前法务审阅。
 
 ## 关联页面
+
+- [R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）](../methods/rcnn-family.md) — 检测框可作为区域检测器的预训练输入，迁移时需重新对齐类别词表和下游标注协议。
 
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)

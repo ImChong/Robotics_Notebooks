@@ -9,7 +9,7 @@ tags:
   - cmu
   - meta
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "2210.14210"
 venue: "CoRL 2022"
 project: https://suddhu.github.io/midastouch-tactile
@@ -136,6 +136,8 @@ sequenceDiagram
 - **MidasTouch 推理仓库分离**：`rpl-cmu/YCB-Slide` 主要承担数据集载体、采集同步工具与 3D 轨迹可视化，完整的 TDN、MinkLoc3D 训练与粒子滤波推理引擎托管在 MidasTouch 主项目地址。
 
 ## 关联页面
+
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 滑动触觉定位可作为接触状态输入，位姿粒子滤波与接触力调节仍是不同模块，需另行闭环验证。
 
 - [dataset-ycb-sight.md](./dataset-ycb-sight.md) — 同作者团队构建、聚焦未知三维形状重建的 GelSight + Kinect 数据集
 - [dataset-rct-robotic-contact-tactile.md](./dataset-rct-robotic-contact-tactile.md) — 面向跨材料/跨 DIGIT 实例泛化审计的按压数据集

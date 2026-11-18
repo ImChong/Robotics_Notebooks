@@ -6,7 +6,7 @@ tags:
   - handheld-gripper
   - in-the-wild
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "集成触觉传感器的手持夹爪采集的野外视觉触觉数据：2,700 余条示范、43 项任务。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 手持夹爪示范用于策略前需核对观测、动作与目标机器人接口，预训练收益和闭环成功率应分别评估。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)

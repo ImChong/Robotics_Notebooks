@@ -3,7 +3,7 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, benchmark, teleop-data, simulation, evaluation, teleai, ustc, hku, zju, sjtu, shanghaitech, unitree]
 topic: [loco-manipulation, evaluation]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-18
 arxiv: "2610.30876"
 venue: "2026 · arXiv preprint"
 related:
@@ -134,6 +134,8 @@ Kimodo 的 39.7%–90.7% 是论文表 5 这一动作生成实验的指标（30 �
 - **项目页与论文统计略有出入：** SONIC 原子 / 组合 episode 拆分在项目页为 5,258 / 6,801，论文附录 A 为 5,207 / 6,852（合计一致）；引用时以论文为准并注明来源。
 
 ## 关联页面
+
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 仿真与真机遥操作示范应保持独立统计，比较策略时固定全身控制器、任务和成功谓词。
 
 - [移动操作任务](../tasks/loco-manipulation.md) — 跨策略、控制器与任务评测的任务背景。
 - [HumanoidArena](./paper-humanoidarena.md) — 以 egocentric 分层策略与全身跟踪器评估人形交互的相关基准。

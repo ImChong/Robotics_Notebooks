@@ -6,7 +6,7 @@ tags:
   - navigation
   - habitat
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "1,000 个建筑级三维重建场景，可导航面积 11.25 万平方米，是 Habitat 导航训练的主流场景库。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — HM3D 与语义扩展需分版本使用，目标类别、可导航面积和成功判据应一起固定。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [habitat-sim](../entities/habitat-sim.md)

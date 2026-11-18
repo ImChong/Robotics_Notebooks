@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-retargeting, imitation-learning, data-generation, sim2real, uiuc, nvidia, unitree-g1, booster-k1, dexmate]
 status: complete
-updated: 2026-10-14
+updated: 2026-11-18
 project_id: intermimicgen
 project: https://sirui-xu.github.io/InterMimicGen/
 arxiv: "2610.06850"
@@ -153,6 +153,8 @@ flowchart TD
 | 源码运行时序图 | **不适用**：未找到由项目页链接的本项目可运行官方实现；论文提及的底层控制栈不构成该方法完整源码 |
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 共享 PPO 物理跟踪器与验证动作集共同迭代，需分别统计种子、生成轨迹和微调后闭环收益。
 
 - [HumanoidMimicGen](./paper-humanoidmimicgen.md) — 规划驱动的人形移动操作示范生成
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义、全身移动与操作耦合

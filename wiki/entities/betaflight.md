@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, firmware, fpv, multirotor, uav, open-source, flight-controller, linux-foundation]
 status: complete
-updated: 2026-09-05
+updated: 2026-11-18
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
@@ -123,6 +123,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：betaflight/betaflight@3e6a3f8，读过 src/main/main.c、src/main/fc/init.c、src/main/scheduler/scheduler.c、src/main/fc/tasks.c、src/main/fc/core.c、src/main/flight/pid.c、src/main/flight/mixer.c、src/main/fc/rc.c、src/main/sensors/gyro.c；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 低延迟角速度与姿态调节应结合 Blackbox 日志整定，滤波、增益和电调输出需一起核对。
+- [LQR / iLQR 算法详解](../methods/lqr-ilqr.md) — 可将速率 PID 与状态空间反馈作控制设计对照，不能据此推断 Betaflight 已实现 LQR 或自主规划。
 
 - [多旋翼仿真—规划—飞控栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [PX4 Autopilot](./px4-autopilot.md) — 自主飞控 / MAVLink 对照

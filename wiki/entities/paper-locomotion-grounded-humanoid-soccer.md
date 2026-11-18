@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, soccer, locomotion, multi-skill, reinforcement-learning]
 status: complete
-updated: 2026-10-03
+updated: 2026-11-18
 arxiv: "2609.38852"
 related:
   - ../tasks/humanoid-soccer.md
@@ -78,6 +78,8 @@ Day 2 来源给出的静止球测试中，Noetix E1 前向、侧向、后向成�
 该工作用可命令行走作为技能组合底座，研究多方向踢球与动作交接。
 
 ## 关联页面
+
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 行走底座、踢球技能和任务门控可按分层接口理解，需区分单技能表现与切换后的足球任务效果。
 
 - [humanoid-soccer](../tasks/humanoid-soccer.md)
 - [paper-skillx-humanoid-soccer](./paper-skillx-humanoid-soccer.md)

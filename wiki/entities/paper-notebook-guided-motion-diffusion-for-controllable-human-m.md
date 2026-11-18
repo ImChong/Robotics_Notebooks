@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, spatial-control, trajectory-control, obstacle-avoidance, iccv, humanoid-paper-notebooks, eth]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2305.12577"
 code: https://github.com/korrawe/guided-motion-diffusion
 related:
@@ -161,6 +161,8 @@ sequenceDiagram
 - 代码依赖 Python 3.7、旧版 CUDA 生态和多项独立许可的人体资产。
 
 ## 与其他页面的关系
+
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 稀疏轨迹目标通过 denoiser 传播梯度，可与轨迹优化的目标和约束作对照；生成引导不自动满足机器人动力学。
 
 - 方法总览：[Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
 - 控制粒度后继：[OmniControl](./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md)

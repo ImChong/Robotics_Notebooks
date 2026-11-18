@@ -9,7 +9,7 @@ tags:
   - reinforcement-learning
   - sjtu
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: stairmaster
 arxiv: "2606.25765"
 project: https://sivan666666.github.io/StairMaster/
@@ -120,6 +120,9 @@ flowchart TD
 - 推测：依赖的深度传感器模型需要与真机传感器参数匹配，参数偏差会影响迁移。
 
 ## 关联页面
+
+- [楼梯与障碍 Locomotion（感知 / 盲走中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) — 镂空楼梯要求同时检查落脚、腿部避卡和噪声深度，单平台最大坡度不能直接外推其他本体。
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 三阶段分别为特权 PPO、动作蒸馏和 PPO 微调，训练预算与各阶段输入应分开记录。
 
 - [Sim2Real 知识链](../overview/hub-sim2real.md) — 仿真到真机迁移的知识背景
 - [Sim2Real 概念](../concepts/sim2real.md) — 深度传感器仿真与零样本迁移

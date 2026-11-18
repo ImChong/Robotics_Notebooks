@@ -6,7 +6,7 @@ tags:
   - language
   - vision-language
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "约 10 万组触觉-语言-视觉配对数据，提供句子级与短语级多粒度触感描述。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -65,6 +65,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md) — 生成、模型校验与人工校正构成不同标注环节，应检查同源数据重叠和独立测试划分。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)

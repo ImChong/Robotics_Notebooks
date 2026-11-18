@@ -5,7 +5,7 @@ tags:
   - computer-vision
   - benchmark
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "街景大规模语义分割数据集，类别与地域覆盖广，常与 Cityscapes 对照做域泛化评测。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -75,6 +75,8 @@ flowchart LR
 - 许可与人脸/版权图需在产品化前法务审阅。
 
 ## 关联页面
+
+- [PSPNet](../methods/pspnet.md) — 街景语义标签可评估多尺度上下文分割，跨地域泛化需另设划分，不能只看源域 mIoU。
 
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)

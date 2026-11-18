@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, tooling, cloud, nvidia, isaac-lab, isaac-sim, brev, docker, streaming]
 status: complete
-updated: 2026-09-06
+updated: 2026-11-18
 related:
   - ./nvidia-brev.md
   - ./nvidia-physical-ai-learning.md
@@ -110,6 +110,9 @@ sequenceDiagram
 - **与 ROS 课分离：** [Robotics Fundamentals 播放列表](../../sources/sites/nvidia-robotics-fundamentals-playlist.md) 讲 ROS/仿真概念；完整 ROS 动手课走 [Physical AI — Isaac ROS](https://docs.nvidia.com/learning/physical-ai/) 路径。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 云模板提供 Isaac Lab 训练环境，仍需固定任务、依赖版本和算力预算。
+- [Locomotion](../tasks/locomotion.md) — Ant 等运动任务可用于环境冒烟，流式查看器能运行不代表其他机器人或实机接口已经适配。
 
 - [NVIDIA Brev](./nvidia-brev.md) — Launchable 平台与 CLI
 - [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md) — 课程门户

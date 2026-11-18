@@ -6,7 +6,7 @@ tags:
   - gaussian-splatting
   - simulation
 status: complete
-updated: 2026-09-23
+updated: 2026-11-18
 related:
   - ./light-origins.md
   - ../overview/lightorigins-3blogs-technology-map.md
@@ -62,6 +62,9 @@ summary: "HabitatGS：INSIGHT-Bench 训练片段 10.9% 来自 HabitatGS；无标
 3. 工程复现以官方后续发布为准。
 
 ## 关联页面
+
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md) — 场景资产进入 LightNav 训练时需匹配相机与碰撞配置，数据占比不等于闭环导航效果。
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md) — Molmo2 多视角目标检测用于构建统一目标库，应区分自动标签、资产来源和独立评测。
 
 - [亮源新创（Light Origins）](./light-origins.md)
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)

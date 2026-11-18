@@ -16,7 +16,7 @@ tags:
   - cqu
   - scu
 status: complete
-updated: 2026-09-22
+updated: 2026-11-18
 arxiv: "2606.21223"
 venue: "arXiv 2026"
 related:
@@ -148,6 +148,9 @@ flowchart TB
 - **局限：** 与 [FAST-LIO](./fast-lio.md) 等 **轻量 LIO** 相比，全模态 LVWIO + 在线标定 **复杂度更高**，适合 **多模态 ITS 平台** 而非极简 3D LIO 场景。
 
 ## 与其他页面的关系
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 统一窗口按可靠性调度不同模态约束，需分别检查退化检测、初始化与时空标定。
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 联合非线性残差的求解需结合可观测性理解，收敛不等于所有外参都被可靠辨识。
 
 - [Calibrex](./calibrex.md) — 基于录包逐轴检查外参及可观测性，可作为多传感器部署前后的补充工具。
 

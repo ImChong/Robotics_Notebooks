@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, depth, depth-history, cross-attention, touchdown-prediction, ppo, sim2real, unitree-g1, tsinghua, ustb, ntu, stairs, gaps, platforms]
 status: complete
-updated: 2026-09-22
+updated: 2026-11-18
 arxiv: "2609.21447"
 venue: arXiv 2026
 related:
@@ -178,6 +178,8 @@ flowchart TB
 6. **复现阻塞：** 截至入库日 **无代码**；关注 AIR/清华后续是否发布项目页。
 
 ## 与其他页面的关系
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 非对称 PPO 的特权 critic 与部署 actor 输入不同，落脚查询监督和策略奖励应分别核对。
 
 - [paper-ssr-humanoid-open-world-traversal.md](./paper-ssr-humanoid-open-world-traversal.md) — 想象落脚 vs 历史检索
 - [paper-cref.md](./paper-cref.md) — 当前深度 cross-attention

@@ -5,7 +5,7 @@ project: https://www.nvidia.com/en-us/technologies/holoscan-sensor-bridge/
 code: https://github.com/nvidia-holoscan/holoscan-sensor-bridge
 tags: [nvidia, edge-ai, hardware, robotics, physical-ai, open-source, sensor-fusion, holoscan]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-18
 original:
   - ../../sources/sites/nvidia-holoscan-sensor-bridge.md
   - ../../sources/sites/holoscan-sensor-bridge-docs-intro.md
@@ -181,6 +181,9 @@ sequenceDiagram
 - **验证边界：** 已通读上文引用的主要原文与示例实现；本次未连接硬件或完成运行时实测。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 传感器 tensor 与 metadata 接入融合估计前，需核对时间戳、坐标系和丢包行为；桥接系统不替代估计器。
+- [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md) — 相机到 GPU 的数据通路影响视觉反馈延迟，应测端到端采样时序，吞吐提高不自动保证闭环稳定。
 
 - [NVIDIA Holoscan SDK 5.0](./nvidia-holoscan-sdk.md) — 本页 3.0 所依赖的图编译与运行时框架
 - [NVIDIA Jetson](./nvidia-jetson.md) — AGX Orin/Thor 机载主机和 JetPack

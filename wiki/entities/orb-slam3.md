@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vslam, vio, visual-slam, research, eth]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../entities/vins-fusion.md
@@ -97,6 +97,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：UZ-SLAMLab/ORB_SLAM3@4452a3c，读过 README.md、Examples/Stereo-Inertial/stereo_inertial_euroc.cc、src/System.cc、src/Tracking.cc、src/LocalMapping.cc、src/LoopClosing.cc（主流程与调用关系，非逐行）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 局部 BA、惯性 BA 与位姿图承担不同校正职责，可结合非线性最小二乘背景分开阅读。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — Atlas 与重定位可服务长程探索，仍需自行对齐 ROS 2、TF、规划和避障接口。
 
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [VINS-Fusion](../entities/vins-fusion.md)

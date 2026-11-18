@@ -3,7 +3,7 @@ type: entity
 tags: [software, simulation, mujoco, jax, reinforcement-learning, deepmind, gpu]
 status: complete
 date: 2026-05-18
-updated: 2026-09-05
+updated: 2026-11-18
 related:
   - ./mujoco.md
   - ./mujoco-warp.md
@@ -63,6 +63,8 @@ summary: "MuJoCo MJX 是 MuJoCo 的 JAX/XLA 重实现：以 `mujoco-mjx` 分发�
 - **与 [MuJoCo Warp](./mujoco-warp.md) 不是同一后端**：MJX 是 JAX/XLA；MJWarp 是 [NVIDIA Warp](./nvidia-warp.md)/CUDA。要 GPU 吞吐且留在 PyTorch / Newton / [mjlab](./mjlab.md) 时选 MJWarp；要 `jax.grad` / Playground 时选本页。MJWarp 的 Warp AD **尚未接通**。
 
 ## 关联页面
+
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 批量或可微 rollout 若用于轨迹求解，需按实际后端核对梯度、接触和 feature parity，不能只凭 JAX 接口推断能力。
 
 - [MuJoCo（物理引擎）](./mujoco.md) — 设计哲学、接触模型与学术基准语境
 - [MuJoCo Warp](./mujoco-warp.md) — Warp/CUDA 兄弟后端（Newton / mjlab）

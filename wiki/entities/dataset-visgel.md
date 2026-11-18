@@ -8,7 +8,7 @@ tags:
   - gelsight
   - mit
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "1906.06322"
 venue: "CVPR 2019"
 project: http://visgel.csail.mit.edu/
@@ -138,6 +138,9 @@ sequenceDiagram
 - **许可证风险提醒**：仓库中未随附标准开源许可证（LICENSE 文件缺失），商业产品直接打包其源码或 300 万对图像前必须先联系 MIT CSAIL 原作者获得正式授权。
 
 ## 关联页面
+
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md) — 对照条件 cGAN 的跨模态图像预测与统一序列表示，不把视觉触觉图像对当作动作标签。
+- [Manipulation](../tasks/manipulation.md) — 感知预训练若用于操作，还需独立收集状态、动作及接触控制数据，双向图像预测不直接产生可执行策略。
 
 - [dataset-rct-robotic-contact-tactile.md](./dataset-rct-robotic-contact-tactile.md) — 跨材料/跨传感器触觉-语言泛化防泄漏基准
 - [dataset-ycb-sight.md](./dataset-ycb-sight.md) — 同用 GelSight 与 RGB-D 但聚焦三维 SDF 形状重建的数据集

@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, vln, navigation, matterport3d, rgb-d, princeton]
 status: complete
-updated: 2026-08-04
+updated: 2026-11-18
 related:
   - ./paper-vln-01-r2r.md
   - ./habitat-sim.md
@@ -54,6 +54,8 @@ VLN 要求智能体在 **未知、逼真** 室内按语言导航。Matterport3D 
 - **局限：离散图动作** — 连续底层控制见 [VLN-CE](../entities/paper-vln-02-vln-ce.md) 与 Habitat 连续环境。
 
 ## 关联页面
+
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — 可对照同类室内场景中的物体目标与语言路线任务，观测离散化和成功条件必须分别定义。
 
 - [paper-vln-01-r2r](./paper-vln-01-r2r.md)
 - [Habitat-Sim](./habitat-sim.md) — 高速加载 MP3D/Gibson 等扫描场景的主流宿主（MIT；v0.3.4 后 Meta 不再官方主动维护）

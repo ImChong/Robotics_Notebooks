@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, mujoco, mujoco-warp, warp, deepmind, nvidia]
 status: complete
-updated: 2026-09-05
+updated: 2026-11-18
 related:
   - ./nvidia-warp.md
   - ./newton-physics.md
@@ -100,6 +100,8 @@ flowchart TB
 - **不是 RL 框架**：没有 observation / reward manager。缺 API 时选 [mjlab](./mjlab.md) 或 Playground，而不是在本库上自搭训练循环。
 
 ## 关联页面
+
+- [Model Predictive Path Integral (MPPI)](../methods/mppi.md) — GPU 批量 rollout 可作为采样式预测控制的候选计算后端，需实测模型延迟和接触误差；此关系不依赖尚未接通的 Warp 可微能力。
 
 - [NVIDIA Warp](./nvidia-warp.md) — 计算底座；`warp.sim` 已弃用
 - [Newton Physics](./newton-physics.md) — 以本实现为主要刚体后端的多求解器引擎

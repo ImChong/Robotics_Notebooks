@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, autopilot, px4, mavlink, uav, multirotor, open-source, linux-foundation]
 status: complete
-updated: 2026-09-16
+updated: 2026-11-18
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../concepts/sim2real.md
@@ -110,6 +110,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：PX4/PX4-Autopilot@2ade646，读过 `platforms/posix/src/px4/common/main.cpp`、`ROMFS/px4fmu_common/init.d-posix/` 下 rcS/px4-rc.simulator/px4-rc.gzsim/airframes/4001_gz_x500、`ROMFS/px4fmu_common/init.d/` 下 rc.vehicle_setup/rc.mc_apps、`src/modules/simulation/gz_bridge/` 与 ekf2/flight_mode_manager/mc_pos_control/mc_att_control/mc_rate_control/control_allocator 的主要源文件；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 位置、姿态与角速度环应结合实际固件配置分层检查，先对齐估计状态和执行器输出。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — Offboard 可接入上层探索栈，但目标选择、避障和通信失效处理仍需系统集成验证。
 
 - [多旋翼仿真—规划—飞控栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [PlotJuggler](./plotjuggler.md) — 打开 **ULog** 对比估计器、执行器与控制环时序

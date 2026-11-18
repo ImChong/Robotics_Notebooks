@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, diffusion, manipulation]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-18
 arxiv: "2412.03293"
 related:
   - ./paper-cogact.md
@@ -83,6 +83,9 @@ Diffusion-VLA 把 DP 多峰优势带入 VLA。
 **不适用**
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — VLM 语义与推理条件进入动作模块，需用消融区分语义骨干和扩散头的收益。
+- [Diffusion Policy](../methods/diffusion-policy.md) — 扩散解码关节空间动作，去噪步数、块长度和实际控制频率应一起报告。
 
 - [paper-cogact](./paper-cogact.md)
 - [paper-diffusion-policy](./paper-diffusion-policy.md)

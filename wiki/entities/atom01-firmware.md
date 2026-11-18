@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, firmware, can, real-time, control-stack, roboparty]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-18
 related:
   - ./roboto-origin.md
   - ./roboparty-deploy.md
@@ -47,6 +47,9 @@ summary: "atom01_firmware 是 Atom01 的底层固件仓库，覆盖板端构建�
 - [Roboparty/atom01_firmware](https://github.com/Roboparty/atom01_firmware)
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 板端反馈执行需先明确电流、速度与位置环的分工，构建固件不等于完成闭环整定。
+- [MIT 关节阻抗模式参数整定](../methods/mit-joint-impedance-mode-tuning.md) — 关节 PD 与前馈可作为底层命令读法，具体模式、单位和保护逻辑仍按 Atom01 固件协议核对。
 
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Atom01 Deploy](./roboparty-deploy.md)

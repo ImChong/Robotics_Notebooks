@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2404.15121"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
@@ -105,6 +105,9 @@ flowchart LR
 - 本页只是深读笔记的清单索引编译；量化 benchmark 与消融必须回到深读笔记与 SIGGRAPH 2024 原文。
 
 ## 与其他页面的关系
+
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md) — CAMDM 根据历史动作与用户控制自回归去噪，交互延迟和生成质量需共同评估。
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md) — 控制条件单独 token 化帮助组织输入接口，不表示所有条件共享同一离散词表，也不直接输出机器人力矩。
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

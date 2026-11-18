@@ -6,7 +6,7 @@ tags:
   - visuo-tactile
   - in-the-wild
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "自然场景视觉触觉数据：采集者手持 GelSight 传感器按压各种物体，同步录制第一视角视频。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md) — 时间对齐的视觉触觉样本可用于共享表征，统一模态接口不意味着数据已经附有动作 token。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)

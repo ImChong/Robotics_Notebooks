@@ -3,7 +3,7 @@ type: entity
 project_id: aamdm-cvpr-2024
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 arxiv: "2401.06146"
 project: https://easypapersniper.github.io/projects/AAMDM/AAMDM.html
 original:
@@ -107,6 +107,8 @@ CVPR 2024 论文在 LaFAN1、交互控制及人造多模态数据上做定量与
 **核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
+
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 快速生成和精修提供人体动作候选，进入物理角色或机器人控制仍需独立动作跟踪与接触验证。
 
 - [从动作生成到人形闭环：方法与证据对比](../comparisons/generative-motion-to-humanoid-closed-loop.md)
 - [扩散式动作生成](../methods/diffusion-motion-generation.md)

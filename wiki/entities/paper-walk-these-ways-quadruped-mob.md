@@ -4,7 +4,7 @@ type: entity
 tags: [quadruped, reinforcement-learning, sim2real, generalization, legged-gym, mit]
 status: complete
 summary: "四足 MoB：单一策略嵌入多种步态与风格参数，部署时人类可调参以适配分布外地形与任务；开源 Walk These Ways 控制器。"
-updated: 2026-09-28
+updated: 2026-11-18
 arxiv: "2212.03238"
 related:
   - ./paper-raibo2-marathon-energy-efficient-quadruped.md
@@ -57,6 +57,8 @@ flowchart LR
 ```
 
 ## 与 Kp / Kd 设置的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 同一任务下训练行为多样性，部署调节行为参数与在线更新策略权重是不同操作。
 
 - 当你已能跑通 **legged_gym 式默认 PD**，下一步常不是盲目加大 DR，而是像本文一样 **先获得一族可切换的低层行为**，再决定增益随机化区间。
 - **文献号**：本文 arXiv 为 **[2212.03238](https://arxiv.org/abs/2212.03238)**（不是「Walk in Minutes」）。

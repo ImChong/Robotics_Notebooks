@@ -11,7 +11,7 @@ tags:
   - berkeley
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2310.07896"
 code: https://github.com/robodhruv/visualnav-transformer
 related:
@@ -176,6 +176,9 @@ sequenceDiagram
 - 主要验证轮式平台；被人形 roadmap 引用不等于论文已在 humanoid 上验证。
 
 ## 与其他页面的关系
+
+- [Diffusion Policy](../methods/diffusion-policy.md) — 扩散直接生成短时动作序列，需区分目标掩码、噪声训练和部署执行时域。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 无目标模式与拓扑全局记忆共同服务探索，局部策略本身不负责全部长程规划。
 
 - [导航纵深路线 Stage 3](../../roadmap/depth-navigation.md) — 扩散导航可复现起点
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) — topology / local policy / base control 的三层接口

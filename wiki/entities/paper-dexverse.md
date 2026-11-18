@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, benchmark, imitation-learning, multi-embodiment, visuomotor, bimanual, contact-rich, isaac-lab, berkeley, hku, unc-chapel-hill]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2607.08751"
 venue: "arXiv 2026"
 related:
@@ -139,6 +139,8 @@ flowchart TB
 - **≠ DexBench：** [DexBench](./dexbench.md)（RLWRLD × NVIDIA，dexbench.org）是工业任务**规格**，官方评测仓与 Arena 集成仍标 coming soon；不要和本页已开源的 100 任务 Isaac Lab bench 混名。另有 `sail-ucf/dexbench`（LLM 推理）也无关。
 
 ## 关联页面
+
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — VR 多模态示范是基准数据来源，跨本体比较需对齐采集接口、任务划分与接触成功谓词。
 
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览与 benchmark 索引
 - [灵巧操作数据管线](../queries/dexterous-manipulation-data-pipeline.md) — 示范采集、retarget 与评测平台选型

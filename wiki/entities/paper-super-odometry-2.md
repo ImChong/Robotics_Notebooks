@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, odometry, sensor-fusion, imu, lidar, slam, cmu, buffalo]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2608.25427"
 code: https://github.com/superxslam/SuperOdom
 related:
@@ -123,6 +123,8 @@ sequenceDiagram
 - 相对 FAST-LIO / LIO-SAM：见 [LIO/VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)；本页强调退化可切换，而不是单一滤波器精度。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 自适应融合可提供探索位姿输入，slim 仓的可运行范围与完整层级能力需分开核验。
 
 - [里程计与激光雷达融合](../methods/lidar-odometry-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)

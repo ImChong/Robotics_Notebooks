@@ -6,7 +6,7 @@ tags:
   - manipulation
   - contact-rich
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 arxiv: "2610.23888"
 code: https://github.com/Aurora-Xiong/MoDex
 related:
@@ -90,6 +90,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md) — 对参考轨迹学习残差时，应把单次抓取、顺序交互和仿真真机差距分开评估。
 
 - [manipulation](../tasks/manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)

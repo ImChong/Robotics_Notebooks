@@ -5,7 +5,7 @@ tags:
   - computer-vision
   - benchmark
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "城市场景语义/实例分割基准（车载视角）；自动驾驶与户外移动机器人视觉评测常用。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -75,6 +75,8 @@ flowchart LR
 - 许可与人脸/版权图需在产品化前法务审阅。
 
 ## 关联页面
+
+- [SegNet](../methods/segnet.md) — 以编码器–解码器分割为方法背景，精细/粗标和城市划分必须与评测配置对应。
 
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)

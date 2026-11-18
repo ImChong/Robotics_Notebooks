@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, imitation-learning, motion-retargeting, ucsd]
 status: complete
-updated: 2026-10-02
+updated: 2026-11-18
 arxiv: "2108.05877"
 code: https://github.com/yzqin/dexmv-sim
 related:
@@ -80,6 +80,8 @@ sequenceDiagram
 这对应两仓 README 的模块职责；具体命令和数据路径见[代码归档](../../sources/repos/dexmv-sim.md)。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 人手与物体姿态先转换为机器人示范，再结合任务反馈训练，需保留手–物相对关系并区分仿真与真机能力。
 
 - [运动重定向](../concepts/motion-retargeting.md)
 - [操作任务](../tasks/manipulation.md)

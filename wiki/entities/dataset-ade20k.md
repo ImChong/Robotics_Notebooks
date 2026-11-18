@@ -5,7 +5,7 @@ tags:
   - computer-vision
   - benchmark
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "场景解析与语义分割常用集：百余至千余场景类别（版本相关），SETR/SegFormer 等分割 Transformer 的标准评测之一。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -75,6 +75,8 @@ flowchart LR
 - 许可与人脸/版权图需在产品化前法务审阅。
 
 ## 关联页面
+
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — 像素级场景标签可用于语义分割，训练前需固定类别映射、忽略标签和 mIoU 口径。
 
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)

@@ -6,7 +6,7 @@ tags:
   - computer-vision
   - 3d-reconstruction
 status: complete
-updated: 2026-11-02
+updated: 2026-11-18
 arxiv: "2503.11651"
 project: https://vgg-t.github.io/
 code: https://github.com/facebookresearch/vggt
@@ -92,6 +92,9 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](../methods/lingbot-map.md) — 对照批式多视图几何输出与流式上下文维护，区分输入窗口和长期状态接口。
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 比较多视图前馈深度与双目视差的相机假设和尺度来源，不直接横比评测数字。
 
 - [state-estimation](../concepts/state-estimation.md)
 - [3d-spatial-vqa](../concepts/3d-spatial-vqa.md)

@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, manipulation, benchmark, sapien, generalization, ucsd]
 status: complete
-updated: 2026-06-22
+updated: 2026-11-18
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./sapien.md
@@ -54,6 +54,8 @@ summary: "2023 年基于 SAPIEN 的统一机械臂操作基准：跨类别/几�
 - **局限：人形全身 loco-manip** — 见 [BEHAVIOR-1K](./behavior-1k.md)、[Isaac Lab](./isaac-lab.md) 等更厚栈。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 操作泛化需在统一物体、观测和成功协议下比较，示范质量与仿真环境变化应分开评估。
 
 - [SAPIEN](./sapien.md)
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)

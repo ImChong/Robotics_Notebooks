@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vslam, modular, research, eth]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-18
 related:
   - ../entities/orb-slam3.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -49,6 +49,9 @@ summary: "OpenVSLAM 是模块化视觉 SLAM 框架；社区维护多迁移至 st
 - [xdspacelab/openvslam](https://github.com/xdspacelab/openvslam)
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 局部建图和后端优化可沿残差线性化理解，具体求解器仍需按所用分支核对。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 视觉地图可作为探索的定位输入，探索目标选择与执行需由下游另行实现。
 
 - [ORB-SLAM3](../entities/orb-slam3.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)

@@ -5,7 +5,7 @@ tags:
   - computer-vision
   - benchmark
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "目标检测/实例分割/关键点主流基准：约 20 万图、80 物类；mAP 与机器人检测迁移评测的事实标准之一。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -75,6 +75,8 @@ flowchart LR
 - 许可与人脸/版权图需在产品化前法务审阅。
 
 ## 关联页面
+
+- [Mask R-CNN](../methods/mask-rcnn.md) — 实例 mask 可监督检测与掩码分支，框 AP、mask AP 和关键点评测不能混报。
 
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)

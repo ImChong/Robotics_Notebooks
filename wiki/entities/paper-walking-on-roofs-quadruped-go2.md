@@ -3,7 +3,7 @@ type: entity
 project_id: walking-on-roofs-quadruped-go2
 tags: [paper, quadruped, locomotion, unitree-go2, construction, benchmark-study, terrain-adaptation, kit]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-18
 arxiv: "2610.12272"
 related:
   - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
@@ -140,6 +140,8 @@ flowchart LR
 - **未评估：** 新的 AI 行走模式只做了初步测试（作者称有中等改善），未纳入主实验。
 
 ## 关联页面
+
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md) — 坡面站立和起身测试可界定恢复任务的使用边界；本文测内置步态，没有提出新的平衡控制器。
 
 - [人形/四足前沿周报 2026-10-05~10-09](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 - [运动控制任务页](../tasks/locomotion.md)

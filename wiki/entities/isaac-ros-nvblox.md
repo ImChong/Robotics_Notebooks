@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, nvidia, ros2, tsdf, esdf, mapping, nav2]
 status: complete
-updated: 2026-09-24
+updated: 2026-11-18
 related:
   - ./robotis-ai-worker-isaac-cumotion.md
   - ../entities/isaac-ros-visual-slam.md
@@ -86,6 +86,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：NVIDIA-ISAAC-ROS/isaac_ros_nvblox@79654d2，读过 nvblox_examples_bringup 的 realsense_example.launch.py 与 perception/nvblox.launch.py，nvblox_ros 的 nvblox_node_main.cpp、nvblox_node.cpp、transformer.cpp；时序图依据以上文件，未运行代码；nvblox_core 子模块未读。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 在线 TSDF/ESDF 可支撑探索地图与代价更新，全局定位和探索目标仍由其他模块负责。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — ESDF 距离可作为轨迹避障代价输入，建图节点本身不替代求解器和动力学约束。
 
 - [Isaac ROS Visual SLAM](./isaac-ros-visual-slam.md)
 - [Navigation2](./navigation2.md)

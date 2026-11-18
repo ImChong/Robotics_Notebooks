@@ -8,7 +8,7 @@ tags:
   - sensor-fusion
   - hku
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 arxiv: "2109.07982"
 project_id: r3live
 code: https://github.com/hku-mars/r3live
@@ -141,6 +141,9 @@ flowchart LR
 4. 局限：定量对比只有自采两条序列、单一传感器套件，光照变化与 29 维在线标定的可观性未专门验证。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — LIO 建立几何，VIO 用光度更新与贝叶斯颜色融合补充信息，需核对时间和外参状态。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 彩色几何地图若接入探索，还需验证定位时延和碰撞几何，渲染细节不直接代表可通行性。
 
 - [FAST-LIO](./fast-lio.md)：R3LIVE 的 LIO 子系统来源
 - [LVI-SAM](./paper-lvi-sam.md)：论文中的对比基线之一

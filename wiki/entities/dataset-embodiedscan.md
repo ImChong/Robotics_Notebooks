@@ -6,7 +6,7 @@ tags:
   - rgb-d
   - embodied
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "第一视角多模态三维感知数据：5,000 余次扫描、100 万帧 RGB-D，标注 16 万个三维有向包围框。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [目标检测（Object Detection）](../methods/object-detection.md) — 三维有向框与占用标注服务具身感知，使用检测背景时须区分二维框接口和三维坐标约定。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [habitat-sim](../entities/habitat-sim.md)

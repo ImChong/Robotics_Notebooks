@@ -6,7 +6,7 @@ tags:
   - interactive-assets
   - rearrangement
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "可交互公寓三维资产：Replica 扫描公寓的美术重建版本，含铰接家具与 105 种布局。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -63,6 +63,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 铰接家具和物理属性可支撑家庭操作任务，需核对关节、接触参数和可达性。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [habitat-sim](../entities/habitat-sim.md)

@@ -6,7 +6,7 @@ tags:
   - embodied-sim
   - navigation
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "基于真实空间三维扫描的具身仿真数据库：572 栋建筑、1,447 个楼层、21.1 万平方米。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 真实扫描场景可用于探索策略评测，需先匹配目标平台的碰撞体、观测与运动空间。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [habitat-sim](../entities/habitat-sim.md)

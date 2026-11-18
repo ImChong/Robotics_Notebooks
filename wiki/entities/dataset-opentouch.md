@@ -6,7 +6,7 @@ tags:
   - whole-hand
   - egocentric
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "首个野外第一视角全手触觉数据：5.1 小时视频、全手触觉与手部姿态同步。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 人类全手触觉和姿态可作为示范表征输入，机器人策略仍需补齐形态映射与动作监督。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)

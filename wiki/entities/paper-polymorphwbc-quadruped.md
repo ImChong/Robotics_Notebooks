@@ -3,7 +3,7 @@ type: entity
 project_id: polymorphwbc-quadruped
 tags: [paper, quadruped, loco-manipulation, cross-embodiment, ik]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 arxiv: "2611.15117"
 related:
   - ../concepts/whole-body-control.md
@@ -91,6 +91,9 @@ flowchart TD
 依赖准确 URDF、单 Go2 底座及低速平滑 EE 轨迹；跨机型的数值多数来自仿真，未见全套官方可运行代码。
 
 ## 关联页面
+
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md) — 末端轨迹经形态条件协调器转换为底座运动，任务验收需联合检查机械臂可达性与底座执行。
+- [Locomotion](../tasks/locomotion.md) — 冻结步态后端消费底座命令，跨机械臂协调收益不能混算成重新学习的步态能力。
 
 - [whole body control](../concepts/whole-body-control.md)
 - [cross embodiment](../../roadmap/depth-cross-embodiment.md)

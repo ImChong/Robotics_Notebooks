@@ -3,7 +3,7 @@ type: entity
 project_id: flashdexretarget
 tags: [paper, dexterous-manipulation, human-object-interaction, motion-retargeting, reinforcement-learning, kaist]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-18
 arxiv: "2610.01849"
 project: "https://holiday-robot.github.io/FlashDexRetarget/"
 code: "https://github.com/DAVIAN-Robotics/FlashDexRetarget"
@@ -104,6 +104,8 @@ SR_SPIDER 主要看物体位置和旋转误差；SR_MT 还要求机器人手部�
 **不适用：** 截至 2026-10-07，官方仓库只托管项目网站，论文代码入口为 coming soon；目前没有可运行的官方算法实现可据以绘制调用时序。
 
 ## 关联页面
+
+- [FlashSAC](../methods/flashsac.md) — 共享多参考策略以 FlashSAC 和扩大的经验回放训练，需固定参考集、奖励及双手各自的学习信号。
 
 - [Motion Retargeting（动作重定向）](../concepts/motion-retargeting.md)
 - [SPIDER：Scalable Physics-Informed Dexterous Retargeting](../methods/spider-physics-informed-dexterous-retargeting.md)

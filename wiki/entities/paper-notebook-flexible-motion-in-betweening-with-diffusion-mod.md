@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, in-betweening, keyframe-control, siggraph, humanoid-paper-notebooks, ubc, sfu, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2405.11126"
 code: https://github.com/setarehc/diffusion-motion-inbetweening
 related:
@@ -161,6 +161,8 @@ sequenceDiagram
 - SMPL、SMPL-X、HumanML3D 等依赖各自许可，MIT 代码许可不覆盖全部数据与人体模型资产。
 
 ## 与其他页面的关系
+
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 关键帧补全输出可作跟踪参考，几何插补质量与物理角色的接触、平衡和执行误差需分开验证。
 
 - 总方法：[Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
 - 后续可控谱系：[GMD](./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md)、[OmniControl](./paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md)

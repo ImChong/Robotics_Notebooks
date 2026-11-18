@@ -5,7 +5,7 @@ tags:
   - computer-vision
   - benchmark
 status: complete
-updated: 2026-08-14
+updated: 2026-11-18
 summary: "早期语义/目标检测标准集（20 类）；教学与历史对照常用，检测/分割评测的主战场此后转向 COCO/ADE20K。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -75,6 +75,8 @@ flowchart LR
 - 许可与人脸/版权图需在产品化前法务审阅。
 
 ## 关联页面
+
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — VOC 分割标注适合复核全卷积预测与上采样，检测集和分割集的任务划分须分清。
 
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [Vision Backbones](../concepts/vision-backbones.md)

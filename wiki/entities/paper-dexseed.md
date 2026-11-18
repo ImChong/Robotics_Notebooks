@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, motion-retargeting, imitation-learning, vla, simulation]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-18
 project_id: dexseed
 arxiv: "2611.14092"
 project: https://robbyant-research.github.io/DexSeed/
@@ -90,6 +90,8 @@ flowchart TD
 框架集中于抓取/放置，不应外推为复杂手内操作或双手协作；合成接触物理和渲染域差仍会影响真实表现。训练源码尚未发布。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 仿真手指 RL 把几何参考转为可持续抓稳的示范，需与后续 VLA 微调阶段分开评价。
 
 - [CIALLO](paper-ciallo.md)
 - [动作重定向](../concepts/motion-retargeting.md)
