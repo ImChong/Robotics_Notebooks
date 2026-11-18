@@ -10,11 +10,12 @@ tags:
   - hku
   - open-source
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ./deeptutor.md
   - ./hermes-agent.md
   - ./openclaw.md
+  - ./phone-harness.md
   - ./agent-reach.md
   - ./freecad-mcp.md
   - ./unreal-mcp.md
@@ -174,6 +175,7 @@ sequenceDiagram
 - [DeepSeek Harness](deepseek-harness.md) — DeepSeek 官方插件化宿主（自带 `packages/skill`；与生成式 CLI 互补）
 - [OpenClaw](openclaw.md) — SKILL 兼容个人助手宿主；Hub meta-skill 安装目标之一
 - [Agent Reach](agent-reach.md) — 外网读搜 CLI 脚手架（与「专业软件 CLI 生成」互补）
+- [Phone Harness](phone-harness.md) — 通过统一 Python helpers 操作真实或云端 iPhone / Android 手机 UI；与 CLI-Anything 的生成式结构化命令路线互补
 - [FreeCAD MCP](freecad-mcp.md) — 同软件域的 MCP 桥对照
 - [Unreal MCP](unreal-mcp.md) — 引擎侧代理桥对照
 - [CAD Skills](cad-skills.md) — 脚本化 CAD / URDF 技能链
