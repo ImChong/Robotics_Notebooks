@@ -3,7 +3,7 @@ type: entity
 tags: [evaluation, physical-ai, humanoid, infrastructure, benchmarking, foundation-model, whole-body-control, xpeng]
 status: complete
 arxiv: "2606.17574"
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-athena-wbc-humanoid-longtail.md
@@ -15,12 +15,16 @@ related:
   - ./isaac-lab.md
   - ./genesis-world-10.md
   - ../tasks/loco-manipulation.md
+original:
+  - ../../sources/papers/deepinsight_arxiv_2606_17574.md
 sources:
   - ../../sources/papers/deepinsight_arxiv_2606_17574.md
 summary: "DeepInsight 是 XPENG Robotics 的 Physical AI 全栈统一评测基础设施：单一 runtime 贯通 System 2 基础模型、System 1 视运动策略与 System 0 全身控制，以 task/resource/result 三抽象与统一 trace 实现跨层回归定位。"
 ---
 
 # DeepInsight（XPENG Robotics 全栈评测基础设施）
+
+## 一句话定义
 
 **DeepInsight**（2026-06，[arXiv:2606.17574](https://arxiv.org/abs/2606.17574)，XPENG Robotics）是面向 **embodied humanoid stack** 的 **统一评测基础设施（evaluation infrastructure）**：在 **单一 runtime** 上承载从 **单次 foundation-model decode** 到 **数千 physics tick 全身控制 rollout** 的异构算子谱，用共享 **trace identity** 把层间失败留在可查询的因果链上，而不是用分段 harness 拼接。
 
@@ -53,7 +57,7 @@ summary: "DeepInsight 是 XPENG Robotics 的 Physical AI 全栈统一评测基�
 | **System 1** | 导航、操作、运动生成等子系统策略 | 数十至数百 control step 闭环（CALVIN、LIBERO、SimplerEnv、VLN-CE） |
 | **System 0** | 全身稳定、 locomotion、接触与姿态 | 数百至数千 physics tick（HumanoidBench、Isaac Lab、RoboHive） |
 
-## 核心架构：三抽象与三不变量
+## 核心原理与架构：三抽象与三不变量
 
 论文主张异构性由 **三个窄抽象** 吸收，每个抽象落实为一个 **全子系统共享的不变量**：
 
@@ -150,6 +154,27 @@ flowchart TB
 | 昂贵后端 | 各框架内嵌或异构集成 | **统一 acquire/release 协议** |
 | 事件与身份 | 多 store、难 join | **统一 TraceRecord + 因果 parent 链** |
 | 跨层诊断 | 需事后 ETL 对齐 | **同一 episode_id 上 graph traversal** |
+
+## 工程实践
+
+按原文 §3 和 §5，接入或审查同类全栈评测平台时可依次核对以下接口与证据（这是论文架构的工程化检查清单，**不是已验证的开源部署教程**）：
+
+1. **先固定评测协议：** 将数据集、环境、评分器写入 suite；将推理端点、并发与资源预算写入 template；执行时固化合并后的配置快照，避免不同运行实际使用的配置不可比。
+2. **把 episode 与后端生命周期解耦：** 在 per-episode handle 中保存观察、动作、对话和状态；环境只暴露 `reset(handle)` / `step(handle, action)`；推理与沙箱/仿真分别通过 `acquire/release` 租赁资源，并按 generation、sandbox、scoring 等阶段配置独立并发预算。
+3. **保留追责所需原始证据：** 为事件记录 `run_id / suite_id / task_id / episode_id / epoch`、细粒度 `turn_id / step_id / tick`、`event_id / parent_event_id` 与资源引用；先存 trace，再由独立 reporter 计算总体分数。
+4. **把控制策略筛选与上机发布分开：** System 0 先按 SR–MPJPE 排序，再按单步轨迹核查髋部动力学、接触姿态、摆脚离地间隙和上肢活动范围；论文中 **WBC-RC-01 虽为聚合最优却被诊断否决**（§5.2 / Table 6）。
+5. **专门检查跨层 handoff：** System 2 的目标描述、System 1 的导航成功状态与 System 0 的可执行性应在同一 episode trace 上对齐；论文的 vehicle-guide 案例中，**11/38** 个失败 episode 归因层间边界（§5.3 / Figure 13）。
+
+## 局限与风险
+
+- **对标范围不对称：** 论文 §4 的对齐、墙钟和多节点量化证据主要来自 **System 2**；System 1/0 的展示以仿真/行为诊断案例为主，不能把 System 2 的加速倍率外推为真实机器人闭环收益。
+- **复现条件受限：** 对齐结果依赖共用模型、judge、推理配置和 benchmark 协议；LiveCodeBench 的参考 sandbox/timeout、Video-MME 的字幕设置存在已披露的不一致（§4.1），不应视为完全一致协议下的逐项精确复现。
+- **真机证据边界：** 原文 §6 明确指出 sim-to-real 仍是决定性不确定因素；本篇并未提供统一 runtime 在真实硬件上跨层归因的独立定量对标。
+- **开放性边界：** 截至 2026-11-18 查阅论文 v1、XPENG Robotics 公开研究列表及公开代码线索，**未核实到 DeepInsight 对应的官方可运行仓库和启动入口**；论文描述的内部生产部署不等于可独立安装或复现。
+
+## 源码运行时序图
+
+**不适用（官方可运行源码未核实公开）。** 现有 Mermaid 展示的是论文 §3 描述的架构与数据/事件流，而非已阅读源码的运行调用链；不臆造入口命令、模块名称或真实执行时序。
 
 ## 常见误区
 
