@@ -6,7 +6,7 @@ project: https://galaxygeneralrobotics.github.io/scalevla/
 tags: [paper, vla, scaling, action-dit, imitation-learning, robot-manipulation]
 status: complete
 updated: 2026-11-18
-summary: "ScaleVLA 在 DeepSeek-V4.1-Flash 的 552B 总参数骨干上接 Action DiT，研究超大骨干如何在少样本机器人操作中迁移；十条演示的 LIBERO-Goal 87.8%，LIBERO-PRO 45.1%，216 ms 为单动作块推理中位延迟。"
+summary: "ScaleVLA 在 DeepSeek-V4.1-Flash 的 552B 总参数骨干上接 Action DiT，研究超大骨干如何在少样本机器人操作中迁移；10 份示范数据的 LIBERO-Goal 87.8%，LIBERO-PRO 45.1%，216 ms 为单动作块推理中位延迟。"
 original:
   - ../../sources/papers/scalevla-2611-21607.md
 sources:
@@ -23,7 +23,7 @@ related:
 
 ## 一句话定义
 
-**ScaleVLA**：ScaleVLA 在 DeepSeek-V4.1-Flash 的 552B 总参数骨干上接 Action DiT，研究超大骨干如何在少样本机器人操作中迁移；十条演示的 LIBERO-Goal 87.8%，LIBERO-PRO 45.1%，216 ms 为单动作块推理中位延迟。
+**ScaleVLA**：ScaleVLA 在 DeepSeek-V4.1-Flash 的 552B 总参数骨干上接 Action DiT，研究超大骨干如何在少样本机器人操作中迁移；10 份示范数据的 LIBERO-Goal 87.8%，LIBERO-PRO 45.1%，216 ms 为单动作块推理中位延迟。
 
 ## 英文缩写速查
 
