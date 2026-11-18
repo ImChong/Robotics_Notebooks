@@ -185,6 +185,7 @@ flowchart LR
 - 用一个开源 VLA 在移动操作仿真基准（RoboCasa 类）上跑评测，记录失败模式
 
 ### 推荐读什么
+- [DiPLO：自蒸馏扩散全身搬运规划](../wiki/entities/paper-diplo-self-distilled-diffusion-planning.md) — 先用 SBTO 动态可行轨迹训练 DiT + RL 跟踪器，再经 SD:DPO 去除 IK 先验依赖、DA:PPO 对齐物体目标；Stage 4 的生成式全身规划代表。
 - [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 - [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
 - [Rhoda Mobile DVA](../wiki/entities/rhoda-direct-video-action.md#mobile-dva2026-11-03-统一移动与操作扩展) — 非人形移动底盘 + 机械臂共享因果视觉未来并统一解码动作的产业样本；公司自报短数据迁移与目标桌混淆失效，未提供代码/权重。
