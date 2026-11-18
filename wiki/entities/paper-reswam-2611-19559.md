@@ -12,8 +12,8 @@ original:
   - ../../sources/papers/reswam-2611-19559.md
 sources:
   - ../../sources/papers/reswam-2611-19559.md
-- ../../sources/sites/reswam-2611-19559.md
-- ../../sources/repos/reswam-2611-19559.md
+  - ../../sources/sites/reswam-2611-19559.md
+  - ../../sources/repos/reswam-2611-19559.md
 related:
   - ../methods/action-chunking.md
   - ../methods/diffusion-policy.md
@@ -121,6 +121,8 @@ sequenceDiagram
 - 实机结果覆盖有限操作任务，不意味着跨本体或所有接触复杂动作成功率一致。
 
 ## 关联页面
+
+- [XMimic & XSoma：人形世界模型梯度训练](./paper-xmimic-xsoma-2611-20452.md) — 与 ResWAM 的操作策略未来监督不同，是通过世界模型 BPTT 学运动控制策略。
 
 - [动作分块](../methods/action-chunking.md)
 - [扩散策略](../methods/diffusion-policy.md)

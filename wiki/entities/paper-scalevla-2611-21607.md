@@ -11,7 +11,7 @@ original:
   - ../../sources/papers/scalevla-2611-21607.md
 sources:
   - ../../sources/papers/scalevla-2611-21607.md
-- ../../sources/sites/scalevla-2611-21607.md
+  - ../../sources/sites/scalevla-2611-21607.md
 related:
   - ../methods/action-chunking.md
   - ../methods/behavior-cloning.md

@@ -11,7 +11,7 @@ original:
   - ../../sources/papers/thinkwam-2611-21258.md
 sources:
   - ../../sources/papers/thinkwam-2611-21258.md
-- ../../sources/sites/thinkwam-2611-21258.md
+  - ../../sources/sites/thinkwam-2611-21258.md
 related:
   - ../methods/action-chunking.md
   - ../methods/model-based-rl.md

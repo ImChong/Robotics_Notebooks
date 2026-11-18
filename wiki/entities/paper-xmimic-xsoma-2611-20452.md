@@ -11,8 +11,8 @@ original:
   - ../../sources/papers/xmimic-xsoma-2611-20452.md
 sources:
   - ../../sources/papers/xmimic-xsoma-2611-20452.md
-- ../../sources/repos/xmimic-xsoma-2611-20452.md
-- ../../sources/repos/xmimic-jax.md
+  - ../../sources/repos/xmimic-xsoma-2611-20452.md
+  - ../../sources/repos/xmimic-jax.md
 related:
   - ../methods/model-based-rl.md
   - ../methods/reinforcement-learning.md
