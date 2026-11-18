@@ -27,7 +27,7 @@ Part II 第 2 章将 **API Server → tokenizer → scheduler/engine → detoken
 ## 发布与访问边界
 
 - 官方 README 将全套讲解视频标为 **预计 2026 年 11 月底完成**；其 B 站链接是可追踪视频入口，不能推定所有视频已上线，也未核对单条视频的完整内容。
-- README 标有中文和英文 PDF 的 `releases/latest/download/...` 地址；**2026-11-18 GitHub Releases 页面显示尚无 Release**，因此不能宣称该 PDF 当前可直接下载。
+- 官方 **2026-11-12 PDF Release** 已发布：中文 363 页、英文 426 页；GitHub Releases API 核实含 `zero-to-SGLang_Chinese.pdf` 与 `zero-to-SGLang_English.pdf` 附件。PDF 为当日站点内容快照，应以在线站为更新来源。
 - README 指向 `/ch/` 在线站；本次在线站抓取未成功，课程目录和技术事实改以仓内的原始 Markdown 核实。
 - README 授权标识为 **CC BY-NC-SA 4.0**；不得未经许可将课程正文整篇镜像进本知识库。
 - 本条只对上文列出的主要原文核对范围给出“通读已完成”，不代表审核了所有章节、视频或复现实验。
@@ -42,5 +42,5 @@ Part II 第 2 章将 **API Server → tokenizer → scheduler/engine → detoken
 - [Part II 第 2 章：一个请求的旅程](https://github.com/datawhalechina/zero-to-sglang/blob/main/course-material/ch/part2/第2章_一个请求的旅程.md)
 - [Part II 第 2 章：源码走读](https://github.com/datawhalechina/zero-to-sglang/blob/main/course-material/ch/part2/第2章_一个请求的旅程_代码.md)
 - [Mini-SGLang 官方系统结构](https://github.com/sgl-project/mini-sglang/blob/main/docs/structures.md)
-- [发布页面](https://github.com/datawhalechina/zero-to-sglang/releases)
+- [官方 PDF Release（2026-11-12）](https://github.com/datawhalechina/zero-to-sglang/releases/tag/pdf-2026-11-12)
 - [Wiki 独立节点](../../wiki/entities/zero-to-sglang.md)
