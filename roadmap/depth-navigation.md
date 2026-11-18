@@ -119,6 +119,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Navigation2（Nav2）](../wiki/entities/navigation2.md)
+- [GN10 Robot System（2026 荒川高专机器人系统）](../wiki/entities/tmcit-ararobo-2026a-gn10-system.md) — Stage 2 竞赛工程实例：静态地图 costmap、8 邻接 A*、路径平滑与跟踪，通过 ROS 2/UDP 接入 STM32/FDCAN；不是 Nav2 原版。
 - [平滑导航路径生成](../wiki/methods/smooth-navigation-path-generation.md)
 - [RoamerX（智身四足导航栈）](../wiki/entities/roamerx-navigation.md) — Nav2 在四足上的增强实践
 - [Isaac ROS Visual SLAM](../wiki/entities/isaac-ros-visual-slam.md) — GPU 加速感知建图选项
