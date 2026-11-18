@@ -96,6 +96,7 @@ flowchart LR
 - [HiFi-UMI](../wiki/entities/paper-hifi-umi.md) — 高保真无机器人双臂 UMI（~3 mm 精度、<40 µs 同步、六视角），zero-robot 后训练匹配同域遥操作；开源 HiFi-UMI-2K（2000 h，CC BY 4.0），采数系统代码截至入库日未发布
 - [RIO（Robot I/O）](../wiki/entities/robot-io-rio.md) — 多设备遥操作的 Node 化抽象
 - [xpad](../wiki/entities/xpad.md) 与 [Oculus Quest Teleop](../wiki/entities/oculust-quest-teleop.md)、[Isaac Teleop](../wiki/entities/isaac-teleop.md) — 手柄内核驱动 / VR / 仿真内录制
+- [Panthera-HT 开源六轴力矩控制臂](../wiki/entities/cn-os-panthera-ht-main.md) — Stage 1 桌面级主从臂与 LeRobot 采集硬件案例，区分关节力矩控制和双向力反馈
 - [ALOHA](../wiki/entities/aloha.md) — 低成本 leader–follower 双臂
 - [ALOHA 2](../wiki/entities/aloha-2.md) — Google DeepMind 硬件迭代：夹爪/机架/重力补偿升级 + D405 四相机阵列，开源 Menagerie 仿真工位（系统辨识后）与初代绑定同一套资产
 
