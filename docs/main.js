@@ -9200,6 +9200,10 @@
     }
     container.innerHTML = othersHtml;
   }
+
+  if (typeof window !== 'undefined') {
+    window.RNSiteCatalog = { ensure: ensureSiteCatalog };
+  }
 })();
 
 /* ── 底部浮动按钮避让页脚 ──
@@ -9251,15 +9255,40 @@
   }
 })();
 
-/* ── 全站「回到顶部」按钮（带阅读进度环） ──
+/* ── 全站「回到顶部」按钮（带阅读进度环）与右下角 AI 知识库问答入口 ──
    注入判据与 style.css 里 `body:has(> .footer)` 一致：graph.html / references.html
    没有站内 footer，因此自动排除（图谱页全屏画布不加浮层，跳转桩页无需）。 */
 (function () {
   'use strict';
 
+  function chatToggleIcon() {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'kb-chat-toggle__icon');
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute(
+      'd',
+      'M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 5v2h10V9H7zm0 4v1.8h7V13H7z'
+    );
+    svg.appendChild(path);
+    return svg;
+  }
+
   function init() {
     if (!document.querySelector('body > .footer')) return;
-    if (document.querySelector('.back-to-top')) return;
+    if (document.querySelector('.back-to-top') || document.getElementById('fabStackRight')) return;
+
+    var stack = document.createElement('div');
+    stack.id = 'fabStackRight';
+    stack.className = 'fab-stack-right';
+
+    var slot = document.createElement('div');
+    slot.id = 'kbChatSlot';
+    slot.className = 'kb-chat-slot';
+
+    var bar = document.createElement('div');
+    bar.className = 'fab-stack-right__bar';
 
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -9270,7 +9299,76 @@
     btn.setAttribute('aria-hidden', 'true');
     btn.tabIndex = -1;
     btn.innerHTML = '<span class="back-to-top-arrow" aria-hidden="true">↑</span>';
-    document.body.appendChild(btn);
+
+    var chatBtn = document.createElement('button');
+    chatBtn.type = 'button';
+    chatBtn.id = 'kbChatToggle';
+    chatBtn.className = 'kb-chat-toggle';
+    chatBtn.setAttribute('aria-expanded', 'false');
+    chatBtn.setAttribute('aria-controls', 'kbChatPanel');
+    chatBtn.setAttribute('aria-label', 'AI 知识库问答');
+    chatBtn.setAttribute('title', 'AI 知识库问答');
+    chatBtn.appendChild(chatToggleIcon());
+
+    bar.appendChild(btn);
+    bar.appendChild(chatBtn);
+    stack.appendChild(slot);
+    stack.appendChild(bar);
+    document.body.appendChild(stack);
+
+    var chatScriptPromise = null;
+    function fallbackToSearch() {
+      var localSearchInput = document.getElementById('wikiSearchInput');
+      if (localSearchInput) {
+        localSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        localSearchInput.focus();
+      } else {
+        window.location.href = 'index.html#wiki-search';
+      }
+    }
+
+    function loadChatWidget() {
+      if (window.RNKbChat && typeof window.RNKbChat.toggle === 'function') {
+        return Promise.resolve(window.RNKbChat);
+      }
+      if (chatScriptPromise) return chatScriptPromise;
+      chatScriptPromise = new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = 'kb-chat.js';
+        script.async = true;
+        script.onload = function () {
+          if (window.RNKbChat && typeof window.RNKbChat.toggle === 'function') {
+            resolve(window.RNKbChat);
+          } else {
+            chatScriptPromise = null;
+            reject(new Error('kb-chat unavailable'));
+          }
+        };
+        script.onerror = function () {
+          chatScriptPromise = null;
+          reject(new Error('Failed to load kb-chat.js'));
+        };
+        document.head.appendChild(script);
+      });
+      return chatScriptPromise;
+    }
+
+    chatBtn.addEventListener('click', function () {
+      if (window.RNKbChat && typeof window.RNKbChat.toggle === 'function') {
+        window.RNKbChat.toggle();
+        return;
+      }
+      chatBtn.setAttribute('aria-busy', 'true');
+      loadChatWidget()
+        .then(function (api) {
+          chatBtn.removeAttribute('aria-busy');
+          api.toggle();
+        })
+        .catch(function () {
+          chatBtn.removeAttribute('aria-busy');
+          fallbackToSearch();
+        });
+    });
 
     var visible = false;
     var lastProgress = -1;
@@ -9317,7 +9415,7 @@
       var reduce = false;
       try {
         reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      } catch { /* 老浏览器无 matchMedia：按默认平滑滚动处理 */ }
+      } catch (_err) { /* 老浏览器无 matchMedia：按默认平滑滚动处理 */ }
       window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     });
 

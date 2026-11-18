@@ -3,7 +3,7 @@
   "private": true,
   "description": "Dev tooling (ESLint, frontend tests and Mermaid validation)",
   "scripts": {
-    "lint:js": "eslint docs/ scripts/ tests/ media/",
+    "lint:js": "eslint docs/ scripts/ tests/ media/ workers/",
     "lint:mermaid": "node scripts/check_mermaid.cjs",
     "test:frontend": "node --test tests/*.test.cjs"
   },
