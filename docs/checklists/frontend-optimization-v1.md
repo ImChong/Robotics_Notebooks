@@ -7,7 +7,7 @@
 
 ## 一、 视觉降噪 (Visual De-cluttering)
 
-- [x] 图谱页 `graph.html` CSS 3D 透视视图与参数浮窗控制（2026-11-19，[#3958](https://github.com/ImChong/Robotics_Notebooks/issues/3958)）：在不修改图谱数据 schema、力布局与交互语义的前提下，于渲染层新增独立模块 `docs/graph-perspective.js` 与 `#graph-perspective-stage` / `scene` / `plane` / `floor` 空间包装层；支持「2D 平面 / CSS 透视 / 3D 立体」三态互斥切换（默认保持 2D），浮窗提供开关、透视距离、俯仰倾角 X、水平偏转 Y、空间纵深滑块及「恢复默认 / 正视角」按钮；全套配色由 `docs/style.css` 暗/亮主题 token 推导，保留 SVG/Canvas 同面共齐与鼠标/触控逆投影映射，按设备能力与 `prefers-reduced-motion` 自动分级（`full` / `lite` / `reduced` / `unsupported`）。
+- [x] 图谱页 `graph.html` 与首页「知识图谱预览」WebGL 3D 连接度地形视图及参数控制（2026-11-19，[#3958](https://github.com/ImChong/Robotics_Notebooks/issues/3958)）：在不修改图谱数据 schema、力布局与交互语义的前提下，于渲染层重构 `docs/graph-perspective.js` 为独立 WebGL 3D 连接度地形引擎（WebGL2 / WebGL1 自适应 + HiDPI 屏幕标签碰撞消隐），`docs/style.css` 统一提供无框舞台 `.graph-perspective-*` 与暗/亮 `--persp-*` 派生变量；地形高度与闭合等高线（地平线层）由节点连接数（`log1p(degree)`）与局部密度生成，高连接枢纽渲染为 3D 多面晶格峰顶与垂直锚柱，边界通过着色器径向衰减与渐隐雾化无缝融于背景（无矩形外框）；`graph.html` 支持「2D 平面 / 3D 地形 / 3D 立体」三态互斥切换（默认保持 2D），浮窗提供开关、山峰高度、等高线层数、俯仰视角、方位偏转滑块及「恢复默认 / 正俯视」按钮，支持左键旋转 / 滚轮缩放 / 右键平移及全屏筛选联动；首页 `index.html`「知识图谱预览」（`mini-graph.js`）的 `3D` 视图同步切换为该 3D 连接度地形视图（移除 `1.3MB` 第三方 3D 包依赖并保留搜索联动、悬停/触控浮窗、首页竖向滚动防误触与 `graph.html?view=perspective` 联动跳转），按设备能力与 `prefers-reduced-motion` 自动分级（`full` / `lite` / `reduced` / `unsupported`）。
 
 - [x] 详情页「所属路线」双语换行（2026-11-17）：中文名称与带括号的英文分别成组，宽度足够时同行，不足时在英文括号前换行；路线页共用徽标同步适配，并限制徽标宽度以避免窄屏溢出。
 

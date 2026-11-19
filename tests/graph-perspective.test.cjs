@@ -3,95 +3,183 @@ const { readFileSync } = require('node:fs');
 const { resolve } = require('node:path');
 const { test } = require('node:test');
 const vm = require('node:vm');
+const { JSDOM } = require('jsdom');
 
 const perspectiveApi = require('../docs/graph-perspective.js');
 const graphHtml = readFileSync(resolve(__dirname, '../docs/graph.html'), 'utf8');
+const styleCss = readFileSync(resolve(__dirname, '../docs/style.css'), 'utf8');
+const indexHtml = readFileSync(resolve(__dirname, '../docs/index.html'), 'utf8');
+const miniGraphJs = readFileSync(resolve(__dirname, '../docs/mini-graph.js'), 'utf8');
 const swSource = readFileSync(resolve(__dirname, '../docs/sw.js'), 'utf8');
 
 function button() {
   return {
-    disabled: false,
     attributes: {},
-    classes: new Set(),
-    classList: {
-      toggle(name, on) {
-        if (on) this._set.add(name);
-        else this._set.delete(name);
-      },
-      contains(name) {
-        return this._set.has(name);
-      },
-    },
+    classList: { toggle() {}, add() {}, remove() {} },
     setAttribute(name, value) { this.attributes[name] = value; },
-    removeAttribute(name) { delete this.attributes[name]; },
-    init() { this.classList._set = this.classes; return this; },
-  }.init();
+  };
 }
 
-test('tier defaults and clamping preserve valid ranges and recover from malformed values', () => {
+function makeMockCanvasEnv() {
+  const stats = { drawCalls: 0, programsCreated: 0, buffersUploaded: 0, labelFillCalls: 0 };
+  const glProto = {
+    VERTEX_SHADER: 0x8b31,
+    FRAGMENT_SHADER: 0x8b30,
+    COMPILE_STATUS: 0x8b81,
+    LINK_STATUS: 0x8b82,
+    ARRAY_BUFFER: 0x8892,
+    ELEMENT_ARRAY_BUFFER: 0x8893,
+    STATIC_DRAW: 0x88e4,
+    FLOAT: 0x1406,
+    UNSIGNED_SHORT: 0x1403,
+    TRIANGLES: 0x0004,
+    LINES: 0x0001,
+    POINTS: 0x0000,
+    DEPTH_TEST: 0x0b71,
+    BLEND: 0x0be2,
+    SRC_ALPHA: 0x0302,
+    ONE_MINUS_SRC_ALPHA: 0x0303,
+    COLOR_BUFFER_BIT: 0x4000,
+    DEPTH_BUFFER_BIT: 0x0100,
+    LESS: 0x0201,
+    LEQUAL: 0x0203,
+    CULL_FACE: 0x0b44,
+    BACK: 0x0405,
+    getExtension() { return null; },
+    getParameter() { return 0; },
+    createShader() { return {}; },
+    shaderSource() {},
+    compileShader() {},
+    getShaderParameter() { return true; },
+    getShaderInfoLog() { return ''; },
+    deleteShader() {},
+    createProgram() { stats.programsCreated += 1; return {}; },
+    attachShader() {},
+    linkProgram() {},
+    getProgramParameter() { return true; },
+    getProgramInfoLog() { return ''; },
+    deleteProgram() {},
+    useProgram() {},
+    createBuffer() { return {}; },
+    bindBuffer() {},
+    bufferData() { stats.buffersUploaded += 1; },
+    deleteBuffer() {},
+    getAttribLocation(_p, name) {
+      if (name === 'aXZ' || name === 'aPos') return 0;
+      if (name === 'aH' || name === 'aNorm' || name === 'aSize' || name === 'aCol') return 1;
+      if (name === 'aGrad' || name === 'aBary') return 2;
+      return 3;
+    },
+    getUniformLocation() { return {}; },
+    enableVertexAttribArray() {},
+    disableVertexAttribArray() {},
+    vertexAttribPointer() {},
+    uniform1f() {},
+    uniform1i() {},
+    uniform2f() {},
+    uniform3f() {},
+    uniform3fv() {},
+    uniform4f() {},
+    uniformMatrix4fv() {},
+    viewport() {},
+    clearColor() {},
+    clear() {},
+    enable() {},
+    disable() {},
+    blendFunc() {},
+    blendFuncSeparate() {},
+    blendEquation() {},
+    depthMask() {},
+    depthFunc() {},
+    cullFace() {},
+    drawArrays() { stats.drawCalls += 1; },
+    drawElements() { stats.drawCalls += 1; },
+  };
+  const gl = new Proxy(glProto, {
+    get(target, prop) {
+      if (prop in target) return target[prop];
+      return () => {};
+    },
+  });
+  const ctx2d = new Proxy({
+    setTransform() {},
+    clearRect() {},
+    measureText(t) { return { width: String(t || '').length * 6 }; },
+    fillText() { stats.labelFillCalls += 1; },
+    roundRect() {},
+  }, {
+    get(target, prop) {
+      if (prop in target) return target[prop];
+      return () => {};
+    },
+  });
+  return { gl, ctx2d, stats };
+}
+
+test('tier defaults and clamping preserve terrain bounds and recover from malformed values', () => {
   assert.deepEqual(perspectiveApi.getDefaultsForTier('full'), {
-    perspective: 1150,
-    rotateX: 34,
-    rotateY: -6,
-    depth: 60,
+    height: 100,
+    contours: 16,
+    pitch: 36,
+    yaw: -18,
   });
   assert.deepEqual(perspectiveApi.getDefaultsForTier('lite'), {
-    perspective: 1200,
-    rotateX: 26,
-    rotateY: 0,
-    depth: 40,
+    height: 88,
+    contours: 12,
+    pitch: 32,
+    yaw: -12,
   });
   assert.deepEqual(perspectiveApi.getDefaultsForTier('reduced'), {
-    perspective: 1350,
-    rotateX: 16,
-    rotateY: 0,
-    depth: 25,
+    height: 86,
+    contours: 14,
+    pitch: 38,
+    yaw: -14,
   });
 
   const clampedFull = perspectiveApi.clampParams({
-    perspective: 9999,
-    rotateX: 80,
-    rotateY: -99,
-    depth: -20,
+    height: 999,
+    contours: 80,
+    pitch: 99,
+    yaw: -360,
   }, 'full');
   assert.deepEqual(clampedFull, {
-    perspective: 2000,
-    rotateX: 58,
-    rotateY: -28,
-    depth: 0,
+    height: 160,
+    contours: 28,
+    pitch: 78,
+    yaw: -180,
   });
 
   const clampedLite = perspectiveApi.clampParams({
-    perspective: '1320',
-    rotateX: 56,
-    rotateY: '12',
-    depth: 120,
+    height: '150',
+    contours: 3,
+    pitch: '5',
+    yaw: '140',
   }, 'lite');
   assert.deepEqual(clampedLite, {
-    perspective: 1320,
-    rotateX: 50,
-    rotateY: 12,
-    depth: 100,
+    height: 128,
+    contours: 6,
+    pitch: 14,
+    yaw: 140,
   });
 
   const recovered = perspectiveApi.clampParams({
-    perspective: NaN,
-    rotateX: null,
-    rotateY: 'invalid',
-    depth: Infinity,
+    height: NaN,
+    contours: null,
+    pitch: 'bad',
+    yaw: Infinity,
   }, 'full');
   assert.deepEqual(recovered, perspectiveApi.getDefaultsForTier('full'));
 });
 
-test('resolveCapabilityTier handles unsupported, reduced motion, lite mobile/low-end, and full desktop', () => {
+test('resolveCapabilityTier handles unsupported WebGL, reduced motion, lite mobile/low-end, and full desktop', () => {
   assert.equal(perspectiveApi.resolveCapabilityTier({
-    supports3D: false,
+    supportsWebGL: false,
     reducedMotion: true,
     coarsePointer: true,
   }), 'unsupported');
 
   assert.equal(perspectiveApi.resolveCapabilityTier({
-    supports3D: true,
+    supportsWebGL: true,
     reducedMotion: true,
     coarsePointer: false,
     hardwareConcurrency: 16,
@@ -99,7 +187,7 @@ test('resolveCapabilityTier handles unsupported, reduced motion, lite mobile/low
   }), 'reduced');
 
   assert.equal(perspectiveApi.resolveCapabilityTier({
-    supports3D: true,
+    supportsWebGL: true,
     reducedMotion: false,
     coarsePointer: true,
     hardwareConcurrency: 8,
@@ -107,7 +195,7 @@ test('resolveCapabilityTier handles unsupported, reduced motion, lite mobile/low
   }), 'lite');
 
   assert.equal(perspectiveApi.resolveCapabilityTier({
-    supports3D: true,
+    supportsWebGL: true,
     reducedMotion: false,
     coarsePointer: false,
     hardwareConcurrency: 4,
@@ -115,7 +203,7 @@ test('resolveCapabilityTier handles unsupported, reduced motion, lite mobile/low
   }), 'lite');
 
   assert.equal(perspectiveApi.resolveCapabilityTier({
-    supports3D: true,
+    supportsWebGL: true,
     reducedMotion: false,
     coarsePointer: false,
     hardwareConcurrency: 8,
@@ -123,129 +211,76 @@ test('resolveCapabilityTier handles unsupported, reduced motion, lite mobile/low
   }), 'lite');
 
   assert.equal(perspectiveApi.resolveCapabilityTier({
-    supports3D: true,
+    supportsWebGL: true,
     reducedMotion: false,
     coarsePointer: false,
     hardwareConcurrency: 8,
-    deviceMemory: 16,
+    deviceMemory: 8,
     dpr: 3,
-    nodeCount: 7800,
+    nodeCount: 5000,
   }), 'lite');
 
   assert.equal(perspectiveApi.resolveCapabilityTier({
-    supports3D: true,
+    supportsWebGL: true,
     reducedMotion: false,
     coarsePointer: false,
     hardwareConcurrency: 8,
-    deviceMemory: 16,
+    deviceMemory: 8,
     dpr: 2,
-    nodeCount: 7800,
+    nodeCount: 8200,
   }), 'full');
 });
 
-test('projectSvgToClient and unprojectClientToSvg round-trip accurately across tilt configurations', () => {
-  const configs = [
-    { params: { perspective: 1150, rotateX: 0, rotateY: 0, depth: 0 }, w: 1200, h: 800, left: 0, top: 0, tier: 'full' },
-    { params: { perspective: 1150, rotateX: 34, rotateY: -6, depth: 60 }, w: 1440, h: 796, left: 0, top: 104, tier: 'full' },
-    { params: { perspective: 900, rotateX: 58, rotateY: 28, depth: 100 }, w: 1280, h: 720, left: 20, top: 80, tier: 'full' },
-    { params: { perspective: 700, rotateX: 58, rotateY: -28, depth: 100 }, w: 1100, h: 700, left: 0, top: 104, tier: 'full' },
-    { params: { perspective: 1200, rotateX: 26, rotateY: 0, depth: 40 }, w: 390, h: 740, left: 0, top: 104, tier: 'lite' },
-    { params: { perspective: 1350, rotateX: 16, rotateY: 0, depth: 25 }, w: 1440, h: 800, left: 0, top: 104, tier: 'reduced' },
+test('computeNodeDegrees and computeTerrainField elevate high-degree hubs and dissolve perimeter boundaries', () => {
+  const nodes = [
+    { id: 'hub', x: 100, y: 100 },
+    { id: 'n1', x: 120, y: 110 },
+    { id: 'n2', x: 80, y: 110 },
+    { id: 'n3', x: 110, y: 80 },
+    { id: 'n4', x: 90, y: 80 },
+    { id: 'leaf', x: 280, y: 260 },
   ];
-  const samplePoints = [
-    [0.12, 0.15],
-    [0.5, 0.5],
-    [0.85, 0.2],
-    [0.2, 0.85],
-    [0.88, 0.88],
+  const edges = [
+    { source: 'hub', target: 'n1' },
+    { source: 'hub', target: 'n2' },
+    { source: 'hub', target: 'n3' },
+    { source: 'hub', target: 'n4' },
+    { source: 'n1', target: 'leaf' },
   ];
 
-  for (const cfg of configs) {
-    const metrics = perspectiveApi.computeSceneMetrics(cfg.params, cfg.w, cfg.h, cfg.tier);
-    const stageRect = { left: cfg.left, top: cfg.top, width: cfg.w, height: cfg.h };
-    for (const [fx, fy] of samplePoints) {
-      const u = cfg.w * fx;
-      const v = cfg.h * fy;
-      const client = perspectiveApi.projectSvgToClient(u, v, metrics, stageRect);
-      const back = perspectiveApi.unprojectClientToSvg(client[0], client[1], metrics, stageRect);
-      const err = Math.hypot(back[0] - u, back[1] - v);
-      assert.ok(err < 1e-6, `round-trip drift ${err} too large for ${JSON.stringify(cfg.params)}`);
-    }
-  }
+  const degreeInfo = perspectiveApi.computeNodeDegrees(nodes, edges);
+  assert.equal(degreeInfo.counts.hub, 4);
+  assert.equal(degreeInfo.counts.leaf, 1);
+  assert.equal(degreeInfo.maxDegree, 4);
+
+  const field = perspectiveApi.computeTerrainField(nodes, degreeInfo, { gridSize: 48, extent: 1.35 });
+  const hubMeta = field.nodeMeta.hub;
+  const leafMeta = field.nodeMeta.leaf;
+  assert.ok(hubMeta && leafMeta);
+  assert.ok(hubMeta.degNorm > leafMeta.degNorm);
+  assert.ok(hubMeta.surfaceH > leafMeta.surfaceH, 'high-degree hub must produce higher terrain peak than low-degree leaf');
+  assert.ok(hubMeta.elevH >= hubMeta.surfaceH, 'floating marker sits above terrain surface on vertical stem');
+
+  const sampledHub = perspectiveApi.sampleTerrainHeight(field, hubMeta.wx, hubMeta.wz);
+  assert.ok(Math.abs(sampledHub - hubMeta.surfaceH) < 0.08);
+
+  // Corner/border vertices must attenuate smoothly toward 0 (borderless mist dissolution, no box ridge)
+  const cornerH = field.heights[0];
+  assert.ok(cornerH <= 0.05, `expected near-zero perimeter terrain height, got ${cornerH}`);
 });
 
-test('unprojectClientToSvg remains finite above the vanishing horizon', () => {
-  const metrics = perspectiveApi.computeSceneMetrics({
-    perspective: 700,
-    rotateX: 58,
-    rotateY: 28,
-    depth: 100,
-  }, 1200, 800, 'full');
-  const stageRect = { left: 0, top: 104, width: 1200, height: 800 };
-  for (const [sx, sy] of [[-5000, -10000], [600, -5000], [5000, -8000]]) {
-    const uv = perspectiveApi.unprojectClientToSvg(sx, sy, metrics, stageRect);
-    assert.ok(Number.isFinite(uv[0]) && Number.isFinite(uv[1]), 'must stay finite near/past horizon');
-  }
+test('camera projection places world origin inside viewport across oblique and top-down terrain views', () => {
+  const oblique = perspectiveApi.buildCameraMatrices({ pitch: 36, yaw: -18 }, { distance: 1.72 }, 16 / 9);
+  const topDown = perspectiveApi.buildCameraMatrices(perspectiveApi.TOP_VIEW_PARAMS, { distance: 1.72 }, 16 / 9);
+  assert.ok(topDown.eye[1] > oblique.eye[1], 'top-down pitch places camera higher along +Y');
+
+  const pCenter = perspectiveApi.projectWorldToScreen(0, 0.2, 0, oblique.viewProj, 1280, 720);
+  assert.ok(pCenter);
+  assert.ok(pCenter[0] > 400 && pCenter[0] < 880);
+  assert.ok(pCenter[1] > 100 && pCenter[1] < 500);
 });
 
-test('installSvgCoordinateAdapter transparently maps SVG and world coordinates only while active', () => {
-  let active = false;
-  const nativeSvgMarker = { tag: 'native-svg' };
-  const nativeNodeMarker = { tag: 'native-node' };
-  const svgEl = {
-    createSVGPoint() {
-      return { x: 0, y: 0, matrixTransform: (m) => ({ x: this.x + 1, y: this.y + 1, marker: m }) };
-    },
-    getScreenCTM() {
-      return { inverse: () => nativeSvgMarker };
-    },
-  };
-  const gNodesEl = {
-    getScreenCTM() {
-      return { inverse: () => nativeNodeMarker };
-    },
-  };
-  const adapter = perspectiveApi.installSvgCoordinateAdapter({
-    svgEl,
-    gNodesEl,
-    isAdapterActive: () => active,
-    getZoomTransform: () => ({ x: 100, y: 50, k: 2 }),
-    unprojectClientPoint: (cx, cy) => [cx * 0.5 + 10, cy * 0.5 + 20],
-  });
-
-  // Inactive: native delegation
-  const pInactive = svgEl.createSVGPoint();
-  pInactive.x = 40;
-  pInactive.y = 60;
-  assert.equal(svgEl.getScreenCTM().inverse(), nativeSvgMarker);
-  assert.equal(gNodesEl.getScreenCTM().inverse(), nativeNodeMarker);
-  assert.equal(pInactive.matrixTransform(svgEl.getScreenCTM().inverse()).marker, nativeSvgMarker);
-
-  // Active: SVG + world unprojection
-  active = true;
-  const pSvg = svgEl.createSVGPoint();
-  pSvg.x = 200;
-  pSvg.y = 400;
-  const outSvg = pSvg.matrixTransform(svgEl.getScreenCTM().inverse());
-  assert.deepEqual([outSvg.x, outSvg.y], [110, 220]);
-
-  const pWorld = svgEl.createSVGPoint();
-  pWorld.x = 200;
-  pWorld.y = 400;
-  const outWorld = pWorld.matrixTransform(gNodesEl.getScreenCTM().inverse());
-  assert.deepEqual([outWorld.x, outWorld.y], [(110 - 100) / 2, (220 - 50) / 2]);
-
-  // Real/unknown matrix still delegates to native point
-  const unknown = pWorld.matrixTransform(nativeSvgMarker);
-  assert.equal(unknown.marker, nativeSvgMarker);
-
-  adapter.uninstall();
-  active = true;
-  assert.equal(svgEl.getScreenCTM().inverse(), nativeSvgMarker);
-  assert.equal(gNodesEl.getScreenCTM().inverse(), nativeNodeMarker);
-});
-
-test('graph.html supports 3-way mutual exclusion across 2D, CSS perspective, and WebGL 3D without lazy-loading 3D in perspective mode', () => {
+test('graph.html supports 3-way mutual exclusion across 2D, 3D Terrain, and WebGL 3D without lazy-loading 3D bundle', () => {
   const controlsStart = graphHtml.indexOf('    function is3DView()');
   const controlsEnd = graphHtml.indexOf('    function colorModeClusterKey');
   const lazyStart = graphHtml.indexOf('    /* ── 3D 库懒加载（编号 9）──');
@@ -275,6 +310,7 @@ test('graph.html supports 3-way mutual exclusion across 2D, CSS perspective, and
     console: { warn() {} },
     spatialViewMode: '2d',
     timelineAnimating: false,
+    labelsSettled2D: true,
     teardownTimelineMode() { context.timelineAnimating = false; },
     window: { RNGraph3D: { isAvailable: () => false } },
     document: {
@@ -285,7 +321,7 @@ test('graph.html supports 3-way mutual exclusion across 2D, CSS perspective, and
     graph3dView: null,
     graphCanvas3d: { hidden: true },
     graph3dHoverNode: null,
-    perspectiveStageEl: { hidden: false },
+    perspectiveStageEl: { hidden: true },
     viewMode2dBtn: button(),
     viewModePerspectiveBtn: button(),
     viewMode3dBtn: button(),
@@ -319,11 +355,12 @@ test('graph.html supports 3-way mutual exclusion across 2D, CSS perspective, and
   vm.runInContext(graphHtml.slice(lazyStart, transitionStart), context);
   vm.runInContext(graphHtml.slice(transitionStart, transitionEnd), context);
 
-  // 1) 2D -> CSS perspective: no 3D bundle download, no force restart, perspective enabled
+  // 1) 2D -> 3D 地形 (perspective): no 3D-force-graph download, pauses 2D ticks, reveals WebGL terrain stage
   context.requestSpatialViewMode('perspective');
   assert.equal(context.spatialViewMode, 'perspective');
   assert.deepEqual(appended, []);
   assert.deepEqual(perspectiveCalls, [true]);
+  assert.equal(context.perspectiveStageEl.hidden, false);
   assert.equal(context.viewModePerspectiveBtn.attributes['aria-pressed'], 'true');
   assert.equal(context.viewMode2dBtn.attributes['aria-pressed'], 'false');
   assert.equal(context.viewMode3dBtn.attributes['aria-pressed'], 'false');
@@ -333,12 +370,11 @@ test('graph.html supports 3-way mutual exclusion across 2D, CSS perspective, and
   assert.equal(context.graphHintPerspectiveEl.hidden, false);
   assert.equal(context.graphHint3dEl.hidden, true);
   assert.equal(storage.get('rn-graph-spatial-view'), 'perspective');
-  assert.equal(paused, 0);
+  assert.equal(paused, 1);
   assert.equal(resumed, 0);
   assert.equal(forceUpdates, 0);
-  assert.equal(svgDisplay, 'block');
 
-  // 2) CSS perspective -> 3D (available): disables CSS perspective, hides stage & SVG
+  // 2) 3D 地形 -> 3D 立体: disables terrain stage & hides 2D layers
   context.window.RNGraph3D.isAvailable = () => true;
   context.requestSpatialViewMode('3d');
   assert.equal(context.spatialViewMode, '3d');
@@ -348,59 +384,159 @@ test('graph.html supports 3-way mutual exclusion across 2D, CSS perspective, and
   assert.equal(context.edgeCanvas.style.display, 'none');
   assert.equal(context.graphCanvas3d.hidden, false);
   assert.equal(context.checkCssPerspectiveEl.checked, false);
-  assert.equal(paused, 1);
 
-  // 3) 3D -> CSS perspective: restores stage/SVG & enables CSS perspective
-  context.requestSpatialViewMode('perspective');
-  assert.equal(context.spatialViewMode, 'perspective');
-  assert.deepEqual(perspectiveCalls, [true, false, true]);
-  assert.equal(context.perspectiveStageEl.hidden, false);
-  assert.equal(svgDisplay, 'block');
-  assert.equal(context.edgeCanvas.style.display, 'block');
-  assert.equal(context.graphCanvas3d.hidden, true);
-  assert.equal(resumed, 1);
-
-  // 4) CSS perspective -> 2D: disables CSS perspective cleanly
+  // 3) 3D 立体 -> 2D: cleanly returns to 2D
   context.requestSpatialViewMode('2d');
   assert.equal(context.spatialViewMode, '2d');
-  assert.deepEqual(perspectiveCalls, [true, false, true, false]);
-  assert.equal(context.viewMode2dBtn.attributes['aria-pressed'], 'true');
-  assert.equal(context.checkCssPerspectiveEl.checked, false);
-  assert.equal(context.perspectiveControlsEl.hidden, true);
-  assert.equal(context.graphHint2dEl.hidden, false);
-  assert.equal(context.graphHintPerspectiveEl.hidden, true);
+  assert.equal(context.graphCanvas3d.hidden, true);
+  assert.equal(context.perspectiveStageEl.hidden, true);
+  assert.equal(svgDisplay, 'block');
+
+  // 4) Unsupported WebGL terrain restores 2D gracefully
+  context.syncPerspectivePresentation = () => false;
+  context.requestSpatialViewMode('perspective');
+  assert.equal(context.spatialViewMode, '2d');
+  assert.equal(context.perspectiveStageEl.hidden, true);
+  assert.equal(storage.get('rn-graph-spatial-view'), '2d');
 });
 
-test('graph.html DOM layering, CSS @supports fallback, theme token derivation, and SW precache stay intact', () => {
-  // Stage wraps edge-canvas + graph-canvas together inside #graph-perspective-plane
-  const stageIdx = graphHtml.indexOf('<div id="graph-perspective-stage">');
-  const planeIdx = graphHtml.indexOf('<div id="graph-perspective-plane">', stageIdx);
-  const edgeIdx = graphHtml.indexOf('<canvas id="graph-edge-canvas"', planeIdx);
-  const svgIdx = graphHtml.indexOf('<svg id="graph-canvas"></svg>', edgeIdx);
-  const canvas3dIdx = graphHtml.indexOf('<div id="graph-canvas-3d"', svgIdx);
-  const tooltipIdx = graphHtml.indexOf('<div id="graph-tooltip"', canvas3dIdx);
-  const physicsIdx = graphHtml.indexOf('<div id="physics-panel"', tooltipIdx);
-  const filterIdx = graphHtml.indexOf('<div id="filter-panel"', physicsIdx);
-  assert.ok(stageIdx > 0 && planeIdx > stageIdx && edgeIdx > planeIdx && svgIdx > edgeIdx);
-  assert.ok(canvas3dIdx > svgIdx && tooltipIdx > canvas3dIdx && physicsIdx > tooltipIdx && filterIdx > physicsIdx);
+test('graph.html and style.css define borderless WebGL terrain stage, light/dark horizon tokens, and terrain controls', () => {
+  assert.ok(!graphHtml.includes('graph-perspective-frame'), 'must not reintroduce rectangular floor border box');
+  assert.ok(!styleCss.includes('.graph-perspective-frame'), 'must not style a rectangular frame border in 3D view');
 
-  // Check stage closes before #graph-canvas-3d (so fixed overlays are outside transformed layers)
-  const stageSlice = graphHtml.slice(stageIdx, canvas3dIdx);
-  assert.ok(!stageSlice.includes('id="graph-tooltip"'));
-  assert.ok(!stageSlice.includes('id="physics-panel"'));
-  assert.ok(!stageSlice.includes('id="filter-panel"'));
-
-  // Default spatial mode stays '2d'
-  assert.match(graphHtml, /return saved === '3d' \|\| saved === 'perspective' \? saved : '2d'|if \(saved === '3d' \|\| saved === 'perspective'\) return saved;\s+return '2d'/);
-
-  // @supports + prefers-reduced-motion + theme tokens derived from style.css
-  assert.ok(graphHtml.includes('@supports (perspective: 1px) and (transform-style: preserve-3d)'));
-  assert.ok(graphHtml.includes('@media (prefers-reduced-motion: reduce)'));
-  assert.ok(graphHtml.includes('--persp-stage-bg:'));
-  assert.ok(graphHtml.includes('var(--accent)'));
-  assert.ok(graphHtml.includes('var(--bg)'));
+  assert.ok(graphHtml.includes('<div id="graph-perspective-stage" class="graph-perspective-stage"'));
+  assert.ok(graphHtml.includes('id="sl-persp-height"'));
+  assert.ok(graphHtml.includes('id="sl-persp-contours"'));
+  assert.ok(graphHtml.includes('id="sl-persp-pitch"'));
+  assert.ok(graphHtml.includes('id="sl-persp-yaw"'));
+  assert.ok(graphHtml.includes('#graph-wrap.is-perspective-mode #graph-canvas'));
   assert.ok(graphHtml.includes('<script src="graph-perspective.js"></script>'));
 
-  // Service Worker precache list includes graph-perspective.js without altering CACHE_NAME
+  assert.ok(styleCss.includes('--persp-stage-bg:'));
+  assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
+  assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
+  assert.ok(styleCss.includes('.graph-perspective-stage::after'));
+  assert.ok(styleCss.includes('[data-theme="light"]'));
+  assert.ok(styleCss.includes('var(--accent)'));
   assert.ok(swSource.includes("'graph-perspective.js'"));
+});
+
+test('createController isolates persist:false defaults and accepts degree-terrain parameters', () => {
+  const prevStorage = global.localStorage;
+  const store = new Map([[perspectiveApi.STORAGE_KEY, JSON.stringify({ height: 40, contours: 8, pitch: 76, yaw: 0 })]]);
+  global.localStorage = {
+    getItem(k) { return store.has(k) ? store.get(k) : null; },
+    setItem(k, v) { store.set(k, String(v)); },
+  };
+  try {
+    const ctrl = perspectiveApi.createController({
+      persist: false,
+      defaultParamsByTier: {
+        lite: { height: 96, contours: 12, pitch: 32, yaw: -12 },
+        unsupported: { height: 112, contours: 14, pitch: 35, yaw: -16 },
+      },
+      nodeCount: 50,
+    });
+    assert.deepEqual(ctrl.getParams(), { height: 112, contours: 14, pitch: 35, yaw: -16 });
+    ctrl.setParam('height', 140);
+    ctrl.resetDefaults();
+    assert.deepEqual(ctrl.getParams(), { height: 112, contours: 14, pitch: 35, yaw: -16 });
+    // Graph page stored params untouched
+    assert.equal(JSON.parse(store.get(perspectiveApi.STORAGE_KEY)).pitch, 76);
+    ctrl.destroy();
+  } finally {
+    global.localStorage = prevStorage;
+  }
+});
+
+test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with search highlight linkage', async () => {
+  assert.ok(!indexHtml.includes('id="mini-graph-3d"'), 'obsolete WebGL #mini-graph-3d container removed');
+  assert.ok(!miniGraphJs.includes('3d-force-graph'), 'mini-graph.js must not reference 3d-force-graph');
+  assert.ok(!miniGraphJs.includes('ForceGraph3D'), 'mini-graph.js must not invoke ForceGraph3D');
+  assert.ok(indexHtml.includes('<script src="graph-perspective.js" defer></script>'));
+
+  const dom = new JSDOM(indexHtml, { url: 'https://example.test/', runScripts: 'outside-only' });
+  const w = dom.window;
+  const mock = makeMockCanvasEnv();
+  const origGetContext = w.HTMLCanvasElement.prototype.getContext;
+  w.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2' || type === 'webgl' || type === 'experimental-webgl') return mock.gl;
+    if (type === '2d') return mock.ctx2d;
+    return origGetContext ? origGetContext.call(this, type) : null;
+  };
+  w.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const syntheticGraph = {
+    communities: [{ id: 'c-rl', label: '强化学习' }, { id: 'c-ctrl', label: '运动控制' }],
+    nodes: [
+      { id: 'n1', label: 'PPO', type: 'method', community: 'c-rl', summary: 'Policy gradient' },
+      { id: 'n2', label: 'MPC', type: 'method', community: 'c-ctrl', summary: 'Model predictive control' },
+      { id: 'n3', label: 'Sim2Real', type: 'concept', community: 'c-rl', summary: 'Transfer' },
+    ],
+    edges: [
+      { source: 'n1', target: 'n2' },
+      { source: 'n1', target: 'n3' },
+    ],
+  };
+  w.RNLinkGraph = { ensure: () => Promise.resolve(syntheticGraph) };
+  w.RNGraphTooltip = {
+    getCommunityColors: () => ['#5b9cf6', '#34d399'],
+    buildCommunityColorMap: () => ({ 'c-rl': '#5b9cf6', 'c-ctrl': '#34d399' }),
+    formatTooltipSummary: s => s || '',
+    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>',
+    bindBlankDismiss() {},
+    bindOutsideDismiss() {},
+  };
+
+  w.eval(readFileSync(resolve(__dirname, '../docs/vendor/d3.min.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-node-size.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8'));
+  w.eval(miniGraphJs);
+
+  await new Promise((r) => setTimeout(r, 80));
+
+  const wrap = w.document.getElementById('mini-graph-wrap');
+  const stage = w.document.getElementById('mini-graph-perspective-stage');
+  const svg = w.document.getElementById('mini-graph-svg');
+  const btn2d = w.document.getElementById('miniGraphMode2d');
+  const btn3d = w.document.getElementById('miniGraphMode3d');
+  const expand = w.document.getElementById('mini-graph-expand');
+
+  assert.ok(!stage.contains(svg), 'mini-graph SVG sits cleanly alongside WebGL terrain stage');
+  assert.equal(stage.hidden, true);
+  assert.equal(w.RNMiniGraph.getMode(), '2d');
+  assert.equal(wrap.classList.contains('is-perspective-mode'), false);
+  assert.equal(btn2d.getAttribute('aria-pressed'), 'true');
+  assert.equal(btn3d.getAttribute('aria-pressed'), 'false');
+  assert.equal(expand.getAttribute('href'), 'graph.html');
+
+  // Switch preview 3D on -> WebGL terrain draws heightfield + contour lines + polyhedra + labels
+  btn3d.click();
+  await new Promise((r) => setTimeout(r, 40));
+  assert.equal(w.RNMiniGraph.getMode(), '3d');
+  assert.equal(wrap.classList.contains('is-perspective-mode'), true);
+  assert.equal(stage.hidden, false);
+  assert.ok(mock.stats.programsCreated >= 4, 'compiled WebGL terrain/edge/poly/point programs');
+  assert.ok(mock.stats.drawCalls >= 2, 'drew WebGL terrain meshes');
+  assert.ok(stage.querySelector('.graph-terrain-gl'));
+  assert.ok(stage.querySelector('.graph-terrain-labels'));
+  assert.equal(btn2d.getAttribute('aria-pressed'), 'false');
+  assert.equal(btn3d.getAttribute('aria-pressed'), 'true');
+  assert.equal(expand.getAttribute('href'), 'graph.html?view=perspective');
+
+  const drawsBeforeHighlight = mock.stats.drawCalls;
+  w.RNMiniGraph.highlight(['n1'], 'PPO');
+  await new Promise((r) => setTimeout(r, 40));
+  const hitCount = w.document.querySelectorAll('#mini-graph-svg .mini-graph-node.mini-node-hit').length;
+  assert.equal(hitCount, 1);
+  assert.ok(mock.stats.drawCalls > drawsBeforeHighlight, 'highlight re-renders 3D terrain peak emphasis');
+
+  // Switch back to 2D -> hides 3D terrain stage and restores 2D SVG
+  btn2d.click();
+  assert.equal(w.RNMiniGraph.getMode(), '2d');
+  assert.equal(wrap.classList.contains('is-perspective-mode'), false);
+  assert.equal(stage.hidden, true);
+  assert.equal(btn2d.getAttribute('aria-pressed'), 'true');
+  assert.equal(btn3d.getAttribute('aria-pressed'), 'false');
+  assert.equal(expand.getAttribute('href'), 'graph.html');
 });

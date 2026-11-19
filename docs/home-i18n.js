@@ -82,8 +82,6 @@
     '查看图谱邻居': 'View graph neighbors', '精确匹配': 'Exact matches',
     '潜在关联': 'Related results', '摘要命中': 'Summary match', '正文匹配': 'Body match',
     '打开路线页 →': 'Open roadmap →', '打开详情页 →': 'Open details →',
-    '正在加载 3D 组件…': 'Loading 3D viewer…',
-    '3D 组件加载失败，请刷新重试': '3D viewer could not load. Please refresh to retry.',
     '赞助我': 'Support my work', '微信扫一扫，赞助支持作者 ☕': 'Scan with WeChat to support the author ☕',
     '微信收款码': 'WeChat payment QR code', '关闭': 'Close',
     '新增': 'Added', '维护': 'Updated', '回到顶部': 'Back to top',
@@ -116,7 +114,7 @@
     '#wikiSearchResults .search-tier-heading', '#wikiSearchResults .search-tier-heading .data-meta',
     '#wikiSearchResults .card-meta', '#wikiSearchResults .card-meta > span',
     '#mini-graph-stats', '#mini-graph-tooltip .tt-link', '#mini-graph-tooltip .tt-type',
-    '#mini-graph-3d .mini-graph-3d-hint', '#sponsorToggle', '#sponsorDialogTitle',
+    '#sponsorToggle', '#sponsorDialogTitle',
     '#sponsorDialog .sponsor-dialog-hint', '#sponsorDialog .sponsor-dialog-close',
     '#sponsorDialog .sponsor-qr'
   ].join(',');
@@ -198,7 +196,7 @@
   function observeMounts() {
     ['homeRouteToggle', 'homeCompanyToggle', 'homeLabToggle', 'wikiCommunityFilter', 'wikiSearchResults',
       'homeLatestWikiModule', 'homeHubPanelAll', 'homeHubPanelPaper', 'homeHubPanelCommunity',
-      'mini-graph-stats', 'mini-graph-tooltip', 'mini-graph-3d', 'sponsorDialog'
+      'mini-graph-stats', 'mini-graph-tooltip', 'sponsorDialog'
     ].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) observer.observe(el, { childList: true, subtree: true, characterData: true });
