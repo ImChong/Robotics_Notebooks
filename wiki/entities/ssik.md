@@ -1,303 +1,152 @@
 ---
 type: entity
-tags: [uw, inverse-kinematics, manipulation, analytical-ik, python, open-source, ros]
+project_id: ssik
+tags:
+  - uw
+  - kinematics
+  - inverse-kinematics
+  - analytical-ik
+  - teleoperation
+  - manipulation
+  - cpp
 status: complete
-updated: 2026-10-06
+updated: 2026-11-19
+code: https://github.com/personalrobotics/ssik
+original:
+  - ../../sources/repos/ssik.md
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
+  - ../methods/trajectory-optimization.md
+  - ../methods/levenberg-marquardt.md
   - ./moveit2.md
   - ./curobo.md
+  - ./pinocchio.md
   - ./dynibo.md
   - ../queries/pinocchio-quick-start.md
-  - ../methods/trajectory-optimization.md
 sources:
   - ../../sources/repos/ssik.md
-  - ../../sources/repos/dynibo.md
-summary: "ssik 是 UW Personal Robotics Lab 开源的 6R/7R 解析逆运动学库：per-arm 单文件 artifact 返回全部 IK 分支，默认 FK 残差低于典型重复精度，覆盖 EAIK 拒绝的非 Pieper 6R 与非 SRS 7R 几何。"
+  - https://github.com/personalrobotics/ssik
+  - https://personalrobotics.github.io/ssik/
+summary: "华盛顿大学 PRL 开源的 6R/7R 解析逆运动学求解库：覆盖 27 家厂商 72 款预置臂，借助构建期四级子问题分解生成单文件与纯头文件 C++ 求解器，运行时通过 _ssik_native 与 Tracker 实现微秒级全分支解析与连续不跳变遥操作追踪。"
 ---
 
-# ssik（解析逆运动学）
+# ssik（Symbolic / Subproblem Analytic IK）
 
 ## 一句话定义
 
-**ssik**（[personalrobotics/ssik](https://github.com/personalrobotics/ssik)）面向 **6R 与 7R 全转动关节机械臂**，提供 **解析逆运动学**：对每个目标位姿返回 **全部代数 IK 分支**（而非数值法常见的单解收敛），默认 **FK 闭合误差** 已低于典型工业机器人 **重复定位精度**（约 0.1 mm 量级），并可收紧到机器精度。设计借鉴 IKFast 的 **构建期 codegen、部署期纯数值** 思路，但把覆盖范围扩展到 **非 Pieper 6R**（如 Kinova JACO2、xArm6、AgileX PiPER）与 **非 SRS 7R**（如 Franka Panda、Flexiv Rizon）——这正是 [EAIK](https://github.com/OstermD/EAIK) 等库常直接拒绝的几何族。
+**ssik**（[personalrobotics/ssik](https://github.com/personalrobotics/ssik)，华盛顿大学 Personal Robotics Lab，BSD-3-Clause）是面向 **6R 与 7R 串联机械臂** 的解析逆运动学（IK）库：覆盖 **27 家厂商 72 款预置机械臂**（含非 Pieper 偏移腕 6R 与非 SRS 7R），在构建期将子问题分解烘焙为独立求解器或纯头文件 C++（`ssik_cpp`），运行时通过默认启用的原生 C++ 后端 **`_ssik_native`** 以微秒级延迟返回全部分支、`[−2π, 2π]` 绕数解与自运动流形图表。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IK | Inverse Kinematics | 由末端位姿求关节角的逆运动学 |
-| FK | Forward Kinematics | 由关节角求末端位姿的正运动学 |
-| 6R / 7R | Six / Seven Revolute | 六轴 / 七轴全转动关节臂 |
-| SRS | Spherical-Rotational-Spherical | 球肩 + 肘转 + 球腕的 7R 冗余臂典型结构 |
-| Pieper | Pieper criterion | 末三轴交于一点时 6R 可解析解的经典条件 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| LM | Levenberg–Marquardt | 可选数值抛光，收紧近奇异处的 FK 残差 |
+|---|---|---|
+| IK | Inverse Kinematics | 逆运动学：给定末端位姿求解关节角向量 |
+| FK | Forward Kinematics | 正运动学：给定关节角计算末端齐次变换矩阵 |
+| SRS | Spherical-Revolute-Spherical | 肩/腕球铰构型 7R 机械臂（如 iiwa 14），ssik 同时支持非 SRS 7R |
+| Pieper | Pieper Criterion | 三连续轴交于一点的经典解析 IK 充分条件，ssik 可突破该限制 |
+| URDF | Unified Robot Description Format | 描述机器人连杆与关节拓扑的 XML 标准，ssik 仅在构建期解析 |
+| LM | Levenberg-Marquardt | 阻尼最小二乘数值精修算法，ssik 用于极低残差收敛与无解兜底 |
 
 ## 为什么重要
 
-- **分支枚举 vs 单解数值 IK：** 运动规划、可操作性分析、穿越奇异点的轨迹延续，常需要 **在同一姿态下比较多个 IK 分支**（肩/肘/腕构型）；TracIK、MINK 等 **每种子一个解**，不保证穷尽代数分支。
-- **填补 EAIK 空白：** 官方 benchmark 显示 EAIK 在 Pieper 类 UR 臂上极快，但对 **JACO2、xArm6、PiPER** 报 `6R-Unknown Kinematic Class`，对 **全部 7R** 报 `only 1-6R`；ssik 在这些几何上仍可返回 2–128 个分支（视冗余离散化而定）。
-- **可部署 artifact：** 与 OpenRAVE IKFast 类似，**`ssik build`** 针对自家 URDF 生成 **单文件 `*_ik.py`**，运行时 **不依赖 urchin/sympy**，适合嵌入遥操作闭环、仿真步进或离线规划预处理。
+机器人规划、抓取合成与实时遥操作长期面临两难：**数值 IK**（如阻尼最小二乘、[Levenberg-Marquardt](../methods/levenberg-marquardt.md) 或 TracIK）依赖初值种子且通常仅收敛到单一局部解，容易在追踪轨迹时遭遇局部极小或关节构型突然翻转；**传统解析 IK**（如 IKFast、EAIK / IK-Geo）往往要求严格满足 Pieper 条件或标准 SRS 构型，面对带腕部偏移的协作臂（如部分 UR 派生臂、Franka 衍生构型或新形态机械臂）直接报错拒绝。
+
+ssik 在研究与工程层面的核心突破在于：
+
+- **统一突破几何受限假设：** 基于 Raghavan-Roth、Manocha-Canny、Husty-Pfurner 等代数消元与几何子问题分解，建立四级统一分派引擎，覆盖正交/斜交 Pieper 腕、通用非 Pieper 6R、球肩/SRS 7R 及通用 7R。
+- **构建期编译、运行期零重依赖：** 运行期完全脱离 SymPy 与 URDF DOM 解析；既可在 Python 中通过内置 C++ 原生扩展 **`_ssik_native`** 获得比纯 Python 快 **2–100×** 的微秒级速度（6R 约 **10–460 µs**，7R SRS/球形肩约 **120–360 µs**），也可通过 CLI 一键导出**零 Python 依赖的纯头文件 C++ 源码（`ssik_cpp`）**直接嵌入实时控制环。
+- **遥操作友好的 `Tracker` 与 `self_motion` 图表：** 不仅枚举全部离散解分支与 `[−2π, 2π]` 多圈绕数，还为 7R 冗余臂显式提供自运动流形（`self_motion`）与连续流式跟踪器 **`ssik.Tracker`**，从机制上避免遥操作过程中的「肘部突跳（elbow flip）」。
 
 ## 核心原理
 
-### 1. Per-arm artifact 模型
-
-| 路径 | 适用场景 | 运行时依赖 |
-|------|----------|------------|
-| **`ssik.prebuilt.*_ik`** | 厂商标称 URDF、法兰无额外工具 | 仅 `numpy` + 预编译轮子 |
-| **`ssik build arm.urdf`** | 自定义工具链、标定后链长、非预置机型 | 构建时需 `ssik[urdf]`；产物与 prebuilt API 相同 |
-| **`ssik.Manipulator.from_urdf`** | 实验、选型前探测几何分类 | 运行时 URDF 解析 + sympy（**不推荐生产**） |
-
-每个 artifact 模块内嵌 **KinBody 常数、dispatch 求解器、已烘焙符号预处理**；`solve(T_target)` 输入 4×4 齐次目标位姿（`BASE_LINK` → `EE_LINK`），输出 `list[Solution]`。
-
-### 2. 求解与后处理管线
+### 四级解析分派与双阶段管线
 
 ```mermaid
 flowchart LR
-  T[T_target SE3]
-  D[dispatch 按拓扑选 tier]
-  ALG[代数子问题 SP1-SP6]
-  FILT[限位 wrap ±2π + respect_limits]
-  SEED[可选 q_seed 最近分支 / seed_tolerance]
-  OUT[list Solution q + fk_residual]
-  T --> D --> ALG --> FILT --> SEED --> OUT
+    subgraph Build["构建期 (ssik build / add-arm)"]
+        URDF["URDF / KinBody 解析"] --> Classify["几何分类 (cli.py classify)"]
+        Classify --> Disp["四级调度器 (core/dispatcher.py)"]
+        Disp --> Gen["单文件求解器 + ssik_cpp 头文件生成 (core/codegen.py)"]
+    end
+    subgraph Runtime["运行期 (Python _ssik_native 或 纯 C++ ssik_cpp)"]
+        T["目标位姿 SE(3) + 可选 q_seed"] --> Solver["解析分支求根 + _polished 奇异折痕精修"]
+        Solver --> Wind["[−2pi, 2pi] 绕数展开与关节限位裁剪"]
+        Wind --> Post["postprocess 验算 FK 残差"]
+        Post --> Ref["可选 refinement/LM 微调与 Diagnostic 诊断"]
+        Ref --> Out["list[Solution] / self_motion 图表 / TrackerStep"]
+    end
+    Gen --> Solver
 ```
 
-- **6R：** 最多 **16** 个解析分支（Pieper 类常见 8：4 肩 × 2 肘）。
-- **7R：** 冗余为 **1 参数族**；ssik 按 **swivel 采样** 离散为 32–256 分支（如 iiwa14 常见 128）。
-- **默认 `respect_limits=True`：** 先尝试 `q ± 2π` 拉回限位内，再丢弃超限分支；7R 上配合 `max_solutions=1` + `q_seed` 可走 **lock-outward 快路径**（文档称相对全扫约 20× 加速）。
-
-### 3. 与相邻 IK 栈的分工
-
-| 库 | 类型 | 分支 | 典型强项 | 典型弱项 |
-|----|------|------|----------|----------|
-| **ssik** | 解析 | 全部（离散化后） | 非 Pieper 6R、7R、可部署 artifact | Pieper 6R 上慢于 EAIK ~100× |
-| **EAIK** | 解析 | 全部（支持族内） | UR/Pieper 6R 微秒级 | 拒绝多数 7R 与非 Pieper 6R |
-| **IKFast** | 解析 codegen | 全部（成功生成时） | 经典 Pieper / 球腕 7R lock | 现代 sympy 下非 Pieper 易失败 |
-| **MINK / TracIK** | 数值 | 单解/种子 | 任意 URDF 几何 | 无分支枚举；FK 精度依赖迭代容差 |
-| **cuRobo** | GPU 数值 IK + 规划 | 并行多解探索 | 无碰撞 IK + 轨迹优化 | 非「全部分支」语义；偏规划栈 |
-| **[Dynibo](./dynibo.md)** | 固定基数值 DLS（Rust 核心） | 单解/种子依赖 | 固定/浮动基运动学与动力学；含 RNEA 和 ABA | 无解析多分支枚举；当前上游 v0.5.1 |
+1. **几何分类与四级调度（`core/dispatcher.py` / `core/codegen.py`）：** 构建期将每条运动链标准化为 `KinBody` 旋量参数，按几何族分配求解策略：对解析可分家族（如 6R Pieper、`seven_r.spherical_shoulder`、`seven_r.srs`）生成精确 Paden-Kahan / 代数子问题求根链；对一般耦合 6R 启用一维特征多项式 / 半切线参数降维；并在奇异折痕（fold）附近插入 `_polished` 单步 Gauss-Newton / 解析局部修正，保证数值精度。
+2. **原生 C++ 后端与头文件导出（`_ssik_native` & `ssik_cpp`）：** PyPI 发行包内置编译好的 `_ssik_native` C++ 扩展（默认启用，可通过选项退回纯 Python 验证）。针对 C++ 实时控制器（如 `ros2_control`、EtherCAT 环），`ssik build` 可生成单文件、零外部依赖的 C++17 头文件（例如 `ssik::iiwa14_ik`），无需部署 Python 解释器即可完成全分支求解。
+3. **绕数枚举、自运动流形与诊断：** `Manipulator.solve()` 不仅返回主区间 `[−π, π]` 内的离散分支，还支持针对大行程关节（如 `±2π`、`±360°`）自动枚举 `[−2π, 2π]` 内全部合法绕数解。对于 7R 冗余臂，API 可沿 `Chart` 计算连续 `self_motion` 零空间曲线，并输出附带 `fk_residual`、`refinement_used` 的 `Solution` 以及由 `TolerancePolicy` 驱动的 `Diagnostic` 诊断结果（区分数值误差与真正不可达）。
+4. **流式遥操作跟踪器（`ssik/tracker.py`）：** `ssik.Tracker` 面向 VR 手柄、SpaceMouse 或动捕流逐帧输入设计：在 `seven_r.spherical_shoulder` 与 `seven_r.srs` 上直接锁定当前冗余坐标并在自运动图表 `Chart` 上延续追踪（支持 `Tracker.set_redundancy()` 保持末端静止而平滑滑动肘部），其余构型则按 `wrap_linf` 种子距离执行锁定分支求解；同时内置基于 `max_joint_speed * dt` 的速度钳位，并通过 `TrackStatus`（`OK`、`LIMITED`、`HELD`、`JUMPED`）显式通告分支保持或越界状态。
 
 ## 源码运行时序图
 
-官方仓库 [personalrobotics/ssik](https://github.com/personalrobotics/ssik) 的**生产路径**是导入预置或 `ssik build` 生成的 per-arm artifact（如 `ssik/prebuilt/franka_panda_ik.py`），运行时 **不解析 URDF、不加载 sympy**。一次 `solve(T_target)` 的模块交互如下（节点名对齐仓库目录与 README 入口）：
+以下时序基于仓库真实源码 `src/ssik/cli.py`、`manipulator.py`、`tracker.py`、`core/dispatcher.py`、`core/codegen.py`、`postprocess.py` 与 `refinement/__init__.py`：
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor U as 用户 / 控制循环
-    participant ART as prebuilt/*_ik.py<br/>或 ssik build 产物
-    participant KB as 烘焙 KinBody _KB
-    participant SOL as ssik.solvers.*<br/>如 seven_r.spherical_shoulder
-    participant SP as ssik.subproblems SP1–SP6
-    participant PP as ssik.postprocess
-    participant REF as ssik.refinement<br/>可选 LM 抛光
-    participant ROB as 机器人 / 仿真
+    participant User as "用户 / 遥操作客户端"
+    participant CLI as "ssik.cli (build / classify)"
+    participant Disp as "core.dispatcher & codegen"
+    participant Trk as "ssik.Tracker (tracker.py)"
+    participant Arm as "Manipulator / KinBody"
+    participant Native as "_ssik_native C++ 求解器"
+    participant Post as "postprocess & refinement"
 
-    U->>ART: solve(T_target, q_seed=…, max_solutions=…)
-    ART->>KB: 读取关节限位与 POE 常数
-    ART->>SOL: 调用已 dispatch 的解析求解器
-    loop 代数子问题分解
-        SOL->>SP: SP1–SP6 闭式/半闭式求根
-        SP-->>SOL: 候选关节向量 q
+    rect rgb(240, 245, 255)
+        Note over User,Disp: "离线构建期 (非预置 72 臂或自定义工具末端)"
+        User->>CLI: "ssik build arm.urdf --cpp-out"
+        CLI->>Disp: "解析 KinBody 并匹配四级调度族"
+        Disp-->>User: "输出单文件 Python artifact 与 ssik_cpp 头文件"
     end
-    SOL-->>ART: 原始代数 IK 候选集
-    ART->>PP: wrap_to_limits → respect_limits
-    opt q_seed 已提供
-        ART->>PP: within_seed_tolerance → nearest_to_seed
+    rect rgb(245, 255, 245)
+        Note over User,Post: "在线遥操作跟踪期 (Tracker.update)"
+        User->>Trk: "update(T_target, t_now)"
+        alt "7R 图表家族 (spherical_shoulder / srs)"
+            Trk->>Arm: "沿当前 Chart 固定冗余坐标求解"
+        else "6R 或其他分支家族"
+            Trk->>Arm: "solve(T_target, q_seed=q_last, max_solutions=1)"
+        end
+        Arm->>Native: "执行解析子问题求根与 _polished 折痕修正"
+        Native-->>Arm: "返回原始弧度候选解与绕数展开"
+        Arm->>Post: "过滤关节限位 + 校验 FK 残差 (必要时触发 LM refinement)"
+        Post-->>Trk: "返回最邻近合法构型 Solution"
+        Trk->>Trk: "校验 max_joint_speed * dt 速率并判定 TrackStatus"
+        Trk-->>User: "返回 TrackerStep (q, status, reason)"
     end
-    opt allow_refinement=True
-        ART->>REF: kinbody_jacobian + LM polish
-        REF-->>ART: 收紧 fk_residual
-    end
-    ART-->>U: list[Solution]（q, fk_residual, refinement_used）
-    U->>ROB: 下发 q_command（或空列表 ⇒ 重规划）
 ```
-
-**构建期（一次性）**：自定义 URDF / 工具链时走 `ssik build my_arm.urdf --base … --ee …`（`ssik/cli.py`）→ `load_urdf_kinbody_normalized` → `ssik.core.dispatcher.dispatch` 选 tier → `ssik.core.codegen.emit_artifact` 写出 `my_arm_ik.py`；之后运行时与 prebuilt **同一 API**。
-
-**开发路径（不推荐部署）**：`ssik.Manipulator.from_urdf` 在**每个新进程**重新做 URDF 解析、拓扑分类与（部分几何）sympy 预处理，再进入与上图相同的 `solve` 管线；支持 `explain=True` 返回 `Diagnostic` 诊断空解原因。
-
-## 源码类图
-
-核心类型分布在 `ssik/manipulator.py`、`ssik/_kinbody.py`、`ssik/core/` 与 per-arm artifact（`ssik/prebuilt/*_ik.py` 或 `ssik build` 产物）。求解器以 **模块级 `solve(kb, T, …)` 函数** 组织（`ssik/solvers/ikgeo/*`、`seven_r/*`、`jointlock/*`），后处理为 `ssik/postprocess.py` 中的纯函数。
-
-```mermaid
-classDiagram
-    direction TB
-
-    class Manipulator {
-        <<public entry>>
-        -KinBody _kb
-        -DispatchPlan _plan
-        +from_urdf(path, base, ee) Manipulator
-        +fk(q) ndarray
-        +solve(T, q_seed, ...) list~Solution~
-        +solve(T, explain=True) tuple
-        +solver_name str
-        +dof int
-    }
-
-    class ArmArtifact {
-        <<prebuilt/*_ik.py>>
-        +SOLVER_NAME str
-        +BASE_LINK str
-        +EE_LINK str
-        +DOF int
-        +T_HOME ndarray
-        -KinBody _KB
-        +solve(T, ...) list~Solution~
-    }
-
-    class KinBody {
-        +links list~Link~
-        +joints list~Joint~
-        +GetDOF() int
-        +GetChain(base, ee) list
-    }
-
-    class Link {
-        +name str
-    }
-
-    class Joint {
-        +name str
-        +dof_index int
-        +parent_link Link
-        +T_left ndarray
-        +T_right ndarray
-        +axis ndarray
-        +limits tuple
-    }
-
-    class JointSpec {
-        <<URDF loader>>
-        +parent_link_T ndarray
-        +axis ndarray
-        +limits tuple
-    }
-
-    class DispatchPlan {
-        +solver_name str
-        +tier int
-        +reason str
-        +expected_ms_median float
-        +needs_symbolic_precompute bool
-    }
-
-    class Solution {
-        <<frozen dataclass>>
-        +q ndarray
-        +fk_residual float
-        +refinement_used str
-    }
-
-    class Diagnostic {
-        <<frozen dataclass>>
-        +solver_name str
-        +raw_candidates int
-        +dropped_by_limits int
-        +final_count int
-        +summary() str
-    }
-
-    class TolerancePolicy {
-        <<frozen dataclass>>
-        +axis_parallel float
-        +subproblem_numerical float
-        +subproblem_dedup float
-    }
-
-    class SolverModule {
-        <<ssik.solvers.*>>
-        +solve(kb, T, policy) list~ndarray~
-    }
-
-    class Postprocess {
-        <<ssik.postprocess>>
-        +wrap_to_limits()
-        +respect_limits()
-        +nearest_to_seed()
-        +within_seed_tolerance()
-    }
-
-    class Refinement {
-        <<ssik.refinement>>
-        +kinbody_jacobian()
-        +seeded_track()
-    }
-
-    Manipulator *-- KinBody : owns
-    Manipulator *-- DispatchPlan : dispatch result
-    Manipulator ..> SolverModule : lazy import
-    Manipulator ..> Solution : returns
-    Manipulator ..> Diagnostic : explain=True
-    Manipulator ..> TolerancePolicy : policy=
-
-    ArmArtifact *-- KinBody : baked _KB
-    ArmArtifact ..> SolverModule : fixed import
-    ArmArtifact ..> Postprocess : filter/rank
-    ArmArtifact ..> Refinement : allow_refinement
-    ArmArtifact ..> Solution : returns
-
-    KinBody o-- Link : N+1
-    KinBody o-- Joint : N
-    Joint --> Link : parent_link
-
-    JointSpec ..> KinBody : build_kinbody()
-    KinBody ..> DispatchPlan : dispatch(kb)
-
-    SolverModule ..> Solution : candidates
-    Postprocess ..> Solution : filters
-    Refinement ..> Solution : polishes
-```
-
-- **`Manipulator`**：开发/探索入口；`from_urdf` 触发 URDF→`KinBody`→`dispatch`→运行时 lazy 加载对应 `ssik.solvers.*`。
-- **`ArmArtifact`**：`ssik build` / prebuilt 的部署形态；求解器与 KinBody 常数在**构建期冻结**，`solve` 签名与 `Manipulator.solve` 对齐。
-- **`Solution`**：唯一标准化的 IK 返回值；求解器身份由 `Manipulator.solver_name` 或 artifact 的 `SOLVER_NAME` 提供，不重复挂在每个解上。
 
 ## 工程实践
 
-| 步骤 | 建议 |
-|------|------|
-| 快速验证 | `pip install ssik` → `from ssik.prebuilt import franka_panda_ik` → `solve(T)` |
-| 可视化 | `pip install 'ssik[demo]'` → `examples/05_viser_interactive_ik.py` 浏览器拖拽看全部分支 |
-| 遥操作 / 跟踪 | 每控制周期 `solve(T, max_solutions=1, q_seed=q_current, seed_tolerance=deg2rad(6))`；空列表 ⇒ 需重规划或接受构型跳变 |
-| 自定义工具 | `ssik build my.urdf --base base_link --ee tool0`；夹具改链后 **必须重建** artifact |
-| 收紧精度 | 自定义 `TolerancePolicy(subproblem_numerical=1e-9)` + `allow_refinement=True`（LM 抛光） |
-| 与 MoveIt / ROS | ssik **不替代** Planning Scene / 碰撞检测；可作为 **IK 服务后端** 或规划前 **分支枚举** 模块 |
-
-**开源状态（截至 2026-07-21）：** **已开源** — [GitHub](https://github.com/personalrobotics/ssik)、[PyPI](https://pypi.org/project/ssik/)、[文档站](https://personalrobotics.github.io/ssik/)；BSD-3-Clause；无权重/数据集依赖。
+1. **优先查询 72 款预置臂并善用 `add-arm`：** 安装 `pip install ssik` 即可直接加载 27 家厂商 72 款预置机械臂（涵盖 UR、Franka FR3/Panda、KUKA iiwa14、xArm6/7、Kinova Gen3/JACO2、PiPER、Rizon、OpenArm、Galaxea R1 Pro 等）；若加装自定义腕部相机或末端工具延长连杆，安装 `pip install 'ssik[urdf]'` 后运行 `ssik classify` / `ssik build` 生成专属求解器，再在运行时无 URDF 依赖调用。
+2. **实时环部署推荐导出 `ssik_cpp`：** Python 原生扩展 `_ssik_native` 已可在 10–460 µs 完成 6R 全分支求解；若需集成到无 GIL 抖动的 C++ 底层控频环（如 1 kHz 力矩/位置伺服），直接通过 codegen 导出独立 `ssik_cpp` 头文件编译进控制器。
+3. **遥操作切勿裸用 `solve()`，应使用 `Tracker`：** 在 VR/动捕输入存在连续姿态穿越奇异区风险时，`Tracker` 能保持当前运动学分支并在 7R 上固定冗余参数，当输入超速或接近奇异/限位时返回 `LIMITED` 或 `HELD` 状态，避免直接裸跑 `solve()` 选近解导致的构型瞬间翻转。
+4. **注意 joint-lock 7R 的计算预算：** 7R SRS/球肩构型耗时通常在 120–360 µs，而退化至通用 joint-lock 数值离散采样的 7R 机械臂耗时为 **1.1–12 ms**，在高频遥操作环中应提前用真实目标轨迹基准实测预算。
 
 ## 局限与风险
 
-- **速度：** 在 UR/Pieper 6R 上 **慢于 EAIK 两个数量级**；若几何在 EAIK 支持范围内且只需分支枚举，应优先 benchmark EAIK。
-- **几何锁定：** prebuilt 针对 **标称厂商 URDF + 裸法兰**；标定偏差、额外 TCP 或链名不一致会导致 FK 与真机不符——须 `ssik build` 或核对 `BASE_LINK`/`EE_LINK` 与 `test_prebuilt_fixture_parity` 来源表。
-- **7R 离散化：** 返回的是 **采样后的分支集合**，非连续冗余流形；高 DoF 臂 `solve` 可达 **十余毫秒** 量级，硬实时需 profiling。
-- **范围外：** **无碰撞过滤**（需 FCL 等应用层）、**无连续轨迹平滑保证**（`seed_tolerance` 空结果即 discontinuity 信号）、**非 6R/7R 或含 prismatic 的链** 不在目标范围。
+- **无内置环境自碰撞检测与动力学约束：** ssik 纯聚焦单链串联运动学求解与自限位裁剪，不处理连杆自碰撞、外部障碍物避障或关节力矩极限，真实系统常需与 [cuRobo](./curobo.md)、[MoveIt 2](./moveit2.md) 或 [Pinocchio](./pinocchio.md) 配合。
+- **奇异连续流形处的自由度模糊：** 在严格奇异点上，部分关节角形成一维连续解而非孤立点（`solve()` 会择取距种子最近点）；在接近折叠点时依赖 `_polished` 与 LM 精修来恢复机器浮点极限下的 FK 闭合精度。
+- **非所有任意 7R 均有闭式图表：** 只有 `seven_r.spherical_shoulder` 与 `seven_r.srs` 具备连续 `self_motion` 图表；通用无球铰 7R 仍需借助锁定某一冗余关节的扫描策略，延迟显著高于闭式家族。
 
-## 关联页面
+## 与其他页面的关联
 
-- [Manipulation（操作任务）](../tasks/manipulation.md) — 笛卡尔目标、抓取与臂部执行上下文
-- [Teleoperation（遥操作）](../tasks/teleoperation.md) — VR/手柄位姿跟踪时的 **逐 tick IK**
-- [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；ssik 可作 IK 插件或外部求解器对照
-- [cuRobo](./curobo.md) — GPU 并行 **无碰撞 IK + 轨迹优化**；解析分支枚举与数值规划可分层组合
-- [Pinocchio 快速上手](../queries/pinocchio-quick-start.md) — 动力学/WBC 栈中的 **数值 IK** 示例；与 ssik **解析臂 IK** 互补
-- [Dynibo](./dynibo.md) — Rust 树状 URDF 上的 **固定基 DLS 数值 IK**；也支持浮动基动力学，与 ssik 解析全分支互补
-- [Trajectory Optimization](../methods/trajectory-optimization.md) — 多 IK 种子服务非凸轨迹优化
+- 核心任务与方法：[Manipulation](../tasks/manipulation.md)、[Teleoperation](../tasks/teleoperation.md)、[Trajectory Optimization](../methods/trajectory-optimization.md)、[Levenberg-Marquardt](../methods/levenberg-marquardt.md)
+- 相邻运动学与规划栈：[MoveIt 2](./moveit2.md)、[cuRobo](./curobo.md)、[Pinocchio](./pinocchio.md)、[Dynibo](./dynibo.md)、[Pinocchio 快速上手](../queries/pinocchio-quick-start.md)
+- 遥操作工程上下文：[Isaac Teleop](./isaac-teleop.md)、[xpad](./xpad.md)
 
 ## 参考来源
 
-- [ssik 仓库归档](../../sources/repos/ssik.md)
-- Srinivasa, S., *ssik: analytical inverse kinematics for 6R and 7R revolute arms*（[GitHub](https://github.com/personalrobotics/ssik)、[Zenodo DOI 10.5281/zenodo.20278005](https://doi.org/10.5281/zenodo.20278005)）
-- [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — 数值 DLS-IK 与动力学同库的对照实现
+- 官方仓库与源码深读归档：[ssik.md](../../sources/repos/ssik.md)（通读 `README.md`、`docs/`、`cli.py`、`manipulator.py`、`tracker.py`、`core/dispatcher.py`、`core/codegen.py`、`postprocess.py`、`refinement/__init__.py`）
+- 开源仓库：<https://github.com/personalrobotics/ssik>
+- 官方文档站：<https://personalrobotics.github.io/ssik/>
 
 ## 推荐继续阅读
 
-- [ssik 官方文档 Quickstart](https://personalrobotics.github.io/ssik/quickstart/)
-- [ssik Arm coverage（每臂速度与 FK 下限）](https://personalrobotics.github.io/ssik/arm_coverage/)
-- [EAIK（Ostermeier 2024）](https://github.com/OstermD/EAIK) — Pieper 6R 微秒级解析 IK 对照基线
-- [IK-Geo（Elias–Wen）](https://github.com/rpiRobotics/ik-geo) — 子问题分解参考 C++/Rust 实现
+- 遥操作映射与延迟路线：[Teleoperation Depth Roadmap](../../roadmap/depth-teleoperation.md)（Stage 2：映射与延迟 / `ssik.Tracker` 分支保持）
+- 运动学与动力学基石：[Pinocchio 快速上手](../queries/pinocchio-quick-start.md)、[Dexterous Kinematics](../concepts/dexterous-kinematics.md)

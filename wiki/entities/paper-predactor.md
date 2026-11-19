@@ -1,17 +1,21 @@
 ---
 type: entity
-tags: [paper, humanoid, diffusion-policy, onboard-control, hit, roboparty, tsinghua, sjtu, shanghai-innovation-institute]
+tags: [paper, humanoid, locomotion, diffusion-policy, onboard-control, hit, roboparty, tsinghua, sjtu, shanghai-innovation-institute]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-19
 project_id: predactor
 project: https://masteryip.github.io/predactor.github.io/
 code: https://github.com/MasterYip/PredActor
 arxiv: "2609.24840"
 related:
   - ../methods/diffusion-policy.md
-  - ./nvidia-sonic.md
-  - ../concepts/whole-body-control.md
+  - ../methods/action-chunking.md
+  - ../methods/behavior-cloning.md
   - ../tasks/locomotion.md
+  - ../tasks/humanoid-locomotion.md
+  - ./nvidia-sonic.md
+  - ./paper-sample-simulate-select.md
+  - ../concepts/whole-body-control.md
   - ../entities/unitree-g1.md
   - ../../roadmap/depth-robotics-diffusion-dit-flow.md
 sources:
@@ -20,172 +24,180 @@ sources:
   - ../../sources/sites/predactor-masteryip-github-io.md
   - ../../sources/repos/predactor.md
   - ../../sources/repos/predactor-artifacts.md
-summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action 扩散，CG+CFG steerable 机载 G1 50 Hz；官方已开放 MuJoCo 评测代码与 PDP051/MotionCLIP checkpoint，训练、数据采集和真机部署仍待发布。"
+original:
+  - ../../sources/papers/predactor_arxiv_2609_24840.md
+  - ../../sources/repos/predactor.md
+summary: "PredActor（arXiv:2609.24840v3）：基于 proprio-only 联合状态–动作扩散的人形机载 50 Hz 全身控制（CFG 文本/语义 + 免重训 WBG CG 物理引导）；MasterYip/PredActor 已开放 MuJoCo 评测、数据采集染色、BC 训练与 Unitree G1 LibTorch C++ 部署代码，仅 DAgger 模块尚未公开。"
 ---
 
 # PredActor（arXiv:2609.24840）
 
-**PredActor**（*Predictive Action Diffusion for Steerable Onboard Humanoid Control*，[arXiv:2609.24840](https://arxiv.org/abs/2609.24840)，[项目页](https://masteryip.github.io/predactor.github.io/)）在 **joint state–action diffusion** 框架内，把 **未来状态留在策略内部** 供 CG/CFG 引导，**只执行选中动作**，无需独立 motion-reference tracker 或外部全身体态估计。在 **Unitree G1 Jetson Orin NX** 上实现 **50 Hz** 完整 onboard 闭环。
+**PredActor**（*Predictive Action Diffusion for Steerable Onboard Humanoid Control*，[arXiv:2609.24840](https://arxiv.org/abs/2609.24840)，[项目页](https://masteryip.github.io/predactor.github.io/)，[代码](https://github.com/MasterYip/PredActor)）由哈尔滨工业大学、上海创新研究院、RoboParty Lab、清华大学、上海交通大学等机构联合提出。工作在 **联合状态–动作扩散（joint state–action diffusion）** 框架内，仅依靠本地本体感知（proprioception）历史与可选任务条件，同时去噪未来全身状态与动作序列，但**仅向底层电机下发选中动作、将未来状态留在扩散内部供测试时物理与语义引导**，并在 Unitree G1 机载 Jetson Orin NX 上实现了 **50 Hz** 完整闭环控制。
 
 ## 一句话定义
 
-用 proprio 历史联合去噪未来状态与动作，内部状态支持 test-time 目标与文本条件，选中动作直接下发关节控制器，并在 Orin NX 上压到 20 ms 控制周期以内。
+**通过纯本体感知输入的联合状态–动作扩散去噪，把未来全身状态留在策略内部以支持免重训物理分类器引导（CG）与文本无分类器引导（CFG），并将动作推理压缩到 20 ms 机载控制周期以内。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| CG | Classifier Guidance | 对预测状态加 test-time 目标梯度 |
-| CFG | Classifier-Free Guidance | 条件/空预测混合以强化行为条件 |
-| WBG | Whole-Body Guidance | 论文中对 predicted-state 目标 steering 的实现块 |
-| DAgger | Dataset Aggregation | 在 learner 访问状态聚合 teacher 标签 |
-| FK | Forward Kinematics | 观测构造中的正向运动学链 |
-| HF | Hugging Face | PredActor 公开评测 checkpoint 的托管平台 |
-| BC | Behavior Cloning | README 列为尚未发布的策略训练代码 |
-| UI | User Interface | 本地浏览器端 MuJoCo 评测界面 |
-| CPU | Central Processing Unit | 无 CUDA 时评测器回退使用的处理器 |
+| CG | Classifier Guidance | 在预测未来状态残差上求梯度以修正去噪轨迹（WBG） |
+| CFG | Classifier-Free Guidance | 混合有条件与空条件去噪预测以增强语义动作可控性 |
+| WBG | Whole-Body Guidance | 论文面向局部根节点、躯干与末端的测试时物理引导模块 |
+| NS-DDIM | Non-Synchronized DDIM | 对状态与动作采用异步噪声日程的两步加速采样器 |
+| DAgger | Dataset Aggregation | 用强化学习教师策略在线纠正分布偏移的聚合训练阶段（当前唯一未开源模块） |
+| PRDP / FK | Proprioceptive-Root/Pos Diffusion Policy / Forward Kinematics | 本体剖面族；公开部署版设为 `use_fk: false` 避免正向运动学额外开销 |
+| BC | Behavior Cloning | 离线行为克隆训练（已在 `PredActor/train.py` 开源） |
 
 ## 为什么重要
 
-- **在扩散学习路线中的位置：** 可作为[扩散与流匹配纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md)的人形机载控制专题；重点从通用动作 chunk 去噪转向 joint state–action prediction、test-time steering 与端侧时延预算。
-
-- **统一 steering 接口：** 代表 joint diffusion 里少见的 **CFG（文本/行为）+ CG（状态目标）并存**，且 **仅 proprio** 输入 — 对比 Diffuse-CLoC、SCDP、SCRIPT 等（见论文 Table 1）。
-- **机载闭环证据：** 声称首个 **全 onboard** joint state–action diffusion 在 G1 Orin NX **50 Hz** 部署；p50 **16.790 ms**、p95 **19.383 ms**。部署形态为 TorchScript 主干 + C++ 运行时（LibTorch inference mode）、batch-one FP32、两步确定性 DDIM，并非 ONNX 或 TensorRT；仅 actor 前向 p50 为 13.175 ms（论文 Table 4）。
-- **相对 hierarchy：** 不做 generator→tracker 分拆，disturbance recovery 留在同一策略，避免规划/控制双时钟。
-
-## 核心信息
-
-| 字段 | 内容 |
-|------|------|
-| 机构 | 哈尔滨工业大学（Harbin Institute of Technology）、上海创新研究院（Shanghai Innovation Institute）、RoboParty Lab、清华大学、上海交通大学 |
-| 平台 | Unitree G1 + Jetson Orin NX |
-| 输入 | Proprio 历史 + 可选任务 token（文本/语义/摇杆） |
-| 输出 | 选中关节动作；未来状态 **不外发** |
-| 开源 | **部分开放（2026-10-08）** — [GitHub](https://github.com/MasterYip/PredActor) 提供 PDP051 的 MuJoCo 浏览器评测入口；[Hugging Face](https://huggingface.co/MasterYip/PredActor_Artifacts) 发布 PDP051 与 G1 MotionCLIP checkpoint；训练、数据采集、DAgger 与真机部署仍未发布 |
-
-## 流程总览
-
-```mermaid
-flowchart LR
-  prop["Proprio 历史 o_{t-l:t}"]
-  task["可选任务 z\n(text / semantic / joystick)"]
-  denoise["Joint denoiser\n(state + action tokens)"]
-  cg["CG on predicted states"]
-  cfg["CFG mix"]
-  act["选中 action a_t"]
-  wbc["G1 关节控制器\n50 Hz"]
-  prop --> denoise
-  task --> denoise
-  denoise --> cg
-  denoise --> cfg
-  cg --> act
-  cfg --> act
-  act --> wbc
-```
+- **人形机载扩散控制的标杆落地：** 将扩散策略带出机械臂桌面操作，针对高维不稳定双足人体运动完成计算图重构与推理优化，在 **Jetson Orin NX** 机载端以 FP32 `batch=1` 达成 **p50 16.790 ms / p95 19.383 ms**（593/600 次回调稳居 20 ms / 50 Hz 预算内）。
+- **打破“生成-跟踪两段式”与“纯动作扩散无法物理改向”的局限：** 相对先生成参考轨迹再交由独立跟踪器（如 `ARDY+SONIC`）的层级方案，PredActor 在单一扩散网络内部完成姿态演化与抗扰恢复；相对纯动作扩散（`w/o state`），内部显式去噪的未来状态使策略无需重训即可在测试时叠加点导航与躯干高度等 **WBG CG**，同时反哺 MotionCLIP 文本检索精度。
+- **工程管线已主体开放验证：** 不同于早期仅发布占位页或仅公开评测器的状态，目前官方仓已完整放出数据采集与 MotionCLIP 语义染色（`PredActor/collection/`）、离线 BC 训练（`PredActor/train.py`）和 G1 LibTorch C++ / Unitree DDS 部署栈（`PredActor/diffusion_deploy/`）。
 
 ## 核心原理
 
-- **Joint representation：** 并行去噪 horizon 上 interleaved state/action；states 为 **internal guidance**，actions 直接执行。
-- **训练：** 动作库 + 自动标签；异步 **扰动 teacher rollout** + **DAgger** 聚合 recovery 数据。
-- **部署：** **Rolling denoising**（跨 tick 复用部分去噪 horizon）+ 计算保留优化 + **延迟坐标插值**。
+### 核心信息
 
-## 源码运行时序图
+| 项 | 内容 |
+|----|------|
+| **机构** | 哈尔滨工业大学（HIT）；上海创新研究院（SII）；RoboParty Lab；清华大学；上海交通大学 |
+| **硬件平台** | Unitree G1（29 DoF）+ 机载 Jetson Orin NX，50 Hz 控制循环（`control_dt=0.02s`） |
+| **输入条件** | 4 步历史本体状态 `n_obs_steps=4`（关节/IMU 等）+ 可选任务条件（G1 MotionCLIP 文本、手柄速度、点导航目标） |
+| **预测视野** | 未来 20 步联合状态–动作视野（内部未来状态不外发，仅下发动作序列首部执行） |
+| **开源状态（2026-11-19）** | **主体已开源（MIT）** — [MasterYip/PredActor](https://github.com/MasterYip/PredActor) 已开放 Web UI 评测、采集染色、离线 BC 训练与 G1 C++ 部署，**仅 DAgger 暂未开放**；权重托管于 [PredActor_Artifacts](https://huggingface.co/MasterYip/PredActor_Artifacts) |
+
+### 关键机制
+
+1. **联合状态–动作表达与状态重点投影（`DiffuseCLoC` / `DiffuseCPRDP`）：** 在同一扩散时空窗口内交替排布未来状态和关节动作 token；由于状态维度高但关键全局特征（`root_pos_local`、`root_lin_vel_local`）对导航与平衡更决定性，架构引入 `state_emphasis` 投影突出根节点等关键状态分量，训练目标联合监督动作与状态去噪损失。
+2. **双路引导机制（CFG + 免重训 WBG CG）：**
+   - **语义可控性（CFG + 条件掩码）：** 通过 `CondCompressor`、`PerTermConditionDropout` 和 `TaskMaskGenerator` 在训练期独立随机丢弃条件项，使推理期可通过 **Classifier-Free Guidance** 在 `walk` / `jog` / `squat down` / `jump` 等 MotionCLIP 语义隐空间平滑过渡与插值；
+   - **物理导向可控性（WBG CG）：** 推理期在每步去噪后利用预测的未来局部根节点与末端位置，计算速度（`vx_guide`, `vy_guide`, `wz_guide`）、骨盆高度（`hz_guide`）或世界坐标目标点跟随（`destination_follow_config`）等 PD 物理误差，通过向量 Jacobian 乘积反向修改均值偏移，零样本解锁点导航能力。
+3. **机载 50 Hz 工程加速链路：**
+   - **异步非同步调度（`NS-DDIM2`）与滚动去噪（Rolling Denoising）：** 状态与动作按非同步噪声水平递进更新（`from_xT_decreasing` / `from_xT_step`），配合 FIFO 滚动缓冲区复用上一控制步尚未完全耗尽的半成品轨迹，将每次控制周期的前向去噪压缩至 **仅 2 步（`NS-DDIM2`）**；
+   - **五步系统优化（Table 4）：** 在 LibTorch C++ 运行时上依次叠加 1）堆叠 WBG（`-3.147 ms`）、2）DDIM 系数预计算（`-0.872 ms`）、3）全 QKV 矩阵融合打包（`-1.111 ms`）、4）条件特征缓存（`-0.401 ms`）与 5）LibTorch `inference_mode`，在不损失精度的前提下（数值漂移 `< 1.073e-6`）将 actor 前向 p50 由 `21.461 ms` 降至 `13.175 ms`。
+
+### 流程总览
 
 ```mermaid
-sequenceDiagram
-  autonumber
-  participant User as 用户 / 评测者
-  participant DL as scripts/hf_download.py
-  participant HF as PredActor Artifacts HF
-  participant CLI as predactor-eval CLI
-  participant Sim as MuJoCo
-  participant UI as 本地浏览器 Web UI
-  User->>DL: --filter checkpoints
-  DL->>HF: 下载 PDP051 与 G1 MotionCLIP
-  HF-->>DL: 返回公开 checkpoint 文件
-  DL-->>User: 校验并写入 Artifacts/
-  User->>CLI: uv run --locked predactor-eval
-  CLI->>CLI: 加载 g1prdp_cond_diffuse 配置与 checkpoint
-  CLI->>Sim: 初始化 G1 29-DoF 仿真评测
-  CLI->>UI: 启动 127.0.0.1:8765 界面
-  User->>UI: 选择文本条件 / guidance
-  UI->>CLI: 提交本地评测命令
-  CLI->>Sim: 执行动作并推进仿真
-  Sim-->>UI: 返回状态与可视化
+flowchart LR
+  prop["4步本体感知历史 (G1 29-DoF)"] --> enc["条件特征编码与缓存"]
+  task["可选任务条件 (MotionCLIP文本 / 摇杆 / 目标点)"] --> cfg["CFG 混合 + 任务掩码"]
+  buf["FIFO 滚动去噪缓冲区"] --> den["Joint Denoiser (NS-DDIM2, 2步)"]
+  enc --> den
+  cfg --> den
+  den --> wbg["预测未来状态 → WBG CG 梯度引导"]
+  wbg --> act["截取当前动作 a_t (状态不外发)"]
+  act --> g1["G1 底层关节控制器 (50 Hz)"]
 ```
 
-运行入口来自官方 README 的 Quick evaluation；当前公开路径只复现带 checkpoint 的 MuJoCo 评测，不包含训练、数据采集/标注、DAgger 训练或真机控制部署。
-## 工程实践
+## 评测与实验对比
 
-- 官方仓现提供 Linux 上的公开 MuJoCo 评测：Python 3.10 + uv，执行 `uv sync --locked`、`uv run --locked python scripts/hf_download.py --filter checkpoints`，再运行 `uv run --locked predactor-eval`；启动本地 Web UI（默认 `127.0.0.1:8765`），CUDA 可用时优先使用，否则回退 CPU。完整命令和环境要求见[仓库归档](../../sources/repos/predactor.md)。
+基于 **`arXiv:2609.24840v3`** 正文 Table 2–4、Fig. 6–7 与附录 Table 8 实测结果（注：早先条目记录的旧版 `15/15`、`0.580`、`0.535` 已按 v3 终稿全面校订）：
 
-| 检查项 | 建议 |
-|--------|------|
-| 输入边界 | 勿假设 full-body state 作 policy 输入 — 仅 proprio + 任务上下文 |
-| 实时预算 | 以 **complete callback p95 < 20 ms** 为机载门禁；换导出/设备需 requalify |
-| 对照读法 | 文本检索 **0.580 vs 0.373** 是主要语义增益；推扰存活与 action-only 相近 |
-| 开源跟进 | 跟踪 [PredActor 仓](https://github.com/MasterYip/PredActor) release，勿与 anonymous 项目页 demo 混为已可复现 |
+### 1) MuJoCo 综合仿真评测（Table 2 & Table 8）
 
-## 实验与评测读法
+| 方法 | Basic Jerk RMS ↓ / Latency ↓ | Perturbation Survival ↑ | Point Navigation (Survival / Arrival / 末态误差) | Text Command (Survival / MotionCLIP Retrieval) |
+|------|------------------------------|-------------------------|--------------------------------------------------|------------------------------------------------|
+| `ARDY + SONIC` | `19.221` / N/E | `0.534` `[100/100]` | `1.000` / `0.500` / `0.656 m`（仅 `[2/15*]` 合法步态） | `1.000` `[23/45*]` / `0.237` |
+| `DiffuseLoco w TextCFG` | `15.899±6.870` / `12.141 ms` | `0.563±0.009` | N/A `[0/45]`（无状态引导支持） | `0.947±0.047` / `0.424±0.159` |
+| `CLoC+FK` / `w TextCFG` | `266.6` (`101.7`) / `6.10` (`8.79 ms`) | `0.303` / `0.296` | `CLoC+FK` 仅 `0.064 / 0.000 / 3.194 m` | `0.782` / `0.416` (`w TextCFG`) |
+| `PredActor w/o state` | `12.448±0.675` / `1.050 ms` | `0.487±0.033` | N/A `[0/45]`（剥离状态后丧失 CG 导航） | `0.778±0.145` / `0.397±0.023` |
+| **PredActor（完整版）** | `16.810±1.409` / **1.321±0.011 ms** | `0.511±0.030` `[300/300]` | **0.983±0.029 / 0.978±0.028** `[45/45]` / **0.605 m** | `0.888±0.068` / **0.539±0.075** `[119/135*]` |
 
-| 指标 | PredActor | 备注 |
-|------|-----------|------|
-| 15 目标导航 | 15/15 | 仿真 |
-| Text retrieval | 0.580 | vs conditional action diffusion 0.373 |
-| Push survival | 0.535 | vs 0.564（相近） |
-| Orin NX callback p50/p95 | 16.790 / 19.383 ms | 593/600 ≤ 20 ms |
+- **Table 8 消融校验：** 关掉测试时 CG 的匹配对比中，PredActor 保持 **0.535±0.009** 推扰存活与 **0.538±0.087** 文本检索分（`w/o state` 为 `0.487 / 0.397`），进一步证实联合状态预测本身也能强化动作与语义表征的一致性；加入滚动去噪后，2 步采样在强外推下的存活率达 **58%**（接近 3 步 `61%`），优于关闭滚动的方案。
 
-> **版本提示：** 上表仿真数字（15/15、0.580）摘自早先版本；2026-11-07 复核的 arXiv 当前版摘要写作 44/45 目标、文本检索分 0.539，仿真对比表尚未逐项复核，引用时以当前版原文为准（见[论文摘录](../../sources/papers/predactor_arxiv_2609_24840.md)）。
+### 2) Orin NX 机载延迟演进（Table 4）与真机实验（Table 3）
 
-论文与项目页展示了 G1 真机文本控制、摇杆转向、外扰反应和语义插值；这些真机结果仍属于论文/项目演示，当前公开仓的评测入口运行在 MuJoCo，不提供真机部署工具链。
+- **Orin NX 机载分项计时（TorchScript + LibTorch FP32, B=1, NS-DDIM2）：**
+  - 结构基线（序列 WBG）：`21.461 / 22.036 ms`（`600/600` 超时）；
+  - 叠加堆叠 WBG + DDIM 预计算 + QKV 打包 + 条件缓存 + `inference_mode`：Actor 前向降至 **13.175 / 13.400 ms**（`0/600` 超时）；
+  - **最终 live 完整控制回调（含观测处理、推理、下发）：p50 `16.790 ms` / p95 `19.383 ms`，`593/600` 满足 20 ms（50 Hz）硬实时门禁**。
+- **Unitree G1 物理样机测试（Table 3，每项 5 次实验）：** `Stand→Walk` **5/5**、`Walk→Jog` **5/5**、`Stand→Squat` **5/5**、`Squat→Stand` **4/5**、`Stand push` **4/5**、`Walk push` **4/5**。
 
 ## 与其他工作对比
 
-> 下表只做**定位对照**，不做跨设定横比：各行与本页不共享同一评测协议，数字不可直接相减。
+> 下表聚焦系统范式与部署设计差异，各项数字受各自机器人硬件与测试集约束，不可脱离协议直接横比：
 
-| 对照 | 差异读法 |
-|------|----------|
-| [SONIC](./nvidia-sonic.md) | SONIC 是 **reference tracking** 路线（上游给参考运动、策略负责跟踪）；PredActor 不走 generator→tracker 分拆，**同一 joint diffusion 策略**直接出关节动作，扰动恢复也在该策略内 |
-| [Sample, Simulate, Select](./paper-sample-simulate-select.md) | 同在 G1 上做文本驱动运动：S³ **零训练**，冻结 MoMask + SONIC 仿真 best-of-N 选优；PredActor 需训练 joint state–action 去噪器，换来机载 50 Hz 闭环与 test-time CG/CFG 引导 |
-| [Diffusion Policy](../methods/diffusion-policy.md) | 经典 DP 只去噪**动作**；PredActor 联合去噪**未来状态 + 动作**，预测态作为引导内部量（不外发），并用 rolling denoising 压延迟 |
-| Diffuse-CLoC / SCDP / SCRIPT（论文 Table 1） | 同属 joint / 条件扩散人形控制；PredActor 的差异点是 **CFG + CG 并存且仅 proprio 输入**，并给出全 onboard 部署计时 — 以原文表格为准 |
+| 对照工作 | 运动规划 vs 控制分拆 | 引导机制（Steerable） | 机载端部署形态 |
+|----------|----------------------|----------------------|----------------|
+| [NVIDIA SONIC](./nvidia-sonic.md) | 两段式：上游提供参考轨迹，下游 RL 策略追踪 | 依赖上游运动参考流或任务接口 | 专用高速跟踪策略部署 |
+| [Sample, Simulate, Select](./paper-sample-simulate-select.md) | 零训练：冻结 MoMask + SONIC 仿真挑优 | 依靠仿真 best-of-N 重采样筛选 | 离线/仿真筛选，非高频端到端闭环 |
+| [Diffusion Policy 方法综述](../methods/diffusion-policy.md) | 仅对动作序列本身去噪 | 原生主要支持观测条件，缺通用 WBG CG | 常见桌面臂 10–30 Hz GPU 离板/桌面推演 |
+| **PredActor（本文）** | **单一联合状态–动作去噪策略**直出关节指令 | **CFG（MotionCLIP 文本）+ CG（免重训 WBG 物理目标）并存** | **TorchScript + LibTorch C++ 50 Hz 机载 Orin NX** |
 
 ## 结论
 
-**PredActor 把 joint diffusion 的「预测态引导 + 直接动作执行」落到 G1 机载 50 Hz；现在可用公开 checkpoint 复跑 MuJoCo 评测，但论文训练流程和真机部署仍不可复现。**
+**PredActor 证明纯本体感知输入的小巧联合状态–动作扩散模型，通过“状态内置引导 + 非同步两步滚动采样 + LibTorch 图级加速”，足以在双足人形机器人机载算力预算内跑通 50 Hz 文本与物理双可控闭环。**
 
-1. **CG+CFG+proprio** 三件套在同一条可执行策略里闭合 — 相对 SCDP/BeyondMimic 等差异明确。
-2. **Rolling + 优化** 是 latency 主因，不是单纯减 denoise 步数。
-3. **Recovery 数据**（扰动 teacher + DAgger）与 disturbance demo 一致 — 选型时勿只看 kinematic 指标。
-4. **开源：** 已有 MuJoCo 评测代码与 PDP051、MotionCLIP checkpoint；训练数据、训练/DAgger 流程和硬件部署包仍未发布。
-5. 与 [SONIC](./nvidia-sonic.md) tracker 路线对照：PredActor 不走 reference tracking，而是 **端到端 joint policy**。
+- **联合预测未来状态不只是为了 CG：** 哪怕在纯文本条件、关闭物理引导时，去除未来状态（`w/o state`）也会让检索准确率跌 14 个百分点，说明预测运动学演化本身能稳固语义-本体对齐。
+- **50 Hz 机载落地的瓶颈常在框架调度而非步数本身：** 从结构基线 `21.46 ms` 压到 `13.18 ms`，主要收益来自 WBG 向量化堆叠、QKV 融合与移除 Python/PyTorch Eager 开销，而不是只靠牺牲去噪步数。
+- **评估开源生态已跨越“仅推理 Demo”阶段：** 当前可直接在 `MasterYip/PredActor` 复现 MuJoCo Web UI 评测、152 动作集采数染色、BC 训练（`g1prdp_cond_diffuse.yaml`）及 C++ Unitree 部署导出。
+- **复现论文极限抗扰成绩仍缺 DAgger：** 公开代码尚未放出 DAgger 在线纠偏聚合管线，仅运行开源离线 BC 管线在大幅外推分布漂移下的极限稳定性可能弱于论文最终指标。
+
+## 源码运行时序图
+
+节点对照 `MasterYip/PredActor` 公开仓库 `PredActor/collection/collect_dataset.sh`、`PredActor/train.py`、`PredActor/diffusion_policy/agent/bc_agent.py`、`PredActor/diffusion_policy/modules/{diffuse_cloc.py,diffuse_cprdp.py}`、`PredActor/cond_eval.py` 与 `PredActor/diffusion_deploy/` 源码：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者 / 评测者
+    participant Col as collection/collect_dataset.sh
+    participant Train as PredActor/train.py
+    participant Agent as BCAgent & DiffuseCPRDP
+    participant Eval as predactor-eval (cond_eval.py)
+    participant Deploy as diffusion_deploy (export + C++ LibTorch)
+    Dev->>Col: 从 RLTracker + 152动作采集原始 zarr 并执行 MotionCLIP 染色
+    Dev->>Train: train.py --cfg g1prdp_cond_diffuse.yaml (强行关闭训练期 WBG)
+    Train->>Agent: OfflineTrainer 调 BCAgent.compute_loss -> actor.p_losses
+    Dev->>Eval: scripts/hf_download.py 后启动 predactor-eval --web-ui
+    Eval->>Agent: CompositeCondProvider (CLIPTeleop / CLIPInterp) 注入语义与 WBG 参数
+    Eval->>Eval: EnvRunner 50 Hz 闭环调用 actor.act 驱动 G1 MuJoCo + Web UI
+    Dev->>Deploy: tools/export_policy.py 导出 TorchScript + SHA256SUMS
+    Deploy->>Deploy: build.sh 编译 LibTorch C++ 运行时，2步 NS-DDIM2 对接 Unitree DDS / G1
+```
+
+## 工程实践
+
+| 阶段 | 官方入口与关键注意事项 |
+|------|------------------------|
+| 快速 MuJoCo 评测 | 使用 Python 3.10 + `uv sync --locked`，先跑 `uv run --locked python scripts/hf_download.py --filter checkpoints`（校验 SHA-256），再跑 `uv run --locked predactor-eval` 打开 `http://127.0.0.1:8765/`；支持 `--web-perturb` 鼠标推扰和文本插值。 |
+| 采集与 BC 训练 | 先运行 `PredActor/collection/collect_dataset.sh` 与染色管线生成 `motion_dyed_text_t0.01.zarr`，再用 `PredActor/train.py --cfg g1prdp_cond_diffuse.yaml` 训练条件版（或 `g1prdp_diffuse.yaml` 跑无条件对照）；`train.py` 会自动屏蔽训练期引导避免梯度污染。 |
+| G1 C++ 部署 | 通过 `PredActor/diffusion_deploy/tools/export_policy.py --obs-profile G1 --no-use-fk` 导出完整资源目录及 `SHA256SUMS`（Orin 选用 `--target jetson-jp5-torch21`），运行 `verify_model_resources.sh` 后使用 `./build.sh --backend torch --with-sdk2` 构建 Unitree MuJoCo 环回或真机节点。 |
+| 门禁监控 | 机载端严格盯紧完整回调 **p95 < 20 ms**；切忌只用 ONNX 转换而丢失 WBG Jacobian 与滚动缓冲区逻辑，亦勿对 PRDP 剖面误开 `use_fk: true`。 |
 
 ## 局限与风险
 
-- **发布范围有限。** 当前开源内容是绑定公开 checkpoint 的 MuJoCo evaluator；没有训练数据收集与标注、行为克隆训练、DAgger 迭代或 G1 硬件部署工具。
-- **仿真评测不等于真机复现。** 软件启动与 checkpoint 可加载性不能证明新硬件上的安全性或运动质量；实际部署仍需独立的控制、安全和硬件验证。
-- **权重文件需校验来源。** PyTorch checkpoint 使用 pickle-compatible 反序列化；仅从官方仓链接的 Hugging Face 仓下载，并核对公开 SHA-256。
-- **锁定环境影响结果。** 官方环境目标为 Python 3.10；CUDA、驱动、模拟器或依赖版本变化可能改变评测结果。
+- **DAgger 阶段代码仍未开放：** 官方仓库 README Release Checklist 仍仅剩 **DAgger** 未勾选（`cond_eval.py` 仅保留 `_is_dagger_checkpoint` 加载分支），因此目前无法一键端到端复现论文中的在线 DAgger 教师-学生聚合收敛效果。
+- **纯本体传感器的视野缺失：** 策略不接收外视 RGB 或深度点云，仅凭关节与 IMU 本体感知，因此长距主动避障、台阶提前识别仍须依赖上游指定可通行目标点或外部感知输入。
+- **实机安全边界仍须独立审计：** 开源评测与 C++ 部署接口提供了硬件链路参考，但更换负载、地面摩擦或驱动参数后必须先经 Unitree MuJoCo 环回（`lo` DDS）与悬空/保护绳测试验证。
+- **序列化安全与依赖锁：** PyTorch checkpoint 采用 pickle 兼容反序列化（`weights_only=False`），务必经 `scripts/hf_download.py` 下载官方 [PredActor_Artifacts](https://huggingface.co/MasterYip/PredActor_Artifacts) 并核对 SHA-256。
 
-## 关联页面
+## 与其他页面的关联
 
-- [Diffusion Policy](../methods/diffusion-policy.md)
-- [SONIC](./nvidia-sonic.md)
-- [Whole-Body Control](../concepts/whole-body-control.md)
-- [Locomotion](../tasks/locomotion.md)
-- [Sample, Simulate, Select](./paper-sample-simulate-select.md) — 同 G1+SONIC 生态的不同 text-to-motion 路线
-
-## 推荐继续阅读
-
-- [PredActor 项目页团队与联系](https://masteryip.github.io/predactor.github.io/#people)
-- [PredActor GitHub 评测代码](https://github.com/MasterYip/PredActor)
-- [PredActor Hugging Face checkpoint](https://huggingface.co/MasterYip/PredActor_Artifacts)
-- [PredActor 项目页](https://masteryip.github.io/predactor.github.io/)
-- [arXiv:2609.24840](https://arxiv.org/abs/2609.24840)
+- [Diffusion Policy 方法页](../methods/diffusion-policy.md) — 动作去噪与条件扩散控制的理论底座
+- [Action Chunking](../methods/action-chunking.md) — 预测 20 步动作–状态视野与滚动复用思想
+- [Behavior Cloning](../methods/behavior-cloning.md) — 离线 BC 管线与分布偏移对 DAgger 的需求
+- [人形移动控制（Humanoid Locomotion）](../tasks/humanoid-locomotion.md) 与 [移动/腿足（Locomotion）](../tasks/locomotion.md) — 双足步态切换、推扰恢复与点导航任务定义
+- [Whole-Body Control](../concepts/whole-body-control.md) — 与物理引导 WBG 模块相关的全身协调控制概念
+- [NVIDIA SONIC](./nvidia-sonic.md) — 对比“上游参考运动生成 + 下游轨迹跟踪”的主流分离范式
+- [Sample, Simulate, Select](./paper-sample-simulate-select.md) — 同在 G1 上探索文本控制运动的对比工作
+- [Unitree G1](./unitree-g1.md) — 本文实验与开源部署锁定的 29-DoF 人形硬件平台
+- [扩散与流匹配纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md) — 路线中展示人形机载扩散控制的核心实体节点
 
 ## 参考来源
 
-- [PredActor 论文归档](../../sources/papers/predactor_arxiv_2609_24840.md)
-- [PredActor 项目页归档](../../sources/sites/predactor-masteryip-github-io.md)
-- [PredActor GitHub 评测代码归档](../../sources/repos/predactor.md)
-- [PredActor Hugging Face checkpoint 归档](../../sources/repos/predactor-artifacts.md)
+- [PredActor 论文归档](../../sources/papers/predactor_arxiv_2609_24840.md) — `arXiv:2609.24840v3` 全文通读与 Table 2–4 / Table 8 数据校订
+- [PredActor 官方仓库归档](../../sources/repos/predactor.md) — 评测、采集染色、BC 训练与 LibTorch C++ 部署源码核对
+- [PredActor 项目页归档](../../sources/sites/predactor-masteryip-github-io.md) — 项目页与演示对齐核查
+- [PredActor HF 工件归档](../../sources/repos/predactor-artifacts.md) — `PredActor_Artifacts` 模型工件核查记录
+- [森兰克周报来源](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md) — 早期入库线索溯源
+
+## 推荐继续阅读
+
+- [论文全文（arXiv:2609.24840v3）](https://arxiv.org/abs/2609.24840)
+- [官方代码仓库（MasterYip/PredActor）](https://github.com/MasterYip/PredActor)
+- [Hugging Face 模型工件（MasterYip/PredActor_Artifacts）](https://huggingface.co/MasterYip/PredActor_Artifacts)
+- [官方项目页（predactor.github.io）](https://masteryip.github.io/predactor.github.io/) · [团队与联系](https://masteryip.github.io/predactor.github.io/#people)
