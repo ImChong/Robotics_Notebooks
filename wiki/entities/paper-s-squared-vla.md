@@ -12,6 +12,8 @@ tags:
 status: complete
 updated: 2026-11-19
 arxiv: "2607.13926"
+original:
+  - ../../sources/papers/s_squared_vla_arxiv_2607_13926.md
 related:
   - ../methods/vla.md
   - ./paper-x-foresight.md
