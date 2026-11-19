@@ -490,6 +490,14 @@ op: ingest
 - 关联既有 FDE 工程参考书页面；不创建重复企业项目实体。
 - 验证边界：当前执行环境无法访问 GitHub 仓库网络克隆，尚未运行本地 make ci-preflight、健康度脚本或 Mermaid 解析器；以 GitHub Actions 为后续门禁，不声称已通过。
 
+# [2026-11-19] ingest | AutoVLA-D 从推理学习轨迹几何条件
+
+- **操作：** ingest
+- **日期：** 2026-11-19
+- **资料：** [AutoVLA-D arXiv:2611.12382](https://arxiv.org/abs/2611.12382) / [ShivaTeam/AutoVLA-D](https://github.com/ShivaTeam/AutoVLA-D)
+- **意图：** 解释驾驶指令语义如何经离散局部运动 token 过渡到最终连续航点；明确 TrajCond 是中间条件而非最终离散输出。
+- **结论：** 新增独立论文详情，论文和源码分层归档，Mermaid 方法图与核心代码运行时序图，关联 DriveTeach-VLA 和 VLA 纵深路线。记录论文分位区间与当前公开代码 min/max 的差异，以及 GRPO 在主仓之外的复现边界。
+
 ## [2026-11-19] ingest | Remotion + HyperFrames 官方源码与视频工程栈复核
 
 - 复用既有 `wiki/entities/remotion.md` 和 `wiki/entities/hyperframes.md` 两个唯一实体，不重复建页。
