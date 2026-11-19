@@ -54,7 +54,7 @@ summary: "ZERITH 2.5（arXiv:2611.23746）在 Wan2.2 视频生成先验上先做
 
 | 维度 | 论文/仓库报告 |
 |---|---|
-| **机构** | 泽瑞斯机器人（Zerith Robotics，ZERITH Z-Lab） |
+| **机构** | Zerith Robotics（ZERITH Z-Lab） |
 | **主论文** | [arXiv:2611.23746](https://arxiv.org/abs/2611.23746)（2026-11-18，预印本） |
 | **基座** | Wan2.2-TI2V-5B 视频分支（30 个 blocks）；10-block 动作 flow policy；约 6.774B 可训练参数 |
 | **输入** | 最多三相机多视角 RGB、语言指令、机器人本体状态及 VGGT 几何特征 |
