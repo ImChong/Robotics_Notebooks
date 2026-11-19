@@ -75,8 +75,8 @@
       localAnswerIntro: '找到以下站内相关内容：',
       fallbackRateLimited: '提问太频繁，已为你切为站内检索结果。',
       fallbackQuota: 'AI 助手当前繁忙，已为你切为站内检索结果。',
-      fallbackVerify: '安全校验未完成，已为你切为站内检索结果。',
-      fallbackGeneric: 'AI 助手暂不可用，已为你切为站内检索结果。',
+      fallbackVerify: '安全校验尚未就绪，已自动切换为站内检索结果。',
+      fallbackGeneric: 'AI 助手暂时离线，已自动切换为站内检索结果。',
       cachedTag: '来自常见问答缓存',
       emptyError: '请输入至少 2 个字的问题。',
       tooLongError: '问题请控制在 {max} 字以内。',
@@ -130,6 +130,49 @@
       requestTimeoutMs: Number(raw.requestTimeoutMs) || DEFAULT_CONFIG.requestTimeoutMs,
     };
     return merged;
+  }
+
+  function initPanelResize(panel) {
+    var handles = [
+      { cls: 'kb-chat-resize-left', dx: -1, dy: 0 },
+      { cls: 'kb-chat-resize-top', dx: 0, dy: -1 },
+      { cls: 'kb-chat-resize-nw', dx: -1, dy: -1 },
+    ];
+    handles.forEach(function (cfg) {
+      var handle = document.createElement('div');
+      handle.className = 'kb-chat-resize-handle ' + cfg.cls;
+      handle.setAttribute('aria-hidden', 'true');
+      handle.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0 || window.innerWidth < 768) return;
+        e.preventDefault();
+        var rect = panel.getBoundingClientRect();
+        var startX = e.clientX;
+        var startY = e.clientY;
+        var startW = rect.width;
+        var startH = rect.height;
+        var maxW = Math.min(760, Math.max(320, window.innerWidth - 48));
+        var maxH = Math.min(760, Math.max(380, window.innerHeight - 110));
+
+        function onMove(ev) {
+          if (cfg.dx !== 0) {
+            var nextW = Math.min(maxW, Math.max(320, startW + (startX - ev.clientX)));
+            panel.style.width = nextW + 'px';
+          }
+          if (cfg.dy !== 0) {
+            var nextH = Math.min(maxH, Math.max(380, startH + (startY - ev.clientY)));
+            panel.style.height = nextH + 'px';
+            panel.style.maxHeight = nextH + 'px';
+          }
+        }
+        function onUp() {
+          window.removeEventListener('pointermove', onMove);
+          window.removeEventListener('pointerup', onUp);
+        }
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', onUp);
+      });
+      panel.appendChild(handle);
+    });
   }
 
   function sanitizeEndpoint(urlString) {
@@ -939,6 +982,8 @@
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'false');
     panel.hidden = true;
+
+    initPanelResize(panel);
 
     var header = document.createElement('div');
     header.className = 'kb-chat-header';

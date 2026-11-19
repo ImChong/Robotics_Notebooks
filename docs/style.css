@@ -5205,6 +5205,7 @@ a.card:active { transform: translateY(-1px); }
 }
 
 .kb-chat-panel {
+  position: relative;
   pointer-events: auto;
   width: min(380px, calc(100vw - 32px));
   /* 预留底部 24px + 底部按钮行(48px) + gap(12px) + 顶栏(--header-h 58px) + 呼吸边距(14px) = 156px */
@@ -5219,6 +5220,38 @@ a.card:active { transform: translateY(-1px); }
   overflow: hidden;
   transform-origin: bottom right;
   transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.kb-chat-resize-handle {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  touch-action: none;
+}
+@media (min-width: 768px) {
+  .kb-chat-resize-handle {
+    display: block;
+  }
+  .kb-chat-resize-left {
+    top: 14px;
+    bottom: 14px;
+    left: 0;
+    width: 8px;
+    cursor: ew-resize;
+  }
+  .kb-chat-resize-top {
+    top: 0;
+    left: 14px;
+    right: 14px;
+    height: 8px;
+    cursor: ns-resize;
+  }
+  .kb-chat-resize-nw {
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    cursor: nwse-resize;
+  }
 }
 .kb-chat-panel[hidden] {
   display: none;
