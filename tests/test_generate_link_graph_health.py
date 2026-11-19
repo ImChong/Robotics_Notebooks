@@ -51,6 +51,26 @@ def test_all_repo_roadmap_pages_score_full() -> None:
         assert score == 3, f"{page.name} 健康度 {score} != 3"
 
 
+
+def test_reference_health_full_signals_score_three() -> None:
+    """索引页采用摘要来源 / 导航 / 分类覆盖，而不是「原文通读」。"""
+    content = (
+        "---\ntype: reference_page\nstatus: complete\n"
+        "summary: 综述导航\nsources:\n  - https://arxiv.org/abs/2102.02915\n"
+        "---\n\n# 综述导航\n\n## 按问题找综述\n"
+        "| 问题 | 入口 |\n|---|---|\n| 控制 | 论文 |\n"
+        "### 控制\n### 学习\n### 感知\n"
+    )
+    assert glg.compute_reference_health(content, 5) == (3, 0)
+    assert glg.compute_reference_health(content, 4) == (2, 4)
+    assert glg.compute_reference_health(content.replace("## 按问题找综述", "## 背景"), 5) == (2, 2)
+
+
+def test_reference_health_does_not_count_unfinished_metadata_as_full() -> None:
+    content = "---\ntype: reference_page\nstatus: draft\n---\n\n# 导航\n"
+    assert glg.compute_reference_health(content, 0) == (0, 15)
+
+
 def _skeleton(status: str = "complete", original: str | None = None) -> str:
     """scaffold 生成的标准骨架（覆盖全部阅读骨架小节），可替换 status、追加 original。"""
     content = build_skeleton("concept", "示例").replace("status: draft", f"status: {status}")
