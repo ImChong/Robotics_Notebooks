@@ -482,6 +482,12 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-19] ingest | sources/blogs/claude_dev_chaos_loop_docs_launch_2026-11-17.md 与 claude_dev_dynamic_workflows_2026-06-02.md — 整理 Claude Docs 持续故障注入和 Claude Code 动态工作流
+
+- 通读两篇 Claude Code 官方博客，分别形成 Chaos Loop、动态多 Agent Harness 独立方法页，绘制基于原文的 Mermaid 流程图。
+- 区分内部工程自报指标、未经实测的成本估算和面向机器人的迁移建议；文章没有提供可复现实验源码，不虚构运行时序图。
+- 在 RSI 纵深路线 Stage 3（验证锚）与 Stage 4（harness）中添加推荐读物；不把动态工作流误作权重级 RSI。
+
 ## [2026-11-19] ingest | 通读一手论文与官方仓库源码，将 depth-imitation-learning 与 depth-icl 两条纵深路线的 24 个缺分节点全部升至 3/3 满分健康度
 
 ## [2026-11-19] lint | 清理全局 lint 首批高性价比 Info（8 页 / 11 项）：4 类知识链枢纽回链清零、GM-100 重定向就绪度、pyplcopen 版本快照措辞与 Limit of RLVR 对比小节
