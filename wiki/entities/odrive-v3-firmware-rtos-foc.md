@@ -1,6 +1,7 @@
 ---
 type: entity
 project_id: odrive-v3-firmware
+institutions: [odrive-robotics]
 project: "https://github.com/odriverobotics/ODrive"
 code: "https://github.com/odriverobotics/ODrive/tree/fw-v0.5.6/Firmware"
 code_scope: "Firmware/Board/v3, Firmware/MotorControl, Firmware/ThirdParty/FreeRTOS"
@@ -11,6 +12,7 @@ related:
   - ../concepts/field-oriented-control.md
   - ../formalizations/control-loop-latency-modeling.md
   - ../methods/pid-control.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../methods/joint-actuator-parameter-identification.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./simplefoc.md
@@ -41,6 +43,14 @@ summary: "ODrive v3 固件 fw-v0.5.6 将 FreeRTOS/CMSIS 任务用于 Axis 状态
 | PWM | Pulse-Width Modulation | 通过 TIM1/TIM8 更新三相功率驱动 |
 | WCET | Worst-Case Execution Time | 用于检验控制任务 deadline 的最坏执行时间 |
 | CMSIS | Cortex Microcontroller Software Interface Standard | 固件中调用的 RTOS 抽象 API |
+
+## 项目身份
+
+| 项目 | 内容 |
+|---|---|
+| 机构 | ODrive Robotics（ODrive 机器人公司；官方 GitHub 账号 odriverobotics） |
+| 代码版本 | 官方 Git 标签 `fw-v0.5.6`，v3.x 固件 |
+| 开源范围 | 公开仓库的 v3.x Firmware；不含新代产品固件 |
 
 ## 为什么重要
 
@@ -170,6 +180,7 @@ sequenceDiagram
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 驱动建模与台架验证
 - [电机底软总线与协议](../overview/motor-drive-firmware-bus-protocols.md) — 运动命令与底层控制边界
 - [SimpleFOC](./simplefoc.md) / [moteus](./moteus.md) — 不同嵌入式 FOC 架构对照
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 解释 FOC/协议与上层指令的工程分界
 - [力矩电机设计纵深 Stage 3](../../roadmap/depth-torque-motor-design.md) — 电流环和嵌入式固件的工程路线
 
 ## 参考来源
