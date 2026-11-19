@@ -1,158 +1,146 @@
 ---
 type: entity
+project_id: urkl
+project: https://en.engineai.com.cn/robot-fighting-competition.html
 tags: [humanoid, sports, entertainment-robotics, engineai, autonomous-combat, t800]
 status: complete
-updated: 2026-07-24
+updated: 2026-11-19
 related:
   - ./rek.md
   - ./paper-notebook-robostriker.md
   - ./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
   - ../tasks/teleoperation.md
+  - ../tasks/humanoid-locomotion.md
+  - ../tasks/loco-manipulation.md
+  - ../methods/beyondmimic.md
   - ../../roadmap/depth-humanoid-boxing.md
 sources:
   - ../../sources/sites/engineai-urkl.md
-  - ../../sources/sites/urkl-org.md
   - ../../sources/blogs/wechat_urkl_faq_01.md
-summary: "URKL（Ultimate Robot Knock-out Legend）是深圳众擎 EngineAI 以统一 T800 全尺寸人形为平台的全球标准化算法格斗联赛；2026-07 开幕展览后进入 8 月 Top32 实机选拔，官方 FAQ 宣称将开源本届赛事相关代码。"
+  - ../../sources/sites/urkl-org.md
+original:
+  - ../../sources/sites/engineai-urkl.md
+  - ../../sources/blogs/wechat_urkl_faq_01.md
+summary: "URKL（Ultimate Robot Knock-out Legend）是深圳众擎 EngineAI 主办的全球标准化 T800 全尺寸人形机器人格斗联赛：采用展演+竞技双轨与统一硬件平台（Basic/Open Source/Pro/Max 四版本，173 cm、75–85 kg、450 N·m），聚焦自主运控与感知对抗并承诺后续开源赛事代码。"
 ---
 
 # URKL（Ultimate Robot Knock-out Legend · EngineAI 人形格斗联赛）
 
-**URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人格斗联赛**：全球队伍在 **同一 T800 硬件平台** 上比拼 **运控、平衡、感知与战术算法**，赛制为 **展演（Exhibition Showcases）+ 擂台竞技（Combat Competition）** 双轨；2026 年 7 月于深圳南山文体中心完成开幕展览赛，冠军奖励约 **1000 万元** 纯金腰带。
+**URKL** 是深圳 **众擎机器人（ENGINEAI）** 发起并主办的 **全尺寸人形机器人自由格斗联赛**：全球高校、企业与科研队伍在 **同一 EngineAI T800 统一底盘** 上比拼运动控制、抗冲击平衡、视觉感知与战术决策算法，赛制设为 **展演（Exhibition Showcases）+ 擂台竞技（Combat Competition）** 双轨；2026 年 7 月于深圳南山文体中心完成开幕展览赛，冠军奖励约 **1000 万元** 纯金腰带。
 
 ## 一句话定义
 
-**以标准化 T800 人形为「F1 式」统一底盘，把高冲击格斗做成全球算法联赛、产品耐久极限测试场与「体能 × 智能」工程叙事舞台。**
+**以标准化 EngineAI T800 全尺寸人形为统一物理底盘，把高冲击对抗打造成比拼运控平衡与感知决策的商业格斗联赛、耐久极限验证场及具身技术生态入口。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| URKL | Ultimate Robot Knock-out Legend | 联赛品牌与赛事简称 |
-| BO3 | Best of Three | 正赛常见三局两胜制（开幕展览报道另有五局记分） |
-| DoF | Degrees of Freedom | T800 竞技平台标称 29 关节自由度（不含灵巧手） |
-| WBC | Whole-Body Control | 格斗场景对全身平衡与抗冲击运控的极端考验 |
-| SDK | Software Development Kit | T800 Open Source Edition 支持二次开发，供参赛队调算法 |
-| CES | Consumer Electronics Show | T800 于 CES 2026 正式亮相的公开时间节点 |
+| URKL | Ultimate Robot Knock-out Legend | EngineAI 发起的全球全尺寸人形格斗联赛简称 |
+| BO3 | Best of Three | 报道正赛采用的三局两胜赛制（每局净比赛 5 min） |
+| DoF | Degrees of Freedom | 自由度；T800 按版本覆盖 25、29+14=43 与 32+14=46 DoF |
+| PMSM | Permanent Magnet Synchronous Motor | T800 关节驱动采用的永磁同步电机（配合交叉滚子轴承） |
+| WBC | Whole-Body Control | 格斗对打中的双足抗冲击平衡与全身攻防协同控制 |
+| SDK | Software Development Kit | T800 Open Source / Pro / Max 版本支持的二次开发接口 |
 
 ## 为什么重要
 
-- **标准化硬件联赛范式：** 与轮式「BattleBots」式破坏性改装不同，URKL 强制 **同一 T800 平台**，胜负取决于 **算法与调参**——类似 Formula 1 对汽车产业的拉动逻辑。
-- **自主格斗 vs 人类 pilot 对照轴：** 西方 [REK](./rek.md) 走 **VR 真人遥操作 + Unitree G1**；URKL 走 **机器人自主（或队方自研控制栈）对打**——与学术侧 [RoboStriker](./paper-notebook-robostriker.md) 的 **双智能体 RL 自主拳击** 同属「策略在机内」路线，但面向 **商业化联赛与硬件出货**。
-- **极限耐久与工程数据：** 开幕战出现 **头部击飞后躯干仍可出拳** 等场景，把 **冲击吸收、倒地起身、局内续航（禁止换电）** 推成可量化竞技指标，反哺 [人形拳击纵深路线](../../roadmap/depth-humanoid-boxing.md) 的 Stage 4–5。
-- **众擎产品化叙事锚点：** 与 [LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) 在 **PM01** 上的学术合作并列，T800 + URKL 是 EngineAI **全尺寸、高动态** 产品线的 **赛事营销 + 开发者生态** 入口。
-- **官方开源承诺升档：** 2026-07-24 官方 FAQ 宣称将 **开源本届赛事相关代码**（仓库 URL 仍待落地），使 URKL 从纯 spectacle 叙事向「以赛促研 / 公共算法资产」靠拢。
+- **「统一硬件、算法定胜负」的联赛范式：** 不同于允许无限制改造硬件的传统破坏性机甲赛，URKL 强制使用标准化 **T800** 平台、禁止暴力硬件改装，将竞争焦点收束至 [双足运动控制](../tasks/humanoid-locomotion.md)、跌倒起身与对抗感知。
+- **与 VR 遥操路线的产业对照：** 相较西方以人类 VR pilot 为主力的 [REK](./rek.md)，URKL 主打机器侧算法与「体能 × 智能」闭环（官方 FAQ 亦将实时感知、躲闪、反制定位为具身 AI 核心挑战），与学术多智能体工作 [RoboStriker](./paper-notebook-robostriker.md) 共享技术议题但面向真实商业交付。
+- **极限耐久与能源约束测试：** 实机对抗中出现的剧烈冲击、快速恢复、倒地 10 s 自主起身及「局内禁止换电」设定，直接倒逼高扭矩关节散热与固态电池 3–5 h 级长时输出能力，支撑 [人形拳击纵深路线](../../roadmap/depth-humanoid-boxing.md) 评估。
+- **硬件分层开放与开源承诺：** T800 细分 Basic 至 Max 四档 SKU 以隔离展示用途与开发者二次开发权限，且官方 FAQ Q5 公开承诺「将开源本届赛事相关代码」（仓库链接仍在等待公布）。
 
-## 流程总览
+## 核心原理
 
 ```mermaid
 flowchart LR
-  subgraph reg [报名与筛选]
-    WEB["官网报名<br/>2026-03 ~ 04"]
-    ONLINE["线上资格赛<br/>200+ → 32"]
+  subgraph reg [报名与线上筛选]
+    WEB["官网门户 (2026.3.1 起)"]
+    ONLINE["线上资格赛 (200+ 报名 -> 32 队)"]
     WEB --> ONLINE
   end
-  subgraph season [赛季]
-    OPEN["开幕展览<br/>2026-07-16"]
-    PLAYIN["Top32 实机 play-in<br/>08 · 四城"]
-    GROUP["16 队小组赛<br/>10"]
-    FINAL["总决赛<br/>12 · 暂定"]
-    ONLINE --> OPEN --> PLAYIN --> GROUP --> FINAL
+  subgraph season [赛季推进]
+    OPEN["深圳开幕展览 (2026-07-16)"]
+    PLAYIN["Top32 实机选拔 -> 16 队"]
+    GROUP["16 队小组赛与总决赛"]
+    ONLINE --> OPEN --> PLAYIN --> GROUP
   end
-  subgraph platform [统一平台]
-    T800["EngineAI T800<br/>29 DoF · 450 N·m"]
-    ALG["队方算法<br/>运控 / 感知 / 防护"]
+  subgraph platform [统一 T800 硬件平台]
+    T800["T800 (173 cm · 75-85 kg · 450 N·m)"]
+    ALG["队方控制栈 (抗冲击 WBC + 感知决策 + 非破坏防护)"]
     T800 --> ALG
   end
   subgraph arena [双轨赛场]
     EXPO["展演 Showcase"]
-    FIGHT["擂台 Combat<br/>BO3 × 5 min"]
+    FIGHT["擂台 Combat (BO3 × 5 min)"]
     ALG --> EXPO
     ALG --> FIGHT
   end
 ```
 
-## 核心结构
+### 赛制与评分结构（第一方与第三方交叉核对）
 
-### 赛制与规则（公开信息归纳）
+| 维度 | 核对要点 |
+|---|---|
+| **赛事双轨** | 官网英文门户明确区分 **Exhibition Showcases（展演）** 与 **Combat Competition（竞技）** 双轨 |
+| **硬件限制** | 统一 **EngineAI T800** 平台，禁止破坏性/暴力硬件改装，仅允许运控平衡、感知决策与非破坏性结构防护 |
+| **单局约束（媒体报道）** | **BO3**（每局净时 **5 min**）；倒地 **10 s** 内自主起身，超时使用 `manual reset`（每场限 **2 次**）；赛中禁止更换电池 |
+| **评分四维度（媒体梳理）** | 有效击打、身体稳定性、防守/闪避能力、整体耐久（开幕战报道 *White Eagle* vs *Bullfighter* 五局 `3–2` 为现场展览赛） |
 
-| 维度 | 内容 |
-|------|------|
-| **主办** | **众擎机器人（ENGINEAI）** 发起并主办；面向高校、企业与科研机构 |
-| **平台** | 全员 **EngineAI T800**（约 173 cm；体重约 **75–85 kg** 视 SKU；29 DoF；峰值力矩 450 N·m） |
-| **创新边界** | **禁止暴力硬件改装**；鼓励运控平衡、感知决策、非破坏性结构防护 |
-| **单局（正赛报道）** | **BO3**；每局净时 **5 min**；倒地 **10 s** 内自主起身；否则 **manual reset**（每场 ≤ **2 次**） |
-| **能源** | 第三方报道：**局内禁止换电**，考验功率与热管理 |
-| **四项评分信号（开幕报道）** | **有效击打、身体稳定性、防守/闪避能力、整体耐久**（权重细则待官方规则 PDF） |
+### EngineAI T800 四版本规格对照（官网 `t800_site.txt` 全文核对）
 
-### 赛季里程碑（2026 赛季 · 交叉核对）
+T800 全系共通物理指标：**173 cm** 身高、**75–85 kg** 整备质量、**450 N·m** 峰值关节力矩、**PMSM** 电机 + 交叉滚子轴承、腿部主动散热、固态电池 **3–5 h** 续航、最大步速 **≥ 2 m/s** 与 **8 核 CPU**；产品页脚注 `[8]` 明确限为民用（civilian use only）。
 
-| 阶段 | 时间（公开报道） | 备注 |
-|------|------------------|------|
-| 线上报名 | 2026-03-01 — 04-30 | Humanoids Daily |
-| 线上资格赛 | 2026-04 | **200+** 报名 → **32** 队（urkl.org / 媒体汇总） |
-| **开幕展览** | **2026-07-16** 深圳南山文体中心 | **White Eagle** vs **Bullfighter**；报道五局 **Bullfighter 3–2**；真机现场，非赛季决赛 |
-| Top 32 实机 play-in | **2026-08** | 四城部署评分 → 选出 **16** 队（广州日报等；精确日待官宣） |
-| 16 队小组赛 | **2026-10** | 赛程/转播日历未公布 |
-| 总决赛 | **2026-12**（provisional） | 与早期「12–2027-01」报道并存，以最新官方日历为准 |
+| 版本（Edition） | 自由度（DoF） | 算力配置 | 传感 / 通信 / 二次开发 |
+|---|---|---|---|
+| **BASIC EDITION** | **25 DoF** | Orin NX 16G | 无 3D LiDAR；不支持二次开发 SDK |
+| **OPEN SOURCE EDITION** | **25 DoF** | AGX Orin 64G（可升级 Thor） | 配备 3D LiDAR；支持二次开发 SDK |
+| **PRO EDITION** | **29 + 14 = 43 DoF**（含双 7-DoF 触觉灵巧手，负载 5 kg） | AGX Orin 64G（可升级 Thor） | 配备 3D LiDAR + 触觉灵巧手；支持二次开发 SDK |
+| **MAX EDITION** | **32 + 14 = 46 DoF**（含双 7-DoF 触觉灵巧手） | AGX Orin 64G（可升级 Thor） | 在 PRO 基础上新增 **5G** 模块；支持二次开发 SDK |
 
-### 「体能 × 智能」工程读法（官方 FAQ）
+### 赛季里程碑与「体能 × 智能」工程读法
 
-| 层 | 要点 |
-|----|------|
-| **体能** | 高速移动/转身/出拳与外力干扰下仍保持稳定；硬件强度与冲击能力支撑接触对打 |
-| **智能** | 高动态下持续感知、锁定、瞄准与预判；攻击/躲闪/防御/反制与战术规划——依赖反应快的 **具身 AI** |
-| **闭环难点** | 不在单次挥拳动作，而在真实接触环境下的 **感知 → 决策 → 执行 → 恢复** 整套对抗 |
+- **「体能」侧：** 在高速位移、转身、出拳与受击外力干扰下保持不倒，依赖 PMSM + 交叉滚子轴承高刚度传动与腿部主动散热支撑连续对抗。
+- **「智能」侧：** 官方 FAQ 强调格斗真正瓶颈在于真实碰撞下的 **快速感知 → 锁定与距离预判 → 攻防躲闪 → 跌倒恢复** 全闭环，而非孤立挥拳演示。
+- **激励与商业化：** 报道设立约 **10 kg 纯金腰带**（约 1000 万元 RMB）、前 16 名赠整机、前 8 队员获 EngineAI 招聘快通道，并围绕赛事 IP、城市合作、赞助与机甲商用构建商业模型。
 
-### 激励与生态
+## 源码运行时序图
 
-| 奖项 / 商业 | 要点 |
-|-------------|------|
-| 冠军 | 约 **10 kg 纯金腰带**（估值约 **1000 万元 RMB**） |
-| 前 16 | 获赠 **T800 整机**（硬件作研发激励） |
-| 前 8 队员 | EngineAI **招聘 fast-track** 终面通道 |
-| 商业模型（官方 FAQ） | 赛事 IP + 城市合作 + 品牌赞助 + 机甲商用 + 技术转化 |
-| 已披露赞助线索 | 工商银行深圳分行；百度智能云、拓竹、飞亚达、天虹、铜师傅、C 引力等 |
-| 招商 | `sponsor@engineai.com.cn` |
+**不适用** — 经全文核查 EngineAI 官方英文赛事页（`urkl_site.txt`）、T800 产品页（`t800_site.txt`）与官方公众号 FAQ 全文（`2026-07-24`），**URKL** 现阶段为**商业格斗赛事平台与商用硬件 SDK 生态**，无公开可用的端到端源码仓库。尽管官方 FAQ Q5 明确表态「赛事组委会将开源本届赛事相关代码」，但截至核对日官网门户（`Online Qualifiers COMING SOON`）及 FAQ 均未附带任何 GitHub / 仓库链接；而 T800 的 `Open Source Edition` / `Pro` / `Max` 属于提供**商业二次开发 SDK** 的硬件交付版本，不等同于公开开源训练与控制器代码库。
 
 ## 工程实践
 
-- **选型时先分清三条「格斗」路线：** [REK](./rek.md) = 人类 VR pilot；URKL = **队方自控算法 + 统一硬件**；RoboStriker = **学术双智能体 RL**。评测指标与安全责任主体完全不同。
-- **参赛工程重心：** 在 **固定动力学与力矩上限** 下优化 **抗冲击 WBC、跌倒恢复状态机、有限 manual reset 策略**；勿假设可换更大电机或破坏性装甲。
-- **开源状态（2026-07-24）：**
-  - **赛事相关代码：** 官方 FAQ **宣称将开源本届赛事相关代码**，但 **截至入库日无 GitHub URL** → **宣称将开源 / 待发布**。
-  - **T800 Open Source Edition**（约 **$54k**）：**SDK 二次开发** 的商业授权，≠ 公开训练仓库。
-  - 详见 [engineai-urkl.md](../../sources/sites/engineai-urkl.md) 与 [wechat_urkl_faq_01.md](../../sources/blogs/wechat_urkl_faq_01.md)。
+- **硬件选型边界：** 参赛与二次开发需选用 `Open Source`、`Pro` 或 `Max` 版本以获取 **3D LiDAR**、**AGX Orin 64G（可升 Thor）** 及官方 SDK 授权；`Basic Edition` 缺乏 LiDAR 与二次开发支持，不适合算法自研团队。
+- **赛场控制优先项：** 在 450 N·m 峰值力矩与局内禁换电约束下，工程优先级依次为：抗冲击全身姿态稳定（[BeyondMimic](../methods/beyondmimic.md) / RL WBC 参考方向）、10 s 内自主起身状态机、跌倒保护降载及限次 `manual reset` 战术编排。
+- **与遥操任务关系：** 尽管 URKL 主叙事指向机载自主/队方智能算法，现场高动态全身打击与防护策略常需借力 [Teleoperation](../tasks/teleoperation.md) 示范与 [全身移动操作](../tasks/loco-manipulation.md) 的下肢-上肢协同解耦方法，且第一方尚未完全公开开幕战的自主/干预边界比例。
 
 ## 局限与风险
 
-- **宣传与规则透明度：** 官网英文页曾长期 **Coming Soon**；完整评分权重与资格赛接口需持续跟进官方 PDF。
-- **「自主」程度待核实：** 独立导读 [urkl.org](https://urkl.org/) 与开幕观感均指出——第一方材料 **尚未清楚说明** 7/16 场次的自主 vs 场边干预比例；在规则落地前勿把宣传愿景写成已验证控制模式。
-- **开幕战 ≠ 赛季完结：** 7/16 为 **展览赛**；病毒短视频不能证明「总决赛已打完」或「剪辑未经处理」。
-- **耐久 vs 科研可复现：** 联赛为 **spectacle + 商业出货**，不等同于可发表的对抗 RL 基准；与 RoboStriker 的仿真–真机对照应分开讨论。
-- **安全与合规：** T800 产品页明确 **民用、禁止危险改装**；高冲击赛事对观众距离、应急停机与机体维修成本有现实约束。
-- **第三方导读边界：** [urkl.org](../../sources/sites/urkl-org.md) 为 **Independent fan guide**，适合证据索引与时间线核对，**不是** EngineAI 官网镜像。
+- **英文门户信息滞后与规则细则缺口：** 官网英文页（`urkl_site.txt`）长期停留在 `2026.3.1` 锚点、`Online Qualifiers COMING SOON` 及失效倒计时（`-126 天`），完整裁判计分权重 PDF 与资格赛提交规范仍待官方补全。
+- **开源代码仓库尚未落地：** 官方 FAQ Q5 的赛事代码开源承诺目前仅有文字宣称而无具体 URL，无法评估其包含的是仿真环境、基础运控基线还是完整对抗策略。
+- **开幕战控制模式与第三方信源边界：** 独立导读站 [urkl.org](../../sources/sites/urkl-org.md) 明确提醒其自身为 `Independent fan guide` 而非 EngineAI 官网镜像，且第一方材料尚未逐场明确开幕战自主运行与场边人工干预的实际占比。
+- **高冲击安全与合规限制：** T800 产品页脚注 `[8]` 限定民用并禁止危险改装；真实 75–85 kg 金属躯干在对抗中的碰撞冲击对赛场围栏距离、无线急停与结构件维护成本提出严格要求。
 
-## 与其他页面的关系（关联）
+## 与其他页面的关联
 
-- [REK](./rek.md) — 西方 VR 遥操作格斗联赛对照样本
-- [RoboStriker](./paper-notebook-robostriker.md) — 自主人形拳击学术研究锚点
-- [Teleoperation](../tasks/teleoperation.md) — 竞技向全身控制谱系（URKL 不在此列）
-- [人形拳击纵深路线](../../roadmap/depth-humanoid-boxing.md) — Stage 0 自主 vs 遥操作；Stage 5 赛事产业
-- [LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) — 同机构 EngineAI 在 PM01 上的 loco-manip 学术样本
+- [REK](./rek.md) — 以 VR 真人 pilot 为核心的海外人文娱格斗联赛对照
+- [RoboStriker](./paper-notebook-robostriker.md) — 自主人形拳击多智能体强化学习研究基线
+- [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 双足抗扰步态与受击稳定核心任务
+- [Loco-Manipulation](../tasks/loco-manipulation.md) — 下盘站立与上肢攻防协同全身控制
+- [Teleoperation](../tasks/teleoperation.md) — 与全自主赛制相对照的远程遥操作控制谱系
+- [BeyondMimic](../methods/beyondmimic.md) — 通用全身动作跟踪与控制框架参考
+- [人形拳击纵深路线](../../roadmap/depth-humanoid-boxing.md) — Stage 0 路线分流与 Stage 5 产业赛事定位
+- [LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) — 同机构 EngineAI 在 PM01 上的敏捷全身运动控制研究
 
 ## 参考来源
 
-- [engineai-urkl.md](../../sources/sites/engineai-urkl.md) — 官网赛事门户与第三方交叉归档
-- [urkl-org.md](../../sources/sites/urkl-org.md) — 独立导读站（证据链 / 赛程 tracker）
-- [wechat_urkl_faq_01.md](../../sources/blogs/wechat_urkl_faq_01.md) — 官方 FAQ：定位、开源承诺、商业化
-- 官网：<https://en.engineai.com.cn/robot-fighting-competition.html>
-- T800 产品页：<https://en.engineai.com.cn/product-t800.html>
-- 独立导读：<https://urkl.org/>
+- [EngineAI URKL 官网门户与 T800 四版本规格核对归档（engineai-urkl.md）](../../sources/sites/engineai-urkl.md)
+- [众擎 URKL 官方常见疑问解答（01 篇）全文核对归档（wechat_urkl_faq_01.md）](../../sources/blogs/wechat_urkl_faq_01.md)
+- [urkl.org 第三方独立导读站交叉核对（urkl-org.md）](../../sources/sites/urkl-org.md)
 
 ## 推荐继续阅读
 
-- [Humanoids Daily：URKL 全球报名与赛制](https://www.humanoidsdaily.com/news/engineai-opens-global-registration-for-urkl-the-1-4-million-race-for-humanoid-supremacy)
-- [Global Times：深圳 URKL 开幕战报道](https://www.globaltimes.cn/page/202607/1366175.shtml)
-- [urkl.org：When is the next URKL game?](https://urkl.org/when-is-the-next-urkl-game)
-- [REK 实体页](./rek.md) — VR pilot 路线的产业对照
+- EngineAI 官方英文赛事页：<https://en.engineai.com.cn/robot-fighting-competition.html>
+- EngineAI T800 产品规格页：<https://en.engineai.com.cn/product-t800.html>
+- [REK 实体页](./rek.md) — VR 遥操作格斗联赛对照
+- [urkl.org 独立导读](https://urkl.org/)

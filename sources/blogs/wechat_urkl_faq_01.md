@@ -6,11 +6,14 @@
 - **类型：** blog
 - **作者：** URKL（众擎 / EngineAI 赛事公众号署名）
 - **原始链接：** https://mp.weixin.qq.com/s/mZiWICUnOJZ5bBObVcvUcw
-- **发表日期：** 2026-07-24（抓取 frontmatter 时间戳）
+- **发表日期：** 2026-07-24（原始抓包时间戳 `2026-07-24 18:24:16`）
 - **入库日期：** 2026-07-24
+- **核对日期：** 2026-11-19
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + `wechat-article-for-ai`（Camoufox）；`--no-images`；Jina Reader 对微信链接触发 CAPTCHA，未采用
 - **原始抓取落盘：** [`sources/raw/wechat_urkl_faq_01_2026-07-24/`](../raw/wechat_urkl_faq_01_2026-07-24/)
-- **一句话说明：** 众擎官方 FAQ（01）：URKL 定位与主办方、格斗难点（感知–决策–执行闭环）、体能×智能叙事、**承诺开源本届赛事相关代码**、商业化模型与赞助进展、招商联系方式。
+- **核对范围：** 原始抓取全文通读（`「众」所周知丨众擎URKL常见疑问解答（01篇）.md`，Q1–Q8 全文逐条核对）
+- **通读：** 已完成
+- **一句话说明：** 众擎官方 FAQ（01）：URKL 定位与主办方、格斗难点（感知–决策–执行闭环）、体能×智能叙事、**Q5 明确承诺「赛事组委会将开源本届赛事相关代码」（但暂未附仓库 URL）**、商业化模型与赞助进展、招商联系方式。
 - **姊妹资料：** [EngineAI URKL 官网归档](../sites/engineai-urkl.md)；[urkl.org 独立导读站](../sites/urkl-org.md)
 
 ## 核心摘录（归纳，非全文）

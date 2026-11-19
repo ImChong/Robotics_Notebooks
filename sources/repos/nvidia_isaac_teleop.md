@@ -5,16 +5,18 @@
 - **标题：** Isaac Teleop
 - **类型：** repo + 官方文档 + Isaac Lab 集成文档
 - **组织：** NVIDIA
-- **代码：** https://github.com/NVIDIA/IsaacTeleop
+- **代码：** https://github.com/NVIDIA/IsaacTeleop（仓库及包名正迁移至 `NVIDIA/IsaacCapture` / `isaaccapture`）
 - **官方文档：** https://nvidia.github.io/IsaacTeleop/main/index.html
 - **文档归档：** [nvidia-isaac-teleop-docs.md](../sites/nvidia-isaac-teleop-docs.md)
 - **Isaac Lab 功能页（第三方镜像，与官方 develop 文档同源结构）：** https://docs.robotsfan.com/isaaclab_official/develop/source/features/isaac_teleop.html
 - **Isaac Lab 上游文档（推荐复核）：** https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html
 - **许可：** Apache-2.0
-- **规模（2026-09-05 GitHub API）：** 376★ / 85 forks；`pushed_at` 2026-09-05；Python 为主
+- **规模（2026-09-05 GitHub API）：** 376★ / 85 forks；`pushed_at` 2026-09-05；Python / C++ 为主
 - **首次入库：** 2026-06-02
-- **复核日期：** 2026-09-05
-- **一句话说明：** NVIDIA 统一的仿真与真机遥操作框架：标准化 XR/外设设备接口、图式 retargeting 管线、MCAP 录制回放，并与 Isaac Sim / Isaac Lab / ROS2 / LeRobot 及模仿学习采数工作流衔接；1.5.x 文档补齐 Televiz 合成器与第一人称无标记手重建。
+- **复核日期：** 2026-11-19
+- **通读：** 已完成
+- **核对范围：** `README.md`、`pyproject.toml`、`docs/source/`（`architecture.rst`、`teleop_session.rst`、`control_state_machine.rst`、`oob_teleop_control.rst`、`egohand.rst` 等）、`src/python/isaaccapture/teleop_session_manager/`（`teleop_session.py`、`config.py`）及 `examples/teleop/python/` 示例
+- **一句话说明：** NVIDIA 统一的仿真与真机遥操作框架（正迁移为 Isaac Capture / `isaaccapture`）：标准化 XR/外设设备接口、图式 retargeting 管线、MCAP 录制回放，并与 Isaac Sim / Isaac Lab / ROS2 / LeRobot 及模仿学习采数工作流衔接；新版本新增 `TeleopSession` 编排、OOB 控制中心与 EgoHand 第一人称手部重建。
 - **沉淀到 wiki：** [Isaac Teleop](../../wiki/entities/isaac-teleop.md)
 
 ---
@@ -171,3 +173,14 @@ python examples/teleop/python/gripper_retargeting_example_simple.py
 - [Isaac Lab — Isaac Teleop](https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html)
 - [Televiz](https://nvidia.github.io/IsaacTeleop/main/getting_started/televiz.html)
 - [Egocentric Hand Reconstruction](https://nvidia.github.io/IsaacTeleop/main/references/egocentric_hand_reconstruction.html)
+
+---
+
+## v1.6–1.8 代码与文档深读补遗（IsaacCapture 演进，2026-11-19）
+
+1. **包与仓库迁移（`pyproject.toml`）：** 仓库正由 `NVIDIA/IsaacTeleop` 过渡到 `NVIDIA/IsaacCapture`，主 Python 包名为 `isaaccapture`（v1.6–1.8 保留 `src/compat/isaacteleop.py` 兼容垫片并声明 `isaacteleop>=1!1.6.dev0,<1!1.9`，计划于 `1.9` 移除）。`sdist.exclude` 显式排除 `src/python/isaaccapture_egopost/**`。
+2. **运行时编排核心（`isaaccapture.teleop_session_manager.teleop_session` / `config`）：**
+   - `TeleopSession` 作为上下文管理器在 `__enter__()` / `_enter_resources()` 依次解析受监控插件、初始化 `OpenXRSession`（或复用外部 `oxr_handles` / `oxr_session_factory` / `TwinRunner`）、启动 `DeviceIOSession.run()`、拉起插件与数字孪生渲染循环。
+   - `step()` 支持 `SYNC` 与 `PIPELINED`（`AsyncRetargetRunner`，配合 `ImmediatePacingConfig` / `DeadlinePacingConfig`）两种模式：先 `DeviceIOSession.update()`，经 `IDeviceIOSource.poll_tracker()` 采样跟踪帧，运行 `teleop_control_pipeline`（内置 `DefaultTeleopStateManager` / `TwoButtonTeleopStateManager`），再执行用户 `pipeline.execute_pipeline` 并通过 `IDeviceIOSink` 输出控制信号。
+3. **带外控制中心与合成测试（`docs/source/references/oob_teleop_control.rst` / `examples/synthetic_xr/`）：** 新增 `isaaccapture.cloudxr.service`（共享默认 `48322` TLS 端口，`--setup-oob` / `--defer-oob-connect` / `/api/oob/v1/connect` 及 `TELEOP_OOB_HUB_ONLY=1`）实现头显连接与 CDP 自动化；提供不依赖真实头显的 `synthetic_xr` 测试链路。
+4. **EgoHand 第一人称无标记重建升级（`docs/source/ego_post_processing/egohand.rst`）：** 新版管线名为 **EgoHand**（`isaaccapture_egopost`，arXiv:2610.30293），采用 RT-DETR + DINOv3 + SOMA-X 手部骨骼绑定与可选 ViPE 世界系对齐，替代早期的纯 Dyn-HaMR 方案。

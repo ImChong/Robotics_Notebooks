@@ -8,17 +8,22 @@
 - **机构：** REK（Robot Embodied Kombat；旧金山）
 - **创始人：** Cix Liv（VR/AR 背景；Founders Inc. 投资组合）
 - **入库日期：** 2026-06-28
-- **一句话说明：** REK 以 **VR 遥操作 + 全接触人形格斗** 打造现场观赛联赛：选手戴头显实时驱动 **Unitree G1**（及更大机型）在擂台互殴；官网同时提供 **G1 U2 租赁**（29 DoF、Full SDK）与赛事早鸟订阅。
+- **核对日期：** 2026-11-19
+- **抓取方式：** 官网渲染页面与前端主包源码全文核对（`rek_home_rendered.txt` 与 `rek_main.js`，含 `/rules`、`/fights`、`/shop`、`/careers`、`/privacy`、`/terms`）
+- **核对范围：** 官网首页及 SPA 全路由核对（首页 CTA、`/rules` `AUTO`/`PILOT` 分组与 `The Arbiter` 判罚规范、`/fights` 统计、`/shop` 机器人目录、`/careers` 与闭源条款 `/terms`）
+- **通读：** 已完成
+- **一句话说明：** REK 以 **VR 遥操作 + 全接触人形格斗** 打造现场观赛联赛并配套线上格斗模拟器：选手戴头显实时驱动改装 **Unitree G1**（及 **EngineAI T800** 等机型）在擂台互殴；官网 `/rules` 同时定义 `PILOT`（遥操）与 `AUTO`（封装自主策略）双赛道及 **500 Hz** `The Arbiter` 计分体系，且软件/服务端全面闭源。
 
-## 官网公开要点（2026-06 抓取）
+## 官网与 SPA 路由全文核对要点（截至 2026-11-19）
 
-| 区块 | 内容要点 |
-|------|----------|
-| **品牌定位** | 「Real pilots, real punches, Real Steel made real」— 真人技能映射到实体人形格斗 |
-| **REK0** | 早期里程碑赛事（旧金山），两机对打 + 现场观众验证格式 |
-| **Live Events** | VR Pilots · Full Contact · Real Robots；巡演与单场购票入口 |
-| **RENT A ROBOT** | **Unitree G1 U2**：活动/课堂/制片租赁；**29 DoF**、AI-Powered、**2h 电池**、**Full SDK** |
-| **Shop** | 按国家登记早鸟名单，开店通知 |
+| 区块 / 路由 | 内容要点（全文核对） |
+|---|---|
+| **首页（`/`）** | 「Real pilots, real punches, Real Steel made real」；4 个核心行动入口涵盖现场赛事/购票、REK Simulator、机器租赁与商城；公开 REK 2.1 季后赛及 11 月 20 日现场总决赛链路 |
+| **赛事统计（`/fights`）** | 累计完成 **15 场真实人形格斗**（横跨 **3 个国家**）以及 **30,000+ 场线上模拟器对战**（覆盖 **65 个国家**）；已知冠军/真实驾驶员包括 **Andy**、**Osone**、**Suslike** |
+| **竞赛规则（`/rules`）** | 基准机身规格：**1.32 m** 身高、**35 kg** 整备、**29 关节**、**500 Hz** 控制频率、**120 N·m** 峰值力矩；明确划分 **PILOT division**（VR 遥操机手）与 **AUTO division**（密封自主策略）；**The Arbiter** 以 500 Hz 双路信号与加速度分级判定得分，支持 `KO / TKO / STKO / DEC / DQ`，并要求 **< 100 ms** 急停与无线电截断 |
+| **线上商店（`/shop`）与租赁** | 展示 **8 款在售人形机器人**及标价（含 Unitree G1 等商用机型）与活动/制片租赁服务 |
+| **团队与招聘（`/careers`）** | 公开招募 **RL Researcher** 与 **VP of Events**，印证其「全身格斗控制策略 + 现场竞技赛事运营」双轨架构 |
+| **开源与许可边界（`/terms` & `/privacy`）** | **完全闭源商业平台**：基于 Supabase / GCP / Stripe 与 Steam / Meta / PICO 运行；`/terms` 明确归属专有知识产权并禁止逆向工程或代码提取 |
 
 ## 第三方公开信息（交叉核对，非官网原文）
 

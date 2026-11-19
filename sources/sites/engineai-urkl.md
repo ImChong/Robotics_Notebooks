@@ -7,9 +7,12 @@
 - **URL：** <https://en.engineai.com.cn/robot-fighting-competition.html>
 - **机构：** 众擎机器人（ENGINEAI / Zhongqing Robotics；深圳）
 - **入库日期：** 2026-07-20
-- **一句话说明：** EngineAI 以 **统一 T800 全尺寸人形平台** 举办全球首届 **标准化算法格斗联赛 URKL**：双轨「展演 + 竞技」、线上资格赛与线下淘汰赛，冠军奖励约 **1000 万元** 纯金腰带；强调 **自主平衡与运控算法** 而非硬件魔改。
+- **核对日期：** 2026-11-19
+- **核对范围：** 全文通读官方英文赛事页（`urkl_site.txt`，`robot-fighting-competition.html`）与官方 T800 产品页（`t800_site.txt`，`product-t800.html` 四版本规格对比及脚注 `[8]`）
+- **通读：** 已完成
+- **一句话说明：** EngineAI 以 **统一 T800 全尺寸人形平台** 举办全球首届 **标准化算法格斗联赛 URKL**：双轨「展演 + 竞技」、线上资格赛与线下淘汰赛，强调 **自主平衡与运控算法** 而非硬件魔改；官网同步开放 T800 商用四版本硬件平台。
 
-## 官网公开要点（2026-07-20 抓取）
+## 官网公开要点（全文核对）
 
 | 区块 | 内容要点 |
 |------|----------|
@@ -17,20 +20,20 @@
 | **赛事定位** | 世界级机器人技术创新、交流与专业竞技平台；推动格斗赛事专业化、规模化与产业化 |
 | **核心使命** | Technology Empowerment · Innovation Driven · Global Collaboration |
 | **赛制形态** | **双轨**：**Exhibition Showcases（展演）** + **Combat Competition（竞技）** |
-| **报名入口** | 官网「Register Now」；页面标注 **2026.3.1** 起；**Online Qualifiers** 曾为 COMING SOON |
-| **规则入口** | 页面提供「View the Rules」链至细则（抓取日未单独归档 PDF/HTML） |
+| **页面状态与入口** | 官网英文门户标注 **2026.3.1** 时间锚点、`Online Qualifiers COMING SOON`、提供 **View the Rules** 与 **Register Now** 入口（截至 `urkl_site.txt` 抓包页尾倒计时显示 `-126 天`，页面版权为 `© 2025 Engineai`） |
 
-## 统一硬件平台（产品页交叉）
+## 统一硬件平台（T800 产品页 `t800_site.txt` 全文核对）
 
-赛事与 [T800 产品页](https://en.engineai.com.cn/product-t800.html) 绑定：
+赛事与 [T800 产品页](https://en.engineai.com.cn/product-t800.html) 绑定。全系共通参数：**173 cm** 身高、**75–85 kg** 整备体重、**450 N·m** 峰值关节力矩、PMSM 电机 + 交叉滚子轴承（crossed roller bearing）、腿部主动散热、固态电池 **3–5 h** 续航、最大步速 **≥ 2 m/s**、8 核 CPU；产品页脚注 `[8]` 明确声明仅限民用（civilian use only）。
 
-| 参数 | 公开值 |
-|------|--------|
-| 身高 | **173 cm** |
-| 本体 DoF | **29**（不含灵巧手；产品页亦列 25–46 DoF 多 SKU） |
-| 峰值关节力矩 | **450 N·m** |
-| 续航 | 官方标称 **4–5 h** / 局；**Humanoids Daily** 报道赛制 **禁止局内换电** |
-| 售价区间 | Basic **$40,500**；Open Source Edition **$54,000**（支持二次开发）；Pro/Max 更高 |
+| 版本（Edition） | 自由度（DoF） | 算力模块 | 传感 / 通信 / 二次开发 |
+|---|---|---|---|
+| **BASIC EDITION** | **25 DoF** | Orin NX 16G | 无 3D LiDAR；不支持二次开发 SDK |
+| **OPEN SOURCE EDITION** | **25 DoF** | AGX Orin 64G（支持升级 Thor） | 配备 3D LiDAR；支持二次开发（Secondary Development √） |
+| **PRO EDITION** | **29 + 14 = 43 DoF**（含双 7-DoF 触觉灵巧手，负载 5 kg） | AGX Orin 64G（支持升级 Thor） | 配备 3D LiDAR + 触觉灵巧手；支持二次开发 |
+| **MAX EDITION** | **32 + 14 = 46 DoF**（含双 7-DoF 触觉灵巧手） | AGX Orin 64G（支持升级 Thor） | 在 PRO 基础上新增 **5G** 模块；支持二次开发 |
+
+注：此前入库记录的参考售价区间为 Basic **$40,500**、Open Source Edition **$54,000**（`t800_site.txt` 英文规格表页面未直接标注价格，保留作历史参考线索）。
 
 ## 第三方公开信息（交叉核对，非官网原文）
 
