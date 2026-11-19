@@ -44,7 +44,7 @@ original:
 
 ## 为什么重要
 
-- **人体动作→机体参考**：动捕 BONES-SEED、单目恢复 [GEM-X](../methods/genmo.md) 和 [Kimodo](./kimodo.md)/ARDY 的动作须先落到统一 SOMA skeleton；机器人比例、零位姿和关节限制不同，不能直接复刻人体关节角。
+- **人体动作→机体参考**：动捕 BONES-SEED、单目恢复 [GEM-X](https://github.com/NVlabs/GEM-X) 和 [Kimodo](./kimodo.md)/ARDY 的动作须先落到统一 SOMA skeleton；机器人比例、零位姿和关节限制不同，不能直接复刻人体关节角。
 - **跨机型而非仅 G1**：官方 **v0.2（2026-11-13 博客）**提供 Unitree G1、Unitree H2、Booster T1、AgiBot X2 Ultra 和 AgiBot A3T3 五种配置与匹配结果，也支持通过 Robot Configurator 增加机器人。
 - **从一次调参到批量资产**：用 Viewer 检查少量代表性动作，修订配置和 IK 权重，然后 headless 批量转换，供 [ProtoMotions](./protomotions.md)、SONIC 或自研全身跟踪（WBT）训练。
 
