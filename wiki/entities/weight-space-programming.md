@@ -13,6 +13,7 @@ related:
   - paper-interpretable-weight-space-programming.md
   - paper-capvector-capability-vectors-vla.md
   - ../methods/reinforcement-learning.md
+  - ../methods/coding-agent-verification-loops.md
 sources:
   - ../../sources/blogs/weight_space_programming.md
   - ../../sources/sites/weight-space-programming.md
@@ -127,6 +128,7 @@ sequenceDiagram
 
 - [CapVector 能力向量](paper-capvector-capability-vectors-vla.md)：同属参数空间操作，但依赖微调模型差分。
 - [强化学习](../methods/reinforcement-learning.md)：PPO 是部分实验中的训练基线。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：对照候选编辑、前向评测与后验可复核证据；本实验的 agent harness 并未完整开放。
 - [paper-compounding-physical-rsi](paper-compounding-physical-rsi.md) — Compounding Physical RSI（权重空间候选筛选的一个应用实例）
 
 ## 参考来源
