@@ -490,6 +490,13 @@ op: ingest
 - 关联既有 FDE 工程参考书页面；不创建重复企业项目实体。
 - 验证边界：当前执行环境无法访问 GitHub 仓库网络克隆，尚未运行本地 make ci-preflight、健康度脚本或 Mermaid 解析器；以 GitHub Actions 为后续门禁，不声称已通过。
 
+## [2026-11-19] ingest | Remotion + HyperFrames 官方源码与视频工程栈复核
+
+- 复用既有 `wiki/entities/remotion.md` 和 `wiki/entities/hyperframes.md` 两个唯一实体，不重复建页。
+- 核对 Remotion CLI/本地渲染入口与许可：免费许可适用个人、最多三名员工的营利组织、非营利组织及非商业评估。
+- 核对 HyperFrames CLI/生产模块，纠正旧的 21 Skills 为截至 2026-11-19 官方列出的 9 个公开 Skills；分清开源核心与 Studio Pro。
+- 两页增加源归档通读字段、项目流程与源码运行时序图、选型比较与双向链接，按脚本判据保留 3/3 健康度；CI 复核为准。
+
 ## [2026-11-19] ingest | 复核 DriveTeach-VLA（ECCV 2026 / arXiv:2607.01658）论文全文及官方代码
 
 - 查重后复用 `wiki/entities/paper-driveteach-vla.md`，不新增同一论文的重复实体。
