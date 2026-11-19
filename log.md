@@ -482,6 +482,8 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-19] ingest | 通读一手论文、官方手册与源码，将 motion-control、depth-robotics-diffusion-dit-flow、depth-teleoperation 三条路线的 19 个缺分节点全部升至 3/3 满分健康度
+
 ## [2026-11-19] ingest | Meta-Rewarding LLM v2：双偏好自训练与元评委漂移
 
 - 精读 arXiv:2407.19594v2，建立独立论文实体并连接 Self-Rewarding 与 RSI Stage 3。
