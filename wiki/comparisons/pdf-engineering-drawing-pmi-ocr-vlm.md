@@ -1,16 +1,18 @@
 ---
 type: comparison
 tags: [pmi, engineering-drawings, ocr, vlm, gdt, manufacturing, inspection, document-ai]
-status: draft
+status: complete
 updated: 2026-11-19
 related:
+  - ../entities/paper-multistage-engineering-drawing-vlm-pmi.md
   - ../concepts/structure-tolerance-simulation-toolchain.md
   - ../methods/yolo26-ocr-document-parsing.md
   - ../concepts/text-to-cad.md
 original:
-  - ../../sources/blogs/wechat_poisson_ratio_pdf_pmi_vlm_ocr_2026-11-19.md
+  - ../../sources/papers/multistage_engineering_drawing_vlm_pmi_2510_21862.md
 sources:
   - ../../sources/blogs/wechat_poisson_ratio_pdf_pmi_vlm_ocr_2026-11-19.md
+  - ../../sources/papers/multistage_engineering_drawing_vlm_pmi_2510_21862.md
 summary: "二维 PDF 工程图纸 PMI 的自动提取宜采用版面/旋转框定位与字段专用解析结合的混合架构。数值类可达较高字段 F1，但文字、代号与符号的幻觉及改写风险要求图纸定位回溯和人工复核。"
 ---
 
@@ -66,12 +68,14 @@ flowchart TD
 
 上述“工程语法校验—人工审核—CMM 计划”是**部署建议**；论文案例展示了 JSON 对下游工艺/检测的映射，但不等于任意输入图纸均可未经审核直接执行。
 
+**原文已核的分支差异：** [三阶段混合研究](../entities/paper-multistage-engineering-drawing-vlm-pmi.md)的 Alphabetical VLM **未微调、zero-shot 解析文本**，Numerical VLM **经微调解析数值/符号**；不能把两者 F1 差异完全归因于字段天然难度。
+
 ## 研究证据与适用边界
 
 | 资料 / 任务 | 已核实数据 | 能说明什么；不能说明什么 |
 |---|---|---|
 | [From Drawings to Decisions（期刊）](https://doi.org/10.1016/j.rcim.2025.103186)，机械图纸标注解析 | 1,367 图、9 类；Donut F1 约 94%、幻觉率 10.8% | 支撑特定训练集和混合框架的效果，不能宣称零误读；[arXiv 初版](https://arxiv.org/abs/2506.17374)摘要为 F1 93.5%、幻觉率 11.5% |
-| [Multi-Stage Hybrid Framework](https://arxiv.org/abs/2510.21862)，多视图图纸 | 数值 VLM F1 0.963；文本 VLM F1 0.672 | 强烈提示文本类字段更难；两者是分支任务，不能当作 OCR 与 VLM 的同数据集直接对抗 |
+| [Multi-Stage Hybrid Framework](../entities/paper-multistage-engineering-drawing-vlm-pmi.md)，多视图图纸 | 数值 VLM（fine-tuned）F1 0.963；文本 VLM（zero-shot）F1 0.672；粗糙度**OBB 检测对角项 0.54** | 已通读 arXiv:2510.21862v2 全文/表 1；分支训练不同，且粗糙度解析 F1=1.0 **不代表端到端 100% 正确** |
 | [MechVQA](https://proceedings.mlr.press/v306/kou26c.html)，机械图问答 | 约 3.3K 图、21K QA、10 任务 | 通用多模态模型在高密度工程图纸上的理解仍脆弱；是 QA 基准而非 PMI 逐字段识别 |
 | [EC3 / FELD](https://arxiv.org/abs/2607.18997)，工程图布局检测 | RF-DETR mAP50 0.949；DocLayout-YOLO 0.675 | 属于“找框”的检测性能，不是框内文字的正确率 |
 | [AECV-Bench](https://arxiv.org/abs/2601.04819)，AEC 图纸理解 | 文本任务上限约 0.95；符号计数常约 0.40–0.55 | 建筑图纸不同于机械图纸；说明图纸空间/符号能力与文本能力不等价 |
@@ -111,21 +115,24 @@ flowchart TD
 
 ## 局限与风险
 
+- **证据阅读范围：** 核心多视图机械 PMI 论文 arXiv:2510.21862v2 已完整阅读 10 页正文、Fig.1–4 和 Table 1，另已阅读 FaithC4、Berrutti OCR 的公开 HTML 正文；用于比较的其余论文按题录/公开结果限定使用，不冒充均已完成逐篇精读。二手公众号原文的插图无法取得，保留在 sources 中标明未通读，**不作为本页健康度的“已通读原始论文”身份依据**。
 - **当前证据不等于“可放心全自动放行”：** 数值 F1 0.963 仍意味着有错误；少数关键误读能导致较大制造质量损失。
 - **比较不可混算：** 不同论文任务、标注粒度、数据集、模型规模与测试协议不同；不支持“VLM 在整体指标上全面优于传统 OCR”的笼统判断。
-- **来源通读未完成：** 微信文章配图和文献列表未取得；本次核验包含多项一手论文摘要与官方说明，但未通读全部原始 PDF 及附录；精细分项（如文本幻觉率）待逐表核对。
+- **二手综述受限：** 微信文章原图及完整参考文献列表仍未取得；但主框架的文本/数值分项和幻觉率已通过已通读的 arXiv:2510.21862v2 Table 1 逐行核验。其他论文未全文核对的细节不得扩大解释。
 - **源码运行时序图：** 不适用；本页是多项研究比较与工程部署建议，不代表一个存在公开可运行入口的单一项目。
 - **现场制约：** PDF 渲染清晰度、扫描噪声、标题栏版式、图纸标准（ISO/ASME）、企业图号体系及保密要求都可能影响部署，需要现场复验。
 
 ## 关联页面
 
+- [三阶段工程图纸 PMI 解析论文（全文核读）](../entities/paper-multistage-engineering-drawing-vlm-pmi.md)：核对视图布局、旋转框、双 Donut 训练差异及全指标。
 - [结构公差仿真工具链](../concepts/structure-tolerance-simulation-toolchain.md)：提取后如何进入尺寸链与公差预算。
 - [YOLO26 + PP-OCRv6 文档 OCR](../methods/yolo26-ocr-document-parsing.md)：检测 + 识别的另一条工程路线（非 PMI 对照试验）。
 - [Text-to-CAD](../concepts/text-to-cad.md)：面向制造设计的上游 CAD 数据路径。
 
 ## 参考来源
 
-- [泊松比：《基于 PDF 图纸读取 PMI 数据》来源归档](../../sources/blogs/wechat_poisson_ratio_pdf_pmi_vlm_ocr_2026-11-19.md)（原文图表与文献列表未完全核验）
+- [三阶段混合 PMI 解析论文全文归档](../../sources/papers/multistage_engineering_drawing_vlm_pmi_2510_21862.md)（已完整通读 PDF 与 Fig.1–4、Table 1）
+- [泊松比：《基于 PDF 图纸读取 PMI 数据》来源归档](../../sources/blogs/wechat_poisson_ratio_pdf_pmi_vlm_ocr_2026-11-19.md)（二手综述；原文插图与文献列表未完全核验）
 - [From Drawings to Decisions（期刊 DOI）](https://doi.org/10.1016/j.rcim.2025.103186)
 - [A Multi-Stage Hybrid Framework](https://arxiv.org/abs/2510.21862)
 - [MechVQA（ICML 2026）](https://proceedings.mlr.press/v306/kou26c.html)
