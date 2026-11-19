@@ -127,6 +127,7 @@ flowchart LR
 - [Tactile Sensing](../wiki/concepts/tactile-sensing.md) 与 [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
 - [视觉触觉智能综述（VBTS Survey，arXiv:2608.15490）](../wiki/entities/paper-vision-based-tactile-intelligence.md) — 以传感器硬件三轴、触觉学习层次、数据/仿真和 Sim2Real 为地图，先选接触观测需求，再选传感器与策略结构
 - [触觉阻抗控制](../wiki/methods/tactile-impedance-control.md) 与 [In-Hand Reorientation](../wiki/methods/in-hand-reorientation.md)
+- [𝒩₀-Foundation](../wiki/entities/paper-n0-foundation.md) — 连接 TacUMI/真机多本体视触觉采集、NeoForce 三轴力场表征与 NeoReal/NeoSim 接触评测；适合开展触觉数据到策略的完整链路实践。
 - [Query：RL 中的触觉反馈](../wiki/queries/tactile-feedback-in-rl.md)
 - [ContactMimic](../wiki/entities/paper-contactmimic.md) — 在 keypoint tracking 外显式跟踪 per-body 接触指令，G1 真机验证 contact controllability，无需任务专用奖励即可搬箱
 - [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 规范球几何形变动作表示 + 级联 IK，单一 PPO 策略跨 Allegro / LEAP / Shadow 零样本迁移
