@@ -507,6 +507,15 @@ op: ingest
 - **开源结论：** 部分源码已公开；README 对权重、环境、数据生成、完整运行命令仍标 TODO；未实测。
 - **关键节点：** [NeuIDO 论文详情](../wiki/entities/paper-neuido-neural-intrinsic-dynamics-operator.md)，并在 Real2Sim Stage 2 与可微仿真页建立入链。
 
+## [2026-11-19] ingest | Overleap 双自由度机械腿弹跳控制
+
+- 意图：从比特Z《拆解 Overleap：机械狗腿的弹跳算法》与 Overleap 原始源码整理完整知识实体。
+- 开源结论：Aaron de los Santos 的 Overleap 官方仓库公开 Arduino 库、ODrive 示例、装配与机械图。
+- 关键判断：下蹲、收腿和抬腿使用 MCU 侧关节 PD；蹬地使用 200 ms sin² 期望足端力与 Jᵀ 力矩映射；FSR 只负责接触判断，并非足端力闭环。
+- 修正细节：标明 200 ms 力曲线与代码中的 >400 ms 离地退出条件不匹配。
+- 本次核心页：wiki/entities/overleap.md；关联 roadmap/depth-classical-control.md Stage 1。
+- 验证边界：已做文档及官方源码静态核读，未进行实机复现。
+
 ## [2026-11-19] ingest | sources/papers/so_arena_arxiv_2611_15777.md — 收录 SO-Arena 双轴结构化决策评测与可靠性复现入口
 
 - 基于 arXiv:2611.15777v1 与官方项目页，新增独立双语论文节点，记录 2,919 任务 / 11 领域 / 1,232 榜单任务与 C、S、N、R 分离指标。
