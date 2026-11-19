@@ -123,6 +123,7 @@ flowchart LR
 - [UCAG-P](../wiki/entities/paper-ucag-p.md) · [EASG](../wiki/entities/paper-easg-vlm-native-action-model.md) — 相机系几何锚点两种落法
 - [UHAS](../wiki/methods/uhas-unified-hand-action-space.md) · [AdvDex](../wiki/entities/paper-advdex.md) — 灵巧手层的两种统一动作空间（RL 球面 vs VLA 关节槽）
 - [Latent Actions Matter](../wiki/entities/paper-latent-actions-matter.md) · [LAC-WM](../wiki/entities/paper-lac-wm-cross-embodiment-latent-action-world-model.md) — 潜在动作接口的实证与跨本体世界模型用法
+- [UniT：统一物理语言](../wiki/entities/paper-unit-unified-physical-language.md) — Stage 1 视觉锚定的三分支交叉重构学习共享潜动作；VLA 用离散监督、WM 用量化前连续特征，适合对照纯动作 tokenizer 与手工 retargeting 的边界
 - [URDD](../wiki/entities/paper-urdd-universal-robot-description-directory.md) — 把 URDF 派生的 DoF 映射、链结构等整理成带版本的模块目录
 - 一手原文：[Polybot（arXiv:2307.03719）](https://arxiv.org/abs/2307.03719) · [CrossFormer（arXiv:2408.11812）](https://arxiv.org/abs/2408.11812) · [LAPA（arXiv:2410.11758）](https://arxiv.org/abs/2410.11758) · [Mirage（arXiv:2402.19249）](https://arxiv.org/abs/2402.19249) · [RoVi-Aug（arXiv:2409.03403）](https://arxiv.org/abs/2409.03403)
 
