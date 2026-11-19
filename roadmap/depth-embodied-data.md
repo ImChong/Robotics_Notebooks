@@ -125,6 +125,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Embodied Data Cleaning（具身数据清洗）](../wiki/concepts/embodied-data-cleaning.md) — 时序对齐 / 异常过滤 / 重定向修复 / 分段剪辑四步管线，本阶段的核心页
+- [SPL Hockey Goalie 3D](../wiki/entities/spl-hockey-goalie-3d.md) — 单守门员 81 次射门的 19 点人体–冰球三维时序样本；比较 60 Hz 最近邻配对、缺测 null 与轨迹平滑的真实数据质量边界
 - [Data Pyramid：DataPyramid LeRobot v3 质量清洗](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 六类数据转为统一格式并按帧标注 `quality.valid` 的官方开源案例；区分处理清单、可下载范围与质量版本
 - [Auto-labeling Pipelines](../wiki/methods/auto-labeling-pipelines.md) — VLM 自动生成描述与成功率标签
 - [HumanNet](../wiki/entities/humannet.md) — 采集 → 处理 → 标注三阶段大规模管线，含 robot-ready 子集的量化判据
