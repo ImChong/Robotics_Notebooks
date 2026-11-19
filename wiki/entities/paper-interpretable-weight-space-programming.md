@@ -14,6 +14,8 @@ sources:
   - ../../sources/papers/iwsp_arxiv_2611_18114.md
   - ../../sources/repos/weight-space-programming-autoresearch.md
 related:
+  - ../methods/genetic-programming.md
+  - ../methods/coding-agent-verification-loops.md
   - weight-space-programming.md
   - robotics-weight-editing.md
   - paper-capvector-capability-vectors-vla.md
@@ -131,6 +133,15 @@ sequenceDiagram
 
 文本瓶颈复建显示模型描述具有一定忠实性：13 个算法任务的复建在该 hidden protocol 下继续全部 100%；视觉模型 200 词复建平均保留搜索中八个检查点原模型约 96% 的相关表现。所有数字是**论文报告**，本站未独立复现。
 
+## 方法对比
+
+| 路线 | 模型更新与反馈 | 可解释性与限制 |
+|---|---|---|
+| **iWSP（本文）** | Agent 修改可读的网络结构、固定权重或特征，依据可见集得分迭代；脑编码任务的岭回归读出由独立评测器拟合 | 要求独立审计与有限文字重建；算法、NLP、神经数据集的结果不等于机器人闭环验证 |
+| [MIT Weight-Space Programming](weight-space-programming.md) | 直接读取、修复或构造权重，任务权限与前向反馈预算因实验而异 | 目标是展示权重可被 LLM 操作；没有本文的统一 200 词复建与神经编码实验协议 |
+| [遗传编程（GP）](../methods/genetic-programming.md) | 通过群体选择、交叉、变异搜索程序/表达式结构 | 与 iWSP 共享显式程序搜索对象，但 iWSP 由语言模型提出可解释候选，**不是 GP 的种群演化过程** |
+| [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) | 实现 → 执行评测 → 收集证据 → 独立审查 | 可借鉴其验证门禁组织 iWSP 的候选审计，但本论文使用特定的隐藏集/复建实验，不等于软件 E2E 测试 |
+
 ## 结论
 
 iWSP 在有限、可审计的建模空间展示了“让 Agent 编写可解释权重与特征”的可行性，科学解释和数据混杂诊断的价值大于泛化到任意深网或机器人策略的现有证据。
@@ -156,6 +167,9 @@ iWSP 在有限、可审计的建模空间展示了“让 Agent 编写可解释�
 - 官方仓库**已公开实现及实验日志**，但三类神经实验各有独立 harness；此处记录的 Transformer CLI 不代表可一条命令复现全部论文，本站也未声称复现结果。
 
 ## 关联页面
+
+- [遗传编程（GP）](../methods/genetic-programming.md)：对照规则化程序搜索与 iWSP 的 LLM 候选提议；两者的搜索算子不同。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：对照候选执行、独立审计、隐藏集验证与可复核证据链。
 
 - [MIT Sparks of Weight-Space Programming](weight-space-programming.md)：另一团队同期工作的直接权重编辑实验；不是本论文的另一个版本。
 - [Robotics Weight Editing](robotics-weight-editing.md)：机器人策略的权重改写尝试；与本文的神经科学编码实验不同。
