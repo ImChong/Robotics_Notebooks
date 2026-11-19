@@ -14,6 +14,7 @@ related:
   - ../concepts/differentiable-simulation.md
   - ../concepts/system-identification.md
   - ../methods/generative-world-models.md
+  - ../methods/crisp-real2sim.md
 sources:
   - ../../sources/papers/neuido_arxiv_2609_24313.md
   - ../../sources/sites/neuido.md
@@ -136,6 +137,19 @@ sequenceDiagram
 
 静态源码入口包括 `phase1_pretrain/train_latent_space_ours_DeepONet_seperate.py`、`phase2_vision/align_dynamics_func.py`、`phase3_finetune/finetune_model.py` 和 `forward/forward_zero_shot.py`；运行所需资产、依赖和 checkpoint 未完整发布。源码出现 `Trunck` 为仓库实际拼写，不应擅自改成 `Trunk` 作为可调用类名。
 
+## 工程实践
+
+复现应按论文设计把**本构学习、视觉对齐、前馈推理和适配**拆开验收，避免将“仓库内有脚本”误认为“权重和数据齐全”：
+
+| 核查阶段 | 公开代码入口 | 建议检查点 |
+|---|---|---|
+| Stage I 神经算子训练 | `experiment/scripts/phase1_pretrain/train_latent_space_ours_DeepONet_seperate.py` | 核对弹塑性轨迹数据 `GtF/GtFtmp/GtStress/GtC` 格式与 Trunk 权重键 |
+| 视觉对齐 | `experiment/scripts/phase2_vision/align_dynamics_func.py` | 对照光流/可微 MPM/3DGS 的损失路径，区分论文分支训练与 latent 优化脚本 |
+| 零样本 | `experiment/scripts/forward/forward_zero_shot.py` | 输入相机、初始粒子状态、绑定映射、预训练 Branch/Trunk checkpoint 是否齐备 |
+| 少样本 | `experiment/scripts/phase3_finetune/finetune_model.py` | LoRA 权重和两路 latent 是否从指定基模型加载，保持评测场景独立 |
+
+**当前验证级别：** 只完成官方源码静态核对；README 尚未提供可复现环境和权重，不能声称运行成功。若用于机器人接触仿真，需额外核验材料模型的物理一致性、接触/外力设定与未见材料的泛化。
+
 ## 实验与评测
 
 - **合成物体（论文 Table 1）：** 六场景平均 CD：NeuIDO 零样本 **1.643**，少样本适配 **1.216**；对照 NeuMA **1.329**、VisionLaw **1.620**。少样本平均更好，但不能说零样本在各场景都超过基线。
@@ -144,6 +158,17 @@ sequenceDiagram
 - **消融：** 潜维度 32 导致拟合和对齐效果变差；从单视角增至多视角改善明显，4 视角到 10 视角收益减弱；附录指出单目真实视频可能失败。
 
 以上数值均为**论文作者报告，非本次运行复现**；CD 对应粒子位置，PSNR/SSIM/LPIPS 对应渲染质量，不能互换。
+
+## 与其他方法对比
+
+| 方法 | 本构或动力学的获得方式 | 本次论文中的比较边界 |
+|---|---|---|
+| **NeuIDO 零样本** | 共享 Trunk + 视频 Branch 前馈推断 | 六合成场景平均 CD **1.643**；无场景特定适配 |
+| **NeuIDO 少样本** | 在同一基底上微调 LoRA 与潜变量 | 同协议 CD **1.216**；**不能**归入零样本 |
+| **NeuMA** | 以神经本构表示为核心的场景优化基线 | Table 1 平均 CD **1.329**；属于不同优化预算 |
+| **VisionLaw** | 视频条件的本构辨识比较方法 | Table 1 平均 CD **1.620**；需保留作者的合成场景协议 |
+
+上述只是**论文 Table 1 的作者报告**，不表示跨数据集、公平算力或真机下的绝对排名；并非全面取代传统物理引擎。
 
 ## 结论
 
@@ -168,6 +193,7 @@ sequenceDiagram
 - [可微仿真](../concepts/differentiable-simulation.md)：视频损失如何反传至动力学表示。
 - [系统辨识](../concepts/system-identification.md)：从参数标定走向连续本构函数空间学习。
 - [生成式世界模型](../methods/generative-world-models.md)：像素未来生成与物理仿真约束的路线对比。
+- [CRISP：接触引导 Real2Sim](../methods/crisp-real2sim.md)：场景几何与接触物理一致性方法的对照；NeuIDO 主要辨识软体弹塑性本构。
 - [Real2Sim 纵深 Stage 2](../../roadmap/depth-real2sim.md)：补全几何后辨识软体物性/动力学。
 - [WAM 纵深 Stage 1](../../roadmap/depth-wam.md)：世界动力学基座的邻接工作；NeuIDO **不输出机器人动作，不是 Joint/Cascaded WAM**。
 

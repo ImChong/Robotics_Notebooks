@@ -10,6 +10,7 @@ related:
   - ../entities/mujoco-mjx.md
   - ../entities/paper-shac.md
   - ../entities/paper-superdyno.md
+  - ../entities/paper-neuido-neural-intrinsic-dynamics-operator.md
   - ./system-identification.md
   - ../methods/model-based-rl.md
   - ./sim2real.md
@@ -17,7 +18,10 @@ sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
   - ../../sources/papers/accelerated_policy_learning_shac_iclr_2022.md
   - ../../sources/papers/superdyno_iclr_2025_workshop.md
+  - ../../sources/papers/neuido_arxiv_2609_24313.md
 summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用于系统辨识、可微控制与样本高效策略学习；接触不连续仍是主要工程难点。"
+original:
+  - ../../sources/papers/neuido_arxiv_2609_24313.md
 ---
 
 # Differentiable Simulation（可微仿真）
@@ -77,6 +81,23 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 - Ch3：可微 SysID
 - Ch4–5：MATRiX 并行训练；可与 PPO 对照
 
+## 工程实践
+
+应先区分**梯度穿过什么**：SHAC 的反传目标是策略回报，使用并行短视界可微仿真；NeuIDO 的视觉对齐目标是模拟渲染帧与观测视频之间的误差，梯度作用于材料本构表示的学习。实际做系统辨识时，要分别验证动力学 rollout、观测模型和优化器的梯度有效性，不能仅凭可微或视觉重建误差小就推断本构可信。
+
+| 环节 | 建议记录 | 典型失败 |
+|---|---|---|
+| 前向动力学 | 初始状态、子步长、材料/接触参数 | 积分发散、接触穿透 |
+| 导数计算 | 有限差分 sanity check、梯度范数、NaN 计数 | 接触切换导致不连续梯度 |
+| 视觉观测 | 相机标定、渲染误差与物理状态误差分别汇报 | 视频相似但物性不唯一 |
+| 泛化验证 | 训练/测试材料族与场景是否隔离 | 在新材料上拟合崩溃 |
+
+## 局限与风险
+
+- 接触、塑性屈服与摩擦引入非光滑动态，长时反传容易出现不稳定梯度；应审查具体求导实现，不能笼统认为所有物理引擎都是完整可微的。
+- 单一目标函数可能有**多解**：NeuIDO 论文指出仅视觉重建监督会导致材料本构辨识歧义，因此视觉 PSNR 高不等于应力曲线或守恒关系正确。
+- 可微仿真仅是优化工具；对真机控制仍需独立评估系统延迟、执行器模型、接触工况与分布外鲁棒性。
+
 ## 常见误区
 
 - **误区：「可微 = 不需要 DR」。** 模型误差与接触近似仍在，Sim2Real 仍要 DR / 补偿 / 蒸馏。
@@ -103,5 +124,6 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 ## 参考来源
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch1、Ch3 可微仿真与 SysID
+- [NeuIDO 原始论文通读归档](../../sources/papers/neuido_arxiv_2609_24313.md) — 此次新增视觉本构辨识及可微 MPM 案例，`original` 仅表明已读完此篇原文，不代表旧资料逐篇重新通读
 
 - 相关研究：[显式摩擦布料仿真](../entities/paper-explicit-friction.md)
