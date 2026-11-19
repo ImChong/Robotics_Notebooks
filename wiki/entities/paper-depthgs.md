@@ -14,6 +14,8 @@ sources:
 summary: "DepthGS（TPAMI 2026，arXiv:2611.13628）推导无偏深度与渲染距离差的几何误差上界，以深度差自适应加权法线正则并约束跨视角双深度重投影；DTU CD 0.51 mm，Mip-NeRF360 LPIPS 0.175；官方代码截至 2026-11-19 未核实公开。"
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
+  - ../methods/stereo-matching-foundation-models.md
+  - ../methods/crisp-real2sim.md
   - ./paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md
   - ./paper-4d-gaussian-splatting-wu.md
   - ./gs-playground.md
@@ -148,6 +150,8 @@ flowchart TD
 ## 关联页面
 
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md) — 区分深度、Gaussian 表示、点云和 TSDF mesh。
+- [立体匹配基础模型与基准](../methods/stereo-matching-foundation-models.md) — 与深度前端的选型对照：该路线由双目视差估计度量深度；DepthGS 则在高斯渲染器内部约束两类渲染深度，**未使用该立体方法作为模型组件**。
+- [CRISP：接触引导 Real2Sim](../methods/crisp-real2sim.md) — 下游物理可用性的互补路线：CRISP 用可碰撞平面原语与接触约束构建仿真资产；DepthGS 关注静态表面几何质量，两者目标和输入不同。
 - [3D Gaussian Splatting 基础论文](./paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md) — 显式高斯与可微渲染的基础。
 - [4D Gaussian Splatting](./paper-4d-gaussian-splatting-wu.md) — 时间变形的动态重建，目标不同。
 - [GS-Playground](./gs-playground.md) — 3DGS 与仿真结合，强调图像渲染速度而非本论文几何精度。
