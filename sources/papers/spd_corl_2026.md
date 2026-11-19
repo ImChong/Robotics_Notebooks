@@ -13,16 +13,18 @@
 - **作者：** Sarthak Kamat\*、Adam Rashid\*、Satvik Sharma、Aseem Doriwala、Chelsea Finn、Phillip Isola、C. Karen Liu（\* 同等贡献）
 - **机构：** 斯坦福大学（Stanford）；麻省理工（MIT）；Scale AI
 - **通讯：** sartk@cs.stanford.edu、abrashid@mit.edu
-- **入库日期：** 2026-08-17
+- **入库日期：** 2026-08-17（全文通读与复核 2026-11-19）
+- **通读：** 已完成
+- **核对范围：** 通读 arXiv:2608.15917v2（2026-08-27）正文与附录全文，核对 `spd-vr` 采集/渲染协议、`spd-75h`（Table 2 统计 1,916 ep / 4,516 min，正文概数 1,930 ep）、`spd-teleop` 双 YAM Pro + Sharpa Wave 手（56-DoF）控制链路及 222M DiT 架构，并复核 `https://spd.bot/` 发布状态
 - **一句话说明：** 全部预训练数据在仿真 VR 遥操作里采（5 人一周 75 h），222M 扩散 Transformer 预训练后，56-DoF 双臂灵巧手每任务 1–2 小时真机微调，五项接触丰富任务均胜过从零 BC。
 
 ## 开源状态（步骤 2.5）
 
-- **核查日：** 2026-09-05，打开 <https://spd.bot/> 与 <https://arxiv.org/abs/2608.15917>。
+- **核查日：** 2026-11-19，复核 <https://spd.bot/> 与 arXiv:2608.15917。
 - **已发布：** 项目页、论文 PDF、arXiv 预印本、任务视频与进度图。
 - **未发布：** GitHub、数据集下载、权重。
 - **论文承诺：** §1 末「we release our pre-training dataset (spd-75h), VR teleoperation software (spd-vr), and six curated scenes…」
-- **结论：** **宣称将开源 / 待核实**。wiki 不得写「已开源」；`## 源码运行时序图` 写 **不适用**。GitHub 检索 `spd-vr` / `spd-75h` 无官方仓。
+- **结论：** **宣称将开源 / 尚未发布**。wiki 不得写「已开源」；`## 源码运行时序图` 写 **不适用**（截至 2026-11-19 仍无官方代码仓库 URL）。
 
 ## 摘录 1：仿真 on-embodiment 预训练，而不是人视频或真机遥操作
 

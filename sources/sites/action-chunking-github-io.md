@@ -10,13 +10,15 @@
 - **作者：** Filippo Lazzati¹、Kyle Stachowicz²、William Chen²、Alberto Maria Metelli¹、Andrew Wagenmaker²、Sergey Levine²
 - **arXiv：** <https://arxiv.org/abs/2608.02547>
 - **Hugging Face Papers：** <https://huggingface.co/papers/2608.02547>
-- **入库日期：** 2026-08-04（arXiv 补链复核 2026-09-27）
+- **入库日期：** 2026-08-04（arXiv 补链复核 2026-09-27；源码状态复核 2026-11-19）
+- **通读：** 已完成
+- **核对范围：** 核对 `https://action-chunking.github.io/` 全页文本与 HTML 链接，确认 PDF/presentation/arXiv 链接有效且 Code 按钮仍无 URL
 
 ## 一句话摘要
 
 CoRL 2026 论文项目页：用仿真（LIBERO / Robomimic）与 Franka 真机消融，论证 action chunking 的收益主要来自 **延迟观测条件化（delayed policy）** 与 **隐式集成（implicit ensembling）**，而非常见的「时序一致性 / 有效地平线缩短 / 表征学习」叙事；并提出 **Randomized Delay Ensemble（RDE）** 与显式延迟策略集成，可在多数设定匹配甚至超过标准 chunk 执行。
 
-## 开源状态（步骤 2.5，截至 2026-09-27）
+## 开源状态（步骤 2.5，截至 2026-11-19）
 
 | 资源 | 状态 |
 |------|------|

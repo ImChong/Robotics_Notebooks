@@ -1,194 +1,159 @@
 ---
 type: comparison
-tags: [rl, il, imitation-learning, policy-optimization, locomotion, manipulation]
+tags:
+  - reinforcement-learning
+  - imitation-learning
+  - irl
+  - locomotion
+  - manipulation
+  - paradigm-selection
 status: complete
+updated: 2026-11-19
+summary: 强化学习（RL）、模仿学习（IL）与逆强化学习（IRL）在优化目标、数据依赖、失败模式及机器人任务选型上的系统对比。
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/gail_reading_arxiv_1606_03476.md
+  - ../../sources/papers/learning_latent_plans_from_play_arxiv_1903_01973.md
   - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
-summary: "RL vs 模仿学习（Imitation Learning）"
-updated: 2026-09-12
+original:
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/gail_reading_arxiv_1606_03476.md
+  - ../../sources/papers/learning_latent_plans_from_play_arxiv_1903_01973.md
+related:
+  - ../methods/reinforcement-learning.md
+  - ../methods/imitation-learning.md
+  - ../methods/behavior-cloning.md
+  - ../methods/dagger.md
+  - ../methods/inverse-reinforcement-learning.md
+  - ../methods/policy-optimization.md
+  - ../methods/amp-reward.md
+  - ../methods/awr.md
+  - ../methods/hil-hybrid-imitation-learning.md
+  - ../concepts/reward-design.md
+  - ../concepts/sim2real.md
+  - ../concepts/out-of-distribution-generalization.md
+  - ../tasks/humanoid-locomotion.md
+  - ../tasks/manipulation.md
+  - ../../roadmap/depth-imitation-learning.md
 ---
 
-# RL vs 模仿学习（Imitation Learning）
+# 强化学习 vs 模仿学习（RL vs IL vs IRL）
 
-RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略 $\pi(a|s)$"，但监督信号、数据需求、能达到的行为质量完全不同。
+## 一句话定义
 
----
-
-## 核心对比表
-
-| 维度 | RL（强化学习） | IL（模仿学习） |
-|------|--------------|--------------|
-| **监督信号** | 奖励函数 $r(s,a)$（设计） | 专家演示 $D = \{(s,a)\}$（收集） |
-| **数据来源** | 自身与环境交互（无监督） | 人类/专家演示（有监督） |
-| **数据效率** | 低（需大量交互） | 高（直接学专家行为） |
-| **性能上限** | 理论上可超越专家 | 受专家质量上限限制 |
-| **探索难度** | 高（稀疏奖励下难探索） | 无需探索（直接模仿） |
-| **泛化性** | 依赖奖励函数覆盖范围 | 依赖演示数据分布 |
-| **行为质量** | 取决于 reward 设计质量 | 接近专家（如演示质量高） |
-| **可解释性** | 优化了什么清晰，但行为不透明 | 行为来自演示，可追溯 |
-
----
-
-## 典型失败模式对比
-
-### RL 的常见问题
-
-**Reward Hacking**：策略利用 reward 定义的漏洞，以非预期方式得分。
-
-> 例：locomotion reward 只惩罚摔倒，策略学会原地抖腿却不前进。
-
-**Exploration Collapse**：在高维动作空间中无法找到有意义的 reward 信号。
-
-> 例：精细操作任务，随机探索几乎不可能碰到"成功"状态。
-
-**Reward Shaping 敏感性**：reward 的细微变化会导致策略行为大幅波动。
-
-### IL 的常见问题
-
-**Covariate Shift（分布偏移）**：测试时进入训练时未覆盖的状态，行为崩溃。
-
-> 例：行为克隆在看过的场景里完美，一旦偏离专家轨迹就越走越偏。
-
-**性能上界**：永远无法超越专家质量；专家演示本身有噪声时性能受限。
-
-**演示收集成本**：高质量演示需要设备（遥操纵、动捕）和人力，代价高。
-
----
-
-## 详细方法对比
-
-### 主流 RL 方法（机器人）
-
-| 算法 | 特点 | 典型应用 |
-|------|------|---------|
-| PPO | On-policy，稳定，适合仿真 | Locomotion（ANYmal, Unitree） |
-| SAC | Off-policy，样本效率高，适合真实机器人 | 操作、连续控制 |
-| TD3 | 确定性策略，低方差 | 精细操作 |
-| AMP | 用判别器做 reward，模仿运动风格 | 自然步态 locomotion |
-
-### 主流 IL 方法（机器人）
-
-| 算法 | 特点 | 典型应用 |
-|------|------|---------|
-| BC（行为克隆） | 最简单，监督学习，covariate shift 严重 | 简单操作、初始化 |
-| DAgger | 在线交互修正分布偏移 | 需要专家在线反馈 |
-| ACT（Action Chunking） | 预测动作序列而非单步，减少时序误差 | Bi-manual 操作 |
-| Diffusion Policy | 分布建模，多模态动作 | 精细操作、灵巧手 |
-| IBC | 能量模型，隐式行为克隆 | 高维连续控制 |
-| GAIL / AIRL | GAN-like 占用匹配；AIRL 才恢复可迁移 $r$ | 风格模仿 / 奖励迁移；详见 [IRL](../methods/inverse-reinforcement-learning.md) |
-
----
-
-## 在机器人任务上的选择指南
-
-### 选 RL 的场景
-
-- **任务目标清晰、reward 易定义**：locomotion（能量效率 + 速度 + 稳定性）
-- **允许大量仿真交互**：可以并行仿真环境大规模训练
-- **需要超越人类表现**：游戏、棋类、极限运动
-- **行为空间探索需要多样性**：鲁棒性训练、域随机化
-
-### 选 IL 的场景
-
-- **演示容易获取，reward 难定义**：精细操作（折叠衣服、装配零件）
-- **数据效率要求高**：真实机器人样本成本高，不能大量交互
-- **需要快速跟上人类意图**：teleoperation、人机协作
-- **行为质量要求高且一致**：医疗、服务机器人
-
-### 任务形态视角（loco vs manip）
-
-相对本页的 **监督信号** 对照，[运控 RL vs 操作 IL/VLA](./locomotion-rl-vs-manipulation-learning-stack.md) 从 **任务结构** 解释为何当代栈常呈现「走路偏 RL、干活偏示范/VLA」：运控目标常已明确、缺接触动力学经验且仿真试错便宜；操作还需场景语义，示范与 VL 预训练往往更划算——并非腿/hand 天然绑定不同算法。
-
-### 两者结合（最常见）
-
-**IL 初始化 + RL 微调**：
-- 用演示数据做 BC 初始化，避免从随机策略探索
-- 再用 RL 优化超越专家
-
-**AMP（Adversarial Motion Priors）**：
-- 用判别器从运动捕捉数据学习运动风格 reward
-- 结合 RL 完成目标任务
-
-**RLHF 类方法**：
-- 人类偏好反馈（演示/排序）构建 reward 模型
-- RL 优化 reward 模型
-
----
-
-## 与其他概念的关系
-
-策略学习在工程上常拆成两条主干：**用奖励塑形行为**，或**用演示模仿行为**；融合路线把两条干线的优点叠在一起。
-
-```mermaid
-flowchart TB
-  PL["策略学习 Policy Learning<br/>共同目标：学策略 π(a|s)"]
-
-  RL["RL 强化学习<br/>监督：奖励 r(s,a)<br/>数据：与环境交互 · 探索驱动"]
-  IL["IL 模仿学习<br/>监督：专家演示 D = (s,a)<br/>数据：演示轨迹 · 模仿驱动"]
-
-  RLm["RL 典型方法<br/>PPO · SAC · TD3 · AMP 等"]
-  ILm["IL 典型方法<br/>BC · DAgger · Diffusion · IRL/GAIL 等"]
-
-  FUS["融合路线<br/>BC 预训练 + RL 微调<br/>AMP · RLHF 等"]
-
-  PL --> RL
-  PL --> IL
-  RL --> RLm
-  IL --> ILm
-  RLm --> FUS
-  ILm --> FUS
-```
-
----
+**[强化学习（RL）](../methods/reinforcement-learning.md)** 通过环境试错最大化显式奖励函数、**[模仿学习（IL）](../methods/imitation-learning.md)** 通过监督或交互演示直接对齐专家策略行为、而 **[逆强化学习（IRL）](../methods/inverse-reinforcement-learning.md)** 先从专家演示反推潜在奖励函数再交由 RL 求解，三者构成机器人策略学习中「试错优化—专家对齐—目标反演」的核心范式三角。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
-| GAN | Generative Adversarial Network | 生成对抗网络，AMP 对抗训练的范式来源 |
-| SOTA | State of the Art | 当前最优水平 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+|---|---|---|
+| RL | Reinforcement Learning | 基于环境交互与标量奖励最大化长期折扣回报的决策学习范式 |
+| IL | Imitation Learning | 从专家示教轨迹学习策略分布而不依赖显式奖励函数的学习范式 |
+| IRL | Inverse Reinforcement Learning | 从专家行为反推潜在奖励函数再用于策略优化的桥梁方法 |
+| BC | Behavior Cloning | 将状态到动作拟合为监督学习问题的离线模仿学习基线 |
+| DAgger | Dataset Aggregation | 在策略执行过程中迭代请求专家纠正并聚合新数据的交互式 IL |
+| GAIL | Generative Adversarial Imitation Learning | 用对抗判别器匹配专家与策略占用测度的模仿学习方法 |
+| PPO | Proximal Policy Optimization | 以裁剪代理目标稳定策略更新的同策略 RL 代表算法 |
+| AWR | Advantage-Weighted Regression | 通过优势加权回归统一离线 RL 与高质量样本筛选的后训练方法 |
+| Sim2Real | Simulation to Real | 将仿真中训练得到的策略通过域随机化与系统辨识迁移至真机 |
+
+## 为什么重要
+
+在具体机器人系统立项阶段，研发者面临的第一个结构性决策往往不是网络结构，而是 **监督信号从哪里来**：
+
+- **决定研发瓶颈所在**：选纯 RL 意味着瓶颈落在[奖励设计](../concepts/reward-design.md)、并行仿真吞吐与 [Sim2Real](../concepts/sim2real.md) 差距；选纯 IL 意味着瓶颈落在真机遥操作数据规模、多模态动作分布拟合以及[分布外泛化](../concepts/out-of-distribution-generalization.md)。
+- **避免范式误用与重复踩坑**：在奖励极难定义（如叠衣、精密插拔）的[机器人操作](../tasks/manipulation.md)任务上硬写手工奖励极易诱发 reward hacking；反之在有高保真刚体仿真（如高动态步态恢复）的场景只做纯离线 BC，则难以自主探索出优于示教器的恢复动作。
+- **支撑混合技术栈落地**：现代具身策略很少非此即彼，而是以「IL 预训练 + RL / 优势加权微调」或「任务奖励 RL + 对抗运动先验（AMP / IRL）」协同发挥各自优势。
+
+## 核心原理
+
+### 1. 核心机制三维对比
+
+| 维度 | 强化学习（RL） | 模仿学习（IL：BC / 交互式 IL） | 逆强化学习（IRL / 对抗 IL） |
+|---|---|---|---|
+| **监督信号来源** | 显式设计的标量奖励 $r(s,a)$ | 专家示教状态-动作对 $(s,a)\sim\mathcal{D}_E$ | 先从 $\mathcal{D}_E$ 学奖励/判别信号，再驱动 RL 更新 |
+| **数学目标** | 最大化折扣累积回报 $\mathbb{E}_\pi[\sum_t \gamma^t r_t]$（[MDP](../formalizations/mdp.md)） | 最小化行为散度（如 $\mathcal{L}_{\mathrm{BC}}$，见[BC 损失](../formalizations/behavior-cloning-loss.md)） | 匹配特征期望或轨迹占用测度 $\rho_\pi(s,a)\approx\rho_E(s,a)$ |
+| **仿真/真机交互** | 极高（同策略算法通常需大量并行仿真试错） | 低至中（BC 纯离线零交互；DAgger 需在线查询专家） | 高（内循环仍需通过策略与环境交互采样） |
+| **超越专家上限** | **可能**（可在规则范围内自主发现更优解） | **通常受限**（行为分布被示教质量与模态上界封顶） | **有限可能**（取决于推断奖励是否准确捕捉任务本质） |
+| **核心工程难度** | 奖励塑形、探索效率与 Sim2Real 迁移 | 数据采集成本、多模态崩溃与复合误差 | 训练稳定性（双层/对抗博弈）、算力与样本双重开销 |
+
+### 2. 典型失败模式对比
+
+- **RL 的失败模式**：
+  - **Reward Hacking（奖励黑客）**：策略利用物理仿真或奖励公式漏洞刷高得分（例如原地高频抖腿刷速度奖励或夹爪卡在物体边缘刷接触分），而非完成人类预期任务。
+  - **探索停滞与稀疏回报困境**：在长视野多阶段操作中，随机探索几乎无法撞见最终成功状态，价值函数长期全零。
+  - **Sim2Real 物理偏差**：仿真中被利用的接触刚度或延迟假设在真机失真，导致策略在现实中振荡失稳。
+- **IL 的失败模式**：
+  - **复合误差与状态分布偏移（Covariate Shift）**：纯 BC 只要单步动作偏离示教流形，下一步进入未见状态后误差随时间步 $T$ 呈超线性放大；这是脱离分布后缺少自恢复轨迹的典型表现。
+  - **多模态平均（Mode Averaging）**：当人类专家面对障碍物既有“左绕”也有“右绕”演示时，单峰 MSE 回归输出正中间“撞墙”动作（需 [Diffusion Policy](../methods/diffusion-policy.md) 或 [Action Chunking](../methods/action-chunking.md) 等多峰建模缓解）。
+  - **因果混淆（Causal Confusion）**：策略学到与真因高度相关的伪线索（如机械臂静止参考帧背景而非目标物体位置）。
+- **IRL 的失败模式**：
+  - **奖励退化性与不唯一**：无穷多组经过势能塑形或常数平移的奖励都能解释同一组专家轨迹，判别器容易记忆视觉或时间步伪特征而非真正任务目标。
+  - **双重脆弱性**：既要承受类似 IL 的专家数据偏置，又要叠加对抗训练震荡与内循环 RL 的大量环境交互成本。
+
+### 3. 代表方法纵向谱系
+
+| 方法族 | 具体算法 | 核心定位与机制 | 主要代偿与工程条件 |
+|---|---|---|---|
+| **纯离线模仿** | [Behavior Cloning](../methods/behavior-cloning.md) / [Action Chunking](../methods/action-chunking.md) / [Diffusion Policy](../methods/diffusion-policy.md) | 离线拟合动作块或条件动作分布 | 零交互门槛低；但极度依赖数据覆盖度与恢复演示 |
+| **交互/游乐模仿** | [DAgger](../methods/dagger.md) / [Play-LMP](../methods/learning-from-play-lmp.md) | 通过专家在线纠错或无任务游乐数据拓宽状态流形 | 显著抑制 OOD 漂移；DAgger 需高成本人类在环实时标注 |
+| **在线/同策略 RL** | [策略优化](../methods/policy-optimization.md)（PPO 等） | 并行仿真试错学习最优闭环反馈策略 | 可突破人类动作极限；依赖 GPU 并行仿真与精心奖励塑形 |
+| **对抗与运动先验** | [GAIL / AIRL](../methods/inverse-reinforcement-learning.md) / [AMP](../methods/amp-reward.md) | 把专家风格或占用测度转化为可微辅助奖励 | 兼顾任务目标与类人自然度；调参敏感且需交互仿真器 |
+| **混合后训练范式** | [AWR](../methods/awr.md) / [HIL 混合模仿学习](../methods/hil-hybrid-imitation-learning.md) / RL 微调 VLA | 以 BC 策略作初始化，再以真机人工纠错或优势加权精调 | 避免零起步探索且显著提升成功率上限；工程管线较重 |
+
+### 4. 决策选型流程
+
+```mermaid
+flowchart TD
+    Q1["任务是否存在可靠且高速并行的仿真器?"]
+    Q1 -- "是" --> Q2["能否写出清晰、难被钻空子的显式奖励 r(s,a)?"]
+    Q1 -- "否 (纯真机/复杂柔体接触)" --> Q3["是否具备人类遥操作或高质量演示数据?"]
+    Q2 -- "是" --> M_RL["优先在线 RL (如 PPO) + 域随机化 Sim2Real"]
+    Q2 -- "否 (缺自然风格或规则难量化)" --> M_HYB1["采用 RL 任务奖励 + AMP/IRL 先验或 BC 热启动"]
+    Q3 -- "是" --> Q4["离线纯 BC 是否已在真机暴露 OOD 漂移或低成功率瓶颈?"]
+    Q3 -- "否" --> M_DATA["先补齐采集链路或搭建可微/物理仿真再介入学习"]
+    Q4 -- "否" --> M_IL["采用 Action Chunking / Diffusion / VLA 离线模仿策略"]
+    Q4 -- "是" --> M_HYB2["引入 DAgger 在线纠错或 Advantage-Weighted / HIL-RL 后训练"]
+```
+
+## 工程实践
+
+在现代机器人工程中，范式选择往往随着任务物理特性收敛出稳定组合：
+
+1. **人形与四足[运动控制](../tasks/humanoid-locomotion.md)：以 RL 为主、IL/AMP 为辅**
+   - 步态稳定、抗冲击、摔倒恢复对物理接触响应极敏感，且运动学/动力学在刚体仿真器（如 Isaac Gym / Isaac Lab / MuJoCo）中易于大规模并行。
+   - 标准方案通常采用基于特权信息（Privileged State）的 PPO + 域随机化 + 教师-学生蒸馏，并引入 [AMP](../methods/amp-reward.md) 判别器或动作追踪模仿约束，确保步态既抗扰又具备类人自然运动风格。
+2. **桌面灵巧与双臂[机器人操作](../tasks/manipulation.md)：以 IL 为底座、RL/纠错作精调**
+   - 柔性物体（布料、线缆）、长程视觉语义组合（开抽屉→抓物→放回）很难在仿真中精确对齐摩擦与变形参数，往往首选真机遥操作采集 + 生成式模仿策略（ACT / Diffusion Policy / VLA）。
+   - 当离线策略受限于示教覆盖不足或微米级接触失败时，再叠加两类工程手段增强鲁棒性：一是像 [DAgger](../methods/dagger.md) 或人类干预学习那样在线补充恢复边界轨迹；二是结合值函数/阶段进度估计进行优势加权行为克隆（AWBC）或真机在线强化学习（如 [HIL 混合模仿学习](../methods/hil-hybrid-imitation-learning.md)）。
+3. **混合管线的实用切换阈值**：工程上切忌在缺乏稳定策略初始化时直接从零启动真机 RL，也切忌在仅剩最后 5%–10% 长尾物理稳定性差距时无限堆叠冗余同质演示；先把基线 BC 做到可复现失败边界，再用交互纠错或优势加权/在线 RL 定点消除长尾故障，通常性价比最高。
+
+## 局限与风险
+
+- **单纯模仿学习（IL）的天花板风险**：纯离线 BC 无法自主发现演示集中未曾出现的高效恢复动作，且不同操作员混采的低质量或矛盾轨迹会在监督拟合阶段互相抵消，导致策略在真机[分布外泛化](../concepts/out-of-distribution-generalization.md)场景下脆弱。
+- **单纯强化学习（RL）的样本与建模成本**：高动态真机试错成本极高且存在硬件损坏风险，因此依赖高保真仿真器与严谨的系统辨识；视觉端到端策略在真机闭环中的端到端前向耗时也受制于视觉主干规模与控制总线频率匹配，需借助异步推理或动作分块工程化适配。
+- **混合架构的系统复杂度风险**：把 BC、DAgger、值函数微调与对抗判别器串进同一训练管线会成倍放大超参耦合（例如优势裁剪阈值、正则系数与数据配比失衡），若缺乏标准化评测与消融基线，极易陷入“多模块互相掩盖缺陷”的调参泥潭。
+
+## 与其他页面的关联
+
+- 核心方法枢纽：[强化学习](../methods/reinforcement-learning.md)、[模仿学习](../methods/imitation-learning.md)、[逆强化学习](../methods/inverse-reinforcement-learning.md)
+- IL 关键分支：[Behavior Cloning](../methods/behavior-cloning.md)、[DAgger](../methods/dagger.md)、[Learning from Play (Play-LMP)](../methods/learning-from-play-lmp.md)
+- RL 与混合后训练：[策略优化](../methods/policy-optimization.md)、[AMP](../methods/amp-reward.md)、[AWR](../methods/awr.md)、[HIL 混合模仿学习](../methods/hil-hybrid-imitation-learning.md)
+- 核心问题与概念：[奖励设计](../concepts/reward-design.md)、[分布外泛化](../concepts/out-of-distribution-generalization.md)、[Sim2Real](../concepts/sim2real.md)、[MDP](../formalizations/mdp.md)
+- 纵深学习路线：[模仿学习纵深路线](../../roadmap/depth-imitation-learning.md)
 
 ## 参考来源
 
-- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 理论基础
-- Pomerleau, *ALVINN: An Autonomous Land Vehicle in a Neural Network* (1989) — BC 早期工作
-- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* (DAgger, 2011) — 分布偏移的经典解法
-- Ho & Ermon, *Generative Adversarial Imitation Learning* (GAIL, 2016) — 从演示做占用匹配
-- [IRL 一手论文索引](../../sources/papers/inverse_reinforcement_learning_primary_refs.md) — Ng 2000 / MaxEnt / AIRL；GAIL 不恢复可复用奖励
-- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* (2023) — IL 的 SOTA
-- Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control* (2021) — RL + 演示的标志性融合
+- [模仿学习基础与经典论文归档](../../sources/papers/imitation_learning.md) — 梳理 BC、DAgger 复合误差理论（Ross et al.）与模仿学习范式分类。
+- [策略优化综述归档](../../sources/papers/policy_optimization.md) — 对照策略梯度、TRPO / PPO 信任域优化与方差控制原理。
+- [Ho & Ermon (2016) GAIL 原文通读归档](../../sources/papers/gail_reading_arxiv_1606_03476.md) — 核对占用测度匹配与连接 IRL/RL 的对抗训练机理。
+- [Play-LMP (Lynch et al., 2019) 原文通读归档](../../sources/papers/learning_latent_plans_from_play_arxiv_1903_01973.md) — 核对无任务游乐数据、潜计划空间与 BC 覆盖度、恢复能力对比数据（arXiv:1903.01973）。
+- [逆强化学习一手论文索引](../../sources/papers/inverse_reinforcement_learning_primary_refs.md) — 对比显式奖励反推与学徒学习定位（含 Ng & Russell 2000 与 Ziebart 2008 全文核对摘录）。
 
----
+## 推荐继续阅读
 
-## 关联页面
-
-- [运控 RL vs 操作 IL/VLA](./locomotion-rl-vs-manipulation-learning-stack.md) — 按 loco/manip 任务结构解释算法栈分化与全身合流
-- [机器人学习五大范式](./robot-learning-five-paradigms-taxonomy.md) — 在 RL/IL 之外补齐 LfV、VLA、持续学习
-- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法详细展开
-- [Imitation Learning](../methods/imitation-learning.md) — IL 方法详细展开
-- [Inverse Reinforcement Learning](../methods/inverse-reinforcement-learning.md) — 演示 → 奖励 → 策略；介于 RL 与 IL 之间
-- [Policy Optimization](../methods/policy-optimization.md) — RL 中的策略梯度方法（PPO/SAC/TD3）
-- [Diffusion Policy](../methods/diffusion-policy.md) — IL 的 SOTA 方法
-- [WBC vs RL](./wbc-vs-rl.md) — 另一个控制方法对比视角
-- [Reward Design](../concepts/reward-design.md) — RL 选择时 reward 设计是核心挑战
-- [Sim2Real](../concepts/sim2real.md) — 两种方法的 sim2real 挑战不同
-- [Online vs Offline RL](./online-vs-offline-rl.md) — RL 内部的数据范式对比
-
-## 一句话记忆
-
-> RL 靠奖励信号自己探索，可以超越专家但 reward 难设计；IL 靠演示监督，行为质量好但受演示上界限制——实践中最强的方案往往是两者的结合。
+- **夯实纯模仿下界**：[Behavior Cloning](../methods/behavior-cloning.md) → [DAgger](../methods/dagger.md) — 理解状态偏移与复合误差的数学来源，再看如何通过在线纠错消除漂移。
+- **打通奖励反推桥梁**：[逆强化学习](../methods/inverse-reinforcement-learning.md) → [AMP](../methods/amp-reward.md) — 看专家演示如何转换成不手写稠密方程的 RL 判别奖励。
+- **走向真机混合落地**：[HIL 混合模仿学习](../methods/hil-hybrid-imitation-learning.md) — 了解从真机 BC 过渡到人工干预+强化学习精调的实操方案。

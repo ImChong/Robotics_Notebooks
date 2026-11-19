@@ -9,10 +9,12 @@
 - **会议：** CoRL 2026（PDF 元数据；与 [`why_action_chunking_improves_bc_corl2026.md`](./why_action_chunking_improves_bc_corl2026.md) 同源）
 - **项目页：** <https://action-chunking.github.io/> — 归档见 [`sources/sites/action-chunking-github-io.md`](../sites/action-chunking-github-io.md)
 - **机构：** 米兰理工大学（Politecnico di Milano）；加州大学伯克利分校（UC Berkeley）
-- **入库日期：** 2026-09-27（arXiv 索引补全；初版 ingest 2026-08-04）
+- **入库日期：** 2026-09-27（arXiv 索引补全；初版 ingest 2026-08-04；全文核对 2026-11-19）
+- **通读：** 已完成
+- **核对范围：** 通读 arXiv:2608.02547v1（2026-08-03）正文与 Appendix A–E 全文，核对 Table 1–2、App B.4–B.5（Robomimic MH、LIBERO delay/chunk sweep、\(\pi_{0.5}\) 表 15）、App A.5 Franka 真机与 §8 高频控制限制
 - **一句话说明：** 与 CoRL 归档一致——消融 action chunking 在 BC 中的收益机制（delayed policy、隐式集成、RDE），并给出 LIBERO / Robomimic / Franka 主表数字。
 
-## 开源状态（步骤 2.5，2026-09-27）
+## 开源状态（步骤 2.5，复核 2026-11-19）
 
 | 资源 | 状态 |
 |------|------|

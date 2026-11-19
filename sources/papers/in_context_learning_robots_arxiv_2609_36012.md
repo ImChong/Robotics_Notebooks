@@ -11,9 +11,12 @@
 - **PDF：** <https://arxiv.org/pdf/2609.36012>
 - **项目页：** <https://jethrojames.github.io/awesome-robots-icl/>
 - **代码 / 文献库：** <https://github.com/JethroJames/awesome-robots-icl>
-- **页数：** 100 pages, 26 figures, 25 tables（arXiv 备注）
+- **页数：** 100 pages, 26 figures, 25 tables（arXiv 2026-09-28 v1，412 refs / 260 method refs；项目页 2026-11 修订版更新至 115 pages / 690 refs，GitHub 实时索引 724 works）
 - **开源：** **已开源（文献与策展仓库）** — GitHub 提供论文列表与 benchmark 索引；非可运行训练/部署栈
 - **入库日期：** 2026-09-30
+- **再核日期：** 2026-11-19
+- **核对范围：** 通读 `arXiv:2609.36012` v1 原文 §1–§9 主体章节及附录 B–C 汇总表格，并核对项目页与 `awesome-robots-icl` 仓库 `README.md`、`DESIGN.md`、`MAINTENANCE.md`
+- **通读：** 已完成
 - **说明：** 与 RA-L 论文 PADP（DOI:10.1109/lra.2026.3734869）**无关**；用户指定 arXiv 链接仅对应本篇综述。
 
 ## 核心论文摘录

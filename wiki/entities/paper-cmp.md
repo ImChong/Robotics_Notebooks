@@ -1,8 +1,9 @@
 ---
 type: entity
+project_id: cmp
 tags: [paper, humanoid, motion-prior, amp, smp, context-aware, rl, hkust-gz, mimickit, unitree-g1]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-19
 arxiv: "2608.03234"
 venue: "2026 · arXiv"
 related:
@@ -10,6 +11,8 @@ related:
   - ../methods/amp-reward.md
   - ../methods/smp.md
   - ../methods/ase.md
+  - ../methods/reinforcement-learning.md
+  - ../tasks/locomotion.md
   - ./paper-bfm-19-calm.md
   - ./paper-bfm-21-case.md
   - ../comparisons/amp-add-smp-motion-prior-variants.md
@@ -22,7 +25,9 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
 sources:
   - ../../sources/papers/cmp_arxiv_2608_03234.md
-summary: "CMP（arXiv:2608.03234，HKUST-GZ）：用高优势 rollout + demo 锚定的对比相关度，把 AMP/SMP 的任务无关先验软重权成上下文条件适配器；五任务提升回报与样本效率，参考失衡更稳；截至 2026-08-18 无官方代码。"
+original:
+  - ../../sources/papers/cmp_arxiv_2608_03234.md
+summary: "CMP（arXiv:2608.03234，HKUST-GZ）：用高优势 rollout + demo 锚定的对比相关度，把 AMP/SMP 的任务无关先验软重权成上下文条件适配器；五任务提升回报与样本效率，参考失衡更稳；截至 2026-11-19 无官方代码。"
 ---
 
 # CMP：上下文感知运动先验
@@ -59,7 +64,7 @@ summary: "CMP（arXiv:2608.03234，HKUST-GZ）：用高优势 rollout + demo 锚
 | **数据** | 与 AMP 同款 locomotion 参考集（[MimicKit](./mimickit.md) 分发）；无任务专用 demo / 技能标签 |
 | **任务** | Target Location、Steering、Trajectory Following、Dodgeball、Dribbling |
 | **栈** | Isaac Gym Preview 4 + PhysX；4096 并行环境；RTX 3090 / 4090 |
-| **开源** | **未列可运行入口**（截至 **2026-08-18** abs/HTML 无 GitHub / 项目页；正文称 clip manifest「included in the code」） |
+| **开源** | **未列可运行入口**（截至 **2026-11-19** arXiv abs/PDF 全文无 GitHub / 项目页 URL；正文称 clip manifest「included in the code」） |
 
 ## 核心原理
 
@@ -99,20 +104,20 @@ w_\phi(c,x)\propto\exp(\alpha R_\phi(c,x)).
 
 | 底座 | 适配形式 | 部署期先验奖励 |
 |------|----------|----------------|
-| AMP | \(l_{\theta,\psi}=\mathrm{sg}[l_\theta]+\lambda_{\mathrm{res}}\Delta l_\psi(c,x)\)，\(\lambda_{\mathrm{res}}=0.03\) | \(-\log(1-\sigma(l_{\theta,\psi}))\) |
-| SMP | \(\hat\epsilon=\mathrm{sg}[\epsilon_\theta]+\lambda_{\mathrm{res}}\Delta\epsilon_\psi\)，\(\lambda_{\mathrm{res}}=0.1\)；denoiser 冻结；残差正则 \(\eta=0.001\) | 用适配后误差替代原 SMP reward（\(\mathcal{K}=\{22,15,8\}\)） |
+| AMP | \(l_{\theta,\psi}=\mathrm{sg}[l_\theta]+\lambda_{\mathrm{res}}\Delta l_\psi(c,x)\)，\(\lambda_{\mathrm{res}}=0.03\)，残差正则 \(\eta=0.01\)，适配器 lr `5e-5`（损失权重 `0.5`） | \(-\log(1-\sigma(l_{\theta,\psi}))\) |
+| SMP | \(\hat\epsilon=\mathrm{sg}[\epsilon_\theta]+\lambda_{\mathrm{res}}\Delta\epsilon_\psi\)，\(\lambda_{\mathrm{res}}=0.1\)；denoiser 冻结；残差正则 \(\eta=0.001\)，\(\kappa=6.0\) | 用适配后误差替代原 SMP reward（\(\mathcal{K}=\{22,15,8\}\)） |
 
 ### 流程总览
 
 ```mermaid
 flowchart TB
-  ref["MimicKit locomotion 参考库<br/>p_E(x)"]
-  roll["策略 rollout<br/>(c, x_π, Â)"]
-  rel["对比相关度 R_φ(c,x)<br/>L_on + λ_demo L_demo"]
-  w["软权重 w̄_φ"]
-  base["基座先验 θ<br/>AMP 判别器 / SMP denoiser"]
-  adapt["上下文残差适配器 ψ"]
-  reward["上下文条件先验奖励<br/>+ 任务奖励"]
+  ref["MimicKit locomotion 参考库 p_E(x)"]
+  roll["策略 rollout (c, x_pi, A_hat)"]
+  rel["对比相关度 R_phi(c,x): L_on + lambda_demo L_demo"]
+  w["软权重 w_bar_phi"]
+  base["基座先验 theta: AMP 判别器 / SMP denoiser"]
+  adapt["上下文残差适配器 psi"]
+  reward["上下文条件先验奖励 + 任务奖励"]
   ppo["PPO 更新策略"]
   ref --> rel
   roll --> rel
@@ -126,7 +131,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至复核日（2026-08-18）公开材料**无**官方仓库或项目页 URL；正文提及 clip manifest「included in the code」，但未给出可克隆入口。若后续开源，应按「MimicKit 任务 + AMP/SMP 基座 → 训相关度与适配器 → 五任务评测」补 `sequenceDiagram`。
+**不适用** — 截至复核日（2026-11-19）公开材料与 arXiv:2608.03234v1 PDF 全文**无**官方仓库或项目页 URL；正文提及 clip manifest「included in the code」，但未给出可克隆入口。若后续开源，应按「MimicKit 任务 + AMP/SMP 基座 → 训相关度与适配器 → 五任务评测」补 `sequenceDiagram`。
 
 ## 工程实践
 
@@ -134,7 +139,7 @@ flowchart TB
 |----|------|
 | 参考库 | 与 AMP 相同 locomotion 集；**不要**为五任务另切技能标签 |
 | 运动 clip | MimicKit 10 帧 \(X_t=(x_{t-8},\ldots,x_{t+1})\)；\(\Phi(s)\) 不含任务上下文 |
-| 相关度模型 | 上下文 / 运动各 256→128 MLP + SiLU，\(\ell_2\) 归一后点积；\(\tau=0.1\)，\(\alpha=0.5\)（AMP）/ \(1.0\)（SMP） |
+| 相关度模型 | 上下文 / 运动各 256→128 MLP + SiLU，\(\ell_2\) 归一后点积（lr `1e-4`，对比权重 `0.1`）；\(\tau=0.1\)，\(\alpha=0.5\)（AMP）/ \(1.0\)（SMP），batch `512` |
 | AMP 适配器 | motion/context 双支路 256-d，拼接后融合成标量 \(\Delta l\)；输出层**零初始化**以冷启动对齐基座 |
 | 权重稳定 | minibatch 归一化后 clip 到 \([0.5,2.0]\)；适配损失 detach 权重 |
 | 读曲线 | 主看 test return（32 episode × 3 seed）+「达基线 80% 最终回报的 env steps」；勿只比最终曲线高度 |
@@ -143,7 +148,7 @@ flowchart TB
 
 ## 实验与评测
 
-**主表（Table 1，mean ± std，三 seed）：** CMP-AMP 五任务回报全面高于 AMP（Steering \(299\pm12\)→\(480\pm6\)、Trajectory \(184\pm1\)→\(302\pm6\)、Dribbling \(319\pm10\)→\(456\pm5\)）；CMP-SMP 增益更小但一致。样本效率（达基线 80% 最终回报的 env steps，×10⁸）：CMP-AMP Location 6.5→2.4、Trajectory 6.8→2.7、Dribbling 5.2→2.8、Dodgeball 7.6→5.6；Steering 与 AMP 持平（均为 1.2）。
+**主表（Table 1，mean ± std，三 seed）：** CMP-AMP 五任务回报全面高于 AMP（Location \(408\pm1\to467\pm8\)、Steering \(299\pm12\to480\pm6\)、Trajectory \(184\pm1\to302\pm6\)、Dodgeball \(424\pm2\to458\pm12\)、Dribbling \(319\pm10\to456\pm5\)）；CMP-SMP 增益更小但一致（Location \(376\pm31\to437\pm5\)、Steering \(496\pm10\to512\pm8\)、Trajectory \(252\pm1\to268\pm1\)、Dodgeball \(447\pm6\to471\pm3\)、Dribbling \(458\pm5\to466\pm2\)）。样本效率（达基线 80% 最终回报的 env steps，\(\times 10^8\)）：CMP-AMP 为 Location `6.5→2.4`、Steering `1.2→1.2`、Trajectory `6.8→2.7`、Dodgeball `7.6→5.6`、Dribbling `5.2→2.8`；CMP-SMP 五任务同样全面下降（Location `8.4±0.5→4.7±0.5`、Steering `1.4±0.2→1.3±0.1`、Trajectory `2.2±0.2→1.9±0.2`、Dodgeball `3.1±0.2→2.6±0.1`、Dribbling `3.4±0.1→2.2±0.2`）。
 
 **可解释性：** Target Location 上相关度权重随训练从「全局偏行走」演化为「近走、远远跑、侧/后偏转向跑」（约 \(1.3\to5.2\times10^8\) env steps）；带 \(\mathcal{L}_{\mathrm{demo}}\) 时近/远/后目标分别检索到走、跑、制动类 clip。
 
@@ -184,12 +189,14 @@ flowchart TB
 - SMP 增益小于 AMP，说明方法有效性绑定底座表征方式。
 - 开源缺口：选型复现前先核实仓库是否上线。
 
-## 关联页面
+## 与其他页面的关联
 
 - [AMP（论文实体）](./paper-amp-survey-01-amp.md) — 任务无关对抗先验源流
 - [AMP 方法页](../methods/amp-reward.md) — 风格奖励工程读法
 - [SMP](../methods/smp.md) — CMP 的第二实例化底座
 - [ASE](../methods/ase.md) — 先学技能空间再选的对照路线
+- [Reinforcement Learning](../methods/reinforcement-learning.md) — 下游 PPO 策略优化底座
+- [Locomotion](../tasks/locomotion.md) — 人形运动控制与目标跟踪任务族
 - [CALM](./paper-bfm-19-calm.md) / [C·ASE](./paper-bfm-21-case.md) — 条件 latent skill 对照
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md) — 变体选型表；CMP 可视为「上下文适配层」
 - [人形 AMP 综述坐标](../overview/humanoid-amp-motion-prior-survey.md) — 分布约束线扩展阅读

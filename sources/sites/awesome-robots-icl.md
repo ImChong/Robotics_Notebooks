@@ -7,8 +7,11 @@
 - **URL：** <https://jethrojames.github.io/awesome-robots-icl/>
 - **论文：** [in_context_learning_robots_arxiv_2609_36012.md](../papers/in_context_learning_robots_arxiv_2609_36012.md)（arXiv:2609.36012）
 - **代码：** <https://github.com/JethroJames/awesome-robots-icl>（文献与 benchmark 策展；**非**机器人训练/部署代码）
-- **开源结论：** **部分开源** — 公开 curated 列表与项目页；无可运行策略/仿真栈
+- **开源结论：** **部分开源** — 公开 curated 列表与项目页；无可运行策略/仿真栈（项目页已同步 2026-11 修订版 115 页 / 690 篇文献索引）
 - **入库日期：** 2026-09-30
+- **再核日期：** 2026-11-19
+- **核对范围：** 通读项目页正文、方法家族交互总览与基准/文献统计模块
+- **通读：** 已完成
 
 ## 核查记录
 
