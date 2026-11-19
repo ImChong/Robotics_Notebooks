@@ -2,8 +2,9 @@
 type: concept
 tags: [tolerance-analysis, gd-t, monte-carlo, structure-design, dimension-chain, robot-accuracy, wechat]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-19
 related:
+  - ../comparisons/pdf-engineering-drawing-pmi-ocr-vlm.md
   - ./humanoid-mechanical-layout-design.md
   - ./humanoid-mass-production-engineering.md
   - ./humanoid-topology-optimization-toolchain.md
@@ -157,6 +158,8 @@ summary: "依据 Zane Hub 公众号随笔，把机器人结构件公差仿真梳
 - 文末有付费知识星球推广，不入库。
 
 ## 关联页面
+
+- [PDF 工程图纸 PMI 的 OCR / VLM 提取与检验表生成](../comparisons/pdf-engineering-drawing-pmi-ocr-vlm.md)：与本页的 GD&T / CMM 闭环衔接，核查自动读图的风险与验收指标。
 - [螺纹基础](./screw-thread-basics.md) · [Mechtool 在线机械设计工具](../entities/mechtool.md)
 
 - [人形整机机械布局设计](./humanoid-mechanical-layout-design.md)：构型与基准选择的上游
