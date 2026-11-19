@@ -5190,8 +5190,17 @@ a.card:active { transform: translateY(-1px); }
   border-color: var(--accent-hover);
 }
 .kb-chat-toggle__icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+}
+.kb-chat-toggle__bubble {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.kb-chat-toggle__dot {
   fill: currentColor;
 }
 

@@ -142,6 +142,8 @@ test('Footer pages mount #fabStackRight with merged scroll launcher; graph.html 
   assert.equal(btt.hidden, true);
   assert.equal(mainBtn.hidden, true);
   assert.equal(chatBtn.hidden, false);
+  assert.ok(chatBtn.querySelector('svg.kb-chat-toggle__icon .kb-chat-toggle__bubble'), 'chat button renders speech-bubble outline');
+  assert.equal(chatBtn.querySelectorAll('svg.kb-chat-toggle__icon circle.kb-chat-toggle__dot').length, 3, 'chat button renders three dots inside bubble');
   assert.equal(homeDom.window.document.querySelectorAll('script[src="kb-chat.js"]').length, 0);
   assert.equal(homeDom.fetchCalls.length, 0);
 

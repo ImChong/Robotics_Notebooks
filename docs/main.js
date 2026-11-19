@@ -9262,16 +9262,27 @@
   'use strict';
 
   function chatToggleIcon() {
-    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
     svg.setAttribute('viewBox', '0 0 24 24');
     svg.setAttribute('aria-hidden', 'true');
     svg.setAttribute('class', 'kb-chat-toggle__icon');
-    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute(
+    var bubble = document.createElementNS(ns, 'path');
+    bubble.setAttribute('class', 'kb-chat-toggle__bubble');
+    bubble.setAttribute(
       'd',
-      'M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 5v2h10V9H7zm0 4v1.8h7V13H7z'
+      'M6 4.5h12a2.5 2.5 0 0 1 2.5 2.5v7a2.5 2.5 0 0 1-2.5 2.5H8.6l-4.05 3.35c-.55.45-1.05.05-1.05-.65V7A2.5 2.5 0 0 1 6 4.5z'
     );
-    svg.appendChild(path);
+    svg.appendChild(bubble);
+    var dotXs = [8, 12, 16];
+    for (var i = 0; i < dotXs.length; i++) {
+      var dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('class', 'kb-chat-toggle__dot');
+      dot.setAttribute('cx', String(dotXs[i]));
+      dot.setAttribute('cy', '10.5');
+      dot.setAttribute('r', '1.3');
+      svg.appendChild(dot);
+    }
     return svg;
   }
 
