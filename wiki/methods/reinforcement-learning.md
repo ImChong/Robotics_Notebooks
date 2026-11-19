@@ -4,6 +4,7 @@ tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
 updated: 2026-11-15
 related:
+  - ../entities/paper-cl1-biological-neural-platform-kagan-2025.md
   - ../entities/paper-kamino.md
   - ../entities/paper-monorace-champion-level-drone-racing.md
   - ../concepts/rl-runner.md
@@ -255,6 +256,8 @@ flowchart LR
 ```
 
 ## 和其他方法的关系
+
+- **跨学科闭环对照：** [CL1 生物神经系统平台（Kagan, 2025）](../entities/paper-cl1-biological-neural-platform-kagan-2025.md)提供体外神经培养物与数字环境交互的设备接口；它并不是 PPO/RL 算法或机器人策略评测，闭环形式相似不意味着学习机制等同。
 
 - **vs 训练循环编排（Runner）**：RL 算法给出损失；[RL Runner](../concepts/rl-runner.md) 决定数据从哪来、用几次、是否丢掉、要不要改参数（On-policy / Off-policy / Offline / 蒸馏 / 评测等）。读 rsl_rl `OnPolicyRunner` 或 SB3 `learn()` 时先对循环，再对 clip/熵。
 - **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。见 [RL vs IL 对比](../comparisons/rl-vs-il.md)。
