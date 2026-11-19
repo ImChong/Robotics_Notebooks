@@ -14,7 +14,7 @@
 - **模型：** https://huggingface.co/nyu-visionx/RAEv2-models
 - **数据集：** https://huggingface.co/datasets/nanovisionx/RAEv2-data
 - **核对日期：** 2026-11-19
-- **核对范围：** 通读 arXiv v2 HTML `1–`6、`2.1–2.3 的层聚合/REPA/自引导机制，`3 的 K 和引导消融、`4 的 T2I 与导航世界模型，附录 A 实现配置、附录 C 指标表、附录 E 局限；核对项目页和官方 README、`Stage1/Stage2 训练命令以及 src/train_stage1.py、src/stage1/engine.py、src/stage1/rae.py、src/train.py、src/stage2/engine.py、configs/stage2/training/nwm-dinov3l-k7.yaml。
+- **核对范围：** 通读 arXiv v2 HTML §1–§6、§2.1–2.3 的层聚合/REPA/自引导机制，`3 的 K 和引导消融、§4 的 T2I 与导航世界模型，附录 A 实现配置、附录 C 指标表、附录 E 局限；核对项目页和官方 README、Stage1/Stage2 训练命令以及 src/train_stage1.py、src/stage1/engine.py、src/stage1/rae.py、src/train.py、src/stage2/engine.py、configs/stage2/training/nwm-dinov3l-k7.yaml。
 - **通读：** 已完成
 
 ## 一句话说明
@@ -23,9 +23,9 @@ RAEv2 保留冻结预训练视觉编码器的语义 latent，利用末 K 层特�
 
 ## 三个可核对的机制
 
-1. **Generalized RAE（`2.1）：** 最后 K 层 patch tokens 求和，`Eq.(1) 中 x = sum(z_l)，形状始终为 N×d；K=1 退化为原始 RAE。不需微调视觉编码器。附录 C 对比 MLS（多层求和）与 MLR（随机投影），相同 K 下 MLS 的 Stage2 gFID 更好。
-2. **RAE + REPA（`2.2）：** 在 27 种编码器上的分析显示两者互补：RAE 利用 encoder 的全局语义，REPA 改善 DiT 中间 token 的局部空间相似性；可把同一预训练表征同时当输入 latent 与监督 target。
-3. **REPA Self-Guidance（`2.3）：** REPA 的早层 projection head 是 clean latent 的 x-prediction，满层 DiT 输出也重参数化为 x-prediction；两个预测可在同一潜空间做 guidance，无需为 AutoGuidance 额外训练模型，也无需标准 CFG 第二次前向。此结论不能扩展为所有任务、所有引导强度下都没有额外计算。
+1. **Generalized RAE（§2.1）：** 最后 K 层 patch tokens 求和，式 (1) 中 x = sum(z_l)，形状始终为 N×d；K=1 退化为原始 RAE。不需微调视觉编码器。附录 C 对比 MLS（多层求和）与 MLR（随机投影），相同 K 下 MLS 的 Stage2 gFID 更好。
+2. **RAE + REPA（§2.2）：** 在 27 种编码器上的分析显示两者互补：RAE 利用 encoder 的全局语义，REPA 改善 DiT 中间 token 的局部空间相似性；可把同一预训练表征同时当输入 latent 与监督 target。
+3. **REPA Self-Guidance（§2.3）：** REPA 的早层 projection head 是 clean latent 的 x-prediction，满层 DiT 输出也重参数化为 x-prediction；两个预测可在同一潜空间做 guidance，无需为 AutoGuidance 额外训练模型，也无需标准 CFG 第二次前向。此结论不能扩展为所有任务、所有引导强度下都没有额外计算。
 
 ## 核心数字（作者报告，非本站复现）
 
@@ -43,9 +43,9 @@ RAEv2 保留冻结预训练视觉编码器的语义 latent，利用末 K 层特�
 ## 导航世界模型与机器人工程边界
 
 - 任务是 **动作条件的下一帧 / 未来帧生成**，不是直接输出电机控制指令。
-- `4.2：4 帧历史上下文 × 每帧 16×16 tokens = 1024 个图像条件 tokens；另有 4 个动作 tokens，动作表示为本体坐标增量 (Δx, Δy, Δψ)，及 rollout 时间 token。基于 RECON 4 FPS 自回归生成，按 1/2/4/8/16 秒 horizon 验证。
+- §4.2：4 帧历史上下文 × 每帧 16×16 tokens = 1024 个图像条件 tokens；另有 4 个动作 tokens，动作表示为本体坐标增量 (Δx, Δy, Δψ)，及 rollout 时间 token。基于 RECON 4 FPS 自回归生成，按 1/2/4/8/16 秒 horizon 验证。
 - rollout 读取的是 **ground-truth action**；不能据 FVD 改善推断真机闭环导航成功率或物理一致性。
-- `Appendix E：仅比较多层求和与随机投影两种简单聚合；表征仍依赖在有限视觉编码器集合中的经验选择，没有证明联合端到端优化或跨所有物理场景的最优性。
+- 附录 E：仅比较多层求和与随机投影两种简单聚合；表征仍依赖在有限视觉编码器集合中的经验选择，没有证明联合端到端优化或跨所有物理场景的最优性。
 
 ## 官方实现对应关系
 
