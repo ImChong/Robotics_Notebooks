@@ -7,19 +7,21 @@
 - **arXiv：** <https://arxiv.org/abs/2608.15938>
 - **项目页：** <https://revisiting-open-loop-action-chunking.github.io/>
 - **机构：** 麻省理工学院（MIT）；加州大学伯克利分校（UC Berkeley）
-- **入库日期：** 2026-08-22
+- **入库日期：** 2026-08-22（全文通读与复核 2026-11-19）
+- **通读：** 已完成
+- **核对范围：** 通读 arXiv:2608.15938v2（2026-08-19）正文与 Appendix A–I 全文，核对 Table 1 真机 ARX-5 结果、FurnitureSimOneLeg 千条演示与 HG-DAgger 实验、App F 双编码器（double encoder）与 App I checkpoint 规律
 - **索引来源：** [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_9_papers_open_source_2026-08-23.md)（<https://mp.weixin.qq.com/s/CXOf3PU8-H6OzI77vnhZMA>）
 - **一句话说明：** 系统实验表明：长 **open-loop execution horizon** 主因是 **短上下文策略模仿非马尔可夫专家**；足够长的观测上下文下 **闭环 reactive 策略最优**；提出 **double encoder** 稳定长上下文 Diffusion Policy 训练。
 
-## 开源状态（步骤 2.5，2026-08-22）
+## 开源状态（步骤 2.5，复核 2026-11-19）
 
 | 资源 | 状态 |
 |------|------|
-| 项目页 / arXiv | **已发布** |
-| 完整策略代码 | **未列主仓链接** |
-| Section 4 自动化 Markov/非 Markov 专家策略 | 论文称 **publicly release**（以作者后续发布为准） |
+| 项目页 / arXiv（v2） | **已发布** |
+| GitHub 总索引仓 | **已挂链但仅含 README** — [`Michaelszeng/Revisiting-Open-Loop-Execution-in-Robotics`](../repos/revisiting-open-loop-execution-in-robotics.md)（仅 `LICENSE` 与 `README.md`，索引 6 个子仓 + 2 个 HF 数据集；**不含可运行主策略源码**） |
+| Section 4 / 真机推理源码 | 仿真子任务分散于 6 个外链子仓；真机 ARX-5 推理栈属团队内部基础设施**未开源** |
 
-**结论：** **部分/待跟进** — 机制论文以 arXiv + 项目页为准；主实验代码未在项目页挂链。
+**结论：** **部分开源（索引仓 + 子组件仓）/ 主仓无可运行代码** — 机制与源码归档见 [`sources/repos/revisiting-open-loop-execution-in-robotics.md`](../repos/revisiting-open-loop-execution-in-robotics.md)。
 
 ## 核心论文摘录
 

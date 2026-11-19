@@ -7,11 +7,14 @@
 - **发布方：** NVIDIA
 - **原始链接：** <https://nvidia.github.io/IsaacTeleop/main/index.html>
 - **文档根：** <https://nvidia.github.io/IsaacTeleop/>
-- **配套仓库：** <https://github.com/NVIDIA/IsaacTeleop>
-- **PyPI：** `isaacteleop`
-- **版本核查：** 文档站 `main` 与 `release/1.5.x`（2026-09-05）；Quick Start 建议钉 `isaacteleop[cloudxr,retargeters]~=1.5.0`
+- **配套仓库：** <https://github.com/NVIDIA/IsaacTeleop>（正迁移至 <https://github.com/NVIDIA/IsaacCapture>）
+- **PyPI：** `isaacteleop`（v1.6–1.8 迁移至 `isaaccapture`，1.9 将移除兼容垫片 `isaacteleop`）
+- **版本核查：** 文档站 `main` / `release/1.5.x` 及仓库内 `docs/source/`（2026-11-19 核对至 `isaaccapture` 分支代码）
 - **入库日期：** 2026-09-05
-- **一句话说明：** Isaac Teleop 的架构 / 设备生态 / CloudXR Quick Start / Televiz 合成器 / 第一人称无标记手部重建文档；仿真与真机共用同一套设备接口与 retargeting 图。
+- **复核日期：** 2026-11-19
+- **通读：** 已完成
+- **核对范围：** `docs/source/overview/`、`docs/source/teleop/`、`docs/source/getting_started/`、`docs/source/references/`、`docs/source/integrations/`、`docs/source/ego_post_processing/egohand.rst` 及 `examples/synthetic_xr/README.md`
+- **一句话说明：** Isaac Teleop / Isaac Capture 的架构 / 设备生态 / CloudXR Quick Start / `TeleopSession` 与 OOB 控制 / Televiz 合成器 / EgoHand 第一人称手部重建文档；仿真与真机共用同一套设备接口与 retargeting 图。
 - **沉淀到 wiki：** [Isaac Teleop](../../wiki/entities/isaac-teleop.md)
 - **仓库归档：** [nvidia_isaac_teleop.md](../repos/nvidia_isaac_teleop.md)
 
@@ -82,3 +85,12 @@
 - [Egocentric Hand Reconstruction](https://nvidia.github.io/IsaacTeleop/main/references/egocentric_hand_reconstruction.html)
 - [Ecosystem](https://nvidia.github.io/IsaacTeleop/main/overview/ecosystem.html)
 - [Web Client](https://nvidia.github.io/IsaacTeleop/client)
+
+---
+
+## 深读补充（2026-11-19，v1.6–1.8 仓库文档）
+
+- **`teleop_session.rst` & `control_state_machine.rst`：** 规范化以 `TeleopSession` 与 `TeleopSessionConfig` 为核心的生命周期管理，区分 `SessionMode.LIVE` / `REPLAY`、`RetargetingExecutionMode.SYNC` / `PIPELINED` 及 `ImmediatePacingConfig` / `DeadlinePacingConfig` 节拍调度；头显控制通道统一抽象为 `DefaultTeleopStateManager` 与 `TwoButtonTeleopStateManager`。
+- **`oob_teleop_control.rst`：** 详细文档化 OOB 控制中心（共享 Proxy TLS `48322` 端口），通过 `adb` + Chrome DevTools Protocol 自动完成头显证书确认与 `CONNECT` 点击，并提供 `TELEOP_OOB_RECOVERY_TIMEOUT_SEC`（默认 60s）与 `TELEOP_OOB_RETRY_INTERVAL_SEC`（默认 5s）实现断线自动恢复。
+- **`egohand.rst`：** 记录新版 **EgoHand**（`isaaccapture_egopost`，arXiv:2610.30293），用 RT-DETR、DINOv3 与 SOMA-X 手部参数化模型结合可选 ViPE 相机对齐完成第一人称手部 4D 重建。
+- **`mcap_record_replay.rst` & `synthetic_xr/README.md`：** 说明 `DeviceIOSession` 原生 MCAP 录制与回放配置（`McapRecordingConfig` / `McapReplayConfig`），以及无真机条件下的合成 XR 回归测试入口。

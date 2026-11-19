@@ -1,14 +1,18 @@
 ---
 type: entity
+project_id: why-action-chunking-improves-bc
 tags: [paper, imitation-learning, action-chunking, behavior-cloning, diffusion-policy, libero, robomimic, polimi, berkeley, analysis]
 status: complete
-updated: 2026-09-27
+updated: 2026-11-19
+arxiv: "2608.02547"
 venue: "CoRL 2026 · arXiv:2608.02547"
+project: https://action-chunking.github.io/
 related:
   - ../methods/action-chunking.md
   - ../methods/behavior-cloning.md
   - ../methods/diffusion-policy.md
   - ../methods/imitation-learning.md
+  - ../tasks/manipulation.md
   - ./libero-benchmark.md
   - ../formalizations/behavior-cloning-loss.md
   - ../queries/vla-deployment-guide.md
@@ -22,6 +26,10 @@ sources:
   - ../../sources/sites/action-chunking-github-io.md
   - ../../sources/papers/autointervene_arxiv_2608_07065.md
   - ../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md
+original:
+  - ../../sources/papers/why_action_chunking_improves_bc_arxiv_2608_02547.md
+  - ../../sources/papers/why_action_chunking_improves_bc_corl2026.md
+  - ../../sources/sites/action-chunking-github-io.md
 summary: "Why Action Chunking Improves BC（CoRL 2026，Polimi / Berkeley）：消融表明 chunk 收益主因是延迟观测条件化与隐式集成，而非时序一致性/有效地平线；RDE 部署在 LIBERO/Robomimic/Franka 上匹配标准 chunk 执行；显式延迟集成可进一步抬升（如 Transport 12.6%→41.5%）。"
 ---
 
@@ -29,7 +37,7 @@ summary: "Why Action Chunking Improves BC（CoRL 2026，Polimi / Berkeley）：�
 
 **Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?**（[arXiv:2608.02547](https://arxiv.org/abs/2608.02547)、[项目页](https://action-chunking.github.io/)、[PDF](https://action-chunking.github.io/static/action_chunking.pdf)；CoRL 2026；Polimi / UC Berkeley）回答一个工程上几乎被默认的问题：BC 里几乎处处在用的 **action chunking**，到底靠什么提成功率。
 
-> **落地状态：** **arXiv 与项目页 PDF 已公开**；训练/推理代码仍为 **Coming soon**（2026-09-27 项目页核查）。
+> **落地状态：** **arXiv 与项目页 PDF 已公开**；训练/推理代码仍为 **Coming soon**（2026-11-19 项目页复核）。
 
 ## 一句话定义
 
@@ -91,12 +99,12 @@ summary: "Why Action Chunking Improves BC（CoRL 2026，Polimi / Berkeley）：�
 
 ```mermaid
 flowchart TB
-  demo["人类演示 D<br/>可能含暂停/决策边界"]
-  train["训练 chunk 策略 π̂_k<br/>拟合 a_{t:t+k-1} | o_t"]
-  ac["部署 AC(n)<br/>执行 chunk 前 n 步"]
-  delay["部署 Delay(n)<br/>a_t | o_{t-n}"]
-  rde["部署 RDE<br/>随机时延索引 i"]
-  ens["显式集成<br/>多 seed Delay / AC"]
+  demo["人类演示 D: 含暂停与决策边界"]
+  train["训练 chunk 策略 pi_k: 拟合 a_{t:t+k-1} | o_t"]
+  ac["部署 AC(n): 执行 chunk 前 n 步"]
+  delay["部署 Delay(n): a_t | o_{t-n}"]
+  rde["部署 RDE: 随机时延索引 i"]
+  ens["显式集成: 多 seed Delay / AC"]
   demo --> train
   train --> ac
   train --> delay
@@ -109,7 +117,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-27：项目页 Code 仍为 Coming soon，无可辨识训练 / 推理入口）。待官方仓库发布后，再按 README 入口补 `sequenceDiagram`。
+**不适用**（截至 2026-11-19 复核：项目页 `https://action-chunking.github.io/` 上 Code 仍为 Coming soon，无可辨识训练 / 推理仓库入口）。待官方仓库发布后，再按 README 入口补 `sequenceDiagram`。
 
 ## 工程实践
 
@@ -119,23 +127,27 @@ flowchart TB
 | **先做的对照** | 同一 \(\hat\pi_k\)：Markov（\(n=1\)）vs 网格搜索 Delay(n) vs AC(n) vs RDE |
 | **延迟怎么选** | 看 held-out 动作预测 MSE：演示动作常对 **过去观测** 更易拟合（文中 Libero 例：约 10 步历史优于当前帧） |
 | **真机异步** | 文中 Franka 实验统一叠加 Delay(2)，用 \(o_{t-1}\) 换取一帧推理预算 |
+| **高频控制边界** | 在 50–60 Hz（高于人类 2–10 Hz 视觉反应频率）下，单步 Delayed 策略会失效，需改用长度约 5 的子 chunk（等效 10–20 Hz）恢复成功率（§8） |
 | **想超 AC** | 多 seed 显式集成；随机聚合在部分任务优于均值聚合（见 Tool Hang） |
 | **源码运行时序图** | **不适用**（代码未发布） |
 
 ## 实验与评测
 
-### Table 1（成功率 %；AC/Delay 为文中 best-case）
+### Table 1（成功率 %；AC / Delay 为文中 best-case）
 
 | Task | Markov | AC | Delay | RDE |
 |------|--------|-----|-------|-----|
 | Libero-90 | 68.9 | 89.2 | **94.0** | 93.6 |
 | Libero-10 | 19.8 | 88.7 | 86.8 | 88.5 |
+| Libero-Spatial | 58.1 ± 0.9 | 91.6 ± 0.4 | 92.0 ± 0.5 | **92.7 ± 0.3** |
+| Libero-Goal | 62.7 ± 1.0 | 96.5 ± 0.2 | 96.3 ± 0.3 | 96.3 ± 0.3 |
+| Libero-Object | 59.8 ± 2.3 | **98.0 ± 0.4** | 97.4 ± 0.3 | 97.3 ± 0.5 |
 | Can PH | 83.7 | 97.2 | 93.5 | 96.7 |
 | Square PH | 69.0 | 85.4 | 80.8 | 82.4 |
 | Transport PH | 3.3 | 12.6 | 7.9 | 12.1 |
 | Tool Hang PH | 28.0 | 75.2 | 51.6 | 71.8 |
 
-读点：Libero 上 **Delay 已够甚至更强**；Robomimic 难任务上 Delay 明显落后，但 **RDE 拉回 AC 附近**（Tool Hang 71.8 vs 75.2）。
+读点：LIBERO 全部五个套件上 **Delay(n) 已匹配甚至超过 AC**（Libero-90 上 TE 为 91.x 区间，Spatial/Goal/Object 上 TE 为 91.1±0.3 / 96.7±0.2 / 97.6±0.4）；Robomimic 难任务上单步 Delay 明显落后，但 **RDE 拉回 AC 附近**（Tool Hang 71.8 vs 75.2）。附录 B.5 进一步在 `openpi_assets/checkpoints/pi05_libero`（chunk=10）上验证了 \(\pi_{0.5}\) 于 Libero-10 / Spatial / Goal / Object 同样复现「Delay 匹配 AC」现象；附录 B.4 补充了 Robomimic MH 与 LIBERO delay/chunk 扫描。
 
 ### Table 2（显式集成）
 
@@ -147,7 +159,7 @@ flowchart TB
 
 ### 真机
 
-Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，各 50 demos × 50 eval。结论与仿真一致：Delay ≫ Markov；**RDE ≈ AC（平均略高）**。
+Franka + Robotiq，15 Hz delta joint，120×120×3 图像 + 5 层 2000 单元 MLP DDPM（15 步去噪）；carrot / toaster / sushi 三任务，各 50 demos × 50 eval，统一叠加 `Delay(2)` 异步偏置对比 `Delay(2)` / `Delay(7)` / `AC(10)-Delay(2)` / `AC(10)-Delay(2)-RDE`。结论与仿真一致：Delay ≫ Markov；**RDE ≈ AC（平均略高）**。
 
 ## 结论
 
@@ -171,16 +183,18 @@ Franka + Robotiq，15 Hz，delta joint；carrot / toaster / sushi 三任务，�
 ## 局限与风险
 
 - **代码未公开：** 数字以 arXiv / 项目页 PDF 为准，训练复现管线待 release。
-- **主实验是 diffusion BC：** 结论是否原样迁移到离散 token VLA / flow matching 大模型，需单独验证（附录仅对 π₀.₅ Libero 权重做兼容性核对）。
+- **高频控制限制（§8）：** 当控制频率升至 50–60 Hz（高于人类 2–10 Hz 视觉反应带宽）时，单步 Delayed 策略表现下滑，需用约 5 步短子 chunk（等效 10–20 Hz 决策间隔）才能恢复与 AC 一致的成功率。
+- **主实验是 diffusion BC：** 结论是否原样迁移到离散 token VLA / flow matching 大模型，需单独验证（附录 B.5 仅对 `openpi_assets/checkpoints/pi05_libero` 微调权重做兼容性核对）。
 - **延迟引入反应滞后：** Delay/RDE 在强动态或需瞬时反馈的接触任务上可能伤安全性；真机任务偏桌面操作。
 - **集成成本：** 显式 Ens 的 Transport 跃迁伴随多倍推理；部署前要算清楚延迟预算。
 
-## 关联页面
+## 与其他页面的关联
 
 - [Action Chunking](../methods/action-chunking.md) — 方法总页；本实体提供机制级修正
 - [Behavior Cloning](../methods/behavior-cloning.md) — 复合误差与非马尔可夫演示的部署读法
 - [Diffusion Policy](../methods/diffusion-policy.md) — 本文主实验策略族
 - [Imitation Learning](../methods/imitation-learning.md) — IL 总览
+- [Manipulation](../tasks/manipulation.md) — 桌面与真机操作评测语境
 - [LIBERO](./libero-benchmark.md) — 主仿真基准之一
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — 监督目标形式
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — chunk 缓冲 / 异步执行工程语境

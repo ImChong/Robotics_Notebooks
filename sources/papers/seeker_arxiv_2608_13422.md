@@ -11,8 +11,10 @@
 - **代码：** <https://github.com/zheyu-zhuang/seeker> — [`sources/repos/seeker.md`](../repos/seeker.md)
 - **作者：** Zheyu Zhuang、Ruiyu Wang、Florian T. Pokorny、Danica Kragic（KTH）；Nick Heppert、Abhinav Valada（弗莱堡大学）；Johannes Fabian Hahn（汉堡大学）
 - **机构：** 瑞典皇家理工学院（KTH）；弗莱堡大学（University of Freiburg）；汉堡大学（Universität Hamburg）
-- **版本：** arXiv:2608.13422（2026-08-14）；README bibtex 标 CoRL 2026
-- **入库日期：** 2026-08-15
+- **版本：** arXiv:2608.13422v2（2026-10-08，初版 2026-08-14）；README bibtex 标 CoRL 2026
+- **入库日期：** 2026-08-15（v2 全文通读与代码核对 2026-11-19）
+- **通读：** 已完成
+- **核对范围：** 通读 arXiv:2608.13422v2（2026-10-08）正文与 Appendix A–E 全文，核对 \(T=3\) 迭代 readout（MirrorAug 均值 37.1、真机保留率 78.3% vs 33.3% 等 v2 数字），并对照官方仓库 `zheyu-zhuang/seeker` 可运行代码
 - **一句话说明：** 只用动作监督、不靠 gaze / 物体框 / VLM grounding，从冻结 DINOv3 patch 上学出随任务进度变化的 ROI；同一接口可做 RGB 裁剪、mask 引导增强与点云过滤。官方仓 **已开源、可运行**（MIT）。
 
 ## 摘要级要点
@@ -20,16 +22,16 @@
 - **问题：** 视觉瓶颈能把「看哪」和「怎么动」拆开，但现成 ROI 要么靠外部空间标签（gaze、物体类、affordance），要么用夹爪/停顿关键帧把固定框钉在末端投影上。后者在连续运动、接触点偏离 TCP、关键帧噪声时会对不齐。
 - **方法：** 任务 + 本体条件 query，在冻结 DINOv3 上做 **T 步门控多头 readout**；扩散动作头只作监督，训完丢掉。`top_p` 把注意力质量心变成框与粗 mask。
 - **接口复用：** 第三人称 RGB 裁剪（框位置/尺度再 FiLM 回策略）；mask 引导 overlay；图像平面 ROI 过滤点云后再进 DP3。腕部相机不裁。
-- **仿真（MimicGen，100 demo）：** 同栈最强输入级基线 RVT2-Crop 平均 **42.6%** → Seeker **62.6%**（相对 +52.8%）；接近特权 Oracle ROI **64.2%**，高于外部 SOTA RAVEN **52.1%**。
-- **真机（xArm7，三任务 × 20 rollout）：** 域内平均 **76.7%** vs 最强基线 48.3%；光照/背景偏移平均 **60.0%** vs 20.0%；保留率 78.2%。
-- **开源（截至 2026-08-15）：** `zheyu-zhuang/seeker` 默认分支 `open_source`；`seeker` CLI + MimicGen 权重；**已开源、可运行**。
+- **仿真（MimicGen，100 demo）：** 同栈最强输入级基线 RVT2-Crop 平均 **42.6%** → Seeker **62.6%**（相对 +52.8%；MirrorAug 为 **37.1%**）；接近特权 Oracle ROI **64.2%**，高于外部 SOTA RAVEN **52.1%**。
+- **真机（xArm7，三任务 × 20 rollout）：** 域内平均 **76.7%** vs 最强基线 48.3%；光照/背景偏移平均 **60.0%** vs 20.0%；保留率 **78.3%**（MirrorAug 为 **33.3%**，RVT2-Crop 为 **41.4%**）。
+- **开源（截至 2026-11-19）：** `zheyu-zhuang/seeker` 默认分支 `open_source`；`seeker` CLI + MimicGen 权重；**已开源、可运行**。
 
 ## 核心摘录（面向 wiki 编译）
 
 ### 架构
 
-1. **条件 query：** \(Q^{(0)}=\mathrm{FiLM}(Z,s)\)，\(s\) 用末端平移 + 夹爪；多本体要 embodiment id。任务嵌入来自 CLIP 短描述，只当标识。
-2. **迭代门控 readout：** 每步 MHA 出 \(\{A_h,C_h\}\)，query 相关 \(\omega_h\) 融合后再 FiLM 更新 query。实验 **T=2**。
+1. **条件 query：** \(Q^{(0)}=\mathrm{FiLM}(Z,s)\)，\(s\) 用末端平移 + 夹爪（不含旋转）；多本体要 embodiment id。任务嵌入来自 CLIP 短描述，只当标识。
+2. **迭代门控 readout：** 每步 MHA（源码采用 `entmax` 稀疏注意力，弃除最弱 2 个头保留 4 个）出 \(\{A_h,C_h\}\)，query 相关 \(\omega_h\) 融合后再 FiLM 更新 query。实验 **T=3**（`num_refinement_iters: 3`）。
 3. **粗到细 + trimming：** 先训 coarse；\(\tau\) epoch 后 fine 只看 coarse 框内 token；\(2\tau\) 后用 fine 框对 coarse 注意力做 KL trimming。推理只留 coarse。
 4. **提取：** 丢掉得分最低的两头，`top_p=0.8` nucleus。Seeker 的 pooled context **不能**单独当策略（直接 rollout 接近 0）。
 

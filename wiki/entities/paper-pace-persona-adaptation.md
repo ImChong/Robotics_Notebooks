@@ -164,6 +164,11 @@ flowchart TD
 - **心理有效性：** 基于短对话推断人格并非临床诊断或完整心理测量；需注意用户同意、数据留存、拟人化误导和角色扮演身份界限。
 - **实现与复现：** GitHub 公开项目资料并不等于公开可执行 pipeline；[源码核验记录](../../sources/repos/lipzh5-pace.md) 记录了占位 README 与缺失入口。
 
+## 方法关联与适用边界
+
+- [人形智能语音交互](../methods/humanoid-voice-interaction.md)：PACE 的语音输入、对话生成和 TTS/打断需要基础交互管线，PersonaSpec 处于其上层。
+- [Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)：**角色一致性实现的对照方法**；Olaf 侧重动画参考与实体动作控制，PACE 侧重对话人格及面部表达，二者不能混为同一种控制策略。
+
 ## 关联页面
 
 - [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md) — 语音管线、打断与技能安全边界

@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: seeker
 tags:
   - paper
   - imitation-learning
@@ -13,7 +14,7 @@ tags:
   - uni-freiburg
   - uni-hamburg
 status: complete
-updated: 2026-09-15
+updated: 2026-11-19
 arxiv: "2608.13422"
 code: https://github.com/zheyu-zhuang/seeker
 related:
@@ -31,7 +32,10 @@ sources:
   - ../../sources/papers/seeker_arxiv_2608_13422.md
   - ../../sources/repos/seeker.md
   - ../../sources/blogs/wechat_embodied_station_contact_predict_adapt_10_papers_2026-08-18.md
-summary: "Seeker（KTH/弗莱堡/汉堡，arXiv:2608.13422）：冻结 DINOv3 上用动作监督学出随进度变化的 ROI，无需 gaze/框/VLM。MimicGen 100 demo 平均 62.6%（对照 42.6%）；xArm7 域内 76.7%、外观偏移 60.0%。GitHub MIT 已开源。"
+original:
+  - ../../sources/papers/seeker_arxiv_2608_13422.md
+  - ../../sources/repos/seeker.md
+summary: "Seeker（KTH/弗莱堡/汉堡，arXiv:2608.13422v2）：冻结 DINOv3 上用动作监督（T=3 迭代门控 readout）学出随进度变化的 ROI，无需 gaze/框/VLM。MimicGen 100 demo 平均 62.6%（RVT2-Crop 42.6%）；xArm7 域内 76.7%、外观偏移 60.0%（保留率 78.3%）。GitHub MIT 已开源。"
 ---
 
 # Seeker：从动作里长出视觉注意力
@@ -67,20 +71,20 @@ summary: "Seeker（KTH/弗莱堡/汉堡，arXiv:2608.13422）：冻结 DINOv3 �
 | 作者 | Zheyu Zhuang、Ruiyu Wang、Nick Heppert、Johannes Fabian Hahn、Abhinav Valada、Florian T. Pokorny、Danica Kragic |
 | 机构 | 瑞典皇家理工学院（KTH）；弗莱堡大学（University of Freiburg）；汉堡大学（Universität Hamburg） |
 | 出处 | arXiv:2608.13422（2026-08）；README 标 CoRL 2026 |
-| 骨干 | 冻结 DINOv3；query 看任务嵌入 + 末端平移 + 夹爪（旋转默认不加） |
-| 下游 | 预训练 ResNet-18 + Diffusion Policy；点云走 DP3 |
-| 真机 | UFactory xArm7；第三人称 + 腕部 RGB；10 Hz 末端位控 |
-| 开源（截至 2026-08-15） | **已开源**：[`zheyu-zhuang/seeker`](https://github.com/zheyu-zhuang/seeker)（MIT；默认分支 `open_source`） |
+| 骨干 | 冻结 DINOv3（224×224 输入对应 14×14 patch 网格）；query 看任务嵌入 + 末端平移 + 夹爪（旋转默认不加） |
+| 下游 | 预训练 ResNet-18 + `DiffusionPolicy`（third-person 裁剪缩放至 `out_res=76` vs 低清裁剪对照 `low_res=84`，`eye_in_hand` 不裁）；点云走 DP3 |
+| 真机 | UFactory xArm7（10 Hz，10D EEF pos + 6D rot + 1D grip）；第三人称 + 腕部 RGB |
+| 开源（截至 2026-11-19） | **已开源**：[`zheyu-zhuang/seeker`](https://github.com/zheyu-zhuang/seeker)（MIT；默认分支 `open_source`） |
 
-## 方法与核心结构
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
-| **条件 query** | \(Q^{(0)}=\mathrm{FiLM}(Z,s)\)：任务嵌入 \(Z\)（CLIP 短描述当 ID）× 本体 \(s\) |
-| **迭代门控 readout** | \(T=2\) 次：MHA 出多头 \(A_h,C_h\)，query 相关 \(\omega_h\) 融合后再 FiLM 更新 query |
-| **扩散监督头** | \(\widetilde{C}\) + 本体 + 任务 → 噪声预测；**只用来长 ROI**，下游丢掉 |
-| **框 / mask** | 丢掉最低两头，`top_p=0.8`；第三人称裁剪并 FiLM 回框的位置和尺度；腕部不裁 |
-| **粗到细 trimming** | coarse 先定位 → fine 只看框内 token → KL 把 coarse 注意力往 fine 框收；推理只留 coarse |
+| **条件 query** | \(Q^{(0)}=\mathrm{FiLM}(Z,s)\)：任务嵌入 \(Z\)（CLIP 短描述当 ID）× 本体 \(s=[s_{\text{eef\_trans}},s_{\text{grip}}]\)（多本体加 embodiment one-hot） |
+| **迭代门控 readout** | \(T=3\) 次（`num_refinement_iters: 3`）：MHA 使用 `entmax` 稀疏注意力出多头 \(A_h,C_h\)，软头门控 \(\omega_h=\mathrm{softmax}_h\langle C_h,\phi_g(\bar{Q}^*)\rangle\) 融合后再 FiLM 更新 query |
+| **扩散监督头** | \(\widetilde{C}\) + 本体 + 任务 → `ConditionalUnet1D` 噪声预测；**只用来长 ROI**，下游丢掉 |
+| **框 / mask** | 6 头中弃除得分最低两头（`select_n_heads=4`），`top_p=0.8` 收成紧框与粗 mask；第三人称裁剪并 `box_film` 回框的位置与尺度；腕部（`eye_in_hand`）不裁 |
+| **粗到细与多视角** | 第 0 步即启 Random Overlay（`p_ov=0.5`, \(\alpha=0.6\)）；coarse 先定位 → \(\tau\) epoch 后 fine 只看框内 token → \(2\tau\) 后 KL trimming 收紧 coarse 注意力（推理只留 coarse）；多视角先训第三人称再接入腕部 |
 
 Seeker 的 pooled context **不是**可 rollout 的策略：直接出动作平均接近 0（Stack-Three 最高约 20%）。它只回答「看哪」，几何和接触细节留给下游策略。
 
@@ -89,17 +93,17 @@ Seeker 的 pooled context **不是**可 rollout 的策略：直接出动作平�
 ```mermaid
 flowchart TB
   rgb["第三人称 / 腕部 RGB"]
-  dino["冻结 DINOv3 patch"]
-  q["任务+本体 query"]
-  read["T 步门控多头 readout"]
+  dino["冻结 DINOv3 patch 网格"]
+  q["任务 + 本体条件 query"]
+  read["T=3 步门控 entmax MHA readout"]
   ctx["视觉上下文 C"]
-  att["注意力图 A"]
-  diff["扩散动作头\n仅预训练"]
-  roi["top_p 框 + mask"]
-  crop["RGB 裁剪 + FiLM"]
+  att["注意力图 A (6 头保留 4 头)"]
+  diff["扩散动作头: 仅预训练监督"]
+  roi["top_p=0.8 紧框 + soft mask"]
+  crop["第三人称裁剪 + box_film"]
   aug["mask 引导 overlay"]
   pc["点云图像平面过滤"]
-  pol["冻结后的下游策略"]
+  pol["冻结 ROI 下游策略"]
   rgb --> dino --> read
   q --> read
   read --> ctx --> diff
@@ -117,29 +121,30 @@ flowchart TB
 sequenceDiagram
     autonumber
     actor Dev as 开发者
-    participant CLI as seeker CLI<br/>seeker.scripts.cli
-    participant Dep as seeker setup<br/>.dep + .weights
-    participant HF as HF MimicGen HDF5
-    participant RR as rerender-dataset<br/>LMDB 240x240
-    participant Sk as train_visual_focus_seeker
-    participant Pol as train_focus_policy
-    participant NB as inspect_seeker_weights.ipynb
-    Dev->>CLI: mamba env + pip/setup
-    Dev->>Dep: 钉死 robosuite 套件并拉 seeker.mimicgen.pth
-    Dev->>HF: 下载 core/task.hdf5
-    Dev->>RR: 重渲 100 条
-    alt 只看发布权重
-      Dev->>NB: 画 soft mask 与紧框
-    else 训 Seeker
-      Dev->>Sk: 单任务或 merge-datasets 多任务
-      Sk->>Sk: 扩散监督 + 粗到细 trimming
-    else 训策略
-      Dev->>Pol: 冻结 ROI；method=seeker/mirroraug/rvt2
+    participant CLI as "seeker.scripts.cli:main"
+    participant Setup as "setup_assets / setup_suite_deps"
+    participant Cache as "DatasetRerenderToCache / merge_lmdb_caches"
+    participant SkTrain as "TrainSeekerWorkspace + SeekerTrainingEncoder"
+    participant PolTrain as "TrainFocusPolicyWorkspace + FocusViewTransform"
+    participant NB as "seeker_demo.ipynb"
+    Dev->>CLI: "seeker setup"
+    CLI->>Setup: 钉死依赖并下载 seeker.mimicgen.pth 与 dinov3.vits16plus.pth
+    Dev->>CLI: "seeker rerender-dataset / merge-datasets"
+    CLI->>Cache: 渲染 MimicGen HDF5 到 240x240 images.lmdb 与 obs_arrays.npz
+    alt 可视化发布权重
+      Dev->>NB: 加载 .weights/seeker.mimicgen.pth 检查 mask 与紧框
+    else 预训练 Seeker ROI 提取器
+      Dev->>SkTrain: "seeker train --config-name=train_visual_focus_seeker"
+      SkTrain->>SkTrain: "SeekerTrainingPolicy 驱动 coarse_model/fine_model 与 T=3 readout"
+    else 冻结 ROI 训练下游策略
+      Dev->>PolTrain: "seeker train --config-name=train_focus_policy"
+      PolTrain->>PolTrain: "FocusConditionedObsEncoder 调 FocusViewTransform 缓存 epoch0 ROI"
+      PolTrain->>PolTrain: "DiffusionPolicy + box_film + ResNet18Encoder 训练与 SeekerRobomimicImageRunner 评测"
     end
 ```
 
-- **最短路径：** `seeker setup` → 下一份公开 MimicGen HDF5 → `rerender-dataset` → 开 notebook 看发布权重。
-- **复现论文表：** 六任务各 100 条重渲后，先 `train_visual_focus_seeker`（或直接用发布 ckpt），再 `train_focus_policy`。
+- **最短路径：** `seeker setup` → 下一份公开 MimicGen HDF5 → `rerender-dataset` → 开 `seeker_demo.ipynb` 看发布权重。
+- **复现论文表：** 六任务各 100 条重渲后用 `merge-datasets`（`merge_lmdb_caches`）合库，先 `train --config-name=train_visual_focus_seeker`（或直接用发布 `seeker.mimicgen.pth`），再 `train --config-name=train_focus_policy`。
 - **分支：** clone 后确认在 `open_source`；`main` 当前没有 README。
 
 ## 工程实践
@@ -163,23 +168,23 @@ sequenceDiagram
 | 方法 | 六任务均 SR | 读法 |
 |------|-------------|------|
 | DiffPo (Pre) | 32.5 | 无瓶颈 |
-| MirrorAug | 37.2 | 对称增强、仍看全图 |
+| MirrorAug | 37.1 | 对称增强、仍看全图 |
 | RVT2-Crop | 42.6 | 最强输入级基线；夹爪/低速关键帧会鬼影或错过连续运动 |
 | **Seeker** | **62.6** | 相对 RVT2 +20.0 点；3-P Assembly / Threading 相对增益最大 |
 | RAVEN | 52.1 | 外部等变策略的已发表最优对照（论文口径），不在同栈 |
 | Oracle ROI | 64.2 | 特权阶段 affordance 框；Seeker 差 1.6 点 |
 
-**背景：** 原背景训出的 mask 做 Guided Overlay，在打乱桌面纹理上仍最强；只加纹理多样性不够，细交互会被盖住。
+**背景与数据规模：** 原背景训出的 mask 做 Guided Overlay，在打乱桌面纹理上仍最强；1000 demo（附录 C）上 Seeker 仍高于 MirrorAug（**77.9 vs 70.2**）。迭代消融（Table 3/4）：DINO CLS 39.1、Seeker Readout 41.6、FiLM-only 39.4、低清裁剪（84×84）61.2；`T=1` → `T=3` 在 Stack-3（71.3 → 81.3）与 Square（32.7 → 46.0）均显著抬升（AFA-Crop 为 55.3 / 26.0）；监督目标 ROI IoU 为 flow matching 0.67 > IMLE 0.50 > BC 0.30。
 
-**点云（200 demo）：** 手工工作区 + Seeker 过滤相对仅手工：Pick & Place +24.7、Stack-3 +24.0、Coffee +42.3。DP3 整体仍低于 RGB 表。
+**点云（200 demo）：** 手工工作区 + Seeker 过滤相对仅手工（三任务 Pick & Place 26.0 vs 1.3、Stack-3 47.3 vs 23.3、Coffee 64.3 vs 22.0），Appendix E 六任务全表平均绝对增益 +30.3 点；DP3 整体仍低于 RGB 表。
 
 **真机（各 20 次）：** Coffee Transport / Table Cleanup / Board Assembly。
 
 | | ID | 光照 | 背景 | OOD 均 | 保留率 |
 |--|----|------|------|--------|--------|
-| MirrorAug | 35.0 | — | — | 11.7 | 33.4 |
+| MirrorAug | 35.0 | — | — | 11.7 | 33.3 |
 | RVT2-Crop | 48.3 | — | — | 20.0 | 41.4 |
-| **Seeker** | **76.7** | 80/75/60 | 35/60/50 | **60.0** | **78.2** |
+| **Seeker** | **76.7** | 80/75/60 | 35/60/50 | **60.0** | **78.3** |
 
 Coffee Transport 没有可靠夹爪事件，启发式框容易锁在旋转或终态末端，丢掉杯–勺交互。
 
@@ -213,7 +218,7 @@ Coffee Transport 没有可靠夹爪事件，启发式框容易锁在旋转或终
 - **真机主线不在仓里：** 开源复现默认 MimicGen；xArm 协议在附录。
 - **许可叠加：** 本体 MIT；DINOv3 与钉死仿真套件走上游条款。
 
-## 关联页面
+## 与其他页面的关联
 
 - [Diffusion Policy](../methods/diffusion-policy.md) — 下游 RGB 头；Seeker 扩散头只作 ROI 监督
 - [Imitation Learning](../methods/imitation-learning.md) — 少数据 IL 的输入级瓶颈

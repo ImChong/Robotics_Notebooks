@@ -15,6 +15,7 @@ related:
   - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-autane-autonomous-crane.md
+  - ../queries/robot-perception-stack-selection-loop.md
 original:
   - ../../sources/papers/aware_arxiv_2610_32742.md
 sources:
@@ -194,6 +195,7 @@ sequenceDiagram
 - [机器人操作任务](../tasks/manipulation.md) — 被监控的起重机执行负载搬运任务，AWARE 本身仅提供异常监控
 - [具身评测选择闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 - [多样示范与异常评测研究地图](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — AWARE 位于感知栈下游运行时监控侧：用外部相机状态估计结合世界模型双信号判别动力学异常，评测关注轨迹级 AP/F1 而非 2D 检测 mAP
 
 ## 参考来源
 

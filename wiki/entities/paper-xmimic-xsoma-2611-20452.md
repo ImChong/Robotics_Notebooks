@@ -5,7 +5,7 @@ arxiv: "2611.20452"
 code: https://github.com/nico-bohlinger/xsoma
 tags: [paper, humanoid, motion-tracking, locomotion, world-model, jax, open-source]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-19
 summary: "联合论文 XMimic 和 XSoma 以可微世界模型、JAX/XLA 编译和多卡流水化加速 G1 动作跟踪与复杂地形速度跟踪；4×H100 下分别 0.86 分钟与 0.77 分钟达规定目标（排除启动/编译）。"
 original:
   - ../../sources/papers/xmimic-xsoma-2611-20452.md
@@ -140,6 +140,12 @@ sequenceDiagram
 - [论文全文归档](../../sources/papers/xmimic-xsoma-2611-20452.md)
 - [arXiv 原文 v1](https://arxiv.org/html/2611.20452v1)
 - [官方代码归档](../../sources/repos/xmimic-xsoma-2611-20452.md)
+
+## 2026-11-19 源码与评测补核
+
+- 联合论文正式 arXiv 身份是 **2611.20452**；XMimic [代码](https://github.com/nico-bohlinger/xmimic) 和 XSoma [代码](https://github.com/nico-bohlinger/xsoma) 是两条可独立运行的训练线，不应按两个新论文实体重复建页。
+- **XMimic 0.86 分钟**只覆盖 4×H100 NVL 在 40 段 LAFAN1 达到连续检查点目标的学习时间；不含首次 JAX 编译，也不是全流程复现耗时。
+- **XSoma 0.77 分钟**对应另一套粗糙地形速度跟踪阈值，不可直接按训练秒数判定两方法孰优；尚无真机部署结果。
 
 ## 推荐继续阅读
 

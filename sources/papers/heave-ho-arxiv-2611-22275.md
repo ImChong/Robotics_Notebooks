@@ -30,6 +30,6 @@
 
 ## 对 wiki 的映射
 
-- [Heave-Ho 唯一论文实体](../../wiki/entities/paper-heave-ho.md)
+- [Heave-Ho 唯一论文实体](../../wiki/entities/paper-heave-ho-2611-22275.md)
 - [项目页核对归档](../sites/heave-ho.md)
 - [官方仓库核对归档](../repos/heave-ho.md)

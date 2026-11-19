@@ -12,12 +12,14 @@
 - **代码：** **Coming soon**（2026-09-27 项目页仍无 GitHub URL）
 - **作者：** Filippo Lazzati、Kyle Stachowicz、William Chen、Alberto Maria Metelli、Andrew Wagenmaker、Sergey Levine
 - **机构：** 米兰理工大学（Politecnico di Milano）；加州大学伯克利分校（UC Berkeley）
-- **入库日期：** 2026-08-04
+- **入库日期：** 2026-08-04（全文通读与复核 2026-11-19）
+- **通读：** 已完成
+- **核对范围：** 通读 arXiv:2608.02547v1 正文与 Appendix A–E 全文及项目页 PDF；核对三大假设（temporal consistency / horizon reduction / representation learning）、Theorem 1–3 与 Franka / LIBERO / Robomimic / \(\pi_{0.5}\) 实验细节
 - **一句话说明：** 系统消融「为何 action chunking 能抬高 BC」——否定时序一致性 / 有效地平线 / 表征学习作为充分解释；提出 **delayed policy**（\(a_t\mid o_{t-n}\)）与 **隐式集成** 两条主因，并用 **Randomized Delay Ensemble（RDE）** 在仿真与 Franka 真机上匹配标准 chunk 执行。
 
 ## 开源状态（步骤 2.5）
 
-- **核查日：** 2026-09-27，打开 <https://action-chunking.github.io/> 与 arXiv:2608.02547。
+- **核查日：** 2026-11-19，复核 <https://action-chunking.github.io/> 与 arXiv:2608.02547。
 - **已发布：** 项目页、PDF、presentation、**arXiv**、Hugging Face Papers 索引。
 - **未发布：** 代码仓库（页上仍为 Code Coming soon）。
 - **结论：** **部分开源 / 代码待发布**。wiki 实体页不得写「训练代码已开源」；`## 源码运行时序图` 仍为 **不适用**。

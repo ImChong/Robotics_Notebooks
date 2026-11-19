@@ -4,7 +4,7 @@ project_id: limit-of-rlvr-2504-13837
 tags: [paper, rl, llm, llm-reasoning, grpo, post-training, evaluation]
 topic: [reinforcement-learning, ai-agents]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-19
 arxiv: "2504.13837"
 project: https://limit-of-rlvr.github.io/
 code: https://github.com/LeapLabTHU/limit-of-RLVR
@@ -21,6 +21,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ./paper-dash-opsd.md
   - ../../roadmap/depth-rsi.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 summary: "Limit of RLVR（NeurIPS 2025，arXiv:2504.13837）：对数学/编程/视觉推理的多次采样评测发现，二元可验证奖励 RL 通常提升 pass@1，却未稳定扩大大 k 可解题覆盖，甚至降低探索多样性；与蒸馏引入教师知识形成对照。"
 ---
 
@@ -150,6 +151,15 @@ sequenceDiagram
 - **编程/视觉：** LiveCodeBench、HumanEval+、MBPP+ 与 MathVista/MathVision 的 pass@k 曲线显示类似分化；编程代码通过单元测试可减少“幸运猜答案”的干扰（§3.2–§3.3）。
 - **强模型例外检查：** Magistral-Medium 初步实验在 k=1 有显著收益，大 k 差距收缩；作者保留更大训练预算是否改写结论的开放性（§4.6）。
 
+## 与其他工作对比
+
+| 对比方向 | 核心机制 / 评测对象 | 与 Limit of RLVR 的关键差异（依据原文 §4 与附录） |
+|----------|---------------------|---------------------------------------------------|
+| **强教师蒸馏（如 DeepSeek-R1-Distill-Qwen-7B）** | 外部强教师提供新的 CoT 推理轨迹监督 | 原文 §4.2 显示蒸馏可上移大 k 的 pass@k 曲线，引入基座原本缺少的解法；纯二元结果奖励 RLVR 仅在基座既有高似然轨迹内重分配概率 |
+| **[Reasoning with Sampling](./paper-reasoning-with-sampling.md)** | 测试时不改权重的重采样 / 推理时计算分配 | 与训练期分布锐化的多样性成本形成对照：两者都面临「单次命中效率 vs 大预算覆盖」权衡 |
+| **[DASH-OPSD](./paper-dash-opsd.md)** | 引入额外自蒸馏 / 过程监督信号 | 脱离仅依赖二元终态对错的稀疏 RLVR 设定，补充了更细粒度的训练信息源 |
+| **[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)** | 仿真/真机闭环成功率、恢复策略、延迟与硬件安全 | 本论文仅评估数学/代码/视觉推理的文本 pass@k，不含物理环境与机器人闭环实验，结论不可直接外推到具身 RL |
+
 ## 结论
 
 **在本文覆盖的二元可验证奖励实验中，RLVR 的主要可见收益是提高已可解问题的采样效率，而非稳定拓宽基础模型的多次采样可解范围。**
@@ -175,6 +185,7 @@ sequenceDiagram
 - [AI Agent Evaluation](../concepts/ai-agent-evaluation.md) — 区分重复尝试与稳定执行。
 - [DASH-OPSD](./paper-dash-opsd.md) — 与自蒸馏等额外监督路线比较。
 - [RSI 纵深路线](../../roadmap/depth-rsi.md) — 权重改进与能力边界判别。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 边界对照：本页讨论数学/编程/视觉推理的 pass@k 采样效率，机器人任务仍须按具身闭环评测基准单独验证。
 
 ## 参考来源
 

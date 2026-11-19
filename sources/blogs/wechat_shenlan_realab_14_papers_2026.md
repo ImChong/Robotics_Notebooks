@@ -1,6 +1,6 @@
 # 2026年：斯坦福宋舒然团队14篇工作全盘点
 
-> 来源归档（blog / 微信公众号）
+> 来源归档（blog / 微信公众号 + 全文核对 · `sources/raw/wechat_shenlan_realab_14_papers_2026-08-18/article.md`）
 
 - **标题：** 2026年：斯坦福宋舒然团队14篇工作全盘点
 - **类型：** blog
@@ -8,8 +8,11 @@
 - **原始链接：** https://mp.weixin.qq.com/s/vcewu3wKIcrsidzfGr2-yg
 - **发表日期：** 2026-08-18
 - **入库日期：** 2026-08-18
+- **更新日期：** 2026-11-19
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；`--no-images`；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始落盘：** [`sources/raw/wechat_shenlan_realab_14_papers_2026-08-18/article.md`](../raw/wechat_shenlan_realab_14_papers_2026-08-18/article.md)
+- **核对范围：** 通读原始落盘长文 `article.md` 全文 190 行，并与主要综述 [`foundation_models_full_stack_transfer_arxiv_2602_22001.md`](../papers/foundation_models_full_stack_transfer_arxiv_2602_22001.md)（`arXiv:2602.22001` 全文）交叉核对 14 篇工作开源状态与技术定位（2026-11-19 更新 GMP 与 BPP 仓库核查结论）。
+- **通读：** 已完成
 - **一句话说明：** 深蓝 AI 按三条技术脉络盘点 Stanford REALab（宋舒然）2026 年 14 篇代表性工作：基础模型与扩散策略微调、多模态感官融合与顺应控制、数据采集接口与跨具身操作；强调跨实体泛化、物理接触与野外数据采集。
 
 ## 核心摘录（归纳，非全文）
@@ -32,13 +35,13 @@
 
 ### 01 — 机器人基础模型与策略微调（5）
 
-| # | 标题 | 会议/状态 | arXiv / 链接 | 开源结论（项目页核查，2026-08-18） |
+| # | 标题 | 会议/状态 | arXiv / 链接 | 开源结论（2026-08-18 初查 / 2026-11-19 复核） |
 |---|------|-----------|--------------|-----------------------------------|
 | 01 | Transformer Transformer: A Unified Model for Motion-Conditioned Robot Co-design | arXiv | [2607.25798](https://arxiv.org/abs/2607.25798) | **已开源** — [real-stanford/transformer-transformer](https://github.com/real-stanford/transformer-transformer) + ckpt |
 | 02 | DF-ExpEnse: Diffusion Filtered Exploration for Sample Efficient Finetuning | ICML 2026 | [2606.19656](https://arxiv.org/abs/2606.19656) | **已开源** — [real-stanford/dfexpense](https://github.com/real-stanford/dfexpense) |
 | 03 | From Prior to Pro: Efficient Skill Mastery via Distribution Contractive RL Finetuning (DICE-RL) | ICML 2026 | [2603.10263](https://arxiv.org/abs/2603.10263) | **已开源** — [real-stanford/dice-rl](https://github.com/real-stanford/dice-rl) + HF 数据/ckpt |
-| 04 | Are Foundation Models the Route to Full-Stack Transfer in Robotics? | 综述 | [2602.22001](https://arxiv.org/abs/2602.22001) | **无代码** — 迁移学习视角综述（Song 合著） |
-| 05 | Gated Memory Policy: In-Context Memorization and Adaptation (GMP) | — | [2604.18933](https://arxiv.org/abs/2604.18933) | **已开源** — [gated-memory-policy.github.io](https://gated-memory-policy.github.io/) 列代码/数据/部署说明 |
+| 04 | Are Foundation Models the Route to Full-Stack Transfer in Robotics? | 综述 | [2602.22001](https://arxiv.org/abs/2602.22001) | **无代码** — 迁移学习视角综述（DLR + Stanford 合著） |
+| 05 | Gated Memory Policy: In-Context Memorization and Adaptation (GMP) | RSS 2026 | [2604.18933](https://arxiv.org/abs/2604.18933) | **已开源** — [real-stanford/gated-memory-policy](https://github.com/real-stanford/gated-memory-policy) + [项目页](https://gated-memory-policy.github.io/) + HF 数据/ckpt |
 
 ### 02 — 多模态感官融合与顺应控制（3）
 
@@ -53,7 +56,7 @@
 | # | 标题 | 会议/状态 | arXiv / 链接 | 开源结论 |
 |---|------|-----------|--------------|----------|
 | 09 | ModPack: An Extensible Teleoperation Interface for Bimanual Mobile Manipulation | — | [2607.19479](https://arxiv.org/abs/2607.19479) | **已开源** — [real-stanford/modpack](https://github.com/real-stanford/modpack) 硬件+遥操作软件（不含策略训练） |
-| 10 | Behavior Prompting Policy: Demonstrations as Prompts for Manipulation (BPP) | — | [2606.30457](https://arxiv.org/abs/2606.30457) | **已开源** — [real-stanford/behavior_prompting](https://github.com/real-stanford/behavior_prompting) + iPhUMI |
+| 10 | Behavior Prompting Policy: Demonstrations as Prompts for Manipulation (BPP) | — | [2606.30457](https://arxiv.org/abs/2606.30457) | **已开源** — [real-stanford/behavior_prompting](https://github.com/real-stanford/behavior_prompting) + [real-stanford/iPhUMI](https://github.com/real-stanford/iPhUMI) + HF 数据/ckpt（无线实时传 prompt TODO 未释出） |
 | 11 | HoMMI: Learning Whole-Body Mobile Manipulation from Human Demonstrations | RSS 2026 | [2603.03243](https://arxiv.org/abs/2603.03243) | **已开源** — [github.com/xxm19/hommi](https://github.com/xxm19/hommi) 代码+数据+硬件 |
 | 12 | One Demo Is Worth a Thousand Trajectories: Action-View Augmentation for Visuomotor Policies | CoRL 2025 | [2606.19586](https://arxiv.org/abs/2606.19586) | **部分** — [1001-demos.github.io](https://chuerpan.com/1001-demos.github.io/) |
 | 13 | Geometry-Aware 4D Video Generation for Robot Manipulation | ICLR 2026 | [2507.01099](https://arxiv.org/abs/2507.01099) | **部分** — [robot4dgen.github.io](https://robot4dgen.github.io/) |
@@ -74,6 +77,6 @@
 ## 当前提炼状态
 
 - [x] 公众号正文抓取与 raw 归档
-- [x] 14 篇索引表 + 项目页开源核查
+- [x] 14 篇索引表 + 项目页开源核查（2026-11-19 复核补充）
 - [x] 升格 `wiki/overview/realab-14-papers-technology-map-2026.md`
 - [x] 14/14 升格独立 `wiki/entities/paper-*` 详情节点（#01 复用 `paper-transformer-transformer`）

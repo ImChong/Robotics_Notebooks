@@ -4,144 +4,148 @@ project_id: rek
 project: https://rek.com/sim
 tags: [humanoid, teleoperation, vr, entertainment-robotics, sports, unitree, simulation]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-19
 related:
   - ./unitree-g1.md
   - ./unitree.md
   - ./urkl.md
   - ./paper-notebook-robostriker.md
   - ../tasks/teleoperation.md
+  - ../tasks/humanoid-locomotion.md
+  - ../tasks/loco-manipulation.md
+  - ../methods/beyondmimic.md
   - ./open-duck-mini.md
 sources:
   - ../../sources/sites/rek-com.md
   - ../../sources/sites/rek-simulator.md
-summary: "REK（Robot Embodied Kombat）运营真人遥操作的人形机器人格斗联赛，并提供使用与真实机器人相同 AI 的模拟器；模拟器已扩展至 iPhone/iPad TestFlight 测试，优秀选手可争取参加线下赛事。"
+original:
+  - ../../sources/sites/rek-com.md
+  - ../../sources/sites/rek-simulator.md
+summary: "REK（Robot Embodied Kombat）运营现场全接触人形机器人格斗联赛（截至核对完成 15 场真机赛 / 3 国、30,000+ 模拟器对战 / 65 国），并发布跨 Steam/Meta Quest/iOS TestFlight 的闭源物理格斗模拟器与 PILOT/AUTO 双赛道规则。"
 ---
 
 # REK（Robot Embodied Kombat · 人形格斗联赛）
 
-**REK** 是旧金山公司 **Robot Embodied Kombat** 运营的 **人形机器人格斗体育联赛**：选手在场边戴 **VR 头显**，通过自研 **REK TEK** 将人体动作实时映射到 **Unitree G1**（及更大 H 系机型）上，在擂台进行 **全接触** 对打，面向现场与沉浸式回放观众。
+**REK** 是旧金山公司 **Robot Embodied Kombat** 运营的 **全接触人形机器人格斗体育联赛与模拟器生态**：主力现场赛由选手戴 **VR 头显** 通过自研 **REK TEK** 将动作实时映射到改装 **Unitree G1**（及 **EngineAI T800**、Unitree H1-2 等）进行对打，同时官网 `/rules` 在竞赛规范上并设 **PILOT（遥操作）** 与 **AUTO（封装自主策略）** 双分组，并以 [REK Simulator](https://rek.com/sim) 作为线上选拔与多端训练入口。
 
 ## 一句话定义
 
-**把 VR 全身遥操作与量产人形硬件组合成可售票的格斗体育赛事，并向外租赁可编程 G1 用于活动与教育。**
+**把高冲击人形硬件（改装 Unitree G1 / EngineAI T800）、VR 全身遥操作、500 Hz 传感器计分与多端物理格斗模拟器组合成商业赛事联赛，同时在规则上兼设人类 PILOT 与自主 AUTO 双赛道。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| REK | Robot Embodied Kombat | 品牌与联赛简称 |
-| VR | Virtual Reality | 选手端第一视角与动作采集界面 |
-| DoF | Degrees of Freedom | G1 租赁页标注 29 关节自由度 |
-| SDK | Software Development Kit | 租赁 G1 提供完整开发接口 |
-| WBC | Whole-Body Control | 格斗遥操作依赖全身协调与力矩安全 |
-| Teleop | Teleoperation | 人类实时驱动机器人本体 |
+| REK | Robot Embodied Kombat | 品牌、格斗联赛及同名多平台模拟器 |
+| VR | Virtual Reality | 选手端第一视角图传与全身动作采集界面（Quest / PICO） |
+| DoF | Degrees of Freedom | 官网 `/rules` 基准机台与 G1 U2 租赁均标注 29 关节自由度 |
+| WBC | Whole-Body Control | 抗冲击下盘自平衡与出拳全身协调控制 |
+| SDK | Software Development Kit | REK 租赁的 Unitree G1 U2 面向开发与教学提供完整接口 |
+| KO / TKO / STKO | Knockout / Technical KO / Structural KO | `/rules` 定义的击倒、技术击倒与结构损毁判负终点 |
 
 ## 为什么重要
 
-- **消费级人形的「非科研」出口：** 在 [Unitree G1](./unitree-g1.md) 大量用于 RL / loco-manip 研究的语境下，REK 证明同一硬件可支撑 **高冲击、高曝光** 的娱乐产品化路径。
-- **VR 遥操作的极限场景：** 与桌面操作或家务示教不同，格斗要求 **低延迟全身映射、抗摔打与紧急停机**——是 [Teleoperation](../tasks/teleoperation.md) 谱系中 **竞技向** 的极端数据点。
-- **自主 vs 人类 pilot 对照轴：** 学术侧 [RoboStriker](./paper-notebook-robostriker.md) 走 **双智能体 RL 自主拳击**；REK 走 **人类策略 + 机器人执行**——同一「人形拳击」任务的两条技术路线，选型与评测指标完全不同。
-- **中美产业叙事并列：** 2026 年前后中国 **[URKL](./urkl.md)**（EngineAI · 自主算法 + 统一 T800）与 REK 形成对照；REK 以 **embodied VR 选手** 与 **Unitree 硬件生态** 形成西方现场赛事样本。
+- **人形硬件的极限抗冲击试验场：** 在 [Unitree G1](./unitree-g1.md) 主要承担科研步行与桌面操作基准的语境下，REK 以 **全接触、故意碰撞与高速出拳** 验证轻量电驱人形的结构耐受、急停安全与商业观赛可变现性。
+- **VR 遥操作的竞技极值点：** 与精细插拔类数采不同，REK 要求低延迟全身动作映射、力矩限幅与 **< 100 ms** 无线电/急停截断，代表 [Teleoperation](../tasks/teleoperation.md) 谱系中的高动态竞技端。
+- **连接「线上模拟器」与「线下真机 pilot 选拔」：** 通过 Steam（App ID `4582660`）、Meta Quest 与 iOS TestFlight 分发与真机同源的自平衡/战斗物理模拟环境，使 **30,000+ 场** 线上模拟器对战（覆盖 **65 个国家**）直接向 REK 2.1 现场季后赛输送人类选手。
+- **产业双轨对照轴：** 与深圳 [URKL](./urkl.md)（EngineAI T800 标准化自主算法联赛）以及学术多智能体工作 [RoboStriker](./paper-notebook-robostriker.md) 并列，REK 现场商业化优先验证了 VR 真人 pilot 的强娱乐观赏性，同时在规则中预留了密封策略 `AUTO division`。
 
-## 流程总览
+## 核心原理
 
 ```mermaid
 flowchart LR
-  subgraph pilot [场边选手]
-    VR["VR 头显<br/>机体视角 + HUD"]
-    HUMAN["人体动作"]
+  subgraph pilot [选手与模拟器前端]
+    VR["VR 头显 (Quest / PICO · 机体视角 + HUD)"]
+    SIM["REK Simulator (Steam 4582660 / iOS TestFlight)"]
+    HUMAN["真人全身与出拳动作"]
     HUMAN --> VR
+    SIM -->|"REK 2.1 季后赛晋级通道"| VR
   end
-  subgraph stack [REK TEK]
-    MAP["动作映射 / 限幅"]
-    SAFE["安全监控"]
+  subgraph stack [REK TEK 闭源控制栈]
+    MAP["动作映射与力矩限幅 (500 Hz 控制环)"]
+    SAFE["无线电截断与急停 (< 100 ms)"]
     VR --> MAP --> SAFE
   end
-  subgraph arena [擂台]
-    G1A["Unitree G1/H 系 A"]
-    G1B["Unitree G1/H 系 B"]
-    SAFE --> G1A
-    SAFE --> G1B
-    G1A <-->|"全接触格斗"| G1B
+  subgraph arena [标准化擂台与判罚]
+    BOTA["改装 Unitree G1 / T800 A"]
+    BOTB["改装 Unitree G1 / T800 B"]
+    ARBITER["The Arbiter (500 Hz 双信号计分)"]
+    SAFE --> BOTA
+    SAFE --> BOTB
+    BOTA <-->|"PILOT / AUTO 全接触对抗"| BOTB
+    BOTA --> ARBITER
+    BOTB --> ARBITER
   end
-  subgraph audience [观赛]
-    LIVE["现场观众"]
-    VR180["VR180 回放<br/>Vision Pro 等"]
-    G1A --> LIVE
-    G1A --> VR180
+  subgraph audience [观赛分发]
+    LIVE["现场观众 (15 场实体赛 / 3 国)"]
+    VR180["VR180 沉浸式回放"]
+    ARBITER --> LIVE
+    BOTA --> VR180
   end
 ```
 
-## 核心结构
+### 赛事规范、机型与计分（`/rules` & `/fights` 全文核对）
 
-### 赛事产品线
+| 维度 | 官方前端源码核对事实 |
+|---|---|
+| **基准机型参数** | `/rules` 基准机台：**1.32 m** 身高、**35 kg** 整备体重、**29 关节**、**500 Hz** 控制频率、**120 N·m** 峰值力矩；真机与模拟器兼含改装 **Unitree G1** 与 **EngineAI T800**（历史报道亦见 H1-2） |
+| **双赛道划分** | **PILOT division**（VR 人类遥操驾驶）与 **AUTO division**（提交封闭自主策略参赛，无真人实时干预） |
+| **自动计分系统** | **The Arbiter** 以 **500 Hz** 双路信号采集与冲击加速度分级判定得分，终点裁决涵盖 `KO / TKO / STKO / DEC / DQ` |
+| **安全硬件约束** | 现场明确强制 **< 100 ms** 物理急停与无线电失联截断机制 |
+| **规模与里程碑** | `/fights` 披露累计 **15 场真实人形格斗**（覆盖 **3 个国家**）与 **30,000+ 场模拟器对战**（覆盖 **65 个国家**）；含 REK0、REK America 五城巡演（2025-11）、REK1（2026-02-07）与 REK 2.1（10/30–31 与 11/6–7 季后赛，胜者 `Suslike`、`CoffeeCactus417`、`scabnft2` 晋级 11/20 现场总决赛；已知真机冠军包括 `Andy`、`Osone`、`Suslike`） |
 
-| 里程碑 | 要点 |
-|--------|------|
-| **REK0** | 旧金山 proof-of-concept：双机、VR pilot、现场观众验证叙事 |
-| **REK America** | 2025-11 美国五城巡演，公开报道 **场场售罄** |
-| **REK1** | 2026-02-07 Kezar Pavilion（旧金山）；更高制作规格，购票者可申请 pilot 资格 |
+### 多平台 REK Simulator 分布
 
-### 技术要素（公开信息归纳）
-
-| 维度 | 内容 |
-|------|------|
-| **硬件** | 主力 **Unitree G1**；更大体型 **H1-2** 亦出现在报道中；拳套、护具，部分演示含冷兵器道具 |
-| **软件** | **REK TEK**：人体 → 机器人关节/末端映射；VR 内嵌机体视角、环境感知与 **血量/性能** 类 HUD |
-| **商业模式** | ① **售票现场赛** ② **G1 U2 租赁**（活动/课堂/制片；29 DoF、约 2 h 续航、Full SDK）③ 电商早鸟名单 |
+| 平台 | 验证入口与定位 |
+|---|---|
+| **Steam 桌面端** | App ID `4582660`（<https://store.steampowered.com/app/4582660/REK/>），支持 **PC / macOS / Linux**，列出明确最低硬件配置要求 |
+| **Meta Quest** | 官方商店/体验入口 <https://www.meta.com/s/aXbdiAyt0>，支持直接佩戴 VR 头显进行第一视角格斗练习与季后赛排位 |
+| **iOS 移动端** | Apple TestFlight 测试通道 <https://testflight.apple.com/join/kEMR9Y6k>（测试分发，尚未作为 App Store 正式商业上架核实，且未披露本地与云端推理分工） |
 
 ### 与科研遥操作的差异
 
-| 维度 | 实验室 VR 全身 teleop（如 TWIST2 / PILOT） | REK 格斗 |
-|------|---------------------------------------------|----------|
-| **目标** | 采集示范 / 部署 loco-manip 策略 | 竞技观赏与选手体验 |
-| **接触** | 受控物体与力矩上限 | **故意全接触、高冲击** |
-| **策略来源** | 常接 RL tracking 或 VLA 下层 | **人类实时决策** |
-| **数据用途** | 训练模仿学习 | 非公开强调 IL 数据集 |
+| 维度 | 实验室 VR 全身遥操作 | REK 格斗与模拟器体系 |
+|---|---|---|
+| **目标函数** | 采集一致演示轨迹 / 部署 [全身运动控制](../tasks/loco-manipulation.md) 策略 | 竞技观赏、冲击耐久验证与选拔顶级 pilot |
+| **接触边界** | 受控抓放与严格力矩抑制 | **故意全接触、高冲击击打** 与 `STKO` 结构容错 |
+| **策略归属** | 下层接 [BeyondMimic](../methods/beyondmimic.md) / RL 跟踪或 VLA | 现役主力现场为人类实时决策（`PILOT`），规则另设封闭 `AUTO` 分组 |
 
-## 数字模拟器与 iOS 测试版
+## 源码运行时序图
 
-REK 另提供 [REK Simulator](https://rek.com/sim)，以物理仿真呈现人形机器人格斗。官方称模拟器使用与真实人形机器人相同的 AI / 神经网络，并将模拟赛表现与获得线下活动 pilot 资格相连；Steam 产品页也描述了物理格斗与自平衡 AI。
-
-| 公开信息 | 核查结果 |
-|---|---|
-| **移动端** | REK 更新记录提到 iPhone 与 iPad 可经 Apple TestFlight 测试；此处是测试版分发，不是 App Store 正式上架。 |
-| **模拟器用途** | 通过虚拟对战练习操控机器人，REK 宣称优秀模拟赛选手可获得线下 pilot 机会。 |
-| **日期** | 可检索到的更新记录镜像将该次更新标为 **2026-10-09**；截至 **2026-10-18**，未找到能证实「10 月 17 日首次发布」的一手公告。 |
-| **运行边界** | 官方资料确认使用同一 AI / 神经网络，但没有说明完整模型是否在 iPhone 本地推理；不能据此写成手机可独立运行全部机器人 AI。 |
-
-这降低了公众接触模拟驾驶与参加选拔的门槛，但仍是格斗模拟器的 pilot 训练路径，不等于通用机器人操作员培训或直接获得真机工作资格。
+**不适用** — 经全文核查官网 SPA 源码（`rek_main.js`，含 `/sim` 与 `/terms#simulator`）及 Steam 产品页（App ID `4582660`），**REK** 联赛控制软件 **REK TEK**、**The Arbiter** 计分后台（基于 Supabase / GCP / Stripe）及 **REK Simulator** 均为**完全闭源商业专有软件**。`/terms#simulator` 条款明确禁止对二进制包进行反编译、逆向工程或提取神经网络策略权重，因此不存在可验证源码运行入口。
 
 ## 工程实践
 
-- **硬件：** 主力 [Unitree G1](./unitree-g1.md)，亦有 H1-2；配拳套、护具，部分演示含道具。
-- **控制：** VR 选手全身遥操作驱动机器人，目标是竞技观赏与选手体验，而非采集示范。
-- **运营：** 联赛与租赁为第三方运营，非 Unitree 官方产品。
+- **系统封闭性与商业服务：** 软件栈全面闭源；商业运作依赖 ① 现场巡演售票 ② 线上商城与硬件租赁（`/shop` 列出 **8 款在售人形机器人**及价格，含 29 DoF / 约 2 h 续航 / Full SDK 的 Unitree G1 U2 租赁） ③ REK Simulator 赛事选拔闭环。官方 `/careers` 招募 **RL Researcher** 与 **VP of Events** 印证了其「底层平衡对抗策略研究 + 商业体育巡演」双轮驱动。
+- **物理仿真的防作弊动画约束：** Steam 产品页强调格斗动作由物理与自平衡神经网络驱动而非预制罐头动画，用于保障线上选拔赛与线下真机操纵的手感迁移一致性。
+- **与本体厂商分离：** 虽然主力采用 [Unitree G1](./unitree-g1.md)（并兼容 T800），但其护甲改造、VR 界面、REK TEK 与计分系统均为 REK 独立第三方工程，不代表原厂默认出厂固件行为。
 
-## 常见误区或局限
+## 局限与风险
 
-- **不是自主拳击 AI 联赛：** 真实赛事由 **真人 pilot** 遥操作；模拟器的平衡 AI 不代表机器人自主决策或无人操作。
-- **不等于 Unitree 官方产品：** 硬件来自 [Unitree](./unitree.md)，联赛与 REK TEK 为第三方运营。
-- **「机器人格斗」≠ 液压巨型机：** 使用 **轻量电驱人形**（数十 kg 级），安全与耐久设计决定可承受的打击强度。
+- **核心技术栈闭源且不可审计：** REK TEK 延迟指标、The Arbiter 加速度计标定细节、自平衡神经网络训练架构及移动端推理位置（本地 vs 云端）均未公开论文或仓库，学术界难以直接复现或作为开源基准引用。
+- **现场主力仍由真人 Pilot 驱动：** 尽管官网 `/rules` 已同时定义 `AUTO division` 自主赛道，现阶段已验证出圈的巡演与主力现场赛仍依赖真人穿戴 VR 实时控制，与 [URKL](./urkl.md) 或 [RoboStriker](./paper-notebook-robostriker.md) 的全自主 AI 对抗存在本质控制链路区别。
+- **轻量电驱人形态物理上限：** 35 kg 级电驱人形的关节齿轮箱、散热与结构件在高冲击格斗中面临频繁维修与 `STKO` 结构损毁风险，对赛事备机与现场维修后勤要求极高。
 
-## 关联页面
+## 与其他页面的关联
 
-- [Unitree G1](./unitree-g1.md) — 主力格斗与租赁机型
-- [Unitree](./unitree.md) — 硬件供应链与 SDK 生态
-- [Teleoperation](../tasks/teleoperation.md) — VR 全身映射的任务谱系
-- [RoboStriker](./paper-notebook-robostriker.md) — 自主人形拳击 RL 研究对照
-- [URKL](./urkl.md) — 中国 EngineAI 标准化 T800 **自主算法** 格斗联赛对照
-- [Open Duck Mini](./open-duck-mini.md) — 另一条 **娱乐向双足** 开源硬件路线（DIY vs 量产 G1 租赁）
+- [Unitree G1](./unitree-g1.md) — REK 主力现场与租赁硬件底盘
+- [Unitree](./unitree.md) — 核心硬件供应链与原厂 SDK 生态
+- [URKL](./urkl.md) — EngineAI 标准化 T800 格斗联赛对照
+- [Teleoperation](../tasks/teleoperation.md) — VR 全身动作映射的极限竞技场景
+- [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — 高冲击格斗中的双足抗扰与动态平衡基础
+- [Loco-Manipulation](../tasks/loco-manipulation.md) — 移动、格挡与出拳耦合的全身协调问题
+- [BeyondMimic](../methods/beyondmimic.md) — 高动态全身动作跟踪与控制方法对照
+- [RoboStriker](./paper-notebook-robostriker.md) — 自主人形拳击多智能体 RL 研究锚点
+- [Open Duck Mini](./open-duck-mini.md) — 另一条开源低成本娱乐双足路线
 
 ## 参考来源
 
-- [rek-com.md](../../sources/sites/rek-com.md) — 官网与第三方交叉归档
-- 官网：<https://rek.com/>
-- Founders Inc. 投资组合：<https://f.inc/portfolio/rek/>
+- [REK 官网与前端 SPA 全路由核对归档（rek-com.md）](../../sources/sites/rek-com.md)
+- [REK Simulator 多平台与条款核对归档（rek-simulator.md）](../../sources/sites/rek-simulator.md)
 
 ## 推荐继续阅读
 
-- [RoboStriker 论文](https://arxiv.org/abs/2601.22517) — 自主人形拳击分层决策与 LS-NFSP
-- [Unitree G1 实体页](./unitree-g1.md) — 格斗平台硬件规格与科研生态
-- Rest of World 报道：[Chinese robot boxing draws crowds in San Francisco](https://restofworld.org/2026/chinese-robot-boxing-unitree-rek/)
+- REK 官网与规则页：<https://rek.com/>
+- REK Simulator Steam 官方产品页：<https://store.steampowered.com/app/4582660/REK/>
+- [RoboStriker 论文（arXiv:2601.22517）](https://arxiv.org/abs/2601.22517)
+- [Unitree G1 实体页](./unitree-g1.md)

@@ -1,7 +1,7 @@
 ---
 type: entity
 title: "Heave-Ho：以语音同步的分散式长时程多人形协作 / Decentralized Long-Horizon Multi-Humanoid Collaboration"
-project_id: heave-ho-decentralized-multi-humanoid
+project_id: heave-ho-2611-22275
 arxiv: "2611.22275"
 project: https://heaveho-humanoid.github.io/
 code: https://github.com/heaveho-humanoid/Heave-Ho
@@ -11,22 +11,23 @@ updated: 2026-11-19
 related:
   - ../tasks/loco-manipulation.md
   - ../methods/reinforcement-learning.md
+  - ../tasks/humanoid-locomotion.md
   - ../concepts/whole-body-control.md
   - ./nvidia-sonic.md
   - ./paper-resmimic.md
   - ./unitree-g1.md
 sources:
-  - ../../sources/papers/heave_ho_arxiv_2611_22275.md
+  - ../../sources/papers/heave-ho-arxiv-2611-22275.md
   - ../../sources/sites/heave-ho.md
   - ../../sources/repos/heave-ho.md
 original:
-  - ../../sources/papers/heave_ho_arxiv_2611_22275.md
+  - ../../sources/papers/heave-ho-arxiv-2611-22275.md
 summary: "Heave-Ho（arXiv:2611.22275v2）：共享 SONIC+残差 MAPPO 使人形仅基于本地观测协同抬物；领导者 Qwen3-VL 视觉规划选择团队技能，以语音广播和统一时间格同步，无机器人间网络消息。HH-Bench 12 任务仿真均值 94.41%，真机 92/100；代码预计 2026-12 月底公开。"
 ---
 
 # Heave-Ho：以语音同步的分散式长时程多人形协作 / Decentralized Long-Horizon Multi-Humanoid Collaboration
 
-**论文身份：** Ting-Hsuan Chen 等，南加州大学（University of Southern California）与 VinMotion，arXiv:2611.22275 **v2（2026-11-18）**。一手资料见[论文通读归档](../../sources/papers/heave_ho_arxiv_2611_22275.md)。
+**论文身份：** Ting-Hsuan Chen 等，南加州大学（University of Southern California）与 VinMotion，arXiv:2611.22275 **v2（2026-11-18）**。一手资料见[论文通读归档](../../sources/papers/heave-ho-arxiv-2611-22275.md)。
 
 ## 一句话定义
 
@@ -162,7 +163,7 @@ flowchart TD
 
 ## 参考来源
 
-- [arXiv v2 全文通读与表格核对](../../sources/papers/heave_ho_arxiv_2611_22275.md)
+- [arXiv v2 全文通读与表格核对](../../sources/papers/heave-ho-arxiv-2611-22275.md)
 - [作者项目主页核对](../../sources/sites/heave-ho.md)
 - [官方 GitHub 开源状态核对](../../sources/repos/heave-ho.md)
 

@@ -13,6 +13,7 @@ related:
   - ../concepts/sim-vs-real-eval-gap.md
   - ../methods/model-predictive-control.md
   - ../methods/coding-agent-verification-loops.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/world-models-as-unit-tests.md
   - ../../sources/repos/world-models-as-unit-tests.md
@@ -155,6 +156,7 @@ sequenceDiagram
 - [MPC 方法](../methods/model-predictive-control.md)
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)
 - [具身模型测评纵深路线](../../roadmap/depth-embodied-eval.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 把轻量可执行 Python 世界模型作为候选版本排序与仿真筛选环节，对照闭环评测选型与真机验收边界
 
 ## 参考来源
 
