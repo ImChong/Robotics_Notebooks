@@ -9,6 +9,7 @@ related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../overview/motor-design-workflow.md
   - ../entities/simplefoc.md
+  - ../entities/odrive.md
   - ./motor-torque-current-curve.md
   - ./can-bus-protocol.md
   - ../formalizations/control-loop-latency-modeling.md
@@ -109,6 +110,7 @@ flowchart LR
 - [FOC 逐步推导](../formalizations/field-oriented-control-derivation.md) — Clarke/Park、\(\tau = K_t i_q\)、电流环与 PWM 的公式链
 - [电机设计流程（规格 → 仿真 → 样机 → 控制）](../overview/motor-design-workflow.md) — FOC 验证处于全流程第 7 步，依赖 \(L_d, L_q, K_t\) 与台架 [TI 曲线](./motor-torque-current-curve.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — L3 力矩/速度指令如何穿过 CANopen 或私有帧到达 FOC
+- [ODrive 固件架构](../entities/odrive.md) — 以 Firmware 0.5.6 源码拆解 Axis、Controller、Motor/FOC 的职责边界与运行时调度
 - [SimpleFOC](../entities/simplefoc.md) — 跨 MCU 的开源 FOC 实现与社区硬件
 - [CAN 总线](./can-bus-protocol.md) — 常见关节指令物理层
 
