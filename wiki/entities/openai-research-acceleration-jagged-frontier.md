@@ -131,4 +131,4 @@ flowchart LR
 ## 推荐继续阅读
 
 - [Research acceleration: The jagged frontier — OpenAI 官方原文（2026-11-18）](https://openai.com/index/research-acceleration-jagged-frontier/)
-- [OpenAI 先前的 Research Acceleration 报告（2026-09）](https://openai.com/index/research-acceleration/)
+- [OpenAI 先前的 Research Acceleration 报告（2026-09）](https://openai.com/index/research-acceleration-view-inside-openai/)
