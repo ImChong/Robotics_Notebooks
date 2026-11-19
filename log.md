@@ -498,6 +498,15 @@ op: ingest
 - **意图：** 解释驾驶指令语义如何经离散局部运动 token 过渡到最终连续航点；明确 TrajCond 是中间条件而非最终离散输出。
 - **结论：** 新增独立论文详情，论文和源码分层归档，Mermaid 方法图与核心代码运行时序图，关联 DriveTeach-VLA 和 VLA 纵深路线。记录论文分位区间与当前公开代码 min/max 的差异，以及 GRPO 在主仓之外的复现边界。
 
+# [2026-11-19] ingest | NeuIDO 神经内禀动力学算子
+
+- **操作：** ingest
+- **日期：** 2026-11-19
+- **意图：** 收录 ECCV 2026 NeuIDO；区分“共享弹塑性神经算子”与“无需物理先验”的错误解读。
+- **一手资料：** [arXiv v1](https://arxiv.org/html/2609.24313v1)；[官方代码与项目页](https://github.com/JiajingLin/NeuIDO)。
+- **开源结论：** 部分源码已公开；README 对权重、环境、数据生成、完整运行命令仍标 TODO；未实测。
+- **关键节点：** [NeuIDO 论文详情](../wiki/entities/paper-neuido-neural-intrinsic-dynamics-operator.md)，并在 Real2Sim Stage 2 与可微仿真页建立入链。
+
 ## [2026-11-19] ingest | sources/papers/so_arena_arxiv_2611_15777.md — 收录 SO-Arena 双轴结构化决策评测与可靠性复现入口
 
 - 基于 arXiv:2611.15777v1 与官方项目页，新增独立双语论文节点，记录 2,919 任务 / 11 领域 / 1,232 榜单任务与 C、S、N、R 分离指标。
