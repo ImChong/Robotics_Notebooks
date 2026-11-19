@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: spd
 tags:
   - paper
   - dexterous-manipulation
@@ -13,11 +14,13 @@ tags:
   - mit
   - scale-ai
 status: complete
-updated: 2026-09-17
+updated: 2026-11-19
 arxiv: "2608.15917"
 venue: "CoRL 2026 / arXiv:2608.15917"
+project: https://spd.bot/
 related:
   - ../tasks/teleoperation.md
+  - ../tasks/bimanual-manipulation.md
   - ../queries/dexterous-data-collection-guide.md
   - ../methods/diffusion-policy.md
   - ../methods/action-chunking.md
@@ -33,7 +36,10 @@ related:
 sources:
   - ../../sources/papers/spd_corl_2026.md
   - ../../sources/sites/spd-bot.md
-summary: "SPD（CoRL 2026 / arXiv:2608.15917，斯坦福/MIT/Scale AI）：仿真 VR 遥操作采 75 h on-embodiment 演示预训练 222M 扩散 Transformer，56-DoF 双臂灵巧手每任务 1–2 h 真机微调；五项任务均胜过从零 BC。论文宣称释放 spd-75h / spd-vr，截至 2026-09-05 项目页未列代码或数据。"
+original:
+  - ../../sources/papers/spd_corl_2026.md
+  - ../../sources/sites/spd-bot.md
+summary: "SPD（CoRL 2026 / arXiv:2608.15917v2，斯坦福/MIT/Scale AI）：仿真 VR 遥操作采 75 h on-embodiment 演示预训练 222M 扩散 Transformer，56-DoF 双臂灵巧手每任务 1–2 h 真机微调；五项任务均胜过从零 BC。论文宣称释放 spd-75h / spd-vr，截至 2026-11-19 项目页仍未列代码或数据。"
 ---
 
 # SPD：在仿真里预训练视觉灵巧操作
@@ -71,11 +77,11 @@ summary: "SPD（CoRL 2026 / arXiv:2608.15917，斯坦福/MIT/Scale AI）：仿�
 |----|------|
 | **机构** | 斯坦福大学（Stanford）；麻省理工（MIT）；Scale AI（采集 spd-75h） |
 | **会议** | CoRL 2026；[arXiv:2608.15917](https://arxiv.org/abs/2608.15917) |
-| **平台** | 两台升级 YAM Pro + 各 22-DoF Sharpa Wave；三台 RealSense D405（顶 + 双腕） |
-| **仿真** | MuJoCo 480 Hz；Quest 3 WebXR 仅渲染/报手姿；IK（mink）60 Hz |
-| **数据** | spd-75h：六场景、约 1,930 ep / 75 h；真机微调 44–121 min/任务 |
-| **栈** | 222M 扩散 Transformer；冻结 DINOv3 ViT-B/16；flow matching；Muon |
-| **开源** | **宣称将开源 / 待核实**（截至 2026-09-05 项目页未列代码或数据 URL） |
+| **平台** | 两台升级 YAM Pro（J3/J4 减速比 10:1→40:1）+ 各 22-DoF Sharpa Wave；三台 RealSense D405（顶 + 双腕尺侧） |
+| **仿真** | MuJoCo 480 Hz `implicitfast`；Quest 3 WebXR 仅渲染/报手姿；IK（mink）60 Hz；Madrona 批量渲染 |
+| **数据** | spd-75h：六场景、正文约 1,930 ep / ~75 h（Table 2 统计 ≥10 ep 任务共 1,916 ep / 4,516 min）；真机微调 44–121 min/任务 |
+| **栈** | 222M 扩散 Transformer（冻结 DINOv3 ViT-B/16 86M + 4 queries/视角，每 2 层 cross-attend 到 8 层 768-d 12-head w=32 因果主干 + 58M action expert）；flow matching；Muon + AdamW `1e-3` |
+| **开源** | **宣称将开源 / 尚未发布**（截至 2026-11-19 项目页仍未列代码或数据 URL） |
 
 ## 核心原理
 
@@ -96,34 +102,34 @@ summary: "SPD（CoRL 2026 / arXiv:2608.15917，斯坦福/MIT/Scale AI）：仿�
 
 ```mermaid
 flowchart TB
-  vr["spd-vr\nQuest 3 → IK → MuJoCo"]
-  data["spd-75h\n75 h / 六场景"]
-  aug["渲染增强\n色/纹理/左右对称"]
-  pre["222M DiT 预训练\nflow matching · 170k step"]
-  real["spd-teleop\nManus + Quest · 1–2 h/任务"]
-  ft["全策略微调\n6k–10k step"]
-  eval["五项真机进度\nvs 从零 BC"]
+  vr["spd-vr: Quest 3 到 IK 到 MuJoCo"]
+  data["spd-75h: 75 h / 六场景"]
+  aug["渲染增强: 改色 / 纹理 / 左右对称"]
+  pre["222M DiT 预训练: flow matching 170k step"]
+  real["spd-teleop: Manus + Quest 1-2 h/任务"]
+  ft["全策略微调: 6k-10k step"]
+  eval["五项真机进度 vs 从零 BC"]
   vr --> data --> aug --> pre --> ft
   real --> ft --> eval
 ```
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-05：项目页与 arXiv 均未列 GitHub / 数据集 / 权重；论文宣称释放 spd-vr 与 spd-75h，按「宣称 / 待核实」处理，不可按官方入口复现训练栈）。
+**不适用**（截至 2026-11-19 复核：`https://spd.bot/` 与 arXiv:2608.15917v2 均未列 GitHub / 数据集 / 权重链接；论文宣称释放 `spd-vr` 与 `spd-75h`，按「宣称将开源 / 尚未发布」处理，不可按官方入口复现训练栈）。
 
 ## 工程实践
 
 | 项 | 建议 / 论文设定 |
 |----|----------------|
 | 仿真步进 | 480 Hz `implicitfast`；控制/串流/记录 60 Hz；训练网格 30 Hz |
-| 采集交互 | 三键脚踏（checkpoint / pause / revert）；接触中禁止 checkpoint，保证回退到无接触态 |
+| 采集交互 | 三键脚踏（checkpoint / pause / revert）；接触中禁止 checkpoint（并裁掉 >10 s 无接触片段），保证回退到无接触态 |
 | 渲染 | 224×168；保留实例分割供物体着色与背景替换 |
+| 真机通信与伺服 | ZeroMQ IPC pub-sub 同步（60 Hz leader、120 Hz 伺服、250 Hz CAN PD + MuJoCo 重力补偿、30 Hz 相机，重采样到 30 Hz 网格） |
 | 真机手腕 | Quest 手柄相对增量 + mink 差分 IK（4 次 QP）；>8 cm 跳跃做插值 |
 | 真机手指 | Manus 25 点/手 → 掌心仿射标定 → 固定基座手仿真 mocap IK → 22 关节 |
-| 臂伺服 | 关节 PD + MuJoCo 重力补偿（手当负载）；CAN 250 Hz |
 | 预训练 | batch 64；lr \(10^{-3}\) 恒定；weight decay 0.1；EMA 半衰期 20 step |
 | 部署读法 | 需要与仿真对齐的真机遥操作栈；**不是** 零样本视觉策略 |
-| 复现边界 | **无公开代码/数据 URL**；硬件是定制 YAM Pro 减速比 + Sharpa Wave |
+| 复现边界 | **无公开代码/数据 URL**；硬件是定制 YAM Pro 减速比（J3/J4 10:1→40:1）+ Sharpa Wave |
 
 ## 实验与评测
 
@@ -162,11 +168,12 @@ flowchart TB
 - **评测物体接近仿真：** 五项任务物体「相似但不相同」，不能当成开放世界泛化。
 - **无语言、场景覆盖窄：** 不能当通用 VLA；条件全靠近期 sensorimotor 历史。
 - **硬件定制：** YAM 减速比改装 + Sharpa Wave 过热对策，实验室复制成本高。
-- **开源未落地：** 论文承诺与项目页链接不一致；入库后应复查 spd.bot 是否补了 GitHub / 数据集。
+- **开源未落地（截至 2026-11-19）：** 论文承诺与项目页链接尚未补齐；`spd.bot` 仍未放出 GitHub、数据集或权重 URL。
 
-## 关联页面
+## 与其他页面的关联
 
 - [Teleoperation](../tasks/teleoperation.md) — 仿真 VR 采数 vs 真机遥操作系统表
+- [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂灵巧协同操作任务族
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md) — 把 SPD 收成「仿真 VR 示教可规模化」通道
 - [Diffusion Policy](../methods/diffusion-policy.md) — 扩散动作头；本文是带历史的 DiT + flow matching
 - [Action Chunking](../methods/action-chunking.md) — 历史窗与短 chunk 的真机取舍

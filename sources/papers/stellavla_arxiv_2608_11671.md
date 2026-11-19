@@ -7,14 +7,17 @@
 - **类型：** paper
 - **arXiv：** <https://arxiv.org/abs/2608.11671>
 - **PDF：** <https://arxiv.org/pdf/2608.11671>
-- **榜单 / 项目入口：** <https://vla-arena.github.io/#leaderboard>（论文首页链至 VLA-Arena 排行榜；**无独立 StellaVLA 项目页或官方代码仓**）
-- **作者：** Siyu Xu, Yunke Wang, Zijian Wang, Dihao Zhu, Chenghao Xia, Chengbin Du, Daochang Liu, Tao Huang, Chang Xu
+- **榜单 / 项目入口：** <https://stelledge.com/blog/stellavla>、<https://vla-arena.github.io/#leaderboard>（论文首页列出 StellarEdge 博客与 VLA-Arena 排行榜；**无官方 GitHub 代码仓或模型权重**）
+- **作者：** Siyu Xu, Yunke Wang, Zijian Wang, Dihao Zhu, Chenghao Xia, Chengbin Du, Daochang Liu, Tao Huang, Chang Xu（StellarEdge AI Technical Team）
 - **入库日期：** 2026-08-31
+- **再核日期：** 2026-11-19
+- **核对范围：** 通读 `arXiv:2608.11671v1` 全文（1752 行，含 §1–§6、Table 1–5 消融、结构化示范构造公式、KV-cache 延时分解与真机 AgileX Piper 实验）并核对 VLA-Arena 页面
+- **通读：** 已完成
 - **一句话说明：** 离线 VLM 把原始示范转成「任务计划 + 子目标 + 2D/3D 运动 verbalization」的结构化 in-context 示范；并行双专家训练、推理仅 action expert，单次检索示范即可 OOD 适应。
 
 ## 开源状态（步骤 2.5）
 
-- **确认未开源（StellaVLA 本体）**：截至入库日 arXiv 与 VLA-Arena 页 **未列出 StellaVLA 官方 GitHub / 权重**；论文实现基于 **Qwen3-VL-4B + OpenVLA-OFT 风格 action expert**，对照基线 **StarVLA-OFT** 见 [StarVLA（arXiv:2604.05014）](https://arxiv.org/abs/2604.05014) 社区代码库，**非 StellaVLA 官方发布**。
+- **确认未开源（StellaVLA 本体）**：`2026-08-31` 与 `2026-11-19` 两次核查 `arXiv:2608.11671v1` 全文、StellarEdge 博客地址及 VLA-Arena 页均 **未公布 StellaVLA 官方 GitHub 代码仓或权重**；论文实现基于 **Qwen3-VL-4B + OpenVLA-OFT 风格 action expert**，对照基线 **StarVLA-OFT** 见 [StarVLA（arXiv:2604.05014）](https://arxiv.org/abs/2604.05014) 社区代码库，**非 StellaVLA 官方发布**。
 - **相关开源资源**：**VLA-Arena** 基准框架与数据集公开于 <https://vla-arena.github.io>（PKU 等）。
 
 ## 核心摘录（面向 wiki 编译）

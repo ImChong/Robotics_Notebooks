@@ -10,13 +10,20 @@
 - **项目页：** <https://robbyant-research.github.io/Zero-WAM/>
 - **代码：** <https://github.com/robbyant-research/Zero-WAM>
 - **作者：** Jiaming Zhou, Qihang Zhang, Gangwei Xu, Cunxin Fan, Yujie Zhao, Ruilin Wang, Yiming Luo, Shuai Yang, Xing Zhu, Yujun Shen, Junwei Liang, Yinghao Xu
+- **版本：** arXiv:2608.26103v2 [cs.RO] 27 Aug 2026
 - **入库日期：** 2026-08-28
+- **再核日期：** 2026-11-19
+- **核对范围：** 通读 `arXiv:2608.26103v2` 全文（1687 行，含 §1–§6、HumanGen 管线、MoT 架构与 ΔH RoPE 偏移、IFP/MCP 目标、RoboTwin 2.0/真机 Franka 与消融实验），并核对项目页与开源仓库源码
+- **通读：** 已完成
 - **索引来源：** [具身智能小站 9 篇盘点](../blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md)（<https://mp.weixin.qq.com/s/FNhRO3KOm8k8CkJEqystQQ>）
 - **一句话说明：** 把人类视频当 in-context 任务规格，因果视频-动作模型零样本执行未见操作任务。
 
 ## 开源状态（步骤 2.5）
 
-- **待发布**：[`robbyant-research/Zero-WAM`](https://github.com/robbyant-research/Zero-WAM) 仓已建（Apache-2.0）；README 写明代码 / 模型 / 数据计划 **2026-09-15 前**发布。截至入库日仅 LICENSE、README 与 `docs/assets`，无可运行训练入口。
+- **已开源（代码 + 预训练/RoboTwin 后训练权重 + 部分 HumanGen 潜变量数据集，2026-11-19 再核）**：
+  - 官方仓库 [`robbyant-research/Zero-WAM`](https://github.com/robbyant-research/Zero-WAM)（Apache-2.0）已公开完整训练、服务化与 RoboTwin 评测源码（`wan_va/`、`script/train.sh`、`evaluation/robotwin/`）。
+  - Hugging Face 已发布 `robbyant-research/zero-wam-pretrain`、`robbyant-research/zero-wam-posttrain-robotwin` 权重与 `datasets/robbyant-research/HumanGen`（含 RoboTwin ICL 与 5 份外部预训练潜变量数据；内部/真机子集及 HumanGen 合成生成脚本未包含在公开仓内）。
+  - 仓库 `INSTALL.md` 与论文 Footnote 1 明确：`move_stapler_pad`（取消垫内偏航角限制）与 `stamp_seal`（目标误差容限从 `1 cm` 放宽至 `3 cm`）两项评测文件存在协议修订，与所有基线公平对齐。
 
 ## 核心摘录（面向 wiki 编译）
 

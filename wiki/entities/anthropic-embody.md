@@ -1,28 +1,37 @@
 ---
 type: entity
+project_id: anthropic-embody
 tags: [eval, benchmark, llm-agents, anthropic, locomotion, manipulation, mujoco, safety, unitree]
 status: complete
-updated: 2026-08-28
+updated: 2026-11-19
+project: https://www.anthropic.com/research/claude-plays-robotics
 related:
   - ../concepts/llm-robotics-control-interfaces.md
+  - ../concepts/robot-in-context-learning.md
   - ../concepts/control-inference-frequency-decoupling.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../entities/libero-benchmark.md
   - ../entities/unitree-g1.md
   - ../methods/vla.md
   - ../methods/aspire.md
+  - ../methods/ppo.md
+  - ../methods/reinforcement-learning.md
+  - ../tasks/locomotion.md
+  - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/repos/safety-research-embody.md
-summary: "Embody 是 Anthropic Frontier Red Team 的语言模型机器人评测套件：同一任务跨直接控制 / 写控制器 / RL 监督 / 预训练策略四条接口，覆盖经典控制、Go2/G1 locomotion、LIBERO 操作与真机 Go2。代码宣称将开源到 safety-research/embody，入库日 GitHub 404。"
+original:
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
+summary: "Embody 是 Anthropic Frontier Red Team 的语言模型机器人评测套件：同一任务跨直接控制 / 写控制器 / RL 监督 / 预训练策略四条接口，覆盖经典控制、Go2/G1 locomotion、LIBERO 操作与真机 Go2。代码宣称将开源到 safety-research/embody，2026-08-28 与 2026-11-19 两次探测均返回 404。"
 ---
 
 # Embody（Anthropic）
 
 ## 一句话定义
 
-**Embody** 是 Anthropic Frontier Red Team 用来量「通用语言模型接到机器人之后能做什么」的评测套件：分数按 **具身 × 控制接口** 堆叠，而不是只报一个聊天模型的机器人 IQ。
+**Embody** 是 Anthropic Frontier Red Team 用来衡量「通用语言模型接到机器人之后能做什么」的评测套件：分数按 **具身 × 控制接口** 堆叠，而不是只报一个聊天模型的机器人基准分数。
 
 ## 英文缩写速查
 
@@ -30,13 +39,14 @@ summary: "Embody 是 Anthropic Frontier Red Team 的语言模型机器人评测�
 |------|----------|----------|
 | Embody | Embody | 本评测套件名；复合分不含高层 locomotion |
 | LIBERO | Lifelong Robot Learning | 固定基座臂厨房操作基准；Embody 操作主床 |
-| SDK | Software Development Kit | Claude 评测走 Anthropic Agent SDK，关掉内置工具 |
+| SDK | Software Development Kit | Claude 评测走 Anthropic Agent SDK，关闭内置工具 |
 | PPO | Proximal Policy Optimization | RL 接口默认算法（batched MuJoCo） |
 | VLA | Vision-Language-Action | 高层操作里被监督的 MolmoAct 策略 |
 
 ## 为什么重要
 
 - **把「接口」写成一等评测轴：** 机器人学习社区习惯比 VLA 成功率；Embody 证明同一模型在力矩环与 VLA 监督上几乎是两种系统。选型见 [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)。
+- **短时程纠错 vs 真 ICL：** Embody 的代际优势来自失败后的短时程重试（截掉远期上下文多数模型不掉分），而非从示范归纳新策略，对照 [机器人 ICL 概念页](../concepts/robot-in-context-learning.md)。
 - **安全红队口径：** 关注的是「给了哪些工具之后物理影响力跳多少」，不是排行榜刷分。
 - **与本库其它基准正交：** [LIBERO](./libero-benchmark.md) 评 VLA/IL；Embody 评 **LLM 如何使用或不使用** 那些策略。选基准时不要混读，见 [评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
 
@@ -49,8 +59,7 @@ summary: "Embody 是 Anthropic Frontier Red Team 的语言模型机器人评测�
 | 作者 | Shmuel Berman, Michael Ilie, Jia Deng, Daniel Freeman |
 | 仿真 | MuJoCo；RL/VLA cell 用 GPU；`MUJOCO_GL=osmesa` |
 | 真机 | Unitree Go2（Project Fetch）；N 小，定性为主 |
-| 代码 | 宣称 `github.com/safety-research/embody`；**2026-08-28 404** |
-| 源码运行时序图 | **不适用**（官方仓尚未公开，无可运行入口） |
+| 代码 | 宣称 `github.com/safety-research/embody`；**2026-08-28 与 2026-11-19 两次探测仍为 HTTP 404** |
 
 ## 核心原理
 
@@ -70,15 +79,15 @@ summary: "Embody 是 Anthropic Frontier Red Team 的语言模型机器人评测�
 
 ```mermaid
 flowchart LR
-  subgraph harness[统一 harness]
-    adp[各厂 API 适配器]
-    prompt[固定提示模板]
-    score[METRICS 计分]
+  subgraph harness["统一 harness"]
+    adp["各厂 API 适配器"]
+    prompt["固定提示模板"]
+    score["METRICS 计分"]
   end
-  adp --> prompt --> env[MuJoCo 或真机 Go2]
+  adp --> prompt --> env["MuJoCo 或真机 Go2"]
   env --> score
-  env --> vla[MolmoAct GPU 推理]
-  env --> ppo[BatchedEnvWarp PPO]
+  env --> vla["MolmoAct GPU 推理"]
+  env --> ppo["BatchedEnvWarp PPO"]
 ```
 
 附录默认：多数 cell 35 trials；LIBERO-40 相关 200（40 任务 × 5 seed）；高层 locomotion 100。提示不按模型微调。Claude 禁用 SDK 内置工具，只暴露机器人动作服务。
@@ -87,30 +96,38 @@ flowchart LR
 
 `n_steps=256`，`batch_size=64`，`n_epochs=4`，`gamma=0.99`，`clip_range=0.2`，`lr=3e-4`；策略 ≤20 万参数；默认最多 32 并行环境。经典控制 RL 会话 1.5 h，G1/Go2 4 h。
 
+## 源码运行时序图
+
+**不适用** — 截至 `2026-11-19`，官方承诺的仓库 `https://github.com/safety-research/embody` 仍返回 HTTP 404，无可运行训练、评测或策略桥接代码。待仓公开后按 `EXPERIMENTS.md`、`METRICS.md` 与 `envapi/training_bridge.py` 补全时序图。
+
 ## 工程实践
 
 | 步骤 | 说明 |
 |------|------|
-| 复现 | 等仓公开后按 `EXPERIMENTS.md` 跑 cell；入库日 **不能** 复现 |
-| 读数 | 直接控制分数含「暂停世界」；臂操作不含 |
-| 对比 VLA 榜 | LIBERO-40 上 LLM+MolmoAct **低于** MolmoAct 单独跑；不要把 Embody 高层分当成 VLA SOTA |
-| 真机 | 办公室回路、find_x、视觉辅助均为 vignette，不是高 N 基准 |
+| 复现状态 | 待仓公开后按 `EXPERIMENTS.md` 跑 cell；截至 `2026-11-19` **仍不能** 运行官方套件 |
+| 读数边界 | 直接控制分数含「暂停仿真世界」设定；臂操作测试则不暂停仿真 |
+| 对比 VLA 榜 | LIBERO-40 上 LLM+MolmoAct 低于 MolmoAct 单独运行；勿把 Embody 高层分解读为 VLA 排行榜表现 |
+| 真机口径 | 办公室回路、find_x、视觉辅助均为 vignette，样本量小，不宜作为高 N 统计基准 |
 
 ## 局限与风险
 
-- **代码未发布：** 命令与计分文档承诺在仓内，当前 404。
+- **代码持续未发布：** 命令、计分与训练桥接脚本承诺在 `safety-research/embody` 仓内，`2026-08-28` 与 `2026-11-19` 实测仍为 404。
 - **共享集群延迟未做正式研究：** 附录只给粗范围（2–8 s 文本到 60–180 s 高推理尾部）。
 - **真机 N 小、串行。** 失败模式有信息量，但不能当成功率点估计。
-- **MolmoAct 绑定：** 高层操作结论依赖这一 VLA；换 π₀ / OpenVLA 未必同形状。
-- **预培训泄露：** 文内用 TwinFlipper 缓解经典 RL 任务出现在语料里的问题；Go2/G1/LIBERO 仍可能部分泄漏。
+- **MolmoAct 绑定：** 高层操作结论依赖这一 VLA；换其它骨干未必同形状。
+- **预训练语料泄露：** 文内用 TwinFlipper 缓解经典 RL 任务出现在语料里的问题；Go2/G1/LIBERO 仍可能部分泄漏。
 
-## 关联页面
+## 与其他页面的关联
 
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 四接口的知识编译
+- [机器人 In-Context Learning](../concepts/robot-in-context-learning.md) — 与长程示范 ICL 辨析
 - [LIBERO](./libero-benchmark.md) — 操作任务床
 - [Unitree G1](./unitree-g1.md) — 最难低层具身
 - [VLA](../methods/vla.md) — 被监督的预训练策略族
 - [ASPIRE](../methods/aspire.md) — 同属「LLM 写控制器」，但有技能库复利
+- [PPO](../methods/ppo.md) — RL 控制接口默认优化器
+- [Locomotion](../tasks/locomotion.md) — Go2 / G1 低层与高层运动评测轴
+- [Manipulation](../tasks/manipulation.md) — Franka / LIBERO-40 操作评测轴
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 

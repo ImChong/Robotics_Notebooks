@@ -8,8 +8,11 @@
 - **链接：** https://github.com/safety-research/embody
 - **关联研究：** [Claude plays robotics](../sites/anthropic-claude-plays-robotics.md)
 - **入库日期：** 2026-08-28
+- **再核日期：** 2026-11-19
 - **一句话说明：** Anthropic Frontier Red Team 在 *Claude plays robotics* 中承诺的 **Embody** 评测套件公开镜像：按 cell 列出命令（`EXPERIMENTS.md`）与计分（`METRICS.md`）。
-- **开源状态：** **宣称将开源 / 截至 2026-08-28 未公开** — 原文："The code, once released, will be in `github.com/safety-research/embody`"。对该 URL 的 HTTPS 请求返回 **404**；无 LICENSE、无 README 可核。
+- **开源状态：** **宣称将开源 / 截至 2026-11-19 仍未公开** — 原文："The code, once released, will be in `github.com/safety-research/embody`"。`2026-08-28` 与 `2026-11-19` 两次对该 URL 的 HTTPS 请求均返回 **HTTP 404**；无 LICENSE、无 README 可核。
+- **核对范围：** 2026-11-19 再次实测 `https://github.com/safety-research/embody` HTTP 状态（404），无可读取代码仓
+- **通读：** 未完成
 - **沉淀到 wiki：** [Embody](../../wiki/entities/anthropic-embody.md)
 
 ---

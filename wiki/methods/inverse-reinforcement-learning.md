@@ -1,230 +1,191 @@
 ---
 type: method
 tags:
-  - irl
   - imitation-learning
-  - reward-learning
+  - irl
   - maxent
-  - adversarial
-  - berkeley
-  - stanford
-  - cmu
+  - gail
+  - airl
+  - reward-learning
 status: complete
-updated: 2026-11-15
-summary: "逆强化学习从专家演示推断奖励函数，再交给 RL 求策略；MaxEnt 解决轨迹歧义，AIRL 追求可迁移奖励，GAIL 只做占用匹配。"
+updated: 2026-11-19
+summary: 逆强化学习（IRL）的形式化框架、主要路线对比、HumanCompatibleAI/imitation 运行机制、工程选型与局限分析。
+sources:
+  - ../../sources/repos/humancompatibleai-imitation.md
+  - ../../sources/papers/gail_reading_arxiv_1606_03476.md
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
+original:
+  - ../../sources/repos/humancompatibleai-imitation.md
+  - ../../sources/papers/gail_reading_arxiv_1606_03476.md
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/policy_optimization.md
 related:
-  - ./imitation-learning.md
-  - ./behavior-cloning.md
-  - ./dagger.md
-  - ./reinforcement-learning.md
-  - ./amp-reward.md
+  - ../methods/imitation-learning.md
+  - ../methods/behavior-cloning.md
+  - ../methods/dagger.md
+  - ../methods/reinforcement-learning.md
+  - ../methods/policy-optimization.md
+  - ../methods/amp-reward.md
   - ../comparisons/rl-vs-il.md
   - ../concepts/reward-design.md
+  - ../concepts/generative-adversarial-network.md
   - ../formalizations/mdp.md
-  - ../formalizations/behavior-cloning-loss.md
-  - ../concepts/rl-runner.md
-  - ../concepts/progress-reward-modeling.md
-  - ../entities/gymnasium.md
-  - ../entities/paper-sa-2508-06571-irl-vla-training-an-vision-language-action-polic.md
-sources:
-  - ../../sources/papers/inverse_reinforcement_learning_primary_refs.md
-  - ../../sources/repos/humancompatibleai-imitation.md
-  - ../../sources/papers/imitation_learning.md
+  - ../../roadmap/depth-imitation-learning.md
 ---
 
-# Inverse Reinforcement Learning（IRL, 逆强化学习）
-
-**逆强化学习**：在 [MDP](../formalizations/mdp.md) 已知或可交互、奖励未知时，从专家（近）最优行为反推 $r$，再把 $r$ 交给 [强化学习](./reinforcement-learning.md) 得到策略。它不是行为克隆的变体，而是「演示 → 奖励 → 策略」的间接模仿。
+# 逆强化学习（IRL）
 
 ## 一句话定义
 
-给定专家怎么做，推断他在优化什么奖励；学到的 $r$ 可以再优化、换动力学，而不只是复述专家动作。
+**逆强化学习（Inverse Reinforcement Learning, IRL）**是在无显式奖励函数的 [马尔可夫决策过程（MDP）](../formalizations/mdp.md) 中，从专家示教轨迹 $\mathcal{D}_E=\{\tau_1,\dots,\tau_M\}$ 反推令专家行为近似最优的奖励函数 $R(s,a)$（或其隐式对应策略 $\pi$）的一类[模仿学习](imitation-learning.md)与[奖励设计](../concepts/reward-design.md)方法。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IRL | Inverse Reinforcement Learning | 从演示推断奖励函数的问题与算法族 |
-| IOC | Inverse Optimal Control | 控制论侧的逆最优控制，与 IRL 同源 |
-| MaxEnt | Maximum Entropy IRL | 用最大熵选定轨迹分布，处理噪声与次优演示 |
-| GAIL | Generative Adversarial Imitation Learning | 对抗占用匹配；最优时判别器不可当奖励复用 |
-| AIRL | Adversarial Inverse Reinforcement Learning | 结构化判别器，目标是可迁移的 disentangled 奖励 |
-| GCL | Guided Cost Learning | 未知动力学下用策略优化做采样式深度 IOC |
-| AMP | Adversarial Motion Prior | 人形/角色控制里 GAIL 式风格奖励的工程后代 |
-| BC | Behavior Cloning | 直接监督 $s\mapsto a$，不恢复 $r$ |
+|---|---|---|
+| IRL | Inverse Reinforcement Learning | 从专家示教轨迹反推潜在奖励函数的方法族 |
+| MaxEnt IRL | Maximum Entropy Inverse Reinforcement Learning | 在匹配专家特征期望约束下最大化轨迹熵的概率型 IRL |
+| MCE-IRL | Maximum Causal Entropy IRL | 推广至随机 MDP 的因果熵版最大熵 IRL |
+| IOC | Inverse Optimal Control | 连续状态-动作控制语境下的逆最优控制 |
+| GCL | Guided Cost Learning | 用策略优化采样式估计配分函数的深度逆最优控制 |
+| GAIL | Generative Adversarial Imitation Learning | 通过判别器匹配专家占用测度的对抗模仿学习 |
+| AIRL | Adversarial Inverse Reinforcement Learning | 分离势函数塑形项以提升奖励跨动力学迁移性的对抗 IRL |
+| AMP | Adversarial Motion Priors | 将对抗风格奖励接入物理仿真的机器人运动先验方法 |
 
 ## 为什么重要
 
-- **奖励往往比策略更难写、却更可迁移。** 公路驾驶、精细操作、「像人」的全身运动都是多项权衡；人能示范，却给不出稳定的数值 $r$。Abbeel & Ng (2004) 把这件事写成学徒学习的动机，至今仍是机器人 IRL 的入口叙事。
-- **直接模仿有覆盖边界。** [BC](./behavior-cloning.md) 在专家状态分布上拟合动作，部署一偏就 compounding error；[DAgger](./dagger.md) 用在线回标补分布，但仍需要专家。IRL 学的是轨迹级目标，理论上可在未见状态上由 RL 再规划。
-- **「学奖励」和「学策略」不是一回事。** GAIL 证明可以绕过显式 IRL 内环去做占用匹配；AIRL 证明若目标是 **换环境再优化**，必须把奖励从塑形项和优势函数里拆出来。人形栈里的 [AMP](./amp-reward.md) 站在 GAIL 这一侧：要风格信号，不要可迁移任务奖励。
-- **站内缺口。** IL / RL / AMP 页都提到 GAIL，但没有一页讲 IRL 的退化性、特征期望匹配与 MaxEnt。本页补这条主线。
+在机器人操作与全身控制任务中，「写出不触发 reward hacking 的稠密奖励」往往比采集少量专家演示更困难，而直接用 [Behavior Cloning (BC)](behavior-cloning.md) 拟合动作会在长视野状态分布偏移下产生复合误差：
 
-## 主要技术路线
+- **紧凑可迁移的任务目标**：相较于与特定本体动力学强耦合的策略 $\pi(a|s)$，奖励函数往往表达「任务是什么」而非「关节怎样动」，在物理参数或拓扑变化时更有机会通过重新做 [强化学习](reinforcement-learning.md) 迁移。
+- **连接 IL 与 RL 的理论桥梁**：经典 IRL（Ng & Russell 2000; Abbeel & Ng 2004; Ziebart 2008）解释了“为什么匹配特征期望或占用测度就能保证策略回报下界”，而 [Ho & Ermon (2016) 的 GAIL](../../sources/papers/gail_reading_arxiv_1606_03476.md) 进一步把极大极小占优测度匹配与[生成对抗网络（GAN）](../concepts/generative-adversarial-network.md)和信任域[策略优化](policy-optimization.md)统一起来。
+- **工程落地谱系清晰**：人形与四足[运动控制](../tasks/humanoid-locomotion.md)广泛使用的 [AMP](amp-reward.md) 风格奖励，本质上就是把专家动作片段的状态转移判别器作为任务辅助奖励接入仿真训练。
 
-### 问题形式化
+## 核心原理
 
-MDP 去掉奖励后记为 MDP$\setminus R$。专家给出轨迹（或策略）。IRL 求 $r$，使得专家在 $r$ 下（近）最优：
+### 1. 解集刻画与奖励退化性（Ng & Russell 2000；Ng et al. 1999）
 
-$$r^* \in \arg\max_{r} \; \mathbb{E}_{\tau\sim\pi_E}\Big[\sum_t \gamma^t r(s_t,a_t)\Big] - \max_{\pi} \mathbb{E}_{\tau\sim\pi}\Big[\sum_t \gamma^t r(s_t,a_t)\Big]$$
+在有限状态空间 $S$、动作转移矩阵 $\{P_a\}$ 与折扣因子 $\gamma\in(0,1)$ 的 MDP 中，Ng & Russell (2000) Theorem 3 给出了令平稳策略 $\pi(s)\equiv a_1$ 最优的奖励向量 $R$ 的充要线性不等式组：
 
-Russell (1998) 提出问题；Ng & Russell (2000) 给出有限状态 LP、线性函数近似、以及只观测有限轨迹三种算法。
+$$(P_{a_1} - P_a)(I - \gamma P_{a_1})^{-1} R \succeq 0, \quad \forall a \in A \setminus \{a_1\}$$
 
-### 退化性：许多奖励解释同一策略
+该刻画直接暴露出 IRL 的根本难点——**不适定性与退化性（Degeneracy）**：$R\equiv 0$ 与任意常数奖励总满足不等式；且根据 Ng, Harada & Russell (1999) 的势函数塑形定理，任意加性势差 $\gamma\Phi(s')-\Phi(s)$ 都会保持最优策略不变。因此，仅靠“让专家最优”无法唯一确定 $R$：
 
-$r\equiv 0$ 总是解。Ng, Harada & Russell (1999) 进一步给出策略不变的塑形类：
+- **最大间隔与 $\ell_1$ 稀疏启发式**：Ng & Russell (2000) 在有界约束 $|R_i|\le R_{\max}$ 下最大化专家动作相对次优动作的单步价值间隔，并减去惩罚项 $\lambda\|R\|_1$；对于大/连续状态空间采用线性基展开 $R(s)=\sum_{j=1}^d \alpha_j \phi_j(s)$，当仅能从初始状态 $s_0$ 采样专家轨迹时则迭代收集最坏反例策略约束解线性规划（论文在 $5\times 5$ 随机网格、26 个高斯基 Mountain-Car 及 $15\times 15$ 连续 $[0,1]^2$ 域上验证了该策略）。
+- **学徒学习转向期望匹配**：Abbeel & Ng (2004) 指出若只需策略性能逼近专家，则不必恢复真实权向量 $w^*$——只要使特征期望差 $\|\mu(\pi)-\mu(\pi_E)\|_2 \le \varepsilon$，即可对所有满足 $\|w\|_1\le 1$ 的线性奖励保证价值差距有界。
 
-$$\hat r(s,a,s') = r(s,a,s') + \gamma\Phi(s') - \Phi(s)$$
+### 2. 最大熵与消除标签偏置（Ziebart et al. 2008）
 
-未知动力学时，这是保持最优策略不变的变换类。IRL 若随便拟合，学到的常常是 **被当前 $T$ 塑过形的优势/价值**，换动力学就失效。这是 AIRL 要 disentangle 的对象，也是 [奖励设计](../concepts/reward-design.md) 里 potential-based shaping 的同一公式。
+最大化边缘或学徒模型仍留有多解歧义，且逐状态局部归一化的动作模型 $P(a|s)\propto e^{Q^*(s,a)}$ 会产生类似条件随机场（CRF）中的 **标签偏置（Label Bias）**——高分支度状态对应的路径概率会被局部归一化异常压低（Ziebart et al. 2008 Fig. 2）。
 
-### 特征期望匹配（学徒学习）
+Ziebart et al. (2008) 提出在匹配专家经验特征期望 $\sum_i P(\zeta_i)f_{\zeta_i}=\tilde{f}$ 的前提下**最大化完整轨迹分布的熵**，导出全局归一化的指数族轨迹分布：
 
-Abbeel & Ng (2004) 假设 $r(s)=w\cdot\phi(s)$，比较策略与专家的
+$$P(\zeta_i \mid \theta) = \frac{1}{Z(\theta)} \exp\big(\theta^\top f_{\zeta_i}\big), \qquad \nabla L(\theta) = \tilde{f} - \sum_s D_s f_s$$
 
-$$\mu(\pi)=\mathbb{E}\Big[\sum_{t=0}^{\infty}\gamma^t\phi(s_t)\Big]$$
+在有限步长 $N$ 上通过 **Algorithm 1 前向-后向传递** 无需显式枚举指数级路径即可估计期望状态访问频率 $D_s$（先 Backward 递推局部配分比 $Z_{a}/Z_s$，再 Forward 累积各步状态占据概率）；该方法在匹兹堡真实出租车路网（逾 30 万路段状态、90 万动作、25 名司机 12 周逾 10 万英里 GPS 数据）上取得了 78.79% 路径匹配率（对比 Time-based 72.38%、Max Margin 75.29%、Action 77.30%）并支持贝叶斯后验目的地推断。Ziebart (2010) 进一步将其推广为**最大因果熵（MCE-IRL）**以严格处理随机环境转移。
 
-**不必恢复真实 $w^*$。** 只要 $\|\mu(\tilde\pi)-\mu_E\|_2\le\varepsilon$，则对任意 $\|w\|_1\le 1$ 的线性奖励，回报差距 $\le\varepsilon$。工程含义：匹配占用/特征统计，就能在「专家所关心的那组特征」上接近专家，哪怕 $w$ 不唯一。
+### 3. 采样式深层 IOC 与对抗占优测度匹配（GCL / GAIL / AIRL）
 
-### 最大熵：选定一条轨迹分布
+当状态-动作维数高、环境动力学未知且无法构造低维手工特征时，显式求解全局配分函数 $Z(\theta)$ 不可行：
 
-特征匹配仍有多解。Ziebart et al. (2008) 在匹配约束下最大化熵：
-
-$$P(\tau) \propto \exp\big(R(\tau)\big) = \exp\Big(\sum_t r(s_t,a_t)\Big)$$
-
-全局归一化给出噪声演示上的良定义似然，并支持从部分轨迹推断目的地（出租车导航）。最大因果熵（Ziebart 2010）把同一思想接到随机策略，成为后续对抗 IRL 的概率底座。
-
-### 深度与对抗：未知动力学
-
-| 方法 | 学什么 | 动力学 | 机器人含义 |
-|------|--------|--------|------------|
-| Deep MaxEnt (2015) | 神经网络代价 | 仍需可解占用 | 证明深度函数近似可行，规模不够 |
-| GCL (2016) | 非线性代价 + 策略 | 未知；策略当采样器 | 真机力矩操作上的采样式 IOC |
-| GAIL (2016) | 策略（占用匹配） | model-free 交互 | 高维控制模仿强；**奖励不可复用** |
-| AIRL (2018) | 结构化 $r(s)$ + 价值塑形 | model-free 交互 | 换动力学再优化时优于 GAIL/GCL |
-
-GAIL 把「IRL 再 RL」压缩成 GAN：判别器看 $(s,a)$ 来自专家还是策略。最优时 $D\approx 1/2$，不能当新任务的 $r$。AIRL 把判别器写成
-
-$$D_\theta(s,a)=\frac{\exp\{f_\theta(s,a)\}}{\exp\{f_\theta(s,a)\}+\pi(a|s)}$$
-
-并令 $f_\theta(s,a)=r_\theta(s)+\gamma V_\phi(s')-V_\phi(s)$，让 $V$ 吸收塑形，留下更接近状态奖励的 $r_\theta(s)$。
+- **GCL（Finn et al. 2016）**：用策略优化同步采样轨迹作为重要度采样提议分布，在连续控制与真机力矩操作中联合更新非线性代价函数与采样策略。
+- **GAIL（Ho & Ermon 2016）**：证明了最大因果熵 IRL 的对偶与熵正则化占用测度匹配等价；在采用 Jensen-Shannon 散度替代高代价凸对偶求解后，跳过显式恢复通用奖励函数，直接训练判别器 $D_w(s,a)\in(0,1)$ 区分专家与策略样本，并以软化判别器输出 $-\log D_w(s,a)$（或现代代码中的 $-\log(1-D)$ 变体）作为策略优化（如 TRPO/PPO）的即时信号。
+- **AIRL（Fu et al. 2018）**：把判别器结构参数化为 $D_\theta(s,a,s') = \frac{\exp f_\theta(s,a,s')}{\exp f_\theta(s,a,s') + \pi(a|s)}$，并将 $f_\theta(s,a,s') = g_\theta(s,a) + \gamma h_\phi(s') - h_\phi(s)$ 分解为基础奖励项与势能塑形项，从而在测试时剥离势能项并跨环境动力学重训练策略。
 
 ### 流程总览
 
 ```mermaid
 flowchart TD
-  demo["专家轨迹 D"]
-  irl["推断奖励 r 或占用匹配"]
-  rl["RL / 策略优化"]
-  pi["策略 π"]
-  env["环境交互"]
-  occ["占用 / 特征期望 μ(π)"]
-  demo --> irl
-  irl --> rl
-  rl --> pi
-  pi --> env
-  env --> occ
-  occ --> irl
+    E["专家示教轨迹 D_E"] --> F["目标分支: 反推显式奖励 R 或直接匹配占用测度"]
+    F --> M1["表格与已知模型路线: Ng & Russell 2000 / MaxEnt 前向后向 / MCE-IRL"]
+    F --> M2["连续与未知动力学路线: GCL / GAIL / AIRL / AMP"]
+    M1 --> R1["更新奖励参数 theta 使专家特征或状态访问频率对齐"]
+    M2 --> D["更新判别器 D 区分专家样本与策略采样样本"]
+    D --> R2["构造等价奖励信号 (如 GAIL logit 或 AIRL 解耦奖励)"]
+    R1 --> RL["内循环或交替执行策略优化 (Value Iteration / PPO / TRPO / SAC)"]
+    R2 --> RL
+    RL --> S["与环境交互采样新轨迹 D_pi"]
+    S --> M1
+    S --> D
 ```
 
-BC 走 `D → π` 的捷径；IRL 多一圈 `D → r → π`，贵在内环 RL，换来可再优化的目标。GAIL 把内环藏进对抗更新，外观仍是模仿 Runner，但不再输出可迁移 $r$。
+## 主要技术路线
+
+| 路线 | 代表工作 | 求解目标 | 动力学假设 | 奖励可迁移性 | 典型适用边界 |
+|---|---|---|---|---|---|
+| 最大间隔 / 线性规划 IRL | Ng & Russell (2000)；Abbeel & Ng (2004) | 令专家价值严格占优或匹配线性特征期望 | 表格已知转移模型，或需可反复采样的初始分布 | 中（受线性特征集 $\phi(s)$ 表达力限制） | 低维状态空间与理论分析基准 |
+| 最大熵 / 最大因果熵 IRL | Ziebart et al. (2008, 2010)；Deep MaxEnt (2015) | 最大化轨迹熵并匹配特征期望 | 确定性图搜索或已知随机转移模型（`MCEIRL`） | 较高（全局归一化减少局部偏置） | 导航路径预测、网格与有限状态离散域 |
+| 采样式逆最优控制 | GCL (Finn et al. 2016) | 重要性采样估计全局配分函数并学深度代价 | 未知动力学（需在线采集真机或仿真轨迹） | 较高（受策略覆盖度约束） | 连续力矩控制、早期低数据量操作任务 |
+| 对抗占用测度匹配 | GAIL (Ho & Ermon 2016) | 最小化策略与专家状态-动作占用测度的 JS 散度 | 未知动力学（完全依赖交互采样） | **弱**（判别器平衡态与当前策略及动力学耦合） | 连续控制基准测试（无跨本体重训练需求） |
+| 解耦式对抗 IRL | AIRL (Fu et al. 2018) | 借助 $\log\pi(a\|s)$ 分解基础奖励 $g_\theta$ 与势塑形项 $h_\phi$ | 未知动力学（需随机策略提供动作对数概率） | **强**（可仅保留去塑形后的状态奖励重训练） | 需要跨越障碍布局、质量或形态变化的仿真/控制 |
+| 运动风格先验判别器 | [AMP](amp-reward.md) (Peng et al. 2021) | 以状态转移判别器 $(s,s')$ 作为无标签动作风格奖励 | 物理仿真交互（结合任务外生奖励 $r^{\text{task}}$） | 风格部分可迁移（与任务奖励加权组合） | 四足与[人形全身运动控制](../tasks/humanoid-locomotion.md) |
 
 ## 工程实践
 
-### 怎么选：BC / DAgger / IRL / AMP
+在现代 PyTorch + Gymnasium 生态中，早期研究仓（如已归档的 TensorFlow 仓 `openai/imitation` 与 TF1 时代 `justinjfu/inverse_rl`）已不再推荐作为工程起点；主流清洁参考实现是 UC Berkeley CHAI 维护的 [HumanCompatibleAI/imitation](../../sources/repos/humancompatibleai-imitation.md)（MIT 协议，对应论文 arXiv:2211.11972）。
 
-| 目标 | 优先 | 不要误用 |
-|------|------|----------|
-| 尽快复现演示动作 | [BC](./behavior-cloning.md) / [Diffusion Policy](./diffusion-policy.md) | 为「学奖励」上 IRL 内环 |
-| 纠部署分布偏移，且请得动专家 | [DAgger](./dagger.md) | 用离线 IRL 代替在线回标 |
-| 要 **可迁移 / 可再优化** 的任务奖励 | AIRL / MaxEnt（有模型时） | 把 GAIL 判别器当 $r$ 部署到新动力学 |
-| 只要「像 MoCap」的风格项，任务奖励另写 | [AMP](./amp-reward.md) | 指望 AMP 恢复任务意图 |
-| 奖励能手写且仿真便宜 | 直接 [RL](./reinforcement-learning.md) | 用 IRL 给本可手写的项 |
+### `HumanCompatibleAI/imitation` 源码实现对照
 
-2024–2026 操作主线是 BC / ACT / Diffusion，不是 IRL。IRL 仍出现在：**意图推断**、**奖励迁移**、对抗风格先验（AMP 族）、以及把世界模型当奖励的工作（清单索引页 [IRL-VLA](../entities/paper-sa-2508-06571-irl-vla-training-an-vision-language-action-polic.md)）。
+1. **只支持 Gymnasium API**：`imitation` 面向 Python 3.8+ 与 `gymnasium` 向量环境；文档明确标注 `MCEIRL` 与 `SQIL` **仅支持离散动作空间**，而 `BC`、`DAgger`、`GAIL`、`AIRL` 支持离散与连续动作空间。
+2. **对抗共同基类 `AdversarialTrainer`（`algorithms/adversarial/common.py`）**：
+   - 使用 `BufferingWrapper(venv)` 与 `RewardVecEnvWrapper(..., reward_fn=self.reward_train.predict_processed)` 替换环境真实奖励；
+   - `train(total_timesteps)` 按 `n_rounds = total_timesteps // gen_train_timesteps` 交替执行 `train_gen()`（调用 Stable-Baselines3 的 `gen_algo.learn(...)` 并将交互轨迹写入 `_gen_replay_buffer`）与 `n_disc_updates_per_round` 次 `train_disc()`（专家标签 1、策略样本标签 0，采用 `F.binary_cross_entropy_with_logits` 更新）。
+3. **GAIL 与 AIRL 的代码级差异**：
+   - **`GAIL`（`gail.py`）**：`logits_expert_is_high` 直接返回 `_reward_net` 输出并忽略策略对数概率；`RewardNetFromDiscriminatorLogit` 以 `-F.logsigmoid(-logits)`（即 $-\log(1 - D)$）计算奖励，因此 `reward_train` 与 `reward_test` 均不可解耦。
+   - **`AIRL`（`airl.py`）**：`logits_expert_is_high` 严格计算 `self._reward_net(...) - log_policy_act_prob`，初始化时会强制检查 `gen_algo.policy` 属于可给出 $\log \pi(a|s)$ 的随机策略（如 `ActorCriticPolicy` 或 `SACPolicy`）；`reward_test` 通过递归剥离 `RewardNetWrapper` 只保留底层可迁移奖励网络。
+4. **`MCEIRL` 与非参数基线**：`algorithms/mce_irl.py` 面向已知转移矩阵的 `TabularModelPOMDP`，每步通过 `mce_partition_fh` 执行软 Bellman `logsumexp` 备份，再由 `mce_occupancy_measures` 前向累积状态访问频率并用点积 `(visitations - demo_om) · predicted_r` 回传梯度；`algorithms/density.py` 则直接用 `sklearn.neighbors.KernelDensity` 拟合状态或状态-动作对数密度作为固定基线奖励。
 
-### 可运行入口（步骤 2.5）
-
-优先 [HumanCompatibleAI/imitation](https://github.com/HumanCompatibleAI/imitation)（MIT，PyTorch，Gymnasium）：
-
-```text
-pip install imitation
-python -m imitation.scripts.train_rl with pendulum ...
-python -m imitation.scripts.train_adversarial gail with pendulum demonstrations.path=...
-python -m imitation.scripts.train_adversarial airl with pendulum demonstrations.path=...
-```
-
-模块对照：`algorithms.mce_irl`（最大因果熵，**仅离散**）、`algorithms.gail`、`algorithms.airl`。文档与 CLI 见 [repos 归档](../../sources/repos/humancompatibleai-imitation.md)。
-
-论文官方仓仅作溯源，不推荐新实验：
-
-- GAIL：[openai/imitation](https://github.com/openai/imitation) MIT，**已归档**（2018）
-- AIRL：[justinjfu/inverse_rl](https://github.com/justinjfu/inverse_rl) MIT，TF1 时代（2018）
-- GCL：无独立官方仓；[cbfinn/gps](https://github.com/cbfinn/gps) 是 GPS 不是 GCL
-
-### 源码运行时序图
-
-对应 `imitation.scripts.train_adversarial` 的 GAIL/AIRL 闭环（节点对齐 README / `algorithms.gail` / `algorithms.airl`）：
+### 源码运行时序图（`HumanCompatibleAI/imitation` 对抗训练闭环）
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant Demo as Expert rollouts
-    participant Disc as Discriminator
-    participant PPO as Policy PPO
-    participant Env as Gymnasium env
-    Demo->>Disc: 专家 (s,a)
-    loop 对抗更新
-        PPO->>Env: rollout
-        Env-->>PPO: 轨迹
-        Env-->>Disc: 策略 (s,a)
-        Disc->>Disc: 更新 D 或结构化 f_theta
-        Disc-->>PPO: 奖励信号
-        PPO->>PPO: on-policy 更新
+    participant CLI as "train_adversarial (Sacred CLI)"
+    participant T as "AdversarialTrainer (GAIL or AIRL)"
+    participant W as "RewardVecEnvWrapper"
+    participant RL as "SB3 gen_algo (PPO or SAC)"
+    participant D as "RewardNet (Discriminator)"
+
+    CLI->>T: "初始化算法 (检查 AIRL 随机策略与环境包装)"
+    T->>W: "注入 reward_train.predict_processed 替代原环境奖励"
+    loop "每个回合 round (total_timesteps / gen_train_timesteps)"
+        T->>RL: "train_gen(): 调用 gen_algo.learn(gen_train_timesteps)"
+        RL->>W: "步进交互并采样状态动作轨迹"
+        W->>D: "按当前判别网络与可选 log_pi 计算即时奖励"
+        D-->>RL: "返回判别器衍生奖励供策略更新"
+        RL-->>T: "收集新轨迹写入 _gen_replay_buffer"
+        loop "n_disc_updates_per_round 步"
+            T->>D: "采样专家与生成器 batch 计算 BCE-with-logits 损失并更新"
+        end
     end
+    T-->>CLI: "输出训练后策略 gen_algo 与 reward_test 网络"
 ```
-
-GAIL 的奖励来自无结构 $D$；AIRL 从 $f_\theta$ 取 $r$，并单独更新 $V_\phi$。MCE-IRL 不走对抗，而是在离散占用上做似然，见 `algorithms.mce_irl`。
-
-### 调试时看什么
-
-- **特征 / 占用差距** $\|\mu(\pi)-\mu_E\|$：学徒学习的合法停机条件，不是「奖励长得像专家口头描述」。
-- **判别器准确率**：长期停在 0 或 1 说明对抗崩了；GAIL 收敛时本应靠近 0.5。
-- **原环境回报 vs 迁移回报**：只有后者才能声称「学到了奖励」。AIRL 论文的卖点是换 $T$ 再优化，不是原 MDP 上压过 GAIL。
-- **奖励是否吃进动力学**：若 $r(s,a)$ 在新 $T$ 下立刻鼓励模仿旧优势，就是塑形纠缠，不是任务奖励。
 
 ## 局限与风险
 
-- **内环 RL 贵。** 经典 IRL 每更新一次 $r$ 都要解一遍 MDP。对抗法把内环摊进策略梯度，但不消除交互成本。
-- **专家次优与覆盖不足。** MaxEnt 容忍噪声，不创造未见技能；演示没去过的区域，$r$ 外推无保证。
-- **把 GAIL 当 IRL。** 占用匹配成功 ≠ 学到奖励。新场景、新动力学、新初始分布时，应换 AIRL 或显式 MaxEnt，或干脆重新 BC。
-- **不是 2026 操作默认栈。** 高维视觉动作更常走生成式 BC。IRL 用在「需要 $r$ 本身」的地方：迁移、解释、与任务奖励拼接的风格项。
-- **奖励黑客仍在。** 学到的 $r$ 同样可被钻空；只是空从手写项换成了演示统计的漏洞。
+- **奖励非唯一性与误归因**：同一专家行为可被无限多对 $(R, \Phi)$ 解释；即便加入稀疏约束或最大熵，观察不到的状态差异（例如安全边界未曾触发）仍会导致学到的奖励在域外区域坍塌或出错。
+- **内循环交互与环境样本成本**：绝大多数 IRL 与对抗 IL 都需要一边学习奖励/判别器、一边反复执行在线[策略优化](policy-optimization.md)采样。在无法高效仿真的真机[操作任务](../tasks/manipulation.md)中，在线试错样本门槛远高于离线 [Behavior Cloning](behavior-cloning.md) 或 VLA 微调。
+- **判别器过拟合与奖励漂移**：高维视觉输入或动作频率差异会让判别器迅速记住专家数据的无关伪特征（背景光照、静态帧率等），使 $\nabla_D$ 失去平滑梯度引导并引发策略训练震荡。
+- **非专家混合数据敏感**：经典 IRL/GAIL 假定演示分布接近最优；当数据包含大量次优操作或失败恢复片段时，无条件匹配占用测度会把次优行为一并学入，工程上常需先筛选或转向带优势加权/离线强化学习的混合方案。
 
-## 关联页面
+## 与其他页面的关联
 
-- [Imitation Learning](./imitation-learning.md) — BC / DAgger / GAIL 总览；本页补「先学 $r$」那一支
-- [Behavior Cloning](./behavior-cloning.md) — 直接 $s\mapsto a$，不恢复奖励
-- [DAgger](./dagger.md) — 在线补分布，不推断 $r$
-- [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — BC 的数学缺陷为何导向 IRL
-- [Reinforcement Learning](./reinforcement-learning.md) — IRL 内环与学成后的再优化
-- [Reward Design](../concepts/reward-design.md) — 手写 $r$ 与从演示学 $r$ 对照；含同一套势函数塑形
-- [AMP Reward](./amp-reward.md) — 对抗风格奖励，GAIL 在运动控制中的后代
-- [RL vs IL](../comparisons/rl-vs-il.md) — 两条主干；IRL 是中间层
-- [RL Runner](../concepts/rl-runner.md) — Imitation Runner 上的 GAIL/AIRL 循环
-- [过程奖励建模](../concepts/progress-reward-modeling.md) — 另一种学奖励：进度/偏好，而非专家最优似然
-- [IRL-VLA](../entities/paper-sa-2508-06571-irl-vla-training-an-vision-language-action-polic.md) — 用奖励世界模型训 VLA 的策展索引节点
-- [Gymnasium](../entities/gymnasium.md) — `imitation` 库的环境 API
+- 上位范式与对比：[模仿学习](imitation-learning.md)、[强化学习与模仿学习对比](../comparisons/rl-vs-il.md)
+- 关键前置形式化与概念：[MDP](../formalizations/mdp.md)、[奖励设计](../concepts/reward-design.md)、[生成对抗网络](../concepts/generative-adversarial-network.md)
+- 同族策略优化与行为模仿方法：[Behavior Cloning](behavior-cloning.md)、[DAgger](dagger.md)、[策略优化](policy-optimization.md)、[强化学习](reinforcement-learning.md)
+- 下游机器人控制延伸：[AMP](amp-reward.md)、[人形运动控制](../tasks/humanoid-locomotion.md)、[机器人操作](../tasks/manipulation.md)
+- 纵深学习路线：[模仿学习纵深路线（Stage 1）](../../roadmap/depth-imitation-learning.md)
 
 ## 参考来源
 
-- [IRL 一手论文索引](../../sources/papers/inverse_reinforcement_learning_primary_refs.md) — Russell 1998 → Ng 2000 → Abbeel 2004 → MaxEnt → GCL / GAIL / AIRL
-- [HumanCompatibleAI/imitation 仓库归档](../../sources/repos/humancompatibleai-imitation.md) — 现代可运行实现与开源核查
-- [Imitation Learning 论文摘录](../../sources/papers/imitation_learning.md) — BC / DAgger 对照
+- [HumanCompatibleAI/imitation 仓库核对归档](../../sources/repos/humancompatibleai-imitation.md) — 核对 `AdversarialTrainer`、`GAIL`、`AIRL`、`MCEIRL`、`DensityAlgorithm` 源码入口与类实现（MIT，PyTorch + Gymnasium）。
+- [Ho & Ermon (2016) GAIL 原文通读归档](../../sources/papers/gail_reading_arxiv_1606_03476.md) — 核对占用测度对偶、JS 散度近似与 TRPO 交替优化推导（arXiv:1606.03476）。
+- [模仿学习基础与经典论文归档](../../sources/papers/imitation_learning.md) — 整理 IL 分类定位与与 BC / DAgger 的理论对照。
+- [策略优化综述归档](../../sources/papers/policy_optimization.md) — 对照内循环使用的 TRPO / PPO 信任域更新机理。
+- [逆强化学习一手论文索引](../../sources/papers/inverse_reinforcement_learning_primary_refs.md) — 含 **Ng & Russell (2000)** ICML PDF（Theorem 3、$\ell_1$ LP 启发式与连续实验）与 **Ziebart et al. (2008)** AAAI PDF（全局归一化、Algorithm 1 与匹兹堡出租车实证）全文逐页核对摘录，及 Russell (1998)、Ng et al. (1999)、Abbeel & Ng (2004)、Wulfmeier et al. (2015)、Finn et al. (2016) GCL 文献条目。
 
 ## 推荐继续阅读
 
-- Ng & Russell, *Algorithms for Inverse Reinforcement Learning*（ICML 2000）— 问题与 LP：[作者 PDF](https://people.eecs.berkeley.edu/~russell/papers/ml00-irl.pdf)
-- Ziebart et al., *Maximum Entropy Inverse Reinforcement Learning*（AAAI 2008）— [作者 PDF](https://ai.stanford.edu/~amaas/papers/amaas_aaai.pdf)
-- Fu, Luo & Levine, *AIRL*（ICLR 2018）— [arXiv:1710.11248](https://arxiv.org/abs/1710.11248)
-- [imitation 文档](https://imitation.readthedocs.io/en/latest/) — GAIL / AIRL / MCE-IRL API
+- **对比范式取舍**：[强化学习与模仿学习对比](../comparisons/rl-vs-il.md) — 决定任务到底该写显式奖励、做纯 BC，还是引入 IRL/混合范式。
+- **人形运动中的对抗继承**：[AMP（Adversarial Motion Priors）](amp-reward.md) — 看 GAIL/AIRL 的判别器思路如何在 Isaac Gym / legged_gym 中落到全身步态风格控制。
+- **先学基线再进复杂方案**：[Behavior Cloning](behavior-cloning.md) → [DAgger](dagger.md) → 本页（工程上先确认有交互环境且专家演示分布一致，再启用 `HumanCompatibleAI/imitation` 跑通 AIRL/GAIL）。
