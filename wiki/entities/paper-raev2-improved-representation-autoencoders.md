@@ -65,7 +65,7 @@ summary: "RAEv2（arXiv:2605.18324v2）：冻结视觉骨干末 K 层求和改�
 
 ## 核心原理
 
-### 1. Generalized RAE：不再只取最后一层（`2.1）
+### 1. Generalized RAE：不再只取最后一层（§2.1）
 
 对 L 层冻结预训练视觉编码器，最后 K 个层输出皆为 N×d 的 patch 特征。作者的主要方案为：
 
@@ -75,13 +75,13 @@ x = \sum_{\ell=L-K+1}^{L} z_\ell,\qquad x\in\mathbb{R}^{N\times d}
 
 K=1 恢复原 RAE；相比将 K 层 token/通道直接拼接，它**不增加 Stage2 latent 形状和学习参数**。论文比较多层求和 MLS 与固定随机投影 MLR，报告相同 K 下 MLS 的生成效果更好。DINOv3-L 的 K=7 在有引导生成上取得最佳 gFID 1.06；K=23 则更偏重重建质量，不应把 K 设成普适最优常数。
 
-### 2. 同时采用 RAE 与 REPA：语义和空间结构互补（`2.2）
+### 2. 同时采用 RAE 与 REPA：语义和空间结构互补（§2.2）
 
 RAE 的冻结 encoder 建立语义较强的生成 latent。REPA 在 DiT 较早的中间层把特征投影到相同预训练表征目标，主要帮助 token-token **空间自相似性**。原文 27 种 encoder 的相关性分析（与 gFID 的 Pearson r）：RAE 单独的 LP 为 -0.81、LDS 为 -0.13；联合后 LP/LDS 平均指标为 -0.83。相关性不是因果定量证明，也不说明任意 encoder 必然提升同等幅度。
 
-### 3. REPA head 自引导：两个 x-prediction 共享空间（`2.3）
+### 3. REPA head 自引导：两个 x-prediction 共享空间（§2.3）
 
-冻结 encoder 产生 clean latent x；早层 REPA head 预测 x_hat_repa，完整 DiT 也输出 x_hat_full。二者在**同一 latent 坐标系**内组合为自引导预测（论文 `2.3）；与需要单独弱网络的 AG、双前向的 CFG 区分。该机制用于作者的生成采样设置，不意味着所有导航世界模型配置都启用了相同的 guidance。
+冻结 encoder 产生 clean latent x；早层 REPA head 预测 x_hat_repa，完整 DiT 也输出 x_hat_full。二者在**同一 latent 坐标系**内组合为自引导预测（论文 §2.3）；与需要单独弱网络的 AG、双前向的 CFG 区分。该机制用于作者的生成采样设置，不意味着所有导航世界模型配置都启用了相同的 guidance。
 
 ### 流程总览
 
