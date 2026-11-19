@@ -2210,6 +2210,14 @@
         "reactor-inc"
       ]
     },
+    "odrive-robotics": {
+      "label": "ODrive 机器人公司（ODrive Robotics）",
+      "aliases": [
+        "odrive-robotics",
+        "odriverobotics",
+        "odrive"
+      ]
+    },
     "mjbots": {
       "label": "米杰机器人（mjbots）",
       "aliases": [
