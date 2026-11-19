@@ -125,6 +125,7 @@ flowchart LR
 - [HumanX：XGen + XMimic](../wiki/entities/paper-hrl-stack-05-humanx.md) — 从单目人类视频重定向并合成锚点-物体交互数据，基于 PPO/DAggerBC 学全身交互；官方有 XGen 编辑器与 XMimic 仿真代码，完整真机部署仍需自建。
 - [SUGARv2：合成交互参考驱动的视觉全身操作](../wiki/entities/paper-sugarv2-humanoid-interaction-reference.md) — 无初始遥操作示范，用任务模板生成机器人—物体轨迹与手部接触标签；对比本阶段的演示扩增路线（论文 §3.2）
 - [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — 主动感知 + 无机器人示范
+- [HALO：人机对齐的全身移动操作示教](../wiki/entities/paper-halo-2611-16439.md) — Stage 2 有机器人示教分支：在采集时保留底盘非完整运动约束，联合训练双臂与底盘速度，和 HALOMI 无机器人路径互为对照
 
 ### 学完输出什么
 - 能为给定预算（有 / 无真机、有 / 无动捕）选出可行的数据采集方案
