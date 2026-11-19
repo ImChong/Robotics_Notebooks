@@ -86,7 +86,7 @@ function setupDom({ withFooter = true, config = null, fetchImpl = null, lang = '
   const fetchCalls = [];
   window.requestAnimationFrame = (cb) => setTimeout(cb, 0);
   window.matchMedia = () => ({ matches: false });
-  if (config) window.RN_KB_CHAT_CONFIG = config;
+  window.RN_KB_CHAT_CONFIG = config || { endpoint: '', turnstileSiteKey: '' };
   window.fetch = async (url, opts) => {
     fetchCalls.push({ url: String(url), opts });
     if (fetchImpl) return fetchImpl(String(url), opts);

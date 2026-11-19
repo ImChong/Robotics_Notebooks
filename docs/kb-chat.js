@@ -122,8 +122,10 @@
   function getConfig() {
     var raw = typeof window !== 'undefined' && window.RN_KB_CHAT_CONFIG ? window.RN_KB_CHAT_CONFIG : {};
     var merged = {
-      endpoint: sanitizeEndpoint(raw.endpoint || DEFAULT_CONFIG.endpoint),
-      turnstileSiteKey: String(raw.turnstileSiteKey || DEFAULT_CONFIG.turnstileSiteKey || '').trim(),
+      endpoint: sanitizeEndpoint(raw.endpoint !== undefined ? raw.endpoint : DEFAULT_CONFIG.endpoint),
+      turnstileSiteKey: String(
+        raw.turnstileSiteKey !== undefined ? raw.turnstileSiteKey : DEFAULT_CONFIG.turnstileSiteKey || ''
+      ).trim(),
       maxQuestionLength: Number(raw.maxQuestionLength) || DEFAULT_CONFIG.maxQuestionLength,
       requestTimeoutMs: Number(raw.requestTimeoutMs) || DEFAULT_CONFIG.requestTimeoutMs,
     };
