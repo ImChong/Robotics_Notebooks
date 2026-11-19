@@ -101,6 +101,11 @@ sequenceDiagram
 
 [MOSS Transcribe Diarize](paper-moss-transcribe-diarize.md) 也是面向长音频的联合转写与说话人归因路线。两者可作为相邻候选比较：本页优先看 Microsoft 提供的 7B checkpoint、官方推理与 streaming 分支；MOSS 0.9B 的重点是其单 pass SATS 结构和相应评测。最终选型应在目标录音上比较字错率、说话人错分、时间戳误差、显存与时延，而不要只按“支持分钟数”排序。
 
+## 方法关联与适用边界
+
+- [人形智能语音交互](../methods/humanoid-voice-interaction.md)：VibeVoice-ASR 可作为机器人语音链路的离线或流式识别前端；还需单独处理唤醒、打断、任务安全与 TTS。
+- [统一多模态 Token](../methods/unified-multimodal-tokens.md)：架构层面的**对照阅读**。VibeVoice 的音频/文本解码不等同于 VLA 的视觉–语言–动作统一 token 接口，不能由 ASR 能力推断机器人动作生成能力。
+
 ## 关联页面
 
 - [MOSS Transcribe Diarize](paper-moss-transcribe-diarize.md) — 开源长会议 SATS 模型
