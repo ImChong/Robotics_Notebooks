@@ -179,6 +179,7 @@ flowchart LR
 - [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 真实家居双尺度同步度量 HOI/HSI（ego/exo/运动/物体/音频/触觉）；150 h 中规模高保真人类演示层，与 EgoScale/RekaDaily「拼小时」互补；HF 数据集 API 已设为公开非门控（`gated: false`，约 22.18 TB），README 仍留旧 Coming Soon 标记；训练代码未见
 - [RoboEdit](../wiki/entities/paper-roboedit.md) — 把人类操作 RGB 视频编辑为物理 plausible 机器人视频 + 3D hand states，自动构造 14M 帧 RoboEdit-14M（7 种本体）；编辑 SOTA + 真机 Franka 下游控制；`v4` 增补项目页 `roboedit.github.io`，仍无公开代码/数据仓
 - [Ego2Robot](../wiki/entities/paper-ego2robot.md) — 第一人称人视频经重定向 + 臂合成 + 三级质检，合成 15 形态 18,561 h 机器人数据；与真机共训提升 RoboTwin 解耦 OOD；管线未开源
+- [Spirit-v1.5](../wiki/entities/cn-os-spirit-v1-5.md) — [千寻智能](../wiki/entities/spirit-ai.md)开源操作基础模型（`Qwen3-VL-4B` + 18 层 `BaseDiT`，MIT 代码 / Apache-2.0 HF 权重）；主打非脚本 Open-Ended Diverse Collection 替代 Clean Data，微调未见任务所需迭代步数减少 40% 并曾登 RoboChallenge Table30 榜首（预训练全量语料未公开）
 
 ### 学完输出什么
 - 能说清 VLA 数据金字塔（真机演示 / 仿真 / 人类视频 / 互联网视频）各层的作用与代价
@@ -231,6 +232,7 @@ flowchart LR
 - [vla.simd](../wiki/entities/paper-vla-simd.md) — 用 SIMD 内核与计算复用加速 CPU 推理，并把查询延迟和动作块长度一起分析（项目页当前仅挂双盲匿名仓库，实名代码与权重录用后公开）。
 - [ReflexVLA](../wiki/entities/paper-reflexvla.md) — ReflexBench 六任务延迟感知评测 + 1B VLA（冻结 DINOv3 未来预测 + 时序融合骨干 + CUDA Graph）；均值 50.4%、LIBERO 97.2%；`LxRoboticsLab/ReflexBench` 基准与数据已开源（BSD-3），策略代码录用后开放
 - [FlashVLA](../wiki/entities/paper-flashvla.md)（UCSD/MIT）— 给流匹配 VLA 接上交错噪声缓冲 + chunk 级因果注意力，稳态每步吐一块动作，同时压低逐步延迟与异步观测错配；LIBERO 异步 2.43×（96.9%→97.8%）；`z-lab/flashvla` 算法/仿真评测与 HF `π₀.₅` 权重已开源（不含 Franka 实机驱动与 Gello 数据）
+- [Legato](../wiki/entities/paper-legato.md)（RSS 2026 · 上交/千寻/清华等）— 训练期以动作–噪声混合与重塑速度场目标学会三段调度动作延续，异步部署时无需推理期 VJP 反向传播、真机 $\pi_{0.5}$ / GR00T N1.6 抑制块间模态切换并缩短执行时间（MIT 仅开源 `Legato-kinetix` 2D 仿真实现）
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)
 
 ### 学完输出什么

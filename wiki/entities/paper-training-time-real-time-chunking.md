@@ -8,12 +8,13 @@ tags:
   - physical-intelligence
   - berkeley
 status: complete
-updated: 2026-11-14
+updated: 2026-11-19
 arxiv: "2512.05964"
 related:
   - ../methods/action-chunking.md
   - ../methods/pi0-policy.md
   - ./paper-real-time-chunking.md
+  - ./paper-legato.md
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-remac.md
   - ./paper-futurertc.md
@@ -23,6 +24,8 @@ sources:
   - ../../sources/papers/training_time_rtc_arxiv_2512_05964.md
   - ../../sources/papers/real_time_chunking_arxiv_2506_07339.md
   - ../../sources/repos/real-time-chunking-kinetix.md
+original:
+  - ../../sources/papers/training_time_rtc_arxiv_2512_05964.md
 summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随机 delay 并对 action prefix 条件化，推理零 inpainting/VJP 开销；高 delay 仿真优于 inference-time RTC；π₀.₆ 盒装/咖啡真机与 infer 版速度/成功率持平或更好。"
 ---
 
@@ -71,7 +74,7 @@ summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随�
 |------|-------------|------|
 | 前缀约束方式 | 训练期对已提交 prefix 条件化，推理直接喂 prefix，采样与标准 flow 相同 | [Real-Time Chunking](./paper-real-time-chunking.md)：推理期 pseudoinverse inpainting，对整个 overlap 做 soft 约束，每步去噪付 VJP 开销 |
 | 高 delay 表现 | Kinetix 上 delay≥2 成功率高于 inference-time RTC（同 base checkpoint、各微调 8 epoch） | [Real-Time Chunking](./paper-real-time-chunking.md)：真机注入 +100 / +200 ms 后吞吐基本持平，时间集成失败 |
-| 训练目标 | 随机采样 delay，loss 只算 postfix | [REMAC](./paper-remac.md)：delay 条件 mask 监督可执行后缀 + 自条件课程，额外强调 intra-chunk 不一致 |
+| 训练目标 | 随机采样 delay，loss 只算 postfix | [REMAC](./paper-remac.md)：delay 条件 mask 监督可执行后缀 + 自条件课程，额外强调 intra-chunk 不一致；[Legato](./paper-legato.md)：动作–噪声混合与重塑速度场目标 + 三段 $(d,r,s)$ 调度，真机 Pour 得分与平滑度优于 T-RTC |
 | 是否改 VLA 权重 | 改；需微调策略 | [FutureRTC](./paper-futurertc.md)：冻结 VLA，前挂 adapter 预测执行时刻视觉 latent 与本体状态 |
 
 ## 结论
@@ -82,6 +85,27 @@ summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随�
 - 真机 π₀.₆ 配方与 openpi 一键入口 **未** 与 Kinetix 仓同等开放，复现先走仿真或社区 fork
 - 与 [REMAC](./paper-remac.md)、[FutureRTC](./paper-futurertc.md) 同属「训练适配异步」谱系，但 T-RTC 是 PI 官方 RTC 续篇
 - 部署 inference-time RTC 仍可用 [LeRobot RTC 文档](https://huggingface.co/docs/lerobot/rtc) 或 [openpi-rtc](../../sources/repos/openpi-rtc.md)
+
+## 工程实践：训练与部署如何接入
+
+依据 [T-RTC arXiv v2 全文](https://arxiv.org/html/2512.05964) 的 §IV、§V 与 Algorithm 1，训练配方与控制器实时调度须明确区分：
+
+1. **从普通 flow policy 继续微调**：同一示范 chunk 上随机模拟推理延迟 \(d\)，用真实动作覆盖前 \(d\) 个 token，并将这些 token 的时间条件设为 \(\tau=1\)；其余后缀保留 flow 噪声，只对后缀计算损失。支持 per-token timestep 的改动不增加可学习参数量；不能把它误写成「完全无需更改模型实现」。
+2. **仿真可复核的预算**：Kinetix 采用 \(H=8\) 的 4 层 MLP-Mixer；从第 24 epoch 继续进行 8 epoch 前缀条件化微调，对照方法使用相同的总训练预算。延迟从 0–4 采样，各点 2048 次 rollout；高延迟 \(d\ge2\) 的优势不代表 \(d=0/1\) 也更好。
+3. **部署调度边界**：上一个 chunk 在新模型推理期间持续执行，将已提交的 \(d\) 步作为不可改变的 prefix，策略只生成剩余 postfix；应满足 \(d\le H-s\)。推理不再逐次进行伪逆/VJP inpainting，但仍需正常的 flow 去噪推理与真实机器人时钟同步。
+4. **真机配置与衡量**：论文使用远端 H100、5 步去噪、50 Hz 控制和每任务 8000 gradient steps / batch 512，平均端到端推理延迟为 **108 ms（T-RTC）对 135 ms（inference-time RTC）**；盒装/咖啡任务的成功率与执行时间总体相近，应同时检查实际延迟分布、动作连续性和任务成功率。
+
+```mermaid
+flowchart TD
+  A["训练示范：观测 + 动作 chunk"] --> B["随机抽样模拟延迟 d"]
+  B --> C["前缀：真实动作，tau=1"]
+  B --> D["后缀：flow 加噪"]
+  C --> E["逐 token 时间条件化策略"]
+  D --> E
+  E --> F["仅后缀计算 flow loss"]
+  F -.-> G["部署：异步旧 chunk 保留已提交前缀"]
+  G --> H["策略生成后缀，拼接后执行"]
+```
 
 ## 源码运行时序图
 
@@ -110,6 +134,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Real-Time Chunking（推理期）](./paper-real-time-chunking.md)
+- [Legato（训练期动力学重塑延续）](./paper-legato.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [LeRobot](./lerobot.md)

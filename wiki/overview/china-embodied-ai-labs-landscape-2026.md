@@ -8,7 +8,7 @@ tags:
   - technology-transfer
   - wechat-curator
 status: complete
-updated: 2026-10-21
+updated: 2026-11-19
 related:
   - ./overseas-embodied-ai-labs-landscape-2026.md
   - ./notable-commercial-robot-platforms.md
@@ -16,6 +16,7 @@ related:
   - ./vla-open-source-repro-landscape-2025.md
   - ../entities/agibot-world-2026.md
   - ../entities/agibot-lingxi-x1.md
+  - ../entities/spirit-ai.md
   - ../entities/x-humanoid.md
   - ../entities/limx-cosa.md
   - ../entities/aloha.md
@@ -30,6 +31,8 @@ sources:
   - ../../sources/sites/hku-embodied-labs.md
   - ../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md
   - ../../sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/article.md
+original:
+  - ../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md
 summary: "依据深蓝具身智能 2026-07 国内 50 所实验室盘点，把产学研现状归纳为技术孵化 / 深度合作 / 基础研究三层地图，并交叉本库实体与方法页；非官方排名。"
 ---
 
@@ -92,7 +95,7 @@ flowchart TB
 
 | 实验室 / 团队 | 孵化 / 产业关联（文内） | 本库延伸 |
 |---------------|------------------------|----------|
-| 清华 ISR / TEA / EVAR / MARS 等 | 星动纪元、破壳、千寻、星海图等 | [Diffusion Policy](../methods/diffusion-policy.md)（DP3 语境）、[VLA](../methods/vla.md) |
+| 清华 ISR / TEA / EVAR / MARS 等 | 星动纪元、破壳、[千寻智能](../entities/spirit-ai.md)、星海图等 | [Diffusion Policy](../methods/diffusion-policy.md)（DP3 语境）、[VLA](../methods/vla.md) |
 | 清华机器人控制实验室（赵明国） | 加速进化；MPC / WBC 算法传统 | [MPC](../methods/model-predictive-control.md)、[WBC](../concepts/whole-body-control.md) |
 | 北大 EPIC Lab（王鹤） | 银河通用 Galbot；GraspVLA | [manipulation](../tasks/manipulation.md) |
 | 南科大 CLEAR（张巍） | 逐际动力 LimX Dynamics | [LimX COSA](../entities/limx-cosa.md)、[Sim2Real](../concepts/sim2real.md) |
@@ -136,6 +139,10 @@ flowchart TB
 3. **跟硬件找公司**：孵化层公司名 → [商业平台纵览](./notable-commercial-robot-platforms.md)；逐际 → [LimX COSA](../entities/limx-cosa.md)。
 4. **国内外对照**：国内「组即公司」密度高；海外更多「PI 联合创办 AI 公司 / 研究所衍生」——见姊妹篇。
 
+## 原文核对口径（2026-11-19）
+
+已逐段阅读 [深蓝具身智能原文的完整归档](../../sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/article.md)，核对孵化层（清华 EVAR / 千寻智能、北大 EPIC 等）、合作层（PKU-Agibot、OpenDriveLab、ARGLab 等）、基础研究层（THUEIR / AIR、上交与复旦等）及作者的截止日期与免责声明。本页仅归纳原文三层框架、代表性条目及站内入口，不宣称作者整理的全部约 50 所实验室信息已经由各机构官网独立验证。原文数据口径停留在 **2026-07**；千寻智能的产品、技术节点仍以其官方资料与源码为准。
+
 ## 局限与风险
 
 - **非穷尽、非排名**：文内声明手动整理、欢迎补充；本页亦不做竞争力排序。
@@ -150,6 +157,7 @@ flowchart TB
 - [Robot Learning Overview](./robot-learning-overview.md)
 - [VLA 开源复现谱系 2025](./vla-open-source-repro-landscape-2025.md)
 - [Agibot World 2026](../entities/agibot-world-2026.md)
+- [千寻智能（Spirit.AI）](../entities/spirit-ai.md)
 - [X-Humanoid](../entities/x-humanoid.md)
 - [LimX COSA](../entities/limx-cosa.md)
 

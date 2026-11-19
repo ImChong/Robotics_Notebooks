@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17",
+  "updated": "2026-11-19",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -2617,6 +2617,131 @@
           "id": "entity-paper-uvta-human-tactile-dexterous-manipulation",
           "url": "https://arxiv.org/abs/2609.34182",
           "date_note": "arXiv:2609.34182 v1 为 2026-09-28。"
+        }
+      ]
+    },
+    {
+      "key": "spirit-ai",
+      "name": "千寻智能（Spirit.AI）",
+      "founded_year": 2024,
+      "founded_source": "https://www.spirit-ai.com/about",
+      "founded_note": "官网 /about 与 /news/8 记 2024-01 注册成立千寻智能（杭州）科技有限公司（早先 /news/6、/news/7 曾写 2024-02）；杭州总部与北京、深圳协同，北京关联主体为万境千寻。",
+      "lenses": [
+        "wam",
+        "humanoid"
+      ],
+      "summary": "「可穿戴数采 uDAS + 具身基础模型（开源 Spirit-v1.5 / 闭源 Spirit v1.6）+ 全力控轮式人形本体（Moz1 / Moz2）」全栈路线：覆盖动力电池 PACK 产线装配与商用服务场景；Spirit-v1.5 代码（MIT）与权重（Apache-2.0）、Legato Kinetix 仿真与联署学术论文 OpenHLM 开源，uDAS（>20 万 h）及 Spirit v1.6 模型闭源。",
+      "official": "https://www.spirit-ai.com/blog/",
+      "nodes": [
+        {
+          "date": "2025-06",
+          "title": "Moz1 全力控轮式人形",
+          "track": "整机",
+          "desc": "正式发布全力控轮式人形机器人 Moz1：全身 26 个一体化力控关节、七轴力位混合仿生臂与全向轮式底盘；MozRobot SDK 硬件适配源码面向客户凭秘钥发放。",
+          "id": "entity-spirit-ai",
+          "url": "https://www.spirit-ai.com/news/10",
+          "date_note": "官网 /news/10 与 /news/8 记 2025-06 正式发布 Moz1（7 月亮相 WAIC / WRC）；初代原型 Moz 0 记于 2024-07。",
+          "date_source": "https://www.spirit-ai.com/news/10"
+        },
+        {
+          "date": "2025-12",
+          "title": "宁德时代 PACK 产线部署",
+          "track": "真实部署",
+          "desc": "在宁德时代中州基地动力电池 PACK 产线规模化部署小墨（Moz）执行 EOL/DCR 高压测试插接；官网自报插接成功率 >99%、工作效率约与熟练工人相当。",
+          "id": "entity-spirit-ai",
+          "url": "https://www.spirit-ai.com/news/22",
+          "date_note": "官网新闻 /news/22 路径含 202512，中英文稿宣布于 2025-12 部署；产线数据均为公司自报。",
+          "date_source": "https://www.spirit-ai.com/news/22"
+        },
+        {
+          "date": "2026-01",
+          "title": "Spirit-v1.5",
+          "track": "VLA",
+          "desc": "Qwen3-VL-4B 骨干 + BaseDiT 流匹配动作头（60 步 Chunk / 10 步去噪），主张「开放式多样采集」胜过干净脚本演示；开源推理代码（MIT）与 HuggingFace 权重（Apache-2.0），不含预训练全量管线与数据集。",
+          "id": "entity-cn-os-spirit-v1-5",
+          "url": "https://www.spirit-ai.com/blog/spirit-v1-5",
+          "date_note": "官网唯一技术博客 spirit-v1-5 发布日为 2026-01-11；同期 /news/24 官宣在 RoboChallenge Table30 榜单登顶。",
+          "date_source": "https://www.spirit-ai.com/blog/spirit-v1-5"
+        },
+        {
+          "date": "2026-02",
+          "title": "HuMI",
+          "track": "无机器人示范",
+          "desc": "UMI 夹爪 + 五个 Vive 追踪器同时采集骨盆/手脚/夹爪轨迹，经实时虚拟 G1 IK 预览在不缩放人体轨迹前提下采集，以 5 Hz 扩散高层 + 50 Hz 全身 RL 低层迁移真机；多机构联合论文。",
+          "id": "entity-paper-notebook-humanoid-manipulation-interface",
+          "url": "https://arxiv.org/abs/2602.06643",
+          "date_note": "arXiv:2602.06643 v1 提交于 2026-02-06；清华、上海期智研究院、千寻智能与上海交通大学联合发表，不属于商业闭源配方。",
+          "date_source": "https://arxiv.org/abs/2602.06643"
+        },
+        {
+          "date": "2026-02",
+          "title": "Legato",
+          "track": "异步动作延续",
+          "desc": "在流匹配训练期加入步进式历史动作块插值引导，推理沿单一方向自一致衔接前后 Chunk、抑制异步延迟引发的模态切换与停顿；入选 RSS 2026，仅 Kinetix 2D 仿真代码开源（MIT）。",
+          "id": "entity-paper-legato",
+          "url": "https://arxiv.org/abs/2602.12978",
+          "date_note": "arXiv:2602.12978 v1 提交于 2026-02-13；Spirit AI、上交、清华、同济、中科大联合发表。",
+          "date_source": "https://arxiv.org/abs/2602.12978"
+        },
+        {
+          "date": "2026-06",
+          "title": "Spirit v1.6 & RoboArena",
+          "track": "VLA + 世界模型",
+          "desc": "发布闭源融合版 Spirit v1.6 与 15 亿元 A+ 轮融资，初登 RoboArena 1,924 Elo 第一；7–8 月 RoboArena 方法改版重构榜单并移除包括 Spirit v1.6 在内的部分模型，千寻向 SCMP 回应主因「未达新版最低跨站点样本量要求」。",
+          "id": "entity-spirit-ai",
+          "url": "https://www.spirit-ai.com/news/34",
+          "date_note": "官网 /news/34（2026-06-03）公告发布与登顶；榜单改版争议见 2026-08 SCMP 等媒体报道与公司回应，Spirit v1.6 仍未开源。",
+          "date_source": "https://www.spirit-ai.com/news/34"
+        },
+        {
+          "date": "2026-06",
+          "title": "OpenHLM",
+          "track": "全身 VLA",
+          "desc": "32-D 全身关节 + 双夹爪的 34-D 全身原生 VLA 配方，结合 π₀.₅ 预训练与 HuMI/stationary 异构共训；入选 CoRL 2026 Spotlight，Apache-2.0 代码与 HF 数据/权重公开。",
+          "id": "entity-paper-loco-manip-161-154-openhlm",
+          "url": "https://arxiv.org/abs/2606.22174",
+          "date_note": "arXiv:2606.22174 提交于 2026-06；清华、期智、千寻智能、上交联合研究，独立于闭源商业模型。",
+          "date_source": "https://arxiv.org/abs/2606.22174"
+        },
+        {
+          "date": "2026-07",
+          "title": "Moz2 发布（WAIC）",
+          "track": "整机",
+          "desc": "在 2026 世界人工智能大会（WAIC）首次公开发布新一代商用服务人形机器人 Moz2，定位多元商用交互场景；官网未公开详细自由度、负载与售价参数。",
+          "id": "entity-spirit-ai",
+          "url": "https://www.spirit-ai.com/en/news/48",
+          "date_note": "官网英文新闻 /en/news/48 与中文 /news/38 对应 2026-07-17 WAIC 首次亮相。",
+          "date_source": "https://www.spirit-ai.com/en/news/48"
+        },
+        {
+          "date": "2026-07",
+          "title": "Emergent Transfer",
+          "track": "跨配置迁移",
+          "desc": "在两代轮式人形硬件迭代中验证：新配置单独成功率未跨过任务阈值 τ(T) 前共训无益，跨过后遗留示教可涌现显著增益；多机构联合论文。",
+          "id": "entity-paper-emergent-transfer-cross-config",
+          "url": "https://arxiv.org/abs/2607.25593",
+          "date_note": "arXiv:2607.25593 提交于 2026-07；HUST、千寻智能、北大、上交、哈工大与清华联合发表。",
+          "date_source": "https://arxiv.org/abs/2607.25593"
+        },
+        {
+          "date": "2026-08",
+          "title": "世界人形机器人运动会 & 全栈分享",
+          "track": "真机赛项 / 系统架构",
+          "desc": "搭载 Spirit v1.6 的 Moz1 在第二届世界人形机器人运动会全自主赛道获办公场景冠军与餐饮场景亚军；同期预训练负责人郭俊良在探月计划（/news/41）披露 uDAS >20 万 h、~30 万 h 视频及四大研究瓶颈。",
+          "id": "entity-spirit-ai",
+          "url": "https://www.spirit-ai.com/news/49",
+          "date_note": "官网 /news/49 报道 2026-08-25 赛果，/news/41 发布于 2026-08；数据量与成本比例为公司披露。",
+          "date_source": "https://www.spirit-ai.com/news/49"
+        },
+        {
+          "date": "2026-11",
+          "title": "VGE",
+          "track": "多目标指代接地",
+          "desc": "冻结 Qwen3.5-9B 引导可训练 Grounding DINO 专家，通过逐层联合注意力和文本条件实例评分解决零/单/多目标接地与指令改写鲁棒性；代码待发表后公开。",
+          "id": "entity-paper-vge-2611-22625",
+          "url": "https://arxiv.org/abs/2611.22625",
+          "date_note": "arXiv:2611.22625 v1 提交于 2026-11-17；Spirit AI、牛津大学、国科大与清华合作。",
+          "date_source": "https://arxiv.org/abs/2611.22625"
         }
       ]
     },

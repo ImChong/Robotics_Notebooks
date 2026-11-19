@@ -103,7 +103,7 @@ original:
 
 [Action Upcycling](../entities/paper-action-upcycling.md)（arXiv:2609.34911，SKKU/KAIST）走另一条 **训练-free** 自适应轴：不读模型内部、不额外采样，只用 **已预测 chunk 的动作速度波动** 决定 tail 复用长度；π0.5 / SmolVLA / GR00T / FastWAM 上 **policy call 减 1.2–1.7×** 且成功率不低于 baseline，与 [FlashVLA](../entities/paper-flashvla.md) 等「减单次 forward 成本」正交；[GitHub 已开源](https://github.com/star-kwon/action-upcycling)。
 
-**Real-Time Chunking（RTC）谱系**（flow / diffusion VLA + 异步推理）：[Real-Time Chunking](../entities/paper-real-time-chunking.md)（arXiv:2506.07339，推理期 inpainting）→ [Training-Time RTC](../entities/paper-training-time-real-time-chunking.md)（arXiv:2512.05964，前缀条件化、零推理税）→ 训练适配对照 [REMAC](../entities/paper-remac.md)（intra-chunk mask）、[FutureRTC](../entities/paper-futurertc.md)（冻结 VLA + 执行时刻上下文预测）。工程入口：[LeRobot RTC 文档](https://huggingface.co/docs/lerobot/rtc)、社区 [openpi-rtc](../../sources/repos/openpi-rtc.md)；实证对照 [WAM 异步部署](../entities/paper-wam-realtime-async.md)。
+**Real-Time Chunking（RTC）谱系**（flow / diffusion VLA + 异步推理）：[Real-Time Chunking](../entities/paper-real-time-chunking.md)（arXiv:2506.07339，推理期 inpainting）→ [Training-Time RTC](../entities/paper-training-time-real-time-chunking.md)（arXiv:2512.05964，前缀条件化、零推理税）→ [Legato](../entities/paper-legato.md)（arXiv:2602.12978，RSS 2026，训练期重塑流动力学与三段随机调度延续，免推理期 VJP 税且压低跨块伪多模态切换）→ 训练适配对照 [REMAC](../entities/paper-remac.md)（intra-chunk mask）、[FutureRTC](../entities/paper-futurertc.md)（冻结 VLA + 执行时刻上下文预测）。工程入口：[LeRobot RTC 文档](https://huggingface.co/docs/lerobot/rtc)、社区 [openpi-rtc](../../sources/repos/openpi-rtc.md)；实证对照 [WAM 异步部署](../entities/paper-wam-realtime-async.md)。
 
 ## 主要技术路线
 
@@ -238,6 +238,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [sources/papers/why_action_chunking_improves_bc_corl2026.md](../../sources/papers/why_action_chunking_improves_bc_corl2026.md) — CoRL 2026：chunk 收益机制（Delay / RDE / 隐式集成）
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 历史条件化使短 chunk 可反应（CoRL 2026）
 - [sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md](../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) — Levine：扩散/flow 使大块 action chunk 成为连续控制默认接口
+- [Legato 原文与源码精读归档](../../sources/papers/legato_arxiv_2602_12978.md) — RSS 2026：训练期流场动力学重塑实现流匹配动作块原生延续
 
 ## HMI 开源主表入口
 
@@ -286,6 +287,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Training-Time RTC](../entities/paper-training-time-real-time-chunking.md) — 训练期 prefix 条件化（arXiv:2512.05964）
 - [REMAC](../entities/paper-remac.md) — masked chunk 训练（arXiv:2601.20130）
 - [FutureRTC](../entities/paper-futurertc.md) — anticipatory adapter（arXiv:2607.24008）
+- [Legato](../entities/paper-legato.md) — 训练期重塑流动力学与三段调度实现零 VJP 延续（arXiv:2602.12978，RSS 2026）
 - [LeRobot](../entities/lerobot.md) — 内置 RTC 部署与 `lerobot-rollout`
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 生成式动作头如何使长 chunk 在实践上可行
 - [滚动预测执行（Receding Horizon）](../concepts/receding-horizon-policy-execution.md) — DP 经典 RH vs ACT TE 一手对照
