@@ -3,10 +3,11 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-11-18
+updated: 2026-11-19
 original:
   - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 sources:
+  - ../../sources/papers/hidden-variables-real-robot-data-quality-arxiv-2611-22388.md
   - ../../sources/papers/human-like-redundancy-resolution.md
   - ../../sources/sites/human-like-redundancy.md
   - ../../sources/repos/bimanual-teleoperation.md
@@ -98,6 +99,11 @@ sources:
 - **数据量级**：每任务 50 条（约 10–20 分钟）示范即可学到 80–90% 成功率的精细双臂技能（Thread Velcro 仅 20%）。
 
 ## 关键挑战
+
+### 遥操作数据可学性：先排除采集系统缺陷（AgiBot，2026）
+
+[Hidden Variables Behind Real-Robot Data Quality（arXiv:2611.22388）](../entities/paper-hidden-variables-real-robot-data-quality-2611-22388.md) 以 25 款双臂本体运动学、遥操作对照与 π₀.₅ 真机后训练，解释“采集成功但策略学偏”的三类原因：**决策时必要视觉未记录、采集与部署关节零点不一致、控制系统迫使示教员绕路与反复纠偏**。作者测试中并行全身遥操作减少 43%–53% 中位操作时间；主动搜索让遮挡场景选臂准确率由约 50% 提升到 100%；带绕路示教增加的路径长度约 90% 被策略继承（均为作者限定任务口径）。[原文归档](../../sources/papers/hidden-variables-real-robot-data-quality-arxiv-2611-22388.md)。
+
 
 ### 1. 运动映射（Motion Retargeting）
 人和机器人形态不同：
@@ -272,6 +278,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - **采集 ≠ 部署**：遥操作示范是专家演示，人形干预接管数据的偏差见上文挑战 4。
 
 ## 参考来源
+- [AgiBot 真机数据质量论文全文归档](../../sources/papers/hidden-variables-real-robot-data-quality-arxiv-2611-22388.md) — 采集闭环、遥操作并行与可学性试验
 
 ### 来源笔记（sources/ 归档）
 
