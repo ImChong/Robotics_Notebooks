@@ -482,6 +482,14 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-19] ingest | VGE | 冻结 VLM + 接地专家处理广义指代
+
+- 意图：通读 arXiv:2611.22625v1 并为 VGE 建立唯一论文详情节点，挂载 VLA Stage 2。
+- 机制：逐层联合注意力 + 文本条件实例评分；输出零/单/多目标框，不直接输出动作。
+- 结果：RoboRefIt Test A/B 三指令平均 F1 95.02/89.67%；推理约 140 ms（不含预处理）。
+- 开源：论文承诺发表后公开 VGE 代码，截至入库日尚无可核实的官方运行入口；不提供虚构源码时序图。
+- 关键页：sources/papers/vge_arxiv_2611_22625.md；wiki/entities/paper-vge-2611-22625.md；roadmap/depth-vla.md。
+
 ## [2026-11-19] ingest | sources/blogs/claude_dev_chaos_loop_docs_launch_2026-11-17.md 与 claude_dev_dynamic_workflows_2026-06-02.md — 整理 Claude Docs 持续故障注入和 Claude Code 动态工作流
 
 - 通读两篇 Claude Code 官方博客，分别形成 Chaos Loop、动态多 Agent Harness 独立方法页，绘制基于原文的 Mermaid 流程图。
