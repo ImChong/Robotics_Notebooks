@@ -12,6 +12,8 @@ related:
   - ./agnes-harness.md
   - ./deepseek-harness.md
   - ./agent-lightning.md
+  - ../methods/claude-code-dynamic-workflows.md
+  - ../methods/coding-agent-verification-loops.md
   - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/co-sight-harness.md
@@ -43,7 +45,7 @@ summary: "Co-Sight Harness Studio（ZTE-AICloud）是本地优先的 Agent 宿�
 
 机器人知识库的借鉴点是**研发自动化的流程可审计性**：例如文献 ingest、代码变更和仿真实验记录可以参考阶段门禁与回归验证。但这套软件面向通用业务/Coding Agent，**不直接提供机器人实时控制或运动策略**。
 
-## 核心结构
+## 核心原理与结构
 
 | 控制面 / 组件 | 主要职责 | 核对依据 |
 |---|---|---|
@@ -151,6 +153,8 @@ pnpm dev
 
 ## 关联页面
 
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 对照任务专用 Harness、Agent 编排方式与成本。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照独立验收、真实行为证据与回归门禁。
 - [Agnes Harness](./agnes-harness.md) — 对照会话/工具接入与设备能力的边界
 - [DeepSeek Harness](./deepseek-harness.md) — 被 Co-Sight 兼容层适配的独立运行时
 - [Agent Lightning](./agent-lightning.md) — 真实 Agent 轨迹训练而非业务编排
