@@ -12,9 +12,19 @@
 - **作者：** Sikai Li, Shuning Li, Zhenyu Wei, Yunchao Yao, Chenran Li, Mingyu Ding
 - **机构：** 北卡罗来纳大学教堂山分校（UNC Chapel Hill）、加州大学伯克利分校（UC Berkeley）
 - **通读：** 已完成
-- **核对范围：** 读完 arXiv:2606.23680v1 PDF 全文（正文 §1–5 与附录 A 先验实现、B 训练细节/奖励/超参/NoDemoRSI、C 真机回放；跳过参考文献）；未读项目页与源码。
+- **核对范围：** 读完 arXiv:2606.23680v1 PDF 全文（正文 §1–5 与附录 A 先验实现、B 训练细节/奖励/超参/NoDemoRSI、C 真机回放；跳过参考文献）；2026-11-19 补读官方 README、play_locomanip.py、ResidualLatentAction、协调 actor、VAE 与任务注册等源码；项目主页直连读取失败，开放状态由官方仓库核验。
 - **入库日期：** 2026-06-25
 - **一句话说明：** 将高维 **全身 + 灵巧手** 控制分解为 **冻结的 proprio 条件潜空间先验**（body 16-D / hand 12-D）与 **协调潜残差 PPO**：特权 tracking teacher → VAE 蒸馏（PULSE 同族）→ **共享任务上下文 + 分体 body/hand 残差头** 在 Isaac Lab 上学会 **边走边抓/开门/转身持物**；G1+20-DoF WUJI 仿真三项任务，WalkGrab 消融显示关节空间 PPO、单体式潜残差均失败。
+
+## 2026-11-19 官方开源补充核对
+
+- **代码链接：** <https://github.com/Skevinci/coordex>
+- **源码归档：** [CoorDex 官方源码](../repos/coordex.md)
+- **项目主页归档：** [CoorDex 官方项目页](../sites/coordex.md)
+- **开放程度：** 部分开源。README 明确支持 G1+WUJI 的 WalkGrab、OpenFridge、WalkPickTurn **checkpoint 回放**，包含冻结 body/hand 先验和协调残差策略；尚未在公开目录中发现独立 teacher tracking、VAE 蒸馏和 PPO 从头训练的脚本。
+- **源码检查：** `scripts/rsl_rl/play_locomanip.py` → `gym.make` / `RslRlVecEnvWrapper` → `OnPolicyRunner.load` / `get_inference_policy` → `ActorCriticCoordResidual` → `ResidualLatentAction.process_actions` → body/hand prior 解码 → `JointPositionAction.apply_actions`。
+- **权重变体：** WalkGrab / OpenFridge 的 `hand_prior` 为 `kinematic_wrist_16k.pt`；WalkPickTurn 为 `active_wrist_20k.pt`。不同任务权重与变体须按入口文件配套读取。
+- **状态说明：** 论文原文的训练与评估数字未被此次源码核对重新复现，不能将可回放等同于训练流程全部开源。
 
 ## 核心论文摘录（MVP）
 
