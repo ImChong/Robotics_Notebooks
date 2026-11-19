@@ -16,11 +16,13 @@ tags:
   - aloha
   - open-source
 status: complete
-updated: 2026-10-09
+updated: 2026-11-19
 arxiv: "2610.10270"
 project_id: vpp2-video-prediction-policy-2
 project: https://robert-gyj.github.io/video-prediction-policy-2/
 code: https://github.com/roboterax/video-prediction-policy-2
+original:
+  - ../../sources/papers/vpp2_arxiv_2610_10270.md
 related:
   - ../concepts/world-action-models.md
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -74,7 +76,7 @@ VPP2 因此把视频能力塑造、实时化蒸馏、动作学习分成连续阶
 
 ### 2. 固定时域视觉规划器
 
-模型继续在固定预测 horizon 上训练，并用 consistency distillation 将视频生成压缩为单步视觉规划。这样部署时不用执行完整的多步视频去噪过程，目标是以较低推理开销预测下一段未来视觉状态。
+模型继续在固定预测 horizon 上训练，并用 consistency distillation 将视频生成压缩为单步视觉规划。这样部署时不用执行完整的多步视频去噪过程，目标是以较低推理开销预测下一段未来视觉状态。论文采用 49 帧事件级预训练、17 帧固定时域视觉预测，机器人预测 horizon 为 8 秒；在报告的硬件/软件配置下，视觉分支约 0.12 秒，动作专家约 0.10 秒，总计约 0.22 秒每动作 chunk（并非所有设备可达到的实时性保证）。
 
 ### 3. MoT 动作专家
 
@@ -141,17 +143,17 @@ sequenceDiagram
 | 项目 | 核查结果 |
 |---|---|
 | 代码 | [官方仓库](https://github.com/roboterax/video-prediction-policy-2)，MIT；实现覆盖训练、推理适配与 RoboDojo / LIBERO 评测 |
-| 项目页 | [官方主页](https://robert-gyj.github.io/video-prediction-policy-2/)；该 URL 同时列于 arXiv v2 与 README，主页本体在本次网页读取时不可访问 |
+| 项目页 | [官方主页](https://robert-gyj.github.io/video-prediction-policy-2/)；该 URL 同时列于 arXiv v4 与官方 README |
 | 环境 | README 推荐 Python 3.10；RoboDojo 文档列出的已测组合为 PyTorch 2.11.0 / torchvision 0.26.0 / CUDA 13.0 |
-| 权重 | [Hugging Face](https://huggingface.co/Haodong082399/VPP2) 公开；[ModelScope](https://modelscope.cn/models/haodong123/VPP2_preview) 需具备账号访问权限 |
-| 数据与基础预训练 | **部分开放**。README 仍把 robot-video pretrained backbone 及大规模 event-level video pretraining 代码/配置列在 TODO；RoboDojo 转换训练数据另待提供 |
+| 权重 | [Hugging Face](https://huggingface.co/Haodong082399/VPP2) 公开 Stage-1（49 帧）、Stage-2（17 帧）、RoboDojo / LIBERO 等 checkpoint；[ModelScope](https://modelscope.cn/models/haodong123/VPP2) 按对应仓库访问权限获取 |
+| 数据与基础预训练 | **部分开放**。Stage-1/2 视频 checkpoint、RoboDojo Video-10k 训练入口已公开；RoboDojo 3500 条训练示范可由公开 EE16 数据转换。大规模 event-level 预训练全流程代码/配置仍列为待发布 |
 | 许可证边界 | MIT 是代码仓库许可证；模型权重、训练数据、模拟器和第三方组件遵循各自条款 |
 
 从零复现的主要门槛不是一条推理命令，而是大体量视频基础模型、配套编码器、数据准备和模拟器隔离。RoboDojo 文档指出发布的 Video + Action2B 成对评测权重约 36.85 GB（不含共享 Wan 编码器），部署和训练需要足够 GPU 显存与存储；文档提供 dry-run、配置审计和单独环境建议。
 
 ## 局限与风险
 
-- **预训练资产并非全量开放：** 可用公开 checkpoint 跑指定 benchmark，不代表论文所述的大规模原始视频池、基础 robot-video 权重和完整预训练代码都可获得。
+- **预训练资产并非全量开放：** 基础 Stage-1/2 视频模型权重已发布，但这不等于论文所述大规模原始视频池及 event-level 预训练完整代码/配置均公开；需要分别核对。
 - **视频预测正确不等于控制成功：** 预测质量、逆动力学映射和闭环执行是不同误差来源，评估时应保留各自指标。
 - **固定 horizon 是速度与灵活性的折中：** 它便于蒸馏为单步规划器，但仍要求规划长度、动作 chunk 与执行频率匹配任务。
 - **性能数字依赖协议：** ALOHA、LIBERO、RoboDojo 的训练/测试设置不同，特别要区分任务级 zero-shot 与 benchmark-specific post-training。
@@ -183,7 +185,7 @@ VPP2 的关键设计是把泛化问题放在“预测到什么未来”上处理
 
 ## 推荐继续阅读
 
-- [VPP2 arXiv HTML v2](https://arxiv.org/html/2610.10270v2)
+- [VPP2 arXiv HTML v4](https://arxiv.org/html/2610.10270v4)
 - [官方 README](https://github.com/roboterax/video-prediction-policy-2/blob/main/README.md)
 - [RoboDojo 复现指南](https://github.com/roboterax/video-prediction-policy-2/blob/main/docs/robodojo.md)
 - [LIBERO / OOD / PRO 指南](https://github.com/roboterax/video-prediction-policy-2/blob/main/docs/libero.md)
