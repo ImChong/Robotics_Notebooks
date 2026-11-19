@@ -4,9 +4,10 @@ project_id: fde-guidance-book
 project: https://fde4.ai/
 tags: [fde, enterprise-ai, customer-delivery, book]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-19
 related:
   - ./ontology-fde.md
+  - ../comparisons/embodied-fde-deployment-business-models-2026.md
   - ./agnes-harness.md
   - ./easy-vibe.md
 sources:
@@ -73,6 +74,7 @@ flowchart TD
 
 ## 关联页面
 
+- [具身机器人 FDE 部署与交付商业模式](../comparisons/embodied-fde-deployment-business-models-2026.md) — 把书中通用 FDE 工作方法对照到机器人现场集成、验收与规模化复制。
 - [ontology-fde](./ontology-fde.md) — 关联的工程知识或开源项目。
 - [agnes-harness](./agnes-harness.md) — 关联的工程知识或开源项目。
 - [easy-vibe](./easy-vibe.md) — 关联的工程知识或开源项目。
