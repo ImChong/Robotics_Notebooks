@@ -2,13 +2,14 @@
 type: concept
 tags: [motor-control, embedded, bldc, stepper, actuators, firmware]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-19
 related:
   - ../entities/paper-lunadrive.md
   - ../formalizations/field-oriented-control-derivation.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../overview/motor-design-workflow.md
   - ../entities/simplefoc.md
+  - ../entities/odrive-v3-firmware-rtos-foc.md
   - ./motor-torque-current-curve.md
   - ./can-bus-protocol.md
   - ../formalizations/control-loop-latency-modeling.md
@@ -121,6 +122,8 @@ flowchart LR
 - [SimpleFOC — Coordinate Transformations in FOC](https://docs.simplefoc.com/foc_theory)（外部理论页）
 
 ## 关联页面
+
+- [ODrive v3 Firmware 0.5.6：RTOS 与双轴 FOC 实现](../entities/odrive-v3-firmware-rtos-foc.md) — TIM8/ADC/中断实现双轴 8 kHz 控制；RTOS 只管理状态机与通信等任务
 
 - [力矩电机设计纵深路线（Stage 0–6 学习顺序展开版）](../../roadmap/depth-torque-motor-design.md)
 - [FOC 逐步推导](../formalizations/field-oriented-control-derivation.md)
