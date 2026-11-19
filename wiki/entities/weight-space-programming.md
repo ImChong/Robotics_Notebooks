@@ -5,13 +5,15 @@ project: https://rikiyat.github.io/blog/weight-space-programming/
 code: https://github.com/RikiyaT/lm_understand-logs
 tags: [llm, interpretability, model-editing, reinforcement-learning, mit]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-19
 summary: "权重空间编程：通用大模型像读写程序一样推理神经网络权重；Qwen 去循环显效，Gemma 反例限制能力提升外推。"
 original:
   - ../../sources/blogs/weight_space_programming.md
 related:
+  - paper-interpretable-weight-space-programming.md
   - paper-capvector-capability-vectors-vla.md
   - ../methods/reinforcement-learning.md
+  - ../methods/coding-agent-verification-loops.md
 sources:
   - ../../sources/blogs/weight_space_programming.md
   - ../../sources/sites/weight-space-programming.md
@@ -120,10 +122,13 @@ sequenceDiagram
 
 ## 关联页面
 
+- [iWSP：可解释权重空间编程（arXiv:2611.18114）](paper-interpretable-weight-space-programming.md)：另一研究团队通过可解释权重/特征构造、审计与脑编码评测推进该思路；不同于本页 MIT 博客实验。
+
 - [Robotics Weight Editing](robotics-weight-editing.md)：将权重空间编辑用于 π₀.₅ 机器人策略，包含 YAM 初步真机评估。
 
 - [CapVector 能力向量](paper-capvector-capability-vectors-vla.md)：同属参数空间操作，但依赖微调模型差分。
 - [强化学习](../methods/reinforcement-learning.md)：PPO 是部分实验中的训练基线。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：对照候选编辑、前向评测与后验可复核证据；本实验的 agent harness 并未完整开放。
 - [paper-compounding-physical-rsi](paper-compounding-physical-rsi.md) — Compounding Physical RSI（权重空间候选筛选的一个应用实例）
 
 ## 参考来源
