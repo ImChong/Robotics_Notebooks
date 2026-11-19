@@ -8,8 +8,8 @@
 - **项目页：** <https://robert-gyj.github.io/video-prediction-policy-2/>
 - **论文：** <https://arxiv.org/abs/2610.10270>（v2：2026-10-08）
 - **许可证：** MIT（代码）；模型权重、数据和模拟器资产另有各自条款
-- **核查日期：** 2026-10-09
-- **仓库快照：** 23 stars / 0 forks；Python；默认分支 main
+- **核查日期：** 2026-11-19
+- **仓库快照：** 官方公开 Python 项目，默认分支 main；star / fork 等动态数字不作为恒定项目事实
 - **一句话说明：** VPP2 官方训练、推理与基准评测实现，面向 RoboDojo 与 LIBERO 系列操作任务；与论文和项目页合并归入同一个 wiki 实体节点。
 - **沉淀到 wiki：** [Video Prediction Policy 2（VPP2）](../../wiki/entities/video-prediction-policy-2.md)
 
@@ -43,12 +43,12 @@ python -m pip install -r requirements-train.txt -c environment-reference.txt
 
 ## 模型与资产开放范围
 
-README 链接公开的 [Hugging Face 模型仓库](https://huggingface.co/Haodong082399/VPP2) 与 [ModelScope 模型仓库](https://modelscope.cn/models/haodong123/VPP2_preview)。RoboDojo 发布了可评测的成对 Video + Action2B checkpoint；LIBERO 发布 Video-10k + Action-30k。ModelScope 下载需要有权限的账号。
+README 链接公开的 [Hugging Face 模型仓库](https://huggingface.co/Haodong082399/VPP2) 与 [ModelScope 模型仓库](https://modelscope.cn/models/haodong123/VPP2_preview)。官方还发布了 Stage-1（49 帧）、Stage-2（17 帧）视频 checkpoint，RoboDojo history-conditioned Video-10k 及可评测的成对 Video + Action2B checkpoint；LIBERO 发布 Video-10k + Action-30k。ModelScope 下载需要有权限的账号。
 
 **不是所有训练资产都已开放：**
 
-- 仓库 README 的 TODO 仍列出 robot-video pretrained backbone checkpoint，以及大规模 event-level video pretraining 的代码和配置。
-- RoboDojo 3500 episode 转换训练数据在文档中作为独立、待提供的数据资产；不能因代码或 checkpoint 已公开而推断该数据已开放。
+- README 在 2026-10-10 发布 Stage-1/2 视频模型权重和预测指南；10-12 发布 RoboDojo history-conditioned Video-10k 训练流程。但其注释的 TODO 仍包含大规模 event-level 视频预训练代码和配置，尚不能据此完成论文所有阶段的从零复现。
+- RoboDojo 3500 条示范可从 RoboDojo 官方公开 EE16 LeRobot v3 数据集按指定 revision 下载，再通过 [training.md](https://github.com/roboterax/video-prediction-policy-2/blob/main/docs/training.md) 给出的转换流程生成训练数据；这不等于大规模 event-level 预训练原始数据全部开放。
 - 第三方组件保留原许可证；权重、数据集和仿真资产需分别核对适用条款。
 
 ## 官方 README 关键事实
@@ -57,6 +57,7 @@ README 链接公开的 [Hugging Face 模型仓库](https://huggingface.co/Haodon
 - 主线方法为 event-level manipulation video 预训练、固定 horizon 单步视觉规划器，以及通过 mixture-of-transformers 学习隐式逆动力学的动作专家。
 - RoboDojo 和 LIBERO 系列分别有配置、训练/推理入口与评估说明；README 报告的 benchmark 结果须结合论文协议读取。
 - README 的 2026-10-08 News 称其在官方 RoboDojo-Sim leaderboard 位列第一，并列出 39.26 score / 32.26% success rate；该排名是日期快照，不代表未来榜单状态。
+- README 的 2026-10-10 / 10-12 News 分别发布视频预测 checkpoint 和 RoboDojo history-conditioned 视频训练代码，具体命令以仓库现行文档为准。
 
 ## 关联归档
 
