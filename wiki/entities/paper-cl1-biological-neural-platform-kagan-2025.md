@@ -19,6 +19,7 @@ original:
 sources:
   - ../../sources/papers/kagan_2025_cl1_biological_neural_platform.md
   - ../../sources/repos/cortical-labs-cl-sdk.md
+  - ../../sources/sites/cortical-labs-cl1.md
 summary: "Kagan 介绍 CL1 以实时双向电信号闭环连接体外神经细胞培养物，并使用集成灌流回路维持细胞；文章正文受订阅限制，官方 SDK 为后续工程参考而非该文实验复现。"
 ---
 
@@ -154,7 +155,7 @@ sequenceDiagram
 
 - [原始期刊论文归档](../../sources/papers/kagan_2025_cl1_biological_neural_platform.md)（正文未通读，核对范围已注明）
 - [Nature Reviews Bioengineering 原始页面](https://www.nature.com/articles/s44222-025-00340-3)（2025-07-07）
-- [Cortical Labs 官方 CL1 页面](https://corticallabs.com/cl1.html)
+- [Cortical Labs 官方 CL1 页面归档](../../sources/sites/cortical-labs-cl1.md)（[产品原页](https://corticallabs.com/cl1.html)）
 - [官方 SDK 与运行入口归档](../../sources/repos/cortical-labs-cl-sdk.md)
 - [CL API 开发文档](https://docs.corticallabs.com/)（包含 2026 年版本，时间与原文区分）
 
