@@ -149,6 +149,7 @@ flowchart LR
 - 逐项消融：去掉预训练先验、去掉残差、去掉物体观测，记录哪个环节掉点最狠
 
 ### 推荐读什么
+- [Heave-Ho：语音同步的多 G1 / 异构人形协同搬运](../wiki/entities/paper-heave-ho.md) — Stage 3 多机扩展：冻结 SONIC + 共享 MAPPO 残差学习物体耦合，领导者 VLM 选离散团队技能并通过语音时间格实现无网络包同步；官方代码尚待 2026-12 月底发布。
 - [ResMimic](../wiki/entities/paper-resmimic.md) 与 [VisualMimic](../wiki/entities/paper-notebook-visualmimic.md)
 - [SUGARv2：合成参考 → 特权教师 → 视觉学生](../wiki/entities/paper-sugarv2-humanoid-interaction-reference.md) — 以共同的 reference-based mimic 奖励连接教师训练、蒸馏和 PPO；注意五任务策略分别训练（论文 §3.3、§4.1）
 - [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) 与 [CoorDex](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)
