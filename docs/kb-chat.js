@@ -495,12 +495,16 @@
           resolve(window.turnstile);
         } else {
           _turnstileScriptPromise = null;
-          reject(new Error('Turnstile API missing'));
+          var err = new Error('Turnstile API missing');
+          err.code = 'TURNSTILE_API_MISSING';
+          reject(err);
         }
       };
       script.onerror = function () {
         _turnstileScriptPromise = null;
-        reject(new Error('Failed to load Turnstile'));
+        var err = new Error('Failed to load Turnstile');
+        err.code = 'TURNSTILE_SCRIPT_ERROR';
+        reject(err);
       };
       document.head.appendChild(script);
     });
@@ -520,6 +524,8 @@
     startersEl: null,
     turnstileEl: null,
     turnstileWidgetId: null,
+    prewarmedToken: null,
+    turnstileInflight: null,
     inputEl: null,
     sendBtn: null,
     counterEl: null,
@@ -727,65 +733,141 @@
 
   var activeTurnstileHandlers = null;
 
-  function acquireTurnstileToken(siteKey) {
-    return ensureTurnstileReady().then(function (turnstile) {
-      return new Promise(function (resolve, reject) {
-        if (!state.turnstileEl) {
-          reject(new Error('Turnstile mount missing'));
-          return;
-        }
-        state.turnstileEl.hidden = false;
-        var settled = false;
-        var timer = setTimeout(function () {
-          if (settled) return;
-          settled = true;
-          activeTurnstileHandlers = null;
-          reject(new Error('Turnstile timeout'));
-        }, 12000);
+  function makeTurnstileError(code, message, detail) {
+    var err = new Error(message || code);
+    err.code = code;
+    if (detail) err.detail = String(detail);
+    return err;
+  }
 
-        activeTurnstileHandlers = {
-          onSuccess: function (token) {
+  function runTurnstileChallenge(siteKey) {
+    if (state.turnstileInflight) {
+      return state.turnstileInflight;
+    }
+    var challengePromise = ensureTurnstileReady()
+      .then(function (turnstile) {
+        return new Promise(function (resolve, reject) {
+          if (!state.turnstileEl) {
+            reject(makeTurnstileError('TURNSTILE_MOUNT_MISSING', 'Turnstile mount missing'));
+            return;
+          }
+          state.turnstileEl.hidden = false;
+          var settled = false;
+          var timer = setTimeout(function () {
             if (settled) return;
             settled = true;
-            clearTimeout(timer);
             activeTurnstileHandlers = null;
-            resolve(token);
-          },
-          onError: function (errMsg) {
-            if (settled) return;
-            settled = true;
-            clearTimeout(timer);
-            activeTurnstileHandlers = null;
-            reject(new Error(errMsg || 'Turnstile failed'));
-          },
-        };
+            reject(makeTurnstileError('TURNSTILE_TIMEOUT', 'Turnstile timeout'));
+          }, 25000);
 
-        try {
-          if (state.turnstileWidgetId === null) {
-            state.turnstileWidgetId = turnstile.render(state.turnstileEl, {
-              sitekey: siteKey,
-              appearance: 'interaction-only',
-              execution: 'execute',
-              callback: function (token) {
-                if (activeTurnstileHandlers) activeTurnstileHandlers.onSuccess(token);
-              },
-              'error-callback': function () {
-                if (activeTurnstileHandlers) activeTurnstileHandlers.onError('Turnstile error');
-              },
-              'expired-callback': function () {
-                if (activeTurnstileHandlers) activeTurnstileHandlers.onError('Turnstile expired');
-              },
-            });
-          } else {
-            turnstile.reset(state.turnstileWidgetId);
+          activeTurnstileHandlers = {
+            onSuccess: function (token) {
+              if (settled) return;
+              settled = true;
+              clearTimeout(timer);
+              activeTurnstileHandlers = null;
+              resolve(token);
+            },
+            onError: function (code, errMsg, detail) {
+              if (settled) return;
+              settled = true;
+              clearTimeout(timer);
+              activeTurnstileHandlers = null;
+              reject(makeTurnstileError(code || 'TURNSTILE_WIDGET_ERROR', errMsg || 'Turnstile failed', detail));
+            },
+          };
+
+          try {
+            var isNewWidget = state.turnstileWidgetId === null;
+            if (isNewWidget) {
+              state.turnstileWidgetId = turnstile.render(state.turnstileEl, {
+                sitekey: siteKey,
+                appearance: 'interaction-only',
+                execution: 'execute',
+                callback: function (token) {
+                  if (activeTurnstileHandlers) activeTurnstileHandlers.onSuccess(token);
+                },
+                'error-callback': function (errCode) {
+                  if (activeTurnstileHandlers) {
+                    activeTurnstileHandlers.onError(
+                      'TURNSTILE_WIDGET_ERROR',
+                      'Turnstile widget error',
+                      errCode,
+                    );
+                  }
+                },
+                'expired-callback': function () {
+                  state.prewarmedToken = null;
+                  if (activeTurnstileHandlers) {
+                    activeTurnstileHandlers.onError('TURNSTILE_EXPIRED', 'Turnstile expired');
+                  }
+                },
+              });
+            } else {
+              turnstile.reset(state.turnstileWidgetId);
+            }
+            setTimeout(function () {
+              if (settled) return;
+              try {
+                turnstile.execute(state.turnstileWidgetId);
+              } catch (execErr) {
+                if (activeTurnstileHandlers) {
+                  activeTurnstileHandlers.onError(
+                    'TURNSTILE_EXEC_ERROR',
+                    execErr && execErr.message ? execErr.message : 'Turnstile execution failed',
+                  );
+                }
+              }
+            }, isNewWidget ? 40 : 0);
+          } catch (err) {
+            if (activeTurnstileHandlers) {
+              activeTurnstileHandlers.onError(
+                'TURNSTILE_EXEC_ERROR',
+                err && err.message ? err.message : 'Turnstile execution failed',
+              );
+            }
           }
-          turnstile.execute(state.turnstileWidgetId);
-        } catch (err) {
-          if (activeTurnstileHandlers) {
-            activeTurnstileHandlers.onError(err && err.message ? err.message : 'Turnstile execution failed');
-          }
+        });
+      })
+      .finally(function () {
+        if (state.turnstileInflight === challengePromise) {
+          state.turnstileInflight = null;
         }
       });
+
+    state.turnstileInflight = challengePromise;
+    return challengePromise;
+  }
+
+  function warmUpTurnstile(siteKey) {
+    if (!siteKey) return;
+    if (state.prewarmedToken && state.prewarmedToken.expiresAt > Date.now()) return;
+    if (state.turnstileInflight) return;
+    runTurnstileChallenge(siteKey).then(
+      function (token) {
+        if (token) {
+          state.prewarmedToken = {
+            value: token,
+            expiresAt: Date.now() + 240000,
+          };
+        }
+      },
+      function () {
+        state.prewarmedToken = null;
+      },
+    );
+  }
+
+  function acquireTurnstileToken(siteKey) {
+    if (state.prewarmedToken && state.prewarmedToken.expiresAt > Date.now()) {
+      var cachedToken = state.prewarmedToken.value;
+      state.prewarmedToken = null;
+      return Promise.resolve(cachedToken);
+    }
+    state.prewarmedToken = null;
+    return runTurnstileChallenge(siteKey).then(function (token) {
+      state.prewarmedToken = null;
+      return token;
     });
   }
 
@@ -816,8 +898,13 @@
             clearTimeout(timer);
           });
       },
-      function () {
-        return { status: 403, ok: false, data: { code: 'TURNSTILE_FAILED' } };
+      function (err) {
+        var code = err && err.code ? String(err.code) : 'TURNSTILE_FAILED';
+        var detail = err && err.detail ? String(err.detail) : '';
+        if (typeof console !== 'undefined' && typeof console.warn === 'function') {
+          console.warn('[kb-chat] turnstile fallback:', code, detail || (err && err.message) || '');
+        }
+        return { status: 403, ok: false, data: { code: code, detail: detail } };
       },
     );
   }
@@ -863,16 +950,22 @@
   function classifyFallbackNote(result) {
     if (!result) return t('fallbackGeneric');
     var code = result.data && result.data.code ? String(result.data.code) : '';
+    var detail = result.data && result.data.detail ? String(result.data.detail) : '';
+    if (typeof console !== 'undefined' && typeof console.warn === 'function') {
+      console.warn('[kb-chat] fallback response:', result.status, code, detail);
+    }
     if (result.status === 429 || code === 'RATE_LIMITED' || code === 'CONCURRENT_LIMIT') {
       return t('fallbackRateLimited');
     }
     if (code === 'QUOTA_OR_AI_UNAVAILABLE' || result.status === 503) {
       return t('fallbackQuota');
     }
-    if (code.indexOf('TURNSTILE') === 0 || result.status === 403) {
-      return t('fallbackVerify');
+    if (code.indexOf('TURNSTILE') === 0 || result.status === 403 || code === 'ORIGIN_NOT_ALLOWED') {
+      var tag = code || 'HTTP_403';
+      if (detail) tag += ':' + detail;
+      return t('fallbackVerify') + ' [' + tag + ']';
     }
-    return t('fallbackGeneric');
+    return t('fallbackGeneric') + (code ? ' [' + code + ']' : '');
   }
 
   function setBusy(nextBusy) {
@@ -1136,7 +1229,7 @@
     notifyHostState();
     var cfg = getConfig();
     if (cfg.endpoint && cfg.turnstileSiteKey) {
-      ensureTurnstileReady().catch(function () {});
+      warmUpTurnstile(cfg.turnstileSiteKey);
     }
     if (state.inputEl) state.inputEl.focus();
   }
