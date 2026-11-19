@@ -194,6 +194,7 @@ flowchart LR
 - [Flex-π](../wiki/entities/paper-flex-pi.md) — 6B 多流 Joint WAM，共享冻结 Wan VAE 编码 RGB+pointmap，并联合 DINOv3 特征；流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；v3 LIBERO-Plus 两模式均 88.6%，真机完成度与全成功率分开；代码、权重与数据已公开
 - [GlanceWAM](../wiki/entities/paper-glancewam.md) — 单视频 DiT 内异步稀疏前瞻，想象离关键路径、动作头潜空间 48 ms 解码；RoboCasa 72.2%、LIBERO 99.0%；代码与权重已开源
 - [OpenWAM](../wiki/entities/paper-openwam.md) — 模块化 Infra + Study 六项对照提炼预训练三原则；OpenWAM-α Wan2.2-5B + ActionDiT mutual mask；518.5M 帧一阶段 ego+robot 共训；LIBERO 99.3%、RoboTwin2.0-Full 93.60%、RoboDojo 真机 37.6 分/24.4% SR；GitHub + HF 46 检查点已开源
+- [ZERITH 2.5：先视觉适配再联合策略学习](../wiki/entities/paper-zerith-v25.md) — 固定 30k 更新预算，先以宽噪声目标域视频做 S1，再让动作分支在 S2 持续读取视频 K/V；适合和 OpenWAM 的联合预训练配方对照，不把 56.70% 消融值混作完整模型 LIBERO-Plus 93.70%。
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态
