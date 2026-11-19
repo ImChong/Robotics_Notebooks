@@ -2211,7 +2211,7 @@
       ]
     },
     "odrive-robotics": {
-      "label": "ODrive 机器人公司（ODrive Robotics）",
+      "label": "电机驱动器厂商（ODrive Robotics）",
       "aliases": [
         "odrive-robotics",
         "odriverobotics",
