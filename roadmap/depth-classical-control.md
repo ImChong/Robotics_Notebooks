@@ -81,6 +81,7 @@ flowchart LR
 - [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)
 - [Locomotion 任务地图](../wiki/tasks/locomotion.md) 与 [Footstep Planning](../wiki/concepts/footstep-planning.md)
 - [SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）](../wiki/methods/slip-vmc.md) — LIP 之后、WBC 之前的中间简化层：弹簧腿近似支撑相 + 虚拟阻抗力映射到关节力矩
+- [Overleap：双自由度弹跳腿分阶段力矩控制](../wiki/entities/overleap.md) — 可运行的 2-DOF 工程案例：下蹲/收腿关节 PD，蹬地 sin² 期望足端力经 Jᵀ 映射电机力矩；注意它不是 GRF 闭环
 - Kajita et al., *Biped Walking Pattern Generation by using Preview Control of ZMP* (2003)
 
 ### 推荐做什么
