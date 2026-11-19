@@ -55,6 +55,8 @@ flowchart LR
 - 用 [LeRobot](../wiki/entities/lerobot.md) 跑通一个现成策略的推理 demo（只推理、不训练）
 
 ### 推荐读什么
+
+- [Robot Weight Debugging｜让语言模型直接稀疏编辑机器人策略权重](../wiki/entities/paper-robot-weight-debugging-2611-09376.md) — 该研究以语言模型驱动的稀疏词嵌入行编辑，在不进行梯度再训练、也不补充机器人示范的前提下改善已掌握技能与不同指令措辞的匹配。（原文 arXiv:2611.09376；详见开放和实测边界）。
 - [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
 - [VLA 全生命周期综述（2611.18372）](../wiki/entities/paper-vla-lifecycle-survey-2611-18372.md) — Stage 0 先用模型四轴、训练两轴、部署一轴统一选型语言，并核对成功率、鲁棒性与硬件时延口径。
 - [Foundation Policy](../wiki/concepts/foundation-policy.md) — VLA 的母概念页

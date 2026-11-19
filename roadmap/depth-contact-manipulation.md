@@ -46,6 +46,8 @@ flowchart LR
 - 刚性抓取和顺应性控制分别适合什么场景
 
 ### 推荐读什么
+
+- [ForceHarness｜冻结多模态模型的力觉物理接口](../wiki/entities/paper-forceharness-2611-21099.md) — ForceHarness 为不更新权重的多模态模型提供自终止力控制原语和带不确定性的力觉物理量摘要，让接触阶段由快速局部控制闭环完成，再由慢速模型进行任务规划。（原文 arXiv:2611.21099；详见开放和实测边界）。
 - [Manipulation](../wiki/tasks/manipulation.md)
 - [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)
 - Mason, *Mechanics of Robotic Manipulation* — Chapter 1-2

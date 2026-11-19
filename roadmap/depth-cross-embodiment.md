@@ -77,6 +77,8 @@ flowchart LR
 - 用选型指南的决策树走一遍，写下自己落在哪条路径、为什么不是另外两条
 
 ### 推荐读什么
+
+- [TCP4D｜统一工具中心点跟踪与轨迹生成](../wiki/entities/paper-tcp4d-2611-23143.md) — TCP4D 共享四维场景表示，先从单目 RGB 视频及初始 TCP 像素查询中跟踪度量 TCP 位姿、夹爪状态和场景几何，再结合语言和当前观测生成未来轨迹，支持跨机器人构型重定向。（原文 arXiv:2611.23143；详见开放和实测边界）。
 - [跨具身迁移（知识链汇总）](../wiki/overview/hub-cross-embodiment.md) — 本路线的知识枢纽：重定向、域随机与 Any2Any 类方法的选型与失败模式
 - [跨具身策略迁移选型指南](../wiki/queries/cross-embodiment-transfer-strategy.md) — 单本体重训 / Any2Any / 多本体联合训练三路径的决策树与故障模式表
 - [具身大模型与本体协同设计](../wiki/concepts/embodied-foundation-model-hardware-codesign.md) — "通用"是任务泛化而非脱离本体
