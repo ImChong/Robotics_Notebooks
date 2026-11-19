@@ -238,6 +238,7 @@ flowchart LR
 ### 推荐读什么
 - [Imitation Learning](../wiki/methods/imitation-learning.md) 与 [Diffusion Policy](../wiki/methods/diffusion-policy.md) — 遥操作数据的主要消费者
 - [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) 与 [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — 无机器人示范 → 人形全身 visuomotor
+- [HALO：人机对齐的全身移动操作示教](../wiki/entities/paper-halo-2611-16439.md) — Stage 5 采集到部署案例：末端牵引 + 被动差速平台、去手与底盘延迟对齐、π₀.₅/RTC 训练；与无机器人采集区分
 - [ROVE](../wiki/entities/paper-rove-humanoid-vla-intervention.md) — 部署期 MoCap 接管与次优接管轨迹的 RL 后训练
 - [AutoIntervene](../wiki/entities/paper-autointervene.md) — action-chunking 策略的校准双向接管（部署期）
 - [NestDex](../wiki/entities/paper-nestdex.md) — 采数期 copilot；外层 BC 部署不再依赖内层手技能（arXiv:2608.13362）
