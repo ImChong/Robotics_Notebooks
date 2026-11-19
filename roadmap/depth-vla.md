@@ -255,6 +255,7 @@ flowchart LR
 - 关键词：[ENPIRE](../wiki/methods/enpire.md)、[安全真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)、[STEAM](../wiki/entities/paper-steam-advantage-modeling.md)（自监督时序 advantage 离线提纯 π₀，已集成于官方 `RLinf`）、[WCM](../wiki/entities/paper-wcm-world-critic-model.md)（世界模型 critic 修正 VLA RL 单帧价值估计错配，4 基准 149 任务提升显著；`sylvestf/WCM` 已 MIT 开源 critic，RL 策略代码待发）、[TEMPO](../wiki/entities/paper-tempo.md)（语义 projection 低频 / action expert 高频双 TD3；CALVIN SR5 81.7%，匿名页 404 且未开源）、[AutoIntervene](../wiki/entities/paper-autointervene.md)（chunk 策略视觉–动作支持校准接管，选择性 DAgger；算法未开源，同名仓为静态页镜像）、[Prism-GRPO](../wiki/entities/paper-prism-grpo.md)（success+quality 打破 Binary GRPO 同结果组退化，RoboTwin rollout 最多 −56%；独立补丁未开源）
 
 **方向 B：世界模型融合**
+- [HyWorldVLA：自动驾驶 VLA 的像素–潜变量混合世界建模](../wiki/entities/paper-hyworldvla.md) — 预训练时联合未来像素 token 与 latent 监督，规划时仅预测未来 latent；NAVSIM v1 PDMS 90.59、v2 EPDMS 89.71。**驾驶域**案例，非桌面操作策略。
 - 把"预测未来"并入策略训练或推理时预演——完整 Stage 路径见 [WAM 纵深路线](depth-wam.md)
 - [VLAW：VLA 与世界模型迭代协同后训练](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 少量真机成功/失败 rollout 校准 Ctrl-World；Qwen3-VL 奖励筛选合成成功轨迹后微调 π₀.₅，属于训练期世界模型辅助而非 Joint WAM。
 - 关键词：[Generative World Models](../wiki/methods/generative-world-models.md)、[World Action Models](../wiki/concepts/world-action-models.md)、[WAM 纵深](depth-wam.md)、[τ₀-VLA](../wiki/entities/paper-tau0-vla.md)（记忆增强高层子任务策略 + 世界模型引导 TTC beam search，长程真机分层 45.0% vs 直出 27.5%；`sii-research/tau-0-vla` 已开源低层 MoT、Proposal 与世界模型 LoRA，Value/Reflective/Router/TTC 搜索未公开）
