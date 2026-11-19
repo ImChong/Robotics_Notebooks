@@ -10,6 +10,9 @@ related:
   - ../concepts/ai-auto-research.md
   - ../concepts/recursive-self-improvement.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../../roadmap/depth-rsi.md
 sources:
   - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
@@ -122,6 +125,9 @@ flowchart LR
 - [AI Auto-Research：研究生命周期](../concepts/ai-auto-research.md) — 研究全链路自动化与分层验证。
 - [递归自改进（RSI）](../concepts/recursive-self-improvement.md) — 辨别研究提速、研究自治和自举改进。
 - [Agentic Coding 工程基础](../concepts/agentic-coding-software-fundamentals.md) — Agent 代码产出如何变成可维护的工程收益。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 用可执行测试与独立审查把任务成功估计转为可复核的交付证据。
+- [Claude Code 动态多 Agent 工作流](../methods/claude-code-dynamic-workflows.md) — 研究员如何拆解、并行委派和验证任务的工程方法对照；不将其当作 OpenAI 内部 Agent 的同一实现。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 机器人测评有物理任务与 Sim2Real 约束，不能用本报告的软件 Agent 科研成功率替代。
 - [RSI 纵深路线](../../roadmap/depth-rsi.md) — Stage 5 研究过程和 ignition 测量边界。
 
 ## 参考来源
