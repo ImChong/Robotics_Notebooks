@@ -84,33 +84,31 @@ sequenceDiagram
   autonumber
   participant Init as rtos_main
   participant Axis as Axis state thread
-  participant Loop as ODrive::control_loop_cb
+  participant Loop as ODrive control loop
   participant Enc as Encoder
   participant Ctrl as Controller
   participant Mot as Motor
-  participant FOC as current_control_
-  participant PWM as PWM/ADC callback
-  Init->>Init: init_communication, setup, start_adc_pwm
-  Init->>Axis: start_thread()
-  Axis->>Axis: run_state_machine_loop()
-  Axis->>Axis: start_closed_loop_control()
-  Note over Axis,Ctrl: connect_to 反馈与 torque_output_ 端口
-  Axis->>Mot: arm(current_control_)
-  loop 周期控制中断
-    Loop->>Loop: reset output ports and checks/watchdog
-    Loop->>Enc: update() (全部轴先更新)
-    Enc-->>Ctrl: pos/vel/phase through ports
-    Loop->>Ctrl: update()
-    Ctrl-->>Mot: torque_output_ via InputPort
-    Loop->>Mot: update(timestamp)
-    Mot->>Mot: torque to Id/Iq, limits and ACIM coupling
-    Loop->>FOC: update(timestamp)
+  participant FOC as current controller
+  participant PWM as ADC and PWM callbacks
+  Init->>Init: init_communication and start_adc_pwm
+  Init->>Axis: start_thread
+  Axis->>Axis: run_state_machine_loop
+  Axis->>Axis: start_closed_loop_control
+  Note over Axis,Ctrl: connect_to binds feedback and torque ports
+  Axis->>Mot: arm current controller
+  loop Control cycle
+    Loop->>Loop: reset ports, checks and watchdog
+    Loop->>Enc: update all encoder estimates
+    Loop->>Ctrl: controller update
+    Ctrl-->>Mot: torque_output through port
+    Loop->>Mot: motor update and Id Iq limits
+    Loop->>FOC: update current controller
   end
-  PWM->>Mot: current_meas_cb() / pwm_update_cb()
-  Mot-->>PWM: control law PWM timings or disarm
-  opt 故障、看门狗或状态退出
-    Loop->>Mot: disarm()
-    Axis->>Mot: stop_closed_loop_control() / disarm()
+  PWM->>Mot: current_meas_cb and pwm_update_cb
+  Mot-->>PWM: PWM timings or disarm
+  opt Fault or state change
+    Loop->>Mot: disarm power stage
+    Axis->>Mot: stop_closed_loop_control
   end
 ```
 
