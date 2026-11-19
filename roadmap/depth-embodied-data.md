@@ -124,6 +124,7 @@ flowchart LR
 - 用一个 VLM 给同一批轨迹自动打标，人工抽检 50 条算准确率，判断自动标注能否替代人工质检
 
 ### 推荐读什么
+- [AgiBot 真机数据质量隐藏变量（arXiv:2611.22388）](../wiki/entities/paper-hidden-variables-real-robot-data-quality-2611-22388.md) — Stage 2 质检前置：以真实遥操作与 π₀.₅ 真机对照检查决策可见性、关节零位对齐、冗余路程和轨迹连续性；避免只按成功率收录。
 - [Embodied Data Cleaning（具身数据清洗）](../wiki/concepts/embodied-data-cleaning.md) — 时序对齐 / 异常过滤 / 重定向修复 / 分段剪辑四步管线，本阶段的核心页
 - [SPL Hockey Goalie 3D](../wiki/entities/spl-hockey-goalie-3d.md) — 单守门员 81 次射门的 19 点人体–冰球三维时序样本；比较 60 Hz 最近邻配对、缺测 null 与轨迹平滑的真实数据质量边界
 - [Data Pyramid：DataPyramid LeRobot v3 质量清洗](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 六类数据转为统一格式并按帧标注 `quality.valid` 的官方开源案例；区分处理清单、可下载范围与质量版本

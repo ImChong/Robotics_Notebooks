@@ -126,6 +126,7 @@ flowchart LR
 - 给回路人为注入 100–200 ms 延迟，观察精细对齐任务的成功率退化，试一版预测性显示
 
 ### 推荐读什么
+- [AgiBot 真机数据质量隐藏变量（arXiv:2611.22388）](../wiki/entities/paper-hidden-variables-real-robot-data-quality-2611-22388.md) — 以 25 款本体与两项遥操作对照量化姿态工作空间、控制并行、接触柔顺、端到端时延如何影响示教效率和后续策略行为。
 - [ssik（解析逆运动学）](../wiki/entities/ssik.md) — 6R/7R 臂 `q_seed` 最近分支与 `seed_tolerance` 跳变检测
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) — 重定向问题与管线
 - [GMR（运动学重定向）](../wiki/methods/motion-retargeting-gmr.md) — 先几何对齐、物理留给下游
