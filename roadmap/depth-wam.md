@@ -240,6 +240,8 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：人–机数据与世界监督目标**
+- [FloMo：3D Scene Flow 桥接视频先验与动作](../wiki/entities/paper-flomo.md) — **Stage 5 监督目标对照**：冻结 Wan VAE 把 3D 累计位移映射到视频 latent，联合预测 motion + action；对照 MA/VA/VMA 与去人类视频消融，区分视频预训练与视频预测目标。
+
 - 野外 egocentric 人数据如何与机器人遥操作共训；世界预测目标（Pixel / DINO / 3D flow）如何改变具身差距下的增益；纯人预训练是否足以建立跨具身缩放律
 - 关键词：[EgoWAM](../wiki/entities/paper-egowam-egocentric-human-wam-co-training.md)、[WAM-TTT（人视频测试时训练 steering）](../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md)、[Dyna-2（1M h 人→机跨具身缩放 · 闭源）](../wiki/entities/dyna-2.md)、[EgoScale](../wiki/methods/egoscale.md)、[模仿学习纵深](depth-imitation-learning.md)
 
