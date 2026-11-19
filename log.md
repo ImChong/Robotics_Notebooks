@@ -490,6 +490,14 @@ op: ingest
 - 关联既有 FDE 工程参考书页面；不创建重复企业项目实体。
 - 验证边界：当前执行环境无法访问 GitHub 仓库网络克隆，尚未运行本地 make ci-preflight、健康度脚本或 Mermaid 解析器；以 GitHub Actions 为后续门禁，不声称已通过。
 
+## [2026-11-19] ingest | sources/papers/flomo_arxiv_2611_05062.md — 精读 FloMo 原文并升级三维场景流 WAM 节点
+
+- 意图：检验“预测 3D 运动是否比预测未来视频更有利于动作学习”，区分视频预训练与未来预测目标。
+- 原文：核对 arXiv:2611.05062v2 的方法、实验、局限与附录；保留同论文已有唯一实体 `wiki/entities/paper-flomo.md`。
+- 开源：官方 pairlab/flomo 已提供训练、预处理、推理入口和 MA/VA/VMA 权重；运行与真机集成尚未独立复现。
+- 关键结果：同条件真机 MA 91%、VMA 51%、VA 40%；OOD MA 18/30、VA/VMA 各 2/30；RoboTwin Easy 五任务 MA 63.6%。
+- 落点：补原文与代码核验、Mermaid 主流程和源码时序，挂入 WAM 纵深路线 Stage 5。
+
 ## [2026-11-19] ingest | sources/sites/spirit-ai.md — 公司路线新增千寻智能（Spirit.AI，https://www.spirit-ai.com/blog/），新建 Spirit.AI 与 Legato 实体页并补齐 Spirit-v1.5 源码/权重/博文核查（MIT 代码与 Apache-2.0 HF 权重，uDAS 与 Spirit v1.6 闭源；Legato 仅开源 Kinetix 仿真）
 
 ## [2026-11-19] ingest | sources/papers/kagan_2025_cl1_biological_neural_platform.md — 收录 CL1 生物神经闭环平台论文并区分后续官方 SDK
