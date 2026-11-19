@@ -2,8 +2,9 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-19
 related:
+  - ../entities/openai-research-acceleration-jagged-frontier.md
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
   - ./ai-auto-research.md
@@ -30,6 +31,7 @@ related:
   - ../entities/researchboost-agent.md
   - ../entities/paper-toward-self-improving-robotic-agents.md
 sources:
+  - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
@@ -42,6 +44,7 @@ sources:
   - ../../sources/papers/duplexagent_rsi_arxiv_2610_11299.md
   - ../../sources/papers/toward_self_improving_robotic_agents_preprints_202610_3088.md
 original:
+  - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
   - ../../sources/sites/anthropic_rsi_when_ai_builds_itself_reading_rsi7k.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
 ---
@@ -75,6 +78,11 @@ summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自
 5. **治理含义与单边暂停。** 作者认为可信全球放慢需要可验证停训；单边暂停只换领跑者。本库不展开军控，只把这条标成「能力叙事旁的约束」。
 
 ## 核心原理
+
+### OpenAI 研究加速测量：当前是人机协作，不是完全 RSI
+
+[OpenAI《Research acceleration: The jagged frontier》（2026-11-18）](../entities/openai-research-acceleration-jagged-frontier.md) 将 AI 研发拆成投入、研究过程与产出三层。其内部估计显示 2–4 小时任务无人工介入成功率由 2026-03 的 23% 增至 2026-10 的 46%，但监控训练（79%）与编写推理服务栈（25%）存在巨大差异；研究人员仍主要负责提出关键想法、审核实验及采纳。代码行数和实验次数只是活动代理，OECI 上升也不是 agent 驱动科研提速的因果证明。此证据支持「研究自动化正在加深」的现状，不支持宣称已经自主设计、训练后继模型的 ignition。
+
 
 ### 四层 RSI 标准（与五次推进）
 
