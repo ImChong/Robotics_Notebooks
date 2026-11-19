@@ -657,7 +657,7 @@ function sanitizeAnswerText(rawText) {
     .replace(RAW_URL_RE, '[removed-url]')
     .replaceAll('\0', '')
     .trim()
-    .slice(0, 2200);
+    .slice(0, 4000);
 }
 
 function buildPrompts(lang, question, passages) {
@@ -923,8 +923,8 @@ export default {
       }
 
       const maxTokens = Math.min(
-        512,
-        Math.max(64, Number.parseInt(String(env.MAX_OUTPUT_TOKENS || '384'), 10) || 384),
+        1200,
+        Math.max(64, Number.parseInt(String(env.MAX_OUTPUT_TOKENS || '1024'), 10) || 1024),
       );
       const prompts = buildPrompts(lang, question, passages);
 

@@ -5207,9 +5207,9 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-panel {
   position: relative;
   pointer-events: auto;
-  width: min(380px, calc(100vw - 32px));
-  /* 预留底部 24px + 底部按钮行(48px) + gap(12px) + 顶栏(--header-h 58px) + 呼吸边距(14px) = 156px */
-  max-height: min(540px, calc(100dvh - 156px - var(--fab-lift, 0px)));
+  width: min(460px, calc(100vw - 24px));
+  /* 预留底部 24px + 底部按钮行(48px) + gap(12px) + 顶栏与呼吸边距 */
+  max-height: min(640px, calc(100dvh - 136px - var(--fab-lift, 0px)));
   display: flex;
   flex-direction: column;
   background: var(--surface-strong);
@@ -5466,6 +5466,44 @@ a.card:active { transform: translateY(-1px); }
   font-size: 0.78rem;
   line-height: 1.45;
   white-space: pre;
+}
+.kb-chat-md-body .mermaid {
+  margin: 4px 0;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+}
+.kb-chat-md-body .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+.kb-chat-md-body .mermaid.mermaid-zoomable {
+  cursor: zoom-in;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+.kb-chat-md-body .mermaid.mermaid-zoomable:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--shadow-tint) 12%, transparent);
+}
+.kb-chat-md-body .mermaid.mermaid-zoomable::after {
+  content: '点击放大';
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.66rem;
+  line-height: 1.3;
+  color: var(--text-muted);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  pointer-events: none;
+  opacity: 0.86;
 }
 .kb-chat-md-quote {
   margin: 2px 0;
