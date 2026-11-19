@@ -1335,27 +1335,29 @@
       transition: color .12s;
     }
     .physics-close:hover { color: rgba(255,255,255,0.75); }
-    .slider-row { padding: 11px 14px 5px; }
-    .slider-row:last-child { padding-bottom: 13px; }
+    .slider-row { padding: 7px 14px 4px; }
+    .slider-row:last-child { padding-bottom: 9px; }
     .slider-label {
       display: flex; justify-content: space-between; align-items: baseline;
-      margin-bottom: 7px;
-      font-size: .74rem; color: rgba(255,255,255,0.4);
+      margin-bottom: 3px;
+      font-size: .73rem; line-height: 1.25; color: rgba(255,255,255,0.44);
     }
     .slider-val {
-      color: #5b9cf6; font-weight: 700; font-size: .72rem;
+      color: #5b9cf6; font-weight: 700; font-size: .71rem;
       font-variant-numeric: tabular-nums;
     }
     input[type=range] {
       -webkit-appearance: none; appearance: none;
+      display: block;
       width: 100%; height: 3px;
+      margin: 3px 0;
       background: rgba(255,255,255,0.1);
       border-radius: 2px; outline: none; cursor: pointer;
     }
     input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 15px; height: 15px; border-radius: 50%;
+      width: 13px; height: 13px; border-radius: 50%;
       background: #5b9cf6; cursor: pointer;
       box-shadow: 0 0 8px rgba(91,156,246,0.55);
       transition: box-shadow .15s, transform .1s;
@@ -1365,7 +1367,7 @@
       transform: scale(1.15);
     }
     input[type=range]::-moz-range-thumb {
-      width: 15px; height: 15px; border-radius: 50%; border: none;
+      width: 13px; height: 13px; border-radius: 50%; border: none;
       background: #5b9cf6; cursor: pointer;
       box-shadow: 0 0 8px rgba(91,156,246,0.55);
     }
@@ -1392,7 +1394,7 @@
       cursor: not-allowed;
     }
     .physics-section-title {
-      padding: 10px 14px 4px;
+      padding: 7px 14px 3px;
       font-size: .68rem;
       font-weight: 700;
       color: rgba(255,255,255,0.35);
@@ -1421,22 +1423,25 @@
       display: none !important;
     }
     .perspective-controls .slider-row {
-      padding: 8px 14px 4px;
+      padding: 4px 14px 2px;
+    }
+    .perspective-controls .slider-label {
+      margin-bottom: 1px;
     }
     .perspective-btn-row {
       display: flex;
       gap: 6px;
-      padding: 6px 14px 12px;
+      padding: 5px 14px 8px;
     }
     .perspective-btn-row .physics-action-btn {
       flex: 1;
-      height: 29px;
+      height: 27px;
       font-size: .71rem;
     }
     .view-mode-toggle {
       display: flex;
       gap: 6px;
-      padding: 2px 14px 12px;
+      padding: 2px 14px 8px;
     }
     .view-mode-btn {
       flex: 1;

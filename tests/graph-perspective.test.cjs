@@ -65,9 +65,9 @@ function makeMockCanvasEnv() {
     bufferData() { stats.buffersUploaded += 1; },
     deleteBuffer() {},
     getAttribLocation(_p, name) {
-      if (name === 'aXZ' || name === 'aPos') return 0;
-      if (name === 'aH' || name === 'aNorm' || name === 'aSize' || name === 'aCol') return 1;
-      if (name === 'aGrad' || name === 'aBary') return 2;
+      if (name === 'aXZ' || name === 'aPos' || name === 'aCenter') return 0;
+      if (name === 'aH' || name === 'aQuad' || name === 'aSize' || name === 'aCol') return 1;
+      if (name === 'aGrad' || name === 'aInstColor') return 2;
       return 3;
     },
     getUniformLocation() { return {}; },
@@ -416,6 +416,11 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
+  assert.ok(styleCss.includes('#mini-graph-wrap.is-perspective-mode'));
+  assert.ok(styleCss.includes('border: 1px solid var(--border);'), 'homepage 3D preview retains visible viewport border');
+  const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
+  assert.ok(!perspectiveSrc.includes('buildPolyhedronLibrary'), '3D terrain nodes must be round spheres, not faceted polyhedra');
+  assert.ok(perspectiveSrc.includes('uCamRight') && perspectiveSrc.includes('if (r2 > 1.0) discard;'), 'hubs render as analytical round spheres');
   assert.ok(styleCss.includes('[data-theme="light"]'));
   assert.ok(styleCss.includes('var(--accent)'));
   assert.ok(swSource.includes("'graph-perspective.js'"));

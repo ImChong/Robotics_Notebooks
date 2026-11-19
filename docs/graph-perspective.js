@@ -292,15 +292,16 @@
     var cellScale = (G - 1) / (2 * extent);
 
     var nodeMeta = Object.create(null);
-    var peakR = 3;
-    var peakSigma2 = 2 * 1.45 * 1.45;
+    var peakSigma = Math.max(2.6, G * 0.036);
+    var peakR = Math.min(12, Math.ceil(peakSigma * 2.5));
+    var peakSigma2 = 2 * peakSigma * peakSigma;
     var peakWeights = [];
     var dx;
     var dz;
     for (dz = -peakR; dz <= peakR; dz++) {
       for (dx = -peakR; dx <= peakR; dx++) {
         var wK = Math.exp(-(dx * dx + dz * dz) / peakSigma2);
-        if (wK > 0.04) peakWeights.push([dx, dz, wK]);
+        if (wK > 0.02) peakWeights.push([dx, dz, wK]);
       }
     }
 
@@ -352,10 +353,13 @@
       }
     }
 
-    var blurR = Math.max(2, Math.round(G * 0.042));
+    var blurR = Math.max(3, Math.round(G * 0.062));
     separableBoxBlur(broadBuf, tmpBuf, G, blurR);
-    separableBoxBlur(broadBuf, tmpBuf, G, Math.max(2, Math.round(blurR * 0.75)));
-    separableBoxBlur(peakBuf, tmpBuf, G, 1);
+    separableBoxBlur(broadBuf, tmpBuf, G, Math.max(2, Math.round(blurR * 0.78)));
+    separableBoxBlur(broadBuf, tmpBuf, G, Math.max(2, Math.round(blurR * 0.55)));
+    var peakBlurR = Math.max(2, Math.round(G * 0.022));
+    separableBoxBlur(peakBuf, tmpBuf, G, peakBlurR);
+    separableBoxBlur(peakBuf, tmpBuf, G, Math.max(1, Math.round(peakBlurR * 0.7)));
 
     var maxBroad = 1e-6;
     var maxPeak = 1e-6;
@@ -372,20 +376,28 @@
         var idx = dz * G + dx;
         var bNorm = broadBuf[idx] / maxBroad;
         // Soft saturation preserves distinct valley/ridge topography even on 8,185-node clusters
-        bNorm = bNorm / (bNorm + 0.36) * 1.36;
+        bNorm = bNorm / (bNorm + 0.42) * 1.42;
         var pNorm = peakBuf[idx] / maxPeak;
         var radial = Math.hypot(wxCell, wzCell);
         var envMask = 1 - smoothstep(0.76, extent * 0.88, radial);
-        var rawH = Math.min(1, Math.max(0, (0.42 * Math.pow(bNorm, 0.86) + 0.58 * pNorm) * envMask));
+        var rawH = Math.min(1, Math.max(0, (0.54 * Math.pow(bNorm, 0.88) + 0.46 * Math.pow(pNorm, 0.92)) * envMask));
         heights[idx] = rawH;
       }
     }
 
-    // Light final smoothing pass for silky contour rings
+    // Two gentle Gaussian-like smoothing passes for silky rolling slopes & fluid iso-contours
+    separableBoxBlur(heights, tmpBuf, G, Math.max(2, Math.round(G * 0.018)));
     separableBoxBlur(heights, tmpBuf, G, 1);
     var maxH = 1e-6;
-    for (i = 0; i < G * G; i++) {
-      if (heights[i] > maxH) maxH = heights[i];
+    for (dz = 0; dz < G; dz++) {
+      var wzEnv = -extent + (2 * extent * dz) / (G - 1);
+      for (dx = 0; dx < G; dx++) {
+        var wxEnv = -extent + (2 * extent * dx) / (G - 1);
+        var idxEnv = dz * G + dx;
+        var maskEnd = 1 - smoothstep(0.78, extent * 0.90, Math.hypot(wxEnv, wzEnv));
+        heights[idxEnv] *= maskEnd;
+        if (heights[idxEnv] > maxH) maxH = heights[idxEnv];
+      }
     }
     if (maxH > 0) {
       for (i = 0; i < G * G; i++) heights[i] = Math.min(1, heights[i] / maxH);
@@ -557,80 +569,6 @@
     ];
   }
 
-  /* ── 3D 低面多面体几何体生成（含面法线与线框重心坐标）── */
-
-  function makeTrianglesFromFaces(verts, faces) {
-    var pos = [];
-    var norm = [];
-    var bary = [];
-    for (var f = 0; f < faces.length; f++) {
-      var a = verts[faces[f][0]];
-      var b = verts[faces[f][1]];
-      var c = verts[faces[f][2]];
-      var ux = b[0] - a[0];
-      var uy = b[1] - a[1];
-      var uz = b[2] - a[2];
-      var vx = c[0] - a[0];
-      var vy = c[1] - a[1];
-      var vz = c[2] - a[2];
-      var nx = uy * vz - uz * vy;
-      var ny = uz * vx - ux * vz;
-      var nz = ux * vy - uy * vx;
-      var len = Math.hypot(nx, ny, nz) || 1;
-      nx /= len; ny /= len; nz /= len;
-      var midX = (a[0] + b[0] + c[0]) / 3;
-      var midY = (a[1] + b[1] + c[1]) / 3;
-      var midZ = (a[2] + b[2] + c[2]) / 3;
-      if (nx * midX + ny * midY + nz * midZ < 0) {
-        var tmp = b; b = c; c = tmp;
-        nx = -nx; ny = -ny; nz = -nz;
-      }
-      pos.push(a[0], a[1], a[2], b[0], b[1], b[2], c[0], c[1], c[2]);
-      norm.push(nx, ny, nz, nx, ny, nz, nx, ny, nz);
-      bary.push(1, 0, 0, 0, 1, 0, 0, 0, 1);
-    }
-    return {
-      pos: new Float32Array(pos),
-      norm: new Float32Array(norm),
-      bary: new Float32Array(bary),
-      vertCount: pos.length / 3,
-    };
-  }
-
-  function buildPolyhedronLibrary() {
-    // 1. Octahedron (mid-tier nodes)
-    var octV = [[1, 0, 0], [-1, 0, 0], [0, 1.12, 0], [0, -1.12, 0], [0, 0, 1], [0, 0, -1]];
-    var octF = [
-      [0, 2, 4], [4, 2, 1], [1, 2, 5], [5, 2, 0],
-      [4, 3, 0], [1, 3, 4], [5, 3, 1], [0, 3, 5],
-    ];
-    // 2. Icosahedron (top-tier hub spheres with crystal wireframe facets)
-    var phi = (1 + Math.sqrt(5)) / 2;
-    var rawIco = [
-      [-1, phi, 0], [1, phi, 0], [-1, -phi, 0], [1, -phi, 0],
-      [0, -1, phi], [0, 1, phi], [0, -1, -phi], [0, 1, -phi],
-      [phi, 0, -1], [phi, 0, 1], [-phi, 0, -1], [-phi, 0, 1],
-    ];
-    var icoV = rawIco.map(function (v) {
-      var l = Math.hypot(v[0], v[1], v[2]) || 1;
-      return [v[0] / l, v[1] / l, v[2] / l];
-    });
-    var icoF = [
-      [0, 11, 5], [0, 5, 1], [0, 1, 7], [0, 7, 10], [0, 10, 11],
-      [1, 5, 9], [5, 11, 4], [11, 10, 2], [10, 7, 6], [7, 1, 8],
-      [3, 9, 4], [3, 4, 2], [3, 2, 6], [3, 6, 8], [3, 8, 9],
-      [4, 9, 5], [2, 4, 11], [6, 2, 10], [8, 6, 7], [9, 8, 1],
-    ];
-    // 3. Diamond / Tetrahedron (lower tier)
-    var tetRaw = [[0, 1.15, 0], [0.95, -0.55, 0.55], [-0.95, -0.55, 0.55], [0, -0.55, -1.05]];
-    var tetF = [[0, 1, 2], [0, 2, 3], [0, 3, 1], [1, 3, 2]];
-    return {
-      oct: makeTrianglesFromFaces(octV, octF),
-      ico: makeTrianglesFromFaces(icoV, icoF),
-      tet: makeTrianglesFromFaces(tetRaw, tetF),
-    };
-  }
-
   /* ── GLSL 着色器源码 ── */
 
   function compileShader(gl, type, source) {
@@ -787,42 +725,45 @@
       '}\n';
 
     var solidVS = headV +
-      attr + 'vec3 aPos;\n' +
-      attr + 'vec3 aNorm;\n' +
-      attr + 'vec3 aBary;\n' +
+      attr + 'vec3 aCenter;\n' +
+      attr + 'vec3 aQuad;\n' +
       attr + 'vec4 aInstColor;\n' +
       'uniform mat4 uViewProj;\n' +
-      varyV + 'vec3 vNorm;\n' +
-      varyV + 'vec3 vBary;\n' +
+      'uniform vec3 uCamRight;\n' +
+      'uniform vec3 uCamUp;\n' +
+      varyV + 'vec2 vUv;\n' +
       varyV + 'vec4 vColor;\n' +
-      varyV + 'vec3 vWorld;\n' +
       'void main() {\n' +
-      '  vWorld = aPos;\n' +
-      '  vNorm = aNorm;\n' +
-      '  vBary = aBary;\n' +
+      '  vec3 worldPos = aCenter + (uCamRight * aQuad.x + uCamUp * aQuad.y) * aQuad.z;\n' +
+      '  vUv = aQuad.xy;\n' +
       '  vColor = aInstColor;\n' +
-      '  gl_Position = uViewProj * vec4(aPos, 1.0);\n' +
+      '  gl_Position = uViewProj * vec4(worldPos, 1.0);\n' +
       '}\n';
 
-    var solidFS = headF + outDecl +
-      varyF + 'vec3 vNorm;\n' +
-      varyF + 'vec3 vBary;\n' +
+    var solidFS = headF + outDecl + derivFn + '\n' +
+      varyF + 'vec2 vUv;\n' +
       varyF + 'vec4 vColor;\n' +
-      varyF + 'vec3 vWorld;\n' +
-      'uniform vec3 uEye;\n' +
       'uniform float uIsDark;\n' +
       'void main() {\n' +
-      '  vec3 N = normalize(vNorm);\n' +
-      '  vec3 L = normalize(vec3(0.45, 0.85, 0.45));\n' +
-      '  vec3 V = normalize(uEye - vWorld);\n' +
-      '  float diff = clamp(dot(N, L), 0.18, 1.0);\n' +
-      '  float fresnel = pow(1.0 - max(dot(N, V), 0.0), 2.2);\n' +
-      '  float minBary = min(vBary.x, min(vBary.y, vBary.z));\n' +
-      '  float edgeLine = 1.0 - smoothstep(0.02, 0.085, minBary);\n' +
-      '  vec3 wireCol = mix(vColor.rgb, vec3(1.0), uIsDark > 0.5 ? 0.55 : 0.35);\n' +
-      '  vec3 bodyCol = vColor.rgb * mix(0.68, 1.18, diff) + wireCol * fresnel * 0.22;\n' +
-      '  vec3 col = mix(bodyCol, wireCol, edgeLine * 0.58);\n' +
-      '  ' + outAssign + ' = vec4(col, vColor.a);\n' +
+      '  float r2 = dot(vUv, vUv);\n' +
+      '  if (r2 > 1.0) discard;\n' +
+      '  float r = sqrt(r2);\n' +
+      '  float z = sqrt(max(0.0, 1.0 - r2));\n' +
+      '  vec3 N = vec3(vUv.x, vUv.y, z);\n' +
+      '  vec3 L = normalize(vec3(0.34, 0.56, 0.75));\n' +
+      '  vec3 H = normalize(L + vec3(0.0, 0.0, 1.0));\n' +
+      '  float diff = clamp(dot(N, L), 0.0, 1.0);\n' +
+      '  float spec = pow(max(dot(N, H), 0.0), 26.0);\n' +
+      '  float rim = pow(1.0 - z, 2.3);\n' +
+      '  vec3 baseCol = vColor.rgb;\n' +
+      '  vec3 lit = baseCol * mix(0.60, 1.15, diff)\n' +
+      '    + mix(baseCol, vec3(1.0), 0.78) * spec * (uIsDark > 0.5 ? 0.36 : 0.28)\n' +
+      '    + mix(baseCol, vec3(1.0), 0.45) * rim * (uIsDark > 0.5 ? 0.22 : 0.12);\n' +
+      '  float aa = max(gradMag(r, vec2(0.025)), 0.014);\n' +
+      '  float edgeAlpha = 1.0 - smoothstep(1.0 - aa * 1.6, 1.0, r);\n' +
+      '  float ring = smoothstep(0.84, 0.94, r) * (1.0 - smoothstep(0.97, 1.0, r));\n' +
+      '  lit = mix(lit, mix(baseCol, vec3(1.0), uIsDark > 0.5 ? 0.46 : 0.22), ring * 0.30);\n' +
+      '  ' + outAssign + ' = vec4(lit, vColor.a * edgeAlpha);\n' +
       '}\n';
 
     var pointVS = headV +
@@ -844,9 +785,11 @@
       '  vec2 pc = gl_PointCoord * 2.0 - 1.0;\n' +
       '  float r2 = dot(pc, pc);\n' +
       '  if (r2 > 1.0) discard;\n' +
-      '  float edge = 1.0 - smoothstep(0.65, 1.0, r2);\n' +
-      '  float highlight = smoothstep(0.85, 0.0, length(pc - vec2(-0.28, -0.30)));\n' +
-      '  vec3 col = mix(vColor.rgb, vec3(1.0), highlight * 0.28);\n' +
+      '  float z = sqrt(max(0.0, 1.0 - r2));\n' +
+      '  vec3 N = vec3(pc.x, -pc.y, z);\n' +
+      '  float diff = clamp(dot(N, normalize(vec3(0.34, 0.56, 0.75))), 0.0, 1.0);\n' +
+      '  float edge = 1.0 - smoothstep(0.76, 1.0, r2);\n' +
+      '  vec3 col = vColor.rgb * mix(0.68, 1.14, diff) + vec3(0.18) * pow(max(0.0, diff), 8.0);\n' +
       '  ' + outAssign + ' = vec4(col, vColor.a * edge);\n' +
       '}\n';
 
@@ -881,7 +824,6 @@
     var lineProg = createProgram(gl, shaders.lineVS, shaders.lineFS);
     var solidProg = createProgram(gl, shaders.solidVS, shaders.solidFS);
     var pointProg = createProgram(gl, shaders.pointVS, shaders.pointFS);
-    var polyLib = buildPolyhedronLibrary();
 
     var terrainXZBuf = gl.createBuffer();
     var terrainHBuf = gl.createBuffer();
@@ -898,10 +840,10 @@
     var hiLineVertCount = 0;
 
     var solidPosBuf = gl.createBuffer();
-    var solidNormBuf = gl.createBuffer();
-    var solidBaryBuf = gl.createBuffer();
+    var solidQuadBuf = gl.createBuffer();
     var solidInstColBuf = gl.createBuffer();
-    var solidVertCount = 0;
+    var solidOpaqueVertCount = 0;
+    var solidDimVertCount = 0;
 
     var ptPosBuf = gl.createBuffer();
     var ptSizeBuf = gl.createBuffer();
@@ -927,7 +869,7 @@
 
     var tLoc = resolveLocs(terrainProg, ['aXZ', 'aH', 'aGrad'], ['uViewProj', 'uHeightAmp', 'uEye', 'uBg', 'uIsDark', 'uContours', 'uExtent']);
     var lLoc = resolveLocs(lineProg, ['aPos', 'aColor'], ['uViewProj', 'uExtent']);
-    var sLoc = resolveLocs(solidProg, ['aPos', 'aNorm', 'aBary', 'aInstColor'], ['uViewProj', 'uEye', 'uIsDark']);
+    var sLoc = resolveLocs(solidProg, ['aCenter', 'aQuad', 'aInstColor'], ['uViewProj', 'uCamRight', 'uCamUp', 'uIsDark']);
     var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uDpr']);
 
     function resize(w, h, nextDpr) {
@@ -1064,35 +1006,34 @@
       gl.bindBuffer(gl.ARRAY_BUFFER, ptColBuf);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(bgCols), gl.STATIC_DRAW);
 
-      // Build batched 3D polyhedral meshes (cpu-expanded world vertices for universal WebGL1/2 compatibility)
-      var sPos = [];
-      var sNorm = [];
-      var sCol = [];
-      var sBary = [];
+      // Build batched camera-facing billboard sphere quads (opaque hubs first, dimmed hubs second)
+      var quadCorners = [-1, -1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1];
+      var opaqueHubs = [];
+      var dimHubs = [];
       for (i = 0; i < cachedPolyNodes.length; i++) {
-        var pn = cachedPolyNodes[i];
-        var tpl = pn.degNorm >= 0.56 ? polyLib.ico : (pn.degNorm >= 0.28 ? polyLib.oct : polyLib.tet);
-        var scale = (nodes.length <= 160 ? 0.021 : 0.011) + pn.degNorm * (nodes.length <= 160 ? 0.021 : 0.017);
-        if (pn.focused) scale *= 1.28;
-        var vLen = tpl.pos.length;
-        for (var v = 0; v < vLen; v += 3) {
-          sPos.push(
-            pn.wx + tpl.pos[v] * scale,
-            pn.wy + tpl.pos[v + 1] * scale,
-            pn.wz + tpl.pos[v + 2] * scale
-          );
-          sNorm.push(tpl.norm[v], tpl.norm[v + 1], tpl.norm[v + 2]);
-          sBary.push(tpl.bary[v], tpl.bary[v + 1], tpl.bary[v + 2]);
+        if (cachedPolyNodes[i].alpha >= 0.5) opaqueHubs.push(cachedPolyNodes[i]);
+        else dimHubs.push(cachedPolyNodes[i]);
+      }
+      var orderedHubs = opaqueHubs.concat(dimHubs);
+      var sPos = [];
+      var sQuad = [];
+      var sCol = [];
+      for (i = 0; i < orderedHubs.length; i++) {
+        var pn = orderedHubs[i];
+        var radius = (nodes.length <= 160 ? 0.022 : 0.012) + pn.degNorm * (nodes.length <= 160 ? 0.022 : 0.018);
+        if (pn.focused) radius *= 1.24;
+        for (var q = 0; q < quadCorners.length; q += 2) {
+          sPos.push(pn.wx, pn.wy, pn.wz);
+          sQuad.push(quadCorners[q], quadCorners[q + 1], radius);
           sCol.push(pn.rgb[0], pn.rgb[1], pn.rgb[2], pn.alpha);
         }
       }
-      solidVertCount = sPos.length / 3;
+      solidOpaqueVertCount = opaqueHubs.length * 6;
+      solidDimVertCount = dimHubs.length * 6;
       gl.bindBuffer(gl.ARRAY_BUFFER, solidPosBuf);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sPos), gl.STATIC_DRAW);
-      gl.bindBuffer(gl.ARRAY_BUFFER, solidNormBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sNorm), gl.STATIC_DRAW);
-      gl.bindBuffer(gl.ARRAY_BUFFER, solidBaryBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sBary), gl.STATIC_DRAW);
+      gl.bindBuffer(gl.ARRAY_BUFFER, solidQuadBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sQuad), gl.STATIC_DRAW);
       gl.bindBuffer(gl.ARRAY_BUFFER, solidInstColBuf);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sCol), gl.STATIC_DRAW);
 
@@ -1288,7 +1229,7 @@
       var aspect = width / Math.max(1, height);
       var cam = buildCameraMatrices(params, camState, aspect);
       lastViewProj = cam.viewProj;
-      var heightAmp = (params.height / 100) * 0.42;
+      var heightAmp = (params.height / 100) * 0.36;
       var isDarkTheme = !!renderOpts.isDark;
       var bgArr = parseCssColor(renderOpts.bgColor || (isDarkTheme ? '#191919' : '#f7f6f3'), [0.098, 0.098, 0.098, 1]);
 
@@ -1317,22 +1258,21 @@
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, terrainIdxBuf);
       gl.drawElements(gl.TRIANGLES, terrainIdxCount, gl.UNSIGNED_SHORT, 0);
 
-      // 2. Polyhedral 3D Hub Nodes (drawn before translucent arcs so arcs never depth-punch solids)
-      if (solidVertCount > 0) {
+      // 2. Round 3D Hub Spheres (opaque pass before translucent arcs)
+      var camRight = [cam.view[0], cam.view[4], cam.view[8]];
+      var camUp = [cam.view[1], cam.view[5], cam.view[9]];
+      if (solidOpaqueVertCount > 0) {
         activeAttrs = {};
-        gl.enable(gl.CULL_FACE);
-        gl.cullFace(gl.BACK);
         gl.useProgram(solidProg);
         gl.uniformMatrix4fv(sLoc.u.uViewProj, false, cam.viewProj);
-        gl.uniform3f(sLoc.u.uEye, cam.eye[0], cam.eye[1], cam.eye[2]);
+        gl.uniform3f(sLoc.u.uCamRight, camRight[0], camRight[1], camRight[2]);
+        gl.uniform3f(sLoc.u.uCamUp, camUp[0], camUp[1], camUp[2]);
         gl.uniform1f(sLoc.u.uIsDark, isDarkTheme ? 1 : 0);
-        bindAttrib(sLoc.a.aPos, solidPosBuf, 3, activeAttrs);
-        bindAttrib(sLoc.a.aNorm, solidNormBuf, 3, activeAttrs);
-        bindAttrib(sLoc.a.aBary, solidBaryBuf, 3, activeAttrs);
+        bindAttrib(sLoc.a.aCenter, solidPosBuf, 3, activeAttrs);
+        bindAttrib(sLoc.a.aQuad, solidQuadBuf, 3, activeAttrs);
         bindAttrib(sLoc.a.aInstColor, solidInstColBuf, 4, activeAttrs);
         useAttrs(activeAttrs);
-        gl.drawArrays(gl.TRIANGLES, 0, solidVertCount);
-        gl.disable(gl.CULL_FACE);
+        gl.drawArrays(gl.TRIANGLES, 0, solidOpaqueVertCount);
       }
 
       // Translucent overlay layers share read-only depth test against terrain & solids
@@ -1350,7 +1290,7 @@
         gl.drawArrays(gl.LINES, 0, lineVertCount);
       }
 
-      // 4. Background Low-Degree Node Orbs
+      // 4. Background Low-Degree Round Node Orbs
       if (ptCount > 0) {
         activeAttrs = {};
         gl.useProgram(pointProg);
@@ -1361,6 +1301,21 @@
         bindAttrib(pLoc.a.aColor, ptColBuf, 4, activeAttrs);
         useAttrs(activeAttrs);
         gl.drawArrays(gl.POINTS, 0, ptCount);
+      }
+
+      // 4b. Dimmed Background Hub Spheres (focus/filter mode)
+      if (solidDimVertCount > 0) {
+        activeAttrs = {};
+        gl.useProgram(solidProg);
+        gl.uniformMatrix4fv(sLoc.u.uViewProj, false, cam.viewProj);
+        gl.uniform3f(sLoc.u.uCamRight, camRight[0], camRight[1], camRight[2]);
+        gl.uniform3f(sLoc.u.uCamUp, camUp[0], camUp[1], camUp[2]);
+        gl.uniform1f(sLoc.u.uIsDark, isDarkTheme ? 1 : 0);
+        bindAttrib(sLoc.a.aCenter, solidPosBuf, 3, activeAttrs);
+        bindAttrib(sLoc.a.aQuad, solidQuadBuf, 3, activeAttrs);
+        bindAttrib(sLoc.a.aInstColor, solidInstColBuf, 4, activeAttrs);
+        useAttrs(activeAttrs);
+        gl.drawArrays(gl.TRIANGLES, solidOpaqueVertCount, solidDimVertCount);
       }
 
       // 5. Focused / Hovered Highlight Neighbor Arcs
@@ -1412,7 +1367,7 @@
     function destroy() {
       if (gl.isContextLost && gl.isContextLost()) return;
       [terrainXZBuf, terrainHBuf, terrainGradBuf, terrainIdxBuf, linePosBuf, lineColBuf,
-        hiLinePosBuf, hiLineColBuf, solidPosBuf, solidNormBuf, solidBaryBuf,
+        hiLinePosBuf, hiLineColBuf, solidPosBuf, solidQuadBuf,
         solidInstColBuf, ptPosBuf, ptSizeBuf, ptColBuf].forEach(function (b) {
         if (b) gl.deleteBuffer(b);
       });
@@ -1607,7 +1562,7 @@
         batchesDirty = true;
       }
       if (batchesDirty) {
-        var heightAmp = (params.height / 100) * 0.42;
+        var heightAmp = (params.height / 100) * 0.36;
         renderer.buildDynamicBatches({
           nodes: nodes,
           edges: edges,

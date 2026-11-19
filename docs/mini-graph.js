@@ -558,8 +558,7 @@
             return document.documentElement.getAttribute('data-theme') !== 'light';
           },
           getBgColor: function () {
-            var isDarkTheme = document.documentElement.getAttribute('data-theme') !== 'light';
-            return isDarkTheme ? '#222222' : '#f7f6f3';
+            return miniGraphTheme().background;
           },
           getLabelText: function (d) { return d.label || d.id; },
           isLabelsVisible: function () { return true; },

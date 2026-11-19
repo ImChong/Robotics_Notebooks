@@ -712,12 +712,22 @@ a.hero-stat-num:focus-visible {
     radial-gradient(ellipse 76% 72% at 50% 52%, transparent 56%, var(--persp-horizon-edge) 98%),
     linear-gradient(180deg, var(--persp-horizon-edge) 0%, transparent 13%, transparent 86%, var(--persp-horizon-edge) 100%);
 }
+/* 首页 3D 预览保留与 2D 一致的 100%×480px 圆角视野边框，框内山体仍沿边界柔和雾化 */
 #mini-graph-wrap.is-perspective-mode {
+  --persp-horizon-edge: var(--bg);
+  --persp-stage-bg:
+    radial-gradient(ellipse 84% 58% at 50% 44%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 66%),
+    var(--bg);
+  background: var(--persp-stage-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+[data-theme="light"] #mini-graph-wrap.is-perspective-mode {
   --persp-horizon-edge: var(--bg-alt);
   --persp-stage-bg:
-    radial-gradient(ellipse 84% 58% at 50% 44%, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 66%),
+    radial-gradient(ellipse 84% 58% at 50% 44%, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 66%),
     var(--bg-alt);
-  background: var(--persp-stage-bg);
+  border-color: color-mix(in srgb, var(--border-strong) 26%, var(--border));
 }
 #mini-graph-wrap.is-perspective-mode #mini-graph-svg {
   display: none;
