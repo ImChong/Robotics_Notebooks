@@ -482,6 +482,8 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-19] lint | 清理全局 lint 首批高性价比 Info（8 页 / 11 项）：4 类知识链枢纽回链清零、GM-100 重定向就绪度、pyplcopen 版本快照措辞与 Limit of RLVR 对比小节
+
 ## [2026-11-19] ingest | 机器人论文与工具六项核对
 
 - 意图：以一手论文和官方源码整理 TCP4D、Heave-Ho、ForceHarness、robot-weight-debugging 四篇独立论文，更新既有 XMimic/XSoma 与 Alloy 实体。
