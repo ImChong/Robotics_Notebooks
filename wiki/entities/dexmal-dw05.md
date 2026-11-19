@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, wam, video-action-model, dexmal, manipulation, diffusion, mixture-of-transformers, robotwin, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-19
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -12,6 +12,7 @@ related:
   - ./dexmal-dm05.md
   - ./tau0-world-model.md
   - ./robotwin.md
+  - ./cloudrobo-wm.md
   - ./paper-abot-m05-mobile-manipulation-wam.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -154,6 +155,8 @@ README 所列 `script/dw/infer_aloha_joint.py` 在该版 tree 中缺失，复现
 - **误区 3：Value Expert 已完整发布。** README 明确 **Value Expert 后续更新**；当前评测与 demo 以 **video + action** 为主。
 
 ## 与其他页面的关系
+
+- [CloudRobo-WM（WM-1.0 / WM1.2）](./cloudrobo-wm.md) — 同属世界–动作模型与 RoboTwin 评测语境；CloudRobo 公开 WM-1.0 checkpoint 与 XPolicyLab 适配器，WM1.2 官方发布信息须另行核验，不能直接与 DW05 的可复现开源范围混同。
 
 - [World Action Models（WAM）](../concepts/world-action-models.md) — Joint 族谱；DW05 为 **Wan + MoT 三专家** 开源实例
 - [Generative World Models](../methods/generative-world-models.md) — 像素/ latent 视频预测工具箱
