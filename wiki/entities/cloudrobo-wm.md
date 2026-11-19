@@ -3,6 +3,8 @@ type: entity
 project_id: cloudrobo-wm
 project: https://www.huaweicloud.com/about/live/261116.html
 code: https://github.com/XPolicyLab/XPolicyLab/tree/main/policy/CloudRobo_WM
+code_scope: policy/CloudRobo_WM
+project_distinction: "CloudRobo-WM 是独立机器人世界动作模型家族，XPolicyLab 此目录仅为 RoboTwin 适配器，非 XPolicyLab 平台本体。"
 tags: [world-models, wam, robot-learning, manipulation, robotwin, cloudrobo, huawei, flow-matching]
 status: complete
 updated: 2026-11-19
