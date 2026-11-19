@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-19
 related:
   - ../entities/deepinsight.md
   - ../entities/insight-bench.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-sceneagent-real2sim-capture-physics.md
   - ../entities/paper-loco-manip-161-075-simple.md
   - ../entities/robodojo.md
+  - ../entities/world-models-as-unit-tests.md
   - ../entities/wwsimbench.md
   - ../entities/xpolicylab.md
   - ./sim2real.md
@@ -51,6 +52,10 @@ summary: "将可信仿真作为机器人基础模型的可扩展闭环评测基�
 - **指标错位：** 固定数据集上的 **open-loop** action 预测误差，在模型差异落在窄带时往往**无法预测**真机 closed-loop 成功率；自动驾驶等领域已较早投资**大规模闭环仿真里程**。
 - **顺序问题：** 若仿真行为不可信，无论用于评测、数据生成还是 RL 后训练，结论都可能失真——因此产业实践可出现 **「评测先行、仿真训练数据后置」** 的分阶段策略（见 [Genesis World 1.0](../entities/genesis-world-10.md) 叙事）。
 - **跨层 orchestration：** 全栈 Physical AI 还需把 **基础模型、闭环策略与全身控制** 的评测挂在 **同一 trace** 上，才能定位「一层引入、另一层显现」的回归——[DeepInsight](../entities/deepinsight.md)（XPENG Robotics）代表这一路 **统一评测 runtime** 的产业样本。
+
+### 可执行世界模型作为控制程序的测试集（2026-11）
+
+[World Models as Unit Tests](../entities/world-models-as-unit-tests.md) 把少量试验辨识得到的 Python 动力学近似模型当作 CaP 控制程序的虚拟单元测试：对 34 个程序版本的预测与原模拟器成功率达到 r=0.974、MAE 5.2 个百分点。**该研究只在模拟器中验证，且绝对成功率有高估**；适合作为“用可扩展的仿真筛选版本、再保留 held-out 原环境验收”的案例，不能直接当真机相关性的证据。
 
 ## 核心机制
 

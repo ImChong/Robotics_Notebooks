@@ -246,6 +246,7 @@ flowchart LR
 - 真机样本不足时，用下注式方法给出区间而不是点估计
 
 ### 推荐读什么
+- [World Models as Unit Tests：代码世界模型做控制程序回归测试](../wiki/entities/world-models-as-unit-tests.md) — 34 个程序的模型内成功率与原模拟器相关 r=0.974，但绝对成功率偏乐观，**尚无物理真机 sim↔real 校准**；作为 Stage 5 的反例边界读。
 - [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — 可复现性 ↔ 代表性代价表与缩小 gap 的三条工程路线
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) — 把评测当可扩展闭环基建，把迭代速度从墙钟瓶颈换成算力瓶颈的前提条件
 - [Bet4Sim2Real](../wiki/entities/paper-bet4sim2real.md) — 仿真库逐次下注换 anytime-valid 真机性能证书，平均收窄 51.6%；G1/NIST/Go2 回放已开源
