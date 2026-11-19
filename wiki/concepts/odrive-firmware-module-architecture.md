@@ -83,7 +83,7 @@ flowchart LR
 sequenceDiagram
   participant Init as rtos_main
   participant Axis as Axis state thread
-  participant Loop as ODrive control loop
+  participant Tick as ODrive control loop
   participant Enc as Encoder
   participant Ctrl as Controller
   participant Mot as Motor
@@ -95,13 +95,13 @@ sequenceDiagram
   Axis->>Axis: Enter closed loop control
   Note over Axis,Mot: Connect encoder controller and motor ports
   Axis->>Mot: Arm current controller
-  Note over Loop,FOC: These operations repeat each control cycle
-  Loop->>Loop: Reset ports and check watchdog
-  Loop->>Enc: Update encoder for each axis
-  Loop->>Ctrl: Update motion control
+  Note over Tick,FOC: These operations repeat each control cycle
+  Tick->>Tick: Reset ports and check watchdog
+  Tick->>Enc: Update encoder for each axis
+  Tick->>Ctrl: Update motion control
   Ctrl-->>Mot: Output torque via connected port
-  Loop->>Mot: Update Id and Iq targets
-  Loop->>FOC: Update current control
+  Tick->>Mot: Update Id and Iq targets
+  Tick->>FOC: Update current control
   Note over PWM,Mot: ADC and PWM hardware callbacks run separately
   PWM->>Mot: Sample phase current
   Mot-->>PWM: Apply PWM timings
