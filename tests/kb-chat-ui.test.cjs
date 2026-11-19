@@ -419,5 +419,10 @@ test('XSS payloads and dangerous citation URLs are rendered inertly without scri
     assert.match(href, /^(?:detail|roadmap)\.html\?id=/, `unexpected href: ${href}`);
     assert.doesNotMatch(href, /^(?:javascript:|https?:|\/\/)/i);
   }
+  assert.equal(window.document.getElementById('kbChatTurnstile').hidden, true);
+  await window.RNKbChat.ask('在吗');
+  const greetingMsgs = window.document.querySelectorAll('.kb-chat-msg--assistant');
+  assert.equal(greetingMsgs.length, 2);
+  assert.match(greetingMsgs[1].textContent, /只读问答助手/);
   dom.window.close();
 });

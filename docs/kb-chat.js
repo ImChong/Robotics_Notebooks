@@ -72,6 +72,7 @@
       readonlyNotice: '基于站内文档回答',
       sourcesLabel: '参考来源',
       ungrounded: '暂未在站内找到直接相关内容，可换个短词、英文术语，或逛逛知识图谱。',
+      greetingReply: '你好！我是机器人知识库只读问答助手。请直接提问站内技术概念、方法或论文（如「什么是全身控制 WBC？」），或点击上方示例问题。',
       localAnswerIntro: '找到以下站内相关内容：',
       fallbackRateLimited: '提问太频繁，已为你切为站内检索结果。',
       fallbackQuota: 'AI 助手当前繁忙，已为你切为站内检索结果。',
@@ -102,6 +103,7 @@
       readonlyNotice: 'Grounded in the wiki',
       sourcesLabel: 'Sources',
       ungrounded: 'No direct match found in the wiki. Try shorter keywords or explore the Knowledge Graph.',
+      greetingReply: 'Hello! I am the read-only Robotics_Notebooks Q&A assistant. Please ask about robotics concepts, methods, or papers (e.g., "What is Whole-Body Control (WBC)?"), or tap a starter prompt above.',
       localAnswerIntro: 'Relevant sections from the wiki:',
       fallbackRateLimited: 'Too many requests — showing wiki search results instead.',
       fallbackQuota: 'AI assistant is busy right now — showing wiki search results instead.',
@@ -757,6 +759,7 @@
             if (settled) return;
             settled = true;
             activeTurnstileHandlers = null;
+            if (state.turnstileEl) state.turnstileEl.hidden = true;
             reject(makeTurnstileError('TURNSTILE_TIMEOUT', 'Turnstile timeout'));
           }, 25000);
 
@@ -766,6 +769,7 @@
               settled = true;
               clearTimeout(timer);
               activeTurnstileHandlers = null;
+              if (state.turnstileEl) state.turnstileEl.hidden = true;
               resolve(token);
             },
             onError: function (code, errMsg, detail) {
@@ -773,6 +777,7 @@
               settled = true;
               clearTimeout(timer);
               activeTurnstileHandlers = null;
+              if (state.turnstileEl) state.turnstileEl.hidden = true;
               reject(makeTurnstileError(code || 'TURNSTILE_WIDGET_ERROR', errMsg || 'Turnstile failed', detail));
             },
           };
@@ -979,6 +984,8 @@
     }
   }
 
+  var GREETING_RE = /^(?:在吗|你好|您好|哈喽|嗨|有人吗|你是谁|介绍一下你|hi|hello|hey|yo|good\s+(?:morning|afternoon|evening))[!！?？。.,，\s]*$/i;
+
   function submitQuestion(rawText) {
     ensureMounted();
     var cfg = getConfig();
@@ -999,6 +1006,10 @@
     if (state.inputEl) {
       state.inputEl.value = '';
       updateCounter();
+    }
+    if (GREETING_RE.test(question)) {
+      appendAssistantMessage({ text: t('greetingReply'), citations: [] });
+      return Promise.resolve();
     }
     setBusy(true);
 
