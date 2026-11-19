@@ -5,11 +5,12 @@ project: https://rikiyat.github.io/blog/weight-space-programming/
 code: https://github.com/RikiyaT/lm_understand-logs
 tags: [llm, interpretability, model-editing, reinforcement-learning, mit]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-19
 summary: "权重空间编程：通用大模型像读写程序一样推理神经网络权重；Qwen 去循环显效，Gemma 反例限制能力提升外推。"
 original:
   - ../../sources/blogs/weight_space_programming.md
 related:
+  - paper-interpretable-weight-space-programming.md
   - paper-capvector-capability-vectors-vla.md
   - ../methods/reinforcement-learning.md
 sources:
@@ -119,6 +120,8 @@ sequenceDiagram
 - 日志仓库只包含报告中的运行，早期提示词试验未收录；部分运行时材料缺失。
 
 ## 关联页面
+
+- [iWSP：可解释权重空间编程（arXiv:2611.18114）](paper-interpretable-weight-space-programming.md)：另一研究团队通过可解释权重/特征构造、审计与脑编码评测推进该思路；不同于本页 MIT 博客实验。
 
 - [Robotics Weight Editing](robotics-weight-editing.md)：将权重空间编辑用于 π₀.₅ 机器人策略，包含 YAM 初步真机评估。
 
