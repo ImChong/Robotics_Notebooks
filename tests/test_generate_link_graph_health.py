@@ -51,7 +51,6 @@ def test_all_repo_roadmap_pages_score_full() -> None:
         assert score == 3, f"{page.name} 健康度 {score} != 3"
 
 
-
 def test_reference_health_full_signals_score_three() -> None:
     """索引页采用摘要来源 / 导航 / 分类覆盖，而不是「原文通读」。"""
     content = (
