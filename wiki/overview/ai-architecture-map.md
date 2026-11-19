@@ -2,7 +2,7 @@
 type: overview
 tags: [architecture, deep-learning, mlp, moe, cnn, vit, transformer, mamba, diffusion, dit, gnn, vla, technology-map]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-19
 summary: "按数据几何把神经网络分成前馈、空间、序列、生成、图与机器人决策六支，对照 MLP/MoE、CNN/ResNet/U-Net/ViT、RNN–Mamba、VAE/GAN/Diffusion/DiT、GNN 与五类策略骨干，服务选型而不是罗列模型名。"
 related:
   - ../concepts/gru.md
@@ -179,6 +179,7 @@ flowchart TB
 
 ## 关联页面
 
+- [具身智能 2026 入门导读](./embodied-ai-beginners-guide-2026.md) — 感知—认知—行动的整体系统视角
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [人形策略网络架构](../concepts/humanoid-policy-network-architecture.md)
 - [视觉感知骨干知识链](./hub-vision-backbone.md)
