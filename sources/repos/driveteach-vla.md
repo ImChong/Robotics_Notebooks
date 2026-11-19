@@ -7,6 +7,8 @@
 - **机构**: 北京航空航天大学（BUAA）、清华大学智能产业研究院（AIR）、滴滴、中国传媒大学
 - **License**: **Apache-2.0**
 - **首次入库**: 2026-09-21
+- **复核日期**: 2026-11-19
+- **核对范围：** 官方根 README、data_engine/README.md、dvd/README.md、data_engine/main.py、data_engine/src/pipelines/runner.py、dvd/distill_tgp_prompter.yaml、sft/train_tgp_prompter.yaml、sft/train_tgp_planner.yaml。未执行完整训练或真车推理。
 
 ## 一句话摘要
 
@@ -54,3 +56,32 @@ python data_engine/main.py --config data_engine/configs/pipelines/planner.yaml
 
 - **`wiki/entities/paper-driveteach-vla.md`**：论文实体与方法归纳。
 - **`sources/papers/driveteach_vla_arxiv_2607_01658.md`**：论文级摘录。
+
+## 源码运行时序（按公开入口核对，2026-11-19）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as data_engine/main.py
+  participant Runner as pipelines.runner.run_pipeline
+  participant NAV as NAVSIM Adapter
+  participant IR as build_sample_ir
+  participant EN as Enricher chain
+  participant Prompt as PromptBuilder
+  participant Out as JSON Writer
+  CLI->>CLI: load_yaml + get_prompt
+  CLI->>Runner: run_pipeline(config, prompt_builder)
+  Runner->>NAV: get_sample_count / extract_sample
+  NAV-->>Runner: raw samples
+  Runner->>IR: build_sample_ir(raw)
+  Runner->>Runner: compute_sample_trajectory + IR cache
+  Runner->>EN: validate_enricher_chain / enrich_all
+  EN-->>Runner: enriched SampleIR
+  Runner->>Prompt: build(SampleIR)
+  Prompt-->>Runner: LLaMA-Factory QA items
+  Runner->>Out: write_output
+```
+
+DVD 训练使用 `llamafactory-cli train dvd/distill_tgp_prompter.yaml`，后续 Prompter / Planner 训练分别为 `sft/train_tgp_prompter.yaml`、`sft/train_tgp_planner.yaml`；GRPO 在外部仓库，**不能将数据引擎误描述为在线策略推理器**。本条是**静态源码核对**，不是实际运行日志。
+
+**配置差异：** 论文 §4.1 给定 DVD block `2×4`、1 epoch 与 CoT-SFT 6 epochs；当前发布的 DVD YAML 为 `dvd_h_size: 16`、`dvd_w_size: 28`，Planner SFT YAML 为 3 epochs，且 Prompter SFT 单列 3 epochs。复现实验须明确版本和各阶段实际作用，不直接将 YAML 视作论文全阶段相同设置。

@@ -1,9 +1,12 @@
 ---
 type: entity
+project_id: driveteach-vla
 tags: [paper, repo, vla, autonomous-driving, end-to-end-planning, navsim, nuscenes, grpo, buaa, tsinghua, eccv-2026]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-19
 arxiv: "2607.01658"
+original:
+  - ../../sources/papers/driveteach_vla_arxiv_2607_01658.md
 venue: ECCV 2026
 code: https://github.com/ShivaTeam/DriveTeach-VLA
 related:
@@ -20,9 +23,13 @@ sources:
 summary: "DriveTeach-VLA（ECCV 2026，BUAA/AIR/滴滴等）：DVD 教 VLA 看什么、2D-TGP 教看哪里，TGP-guided SFT+GRPO 对齐 BEV 轨迹；NAVSIM 与 nuScenes SOTA；Apache-2.0 已开源（RL 见 Curious-VLA）。"
 ---
 
-# DriveTeach-VLA：教 VLA 看什么、看哪里
+# DriveTeach-VLA：教 VLA 看什么、看哪里 / Teaching Vision-Language-Action Models What to See and Where to Look
 
 **DriveTeach-VLA**（*Teaching Vision-Language-Action Models What to See and Where to Look*，[arXiv:2607.01658](https://arxiv.org/abs/2607.01658)，**ECCV 2026**，[代码](https://github.com/ShivaTeam/DriveTeach-VLA)）由 **北京航空航天大学**、**清华大学智能产业研究院（AIR）**、**滴滴** 与 **中国传媒大学** 等（Yuguang Yang、Canyu Chen、Zhewen Tan、Yizhi Wang、Zichao Feng、Chunyang Liu、Kehua Sheng、Juan Zhang、Linlin Yang、Baochang Zhang、Yan Wang、Bo Zhang、Xianbin Cao）提出：针对驾驶 VLA 过度依赖 **文本中心 VQA/CoT**、缺乏 **action-grounded 空间依赖** 的问题，用 **Driving-aware Vision Distillation（DVD）** 注入交通视觉先验，用 **2D Trajectory-Guided Prompts（2D-TGP）** 提供与可行轨迹对齐的空间 conditioning，再经 **TGP-guided SFT + GRPO** 生成 **BEV 轨迹**。
+
+## 一句话定义
+
+**DriveTeach-VLA** 将驾驶关键目标的视觉特征蒸馏到 Qwen2.5-VL-3B，再用前视相机投影的可行轨迹提示监督独立规划模型；部署时由 Prompter 自行预测 2D-TGP，Planner 输出 BEV 轨迹。
 
 ## 英文缩写速查
 
@@ -54,6 +61,13 @@ summary: "DriveTeach-VLA（ECCV 2026，BUAA/AIR/滴滴等）：DVD 教 VLA 看�
 | 输出 | **BEV 未来轨迹** |
 | 评测 | **NAVSIM**、**nuScenes**（论文报告 SOTA 级） |
 | 开源（2026-09-21） | **已开源** 主仓；GRPO 见 [Curious-VLA](https://github.com/Mashiroln/curious_vla)；数据 [Google Drive](https://drive.google.com/drive/folders/1oOz6EVfsrxGvOXvYkwxNhcgqjYP-LqSa?usp=drive_link) |
+
+## 核心原理与空间假设
+
+- **DVD 视觉分块蒸馏（论文 §3.2）：** Grounding DINO 离线检测交通关键目标并叠框，teacher ViT 吃叠框图像，student ViT 吃原图；对视觉 token 的区域均值做 Smooth-L1 对齐、teacher 使用 EMA 更新；同时学习 2D-TGP 序列。损失为 `L_DVD = L_distill + λ_TGP·L_TGP`。
+- **2D-TGP 几何假设（论文 §3.1）：** 4 秒专家 BEV 轨迹投影至前视像素关键点；只有将轨迹约束在 `z=0` 地面且已知相机标定时，像素位置才可恢复 BEV 平面位置。这个假设不适用于任意三维机械臂运动。
+- **teacher forcing 与实际推理（论文 §3.3）：** 训练 SFT/GRPO 时 Planner 读取真值 2D-TGP；测试必须读取 Prompter 预测提示，不能泄漏 ground truth。两模型均基于 Qwen2.5-VL-3B、目标不同。
+- **RL 对齐：** GRPO 使用 PDM-Score，其中 NC 与 DAC 为乘法门限，EP、TTC、Comfort 为加权项（5/5/2）。nuScenes 报告没有使用 CoT 或 GRPO，需与 NAVSIM 区分。
 
 ## 流程总览
 
@@ -87,29 +101,31 @@ flowchart TB
   grpo --> prom
 ```
 
-## 源码运行时序图
+## 源码运行时序图（官方可核验的离线数据构建）
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant Raw as NAVSIM v2.0.0 raw
-  participant DE as data_engine/main.py
-  participant IR as SampleIR + Enrichers<br/>(2D-TGP 投影)
-  participant PB as PromptBuilder<br/>(prompter / planner)
-  participant LF as LLaMA-Factory<br/>(dvd/ + sft/)
-  participant Prom as TGP-Prompter
-  participant Plan as TGP-Planner
-  participant CV as Curious-VLA<br/>(GRPO, 外置)
-
-  Raw->>DE: Extract → Enrich → Render
-  DE->>IR: 轨迹归一化 / 相机投影
-  IR->>PB: poutine_label / prompter / planner YAML
-  PB->>LF: LLaMA-Factory 训练 JSON
-  Note over LF: Stage1 DVD 预训练<br/>Stage2 TGP-guided SFT
-  LF->>CV: TGP-guided GRPO 微调
-  Note over Prom,Plan: 推理：前视 → 2D-TGP → BEV 轨迹
-  Prom->>Plan: 条件轨迹 prompt
+  participant CLI as data_engine/main.py
+  participant R as pipelines/runner.py
+  participant A as NAVSIM Adapter
+  participant IR as SampleIR
+  participant E as Enrichers
+  participant P as PromptBuilder
+  participant W as JSON Writer
+  CLI->>CLI: YAML load + get_prompt
+  CLI->>R: run_pipeline(config, prompt_builder)
+  R->>A: get_sample_count + extract_sample
+  A-->>R: raw samples
+  R->>IR: build_sample_ir + compute_sample_trajectory
+  R->>E: validate_enricher_chain + enrich_all
+  E-->>R: 2D-TGP / normalized trajectory / pseudo labels
+  R->>P: build(SampleIR)
+  P-->>R: LLaMA-Factory QA samples
+  R->>W: write_output
 ```
+
+**训练入口的职责边界：** `dvd/distill_tgp_prompter.yaml`（DVD，patched LLaMA-Factory/Transformers）→ `sft/train_tgp_prompter.yaml`（Prompter SFT）→ `sft/train_tgp_planner.yaml`（Planner SFT）；论文 GRPO 参照 [Curious-VLA](https://github.com/Mashiroln/curious_vla) 在主仓外实现。该图只表示**核验过的离线处理源码调用**，不是推测的在线推理时序或已执行的程序日志。
 
 **复现路径：** 下载 Google Drive 标注 → 配置 `data_engine/configs/pipelines/*.yaml` → `python data_engine/main.py` → 按 `dvd/README.md` 跑 DVD → `sft/` LLaMA-Factory YAML → GRPO 阶段接 [Curious-VLA](https://github.com/Mashiroln/curious_vla)。
 
@@ -123,14 +139,19 @@ sequenceDiagram
 | **TGP-Planner** | 图像 + 2D-TGP → CoT + 归一化轨迹 | BEV 规划 |
 | **TGP-guided GRPO** | 组相对 RL 对齐驾驶偏好 | 超越纯 SFT 的轨迹质量 |
 
-## 实验要点
+## 实验要点（arXiv v1 §4、Appendix A/B）
 
 | 维度 | 要点 |
 |------|------|
-| **NAVSIM** | 论文报告 **SOTA 级**（分项见原文） |
-| **nuScenes** | 同步报告 **SOTA 级** |
-| **对照读法** | 相对 CoT/VQA 预训练 VLA，增益来自 **视觉先验 + 轨迹 grounding**，而非仅加长 CoT |
-| **公平性** | 与 [S²-VLA](./paper-s-squared-vla.md) 对比时注意：本文含 **GRPO 后训练**，S²-VLA 强调纯 SFT 对照 |
+| **NAVSIM navtest 单次推理** | **PDMS 90.4**（Table 1）；同表 AutoVLA **89.1**、CuriousVLA 论文复现 **88.9**；不要拿 N=12 外部 selector 的 **92.7** 与单次推理混比 |
+| **nuScenes 开放环** | 3 秒轨迹平均 L2 **0.30 m**，ST-P3 碰撞率 **0.12%**；UniAD 口径平均 L2 **0.60 m**、碰撞率 **0.31%**（Table 2）；此实验**无 CoT / GRPO** |
+| **增量消融（Table 5）** | Qwen2.5-VL-3B **84.8** → VQA+CoT **86.4** → DVD+CoT **87.1** → +2D-TGP **88.2** → +GRPO **90.4**；DVD+CoT+GRPO（无 TGP）为 **89.1** |
+| **训练–测试提示误差（Table 9）** | 预测 2D-TGP **90.4**，测试时非法使用真值 2D-TGP **90.8**；相差 **0.4 PDMS** |
+| **双模型开销（Table 8；H100）** | Prompter 1.14 s + Planner 1.89 s = **3.03 s**（SFT-only PDMS **88.2**）；双轮单模型 2.87 s / PDMS 87.0。需车载实时延迟评估 |
+| **鲁棒性（Table 7）** | 检测 bbox 丢弃 20%：PDMS **86.8**、40%：**85.3**；无 DVD 为 **86.2**，大幅检测丢失会适得其反 |
+| **公平性** | Appendix 0.B Table 13 中 OpenDriveVLA-3B 的 ST-P3 碰撞率为 **0.10%**，低于本文 0.12%；避免宣称所有指标第一。与 S²-VLA 比较应区分纯 SFT 和含 GRPO 协议 |
+
+**训练配置（论文 §4.1）：** 8×H100、batch 16、AdamW `lr=4×10^-5`、DVD 1 epoch（分块 2×4，`λ_TGP=0.1`，EMA 0.996）、CoT-SFT 6 epochs、GRPO 180 updates/group 8。当前发布的 `dvd/distill_tgp_prompter.yaml` 则使用 `dvd_h_size=16` / `dvd_w_size=28`；Prompter / Planner 的单独 SFT YAML 各设 3 epochs，不能未经核验就当成论文的全部实验设置。
 
 ## 结论
 
@@ -169,8 +190,10 @@ sequenceDiagram
 ## 局限与风险
 
 - **GRPO 不在主仓：** 三阶段复现需额外克隆 Curious-VLA。
-- **双模型延迟：** 推理两阶段，车载实时需 profiling。
-- **NAVSIM 域绑定：** 2D-TGP 与 data engine 强依赖驾驶前视与 NAVSIM 协议，跨域迁移非 trivial。
+- **双模型延迟：** H100 SFT-only 实测每样本 3.03 s（1.14 + 1.89），论文尚未证明车载硬实时可行。
+- **NAVSIM 域绑定：** 2D-TGP 与 data engine 强依赖驾驶前视、相机标定、z=0 平面与 NAVSIM 协议；跨域三维操作须重设投影及监督。
+- **实验配置差异：** 论文最优 DVD 分块 2×4，与已发布 YAML 的 16×28 参数不同；需对照实际代码再声称复现论文数值。
+- **nuScenes 指标口径：** Appendix Table 13 中存在碰撞率更低的方法，不能把 Abstract 的 SOTA 宣称扩展成所有指标绝对领先。
 - **含 RL 后训练：** 与强调纯 SFT 公平的基线对比时需读清训练预算。
 
 ## 关联页面
@@ -184,6 +207,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- 论文 HTML 全文（含附录）：<https://arxiv.org/html/2607.01658v1>
 - 论文 PDF：<https://arxiv.org/pdf/2607.01658>
 - 官方仓库：<https://github.com/ShivaTeam/DriveTeach-VLA>
 - NAVSIM：<https://github.com/autonomousvision/navsim>
