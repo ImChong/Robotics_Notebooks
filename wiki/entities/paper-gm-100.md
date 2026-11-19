@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, embodied-ai, manipulation, imitation-learning, vla, evaluation, long-tail, dataset, sjtu]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-19
 project_id: gm-100
 arxiv: "2601.11421"
 project: https://www.rhos.ai/research/gm-100
@@ -91,6 +91,7 @@ flowchart TD
 ## 工程实践
 
 - **任务分布对齐：** 先固定平台、任务 ID、机器人构型与视角。Cobot Magic 覆盖 100 项，Xtrainer v1 只有前 10 项，不能把两者当成同一任务全集。
+- **形态与重定向就绪度：** 数据由 Agilex Cobot Magic（100 项）与 Dobot Xtrainer（前 10 项）真机遥操作直接采集，可直接作为对应双臂平台的训练输入与策略输入；迁移至其他机器人形态时，需结合运动学、视角与夹爪配置做跨本体适配或动作重定向，不可混算跨平台分数。
 - **数据格式：** 官方 [Cobot Magic LeRobot](https://huggingface.co/datasets/rhos-ai/gm100-cobotmagic-lerobot) 与 [Xtrainer HDF5](https://huggingface.co/datasets/rhos-ai/gm100-xtrainer) 分别下载；Xtrainer 的 LeRobot 版本在官方 README 标记为 Processing。
 - **基线协议：** 论文附录 B：DP 采用 LeRobot、batch=512、100k steps/任务、chunk 16 执行 8 步；π₀/π₀.₅ 使用 OpenPi、batch=32、50k steps/任务、chunk 50 执行 10 步。这是论文的实验参数，**并非 GM-X 仓已交付脚本**。
 - **评测报告：** 除 SR 外记录 PSR、各子任务判据、动作预测误差 MSE/L1、30 个测试条件的构成，以及「上传自报 / 已核验」区别。官网曾于 2026-04-01 更新 Cobot Magic 子任务评分定义，应固定使用的评分版本。

@@ -58,7 +58,7 @@ summary: "plcopen（PyPI 名 pyplcopen）是现代 C++17 header-only 的 PLCopen
 - **名称对应**：文章写的「pyplcopen」是 PyPI 包名，真实源码仓库是 **lusipad/plcopen**（PyPI 页面 Repository 链接指向它）；Python 侧是仿真门面，内核是 C++17。
 - **许可不一致**：文章写 MIT；仓库 LICENSE 与 README 均为 **Apache-2.0**。
 - **EtherCAT 尚未完成**：README 状态表写 EtherCAT「🔴 未开工」、是最大剩余软件块；文章把它列为「EtherCAT 上位机」适用场景，目前只能与外部 EtherCAT 主站搭配。
-- README 写最新正式版为 v0.21.0（PyPI 页面仍显示 0.21.0）；项目较新、版本 0.x，文章未提成熟度。
+- 截至 2026-11-02 核查，README 标明正式版为 v0.21.0（PyPI 页面显示 0.21.0）；项目尚处 0.x 阶段，文章未提成熟度。
 
 ## 关联页面
 

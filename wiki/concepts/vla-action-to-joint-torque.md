@@ -2,7 +2,7 @@
 type: concept
 tags: [vla, manipulation, control, inverse-kinematics, impedance-control, servo, actuation, deployment]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-19
 summary: "VLA 动作到关节力矩的执行链路：动作反归一化与坐标系约定，经 IK/雅可比/轨迹生成/阻抗或 PD 控制得到关节设定值，再由驱动器按力矩或位置模式闭合电流环；解释推理频率、伺服频率与接触安全的分层责任。"
 original:
   - ../../sources/blogs/wechat_shenlan_vla_action_to_joint_torque_2026-11-18.md
@@ -18,6 +18,8 @@ related:
   - ../methods/admittance-control.md
   - ../queries/vla-with-low-level-controller.md
   - ../concepts/llm-robotics-control-interfaces.md
+  - ../queries/contact-wrench-closed-loop.md
+  - ../queries/embodied-fm-taxonomy-loop.md
 ---
 
 # VLA 动作到关节力矩的执行链路（From VLA Actions to Joint Torque）
@@ -134,6 +136,8 @@ flowchart TD
 - [计算力矩控制](../methods/computed-torque-control.md) · [导纳控制](../methods/admittance-control.md) — 控制器层。
 - [VLA 与底层控制器融合](../queries/vla-with-low-level-controller.md) — 真机系统级接线与选型。
 - [VLA 纵深路线](../../roadmap/depth-vla.md) — Stage 4 部署与系统整合。
+- [接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 末端接触力 `τ_ext = J(q)^T F`、阻抗/导纳顺应与接触安全闭环。
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — VLA 在 VLM/VLN/VLA/VLX/World-Model 五层分类中的执行层定位。
 
 ## 参考来源
 
