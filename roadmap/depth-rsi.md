@@ -60,7 +60,7 @@ flowchart LR
 
 ### 推荐读什么
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) — 本路线的判别底座：四层表、五次推进与 2026 信号读法
-- [Envisioning Agentic Robotics（§6.2.4）](../wiki/entities/paper-envisioning-agentic-robotics.md) — 从机器人真实物理经验区分即时适配、跨任务保留增益和改进程序本身的 RSI；强调 held-out 无回归验证
+- [Envisioning Agentic Robotics（`6.2.4）](../wiki/entities/paper-envisioning-agentic-robotics.md) — 从机器人真实物理经验区分即时适配、跨任务保留增益和改进程序本身的 RSI；强调 held-out 无回归验证
 - [Limit of RLVR：模型到底学会了新推理吗？](../wiki/entities/paper-limit-of-rlvr.md) — 用 pass@1 与大 k 可解题覆盖拆解“权重后训练变强”的证据；**仅有 LLM 二元 RLVR 研究证据**，是评估 RSI 能力边界的反例读物。
 - [RSI 全谱系 survey（arXiv:2607.07663）](../wiki/entities/paper-rsi-survey-2607-07663.md) — 1,250 篇文献的 **改进对象 × 闭环程度** 两轴 taxonomy，把有界 self-refinement 与开放式 RSI 切开；语料与脚本已开源
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — Anthropic 的完整 RSI 定义、内部生产率数字与三情景；含"具身跟随"假设
@@ -158,6 +158,7 @@ flowchart LR
 - 真机侧：挑一个任务把 reset 与 verify 完全自动化，统计一次 eval 的墙钟与人工介入次数
 
 ### 推荐读什么
+- [Agent 驱动的混沌压测与修复闭环](../wiki/methods/agent-driven-chaos-testing-loop.md) — Claude Docs 上线前的 staging 压测→遥测→修复→重测案例；关注不变量、人类审批与生产证据，**不是权重级 RSI**。
 - [Self-Rewarding Language Models（自奖励语言模型）](../wiki/entities/paper-self-rewarding-language-models.md) — ICML 2024，M1→M3 用自身评分构造偏好对并迭代 DPO；用于辨别“自评也变强”的证据与缺乏独立验证锚的风险
 - [Meta-Rewarding Language Models：元评委训练](../wiki/entities/paper-meta-rewarding-language-models.md) — EMNLP 2025：同一模型 Actor/Judge/Meta-Judge 生成回答与判断双偏好对；AlpacaEval 2 LC 胜率提高，但 Judge 高分饱和与位置偏差使后两轮停用元评委偏好训练，提示外部验证锚不可省
 - [ENPIRE](../wiki/methods/enpire.md) — EN–PI–R–E 闭环：自动 reset/verify、多范式策略改进、并行 rollout；灵巧任务报告约 99% pass@8
@@ -194,6 +195,7 @@ flowchart LR
 - 机器人侧：把"改控制程序"当 harness 搜索做一遍，对照 ASPIRE 的进化搜索设定
 
 ### 推荐读什么
+- [Claude Code 动态多 Agent 工作流](../wiki/methods/claude-code-dynamic-workflows.md) — `agent()`、`parallel()`、`pipeline()` 组成面向特定任务的 harness；注意它是**按任务动态构建工作流**，并非自证可持续改进。
 - [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
 - [Hyperagents（DGM-H）](../wiki/entities/paper-hyperagents.md) — 将任务 Agent 与元级改进者放入同一可编辑程序；Genesis Go2 奖励设计属于仿真实验，不等于真机策略自修改
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
