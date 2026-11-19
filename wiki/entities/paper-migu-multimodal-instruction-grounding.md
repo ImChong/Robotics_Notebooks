@@ -187,6 +187,7 @@ sequenceDiagram
 ## 关联页面
 
 - [VLA（视觉-语言-动作）](../methods/vla.md) — 对比端到端策略模型与模块化概率指代接地的系统定位差异
+- [VGE：VLM 引导广义指代表达接地](./paper-vge-2611-22625.md) — 纯图文零/单/多实例框定位；与 MIGU 的手势几何不确定性融合及主动澄清互补
 - [Manipulation（机器人操作）](../tasks/manipulation.md) — 桌面与带障碍移开的指代抓取下游任务背景
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md) — Fetch 与 Autolife S2 等轮式/双足移动操作平台集成语境
 - [具身智能周报技术图谱（2026-10-18）](../overview/embodied-station-2026-10-18-26-papers-technology-map.md) — 收录该工作的阶段性技术脉络索引
