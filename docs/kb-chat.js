@@ -16,6 +16,8 @@
   var HTML_TAG_RE = /<[^>]+>/g;
   var RAW_URL_RE = /\b(?:https?:\/\/|javascript:|data:|vbscript:)[^\s)\]<>"']+/gi;
   var TURNSTILE_SCRIPT_URL = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
+  var _katexLoadPromise = null;
 
   var SYNONYMS = {
     wbc: ['全身控制', 'whole-body-control'],
@@ -626,11 +628,113 @@
     state.counterEl.textContent = len + '/' + cfg.maxQuestionLength;
   }
 
+  function isCurrencyDollarExpr(expr) {
+    var s = String(expr || '').trim();
+    if (!s) return false;
+    if (/[\u3400-\u9fff]/.test(s)) return true;
+    if (/\*\*/.test(s)) return true;
+    return /^\d[\d,]*(?:\.\d+)?(?:[kKmMbB])?\s*(?:[–\-—/]|…|\.{2,3})\s*$/.test(s);
+  }
+
+  function normalizeMathText(text) {
+    if (typeof window !== 'undefined' && window.RNMath && typeof window.RNMath.normalizeDollarMath === 'function') {
+      return window.RNMath.normalizeDollarMath(text);
+    }
+    return String(text || '').replace(/\$\$[\s\S]+?\$\$|\$\s*([^$]+?)\s*\$/g, function (match, expr) {
+      if (expr == null) return match;
+      var trimmed = String(expr).trim();
+      if (!trimmed || isCurrencyDollarExpr(trimmed)) return match;
+      return '\\(' + trimmed.replace(/\\\*/g, '*') + '\\)';
+    });
+  }
+
+  function containerHasMathDelimiters(container) {
+    if (!container) return false;
+    var text = container.textContent || '';
+    return text.indexOf('$$') >= 0 || text.indexOf('\\[') >= 0 || text.indexOf('\\(') >= 0;
+  }
+
+  function loadHeadTag(tagName, attrs) {
+    return new Promise(function (resolve, reject) {
+      var el = document.createElement(tagName);
+      Object.keys(attrs).forEach(function (key) {
+        el[key] = attrs[key];
+      });
+      el.onload = function () {
+        resolve();
+      };
+      el.onerror = function () {
+        if (el.parentNode) el.parentNode.removeChild(el);
+        reject(new Error('Failed to load ' + (attrs.src || attrs.href || tagName)));
+      };
+      document.head.appendChild(el);
+    });
+  }
+
+  function ensureChatKatexLoaded() {
+    if (typeof window !== 'undefined' && typeof window.renderMathInElement === 'function') {
+      return Promise.resolve();
+    }
+    if (_katexLoadPromise) return _katexLoadPromise;
+    _katexLoadPromise = Promise.all([
+      loadHeadTag('link', {
+        rel: 'stylesheet',
+        href: KATEX_CDN_BASE + 'katex.min.css',
+        integrity: 'sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+',
+        crossOrigin: 'anonymous',
+      }),
+      loadHeadTag('script', {
+        src: KATEX_CDN_BASE + 'katex.min.js',
+        integrity: 'sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg',
+        crossOrigin: 'anonymous',
+      }).then(function () {
+        return loadHeadTag('script', {
+          src: KATEX_CDN_BASE + 'contrib/auto-render.min.js',
+          integrity: 'sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk',
+          crossOrigin: 'anonymous',
+        });
+      }),
+    ]).catch(function (err) {
+      _katexLoadPromise = null;
+      throw err;
+    });
+    return _katexLoadPromise;
+  }
+
+  function renderMessageMath(container) {
+    if (!containerHasMathDelimiters(container)) return;
+    var renderPromise;
+    if (typeof window !== 'undefined' && window.RNMath && typeof window.RNMath.render === 'function') {
+      renderPromise = Promise.resolve(window.RNMath.render(container));
+    } else {
+      renderPromise = ensureChatKatexLoaded().then(function () {
+        if (typeof window === 'undefined' || typeof window.renderMathInElement !== 'function') return;
+        window.renderMathInElement(container, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false },
+          ],
+          ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+          throwOnError: false,
+        });
+      });
+    }
+    renderPromise
+      .then(function () {
+        if (state.messagesEl) {
+          state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
+        }
+      })
+      .catch(function () {});
+  }
+
   function appendUserMessage(text) {
     var msg = document.createElement('div');
     msg.className = 'kb-chat-msg kb-chat-msg--user';
-    msg.textContent = text;
+    msg.textContent = normalizeMathText(text);
     state.messagesEl.appendChild(msg);
+    renderMessageMath(msg);
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
   }
 
@@ -656,7 +760,7 @@
           continue;
         }
       }
-      p.appendChild(document.createTextNode(part));
+      p.appendChild(document.createTextNode(normalizeMathText(part)));
     }
     container.appendChild(p);
   }
@@ -715,7 +819,7 @@
         if (item.snippet) {
           var snippetEl = document.createElement('span');
           snippetEl.className = 'kb-chat-citation-snippet';
-          snippetEl.textContent = String(item.snippet);
+          snippetEl.textContent = normalizeMathText(String(item.snippet));
           card.appendChild(snippetEl);
         }
         citeWrap.appendChild(card);
@@ -730,6 +834,7 @@
     }
 
     state.messagesEl.appendChild(msg);
+    renderMessageMath(msg);
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
   }
 

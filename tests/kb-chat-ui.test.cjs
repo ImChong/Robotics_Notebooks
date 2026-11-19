@@ -426,3 +426,68 @@ test('XSS payloads and dangerous citation URLs are rendered inertly without scri
   assert.match(greetingMsgs[1].textContent, /只读问答助手/);
   dom.window.close();
 });
+
+test('LaTeX math delimiters normalize safely and invoke KaTeX rendering without HTML injection', async () => {
+  let renderedContainers = 0;
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer:
+              '动力学方程 $\\tau = J^T F$，代价约 $50k–$70k，块级公式：$$\\min_x \\|Ax-b\\|^2$$ [1]。<script>window.__mathXss=1</script>',
+            citations: [
+              {
+                index: 1,
+                id: 'wiki-concepts-wbc',
+                title: 'Whole-Body Control',
+                heading: 'QP',
+                snippet: '满足 $Ax = b$ 约束',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+            ],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.renderMathInElement = (el, opts) => {
+    renderedContainers += 1;
+    assert.ok(Array.isArray(opts.delimiters));
+    assert.ok(el.textContent.includes('\\(\\tau = J^T F\\)'));
+    assert.ok(el.textContent.includes('$$\\min_x \\|Ax-b\\|^2$$'));
+    assert.ok(el.textContent.includes('$50k–$70k'));
+    assert.ok(el.textContent.includes('\\(Ax = b\\)'));
+  };
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-math'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC $J^T F$？');
+  assert.ok(renderedContainers >= 2, 'should invoke KaTeX for both user and assistant messages');
+  assert.equal(window.__mathXss, undefined);
+  assert.equal(window.document.querySelectorAll('.kb-chat-msg script').length, 0);
+  dom.window.close();
+});

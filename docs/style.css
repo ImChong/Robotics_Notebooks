@@ -5401,6 +5401,17 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-msg-text {
   white-space: pre-wrap;
 }
+.kb-chat-msg .katex {
+  font-size: 0.96em;
+  white-space: normal;
+}
+.kb-chat-msg .katex-display {
+  margin: 6px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  white-space: normal;
+}
 .kb-chat-status-note {
   font-size: 0.74rem;
   line-height: 1.4;
