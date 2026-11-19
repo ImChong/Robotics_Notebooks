@@ -42,3 +42,11 @@
 ## 2026-11-14 一手身份核验
 
 StarVLA 框架论文为 **arXiv:2604.05014**，另有独立 **StarVLA-α（2604.11757）**。官方仓库 `starVLA_dev` README 同时列出两篇，不能混用编号。见 [StarVLA 框架唯一论文详情](../../wiki/entities/paper-starvla-framework.md)；α 的历史方法页 [StarVLA](../../wiki/methods/star-vla.md)。
+
+## 2026-11-19 框架/动作头切换入口核对
+
+- 官方 README 提示 `starVLA_dev` 为最新开发分支，可能不稳定；`starVLA` 为面向已验证结果的稳定分支。不能混用两条分支的配置与 checkpoint。
+- 官方 [Quick Start](https://github.com/starVLA/starVLA/blob/starVLA_dev/docs/starVLA_guideline.md) 介绍 `framework.name`：`QwenOFT`（MLP）、`QwenFAST`（自回归 token）、`QwenPI_v3`（flow matching）与 `QwenGR00T`（双系统）。
+- 实际 `examples/simBenchmarks/LIBERO/train_files/run_libero_train.sh` 的 `Framework_name=QwenPI`，同目录 YAML 默认 `QwenGR00T`；命令行覆盖与不同 backbone 权重需核对。
+- [框架原文档案](../papers/starvla_framework_arxiv_2604_05014_full_reading.md)记录 Table 5 / Table 9 的实验数据及 48.8% 对 53.8% 表格不一致问题；[官方项目页归档](../sites/starvla-framework-official-project.md)记录开放链接。
+- 2026-04-09 README 给出 StarVLA × RLinf 教程；早于该更新的框架论文 v1 称 RL fine-tuning 仍在集成阶段。不得只用旧文“TODO”判断现状。
