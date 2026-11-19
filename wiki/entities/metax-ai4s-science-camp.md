@@ -4,11 +4,12 @@ project_id: metax-ai4s-science-camp
 project: https://developer.metax-tech.com/activities/40
 tags: [course, ai-for-science, gpu, scientific-agent, protein-design, education, metax]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-19
 related:
   - ./google-grounding-ai-agents-wet-labs.md
   - ./paper-ai-scientists-last-exam.md
   - ./paper-agentic-aptamer-sandbox.md
+  - ./simplex-tetra-1.md
 sources:
   - ../../sources/sites/metax-ai4s-science-camp.md
 original:
@@ -77,6 +78,7 @@ flowchart TD
 - [Google Research：自动化湿实验的构件](google-grounding-ai-agents-wet-labs.md) — 模型、执行与验证的前沿研究。
 - [AI Scientists' Last Exam](paper-ai-scientists-last-exam.md) — 科学智能体评价需要可核查的结果与验证器。
 - [Agentic Aptamer Sandbox](paper-agentic-aptamer-sandbox.md) — 分子实验反馈闭环的对照案例。
+- [SimpleX Tetra-1](simplex-tetra-1.md) — 生物科学模型预览；结构假说与真实实验验证应区分，官方技术正文仍待核实。
 
 ## 参考来源
 
