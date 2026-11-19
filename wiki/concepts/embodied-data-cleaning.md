@@ -2,7 +2,7 @@
 type: concept
 tags: [data, machine-learning, manipulation, teleoperation, simulation]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-19
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../tasks/manipulation.md
@@ -85,6 +85,7 @@ original:
 - [Manipulation 任务](../tasks/manipulation.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
+- [SPL Hockey Goalie 3D](../entities/spl-hockey-goalie-3d.md) — 60 Hz 人体关键点与冰球轨迹同步案例；对照最近邻时间戳配对、SG 平滑与缺测 null 的质量边界
 
 ## 参考来源
 - Padalkar, A., et al. (2023). *Open X-Embodiment: Robotic Learning at Scale*.
