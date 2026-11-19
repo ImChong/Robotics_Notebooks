@@ -498,6 +498,14 @@ op: ingest
 - **意图：** 解释驾驶指令语义如何经离散局部运动 token 过渡到最终连续航点；明确 TrajCond 是中间条件而非最终离散输出。
 - **结论：** 新增独立论文详情，论文和源码分层归档，Mermaid 方法图与核心代码运行时序图，关联 DriveTeach-VLA 和 VLA 纵深路线。记录论文分位区间与当前公开代码 min/max 的差异，以及 GRPO 在主仓之外的复现边界。
 
+## [2026-11-19] ingest | embodiedglobal-embodied-ai-guide | 具身智能入门综述
+
+- 意图：将 Embodied Global 2026 长文从「感知—认知—行动」闭环归纳到本站具身智能入门坐标。
+- 来源：sources/blogs/embodiedglobal_embodied_ai_beginners_guide_2026_06_17.md；原文 2026-06-17 发布，已核对全文章节。
+- 升格：wiki/overview/embodied-ai-beginners-guide-2026.md；对照本站模型架构、VLA、Sim2Real、Infra 和成长路线。
+- 源码：文章无可运行实现；概念流程图不是源码运行图。
+- 核验边界：商业预测、量产和市场数字按原文转述，未独立一手核实。
+
 ## [2026-11-19] ingest | Remotion + HyperFrames 官方源码与视频工程栈复核
 
 - 复用既有 `wiki/entities/remotion.md` 和 `wiki/entities/hyperframes.md` 两个唯一实体，不重复建页。
