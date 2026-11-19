@@ -85,6 +85,10 @@
       tooLongError: '问题请控制在 {max} 字以内。',
       starters: ['什么是全身控制 WBC？', 'Sim2Real 如何缩小仿真到真机差距？', 'VLA 模型与传统控制怎么配合？'],
       fallbackLinksText: '浏览知识图谱',
+      metaCommunity: '社区',
+      metaRoadmap: '路线',
+      metaUpdated: '更新',
+      metaHealth: '健康度',
     },
     en: {
       panelTitle: 'Knowledge Q&A',
@@ -120,6 +124,10 @@
         'How do VLA models connect with low-level control?',
       ],
       fallbackLinksText: 'Browse Knowledge Graph',
+      metaCommunity: 'Community',
+      metaRoadmap: 'Roadmap',
+      metaUpdated: 'Updated',
+      metaHealth: 'Health',
     },
   };
 
@@ -342,16 +350,167 @@
     return _litePromise;
   }
 
+  var _communityIndex = null;
+  var _communityIndexPromise = null;
+
   function ensureCatalog() {
+    var promise;
     if (typeof window !== 'undefined' && window.RNSiteCatalog && typeof window.RNSiteCatalog.ensure === 'function') {
-      return window.RNSiteCatalog.ensure();
+      promise = window.RNSiteCatalog.ensure();
+    } else {
+      if (!_catalogPromise) {
+        _catalogPromise = fetchJsonWithTimeout('exports/site-catalog-v1.json', 20000).catch(function (err) {
+          _catalogPromise = null;
+          throw err;
+        });
+      }
+      promise = _catalogPromise;
     }
-    if (_catalogPromise) return _catalogPromise;
-    _catalogPromise = fetchJsonWithTimeout('exports/site-catalog-v1.json', 20000).catch(function (err) {
-      _catalogPromise = null;
-      throw err;
+    return promise.then(function (catalog) {
+      if (catalog && catalog !== state.catalog) {
+        state.catalog = catalog;
+        state.roadmapByNodeId = buildNodeRoadmapIndex(catalog);
+      }
+      return catalog;
     });
-    return _catalogPromise;
+  }
+
+  function shortenCommunityLabel(label) {
+    if (!label) return '';
+    var base = String(label).replace(/\s*社区\s*$/, '').trim();
+    if (!base || base === '未分类') return '';
+    var head = base.split('（', 1)[0].trim();
+    return head || base;
+  }
+
+  function shortenRoadmapTitle(title) {
+    var text = String(title || '').trim();
+    if (!text) return '';
+    var head = text.split('（', 1)[0].trim();
+    return head || text;
+  }
+
+  function buildNodeRoadmapIndex(catalog) {
+    var byNodeId = new Map();
+    var roadmaps = (catalog && catalog.pages && catalog.pages.roadmap_pages) || {};
+    Object.keys(roadmaps).forEach(function (roadmapId) {
+      var rm = roadmaps[roadmapId];
+      if (!rm) return;
+      var rmLabel = shortenRoadmapTitle(rm.title || roadmapId);
+      if (!byNodeId.has(roadmapId)) byNodeId.set(roadmapId, []);
+      var selfList = byNodeId.get(roadmapId);
+      if (selfList.indexOf(rmLabel) < 0) selfList.push(rmLabel);
+      var stages = Array.isArray(rm.stages) ? rm.stages : [];
+      for (var si = 0; si < stages.length; si += 1) {
+        var items = Array.isArray(stages[si] && stages[si].related_items) ? stages[si].related_items : [];
+        for (var ii = 0; ii < items.length; ii += 1) {
+          var itemId = items[ii];
+          if (!itemId) continue;
+          if (!byNodeId.has(itemId)) byNodeId.set(itemId, []);
+          var arr = byNodeId.get(itemId);
+          if (arr.indexOf(rmLabel) < 0) arr.push(rmLabel);
+        }
+      }
+    });
+    return byNodeId;
+  }
+
+  function ensureCommunityIndex() {
+    if (_communityIndex) return Promise.resolve(_communityIndex);
+    if (_communityIndexPromise) return _communityIndexPromise;
+    if (typeof window !== 'undefined' && window.RNCommunityIndex && typeof window.RNCommunityIndex.ensure === 'function') {
+      _communityIndexPromise = window.RNCommunityIndex.ensure()
+        .then(function (idx) {
+          _communityIndex = idx || { pathToCommunity: new Map(), communityLabel: {} };
+          _communityIndexPromise = null;
+          return _communityIndex;
+        })
+        .catch(function () {
+          _communityIndexPromise = null;
+          return { pathToCommunity: new Map(), communityLabel: {} };
+        });
+      return _communityIndexPromise;
+    }
+    _communityIndexPromise = fetchJsonWithTimeout('exports/link-graph.json', 20000)
+      .then(function (data) {
+        var pathToCommunity = new Map();
+        var nodes = Array.isArray(data && data.nodes) ? data.nodes : [];
+        for (var i = 0; i < nodes.length; i += 1) {
+          var node = nodes[i];
+          if (node && node.id && node.community) {
+            pathToCommunity.set(node.id, node.community);
+          }
+        }
+        var communityLabel = {};
+        var communities = Array.isArray(data && data.communities) ? data.communities : [];
+        for (var j = 0; j < communities.length; j += 1) {
+          var c = communities[j];
+          if (c && c.id) communityLabel[c.id] = c.label || c.id;
+        }
+        _communityIndex = { pathToCommunity: pathToCommunity, communityLabel: communityLabel };
+        _communityIndexPromise = null;
+        return _communityIndex;
+      })
+      .catch(function () {
+        _communityIndexPromise = null;
+        return { pathToCommunity: new Map(), communityLabel: {} };
+      });
+    return _communityIndexPromise;
+  }
+
+  function resolveCitationMeta(item) {
+    var id = item && item.id ? String(item.id) : '';
+    var pages = (state.catalog && state.catalog.pages) || {};
+    var pageMeta =
+      (pages.detail_pages && id && pages.detail_pages[id]) ||
+      (pages.roadmap_pages && id && pages.roadmap_pages[id]) ||
+      null;
+    var nodeTitle = (pageMeta && pageMeta.title) || (item && item.title) || id;
+    var updated = (pageMeta && pageMeta.updated) || (item && item.updated) || '';
+    var healthScore =
+      pageMeta && typeof pageMeta.health_score === 'number'
+        ? pageMeta.health_score
+        : item && typeof item.health_score === 'number'
+          ? item.health_score
+          : null;
+    var path = (pageMeta && pageMeta.path) || (item && item.path) || '';
+    var roadmaps =
+      (state.roadmapByNodeId && id && state.roadmapByNodeId.get(id)) ||
+      (Array.isArray(item && item.roadmaps) ? item.roadmaps : []);
+    var communityLabel = (pageMeta && pageMeta.community_label) || (item && item.community_label) || '';
+    if (!communityLabel && _communityIndex && path && _communityIndex.pathToCommunity) {
+      var cid = _communityIndex.pathToCommunity.get(path);
+      if (cid && _communityIndex.communityLabel && _communityIndex.communityLabel[cid]) {
+        communityLabel = _communityIndex.communityLabel[cid];
+      }
+    }
+    return {
+      title: String(nodeTitle || ''),
+      path: String(path || ''),
+      community: shortenCommunityLabel(communityLabel),
+      roadmaps: roadmaps,
+      updated: String(updated || ''),
+      healthScore: healthScore,
+    };
+  }
+
+  function createHealthBarEl(score) {
+    var clamped = Math.max(0, Math.min(3, Math.round(score)));
+    var wrap = document.createElement('span');
+    wrap.className = 'kb-chat-citation-health';
+    var bar = document.createElement('span');
+    bar.className = 'node-health node-health--' + clamped;
+    bar.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < 3; i += 1) {
+      var seg = document.createElement('i');
+      if (i < clamped) seg.className = 'is-on';
+      bar.appendChild(seg);
+    }
+    var txt = document.createElement('span');
+    txt.textContent = t('metaHealth') + ' ' + clamped + '/3';
+    wrap.appendChild(bar);
+    wrap.appendChild(txt);
+    return wrap;
   }
 
   function fetchPageContent(contentUrl) {
@@ -526,6 +685,8 @@
     titleEl: null,
     welcomeEl: null,
     startersEl: null,
+    catalog: null,
+    roadmapByNodeId: null,
     turnstileEl: null,
     turnstileWidgetId: null,
     prewarmedToken: null,
@@ -1075,9 +1236,12 @@
       label.textContent = t('sourcesLabel');
       citeWrap.appendChild(label);
 
+      var pendingCommunitySlots = [];
+
       for (var j = 0; j < citations.length; j += 1) {
         var item = citations[j];
         if (!item) continue;
+        var meta = resolveCitationMeta(item);
         var href = safeInternalNodeUrl(item.url, item.id);
         var card = document.createElement(href ? 'a' : 'div');
         card.className = 'kb-chat-citation-card';
@@ -1085,14 +1249,49 @@
 
         var titleEl = document.createElement('span');
         titleEl.className = 'kb-chat-citation-title';
-        titleEl.textContent = '[' + (item.index || j + 1) + '] ' + String(item.title || item.id || '');
+        titleEl.textContent = '[' + (item.index || j + 1) + '] ' + (meta.title || String(item.id || ''));
         card.appendChild(titleEl);
 
-        if (item.heading) {
+        if (item.heading && String(item.heading).trim() !== meta.title) {
           var headingEl = document.createElement('span');
           headingEl.className = 'kb-chat-citation-heading';
           headingEl.textContent = String(item.heading);
           card.appendChild(headingEl);
+        }
+
+        var metaRow = document.createElement('div');
+        metaRow.className = 'kb-chat-citation-meta';
+        if (meta.community) {
+          var commChip = document.createElement('span');
+          commChip.className = 'kb-chat-citation-chip kb-chat-citation-community';
+          commChip.textContent = t('metaCommunity') + ' · ' + meta.community;
+          metaRow.appendChild(commChip);
+        } else if (meta.path) {
+          pendingCommunitySlots.push({ metaRow: metaRow, path: meta.path });
+        }
+
+        if (meta.roadmaps && meta.roadmaps.length > 0) {
+          var rmChip = document.createElement('span');
+          rmChip.className = 'kb-chat-citation-chip kb-chat-citation-roadmap';
+          var rmText = meta.roadmaps[0] + (meta.roadmaps.length > 1 ? ' +' + (meta.roadmaps.length - 1) : '');
+          rmChip.textContent = t('metaRoadmap') + ' · ' + rmText;
+          rmChip.title = meta.roadmaps.join(' / ');
+          metaRow.appendChild(rmChip);
+        }
+
+        if (meta.updated) {
+          var updChip = document.createElement('span');
+          updChip.className = 'kb-chat-citation-chip kb-chat-citation-updated';
+          updChip.textContent = t('metaUpdated') + ' ' + meta.updated;
+          metaRow.appendChild(updChip);
+        }
+
+        if (typeof meta.healthScore === 'number') {
+          metaRow.appendChild(createHealthBarEl(meta.healthScore));
+        }
+
+        if (metaRow.childNodes.length > 0 || pendingCommunitySlots.length > 0) {
+          card.appendChild(metaRow);
         }
 
         if (item.snippet) {
@@ -1102,6 +1301,23 @@
           card.appendChild(snippetEl);
         }
         citeWrap.appendChild(card);
+      }
+
+      if (pendingCommunitySlots.length > 0) {
+        ensureCommunityIndex().then(function (commIdx) {
+          if (!commIdx || !commIdx.pathToCommunity) return;
+          for (var p = 0; p < pendingCommunitySlots.length; p += 1) {
+            var slotInfo = pendingCommunitySlots[p];
+            var cid = commIdx.pathToCommunity.get(slotInfo.path);
+            var rawLabel = cid && commIdx.communityLabel ? commIdx.communityLabel[cid] : '';
+            var shortLabel = shortenCommunityLabel(rawLabel);
+            if (!shortLabel) continue;
+            var commEl = document.createElement('span');
+            commEl.className = 'kb-chat-citation-chip kb-chat-citation-community';
+            commEl.textContent = t('metaCommunity') + ' · ' + shortLabel;
+            slotInfo.metaRow.insertBefore(commEl, slotInfo.metaRow.firstChild);
+          }
+        });
       }
       msg.appendChild(citeWrap);
     } else if (options.showGraphLink) {

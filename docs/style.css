@@ -5567,6 +5567,38 @@ a.card:active { transform: translateY(-1px); }
   font-size: 0.7rem;
   color: var(--text-muted);
 }
+.kb-chat-citation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+.kb-chat-citation-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  line-height: 1.45;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.kb-chat-citation-health {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.kb-chat-citation-health .node-health {
+  cursor: default;
+}
+.kb-chat-citation-health .node-health i {
+  height: 9px;
+}
 .kb-chat-citation-snippet {
   font-size: 0.74rem;
   line-height: 1.4;
