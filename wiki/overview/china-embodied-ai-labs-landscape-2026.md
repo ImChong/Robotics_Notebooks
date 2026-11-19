@@ -16,6 +16,7 @@ related:
   - ./vla-open-source-repro-landscape-2025.md
   - ../entities/agibot-world-2026.md
   - ../entities/agibot-lingxi-x1.md
+  - ../entities/spirit-ai.md
   - ../entities/x-humanoid.md
   - ../entities/limx-cosa.md
   - ../entities/aloha.md
@@ -92,7 +93,7 @@ flowchart TB
 
 | 实验室 / 团队 | 孵化 / 产业关联（文内） | 本库延伸 |
 |---------------|------------------------|----------|
-| 清华 ISR / TEA / EVAR / MARS 等 | 星动纪元、破壳、千寻、星海图等 | [Diffusion Policy](../methods/diffusion-policy.md)（DP3 语境）、[VLA](../methods/vla.md) |
+| 清华 ISR / TEA / EVAR / MARS 等 | 星动纪元、破壳、[千寻智能](../entities/spirit-ai.md)、星海图等 | [Diffusion Policy](../methods/diffusion-policy.md)（DP3 语境）、[VLA](../methods/vla.md) |
 | 清华机器人控制实验室（赵明国） | 加速进化；MPC / WBC 算法传统 | [MPC](../methods/model-predictive-control.md)、[WBC](../concepts/whole-body-control.md) |
 | 北大 EPIC Lab（王鹤） | 银河通用 Galbot；GraspVLA | [manipulation](../tasks/manipulation.md) |
 | 南科大 CLEAR（张巍） | 逐际动力 LimX Dynamics | [LimX COSA](../entities/limx-cosa.md)、[Sim2Real](../concepts/sim2real.md) |
@@ -150,6 +151,7 @@ flowchart TB
 - [Robot Learning Overview](./robot-learning-overview.md)
 - [VLA 开源复现谱系 2025](./vla-open-source-repro-landscape-2025.md)
 - [Agibot World 2026](../entities/agibot-world-2026.md)
+- [千寻智能（Spirit.AI）](../entities/spirit-ai.md)
 - [X-Humanoid](../entities/x-humanoid.md)
 - [LimX COSA](../entities/limx-cosa.md)
 

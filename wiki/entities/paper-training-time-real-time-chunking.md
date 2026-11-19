@@ -14,6 +14,7 @@ related:
   - ../methods/action-chunking.md
   - ../methods/pi0-policy.md
   - ./paper-real-time-chunking.md
+  - ./paper-legato.md
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-remac.md
   - ./paper-futurertc.md
@@ -71,7 +72,7 @@ summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随�
 |------|-------------|------|
 | 前缀约束方式 | 训练期对已提交 prefix 条件化，推理直接喂 prefix，采样与标准 flow 相同 | [Real-Time Chunking](./paper-real-time-chunking.md)：推理期 pseudoinverse inpainting，对整个 overlap 做 soft 约束，每步去噪付 VJP 开销 |
 | 高 delay 表现 | Kinetix 上 delay≥2 成功率高于 inference-time RTC（同 base checkpoint、各微调 8 epoch） | [Real-Time Chunking](./paper-real-time-chunking.md)：真机注入 +100 / +200 ms 后吞吐基本持平，时间集成失败 |
-| 训练目标 | 随机采样 delay，loss 只算 postfix | [REMAC](./paper-remac.md)：delay 条件 mask 监督可执行后缀 + 自条件课程，额外强调 intra-chunk 不一致 |
+| 训练目标 | 随机采样 delay，loss 只算 postfix | [REMAC](./paper-remac.md)：delay 条件 mask 监督可执行后缀 + 自条件课程，额外强调 intra-chunk 不一致；[Legato](./paper-legato.md)：动作–噪声混合与重塑速度场目标 + 三段 $(d,r,s)$ 调度，真机 Pour 得分与平滑度优于 T-RTC |
 | 是否改 VLA 权重 | 改；需微调策略 | [FutureRTC](./paper-futurertc.md)：冻结 VLA，前挂 adapter 预测执行时刻视觉 latent 与本体状态 |
 
 ## 结论
@@ -110,6 +111,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Real-Time Chunking（推理期）](./paper-real-time-chunking.md)
+- [Legato（训练期动力学重塑延续）](./paper-legato.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [LeRobot](./lerobot.md)

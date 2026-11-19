@@ -12,6 +12,7 @@ related:
   - ../methods/action-chunking.md
   - ../methods/pi0-policy.md
   - ./paper-training-time-real-time-chunking.md
+  - ./paper-legato.md
   - ./paper-remac.md
   - ./paper-futurertc.md
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
@@ -128,6 +129,7 @@ $$
 | [Training-Time RTC](./paper-training-time-real-time-chunking.md) | 训练 prefix 条件化，推理零 inpainting；π\*₀.₆ 咖啡演示 |
 | [REMAC](./paper-remac.md) | 训练期 masked chunk + 修 intra-chunk 不一致；推理无额外延迟 |
 | [FutureRTC](./paper-futurertc.md) | 冻结 VLA + adapter 预测执行时刻 \((z,s)\) |
+| [Legato](./paper-legato.md) | RSS 2026；训练期重塑速度场目标与三段随机调度实现每步零 VJP 延续，抑制块间伪多模态切换；仅 Kinetix 2D 仿真版以 MIT 开源 |
 | [WAM 实时异步部署实证](./paper-wam-realtime-async.md) | 在 WAM 上对照 sync / async / blend / infer / train：推理期方案压不住高延迟区，训练期方案综合最好，可与本页纯推理 RTC 对读 |
 
 ## 源码运行时序图
@@ -185,6 +187,7 @@ sequenceDiagram
 - [Action Chunking](../methods/action-chunking.md)
 - [π₀](../methods/pi0-policy.md)
 - [Training-Time RTC](./paper-training-time-real-time-chunking.md)
+- [Legato](./paper-legato.md) — RSS 2026：训练期流场目标重塑实现零 VJP 原生延续
 - [REMAC](./paper-remac.md)
 - [FutureRTC](./paper-futurertc.md)
 - [LeRobot](./lerobot.md)

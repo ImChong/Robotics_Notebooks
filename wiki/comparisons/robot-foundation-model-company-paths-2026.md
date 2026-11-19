@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-19
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -23,11 +23,14 @@ related:
   - ../entities/rhoda-ai.md
   - ../entities/motphys.md
   - ../entities/gamma-robotics.md
+  - ../entities/spirit-ai.md
   - ./autonomous-driving-embodied-intelligence-2013-2026.md
 original:
   - ../../sources/papers/gr00t_n1_reading_arxiv_2503_14734_company_paths.md
   - ../../sources/papers/pi05_reading_arxiv_2504_16054.md
 sources:
+  - ../../sources/sites/spirit-ai.md
+  - ../../sources/blogs/spirit_ai_spirit_v1_5_blog_2026-01-11.md
   - ../../sources/sites/motphys.md
   - ../../sources/sites/gamma-robotics.md
   - ../../sources/sites/rhoda-ai.md
@@ -148,8 +151,9 @@ flowchart TB
 | [源策未来 Archon Robotics](../entities/archon-robotics.md) | ○ | ● | ● | [Whole-Body Intelligence](../entities/archon-whole-body-intelligence.md)、[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)、[EgoHumanoid-V2](../entities/paper-egohumanoid-v2.md) |
 | [伽马智能 Gamma Robotics](../entities/gamma-robotics.md) | ○ | ● | ● | [NEXUS](../entities/paper-nexus-terrain-adaptive-teleoperation.md)、[TTCO](../entities/paper-ttco-test-time-compute-humanoid-bfm.md)、[GR-BC](../entities/paper-gr-bc.md)、[KODA](../entities/paper-koda-egocentric-vla.md)、[LocoManiLab](../entities/paper-locomanilab.md)、GBot-W / GData |
 | [Li Auto 理想汽车（具身）](../overview/li-auto-machembodied-4-papers-technology-map.md) | ● |  |  | MachEmbodied：[ME-Brain 1.0](../entities/paper-me-brain-1-0.md)、[ME-VLM](../entities/paper-me-vlm.md)、[ME-U0](../entities/paper-me-u0.md)、[ME-Dex 1.0](../entities/paper-me-dex-1-0.md) |
+| [Spirit AI 千寻智能](../entities/spirit-ai.md) | ● | ○ |  | [Spirit-v1.5](../entities/cn-os-spirit-v1-5.md)、Spirit v1.6 / Omni、[Legato](../entities/paper-legato.md)、[HuMI](../entities/paper-notebook-humanoid-manipulation-interface.md)、[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)、[Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md)、[VGE](../entities/paper-vge-2611-22625.md)、Moz1 / Moz2 / uDAS |
 
-NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。
+NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。千寻智能（Spirit AI）的 ① 对应 Diverse Collection、Spirit-v1.5 / 闭源 Spirit v1.6（VLA + 世界模型）与 Legato / Emergent Transfer / VGE 等基础模型研究，② 的 ○ 对应 Moz1 / Moz2 全力控轮式人形、`MozRobot SDK`、STO 安全阻抗控制、Agent 模糊指令翻译及 OpenHLM 全身 VLA（另注：uDAS 数据金字塔与 v1.6 模型闭源，RoboArena 2026 年 6–8 月登顶与榜单改版撤榜口径见[官网归档](../../sources/sites/spirit-ai.md)）。
 
 智在无界（BeingBeyond）的 ① 对应 Being-H 灵巧操作线（H0 人类视频 VLA → H0.5 统一动作空间 → H0.7 潜空间 WAM → H0.8 触觉 WAM）与 VIPA-VLA、JALA 等 VLA 预训练研究，③ 对应 BumbleBee / FAST / RLPF 全身控制、DemoHLM 与 Being-M0.7 人形移动操作；官网有 D1 桌面灵巧臂与 U1 数采设备，但未发布人形整机，② 留空。2024 年的 Being-M0 / Being-VL-0 早于公司成立，按官网 Research 页收录（[Research 站核查](../../sources/sites/research-beingbeyond-com.md)）。
 
@@ -223,6 +227,7 @@ Rhoda AI 只归入 ①：官网 3 篇研究博文围绕「互联网规模视频�
 | Li Auto | 🟡 | 🟡 | ❓ | [MachEmbodied](https://github.com/MachEmbodied) 有 ME-U0、ME-Dex 推理、ME-Brain 部分仓；ME-VLM 代码与权重待发布（[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)） |
 | 智在无界 BeingBeyond | ✅ | 🟡 | 🟡 | [GitHub](https://github.com/BeingBeyond) 27 个公开仓库；HF 有 Being-H0（1B / 8B / 14B）、Being-H05-2B、TTP 权重与部分数据集；Being-M0.7、Being-H0.8 项目页未列代码与权重（[核查](../../sources/sites/research-beingbeyond-com.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
+| Spirit AI | ✅ | ✅ | ❌ | [Spirit-v1.5](../entities/cn-os-spirit-v1-5.md) 源码 MIT、HF 权重 Apache-2.0（`HF Datasets = 0`）；[Legato](../entities/paper-legato.md) 仅 Kinetix MIT 仿真开源；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md) 联署学术页另含 Apache-2.0 数据与检查点；uDAS（>20 万 h）、Diverse Collection 语料及 Spirit v1.6 / Omni 模型闭源，`MozRobot SDK` 硬件适配包面向客户凭秘钥发放（[核查](../../sources/sites/spirit-ai.md)） |
 
 > ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表于 2026-10-05 补核薄弱项目，其余沿用各页注明日期的归档；公司有任一公开资产不表示所有版本均开放。
 
@@ -281,8 +286,12 @@ flowchart LR
 - [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md)
 - [人形运控小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 按模型族选路线的知识链入口
+- [千寻智能（Spirit.AI）](../entities/spirit-ai.md) — 跨平台可穿戴数采 uDAS、Spirit-v1.5 / 闭源 Spirit v1.6 与轮式人形路线
 
 ## 参考来源
+
+- [千寻智能官网、文档、新闻时间线与开源核查（2026-11-19）](../../sources/sites/spirit-ai.md)
+- [Spirit-v1.5 官方博客归档（2026-01-11）](../../sources/blogs/spirit_ai_spirit_v1_5_blog_2026-01-11.md)
 
 - [Amazon FAR：团队性质、官方入口与技术路线核查](../../sources/sites/amazon-far.md)
 
