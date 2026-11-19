@@ -482,6 +482,13 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-19] ingest | 机器人论文与工具六项核对
+
+- 意图：以一手论文和官方源码整理 TCP4D、Heave-Ho、ForceHarness、robot-weight-debugging 四篇独立论文，更新既有 XMimic/XSoma 与 Alloy 实体。
+- 开源结论：TCP4D / ForceHarness / 权重补丁代码可读；Heave-Ho 截至入库日代码尚未发布；Alloy v0.1.7 官方 release 已公开。
+- 知识落点：四个新 wiki 论文实体，两个既有论文详情的版本补充，manipulation 任务入链及相关纵深路线。
+- 边界：只做论文/源码静态核查，未复现论文数值，健康度与 CI 需 PR 流水线验收。
+
 ## [2026-11-19] ingest | 通读一手论文、官方手册与源码，将 motion-control、depth-robotics-diffusion-dit-flow、depth-teleoperation 三条路线的 19 个缺分节点全部升至 3/3 满分健康度
 
 ## [2026-11-19] ingest | Meta-Rewarding LLM v2：双偏好自训练与元评委漂移
