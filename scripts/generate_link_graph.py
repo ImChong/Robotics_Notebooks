@@ -1159,19 +1159,22 @@ def compute_reference_health(content: str, internal_link_count: int) -> tuple[in
     if not fm:
         return 0, 7
     has_sources = bool(
-        re.search(r"^sources\s*:\s*(?:\S.*|\n[ \t]+-[ \t]+\S+)", fm, re.MULTILINE)
+        parse_frontmatter_list(content, "sources")
         or re.search(r"^##\s+参考来源", body, re.MULTILINE)
     )
-    has_guide = bool(
-        re.search(r"^##\s+(?:按问题找|选读|快速入口|阅读路径)", body, re.MULTILINE)
-        and (re.search(r"^\|[^|\n]+\|", body, re.MULTILINE) or "## 流程总览" in body
-             or "```mermaid" in body)
+    guide_heading = re.search(
+        r"^##\s+(?:按问题找|选读|快速入口|阅读路径)", body, re.MULTILINE
+    )
+    guide_table = re.search(r"^\|[^|\n]+\|", body, re.MULTILINE)
+    has_guide = bool(guide_heading and (guide_table or "```mermaid" in body))
+    has_categories = (
+        len(re.findall(r"^###\s+\S", body, re.MULTILINE)) >= 3
+        and internal_link_count >= 5
     )
     checks = (
         bool(re.search(r"^summary\s*:\s*\S", fm, re.MULTILINE) and has_sources),
         has_guide,
-        len(re.findall(r"^###\s+\S", body, re.MULTILINE)) >= 3
-        and internal_link_count >= 5,
+        has_categories,
     )
     score = sum(checks)
     gaps = sum(1 << i for i, ok in enumerate(checks) if not ok)
