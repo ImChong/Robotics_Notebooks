@@ -3,7 +3,7 @@
 
   var DEFAULT_CONFIG = {
     // 部署 Workers Free 网关与 Turnstile 后填写公开配置（严禁在此填写 Secret Key）
-    endpoint: 'https://robotics-notebooks-kb-chat.chongliu.workers.dev',
+    endpoint: 'https://robotics-notebooks-kb-chat.chongliu.workers.dev/chat',
     turnstileSiteKey: '0x4AAAAAAGIWdfoeyhjsNN-h',
     maxQuestionLength: 300,
     requestTimeoutMs: 10000,
@@ -725,6 +725,8 @@
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
   }
 
+  var activeTurnstileHandlers = null;
+
   function acquireTurnstileToken(siteKey) {
     return ensureTurnstileReady().then(function (turnstile) {
       return new Promise(function (resolve, reject) {
@@ -737,21 +739,26 @@
         var timer = setTimeout(function () {
           if (settled) return;
           settled = true;
+          activeTurnstileHandlers = null;
           reject(new Error('Turnstile timeout'));
         }, 12000);
 
-        function finishOk(token) {
-          if (settled) return;
-          settled = true;
-          clearTimeout(timer);
-          resolve(token);
-        }
-        function finishErr(errMsg) {
-          if (settled) return;
-          settled = true;
-          clearTimeout(timer);
-          reject(new Error(errMsg || 'Turnstile failed'));
-        }
+        activeTurnstileHandlers = {
+          onSuccess: function (token) {
+            if (settled) return;
+            settled = true;
+            clearTimeout(timer);
+            activeTurnstileHandlers = null;
+            resolve(token);
+          },
+          onError: function (errMsg) {
+            if (settled) return;
+            settled = true;
+            clearTimeout(timer);
+            activeTurnstileHandlers = null;
+            reject(new Error(errMsg || 'Turnstile failed'));
+          },
+        };
 
         try {
           if (state.turnstileWidgetId === null) {
@@ -759,12 +766,14 @@
               sitekey: siteKey,
               appearance: 'interaction-only',
               execution: 'execute',
-              callback: finishOk,
+              callback: function (token) {
+                if (activeTurnstileHandlers) activeTurnstileHandlers.onSuccess(token);
+              },
               'error-callback': function () {
-                finishErr('Turnstile error');
+                if (activeTurnstileHandlers) activeTurnstileHandlers.onError('Turnstile error');
               },
               'expired-callback': function () {
-                finishErr('Turnstile expired');
+                if (activeTurnstileHandlers) activeTurnstileHandlers.onError('Turnstile expired');
               },
             });
           } else {
@@ -772,7 +781,9 @@
           }
           turnstile.execute(state.turnstileWidgetId);
         } catch (err) {
-          finishErr(err && err.message ? err.message : 'Turnstile execution failed');
+          if (activeTurnstileHandlers) {
+            activeTurnstileHandlers.onError(err && err.message ? err.message : 'Turnstile execution failed');
+          }
         }
       });
     });
@@ -1123,6 +1134,10 @@
     panel.hidden = false;
     syncToggleButtonLabels();
     notifyHostState();
+    var cfg = getConfig();
+    if (cfg.endpoint && cfg.turnstileSiteKey) {
+      ensureTurnstileReady().catch(function () {});
+    }
     if (state.inputEl) state.inputEl.focus();
   }
 
