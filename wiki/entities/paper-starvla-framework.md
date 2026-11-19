@@ -8,7 +8,7 @@ code_scope: "starVLA_dev 主仓的通用架构/数据加载/训练/评测基础�
 project_distinction: "独立 framework 论文 arXiv:2604.05014；不同于既有 StarVLA-alpha arXiv:2604.11757 的简化策略对照研究"
 tags: [paper, vla, framework, modular-training, benchmarks, reproducibility, hkust]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-19
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/star-vla.md
@@ -20,6 +20,7 @@ original:
 sources:
   - ../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md
   - ../../sources/repos/star_vla.md
+  - ../../sources/sites/starvla-framework-official-project.md
 summary: "StarVLA 框架论文（arXiv:2604.05014）提供通用 VLM/世界模型骨干与 FAST/OFT/flow/GR00T 动作头可换插模块、跨本体与多目标训练和统一 server-client benchmark 接口；与 StarVLA-alpha（2604.11757）是两篇不同论文。"
 ---
 
@@ -96,7 +97,34 @@ sequenceDiagram
 
 - 论文覆盖 LIBERO、SimplerEnv、RoboTwin 2.0、RoboCasa-GR1、跨 benchmark 联合训练和扩展性测试；成功率是指定策略版本与评测环境的作者报告。
 - LIBERO 示例协议每套 10 tasks × 每任务 50 rollouts；正文比较 30k 训练步与 OpenVLA-OFT 175k 步，**不同训练轮数、配置或数据不可假定完全等价**。
-- 官方 README 的训练计划已支持 SFT、多模态协同与跨本体 co-training；**RL adaptation 尚列为待办**。不要因论文泛谈 RL 就声称所有算法都可直接重现。
+- 官方 README 的训练计划已支持 SFT、多模态协同与跨本体 co-training；**原文 v1 将 RLinf 集成列为进行中，后续官方 README 已给出 RLinf 训练教程**；需按发布日期与外部依赖区分支持边界。
+
+## RoboCasa 动作头对比：9.8 个百分点从何而来
+
+原文 **§5.3 / Table 5–6** 在 **RoboCasa-GR1 Tabletop（24 个任务）** 做**单基准训练**：同一框架、同一 benchmark 数据集上的不同动作头，均按每任务 **50 次 rollout** 评估；作者报告训练使用 **16×A100**，最多 **100K steps**。这是特定 RoboCasa 评测中的成功率差异，不是任意机器人/任务上更换动作头的固定收益。
+
+| 动作头 | 动作表示 | RoboCasa-GR1 平均成功率（Table 5） |
+|---|---|---:|
+| StarVLA-FAST | 离散 token 自回归 | 39.0% |
+| StarVLA-π | 连续流匹配 | 43.9% |
+| StarVLA-GR00T | 双系统流匹配 | 47.8% |
+| StarVLA-OFT | MLP 并行连续回归 | **48.8%** |
+
+**48.8 − 39.0 = 9.8 个百分点**（*percentage points*），而非相对提升 9.8%。动作头比较时不能只改名字就默认成本相同：FAST 需要动作词表/分词器匹配，π/GR00T 还涉及解码和推理计算路径。
+
+原文 **§7.1–7.2 / Table 9** 则是另一实验：将 **LIBERO、SimplerEnv、RoboTwin 2.0、RoboCasa-GR1 的训练集混合**，以 **batch 256、学习率 1e-4** 联合训练**一个 Generalist**，动作维度不足的本体填充到 **32 维**，再分别按官方协议评测，**无额外 benchmark-specific 微调**。该 Generalist 的 RoboCasa-GR1 成功率为 **57.3%**；这不代表对完全未见 RoboCasa 数据的零样本迁移。
+
+**表格口径提醒：** 同一篇框架论文 Table 5 的单基准 OFT 为 **48.8%**，Table 9 的 Specialist OFT 行却为 **53.8%**。若只在 Table 9 内比较，57.3% 对 53.8% 是 **3.5 个百分点**；论文 §7.2 正文使用 48.8% 作为比较基线，和 Table 9 的 OFT 行不一致。保留原表号及数值差异，不擅自统一或跨表将 8.5 个百分点归因为联合训练收益。
+
+## 可操作复现实验与源码边界
+
+- 官方 [Quick Start](https://github.com/starVLA/starVLA/blob/starVLA_dev/docs/starVLA_guideline.md) 展示的 YAML 在 `framework.name` 选择 `QwenOFT`、`QwenFAST`、`QwenPI_v3`、`QwenGR00T`；具体分支应以**代码支持的名称、骨干、动作维度和 tokenizer** 联合核对，不能只保证名称合法。
+- 代码入口 `examples/simBenchmarks/LIBERO/train_files/run_libero_train.sh` 把 `Framework_name` 传入 `--framework.name`；该脚本当前默认 `QwenPI` + `Qwen3.5-0.8B`，而同目录 YAML 默认 `QwenGR00T` + `Qwen3-VL-4B`。两者不等同于论文 RoboCasa 的对照配置，复现前需明确记录实际覆盖后的参数。
+- `starVLA/model/framework/VLM4A/QwenOFT.py` 的 `predict_action` 提取动作 token hidden states，并调用 `action_model.predict_action` 得到连续动作块；这是已静态核查的实际代码调用关系，**并未运行训练、部署或 24 任务评测**。
+- 论文 v1 §3.1.4 将 RLinf 强化学习集成描述为进行中；官方后续 README **2026-04-09** 更新提供 StarVLA × RLinf 教程。应区分**论文提交时状态**与**仓库后续集成**，不能把外部 RLinf 通路说成每种 RL 方法均内置且验证完成。
+- 官方 README 提醒 `starVLA_dev` 是活跃开发分支、可能不稳定，复现已验证结果需优先核对稳定 `starVLA` 分支、配置和对应 checkpoint。
+
+数据与源码核查细节见[框架原文归档](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)及[官方项目页归档](../../sources/sites/starvla-framework-official-project.md)。
 
 ## 结论
 
@@ -136,6 +164,7 @@ sequenceDiagram
 
 - [StarVLA 框架论文原文核对](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)
 - [StarVLA 源码索引](../../sources/repos/star_vla.md)
+- [StarVLA 官方项目页与当前开源状态](../../sources/sites/starvla-framework-official-project.md)
 
 ## 推荐继续阅读
 
