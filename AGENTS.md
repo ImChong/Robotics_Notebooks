@@ -118,10 +118,11 @@
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`
 - 新增页面**不需要**手动更新 `catalog.md`（`catalog.md` 已移出 Git，本地按需运行 `make catalog` 预览，PR 禁止提交它）；只有核心入口或学习路径变化时才更新 `index.md` 或相关 roadmap 页面
 
-### 视频内容核对（`media/`）
+### 视频内容核对与工作流（`media/`）
 
-- **零基础篇的观众完全零基础**：除了看过本系列前面几集，对其他相关知识（数学、编程、机器人）完全没有概念。做视频时，每个词、符号、公式、代码写法，要么前面几集讲过（说明第几集），要么当场用大白话讲清楚，不默认观众会。细则见 `media/zero-to-ppo-video/RELEASE_PLAN.md`「每集一个主题」。
+- **零基础篇的观众完全零基础**：除了看过本系列前面几集，对其他相关知识（数学、编程、机器人）完全没有概念。做视频时，每个词、符号、公式、代码写法，要么前面几集讲过（说明第几集，并用一两句快速过一下怎么得到的，不能只说「第几集讲过 / 算过」就直接用结果），要么当场用大白话讲清楚，不默认观众会。细则见 `media/zero-to-ppo-video/RELEASE_PLAN.md`「每集一个主题」。
 - 做或改 `media/` 下的视频时，除本仓库内容外，片中每个定义、术语、公式、数值都要找官方一手资料核对（教材原文、官方规范 / 文档、源码、原始论文），术语按一手资料的严格叫法；借鉴的一手资料列在视频最末尾一页（`outro.refs`）。细则见 `media/zero-to-ppo-video/RELEASE_PLAN.md`「内容核对：一手资料」。
+- **014 及后续视频必须走 `video-shotcraft` Workbench 审核与成片导出**：先跑通 `build.py` 与 `check_layout.mjs`（`no overlap`），再运行 `node media/zero-to-ppo-video/workbench.mjs <ep> --open` 生成 `out/<ep>/workbench/`（只提交脚本与源码，**严禁提交 `out/` 产物**）并启动交互式 Workbench 供用户审核时间轴 / 字幕 / 分镜；细则见 `media/zero-to-ppo-video/RELEASE_PLAN.md`「交付与审核：video-shotcraft 工作流」。
 
 ### 网页读取失败时
 
