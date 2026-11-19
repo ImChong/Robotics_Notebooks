@@ -128,7 +128,7 @@ flowchart TD
 
 ## 源码运行时序图
 
-下图依据公开 ```jev```、```so_arena.py```、```evaluator/jevbench.py```、```evaluator/MODEL_ADAPTER.md```、```reliability/build_variants.py``` / ```run_variants.py``` / ```score.py``` 的实际调用入口归纳；尚未在本机跑通 GPU 测评。
+下图依据公开 `jev`、`so_arena.py`、`evaluator/jevbench.py`、`evaluator/MODEL_ADAPTER.md`、`reliability/build_variants.py` / `run_variants.py` / `score.py` 的实际调用入口归纳；尚未在本机跑通 GPU 测评。
 
 ```mermaid
 sequenceDiagram
@@ -174,7 +174,7 @@ sequenceDiagram
   Rel-->>User: S、N、100R 与异常统计
 ```
 
-**入口与校验：** 根目录 ```./jev``` 是 shell wrapper，实际先由 ```so_arena.py``` 验证 data-lock.json 和 code-files.json 的 SHA-256 再拼装 runtime；```evaluator/jevbench.py``` 实施任务与分数统计；```reliability/``` 为**独立**的变体评测流程。模型仅接收公开请求，私有参考答案与 checker 状态留在评测器。
+**入口与校验：** 根目录 `./jev` 是 shell wrapper，实际先由 `so_arena.py` 验证 data-lock.json 和 code-files.json 的 SHA-256 再拼装 runtime；`evaluator/jevbench.py` 实施任务与分数统计；`reliability/` 为**独立**的变体评测流程。模型仅接收公开请求，私有参考答案与 checker 状态留在评测器。
 
 ## 实验与评测（作者报告，arXiv v1）
 
@@ -205,7 +205,7 @@ sequenceDiagram
 
 - **公开代码：** [holdrain/SO-Arena](https://github.com/holdrain/SO-Arena) 提供 evaluator、reliability、latency 和 adapter 协议。适用 Linux x86-64 / Python 3.12；模型服务另行部署。
 - **公开数据：** [SO-Arena/SO-Arena](https://huggingface.co/datasets/SO-Arena/SO-Arena)。部分源数据的第三方使用许可不同于代码 MIT 许可证；必须读数据 LICENSE/THIRD_PARTY_NOTICES。
-- **运行顺序：** 获取锁定数据 → ```./jev verify``` / ```setup``` / ```doctor``` → 按模型 adapter 运行 ```./jev run``` → ```./jev score```；可靠性另执行 ```reliability/build_variants.py```、```run_variants.py```、```score.py```。
+- **运行顺序：** 获取锁定数据 → `./jev verify` / `setup` / `doctor` → 按模型 adapter 运行 `./jev run` → `./jev score`；可靠性另执行 `reliability/build_variants.py`、`run_variants.py`、`score.py`。
 - **核验细节：** [论文归档](../../sources/papers/so_arena_arxiv_2611_15777.md)、[项目主页归档](../../sources/sites/so-arena.md)、[官方源码归档](../../sources/repos/so-arena.md) 分开记录。
 - **可复现性声明：** 本次阅读了源码执行入口但未实际下载全部基准数据、安装环境、运行评估器或复现模型结果。
 
