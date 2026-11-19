@@ -1162,14 +1162,11 @@ def compute_reference_health(content: str, internal_link_count: int) -> tuple[in
         parse_frontmatter_list(content, "sources")
         or re.search(r"^##\s+参考来源", body, re.MULTILINE)
     )
-    guide_heading = re.search(
-        r"^##\s+(?:按问题找|选读|快速入口|阅读路径)", body, re.MULTILINE
-    )
+    guide_heading = re.search(r"^##\s+(?:按问题找|选读|快速入口|阅读路径)", body, re.MULTILINE)
     guide_table = re.search(r"^\|[^|\n]+\|", body, re.MULTILINE)
     has_guide = bool(guide_heading and (guide_table or "```mermaid" in body))
     has_categories = (
-        len(re.findall(r"^###\s+\S", body, re.MULTILINE)) >= 3
-        and internal_link_count >= 5
+        len(re.findall(r"^###\s+\S", body, re.MULTILINE)) >= 3 and internal_link_count >= 5
     )
     checks = (
         bool(re.search(r"^summary\s*:\s*\S", fm, re.MULTILINE) and has_sources),
