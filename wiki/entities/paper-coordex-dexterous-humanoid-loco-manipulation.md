@@ -119,7 +119,7 @@ sequenceDiagram
     Prior-->>Env: body_prior_mean + hand_prior_mean
     Env-->>CLI: 返回任务状态与先验均值观测
     CLI->>Policy: policy(obs)
-    Actor->>Policy: shared coord_trunk + body/hand residual heads
+    Policy->>Policy: shared coord_trunk + body/hand residual heads
     Policy-->>CLI: 28-D latent residual
     CLI->>Env: env.step(actions)
     Env->>Prior: process_actions(residual)
