@@ -292,8 +292,8 @@
     var cellScale = (G - 1) / (2 * extent);
 
     var nodeMeta = Object.create(null);
-    var peakSigma = Math.max(2.6, G * 0.036);
-    var peakR = Math.min(12, Math.ceil(peakSigma * 2.5));
+    var peakSigma = Math.max(2.0, G * 0.025);
+    var peakR = Math.min(9, Math.ceil(peakSigma * 2.5));
     var peakSigma2 = 2 * peakSigma * peakSigma;
     var peakWeights = [];
     var dx;
@@ -339,7 +339,7 @@
       broadBuf[(gz0 + 1) * G + gx0] += contrib * (1 - tx) * tz;
       broadBuf[(gz0 + 1) * G + gx0 + 1] += contrib * tx * tz;
 
-      var peakAmp = Math.pow(contrib, 1.25);
+      var peakAmp = Math.pow(contrib, 1.65);
       var gxC = Math.round(gxF);
       var gzC = Math.round(gzF);
       for (var p = 0; p < peakWeights.length; p++) {
@@ -349,17 +349,16 @@
         var idxP = kdz * G + kdx;
         var val = peakAmp * peakWeights[p][2];
         var prev = peakBuf[idxP];
-        peakBuf[idxP] = Math.max(prev, val) + 0.14 * Math.min(prev, val);
+        // Quadratic smooth-max forms rounded U-shaped saddles between hills without sharp V-creases
+        var hDiff = Math.max(0.22 - Math.abs(prev - val), 0) / 0.22;
+        peakBuf[idxP] = Math.max(prev, val) + hDiff * hDiff * 0.055 + 0.06 * Math.min(prev, val);
       }
     }
 
-    var blurR = Math.max(3, Math.round(G * 0.062));
+    var blurR = Math.max(3, Math.round(G * 0.044));
     separableBoxBlur(broadBuf, tmpBuf, G, blurR);
-    separableBoxBlur(broadBuf, tmpBuf, G, Math.max(2, Math.round(blurR * 0.78)));
-    separableBoxBlur(broadBuf, tmpBuf, G, Math.max(2, Math.round(blurR * 0.55)));
-    var peakBlurR = Math.max(2, Math.round(G * 0.022));
-    separableBoxBlur(peakBuf, tmpBuf, G, peakBlurR);
-    separableBoxBlur(peakBuf, tmpBuf, G, Math.max(1, Math.round(peakBlurR * 0.7)));
+    separableBoxBlur(broadBuf, tmpBuf, G, Math.max(2, Math.round(blurR * 0.72)));
+    separableBoxBlur(peakBuf, tmpBuf, G, 1);
 
     var maxBroad = 1e-6;
     var maxPeak = 1e-6;
@@ -375,18 +374,17 @@
         var wxCell = -extent + (2 * extent * dx) / (G - 1);
         var idx = dz * G + dx;
         var bNorm = broadBuf[idx] / maxBroad;
-        // Soft saturation preserves distinct valley/ridge topography even on 8,185-node clusters
-        bNorm = bNorm / (bNorm + 0.42) * 1.42;
+        // Soft saturation keeps rolling base foothills while preserving distinct valley/ridge relief
+        bNorm = bNorm / (bNorm + 0.45) * 1.45;
         var pNorm = peakBuf[idx] / maxPeak;
         var radial = Math.hypot(wxCell, wzCell);
         var envMask = 1 - smoothstep(0.76, extent * 0.88, radial);
-        var rawH = Math.min(1, Math.max(0, (0.54 * Math.pow(bNorm, 0.88) + 0.46 * Math.pow(pNorm, 0.92)) * envMask));
-        heights[idx] = rawH;
+        var combined = Math.min(1, Math.max(0, 0.26 * Math.pow(bNorm, 1.05) + 0.74 * Math.pow(pNorm, 1.08)));
+        heights[idx] = Math.pow(combined, 1.16) * envMask;
       }
     }
 
-    // Two gentle Gaussian-like smoothing passes for silky rolling slopes & fluid iso-contours
-    separableBoxBlur(heights, tmpBuf, G, Math.max(2, Math.round(G * 0.018)));
+    // Single gentle final pass keeps peaks & saddles silky round while preserving crisp valley contrast
     separableBoxBlur(heights, tmpBuf, G, 1);
     var maxH = 1e-6;
     for (dz = 0; dz < G; dz++) {
@@ -1229,7 +1227,7 @@
       var aspect = width / Math.max(1, height);
       var cam = buildCameraMatrices(params, camState, aspect);
       lastViewProj = cam.viewProj;
-      var heightAmp = (params.height / 100) * 0.36;
+      var heightAmp = (params.height / 100) * 0.46;
       var isDarkTheme = !!renderOpts.isDark;
       var bgArr = parseCssColor(renderOpts.bgColor || (isDarkTheme ? '#191919' : '#f7f6f3'), [0.098, 0.098, 0.098, 1]);
 
@@ -1562,7 +1560,7 @@
         batchesDirty = true;
       }
       if (batchesDirty) {
-        var heightAmp = (params.height / 100) * 0.36;
+        var heightAmp = (params.height / 100) * 0.46;
         renderer.buildDynamicBatches({
           nodes: nodes,
           edges: edges,
