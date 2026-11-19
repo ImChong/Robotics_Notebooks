@@ -9,6 +9,8 @@ updated: 2026-11-06
 summary: "Opus 5.5 通过离线研究编辑 π₀.₅ 权重，探索动作节奏加速与 RTC 前缀修复，并在 YAM 真机上做初步验证。"
 related:
   - weight-space-programming.md
+  - ../methods/action-chunking.md
+  - ../methods/pi0-policy.md
 sources:
   - ../../sources/sites/robotics-weight-editing.md
   - ../../sources/repos/robotics-weight-editing.md
@@ -78,6 +80,8 @@ flowchart TB
 ## 关联页面
 
 - [Weight-Space Programming](weight-space-programming.md)：原文的研究动机来源；本项目侧重机器人策略与真机验证。
+- [Action Chunking（动作分块）](../methods/action-chunking.md)：本文的 RTC 前缀修复与 chunk 之间的执行衔接有关。
+- [π₀ 策略模型](../methods/pi0-policy.md)：定位所编辑的 π₀.₅ 策略所属的流匹配 VLA 谱系；不将 π₀ 与 π₀.₅ 当成同一 checkpoint。
 
 ## 参考来源
 
