@@ -2,8 +2,11 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, dexterous-manipulation, reinforcement-learning, ppo, motion-prior, residual-learning, latent-space, whole-body, unitree-g1, wuji-robotics, isaac-lab, berkeley]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-19
+project_id: coordex
 arxiv: "2606.23680"
+project: https://skevinci.github.io/coordex/
+code: https://github.com/Skevinci/coordex
 venue: "arXiv 2026"
 related:
   - ../tasks/loco-manipulation.md
@@ -19,6 +22,8 @@ related:
   - ./wuji-robotics.md
 sources:
   - ../../sources/papers/coordex_arxiv_2606_23680.md
+  - ../../sources/sites/coordex.md
+  - ../../sources/repos/coordex.md
 original: ../../sources/papers/coordex_arxiv_2606_23680.md
 summary: "CoorDex（arXiv:2606.23680，UNC/Berkeley）用分离的 body/hand 潜运动先验与协调潜残差 PPO，在 G1+20-DoF WUJI 上实现连续 dexterous loco-manipulation（边走边抓瓶、后退开门、转身持物）；WalkGrab 消融表明关节空间 PPO 与单体式潜残差在同奖励下均失败。"
 ---
@@ -85,6 +90,56 @@ flowchart TB
   end
   dec --> g1["G1 + WUJI / Dex3-1"]
 ```
+
+## 源码运行时序图
+
+> 基于官方仓库 `Skevinci/coordex`（2026-11-19）的**已训练 checkpoint 仿真回放**入口核对；对应源码详见 [官方源码归档](../../sources/repos/coordex.md)。以下**不是** teacher/VAE/PPO 训练时序。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as play_locomanip.py
+  participant App as Isaac Lab AppLauncher
+  participant Env as ManagerBasedRLEnv
+  participant Runner as RSL-RL OnPolicyRunner
+  participant Policy as ActorCriticCoordResidual
+  participant Prior as ResidualLatentAction and VAE
+  participant Sim as JointPositionAction and Sim
+
+  CLI->>App: 初始化 Isaac Sim
+  CLI->>CLI: 解析 task 与三类 checkpoint 路径
+  CLI->>Env: gym.make 注册的 CoorDex 任务
+  Env->>Prior: 初始化 action term 并加载 body/hand prior
+  CLI->>Runner: RslRlVecEnvWrapper + OnPolicyRunner
+  CLI->>Runner: load 任务策略 checkpoint
+  Runner-->>CLI: get_inference_policy
+  CLI->>Env: get_observations
+  loop 每个仿真控制步
+    Env->>Prior: 获取 body/hand proprio 的 prior mean
+    Prior-->>Env: body_prior_mean + hand_prior_mean
+    Env-->>CLI: 返回任务状态与先验均值观测
+    CLI->>Policy: policy(obs)
+    Policy->>Policy: shared coord_trunk + body/hand residual heads
+    Policy-->>CLI: 28-D latent residual
+    CLI->>Env: env.step(actions)
+    Env->>Prior: process_actions(residual)
+    Prior->>Prior: prior mean + residual, 冻结 decoder
+    Prior->>Prior: hand EMA 与关节限位
+    Prior->>Sim: JointPositionAction.process_actions
+    Env->>Prior: apply_actions
+    Prior->>Sim: JointPositionAction.apply_actions
+    Sim-->>Env: 物理推进与更新观测
+    Env-->>CLI: next obs
+  end
+```
+
+回放命令（需按 README 安装 Python 3.11、Isaac Sim 5.0、Isaac Lab 2.2.0）：
+
+```bash
+python scripts/rsl_rl/play_locomanip.py --task CoorDex-WalkGrab-Wuji-v0 --headless --num_envs 1
+```
+
+运行模块核验：`play_locomanip.py`、`tasks/locomanip/__init__.py`、`policies/actor_critic_coord_residual.py`、`mdp/actions.py` 中的 `ResidualLatentAction` / `_PriorPolicy`，及 `distillation/vae.py`；源码路径与任务 ID 见 [归档](../../sources/repos/coordex.md)。
 
 ## 核心机制（归纳）
 
@@ -175,9 +230,27 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md)
 - [舞肌 Wuji Hand](./wuji-robotics.md)
 
+## 官方源码开放情况与复现边界（2026-11-19）
+
+**当前结论：部分开源，可加载 checkpoint 做三项 Isaac Lab 仿真回放，不等于从示范数据起完整重训。**
+
+| 资源 | 本次实际核对 |
+|------|--------------|
+| 官方仓库 | [Skevinci/coordex](https://github.com/Skevinci/coordex) |
+| 仿真任务 | `CoorDex-WalkGrab-Wuji-v0`、`CoorDex-Fridge-Wuji-v0`、`CoorDex-WalkPickTurn-Wuji-v0` |
+| 回放入口 | `scripts/rsl_rl/play_locomanip.py`，支持 `--task`、`--checkpoint`、`--body-prior-checkpoint`、`--hand-prior-checkpoint` |
+| 公开内容 | `ckpts/body_prior`、`ckpts/hand_prior`、`ckpts/locomanip`、环境和动作模块、VAE/协调 actor 定义 |
+| 尚未确认开放 | teacher tracking、VAE 蒸馏、下游 PPO 的**从头训练入口**及完整训练数据 |
+| 依赖 | Python 3.11；Isaac Sim 5.0.0；Isaac Lab 2.2.0；PyTorch 2.7.0（官方 README） |
+| 实际运行 | **未执行 GPU 回放或成功率复测**；本文成功率均为论文报告数值 |
+
+**代码级差异：** 回放脚本的默认 checkpoint 中，WalkGrab/OpenFridge 使用 `kinematic_wrist_16k.pt`，WalkPickTurn 使用 `active_wrist_20k.pt`。源码 `actions.py` 支持 `wuji_floating_kinematic_wrist` 与 `wuji_floating_active` 两种 hand prior 变体，不能将所有任务一概描述为完全相同的手部 checkpoint。
+
+**原文与源码关系：** arXiv v1 §3、§4、附录 A/B 说明训练流程和评估；当前官方仓库 README 明确展示的是已训练权重回放。项目页本次直连读取失败，开放状态由作者官网及官方 GitHub 的 README/源码核实，不推断未公开资源的状态。见 [项目页来源](../../sources/sites/coordex.md) 与 [源码来源](../../sources/repos/coordex.md)。
+
 ## 工程实践
 
-以下均来自论文附录 A/B（arXiv v1 全文）；官方代码是否开放论文正文未说明，本页未复现。
+以下训练参数均来自论文附录 A/B（arXiv v1 全文）。官方代码已开放**checkpoint 仿真回放**及部分模型/环境实现，但本页未在 GPU 上运行或复现训练；复现范围见上一节。
 
 **仿真与控制栈**
 - Isaac Lab，物理步长 1/240 s、decimation 4 → **60 Hz** 控制；G1 手指固定（WUJI），**训练时仅 29 个身体关节驱动**；PD 跟踪关节位置目标。
@@ -211,11 +284,14 @@ flowchart TB
 ## 参考来源
 
 - [sources/papers/coordex_arxiv_2606_23680.md](../../sources/papers/coordex_arxiv_2606_23680.md)
+- [CoorDex 官方项目页归档](../../sources/sites/coordex.md)
+- [CoorDex 官方源码与运行入口归档](../../sources/repos/coordex.md)
 - Li et al., *CoorDex: Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation*, arXiv:2606.23680, 2026. <https://arxiv.org/abs/2606.23680>
 
 ## 推荐继续阅读
 
 - [CoorDex 项目主页](https://skevinci.github.io/coordex/)
+- [CoorDex 官方 GitHub 源码及权重](https://github.com/Skevinci/coordex)
 - [arXiv:2606.23680 全文](https://arxiv.org/html/2606.23680v1)
 - [PULSE（Physics-based Universal Latent Space）](https://arxiv.org/abs/2109.07416) — 潜技能空间蒸馏动机来源
 - [ResMimic 项目页](https://resmimic.github.io/) — 另一路全身 loco-manip 残差学习
