@@ -482,6 +482,12 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-19] ingest | sources/papers/kagan_2025_cl1_biological_neural_platform.md — 收录 CL1 生物神经闭环平台论文并区分后续官方 SDK
+
+- 新增唯一论文详情节点 `wiki/entities/paper-cl1-biological-neural-platform-kagan-2025.md`，记录期刊原文与后续 API 文档的时间与证据边界。
+- Nature 原文订阅正文暂无法核实；已在 sources 标明「通读：未完成」，论文节点保持 draft，PR 同步设为草稿。
+- 对接官方 cl-sdk 的可验证示例运行时序图；由强化学习方法页提供入链，明确生物闭环不等于机器人 RL。
+
 ## [2026-11-19] ingest | VGE | 冻结 VLM + 接地专家处理广义指代
 
 - 意图：通读 arXiv:2611.22625v1 并为 VGE 建立唯一论文详情节点，挂载 VLA Stage 2。
