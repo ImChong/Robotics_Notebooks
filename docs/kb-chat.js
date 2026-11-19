@@ -3,8 +3,8 @@
 
   var DEFAULT_CONFIG = {
     // 部署 Workers Free 网关与 Turnstile 后填写公开配置（严禁在此填写 Secret Key）
-    endpoint: '',
-    turnstileSiteKey: '',
+    endpoint: 'https://robotics-notebooks-kb-chat.chongliu.workers.dev',
+    turnstileSiteKey: '0x4AAAAAAGIWdfoeyhjsNN-h',
     maxQuestionLength: 300,
     requestTimeoutMs: 10000,
   };
