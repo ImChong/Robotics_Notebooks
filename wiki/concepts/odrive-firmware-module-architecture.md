@@ -1,7 +1,5 @@
 ---
-type: entity
-project_id: odrive
-code: https://github.com/odriverobotics/ODrive
+type: concept
 tags: [motor-control, foc, embedded, firmware, open-source, bldc, architecture, odrive]
 status: complete
 updated: 2026-11-19
@@ -18,14 +16,14 @@ original:
 sources:
   - ../../sources/repos/odrive_firmware_v0_5_6.md
   - ../../sources/blogs/wechat_bitz_odrive_modules_2026_09_17.md
-summary: "ODrive 经典开源 Firmware 0.5.6 架构：Axis 组织状态机与数据端口，Controller 输出力矩，Motor 管理 dq 电流设定/电流控制与 PWM，Encoder 提供反馈，实时控制周期与通信职责分层；含源码入口与异常失能路径。"
+summary: "以 ODrive 经典开源 Firmware 0.5.6 为案例，研究模块边界：Axis 组织状态机与数据端口，Controller 输出力矩，Motor 管理 dq 电流设定/电流控制与 PWM，Encoder 提供反馈，实时控制周期与通信职责分层；含源码入口与异常失能路径。"
 ---
 
 # ODrive 固件模块架构（ODrive Firmware 0.5.6 Architecture）
 
 ## 一句话定义
 
-**ODrive Firmware 0.5.6** 是经典开源多轴运动控制固件：使用 `Axis` 管理单轴状态与模块接线，`Controller` 负责位置/速度/力矩运动指令，`Motor` 一侧负责电气控制与功率输出，`Encoder` 提供闭环反馈。本文分析 **fw-v0.5.6 这一历史版本**，不代表后续 ODrive 产品的内部实现。
+本页是 **ODrive 0.5.6 的模块职责划分与控制链路案例**，用于学习固件架构边界，非新的 ODrive 项目实体。**ODrive Firmware 0.5.6** 是经典开源多轴运动控制固件：使用 `Axis` 管理单轴状态与模块接线，`Controller` 负责位置/速度/力矩运动指令，`Motor` 一侧负责电气控制与功率输出，`Encoder` 提供闭环反馈。本文分析 **fw-v0.5.6 这一历史版本**，不代表后续 ODrive 产品的内部实现。
 
 ## 英文缩写速查
 

@@ -12,7 +12,7 @@
 - **核对范围：** 官方 `docs/control.rst`；`MotorControl/{main.cpp,axis.cpp,axis.hpp,controller.cpp,controller.hpp,motor.cpp,motor.hpp,encoder.cpp,acim_estimator.cpp,component.hpp,low_level.cpp}` 的关键接口、控制回调、端口连接、PWM 回调与安全相关实现；`communication/` 目录核查。定位重点是模块协作和运行时序，并非全仓逐行安全审计。
 - **通读：** 已完成
 - **一句话说明：** ODrive 0.5.6 以周期中断调度估计器/控制器/电机子模块，用端口连接设置反馈和力矩通路，另以 Axis 状态机组织校准与使能、失能。
-- **对应 wiki：** [ODrive Firmware 架构](../../wiki/entities/odrive.md)
+- **对应 wiki：** [ODrive Firmware 架构](../../wiki/concepts/odrive-firmware-module-architecture.md)
 
 ## 一手源码索引
 

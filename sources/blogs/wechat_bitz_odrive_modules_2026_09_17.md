@@ -12,7 +12,7 @@
 - **核对范围：** 用户提供的完整文章文本（前言、六节与结语）；公众号页面直连读取受限，原文内容由用户完整提供。针对源码层面的论断，另据 ODrive 官方 fw-v0.5.6 核对。
 - **通读：** 已完成
 - **一句话说明：** 按七项对外能力→功能职责→Controller/Motor/Encoder/Axis/Communication→端口连接与实时流水线，解释经典 ODrive 0.5.x 的模块边界和架构取舍。
-- **对 wiki 的映射：** [ODrive 固件模块架构](../../wiki/entities/odrive.md)
+- **对 wiki 的映射：** [ODrive 固件模块架构](../../wiki/concepts/odrive-firmware-module-architecture.md)
 
 ## 文章主线（提炼，不复刻原文）
 
@@ -36,4 +36,4 @@
 
 ## 版本界限与复用
 
-该文章是架构阅读和工程评论，不是独立一手证据。官方一手代码与开发文档见 [ODrive Firmware fw-v0.5.6 源码归档](../repos/odrive_firmware_v0_5_6.md)，衍生实体节点见 [ODrive](../../wiki/entities/odrive.md)。不转载全文以尊重原文著作权。
+该文章是架构阅读和工程评论，不是独立一手证据。官方一手代码与开发文档见 [ODrive Firmware fw-v0.5.6 源码归档](../repos/odrive_firmware_v0_5_6.md)，架构概念节点见 [ODrive](../../wiki/concepts/odrive-firmware-module-architecture.md)。不转载全文以尊重原文著作权。
