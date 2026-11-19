@@ -6,7 +6,6 @@ status: draft
 updated: 2026-11-19
 venue: "Nature Reviews Bioengineering 3(9):724–725 (2025)"
 doi: "10.1038/s44222-025-00340-3"
-paper: https://doi.org/10.1038/s44222-025-00340-3
 project: https://corticallabs.com/cl1.html
 code: https://github.com/Cortical-Labs/cl-sdk
 related:
@@ -108,13 +107,13 @@ sequenceDiagram
   participant App as Python 应用
   participant API as cl.open / Neurons
   participant Data as CL SDK 数据源
-  participant Loop as Neurons.loop
+  participant Runner as Neurons Loop
   App->>API: with cl.open() as neurons
   Note over API,Data: 本地模拟器生成随机数据或回放 HDF5
   API->>Data: 初始化数据来源
-  App->>Loop: loop(ticks_per_second=1000)
+  App->>Runner: 启动迭代 ticks_per_second=1000
   loop 每次 tick
-    Data-->>Loop: 神经信号模拟数据
+    Data-->>Runner: 神经信号模拟数据
     Loop-->>App: tick.analysis.spikes
     opt 根据 spike 进行反馈
       App->>API: stim(channel, StimDesign)
