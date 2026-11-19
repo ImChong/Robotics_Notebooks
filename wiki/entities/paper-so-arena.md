@@ -11,6 +11,8 @@ original:
   - ../../sources/papers/so_arena_arxiv_2611_15777.md
 related:
   - ../concepts/ai-agent-evaluation.md
+  - ../methods/roboarena.md
+  - ../methods/coding-agent-verification-loops.md
   - ./typesafe-jev.md
   - ./laya.md
   - ./karpo-decision.md
@@ -190,6 +192,16 @@ sequenceDiagram
 
 **边界：** 上述为论文和官方仓库公开报告，没有独立复现、统计置信区间重算或机器人真机实验。
 
+## 对比：SO-Arena 与其他验证框架
+
+| 工作 | 被评对象与任务环境 | 主要质量信号 | 与 SO-Arena 的边界 |
+|---|---|---|---|
+| **SO-Arena（本文）** | 通用 System One 结构化决策：静态题、工具沙盒、文本 Web | 11 域等权能力 C + 选项顺序稳定性 S + 无正确选项识别 N | 关注候选式决策和协议内任务表现；不证明机器人闭环控制安全 |
+| [RoboArena](../methods/roboarena.md) | 跨实验室真实机器人操作策略的双盲配对测试 | 真机 rollout、任务偏好、部分进度、任务感知策略排名 | 真机具身泛化优于仅靠有限候选静态题；但没有以 SO-Arena 的 S/N 定义衡量模型 |
+| [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) | Coding Agent 对实际软件系统的修改和交付 | E2E、属性测试、差分测试及独立审查 | 验证的是软件产物与行为证据，不是 System One 候选选择的概率稳定性 |
+
+**工程读法：** SO-Arena 的决策扰动测试可作为智能体路由器/任务验证器的**模块级回归补充**，但在要执行真实代码或机器人动作时，仍需另做环境终态、异常恢复及安全约束验证；这里的组合建议是知识库工程迁移，并非 SO-Arena 论文已验证的联合系统。
+
 ## 结论
 
 **SO-Arena 的核心贡献不是再造单一排行榜，而是将“是否会做”与“同一个决策是否稳、能否知道候选里没有正确答案”拆成可独立诊断的测试。**
@@ -221,6 +233,8 @@ sequenceDiagram
 ## 关联页面
 
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 通用 agent harness、能力测评、终态与回归
+- [RoboArena 真机策略评测](../methods/roboarena.md) — 面向真实机器人策略的双盲配对评价，不与通用结构化决策得分混用
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 真实软件交付的 E2E、属性与差分测试，为结构化决策能力评测提供外部验收参照
 - [TypeSafe Jev](./typesafe-jev.md) — System One 结构化概率模型/服务，不等于 SO-Arena 评测器
 - [Laya](./laya.md) — 开源 System One 模型的对照入口
 - [Karpo Decision](./karpo-decision.md) — 结构化候选概率接口的工程实现
