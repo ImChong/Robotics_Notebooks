@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, testing, reliability, manufacturing, standards, sim2real]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-19
 related:
   - ./joint-module-self-development-workflow.md
   - ./humanoid-mass-production-engineering.md
@@ -150,6 +150,8 @@ flowchart LR
 - L0 仿真与 L4/L5 真机之间仍存在 sim2real 鸿沟；AI 策略测试需与 [域随机化](./domain-randomization.md) 与版本管理流程配套，本页不展开训练细节。
 
 ## 关联页面
+
+- [谐波减速器效率：工况折算与台架验证](./harmonic-reducer-efficiency.md) — L1/L2 测试时按转矩、转速和温度测量效率地图，进一步估算关节传动损耗与热预算
 
 - [自研关节模组开发流程](./joint-module-self-development-workflow.md) — L2 四层测试矩阵与五件套验收
 - [电机测功机](./motor-dynamometer.md) — L1/L2 台架核心设备与 TN 对账
