@@ -8,7 +8,7 @@ tags:
   - ai-agent-evaluation
   - human-in-the-loop
 status: complete
-updated: 2026-11-18
+updated: 2026-11-19
 summary: "从 Claude Code 两篇官方工程文章区分行为验证与代码评审：验证提交可复核的运行证据，评审结合安全与风险决定合并，再用渐进发布、回滚和事故复盘校准整个门禁。"
 related:
   - ../methods/coding-agent-verification-loops.md
@@ -16,6 +16,7 @@ related:
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
   - ../concepts/ai-agent-evaluation.md
   - ../entities/open-code-review.md
+  - ../overview/hub-embodied-eval-benchmark.md
 original:
   - ../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md
   - ../../sources/blogs/anthropic_claude_code_review_2026-10-15.md
@@ -113,6 +114,7 @@ flowchart TD
 - [多 Agent 编码管理与认知把关](../concepts/coding-agent-orchestration-and-cognitive-oversight.md) — 任务分配、审查能力和人的责任。
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 如何避免评测器偏差。
 - [Open Code Review](../entities/open-code-review.md) — 可审计的第三方 diff 评审工具，与 Anthropic 内部流程不同。
+- [具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md) — 边界对照：本页聚焦软件验证与代码评审，机器人控制迁移仍需按具身闭环基准补齐仿真回放、接触安全与真机验收。
 
 ## 参考来源
 

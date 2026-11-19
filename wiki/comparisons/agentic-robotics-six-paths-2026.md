@@ -2,7 +2,7 @@
 type: comparison
 tags: [agentic-robotics, robot-learning, vla, robot-use-rl, world-model, tactile-perception, real2sim, sim2real, humanoid]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-19
 related:
   - ../entities/paper-envisioning-agentic-robotics.md
   - ../entities/paper-pear-robot-use-rl.md
@@ -10,6 +10,8 @@ related:
   - ../entities/paper-supermimic.md
   - ../entities/paper-lingbot-touch.md
   - ../entities/robosimstudio.md
+  - ../queries/embodied-fm-taxonomy-loop.md
+  - ../queries/robot-perception-stack-selection-loop.md
 original:
   - ../../sources/papers/envisioning_agentic_robotics_arxiv_2611_18359.md
   - ../../sources/papers/pear_robot_use_rl_mit_2026.md
@@ -122,6 +124,8 @@ flowchart TD
 - [SuperMimic 的可微世界模型与全身跟踪](../entities/paper-supermimic.md)
 - [LingBot-Touch 的异构触觉预训练](../entities/paper-lingbot-touch.md)
 - [RoboSimStudio 的接触物理 Real2Sim](../entities/robosimstudio.md)
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 在五层具身大模型分类学中定位 ScaleVLA、SuperMimic 与 PEAR 的分层边界
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — LingBot-Touch 触觉观测与视觉感知栈在下游策略消费层（第④层）的协同定位
 
 ## 参考来源
 
