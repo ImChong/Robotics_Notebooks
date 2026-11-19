@@ -14,6 +14,8 @@ related:
   - ../entities/karpathy-autoresearch.md
   - ../concepts/ai-auto-research.md
   - ../concepts/data-flywheel.md
+  - ../methods/adamw.md
+  - ../methods/auto-labeling-pipelines.md
 sources:
   - ../../sources/blogs/openathena-scaling-marins-open-llm-pretraining-2026-11-05.md
   - ../../sources/sites/marin-community.md
@@ -163,6 +165,8 @@ sequenceDiagram
 - [karpathy/autoresearch](./karpathy-autoresearch.md) — 固定实验预算 + 自动实验环的轻量对照
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 代理参与科研流程的通用框架
 - [数据飞轮](../concepts/data-flywheel.md) — 训练数据反馈循环，和 Datakit 数据分桶相互参照
+- [AdamW 优化器](../methods/adamw.md) — 官方 Marin 教学训练使用 `AdamConfig` 配置优化器与权重衰减；该连接仅作基础训练优化器参照，不等于 Mochi 生产配方
+- [自动化标注流水线](../methods/auto-labeling-pipelines.md) — 对照机器人数据工程：Marin 文本主题/质量桶不等价于 VLA 视频的动作分段与标签校验
 
 ## 参考来源
 
