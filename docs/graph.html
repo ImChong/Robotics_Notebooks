@@ -464,7 +464,23 @@
          连线先被推偏、过渡结束后图再平移，画面错位一瞬。侧栏开合由 JS 同帧重新取景。 */
     }
     /* 边层 canvas 在最底、承载节点与交互的 SVG 在其上；两层都绝对定位以固定叠放次序。
-       #graph-wrap::before 的点阵与 #graph-canvas-3d 的 z-index 不变，故整体层序与此前一致。 */
+       #graph-wrap::before 的点阵与 #graph-canvas-3d 的 z-index 不变，故整体层序与此前一致。
+       #graph-perspective-stage 在普通 2D 下完全透传（无 perspective/transform），
+       仅在 .is-perspective-mode 时建立孤立 CSS 3D 空间舞台，不破坏 #graph-wrap 内 fixed 浮层包含块。 */
+    #graph-perspective-stage,
+    #graph-perspective-scene,
+    #graph-perspective-plane {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+    }
+    #graph-perspective-stage[hidden] { display: none !important; }
+    .graph-perspective-horizon,
+    .graph-perspective-floor,
+    .graph-perspective-shadow {
+      display: none;
+      pointer-events: none;
+    }
     #graph-edge-canvas,
     #graph-canvas {
       position: absolute;
@@ -473,8 +489,180 @@
       display: block;
     }
     #graph-edge-canvas { pointer-events: none; }
-    #graph-canvas { cursor: grab; }
+    #graph-canvas { cursor: grab; touch-action: none; }
     #graph-canvas:active { cursor: grabbing; }
+
+    /* ── CSS 3D 透视视图派生 token（严格从 style.css 暗/亮主题推导）── */
+    :root {
+      --persp-stage-bg:
+        radial-gradient(ellipse 88% 58% at 50% 42%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 66%),
+        radial-gradient(ellipse 74% 52% at 50% 100%, color-mix(in srgb, var(--shadow-tint) 36%, transparent) 0%, transparent 74%),
+        var(--bg);
+      --persp-grid-minor: color-mix(in srgb, var(--text) 6%, transparent);
+      --persp-grid-major: color-mix(in srgb, var(--accent) 16%, transparent);
+      --persp-deck-bg: color-mix(in srgb, var(--bg-alt) 52%, transparent);
+      --persp-deck-border: color-mix(in srgb, var(--border) 72%, var(--accent) 18%);
+      --persp-deck-corner: color-mix(in srgb, var(--accent) 55%, transparent);
+      --persp-plane-rim: color-mix(in srgb, var(--border) 55%, var(--accent) 28%);
+      --persp-plane-glow: color-mix(in srgb, var(--accent) 11%, transparent);
+      --persp-shadow-core: color-mix(in srgb, var(--shadow-tint) 52%, transparent);
+      --persp-shadow-mid: color-mix(in srgb, var(--shadow-tint) 22%, transparent);
+      --persp-horizon-edge: color-mix(in srgb, var(--bg) 82%, transparent);
+      --persp-label-halo: color-mix(in srgb, var(--bg) 88%, transparent);
+    }
+    [data-theme="light"] {
+      --persp-stage-bg:
+        radial-gradient(ellipse 88% 58% at 50% 42%, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 66%),
+        radial-gradient(ellipse 74% 52% at 50% 100%, color-mix(in srgb, var(--shadow-tint) 6%, transparent) 0%, transparent 74%),
+        var(--bg-alt);
+      --persp-grid-minor: color-mix(in srgb, var(--text) 7%, transparent);
+      --persp-grid-major: color-mix(in srgb, var(--accent) 17%, transparent);
+      --persp-deck-bg: color-mix(in srgb, var(--bg) 62%, transparent);
+      --persp-deck-border: color-mix(in srgb, var(--text) 14%, var(--accent) 12%);
+      --persp-deck-corner: color-mix(in srgb, var(--accent) 52%, transparent);
+      --persp-plane-rim: color-mix(in srgb, var(--accent) 24%, var(--border) 60%);
+      --persp-plane-glow: color-mix(in srgb, var(--accent) 8%, transparent);
+      --persp-shadow-core: color-mix(in srgb, var(--shadow-tint) 16%, transparent);
+      --persp-shadow-mid: color-mix(in srgb, var(--shadow-tint) 6%, transparent);
+      --persp-horizon-edge: color-mix(in srgb, var(--bg-alt) 82%, transparent);
+      --persp-label-halo: color-mix(in srgb, var(--bg-alt) 92%, transparent);
+    }
+
+    @supports (perspective: 1px) and (transform-style: preserve-3d) {
+      #graph-wrap.is-perspective-mode {
+        background: var(--persp-stage-bg);
+      }
+      #graph-wrap.is-perspective-mode::before {
+        opacity: 0;
+      }
+      #graph-wrap.is-perspective-mode #graph-perspective-stage {
+        z-index: 1;
+        isolation: isolate;
+        overflow: hidden;
+        perspective: var(--persp-distance, 1150px);
+        perspective-origin: 50% 50%;
+      }
+      #graph-wrap.is-perspective-mode #graph-perspective-scene {
+        transform-style: preserve-3d;
+        transform-origin: 50% 50%;
+        transform:
+          translate3d(0px, var(--persp-offset-y, 0px), 0px)
+          rotateX(var(--persp-rx, 34deg))
+          rotateY(var(--persp-ry, -6deg));
+        transition: transform 0.28s var(--ease);
+      }
+      #graph-wrap.is-perspective-mode.is-perspective-reduced #graph-perspective-scene,
+      #graph-wrap.is-perspective-mode.is-perspective-dragging #graph-perspective-scene,
+      #graph-wrap.is-perspective-mode.is-perspective-reduced #graph-perspective-plane,
+      #graph-wrap.is-perspective-mode.is-perspective-dragging #graph-perspective-plane {
+        transition: none;
+      }
+      #graph-wrap.is-perspective-mode #graph-perspective-stage.is-perspective-animating #graph-perspective-scene,
+      #graph-wrap.is-perspective-mode #graph-perspective-stage.is-perspective-animating #graph-perspective-plane {
+        will-change: transform;
+      }
+      #graph-wrap.is-perspective-mode .graph-perspective-horizon {
+        display: block;
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, var(--persp-horizon-edge) 0%, transparent 15%, transparent 88%, var(--persp-horizon-edge) 100%);
+        opacity: 0.72;
+      }
+      #graph-wrap.is-perspective-mode.is-perspective-lite .graph-perspective-horizon,
+      #graph-wrap.is-perspective-mode.is-perspective-flat .graph-perspective-horizon {
+        display: none;
+      }
+      #graph-wrap.is-perspective-mode .graph-perspective-floor {
+        display: block;
+        position: absolute;
+        inset: -14%;
+        transform-origin: 50% 50%;
+        transform: translateZ(calc(-1 * var(--persp-floor-z, 46px)));
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        opacity: var(--persp-grid-opacity, 0.5);
+        -webkit-mask-image: radial-gradient(ellipse 68% 64% at 50% 50%, #000 32%, rgba(0,0,0,0.42) 68%, transparent 94%);
+        mask-image: radial-gradient(ellipse 68% 64% at 50% 50%, #000 32%, rgba(0,0,0,0.42) 68%, transparent 94%);
+      }
+      #graph-wrap.is-perspective-mode.is-perspective-flat .graph-perspective-floor {
+        opacity: 0.18;
+      }
+      .graph-perspective-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, var(--persp-grid-major) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--persp-grid-major) 1px, transparent 1px),
+          linear-gradient(to right, var(--persp-grid-minor) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--persp-grid-minor) 1px, transparent 1px);
+        background-size: 144px 144px, 144px 144px, 36px 36px, 36px 36px;
+        background-position: center center;
+      }
+      .graph-perspective-frame {
+        position: absolute;
+        inset: 11.5%;
+        border-radius: 18px;
+        border: 1px solid var(--persp-deck-border);
+        background:
+          linear-gradient(to right, var(--persp-deck-corner) 14px, transparent 14px) 0 0 / 100% 2px no-repeat,
+          linear-gradient(to bottom, var(--persp-deck-corner) 14px, transparent 14px) 0 0 / 2px 100% no-repeat,
+          linear-gradient(to left, var(--persp-deck-corner) 14px, transparent 14px) 100% 0 / 100% 2px no-repeat,
+          linear-gradient(to bottom, var(--persp-deck-corner) 14px, transparent 14px) 100% 0 / 2px 100% no-repeat,
+          linear-gradient(to right, var(--persp-deck-corner) 14px, transparent 14px) 0 100% / 100% 2px no-repeat,
+          linear-gradient(to top, var(--persp-deck-corner) 14px, transparent 14px) 0 100% / 2px 100% no-repeat,
+          linear-gradient(to left, var(--persp-deck-corner) 14px, transparent 14px) 100% 100% / 100% 2px no-repeat,
+          linear-gradient(to top, var(--persp-deck-corner) 14px, transparent 14px) 100% 100% / 2px 100% no-repeat,
+          var(--persp-deck-bg);
+      }
+      #graph-wrap.is-perspective-mode .graph-perspective-shadow {
+        display: block;
+        position: absolute;
+        inset: 5%;
+        border-radius: 28px;
+        transform-origin: 50% 50%;
+        transform: translateZ(calc(-0.82 * var(--persp-floor-z, 46px)));
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background: radial-gradient(ellipse 56% 52% at 50% 52%, var(--persp-shadow-core) 0%, var(--persp-shadow-mid) 48%, transparent 76%);
+        opacity: var(--persp-shadow-opacity, 0.45);
+      }
+      #graph-wrap.is-perspective-mode.is-perspective-lite .graph-perspective-shadow,
+      #graph-wrap.is-perspective-mode.is-perspective-flat .graph-perspective-shadow {
+        display: none;
+      }
+      #graph-wrap.is-perspective-mode #graph-perspective-plane {
+        transform-origin: 50% 50%;
+        transform: translateZ(var(--persp-lift-z, 18px)) scale(var(--persp-scale, 0.92));
+        border-radius: 14px;
+        box-shadow: inset 0 0 0 1px var(--persp-plane-rim);
+        background: radial-gradient(ellipse 75% 70% at 50% 50%, var(--persp-plane-glow) 0%, transparent 74%);
+        transition: transform 0.28s var(--ease);
+      }
+      #graph-wrap.is-perspective-mode.is-perspective-flat #graph-perspective-plane {
+        box-shadow: none;
+        background: transparent;
+      }
+      #graph-wrap.is-perspective-mode #graph-canvas {
+        touch-action: none;
+      }
+      #graph-wrap.is-perspective-mode:not(.is-perspective-lite) .community-label-card {
+        transform-origin: 0 0;
+        transform: translateY(var(--persp-label-lift, 0px)) scaleY(var(--persp-label-unscale-y, 1));
+      }
+      #graph-wrap.is-perspective-mode .node-label {
+        paint-order: stroke;
+        stroke: var(--persp-label-halo);
+        stroke-width: 2.5px;
+        stroke-linejoin: round;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #graph-wrap.is-perspective-mode #graph-perspective-scene,
+      #graph-wrap.is-perspective-mode #graph-perspective-plane {
+        transition: none !important;
+      }
+    }
     #graph-canvas-3d {
       width: 100%; height: 100%;
       background:
@@ -1199,6 +1387,14 @@
         rgba(0,0,0,0.1) var(--tl-pct, 0%), rgba(0,0,0,0.1) 100%);
     }
     [data-theme="light"] .timeline-scrub-label { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .perspective-tier-badge {
+      background: rgba(45,116,218,0.1);
+      border-color: rgba(45,116,218,0.28);
+      color: #2d74da;
+    }
+    [data-theme="light"] .physics-body {
+      scrollbar-color: rgba(0,0,0,0.2) transparent;
+    }
     /* 提示文字 */
     [data-theme="light"] .graph-hint { color: rgba(0,0,0,0.22); }
 
@@ -1277,19 +1473,33 @@
       position: absolute;
       top: 12px; right: 20px;
       z-index: 30;
-      width: 240px;
+      width: 264px;
+      max-height: calc(100% - 24px);
+      display: flex;
+      flex-direction: column;
       background: rgba(13,17,23,0.96);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
     }
+    .physics-panel[hidden] { display: none !important; }
     .physics-header {
+      flex-shrink: 0;
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 14px 9px;
       border-bottom: 1px solid rgba(255,255,255,0.07);
       font-size: .8rem; font-weight: 700; color: rgba(255,255,255,0.65);
       letter-spacing: .03em;
+    }
+    .physics-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.22) transparent;
     }
     .physics-close {
       background: none; border: none;
@@ -1364,6 +1574,40 @@
       text-transform: uppercase;
       letter-spacing: .06em;
     }
+    .perspective-section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .perspective-tier-badge {
+      padding: 1px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(91,156,246,0.34);
+      background: rgba(91,156,246,0.14);
+      color: #7ab3ff;
+      font-size: .62rem;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .perspective-tier-badge[hidden],
+    .perspective-controls[hidden] {
+      display: none !important;
+    }
+    .perspective-controls .slider-row {
+      padding: 8px 14px 4px;
+    }
+    .perspective-btn-row {
+      display: flex;
+      gap: 6px;
+      padding: 6px 14px 12px;
+    }
+    .perspective-btn-row .physics-action-btn {
+      flex: 1;
+      height: 29px;
+      font-size: .71rem;
+    }
     .view-mode-toggle {
       display: flex;
       gap: 6px;
@@ -1372,15 +1616,28 @@
     .view-mode-btn {
       flex: 1;
       height: 30px;
+      padding: 0 4px;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
       color: rgba(255,255,255,0.62);
-      font-size: .74rem;
+      font-size: .72rem;
       font-weight: 700;
       font-family: inherit;
+      white-space: nowrap;
       cursor: pointer;
       transition: border-color .15s, background .15s, color .15s;
+    }
+    @media (max-width: 768px) {
+      .physics-panel {
+        top: 8px; right: 10px;
+        width: min(268px, calc(100vw - 20px));
+        max-height: min(64dvh, calc(100% - 16px));
+      }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      input[type=range]::-webkit-slider-thumb { width: 18px; height: 18px; }
+      input[type=range]::-moz-range-thumb { width: 18px; height: 18px; }
     }
     .view-mode-btn:hover {
       border-color: rgba(255,255,255,0.28);
@@ -2067,8 +2324,20 @@
         <div class="graph-loading-pct" id="graph-loading-pct">0%</div>
       </div>
     </div>
-    <canvas id="graph-edge-canvas" aria-hidden="true"></canvas>
-    <svg id="graph-canvas"></svg>
+    <div id="graph-perspective-stage">
+      <div class="graph-perspective-horizon" aria-hidden="true"></div>
+      <div id="graph-perspective-scene">
+        <div class="graph-perspective-floor" aria-hidden="true">
+          <div class="graph-perspective-grid"></div>
+          <div class="graph-perspective-frame"></div>
+        </div>
+        <div class="graph-perspective-shadow" aria-hidden="true"></div>
+        <div id="graph-perspective-plane">
+          <canvas id="graph-edge-canvas" aria-hidden="true"></canvas>
+          <svg id="graph-canvas"></svg>
+        </div>
+      </div>
+    </div>
     <div id="graph-canvas-3d" hidden aria-label="3D 知识图谱"></div>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
     <div id="depth-intro-banner" class="depth-intro-banner" hidden>
@@ -2093,79 +2362,136 @@
         <span>⚙ 图谱参数</span>
         <button id="physics-close" class="physics-close" aria-label="关闭面板">✕</button>
       </div>
-
-      <div class="slider-row">
-        <div class="slider-label">
-          <span>排斥力</span>
-          <span class="slider-val" id="val-charge">-100</span>
-        </div>
-        <input type="range" id="sl-charge" min="10" max="300" value="100" step="5"
-               aria-label="排斥力" />
-      </div>
-
-      <div class="slider-divider"></div>
-
-      <div class="slider-row">
-        <label class="physics-toggle" for="check-magnetic">
-          <input type="checkbox" id="check-magnetic" />
-          <span>🧲 磁吸模式</span>
-        </label>
-      </div>
-
-      <!-- 「显示节点名称」浮窗选项已隐藏；开关逻辑仍由 showNodeLabels / setShowNodeLabels 保留 -->
-
-      <div class="slider-row">
-        <label class="physics-toggle" for="check-show-edges"
-               title="关闭后只显示节点，隐藏全部连线（2D / 3D 共享同一开关）">
-          <input type="checkbox" id="check-show-edges" />
-          <span>🔗 显示连线</span>
-        </label>
-      </div>
-
-      <div class="slider-row">
-        <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
-               title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用；默认开启，可在此关闭）">
-          <input type="checkbox" id="check-community-labels" checked />
-          <span>🏘 显示社区标签</span>
-        </label>
-      </div>
-
-      <div class="slider-row">
-        <label class="physics-toggle" for="check-recency-dim"
-               title="按节点更新时间指数调整明暗：越新越亮（近期更陡），越旧越暗；无更新日期的节点按最暗显示（均保持可见）">
-          <input type="checkbox" id="check-recency-dim" />
-          <span>🕰 更新明度渐变</span>
-        </label>
-      </div>
-
-      <div class="slider-divider"></div>
-      <div class="physics-section-title">视图模式</div>
-      <div class="view-mode-toggle" role="group" aria-label="2D / 3D 视图切换">
-        <button type="button" id="view-mode-2d" class="view-mode-btn is-active" aria-pressed="true">2D 平面</button>
-        <button type="button" id="view-mode-3d" class="view-mode-btn" aria-pressed="false">3D 立体</button>
-      </div>
-
-      <div class="slider-divider"></div>
-      <div class="physics-section-title">布局与演示</div>
-      <div class="physics-actions">
-        <button type="button" id="restart-simulation" class="physics-action-btn" title="从初始状态重新计算力导向布局">
-          <span>↻</span><span>刷新布局</span>
-        </button>
-        <button type="button" id="timeline-animate" class="physics-action-btn" title="按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）">
-          <span>▶</span><span>时序动画</span>
-        </button>
-        <div id="timeline-controls" class="timeline-controls is-disabled">
-          <div class="timeline-scrub-row">
-            <button type="button" id="timeline-restart" class="timeline-ctrl-btn" title="回到起点" aria-label="回到起点" disabled>
-              <svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="3" width="2" height="10" rx="0.4" fill="currentColor"/><polygon points="12,4 7,8 12,12" fill="currentColor"/></svg>
-            </button>
-            <button type="button" id="timeline-playpause" class="timeline-ctrl-btn" title="暂停" aria-label="暂停" disabled>
-              <svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/><rect x="9.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/></svg>
-            </button>
-            <input type="range" id="timeline-progress" class="timeline-progress" min="0" max="100" value="0" step="1"
-                   aria-label="时序进度，可拖拽倒退或快进" disabled />
+      <div class="physics-body">
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>排斥力</span>
+            <span class="slider-val" id="val-charge">-100</span>
           </div>
-          <div class="timeline-scrub-label"><span id="timeline-scrub-current">0</span> / <span id="timeline-scrub-total">0</span> · <span id="timeline-scrub-date">—</span></div>
+          <input type="range" id="sl-charge" min="10" max="300" value="100" step="5"
+                 aria-label="排斥力" />
+        </div>
+
+        <div class="slider-divider"></div>
+
+        <div class="slider-row">
+          <label class="physics-toggle" for="check-magnetic">
+            <input type="checkbox" id="check-magnetic" />
+            <span>🧲 磁吸模式</span>
+          </label>
+        </div>
+
+        <!-- 「显示节点名称」浮窗选项已隐藏；开关逻辑仍由 showNodeLabels / setShowNodeLabels 保留 -->
+
+        <div class="slider-row">
+          <label class="physics-toggle" for="check-show-edges"
+                 title="关闭后只显示节点，隐藏全部连线（2D / 3D 共享同一开关）">
+            <input type="checkbox" id="check-show-edges" />
+            <span>🔗 显示连线</span>
+          </label>
+        </div>
+
+        <div class="slider-row">
+          <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
+                 title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用；默认开启，可在此关闭）">
+            <input type="checkbox" id="check-community-labels" checked />
+            <span>🏘 显示社区标签</span>
+          </label>
+        </div>
+
+        <div class="slider-row">
+          <label class="physics-toggle" for="check-recency-dim"
+                 title="按节点更新时间指数调整明暗：越新越亮（近期更陡），越旧越暗；无更新日期的节点按最暗显示（均保持可见）">
+            <input type="checkbox" id="check-recency-dim" />
+            <span>🕰 更新明度渐变</span>
+          </label>
+        </div>
+
+        <div class="slider-divider"></div>
+        <div class="physics-section-title">视图模式</div>
+        <div class="view-mode-toggle" role="group" aria-label="2D / CSS 透视 / 3D 视图切换">
+          <button type="button" id="view-mode-2d" class="view-mode-btn is-active" aria-pressed="true">2D 平面</button>
+          <button type="button" id="view-mode-perspective" class="view-mode-btn" aria-pressed="false">CSS 透视</button>
+          <button type="button" id="view-mode-3d" class="view-mode-btn" aria-pressed="false">3D 立体</button>
+        </div>
+
+        <div class="slider-divider"></div>
+        <div class="physics-section-title perspective-section-head">
+          <span>CSS 透视</span>
+          <span id="persp-tier-badge" class="perspective-tier-badge" hidden></span>
+        </div>
+        <div class="slider-row">
+          <label class="physics-toggle" for="check-css-perspective"
+                 title="在当前 2D 力布局上叠加轻量 CSS 3D 空间透视与参考网格，不修改图谱数据与交互逻辑">
+            <input type="checkbox" id="check-css-perspective" />
+            <span>🧭 开启 CSS 透视</span>
+          </label>
+        </div>
+        <div id="perspective-controls" class="perspective-controls" hidden>
+          <div class="slider-row">
+            <div class="slider-label">
+              <span>透视距离</span>
+              <span class="slider-val" id="val-persp-distance">1150px</span>
+            </div>
+            <input type="range" id="sl-persp-distance" min="700" max="2000" value="1150" step="20"
+                   aria-label="透视距离" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">
+              <span>俯仰倾角 X</span>
+              <span class="slider-val" id="val-persp-rx">34°</span>
+            </div>
+            <input type="range" id="sl-persp-rx" min="0" max="58" value="34" step="1"
+                   aria-label="俯仰倾角 X" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">
+              <span>水平偏转 Y</span>
+              <span class="slider-val" id="val-persp-ry">-6°</span>
+            </div>
+            <input type="range" id="sl-persp-ry" min="-28" max="28" value="-6" step="1"
+                   aria-label="水平偏转 Y" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">
+              <span>空间纵深</span>
+              <span class="slider-val" id="val-persp-depth">60%</span>
+            </div>
+            <input type="range" id="sl-persp-depth" min="0" max="100" value="60" step="2"
+                   aria-label="空间纵深" />
+          </div>
+          <div class="perspective-btn-row">
+            <button type="button" id="persp-reset-default" class="physics-action-btn" title="恢复默认 CSS 透视角度与纵深">
+              <span>↺</span><span>恢复默认</span>
+            </button>
+            <button type="button" id="persp-flat-view" class="physics-action-btn" title="保持 CSS 透视模式并回到正视角（0° 倾角）">
+              <span>⊞</span><span>正视角</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="slider-divider"></div>
+        <div class="physics-section-title">布局与演示</div>
+        <div class="physics-actions">
+          <button type="button" id="restart-simulation" class="physics-action-btn" title="从初始状态重新计算力导向布局">
+            <span>↻</span><span>刷新布局</span>
+          </button>
+          <button type="button" id="timeline-animate" class="physics-action-btn" title="按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）">
+            <span>▶</span><span>时序动画</span>
+          </button>
+          <div id="timeline-controls" class="timeline-controls is-disabled">
+            <div class="timeline-scrub-row">
+              <button type="button" id="timeline-restart" class="timeline-ctrl-btn" title="回到起点" aria-label="回到起点" disabled>
+                <svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="3" width="2" height="10" rx="0.4" fill="currentColor"/><polygon points="12,4 7,8 12,12" fill="currentColor"/></svg>
+              </button>
+              <button type="button" id="timeline-playpause" class="timeline-ctrl-btn" title="暂停" aria-label="暂停" disabled>
+                <svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/><rect x="9.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/></svg>
+              </button>
+              <input type="range" id="timeline-progress" class="timeline-progress" min="0" max="100" value="0" step="1"
+                     aria-label="时序进度，可拖拽倒退或快进" disabled />
+            </div>
+            <div class="timeline-scrub-label"><span id="timeline-scrub-current">0</span> / <span id="timeline-scrub-total">0</span> · <span id="timeline-scrub-date">—</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -2257,6 +2583,9 @@
     <div id="graph-hint-2d" class="graph-hint">
       滚轮缩放 · 拖拽平移<br>点击节点查看详情
     </div>
+    <div id="graph-hint-perspective" class="graph-hint" hidden>
+      滚轮缩放 · 拖拽平移 · 透视可调<br>点击节点查看详情
+    </div>
     <div id="graph-hint-3d" class="graph-hint" hidden>
       拖拽旋转 · 滚轮缩放<br>点击节点查看详情
     </div>
@@ -2301,6 +2630,7 @@
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
   <script src="graph-force-params.js"></script>
+  <script src="graph-perspective.js"></script>
   <script src="graph-3d.js"></script>
   <script src="depth-filters.js"></script>
   <script>
@@ -2956,23 +3286,34 @@
         try { localStorage.setItem(SPATIAL_VIEW_KEY, '2d'); } catch (_e) { /* ignore */ }
         return '2d';
       }
+      if (spatialViewParam === 'perspective' || spatialViewParam === 'css3d') {
+        try { localStorage.setItem(SPATIAL_VIEW_KEY, 'perspective'); } catch (_e) { /* ignore */ }
+        return 'perspective';
+      }
       if (spatialViewParam === '3d') {
         try { localStorage.setItem(SPATIAL_VIEW_KEY, '3d'); } catch (_e) { /* ignore */ }
         return '3d';
       }
       try {
         const saved = localStorage.getItem(SPATIAL_VIEW_KEY);
-        return saved === '3d' ? '3d' : '2d';
+        if (saved === '3d' || saved === 'perspective') return saved;
+        return '2d';
       } catch (_e) {
         return '2d';
       }
     })();
     let graph3dView = null;
     let graph3dHoverNode = null;
+    let perspectiveController = null;
+    const perspectiveStageEl = document.getElementById('graph-perspective-stage');
     const graphCanvas3d = document.getElementById('graph-canvas-3d');
     const viewMode2dBtn = document.getElementById('view-mode-2d');
+    const viewModePerspectiveBtn = document.getElementById('view-mode-perspective');
     const viewMode3dBtn = document.getElementById('view-mode-3d');
+    const checkCssPerspectiveEl = document.getElementById('check-css-perspective');
+    const perspectiveControlsEl = document.getElementById('perspective-controls');
     const graphHint2dEl = document.getElementById('graph-hint-2d');
+    const graphHintPerspectiveEl = document.getElementById('graph-hint-perspective');
     const graphHint3dEl = document.getElementById('graph-hint-3d');
     const graphNoticeEl = document.getElementById('graph-notice');
     let graphNoticeTimer = 0;
@@ -2989,21 +3330,39 @@
     }
 
     function is3DView() { return spatialViewMode === '3d'; }
+    function isPerspectiveView() { return spatialViewMode === 'perspective'; }
 
     function updateGraphHint() {
       const in3d = is3DView();
-      if (graphHint2dEl) graphHint2dEl.hidden = in3d;
+      const inPersp = isPerspectiveView();
+      if (graphHint2dEl) graphHint2dEl.hidden = in3d || inPersp;
+      if (typeof graphHintPerspectiveEl !== 'undefined' && graphHintPerspectiveEl) {
+        graphHintPerspectiveEl.hidden = !inPersp;
+      }
       if (graphHint3dEl) graphHint3dEl.hidden = !in3d;
     }
 
     function updateViewModeButtons() {
+      const in3d = is3DView();
+      const inPersp = isPerspectiveView();
+      const in2d = !in3d && !inPersp;
       if (viewMode2dBtn) {
-        viewMode2dBtn.classList.toggle('is-active', !is3DView());
-        viewMode2dBtn.setAttribute('aria-pressed', !is3DView() ? 'true' : 'false');
+        viewMode2dBtn.classList.toggle('is-active', in2d);
+        viewMode2dBtn.setAttribute('aria-pressed', in2d ? 'true' : 'false');
+      }
+      if (typeof viewModePerspectiveBtn !== 'undefined' && viewModePerspectiveBtn) {
+        viewModePerspectiveBtn.classList.toggle('is-active', inPersp);
+        viewModePerspectiveBtn.setAttribute('aria-pressed', inPersp ? 'true' : 'false');
       }
       if (viewMode3dBtn) {
-        viewMode3dBtn.classList.toggle('is-active', is3DView());
-        viewMode3dBtn.setAttribute('aria-pressed', is3DView() ? 'true' : 'false');
+        viewMode3dBtn.classList.toggle('is-active', in3d);
+        viewMode3dBtn.setAttribute('aria-pressed', in3d ? 'true' : 'false');
+      }
+      if (typeof checkCssPerspectiveEl !== 'undefined' && checkCssPerspectiveEl) {
+        checkCssPerspectiveEl.checked = inPersp;
+      }
+      if (typeof perspectiveControlsEl !== 'undefined' && perspectiveControlsEl) {
+        perspectiveControlsEl.hidden = !inPersp;
       }
     }
 
@@ -3145,6 +3504,11 @@
       return graph3dView;
     }
 
+    function syncPerspectivePresentation(on, opts) {
+      if (!perspectiveController) return true;
+      return perspectiveController.setEnabled(on, opts);
+    }
+
     /* ── 3D 库懒加载（编号 9）──
        vendor/3d-force-graph.min.js 约 1.31 MB，2D 浏览用不到：不再随页面静态引入，
        只在首次进入 3D（点按钮或已保存的 3D 偏好/?view=3d）时注入。加载失败清空
@@ -3203,11 +3567,12 @@
 
     function setSpatialViewMode(mode, opts) {
       opts = opts || {};
-      if (mode !== '2d' && mode !== '3d') return;
+      if (mode !== '2d' && mode !== 'perspective' && mode !== '3d') return;
       if (!opts.force && mode === spatialViewMode) return;
 
-      // 切换视图前先干净退出时序动画（2D / 3D 任一形态），避免遗留定时器与显隐状态跨视图泄漏。
-      if (timelineAnimating) teardownTimelineMode();
+      const prevMode = spatialViewMode;
+      // 切换进出 WebGL 3D 前干净退出时序动画；2D 与 CSS 透视共处同一画布，可保留状态。
+      if (timelineAnimating && (mode === '3d' || prevMode === '3d')) teardownTimelineMode();
 
       // 先切换状态：resumeSimulation2D / 力模拟 tick / fitToScreen 都依赖 is3DView()，
       // 必须在调用它们之前就反映目标视图，否则回到 2D 时力模拟会被旧状态挡住、无法重启。
@@ -3217,7 +3582,9 @@
       if (mode === '3d') {
         try {
           if (!window.RNGraph3D?.isAvailable?.()) throw new Error('3D library unavailable');
+          if (typeof syncPerspectivePresentation === 'function') syncPerspectivePresentation(false);
           pauseSimulation2D();
+          if (typeof perspectiveStageEl !== 'undefined' && perspectiveStageEl) perspectiveStageEl.hidden = true;
           svg.style('display', 'none');
           if (edgeCanvas) edgeCanvas.style.display = 'none';
           graphCanvas3d.hidden = false;
@@ -3240,22 +3607,37 @@
         // 不在切换时自动适配：仅首次力布局结束后由 graph-3d 自动适配一次，
         // 之后只有用户点「适配屏幕」按钮才适配。
       }
-      if (mode === '2d') {
-        // 初始化可能只完成了一部分，清理失败也不能阻止恢复 2D。
-        try { if (graph3dView) graph3dView.hide(); }
-        catch (err) { console.warn('3D view cleanup failed:', err); }
-        graphCanvas3d.hidden = true;
-        graph3dHoverNode = null;
-        // 触屏：回 2D 时连固定卡片与邻居高亮一起撤掉；此前只 hideTooltip，pinnedNode 残留，
-        // 下一次点同一节点会被当成「再次点击 → 关闭」
-        if (isMobile && pinnedNode) dismissMobilePinnedTooltip();
-        else hideTooltip();
-        svg.style('display', 'block');
-        if (edgeCanvas) edgeCanvas.style.display = 'block';
-        syncGraphDomFromSimulation();
-        resumeSimulation2D();
-        fitToScreen();
-        sync2DNodeLabels();
+      const needsFull2DRestore = prevMode === '3d' || initializationFailed || !!opts.force;
+      if (mode === '2d' || mode === 'perspective') {
+        if (needsFull2DRestore) {
+          // 初始化可能只完成了一部分，清理失败也不能阻止恢复 2D。
+          try { if (graph3dView) graph3dView.hide(); }
+          catch (err) { console.warn('3D view cleanup failed:', err); }
+          graphCanvas3d.hidden = true;
+          graph3dHoverNode = null;
+          // 触屏：回 2D 时连固定卡片与邻居高亮一起撤掉；此前只 hideTooltip，pinnedNode 残留，
+          // 下一次点同一节点会被当成「再次点击 → 关闭」
+          if (isMobile && pinnedNode) dismissMobilePinnedTooltip();
+          else hideTooltip();
+          if (typeof perspectiveStageEl !== 'undefined' && perspectiveStageEl) perspectiveStageEl.hidden = false;
+          svg.style('display', 'block');
+          if (edgeCanvas) edgeCanvas.style.display = 'block';
+          syncGraphDomFromSimulation();
+          resumeSimulation2D();
+          fitToScreen();
+          sync2DNodeLabels();
+        } else {
+          if (typeof perspectiveStageEl !== 'undefined' && perspectiveStageEl) perspectiveStageEl.hidden = false;
+          svg.style('display', 'block');
+          if (edgeCanvas) edgeCanvas.style.display = 'block';
+        }
+        if (typeof syncPerspectivePresentation === 'function') {
+          const ok = syncPerspectivePresentation(mode === 'perspective');
+          if (mode === 'perspective' && ok === false) {
+            mode = '2d';
+            spatialViewMode = '2d';
+          }
+        }
       }
 
       try { localStorage.setItem(SPATIAL_VIEW_KEY, mode); } catch (_e) { /* ignore */ }
@@ -3263,7 +3645,7 @@
       updateGraphHint();
       syncTimeline3DState();
       syncMagneticCheckbox();
-      updateForces();
+      if (mode === '3d' || needsFull2DRestore) updateForces();
       if (initializationFailed) {
         showGraphNotice('当前无法打开 3D 视图，已恢复 2D。你可以继续浏览，或在支持 WebGL 的浏览器中重试。');
       }
@@ -4368,6 +4750,7 @@
       H = nextH;
       svg.attr('width', W).attr('height', H);
       resizeEdgeCanvas();
+      if (perspectiveController) perspectiveController.syncViewport();
       return true;
     }
 
@@ -4726,8 +5109,9 @@
         .join(
           enter => {
             const g = enter.append('g').attr('class', 'community-label');
-            g.append('rect').attr('class', 'community-label-bg');
-            g.append('text')
+            const card = g.append('g').attr('class', 'community-label-card');
+            card.append('rect').attr('class', 'community-label-bg');
+            card.append('text')
               .attr('class', 'community-label-text')
               .attr('text-anchor', 'middle')
               .attr('dominant-baseline', 'central');
@@ -6593,11 +6977,138 @@
       });
     }
 
+    const perspDistanceEl = document.getElementById('sl-persp-distance');
+    const perspDistanceValEl = document.getElementById('val-persp-distance');
+    const perspRxEl = document.getElementById('sl-persp-rx');
+    const perspRxValEl = document.getElementById('val-persp-rx');
+    const perspRyEl = document.getElementById('sl-persp-ry');
+    const perspRyValEl = document.getElementById('val-persp-ry');
+    const perspDepthEl = document.getElementById('sl-persp-depth');
+    const perspDepthValEl = document.getElementById('val-persp-depth');
+    const perspTierBadgeEl = document.getElementById('persp-tier-badge');
+    const perspResetBtn = document.getElementById('persp-reset-default');
+    const perspFlatBtn = document.getElementById('persp-flat-view');
+
+    function syncPerspectiveControlsUi(state) {
+      if (!state || !state.params) return;
+      const p = state.params;
+      if (perspDistanceEl) {
+        perspDistanceEl.value = String(p.perspective);
+        if (state.tier === 'lite' && perspRxEl) perspRxEl.max = '50';
+        else if (perspRxEl) perspRxEl.max = '58';
+      }
+      if (perspDistanceValEl) perspDistanceValEl.textContent = p.perspective + 'px';
+      if (perspRxEl) perspRxEl.value = String(p.rotateX);
+      if (perspRxValEl) perspRxValEl.textContent = p.rotateX + '°';
+      if (perspRyEl) perspRyEl.value = String(p.rotateY);
+      if (perspRyValEl) perspRyValEl.textContent = p.rotateY + '°';
+      if (perspDepthEl) perspDepthEl.value = String(p.depth);
+      if (perspDepthValEl) perspDepthValEl.textContent = p.depth + '%';
+      if (perspTierBadgeEl) {
+        perspTierBadgeEl.textContent = state.tierBadge || '';
+        perspTierBadgeEl.hidden = !state.tierBadge;
+      }
+      if (checkCssPerspectiveEl) {
+        checkCssPerspectiveEl.checked = !!state.enabled;
+      }
+      if (perspectiveControlsEl) {
+        perspectiveControlsEl.hidden = !state.enabled;
+      }
+    }
+
+    if (window.RNGraphPerspective && typeof window.RNGraphPerspective.createController === 'function') {
+      perspectiveController = window.RNGraphPerspective.createController({
+        wrapEl: wrap,
+        stageEl: perspectiveStageEl,
+        sceneEl: document.getElementById('graph-perspective-scene'),
+        planeEl: document.getElementById('graph-perspective-plane'),
+        floorEl: document.querySelector('#graph-perspective-scene .graph-perspective-floor'),
+        shadowEl: document.querySelector('#graph-perspective-scene .graph-perspective-shadow'),
+        svgEl: svg.node(),
+        gNodesEl: gNodes.node(),
+        nodeCount: nodes.length,
+        getViewportSize: () => ({ width: W, height: H }),
+        getZoomTransform: () => d3.zoomTransform(svg.node()),
+        onStateChange: syncPerspectiveControlsUi,
+        onUnsupported: () => {
+          showGraphNotice('当前浏览器环境不支持 CSS 3D 透视，已保留 2D 平面视图。');
+        },
+      });
+    }
+
+    const perspectiveSliderBindings = [
+      [perspDistanceEl, 'perspective', perspDistanceValEl, 'px'],
+      [perspRxEl, 'rotateX', perspRxValEl, '°'],
+      [perspRyEl, 'rotateY', perspRyValEl, '°'],
+      [perspDepthEl, 'depth', perspDepthValEl, '%'],
+    ];
+    for (const [sliderEl, paramKey, valEl, unit] of perspectiveSliderBindings) {
+      if (!sliderEl) continue;
+      sliderEl.addEventListener('pointerdown', () => {
+        if (perspectiveController) perspectiveController.setDragging(true);
+      });
+      sliderEl.addEventListener('input', ev => {
+        const val = Number(ev.target.value);
+        if (valEl) valEl.textContent = val + unit;
+        if (perspectiveController) {
+          perspectiveController.setDragging(true);
+          perspectiveController.setParam(paramKey, val);
+        }
+      });
+      const finishDrag = () => {
+        if (perspectiveController) perspectiveController.setDragging(false);
+      };
+      sliderEl.addEventListener('change', finishDrag);
+      sliderEl.addEventListener('pointerup', finishDrag);
+      sliderEl.addEventListener('pointercancel', finishDrag);
+      sliderEl.addEventListener('blur', finishDrag);
+    }
+    if (perspResetBtn) {
+      perspResetBtn.addEventListener('click', () => {
+        if (perspectiveController) perspectiveController.resetDefaults();
+      });
+    }
+    if (perspFlatBtn) {
+      perspFlatBtn.addEventListener('click', () => {
+        if (perspectiveController) perspectiveController.setFlatView();
+      });
+    }
+    function revealPerspectiveControlsIfPanelOpen() {
+      const panel = document.getElementById('physics-panel');
+      if (panel && !panel.hidden && perspectiveControlsEl && !perspectiveControlsEl.hidden) {
+        if (typeof perspectiveControlsEl.scrollIntoView === 'function') {
+          perspectiveControlsEl.scrollIntoView({ block: 'nearest' });
+        }
+      }
+    }
+    if (checkCssPerspectiveEl) {
+      checkCssPerspectiveEl.addEventListener('change', ev => {
+        const nextMode = ev.target.checked ? 'perspective' : '2d';
+        requestSpatialViewMode(nextMode);
+        if (nextMode === 'perspective') revealPerspectiveControlsIfPanelOpen();
+      });
+    }
+
     if (viewMode2dBtn) {
       viewMode2dBtn.addEventListener('click', () => requestSpatialViewMode('2d'));
     }
+    if (viewModePerspectiveBtn) {
+      viewModePerspectiveBtn.addEventListener('click', () => {
+        requestSpatialViewMode('perspective');
+        revealPerspectiveControlsIfPanelOpen();
+      });
+    }
     if (viewMode3dBtn) {
       viewMode3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
+    }
+    if (spatialViewMode === 'perspective') {
+      const ok = syncPerspectivePresentation(true);
+      if (!ok) {
+        spatialViewMode = '2d';
+        try { localStorage.setItem(SPATIAL_VIEW_KEY, '2d'); } catch (_e) { /* ignore */ }
+      }
+      updateViewModeButtons();
+      updateGraphHint();
     }
     syncTimeline3DState();
 
@@ -7062,6 +7573,13 @@
         .sort((a, b) => (b._degree || 0) - (a._degree || 0))
         .slice(0, Math.max(1, n || 5))
         .map(d => d.id),
+      spatialViewMode: () => spatialViewMode,
+      setSpatialViewMode: (mode, opts) => requestSpatialViewMode(mode, opts),
+      perspective: () => (perspectiveController ? perspectiveController.getDebugState() : null),
+      zoomTransform: () => {
+        const t = d3.zoomTransform(svg.node());
+        return { x: t.x, y: t.y, k: t.k };
+      },
     };
 
   })();

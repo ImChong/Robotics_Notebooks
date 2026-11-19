@@ -7,6 +7,8 @@
 
 ## 一、 视觉降噪 (Visual De-cluttering)
 
+- [x] 图谱页 `graph.html` CSS 3D 透视视图与参数浮窗控制（2026-11-19，[#3958](https://github.com/ImChong/Robotics_Notebooks/issues/3958)）：在不修改图谱数据 schema、力布局与交互语义的前提下，于渲染层新增独立模块 `docs/graph-perspective.js` 与 `#graph-perspective-stage` / `scene` / `plane` / `floor` 空间包装层；支持「2D 平面 / CSS 透视 / 3D 立体」三态互斥切换（默认保持 2D），浮窗提供开关、透视距离、俯仰倾角 X、水平偏转 Y、空间纵深滑块及「恢复默认 / 正视角」按钮；全套配色由 `docs/style.css` 暗/亮主题 token 推导，保留 SVG/Canvas 同面共齐与鼠标/触控逆投影映射，按设备能力与 `prefers-reduced-motion` 自动分级（`full` / `lite` / `reduced` / `unsupported`）。
+
 - [x] 详情页「所属路线」双语换行（2026-11-17）：中文名称与带括号的英文分别成组，宽度足够时同行，不足时在英文括号前换行；路线页共用徽标同步适配，并限制徽标宽度以避免窄屏溢出。
 
 - [x] 全站遮罩样式统一（2026-11-17）：赞助弹窗、Mermaid 放大预览、路线图总览、详情页移动侧栏、首页章节导航，以及图谱页图例/筛选遮罩，全部复用 `docs/style.css` 的 `--modal-backdrop-bg` 和 `--modal-backdrop-blur`；亮暗主题分别采用中性灰半透明底色，统一 4px 磨砂模糊；保留原有显隐、点击外侧关闭与层级规则。
