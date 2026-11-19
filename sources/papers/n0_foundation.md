@@ -5,6 +5,10 @@
 - **标题：** N0-Foundation: Towards the Age of Tactile Intelligence
 - **类型：** paper / technical-report / tactile / dataset / foundation / contact-rich
 - **项目页：** <https://research.neoteai.com/n0-foundation/>
+- **论文身份：** arXiv:2608.29601v2（2026-09-20；v1 发布于 2026-08-30）
+- **原文 HTML：** <https://arxiv.org/html/2608.29601v2>
+- **核对范围：** arXiv:2608.29601v2 全文：§1–7（硬件、NeoData、NeoForce、NeoReal/NeoSim、结论），附录 A–F（数据格式、TacUMI、标注、力场转换、评测协议与任务配置），Table 1–5；另核对官方项目页与仓库 README / 训练评测脚本（2026-11-19）。
+- **通读：** 已完成
 - **PDF：** <https://research.neoteai.com/assets/n0-foundation-report.pdf>（同目录亦有 `n0-foundation-paper.pdf`）
 - **代码：** <https://github.com/neoteai/N0-Foundation>
 - **数据集：** <https://huggingface.co/datasets/NeoteAIEmbodied/OpenNeoData>
@@ -21,7 +25,16 @@
 - **OpenNeoData：** **5,000 h** 开源子集，六本体、250+ 任务、200+ skills；LeRobot v3.0；HF + ModelScope；门禁 + CC-BY-NC-SA-4.0。
 - **NeoForce：** 观测映射为传感面稠密三轴力场（两切向剪切 + 法向压力）；共享 Transformer 融合 RGB–力场 chunk；重建 + 教师引导 latent 预测 + 跨模态对齐。
 - **触觉接入对照（固定 π₀.₅）：** 无触觉 26.5%/38.1 → 图像拼接 27.5%/41.4 → action-expert 条件 30.0%/44.3 → **NeoForce 32.5%/47.5**（成功率 / progressive）。
-- **开源状态（2026-07-26）：** **部分开源** — OpenNeoData 已放；NeoForce 代码/权重 roadmap **By July 31, 2026**；GitHub 仓目前仅 README/图。
+- **开源状态（复核 2026-11-19）：** **部分开源（核心组件已发布）** — OpenNeoData 数据子集、[NeoForce 训练/评测代码](https://github.com/neoteai/N0-Foundation/tree/main/neoforce)与[权重](https://huggingface.co/NeoteAI/NeoForce)、[NeoSim 仿真代码](https://github.com/neoteai/N0-Foundation/tree/main/neosim)已公开；完整 30k h NeoData、真机 NeoReal 设备及 NeoSim 外置资产仍不是同一套即取即跑的公开交付。
+
+## 论文版本与可复核的新增细节
+
+- **版本边界：** 项目网页在 2026-07-25 发布；arXiv:2608.29601v2 于 2026-09-20 更新。研究报告已具有 arXiv 编号；以 v2 为本次核对基准，旧版「仅 Technical Report、无 arXiv」描述已过时。
+- **数据动作语义（§4.2）：** 真机记录 TCP 增量动作与下一步绝对关节命令；TacUMI 记录跨帧相对末端运动及未来夹爪开度，两条采集路径在动作与视觉/触觉流上统一归档，但不代表动力学天然等价。
+- **NeoForce 训练（§5、附录 D.4）：** RGB 和左右指三轴力场按 chunk=4 形成时序 token；共享 ViT-B/DINOv2 初始化骨干，force/mask reconstruction + EMA teacher latent prediction + 跨模态对比对齐。论文实验以 20k 示范训练、2.5k held-out episodes 测试，8×A100、100k steps。
+- **力场转换（附录 D.1–D.3）：** 物理标定约 4,300 对光流/力场样本，与 Abaqus 有限元合成增强共同训练 GoogLeNet 型三轴力场回归器；该转换器输出是后续 NeoForce 表征的监督信号，不能把传感器原始 RGB 误当真值力测量。
+- **评测协议（附录 E/F）：** NeoReal 每任务 20 次试验，成功率与按有序里程碑累计的 progressive score 分开统计；NeoSim 12 任务每任务 100 次随机 rollout。NeoSim 基于 UniVTAC / Isaac Lab / TacEx，并不证明真机成功率可直接迁移。
+- **源码事实（2026-11-19）：** `neoforce/scripts/train.sh` 调用 `torchrun -m neoforce.train`；`scripts/evaluate.sh` 调用 `python -m neoforce.evaluate`；`neosim/scripts/collect_data.py` 启动 Isaac Sim AppLauncher 并逐 seed 执行 `Task.play_once`，`neosim/eval/run_eval.sh` 调用 `eval/eval_official_ee.py` 连接策略 server。参见 [源码归档](../repos/n0-foundation.md)。
 
 ## 核心论文摘录（MVP）
 
@@ -60,6 +73,7 @@
 
 - [x] 四组件、数据规模、OpenNeoData、NeoForce 对照表、开源边界已摘录
 - [x] 与 research / company / repos 互证
+- [x] 2026-11-19 复核 arXiv:2608.29601v2 的 §1–7、附录 A–F、Table 1–5 和当前源码发布状态
 
 ## BibTeX
 
@@ -67,7 +81,9 @@
 @article{n0foundation2026,
   title   = {N0-Foundation: Towards the Age of Tactile Intelligence},
   author  = {NeoteAI Team and Fudan TEAI Team},
-  journal = {Technical Report},
+  eprint  = {2608.29601},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO},
   year    = {2026}
 }
 ```
