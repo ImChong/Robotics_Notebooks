@@ -482,6 +482,14 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+# 2026-11-19 | ingest | 具身机器人 FDE 交付商业模式
+
+- 原文：《FDE 火了，具身模型的交付会是一门什么样的生意？》（具身智能之心；用户提供全文）
+- 新增博客归档、厂商一手来源归档、对比知识页与 Mermaid 交付流程。
+- 用官方智元、破壳、Dexmal、PI、Dream Labs、Formic 与 SEC Agility 的公开资料区分已证实、厂商陈述和待验证。
+- 关联既有 FDE 工程参考书页面；不创建重复企业项目实体。
+- 验证边界：当前执行环境无法访问 GitHub 仓库网络克隆，尚未运行本地 make ci-preflight、健康度脚本或 Mermaid 解析器；以 GitHub Actions 为后续门禁，不声称已通过。
+
 ## [2026-11-19] ingest | sources/papers/kagan_2025_cl1_biological_neural_platform.md — 收录 CL1 生物神经闭环平台论文并区分后续官方 SDK
 
 - 新增唯一论文详情节点 `wiki/entities/paper-cl1-biological-neural-platform-kagan-2025.md`，记录期刊原文与后续 API 文档的时间与证据边界。
