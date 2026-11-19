@@ -669,3 +669,94 @@ test('Citation cards display canonical node title, community, roadmap, updated d
   assert.equal(card.querySelectorAll('.kb-chat-citation-health .node-health--3 i.is-on').length, 3);
   dom.window.close();
 });
+
+test('Mermaid fenced code blocks render as diagrams and support click-to-zoom lightbox', async () => {
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer: '流程如下：\n```mermaid\ngraph LR\n  A --> B\n```',
+            citations: [],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  let mermaidInitSecurity = '';
+  window.mermaid = {
+    initialize: (opts) => {
+      mermaidInitSecurity = opts.securityLevel;
+    },
+    run: async ({ nodes }) => {
+      for (const n of nodes) {
+        const svg = window.document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        n.appendChild(svg);
+      }
+    },
+  };
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-mermaid'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  await new Promise((r) => setTimeout(r, 15));
+
+  assert.equal(mermaidInitSecurity, 'strict');
+  const mermaidHost = window.document.querySelector('.kb-chat-md-body .mermaid');
+  assert.ok(mermaidHost);
+  assert.equal(window.document.querySelector('.kb-chat-md-pre'), null);
+  assert.ok(mermaidHost.classList.contains('mermaid-zoomable'));
+  mermaidHost.click();
+  const lightbox = window.document.querySelector('.mermaid-lightbox');
+  assert.ok(lightbox && lightbox.hidden === false);
+  assert.ok(lightbox.querySelector('svg'));
+  dom.window.close();
+});
+
+test('Chat history persists in localStorage across page reloads until cache is cleared', async () => {
+  const first = setupDom({ withFooter: true });
+  first.window.eval(fabBlock);
+  first.window.eval(chatSource);
+  first.window.RNKbChat.open();
+  await first.window.RNKbChat.ask('什么是全身控制 WBC？');
+  const savedRaw = first.window.localStorage.getItem('rn_kb_chat_history_v1');
+  assert.ok(savedRaw && savedRaw.includes('什么是全身控制 WBC？'));
+  first.dom.window.close();
+
+  const second = setupDom({ withFooter: true });
+  second.window.localStorage.setItem('rn_kb_chat_history_v1', savedRaw);
+  second.window.eval(fabBlock);
+  second.window.eval(chatSource);
+  second.window.RNKbChat.open();
+
+  const userMsgs = second.window.document.querySelectorAll('.kb-chat-msg--user');
+  const assistantMsgs = second.window.document.querySelectorAll('.kb-chat-msg--assistant');
+  assert.equal(userMsgs.length, 1);
+  assert.equal(assistantMsgs.length, 1);
+  assert.equal(userMsgs[0].textContent, '什么是全身控制 WBC？');
+  assert.ok(assistantMsgs[0].querySelector('a.kb-chat-citation-card'));
+  second.dom.window.close();
+});

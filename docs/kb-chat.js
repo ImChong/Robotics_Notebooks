@@ -17,7 +17,12 @@
   var RAW_URL_RE = /\b(?:https?:\/\/|javascript:|data:|vbscript:)[^\s)\]<>"']+/gi;
   var TURNSTILE_SCRIPT_URL = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
   var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
+  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@12.3.0/dist/mermaid.min.js';
+  var CHAT_HISTORY_KEY = 'rn_kb_chat_history_v1';
+  var MAX_STORED_MESSAGES = 40;
+  var MAX_STORED_BYTES = 120000;
   var _katexLoadPromise = null;
+  var _mermaidLoadPromise = null;
 
   var SYNONYMS = {
     wbc: ['全身控制', 'whole-body-control'],
@@ -687,6 +692,8 @@
     startersEl: null,
     catalog: null,
     roadmapByNodeId: null,
+    history: [],
+    historyRestored: false,
     turnstileEl: null,
     turnstileWidgetId: null,
     prewarmedToken: null,
@@ -890,13 +897,165 @@
       .catch(function () {});
   }
 
-  function appendUserMessage(text) {
+  function loadChatHistory() {
+    try {
+      if (typeof window === 'undefined' || !window.localStorage) return [];
+      var raw = window.localStorage.getItem(CHAT_HISTORY_KEY);
+      if (!raw) return [];
+      var parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return [];
+      return parsed.filter(function (entry) {
+        return entry && (entry.role === 'user' || entry.role === 'assistant') && typeof entry.text === 'string';
+      });
+    } catch (_err) {
+      return [];
+    }
+  }
+
+  function saveChatHistory(entries) {
+    try {
+      if (typeof window === 'undefined' || !window.localStorage) return;
+      var list = entries.slice(-MAX_STORED_MESSAGES);
+      var json = JSON.stringify(list);
+      while (list.length > 1 && json.length > MAX_STORED_BYTES) {
+        list.shift();
+        json = JSON.stringify(list);
+      }
+      if (json.length <= MAX_STORED_BYTES) {
+        window.localStorage.setItem(CHAT_HISTORY_KEY, json);
+      }
+    } catch (_err) {
+      // ignore quota / private mode storage errors
+    }
+  }
+
+  function recordHistoryEntry(entry) {
+    state.history.push(entry);
+    if (state.history.length > MAX_STORED_MESSAGES) {
+      state.history = state.history.slice(-MAX_STORED_MESSAGES);
+    }
+    saveChatHistory(state.history);
+  }
+
+  function ensureChatMermaidLoaded() {
+    if (typeof window !== 'undefined' && typeof window.mermaid !== 'undefined') {
+      return Promise.resolve();
+    }
+    if (_mermaidLoadPromise) return _mermaidLoadPromise;
+    _mermaidLoadPromise = loadHeadTag('script', {
+      src: MERMAID_CDN_URL,
+      crossOrigin: 'anonymous',
+    }).catch(function (err) {
+      _mermaidLoadPromise = null;
+      throw err;
+    });
+    return _mermaidLoadPromise;
+  }
+
+  var _fallbackLightboxEl = null;
+
+  function openFallbackMermaidLightbox(svgEl) {
+    if (!svgEl || typeof document === 'undefined') return;
+    if (!_fallbackLightboxEl) {
+      var overlay = document.createElement('div');
+      overlay.className = 'mermaid-lightbox';
+      overlay.hidden = true;
+      var backdrop = document.createElement('div');
+      backdrop.className = 'mermaid-lightbox-backdrop';
+      var panel = document.createElement('div');
+      panel.className = 'mermaid-lightbox-panel';
+      var head = document.createElement('div');
+      head.className = 'mermaid-lightbox-head';
+      var title = document.createElement('span');
+      title.className = 'mermaid-lightbox-title';
+      title.textContent = 'Mermaid';
+      var closeBtn = document.createElement('button');
+      closeBtn.type = 'button';
+      closeBtn.className = 'mermaid-lightbox-close';
+      closeBtn.textContent = '×';
+      closeBtn.addEventListener('click', function () {
+        overlay.hidden = true;
+      });
+      backdrop.addEventListener('click', function () {
+        overlay.hidden = true;
+      });
+      head.appendChild(title);
+      head.appendChild(closeBtn);
+      var body = document.createElement('div');
+      body.className = 'mermaid-lightbox-body';
+      panel.appendChild(head);
+      panel.appendChild(body);
+      overlay.appendChild(backdrop);
+      overlay.appendChild(panel);
+      document.body.appendChild(overlay);
+      _fallbackLightboxEl = { overlay: overlay, body: body };
+    }
+    var clone = svgEl.cloneNode(true);
+    clone.style.maxWidth = '100%';
+    clone.style.maxHeight = '100%';
+    clone.style.width = 'auto';
+    clone.style.height = 'auto';
+    _fallbackLightboxEl.body.textContent = '';
+    _fallbackLightboxEl.body.appendChild(clone);
+    _fallbackLightboxEl.overlay.hidden = false;
+  }
+
+  function renderMessageMermaid(container) {
+    if (!container || typeof container.querySelectorAll !== 'function') return;
+    var nodes = Array.prototype.slice.call(container.querySelectorAll('.mermaid'));
+    if (!nodes.length) return;
+
+    var renderPromise;
+    if (typeof window !== 'undefined' && window.RNMermaid && typeof window.RNMermaid.render === 'function') {
+      renderPromise = Promise.resolve(window.RNMermaid.render(container));
+    } else {
+      renderPromise = ensureChatMermaidLoaded().then(function () {
+        if (typeof window === 'undefined' || !window.mermaid) return;
+        var isDark =
+          typeof document !== 'undefined' &&
+          document.documentElement &&
+          document.documentElement.getAttribute('data-theme') === 'dark';
+        window.mermaid.initialize({
+          startOnLoad: false,
+          theme: isDark ? 'dark' : 'default',
+          securityLevel: 'strict',
+        });
+        return Promise.resolve(window.mermaid.run({ nodes: nodes })).then(function () {
+          for (var i = 0; i < nodes.length; i += 1) {
+            (function (host) {
+              var svg = host.querySelector('svg');
+              if (!svg) return;
+              host.classList.add('mermaid-zoomable');
+              host.setAttribute('tabindex', '0');
+              host.setAttribute('role', 'button');
+              host.addEventListener('click', function () {
+                openFallbackMermaidLightbox(svg);
+              });
+            })(nodes[i]);
+          }
+        });
+      });
+    }
+
+    renderPromise
+      .then(function () {
+        if (state.messagesEl) {
+          state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
+        }
+      })
+      .catch(function () {});
+  }
+
+  function appendUserMessage(text, skipSave) {
     var msg = document.createElement('div');
     msg.className = 'kb-chat-msg kb-chat-msg--user';
     msg.textContent = normalizeMathText(text);
     state.messagesEl.appendChild(msg);
     renderMessageMath(msg);
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
+    if (!skipSave) {
+      recordHistoryEntry({ role: 'user', text: String(text || '') });
+    }
   }
 
   function appendPlainWithCitations(parent, text, citationsByIndex) {
@@ -1052,8 +1211,9 @@
         continue;
       }
 
-      // Fenced code block
+      // Fenced code block (or Mermaid diagram)
       if (/^```/.test(trimmed)) {
+        var fenceLang = trimmed.slice(3).trim().toLowerCase();
         var codeLines = [];
         i += 1;
         while (i < lines.length && !/^```/.test(lines[i].trim())) {
@@ -1061,6 +1221,13 @@
           i += 1;
         }
         if (i < lines.length && /^```/.test(lines[i].trim())) i += 1;
+        if (fenceLang === 'mermaid') {
+          var mermaidHost = document.createElement('div');
+          mermaidHost.className = 'mermaid';
+          mermaidHost.textContent = codeLines.join('\n');
+          body.appendChild(mermaidHost);
+          continue;
+        }
         var pre = document.createElement('pre');
         pre.className = 'kb-chat-md-pre';
         var codeEl = document.createElement('code');
@@ -1218,6 +1385,7 @@
 
     var citations = Array.isArray(options.citations) ? options.citations : [];
     var citationsByIndex = new Map();
+    var enrichedCitations = [];
     for (var i = 0; i < citations.length; i += 1) {
       var c = citations[i];
       if (c && typeof c.index === 'number') {
@@ -1242,6 +1410,20 @@
         var item = citations[j];
         if (!item) continue;
         var meta = resolveCitationMeta(item);
+        var savedCite = {
+          index: item.index || j + 1,
+          id: item.id || '',
+          title: meta.title || item.title || item.id || '',
+          heading: item.heading || '',
+          snippet: item.snippet || '',
+          url: item.url || '',
+          path: meta.path || '',
+          community_label: meta.community || item.community_label || '',
+          roadmaps: meta.roadmaps || [],
+          updated: meta.updated || '',
+          health_score: typeof meta.healthScore === 'number' ? meta.healthScore : undefined,
+        };
+        enrichedCitations.push(savedCite);
         var href = safeInternalNodeUrl(item.url, item.id);
         var card = document.createElement(href ? 'a' : 'div');
         card.className = 'kb-chat-citation-card';
@@ -1249,7 +1431,7 @@
 
         var titleEl = document.createElement('span');
         titleEl.className = 'kb-chat-citation-title';
-        titleEl.textContent = '[' + (item.index || j + 1) + '] ' + (meta.title || String(item.id || ''));
+        titleEl.textContent = '[' + savedCite.index + '] ' + (meta.title || String(item.id || ''));
         card.appendChild(titleEl);
 
         if (item.heading && String(item.heading).trim() !== meta.title) {
@@ -1267,7 +1449,7 @@
           commChip.textContent = t('metaCommunity') + ' · ' + meta.community;
           metaRow.appendChild(commChip);
         } else if (meta.path) {
-          pendingCommunitySlots.push({ metaRow: metaRow, path: meta.path });
+          pendingCommunitySlots.push({ metaRow: metaRow, path: meta.path, savedCite: savedCite });
         }
 
         if (meta.roadmaps && meta.roadmaps.length > 0) {
@@ -1306,16 +1488,22 @@
       if (pendingCommunitySlots.length > 0) {
         ensureCommunityIndex().then(function (commIdx) {
           if (!commIdx || !commIdx.pathToCommunity) return;
+          var updatedAny = false;
           for (var p = 0; p < pendingCommunitySlots.length; p += 1) {
             var slotInfo = pendingCommunitySlots[p];
             var cid = commIdx.pathToCommunity.get(slotInfo.path);
             var rawLabel = cid && commIdx.communityLabel ? commIdx.communityLabel[cid] : '';
             var shortLabel = shortenCommunityLabel(rawLabel);
             if (!shortLabel) continue;
+            slotInfo.savedCite.community_label = shortLabel;
+            updatedAny = true;
             var commEl = document.createElement('span');
             commEl.className = 'kb-chat-citation-chip kb-chat-citation-community';
             commEl.textContent = t('metaCommunity') + ' · ' + shortLabel;
             slotInfo.metaRow.insertBefore(commEl, slotInfo.metaRow.firstChild);
+          }
+          if (updatedAny) {
+            saveChatHistory(state.history);
           }
         });
       }
@@ -1330,7 +1518,17 @@
 
     state.messagesEl.appendChild(msg);
     renderMessageMath(msg);
+    renderMessageMermaid(msg);
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
+    if (!options._restoring) {
+      recordHistoryEntry({
+        role: 'assistant',
+        statusNote: options.statusNote || '',
+        text: String(options.text || ''),
+        citations: enrichedCitations,
+        showGraphLink: Boolean(options.showGraphLink),
+      });
+    }
   }
 
   var activeTurnstileHandlers = null;
@@ -1807,9 +2005,38 @@
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && state.open) {
+        if (_fallbackLightboxEl && !_fallbackLightboxEl.overlay.hidden) {
+          _fallbackLightboxEl.overlay.hidden = true;
+          return;
+        }
+        if (document.querySelector('.mermaid-lightbox:not([hidden])')) {
+          return;
+        }
         close();
       }
     });
+
+    if (!state.historyRestored) {
+      state.historyRestored = true;
+      var savedEntries = loadChatHistory();
+      if (savedEntries.length > 0) {
+        state.history = savedEntries.slice();
+        for (var hi = 0; hi < savedEntries.length; hi += 1) {
+          var entry = savedEntries[hi];
+          if (entry.role === 'user') {
+            appendUserMessage(entry.text, true);
+          } else {
+            appendAssistantMessage({
+              statusNote: entry.statusNote || '',
+              text: entry.text || '',
+              citations: Array.isArray(entry.citations) ? entry.citations : [],
+              showGraphLink: Boolean(entry.showGraphLink),
+              _restoring: true,
+            });
+          }
+        }
+      }
+    }
 
     if (typeof MutationObserver === 'function' && document.documentElement) {
       new MutationObserver(function () {

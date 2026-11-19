@@ -5467,6 +5467,44 @@ a.card:active { transform: translateY(-1px); }
   line-height: 1.45;
   white-space: pre;
 }
+.kb-chat-md-body .mermaid {
+  margin: 4px 0;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+}
+.kb-chat-md-body .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+.kb-chat-md-body .mermaid.mermaid-zoomable {
+  cursor: zoom-in;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+.kb-chat-md-body .mermaid.mermaid-zoomable:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--shadow-tint) 12%, transparent);
+}
+.kb-chat-md-body .mermaid.mermaid-zoomable::after {
+  content: '点击放大';
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.66rem;
+  line-height: 1.3;
+  color: var(--text-muted);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  pointer-events: none;
+  opacity: 0.86;
+}
 .kb-chat-md-quote {
   margin: 2px 0;
   padding: 4px 10px;

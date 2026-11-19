@@ -34,7 +34,7 @@
     "ALLOWED_TURNSTILE_HOSTNAMES": "imchong.github.io",
     "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
     "MAX_INPUT_CHARS": "300",
-    "MAX_OUTPUT_TOKENS": "384",
+    "MAX_OUTPUT_TOKENS": "1024",
     "MAX_DAILY_REQUESTS_PER_IP": "30",
     "CACHE_TTL_SECONDS": "21600",
     "ALLOW_LOCAL_ORIGIN": "false"

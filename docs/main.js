@@ -2631,6 +2631,15 @@
     render: renderDetailMath
   };
 
+  window.RNMermaid = {
+    render: function (container) {
+      if (!container) return Promise.resolve();
+      var nodes = Array.from(container.querySelectorAll('.mermaid'));
+      if (!nodes.length) return Promise.resolve();
+      return renderMermaidNodes(container, nodes);
+    }
+  };
+
   // ── 公式与图表组件按内容加载（编号 9）──
   // 详情页与路线页原先在 HTML 里静态引入 KaTeX（CSS + katex.min.js + auto-render）与
   // Mermaid，无公式、无图表的页面同样要下载。改为渲染正文时按内容注入，
