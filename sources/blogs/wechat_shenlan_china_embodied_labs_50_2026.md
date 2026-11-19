@@ -10,6 +10,8 @@
 - **入库日期：** 2026-08-01
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；`--no-images`；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始落盘：** [`sources/raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/article.md`](../raw/wechat_shenlan_china_embodied_labs_50_2026-07-26/article.md)
+- **通读：** 已完成
+- **通读核验：** 2026-11-19 通读完整归档正文（孵化、合作、基础研究三层及结尾声明）；此标记表示通读作者原文，非逐一实地核实全部实验室信息。
 - **姊妹篇：** [海外 43 所](wechat_shenlan_overseas_embodied_labs_43_2026.md)（<https://mp.weixin.qq.com/s/_zoU9Q-KXHJAUZ041iBuCw>）
 - **一句话说明：** 以约 50 所国内高校 / 科研机构实验室为样本，按产学研现状归纳 **技术孵化层 / 深度合作层 / 基础研究层** 三层结构，梳理「组→公司 / 校企联合实验室 / 重点平台」转化链条；数据截至 2026-07，不分排名。
 
@@ -84,3 +86,9 @@
 - [x] 三层结构归纳 + 升格 overview 枢纽页
 - [x] 与海外姊妹篇交叉链接
 - [ ] 未为全部 50 所实验室各建独立实体页（按需后续拆分）
+
+## 原文通读核验（2026-11-19）
+
+- **覆盖范围**：从清华 ISR/TEA/EVAR/MARS、北大 EPIC 等技术孵化条目，逐段核对到 PKU-Agibot、OpenDriveLab、ARGLab 等联合合作条目，再核对 THUEIR、AIR、上交多实验室、复旦、人大、港校等基础科研平台，以及文末方法与时间范围声明。
+- **证据口径**：文章以 50 所高校／科研实验室为样本、按公开产学研现状手工归纳，不分排名；分类可能交叉，数据截止 2026-07。图像与名单不应被当作官方认证或 2026-11 最新状态。
+- **关联特别核对**：原文将清华 EVAR（高阳）与千寻智能并列于孵化层，适合作为本库 Spirit.AI 实体的**第三方背景线索**；公司技术与开源事实仍以其官网及源码一手资料为准。
