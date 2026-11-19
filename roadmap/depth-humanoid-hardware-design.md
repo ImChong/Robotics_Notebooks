@@ -87,6 +87,7 @@ flowchart LR
 - [刚-软混合链路人形](../wiki/entities/paper-rigid-soft-hybrid-link-humanoid.md) — 东京大学的刚-软混合人形研究：以 PCS 描述柔性腿部构件，结合逆运动学与主动柔顺优化；跳跃/行走为仿真验证，实验验证限于单、双支撑站立平衡。
 - [Actuator 102 · 02：旋转-直线分离架构](../wiki/overview/humanoid-actuator-102-split-architecture.md)
 - [人形膝/腿主承力链为何通常避开谐波减速器](../wiki/concepts/humanoid-knee-harmonic-drive-limits.md) — 膝/踝主承力关节优先解决冲击载荷谱、柔轮疲劳寿命、动态刚度与远端惯量，PRS 直线 / 摆线 RV / 低减速比 QDD 三条常见替代路线对照
+- [谐波减速器效率计算：轻载、温度与热预算](../wiki/concepts/harmonic-reducer-efficiency.md) — 传动方案定型前，按关节负载谱核算实际效率和持续散热而非套额定值
 - [LIP/ZMP](../wiki/concepts/lip-zmp.md) 与 [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md) — 布局参数在控制里以什么形式出现
 - [连杆与转子惯量](../wiki/concepts/robot-link-and-rotor-inertia.md) 与 [URDF 机器人描述](../wiki/concepts/urdf-robot-description.md)
 
