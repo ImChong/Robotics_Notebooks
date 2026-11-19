@@ -20,6 +20,7 @@
 
 - **已发布：** OpenNeoData（约 **5,000 h** 开源子集，LeRobot v3.0，HF + ModelScope，**门禁 + CC-BY-NC-SA-4.0**）；三仓均有 GitHub 入口与技术报告 PDF。
 - **待发布（仓内 Roadmap 写明 By July 31, 2026）：** NeoForce 权重与代码；𝒩₀-VTLA / 𝒩₀-TWAM 模型代码、预训练/后训练权重与训练配方。截至入库日三仓顶层仅 `README.md` + `LICENSE` + `diagrams/`，**无可运行训练/推理入口**。
+- **2026-11-19 更新（仅 Foundation，其他两篇未重新核验）：** [N0-Foundation](https://github.com/neoteai/N0-Foundation) 主分支目前已有 `neoforce/` 训练与评测源码、`neosim/` 仿真采集与策略评测源码；NeoForce 权重见 [NeoteAI/NeoForce](https://huggingface.co/NeoteAI/NeoForce)。上文「2026-07-26 待发布」为历史快照，不适用于 Foundation 当前状态。NeoSim 部分 USD/TacEx 二进制资产及 checkpoint 需单独获取。
 - **合作署名：** 各页页眉均链 [Fudan TEAI](https://teai.fudan.edu.cn/)。
 
 ## 三件套要点（索引）
