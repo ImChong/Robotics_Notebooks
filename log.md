@@ -490,6 +490,8 @@ op: ingest
 - 关联既有 FDE 工程参考书页面；不创建重复企业项目实体。
 - 验证边界：当前执行环境无法访问 GitHub 仓库网络克隆，尚未运行本地 make ci-preflight、健康度脚本或 Mermaid 解析器；以 GitHub Actions 为后续门禁，不声称已通过。
 
+## [2026-11-19] ingest | sources/sites/spirit-ai.md — 公司路线新增千寻智能（Spirit.AI，https://www.spirit-ai.com/blog/），新建 Spirit.AI 与 Legato 实体页并补齐 Spirit-v1.5 源码/权重/博文核查（MIT 代码与 Apache-2.0 HF 权重，uDAS 与 Spirit v1.6 闭源；Legato 仅开源 Kinetix 仿真）
+
 ## [2026-11-19] ingest | sources/papers/kagan_2025_cl1_biological_neural_platform.md — 收录 CL1 生物神经闭环平台论文并区分后续官方 SDK
 
 - 新增唯一论文详情节点 `wiki/entities/paper-cl1-biological-neural-platform-kagan-2025.md`，记录期刊原文与后续 API 文档的时间与证据边界。
