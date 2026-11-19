@@ -10,11 +10,14 @@ tags:
   - dual-stream
   - whut
 status: complete
-updated: 2026-10-14
+updated: 2026-11-19
 arxiv: "2607.13926"
+original:
+  - ../../sources/papers/s_squared_vla_arxiv_2607_13926.md
 related:
   - ../methods/vla.md
   - ./paper-x-foresight.md
+  - ./paper-hyworldvla.md
   - ../overview/autonomous-driving-core-algorithms-series.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
   - ./paper-diffusiondrive.md
@@ -178,6 +181,8 @@ flowchart TB
 5. **复现边界：未开源** — 无权重与训练脚本，选型只能对照论文超参与 [NAVSIM](https://github.com/autonomousvision/navsim) 协议；勿与操作域 S2-VLA（arXiv:2606.27872）混淆命名。
 
 ## 与其他工作对比
+
+- [HyWorldVLA](./paper-hyworldvla.md)（比亚迪，arXiv:2607.20988）：驾驶 VLA 以未来视频像素与潜变量联合预训练、在规划阶段仅让 latent 条件化动作专家，侧重雨雾鲁棒性；与 S²-VLA 的语义–空间双流解耦互补，NAVSIM 实验口径需分别对照。
 
 | 对照对象 | 差异要点 |
 |----------|----------|

@@ -11,6 +11,9 @@
 - **作者：** Jianguo Yu\*、Rukang Wang\*、Duanfeng Chu（通讯）、Chen Wang、Renju Feng、Liping Lu（\*共一）
 - **机构：** 武汉理工大学机械与电子工程学院；智能交通系统研究中心；计算机科学与人工智能学院
 - **入库日期：** 2026-07-23
+- **本次复核：** 2026-11-19，按 arXiv:2607.13926v1 HTML 全文复核。
+- **核对范围：** arXiv HTML v1 全文 Abstract、§I（问题设定）、§II-A/B/C（双流与规划适配器、损失式 1–8）、§III-A/B（NAVSIM 与训练配置、Table I）、§IV-A/B/C（Table II–III、Figure 4、基线比较与消融）、§V（结论与局限）；同时核对参考文献与前次归档的版本和开源边界。
+- **通读：** 已完成
 - **一句话说明：** 针对驾驶 VLA 的 **spatial representation collapse**，把 **语义流**（InternVL3-2B 多尺度 + action queries）与 **空间流**（ViT 稠密特征 + BEV map / agent 辅助监督）解耦，再用 **Dual-Stream Planning Adapter** 级联融合，在 **NAVSIM** 闭环、纯 **SFT** 设定下报 **PDMS 87.1**、**NC 98.4**。
 
 ## 开源状态（步骤 2.5）
