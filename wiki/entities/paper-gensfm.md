@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-generation, multi-view, reconstruction, diffusion]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-19
 project_id: gensfm
 arxiv: "2610.35522"
 project: https://dotb1ue.github.io/GenSfm/
@@ -12,6 +12,7 @@ original:
 related:
   - ./paper-axolotl3d.md
   - ./paper-glob3r.md
+  - ../../roadmap/depth-real2sim.md
 sources:
   - ../../sources/papers/gensfm_arxiv_2610_35522.md
   - ../../sources/repos/gensfm.md
@@ -119,6 +120,8 @@ sequenceDiagram
 | 输入准备 | 2–4 张同一刚体物体的前景 RGBA 图，四张覆盖不同侧面为推荐；保留完整物体、孔洞与细薄结构。RGB 照片可加 `--remove-background`（rembg），混乱背景需检查 mask |
 | 关键参数 | `--seed`（默认 1）；`--steps` 同时作用于两阶段；论文推理粗阶段 25 步 flow-Euler、CFG 强度 7.5，细阶段 25 步、CFG 3.0，均在 $t\in[0.5,1.0]$ 区间施加 |
 | 输出与自检 | `mesh.glb`、`gaussian.ply`、`cameras.json`（OpenCV world-to-camera 外参，Z-up 模型坐标系；GLB 使用 `(x, z, -y)`，投影导出 mesh 时需应用 `data_to_mesh` 变换）、`reprojection-XX.png` 与输入图对比 |
+| 源码失败保护 | `InputViews` 要求图像有前景 alpha；纯 RGB 需显式开启 `--remove-background`。`reconstruct` 会拒绝非有限相机参数、非正焦距和空占据体素，批量重建时仍需核验重投影与掩码 | 
+| Real2Sim 资产边界 | 输出具备物体级 mesh、3DGS 与预测相机，**不等同于可直接用于接触仿真的资产**：代码输出未包含质量、摩擦、关节及经验证的碰撞几何；后续需补物性与物理验证（见 [Real2Sim 纵深 Stage 1–2](../../roadmap/depth-real2sim.md)） |
 | 调试指标 | 重投影与输入 mask 是否对齐；`cameras.json` 中内参焦距是否为正；每次运行使用新输出目录，避免覆盖 |
 | 训练 | README 要求先按 DATASET.md 准备数据，并下载 TRELLIS-image-large 作为两个生成器的初始化；论文在 8 张 H200 上分别训练粗、细阶段各 1M 步 |
 
@@ -190,6 +193,7 @@ sequenceDiagram
 
 - [Axolotl3D](./paper-axolotl3d.md)：以相机和部分点云为条件的形状补全。
 - [Global 3R](./paper-glob3r.md)：相关多视角 3D 重建。
+- [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md)：Stage 1 的稀疏视图物体几何重建入口；与 Stage 2 物性、碰撞补全分工。
 
 ## 推荐继续阅读
 
