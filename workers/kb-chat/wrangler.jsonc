@@ -1,0 +1,44 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "robotics-notebooks-kb-chat",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-11-01",
+  "ai": {
+    "binding": "AI"
+  },
+  // Workers Free 套餐原生可用（近似分机房限速，作为前置防刷闸门）。
+  // 零支出终极保障：账户必须保持在 Workers Free，禁止升级 Workers Paid，
+  // 也不要绑定按量计费的第三方模型 Key 或 AI Gateway 付费兜底路由；
+  // Workers AI 每日 10,000 Neurons 耗尽后会硬停止并报错，前端自动降级本地搜索。
+  "ratelimits": [
+    {
+      "name": "CHAT_BURST_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 3,
+        "period": 10
+      }
+    },
+    {
+      "name": "CHAT_MINUTE_LIMITER",
+      "namespace_id": "1002",
+      "simple": {
+        "limit": 8,
+        "period": 60
+      }
+    }
+  ],
+  "vars": {
+    "PAGES_BASE_URL": "https://imchong.github.io/Robotics_Notebooks",
+    "ALLOWED_ORIGINS": "https://imchong.github.io",
+    "ALLOWED_TURNSTILE_HOSTNAMES": "imchong.github.io",
+    "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+    "MAX_INPUT_CHARS": "300",
+    "MAX_OUTPUT_TOKENS": "384",
+    "MAX_DAILY_REQUESTS_PER_IP": "30",
+    "CACHE_TTL_SECONDS": "21600",
+    "ALLOW_LOCAL_ORIGIN": "false"
+  }
+  // 必填 Secret（严禁写入本文件或仓库）：
+  // npx wrangler secret put TURNSTILE_SECRET_KEY
+}

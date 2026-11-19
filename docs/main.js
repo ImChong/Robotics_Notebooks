@@ -9200,6 +9200,10 @@
     }
     container.innerHTML = othersHtml;
   }
+
+  if (typeof window !== 'undefined') {
+    window.RNSiteCatalog = { ensure: ensureSiteCatalog };
+  }
 })();
 
 /* ── 底部浮动按钮避让页脚 ──
@@ -9251,15 +9255,74 @@
   }
 })();
 
-/* ── 全站「回到顶部」按钮（带阅读进度环） ──
+/* ── 全站「回到顶部」按钮（带阅读进度环）与右下角 AI 知识库问答入口 ──
    注入判据与 style.css 里 `body:has(> .footer)` 一致：graph.html / references.html
    没有站内 footer，因此自动排除（图谱页全屏画布不加浮层，跳转桩页无需）。 */
 (function () {
   'use strict';
 
+  function chatToggleIcon() {
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'kb-chat-toggle__icon');
+    var bubble = document.createElementNS(ns, 'path');
+    bubble.setAttribute('class', 'kb-chat-toggle__bubble');
+    bubble.setAttribute(
+      'd',
+      'M6 4.5h12a2.5 2.5 0 0 1 2.5 2.5v7a2.5 2.5 0 0 1-2.5 2.5H8.6l-4.05 3.35c-.55.45-1.05.05-1.05-.65V7A2.5 2.5 0 0 1 6 4.5z'
+    );
+    svg.appendChild(bubble);
+    var dotXs = [8, 12, 16];
+    for (var i = 0; i < dotXs.length; i++) {
+      var dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('class', 'kb-chat-toggle__dot');
+      dot.setAttribute('cx', String(dotXs[i]));
+      dot.setAttribute('cy', '10.5');
+      dot.setAttribute('r', '1.3');
+      svg.appendChild(dot);
+    }
+    return svg;
+  }
+
+  function mainToggleIcon() {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'fab-main-toggle__icon');
+    var chat = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    chat.setAttribute('class', 'fab-main-toggle__chat');
+    chat.setAttribute(
+      'd',
+      'M3 10a2 2 0 0 1 2-2h7.5a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8.2L5 19.6V17H5a2 2 0 0 1-2-2v-5z'
+    );
+    var arrow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    arrow.setAttribute('class', 'fab-main-toggle__arrow');
+    arrow.setAttribute(
+      'd',
+      'M18.5 3.2l-3.3 3.3 1.15 1.15 1.35-1.35v5.9h1.6V6.3l1.35 1.35L21.8 6.5 18.5 3.2z'
+    );
+    svg.appendChild(chat);
+    svg.appendChild(arrow);
+    return svg;
+  }
+
   function init() {
     if (!document.querySelector('body > .footer')) return;
-    if (document.querySelector('.back-to-top')) return;
+    if (document.querySelector('.back-to-top') || document.getElementById('fabStackRight')) return;
+
+    var stack = document.createElement('div');
+    stack.id = 'fabStackRight';
+    stack.className = 'fab-stack-right';
+
+    var slot = document.createElement('div');
+    slot.id = 'kbChatSlot';
+    slot.className = 'kb-chat-slot';
+
+    var actions = document.createElement('div');
+    actions.id = 'fabActionsRow';
+    actions.className = 'fab-stack-right__actions';
 
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -9270,10 +9333,177 @@
     btn.setAttribute('aria-hidden', 'true');
     btn.tabIndex = -1;
     btn.innerHTML = '<span class="back-to-top-arrow" aria-hidden="true">↑</span>';
-    document.body.appendChild(btn);
+
+    var chatBtn = document.createElement('button');
+    chatBtn.type = 'button';
+    chatBtn.id = 'kbChatToggle';
+    chatBtn.className = 'kb-chat-toggle';
+    chatBtn.setAttribute('aria-expanded', 'false');
+    chatBtn.setAttribute('aria-controls', 'kbChatPanel');
+    chatBtn.setAttribute('aria-label', '知识问答');
+    chatBtn.setAttribute('title', '知识问答');
+    chatBtn.appendChild(chatToggleIcon());
+
+    var mainBtn = document.createElement('button');
+    mainBtn.type = 'button';
+    mainBtn.id = 'fabMainToggle';
+    mainBtn.className = 'fab-main-toggle';
+    mainBtn.setAttribute('aria-expanded', 'false');
+    mainBtn.setAttribute('aria-controls', 'backToTop kbChatToggle');
+    mainBtn.setAttribute('aria-label', '回到顶部 / 知识问答');
+    mainBtn.setAttribute('title', '回到顶部 / 知识问答');
+    mainBtn.hidden = true;
+    mainBtn.setAttribute('aria-hidden', 'true');
+    mainBtn.tabIndex = -1;
+    mainBtn.appendChild(mainToggleIcon());
+
+    // 底部按钮行按从左到右排列：「左 #backToTop + 右 #kbChatToggle」；
+    // 未滚动时仅显示 #kbChatToggle；滚动后合并为单个 #fabMainToggle；
+    // 点击展开为横向两枚按钮，打开问答面板时面板始终位于按钮行上方的 #kbChatSlot 内
+    actions.appendChild(btn);
+    actions.appendChild(chatBtn);
+    actions.appendChild(mainBtn);
+    stack.appendChild(slot);
+    stack.appendChild(actions);
+    document.body.appendChild(stack);
+
+    var chatScriptPromise = null;
+    function fallbackToSearch() {
+      var localSearchInput = document.getElementById('wikiSearchInput');
+      if (localSearchInput) {
+        localSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        localSearchInput.focus();
+      } else {
+        window.location.href = 'index.html#wiki-search';
+      }
+    }
+
+    function loadChatWidget() {
+      if (window.RNKbChat && typeof window.RNKbChat.toggle === 'function') {
+        return Promise.resolve(window.RNKbChat);
+      }
+      if (chatScriptPromise) return chatScriptPromise;
+      chatScriptPromise = new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = 'kb-chat.js';
+        script.async = true;
+        script.onload = function () {
+          if (window.RNKbChat && typeof window.RNKbChat.toggle === 'function') {
+            resolve(window.RNKbChat);
+          } else {
+            chatScriptPromise = null;
+            reject(new Error('kb-chat unavailable'));
+          }
+        };
+        script.onerror = function () {
+          chatScriptPromise = null;
+          reject(new Error('Failed to load kb-chat.js'));
+        };
+        document.head.appendChild(script);
+      });
+      return chatScriptPromise;
+    }
 
     var visible = false;
+    var expanded = false;
+    var chatOpen = false;
     var lastProgress = -1;
+
+    function syncVisibility() {
+      var prevActive = document.activeElement;
+      var activeWasInStack = Boolean(prevActive && stack.contains(prevActive));
+      var showMain = visible && !expanded && !chatOpen;
+      var showBtt = visible && (expanded || chatOpen);
+      var showChatBtn = !visible || expanded || chatOpen;
+
+      stack.classList.toggle('is-expanded', showBtt && !chatOpen);
+
+      mainBtn.hidden = !showMain;
+      mainBtn.setAttribute('aria-hidden', showMain ? 'false' : 'true');
+      mainBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      mainBtn.tabIndex = showMain ? 0 : -1;
+
+      btn.hidden = !showBtt;
+      btn.classList.toggle('is-visible', showBtt);
+      btn.setAttribute('aria-hidden', showBtt ? 'false' : 'true');
+      btn.tabIndex = showBtt ? 0 : -1;
+
+      chatBtn.hidden = !showChatBtn;
+      chatBtn.setAttribute('aria-hidden', showChatBtn ? 'false' : 'true');
+      chatBtn.tabIndex = showChatBtn ? 0 : -1;
+
+      if (activeWasInStack && prevActive.hidden) {
+        var nextFocus = !mainBtn.hidden ? mainBtn : (!chatBtn.hidden ? chatBtn : btn);
+        if (nextFocus && !nextFocus.hidden) {
+          nextFocus.focus({ preventScroll: true });
+        }
+      }
+    }
+
+    mainBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      expanded = true;
+      syncVisibility();
+      chatBtn.focus({ preventScroll: true });
+    });
+
+    chatBtn.addEventListener('click', function () {
+      if (window.RNKbChat && typeof window.RNKbChat.toggle === 'function') {
+        window.RNKbChat.toggle();
+        return;
+      }
+      if (chatBtn.hasAttribute('aria-busy')) return;
+      chatBtn.setAttribute('aria-busy', 'true');
+      loadChatWidget()
+        .then(function (api) {
+          chatBtn.removeAttribute('aria-busy');
+          api.toggle();
+        })
+        .catch(function () {
+          chatBtn.removeAttribute('aria-busy');
+          fallbackToSearch();
+        });
+    });
+
+    document.addEventListener('rn-kb-chat:state', function (event) {
+      var nextOpen = Boolean(event && event.detail && event.detail.open);
+      if (nextOpen === chatOpen) return;
+      var hadFocus = stack.contains(document.activeElement);
+      chatOpen = nextOpen;
+      if (nextOpen) {
+        if (visible) expanded = true;
+      } else {
+        expanded = false;
+      }
+      syncVisibility();
+      if (!nextOpen && hadFocus) {
+        var focusTarget = !mainBtn.hidden ? mainBtn : chatBtn;
+        if (focusTarget && !focusTarget.hidden) {
+          focusTarget.focus({ preventScroll: true });
+        }
+      }
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!expanded || chatOpen) return;
+      if (chatBtn.hasAttribute('aria-busy')) return;
+      if (!stack.contains(event.target)) {
+        expanded = false;
+        syncVisibility();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape') return;
+      if (expanded && !chatOpen) {
+        var hadFocus = stack.contains(document.activeElement);
+        expanded = false;
+        syncVisibility();
+        if (hadFocus && !mainBtn.hidden) {
+          mainBtn.focus({ preventScroll: true });
+        }
+      }
+    });
 
     function update() {
       var doc = document.documentElement;
@@ -9285,6 +9515,7 @@
       if (rounded !== lastProgress) {
         lastProgress = rounded;
         btn.style.setProperty('--btt-progress', String(rounded));
+        mainBtn.style.setProperty('--btt-progress', String(rounded));
       }
       // 出现阈值：默认 0.6 屏，但对本身就不长的页面（如 hubs.html 可滚约 570px）
       // 按可滚距离的 35% 提前放出，否则按钮只会在最后几十像素里闪一下；
@@ -9293,9 +9524,8 @@
         scrolled > Math.min(window.innerHeight * 0.6, scrollable * 0.35);
       if (shouldShow !== visible) {
         visible = shouldShow;
-        btn.classList.toggle('is-visible', shouldShow);
-        btn.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
-        btn.tabIndex = shouldShow ? 0 : -1;
+        if (!shouldShow) expanded = false;
+        syncVisibility();
       }
     }
 
@@ -9317,10 +9547,11 @@
       var reduce = false;
       try {
         reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      } catch { /* 老浏览器无 matchMedia：按默认平滑滚动处理 */ }
+      } catch (_err) { /* 老浏览器无 matchMedia：按默认平滑滚动处理 */ }
       window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     });
 
+    syncVisibility();
     update();
   }
 

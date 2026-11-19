@@ -36,6 +36,7 @@ const OPTIONAL_ASSETS = [
   'depth-filters.js',
   'mini-graph.js',
   'company-roadmap.js',
+  'kb-chat.js',
   'sponsor.js',
   'company-roadmaps.json',
   'lab-roadmaps.json',

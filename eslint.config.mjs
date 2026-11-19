@@ -72,4 +72,28 @@ export default [
     },
     rules: sharedRules,
   },
+  {
+    files: ["workers/**/*.mjs"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: {
+        ...globals.serviceworker,
+        caches: "readonly",
+        crypto: "readonly",
+        fetch: "readonly",
+        Headers: "readonly",
+        Request: "readonly",
+        Response: "readonly",
+        TextDecoder: "readonly",
+        TextEncoder: "readonly",
+        URL: "readonly",
+        URLSearchParams: "readonly",
+        AbortController: "readonly",
+        clearTimeout: "readonly",
+        setTimeout: "readonly",
+      },
+    },
+    rules: sharedRules,
+  },
 ];
