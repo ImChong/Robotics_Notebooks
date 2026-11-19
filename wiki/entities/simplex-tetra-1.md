@@ -10,6 +10,8 @@ related:
   - ./metax-ai4s-science-camp.md
   - ./google-grounding-ai-agents-wet-labs.md
   - ./paper-epitope-excision-binder-design.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/rlcr-collective-inference-time-scaling.md
 sources:
   - ../../sources/blogs/simplex-tetra-1.md
   - ../../sources/sites/simplex-tetra-1-apply.md
@@ -96,6 +98,8 @@ flowchart TD
 - [沐曦 AI4S 科研实战营](./metax-ai4s-science-camp.md)：科研模型调用、蛋白设计的课程与计算实践。
 - [Google Research：自动化湿实验的构件](./google-grounding-ai-agents-wet-labs.md)：模型假说进入物理实验前需要验证与安全门控。
 - [表位切除蛋白设计](./paper-epitope-excision-binder-design.md)：蛋白设计中的结构筛选与真实湿实验的具体评测边界。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：**验证方法类比**，可借鉴独立检查与证据回路，但并非 Tetra-1 技术实现。
+- [RLCR 集体奖励推理方法](../methods/rlcr-collective-inference-time-scaling.md)：**推理计算路径对照**；该方法适用于软件多智能体，不代表 Tetra-1 使用集体奖励或多 Agent 训练。
 
 ## 参考来源
 
