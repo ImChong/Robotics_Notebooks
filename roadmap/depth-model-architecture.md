@@ -126,6 +126,7 @@ flowchart LR
 ### 推荐读什么
 - [视觉骨干](../wiki/concepts/vision-backbones.md) · [Vision Transformer](../wiki/concepts/vision-transformer.md) · [CNN vs ViT 骨干选型](../wiki/comparisons/cnn-vs-vit-backbones.md)
 - [策略的视觉表征](../wiki/concepts/visual-representation-for-policy.md) — 端到端 / 冻结骨干 / 机器人专用表征三条路径的取舍
+- [RAEv2：改进表征自编码器基线](../wiki/entities/paper-raev2-improved-representation-autoencoders.md) — Stage2 的冻结视觉 backbone → 生成 latent：末 K 层聚合 + REPA 与低开销 guidance；RECON 仅验证导航未来帧，不是闭环策略。
 - [Volt](../wiki/entities/paper-volt.md) → [VINO](../wiki/entities/paper-vino.md) — 从 3D 体积 Transformer 骨干到冻结点云自监督表征；VINO 提供分割和跨域配准特征评测，不等同于可直接上机的 SLAM / 控制策略（VINO 官方训练代码仍待发布）
 - [Segment Anything](../wiki/entities/paper-segment-anything.md) — 用可提示掩码理解视觉基础模型的输出接口，区分缓存图像编码后的提示延迟与整条感知链。
 - [OV-SAM3D](../wiki/entities/ov-sam3d.md) · [OVO](../wiki/entities/ovo-semantic-mapping.md) · [2D→3D 语义提升 Gap](../wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 对照离线多视角提升与在线语义地图，检查位姿、身份关联和异步更新如何改变策略输入。

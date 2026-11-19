@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-model, representation-distillation, manipulation, uw-madison, uiuc]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-19
 project_id: thaw-vla
 project: https://thaw-vla.trung-dt.com/
 code: https://github.com/trungdt880/THAW-VLA
@@ -179,6 +179,7 @@ sequenceDiagram
 - [StarVLA](../methods/star-vla.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [GIFT 中间特征训练](./paper-gift-intermediate-feature-training.md)
+- [RAEv2：RAE 与 REPA 的互补机制](./paper-raev2-improved-representation-autoencoders.md) — 视觉生成潜空间里的 REPA 对齐 / 自引导，与本页世界模型→VLA 教师蒸馏是不同任务和监督接口。
 - [Manipulation](../tasks/manipulation.md)
 
 ## 参考来源
