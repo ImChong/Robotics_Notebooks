@@ -95,7 +95,7 @@ summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随�
 3. **部署调度边界**：上一个 chunk 在新模型推理期间持续执行，将已提交的 \(d\) 步作为不可改变的 prefix，策略只生成剩余 postfix；应满足 \(d\le H-s\)。推理不再逐次进行伪逆/VJP inpainting，但仍需正常的 flow 去噪推理与真实机器人时钟同步。
 4. **真机配置与衡量**：论文使用远端 H100、5 步去噪、50 Hz 控制和每任务 8000 gradient steps / batch 512，平均端到端推理延迟为 **108 ms（T-RTC）对 135 ms（inference-time RTC）**；盒装/咖啡任务的成功率与执行时间总体相近，应同时检查实际延迟分布、动作连续性和任务成功率。
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
   A["训练示范：观测 + 动作 chunk"] --> B["随机抽样模拟延迟 d"]
   B --> C["前缀：真实动作，tau=1"]
@@ -105,7 +105,7 @@ flowchart TD
   E --> F["仅后缀计算 flow loss"]
   F -.-> G["部署：异步旧 chunk 保留已提交前缀"]
   G --> H["策略生成后缀，拼接后执行"]
-\`\`\`
+```
 
 ## 源码运行时序图
 
