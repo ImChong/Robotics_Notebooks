@@ -167,8 +167,8 @@
         var startY = e.clientY;
         var startW = rect.width;
         var startH = rect.height;
-        var maxW = Math.min(760, Math.max(320, window.innerWidth - 48));
-        var maxH = Math.min(760, Math.max(380, window.innerHeight - 110));
+        var maxW = Math.min(1080, Math.max(320, window.innerWidth - 48));
+        var maxH = Math.min(920, Math.max(380, window.innerHeight - 96));
 
         function onMove(ev) {
           if (cfg.dx !== 0) {

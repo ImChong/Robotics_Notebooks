@@ -5207,9 +5207,9 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-panel {
   position: relative;
   pointer-events: auto;
-  width: min(380px, calc(100vw - 32px));
-  /* 预留底部 24px + 底部按钮行(48px) + gap(12px) + 顶栏(--header-h 58px) + 呼吸边距(14px) = 156px */
-  max-height: min(540px, calc(100dvh - 156px - var(--fab-lift, 0px)));
+  width: min(460px, calc(100vw - 24px));
+  /* 预留底部 24px + 底部按钮行(48px) + gap(12px) + 顶栏与呼吸边距 */
+  max-height: min(640px, calc(100dvh - 136px - var(--fab-lift, 0px)));
   display: flex;
   flex-direction: column;
   background: var(--surface-strong);
