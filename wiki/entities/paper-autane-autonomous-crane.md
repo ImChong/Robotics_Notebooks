@@ -9,7 +9,7 @@ venue: "Science Robotics 11(120):eady5784 · 2026"
 related:
   - ../methods/model-predictive-control.md
   - ./paper-aware.md
-  - ../concepts/simultaneous-localization-and-mapping.md
+  - ../concepts/lidar-slam-survey-2026.md
 original:
   - ../../sources/papers/autane_science_robotics_ady5784.md
 sources:
