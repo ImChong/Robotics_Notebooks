@@ -3,7 +3,7 @@ type: entity
 project_id: envisioning-agentic-robotics-261118359
 tags: [paper, agentic-robotics, embodied-ai, foundation-model, robotics-systems, evaluation, grid-robotics]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-19
 arxiv: "2611.18359"
 project: https://grid-robotics-official.github.io/agentic-robotics-roadmap/
 original:
@@ -104,6 +104,19 @@ flowchart TD
 
 **证据边界：** 文中列举 RT-Safe 在其特定困难路线与协议下安全成功率 paused **19.8%** vs live **0.7%**，用来指出暂停世界的偏差；这出自**被引用的其他研究**，不是本文自行重做的机器人实验，不能外推到所有系统。部分跨模型高分来自 harness/接口/观测不同的设置，也不应合并排名。
 
+## 从数字 Agent 到物理 Agent：四项前提的变化（原文 §5）
+
+原文指出，数字 Agent 常见的四项有利条件并非机器人可直接继承的保证；**能迁移的是“模型 + 工具 + 反馈”的循环原则，不是能够读全状态、随意回滚的环境假设**。以下「工程落点」是据原文约束提炼的实施建议，不是作者已发布的软件实现。
+
+| 数字 Agent 的有利条件 | 物理环境中的失效点 | 工程落点 |
+|---|---|---|
+| 原生可读写接口（native interface） | 传感器观测有噪声、遮挡和延迟；动作经执行器与接触才产生效果 | 在 harness 中维护带时间戳、置信度和有效期的状态估计，显式定义 S1/S0 动作接口 |
+| 快速可重复验证（verifiable outcomes） | 夹住、放稳、是否损伤等物理效果可能无法从 API 返回值判定 | 建立与控制调用分离的物理结果核验及人工/安全终止机制 |
+| 丰富且可复用数据（abundant data） | 机器人交互数据采集慢，力觉/触觉尤其稀缺 | 将真实操作证据、失败样本和仿真数据分开登记，检验 sim↔real 差异 |
+| 廉价可复制与重置的环境（cheap environments） | 机器人不能像软件沙箱一样随意快进、克隆、恢复损坏状态 | 预留安全重置、人工接管与真实墙钟预算，不把 paused-world 成绩当实时保证 |
+
+另有**连续世界时钟、不可逆失败、机体磨损和跨本体重验证**等新约束。真实系统不能把一次成功的工具调用视为一次可回滚的软件事务。
+
 ## 研究路线：从动作到持续职责
 
 | 等级 | 可委托工作 | 判断标准 |
@@ -114,6 +127,21 @@ flowchart TD
 | L4 Standing Role | 每天负责早餐 | 跨天/跨会话维护职责、偏好、库存与连续状态 |
 
 **空间范围是另一维：** workcell → room → building → site，不等同于 L1–L4 的责任等级。论文指出非结构化环境下 L4 尚缺可靠证据，不应把长 episode 或单次演示当成持续自主。
+
+### 四条未来研究方向与可核查证据（原文 §6.2）
+
+下表左两列来自论文 v1 的研究方向及挑战；「建议记录的证据」是面向实验设计的工程化映射，不代表本文已经开展这些实验。
+
+| 方向 | 核心问题 | 建议记录的证据 |
+|---|---|---|
+| **期限内具身推理**（Embodied Reasoning Under Physical Constraints） | 更长推理链可能错过真实世界的响应时限；应做 capped scaling | 不中断仿真的 success–latency–cost 曲线、最迟响应时间、观测年龄、超时比例 |
+| **跨任务/空间的持久可信控制**（Persistent and Verifiable Control） | 任务、房间、楼层乃至跨日的状态如何保持可核验；哪些检查下沉到技能内部 | 跨任务状态一致性、证据与状态有效期、取消后确认停机、交接与恢复成功率 |
+| **跨环境/本体的低成本适配**（Efficient Adaptation） | 换场地、传感器、控制模式时，如何减少重标定、重训练和人工介入 | capability card/接口契约、迁移前后成功率、适配所需数据/工时、控制周期与算力预算 |
+| **从物理经验持续改进**（Continual Improvement） | 失败归因与更新如何真正惠及后续任务，避免接受无效改动 | held-out 任务收益、旧任务无回归、改动保留/退役记录、物理试验预算；若声称 RSI，额外验证“改进流程本身变好” |
+
+**严格区分三个层级：** *adaptation* 是针对当前任务或场景调整行为；*continual improvement* 要将经验证的变化保留到后续任务；*recursive self-improvement（RSI）* 还须证明**产生与筛选改动的程序本身**在下一轮更有效。原文举例表明，已接受的程序改动数量上升并不等于目标任务获得进展，也不能以自评分替代独立 held-out 验收。
+
+可结合 [RSI 纵深路线 Stage 0–3](../../roadmap/depth-rsi.md) 判断“留存改进 / 递归增益”与“物理验证锚”的区别。
 
 ## 源码运行时序图
 
@@ -151,6 +179,7 @@ flowchart TD
 - [Agentic Robotics 四类因素对照研究](./paper-agentic-robotics-controlled-study.md) — 以策略自修复的控制变量实验补足本文的系统展望
 - [Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md) — 编排与技能执行方法
 - [具身模型评测选型 Query](../queries/embodied-eval-benchmark-selection-loop.md) — 区分认知、闭环结果及 sim↔real 外推
+- [RSI 纵深路线](../../roadmap/depth-rsi.md) — 区分行为适配、经验留存与真正的递归改进，并定义外部验收锚
 - [具身评测纵深路线](../../roadmap/depth-embodied-eval.md) — 从模型能力到可验收系统表现
 
 ## 参考来源
