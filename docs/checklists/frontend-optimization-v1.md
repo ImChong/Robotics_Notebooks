@@ -308,7 +308,7 @@
 ## 2026-11-19 右下角只读 AI 知识库问答（Issue #3908）
 
 - [x] 方案设计与官方文档复核：完成 [`docs/plans/2026-11-19-readonly-ai-chat-plan.md`](../plans/2026-11-19-readonly-ai-chat-plan.md)，核对 Cloudflare Workers Free 10 ms CPU / 10,000 Neurons/日硬停止、2026-11-20 模型弃用清单及 Phase 2 WebGPU 端侧模型评估。
-- [x] 右下角统一浮动控件栈：重构 `docs/main.js` 与 `docs/style.css` 为纵向 `.fab-stack-right`（复用 `--fab-lift` 页脚避让与装订线补偿），自上而下排布 `#backToTop`、`#kbChatSlot`（`.kb-chat-panel`）与 `#kbChatToggle`，回到顶部按钮显示时始终位于聊天面板与聊天入口上方；`graph.html` 与 `references.html` 保持不注入，未展开前零额外脚本/索引请求。
+- [x] 右下角统一浮动控件栈：重构 `docs/main.js` 与 `docs/style.css` 为 `.fab-stack-right`（复用 `--fab-lift` 页脚避让与装订线补偿）：页顶单按钮直接打开问答；滚动后合并为带阅读进度环的单按钮 `#fabMainToggle`，点击直接向左展开为「左 `#backToTop` + 右 `#kbChatToggle`」两枚横向排布按钮（点空白处或 Esc 收拢，问答展开时面板置于按钮行上方）；`graph.html` 与 `references.html` 保持不注入，未展开前零额外脚本/索引请求。
 - [x] 读者向轻量前端问答与安全渲染：新增按需加载的 `docs/kb-chat.js`，精简读者向标题与提示文案（如「知识问答 / 站内检索 / 基于站内文档回答」），支持中英双语、本地 `search-index-lite.json` + `exports/page-content/<sha256>.json` 段落检索摘要、`detail.html?id=...` / `roadmap.html?id=...` 跳转溯源，以及云端不可用/限额时自动无缝降级；全程 `createElement` + `textContent` 防 XSS 并为带页脚页面补充兼容 CSP `<meta>`。
 - [x] Workers Free 网关与回归验证：新增零密钥 `workers/kb-chat/`（Burst/Minute 边缘限速 + Isolate 并发锁 + Turnstile `siteverify` + 公共缓存 + 无工具 `env.AI.run`）及 `tests/kb-chat-worker.test.cjs`、`tests/kb-chat-ui.test.cjs`、`scripts/verify_kb_chat_limits.py`。
 - [ ] 线上 Cloudflare 部署与超额实测：合入后需站长本机运行 `wrangler secret put TURNSTILE_SECRET_KEY` 与 `wrangler deploy`，回填公开 Worker URL / Turnstile Site Key，并使用 `scripts/verify_kb_chat_limits.py` 完成线上 429 与日额度硬停止实测。

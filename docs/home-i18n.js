@@ -88,6 +88,8 @@
     '微信收款码': 'WeChat payment QR code', '关闭': 'Close',
     '新增': 'Added', '维护': 'Updated', '回到顶部': 'Back to top',
     '知识问答': 'Knowledge Q&A',
+    '收起对话': 'Close Q&A',
+    '回到顶部 / 知识问答': 'Back to top / Knowledge Q&A',
     '章节导航': 'Section navigation', '打开或关闭章节导航': 'Toggle section navigation',
     '刘冲': 'Chong Liu', '2026 · 机器人技术栈地图': '2026 · Robotics Notebooks'
   };
@@ -103,7 +105,7 @@
 
   // This allowlist excludes route links, company links, hot-topic labels, titles, summaries and graph nodes.
   var selector = [
-    '[data-home-copy]', '#homeNavToggle', '#homeNavMenu', '#backToTop', '#kbChatToggle',
+    '[data-home-copy]', '#homeNavToggle', '#homeNavMenu', '#backToTop', '#kbChatToggle', '#fabMainToggle',
     '#homeRouteToggle', '#homeCompanyToggle', '#homeLabToggle', '#wikiCommunityFilter option[value=""]',
     '#homeLatestWikiModule > .data-meta', '#homeLatestWikiModule .home-latest-more a',
     '#homeLatestWikiModule .updates-badge', '.home-latest-row-type',

@@ -62,6 +62,8 @@
       langSwitchLabel: 'Switch to English',
       closeLabel: '关闭问答',
       toggleLabel: '知识问答',
+      closeToggleLabel: '收起对话',
+      mainToggleLabel: '回到顶部 / 知识问答',
       welcome: '基于站内知识库检索作答，每条回答均附原文链接。',
       welcomeAi: '基于站内文档智能作答，并附原文链接；繁忙时自动切回站内检索。',
       placeholder: '问 WBC、RL、Sim2Real…',
@@ -90,6 +92,8 @@
       langSwitchLabel: '切换为中文',
       closeLabel: 'Close Q&A',
       toggleLabel: 'Knowledge Q&A',
+      closeToggleLabel: 'Close Q&A',
+      mainToggleLabel: 'Back to top / Knowledge Q&A',
       welcome: 'Answers from the wiki, with direct links to source pages.',
       welcomeAi: 'AI answers grounded in the wiki with source links. Switches to wiki search if busy.',
       placeholder: 'Ask about WBC, RL, Sim2Real…',
@@ -495,11 +499,18 @@
 
   function syncToggleButtonLabels() {
     var toggle = document.getElementById('kbChatToggle');
-    if (!toggle) return;
-    toggle.setAttribute('aria-expanded', state.open ? 'true' : 'false');
-    var label = t('toggleLabel');
-    toggle.setAttribute('aria-label', label);
-    toggle.setAttribute('title', label);
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', state.open ? 'true' : 'false');
+      var label = state.open ? t('closeToggleLabel') : t('toggleLabel');
+      toggle.setAttribute('aria-label', label);
+      toggle.setAttribute('title', label);
+    }
+    var mainToggle = document.getElementById('fabMainToggle');
+    if (mainToggle) {
+      var mainLabel = t('mainToggleLabel');
+      mainToggle.setAttribute('aria-label', mainLabel);
+      mainToggle.setAttribute('title', mainLabel);
+    }
   }
 
   function updatePanelCopy() {
@@ -1052,21 +1063,39 @@
     return panel;
   }
 
+  function notifyHostState() {
+    if (typeof document === 'undefined' || typeof document.dispatchEvent !== 'function') return;
+    if (typeof CustomEvent === 'function') {
+      document.dispatchEvent(new CustomEvent('rn-kb-chat:state', { detail: { open: state.open } }));
+    }
+  }
+
   function open() {
     var panel = ensureMounted();
     state.open = true;
     panel.hidden = false;
     syncToggleButtonLabels();
+    notifyHostState();
     if (state.inputEl) state.inputEl.focus();
   }
 
   function close() {
     if (!state.panel) return;
+    var hadPanelFocus = Boolean(
+      typeof document !== 'undefined' && state.panel.contains(document.activeElement)
+    );
     state.open = false;
     state.panel.hidden = true;
     syncToggleButtonLabels();
-    var toggle = document.getElementById('kbChatToggle');
-    if (toggle) toggle.focus();
+    notifyHostState();
+    if (hadPanelFocus || typeof document !== 'undefined') {
+      var mainBtn = document.getElementById('fabMainToggle');
+      var toggle = document.getElementById('kbChatToggle');
+      var focusTarget = mainBtn && !mainBtn.hidden ? mainBtn : toggle;
+      if (focusTarget && !focusTarget.hidden && (hadPanelFocus || !mainBtn || document.activeElement === document.body)) {
+        focusTarget.focus({ preventScroll: true });
+      }
+    }
   }
 
   function toggle() {

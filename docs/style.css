@@ -5061,6 +5061,17 @@ a.card:active { transform: translateY(-1px); }
   gap: 12px;
   pointer-events: none;
 }
+.fab-stack-right [hidden] {
+  display: none !important;
+}
+.fab-stack-right__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
 .fab-stack-right .back-to-top {
   position: relative;
   bottom: auto;
@@ -5070,10 +5081,76 @@ a.card:active { transform: translateY(-1px); }
 }
 .fab-stack-right .back-to-top.is-visible {
   pointer-events: auto;
+  animation: fabSlideLeft 0.18s var(--ease) backwards;
 }
-/* 折叠态（空或面板 [hidden]）不占 flex 子项，避免在 #backToTop 与 #kbChatToggle 间产生双倍 gap */
+@keyframes fabSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+/* 折叠态（空或面板 [hidden]）不占 flex 子项 */
 .kb-chat-slot {
   display: contents;
+}
+.fab-main-toggle {
+  --btt-progress: 0;
+  --btt-track: color-mix(in srgb, var(--text-muted) 32%, transparent);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) calc(var(--btt-progress) * 360deg), var(--btt-track) 0);
+  color: var(--text);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--shadow-tint) 22%, transparent);
+  cursor: pointer;
+  pointer-events: auto;
+  flex: none;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.fab-main-toggle::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.fab-main-toggle:hover::before {
+  background: var(--bg-alt);
+  border-color: var(--accent);
+}
+.fab-main-toggle:active {
+  transform: scale(0.9);
+}
+.fab-main-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.fab-main-toggle__icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+.fab-main-toggle__chat {
+  fill: currentColor;
+  transition: color 0.2s var(--ease);
+}
+.fab-main-toggle__arrow {
+  fill: var(--accent);
+}
+.fab-main-toggle:hover .fab-main-toggle__chat {
+  color: var(--accent);
 }
 .kb-chat-toggle {
   display: inline-flex;
@@ -5107,6 +5184,11 @@ a.card:active { transform: translateY(-1px); }
   color: var(--accent);
   border-color: var(--accent);
 }
+.kb-chat-toggle[aria-expanded="true"]:hover {
+  background: var(--bg-alt);
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
 .kb-chat-toggle__icon {
   width: 22px;
   height: 22px;
@@ -5116,8 +5198,8 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-panel {
   pointer-events: auto;
   width: min(380px, calc(100vw - 32px));
-  /* 预留底部 24px + #kbChatToggle(48px) + 上下双 gap(24px) + 顶部 #backToTop(48px) + 顶栏(--header-h 58px) + 呼吸边距(14px) = 216px */
-  max-height: min(540px, calc(100dvh - 216px - var(--fab-lift, 0px)));
+  /* 预留底部 24px + 底部按钮行(48px) + gap(12px) + 顶栏(--header-h 58px) + 呼吸边距(14px) = 156px */
+  max-height: min(540px, calc(100dvh - 156px - var(--fab-lift, 0px)));
   display: flex;
   flex-direction: column;
   background: var(--surface-strong);
@@ -5423,6 +5505,9 @@ a.card:active { transform: translateY(-1px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .fab-main-toggle,
+  .fab-main-toggle::before,
+  .fab-main-toggle__chat,
   .kb-chat-toggle,
   .kb-chat-panel,
   .kb-chat-icon-btn,
@@ -5430,5 +5515,8 @@ a.card:active { transform: translateY(-1px); }
   .kb-chat-citation-card,
   .kb-chat-send {
     transition: none;
+  }
+  .fab-stack-right .back-to-top.is-visible {
+    animation: none;
   }
 }

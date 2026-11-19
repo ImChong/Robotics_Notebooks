@@ -78,10 +78,11 @@
 - **统一纵向控件栈 `.fab-stack-right`**：
   - `position: fixed; bottom: calc(24px + var(--fab-lift, 0px)); right: calc(20px - (100vw - 100%));`（保留原 scrollbar-gutter 装订线补偿与 `--fab-lift` 页脚避让）；
   - 容器自身 `pointer-events: none`，仅内部可见子元素（`.back-to-top.is-visible`、`.kb-chat-toggle`、展开后的 `.kb-chat-panel`）设为 `pointer-events: auto`，绝不吞掉底层卡片链接点击。
-- **自上而下纵向排布**：
-  - 纵向 Flex 列按自上而下顺序挂载：`[ #backToTop (48×48) ]` → `[ #kbChatSlot / .kb-chat-panel ]` → `[ #kbChatToggle (48×48) ]`（右对齐、`gap: 12px`）；`.kb-chat-slot` 设为 `display: contents`，收起态不占位、不产生多余间距；
-  - 无论收起或展开，只要 `#backToTop` 显示，均位于聊天图标及聊天面板上方，聊天窗口与入口位于其下方；`.kb-chat-panel` 宽度 `min(380px, calc(100vw - 32px))`，最大高度 `min(540px, calc(100dvh - 216px - var(--fab-lift, 0px)))`，为顶栏与上方置顶按钮预留空间；
-  - 因此在 `320px` 窄屏下，底部左右仍留出足够间隙，左侧 `.sidebar-toggle` / `.home-nav-fab`（`left: 20px`）、右下角 `#kbChatToggle`、展开的 `#kbChatPanel` 以及其上方显出的 `#backToTop` **四者同时可见可点、零重叠**。
+- **底部横向展开与上方问答面板排布**：
+  - 控件栈内分为上方的 `#kbChatSlot`（展开后的 `.kb-chat-panel`）与下方的横向按钮行 `.fab-stack-right__actions`（`[ #backToTop (48×48) ]` 在左、`[ #kbChatToggle (48×48) ]` 在右、折叠态合并入口 `[ #fabMainToggle (48×48) ]` 居中右对齐，`gap: 12px`）；`.kb-chat-slot` 设为 `display: contents`，收起态不占位；
+  - 页面未滚动时（无需置顶），右下角仅显示 1 个 `#kbChatToggle` 按钮，点击直接打开问答面板；滚动出现阅读进度环后，两者合并收拢为 1 个 `#fabMainToggle`（外圈显示阅读进度环、内圈为 `↑ + 💬` 聚合图标）；点击 `#fabMainToggle` 后直接向左展开为「左 `#backToTop` + 右 `#kbChatToggle`」两个按钮（无多余关闭圆钮；点页面空白处或 `Esc` 收回为 1 个）；
+  - 展开问答面板时，`.kb-chat-panel` 始终位于底部按钮行上方，宽度 `min(380px, calc(100vw - 32px))`，最大高度 `min(540px, calc(100dvh - 156px - var(--fab-lift, 0px)))`，滚动后展开的 `#backToTop` 始终停留在 `#kbChatToggle` 左侧；
+  - 因此在 `320px` 窄屏下，底部左右仍留出足够间隙（左侧 `.sidebar-toggle` / `.home-nav-fab` 与右侧 `#backToTop` 相距 124px），右侧展开控件、面板与左下方导航按钮 **互不遮挡、零重叠**。
 
 ### 3.2 中英双语与无依据/降级提示
 

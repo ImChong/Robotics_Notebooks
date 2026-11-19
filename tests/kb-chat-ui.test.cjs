@@ -104,34 +104,153 @@ function setupDom({ withFooter = true, config = null, fetchImpl = null, lang = '
   return { dom, window, fetchCalls };
 }
 
-test('Footer pages mount #fabStackRight with #backToTop and #kbChatToggle; graph.html (no footer) mounts neither; 0 fetches before click', () => {
+test('Footer pages mount #fabStackRight with merged scroll launcher; graph.html (no footer) mounts neither; 0 fetches before click', () => {
   const graphDom = setupDom({ withFooter: false });
   graphDom.window.eval(fabBlock);
   assert.equal(graphDom.window.document.getElementById('fabStackRight'), null);
   assert.equal(graphDom.window.document.getElementById('backToTop'), null);
   assert.equal(graphDom.window.document.getElementById('kbChatToggle'), null);
+  assert.equal(graphDom.window.document.getElementById('fabMainToggle'), null);
   graphDom.dom.window.close();
 
   const homeDom = setupDom({ withFooter: true });
   homeDom.window.eval(fabBlock);
   const stack = homeDom.window.document.getElementById('fabStackRight');
+  const actionsRow = homeDom.window.document.getElementById('fabActionsRow');
   const btt = homeDom.window.document.getElementById('backToTop');
   const slot = homeDom.window.document.getElementById('kbChatSlot');
   const chatBtn = homeDom.window.document.getElementById('kbChatToggle');
+  const mainBtn = homeDom.window.document.getElementById('fabMainToggle');
   assert.ok(stack, '#fabStackRight mounted');
-  assert.ok(stack.contains(btt), '#backToTop inside #fabStackRight');
   assert.ok(stack.contains(slot), '#kbChatSlot inside #fabStackRight');
-  assert.ok(stack.contains(chatBtn), '#kbChatToggle inside #fabStackRight');
+  assert.ok(stack.contains(actionsRow), '#fabActionsRow inside #fabStackRight');
+  assert.ok(actionsRow.contains(btt), '#backToTop inside #fabActionsRow');
+  assert.ok(actionsRow.contains(chatBtn), '#kbChatToggle inside #fabActionsRow');
+  assert.ok(actionsRow.contains(mainBtn), '#fabMainToggle inside #fabActionsRow');
   assert.equal(homeDom.window.document.querySelector('.fab-stack-right__bar'), null);
   assert.deepEqual(
     Array.from(stack.children).map((el) => el.id),
-    ['backToTop', 'kbChatSlot', 'kbChatToggle'],
-    'top-to-bottom stack order places #backToTop above #kbChatSlot and #kbChatToggle',
+    ['kbChatSlot', 'fabActionsRow'],
+    'panel slot sits above the bottom actions row',
   );
+  assert.deepEqual(
+    Array.from(actionsRow.children).map((el) => el.id),
+    ['backToTop', 'kbChatToggle', 'fabMainToggle'],
+    'bottom actions row places #backToTop to the left of #kbChatToggle',
+  );
+  // At page top (scrollY = 0), only #kbChatToggle is visible so user opens chat in 1 click
+  assert.equal(btt.hidden, true);
+  assert.equal(mainBtn.hidden, true);
+  assert.equal(chatBtn.hidden, false);
   assert.equal(homeDom.window.document.querySelectorAll('script[src="kb-chat.js"]').length, 0);
   assert.equal(homeDom.fetchCalls.length, 0);
 
-  // Clicking #kbChatToggle lazily injects kb-chat.js once
+  // Scrolled past threshold: #fabMainToggle merges #backToTop and #kbChatToggle into 1 button
+  Object.defineProperty(homeDom.window.document.documentElement, 'scrollHeight', { value: 2400, configurable: true });
+  Object.defineProperty(homeDom.window, 'innerHeight', { value: 800, configurable: true });
+  homeDom.window.document.documentElement.scrollTop = 900;
+  homeDom.window.dispatchEvent(new homeDom.window.Event('scroll'));
+  homeDom.dom.window.close();
+});
+
+test('Scrolled merged button expands to vertical 2-button stack and collapses on outside-click, Escape, or chat close', async () => {
+  const { dom, window } = setupDom({ withFooter: true });
+  let rafQueue = [];
+  window.requestAnimationFrame = (cb) => {
+    rafQueue.push(cb);
+    return rafQueue.length;
+  };
+  const flushRaf = () => {
+    while (rafQueue.length) {
+      const next = rafQueue.shift();
+      next();
+    }
+  };
+
+  Object.defineProperty(window.document.documentElement, 'scrollHeight', { value: 2400, configurable: true });
+  Object.defineProperty(window, 'innerHeight', { value: 800, configurable: true });
+  window.eval(fabBlock);
+
+  const stack = window.document.getElementById('fabStackRight');
+  const btt = window.document.getElementById('backToTop');
+  const chatBtn = window.document.getElementById('kbChatToggle');
+  const mainBtn = window.document.getElementById('fabMainToggle');
+
+  // Scroll down -> collapsed to single #fabMainToggle with progress ring
+  window.document.documentElement.scrollTop = 900;
+  window.dispatchEvent(new window.Event('scroll'));
+  flushRaf();
+  assert.equal(mainBtn.hidden, false, '#fabMainToggle shown when scrolled');
+  assert.equal(btt.hidden, true, '#backToTop hidden before expand');
+  assert.equal(chatBtn.hidden, true, '#kbChatToggle hidden before expand');
+  assert.ok(parseFloat(mainBtn.style.getPropertyValue('--btt-progress')) > 0, 'progress ring updated on #fabMainToggle');
+
+  // Clicking #fabMainToggle expands into vertical #backToTop (top) + #kbChatToggle (bottom)
+  mainBtn.click();
+  assert.equal(mainBtn.hidden, true);
+  assert.equal(btt.hidden, false);
+  assert.equal(chatBtn.hidden, false);
+  assert.ok(btt.classList.contains('is-visible'));
+  assert.ok(stack.classList.contains('is-expanded'));
+
+  // Clicking outside collapses back to #fabMainToggle
+  window.document.querySelector('main').dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  assert.equal(mainBtn.hidden, false);
+  assert.equal(btt.hidden, true);
+  assert.equal(chatBtn.hidden, true);
+
+  // Expand again -> Escape collapses back to #fabMainToggle
+  mainBtn.click();
+  assert.equal(btt.hidden, false);
+  window.document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  assert.equal(mainBtn.hidden, false);
+  assert.equal(btt.hidden, true);
+  assert.equal(chatBtn.hidden, true);
+
+  // Opening chat via #kbChatToggle keeps #backToTop + #kbChatToggle visible; clicking #kbChatToggle again collapses chat and returns to #fabMainToggle
+  window.eval(chatSource);
+  mainBtn.click();
+  chatBtn.click();
+  const panel = window.document.getElementById('kbChatPanel');
+  assert.equal(panel.hidden, false);
+  assert.equal(chatBtn.getAttribute('aria-expanded'), 'true');
+  assert.equal(chatBtn.getAttribute('title'), '收起对话');
+  assert.equal(btt.hidden, false);
+  assert.equal(chatBtn.hidden, false);
+  assert.equal(mainBtn.hidden, true);
+  chatBtn.click();
+  assert.equal(panel.hidden, true);
+  assert.equal(chatBtn.getAttribute('aria-expanded'), 'false');
+  assert.equal(chatBtn.getAttribute('title'), '知识问答');
+  assert.equal(mainBtn.hidden, false);
+  assert.equal(btt.hidden, true);
+  assert.equal(chatBtn.hidden, true);
+
+  // Scrolling back to top collapses back to single #kbChatToggle and clicking it toggles open/close cleanly
+  mainBtn.click();
+  btt.focus();
+  window.document.documentElement.scrollTop = 0;
+  window.dispatchEvent(new window.Event('scroll'));
+  flushRaf();
+  assert.equal(mainBtn.hidden, true);
+  assert.equal(btt.hidden, true);
+  assert.equal(chatBtn.hidden, false);
+  assert.equal(window.document.activeElement, chatBtn);
+  chatBtn.click();
+  assert.equal(panel.hidden, false);
+  chatBtn.click();
+  assert.equal(panel.hidden, true);
+  assert.equal(chatBtn.hidden, false);
+
+  dom.window.close();
+});
+
+test('Top-of-page single #kbChatToggle lazily injects kb-chat.js once even on repeated clicks', () => {
+  const homeDom = setupDom({ withFooter: true });
+  homeDom.window.eval(fabBlock);
+  const chatBtn = homeDom.window.document.getElementById('kbChatToggle');
+  assert.equal(chatBtn.hidden, false);
+  chatBtn.click();
   chatBtn.click();
   const injected = homeDom.window.document.querySelectorAll('script[src="kb-chat.js"]');
   assert.equal(injected.length, 1);
@@ -148,7 +267,7 @@ test('Local read-only mode answers Chinese & English questions with clickable ci
   assert.equal(window.RNKbChat.isOpen(), true);
   assert.equal(window.document.getElementById('kbChatPanel').hidden, false);
   assert.equal(window.document.querySelector('.kb-chat-header__title').textContent, '知识问答');
-  assert.equal(window.document.getElementById('kbChatToggle').getAttribute('title'), '知识问答');
+  assert.equal(window.document.getElementById('kbChatToggle').getAttribute('title'), '收起对话');
 
   // Chinese grounded query
   await window.RNKbChat.ask('什么是全身控制 WBC？');
@@ -162,6 +281,7 @@ test('Local read-only mode answers Chinese & English questions with clickable ci
   // Switch to English and ask English query
   window.RNKbChat.setLanguage('en');
   assert.equal(window.document.querySelector('.kb-chat-header__title').textContent, 'Knowledge Q&A');
+  assert.equal(window.document.getElementById('kbChatToggle').getAttribute('title'), 'Close Q&A');
   await window.RNKbChat.ask('How does Whole-Body Control work?');
   const messagesAfterEn = window.document.querySelectorAll('.kb-chat-msg--assistant');
   assert.equal(messagesAfterEn.length, 2);
