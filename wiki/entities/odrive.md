@@ -99,13 +99,13 @@ sequenceDiagram
   Note over Axis,Ctrl: connect_to 反馈与 torque_output_ 端口
   Axis->>Mot: arm(current_control_)
   loop 周期控制中断
-    Loop->>Loop: reset output ports; checks/watchdog
+    Loop->>Loop: reset output ports and checks/watchdog
     Loop->>Enc: update() (全部轴先更新)
     Enc-->>Ctrl: pos/vel/phase through ports
     Loop->>Ctrl: update()
     Ctrl-->>Mot: torque_output_ via InputPort
     Loop->>Mot: update(timestamp)
-    Mot->>Mot: torque to Id/Iq; limits; ACIM coupling
+    Mot->>Mot: torque to Id/Iq, limits and ACIM coupling
     Loop->>FOC: update(timestamp)
   end
   PWM->>Mot: current_meas_cb() / pwm_update_cb()
