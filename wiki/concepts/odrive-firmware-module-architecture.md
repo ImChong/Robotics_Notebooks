@@ -6,9 +6,10 @@ updated: 2026-11-19
 related:
   - ../concepts/field-oriented-control.md
   - ../overview/motor-drive-firmware-bus-protocols.md
-  - ./simplefoc.md
-  - ./moteus.md
+  - ../entities/simplefoc.md
+  - ../entities/moteus.md
   - ../formalizations/control-loop-latency-modeling.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ../../roadmap/depth-torque-motor-design.md
 original:
   - ../../sources/blogs/wechat_bitz_odrive_modules_2026_09_17.md
@@ -136,9 +137,10 @@ sequenceDiagram
 
 - [FOC 磁场定向控制](../concepts/field-oriented-control.md) — 数学控制律与电气侧
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — 外部协议/设定值
-- [SimpleFOC](./simplefoc.md) — 与单片机 FOC 库做架构对照
-- [moteus](./moteus.md) — 另一套开源关节驱动底软
+- [SimpleFOC](../entities/simplefoc.md) — 与单片机 FOC 库做架构对照
+- [moteus](../entities/moteus.md) — 另一套开源关节驱动底软
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) — 周期/采样/PWM 时序
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 从电机、驱动底软到关节通信/验收的知识链
 - [力矩电机设计纵深路线（Stage 3）](../../roadmap/depth-torque-motor-design.md) — 从源码理解驱动器架构
 
 ## 参考来源
