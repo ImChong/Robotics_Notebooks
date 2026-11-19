@@ -76,7 +76,7 @@ summary: "CloudRobo-WM 是华为云的世界动作模型家族：通用 WM 项�
 
 下图是**依据华为云公告与公开适配器接口整理的逻辑级数据流**，不是对尚未取得的 WM1.2 真实源码的逆向证明。
 
-~~~mermaid
+```mermaid
 flowchart TD
   V[视觉观测] --> E[共享世界模型表征]
   S[机器人状态] --> E
@@ -89,7 +89,7 @@ flowchart TD
   H[异构多粒度数据] --> T[预训练监督]
   T -. 训练阶段 .-> E
   T -. 训练阶段 .-> D
-~~~
+```
 
 图中 PPA 影响动作生成的箭头只表示官方宣称的预测增强/共享表示关系，不主张具体神经网络张量连接。WM1.2 的 World/Expert 与 Joint/Action-only 具体分支尚无可审计源码，不能伪造内部流程。
 
@@ -108,7 +108,7 @@ flowchart TD
 
 以下调用链已核对 eval.sh、setup_eval_policy_server.sh、deploy.py 与 model.py 入口；**不代表未公开的 WM1.2 原生推理代码**。
 
-~~~mermaid
+```mermaid
 sequenceDiagram
   autonumber
   participant CLI as eval.sh
@@ -130,7 +130,7 @@ sequenceDiagram
     C->>Env: take_action(action)
   end
   Env-->>C: 结束与成功标记
-~~~
+```
 
 ## 评测与结果（必须区分来源）
 
