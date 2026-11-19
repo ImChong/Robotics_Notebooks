@@ -10,7 +10,6 @@ related:
   - ../overview/humanoid-hardware-101-integrated-actuators.md
   - ../concepts/joint-module-self-development-workflow.md
   - ../concepts/robot-joint-bearing-selection.md
-  - ./harmonic-reducer-efficiency.md
 sources:
   - ../../sources/blogs/wechat_zane_hub_joint_module_reducer_difficulty_2026-10-06.md
 summary: "依据 Zane Hub 公众号随笔，把关节模组减速器的「难度」拆成设计/制造/一致性三层，并分别说明谐波（柔轮薄壁）、RV（微米级公差叠加与选配）、行星（累积精度）的难点、指标量级、模组集成难点与国产化误读。"
@@ -155,8 +154,6 @@ RV 总传动比 ≈ 第一级行星传动比 × 摆线针轮级传动比
 - 文中未点名具体厂商或产品。
 
 ## 关联页面
-
-- [谐波减速器效率计算](harmonic-reducer-efficiency.md)：从额定效率、空载损耗到负载谱与温升的定量校核
 
 - [人形膝关节与谐波减速器的极限](humanoid-knee-harmonic-drive-limits.md)：谐波刚度/抗冲击不足在膝关节的具体体现
 - [Actuator 102：减速比与反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)：减速比对反射惯量与透明度的影响
