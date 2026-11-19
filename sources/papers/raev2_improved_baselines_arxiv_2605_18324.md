@@ -14,7 +14,7 @@
 - **模型：** https://huggingface.co/nyu-visionx/RAEv2-models
 - **数据集：** https://huggingface.co/datasets/nanovisionx/RAEv2-data
 - **核对日期：** 2026-11-19
-- **核对范围：** 通读 arXiv v2 HTML §1–§6、§2.1–2.3 的层聚合/REPA/自引导机制，`3 的 K 和引导消融、§4 的 T2I 与导航世界模型，附录 A 实现配置、附录 C 指标表、附录 E 局限；核对项目页和官方 README、Stage1/Stage2 训练命令以及 src/train_stage1.py、src/stage1/engine.py、src/stage1/rae.py、src/train.py、src/stage2/engine.py、configs/stage2/training/nwm-dinov3l-k7.yaml。
+- **核对范围：** 通读 arXiv v2 HTML §1–§6、§2.1–2.3 的层聚合/REPA/自引导机制，§3 的 K 和引导消融、§4 的 T2I 与导航世界模型，附录 A 实现配置、附录 C 指标表、附录 E 局限；核对项目页和官方 README、Stage1/Stage2 训练命令以及 src/train_stage1.py、src/stage1/engine.py、src/stage1/rae.py、src/train.py、src/stage2/engine.py、configs/stage2/training/nwm-dinov3l-k7.yaml。
 - **通读：** 已完成
 
 ## 一句话说明
