@@ -172,6 +172,7 @@ flowchart LR
 - 对照 ABot-M0.5 的 Dream Forcing：解释自生成视频 latent 上训逆动力学在对齐什么
 
 ### 推荐读什么
+- [CloudRobo-WM（WM-1.0 / WM1.2 版本核验）](../wiki/entities/cloudrobo-wm.md) — 华为云世界动作模型家族：公开 RoboTwin 适配器与 WM-1.0 checkpoint、官方 WM1.2 DualAct/PPA 宣传和版本归属边界，禁止跨版本误引用。
 - [ResWAM：冻结 DINOv3 上的未来视觉残差](../wiki/entities/paper-reswam-2611-19559.md) — 用特征变化代替整帧未来监督，0.5B 双流 DiT 同训动作与未来残差；区分 2.3B 总参数与 92.7 ms 真机延迟。
 - [WATO：可微优化训练联合 WAM](../wiki/entities/paper-wato-2611-17626.md)：通过世界模型动力学约束优化回传任务目标，区分训练求解与推理采样。
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
