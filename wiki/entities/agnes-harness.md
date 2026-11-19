@@ -148,7 +148,6 @@ sequenceDiagram
 - [Safety Filter](../concepts/safety-filter.md) — 物理动作的约束与安全层
 - [Muse Gadgets](./muse-gadgets.md) — 语言助手经边缘 SDK 访问设备的开源案例
 - [Agent Lightning](./agent-lightning.md) — 真实 agent harness 的轨迹采集与 RL 训练设施
-- [Co-Sight Harness Studio](./co-sight-harness.md) — 对照业务任务的状态机、编排门禁、证据链与本地宿主架构
 
 ## 参考来源
 
