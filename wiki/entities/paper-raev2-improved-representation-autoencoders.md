@@ -10,6 +10,7 @@ code: https://github.com/nanovisionx/RAEv2
 related:
   - ../concepts/visual-representation-for-policy.md
   - ../methods/generative-world-models.md
+  - ../methods/diffusion-policy.md
   - ../concepts/world-action-models.md
   - ./paper-gae-geometry-native-autoencoder.md
   - ./paper-thaw-vla.md
@@ -212,6 +213,7 @@ sequenceDiagram
 - [模型架构纵深路线：Stage 2 感知表征](../../roadmap/depth-model-architecture.md)
 - [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md)
 - [生成式世界模型](../methods/generative-world-models.md)
+- [Diffusion Policy：扩散动作策略](../methods/diffusion-policy.md) — 与本文图像/导航未来帧去噪生成共享扩散建模思想，但输出为机器人动作轨迹，不能将两者的任务指标混同。
 - [World Action Models](../concepts/world-action-models.md)
 - [THAW-VLA：表征对齐用于动作学习](./paper-thaw-vla.md)
 - [GAE：几何原生生成 latent](./paper-gae-geometry-native-autoencoder.md)
