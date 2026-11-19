@@ -6,7 +6,7 @@ tags:
   - benchmark
   - evaluation
 status: complete
-updated: 2026-10-29
+updated: 2026-11-19
 arxiv: "2610.32742"
 project: https://adaptive-intelligent-robotics.github.io/aware/
 code: https://github.com/adaptive-intelligent-robotics/aware
@@ -16,6 +16,7 @@ related:
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ./paper-autane-autonomous-crane.md
 sources:
   - ../../sources/papers/aware_arxiv_2610_32742.md
   - ../../sources/repos/aware.md
@@ -119,6 +120,8 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-29-58-papers-technology-map](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
+
+- [Autane：港口自主 RTG 起重机](./paper-autane-autonomous-crane.md) — 同有起重机场景，Autane 侧重自主搬运、抗摆与系统运维闭环；AWARE 侧重异常识别，任务不可直接横比。
 
 ## 参考来源
 
