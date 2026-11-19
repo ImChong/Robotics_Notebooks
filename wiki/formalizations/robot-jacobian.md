@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, jacobian, wbc, mpc, embodied-ai, shenlan, control]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-19
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./forward-kinematics.md
@@ -15,6 +15,7 @@ related:
   - ../entities/modern-robotics-book.md
   - ../entities/pinocchio.md
   - ../concepts/null-space-control.md
+  - ../entities/overleap.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_jacobian.md
   - ../../sources/raw/wechat_shenlan_robot_jacobian_2026-08-07.md
@@ -111,6 +112,8 @@ flowchart LR
 - **坐标系：** space Jacobian vs body Jacobian 必须和任务定义一致（世界系跟踪用前者，工具系力控常用后者——这一用法是工程习惯；教材只明确建议：算线速度可操作度椭球时通常用体雅可比，因为关心的是末端坐标原点的线速度，并把 $J_\omega$、$J_v$ 分开作椭球）。见运动控制路线 [L1.3](../../roadmap/motion-control.md)。
 - **奇异监控：** 盯最小奇异值；球腕 4/6 轴近同轴是工业高频事故。
 - **冗余：** 主任务用 $J^+$，避障/关节居中只许进零空间，避免把末端顶歪。力矩层投影与 7 轴阻抗见 [零空间控制](../concepts/null-space-control.md)。
+
+- **腿足力矩映射实战**：开源 [Overleap 双自由度弹跳腿](../entities/overleap.md) 的 Arduino 控制器在蹬地阶段实时用二维腿的当前关节角构造 $J$，计算 $\tau_{\mathrm{joint}}=J^\top[F_x,F_y]^\top$，再按 9:1 减速比与轴方向约定生成 ODrive 电机力矩；足端力是预设 $\sin^2$ 时间曲线，不是脚底 FSR 的力闭环。示例来源为 [Overleap 官方实现](https://github.com/aarondls/overleap/blob/main/Overleap/Overleap.cpp)。
 
 ## 局限与风险
 
