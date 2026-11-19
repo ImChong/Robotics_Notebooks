@@ -3,7 +3,7 @@ type: entity
 project_id: alloy-multimaterial-2611-16312
 tags: [paper, simulation, physics-engine, multimaterial]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-19
 arxiv: "2611.16312"
 project: https://alloy.argonrobotics.ai/docs/
 code: https://github.com/argonrobotics-ai/alloy
@@ -119,6 +119,14 @@ sequenceDiagram
 - [论文原文核对归档](../../sources/papers/alloy-multimaterial-2611-16312.md)
 - [项目核查归档](../../sources/sites/alloy-multimaterial-2611-16312.md)
 - [源代码归档](../../sources/repos/alloy-multimaterial-2611-16312.md)
+
+## Alloy v0.1.7 更新核对（2026-11-18 发布）
+
+依据 [官方 Release v0.1.7](https://github.com/argonrobotics-ai/alloy/releases/tag/v0.1.7)，这一版支持 Python 3.11/3.12，Linux x86_64 CPU/GPU 和 Apple silicon CPU。可用 `pip install alloy-engine==0.1.7` 安装。
+
+- `Scene(liquid_tension=True)` 对液体开启按材料参数的表面张力（默认关闭）；`liquid_accuracy="ultra"` 采用更密粒子，作者估计工作量约为默认 **50 倍**，并非免费提高精度。
+- 相机 look 增加白平衡；重复构建、渲染、close 的 GPU 内存增长问题获修复；CPU 的 `alloy.estimate` 估算行为有调整。
+- 发布记录说明其 wheel 与 CPU quick-start 做过验证，并列出依旧开放的重置确定性、颗粒/流体等数值边界；**本次未独立执行仿真**。
 
 ## 推荐继续阅读
 

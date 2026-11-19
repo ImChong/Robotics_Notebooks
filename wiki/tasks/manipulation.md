@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-19
 related:
   - ../entities/paper-behavior-spatial.md
   - ../entities/paper-recova.md
@@ -619,6 +619,12 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Commander–Executor 协作操作](../entities/paper-commander-executor-coordination.md) — 共享物体轨迹驱动的多角色仿真操作；真实机器人部署仍待验证。
 
 - [GENESIS-Handover](../entities/paper-genesis-handover.md) — 通过多种生成式手-物假设选择任务导向的人机递物姿态。
+
+
+- [TCP4D：统一 TCP 跟踪与生成](../entities/paper-tcp4d-2611-23143.md) — 单目视频→末端位姿→语言条件轨迹，支持跨构型数据增强。
+- [Heave-Ho：多人形协作](../entities/paper-heave-ho-2611-22275.md) — 局部观测物理耦合控制与语音协调；代码待发布。
+- [ForceHarness：力觉闭环接口](../entities/paper-forceharness-2611-21099.md) — 冻结模型使用自终止接触原语及带不确定性的物理量。
+- [Robot Weight Debugging：策略词嵌入编辑](../entities/paper-robot-weight-debugging-2611-09376.md) — 只修复现有技能的词汇对齐，不等于学会新动作。
 
 ## 参考来源
 

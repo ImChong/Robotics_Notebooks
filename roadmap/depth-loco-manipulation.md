@@ -54,6 +54,8 @@ flowchart LR
 - 读任务页把 2024–2026 技术路线（分层 / 生成式 / VLA / 残差 / 触觉增强）过一遍，画一张自己的分类表
 
 ### 推荐读什么
+
+- [Heave-Ho｜去中心化长程多人形协作](../wiki/entities/paper-heave-ho-2611-22275.md) — Heave-Ho 把多智能体后训练的身体耦合控制与基于语音的领队—跟随者视觉语言技能规划结合，实现不依赖机器人间网络消息的长时程协作。（原文 arXiv:2611.22275；详见开放和实测边界）。
 - [Loco-Manipulation 任务页](../wiki/tasks/loco-manipulation.md) — 本路线的任务地图与技术路线总入口
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md) 与 [Whole-Body Coordination](../wiki/concepts/whole-body-coordination.md)
 - [Manipulation 任务地图](../wiki/tasks/manipulation.md) 与 [Humanoid Locomotion](../wiki/tasks/humanoid-locomotion.md)
