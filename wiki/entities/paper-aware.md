@@ -190,6 +190,8 @@ sequenceDiagram
 
 - [Autane：面向港口持续作业的自主起重机](./paper-autane-autonomous-crane.md) — 起重机自主作业 vs 外部被动监测
 - [仿真与评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [视觉-语言-动作方法（VLA）](../methods/vla.md) — 论文与 AnyAnomaly 视觉语义异常检测基线的对照
+- [机器人操作任务](../tasks/manipulation.md) — 被监控的起重机执行负载搬运任务，AWARE 本身仅提供异常监控
 - [具身评测选择闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 - [多样示范与异常评测研究地图](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)
 
