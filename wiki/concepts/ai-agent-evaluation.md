@@ -7,8 +7,9 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-11-17
+updated: 2026-11-19
 related:
+  - ../entities/paper-so-arena.md
   - ../entities/paper-science-prediction-universe.md
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
@@ -109,7 +110,11 @@ Agent 因 **多轮、改状态、路径多样** 而比单轮 LLM 更难评；可
 - **pass^k：** k 次全部成功（用户-facing 一致性）。  
 - 二者随 k 增大 **发散**——选型取决于产品要「一次做对」还是「每次都稳」。
 
-### 好 eval 设计（claude.dev + 工程文对齐）
+#### System One 的能力—可靠性双轴评测
+
+- [SO-Arena](../entities/paper-so-arena.md) 将 2,919 个多域决策任务的能力榜 C 与 939 道题的选项重排稳定性 S、597 道客观题的正确答案缺失检测 N 分开测试，并综合为 R；这些指标是结构化决策的抗扰动诊断，**不能替代** agent 的环境终态验收、pass^k 或机器人安全验证。
+
+## 好 eval 设计（claude.dev + 工程文对齐）
 
 1. Task 分布像 **生产**（含「不应触发」负例）。  
 2. 强模型 + 高 effort 应更好（否则查 task/grader）。  

@@ -19,6 +19,7 @@ related:
   - ./coding-agent-verification-loops.md
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
   - ../concepts/ai-agent-evaluation.md
+  - ../entities/co-sight-harness.md
   - ../concepts/agentic-coding-software-fundamentals.md
 ---
 
@@ -123,6 +124,7 @@ flowchart TD
 
 ## 关联页面
 
+- [Co-Sight Harness Studio](../entities/co-sight-harness.md) — 以持久化状态机、阶段/DAG 工作流与证据门禁实现可审计的 Agent 协作。
 - [Agent 驱动的混沌压测与修复闭环](agent-driven-chaos-testing-loop.md) — 动态 harness 参与持续压测的一种工程化案例。
 - [Coding Agent 验证闭环](coding-agent-verification-loops.md) — 如何独立验收子 Agent 交付。
 - [多 Agent 编码管理与认知把关](../concepts/coding-agent-orchestration-and-cognitive-oversight.md) — 人负责目标、风险与审阅瓶颈。

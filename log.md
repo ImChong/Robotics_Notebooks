@@ -498,6 +498,38 @@ op: ingest
 - **意图：** 解释驾驶指令语义如何经离散局部运动 token 过渡到最终连续航点；明确 TrajCond 是中间条件而非最终离散输出。
 - **结论：** 新增独立论文详情，论文和源码分层归档，Mermaid 方法图与核心代码运行时序图，关联 DriveTeach-VLA 和 VLA 纵深路线。记录论文分位区间与当前公开代码 min/max 的差异，以及 GRPO 在主仓之外的复现边界。
 
+# [2026-11-19] ingest | NeuIDO 神经内禀动力学算子
+
+- **操作：** ingest
+- **日期：** 2026-11-19
+- **意图：** 收录 ECCV 2026 NeuIDO；区分“共享弹塑性神经算子”与“无需物理先验”的错误解读。
+- **一手资料：** [arXiv v1](https://arxiv.org/html/2609.24313v1)；[官方代码与项目页](https://github.com/JiajingLin/NeuIDO)。
+- **开源结论：** 部分源码已公开；README 对权重、环境、数据生成、完整运行命令仍标 TODO；未实测。
+- **关键节点：** [NeuIDO 论文详情](../wiki/entities/paper-neuido-neural-intrinsic-dynamics-operator.md)，并在 Real2Sim Stage 2 与可微仿真页建立入链。
+
+## [2026-11-19] ingest | Overleap 双自由度机械腿弹跳控制
+
+- 意图：从比特Z《拆解 Overleap：机械狗腿的弹跳算法》与 Overleap 原始源码整理完整知识实体。
+- 开源结论：Aaron de los Santos 的 Overleap 官方仓库公开 Arduino 库、ODrive 示例、装配与机械图。
+- 关键判断：下蹲、收腿和抬腿使用 MCU 侧关节 PD；蹬地使用 200 ms sin² 期望足端力与 Jᵀ 力矩映射；FSR 只负责接触判断，并非足端力闭环。
+- 修正细节：标明 200 ms 力曲线与代码中的 >400 ms 离地退出条件不匹配。
+- 本次核心页：wiki/entities/overleap.md；关联 roadmap/depth-classical-control.md Stage 1。
+- 验证边界：已做文档及官方源码静态核读，未进行实机复现。
+
+## [2026-11-19] ingest | sources/papers/so_arena_arxiv_2611_15777.md — 收录 SO-Arena 双轴结构化决策评测与可靠性复现入口
+
+- 基于 arXiv:2611.15777v1 与官方项目页，新增独立双语论文节点，记录 2,919 任务 / 11 领域 / 1,232 榜单任务与 C、S、N、R 分离指标。
+- 官方代码 holdrain/SO-Arena、HF 数据集 SO-Arena/SO-Arena 已发布；摘要之外复核 data-lock、evaluator、adapter 及 reliability 实际入口，并补流程图与运行时序图。
+- 将新论文链接到 AI Agent 评测页；不强行挂到仅讨论具身/运控的纵深路线，明确 benchmark 不等于机器人真机安全性。
+- 本次为一手资料和源码静态核读，未声称执行本地 benchmark 或 GPU 复现。
+
+## [2026-11-19] ingest | Co-Sight Harness Studio
+
+- 意图：独立收录 ZTE-AICloud/Co-Sight 单仓中的 Co-Sight Harness 子项目，不把 Co-Sight 主平台与 Co-Knowledge 误归为 Harness。
+- 开源结论：官方框架、Drive 编排插件、hooks 与多项配套组件源码公开；CLI/模型仍需外部依赖。源码与文档核对，未运行本地端到端验收。
+- 关键页：[Co-Sight Harness](../wiki/entities/co-sight-harness.md)；[官方源码归档](../sources/repos/co-sight-harness.md)。
+- 关键风险：框架默认全网卡监听且无登录鉴权；工作流门禁不代替机器人设备安全。
+
 ## [2026-11-19] ingest | embodiedglobal-embodied-ai-guide | 具身智能入门综述
 
 - 意图：将 Embodied Global 2026 长文从「感知—认知—行动」闭环归纳到本站具身智能入门坐标。

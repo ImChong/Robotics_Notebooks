@@ -133,6 +133,7 @@ flowchart LR
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) — Clarke/Park 变换到电流环设计
 - [控制环路延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) — 采样、PWM 更新与指令延迟的预算方法
 - [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) — 原型级驱动栈，代码可读性最好的教学实现
+- [ODrive Firmware 0.5.6 模块架构](../wiki/concepts/odrive-firmware-module-architecture.md) — Stage 3 进阶：从 Axis 状态机与 Controller→Motor→FOC 端口连接读懂驱动器实时控制流水线
 - [ODrive v3 Firmware 0.5.6：RTOS 与双轴 FOC](../wiki/entities/odrive-v3-firmware-rtos-foc.md) — 从 TIM8/ADC 控制中断、125 μs 双轴 deadline 到 FreeRTOS 状态机的完整源码时序
 - [moteus](../wiki/entities/moteus.md) · [Tinymovr](../wiki/entities/tinymovr.md) — 关节向开源驱动（PCB + FOC + CAN/CAN-FD）
 - [开源 QDD 执行器项目对比](../wiki/comparisons/open-source-qdd-actuator-projects.md) — SimpleFOC → moteus/Tinymovr → OpenTorque → ODRI 的开源学习阶梯

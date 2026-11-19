@@ -90,6 +90,7 @@ flowchart LR
 - [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 360° 扫描 → 3DGS+碰撞 mesh 的 NuRec 数字孪生 → Isaac Lab RGB 导航零样本真机
 - [NVIDIA Omniverse NuRec](../wiki/entities/nvidia-nurec.md) — 官方 USDZ 体积与 Isaac / AV 两条重建入口
 - [Instant NuRec](../wiki/entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS（~1.5 s），作逐场景 NuRec 种子；办公室扫描不要套这条 CLI
+- [GenSfM：生成式结构与相机联合恢复](../wiki/entities/paper-gensfm.md) — 2–4 张未标定物体前景视图联合生成 mesh / 3DGS 与相机；论文量化评测采用四视图，适合物体级稀疏重建，不负责碰撞、摩擦和关节化。
 - [DepthGS：深度引导高质量表面重建](../wiki/entities/paper-depthgs.md) — 在 PGSR 基础上通过深度差自适应法线约束与跨视角双深度一致性改进静态 mesh 几何；DTU CD 0.51 mm，**不包含**物性 / 碰撞建模，归 Stage 1 而非 Stage 2。
 - [i3dGS](../wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — 乱序 RGB 照片流 **即时** 3DGS 重建 + 全局回环（SIGGRAPH 2026；GraphDeco 官方代码已开源）；漫游捕获 / 补拍混采的上游，不含碰撞 mesh
 - [Skyfall-GS](../wiki/entities/paper-skyfall-gs.md) — **卫星影像** → city-block 可漫游 3DGS（ECCV 2026；Stage 1 伪深度 + Stage 2 IDU/FlowEdit；Apache 2.0 已开源）；远程城市几何锚定，非街景 COLMAP
@@ -125,6 +126,7 @@ flowchart LR
 - [CRISP（Contact-guided Real2Sim）](../wiki/methods/crisp-real2sim.md) — 接触引导遮挡补全 + RL 物理一致性闭环
 - [PhysX-Omni](../wiki/entities/physx-omni.md) · [Articraft](../wiki/entities/articraft.md) — sim-ready 资产的生成式与 agentic 程序化两条路线
 - [光轮 SimReady](../wiki/entities/lightwheel-simready.md) — OpenUSD 物理准确仿真资产体系与资产库（自报 2,000+ 件，部分 CC BY-NC 开源）
+- [NeuIDO（视觉到连续材料本构算子）](../wiki/entities/paper-neuido-neural-intrinsic-dynamics-operator.md) — Stage 2 软体/颗粒物性辨识：视频对齐共享弹塑性函数并接入可微 MPM；**不解决**刚体关节化或完整接触资产生成，代码发布尚不完整。
 - [接触操作纵深](depth-contact-manipulation.md) — "接触可信"判据的任务侧邻接路线
 
 ### 学完输出什么
