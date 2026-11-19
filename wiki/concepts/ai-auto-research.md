@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-19
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
+  - ../entities/openai-research-acceleration-jagged-frontier.md
   - ../entities/stanford-hai-discovery-loop-2026.md
   - ./retrieval-augmented-generation.md
   - ../concepts/llm-wiki-karpathy.md
@@ -28,8 +29,10 @@ related:
   - ../entities/paper-paper2agent.md
   - ../entities/paper-rethinking-ai-scientific-figures.md
 original:
+  - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
   - ../../sources/papers/ai_auto_research_survey_reading_arxiv_2605_18661_aar1.md
 sources:
+  - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
   - ../../sources/papers/science_prediction_universe_arxiv_2611_15049.md
   - ../../sources/videos/stanford-hai-discovery-loop-2026.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
@@ -75,6 +78,8 @@ AI 可以加速「研究形态」的产出，但 **科学实质**（证据、判
 - **S3 harness 搜索实例**：[SoL-Pi](../entities/sol-pi.md) 把同一 propose→implement→validate 环扩到 **Pi coding harness**（152→4 机制、535 环境、capability floor），开源四条 opt-in 效率扩展。
 - **E2E discovery + audit 实例**：[ScientistTwo](../entities/paper-scientisttwo.md)（Google Cloud AI）以 **107 篇人类 SOTA 论文** 为挑战，闭环 **ablation + rebuttal 补实验 + CoE integrity audit**；robotics 仅为评测域之一，但 S6–S7 闭环对「AI 写稿能否信」是硬标杆。
 - **实验室内部对照：** Anthropic Institute 用公开时程与自报工程数据讨论走向 [递归自改进](./recursive-self-improvement.md) 的距离：实现层已高度代理化，**选题与品味仍是人侧瓶颈**；完全 RSI 尚未发生。数字不可外部复现，只当方向信号。
+
+- **OpenAI 研究加速测量（2026-11）：** [The jagged frontier](../entities/openai-research-acceleration-jagged-frontier.md) 用 Inputs→Process→Outputs 三层追踪内部 coding agent 的效果：监控训练成功率 79%，而编写推理/服务栈代码 25%；记录实验次数为 2025 基线 1.68 倍。前两者是任务零干预估计成功率，后者是活动指标，不可解读为科研成果提升或机器人部署成功率。具体口径及内部数据限制见独立报告节点。
 
 ## 核心结构：四阶段八阶段
 
