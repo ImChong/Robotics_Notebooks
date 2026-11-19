@@ -5,7 +5,7 @@ project_id: heave-ho-decentralized-multi-humanoid
 arxiv: "2611.22275"
 project: https://heaveho-humanoid.github.io/
 code: https://github.com/heaveho-humanoid/Heave-Ho
-tags: [paper, humanoid, multi-agent, loco-manipulation, whole-body-control, reinforcement-learning, speech, decentralized-control]
+tags: [usc, vinmotion, paper, humanoid, multi-agent, loco-manipulation, whole-body-control, reinforcement-learning, speech, decentralized-control]
 status: complete
 updated: 2026-11-19
 related:
@@ -43,6 +43,12 @@ summary: "Heave-Ho（arXiv:2611.22275v2）：共享 SONIC+残差 MAPPO 使人形
 | LoRA | Low-Rank Adaptation | 对 Qwen3-VL-2B 视觉语言模型做参数高效微调 |
 
 ## 为什么重要
+
+| 字段 | 信息 |
+|---|---|
+| 机构 | 南加州大学（University of Southern California）；VinMotion |
+| 论文身份 | arXiv:2611.22275v2，2026-11-18 |
+
 
 - 多机共同抬箱并非多个独立行走任务：物体受力会耦合各机器人的平衡，技能指令一旦错时启动就可能拉倒队友（`1）。
 - 集中式联合策略依赖队伍人数及聚合观测；Heave-Ho 把策略共享在机器人本机、把跨机协调收敛成**语音离散技能 + 时间同步**，可扩展至多人/多机混合队伍（`3）。
