@@ -2,9 +2,10 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-19
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
+  - ../entities/paper-sg-odom-2611-20710.md
   - ../queries/contact-wrench-closed-loop.md
   - ../methods/lingbot-map.md
   - ../entities/paper-sure-map.md
@@ -93,6 +94,10 @@ sources:
 - **不变误差**：把状态放在矩阵李群 $SE_{N+2}(3)$ 上，用右不变误差，则确定性部分的误差动力学严格 log-linear，线性化矩阵与量测矩阵都不依赖当前估计；对比之下四元数 EKF 的线性化依赖估计，初值差时线性化不准、收敛慢。
 - **可观性**：纯本体感知下绝对位置与绕重力轴偏航不可观，长时间必然漂移；需要靠 LiDAR / 视觉等外部量测（见上文 VIO / SLAM 各节）去约束。
 - **边界**：加入 IMU 偏置后 group-affine 性质不再严格成立，理论保证部分丧失，但论文实验中仍优于四元数 EKF。
+
+### SG-ODOM：稳定接触门控与事件驱动本体里程计（2026）
+
+[SG-ODOM（arXiv:2611.20710）](../entities/paper-sg-odom-2611-20710.md) 将足端物理触地与「对里程计有用的稳定支撑」分开处理：关节力矩反演 GRF 后用负载/稳定条件确认 touchdown，立即修正；没有新接触事件时最多 IMU-only 传播 `Δt_max`，之后在接触消息到达时进行补充校正。其 InEKF 与固定滞后平滑器共用调度；ANYmal D 七段任务 FL 平移 RPE 均值 0.157 m（原厂 0.208 m，1 m 路径段），而 G1 使用 Surfel-LIO 参考并非绝对真值。**源码差异：** G1 前端采用滤波力阈值滞回，Spot/ANYmal 才使用力变化窗口与持续门控；见 [官方代码核对](../../sources/repos/sg-odom.md)。
 
 ## State 到底指什么
 
@@ -435,6 +440,8 @@ WBC 想稳住身体、控制摆腿、分配接触力，都依赖状态估计提�
 - 下游使用：[TSID](./tsid.md)、[Whole-Body Control](./whole-body-control.md)、[Centroidal Dynamics](./centroidal-dynamics.md)、[Sim2Real](./sim2real.md)
 
 ## 参考来源
+
+- [SG-ODOM 原文 §I–VI（arXiv:2611.20710v1）](../../sources/papers/sg-odom-arxiv-2611-20710.md) — 事件调度与接触稳定条件
 
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 经典论文与教材一手索引
 - [Hartley InEKF 通读归档](../../sources/papers/hartley_contact_aided_inekf_reading_arxiv_1904_09251_se3.md) — Contact-Aided InEKF（arXiv:1904.09251）
