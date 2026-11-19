@@ -5567,6 +5567,9 @@
     });
     return _detailCommunityIndexPromise;
   }
+  if (typeof window !== 'undefined') {
+    window.RNCommunityIndex = { ensure: ensureDetailCommunityIndex };
+  }
 
   // 首页 mini-graph.js 与搜索区的社区下拉原先各自 fetch 一份 link-graph.json，
   // 一次打开首页要下载两遍 9 MB；统一走上面的共享加载器。

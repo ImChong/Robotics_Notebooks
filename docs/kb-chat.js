@@ -16,6 +16,8 @@
   var HTML_TAG_RE = /<[^>]+>/g;
   var RAW_URL_RE = /\b(?:https?:\/\/|javascript:|data:|vbscript:)[^\s)\]<>"']+/gi;
   var TURNSTILE_SCRIPT_URL = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
+  var _katexLoadPromise = null;
 
   var SYNONYMS = {
     wbc: ['全身控制', 'whole-body-control'],
@@ -83,6 +85,10 @@
       tooLongError: '问题请控制在 {max} 字以内。',
       starters: ['什么是全身控制 WBC？', 'Sim2Real 如何缩小仿真到真机差距？', 'VLA 模型与传统控制怎么配合？'],
       fallbackLinksText: '浏览知识图谱',
+      metaCommunity: '社区',
+      metaRoadmap: '路线',
+      metaUpdated: '更新',
+      metaHealth: '健康度',
     },
     en: {
       panelTitle: 'Knowledge Q&A',
@@ -118,6 +124,10 @@
         'How do VLA models connect with low-level control?',
       ],
       fallbackLinksText: 'Browse Knowledge Graph',
+      metaCommunity: 'Community',
+      metaRoadmap: 'Roadmap',
+      metaUpdated: 'Updated',
+      metaHealth: 'Health',
     },
   };
 
@@ -340,16 +350,167 @@
     return _litePromise;
   }
 
+  var _communityIndex = null;
+  var _communityIndexPromise = null;
+
   function ensureCatalog() {
+    var promise;
     if (typeof window !== 'undefined' && window.RNSiteCatalog && typeof window.RNSiteCatalog.ensure === 'function') {
-      return window.RNSiteCatalog.ensure();
+      promise = window.RNSiteCatalog.ensure();
+    } else {
+      if (!_catalogPromise) {
+        _catalogPromise = fetchJsonWithTimeout('exports/site-catalog-v1.json', 20000).catch(function (err) {
+          _catalogPromise = null;
+          throw err;
+        });
+      }
+      promise = _catalogPromise;
     }
-    if (_catalogPromise) return _catalogPromise;
-    _catalogPromise = fetchJsonWithTimeout('exports/site-catalog-v1.json', 20000).catch(function (err) {
-      _catalogPromise = null;
-      throw err;
+    return promise.then(function (catalog) {
+      if (catalog && catalog !== state.catalog) {
+        state.catalog = catalog;
+        state.roadmapByNodeId = buildNodeRoadmapIndex(catalog);
+      }
+      return catalog;
     });
-    return _catalogPromise;
+  }
+
+  function shortenCommunityLabel(label) {
+    if (!label) return '';
+    var base = String(label).replace(/\s*社区\s*$/, '').trim();
+    if (!base || base === '未分类') return '';
+    var head = base.split('（', 1)[0].trim();
+    return head || base;
+  }
+
+  function shortenRoadmapTitle(title) {
+    var text = String(title || '').trim();
+    if (!text) return '';
+    var head = text.split('（', 1)[0].trim();
+    return head || text;
+  }
+
+  function buildNodeRoadmapIndex(catalog) {
+    var byNodeId = new Map();
+    var roadmaps = (catalog && catalog.pages && catalog.pages.roadmap_pages) || {};
+    Object.keys(roadmaps).forEach(function (roadmapId) {
+      var rm = roadmaps[roadmapId];
+      if (!rm) return;
+      var rmLabel = shortenRoadmapTitle(rm.title || roadmapId);
+      if (!byNodeId.has(roadmapId)) byNodeId.set(roadmapId, []);
+      var selfList = byNodeId.get(roadmapId);
+      if (selfList.indexOf(rmLabel) < 0) selfList.push(rmLabel);
+      var stages = Array.isArray(rm.stages) ? rm.stages : [];
+      for (var si = 0; si < stages.length; si += 1) {
+        var items = Array.isArray(stages[si] && stages[si].related_items) ? stages[si].related_items : [];
+        for (var ii = 0; ii < items.length; ii += 1) {
+          var itemId = items[ii];
+          if (!itemId) continue;
+          if (!byNodeId.has(itemId)) byNodeId.set(itemId, []);
+          var arr = byNodeId.get(itemId);
+          if (arr.indexOf(rmLabel) < 0) arr.push(rmLabel);
+        }
+      }
+    });
+    return byNodeId;
+  }
+
+  function ensureCommunityIndex() {
+    if (_communityIndex) return Promise.resolve(_communityIndex);
+    if (_communityIndexPromise) return _communityIndexPromise;
+    if (typeof window !== 'undefined' && window.RNCommunityIndex && typeof window.RNCommunityIndex.ensure === 'function') {
+      _communityIndexPromise = window.RNCommunityIndex.ensure()
+        .then(function (idx) {
+          _communityIndex = idx || { pathToCommunity: new Map(), communityLabel: {} };
+          _communityIndexPromise = null;
+          return _communityIndex;
+        })
+        .catch(function () {
+          _communityIndexPromise = null;
+          return { pathToCommunity: new Map(), communityLabel: {} };
+        });
+      return _communityIndexPromise;
+    }
+    _communityIndexPromise = fetchJsonWithTimeout('exports/link-graph.json', 20000)
+      .then(function (data) {
+        var pathToCommunity = new Map();
+        var nodes = Array.isArray(data && data.nodes) ? data.nodes : [];
+        for (var i = 0; i < nodes.length; i += 1) {
+          var node = nodes[i];
+          if (node && node.id && node.community) {
+            pathToCommunity.set(node.id, node.community);
+          }
+        }
+        var communityLabel = {};
+        var communities = Array.isArray(data && data.communities) ? data.communities : [];
+        for (var j = 0; j < communities.length; j += 1) {
+          var c = communities[j];
+          if (c && c.id) communityLabel[c.id] = c.label || c.id;
+        }
+        _communityIndex = { pathToCommunity: pathToCommunity, communityLabel: communityLabel };
+        _communityIndexPromise = null;
+        return _communityIndex;
+      })
+      .catch(function () {
+        _communityIndexPromise = null;
+        return { pathToCommunity: new Map(), communityLabel: {} };
+      });
+    return _communityIndexPromise;
+  }
+
+  function resolveCitationMeta(item) {
+    var id = item && item.id ? String(item.id) : '';
+    var pages = (state.catalog && state.catalog.pages) || {};
+    var pageMeta =
+      (pages.detail_pages && id && pages.detail_pages[id]) ||
+      (pages.roadmap_pages && id && pages.roadmap_pages[id]) ||
+      null;
+    var nodeTitle = (pageMeta && pageMeta.title) || (item && item.title) || id;
+    var updated = (pageMeta && pageMeta.updated) || (item && item.updated) || '';
+    var healthScore =
+      pageMeta && typeof pageMeta.health_score === 'number'
+        ? pageMeta.health_score
+        : item && typeof item.health_score === 'number'
+          ? item.health_score
+          : null;
+    var path = (pageMeta && pageMeta.path) || (item && item.path) || '';
+    var roadmaps =
+      (state.roadmapByNodeId && id && state.roadmapByNodeId.get(id)) ||
+      (Array.isArray(item && item.roadmaps) ? item.roadmaps : []);
+    var communityLabel = (pageMeta && pageMeta.community_label) || (item && item.community_label) || '';
+    if (!communityLabel && _communityIndex && path && _communityIndex.pathToCommunity) {
+      var cid = _communityIndex.pathToCommunity.get(path);
+      if (cid && _communityIndex.communityLabel && _communityIndex.communityLabel[cid]) {
+        communityLabel = _communityIndex.communityLabel[cid];
+      }
+    }
+    return {
+      title: String(nodeTitle || ''),
+      path: String(path || ''),
+      community: shortenCommunityLabel(communityLabel),
+      roadmaps: roadmaps,
+      updated: String(updated || ''),
+      healthScore: healthScore,
+    };
+  }
+
+  function createHealthBarEl(score) {
+    var clamped = Math.max(0, Math.min(3, Math.round(score)));
+    var wrap = document.createElement('span');
+    wrap.className = 'kb-chat-citation-health';
+    var bar = document.createElement('span');
+    bar.className = 'node-health node-health--' + clamped;
+    bar.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < 3; i += 1) {
+      var seg = document.createElement('i');
+      if (i < clamped) seg.className = 'is-on';
+      bar.appendChild(seg);
+    }
+    var txt = document.createElement('span');
+    txt.textContent = t('metaHealth') + ' ' + clamped + '/3';
+    wrap.appendChild(bar);
+    wrap.appendChild(txt);
+    return wrap;
   }
 
   function fetchPageContent(contentUrl) {
@@ -524,6 +685,8 @@
     titleEl: null,
     welcomeEl: null,
     startersEl: null,
+    catalog: null,
+    roadmapByNodeId: null,
     turnstileEl: null,
     turnstileWidgetId: null,
     prewarmedToken: null,
@@ -626,17 +789,117 @@
     state.counterEl.textContent = len + '/' + cfg.maxQuestionLength;
   }
 
+  function isCurrencyDollarExpr(expr) {
+    var s = String(expr || '').trim();
+    if (!s) return false;
+    if (/[\u3400-\u9fff]/.test(s)) return true;
+    if (/\*\*/.test(s)) return true;
+    return /^\d[\d,]*(?:\.\d+)?(?:[kKmMbB])?\s*(?:[–\-—/]|…|\.{2,3})\s*$/.test(s);
+  }
+
+  function normalizeMathText(text) {
+    if (typeof window !== 'undefined' && window.RNMath && typeof window.RNMath.normalizeDollarMath === 'function') {
+      return window.RNMath.normalizeDollarMath(text);
+    }
+    return String(text || '').replace(/\$\$[\s\S]+?\$\$|\$\s*([^$]+?)\s*\$/g, function (match, expr) {
+      if (expr == null) return match;
+      var trimmed = String(expr).trim();
+      if (!trimmed || isCurrencyDollarExpr(trimmed)) return match;
+      return '\\(' + trimmed.replace(/\\\*/g, '*') + '\\)';
+    });
+  }
+
+  function containerHasMathDelimiters(container) {
+    if (!container) return false;
+    var text = container.textContent || '';
+    return text.indexOf('$$') >= 0 || text.indexOf('\\[') >= 0 || text.indexOf('\\(') >= 0;
+  }
+
+  function loadHeadTag(tagName, attrs) {
+    return new Promise(function (resolve, reject) {
+      var el = document.createElement(tagName);
+      Object.keys(attrs).forEach(function (key) {
+        el[key] = attrs[key];
+      });
+      el.onload = function () {
+        resolve();
+      };
+      el.onerror = function () {
+        if (el.parentNode) el.parentNode.removeChild(el);
+        reject(new Error('Failed to load ' + (attrs.src || attrs.href || tagName)));
+      };
+      document.head.appendChild(el);
+    });
+  }
+
+  function ensureChatKatexLoaded() {
+    if (typeof window !== 'undefined' && typeof window.renderMathInElement === 'function') {
+      return Promise.resolve();
+    }
+    if (_katexLoadPromise) return _katexLoadPromise;
+    _katexLoadPromise = Promise.all([
+      loadHeadTag('link', {
+        rel: 'stylesheet',
+        href: KATEX_CDN_BASE + 'katex.min.css',
+        integrity: 'sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+',
+        crossOrigin: 'anonymous',
+      }),
+      loadHeadTag('script', {
+        src: KATEX_CDN_BASE + 'katex.min.js',
+        integrity: 'sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg',
+        crossOrigin: 'anonymous',
+      }).then(function () {
+        return loadHeadTag('script', {
+          src: KATEX_CDN_BASE + 'contrib/auto-render.min.js',
+          integrity: 'sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk',
+          crossOrigin: 'anonymous',
+        });
+      }),
+    ]).catch(function (err) {
+      _katexLoadPromise = null;
+      throw err;
+    });
+    return _katexLoadPromise;
+  }
+
+  function renderMessageMath(container) {
+    if (!containerHasMathDelimiters(container)) return;
+    var renderPromise;
+    if (typeof window !== 'undefined' && window.RNMath && typeof window.RNMath.render === 'function') {
+      renderPromise = Promise.resolve(window.RNMath.render(container));
+    } else {
+      renderPromise = ensureChatKatexLoaded().then(function () {
+        if (typeof window === 'undefined' || typeof window.renderMathInElement !== 'function') return;
+        window.renderMathInElement(container, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false },
+          ],
+          ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+          throwOnError: false,
+        });
+      });
+    }
+    renderPromise
+      .then(function () {
+        if (state.messagesEl) {
+          state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
+        }
+      })
+      .catch(function () {});
+  }
+
   function appendUserMessage(text) {
     var msg = document.createElement('div');
     msg.className = 'kb-chat-msg kb-chat-msg--user';
-    msg.textContent = text;
+    msg.textContent = normalizeMathText(text);
     state.messagesEl.appendChild(msg);
+    renderMessageMath(msg);
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
   }
 
-  function appendCitedText(container, text, citationsByIndex) {
-    var p = document.createElement('p');
-    p.className = 'kb-chat-msg-text';
+  function appendPlainWithCitations(parent, text, citationsByIndex) {
     var parts = String(text || '').split(/(\[\d+\])/g);
     for (var i = 0; i < parts.length; i += 1) {
       var part = parts[i];
@@ -652,13 +915,294 @@
           pill.href = href;
           pill.textContent = part;
           pill.title = citation.title || citation.id;
-          p.appendChild(pill);
+          parent.appendChild(pill);
           continue;
         }
       }
-      p.appendChild(document.createTextNode(part));
+      parent.appendChild(document.createTextNode(part));
     }
-    container.appendChild(p);
+  }
+
+  function appendInlineMarkdown(parent, rawText, citationsByIndex) {
+    var tokens = [];
+    var prefix = '@@KBCHATTOK_';
+    function stash(nodeFactory) {
+      var key = prefix + tokens.length + '@@';
+      tokens.push({ key: key, build: nodeFactory });
+      return key;
+    }
+
+    var text = String(rawText || '');
+    // 1. Protect math formulas ($$...$$, \[...\], \(...\), and non-currency $...$)
+    text = text
+      .replace(/\$\$[\s\S]+?\$\$/g, function (match) {
+        return stash(function () {
+          return document.createTextNode(match);
+        });
+      })
+      .replace(/\\\[[\s\S]+?\\\]/g, function (match) {
+        return stash(function () {
+          return document.createTextNode(match);
+        });
+      })
+      .replace(/\\\([\s\S]+?\\\)/g, function (match) {
+        return stash(function () {
+          return document.createTextNode(match);
+        });
+      })
+      .replace(/\$\s*([^$\n]+?)\s*\$/g, function (match, expr) {
+        var trimmed = String(expr || '').trim();
+        if (!trimmed || isCurrencyDollarExpr(trimmed)) return match;
+        var normalized = '\\(' + trimmed.replace(/\\\*/g, '*') + '\\)';
+        return stash(function () {
+          return document.createTextNode(normalized);
+        });
+      });
+
+    // 2. Protect inline code
+    text = text.replace(/`([^`\n]+)`/g, function (_m, code) {
+      return stash(function () {
+        var el = document.createElement('code');
+        el.className = 'kb-chat-md-code';
+        el.textContent = code;
+        return el;
+      });
+    });
+
+    // 3. Protect Markdown links [label](url): allow internal detail/roadmap links only
+    text = text.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (_m, label, url) {
+      var safeHref = safeInternalNodeUrl(url, '');
+      return stash(function () {
+        if (safeHref) {
+          var a = document.createElement('a');
+          a.className = 'kb-chat-md-link';
+          a.href = safeHref;
+          a.textContent = label;
+          return a;
+        }
+        return document.createTextNode(label);
+      });
+    });
+
+    // 4. Parse bold (**...** / __...__) and italic (*...*)
+    text = text
+      .replace(/\*\*([^*\n]+)\*\*/g, function (_m, inner) {
+        return stash(function () {
+          var strong = document.createElement('strong');
+          appendInlineMarkdown(strong, inner, citationsByIndex);
+          return strong;
+        });
+      })
+      .replace(/__([^_\n]+)__/g, function (_m, inner) {
+        return stash(function () {
+          var strong = document.createElement('strong');
+          appendInlineMarkdown(strong, inner, citationsByIndex);
+          return strong;
+        });
+      })
+      .replace(/(^|[\s(（【「])\*([^*\n]+)\*(?=[\s.,!?;:，。！？；：)）】」]|$)/g, function (_m, lead, inner) {
+        return (
+          lead +
+          stash(function () {
+            var em = document.createElement('em');
+            appendInlineMarkdown(em, inner, citationsByIndex);
+            return em;
+          })
+        );
+      });
+
+    var tokenRe = /(@@KBCHATTOK_\d+@@)/g;
+    var segments = text.split(tokenRe);
+    for (var i = 0; i < segments.length; i += 1) {
+      var seg = segments[i];
+      if (!seg) continue;
+      var tokMatch = seg.match(/^@@KBCHATTOK_(\d+)@@$/);
+      if (tokMatch) {
+        var tok = tokens[Number.parseInt(tokMatch[1], 10)];
+        if (tok) parent.appendChild(tok.build());
+      } else {
+        appendPlainWithCitations(parent, seg, citationsByIndex);
+      }
+    }
+  }
+
+  function isTableDividerLine(line) {
+    return /^\|?(?:\s*:?-{3,}:?\s*\|)+(?:\s*:?-{3,}:?\s*)?\|?$/.test(line.trim());
+  }
+
+  function splitTableCells(line) {
+    var trimmed = line.trim().replace(/^\|/, '').replace(/\|$/, '');
+    return trimmed.split('|').map(function (c) {
+      return c.trim();
+    });
+  }
+
+  function appendCitedText(container, text, citationsByIndex) {
+    var body = document.createElement('div');
+    body.className = 'kb-chat-md-body';
+    var lines = String(text || '').replace(/\r\n?/g, '\n').split('\n');
+    var i = 0;
+
+    while (i < lines.length) {
+      var line = lines[i];
+      var trimmed = line.trim();
+
+      if (!trimmed) {
+        i += 1;
+        continue;
+      }
+
+      // Fenced code block
+      if (/^```/.test(trimmed)) {
+        var codeLines = [];
+        i += 1;
+        while (i < lines.length && !/^```/.test(lines[i].trim())) {
+          codeLines.push(lines[i]);
+          i += 1;
+        }
+        if (i < lines.length && /^```/.test(lines[i].trim())) i += 1;
+        var pre = document.createElement('pre');
+        pre.className = 'kb-chat-md-pre';
+        var codeEl = document.createElement('code');
+        codeEl.textContent = codeLines.join('\n');
+        pre.appendChild(codeEl);
+        body.appendChild(pre);
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^(?:---|\*\*\*|___)\s*$/.test(trimmed)) {
+        var hr = document.createElement('hr');
+        hr.className = 'kb-chat-md-hr';
+        body.appendChild(hr);
+        i += 1;
+        continue;
+      }
+
+      // Heading (# .. ####)
+      var hMatch = trimmed.match(/^(#{1,4})\s+(.+)$/);
+      if (hMatch) {
+        var level = hMatch[1].length;
+        var hEl = document.createElement('div');
+        hEl.className = 'kb-chat-md-h kb-chat-md-h' + level;
+        appendInlineMarkdown(hEl, hMatch[2], citationsByIndex);
+        body.appendChild(hEl);
+        i += 1;
+        continue;
+      }
+
+      // Blockquote (> ...)
+      if (/^>\s?/.test(trimmed)) {
+        var quoteLines = [];
+        while (i < lines.length && /^>\s?/.test(lines[i].trim())) {
+          quoteLines.push(lines[i].trim().replace(/^>\s?/, ''));
+          i += 1;
+        }
+        var bq = document.createElement('blockquote');
+        bq.className = 'kb-chat-md-quote';
+        appendInlineMarkdown(bq, quoteLines.join('\n'), citationsByIndex);
+        body.appendChild(bq);
+        continue;
+      }
+
+      // Markdown table
+      if (
+        trimmed.indexOf('|') >= 0 &&
+        i + 1 < lines.length &&
+        isTableDividerLine(lines[i + 1])
+      ) {
+        var headers = splitTableCells(trimmed);
+        i += 2;
+        var rows = [];
+        while (i < lines.length && lines[i].trim().indexOf('|') >= 0 && lines[i].trim() !== '') {
+          rows.push(splitTableCells(lines[i]));
+          i += 1;
+        }
+        var tableWrap = document.createElement('div');
+        tableWrap.className = 'kb-chat-md-table-wrap';
+        var table = document.createElement('table');
+        table.className = 'kb-chat-md-table';
+        var thead = document.createElement('thead');
+        var headTr = document.createElement('tr');
+        for (var h = 0; h < headers.length; h += 1) {
+          var th = document.createElement('th');
+          appendInlineMarkdown(th, headers[h], citationsByIndex);
+          headTr.appendChild(th);
+        }
+        thead.appendChild(headTr);
+        table.appendChild(thead);
+
+        var tbody = document.createElement('tbody');
+        for (var r = 0; r < rows.length; r += 1) {
+          var tr = document.createElement('tr');
+          for (var c = 0; c < headers.length; c += 1) {
+            var td = document.createElement('td');
+            appendInlineMarkdown(td, rows[r][c] || '', citationsByIndex);
+            tr.appendChild(td);
+          }
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        tableWrap.appendChild(table);
+        body.appendChild(tableWrap);
+        continue;
+      }
+
+      // Unordered list (- / * / +)
+      if (/^[-*+]\s+/.test(trimmed)) {
+        var ul = document.createElement('ul');
+        ul.className = 'kb-chat-md-list';
+        while (i < lines.length && /^[-*+]\s+/.test(lines[i].trim())) {
+          var li = document.createElement('li');
+          appendInlineMarkdown(li, lines[i].trim().replace(/^[-*+]\s+/, ''), citationsByIndex);
+          ul.appendChild(li);
+          i += 1;
+        }
+        body.appendChild(ul);
+        continue;
+      }
+
+      // Ordered list (1. )
+      if (/^\d+\.\s+/.test(trimmed)) {
+        var ol = document.createElement('ol');
+        ol.className = 'kb-chat-md-list';
+        while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
+          var oli = document.createElement('li');
+          appendInlineMarkdown(oli, lines[i].trim().replace(/^\d+\.\s+/, ''), citationsByIndex);
+          ol.appendChild(oli);
+          i += 1;
+        }
+        body.appendChild(ol);
+        continue;
+      }
+
+      // Normal paragraph (consume consecutive plain lines)
+      var paraLines = [];
+      while (i < lines.length) {
+        var cur = lines[i];
+        var curTrim = cur.trim();
+        if (
+          !curTrim ||
+          /^```/.test(curTrim) ||
+          /^(?:---|\*\*\*|___)\s*$/.test(curTrim) ||
+          /^(#{1,4})\s+/.test(curTrim) ||
+          /^>\s?/.test(curTrim) ||
+          /^[-*+]\s+/.test(curTrim) ||
+          /^\d+\.\s+/.test(curTrim) ||
+          (curTrim.indexOf('|') >= 0 && i + 1 < lines.length && isTableDividerLine(lines[i + 1]))
+        ) {
+          break;
+        }
+        paraLines.push(cur);
+        i += 1;
+      }
+      var p = document.createElement('p');
+      p.className = 'kb-chat-msg-text';
+      appendInlineMarkdown(p, paraLines.join('\n'), citationsByIndex);
+      body.appendChild(p);
+    }
+
+    container.appendChild(body);
   }
 
   function appendAssistantMessage(options) {
@@ -692,9 +1236,12 @@
       label.textContent = t('sourcesLabel');
       citeWrap.appendChild(label);
 
+      var pendingCommunitySlots = [];
+
       for (var j = 0; j < citations.length; j += 1) {
         var item = citations[j];
         if (!item) continue;
+        var meta = resolveCitationMeta(item);
         var href = safeInternalNodeUrl(item.url, item.id);
         var card = document.createElement(href ? 'a' : 'div');
         card.className = 'kb-chat-citation-card';
@@ -702,23 +1249,75 @@
 
         var titleEl = document.createElement('span');
         titleEl.className = 'kb-chat-citation-title';
-        titleEl.textContent = '[' + (item.index || j + 1) + '] ' + String(item.title || item.id || '');
+        titleEl.textContent = '[' + (item.index || j + 1) + '] ' + (meta.title || String(item.id || ''));
         card.appendChild(titleEl);
 
-        if (item.heading) {
+        if (item.heading && String(item.heading).trim() !== meta.title) {
           var headingEl = document.createElement('span');
           headingEl.className = 'kb-chat-citation-heading';
           headingEl.textContent = String(item.heading);
           card.appendChild(headingEl);
         }
 
+        var metaRow = document.createElement('div');
+        metaRow.className = 'kb-chat-citation-meta';
+        if (meta.community) {
+          var commChip = document.createElement('span');
+          commChip.className = 'kb-chat-citation-chip kb-chat-citation-community';
+          commChip.textContent = t('metaCommunity') + ' · ' + meta.community;
+          metaRow.appendChild(commChip);
+        } else if (meta.path) {
+          pendingCommunitySlots.push({ metaRow: metaRow, path: meta.path });
+        }
+
+        if (meta.roadmaps && meta.roadmaps.length > 0) {
+          var rmChip = document.createElement('span');
+          rmChip.className = 'kb-chat-citation-chip kb-chat-citation-roadmap';
+          var rmText = meta.roadmaps[0] + (meta.roadmaps.length > 1 ? ' +' + (meta.roadmaps.length - 1) : '');
+          rmChip.textContent = t('metaRoadmap') + ' · ' + rmText;
+          rmChip.title = meta.roadmaps.join(' / ');
+          metaRow.appendChild(rmChip);
+        }
+
+        if (meta.updated) {
+          var updChip = document.createElement('span');
+          updChip.className = 'kb-chat-citation-chip kb-chat-citation-updated';
+          updChip.textContent = t('metaUpdated') + ' ' + meta.updated;
+          metaRow.appendChild(updChip);
+        }
+
+        if (typeof meta.healthScore === 'number') {
+          metaRow.appendChild(createHealthBarEl(meta.healthScore));
+        }
+
+        if (metaRow.childNodes.length > 0 || pendingCommunitySlots.length > 0) {
+          card.appendChild(metaRow);
+        }
+
         if (item.snippet) {
           var snippetEl = document.createElement('span');
           snippetEl.className = 'kb-chat-citation-snippet';
-          snippetEl.textContent = String(item.snippet);
+          snippetEl.textContent = normalizeMathText(String(item.snippet));
           card.appendChild(snippetEl);
         }
         citeWrap.appendChild(card);
+      }
+
+      if (pendingCommunitySlots.length > 0) {
+        ensureCommunityIndex().then(function (commIdx) {
+          if (!commIdx || !commIdx.pathToCommunity) return;
+          for (var p = 0; p < pendingCommunitySlots.length; p += 1) {
+            var slotInfo = pendingCommunitySlots[p];
+            var cid = commIdx.pathToCommunity.get(slotInfo.path);
+            var rawLabel = cid && commIdx.communityLabel ? commIdx.communityLabel[cid] : '';
+            var shortLabel = shortenCommunityLabel(rawLabel);
+            if (!shortLabel) continue;
+            var commEl = document.createElement('span');
+            commEl.className = 'kb-chat-citation-chip kb-chat-citation-community';
+            commEl.textContent = t('metaCommunity') + ' · ' + shortLabel;
+            slotInfo.metaRow.insertBefore(commEl, slotInfo.metaRow.firstChild);
+          }
+        });
       }
       msg.appendChild(citeWrap);
     } else if (options.showGraphLink) {
@@ -730,6 +1329,7 @@
     }
 
     state.messagesEl.appendChild(msg);
+    renderMessageMath(msg);
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
   }
 

@@ -5401,6 +5401,109 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-msg-text {
   white-space: pre-wrap;
 }
+.kb-chat-msg .katex {
+  font-size: 0.96em;
+  white-space: normal;
+}
+.kb-chat-msg .katex-display {
+  margin: 6px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  white-space: normal;
+}
+.kb-chat-md-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.kb-chat-md-body > .kb-chat-msg-text {
+  margin: 0;
+}
+.kb-chat-md-h {
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin-top: 2px;
+}
+.kb-chat-md-h1 {
+  font-size: 0.96rem;
+}
+.kb-chat-md-h2 {
+  font-size: 0.92rem;
+}
+.kb-chat-md-h3,
+.kb-chat-md-h4 {
+  font-size: 0.87rem;
+}
+.kb-chat-md-list {
+  margin: 0;
+  padding-left: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.kb-chat-md-list li {
+  line-height: 1.5;
+}
+.kb-chat-md-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82em;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.kb-chat-md-pre {
+  margin: 2px 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  max-width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  white-space: pre;
+}
+.kb-chat-md-quote {
+  margin: 2px 0;
+  padding: 4px 10px;
+  border-left: 3px solid var(--accent);
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  border-radius: 0 6px 6px 0;
+}
+.kb-chat-md-hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 4px 0;
+}
+.kb-chat-md-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+.kb-chat-md-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+.kb-chat-md-table th,
+.kb-chat-md-table td {
+  padding: 4px 7px;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.kb-chat-md-table th {
+  font-weight: 600;
+  background: var(--surface);
+}
+.kb-chat-md-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
 .kb-chat-status-note {
   font-size: 0.74rem;
   line-height: 1.4;
@@ -5463,6 +5566,38 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-citation-heading {
   font-size: 0.7rem;
   color: var(--text-muted);
+}
+.kb-chat-citation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+.kb-chat-citation-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  line-height: 1.45;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.kb-chat-citation-health {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.kb-chat-citation-health .node-health {
+  cursor: default;
+}
+.kb-chat-citation-health .node-health i {
+  height: 9px;
 }
 .kb-chat-citation-snippet {
   font-size: 0.74rem;

@@ -426,3 +426,246 @@ test('XSS payloads and dangerous citation URLs are rendered inertly without scri
   assert.match(greetingMsgs[1].textContent, /只读问答助手/);
   dom.window.close();
 });
+
+test('LaTeX math delimiters normalize safely and invoke KaTeX rendering without HTML injection', async () => {
+  let renderedContainers = 0;
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer:
+              '动力学方程 $\\tau = J^T F$，代价约 $50k–$70k，块级公式：$$\\min_x \\|Ax-b\\|^2$$ [1]。<script>window.__mathXss=1</script>',
+            citations: [
+              {
+                index: 1,
+                id: 'wiki-concepts-wbc',
+                title: 'Whole-Body Control',
+                heading: 'QP',
+                snippet: '满足 $Ax = b$ 约束',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+            ],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.renderMathInElement = (el, opts) => {
+    renderedContainers += 1;
+    assert.ok(Array.isArray(opts.delimiters));
+    assert.ok(el.textContent.includes('\\(\\tau = J^T F\\)'));
+    assert.ok(el.textContent.includes('$$\\min_x \\|Ax-b\\|^2$$'));
+    assert.ok(el.textContent.includes('$50k–$70k'));
+    assert.ok(el.textContent.includes('\\(Ax = b\\)'));
+  };
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-math'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC $J^T F$？');
+  assert.ok(renderedContainers >= 2, 'should invoke KaTeX for both user and assistant messages');
+  assert.equal(window.__mathXss, undefined);
+  assert.equal(window.document.querySelectorAll('.kb-chat-msg script').length, 0);
+  dom.window.close();
+});
+
+test('Markdown headings, lists, code blocks, tables, bold/italic and safe internal links render cleanly without XSS', async () => {
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer: [
+              '## 核心原理',
+              '- **优势**：使用 `QP` 求解动力学 $\\tau = J^T F$ [1]',
+              '- *注意*：查看 [站内节点](detail.html?id=wiki-concepts-wbc) 与 [外链](https://evil.example) 和 [危险](javascript:alert(1))',
+              '',
+              '| 模块 | 作用 |',
+              '| --- | --- |',
+              '| WBC | 全身力矩分配 |',
+              '',
+              '```python',
+              'solve_qp(A, b)',
+              '```',
+            ].join('\n'),
+            citations: [
+              {
+                index: 1,
+                id: 'wiki-concepts-wbc',
+                title: 'Whole-Body Control',
+                heading: 'QP',
+                snippet: '满足 QP 约束',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+            ],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-md'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  const msg = window.document.querySelector('.kb-chat-msg--assistant');
+  assert.ok(msg);
+  assert.equal(msg.querySelector('.kb-chat-md-h2').textContent, '核心原理');
+  assert.equal(msg.querySelectorAll('.kb-chat-md-list li').length, 2);
+  assert.equal(msg.querySelector('strong').textContent, '优势');
+  assert.equal(msg.querySelector('em').textContent, '注意');
+  assert.equal(msg.querySelector('.kb-chat-md-code').textContent, 'QP');
+  assert.equal(msg.querySelector('.kb-chat-md-pre code').textContent, 'solve_qp(A, b)');
+  assert.equal(msg.querySelectorAll('.kb-chat-md-table tbody tr').length, 1);
+  const mdLinks = [...msg.querySelectorAll('a.kb-chat-md-link')];
+  assert.equal(mdLinks.length, 1);
+  assert.equal(mdLinks[0].getAttribute('href'), 'detail.html?id=wiki-concepts-wbc');
+  assert.match(msg.textContent, /外链/);
+  assert.match(msg.textContent, /危险/);
+  dom.window.close();
+});
+
+test('Citation cards display canonical node title, community, roadmap, updated date, and health score', async () => {
+  const richCatalog = {
+    version: 'v1',
+    content_mode: 'per-page-v1',
+    pages: {
+      detail_pages: {
+        'wiki-concepts-wbc': {
+          title: '全身控制（Whole-Body Control, WBC）',
+          path: 'wiki/concepts/whole-body-control.md',
+          updated: '2026-11-18',
+          health_score: 3,
+          content_url: `exports/page-content/${HASH_WBC}.json`,
+        },
+      },
+      roadmap_pages: {
+        'roadmap-motion-control': {
+          title: '运动控制主路线（Motion Control）',
+          stages: [
+            {
+              id: 'stage-2',
+              related_items: ['wiki-concepts-wbc'],
+            },
+          ],
+        },
+      },
+      page_aliases: {},
+    },
+  };
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer: 'WBC 核心是分层 QP [1]。',
+            citations: [
+              {
+                index: 1,
+                id: 'wiki-concepts-wbc',
+                title: 'H1 Fallback Title',
+                heading: '核心原理',
+                snippet: '分层 QP 求解接触力。',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+            ],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => richCatalog };
+      if (url === 'exports/link-graph.json') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            nodes: [{ id: 'wiki/concepts/whole-body-control.md', community: 'comm-control' }],
+            communities: [{ id: 'comm-control', label: '运动控制（Motion Control） 社区' }],
+          }),
+        };
+      }
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-meta'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  // Flush microtasks for async link-graph community lookup
+  await new Promise((r) => setTimeout(r, 15));
+
+  const card = window.document.querySelector('.kb-chat-citation-card');
+  assert.ok(card);
+  assert.equal(card.querySelector('.kb-chat-citation-title').textContent, '[1] 全身控制（Whole-Body Control, WBC）');
+  assert.equal(card.querySelector('.kb-chat-citation-community').textContent, '社区 · 运动控制');
+  assert.equal(card.querySelector('.kb-chat-citation-roadmap').textContent, '路线 · 运动控制主路线');
+  assert.equal(card.querySelector('.kb-chat-citation-updated').textContent, '更新 2026-11-18');
+  assert.match(card.querySelector('.kb-chat-citation-health').textContent, /健康度 3\/3/);
+  assert.equal(card.querySelectorAll('.kb-chat-citation-health .node-health--3 i.is-on').length, 3);
+  dom.window.close();
+});
