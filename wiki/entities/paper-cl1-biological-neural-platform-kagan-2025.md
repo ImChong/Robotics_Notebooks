@@ -114,7 +114,7 @@ sequenceDiagram
   App->>Runner: 启动迭代 ticks_per_second=1000
   loop 每次 tick
     Data-->>Runner: 神经信号模拟数据
-    Loop-->>App: tick.analysis.spikes
+    Runner-->>App: tick.analysis.spikes
     opt 根据 spike 进行反馈
       App->>API: stim(channel, StimDesign)
       API->>Data: 排队 / 提交刺激事件
