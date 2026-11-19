@@ -81,35 +81,32 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-  autonumber
   participant Init as rtos_main
   participant Axis as Axis state thread
   participant Loop as ODrive control loop
   participant Enc as Encoder
   participant Ctrl as Controller
   participant Mot as Motor
-  participant FOC as current controller
+  participant FOC as Current control
   participant PWM as ADC and PWM callbacks
-  Init->>Init: init_communication and start_adc_pwm
-  Init->>Axis: start_thread
-  Axis->>Axis: run_state_machine_loop
-  Axis->>Axis: start_closed_loop_control
-  Note over Axis,Ctrl: connect_to binds feedback and torque ports
-  Axis->>Mot: arm current controller
-  loop Control cycle
-    Loop->>Loop: reset ports, checks and watchdog
-    Loop->>Enc: update all encoder estimates
-    Loop->>Ctrl: controller update
-    Ctrl-->>Mot: torque_output through port
-    Loop->>Mot: motor update and Id Iq limits
-    Loop->>FOC: update current controller
-  end
-  PWM->>Mot: current_meas_cb and pwm_update_cb
-  Mot-->>PWM: PWM timings or disarm
-  opt Fault or state change
-    Loop->>Mot: disarm power stage
-    Axis->>Mot: stop_closed_loop_control
-  end
+  Init->>Init: Init communication and ADC PWM
+  Init->>Axis: Start axis thread
+  Axis->>Axis: Run state machine
+  Axis->>Axis: Enter closed loop control
+  Note over Axis,Mot: Connect encoder controller and motor ports
+  Axis->>Mot: Arm current controller
+  Note over Loop,FOC: These operations repeat each control cycle
+  Loop->>Loop: Reset ports and check watchdog
+  Loop->>Enc: Update encoder for each axis
+  Loop->>Ctrl: Update motion control
+  Ctrl-->>Mot: Output torque via connected port
+  Loop->>Mot: Update Id and Iq targets
+  Loop->>FOC: Update current control
+  Note over PWM,Mot: ADC and PWM hardware callbacks run separately
+  PWM->>Mot: Sample phase current
+  Mot-->>PWM: Apply PWM timings
+  Note over Axis,Mot: A state exit or fault disables motor output
+  Axis->>Mot: Disarm power stage
 ```
 
 ### 哪些是工程分层，哪些不是硬隔离？
