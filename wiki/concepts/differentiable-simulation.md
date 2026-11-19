@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, differentiable-physics, system-identification, reinforcement-learning, gradient-based]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-19
 related:
   - ../formalizations/adjoint-sensitivity-analysis.md
   - ../entities/matrix-simulation-platform.md
@@ -92,6 +92,7 @@ summary: "Differentiable Simulation 允许对仿真 rollout 反传梯度，用�
 - [NeuralActuator](../entities/paper-neuralactuator-neural-actuation-modeling.md)
 - [Ostrich](../entities/paper-ostrich.md) — 硬接触非光滑 Newton + IFT 伴随；大步长可微刚体仿真（arXiv:2609.08800，已开源）
 - [Designing physics experiments with AI](../entities/paper-designing-physics-experiments-with-ai.md) — 科学仪器域可微仿真案例：JAX **Differometor** 干涉仪优化（Nature 2026 Review + Learn2Design-2026）
+- [NeuIDO](../entities/paper-neuido-neural-intrinsic-dynamics-operator.md) — 可微 MPM + 3DGS 视频重建损失学习弹塑性本构算子；与传统标量 SysID 不同，论文使用经典材料轨迹预训练，公开代码仍缺完整复现资源。
 
 
 ## 推荐继续阅读
