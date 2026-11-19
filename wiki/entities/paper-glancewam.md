@@ -167,6 +167,7 @@ sequenceDiagram
 - [Action Chunking](../methods/action-chunking.md) — 异步 chunk 与控制环
 - [VLA](../methods/vla.md) — 流匹配动作头
 - [WAM 实时异步部署](./paper-wam-realtime-async.md) — 部署策略对照
+- [ZERITH 2.5](./paper-zerith-v25.md) — 先用目标域视频预适配 Wan 再联合学习动作，推理经视频 K/V 供动作分支读取；与 GlanceWAM 的异步稀疏视觉前瞻区分。
 - [FlashVLA](./paper-flashvla.md) — 另一条实时动作解码
 - [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
 
