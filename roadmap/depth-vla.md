@@ -141,6 +141,7 @@ flowchart LR
 - [MIGU](../wiki/entities/paper-migu-multimodal-instruction-grounding.md) — 融合语言语义与指向手势的三维几何不确定性，先形成目标信念，再决定执行或澄清（`MingkeLu/MIGU` 部分开源核心 grounding、样本与 ROS 接口，不含 POMDP 澄清对话与 S2 规划器）
 - [VGE：冻结 VLM 引导多目标指代接地](../wiki/entities/paper-vge-2611-22625.md) — Stage 2 感知接地前端：逐层联合注意力 + 指令条件实例评分，稳健恢复零/单/多目标框；RoboRefIt A/B 三指令平均 F1 95.02/89.67%，论文 v1 尚无官方 VGE 代码。
 - [VLA-Δ：物理状态转移监督](../wiki/entities/paper-vla-delta.md) — Stage 2：用未来差异文本、结构化转移槽和光流在预训练期监督 Query，再由 flow matching 直接预测动作；LIBERO 98.4%、RoboTwin 90.06%/89.74%；已公开训练/评测代码与权重。
+- [AutoVLA-D](../wiki/entities/paper-autovla-d.md) — NeurIPS 2026 驾驶 VLA：用 1D-Brohan 离散差分动作作 TrajCond 中间条件，再回归连续航点；区分离散最终输出与条件输入（官方数据引擎、SFT 配置已发布，GRPO 外置）。
 - [TEMPO](../wiki/entities/paper-tempo-dynamic-manipulation.md) — CoRL 2026 Oral；为单帧 VLA 补充视觉运动摘要与动作历史，缓解双臂动态操作歧义；`tempo-robot/TEMPO` 模型代码与 `TempoBench` 257 回合数据已开源，权重与真机部署待补
 
 ### 学完输出什么

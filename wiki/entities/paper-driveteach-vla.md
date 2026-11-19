@@ -14,6 +14,7 @@ related:
   - ../methods/grpo.md
   - ../overview/autonomous-driving-core-algorithms-series.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
+  - ./paper-autovla-d.md
   - ./paper-s-squared-vla.md
   - ./paper-depth-wise-probing-driving-vla.md
   - ../tasks/vision-language-navigation.md
@@ -204,6 +205,8 @@ sequenceDiagram
 - [E2E Autonomous Driving Top10](../overview/e2e-autonomous-driving-top10-algorithms.md) — 驾驶算法盘点
 - [S²-VLA](./paper-s-squared-vla.md) — NAVSIM 驾驶 VLA 对照
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md) — 导航/驾驶 VLA 任务语境
+
+- [AutoVLA-D](./paper-autovla-d.md) — 同源驾驶 VLA 的 TrajCond 离散局部动作条件；与本论文的 DVD + 2D-TGP 视觉提示路线形成对照。
 
 ## 推荐继续阅读
 
