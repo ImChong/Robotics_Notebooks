@@ -11,6 +11,8 @@ related:
   - ../concepts/state-estimation.md
   - ../concepts/contact-estimation.md
   - ../tasks/locomotion.md
+  - ../tasks/humanoid-locomotion.md
+  - ../methods/lidar-odometry-fusion.md
   - ../comparisons/kalman-filter-vs-optimization-based-estimation.md
   - ../../roadmap/depth-classical-control.md
   - ./unitree-g1.md
@@ -184,7 +186,9 @@ sequenceDiagram
 
 - [State Estimation](../concepts/state-estimation.md)
 - [Contact Estimation](../concepts/contact-estimation.md)
-- [Locomotion](../tasks/locomotion.md)
+- [Locomotion](../tasks/locomotion.md)：足式机器人任务上游的状态估计与接触判断。
+- [人形行走任务](../tasks/humanoid-locomotion.md)：G1 双足接触与本体里程计，是全身控制的观测链基础。
+- [里程计与 LiDAR 融合定位](../methods/lidar-odometry-fusion.md)：本文纯本体相对里程计可作为高频预测源；长期航向/位置漂移需要外感知约束，不能把本方法称为 LIO。
 - [KF / Optimization-based Estimation 选型](../comparisons/kalman-filter-vs-optimization-based-estimation.md)
 - [Unitree G1](./unitree-g1.md)
 - [传统模型控制纵深 Stage 4](../../roadmap/depth-classical-control.md)
