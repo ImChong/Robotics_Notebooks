@@ -50,7 +50,7 @@ summary: "Remotion 以 React Composition 为视频源真值，通过 CLI/Studio 
 - **机器人路线素材：** [motion-control 路线](../../roadmap/motion-control.md) 汇总了可进一步转为解说视频的章节内容；视频资产不在本仓库中发布。
 - **与 Manim / GSAP 分工：** [Manim](manim.md) 偏数学动画；[GSAP Skills](gsap-skills.md) 偏 Web 动效技能；Remotion 偏 **产品/路线/marketing 级成片与 batch**。
 
-## 核心结构
+## 核心机制与结构
 
 | 模式 | 说明 |
 |------|------|
