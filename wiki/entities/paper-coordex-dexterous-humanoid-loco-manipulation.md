@@ -102,7 +102,7 @@ sequenceDiagram
   participant App as Isaac Lab AppLauncher
   participant Env as ManagerBasedRLEnv
   participant Runner as RSL-RL OnPolicyRunner
-  participant Actor as ActorCriticCoordResidual
+  participant Policy as ActorCriticCoordResidual
   participant Prior as ResidualLatentAction and VAE
   participant Sim as JointPositionAction and Sim
 
@@ -118,9 +118,9 @@ sequenceDiagram
     Env->>Prior: 获取 body/hand proprio 的 prior mean
     Prior-->>Env: body_prior_mean + hand_prior_mean
     Env-->>CLI: 返回任务状态与先验均值观测
-    CLI->>Actor: policy(obs)
-    Actor->>Actor: shared coord_trunk + body/hand residual heads
-    Actor-->>CLI: 28-D latent residual
+    CLI->>Policy: policy(obs)
+    Actor->>Policy: shared coord_trunk + body/hand residual heads
+    Policy-->>CLI: 28-D latent residual
     CLI->>Env: env.step(actions)
     Env->>Prior: process_actions(residual)
     Prior->>Prior: prior mean + residual, 冻结 decoder
