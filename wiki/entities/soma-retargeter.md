@@ -133,6 +133,7 @@ sequenceDiagram
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 方法与评价标准
 - [动作重定向纵深路线 Stage 4](../../roadmap/depth-motion-retargeting.md) — 工具链所在学习阶段
 - [GMR](../methods/motion-retargeting-gmr.md) — 几何重定向方案比较
+- [NMR](../methods/neural-motion-retargeting-nmr.md) — 学习式重定向的对照方法
 - [ProtoMotions](./protomotions.md) — 下游动作跟踪训练
 - [Unitree G1](./unitree-g1.md) — 官方首个上手示例
 - [CoRe v0.1.0](./paper-core.md) — SOMA 生态相关多机体接触精炼方法
