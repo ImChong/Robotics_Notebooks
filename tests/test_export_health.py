@@ -6,6 +6,7 @@ from pathlib import Path
 
 import generate_link_graph as glg
 from export_minimal import build_item
+from report_health import health_rows
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,6 +39,9 @@ def test_reference_page_health_uses_index_rubric() -> None:
     )
     assert (item["health_score"], item["health_gaps"]) == (3, 0)
     assert "```mermaid" in text
+    assert health_rows(["references/papers/survey-papers.md"]) == [
+        ("references/papers/survey-papers.md", 3, [])
+    ]
 
 
 def test_other_non_graph_pages_have_no_health() -> None:
