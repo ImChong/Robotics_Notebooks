@@ -165,6 +165,20 @@ sequenceDiagram
 
 **复现入口（官方 README）：** 安装 Python 3.10、CUDA 版 PyTorch，克隆 Wan2.2 / DreamZero 并下载 Wan VAE 与 umT5；从 [Hugging Face](https://huggingface.co/shitijgovil/FloMo) 下载模型后，用 `infer_example.py` 对三视角图像、任务指令、当前末端位姿作单步动作预测。RoboTwin 路径先以 `preprocessing.preprocess_robotwin` 的 `tracks` / `text_emb` 模式准备 50 条示范，再以 `train.py --config-name train_robotwin` 微调。示例程序**只打印动作，不负责真机相机采集、实时控制或安全闭环**。
 
+## 工程实践
+
+按照 [官方 README 的安装、推理与 RoboTwin 微调说明](https://github.com/pairlab/flomo#readme)，复现时应区分**离线场景流预处理**与**在线动作推理**：
+
+| 关键环节 | 官方入口与操作要点 | 验证点 |
+|----------|--------------------|--------|
+| 环境与权重 | Python 3.10、CUDA GPU；安装 Wan2.2、DreamZero 和 `pip install -e .`；准备 Wan VAE/umT5 及 [MA、VA、VMA 模型权重](https://huggingface.co/shitijgovil/FloMo) | 检查 GPU/PyTorch 对应版本和 checkpoint 模态配置，不能把 VMA 的结果当作 MA |
+| 数据与 3D tracking | `python -m preprocessing.preprocess_robotwin mode=tracks ...` 与 `mode=text_emb`；先将训练演示转换为可读取的 track 和文本条件 | Scene Flow 是训练目标，离线追踪的正确性决定运动监督质量 |
+| RoboTwin 微调 | `python train.py --config-name train_robotwin data_root=... robotwin_task=open_laptop checkpoint=... resume=false run_name=...` | README 示例按单任务 50 条 `demo_clean` 示范、5,000 次更新；`resume=false` 从权重初始化而不是恢复优化器 |
+| 单步动作推理 | `python infer_example.py --checkpoint ... --wan-ckpt-dir ... --image primary.png --image left.png --image right.png --task "..." --ee-pose=...` | 视角顺序须为 primary / left / right；基础权重默认使用 `realyam` 归一化，RoboTwin 微调权重须选 `--normalizer-type robotwin` |
+| 输出与机器人集成 | CLI 将模型动作反归一化，转换为双臂末端 `(T,14)` 的 `x,y,z,yaw,pitch,roll,gripper` 序列 | 此例只打印动作块；相机采集、动作安全检查、实时下发及闭环执行需另行接入 |
+
+**硬件提示：** 官方 README 对 PyTorch / CUDA 版本、SpaTrackerV2 的 `torchvision` 与 `numpy` 依赖有明确限制，复现前应按仓库当时的安装说明检查版本。本文未在本次环境实际运行训练或真机，以上是**源码与文档核对的复现路径**，不是实测性能。
+
 ## 局限与风险
 
 - **预处理开销：** 论文报告 SpatialTrackerV2 在 L40S 上每 16 帧约 2.4 s；每小时 30 FPS 视频需约 72 GPU-hours。数据管线扩展成本不可忽略。
