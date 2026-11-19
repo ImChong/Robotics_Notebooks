@@ -5061,13 +5061,6 @@ a.card:active { transform: translateY(-1px); }
   gap: 12px;
   pointer-events: none;
 }
-.fab-stack-right__bar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  pointer-events: none;
-}
 .fab-stack-right .back-to-top {
   position: relative;
   bottom: auto;
@@ -5078,11 +5071,9 @@ a.card:active { transform: translateY(-1px); }
 .fab-stack-right .back-to-top.is-visible {
   pointer-events: auto;
 }
+/* 折叠态（空或面板 [hidden]）不占 flex 子项，避免在 #backToTop 与 #kbChatToggle 间产生双倍 gap */
 .kb-chat-slot {
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  display: contents;
 }
 .kb-chat-toggle {
   display: inline-flex;
@@ -5125,7 +5116,8 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-panel {
   pointer-events: auto;
   width: min(380px, calc(100vw - 32px));
-  max-height: min(540px, calc(100dvh - 156px - var(--fab-lift, 0px)));
+  /* 预留底部 24px + #kbChatToggle(48px) + 上下双 gap(24px) + 顶部 #backToTop(48px) + 顶栏(--header-h 58px) + 呼吸边距(14px) = 216px */
+  max-height: min(540px, calc(100dvh - 216px - var(--fab-lift, 0px)));
   display: flex;
   flex-direction: column;
   background: var(--surface-strong);
@@ -5217,7 +5209,7 @@ a.card:active { transform: translateY(-1px); }
 
 .kb-chat-messages {
   flex: 1 1 auto;
-  min-height: 180px;
+  min-height: min(180px, 22dvh);
   overflow-y: auto;
   padding: 12px;
   display: flex;

@@ -906,8 +906,8 @@ export default {
       if (passages.length === 0) {
         const ungroundedAnswer =
           lang === 'en'
-            ? 'No direct supporting excerpts were found in the indexed knowledge base pages for this question. Try shorter keywords or open the site search.'
-            : '在当前检索到的知识库页面中未找到直接相关的依据片段。建议尝试更短的关键词，或使用站内搜索与知识图谱继续查找。';
+            ? 'No direct match found in the wiki for this question. Try shorter keywords or open site search.'
+            : '站内暂未找到与该问题直接相关的内容，可换个关键词或使用站内搜索与知识图谱继续查找。';
         return jsonResponse(
           {
             ok: true,
@@ -936,8 +936,8 @@ export default {
           503,
           'QUOTA_OR_AI_UNAVAILABLE',
           lang === 'en'
-            ? 'Cloud AI daily free quota is exhausted or unavailable; switched to local read-only search.'
-            : '云端 AI 今日免费额度已用尽或服务暂不可用，已自动切换为站内只读检索。',
+            ? 'AI assistant is busy or unavailable; switched to wiki search.'
+            : 'AI 助手当前繁忙或暂不可用，已自动切换为站内检索。',
           cors.headers,
         );
       }

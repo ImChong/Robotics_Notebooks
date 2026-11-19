@@ -75,13 +75,13 @@
 
 改造方案（复用原有规则并保持零冲突）：
 - **注入范围**：与 `.back-to-top` 一致，仅在存在 `body > .footer` 的页面注入（`index.html`、`detail.html`、`roadmap.html`、`hubs.html`、`company.html`、`lab.html`、`change-log.html`、`star-history.html`、`404.html`）；全屏画布页 `graph.html` 与跳转桩页 `references.html` 不注入。
-- **统一容器 `.fab-stack-right`**：
+- **统一纵向控件栈 `.fab-stack-right`**：
   - `position: fixed; bottom: calc(24px + var(--fab-lift, 0px)); right: calc(20px - (100vw - 100%));`（保留原 scrollbar-gutter 装订线补偿与 `--fab-lift` 页脚避让）；
   - 容器自身 `pointer-events: none`，仅内部可见子元素（`.back-to-top.is-visible`、`.kb-chat-toggle`、展开后的 `.kb-chat-panel`）设为 `pointer-events: auto`，绝不吞掉底层卡片链接点击。
-- **垂直 + 水平双栈排布**：
-  - 底部操作栏 `.fab-stack-right__bar` 为水平 Flex：`[ #backToTop (48×48) ]` + `12px` 间距 + `[ #kbChatToggle (48×48) ]`；
-  - 聊天面板 `.kb-chat-panel` 位于操作栏上方（`gap: 12px`），宽度 `min(380px, calc(100vw - 32px))`，最大高度 `min(540px, calc(100dvh - 108px - var(--fab-lift, 0px)))`；
-  - 因此在 `320px` 窄屏下，底部左右仍留出足够间隙，左侧 `.sidebar-toggle` / `.home-nav-fab`（`left: 20px`）、右侧 `#backToTop`、右侧 `#kbChatToggle` 以及上方展开的 `#kbChatPanel` **四者同时可见可点、零重叠**。
+- **自上而下纵向排布**：
+  - 纵向 Flex 列按自上而下顺序挂载：`[ #backToTop (48×48) ]` → `[ #kbChatSlot / .kb-chat-panel ]` → `[ #kbChatToggle (48×48) ]`（右对齐、`gap: 12px`）；`.kb-chat-slot` 设为 `display: contents`，收起态不占位、不产生多余间距；
+  - 无论收起或展开，只要 `#backToTop` 显示，均位于聊天图标及聊天面板上方，聊天窗口与入口位于其下方；`.kb-chat-panel` 宽度 `min(380px, calc(100vw - 32px))`，最大高度 `min(540px, calc(100dvh - 216px - var(--fab-lift, 0px)))`，为顶栏与上方置顶按钮预留空间；
+  - 因此在 `320px` 窄屏下，底部左右仍留出足够间隙，左侧 `.sidebar-toggle` / `.home-nav-fab`（`left: 20px`）、右下角 `#kbChatToggle`、展开的 `#kbChatPanel` 以及其上方显出的 `#backToTop` **四者同时可见可点、零重叠**。
 
 ### 3.2 中英双语与无依据/降级提示
 

@@ -87,7 +87,7 @@
     '赞助我': 'Support my work', '微信扫一扫，赞助支持作者 ☕': 'Scan with WeChat to support the author ☕',
     '微信收款码': 'WeChat payment QR code', '关闭': 'Close',
     '新增': 'Added', '维护': 'Updated', '回到顶部': 'Back to top',
-    'AI 知识库问答': 'Ask the Knowledge Base',
+    '知识问答': 'Knowledge Q&A',
     '章节导航': 'Section navigation', '打开或关闭章节导航': 'Toggle section navigation',
     '刘冲': 'Chong Liu', '2026 · 机器人技术栈地图': '2026 · Robotics Notebooks'
   };

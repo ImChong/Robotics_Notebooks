@@ -9287,9 +9287,6 @@
     slot.id = 'kbChatSlot';
     slot.className = 'kb-chat-slot';
 
-    var bar = document.createElement('div');
-    bar.className = 'fab-stack-right__bar';
-
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.id = 'backToTop';
@@ -9306,14 +9303,14 @@
     chatBtn.className = 'kb-chat-toggle';
     chatBtn.setAttribute('aria-expanded', 'false');
     chatBtn.setAttribute('aria-controls', 'kbChatPanel');
-    chatBtn.setAttribute('aria-label', 'AI 知识库问答');
-    chatBtn.setAttribute('title', 'AI 知识库问答');
+    chatBtn.setAttribute('aria-label', '知识问答');
+    chatBtn.setAttribute('title', '知识问答');
     chatBtn.appendChild(chatToggleIcon());
 
-    bar.appendChild(btn);
-    bar.appendChild(chatBtn);
+    // 纵向排布：置顶按钮显示时位于 AI 聊天入口及展开面板上方，聊天窗口/入口在其下方
+    stack.appendChild(btn);
     stack.appendChild(slot);
-    stack.appendChild(bar);
+    stack.appendChild(chatBtn);
     document.body.appendChild(stack);
 
     var chatScriptPromise = null;

@@ -116,10 +116,18 @@ test('Footer pages mount #fabStackRight with #backToTop and #kbChatToggle; graph
   homeDom.window.eval(fabBlock);
   const stack = homeDom.window.document.getElementById('fabStackRight');
   const btt = homeDom.window.document.getElementById('backToTop');
+  const slot = homeDom.window.document.getElementById('kbChatSlot');
   const chatBtn = homeDom.window.document.getElementById('kbChatToggle');
   assert.ok(stack, '#fabStackRight mounted');
   assert.ok(stack.contains(btt), '#backToTop inside #fabStackRight');
+  assert.ok(stack.contains(slot), '#kbChatSlot inside #fabStackRight');
   assert.ok(stack.contains(chatBtn), '#kbChatToggle inside #fabStackRight');
+  assert.equal(homeDom.window.document.querySelector('.fab-stack-right__bar'), null);
+  assert.deepEqual(
+    Array.from(stack.children).map((el) => el.id),
+    ['backToTop', 'kbChatSlot', 'kbChatToggle'],
+    'top-to-bottom stack order places #backToTop above #kbChatSlot and #kbChatToggle',
+  );
   assert.equal(homeDom.window.document.querySelectorAll('script[src="kb-chat.js"]').length, 0);
   assert.equal(homeDom.fetchCalls.length, 0);
 
@@ -139,6 +147,8 @@ test('Local read-only mode answers Chinese & English questions with clickable ci
   window.RNKbChat.open();
   assert.equal(window.RNKbChat.isOpen(), true);
   assert.equal(window.document.getElementById('kbChatPanel').hidden, false);
+  assert.equal(window.document.querySelector('.kb-chat-header__title').textContent, '知识问答');
+  assert.equal(window.document.getElementById('kbChatToggle').getAttribute('title'), '知识问答');
 
   // Chinese grounded query
   await window.RNKbChat.ask('什么是全身控制 WBC？');
@@ -151,16 +161,17 @@ test('Local read-only mode answers Chinese & English questions with clickable ci
 
   // Switch to English and ask English query
   window.RNKbChat.setLanguage('en');
+  assert.equal(window.document.querySelector('.kb-chat-header__title').textContent, 'Knowledge Q&A');
   await window.RNKbChat.ask('How does Whole-Body Control work?');
   const messagesAfterEn = window.document.querySelectorAll('.kb-chat-msg--assistant');
   assert.equal(messagesAfterEn.length, 2);
-  assert.match(messagesAfterEn[1].textContent, /Grounded excerpts/);
+  assert.match(messagesAfterEn[1].textContent, /Relevant sections from the wiki/);
 
   // Unmatched query reports not-found cleanly
   await window.RNKbChat.ask('completelyunrelatedtopicxyz');
   const messagesUnmatched = window.document.querySelectorAll('.kb-chat-msg--assistant');
   assert.equal(messagesUnmatched.length, 3);
-  assert.match(messagesUnmatched[2].textContent, /No direct supporting evidence/);
+  assert.match(messagesUnmatched[2].textContent, /No direct match found in the wiki/);
   assert.ok(messagesUnmatched[2].querySelector('a[href="graph.html"]'));
   assert.ok(fetchCalls.some((c) => c.url === 'search-index-lite.json'));
 
@@ -210,7 +221,7 @@ test('Cloud quota exhaustion (503) and rate limit (429) automatically fall back 
     assert.ok(msg);
     const note = msg.querySelector('.kb-chat-status-note');
     assert.ok(note);
-    assert.match(note.textContent, statusCode === 503 ? /免费额度/ : /过于频繁/);
+    assert.match(note.textContent, statusCode === 503 ? /繁忙/ : /频繁/);
     assert.ok(msg.querySelector('a[href="detail.html?id=wiki-concepts-wbc"]'));
     assert.equal(window.document.querySelector('.kb-chat-mode-badge').getAttribute('data-mode'), 'fallback');
     dom.window.close();
