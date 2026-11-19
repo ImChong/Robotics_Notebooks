@@ -491,3 +491,81 @@ test('LaTeX math delimiters normalize safely and invoke KaTeX rendering without 
   assert.equal(window.document.querySelectorAll('.kb-chat-msg script').length, 0);
   dom.window.close();
 });
+
+test('Markdown headings, lists, code blocks, tables, bold/italic and safe internal links render cleanly without XSS', async () => {
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer: [
+              '## 核心原理',
+              '- **优势**：使用 `QP` 求解动力学 $\\tau = J^T F$ [1]',
+              '- *注意*：查看 [站内节点](detail.html?id=wiki-concepts-wbc) 与 [外链](https://evil.example) 和 [危险](javascript:alert(1))',
+              '',
+              '| 模块 | 作用 |',
+              '| --- | --- |',
+              '| WBC | 全身力矩分配 |',
+              '',
+              '```python',
+              'solve_qp(A, b)',
+              '```',
+            ].join('\n'),
+            citations: [
+              {
+                index: 1,
+                id: 'wiki-concepts-wbc',
+                title: 'Whole-Body Control',
+                heading: 'QP',
+                snippet: '满足 QP 约束',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+            ],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-md'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  const msg = window.document.querySelector('.kb-chat-msg--assistant');
+  assert.ok(msg);
+  assert.equal(msg.querySelector('.kb-chat-md-h2').textContent, '核心原理');
+  assert.equal(msg.querySelectorAll('.kb-chat-md-list li').length, 2);
+  assert.equal(msg.querySelector('strong').textContent, '优势');
+  assert.equal(msg.querySelector('em').textContent, '注意');
+  assert.equal(msg.querySelector('.kb-chat-md-code').textContent, 'QP');
+  assert.equal(msg.querySelector('.kb-chat-md-pre code').textContent, 'solve_qp(A, b)');
+  assert.equal(msg.querySelectorAll('.kb-chat-md-table tbody tr').length, 1);
+  const mdLinks = [...msg.querySelectorAll('a.kb-chat-md-link')];
+  assert.equal(mdLinks.length, 1);
+  assert.equal(mdLinks[0].getAttribute('href'), 'detail.html?id=wiki-concepts-wbc');
+  assert.match(msg.textContent, /外链/);
+  assert.match(msg.textContent, /危险/);
+  dom.window.close();
+});

@@ -738,9 +738,7 @@
     state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
   }
 
-  function appendCitedText(container, text, citationsByIndex) {
-    var p = document.createElement('p');
-    p.className = 'kb-chat-msg-text';
+  function appendPlainWithCitations(parent, text, citationsByIndex) {
     var parts = String(text || '').split(/(\[\d+\])/g);
     for (var i = 0; i < parts.length; i += 1) {
       var part = parts[i];
@@ -756,13 +754,294 @@
           pill.href = href;
           pill.textContent = part;
           pill.title = citation.title || citation.id;
-          p.appendChild(pill);
+          parent.appendChild(pill);
           continue;
         }
       }
-      p.appendChild(document.createTextNode(normalizeMathText(part)));
+      parent.appendChild(document.createTextNode(part));
     }
-    container.appendChild(p);
+  }
+
+  function appendInlineMarkdown(parent, rawText, citationsByIndex) {
+    var tokens = [];
+    var prefix = '@@KBCHATTOK_';
+    function stash(nodeFactory) {
+      var key = prefix + tokens.length + '@@';
+      tokens.push({ key: key, build: nodeFactory });
+      return key;
+    }
+
+    var text = String(rawText || '');
+    // 1. Protect math formulas ($$...$$, \[...\], \(...\), and non-currency $...$)
+    text = text
+      .replace(/\$\$[\s\S]+?\$\$/g, function (match) {
+        return stash(function () {
+          return document.createTextNode(match);
+        });
+      })
+      .replace(/\\\[[\s\S]+?\\\]/g, function (match) {
+        return stash(function () {
+          return document.createTextNode(match);
+        });
+      })
+      .replace(/\\\([\s\S]+?\\\)/g, function (match) {
+        return stash(function () {
+          return document.createTextNode(match);
+        });
+      })
+      .replace(/\$\s*([^$\n]+?)\s*\$/g, function (match, expr) {
+        var trimmed = String(expr || '').trim();
+        if (!trimmed || isCurrencyDollarExpr(trimmed)) return match;
+        var normalized = '\\(' + trimmed.replace(/\\\*/g, '*') + '\\)';
+        return stash(function () {
+          return document.createTextNode(normalized);
+        });
+      });
+
+    // 2. Protect inline code
+    text = text.replace(/`([^`\n]+)`/g, function (_m, code) {
+      return stash(function () {
+        var el = document.createElement('code');
+        el.className = 'kb-chat-md-code';
+        el.textContent = code;
+        return el;
+      });
+    });
+
+    // 3. Protect Markdown links [label](url): allow internal detail/roadmap links only
+    text = text.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (_m, label, url) {
+      var safeHref = safeInternalNodeUrl(url, '');
+      return stash(function () {
+        if (safeHref) {
+          var a = document.createElement('a');
+          a.className = 'kb-chat-md-link';
+          a.href = safeHref;
+          a.textContent = label;
+          return a;
+        }
+        return document.createTextNode(label);
+      });
+    });
+
+    // 4. Parse bold (**...** / __...__) and italic (*...*)
+    text = text
+      .replace(/\*\*([^*\n]+)\*\*/g, function (_m, inner) {
+        return stash(function () {
+          var strong = document.createElement('strong');
+          appendInlineMarkdown(strong, inner, citationsByIndex);
+          return strong;
+        });
+      })
+      .replace(/__([^_\n]+)__/g, function (_m, inner) {
+        return stash(function () {
+          var strong = document.createElement('strong');
+          appendInlineMarkdown(strong, inner, citationsByIndex);
+          return strong;
+        });
+      })
+      .replace(/(^|[\s(（【「])\*([^*\n]+)\*(?=[\s.,!?;:，。！？；：)）】」]|$)/g, function (_m, lead, inner) {
+        return (
+          lead +
+          stash(function () {
+            var em = document.createElement('em');
+            appendInlineMarkdown(em, inner, citationsByIndex);
+            return em;
+          })
+        );
+      });
+
+    var tokenRe = /(@@KBCHATTOK_\d+@@)/g;
+    var segments = text.split(tokenRe);
+    for (var i = 0; i < segments.length; i += 1) {
+      var seg = segments[i];
+      if (!seg) continue;
+      var tokMatch = seg.match(/^@@KBCHATTOK_(\d+)@@$/);
+      if (tokMatch) {
+        var tok = tokens[Number.parseInt(tokMatch[1], 10)];
+        if (tok) parent.appendChild(tok.build());
+      } else {
+        appendPlainWithCitations(parent, seg, citationsByIndex);
+      }
+    }
+  }
+
+  function isTableDividerLine(line) {
+    return /^\|?(?:\s*:?-{3,}:?\s*\|)+(?:\s*:?-{3,}:?\s*)?\|?$/.test(line.trim());
+  }
+
+  function splitTableCells(line) {
+    var trimmed = line.trim().replace(/^\|/, '').replace(/\|$/, '');
+    return trimmed.split('|').map(function (c) {
+      return c.trim();
+    });
+  }
+
+  function appendCitedText(container, text, citationsByIndex) {
+    var body = document.createElement('div');
+    body.className = 'kb-chat-md-body';
+    var lines = String(text || '').replace(/\r\n?/g, '\n').split('\n');
+    var i = 0;
+
+    while (i < lines.length) {
+      var line = lines[i];
+      var trimmed = line.trim();
+
+      if (!trimmed) {
+        i += 1;
+        continue;
+      }
+
+      // Fenced code block
+      if (/^```/.test(trimmed)) {
+        var codeLines = [];
+        i += 1;
+        while (i < lines.length && !/^```/.test(lines[i].trim())) {
+          codeLines.push(lines[i]);
+          i += 1;
+        }
+        if (i < lines.length && /^```/.test(lines[i].trim())) i += 1;
+        var pre = document.createElement('pre');
+        pre.className = 'kb-chat-md-pre';
+        var codeEl = document.createElement('code');
+        codeEl.textContent = codeLines.join('\n');
+        pre.appendChild(codeEl);
+        body.appendChild(pre);
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^(?:---|\*\*\*|___)\s*$/.test(trimmed)) {
+        var hr = document.createElement('hr');
+        hr.className = 'kb-chat-md-hr';
+        body.appendChild(hr);
+        i += 1;
+        continue;
+      }
+
+      // Heading (# .. ####)
+      var hMatch = trimmed.match(/^(#{1,4})\s+(.+)$/);
+      if (hMatch) {
+        var level = hMatch[1].length;
+        var hEl = document.createElement('div');
+        hEl.className = 'kb-chat-md-h kb-chat-md-h' + level;
+        appendInlineMarkdown(hEl, hMatch[2], citationsByIndex);
+        body.appendChild(hEl);
+        i += 1;
+        continue;
+      }
+
+      // Blockquote (> ...)
+      if (/^>\s?/.test(trimmed)) {
+        var quoteLines = [];
+        while (i < lines.length && /^>\s?/.test(lines[i].trim())) {
+          quoteLines.push(lines[i].trim().replace(/^>\s?/, ''));
+          i += 1;
+        }
+        var bq = document.createElement('blockquote');
+        bq.className = 'kb-chat-md-quote';
+        appendInlineMarkdown(bq, quoteLines.join('\n'), citationsByIndex);
+        body.appendChild(bq);
+        continue;
+      }
+
+      // Markdown table
+      if (
+        trimmed.indexOf('|') >= 0 &&
+        i + 1 < lines.length &&
+        isTableDividerLine(lines[i + 1])
+      ) {
+        var headers = splitTableCells(trimmed);
+        i += 2;
+        var rows = [];
+        while (i < lines.length && lines[i].trim().indexOf('|') >= 0 && lines[i].trim() !== '') {
+          rows.push(splitTableCells(lines[i]));
+          i += 1;
+        }
+        var tableWrap = document.createElement('div');
+        tableWrap.className = 'kb-chat-md-table-wrap';
+        var table = document.createElement('table');
+        table.className = 'kb-chat-md-table';
+        var thead = document.createElement('thead');
+        var headTr = document.createElement('tr');
+        for (var h = 0; h < headers.length; h += 1) {
+          var th = document.createElement('th');
+          appendInlineMarkdown(th, headers[h], citationsByIndex);
+          headTr.appendChild(th);
+        }
+        thead.appendChild(headTr);
+        table.appendChild(thead);
+
+        var tbody = document.createElement('tbody');
+        for (var r = 0; r < rows.length; r += 1) {
+          var tr = document.createElement('tr');
+          for (var c = 0; c < headers.length; c += 1) {
+            var td = document.createElement('td');
+            appendInlineMarkdown(td, rows[r][c] || '', citationsByIndex);
+            tr.appendChild(td);
+          }
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        tableWrap.appendChild(table);
+        body.appendChild(tableWrap);
+        continue;
+      }
+
+      // Unordered list (- / * / +)
+      if (/^[-*+]\s+/.test(trimmed)) {
+        var ul = document.createElement('ul');
+        ul.className = 'kb-chat-md-list';
+        while (i < lines.length && /^[-*+]\s+/.test(lines[i].trim())) {
+          var li = document.createElement('li');
+          appendInlineMarkdown(li, lines[i].trim().replace(/^[-*+]\s+/, ''), citationsByIndex);
+          ul.appendChild(li);
+          i += 1;
+        }
+        body.appendChild(ul);
+        continue;
+      }
+
+      // Ordered list (1. )
+      if (/^\d+\.\s+/.test(trimmed)) {
+        var ol = document.createElement('ol');
+        ol.className = 'kb-chat-md-list';
+        while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
+          var oli = document.createElement('li');
+          appendInlineMarkdown(oli, lines[i].trim().replace(/^\d+\.\s+/, ''), citationsByIndex);
+          ol.appendChild(oli);
+          i += 1;
+        }
+        body.appendChild(ol);
+        continue;
+      }
+
+      // Normal paragraph (consume consecutive plain lines)
+      var paraLines = [];
+      while (i < lines.length) {
+        var cur = lines[i];
+        var curTrim = cur.trim();
+        if (
+          !curTrim ||
+          /^```/.test(curTrim) ||
+          /^(?:---|\*\*\*|___)\s*$/.test(curTrim) ||
+          /^(#{1,4})\s+/.test(curTrim) ||
+          /^>\s?/.test(curTrim) ||
+          /^[-*+]\s+/.test(curTrim) ||
+          /^\d+\.\s+/.test(curTrim) ||
+          (curTrim.indexOf('|') >= 0 && i + 1 < lines.length && isTableDividerLine(lines[i + 1]))
+        ) {
+          break;
+        }
+        paraLines.push(cur);
+        i += 1;
+      }
+      var p = document.createElement('p');
+      p.className = 'kb-chat-msg-text';
+      appendInlineMarkdown(p, paraLines.join('\n'), citationsByIndex);
+      body.appendChild(p);
+    }
+
+    container.appendChild(body);
   }
 
   function appendAssistantMessage(options) {
