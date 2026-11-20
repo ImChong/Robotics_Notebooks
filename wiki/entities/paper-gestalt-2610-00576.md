@@ -15,6 +15,7 @@ sources:
   - ../../sources/repos/gestalt-gewu-lab.md
 related:
   - ../methods/unified-multimodal-tokens.md
+  - ../methods/vla.md
   - ../concepts/vision-language-feature-fusion.md
   - ./gestalt-stealth-design-model.md
 summary: "GeWu-Lab Gestalt（arXiv:2610.00576v2）：两段视觉语言离散扩散，用 interplay tokens 控制模态信息交换；公开模型权重与 Stage-III SFT/MMU/T2I 代码，未报告机器人动作控制。"
@@ -138,6 +139,7 @@ sequenceDiagram
 ## 关联页面
 
 - [统一多模态 Token](../methods/unified-multimodal-tokens.md)
+- [VLA 方法](../methods/vla.md) — 对照真正的视觉–语言–动作策略输出，本论文尚无动作头
 - [视觉语言特征融合](../concepts/vision-language-feature-fusion.md)
 - [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
 - [同名设计榜匿名 Gestalt](gestalt-stealth-design-model.md)
