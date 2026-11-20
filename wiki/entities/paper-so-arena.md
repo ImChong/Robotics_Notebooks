@@ -232,6 +232,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — SO-Arena 的结构化决策稳定性与缺失答案识别可作为评测维度的对照，但不覆盖具身策略的真机成功率、接触安全或 sim-to-real gap
+
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 通用 agent harness、能力测评、终态与回归
 - [RoboArena 真机策略评测](../methods/roboarena.md) — 面向真实机器人策略的双盲配对评价，不与通用结构化决策得分混用
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 真实软件交付的 E2E、属性与差分测试，为结构化决策能力评测提供外部验收参照

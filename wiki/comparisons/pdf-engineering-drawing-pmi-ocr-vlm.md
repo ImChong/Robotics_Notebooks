@@ -124,6 +124,8 @@ flowchart TD
 
 ## 关联页面
 
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md)：区分本文用于静态工程图纸字段提取的 VLM 与机器人 VLA/VLN/世界模型；文档识别指标不能替代具身动作闭环的评测。
+
 - [三阶段工程图纸 PMI 解析论文（全文核读）](../entities/paper-multistage-engineering-drawing-vlm-pmi.md)：核对视图布局、旋转框、双 Donut 训练差异及全指标。
 - [结构公差仿真工具链](../concepts/structure-tolerance-simulation-toolchain.md)：提取后如何进入尺寸链与公差预算。
 - [YOLO26 + PP-OCRv6 文档 OCR](../methods/yolo26-ocr-document-parsing.md)：检测 + 识别的另一条工程路线（非 PMI 对照试验）。
