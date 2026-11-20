@@ -3,6 +3,7 @@ type: entity
 project_id: agnes-harness-rsi-technical-report-2026
 project: https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026
 code: https://github.com/AgnesAI-Labs/agnes-harness
+code_scope: packages/core-ledger
 project_distinction: "独立系统技术报告；非 agnes-harness 软件项目的重复实体"
 tags: [paper, agent-harness, recursive-self-improvement, safety, llm-agents, decision-model]
 status: draft
