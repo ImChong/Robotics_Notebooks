@@ -3341,7 +3341,7 @@
         },
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
-          if (isMobile) {
+          if (isTouchInteraction(ev)) {
             if (pinnedNode === d) {
               dismissMobilePinnedTooltip();
             } else {
@@ -3353,7 +3353,7 @@
         },
         onNodeHover: (d, pointer) => {
           graph3dHoverNode = d || null;
-          if (timelineAnimating || isMobile) return;
+          if (timelineAnimating || isTouchInteraction(pointer) || pinnedNode) return;
         if (sidebarFocusIds) {
           if (d && sidebarFocusIds.has(d.id)) showTooltip(pointer, d);
             else hideTooltip();
@@ -3378,7 +3378,7 @@
         },
         onBackgroundClick: () => {
           graph3dHoverNode = null;
-          if (isMobile) {
+          if (pinnedNode) {
             dismissMobilePinnedTooltip();
             return;
           }
@@ -3492,7 +3492,7 @@
           graph3dView.syncRouteBadges();
           // 3D 侧自持 sidebarNodeId：进入时按当前侧栏 / 固定卡片状态重放或清除，
           // 否则「3D 选中 → 2D 关侧栏 → 回 3D」会停在全图淡化且 hover 失效的陈旧高亮
-          const focusNodeForView = sidebarNode || (isMobile ? pinnedNode : null);
+          const focusNodeForView = sidebarNode || pinnedNode;
           if (focusNodeForView) applyNodeNeighborHighlight(focusNodeForView);
           else graph3dView.clearSidebarHighlight();
         } catch (err) {
@@ -3514,7 +3514,7 @@
           graph3dHoverNode = null;
           // 触屏：回 2D 时连固定卡片与邻居高亮一起撤掉；此前只 hideTooltip，pinnedNode 残留，
           // 下一次点同一节点会被当成「再次点击 → 关闭」
-          if (isMobile && pinnedNode) dismissMobilePinnedTooltip();
+          if (pinnedNode) dismissMobilePinnedTooltip();
           else hideTooltip();
           svg.style('display', 'block');
           if (edgeCanvas) edgeCanvas.style.display = 'block';
@@ -5002,11 +5002,13 @@
       .attr('class', 'node-g')
       .style('cursor', 'pointer')
       .call(d3.drag()
+        // 双指触控交给 d3.zoom 做捏合缩放，单指触控与鼠标左键可拖拽节点
+        .filter(ev => !(ev.touches && ev.touches.length > 1) && !ev.button)
         // 点击 / 轻触也会先触发 'start'：此前在 start 就 alphaTarget(0.2).restart()，
         // 一次点击 = 约 55 个全图 tick（手机上 20 s 以上的卡顿）且什么都没拖。
         // 改为首次真正移动时才加热（与 graph-3d.js 的 nodeDragReheated 同法），
         // clickDistance 让轻微抖动仍算点击。
-        .clickDistance(4)
+        .clickDistance(6)
         .on('start', (ev, d) => {
           if (is3DView()) return;
           d.__dragReheated = false;
@@ -5561,10 +5563,20 @@
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
 
-    /* ── 移动端检测 ── */
+    /* ── 移动端与混合触屏检测 ── */
     const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    let lastPointerWasTouch = false;
+    document.addEventListener('pointerdown', (ev) => {
+      lastPointerWasTouch = ev.pointerType === 'touch';
+    }, true);
+    document.addEventListener('touchstart', () => {
+      lastPointerWasTouch = true;
+    }, { capture: true, passive: true });
+    function isTouchInteraction(ev) {
+      return isMobile || lastPointerWasTouch || Boolean(ev && (ev.pointerType === 'touch' || (ev.type && ev.type.indexOf('touch') === 0)));
+    }
 
-    /* ── 固定卡片状态（仅移动端使用）── */
+    /* ── 固定卡片状态（触屏点击节点后先展示漂浮卡片，点链接再跳详情）── */
     let pinnedNode = null;
     let sidebarNode = null;
 
@@ -5600,7 +5612,7 @@
       tooltip.innerHTML = tooltipHtml(tooltipNode);
       window.RNGraphTooltip?.renderMath?.(tooltip);
     }
-    function showTooltip(ev, d) {
+    function showTooltip(ev, d, pinned) {
       if (!d) return;
       tooltipNode = d;
       ensureSummaries();
@@ -5611,10 +5623,10 @@
       tooltip.style.top = '';
       tooltip.style.width = '';
       tooltip.style.transform = '';
-      if (isMobile) {
+      if (pinned || isTouchInteraction(ev)) {
         tooltip.classList.add('tt-pinned');
         tooltip.style.right = '20px';
-        tooltip.style.bottom = '20px';
+        tooltip.style.bottom = 'calc(84px + env(safe-area-inset-bottom, 0px))';
         pinnedNode = d;
       } else {
         tooltip.classList.remove('tt-pinned');
@@ -5791,8 +5803,8 @@
     node
       .on('mouseenter', (ev, d) => {
         // 触屏轻触会先派发兼容鼠标事件：mouseenter 在此把浮窗钉住，随后的 click 看到
-        // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏只走 click → presentNodeDetail。
-        if (isMobile) return;
+        // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏与已固定卡片均跳过 hover。
+        if (isTouchInteraction(ev) || pinnedNode) return;
         if (timelineAnimating) {
           if (!timelineRevealedIds.has(d.id)) return;
           if (sidebarFocusIds) {
@@ -5828,14 +5840,11 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
-        if (isMobile) return;
-        // 移动端固定卡片后，mousemove 不移动 tooltip
-        if (!isMobile || !pinnedNode) {
-          moveTooltip(ev);
-        }
+        if (isTouchInteraction(ev) || pinnedNode) return;
+        moveTooltip(ev);
       })
       .on('mouseleave', () => {
-        if (isMobile) return;
+        if (isTouchInteraction() || pinnedNode) return;
         if (timelineAnimating) {
           if (sidebarFocusIds) {
             if (!isMobile || !pinnedNode) hideTooltip();
@@ -5895,7 +5904,7 @@
         document.getElementById('physics-panel').hidden = true;
         setFilterPanelOpen(false);
         closeLegendDrawer();
-        if (isMobile && pinnedNode) {
+        if (pinnedNode) {
           dismissMobilePinnedTooltip();
         }
       }
@@ -7202,7 +7211,7 @@
         isLabelsVisible: () => !timelineAnimating,
         isEdgesVisible: () => showEdges,
         onNodeHover: (d, pointerEv) => {
-          if (timelineAnimating || isMobile) return;
+          if (timelineAnimating || isTouchInteraction(pointerEv) || pinnedNode) return;
           if (sidebarFocusIds) {
             if (d && sidebarFocusIds.has(d.id)) showTooltip(pointerEv, d);
             else hideTooltip();
@@ -7217,7 +7226,7 @@
         },
         onNodeClick: (d, pointerEv) => {
           if (timelinePlaying) return;
-          if (isMobile) {
+          if (isTouchInteraction(pointerEv)) {
             if (pinnedNode === d) dismissMobilePinnedTooltip();
             else presentNodeDetail(d, pointerEv);
           } else {
@@ -7225,7 +7234,7 @@
           }
         },
         onBackgroundClick: () => {
-          if (isMobile) {
+          if (pinnedNode) {
             dismissMobilePinnedTooltip();
             return;
           }
@@ -7599,30 +7608,39 @@
 
     sbClose.addEventListener('click', closeSidebar);
 
-    /** 展示节点详情：PC 用右侧侧栏，触屏用底部固定浮窗 */
+    /** 展示节点详情：PC 用右侧侧栏，触屏用底部固定漂浮卡片（点卡片内链接跳转详情页） */
     function presentNodeDetail(d, ev) {
       if (!d) return;
-      if (isMobile) {
+      if (isTouchInteraction(ev)) {
+        if (sidebar.classList.contains('open')) {
+          sidebarNodeId = null;
+          sidebar.classList.remove('open');
+          wrap.classList.remove('sidebar-open');
+          scheduleSidebarViewportSync({ refit: false });
+        }
         applyNodeNeighborHighlight(d);
         pinnedNode = d;
-        showTooltip(ev || null, d);
+        showTooltip(ev || null, d, true);
+        if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(false);
         return;
       }
       openSidebar(d);
     }
 
     function dismissMobilePinnedTooltip() {
-      if (!isMobile || !pinnedNode) return false;
+      if (!pinnedNode) return false;
+      pinnedNode = null;
       hideTooltip();
       clearNodeNeighborHighlight();
+      if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(false);
       return true;
     }
 
-    // V21: 点击背景退出高亮聚焦模式；移动端空白处关闭浮窗
+    // V21: 点击背景退出高亮聚焦模式；触屏空白处关闭固定漂浮卡片
     svg.on('click', (ev) => {
       if (ev.defaultPrevented) return;
       if (ev.target.closest('.node-g')) return;
-      if (isMobile) {
+      if (pinnedNode) {
         dismissMobilePinnedTooltip();
         return;
       }
@@ -7633,22 +7651,22 @@
       window.RNGraphTooltip.bindBlankDismiss(
         document.getElementById('graph-canvas'),
         {
-          isMobile,
+          isMobile: true,
           getPinned: () => pinnedNode,
-          clearPin: () => { clearNodeNeighborHighlight(); },
+          clearPin: () => { pinnedNode = null; clearNodeNeighborHighlight(); },
           hide: hideTooltip
         },
         { nodeSelector: '.node-g', tooltipEl: tooltip }
       );
     }
 
-    // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
+    // 覆盖节点 click：触屏先显示漂浮卡片，PC 打开侧边栏，均不直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
-      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击打开详情侧栏
+      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击查看详情
       // （openSidebar 已做时序感知，仅在「已显现子集」内高亮，不会显示背景全局图）
       if (timelinePlaying) return;
-      if (isMobile) {
+      if (isTouchInteraction(ev)) {
         if (pinnedNode === d) {
           dismissMobilePinnedTooltip();
         } else {

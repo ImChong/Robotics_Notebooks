@@ -592,7 +592,7 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
     getCommunityColors: () => ['#5b9cf6', '#34d399'],
     buildCommunityColorMap: () => ({ 'c-rl': '#5b9cf6', 'c-ctrl': '#34d399' }),
     formatTooltipSummary: s => s || '',
-    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>',
+    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>' + (o.linkHtml || ''),
     bindBlankDismiss() {},
     bindOutsideDismiss() {},
   };
@@ -701,6 +701,39 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const afterOrbit = w.RNMiniGraph.getPerspectiveState();
   assert.notEqual(afterOrbit.params.yaw, yawBefore, 'dragging blank space still orbits camera yaw');
 
+  // Two-finger touch pinch zooms camera distance and pans target cleanly without firing node click
+  const makeTouchPointer = (type, id, x, y) => {
+    const ev = new w.MouseEvent(type, { bubbles: true, clientX: x, clientY: y });
+    Object.defineProperty(ev, 'pointerId', { value: id });
+    Object.defineProperty(ev, 'pointerType', { value: 'touch' });
+    return ev;
+  };
+  const distBeforePinch = afterOrbit.camera.distance;
+  const targetXBeforePinch = afterOrbit.camera.targetX;
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 11, 200, 220));
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 12, 320, 220));
+  stage.dispatchEvent(makeTouchPointer('pointermove', 11, 130, 250));
+  stage.dispatchEvent(makeTouchPointer('pointermove', 12, 430, 250));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 11, 130, 250));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 12, 430, 250));
+  const afterPinch = w.RNMiniGraph.getPerspectiveState();
+  assert.ok(afterPinch.camera.distance < distBeforePinch * 0.7, 'two-finger pinch spread zooms 3D terrain camera in');
+  assert.notEqual(afterPinch.camera.targetX, targetXBeforePinch, 'two-finger pinch midpoint shift pans 3D terrain camera');
+
+  // Tapping a 3D node shows pinned floating card with detail link instead of immediate navigation
+  const tooltipEl = w.document.getElementById('mini-graph-tooltip');
+  const tapTargets = w.RNMiniGraph.getPerspectiveTargets(5);
+  const tapNode = tapTargets[0];
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 21, tapNode.x, tapNode.y));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 21, tapNode.x, tapNode.y));
+  assert.equal(tooltipEl.classList.contains('hidden'), false, 'tapping 3D preview node opens floating card');
+  assert.equal(tooltipEl.classList.contains('tt-pinned'), true, 'floating card is pinned for link click');
+  const ttLink3d = tooltipEl.querySelector('.tt-link');
+  assert.ok(ttLink3d && ttLink3d.getAttribute('href').includes('detail.html?id='), 'floating card contains clickable detail link');
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 22, 12, 12));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 22, 12, 12));
+  assert.equal(tooltipEl.classList.contains('hidden'), true, 'tapping blank 3D space dismisses floating card');
+
   const drawsBeforeHighlight = mock.stats.drawCalls;
   w.RNMiniGraph.highlight(['n1'], 'PPO');
   await new Promise((r) => setTimeout(r, 40));
@@ -708,7 +741,7 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(hitCount, 1);
   assert.ok(mock.stats.drawCalls > drawsBeforeHighlight, 'highlight re-renders 3D terrain peak emphasis');
 
-  // Switch back to 2D -> hides 3D terrain stage and restores 2D SVG
+  // Switch back to 2D -> hides 3D terrain stage and restores 2D SVG; clicking a 2D node opens pinned floating card
   btn2d.click();
   assert.equal(w.RNMiniGraph.getMode(), '2d');
   assert.equal(wrap.classList.contains('is-perspective-mode'), false);
@@ -716,4 +749,12 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(btn2d.getAttribute('aria-pressed'), 'true');
   assert.equal(btn3d.getAttribute('aria-pressed'), 'false');
   assert.equal(expand.getAttribute('href'), 'graph.html');
+  mpcNodeG.dispatchEvent(new w.MouseEvent('click', { bubbles: true, clientX: 210, clientY: 210 }));
+  assert.equal(tooltipEl.classList.contains('hidden'), false, 'clicking 2D preview node shows floating card first');
+  assert.equal(tooltipEl.classList.contains('tt-pinned'), true, '2D preview node floating card is pinned');
+  const ttLink2d = tooltipEl.querySelector('.tt-link');
+  assert.ok(ttLink2d && ttLink2d.getAttribute('href').includes('detail.html?id='), '2D floating card contains clickable detail link');
+  assert.ok(miniGraphJs.includes('allowTouchOrbit: true'), 'homepage 3D preview enables touch orbit/drag/pinch');
+  assert.ok(styleCss.includes('#mini-graph-svg { position: relative; display: block; touch-action: none; }'), 'homepage 2D SVG sets touch-action: none');
+  assert.ok(graphHtml.includes('function isTouchInteraction('), 'graph.html supports hybrid touch floating-card detection');
 });

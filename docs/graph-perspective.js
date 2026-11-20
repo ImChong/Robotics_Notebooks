@@ -1982,8 +1982,9 @@
       });
     }
 
-    function pickNodeAtScreen(localX, localY) {
+    function pickNodeAtScreen(localX, localY, extraSlop) {
       if (!lastViewProj || !cachedNodes3d.length) return null;
+      var slop = extraSlop > 0 ? extraSlop : 0;
       var best = null;
       var bestScore = Infinity;
       for (var i = 0; i < cachedNodes3d.length; i++) {
@@ -1993,7 +1994,7 @@
         var pt = projectWorldToScreen(mXZ[0], n3.wy * lastHeightScale, mXZ[1], lastViewProj, width, height);
         if (!pt || pt[2] < -1 || pt[2] > 1) continue;
         var projR = n3.baseRadius ? (n3.baseRadius * height * 0.75) : (n3.degNorm > 0.35 ? 16 : 11);
-        var hitRadius = Math.max(9, Math.min(28, projR + 5)) + (n3.focused ? 3 : 0);
+        var hitRadius = Math.max(9, Math.min(28, projR + 5)) + (n3.focused ? 3 : 0) + slop;
         var distPx = Math.hypot(pt[0] - localX, pt[1] - localY);
         if (distPx <= hitRadius) {
           var score = distPx + pt[2] * 2;
@@ -2504,8 +2505,11 @@
       if (stageEl) stageEl.hidden = !enabled;
     }
 
-    /* ── 鼠标 / 触控交互（轨道旋转、平移、滚轮缩放、节点拾取）── */
+    /* ── 鼠标 / 触控交互（轨道旋转、平移、双指捏合缩放/平移、节点拖拽与点按）── */
     var dragState = null;
+    var activePointers = new Map();
+    var pinchState = null;
+    var gestureSuppressedTap = false;
 
     function getStageLocalPoint(ev) {
       if (!stageEl) return [0, 0];
@@ -2517,10 +2521,40 @@
       return typeof allowNodeDrag === 'function' ? !!allowNodeDrag() : !!allowNodeDrag;
     }
 
+    function getFirstTwoPointers() {
+      var list = [];
+      activePointers.forEach(function (v) {
+        if (list.length < 2) list.push(v);
+      });
+      return list;
+    }
+
+    function panCameraByDelta(dx, dy) {
+      var yawRad = (params.yaw * Math.PI) / 180;
+      var speed = camState.distance * 0.0022;
+      var rx = Math.cos(yawRad);
+      var rz = -Math.sin(yawRad);
+      var fx = Math.sin(yawRad);
+      var fz = Math.cos(yawRad);
+      var panMax = Math.max(1.8, (terrainField ? terrainField.extent : 1.45) * 1.25);
+      camState.targetX = Math.max(-panMax, Math.min(panMax, camState.targetX - dx * rx * speed + dy * fx * speed));
+      camState.targetZ = Math.max(-panMax, Math.min(panMax, camState.targetZ - dx * rz * speed + dy * fz * speed));
+    }
+
     function onPointerDown(ev) {
       if (!enabled || !stageEl) return;
       if (entryAnim) cancelEntryAnim();
-      if (ev.pointerType === 'touch' && !allowTouchOrbit) {
+      var isTouch = ev.pointerType === 'touch';
+      // W3C Pointer Events: isPrimary 标志新一轮手势的首指，清理可能残留的旧指针避免误入双指捏合
+      if (ev.isPrimary) {
+        activePointers.clear();
+        pinchState = null;
+        gestureSuppressedTap = false;
+      }
+      if (ev.pointerId != null) {
+        activePointers.set(ev.pointerId, { x: ev.clientX, y: ev.clientY, isTouch: isTouch });
+      }
+      if (isTouch && !allowTouchOrbit) {
         dragState = {
           id: ev.pointerId,
           startX: ev.clientX,
@@ -2528,14 +2562,37 @@
           lastX: ev.clientX,
           lastY: ev.clientY,
           moved: false,
+          isTouch: true,
           mode: 'tap-only',
         };
         return;
       }
+      // 双指触控：立即切入捏合缩放 + 双指平移，取消单指拖拽，抬指不触发误点
+      if (activePointers.size >= 2) {
+        if (dragState && dragState.mode === 'node' && dragState.dragStarted) {
+          onNodeDragEnd(dragState.node, ev);
+          activeDragBounds = null;
+          terrainDirty = true;
+          batchesDirty = true;
+        }
+        dragState = null;
+        gestureSuppressedTap = true;
+        var pair = getFirstTwoPointers();
+        pinchState = {
+          dist: Math.max(12, Math.hypot(pair[1].x - pair[0].x, pair[1].y - pair[0].y)),
+          midX: (pair[0].x + pair[1].x) * 0.5,
+          midY: (pair[0].y + pair[1].y) * 0.5,
+        };
+        if (glCanvas && typeof glCanvas.setPointerCapture === 'function' && ev.pointerId != null) {
+          try { glCanvas.setPointerCapture(ev.pointerId); } catch (_e) { /* ignore */ }
+        }
+        return;
+      }
+      gestureSuppressedTap = false;
       var isPan = ev.button === 2 || ev.button === 1 || ev.shiftKey;
-      if (!isPan && (ev.button === 0 || ev.pointerType === 'touch') && canDragNodesNow() && renderer && terrainField) {
+      if (!isPan && (ev.button === 0 || isTouch) && canDragNodesNow() && renderer && terrainField) {
         var pt = getStageLocalPoint(ev);
-        var hit = renderer.pickNodeAtScreen(pt[0], pt[1]);
+        var hit = renderer.pickNodeAtScreen(pt[0], pt[1], isTouch ? 14 : 0);
         if (hit) {
           var nPos = renderer.getNodeWorldPos(hit.id);
           if (nPos) {
@@ -2547,6 +2604,7 @@
               lastX: ev.clientX,
               lastY: ev.clientY,
               moved: false,
+              isTouch: isTouch,
               mode: 'node',
               node: hit,
               planeY: nPos.wy,
@@ -2556,7 +2614,7 @@
               offsetWz: grabPt ? (nPos.wz - grabPt[2]) : 0,
               dragStarted: false,
             };
-            if (glCanvas && typeof glCanvas.setPointerCapture === 'function') {
+            if (glCanvas && typeof glCanvas.setPointerCapture === 'function' && ev.pointerId != null) {
               try { glCanvas.setPointerCapture(ev.pointerId); } catch (_e) { /* ignore */ }
             }
             return;
@@ -2570,21 +2628,42 @@
         lastX: ev.clientX,
         lastY: ev.clientY,
         moved: false,
+        isTouch: isTouch,
         mode: isPan ? 'pan' : 'orbit',
       };
-      if (glCanvas && typeof glCanvas.setPointerCapture === 'function') {
+      if (glCanvas && typeof glCanvas.setPointerCapture === 'function' && ev.pointerId != null) {
         try { glCanvas.setPointerCapture(ev.pointerId); } catch (_e) { /* ignore */ }
       }
     }
 
     function onPointerMove(ev) {
       if (!enabled || !renderer) return;
+      if (ev.pointerId != null && activePointers.has(ev.pointerId)) {
+        var entry = activePointers.get(ev.pointerId);
+        entry.x = ev.clientX;
+        entry.y = ev.clientY;
+      }
+      if (pinchState && activePointers.size >= 2) {
+        var pair = getFirstTwoPointers();
+        var nextDist = Math.max(12, Math.hypot(pair[1].x - pair[0].x, pair[1].y - pair[0].y));
+        var nextMidX = (pair[0].x + pair[1].x) * 0.5;
+        var nextMidY = (pair[0].y + pair[1].y) * 0.5;
+        var zoomRatio = pinchState.dist / nextDist;
+        camState.distance = Math.max(0.65, Math.min(5.5, camState.distance * zoomRatio));
+        panCameraByDelta(nextMidX - pinchState.midX, nextMidY - pinchState.midY);
+        pinchState.dist = nextDist;
+        pinchState.midX = nextMidX;
+        pinchState.midY = nextMidY;
+        scheduleRender();
+        return;
+      }
       if (dragState && dragState.id === ev.pointerId) {
         var dx = ev.clientX - dragState.lastX;
         var dy = ev.clientY - dragState.lastY;
         dragState.lastX = ev.clientX;
         dragState.lastY = ev.clientY;
-        if (Math.hypot(ev.clientX - dragState.startX, ev.clientY - dragState.startY) > 4) {
+        var moveThresh = dragState.isTouch ? 8 : 4;
+        if (Math.hypot(ev.clientX - dragState.startX, ev.clientY - dragState.startY) > moveThresh) {
           dragState.moved = true;
         }
         if (dragState.mode === 'node') {
@@ -2653,15 +2732,7 @@
           return;
         }
         if (dragState.mode === 'pan' && dragState.moved) {
-          var yawRad = (params.yaw * Math.PI) / 180;
-          var speed = camState.distance * 0.0022;
-          var rx = Math.cos(yawRad);
-          var rz = -Math.sin(yawRad);
-          var fx = Math.sin(yawRad);
-          var fz = Math.cos(yawRad);
-          var panMax = Math.max(1.8, (terrainField ? terrainField.extent : 1.45) * 1.25);
-          camState.targetX = Math.max(-panMax, Math.min(panMax, camState.targetX - dx * rx * speed + dy * fx * speed));
-          camState.targetZ = Math.max(-panMax, Math.min(panMax, camState.targetZ - dx * rz * speed + dy * fz * speed));
+          panCameraByDelta(dx, dy);
           scheduleRender();
           return;
         }
@@ -2681,10 +2752,34 @@
     }
 
     function onPointerUp(ev) {
+      if (ev.pointerId != null) activePointers.delete(ev.pointerId);
+      if (pinchState) {
+        if (activePointers.size < 2) {
+          pinchState = null;
+          dragState = null;
+        }
+        if (activePointers.size === 0) gestureSuppressedTap = false;
+        return;
+      }
+      if (gestureSuppressedTap) {
+        if (activePointers.size === 0) gestureSuppressedTap = false;
+        dragState = null;
+        return;
+      }
       if (!enabled) return;
       var wasDrag = dragState && dragState.id === ev.pointerId ? dragState : null;
       dragState = null;
       if (!wasDrag) return;
+      if (ev.type === 'pointercancel') {
+        if (wasDrag.mode === 'node' && wasDrag.dragStarted) {
+          onNodeDragEnd(wasDrag.node, ev);
+          activeDragBounds = null;
+          terrainDirty = true;
+          batchesDirty = true;
+          scheduleRender();
+        }
+        return;
+      }
       if (wasDrag.mode === 'node' && wasDrag.dragStarted) {
         if (stageEl) stageEl.style.cursor = canDragNodesNow() ? 'grab' : '';
         var nbs = wasDrag.neighbors || [];
@@ -2725,7 +2820,7 @@
       if (ev.button === 2) return;
       if (!renderer) return;
       var pt = getStageLocalPoint(ev);
-      var hit = renderer.pickNodeAtScreen(pt[0], pt[1]);
+      var hit = renderer.pickNodeAtScreen(pt[0], pt[1], wasDrag.isTouch ? 14 : 0);
       if (hit) onNodeClick(hit, ev);
       else onBackgroundClick(ev);
     }
@@ -2851,6 +2946,9 @@
         cancelReboundAnim(true);
         hoveredNode = null;
         dragState = null;
+        activePointers.clear();
+        pinchState = null;
+        gestureSuppressedTap = false;
         activeDragBounds = null;
         if (stageEl) stageEl.style.cursor = '';
         clearStageClasses();

@@ -8,6 +8,13 @@
 
   var PREVIEW_TOP_N = 50;
   var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  var lastPointerWasTouch = false;
+  document.addEventListener('pointerdown', function (ev) {
+    lastPointerWasTouch = ev.pointerType === 'touch';
+  }, true);
+  document.addEventListener('touchstart', function () {
+    lastPointerWasTouch = true;
+  }, { capture: true, passive: true });
   var pinnedNode = null;
 
   function escapeHtml(s) {
@@ -70,7 +77,7 @@
     return '';
   }
 
-  function showTooltip(ev, d, nodeFill, communityLabelMap) {
+  function showTooltip(ev, d, nodeFill, communityLabelMap, pinned) {
     if (!tooltip) return;
     tooltip.innerHTML = tooltipHtml(d, nodeFill, communityLabelMap);
     if (window.RNGraphTooltip && window.RNGraphTooltip.renderMath) {
@@ -79,14 +86,23 @@
     tooltip.setAttribute('aria-hidden', 'false');
     tooltip.style.width = '';
     tooltip.style.transform = '';
-    if (isMobile) {
+    var shouldPin = Boolean(pinned || isMobile);
+    var dockCorner = isMobile || window.innerWidth <= 768 || !ev || ev.clientX == null || ev.clientY == null;
+    if (shouldPin) {
       tooltip.classList.add('tt-pinned');
-      tooltip.style.left = '';
-      tooltip.style.top = '';
-      tooltip.style.right = '20px';
-      tooltip.style.bottom = '20px';
       pinnedNode = d;
-      tooltip.classList.remove('hidden');
+      if (dockCorner) {
+        tooltip.style.left = '';
+        tooltip.style.top = '';
+        tooltip.style.right = '20px';
+        tooltip.style.bottom = 'calc(84px + env(safe-area-inset-bottom, 0px))';
+        tooltip.classList.remove('hidden');
+      } else {
+        tooltip.style.right = '';
+        tooltip.style.bottom = '';
+        tooltip.classList.remove('hidden');
+        moveTooltip(ev);
+      }
     } else {
       tooltip.classList.remove('tt-pinned');
       tooltip.style.right = '';
@@ -98,18 +114,22 @@
 
   function moveTooltip(ev) {
     if (!tooltip || tooltip.classList.contains('hidden')) return;
+    if (!ev || ev.clientX == null || ev.clientY == null) return;
     var x = ev.clientX + 14;
     var y = ev.clientY - 10;
     var tw = tooltip.offsetWidth;
     var th = tooltip.offsetHeight;
-    tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
-    tooltip.style.top = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
+    tooltip.style.left = Math.max(12, (x + tw > window.innerWidth - 20 ? x - tw - 28 : x)) + 'px';
+    tooltip.style.top = Math.max(12, (y + th > window.innerHeight - 20 ? y - th : y)) + 'px';
     tooltip.style.transform = '';
   }
 
   function hideTooltip() {
     if (!tooltip) return;
     tooltip.classList.add('hidden');
+    tooltip.classList.remove('tt-pinned');
+    tooltip.style.right = '';
+    tooltip.style.bottom = '';
     tooltip.setAttribute('aria-hidden', 'true');
   }
 
@@ -333,9 +353,8 @@
     }
 
     var zoom = d3.zoom().scaleExtent([0.3,4])
-      // d3 默认 filter 之外再排除触屏：预览图在手机上占满一屏宽、高 480px，交给 d3 平移缩放时
-      // 手指一落到图上页面就滚不动（上滑回顶会卡在图处）。触屏点按节点浮窗不受影响。
-      .filter(function(ev){ return (!ev.ctrlKey || ev.type === 'wheel') && !ev.button && ev.type.indexOf('touch') !== 0; })
+      // 桌面滚轮/拖拽 + 触屏单指平移与双指捏合缩放统一启用
+      .filter(function(ev){ return (!ev.ctrlKey || ev.type === 'wheel') && !ev.button; })
       .on('start', function(){ svg.style('cursor', 'grabbing'); })
       .on('zoom', function(ev){ g.attr('transform', ev.transform); })
       .on('end', function(){ svg.style('cursor', 'grab'); });
@@ -383,11 +402,17 @@
       .attr('stroke-width',1);
 
     var nodeDrag2d = d3.drag()
-      .filter(function(ev) { return !ev.button && ev.type.indexOf('touch') !== 0; })
+      .filter(function(ev) {
+        // 双指触控交给 d3.zoom 做捏合缩放，单指触控与鼠标左键可拖拽节点
+        if (ev.touches && ev.touches.length > 1) return false;
+        return !ev.button;
+      })
       .on('start', function(ev, d) {
         // 仅在入场动画尚未完成时收尾，已落稳后绝不覆盖任何节点坐标；
         // 按下瞬间不重启力模拟（首次真正拖动 >3px 时再柔和加热），避免按下瞬间其他节点跳变
         finishEntranceImmediately();
+        var srcEv = ev.sourceEvent;
+        d._dragIsTouch = Boolean(srcEv && ((srcEv.type && srcEv.type.indexOf('touch') === 0) || srcEv.pointerType === 'touch'));
         d._dragStartX = ev.x;
         d._dragStartY = ev.y;
         d._dragMoved = false;
@@ -397,19 +422,22 @@
         d3.select(this).style('cursor', 'grabbing');
       })
       .on('drag', function(ev, d) {
-        if (Math.hypot(ev.x - d._dragStartX, ev.y - d._dragStartY) > 3) {
+        var thresh = d._dragIsTouch ? 7 : 3;
+        if (Math.hypot(ev.x - d._dragStartX, ev.y - d._dragStartY) > thresh) {
           d._dragMoved = true;
-          hideTooltip();
+          if (!pinnedNode) hideTooltip();
           if (!d._dragReheated) {
             d._dragReheated = true;
             sim.alphaTarget(0.18).restart();
           }
         }
-        d.fx = ev.x;
-        d.fy = ev.y;
-        d.x = ev.x;
-        d.y = ev.y;
-        renderPositions();
+        if (d._dragMoved) {
+          d.fx = ev.x;
+          d.fy = ev.y;
+          d.x = ev.x;
+          d.y = ev.y;
+          renderPositions();
+        }
       })
       .on('end', function(ev, d) {
         d3.select(this).style('cursor', 'grab');
@@ -428,35 +456,33 @@
           d._dragMoved = false;
           return;
         }
-        if (isMobile) {
-          ev.stopPropagation();
-          if (pinnedNode === d) {
-            pinnedNode = null;
-            apply2dHoverState(null);
-            hideTooltip();
-          } else {
-            showTooltip(ev, d, nodeFill, communityLabelMap);
-            apply2dHoverState(d);
-          }
-          return;
+        ev.stopPropagation();
+        // 点击/轻触节点先固定显示漂浮卡片，点击卡片内链接再跳转详情页
+        if (pinnedNode === d) {
+          pinnedNode = null;
+          apply2dHoverState(null);
+          hideTooltip();
+        } else {
+          showTooltip(ev, d, nodeFill, communityLabelMap, true);
+          apply2dHoverState(d);
         }
-        window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
       })
       .on('mouseenter', function(ev, d) {
-        if (isMobile) return;
+        if (isMobile || lastPointerWasTouch || pinnedNode) return;
         hoveredNode2d = d;
         apply2dHoverState(d);
-        showTooltip(ev, d, nodeFill, communityLabelMap);
+        showTooltip(ev, d, nodeFill, communityLabelMap, false);
       })
       .on('mousemove', function(ev) {
-        if (isMobile && pinnedNode) return;
-        if (!isMobile || !pinnedNode) moveTooltip(ev);
+        if (isMobile || lastPointerWasTouch || pinnedNode) return;
+        moveTooltip(ev);
       })
       .on('mouseleave', function() {
-        if (isMobile) return;
+        if (isMobile || lastPointerWasTouch) return;
         hoveredNode2d = null;
+        if (pinnedNode) return;
         apply2dHoverState(null);
-        if (!isMobile || !pinnedNode) hideTooltip();
+        hideTooltip();
       });
 
     svg.on('mouseleave', function() {
@@ -656,11 +682,12 @@
 
     if (window.RNGraphTooltip) {
       var tooltipApi = {
-        isMobile: isMobile,
+        isMobile: true,
         getPinned: function() { return pinnedNode; },
         clearPin: function() {
           pinnedNode = null;
           apply2dHoverState(null);
+          if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
         },
         hide: hideTooltip
       };
@@ -668,7 +695,8 @@
         nodeSelector: '.mini-graph-node',
         tooltipEl: tooltip
       });
-      window.RNGraphTooltip.bindOutsideDismiss(miniSvg, tooltipApi, {
+      // 用外层容器 miniWrap 做外部点击判定：2D SVG 与 3D 舞台同属其内，避免 3D 点击节点被 2D 的 outside 监听误关
+      window.RNGraphTooltip.bindOutsideDismiss(miniWrap, tooltipApi, {
         tooltipEl: tooltip,
         dismissRootEl: document.querySelector('main')
       });
@@ -678,22 +706,6 @@
     var btn2d = document.getElementById('miniGraphMode2d');
     var btn3d = document.getElementById('miniGraphMode3d');
     var stageEl = document.getElementById('mini-graph-perspective-stage');
-
-    if (window.RNGraphTooltip && stageEl) {
-      var stageTooltipApi = {
-        isMobile: isMobile,
-        getPinned: function() { return pinnedNode; },
-        clearPin: function() {
-          pinnedNode = null;
-          if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
-        },
-        hide: hideTooltip
-      };
-      window.RNGraphTooltip.bindOutsideDismiss(stageEl, stageTooltipApi, {
-        tooltipEl: tooltip,
-        dismissRootEl: document.querySelector('main')
-      });
-    }
 
     function setModeButtons(mode) {
       var in3d = mode === '3d';
@@ -716,7 +728,7 @@
           stageEl: stageEl,
           nodeCount: nodes.length,
           persist: false,
-          allowTouchOrbit: false,
+          allowTouchOrbit: true,
           defaultDistance: 1.76,
           defaultParamsByTier: {
             full: { height: 102, contours: 14, pitch: 34, yaw: -16 },
@@ -742,7 +754,7 @@
               nodes: terrainNodes,
               edges: edges,
               focusIds: miniHighlightSet,
-              sidebarNode: isMobile ? pinnedNode : null,
+              sidebarNode: pinnedNode,
               getNodeColor: nodeFill,
               getNodeAlpha: function (d) {
                 return (!miniHighlightSet || miniHighlightSet.has(d.id)) ? 1 : 0.16;
@@ -759,31 +771,29 @@
           isLabelsVisible: function () { return true; },
           isEdgesVisible: function () { return true; },
           onNodeHover: function (d, ev) {
-            if (isMobile) return;
-            if (d) showTooltip(ev, d, nodeFill, communityLabelMap);
+            if (isMobile || pinnedNode) return;
+            if (d) showTooltip(ev, d, nodeFill, communityLabelMap, false);
             else hideTooltip();
           },
           onNodeClick: function (d, ev) {
-            if (isMobile) {
-              if (pinnedNode === d) {
-                pinnedNode = null;
-                hideTooltip();
-              } else {
-                showTooltip(ev, d, nodeFill, communityLabelMap);
-              }
-              if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
-              return;
+            // 点击/轻触节点先固定显示漂浮卡片，点击卡片内链接再跳转详情页
+            if (pinnedNode === d) {
+              pinnedNode = null;
+              hideTooltip();
+            } else {
+              showTooltip(ev, d, nodeFill, communityLabelMap, true);
             }
-            window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
+            if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
           },
           onBackgroundClick: function () {
-            if (isMobile && pinnedNode) {
+            if (pinnedNode) {
               pinnedNode = null;
               hideTooltip();
               if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
             }
           },
           onNodeDragStart: function () {
+            pinnedNode = null;
             hideTooltip();
           },
           onNodeDrag: function (d, x, y) {
