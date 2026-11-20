@@ -757,4 +757,12 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.ok(miniGraphJs.includes('allowTouchOrbit: true'), 'homepage 3D preview enables touch orbit/drag/pinch');
   assert.ok(styleCss.includes('#mini-graph-svg { position: relative; display: block; touch-action: none; }'), 'homepage 2D SVG sets touch-action: none');
   assert.ok(graphHtml.includes('function isTouchInteraction('), 'graph.html supports hybrid touch floating-card detection');
+  assert.ok(
+    graphHtml.includes('.graph-hint {\n      position: absolute;\n      left: 50%;'),
+    'graph.html centers bottom hint capsule symmetrically between bottom FABs'
+  );
+  assert.ok(
+    graphHtml.includes('<span class="hint-desktop">') && graphHtml.includes('<span class="hint-touch">'),
+    'graph.html provides device-appropriate desktop and touch hint copy'
+  );
 });

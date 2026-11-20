@@ -989,26 +989,73 @@
       }
     }
 
-    /* ── 提示条（2D / 3D 互斥，同位置切换；左右均避开 48×48 图例 / 聊天 FAB）── */
+    /* ── 底部居中操作提示胶囊（2D / 3D 互斥；与左下角图例 FAB、右下角聊天 FAB 同中线对称居中）── */
     .graph-hint {
       position: absolute;
-      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-      left: 84px;
-      right: 84px;
+      left: 50%;
+      bottom: calc(33px + env(safe-area-inset-bottom, 0px));
+      transform: translateX(-50%);
       z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: calc(100% - 168px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(13,17,23,0.58);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
       font-size: .72rem;
-      color: rgba(255,255,255,0.2);
-      text-align: right;
-      line-height: 1.7;
+      font-weight: 450;
+      letter-spacing: .01em;
+      color: rgba(255,255,255,0.56);
+      text-align: center;
+      line-height: 1.4;
+      white-space: nowrap;
       pointer-events: none;
+      user-select: none;
+      transition: opacity .18s ease;
     }
     .graph-hint[hidden] { display: none !important; }
+    .graph-hint.is-chat-occluded { opacity: 0; }
+    .graph-hint .hint-sep {
+      margin: 0 6px;
+      opacity: .42;
+    }
+    .graph-hint .hint-desktop { display: inline; }
+    .graph-hint .hint-touch { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .graph-hint { backdrop-filter: blur(8px); }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .graph-hint .hint-desktop { display: none; }
+      .graph-hint .hint-touch { display: inline; }
+    }
+    @media (max-width: 960px) {
+      .graph-hint {
+        white-space: normal;
+        text-wrap: balance;
+        border-radius: 14px;
+        bottom: calc(27px + env(safe-area-inset-bottom, 0px));
+        max-width: calc(100% - 160px);
+        padding: 5px 12px;
+      }
+    }
     @media (max-width: 768px) {
       .graph-hint {
-        left: 80px;
-        right: 80px;
+        bottom: calc(27px + env(safe-area-inset-bottom, 0px));
+        max-width: calc(100% - 156px);
+        padding: 5px 11px;
         font-size: .66rem;
         line-height: 1.45;
+      }
+      .graph-hint .hint-sep { margin: 0 4px; }
+    }
+    @media (max-width: 374px) {
+      .graph-hint {
+        max-width: calc(100% - 144px);
+        padding: 4px 9px;
+        font-size: .62rem;
       }
     }
 
@@ -1240,8 +1287,13 @@
     [data-theme="light"] .physics-body {
       scrollbar-color: rgba(0,0,0,0.2) transparent;
     }
-    /* 提示文字 */
-    [data-theme="light"] .graph-hint { color: rgba(0,0,0,0.22); }
+    /* 提示胶囊 */
+    [data-theme="light"] .graph-hint {
+      background: rgba(255,255,255,0.78);
+      border-color: rgba(15,23,42,0.09);
+      color: rgba(15,23,42,0.58);
+      box-shadow: 0 4px 14px rgba(15,23,42,0.08);
+    }
 
     /* ── 筛选面板（白天模式）── */
     [data-theme="light"] .filter-panel {
@@ -2416,13 +2468,16 @@
     </div>
 
     <div id="graph-hint-2d" class="graph-hint">
-      滚轮缩放 · 拖拽平移<br>点击节点查看详情
+      <span class="hint-desktop">滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>拖拽平移<span class="hint-sep" aria-hidden="true">·</span>点击节点查看详情</span>
+      <span class="hint-touch">双指缩放<span class="hint-sep" aria-hidden="true">·</span>单指拖拽<br>轻触节点查看详情</span>
     </div>
     <div id="graph-hint-perspective" class="graph-hint" hidden>
-      拖拽节点移动 · 拖空白旋转 · 滚轮缩放 · 右键平移<br>高度即连接数 · 点击节点查看详情
+      <span class="hint-desktop">拖节点移动<span class="hint-sep" aria-hidden="true">·</span>拖空白旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>右键平移<span class="hint-sep" aria-hidden="true">·</span>高度即连接数</span>
+      <span class="hint-touch">单指旋转/拖节点<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>高度即连接数<span class="hint-sep" aria-hidden="true">·</span>轻触看详情</span>
     </div>
     <div id="graph-hint-3d" class="graph-hint" hidden>
-      拖拽旋转 · 滚轮缩放<br>点击节点查看详情
+      <span class="hint-desktop">拖拽旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>点击节点查看详情</span>
+      <span class="hint-touch">单指旋转<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>轻触节点查看详情</span>
     </div>
   </div>
 
@@ -2913,15 +2968,34 @@
     let kbChatResizeObserver = null;
     let kbChatObservedPanel = null;
 
+    function syncHintChatOcclusion(open, panelEl) {
+      const hints = [
+        typeof graphHint2dEl !== 'undefined' ? graphHint2dEl : document.getElementById('graph-hint-2d'),
+        typeof graphHintPerspectiveEl !== 'undefined' ? graphHintPerspectiveEl : document.getElementById('graph-hint-perspective'),
+        typeof graphHint3dEl !== 'undefined' ? graphHint3dEl : document.getElementById('graph-hint-3d'),
+      ];
+      const panelRect = (open && panelEl && !panelEl.hidden && typeof panelEl.getBoundingClientRect === 'function')
+        ? panelEl.getBoundingClientRect()
+        : null;
+      hints.forEach((el) => {
+        if (!el || !el.classList) return;
+        if (!panelRect || panelRect.width <= 0 || el.hidden) {
+          el.classList.remove('is-chat-occluded');
+          return;
+        }
+        const rect = el.getBoundingClientRect();
+        const overlaps = rect.width > 0
+          && rect.right + 10 > panelRect.left
+          && rect.left < panelRect.right + 10
+          && rect.top < panelRect.bottom + 8
+          && rect.bottom > panelRect.top - 8;
+        el.classList.toggle('is-chat-occluded', overlaps);
+      });
+    }
+
     function syncDepthBannerChatOffset() {
-      if (!topicIntroBanner) return;
       const stack = document.getElementById('fabStackRight');
       const open = kbChatPanelOpen || Boolean(stack && stack.classList.contains('is-chat-open'));
-      if (!open || topicIntroBanner.hidden) {
-        topicIntroBanner.style.removeProperty('--depth-banner-chat-shift');
-        topicIntroBanner.classList.remove('is-chat-occluded');
-        return;
-      }
       const panelEl = document.getElementById('kbChatPanel');
       if (panelEl && typeof ResizeObserver === 'function' && kbChatObservedPanel !== panelEl) {
         if (kbChatResizeObserver) kbChatResizeObserver.disconnect();
@@ -2930,6 +3004,13 @@
         });
         kbChatResizeObserver.observe(panelEl);
         kbChatObservedPanel = panelEl;
+      }
+      syncHintChatOcclusion(open, panelEl);
+      if (!topicIntroBanner) return;
+      if (!open || topicIntroBanner.hidden) {
+        topicIntroBanner.style.removeProperty('--depth-banner-chat-shift');
+        topicIntroBanner.classList.remove('is-chat-occluded');
+        return;
       }
       const panelW = (panelEl && !panelEl.hidden)
         ? Math.ceil(panelEl.getBoundingClientRect().width)
@@ -3240,6 +3321,7 @@
         graphHintPerspectiveEl.hidden = !inPersp;
       }
       if (graphHint3dEl) graphHint3dEl.hidden = !in3d;
+      if (typeof syncDepthBannerChatOffset === 'function') syncDepthBannerChatOffset();
     }
 
     function updateViewModeButtons() {
