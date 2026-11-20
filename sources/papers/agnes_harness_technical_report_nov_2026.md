@@ -7,9 +7,9 @@
 - **论文 PDF：** https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026/blob/main/PAPER.pdf
 - **官方可读摘要：** https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026/blob/main/REPORT.md
 - **实现仓库：** https://github.com/AgnesAI-Labs/agnes-harness
-- **核对范围：** 已通读官方 REPORT.md 全文、交叉核验官方 AGH README 与架构及启动入口；**未能读取 PDF 原文件**，不能据此声称全文精读、图表逐项核验或独立复现。
-- **通读：** 未完成
-- **未完成范围：** 原始 PDF 尚未通读；本条仅核对了作者公开 REPORT.md。
+- **核对范围：** 已使用原始 PDF 页面文本抽取读取完整 21 页（§1–10），核对图 1–9 的文字标注及表 1–13 的数字与说明，尤其核查 §3 Ledger/Permits、§7 DM/LLM 路由与表 6–7、§8 两层 RSI/Train-Eval-Sealed/表 8–9、§9 九套 benchmark/表 10–13、§10 六项局限；同时通读官方 REPORT.md，对照 AGH README、架构及启动入口。图表通过 PDF 文本层与表内文字核对，未在本地执行模型/硬件复现实验。
+- **通读：** 已完成
+- **PDF Git blob：** 71fea5aa56a8874a4f5dc5ff25ec49104e9fb9f4（官方仓库的公开文件身份）
 - **入库：** 2026-11-20
 
 ## 关键机制
@@ -20,7 +20,7 @@
 4. **治理型 RSI：** 会话内调整与离线 Playbook 演化分离。后者只改 prompt、workflow、事实规则、决策阈值等配置数据；不改模型权重、代码、硬件安全门、grader 与预算。Train/Eval/Sealed 双生仿真 → 人审 → 200 任务试运行 → 统计回滚。
 5. **混合系统 benchmark：** 比较对象是不同“模型 + harness”组合，不能将端到端差异全归功于 AGH。
 
-## 论文摘要中的结果与口径
+## 原始 PDF 的实验结果与口径
 
 | 指标 | 报告自报结果 | 限制 |
 |---|---|---|
@@ -32,7 +32,14 @@
 | MHS-Benchmark | 41/100；其中 desktop GUI 9/40 | GUI 为弱项；不能与物理成功率混算 |
 | AGH-Benchmark | 34.62% | 内部自动通过率 |
 
-另有 WorkBuddy Code 78.17、BigCodeBench-Hard V1 40.69%、aider-python 83.33%、TraceTrial 71.8、τ-bench text-v1 87.33%、DeepPlanning 87.07；**均仅据官方摘要，尚未直接检查 PDF 的 13 张表和 9 张图。**
+原始 PDF 表 10（p18）给出全部九套系统评测：WorkBuddy Code 78.17（80 任务、每任务 3 次）；BigCodeBench-Hard V1 40.69%；aider-python 83.33%（低于 Codex 91.67%）；TraceTrial-Bench 71.8（harness-level 指标，不能与模型工具调用通过率混为一谈）；τ-bench text-v1 87.33%；DeepPlanning 87.07。表 13（p21）将 MHS 的 100 个任务拆为 desktop GUI 9/40 和 multi-site physical operations 32/60，合计 41/100。**报告声称 100 real operational tasks，但此处仍仅为发布团队的评测数据，不是独立真机复现或认证。**
+
+## 原始报告进一步说明的实现细节
+
+- **双系统策略（§7.2–7.4，图 6）：** 用户刚说话、上一步失败、主动设备检查、DM 连续执行 3 步等情形直交 LLM。DM 用完整设备工具前置条件建立候选，2,000 ms 超时或低信心/完全重复时交还 LLM。Mode A 直接执行，Mode B 由 DM 选动作、LLM 填自由参数，Mode C 完全交 LLM；三者始终经相同的内核/Hub 安全门。已标 correct 的 LLM 动作可进入 DM Option Library；自由值跨 3 次已验证运行相同后才固定，schema 更新或人工复核推翻时撤销。
+- **双层 RSI（§8）：** Tier 1 会话范围的 refine 默认关闭，在 turn 空闲边界提议至多 5 项受约束改动；Tier 2 离线跨任务只改可版本化 Playbook 数据。默认 2 代 × 3 候选，对每个案例多次 twin-world 仿真；Train、Eval、Sealed 切分，候选不许更改 grader，发布需人工签字并有 200 任务在线 probation 回滚。
+- **任务标签优先级（图 7，p16）：** 人工急停/接管 → wrong；基础设施断连 → uncertain；任务开始前冻结的期望状态与结束状态对比；后续用户重复或纠正 → wrong。人审和来源准确性筛选可撤销误标。
+- **架构细节：** PDF 自报 70 packages、46 边界校验套件、2367 测试文件；这些是 2026-11 文档快照，不能直接推成仓库任意后续 commit 的实际数量。
 
 ## 证据边界
 

@@ -32,7 +32,7 @@
 ## 2026-11 复核与报告
 
 - 已核对官方 README、docs/develop/architecture.md、docs/develop/source-map.md、docs/guide/quickstart.md、docs/guide/judgment.md 与根 agnes.mjs；**本次未执行构建或真机测试**。
-- [AGH 系统/RSI 技术报告](../papers/agnes_harness_technical_report_nov_2026.md) 与 [Sys1 1.0 模型报告](../papers/agnes_sys1_decision_model_technical_report_2026.md) 已分别归档；仅能读取各自官方 REPORT.md，PDF 全文尚待核验。
+- [AGH 系统/RSI 技术报告](../papers/agnes_harness_technical_report_nov_2026.md) 与 [Sys1 1.0 模型报告](../papers/agnes_sys1_decision_model_technical_report_2026.md) 已分别归档；已核对 AGH 原始 PDF 21 页、Sys1 原始 PDF 5 页与各自 REPORT.md，但未独立复现实验。
 - 相关两份技术报告不能等价于项目全部软件/模型组件的实际发布状态。
 
 ## 核心架构（README / 架构指南）

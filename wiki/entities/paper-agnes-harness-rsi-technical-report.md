@@ -6,17 +6,19 @@ code: https://github.com/AgnesAI-Labs/agnes-harness
 code_scope: packages/core-ledger
 project_distinction: "独立系统技术报告；非 agnes-harness 软件项目的重复实体"
 tags: [paper, agent-harness, recursive-self-improvement, safety, llm-agents, decision-model]
-status: draft
+status: complete
 updated: 2026-11-20
 related:
   - ./agnes-harness.md
   - ./paper-agnes-sys1-decision-model-technical-report.md
   - ../concepts/recursive-self-improvement.md
   - ../concepts/llm-robotics-control-interfaces.md
+original:
+  - ../../sources/papers/agnes_harness_technical_report_nov_2026.md
 sources:
   - ../../sources/papers/agnes_harness_technical_report_nov_2026.md
   - ../../sources/repos/agnes-harness.md
-summary: "Agnes Harness 2026-11 技术报告：账本主权、快慢双系统、仅配置数据层的 Playbook RSI、审核和回滚；数字为作者仿真/混合系统评测，完整 PDF 尚待核验。"
+summary: "Agnes Harness 2026-11 技术报告：账本主权、快慢双系统、仅配置数据层的 Playbook RSI、审批和回滚；官方 PDF 21 页原文与 13 表/9 图文本已核对，结果仍属作者自报而非独立复现。"
 ---
 
 # Agnes Harness Technical Report：账本主权、双系统与可治理 RSI（2026）
@@ -105,16 +107,19 @@ sequenceDiagram
 
 ## 实验与评测
 
+原始 PDF 的系统级模型配对为 AGH + `agnes-next-preview`、DSH + `deepseek-v4.1-flash-1017`、Codex + `gpt-5.6-sol`，因此分数差异不可归因于单独的 Harness。报告中 sealed twin-simulation 与 MHS-Benchmark 的 100 个运营任务也属于**不同实验协议**，不能相互替换。
+
+
 | 测量 | 作者报告 | 证据边界 |
 |---|---|---|
 | Home-leak DM 与 LLM 单步 | 0.53 s vs 7.6 s（约 14.3 倍） | 仅指定仿真，非端到端延迟 |
 | Luggage-room 单决策费用 | $0.000091 vs $0.00247（约 27.1 倍） | 非整任务成本 |
 | sealed Playbook 双生仿真 | 行李房 9/9；机械臂单/多故障各 10/10；入库 9/9 | 多次重复且冻结 Playbook，非真机 |
-| MHS-Benchmark | 41/100；其中 GUI 9/40 | 桌面 GUI 仍弱 |
+| MHS-Benchmark | 41/100；桌面 GUI 9/40、physical-site ops 32/60 | 发布方称 100 个实际运营任务；不代表独立认证的设备安全可靠性 |
 | AGH-Benchmark | 34.62% | 作者内部评测 |
 | AppWorld dev | 91.67% | 不同 model+harness 组合的系统分 |
 
-报告还列其他 6 组基准，详见 [来源归档](../../sources/papers/agnes_harness_technical_report_nov_2026.md)；**当前仅通读官方 REPORT.md，未读 PDF 的完整方法、13 表/9 图，故此页为 draft。**
+报告还列其他 6 组基准，详见 [来源归档](../../sources/papers/agnes_harness_technical_report_nov_2026.md)。已核对官方原始 PDF 全部 21 页的文本层，包括关键机制、图 1–9 标注及表 1–13 数据；**数值仍是作者实验报告，不是独立复现。**
 
 ## 结论
 
@@ -134,8 +139,8 @@ sequenceDiagram
 
 ## 局限与风险
 
-- PDF 全文未能获取；本文实验统计和机制均据同一发布团队的网页摘要，不构成第三方复现。
-- 报告承认工具 schema 敏感性、冷启动、GUI grounding、sim-to-real、跨平台 sandbox、压缩规则保留尚待验证。
+- **原文已通读，实验未独立复现：** 已核对官方 21 页 PDF 正文、表 1–13 与图 1–9 的文本标注；没有在本地跑 GPU、软件 benchmark 或硬件实验，结果仍是作者自报。
+- 报告 §10 六类局限包括 DM 冷启动与 schema 敏感、仅 Playbook 的 RSI 天花板和 Sim2Real、压缩后规则撤销、GUI grounding、Windows 沙箱隔离弱于 POSIX、托管云配套与推理路由尚未完善。
 - 真实后端插件是受信进程内代码；MHS 仍接入中，不是安全认证机器人控制接口。
 
 ## 关联页面
@@ -152,10 +157,10 @@ sequenceDiagram
 
 - [技术报告来源档案](../../sources/papers/agnes_harness_technical_report_nov_2026.md)
 - [AGH 源码档案](../../sources/repos/agnes-harness.md)
-- [作者原始 PDF（待全文核验）](https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026/blob/main/PAPER.pdf)
+- [作者原始 PDF（21 页，已核对）](https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026/blob/main/PAPER.pdf)
 - [运行时架构一手文档](https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/develop/architecture.md)
 
 ## 推荐继续阅读
 
-- [官方报告全文网页摘要](https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026/blob/main/REPORT.md)
+- [官方报告网页摘要（辅助核对）](https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026/blob/main/REPORT.md)
 - [AGH 官方代码](https://github.com/AgnesAI-Labs/agnes-harness)

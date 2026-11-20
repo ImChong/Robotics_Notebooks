@@ -98,7 +98,7 @@ AGH 使用 **Agnes MHS（Model Hardware Standard）** 指代自己的设备协�
 - [AGH 系统及 Playbook RSI 技术报告](./paper-agnes-harness-rsi-technical-report.md)：账本/一次性许可/未知结果对账、快慢系统与仅配置数据的受治理自改进。仿真及 model+harness 成绩属于作者报告，**未证实现场机器人效果**。
 - [Agnes Sys1 1.0 决策模型技术报告](./paper-agnes-sys1-decision-model-technical-report.md)：基于 Qwen3.5-9B 的请求内候选概率、分块双向 attention 与拟议 RMSNorm TTT；作者能力表 AA Composite 71.2，但**TTT 无实测增益**。
 - AGH 系统技术报告以 Jev 为 DM 案例；当前 README 中 Sys1 为默认建议的 side model，`@agnes/judgment` 属可选插件且检测默认关闭，不能混写成同一组 benchmark 配置。
-- 本次已通读两份官方 `REPORT.md`，**未能读取原始 PDF**；两份独立技术报告节点因此保持 `draft`。
+- 两份技术报告均已核对原始 PDF：AGH 系统 21 页和 Sys1 1.0 五页，并与官方 `REPORT.md` 对照；两篇来源归档均有原文通读记录，**不把任何一篇的团队指标称为独立复现**。
 
 ## 工程实践与安全边界
 
