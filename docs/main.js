@@ -5015,6 +5015,127 @@
     }, 1800);
   }
 
+  function normalizeCiteText(str) {
+    return String(str || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
+  }
+
+  function expandAncestorDetails(el) {
+    var cur = el;
+    while (cur) {
+      if (cur.tagName === 'DETAILS') cur.open = true;
+      cur = cur.parentElement;
+    }
+  }
+
+  function findCitationTargetElement(container, citeRaw, headingRaw) {
+    if (!container) return null;
+    var citeNorm = normalizeCiteText(citeRaw);
+    var headingNorm = normalizeCiteText(headingRaw);
+    var blocks = Array.from(container.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, blockquote, td'));
+    if (!blocks.length) return null;
+
+    var matchedHeadingIdx = -1;
+    var headingEndIdx = blocks.length;
+    if (headingNorm) {
+      for (var i = 0; i < blocks.length; i++) {
+        if (/^H[1-6]$/.test(blocks[i].tagName)) {
+          var hNorm = normalizeCiteText(blocks[i].textContent);
+          if (hNorm && (hNorm === headingNorm || hNorm.indexOf(headingNorm) >= 0 || headingNorm.indexOf(hNorm) >= 0)) {
+            matchedHeadingIdx = i;
+            var hLevel = Number(blocks[i].tagName.slice(1));
+            for (var j = i + 1; j < blocks.length; j++) {
+              if (/^H[1-6]$/.test(blocks[j].tagName) && Number(blocks[j].tagName.slice(1)) <= hLevel) {
+                headingEndIdx = j;
+                break;
+              }
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    if (citeNorm.length >= 4) {
+      var probeShort = citeNorm.slice(0, Math.min(20, citeNorm.length));
+      var bigrams = [];
+      for (var bi = 0; bi < citeNorm.length - 1; bi++) {
+        bigrams.push(citeNorm.slice(bi, bi + 2));
+      }
+
+      var bestEl = null;
+      var bestScore = 0;
+      for (var k = 0; k < blocks.length; k++) {
+        var el = blocks[k];
+        var txtNorm = normalizeCiteText(el.textContent);
+        if (!txtNorm) continue;
+        var inSection = matchedHeadingIdx >= 0 && k > matchedHeadingIdx && k < headingEndIdx;
+        var score = 0;
+        if (txtNorm.indexOf(citeNorm) >= 0) {
+          score = 1000;
+        } else if (probeShort.length >= 6 && txtNorm.indexOf(probeShort) >= 0) {
+          score = 700;
+        } else if (bigrams.length > 0) {
+          var hits = 0;
+          for (var g = 0; g < bigrams.length; g++) {
+            if (txtNorm.indexOf(bigrams[g]) >= 0) hits += 1;
+          }
+          var ratio = hits / bigrams.length;
+          if (ratio >= 0.4) score = Math.round(ratio * 500);
+        }
+        if (score > 0) {
+          if (inSection) score += 250;
+          if (!/^H[1-6]$/.test(el.tagName)) score += 20;
+          if (score > bestScore) {
+            bestScore = score;
+            bestEl = el;
+          }
+        }
+      }
+      if (bestEl) return bestEl;
+    }
+
+    if (matchedHeadingIdx >= 0) return blocks[matchedHeadingIdx];
+    return null;
+  }
+
+  function pulseCitationElement(target, repositionOnly) {
+    if (!target) return;
+    expandAncestorDetails(target);
+    if (typeof target.scrollIntoView === 'function') {
+      target.scrollIntoView({ behavior: repositionOnly ? 'auto' : 'smooth', block: 'center' });
+    }
+    if (repositionOnly) return;
+    target.classList.remove('kb-cite-highlight');
+    void target.offsetWidth;
+    target.classList.add('kb-cite-highlight');
+    if (target._kbCiteTimer) {
+      window.clearTimeout(target._kbCiteTimer);
+    }
+    target._kbCiteTimer = window.setTimeout(function () {
+      target.classList.remove('kb-cite-highlight');
+      target._kbCiteTimer = null;
+    }, 2200);
+  }
+
+  function scrollToCitationTarget(container, explicitCite, explicitHeading, opts) {
+    if (!container) return false;
+    var params = new URLSearchParams(window.location.search);
+    var citeRaw = explicitCite !== undefined ? explicitCite : (params.get('cite') || '');
+    var headingRaw = explicitHeading !== undefined ? explicitHeading : (params.get('cite_h') || '');
+    if (!citeRaw && !headingRaw) return false;
+    var target = findCitationTargetElement(container, citeRaw, headingRaw);
+    if (!target) return false;
+    pulseCitationElement(target, Boolean(opts && opts.repositionOnly));
+    return true;
+  }
+
+  if (typeof window !== 'undefined') {
+    window.RNDetailCiteJump = function (citeText, headingText) {
+      var container = document.getElementById('detailContent') || document.getElementById('roadmapContent');
+      return scrollToCitationTarget(container, citeText || '', headingText || '', { repositionOnly: false });
+    };
+  }
+
   /** 正文外的详情页锚点（如 #detail-sources）：异步渲染后需再滚入视口，否则 hash 会落在错误位置。 */
   function scrollDetailPageLayoutHashIntoView(contentEl) {
     const rawHash = window.location.hash.replace(/^#/, '');
@@ -7203,6 +7324,7 @@
         notifyTocSpyScrollSync();
       });
       scrollToDetailHashTarget(contentEl);
+      scrollToCitationTarget(contentEl);
       notifyTocSpyScrollSync();
       setupDetailInlineLinkPreview(contentEl, detailPages);
       removeLoadingState(contentEl);
@@ -7271,6 +7393,7 @@
         emergencyLayoutScrollTimer = null;
       }
       scrollDetailPageLayoutHashIntoView(contentEl);
+      scrollToCitationTarget(contentEl, undefined, undefined, { repositionOnly: true });
       if (hashForLayoutScroll) {
         window.setTimeout(function () { scrollDetailPageLayoutHashIntoView(contentEl); }, 450);
       }
@@ -7445,6 +7568,7 @@
       bindDetailTocSpy(contentEl, tocEl);
       window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); notifyTocSpyScrollSync(); });
       scrollToDetailHashTarget(contentEl);
+      scrollToCitationTarget(contentEl);
       notifyTocSpyScrollSync();
       removeLoadingState(contentEl);
     }

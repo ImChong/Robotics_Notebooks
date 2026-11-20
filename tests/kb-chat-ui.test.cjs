@@ -285,7 +285,8 @@ test('Local read-only mode answers Chinese & English questions with clickable ci
   assert.match(messages[0].textContent, /全身控制/);
   const links = messages[0].querySelectorAll('a.kb-chat-citation-card');
   assert.ok(links.length >= 1);
-  assert.equal(links[0].getAttribute('href'), 'detail.html?id=wiki-concepts-wbc');
+  assert.ok(links[0].getAttribute('href').startsWith('detail.html?id=wiki-concepts-wbc'));
+  assert.match(links[0].getAttribute('href'), /&cite=/);
 
   // Switch to English and ask English query
   window.RNKbChat.setLanguage('en');
@@ -351,7 +352,7 @@ test('Cloud quota exhaustion (503) and rate limit (429) automatically fall back 
     const note = msg.querySelector('.kb-chat-status-note');
     assert.ok(note);
     assert.match(note.textContent, statusCode === 503 ? /繁忙/ : /频繁/);
-    assert.ok(msg.querySelector('a[href="detail.html?id=wiki-concepts-wbc"]'));
+    assert.ok(msg.querySelector('a[href^="detail.html?id=wiki-concepts-wbc"]'));
     assert.equal(window.document.querySelector('.kb-chat-mode-badge').getAttribute('data-mode'), 'fallback');
     dom.window.close();
   }
@@ -768,4 +769,120 @@ test('Chat history persists in localStorage across page reloads until cache is c
   assert.equal(userMsgs[0].textContent, '什么是全身控制 WBC？');
   assert.ok(assistantMsgs[0].querySelector('a.kb-chat-citation-card'));
   second.dom.window.close();
+});
+
+test('Clear local chat history button clears UI and localStorage without sending any network request', async () => {
+  const { dom, window, fetchCalls } = setupDom({ withFooter: true });
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  const clearBtn = window.document.getElementById('kbChatClear');
+  assert.ok(clearBtn, '#kbChatClear button exists');
+  assert.equal(clearBtn.disabled, true, 'clear button disabled when empty');
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  assert.equal(clearBtn.disabled, false, 'clear button enabled after conversation');
+  assert.ok(window.localStorage.getItem('rn_kb_chat_history_v1'));
+  assert.ok(window.document.querySelectorAll('.kb-chat-msg').length >= 2);
+
+  const fetchCountBeforeClear = fetchCalls.length;
+  clearBtn.click();
+
+  assert.equal(window.document.querySelectorAll('.kb-chat-msg').length, 0);
+  assert.equal(window.localStorage.getItem('rn_kb_chat_history_v1'), null);
+  assert.equal(clearBtn.disabled, true);
+  assert.equal(fetchCalls.length, fetchCountBeforeClear, 'clearing local history never triggers server requests');
+  assert.ok(window.document.querySelector('.kb-chat-welcome'));
+  assert.ok(window.document.querySelectorAll('.kb-chat-starter-btn').length >= 1);
+  dom.window.close();
+});
+
+test('Clicking citation card scrolls to quoted passage inside details and pulses highlight twice', async () => {
+  const citeStart = mainSource.indexOf('function normalizeCiteText(str)');
+  const citeEnd = mainSource.indexOf('// ⚡ Bolt Optimization', citeStart);
+  assert.ok(citeStart >= 0 && citeEnd > citeStart, 'citation jump block present in docs/main.js');
+  const citeBlock = mainSource.slice(citeStart, citeEnd);
+
+  const cssSource = readFileSync(resolve(__dirname, '../docs/style.css'), 'utf8');
+  assert.match(cssSource, /@keyframes kbCitePulseTwice/);
+  assert.match(cssSource, /72%[\s\S]*?26%/);
+
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer: 'WBC 采用分层 QP 求解 [1]。',
+            citations: [
+              {
+                index: 1,
+                id: 'wiki-concepts-wbc',
+                title: '全身控制（Whole-Body Control, WBC）',
+                heading: '核心原理',
+                snippet: '全身控制（WBC）将质心轨迹与接触力约束统一到分层二次规划（QP）中求解。',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+            ],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+
+  // Simulate currently viewing detail.html?id=wiki-concepts-wbc with a collapsed section containing the quoted paragraph
+  dom.reconfigure({ url: 'https://imchong.github.io/Robotics_Notebooks/detail.html?id=wiki-concepts-wbc' });
+  const detailContent = window.document.createElement('div');
+  detailContent.id = 'detailContent';
+  detailContent.innerHTML =
+    '<h2>其他章节</h2><p>无关内容。</p>' +
+    '<h2>核心原理</h2><details id="secFold"><summary>展开</summary>' +
+    '<p id="targetPara"><strong>全身控制（WBC）</strong>将质心轨迹与接触力约束统一到分层二次规划（QP）中求解。</p>' +
+    '</details>';
+  window.document.querySelector('main').appendChild(detailContent);
+
+  let scrolledTarget = null;
+  const targetPara = window.document.getElementById('targetPara');
+  targetPara.scrollIntoView = (opts) => {
+    scrolledTarget = { el: targetPara, opts };
+  };
+
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-cite'),
+  };
+
+  window.eval(citeBlock);
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  const card = window.document.querySelector('.kb-chat-citation-card');
+  assert.ok(card);
+  assert.match(card.getAttribute('href'), /&cite=.*&cite_h=/);
+
+  card.click();
+  assert.equal(window.document.getElementById('secFold').open, true, 'collapsed section auto-expands');
+  assert.equal(scrolledTarget && scrolledTarget.el, targetPara, 'scrolled to exact quoted paragraph');
+  assert.ok(targetPara.classList.contains('kb-cite-highlight'), 'highlight animation class applied');
+  dom.window.close();
 });
