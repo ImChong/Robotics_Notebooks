@@ -2,8 +2,8 @@
 type: entity
 tags: [paper, humanoid, parkour, perceptive-locomotion, distillation, real2sim2real, dagger, light-origins, whole-body]
 status: complete
-updated: 2026-09-22
-venue: "Light Origins 项目页（暂无 arXiv）"
+updated: 2026-11-20
+venue: "arXiv:2608.02653 (2026-08-01) / Light Origins 项目页"
 related:
   - ./lightbot-0.md
   - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
@@ -19,19 +19,21 @@ related:
   - ./paper-parkour-in-the-wild.md
   - ../methods/hil-hybrid-imitation-learning.md
   - ../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md
+original:
+  - ../../sources/papers/light_loco_parkour_light_origins_2026.md
 sources:
   - ../../sources/papers/light_loco_parkour_light_origins_2026.md
   - ../../sources/blogs/lightorigins_lightparkour_2026-08-03.md
   - ../../sources/sites/lightparkour.md
   - ../../sources/sites/light-loco-parkour-github-io.md
-summary: "Light-Loco-Parkour（Light Origins, 2026-08-03）：Real2Sim2Real 稀疏种子扩张 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏，Lightbot 0 上单策略机载深度跑酷；攀爬至 0.83H、踏石 99.9%、无技能标签；代码未开源。"
+summary: "Light-Loco-Parkour（Light Origins, 2026-08-03）：Real2Sim2Real 稀疏种子扩张 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏，Lightbot 0 上单策略机载深度跑酷；攀爬至 0.83H、踏石 99.9%、无技能标签；代码未开源；arXiv:2608.02653。"
 ---
 
 # Light-Loco-Parkour（LightLP）
 
-**Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称 **LightParkour** / **LightLP**；[Tech Blog](https://www.lightorigins.com/blog/lightparkour)，[项目页](https://light-loco-parkour.github.io/)，[PDF](https://light-loco-parkour.github.io/paper.pdf)；**Light Origins**，项目页日期 **2026-08-03**）在自研人形 **Lightbot 0** 上，把稀疏人体动作种子经 **Real2Sim2Real** 扩成地形条件全身技能，再蒸馏为**单一机载深度策略**：只读深度与速度指令，自主在行走 / 攀爬 / vault 间切换。
+**Light-Loco-Parkour**（*Versatile Perceptive Whole-Body Locomotion via Multi-Skill Distillation*，亦称 **LightParkour** / **LightLP**；[Tech Blog](https://www.lightorigins.com/blog/lightparkour)，[项目页](https://light-loco-parkour.github.io/)，[arXiv:2608.02653](https://arxiv.org/abs/2608.02653)，[技术报告 PDF](https://static.lightorigins.com/website/reports/lightparkour-technical-report_687a744.pdf)；**Light Origins**，项目页日期 **2026-08-03**）在自研人形 **Lightbot 0** 上，把稀疏人体动作种子经 **Real2Sim2Real** 扩成地形条件全身技能，再蒸馏为**单一机载深度策略**：只读深度与速度指令，自主在行走 / 攀爬 / vault 间切换。
 
-> **落地状态：** 入库时 **无 arXiv、无公开代码**；以项目页 PDF 为准。
+> **落地状态：** 已通读技术报告全文（2026-11-20 核对；arXiv:2608.02653v1，2026-08-01 提交）；**无公开代码**。入库时误记为「无 arXiv」，已更正；项目页旧 `paper.pdf` 链接现返回 404，PDF 改用 Light Origins 静态地址。
 
 ## 一句话定义
 
@@ -65,7 +67,8 @@ summary: "Light-Loco-Parkour（Light Origins, 2026-08-03）：Real2Sim2Real 稀�
 | **仿真** | IsaacLab |
 | **输入（部署）** | 机载深度 + 本体 + \((v_x,v_y,\omega_z)\) |
 | **开源** | **未开源**（仅项目页/PDF/视频；无训练仓） |
-| **arXiv** | 暂无 |
+| **训练细节** | 50 Hz，PD 关节目标；teacher 堆叠 5 帧 MLP；学生 MLP 深度编码 + GRU；DAgger + PPO（λ_RL）；每消融 15k iter，深度蒸馏 14k + FT 1k |
+| **arXiv** | [2608.02653](https://arxiv.org/abs/2608.02653)（v1，2026-08-01） |
 
 ## 核心原理
 
@@ -106,7 +109,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-08-04：项目页未列 GitHub 训练/推理入口，组织仓仅为 github.io 站点）。待代码发布后按 README 补 `sequenceDiagram`。
+**不适用**（截至 2026-08-04 核查：项目页未列 GitHub 训练/推理入口，组织仓仅为 github.io 站点）。待代码发布后按 README 补 `sequenceDiagram`。
 
 ## 工程实践
 
@@ -125,16 +128,18 @@ flowchart TB
 
 ### 仿真（Table V，节选；500 trials/格）
 
-| 任务 | Ours | w/o FT | w/o GRU | Teacher | PHP |
-|------|------|--------|---------|---------|-----|
-| climb 60 cm (0.66H) | 99.2 | 88.4 | 54.0 | 99.9 | 99.9 |
-| climb 75 cm (0.83H) | 33.4 | 17.0 | 0.0 | 98.6 | ✗ |
-| reverse-vault 50 cm | 96.8 | 72.8 | 25.4 | 99.4 | ✗ |
-| speed-vault 50 cm | 93.4 | 61.8 | 23.2 | 99.6 | ✗ |
-| Stepping stones | 99.9 | 34.6 | 0 | 99.9 | / |
-| Stairs (high) | 83.4 | 80.8 | 12.4 | 83.0 | / |
+| 任务 | Ours | w/o FT | w/o GRU | Teacher | Teacher w/o ED | PHP（引用） |
+|------|------|--------|---------|---------|----------------|-------------|
+| climb 60 cm (0.66H) | 99.2 | 88.4 | 54.0 | 99.9 | ✗ | 95 |
+| climb 75 cm (0.83H) | 33.4 | 17.0 | 0.0 | 98.6 | ✗ | / |
+| reverse-vault 50 cm | 96.8 | 72.8 | 25.4 | 99.4 | ✗ | / |
+| speed-vault 50 cm | 93.4 | 61.8 | 23.2 | 99.6 | ✗ | / |
+| Stepping stones | 99.9 | 34.6 | 0 | 99.9 | / | / |
+| Stairs (high) | 83.4 | 80.8 | 12.4 | 83.0 | / | / |
 
-未见鞍马形障碍（Table VI）：reverse / speed-vault **93.4% / 95.3%**。转移组（Table VII）：有 **98%** vs 无（plane）**0%**。
+「✗」= 未收敛；Teacher w/o ED（无专家蒸馏、纯稀疏奖励）在所有技能行均不收敛，Teacher w/o RA（单参考、无增广）仅在 60 cm climb / 40 cm vault 等种子配置上成功（99.9 / 91），更高障碍均 ✗。PHP 仅在 climb 60 cm（95）与 speed-vault 40 cm（99）有引用值；MGMT 在 climb 60 cm 为 96.2。
+
+未见鞍马形障碍（Table VI）：reverse / speed-vault **93.4% / 95.3%**。转移组（Table VII，每设定 100 trials）：有 **98%**；无转移组 plane+skills **0%**、粗糙地形+skills **33%**；去 AMP **51%**。
 
 ### 真机
 
@@ -165,8 +170,10 @@ flowchart TB
 
 ## 局限与风险
 
-- **未开源 / 无 arXiv：** 数字以项目页 PDF 为准；无法本地复现训练。
+- **未开源：** 数字以论文表为准；无法本地复现训练。仿真成功率均来自作者自测，基准对照（PHP/MGMT/BeamDojo/CReF）为引用各自论文报告值而非同条件重跑，“/”表示该方法未报告。
 - **人工种子对齐：** 扩展技能仍线性吃人力。
+- **高障碍遮挡：** 75 cm 爬（0.83H）学生仅 33.4%（teacher 98.6%），作者归因为相机运动使接近阶段难以估计障碍高度。
+- **离散小技能集：** 转移目前只耦合少量离散技能。
 - **障碍密集/重叠：** 转移在稀疏奖励下尚未完全解决。
 - **相机固定胸前：** 技能中段遮挡会丢感知；作者指向主动感知/场景记忆。
 - **平台绑定：** 结果在 90 cm Lightbot 0；迁到 G1 等需重做动力学与力矩档。
@@ -187,9 +194,10 @@ flowchart TB
 
 ## 参考来源
 
+- [arXiv:2608.02653 摘要页](https://arxiv.org/abs/2608.02653)（v1，2026-08-01；全文以技术报告 PDF 通读）
+- [Light Origins 技术报告 PDF](https://static.lightorigins.com/website/reports/lightparkour-technical-report_687a744.pdf)
 - [Light-Loco-Parkour 论文归档](../../sources/papers/light_loco_parkour_light_origins_2026.md)
 - [light-loco-parkour.github.io 项目页归档](../../sources/sites/light-loco-parkour-github-io.md)
-- [项目页 PDF](https://light-loco-parkour.github.io/paper.pdf)
 
 ## 推荐继续阅读
 

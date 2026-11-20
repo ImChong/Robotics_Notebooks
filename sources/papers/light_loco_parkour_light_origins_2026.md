@@ -6,14 +6,17 @@
 - **缩写：** **LightLP** / 站内亦称 **LightParkour**
 - **类型：** paper / humanoid / parkour / perceptive-locomotion / distillation / real2sim2real
 - **项目页：** <https://light-loco-parkour.github.io/> — 归档见 [`sources/sites/light-loco-parkour-github-io.md`](../sites/light-loco-parkour-github-io.md)
-- **PDF：** <https://light-loco-parkour.github.io/paper.pdf>
+- **PDF：** <https://static.lightorigins.com/website/reports/lightparkour-technical-report_687a744.pdf>（项目页旧 `paper.pdf` 已 404，现重定向到 lightorigins.com 博客）
 - **视频：** <https://youtu.be/96Rfm7OmHjY>
-- **arXiv：** 入库时 **暂无编号**
+- **arXiv：** [2608.02653](https://arxiv.org/abs/2608.02653)（v1，2026-08-01；入库时误记为暂无，2026-11-20 更正）
 - **作者：** Hongming Chen、Zhuoran Li、Hongxi Wang、Jiangpeng Hu、Ziliang Li、Peize Liu、QingRui Zhao、Xuhao Liu、Liang Pan、Ximin Lyu、Yuntao Ma†、Tingxiang Fan†（† robotics team co-leads）
 - **机构：** 亮源新创（Light Origins）
 - **发表日期（项目页）：** 2026-08-03
 - **入库日期：** 2026-08-04
 - **一句话说明：** 在自研 Lightbot 0 上，用 Real2Sim2Real 从稀疏人体动作种子扩出地形配对全身技能，再经多专家 DAgger + 转移组 RL + 深度蒸馏，得到**单一机载深度策略**：仅深度 + 速度指令即可在行走 / 攀爬 / vault 间自主切换，无技能标签与运行时运动图。
+
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 用 curl 下载技术报告 PDF（`pdftotext -layout`，1099 行）并通读全文：摘要、§I 引言、§II 相关工作、§III 系统概述、§IV 感知 locomotion（奖励 Eq.1–5、终止、地形课程、Table II 域随机化）、§V 全身技能（Object-Interaction Mimic、Algorithm 1 迭代增广 5–10 cm、DAgger+PPO Eq.7–8、技能泛化 Eq.9–10、转移学习 Eq.11–12）、§VI 深度蒸馏（Eq.13 重建损失、D435 噪声 0.005+0.02d、±5% 尺度、30–60 ms 延迟）、§VII 实验（Table IV–VII、Fig.9–11）、§VIII 结论与局限、参考文献；核实 90 cm/18.9 kg/21 DoF、Orin Nano 50 Hz、Table V 数值（核正 PHP 列：climb 60 cm 为 95、speed-vault 40 cm 为 99，✗ 属 Teacher w/o ED/RA）、Table VII（0/33/51/98）。论文无独立附录。官方无公开代码仓，故不读源码。
 
 ## 开源状态（步骤 2.5）
 

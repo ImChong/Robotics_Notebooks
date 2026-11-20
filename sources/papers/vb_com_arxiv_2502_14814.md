@@ -14,7 +14,7 @@
 - **机构：** 上海人工智能实验室（Shanghai AI Lab）；香港大学（HKU）；上海交通大学（SJTU）；浙江大学（ZJU）；香港中文大学（CUHK）
 - **作者：** Junli Ren、Tao Huang、Huayi Wang、Zirui Wang、Qingwei Ben、Junfeng Long、Yanchao Yang、Jiangmiao Pang†、Ping Luo†
 - **平台：** Unitree G1、Unitree H1（仿真 + 真机）
-- **核对范围：** 2026-11-07 通读 arXiv v2 全文：摘要、§I 引言、§II 相关工作、§III 预备（POMDP 与 Q 值策略组合）、§IV 方法（观测空间、奖励、状态估计器、视觉–盲走组合、回报估计与切换阈值 $G_{th}$、实现细节与感知噪声）、§V 实验（仿真噪声曲线、表 II–IV、回报估计器消融、真机实验）、§VI 结论与局限；参考文献仅浏览；项目页视频与代码（官方未开源）未读。
+- **核对范围：** 2026-11-20 重新下载 arXiv v2 PDF（8 页）并通读全文，含摘要、§I–§VI、参考文献与附录 A（表 V 奖励：目标速度/偏航权重 H1 5.0、G1 2.0，碰撞 −15.0）、附录 B（表 VI：actor/critic/回报估计器隐层均为 [512,256,128]，速度估计器 [512,256,32]，高程图前向 [−0.35,0.85] m、侧向 [−0.35,0.35] m），并核实表 I–IV、式 (2)(7)(8) 与 §VI 局限；官方无源码（项目页 Code coming soon），故未读代码，项目页视频未看。
 - **通读：** 已完成
 - **分类（Paper Notebooks）：** 05_Locomotion
 - **入库日期：** 2026-08-28
