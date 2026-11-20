@@ -89,6 +89,7 @@ flowchart LR
 - 在纸上画出一条 Cascaded 管线的信息流：观测 → 未来表征 → IDM / 动作头 → 控制
 
 ### 推荐读什么
+- [WorldFlow：联合视频与 3D 运动预测](../wiki/entities/paper-worldflow.md) — **Stage 1 世界侧/几何预测对照**：MoT 联合生成视频和查询点 3D 位移，轨迹可作为下游操作规划参考，但不直接输出 robot action，故不是 Joint WAM；官方训练/推理代码待发布。
 - [2026 开源世界模型 11 项技术对照](../wiki/comparisons/open-source-world-models-11-2026.md) — Stage 1 的横向选型入口；区分可玩视频、可执行引擎、3D 世界资产与 latent 想象模型，避免把视觉生成当作物理控制。
 - [Doppel：渲染机器人再预测未来](../wiki/entities/paper-doppel.md) — 跨本体世界模型，明确条件渲染/相机标定与动作数值的职责。
 - [JEPA4R：单深度点云 4D 潜空间规划](../wiki/entities/paper-jepa4r-2611-19771.md) — 以公制点云和 action-conditioned JEPA 预测构建空间世界模型；训练/规划使用几何潜状态，不等于视频生成式 Joint WAM。
