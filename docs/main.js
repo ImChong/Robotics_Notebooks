@@ -9485,8 +9485,12 @@
       if (nextOpen === chatOpen) return;
       var hadFocus = stack.contains(document.activeElement);
       chatOpen = nextOpen;
+      stack.classList.toggle('is-chat-open', nextOpen);
       if (nextOpen) {
         if (visible) expanded = true;
+        if (window.RNGraphTooltip && typeof window.RNGraphTooltip.hide === 'function') {
+          window.RNGraphTooltip.hide();
+        }
       } else {
         expanded = false;
       }
