@@ -97,6 +97,7 @@ flowchart LR
 - [Generative World Models](../wiki/methods/generative-world-models.md)
 - [Model-Based RL](../wiki/methods/model-based-rl.md)
 - [V-JEPA 2 / 2-AC](../wiki/entities/paper-vjepa2.md) — 视频表征预训练、机器人动作条件后训练与图像目标 CEM 规划的分阶段基座；不是仅凭视频预训练即可直接控制机器人。
+- [SADL：JEPA 表征坍塌的供需几何](../wiki/entities/paper-sadl-2611-21596.md) — Stage 1 训练稳定性：以 H 的激励和传输供给匹配 Z 的需求，补足 BN projector 的上游坍塌盲区；并非独立 WAM 动作头。
 - [LpWM](../wiki/entities/paper-lpwm.md) · [INTACT](../wiki/entities/paper-intact.md) — 分别审计稀疏潜码与意图到动作读出，比较表示、搜索预算与因果历史协议，避免将所有 latent 世界模型视为同一种控制接口。
 - [LeWM](../wiki/entities/paper-lewm.md) 与 [LG-DKGP](../wiki/entities/paper-lg-dkgp.md) — 动作条件潜空间世界模型 + CEM 规划的对照支路；后者学习连续动作提议先验，不能因使用世界模型便自动归为 Cascaded/Joint WAM
 - [SLIM-0.5B](../wiki/entities/paper-slim-05b.md) — 边界对照：Stage-1 IDM/FDM 塑形预测槽，Stage-2 与推理不显式预测未来观测；按本文 Stage 0 的判据，不作为 `future plan → action` 的直接示例。受控 H100 模型推理为 60.6 ms / 增量峰值 4.26 GiB，不能与网页端到端部署数字混用
