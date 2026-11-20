@@ -7,12 +7,14 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-11-19
+updated: 2026-11-20
 related:
   - ../entities/paper-so-arena.md
   - ../entities/paper-science-prediction-universe.md
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
+  - ../entities/frontier-design-benchmark.md
+  - ../entities/gestalt-stealth-design-model.md
   - ../entities/legoflow.md
   - ../methods/enpire.md
   - ../methods/aspire.md
@@ -58,6 +60,8 @@ Agent 因 **多轮、改状态、路径多样** 而比单轮 LLM 更难评；可
 - **Hillclimb 风险：** 在 eval 上改 prompt/skills/harness 易 **过拟合**；需 train/test 拆分、禁粘贴失败 transcript 进 prompt、答案不可被模型直接读取（[claude-api build-eval/hillclimb](../entities/anthropic-claude-api-skill.md) 工作流）。
 
 - **从评测数据到训练闭环：** [LegoFlow](../entities/legoflow.md) 将 GitHub PR 筛成可执行 SWE task，生成 coding-agent 轨迹、训练模型，再把 benchmark 结果回流到下一轮采集策略；它建设的是数据工程管线，与 RLE-Bench 的机器人学习工程资格评测目标不同。
+
+- **设计交付专家偏好测评：** [Frontier Design Benchmark](../entities/frontier-design-benchmark.md) 以真实客户任务与专业设计师两两盲评建立 Elo 排名；[Gestalt (stealth)](../entities/gestalt-stealth-design-model.md) 是匿名参评模型。该榜不是机器人动作成功率基准。
 
 - **真实科学实验结果预测：** [SPU：Science Prediction Universe](../entities/paper-science-prediction-universe.md) 将 outcome 定义为隐藏的湿实验测量排序，隔离 grader 和科学判断同时受检；不是机器人控制或 Sim2Real 基准。
 
@@ -221,6 +225,7 @@ Agent 评测的底层逻辑（出自 Anthropic 工程博文通读）：被评对
 
 - [算子生成 benchmark 论文归档](../../sources/papers/kernel_generation_benchmarks_2025_2026.md)
 
+- [Frontier Design Benchmark 官方一手研究核读](../../sources/sites/contra-frontier-design-benchmark.md)
 - [Artificial Analysis 平台归档](../../sources/sites/artificial-analysis.md)
 - [Demystifying evals 通读归档](../../sources/blogs/anthropic_demystifying_evals_reading_ev3a.md)
 - [Demystifying evals 归档](../../sources/blogs/anthropic_demystifying_evals_ai_agents_2026-01-09.md)
