@@ -8,7 +8,8 @@
 - **官方可读摘要：** https://github.com/AgnesAI-Labs/Agnes-Harness-Technical-Report-Nov-2026/blob/main/REPORT.md
 - **实现仓库：** https://github.com/AgnesAI-Labs/agnes-harness
 - **核对范围：** 已通读官方 REPORT.md 全文、交叉核验官方 AGH README 与架构及启动入口；**未能读取 PDF 原文件**，不能据此声称全文精读、图表逐项核验或独立复现。
-- **通读：** 未完成（PDF 尚未核验；已读完官方网页摘要）
+- **通读：** 未完成
+- **未完成范围：** 原始 PDF 尚未通读；本条仅核对了作者公开 REPORT.md。
 - **入库：** 2026-11-20
 
 ## 关键机制

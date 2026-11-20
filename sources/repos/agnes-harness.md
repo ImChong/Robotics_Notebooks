@@ -26,6 +26,9 @@
 
 核查依据是仓库当前 README、LICENSE、NOTICE 与运行/安全文档；未发现独立项目站。项目自有代码公开不等于已达到生产可用性，也不等于第三方目录内全部文件都采用 Apache-2.0。
 
+- **核对范围：** 已通读官方完整 README.zh-CN.md（含 FDE 用例、架构、插件、安装、限制与许可证），并核对 README.md 主要原文及 docs/develop/architecture.md、source-map.md、quickstart.md、judgment.md、根 agnes.mjs；不声称执行整套代码或真实机器人工况。
+- **通读：** 已完成
+
 ## 2026-11 复核与报告
 
 - 已核对官方 README、docs/develop/architecture.md、docs/develop/source-map.md、docs/guide/quickstart.md、docs/guide/judgment.md 与根 agnes.mjs；**本次未执行构建或真机测试**。

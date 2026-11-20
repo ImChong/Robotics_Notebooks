@@ -4,12 +4,14 @@ project_id: agnes-sys1-1-0-decision-model-technical-report
 project: https://github.com/AgnesAI-Labs/Agnes-Sys1-1.0-Technical-Report
 project_distinction: "独立模型技术报告，并非 AGH 主系统或 AGH RSI 技术报告"
 tags: [paper, decision-model, qwen, llm-agents, model-architecture, test-time-training]
-status: draft
+status: complete
 updated: 2026-11-20
 related:
   - ./agnes-harness.md
   - ./paper-agnes-harness-rsi-technical-report.md
   - ../concepts/llm-robotics-control-interfaces.md
+original:
+  - ../../sources/papers/agnes_sys1_decision_model_technical_report_2026.md
 sources:
   - ../../sources/papers/agnes_sys1_decision_model_technical_report_2026.md
 summary: "Agnes Sys1 1.0 决策模型技术报告：Qwen3.5-9B 的分块双向注意力与候选标签概率，以及请求内 RMSNorm TTT 方案；能力表为团队提供、TTT 无已公布实测结果。"
@@ -99,7 +101,7 @@ flowchart TD
 
 ## 局限与风险
 
-- 原始 PDF 未通读；本次数据来自发布方摘要，未经独立复现。
+- 已核对官方 PAPER.pdf 全部五页的可提取文本与能力表，并与官方 REPORT.md 对照；模型及 TTT 评测仍未独立复现。
 - TTT 报告没有实测收益，同时新增反向传播和缓存重建延迟。
 - 模型权重及训练入口未查得，不能宣称开箱可运行。
 - 快速决策不能绕开设备安全门、权限或人工批准。
@@ -117,7 +119,7 @@ flowchart TD
 ## 参考来源
 
 - [Sys1 官方资料归档](../../sources/papers/agnes_sys1_decision_model_technical_report_2026.md)
-- [PDF 原始报告（待全文核验）](https://github.com/AgnesAI-Labs/Agnes-Sys1-1.0-Technical-Report/blob/main/PAPER.pdf)
+- [已核对 PDF 原始报告（5 页）](https://github.com/AgnesAI-Labs/Agnes-Sys1-1.0-Technical-Report/blob/main/PAPER.pdf)
 - [AGH 判断插件的一手说明](https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/judgment.md)
 
 ## 推荐继续阅读

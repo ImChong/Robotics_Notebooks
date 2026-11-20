@@ -14,6 +14,8 @@ related:
   - ./agent-lightning.md
   - ./paper-agnes-harness-rsi-technical-report.md
   - ./paper-agnes-sys1-decision-model-technical-report.md
+original:
+  - ../../sources/repos/agnes-harness.md
 sources:
   - ../../sources/repos/agnes-harness.md
   - ../../sources/papers/agnes_harness_technical_report_nov_2026.md

@@ -7,8 +7,8 @@
 - **论文 PDF：** https://github.com/AgnesAI-Labs/Agnes-Sys1-1.0-Technical-Report/blob/main/PAPER.pdf
 - **官方可读摘要：** https://github.com/AgnesAI-Labs/Agnes-Sys1-1.0-Technical-Report/blob/main/REPORT.md
 - **相关运行时：** https://github.com/AgnesAI-Labs/agnes-harness
-- **核对范围：** 已通读 REPORT.md（全部 4 部分、公式与团队能力表），核对 AGH docs/guide/judgment.md；**无法直接读取 PDF**，未声称完整报告精读、权重代码复现。
-- **通读：** 未完成（PDF 尚未核验；官方网页摘要已读完）
+- **核对范围：** 已通过 GitHub 内容接口读取官方 PAPER.pdf（5 页、84204 字节）的完整编码内容，解析五页文本流并核对基础模型、分块注意力、LM head、TTT §§3.1–3.5、性能表及引用；已对照 REPORT.md、AGH docs/guide/judgment.md。未执行训练/推理或复现基准。
+- **通读：** 已完成
 - **入库：** 2026-11-20
 
 ## 关键机制
