@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | 深蓝AI DNN/CNN/RNN/GAN：结构与对抗训练维度纠偏
+
+- 收录用户提供的公众号完整文字，保留原始链接、读稿范围与网页图片未核验说明；不转载全文。
+- 新增独立对比节点，复用 MLP/CNN/RNN/GAN 已有概念页，关联模型架构纵深路线 Stage 1。
+- 以 LeCun/LSTM/Goodfellow 一手资料核对关键原理，区分「平移等变 / 不变」以及「DNN / MLP」。
+
 ## [2026-11-20] ingest | A Society of AI Scientists | 科研 Agent 社区观察与可执行审稿
 
 - 意图：归档 alphaXiv Exclusive 论文的观察队列、公开数据、agent 审稿与可执行审计，对照机器人自动研究的外部验证边界。
