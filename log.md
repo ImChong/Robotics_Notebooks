@@ -527,6 +527,14 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | Lumina 触觉 Scaling：异构传感器、事件数据与跨本体表征
+
+- 意图：将 Lumina具身智能文章的六种传感路线、四层跨硬件差异和数据基础设施机会整理为工程选型对照。
+- 来源：`sources/blogs/wechat_lumina_tactile_scaling_2026-11-20.md`（全文由用户提供；公众号网页本次独立打开失败，图片未核验）。
+- 对照页：`wiki/comparisons/tactile-scaling-data-infrastructure-2026.md`；挂到触觉感知和 Contact-Rich Stage 3。
+- 一手核验：Sparsh、T3、AnyTouch、FTP-1、LingBot-Touch、T-Rex、TacSL、Taccel、Tactile Genesis 的官方资料和统计口径。
+- 结论：跨硬件的“共享表示”与“控制闭环”是两个分层问题；FTP-1 未见传感器实验仍要求 encoder 适配，Taccel 915 FPS 为 4096 环境总吞吐。复用已有独立论文节点，未重复建页；未运行代码或真机。
+
 ## [2026-11-20] ingest | 多模空间11月上半月具身智能风向标
 - **意图：** 将九篇重点论文按问题组织为 VLA 技术地图和独立 canonical 实体，防止只列论文清单。
 - **去重：** AnyCamVLA 与 A³-VLA 复用已存节点，另外七篇新建详情。
