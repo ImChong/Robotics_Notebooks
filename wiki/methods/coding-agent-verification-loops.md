@@ -8,7 +8,7 @@ tags:
   - testing
   - human-in-the-loop
 status: complete
-updated: 2026-11-18
+updated: 2026-11-20
 summary: "Coding Agent 验证闭环将 E2E、属性测试、差分测试和独立评审组成有证据的交付门禁；强调在真实系统运行、按 diff 触发可靠性检查、隔离审查规则，并用事故反例持续校准验证器。"
 related:
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
@@ -19,6 +19,7 @@ related:
   - ../concepts/test-driven-development.md
   - ../entities/open-code-review.md
   - ../queries/real-robot-policy-autoresearch-harness.md
+  - ../entities/paper-3d-gamedev-arena.md
 original:
   - ../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md
 sources:
@@ -133,6 +134,10 @@ flowchart TD
 ## 与风险分级评审的衔接
 
 **验证回答“实际运行是否有证据支持正确”，评审回答“剩余风险是否允许合并”。** 两者在 Claude Code 团队的工程文章中是前后关联的门禁，但通过 E2E 不等于通过安全审查，也不等于无需人工批准。风险分级、审查器校准与回滚的具体分工见 [Coding Agent 验证 vs 代码评审](../comparisons/coding-agent-verification-vs-code-review.md)。
+
+### 从功能验收延伸到人类体验偏好
+
+[3D GameDev Arena（arXiv:2611.24073）](../entities/paper-3d-gamedev-arena.md) 将从零构建浏览器游戏的功能规则、代理试玩和人类盲选分成三层；说明功能测试通过与真正的用户体验偏好不能等同。该研究**不是机器人现场安全测试**。
 
 ## 关联页面
 
