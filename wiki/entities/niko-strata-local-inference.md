@@ -34,6 +34,10 @@ summary: "Niko1221/Strata 是面向普通 PC 的本地大模型推理与桌面/�
 | CLI | Command-Line Interface | 终端运行入口 |
 | API | Application Programming Interface | 向本地编码工具公开模型服务 |
 
+## 为什么重要
+
+个人 Agent 若希望减少对远程 API 的依赖，需要可在本机启动、供聊天和编码工具调用的模型推理服务。Strata 专注模型加载与推理，和长期记忆库、浏览器自动化或任务调度属于不同软件层，选型时应分别验证。
+
 ## 技术结构
 
 - 官方 README 支持本地桌面应用、终端安装、模型选择与编码工具接入。
@@ -80,6 +84,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 本地推理模型可作为编码 Agent 的模型端，最终代码正确性仍由测试验证。
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 任务级多 Agent 编排与 Strata 模型推理是不同层，可组合但不能混为一谈。
 - [PolyStrata 本地多引擎推理](polystrata-local-inference.md) — 对部分模型复用该引擎。
 - [Linger 个人 Agent](linger-personal-agent.md) — 推理后端上层的代理应用。
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 明确推理系统与记忆子系统的区别。

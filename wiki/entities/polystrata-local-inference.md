@@ -32,6 +32,10 @@ summary: "PolyStrata 在普通 PC 上运行多种大模型，利用 GPU/RAM/SSD 
 | RAM | Random Access Memory | 系统内存，保存温专家或离卡参数 |
 | API | Application Programming Interface | 应用/Agent 调用推理服务的接口 |
 
+## 为什么重要
+
+MoE 模型的总权重可显著大于单张消费级显卡显存。PolyStrata 尝试将低频专家放在 RAM/SSD，从而让编码 Agent 在本机使用更大的模型；这解决的是推理存储层级问题，而不是 Agent 记忆或任务规划。
+
 ## 核心机制
 
 - **热/温/冷专家**：常用专家优先放入显存，其余驻留 RAM/SSD 并按使用行为调度；硬件可承载的模型总参数量不等于实时显存。
@@ -80,12 +84,20 @@ sequenceDiagram
 
 `polystrata.py` 也能连接已运行的服务并执行模型切换；上图是**尚未运行本地服务时**的入口分支，不代表所有参数路径。
 
+## 工程实践
+
+- 使用官方 `polystrata.py --list-models` 核验已安装模型；按 README 的安装步骤准备权重及服务。
+- 本地聊天或基准测试可通过 `polystrata.py --model <name>` 与 `polystrata.py benchmark --model <name>` 触发。源码会先探测本地服务状态，没有可用服务时才启动新进程。
+- 测试需同时记录显存占用、RAM、SSD IO、首次加载延迟与稳定 token/s；保持模型版本、量化格式与上下文长度一致，避免单凭标称总参数量判断性能。
+
 ## 局限与选型
 
 本机资源足以存放模型，不等于有足够内存带宽达到宣传吞吐。需确认 SSD IO、显存、量化、模型许可证及每秒 token 实测。多引擎适配仍有模型支持边界，不能无条件替代通用推理后端。
 
 ## 关联页面
 
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 本地大模型产生代码后仍需独立执行测试，吞吐高不等于任务通过率高。
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — PolyStrata 是可供工作流调用的模型服务，不承担多 Agent 编排。
 - [Strata（Niko）推理引擎](niko-strata-local-inference.md) — 复用关系。
 - [Linger 个人 Agent](linger-personal-agent.md) — 上层任务编排、电脑执行和记忆系统。
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 推理与持久知识系统的边界。

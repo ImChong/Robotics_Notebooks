@@ -32,6 +32,10 @@ summary: "Linger 是本地部署的个人 Agent 应用层：将私有工作 Wiki
 | CLI | Command-Line Interface | Agent 向 TeamHub 发送消息与任务的接口 |
 | API | Application Programming Interface | 运行时请求模型和业务服务的契约 |
 
+## 为什么重要
+
+个人 Agent 要把长期工作状态、周期任务、跨应用资料和可执行电脑操作连接起来，光有本地模型推理还不够。Linger 的原始架构明确区分用户知识 Wiki、独立 Agent 记忆、任务 Runtime、服务端权限与电脑动作 Guardrail，为端到端系统选型提供组件边界。
+
 ## 主要结构
 
 - **交互**：Room / Chat 接收消息、文件、日常任务；Computer Daemon 通过主动发起的 WebSocket 连接运行环境。
@@ -91,8 +95,14 @@ sequenceDiagram
 - 本地推理不等于**所有外部集成数据绝不离机**，用户主动接入在线服务后仍须核对真实数据流、权限和模型运行位置。
 - 与机器人领域关系：可借鉴任务编排、长期知识图、工具安全闸门；它没有提供真机实时控制的验证。
 
+## 局限与风险
+
+README 和架构文档提供实现路径，但本次未运行完整部署或验证外部账号权限。浏览器/电脑操作有误触及外部不可逆动作的风险；Guardrail 是风险控制层，不代表所有错误都能被阻断。用户自愿接入邮箱、聊天和第三方模型时，应逐项审核其数据流与授权范围。
+
 ## 关联页面
 
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 对照 Linger 常驻多上下文 Runtime 与按任务临时编排的工作流。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 为 Agent 使用 Shell/Browser 后的状态检查、失败回滚与人工审批提供方法参考。
 - [PolyStrata 本地推理](polystrata-local-inference.md) — 模型算力后端。
 - [Strata 本地推理引擎](niko-strata-local-inference.md) — 部分模型的引擎来源。
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 从对话到持久知识更新。

@@ -34,6 +34,10 @@ summary: "Jeremy Kamber 的 Strata Memory 以 Markdown 活跃层和降温层、J
 | LRU | Least Recently Used | 根据最近访问情况决定降级/回收 |
 | JSON | JavaScript Object Notation | 冷归档序列化存储 |
 
+## 为什么重要
+
+长期运行的 Agent 会同时积累日常对话、项目约定和少数关键决策；若所有内容持续驻留在同一上下文或同一检索优先级，过期记录会干扰当前任务。该实现用可配置的时间与访问规则分层，突出可追溯、可恢复，而不是要求模型每次评估全部历史。
+
 ## 核心机制
 
 | 层 | 当前代码行为 |
@@ -91,6 +95,12 @@ sequenceDiagram
 
 可用 `pip install git+https://github.com/jeremykamber/strata-memory.git` → `strata init` → `strata add/search/maintenance` 试用。上述运行序列按已读源码归纳，并未本次实跑。
 
+## 工程实践
+
+- 从 `strata init` 与 `strata add` 开始，先用 `strata search` 验证 active/cooling 记忆是否可检索。
+- 执行 `strata migrate --dry-run` 预览迁移，再用 `strata maintenance` 执行 Janitor 的移动、归档与回升，必要时检查 archive/JSON 和 Shadow Index 的恢复路径。
+- 关键安全流程和长期有效的系统约束不宜仅凭最后访问时间自动降级；固定阈值应随项目类别评估。LLM Distiller 是可选知识抽取，不是 Janitor 规则迁移的必要前提。
+
 ## 早期博客与当前代码区别
 
 作者 2026-05-05 博客描述**计划中的中层**为 PostgreSQL/pgvector `agent-db`，以及迁移时 LLM 压缩；当前开源 README 和 Janitor 代码则使用 `cooled/` Markdown + 规则搬运，LLM Distiller 是可选、独立的会话提取组件。**不能把博客设计直接当成当下实际代码。**
@@ -101,6 +111,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 对照当前任务编排与跨任务持久文件层的职责。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 归档记忆回升后，必须验证其中的版本与修复决策是否仍适用。
 - [Kytheros Strata MCP](kytheros-strata-mcp-memory.md) — 侧重质量门、跨 CLI 检索。
 - [STRATA 经验图](paper-strata-experience-graphs.md) — 侧重结构归纳与负迁移防护。
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 以重写/纠错对比分层迁移。
