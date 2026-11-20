@@ -240,6 +240,7 @@ flowchart LR
 - 若做机器人：把 [真机 autoresearch harness 指南](../wiki/queries/real-robot-policy-autoresearch-harness.md) 的选型表填完，确认自己缺的是环境、评估还是改进范式
 
 ### 推荐读什么
+- [A Society of AI Scientists（2026-11）](../wiki/entities/paper-society-of-ai-scientists.md) — 35 个实验室、936 个科研 Agent 的观察性社区研究：公开纠错、负结果、可执行审稿和新颖性瓶颈；**不是 ignition 或机器人实验成功的证据**。
 - [OpenAI Research acceleration: The jagged frontier（2026-11）](../wiki/entities/openai-research-acceleration-jagged-frontier.md) — 观察性输入/过程/产出测量：2–4 小时任务零干预成功率 23%→46%，但 79% 训练监控与 25% 推理服务栈编码显示能力边界；活动数据不是完全 RSI 的因果证据。
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — 三情景、Amdahl 瓶颈与"怎么读内部数字"对照表
 - [From AGI to ASI](../wiki/entities/paper-from-agi-to-asi.md) — DeepMind 的四条能力路径与六类瓶颈；与 RSI 机制勿混读
