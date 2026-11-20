@@ -972,6 +972,25 @@
       '  return outXZ;\n' +
       '}\n';
 
+    var lambertSphereGLSL =
+      'vec3 srgbToLinear(vec3 c) {\n' +
+      '  vec3 lo = c * 0.0773993808;\n' +
+      '  vec3 hi = pow(max(c * 0.9478672986 + vec3(0.0521327014), vec3(0.000001)), vec3(2.4));\n' +
+      '  return mix(lo, hi, step(vec3(0.04045), c));\n' +
+      '}\n' +
+      'vec3 linearToSrgb(vec3 c) {\n' +
+      '  vec3 clamped = max(c, vec3(0.0));\n' +
+      '  vec3 lo = clamped * 12.92;\n' +
+      '  vec3 hi = pow(max(clamped, vec3(0.000001)), vec3(0.41666667)) * 1.055 - vec3(0.055);\n' +
+      '  return clamp(mix(lo, hi, step(vec3(0.0031308), clamped)), 0.0, 1.0);\n' +
+      '}\n' +
+      'vec3 shadeLambertSphere(vec3 baseSrgb, vec3 nView, vec3 lightDirView) {\n' +
+      '  vec3 baseLin = srgbToLinear(baseSrgb);\n' +
+      '  float dotNL = clamp(dot(nView, normalize(lightDirView)), 0.0, 1.0);\n' +
+      '  vec3 litLin = baseLin * (0.60382734 + 0.6 * dotNL);\n' +
+      '  return linearToSrgb(litLin);\n' +
+      '}\n';
+
     var terrainVS = headV +
       attr + 'vec2 aXZ;\n' +
       attr + 'float aH;\n' +
@@ -1152,26 +1171,18 @@
     var solidFS = headF + outDecl + derivFn + '\n' +
       varyF + 'vec2 vUv;\n' +
       varyF + 'vec4 vColor;\n' +
-      'uniform float uIsDark;\n' +
+      'uniform vec3 uLightDirView;\n' +
+      lambertSphereGLSL +
       'void main() {\n' +
       '  float r2 = dot(vUv, vUv);\n' +
       '  if (r2 > 1.0) discard;\n' +
       '  float r = sqrt(r2);\n' +
       '  float z = sqrt(max(0.0, 1.0 - r2));\n' +
       '  vec3 N = vec3(vUv.x, vUv.y, z);\n' +
-      '  vec3 L = normalize(vec3(0.34, 0.56, 0.75));\n' +
-      '  vec3 H = normalize(L + vec3(0.0, 0.0, 1.0));\n' +
-      '  float diff = clamp(dot(N, L), 0.0, 1.0);\n' +
-      '  float spec = pow(max(dot(N, H), 0.0), 26.0);\n' +
-      '  float rim = pow(1.0 - z, 2.3);\n' +
-      '  vec3 baseCol = vColor.rgb;\n' +
-      '  vec3 lit = baseCol * mix(0.60, 1.15, diff)\n' +
-      '    + mix(baseCol, vec3(1.0), 0.78) * spec * (uIsDark > 0.5 ? 0.36 : 0.28)\n' +
-      '    + mix(baseCol, vec3(1.0), 0.45) * rim * (uIsDark > 0.5 ? 0.22 : 0.12);\n' +
+      '  vec3 lit = shadeLambertSphere(vColor.rgb, N, uLightDirView);\n' +
       '  float aa = max(gradMag(r, vec2(0.025)), 0.014);\n' +
-      '  float edgeAlpha = 1.0 - smoothstep(1.0 - aa * 1.6, 1.0, r);\n' +
-      '  float ring = smoothstep(0.84, 0.94, r) * (1.0 - smoothstep(0.97, 1.0, r));\n' +
-      '  lit = mix(lit, mix(baseCol, vec3(1.0), uIsDark > 0.5 ? 0.46 : 0.22), ring * 0.30);\n' +
+      '  float edgeAlpha = 1.0 - smoothstep(1.0 - aa * 1.4, 1.0, r);\n' +
+      '  if (edgeAlpha < 0.02) discard;\n' +
       '  ' + outAssign + ' = vec4(lit, vColor.a * edgeAlpha);\n' +
       '}\n';
 
@@ -1184,6 +1195,7 @@
       'uniform float uHeightScale;\n' +
       'uniform float uForceSettle;\n' +
       varyV + 'vec4 vColor;\n' +
+      varyV + 'float vPointSize;\n' +
       forceMotionGLSL +
       'void main() {\n' +
       '  vec2 mXZ = applyForceMotion(aPos.xz, uForceSettle, 0.026);\n' +
@@ -1191,21 +1203,28 @@
       '  vColor = aColor;\n' +
       '  gl_Position = uViewProj * vec4(pos, 1.0);\n' +
       '  float popScale = mix(0.62, 1.0, smoothstep(0.0, 0.35, uForceSettle));\n' +
-      '  gl_PointSize = clamp(aSize * popScale * uPointScale / max(0.45, gl_Position.w), 2.5, 64.0);\n' +
+      '  float ptSize = clamp(aSize * popScale * uPointScale / max(0.45, gl_Position.w), 2.5, 64.0);\n' +
+      '  gl_PointSize = ptSize;\n' +
+      '  vPointSize = ptSize;\n' +
       '}\n';
 
     var pointFS = headF + outDecl +
       varyF + 'vec4 vColor;\n' +
+      varyF + 'float vPointSize;\n' +
+      'uniform vec3 uLightDirView;\n' +
+      lambertSphereGLSL +
       'void main() {\n' +
       '  vec2 pc = gl_PointCoord * 2.0 - 1.0;\n' +
       '  float r2 = dot(pc, pc);\n' +
       '  if (r2 > 1.0) discard;\n' +
+      '  float r = sqrt(r2);\n' +
       '  float z = sqrt(max(0.0, 1.0 - r2));\n' +
       '  vec3 N = vec3(pc.x, -pc.y, z);\n' +
-      '  float diff = clamp(dot(N, normalize(vec3(0.34, 0.56, 0.75))), 0.0, 1.0);\n' +
-      '  float edge = 1.0 - smoothstep(0.76, 1.0, r2);\n' +
-      '  vec3 col = vColor.rgb * mix(0.68, 1.14, diff) + vec3(0.18) * pow(max(0.0, diff), 8.0);\n' +
-      '  ' + outAssign + ' = vec4(col, vColor.a * edge);\n' +
+      '  vec3 lit = shadeLambertSphere(vColor.rgb, N, uLightDirView);\n' +
+      '  float aa = clamp(2.2 / max(vPointSize, 2.5), 0.03, 0.35);\n' +
+      '  float edgeAlpha = 1.0 - smoothstep(1.0 - aa, 1.0, r);\n' +
+      '  if (edgeAlpha < 0.02) discard;\n' +
+      '  ' + outAssign + ' = vec4(lit, vColor.a * edgeAlpha);\n' +
       '}\n';
 
     return {
@@ -1264,7 +1283,8 @@
     var ptPosBuf = gl.createBuffer();
     var ptSizeBuf = gl.createBuffer();
     var ptColBuf = gl.createBuffer();
-    var ptCount = 0;
+    var ptOpaqueCount = 0;
+    var ptDimCount = 0;
 
     var width = 1200;
     var height = 800;
@@ -1290,8 +1310,8 @@
 
     var tLoc = resolveLocs(terrainProg, ['aXZ', 'aH', 'aGrad'], ['uViewProj', 'uHeightAmp', 'uHeightScale', 'uForceSettle', 'uEye', 'uBg', 'uIsDark', 'uContours', 'uExtent', 'uGlintPhase']);
     var lLoc = resolveLocs(lineProg, ['aPos', 'aColor'], ['uViewProj', 'uExtent', 'uHeightScale', 'uForceSettle', 'uFadeStart']);
-    var sLoc = resolveLocs(solidProg, ['aCenter', 'aQuad', 'aInstColor'], ['uViewProj', 'uCamRight', 'uCamUp', 'uIsDark', 'uHeightScale', 'uForceSettle']);
-    var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uPointScale', 'uHeightScale', 'uForceSettle']);
+    var sLoc = resolveLocs(solidProg, ['aCenter', 'aQuad', 'aInstColor'], ['uViewProj', 'uCamRight', 'uCamUp', 'uLightDirView', 'uHeightScale', 'uForceSettle']);
+    var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uPointScale', 'uLightDirView', 'uHeightScale', 'uForceSettle']);
 
     function resize(w, h, nextDpr) {
       width = Math.max(1, Math.round(w));
@@ -1440,18 +1460,27 @@
         }
       }
 
-      // Background points buffer (remaining lower-degree nodes on large graphs, sharing exact world baseRadius)
-      var bgPts = [];
-      var bgSizes = [];
-      var bgCols = [];
+      // Background points buffer (remaining lower-degree nodes on large graphs, sharing exact world baseRadius; opaque first, dimmed second)
+      var opaquePts = [];
+      var dimPts = [];
       for (i = 0; i < cachedNodes3d.length; i++) {
         var bn = cachedNodes3d[i];
         if (polySet[bn.node.id]) continue;
-        bgPts.push(bn.wx, bn.wy, bn.wz);
-        bgSizes.push(bn.baseRadius);
-        bgCols.push(bn.rgb[0], bn.rgb[1], bn.rgb[2], bn.alpha * 0.88);
+        if (bn.alpha >= 0.5) opaquePts.push(bn);
+        else dimPts.push(bn);
       }
-      ptCount = bgPts.length / 3;
+      var orderedPts = opaquePts.concat(dimPts);
+      var bgPts = [];
+      var bgSizes = [];
+      var bgCols = [];
+      for (i = 0; i < orderedPts.length; i++) {
+        var pb = orderedPts[i];
+        bgPts.push(pb.wx, pb.wy, pb.wz);
+        bgSizes.push(pb.baseRadius);
+        bgCols.push(pb.rgb[0], pb.rgb[1], pb.rgb[2], pb.alpha);
+      }
+      ptOpaqueCount = opaquePts.length;
+      ptDimCount = dimPts.length;
       gl.bindBuffer(gl.ARRAY_BUFFER, ptPosBuf);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(bgPts), gl.STATIC_DRAW);
       gl.bindBuffer(gl.ARRAY_BUFFER, ptSizeBuf);
@@ -1931,16 +1960,17 @@
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, terrainIdxBuf);
       gl.drawElements(gl.TRIANGLES, terrainIdxCount, gl.UNSIGNED_SHORT, 0);
 
-      // 2. Round 3D Hub Spheres (opaque pass before translucent arcs)
+      // 2. Round 3D Hub Spheres & Opaque Low-Degree Orbs (opaque depth-writing passes before translucent arcs)
       var camRight = [cam.view[0], cam.view[4], cam.view[8]];
       var camUp = [cam.view[1], cam.view[5], cam.view[9]];
+      var lightDirView = [cam.view[4], cam.view[5], cam.view[6]];
       if (solidOpaqueVertCount > 0) {
         activeAttrs = {};
         gl.useProgram(solidProg);
         gl.uniformMatrix4fv(sLoc.u.uViewProj, false, cam.viewProj);
         gl.uniform3f(sLoc.u.uCamRight, camRight[0], camRight[1], camRight[2]);
         gl.uniform3f(sLoc.u.uCamUp, camUp[0], camUp[1], camUp[2]);
-        gl.uniform1f(sLoc.u.uIsDark, isDarkTheme ? 1 : 0);
+        gl.uniform3f(sLoc.u.uLightDirView, lightDirView[0], lightDirView[1], lightDirView[2]);
         gl.uniform1f(sLoc.u.uHeightScale, heightScale);
         gl.uniform1f(sLoc.u.uForceSettle, forceSettle);
         bindAttrib(sLoc.a.aCenter, solidPosBuf, 3, activeAttrs);
@@ -1948,6 +1978,22 @@
         bindAttrib(sLoc.a.aInstColor, solidInstColBuf, 4, activeAttrs);
         useAttrs(activeAttrs);
         gl.drawArrays(gl.TRIANGLES, 0, solidOpaqueVertCount);
+      }
+
+      // 2b. Opaque Background Low-Degree Round Node Orbs (depth-written Lambert spheres matching 3D view)
+      if (ptOpaqueCount > 0) {
+        activeAttrs = {};
+        gl.useProgram(pointProg);
+        gl.uniformMatrix4fv(pLoc.u.uViewProj, false, cam.viewProj);
+        gl.uniform1f(pLoc.u.uPointScale, height * dpr * 2.605089);
+        gl.uniform3f(pLoc.u.uLightDirView, lightDirView[0], lightDirView[1], lightDirView[2]);
+        gl.uniform1f(pLoc.u.uHeightScale, heightScale);
+        gl.uniform1f(pLoc.u.uForceSettle, forceSettle);
+        bindAttrib(pLoc.a.aPos, ptPosBuf, 3, activeAttrs);
+        bindAttrib(pLoc.a.aSize, ptSizeBuf, 1, activeAttrs);
+        bindAttrib(pLoc.a.aColor, ptColBuf, 4, activeAttrs);
+        useAttrs(activeAttrs);
+        gl.drawArrays(gl.POINTS, 0, ptOpaqueCount);
       }
 
       // Translucent overlay layers share read-only depth test against terrain & solids
@@ -1968,19 +2014,20 @@
         gl.drawArrays(gl.LINES, 0, lineVertCount);
       }
 
-      // 4. Background Low-Degree Round Node Orbs (pixel-exact match to solidProg world radius)
-      if (ptCount > 0) {
+      // 4. Dimmed Background Low-Degree Round Node Orbs (focus/filter mode)
+      if (ptDimCount > 0) {
         activeAttrs = {};
         gl.useProgram(pointProg);
         gl.uniformMatrix4fv(pLoc.u.uViewProj, false, cam.viewProj);
         gl.uniform1f(pLoc.u.uPointScale, height * dpr * 2.605089);
+        gl.uniform3f(pLoc.u.uLightDirView, lightDirView[0], lightDirView[1], lightDirView[2]);
         gl.uniform1f(pLoc.u.uHeightScale, heightScale);
         gl.uniform1f(pLoc.u.uForceSettle, forceSettle);
         bindAttrib(pLoc.a.aPos, ptPosBuf, 3, activeAttrs);
         bindAttrib(pLoc.a.aSize, ptSizeBuf, 1, activeAttrs);
         bindAttrib(pLoc.a.aColor, ptColBuf, 4, activeAttrs);
         useAttrs(activeAttrs);
-        gl.drawArrays(gl.POINTS, 0, ptCount);
+        gl.drawArrays(gl.POINTS, ptOpaqueCount, ptDimCount);
       }
 
       // 4b. Dimmed Background Hub Spheres (focus/filter mode)
@@ -1990,7 +2037,7 @@
         gl.uniformMatrix4fv(sLoc.u.uViewProj, false, cam.viewProj);
         gl.uniform3f(sLoc.u.uCamRight, camRight[0], camRight[1], camRight[2]);
         gl.uniform3f(sLoc.u.uCamUp, camUp[0], camUp[1], camUp[2]);
-        gl.uniform1f(sLoc.u.uIsDark, isDarkTheme ? 1 : 0);
+        gl.uniform3f(sLoc.u.uLightDirView, lightDirView[0], lightDirView[1], lightDirView[2]);
         gl.uniform1f(sLoc.u.uHeightScale, heightScale);
         gl.uniform1f(sLoc.u.uForceSettle, forceSettle);
         bindAttrib(sLoc.a.aCenter, solidPosBuf, 3, activeAttrs);
