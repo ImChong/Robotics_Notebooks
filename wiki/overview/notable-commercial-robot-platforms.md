@@ -1,11 +1,17 @@
 ---
 type: overview
 updated: 2026-11-20
+status: complete
 summary: "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
+original:
+  - ../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md
+  - ../../sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md
+  - ../../sources/sites/agility-robotics.md
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
   - ../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md
   - ../../sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md
+  - ../../sources/sites/agility-robotics.md
 related:
   - ./china-embodied-ai-labs-landscape-2026.md
   - ./overseas-embodied-ai-labs-landscape-2026.md
@@ -49,11 +55,15 @@ related:
 - 你需要对标的是 **科研易获得硬件**（如宇树）、**工业落地闭环**（如 Agility / Apptronik）、还是 **全栈 AI 叙事**（如 Figure / Sanctuary）。
 - 四足与人形的 **供应商重叠**（例如同一家公司既做四足又做人形）会影响采购、售后与仿真资产迁移策略。
 
-## 人形：常见「阵营」速览
+## 核心机制：平台阵营与路线分层
+
+本页不列产品推销清单，而是按**商业场景定位 + 产学研孵化谱系**把高频平台分成三条线索来读，并与本库[公司技术路线对照](../comparisons/robot-foundation-model-company-paths-2026.md)互补。
+
+### 人形：常见「阵营」速览
 
 下列品牌在英文科技媒体、国内产业报道与展会中曝光度较高；**不等同于性能排名**，亦不构成采购建议。
 
-### 北美 / 全球化总部（全能与物流叙事）
+#### 北美 / 全球化总部（全能与物流叙事）
 
 | 品牌（例子） | 典型标签 | 本库延伸阅读 |
 |--------------|-----------|----------------|
@@ -88,7 +98,7 @@ related:
 | Kyber Labs（Brooklyn） | **背驱动仿人灵巧手** + 双臂操作平台；**skills-based AI**；明确不做整机人形 | [Kyber Labs](../entities/kyber-labs.md) |
 | RLWRLD（瑞沃世界） | 不卖整机；公开 **All Hands Up** 腕装灵巧手画廊 / Kapandji 对照，服务 [RLDX-1](../entities/rldx-1.md) 跨手选型 | [All Hands Up](../entities/all-hands-up.md) |
 
-## 四足与腿足：常见平台
+### 四足与腿足：常见平台
 
 | 类型 | 代表厂商 / 产品 | 说明 |
 |------|-------------------|------|
@@ -98,11 +108,18 @@ related:
 | 国内行业四足 | DEEP Robotics **绝影** 系列 | 电力、应急、测绘等场景常见 |
 | 开发者生态 | 小米 **CyberDog** 等 | 偏品牌与开发者社区，迭代快 |
 
-## 常见误区
+## 工程实践：选型与复现核查口径
 
-- **曝光量 ≠ 可买性 ≠ 可复现性**：概念车、实验室样机与稳定供货三者差别很大。
-- **「全栈自研 AI」与「运控扎实」不总在一个团队**：评估时要拆开看硬件、中间件、策略层与数据管线。
-- **国内四足 ≠ 只有一家**：除宇树外，云深处、小米等在垂直场景同样高频出现，选型要看场景认证与售后而不是只看参数表。
+1. **先分「可采购平台 / 公开 SDK / 闭源服务」**：例如 Agility Robotics（Digit）聚焦 B2B 客户驻场 CAP/RaaS 与工业安全工作站验收，现役商业栈全闭源；科研团队若需开放硬件或可复现 RL 入口，应转向 [Unitree G1](../entities/unitree-g1.md) 或 [开源人形硬件](../entities/open-source-humanoid-hardware.md)。
+2. **产学研谱系溯源**：结合 [国内 50 所](./china-embodied-ai-labs-landscape-2026.md) 与 [海外 43 所](./overseas-embodied-ai-labs-landscape-2026.md) 实验室地图，可核查商业品牌背后的早期学术动力学或学习控制谱系（如 CLEAR → LimX、ETH RSL → ANYbotics、OSU DRL → Agility）。
+3. **跨层对齐技术细节**：确认平台定位后，进入 [主流人形机器人硬件对比](../queries/hardware-comparison.md) 对照质量/功率/传动参数，并进入各实体页核对代码/权重开放状态。
+
+## 局限与风险
+
+- **曝光量 ≠ 可买性 ≠ 可复现性：** 概念原型、实验室样机与稳定商业供货差别极大；演示视频不代表真实产线 uptime 或 ROI。
+- **「全栈自研 AI」与「运控扎实」不总在一个团队：** 评估时要拆开核查硬件执行器、底层安全/中间件、策略层与真实部署数据管线。
+- **国内四足 ≠ 只有一家：** 除宇树外，云深处、小米等在垂直场景同样高频出现，选型要看场景认证与售后而不是只看参数表。
+- **索引边界与时效：** 本页综合的深蓝公众号国内外实验室盘点数据截至于 2026-07，`sources/repos/notable-commercial-robot-platforms.md` 为多品牌官方入口导航清单（本轮仅对 Agility Robotics 等已建档案实体作了深度官网核查，其余清单条目以各自实体页最新核查为准）。
 
 ## 关联页面
 
@@ -123,6 +140,9 @@ related:
 ## 参考来源
 
 - [notable-commercial-robot-platforms](../../sources/repos/notable-commercial-robot-platforms.md)
+- [国内 50 所具身智能实验室盘点归档（2026-07，已通读）](../../sources/blogs/wechat_shenlan_china_embodied_labs_50_2026.md)
+- [海外 43 所具身智能实验室盘点归档（2026-08，已通读）](../../sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md)
+- [Agility Robotics 官网与技术/安全/开源核查（2026-11-20）](../../sources/sites/agility-robotics.md)
 
 ## 推荐继续阅读
 

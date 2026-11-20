@@ -10,6 +10,8 @@
 - **入库日期：** 2026-08-01
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；`--no-images`；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始落盘：** [`sources/raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/article.md`](../raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/article.md)
+- **通读：** 已完成
+- **通读核验：** 2026-11-20 逐行通读完整归档正文（399 行，覆盖美/英/日/韩/新/瑞/加/澳/荷/挪 43 所海外实验室条目及文末截止声明）；此标记表示通读作者归档正文，非逐一实地核实各实验室主页最新变更。
 - **姊妹篇：** [国内 50 所](wechat_shenlan_china_embodied_labs_50_2026.md)（<https://mp.weixin.qq.com/s/58c4CgN9XVmtS_RMKbqeKw>）
 - **一句话说明：** 接续国内篇，按国家/地区盘点海外约 43 所高校具身智能与机器人实验室（美 / 英 / 日 / 韩 / 新加坡 / 瑞士 / 加 / 澳 / 荷 / 挪等）；数据截至 2026-07，不分排名；强调 PI、研究方向与衍生企业。
 
@@ -79,3 +81,8 @@
 - [x] 国家分区归纳 + 升格 overview 枢纽页
 - [x] 与国内姊妹篇交叉链接
 - [ ] 未为全部 43 所实验室各建独立实体页（按需后续拆分）
+
+## 原文通读核验（2026-11-20）
+
+- **覆盖范围：** 逐行阅读 [`sources/raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/article.md`](../raw/wechat_shenlan_overseas_embodied_labs_43_2026-08-01/article.md) 全部 399 行，核对美、英、日、韩、新加坡、瑞士、加拿大、澳大利亚、荷兰、挪威 10 国 43 所高校实验室 PI 履历、衍生企业与代表论文。
+- **证据口径：** 公众号作者按公开报道与实验室官网手工整理，数据截至 2026-07 且声明「不分排名先后」；衍生商业公司与技术节点仍需以其官方一手文档核查。
