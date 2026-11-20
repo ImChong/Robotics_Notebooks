@@ -13,6 +13,7 @@ summary: "单图与相机轨迹先生成空间连贯视频，再用 VIPE + Depth
 related:
   - ../comparisons/open-source-world-models-11-2026.md
   - ../methods/generative-world-models.md
+  - ../tasks/autonomous-exploration.md
   - ../concepts/video-as-simulation.md
 original:
   - ../../sources/papers/lyra-2_arxiv_2604_13036.md
@@ -136,6 +137,7 @@ README 在 1×H100 80GB 上报告生成 80 帧约 9 分钟，使用 DMD 可约 3
 
 ## 关联页面
 
+- [自主探索任务](../tasks/autonomous-exploration.md) — 本项目提供可探索环境或观测生成；对照真实导航闭环时仍需独立策略、定位与物理校验。
 - [2026 年 11 项开源世界模型技术对照](../comparisons/open-source-world-models-11-2026.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video as Simulation](../concepts/video-as-simulation.md)
