@@ -89,6 +89,7 @@ flowchart LR
 - 在纸上画出一条 Cascaded 管线的信息流：观测 → 未来表征 → IDM / 动作头 → 控制
 
 ### 推荐读什么
+- [2026 开源世界模型 11 项技术对照](../wiki/comparisons/open-source-world-models-11-2026.md) — Stage 1 的横向选型入口；区分可玩视频、可执行引擎、3D 世界资产与 latent 想象模型，避免把视觉生成当作物理控制。
 - [Doppel：渲染机器人再预测未来](../wiki/entities/paper-doppel.md) — 跨本体世界模型，明确条件渲染/相机标定与动作数值的职责。
 - [JEPA4R：单深度点云 4D 潜空间规划](../wiki/entities/paper-jepa4r-2611-19771.md) — 以公制点云和 action-conditioned JEPA 预测构建空间世界模型；训练/规划使用几何潜状态，不等于视频生成式 Joint WAM。
 - [PixVid：逐帧像素视频生成](../wiki/entities/paper-pixvid-back-to-pixels.md) — 作为视频世界模型的**逐帧渲染架构对照**：像素 patch + 因果 detailer 消除时空 VAE 的块级动作等待；测的是相机控制到屏幕延迟，不是机器人动作头或物理一致性。
