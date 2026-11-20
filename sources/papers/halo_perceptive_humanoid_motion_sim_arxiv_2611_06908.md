@@ -5,6 +5,8 @@
 - **类型：** paper
 - **arXiv：** <https://arxiv.org/abs/2611.06908>（核对时仅有 **v1**，提交于 2026-11-04）
 - **PDF：** <https://arxiv.org/pdf/2611.06908>（20 页，已通读正文与附录 A–G）
+- **核对范围：** 既有 ingest（2026-11-06，PR #3414）记录已读 arXiv v1 全文 20 页，包括正文 §I–V、附录 A–G、Fig. 1–3 及 Table I–X；本次仅将既有通读记录结构化，未重新逐页复核。
+- **通读：** 已完成
 - **标题：** Perceptive Humanoid Motion from Simulation（系统名 HALO：Humanoid Autonomy, Learned in simulation, running Onboard）
 - **作者：** Siyuan Hu, Abulikemu Abuduweili, Yue Meng, Shipeng Liu, Quentin Leboutet, Chen Chen, Matthias Müller, Vladlen Koltun（Apple）
 - **分类：** cs.RO；cs.AI；cs.CV；cs.LG；arXiv 备注 "Code and videos at" 项目页
