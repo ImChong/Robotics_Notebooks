@@ -8,6 +8,8 @@ arxiv: "2402.10885"
 summary: "3D Diffuser Actor：结合三维场景表示的扩散策略：将三维视觉场景、语言指令及本体状态送入三维去噪 Transformer，预测加噪机器人位姿轨迹中的噪声并迭代恢复动作轨迹。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/diffusion-policy.md
+  - ../tasks/manipulation.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 扩散采样步数对端到端控制周期敏感；三维表示质量与相机观测噪声会影响轨迹质量。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [diffusion-policy](../methods/diffusion-policy.md) — 扩散去噪生成动作轨迹
+- [manipulation](../tasks/manipulation.md) — 三维场景条件下的操作策略
 
 ## 关联页面
 

@@ -8,6 +8,8 @@ arxiv: "2209.05451"
 summary: "PerAct：多任务机器人操作 Transformer：语言目标和 RGB-D 观测经过体素化，利用 Perceiver Transformer 预测离散的下一关键帧 6DoF 体素动作，以行为克隆训练多任务操作策略。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/bc-with-transformer.md
+  - ../tasks/manipulation.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 体素化有空间范围、分辨率和算力成本，离散动作可能在精细接触控制中需要额外闭环反馈。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [bc-with-transformer](../methods/bc-with-transformer.md) — 从专家示教学习条件动作预测
+- [manipulation](../tasks/manipulation.md) — 语言条件三维物体操作与关键帧动作
 
 ## 关联页面
 

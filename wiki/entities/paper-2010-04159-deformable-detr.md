@@ -8,6 +8,8 @@ arxiv: "2010.04159"
 summary: "Deformable DETR：用于端到端目标检测的可变形注意力 Transformer：每个查询只围绕参考点在多尺度特征图中采样少数关键位置，通过可变形注意力避免标准 DETR 在高分辨率特征上的昂贵全局交互。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/object-detection.md
+  - ../tasks/manipulation.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 采样点和多尺度特征仍需良好初始化与训练；对机器人小物体操作只提供视觉检测先验，不直接输出操作动作。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [object-detection](../methods/object-detection.md) — 参考点稀疏采样服务多尺度视觉检测
+- [manipulation](../tasks/manipulation.md) — 检测模块为操作决策提供目标定位而非直接预测动作
 
 ## 关联页面
 

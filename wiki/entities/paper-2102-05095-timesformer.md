@@ -8,6 +8,8 @@ arxiv: "2102.05095"
 summary: "TimeSformer：视频理解只需时空注意力吗？：将视频帧划分为 patch tokens；比较时空联合注意力与分解注意力，提出在每个 block 中分别执行时间与空间注意力的视频 Transformer。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/bc-with-transformer.md
+  - ../methods/robotics-transformer-rt-series.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 需要较多视频 token；识别任务的离线结果不等于低延迟机器人控制能力。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [bc-with-transformer](../methods/bc-with-transformer.md) — 视频历史编码与时序行为克隆的结构对照
+- [robotics-transformer-rt-series](../methods/robotics-transformer-rt-series.md) — 视频 token 的时间/空间注意力可为机器人视觉编码提供参考
 
 ## 关联页面
 

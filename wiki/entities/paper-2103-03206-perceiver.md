@@ -8,6 +8,8 @@ arxiv: "2103.03206"
 summary: "Perceiver：利用迭代注意力进行通用感知：通过输入到固定大小 latent array 的非对称交叉注意力，把高维多模态输入压缩为潜变量，再在潜变量间迭代自注意力；避免在全部输入位置间执行昂贵的全局自注意力。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/bc-with-transformer.md
+  - ../methods/vla.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 固定潜变量容量可能成为信息瓶颈；多模态实验不等于真实机器人闭环验证。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [bc-with-transformer](../methods/bc-with-transformer.md) — 异构观测压缩可作为 Transformer 模仿学习输入前端
+- [vla](../methods/vla.md) — 视觉、语言、机器人本体 token 的融合可参考潜变量交叉注意力
 
 ## 关联页面
 

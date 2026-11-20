@@ -8,6 +8,8 @@ arxiv: "2006.16236"
 summary: "Transformer 也是 RNN：用于快速自回归建模的线性注意力：通过 kernel feature map 重写注意力，并利用矩阵乘法结合律把特征键值积累为可递推状态，从而将序列长度方向的计算规模由二次降至线性。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/bc-with-transformer.md
+  - ../methods/robotics-transformer-rt-series.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 线性注意力不等于原始 softmax 注意力的精确重排；递推状态的表达容量与数值稳定性是独立约束。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [bc-with-transformer](../methods/bc-with-transformer.md) — 长时序行为克隆可对照线性注意力的记忆与精度取舍
+- [robotics-transformer-rt-series](../methods/robotics-transformer-rt-series.md) — 流式或自回归机器人 Transformer 可评估递推状态代价
 
 ## 关联页面
 

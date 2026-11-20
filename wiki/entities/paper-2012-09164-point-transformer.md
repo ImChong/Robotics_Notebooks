@@ -8,6 +8,8 @@ arxiv: "2012.09164"
 summary: "Point Transformer：面向点云的注意力算子：针对无序三维点集，在局部邻域上应用向量注意力并结合相对位置编码，从而学习点云上的几何与特征交互。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/object-detection.md
+  - ../tasks/manipulation.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 邻域搜索和点密度会影响效率及鲁棒性；相对位置编码无法消除深度观测噪声。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [object-detection](../methods/object-detection.md) — 点云特征可服务三维目标定位与感知
+- [manipulation](../tasks/manipulation.md) — 操作任务可利用点云几何，但论文主要验证感知
 
 ## 关联页面
 

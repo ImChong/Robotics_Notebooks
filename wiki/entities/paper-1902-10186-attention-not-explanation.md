@@ -8,6 +8,8 @@ arxiv: "1902.10186"
 summary: "注意力权重不等于解释：在文本分类、问答和自然语言推理中的基于注意力的编码器上，检验注意力权重与特征重要性的一致性，以及改变注意力权重是否会相应改变模型输出。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/bc-with-transformer.md
+  - ../methods/robotics-transformer-rt-series.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 研究主要评测 NLP 模型；对机器人可视化注意力图的迁移属于方法论警示而非已验证的机器人实验结论。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [bc-with-transformer](../methods/bc-with-transformer.md) — Transformer 行为克隆的注意力归因需结合输入干预评估
+- [robotics-transformer-rt-series](../methods/robotics-transformer-rt-series.md) — 机器人 Transformer 的注意力可视化不能直接当作动作因果解释
 
 ## 关联页面
 

@@ -8,6 +8,8 @@ arxiv: "2205.14135"
 summary: "FlashAttention：面向显存 IO 的精确注意力算法：采用分块和片上 SRAM 计算以及在线归一化，减少 GPU HBM 与 SRAM 之间读写，避免将完整注意力矩阵频繁写回显存，同时保持精确注意力结果。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/vla.md
+  - ../methods/bc-with-transformer.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 收益依赖 GPU 存储层次、序列长度、核实现和批量大小，部署需实测端到端而非只看 kernel。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [vla](../methods/vla.md) — 长视觉语言上下文的精确注意力实现优化
+- [bc-with-transformer](../methods/bc-with-transformer.md) — 比较注意力核加速与整条策略推理延迟
 
 ## 关联页面
 

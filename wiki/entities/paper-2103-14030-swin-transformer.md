@@ -8,6 +8,8 @@ arxiv: "2103.14030"
 summary: "Swin Transformer：使用移位窗口的层次视觉 Transformer：在非重叠局部窗口内执行注意力，交替使用移位窗口让跨窗口信息交换；分层下采样产生多尺度视觉特征。"
 related:
   - ../comparisons/attention-architectures-robotics-20-papers.md
+  - ../methods/object-detection.md
+  - ../methods/bc-with-transformer.md
   - ./paper-attention-is-all-you-need.md
   - ./paper-act.md
 original:
@@ -79,6 +81,13 @@ flowchart LR
 
 - 局部窗口是结构性归纳偏置；大范围跨区域交互需要跨层传播，不能把线性于像素数的计算直接解释为端到端推理时延。
 - **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+
+## 相关方法与任务
+
+以下链接是**应用关联**，不是本文已在机器人场景验证这些工程收益：
+
+- [object-detection](../methods/object-detection.md) — 层次窗口视觉骨干用于多尺度目标检测
+- [bc-with-transformer](../methods/bc-with-transformer.md) — 控制策略使用视觉特征时应评估骨干的延迟与感受野
 
 ## 关联页面
 
