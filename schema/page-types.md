@@ -135,6 +135,16 @@ python3 scripts/scaffold_wiki_page.py entity "论文短名" --slug paper-xxx --p
 4. 每阶段推荐资源
 5. 常见卡点
 
+### Reference Index Page（references/）
+
+论文 / 项目导航索引不同于单篇 wiki 论文实体页：它不应声称已通读全部被索引论文。静态站点对 references/ 页单独计算健康度（见 `scripts/generate_link_graph.py` 的 `compute_reference_health`），与 wiki 的原文通读、roadmap 的阶段结构判据分开：
+
+1. **摘要与来源**：提供 frontmatter `summary`，且有 `sources` 或正文「参考来源」。
+2. **选读导航**：有问题导向的选择入口，并提供表格或 Mermaid 流程图。
+3. **分类覆盖与互链**：至少 3 个三级分类标题和 5 条站内链接。
+
+每项 1 分；`status: stub/draft` 仍限制上限；未达到条件即扣分。页面仅增加可验证的内容，不允许直接写死 `health_score: 3`。对于具体论文的「全文已读」，仍只由其独立 wiki 实体页 `original` 归档判定。
+
 ## 7. Source Summary Page
 回答：某篇论文/博客/课程讲了什么。
 

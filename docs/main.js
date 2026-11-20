@@ -676,19 +676,21 @@
   // 旧缓存数据无 health_score 时输出空格位，保持整列对齐。
   var HEALTH_ITEM_LABELS = ['摘要与来源', '阅读骨架', '原文通读'];
   var ROADMAP_HEALTH_ITEM_LABELS = ['首屏导读', '站内链接 ≥5', '阶段化结构'];
+  var REFERENCE_HEALTH_ITEM_LABELS = ['摘要与来源', '选读导航', '分类覆盖与交叉链接'];
   var HEALTH_GAP_STATUS = 8; // wiki 页 status 为 stub / draft：得分按 1 / 2 封顶
   // 信息框各行：「健康度 2/3」「摘要与来源（1/1）」「阅读骨架（1/1）」「原文通读（0/1）」[封顶说明]
   function healthTipLines(meta) {
     var score = Math.max(0, Math.min(3, meta.health_score));
     var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
-    var lines = [(isRoadmap ? '路线健康度 ' : '健康度 ') + score + '/3'];
+    var isReference = meta.type === 'reference_page';
+    var lines = [(isRoadmap ? '路线健康度 ' : isReference ? '参考页健康度 ' : '健康度 ') + score + '/3'];
     // 旧缓存数据只有得分没有缺项位：只报分数，不误报各项达标
     if (typeof meta.health_gaps !== 'number') return lines;
-    var labels = isRoadmap ? ROADMAP_HEALTH_ITEM_LABELS : HEALTH_ITEM_LABELS;
+    var labels = isRoadmap ? ROADMAP_HEALTH_ITEM_LABELS : isReference ? REFERENCE_HEALTH_ITEM_LABELS : HEALTH_ITEM_LABELS;
     for (var gi = 0; gi < labels.length; gi++) {
       lines.push(labels[gi] + '（' + (meta.health_gaps & (1 << gi) ? 0 : 1) + '/1）');
     }
-    if (!isRoadmap && (meta.health_gaps & HEALTH_GAP_STATUS)) lines.push('status 未完成，按 stub / draft 封顶');
+    if (meta.health_gaps & HEALTH_GAP_STATUS) lines.push('status 未完成，按 stub / draft 封顶');
     return lines;
   }
   // 小条本体：亮 score 格（0–3），lines 为信息框各行

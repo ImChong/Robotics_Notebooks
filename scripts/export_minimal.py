@@ -775,8 +775,11 @@ def page_health(path: Path, text: str) -> tuple[int, int]:
     # generate_link_graph 在模块级 import 本模块，这里延迟导入以免循环
     import generate_link_graph as glg
 
-    if path.relative_to(ROOT).parts[0] == "roadmap":
+    section = path.relative_to(ROOT).parts[0]
+    if section == "roadmap":
         return glg.compute_roadmap_health(text, len(glg.extract_internal_links(text, path)))
+    if section == "references":
+        return glg.compute_reference_health(text, len(glg.extract_internal_links(text, path)))
     return glg.compute_health(text, path)
 
 
@@ -802,7 +805,7 @@ def build_item(path: Path) -> dict[str, Any]:
 
     parts = path.relative_to(ROOT).parts
     # 详情页「页面信息」/ 关联项 / 相关推荐、路线页元信息与知识地图节点的健康度小条
-    if parts[0] in ("wiki", "roadmap"):
+    if parts[0] in ("wiki", "roadmap", "references"):
         item["health_score"], item["health_gaps"] = page_health(path, text)
     if parts[0] == "wiki":
         if parts[1] == "entities":

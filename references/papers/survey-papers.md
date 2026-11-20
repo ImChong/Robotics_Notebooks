@@ -1,6 +1,17 @@
-# Survey Papers
+---
+type: reference_page
+status: complete
+summary: "按研究问题与方向选读机器人控制、强化学习、Sim2Real、VLA、世界模型与具身感知综述；提供分类导航与 Mermaid 选读路径。"
+sources:
+  - https://arxiv.org/abs/2102.02915
+  - https://arxiv.org/abs/2502.13187
+  - https://arxiv.org/abs/2611.18372
+updated: 2026-11-20
+---
 
-想快速建立某个方向的全局认识时，先读综述。本页按方向索引站内已收录的综述论文实体页（每条链到 wiki 实体，arXiv / DOI 见实体页），只收机器人学习、运动控制、人形与具身相关的综述。
+# 综述论文导航 / Survey Papers
+
+**首屏导读**：本页是跨论文的**选读导航**，不是单篇论文，也不把所列综述一概声明为已通读。按「当前研究问题 → 综述类别 → 单篇实体与原文」阅读：先看分类框架，再沿实体页验证论文结论、版本与发布状态。
 
 ## 按问题找综述
 
@@ -12,6 +23,38 @@
 | VLA / 基础模型在具身里怎么演进？ | [VLA Survey](../../wiki/entities/paper-vla-survey-embodied.md)、[统一机器人学习综述](../../wiki/entities/paper-unified-robot-learning-survey.md) |
 | 世界模型怎么用于机器人决策？ | [World Models for Robotic Manipulation](../../wiki/entities/paper-sa-2606-00113-world-models-for-robotic-manipulation-a-survey.md) |
 | 仿真平台怎么选？ | [Robotic Navigation & Manipulation with Physics Simulators](../../wiki/entities/paper-sa-2505-01458-a-survey-of-robotic-navigation-and-manipulation.md) |
+
+
+## 选读路径 / Reading Path
+
+下图按**研究目标**分流，而非按发表年份或论文优劣排名。每个终点对应下方的代表性综述分组；选择一组入门后，再按相邻方向补齐背景。
+
+```mermaid
+flowchart TD
+    A["研究问题：想建立哪方面的全局认识？"] --> B{"主要目标"}
+    B -->|腿足运动与全身控制| C["人形与腿足运动控制"]
+    B -->|策略学习与跨域部署| D["强化学习与 Sim2Real"]
+    B -->|示范数据与动作生成| E["模仿学习、VLA 与具身基础模型"]
+    B -->|预测未来并支持决策| F["世界模型"]
+    B -->|环境与传感器建模| G["仿真与感知"]
+    C --> H["进入对应综述实体页"]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    H --> I["核对原论文与适用边界"]
+    I --> J["连接具体方法、基准与工程路线"]
+```
+
+**使用顺序**：① 在「按问题找综述」定位入口；② 对照「代表性综述」阅读分类与差异；③ 打开独立实体页查看原文链接与进一步证据，最后回到任务 / 方法页面做工程落地判断。
+
+| 对比维度 | 优先查看 | 阅读时需要核查 |
+|---|---|---|
+| 控制方式 | 人形与腿足运动控制 | 模型/优化与学习式控制如何组织；是否包含真机证据 |
+| 迁移与安全 | 强化学习与 Sim2Real | 训练环境、域差异、安全约束与评测协议 |
+| 数据与策略 | 模仿学习、VLA 与具身基础模型 | 示范数据形式、动作表示、泛化任务与部署延迟 |
+| 预测与规划 | 世界模型 | 预测目标、行动条件、闭环使用方式及失败模式 |
+| 复现基础设施 | 仿真与感知 | 物理假设、传感器配置、基准指标与可复现性 |
 
 ## 代表性综述
 
@@ -54,6 +97,13 @@
 
 - [Robotic Navigation & Manipulation with Physics Simulators](../../wiki/entities/paper-sa-2505-01458-a-survey-of-robotic-navigation-and-manipulation.md) — 从 sim2real 角度对比物理仿真器。
 - [MSFP Survey](../../wiki/entities/paper-msfp-embodied-ai-survey.md) — 具身 AI 多传感器融合感知。
+
+## 参考来源与收录边界
+
+- [Ibarz et al., *How to Train Your Robot with Deep Reinforcement Learning* (2021)](https://arxiv.org/abs/2102.02915) — 真机深度强化学习经验的原始论文入口。
+- [Sim2Real RL Survey (arXiv:2502.13187)](https://arxiv.org/abs/2502.13187) — 强化学习 Sim2Real 分类与基础模型衔接。
+- [VLA 生命周期综述 (arXiv:2611.18372)](https://arxiv.org/abs/2611.18372) — VLA 全生命周期研究议题入口。
+- 其他综述的原文、版本、DOI 与出处由上方的**独立 wiki 实体页**进一步提供；该目录只作索引，不视为已对每篇论文完成全文核验。
 
 ## 关联页面
 

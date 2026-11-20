@@ -1075,6 +1075,7 @@ HEALTH_STATUS_CAPS = {"stub": 1, "draft": 2}
 # 健康度缺项位掩码（health_gaps，供浮窗 / 侧栏 / 列表行提示「缺什么」）：第 i 位 = 第 i 个得分项未拿到，
 # 位 8 = status 为 stub/draft（与 report_health.py 的「status 未 complete」同口径）。
 # wiki 页三项：元数据 / 阅读骨架 / 原文通读；roadmap 页三项：首屏导读 / 站内链接 / 阶段化结构。
+# references/ 索引页三项：摘要与来源 / 选读导航 / 分类覆盖与交叉链接（不假定单篇原文通读）。
 HEALTH_GAP_STATUS = 8
 
 
@@ -1143,6 +1144,44 @@ def compute_health_score(content: str, page: Path) -> int:
 
 # roadmap/ 路线页站内链接达到该阈值视为「已接入交叉引用网络」
 ROADMAP_HEALTH_MIN_INTERNAL_LINKS = 5
+
+
+def compute_reference_health(content: str, internal_link_count: int) -> tuple[int, int]:
+    """参考索引页健康度（0–3）：不套用单篇 wiki 原文通读规则。
+
+    +1: frontmatter 摘要 + 实际来源（sources 或「参考来源」节）
+    +1: 问题导向导航标题 + 可选择的表格或 Mermaid 图
+    +1: 至少 3 个分类小节 + 5 条站内链接
+
+    位掩码与其他页面保持一致；不根据 status/日期/字符串标签硬设满分。
+    """
+    fm, body = parse_raw_frontmatter(content)
+    if not fm:
+        return 0, 7
+    has_sources = bool(
+        parse_frontmatter_list(content, "sources")
+        or re.search(r"^##\s+参考来源", body, re.MULTILINE)
+    )
+    guide_heading = re.search(r"^##\s+(?:按问题找|选读|快速入口|阅读路径)", body, re.MULTILINE)
+    guide_table = re.search(r"^\|[^|\n]+\|", body, re.MULTILINE)
+    has_guide = bool(guide_heading and (guide_table or "```mermaid" in body))
+    has_categories = (
+        len(re.findall(r"^###\s+\S", body, re.MULTILINE)) >= 3 and internal_link_count >= 5
+    )
+    checks = (
+        bool(re.search(r"^summary\s*:\s*\S", fm, re.MULTILINE) and has_sources),
+        has_guide,
+        has_categories,
+    )
+    score = sum(checks)
+    gaps = sum(1 << i for i, ok in enumerate(checks) if not ok)
+    status_match = re.search(r"^status\s*:\s*(\S+)", fm, re.MULTILINE)
+    if status_match:
+        cap = HEALTH_STATUS_CAPS.get(status_match.group(1).strip("'\"").lower())
+        if cap is not None:
+            score = min(score, cap)
+            gaps |= HEALTH_GAP_STATUS
+    return score, gaps
 
 
 def compute_roadmap_health(content: str, internal_link_count: int) -> tuple[int, int]:

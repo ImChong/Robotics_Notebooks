@@ -2,6 +2,7 @@
 """打印 wiki 页的节点健康度（0-3），供 ingest PR 正文汇报。
 
 用法：python3 scripts/report_health.py wiki/entities/paper-x.md [...]
+      python3 scripts/report_health.py references/papers/survey-papers.md
       python3 scripts/report_health.py --changed   # 相对 origin/main 新增/改动/重命名的 wiki 页
       python3 scripts/report_health.py --check-pr-body   # CI：比对环境变量 PR_BODY 里的汇报表
 判据见 generate_link_graph.compute_health_score；缺项给出原因。
@@ -78,6 +79,16 @@ def health_rows(pages: list[str]) -> list[HealthRow]:
     for p in pages:
         path = (g.REPO_ROOT / p).resolve()
         content = path.read_text(encoding="utf-8")
+        if p.startswith("references/"):
+            score, gaps = g.compute_reference_health(
+                content, len(g.extract_internal_links(content, path))
+            )
+            names = ("摘要与来源", "选读导航", "分类覆盖与交叉链接")
+            miss = [name for i, name in enumerate(names) if gaps & (1 << i)]
+            if gaps & g.HEALTH_GAP_STATUS:
+                miss.append("status 未 complete")
+            rows.append((p, score, miss))
+            continue
         score = g.compute_health_score(content, path)
         miss = []
         if not g.has_reading_skeleton(content, g.parse_frontmatter_type(content)):
