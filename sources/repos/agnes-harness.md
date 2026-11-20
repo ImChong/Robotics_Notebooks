@@ -7,7 +7,7 @@
 - **文档：** 仓库 README 与 `docs/`（含架构、安装、安全、MHS 设备指南）
 - **许可：** 项目自有代码 Apache-2.0；第三方组件及部分改编文件按 `NOTICE` 与各自许可执行
 - **入库日期：** 2026-10-11
-- **复核日期：** 2026-10-11
+- **复核日期：** 2026-11-20
 - **一句话说明：** 面向 Forward Deployed Engineering（FDE）的 TypeScript agent harness，整合 Web、CLI 与 SDK 会话、工具/Skills/MCP 插件、审批和执行记录，并可通过自有 MHS 协议将设备接入任务流。
 - **沉淀到 wiki：** 是 → [`wiki/entities/agnes-harness.md`](../../wiki/entities/agnes-harness.md)
 
@@ -19,17 +19,23 @@
 | 发布阶段 | Developer preview / pre-alpha；尚无公开包发行、安装器或升级承诺 |
 | 仓库结构 | `packages/`、`examples/`、`docs/`、`tools/`、`patches/`、`third-party/` |
 | 构建环境 | 官方 README 要求 Node.js 24.10+、pnpm 10.34.5 与平台原生构建工具 |
-| 运行入口 | README 给出 `pnpm install --frozen-lockfile`、`pnpm --filter @agnes/cli build:local`、`node packages/cli/dist/local/agnes.mjs serve` |
+| 运行入口 | README 给出 `mise trust` → `mise install` → `mise exec -- node tools/toolchain/run.mjs install --frozen-lockfile` → `mise exec -- node tools/toolchain/run.mjs --filter @agnes/cli build:local` → `mise exec -- node agnes.mjs serve` |
 | 设备接入 | AgnesHub 是可选插件；AGH 的 MHS 设备协议通过 WebSocket 注册设备状态、工具与数据源 |
-| 平台验证 | README 当前记录 macOS / Node 24 检查；Linux 与 Windows 仍需独立验收 |
+| 平台验证 | README 当前标注 macOS、Linux 持续维护检查；Windows 尚未完成端到端验证 |
 | 外部贡献 | README 说明代码和文档 PR 目前限受邀内部开发者；Issues 可用于问题与用例反馈 |
 
 核查依据是仓库当前 README、LICENSE、NOTICE 与运行/安全文档；未发现独立项目站。项目自有代码公开不等于已达到生产可用性，也不等于第三方目录内全部文件都采用 Apache-2.0。
 
+## 2026-11 复核与报告
+
+- 已核对官方 README、docs/develop/architecture.md、docs/develop/source-map.md、docs/guide/quickstart.md、docs/guide/judgment.md 与根 agnes.mjs；**本次未执行构建或真机测试**。
+- [AGH 系统/RSI 技术报告](../papers/agnes_harness_technical_report_nov_2026.md) 与 [Sys1 1.0 模型报告](../papers/agnes_sys1_decision_model_technical_report_2026.md) 已分别归档；仅能读取各自官方 REPORT.md，PDF 全文尚待核验。
+- 相关两份技术报告不能等价于项目全部软件/模型组件的实际发布状态。
+
 ## 核心架构（README / 架构指南）
 
 - **共享入口：** Web workbench、CLI、终端 UI 与 SDK 使用同一后端会话，任务可跨 Web 与终端续接。
-- **Agent Loop：** 管理模型/工具执行、任务状态、事件记录、中断处理与恢复；当前主分支使用内置 Core loop，Jev 结构化决策仍在集成中。
+- **Agent Loop：** 管理模型/工具执行、任务状态、事件记录、中断处理与恢复；当前默认循环为 @agnes/loop-default 插件；Sys1 需安装并启用 judgment 插件，Jev 仍为探索性集成。
 - **扩展面：** backend plugins、Web panels、Skills、hooks 和 MCP；Cordis 与包治理用于组织插件生命周期，示例覆盖工具、面板及 full-stack plugin。
 - **可审计执行：** 命令默认先请求用户批准；Trace 记录模型调用、工具调用与审批。插件包安装/启用会显示来源、版本、完整性摘要、能力 hash 与许可证。
 - **物理设备：** 可选 AgnesHub 插件让 agent 调用设备声明的工具；MOS（Model Observation Standard）描述相机图像、地图、地点等观测数据。
@@ -43,6 +49,9 @@
 
 ## 对 wiki 的映射
 
+- [AGH 系统技术报告](../../wiki/entities/paper-agnes-harness-rsi-technical-report.md)
+- [Sys1 模型技术报告](../../wiki/entities/paper-agnes-sys1-decision-model-technical-report.md)
+
 - [Agnes Harness 实体页](../../wiki/entities/agnes-harness.md)
 - [Model Hardware Standard 概念页](../../wiki/concepts/model-hardware-standard.md) — 特别注意两个独立协议使用相同全称与缩写
 - [LLM 机器人控制接口](../../wiki/concepts/llm-robotics-control-interfaces.md)
@@ -50,7 +59,7 @@
 ## 官方入口
 
 - README：<https://github.com/AgnesAI-Labs/agnes-harness>
-- 架构指南：<https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/architecture.md>
+- 架构指南：<https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/develop/architecture.md>
 - 安全与信任：<https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/security.md>
 - MHS 与设备：<https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/mhs.md>
 - 源码安装：<https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/install.md>

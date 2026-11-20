@@ -5,15 +5,19 @@ code: https://github.com/AgnesAI-Labs/agnes-harness
 tags: [llm-agents, agent-infrastructure, open-source, device-integration, mcp, hardware]
 status: complete
 date: 2026-10-11
-updated: 2026-10-11
+updated: 2026-11-20
 related:
   - ../concepts/model-hardware-standard.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../concepts/safety-filter.md
   - ./muse-gadgets.md
   - ./agent-lightning.md
+  - ./paper-agnes-harness-rsi-technical-report.md
+  - ./paper-agnes-sys1-decision-model-technical-report.md
 sources:
   - ../../sources/repos/agnes-harness.md
+  - ../../sources/papers/agnes_harness_technical_report_nov_2026.md
+  - ../../sources/papers/agnes_sys1_decision_model_technical_report_2026.md
 summary: "Agnes Harness（AGH）是 AgnesAI-Labs 开源的 FDE agent runtime：Web/CLI/SDK 共用会话，Agent Loop 负责工具执行、状态、记录与恢复，并通过插件、MCP、Skills 扩展；可选 AgnesHub/MHS 接入设备，但仍处 pre-alpha，且不替代设备侧实时控制与安全联锁。"
 ---
 
@@ -45,7 +49,7 @@ AGH 的机器人相关性在 **系统集成与高层设备编排**，不在运�
 | 层 | 作用 | 当前状态 / 入口 |
 |----|------|------------------|
 | **Web / CLI / SDK** | 创建任务、查看结果、跨端续接同一会话 | README 标为开发预览可用；客户端共享后端 session |
-| **App Server 与 Agent Loop** | 会话、任务提交、事件分发、审批路由；执行模型与工具调用、状态恢复 | 内置 Core loop 为当前主分支默认路径；Jev 结构化决策仍在集成 |
+| **App Server 与 Agent Loop** | 会话、任务提交、事件分发、审批路由；执行模型与工具调用、状态恢复 | 默认 loop 是可替换的 @agnes/loop-default 插件；Sys1 需另行启用 judgment 插件，Jev 为探索性集成 |
 | **插件与 Skills** | backend tools/services、Web panels、hooks、MCP 与可复用任务方法 | 示例包括工具、前端面板和 full-stack plugin |
 | **审批与 Trace** | 在支持的命令执行路径上等待用户批准，并记录模型调用、工具调用和审批过程 | 提供审计线索；不构成任意插件代码的隔离边界 |
 | **AgnesHub / MHS** | 将设备状态、工具和观测接入任务流 | 可选插件；设备以 WebSocket 注册能力，MOS 表达观测数据 |
@@ -68,21 +72,31 @@ AGH 是任务级协调层。即使任务目标由语言模型生成，设备驱�
 
 ## 源码运行入口
 
-README 当前给出的源码构建路径（**文档核对，未在本机执行**）：
+当前官方 README 提供以下**源码构建**路径，需 Node.js 24.10+、pnpm 10.34.5，未在本次环境执行：
 
 ```bash
-pnpm install --frozen-lockfile
-pnpm --filter @agnes/cli build:local
-node packages/cli/dist/local/agnes.mjs serve
+mise trust
+mise install
+mise exec -- node tools/toolchain/run.mjs install --frozen-lockfile
+mise exec -- node tools/toolchain/run.mjs --filter @agnes/cli build:local
+mise exec -- node agnes.mjs serve
 ```
 
-官方 README 要求 Node.js 24.10+、pnpm 10.34.5 和平台原生构建工具。启动 Web 服务后，在回环地址配置模型并创建任务；CLI 可连接同一后端会话。没有模型账号时可运行仓库中的 simulated-model demo，探索插件与任务执行。
+根 `agnes.mjs` 将参数转给打包 CLI（`packages/cli/dist/local/agnes.mjs`）。这是不迁移旧 home 的新预览版本；不得按旧版安装入口推断兼容性。
+
 
 ## 设备协议：同名 MHS 的消歧
 
 AGH 使用 **Agnes MHS（Model Hardware Standard）** 指代自己的设备协议：设备通过 WebSocket 连接 AgnesHub，注册状态、工具和数据源；MOS 表达设备观测。官方说明该协议独立于 MCP，也独立于厂商 SDK。
 
 这与 [Anthropic / HHMI Janelia 的 MHS 概念页](../concepts/model-hardware-standard.md) **不是同一协议**。它们恰好共用 “Model Hardware Standard” 全称与 MHS 缩写，组织、接口描述和发布状态均不同；不要据此推断协议兼容、代码复用或标准关系。
+
+## 2026-11 新技术报告与版本边界
+
+- [AGH 系统及 Playbook RSI 技术报告](./paper-agnes-harness-rsi-technical-report.md)：账本/一次性许可/未知结果对账、快慢系统与仅配置数据的受治理自改进。仿真及 model+harness 成绩属于作者报告，**未证实现场机器人效果**。
+- [Agnes Sys1 1.0 决策模型技术报告](./paper-agnes-sys1-decision-model-technical-report.md)：基于 Qwen3.5-9B 的请求内候选概率、分块双向 attention 与拟议 RMSNorm TTT；作者能力表 AA Composite 71.2，但**TTT 无实测增益**。
+- AGH 系统技术报告以 Jev 为 DM 案例；当前 README 中 Sys1 为默认建议的 side model，`@agnes/judgment` 属可选插件且检测默认关闭，不能混写成同一组 benchmark 配置。
+- 本次已通读两份官方 `REPORT.md`，**未能读取原始 PDF**；两份独立技术报告节点因此保持 `draft`。
 
 ## 工程实践与安全边界
 
@@ -101,47 +115,43 @@ AGH 使用 **Agnes MHS（Model Hardware Standard）** 指代自己的设备协�
 
 ## 源码运行时序图
 
-入口：`node packages/cli/dist/local/agnes.mjs serve`（需先按上文执行 `pnpm install` 与 `pnpm --filter @agnes/cli build:local`；仓库根 `agnes.mjs` 转调同一打包 CLI）
+下图取自当前官方 `agnes.mjs`、`docs/develop/architecture.md` 与 `docs/develop/source-map.md` 确认的源模块层次，不冒充两份技术报告中的实验脚本。
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant U as 用户 Web 或 CLI
-    participant B as packages/cli boot/local.ts bootLocal
-    participant C as packages/sdk submitCommand
-    participant D as daemon-rpc methods/agnes.ts submit
-    participant Q as daemon-rpc command-queue runQueued
-    participant F as daemon-rpc follow-up-runner
-    participant S as core step/session.ts Session.run
-    participant I as core execution/turn/inference.ts runInference
-    participant P as packages/ai 模型 provider
-    participant T as core execution/turn/tools.ts runToolsPhase
-
-    U->>B: 启动 serve 或本地 CLI 会话
-    B->>B: 组装 Host 服务与配置 并 createClient
-    U->>C: 提交用户输入 例如 followUp
-    C->>D: call _agnes/v1/submit 携带 clientId commandId kind payload
-    D->>D: requireOwner 与 generationGuard 鉴权
-    D->>D: journal.begin 按 commandId 去重
-    D->>Q: runQueued 按 sessionId 串行化
-    Q->>D: dispatch 分支 followUp 或 steer
-    D->>S: enqueueFollowUp 写入 next-turn 收件箱
-    D->>F: continueFollowUps 触发后续运行
-    F->>S: session.run until turn-end
-    loop 直到本轮 turn-end
-        S->>I: runInference 组装请求并 admit
-        I->>P: ModelExecution 经 provider 流式推理
-        P-->>I: 文本与工具调用事件
-        S->>T: runToolsPhase 执行工具调用
-        T-->>S: 工具结果写入会话账本
-    end
-    S-->>F: TurnOutcome
-    D-->>C: Ack 含 seq
+    actor U as 用户
+    participant CLI as agnes.mjs / Web
+    participant SDK as packages/sdk
+    participant D as daemon / worker
+    participant H as packages/host
+    participant L as packages/loop-default
+    participant K as Core / core-ledger
+    participant M as packages/ai
+    participant T as 受控工具执行
+    U->>CLI: 启动 serve 并输入任务
+    CLI->>SDK: 创建或恢复会话
+    SDK->>D: 请求与事件
+    D->>H: 装配插件和能力
+    H->>L: 默认 Loop 插件
+    L->>K: 推进会话状态
+    K->>M: 推理调用
+    M-->>K: 工具调用意图
+    K->>T: 授权后执行
+    T-->>K: 结果或未知副作用
+    K->>K: 账本记录和恢复
+    K-->>D: 会话与 Trace
+    D-->>SDK: 更新状态
+    SDK-->>U: 结果或审批要求
 ```
 
-图依据：`docs/develop/source-map.md` 所列的「CLI/Web → SDK → daemon/worker → Host/Core」路径，`agnes.mjs`、`packages/cli/src/boot/local.ts`（`bootLocal` 局部）、`packages/sdk/src/submit.ts`（局部）、`packages/protocol/src/methods.ts`（局部）、`packages/daemon-rpc/src/local/methods/agnes.ts`（`submit` 与 `dispatch` 段）、`packages/daemon-rpc/src/local/follow-up-runner.ts`（`enqueueFollowUp` 段）、`packages/core/src/step/session.ts`（`run` 与 `runTurns` 局部）、`packages/core/src/execution/turn/inference.ts`（`runInference` 局部）、`packages/core/src/execution/model-execution.ts`（局部）。`packages/ai` 与 `runToolsPhase` 内部细节未读，图中仅示意调用关系。未运行代码。
+未运行源码构建、GPU 评测或设备真机测试。此图仅陈述可复核的请求路径，细粒度插件实现仍以具体 commit 为准。
+
 
 ## 关联页面
+
+- [AGH 2026-11 技术报告](./paper-agnes-harness-rsi-technical-report.md)
+- [Sys1 1.0 决策模型报告](./paper-agnes-sys1-decision-model-technical-report.md)
 
 - [Model Hardware Standard（Anthropic / HHMI Janelia）](../concepts/model-hardware-standard.md) — 与 AGH 同名但彼此独立的协议概念
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — agent 的抽象层级及控制边界
@@ -151,12 +161,15 @@ sequenceDiagram
 
 ## 参考来源
 
+- [AGH 技术报告摘要来源](../../sources/papers/agnes_harness_technical_report_nov_2026.md)
+- [Sys1 模型技术报告摘要来源](../../sources/papers/agnes_sys1_decision_model_technical_report_2026.md)
+
 - [Agnes Harness 仓库与 README 摘录](../../sources/repos/agnes-harness.md)
 - 源码核对（2026-11-02）：AgnesAI-Labs/agnes-harness@2bfde24（默认分支 HEAD），读过 agnes.mjs、docs/develop/source-map.md、packages/cli/src/boot/local.ts（局部）、packages/sdk/src/submit.ts（局部）、packages/protocol/src/methods.ts（局部）、packages/daemon-rpc/src/local/methods/agnes.ts（局部）、packages/daemon-rpc/src/local/follow-up-runner.ts（局部）、packages/core/src/step/session.ts（局部）、packages/core/src/execution/turn/inference.ts（局部）、packages/core/src/execution/model-execution.ts（局部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
 - [Agnes Harness 官方仓库](https://github.com/AgnesAI-Labs/agnes-harness)
-- [架构指南](https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/architecture.md)
+- [架构指南](https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/develop/architecture.md)
 - [安全与信任指南](https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/security.md)
 - [MHS 与设备指南](https://github.com/AgnesAI-Labs/agnes-harness/blob/main/docs/guide/mhs.md)
