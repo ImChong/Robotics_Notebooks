@@ -10,6 +10,7 @@ summary: "以重建的历史上下文支持相机可控交互视频续写；提�
 related:
   - ../comparisons/open-source-world-models-11-2026.md
   - ../methods/generative-world-models.md
+  - ../tasks/autonomous-exploration.md
   - ../concepts/video-as-simulation.md
 original:
   - ../../sources/repos/hy-worldplay-1-5.md
@@ -121,6 +122,7 @@ README 的 RL+蒸馏联合权重仍列 To be released；使用者须区分仓库
 
 ## 关联页面
 
+- [自主探索任务](../tasks/autonomous-exploration.md) — 本项目提供可探索环境或观测生成；对照真实导航闭环时仍需独立策略、定位与物理校验。
 - [2026 年 11 项开源世界模型技术对照](../comparisons/open-source-world-models-11-2026.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video as Simulation](../concepts/video-as-simulation.md)
