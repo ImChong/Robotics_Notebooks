@@ -12,10 +12,12 @@ tags:
   - agility-robotics
   - oregon-state
 status: complete
-updated: 2026-09-27
+updated: 2026-11-20
 doi: "10.1126/scirobotics.aee2921"
 pubmed: "42585280"
 venue: "Science Robotics 2026"
+original:
+  - ../../sources/sites/agility_physical_ai_mechanical_hardware.md
 related:
   - ../overview/humanoid-actuator-102-compliance-sensing.md
   - ../overview/humanoid-actuator-102-decision-species.md
@@ -24,11 +26,14 @@ related:
   - ./paper-digit-humanoid-locomotion-rl.md
   - ./paper-legged-robots-advances-challenges.md
   - ./paper-goal-oriented-comms-physical-ai.md
+  - ./agility-robotics.md
+  - ./agility-wbc-foundation-model.md
   - ./painode-041-agilityrobotics.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
   - ../../sources/papers/physical_ai_mechanical_hardware_scirobotics_aee2921_2026.md
   - ../../sources/sites/agility_physical_ai_mechanical_hardware.md
+  - ../../sources/sites/agility-robotics.md
 summary: "Science Robotics 11(117) eaee2921（2026-08-12）：Hurst 观点文 — Physical AI 由机械硬件赋能；反驳硬件 commodity 论；预测 cycloid 大关节、腱驱 SEA 手与功能性足跟/ toe-off。无论文代码。"
 ---
 
@@ -137,6 +142,13 @@ flowchart LR
 - **[Goal-Oriented Comms for Physical AI](./paper-goal-oriented-comms-physical-ai.md)** — 通信 / 边缘栈；本文 **机内执行器与机构**。
 - **[Digit RL 行走](./paper-digit-humanoid-locomotion-rl.md)** — 算法 + sim2real 实例；本文解释 **为何 Digit 路线偏 SEA / 柔顺**。
 
+## 局限与风险
+
+- **无定量对照实验：** 本文属 *Science Robotics* Perspective 观点论文，未提供摆线传动（cycloid）对比谐波减速器 / QDD 的实测摩擦、刚度、带宽数据或 Digit 商用故障率统计；技术主张须结合具体硬件测功机与现场运行数据交叉验证。
+- **利益冲突背景：** 原文 `Competing Interests` 明确声明作者 Jonathan W. Hurst 任职于 Agility Robotics 并持有公司股权（产品 Digit 亦为文中主要例证），其「非五指手 / 滚接触摆线 + 功能足」路线倾向不可直接当作全行业唯一终局。
+- **供应链与耐磨寿命硬约束仍在：** 原文直言按比例律（scaling laws）大尺寸机器无法脱离高减速比传动，前臂肌腱驱 SEA 面临腱绳磨损须像「鞋底」般周期性更换的维护压力，而进入零售与家庭场景仍受制于冗余安全认证级执行器、法规与规模降本进度。
+- **不提供可复现软件或 CAD：** 作者版页与正文均无源码、模型或详细传动比 BOM 公开；在 Agility 上市与 [Digit 5 工程资料](../../sources/sites/agility-robotics.md) 中可进一步核对其落地选型取舍。
+
 ## 结论
 
 **Physical AI 的「智能」必须穿过真实的惯量、摩擦与接触力学；把人形硬件当 commodity 会低估 loco-manipulation 十年量级的机构赌注。**
@@ -152,6 +164,8 @@ flowchart LR
 - [Actuator 102 · 柔顺与感知](../overview/humanoid-actuator-102-compliance-sensing.md)
 - [Actuator 102 · 决策物种](../overview/humanoid-actuator-102-decision-species.md)
 - [Digit 人形 RL 行走](./paper-digit-humanoid-locomotion-rl.md)
+- [Agility Robotics（公司全栈与 Digit 1–5 档案）](./agility-robotics.md) — 承接本观点背后的 ATRIAS/Cassie/Digit 机体系谱、摆线分级柔顺与 CAP/RaaS 商业闭环
+- [Agility WBC Foundation Model（Motor Cortex 与 Sim2Real）](./agility-wbc-foundation-model.md) — 在本文论证的闭链脚尖/传动物理基础上做 Isaac Lab 对齐与 `<1M` LSTM 零样本迁移
 - [Agility Robotics（策展节点）](./painode-041-agilityrobotics.md)
 - [Query：执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本文主张的 cycloid 大关节、腱驱 SEA 手决定了 **③ 执行器建模与摩擦辨识层** 要面对的摩擦/惯量/柔顺真值：机械选型在先，「理想力矩源」假设破在哪由硬件定
 
@@ -163,4 +177,5 @@ flowchart LR
 ## 参考来源
 
 - [Physical AI is enabled by mechanical hardware（sources/papers）](../../sources/papers/physical_ai_mechanical_hardware_scirobotics_aee2921_2026.md)
-- [Agility 作者版网页（sources/sites）](../../sources/sites/agility_physical_ai_mechanical_hardware.md)
+- [Agility 作者版网页全文归档（sources/sites）](../../sources/sites/agility_physical_ai_mechanical_hardware.md)
+- [Agility Robotics 全栈与 Digit 5 官网归档（sources/sites）](../../sources/sites/agility-robotics.md)

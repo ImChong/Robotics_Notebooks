@@ -93,6 +93,7 @@ flowchart LR
 - [AGILE](../wiki/entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab + RSL-RL 全生命周期工作流（Prepare→Train→Evaluate→Deploy），描述符驱动 Sim2Sim/真机 I/O；G1 与 Booster T1 双机验证 locomotion/recovery/motion imitation/loco-manipulation 五类技能，上身专家微调 GR00T N1.5 仿真闭环 pick&place 90%；已开源
 - [运动基座与全身跟踪（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) 与 [上身接口](../wiki/overview/loco-manip-161-category-02-upper-body-interface.md)
 - [HTD 解耦 WBC](../wiki/entities/paper-humanoid-touch-dream.md)（CMU/UTA/Bosch，IROS 2026）— [Humanoid Touch Dream](../wiki/entities/paper-humanoid-touch-dream.md) 的下肢+腰控制器实现：Isaac Lab 单 GPU 训 teacher，再 BC→DAgger 蒸馏出可部署 student，跟踪速度与极端躯干姿态并零样本落到 G1；把"上下身解耦"从接口图落成可跑代码（BSD-3-Clause 已开源），VR 遥操作与上层 HTD 策略仍待发布
+- [Agility WBC Foundation Model（Motor Cortex）](../wiki/entities/agility-wbc-foundation-model.md) — 面向物流搬运的闭源 WBC 接口样本：用自由空间 SE(3) 手/躯干目标 + 根位置跟踪（而非关节角或纯速度）驱动 `<1M` LSTM，配合全工作空间均匀采样支撑 23 kg 级重物抗扰与迈步复原
 - [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)
 
 ### 学完输出什么

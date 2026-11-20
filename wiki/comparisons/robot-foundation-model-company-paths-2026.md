@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-20
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -24,6 +24,8 @@ related:
   - ../entities/motphys.md
   - ../entities/gamma-robotics.md
   - ../entities/spirit-ai.md
+  - ../entities/agility-robotics.md
+  - ../entities/agility-wbc-foundation-model.md
   - ./autonomous-driving-embodied-intelligence-2013-2026.md
 original:
   - ../../sources/papers/gr00t_n1_reading_arxiv_2503_14734_company_paths.md
@@ -46,6 +48,7 @@ sources:
   - ../../sources/sites/xpeng-robotics-unit.md
   - ../../sources/blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md
   - ../../sources/sites/research-beingbeyond-com.md
+  - ../../sources/sites/agility-robotics.md
 summary: "按世界/动作基础模型、通用人形整机、强全身控制三种阅读视角，对照多家团队的公开技术路线与复现边界。"
 ---
 
@@ -152,6 +155,7 @@ flowchart TB
 | [伽马智能 Gamma Robotics](../entities/gamma-robotics.md) | ○ | ● | ● | [NEXUS](../entities/paper-nexus-terrain-adaptive-teleoperation.md)、[TTCO](../entities/paper-ttco-test-time-compute-humanoid-bfm.md)、[GR-BC](../entities/paper-gr-bc.md)、[KODA](../entities/paper-koda-egocentric-vla.md)、[LocoManiLab](../entities/paper-locomanilab.md)、GBot-W / GData |
 | [Li Auto 理想汽车（具身）](../overview/li-auto-machembodied-4-papers-technology-map.md) | ● |  |  | MachEmbodied：[ME-Brain 1.0](../entities/paper-me-brain-1-0.md)、[ME-VLM](../entities/paper-me-vlm.md)、[ME-U0](../entities/paper-me-u0.md)、[ME-Dex 1.0](../entities/paper-me-dex-1-0.md) |
 | [Spirit AI 千寻智能](../entities/spirit-ai.md) | ● | ○ |  | [Spirit-v1.5](../entities/cn-os-spirit-v1-5.md)、Spirit v1.6 / Omni、[Legato](../entities/paper-legato.md)、[HuMI](../entities/paper-notebook-humanoid-manipulation-interface.md)、[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md)、[Emergent Transfer](../entities/paper-emergent-transfer-cross-config.md)、[VGE](../entities/paper-vge-2611-22625.md)、Moz1 / Moz2 / uDAS |
+| [Agility Robotics 敏捷机器人](../entities/agility-robotics.md) | ○ | ● | ● | Digit 1–5 整机与[硬件第一性](../entities/paper-physical-ai-mechanical-hardware.md)、[WBC Motor Cortex & Isaac Lab Sim2Real](../entities/agility-wbc-foundation-model.md)、Cognition/Skills/Controls 三层栈、IGX Thor + Halos 协作安全与 CAP/RaaS |
 
 NVIDIA 的 ○ 对应 Cosmos 世界生成；Light Origins 的 ○ 对应 Light-O1 的视觉语言动作预训练（见[来源索引](../../sources/sites/robot-foundation-model-company-research-2026.md)）；德塔智能的 ○ 对应 Δ₀ 全身控制器的人体动作跟踪训练与 real-to-sim-to-real 评测（见 [deltai.com 归档](../../sources/sites/deltai-com.md)）；Reward AI 的 ○ 对应 OM-1 与仿真 RL 训练的异步高频控制层跨工业臂 / 人形部署（见 [rewardai.com 归档](../../sources/sites/rewardai.md)）；Symbiosis 的 ● 对应 DPC 对「VLA/WAM → 冻结全身跟踪器」接口的替代主张，○ 对应 DriftDistill 闭环恢复蒸馏（见 [DPC 项目页归档](../../sources/sites/symbiosis-robotics-dpc.md)）。千寻智能（Spirit AI）的 ① 对应 Diverse Collection、Spirit-v1.5 / 闭源 Spirit v1.6（VLA + 世界模型）与 Legato / Emergent Transfer / VGE 等基础模型研究，② 的 ○ 对应 Moz1 / Moz2 全力控轮式人形、`MozRobot SDK`、STO 安全阻抗控制、Agent 模糊指令翻译及 OpenHLM 全身 VLA（另注：uDAS 数据金字塔与 v1.6 模型闭源，RoboArena 2026 年 6–8 月登顶与榜单改版撤榜口径见[官网归档](../../sources/sites/spirit-ai.md)）。
 
@@ -170,6 +174,8 @@ Amazon FAR 是 Amazon 内部的 Frontier AI & Robotics 研究与工程团队；�
 Motphys 是仿真与训练基础设施公司，不训练机器人基础模型，三列均不填 ●：③ 记 ○ 仅表示其仿真引擎与训练框架服务于全身控制 RL 训练。成立时间取 36氪报道的 2020 年 10 月（官网关于页只写「自 2021 年起」）；GS-Playground 与 UniLab 为多机构联合署名，不算公司单独成果（[官网归档](../../sources/sites/motphys.md)）。
 
 Rhoda AI 只归入 ①：官网 3 篇研究博文围绕「互联网规模视频预训练 + 逆动力学模型把预测画面转成动作」的闭环视频预测控制（DVA），依次给出数据效率、真机 scaling 与触觉扩展；公开材料未发布整机或独立全身控制，不据此填 ② / ③。成立时间官方未写，只在新闻稿称公开亮相前隐身 18 个月，2024 年仅为排序锚点；4.5 亿美元 A 轮为公司公告，17 亿美元估值只见媒体标题；数字均为公司自报（[官网归档](../../sources/sites/rhoda-ai.md)）。
+
+Agility Robotics 以 ②（Digit 1–5 被动动力学、摆线分级柔顺与 IGX Thor + NVIDIA Halos 孤岛协作安全整机，[公司档案](../entities/agility-robotics.md)）和 ③（Isaac Lab 六个月闭链脚尖 Sim2Real 对齐 + `<1M` LSTM Motor Cortex + Min-Step MPC，[WBC 专页](../entities/agility-wbc-foundation-model.md)）为主路线；① 记 ○ 表示其 Cognition 慢层集成第三方 VLM/LLM 与 3D 开放词表状态机（例如 Gemini 预览与 GTC 演示），而非自建自研万亿参数 VLA/WAM 主力模型，且官方*ChatGPT 时刻*署名文章明确主张多专门模型 Agentic 协同路线（[官网归档](../../sources/sites/agility-robotics.md)）。
 
 ## 三种视角各自追问什么
 
@@ -228,6 +234,7 @@ Rhoda AI 只归入 ①：官网 3 篇研究博文围绕「互联网规模视频�
 | 智在无界 BeingBeyond | ✅ | 🟡 | 🟡 | [GitHub](https://github.com/BeingBeyond) 27 个公开仓库；HF 有 Being-H0（1B / 8B / 14B）、Being-H05-2B、TTP 权重与部分数据集；Being-M0.7、Being-H0.8 项目页未列代码与权重（[核查](../../sources/sites/research-beingbeyond-com.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |
 | Spirit AI | ✅ | ✅ | ❌ | [Spirit-v1.5](../entities/cn-os-spirit-v1-5.md) 源码 MIT、HF 权重 Apache-2.0（`HF Datasets = 0`）；[Legato](../entities/paper-legato.md) 仅 Kinetix MIT 仿真开源；[OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md) 联署学术页另含 Apache-2.0 数据与检查点；uDAS（>20 万 h）、Diverse Collection 语料及 Spirit v1.6 / Omni 模型闭源，`MozRobot SDK` 硬件适配包面向客户凭秘钥发放（[核查](../../sources/sites/spirit-ai.md)） |
+| Agility Robotics | ❌ | ❌ | ❌ | 现役 Digit 控制、[`Motor Cortex` WBC](../entities/agility-wbc-foundation-model.md) 与 Agility Arc 均闭源；[`github.com/agilityrobotics`](https://github.com/agilityrobotics) 9 个公开仓中仅 `cassie-doc`（61★，已标注 End of Life 文档仓）与机器人相关，其余均为 CI/DevOps fork；`HF Models = 0`（[核查](../../sources/sites/agility-robotics.md)） |
 
 > ✅/🟡 只表示“存在公开入口”，不代表完整训练配方可复现；本表于 2026-10-05 补核薄弱项目，其余沿用各页注明日期的归档；公司有任一公开资产不表示所有版本均开放。
 
@@ -287,8 +294,11 @@ flowchart LR
 - [人形运控小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 按模型族选路线的知识链入口
 - [千寻智能（Spirit.AI）](../entities/spirit-ai.md) — 跨平台可穿戴数采 uDAS、Spirit-v1.5 / 闭源 Spirit v1.6 与轮式人形路线
+- [敏捷机器人（Agility Robotics）](../entities/agility-robotics.md) 与 [Agility WBC Foundation Model](../entities/agility-wbc-foundation-model.md) — 机械动力学第一性、Isaac Lab 闭链 Sim2Real、`<1M` LSTM Motor Cortex、IGX Thor + Halos 协作安全与 CAP/RaaS 商用闭环
 
 ## 参考来源
+
+- [Agility Robotics 官网、Research + Analysis、技术文章与开源核查（2026-11-20）](../../sources/sites/agility-robotics.md)
 
 - [千寻智能官网、文档、新闻时间线与开源核查（2026-11-19）](../../sources/sites/spirit-ai.md)
 - [Spirit-v1.5 官方博客归档（2026-01-11）](../../sources/blogs/spirit_ai_spirit_v1_5_blog_2026-01-11.md)
