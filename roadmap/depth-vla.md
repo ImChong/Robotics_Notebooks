@@ -245,6 +245,9 @@ flowchart LR
 
 ## Stage 5 进阶方向
 
+- [2026年11月上半月具身智能九篇技术地图](../wiki/overview/embodied-trends-2026-11-h1.md) — 按原语规划、视角鲁棒、动力学表征与遮挡推演选读；统计仅援引原作者。
+
+
 ### 前置知识
 - Stage 4 内容
 
