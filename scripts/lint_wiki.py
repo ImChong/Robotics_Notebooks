@@ -521,6 +521,29 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # **draft**」），或 CAD 代码里的拔模参数名 `draft`（multi-agent-cad）；与 type /
     # updated 同类页面元数据 token，非机器人概念/方法/形式化，不建独立页。
     "draft",
+    # connect：协议报文名与 API/系统调用方法名（MQTT `CONNECT`、Unix socket `connect`/
+    # `accept`、LeRobot `Robot.connect`、xArm SDK `connect`、OmniGraph `connect`、
+    # Isaac Teleop `CONNECT`）；与 init / load / deploy 同类代码 token，不单建概念页。
+    "connect",
+    # doctor：CLI 环境诊断子命令（agent-reach / ffmpeg-skill / omnisim / so-arena /
+    # softvtbench / rlebench 的 `doctor`）；与 validate / eval / export 同类命令 token，
+    # 非可成页机器人概念。
+    "doctor",
+    # metadata：数据集与消息格式字段名（LeRobot v3 **Metadata**、HandUMI / Holoscan /
+    # RekaDaily / SPL / robot-in-context-learning 的 `metadata`）；与 data / tags 同类
+    # 结构化字段 token，不单建概念页。
+    "metadata",
+    # pose：多义的代码/奖励/缩写 token——fairmotion 的 `Pose` 类、asimov-v1 的奖励项
+    # **Pose**、Forge 的任务空间位姿目标 **Pose**、carm-lerobot/vgg-ttt 的 `pose` 字段、
+    # POSE 论文缩写；位姿几何本体已由 formalizations/3d-coordinate-transforms-vision-robotics.md
+    # 与 so3-rotation-representations 承载，不按裸 token 单建概念页。
+    "pose",
+    # review：学术期刊论文类型标签（Science Robotics **Review**、Nature **Review**）；
+    # 与 ours / venue / draft 同类出版元数据标签，非机器人概念。
+    "review",
+    # sync：推理/时钟同步模式枚举与包名（`async` / `sync` 执行模式、Isaac Teleop `SYNC`、
+    # PTP `Sync` 报文）；与 auto / default / direct 同类模式枚举 token，不单建概念页。
+    "sync",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -1005,6 +1028,22 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # / Gödel Agent 的配置键 `solver`。与 implicitfast 同类「仿真器 / 框架配置名」，
     # 接触求解机制本体归 concepts/contact-dynamics.md，不建 concepts/solver.md。
     "solver",
+    # navigation：ROS1 包名 `navigation` 与实体/总览表中的 **Navigation** 任务栏；
+    # 导航任务与规划方法已由 tasks/vision-language-navigation.md、entities/navigation2.md
+    # 与 methods/motion-planning.md 覆盖，与 locomotion / loco-manipulation 同类任务域标签。
+    "navigation",
+    # noul：与上面已豁免的 choice / score 并列的 typed-decision 二值输出模式
+    # （entities/laya.md、laya-coreml.md、laya-mlx.md、karpo-decision.md、valen.md、
+    # paper-intern-decision.md），语义已在各决策模型实体页逐条释义，不单建概念页。
+    "noul",
+    # pi05：π0.5 策略的配置与 CLI 标识符（`--policy=pi05` / LeRobot / kuavo_model / openpi），
+    # 本体已由 entities/paper-pi05-open-world-vla.md 与 methods/pi0-policy.md 覆盖。
+    "pi05",
+    # qwen3-vl-4b / qwen3-vl-4b-instruct：已豁免骨干 qwen3-vl 的具体参数规模与指令微调
+    # checkpoint 型号；外部通用 VLM 底座一律在 methods/vla.md / star-vla.md /
+    # concepts/foundation-policy.md 按底座维度记述，不单建概念页。
+    "qwen3-vl-4b",
+    "qwen3-vl-4b-instruct",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key

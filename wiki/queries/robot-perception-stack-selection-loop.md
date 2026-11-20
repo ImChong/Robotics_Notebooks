@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-20
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 original:
   - ../../sources/papers/yolo_v1_perception_stack_reading_1506_02640_reading_psl.md
@@ -212,6 +212,7 @@ flowchart TD
 - 层内深化：[机器人感知骨干/表征选型 Query](./perception-backbone-selection.md) — ②层骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）
 - 层内案例：[GO2 三维语义建图 SAM 流水线](./go2-3d-semantic-mapping-sam-pipeline.md) — ③层 2D→3D 语义建图端到端案例
 - [目标检测（方法）](../methods/object-detection.md) — ②层检测方法总览
+- [R-CNN 族（两阶段精度基线）](../methods/rcnn-family.md) — ②层 R-CNN → Fast → Faster R-CNN 演进与服务器侧高精度离线参照
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — ②层特征骨干背景
 - [感知坐标后处理](../concepts/perception-coordinate-postprocessing.md) — ④层像素→策略坐标的后处理
 - [Ultralytics YOLO](../entities/ultralytics.md) · [RF-DETR](../entities/rf-detr.md) · [YOLO 奠基论文](../entities/paper-yolo-unified-realtime-detection.md) — ②层 2D 检测层实体

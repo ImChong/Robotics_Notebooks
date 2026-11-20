@@ -2,10 +2,11 @@
 type: query
 tags: [object-detection, perception, computer-vision, real-time, yolo, faster-rcnn, robotics, deployment]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 summary: "目标检测模型选型 Query：从「机载实时 vs 服务器侧高精度」「单阶段 vs 两阶段 / 实时 DETR」「2D 框够不够 vs 要不要级联位姿」三轴出发，给出机器人感知栈里检测器的选型逻辑、部署陷阱与组合 pipeline。"
 related:
   - ../methods/object-detection.md
+  - ../methods/rcnn-family.md
   - ../concepts/vision-backbones.md
   - perception-backbone-selection.md
   - robot-perception-stack-selection-loop.md
@@ -176,6 +177,7 @@ sources:
 
 - [感知骨干/表征选型 Query](perception-backbone-selection.md) — 上一层的「分类骨干 / 检测头 / 通用预训练表征」三类总选型
 - [目标检测（方法）](../methods/object-detection.md) — 本 Query 的方法谱系基础页（两阶段 vs 单阶段技术路线）
+- [R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）](../methods/rcnn-family.md) — 两阶段提议 + RoI 池化精度基线的演进细节
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测速查与上游跟踪
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — 检测器骨干与多尺度特征的上游
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md) — 单阶段回归检测开山工作
