@@ -88,6 +88,7 @@ flowchart LR
 - [SLAM Toolbox](../wiki/entities/slam-toolbox.md)、[Cartographer](../wiki/entities/cartographer.md)、[FAST-LIO](../wiki/entities/fast-lio.md)、[ORB-SLAM3](../wiki/entities/orb-slam3.md)
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Sensor Fusion](../wiki/concepts/sensor-fusion.md)
 - [GN10 PointCloud Localization](../wiki/entities/gn10-pointcloud-localization.md) — 已有静态地图上的 ESDF + CUDA 3D 纹理扫描匹配；从无手动初始位姿到丢失后的全局重定位，区别于 FAST-LIO 的连续里程计 / 建图。
+- [lidar_localization_ros2](../wiki/entities/lidar-localization-ros2.md) — 预建 PCD/PLY 地图中的 BBS 全局初始化 + NDT/GICP scan-to-map，支持无 GPS / 无手动首位姿的 ROS 2 定位，另需警惕对称地图误匹配；与上条 GN10 的 ESDF/CUDA 实现互补。
 - [Ultra-Fusion](../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — 韧性多传感器融合前沿
 - [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md) — 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
 - [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md) — memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
