@@ -151,6 +151,21 @@ flowchart TB
 
 报告把 **大规模 log-loss 预训练** 解释为 **有界资源下的通用压缩近似**，并认为叠加 **规划脚手架 / RL 决策** 可能继续推进——为 [Foundation Policy](../concepts/foundation-policy.md) / [VLA](../methods/vla.md) 提供 **宏观理论背书**，同时强调 **AIXI 不可计算** 与实践鸿沟（持续学习、超长程规划仍开放）。
 
+## 工程实践：把研究情景转成可验证假设
+
+这份研究是**理论报告，不是可部署的算法实现**；下面是基于报告 §5.3、§5.5、§7.1 提出的**实验设计建议**，并非作者做过的机器人实验。
+
+| 研究假设 | 最小可复现实验设计 | 需要记录的指标 | 失败判据 |
+|---|---|---|---|
+| 多 Agent 集体规模是否带来净增益 | 同一任务、同一模型，对照单 Agent、固定人数的分工 Agent、等计算量的重复采样 | 成功率、总 token / FLOPs、墙钟、协调开销、各组 seed 分布 | 计算量相同且群体无提升，或协作开销超过收益 |
+| 自生成数据能否突破数据墙 | 固定原始训练/验证集，添加仿真或交互数据，固定独立测试分布 | held-out 成功率、碰撞/失效率、相对训练数据成本、跨分布退化 | 仅自评数据集分数上涨，外部测试不涨或退化 |
+| 递归改进是否发生 | 在冻结目标、任务、评估器下运行多轮 proposal → experiment → verify → accept，保留每轮可回滚产物 | 各轮可复现的真实增益、实验总预算、失败率、评测器漂移 | 改进只是 prompt/harness 局部调参，不能迁移到下一轮 |
+| 认知算力增长是否转化为具身收益 | 同一机器人任务分别扩展 policy 推理预算、仿真 rollout、真机验证预算，保持其他条件固定 | 任务成功率、推理延迟、算力费用、真机 reset 时间、安全违规 | 仅模型推理/成本提升，真机任务成功率未提升 |
+
+- **安全与证据边界：** 评测器不可让改进系统自行更改；设置独立隐藏集及真实物理约束，区分离线仿真、真实机器人实验、报告推演三种证据等级。
+- **代码可用性：** 原始研究没有发布可辨认的训练/推理程序或部署入口，因此**源码运行时序图不适用**；上表只是以仓库相关页面构建的实验计划，**不是已运行结果**。
+- **进一步对照：** [MARL](../methods/marl.md)、[Sim2Real](../concepts/sim2real.md)、[数据飞轮](../concepts/data-flywheel.md)、[具身评测路线](../../roadmap/depth-embodied-eval.md)。
+
 ## 评测与研究议程
 
 本报告 **不做实证 benchmark**，但列出对 **预测 AI 进展** 至关重要的评测方向，具身读者可映射为：
@@ -181,7 +196,7 @@ flowchart TB
 - **集体 ASI 依赖任务可分解性**：并行副本并非对所有 **长链物理实验、单次真机稀缺事件** 自动线性加速。
 - **安全与治理仅点到为止**：instrumental convergence、对齐工具链有提及，但非报告重心；勿当作 alignment 手册。
 
-## 与其他页面的关系
+## 关联页面
 
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 机器人数据/参数 scaling 的微观定律；本页提供 **宏观算力与副本** 背景。
 - [Data Flywheel](../concepts/data-flywheel.md) — 部署→数据→训练闭环；对应报告中 **数据 RSI 与 test-time 蒸馏** 通道。
@@ -189,6 +204,13 @@ flowchart TB
 - [机器人学习「三个时代」](../queries/robot-learning-three-eras-narrative.md) — 产业侧 **存在性证明 → 基础模型 → Scaling** 叙事；可与此报告的 **后 AGI 连续谱** 前后拼接阅读。
 - [MARL](../methods/marl.md) — 第四条路径（多智能体集体）在机器人仿真中的具体技术落点。
 - [Visual General Intelligence 白皮书](./paper-vgi-white-paper.md) — 视觉优先、从视觉经验涌现智能的互补议程；本报告的「抽象壁垒」几乎就是那一页的动机。
+
+## 参考来源
+
+- [agi_to_asi_arxiv_2606_12683.md](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — arXiv 策展摘录（v3 正文、四张表及 PDF 附录 B 已核对）
+- [deepmind-institute-what-comes-after-agi-2026.md](../../sources/blogs/deepmind-institute-what-comes-after-agi-2026.md) — 作者原文全文核读与声明边界
+- [vgi_white_paper_arxiv_2608_25924.md](../../sources/papers/vgi_white_paper_arxiv_2608_25924.md) — 视觉优先 VGI 白皮书，与本报告语言优先路径对读
+- Genewein, T., et al. (2026). *From AGI to ASI*. arXiv:2606.12683. <https://arxiv.org/abs/2606.12683>
 
 ## 推荐继续阅读
 
@@ -198,10 +220,3 @@ flowchart TB
 - 理论教材：Hutter et al., *Universal Artificial Intelligence*（AIXI 框架）
 - 算力预测：Epoch AI 有效算力估计；Aschenbrenner (2024) 情景分析
 - 具身对照：[Open X-Embodiment](../concepts/open-x-embodiment.md)、[τ₀-World Model](./tau0-world-model.md)（测试时仿真选动作）
-
-## 参考来源
-
-- [agi_to_asi_arxiv_2606_12683.md](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — arXiv 策展摘录（v3 主要章节复核，全文逐段通读尚未完成）
-- [deepmind-institute-what-comes-after-agi-2026.md](../../sources/blogs/deepmind-institute-what-comes-after-agi-2026.md) — 作者原文全文核读与声明边界
-- [vgi_white_paper_arxiv_2608_25924.md](../../sources/papers/vgi_white_paper_arxiv_2608_25924.md) — 视觉优先 VGI 白皮书，与本报告语言优先路径对读
-- Genewein, T., et al. (2026). *From AGI to ASI*. arXiv:2606.12683. <https://arxiv.org/abs/2606.12683>
