@@ -200,6 +200,7 @@ flowchart LR
 
 ### 推荐读什么
 - [VLA](../wiki/methods/vla.md) · [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md) — 语言条件序列预测到 VLM 接入的基线谱系
+- [Gestalt（arXiv:2610.00576）](../wiki/entities/paper-gestalt-2610-00576.md) — 多模态交互架构实例：先在 Zone I 保留独立模态 FFN，经 interplay tokens 对齐，再在 Zone II 完全融合；尚无机器人动作头。
 - [统一多模态 Token](../wiki/methods/unified-multimodal-tokens.md) — 把视觉 / 语言 / 动作编进同一空间的架构趋势
 - [Octo](../wiki/entities/paper-octo.md) — 块状注意力 Transformer + 独立读出头，少样本适配新相机与动作空间
 - [π₀](../wiki/methods/pi0-policy.md) · [π₀.₇](../wiki/methods/pi07-policy.md) — 流匹配动作头与多模态提示对齐异质数据
