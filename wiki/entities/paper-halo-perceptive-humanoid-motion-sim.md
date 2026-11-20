@@ -270,7 +270,7 @@ flowchart TD
 - **附录个别笔误**：附录 E 把 OAK-1W 的分辨率写作 1280×80（应为 1280×800，正文 §IV-B 为 1280×800）。
 - **论文版本**：本页依据 v1（2026-11-04）；核对时 arXiv 摘要页只有 v1。
 
-## 开源核查（2026-11-06）
+## 工程实践：开源核查与复现边界（2026-11-06）
 
 | 项 | 状态 | 核查方式 |
 |----|------|----------|
@@ -281,6 +281,15 @@ flowchart TD
 | 许可 | `LICENSE` 为 Apple 自定义条款（授予使用、复制、修改、再分发的个人非独占许可，要求保留声明并免责），**不是** MIT / Apache；README 内仍留有 `TODO(release): license` 与 authors 的注释；第三方（G1 描述、Kimodo、Infinigen、Qwen3.5 等）按 `ACKNOWLEDGEMENTS` 各自保留许可 | 阅读 `LICENSE`、`ACKNOWLEDGEMENTS`、README |
 
 项目页与仓库状态不同步（页面写 Coming soon，但仓库已可公开克隆），以仓库实际可达为准。
+
+### 最小复现路径（对照官方 README，未执行）
+
+1. **合成数据**：从官方 `datagen/README.md` 的场景生成、Kimodo 动作生成与渲染入口着手；公开流水线覆盖 SIT，不能据此声称覆盖论文全部六项任务。
+2. **训练策略**：`generator/README.md` 说明运动生成器训练；`tracker/training/README.md` 说明 `PreRL → 多教师蒸馏 → PostRL` 三阶段跟踪器训练。官方仓库未附带论文训练好的权重，部署前需自行获得可用 checkpoint。
+3. **先做仿真闭环**：按 `system/README.md` 通过 `run_sim.py` 启动单任务仿真；涉及编排器的多任务路径需要官方文档所述的 MLX 运行环境。
+4. **再评估真机部署**：`tracker/deploy_cpp/README.md` 与 `system/README.md` 分别覆盖低层实时跟踪与 `run_real.py`；部署前核对 G1 关节配置、深度链路、延迟及紧急停止流程，勿直接把论文真机成功率当作开箱复现结果。
+
+工程调试可优先记录每层的推理周期、规划连续性、跟踪误差、深度有效率与任务失败类型；**这些是复现时的建议检查项，并非仓库实测结果**。
 
 ## 源码运行时序图
 
