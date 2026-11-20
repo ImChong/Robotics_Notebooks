@@ -2126,6 +2126,62 @@
       #graph-sidebar.open ~ .fab-stack-right { right: 320px; }
     }
 
+    /* ── 右下角问答按钮（图谱页专用：与左下角 #graph-legend-fab 保持对称低调样式）── */
+    .fab-stack-right .kb-chat-toggle {
+      background: rgba(13, 17, 23, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+      transition: transform 0.2s var(--ease), background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    }
+    .fab-stack-right .kb-chat-toggle:hover,
+    .fab-stack-right .kb-chat-toggle:focus-visible {
+      background: rgba(22, 28, 38, 0.96);
+      border-color: rgba(91, 156, 246, 0.45);
+      color: #e8e8e4;
+      box-shadow: 0 6px 22px rgba(91, 156, 246, 0.18);
+    }
+    .fab-stack-right .kb-chat-toggle[aria-expanded="true"] {
+      background: rgba(20, 31, 48, 0.95);
+      border-color: rgba(91, 156, 246, 0.55);
+      color: #7ab3ff;
+      box-shadow: 0 6px 22px rgba(91, 156, 246, 0.22);
+    }
+    .fab-stack-right .kb-chat-toggle[aria-expanded="true"]:hover {
+      background: rgba(26, 40, 62, 0.96);
+      border-color: rgba(122, 179, 255, 0.72);
+      color: #9ec5ff;
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.72);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle:hover,
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle:focus-visible {
+      background: #ffffff;
+      border-color: rgba(45, 116, 218, 0.45);
+      color: #2d74da;
+      box-shadow: 0 6px 20px rgba(45, 116, 218, 0.14);
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle[aria-expanded="true"] {
+      background: #eaf1fb;
+      border-color: rgba(45, 116, 218, 0.45);
+      color: #2d74da;
+      box-shadow: 0 6px 20px rgba(45, 116, 218, 0.16);
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle[aria-expanded="true"]:hover {
+      background: #dce8fa;
+      border-color: rgba(45, 116, 218, 0.62);
+      color: #1a5bb8;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fab-stack-right .kb-chat-toggle {
+        transition: none;
+      }
+    }
+
     /* ── 侧边栏白天模式 ── */
     [data-theme="light"] #graph-sidebar {
       background: rgba(255,255,255,0.98);

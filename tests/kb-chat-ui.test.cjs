@@ -886,3 +886,39 @@ test('Clicking citation card scrolls to quoted passage inside details and pulses
   assert.ok(targetPara.classList.contains('kb-cite-highlight'), 'highlight animation class applied');
   dom.window.close();
 });
+
+test('graph.html harmonizes #kbChatToggle with #graph-legend-fab while leaving global style.css accent intact', () => {
+  const graphHtml = readFileSync(resolve(__dirname, '../docs/graph.html'), 'utf8');
+  const styleCss = readFileSync(resolve(__dirname, '../docs/style.css'), 'utf8');
+
+  assert.match(
+    graphHtml,
+    /\.fab-stack-right\s+\.kb-chat-toggle\s*\{[^}]*background:\s*rgba\(13,\s*17,\s*23,\s*0\.92\)/,
+    'graph.html dark chat toggle matches #graph-legend-fab surface',
+  );
+  assert.match(
+    graphHtml,
+    /\[data-theme="light"\]\s+\.fab-stack-right\s+\.kb-chat-toggle\s*\{[^}]*background:\s*rgba\(255,\s*255,\s*255,\s*0\.96\)/,
+    'graph.html light chat toggle matches #graph-legend-fab surface',
+  );
+  assert.match(
+    graphHtml,
+    /\.fab-stack-right\s+\.kb-chat-toggle\[aria-expanded="true"\]/,
+    'graph.html overrides expanded chat toggle state for dark mode',
+  );
+  assert.match(
+    graphHtml,
+    /\[data-theme="light"\]\s+\.fab-stack-right\s+\.kb-chat-toggle\[aria-expanded="true"\]/,
+    'graph.html overrides expanded chat toggle state for light mode',
+  );
+  assert.match(
+    graphHtml,
+    /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{\s*\.fab-stack-right\s+\.kb-chat-toggle\s*\{\s*transition:\s*none;/,
+    'graph.html respects prefers-reduced-motion on chat toggle',
+  );
+  assert.match(
+    styleCss,
+    /\.kb-chat-toggle\s*\{[^}]*background:\s*var\(--accent\)/,
+    'global style.css keeps default accent styling for non-graph pages',
+  );
+});
