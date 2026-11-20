@@ -4,10 +4,11 @@ tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, se
 status: complete
 original:
   - ../../sources/papers/intact_arxiv_2607_26056_full_reading_2026_11_15.md
-updated: 2026-11-15
+updated: 2026-11-20
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
 related:
+  - ./paper-sadl-2611-21596.md
   - ./paper-lejepa.md
   - ./paper-lewm.md
   - ./paper-lpwm.md
@@ -200,6 +201,8 @@ sequenceDiagram
 - **评测域：** 官方 LeWM 四任务；迁到真机双臂/人形需另证。
 
 ## 关联页面
+
+- [SADL：表征坍塌的供需几何](./paper-sadl-2611-21596.md) — 对 INTACT 的 JEPA 编码器 H 施加按需单侧正则，不改变 Direct 动作头；见 arXiv:2611.21596。
 
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 
