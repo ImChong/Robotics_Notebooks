@@ -4,8 +4,9 @@ project_id: gn10-pointcloud-localization
 code: https://github.com/tmcit-ararobo-2026a/gn10-pointcloud-localization
 tags: [repo, localization, lidar, esdf, cuda, ros2, navigation, jetson, open-source, tmcit-ararobo-2026a]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-20
 related:
+  - ./lidar-localization-ros2.md
   - ./fast-lio.md
   - ../methods/lidar-odometry-fusion.md
   - ../methods/visual-line-matching-localization.md
@@ -155,6 +156,8 @@ sequenceDiagram
 - **短时 TF 降级行为**：源码允许至多 2 帧且不超过 0.10 s 的预测 TF，之后及 LOST 停止更新；下游需检查位姿时间戳与定位状态。
 
 ## 与其他工作对比
+
+- [lidar_localization_ros2](./lidar-localization-ros2.md)：同样消费预建点云地图，但使用二维 BBS 全局候选 + NDT/GICP 三维 scan-to-map，不依赖本页的 CUDA ESDF 距离场；Go2 的 2 cm 是特定 rosbag 回放中位误差而非通用真机结果。
 
 - [FAST-LIO](./fast-lio.md) / [LIO-SAM](./lio-sam.md)：持续激光/惯性状态估计、里程计和建图；GN10 侧重**在已有静态地图中**匹配与重定位。
 - [Isaac ROS nvblox](./isaac-ros-nvblox.md)：利用 GPU 更新体素 TSDF/ESDF 地图辅助感知和规划；GN10 消费距离场做位姿匹配。
