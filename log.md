@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | sources/papers/kinetics_observer_arxiv_2406_13267.md — 收录 Kinetics Observer 紧耦合状态估计
+
+- arXiv:2406.13267v2 论文独立实体：质心动力学、黏弹性接触、IMU/wrench 校正、可观性与真实机器人证据；包括基于原文的 Mermaid 流程图。
+- 对照 jrl-umi3218/state-observation 官方 C++ 库的 KineticsObserver、单元测试和运行调用链，附真实源码时序图与单测/真机复现的边界。
+- 与 State Estimation、SG-ODOM 和传统模型控制 Stage 4 互链；只提交源文档，不提交导出派生文件。健康度以 CI 实测为准。
+
 ## [2026-11-20] ingest | HandRSI arXiv:2611.22164：手部姿态估计 Harness + 权重联合递归改进
 
 - 论文 HTML v1、官方代码运行入口与 HF 权重分别归档，建立独立 paper 实体、Mermaid 流程图及源码时序图。
