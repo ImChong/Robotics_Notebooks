@@ -9323,7 +9323,8 @@
   }
 
   function init() {
-    if (!document.querySelector('body > .footer')) return;
+    var isGraphPage = Boolean(document.getElementById('graph-wrap'));
+    if (!document.querySelector('body > .footer') && !isGraphPage) return;
     if (document.querySelector('.back-to-top') || document.getElementById('fabStackRight')) return;
 
     var stack = document.createElement('div');

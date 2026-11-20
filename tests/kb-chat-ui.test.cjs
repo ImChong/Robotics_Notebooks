@@ -104,14 +104,21 @@ function setupDom({ withFooter = true, config = null, fetchImpl = null, lang = '
   return { dom, window, fetchCalls };
 }
 
-test('Footer pages mount #fabStackRight with merged scroll launcher; graph.html (no footer) mounts neither; 0 fetches before click', () => {
+test('Footer and graph.html pages mount #fabStackRight appropriately with 0 fetches before click', () => {
   const graphDom = setupDom({ withFooter: false });
   graphDom.window.eval(fabBlock);
-  assert.equal(graphDom.window.document.getElementById('fabStackRight'), null);
-  assert.equal(graphDom.window.document.getElementById('backToTop'), null);
-  assert.equal(graphDom.window.document.getElementById('kbChatToggle'), null);
-  assert.equal(graphDom.window.document.getElementById('fabMainToggle'), null);
+  assert.ok(graphDom.window.document.getElementById('fabStackRight'), 'graph.html mounts #fabStackRight');
+  assert.ok(graphDom.window.document.getElementById('kbChatToggle'), 'graph.html mounts chat toggle');
+  assert.equal(graphDom.window.document.getElementById('backToTop').hidden, true);
+  assert.equal(graphDom.window.document.getElementById('fabMainToggle').hidden, true);
+  assert.equal(graphDom.fetchCalls.length, 0);
   graphDom.dom.window.close();
+
+  const bareDom = setupDom({ withFooter: false });
+  bareDom.window.document.getElementById('graph-wrap').remove();
+  bareDom.window.eval(fabBlock);
+  assert.equal(bareDom.window.document.getElementById('fabStackRight'), null);
+  bareDom.dom.window.close();
 
   const homeDom = setupDom({ withFooter: true });
   homeDom.window.eval(fabBlock);
