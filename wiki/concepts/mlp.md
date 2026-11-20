@@ -2,7 +2,7 @@
 type: concept
 tags: [mlp, feedforward, deep-learning, policy, architecture]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-20
 summary: "多层感知机是逐层仿射+非线性的向量函数逼近器，也是机器人低频观测与高频关节策略最常见的默认骨干；加深靠残差，扩容靠 MoE，而不是无限加宽一层。"
 related:
   - ./mixture-of-experts.md
@@ -11,7 +11,10 @@ related:
   - ./humanoid-policy-network-architecture.md
   - ../overview/ai-architecture-map.md
   - ../entities/paper-resnet-deep-residual-learning.md
+original:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
 sources:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
   - ../../sources/papers/rumelhart_backprop_learning_representations_nature_1986.md
   - ../../sources/papers/ai_architecture_foundations.md
   - ../../sources/personal/ai-architecture-map.md
@@ -63,6 +66,10 @@ flowchart LR
   a2 --> y["动作 / 价值"]
 ```
 
+### 和 DNN / CNN / RNN / GAN 的分类关系
+
+MLP 是**全连接前馈结构**，DNN 则是更广义的「深层神经网络」概念，不能直接视为同义词；CNN/RNN 可以是 DNN，GAN 可以选 MLP 作为其生成器或判别器。比较应先分开[骨干结构与训练框架](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md)。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -80,6 +87,8 @@ flowchart LR
 
 ## 关联页面
 
+- [DNN、CNN、RNN、GAN：结构轴与训练轴](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md) — 纠正 DNN 与 MLP 的一对一混用
+
 - [MoE](./mixture-of-experts.md)
 - [深度学习基础](./deep-learning-foundations.md)
 - [反向传播](./backpropagation.md)
@@ -87,6 +96,8 @@ flowchart LR
 - [AI 架构地图](../overview/ai-architecture-map.md)
 
 ## 参考来源
+
+- [深蓝AI：DNN/CNN/RNN/GAN 科普文章核对归档](../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md)
 
 - [Rumelhart et al. 反向传播（Nature 1986）](../../sources/papers/rumelhart_backprop_learning_representations_nature_1986.md)
 - [AI 架构地图一手论文簇](../../sources/papers/ai_architecture_foundations.md)
