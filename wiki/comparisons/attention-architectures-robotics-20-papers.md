@@ -11,7 +11,6 @@ original:
   - ../../sources/papers/attention20_2102_05095.md
   - ../../sources/papers/attention20_2103_03206.md
   - ../../sources/papers/vima_arxiv_2210_03094_full_read_2026_11_20.md
-  - ../../sources/papers/vima_arxiv_2210_03094_full_read_2026_11_20.md
   - ../../sources/papers/attention20_2103_14030.md
   - ../../sources/papers/attention20_2205_14135.md
   - ../../sources/papers/attention20_2209_05451.md
