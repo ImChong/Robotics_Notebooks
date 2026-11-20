@@ -6,7 +6,7 @@ tags:
   - stanford
   - llm
 status: complete
-updated: 2026-11-06
+updated: 2026-11-20
 arxiv: "2611.05344"
 code: https://github.com/andrewgcodes/in-context-learning-circuit
 related:
@@ -15,6 +15,8 @@ related:
 sources:
   - ../../sources/papers/a_circuit_for_in_context_learning_2611_05344.md
   - ../../sources/repos/in-context-learning-circuit.md
+original:
+  - ../../sources/papers/a_circuit_for_in_context_learning_2611_05344.md
 summary: "斯坦福研究通过因果干预追踪少样本句子分类中的键值写入、重复信号门控和类别检索；结论限于文中评测设置。"
 ---
 
@@ -40,7 +42,7 @@ summary: "斯坦福研究通过因果干预追踪少样本句子分类中的键�
 | 机构 | 斯坦福大学（Stanford University） |
 | 作者 | Andrew Gao、William Gao（同等贡献） |
 | 原文版本 | [arXiv:2611.05344v1](https://arxiv.org/abs/2611.05344v1)，预印本，未经同行评审 |
-| 代码 | [官方仓库](https://github.com/andrewgcodes/in-context-learning-circuit)；许可 MIT（据本站仓库归档记录，未独立核实） |
+| 代码与演示 | [官方仓库](https://github.com/andrewgcodes/in-context-learning-circuit) · [单文件交互讲解](https://github.com/andrewgcodes/in-context-learning-circuit/blob/main/docs/index.html)；MIT（已核对 `LICENSE`） |
 
 ## 为什么重要
 
@@ -91,9 +93,14 @@ flowchart TD
   Q["查询句子"] --> E["生成查询类别编码"]
   D --> F["读取头匹配类别并取出标签"]
   E --> F
-  C --> F
-  F --> G["后续层与输出 logits"]
-  H["抑制头：校准近期标签偏置"] --> G
+  C --> X{"重复门控是否开启"}
+  X -->|开启| F
+  X -->|未开启| S["位置 0：注意力汇 / 空读取"]
+  F --> P["晚期拷贝头及 MLP"]
+  P --> G["输出 logits"]
+  S --> P
+  A --> H["刹车头：抑制最近标签偏置"]
+  H --> G
 ```
 
 中层写入头将示例句子的类别方向写入其标签 token 的残差流；标签身份在值侧，类别信息在键侧。查询侧与读取头结合，检索匹配类别对应的标签。门控依据整个提示的标签重复情况，而非要求目标标签自身必定重复：只出现一次的标签，只要提示中其他标签有重复，仍可被正确检索。
@@ -126,13 +133,19 @@ sequenceDiagram
 
 | 项目 | 内容 |
 |------|------|
-| 复现入口 | 官方 README 给出 `python icl/run.py Qwen/Qwen3-4B-Base concept12 seed=1 out=runs/example`，随后运行 `icl/check.py runs/example` 与 `icl/effects.py effects.tsv runs/example` |
+| 复现入口 | 官方 README 给出 `python icl/run.py Qwen/Qwen3-4B-Base concept12 seed=1 out=runs/example`，随后运行 `icl/check.py runs/example` 与 `icl/effects.py effects.tsv runs/example`；`smoke` 可缩小 battery 用于检查入口，不代表全量复现 |
 | 算力与依赖 | 论文所有实验在单张 H100 上以 bfloat16 运行，使用 HuggingFace 实现；README 称 4B 完整 battery 约一小时（据归档记录，未复现） |
-| 默认数据 | 消融尺度所用文本默认取自 `NeelNanda/pile-10k`（据归档记录） |
+| 默认数据 | 消融尺度所用文本默认取自 `NeelNanda/pile-10k`；可通过 `ICL_DOCS` 指定本地 JSON 文本列表（官方 README / `icl/run.py`） |
 | 提示构造 | 标签需为单 token（`zorp` 除外）；两 token 标签以首 token 承载键；孪生提示需逐 token 对齐，同类同长对照用于排除「仅句子内容」的影响 |
 | 关键指标 | margin（nats）及其 95% 配对 bootstrap 区间；读取头对 sink 与匹配槽位的注意力质量；门控投影 g；每项干预都要与同范数随机方向或随机头集合比较 |
 | 写提示前的诊断 | 论文在讨论中建议：对少样本任务，先探测查询位置的类别信号是否线性可读（论文中不可读的类别如奇偶、第三个字母，即使加入示例也难学习）。这是论文的推断性建议，尚未在其他任务上验证 |
 | 机器人应用 | 本文仅研究短句分类，未涉及机器人数据或动作输出，因此**不直接适用**于机器人任务；可借鉴的是诊断与对照的做法 |
+
+### 电路完备性：如何解读 60%
+
+- **输出传递不是 100%**：在 Qwen3-4B 的类别翻转对照中，将 20 个读取头输出替换为孪生提示的输出，可解释约 60% 的 margin 翻转；后续注意力、MLP 和直接残差路径各有贡献，不能称单一读取模块独自决定结果（论文 §8.3）。
+- **参考激活分布至关重要**：论文 §8.2 的仅保留命名电路实验，在匹配提示及标签对的参考分布下有解释力；不匹配的自然文本均值让命名电路与随机对照一起退化。只看消融后的低分会误判电路的忠实性。
+- **机器人迁移的检验假设（非论文结果）**：若要用于机器人 ICL，可先设计正确 / 错误 / 无示范对照并监测是否真的依赖上下文；本文没有验证视觉编码器或动作控制策略是否也存在相同标签槽位电路。
 
 ## 实验与评测
 
@@ -171,13 +184,13 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **适用边界**：论文自陈的范围是两类标签检索与功能选择，短句、单 token 标签、最多 12 个示例，3–4B 基础模型（另有 Qwen3 族 0.6B–8B 的普查）。指令遵循、长文本任务与多类绑定不在范围内（见论文讨论一节）。
+- **适用边界**：论文自陈的范围是两类标签检索与功能选择，短句、单 token 标签、主要实验最多 12 个示例，3–4B 基础模型（另有 Qwen3 族 0.6B–8B 的普查；18 示例仅用于读取律失败外推检验）。指令遵循、长文本任务与多类绑定不在范围内（见论文讨论一节）。
 - **外推失败**：读取律无法外推到 18 示例；作者本人未能解释每头预算固定的成因。
 - **模型间差异**：三个模型的读取头位置、门控强度与连接强度不同（如 Llama 的门控较弱）；连接切断在 SmolLM3 与 Llama 上只部分复现，门控的前半段在行为层仅在 Qwen 清楚复现。
 - **对照方法的陷阱**：作者在附录中记录了自己首版对照（以相邻提示作参考）引入的偏差，导致一项数值被高估；本页引用的数字均采用论文修正后的对照。
 - **训练动态结论为推断**：OLMo-2 检查点与玩具模型的结果提示了组件形成顺序，但不能直接等同于大模型的训练过程。
 - **风险**：不应把「标签可被检索」直接等同于「模型理解了任务」，也不应将结论迁移到机器人策略或具身任务而不重新验证。
-- **未核实**：本页未运行官方代码，也未逐项核读 hooks 与后处理模块；许可证信息来自本站仓库归档记录。
+- **核对与未复现**：已核对论文 v1 正文与附录 A–G、官方 README、`LICENSE` 及交互演示入口；没有运行 H100 实验，尚未逐文件审计 hooks 与后处理代码。交互讲解是教学可视化，并非实测复现。
 
 ## 关联页面
 
@@ -192,6 +205,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [官方代码与交互演示](https://github.com/andrewgcodes/in-context-learning-circuit)
+- [官方代码与交互演示仓库](https://github.com/andrewgcodes/in-context-learning-circuit) · [直接打开交互讲解源文件](https://github.com/andrewgcodes/in-context-learning-circuit/blob/main/docs/index.html)（下载单文件后可离线在浏览器运行）
 - [In-context learning and induction heads（Olsson et al., 2022）](https://arxiv.org/abs/2209.11895)，论文所依赖的归纳头背景
 - [Interpretability in the wild：GPT-2 small 的间接宾语识别电路（Wang et al., 2022）](https://arxiv.org/abs/2211.00593)，论文借用的电路评估标准（忠实性、完备性、最小性）的来源
