@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, transformer, attention, research]
-status: draft
+status: complete
 updated: 2026-11-20
 project_id: attention20-2102-05095-timesformer
 arxiv: "2102.05095"
@@ -39,7 +39,9 @@ sources:
 
 ## 核心原理
 
-将视频帧划分为 patch tokens；比较时空联合注意力与分解注意力，提出在每个 block 中分别执行时间与空间注意力的视频 Transformer。
+每帧切成 patch tokens，每个 Transformer block 将同一空间位置跨时间的 temporal attention 与同一帧内的 spatial attention 分开。比较 Joint Space-Time、Space Only、Divided Space-Time 等设计；分解注意力避免直接在全部帧乘以全部 patch 的 token 集上做一次密集注意力。
+
+**实验设计的关键取舍：** 时间后空间的顺序比相反次序略强；论文研究不同帧数、patch 分辨率和预训练对精度/计算的影响，不提供动作控制时延基准。
 
 ## 流程总览
 
@@ -52,16 +54,15 @@ flowchart LR
 
 ## 实验与评测
 
-- ICML 2021 论文在 Kinetics-400、Kinetics-600 等视频识别任务评测，报告 divided attention 是对照设计中最优方案；不是机器人时序动作基准。
-- **读数边界：** 不将该论文的识别/检测/操控指标跨数据集直接比较；实验表格、随机种子与消融设置仍需全文核验。
+Kinetics-400 上 divided space-time 配置约 78.0% top-1，相应联合时空注意力对照 77.4%、仅空间注意力 76.9%；Something-Something v2 上约 59.5%（仅空间 36.6%），直接体现时间顺序对该任务的重要性。最长测试到约 96 帧，指标为视频识别。
+
+**阅读约束：** 不把跨数据集、不同硬件和不同任务的指标直接合并排名。
 
 ## 结论
 
-**这篇论文的主要价值在于注意力结构和任务约束之间的工程取舍，尚不能由摘要证实真实机器人部署收益。**
-
-1. **结构重点** — 将视频帧划分为 patch tokens
-2. **实证范围** — ICML 2021 论文在 Kinetics-400、Kinetics-600 等视频识别任务评测，报告 divided attention 是对照设计中最优方案
-3. **部署前确认** — 需要较多视频 token；识别任务的离线结果不等于低延迟机器人控制能力。
+1. **方法贡献：** 每帧切成 patch tokens，每个 Transformer block 将同一空间位置跨时间的 temporal attention 与同一帧内的 spatial attention 分开。
+2. **实证价值：** Kinetics-400 上 divided space-time 配置约 78.0% top-1，相应联合时空注意力对照 77.4%、仅空间注意力 76.9%；Something-Something v2 上约 59.5%（仅空间 36.6%），直接体现时间顺序对该任务的重要性。
+3. **应用边界：** 模型主要离线进行视频分类，时序看见未来帧与因果机器人控制的限制不同，带来的收益需在在线因果掩码下重新验证。
 
 ## 与其他工作对比
 
@@ -70,17 +71,29 @@ flowchart LR
 
 ## 工程实践
 
-- 适用于理解视频历史编码的时空交互分工，无法直接替代动作生成和控制回路。
-- 选择实现时需核实官方仓库、输入输出形状、训练数据和硬件运行条件，不应根据摘要推断可运行入口。
+- **工程建议：** 机器人视频编码器可借鉴 divided attention，但必须限制每步可见的历史帧并测端到端推理周期。
+- **公开实现/项目：** https://github.com/facebookresearch/TimeSformer。正文与附录已对照，训练/推理代码尚未在本环境执行。
 
 ## 源码运行时序图
 
-**暂不绘制：** 官方运行入口与实际源码调用关系尚未核实。此处不使用假想的通用 `sequenceDiagram` 冒充源码分析；待核验训练/推理入口后补充。
+**源码核对边界：** 已定位公开实现入口 https://github.com/facebookresearch/TimeSformer，本轮没有实际执行该仓库。以下图为论文方法层的前向/评测时序，非冒充已验证的函数调用栈。
+
+```mermaid
+sequenceDiagram
+    participant D as 论文实验输入
+    participant E as 表征与编码
+    participant M as 注意力核心模块
+    participant O as 输出与任务评测
+    D->>E: 数据/观测预处理
+    E->>M: 表示与条件
+    M->>O: 任务预测
+    O-->>D: 仅在论文实验设定下计量结果
+```
 
 ## 局限与风险
 
-- 需要较多视频 token；识别任务的离线结果不等于低延迟机器人控制能力。
-- **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+- 模型主要离线进行视频分类，时序看见未来帧与因果机器人控制的限制不同，带来的收益需在在线因果掩码下重新验证。
+- **原文状态：** 正文与附录已核对，归档见 [原文精读笔记](../../sources/papers/attention20_2102_05095.md)；不以论文已读等同于上机复现。
 
 ## 相关方法与任务
 
