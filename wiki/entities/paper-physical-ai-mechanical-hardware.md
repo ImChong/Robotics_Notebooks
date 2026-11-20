@@ -24,6 +24,8 @@ related:
   - ./paper-digit-humanoid-locomotion-rl.md
   - ./paper-legged-robots-advances-challenges.md
   - ./paper-goal-oriented-comms-physical-ai.md
+  - ./agility-robotics.md
+  - ./agility-wbc-foundation-model.md
   - ./painode-041-agilityrobotics.md
   - ../queries/actuator-drive-chain-selection-loop.md
 sources:
@@ -152,6 +154,8 @@ flowchart LR
 - [Actuator 102 · 柔顺与感知](../overview/humanoid-actuator-102-compliance-sensing.md)
 - [Actuator 102 · 决策物种](../overview/humanoid-actuator-102-decision-species.md)
 - [Digit 人形 RL 行走](./paper-digit-humanoid-locomotion-rl.md)
+- [Agility Robotics（公司全栈与 Digit 1–5 档案）](./agility-robotics.md) — 承接本观点背后的 ATRIAS/Cassie/Digit 机体系谱、摆线分级柔顺与 CAP/RaaS 商业闭环
+- [Agility WBC Foundation Model（Motor Cortex 与 Sim2Real）](./agility-wbc-foundation-model.md) — 在本文论证的闭链脚尖/传动物理基础上做 Isaac Lab 对齐与 `<1M` LSTM 零样本迁移
 - [Agility Robotics（策展节点）](./painode-041-agilityrobotics.md)
 - [Query：执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本文主张的 cycloid 大关节、腱驱 SEA 手决定了 **③ 执行器建模与摩擦辨识层** 要面对的摩擦/惯量/柔顺真值：机械选型在先，「理想力矩源」假设破在哪由硬件定
 

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -505,6 +505,151 @@
           "desc": "160M 机载策略联合移动、双臂与骨盆指令；区别于同名 World Model，未见策略资产下载。",
           "id": "entity-1x-redwood-policy",
           "url": "https://www.1x.tech/discover/redwood-ai"
+        }
+      ]
+    },
+    {
+      "key": "agility",
+      "name": "敏捷机器人（Agility Robotics）",
+      "founded_year": 2015,
+      "founded_source": "https://www.agilityrobotics.com/company-overview",
+      "founded_note": "2015 年自俄勒冈州立大学动态机器人实验室（OSU Dynamic Robotics Lab）孵化成立；创始人包括 Jonathan Hurst、Damion Shelton 等，2026-11-05 于 Nasdaq 上市（AGLT）。",
+      "lenses": [
+        "humanoid",
+        "wbc"
+      ],
+      "summary": "OSU 动力学孵化→ATRIAS/Cassie/Digit 1–5 整机与摆线分级柔顺硬件第一性，Isaac Lab 闭链脚尖 Sim2Real 与 <1M LSTM Motor Cortex 自由空间 WBC，OSHA NRTL→IGX Thor + Halos 协作安全、CAP/RaaS 与 Nasdaq（AGLT）；现役商业栈闭源。",
+      "official": "https://www.agilityrobotics.com/resources?tab=research-%2B-analysis#tab-group",
+      "nodes": [
+        {
+          "date": "2019-02",
+          "title": "ATRIAS → Cassie → Digit 动力学源流",
+          "track": "整机 / 研究分析",
+          "desc": "Jonathan Hurst 在 IEEE Spectrum 阐述受珠鸡盲踩深坑启发的被动动力学：ATRIAS（72.5 kg，COT 1.13）→ Cassie（31 kg，双腿 5 电机 + 2 被动弹簧）→ 加装感知躯干与双臂的 Digit。",
+          "id": "entity-agility-robotics",
+          "url": "https://spectrum.ieee.org/building-robots-that-can-go-where-we-go",
+          "date_note": "IEEE Spectrum 封面长篇发布日 2019-02-26（对应官网 Research + Analysis 专栏条目 7）。",
+          "date_source": "https://spectrum.ieee.org/building-robots-that-can-go-where-we-go"
+        },
+        {
+          "date": "2021-09",
+          "title": "双臂起源与从户外送货转向仓储物流",
+          "track": "整机 / 商业收敛",
+          "desc": "阐明 Digit 双臂源自 Cassie 偏航控制的双侧对称尾兼防摔护盾，并果断暂停 Ford 户外送货场景，聚焦结构化仓库的料箱与货车装卸。",
+          "id": "entity-agility-robotics",
+          "url": "https://spectrum.ieee.org/digit-agility-robotics",
+          "date_note": "IEEE Spectrum 专访发表日 2021-09-01（对应官网 Research + Analysis 条目 6；2023-07 另刊《It's Totally Fine for Humanoid Robots to Fall Down》解析跌倒工程观）。",
+          "date_source": "https://spectrum.ieee.org/digit-agility-robotics"
+        },
+        {
+          "date": "2024-06",
+          "title": "GXO 商用 RaaS 落地 → 累计搬运超 10 万料箱",
+          "track": "商业部署",
+          "desc": "2024-06 在 GXO 佐治亚州 Flowery Branch 仓启动多年期 RaaS 商用服务；2025-11 突破单厂 10 万个料箱搬运，截至 2026-05 车队累计运行超 65,000 小时、覆及 9 处客户部署或签约场地。",
+          "id": "entity-agility-robotics",
+          "url": "https://www.agilityrobotics.com/content/digit-moves-over-100k-totes",
+          "date_note": "依据 SEC S-1 口径，GXO Flowery Branch 商用试点自 2024-06 启动（官网 RaaS 新闻 2024-10-03、10 万料箱里程碑 2025-11-20）。",
+          "date_source": "https://www.agilityrobotics.com/content/digit-moves-over-100k-totes"
+        },
+        {
+          "date": "2024-10",
+          "title": "Isaac Lab 跨越 Sim2Real Gap（拒用胶带奖励）",
+          "track": "Sim2Real / 全身控制",
+          "desc": "面对 28-DoF Digit 真机打滑，团队历时 6 个月修正脚尖踏板 4 点碰撞几何、传动能量传播与闭链脚趾连杆约束，在 Isaac Lab 与 MuJoCo 交叉对齐物理底座而非堆砌补偿奖励。",
+          "id": "entity-agility-wbc-foundation-model",
+          "url": "https://www.agilityrobotics.com/content/crossing-sim2real-gap-with-isaaclab",
+          "date_note": "Agility CTO Pras Velagapudi 官网博文发布于 2024-10-31。",
+          "date_source": "https://www.agilityrobotics.com/content/crossing-sim2real-gap-with-isaaclab"
+        },
+        {
+          "date": "2025-08",
+          "title": "WBC Foundation Model（Motor Cortex）",
+          "track": "全身控制",
+          "desc": "不足 1M 参数的轻量 LSTM 在 Isaac Sim 中 3–4 天累积数十年仿真零样本迁移真机：全工作空间均匀采样 + 根位置跟踪 + 自由空间 SE(3) 提示接口；未开源权重与脚本。",
+          "id": "entity-agility-wbc-foundation-model",
+          "url": "https://www.agilityrobotics.com/content/training-a-whole-body-control-foundation-model",
+          "date_note": "官网技术博文发布于 2025-08-28（同月 2025-08-25 另宣布自 Digit 4 起导入 NVIDIA Jetson Thor）。",
+          "date_source": "https://www.agilityrobotics.com/content/training-a-whole-body-control-foundation-model"
+        },
+        {
+          "date": "2025-10",
+          "title": "全局最小步数规划 + MPC 导航栈",
+          "track": "导航 / 全身控制",
+          "desc": "GXO 全职上线一周年重构导航栈，求解全局最优最小步数路径并由 MPC 精准追踪，协同溢出料箱动态暂存缓冲，压缩狭小通道重载转身步数。",
+          "id": "entity-agility-wbc-foundation-model",
+          "url": "https://www.agilityrobotics.com/content/digits-next-steps",
+          "date_note": "官网技术博文《Digit's Next Steps》发布于 2025-10-02。",
+          "date_source": "https://www.agilityrobotics.com/content/digits-next-steps"
+        },
+        {
+          "date": "2026-03",
+          "title": "Cognition / Skills / Controls 三层 AI 栈",
+          "track": "系统架构",
+          "desc": "公布三层异步智能架构：慢层 Cognition（LLM/VLA/Gemini 预览）→ 实时中层 Skills（VR 头显双柄 LfD 遥操作）→ 亚毫秒快环 Controls（Isaac Lab RL Motor Cortex），协同真实部署三层数据湖。",
+          "id": "entity-agility-robotics",
+          "url": "https://www.agilityrobotics.com/content/agility-and-ai",
+          "date_note": "官网核心架构长文《Agility and AI》发布于 2026-03-16。",
+          "date_source": "https://www.agilityrobotics.com/content/agility-and-ai"
+        },
+        {
+          "date": "2026-04",
+          "title": "WEF《下一代物理自主》2031 情景报告",
+          "track": "研究与分析",
+          "desc": "CEO Peggy Johnson 参与世界经济论坛自主系统理事会白皮书，划出「循证受控落地（Proven deployment）」与「过度承诺幻灭（Tech disillusionment）」等四种 2031 情景及 8 项安全治理目标。",
+          "id": "entity-agility-robotics",
+          "url": "https://reports.weforum.org/docs/WEF_Next_Generation_Physical_Autonomy_2026.pdf",
+          "date_note": "WEF Briefing Paper 封面署名发布于 2026-04（官网 Research + Analysis 收录条目 3）。",
+          "date_source": "https://reports.weforum.org/docs/WEF_Next_Generation_Physical_Autonomy_2026.pdf"
+        },
+        {
+          "date": "2026-05",
+          "title": "机器人的「ChatGPT 时刻」五条硬事实",
+          "track": "研究与分析",
+          "desc": "Jonathan Hurst 与前 Everyday Robots 负责人 Hans Peter Brøndmo 剖析 YouTube-to-Reality Gap、高维配置数据匮乏、Agentic 多专精模型协同、力敏感执行器瓶颈及从简单任务出发的安全优先原则。",
+          "id": "entity-agility-robotics",
+          "url": "https://spectrum.ieee.org/robotics-ai-breakthrough",
+          "date_note": "IEEE Spectrum 署名长评发布于 2026-05-20（官网 Research + Analysis 收录条目 4）。",
+          "date_source": "https://spectrum.ieee.org/robotics-ai-breakthrough"
+        },
+        {
+          "date": "2026-06",
+          "title": "OSHA NRTL 验收到 ISO/Halos 协作安全体系",
+          "track": "工程安全",
+          "desc": "梳理从外置急停（Digit 3）→ 机载安全 PLC + Cat-1 停机 + NRTL 围栏（Digit 4）→ 主导 ISO 25785-1 / ANSI TR R15.108 / ISO/IEC TS 22440 标准与 NVIDIA Halos 协作安全路线的完整演进，并同期发布美国 6 大人形制造与政策支柱。",
+          "id": "entity-agility-robotics",
+          "url": "https://www.agilityrobotics.com/content/built-for-the-real-world",
+          "date_note": "安全专文《Built for the Real World》发布于 2026-06-22；政策白皮书《Safeguarding America's Humanoid Future》同月发表于 2026-06-12，CAP 三步导入流程专文发表于 2026-08-04。",
+          "date_source": "https://www.agilityrobotics.com/content/built-for-the-real-world"
+        },
+        {
+          "date": "2026-08",
+          "title": "Physical AI 由机械硬件赋能（Science Robotics）",
+          "track": "论文 / 机械基础",
+          "desc": "Jonathan Hurst 在 Science Robotics 发表 Perspective：机械被动动力学、执行器力透明度与能量管理才是多用途 AI 时代 loco-manipulation 性能与安全的上限边界。",
+          "id": "entity-paper-physical-ai-mechanical-hardware",
+          "url": "https://www.agilityrobotics.com/research-analysis/physical-ai-is-enabled-by-mechanical-hardware",
+          "date_note": "Science Robotics 11(117) eaee2921 刊出日期 2026-08-12，Agility 官网 Research + Analysis 同步收录作者全文版本。",
+          "date_source": "https://www.agilityrobotics.com/research-analysis/physical-ai-is-enabled-by-mechanical-hardware"
+        },
+        {
+          "date": "2026-09",
+          "title": "Digit 5：无围栏协作安全与摆线分级柔顺整机",
+          "track": "整机 / 安全",
+          "desc": "发布第 5 代商业人形：129 kg 整机、23 kg（50 lb）负载、2.2 m 臂展、9 分钟 Nyobolt 快充（20h/24h）、自研摆线传动 + Heel-Ankle-Knee 分级冲击、可换夹爪，并集成 NVIDIA IGX Thor + Halos 孤岛安全计算机（目标 2027H1 抢先试用、2027 年底 GA）。",
+          "id": "entity-agility-robotics",
+          "url": "https://www.agilityrobotics.com/solutions/digit-5",
+          "date_note": "Digit 5 于 2026-09-15 对外公布（9-22《Scaling a New Market Category》及 10-23 Hurst AMA 补充工程参数与 129 kg/分级冲击细节）。",
+          "date_source": "https://www.agilityrobotics.com/solutions/digit-5"
+        },
+        {
+          "date": "2026-11",
+          "title": "Nasdaq 上市（AGLT）与 >$300M Digit 5 订单",
+          "track": "商业化",
+          "desc": "与 Churchill Capital Corp XI 完成合并并于 2026-11-05 在 Nasdaq 交易（AGLT），总募资约 4.65 亿美元（含 Foxconn 领投 PIPE）；披露 Digit 5 获逾 3 亿美元多年期承诺订单（受限于里程碑与规格验收）。",
+          "id": "entity-agility-robotics",
+          "url": "https://www.agilityrobotics.com/content/agility-becomes-first-u-s-publicly-listed-pure-play-humanoid-robotics-company-begins-trading-today-on-nasdaq-as-aglt",
+          "date_note": "Business Combination 完成于 2026-11-04，Nasdaq 首日交易公告发布于 2026-11-05。",
+          "date_source": "https://www.agilityrobotics.com/content/agility-becomes-first-u-s-publicly-listed-pure-play-humanoid-robotics-company-begins-trading-today-on-nasdaq-as-aglt"
         }
       ]
     },

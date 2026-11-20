@@ -16,6 +16,7 @@
 - **源策未来增补：** 2026-10-10，官网博客仅 1 篇（Whole-Body Intelligence，2026-07-13），另按 arXiv 署名核查出 RoboNaldo、EgoHumanoid-V2 两篇；新建公司总览与博文详情，见 [官网归档](./archon-tech.md)。
 - **智在无界增补：** 2026-10-12，核对 Research 站 26 条研究（arXiv v1 逐条对日期）、GitHub 组织与 HF 资产；新建公司总览，其余节点复用既有详情，见 [Research 站核查](./research-beingbeyond-com.md)。
 - **伽马智能增补：** 2026-11-06，核对官网 6 页、Gamma-Robot GitHub 组织 5 个仓库与 TeleAI 孵化报道；新建公司总览，5 个论文节点复用既有详情，见 [官网归档](./gamma-robotics.md)。
+- **敏捷机器人增补：** 2026-11-20，核对 Agility Robotics `/resources?tab=research-%2B-analysis#tab-group`（Research + Analysis 全部 7 篇，含 WEF 2026 PDF 与 4 篇 IEEE Spectrum）、Engineering Insights / Executive Perspectives、Digit 5 工程规格、CAP/RaaS 与 Nasdaq AGLT 上市公告，以及 GitHub（仅 `cassie-doc` EOL + 8 DevOps fork）与 Hugging Face（0 模型）开源核查；新建公司与 Motor Cortex WBC 实体页，见 [官网归档](./agility-robotics.md)。
 - **说明：** 此页是原始入口索引；跨路线归纳见 [公司技术路线对照](../../wiki/comparisons/robot-foundation-model-company-paths-2026.md)。
 
 | 公司 / 团队 | 官方技术入口 | 代表性主题 / 阅读线索 | 开放程度及核查入口 |
@@ -51,6 +52,7 @@
 | 伽马智能 Gamma Robotics | [官网](https://gammarobotics.com.cn/)、[Research](https://gammarobotics.com.cn/research)、[GitHub](https://github.com/Gamma-Robot) | TeleAI 孵化；NEXUS、TTCO、GR-BC、KODA、LocoManiLab，GBot-W 与 GData；[官网归档](./gamma-robotics.md) | 5 个公开仓库（许可各异，含 CC BY-NC）；SDK 分阶段开放；2026-10-20 TeleAI 官宣成立（媒体口径） |
 | 智在无界 BeingBeyond | [Research](https://research.beingbeyond.com/)、[官网](https://beingbeyond.com)、[GitHub](https://github.com/BeingBeyond)、[Hugging Face](https://huggingface.co/BeingBeyond) | Being-H 灵巧操作 VLA → 潜空间 / 触觉 WAM、Being-M 动作生成 → 人形 WAM、BumbleBee / FAST 全身控制；[Research 站核查](./research-beingbeyond-com.md) | 27 个公开仓库；Being-H0 / H0.5 / TTP 权重在 HF；Being-M0.7、Being-H0.8 只有技术报告；2025-01 成立（[凤凰网转硬氪](https://tech.ifeng.com/c/8kApGyTicks)，媒体口径） |
 | 理想汽车具身团队 Li Auto | [MachEmbodied GitHub](https://github.com/MachEmbodied) | ME-Brain 1.0、ME-VLM、ME-U0、ME-Dex 1.0；[四篇盘点](../blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md) | GitHub 组织页未写公司名，归属依据 [ME-Dex 1.0 论文署名](https://arxiv.org/html/2609.21449)（Foundation Model, Li Auto Inc.）；2026-06 基座模型部门新增三个具身二级部门（[每日经济新闻](https://www.mrjjxw.com/articles/2026-06-01/4413821.html)） |
+| 敏捷机器人 Agility Robotics | [Research + Analysis](https://www.agilityrobotics.com/resources?tab=research-%2B-analysis#tab-group)、[Insights](https://www.agilityrobotics.com/resources?tab=insights#tab-group)、[Digit 5](https://www.agilityrobotics.com/solutions/digit-5)、[GitHub](https://github.com/agilityrobotics) | ATRIAS/Cassie/Digit 1–5 机械被动动力学、Isaac Lab 闭链 Sim2Real、`<1M` LSTM Motor Cortex WBC、Cognition/Skills/Controls 三层栈、IGX Thor + Halos 协作安全、CAP/RaaS 与 Nasdaq（AGLT）；[官网归档](./agility-robotics.md) | 现役 Digit 控制、WBC 与 Agility Arc 全闭源；`github.com/agilityrobotics` 9 仓中仅 `cassie-doc`（61★，已标注 End of Life）与机器人相关；`HF Models = 0`；成立年份 **2015**（OSU DRL 孵化，[Company Overview](https://www.agilityrobotics.com/company-overview)） |
 
 ## 核查边界
 

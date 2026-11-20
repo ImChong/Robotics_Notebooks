@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-08-26
+updated: 2026-11-20
 summary: "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
@@ -16,6 +16,8 @@ related:
   - ../entities/motioncode.md
   - ../entities/chingmu.md
   - ../entities/unitree.md
+  - ../entities/agility-robotics.md
+  - ../entities/agility-wbc-foundation-model.md
   - ../entities/boston-dynamics.md
   - ../entities/anymal.md
   - ../entities/all-hands-up.md
@@ -56,7 +58,7 @@ related:
 | 品牌（例子） | 典型标签 | 本库延伸阅读 |
 |--------------|-----------|----------------|
 | Boston Dynamics | Atlas / Spot；液压转型全电 Atlas | [Boston Dynamics](../entities/boston-dynamics.md) |
-| Agility Robotics | Digit；仓储物流人形 | [Physical AI × 机械硬件（SciRob 2026）](../entities/paper-physical-ai-mechanical-hardware.md)、[Digit RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md) |
+| Agility Robotics | Digit 1–5；仓储物流人形与协作安全（Nasdaq: AGLT） | [Agility Robotics（公司全栈）](../entities/agility-robotics.md)、[Motor Cortex WBC](../entities/agility-wbc-foundation-model.md)、[Physical AI × 机械硬件（SciRob 2026）](../entities/paper-physical-ai-mechanical-hardware.md)、[Digit RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md) |
 | Figure AI | Figure 02、Helix VLA | [Figure AI](../entities/figure-ai.md) |
 | 1X Technologies | EVE、NEO | [1X Technologies](../entities/1x-technologies.md) |
 | Tesla | Optimus；汽车供应链叙事 | [人形机器人总览表](../entities/humanoid-robot.md) |
