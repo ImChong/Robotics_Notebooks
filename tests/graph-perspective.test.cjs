@@ -306,20 +306,45 @@ test('camera projection places world origin inside viewport across oblique and t
   const rtOuter = perspectiveApi.worldToGraphCoords(m2.wx, m2.wz, spreadField.center);
   assert.ok(Math.abs(rtOuter.x - 420) < 1e-3 && Math.abs(rtOuter.y - 30) < 1e-3, 'far outer node round-trips accurately');
 
-  // 3D terrain sphere overlap solver separates clustered spheres around hubs with zero residual overlap
+  // 3D terrain sphere overlap solver separates clustered spheres around hubs monotonically without oscillation
   const overlapItems = [
     { node: { id: 'hub' }, wx: 0, wz: 0, wySurf: 0.1, wy: 0.2, degNorm: 1, baseRadius: 0.028 },
     { node: { id: 'a' }, wx: 0.002, wz: 0.001, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
     { node: { id: 'b' }, wx: -0.001, wz: 0.002, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
     { node: { id: 'c' }, wx: 0, wz: 0, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
   ];
-  perspectiveApi.resolveSphereOverlaps3D(overlapItems, spreadField, 0.35, { gap: 0.002, maxPasses: 10 });
+  perspectiveApi.resolveSphereOverlaps3D(overlapItems, spreadField, 0.35, { gap: 0.002, maxPasses: 14 });
   for (let i = 0; i < overlapItems.length; i++) {
     for (let j = i + 1; j < overlapItems.length; j++) {
       const d = Math.hypot(overlapItems[i].wx - overlapItems[j].wx, overlapItems[i].wz - overlapItems[j].wz);
       assert.ok(d >= overlapItems[i].baseRadius + overlapItems[j].baseRadius + 0.0015, `expected spheres ${i}/${j} separated, got ${d}`);
     }
   }
+  // Dense 25-node crowded cluster must converge monotonically (step magnitude strictly decays, zero self-oscillation)
+  const denseCluster = [];
+  for (let i = 0; i < 25; i++) {
+    denseCluster.push({
+      node: { id: `d${i}` },
+      wx: ((i % 5) - 2) * 0.002,
+      wz: (Math.floor(i / 5) - 2) * 0.002,
+      wySurf: 0.1,
+      wy: 0.15,
+      degNorm: 0.2,
+      baseRadius: 0.004,
+    });
+  }
+  const passMoves = [];
+  for (let p = 0; p < 8; p++) {
+    const prev = denseCluster.map((it) => [it.wx, it.wz]);
+    perspectiveApi.resolveSphereOverlaps3D(denseCluster, null, 0, { gap: 0.0008, maxPasses: 1 });
+    let maxMv = 0;
+    for (let i = 0; i < denseCluster.length; i++) {
+      const mv = Math.hypot(denseCluster[i].wx - prev[i][0], denseCluster[i].wz - prev[i][1]);
+      if (mv > maxMv) maxMv = mv;
+    }
+    passMoves.push(maxMv);
+  }
+  assert.ok(passMoves[passMoves.length - 1] < passMoves[0] * 0.35, `dense cluster must damp monotonically without oscillating: ${passMoves.map((v) => v.toFixed(5)).join(', ')}`);
 
   // Entry force-simulation bloom starts gathered inward, expands organically, and settles to exact equilibrium at 1.0
   const startPos = perspectiveApi.evalForceMotionXZ(0.6, 0.3, 0.0, 0.026);

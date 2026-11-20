@@ -209,8 +209,10 @@
       var r3d = Math.max(11, r2d * 1.65);
       return 0.056 * (r3d / 49.5);
     }
-    // 完整图谱（8k+ 节点）：沿用 sqrt(degree) [4..30] 比例，高连接枢纽醒目、低连接坡面小珠清爽不拥挤
-    return 0.028 * (r2d / 30);
+    // 完整图谱（8k+ 节点）：大枢纽保持 0.028 醒目尺度，低度小珠收至 0.0020 对齐 2D 节点间距密度，
+    // 避免拥挤盆地过度拥挤触发防重叠反复推挤震荡
+    var tFull = Math.max(0, Math.min(1, (r2d - 4) / 26));
+    return 0.0020 + (0.028 - 0.0020) * tFull;
   }
 
   function quantileBounds(values, loQ, hiQ) {
@@ -493,6 +495,33 @@
     };
 
     var ids = Object.keys(nodeMeta);
+    if (!opts.skipOverlapResolve && ids.length >= 2) {
+      var isPreviewField = list.length <= 160;
+      var overlapList = [];
+      for (i = 0; i < ids.length; i++) {
+        var metaId = ids[i];
+        var mItem = nodeMeta[metaId];
+        if (!mItem || (!mItem.active && activeSet)) continue;
+        overlapList.push({
+          node: { id: metaId },
+          meta: mItem,
+          wx: mItem.wx,
+          wz: mItem.wz,
+          degNorm: mItem.degNorm,
+          baseRadius: computeSphereRadius3D(mItem.deg, maxDeg, isPreviewField),
+        });
+      }
+      resolveSphereOverlaps3D(overlapList, null, 0, {
+        gap: opts.overlapGap != null ? opts.overlapGap : (isPreviewField ? 0.003 : 0.0008),
+        maxPasses: opts.overlapPasses != null ? opts.overlapPasses : 6,
+        pinnedId: opts.pinnedId || null,
+      });
+      for (i = 0; i < overlapList.length; i++) {
+        overlapList[i].meta.wx = overlapList[i].wx;
+        overlapList[i].meta.wz = overlapList[i].wz;
+      }
+    }
+
     for (i = 0; i < ids.length; i++) {
       var m = nodeMeta[ids[i]];
       var surfH = sampleTerrainHeight(fieldObj, m.wx, m.wz);
@@ -670,15 +699,17 @@
   }
 
   /**
-   * 3D 地形节点防重叠解算（O(N) 空间网格）：
-   * 优先在水平 XZ 平面按半径反比质量推开重叠球体，确保俯视、斜视与 3D 空间均无节点互相压住，
-   * 大枢纽稳居山峰顶、小节点环绕舒展，并按最终 XZ 重新采样地形表面高程保持立柱垂直落峰。
+   * 3D 地形节点防重叠解算（O(N) 空间网格 + 对称阻尼 Jacobi 松弛）：
+   * 借鉴 2D/3D 立体力模拟的阻尼收敛机制，每轮累计所有相邻球体的合力后按 kPush / sqrt(冲突度)
+   * 同步更新，保证位移随轮次严格单调衰减，彻底消除拥挤节点群的来回推挤震荡；
+   * 大枢纽按半径平方反比稳居山峰顶、小节点环绕舒展。
    */
   function resolveSphereOverlaps3D(items, field, heightAmp, opts) {
     if (!items || items.length < 2) return 0;
     opts = opts || {};
-    var gap = opts.gap != null ? opts.gap : 0.0022;
-    var maxPasses = opts.maxPasses || 8;
+    var gap = opts.gap != null ? opts.gap : 0.0008;
+    var maxPasses = opts.maxPasses != null ? opts.maxPasses : 6;
+    var kPush = opts.strength != null ? opts.strength : 0.68;
     var pinnedId = opts.pinnedId || null;
     var n = items.length;
     var maxR = 0;
@@ -688,6 +719,9 @@
     }
     var cellSize = Math.max(0.012, maxR * 2 + gap * 1.5);
     var invCell = 1 / cellSize;
+    var accX = new Float32Array(n);
+    var accZ = new Float32Array(n);
+    var accW = new Float32Array(n);
     var movedAny = false;
     var pass;
     var totalResolved = 0;
@@ -695,6 +729,9 @@
     for (pass = 0; pass < maxPasses; pass++) {
       var grid = new Map();
       for (i = 0; i < n; i++) {
+        accX[i] = 0;
+        accZ[i] = 0;
+        accW[i] = 0;
         var it = items[i];
         var gx = Math.floor(it.wx * invCell);
         var gz = Math.floor(it.wz * invCell);
@@ -743,21 +780,35 @@
               var invMb = bPinned ? 0 : 1 / Math.max(1e-6, rb * rb);
               var invSum = invMa + invMb;
               if (!(invSum > 0)) continue;
-              var push = (minDist - dist) * 1.02;
+              var pen = minDist - dist;
               var wa = invMa / invSum;
               var wb = invMb / invSum;
-              a.wx -= ux * push * wa;
-              a.wz -= uz * push * wa;
-              b.wx += ux * push * wb;
-              b.wz += uz * push * wb;
+              accX[i] -= ux * pen * wa;
+              accZ[i] -= uz * pen * wa;
+              accW[i] += 1;
+              accX[j] += ux * pen * wb;
+              accZ[j] += uz * pen * wb;
+              accW[j] += 1;
               passOverlaps += 1;
               totalResolved += 1;
-              movedAny = true;
             }
           }
         }
       }
       if (passOverlaps === 0) break;
+      var maxStep = 0;
+      for (i = 0; i < n; i++) {
+        if (accW[i] <= 0) continue;
+        var damp = kPush / Math.sqrt(accW[i]);
+        var mx = accX[i] * damp;
+        var mz = accZ[i] * damp;
+        items[i].wx += mx;
+        items[i].wz += mz;
+        var mv = Math.hypot(mx, mz);
+        if (mv > maxStep) maxStep = mv;
+        movedAny = true;
+      }
+      if (maxStep < 1e-4) break;
     }
 
     if (movedAny && field && heightAmp > 0) {
@@ -1319,13 +1370,6 @@
           neighbor: isNeighbor,
         });
       }
-
-      // 3D 地形球体防重叠：按半径反比质量在水平面推开重叠球体，大枢纽锚峰、小节点环绕舒展
-      resolveSphereOverlaps3D(cachedNodes3d, currentField, heightAmp, {
-        gap: isPreview ? 0.004 : 0.0022,
-        maxPasses: isLite ? 5 : 8,
-        pinnedId: data.draggingNodeId || null,
-      });
 
       // Rank top hubs for 3D spherical orbs + vertical stems
       var stemCap = isLite ? 55 : (isPreview ? cachedNodes3d.length : 170);
@@ -2167,19 +2211,29 @@
       return renderer;
     }
 
+    var liveSimSync = false;
+
     function rebuildFieldAndBatches() {
       if (!renderer || !enabled) return;
       var data = getGraphData() || {};
       var nodes = data.nodes || [];
       var edges = data.edges || [];
+      var activeDragId = (dragState && dragState.mode === 'node' && dragState.dragStarted && dragState.node)
+        ? dragState.node.id
+        : null;
       if (terrainDirty || !terrainField) {
         degreeInfo = computeNodeDegrees(nodes, edges);
         var gridN = tier === 'lite' ? 92 : (nodes.length <= 160 ? 120 : 148);
+        var isLiveMotion = liveSimSync || !!activeDragId || !!reboundAnim;
+        // 实时力模拟 / 拖拽 / 回弹帧保持阻尼连贯运动，不在每帧重复多轮重排；落稳后执行一次阻尼 Jacobi 防重叠烘焙
         terrainField = computeTerrainField(nodes, degreeInfo, {
           gridSize: gridN,
           extent: (activeDragBounds && terrainField) ? terrainField.extent : undefined,
           activeIds: data.activeIds || null,
           fixedBounds: activeDragBounds,
+          skipOverlapResolve: liveSimSync,
+          overlapPasses: isLiveMotion ? 1 : (tier === 'lite' ? 4 : 6),
+          pinnedId: activeDragId,
         });
         renderer.uploadTerrainMesh(terrainField);
         terrainDirty = false;
@@ -2187,9 +2241,6 @@
       }
       if (batchesDirty) {
         var heightAmp = (params.height / 100) * 0.46;
-        var activeDragId = (dragState && dragState.mode === 'node' && dragState.dragStarted && dragState.node)
-          ? dragState.node.id
-          : null;
         renderer.buildDynamicBatches({
           nodes: nodes,
           edges: edges,
@@ -2499,6 +2550,8 @@
               mode: 'node',
               node: hit,
               planeY: nPos.wy,
+              origWx: nPos.wx,
+              origWz: nPos.wz,
               offsetWx: grabPt ? (nPos.wx - grabPt[0]) : 0,
               offsetWz: grabPt ? (nPos.wz - grabPt[2]) : 0,
               dragStarted: false,
@@ -2565,9 +2618,11 @@
               dragState.node.x = nextCoords.x;
               dragState.node.y = nextCoords.y;
               onNodeDrag(dragState.node, nextCoords.x, nextCoords.y, ev);
-              // Elastic web stretch: connected neighbors lean gently toward dragged node
-              var moveDx = nextCoords.x - dragState.origX;
-              var moveDy = nextCoords.y - dragState.origY;
+              // Elastic web stretch: 按抓取点真实世界位移计算邻居牵引量，避免首帧因重叠微调跳变
+              var csDrag = activeDragBounds.coreSpan || 0.78;
+              var wScale = activeDragBounds.halfSpan / csDrag;
+              var moveDx = (nextWx - dragState.origWx) * wScale;
+              var moveDy = (nextWz - dragState.origWz) * wScale;
               var nbs = dragState.neighbors || [];
               var pullRatio = Math.min(0.24, 0.08 + 0.16 / Math.sqrt(1 + nbs.length / 8));
               for (var ni = 0; ni < nbs.length; ni++) {
@@ -2847,7 +2902,8 @@
       onStateChange(getPublicState());
     }
 
-    function syncData(rebuildField) {
+    function syncData(rebuildField, syncOpts) {
+      liveSimSync = !!(syncOpts && syncOpts.live);
       if (rebuildField !== false) terrainDirty = true;
       batchesDirty = true;
       if (enabled) scheduleRender();

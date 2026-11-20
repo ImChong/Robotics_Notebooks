@@ -345,16 +345,20 @@
       .force('link', d3.forceLink(edges).id(function(d){ return d.id; }).distance(60).strength(0.32))
       .force('charge', d3.forceManyBody().strength(-200).distanceMax(300))
       .force('center', d3.forceCenter(W/2, H/2).strength(0.08))
-      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 5; }).strength(0.95).iterations(2))
+      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 5; }).strength(0.65).iterations(1))
       .force('x', d3.forceX(W/2).strength(0.06))
       .force('y', d3.forceY(H/2).strength(0.06))
       .velocityDecay(0.52)
       .alphaDecay(0.04)
+      .alphaMin(0.006)
       .stop();
 
+    var entranceActive = false;
     var entranceTimer = null;
     var entranceObserver = null;
     function finishEntranceImmediately() {
+      if (!entranceActive) return;
+      entranceActive = false;
       if (entranceObserver) {
         entranceObserver.disconnect();
         entranceObserver = null;
@@ -366,6 +370,8 @@
       nodes.forEach(function (n) {
         if (n._fx != null) n.x = n._fx;
         if (n._fy != null) n.y = n._fy;
+        n._fx = null;
+        n._fy = null;
       });
       if (nodeG) nodeG.select('circle').attr('r', nodeRadius);
       if (label) label.attr('opacity', null);
@@ -379,31 +385,36 @@
     var nodeDrag2d = d3.drag()
       .filter(function(ev) { return !ev.button && ev.type.indexOf('touch') !== 0; })
       .on('start', function(ev, d) {
+        // 仅在入场动画尚未完成时收尾，已落稳后绝不覆盖任何节点坐标；
+        // 按下瞬间不重启力模拟（首次真正拖动 >3px 时再柔和加热），避免按下瞬间其他节点跳变
         finishEntranceImmediately();
         d._dragStartX = ev.x;
         d._dragStartY = ev.y;
         d._dragMoved = false;
+        d._dragReheated = false;
         d.fx = d.x;
         d.fy = d.y;
         d3.select(this).style('cursor', 'grabbing');
-        if (!ev.active) sim.alphaTarget(0.28).restart();
       })
       .on('drag', function(ev, d) {
         if (Math.hypot(ev.x - d._dragStartX, ev.y - d._dragStartY) > 3) {
           d._dragMoved = true;
           hideTooltip();
+          if (!d._dragReheated) {
+            d._dragReheated = true;
+            sim.alphaTarget(0.18).restart();
+          }
         }
         d.fx = ev.x;
         d.fy = ev.y;
         d.x = ev.x;
         d.y = ev.y;
-        d._fx = ev.x;
-        d._fy = ev.y;
         renderPositions();
       })
       .on('end', function(ev, d) {
         d3.select(this).style('cursor', 'grab');
-        if (!ev.active) sim.alphaTarget(0);
+        if (d._dragReheated && !ev.active) sim.alphaTarget(0);
+        d._dragReheated = false;
         d.fx = null;
         d.fy = null;
       });
@@ -539,7 +550,6 @@
 
     sim.on('tick', renderPositions);
     sim.on('end', function() {
-      nodes.forEach(function (n) { n._fx = n.x; n._fy = n.y; });
       renderPositions();
     });
 
@@ -613,6 +623,7 @@
         return done;
       };
 
+      entranceActive = true;
       setEntranceFrame(0);
       entranceObserver = new IntersectionObserver(function (entries) {
         if (!entries.some(function (en) { return en.isIntersecting; })) return;
@@ -626,7 +637,13 @@
             entranceTimer.stop();
             entranceTimer = null;
           }
-          nodes.forEach(function (n) { n.x = n._fx; n.y = n._fy; });
+          entranceActive = false;
+          nodes.forEach(function (n) {
+            n.x = n._fx;
+            n.y = n._fy;
+            n._fx = null;
+            n._fy = null;
+          });
           renderPositions();
           label.attr('opacity', null);
           line.attr('stroke-opacity', null);
@@ -713,12 +730,14 @@
             };
           },
           getGraphData: function () {
-            var terrainNodes = nodes.map(function (n) {
-              if (n._fx != null && n._fy != null && (n.x !== n._fx || n.y !== n._fy)) {
-                return Object.assign({}, n, { x: n._fx, y: n._fy });
-              }
-              return n;
-            });
+            var terrainNodes = entranceActive
+              ? nodes.map(function (n) {
+                  if (n._fx != null && n._fy != null && (n.x !== n._fx || n.y !== n._fy)) {
+                    return Object.assign({}, n, { x: n._fx, y: n._fy });
+                  }
+                  return n;
+                })
+              : nodes;
             return {
               nodes: terrainNodes,
               edges: edges,
@@ -772,8 +791,6 @@
             if (orig) {
               orig.x = x;
               orig.y = y;
-              orig._fx = x;
-              orig._fy = y;
             }
             d.x = x;
             d.y = y;

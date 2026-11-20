@@ -4790,9 +4790,9 @@
     const precomputedLayout = (Array.isArray(graphData.layout) && graphData.layout.length === nodes.length)
       ? graphData.layout : null;
     /**
-     * 2D 节点防重叠解算（O(N) 空间网格）：
-     * 按节点半径平方反比分配位移权重（高连接枢纽稳居中心、周边节点沿外缘舒展，fx/fy 固定节点不动），
-     * 保证任意两节点圆心距 ≥ r_a + r_b + padding，彻底消除 2D 节点互相压住的现象。
+     * 2D 节点防重叠解算（O(N) 空间网格 + 对称阻尼 Jacobi 松弛）：
+     * 按节点半径平方反比累计合力后按 0.72 / sqrt(冲突度) 同步更新（高连接枢纽稳居中心、
+     * 固定节点 fx/fy 不动），保证位移单调收敛且任意两节点圆心距 ≥ r_a + r_b + padding。
      */
     function resolveNodeOverlaps2D(targetNodes, opts) {
       const list = targetNodes || nodes;
@@ -4800,7 +4800,7 @@
       if (n < 2) return 0;
       const cfg = opts || {};
       const pad = cfg.padding != null ? cfg.padding : 4;
-      const maxPasses = cfg.maxPasses != null ? cfg.maxPasses : (LOW_END_DEVICE ? 8 : 14);
+      const maxPasses = cfg.maxPasses != null ? cfg.maxPasses : (LOW_END_DEVICE ? 10 : 18);
       const radii = new Float32Array(n);
       let maxR = 4;
       for (let i = 0; i < n; i++) {
@@ -4810,11 +4810,17 @@
       }
       const cellSize = Math.max(16, maxR * 2 + pad * 1.5);
       const invCell = 1 / cellSize;
+      const accX = new Float32Array(n);
+      const accY = new Float32Array(n);
+      const accW = new Float32Array(n);
       let totalResolved = 0;
 
       for (let pass = 0; pass < maxPasses; pass++) {
         const grid = new Map();
         for (let i = 0; i < n; i++) {
+          accX[i] = 0;
+          accY[i] = 0;
+          accW[i] = 0;
           const nd = list[i];
           if (nd.x == null || nd.y == null) continue;
           const gx = Math.floor(nd.x * invCell);
@@ -4863,13 +4869,15 @@
                 const invMb = (b.fx != null && b.fy != null) ? 0 : 1 / Math.max(1, rb * rb);
                 const invSum = invMa + invMb;
                 if (!(invSum > 0)) continue;
-                const push = (minDist - dist) * 1.02;
+                const pen = minDist - dist;
                 const wa = invMa / invSum;
                 const wb = invMb / invSum;
-                a.x -= ux * push * wa;
-                a.y -= uy * push * wa;
-                b.x += ux * push * wb;
-                b.y += uy * push * wb;
+                accX[i] -= ux * pen * wa;
+                accY[i] -= uy * pen * wa;
+                accW[i] += 1;
+                accX[j] += ux * pen * wb;
+                accY[j] += uy * pen * wb;
+                accW[j] += 1;
                 passOverlaps += 1;
                 totalResolved += 1;
               }
@@ -4877,6 +4885,18 @@
           }
         }
         if (passOverlaps === 0) break;
+        let maxStep = 0;
+        for (let i = 0; i < n; i++) {
+          if (accW[i] <= 0) continue;
+          const damp = 0.78 / Math.sqrt(accW[i]);
+          const mx = accX[i] * damp;
+          const my = accY[i] * damp;
+          list[i].x += mx;
+          list[i].y += my;
+          const mv = Math.hypot(mx, my);
+          if (mv > maxStep) maxStep = mv;
+        }
+        if (maxStep < 0.05) break;
       }
       return totalResolved;
     }
@@ -4896,10 +4916,10 @@
     });
     const collideForce = simulation.force('collision');
     if (collideForce && typeof collideForce.strength === 'function') {
-      collideForce.strength(0.95);
+      collideForce.strength(0.55);
     }
     if (collideForce && typeof collideForce.iterations === 'function') {
-      collideForce.iterations(LOW_END_DEVICE ? 1 : 2);
+      collideForce.iterations(1);
     }
     let collideTickNo = 0;
     const gatedCollide = (alpha) => {
@@ -5463,11 +5483,11 @@
           async: true,
           onProgress: () => {
             if (!isPerspectiveView() || !perspectiveSimActive) return;
-            perspectiveController.syncData(true);
+            perspectiveController.syncData(true, { live: true });
           },
           onVisible: () => {
             if (!isPerspectiveView() || !perspectiveSimActive) return;
-            perspectiveController.syncData(true);
+            perspectiveController.syncData(true, { live: true });
             simulation.restart();
           },
         });
@@ -5486,7 +5506,7 @@
       if (is3DView()) return;
       if (isPerspectiveView()) {
         if (perspectiveSimActive && perspectiveController) {
-          perspectiveController.syncData(true);
+          perspectiveController.syncData(true, { live: true });
         }
         return;
       }
