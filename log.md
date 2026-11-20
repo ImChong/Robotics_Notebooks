@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | 推进 #3490：depth-perceptive-locomotion 10 个 2/3 节点补齐原文通读归档并升至 3/3
+
 ## [2026-11-20] ingest | Lumina 触觉 Scaling：异构传感器、事件数据与跨本体表征
 
 - 意图：将 Lumina具身智能文章的六种传感路线、四层跨硬件差异和数据基础设施机会整理为工程选型对照。
