@@ -4460,6 +4460,13 @@
       "aliases": [
         "upstar"
       ]
+    },
+    "simplexai": {
+      "label": "Linger 开发团队（SimplexAI）",
+      "aliases": [
+        "simplexai",
+        "simplexai-labs"
+      ]
     }
   }
 }
