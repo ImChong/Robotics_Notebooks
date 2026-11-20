@@ -3,6 +3,8 @@
 - **URL（仓库）**: https://github.com/Zilize/awesome-text-to-motion（默认分支 `master`）
 - **URL（项目页）**: https://zilize.github.io/awesome-text-to-motion/ — Plotly 交互图与统计视图，浏览体验优于纯 README
 - **Maintainer**: Zilize（GitHub）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读官方仓 `README.md` 与 GitHub Pages 站点 <https://zilize.github.io/awesome-text-to-motion/> 导览内容，并直接解析仓库数据表 `data/arxiv.csv`（179 行）与 `data/without-arxiv.json`（10 条），核实总计 189 条目中非互斥标记统计为 `survey=4`、`dataset=29`、`model=178`（单篇工作可同时标注 dataset 与 model）。
 - **定位**: 文本驱动 **单人** 人体运动生成方向的 **综述 / 数据集 / 模型** 精选清单；README 明确 **不包含** 人–物 / 场景交互类设定（与 broader HOI motion 资源刻意切分）
 
 ## 仓库结构（维护者视角）

@@ -15,6 +15,8 @@
 - **机构：** 浙江大学（ZJU）；北京大学（PKU）；腾讯（Tencent / Hunyuan）；之江实验室（Zhejiang Lab）。作者行编号：Ling / Yu / Zou = 1（ZJU），Yan / Cheng / Wang = 2（PKU），Shuai = 3（腾讯混元），Zou 兼 4（之江实验室）
 - **版本：** arXiv:2608.01410（v1/v2，2026-08）
 - **入库日期：** 2026-08-15
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2608.01410v2` 论文全文（`1–1704` 行），核对 `38D` Unitree G1 状态表示、初始生成器 357,472 内部 GMD 重定向对、ProtoMotions 与 SONIC 两条跟踪器基座的在线滞后互训、FlowGRPO 目标（`S_exec` + `KL=0.02` + `GT anchor=1.0`）、Table 1–6 全量实验与消融，确认无开源仓库及真机部署。
 - **一句话说明：** 已有 robot-native 文本→运动生成器与全身 tracker 之间做在线互训：滞后 tracker 的闭环执行给生成器组相对奖励（FlowGRPO），新生成参考再扩 tracker 覆盖；不采集新数据。G1 上接 ProtoMotions 与 SONIC 两条骨干。
 
 ## 摘要级要点

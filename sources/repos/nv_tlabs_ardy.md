@@ -11,6 +11,8 @@
 - **模型集合：** <https://huggingface.co/collections/nvidia/ardy>
 - **Stars：** ~885（2026-09-06）
 - **入库日期：** 2026-09-06
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `nv-tlabs/ardy` `README.md`、`scripts/run_demo.py`（L1–100）与 `scripts/interactive_demo/generation.py`（L1–100、L201–300），核实 `InteractiveTimelineDemo` 组装 `CachedTextEncoder` 与 `ViserServer`，以及 `GenerationMixin` 中 `compute_window_num_frames -> compute_constraint_mask -> session.model.autoregressive_step -> motion_rep.inverse -> 可选后处理` 真实运行时调用链。
 - **一句话说明：** SIGGRAPH 2026 **交互式自回归扩散** 人体运动官方实现：`ardy_demo` / `generate.py`、TensorRT 可选、G1/Core 多 checkpoint；Apache-2.0 代码 + NVIDIA Open Model 权重。
 - **沉淀到 wiki：** [`wiki/entities/ardy.md`](../../wiki/entities/ardy.md)
 

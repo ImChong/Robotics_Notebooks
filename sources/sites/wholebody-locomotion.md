@@ -6,6 +6,8 @@
 - **对应论文：** [Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking](https://arxiv.org/abs/2604.17335)（arXiv:2604.17335）
 - **团队：** ETH Zurich Robotic Systems Lab；Simon Fraser University；ETH AI Center；EPFL
 - **入库日期：** 2026-06-07
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取项目页 <https://wholebodylocomotion.github.io/> 全部正文，核对论文摘要、箱攀/跨栏/楼梯/局部导航/混合地形演示及确认无代码/数据公开链接。
 - **一句话说明：** 官方落地页：论文摘要、箱攀/跨栏/楼梯/混合地形/局部导航演示视频与 BibTeX。
 
 ## 页面要点（2026-06 快照）

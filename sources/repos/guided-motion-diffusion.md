@@ -8,6 +8,8 @@
 - **论文：** <https://arxiv.org/abs/2305.12577>
 - **许可：** MIT（以仓库 `LICENSE` 为准；GitHub API 未识别 SPDX）
 - **入库日期：** 2026-07-28
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `korrawe/guided-motion-diffusion` 官方 `README.md`（L1–312 全文）及推理入口 `sample/generate.py`（L1–200），核对 `load_traj_model` / `load_reward_model`、两阶段与 `ClassifierFreeSampleModel` 打包、`cond_fn_key_location` / `cond_fn_sdf` 引导模式与参数模板。
 - **开源状态：** **已开源** — 训练、空间约束推理、评测代码与轨迹/动作预训练权重均已发布。
 
 ## 可运行入口（2026-07-28）

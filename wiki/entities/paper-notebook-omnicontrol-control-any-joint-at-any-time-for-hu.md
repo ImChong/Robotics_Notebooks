@@ -2,9 +2,9 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, spatial-control, joint-control, iclr, humanoid-paper-notebooks, google]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2310.08580"
-code: https://github.com/neu-vi/omnicontrol
+code: https://github.com/neu-3dvi/OmniControl
 related:
   - ../methods/diffusion-motion-generation.md
   - ./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md
@@ -16,6 +16,9 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_omnicontrol-control-any-joint-at-any-time-for-hu.md
   - ../../sources/sites/omnicontrol-project.md
+  - ../../sources/repos/omnicontrol.md
+original:
+  - ../../sources/papers/humanoid_pnb_omnicontrol-control-any-joint-at-any-time-for-hu.md
   - ../../sources/repos/omnicontrol.md
 summary: "OmniControl（ICLR 2024，arXiv:2310.08580）以 analytic spatial guidance 精确满足任意关节/任意时刻的三维位置约束，再以 realism guidance 联动修正全身；官方 MIT 代码、HumanML3D 权重与评测已发布。"
 ---
@@ -99,7 +102,7 @@ flowchart LR
 
 | 项 | 内容 |
 |----|------|
-| **开源状态** | **已开源**（截至 **2026-07-28**）：见 [OmniControl 项目页](../../sources/sites/omnicontrol-project.md) 与 [仓归档](../../sources/repos/omnicontrol.md)（MIT；部分资产仍 TODO） |
+| **开源状态** | **已开源**（核查日 **2026-11-20**）：仓已迁移至 [neu-3dvi/OmniControl](https://github.com/neu-3dvi/OmniControl)（[仓归档](../../sources/repos/omnicontrol.md)，MIT）；注：原项目页 `neu-vi.github.io/omnicontrol/` 返回 HTTP 404，KIT-ML 权重仍为 TODO |
 | **复现入口** | `prepare/` + `dataset/` → 训/加载 CMDM → `sample.generate`（spatial + realism guidance）；控制样例见 `utils/text_control_example.py` |
 | **选型提示** | 任意关节/时刻低误差优先 OmniControl；要更快推理或条件训练一致性可对照 CondMDI |
 | **源码运行时序图** | 见下一节 |
@@ -109,26 +112,23 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  participant U as 用户
-  participant Prep as prepare/ + dataset/
-  participant Train as train.train_mdm
-  participant Input as utils/text_control_example.py
-  participant Sample as sample.generate
-  participant Spatial as diffusion/gaussian_diffusion.py
-  participant Real as model/cmdm.py
-  participant Eval as eval_omnicontrol*.sh
+  participant U as 用户/CLI
+  participant Hint as collate_all() (text_control_example)
+  participant Sample as sample/generate.py
+  participant Model as ClassifierFreeSampleModel + CMDM
+  participant Diff as diffusion.p_sample_loop()
+  participant Post as recover_from_ric -> rot2xyz -> simple_eval
 
-  U->>Prep: 下载 HumanML3D/SMPL/GloVe/evaluator
-  U->>Train: 从 MDM checkpoint 微调（或加载官方权重）
-  U->>Input: 定义文本、关节、帧与 xyz 目标
-  U->>Sample: 运行条件生成
-  Sample->>Spatial: 位置误差梯度修正采样均值
-  Sample->>Real: 控制特征修正全身 attention
-  Sample-->>U: results.npy + MP4
-  U->>Eval: 全设置或 joint×density 评测
+  U->>Sample: 指定 --model_path model_humanml3d.pt 与 cond_mode
+  Sample->>Hint: 组装 text_prompt 与 N×J×3 空间 hint 张量
+  Hint-->>Sample: model_kwargs (y + hint)
+  Sample->>Model: load_model_wo_clip() 包装 CFG 采样器
+  Sample->>Diff: 循环去噪（analytic spatial + realism residual 引导）
+  Diff-->>Post: sample[:, :263] -> 全局关节 xyz / SMPL 旋转
+  Post-->>U: 计算控制误差并保存 results.npy / MP4
 ```
 
-最短路径是下载 `model_humanml3d.pt`、在 `utils/text_control_example.py` 定义控制点后运行 `sample.generate`。
+对应 `sample/generate.py`（L24–200）实测条件生成调用链；训练与全量评测分别见 `train.train_mdm` 与 `./eval_omnicontrol_all.sh`。
 
 ## 与其他工作对比
 
@@ -165,7 +165,7 @@ sequenceDiagram
 - 论文 HumanML3D/KIT-ML 输出是人体运动学序列，没有机器人关节限位、扭矩、平衡与真机评测。
 - 官方 HumanML3D checkpoint 可用，但 KIT-ML checkpoint 仍在 TODO；全设置单 GPU 评测约 45 小时。
 
-## 与其他页面的关系
+## 关联页面
 
 - 总方法：[Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
 - 前置空间引导：[GMD](./paper-notebook-guided-motion-diffusion-for-controllable-human-m.md)
@@ -185,5 +185,5 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：OmniControl](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation/OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation.html)
-- [官方项目页](https://neu-vi.github.io/omnicontrol/)
+- [原官方项目页（2026-11-20 核查返回 HTTP 404）](https://neu-vi.github.io/omnicontrol/)
 - [ICLR 2024 OpenReview](https://openreview.net/forum?id=gd0lAEtWso)

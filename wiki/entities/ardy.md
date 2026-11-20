@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, interactive, text-to-motion, nvidia, eth, siggraph, humanoid, open-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 venue: SIGGRAPH 2026
 arxiv: "2607.08741"
 doi: "10.1145/3811284"
@@ -19,6 +19,10 @@ related:
   - ./generative-motion-rig.md
   - ../overview/nvidia-physical-ai-toolchain-technology-map.md
 sources:
+  - ../../sources/papers/ardy_siggraph_2026.md
+  - ../../sources/sites/ardy-project.md
+  - ../../sources/repos/nv_tlabs_ardy.md
+original:
   - ../../sources/papers/ardy_siggraph_2026.md
   - ../../sources/sites/ardy-project.md
   - ../../sources/repos/nv_tlabs_ardy.md
@@ -97,29 +101,32 @@ flowchart TB
 | **长时域约束** | Future context **~10s**；约束可落在 **当前 generation window 外** |
 | **训练条件** | 大规模动捕 **文本 + 从 GT 采样约束**；无需额外 RL/optimization 控制模块 |
 
-### 源码运行时序图
+## 源码运行时序图
 
-对齐 [nv-tlabs/ardy](https://github.com/nv-tlabs/ardy) 交互 Demo 的 `autoregressive_step` 路径：
+对齐 [nv-tlabs/ardy](https://github.com/nv-tlabs/ardy) 实测入口 `scripts/run_demo.py`（`InteractiveTimelineDemo`）与 `scripts/interactive_demo/generation.py`（`GenerationMixin`）的 `autoregressive_step` 路径：
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant UI as Viser Demo / CLI
-  participant TE as LLM2Vec Text Encoder
-  participant AR as Ardy Model
-  participant Dec as Motion Tokenizer Decoder
-  participant PP as Post-process (optional)
+  participant UI as ViserServer (run_demo.py)
+  participant TE as CachedTextEncoder / text_encoder_server
+  participant GM as GenerationMixin (generation.py)
+  participant AR as session.model.autoregressive_step
+  participant MR as motion_rep.inverse
+  participant PP as compute_model_constraints_lst (可选后处理)
 
-  UI->>TE: 流式 / 更新 text prompt
-  TE-->>AR: text embedding
-  UI->>AR: history + motion_mask / observed_motion
-  AR->>AR: 4-step two-stage diffusion<br/>root → body per window
-  AR->>Dec: hybrid tokens → joint poses
-  Dec-->>PP: posed_joints / foot contacts
-  PP-->>UI: 下一窗口帧 + 可视化
+  UI->>TE: encode/prewarm 流式 text prompt
+  TE-->>GM: text_feat & text_pad_mask
+  GM->>GM: compute_window_num_frames & compute_constraint_mask
+  GM->>AR: history_motion_tensor + motion_mask / observed_motion
+  AR->>AR: 4-step two-stage diffusion（先 root 后 body）
+  AR-->>GM: hybrid samples
+  GM->>MR: unnormalize & inverse()
+  MR-->>PP: posed_joints / global_rot_mats / foot_contacts
+  PP-->>UI: 更新帧缓冲并推送 Viser 可视化
 ```
 
-复现：`pip install -e ".[all]"` → `hf auth login`（Llama-3-8B-Instruct）→ `python scripts/run_demo.py`（`:2333`）或 `python scripts/generate.py "..."`.
+复现：`pip install -e ".[all]"` → `hf auth login`（Llama-3-8B-Instruct）→ `python scripts/run_demo.py`（`:2333`）或 `python scripts/generate.py "..."`。
 
 ## 实验与评测
 

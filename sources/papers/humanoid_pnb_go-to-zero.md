@@ -11,6 +11,8 @@
 - **代码：** <https://github.com/VankouF/MotionMillion-Codes>（Apache-2.0）
 - **数据集：** <https://huggingface.co/datasets/InternRobotics/MotionMillion>
 - **入库日期：** 2026-07-10
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2507.07095` 论文全文（`1–1939` 行，含 MotionMillion 多阶段视频过滤/GVHMR 管线、Wavelet+FSQ Tokenizer、HAB LLaMA 1B/3B/7B 架构、MotionMillion-Eval 126-prompt 基准及 HumanML3D/Motion-X/MotionMillion-Eval 定量与消融表）。
 - **一句话说明：** 本文要把文本到动作（text-to-motion）推向零样本泛化的新阶段。为此提出一套高效动作标注机制：从网络规模人类动作视频中自主采集人类动作——用运动学回归（kinematic regression）从无标注视频中提取动作，并用先进视觉语言模型生成语义丰富的描述（caption）。据此构建 MotionMillion ——迄今最大的人类动作数据集（2000+ 小时、200 万条高质量动作序列）。还提出 MotionMillion-Eval ——最全面的零样本动作生成评测基准。作者把模型规模化到 7B 参数并在 MotionMillion-Eval 上验证：结果对域外（out-of-domain）与复杂组合（compositional）动作展现强泛化，是迈向零样本人类动作生成的重要一步。代码开源。
 
 ## 核心摘录（策展，非全文）

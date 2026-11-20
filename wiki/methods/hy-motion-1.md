@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, text-to-motion, flow-matching, diffusion-transformer, smpl-h, preference-optimization, digital-human]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 related:
   - ./diffusion-motion-generation.md
   - ./dart-control.md
@@ -12,11 +12,15 @@ related:
   - ../entities/paper-molingo.md
   - ../entities/paper-gentrack.md
   - ../formalizations/probability-flow.md
+  - ../entities/paper-hy-motion-1-0.md
 sources:
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
   - ../../sources/papers/gentrack_arxiv_2608_01410.md
   - ../../sources/repos/gen2humanoid.md
+original:
+  - ../../sources/papers/hy_motion_arxiv_2512_23464.md
+  - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
 summary: "腾讯混元 HY-Motion 1.0：将 DiT+流匹配的人体文本→3D 运动生成扩至十亿级参数，配套三千小时级预训练、四百小时级高质量微调与 DPO/Flow-GRPO 对齐，并开源代码与权重。"
 ---
 
@@ -44,12 +48,12 @@ summary: "腾讯混元 HY-Motion 1.0：将 DiT+流匹配的人体文本→3D 运
 | SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
-## 为什么重要？
+## 为什么重要
 
-- **Scaling 证据**：把 **流匹配 + Transformer 扩散骨干** 在人体运动域做到 **B 级参数**，为「T2M 是否吃 scaling law」提供了正面样本，可与机器人侧 [Diffusion-based Motion Generation](./diffusion-motion-generation.md)、VLA 动作头等路线对照。
-- **数据工程可复用**：从 **千万级视频候选** 到 **>3000h** 可用动作、再到 **~400h** 精修子集的路径（检测、重建、重定向、脚滑/异常过滤、VLM caption + 人工校验 + LLM 释义），与 **Sim2Real / 动捕资产入库** 的管线思维相通。
-- **对齐栈完整**：在监督之外显式引入 **DPO（人类成对偏好）** 与 **Flow-GRPO（显式奖励）**，对应「似然最优 ≠ 观感最优」的常见生成模型痛点。
-- **与机器人链路的接口**：输出为 **SMPL-H 时间序列**，便于经 [GMR](./motion-retargeting-gmr.md) 等管线映射到人形/游戏引擎执行器（仍需单独处理接触、平衡与执行器动力学）。[GenTrack](../entities/paper-gentrack.md) 把同类流匹配骨干换成 **38D G1 头** 后，用 SONIC/ProtoMotions 闭环执行做 FlowGRPO 物理对齐（附录标 \(G_0\) 为 HYMotion）。
+- **Scaling 证据**：把 **流匹配 + Transformer 扩散骨干** 在人体运动域做到 **B 级参数**，为「T2M 是否吃 scaling law」提供了正面样本（SSAE 指令对齐率达 **78.6%**，显著高于 MoMask `58.0%` 与 Go to Zero `52.7%`；人工评分指令遵循 `3.24`、运动质量 `3.43`），可与机器人侧 [Diffusion-based Motion Generation](./diffusion-motion-generation.md)、VLA 动作头等路线对照。
+- **数据工程可复用**：从 **1,200 万视频候选** 经 GVHMR 重建、SMPL-H 重定向与物理伪影过滤得到 **>3000h** 预训练数据及 **~400h** 精修子集，与 **Sim2Real / 动捕资产入库** 的管线思维相通。
+- **对齐栈完整**：在监督之外显式引入 **DPO（4 万对筛 9,228 高信息人类偏好对）** 与 **Flow-GRPO（TMR 语义奖励 + 物理平滑/足滑/越界惩罚）**，对应「似然最优 ≠ 观感最优」的常见生成模型痛点。
+- **与机器人链路的接口**：输出为 **201D SMPL-H 时间序列**，便于经 [GMR](./motion-retargeting-gmr.md) 等管线映射到人形/游戏引擎执行器（仍需单独处理接触、平衡与执行器动力学）。[GenTrack](../entities/paper-gentrack.md) 把同类流匹配骨干换成 **38D G1 头** 后，用 SONIC/ProtoMotions 闭环执行做 FlowGRPO 物理对齐（附录标 $G_0$ 为 HYMotion）。
 
 ## 主要技术路线
 
@@ -127,10 +131,17 @@ flowchart TB
   FM --> OUT["SMPL-H 运动序列"]
 ```
 
-## 常见误区
+## 工程实践
+
+- **模型配置与显存门槛**：官方开源仓库（[Tencent-Hunyuan/HY-Motion-1.0](https://github.com/Tencent-Hunyuan/HY-Motion-1.0)）提供全尺寸 **HY-Motion-1.0 (1.0B)** 与轻量版 **HY-Motion-1.0-Lite (0.46B)**，最低分别需要约 **26 GB** 与 **24 GB VRAM**（单 seed、prompt ≤ 30 词、时长 < 5s）；若 VRAM 紧张可在启动 `gradio_app.py` 或 `local_infer.py` 时关闭 LLM 提示改写（`DISABLE_PROMPT_ENGINEERING=True` 或 `--disable_rewrite`）。
+- **推理调用链（实测源码）**：CLI 入口 `local_infer.py` 构建 `T2MRuntime` 后，先可选调用 `rewrite_text_and_infer_time`（基于 `PromptRewriter`）估算时长与润色描述，再由 `generate_motion -> pipeline.generate` 积分 DiT 流速度场生成 SMPL-H 参数，最后按需经过 `SMPLH2WoodFBX` 导出 `.fbx` 或输出字典/HTML 预览。
+- **生态扩展**：官方于 2026-10 补充发布了基于 HY-Motion-1.0 构建的 Video2Motion 扩展 `FlowHMR`，以及结构化语义对齐评测脚本（`ssae/` 目录）。
+
+## 局限与风险
 
 - **≠ 可直接驱动实机足式控制**：论文语境是 **数字人 / 动画级** 生成；落地机器人需 **物理约束、接触规划与低层跟踪**，参见 [Diffusion-based Motion Generation](./diffusion-motion-generation.md) 中的分布偏移讨论。
-- **表示与 HumanML3D 不兼容**：若要对齐经典 T2M 基准，需要 **显式转换** 或重新训练评估头，不能假设 263 维接口即插即用。
+- **表示与 HumanML3D 不兼容**：采用 201 维 SMPL-H（含根平移、6D 全局旋转、21 关节局部 6D 旋转及 22 关节位置，刻意舍弃速度与足接触标签）；若要对齐经典 263D 基准，需 **显式转换** 或重新训练评估头。
+- **商用与显存限制**：代码及权重含专属许可约束（见仓库根目录 `License.txt`）；完整训练三阶段数据与 `Qwen3-30B-A3B` 改写模型需要远超单张消费卡的计算预算。
 
 ## 关联页面
 

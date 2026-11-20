@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, physics-guided, motion-imitation, iccv, humanoid-paper-notebooks, nvidia]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-20
 arxiv: "2212.02500"
 related:
   - ../methods/diffusion-motion-generation.md
@@ -17,6 +17,9 @@ sources:
   - ../../sources/papers/humanoid_pnb_physdiff.md
   - ../../sources/sites/physdiff-project.md
   - ../../sources/papers/physiblemdm_arxiv_2610_30500.md
+original:
+  - ../../sources/papers/humanoid_pnb_physdiff.md
+  - ../../sources/sites/physdiff-project.md
 summary: "PhysDiff（ICCV 2023 Oral，arXiv:2212.02500）在扩散采样的若干后期步调用物理仿真 motion-imitation policy，把 denoised motion 投影回可行动作并继续去噪；HumanML3D 物理误差降 86%+，但截至 2026-07-28 官方未开源代码。"
 ---
 
@@ -106,7 +109,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用：截至 2026-07-28 官方项目页未列可运行代码仓库。** 论文给出算法与项目视频，但没有可对齐的训练、推理或部署入口，因此本页不伪造源码时序；上图只表达论文算法数据流。
+**不适用：截至 2026-11-20 复核官方项目页仍未公布可运行代码仓库或策略权重。** 论文给出算法与项目视频，但没有可对齐的训练、推理或部署入口，因此本页不伪造源码时序；上图只表达论文算法数据流。
 
 ## 与其他工作对比
 
@@ -147,7 +150,7 @@ PhysDiff 的“physics-guided”比脚滑滤波强，但仍是特定仿真人体
 - 评测是仿真人体动作，不是 Unitree 等机器人真机；形体、关节、质量和接触模型均不同。
 - Phys-Err 是代理指标，不能替代任务成功率、能耗、扭矩裕量与真实接触安全。
 
-## 与其他页面的关系
+## 关联页面
 
 - [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 物理投影依赖已训练的动作模仿策略，骨架或接触配置变化可能要求重训，不能只复用 denoiser。
 

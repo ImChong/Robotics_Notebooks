@@ -6,8 +6,11 @@
 - **类型：** paper / humanoid / text-to-motion / diffusion / motion-tracking / GMT / MoE
 - **arXiv abs：** <https://arxiv.org/abs/2603.19305>
 - **项目页：** <https://baojch.github.io/phygile-page/>
+- **代码（跟踪器部分）：** <https://github.com/Baojch/phygile_tracking>（2026-11-20 核查已链接 GMT MoE/课程跟踪器代码；生成器与 physics-prefix 微调代码未包含）
 - **机构：** 西北工业大学；上海人工智能实验室；中国科学技术大学；清华大学；复旦大学；字节跳动；东北大学（以项目页作者脚注为准）
 - **入库日期：** 2026-06-19
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2603.19305v3` 论文全文（`1–1721` 行），核对 262D 机器人原生表示 + AdaLN Diffusion + TP-MoE（K=12, top-k=6, DistilBERT, ASFO）、12 级课程 MoE GMT 跟踪器（45h 数据、Levels 1–10 可训练、freeze-and-drop 与 Stage II 动态增专家）、1s 滑动物理前缀微调，以及 G1 `29 DoF` 50Hz ONNX、`R@3 0.6176 / FID 0.1823`、微调后 `Skating 1.58% / 0 mm Penetrate`、GMT `94.01%` 成功率等全文指标。
 - **一句话说明：** 用 **物理前缀引导的机器人原生扩散生成** 与 **GMT 通才跟踪器** 闭环，在 **262 维机器人骨骼空间** 从文本直接生成可执行高动态全身动作，避免人体 text-to-motion → 重定向带来的物理不可行；真机验证 breakdance、侧手翻、高踢、180°/360° 旋跳等敏捷动作。
 
 ## 核心论文摘录（MVP）

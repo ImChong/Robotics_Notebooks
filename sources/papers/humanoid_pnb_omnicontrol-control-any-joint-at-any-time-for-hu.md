@@ -8,9 +8,11 @@
 - **计划笔记路径：** `papers/14_Human_Motion/omnicontrol-control-any-joint-at-any-time-for-hu/omnicontrol-control-any-joint-at-any-time-for-hu.md`
 - **分类：** 14_Human_Motion
 - **arXiv：** <https://arxiv.org/abs/2310.08580>
-- **项目页：** <https://neu-vi.github.io/omnicontrol/>
-- **代码：** <https://github.com/neu-vi/omnicontrol>（MIT；HumanML3D 训推/评测与权重已发布）
+- **项目页：** <https://neu-vi.github.io/omnicontrol/>（2026-11-20 核查返回 HTTP 404）
+- **代码：** <https://github.com/neu-3dvi/OmniControl>（原 `neu-vi/omnicontrol` 已重定向；MIT；HumanML3D 训推/评测与权重已发布）
 - **入库日期：** 2026-06-11
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2310.08580v2` 论文全文（`1–2208` 行），核对 Analytic Spatial Guidance（`R(mu_t)` 将局部姿态转全局 XYZ 的 L2 梯度、`K_e=10, K_l=500, T_s=10`）、Realism Guidance（零初始化线性层连接的可训练 MDM Transformer 副本）与 HumanML3D Pelvis `FID 0.218 / Avg err 0.0338m`、全关节平均 `FID 0.310 / Avg err 0.0404m` 等量化结果。
 - **一句话说明：** OmniControl 用空间引导与真实感引导，在单一文本条件扩散模型中支持任意关节、任意时刻的三维位置约束。
 
 ## 核心摘录（策展，非全文）

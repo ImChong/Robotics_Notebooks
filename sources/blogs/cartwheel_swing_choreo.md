@@ -10,6 +10,8 @@
 - **产品入口：** <https://getcartwheel.com/product/performance-generation>
 - **发表时间：** 2026-10（原文标注 October 2026，未列具体日期）
 - **入库日期：** 2026-10-18
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读官方发布文章 <https://getcartwheel.com/blog/swing-choreo> 全部 12 KB 可见正文，核实 2026-10 发布要点、与 Swing Sketch 成对盲测偏好（整体 88%、复合动作 92%、手指 94%、多人 100%、空间 86%、单动作 71%）及 61/100 内部基准表述，确认未提供公开权重、训练数据或评测源码。
 - **项目节点：** [Swing Choreo](../../wiki/entities/cartwheel-swing-choreo.md)
 - **一句话说明：** Cartwheel 发布的商用人体动作生成模型，可把分步、复合文本指令转为连续表演，并生成多人互动、手指姿势和面部动作；模型的权重与推理代码未公开。
 

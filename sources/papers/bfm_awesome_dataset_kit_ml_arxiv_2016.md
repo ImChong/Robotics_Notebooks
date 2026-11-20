@@ -11,6 +11,8 @@
 - **代码/入口：** <https://motion-annotation.humanoids.kit.edu/dataset/>
 - **索引来源：** [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - **入库日期：** 2026-05-26
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:1607.03827v1` 全文（`1–1427` 行，含引言、数据采集设计、MMMS 工具与标注统计、基线评测与附录）及项目数据入口 <https://motion-annotation.humanoids.kit.edu/dataset/>；核实 3,911 条运动片段（约 11.2 小时）、2,067 条对应受试者/标注动作与 6,278 条英文/德文众包文本描述、MMM 参考人体表示等一手数字。
 - **一句话说明：** 较早的语言–动作配对数据。
 
 ## 核心摘录（策展）

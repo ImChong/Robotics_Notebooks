@@ -14,6 +14,8 @@
   - 模型：<https://huggingface.co/collections/nvidia/ardy>
 - **机构：** NVIDIA Research · ETH Zürich
 - **入库日期：** 2026-07-11（深度更新 2026-09-06）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2607.08741` 论文全文（`1–2241` 行），核对混合显式 root + 潜空间 body Tokenizer、两阶段交替 Transformer 去噪（先 root 后 body）、历史 8s / 未来 10s 长时域约束、RTX 4090 `4-step ~33 ms` / `10-step ~63 ms` 延迟、HumanML3D 与 Bones Rigplay 双轨实验以及 ARDY + SONIC 真机 G1 闭环。
 - **一句话说明：** **自回归扩散** 交互式人体运动：混合 **显式 root + 潜空间 body** 与 **两阶段 Transformer 去噪**；**33 ms** 级 4-step 推理；支持 **在线文本 + 长时域运动学约束**；HumanML3D 与 Bones Rigplay 双轨评测。
 
 ## 核心论文摘录

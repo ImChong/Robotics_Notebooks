@@ -12,6 +12,8 @@
 - **机构：** ETH Zurich Robotic Systems Lab；Simon Fraser University；ETH AI Center；EPFL
 - **硬件平台：** Unitree G1（机载 Livox MID360 LiDAR + IMU、Jetson Thor + Orin）
 - **入库日期：** 2026-06-07
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2604.17335v2` 论文全文（`1–1098` 行），核对 GVHMR + Drake 接触约束 IK + DeepMimic 轨迹精炼与增广（~1 h 离线库）、0.5 s（25 帧）MDM 生成器（Jetson Thor TensorRT 2 步去噪 `~20 ms`，每 `0.25 s` 重规划）、23-DoF Unitree G1 + Orin（DLIO + Elevation Mapping CuPy）以及箱攀（75–80 cm 仿真 SR `0.987`）、跨栏（55 cm SR `0.990`）、楼梯（25 cm SR `0.997`）与真机连续穿越实验。
 - **一句话说明：** 三阶段管线——人体运动重定向与增广 → 离线预训练扩散运动生成器 + DeepMimic 式 RL 全身跟踪器 → 冻结生成器的闭环 RL 微调；真机 onboard 感知与计算下完成箱攀、跨栏、楼梯与混合地形穿越。
 
 ## 摘要级要点

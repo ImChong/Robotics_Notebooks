@@ -8,7 +8,9 @@
 - **Performance Generation：** <https://getcartwheel.com/product/performance-generation>
 - **API 文档入口：** <https://api-docs.getcartwheel.com/>
 - **开源状态：** 模型权重、训练/推理代码及数据集未见公开链接；产品通过 Cartwheel 云端应用/API 提供
-- **核查日期：** 2026-10-18
+- **核查日期：** 2026-11-20（初入库 2026-10-18）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取 <https://getcartwheel.com/model/swing> 与 <https://getcartwheel.com/product/performance-generation> 完整页面正文，核实 FBX/GLTF/USD/BVH/MB/MA 输出格式、24/30/60/120 fps 与商业云端交付定位；**注**：<https://api-docs.getcartwheel.com/> 为纯客户端渲染 SPA，无 JS 执行抓取仅得 13 字节占位文本，API 端点细则未在无头环境下展开核实。
 - **详情节点：** [Swing Choreo](../../wiki/entities/cartwheel-swing-choreo.md)
 
 ## 模型定位

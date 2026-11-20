@@ -6,8 +6,10 @@
 - **标题：** OMG: Omni-Modal Motion Generation for Generalist Humanoid Control
 - **机构：** Tsinghua University（清华大学 MARS Lab）
 - **配套仓库：** <https://github.com/tsinghua-mars-lab/OMG>
-- **入库日期：** 2026-06-10
-- **论文：** 项目页 BibTeX 标注 **TBD**（截至入库日未见 arXiv 条目）
+- **入库日期：** 2026-06-10（2026-11-20 复核更新）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取 <https://tsinghua-mars-lab.github.io/OMG/> 全部正文，并补充核对已公开的论文 <https://arxiv.org/abs/2606.10340>、HuggingFace 模型 `THU-MARS/OMG` 与数据集 `THU-MARS/OMG-Data`（原站点静态文本中 arXiv 仍未更新，现已发布 `2606.10340v1`）。
+- **论文：** <https://arxiv.org/abs/2606.10340>（arXiv:2606.10340v1）
 - **一句话说明：** 官方落地页：提出 **generator–tracker 分层** 的通用运动生成框架，OMG-DiT 将语言 / 音频 / 人体参考 / 运动历史等多模态意图实时转为 Unitree G1 可跟踪全身轨迹；配套 **OMG-Data**（约 1174.66 h）与真机多模态切换演示。
 
 ## 页面要点（2026-06 快照）

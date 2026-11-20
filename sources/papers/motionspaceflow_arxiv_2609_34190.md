@@ -1,7 +1,9 @@
 # MotionSpaceFlow: Representation-Aware Flow Matching in Direct Motion Space（arXiv:2609.34190）
 
-> 来源归档（最近复核：2026-10-10）
+> 来源归档（最近复核：2026-11-20）
 
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2609.34190` 论文全文（`1–3857` 行，含 §1–§6、参考文献与 Appendix A–E 全部证明、算法及实验表），核实 68.77M RA-MMDiT、DistilBERT + time-aware Token Refiner、`s=5` 各向同性噪声尺度、50 步 Heun 采样、因果 263D/272D（FID `0.046`/`0.057`/`6.540`）与双向 XYZ 66D（FID `0.038`，零样本端点投影全部 6 关节 `0.0000` 轨迹/位置/平均误差、`FID 0.061`、`R@3 0.818`、`1.742s`）。
 - **标题：** MotionSpaceFlow: Representation-Aware Flow Matching in Direct Motion Space
 - **作者：** Qing Yu、Kent Fujiwara（LY Corporation）
 - **类型：** paper / text-to-motion / flow-matching / motion-space generation

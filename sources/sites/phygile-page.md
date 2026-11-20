@@ -5,7 +5,10 @@
 - **标题：** PhyGile — Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking
 - **类型：** site / project-page
 - **官方入口：** <https://baojch.github.io/phygile-page/>
-- **入库日期：** 2026-06-19
+- **代码入口：** <https://github.com/Baojch/phygile_tracking>（仅包含 GMT MoE/课程跟踪器训练与播放实现）
+- **入库日期：** 2026-06-19（2026-11-20 复核）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 抓取并阅读 <https://baojch.github.io/phygile-page/> 全部正文，确认项目页新增指向 `Baojch/phygile_tracking` 跟踪器仓库，但 TP-MoE 生成器与 physics-prefix 闭环微调代码未开源。
 - **一句话说明：** 论文配套站点：三模块方法图（GMT MoE tracker / physics-prefix 生成微调 / TP-MoE 机器人原生扩散）、生成→微调→真机对比视频，以及 breakdance、侧手翻、旋跳等高动态真机演示。
 
 ## 页面公开信息（检索自 2026-06-19）

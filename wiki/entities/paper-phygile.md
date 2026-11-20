@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, text-to-motion, diffusion, motion-tracking, gmt, moe, whole-body-control, shanghai-ai-lab, agile-motion]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2603.19305"
+code: https://github.com/Baojch/phygile_tracking
 venue: "2026 · arXiv"
 related:
   - ../overview/motion-cerebellum-category-04-wbt-base.md
@@ -22,12 +23,21 @@ related:
 sources:
   - ../../sources/papers/phygile_arxiv_2603_19305.md
   - ../../sources/sites/phygile-page.md
-summary: "PhyGile（arXiv:2603.19305）以 physics-prefix 引导的 262D 机器人原生扩散生成与课程式 MoE GMT 跟踪器闭环，从文本直接产出可执行高动态全身动作，真机验证 breakdance、侧手翻与旋跳等超越低动态行走的前沿敏捷运动。"
+  - ../../sources/repos/phygile_tracking.md
+original:
+  - ../../sources/papers/phygile_arxiv_2603_19305.md
+  - ../../sources/sites/phygile-page.md
+  - ../../sources/repos/phygile_tracking.md
+summary: "PhyGile（arXiv:2603.19305）以 physics-prefix 引导的 262D 机器人原生扩散生成与 12 级课程 MoE GMT 跟踪器闭环，从文本直接产出可执行高动态全身动作；G1 29 DoF 50Hz ONNX 真机验证 breakdance 与旋跳，GMT 跟踪代码已开源（Baojch/phygile_tracking），生成器暂未释放。"
 ---
 
 # PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）
 
-**PhyGile** 是西北工业大学、上海 AI Lab、中科大、清华、复旦、字节与东北大学等团队的 **文本驱动人形敏捷全身控制** 工作（arXiv:2603.19305）：在 **262 维机器人骨骼空间** 做 **physics-prefix 引导的 robot-native 扩散生成**，并与 **General Motion Tracking (GMT)** 通才跟踪器形成 **生成–验证–微调–部署** 闭环，避免传统「人体 text-to-motion → 重定向」在真机上的 **物理不可行** 与 **生成–执行鸿沟**。
+**PhyGile** 是西北工业大学、上海 AI Lab、中科大、清华、复旦、字节与东北大学等团队的 **文本驱动人形敏捷全身控制** 工作（[arXiv:2603.19305v3](https://arxiv.org/abs/2603.19305)）：在 **262 维机器人原生骨骼空间** 做 **physics-prefix 引导的扩散生成**，并与 **General Motion Tracking (GMT)** 通才跟踪器形成 **生成–验证–微调–部署** 闭环，避免传统「人体 text-to-motion → 重定向」在真机上的 **物理不可行** 与 **生成–执行鸿沟**。
+
+## 一句话定义
+
+在 **262D 机器人原生空间** 训练文本条件 **TP-MoE 扩散生成器**，推理时以仿真物理可行前缀引导 1 秒延续生成，并与 **12 级课程 MoE GMT 跟踪器**（`29 DoF` Unitree G1 @ `50 Hz` ONNX）闭环协同适配，使纯文本输入可在真机直接驱动 breakdance、侧手翻与旋跳等高动态全身敏捷运动。
 
 ## 英文缩写速查
 
@@ -93,23 +103,55 @@ flowchart LR
 
 ### GMT 跟踪器（执行层）
 
-| 阶段 | 机制 | 目的 |
-|------|------|------|
-| **MoE 课程路由** | 两阶段 tracker，约束路由诱导专家专精 | 覆盖动作难度谱 |
-| **全局软后训练** | 动态扩展专家容量 | 吸收持续困难动作 |
-| **无标注后训练** | 大规模机器人运动，无逐帧标签 | 提升跟踪 **鲁棒性与规模** |
+| 阶段 | 机制 | 论文实测规格 |
+|------|------|--------------|
+| **MoE 课程路由** | 12 级难度课程（Levels 1–10 覆盖主要训练动作，freeze-and-drop 巩固） | 45 小时高动态+通用混合动作；Phase A/B |
+| **全局软后训练** | Stage II 动态新增专家并全局软路由，吸收极难动作（Levels 11–12 等） | GMT 整体跟踪成功率 **94.01%** |
+| **真机控制器形式** | 50 Hz ONNX 推理驱动 29 DoF Unitree G1 | 支持高层参考微调对齐 |
 
 ### 生成与 physics-prefix 适配（生成层）
 
 | 组件 | 作用 |
 |------|------|
-| **TP-MoE 扩散策略** | 文本条件生成 **262D** 机器人骨骼运动序列 |
-| **Physics-prefix 引导** | 推理时用 **物理可行前缀** 约束续写，减少 retarget 类伪影 |
-| **1s 延续拼接** | 可执行前缀 + 新生成短段 → **GMT 可跟踪性检验** |
-| **闭环仿真精炼** | 强化 **动态可行性** 与 **生成–可跟踪一致性** |
-| **GMT 微调** | 在 physics-derived prefix 目标下更新 tracker，服务真机敏捷动作 |
+| **TP-MoE 扩散策略** | DistilBERT 文本编码 + **AdaLN Diffusion** + **TP-MoE**（`K=12` 专家、`top-k=6`、`ASFO`），在 **262D** 机器人空间生成动作 |
+| **Physics-prefix 引导** | 推理时采用 **1 s 滑动窗口（receding-horizon）**，以物理仿真可执行的真实历史前缀条件续写 |
+| **1s 延续拼接** | 可执行前缀 + 新生成短段 → 预训练 GMT 检验与仿真 rollout |
+| **GMT 微调** | 在 physics-derived prefix 目标下进一步适配跟踪器，将文本生成动作落到真机敏捷执行 |
 
-### 与相关路线的对照
+## 工程实践与开源范围
+
+| 组件 | 开源状态（2026-11-20 复核） | 实测入口 / 说明 |
+|------|-----------------------------|----------------|
+| **GMT MoE 跟踪器** | **已开源** — [Baojch/phygile_tracking](https://github.com/Baojch/phygile_tracking) | 基于 `HybridRobotics/whole_body_tracking` / IsaacLab 2.1.0；训练 `scripts/rsl_rl/train.py`、回放与 ONNX 导出 `scripts/rsl_rl/play.py`（支持 `--phase_b`） |
+| **TP-MoE 生成器 & prefix 微调** | **未开源** | 截至 2026-11-20 未包含于 `phygile_tracking`，亦无独立生成器仓库 |
+
+## 源码运行时序图
+
+对齐实测已开源的 **GMT MoE 跟踪器子系统**（`Baojch/phygile_tracking` 的 `scripts/rsl_rl/train.py` 与 `play.py`）：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 研究者/CLI
+  participant Train as scripts/rsl_rl/train.py
+  participant Env as IsaacLab WBT Env + Curriculum
+  participant Policy as RSL-RL MoE Actor-Critic
+  participant Play as scripts/rsl_rl/play.py
+  participant ONNX as export_motion_policy_as_onnx()
+
+  U->>Train: 传入 --task --motion_dir 与 G1_TRAINING_CFG_PATH
+  Train->>Env: 启动 AppLauncher 与 IsaacLab 并行仿真
+  loop 课程 Stage I (curriculum_level + freeze-and-drop) -> Stage II (--phase_b)
+    Env-->>Policy: 观测状态 + 参考帧 + 难度门控
+    Policy->>Env: 29-DoF 关节目标
+  end
+  U->>Play: 加载 checkpoint（可选 --phase_b / --play_full_motion）
+  Play->>ONNX: 附加元数据并导出 50Hz ONNX 策略供 G1 部署
+```
+
+> **边界提示**：上述时序图覆盖 `Baojch/phygile_tracking` 已开源的跟踪器训推链路；论文前序的 `TP-MoE` 262D 扩散生成器与 `physics-prefix` 闭环微调脚本尚未开源，暂无法在源码层核验。
+
+## 与其他工作对比
 
 | 工作 | 生成空间 | 执行层 | 文本入口 | PhyGile 差异 |
 |------|----------|--------|----------|--------------|
@@ -122,61 +164,53 @@ flowchart LR
 
 ## 实验与评测
 
-- **平台**：离线实验 + **真机人形**（项目页视频；具体硬件型号与指标以 **PDF** 为准）。
-- **定性案例（项目页）**：
-  - **生成 → 微调 → 真机** 三段对比：breakdance、cartwheel、high kick、180°/360° spin jump。
-  - **更多真机**：crawl、frog jump、monkey、jump、spin kick、hop、punch、kneel、wave 等。
-- **论文主张**：相对既有 text-driven 人形控制，将可行动作推进到 **高动态、高难度全身** 区间，而非停留于行走与低动态。
-- **量化协议**：完整 benchmark、消融与成功率/跟踪误差表以 **arXiv PDF** 为准；本页为策展清单摘要。
+- **平台**：仿真（IsaacLab）与 **Unitree G1 29-DoF 真机（50 Hz ONNX 部署）**。
+- **生成与微调量化指标（`arXiv:2603.19305v3` 全文实测）**：262D 原生文本生成达到 **R@3 = 0.6176**、**FID = 0.1823**；经 **physics-prefix 闭环精炼**后，足部打滑（Skating）降至 **1.58%**、穿地（Penetration）降至 **0 mm**；12 级课程 MoE GMT 整体跟踪成功率达 **94.01%**。
+- **定性高动态真机案例**：
+  - **生成 → 微调 → 真机** 三段对比：breakdance spin、前后侧手翻（cartwheel）、高踢（high kick）、180°/360° 旋跳（spin jump）。
+  - **更多高动态敏捷运动**：crawl、frog jump、monkey、jump、spin kick、hop、punch、kneel、wave 等。
 
 ## 结论
 
-**文本驱动人形敏捷控制要先在机器人原生 262D 里生成，并用 physics-prefix + GMT 闭环验证，而不是「人体 T2M → 重定向 → hope tracker」。**
+**文本驱动人形敏捷控制要先在机器人原生 262D 里生成，并用 1s physics-prefix 滑动预测 + MoE GMT 闭环验证，而不是「人体 T2M → 重定向 → hope tracker」。**
 
-1. **生成空间改到 robot-native** — 262 维机器人骨骼扩散，避开推理期人体→机 retarget 带来的动力学/接触不可行。
-2. **Physics-prefix 是续写约束，不是事后滤镜** — 可执行前缀 + 约 1s 新生成延续，经预训练 GMT 检验可跟踪性，再闭环仿真精炼。
-3. **GMT 底座要先训厚再适配** — 课程 MoE → 动态专家扩展 → 无标注后训练；prefix 阶段再微调 tracker，服务 breakdance、侧手翻、旋跳等高动态真机。
-4. **与独立 GMT / Heracles 勿混读** — 复用 GMT 跟踪范式但是生成–跟踪统一框架；Heracles 改参考缓冲，本文从头生成 robot-native 轨迹。
-5. **复现与边界** — 截至策展日项目页未列公开代码；演示偏高动态技能指令，日常 loco-manipulation 与复杂交互未在首页强调；量化表以 PDF 为准。
+1. **生成空间改到 robot-native** — `262D` 机器人骨骼扩散结合 `TP-MoE (K=12, top-k=6)` 与 DistilBERT（R@3 `0.6176` / FID `0.1823`），避开人体→机 retarget 的动力学失配。
+2. **Physics-prefix 压缩生成–执行失真** — 1 s receding-horizon 物理可行前缀 + 仿真精炼将足滑与穿地分别压至 `1.58%` 与 `0 mm`。
+3. **12 级课程 MoE GMT 是敏捷执行底座** — Levels 1–10 课程与动态增专家训练实现 `94.01%` 跟踪成功率，并以 `50 Hz` ONNX 上机。
+4. **部分开源需分模块复现** — [Baojch/phygile_tracking](https://github.com/Baojch/phygile_tracking) 已开源 GMT 跟踪器，但 TP-MoE 生成器与闭环适配尚未释放。
+5. **与独立 GMT / Heracles 勿混读** — 复用 GMT 命名与跟踪范式但扩展为课程 MoE 生成闭环；Heracles 侧重平衡恢复中间件，PhyGile 主攻高动态文本生成。
 
-## 常见误区或局限
+## 局限与风险
 
-- **不是纯人体 T2M 论文**：核心卖点是 **robot-native 262D** 与 **physics prefix**，而非在 AMASS 上刷 FID。
-- **GMT 仍需预训练与后训练**：敏捷真机依赖 **成熟 tracker 底座**；prefix 适配是附加阶段，不是零样本单模型端到端。
-- **与独立 GMT 论文关系**：本库已沉淀 [GMT（arXiv:2506.14770）](paper-gmt.md)；PhyGile 复用 **GMT 命名与跟踪范式**，但是 **生成–跟踪统一框架** 的独立工作，勿与 Chen et al. 原文混为一谈。
-- **开源状态**：截至 2026-06-19 项目页 **未列公开代码仓库**；复现需关注后续 release 与 PDF 实现细节。
-- **文本→敏捷动作的泛化边界**：演示集中在 **高动态技能类** 指令；日常 loco-manipulation 与复杂场景交互未在首页强调。
+- **部分开源缺口**：截至 2026-11-20 仅 GMT 课程跟踪器仓（`Baojch/phygile_tracking`）开源，上游 262D TP-MoE 生成器与 physics-prefix 闭环微调实现仍未公开，端到端复现受限。
+- **GMT 仍需 45h 规模数据预训练与两阶段扩展**：敏捷真机高度依赖厚实的跟踪器底座；prefix 适配是附加阶段，并非单一模型零样本泛化。
+- **与独立 GMT 论文关系**：本库已沉淀 [GMT（arXiv:2506.14770）](paper-gmt.md)；PhyGile 扩展了课程 MoE 与生成闭环，二者勿混淆。
+- **任务域偏高动态全身技能**：演示集中在高动态空翻/舞蹈/踢腿类动作；复杂物体抓取、移动操作（loco-manipulation）或未知地形感知未在原文强调。
 
-## 与其他页面的关系
+## 关联页面
 
 - [扩散运动生成](../methods/diffusion-motion-generation.md) — PhyGile 属 **控制环内 robot-native 扩散 + tracker** 家族
+- [Diffusion Policy](../methods/diffusion-policy.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 文本驱动场景下的 **生成–GMT 闭环** 分支
 - [Motion Retargeting（GMR）](../methods/motion-retargeting-gmr.md) — 对比「为何跳过推理期人体重定向」
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — retarget→tracker 经典管线上下文
-- [Humanoid-GPT](paper-humanoid-gpt.md) — 同任务 **规模化 tracker** 前沿；正交互补（跟踪 vs 生成闭环）
-- [MoLingo](./paper-molingo.md) — 人体 T2M + PHC 跟踪对照（非 robot-native）
+- [Whole-Body Control](../concepts/whole-body-control.md)
 - [GMT（Chen et al., arXiv:2506.14770）](paper-gmt.md) — 原始统一全身跟踪方法锚点
+- [MoLingo](./paper-molingo.md) — 人体 T2M + PHC 跟踪对照（非 robot-native）
+- [Harmon（计划实体）](paper-loco-manip-161-097-harmon.md)
+- [Humanoid-GPT](paper-humanoid-gpt.md) — 同任务 **规模化 tracker** 前沿；正交互补（跟踪 vs 生成闭环）
+- [GenTrack](./paper-gentrack.md) — 已有 SONIC/ProtoMotions 上的在线互训，非从头敏捷生成
 
 ## 推荐继续阅读
 
 - 论文：<https://arxiv.org/abs/2603.19305>
 - 项目页：<https://baojch.github.io/phygile-page/>
+- 跟踪器官方仓：<https://github.com/Baojch/phygile_tracking>
 - 人体 text-to-motion 综述入口：[Awesome Text-to-Motion](../entities/awesome-text-to-motion-zilize.md)
 - 对照：[Humanoid-GPT 项目页](https://qizekun.github.io/Humanoid-GPT/)（规模化 tracker）
 
 ## 参考来源
 
-- [phygile_arxiv_2603_19305.md](../../sources/papers/phygile_arxiv_2603_19305.md) — arXiv 与项目页策展摘录
-- [phygile-page.md](../../sources/sites/phygile-page.md) — 官方项目页方法图与真机视频索引
-
-## 关联页面
-
-- [扩散运动生成](../methods/diffusion-motion-generation.md)
-- [Diffusion Policy](../methods/diffusion-policy.md)
-- [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
-- [GMT（Chen et al.）](paper-gmt.md)
-- [MoLingo](./paper-molingo.md)
-- [Harmon（计划实体）](paper-loco-manip-161-097-harmon.md)
-- [Humanoid-GPT](paper-humanoid-gpt.md)
-- [GenTrack](./paper-gentrack.md) — 已有 SONIC/ProtoMotions 上的在线互训，非从头敏捷生成
-- [Whole-Body Control](../concepts/whole-body-control.md)
+- [phygile_arxiv_2603_19305.md](../../sources/papers/phygile_arxiv_2603_19305.md) — arXiv 全文精读与指标核对
+- [phygile-page.md](../../sources/sites/phygile-page.md) — 官方项目页方法图、跟踪器链接与真机视频索引
+- [phygile_tracking.md](../../sources/repos/phygile_tracking.md) — `Baojch/phygile_tracking` 官方跟踪器仓库代码结构与入口核查

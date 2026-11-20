@@ -8,6 +8,8 @@
 - **论文：** <https://arxiv.org/abs/2405.11126>
 - **代码：** <https://github.com/setarehc/diffusion-motion-inbetweening>
 - **入库日期：** 2026-07-28
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取项目页 <https://setarehc.github.io/CondMDI/> 全部 124 个非空文本行，核对稀疏/部分关键帧与文本条件示例、与插补/重建引导/GMD/OmniControl 定性对比及 Paper/Code 外链。
 - **一句话说明：** CondMDI（SIGGRAPH 2024）项目页，展示稀疏/密集/部分关键帧、根轨迹与文本联合条件的动作补全结果。
 - **开源状态（2026-07-28 核查）：** **已开源** — 官方 PyTorch 仓库含训练、推理、评测入口与三个 HumanML3D 预训练权重；仓库 `LICENSE` 为 MIT。
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, text-to-motion, zero-shot, motion-dataset, autoregressive, fsq, iccv, humanoid-paper-notebooks, sjtu, cuhk, fudan, hkust, zju, hku, shanghai-ai-lab]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2507.07095"
 code: https://github.com/VankouF/MotionMillion-Codes
 related:
@@ -13,6 +13,10 @@ related:
   - ./dataset-bfm-motion-x.md
   - ../overview/paper-notebook-category-14-human-motion.md
 sources:
+  - ../../sources/papers/humanoid_pnb_go-to-zero.md
+  - ../../sources/sites/motionmillion-project.md
+  - ../../sources/repos/motionmillion-codes.md
+original:
   - ../../sources/papers/humanoid_pnb_go-to-zero.md
   - ../../sources/sites/motionmillion-project.md
   - ../../sources/repos/motionmillion-codes.md
@@ -162,7 +166,7 @@ Go to Zero 与 GPC 都验证“动作 token + GPT scaling”，但前者是文�
 - 论文模型生成人体 272D 表示，不输出机器人扭矩、接触力、平衡状态或碰撞保证。
 - README 的依赖与大模型路径需要手工配置；完整 7B 训练不属于消费级单卡复现。
 
-## 与其他页面的关系
+## 关联页面
 
 - 离散生成式控制对照：[GPC](./paper-gpc-generative-pretrained-controllers.md)
 - 连续生成总览：[Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)

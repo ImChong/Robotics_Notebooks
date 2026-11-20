@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, spatial-control, trajectory-control, obstacle-avoidance, iccv, humanoid-paper-notebooks, eth]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-20
 arxiv: "2305.12577"
 code: https://github.com/korrawe/guided-motion-diffusion
 related:
@@ -14,6 +14,10 @@ related:
   - ./paper-gpc-generative-pretrained-controllers.md
   - ../overview/paper-notebook-category-14-human-motion.md
 sources:
+  - ../../sources/papers/humanoid_pnb_guided-motion-diffusion-for-controllable-human-m.md
+  - ../../sources/sites/gmd-project.md
+  - ../../sources/repos/guided-motion-diffusion.md
+original:
   - ../../sources/papers/humanoid_pnb_guided-motion-diffusion-for-controllable-human-m.md
   - ../../sources/sites/gmd-project.md
   - ../../sources/repos/guided-motion-diffusion.md
@@ -106,24 +110,22 @@ Stage 1 的 ε-model 在低噪声末期更不容易压过 guidance；Stage 2 的
 ```mermaid
 sequenceDiagram
   autonumber
-  participant U as 用户
-  participant Prep as prepare/ + HumanML3D_abs
-  participant Traj as train.train_trajectory
-  participant Motion as train.train_gmd
-  participant Sample as sample.generate
-  participant Eval as eval.eval_humanml_condition
+  participant U as 用户/CLI
+  participant Args as generate_args + get_template
+  participant Traj as load_traj_model() (ε-DPM)
+  participant Cond as cond_fn_key_location / cond_fn_sdf
+  participant Mot as motion DPM (x0-DPM + CFG)
+  participant Eval as sample_to_motion / eval_humanml_condition
 
-  U->>Prep: 准备绝对根 HumanML3D 与 SMPL/GloVe
-  U->>Traj: 训练 trajectory DPM（可加载官方权重）
-  U->>Motion: 训练 motion DPM（可加载官方权重）
-  U->>Sample: text_prompt + guidance_mode
-  Sample->>Traj: kps / sdf 目标函数引导根轨迹
-  Traj-->>Motion: 绝对 root trajectory
-  Motion-->>U: results.npy + MP4
-  U->>Eval: 关键帧控制与文本质量评测
+  U->>Args: python -m sample.generate --guidance_mode kps|sdf|trajectory
+  Args->>Traj: 加载轨迹模型并构建 ClassifierFreeSampleModel
+  Traj->>Cond: 计算关键点/圆形障碍梯度并经 denoiser 反向传播
+  Cond-->>Mot: 绝对 root trajectory 投影与空间插补
+  Mot-->>Eval: 合成 263D 动作并还原关节位置
+  Eval-->>U: 输出 results.npy / MP4（评测走 eval.eval_humanml_condition）
 ```
 
-仓库入口 `sample.generate` 通过 `--guidance_mode kps|sdf|trajectory` 切换任务；预定义关键点与障碍位于 `sample/keyframe_pattern.py`。
+实测入口 `sample/generate.py`（L43–200）通过 `load_traj_model`、`get_template` 与 `cond_fn_key_location` / `cond_fn_sdf` 串联两阶段条件采样。
 
 ## 与其他工作对比
 
@@ -160,7 +162,7 @@ sequenceDiagram
 - 输出是人体运动学序列；没有机器人关节限制、扭矩、接触稳定性或真机验证。
 - 代码依赖 Python 3.7、旧版 CUDA 生态和多项独立许可的人体资产。
 
-## 与其他页面的关系
+## 关联页面
 
 - [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 稀疏轨迹目标通过 denoiser 传播梯度，可与轨迹优化的目标和约束作对照；生成引导不自动满足机器人动力学。
 

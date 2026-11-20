@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, diffusion, smpl, perception, video-to-control, nvidia]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-20
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./hy-motion-1.md
@@ -17,6 +17,9 @@ related:
 sources:
   - ../../sources/papers/genmo.md
   - ../../sources/repos/genmo.md
+original:
+  - ../../sources/papers/genmo.md
+  - ../../sources/repos/genmo.md
 summary: "GENMO（官方代码与权重以 GEM 名义发布）把人体运动估计重新表述为带多模态条件的约束式扩散生成；通过 dual-mode 训练范式（估计模式 + 生成模式）与 multi-text 注入块，让同一权重在视频、2D 关键点、文本、音乐与 3D 关键帧条件下同时做轨迹恢复与合成。"
 ---
 
@@ -24,22 +27,25 @@ summary: "GENMO（官方代码与权重以 GEM 名义发布）把人体运动估
 
 **GENMO**（*A GENeralist Model for Human MOtion*，NVIDIA Research，**ICCV 2025 Highlight**；代码与权重发布后更名为 **GEM**）把 **运动估计** 与 **运动生成** 放进同一套扩散式框架：在给定观测约束（如视频特征 / 2D 关键点 / 文本 / 音乐 / 3D 关键帧）的前提下生成完整 SMPL 参数序列，从而既保留生成模型的弹性，又让生成先验来修补遮挡、截断等脆弱帧。它与 [Video-as-Simulation（视频即仿真）](../concepts/video-as-simulation.md) 所讨论的「像素域动力学接口」相衔接：先把视频变成可跟踪的人体运动，再交给下游执行器。
 
+## 一句话定义
+
+通过将人体运动估计形式化为强观测条件约束下的扩散生成，并结合 Estimation（$z\sim\mathcal{N}(0,I), t=T$ 首步回归）与 Generation 双模式训练及 Multi-Text 窗注入块，使单一 RoPE Transformer 权重同时统一视频恢复与多模态动作生成。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| RoPE | Rotary Position Embedding | 旋转位置编码，支持配合滑窗外推超长运动序列 |
+| DDPM / DDIM | Denoising Diffusion Probabilistic / Implicit Models | 离散噪声调度扩散与加速采样框架 |
+| MLE | Maximum Likelihood / 条件回归目标 | 估计模式下确保首步预测精准确定 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| SOTA | State of the Art | 当前最优水平 |
 | ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
 
-## 为什么重要？
+## 为什么重要
 
 - **打破「估计 vs 生成」的人为分裂**：传统流水线维护两套权重 —— 估计追求精度（视频/2D 输入），生成追求多样性（文本/音乐输入）。GENMO 论文论证两者共享时间动力学 + 运动学表示，可以由「带观测约束的生成」一种范式统一吸收。
 - **视频→机器人链路的中枢**：从单目或生成视频恢复时间一致的全身 SMPL 序列，是「像素 → 跟踪控制器」管道的标准中间表示之一（参见 [ExoActor](./exoactor.md)、[SONIC](../entities/nvidia-sonic.md) 中明确把 GEM 列为「视频/音乐/文本 → 人体运动」的接口）。
@@ -132,25 +138,23 @@ flowchart LR
 
 图中：文本条件不走加性融合，而是通过 multi-text 注意力按窗注入；三种训练损失共享同一去噪器权重。
 
-## 实验结论（v1 公开表述）
+## 实验结论（论文实测核心数据）
 
-- **全局动作估计**：在 EMDB-2 / RICH 上的 WA-MPJPE100 / W-MPJPE100 / RTE / Jitter / Foot-Sliding 指标对比 GLAMR、TRAM、WHAM 等基线达到 SOTA。
-- **局部动作估计 + music-to-dance 生成**：同一权重在多任务上接近或超过专用模型。
+- **全局动作估计（EMDB）**：在 DROID-SLAM 相机估计下 `W-MPJPE100` 达 **202.1 mm**（使用 GT 相机为 **185.9 mm**），显著优于同期 TRAM（`222.4 mm`）等专用估计基线。
+- **音乐到舞蹈生成（AIST++）**：同一模型在音乐条件生成上获得运动学多样性 `Div_k = 10.09`、物理足部合理性 `PFC = 0.3702` 与节拍对齐 `BAS = 0.2708`；HumanML3D 与 Motion-X 上的动作中间帧补全（inbetweening）精度同样高于仅做生成的纯扩散基线。
 - **关键消融**：
-  - 去掉估计模式 → 估计精度显著下降。
-  - 去掉 estimation-guided 2D 监督 → 生成多样性下降。
+  - 去掉估计模式 → 估计精度显著下降；
+  - 去掉 estimation-guided 2D 监督 → 野外动作生成多样性下降；
   - 去掉 multi-text 注意力 → 多段文本条件下出现时间错位。
-- **鲁棒性**：生成先验在遮挡 / 截断帧上明显提升估计质量，验证「双向收益」。
+- **鲁棒性**：生成先验在遮挡 / 截断帧上明显提升估计质量，验证「生成 ↔ 估计」双向收益。
 
-## 仓库与权重发布（README 摘要）
+## 工程实践
 
-- **代码**：<https://github.com/NVlabs/GENMO>（Apache-2.0）。
-- **权重**：HuggingFace `nvidia/GEM-X` 上的 **GEM-SMPL** checkpoint（regression + generation 一体）。
-- **demo 入口**：`scripts/demo/demo_smpl.py`（视频 + 文本 + 文件混合输入）；`demo_smpl_hpe.py`（视频→SMPL 估计）；`demo_webcam.py`（ONNX Runtime + 滑窗的实时管线）。
-- **训练入口**：`scripts/train.py exp=gem_smpl_regression`（纯回归）/ `exp=gem_smpl`（完整模型），AdamW lr=2e-4，500K steps，fp16-mixed。
-- **命名**：2025-12 起 GENMO 正式更名为 **GEM**；论文 / arXiv 仍用旧名；检索仓库时两个关键词都要试。
+- **代码与权重发布**：仓库 <https://github.com/NVlabs/GENMO>（2025-12 起品牌切换为 **GEM**，2026-03 发布 `GEM-SMPL` checkpoint 于 HuggingFace `nvidia/GEM-X`；代码仓根目录为 Apache-2.0，部分脚本头与预训练权重遵循 `LicenseRef-NVIDIA-OneWay-Noncommercial`，使用前须核对许可边界）。
+- **多模态推理链（实测 `scripts/demo/demo_smpl.py`）**：通过 `--input_list` 任意串联 `.mp4` 视频、`.txt` 或 `text:...` 片段 → `parse_input_list` 与 `preprocess_video_segment` / `create_text_segment`（借助 HMR2 与 2D 骨架提取特征）→ `assemble_mixed_data` 拼装时间段条件 → `load_model` & `run_inference` 统一样本推理 → `render_results_mixed` 输出 `1_incam.mp4`、`2_global.mp4` 与 `smpl_params.pt`。
+- **实时与训练入口**：`demo_webcam.py` 基于 ONNX Runtime 实现 YOLOX → ViTPose-H → HMR2 → GEM 实时流（支持 `--no_imgfeat` 跳过图像特征提速）；训练入口为 `python scripts/train.py exp=gem_smpl_regression` 或 `exp=gem_smpl`。
 
-## 在 NVIDIA 人形栈中的位置
+### 在 NVIDIA 人形栈中的位置
 
 GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环节，与下列工作官方互链：
 
@@ -160,23 +164,25 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 - [SONIC](../entities/nvidia-sonic.md)：把人体运动作为 token 化条件喂入大规模 motion tracking 控制器，落到 Unitree G1 等硬件。
 - [Kimodo](../entities/kimodo.md)：文本 + 运动学约束的运动扩散与生成工具链。
 
-## 常见误区或局限
+## 局限与风险
 
 - **不等于实时控制器**：GENMO 输出的是人体运动序列；要在实体人形上闭环还需动力学可行的跟踪策略（如 [SONIC](../entities/nvidia-sonic.md)）或经典 WBC/MPC。
-- **命名迁移**：论文使用 GENMO，仓库与权重以 **GEM** 发布，并存在 [GEM-X](https://github.com/NVlabs/GEM-X) 全身扩展；检索代码与 checkpoint 时需两者兼顾。
+- **命名与许可分层**：论文使用 GENMO，仓库与权重以 **GEM** 发布（另有 [GEM-X](https://github.com/NVlabs/GEM-X) 全身扩展）；部分脚本及预训练权重标明非商业单向许可（`NVIDIA_OneWay_Noncommercial`），商用须额外审批。
 - **实现边界**：社区维护的 [gem-x.cpp](../entities/gem-x-cpp.md) 是 NVIDIA GEM-X 的独立 C++/GGML 本地运行时与浏览器 demo；它不属于 GENMO/GEM 的官方实现，也不等于机器人闭环控制器。
 - **域差异**：从「生成的人体视频」估计运动时，视频生成阶段的物体幻觉、手腕方向错误等会传递到下游；[ExoActor](./exoactor.md) 详细讨论了这一类失败模式。
 - **首步预测的依赖**：dual-mode 的有效性建立在「视频条件下扩散方差极低」这一观察上；如果上游条件分布偏离这一假设（例如极抽象的语言指令直接驱动估计），估计精度会回退到生成模式的方差水平。
 
-## 与其他页面的关系
+## 关联页面
 
-- [gem-x.cpp（GEM-X 的 GGML/C++ 本地实现）](../entities/gem-x-cpp.md)：由 LocalAI 社区维护的独立推理/演示实现，使用 NVIDIA GEM-X 权重转换；输入视频或摄像头画面，输出 SOMA-77 骨架。
+- [gem-x.cpp（GEM-X 的 GGML/C++ 本地实现）](../entities/gem-x-cpp.md)：由 LocalAI 社区维护的独立推理/演示实现，输入视频或摄像头画面，输出 SOMA-77 骨架。
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)：典型系统集成位 —— GENMO 承担「生成视频 → 全身 SMPL 序列」。
 - [SONIC（规模化运动跟踪人形控制）](../entities/nvidia-sonic.md)：把 GEM/GENMO 的人体运动作为统一 token 喂入大规模跟踪策略。
 - [WiLoR（野外手部 3D 重建）](./wilor.md)：与 GENMO 拼接成「全身 SMPL + 手部姿态」的下游接口。
-- [Diffusion-based Motion Generation](./diffusion-motion-generation.md)：扩散范式在人体运动域的代表实现，与机器人控制域的扩散生成（如 ETH G1）形成跨领域对照。
+- [Diffusion-based Motion Generation](./diffusion-motion-generation.md)：扩散范式在人体运动域的代表实现。
 - [DART（DartControl）](./dart-control.md)：另一套人体潜扩散路线，强调自回归原语与在线文本/空间控制。
-- [ProtoMotions](../entities/protomotions.md) 与 [Kimodo](../entities/kimodo.md)：同属 NVIDIA 人形运动栈，构成「数据 → 运动表示 → 训练 → 跟踪」的上下游闭环。
+- [ProtoMotions](../entities/protomotions.md) 与 [Kimodo](../entities/kimodo.md)：同属 NVIDIA 人形运动栈。
+- [Awesome Text-to-Motion（Zilize 精选集）](../entities/awesome-text-to-motion-zilize.md)：人体 T2M 综述/数据/模型索引（含 GENMO 条目）。
+- [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md)：三条「文本/多模态 → 人体运动」生成式骨干选型对比。
 
 ## 推荐继续阅读
 
@@ -190,14 +196,3 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 
 - [GENMO（A GENeralist Model for Human MOtion）— 论文摘录](../../sources/papers/genmo.md)
 - [GENMO / GEM（NVlabs/GENMO 代码仓与权重发布）— 仓库归档](../../sources/repos/genmo.md)
-
-## 关联页面
-
-- [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
-- [SONIC（规模化运动跟踪人形控制）](../entities/nvidia-sonic.md)
-- [WiLoR（野外手部 3D 重建）](./wilor.md)
-- [Diffusion-based Motion Generation](./diffusion-motion-generation.md)
-- [ProtoMotions](../entities/protomotions.md)
-- [Kimodo](../entities/kimodo.md)
-- [Awesome Text-to-Motion（Zilize 精选集）](../entities/awesome-text-to-motion-zilize.md) — 人体 T2M 综述/数据/模型索引（含 GENMO 条目）
-- [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比

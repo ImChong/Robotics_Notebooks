@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, curated-list, text-to-motion, human-motion, smpl, dataset, survey, linux-foundation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/hy-motion-1.md
@@ -15,7 +15,9 @@ related:
   - ./paper-notebook-humanml3d.md
 sources:
   - ../../sources/repos/zilize-awesome-text-to-motion.md
-summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运动生成的综述、数据集与模型精选清单，配套 GitHub Pages 交互可视化；范围刻意排除人–物/场景交互，便于与机器人重定向与控制文献对照阅读。"
+original:
+  - ../../sources/repos/zilize-awesome-text-to-motion.md
+summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运动生成的综述、数据集与模型精选清单（截至 2026-11-20 共收录 189 条元数据），配套 GitHub Pages 交互可视化；范围刻意排除人–物/场景交互，便于与机器人重定向与控制文献对照阅读。"
 ---
 
 # Awesome Text-to-Motion（Zilize 精选集）
@@ -38,24 +40,31 @@ summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运�
 | DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
 | GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
 
-## 为什么重要？
+## 为什么重要
 
 - **降低检索成本**：HumanML3D、Motion-X、KIT-ML 等基准与 GENMO、MotionGPT 系列等模型在同一套标签体系下并列，适合快速建立子领域地图。
 - **边界清晰**：README 明确聚焦 **single-person** 且 **不含 human-object / scene interaction**，与机器人侧常关心的 **接触、搬运、场景几何** 任务形成自然对照，避免把两类问题混读。
 - **与 Sim2Real 接口相邻**：人体 SMPL 系轨迹常作为 [Motion Retargeting](../methods/motion-retargeting-gmr.md) 的上游；本列表有助于定位「高质量文本条件人体先验」来自哪条研究线。
 
-## 核心结构（怎么读）
+## 核心原理
 
-| 区块 | 内容侧重 |
-|------|-----------|
-| Surveys | 生成范式总览、多模态 LLM 路线、文本驱动综述与 TPAMI 长综述 |
-| Datasets | 从经典 HumanML3D / KIT-ML 到百万级、细粒度标注、长文本扩展等 |
-| Models | 扩散、自回归、检索增强、偏好对齐、层级行为控制等实现条目 |
+该仓库采用**结构化 CSV/JSON 数据驱动 + 静态站点生成**的组织方式（截至 2026-11-20 核查 `data/arxiv.csv` 共 179 条、`data/without-arxiv.json` 共 10 条，合计 189 条记录；类别标签可重叠，其中 `survey=4`、`dataset=29`、`model=178`）：
 
-## 局限与使用注意
+| 区块 | 内容侧重 | 代表字段 / 锚点 |
+|------|-----------|------------------|
+| Surveys | 生成范式总览、多模态 LLM 路线、文本驱动综述与 TPAMI 长综述 | `survey` 标记、`backbone_tags` |
+| Datasets | 从经典 HumanML3D / KIT-ML 到 MotionMillion、SnapMoGen、FineMotion 等 | `dataset` 标记、数据集链接 |
+| Models | 扩散、自回归、流匹配、检索增强、偏好对齐等实现条目 | `approach_tags`、`page`、`repo` |
 
-- **非机器人控制论文库**：条目主体在 **计算机视觉 / 图形学** 语境下的 3D 人体运动，落地到足式/人形控制需额外考虑接触、平衡与执行器约束。
-- **清单滞后**：任何 awesome 列表都依赖 PR 维护；关键论文应以 arXiv / 官方仓为准，本页仅作拓扑索引。
+## 工程实践
+
+- **按结构化元数据批量检索**：克隆仓库后可直接读取 `data/arxiv.csv` 与 `data/without-arxiv.json`，按 `backbone_tags`（如 Diffusion、Transformer、VQ-VAE）和 `approach_tags` 过滤候选方法，比手动翻 README 更高效。
+- **配合本库知识地图跳转**：将仓库中的单人动作先验当作上游素材索引，再结合本库的 [GMR](../methods/motion-retargeting-gmr.md) 与 [Whole-Body Control](../concepts/whole-body-control.md) 评估物理落地成本。
+
+## 局限与风险
+
+- **非机器人控制论文库**：条目主体在 **计算机视觉 / 图形学** 语境下的 3D 人体运动，且明确排除人–物/场景接触交互，落地到人形控制需额外补足动力学约束、平衡与执行器限制。
+- **清单滞后与标签稀疏**：任何 awesome 列表都依赖 PR 更新，部分字段（如 `page`、`repo`）以提交时刻快照为准；重要结论需回到对应 arXiv 论文或官方仓库复核。
 
 ## 关联页面
 

@@ -9,6 +9,8 @@
 - **代码：** <https://github.com/VankouF/MotionMillion-Codes>
 - **数据集：** <https://huggingface.co/datasets/InternRobotics/MotionMillion>
 - **入库日期：** 2026-07-28
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 抓取并阅读项目页 <https://vankouf.github.io/MotionMillion/> 全部 158 个非空文本行，核对 Paper/arXiv/Code/Video 外链与 MotionMillion（2,000+ h / 2M 序列）、MotionMillion-Eval、7B zero-shot 模型演示分类。
 - **一句话说明：** ICCV 2025 Highlight 项目页，展示 MotionMillion（2000+ 小时、200 万文本–动作序列）、MotionMillion-Eval 与 7B 零样本文本到动作模型。
 - **开源状态（2026-07-28 核查）：** **已开源** — 项目仓库发布训练/推理/评测代码及 3B/7B 权重，数据集发布在 Hugging Face；代码仓库为 Apache-2.0。
 
