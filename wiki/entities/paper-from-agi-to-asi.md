@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, agi, asi, scaling-laws, foundation-models, world-models, multi-agent, google-deepmind, survey, ai-safety]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
+project_id: from-agi-to-asi-2606-12683
 arxiv: "2606.12683"
 venue: "arXiv preprint (DeepMind technical report)"
 related:
@@ -18,7 +19,11 @@ related:
   - ../queries/robot-learning-three-eras-narrative.md
 sources:
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
-summary: "DeepMind 技术报告 From AGI to ASI（arXiv:2606.12683）：刻画后 AGI 时代四条并行能力路径（scaling、范式演进、递归自改进、多智能体集体）与六类瓶颈；对机器人读者，价值在于把 VLA/世界模型/仿真数据飞轮与宏观算力、数据墙、抽象壁垒和具身概念发现放进同一预测框架。"
+  - ../../sources/blogs/deepmind-institute-what-comes-after-agi-2026.md
+original:
+  - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
+  - ../../sources/blogs/deepmind-institute-what-comes-after-agi-2026.md
+summary: "DeepMind 技术报告 From AGI to ASI（arXiv:2606.12683）：刻画后 AGI 时代四条并行能力路径（scaling、范式演进、递归自改进、多智能体集体）与七类瓶颈；对机器人读者，价值在于把 VLA/世界模型/仿真数据飞轮与宏观算力、数据墙、抽象壁垒和具身概念发现放进同一预测框架。"
 ---
 
 # From AGI to ASI（DeepMind 技术报告）
@@ -27,7 +32,7 @@ summary: "DeepMind 技术报告 From AGI to ASI（arXiv:2606.12683）：刻画�
 
 ## 一句话定义
 
-用 **AGI→ASI 四条并行技术路径** 与 **六类瓶颈** 组织后 AGI 时代的 AI 进展假设，并强调 **有效算力增长、测试时 scaling、仿真/交互数据与多智能体集体** 可能让「单模型平台期 + 算力仍指数增长」仍产生集体层面的超级能力。
+用 **AGI→ASI 四条并行技术路径** 与 **七类瓶颈** 组织后 AGI 时代的 AI 进展假设，并强调 **有效算力增长、测试时 scaling、仿真/交互数据与多智能体集体** 可能让「单模型平台期 + 算力仍指数增长」仍产生集体层面的超级能力。
 
 ## 英文缩写速查
 
@@ -36,7 +41,7 @@ summary: "DeepMind 技术报告 From AGI to ASI（arXiv:2606.12683）：刻画�
 | AGI | Artificial General Intelligence | 约中位人类水平的通用认知智能 |
 | ASI | Artificial General Superintelligence | 广泛任务上超越大型人类专家集体的通用超级智能 |
 | UAI | Universal Artificial Intelligence | 以 AIXI 为形式化的机器智能理论上界 |
-| AIXI | Agent–AI cross entropy / universal agent | Hutter 框架下的不可计算最优通用 RL 智能体 |
+| AIXI | Hutter's universal reinforcement-learning agent（专名） | 通用 AI 理论中不可计算的最优贝叶斯序贯决策模型，并非“cross entropy”的缩写 |
 | RL | Reinforcement Learning | 交互环境中的序贯决策学习 |
 | VLA | Vision-Language-Action | 视觉–语言–动作基础策略，机器人侧当前范式实例 |
 | CoT | Chain-of-Thought | 测试时通过中间推理链消耗额外算力以提升表现 |
@@ -49,6 +54,33 @@ summary: "DeepMind 技术报告 From AGI to ASI（arXiv:2606.12683）：刻画�
 - **数据墙 → 仿真与交互**：在文本预训练接近上限的叙事下，报告把 **高保真仿真、多智能体任务、RL 交互轨迹、test-time 蒸馏回训练集**（AlphaZero 式）列为对抗数据墙的主通道——与 [Sim2Real](../concepts/sim2real.md)、[具身数据飞轮](../concepts/data-flywheel.md) 同构。
 - **抽象壁垒与具身接地**：若模型主要吸收人类已有抽象（文本/符号），可能难以 **从原始传感流发现新物理概念**；报告认为突破或需 **具身交互验证**，并把 **物理实验延迟** 视为递归自改进的硬刹车——对「纯视频预训练能否通向可部署机器人」是高层风险提示。
 - **多智能体 ASI 路径**：集体智能、分工与市场式协调被单列为第四条路径，与 [MARL](../methods/marl.md)、多机 swarm 与世界模型中的 **多体 rollout** 研究可交叉阅读。
+
+## 2026-11 增量：What comes after AGI? 与 v3 复核
+
+- **材料关系：** 2026-11-19 的 [Tim Genewein 署名文章](../../sources/blogs/deepmind-institute-what-comes-after-agi-2026.md) 是对既有报告 *From AGI to ASI* 的公开解读，**不是第二篇论文**。本节点复用同一 arXiv 主身份（2026-11-10 v3）；不新建重复 `paper-*` 页面。
+- **认知工业化（Cognitive industrialization）：** 作者把单位预算计算性能（历史约 1.5×/年）、AI 硬件投入（约 2.5×/年）与算法效率（约 3×/年）复合，推演全球有效算力 **至少约 10×/年**。其「未来大量 Agent 副本与认知任务成本骤降」属于延续历史趋势的**条件情景**，不等于未来确定增长或 AGI/ASI 已实现。
+- **第四条路径的组织难题：** Agent 集群并行只能在任务可分解、通信/分工有效时产生净收益；作者要求测量 **multi-agent scaling laws**，并关注群体误导、串谋及评分漏洞。
+- **v3 对旧版摘要的实质纠正：** Table 4 有 **七类**瓶颈，除旧版六项外应补入 **Evaluation Problem（评测问题）**：可自动检查的反馈不足时，数据自训练、群体优化或 RSI 可能对测试集/评估器过拟合。论文不包含支持增长预言的机器人实证实验。
+- **声明边界：** DeepMind Institute 网页说明文章属于作者讨论观点，**不代表 Google 官方立场**；报告 §2 也明确不预测一般机器人进展。
+
+### 认知工业化与四路径耦合（作者框架，非已经实现的系统）
+
+```mermaid
+flowchart TB
+  H["硬件效率与投资"] --> EC["有效算力存量"]
+  A["算法效率"] --> EC
+  EC --> I["更低单位推理成本与更多 Agent 副本"]
+  I --> C["认知工业化假设"]
+  EC --> S["模型与数据 Scaling"]
+  I --> M["Agent 群体协调"]
+  S --> R["AI 辅助研发与 RSI 候选循环"]
+  M --> R
+  R -.->|"可能改进算法与数据"| A
+  V["稳健、可扩展的验证/评测"] --> R
+  W["数据墙 / 物理实验延迟 / 协调成本"] -.->|"约束"| R
+```
+
+**机器人阅读提醒：** 以上仅是原文路径的概念映射；真机动作成功率、复位时间、物理实验成本不能从认知算力增长系数直接推出。本文没有可运行的官方代码入口，故源码运行时序图 **不适用**。
 
 ## 流程总览：四条路径（可并行）
 
@@ -103,7 +135,7 @@ flowchart TB
 - **关键推论**：即使 **单模型** 在 AGI 附近平台化，**实例数 × 速度 × 测试时思考长度** 仍可在短期内扩大 **10³–10⁸** 倍；若任务可 **并行分解**（研发、仿真、数据策展），集体可能已达 ASI 门槛。
 - **与具身 scaling 对照**：[Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) 讨论 **轨迹/参数/任务** 幂律；本报告讨论 **宏观算力与认知副本**，二者层级不同但 **「数据+算力共缩放」** 叙事一致（Chinchilla 式）。
 
-### 六类瓶颈（Table 4 摘要）
+### 七类瓶颈（Table 4 摘要）
 
 | 瓶颈 | 机器人相关读法 |
 |------|----------------|
@@ -112,6 +144,7 @@ flowchart TB
 | **神经范式不足** | 纯 IL/VLA 可能缺 **因果决策、持续学习、风险敏感控制**；或需世界模型/RL 闭环 |
 | **研究变难** | 低垂果实减少；**AI 辅助实验与代码** 可能对冲（对 sim 自动化是利好） |
 | **抽象壁垒** | 只吃人类抽象的数据可能 **封顶于人类概念空间**；**接地传感 + 物理验证** 或是突破路径 |
+| **评测问题（Evaluation Problem）** | 静态基准饱和、被优化循环利用/投机；超人类区域缺少能持续提供真实信号的自动评测，RSI 与 Agent 集群可能因此退化 |
 | **刻意减速** | 监管/事故/舆论 vs 产业竞争；影响 **开源权重、真机部署节奏** |
 
 ### 理论脚注：预训练与 AIXI
@@ -132,7 +165,7 @@ flowchart TB
 
 ## 结论
 
-**这份报告对机器人读者的价值不在它预测了什么，而在它给出的坐标系：把 scaling、世界模型、仿真数据飞轮放进「四条路径 × 六类瓶颈」里，用来判断哪些是工程演进、哪些才是范式跃迁。**
+**这份报告对机器人读者的价值不在它预测了什么，而在它给出的坐标系：把 scaling、世界模型、仿真数据飞轮放进「四条路径 × 七类瓶颈」里，用来判断哪些是工程演进、哪些才是范式跃迁。**
 
 - 最有解释力的论断是 **增益通道的区分**：即使单模型能力在 AGI 附近平台化，**实例数 × 速度 × 测试时思考长度** 仍可在短期扩大 **10³–10⁸** 倍（有效算力历史约 10×/年），因此集体层面可能先于单模型触到 ASI 门槛。
 - 对具身栈最直接的两条瓶颈：**数据墙** 把高保真仿真、RL 交互轨迹与合成渲染推成主通道；**抽象壁垒** 则提示只吃人类抽象的数据可能封顶于人类概念空间，突破或需具身交互验证。
@@ -159,6 +192,8 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- 官方论文 HTML v3（2026-11-10）：<https://arxiv.org/html/2606.12683>
+- 作者后续文章（2026-11-19）：<https://institute.deepmind.com/essays/what-comes-after-agi/>
 - 论文：<https://arxiv.org/abs/2606.12683>
 - 理论教材：Hutter et al., *Universal Artificial Intelligence*（AIXI 框架）
 - 算力预测：Epoch AI 有效算力估计；Aschenbrenner (2024) 情景分析
@@ -166,6 +201,7 @@ flowchart TB
 
 ## 参考来源
 
-- [agi_to_asi_arxiv_2606_12683.md](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — arXiv 策展摘录
+- [agi_to_asi_arxiv_2606_12683.md](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — arXiv 策展摘录（v3 主要章节复核，全文逐段通读尚未完成）
+- [deepmind-institute-what-comes-after-agi-2026.md](../../sources/blogs/deepmind-institute-what-comes-after-agi-2026.md) — 作者原文全文核读与声明边界
 - [vgi_white_paper_arxiv_2608_25924.md](../../sources/papers/vgi_white_paper_arxiv_2608_25924.md) — 视觉优先 VGI 白皮书，与本报告语言优先路径对读
 - Genewein, T., et al. (2026). *From AGI to ASI*. arXiv:2606.12683. <https://arxiv.org/abs/2606.12683>
