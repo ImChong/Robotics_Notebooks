@@ -38,7 +38,15 @@
     "MAX_DAILY_REQUESTS_PER_IP": "30",
     "CACHE_TTL_SECONDS": "21600",
     "ALLOW_LOCAL_ORIGIN": "false"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "robotics_notebooks_chat_logs",
+      "database_name": "robotics-notebooks-chat-logs",
+      "database_id": "8469d5b8-f914-46fa-9afb-57b6d8c83ac9",
+      "remote": true
+    }
+  ]
   // 必填 Secret（严禁写入本文件或仓库）：
   // npx wrangler secret put TURNSTILE_SECRET_KEY
 }

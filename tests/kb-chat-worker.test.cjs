@@ -491,3 +491,115 @@ test('Negative security checks: oversized body, unexpected fields, traversal has
 
   assert.equal(aiCalls.length, 0);
 });
+
+test('D1 chat logging records anonymous Q&A via ctx.waitUntil and fails safely when D1 errors', async () => {
+  const mod = await import(workerUrl);
+  const worker = mod.default;
+
+  const loggedRows = [];
+  const waitUntilPromises = [];
+  const ctx = {
+    waitUntil(p) {
+      waitUntilPromises.push(Promise.resolve(p));
+    },
+  };
+
+  const { env } = makeEnv({
+    robotics_notebooks_chat_logs: {
+      prepare(sql) {
+        assert.match(sql, /INSERT INTO chat_logs/);
+        return {
+          bind(...args) {
+            return {
+              async run() {
+                loggedRows.push(args);
+                return { success: true };
+              },
+            };
+          },
+        };
+      },
+    },
+  });
+
+  await withMockFetch(async (url) => {
+    if (String(url).includes('turnstile')) {
+      return new Response(JSON.stringify({ success: true, hostname: 'imchong.github.io' }), { status: 200 });
+    }
+    return new Response(
+      JSON.stringify({
+        version: 'v1',
+        id: 'wiki-ppo',
+        content_markdown: '# PPO\n\n## Core\n\nPPO optimizes policies with clipped surrogate objective.',
+      }),
+      { status: 200 },
+    );
+  }, async () => {
+    const resp = await worker.fetch(
+      chatRequest(
+        {
+          question: 'What is PPO?',
+          lang: 'en',
+          turnstileToken: 'secret-tok-value',
+          contentHashes: [HASH_A],
+        },
+        { 'CF-Connecting-IP': '198.51.100.88' },
+      ),
+      env,
+      ctx,
+    );
+    assert.equal(resp.status, 200);
+    await Promise.all(waitUntilPromises);
+    assert.equal(loggedRows.length, 1);
+    const row = loggedRows[0];
+    assert.equal(row[1], 'en');
+    assert.equal(row[2], 'ai');
+    assert.equal(row[3], 1);
+    assert.equal(row[4], 0);
+    assert.equal(row[5], 'What is PPO?');
+    assert.ok(typeof row[6] === 'string' && row[6].length > 5);
+    assert.equal(row[7], JSON.stringify(['wiki-ppo']));
+    assert.doesNotMatch(JSON.stringify(row), /198\.51\.100\.88|secret-tok-value/);
+  });
+
+  // Failing D1 binding must never break /chat responses
+  const brokenD1 = makeEnv({
+    robotics_notebooks_chat_logs: {
+      prepare() {
+        return {
+          bind() {
+            return {
+              async run() {
+                throw new Error('D1 quota exceeded');
+              },
+            };
+          },
+        };
+      },
+    },
+  });
+  await withMockFetch(async (url) => {
+    if (String(url).includes('turnstile')) {
+      return new Response(JSON.stringify({ success: true, hostname: 'imchong.github.io' }), { status: 200 });
+    }
+    return new Response(
+      JSON.stringify({
+        version: 'v1',
+        id: 'wiki-ppo',
+        content_markdown: '# PPO\n\n## Core\n\nPPO optimizes policies with clipped surrogate objective.',
+      }),
+      { status: 200 },
+    );
+  }, async () => {
+    const resp = await worker.fetch(
+      chatRequest(
+        { question: 'What is PPO?', lang: 'en', turnstileToken: 't', contentHashes: [HASH_A] },
+        { 'CF-Connecting-IP': '198.51.100.89' },
+      ),
+      brokenD1.env,
+      ctx,
+    );
+    assert.equal(resp.status, 200);
+    await Promise.all(waitUntilPromises);
+  });
+});

@@ -641,6 +641,41 @@ function getEdgeCache(env) {
   return null;
 }
 
+function logChatTurnToD1(env, ctx, entry) {
+  const db = env && env.robotics_notebooks_chat_logs;
+  if (!db || typeof db.prepare !== 'function') return Promise.resolve();
+  try {
+    const citationIds = Array.isArray(entry.citations)
+      ? entry.citations.map((c) => (c && c.id ? String(c.id) : '')).filter(Boolean)
+      : [];
+    const stmt = db.prepare(
+      'INSERT INTO chat_logs (created_at, lang, mode, grounded, cached, question, answer, citation_ids) ' +
+        'VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+    );
+    const runPromise = Promise.resolve(
+      stmt
+        .bind(
+          new Date().toISOString(),
+          String(entry.lang || 'zh'),
+          String(entry.mode || 'ai'),
+          entry.grounded ? 1 : 0,
+          entry.cached ? 1 : 0,
+          String(entry.question || '').slice(0, 500),
+          String(entry.answer || '').slice(0, 4000),
+          JSON.stringify(citationIds),
+        )
+        .run(),
+    ).catch(() => {});
+    if (ctx && typeof ctx.waitUntil === 'function') {
+      ctx.waitUntil(runPromise);
+      return Promise.resolve();
+    }
+    return runPromise;
+  } catch {
+    return Promise.resolve();
+  }
+}
+
 function extractAiText(aiResult) {
   if (!aiResult) return '';
   if (typeof aiResult.response === 'string') return aiResult.response;
@@ -883,6 +918,15 @@ export default {
           const cachedResp = await cache.match(cacheKey);
           if (cachedResp) {
             const cachedJson = await cachedResp.json();
+            await logChatTurnToD1(env, ctx, {
+              lang,
+              mode: cachedJson.mode || 'ai',
+              grounded: cachedJson.grounded !== false,
+              cached: true,
+              question,
+              answer: cachedJson.answer || '',
+              citations: cachedJson.citations || [],
+            });
             return jsonResponse({ ...cachedJson, cached: true }, 200, cors.headers);
           }
         } catch {
@@ -910,6 +954,15 @@ export default {
           lang === 'en'
             ? 'No direct match found in the wiki for this question. Try shorter keywords or open site search.'
             : '站内暂未找到与该问题直接相关的内容，可换个关键词或使用站内搜索与知识图谱继续查找。';
+        await logChatTurnToD1(env, ctx, {
+          lang,
+          mode: 'ungrounded',
+          grounded: false,
+          cached: false,
+          question,
+          answer: ungroundedAnswer,
+          citations: [],
+        });
         return jsonResponse(
           {
             ok: true,
@@ -983,6 +1036,16 @@ export default {
           await putPromise;
         }
       }
+
+      await logChatTurnToD1(env, ctx, {
+        lang,
+        mode: 'ai',
+        grounded: true,
+        cached: false,
+        question,
+        answer,
+        citations,
+      });
 
       return jsonResponse(responsePayload, 200, cors.headers);
     } finally {

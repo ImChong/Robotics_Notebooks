@@ -21,7 +21,24 @@
 3. 部署后会得到 `https://robotics-notebooks-kb-chat.<your-subdomain>.workers.dev`，将其 `/chat` 地址与 Turnstile Site Key 回填至站点配置（或覆盖 `window.RN_KB_CHAT_CONFIG`）即可启用云端 AI 归纳模式；未配置时前端默认以本地只读段落检索模式运行。
 4. 若使用自定义 Worker 域名，请在站点 HTML 的 `<meta http-equiv="Content-Security-Policy">` 的 `connect-src` 中加入对应自定义源。
 
-## 3. 上线后安全与限流自检
+## 3. 问答记录收集与导出（Cloudflare D1 免费持久化）
+
+Worker 已绑定 D1 数据库 `robotics-notebooks-chat-logs`（只记录时间、语言、问题、回答与命中节点 ID，绝不存储访客 IP、User-Agent 或凭据；D1 异常或超额时静默跳过，不影响问答服务）。
+
+- 初始化远端表结构（首次执行一次）：
+  ```bash
+  npx wrangler d1 execute robotics-notebooks-chat-logs --remote --file=schema.sql
+  ```
+- 查看最近 50 条问答：
+  ```bash
+  npx wrangler d1 execute robotics-notebooks-chat-logs --remote --command "SELECT id, created_at, lang, mode, cached, question, answer, citation_ids FROM chat_logs ORDER BY id DESC LIMIT 50;"
+  ```
+- 导出全部问答为 JSON（用于定期提炼进 `wiki/queries/`）：
+  ```bash
+  npx wrangler d1 execute robotics-notebooks-chat-logs --remote --json --command "SELECT * FROM chat_logs ORDER BY id DESC;" > /tmp/chat-logs.json
+  ```
+
+## 4. 上线后安全与限流自检
 
 ```bash
 python3 scripts/verify_kb_chat_limits.py --endpoint https://<your-worker>.workers.dev/chat --mode all
