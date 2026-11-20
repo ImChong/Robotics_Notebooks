@@ -2,7 +2,7 @@
 type: concept
 tags: [rnn, lstm, gru, sequence-modeling, architecture]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-20
 summary: "循环网络用隐状态沿时间递推压缩历史；LSTM/GRU 用门控缓解梯度消失，适合短中程部分可观测控制，长上下文则让位 Transformer 或 Mamba。"
 related:
   - ./mlp.md
@@ -12,7 +12,10 @@ related:
   - ./humanoid-policy-network-architecture.md
   - ../comparisons/rnn-cnn-transformer-mamba.md
   - ../overview/ai-architecture-map.md
+original:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
 sources:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
   - ../../sources/papers/hochreiter_lstm_1997.md
   - ../../sources/papers/cho_rnn_encoder_decoder_arxiv_1406_1078.md
   - ../../sources/papers/ai_architecture_foundations.md
@@ -65,6 +68,10 @@ flowchart LR
   ht --> cell
 ```
 
+### 与对抗训练的维度关系
+
+RNN 定义时间状态递推与沿时间参数共享；GAN 则定义一套生成器–判别器的**对抗训练框架**，可根据任务选用循环网络。这里比较的是**结构归纳偏置**与**学习目标**两个独立轴，详见[四者分类对照](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md)。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -82,6 +89,8 @@ flowchart LR
 
 ## 关联页面
 
+- [DNN、CNN、RNN、GAN：结构轴与训练轴](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md) — 区分序列骨干与对抗目标
+
 - [GRU](./gru.md)
 - [TCN](./temporal-convolutional-network.md)
 - [Transformer](./transformer.md)
@@ -90,6 +99,8 @@ flowchart LR
 - [AI 架构地图](../overview/ai-architecture-map.md)
 
 ## 参考来源
+
+- [深蓝AI：DNN/CNN/RNN/GAN 科普文章核对归档](../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md)
 
 - [LSTM（Neural Computation 1997）](../../sources/papers/hochreiter_lstm_1997.md)
 - [GRU / Encoder–Decoder（arXiv:1406.1078）](../../sources/papers/cho_rnn_encoder_decoder_arxiv_1406_1078.md)

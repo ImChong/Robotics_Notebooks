@@ -8,7 +8,7 @@ tags:
   - backbone
   - perception
 status: complete
-updated: 2026-09-21
+updated: 2026-11-20
 summary: "卷积神经网络用局部卷积核与权值共享提取层次化视觉特征，是检测/分割与机器人机载感知长期默认骨干，也是理解 ViT 替代路径的对照基线。"
 related:
   - ./vision-backbones.md
@@ -19,7 +19,10 @@ related:
   - ../methods/unet.md
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
+original:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
 sources:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
   - ../../sources/papers/lecun_gradient_based_learning_1998.md
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
@@ -64,6 +67,10 @@ flowchart LR
   C3 --> HEAD["分类/检测/分割头"]
 ```
 
+### 与 GAN 的维度关系及平移概念
+
+CNN 属于网络结构：卷积的权值共享通常实现**平移等变**，而非自动保证最终分类结果**平移不变**；池化/全局聚合是常见但非唯一的获得不变性方式。GAN 是生成器–判别器**训练框架**，可用 CNN 作为骨干（DCGAN），详见[四者分类维度对照](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md)。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -81,6 +88,8 @@ flowchart LR
 
 ## 关联页面
 
+- [DNN、CNN、RNN、GAN：结构轴与训练轴](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md) — 平移等变、参数共享与对抗训练的分类关系
+
 - [AI 架构地图](../overview/ai-architecture-map.md)
 - [U-Net](../methods/unet.md)
 - [Vision Backbones](./vision-backbones.md)
@@ -90,6 +99,8 @@ flowchart LR
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — CNN 骨干是②层 2D 检测/分割选型的算力–精度基线
 
 ## 参考来源
+
+- [深蓝AI：DNN/CNN/RNN/GAN 科普文章核对归档](../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md)
 
 - [LeCun et al. 文档识别梯度学习（1998）](../../sources/papers/lecun_gradient_based_learning_1998.md)
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)

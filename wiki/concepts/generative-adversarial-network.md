@@ -2,7 +2,7 @@
 type: concept
 tags: [gan, generative-model, sim2real, architecture]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-20
 summary: "生成对抗网络用生成器与判别器的极小极大博弈隐式匹配数据分布；图像质量高但训练脆，机器人里更多用于视觉域迁移与对抗运动先验，而不是直接当策略头。"
 related:
   - ./autoencoder.md
@@ -11,7 +11,10 @@ related:
   - ../methods/amp-reward.md
   - ../concepts/sim2real.md
   - ../overview/ai-architecture-map.md
+original:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
 sources:
+  - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
   - ../../sources/papers/goodfellow_gan_arxiv_1406_2661.md
   - ../../sources/papers/ai_architecture_foundations.md
 ---
@@ -57,6 +60,10 @@ flowchart LR
   D --> loss["对抗损失"]
 ```
 
+### GAN 不等于 CNN 的另一种层结构
+
+GAN 要求生成器 G、判别器 D 与对抗目标，但**不指定两者的内部骨干**：例如 DCGAN 使用卷积，简化玩具模型也可用 MLP。GAN 可以组合不同结构，不能与 CNN/RNN 在同一「网络层怎么连接」维度上排名。见[四者分类维度对照](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md)。
+
 ## 工程实践
 
 | 场景 | 倾向 |
@@ -74,6 +81,8 @@ flowchart LR
 
 ## 关联页面
 
+- [DNN、CNN、RNN、GAN：结构轴与训练轴](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md) — GAN 是可与骨干组合的对抗训练框架
+
 - [Autoencoder / VAE](./autoencoder.md)
 - [扩散模型](./diffusion-model.md)
 - [AMP 奖励](../methods/amp-reward.md)
@@ -81,6 +90,8 @@ flowchart LR
 - [AI 架构地图](../overview/ai-architecture-map.md)
 
 ## 参考来源
+
+- [深蓝AI：DNN/CNN/RNN/GAN 科普文章核对归档](../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md)
 
 - [GAN（arXiv:1406.2661）](../../sources/papers/goodfellow_gan_arxiv_1406_2661.md)
 - [AI 架构地图一手论文簇](../../sources/papers/ai_architecture_foundations.md)

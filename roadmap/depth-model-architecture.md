@@ -90,6 +90,7 @@ flowchart LR
 - 在同一任务上把"帧堆叠 MLP"与"小 Transformer"各训一版，对比样本效率与单步推理耗时
 
 ### 推荐读什么
+- [DNN / CNN / RNN / GAN：结构 vs 训练框架](../wiki/comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md) — Stage 1 分类基础：先分清广义 DNN、结构骨干与对抗目标，再比较延迟、并行度及归纳偏置
 - [RNN vs CNN vs Transformer vs Mamba](../wiki/comparisons/rnn-cnn-transformer-mamba.md) — 四类骨干在长程 / 并行 / 复杂度 / 归纳偏置上的对照
 - [Transformer](../wiki/concepts/transformer.md) · [多头注意力](../wiki/concepts/multi-head-attention.md) — 现代骨干的通用底座与核心交互算子
 - [位置编码：绝对、RoPE、NoPE 与相对偏置](../wiki/concepts/positional-encoding.md) — 对照 GPT-2、正弦编码、RoPE 旋转与现代混合层，理解长序列顺序建模、实现细节及外推边界
