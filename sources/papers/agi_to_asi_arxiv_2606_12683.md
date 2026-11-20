@@ -5,11 +5,16 @@
 - **标题：** From AGI to ASI
 - **类型：** paper（技术报告 / 立场综述）
 - **venue：** arXiv preprint
+- **核对版本：** arXiv:2606.12683v3（2026-11-10；原归档于 2026-06-14）
+- **核对范围：** 已按 arXiv:2606.12683v3（2026-11-10）的完整 HTML 阅读摘要、§1–7 正文、Table 1–4、研究议程 §7.1、结论、参考文献列表及 Appendix A；对 HTML 未正常呈现的 Appendix B Glossary，另用官方 v3 PDF 第 61 页逐项核对。逐条核验各篇被引文献本身不属于本论文通读范围。
+- **通读：** 已完成
 - **原始链接：**
   - arXiv：<https://arxiv.org/abs/2606.12683>
+  - HTML（v3）：<https://arxiv.org/html/2606.12683>
+  - 2026-11-19 作者后续文章：<https://institute.deepmind.com/essays/what-comes-after-agi/>
 - **机构：** Google DeepMind（Tim Genewein, Matija Franklin, Alexander Lerchner, Laurent Orseau, Samuel Albanie, Adam Bales, Cole Wyeth, Stephanie Chan, Iason Gabriel, Joel Z. Leibo, Allan Dafoe, Marcus Hutter, Thore Graepel, Shane Legg 等）
 - **入库日期：** 2026-06-14
-- **一句话说明：** DeepMind 技术报告：在 **后 AGI** 假设下刻画 **ASI** 与 **Universal AI (AIXI)** 上界，归纳 **四条并行技术路径**（算力/数据/模型 scaling、范式演进、递归自改进、多智能体集体涌现）及 **六类瓶颈**（数据墙、经济资源、神经范式不足、研究变难、抽象壁垒、刻意减速）；对 **有效算力增长**、**测试时 scaling**、**仿真/交互数据** 与 **具身概念发现** 给出可检验研究议程。
+- **一句话说明：** DeepMind 技术报告：在 **后 AGI** 假设下刻画 **ASI** 与 **Universal AI (AIXI)** 上界，归纳 **四条并行技术路径**（算力/数据/模型 scaling、范式演进、递归自改进、多智能体集体涌现）及 **七类瓶颈**（数据墙、经济资源、神经范式不足、研究变难、抽象壁垒、刻意减速）；对 **有效算力增长**、**测试时 scaling**、**仿真/交互数据** 与 **具身概念发现** 给出可检验研究议程。
 
 ## 核心论文摘录（MVP）
 
@@ -50,7 +55,7 @@
   - [world-action-models](../../wiki/concepts/world-action-models.md)、[generative-world-models](../../wiki/methods/generative-world-models.md) — 世界模型作为范式演进实例
   - [data-flywheel](../../wiki/concepts/data-flywheel.md) — 递归数据改进与飞轮
 
-### 4) 六类瓶颈与具身相关「抽象壁垒」
+### 4) 七类瓶颈与具身相关「抽象壁垒」
 
 - **链接：** <https://arxiv.org/abs/2606.12683> §5.5, Table 4
 - **摘录要点：**
@@ -59,6 +64,7 @@
   - **神经范式不足**：纯 log-loss 预训练 + 脚手架可能不够；候选硬问题：幻觉、prompt 注入、风险敏感决策、第三人称数据的因果不足、**抽象壁垒**。
   - **研究变难**：Bloom 等「低垂果实」效应；AI 自动化研究可能对冲。
   - **抽象壁垒（Abstraction Barrier）**：主要吃人类符号/文本抽象的产品，可能难以 **从原始传感数据发现新概念**；若成立，单实例或达 AGI 平台，但集体 scaling 仍可能推进 ASI；突破或需 **具身接地交互** 验证假说——**具身瓶颈** 把递归硬件自改进锚定在物理实验速度上。
+  - **评测问题（Evaluation Problem）**：超人类制度下可扩展、密集、鲁棒的反馈机制尚未解决；若评测被饱和或投机利用，Agent 集群与 RSI 的优化可能停滞甚至退化。
   - **刻意减速**：监管、事故、社会反弹 vs 军经竞争压力。
 - **对 wiki 的映射：**
   - [paper-from-agi-to-asi](../../wiki/entities/paper-from-agi-to-asi.md) — 机器人研究启示节
@@ -90,3 +96,11 @@
   year={2026}
 }
 ```
+
+## 2026-11-20 增量核对：v3 技术报告与作者公开文章
+
+- **同一成果，不能另建论文实体：** arXiv:2606.12683v3 仍对应 [既有论文节点](../../wiki/entities/paper-from-agi-to-asi.md)；11 月 19 日的 *What comes after AGI?* 是 Tim Genewein 的公开文章解读，另归档在 [sources/blogs](../blogs/deepmind-institute-what-comes-after-agi-2026.md)。
+- **重要纠错：** v3 §5.5 / Table 4 一共 **七类**潜在阻力（数据墙、经济/自然资源、神经范式不足、研究变难、抽象壁垒、评测问题、刻意减速），原六月归档使用「六类」口径漏列 **Evaluation Problem**。
+- **认知工业化：** 作者文章提出即使前沿单体能力停滞，硬件/算法效率与规模化副本仍可能推动任务成本下降；这是条件外推，不是确认到来的 ASI 或确定预测。
+- **研究性质：** 无新机器人/AGI/ASI 实测实验；不应把有效算力历史外推当作机器人真机性能 scaling law。
+- **阅读边界：** v3 正文、各主要表格、附录 A 与 PDF 附录 B 均已通读；未逐篇复核引文所指的第三方原始论文，也未独立复算报告引用的历史算力/价格增长率。阅读完成不意味着对预测主张的实证验证；正式健康度以仓库脚本为准。
