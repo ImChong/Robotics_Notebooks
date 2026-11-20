@@ -304,12 +304,22 @@
       }
     }
 
-    var xB = quantileBounds(xs, 0.02, 0.98);
-    var yB = quantileBounds(ys, 0.02, 0.98);
-    var cx = (xB[0] + xB[1]) / 2;
-    var cy = (yB[0] + yB[1]) / 2;
-    var halfSpan = Math.max(40, Math.max(xB[1] - xB[0], yB[1] - yB[0]) * 0.55);
+    var cx;
+    var cy;
+    var halfSpan;
     var coreSpan = 0.78;
+    if (opts.fixedBounds && isFinite(opts.fixedBounds.x) && isFinite(opts.fixedBounds.y) && opts.fixedBounds.halfSpan > 0) {
+      cx = opts.fixedBounds.x;
+      cy = opts.fixedBounds.y;
+      halfSpan = opts.fixedBounds.halfSpan;
+      if (opts.fixedBounds.coreSpan > 0) coreSpan = opts.fixedBounds.coreSpan;
+    } else {
+      var xB = quantileBounds(xs, 0.02, 0.98);
+      var yB = quantileBounds(ys, 0.02, 0.98);
+      cx = (xB[0] + xB[1]) / 2;
+      cy = (yB[0] + yB[1]) / 2;
+      halfSpan = Math.max(40, Math.max(xB[1] - xB[0], yB[1] - yB[0]) * 0.55);
+    }
 
     var broadBuf = new Float32Array(G * G);
     var peakBuf = new Float32Array(G * G);
@@ -449,7 +459,7 @@
       grads: grads,
       maxDegree: maxDeg,
       nodeMeta: nodeMeta,
-      center: { x: cx, y: cy, halfSpan: halfSpan },
+      center: { x: cx, y: cy, halfSpan: halfSpan, coreSpan: coreSpan },
     };
 
     var ids = Object.keys(nodeMeta);
@@ -590,6 +600,53 @@
       ndcZ,
       cw,
     ];
+  }
+
+  function unprojectScreenToPlaneY(localX, localY, planeY, cam, width, height) {
+    if (!cam || !cam.eye || !cam.view || !width || !height) return null;
+    var aspect = width / Math.max(1, height);
+    var ndcX = (localX / width) * 2 - 1;
+    var ndcY = 1 - (localY / height) * 2;
+    var tanHalf = Math.tan((21 * Math.PI) / 180);
+    var v = cam.view;
+    var rx = v[0]; var ry = v[4]; var rz = v[8];
+    var ux = v[1]; var uy = v[5]; var uz = v[9];
+    var fx = -v[2]; var fy = -v[6]; var fz = -v[10];
+    var sx = ndcX * aspect * tanHalf;
+    var sy = ndcY * tanHalf;
+    var dx = fx + rx * sx + ux * sy;
+    var dy = fy + ry * sx + uy * sy;
+    var dz = fz + rz * sx + uz * sy;
+    var len = Math.hypot(dx, dy, dz);
+    if (!(len > 1e-6)) return null;
+    dx /= len; dy /= len; dz /= len;
+    if (Math.abs(dy) < 1e-4) return null;
+    var t = (planeY - cam.eye[1]) / dy;
+    if (!(t > 0.05 && t < 20)) return null;
+    return [cam.eye[0] + t * dx, planeY, cam.eye[2] + t * dz];
+  }
+
+  function invertSoftCoord(wVal, centerVal, halfSpan, coreSpan) {
+    var s = wVal / (coreSpan || 0.78);
+    var absS = Math.abs(s);
+    var r;
+    if (absS <= 1) {
+      r = s;
+    } else {
+      var u = Math.min(0.95, (absS - 1) / 0.16);
+      var atanhU = 0.5 * Math.log((1 + u) / (1 - u));
+      r = (s < 0 ? -1 : 1) * (1 + atanhU);
+    }
+    return centerVal + r * halfSpan;
+  }
+
+  function worldToGraphCoords(wx, wz, center) {
+    if (!center) return { x: wx, y: wz };
+    var cs = center.coreSpan || 0.78;
+    return {
+      x: invertSoftCoord(wx, center.x, center.halfSpan, cs),
+      y: invertSoftCoord(wz, center.y, center.halfSpan, cs),
+    };
   }
 
   /* ── GLSL 着色器源码 ── */
@@ -915,6 +972,7 @@
     var cachedNodes3d = [];
     var cachedPolyNodes = [];
     var lastViewProj = null;
+    var lastCam = null;
     var lastHeightScale = 1;
 
     function resolveLocs(prog, attrs, uniforms) {
@@ -1389,6 +1447,7 @@
       var aspect = width / Math.max(1, height);
       var cam = buildCameraMatrices(params, camState, aspect);
       lastViewProj = cam.viewProj;
+      lastCam = cam;
       var heightAmp = (params.height / 100) * 0.46;
       var heightScale = renderOpts.heightScale != null ? renderOpts.heightScale : 1;
       var glintPhase = renderOpts.glintPhase != null ? renderOpts.glintPhase : -1;
@@ -1559,6 +1618,18 @@
       buildDynamicBatches: buildDynamicBatches,
       render: render,
       pickNodeAtScreen: pickNodeAtScreen,
+      getNodeWorldPos: function (nodeId) {
+        for (var i = 0; i < cachedNodes3d.length; i++) {
+          var n3 = cachedNodes3d[i];
+          if (n3.node && n3.node.id === nodeId) {
+            return { wx: n3.wx, wy: n3.wy * lastHeightScale, wz: n3.wz };
+          }
+        }
+        return null;
+      },
+      unprojectToPlaneY: function (localX, localY, planeY) {
+        return unprojectScreenToPlaneY(localX, localY, planeY, lastCam, width, height);
+      },
       getTopScreenTargets: function (limit) {
         if (!lastViewProj) return [];
         var maxCount = limit || 12;
@@ -1638,6 +1709,10 @@
     var onNodeHover = opts.onNodeHover || function () {};
     var onNodeClick = opts.onNodeClick || function () {};
     var onBackgroundClick = opts.onBackgroundClick || function () {};
+    var onNodeDragStart = opts.onNodeDragStart || function () {};
+    var onNodeDrag = opts.onNodeDrag || function () {};
+    var onNodeDragEnd = opts.onNodeDragEnd || function () {};
+    var allowNodeDrag = opts.allowNodeDrag !== undefined ? opts.allowNodeDrag : true;
     var onStateChange = opts.onStateChange || function () {};
     var onUnsupported = opts.onUnsupported || function () {};
 
@@ -1676,6 +1751,7 @@
     var labelCanvas = null;
     var degreeInfo = null;
     var terrainField = null;
+    var activeDragBounds = null;
     var hoveredNode = null;
     var batchesDirty = true;
     var terrainDirty = true;
@@ -1733,6 +1809,7 @@
           gridSize: gridN,
           extent: 1.35,
           activeIds: data.activeIds || null,
+          fixedBounds: activeDragBounds,
         });
         renderer.uploadTerrainMesh(terrainField);
         terrainDirty = false;
@@ -1885,6 +1962,10 @@
       return [ev.clientX - rect.left, ev.clientY - rect.top];
     }
 
+    function canDragNodesNow() {
+      return typeof allowNodeDrag === 'function' ? !!allowNodeDrag() : !!allowNodeDrag;
+    }
+
     function onPointerDown(ev) {
       if (!enabled || !stageEl) return;
       if (entryAnim) cancelEntryAnim();
@@ -1901,6 +1982,34 @@
         return;
       }
       var isPan = ev.button === 2 || ev.button === 1 || ev.shiftKey;
+      if (!isPan && (ev.button === 0 || ev.pointerType === 'touch') && canDragNodesNow() && renderer && terrainField) {
+        var pt = getStageLocalPoint(ev);
+        var hit = renderer.pickNodeAtScreen(pt[0], pt[1]);
+        if (hit) {
+          var nPos = renderer.getNodeWorldPos(hit.id);
+          if (nPos) {
+            var grabPt = renderer.unprojectToPlaneY(pt[0], pt[1], nPos.wy);
+            dragState = {
+              id: ev.pointerId,
+              startX: ev.clientX,
+              startY: ev.clientY,
+              lastX: ev.clientX,
+              lastY: ev.clientY,
+              moved: false,
+              mode: 'node',
+              node: hit,
+              planeY: nPos.wy,
+              offsetWx: grabPt ? (nPos.wx - grabPt[0]) : 0,
+              offsetWz: grabPt ? (nPos.wz - grabPt[2]) : 0,
+              dragStarted: false,
+            };
+            if (glCanvas && typeof glCanvas.setPointerCapture === 'function') {
+              try { glCanvas.setPointerCapture(ev.pointerId); } catch (_e) { /* ignore */ }
+            }
+            return;
+          }
+        }
+      }
       dragState = {
         id: ev.pointerId,
         startX: ev.clientX,
@@ -1924,6 +2033,35 @@
         dragState.lastY = ev.clientY;
         if (Math.hypot(ev.clientX - dragState.startX, ev.clientY - dragState.startY) > 4) {
           dragState.moved = true;
+        }
+        if (dragState.mode === 'node') {
+          if (dragState.moved) {
+            if (!dragState.dragStarted) {
+              dragState.dragStarted = true;
+              activeDragBounds = (terrainField && terrainField.center)
+                ? Object.assign({}, terrainField.center)
+                : null;
+              hoveredNode = dragState.node;
+              if (stageEl) stageEl.style.cursor = 'grabbing';
+              onNodeHover(null, ev);
+              onNodeDragStart(dragState.node, ev);
+            }
+            var dragPt = getStageLocalPoint(ev);
+            var hitWorld = renderer.unprojectToPlaneY(dragPt[0], dragPt[1], dragState.planeY);
+            if (hitWorld && activeDragBounds) {
+              var maxW = (terrainField ? terrainField.extent : 1.35) * 0.80;
+              var nextWx = Math.max(-maxW, Math.min(maxW, hitWorld[0] + dragState.offsetWx));
+              var nextWz = Math.max(-maxW, Math.min(maxW, hitWorld[2] + dragState.offsetWz));
+              var nextCoords = worldToGraphCoords(nextWx, nextWz, activeDragBounds);
+              dragState.node.x = nextCoords.x;
+              dragState.node.y = nextCoords.y;
+              onNodeDrag(dragState.node, nextCoords.x, nextCoords.y, ev);
+              terrainDirty = true;
+              batchesDirty = true;
+              scheduleRender();
+            }
+          }
+          return;
         }
         if (dragState.mode === 'orbit' && dragState.moved) {
           var nextYaw = ((params.yaw - dx * 0.38 + 540) % 360) - 180;
@@ -1959,6 +2097,7 @@
       var nextId = hit ? hit.id : null;
       if (prevId !== nextId) {
         hoveredNode = hit || null;
+        if (stageEl) stageEl.style.cursor = (hit && canDragNodesNow()) ? 'grab' : '';
         batchesDirty = true;
         scheduleRender();
       }
@@ -1969,7 +2108,17 @@
       if (!enabled) return;
       var wasDrag = dragState && dragState.id === ev.pointerId ? dragState : null;
       dragState = null;
-      if (!wasDrag || wasDrag.moved) return;
+      if (!wasDrag) return;
+      if (wasDrag.mode === 'node' && wasDrag.dragStarted) {
+        activeDragBounds = null;
+        if (stageEl) stageEl.style.cursor = canDragNodesNow() ? 'grab' : '';
+        onNodeDragEnd(wasDrag.node, ev);
+        terrainDirty = true;
+        batchesDirty = true;
+        scheduleRender();
+        return;
+      }
+      if (wasDrag.moved) return;
       if (ev.button === 2) return;
       if (!renderer) return;
       var pt = getStageLocalPoint(ev);
@@ -1980,6 +2129,8 @@
 
     function onPointerLeave(ev) {
       if (!enabled) return;
+      if (dragState && dragState.mode === 'node' && dragState.dragStarted) return;
+      if (stageEl) stageEl.style.cursor = '';
       if (hoveredNode) {
         hoveredNode = null;
         batchesDirty = true;
@@ -2096,6 +2247,8 @@
         cancelEntryAnim();
         hoveredNode = null;
         dragState = null;
+        activeDragBounds = null;
+        if (stageEl) stageEl.style.cursor = '';
         clearStageClasses();
       }
       onStateChange(getPublicState());
@@ -2226,6 +2379,7 @@
           },
           fieldStats: renderer ? renderer.getFieldStats() : null,
           hoveredNodeId: hoveredNode ? hoveredNode.id : null,
+          draggingNodeId: (dragState && dragState.mode === 'node' && dragState.dragStarted && dragState.node) ? dragState.node.id : null,
           animating: !!entryAnim || !!draggingSlider || !!renderRaf,
           entryAnimating: !!entryAnim,
         };
@@ -2251,6 +2405,8 @@
     sampleTerrainHeight: sampleTerrainHeight,
     buildCameraMatrices: buildCameraMatrices,
     projectWorldToScreen: projectWorldToScreen,
+    unprojectScreenToPlaneY: unprojectScreenToPlaneY,
+    worldToGraphCoords: worldToGraphCoords,
     createController: createController,
   };
 });

@@ -278,6 +278,19 @@ test('camera projection places world origin inside viewport across oblique and t
   assert.ok(pCenter);
   assert.ok(pCenter[0] > 400 && pCenter[0] < 880);
   assert.ok(pCenter[1] > 100 && pCenter[1] < 500);
+
+  // Screen ray -> horizontal plane unprojection & world->graph coordinate round-trip
+  const worldSample = [0.32, 0.24, -0.21];
+  const scr = perspectiveApi.projectWorldToScreen(worldSample[0], worldSample[1], worldSample[2], oblique.viewProj, 1280, 720);
+  const unproj = perspectiveApi.unprojectScreenToPlaneY(scr[0], scr[1], worldSample[1], oblique, 1280, 720);
+  assert.ok(unproj, 'unprojection onto node horizontal plane succeeds');
+  assert.ok(Math.abs(unproj[0] - worldSample[0]) < 1e-4);
+  assert.ok(Math.abs(unproj[2] - worldSample[2]) < 1e-4);
+
+  const center = { x: 400, y: 240, halfSpan: 180, coreSpan: 0.78 };
+  const gPt = perspectiveApi.worldToGraphCoords(0.39, -0.195, center);
+  assert.ok(Math.abs(gPt.x - 490) < 1e-3);
+  assert.ok(Math.abs(gPt.y - 195) < 1e-3);
 });
 
 test('graph.html supports 3-way mutual exclusion across 2D, 3D Terrain, and WebGL 3D without lazy-loading 3D bundle', () => {
@@ -581,6 +594,33 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const leftState3d = w.RNMiniGraph.getPerspectiveState();
   assert.equal(leftState3d.hoveredNodeId, null);
   assert.equal(leftState3d.fieldStats.hiEdgeCount, 0, 'pointerleave clears 3D highlighted arcs');
+
+  // 3D node drag moves node (x, y) coordinates without orbiting camera and syncs back to 2D SVG
+  const draggedNodeEl = Array.from(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node'))
+    .find((el) => el.textContent.includes(t0.label.slice(0, 3)));
+  const transformBefore = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
+  const yawBefore = leftState3d.params.yaw;
+  const pitchBefore = leftState3d.params.pitch;
+  stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: t0.x, clientY: t0.y }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: t0.x + 85, clientY: t0.y + 42 }));
+  await new Promise((r) => setTimeout(r, 30));
+  const midDragState = w.RNMiniGraph.getPerspectiveState();
+  assert.equal(midDragState.draggingNodeId, t0.id, 'dragging a 3D node enters node-drag mode');
+  assert.equal(midDragState.params.yaw, yawBefore, 'dragging a node must not orbit camera yaw');
+  assert.equal(midDragState.params.pitch, pitchBefore, 'dragging a node must not orbit camera pitch');
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: t0.x + 85, clientY: t0.y + 42 }));
+  await new Promise((r) => setTimeout(r, 30));
+  const postDragState = w.RNMiniGraph.getPerspectiveState();
+  assert.equal(postDragState.draggingNodeId, null);
+  const transformAfter = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
+  assert.notEqual(transformAfter, transformBefore, 'dragging node in 3D updates its underlying (x, y) synced to 2D');
+
+  // Dragging blank terrain still orbits camera normally
+  stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: 18, clientY: 18 }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: 98, clientY: 54 }));
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: 98, clientY: 54 }));
+  const afterOrbit = w.RNMiniGraph.getPerspectiveState();
+  assert.notEqual(afterOrbit.params.yaw, yawBefore, 'dragging blank space still orbits camera yaw');
 
   const drawsBeforeHighlight = mock.stats.drawCalls;
   w.RNMiniGraph.highlight(['n1'], 'PPO');
