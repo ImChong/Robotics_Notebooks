@@ -6,11 +6,12 @@
 - **类型：** paper
 - **论文：** <https://arxiv.org/abs/2611.23746>
 - **全文 HTML：** <https://arxiv.org/html/2611.23746v1>
-- **官方技术报告：** <https://zerith-25-review.kindpetal17.chatgpt.site/assets/ZERITH-2.5-v1.0.pdf>
+- **官方技术报告：** <https://www.zerith.com/blog/zerith-2-5/assets/ZERITH-V2.5-v1.0.pdf>
 - **机构：** Zerith Robotics（ZERITH Z-Lab）
 - **代码：** <https://github.com/ZERITH-ZLab/ZERITH-V2.5>
-- **研究页：** <https://zerith-25-review.kindpetal17.chatgpt.site/>
+- **研究页：** <https://www.zerith.com/blog/zerith-2-5/>
 - **入库日期：** 2026-11-19
+- **官方博客复核：** 2026-11-20
 - **版本：** arXiv:2611.23746v1；官方技术报告 v1.0
 - **核对范围：** 原文方法（Wan 视频 DiT、K/V 注意力、VGGT、S1/S2 目标与噪声、动作梯度调度）、受控对照与权重迁移/梯度消融、完整模型仿真和 H1 真机评测、讨论和附录实施细节；并核对项目 README 与实现入口。原文结果属于作者报告，未在本地复训。
 - **通读：** 已完成
@@ -39,7 +40,7 @@
 |---|---|---|
 | 图中 Training efficiency 的单次 run | Direct **37.54%**；Staged **56.70%** | LIBERO-Plus；合计 30k 更新，不是完整模型排行榜 |
 | Weight transfer 单次对照 | W0/R0 **37.54**；W0/R1 **33.60**；W1/R0 **57.21**；W1/R1 **56.70** | 适配视频权重 W1 所在分支是主要迁移来源 |
-| 三种几何条件 × 三种子对照 | **+17.55–19.16** 个百分点 | 跨几何设置的均值提升，不等于上述单次 run |
+| 三种几何条件 × 三种子对照 | 静态 **37.64→56.80**（**+19.16±0.26 pp**）；加法 **+17.93±0.27 pp**；乘法 **+17.55±0.27 pp** | 三种子均值与配对差异样本 SD，不等于上面的单次 run |
 | S1 噪声监督消融 | 宽噪声 **56.70**；仅部署纯噪声 **35.90** | 视觉适配的监督分布决定效果 |
 | 图中 Gradient preservation | Action→Video **96.0%**；Visual loss **2.9%**；Video-model gradient **4.8%**；权重位移 **1.675%** | 机制分析和关联证据，不是严格因果辨识 |
 
@@ -57,7 +58,13 @@ H1 真机 Table 6：Pick-and-place **97/100=97%**，Bin lining **8/20=40%**，Bi
 
 跨模型结果中部分基线使用不同协议，特别是 MetaWorld 基线困难组等权平均与本模型 episode 汇总口径不同。主要因果对照发生在一个视频模型和 LIBERO 家族，结果不能外推到所有 WAM/VLA。
 
-## 5. 知识库映射
+## 5. 推理时延与适用范围
+
+论文 §4.5 在**一张 H800、batch=1** 条件下报告单次决策平均 **331.25 ms**、P95 **365.30 ms**，对应 **3.02 plans/s**；每规划执行四个动作步，折合 **12.08 action steps/s**。这只是执行动作块的有效输出频率，并非底层伺服控制环频率。
+
+分阶段训练也不是所有短预算都更优：5,000 总更新时 Staged **4.22%**、Direct **21.28%**；高预算交点只由有限检查点支持。可学习性结论目前基于 Wan2.2-TI2V-5B、S1 3k updates 和 LIBERO 系列，作者将跨骨干/跨任务推广列为未验证方向。
+
+## 6. 知识库映射
 
 - [ZERITH 2.5 详情页](../../wiki/entities/paper-zerith-v25.md)：将视频适配、K/V 读出与源码推理链路串起来。
 - [World Action Models](../../wiki/concepts/world-action-models.md)：判断训练期视觉预测与部署期显式未来生成的边界。
@@ -66,5 +73,6 @@ H1 真机 Table 6：Pick-and-place **97/100=97%**，Bin lining **8/20=40%**，Bi
 ## 参考一手资料
 
 - [论文 HTML：arXiv:2611.23746v1](https://arxiv.org/html/2611.23746v1)
-- [作者技术报告](https://zerith-25-review.kindpetal17.chatgpt.site/assets/ZERITH-2.5-v1.0.pdf)
+- [作者技术报告](https://www.zerith.com/blog/zerith-2-5/assets/ZERITH-V2.5-v1.0.pdf)
+- [ZERITH Z-Lab 官方博客](https://www.zerith.com/blog/zerith-2-5/)
 - [官方代码、数据和权重说明](https://github.com/ZERITH-ZLab/ZERITH-V2.5)
