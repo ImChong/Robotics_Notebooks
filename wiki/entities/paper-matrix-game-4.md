@@ -13,6 +13,7 @@ summary: "游戏引擎维护确定的世界规则和 low-poly 帧，因果视频
 related:
   - ../comparisons/open-source-world-models-11-2026.md
   - ../methods/generative-world-models.md
+  - ../tasks/autonomous-exploration.md
   - ../concepts/video-as-simulation.md
 original:
   - ../../sources/papers/matrix-game-4_arxiv_2610_27999.md
@@ -135,6 +136,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [自主探索任务](../tasks/autonomous-exploration.md) — 本项目提供可探索环境或观测生成；对照真实导航闭环时仍需独立策略、定位与物理校验。
 - [2026 年 11 项开源世界模型技术对照](../comparisons/open-source-world-models-11-2026.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video as Simulation](../concepts/video-as-simulation.md)
