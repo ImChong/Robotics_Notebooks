@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, transformer, attention, research]
-status: draft
+status: complete
 updated: 2026-11-20
 project_id: attention20-2205-14135-flashattention
 arxiv: "2205.14135"
@@ -39,7 +39,9 @@ sources:
 
 ## 核心原理
 
-采用分块和片上 SRAM 计算以及在线归一化，减少 GPU HBM 与 SRAM 之间读写，避免将完整注意力矩阵频繁写回显存，同时保持精确注意力结果。
+标准注意力在 GPU HBM 上物化 N×N 分数/概率张量，IO 成本大。FlashAttention 以 SRAM 局部块遍历 Q、K、V，通过在线最大值 m 和分母 l 维护稳定 softmax 归一化，输出块逐步更新；反向传播重算局部分数而非存储整张矩阵。精确 dense FlashAttention 保持标准缩放点积注意力（浮点舍入差异除外），算术仍随 N 二次增长；论文另讨论近似 block-sparse 扩展，不能混同。
+
+**消融指向：** 把内存读写而非 FLOP 数列为主要优化对象，并通过重算实现节约中间激活内存；最小内存写入与核配置的优势只在适配 GPU 架构时成立。
 
 ## 流程总览
 
@@ -52,16 +54,15 @@ flowchart LR
 
 ## 实验与评测
 
-- 论文用计算/IO 分析和训练与推理 benchmark 验证加速与显存收益；常规精确 FlashAttention 不意味着把注意力理论算术复杂度从平方变线性。
-- **读数边界：** 不将该论文的识别/检测/操控指标跨数据集直接比较；实验表格、随机种子与消融设置仍需全文核验。
+论文在长序列 attention microbenchmark 中报告 GPU HBM 读写从约 40.3GB 降到 4.4GB、运行时间从 41.7ms 降到 7.3ms（特定 GPT-2、N=1024 及硬件配置）；BERT 和 GPT 系列训练也报告端到端加速，但加速倍数随 head_dim、序列、GPU、算子融合与模型比例变化。
+
+**对照限制：** 比较同论文同任务同协议的基线，跨论文结果不作为统一排行榜。
 
 ## 结论
 
-**这篇论文的主要价值在于注意力结构和任务约束之间的工程取舍，尚不能由摘要证实真实机器人部署收益。**
-
-1. **结构重点** — 采用分块和片上 SRAM 计算以及在线归一化，减少 GPU HBM 与 SRAM 之间读写，避免将完整注意力矩阵频繁写回显存，同时保持精确注意力结果。
-2. **实证范围** — 论文用计算/IO 分析和训练与推理 benchmark 验证加速与显存收益
-3. **部署前确认** — 收益依赖 GPU 存储层次、序列长度、核实现和批量大小，部署需实测端到端而非只看 kernel。
+- **方法贡献：** 标准注意力在 GPU HBM 上物化 N×N 分数/概率张量，IO 成本大。
+- **作者实验：** 论文在长序列 attention microbenchmark 中报告 GPU HBM 读写从约 40.3GB 降到 4.4GB、运行时间从 41.7ms 降到 7.3ms（特定 GPT-2、N=1024 及硬件配置）；BERT 和 GPT 系列训练也报告端到端加速，但加速倍数随 head_dim、序列、GPU、算子融合与模型比例变化。
+- **适用边界：** 非线性 SRAM tiling 与 CUDA 代码有硬件依赖；tiny batch / 很短序列可难以取得相同加速，不能声称算法计算复杂度从 O(N²) 变成 O(N)。
 
 ## 与其他工作对比
 
@@ -70,17 +71,29 @@ flowchart LR
 
 ## 工程实践
 
-- 长历史视觉 token / VLA 骨干可以评估注意力核加速，不能推断机器人总控制延迟。
-- 选择实现时需核实官方仓库、输入输出形状、训练数据和硬件运行条件，不应根据摘要推断可运行入口。
+- **建议：** 在机器人 VLA、WAM 推理应区分 attention kernel 加速与整套视觉编码、action head 的真实时延，需实测目标 GPU。
+- **公开入口：** https://github.com/Dao-AILab/flash-attention；已读论文及附录，不等于成功编译或跑通仓库。
 
 ## 源码运行时序图
 
-**暂不绘制：** 官方运行入口与实际源码调用关系尚未核实。此处不使用假想的通用 `sequenceDiagram` 冒充源码分析；待核验训练/推理入口后补充。
+**核对范围：** 项目/源码入口见 https://github.com/Dao-AILab/flash-attention；未在本环境执行训练与推理。以下为根据论文正文确认的计算与评测时序，不冒充作者代码的逐函数调用。
+
+```mermaid
+sequenceDiagram
+    participant D as 观测或输入样本
+    participant R as 表征编码器
+    participant A as 论文注意力模块
+    participant E as 预测与评测
+    D->>R: 输入预处理
+    R->>A: Token/几何或条件特征
+    A->>E: 预测任务输出
+    E-->>D: 基于原文实验协议评估
+```
 
 ## 局限与风险
 
-- 收益依赖 GPU 存储层次、序列长度、核实现和批量大小，部署需实测端到端而非只看 kernel。
-- **资料状态：** 当前只完成题录、摘要与方法主线核对，**尚未完成全文及附录通读**；本页按草稿收录，不标注健康度满分。
+- 非线性 SRAM tiling 与 CUDA 代码有硬件依赖；tiny batch / 很短序列可难以取得相同加速，不能声称算法计算复杂度从 O(N²) 变成 O(N)。
+- **原文状态：** 正文和附录已通读，并记录实验适用范围；参考 [来源精读笔记](../../sources/papers/attention20_2205_14135.md)。
 
 ## 相关方法与任务
 

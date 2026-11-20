@@ -1,8 +1,21 @@
 ---
 type: comparison
-status: draft
+status: complete
 updated: 2026-11-20
 summary: "20 篇经典论文从注意力基础，经视觉与三维表征到机器人策略、扩散动作头和推理效率的分层选型索引；不把异构 benchmark 当作同口径比较。"
+original:
+  - ../../sources/papers/attention20_1902_10186.md
+  - ../../sources/papers/attention20_2006_16236.md
+  - ../../sources/papers/attention20_2010_04159.md
+  - ../../sources/papers/attention20_2012_09164.md
+  - ../../sources/papers/attention20_2102_05095.md
+  - ../../sources/papers/attention20_2103_03206.md
+  - ../../sources/papers/attention20_2103_14030.md
+  - ../../sources/papers/attention20_2205_14135.md
+  - ../../sources/papers/attention20_2209_05451.md
+  - ../../sources/papers/attention20_2305_13245.md
+  - ../../sources/papers/attention20_2306_14896.md
+  - ../../sources/papers/attention20_2402_10885.md
 related:
   - ../entities/paper-attention-is-all-you-need.md
   - ../entities/paper-octo.md
@@ -20,7 +33,7 @@ sources:
 
 ## 一句话定义
 
-把基础 Transformer、多模态提示、视觉/三维注意力、通用机器人策略、扩散模型和推理效率研究放在一张**问题驱动的路线图**上。**这里是跨论文比较，不代替每篇独立论文实体页。**
+把基础 Transformer、多模态提示、视觉/三维注意力、通用机器人策略、扩散模型和推理效率研究放在一张**问题驱动的路线图**上。**这里是跨论文比较，不代替每篇独立论文实体页；本次全文复核新增的 12 篇，其余 8 篇沿用仓库既有论文节点及来源，不将既有节点冒称本次新复核。**
 
 ## 英文缩写速查
 
@@ -101,6 +114,15 @@ flowchart LR
 | 20 | [Attention is not Explanation](../entities/paper-1902-10186-attention-not-explanation.md) | 在文本分类、问答和自然语言推理中的基于注意力的编码器上 |
 
 
+## 核对基准与结论边界
+
+- 本次核对的 12 篇新增原典在 frontmatter `original` 中逐一列出，来源笔记记下正文、实验和附录范围。
+- **视觉理解不能直接视为控制**：Swin/TimeSformer/Point Transformer/Deformable DETR 使用分类、分割、检测指标；与 RLBench、CALVIN 成功率并不统一。
+- **三维操作不等于相同动作接口**：PerAct 与 RVT 依赖离散下一关键帧加低层规划器；3D Diffuser Actor 在 RLBench 用关键帧，在 CALVIN 则去噪位姿轨迹。
+- **效率增益属于不同瓶颈**：FlashAttention 减少精确 softmax 的 HBM IO；GQA 主要减少自回归 KV 缓存；线性注意力通过核重构减少序列相关复杂度，改变注意力形式。
+- **解释可信度需干预**：Jain & Wallace 测量注意力与梯度/leave-one-out 的相关性及反事实扰动，不等于证明所有注意力都不可解释。
+- 以上是作者论文特定实验或跨论文归纳；迁移到机器人部署应单独检验标定、频率、相机和动作接口。
+
 ## 方法选型（非跨论文统一排名）
 
 | 想解决什么 | 首选阅读 | 不要混淆 |
@@ -124,7 +146,7 @@ flowchart LR
 ## 局限与风险
 
 - 这 20 篇并非统一 benchmark 排行榜。
-- 部分新补论文页仍是全文和源码待核的草稿；原文归档明确写了核对范围及通读状态。
+- 本 PR 新增的 12 篇论文正文与附录已通读，实验与局限已写入对应来源笔记；官方源码未经本次运行，不能宣称训练/推理复现。
 - 已存在的 8 篇论文页复用原路径，无新建同身份节点；如原有页面深度不足，应在后续原页补充，而不是创建第二个相同 arXiv 的项目节点。
 
 ## 关联页面
