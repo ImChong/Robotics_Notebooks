@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | WorldFlow v2：联合视频与 3D 运动预测原文核对及开源边界修正
+
+- 复用唯一论文实体 `wiki/entities/paper-worldflow.md`，核对 arXiv:2610.39278v2 正文和附录，补全 Mermaid 方法流程与 WordFlowBench / RoboLab / 真机实证。
+- 纠正原先把可访问 GitHub README 当成“模型代码已开源”的误判；移除无源码支撑的运行时序图，记录模型、权重、训练及评测工具尚待发布。
+- 更新 papers/sites/repos 三层来源，并将其定位在 WAM 纵深 Stage 1 世界模型基座，不误归为联合 action 输出 WAM。
+
 ## [2026-11-20] ingest | 3D GameDev Arena 长时程游戏开发 Agent 三轨评测
 
 - 来源：arXiv:2611.24073v1；108 个任务、14 类游戏、功能验收/代理试玩/真人 BT 偏好。
