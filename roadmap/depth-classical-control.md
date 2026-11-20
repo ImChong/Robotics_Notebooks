@@ -163,6 +163,7 @@ flowchart LR
 - [hunter_bipedal_control｜双足 SQP-MPC + WBC](../wiki/entities/cn-os-hunter-bipedal-control.md) — 以 EC-Hunter80-V01 为例追踪 OCS2 MPC、Kalman 状态估计、WeightedWbc 与 Gazebo/MuJoCo/真机 ROS1 接口
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Contact Estimation](../wiki/concepts/contact-estimation.md)
 - [SG-ODOM：稳定性门控 + 事件驱动本体里程计](../wiki/entities/paper-sg-odom-2611-20710.md) — ANYmal/Spot/G1 的 InEKF/Fixed-Lag 对照；区分触地、稳定接触及 IMU-only 更新上限，适合本 Stage 真机状态估计复现
+- [Kinetics Observer：接触力—质心动力学紧耦合 MEKF](../wiki/entities/paper-kinetics-observer-2406-13267.md) — RHP Friends / HRP-5P 以 IMU、wrench 联合校正接触滑移与外扰；与 SG-ODOM 的稳定接触调度互补
 - [Query：WBC 实现指南](../wiki/queries/wbc-implementation-guide.md) 与 [Query：WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
 - [重力补偿](../wiki/concepts/gravity-compensation.md) — 真机落地前的悬空 $\tau=g(q)$ 验收
 - [G1 Confined-Space WBP](../wiki/entities/paper-g1-confined-space-wbp.md) — 三阶段全身规划（环境 TO→可微 SCA→全阶动力学）+ 残差 RL 跟踪，Unitree G1 真机穿越超 NIST 狭窄环境；代码未开源

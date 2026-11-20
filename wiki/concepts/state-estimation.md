@@ -6,6 +6,7 @@ updated: 2026-11-19
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../entities/paper-sg-odom-2611-20710.md
+  - ../entities/paper-kinetics-observer-2406-13267.md
   - ../queries/contact-wrench-closed-loop.md
   - ../methods/lingbot-map.md
   - ../entities/paper-sure-map.md
@@ -94,6 +95,10 @@ sources:
 - **不变误差**：把状态放在矩阵李群 $SE_{N+2}(3)$ 上，用右不变误差，则确定性部分的误差动力学严格 log-linear，线性化矩阵与量测矩阵都不依赖当前估计；对比之下四元数 EKF 的线性化依赖估计，初值差时线性化不准、收敛慢。
 - **可观性**：纯本体感知下绝对位置与绕重力轴偏航不可观，长时间必然漂移；需要靠 LiDAR / 视觉等外部量测（见上文 VIO / SLAM 各节）去约束。
 - **边界**：加入 IMU 偏置后 group-affine 性质不再严格成立，理论保证部分丧失，但论文实验中仍优于四元数 EKF。
+
+### Kinetics Observer：接触力与质心动力学紧耦合
+
+[Kinetics Observer（arXiv:2406.13267v2）](../entities/paper-kinetics-observer-2406-13267.md) 用质心动力学和黏弹接触模型作 MEKF 预测，再以 IMU 和足端 wrench 共同校正质心、接触 rest pose 与未建模外力；受约束接触过程噪声有助于修正局部相对滑移。与 SG-ODOM 侧重「何时接受稳定支撑更新」不同，KO 侧重「如何让接触力和几何互相约束」；均不能仅凭本体感知避免全局位置/yaw 漂移。
 
 ### SG-ODOM：稳定接触门控与事件驱动本体里程计（2026）
 
