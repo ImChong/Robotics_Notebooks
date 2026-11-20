@@ -291,6 +291,14 @@ test('camera projection places world origin inside viewport across oblique and t
   const gPt = perspectiveApi.worldToGraphCoords(0.39, -0.195, center);
   assert.ok(Math.abs(gPt.x - 490) < 1e-3);
   assert.ok(Math.abs(gPt.y - 195) < 1e-3);
+
+  // Entry force-simulation bloom starts gathered inward, expands organically, and settles to exact equilibrium at 1.0
+  const startPos = perspectiveApi.evalForceMotionXZ(0.6, 0.3, 0.0, 0.026);
+  const midPos = perspectiveApi.evalForceMotionXZ(0.6, 0.3, 0.55, 0.026);
+  const endPos = perspectiveApi.evalForceMotionXZ(0.6, 0.3, 1.0, 0.026);
+  assert.ok(Math.hypot(startPos[0], startPos[1]) < Math.hypot(0.6, 0.3) * 0.6, 'force bloom starts gathered inward');
+  assert.ok(Math.hypot(midPos[0], midPos[1]) > Math.hypot(startPos[0], startPos[1]), 'force bloom expands outward');
+  assert.deepEqual(endPos, [0.6, 0.3], 'force bloom settles to exact original coordinates at settle=1');
 });
 
 test('graph.html supports 3-way mutual exclusion across 2D, 3D Terrain, and WebGL 3D without lazy-loading 3D bundle', () => {
@@ -450,6 +458,8 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(!perspectiveSrc.includes('buildPolyhedronLibrary'), '3D terrain nodes must be round spheres, not faceted polyhedra');
   assert.ok(perspectiveSrc.includes('uCamRight') && perspectiveSrc.includes('if (r2 > 1.0) discard;'), 'hubs render as analytical round spheres');
   assert.ok(perspectiveSrc.includes('uPointScale') && perspectiveSrc.includes('if (pn.hovered) radius *= 1.10;'), 'point sprites share unified world radius with subtle 1.10x hover swell');
+  assert.ok(perspectiveSrc.includes('uForceSettle') && perspectiveSrc.includes('applyForceMotion'), '3D terrain entry includes GPU force-simulation bloom motion');
+  assert.ok(graphHtml.includes('getCommunityLabels:') && perspectiveSrc.includes('communityLabelCount'), '3D terrain renders floating community cluster capsules');
   assert.ok(perspectiveSrc.includes('uHeightScale') && perspectiveSrc.includes('uGlintPhase') && perspectiveSrc.includes('startCameraTransition'), 'top-down to oblique entry swoop and horizon glint present');
   assert.ok(styleCss.includes('[data-theme="light"]'));
   assert.ok(styleCss.includes('var(--accent)'));
