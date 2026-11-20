@@ -201,6 +201,7 @@ flowchart LR
 ### 推荐读什么
 - [Claude Code 动态多 Agent 工作流](../wiki/methods/claude-code-dynamic-workflows.md) — `agent()`、`parallel()`、`pipeline()` 组成面向特定任务的 harness；注意它是**按任务动态构建工作流**，并非自证可持续改进。
 - [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
+- [Mendel Gödel Machine（MGM）](../wiki/entities/paper-mendel-godel-machine.md) — 在 HGM 上新增同节点多任务与跨谱系同题的比较证据指导自修改；编程 Agent 实验，不是真机自进化
 - [Hyperagents（DGM-H）](../wiki/entities/paper-hyperagents.md) — 将任务 Agent 与元级改进者放入同一可编辑程序；Genesis Go2 奖励设计属于仿真实验，不等于真机策略自修改
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
