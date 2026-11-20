@@ -38,7 +38,7 @@ summary: "Agnes Harness（AGH）是 AgnesAI-Labs 开源的 FDE agent runtime：W
 | MOS | Model Observation Standard | AGH 设备侧观测数据约定，如图像、地图与地点 |
 | SDK | Software Development Kit | AGH 提供的共享后端客户端入口之一 |
 
-## 为什么值得关注
+## 为什么重要
 
 AGH 的机器人相关性在 **系统集成与高层设备编排**，不在运动控制算法：它展示了如何把 Web/终端工作台、模型、工具、工作流状态和设备能力置于同一任务记录下。部署到不同客户或实验室时，差异可通过插件和 Skills 承载，避免把每个连接器都写进 agent 核心。
 
