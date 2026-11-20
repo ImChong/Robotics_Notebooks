@@ -106,6 +106,9 @@ flowchart TD
 
 ## 关联页面
 
+- [Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md) — 区分语言代理的任务/工具选项判断与机器人操作策略输出。
+- [VLA](../methods/vla.md) — 对比结构化候选概率的高层路由与连续动作策略、执行安全边界。
+
 - [Agnes Harness](./agnes-harness.md)
 - [AGH 系统报告](./paper-agnes-harness-rsi-technical-report.md)
 - [机器人任务级控制接口](../concepts/llm-robotics-control-interfaces.md)
