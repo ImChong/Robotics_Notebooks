@@ -5,7 +5,9 @@
 - **URL：** <https://heracles-humanoid-control.github.io/>
 - **对应论文：** [Heracles: Bridging Precise Tracking and Generative Synthesis for General Humanoid Control](https://arxiv.org/abs/2603.27756)（arXiv:2603.27756）
 - **团队：** X-Humanoid Heracles Project Team
-- **入库日期：** 2026-05-25
+- **入库日期：** 2026-05-25（2026-11-20 复核）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取 <https://heracles-humanoid-control.github.io/> 全部正文，确认 `Code (Coming Soon)` 按钮仍指向占位 `#`，无公开源码或权重。
 - **一句话说明：** 官方落地页：论文摘要、演示视频与 BibTeX；代码标注 Coming Soon。
 
 ## 页面要点（2026-05 快照）

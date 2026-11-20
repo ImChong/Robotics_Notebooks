@@ -8,6 +8,8 @@
 - **论文：** <https://arxiv.org/abs/2305.12577>
 - **代码：** <https://github.com/korrawe/guided-motion-diffusion>
 - **入库日期：** 2026-07-28
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取项目页 <https://korrawe.github.io/gmd-project/> 全部 148 个非空文本行，核对 Abstract、Emphasis Projection / Dense Gradient Propagation 图解与 arXiv/GitHub 链接。
 - **一句话说明：** GMD（ICCV 2023）项目页，展示文本、全局轨迹、稀疏关键帧与障碍物目标函数共同控制人体动作扩散。
 - **开源状态（2026-07-28 核查）：** **已开源** — 官方 PyTorch 仓库含训练、推理、评测入口及轨迹/动作预训练权重；仓库 `LICENSE` 为 MIT。
 

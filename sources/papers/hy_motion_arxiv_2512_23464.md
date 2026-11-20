@@ -4,6 +4,8 @@
 - **URL（HTML / abs）**: https://arxiv.org/abs/2512.23464
 - **Authors**: Tencent Hunyuan 3D Digital Human Team
 - **Date**: 2025-12（arXiv 预印本）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2512.23464` 全文（`1–1576` 行），核对 12M HunyuanVideo 片段 GVHMR 筛选至 >3,000h/400h SFT、SMPL-H 22 关节 `201D` 表示（无速度/接触标签）、Qwen3-8B + Bidirectional Token Refiner + CLIP-L 双流→单流 DiT（121 帧窄带注意 + 非对称文本 mask）、9,228 对 DPO + Flow-GRPO（TMR + 物理惩罚）、Qwen3-30B-A3B SFT+GRPO 提示改写与 SSAE `78.6%` / 指令遵循 `3.24` / 质量 `3.43` 评测数据。
 - **Tags**: #text-to-motion #flow-matching #diffusion-transformer #smpl-h #digital-human #preference-optimization
 
 ## 核心摘要

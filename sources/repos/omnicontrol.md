@@ -1,13 +1,15 @@
-# OmniControl（neu-vi/omnicontrol）
+# OmniControl（neu-3dvi/OmniControl，原 neu-vi/omnicontrol）
 
 > 来源归档
 
 - **类型：** repo
-- **官方仓库：** <https://github.com/neu-vi/omnicontrol>
-- **项目页：** <https://neu-vi.github.io/omnicontrol/>
+- **官方仓库：** <https://github.com/neu-3dvi/OmniControl>（原 `https://github.com/neu-vi/omnicontrol` 重定向）
+- **项目页：** <https://neu-vi.github.io/omnicontrol/>（2026-11-20 返回 HTTP 404）
 - **论文：** <https://arxiv.org/abs/2310.08580>
 - **许可：** MIT
-- **入库日期：** 2026-07-28
+- **入库日期：** 2026-07-28（2026-11-20 复核）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `neu-3dvi/OmniControl`（原 `neu-vi/omnicontrol`）`README.md`（L1–150+）及推理入口 `sample/generate.py`（L1–200），核对 `collate_all` / `hint` 构造、`load_model_wo_clip`、`ClassifierFreeSampleModel`、`diffusion.p_sample_loop` 与 `recover_from_ric -> model.rot2xyz -> simple_eval` 评估链路。
 - **开源状态：** **已开源** — HumanML3D 训练/推理/评测与 checkpoint 已发布；KIT-ML checkpoint 和交叉关节组合评测尚未发布。
 
 ## 可运行入口（2026-07-28）

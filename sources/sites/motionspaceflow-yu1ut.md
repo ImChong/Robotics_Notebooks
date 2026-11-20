@@ -1,7 +1,9 @@
 # MotionSpaceFlow 官方项目页（MSFlow）
 
-> 来源归档（最近复核：2026-10-10）
+> 来源归档（最近复核：2026-11-20）
 
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取项目页 <https://yu1ut.com/MSFlow-HP/> 全部 192 个非空文本行，核对免训练关节控制样例（Case 1–10）、HumanML3D 定性对比（vs SALAD/ACMDM）、263D vs XYZ 表示对比、SnapMoGen 296D 样例与 arXiv/GitHub 外链。
 - **类型：** project page / research demo
 - **项目页：** <https://yu1ut.com/MSFlow-HP/>
 - **论文：** [MotionSpaceFlow（arXiv:2609.34190）](https://arxiv.org/abs/2609.34190)

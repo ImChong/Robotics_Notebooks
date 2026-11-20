@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, physics-based-animation, generative-controller, motion-token, transformer, reinforcement-learning, parameter-efficient-finetuning, nvidia, sfu, siggraph]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2606.29148"
 venue: "SIGGRAPH Conference Papers 2026"
 related:
@@ -16,6 +16,8 @@ related:
   - ./amass.md
   - ./paper-behavior-foundation-model-humanoid.md
 sources:
+  - ../../sources/papers/gpc_arxiv_2606_29148.md
+original:
   - ../../sources/papers/gpc_arxiv_2606_29148.md
 summary: "GPC（arXiv:2606.29148，SIGGRAPH 2026）：用 FSQ 端到端 RL 将运动技能离散为 token 词汇表，再以 GPT 式 Transformer 做下一 token 预测训练物理仿真生成式控制器；>600 h 数据预训练后 RTX 4090 实时采样自然行为，CoLA 参数高效微调可迁移至转向、轨迹跟踪与障碍跳跃等下游任务。"
 ---
@@ -102,14 +104,29 @@ flowchart TB
 - **RLFT：** PPO 优化任务奖励；动作空间为长度 $d'$ 的离散 skill token 序列；探索由 **无条件生成先验 + nucleus 采样** 正则，避免微调后行为僵化。
 - **下游验证：** 摇杆 **转向**、**轨迹跟踪**、**目标到达**、**障碍/平台跳跃与爬行**；适配后仍保留预训练模型的 **扰动鲁棒性与行为随机性**。
 
-## 主要量化结果（精选）
+## 实验与评测
 
-| 指标 | Bones (~680 h) | 说明 |
-|------|----------------|------|
-| FSQ 跟踪成功率 | **99.98%** | 相对 VQ-VAE 99.94%、MLP 99.98%（MPJPE 更优） |
-| FSQ MPJPE | **34.90 mm** | 端到端 RL 显著优于 FSQ-K（78.26 mm） |
-| 实时推理 FPS | **~115**（$G{=}4$） | RTX 4090 级消费硬件 |
-| CoLA 新增参数 | **<1%** | PEFT 适配多下游任务 |
+基于 Isaac Gym + ProtoMotions（BONES `~680 h` 主训练集用 `24×A100`；AMASS `~40 h` 对照；RTX 4090 部署）：
+
+| 评测项 | 实测数字（`arXiv:2606.29148v1`） | 关键说明 |
+|--------|----------------------------------|----------|
+| **FSQ 跟踪词表（Bones）** | 成功率 **99.98%** · MPJPE **34.90 mm** | $d=40, L=9, G=5$（组词表 `59,049`，`N_token=8`，Muon+AdamW）；超越 VQ-VAE（`99.94%`/`37.92 mm`）及冻结运动学词表 FSQ-K（`99.03%`/`78.26 mm`） |
+| **外力扰动生存率** | **68.1%** / **52.5%**（两档强扰动） | 无需专门跌倒恢复奖励即显著领先 CVAE 基线（`44.4%` / `3.1%`） |
+| **实时推理速度** | 约 **115 FPS**（$G=4$） | 单张消费级 RTX 4090 实时 Nucleus (top-$p$) 采样驱动 |
+| **CoLA 任务微调** | **<1%** 新增参数（rank `64`） | DoRA + FiLM 高效迁移至转向、轨迹跟踪、Barrier/Platform 跳跃并保持多解多样性 |
+
+## 工程实践与开源状态
+
+| 项 | 状态 / 配置要点（2026-11-20 复核） |
+|----|----------------------------------|
+| **开源状态** | **论文已发、GPC 专属仓未释放** — 底层仿真跟踪依赖公开的 [NVlabs/ProtoMotions](https://github.com/NVlabs/ProtoMotions) 与 Isaac Gym，但论文未单独提供 GPC 预训练权重或 CoLA 脚本仓库 |
+| **关键训推参数** | FSQ 词表 `d=40, L=9`，推荐分组 `G=4` 兼顾质量与 `115 FPS` 推理，`G=5`（59,049 组词表）多样性最优；CoLA 选 rank `64` 配 Nucleus 采样保探索 |
+| **优化器配方** | 预训练 Transformer 结合 `Muon + AdamW` 在 680h 技能序列上稳定收敛 |
+| **源码运行时序图** | **不适用**（见下一节） |
+
+## 源码运行时序图
+
+**不适用：截至 2026-11-20 复核，SIGGRAPH 2026 论文仅标注基于 ProtoMotions 仿真骨架实现，未发布 GPC 独立 GitHub 仓库、FSQ 权重或 CoLA 微调脚本，暂无法对齐官方源码运行路径。**
 
 ## 与其他工作的关系
 
@@ -129,7 +146,7 @@ flowchart TB
 - 边界必须说死：对象是 **物理仿真角色**、**无语言接口**、下游只覆盖 locomotion 与场景几何（转向/轨迹/障碍/平台），**不含抓取与人–物交互**，与真机 WBC 结果不可直接类比。
 - 与 [SONIC](./nvidia-sonic.md) / [BFM](./paper-behavior-foundation-model-humanoid.md) 的分工是「**仿真动画生成式先验 vs 机器人部署执行器**」；两者组合可以想象，但本文未做人形机器人实验。
 
-## 常见误区或局限
+## 局限与风险
 
 - **不是人形机器人真机论文：** 角色为 **物理仿真人体**；与 Unitree G1 等 **真机 WBC** 结果不可直接类比。
 - **不是 text-to-motion：** 预训练 **无条件/状态条件** 自回归；**无语言接口**（Limitations 列为未来工作）。

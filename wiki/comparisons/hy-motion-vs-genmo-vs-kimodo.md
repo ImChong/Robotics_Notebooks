@@ -3,7 +3,7 @@
 type: comparison
 tags: [human-motion, text-to-motion, motion-generation, flow-matching, diffusion, smpl, hy-motion, genmo, kimodo, comparison, engineering-selection, nvidia]
 status: complete
-updated: 2026-09-30
+updated: 2026-11-20
 sources:
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
@@ -13,6 +13,12 @@ sources:
   - ../../sources/repos/kimodo.md
   - ../../sources/repos/kimodo-cpp.md
   - ../../sources/sites/kimodo-project.md
+original:
+  - ../../sources/papers/hy_motion_arxiv_2512_23464.md
+  - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
+  - ../../sources/papers/genmo.md
+  - ../../sources/repos/genmo.md
+  - ../../sources/papers/kimodo_arxiv_2603_15546.md
 related:
   - ../methods/hy-motion-1.md
   - ../methods/genmo.md
@@ -45,7 +51,30 @@ summary: "HY-Motion 1.0 / GENMO(GEM) / Kimodo 三条『文本·多模态 → 人
 
 ---
 
-## 核心维度对比
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| SOTA | State of the Art | 当前最优水平 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+
+## 为什么重要
+
+这三条骨干代表了 2025–2026 年人体运动生成模型演进的三个正交支点——**纯文本大规模流匹配（HY-Motion）**、**视频估计与生成统一权重（GENMO/GEM）**、**多约束可控扩散（Kimodo）**。明确三者在输入条件、运动表征（201D SMPL-H vs SMPL+相机+接触 vs 多骨架全局关节）与开源许可上的边界，能直接避免在构建机器人模仿参考数据或视觉驱动控制（video-to-G1）管线时选错生成前置模块。
+
+---
+
+## 核心原理与维度对比
 
 | 维度 | **HY-Motion 1.0** | **GENMO / GEM** | **Kimodo** |
 |------|--------------------|------------------|-------------|
@@ -104,7 +133,9 @@ flowchart TD
 
 ---
 
-## 适用场景
+## 工程实践（适用场景与决策矩阵）
+
+- **推理入口与落地工具链**：**HY-Motion 1.0** 依赖 `local_infer.py` / `T2MRuntime`（1.0B `26GB` / Lite `24GB` VRAM，输出 SMPL-H 后通常接 GMR 重定向）；**GEM / GENMO** 提供 `scripts/demo/demo_smpl.py`（混合视频/文本）与 `demo_webcam.py`（ONNX 实时流）；**Kimodo** 除官方 Python/HF 权重外可直出 Unitree G1 / SOMA，并有社区 `kimodo.cpp` 轻量本地运行时（不含全部约束）。
 
 ### 选 HY-Motion 的场景
 
@@ -136,7 +167,7 @@ flowchart TD
 
 ---
 
-## 常见误判
+## 局限与风险（含常见误判）
 
 1. **「三者可互换」**：错。HY-Motion **只吃文本**，做不了视频估计；GENMO 把**视频→SMPL 估计**当一等任务；Kimodo 强在**关键帧/路径约束编辑**。条件模态决定了它们解的是不同的题。
 2. **「都是 SMPL，表示通用」**：错。HY-Motion 用 **SMPL-H 201 维**（弃 HumanML3D 263 维、无显式足接触）；GENMO 把 **SMPL + 相机外参 + 接触标签**拼进同一向量（估计需相机对齐）；Kimodo 是**多骨架**（SOMA/G1/SMPL-X）的平滑 root + 全局关节表示。直接对接会维度/语义错位。
@@ -172,23 +203,6 @@ flowchart TD
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) 是 T2M 文献/数据/模型的**拓扑索引**，本页提供其中三条代表骨干的**选型叙事**。
 
 ---
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| SOTA | State of the Art | 当前最优水平 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
 
 ## 参考来源
 

@@ -1,7 +1,9 @@
 # MSFlow 官方代码仓（LY Corporation）
 
-> 来源归档（最近复核：2026-10-10）
+> 来源归档（最近复核：2026-11-20）
 
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `lycorp-jp/MSFlow` 官方 `README.md`（L1–150+）及推理脚本 `sample/demo_msflow_263.py`（L1–100、L201–300）与 `sample/demo_msflow_xyz.py`（L1–17 全文），核对 `resolve_mmdit_factory`、`MODEL_DEFAULTS`（`noise_scale=5.0`, `flow_output_type='x'`, `sampler='myheun2'`）、`ema_model.generate` 主链与「临时开放」仓库声明。
 - **仓库：** <https://github.com/lycorp-jp/MSFlow>
 - **项目页：** <https://yu1ut.com/MSFlow-HP/> — [项目页来源归档](../sites/motionspaceflow-yu1ut.md)
 - **论文：** [arXiv:2609.34190](https://arxiv.org/abs/2609.34190) — [论文来源归档](../papers/motionspaceflow_arxiv_2609_34190.md)

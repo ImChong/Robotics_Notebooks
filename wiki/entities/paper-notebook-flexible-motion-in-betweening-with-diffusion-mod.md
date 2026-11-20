@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-motion, motion-generation, diffusion, in-betweening, keyframe-control, siggraph, humanoid-paper-notebooks, ubc, sfu, nvidia]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-20
 arxiv: "2405.11126"
 code: https://github.com/setarehc/diffusion-motion-inbetweening
 related:
@@ -14,6 +14,10 @@ related:
   - ./paper-gpc-generative-pretrained-controllers.md
   - ../overview/paper-notebook-category-14-human-motion.md
 sources:
+  - ../../sources/papers/humanoid_pnb_flexible-motion-in-betweening-with-diffusion-mod.md
+  - ../../sources/sites/condmdi-project.md
+  - ../../sources/repos/condmdi.md
+original:
   - ../../sources/papers/humanoid_pnb_flexible-motion-in-betweening-with-diffusion-mod.md
   - ../../sources/sites/condmdi-project.md
   - ../../sources/repos/condmdi.md
@@ -107,23 +111,23 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  participant U as 用户
-  participant Prep as prepare/ + HumanML3D_abs
-  participant Train as train.train_condmdi
-  participant Sample as sample.conditional_synthesis
-  participant Eval as eval.eval_humanml_condmdi
+  participant U as 用户/CLI
+  participant Args as cond_synt_args() + abs_3d 校验
+  participant Mask as compute_editing_mask / get_keyframes_mask()
+  participant Sample as sample/conditional_synthesis.py
+  participant Model as CondMDI (ClassifierFreeSampleModel)
   participant Viz as visualize.render_mesh
 
-  U->>Prep: 下载 SMPL / GloVe / evaluator 并准备绝对根数据
-  U->>Train: --keyframe_conditioned（可选：使用官方权重）
-  Train-->>U: save/condmdi_*/model*.pt
-  U->>Sample: model_path + edit_mode + text_prompt
-  Sample-->>U: results.npy + stick-figure MP4
-  U->>Eval: HumanML3D 关键帧协议
-  U->>Viz: 将 MP4 转为 SMPL 参数/OBJ
+  U->>Args: python -m sample.conditional_synthesis --abs_3d --keyframe_conditioned
+  Args->>Sample: load_dataset() / load_fixed_dataset() 加载参考动画
+  Sample->>Mask: 按 edit_mode (benchmark_sparse/clip/upper_body 等) 生成 obs_mask
+  Sample->>Sample: 配置 inpainted_motion 与可选 imputate / reconstruction_guidance
+  Sample->>Model: 条件扩散采样补全中间帧
+  Model-->>U: 保存 results.npy 与火柴人视频
+  U->>Viz: 可选运行 visualize.render_mesh 导出 SMPL OBJ
 ```
 
-最短复现路径是准备 HumanML3D 与官方 checkpoint 后运行 `sample.conditional_synthesis`；训练和评测分别走 `train.train_condmdi` 与 `eval.eval_humanml_condmdi`。
+对应 `sample/conditional_synthesis.py`（L26–200）实测调用链；训练与关键帧评测入口分别为 `train.train_condmdi` 与 `eval.eval_humanml_condmdi`。
 
 ## 与其他工作对比
 
@@ -160,7 +164,7 @@ sequenceDiagram
 - mask 能表达已知关节位置，但不能自动从场景/语言推断应放置哪些关键帧。
 - SMPL、SMPL-X、HumanML3D 等依赖各自许可，MIT 代码许可不覆盖全部数据与人体模型资产。
 
-## 与其他页面的关系
+## 关联页面
 
 - [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 关键帧补全输出可作跟踪参考，几何插补质量与物理角色的接触、平衡和执行误差需分开验证。
 

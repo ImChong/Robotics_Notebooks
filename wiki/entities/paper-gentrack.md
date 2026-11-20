@@ -14,7 +14,7 @@ tags:
   - zhejiang-lab
   - aaai2027
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2608.01410"
 venue: "AAAI 2027"
 related:
@@ -33,6 +33,8 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ./unitree-g1.md
 sources:
+  - ../../sources/papers/gentrack_arxiv_2608_01410.md
+original:
   - ../../sources/papers/gentrack_arxiv_2608_01410.md
 summary: "GenTrack（AAAI 2027，arXiv:2608.01410，浙大/北大/腾讯/之江）：在 robot-native 文本→运动生成器与全身 tracker 之间做在线互训。滞后闭环执行 + FlowGRPO 对齐生成器，新参考扩零样本覆盖。SONIC 支 LAFAN1 SR 85→90；确认未开源。"
 ---
@@ -77,9 +79,9 @@ summary: "GenTrack（AAAI 2027，arXiv:2608.01410，浙大/北大/腾讯/之江�
 | 平台 | Unitree G1，29 驱动关节；仿真 30 FPS；无真机表 |
 | 生成器 | 人体 T2M 骨干换 38D robot 头；357,472 条内部 GMD→G1 对只用于初始化/排练 |
 | Tracker | 公开 ProtoMotions（AMP/PPO）与官方 SONIC；后训练参考池 13,337 AMASS/LAFAN |
-| 开源（截至 2026-08-15） | **确认未开源**：无项目页、无仓库；Wild-G1 与 1,024 生成套件私有 |
+| 开源（截至 2026-11-20 复核） | **确认未开源**：无项目页、无仓库；Wild-G1 与 1,024 生成套件私有 |
 
-## 方法与核心结构
+## 核心原理（方法与核心结构）
 
 ### 问题
 
@@ -108,7 +110,7 @@ S_{\mathrm{exec}}=(1-c)+[e_j]_2+[e_t/0.5]_2+0.5[e_d/0.5]_2+2\mathbb{I}_{\mathrm{
 
 漂移约束：FlowGRPO 上 \(\lambda_{\mathrm{KL}}=0.02\) 锚到冻结 \(G_0\)；每两步 GRPO 做一次权重 1.0 的原文对 flow-matching rehearsal。TMR/多样性 **不进奖励**。
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart TB

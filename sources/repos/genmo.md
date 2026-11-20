@@ -8,7 +8,9 @@
 - **机构**: NVIDIA Research（DAIR 等）
 - **License**: Apache-2.0（第三方组件见 `ATTRIBUTIONS.md`）
 - **首次入库**: 2026-05-07
-- **最后更新**: 2026-05-16
+- **最后更新**: 2026-11-20
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `NVlabs/GENMO`（现以 **GEM** 名义发布）`README.md` 与 `scripts/demo/demo_smpl.py`（L1–100、L520–619），核实 2025-12 更名 **GEM**、2026-03 **GEM-SMPL** 发布于 HuggingFace `nvidia/GEM-X`（源码头注明 `LicenseRef-NVIDIA-OneWay-Noncommercial` 权重/推理脚本约束，仓库根目录含 Apache-2.0 声明），以及 `parse_input_list -> assemble_mixed_data -> load_model -> run_inference -> render_results_mixed` 多模态推理主链路。
 
 ## 一句话摘要
 

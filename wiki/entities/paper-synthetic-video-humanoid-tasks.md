@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - ncku
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2607.21648"
 venue: "arXiv"
 summary: "NCKU（arXiv:2607.21648）：文本提示→Veo 生成视频→SMPL-X/GMR 重定向→motion stitching→DeepMimic 式 RL 跟踪；无真机/无 MoCap 示范，仿真学多样人形任务；确认未开源。"
@@ -31,11 +31,17 @@ related:
   - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/papers/synthetic_video_humanoid_tasks_arxiv_2607_21648.md
+original:
+  - ../../sources/papers/synthetic_video_humanoid_tasks_arxiv_2607_21648.md
 ---
 
 # Learning Diverse Humanoid Tasks via Synthetic Video Scenarios
 
-**Learning Diverse Humanoid Tasks via Synthetic Video Scenarios without Real World Data**（国立成功大学 NCKU，arXiv:2607.21648）提出一条 **无真机、无 MoCap** 的人形技能数据通路：用 **文本提示驱动 Google Veo** 生成多样人体运动视频，经 **SMPL-X 重建 + GMR 重定向** 得到机器人参考，再用 **motion stitching** 拼复合技能，最后在 **Isaac Lab** 中以 DeepMimic 式 **PPO 跟踪** 训练 Unitree G1 策略。目标是用生成模型覆盖「同任务多种执行风格」，降低对真人示范的依赖。
+**Learning Diverse Humanoid Tasks via Synthetic Video Scenarios without Real World Data**（国立成功大学 NCKU，[arXiv:2607.21648](https://arxiv.org/abs/2607.21648)）提出一条 **无真机、无 MoCap** 的人形技能数据通路：用 **文本提示驱动 Google Veo** 生成多样人体运动视频，经 **SMPL-X 重建 + GMR 重定向** 得到机器人参考，再用 **motion stitching** 拼复合技能，最后在 **Isaac Lab** 中以 DeepMimic 式 **PPO 跟踪** 训练 Unitree G1 策略。目标是用生成模型覆盖「同任务多种执行风格」，降低对真人示范的依赖。
+
+## 一句话定义
+
+通过结构化文本提示驱动 Veo 生成多样本合成视频，经 ViT SMPL-X 重建、GMR 重定向及根对齐+关节插值拼接为复合参考轨迹，并在 Isaac Lab 4096 并行环境中用非对称 PPO 训练 Unitree G1 模仿多种日常风格的人形技能策略。
 
 ## 英文缩写速查
 

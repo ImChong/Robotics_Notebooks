@@ -2,15 +2,28 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-20
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读笔记索引）。"
+  - ../../roadmap/depth-motion-generation.md
+sources:
+  - ../../sources/sites/humanoid-robot-learning-paper-notebooks.md
+  - ../../sources/repos/robot_learning_paper_notebooks_readme_reading_cat14.md
+  - ../../sources/papers/genmo.md
+  - ../../sources/repos/motionmillion-codes.md
+  - ../../sources/repos/condmdi.md
+original:
+  - ../../sources/repos/robot_learning_paper_notebooks_readme_reading_cat14.md
+summary: "Paper Notebooks 分类 14：人体动作分析与生成索引页（关联上游 14_Human_Motion 38 个笔记目录及本库扩展交叉条目共 44 篇论文）。"
 ---
 
 # Paper Notebooks · Human Motion
 
-**Human Motion**（`14_Human_Motion`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **14** 类。
+**Human Motion**（`14_Human_Motion`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **14** 类；截至 2026-11-20 核查上游仓库 `papers/14_Human_Motion/` 实有 **38 个** 深读笔记目录，本概览页并列收录与人体动作密切交叉的扩展条目，共列出 **44** 条索引。
+
+## 一句话定义
+
+聚焦人体三维动作表征、文本/多模态运动生成、可控补间与物理约束扩散、以及自我中心/人–物交互重建的分类汇总索引入口。
 
 ## 英文缩写速查
 
@@ -19,8 +32,19 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| SMPL | Skinned Multi-Person Linear Model | 人体运动学与网格重建的主流参数化表示 |
+| HOI | Human–Object Interaction | 人体与环境/物体接触交互动作建模 |
 
-## 本类论文索引
+## 为什么重要
+
+- **人体动作是人形全身控制的上游先验**：不管是 `DeepMimic` / `SONIC` 等模仿式全身控制，还是 `OmniControl` / `PhysDiff` / `ARDY` 等运动生成主干，都从本分类的数据集（HumanML3D / MotionMillion / HUMOTO）与扩散/自回归范式演化而来。
+- **区分纯运动学与物理闭环研究**：本索引同时囊括动画导向的文本生成、人–物重建，以及面向物理角色/机器人的模仿与跟踪方法，便于按是否含物理仿真筛查文献。
+
+## 核心原理
+
+本分类索引按专题可拆为三条核心支线（均与上游 `papers/14_Human_Motion/` 目录和本库实体对应）：① **百万级数据与零样本文本生成**（HumanML3D、Go to Zero、Scaling LMM、TRACE）；② **时空可控与物理约束生成**（GMD、OmniControl、CondMDI、PhysDiff、ARDY、Kimodo）；③ **全身/自我中心重建与人–物交互**（GENMO、MANIKIN、WHOLE、PICO、HUMOTO、EmbodMocap）。
+
+### 本类论文索引（44 篇）
 
 - [AvatarPoser](../entities/paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing.html)
 - [Being-M0.5](../entities/paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html)
@@ -67,15 +91,27 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（39 篇深读
 - [WHOLE](../entities/paper-notebook-whole.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html)
 - [Whole-body Multi-contact Motion Control for Humanoid Robots Based on Distributed Tactile Sensors](../entities/paper-notebook-whole-body-multi-contact-motion-control-for-huma.md) — 待深读
 
-## 与其他页面的关系
+## 工程实践
+
+- **如何按下游用途检索**：做人形物理控制跟踪（如 SONIC/GMT）的运动先验，优先查看 `Go to Zero`、`HumanML3D`、`Scaling Large Motion Models`；做关键帧/轨迹插补编辑则看 `GMD`、`OmniControl`、`CondMDI`、`TEDi`、`ARDY`；涉及物理可行性检查重点看 `PhysDiff` 与 `Taming Diffusion`。
+- **对齐上游深读状态**：上游仓库当前含 **38 个** 独立论文笔记目录；标注「待深读」条目尚未在原站点展开精读页面，具体细节需以 arXiv 原文或本库独立实体页为准。
+
+## 局限与风险
+
+- **动画/人体中心偏置**：多数 `14_Human_Motion` 论文在 SMPL / SMPL-H 运动学空间评测，不默认包含机器人关节力矩、足底接触力学或平衡约束，迁移到真机需重定向及物理策略滤波。
+- **统计口径动态演进**：上游持续新增条目，本概览页同时并入若干跨类密切相关的人体/交互文献（共计 44 条），数量多于原始 `papers/14_Human_Motion/` 的 38 个目录。
+
+## 关联页面
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
+- 纵深路线：[动作生成纵深](../../roadmap/depth-motion-generation.md)
 - 笔记主页：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html>
 
 ## 参考来源
 
+- [robot_learning_paper_notebooks_readme_reading_cat14.md](../../sources/repos/robot_learning_paper_notebooks_readme_reading_cat14.md)
+- [humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
-- 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文来源笔记（节选）：[GENMO：人体动作通用模型](../../sources/papers/genmo.md)、[MotionMillion-Codes](../../sources/repos/motionmillion-codes.md)、[CondMDI（扩散式动作补间）](../../sources/repos/condmdi.md)
 
 ## 推荐继续阅读

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, diffusion, flow-matching, recovery, middleware, x-humanoid, body-system-stack]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-20
 arxiv: "2603.27756"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -24,12 +24,19 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/sites/x-humanoid.md
+original:
+  - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
+  - ../../sources/sites/heracles-humanoid-control.md
 summary: "Heracles（arXiv:2603.27756）在高层参考与底层物理 tracker 之间插入状态条件 flow-matching 中间件：近参考时近似恒等映射保跟踪精度，大偏差时生成类人恢复关键帧并闭环重规划，真机展现多样恢复行为。"
 ---
 
 # Heracles：跟踪精度与生成式恢复的扩散中间件
 
-**Heracles**（*Bridging Precise Tracking and Generative Synthesis for General Humanoid Control*，arXiv:2603.27756，[项目页](https://heracles-humanoid-control.github.io/)）由 **X-Humanoid Heracles Project Team** 提出：不把通用控制压成单一 rigid tracker，也不依赖显式 **tracking ↔ recovery** 状态机，而在两者之间加入 **状态条件生成中间件**，把控制从「刚性跟踪范式」推向 **开环生成 + 闭环物理执行** 的统一架构。
+**Heracles**（*Bridging Precise Tracking and Generative Synthesis for General Humanoid Control*，[arXiv:2603.27756](https://arxiv.org/abs/2603.27756)，[项目页](https://heracles-humanoid-control.github.io/)）由 **X-Humanoid Heracles Project Team** 提出：不把通用控制压成单一 rigid tracker，也不依赖显式 **tracking ↔ recovery** 状态机，而在两者之间加入 **状态条件生成中间件**，把控制从「刚性跟踪范式」推向 **开环生成 + 闭环物理执行** 的统一架构。
+
+## 一句话定义
+
+在高层参考轨迹与底层通用物理跟踪器之间插入一个条件 Flow-Matching **残差生成中间件**：正常跟踪区近似输出零残差（近恒等透传以保精度），当本体发生剧烈扰动或跌倒偏差时自动切换为类人恢复轨迹生成器并滚动重规划。
 
 ## 英文缩写速查
 
@@ -94,26 +101,44 @@ flowchart TB
 ### 2）Flow matching + 推理技巧
 
 - 训练：线性概率路径 + 速度场 MSE（连续 flow matching）。
-- 网络：AdaLN-Transformer；首 token inpainting 保证与 $\mathbf{p}_t$ 运动学连续。
-- 推理：**directional warm start**——以 $\mathbf{p}_t\to\mathbf{m}_t$ 线性插值构造 $\mathbf{r}^{\mathrm{init}}$，从 $t_{\mathrm{start}}<1$ 部分噪声状态积分，减少 ODE 步数（SDEdit 启发）。
+- **网络与规模**：`22.9M` 参数 6 层 4 头 512 维 **AdaLN-Transformer**（在 `25 Hz` / $N_{\mathrm{exec}}=2$ 步规划 $\Delta t=0.2\text{ s}$ 内 $K=8$ 关键帧残差）；首 token inpainting 保证与 $\mathbf{p}_t$ 运动学连续。
+- **推理加速**：**directional warm start**——以 $\mathbf{p}_t\to\mathbf{m}_t$ 线性插值构造 $\mathbf{r}^{\mathrm{init}}$，从 $t_{\mathrm{start}}=0.9$ 加噪后仅需 **5 步 Euler ODE** 积分即可完成重规划；叠加非对称起始状态噪声增强与近似 $J^\top J$ 雅可比权重。
 
 ### 3）闭环 receding-horizon
 
-固定规划窗 $\Delta t$ 与执行间隔 $N_{\mathrm{exec}}$；长程恢复靠** successive replan** 涌现，不要求单次预测整条跌倒–站起轨迹。底层 tracker 观测、奖励形式与训练时一致，仅将 $\mathbf{m}_t$ 换为 middleware 输出的 $\mathbf{m}'_t$。
+固定规划窗 $\Delta t=0.2\text{ s}$ 与执行间隔 $N_{\mathrm{exec}}=2$；长程恢复靠** successive replan** 涌现，不要求单次预测整条跌倒–站起轨迹。底层 tracker 观测、奖励形式与训练时一致，仅将 $\mathbf{m}_t$ 换为 middleware 输出的 $\mathbf{m}'_t$（支持 38D 全状态与无全局位置 35D 纯本体部署）。
 
 ### 4）底层 tracker 与 token 设计
 
-论文 §3.3 同时升级 **通用跟踪策略**（29 DoF 观测分解、Rot6D 根误差、FSQ 运动 token 等），使中间件输出与大规模 tracking 生态兼容；细节以 [PDF](https://arxiv.org/pdf/2603.27756) 为准。
+论文 §3.3 采用 **50 Hz RL 策略 → 200 Hz PD** 跟踪 10 帧本体历史与三次样条/slerp 密化参考，引入 **iFSQ**（$f(x)=2.0\sigma(1.6x)-1$ 奇数级量化含精确零点）编码运动 token $\mathbf{z}_d$，在单张 A100 上 16,384 并行环境以非对称 PPO 训练；细节以 [PDF](https://arxiv.org/pdf/2603.27756) 为准。
 
-## 常见误区
+## 工程实践
 
-1. **Heracles 取代 tracker：** 中间件**不直接输出扭矩**；物理可行性仍由 RL tracker 保证。
-2. **等于开环 MDM：** 运动扩散模型（如 HY-Motion）缺接触与扭矩约束；Heracles 输出进 **closed-loop MDP**。
-3. **等于 BeyondMimic 测试时 guidance：** BeyondMimic 在跟踪 formulation 内加 classifier guidance；Heracles 是**独立 middleware + 状态条件 flow**，按 $\mathbf{p}_t$ 实时改参考缓冲。
+| 项 | 核查与工程边界（2026-11-20 复核） |
+|----|----------------------------------|
+| **开源状态** | **未开源** — 官方项目页（[heracles-humanoid-control.github.io](https://heracles-humanoid-control.github.io/)）`Code (Coming Soon)` 仍未释放仓库或模型权重 |
+| **推理加速手段** | 采用 directional warm start（从 `t_start < 1` 线性插值构造初始残差）配合 AdaLN-Transformer + 首 token inpainting，缩减 ODE 采样步数以匹配低频重规划节拍 |
+| **底层接口兼容性** | 底层 RL tracker（29 DoF + FSQ 运动 token）仍吃统一参考接口，只是把原始 `m_t` 替换为中间件输出的密化参考 `m'_t` |
+| **源码运行时序图** | **不适用**（见下一节） |
+
+## 源码运行时序图
+
+**不适用：截至 2026-11-20 复核，项目页与 `arXiv:2603.27756v2` 均未公开可运行代码仓库或策略权重。** 因此不构想源码调用图；中间件与高频跟踪环耦合结构见上方「流程总览」。
+
+## 局限与风险
+
+1. **Heracles 取代 tracker（误区）：** 中间件**不直接输出扭矩**；物理可行性仍由 RL tracker 保证。
+2. **等于开环 MDM（误区）：** 运动扩散模型（如 HY-Motion）缺接触与扭矩约束；Heracles 输出进 **closed-loop MDP**。
+3. **等于 BeyondMimic 测试时 guidance（误区）：** BeyondMimic 在跟踪 formulation 内加 classifier guidance；Heracles 是**独立 middleware + 状态条件 flow**，按 $\mathbf{p}_t$ 实时改参考缓冲。
+4. **未开源复现障碍：** 截至 2026-11-20 `Code (Coming Soon)` 仍占位，AdaLN-Transformer 与底层 29-DoF tracker 尚无官方复现代码与权重。
 
 ## 实验与评测
 
-- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+基于 29-DoF Unitree G1 的 MuJoCo 101 条未见序列评测（`arXiv:2603.27756v2` Table 4–6）及真机部署：
+
+- **通用跟踪（Table 4）：** 完成率 **CR = `90.6%`**，优于独立 VQ-VAE（`86.0%`）、MLP（`84.8%`）、SONIC（`79.3%`）与无中间件 iFSQ（`87.2%`）；相对独立 iFSQ 根朝向误差下降 **24.5%**（`0.3614 -> 0.2728 rad`）、高度误差下降 **20.0%**（`0.0955 -> 0.0764 m`）。
+- **跌倒恢复子集（Table 5）：** 完成率 **CR = `90.0%`**，显著领先 VQ-VAE（`69.8%`）、iFSQ+H（`52.7%`）、iFSQ（`48.2%`）、MLP（`44.0%`）与 SONIC（`42.8%`），关节位置误差压低至 `1.4114 rad`。
+- **消融与真机验证（Table 6 / Fig. 4 & 7）：** 去掉非对称噪声增强 CR 跌至 **`78.6%`**（`-13.2%`），去掉雅可比权重跌至 **`82.1%`**（`-9.4%`），去掉 directional warm start 跌至 **`87.2%`**（`-3.8%`）；G1 真机完成走跑、踢腿、360° 旋踢及仰卧/侧卧/俯卧全向起身。
 
 ## 结论
 

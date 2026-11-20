@@ -4,6 +4,8 @@
 - **类型：** site（项目页 / 交互演示）
 - **机构：** NVIDIA Research（SIL）· ETH Zürich
 - **归档日期：** 2026-07-11（更新 2026-09-06）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 读取项目页 <https://research.nvidia.com/labs/sil/projects/ardy/> 全部 159 个非空文本行，核对 Paper/Code/Hugging Face Collection 链接、Online Text-to-Motion / Kinematically Constrained / Interactive Humanoid Control (SONIC) 与 NVIDIA 人形生态互链。
 - **论文：** ACM TOG · SIGGRAPH 2026 · DOI [10.1145/3811284](https://doi.org/10.1145/3811284)
 - **arXiv：** <https://arxiv.org/abs/2607.08741>
 - **PDF：** <https://research.nvidia.com/labs/sil/projects/ardy/assets/ardy_paper.pdf>

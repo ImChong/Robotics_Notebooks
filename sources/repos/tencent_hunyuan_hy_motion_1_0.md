@@ -3,6 +3,8 @@
 - **URL（仓库）**: https://github.com/Tencent-Hunyuan/HY-Motion-1.0
 - **URL（模型卡）**: https://huggingface.co/tencent/HY-Motion-1.0
 - **维护方**: Tencent Hunyuan 3D Digital Human Team
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读官方仓 `README.md`（L1–187）、`local_infer.py`（L1–100）与 `hymotion/utils/t2m_runtime.py`（L1–100、L251–350）；核实 1.0B / 0.46B Lite 模型卡与 `26GB`/`24GB` 显存要求、`T2MRuntime.rewrite_text_and_infer_time` 与 `generate_motion` 调用链、可选 FBX 导出及 2026-10 新增 FlowHMR 说明。
 - **定位**: 文本（+ 期望时长）→ **SMPL-H** 系 **3D 人体运动** 的 **DiT + Flow Matching** 开源实现与权重发布仓；论文 **arXiv:2512.23464**（HY-Motion 1.0）
 
 ## 仓库要点（维护者速览）

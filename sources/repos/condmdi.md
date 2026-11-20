@@ -8,6 +8,8 @@
 - **论文：** <https://arxiv.org/abs/2405.11126>
 - **许可：** MIT（以仓库 `LICENSE` 为准；GitHub API 未识别 SPDX）
 - **入库日期：** 2026-07-28
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `setarehc/diffusion-motion-inbetweening` 官方 `README.md`（L1–263 全文）及推理脚本 `sample/conditional_synthesis.py`（L1–200），核实 `cond_synt_args` / `abs_3d` 校验、`compute_editing_mask` / `get_keyframes_mask`、`zero_keyframe_loss` 与 `imputate`/`reconstruction_guidance` 分支配置。
 - **开源状态：** **已开源** — 训练、条件生成、评测代码及 HumanML3D 预训练权重均可获取。
 
 ## 可运行入口（2026-07-28）

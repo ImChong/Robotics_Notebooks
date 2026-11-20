@@ -8,13 +8,15 @@
 - **仓库：** <https://github.com/tsinghua-mars-lab/OMG>
 - **项目页：** <https://tsinghua-mars-lab.github.io/OMG/>
 - **License：** MIT
-- **入库日期：** 2026-06-10
-- **一句话说明：** 清华 MARS Lab 发布的 **omni-modal 人形运动生成** 开源栈：OMG-DiT 扩散训练与 ONNX/TensorRT 推理、HoloMotion tracker 耦合管线、benchmark 与 **G1 实时部署**（GPU 工作站 planner + Orin bridge）；OMG-Data / 预训练权重 HF 发布标注 coming soon。
+- **入库日期：** 2026-06-10（2026-11-20 复核）
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `tsinghua-mars-lab/OMG` 官方 `README.md`（L1–359 全文）及运行时入口 `src/omg/cli/pipeline/main.py`（L1–100、L250–349）与 `src/omg/cli/pipeline/modes.py`（L1–100、L1295–1394），核实 HuggingFace `THU-MARS/OMG`（`50m/100m/300m/500m` + 评测器 `step_007000.pt`）与 `THU-MARS/OMG-Data` 已发布、`OnnxDiffusionPlanner` + TensorRT FP16/DiT Cache + `HoloMotionRolloutRunner` 的 `sync`/`async` 控制环，以及论文 `arXiv:2606.10340` 已上线。
+- **一句话说明：** 清华 MARS Lab 发布的 **omni-modal 人形运动生成** 开源栈：OMG-DiT 扩散训练与 ONNX/TensorRT 推理、HoloMotion tracker 耦合管线、benchmark 与 **G1 实时部署**（GPU 工作站 planner + Orin bridge）；`THU-MARS/OMG` 权重与 `THU-MARS/OMG-Data` 数据集已上线 Hugging Face。
 - **沉淀到 wiki：** [`wiki/entities/paper-omg-omni-modal-humanoid-control.md`](../../wiki/entities/paper-omg-omni-modal-humanoid-control.md)
 
 ---
 
-## 发布状态（README 勾选，截至入库日）
+## 发布状态（README 2026-11-20 核查）
 
 | 组件 | 状态 |
 |------|------|
@@ -22,9 +24,9 @@
 | Inference Code | ✅ |
 | Benchmark Code | ✅ |
 | Sim-to-Real Deployment Code | ✅ |
-| Evaluation Pipelines / Evaluator CKPT | ⏳ |
-| OMG-Data | ⏳（HF coming soon） |
-| Pretrained Checkpoints | ⏳ |
+| Evaluation Pipelines / Evaluator CKPT | ✅（`THU-MARS/OMG` 含 `step_007000.pt`） |
+| OMG-Data | ✅（`THU-MARS/OMG-Data`，LeRobot v3，1174.66 h / 364.5k clips） |
+| Pretrained Checkpoints | ✅（`THU-MARS/OMG` 50m / 100m / 300m / 500m） |
 
 ---
 

@@ -4,12 +4,12 @@
 
 - **标题：** OmniControl: Control Any Joint at Any Time for Human Motion Generation
 - **类型：** site / project-page
-- **官方入口：** <https://neu-vi.github.io/omnicontrol/>
+- **官方入口：** <https://neu-vi.github.io/omnicontrol/>（**2026-11-20 复核返回 HTTP 404**，页面不可访问；请以论文与代码仓为准）
 - **论文：** <https://arxiv.org/abs/2310.08580>
-- **代码：** <https://github.com/neu-vi/omnicontrol>
-- **入库日期：** 2026-07-28
-- **一句话说明：** OmniControl（ICLR 2024）项目页，展示单一文本条件扩散模型对任意关节、任意时刻的稀疏/密集三维位置控制。
-- **开源状态（2026-07-28 核查）：** **已开源** — 官方 MIT 仓库含训练、推理、评测与 HumanML3D checkpoint；KIT-ML checkpoint、交叉关节组合评测仍列为 TODO。
+- **代码：** <https://github.com/neu-3dvi/OmniControl>（原 `neu-vi/omnicontrol` 重定向至此）
+- **入库日期：** 2026-07-28（2026-11-20 复核状态）
+- **一句话说明：** OmniControl（ICLR 2024）项目页归档；2026-11-20 核查原 `neu-vi.github.io/omnicontrol/` 返回 HTTP 404，仓库已迁至 `neu-3dvi/OmniControl`。
+- **开源状态（2026-11-20 复核）：** **已开源** — 官方 MIT 仓库 <https://github.com/neu-3dvi/OmniControl> 含训练、推理、评测与 HumanML3D checkpoint；KIT-ML checkpoint、交叉关节组合评测仍列为 TODO；项目页站点当前 HTTP 404，无法从网页正文复核。
 
 ## 页面公开信息
 

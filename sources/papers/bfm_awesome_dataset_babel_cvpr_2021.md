@@ -11,6 +11,8 @@
 - **代码/入口：** <https://babel.is.tue.mpg.de/>
 - **索引来源：** [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - **入库日期：** 2026-05-26
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 CVPR 2021 `arXiv:2106.09696v1` 全文（`1–1129` 行）及官方网站 <https://babel.is.tue.mpg.de/>；核实约 43.5 小时 AMASS 子集规模、~28k sequence-level 与 ~63k frame-level 动作类别标注（250+ 类动作范畴）及帧级动作识别/时序动作转移任务设定。
 - **一句话说明：** 动作语义标注，连接语言与动作。
 
 ## 核心摘录（策展）

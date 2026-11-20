@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, text-to-motion, motion-generation, flow-matching, direct-motion-space, human-motion]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-20
 project_id: motionspaceflow
 project: https://yu1ut.com/MSFlow-HP/
 code: https://github.com/lycorp-jp/MSFlow
@@ -14,6 +14,10 @@ related:
   - ../entities/awesome-text-to-motion-zilize.md
   - ../entities/paper-unimate.md
 sources:
+  - ../../sources/papers/motionspaceflow_arxiv_2609_34190.md
+  - ../../sources/sites/motionspaceflow-yu1ut.md
+  - ../../sources/repos/msflow-lycorp-jp.md
+original:
   - ../../sources/papers/motionspaceflow_arxiv_2609_34190.md
   - ../../sources/sites/motionspaceflow-yu1ut.md
   - ../../sources/repos/msflow-lycorp-jp.md
@@ -40,7 +44,7 @@ summary: "MotionSpaceFlow（MSFlow，LY Corporation，arXiv:2609.34190）：不�
 | XYZ | Global 3D joint coordinates | 每帧 22 个关节的绝对三维坐标 |
 | ODE | Ordinary Differential Equation | flow matching 的采样轨迹积分形式 |
 
-## 为什么值得关注
+## 为什么重要
 
 - **动作不压进 latent。** 263D 或 XYZ 运动张量就是生成变量，不需学习式动作 encoder/decoder，也不做时间下采样；因此可直接访问单帧和单关节。
 - **表示会改变架构选择。** HumanML3D 263D 的根部速度等是增量特征，causal attention 更合适；全局 XYZ 则采用 bidirectional attention 保持整段坐标的连贯性。两者不是可互换的同一个“输入格式”。
@@ -110,28 +114,25 @@ sequenceDiagram
   autonumber
   actor User as 使用者
   participant Env as uv 环境
-  participant Demo as sample.demo_msflow_263 / xyz
+  participant Demo as sample/demo_msflow_xyz.py -> demo_msflow_263.run()
+  participant Cfg as config_utils / resolve_mmdit_factory
   participant HF as ly-corporation/MSFlow
-  participant Data as HumanML3D / SnapMoGen
-  participant Text as Frozen DistilBERT
-  participant Model as RA-MMDiT
-  participant Solver as Flow sampler
+  participant Data as Mean/Std 或 raw_joint_utils
+  participant Model as ema_model (RA-MMDiT + DistilBERT)
+  participant Solver as Flow sampler (Heun + Euler)
   participant Out as Motion output
   User->>Env: uv sync
   User->>HF: 下载预训练模型到 checkpoints/t2m/
-  User->>Data: 准备数据及评估资源
+  User->>Data: 准备 HumanML3D / SnapMoGen 数据与统计量
   User->>Demo: uv run python -m sample.demo_msflow_xyz name=MMDiT_xyz_pretrained
-  Demo->>HF: 加载配置与 checkpoint
-  Demo->>Data: 读取动作表示 / 数据统计
-  Demo->>Text: 编码文本 prompt
-  Text-->>Model: 词级文本 token
-  loop 50 步去噪 / flow 积分
-    Solver->>Model: noisy motion x_t、时间 t、文本特征
-    Model-->>Solver: clean-motion estimate x̂₁
-  end
-  Solver-->>Out: 生成 XYZ / 263D 动作序列
+  Demo->>Cfg: load_yaml_config() 并构建 ema_model
+  Demo->>HF: 加载 ema_model state_dict
+  Demo->>Data: 读取 Mean/Std 或 load_raw_joint_mean_std()
+  Demo->>Model: ema_model.generate(clip_text, m_length, cond_scale=cfg.cfg)
+  Model->>Solver: DistilBERT + Refiner 编码文本并运行 50 步 flow 积分
+  Solver-->>Out: 逆归一化导出 XYZ / 263D 动作序列
   User->>Demo: 可选 sample/demo_joint_control.sh
-  Demo->>Solver: 对指定帧与关节做 projection sampling
+  Demo->>Solver: 推理期对指定帧与关节执行端点投影采样
 ```
 
 代码还提供 263D 与 XYZ 两套 train/eval 命令；其中 XYZ 关节控制 demo 直接见[代码仓来源归档](../../sources/repos/msflow-lycorp-jp.md)。
