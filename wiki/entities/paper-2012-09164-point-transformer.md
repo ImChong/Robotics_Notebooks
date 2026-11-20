@@ -72,11 +72,11 @@ S3DIS Area 5 语义分割 70.4% mIoU、76.5% mAcc、90.8% OA；S3DIS 六折 73.5
 ## 工程实践
 
 - **工程建议：** 接入视觉操作系统时需同时记录点云点数、采样策略、坐标系和实际邻域查询耗时；可作为策略输入骨干。
-- **公开实现/项目：** https://github.com/POSTECH-CVLab/point-transformer。正文与附录已对照，训练/推理代码尚未在本环境执行。
+- **公开实现/项目：** https://github.com/POSTECH-CVLab/point-transformer （第三方非官方复现；不是原作者官方实现）。正文与附录已对照，训练/推理代码尚未在本环境执行。
 
 ## 源码运行时序图
 
-**源码核对边界：** 已定位公开实现入口 https://github.com/POSTECH-CVLab/point-transformer，本轮没有实际执行该仓库。以下图为论文方法层的前向/评测时序，非冒充已验证的函数调用栈。
+**源码核对边界：** 已定位公开实现入口 https://github.com/POSTECH-CVLab/point-transformer （第三方非官方复现；不是原作者官方实现），本轮没有实际执行该仓库。以下图为论文方法层的前向/评测时序，非冒充已验证的函数调用栈。
 
 ```mermaid
 sequenceDiagram
