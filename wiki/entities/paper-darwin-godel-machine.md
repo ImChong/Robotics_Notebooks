@@ -177,6 +177,8 @@ SWE-bench Verified 原始 Agent 为 **20.0%**，进化后最好为 **50.0%**。�
 
 ## 关联页面
 
+- [Mendel Gödel Machine（MGM）](./paper-mendel-godel-machine.md) — 用同节点多任务、跨谱系同任务轨迹比较改善编码 Agent 自修改诊断
+
 - [递归自我改进](../concepts/recursive-self-improvement.md) — RSI 的层级及边界
 - [Awesome RSI](./awesome-rsi.md) — 相关方法索引
 - [HarnessBank](./paper-harnessbank.md) — 自进化 harness 的门控对照
