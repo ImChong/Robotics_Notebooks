@@ -208,6 +208,7 @@ flowchart LR
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
 - [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化
+- [HandRSI：具身感知的 Harness + 权重联合 RSI](../wiki/entities/paper-handrsi-recursive-self-improvement-hand-pose.md) — 从 ACE-Ego-Hand 到十指标门控、选择性蒸馏、重验证及 20.7–41.1 FPS 分层；注意初轮人工干预和 HOI4D 退化
 - [RRSI](../wiki/entities/paper-rrsi-2609-24972.md) — 通过 proposal 与 selection 正则化，降低 harness 搜索对演化基准的过拟合
 - [SoL-Pi](../wiki/entities/sol-pi.md) — auto-research 环筛效率扩展；先把 harness 做省再谈 scale
 - [Awesome RSI Methods 页](https://prism-shadow.github.io/awesome-rsi/#methods)（外链）— 按 artifact 筛选同类工作

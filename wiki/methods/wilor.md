@@ -145,6 +145,8 @@ sequenceDiagram
 
 ## 与其他页面的关系
 
+- [HandRSI（arXiv:2611.22164）](../entities/paper-handrsi-recursive-self-improvement-hand-pose.md)：以 ACE-Ego-Hand 视频估计为底座，经可验证 Harness 与网络选择性蒸馏联合提升手部检测、3D 姿态与时序一致性；部分 Harness 模块调用 WiLoR 图像证据，兼有速度和许可边界。
+
 - [FAH：快速准确的手部估计](../entities/paper-fah.md)：使用直接 2D/3D 关节及稠密点预测，再独立拟合 MANO/MHR-Hand；另提供部位、接触和因果视频/世界系能力。HOT3D FAH-L 关节 PA-MPJPE 4.31 mm，RTX 4070 Ti SUPER 上含拟合 65 FPS（不含部位与接触）。
 
 - [ExoActor](./exoactor.md)：将 WiLoR 用作生成视频的双手分支估计。
