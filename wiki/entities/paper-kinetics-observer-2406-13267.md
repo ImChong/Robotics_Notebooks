@@ -12,6 +12,8 @@ related:
   - ../concepts/state-estimation.md
   - ../concepts/contact-estimation.md
   - ../tasks/humanoid-locomotion.md
+  - ../tasks/locomotion.md
+  - ../methods/model-predictive-control.md
   - ../comparisons/kalman-filter-vs-optimization-based-estimation.md
   - ../../roadmap/depth-classical-control.md
   - ./paper-sg-odom-2611-20710.md
@@ -172,6 +174,8 @@ sequenceDiagram
 - [State Estimation](../concepts/state-estimation.md)
 - [Contact Estimation](../concepts/contact-estimation.md)
 - [人形行走任务](../tasks/humanoid-locomotion.md)
+- [Locomotion（足式运动任务）](../tasks/locomotion.md)：估计质心及接触状态是行走反馈的前提。
+- [Model Predictive Control（模型预测控制）](../methods/model-predictive-control.md)：高频状态、接触与外扰估计可作为预测控制的状态输入；论文未实测此闭环集成。
 - [SG-ODOM](./paper-sg-odom-2611-20710.md)
 - [Kalman Filter vs Optimization](../comparisons/kalman-filter-vs-optimization-based-estimation.md)
 - [传统模型控制纵深 Stage 4](../../roadmap/depth-classical-control.md)
