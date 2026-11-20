@@ -4460,6 +4460,13 @@
       "aliases": [
         "upstar"
       ]
+    },
+    "simplexai": {
+      "label": "个人智能体开发团队（SimplexAI）",
+      "aliases": [
+        "simplexai",
+        "simplexai-labs"
+      ]
     }
   }
 }

@@ -10,8 +10,9 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-11-18
+updated: 2026-11-20
 related:
+  - ./linger-simplexai.md
   - ./ankole.md
   - ./magpie.md
   - ./deepseek-harness.md
@@ -144,6 +145,8 @@ flowchart TB
 - **局限：** 平台适配器、提供商列表与安装脚本变更频繁；本页不固化命令行。安全模型（命令 approval、DM pairing）需按 [官方 Security 文档](https://hermes-agent.nousresearch.com/docs/user-guide/security) 自行评估后再接生产网关。
 
 ## 关联页面
+
+- [Linger（SimplexAI）](./linger-simplexai.md) — 个人电脑本地/混合模型、Personal Wiki 与主动任务 Agent；对照 Hermes 的消息网关和技能闭环。
 
 - [Ankole](./ankole.md) — 企业 Pod、Company Brain、权限审批与独立 Worker；与 Hermes 的个人常驻 Agent / 网关路线对照
 
