@@ -335,12 +335,38 @@
       halfSpan = Math.max(40, Math.max(xB[1] - xB[0], yB[1] - yB[0]) * 0.55);
     }
 
+    // 纯线性各向同性映射（严格保形，与 2D 平面完全一致）：外围节点自然向外舒展，不再被正交方框挤压
+    var nodeMeta = Object.create(null);
+    var activeRadials = [];
+    for (i = 0; i < list.length; i++) {
+      var ndMap = list[i];
+      if (!ndMap || !ndMap.id || ndMap.x == null || ndMap.y == null) continue;
+      var wx0 = ((ndMap.x - cx) / halfSpan) * coreSpan;
+      var wz0 = ((ndMap.y - cy) / halfSpan) * coreSpan;
+      var deg0 = degCounts[ndMap.id] || 0;
+      var degNorm0 = Math.pow(Math.log(1 + deg0) / logDen, 1.08);
+      var isIncluded0 = !activeSet || activeSet.has(ndMap.id);
+      nodeMeta[ndMap.id] = {
+        wx: wx0,
+        wz: wz0,
+        deg: deg0,
+        degNorm: degNorm0,
+        active: isIncluded0,
+      };
+      if (isIncluded0) activeRadials.push(Math.hypot(wx0, wz0));
+    }
+
+    if (!opts.extent && activeRadials.length) {
+      activeRadials.sort(function (a, b) { return a - b; });
+      var p99R = activeRadials[Math.min(activeRadials.length - 1, Math.floor((activeRadials.length - 1) * 0.99))];
+      extent = Math.max(1.45, Math.min(2.6, p99R * 1.24));
+    }
+
     var broadBuf = new Float32Array(G * G);
     var peakBuf = new Float32Array(G * G);
     var tmpBuf = new Float32Array(G * G);
     var cellScale = (G - 1) / (2 * extent);
 
-    var nodeMeta = Object.create(null);
     var peakSigma = Math.max(2.0, G * 0.025);
     var peakR = Math.min(9, Math.ceil(peakSigma * 2.5));
     var peakSigma2 = 2 * peakSigma * peakSigma;
@@ -356,32 +382,22 @@
 
     for (i = 0; i < list.length; i++) {
       var node = list[i];
-      if (!node || !node.id || node.x == null || node.y == null) continue;
-      var rx = (node.x - cx) / halfSpan;
-      var rz = (node.y - cy) / halfSpan;
-      // Softly compress far outliers so mountains stay well within the misty horizon
-      var wx = (Math.abs(rx) > 1 ? Math.sign(rx) * (1 + 0.16 * Math.tanh(Math.abs(rx) - 1)) : rx) * coreSpan;
-      var wz = (Math.abs(rz) > 1 ? Math.sign(rz) * (1 + 0.16 * Math.tanh(Math.abs(rz) - 1)) : rz) * coreSpan;
-      var deg = degCounts[node.id] || 0;
-      var degNorm = Math.pow(Math.log(1 + deg) / logDen, 1.08);
-      var isIncluded = !activeSet || activeSet.has(node.id);
-      var contrib = isIncluded ? degNorm : degNorm * 0.06;
-
-      nodeMeta[node.id] = {
-        wx: wx,
-        wz: wz,
-        deg: deg,
-        degNorm: degNorm,
-        active: isIncluded,
-      };
+      if (!node || !node.id || !nodeMeta[node.id]) continue;
+      var metaN = nodeMeta[node.id];
+      var wx = metaN.wx;
+      var wz = metaN.wz;
+      var degNorm = metaN.degNorm;
+      var contrib = metaN.active ? degNorm : degNorm * 0.06;
 
       if (!(contrib > 0.001)) continue;
       var gxF = (wx + extent) * cellScale;
       var gzF = (wz + extent) * cellScale;
-      var gx0 = Math.max(0, Math.min(G - 2, Math.floor(gxF)));
-      var gz0 = Math.max(0, Math.min(G - 2, Math.floor(gzF)));
-      var tx = Math.max(0, Math.min(1, gxF - gx0));
-      var tz = Math.max(0, Math.min(1, gzF - gz0));
+      // 越出地形网格范围的远端孤点不挤压回网格边线，避免在边界堆起隐形方框
+      if (gxF < 0 || gxF >= G - 1 || gzF < 0 || gzF >= G - 1) continue;
+      var gx0 = Math.floor(gxF);
+      var gz0 = Math.floor(gzF);
+      var tx = gxF - gx0;
+      var tz = gzF - gz0;
 
       broadBuf[gz0 * G + gx0] += contrib * (1 - tx) * (1 - tz);
       broadBuf[gz0 * G + gx0 + 1] += contrib * tx * (1 - tz);
@@ -427,7 +443,7 @@
         bNorm = bNorm / (bNorm + 0.45) * 1.45;
         var pNorm = peakBuf[idx] / maxPeak;
         var radial = Math.hypot(wxCell, wzCell);
-        var envMask = 1 - smoothstep(0.76, extent * 0.88, radial);
+        var envMask = 1 - smoothstep(extent * 0.70, extent * 0.94, radial);
         var combined = Math.min(1, Math.max(0, 0.26 * Math.pow(bNorm, 1.05) + 0.74 * Math.pow(pNorm, 1.08)));
         heights[idx] = Math.pow(combined, 1.16) * envMask;
       }
@@ -441,7 +457,7 @@
       for (dx = 0; dx < G; dx++) {
         var wxEnv = -extent + (2 * extent * dx) / (G - 1);
         var idxEnv = dz * G + dx;
-        var maskEnd = 1 - smoothstep(0.78, extent * 0.90, Math.hypot(wxEnv, wzEnv));
+        var maskEnd = 1 - smoothstep(extent * 0.72, extent * 0.96, Math.hypot(wxEnv, wzEnv));
         heights[idxEnv] *= maskEnd;
         if (heights[idxEnv] > maxH) maxH = heights[idxEnv];
       }
@@ -587,7 +603,7 @@
       tz + effDist * cosP * cosY,
     ];
     var view = lookAtMat4(eye, [tx, ty, tz], [0, 1, 0]);
-    var proj = perspectiveMat4((42 * Math.PI) / 180, aspect, 0.04, 24);
+    var proj = perspectiveMat4((42 * Math.PI) / 180, aspect, 0.04, 40);
     var viewProj = mulMat4(proj, view);
     return {
       eye: eye,
@@ -641,34 +657,118 @@
   }
 
   function graphToWorldCoord(gVal, centerVal, halfSpan, coreSpan) {
-    var r = (gVal - centerVal) / (halfSpan || 1);
-    var soft = Math.abs(r) > 1
-      ? (r < 0 ? -1 : 1) * (1 + 0.16 * Math.tanh(Math.abs(r) - 1))
-      : r;
-    return soft * (coreSpan || 0.78);
-  }
-
-  function invertSoftCoord(wVal, centerVal, halfSpan, coreSpan) {
-    var s = wVal / (coreSpan || 0.78);
-    var absS = Math.abs(s);
-    var r;
-    if (absS <= 1) {
-      r = s;
-    } else {
-      var u = Math.min(0.95, (absS - 1) / 0.16);
-      var atanhU = 0.5 * Math.log((1 + u) / (1 - u));
-      r = (s < 0 ? -1 : 1) * (1 + atanhU);
-    }
-    return centerVal + r * halfSpan;
+    return ((gVal - centerVal) / (halfSpan || 1)) * (coreSpan || 0.78);
   }
 
   function worldToGraphCoords(wx, wz, center) {
     if (!center) return { x: wx, y: wz };
     var cs = center.coreSpan || 0.78;
     return {
-      x: invertSoftCoord(wx, center.x, center.halfSpan, cs),
-      y: invertSoftCoord(wz, center.y, center.halfSpan, cs),
+      x: center.x + (wx / cs) * center.halfSpan,
+      y: center.y + (wz / cs) * center.halfSpan,
     };
+  }
+
+  /**
+   * 3D 地形节点防重叠解算（O(N) 空间网格）：
+   * 优先在水平 XZ 平面按半径反比质量推开重叠球体，确保俯视、斜视与 3D 空间均无节点互相压住，
+   * 大枢纽稳居山峰顶、小节点环绕舒展，并按最终 XZ 重新采样地形表面高程保持立柱垂直落峰。
+   */
+  function resolveSphereOverlaps3D(items, field, heightAmp, opts) {
+    if (!items || items.length < 2) return 0;
+    opts = opts || {};
+    var gap = opts.gap != null ? opts.gap : 0.0022;
+    var maxPasses = opts.maxPasses || 8;
+    var pinnedId = opts.pinnedId || null;
+    var n = items.length;
+    var maxR = 0;
+    var i;
+    for (i = 0; i < n; i++) {
+      if (items[i].baseRadius > maxR) maxR = items[i].baseRadius;
+    }
+    var cellSize = Math.max(0.012, maxR * 2 + gap * 1.5);
+    var invCell = 1 / cellSize;
+    var movedAny = false;
+    var pass;
+    var totalResolved = 0;
+
+    for (pass = 0; pass < maxPasses; pass++) {
+      var grid = new Map();
+      for (i = 0; i < n; i++) {
+        var it = items[i];
+        var gx = Math.floor(it.wx * invCell);
+        var gz = Math.floor(it.wz * invCell);
+        var key = (gx + 32768) * 65536 + (gz + 32768);
+        var bucket = grid.get(key);
+        if (bucket) bucket.push(i);
+        else grid.set(key, [i]);
+      }
+
+      var passOverlaps = 0;
+      for (i = 0; i < n; i++) {
+        var a = items[i];
+        var ra = a.baseRadius;
+        var gxa = Math.floor(a.wx * invCell);
+        var gza = Math.floor(a.wz * invCell);
+        var aPinned = pinnedId && a.node && a.node.id === pinnedId;
+        var invMa = aPinned ? 0 : 1 / Math.max(1e-6, ra * ra);
+
+        for (var oz = -1; oz <= 1; oz++) {
+          for (var ox = -1; ox <= 1; ox++) {
+            var nKey = (gxa + ox + 32768) * 65536 + (gza + oz + 32768);
+            var cell = grid.get(nKey);
+            if (!cell) continue;
+            for (var k = 0; k < cell.length; k++) {
+              var j = cell[k];
+              if (j <= i) continue;
+              var b = items[j];
+              var rb = b.baseRadius;
+              var minDist = ra + rb + gap;
+              var dx = b.wx - a.wx;
+              var dz = b.wz - a.wz;
+              var d2XZ = dx * dx + dz * dz;
+              if (d2XZ >= minDist * minDist) continue;
+              var dist = Math.sqrt(d2XZ);
+              var ux;
+              var uz;
+              if (dist < 1e-5) {
+                var ang = (((i * 2654435761 + j * 1597334677) >>> 0) % 1024) * (Math.PI * 2 / 1024);
+                ux = Math.cos(ang);
+                uz = Math.sin(ang);
+              } else {
+                ux = dx / dist;
+                uz = dz / dist;
+              }
+              var bPinned = pinnedId && b.node && b.node.id === pinnedId;
+              var invMb = bPinned ? 0 : 1 / Math.max(1e-6, rb * rb);
+              var invSum = invMa + invMb;
+              if (!(invSum > 0)) continue;
+              var push = (minDist - dist) * 1.02;
+              var wa = invMa / invSum;
+              var wb = invMb / invSum;
+              a.wx -= ux * push * wa;
+              a.wz -= uz * push * wa;
+              b.wx += ux * push * wb;
+              b.wz += uz * push * wb;
+              passOverlaps += 1;
+              totalResolved += 1;
+              movedAny = true;
+            }
+          }
+        }
+      }
+      if (passOverlaps === 0) break;
+    }
+
+    if (movedAny && field && heightAmp > 0) {
+      for (i = 0; i < n; i++) {
+        var pn = items[i];
+        var surfH = sampleTerrainHeight(field, pn.wx, pn.wz);
+        pn.wySurf = surfH * heightAmp;
+        pn.wy = Math.max(surfH + 0.045, surfH * 0.92 + 0.045 + pn.degNorm * 0.24) * heightAmp;
+      }
+    }
+    return totalResolved;
   }
 
   /**
@@ -750,7 +850,7 @@
       'vec2 applyForceMotion(vec2 xz, float settle, float jitterAmp) {\n' +
       '  if (settle >= 0.999) return xz;\n' +
       '  float r = length(xz);\n' +
-      '  float rNorm = clamp(r / 1.05, 0.0, 1.0);\n' +
+      '  float rNorm = clamp(r / 1.45, 0.0, 1.0);\n' +
       '  float delay = rNorm * 0.24;\n' +
       '  float u = clamp((settle - delay) / max(0.01, 1.0 - delay), 0.0, 1.0);\n' +
       '  float decay = exp(-5.4 * u);\n' +
@@ -891,9 +991,9 @@
       '  float peakGlow = smoothstep(0.76, 1.0, vH);\n' +
       '  if (uIsDark > 0.5) lit += vec3(0.28, 0.13, 0.04) * peakGlow;\n' +
       '\n' +
-      '  float radialFade = 1.0 - smoothstep(0.42, 0.86, radial);\n' +
+      '  float radialFade = 1.0 - smoothstep(0.52, 0.94, radial);\n' +
       '  float viewDist = length(uEye - vWorld);\n' +
-      '  float viewFog = exp(-max(0.0, viewDist - 2.6) * 0.35);\n' +
+      '  float viewFog = exp(-max(0.0, viewDist - 4.0) * 0.22);\n' +
       '  float vis = clamp(radialFade * viewFog, 0.0, 1.0);\n' +
       '  float valleySoft = clamp(smoothstep(0.008, 0.09, vH) + gridLine * 0.55 + cLine * 0.75 + horizonSheen * 0.45, 0.0, 1.0);\n' +
       '  ' + outAssign + ' = vec4(mix(uBg, lit, 0.92), vis * valleySoft);\n' +
@@ -922,7 +1022,7 @@
       varyF + 'vec4 vColor;\n' +
       varyF + 'float vRadial;\n' +
       'void main() {\n' +
-      '  float fade = 1.0 - smoothstep(uFadeStart, max(uFadeStart + 0.08, 0.98), vRadial);\n' +
+      '  float fade = 1.0 - smoothstep(uFadeStart, max(uFadeStart + 0.14, 1.08), vRadial);\n' +
       '  ' + outAssign + ' = vec4(vColor.rgb, vColor.a * fade);\n' +
       '}\n';
 
@@ -1219,6 +1319,13 @@
           neighbor: isNeighbor,
         });
       }
+
+      // 3D 地形球体防重叠：按半径反比质量在水平面推开重叠球体，大枢纽锚峰、小节点环绕舒展
+      resolveSphereOverlaps3D(cachedNodes3d, currentField, heightAmp, {
+        gap: isPreview ? 0.004 : 0.0022,
+        maxPasses: isLite ? 5 : 8,
+        pinnedId: data.draggingNodeId || null,
+      });
 
       // Rank top hubs for 3D spherical orbs + vertical stems
       var stemCap = isLite ? 55 : (isPreview ? cachedNodes3d.length : 170);
@@ -1756,7 +1863,7 @@
       gl.uniform1f(lLoc.u.uExtent, currentField.extent);
       gl.uniform1f(lLoc.u.uHeightScale, heightScale);
       gl.uniform1f(lLoc.u.uForceSettle, forceSettle);
-      gl.uniform1f(lLoc.u.uFadeStart, 0.60);
+      gl.uniform1f(lLoc.u.uFadeStart, 0.86);
       if (lineVertCount > 0) {
         activeAttrs = {};
         bindAttrib(lLoc.a.aPos, linePosBuf, 3, activeAttrs);
@@ -1805,7 +1912,7 @@
         gl.uniform1f(lLoc.u.uExtent, currentField.extent);
         gl.uniform1f(lLoc.u.uHeightScale, heightScale);
         gl.uniform1f(lLoc.u.uForceSettle, forceSettle);
-        gl.uniform1f(lLoc.u.uFadeStart, 0.98);
+        gl.uniform1f(lLoc.u.uFadeStart, 8.0);
         bindAttrib(lLoc.a.aPos, hiLinePosBuf, 3, activeAttrs);
         bindAttrib(lLoc.a.aColor, hiLineColBuf, 4, activeAttrs);
         useAttrs(activeAttrs);
@@ -2070,7 +2177,7 @@
         var gridN = tier === 'lite' ? 92 : (nodes.length <= 160 ? 120 : 148);
         terrainField = computeTerrainField(nodes, degreeInfo, {
           gridSize: gridN,
-          extent: 1.35,
+          extent: (activeDragBounds && terrainField) ? terrainField.extent : undefined,
           activeIds: data.activeIds || null,
           fixedBounds: activeDragBounds,
         });
@@ -2080,6 +2187,9 @@
       }
       if (batchesDirty) {
         var heightAmp = (params.height / 100) * 0.46;
+        var activeDragId = (dragState && dragState.mode === 'node' && dragState.dragStarted && dragState.node)
+          ? dragState.node.id
+          : null;
         renderer.buildDynamicBatches({
           nodes: nodes,
           edges: edges,
@@ -2088,6 +2198,7 @@
           hoverNode: hoveredNode,
           sidebarNode: data.sidebarNode || null,
           routeFocusNodeId: routeFocusNodeId,
+          draggingNodeId: activeDragId,
           getNodeColor: data.getNodeColor,
           getNodeAlpha: data.getNodeAlpha,
           showEdges: isEdgesVisible(),
@@ -2442,9 +2553,14 @@
             var dragPt = getStageLocalPoint(ev);
             var hitWorld = renderer.unprojectToPlaneY(dragPt[0], dragPt[1], dragState.planeY);
             if (hitWorld && activeDragBounds) {
-              var maxW = (terrainField ? terrainField.extent : 1.35) * 0.80;
-              var nextWx = Math.max(-maxW, Math.min(maxW, hitWorld[0] + dragState.offsetWx));
-              var nextWz = Math.max(-maxW, Math.min(maxW, hitWorld[2] + dragState.offsetWz));
+              // 仅做超大径向保护以防掠射角射线发散，不再用正交方框限制拖拽范围
+              var rawWx = hitWorld[0] + dragState.offsetWx;
+              var rawWz = hitWorld[2] + dragState.offsetWz;
+              var maxDragR = Math.max(4.5, (terrainField ? terrainField.extent : 1.45) * 2.6);
+              var rawR = Math.hypot(rawWx, rawWz);
+              var dragScale = rawR > maxDragR ? (maxDragR / rawR) : 1;
+              var nextWx = rawWx * dragScale;
+              var nextWz = rawWz * dragScale;
               var nextCoords = worldToGraphCoords(nextWx, nextWz, activeDragBounds);
               dragState.node.x = nextCoords.x;
               dragState.node.y = nextCoords.y;
@@ -2488,8 +2604,9 @@
           var rz = -Math.sin(yawRad);
           var fx = Math.sin(yawRad);
           var fz = Math.cos(yawRad);
-          camState.targetX = Math.max(-0.9, Math.min(0.9, camState.targetX - dx * rx * speed + dy * fx * speed));
-          camState.targetZ = Math.max(-0.9, Math.min(0.9, camState.targetZ - dx * rz * speed + dy * fz * speed));
+          var panMax = Math.max(1.8, (terrainField ? terrainField.extent : 1.45) * 1.25);
+          camState.targetX = Math.max(-panMax, Math.min(panMax, camState.targetX - dx * rx * speed + dy * fx * speed));
+          camState.targetZ = Math.max(-panMax, Math.min(panMax, camState.targetZ - dx * rz * speed + dy * fz * speed));
           scheduleRender();
           return;
         }
@@ -2575,7 +2692,7 @@
       if (entryAnim) cancelEntryAnim();
       ev.preventDefault();
       var factor = ev.deltaY > 0 ? 1.09 : 0.91;
-      camState.distance = Math.max(0.65, Math.min(3.8, camState.distance * factor));
+      camState.distance = Math.max(0.65, Math.min(5.5, camState.distance * factor));
       scheduleRender();
     }
 
@@ -2878,6 +2995,7 @@
     projectWorldToScreen: projectWorldToScreen,
     unprojectScreenToPlaneY: unprojectScreenToPlaneY,
     worldToGraphCoords: worldToGraphCoords,
+    resolveSphereOverlaps3D: resolveSphereOverlaps3D,
     evalForceMotionXZ: evalForceMotionXZ,
     createController: createController,
   };

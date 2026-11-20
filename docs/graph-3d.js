@@ -1567,6 +1567,130 @@
       });
     }
 
+    /**
+     * 3D 立体球体防重叠解算（O(N) 三维空间网格）：
+     * 按球体半径平方反比推开相交球体（固定节点 fx/fy/fz 不动，高连接大球锚定），
+     * 保证任意两球心三维距离 ≥ r_a + r_b + padding。
+     */
+    function resolveNodeOverlaps3D(list, radiusOf, padding, maxPasses, strength) {
+      if (!list || list.length < 2) return 0;
+      var n = list.length;
+      var pad = padding != null ? padding : 4;
+      var passes = maxPasses != null ? maxPasses : 6;
+      var kPush = strength != null ? strength : 1.02;
+      var radii = new Float32Array(n);
+      var maxR = 11;
+      var i;
+      for (i = 0; i < n; i++) {
+        var r = radiusOf(list[i]);
+        radii[i] = r;
+        if (r > maxR) maxR = r;
+      }
+      var cellSize = Math.max(24, maxR * 2 + pad * 1.5);
+      var invCell = 1 / cellSize;
+      var totalResolved = 0;
+
+      for (var pass = 0; pass < passes; pass++) {
+        var grid = new Map();
+        for (i = 0; i < n; i++) {
+          var nd = list[i];
+          if (nd.x == null || nd.y == null) continue;
+          var nz = nd.z != null ? nd.z : 0;
+          var gx = Math.max(-2040, Math.min(2040, Math.floor(nd.x * invCell)));
+          var gy = Math.max(-2040, Math.min(2040, Math.floor(nd.y * invCell)));
+          var gz = Math.max(-2040, Math.min(2040, Math.floor(nz * invCell)));
+          var key = ((gx + 2048) * 4096 + (gy + 2048)) * 4096 + (gz + 2048);
+          var bucket = grid.get(key);
+          if (bucket) bucket.push(i);
+          else grid.set(key, [i]);
+        }
+
+        var passOverlaps = 0;
+        for (i = 0; i < n; i++) {
+          var a = list[i];
+          if (a.x == null || a.y == null) continue;
+          var az = a.z != null ? a.z : 0;
+          var ra = radii[i];
+          var gxa = Math.max(-2040, Math.min(2040, Math.floor(a.x * invCell)));
+          var gya = Math.max(-2040, Math.min(2040, Math.floor(a.y * invCell)));
+          var gza = Math.max(-2040, Math.min(2040, Math.floor(az * invCell)));
+          var invMa = (a.fx != null && a.fy != null && a.fz != null) ? 0 : 1 / Math.max(1, ra * ra);
+
+          for (var oz = -1; oz <= 1; oz++) {
+            for (var oy = -1; oy <= 1; oy++) {
+              for (var ox = -1; ox <= 1; ox++) {
+                var nKey = ((gxa + ox + 2048) * 4096 + (gya + oy + 2048)) * 4096 + (gza + oz + 2048);
+                var cell = grid.get(nKey);
+                if (!cell) continue;
+                for (var k = 0; k < cell.length; k++) {
+                  var j = cell[k];
+                  if (j <= i) continue;
+                  var b = list[j];
+                  if (b.x == null || b.y == null) continue;
+                  var bz = b.z != null ? b.z : 0;
+                  var rb = radii[j];
+                  var minDist = ra + rb + pad;
+                  var dx = b.x - a.x;
+                  var dy = b.y - a.y;
+                  var dz = bz - az;
+                  var d2 = dx * dx + dy * dy + dz * dz;
+                  if (d2 >= minDist * minDist) continue;
+                  var dist = Math.sqrt(d2);
+                  var ux;
+                  var uy;
+                  var uz;
+                  if (dist < 1e-4) {
+                    var h1 = (((i * 2654435761 + j * 1597334677) >>> 0) % 1024) * (Math.PI * 2 / 1024);
+                    var h2 = ((((i * 2246822519 + j * 3266489917) >>> 0) % 1024) / 512) - 1;
+                    var sinT = Math.sqrt(Math.max(0, 1 - h2 * h2));
+                    ux = sinT * Math.cos(h1);
+                    uy = h2;
+                    uz = sinT * Math.sin(h1);
+                  } else {
+                    ux = dx / dist;
+                    uy = dy / dist;
+                    uz = dz / dist;
+                  }
+                  var invMb = (b.fx != null && b.fy != null && b.fz != null) ? 0 : 1 / Math.max(1, rb * rb);
+                  var invSum = invMa + invMb;
+                  if (!(invSum > 0)) continue;
+                  var push = (minDist - dist) * kPush;
+                  var wa = invMa / invSum;
+                  var wb = invMb / invSum;
+                  a.x -= ux * push * wa;
+                  a.y -= uy * push * wa;
+                  a.z = az - uz * push * wa;
+                  az = a.z;
+                  b.x += ux * push * wb;
+                  b.y += uy * push * wb;
+                  b.z = bz + uz * push * wb;
+                  passOverlaps += 1;
+                  totalResolved += 1;
+                }
+              }
+            }
+          }
+        }
+        if (passOverlaps === 0) break;
+      }
+      return totalResolved;
+    }
+
+    function create3DCollisionForce(radiusOf, padding) {
+      var simNodes = [];
+      var tickNo = 0;
+      function force(alpha) {
+        tickNo += 1;
+        if (!simNodes.length || alpha > 0.45) return;
+        if (isLowEnd() && alpha > 0.12 && (tickNo & 1)) return;
+        resolveNodeOverlaps3D(simNodes, radiusOf, padding, 1, 0.85);
+      }
+      force.initialize = function (nodesArg) {
+        simNodes = nodesArg || [];
+      };
+      return force;
+    }
+
     function clearMagneticForces() {
       ['x', 'y', 'z'].forEach(function (name) {
         if (graph.d3Force(name)) graph.d3Force(name, null);
@@ -1896,9 +2020,21 @@
           setHoverNode(null);
           if (opts.onBackgroundClick) opts.onBackgroundClick();
         });
-      // 唯一的 onEngineStop 处理器（kapsule 属性只能挂一个）：先跑监听者，再开始空闲计时
+      // 唯一的 onEngineStop 处理器（kapsule 属性只能挂一个）：先做最终防重叠解算，再跑监听者并开始空闲计时
       graph.onEngineStop(function () {
         engineRunning = false;
+        var activeData = typeof graph.graphData === 'function' ? graph.graphData() : null;
+        var activeList = (activeData && Array.isArray(activeData.nodes)) ? activeData.nodes : nodes3d;
+        if (resolveNodeOverlaps3D(activeList, sphereRadiusFor, 4, isLowEnd() ? 4 : 8, 1.02) > 0) {
+          for (var si = 0; si < activeList.length; si++) {
+            var sn = activeList[si];
+            if (sn && sn.__threeObj && sn.__threeObj.position) {
+              sn.__threeObj.position.set(sn.x || 0, sn.y || 0, sn.z || 0);
+            }
+          }
+          syncLabels();
+          wakeRender(160);
+        }
         engineStopListeners.forEach(function (fn) { fn(); });
         scheduleIdlePause();
       });
@@ -1906,6 +2042,15 @@
       if (cam && cam.layers) cam.layers.enable(LINK_LAYER);
       var chargeForce = graph.d3Force('charge');
       if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
+      graph.d3Force('collision', create3DCollisionForce(sphereRadiusFor, 4));
+      var linkForce = graph.d3Force('link');
+      if (linkForce && typeof linkForce.distance === 'function') {
+        linkForce.distance(function (l) {
+          var s = (l && typeof l.source === 'object' && l.source) ? l.source : nodeById.get(l && l.source);
+          var t = (l && typeof l.target === 'object' && l.target) ? l.target : nodeById.get(l && l.target);
+          return (s ? sphereRadiusFor(s) : 11) + (t ? sphereRadiusFor(t) : 11) + 28;
+        });
+      }
     }
 
     function ensureGraph() {
