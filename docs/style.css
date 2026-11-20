@@ -5710,56 +5710,88 @@ a.card:active { transform: translateY(-1px); }
   padding-top: 8px;
   border-top: 1px solid var(--border);
 }
+.kb-chat-citations__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 .kb-chat-citations__label {
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
 }
-.kb-chat-citation-card {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 7px 9px;
-  border-radius: 8px;
-  background: var(--surface-strong);
+.kb-chat-citations__toggle {
+  padding: 2px 8px;
+  border-radius: 999px;
   border: 1px solid var(--border);
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+  background: var(--surface-strong);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
 }
-.kb-chat-citation-card:hover {
+.kb-chat-citations__toggle:hover {
+  color: var(--accent);
   border-color: var(--accent);
   background: var(--quote-bg);
 }
-.kb-chat-citation-title {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--accent);
+.kb-chat-citations__toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
-.kb-chat-citation-heading {
-  font-size: 0.7rem;
-  color: var(--text-muted);
+.kb-chat-citation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-.kb-chat-citation-meta {
+.kb-chat-citation-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+}
+.kb-chat-citation-group__head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 5px;
+  justify-content: space-between;
+  gap: 4px 10px;
+}
+.kb-chat-citation-title {
+  font-size: 0.77rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  line-height: 1.35;
+}
+a.kb-chat-citation-title:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+.kb-chat-citation-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 5px;
   font-size: 0.68rem;
   color: var(--text-muted);
 }
-.kb-chat-citation-chip {
+.kb-chat-citation-meta-item {
   display: inline-flex;
   align-items: center;
-  padding: 1px 6px;
-  border-radius: 999px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  line-height: 1.45;
   max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+}
+.kb-chat-citation-meta-item + .kb-chat-citation-meta-item::before {
+  content: "·";
+  margin-right: 5px;
+  opacity: 0.55;
 }
 .kb-chat-citation-health {
   display: inline-flex;
@@ -5772,14 +5804,98 @@ a.card:active { transform: translateY(-1px); }
 .kb-chat-citation-health .node-health i {
   height: 9px;
 }
-.kb-chat-citation-snippet {
-  font-size: 0.74rem;
-  line-height: 1.4;
+.kb-chat-citation-passages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.kb-chat-citation-passage {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
   color: var(--text);
+  text-decoration: none;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  max-width: 100%;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease);
+}
+a.kb-chat-citation-passage:hover {
+  border-color: var(--accent);
+  background: var(--quote-bg);
+  color: var(--text);
+}
+.kb-chat-citation-passage-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  max-width: 100%;
+}
+.kb-chat-citation-idx {
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.kb-chat-citation-heading {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.kb-chat-citation-snippet {
+  display: none;
+  font-size: 0.71rem;
+  line-height: 1.42;
+  color: var(--text-muted);
+}
+.kb-chat-citations.is-snippets-open .kb-chat-citation-passages {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 4px;
+  padding-top: 5px;
+  border-top: 1px dashed var(--border);
+}
+.kb-chat-citations.is-snippets-open .kb-chat-citation-passage {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  padding: 3px 6px;
+  border-color: transparent;
+  background: transparent;
+  font-size: 0.71rem;
+  line-height: 1.42;
+  color: var(--text-muted);
+}
+.kb-chat-citations.is-snippets-open a.kb-chat-citation-passage:hover {
+  border-color: var(--border);
+  background: var(--bg-alt);
+}
+.kb-chat-citations.is-snippets-open .kb-chat-citation-passage-head {
+  display: inline;
+}
+.kb-chat-citations.is-snippets-open .kb-chat-citation-idx {
+  margin-right: 4px;
+}
+.kb-chat-citations.is-snippets-open .kb-chat-citation-heading {
+  display: inline;
+  font-weight: 600;
+  white-space: normal;
+  overflow: visible;
+}
+.kb-chat-citations.is-snippets-open .kb-chat-citation-passage:has(.kb-chat-citation-snippet) .kb-chat-citation-heading::after {
+  content: "：";
+}
+.kb-chat-citations.is-snippets-open[data-lang="en"] .kb-chat-citation-passage:has(.kb-chat-citation-snippet) .kb-chat-citation-heading::after {
+  content: ": ";
+}
+.kb-chat-citations.is-snippets-open .kb-chat-citation-snippet {
+  display: inline;
 }
 
 .kb-chat-turnstile {
@@ -5862,7 +5978,8 @@ a.card:active { transform: translateY(-1px); }
   .kb-chat-panel,
   .kb-chat-icon-btn,
   .kb-chat-starter-btn,
-  .kb-chat-citation-card,
+  .kb-chat-citations__toggle,
+  .kb-chat-citation-passage,
   .kb-chat-send {
     transition: none;
   }
