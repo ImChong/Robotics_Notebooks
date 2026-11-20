@@ -140,6 +140,9 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照“提出动作 → 独立验证”与可追责的验收门。
+- [Agent 驱动的混沌压测](../methods/agent-driven-chaos-testing-loop.md) — 对照受控故障注入、记录、修复与重测，不将模拟可靠性等同真机安全。
+
 - [Agnes Harness 主实体](./agnes-harness.md)
 - [Sys1 1.0 独立报告](./paper-agnes-sys1-decision-model-technical-report.md)
 - [RSI Stage 4](../../roadmap/depth-rsi.md)
