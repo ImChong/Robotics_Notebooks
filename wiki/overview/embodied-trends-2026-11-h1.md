@@ -3,8 +3,16 @@ type: overview
 tags:
   - vla
   - embodied-ai
-status: draft
+status: complete
 updated: 2026-11-20
+original:
+  - ../../sources/papers/3a-vla-2602-02212.md
+  - ../../sources/papers/prism-2611-08917.md
+  - ../../sources/papers/dynaflip-2605-30350.md
+  - ../../sources/papers/personadrive-2606-12616.md
+  - ../../sources/papers/say-the-same-act-differently-2611-04166.md
+  - ../../sources/papers/scout-2611-01600.md
+  - ../../sources/papers/ns-vla-2603-09542.md
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -17,7 +25,7 @@ summary: "2026年11月上半月具身智能九篇论文的主题与技术介入�
 > 来源：多模空间公众号风向标（2026-11-20）。**206 篇**为原作者对其样本的统计；本文没有完整文章图表和去重样本，不能复核该数字。
 
 ## 一句话定义
-将九篇论文按**技能规划、输入与表征、行为条件化、安全诊断、遮挡推演**整理为读论文地图，避免跨环境直接比较成功率。
+按**训练期语义监督、技能路由、表征学习、驾驶风格条件化、语言动作失配诊断与遮挡世界模型**给九篇论文定位；作者的 206 篇样本量仍未独立验证。
 
 ## 英文缩写速查
 | 缩写 | 英文全称 | 简要说明 |
@@ -58,14 +66,14 @@ flowchart TD
 这是便于阅读的**知识分类图**，不是九篇论文共同使用的训练框架。
 
 ## 工程实践
-- **已找到官方可运行代码入口：** [NS-VLA](../entities/paper-ns-vla-2603-09542.md)、[DynaFLIP](../entities/paper-dynaflip-2605-30350.md)、[PersonaDrive](../entities/paper-personadrive-2606-12616.md)；附各自实际入口的静态 Mermaid 调用时序图。
+- **已找到官方可运行代码入口（静态核验、未实际执行）：** [NS-VLA](../entities/paper-ns-vla-2603-09542.md)、[DynaFLIP](../entities/paper-dynaflip-2605-30350.md)、[PersonaDrive](../entities/paper-personadrive-2606-12616.md)；附各自实际入口的静态 Mermaid 调用时序图。
 - **已有节点复用：** [AnyCamVLA](../entities/paper-anycam-vla.md)、[A³-VLA](../entities/paper-a3-vla-attention-alignment.md) 已在仓库，**本次不重复创建**；既有节点记录的全文版本与本次用户列示的 v3/v2 不完全一致，后续需专题审校。
 - 入口：[VLA 纵深路线 Stage 5](../../roadmap/depth-vla.md)；优先按自己关心的任务与模块选读。
 
 ## 局限与风险
 - **206 篇、分类图、真机品牌图**来自公众号描述而非可复算原始表格；没有把它们当作可验证统计结果。
 - 三维游戏、CARLA 驾驶、桌面操作、真机货架与对抗诊断不是同一评测任务，成功率和可靠性不能横比。
-- 未逐篇完成原论文所有附录与结果复核；节点保留 draft 并明确标注证据缺口。
+- 本次已完成七篇新节点的指定版本原文与必要附录核对；现有 AnyCamVLA/A³-VLA 节点保持原有单篇版本记录，**未把它们旧版实验数值称为本期指定的新版本复核**。
 
 ## 选读路径
 ### 规划、技能与动作抽象
@@ -85,7 +93,7 @@ flowchart TD
 ## 参考来源
 - [多模空间公众号资料索引](../../sources/blogs/duomo_embodied_2026_11_first_half.md)
 - [公众号原始链接](https://mp.weixin.qq.com/s/v-PpSCF-c7qHQXzlSYXyMw)
-- 九篇原始 arXiv 版本及节点上方表格逐一列出；公众号原图及全部论文附录**未获完整读取**。
+- 九篇原始 arXiv 版本及节点上方表格逐一列出；**七篇新建论文已核对原文和附录**，既有 AnyCamVLA/A³-VLA 仍按原节点核对版本引用；公众号原图及其 206 篇的完整样本**未取得**。
 
 ## 推荐继续阅读
 - [VLA](../methods/vla.md)
