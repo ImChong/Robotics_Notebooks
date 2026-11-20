@@ -32,7 +32,7 @@ python train.py --cell INTACT_4T_S3072 --gpus 0,1,2,3 --datasets datasets.json
 python evaluate.py --checkpoint runs/INTACT_4T_S3072/exports/reacher --task reacher --data-dir hf/datasets --planner direct
 ```
 
-官方训练指南：单机 4 GPU / global batch 256 个窗口；SIGReg 0.015、SADL 0.01 为所列示例配置，论文各表的正则权重可能不同。评测默认 seeds 0/1/42 各 100 episodes。
+官方发布代码训练指南：单机 4 GPU / global batch 256 个窗口，共享 BatchNorm（四任务各 64）；SIGReg 0.015、SADL 0.01 为所列示例配置。**论文附录 C Table 8 的历史四任务实验是每任务 256 clips / 四 worker 合计 1024，容量统计按任务局部批次，附录 B Table 7 的 SIGReg λD=0.03**；两个版本的训练协议和损失权重不能直接等同。评测默认 seeds 0/1/42 各 100 episodes。
 
 ## 局限
 
