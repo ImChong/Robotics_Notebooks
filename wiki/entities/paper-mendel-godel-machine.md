@@ -171,6 +171,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 通过真实运行、独立评审与测试证据验证 MGM 产生的代码修改，防止只优化进化搜索分数
+- [Claude Code 动态多 Agent 工作流](../methods/claude-code-dynamic-workflows.md) — 作为冻结底座模型、改进 harness 编排的相邻工程方法对照；与 MGM 的跨谱系进化机制不同
 - [Darwin Gödel Machine](./paper-darwin-godel-machine.md)
 - [Hyperagents](./paper-hyperagents.md)
 - [递归自我改进概念](../concepts/recursive-self-improvement.md)
