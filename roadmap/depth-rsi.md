@@ -199,6 +199,8 @@ flowchart LR
 - 机器人侧：把"改控制程序"当 harness 搜索做一遍，对照 ASPIRE 的进化搜索设定
 
 ### 推荐读什么
+- [Agnes Harness 系统与 RSI 技术报告](../wiki/entities/paper-agnes-harness-rsi-technical-report.md) — 账本主权、双系统及仅配置级 Playbook RSI；sealed twin-simulation 和人工门控，不可当真机证据。
+- [Agnes Sys1 1.0 决策模型技术报告](../wiki/entities/paper-agnes-sys1-decision-model-technical-report.md) — 区分结构化决策概率与待验证的 TTT 计划，不把它当权重级 RSI 的已测成果。
 - [Claude Code 动态多 Agent 工作流](../wiki/methods/claude-code-dynamic-workflows.md) — `agent()`、`parallel()`、`pipeline()` 组成面向特定任务的 harness；注意它是**按任务动态构建工作流**，并非自证可持续改进。
 - [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
 - [Mendel Gödel Machine（MGM）](../wiki/entities/paper-mendel-godel-machine.md) — 在 HGM 上新增同节点多任务与跨谱系同题的比较证据指导自修改；编程 Agent 实验，不是真机自进化
