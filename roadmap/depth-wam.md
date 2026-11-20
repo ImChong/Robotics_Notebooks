@@ -89,6 +89,7 @@ flowchart LR
 - 在纸上画出一条 Cascaded 管线的信息流：观测 → 未来表征 → IDM / 动作头 → 控制
 
 ### 推荐读什么
+- [Doppel：渲染机器人再预测未来](../wiki/entities/paper-doppel.md) — 跨本体世界模型，明确条件渲染/相机标定与动作数值的职责。
 - [JEPA4R：单深度点云 4D 潜空间规划](../wiki/entities/paper-jepa4r-2611-19771.md) — 以公制点云和 action-conditioned JEPA 预测构建空间世界模型；训练/规划使用几何潜状态，不等于视频生成式 Joint WAM。
 - [PixVid：逐帧像素视频生成](../wiki/entities/paper-pixvid-back-to-pixels.md) — 作为视频世界模型的**逐帧渲染架构对照**：像素 patch + 因果 detailer 消除时空 VAE 的块级动作等待；测的是相机控制到屏幕延迟，不是机器人动作头或物理一致性。
 - [Generative World Models](../wiki/methods/generative-world-models.md)
@@ -252,6 +253,7 @@ flowchart LR
 - 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[导航纵深](depth-navigation.md)
 
 **方向 C：评测与安全一致性**
+- [HINT-WAM：未来视频自蒸馏后训练](../wiki/entities/paper-hint-wam.md) — 无 reward 的学生自采样分布监督，比较新任务收益与原任务遗忘。
 - 同时看世界侧（保真、物理常识、动作可推断性）与策略侧（成功率、长程、sim2real）；避免单侧代理
 - [VLAW：真实失败校准与想象策略改进](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 对照接触物理误判、Qwen3-VL 奖励 FP/FN 和真机策略成功率，强调视觉逼真与物理可信不同；为 WM 辅助策略后训练的边界案例。
 - 关键词：综述评测节、[GigaWorld-1](../wiki/entities/paper-gigaworld-1-policy-evaluation.md)、[SC3-Eval](../wiki/entities/paper-sc3-eval.md)（自一致视频生成作真机 VLA 策略评估器，闭环 Pearson 0.929）、[HarnessEval-W](../wiki/entities/paper-harnesseval-w.md)（LLM harness 接交互式世界模型评测，Intentional 排序与人类 ρ=0.93）、开放挑战（想象未来与真实执行的因果一致）
