@@ -16,6 +16,7 @@ related:
   - ../entities/paper-notebook-navila-legged-robot-vision-language-action-model.md
   - ../entities/paper-legged-vln-barrier-caging.md
   - ../entities/paper-se2-navigation-mesh.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/roam_legged_navigation_arxiv_2611_25215.md
   - ../../sources/sites/roam-hiking.md
@@ -168,6 +169,7 @@ sequenceDiagram
 - [Legged-VLN Barrier Caging](./paper-legged-vln-barrier-caging.md)
 - [SE(2) Navigation Mesh](./paper-se2-navigation-mesh.md)
 - [导航纵深路线 · Stage 3/4](../../roadmap/depth-navigation.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ROAM 的 SAN 开放词汇分割与 2.5D 语义地图落在感知→空间图层融合链路
 
 ## 参考来源
 
