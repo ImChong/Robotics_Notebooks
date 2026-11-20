@@ -464,6 +464,7 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(perspectiveSrc.includes('stepReboundAnim') && perspectiveSrc.includes('rebounding: !!reboundAnim'), '3D node drag includes spring-force rebound simulation');
   assert.ok(graphHtml.includes('perspectiveSimActive') && graphHtml.includes('reseed: true'), '3D terrain layout refresh randomizes nodes and restarts force simulation');
   assert.ok(graphHtml.includes('getRouteBadges:') && perspectiveSrc.includes('function focusNode('), '3D terrain supports route step-by-step focus and numbered route badges');
+  assert.ok(graphHtml.includes('--depth-banner-chat-shift') && graphHtml.includes('syncDepthBannerChatOffset'), 'route stepper banner shifts cleanly to avoid open chat panel');
   assert.ok(graphHtml.includes('getCommunityLabels:') && perspectiveSrc.includes('communityLabelCount'), '3D terrain renders floating community cluster capsules');
   assert.ok(perspectiveSrc.includes('uHeightScale') && perspectiveSrc.includes('uGlintPhase') && perspectiveSrc.includes('startCameraTransition'), 'top-down to oblique entry swoop and horizon glint present');
   assert.ok(styleCss.includes('[data-theme="light"]'));
