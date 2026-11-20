@@ -2979,6 +2979,7 @@
     function syncRouteBadges() {
       syncRouteBadges2D();
       if (graph3dView && is3DView()) graph3dView.syncRouteBadges();
+      if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(false);
       updateRouteStepper();
     }
 
@@ -2988,6 +2989,12 @@
       if (!d) return;
       if (is3DView()) {
         if (graph3dView) graph3dView.focusNode(d);
+        return;
+      }
+      if (isPerspectiveView()) {
+        if (perspectiveController && typeof perspectiveController.focusNode === 'function') {
+          perspectiveController.focusNode(d.id);
+        }
         return;
       }
       if (d.x == null) return;
@@ -3005,7 +3012,12 @@
       syncRouteBadges();
       if (routeStep < 0) {
         if (is3DView()) { if (graph3dView) graph3dView.fitToVisible(); }
-        else fitToVisibleNodes();
+        else if (isPerspectiveView()) {
+          if (perspectiveController) {
+            if (typeof perspectiveController.focusNode === 'function') perspectiveController.focusNode(null);
+            perspectiveController.fitToView();
+          }
+        } else fitToVisibleNodes();
       } else {
         flyToRouteStep();
       }
@@ -3016,6 +3028,9 @@
       routeIndexById.clear();
       routeOrderIds.forEach((id, i) => routeIndexById.set(id, i + 1));
       routeStep = -1;
+      if (perspectiveController && typeof perspectiveController.focusNode === 'function') {
+        perspectiveController.focusNode(null);
+      }
     }
 
     if (routeStepPrevEl) routeStepPrevEl.addEventListener('click', () => setRouteStep(routeStep - 1));
@@ -3479,7 +3494,9 @@
         timelineAnimateBtn.disabled = false;
         timelineAnimateBtn.title = is3DView()
           ? '按页面首次加入日从最老到最新，在 3D 立体视图中逐帧激活节点与连线'
-          : '按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
+          : (isPerspectiveView()
+            ? '按页面首次加入日从最老到最新，在 3D 地形视图中逐帧生长山峰与节点'
+            : '按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）');
       }
     }
 
@@ -4724,9 +4741,12 @@
     gatedCollide.initialize = (...args) => collideForce.initialize(...args);
     simulation.force('collision', gatedCollide);
 
+    let perspectiveSimActive = false;
+
     function pauseSimulation2D() {
       // 作废仍在分片中的 warmup：否则切到 3D 后剩余分片跑完会在后台 restart 隐藏的 2D 全图模拟
       warmupToken += 1;
+      perspectiveSimActive = false;
       simulation.stop();
       simulation.alphaTarget(0);
     }
@@ -4742,7 +4762,7 @@
         graph3dView.updateForces();
         return;
       }
-      if (is3DView() || isPerspectiveView()) return;
+      if (is3DView()) return;
       simulation.force('charge').strength(chargeStrength);
       
       if (isMagnetic2D) {
@@ -4771,6 +4791,11 @@
         simulation.force('y', d3.forceY(getTargetY).strength(0.18));
       } else {
         applyCenterGravity2D();
+      }
+      if (isPerspectiveView()) {
+        perspectiveSimActive = true;
+        simulation.alpha(0.38).restart();
+        return;
       }
       simulation.alpha(0.25).restart();
     }
@@ -5258,8 +5283,23 @@
         graph3dView.fitToScreen(350);
         return;
       }
-      if (isPerspectiveView() && perspectiveController && typeof perspectiveController.replayForceBloom === 'function') {
-        perspectiveController.replayForceBloom();
+      if (isPerspectiveView() && perspectiveController) {
+        perspectiveSimActive = true;
+        updateGraphViewport();
+        // 对齐 2D / 3D 立体「刷新布局」：随机打散全部节点坐标并分片 warmup，期间与后续均由力模拟实时驱动 3D 地形重排落稳
+        runStabilizedLayout2D({
+          reseed: true,
+          async: true,
+          onProgress: () => {
+            if (!isPerspectiveView() || !perspectiveSimActive) return;
+            perspectiveController.syncData(true);
+          },
+          onVisible: () => {
+            if (!isPerspectiveView() || !perspectiveSimActive) return;
+            perspectiveController.syncData(true);
+            simulation.restart();
+          },
+        });
         return;
       }
       labelsSettled2D = false;
@@ -5272,13 +5312,27 @@
 
     /* ── Tick ── */
     simulation.on('tick', () => {
-      if (is3DView() || isPerspectiveView()) return;
+      if (is3DView()) return;
+      if (isPerspectiveView()) {
+        if (perspectiveSimActive && perspectiveController) {
+          perspectiveController.syncData(true);
+        }
+        return;
+      }
       syncGraphDomFromSimulation();
     });
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
-      if (timelineAnimating || is3DView() || isPerspectiveView()) return;   // 时序动画 / 3D 期间不触发整图标签渐显 / 自适应
+      if (isPerspectiveView()) {
+        if (perspectiveSimActive) {
+          perspectiveSimActive = false;
+          syncGraphDomFromSimulation();
+          if (perspectiveController) perspectiveController.syncData(true);
+        }
+        return;
+      }
+      if (timelineAnimating || is3DView()) return;   // 时序动画 / 3D 期间不触发整图标签渐显 / 自适应
       finishSimulationLoad();
     });
 
@@ -6264,6 +6318,7 @@
 
     // 相机自适应到「已显现」节点（生长时随之缩放，类似 Obsidian）
     function fitToTimelineNodes() {
+      if (isPerspectiveView()) return;
       const vis = nodes.filter(n => timelineRevealedIds.has(n.id) && n.x != null);
       if (vis.length < 2) return;
       const transform = computeGraphFitTransform(vis, {
@@ -6282,23 +6337,27 @@
       targetIdx = Math.max(0, Math.min(timelineTotal, Math.round(targetIdx)));
       const prev = timelineIdx;
       if (targetIdx === prev) { updateTimelineProgress(timelineIdx, timelineTotal); return; }
+      const inPersp = isPerspectiveView();
 
       if (targetIdx > prev) {
         for (let i = prev; i < targetIdx; i++) {
           const d = timelineOrdered[i];
           seedTimelineNodePosition(d);          // 先按已显现邻居定位
           timelineRevealedIds.add(d.id);
-          if (animate) revealTimelineNode(d);   // 播放：逐个 pop-in（含定位）
-          else placeTimelineNode(d);            // 拖拽：仅定位，显隐交给下方批量渲染
+          if (!inPersp) {
+            if (animate) revealTimelineNode(d);   // 播放：逐个 pop-in（含定位）
+            else placeTimelineNode(d);            // 拖拽：仅定位，显隐交给下方批量渲染
+          }
         }
-        if (!animate) renderTimelineStatic();
+        if (!inPersp && !animate) renderTimelineStatic();
       } else {
         for (let i = targetIdx; i < prev; i++) timelineRevealedIds.delete(timelineOrdered[i].id);
-        renderTimelineStatic();
+        if (!inPersp) renderTimelineStatic();
       }
       syncTimelineSimulation();                 // 成员 = 已显现子集；暂停时力模拟仍继续
       timelineIdx = targetIdx;
-      updateTimelineLinks();
+      if (!inPersp) updateTimelineLinks();
+      else if (perspectiveController) perspectiveController.syncData(true);
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
@@ -6320,6 +6379,7 @@
       if (!timelineAnimating || timelinePlaying) return;
       if (timelineIdx >= timelineTotal) seekTimeline(0, false); // 已到末尾再播放则从头开始
       timelinePlaying = true;
+      if (isPerspectiveView()) perspectiveSimActive = true;
       updateTimelineControls();
       simulation.alphaTarget(0.3).restart();    // 力模拟持续运行，新节点逐帧被带动
       timelineAnimTimer = setInterval(() => {
@@ -6342,6 +6402,7 @@
       // 仅停计时器：先让刚显现的一批节点继续落位（alphaTarget>0），800 ms 后再放下加热目标
       // 自然冷却——此前暂停期间永远 alphaTarget(0.3)，暂停在末尾时等于全图每帧 tick 直到退出。
       // 退出时序绝不能走这条路径，否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
+      if (isPerspectiveView()) perspectiveSimActive = true;
       simulation.alphaTarget(0.3).restart();
       timelinePauseCoolTimer = setTimeout(() => {
         timelinePauseCoolTimer = 0;
@@ -6361,7 +6422,7 @@
 
       snapshotTimelinePositions();
       buildTimelineAdjacency();
-      fitToScreen();                 // 先框定整图范围（用进入前布局），生长从中心展开
+      if (!isPerspectiveView()) fitToScreen(); // 先框定整图范围（用进入前布局），生长从中心展开
 
       timelineAnimating = true;
       timelineIdx = 0;
@@ -6384,6 +6445,10 @@
       setEdgePaintMode('timeline');   // 显现集为空 → 边层此刻不画任何边
       syncTimelineSimulation();
       simulation.stop();
+      if (isPerspectiveView()) {
+        perspectiveSimActive = true;
+        if (perspectiveController) perspectiveController.syncData(true);
+      }
 
       if (timelineProgressEl) timelineProgressEl.max = String(timelineTotal);
       updateTimelineProgress(0, timelineTotal);
@@ -6397,6 +6462,7 @@
       if (timeline3D) { teardownTimelineMode3D(); return; }
       // 只停计时器，不要走 pauseTimelinePlayback（会把 alphaTarget 钉在 0.3）
       stopTimelineTimer();
+      perspectiveSimActive = false;
       simulation.alphaTarget(0);
       simulation.stop();
       timelineAnimating = false;
@@ -6429,6 +6495,10 @@
       simulation.stop();
       for (const n of simulation.nodes()) { n.vx = 0; n.vy = 0; }
       syncGraphDomFromSimulation();
+      if (isPerspectiveView()) {
+        if (perspectiveController) perspectiveController.syncData(true);
+        return;
+      }
       labelsSettled2D = true;
       sync2DNodeLabels();
       fitToScreen();
@@ -6928,6 +6998,14 @@
             };
           });
         },
+        getRouteBadges: () => {
+          if (!routeOrderIds.length) return [];
+          return routeOrderIds.map((id, i) => ({
+            id,
+            index: i + 1,
+            state: routeStep < 0 ? 'all' : (i === routeStep ? 'current' : (i < routeStep ? 'done' : 'todo')),
+          }));
+        },
         isLabelsVisible: () => !timelineAnimating,
         isEdgesVisible: () => showEdges,
         onNodeHover: (d, pointerEv) => {
@@ -6963,21 +7041,22 @@
         },
         allowNodeDrag: () => !timelineAnimating,
         onNodeDragStart: (d) => {
+          if (perspectiveSimActive) pauseSimulation2D();
           hideTooltip();
-          d.fx = d.x;
-          d.fy = d.y;
+          d.fx = null;
+          d.fy = null;
         },
         onNodeDrag: (d, x, y) => {
           d.x = x;
           d.y = y;
-          d.fx = x;
-          d.fy = y;
           d.vx = 0;
           d.vy = 0;
         },
         onNodeDragEnd: (d) => {
-          d.fx = null;
-          d.fy = null;
+          if (d) {
+            d.fx = null;
+            d.fy = null;
+          }
           syncGraphDomFromSimulation();
         },
         onStateChange: syncPerspectiveControlsUi,
@@ -7446,6 +7525,12 @@
           if (is3DView() && graph3dView) {
             initialFocusDone = true;
             graph3dView.focusNode(focusNode);
+            presentNodeDetail(focusNode);
+            return;
+          }
+          if (isPerspectiveView() && perspectiveController && typeof perspectiveController.focusNode === 'function') {
+            initialFocusDone = true;
+            perspectiveController.focusNode(focusNode.id);
             presentNodeDetail(focusNode);
             return;
           }
