@@ -12,6 +12,8 @@ related:
   - ./deep-agents.md
   - ../concepts/llm-wiki-karpathy.md
   - ./openclaw.md
+  - ../methods/claude-code-dynamic-workflows.md
+  - ../methods/coding-agent-verification-loops.md
 sources:
   - ../../sources/repos/linger-simplexai.md
   - ../../sources/sites/linger-heylinger.md
@@ -132,6 +134,8 @@ sequenceDiagram
 - [Deep Agents](./deep-agents.md)：LangGraph 风格 harness 与多步任务执行对照。
 - [OpenClaw](./openclaw.md)：个人代理/网关生态的另一种工程组织方式。
 - [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md)：持久 Markdown Wiki、来源编译和知识回写的知识层对照。
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md)：多智能体任务编排与验证的工程方法。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：为有副作用的工具调用和自动化交付建立证据与审查门禁。
 
 ## 参考来源
 
