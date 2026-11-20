@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-20
 related:
   - ../entities/paper-visualforce.md
   - ../entities/rhoda-dva-tactile-sensing.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-anytouch2.md
   - ../entities/eflesh.md
   - ../entities/opentac.md
+  - ../comparisons/tactile-scaling-data-infrastructure-2026.md
 sources:
   - ../../sources/papers/grifips_science_advances_2026.md
   - ../../sources/papers/contact_dynamics.md
@@ -63,6 +64,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 为什么重要
+- **跨硬件复用与数据 Scaling：** [触觉数据 Scaling 与跨传感器复用对照](../comparisons/tactile-scaling-data-infrastructure-2026.md) 比较六种量测机理、可观测性、标定/安装/时间同步以及可在策略闭环中实际复用的触觉数据接口，避免仅按采样帧数评估触觉基础模型。
 
 - 视觉在手遮挡、近距接触阶段失效，触觉直接测量接触状态，是插拔、灵巧抓取、装配等接触丰富任务的闭环依据。
 - 据 GelSight 综述（[通读归档](../../sources/papers/gelsight_sensors_2017_reading_pmc5751610.md)），传统传感器只测接触与力分布；人类还能由触觉获知形状、纹理、柔顺、摩擦并据此调整握力，这类信息机器人尚未充分利用。该文主张几何感知与力感知同等重要。
