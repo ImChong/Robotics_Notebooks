@@ -755,6 +755,7 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const ttLink2d = tooltipEl.querySelector('.tt-link');
   assert.ok(ttLink2d && ttLink2d.getAttribute('href').includes('detail.html?id='), '2D floating card contains clickable detail link');
   assert.ok(miniGraphJs.includes('allowTouchOrbit: true'), 'homepage 3D preview enables touch orbit/drag/pinch');
+  assert.ok(miniGraphJs.includes('full: { height: 32,'), 'homepage 3D preview uses lower default peak height (32)');
   assert.ok(styleCss.includes('#mini-graph-svg { position: relative; display: block; touch-action: none; }'), 'homepage 2D SVG sets touch-action: none');
   assert.ok(graphHtml.includes('function isTouchInteraction('), 'graph.html supports hybrid touch floating-card detection');
   assert.ok(

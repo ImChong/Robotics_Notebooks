@@ -731,9 +731,9 @@
           allowTouchOrbit: true,
           defaultDistance: 1.76,
           defaultParamsByTier: {
-            full: { height: 102, contours: 14, pitch: 34, yaw: -16 },
-            lite: { height: 92, contours: 12, pitch: 32, yaw: -12 },
-            reduced: { height: 88, contours: 12, pitch: 36, yaw: -12 },
+            full: { height: 32, contours: 14, pitch: 34, yaw: -16 },
+            lite: { height: 29, contours: 12, pitch: 32, yaw: -12 },
+            reduced: { height: 28, contours: 12, pitch: 36, yaw: -12 },
           },
           getViewportSize: function () {
             return {
