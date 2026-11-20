@@ -527,6 +527,13 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | sources/blogs/wechat_shenlan_world_models_11_2026_11_20.md — 编译 11 项世界模型，补录 4 项独立实体与路线对照
+
+- **意图：** 将深蓝具身智能的 11 项世界模型转为技术路线与源码可复现边界对照。
+- **资料：** sources/blogs/wechat_shenlan_world_models_11_2026_11_20.md
+- **结果：** 复用已存在的 7 项实体，针对缺项增加 HY-WorldPlay 1.5、Matrix-Game 4.0、Lyra 2.0、AlayaWorld 独立节点；补充对照与 WAM 纵深链接。
+- **主要修正：** 区分发布年份、模型侧 FPS 与端到端时延、开源代码和权重许可。
+
 ## [2026-11-20] ingest | sources/sites/agility-robotics.md — 公司路线新增敏捷机器人（Agility Robotics，Research + Analysis）并建立公司与 Motor Cortex WBC 实体页
 
 ## [2026-11-20] ingest | A Circuit for In-Context Learning v1 原文审阅与已有唯一节点完善
