@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, wam, imitation-learning, self-distillation, flow-matching]
-status: draft
+status: complete
 updated: 2026-11-20
 project_id: hint-wam
 arxiv: "2611.24789"
@@ -116,7 +116,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-论文主要以仿真 LIBERO 与 RoboTwin 验证，成功率不可外推真机；作者称减少灾难性遗忘，但不等于遗忘消失。后训练显存、时长明显高于只做 BC；论文全文附录核对尚未完成，页面保留 draft。
+论文主要以仿真 LIBERO 与 RoboTwin 验证，成功率不可外推真机；作者称减少灾难性遗忘，但不等于遗忘消失。后训练显存、时长明显高于只做 BC；已对照 arXiv v1 HTML 正文与附录 A–L 通读，尚未独立执行训练或环境评测。
 
 ## 结论
 

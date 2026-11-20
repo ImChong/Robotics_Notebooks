@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, world-model, cross-embodiment, video-generation, robot-simulation]
-status: draft
+status: complete
 updated: 2026-11-20
 project_id: doppel-wm
 arxiv: "2611.24925"
@@ -107,7 +107,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-在本体已知、可准确渲染与相机对齐时效果最直接；long-horizon 误差积累，25.6 s 只是作者的滚动定性展示。**代码 MIT、模型权重 CC BY-NC 4.0**，基础 Wan 权重另有许可；不应将 MIT 直接理解为模型可商用。论文附录仍待完整核对。
+在本体已知、可准确渲染与相机对齐时效果最直接；long-horizon 误差积累，25.6 s 只是作者的滚动定性展示。**代码 MIT、模型权重 CC BY-NC 4.0**，基础 Wan 权重另有许可；不应将 MIT 直接理解为模型可商用。已核对 arXiv HTML 全文与附录 A.1–A.10；尚未实际部署 GPU 推理。
 
 ## 结论
 

@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, bimanual, vla, action-tokenization, robot-manipulation]
-status: draft
+status: complete
 updated: 2026-11-20
 project_id: bicat
 arxiv: "2611.23499"
@@ -113,7 +113,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-canonicalization 的镜像符号和量纲依机器人而异，跨不同左右臂硬件并非自动适配。真实平台限制在论文测试三种 embodiment 和六任务；重构好不代表控制成功。HTML 全文附录尚未完全核对。
+canonicalization 的镜像符号和量纲依机器人而异，跨不同左右臂硬件并非自动适配。真实平台限制在论文测试三种 embodiment 和六任务；重构好不代表控制成功。已对照 arXiv HTML 全文与附录 §6–11；尚未独立完成真机或仿真复现。
 
 ## 结论
 

@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [robotics, simulation, desktop, agent-tools]
-status: draft
+status: complete
 updated: 2026-11-20
 project_id: vorynel-lyapunov
 project: https://vorynel.com/lyapunov/
@@ -88,7 +88,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-**未实机验证**，也未全文检查所有产品手册/源码。移动体/人形控制的支持不能等同于随意导入机器人模型即可稳定行走。0.2.5 对 Windows WSL2 的设备验收在官方 release note 中也写明未运行；远程模型与 credits 依用户登录和提供商，不能一概声称完全离线。
+**未实际安装或实机验证**；已通读 0.2.5 手册和官方 README，但未对大型 monorepo 每个源码包做逐函数审计。手册中仍保留部分 alpha 版安装参数，应以 0.2.5 发行清单为准。移动体/人形控制的支持不能等同于随意导入机器人模型即可稳定行走。0.2.5 对 Windows WSL2 的设备验收在官方 release note 中也写明未运行；远程模型与 credits 依用户登录和提供商，不能一概声称完全离线。
 
 ## 关联页面
 
