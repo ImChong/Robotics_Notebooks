@@ -123,6 +123,7 @@ flowchart LR
 ### 推荐读什么
 - [XHAND 1 Pro-U：DexUMI 兼容灵巧手](../wiki/entities/xhand-1-pro-u.md)：对齐外骨骼示教关节与五指手动作映射。
 - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
+- [Diffusion-Based Impedance Learning｜扩散式阻抗学习](../wiki/entities/paper-diffusion-based-impedance-learning-2509-19696.md) — 由外力条件扩散模型重建 sZFT，再按能量与任务方向在线调刚度，比较圆柱/方/星形 peg-in-hole 的接触泛化。
 - [Demo Data Collection Guide](../wiki/queries/demo-data-collection-guide.md)
 - [Tactile Sensing](../wiki/concepts/tactile-sensing.md) 与 [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
 - [视觉触觉智能综述（VBTS Survey，arXiv:2608.15490）](../wiki/entities/paper-vision-based-tactile-intelligence.md) — 以传感器硬件三轴、触觉学习层次、数据/仿真和 Sim2Real 为地图，先选接触观测需求，再选传感器与策略结构
