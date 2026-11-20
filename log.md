@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] lint | 推进 #3490 第三批：通读核对 arXiv/官方项目页/仓库源码，将 roadmap/depth-motion-generation.md 全线 25 个待补节点升至 3/3（路线达标 40/40）
+
 ## [2026-11-20] lint | ASI 论文补齐方法/评测/对比三段式
 
 - **基准：** 已合并的 PR #4006（`From AGI to ASI` 更新），GitHub Wiki Lint 实测节点健康度 **3/3**，所有工作流通过，但对 `wiki/entities/paper-from-agi-to-asi.md` 提示一条信息型预警「缺 对比」。
