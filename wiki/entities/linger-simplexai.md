@@ -12,14 +12,19 @@ related:
   - ./deep-agents.md
   - ../concepts/llm-wiki-karpathy.md
   - ./openclaw.md
+  - ./polystrata-local-inference.md
+  - ./niko-strata-local-inference.md
+  - ../concepts/agent-memory-and-dreaming.md
   - ../methods/claude-code-dynamic-workflows.md
   - ../methods/coding-agent-verification-loops.md
 sources:
   - ../../sources/repos/linger-simplexai.md
   - ../../sources/sites/linger-heylinger.md
+  - ../../sources/repos/simplexai-labs-linger.md
 original:
   - ../../sources/repos/linger-simplexai.md
   - ../../sources/sites/linger-heylinger.md
+  - ../../sources/repos/simplexai-labs-linger.md
 ---
 
 # Linger：本地个人智能体 / Local Personal Agent
@@ -53,9 +58,9 @@ original:
 | **Rooms / Chat + TeamHub** | Web 工作区、权限、任务、共享文档；TeamHub 使用 Go/PostgreSQL，node-services 使用 Node.js/Yjs |
 | **Computer Daemon** | 用户电脑中的连接服务，经出站 WebSocket 接收任务/文件，管理 Context 队列与 Runtime adapter |
 | **Agent Runtime** | Claude Code、Codex、Pi；访问 Agent workspace，向模型网关发请求，借 `teamhub CLI` 返回消息/任务 |
-| **模型路径** | Local model（Pi + 本机 gateway）、Subscription（Claude Code/Codex）、BYOK（OpenAI/Anthropic 兼容接口） |
-| **桌面工具** | Runtime → Guardrail → Cua、Playwright 或 Shell；权限/审批与系统平台相关 |
-| **记忆层** | 共用个人 Wiki、原文搜索；各代理独立 memory，经提取/整理后跨 Room 回用 |
+| **模型路径** | Local model（Pi + 本机 gateway，可对接 [PolyStrata](./polystrata-local-inference.md) / [Strata](./niko-strata-local-inference.md) 等本地推理后端）、Subscription（Claude Code/Codex）、BYOK（OpenAI/Anthropic 兼容接口） |
+| **桌面工具** | Runtime → Rule + LLM 两级 Guardrail → Cua、Playwright 或 Shell；权限/审批与系统平台相关 |
+| **记忆层** | 共用个人 Wiki、原文搜索；各代理独立 memory，经提取/整理后跨 Room 回用（参考 [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md)） |
 | **主动/委托** | Another Me 依据事件与规则主动提醒；Meta 将长期任务交给 AlterEgo，支持人工审批 |
 
 ### 与机器人开发的边界
@@ -128,13 +133,17 @@ sequenceDiagram
 2. **许可不是无条件 Apache-2.0。** [上游 LICENSE](https://github.com/simplexai-labs/linger/blob/cd0e23af6cacbca311bfe1964e11ea6c73cc7562/LICENSE) 对面向组织外第三方的 hosted/managed service，以及移除或修改前端 LOGO/版权信息提出商业许可要求；复用前应核对条款。
 3. **官网与部署入口不同。** [官网](https://heylinger.com/) 下载区仍展示 Coming soon，而 GitHub README 提供源码构建/发布版安装说明；应检查实际 Releases，不能仅凭宣传推断已广泛可用。
 4. **性能数字属特定实验条件。** PolyStrata 的 tok/s、分数以及与 Claude 等模型的等效比喻来自上游自述，本次未复测；部署预算应自行 benchmark。
-5. **真实机器人安全不适用。** Cua/Browser/Shell 自动化不是电机安全控制，不应作为安全关键控制闭环直接使用。
+5. **真实机器人安全不适用。** Cua/Browser/Shell 自动化不是电机安全控制，不应作为安全关键控制闭环直接使用；Guardrail 属于风险控制层，不代表所有外部不可逆操作错误都能被阻断。
+6. **与应用后端及同名系统区分。** Linger 属于上层个人 Agent 应用与权限编排层，本地推理可对接 [PolyStrata](./polystrata-local-inference.md) 或 [Niko1221/Strata](./niko-strata-local-inference.md)，不应将个人 Agent 应用层、本地推理引擎与同名 Strata 记忆系统混为一谈。
 
 ## 关联页面
 
 - [Hermes Agent](./hermes-agent.md)：消息网关、技能/记忆改进与自主 Agent OS 对照。
 - [Deep Agents](./deep-agents.md)：LangGraph 风格 harness 与多步任务执行对照。
 - [OpenClaw](./openclaw.md)：个人代理/网关生态的另一种工程组织方式。
+- [PolyStrata 本地多引擎推理](./polystrata-local-inference.md)：可选本地 MoE 模型算力后端，与 Linger 应用层分离。
+- [Strata（Niko1221）本地推理](./niko-strata-local-inference.md)：可选个人电脑本地推理引擎后端。
+- [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md)：从会话记录到持久知识 Wiki 与隔离记忆的系统对照。
 - [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md)：持久 Markdown Wiki、来源编译和知识回写的知识层对照。
 - [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md)：多智能体任务编排与验证的工程方法。
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：为有副作用的工具调用和自动化交付建立证据与审查门禁。
@@ -142,6 +151,7 @@ sequenceDiagram
 ## 参考来源
 
 - [Linger 官方源码与技术文档归档](../../sources/repos/linger-simplexai.md)
+- [Linger 官方 README 与架构核对补充](../../sources/repos/simplexai-labs-linger.md)
 - [Linger 官网归档](../../sources/sites/linger-heylinger.md)
 - [Linger 官方 GitHub](https://github.com/simplexai-labs/linger)
 - [Linger 官方文档](https://docs.heylinger.com/)

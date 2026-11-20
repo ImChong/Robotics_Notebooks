@@ -125,7 +125,7 @@ flowchart LR
 | [Jeremy Kamber/strata-memory](../entities/jeremykamber-strata-tiered-memory.md) | Markdown 冷热迁移 + 冷归档影子索引；早期博客与当前源码需区别 |
 | [Niko1221/Strata](../entities/niko-strata-local-inference.md) | 本地模型推理引擎（不是记忆库） |
 | [PolyStrata](../entities/polystrata-local-inference.md) | 多引擎 MoE 本地推理，部分模型复用 Niko Strata |
-| [Linger](../entities/linger-personal-agent.md) | 本地个人 Agent、知识 Wiki、电脑工具与权限控制 |
+| [Linger](../entities/linger-simplexai.md) | 本地个人 Agent、知识 Wiki、电脑工具与权限控制 |
 
 ## 关联页面
 
