@@ -18,6 +18,7 @@ related:
   - ../tasks/manipulation.md
   - ../methods/reinforcement-learning.md
   - ../concepts/contact-rich-manipulation.md
+  - ./paper-diffusion-based-impedance-learning-2509-19696.md
 ---
 # ForceHarness｜冻结多模态模型的力觉物理接口
 
@@ -101,6 +102,10 @@ sequenceDiagram
 1. 先以论文明确的输入输出、数据拆分和评测协议定位方法适用范围。
 2. 区分定量实验、官方开源可复现入口与本次未执行的实验步骤。
 3. 重点跟进部署时的误差、计算开销以及任务/机器人构型迁移边界。
+
+## 与其他工作对比
+
+- [Diffusion-Based Impedance Learning](./paper-diffusion-based-impedance-learning-2509-19696.md) 将外部 wrench 条件下的 sZFT 扩散重建用于连续方向性阻抗调节，强调 200 Hz 力矩执行与多种 peg 插入；ForceHarness 则由冻结多模态模型按事件选择自终止力原语，并向高层提供带不确定性的物理摘要。二者都重视力觉闭环，但训练目标、控制接口和评测任务不同，成功率不能直接横比。
 
 ## 局限与风险
 
