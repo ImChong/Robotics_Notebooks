@@ -527,6 +527,13 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | 3D GameDev Arena 长时程游戏开发 Agent 三轨评测
+
+- 来源：arXiv:2611.24073v1；108 个任务、14 类游戏、功能验收/代理试玩/真人 BT 偏好。
+- 独立论文节点：wiki/entities/paper-3d-gamedev-arena.md；原文与试玩入口分别归档 sources/papers 和 sources/sites。
+- 论文 HTML v1 正文及附录已核对。试玩 GitHub Pages 仅为重定向壳，未验证后端及官方可运行代码，保留核验缺口。
+- 更新 Coding Agent 验证闭环的入链；避免将游戏体验指标误作机器人控制或真机安全指标。
+
 ## [2026-11-20] ingest | VLN 七基准的一手资料、框架与评测口径对照
 
 - 意图：将 R2R、VLN-CE、R4R、CVDN、HANNA、SOON、REVERIE 与对应官方数据/代码入口统一成可复现的跨任务对照。
