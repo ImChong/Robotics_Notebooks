@@ -2,13 +2,14 @@
 type: query
 tags: [optimization, trajectory-optimization, optimal-control, constrained-optimization, method-selection]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-20
 related:
   - ../methods/particle-swarm-optimization.md
   - ../methods/cma-es.md
   - ../methods/genetic-algorithm.md
   - ../methods/genetic-programming.md
   - ../methods/lqr-ilqr.md
+  - ../methods/time-optimal-path-parameterization.md
   - ../methods/quasi-newton-bfgs.md
   - ../methods/l-bfgs.md
   - ../comparisons/second-order-optimizers.md
@@ -87,6 +88,7 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 - **机械臂运动生成**：[凸松弛](../methods/convex-relaxation-robotics.md) 或采样给初值 → [L-BFGS](../methods/quasi-newton-bfgs.md) 在 GPU 上批量细化（cuRobo 范式）。
 - **位姿/配准类感知**：[凸松弛](../methods/convex-relaxation-robotics.md) 求全局下界 → GNC 抗外点 → 局部 [拟牛顿](../methods/quasi-newton-bfgs.md) 精修。
 - **离线全身 TrajOpt**：[iLQR/DDP](../methods/lqr-ilqr.md) 主循环 + 障碍/AL 处理接触与限位。
+- **固定几何路径的时间标定**：几何路径 $q(s)$ 已定时，可用 [TOPP（时间最优路径参数化）](../methods/time-optimal-path-parameterization.md) 沿路径求满足速度/加速度约束的时间最优速度剖面（常转为 LP 或对称 SOCP 子问题，区别于路径与时间联合求解的全轨迹优化）。
 - **火箭动力下降制导**：3-DoF 且推力下界可无损松弛时用 [LCvx](../methods/lossless-convexification.md) 一次 SOCP 求全局最优；6-DoF 用 [SCvx](../methods/successive-convexification.md)，每轮在上一条轨迹附近线性化成 SOCP，靠虚拟控制防人为不可行、信赖域限步长——只保证收敛到驻点，对缩放、初值与罚权敏感（见 [Malyuta 等教程](../../sources/papers/malyuta_2021_convex_trajectory_generation_tutorial.md)）。
 
 ## 补充：没有可靠梯度时的黑箱分支
@@ -112,6 +114,7 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 ## 关联页面
 
 - [LQR / iLQR](../methods/lqr-ilqr.md) — 结构利用型最优控制内核（Riccati / DDP）
+- [TOPP（时间最优路径参数化）](../methods/time-optimal-path-parameterization.md) — 固定几何路径的 LP/SOCP 时间标定（课程 4.3）
 - [拟牛顿 BFGS / L-BFGS](../methods/quasi-newton-bfgs.md) — 高维 NLP 默认下降引擎
 - [罚 / 障碍 / 增广拉格朗日](../methods/penalty-barrier-augmented-lagrangian.md) — 约束处理与序列无约束化
 - [凸松弛](../methods/convex-relaxation-robotics.md) — 非凸问题的可解近似与全局下界

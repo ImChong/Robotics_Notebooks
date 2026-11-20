@@ -300,6 +300,17 @@ def test_atlas_entity_homonyms_do_not_mask_missing_mechanism(tmp_path, monkeypat
         "选择 **Ground** 数据子集。",
         "加载 `Motion` 数据结构。",
         "启用 `simulation` 预览后端。",
+        "调用 `connect` 建立连接。",
+        "运行 `doctor` 诊断环境。",
+        "读取 **Metadata** 索引文件。",
+        "优化末端 **Pose** 误差。",
+        "Science Robotics **Review** 综述。",
+        "先用 `sync` 模式验证通信。",
+        "执行 **Navigation** 导航任务。",
+        "输出二值 **Noul** / `noul` 决策。",
+        "指定 `--policy` 为 `pi05`。",
+        "基于 **Qwen3-VL-4B** 底座微调。",
+        "使用 `Qwen3-VL-4B-Instruct` 视觉语言骨干。",
     ],
 )
 def test_existing_names_and_runtime_tokens_preserve_new_concept_signal(

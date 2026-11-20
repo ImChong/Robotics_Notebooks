@@ -3,7 +3,7 @@ type: query
 tags: [wbc, rl, mpc, locomotion, humanoid, control]
 status: complete
 summary: "> **Query 产物**：本页由以下问题触发：「人形机器人的主流控制架构有哪些，各有什么优劣和适用场景？」"
-updated: 2026-10-23
+updated: 2026-11-20
 sources:
   - ../../sources/papers/whole_body_control.md
 ---
@@ -83,6 +83,8 @@ sources:
 | ❌ 需要精确接触模型 | 不平地形性能急剧下降 |
 
 **适用**：研究用途、平地结构化环境、对稳定性有严格要求的场合。
+
+> 若需要介于 LIP/ZMP 与全刚体 WBC 之间的简化弹簧腿 / 任务空间虚拟力层（用于跑跳直觉或快速原型，约束仍需外层 WBC/QP 兜底），见 [SLIP + VMC](../methods/slip-vmc.md)。
 
 ---
 
@@ -271,6 +273,7 @@ MoCap 数据 → 训练判别器 D（区分真实/生成动作）
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md) — A2 架构详解
 - [Centroidal NMPC + WBC 栈](../methods/centroidal-nmpc-wbc-stack.md) — A2 架构的完整方法栈落地
 - [TSID](../concepts/tsid.md) — WBC 低层执行器
+- [SLIP + VMC](../methods/slip-vmc.md) — 介于 LIP/ZMP 与全刚体 WBC 之间的中间简化控制层
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全景
 - [Imitation Learning](../methods/imitation-learning.md) — IL 方法全景
 - [Diffusion Policy](../methods/diffusion-policy.md) — 层次 IL 的现代实现
