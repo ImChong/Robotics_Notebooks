@@ -2271,6 +2271,32 @@ button.home-wiki-heatmap-cell.is-active {
   box-shadow: 0 0 0 1px rgba(45,116,218,.18);
   transition: background var(--transition), box-shadow var(--transition);
 }
+@keyframes kbCitePulseTwice {
+  0% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+  20% {
+    background-color: color-mix(in srgb, var(--accent) 26%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  46% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+  72% {
+    background-color: color-mix(in srgb, var(--accent) 26%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+}
+.kb-cite-highlight {
+  border-radius: 8px;
+  animation: kbCitePulseTwice 1.8s ease-in-out 1;
+}
 .detail-markdown-body p,
 .detail-markdown-body ul,
 .detail-markdown-body ol,
@@ -5422,10 +5448,18 @@ a.card:active { transform: translateY(-1px); }
   cursor: pointer;
   transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
 }
-.kb-chat-icon-btn:hover {
+.kb-chat-icon-btn:hover:not(:disabled) {
   color: var(--text);
   border-color: var(--border-strong);
   background: var(--surface);
+}
+.kb-chat-icon-btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+.kb-chat-clear-btn:hover:not(:disabled) {
+  color: #f87171;
+  border-color: color-mix(in srgb, #f87171 45%, var(--border));
 }
 .kb-chat-icon-btn:focus-visible {
   outline: 2px solid var(--accent);
@@ -5834,5 +5868,9 @@ a.card:active { transform: translateY(-1px); }
   }
   .fab-stack-right .back-to-top.is-visible {
     animation: none;
+  }
+  .kb-cite-highlight {
+    animation: none;
+    background-color: color-mix(in srgb, var(--accent) 18%, transparent);
   }
 }

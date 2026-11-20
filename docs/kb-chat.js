@@ -10,7 +10,8 @@
   };
 
   var CONTENT_URL_RE = /^exports\/page-content\/([a-f0-9]{64})\.json$/;
-  var SAFE_NODE_URL_RE = /^(?:detail|roadmap)\.html\?id=[A-Za-z0-9%._~!*()-]+$/;
+  var SAFE_NODE_URL_RE =
+    /^(?:detail|roadmap)\.html\?id=[A-Za-z0-9%._~!*()-]+(?:&(?:cite|cite_h)=[A-Za-z0-9%._~!*()'-]+)*(?:#[A-Za-z0-9%._~!*()'-]+)?$/;
   var WORD_OR_CJK_RE = /[A-Za-z0-9_+\-.\u0370-\u03ff]+|[\u4e00-\u9fff]+/g;
   var CODE_FENCE_RE = /```[\s\S]*?```/g;
   var HTML_TAG_RE = /<[^>]+>/g;
@@ -94,6 +95,9 @@
       metaRoadmap: '路线',
       metaUpdated: '更新',
       metaHealth: '健康度',
+      clearShort: '清空',
+      clearLabel: '清空本地聊天记录（云端问答记录不受影响）',
+      clearedNotice: '已清空本地聊天记录（云端问答记录不会被删除）。',
     },
     en: {
       panelTitle: 'Knowledge Q&A',
@@ -133,6 +137,9 @@
       metaRoadmap: 'Roadmap',
       metaUpdated: 'Updated',
       metaHealth: 'Health',
+      clearShort: 'Clear',
+      clearLabel: 'Clear local chat history (server records stay intact)',
+      clearedNotice: 'Local chat history cleared (server records are preserved).',
     },
   };
 
@@ -702,6 +709,7 @@
     sendBtn: null,
     counterEl: null,
     noticeEl: null,
+    clearBtn: null,
     langBtn: null,
     closeBtn: null,
   };
@@ -753,6 +761,12 @@
     }
     state.langBtn.textContent = t('langSwitch');
     state.langBtn.setAttribute('aria-label', t('langSwitchLabel'));
+    if (state.clearBtn) {
+      state.clearBtn.textContent = t('clearShort');
+      state.clearBtn.setAttribute('aria-label', t('clearLabel'));
+      state.clearBtn.setAttribute('title', t('clearLabel'));
+      state.clearBtn.disabled = state.history.length === 0;
+    }
     state.closeBtn.setAttribute('aria-label', t('closeLabel'));
     state.closeBtn.setAttribute('title', t('closeLabel'));
     state.welcomeEl.textContent = isCloudConfigured(cfg) ? t('welcomeAi') : t('welcome');
@@ -929,12 +943,40 @@
     }
   }
 
+  function syncClearButton() {
+    if (state.clearBtn) {
+      state.clearBtn.disabled = state.history.length === 0;
+    }
+  }
+
   function recordHistoryEntry(entry) {
     state.history.push(entry);
     if (state.history.length > MAX_STORED_MESSAGES) {
       state.history = state.history.slice(-MAX_STORED_MESSAGES);
     }
     saveChatHistory(state.history);
+    syncClearButton();
+  }
+
+  function clearLocalHistory() {
+    state.history = [];
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.removeItem(CHAT_HISTORY_KEY);
+      }
+    } catch (_err) {
+      // ignore storage errors
+    }
+    if (state.messagesEl) {
+      var msgEls = state.messagesEl.querySelectorAll('.kb-chat-msg');
+      for (var i = 0; i < msgEls.length; i += 1) {
+        if (msgEls[i].parentNode) {
+          msgEls[i].parentNode.removeChild(msgEls[i]);
+        }
+      }
+      state.messagesEl.scrollTop = 0;
+    }
+    syncClearButton();
   }
 
   function ensureChatMermaidLoaded() {
@@ -1117,6 +1159,56 @@
     }
   }
 
+  function extractCiteParams(item) {
+    var rawSnippet = String((item && item.snippet) || '')
+      .replace(/…+$/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    var citeText = rawSnippet.slice(0, 64).trim();
+    var citeHeading = String((item && item.heading) || '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 64)
+      .trim();
+    return { citeText: citeText, citeHeading: citeHeading };
+  }
+
+  function buildCitationHref(item) {
+    var baseHref = safeInternalNodeUrl(item && item.url, item && item.id);
+    if (!baseHref) return '';
+    var params = extractCiteParams(item);
+    var suffix = '';
+    if (params.citeText) {
+      suffix += '&cite=' + encodeURIComponent(params.citeText);
+    }
+    if (params.citeHeading) {
+      suffix += '&cite_h=' + encodeURIComponent(params.citeHeading);
+    }
+    var fullHref = baseHref + suffix;
+    return SAFE_NODE_URL_RE.test(fullHref) ? fullHref : baseHref;
+  }
+
+  function bindSamePageCitationJump(anchorEl, href, item) {
+    if (!anchorEl || !href) return;
+    anchorEl.addEventListener('click', function (event) {
+      if (typeof window === 'undefined' || typeof window.RNDetailCiteJump !== 'function') return;
+      try {
+        var cur = new URL(window.location.href);
+        var targetUrl = new URL(href, window.location.href);
+        if (cur.pathname === targetUrl.pathname && cur.searchParams.get('id') === targetUrl.searchParams.get('id')) {
+          event.preventDefault();
+          var params = extractCiteParams(item);
+          if (window.history && typeof window.history.replaceState === 'function') {
+            window.history.replaceState(null, '', targetUrl.pathname + targetUrl.search + targetUrl.hash);
+          }
+          window.RNDetailCiteJump(params.citeText, params.citeHeading);
+        }
+      } catch (_err) {
+        // fallback to normal link navigation
+      }
+    });
+  }
+
   function appendPlainWithCitations(parent, text, citationsByIndex) {
     var parts = String(text || '').split(/(\[\d+\])/g);
     for (var i = 0; i < parts.length; i += 1) {
@@ -1126,13 +1218,14 @@
       if (match) {
         var idx = Number.parseInt(match[1], 10);
         var citation = citationsByIndex.get(idx);
-        var href = citation ? safeInternalNodeUrl(citation.url, citation.id) : '';
+        var href = citation ? buildCitationHref(citation) : '';
         if (citation && href) {
           var pill = document.createElement('a');
           pill.className = 'kb-chat-cite-pill';
           pill.href = href;
           pill.textContent = part;
           pill.title = citation.title || citation.id;
+          bindSamePageCitationJump(pill, href, citation);
           parent.appendChild(pill);
           continue;
         }
@@ -1484,10 +1577,13 @@
           health_score: typeof meta.healthScore === 'number' ? meta.healthScore : undefined,
         };
         enrichedCitations.push(savedCite);
-        var href = safeInternalNodeUrl(item.url, item.id);
+        var href = buildCitationHref(item);
         var card = document.createElement(href ? 'a' : 'div');
         card.className = 'kb-chat-citation-card';
-        if (href) card.href = href;
+        if (href) {
+          card.href = href;
+          bindSamePageCitationJump(card, href, item);
+        }
 
         var titleEl = document.createElement('span');
         titleEl.className = 'kb-chat-citation-title';
@@ -1972,6 +2068,11 @@
 
     var actions = document.createElement('div');
     actions.className = 'kb-chat-header__actions';
+    var clearBtn = document.createElement('button');
+    clearBtn.id = 'kbChatClear';
+    clearBtn.type = 'button';
+    clearBtn.className = 'kb-chat-icon-btn kb-chat-clear-btn';
+    clearBtn.addEventListener('click', clearLocalHistory);
     var langBtn = document.createElement('button');
     langBtn.type = 'button';
     langBtn.className = 'kb-chat-icon-btn';
@@ -1983,6 +2084,7 @@
     closeBtn.className = 'kb-chat-icon-btn';
     closeBtn.textContent = '✕';
     closeBtn.addEventListener('click', close);
+    actions.appendChild(clearBtn);
     actions.appendChild(langBtn);
     actions.appendChild(closeBtn);
 
@@ -2052,6 +2154,7 @@
     state.panel = panel;
     state.titleEl = titleEl;
     state.badgeEl = badgeEl;
+    state.clearBtn = clearBtn;
     state.langBtn = langBtn;
     state.closeBtn = closeBtn;
     state.messagesEl = messagesEl;
@@ -2095,6 +2198,7 @@
             });
           }
         }
+        syncClearButton();
       }
     }
 
