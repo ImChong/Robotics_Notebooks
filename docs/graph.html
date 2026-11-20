@@ -2234,19 +2234,12 @@
           <button type="button" id="view-mode-3d" class="view-mode-btn" aria-pressed="false">3D 立体</button>
         </div>
 
-        <div class="slider-divider"></div>
-        <div class="physics-section-title perspective-section-head">
-          <span>3D 地形</span>
-          <span id="persp-tier-badge" class="perspective-tier-badge" hidden></span>
-        </div>
-        <div class="slider-row">
-          <label class="physics-toggle" for="check-css-perspective"
-                 title="开启基于节点连接数的 3D 地形与等高线视图（峰高对应连接度，边界自然雾化），不修改图谱数据与筛选逻辑">
-            <input type="checkbox" id="check-css-perspective" />
-            <span>⛰ 开启 3D 地形</span>
-          </label>
-        </div>
         <div id="perspective-controls" class="perspective-controls" hidden>
+          <div class="slider-divider"></div>
+          <div class="physics-section-title perspective-section-head">
+            <span>3D 地形</span>
+            <span id="persp-tier-badge" class="perspective-tier-badge" hidden></span>
+          </div>
           <div class="slider-row">
             <div class="slider-label">
               <span>山峰高度</span>
@@ -3129,7 +3122,6 @@
     const viewMode2dBtn = document.getElementById('view-mode-2d');
     const viewModePerspectiveBtn = document.getElementById('view-mode-perspective');
     const viewMode3dBtn = document.getElementById('view-mode-3d');
-    const checkCssPerspectiveEl = document.getElementById('check-css-perspective');
     const perspectiveControlsEl = document.getElementById('perspective-controls');
     const graphHint2dEl = document.getElementById('graph-hint-2d');
     const graphHintPerspectiveEl = document.getElementById('graph-hint-perspective');
@@ -3176,9 +3168,6 @@
       if (viewMode3dBtn) {
         viewMode3dBtn.classList.toggle('is-active', in3d);
         viewMode3dBtn.setAttribute('aria-pressed', in3d ? 'true' : 'false');
-      }
-      if (typeof checkCssPerspectiveEl !== 'undefined' && checkCssPerspectiveEl) {
-        checkCssPerspectiveEl.checked = inPersp;
       }
       if (typeof perspectiveControlsEl !== 'undefined' && perspectiveControlsEl) {
         perspectiveControlsEl.hidden = !inPersp;
@@ -6868,9 +6857,6 @@
         perspTierBadgeEl.textContent = state.tierBadge || '';
         perspTierBadgeEl.hidden = !state.tierBadge;
       }
-      if (checkCssPerspectiveEl) {
-        checkCssPerspectiveEl.checked = !!state.enabled;
-      }
       if (perspectiveControlsEl) {
         perspectiveControlsEl.hidden = !state.enabled;
       }
@@ -6996,13 +6982,6 @@
           perspectiveControlsEl.scrollIntoView({ block: 'nearest' });
         }
       }
-    }
-    if (checkCssPerspectiveEl) {
-      checkCssPerspectiveEl.addEventListener('change', ev => {
-        const nextMode = ev.target.checked ? 'perspective' : '2d';
-        requestSpatialViewMode(nextMode);
-        if (nextMode === 'perspective') revealPerspectiveControlsIfPanelOpen();
-      });
     }
 
     if (viewMode2dBtn) {

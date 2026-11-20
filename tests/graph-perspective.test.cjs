@@ -325,7 +325,6 @@ test('graph.html supports 3-way mutual exclusion across 2D, 3D Terrain, and WebG
     viewMode2dBtn: button(),
     viewModePerspectiveBtn: button(),
     viewMode3dBtn: button(),
-    checkCssPerspectiveEl: { checked: false },
     perspectiveControlsEl: { hidden: true },
     graphHint2dEl: { hidden: false },
     graphHintPerspectiveEl: { hidden: true },
@@ -364,7 +363,6 @@ test('graph.html supports 3-way mutual exclusion across 2D, 3D Terrain, and WebG
   assert.equal(context.viewModePerspectiveBtn.attributes['aria-pressed'], 'true');
   assert.equal(context.viewMode2dBtn.attributes['aria-pressed'], 'false');
   assert.equal(context.viewMode3dBtn.attributes['aria-pressed'], 'false');
-  assert.equal(context.checkCssPerspectiveEl.checked, true);
   assert.equal(context.perspectiveControlsEl.hidden, false);
   assert.equal(context.graphHint2dEl.hidden, true);
   assert.equal(context.graphHintPerspectiveEl.hidden, false);
@@ -383,7 +381,7 @@ test('graph.html supports 3-way mutual exclusion across 2D, 3D Terrain, and WebG
   assert.equal(svgDisplay, 'none');
   assert.equal(context.edgeCanvas.style.display, 'none');
   assert.equal(context.graphCanvas3d.hidden, false);
-  assert.equal(context.checkCssPerspectiveEl.checked, false);
+  assert.equal(context.perspectiveControlsEl.hidden, true);
 
   // 3) 3D 立体 -> 2D: cleanly returns to 2D
   context.requestSpatialViewMode('2d');
@@ -403,6 +401,20 @@ test('graph.html supports 3-way mutual exclusion across 2D, 3D Terrain, and WebG
 test('graph.html and style.css define borderless WebGL terrain stage, light/dark horizon tokens, and terrain controls', () => {
   assert.ok(!graphHtml.includes('graph-perspective-frame'), 'must not reintroduce rectangular floor border box');
   assert.ok(!styleCss.includes('.graph-perspective-frame'), 'must not style a rectangular frame border in 3D view');
+  assert.ok(!graphHtml.includes('id="check-css-perspective"'), 'redundant 3D terrain checkbox removed in favor of view mode buttons');
+
+  // Sphere sizing follows 3D force-graph sqrt(degree) hierarchy across preview and full graph
+  const rPreviewLow = perspectiveApi.computeSphereRadius3D(10, 3000, true);
+  const rPreviewMid = perspectiveApi.computeSphereRadius3D(500, 3000, true);
+  const rPreviewHigh = perspectiveApi.computeSphereRadius3D(3000, 3000, true);
+  assert.ok(rPreviewHigh > rPreviewMid && rPreviewMid > rPreviewLow, 'preview sphere radius scales strictly with connection count');
+  assert.ok(rPreviewHigh / rPreviewLow > 3.5, 'preview sphere size range matches 3D force-graph 4.5x scale');
+
+  const rFullLow = perspectiveApi.computeSphereRadius3D(1, 3000, false);
+  const rFullMid = perspectiveApi.computeSphereRadius3D(300, 3000, false);
+  const rFullHigh = perspectiveApi.computeSphereRadius3D(3000, 3000, false);
+  assert.ok(rFullHigh > rFullMid && rFullMid > rFullLow, 'full-graph sphere radius scales strictly with connection count');
+  assert.ok(rFullHigh / rFullLow > 6.5, 'full-graph sphere size hierarchy matches RNGraphNodeSize');
 
   assert.ok(graphHtml.includes('<div id="graph-perspective-stage" class="graph-perspective-stage"'));
   assert.ok(graphHtml.includes('id="sl-persp-height"'));
@@ -424,6 +436,7 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
   assert.ok(!perspectiveSrc.includes('buildPolyhedronLibrary'), '3D terrain nodes must be round spheres, not faceted polyhedra');
   assert.ok(perspectiveSrc.includes('uCamRight') && perspectiveSrc.includes('if (r2 > 1.0) discard;'), 'hubs render as analytical round spheres');
+  assert.ok(perspectiveSrc.includes('uPointScale') && perspectiveSrc.includes('if (pn.hovered) radius *= 1.10;'), 'point sprites share unified world radius with subtle 1.10x hover swell');
   assert.ok(perspectiveSrc.includes('uHeightScale') && perspectiveSrc.includes('uGlintPhase') && perspectiveSrc.includes('startCameraTransition'), 'top-down to oblique entry swoop and horizon glint present');
   assert.ok(styleCss.includes('[data-theme="light"]'));
   assert.ok(styleCss.includes('var(--accent)'));

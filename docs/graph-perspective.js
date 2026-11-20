@@ -188,6 +188,31 @@
     return { counts: counts, maxDegree: maxDegree };
   }
 
+  /**
+   * 3D 地形球体世界半径：对齐 3D 立体视图（graph-3d.js）与全站节点标尺（graph-node-size.js），
+   * 按 sqrt(degree) 映射到统一世界单位，使大小随连接数自然拉开层次，且点精灵与球体共用同一尺寸标尺。
+   */
+  function computeSphereRadius3D(degree, maxDegree, isPreview) {
+    var r2d;
+    if (typeof window !== 'undefined' && window.RNGraphNodeSize &&
+        typeof window.RNGraphNodeSize.radiusForDegree === 'function') {
+      r2d = window.RNGraphNodeSize.radiusForDegree(degree, maxDegree);
+    } else {
+      var span = Math.sqrt(Math.max(maxDegree || 1, 2)) - 1;
+      var t = (Math.sqrt(Math.max(degree || 0, 1)) - 1) / span;
+      if (t < 0) t = 0;
+      if (t > 1) t = 1;
+      r2d = 4 + 26 * t;
+    }
+    if (isPreview) {
+      // 对齐 graph-3d.js sphereRadiusFor(d) = Math.max(11, r * 1.65)（4.5x 动态范围）
+      var r3d = Math.max(11, r2d * 1.65);
+      return 0.056 * (r3d / 49.5);
+    }
+    // 完整图谱（8k+ 节点）：沿用 sqrt(degree) [4..30] 比例，高连接枢纽醒目、低连接坡面小珠清爽不拥挤
+    return 0.028 * (r2d / 30);
+  }
+
   function quantileBounds(values, loQ, hiQ) {
     if (!values.length) return [-1, 1];
     if (values.length <= 16) {
@@ -801,14 +826,14 @@
       attr + 'float aSize;\n' +
       attr + 'vec4 aColor;\n' +
       'uniform mat4 uViewProj;\n' +
-      'uniform float uDpr;\n' +
+      'uniform float uPointScale;\n' +
       'uniform float uHeightScale;\n' +
       varyV + 'vec4 vColor;\n' +
       'void main() {\n' +
       '  vec3 pos = vec3(aPos.x, aPos.y * uHeightScale, aPos.z);\n' +
       '  vColor = aColor;\n' +
       '  gl_Position = uViewProj * vec4(pos, 1.0);\n' +
-      '  gl_PointSize = clamp(aSize * uDpr / max(0.45, gl_Position.w), 2.0, 28.0);\n' +
+      '  gl_PointSize = clamp(aSize * uPointScale / max(0.45, gl_Position.w), 2.5, 64.0);\n' +
       '}\n';
 
     var pointFS = headF + outDecl +
@@ -904,7 +929,7 @@
     var tLoc = resolveLocs(terrainProg, ['aXZ', 'aH', 'aGrad'], ['uViewProj', 'uHeightAmp', 'uHeightScale', 'uEye', 'uBg', 'uIsDark', 'uContours', 'uExtent', 'uGlintPhase']);
     var lLoc = resolveLocs(lineProg, ['aPos', 'aColor'], ['uViewProj', 'uExtent', 'uHeightScale', 'uFadeStart']);
     var sLoc = resolveLocs(solidProg, ['aCenter', 'aQuad', 'aInstColor'], ['uViewProj', 'uCamRight', 'uCamUp', 'uIsDark', 'uHeightScale']);
-    var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uDpr', 'uHeightScale']);
+    var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uPointScale', 'uHeightScale']);
 
     function resize(w, h, nextDpr) {
       width = Math.max(1, Math.round(w));
@@ -991,6 +1016,8 @@
       }
       var applyHoverDim = !!(hoverNode && !focusSet);
 
+      var isPreview = nodes.length <= 160;
+      var maxDeg = currentField.maxDegree || 1;
       cachedNodes3d = [];
       for (i = 0; i < nodes.length; i++) {
         var n = nodes[i];
@@ -1011,6 +1038,7 @@
         } else if (isHovered || isSelected || isNeighbor) {
           nodeAlpha = 1;
         }
+        var baseRadius = computeSphereRadius3D(m.deg, maxDeg, isPreview);
         cachedNodes3d.push({
           node: n,
           wx: m.wx,
@@ -1019,16 +1047,19 @@
           wy: m.elevH * heightAmp,
           degNorm: m.degNorm,
           deg: m.deg,
+          baseRadius: baseRadius,
           rgb: rgb,
           alpha: nodeAlpha,
           visible: visible,
+          hovered: isHovered,
+          selected: isSelected,
           focused: isFocused || isHovered || isSelected,
           neighbor: isNeighbor,
         });
       }
 
       // Rank top hubs for 3D spherical orbs + vertical stems
-      var stemCap = isLite ? 55 : (cachedNodes3d.length <= 160 ? cachedNodes3d.length : 170);
+      var stemCap = isLite ? 55 : (isPreview ? cachedNodes3d.length : 170);
       var ranked = cachedNodes3d.slice().sort(function (a, b) {
         if (a.focused !== b.focused) return a.focused ? -1 : 1;
         if (a.neighbor !== b.neighbor) return a.neighbor ? -1 : 1;
@@ -1045,7 +1076,7 @@
         }
       }
 
-      // Background points buffer (remaining lower-degree nodes on large graphs)
+      // Background points buffer (remaining lower-degree nodes on large graphs, sharing exact world baseRadius)
       var bgPts = [];
       var bgSizes = [];
       var bgCols = [];
@@ -1053,8 +1084,8 @@
         var bn = cachedNodes3d[i];
         if (polySet[bn.node.id]) continue;
         bgPts.push(bn.wx, bn.wy, bn.wz);
-        bgSizes.push(bn.visible ? (4.5 + bn.degNorm * 7.5) : 3.2);
-        bgCols.push(bn.rgb[0], bn.rgb[1], bn.rgb[2], bn.alpha * 0.85);
+        bgSizes.push(bn.baseRadius);
+        bgCols.push(bn.rgb[0], bn.rgb[1], bn.rgb[2], bn.alpha * 0.88);
       }
       ptCount = bgPts.length / 3;
       gl.bindBuffer(gl.ARRAY_BUFFER, ptPosBuf);
@@ -1078,9 +1109,9 @@
       var sCol = [];
       for (i = 0; i < orderedHubs.length; i++) {
         var pn = orderedHubs[i];
-        var radius = (nodes.length <= 160 ? 0.022 : 0.012) + pn.degNorm * (nodes.length <= 160 ? 0.022 : 0.018);
-        if (pn.focused) radius *= 1.24;
-        else if (pn.neighbor) radius *= 1.07;
+        var radius = pn.baseRadius;
+        if (pn.hovered) radius *= 1.10;
+        else if (pn.selected || pn.focused) radius *= 1.06;
         for (var q = 0; q < quadCorners.length; q += 2) {
           sPos.push(pn.wx, pn.wy, pn.wz);
           sQuad.push(quadCorners[q], quadCorners[q + 1], radius);
@@ -1182,13 +1213,13 @@
         var dist = Math.hypot(b.wx - a.wx, b.wz - a.wz);
         var terrainMid = sampleTerrainHeight(currentField, mx, mz) * heightAmp;
         var arcPeak = isHi
-          ? (Math.max(a.wy, b.wy, terrainMid + 0.075) + Math.min(0.24, dist * 0.28 + 0.045))
+          ? (Math.max(a.wy, b.wy, terrainMid + 0.055) + Math.min(0.18, dist * 0.22 + 0.032))
           : (Math.max((a.wy + b.wy) * 0.5, terrainMid + 0.03) + Math.min(0.14, dist * 0.16));
 
         var col = isHi ? (node3dMap[highlightCenterId] ? node3dMap[highlightCenterId].rgb : a.rgb) : baseEdgeRgb;
         if (isHi) {
           hiEdgeCount += 1;
-          var coreMix = isDarkTheme ? 0.42 : 0.08;
+          var coreMix = isDarkTheme ? 0.36 : 0.08;
           var coreCol = [
             col[0] + (1 - col[0]) * coreMix,
             col[1] + (1 - col[1]) * coreMix,
@@ -1208,11 +1239,12 @@
               homt * homt * a.wz + 2 * homt * hu * mz + hu * hu * b.wz,
             ]);
           }
-          // Crossed horizontal + vertical glowing 3D ribbons (visible thickness from any pitch)
-          pushRibbonStrip(arcPts, sx, 0, sz, 0.011, col, isDarkTheme ? 0.42 : 0.34, 0.0);
-          pushRibbonStrip(arcPts, sx, 0, sz, 0.0040, coreCol, 0.96, 0.25);
-          pushRibbonStrip(arcPts, 0, 1, 0, 0.0095, col, isDarkTheme ? 0.36 : 0.28, 0.0);
-          pushRibbonStrip(arcPts, 0, 1, 0, 0.0035, coreCol, 0.92, 0.20);
+          // Fine crossed horizontal + vertical luminous 3D ribbons (~1.6-2.0px crisp line across viewports)
+          var wScale = isPreview ? 1.0 : 0.62;
+          pushRibbonStrip(arcPts, sx, 0, sz, 0.0032 * wScale, col, isDarkTheme ? 0.24 : 0.20, 0.0);
+          pushRibbonStrip(arcPts, sx, 0, sz, 0.0013 * wScale, coreCol, 0.94, 0.15);
+          pushRibbonStrip(arcPts, 0, 1, 0, 0.0026 * wScale, col, isDarkTheme ? 0.20 : 0.16, 0.0);
+          pushRibbonStrip(arcPts, 0, 1, 0, 0.0011 * wScale, coreCol, 0.88, 0.12);
         } else {
           var bgEdgeAlpha = highlightCenterId
             ? (nodes.length <= 160 ? 0.04 : 0.03)
@@ -1426,12 +1458,12 @@
         gl.drawArrays(gl.LINES, 0, lineVertCount);
       }
 
-      // 4. Background Low-Degree Round Node Orbs
+      // 4. Background Low-Degree Round Node Orbs (pixel-exact match to solidProg world radius)
       if (ptCount > 0) {
         activeAttrs = {};
         gl.useProgram(pointProg);
         gl.uniformMatrix4fv(pLoc.u.uViewProj, false, cam.viewProj);
-        gl.uniform1f(pLoc.u.uDpr, dpr);
+        gl.uniform1f(pLoc.u.uPointScale, height * dpr * 2.605089);
         gl.uniform1f(pLoc.u.uHeightScale, heightScale);
         bindAttrib(pLoc.a.aPos, ptPosBuf, 3, activeAttrs);
         bindAttrib(pLoc.a.aSize, ptSizeBuf, 1, activeAttrs);
@@ -1494,7 +1526,8 @@
         if (!n3.visible && !n3.focused) continue;
         var pt = projectWorldToScreen(n3.wx, n3.wy * lastHeightScale, n3.wz, lastViewProj, width, height);
         if (!pt || pt[2] < -1 || pt[2] > 1) continue;
-        var hitRadius = (n3.degNorm > 0.35 ? 16 : 11) + (n3.focused ? 4 : 0);
+        var projR = n3.baseRadius ? (n3.baseRadius * height * 0.75) : (n3.degNorm > 0.35 ? 16 : 11);
+        var hitRadius = Math.max(9, Math.min(28, projR + 5)) + (n3.focused ? 3 : 0);
         var distPx = Math.hypot(pt[0] - localX, pt[1] - localY);
         if (distPx <= hitRadius) {
           var score = distPx + pt[2] * 2;
@@ -2213,6 +2246,7 @@
     detectEnvironment: detectEnvironment,
     parseCssColor: parseCssColor,
     computeNodeDegrees: computeNodeDegrees,
+    computeSphereRadius3D: computeSphereRadius3D,
     computeTerrainField: computeTerrainField,
     sampleTerrainHeight: sampleTerrainHeight,
     buildCameraMatrices: buildCameraMatrices,
