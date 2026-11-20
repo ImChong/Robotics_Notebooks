@@ -16,7 +16,7 @@ tags:
   - apple
   - open-source
 status: complete
-updated: 2026-11-06
+updated: 2026-11-20
 arxiv: "2611.06908"
 venue: "arXiv 2026（v1，2026-11-04）"
 project: https://apple-aiml-research.github.io/ml-halo/
@@ -52,6 +52,8 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../comparisons/mujoco-vs-isaac-lab.md
   - ../overview/embodied-station-2026-11-06-20-papers-technology-map.md
+original:
+  - ../../sources/papers/halo_perceptive_humanoid_motion_sim_arxiv_2611_06908.md
 sources:
   - ../../sources/papers/halo_perceptive_humanoid_motion_sim_arxiv_2611_06908.md
   - ../../sources/sites/halo-perceptive-humanoid-motion-sim.md
