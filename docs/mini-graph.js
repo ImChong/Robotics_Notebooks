@@ -336,27 +336,87 @@
       // d3 默认 filter 之外再排除触屏：预览图在手机上占满一屏宽、高 480px，交给 d3 平移缩放时
       // 手指一落到图上页面就滚不动（上滑回顶会卡在图处）。触屏点按节点浮窗不受影响。
       .filter(function(ev){ return (!ev.ctrlKey || ev.type === 'wheel') && !ev.button && ev.type.indexOf('touch') !== 0; })
-      .on('zoom',function(ev){ g.attr('transform',ev.transform); });
-    svg.call(zoom).on('dblclick.zoom',null);
+      .on('start', function(){ svg.style('cursor', 'grabbing'); })
+      .on('zoom', function(ev){ g.attr('transform', ev.transform); })
+      .on('end', function(){ svg.style('cursor', 'grab'); });
+    svg.style('cursor', 'grab').call(zoom).on('dblclick.zoom',null);
 
     var sim = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(edges).id(function(d){ return d.id; }).distance(60).strength(0.32))
       .force('charge', d3.forceManyBody().strength(-200).distanceMax(300))
       .force('center', d3.forceCenter(W/2, H/2).strength(0.08))
-      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 4; }).strength(0.45))
+      .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 5; }).strength(0.95).iterations(2))
       .force('x', d3.forceX(W/2).strength(0.06))
       .force('y', d3.forceY(H/2).strength(0.06))
       .velocityDecay(0.52)
       .alphaDecay(0.04)
       .stop();
 
+    var entranceTimer = null;
+    var entranceObserver = null;
+    function finishEntranceImmediately() {
+      if (entranceObserver) {
+        entranceObserver.disconnect();
+        entranceObserver = null;
+      }
+      if (entranceTimer) {
+        entranceTimer.stop();
+        entranceTimer = null;
+      }
+      nodes.forEach(function (n) {
+        if (n._fx != null) n.x = n._fx;
+        if (n._fy != null) n.y = n._fy;
+      });
+      if (nodeG) nodeG.select('circle').attr('r', nodeRadius);
+      if (label) label.attr('opacity', null);
+      if (line) line.attr('stroke-opacity', null);
+      renderPositions();
+    }
+
     line = lineLayer.selectAll('line').data(edges).join('line')
       .attr('stroke-width',1);
 
+    var nodeDrag2d = d3.drag()
+      .filter(function(ev) { return !ev.button && ev.type.indexOf('touch') !== 0; })
+      .on('start', function(ev, d) {
+        finishEntranceImmediately();
+        d._dragStartX = ev.x;
+        d._dragStartY = ev.y;
+        d._dragMoved = false;
+        d.fx = d.x;
+        d.fy = d.y;
+        d3.select(this).style('cursor', 'grabbing');
+        if (!ev.active) sim.alphaTarget(0.28).restart();
+      })
+      .on('drag', function(ev, d) {
+        if (Math.hypot(ev.x - d._dragStartX, ev.y - d._dragStartY) > 3) {
+          d._dragMoved = true;
+          hideTooltip();
+        }
+        d.fx = ev.x;
+        d.fy = ev.y;
+        d.x = ev.x;
+        d.y = ev.y;
+        d._fx = ev.x;
+        d._fy = ev.y;
+        renderPositions();
+      })
+      .on('end', function(ev, d) {
+        d3.select(this).style('cursor', 'grab');
+        if (!ev.active) sim.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      });
+
     nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
       .attr('class', 'mini-graph-node')
-      .style('cursor','pointer')
+      .style('cursor','grab')
+      .call(nodeDrag2d)
       .on('click', function(ev, d) {
+        if (ev.defaultPrevented || d._dragMoved) {
+          d._dragMoved = false;
+          return;
+        }
         if (isMobile) {
           ev.stopPropagation();
           if (pinnedNode === d) {
@@ -477,6 +537,12 @@
       nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
     }
 
+    sim.on('tick', renderPositions);
+    sim.on('end', function() {
+      nodes.forEach(function (n) { n._fx = n.x; n._fy = n.y; });
+      renderPositions();
+    });
+
     // 布局离屏算到收敛（预热 + 0.7 开场，tick 数与原先实时模拟一致，终态相同）：
     // 每帧限时 8ms 分帧计算，避免一次性同步计算形成长任务；算完前隐藏画布，算完直接取景，
     // 用户看到的动态改由下方「入场」负责，不再在首屏外空跑。
@@ -485,14 +551,23 @@
     for (var wi = 0; wi < 12; wi++) sim.tick();
     nodes.forEach(function (n) { n.vx = 0; n.vy = 0; });
     sim.alpha(0.7);
-      var layoutTimer = d3.timer(function () {
+    var layoutDone = false;
+    var layoutTimer = d3.timer(function () {
       var budgetEnd = performance.now() + 8;
       while (sim.alpha() >= sim.alphaMin() && performance.now() < budgetEnd) sim.tick();
       if (sim.alpha() >= sim.alphaMin()) return;
+      layoutDone = true;
       layoutTimer.stop();
       onLayoutReady();
       if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(true);
     });
+    function finishLayoutNow() {
+      if (layoutDone) return;
+      layoutDone = true;
+      layoutTimer.stop();
+      while (sim.alpha() >= sim.alphaMin()) sim.tick();
+      onLayoutReady();
+    }
 
     function onLayoutReady() {
       var xs=nodes.map(function(n){return n.x;}), ys=nodes.map(function(n){return n.y;});
@@ -539,12 +614,18 @@
       };
 
       setEntranceFrame(0);
-      var entranceObserver = new IntersectionObserver(function (entries) {
+      entranceObserver = new IntersectionObserver(function (entries) {
         if (!entries.some(function (en) { return en.isIntersecting; })) return;
-        entranceObserver.disconnect();
-        var entranceTimer = d3.timer(function (elapsed) {
+        if (entranceObserver) {
+          entranceObserver.disconnect();
+          entranceObserver = null;
+        }
+        entranceTimer = d3.timer(function (elapsed) {
           if (!setEntranceFrame(elapsed)) return;
-          entranceTimer.stop();
+          if (entranceTimer) {
+            entranceTimer.stop();
+            entranceTimer = null;
+          }
           nodes.forEach(function (n) { n.x = n._fx; n.y = n._fy; });
           renderPositions();
           label.attr('opacity', null);
@@ -709,6 +790,9 @@
       : null;
 
     function show3d() {
+      finishLayoutNow();
+      finishEntranceImmediately();
+      sim.stop();
       hideTooltip();
       pinnedNode = null;
       hoveredNode2d = null;

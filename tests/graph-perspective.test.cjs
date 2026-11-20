@@ -292,6 +292,35 @@ test('camera projection places world origin inside viewport across oblique and t
   assert.ok(Math.abs(gPt.x - 490) < 1e-3);
   assert.ok(Math.abs(gPt.y - 195) < 1e-3);
 
+  // Far outer nodes map linearly without rectangular box compression and round-trip cleanly
+  const spreadNodes = [];
+  for (let i = 0; i < 40; i++) {
+    const a = (i / 40) * Math.PI * 2;
+    spreadNodes.push({ id: `c${i}`, x: Math.cos(a) * 100, y: Math.sin(a) * 100 });
+  }
+  spreadNodes.push({ id: 'outer1', x: 260, y: 30 }, { id: 'outer2', x: 420, y: 30 });
+  const spreadField = perspectiveApi.computeTerrainField(spreadNodes, perspectiveApi.computeNodeDegrees(spreadNodes, []), { gridSize: 48 });
+  const m1 = spreadField.nodeMeta.outer1;
+  const m2 = spreadField.nodeMeta.outer2;
+  assert.ok(m2.wx > m1.wx * 1.45, 'far outer nodes spread linearly outward without being squished against a rectangular wall');
+  const rtOuter = perspectiveApi.worldToGraphCoords(m2.wx, m2.wz, spreadField.center);
+  assert.ok(Math.abs(rtOuter.x - 420) < 1e-3 && Math.abs(rtOuter.y - 30) < 1e-3, 'far outer node round-trips accurately');
+
+  // 3D terrain sphere overlap solver separates clustered spheres around hubs with zero residual overlap
+  const overlapItems = [
+    { node: { id: 'hub' }, wx: 0, wz: 0, wySurf: 0.1, wy: 0.2, degNorm: 1, baseRadius: 0.028 },
+    { node: { id: 'a' }, wx: 0.002, wz: 0.001, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
+    { node: { id: 'b' }, wx: -0.001, wz: 0.002, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
+    { node: { id: 'c' }, wx: 0, wz: 0, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
+  ];
+  perspectiveApi.resolveSphereOverlaps3D(overlapItems, spreadField, 0.35, { gap: 0.002, maxPasses: 10 });
+  for (let i = 0; i < overlapItems.length; i++) {
+    for (let j = i + 1; j < overlapItems.length; j++) {
+      const d = Math.hypot(overlapItems[i].wx - overlapItems[j].wx, overlapItems[i].wz - overlapItems[j].wz);
+      assert.ok(d >= overlapItems[i].baseRadius + overlapItems[j].baseRadius + 0.0015, `expected spheres ${i}/${j} separated, got ${d}`);
+    }
+  }
+
   // Entry force-simulation bloom starts gathered inward, expands organically, and settles to exact equilibrium at 1.0
   const startPos = perspectiveApi.evalForceMotionXZ(0.6, 0.3, 0.0, 0.026);
   const midPos = perspectiveApi.evalForceMotionXZ(0.6, 0.3, 0.55, 0.026);
@@ -465,6 +494,10 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(graphHtml.includes('perspectiveSimActive') && graphHtml.includes('reseed: true'), '3D terrain layout refresh randomizes nodes and restarts force simulation');
   assert.ok(graphHtml.includes('getRouteBadges:') && perspectiveSrc.includes('function focusNode('), '3D terrain supports route step-by-step focus and numbered route badges');
   assert.ok(graphHtml.includes('--depth-banner-chat-shift') && graphHtml.includes('syncDepthBannerChatOffset'), 'route stepper banner shifts cleanly to avoid open chat panel');
+  assert.ok(graphHtml.includes('function resolveNodeOverlaps2D('), 'graph.html includes 2D spatial-hash non-overlap solver');
+  const graph3dJs = readFileSync(resolve(__dirname, '../docs/graph-3d.js'), 'utf8');
+  assert.ok(graph3dJs.includes('function create3DCollisionForce(') && graph3dJs.includes('function resolveNodeOverlaps3D('), 'graph-3d.js includes 3D sphere collision force and settle overlap solver');
+  assert.ok(miniGraphJs.includes('d3.drag()') && miniGraphJs.includes('nodeDrag2d'), 'homepage mini-graph preview binds 2D node mouse dragging');
   assert.ok(graphHtml.includes('getCommunityLabels:') && perspectiveSrc.includes('communityLabelCount'), '3D terrain renders floating community cluster capsules');
   assert.ok(perspectiveSrc.includes('uHeightScale') && perspectiveSrc.includes('uGlintPhase') && perspectiveSrc.includes('startCameraTransition'), 'top-down to oblique entry swoop and horizon glint present');
   assert.ok(styleCss.includes('[data-theme="light"]'));

@@ -4739,8 +4739,8 @@
     // Barnes–Hut 近似阈值：斥力占全图 tick 六成，theta 0.9 → 1.2 省约 20%，1.5 省约 35%；
     // 视觉布局不需要 0.9 的精度。
     const FORCE_THETA = LOW_END_DEVICE ? 1.5 : 1.2;
-    // 碰撞力占 tick 约三成：爆炸期（alpha>0.3）每 tick 位移几十 px，解重叠是白做；低端再隔 tick 跑。
-    const FORCE_COLLIDE_SKIP_ALPHA = 0.3;
+    // 碰撞力占 tick 约三成：初期剧烈爆发（alpha>0.55）暂跳过，之后每 tick 解重叠确保节点不互相压住；低端隔 tick 跑。
+    const FORCE_COLLIDE_SKIP_ALPHA = 0.55;
     const FORCE_WARMUP_TICKS = 20;
     // warmup 分片按时间预算让出主线程：全图单 tick 已远超一帧（G0 实测 ≈46ms），
     // 固定 tick 数分片仍会攒出长任务。每片至少跑 1 tick 保证推进，故单片可能超预算。
@@ -4789,11 +4789,104 @@
     // 首屏直接从平衡态开始，手机上不再跑几十秒的 warmup / 收敛；缺失或长度不符则回退叶序 + warmup
     const precomputedLayout = (Array.isArray(graphData.layout) && graphData.layout.length === nodes.length)
       ? graphData.layout : null;
+    /**
+     * 2D 节点防重叠解算（O(N) 空间网格）：
+     * 按节点半径平方反比分配位移权重（高连接枢纽稳居中心、周边节点沿外缘舒展，fx/fy 固定节点不动），
+     * 保证任意两节点圆心距 ≥ r_a + r_b + padding，彻底消除 2D 节点互相压住的现象。
+     */
+    function resolveNodeOverlaps2D(targetNodes, opts) {
+      const list = targetNodes || nodes;
+      const n = list.length;
+      if (n < 2) return 0;
+      const cfg = opts || {};
+      const pad = cfg.padding != null ? cfg.padding : 4;
+      const maxPasses = cfg.maxPasses != null ? cfg.maxPasses : (LOW_END_DEVICE ? 8 : 14);
+      const radii = new Float32Array(n);
+      let maxR = 4;
+      for (let i = 0; i < n; i++) {
+        const r = scaledRadius(list[i]);
+        radii[i] = r;
+        if (r > maxR) maxR = r;
+      }
+      const cellSize = Math.max(16, maxR * 2 + pad * 1.5);
+      const invCell = 1 / cellSize;
+      let totalResolved = 0;
+
+      for (let pass = 0; pass < maxPasses; pass++) {
+        const grid = new Map();
+        for (let i = 0; i < n; i++) {
+          const nd = list[i];
+          if (nd.x == null || nd.y == null) continue;
+          const gx = Math.floor(nd.x * invCell);
+          const gy = Math.floor(nd.y * invCell);
+          const key = (gx + 32768) * 65536 + (gy + 32768);
+          const bucket = grid.get(key);
+          if (bucket) bucket.push(i);
+          else grid.set(key, [i]);
+        }
+
+        let passOverlaps = 0;
+        for (let i = 0; i < n; i++) {
+          const a = list[i];
+          if (a.x == null || a.y == null) continue;
+          const ra = radii[i];
+          const gxa = Math.floor(a.x * invCell);
+          const gya = Math.floor(a.y * invCell);
+          const invMa = (a.fx != null && a.fy != null) ? 0 : 1 / Math.max(1, ra * ra);
+
+          for (let oy = -1; oy <= 1; oy++) {
+            for (let ox = -1; ox <= 1; ox++) {
+              const cell = grid.get((gxa + ox + 32768) * 65536 + (gya + oy + 32768));
+              if (!cell) continue;
+              for (let k = 0; k < cell.length; k++) {
+                const j = cell[k];
+                if (j <= i) continue;
+                const b = list[j];
+                if (b.x == null || b.y == null) continue;
+                const rb = radii[j];
+                const minDist = ra + rb + pad;
+                const dx = b.x - a.x;
+                const dy = b.y - a.y;
+                const d2 = dx * dx + dy * dy;
+                if (d2 >= minDist * minDist) continue;
+                const dist = Math.sqrt(d2);
+                let ux;
+                let uy;
+                if (dist < 1e-4) {
+                  const ang = (((i * 2654435761 + j * 1597334677) >>> 0) % 1024) * (Math.PI * 2 / 1024);
+                  ux = Math.cos(ang);
+                  uy = Math.sin(ang);
+                } else {
+                  ux = dx / dist;
+                  uy = dy / dist;
+                }
+                const invMb = (b.fx != null && b.fy != null) ? 0 : 1 / Math.max(1, rb * rb);
+                const invSum = invMa + invMb;
+                if (!(invSum > 0)) continue;
+                const push = (minDist - dist) * 1.02;
+                const wa = invMa / invSum;
+                const wb = invMb / invSum;
+                a.x -= ux * push * wa;
+                a.y -= uy * push * wa;
+                b.x += ux * push * wb;
+                b.y += uy * push * wb;
+                passOverlaps += 1;
+                totalResolved += 1;
+              }
+            }
+          }
+        }
+        if (passOverlaps === 0) break;
+      }
+      return totalResolved;
+    }
+
     if (precomputedLayout) {
       for (let i = 0; i < nodes.length; i++) {
         nodes[i].x = W / 2 + precomputedLayout[i][0];
         nodes[i].y = H / 2 + precomputedLayout[i][1];
       }
+      resolveNodeOverlaps2D(nodes);
     }
 
     /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，一路衰减到落稳）── */
@@ -4802,6 +4895,12 @@
       theta: FORCE_THETA, alphaMin: FORCE_ALPHA_MIN, chargeStrength,
     });
     const collideForce = simulation.force('collision');
+    if (collideForce && typeof collideForce.strength === 'function') {
+      collideForce.strength(0.95);
+    }
+    if (collideForce && typeof collideForce.iterations === 'function') {
+      collideForce.iterations(LOW_END_DEVICE ? 1 : 2);
+    }
     let collideTickNo = 0;
     const gatedCollide = (alpha) => {
       collideTickNo += 1;
@@ -5302,6 +5401,7 @@
       const startVisiblePhase = () => {
         // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
         // 这里若再抬回 0.9 等于中途重新加热，是可见阶段来回抽动的直接来源。
+        resolveNodeOverlaps2D(simulation.nodes(), { maxPasses: 6 });
         syncGraphDomFromSimulation();
         // 首屏收遮罩 / 进入已保存的 3D 偏好都挂在这里，必须先于 3D 早退执行（?view=3d 直开时
         // is3DView() 已为真，否则遮罩永不消失）
@@ -5395,6 +5495,7 @@
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
+      resolveNodeOverlaps2D(simulation.nodes());
       if (isPerspectiveView()) {
         if (perspectiveSimActive) {
           perspectiveSimActive = false;
@@ -5403,6 +5504,7 @@
         }
         return;
       }
+      syncGraphDomFromSimulation();
       if (timelineAnimating || is3DView()) return;   // 时序动画 / 3D 期间不触发整图标签渐显 / 自适应
       finishSimulationLoad();
     });
