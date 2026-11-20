@@ -2,7 +2,7 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-20
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
@@ -113,6 +113,19 @@ flowchart LR
 [Google Cloud Tech 视频](https://www.youtube.com/watch?v=8C4bh59FtsI)及其 [Fashion Mind 演示代码短链接](https://g.dev/ai/fashion-mind)讨论另一种记忆分工：需要按 ID / 日期进行**精确查询的事实**由 SQL 类结构化存储管理，依赖**语义相似度的偏好与模式**通过向量检索或 Memory Bank 召回；面向实时语音交互时，将语义抽取放在时延敏感路径之外。这与本页的 dreaming 都强调将耗时整理工作与当前交互分离，但**不是同一套实现或评测**。
 
 **证据边界：** 目前仅核对公开的视频说明，尚未通读官方视频字幕或取得短链接后的源码，不能声称已验证真实数据库、API 或运行链路。详见[原始资料核对记录](../../sources/videos/google-cloud-tech-agent-memory-architecture-2026-10-28.md)。这条资料讨论通用 Agent；机器人实测结论仍需独立证据。
+
+## Strata 同名架构对照（2026-11-20）
+
+以下系统彼此独立，不能因为都叫 Strata 而合并原始论文、程序及测评：
+
+| 系统 | 解决的问题 |
+|---|---|
+| [STRATA 论文](../entities/paper-strata-experience-graphs.md) | 三层经验图、反思与防负迁移 |
+| [kytheros/strata](../entities/kytheros-strata-mcp-memory.md) | MCP 跨编码代理的质量门控持久检索 |
+| [Jeremy Kamber/strata-memory](../entities/jeremykamber-strata-tiered-memory.md) | Markdown 冷热迁移 + 冷归档影子索引；早期博客与当前源码需区别 |
+| [Niko1221/Strata](../entities/niko-strata-local-inference.md) | 本地模型推理引擎（不是记忆库） |
+| [PolyStrata](../entities/polystrata-local-inference.md) | 多引擎 MoE 本地推理，部分模型复用 Niko Strata |
+| [Linger](../entities/linger-personal-agent.md) | 本地个人 Agent、知识 Wiki、电脑工具与权限控制 |
 
 ## 关联页面
 

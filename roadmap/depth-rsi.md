@@ -93,6 +93,10 @@ flowchart LR
 - 机器人侧做一次技能库实验：把一个调通的控制程序参数化存起来，换一个近邻任务，统计 token 与试错次数是否下降
 
 ### 推荐读什么
+
+- [STRATA：三层结构化经验图](../wiki/entities/paper-strata-experience-graphs.md) — 成功/失败经验归纳、压力式遗忘与反向任务负迁移；只改变外部经验，不改变权重
+- [Kytheros Strata MCP 记忆](../wiki/entities/kytheros-strata-mcp-memory.md) — 质量门控的跨会话技术决策和故障复用
+- [Jeremy Kamber Strata Memory](../wiki/entities/jeremykamber-strata-tiered-memory.md) — 按时间/访问频率将记忆在热/温/冷层间迁移，学习规则式维护与可恢复归档
 - [ASPIRE](../wiki/methods/aspire.md) — 逐原语多模态 trace + 进化搜索 + 技能库蒸馏；LIBERO-Pro / Robosuite / BEHAVIOR-1K 上超 CaP-Agent0 与 VLA 基线
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第一次推进— Reflexion 谱系与"参数不变"的边界
 - [karpathy/autoresearch](../wiki/entities/karpathy-autoresearch.md) — 三文件最小闭环：固定预算 + 固定 metric 的 keep/discard，人类迭代 program.md 作为可读技能层
