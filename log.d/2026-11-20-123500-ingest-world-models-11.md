@@ -1,4 +1,4 @@
-# [2026-11-20] ingest · 11 项开源世界模型
+## [2026-11-20] ingest | sources/blogs/wechat_shenlan_world_models_11_2026_11_20.md — 编译 11 项世界模型，补录 4 项独立实体与路线对照
 
 - **意图：** 将深蓝具身智能的 11 项世界模型转为技术路线与源码可复现边界对照。
 - **资料：** sources/blogs/wechat_shenlan_world_models_11_2026_11_20.md
