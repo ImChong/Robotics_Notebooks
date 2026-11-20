@@ -19,7 +19,7 @@ tags:
   - cuhk
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-11-07
+updated: 2026-11-20
 arxiv: "2502.14814"
 venue: "ICRA 2026"
 related:
@@ -35,6 +35,8 @@ related:
   - ./paper-notebook-learning-humanoid-locomotion-with-perceptive-int.md
   - ./unitree-g1.md
   - ./extreme-parkour.md
+original:
+  - ../../sources/papers/vb_com_arxiv_2502_14814.md
 sources:
   - ../../sources/papers/vb_com_arxiv_2502_14814.md
   - ../../sources/sites/vbcom-github-io.md

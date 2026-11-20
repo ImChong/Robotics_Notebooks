@@ -1,6 +1,9 @@
 # Robot Parkour Learning（Robot Parkour Learning，HMI P130）
 
-> 来源归档（ingest）— 策展解读编译，非原文镜像
+> 来源归档（ingest；最近复核：2026-11-20）— 策展解读编译，非原文镜像；下方「核对结果」依据原文全文
+
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2309.05665v2` 全文（正文 §1–§5、参考文献、附录 A–E 含 Table 3–11 奖励 / 随机化 / PPO / 网络参数与 Figure 9），核实 Table 1 障碍范围、Table 2 仿真成功率（Ours 86/80/100/73/100）、实机 A1 攀 0.40 m 80% / 跨 0.60 m 80% / 钻 0.2 m 90% / 窄缝 0.28 m、`r_skill`/`r_penetrate` 公式与 ±0.05 课程、DAgger BCE 目标、48×64 深度 10 Hz / 策略 50 Hz / PD 50,1 / 25 Nm 限幅；并读官方仓库 README、`legged_gym/README.md` 与 `scripts/{train,collect,play}.py` 入口。
 
 - **标题：** Robot Parkour Learning
 - **短名：** Robot Parkour Learning
@@ -43,3 +46,11 @@ Robot Parkour解决的是一个探索难题：攀高台、跨大沟、钻低洞�
 - 升格详情页：[`wiki/entities/paper-robot-parkour-learning.md`](../../wiki/entities/paper-robot-parkour-learning.md)
 - 覆盖索引：[`wiki/queries/hmi-papers-coverage.md`](../../wiki/queries/hmi-papers-coverage.md)
 - 上游策展仓：[`sources/repos/humanoid-motion-intelligence.md`](../repos/humanoid-motion-intelligence.md)
+
+## 核对结果（依据原文 arXiv:2309.05665v2）
+
+- **方法：** 五个专项技能（climb / leap / crawl / tilt / run）各自 PPO 训练：先软动力学（障碍可穿透，`r_skill + r_penetrate`，穿透奖励乘 `v_x`，自动课程按穿透奖励阈值以 0.05 步长调节难度分数 `s`），再硬动力学微调（仅 `r_skill`）；run 跳过软阶段。之后 DAgger 蒸馏为单一 CNN+GRU+MLP 视觉策略，散度为 BCE。
+- **仿真（Table 2）：** Ours 成功率 86/80/100/73/100，Oracle 95/82/100/100/100，Blind 0/0/13/0/100，MLP 0/1/63/43/100，No Distill 0/0/73/0/100，Oracles w/o Soft Dyn 0/0/93/86/100。
+- **实机：** A1 定量（每项 10 次）；Go1 仅说明同管线可用。户外跨 0.6 m、连续 0.42 m 台阶。
+- **局限（原文 §5）：** 仿真环境需手工构建；未来用 3D 视觉自动生成环境、尝试 RGB 输入。
+- **开源：** 官方仓库 ZiwenZhuang/parkour 含 legged_gym + rsl_rl 训练 / 蒸馏与 Go1 / Go2 部署；README 注明 Go1/Go2 配置不保证复现论文性能，A1 部署代码待办。

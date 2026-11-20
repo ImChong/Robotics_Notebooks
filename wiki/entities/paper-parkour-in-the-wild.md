@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, parkour, perceptive-locomotion, multi-expert-distillation, dagger, rl-finetuning, ethz, nvidia, anymal]
 status: complete
-updated: 2026-10-01
+updated: 2026-11-20
 arxiv: "2505.11164"
 venue: "IJRR 2026 (DOI 10.1177/02783649261455067)"
 related:
@@ -16,6 +16,8 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../concepts/privileged-training.md
+original:
+  - ../../sources/papers/parkour_in_the_wild_arxiv_2505_11164.md
 sources:
   - ../../sources/papers/parkour_in_the_wild_arxiv_2505_11164.md
   - ../../sources/papers/multi_expert_distillation_locomotion.md
@@ -97,7 +99,17 @@ flowchart TB
 | Scanned meshes (test, 未见) | 14.9 | **94.9** |
 | Gap - climb（未见） | 10.2 | **82.0** |
 
-**对比：** 论文亦比较 **分层** 与 **VAE 技能编码**；在 **无专家新地形** 上二者易失败，蒸馏+RLFT 组合最佳。
+**评测设定（§3.1）：** 仿真随机地形、最大训练难度 90%，每格 1000 次 rollout；蒸馏后平均成功率较专家降约 10.4%，但 Walk 上蒸馏策略（99.3）反超专家（94.6）。未见地形还包含 Arranged rocks（蒸馏 62.9 → RLFT 93.2）。
+
+**技能组合对比（§3.3，Fig. 6）：** 分层（hard-switch）方法即便在有专家的地形也表现差，且完全无法完成需组合两技能的 Gap-climb；VAE 技能潜空间 + 蒸馏在预训练设定下与本文方法都表现良好，新地形上本文略优，从零训练时 VAE 反而明显优于分层与标准 RL。作者因 VAE 路线更复杂且新地形略逊，选择「蒸馏 + RL 微调」，并指出二者在技能数增多时缺乏可扩展性。
+
+**网络消融（§3.4）：** 高程图输入下 MLP 与 LSTM 都能蒸馏；深度输入必须带记忆（LSTM），且误差仍高于高程图（薄墙与箱子在开始攀爬前无法区分）。
+
+**主动感知（§3.5）：** RLFT 后策略学会离障碍更远并倾斜机身，使障碍进入深度相机视野（Fig. 8）。
+
+**重复微调（§3.2）：** 在 Climb-down-on-stones 上，从零 RL 找不到解；从已微调策略出发优于从蒸馏策略出发；混合全部旧地形（新地形仅占约 3% 样本）优于只训新地形。
+
+**部署（§3.6）：** ANYmal D 六个深度相机中用四个（前 2 后 2），不用 Lidar，机载 CPU 50 Hz 推理，深度 15 Hz 更新，训练中随机化相机延迟故无需同步。
 
 ## 工程实践
 
@@ -125,6 +137,8 @@ flowchart TB
 - **后人形/ WBC 借 RLFT 流程：** [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md) 等引用其 **critic warm-up + 渐解冻 actor** 微调套路。
 
 ## 局限与风险
+
+- **论文自述（§4.3/§5）：** 稀疏地形（Beams / Stepping stones）会失误后快速恢复而非直接找准落脚点；遇桌子等悬空障碍有时先碰到再蹲；攀爬/跳跃更多用膝盖，增加电机磨损；噪声模型偏激进、长时记忆需换架构、需能处理相互矛盾专家的蒸馏方法。
 
 - **专家调参成本：** 每地形独立课程/奖励，扩展技能 **工程量大**。
 - **纯蒸馏多模态折中：** 单地形仍可能低于 expert（踏石 73% vs 98.8% expert）。

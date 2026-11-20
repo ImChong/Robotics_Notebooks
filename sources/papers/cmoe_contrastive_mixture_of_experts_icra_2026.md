@@ -14,6 +14,8 @@
 - **作者：** Shihao Ma、Hongjin Chen、Zijun Xu、Yi Zhao、Ke Wu、Ruichen Yang、Leyao Zou、Zhongxue Gan、Wenchao Ding（复旦大学智能机器人与先进制造学院）
 - **会议：** ICRA 2026
 - **入库日期：** 2026-08-23
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 通读 `arXiv:2603.03067v2`（10 Sep 2026 版）论文全文（摘要、§I–§VI、Table I–III、Fig. 1–7 图注、参考文献），核实 β-VAE 下一帧预测 + 体速 MSE（式 3–4）、高程图 AE（式 5）、每专家独立 actor-critic + 共享门控 softmax 加权（式 6）、SwAV 对比（式 7–8）、5 experts / prototype 32 / τ=0.2 / 0.7 m×1.1 m 高程图、Table III 全部成功率与行进距离、Expert 1 屏蔽实验、真机 80 cm 沟 / 12·15·20 cm 台阶 / 30 cm 栏 / 17° 坡；并读官方 `Hoshi-No-Ai/CMoE` README。未逐行读源码（时序图沿用此前 ingest 的代码归档）；论文无附录。
 - **一句话说明：** 单阶段 PPO + 高程图感知人形 RL：Vanilla MoE 门控在多地形的专家激活趋于均匀；CMoE 用 **SwAV 式地形对比学习** 约束门控与高程 latent 的聚类分配，使专家按地形分化；G1 真机连续 20 cm 台阶、80 cm 沟、30 cm 栏与混合地形。
 
 ## 开源状态（步骤 2.5）

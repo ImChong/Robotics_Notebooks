@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, locomotion, parkour, vae, ppo, sim2real, unitree-g1, isaac-lab, rsl-rl, sjtu, tongji, zju, shanghai-innovation-institute]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2607.25541"
+original: ../../sources/papers/p3_arxiv_2607_25541.md
 code: https://github.com/ylyem9x/P3_Open
 related:
   - ../methods/ppo.md
@@ -49,7 +50,7 @@ summary: "P³（arXiv:2607.25541）：SJTU/同济/ZJU/创智学院提出的 VAE-
 ## 为什么重要
 
 - **修的是已大规模使用的栈，不是新感知故事：** [DreamWaQ](../methods/dreamwaq.md)、[PIE](../methods/pie-perceptive-locomotion.md) 与后续人形感知内部模型都把 VAE 潜变量喂给 PPO actor。经验上「VAE-PPO 难训、晚收敛、渐近差」，本文给出可检验的原因：单样本似然把分量高斯当成边缘策略。
-- **数字可读：** 同等策略诊断下单样本只保住 **64.6%** 样本不被错误 clip；MM 到 **100%**；完整 $P^{3}$ 比最强 MC-only（$N{=}50$）少 **>20%** 收敛步，MuJoCo 与 G1 真机都是最好一档。
+- **数字可读：** 同等策略诊断下单样本只保住 **64.6%** 样本不被错误 clip；MM 到 **100%**；完整 $P^{3}$ 比最强 MC-only（$N{=}50$）少约 **20%**（10k→8k epoch；摘要写 >20%）收敛步，MuJoCo 与 G1 真机都是最好一档。
 - **工程可跑：** 官方仓在 [Isaac Lab](./isaac-lab.md) + 定制 `rl_p3` 上给出 MM 主训 / LSFT / play 脚本，适合作为「VAE-PPO 优化补丁」试验台，而不是再造一套地形编码器。
 
 ## 核心信息
