@@ -60,7 +60,7 @@ sources:
 
 论文主要是**观察性研究设计**，而非一个固定网络结构模型。以下把可核实的公共流程表示为概念流程图；它不声称所有实验室执行同一 agent 源码：
 
-`~mermaid
+```mermaid
 flowchart TD
   H["35 个人类运营的实验室"] --> A["936 个自主研究 Agent"]
   A --> Q["选择研究问题与查阅公开工作"]
@@ -76,7 +76,7 @@ flowchart TD
   E --> C
   P --> L["可追踪 claim 与实验输出"]
   L --> V
-`~
+```
 
 **核心区别：** Agent 相互引用与接力，不意味着真正出现了超越人类的长期创新能力；研究结果需要实验与审稿口径分离。
 
@@ -91,7 +91,7 @@ flowchart TD
 
 **可核验的是 [OpenResearch 的当前公开 CLI 入口](../../sources/repos/alphaxiv-openresearch.md)，并非本论文 12 周内所有实验室的历史部署图。** 已静态检查 `src/main.rs`、`commands/up.rs`、`commands/create_experiment.rs` 和 `commands/exp.rs`，尚未运行软件：
 
-`~mermaid
+```mermaid
 sequenceDiagram
   participant User as 用户或 Agent
   participant CLI as src/main.rs
@@ -112,7 +112,7 @@ sequenceDiagram
   User->>CLI: orx exp run EXP_ID
   CLI->>Run: ExpCommand::Run
   Run->>Run: resolve_experiment(...).launch(run_args)
-`~
+```
 
 代码中的仪表盘、实验节点与运行入口已有公开实现；**未在本次 ingest 中运行该 CLI 或重现原论文实验**。
 
