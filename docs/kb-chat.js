@@ -6,7 +6,7 @@
     endpoint: 'https://robotics-notebooks-kb-chat.chongliu.workers.dev/chat',
     turnstileSiteKey: '0x4AAAAAAGIWdfoeyhjsNN-h',
     maxQuestionLength: 300,
-    requestTimeoutMs: 10000,
+    requestTimeoutMs: 22000,
   };
 
   var CONTENT_URL_RE = /^exports\/page-content\/([a-f0-9]{64})\.json$/;
@@ -79,6 +79,9 @@
       sending: '查找中…',
       readonlyNotice: '基于站内文档回答 · 公开问答匿名记录用于改进知识库',
       sourcesLabel: '参考来源',
+      showExcerpts: '显示摘录 ▾',
+      hideExcerpts: '收起摘录 ▴',
+      defaultPassageLabel: '正文摘录',
       ungrounded: '暂未在站内找到直接相关内容，可换个短词、英文术语，或逛逛知识图谱。',
       greetingReply: '你好！我是机器人知识库只读问答助手。请直接提问站内技术概念、方法或论文（如「什么是全身控制 WBC？」），或点击上方示例问题。',
       localAnswerIntro: '找到以下站内相关内容：',
@@ -117,6 +120,9 @@
       sending: 'Searching…',
       readonlyNotice: 'Grounded in the wiki · Public Q&A logged anonymously',
       sourcesLabel: 'Sources',
+      showExcerpts: 'Show excerpts ▾',
+      hideExcerpts: 'Hide excerpts ▴',
+      defaultPassageLabel: 'Excerpt',
       ungrounded: 'No direct match found in the wiki. Try shorter keywords or explore the Knowledge Graph.',
       greetingReply: 'Hello! I am the read-only Robotics_Notebooks Q&A assistant. Please ask about robotics concepts, methods, or papers (e.g., "What is Whole-Body Control (WBC)?"), or tap a starter prompt above.',
       localAnswerIntro: 'Relevant sections from the wiki:',
@@ -1045,16 +1051,33 @@
   var MERMAID_HEADER_RE =
     /^(?:flowchart|graph|sequenceDiagram|classDiagram|stateDiagram(?:-v2)?|erDiagram|gantt|pie|gitGraph|mindmap|timeline|xychart-beta|quadrantChart|journey|sankey-beta|block-beta)\b/;
 
+  function sanitizeMermaidSource(rawText) {
+    var src = String(rawText || '');
+    var lines = src.replace(/\r\n?/g, '\n').split('\n');
+    var firstNonEmpty = '';
+    for (var i = 0; i < lines.length; i += 1) {
+      var trimmed = lines[i].trim();
+      if (trimmed) {
+        firstNonEmpty = trimmed;
+        break;
+      }
+    }
+    if (/^(?:flowchart|graph)\b/i.test(firstNonEmpty)) {
+      src = src.replace(/((?:--|-\.-|==)?>|---)\s*\|([^|\n]+)\|>/g, '$1|$2|');
+    }
+    return src;
+  }
+
   function extractMermaidBlockSource(fenceInfo, codeLines) {
     var info = String(fenceInfo || '').trim();
     var infoLower = info.toLowerCase();
     var rawText = codeLines.join('\n');
     if (infoLower === 'mermaid' || infoLower === 'mmd' || infoLower === 'mermaidjs') {
-      return rawText;
+      return sanitizeMermaidSource(rawText);
     }
     if (/^mermaid\s+/i.test(info)) {
       var rest = info.replace(/^mermaid\s+/i, '').trim();
-      return rest ? rest + '\n' + rawText : rawText;
+      return sanitizeMermaidSource(rest ? rest + '\n' + rawText : rawText);
     }
     if (!infoLower || infoLower === 'text' || infoLower === 'plaintext' || infoLower === 'diagram') {
       var firstNonEmpty = '';
@@ -1066,7 +1089,7 @@
         }
       }
       if (MERMAID_HEADER_RE.test(firstNonEmpty)) {
-        return rawText;
+        return sanitizeMermaidSource(rawText);
       }
     }
     return null;
@@ -1525,6 +1548,232 @@
     container.appendChild(body);
   }
 
+  function formatSourcesSummary(docCount, refCount) {
+    if (state.lang === 'en') {
+      return (
+        t('sourcesLabel') +
+        ' · ' +
+        docCount +
+        (docCount === 1 ? ' doc · ' : ' docs · ') +
+        refCount +
+        (refCount === 1 ? ' ref' : ' refs')
+      );
+    }
+    return t('sourcesLabel') + ' · ' + docCount + ' 篇文档 ' + refCount + ' 处引用';
+  }
+
+  function renderCitationsSection(citations, enrichedCitations) {
+    var citeWrap = document.createElement('div');
+    citeWrap.className = 'kb-chat-citations';
+    citeWrap.setAttribute('data-lang', state.lang);
+
+    var groups = [];
+    var groupsByKey = new Map();
+    var hasSnippets = false;
+
+    for (var j = 0; j < citations.length; j += 1) {
+      var item = citations[j];
+      if (!item) continue;
+      var meta = resolveCitationMeta(item);
+      var savedCite = {
+        index: item.index || j + 1,
+        id: item.id || '',
+        title: meta.title || item.title || item.id || '',
+        heading: item.heading || '',
+        snippet: item.snippet || '',
+        url: item.url || '',
+        path: meta.path || '',
+        community_label: meta.community || item.community_label || '',
+        roadmaps: meta.roadmaps || [],
+        updated: meta.updated || '',
+        health_score: typeof meta.healthScore === 'number' ? meta.healthScore : undefined,
+      };
+      enrichedCitations.push(savedCite);
+      if (item.snippet && String(item.snippet).trim()) {
+        hasSnippets = true;
+      }
+
+      var href = buildCitationHref(item);
+      var fallbackHref = safeInternalNodeUrl(item.url, item.id);
+      var groupKey = item.id ? 'id:' + item.id : fallbackHref || 'idx:' + savedCite.index;
+      var group = groupsByKey.get(groupKey);
+      if (!group) {
+        group = {
+          key: groupKey,
+          meta: meta,
+          firstItem: item,
+          entries: [],
+        };
+        groupsByKey.set(groupKey, group);
+        groups.push(group);
+      }
+      group.entries.push({ item: item, savedCite: savedCite, href: href });
+    }
+
+    if (groups.length === 0) return null;
+
+    var headRow = document.createElement('div');
+    headRow.className = 'kb-chat-citations__head';
+
+    var label = document.createElement('div');
+    label.className = 'kb-chat-citations__label';
+    label.textContent = formatSourcesSummary(groups.length, enrichedCitations.length);
+    headRow.appendChild(label);
+
+    if (hasSnippets) {
+      var toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'kb-chat-citations__toggle';
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.textContent = t('showExcerpts');
+      toggleBtn.addEventListener('click', function () {
+        var nextOpen = citeWrap.classList.toggle('is-snippets-open');
+        toggleBtn.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
+        toggleBtn.textContent = nextOpen ? t('hideExcerpts') : t('showExcerpts');
+      });
+      headRow.appendChild(toggleBtn);
+    }
+    citeWrap.appendChild(headRow);
+
+    var listEl = document.createElement('div');
+    listEl.className = 'kb-chat-citation-list';
+    var pendingCommunitySlots = [];
+
+    for (var g = 0; g < groups.length; g += 1) {
+      var grp = groups[g];
+      var grpMeta = grp.meta;
+      var groupEl = document.createElement('div');
+      groupEl.className = 'kb-chat-citation-group';
+
+      var groupHead = document.createElement('div');
+      groupHead.className = 'kb-chat-citation-group__head';
+
+      var firstHref = grp.entries[0] ? grp.entries[0].href : '';
+      var titleEl = document.createElement(firstHref ? 'a' : 'span');
+      titleEl.className = 'kb-chat-citation-title';
+      titleEl.textContent = grpMeta.title || String(grp.firstItem.id || '');
+      if (firstHref) {
+        titleEl.href = firstHref;
+        bindSamePageCitationJump(titleEl, firstHref, grp.firstItem);
+      }
+      groupHead.appendChild(titleEl);
+
+      var metaRow = document.createElement('div');
+      metaRow.className = 'kb-chat-citation-meta';
+      var hasPendingForGroup = false;
+
+      if (grpMeta.community) {
+        var commChip = document.createElement('span');
+        commChip.className = 'kb-chat-citation-meta-item kb-chat-citation-community';
+        commChip.textContent = grpMeta.community;
+        commChip.title = t('metaCommunity') + ' · ' + grpMeta.community;
+        metaRow.appendChild(commChip);
+      } else if (grpMeta.path) {
+        hasPendingForGroup = true;
+        var savedCites = grp.entries.map(function (entry) {
+          return entry.savedCite;
+        });
+        pendingCommunitySlots.push({ metaRow: metaRow, path: grpMeta.path, savedCites: savedCites });
+      }
+
+      if (grpMeta.roadmaps && grpMeta.roadmaps.length > 0) {
+        var rmChip = document.createElement('span');
+        rmChip.className = 'kb-chat-citation-meta-item kb-chat-citation-roadmap';
+        var rmText = grpMeta.roadmaps[0] + (grpMeta.roadmaps.length > 1 ? ' +' + (grpMeta.roadmaps.length - 1) : '');
+        rmChip.textContent = rmText;
+        rmChip.title = t('metaRoadmap') + ' · ' + grpMeta.roadmaps.join(' / ');
+        metaRow.appendChild(rmChip);
+      }
+
+      if (grpMeta.updated) {
+        var updChip = document.createElement('span');
+        updChip.className = 'kb-chat-citation-meta-item kb-chat-citation-updated';
+        updChip.textContent = grpMeta.updated;
+        updChip.title = t('metaUpdated') + ' ' + grpMeta.updated;
+        metaRow.appendChild(updChip);
+      }
+
+      if (typeof grpMeta.healthScore === 'number') {
+        metaRow.appendChild(createHealthBarEl(grpMeta.healthScore));
+      }
+
+      if (metaRow.childNodes.length > 0 || hasPendingForGroup) {
+        groupHead.appendChild(metaRow);
+      }
+      groupEl.appendChild(groupHead);
+
+      var passagesWrap = document.createElement('div');
+      passagesWrap.className = 'kb-chat-citation-passages';
+      for (var pIdx = 0; pIdx < grp.entries.length; pIdx += 1) {
+        var entry = grp.entries[pIdx];
+        var passageEl = document.createElement(entry.href ? 'a' : 'div');
+        passageEl.className = 'kb-chat-citation-passage';
+        if (entry.href) {
+          passageEl.href = entry.href;
+          bindSamePageCitationJump(passageEl, entry.href, entry.item);
+        }
+
+        var passageHead = document.createElement('span');
+        passageHead.className = 'kb-chat-citation-passage-head';
+
+        var idxSpan = document.createElement('span');
+        idxSpan.className = 'kb-chat-citation-idx';
+        idxSpan.textContent = '[' + entry.savedCite.index + ']';
+        passageHead.appendChild(idxSpan);
+
+        var headingText =
+          entry.item.heading && String(entry.item.heading).trim()
+            ? String(entry.item.heading).trim()
+            : t('defaultPassageLabel');
+        var headingSpan = document.createElement('span');
+        headingSpan.className = 'kb-chat-citation-heading';
+        headingSpan.textContent = headingText;
+        passageHead.appendChild(headingSpan);
+        passageEl.appendChild(passageHead);
+
+        if (entry.item.snippet) {
+          var snippetEl = document.createElement('span');
+          snippetEl.className = 'kb-chat-citation-snippet';
+          snippetEl.textContent = normalizeMathText(String(entry.item.snippet));
+          passageEl.appendChild(snippetEl);
+        }
+        passagesWrap.appendChild(passageEl);
+      }
+      groupEl.appendChild(passagesWrap);
+      listEl.appendChild(groupEl);
+    }
+
+    citeWrap.appendChild(listEl);
+
+    if (pendingCommunitySlots.length > 0) {
+      ensureCommunityIndex().then(function (commIdx) {
+        if (!commIdx || !commIdx.pathToCommunity) return;
+        var updatedAny = false;
+        for (var p = 0; p < pendingCommunitySlots.length; p += 1) {
+          var slotInfo = pendingCommunitySlots[p];
+          var cid = commIdx.pathToCommunity.get(slotInfo.path);
+          var rawLabel = cid && commIdx.communityLabel ? commIdx.communityLabel[cid] : '';
+          var shortLabel = shortenCommunityLabel(rawLabel);
+          if (!shortLabel) continue;
+          for (var sc = 0; sc < slotInfo.savedCites.length; sc += 1) {
+            slotInfo.savedCites[sc].community_label = shortLabel;
+          }
+          updatedAny = true;
+          var commEl = document.createElement('span');
+          commEl.className = 'kb-chat-citation-meta-item kb-chat-citation-community';
+          commEl.textContent = shortLabel;
+          commEl.title = t('metaCommunity') + ' · ' + shortLabel;
+          slotInfo.metaRow.insertBefore(commEl, slotInfo.metaRow.firstChild);
+        }
+        if (updatedAny) {
+          saveChatHistory(state.history);
+        }
+      });
+    }
+
+    return citeWrap;
+  }
+
   function appendAssistantMessage(options) {
     var msg = document.createElement('div');
     msg.className = 'kb-chat-msg kb-chat-msg--assistant';
@@ -1549,121 +1798,10 @@
     appendCitedText(msg, options.text || '', citationsByIndex);
 
     if (citations.length > 0) {
-      var citeWrap = document.createElement('div');
-      citeWrap.className = 'kb-chat-citations';
-
-      var label = document.createElement('div');
-      label.className = 'kb-chat-citations__label';
-      label.textContent = t('sourcesLabel');
-      citeWrap.appendChild(label);
-
-      var pendingCommunitySlots = [];
-
-      for (var j = 0; j < citations.length; j += 1) {
-        var item = citations[j];
-        if (!item) continue;
-        var meta = resolveCitationMeta(item);
-        var savedCite = {
-          index: item.index || j + 1,
-          id: item.id || '',
-          title: meta.title || item.title || item.id || '',
-          heading: item.heading || '',
-          snippet: item.snippet || '',
-          url: item.url || '',
-          path: meta.path || '',
-          community_label: meta.community || item.community_label || '',
-          roadmaps: meta.roadmaps || [],
-          updated: meta.updated || '',
-          health_score: typeof meta.healthScore === 'number' ? meta.healthScore : undefined,
-        };
-        enrichedCitations.push(savedCite);
-        var href = buildCitationHref(item);
-        var card = document.createElement(href ? 'a' : 'div');
-        card.className = 'kb-chat-citation-card';
-        if (href) {
-          card.href = href;
-          bindSamePageCitationJump(card, href, item);
-        }
-
-        var titleEl = document.createElement('span');
-        titleEl.className = 'kb-chat-citation-title';
-        titleEl.textContent = '[' + savedCite.index + '] ' + (meta.title || String(item.id || ''));
-        card.appendChild(titleEl);
-
-        if (item.heading && String(item.heading).trim() !== meta.title) {
-          var headingEl = document.createElement('span');
-          headingEl.className = 'kb-chat-citation-heading';
-          headingEl.textContent = String(item.heading);
-          card.appendChild(headingEl);
-        }
-
-        var metaRow = document.createElement('div');
-        metaRow.className = 'kb-chat-citation-meta';
-        if (meta.community) {
-          var commChip = document.createElement('span');
-          commChip.className = 'kb-chat-citation-chip kb-chat-citation-community';
-          commChip.textContent = t('metaCommunity') + ' · ' + meta.community;
-          metaRow.appendChild(commChip);
-        } else if (meta.path) {
-          pendingCommunitySlots.push({ metaRow: metaRow, path: meta.path, savedCite: savedCite });
-        }
-
-        if (meta.roadmaps && meta.roadmaps.length > 0) {
-          var rmChip = document.createElement('span');
-          rmChip.className = 'kb-chat-citation-chip kb-chat-citation-roadmap';
-          var rmText = meta.roadmaps[0] + (meta.roadmaps.length > 1 ? ' +' + (meta.roadmaps.length - 1) : '');
-          rmChip.textContent = t('metaRoadmap') + ' · ' + rmText;
-          rmChip.title = meta.roadmaps.join(' / ');
-          metaRow.appendChild(rmChip);
-        }
-
-        if (meta.updated) {
-          var updChip = document.createElement('span');
-          updChip.className = 'kb-chat-citation-chip kb-chat-citation-updated';
-          updChip.textContent = t('metaUpdated') + ' ' + meta.updated;
-          metaRow.appendChild(updChip);
-        }
-
-        if (typeof meta.healthScore === 'number') {
-          metaRow.appendChild(createHealthBarEl(meta.healthScore));
-        }
-
-        if (metaRow.childNodes.length > 0 || pendingCommunitySlots.length > 0) {
-          card.appendChild(metaRow);
-        }
-
-        if (item.snippet) {
-          var snippetEl = document.createElement('span');
-          snippetEl.className = 'kb-chat-citation-snippet';
-          snippetEl.textContent = normalizeMathText(String(item.snippet));
-          card.appendChild(snippetEl);
-        }
-        citeWrap.appendChild(card);
+      var citeWrap = renderCitationsSection(citations, enrichedCitations);
+      if (citeWrap) {
+        msg.appendChild(citeWrap);
       }
-
-      if (pendingCommunitySlots.length > 0) {
-        ensureCommunityIndex().then(function (commIdx) {
-          if (!commIdx || !commIdx.pathToCommunity) return;
-          var updatedAny = false;
-          for (var p = 0; p < pendingCommunitySlots.length; p += 1) {
-            var slotInfo = pendingCommunitySlots[p];
-            var cid = commIdx.pathToCommunity.get(slotInfo.path);
-            var rawLabel = cid && commIdx.communityLabel ? commIdx.communityLabel[cid] : '';
-            var shortLabel = shortenCommunityLabel(rawLabel);
-            if (!shortLabel) continue;
-            slotInfo.savedCite.community_label = shortLabel;
-            updatedAny = true;
-            var commEl = document.createElement('span');
-            commEl.className = 'kb-chat-citation-chip kb-chat-citation-community';
-            commEl.textContent = t('metaCommunity') + ' · ' + shortLabel;
-            slotInfo.metaRow.insertBefore(commEl, slotInfo.metaRow.firstChild);
-          }
-          if (updatedAny) {
-            saveChatHistory(state.history);
-          }
-        });
-      }
-      msg.appendChild(citeWrap);
     } else if (options.showGraphLink) {
       var graphLink = document.createElement('a');
       graphLink.className = 'kb-chat-cite-pill';

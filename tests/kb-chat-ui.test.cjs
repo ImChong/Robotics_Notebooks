@@ -283,7 +283,7 @@ test('Local read-only mode answers Chinese & English questions with clickable ci
   const messages = window.document.querySelectorAll('.kb-chat-msg--assistant');
   assert.equal(messages.length, 1);
   assert.match(messages[0].textContent, /全身控制/);
-  const links = messages[0].querySelectorAll('a.kb-chat-citation-card');
+  const links = messages[0].querySelectorAll('a.kb-chat-citation-passage');
   assert.ok(links.length >= 1);
   assert.ok(links[0].getAttribute('href').startsWith('detail.html?id=wiki-concepts-wbc'));
   assert.match(links[0].getAttribute('href'), /&cite=/);
@@ -667,14 +667,19 @@ test('Citation cards display canonical node title, community, roadmap, updated d
   // Flush microtasks for async link-graph community lookup
   await new Promise((r) => setTimeout(r, 15));
 
-  const card = window.document.querySelector('.kb-chat-citation-card');
-  assert.ok(card);
-  assert.equal(card.querySelector('.kb-chat-citation-title').textContent, '[1] 全身控制（Whole-Body Control, WBC）');
-  assert.equal(card.querySelector('.kb-chat-citation-community').textContent, '社区 · 运动控制');
-  assert.equal(card.querySelector('.kb-chat-citation-roadmap').textContent, '路线 · 运动控制主路线');
-  assert.equal(card.querySelector('.kb-chat-citation-updated').textContent, '更新 2026-11-18');
-  assert.match(card.querySelector('.kb-chat-citation-health').textContent, /健康度 3\/3/);
-  assert.equal(card.querySelectorAll('.kb-chat-citation-health .node-health--3 i.is-on').length, 3);
+  const group = window.document.querySelector('.kb-chat-citation-group');
+  assert.ok(group);
+  assert.equal(group.querySelector('.kb-chat-citation-title').textContent, '全身控制（Whole-Body Control, WBC）');
+  assert.equal(group.querySelector('.kb-chat-citation-community').textContent, '运动控制');
+  assert.equal(group.querySelector('.kb-chat-citation-community').getAttribute('title'), '社区 · 运动控制');
+  assert.equal(group.querySelector('.kb-chat-citation-roadmap').textContent, '运动控制主路线');
+  assert.equal(group.querySelector('.kb-chat-citation-roadmap').getAttribute('title'), '路线 · 运动控制主路线');
+  assert.equal(group.querySelector('.kb-chat-citation-updated').textContent, '2026-11-18');
+  assert.equal(group.querySelector('.kb-chat-citation-updated').getAttribute('title'), '更新 2026-11-18');
+  assert.match(group.querySelector('.kb-chat-citation-health').textContent, /健康度 3\/3/);
+  assert.equal(group.querySelectorAll('.kb-chat-citation-health .node-health--3 i.is-on').length, 3);
+  assert.equal(group.querySelector('.kb-chat-citation-idx').textContent, '[1]');
+  assert.equal(group.querySelector('.kb-chat-citation-heading').textContent, '核心原理');
   dom.window.close();
 });
 
@@ -767,7 +772,7 @@ test('Chat history persists in localStorage across page reloads until cache is c
   assert.equal(userMsgs.length, 1);
   assert.equal(assistantMsgs.length, 1);
   assert.equal(userMsgs[0].textContent, '什么是全身控制 WBC？');
-  assert.ok(assistantMsgs[0].querySelector('a.kb-chat-citation-card'));
+  assert.ok(assistantMsgs[0].querySelector('a.kb-chat-citation-passage'));
   second.dom.window.close();
 });
 
@@ -876,14 +881,220 @@ test('Clicking citation card scrolls to quoted passage inside details and pulses
   window.RNKbChat.open();
 
   await window.RNKbChat.ask('什么是全身控制 WBC？');
-  const card = window.document.querySelector('.kb-chat-citation-card');
-  assert.ok(card);
-  assert.match(card.getAttribute('href'), /&cite=.*&cite_h=/);
+  const passage = window.document.querySelector('a.kb-chat-citation-passage');
+  assert.ok(passage);
+  assert.match(passage.getAttribute('href'), /&cite=.*&cite_h=/);
 
-  card.click();
+  passage.click();
   assert.equal(window.document.getElementById('secFold').open, true, 'collapsed section auto-expands');
   assert.equal(scrolledTarget && scrolledTarget.el, targetPara, 'scrolled to exact quoted paragraph');
   assert.ok(targetPara.classList.contains('kb-cite-highlight'), 'highlight animation class applied');
+  dom.window.close();
+});
+
+test('Same-document citations group into one compact card with collapsible excerpts and async community persistence', async () => {
+  const richCatalog = {
+    version: 'v1',
+    content_mode: 'per-page-v1',
+    pages: {
+      detail_pages: {
+        'wiki-concepts-wbc': {
+          title: '全身控制（Whole-Body Control, WBC）',
+          path: 'wiki/concepts/whole-body-control.md',
+          updated: '2026-11-20',
+          health_score: 3,
+          content_url: `exports/page-content/${HASH_WBC}.json`,
+        },
+        'roadmap-motion-control': {
+          title: '运动控制主路线',
+          path: 'roadmap/motion-control.md',
+          updated: '2026-11-18',
+          health_score: 3,
+          content_url: `exports/page-content/${HASH_ROADMAP}.json`,
+        },
+      },
+      roadmap_pages: {
+        'roadmap-motion-control': {
+          title: '运动控制主路线（Motion Control）',
+          stages: [{ id: 'stage-1', related_items: ['wiki-concepts-wbc'] }],
+        },
+      },
+      page_aliases: {},
+    },
+  };
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer: 'WBC 综合 [1]、[2]、[3] 与路线 [4]。',
+            citations: [
+              {
+                index: 1,
+                id: 'wiki-concepts-wbc',
+                title: 'WBC',
+                heading: '核心原理',
+                snippet: '第一段摘录：分层 QP 求解。',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+              {
+                index: 2,
+                id: 'wiki-concepts-wbc',
+                title: 'WBC',
+                heading: '与 MPC 协同',
+                snippet: '第二段摘录：上层规划落足点。',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+              {
+                index: 3,
+                id: 'wiki-concepts-wbc',
+                title: 'WBC',
+                heading: '参考来源',
+                snippet: '第三段摘录：经典论文出处。',
+                url: 'detail.html?id=wiki-concepts-wbc',
+              },
+              {
+                index: 4,
+                id: 'roadmap-motion-control',
+                title: '运动控制主路线',
+                heading: 'Stage 2',
+                snippet: '第四段摘录：路线衔接说明。',
+                url: 'roadmap.html?id=roadmap-motion-control',
+              },
+            ],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => richCatalog };
+      if (url === 'exports/link-graph.json') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            nodes: [{ id: 'wiki/concepts/whole-body-control.md', community: 'comm-control' }],
+            communities: [{ id: 'comm-control', label: '运动控制（Motion Control） 社区' }],
+          }),
+        };
+      }
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-group'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  await new Promise((r) => setTimeout(r, 20));
+
+  const citeWrap = window.document.querySelector('.kb-chat-citations');
+  assert.ok(citeWrap);
+  assert.equal(citeWrap.querySelector('.kb-chat-citations__label').textContent, '参考来源 · 2 篇文档 4 处引用');
+  assert.equal(citeWrap.classList.contains('is-snippets-open'), false, 'snippets collapsed by default');
+
+  const groups = citeWrap.querySelectorAll('.kb-chat-citation-group');
+  assert.equal(groups.length, 2, '3 citations from same page collapse into 1 group card');
+  assert.equal(groups[0].querySelectorAll('.kb-chat-citation-meta').length, 1);
+  assert.equal(groups[0].querySelectorAll('a.kb-chat-citation-passage').length, 3);
+  const hrefs = [...groups[0].querySelectorAll('a.kb-chat-citation-passage')].map((a) => a.getAttribute('href'));
+  assert.equal(new Set(hrefs).size, 3, 'each passage keeps its own section cite_h anchor');
+
+  const toggleBtn = citeWrap.querySelector('.kb-chat-citations__toggle');
+  assert.ok(toggleBtn);
+  assert.equal(toggleBtn.getAttribute('aria-expanded'), 'false');
+  assert.equal(toggleBtn.textContent, '显示摘录 ▾');
+
+  toggleBtn.click();
+  assert.equal(citeWrap.classList.contains('is-snippets-open'), true);
+  assert.equal(toggleBtn.getAttribute('aria-expanded'), 'true');
+  assert.equal(toggleBtn.textContent, '收起摘录 ▴');
+
+  toggleBtn.click();
+  assert.equal(citeWrap.classList.contains('is-snippets-open'), false);
+  assert.equal(toggleBtn.getAttribute('aria-expanded'), 'false');
+
+  const saved = JSON.parse(window.localStorage.getItem('rn_kb_chat_history_v1'));
+  const savedCites = saved[1].citations;
+  assert.equal(savedCites[0].community_label, '运动控制');
+  assert.equal(savedCites[1].community_label, '运动控制');
+  assert.equal(savedCites[2].community_label, '运动控制');
+  dom.window.close();
+});
+
+test('Mermaid edge syntax sanitizer fixes trailing > on flowchart labels before rendering', async () => {
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer: '```mermaid\ngraph LR\n  A[接触感知] -->|关键模态|> B[触觉]\n```',
+            citations: [],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  let capturedSource = '';
+  window.mermaid = {
+    initialize: () => {},
+    run: async ({ nodes }) => {
+      for (const n of nodes) {
+        capturedSource = n.textContent || '';
+        const svg = window.document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        n.appendChild(svg);
+      }
+    },
+  };
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-mmd-fix'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('目前机器人触觉一共分几类？');
+  await new Promise((r) => setTimeout(r, 15));
+
+  assert.equal(capturedSource, 'graph LR\n  A[接触感知] -->|关键模态| B[触觉]');
+  assert.equal(window.document.querySelector('.kb-chat-md-pre'), null);
   dom.window.close();
 });
 

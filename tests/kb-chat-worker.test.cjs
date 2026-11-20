@@ -603,3 +603,97 @@ test('D1 chat logging records anonymous Q&A via ctx.waitUntil and fails safely w
     await Promise.all(waitUntilPromises);
   });
 });
+
+test('Worker supports 2048 default max_tokens, clamps at 2400, and preserves >4000-char answers up to 8000', async () => {
+  const mod = await import(workerUrl);
+  const worker = mod.default;
+
+  const longAnswer = '触觉分类与控制结构说明：' + '测试段落内容。'.repeat(700);
+  assert.ok(longAnswer.length > 4800 && longAnswer.length < 8000);
+
+  const { env, aiCalls } = makeEnv({
+    MAX_OUTPUT_TOKENS: '2048',
+    AI: {
+      async run(model, options) {
+        aiCalls.push({ model, options });
+        return { response: longAnswer };
+      },
+    },
+  });
+
+  await withMockFetch(async (url) => {
+    if (String(url).includes('turnstile')) {
+      return new Response(JSON.stringify({ success: true, hostname: 'imchong.github.io' }), { status: 200 });
+    }
+    return new Response(
+      JSON.stringify({
+        version: 'v1',
+        id: 'wiki-concepts-tactile',
+        content_markdown: '# Tactile\n\n## Core\n\nTactile sensors measure contact geometry and force.',
+      }),
+      { status: 200 },
+    );
+  }, async () => {
+    const resp = await worker.fetch(
+      chatRequest(
+        {
+          question: 'Tactile sensors?',
+          lang: 'zh',
+          turnstileToken: 'tok-long',
+          contentHashes: [HASH_A],
+        },
+        { 'CF-Connecting-IP': '198.51.100.91' },
+      ),
+      env,
+      null,
+    );
+    assert.equal(resp.status, 200);
+    const data = await resp.json();
+    assert.equal(aiCalls[0].options.max_tokens, 2048);
+    assert.match(aiCalls[0].options.messages[0].content, /-->\|/);
+    assert.equal(data.answer.length, longAnswer.length);
+  });
+
+  // Verify upper clamp at 2400 tokens and 8000 chars
+  const hugeAnswer = 'A'.repeat(9500);
+  const clamped = makeEnv({
+    MAX_OUTPUT_TOKENS: '9999',
+    AI: {
+      async run(model, options) {
+        clamped.aiCalls.push({ model, options });
+        return { response: hugeAnswer };
+      },
+    },
+  });
+  await withMockFetch(async (url) => {
+    if (String(url).includes('turnstile')) {
+      return new Response(JSON.stringify({ success: true, hostname: 'imchong.github.io' }), { status: 200 });
+    }
+    return new Response(
+      JSON.stringify({
+        version: 'v1',
+        id: 'wiki-concepts-tactile',
+        content_markdown: '# Tactile\n\n## Core\n\nTactile sensors measure contact geometry and force.',
+      }),
+      { status: 200 },
+    );
+  }, async () => {
+    const resp = await worker.fetch(
+      chatRequest(
+        {
+          question: 'Tactile clamp?',
+          lang: 'en',
+          turnstileToken: 'tok-clamp',
+          contentHashes: [HASH_A],
+        },
+        { 'CF-Connecting-IP': '198.51.100.92' },
+      ),
+      clamped.env,
+      null,
+    );
+    assert.equal(resp.status, 200);
+    const data = await resp.json();
+    assert.equal(clamped.aiCalls[0].options.max_tokens, 2400);
+    assert.equal(data.answer.length, 8000);
+  });
+});
