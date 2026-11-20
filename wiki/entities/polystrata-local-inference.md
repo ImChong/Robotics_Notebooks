@@ -9,7 +9,7 @@ original:
   - ../../sources/repos/simplexai-labs-polystrata.md
 related:
   - ./niko-strata-local-inference.md
-  - ./linger-personal-agent.md
+  - ./linger-simplexai.md
   - ../concepts/agent-memory-and-dreaming.md
 sources:
   - ../../sources/repos/simplexai-labs-polystrata.md
@@ -99,7 +99,7 @@ sequenceDiagram
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 本地大模型产生代码后仍需独立执行测试，吞吐高不等于任务通过率高。
 - [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — PolyStrata 是可供工作流调用的模型服务，不承担多 Agent 编排。
 - [Strata（Niko）推理引擎](niko-strata-local-inference.md) — 复用关系。
-- [Linger 个人 Agent](linger-personal-agent.md) — 上层任务编排、电脑执行和记忆系统。
+- [Linger（SimplexAI）](linger-simplexai.md) — 上层任务编排、电脑执行和记忆系统。
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 推理与持久知识系统的边界。
 
 ## 参考来源

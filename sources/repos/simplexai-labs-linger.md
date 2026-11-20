@@ -15,4 +15,4 @@
 
 ## 对 wiki 的映射
 
-- [simplexai-labs/linger：本地个人 AI Agent](../../wiki/entities/linger-personal-agent.md)
+- [Linger（SimplexAI）：本地个人智能体](../../wiki/entities/linger-simplexai.md)

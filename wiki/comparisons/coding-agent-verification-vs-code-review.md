@@ -8,10 +8,11 @@ tags:
   - ai-agent-evaluation
   - human-in-the-loop
 status: complete
-updated: 2026-11-19
+updated: 2026-11-20
 summary: "从 Claude Code 两篇官方工程文章区分行为验证与代码评审：验证提交可复核的运行证据，评审结合安全与风险决定合并，再用渐进发布、回滚和事故复盘校准整个门禁。"
 related:
   - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
   - ../concepts/ai-agent-evaluation.md
@@ -110,6 +111,7 @@ flowchart TD
 ## 关联页面
 
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — E2E、属性和差分测试的细节及运行证据。
+- [Claude Code 动态多 Agent 工作流](../methods/claude-code-dynamic-workflows.md) — 验证与独立 AI 审查需要上下文隔离、并行扇出或流水线编排时的 task-specific JS harness 方法。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 人如何描述取舍与可靠性约束。
 - [多 Agent 编码管理与认知把关](../concepts/coding-agent-orchestration-and-cognitive-oversight.md) — 任务分配、审查能力和人的责任。
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 如何避免评测器偏差。
