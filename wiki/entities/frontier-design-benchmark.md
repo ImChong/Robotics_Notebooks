@@ -12,6 +12,8 @@ sources:
 related:
   - ./gestalt-stealth-design-model.md
   - ../concepts/ai-agent-evaluation.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./rle-bench.md
 summary: "Contra Labs × BenchFlow 的 Frontier Design Benchmark：33 项真实设计需求背景任务，以专业设计师盲测偏好计算 Elo，并辅以设计 Rubric 与 AI Slop 指标；全部基准数据尚不公开。"
 ---
@@ -104,6 +106,9 @@ flowchart TD
 - [榜首匿名模型 Gestalt (stealth)](gestalt-stealth-design-model.md)
 - [GeWu-Lab 同名 Gestalt 论文](paper-gestalt-2610-00576.md)
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照产物可用性验证与设计师主观偏好评估
+- [动态 Agent 工作流](../methods/claude-code-dynamic-workflows.md) — 对照 harness 变化可能影响评测系统成绩的原则
+- [具身模型评测选型闭环](../overview/hub-embodied-eval-benchmark.md) — 说明设计榜与机器人具身任务的评价口径不能互换
 - [RLE-Bench](rle-bench.md)
 
 ## 参考来源
