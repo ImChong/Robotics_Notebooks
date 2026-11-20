@@ -316,3 +316,16 @@
 - [x] 读者向轻量前端问答与安全渲染：新增按需加载的 `docs/kb-chat.js`，精简读者向标题与提示文案（如「知识问答 / 站内检索 / 基于站内文档回答」），支持中英双语、本地 `search-index-lite.json` + `exports/page-content/<sha256>.json` 段落检索摘要、`detail.html?id=...` / `roadmap.html?id=...` 跳转溯源，以及云端不可用/限额时自动无缝降级；全程 `createElement` + `textContent` 防 XSS 并为带页脚页面补充兼容 CSP `<meta>`。
 - [x] Workers Free 网关与回归验证：新增零密钥 `workers/kb-chat/`（Burst/Minute 边缘限速 + Isolate 并发锁 + Turnstile `siteverify` + 公共缓存 + 无工具 `env.AI.run`）及 `tests/kb-chat-worker.test.cjs`、`tests/kb-chat-ui.test.cjs`、`scripts/verify_kb_chat_limits.py`。
 - [ ] 线上 Cloudflare 部署与超额实测：合入后需站长本机运行 `wrangler secret put TURNSTILE_SECRET_KEY` 与 `wrangler deploy`，回填公开 Worker URL / Turnstile Site Key，并使用 `scripts/verify_kb_chat_limits.py` 完成线上 429 与日额度硬停止实测。
+
+## 2026-11-21 全站首屏与交互性能优化（移动端 + PC 端）
+
+- [x] 构建与导出管线瘦身：新增预裁剪首页子图 `exports/mini-graph.json`（50 节点 / 258 边，约 9.53 KB gz）、在 `home-stats.json` 下发完整 `communities` 列表供首页社区下拉直接使用、`precompute_graph_layout.cjs` 内置零分配二维空间哈希去重叠并标记 `layout_resolved: true`；`docs/sw.js` 将 `exports/mini-graph.json` 纳入 `OPTIONAL_ASSETS`（不改版本号）。
+- [x] `index.html` 与共用数据链路优化：`docs/mini-graph.js` 优先消费 `exports/mini-graph.json`；`RNLinkGraph.ensure()` 仅拉取 `link-graph.json` 拓扑，摘要改为按需 `ensureSummaries()`；`requestPageJson` 恢复默认 HTTP 缓存并仅在目录刷新时 `no-cache`；`company-roadmap.js` 并行拉取并在元数据到达前先渲染时间线正文、`kb-chat.js` 复用 `RNSearchIndexLite` 并缓存预处理文档；`change-log.html` 长日列表按需增量插入 DOM、`roadmap.html` 阶段树懒挂载阶段面板并延迟构造总览模态内容。
+- [x] 图谱页与 3D 地形响应优化：`graph.html` 命中 `layout_resolved` 时跳过首屏力模拟预热与去重叠；用模板 `cloneNode` + `DocumentFragment` + 事件委托替代 8,272 节点逐个绑定；2D 节点 `<text>` 按可见节点单节点懒挂载；聚焦/悬停采用 O(deg) CSS 类与 `incidentEdges2D` 邻接边索引，侧栏改用 GPU `transform` 位移，缓存 `--app-vh` / 壳层尺寸与 rAF 节流 `moveTooltip`、防抖搜索（避开 IME 组字）；`graph-perspective.js` 采用零分配 3D 空间哈希去重叠、材质颜色缓存、O(deg) 悬停拾取与边绘制、rAF 合并拾取与缓存容器 `getBoundingClientRect()`。
+- [x] 首屏渲染与 CSS 合成：`star-history.html` 将 4.56 MB `vendor/plotly.min.js` 移出阻塞 `<head>` 改为 `preload` + `ensurePlotly()` 按需加载，`wiki-activity.json` 延迟至切到节点视图时获取；全站 HTML 首屏关键 JSON 补齐 `preload` 且 `#sponsor-js` 统一 `defer`；`style.css` 收敛呼吸圆点为纯 `opacity` 动画、移动端降低 `.site-header` `backdrop-filter` 模糊半径、对离线重列表容器启用 `content-visibility: auto`。
+- [x] 实测（headless Chrome，gzip 本地服务，冷缓存上下文；移动端为 390×844 触屏 + 4× CPU 节流）：
+  - `index.html`：传输 1,750.5 → 345.2 KB gz（-80.3%）；首屏就绪 PC 3,719 → 2,287 ms、移动 4,455 → 2,746 ms（另一轮 2,063 ms），首页不请求 `link-graph.json`。
+  - `graph.html`：首屏就绪 PC 6,689 → 2,488 ms（2.69×）、移动 19,013 → 10,714 ms（8,203 ms 批次），DOM 36,880 → 28,606；简化聚焦选择器后高连接度节点（`sim2real`）点击至侧栏首帧实测 313.8 ms（rAF 327.4 ms）。
+  - `star-history.html`：FCP PC 1,856 → 220 ms（8.4×）、移动 5,904 → 680 ms（8.7×）；默认星标视图传输 2,237.8 → 1,500.7 KB gz（零 `wiki-activity.json` 请求）。
+  - `change-log.html`：初始 DOM 23,704 → 4,360（-81.6%）；`company.html` / `hubs.html` / `detail.html` / `roadmap.html` 均同步提速，全 16 组测例控制台零报错、零未命中预加载警告。
+

@@ -20,6 +20,25 @@ OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
 TOP_COMMUNITIES_LIMIT = 6
 
 
+def all_communities(graph_stats: dict[str, Any]) -> list[dict[str, Any]]:
+    """从 graph-stats.communities 提取完整社区清单，供首页搜索下拉直接填充，免去首屏拉取全图。"""
+    raw = graph_stats.get("communities")
+    if not isinstance(raw, list):
+        return []
+    out: list[dict[str, Any]] = []
+    for item in raw:
+        if not isinstance(item, dict) or not item.get("id"):
+            continue
+        out.append(
+            {
+                "id": str(item["id"]),
+                "label": str(item.get("label") or item["id"]),
+                "size": int(item.get("size") or 0),
+            }
+        )
+    return out
+
+
 def top_communities(
     graph_stats: dict[str, Any],
     limit: int = TOP_COMMUNITIES_LIMIT,
@@ -115,6 +134,9 @@ def build_payload(
     communities = top_communities(graph_stats)
     if communities:
         payload["top_communities"] = communities
+    full_communities = all_communities(graph_stats)
+    if full_communities:
+        payload["communities"] = full_communities
     top_hubs = hub_entries(graph_stats, "top_hubs")
     if top_hubs:
         payload["top_hubs"] = top_hubs

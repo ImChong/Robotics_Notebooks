@@ -628,7 +628,8 @@ console.log('ok checked=' + checked);
             "navigator.clipboard.writeText",
             "function bindDetailTocSpy(container, tocContainer)",
             "tocContainer.querySelectorAll('a[href^=\"#\"], .toc-entry[data-href]')",
-            "navItems[j].classList.toggle('active',",
+            "lastActiveEl.classList.remove('active')",
+            "nextEl.classList.add('active')",
             "enhanceDetailHeadings(contentEl);",
             "bindDetailTocSpy(contentEl, tocEl);",
         ]

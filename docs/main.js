@@ -90,7 +90,7 @@
         });
         ticking = true;
       }
-    });
+    }, { passive: true });
     updateActive();
   }
 
@@ -506,6 +506,30 @@
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
     }
+    var homeCommunityFilter = document.getElementById('wikiCommunityFilter');
+    if (homeCommunityFilter && graphStats && Array.isArray(graphStats.communities) &&
+        !homeCommunityFilter.getAttribute('data-communities-populated')) {
+      homeCommunityFilter.setAttribute('data-communities-populated', '1');
+      var preservedCommunity = homeCommunityFilter.value;
+      var sortedCommunities = graphStats.communities.slice().sort(function (a, b) {
+        if (a.id === 'community-other') return 1;
+        if (b.id === 'community-other') return -1;
+        return (b.size || 0) - (a.size || 0);
+      });
+      var optHtml = '<option value="">全部社区</option>';
+      for (var ci = 0; ci < sortedCommunities.length; ci++) {
+        var cItem = sortedCommunities[ci];
+        if (!cItem || !cItem.id) continue;
+        var cLabel = cItem.label || cItem.id;
+        if (cItem.size != null) cLabel += ' (' + cItem.size + ')';
+        optHtml += '<option value="' + escapeHtml(cItem.id) + '">' + escapeHtml(cLabel) + '</option>';
+      }
+      homeCommunityFilter.innerHTML = optHtml;
+      if (preservedCommunity) {
+        homeCommunityFilter.value = preservedCommunity;
+        if (homeCommunityFilter.value !== preservedCommunity) homeCommunityFilter.value = '';
+      }
+    }
   }
 
   function detailHref(id) {
@@ -790,7 +814,7 @@
         hide();
       }
     });
-    document.addEventListener('scroll', function () { if (anchor) hide(); }, true);
+    document.addEventListener('scroll', function () { if (anchor) hide(); }, { capture: true, passive: true });
   }
   setupHealthTip();
 
@@ -1529,15 +1553,33 @@
       );
     }
 
+    var dayMetasByDate = Object.create(null);
+
     function applyDayShowCount(daySection, showCount) {
       if (!daySection) return;
       var total = Number(daySection.getAttribute('data-total')) || 0;
       var next = Math.max(TIMELINE_FOLD_SHOW, Math.min(Number(showCount) || TIMELINE_FOLD_SHOW, total || TIMELINE_FOLD_SHOW));
       daySection.setAttribute('data-show', String(next));
       daySection.classList.toggle('is-collapsed', next <= TIMELINE_FOLD_SHOW);
-      var items = daySection.querySelectorAll('.updates-day-list > .updates-item');
-      for (var ii = 0; ii < items.length; ii++) {
-        items[ii].classList.toggle('updates-item-folded', ii >= next);
+      var listEl = daySection.querySelector('.updates-day-list');
+      if (listEl) {
+        var mounted = listEl.children.length;
+        if (next > mounted) {
+          var dateKey = daySection.getAttribute('data-date') || '';
+          var allMetas = dayMetasByDate[dateKey];
+          if (allMetas && allMetas.length) {
+            var endIdx = Math.min(next, allMetas.length);
+            var addHtml = '';
+            for (var ai = mounted; ai < endIdx; ai++) {
+              addHtml += renderTimelineItem(allMetas[ai], false);
+            }
+            if (addHtml) listEl.insertAdjacentHTML('beforeend', addHtml);
+          }
+        }
+        var items = listEl.children;
+        for (var ii = 0; ii < items.length; ii++) {
+          items[ii].classList.toggle('updates-item-folded', ii >= next);
+        }
       }
       var actionsHtml = renderDayActions(total, next);
       var actionsEl = daySection.querySelector('.updates-day-actions');
@@ -1552,9 +1594,11 @@
     function renderTimelineDay(dateLabel, metas, totalCount, dayStats) {
       var fold = metas.length > TIMELINE_FOLD_LIMIT;
       var showCount = fold ? TIMELINE_FOLD_SHOW : metas.length;
+      if (fold) dayMetasByDate[dateLabel || ''] = metas;
       var itemsHtml = '';
-      for (var ii = 0; ii < metas.length; ii++) {
-        itemsHtml += renderTimelineItem(metas[ii], fold && ii >= showCount);
+      // 长列表（单日数百条）首屏只挂载可见条数，点展开时再按步长增量插入 DOM
+      for (var ii = 0; ii < showCount; ii++) {
+        itemsHtml += renderTimelineItem(metas[ii], false);
       }
       var dayMeta = formatDayMeta(metas, totalCount, dayStats);
       return (
@@ -1562,7 +1606,7 @@
         (fold ? ' is-collapsible is-collapsed' : '') +
         '"' +
         (fold
-          ? ' data-total="' + metas.length + '" data-show="' + showCount + '"'
+          ? ' data-date="' + escapeHtml(dateLabel || '') + '" data-total="' + metas.length + '" data-show="' + showCount + '"'
           : '') +
         '>' +
         '<h3 class="updates-day-date"><span class="updates-day-dot" aria-hidden="true"></span>' +
@@ -1973,6 +2017,11 @@
     const pages = siteData && siteData.pages ? siteData.pages : {};
     const detailPages = pages.detail_pages || {};
     const roadmapPages = pages.roadmap_pages || {};
+    if (buildMarkdownRouteIndex._detailRef === detailPages &&
+        buildMarkdownRouteIndex._roadmapRef === roadmapPages &&
+        buildMarkdownRouteIndex._result) {
+      return buildMarkdownRouteIndex._result;
+    }
     const routeIndex = {};
 
     // ⚡ Bolt Optimization: Replace Object.keys().forEach with for...in
@@ -1990,6 +2039,9 @@
       }
     }
 
+    buildMarkdownRouteIndex._detailRef = detailPages;
+    buildMarkdownRouteIndex._roadmapRef = roadmapPages;
+    buildMarkdownRouteIndex._result = routeIndex;
     return routeIndex;
   }
 
@@ -4119,59 +4171,14 @@
       );
       parts.push('<div class="roadmap-ltree-gates" data-dir="in" hidden></div>');
       parts.push('<div class="roadmap-ltree-stage roadmap-ltree-pan"><div class="roadmap-ltree-tree">');
-      parts.push('<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodesHtml(p) + '</div></div>');
+      // 仅首阶段在初始加载时挂载节点卡片；其余阶段与全局总览弹窗按需懒挂载，大幅削减长路线首屏 DOM 节点
+      parts.push('<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + (p === 0 ? nodesHtml(0) : '') + '</div></div>');
       parts.push('<div class="roadmap-ltree-gates" data-dir="out" hidden></div>');
       parts.push('</section>');
     }
     parts.push('</div></div>');
     treeEl.innerHTML = parts.join('');
     if (metaEl) metaEl.textContent = columns.length + ' 个阶段 · ' + total + ' 个知识节点';
-
-    var mapParts = [
-      '<div class="roadmap-ltree-map-backdrop" data-map-close></div>',
-      '<div class="roadmap-ltree-map-panel">',
-        '<div class="roadmap-ltree-map-bar">',
-          '<h2 id="roadmap-ltree-map-title" class="roadmap-ltree-map-title">',
-            '<span>全局总览</span>',
-            '<span class="roadmap-ltree-map-count">' + total + ' 个节点 · ' + columns.length + ' 个阶段</span>',
-          '</h2>',
-          '<div class="roadmap-ltree-map-legend">',
-            '<p>实线为阶段内互链，虚线为相邻阶段互链。悬停节点（触屏上点一下）点亮树链与相邻互链；点阶段名切到该阶段。</p>',
-            '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--mouse">拖动或滚轮平移；Ctrl / ⌘ + 滚轮、触控板捏合或 + / − 键缩放，0 键复位。</p>',
-            '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--touch">单指拖动平移，双指捏合缩放；点节点弹出详情浮窗，再点浮窗内链接进入。</p>',
-          '</div>',
-          '<div class="roadmap-ltree-map-controls" role="group" aria-label="缩放">',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-out" aria-label="缩小" title="缩小 (-)">',
-              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3.5 8h9"/></svg>',
-            '</button>',
-            '<output class="roadmap-ltree-map-level" aria-live="polite">100%</output>',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-in" aria-label="放大" title="放大 (+)">',
-              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 3.5v9M3.5 8h9"/></svg>',
-            '</button>',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-reset" aria-label="复位（0 键）" title="复位（0 键）">',
-              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10"/></svg>',
-            '</button>',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-layout">放大阅读</button>',
-          '</div>',
-          '<button type="button" class="roadmap-ltree-map-close" data-map-close aria-label="关闭" title="关闭 (Esc)">',
-            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
-          '</button>',
-        '</div>',
-        '<div class="roadmap-ltree-map-viewport" tabindex="0" role="group" aria-label="全局总览图：方向键平移，+ / − 缩放，0 键复位">',
-          '<div class="roadmap-ltree-map-sizer">',
-            '<div class="roadmap-ltree-map-canvas">',
-              '<div class="roadmap-ltree-ov">',
-                '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>'
-    ];
-    for (var o = 0; o < columns.length; o++) {
-      mapParts.push(
-        '<div class="roadmap-ltree-ov-stage" role="group" aria-label="' + escapeHtml(marks[o] + ' ' + columns[o].title) + '">' +
-          '<button type="button" class="roadmap-ltree-ov-head" data-stage="' + o + '">' + markHtml(o) +
-          '<span class="roadmap-ltree-ov-title">' + escapeHtml(columns[o].title) + '</span></button>' +
-          '<div class="roadmap-ltree-tree">' + nodesHtml(o) + '</div></div>'
-      );
-    }
-    mapParts.push('</div></div></div></div></div>');
 
     var mapEl = document.createElement('div');
     mapEl.id = 'roadmap-ltree-map';
@@ -4180,25 +4187,26 @@
     mapEl.setAttribute('aria-modal', 'true');
     mapEl.setAttribute('aria-labelledby', 'roadmap-ltree-map-title');
     mapEl.hidden = true;
-    mapEl.innerHTML = mapParts.join('');
     document.body.appendChild(mapEl);
 
     var root = treeEl.firstChild;
-    var mapPanel = mapEl.querySelector('.roadmap-ltree-map-panel');
-    var mapViewport = mapEl.querySelector('.roadmap-ltree-map-viewport');
-    var mapSizer = mapEl.querySelector('.roadmap-ltree-map-sizer');
-    var mapCanvas = mapEl.querySelector('.roadmap-ltree-map-canvas');
-    var mapClose = mapEl.querySelector('.roadmap-ltree-map-close');
-    var mapZoomIn = mapEl.querySelector('.roadmap-ltree-map-zoom-in');
-    var mapZoomOut = mapEl.querySelector('.roadmap-ltree-map-zoom-out');
-    var mapReset = mapEl.querySelector('.roadmap-ltree-map-reset');
-    var mapLevel = mapEl.querySelector('.roadmap-ltree-map-level');
-    var mapLayoutBtn = mapEl.querySelector('.roadmap-ltree-map-layout');
-    var ov = mapCanvas.querySelector('.roadmap-ltree-ov');
-    var ovSvg = ov.firstChild;
-    var ovNodes = ov.querySelectorAll('.roadmap-ltree-node');
-    var ovTrees = ov.querySelectorAll('.roadmap-ltree-tree');
+    var mapBuilt = false;
+    var mapPanel = null;
+    var mapViewport = null;
+    var mapSizer = null;
+    var mapCanvas = null;
+    var mapClose = null;
+    var mapZoomIn = null;
+    var mapZoomOut = null;
+    var mapReset = null;
+    var mapLevel = null;
+    var mapLayoutBtn = null;
+    var ov = null;
+    var ovSvg = null;
+    var ovNodes = [];
+    var ovTrees = [];
     var crossEdges = []; // 全局总览里相邻阶段的互链 [前一阶段节点序号, 后一阶段节点序号]
+    var latestLinked = {};
     var rail = root.querySelector('.roadmap-ltree-rail');
     var tabs = root.querySelectorAll('.roadmap-ltree-tab');
     var overviewBtn = root.querySelector('.roadmap-ltree-overview-btn');
@@ -4210,7 +4218,11 @@
         panel: panelEls[ps],
         tree: tree,
         svg: tree.firstChild,
-        nodes: tree.querySelectorAll('.roadmap-ltree-node'),
+        nodes: ps === 0 ? tree.querySelectorAll('.roadmap-ltree-node') : [],
+        rendered: ps === 0,
+        placedLayout: null,
+        gatesLinkedRef: null,
+        layout: null,
         parent: []
       });
     }
@@ -4237,17 +4249,48 @@
       document.dispatchEvent(new CustomEvent('rn-hide-inline-tooltip'));
     }
 
+    function ensureStageMounted(s) {
+      var st = stages[s];
+      if (!st) return;
+      if (!st.rendered) {
+        st.tree.innerHTML = '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodesHtml(s);
+        st.svg = st.tree.firstChild;
+        st.nodes = st.tree.querySelectorAll('.roadmap-ltree-node');
+        st.rendered = true;
+      }
+      if (st.layout && st.placedLayout !== st.layout) {
+        placeRoadmapLtreeNodes(st.tree, st.nodes, st.layout);
+        st.placedLayout = st.layout;
+      }
+      if (st.gatesLinkedRef !== latestLinked && latestLinked !== null) {
+        renderGates(s, s - 1, 'in', '前置', latestLinked);
+        renderGates(s, s + 1, 'out', '通往', latestLinked);
+        st.gatesLinkedRef = latestLinked;
+      }
+    }
+
     function applyLayout(s, linked) {
       var st = stages[s];
       var lay = layoutRoadmapLearningStage(columns[s].items, linked);
+      st.layout = lay;
       st.parent = lay.parent;
       st.centered = false;
-      placeRoadmapLtreeNodes(st.tree, st.nodes, lay);
-      placeRoadmapLtreeNodes(ovTrees[s], Array.prototype.slice.call(ovNodes, offsets[s], offsets[s] + st.nodes.length), lay);
+      if (st.rendered) {
+        placeRoadmapLtreeNodes(st.tree, st.nodes, lay);
+        st.placedLayout = lay;
+      }
+      if (mapBuilt && ovTrees[s] && ovNodes.length) {
+        placeRoadmapLtreeNodes(
+          ovTrees[s],
+          Array.prototype.slice.call(ovNodes, offsets[s], offsets[s] + columns[s].items.length),
+          lay
+        );
+      }
     }
 
     // 全局总览：各阶段框内的树边 + 相邻阶段互链（阶段框上下排开，互链从上一阶段节点底边接到下一阶段节点顶边）
     function drawOverview() {
+      if (!mapBuilt || !ov || !ovSvg) return;
       var box = ov.getBoundingClientRect();
       if (!box.width) return;
       var html = '';
@@ -4278,6 +4321,7 @@
 
     // 画边并同步可拖动状态（节点有最小宽度，放不下就在框内拖动查看）
     function showStage(st) {
+      if (!st || !st.rendered) return;
       drawRoadmapLtreeEdges(st);
       syncRoadmapLtreePan(st.tree.parentNode, st);
     }
@@ -4347,6 +4391,7 @@
     }
 
     function fitMap() {
+      if (!mapBuilt) return;
       var avail = mapAvailableSize();
       if (avail.w <= 0 || avail.h <= 0) return;
       mapCanvas.style.transform = 'none';
@@ -4363,7 +4408,220 @@
       applyMapLayout();
     }
 
+    function buildOverviewMap() {
+      if (mapBuilt) return;
+      var mapParts = [
+        '<div class="roadmap-ltree-map-backdrop" data-map-close></div>',
+        '<div class="roadmap-ltree-map-panel">',
+          '<div class="roadmap-ltree-map-bar">',
+            '<h2 id="roadmap-ltree-map-title" class="roadmap-ltree-map-title">',
+              '<span>全局总览</span>',
+              '<span class="roadmap-ltree-map-count">' + total + ' 个节点 · ' + columns.length + ' 个阶段</span>',
+            '</h2>',
+            '<div class="roadmap-ltree-map-legend">',
+              '<p>实线为阶段内互链，虚线为相邻阶段互链。悬停节点（触屏上点一下）点亮树链与相邻互链；点阶段名切到该阶段。</p>',
+              '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--mouse">拖动或滚轮平移；Ctrl / ⌘ + 滚轮、触控板捏合或 + / − 键缩放，0 键复位。</p>',
+              '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--touch">单指拖动平移，双指捏合缩放；点节点弹出详情浮窗，再点浮窗内链接进入。</p>',
+            '</div>',
+            '<div class="roadmap-ltree-map-controls" role="group" aria-label="缩放">',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-out" aria-label="缩小" title="缩小 (-)">',
+                '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3.5 8h9"/></svg>',
+              '</button>',
+              '<output class="roadmap-ltree-map-level" aria-live="polite">100%</output>',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-in" aria-label="放大" title="放大 (+)">',
+                '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 3.5v9M3.5 8h9"/></svg>',
+              '</button>',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-reset" aria-label="复位（0 键）" title="复位（0 键）">',
+                '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10"/></svg>',
+              '</button>',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-layout">放大阅读</button>',
+            '</div>',
+            '<button type="button" class="roadmap-ltree-map-close" data-map-close aria-label="关闭" title="关闭 (Esc)">',
+              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
+            '</button>',
+          '</div>',
+          '<div class="roadmap-ltree-map-viewport" tabindex="0" role="group" aria-label="全局总览图：方向键平移，+ / − 缩放，0 键复位">',
+            '<div class="roadmap-ltree-map-sizer">',
+              '<div class="roadmap-ltree-map-canvas">',
+                '<div class="roadmap-ltree-ov">',
+                  '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>'
+      ];
+      for (var o = 0; o < columns.length; o++) {
+        mapParts.push(
+          '<div class="roadmap-ltree-ov-stage" role="group" aria-label="' + escapeHtml(marks[o] + ' ' + columns[o].title) + '">' +
+            '<button type="button" class="roadmap-ltree-ov-head" data-stage="' + o + '">' + markHtml(o) +
+            '<span class="roadmap-ltree-ov-title">' + escapeHtml(columns[o].title) + '</span></button>' +
+            '<div class="roadmap-ltree-tree">' + nodesHtml(o) + '</div></div>'
+        );
+      }
+      mapParts.push('</div></div></div></div></div>');
+      mapEl.innerHTML = mapParts.join('');
+      mapPanel = mapEl.querySelector('.roadmap-ltree-map-panel');
+      mapViewport = mapEl.querySelector('.roadmap-ltree-map-viewport');
+      mapSizer = mapEl.querySelector('.roadmap-ltree-map-sizer');
+      mapCanvas = mapEl.querySelector('.roadmap-ltree-map-canvas');
+      mapClose = mapEl.querySelector('.roadmap-ltree-map-close');
+      mapZoomIn = mapEl.querySelector('.roadmap-ltree-map-zoom-in');
+      mapZoomOut = mapEl.querySelector('.roadmap-ltree-map-zoom-out');
+      mapReset = mapEl.querySelector('.roadmap-ltree-map-reset');
+      mapLevel = mapEl.querySelector('.roadmap-ltree-map-level');
+      mapLayoutBtn = mapEl.querySelector('.roadmap-ltree-map-layout');
+      ov = mapCanvas.querySelector('.roadmap-ltree-ov');
+      ovSvg = ov.firstChild;
+      ovNodes = ov.querySelectorAll('.roadmap-ltree-node');
+      ovTrees = ov.querySelectorAll('.roadmap-ltree-tree');
+      mapBuilt = true;
+
+      for (var os = 0; os < stages.length; os++) {
+        if (stages[os].layout) {
+          placeRoadmapLtreeNodes(
+            ovTrees[os],
+            Array.prototype.slice.call(ovNodes, offsets[os], offsets[os] + columns[os].items.length),
+            stages[os].layout
+          );
+        }
+      }
+
+      ov.addEventListener('mouseover', onHover);
+      ov.addEventListener('focusin', onHover);
+      ov.addEventListener('mouseleave', clearAllTraces);
+      mapZoomIn.addEventListener('click', function () { zoomMapTo(mapState.scale * MAP_ZOOM_STEP); });
+      mapZoomOut.addEventListener('click', function () { zoomMapTo(mapState.scale / MAP_ZOOM_STEP); });
+      mapReset.addEventListener('click', resetMapView);
+      mapLayoutBtn.addEventListener('click', function () {
+        mapState.reading = !mapState.reading;
+        applyMapLayout();
+      });
+      mapViewport.addEventListener('scroll', hideMapTooltip, { passive: true });
+      mapPanel.addEventListener('keydown', function (ev) {
+        if (ev.key !== 'Tab') {
+          if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+          var key = ev.key;
+          if (key === '+' || key === '=') {
+            zoomMapTo(mapState.scale * MAP_ZOOM_STEP);
+          } else if (key === '-' || key === '_') {
+            zoomMapTo(mapState.scale / MAP_ZOOM_STEP);
+          } else if (key === '0') {
+            resetMapView();
+          } else if (MAP_PAN_KEYS[key] && mapViewport.contains(ev.target)) {
+            var step = ev.shiftKey ? 240 : 60;
+            mapViewport.scrollLeft += MAP_PAN_KEYS[key][0] * step;
+            mapViewport.scrollTop += MAP_PAN_KEYS[key][1] * step;
+          } else {
+            return;
+          }
+          ev.preventDefault();
+          return;
+        }
+        var focusables = Array.prototype.filter.call(
+          mapPanel.querySelectorAll('a[href], button:not([hidden]):not([disabled]), [tabindex="0"]'),
+          function (item) { return item.offsetParent !== null; }
+        );
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (ev.shiftKey && document.activeElement === first) {
+          ev.preventDefault();
+          last.focus();
+        } else if (!ev.shiftKey && document.activeElement === last) {
+          ev.preventDefault();
+          first.focus();
+        }
+      });
+
+      (function bindMapPanZoom() {
+        var drag = null;
+        var pinch = null;
+        var gesture = null;
+
+        mapViewport.addEventListener('pointerdown', function (ev) {
+          if (ev.pointerType === 'touch' || ev.button !== 0) return;
+          drag = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop, moved: false };
+        });
+        mapViewport.addEventListener('pointermove', function (ev) {
+          if (!drag || ev.pointerId !== drag.id) return;
+          var dx = ev.clientX - drag.x;
+          var dy = ev.clientY - drag.y;
+          if (!drag.moved) {
+            if (Math.abs(dx) + Math.abs(dy) < 5) return;
+            drag.moved = true;
+            if (mapViewport.setPointerCapture) mapViewport.setPointerCapture(ev.pointerId);
+            mapViewport.classList.add('is-dragging');
+            hideMapTooltip();
+            clearAllTraces();
+          }
+          if (window.getSelection) window.getSelection().removeAllRanges();
+          mapViewport.scrollLeft = drag.left - dx;
+          mapViewport.scrollTop = drag.top - dy;
+        });
+        function endDrag(ev) {
+          if (!drag || ev.pointerId !== drag.id) return;
+          if (drag.moved) {
+            mapState.suppressClick = true;
+            setTimeout(function () { mapState.suppressClick = false; }, 0);
+            mapViewport.classList.remove('is-dragging');
+          }
+          drag = null;
+        }
+        mapViewport.addEventListener('pointerup', endDrag);
+        mapViewport.addEventListener('pointercancel', endDrag);
+
+        function touchCenter(touches) {
+          var a = touches[0];
+          var b = touches[1];
+          return {
+            x: (a.clientX + b.clientX) / 2,
+            y: (a.clientY + b.clientY) / 2,
+            d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
+          };
+        }
+        mapViewport.addEventListener('touchstart', function (ev) {
+          if (ev.touches.length !== 2) return;
+          var c = touchCenter(ev.touches);
+          var frame = mapCanvas.getBoundingClientRect();
+          pinch = { d: c.d, scale: mapState.scale, x: (c.x - frame.left) / mapState.scale, y: (c.y - frame.top) / mapState.scale };
+          hideMapTooltip();
+          clearAllTraces();
+        }, { passive: true });
+        mapViewport.addEventListener('touchmove', function (ev) {
+          if (!pinch || ev.touches.length !== 2 || pinch.d < 1) return;
+          ev.preventDefault();
+          var c = touchCenter(ev.touches);
+          setMapScale(clampMapScale(pinch.scale * c.d / pinch.d));
+          keepMapPoint(pinch.x, pinch.y, c.x, c.y);
+        }, { passive: false });
+        function endPinch(ev) {
+          if (ev.touches.length < 2) pinch = null;
+        }
+        mapViewport.addEventListener('touchend', endPinch);
+        mapViewport.addEventListener('touchcancel', endPinch);
+
+        mapViewport.addEventListener('wheel', function (ev) {
+          if (!ev.ctrlKey && !ev.metaKey) return;
+          ev.preventDefault();
+          var delta = ev.deltaY;
+          if (ev.deltaMode === 1) delta *= 16;
+          else if (ev.deltaMode === 2) delta *= mapViewport.clientHeight;
+          zoomMapTo(mapState.scale * Math.exp(-delta * 0.002), ev.clientX, ev.clientY);
+        }, { passive: false });
+
+        mapEl.addEventListener('gesturestart', function (ev) {
+          ev.preventDefault();
+          gesture = pinch ? null : { scale: mapState.scale };
+        });
+        mapEl.addEventListener('gesturechange', function (ev) {
+          ev.preventDefault();
+          if (gesture && !pinch) zoomMapTo(gesture.scale * ev.scale, ev.clientX, ev.clientY);
+        });
+        mapEl.addEventListener('gestureend', function (ev) {
+          ev.preventDefault();
+          gesture = null;
+        });
+      })();
+    }
+
     function openMap() {
+      buildOverviewMap();
       mapState.opener = document.activeElement;
       mapState.reading = false;
       mapEl.hidden = false;
@@ -4388,6 +4646,7 @@
       }
       // 窄屏阶段栏是横向滚动的一排编号：把选中的滚到中间（宽屏不滚动，赋值无效果）
       if (tabs[stage]) rail.scrollLeft = tabs[stage].offsetLeft - (rail.clientWidth - tabs[stage].offsetWidth) / 2;
+      ensureStageMounted(stage);
       for (var i = 0; i < stages.length; i++) {
         stages[i].panel.hidden = i !== stage;
         if (i === stage) showStage(stages[i]);
@@ -4403,6 +4662,7 @@
 
     // 全局总览悬停 / 触屏点按：点亮所在阶段的树链，以及与它直接互链的相邻阶段节点
     function traceOverview(s, k) {
+      if (!mapBuilt || !ov) return;
       var g = offsets[s] + k;
       var lit = {};
       var chain = roadmapLtreeChain(stages[s].parent, k);
@@ -4423,7 +4683,8 @@
     }
 
     function clearAllTraces() {
-      [root, ov].forEach(function (scope) {
+      var scopes = ov ? [root, ov] : [root];
+      scopes.forEach(function (scope) {
         var lit = scope.querySelectorAll('.is-tracing, .is-path');
         for (var i = 0; i < lit.length; i++) lit[i].classList.remove('is-tracing', 'is-path');
         scope.classList.remove('is-tracing');
@@ -4501,145 +4762,6 @@
       clearAllTraces();
       hideMapTooltip();
     });
-    ov.addEventListener('mouseover', onHover);
-    ov.addEventListener('focusin', onHover);
-    ov.addEventListener('mouseleave', clearAllTraces);
-
-    mapZoomIn.addEventListener('click', function () { zoomMapTo(mapState.scale * MAP_ZOOM_STEP); });
-    mapZoomOut.addEventListener('click', function () { zoomMapTo(mapState.scale / MAP_ZOOM_STEP); });
-    mapReset.addEventListener('click', resetMapView);
-    mapLayoutBtn.addEventListener('click', function () {
-      mapState.reading = !mapState.reading;
-      applyMapLayout();
-    });
-    mapViewport.addEventListener('scroll', hideMapTooltip);
-
-    mapPanel.addEventListener('keydown', function (ev) {
-      if (ev.key !== 'Tab') {
-        if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
-        var key = ev.key;
-        if (key === '+' || key === '=') {
-          zoomMapTo(mapState.scale * MAP_ZOOM_STEP);
-        } else if (key === '-' || key === '_') {
-          zoomMapTo(mapState.scale / MAP_ZOOM_STEP);
-        } else if (key === '0') {
-          resetMapView();
-        } else if (MAP_PAN_KEYS[key] && mapViewport.contains(ev.target)) {
-          var step = ev.shiftKey ? 240 : 60;
-          mapViewport.scrollLeft += MAP_PAN_KEYS[key][0] * step;
-          mapViewport.scrollTop += MAP_PAN_KEYS[key][1] * step;
-        } else {
-          return;
-        }
-        ev.preventDefault();
-        return;
-      }
-      var focusables = Array.prototype.filter.call(
-        mapPanel.querySelectorAll('a[href], button:not([hidden]):not([disabled]), [tabindex="0"]'),
-        function (item) { return item.offsetParent !== null; }
-      );
-      if (!focusables.length) return;
-      var first = focusables[0];
-      var last = focusables[focusables.length - 1];
-      if (ev.shiftKey && document.activeElement === first) {
-        ev.preventDefault();
-        last.focus();
-      } else if (!ev.shiftKey && document.activeElement === last) {
-        ev.preventDefault();
-        first.focus();
-      }
-    });
-
-    // 鼠标 / 触控笔按住拖动平移；触屏单指交给原生滚动（有惯性），双指捏合在这里算缩放
-    (function bindMapPanZoom() {
-      var drag = null;
-      var pinch = null;
-      var gesture = null;
-
-      mapViewport.addEventListener('pointerdown', function (ev) {
-        if (ev.pointerType === 'touch' || ev.button !== 0) return;
-        drag = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop, moved: false };
-      });
-      mapViewport.addEventListener('pointermove', function (ev) {
-        if (!drag || ev.pointerId !== drag.id) return;
-        var dx = ev.clientX - drag.x;
-        var dy = ev.clientY - drag.y;
-        if (!drag.moved) {
-          if (Math.abs(dx) + Math.abs(dy) < 5) return;
-          drag.moved = true;
-          if (mapViewport.setPointerCapture) mapViewport.setPointerCapture(ev.pointerId);
-          mapViewport.classList.add('is-dragging');
-          hideMapTooltip();
-          clearAllTraces();
-        }
-        if (window.getSelection) window.getSelection().removeAllRanges();
-        mapViewport.scrollLeft = drag.left - dx;
-        mapViewport.scrollTop = drag.top - dy;
-      });
-      function endDrag(ev) {
-        if (!drag || ev.pointerId !== drag.id) return;
-        if (drag.moved) {
-          mapState.suppressClick = true;
-          setTimeout(function () { mapState.suppressClick = false; }, 0);
-          mapViewport.classList.remove('is-dragging');
-        }
-        drag = null;
-      }
-      mapViewport.addEventListener('pointerup', endDrag);
-      mapViewport.addEventListener('pointercancel', endDrag);
-
-      function touchCenter(touches) {
-        var a = touches[0];
-        var b = touches[1];
-        return {
-          x: (a.clientX + b.clientX) / 2,
-          y: (a.clientY + b.clientY) / 2,
-          d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
-        };
-      }
-      mapViewport.addEventListener('touchstart', function (ev) {
-        if (ev.touches.length !== 2) return;
-        var c = touchCenter(ev.touches);
-        var frame = mapCanvas.getBoundingClientRect();
-        pinch = { d: c.d, scale: mapState.scale, x: (c.x - frame.left) / mapState.scale, y: (c.y - frame.top) / mapState.scale };
-        hideMapTooltip();
-        clearAllTraces();
-      }, { passive: true });
-      mapViewport.addEventListener('touchmove', function (ev) {
-        if (!pinch || ev.touches.length !== 2 || pinch.d < 1) return;
-        ev.preventDefault();
-        var c = touchCenter(ev.touches);
-        setMapScale(clampMapScale(pinch.scale * c.d / pinch.d));
-        keepMapPoint(pinch.x, pinch.y, c.x, c.y);
-      }, { passive: false });
-      function endPinch(ev) {
-        if (ev.touches.length < 2) pinch = null;
-      }
-      mapViewport.addEventListener('touchend', endPinch);
-      mapViewport.addEventListener('touchcancel', endPinch);
-
-      mapViewport.addEventListener('wheel', function (ev) {
-        if (!ev.ctrlKey && !ev.metaKey) return;
-        ev.preventDefault();
-        var delta = ev.deltaY;
-        if (ev.deltaMode === 1) delta *= 16;
-        else if (ev.deltaMode === 2) delta *= mapViewport.clientHeight;
-        zoomMapTo(mapState.scale * Math.exp(-delta * 0.002), ev.clientX, ev.clientY);
-      }, { passive: false });
-
-      mapEl.addEventListener('gesturestart', function (ev) {
-        ev.preventDefault();
-        gesture = pinch ? null : { scale: mapState.scale };
-      });
-      mapEl.addEventListener('gesturechange', function (ev) {
-        ev.preventDefault();
-        if (gesture && !pinch) zoomMapTo(gesture.scale * ev.scale, ev.clientX, ev.clientY);
-      });
-      mapEl.addEventListener('gestureend', function (ev) {
-        ev.preventDefault();
-        gesture = null;
-      });
-    })();
 
     function onDocPointerDown(ev) {
       lastPointer = ev.pointerType || '';
@@ -4678,14 +4800,17 @@
       if (resize && typeof resize.disconnect === 'function') resize.disconnect();
     };
 
-    for (var st0 = 0; st0 < stages.length; st0++) applyLayout(st0, {});
+    for (var st0 = 0; st0 < stages.length; st0++) applyLayout(st0, latestLinked);
     select(0);
     var resize = new ResizeObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
         var stAttr = entries[i].target.parentNode && entries[i].target.parentNode.parentNode
           ? entries[i].target.parentNode.parentNode.getAttribute('data-stage')
           : null;
-        if (stAttr !== null && stages[Number(stAttr)]) showStage(stages[Number(stAttr)]);
+        var stIdx = stAttr !== null ? Number(stAttr) : -1;
+        if (stIdx >= 0 && stages[stIdx] && stages[stIdx].rendered && !stages[stIdx].panel.hidden) {
+          showStage(stages[stIdx]);
+        }
       }
     });
     for (var ro = 0; ro < stages.length; ro++) {
@@ -4699,12 +4824,17 @@
         for (var w = 0; w < columns[c].items.length; w++) wanted[columns[c].items[w]] = true;
       }
       var linked = roadmapLtreeLinkedPairs(gd, wanted);
+      latestLinked = linked;
+      crossEdges = [];
       var treeEdges = 0;
       for (var s2 = 0; s2 < stages.length; s2++) {
         applyLayout(s2, linked);
         for (var pj = 0; pj < stages[s2].parent.length; pj++) if (stages[s2].parent[pj] >= 0) treeEdges++;
-        renderGates(s2, s2 - 1, 'in', '前置', linked);
-        renderGates(s2, s2 + 1, 'out', '通往', linked);
+        if (stages[s2].rendered) {
+          renderGates(s2, s2 - 1, 'in', '前置', linked);
+          renderGates(s2, s2 + 1, 'out', '通往', linked);
+          stages[s2].gatesLinkedRef = linked;
+        }
         if (s2 === 0) continue;
         var prev = columns[s2 - 1].items;
         var cur = columns[s2].items;
@@ -4715,7 +4845,7 @@
         }
       }
       for (var v = 0; v < stages.length; v++) if (!stages[v].panel.hidden) showStage(stages[v]);
-      if (!mapEl.hidden) fitMap();
+      if (mapBuilt && !mapEl.hidden) fitMap();
       if (metaEl && treeEdges) {
         metaEl.textContent += ' · ' + treeEdges + ' 条阶段内连线';
         metaEl.title = '箭头：同一阶段内两节点有站内互链，方向为路线列表里的先后；前置 / 通往：与相邻阶段互链的节点';
@@ -4936,34 +5066,35 @@
     if (!headings.length || !navItems.length) return;
 
     let lastActiveHref = '';
+    let lastActiveEl = null;
+    const navByHref = Object.create(null);
+    for (var nj = 0; nj < navItems.length; nj++) {
+      const nh = navItems[nj].getAttribute('href') || navItems[nj].getAttribute('data-href') || '';
+      if (nh) navByHref[nh] = navItems[nj];
+    }
 
-    function scrollTocActiveIntoView() {
-      const activeItem = tocContainer.querySelector('a.active, .toc-entry.active');
+    function scrollTocActiveIntoView(activeItem) {
       if (!activeItem || typeof activeItem.scrollIntoView !== 'function') return;
       activeItem.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
     }
 
     function updateActiveTocLink() {
       let activeId = headings[0].id;
-      // ⚡ Bolt Optimization: Replace .forEach with standard for loop
-      // Expected impact: Eliminates closure allocation during hot scroll events.
       for (var i = 0; i < headings.length; i++) {
         if (headings[i].getBoundingClientRect().top <= 140) activeId = headings[i].id;
+        else if (i > 0) break;
       }
       const activeHref = '#' + activeId;
-      for (var j = 0; j < navItems.length; j++) {
-        const itemHref = navItems[j].getAttribute('href') || navItems[j].getAttribute('data-href') || '';
-        navItems[j].classList.toggle('active', itemHref === activeHref);
-      }
-      if (activeHref !== lastActiveHref) {
-        lastActiveHref = activeHref;
-        scrollTocActiveIntoView();
-      }
+      if (activeHref === lastActiveHref) return;
+      if (lastActiveEl) lastActiveEl.classList.remove('active');
+      const nextEl = navByHref[activeHref] || null;
+      if (nextEl) nextEl.classList.add('active');
+      lastActiveEl = nextEl;
+      lastActiveHref = activeHref;
+      scrollTocActiveIntoView(nextEl);
     }
 
     let tocTicking = false;
-    // ⚡ Bolt Optimization: Throttle TOC scroll spy using requestAnimationFrame
-    // Expected impact: Mitigates performance degradation on long pages by avoiding rapid `getBoundingClientRect()` calls per scroll tick.
     window.addEventListener('scroll', function() {
       if (!tocTicking) {
         window.requestAnimationFrame(function() {
@@ -4974,7 +5105,11 @@
       }
     }, { passive: true });
     window.addEventListener('hashchange', updateActiveTocLink);
-    updateActiveTocLink();
+    if (typeof window.requestAnimationFrame === 'function') {
+      window.requestAnimationFrame(updateActiveTocLink);
+    } else {
+      updateActiveTocLink();
+    }
   }
 
   /** 在程序化改变滚动位置后触发一次 TOC spy，避免初始带 hash 时高亮与侧栏滚动不同步。 */
@@ -5602,6 +5737,8 @@
   // 不能就地写 x/y/vx/vy 等模拟状态。
   var _linkGraphData = null;
   var _linkGraphPromise = null;
+  var _linkGraphSummariesLoaded = false;
+  var _linkGraphSummariesPromise = null;
 
   // link-graph.json 的边是节点下标对 [i, j]（scripts/generate_link_graph.py 写出，
   // 比重复两个完整路径小 10 倍）；读入后还原成 {source, target}，各消费方不感知格式。
@@ -5625,26 +5762,17 @@
   function ensureLinkGraphData() {
     if (_linkGraphData) return Promise.resolve(_linkGraphData);
     if (_linkGraphPromise) return _linkGraphPromise;
-    // 摘要拆在 link-graph-summaries.json（按 nodes 顺序的字符串数组）并行取回后合回 node.summary，
-    // 各消费方（详情页知识地图浮窗、首页预览图）口径不变；取不到则摘要为空
-    _linkGraphPromise = Promise.all([
-      fetch('exports/link-graph.json').then(function (r) {
+    // 摘要拆在 link-graph-summaries.json，默认不随通用图谱加载，仅在调用方需要图谱节点摘要时按需拉取
+    _linkGraphPromise = fetch('exports/link-graph.json')
+      .then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
-      }),
-      fetch('exports/link-graph-summaries.json')
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .catch(function () { return null; }),
-    ])
-      .then(function (results) {
-        var data = expandLinkGraph(results[0]);
-        var summaries = results[1];
-        if (data && Array.isArray(data.nodes) && Array.isArray(summaries) && summaries.length === data.nodes.length) {
-          for (var i = 0; i < data.nodes.length; i++) {
-            if (data.nodes[i]) data.nodes[i].summary = summaries[i] || '';
-          }
+      })
+      .then(function (raw) {
+        var data = expandLinkGraph(raw);
+        if (typeof window !== 'undefined' && window.RNGraphTooltip && window.RNGraphTooltip.setGraphData) {
+          window.RNGraphTooltip.setGraphData(data);
         }
-        if (typeof window !== 'undefined' && window.RNGraphTooltip && window.RNGraphTooltip.setGraphData) window.RNGraphTooltip.setGraphData(data);
         _linkGraphData = data;
         _linkGraphPromise = null;
         return _linkGraphData;
@@ -5654,6 +5782,34 @@
         throw error;
       });
     return _linkGraphPromise;
+  }
+
+  function ensureLinkGraphSummaries() {
+    if (_linkGraphData && _linkGraphSummariesLoaded) return Promise.resolve(_linkGraphData);
+    if (_linkGraphSummariesPromise) return _linkGraphSummariesPromise;
+    _linkGraphSummariesPromise = Promise.all([
+      ensureLinkGraphData(),
+      fetch('exports/link-graph-summaries.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; })
+    ])
+      .then(function (results) {
+        var data = results[0];
+        var summaries = results[1];
+        if (data && Array.isArray(data.nodes) && Array.isArray(summaries) && summaries.length === data.nodes.length) {
+          for (var i = 0; i < data.nodes.length; i++) {
+            if (data.nodes[i]) data.nodes[i].summary = summaries[i] || '';
+          }
+          _linkGraphSummariesLoaded = true;
+        }
+        _linkGraphSummariesPromise = null;
+        return data;
+      })
+      .catch(function (error) {
+        _linkGraphSummariesPromise = null;
+        throw error;
+      });
+    return _linkGraphSummariesPromise;
   }
 
   function ensureDetailCommunityIndex() {
@@ -5706,7 +5862,7 @@
   // 首页 mini-graph.js 与搜索区的社区下拉原先各自 fetch 一份 link-graph.json，
   // 一次打开首页要下载两遍 9 MB；统一走上面的共享加载器。
   if (typeof window !== 'undefined') {
-    window.RNLinkGraph = { ensure: ensureLinkGraphData };
+    window.RNLinkGraph = { ensure: ensureLinkGraphData, ensureSummaries: ensureLinkGraphSummaries };
     // graph.html / star-history.html 自行 fetch 时也用同一套还原逻辑
     window.RNExportFormats = { expandLinkGraph: expandLinkGraph, expandWikiActivity: expandWikiActivity };
   }
@@ -6085,14 +6241,13 @@
   function findRelatedByTags(currentId, currentTags, detailPages, maxResults) {
     if (!Array.isArray(currentTags) || !currentTags.length) return [];
     maxResults = typeof maxResults === 'number' ? maxResults : 5;
+    if (maxResults <= 0) return [];
     var tagSet = {};
     for (var t = 0; t < currentTags.length; t++) {
       tagSet[currentTags[t]] = true;
     }
 
-    var scored = [];
-    // ⚡ Bolt Optimization: Replace Object.keys().forEach with for...in
-    // Expected impact: Eliminates intermediate array allocations of all page IDs and closures, reducing memory overhead and GC pressure when rendering related tags.
+    var top = [];
     for (var id in detailPages) {
       if (!Object.prototype.hasOwnProperty.call(detailPages, id) || id === currentId) continue;
       var page = detailPages[id];
@@ -6104,22 +6259,24 @@
       for (var j = 0; j < pageTags.length; j++) {
         if (tagSet[pageTags[j]]) matchCount++;
       }
-      if (matchCount > 0) {
-        scored.push({ id: id, page: page, score: matchCount, topTag: pageTags[0] || '' });
+      if (matchCount <= 0) continue;
+      if (top.length === maxResults && matchCount < top[maxResults - 1].score) continue;
+
+      var candidate = { id: id, score: matchCount, page: page };
+      var candTitle = candidate.page.title || '';
+      var pos = top.length;
+      while (pos > 0) {
+        var prev = top[pos - 1];
+        if (prev.score > candidate.score) break;
+        if (prev.score === candidate.score && (prev.page.title || '').localeCompare(candTitle) >= 0) break;
+        pos -= 1;
+      }
+      if (pos < maxResults) {
+        top.splice(pos, 0, candidate);
+        if (top.length > maxResults) top.pop();
       }
     }
-
-    scored.sort(function (a, b) {
-      if (b.score !== a.score) return b.score - a.score;
-      return (b.page.title || '').localeCompare(a.page.title || '');
-    });
-
-    var result = [];
-    var limit = Math.min(scored.length, maxResults);
-    for (var k = 0; k < limit; k++) {
-      result.push({ id: scored[k].id, score: scored[k].score, page: scored[k].page });
-    }
-    return result;
+    return top;
   }
 
   function resolveDetailPage(detailId, detailPages) {
@@ -6939,19 +7096,22 @@
       var H = 180;
 
       var pathToId = buildPathToDetailIdIndex(detailPages);
+      var currentSummary = current.summary || (detailPage && detailPage.summary) || '';
       var nodes = [{
         id: currentPath, label: current.label || currentPath,
         type: current.type || '', community: current.community || '',
-        summary: current.summary || '', isCurrent: true,
+        summary: currentSummary, isCurrent: true,
         health_score: current.health_score, health_gaps: current.health_gaps,
         has_repo: current.has_repo,
         _degree: degreeMap[currentPath] || 0,
         fx: W / 2, fy: H / 2
       }].concat(neighborIds.map(function (id) {
         var n = nodeMap[id];
+        var nbDetailId = n.detail_id || pathToId[id];
+        var nbPage = detailPages && nbDetailId ? detailPages[nbDetailId] : null;
         return {
           id: id, label: n.label || id, type: n.type || '', community: n.community || '',
-          summary: n.summary || '', isCurrent: false,
+          summary: n.summary || (nbPage && nbPage.summary) || '', isCurrent: false,
           health_score: n.health_score, health_gaps: n.health_gaps,
           has_repo: n.has_repo,
           _degree: degreeMap[id] || 0
@@ -7314,6 +7474,7 @@
     }
     if (contentEl) {
       contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext) : '<p>这篇知识页暂无正文。</p>';
+      removeLoadingState(contentEl);
       renderDetailMath(contentEl);
       detailMermaidPromise = renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
@@ -7327,7 +7488,6 @@
       scrollToCitationTarget(contentEl);
       notifyTocSpyScrollSync();
       setupDetailInlineLinkPreview(contentEl, detailPages);
-      removeLoadingState(contentEl);
     }
 
     renderChipList(tagEl, detailPage.tags, {
@@ -7552,6 +7712,7 @@
     renderDetailMetaSource(detail, 'roadmapContentSourceLink');
     if (contentEl) {
       contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);
+      removeLoadingState(contentEl);
       renderDetailMath(contentEl);
       enhanceDetailHeadings(contentEl);
       var stagesEmbedded = String(roadmapId).indexOf('roadmap-depth-') === 0
@@ -7570,7 +7731,6 @@
       scrollToDetailHashTarget(contentEl);
       scrollToCitationTarget(contentEl);
       notifyTocSpyScrollSync();
-      removeLoadingState(contentEl);
     }
     syncRoadmapStagesMetaHref(roadmapPage);
   }
@@ -7594,11 +7754,11 @@
     return catalog;
   }
 
-  function requestPageJson(url, validate) {
+  function requestPageJson(url, validate, noCache) {
     if (pageDataRequests.has(url)) return pageDataRequests.get(url);
     var controller = new AbortController();
     var timer = window.setTimeout(function () { controller.abort(); }, 30000);
-    var request = fetch(url, { signal: controller.signal, cache: 'no-cache' })
+    var request = fetch(url, { signal: controller.signal, cache: noCache ? 'no-cache' : 'default' })
       .then(function (response) {
         if (!response.ok) {
           var error = new Error('HTTP ' + response.status);
@@ -7637,7 +7797,7 @@
     return requestPageJson(PAGE_CATALOG_URL, function (data) {
       return data && data.version === 'v1' && data.content_mode === 'per-page-v1' &&
         data.pages && data.pages.detail_pages && data.pages.roadmap_pages && data.pages.page_aliases;
-    }).then(function (catalog) {
+    }, !!refreshed).then(function (catalog) {
       hydrateCatalogIds(catalog);
       loadedPageCatalog = catalog;
       return catalog;
@@ -7740,6 +7900,7 @@
   }
 
   if (detailRoot || roadmapPageMount) {
+    if (typeof ensureLinkGraphData === 'function') ensureLinkGraphData().catch(function () {});
     startPageDataLoad(false);
   }
 
@@ -7914,12 +8075,26 @@
   // 展开态列表出现滚动条时实测其宽度写入 --links-sb（样式用负右外边距抵消），胶囊不因滚动条变窄而跳动
   function syncHomeLinksScrollbar(links) {
     if (!links) return;
-    links.style.removeProperty('--links-sb');
     if (!links.classList.contains('is-expanded') && !links.classList.contains('is-filtering')) {
-      links.scrollTop = 0;
+      links.style.removeProperty('--links-sb');
+      if (links.scrollTop) links.scrollTop = 0;
       return;
     }
-    links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+    var flushScrollbar = function () {
+      links._sbRaf = 0;
+      links.style.removeProperty('--links-sb');
+      if (!links.classList.contains('is-expanded') && !links.classList.contains('is-filtering')) {
+        if (links.scrollTop) links.scrollTop = 0;
+        return;
+      }
+      links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+    };
+    if (typeof window === 'undefined' || typeof window.requestAnimationFrame !== 'function') {
+      flushScrollbar();
+      return;
+    }
+    if (links._sbRaf) return;
+    links._sbRaf = window.requestAnimationFrame(flushScrollbar);
   }
 
   function applyHomeLinksFilter(links, toggle, emptyEl, query) {
@@ -8482,8 +8657,32 @@
         revealObserver.observe(below[rbi]);
       }
     };
+    var revealRaf = 0;
+    function scheduleRegisterReveal(mutations) {
+      if (Array.isArray(mutations) && mutations.length) {
+        var relevant = false;
+        for (var mi = 0; mi < mutations.length; mi++) {
+          var tgt = mutations[mi].target;
+          if (!tgt || !tgt.closest) { relevant = true; break; }
+          if (!tgt.closest('.hero-stats, .graph-tooltip, #mini-graph-svg')) {
+            relevant = true;
+            break;
+          }
+        }
+        if (!relevant) return;
+      }
+      if (typeof window.requestAnimationFrame !== 'function') {
+        registerReveal();
+        return;
+      }
+      if (revealRaf) return;
+      revealRaf = window.requestAnimationFrame(function () {
+        revealRaf = 0;
+        registerReveal();
+      });
+    }
     registerReveal();
-    new MutationObserver(registerReveal).observe(revealMain, {
+    new MutationObserver(scheduleRegisterReveal).observe(revealMain, {
       childList: true,
       subtree: true,
       attributes: true,
@@ -8725,6 +8924,12 @@
           throw error;
         });
       return _searchIndexPromise;
+    }
+
+    if (typeof window !== 'undefined') {
+      window.RNSearchIndexLite = {
+        ensure: function () { return ensureSearchIndex(); }
+      };
     }
 
     function ensureFullSearchIndex() {
@@ -9118,17 +9323,16 @@
           var k1_plus_1 = k1 + 1;
           var liteIndexData = searchIndexIsLite(indexData) ? indexData : null;
 
-          // ⚡ Bolt Optimization: Single-pass search filtering
-          // Expected impact: Eliminates redundant `substringScore` and `.map()` iterations, reducing search CPU time by ~40% for large indexes.
-          var matched = [];
+          var SEARCH_TOP_K = 10;
+          var top = [];
+          var hasQuery = queryTokens.length > 0;
           for (var i = 0; i < docs.length; i++) {
             var doc = docs[i];
             var graphNode = graphNodeMap.get(doc.path);
             if (communityVal && (!graphNode || graphNode.community !== communityVal)) continue;
 
-            var partial = 0;
-            var bm25 = 0;
-            if (queryTokens.length) {
+            var score = 0;
+            if (hasQuery) {
               var docTokens = doc.tokens || {};
               var hasTokens = false;
               for (var j = 0; j < queryTokens.length; j++) {
@@ -9137,32 +9341,80 @@
                   break;
                 }
               }
+              if (!hasTokens) {
+                var hay = doc._haystack;
+                if (hay === undefined) {
+                  var parts = [doc.title || '', doc.path || '', doc.summary || ''];
+                  if (Array.isArray(doc.tags) && doc.tags.length) parts.push(doc.tags.join('\n'));
+                  if (Array.isArray(doc.search_aliases) && doc.search_aliases.length) parts.push(doc.search_aliases.join('\n'));
+                  for (var tkKey in docTokens) {
+                    if (Object.prototype.hasOwnProperty.call(docTokens, tkKey)) parts.push(tkKey);
+                  }
+                  hay = doc._haystack = parts.join('\n').toLowerCase();
+                }
+                var anySub = false;
+                for (var tj = 0; tj < queryTokens.length; tj++) {
+                  var qt = queryTokens[tj];
+                  if (qt && qt.length >= 2 && hay.indexOf(qt) >= 0) {
+                    anySub = true;
+                    break;
+                  }
+                }
+                if (!anySub) continue;
+              }
 
-              partial = substringScore(doc, queryTokens);
+              var partial = substringScore(doc, queryTokens);
               if (!hasTokens && partial === 0) continue;
-              bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfOf, k1_plus_1);
+              var bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfOf, k1_plus_1);
+              score = bm25 + partial;
             }
 
-            matched.push({
-              id: doc.id,
-              path: doc.path,
-              title: doc.title,
-              summary: doc.summary,
-              page_type: doc.page_type,
-              tags: doc.tags || [],
-              search_aliases: doc.search_aliases || [],
-              health_score: graphNode && graphNode.health_score,
-              health_gaps: graphNode && graphNode.health_gaps,
-              has_repo: graphNode && graphNode.has_repo,
-              community: graphNode && graphNode.community,
-              _score: bm25 + partial
-            });
+            if (top.length === SEARCH_TOP_K) {
+              var worst = top[SEARCH_TOP_K - 1];
+              if (hasQuery && score < worst._score) continue;
+              if ((!hasQuery || score === worst._score) &&
+                  String(worst.doc.title || '').localeCompare(String(doc.title || '')) <= 0) {
+                continue;
+              }
+            }
+
+            var docTitle = String(doc.title || '');
+            var pos = top.length;
+            while (pos > 0) {
+              var prevItem = top[pos - 1];
+              if (hasQuery && prevItem._score > score) break;
+              if ((!hasQuery || prevItem._score === score) &&
+                  String(prevItem.doc.title || '').localeCompare(docTitle) <= 0) {
+                break;
+              }
+              pos -= 1;
+            }
+            if (pos < SEARCH_TOP_K) {
+              top.splice(pos, 0, { doc: doc, graphNode: graphNode, _score: score });
+              if (top.length > SEARCH_TOP_K) top.pop();
+            }
           }
 
-          matched = matched.sort(function(a, b) {
-            if (queryTokens.length && b._score !== a._score) return b._score - a._score;
-            return String(a.title || '').localeCompare(String(b.title || ''));
-          }).slice(0, 10);
+          var matched = new Array(top.length);
+          for (var wi = 0; wi < top.length; wi++) {
+            var wItem = top[wi];
+            var wd = wItem.doc;
+            var wg = wItem.graphNode;
+            matched[wi] = {
+              id: wd.id,
+              path: wd.path,
+              title: wd.title,
+              summary: wd.summary,
+              page_type: wd.page_type,
+              tags: wd.tags || [],
+              search_aliases: wd.search_aliases || [],
+              health_score: wg && wg.health_score,
+              health_gaps: wg && wg.health_gaps,
+              has_repo: wg && wg.has_repo,
+              community: wg && wg.community,
+              _score: wItem._score
+            };
+          }
           miniGraphHighlight(q, matched.map(function(m){ return m.id; }));
           if (!matched.length) {
             if (communityVal && !q) {
@@ -9236,7 +9488,7 @@
     });
     if (communityFilter) {
       communityFilter.addEventListener('change', triggerSearch);
-      ensureGraphNodeByPath();
+      communityFilter.addEventListener('focus', function () { ensureGraphNodeByPath(); }, { once: true });
     }
 
     var _qParam = new URLSearchParams(window.location.search).get('q');
@@ -9360,6 +9612,12 @@
     var last = -1;
 
     function update() {
+      // 未接近页底时直接跳过 getBoundingClientRect，避免长页面滚动首段每帧触发布局测量
+      if (last === 0) {
+        var docEl = document.documentElement;
+        var scrollY = window.pageYOffset || docEl.scrollTop || 0;
+        if (scrollY + window.innerHeight < docEl.scrollHeight - 400) return;
+      }
       // 页脚顶边高于视口底边多少，就把按钮抬多少；页脚未露头时为 0
       var lift = Math.round(Math.max(0, window.innerHeight - footer.getBoundingClientRect().top));
       if (lift === last) return;
@@ -9814,14 +10072,17 @@
 
     // 滚动高亮当前章节：判定线取吸顶 header 下沿，与 html 的 scroll-padding-top 同口径
     var links = menu.querySelectorAll('a');
+    var navHeader = document.querySelector('.site-header');
+    var sectionTargets = items.map(function (it) { return document.getElementById(it.id); });
     var lastActive = -1;
     function updateActive() {
-      var header = document.querySelector('.site-header');
-      var line = (header ? header.getBoundingClientRect().height : 0) + 24;
+      var line = (navHeader ? navHeader.getBoundingClientRect().height : 0) + 24;
       var current = 0;
-      for (var k = 0; k < items.length; k++) {
-        var target = document.getElementById(items[k].id);
-        if (target && target.getBoundingClientRect().top <= line) current = k;
+      for (var k = 0; k < sectionTargets.length; k++) {
+        var target = sectionTargets[k];
+        if (!target) continue;
+        if (target.getBoundingClientRect().top <= line) current = k;
+        else if (k > 0) break;
       }
       if (current === lastActive) return;
       lastActive = current;
