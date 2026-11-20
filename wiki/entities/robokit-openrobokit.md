@@ -2,7 +2,7 @@
 type: entity
 tags: [robotics, robot-simulation, differentiable-optimization, mpc, inverse-kinematics, corl2026]
 status: complete
-updated: 2026-11-09
+updated: 2026-11-20
 project_id: openrobokit-robokit
 project: https://openrobokit.com/robokit/
 code: https://github.com/openrobokit/robokit
@@ -17,6 +17,10 @@ related:
   - ./retargetingkit.md
   - ./graspkit.md
   - ../overview/openrobokit-toolkit.md
+  - ./google-deepmind-robotics-antigravity-plugin.md
+  - ./lyapunov-vorynel.md
+  - ../tasks/manipulation.md
+  - ../methods/model-predictive-control.md
 ---
 
 # RoboKit：并行可微机器人优化与仿真（RoboKit: Accelerating Parallel Differentiable Optimization for Robot Learning）
@@ -157,12 +161,21 @@ sequenceDiagram
 2. 追踪任务成本与 GPU 环境，不混用不同 benchmark 倍数。
 3. 部署时需另评估时延、接触稳定性和硬件安全边界。
 
+## 与新工具的边界（2026-11-20 复核）
+
+- [Google DeepMind Robotics Antigravity 插件](./google-deepmind-robotics-antigravity-plugin.md) 是编程智能体的任务执行与 MuJoCo 仿真工作流，**不提供 RoboKit 所强调的 Warp 并行优化器**。
+- [Lyapunov 三维工作台](./lyapunov-vorynel.md) 提供交互式桌面工作区与引擎集成；RoboKit 是独立的 Python 优化库，二者不能仅凭“支持仿真”视为功能等价。
+
 ## 关联页面
 
 - [OpenRoboKit 工具集](../overview/openrobokit-toolkit.md)
 - [RetargetingKit](./retargetingkit.md)
 - [GraspKit](./graspkit.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
+- [机器人操作](../tasks/manipulation.md)
+- [模型预测控制](../methods/model-predictive-control.md)
+- [Robotics Antigravity Plugin](./google-deepmind-robotics-antigravity-plugin.md)
+- [Lyapunov 工作台](./lyapunov-vorynel.md)
 
 ## 参考来源
 

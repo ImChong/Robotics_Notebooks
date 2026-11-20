@@ -120,6 +120,7 @@ flowchart LR
 - 用 LoRA 把一个小 VLA 微调到自己的数据上，记录数据量–成功率曲线
 
 ### 推荐读什么
+- [BiCAT：双臂协调动作分词](../wiki/entities/paper-bicat.md) — 共享 token 原语、跨臂注意力与两块动作预测，补齐离散动作接口。
 - [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md) — 主线索引页
 - [VLA / 世界模型 14 篇阅读路线](../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — CLIP→RT→OpenVLA→π₀ + 四篇 WM，每篇独立 `paper-*`
 - [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md)、[RT-1](../wiki/entities/paper-rt-1.md)、[RT-2](../wiki/entities/paper-rt-2.md)、[OpenVLA](../wiki/entities/paper-openvla.md)、[Octo](../wiki/entities/paper-octo.md)
