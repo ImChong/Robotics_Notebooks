@@ -2,7 +2,7 @@
 type: concept
 tags: [quadruped, navigation, hierarchical-control, vln, reinforcement-learning, system-integration]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 related:
   - ../entities/roamerx-navigation.md
   - ../entities/matrix-simulation-platform.md
@@ -12,6 +12,7 @@ related:
   - ../methods/ppo.md
   - ../entities/quadruped-control-curriculum.md
   - ../entities/paper-travexplorer.md
+  - ../entities/paper-roam-open-world-legged-navigation.md
   - ../overview/quadruped-vln-embodied-workshop.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
@@ -73,6 +74,8 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 ## 与 HiPAN 等工作的关系
 
 [HiPAN](../methods/hipan.md) 同样采用 **深度高层 + 足式低层 + teacher–student**，侧重 3D 非结构化场景；本栈偏 **工程 ROS2 导航 + 智身生态**。
+
+[ROAM（Science Robotics 2026）](../entities/paper-roam-open-world-legged-navigation.md) 则给出野外真机系统：VLM 低频判定语义风险、SAN 投影为像素与高程图、局部导航和落足分别由 RL 策略高频执行。它补充了本分层栈的开放词汇风险与偏好接口，且官方仓库仅部分开源。
 
 ## 常见误区
 
