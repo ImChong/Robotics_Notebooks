@@ -168,6 +168,8 @@ sequenceDiagram
 - [NaVILA 腿式导航 VLA](./paper-notebook-navila-legged-robot-vision-language-action-model.md)
 - [Legged-VLN Barrier Caging](./paper-legged-vln-barrier-caging.md)
 - [SE(2) Navigation Mesh](./paper-se2-navigation-mesh.md)
+- [HiPAN 分层腿式导航方法](../methods/hipan.md) — 对照深度输入高层指令与低层足式跟踪，ROAM 另引入开放词汇语义风险/落足图层
+- [VLA 方法](../methods/vla.md) — 对照 VLA 直接生成动作与 ROAM 的语义字段中间接口
 - [导航纵深路线 · Stage 3/4](../../roadmap/depth-navigation.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ROAM 的 SAN 开放词汇分割与 2.5D 语义地图落在感知→空间图层融合链路
 
