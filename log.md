@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | sources/repos/linger-simplexai.md — Linger 本地个人 Agent
+
+- 依据 SimplexAI 官方 GitHub README、架构/推理/Wiki/任务文档、LICENSE 与官网 FAQ，新增 Linger 唯一实体。
+- 核对本机 Runtime、Computer Daemon、主动 Wiki/记忆、桌面工具与许可证限制；补 Mermaid 数据流程和源码运行时序图。
+- 对照 Hermes Agent、Deep Agents、LLM Wiki 及 Agent 验证闭环；未把性能宣传当成独立实测，也未把桌面自动化视为机器人实时控制。
+
 ## [2026-11-19] ingest | sources/blogs/openathena-scaling-marins-open-llm-pretraining-2026-11-05.md — Marin 开放 LLM 预训练
 
 - 通读 Will Held 原始演讲全文及问答，整理 Delphi / Iris / MoE / Datakit / Belay 体系，并建唯一 Marin 项目实体。
