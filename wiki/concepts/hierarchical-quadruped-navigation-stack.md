@@ -16,6 +16,9 @@ related:
   - ../overview/quadruped-vln-embodied-workshop.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/papers/roam_legged_navigation_arxiv_2611_25215.md
+original:
+  - ../../sources/papers/roam_legged_navigation_arxiv_2611_25215.md
 summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分层栈：高层语义与路径规划与底层步态策略解耦，RoamerX + MATRiX 是课程集成范例。"
 ---
 
@@ -39,7 +42,9 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 | MPPI | Model Predictive Path Integral | 局部路径跟踪控制器 |
 | cmd_vel | Command Velocity | 导航层典型输出（$v_x, v_y, \omega$） |
 
-## 课程六层栈（Ch7）
+## 核心原理
+
+### 课程六层栈（Ch7）
 
 ```
 ┌─────────────────────────────────────┐
@@ -57,7 +62,7 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 
 **数据流**：语言指令 → 语义目标点 → 全局路径 → **平面速度 + 体姿态** → RL 策略调制步态 → PD 力矩 → 电机。
 
-## 为什么分层
+## 为什么重要
 
 | 若合并 | 问题 |
 |--------|------|
@@ -67,7 +72,9 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 
 分层后：**loco 策略可在仿真大规模预训练**，导航栈可独立迭代 SLAM/规划。
 
-## Final Project 4 闭环
+## 工程实践
+
+### Final Project 4 闭环
 
 课程要求：在 [MATRiX](../entities/matrix-simulation-platform.md) 中整合 [RoamerX](../entities/roamerx-navigation.md) 与 RL 运动策略，实现 **目标点 → 自主导航 → 到达**，含消融与失败分析。
 
@@ -77,7 +84,7 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 
 [ROAM（Science Robotics 2026）](../entities/paper-roam-open-world-legged-navigation.md) 则给出野外真机系统：VLM 低频判定语义风险、SAN 投影为像素与高程图、局部导航和落足分别由 RL 策略高频执行。它补充了本分层栈的开放词汇风险与偏好接口，且官方仓库仅部分开源。
 
-## 常见误区
+## 局限与风险
 
 - **导航 cmd_vel 频率过低**：足式跟踪需 RL 层 **高频** 适应局部地形。
 - **忽略体姿态维度**：四足除平面速度外常需 **roll/pitch 或 body height** 指令给 RL 层。
@@ -97,4 +104,5 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 
 ## 参考来源
 
-- [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch7–Ch8 与 Project 4
+- [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch7–Ch8 与 Project 4 的二手课程大纲整理
+- [ROAM 论文一手原文核对](../../sources/papers/roam_legged_navigation_arxiv_2611_25215.md) — 对应本次新增的语义高程图与 RL 双层策略案例
