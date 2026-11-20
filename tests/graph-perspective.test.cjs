@@ -415,12 +415,14 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-stage-bg:'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
+  assert.ok(styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric reflection layer styled');
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
   assert.ok(styleCss.includes('#mini-graph-wrap.is-perspective-mode'));
   assert.ok(styleCss.includes('border: 1px solid var(--border);'), 'homepage 3D preview retains visible viewport border');
   const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
   assert.ok(!perspectiveSrc.includes('buildPolyhedronLibrary'), '3D terrain nodes must be round spheres, not faceted polyhedra');
   assert.ok(perspectiveSrc.includes('uCamRight') && perspectiveSrc.includes('if (r2 > 1.0) discard;'), 'hubs render as analytical round spheres');
+  assert.ok(perspectiveSrc.includes('uHeightScale') && perspectiveSrc.includes('uGlintPhase') && perspectiveSrc.includes('startCameraTransition'), 'top-down to oblique entry swoop and horizon glint present');
   assert.ok(styleCss.includes('[data-theme="light"]'));
   assert.ok(styleCss.includes('var(--accent)'));
   assert.ok(swSource.includes("'graph-perspective.js'"));

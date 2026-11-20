@@ -618,14 +618,16 @@
       attr + 'vec2 aGrad;\n' +
       'uniform mat4 uViewProj;\n' +
       'uniform float uHeightAmp;\n' +
+      'uniform float uHeightScale;\n' +
       varyV + 'vec3 vWorld;\n' +
       varyV + 'float vH;\n' +
       varyV + 'vec2 vGrad;\n' +
       'void main() {\n' +
-      '  float y = aH * uHeightAmp;\n' +
+      '  float effAmp = uHeightAmp * uHeightScale;\n' +
+      '  float y = aH * effAmp;\n' +
       '  vWorld = vec3(aXZ.x, y, aXZ.y);\n' +
       '  vH = aH;\n' +
-      '  vGrad = aGrad * uHeightAmp;\n' +
+      '  vGrad = aGrad * effAmp;\n' +
       '  gl_Position = uViewProj * vec4(vWorld, 1.0);\n' +
       '}\n';
 
@@ -638,6 +640,7 @@
       'uniform float uIsDark;\n' +
       'uniform float uContours;\n' +
       'uniform float uExtent;\n' +
+      'uniform float uGlintPhase;\n' +
       'vec3 terrainRampDark(float h) {\n' +
       '  vec3 c0 = vec3(0.095, 0.112, 0.138);\n' +
       '  vec3 c1 = vec3(0.115, 0.220, 0.340);\n' +
@@ -664,8 +667,13 @@
       '  vec3 N = normalize(vec3(-vGrad.x, 1.0, -vGrad.y));\n' +
       '  vec3 L = normalize(vec3(0.42, 0.86, 0.38));\n' +
       '  vec3 V = normalize(uEye - vWorld);\n' +
+      '  vec3 LBack = normalize(vec3(-uEye.x, max(0.36, uEye.y * 0.42), -uEye.z));\n' +
+      '  vec3 H1 = normalize(L + V);\n' +
+      '  vec3 H2 = normalize(LBack + V);\n' +
       '  float diff = clamp(dot(N, L), 0.0, 1.0);\n' +
-      '  float rim = pow(1.0 - max(dot(N, V), 0.0), 2.4);\n' +
+      '  float rim = pow(1.0 - max(dot(N, V), 0.0), 2.3);\n' +
+      '  float specKey = pow(max(dot(N, H1), 0.0), 26.0);\n' +
+      '  float specHorizon = pow(max(dot(N, H2), 0.0), 10.0) * pow(1.0 - max(dot(N, V), 0.0), 1.45);\n' +
       '  vec3 ramp = (uIsDark > 0.5) ? terrainRampDark(vH) : terrainRampLight(vH);\n' +
       '  vec3 lit = ramp * mix(0.64, 1.12, diff) + ramp * rim * (uIsDark > 0.5 ? 0.34 : 0.14);\n' +
       '\n' +
@@ -689,15 +697,34 @@
       '  vec3 gridCol = (uIsDark > 0.5) ? vec3(0.38, 0.54, 0.78) : vec3(0.28, 0.44, 0.68);\n' +
       '  lit = mix(lit, gridCol, gridLine * (uIsDark > 0.5 ? 0.16 : 0.14));\n' +
       '\n' +
+      '  float radial = length(vWorld.xz) / uExtent;\n' +
+      '  vec2 toFrag = normalize(vWorld.xz + vec2(0.0001));\n' +
+      '  vec2 camDir = normalize(-uEye.xz + vec2(0.0001));\n' +
+      '  float farSide = smoothstep(-0.15, 0.86, dot(toFrag, camDir));\n' +
+      '  vec3 glintTint = (uIsDark > 0.5)\n' +
+      '    ? mix(vec3(0.74, 0.90, 1.0), vec3(1.0, 0.88, 0.66), smoothstep(0.38, 0.88, vH))\n' +
+      '    : mix(vec3(0.38, 0.68, 1.0), vec3(1.0, 0.72, 0.34), smoothstep(0.42, 0.90, vH));\n' +
+      '  float contourReflect = cLine * (0.34 * rim + 0.92 * specKey + 1.25 * specHorizon) * mix(0.75, 1.48, isMajor);\n' +
+      '  float horizonSheen = farSide * smoothstep(0.26, 0.82, radial) * (1.0 - smoothstep(0.84, 0.98, radial))\n' +
+      '    * (0.35 + 0.65 * (1.0 - smoothstep(0.0, 0.40, vH)));\n' +
+      '  vec3 horizonTint = (uIsDark > 0.5)\n' +
+      '    ? mix(vec3(0.42, 0.70, 1.0), vec3(1.0, 0.72, 0.40), smoothstep(0.25, 0.85, vH))\n' +
+      '    : vec3(0.32, 0.58, 0.96);\n' +
+      '  float sweepWave = (uGlintPhase >= -0.25 && uGlintPhase <= 1.25)\n' +
+      '    ? exp(-pow((vH - uGlintPhase) * 6.0, 2.0)) : 0.0;\n' +
+      '  lit += glintTint * (contourReflect * (uIsDark > 0.5 ? 0.78 : 0.48)\n' +
+      '    + specHorizon * smoothstep(0.06, 0.85, vH) * (uIsDark > 0.5 ? 0.40 : 0.20)\n' +
+      '    + sweepWave * (0.20 + cLine * 1.15) * (uIsDark > 0.5 ? 0.92 : 0.54));\n' +
+      '  lit += horizonTint * horizonSheen * (uIsDark > 0.5 ? 0.58 : 0.30);\n' +
+      '\n' +
       '  float peakGlow = smoothstep(0.76, 1.0, vH);\n' +
       '  if (uIsDark > 0.5) lit += vec3(0.28, 0.13, 0.04) * peakGlow;\n' +
       '\n' +
-      '  float radial = length(vWorld.xz) / uExtent;\n' +
       '  float radialFade = 1.0 - smoothstep(0.46, 0.92, radial);\n' +
       '  float viewDist = length(uEye - vWorld);\n' +
       '  float viewFog = exp(-max(0.0, viewDist - 2.6) * 0.35);\n' +
       '  float vis = clamp(radialFade * viewFog, 0.0, 1.0);\n' +
-      '  float valleySoft = mix(0.48, 1.0, smoothstep(0.0, 0.09, vH) + gridLine * 0.55 + cLine * 0.65);\n' +
+      '  float valleySoft = mix(0.48, 1.0, smoothstep(0.0, 0.09, vH) + gridLine * 0.55 + cLine * 0.65 + horizonSheen * 0.45);\n' +
       '  ' + outAssign + ' = vec4(mix(uBg, lit, 0.92), vis * valleySoft);\n' +
       '}\n';
 
@@ -705,13 +732,15 @@
       attr + 'vec3 aPos;\n' +
       attr + 'vec4 aColor;\n' +
       'uniform mat4 uViewProj;\n' +
+      'uniform float uHeightScale;\n' +
       varyV + 'vec4 vColor;\n' +
       varyV + 'float vRadial;\n' +
       'uniform float uExtent;\n' +
       'void main() {\n' +
+      '  vec3 pos = vec3(aPos.x, aPos.y * uHeightScale, aPos.z);\n' +
       '  vColor = aColor;\n' +
-      '  vRadial = length(aPos.xz) / uExtent;\n' +
-      '  gl_Position = uViewProj * vec4(aPos, 1.0);\n' +
+      '  vRadial = length(pos.xz) / uExtent;\n' +
+      '  gl_Position = uViewProj * vec4(pos, 1.0);\n' +
       '}\n';
 
     var lineFS = headF + outDecl +
@@ -729,10 +758,12 @@
       'uniform mat4 uViewProj;\n' +
       'uniform vec3 uCamRight;\n' +
       'uniform vec3 uCamUp;\n' +
+      'uniform float uHeightScale;\n' +
       varyV + 'vec2 vUv;\n' +
       varyV + 'vec4 vColor;\n' +
       'void main() {\n' +
-      '  vec3 worldPos = aCenter + (uCamRight * aQuad.x + uCamUp * aQuad.y) * aQuad.z;\n' +
+      '  vec3 centerPos = vec3(aCenter.x, aCenter.y * uHeightScale, aCenter.z);\n' +
+      '  vec3 worldPos = centerPos + (uCamRight * aQuad.x + uCamUp * aQuad.y) * aQuad.z;\n' +
       '  vUv = aQuad.xy;\n' +
       '  vColor = aInstColor;\n' +
       '  gl_Position = uViewProj * vec4(worldPos, 1.0);\n' +
@@ -770,10 +801,12 @@
       attr + 'vec4 aColor;\n' +
       'uniform mat4 uViewProj;\n' +
       'uniform float uDpr;\n' +
+      'uniform float uHeightScale;\n' +
       varyV + 'vec4 vColor;\n' +
       'void main() {\n' +
+      '  vec3 pos = vec3(aPos.x, aPos.y * uHeightScale, aPos.z);\n' +
       '  vColor = aColor;\n' +
-      '  gl_Position = uViewProj * vec4(aPos, 1.0);\n' +
+      '  gl_Position = uViewProj * vec4(pos, 1.0);\n' +
       '  gl_PointSize = clamp(aSize * uDpr / max(0.45, gl_Position.w), 2.0, 28.0);\n' +
       '}\n';
 
@@ -855,6 +888,7 @@
     var cachedNodes3d = [];
     var cachedPolyNodes = [];
     var lastViewProj = null;
+    var lastHeightScale = 1;
 
     function resolveLocs(prog, attrs, uniforms) {
       var a = {};
@@ -865,10 +899,10 @@
       return { a: a, u: u };
     }
 
-    var tLoc = resolveLocs(terrainProg, ['aXZ', 'aH', 'aGrad'], ['uViewProj', 'uHeightAmp', 'uEye', 'uBg', 'uIsDark', 'uContours', 'uExtent']);
-    var lLoc = resolveLocs(lineProg, ['aPos', 'aColor'], ['uViewProj', 'uExtent']);
-    var sLoc = resolveLocs(solidProg, ['aCenter', 'aQuad', 'aInstColor'], ['uViewProj', 'uCamRight', 'uCamUp', 'uIsDark']);
-    var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uDpr']);
+    var tLoc = resolveLocs(terrainProg, ['aXZ', 'aH', 'aGrad'], ['uViewProj', 'uHeightAmp', 'uHeightScale', 'uEye', 'uBg', 'uIsDark', 'uContours', 'uExtent', 'uGlintPhase']);
+    var lLoc = resolveLocs(lineProg, ['aPos', 'aColor'], ['uViewProj', 'uExtent', 'uHeightScale']);
+    var sLoc = resolveLocs(solidProg, ['aCenter', 'aQuad', 'aInstColor'], ['uViewProj', 'uCamRight', 'uCamUp', 'uIsDark', 'uHeightScale']);
+    var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uDpr', 'uHeightScale']);
 
     function resize(w, h, nextDpr) {
       width = Math.max(1, Math.round(w));
@@ -1151,6 +1185,9 @@
       var isDarkTheme = !!renderOpts.isDark;
       var getLabelText = renderOpts.getLabelText || function (n) { return n.label || n.id; };
       var camDist = renderOpts.distance || 1.72;
+      var heightScale = renderOpts.heightScale != null ? renderOpts.heightScale : 1;
+      var labelFade = renderOpts.labelFade != null ? renderOpts.labelFade : 1;
+      if (labelFade < 0.04) return;
       if (camDist < 1.1) maxLabels = Math.round(maxLabels * 1.45);
 
       var candidates = [];
@@ -1158,7 +1195,7 @@
       for (i = 0; i < cachedPolyNodes.length; i++) {
         var n3 = cachedPolyNodes[i];
         if (!n3.visible && !n3.focused) continue;
-        var pt = projectWorldToScreen(n3.wx, n3.wy + 0.025, n3.wz, viewProj, width, height);
+        var pt = projectWorldToScreen(n3.wx, n3.wy * heightScale + 0.025, n3.wz, viewProj, width, height);
         if (!pt) continue;
         if (pt[0] < 24 || pt[0] > width - 24 || pt[1] < 24 || pt[1] > height - 24 || pt[2] < -1 || pt[2] > 1) continue;
         candidates.push({
@@ -1170,6 +1207,7 @@
       }
       candidates.sort(function (a, b) { return b.priority - a.priority; });
 
+      labelCtx.globalAlpha = labelFade;
       labelCtx.font = '600 11px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif';
       labelCtx.textAlign = 'center';
       labelCtx.textBaseline = 'middle';
@@ -1220,6 +1258,7 @@
         labelCtx.fillText(txt, drawX, c.sy + 0.5);
         drawn += 1;
       }
+      labelCtx.globalAlpha = 1;
     }
 
     function render(params, camState, renderOpts) {
@@ -1228,6 +1267,9 @@
       var cam = buildCameraMatrices(params, camState, aspect);
       lastViewProj = cam.viewProj;
       var heightAmp = (params.height / 100) * 0.46;
+      var heightScale = renderOpts.heightScale != null ? renderOpts.heightScale : 1;
+      var glintPhase = renderOpts.glintPhase != null ? renderOpts.glintPhase : -1;
+      lastHeightScale = heightScale;
       var isDarkTheme = !!renderOpts.isDark;
       var bgArr = parseCssColor(renderOpts.bgColor || (isDarkTheme ? '#191919' : '#f7f6f3'), [0.098, 0.098, 0.098, 1]);
 
@@ -1244,11 +1286,13 @@
       gl.useProgram(terrainProg);
       gl.uniformMatrix4fv(tLoc.u.uViewProj, false, cam.viewProj);
       gl.uniform1f(tLoc.u.uHeightAmp, heightAmp);
+      gl.uniform1f(tLoc.u.uHeightScale, heightScale);
       gl.uniform3f(tLoc.u.uEye, cam.eye[0], cam.eye[1], cam.eye[2]);
       gl.uniform3f(tLoc.u.uBg, bgArr[0], bgArr[1], bgArr[2]);
       gl.uniform1f(tLoc.u.uIsDark, isDarkTheme ? 1 : 0);
       gl.uniform1f(tLoc.u.uContours, params.contours || 16);
       gl.uniform1f(tLoc.u.uExtent, currentField.extent);
+      gl.uniform1f(tLoc.u.uGlintPhase, glintPhase);
       bindAttrib(tLoc.a.aXZ, terrainXZBuf, 2, activeAttrs);
       bindAttrib(tLoc.a.aH, terrainHBuf, 1, activeAttrs);
       bindAttrib(tLoc.a.aGrad, terrainGradBuf, 2, activeAttrs);
@@ -1266,6 +1310,7 @@
         gl.uniform3f(sLoc.u.uCamRight, camRight[0], camRight[1], camRight[2]);
         gl.uniform3f(sLoc.u.uCamUp, camUp[0], camUp[1], camUp[2]);
         gl.uniform1f(sLoc.u.uIsDark, isDarkTheme ? 1 : 0);
+        gl.uniform1f(sLoc.u.uHeightScale, heightScale);
         bindAttrib(sLoc.a.aCenter, solidPosBuf, 3, activeAttrs);
         bindAttrib(sLoc.a.aQuad, solidQuadBuf, 3, activeAttrs);
         bindAttrib(sLoc.a.aInstColor, solidInstColBuf, 4, activeAttrs);
@@ -1280,6 +1325,7 @@
       gl.useProgram(lineProg);
       gl.uniformMatrix4fv(lLoc.u.uViewProj, false, cam.viewProj);
       gl.uniform1f(lLoc.u.uExtent, currentField.extent);
+      gl.uniform1f(lLoc.u.uHeightScale, heightScale);
       if (lineVertCount > 0) {
         activeAttrs = {};
         bindAttrib(lLoc.a.aPos, linePosBuf, 3, activeAttrs);
@@ -1294,6 +1340,7 @@
         gl.useProgram(pointProg);
         gl.uniformMatrix4fv(pLoc.u.uViewProj, false, cam.viewProj);
         gl.uniform1f(pLoc.u.uDpr, dpr);
+        gl.uniform1f(pLoc.u.uHeightScale, heightScale);
         bindAttrib(pLoc.a.aPos, ptPosBuf, 3, activeAttrs);
         bindAttrib(pLoc.a.aSize, ptSizeBuf, 1, activeAttrs);
         bindAttrib(pLoc.a.aColor, ptColBuf, 4, activeAttrs);
@@ -1309,6 +1356,7 @@
         gl.uniform3f(sLoc.u.uCamRight, camRight[0], camRight[1], camRight[2]);
         gl.uniform3f(sLoc.u.uCamUp, camUp[0], camUp[1], camUp[2]);
         gl.uniform1f(sLoc.u.uIsDark, isDarkTheme ? 1 : 0);
+        gl.uniform1f(sLoc.u.uHeightScale, heightScale);
         bindAttrib(sLoc.a.aCenter, solidPosBuf, 3, activeAttrs);
         bindAttrib(sLoc.a.aQuad, solidQuadBuf, 3, activeAttrs);
         bindAttrib(sLoc.a.aInstColor, solidInstColBuf, 4, activeAttrs);
@@ -1322,6 +1370,7 @@
         gl.useProgram(lineProg);
         gl.uniformMatrix4fv(lLoc.u.uViewProj, false, cam.viewProj);
         gl.uniform1f(lLoc.u.uExtent, currentField.extent);
+        gl.uniform1f(lLoc.u.uHeightScale, heightScale);
         bindAttrib(lLoc.a.aPos, hiLinePosBuf, 3, activeAttrs);
         bindAttrib(lLoc.a.aColor, hiLineColBuf, 4, activeAttrs);
         useAttrs(activeAttrs);
@@ -1337,6 +1386,8 @@
         showLabels: renderOpts.showLabels,
         getLabelText: renderOpts.getLabelText,
         distance: camState.distance,
+        heightScale: heightScale,
+        labelFade: renderOpts.labelFade,
       });
     }
 
@@ -1347,7 +1398,7 @@
       for (var i = 0; i < cachedNodes3d.length; i++) {
         var n3 = cachedNodes3d[i];
         if (!n3.visible && !n3.focused) continue;
-        var pt = projectWorldToScreen(n3.wx, n3.wy, n3.wz, lastViewProj, width, height);
+        var pt = projectWorldToScreen(n3.wx, n3.wy * lastHeightScale, n3.wz, lastViewProj, width, height);
         if (!pt || pt[2] < -1 || pt[2] > 1) continue;
         var hitRadius = (n3.degNorm > 0.35 ? 16 : 11) + (n3.focused ? 4 : 0);
         var distPx = Math.hypot(pt[0] - localX, pt[1] - localY);
@@ -1577,6 +1628,40 @@
       }
     }
 
+    var entryAnim = null;
+
+    function nowMs() {
+      return (typeof performance !== 'undefined' && typeof performance.now === 'function')
+        ? performance.now()
+        : Date.now();
+    }
+
+    function cancelEntryAnim() {
+      entryAnim = null;
+    }
+
+    function startCameraTransition(fromPitch, fromYaw, fromDist, fromHeightScale, durationMs, sweepGlint) {
+      if (tier === 'reduced' || typeof requestAnimationFrame !== 'function' || !durationMs || durationMs <= 0) {
+        entryAnim = null;
+        renderNow();
+        return;
+      }
+      entryAnim = {
+        startTime: null,
+        duration: durationMs,
+        fromPitch: fromPitch,
+        fromYaw: fromYaw,
+        fromDist: fromDist,
+        fromHeightScale: fromHeightScale,
+        sweepGlint: !!sweepGlint,
+      };
+      if (renderRaf && typeof cancelAnimationFrame === 'function') {
+        cancelAnimationFrame(renderRaf);
+        renderRaf = 0;
+      }
+      renderNow();
+    }
+
     function renderNow() {
       renderRaf = 0;
       if (!enabled || tier === 'unsupported') return;
@@ -1585,13 +1670,57 @@
       var vp = getViewportSize();
       r.resize(vp.width || 1200, vp.height || 800, typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1);
       rebuildFieldAndBatches();
-      r.render(params, camState, {
+      var renderParams = params;
+      var renderCam = camState;
+      var heightScale = 1;
+      var glintPhase = -1;
+      var labelFade = 1;
+      var keepGoing = false;
+      if (entryAnim) {
+        if (entryAnim.startTime == null) entryAnim.startTime = nowMs();
+        var elapsed = Math.max(0, nowMs() - entryAnim.startTime);
+        var rawT = Math.min(1, elapsed / entryAnim.duration);
+        var camEase = 1 - Math.pow(1 - rawT, 3.2);
+        var riseEase = 1 - Math.pow(1 - Math.min(1, rawT * 1.18), 2.5);
+        renderParams = {
+          height: params.height,
+          contours: params.contours,
+          pitch: entryAnim.fromPitch + (params.pitch - entryAnim.fromPitch) * camEase,
+          yaw: entryAnim.fromYaw + (params.yaw - entryAnim.fromYaw) * camEase,
+        };
+        renderCam = {
+          distance: entryAnim.fromDist + (camState.distance - entryAnim.fromDist) * camEase,
+          targetX: camState.targetX,
+          targetY: camState.targetY,
+          targetZ: camState.targetZ,
+        };
+        heightScale = entryAnim.fromHeightScale + (1 - entryAnim.fromHeightScale) * riseEase;
+        glintPhase = entryAnim.sweepGlint ? (rawT * 1.32 - 0.12) : -1;
+        labelFade = entryAnim.fromHeightScale < 0.5 ? Math.max(0, Math.min(1, (rawT - 0.28) / 0.52)) : 1;
+        if (rawT < 1) {
+          keepGoing = true;
+        } else {
+          entryAnim = null;
+          heightScale = 1;
+          glintPhase = -1;
+          labelFade = 1;
+          renderParams = params;
+          renderCam = camState;
+        }
+      }
+      r.render(renderParams, renderCam, {
         isDark: isDark(),
         bgColor: getBgColor(),
         isLite: tier === 'lite',
         showLabels: isLabelsVisible(),
         getLabelText: getLabelText,
+        heightScale: heightScale,
+        glintPhase: glintPhase,
+        labelFade: labelFade,
       });
+      if (keepGoing && typeof requestAnimationFrame === 'function') {
+        renderRaf = requestAnimationFrame(renderNow);
+      }
     }
 
     function scheduleRender() {
@@ -1629,6 +1758,7 @@
 
     function onPointerDown(ev) {
       if (!enabled || !stageEl) return;
+      if (entryAnim) cancelEntryAnim();
       if (ev.pointerType === 'touch' && !allowTouchOrbit) {
         dragState = {
           id: ev.pointerId,
@@ -1721,6 +1851,7 @@
 
     function onWheel(ev) {
       if (!enabled) return;
+      if (entryAnim) cancelEntryAnim();
       ev.preventDefault();
       var factor = ev.deltaY > 0 ? 1.09 : 0.91;
       camState.distance = Math.max(0.65, Math.min(3.8, camState.distance * factor));
@@ -1815,8 +1946,14 @@
         }
         terrainDirty = true;
         batchesDirty = true;
-        renderNow();
+        if (setOpts && setOpts.instant) {
+          cancelEntryAnim();
+          renderNow();
+        } else {
+          startCameraTransition(78, 0, camState.distance * 1.14, 0.04, tier === 'lite' ? 850 : 1200, true);
+        }
       } else {
+        cancelEntryAnim();
         hoveredNode = null;
         dragState = null;
         clearStageClasses();
@@ -1827,6 +1964,7 @@
 
     function setParam(key, value) {
       if (!Object.prototype.hasOwnProperty.call(BOUNDS, key)) return;
+      if (entryAnim) cancelEntryAnim();
       var next = Object.assign({}, params);
       next[key] = value;
       params = clampParams(next, tier);
@@ -1837,17 +1975,23 @@
     }
 
     function resetDefaults() {
+      var prevPitch = params.pitch;
+      var prevYaw = params.yaw;
+      var prevDist = camState.distance;
       params = resolveDefaultForTier(tier);
       camState.distance = opts.defaultDistance || 1.72;
       camState.targetX = 0;
       camState.targetZ = 0;
       saveParamsIfEnabled(params);
       batchesDirty = true;
-      if (enabled) renderNow();
+      if (enabled) startCameraTransition(prevPitch, prevYaw, prevDist, 1, 480, true);
       onStateChange(getPublicState());
     }
 
     function setTopView() {
+      var prevPitch = params.pitch;
+      var prevYaw = params.yaw;
+      var prevDist = camState.distance;
       params = clampParams({
         height: params.height,
         contours: params.contours,
@@ -1857,7 +2001,7 @@
       camState.targetX = 0;
       camState.targetZ = 0;
       saveParamsIfEnabled(params);
-      if (enabled) renderNow();
+      if (enabled) startCameraTransition(prevPitch, prevYaw, prevDist, 1, 460, true);
       onStateChange(getPublicState());
     }
 
@@ -1885,6 +2029,7 @@
     }
 
     function destroy() {
+      cancelEntryAnim();
       if (renderRaf && typeof cancelAnimationFrame === 'function') cancelAnimationFrame(renderRaf);
       if (stageEl && typeof stageEl.removeEventListener === 'function') {
         stageEl.removeEventListener('pointerdown', onPointerDown);
@@ -1939,7 +2084,8 @@
             targetZ: Number(camState.targetZ.toFixed(3)),
           },
           fieldStats: renderer ? renderer.getFieldStats() : null,
-          animating: !!draggingSlider || !!renderRaf,
+          animating: !!entryAnim || !!draggingSlider || !!renderRaf,
+          entryAnimating: !!entryAnim,
         };
       },
       destroy: destroy,

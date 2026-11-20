@@ -701,6 +701,22 @@ a.hero-stat-num:focus-visible {
   z-index: 3;
   pointer-events: none;
 }
+/* 远景地平线大气反光辉光（位于 WebGL 地形层下方，随主题自动适配） */
+.graph-perspective-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 68% 18% at 50% 30%, color-mix(in srgb, var(--accent) 20%, rgba(251, 170, 86, 0.14)) 0%, transparent 72%),
+    linear-gradient(180deg, transparent 20%, color-mix(in srgb, var(--accent) 9%, transparent) 30%, transparent 44%);
+}
+[data-theme="light"] .graph-perspective-stage::before {
+  background:
+    radial-gradient(ellipse 68% 18% at 50% 30%, color-mix(in srgb, var(--accent) 13%, rgba(255, 255, 255, 0.35)) 0%, transparent 72%),
+    linear-gradient(180deg, transparent 20%, color-mix(in srgb, var(--accent) 6%, transparent) 30%, transparent 44%);
+}
 /* 边界径向雾化虚化遮罩：无矩形框线，边缘平滑溶入当前主题背景 */
 .graph-perspective-stage::after {
   content: "";
