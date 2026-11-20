@@ -762,9 +762,9 @@ a.hero-stat-num:focus-visible {
   display: none;
 }
 #mini-graph-wrap .graph-terrain-gl {
-  touch-action: pan-y;
+  touch-action: none;
 }
-#mini-graph-svg { position: relative; display: block; }
+#mini-graph-svg { position: relative; display: block; touch-action: none; }
 .mini-graph-mode { position: absolute; top: 12px; right: 16px; display: flex; gap: 4px; z-index: 3; }
 #mini-graph-stats,
 #mini-graph-expand { z-index: 3; }

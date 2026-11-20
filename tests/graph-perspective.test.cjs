@@ -306,20 +306,45 @@ test('camera projection places world origin inside viewport across oblique and t
   const rtOuter = perspectiveApi.worldToGraphCoords(m2.wx, m2.wz, spreadField.center);
   assert.ok(Math.abs(rtOuter.x - 420) < 1e-3 && Math.abs(rtOuter.y - 30) < 1e-3, 'far outer node round-trips accurately');
 
-  // 3D terrain sphere overlap solver separates clustered spheres around hubs with zero residual overlap
+  // 3D terrain sphere overlap solver separates clustered spheres around hubs monotonically without oscillation
   const overlapItems = [
     { node: { id: 'hub' }, wx: 0, wz: 0, wySurf: 0.1, wy: 0.2, degNorm: 1, baseRadius: 0.028 },
     { node: { id: 'a' }, wx: 0.002, wz: 0.001, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
     { node: { id: 'b' }, wx: -0.001, wz: 0.002, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
     { node: { id: 'c' }, wx: 0, wz: 0, wySurf: 0.1, wy: 0.15, degNorm: 0.2, baseRadius: 0.006 },
   ];
-  perspectiveApi.resolveSphereOverlaps3D(overlapItems, spreadField, 0.35, { gap: 0.002, maxPasses: 10 });
+  perspectiveApi.resolveSphereOverlaps3D(overlapItems, spreadField, 0.35, { gap: 0.002, maxPasses: 14 });
   for (let i = 0; i < overlapItems.length; i++) {
     for (let j = i + 1; j < overlapItems.length; j++) {
       const d = Math.hypot(overlapItems[i].wx - overlapItems[j].wx, overlapItems[i].wz - overlapItems[j].wz);
       assert.ok(d >= overlapItems[i].baseRadius + overlapItems[j].baseRadius + 0.0015, `expected spheres ${i}/${j} separated, got ${d}`);
     }
   }
+  // Dense 25-node crowded cluster must converge monotonically (step magnitude strictly decays, zero self-oscillation)
+  const denseCluster = [];
+  for (let i = 0; i < 25; i++) {
+    denseCluster.push({
+      node: { id: `d${i}` },
+      wx: ((i % 5) - 2) * 0.002,
+      wz: (Math.floor(i / 5) - 2) * 0.002,
+      wySurf: 0.1,
+      wy: 0.15,
+      degNorm: 0.2,
+      baseRadius: 0.004,
+    });
+  }
+  const passMoves = [];
+  for (let p = 0; p < 8; p++) {
+    const prev = denseCluster.map((it) => [it.wx, it.wz]);
+    perspectiveApi.resolveSphereOverlaps3D(denseCluster, null, 0, { gap: 0.0008, maxPasses: 1 });
+    let maxMv = 0;
+    for (let i = 0; i < denseCluster.length; i++) {
+      const mv = Math.hypot(denseCluster[i].wx - prev[i][0], denseCluster[i].wz - prev[i][1]);
+      if (mv > maxMv) maxMv = mv;
+    }
+    passMoves.push(maxMv);
+  }
+  assert.ok(passMoves[passMoves.length - 1] < passMoves[0] * 0.35, `dense cluster must damp monotonically without oscillating: ${passMoves.map((v) => v.toFixed(5)).join(', ')}`);
 
   // Entry force-simulation bloom starts gathered inward, expands organically, and settles to exact equilibrium at 1.0
   const startPos = perspectiveApi.evalForceMotionXZ(0.6, 0.3, 0.0, 0.026);
@@ -567,7 +592,7 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
     getCommunityColors: () => ['#5b9cf6', '#34d399'],
     buildCommunityColorMap: () => ({ 'c-rl': '#5b9cf6', 'c-ctrl': '#34d399' }),
     formatTooltipSummary: s => s || '',
-    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>',
+    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>' + (o.linkHtml || ''),
     bindBlankDismiss() {},
     bindOutsideDismiss() {},
   };
@@ -676,6 +701,39 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const afterOrbit = w.RNMiniGraph.getPerspectiveState();
   assert.notEqual(afterOrbit.params.yaw, yawBefore, 'dragging blank space still orbits camera yaw');
 
+  // Two-finger touch pinch zooms camera distance and pans target cleanly without firing node click
+  const makeTouchPointer = (type, id, x, y) => {
+    const ev = new w.MouseEvent(type, { bubbles: true, clientX: x, clientY: y });
+    Object.defineProperty(ev, 'pointerId', { value: id });
+    Object.defineProperty(ev, 'pointerType', { value: 'touch' });
+    return ev;
+  };
+  const distBeforePinch = afterOrbit.camera.distance;
+  const targetXBeforePinch = afterOrbit.camera.targetX;
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 11, 200, 220));
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 12, 320, 220));
+  stage.dispatchEvent(makeTouchPointer('pointermove', 11, 130, 250));
+  stage.dispatchEvent(makeTouchPointer('pointermove', 12, 430, 250));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 11, 130, 250));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 12, 430, 250));
+  const afterPinch = w.RNMiniGraph.getPerspectiveState();
+  assert.ok(afterPinch.camera.distance < distBeforePinch * 0.7, 'two-finger pinch spread zooms 3D terrain camera in');
+  assert.notEqual(afterPinch.camera.targetX, targetXBeforePinch, 'two-finger pinch midpoint shift pans 3D terrain camera');
+
+  // Tapping a 3D node shows pinned floating card with detail link instead of immediate navigation
+  const tooltipEl = w.document.getElementById('mini-graph-tooltip');
+  const tapTargets = w.RNMiniGraph.getPerspectiveTargets(5);
+  const tapNode = tapTargets[0];
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 21, tapNode.x, tapNode.y));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 21, tapNode.x, tapNode.y));
+  assert.equal(tooltipEl.classList.contains('hidden'), false, 'tapping 3D preview node opens floating card');
+  assert.equal(tooltipEl.classList.contains('tt-pinned'), true, 'floating card is pinned for link click');
+  const ttLink3d = tooltipEl.querySelector('.tt-link');
+  assert.ok(ttLink3d && ttLink3d.getAttribute('href').includes('detail.html?id='), 'floating card contains clickable detail link');
+  stage.dispatchEvent(makeTouchPointer('pointerdown', 22, 12, 12));
+  stage.dispatchEvent(makeTouchPointer('pointerup', 22, 12, 12));
+  assert.equal(tooltipEl.classList.contains('hidden'), true, 'tapping blank 3D space dismisses floating card');
+
   const drawsBeforeHighlight = mock.stats.drawCalls;
   w.RNMiniGraph.highlight(['n1'], 'PPO');
   await new Promise((r) => setTimeout(r, 40));
@@ -683,7 +741,7 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(hitCount, 1);
   assert.ok(mock.stats.drawCalls > drawsBeforeHighlight, 'highlight re-renders 3D terrain peak emphasis');
 
-  // Switch back to 2D -> hides 3D terrain stage and restores 2D SVG
+  // Switch back to 2D -> hides 3D terrain stage and restores 2D SVG; clicking a 2D node opens pinned floating card
   btn2d.click();
   assert.equal(w.RNMiniGraph.getMode(), '2d');
   assert.equal(wrap.classList.contains('is-perspective-mode'), false);
@@ -691,4 +749,20 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(btn2d.getAttribute('aria-pressed'), 'true');
   assert.equal(btn3d.getAttribute('aria-pressed'), 'false');
   assert.equal(expand.getAttribute('href'), 'graph.html');
+  mpcNodeG.dispatchEvent(new w.MouseEvent('click', { bubbles: true, clientX: 210, clientY: 210 }));
+  assert.equal(tooltipEl.classList.contains('hidden'), false, 'clicking 2D preview node shows floating card first');
+  assert.equal(tooltipEl.classList.contains('tt-pinned'), true, '2D preview node floating card is pinned');
+  const ttLink2d = tooltipEl.querySelector('.tt-link');
+  assert.ok(ttLink2d && ttLink2d.getAttribute('href').includes('detail.html?id='), '2D floating card contains clickable detail link');
+  assert.ok(miniGraphJs.includes('allowTouchOrbit: true'), 'homepage 3D preview enables touch orbit/drag/pinch');
+  assert.ok(styleCss.includes('#mini-graph-svg { position: relative; display: block; touch-action: none; }'), 'homepage 2D SVG sets touch-action: none');
+  assert.ok(graphHtml.includes('function isTouchInteraction('), 'graph.html supports hybrid touch floating-card detection');
+  assert.ok(
+    graphHtml.includes('.graph-hint {\n      position: absolute;\n      left: 50%;'),
+    'graph.html centers bottom hint capsule symmetrically between bottom FABs'
+  );
+  assert.ok(
+    graphHtml.includes('<span class="hint-desktop">') && graphHtml.includes('<span class="hint-touch">'),
+    'graph.html provides device-appropriate desktop and touch hint copy'
+  );
 });

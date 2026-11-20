@@ -209,8 +209,10 @@
       var r3d = Math.max(11, r2d * 1.65);
       return 0.056 * (r3d / 49.5);
     }
-    // 完整图谱（8k+ 节点）：沿用 sqrt(degree) [4..30] 比例，高连接枢纽醒目、低连接坡面小珠清爽不拥挤
-    return 0.028 * (r2d / 30);
+    // 完整图谱（8k+ 节点）：大枢纽保持 0.028 醒目尺度，低度小珠收至 0.0020 对齐 2D 节点间距密度，
+    // 避免拥挤盆地过度拥挤触发防重叠反复推挤震荡
+    var tFull = Math.max(0, Math.min(1, (r2d - 4) / 26));
+    return 0.0020 + (0.028 - 0.0020) * tFull;
   }
 
   function quantileBounds(values, loQ, hiQ) {
@@ -493,6 +495,33 @@
     };
 
     var ids = Object.keys(nodeMeta);
+    if (!opts.skipOverlapResolve && ids.length >= 2) {
+      var isPreviewField = list.length <= 160;
+      var overlapList = [];
+      for (i = 0; i < ids.length; i++) {
+        var metaId = ids[i];
+        var mItem = nodeMeta[metaId];
+        if (!mItem || (!mItem.active && activeSet)) continue;
+        overlapList.push({
+          node: { id: metaId },
+          meta: mItem,
+          wx: mItem.wx,
+          wz: mItem.wz,
+          degNorm: mItem.degNorm,
+          baseRadius: computeSphereRadius3D(mItem.deg, maxDeg, isPreviewField),
+        });
+      }
+      resolveSphereOverlaps3D(overlapList, null, 0, {
+        gap: opts.overlapGap != null ? opts.overlapGap : (isPreviewField ? 0.003 : 0.0008),
+        maxPasses: opts.overlapPasses != null ? opts.overlapPasses : 6,
+        pinnedId: opts.pinnedId || null,
+      });
+      for (i = 0; i < overlapList.length; i++) {
+        overlapList[i].meta.wx = overlapList[i].wx;
+        overlapList[i].meta.wz = overlapList[i].wz;
+      }
+    }
+
     for (i = 0; i < ids.length; i++) {
       var m = nodeMeta[ids[i]];
       var surfH = sampleTerrainHeight(fieldObj, m.wx, m.wz);
@@ -670,15 +699,17 @@
   }
 
   /**
-   * 3D 地形节点防重叠解算（O(N) 空间网格）：
-   * 优先在水平 XZ 平面按半径反比质量推开重叠球体，确保俯视、斜视与 3D 空间均无节点互相压住，
-   * 大枢纽稳居山峰顶、小节点环绕舒展，并按最终 XZ 重新采样地形表面高程保持立柱垂直落峰。
+   * 3D 地形节点防重叠解算（O(N) 空间网格 + 对称阻尼 Jacobi 松弛）：
+   * 借鉴 2D/3D 立体力模拟的阻尼收敛机制，每轮累计所有相邻球体的合力后按 kPush / sqrt(冲突度)
+   * 同步更新，保证位移随轮次严格单调衰减，彻底消除拥挤节点群的来回推挤震荡；
+   * 大枢纽按半径平方反比稳居山峰顶、小节点环绕舒展。
    */
   function resolveSphereOverlaps3D(items, field, heightAmp, opts) {
     if (!items || items.length < 2) return 0;
     opts = opts || {};
-    var gap = opts.gap != null ? opts.gap : 0.0022;
-    var maxPasses = opts.maxPasses || 8;
+    var gap = opts.gap != null ? opts.gap : 0.0008;
+    var maxPasses = opts.maxPasses != null ? opts.maxPasses : 6;
+    var kPush = opts.strength != null ? opts.strength : 0.68;
     var pinnedId = opts.pinnedId || null;
     var n = items.length;
     var maxR = 0;
@@ -688,6 +719,9 @@
     }
     var cellSize = Math.max(0.012, maxR * 2 + gap * 1.5);
     var invCell = 1 / cellSize;
+    var accX = new Float32Array(n);
+    var accZ = new Float32Array(n);
+    var accW = new Float32Array(n);
     var movedAny = false;
     var pass;
     var totalResolved = 0;
@@ -695,6 +729,9 @@
     for (pass = 0; pass < maxPasses; pass++) {
       var grid = new Map();
       for (i = 0; i < n; i++) {
+        accX[i] = 0;
+        accZ[i] = 0;
+        accW[i] = 0;
         var it = items[i];
         var gx = Math.floor(it.wx * invCell);
         var gz = Math.floor(it.wz * invCell);
@@ -743,21 +780,35 @@
               var invMb = bPinned ? 0 : 1 / Math.max(1e-6, rb * rb);
               var invSum = invMa + invMb;
               if (!(invSum > 0)) continue;
-              var push = (minDist - dist) * 1.02;
+              var pen = minDist - dist;
               var wa = invMa / invSum;
               var wb = invMb / invSum;
-              a.wx -= ux * push * wa;
-              a.wz -= uz * push * wa;
-              b.wx += ux * push * wb;
-              b.wz += uz * push * wb;
+              accX[i] -= ux * pen * wa;
+              accZ[i] -= uz * pen * wa;
+              accW[i] += 1;
+              accX[j] += ux * pen * wb;
+              accZ[j] += uz * pen * wb;
+              accW[j] += 1;
               passOverlaps += 1;
               totalResolved += 1;
-              movedAny = true;
             }
           }
         }
       }
       if (passOverlaps === 0) break;
+      var maxStep = 0;
+      for (i = 0; i < n; i++) {
+        if (accW[i] <= 0) continue;
+        var damp = kPush / Math.sqrt(accW[i]);
+        var mx = accX[i] * damp;
+        var mz = accZ[i] * damp;
+        items[i].wx += mx;
+        items[i].wz += mz;
+        var mv = Math.hypot(mx, mz);
+        if (mv > maxStep) maxStep = mv;
+        movedAny = true;
+      }
+      if (maxStep < 1e-4) break;
     }
 
     if (movedAny && field && heightAmp > 0) {
@@ -1319,13 +1370,6 @@
           neighbor: isNeighbor,
         });
       }
-
-      // 3D 地形球体防重叠：按半径反比质量在水平面推开重叠球体，大枢纽锚峰、小节点环绕舒展
-      resolveSphereOverlaps3D(cachedNodes3d, currentField, heightAmp, {
-        gap: isPreview ? 0.004 : 0.0022,
-        maxPasses: isLite ? 5 : 8,
-        pinnedId: data.draggingNodeId || null,
-      });
 
       // Rank top hubs for 3D spherical orbs + vertical stems
       var stemCap = isLite ? 55 : (isPreview ? cachedNodes3d.length : 170);
@@ -1938,8 +1982,9 @@
       });
     }
 
-    function pickNodeAtScreen(localX, localY) {
+    function pickNodeAtScreen(localX, localY, extraSlop) {
       if (!lastViewProj || !cachedNodes3d.length) return null;
+      var slop = extraSlop > 0 ? extraSlop : 0;
       var best = null;
       var bestScore = Infinity;
       for (var i = 0; i < cachedNodes3d.length; i++) {
@@ -1949,7 +1994,7 @@
         var pt = projectWorldToScreen(mXZ[0], n3.wy * lastHeightScale, mXZ[1], lastViewProj, width, height);
         if (!pt || pt[2] < -1 || pt[2] > 1) continue;
         var projR = n3.baseRadius ? (n3.baseRadius * height * 0.75) : (n3.degNorm > 0.35 ? 16 : 11);
-        var hitRadius = Math.max(9, Math.min(28, projR + 5)) + (n3.focused ? 3 : 0);
+        var hitRadius = Math.max(9, Math.min(28, projR + 5)) + (n3.focused ? 3 : 0) + slop;
         var distPx = Math.hypot(pt[0] - localX, pt[1] - localY);
         if (distPx <= hitRadius) {
           var score = distPx + pt[2] * 2;
@@ -2167,19 +2212,29 @@
       return renderer;
     }
 
+    var liveSimSync = false;
+
     function rebuildFieldAndBatches() {
       if (!renderer || !enabled) return;
       var data = getGraphData() || {};
       var nodes = data.nodes || [];
       var edges = data.edges || [];
+      var activeDragId = (dragState && dragState.mode === 'node' && dragState.dragStarted && dragState.node)
+        ? dragState.node.id
+        : null;
       if (terrainDirty || !terrainField) {
         degreeInfo = computeNodeDegrees(nodes, edges);
         var gridN = tier === 'lite' ? 92 : (nodes.length <= 160 ? 120 : 148);
+        var isLiveMotion = liveSimSync || !!activeDragId || !!reboundAnim;
+        // 实时力模拟 / 拖拽 / 回弹帧保持阻尼连贯运动，不在每帧重复多轮重排；落稳后执行一次阻尼 Jacobi 防重叠烘焙
         terrainField = computeTerrainField(nodes, degreeInfo, {
           gridSize: gridN,
           extent: (activeDragBounds && terrainField) ? terrainField.extent : undefined,
           activeIds: data.activeIds || null,
           fixedBounds: activeDragBounds,
+          skipOverlapResolve: liveSimSync,
+          overlapPasses: isLiveMotion ? 1 : (tier === 'lite' ? 4 : 6),
+          pinnedId: activeDragId,
         });
         renderer.uploadTerrainMesh(terrainField);
         terrainDirty = false;
@@ -2187,9 +2242,6 @@
       }
       if (batchesDirty) {
         var heightAmp = (params.height / 100) * 0.46;
-        var activeDragId = (dragState && dragState.mode === 'node' && dragState.dragStarted && dragState.node)
-          ? dragState.node.id
-          : null;
         renderer.buildDynamicBatches({
           nodes: nodes,
           edges: edges,
@@ -2453,8 +2505,11 @@
       if (stageEl) stageEl.hidden = !enabled;
     }
 
-    /* ── 鼠标 / 触控交互（轨道旋转、平移、滚轮缩放、节点拾取）── */
+    /* ── 鼠标 / 触控交互（轨道旋转、平移、双指捏合缩放/平移、节点拖拽与点按）── */
     var dragState = null;
+    var activePointers = new Map();
+    var pinchState = null;
+    var gestureSuppressedTap = false;
 
     function getStageLocalPoint(ev) {
       if (!stageEl) return [0, 0];
@@ -2466,10 +2521,40 @@
       return typeof allowNodeDrag === 'function' ? !!allowNodeDrag() : !!allowNodeDrag;
     }
 
+    function getFirstTwoPointers() {
+      var list = [];
+      activePointers.forEach(function (v) {
+        if (list.length < 2) list.push(v);
+      });
+      return list;
+    }
+
+    function panCameraByDelta(dx, dy) {
+      var yawRad = (params.yaw * Math.PI) / 180;
+      var speed = camState.distance * 0.0022;
+      var rx = Math.cos(yawRad);
+      var rz = -Math.sin(yawRad);
+      var fx = Math.sin(yawRad);
+      var fz = Math.cos(yawRad);
+      var panMax = Math.max(1.8, (terrainField ? terrainField.extent : 1.45) * 1.25);
+      camState.targetX = Math.max(-panMax, Math.min(panMax, camState.targetX - dx * rx * speed + dy * fx * speed));
+      camState.targetZ = Math.max(-panMax, Math.min(panMax, camState.targetZ - dx * rz * speed + dy * fz * speed));
+    }
+
     function onPointerDown(ev) {
       if (!enabled || !stageEl) return;
       if (entryAnim) cancelEntryAnim();
-      if (ev.pointerType === 'touch' && !allowTouchOrbit) {
+      var isTouch = ev.pointerType === 'touch';
+      // W3C Pointer Events: isPrimary 标志新一轮手势的首指，清理可能残留的旧指针避免误入双指捏合
+      if (ev.isPrimary) {
+        activePointers.clear();
+        pinchState = null;
+        gestureSuppressedTap = false;
+      }
+      if (ev.pointerId != null) {
+        activePointers.set(ev.pointerId, { x: ev.clientX, y: ev.clientY, isTouch: isTouch });
+      }
+      if (isTouch && !allowTouchOrbit) {
         dragState = {
           id: ev.pointerId,
           startX: ev.clientX,
@@ -2477,14 +2562,37 @@
           lastX: ev.clientX,
           lastY: ev.clientY,
           moved: false,
+          isTouch: true,
           mode: 'tap-only',
         };
         return;
       }
+      // 双指触控：立即切入捏合缩放 + 双指平移，取消单指拖拽，抬指不触发误点
+      if (activePointers.size >= 2) {
+        if (dragState && dragState.mode === 'node' && dragState.dragStarted) {
+          onNodeDragEnd(dragState.node, ev);
+          activeDragBounds = null;
+          terrainDirty = true;
+          batchesDirty = true;
+        }
+        dragState = null;
+        gestureSuppressedTap = true;
+        var pair = getFirstTwoPointers();
+        pinchState = {
+          dist: Math.max(12, Math.hypot(pair[1].x - pair[0].x, pair[1].y - pair[0].y)),
+          midX: (pair[0].x + pair[1].x) * 0.5,
+          midY: (pair[0].y + pair[1].y) * 0.5,
+        };
+        if (glCanvas && typeof glCanvas.setPointerCapture === 'function' && ev.pointerId != null) {
+          try { glCanvas.setPointerCapture(ev.pointerId); } catch (_e) { /* ignore */ }
+        }
+        return;
+      }
+      gestureSuppressedTap = false;
       var isPan = ev.button === 2 || ev.button === 1 || ev.shiftKey;
-      if (!isPan && (ev.button === 0 || ev.pointerType === 'touch') && canDragNodesNow() && renderer && terrainField) {
+      if (!isPan && (ev.button === 0 || isTouch) && canDragNodesNow() && renderer && terrainField) {
         var pt = getStageLocalPoint(ev);
-        var hit = renderer.pickNodeAtScreen(pt[0], pt[1]);
+        var hit = renderer.pickNodeAtScreen(pt[0], pt[1], isTouch ? 14 : 0);
         if (hit) {
           var nPos = renderer.getNodeWorldPos(hit.id);
           if (nPos) {
@@ -2496,14 +2604,17 @@
               lastX: ev.clientX,
               lastY: ev.clientY,
               moved: false,
+              isTouch: isTouch,
               mode: 'node',
               node: hit,
               planeY: nPos.wy,
+              origWx: nPos.wx,
+              origWz: nPos.wz,
               offsetWx: grabPt ? (nPos.wx - grabPt[0]) : 0,
               offsetWz: grabPt ? (nPos.wz - grabPt[2]) : 0,
               dragStarted: false,
             };
-            if (glCanvas && typeof glCanvas.setPointerCapture === 'function') {
+            if (glCanvas && typeof glCanvas.setPointerCapture === 'function' && ev.pointerId != null) {
               try { glCanvas.setPointerCapture(ev.pointerId); } catch (_e) { /* ignore */ }
             }
             return;
@@ -2517,21 +2628,42 @@
         lastX: ev.clientX,
         lastY: ev.clientY,
         moved: false,
+        isTouch: isTouch,
         mode: isPan ? 'pan' : 'orbit',
       };
-      if (glCanvas && typeof glCanvas.setPointerCapture === 'function') {
+      if (glCanvas && typeof glCanvas.setPointerCapture === 'function' && ev.pointerId != null) {
         try { glCanvas.setPointerCapture(ev.pointerId); } catch (_e) { /* ignore */ }
       }
     }
 
     function onPointerMove(ev) {
       if (!enabled || !renderer) return;
+      if (ev.pointerId != null && activePointers.has(ev.pointerId)) {
+        var entry = activePointers.get(ev.pointerId);
+        entry.x = ev.clientX;
+        entry.y = ev.clientY;
+      }
+      if (pinchState && activePointers.size >= 2) {
+        var pair = getFirstTwoPointers();
+        var nextDist = Math.max(12, Math.hypot(pair[1].x - pair[0].x, pair[1].y - pair[0].y));
+        var nextMidX = (pair[0].x + pair[1].x) * 0.5;
+        var nextMidY = (pair[0].y + pair[1].y) * 0.5;
+        var zoomRatio = pinchState.dist / nextDist;
+        camState.distance = Math.max(0.65, Math.min(5.5, camState.distance * zoomRatio));
+        panCameraByDelta(nextMidX - pinchState.midX, nextMidY - pinchState.midY);
+        pinchState.dist = nextDist;
+        pinchState.midX = nextMidX;
+        pinchState.midY = nextMidY;
+        scheduleRender();
+        return;
+      }
       if (dragState && dragState.id === ev.pointerId) {
         var dx = ev.clientX - dragState.lastX;
         var dy = ev.clientY - dragState.lastY;
         dragState.lastX = ev.clientX;
         dragState.lastY = ev.clientY;
-        if (Math.hypot(ev.clientX - dragState.startX, ev.clientY - dragState.startY) > 4) {
+        var moveThresh = dragState.isTouch ? 8 : 4;
+        if (Math.hypot(ev.clientX - dragState.startX, ev.clientY - dragState.startY) > moveThresh) {
           dragState.moved = true;
         }
         if (dragState.mode === 'node') {
@@ -2565,9 +2697,11 @@
               dragState.node.x = nextCoords.x;
               dragState.node.y = nextCoords.y;
               onNodeDrag(dragState.node, nextCoords.x, nextCoords.y, ev);
-              // Elastic web stretch: connected neighbors lean gently toward dragged node
-              var moveDx = nextCoords.x - dragState.origX;
-              var moveDy = nextCoords.y - dragState.origY;
+              // Elastic web stretch: 按抓取点真实世界位移计算邻居牵引量，避免首帧因重叠微调跳变
+              var csDrag = activeDragBounds.coreSpan || 0.78;
+              var wScale = activeDragBounds.halfSpan / csDrag;
+              var moveDx = (nextWx - dragState.origWx) * wScale;
+              var moveDy = (nextWz - dragState.origWz) * wScale;
               var nbs = dragState.neighbors || [];
               var pullRatio = Math.min(0.24, 0.08 + 0.16 / Math.sqrt(1 + nbs.length / 8));
               for (var ni = 0; ni < nbs.length; ni++) {
@@ -2598,15 +2732,7 @@
           return;
         }
         if (dragState.mode === 'pan' && dragState.moved) {
-          var yawRad = (params.yaw * Math.PI) / 180;
-          var speed = camState.distance * 0.0022;
-          var rx = Math.cos(yawRad);
-          var rz = -Math.sin(yawRad);
-          var fx = Math.sin(yawRad);
-          var fz = Math.cos(yawRad);
-          var panMax = Math.max(1.8, (terrainField ? terrainField.extent : 1.45) * 1.25);
-          camState.targetX = Math.max(-panMax, Math.min(panMax, camState.targetX - dx * rx * speed + dy * fx * speed));
-          camState.targetZ = Math.max(-panMax, Math.min(panMax, camState.targetZ - dx * rz * speed + dy * fz * speed));
+          panCameraByDelta(dx, dy);
           scheduleRender();
           return;
         }
@@ -2626,10 +2752,34 @@
     }
 
     function onPointerUp(ev) {
+      if (ev.pointerId != null) activePointers.delete(ev.pointerId);
+      if (pinchState) {
+        if (activePointers.size < 2) {
+          pinchState = null;
+          dragState = null;
+        }
+        if (activePointers.size === 0) gestureSuppressedTap = false;
+        return;
+      }
+      if (gestureSuppressedTap) {
+        if (activePointers.size === 0) gestureSuppressedTap = false;
+        dragState = null;
+        return;
+      }
       if (!enabled) return;
       var wasDrag = dragState && dragState.id === ev.pointerId ? dragState : null;
       dragState = null;
       if (!wasDrag) return;
+      if (ev.type === 'pointercancel') {
+        if (wasDrag.mode === 'node' && wasDrag.dragStarted) {
+          onNodeDragEnd(wasDrag.node, ev);
+          activeDragBounds = null;
+          terrainDirty = true;
+          batchesDirty = true;
+          scheduleRender();
+        }
+        return;
+      }
       if (wasDrag.mode === 'node' && wasDrag.dragStarted) {
         if (stageEl) stageEl.style.cursor = canDragNodesNow() ? 'grab' : '';
         var nbs = wasDrag.neighbors || [];
@@ -2670,7 +2820,7 @@
       if (ev.button === 2) return;
       if (!renderer) return;
       var pt = getStageLocalPoint(ev);
-      var hit = renderer.pickNodeAtScreen(pt[0], pt[1]);
+      var hit = renderer.pickNodeAtScreen(pt[0], pt[1], wasDrag.isTouch ? 14 : 0);
       if (hit) onNodeClick(hit, ev);
       else onBackgroundClick(ev);
     }
@@ -2796,6 +2946,9 @@
         cancelReboundAnim(true);
         hoveredNode = null;
         dragState = null;
+        activePointers.clear();
+        pinchState = null;
+        gestureSuppressedTap = false;
         activeDragBounds = null;
         if (stageEl) stageEl.style.cursor = '';
         clearStageClasses();
@@ -2847,7 +3000,8 @@
       onStateChange(getPublicState());
     }
 
-    function syncData(rebuildField) {
+    function syncData(rebuildField, syncOpts) {
+      liveSimSync = !!(syncOpts && syncOpts.live);
       if (rebuildField !== false) terrainDirty = true;
       batchesDirty = true;
       if (enabled) scheduleRender();

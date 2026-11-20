@@ -989,26 +989,73 @@
       }
     }
 
-    /* ── 提示条（2D / 3D 互斥，同位置切换；左右均避开 48×48 图例 / 聊天 FAB）── */
+    /* ── 底部居中操作提示胶囊（2D / 3D 互斥；与左下角图例 FAB、右下角聊天 FAB 同中线对称居中）── */
     .graph-hint {
       position: absolute;
-      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-      left: 84px;
-      right: 84px;
+      left: 50%;
+      bottom: calc(33px + env(safe-area-inset-bottom, 0px));
+      transform: translateX(-50%);
       z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: calc(100% - 168px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(13,17,23,0.58);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
       font-size: .72rem;
-      color: rgba(255,255,255,0.2);
-      text-align: right;
-      line-height: 1.7;
+      font-weight: 450;
+      letter-spacing: .01em;
+      color: rgba(255,255,255,0.56);
+      text-align: center;
+      line-height: 1.4;
+      white-space: nowrap;
       pointer-events: none;
+      user-select: none;
+      transition: opacity .18s ease;
     }
     .graph-hint[hidden] { display: none !important; }
+    .graph-hint.is-chat-occluded { opacity: 0; }
+    .graph-hint .hint-sep {
+      margin: 0 6px;
+      opacity: .42;
+    }
+    .graph-hint .hint-desktop { display: inline; }
+    .graph-hint .hint-touch { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .graph-hint { backdrop-filter: blur(8px); }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .graph-hint .hint-desktop { display: none; }
+      .graph-hint .hint-touch { display: inline; }
+    }
+    @media (max-width: 960px) {
+      .graph-hint {
+        white-space: normal;
+        text-wrap: balance;
+        border-radius: 14px;
+        bottom: calc(27px + env(safe-area-inset-bottom, 0px));
+        max-width: calc(100% - 160px);
+        padding: 5px 12px;
+      }
+    }
     @media (max-width: 768px) {
       .graph-hint {
-        left: 80px;
-        right: 80px;
+        bottom: calc(27px + env(safe-area-inset-bottom, 0px));
+        max-width: calc(100% - 156px);
+        padding: 5px 11px;
         font-size: .66rem;
         line-height: 1.45;
+      }
+      .graph-hint .hint-sep { margin: 0 4px; }
+    }
+    @media (max-width: 374px) {
+      .graph-hint {
+        max-width: calc(100% - 144px);
+        padding: 4px 9px;
+        font-size: .62rem;
       }
     }
 
@@ -1240,8 +1287,13 @@
     [data-theme="light"] .physics-body {
       scrollbar-color: rgba(0,0,0,0.2) transparent;
     }
-    /* 提示文字 */
-    [data-theme="light"] .graph-hint { color: rgba(0,0,0,0.22); }
+    /* 提示胶囊 */
+    [data-theme="light"] .graph-hint {
+      background: rgba(255,255,255,0.78);
+      border-color: rgba(15,23,42,0.09);
+      color: rgba(15,23,42,0.58);
+      box-shadow: 0 4px 14px rgba(15,23,42,0.08);
+    }
 
     /* ── 筛选面板（白天模式）── */
     [data-theme="light"] .filter-panel {
@@ -2416,13 +2468,16 @@
     </div>
 
     <div id="graph-hint-2d" class="graph-hint">
-      滚轮缩放 · 拖拽平移<br>点击节点查看详情
+      <span class="hint-desktop">滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>拖拽平移<span class="hint-sep" aria-hidden="true">·</span>点击节点查看详情</span>
+      <span class="hint-touch">双指缩放<span class="hint-sep" aria-hidden="true">·</span>单指拖拽<br>轻触节点查看详情</span>
     </div>
     <div id="graph-hint-perspective" class="graph-hint" hidden>
-      拖拽节点移动 · 拖空白旋转 · 滚轮缩放 · 右键平移<br>高度即连接数 · 点击节点查看详情
+      <span class="hint-desktop">拖节点移动<span class="hint-sep" aria-hidden="true">·</span>拖空白旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>右键平移<span class="hint-sep" aria-hidden="true">·</span>高度即连接数</span>
+      <span class="hint-touch">单指旋转/拖节点<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>高度即连接数<span class="hint-sep" aria-hidden="true">·</span>轻触看详情</span>
     </div>
     <div id="graph-hint-3d" class="graph-hint" hidden>
-      拖拽旋转 · 滚轮缩放<br>点击节点查看详情
+      <span class="hint-desktop">拖拽旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>点击节点查看详情</span>
+      <span class="hint-touch">单指旋转<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>轻触节点查看详情</span>
     </div>
   </div>
 
@@ -2913,15 +2968,34 @@
     let kbChatResizeObserver = null;
     let kbChatObservedPanel = null;
 
+    function syncHintChatOcclusion(open, panelEl) {
+      const hints = [
+        typeof graphHint2dEl !== 'undefined' ? graphHint2dEl : document.getElementById('graph-hint-2d'),
+        typeof graphHintPerspectiveEl !== 'undefined' ? graphHintPerspectiveEl : document.getElementById('graph-hint-perspective'),
+        typeof graphHint3dEl !== 'undefined' ? graphHint3dEl : document.getElementById('graph-hint-3d'),
+      ];
+      const panelRect = (open && panelEl && !panelEl.hidden && typeof panelEl.getBoundingClientRect === 'function')
+        ? panelEl.getBoundingClientRect()
+        : null;
+      hints.forEach((el) => {
+        if (!el || !el.classList) return;
+        if (!panelRect || panelRect.width <= 0 || el.hidden) {
+          el.classList.remove('is-chat-occluded');
+          return;
+        }
+        const rect = el.getBoundingClientRect();
+        const overlaps = rect.width > 0
+          && rect.right + 10 > panelRect.left
+          && rect.left < panelRect.right + 10
+          && rect.top < panelRect.bottom + 8
+          && rect.bottom > panelRect.top - 8;
+        el.classList.toggle('is-chat-occluded', overlaps);
+      });
+    }
+
     function syncDepthBannerChatOffset() {
-      if (!topicIntroBanner) return;
       const stack = document.getElementById('fabStackRight');
       const open = kbChatPanelOpen || Boolean(stack && stack.classList.contains('is-chat-open'));
-      if (!open || topicIntroBanner.hidden) {
-        topicIntroBanner.style.removeProperty('--depth-banner-chat-shift');
-        topicIntroBanner.classList.remove('is-chat-occluded');
-        return;
-      }
       const panelEl = document.getElementById('kbChatPanel');
       if (panelEl && typeof ResizeObserver === 'function' && kbChatObservedPanel !== panelEl) {
         if (kbChatResizeObserver) kbChatResizeObserver.disconnect();
@@ -2930,6 +3004,13 @@
         });
         kbChatResizeObserver.observe(panelEl);
         kbChatObservedPanel = panelEl;
+      }
+      syncHintChatOcclusion(open, panelEl);
+      if (!topicIntroBanner) return;
+      if (!open || topicIntroBanner.hidden) {
+        topicIntroBanner.style.removeProperty('--depth-banner-chat-shift');
+        topicIntroBanner.classList.remove('is-chat-occluded');
+        return;
       }
       const panelW = (panelEl && !panelEl.hidden)
         ? Math.ceil(panelEl.getBoundingClientRect().width)
@@ -3240,6 +3321,7 @@
         graphHintPerspectiveEl.hidden = !inPersp;
       }
       if (graphHint3dEl) graphHint3dEl.hidden = !in3d;
+      if (typeof syncDepthBannerChatOffset === 'function') syncDepthBannerChatOffset();
     }
 
     function updateViewModeButtons() {
@@ -3341,7 +3423,7 @@
         },
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
-          if (isMobile) {
+          if (isTouchInteraction(ev)) {
             if (pinnedNode === d) {
               dismissMobilePinnedTooltip();
             } else {
@@ -3353,7 +3435,7 @@
         },
         onNodeHover: (d, pointer) => {
           graph3dHoverNode = d || null;
-          if (timelineAnimating || isMobile) return;
+          if (timelineAnimating || isTouchInteraction(pointer) || pinnedNode) return;
         if (sidebarFocusIds) {
           if (d && sidebarFocusIds.has(d.id)) showTooltip(pointer, d);
             else hideTooltip();
@@ -3378,7 +3460,7 @@
         },
         onBackgroundClick: () => {
           graph3dHoverNode = null;
-          if (isMobile) {
+          if (pinnedNode) {
             dismissMobilePinnedTooltip();
             return;
           }
@@ -3492,7 +3574,7 @@
           graph3dView.syncRouteBadges();
           // 3D 侧自持 sidebarNodeId：进入时按当前侧栏 / 固定卡片状态重放或清除，
           // 否则「3D 选中 → 2D 关侧栏 → 回 3D」会停在全图淡化且 hover 失效的陈旧高亮
-          const focusNodeForView = sidebarNode || (isMobile ? pinnedNode : null);
+          const focusNodeForView = sidebarNode || pinnedNode;
           if (focusNodeForView) applyNodeNeighborHighlight(focusNodeForView);
           else graph3dView.clearSidebarHighlight();
         } catch (err) {
@@ -3514,7 +3596,7 @@
           graph3dHoverNode = null;
           // 触屏：回 2D 时连固定卡片与邻居高亮一起撤掉；此前只 hideTooltip，pinnedNode 残留，
           // 下一次点同一节点会被当成「再次点击 → 关闭」
-          if (isMobile && pinnedNode) dismissMobilePinnedTooltip();
+          if (pinnedNode) dismissMobilePinnedTooltip();
           else hideTooltip();
           svg.style('display', 'block');
           if (edgeCanvas) edgeCanvas.style.display = 'block';
@@ -4790,9 +4872,9 @@
     const precomputedLayout = (Array.isArray(graphData.layout) && graphData.layout.length === nodes.length)
       ? graphData.layout : null;
     /**
-     * 2D 节点防重叠解算（O(N) 空间网格）：
-     * 按节点半径平方反比分配位移权重（高连接枢纽稳居中心、周边节点沿外缘舒展，fx/fy 固定节点不动），
-     * 保证任意两节点圆心距 ≥ r_a + r_b + padding，彻底消除 2D 节点互相压住的现象。
+     * 2D 节点防重叠解算（O(N) 空间网格 + 对称阻尼 Jacobi 松弛）：
+     * 按节点半径平方反比累计合力后按 0.72 / sqrt(冲突度) 同步更新（高连接枢纽稳居中心、
+     * 固定节点 fx/fy 不动），保证位移单调收敛且任意两节点圆心距 ≥ r_a + r_b + padding。
      */
     function resolveNodeOverlaps2D(targetNodes, opts) {
       const list = targetNodes || nodes;
@@ -4800,7 +4882,7 @@
       if (n < 2) return 0;
       const cfg = opts || {};
       const pad = cfg.padding != null ? cfg.padding : 4;
-      const maxPasses = cfg.maxPasses != null ? cfg.maxPasses : (LOW_END_DEVICE ? 8 : 14);
+      const maxPasses = cfg.maxPasses != null ? cfg.maxPasses : (LOW_END_DEVICE ? 10 : 18);
       const radii = new Float32Array(n);
       let maxR = 4;
       for (let i = 0; i < n; i++) {
@@ -4810,11 +4892,17 @@
       }
       const cellSize = Math.max(16, maxR * 2 + pad * 1.5);
       const invCell = 1 / cellSize;
+      const accX = new Float32Array(n);
+      const accY = new Float32Array(n);
+      const accW = new Float32Array(n);
       let totalResolved = 0;
 
       for (let pass = 0; pass < maxPasses; pass++) {
         const grid = new Map();
         for (let i = 0; i < n; i++) {
+          accX[i] = 0;
+          accY[i] = 0;
+          accW[i] = 0;
           const nd = list[i];
           if (nd.x == null || nd.y == null) continue;
           const gx = Math.floor(nd.x * invCell);
@@ -4863,13 +4951,15 @@
                 const invMb = (b.fx != null && b.fy != null) ? 0 : 1 / Math.max(1, rb * rb);
                 const invSum = invMa + invMb;
                 if (!(invSum > 0)) continue;
-                const push = (minDist - dist) * 1.02;
+                const pen = minDist - dist;
                 const wa = invMa / invSum;
                 const wb = invMb / invSum;
-                a.x -= ux * push * wa;
-                a.y -= uy * push * wa;
-                b.x += ux * push * wb;
-                b.y += uy * push * wb;
+                accX[i] -= ux * pen * wa;
+                accY[i] -= uy * pen * wa;
+                accW[i] += 1;
+                accX[j] += ux * pen * wb;
+                accY[j] += uy * pen * wb;
+                accW[j] += 1;
                 passOverlaps += 1;
                 totalResolved += 1;
               }
@@ -4877,6 +4967,18 @@
           }
         }
         if (passOverlaps === 0) break;
+        let maxStep = 0;
+        for (let i = 0; i < n; i++) {
+          if (accW[i] <= 0) continue;
+          const damp = 0.78 / Math.sqrt(accW[i]);
+          const mx = accX[i] * damp;
+          const my = accY[i] * damp;
+          list[i].x += mx;
+          list[i].y += my;
+          const mv = Math.hypot(mx, my);
+          if (mv > maxStep) maxStep = mv;
+        }
+        if (maxStep < 0.05) break;
       }
       return totalResolved;
     }
@@ -4896,10 +4998,10 @@
     });
     const collideForce = simulation.force('collision');
     if (collideForce && typeof collideForce.strength === 'function') {
-      collideForce.strength(0.95);
+      collideForce.strength(0.55);
     }
     if (collideForce && typeof collideForce.iterations === 'function') {
-      collideForce.iterations(LOW_END_DEVICE ? 1 : 2);
+      collideForce.iterations(1);
     }
     let collideTickNo = 0;
     const gatedCollide = (alpha) => {
@@ -4982,11 +5084,13 @@
       .attr('class', 'node-g')
       .style('cursor', 'pointer')
       .call(d3.drag()
+        // 双指触控交给 d3.zoom 做捏合缩放，单指触控与鼠标左键可拖拽节点
+        .filter(ev => !(ev.touches && ev.touches.length > 1) && !ev.button)
         // 点击 / 轻触也会先触发 'start'：此前在 start 就 alphaTarget(0.2).restart()，
         // 一次点击 = 约 55 个全图 tick（手机上 20 s 以上的卡顿）且什么都没拖。
         // 改为首次真正移动时才加热（与 graph-3d.js 的 nodeDragReheated 同法），
         // clickDistance 让轻微抖动仍算点击。
-        .clickDistance(4)
+        .clickDistance(6)
         .on('start', (ev, d) => {
           if (is3DView()) return;
           d.__dragReheated = false;
@@ -5463,11 +5567,11 @@
           async: true,
           onProgress: () => {
             if (!isPerspectiveView() || !perspectiveSimActive) return;
-            perspectiveController.syncData(true);
+            perspectiveController.syncData(true, { live: true });
           },
           onVisible: () => {
             if (!isPerspectiveView() || !perspectiveSimActive) return;
-            perspectiveController.syncData(true);
+            perspectiveController.syncData(true, { live: true });
             simulation.restart();
           },
         });
@@ -5486,7 +5590,7 @@
       if (is3DView()) return;
       if (isPerspectiveView()) {
         if (perspectiveSimActive && perspectiveController) {
-          perspectiveController.syncData(true);
+          perspectiveController.syncData(true, { live: true });
         }
         return;
       }
@@ -5541,10 +5645,20 @@
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
 
-    /* ── 移动端检测 ── */
+    /* ── 移动端与混合触屏检测 ── */
     const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    let lastPointerWasTouch = false;
+    document.addEventListener('pointerdown', (ev) => {
+      lastPointerWasTouch = ev.pointerType === 'touch';
+    }, true);
+    document.addEventListener('touchstart', () => {
+      lastPointerWasTouch = true;
+    }, { capture: true, passive: true });
+    function isTouchInteraction(ev) {
+      return isMobile || lastPointerWasTouch || Boolean(ev && (ev.pointerType === 'touch' || (ev.type && ev.type.indexOf('touch') === 0)));
+    }
 
-    /* ── 固定卡片状态（仅移动端使用）── */
+    /* ── 固定卡片状态（触屏点击节点后先展示漂浮卡片，点链接再跳详情）── */
     let pinnedNode = null;
     let sidebarNode = null;
 
@@ -5580,7 +5694,7 @@
       tooltip.innerHTML = tooltipHtml(tooltipNode);
       window.RNGraphTooltip?.renderMath?.(tooltip);
     }
-    function showTooltip(ev, d) {
+    function showTooltip(ev, d, pinned) {
       if (!d) return;
       tooltipNode = d;
       ensureSummaries();
@@ -5591,10 +5705,10 @@
       tooltip.style.top = '';
       tooltip.style.width = '';
       tooltip.style.transform = '';
-      if (isMobile) {
+      if (pinned || isTouchInteraction(ev)) {
         tooltip.classList.add('tt-pinned');
         tooltip.style.right = '20px';
-        tooltip.style.bottom = '20px';
+        tooltip.style.bottom = 'calc(84px + env(safe-area-inset-bottom, 0px))';
         pinnedNode = d;
       } else {
         tooltip.classList.remove('tt-pinned');
@@ -5771,8 +5885,8 @@
     node
       .on('mouseenter', (ev, d) => {
         // 触屏轻触会先派发兼容鼠标事件：mouseenter 在此把浮窗钉住，随后的 click 看到
-        // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏只走 click → presentNodeDetail。
-        if (isMobile) return;
+        // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏与已固定卡片均跳过 hover。
+        if (isTouchInteraction(ev) || pinnedNode) return;
         if (timelineAnimating) {
           if (!timelineRevealedIds.has(d.id)) return;
           if (sidebarFocusIds) {
@@ -5808,14 +5922,11 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
-        if (isMobile) return;
-        // 移动端固定卡片后，mousemove 不移动 tooltip
-        if (!isMobile || !pinnedNode) {
-          moveTooltip(ev);
-        }
+        if (isTouchInteraction(ev) || pinnedNode) return;
+        moveTooltip(ev);
       })
       .on('mouseleave', () => {
-        if (isMobile) return;
+        if (isTouchInteraction() || pinnedNode) return;
         if (timelineAnimating) {
           if (sidebarFocusIds) {
             if (!isMobile || !pinnedNode) hideTooltip();
@@ -5875,7 +5986,7 @@
         document.getElementById('physics-panel').hidden = true;
         setFilterPanelOpen(false);
         closeLegendDrawer();
-        if (isMobile && pinnedNode) {
+        if (pinnedNode) {
           dismissMobilePinnedTooltip();
         }
       }
@@ -7182,7 +7293,7 @@
         isLabelsVisible: () => !timelineAnimating,
         isEdgesVisible: () => showEdges,
         onNodeHover: (d, pointerEv) => {
-          if (timelineAnimating || isMobile) return;
+          if (timelineAnimating || isTouchInteraction(pointerEv) || pinnedNode) return;
           if (sidebarFocusIds) {
             if (d && sidebarFocusIds.has(d.id)) showTooltip(pointerEv, d);
             else hideTooltip();
@@ -7197,7 +7308,7 @@
         },
         onNodeClick: (d, pointerEv) => {
           if (timelinePlaying) return;
-          if (isMobile) {
+          if (isTouchInteraction(pointerEv)) {
             if (pinnedNode === d) dismissMobilePinnedTooltip();
             else presentNodeDetail(d, pointerEv);
           } else {
@@ -7205,7 +7316,7 @@
           }
         },
         onBackgroundClick: () => {
-          if (isMobile) {
+          if (pinnedNode) {
             dismissMobilePinnedTooltip();
             return;
           }
@@ -7579,30 +7690,39 @@
 
     sbClose.addEventListener('click', closeSidebar);
 
-    /** 展示节点详情：PC 用右侧侧栏，触屏用底部固定浮窗 */
+    /** 展示节点详情：PC 用右侧侧栏，触屏用底部固定漂浮卡片（点卡片内链接跳转详情页） */
     function presentNodeDetail(d, ev) {
       if (!d) return;
-      if (isMobile) {
+      if (isTouchInteraction(ev)) {
+        if (sidebar.classList.contains('open')) {
+          sidebarNodeId = null;
+          sidebar.classList.remove('open');
+          wrap.classList.remove('sidebar-open');
+          scheduleSidebarViewportSync({ refit: false });
+        }
         applyNodeNeighborHighlight(d);
         pinnedNode = d;
-        showTooltip(ev || null, d);
+        showTooltip(ev || null, d, true);
+        if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(false);
         return;
       }
       openSidebar(d);
     }
 
     function dismissMobilePinnedTooltip() {
-      if (!isMobile || !pinnedNode) return false;
+      if (!pinnedNode) return false;
+      pinnedNode = null;
       hideTooltip();
       clearNodeNeighborHighlight();
+      if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(false);
       return true;
     }
 
-    // V21: 点击背景退出高亮聚焦模式；移动端空白处关闭浮窗
+    // V21: 点击背景退出高亮聚焦模式；触屏空白处关闭固定漂浮卡片
     svg.on('click', (ev) => {
       if (ev.defaultPrevented) return;
       if (ev.target.closest('.node-g')) return;
-      if (isMobile) {
+      if (pinnedNode) {
         dismissMobilePinnedTooltip();
         return;
       }
@@ -7613,22 +7733,22 @@
       window.RNGraphTooltip.bindBlankDismiss(
         document.getElementById('graph-canvas'),
         {
-          isMobile,
+          isMobile: true,
           getPinned: () => pinnedNode,
-          clearPin: () => { clearNodeNeighborHighlight(); },
+          clearPin: () => { pinnedNode = null; clearNodeNeighborHighlight(); },
           hide: hideTooltip
         },
         { nodeSelector: '.node-g', tooltipEl: tooltip }
       );
     }
 
-    // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
+    // 覆盖节点 click：触屏先显示漂浮卡片，PC 打开侧边栏，均不直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
-      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击打开详情侧栏
+      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击查看详情
       // （openSidebar 已做时序感知，仅在「已显现子集」内高亮，不会显示背景全局图）
       if (timelinePlaying) return;
-      if (isMobile) {
+      if (isTouchInteraction(ev)) {
         if (pinnedNode === d) {
           dismissMobilePinnedTooltip();
         } else {

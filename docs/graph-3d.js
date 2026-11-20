@@ -1568,16 +1568,16 @@
     }
 
     /**
-     * 3D 立体球体防重叠解算（O(N) 三维空间网格）：
-     * 按球体半径平方反比推开相交球体（固定节点 fx/fy/fz 不动，高连接大球锚定），
-     * 保证任意两球心三维距离 ≥ r_a + r_b + padding。
+     * 3D 立体球体防重叠解算（O(N) 三维空间网格 + 对称阻尼 Jacobi 松弛）：
+     * 按球体半径平方反比累计三维排斥位移后按 kPush / sqrt(冲突度) 同步更新，
+     * 保证拥挤球群平滑单调收敛不震荡、任意两球心三维距离 ≥ r_a + r_b + padding。
      */
     function resolveNodeOverlaps3D(list, radiusOf, padding, maxPasses, strength) {
       if (!list || list.length < 2) return 0;
       var n = list.length;
       var pad = padding != null ? padding : 4;
       var passes = maxPasses != null ? maxPasses : 6;
-      var kPush = strength != null ? strength : 1.02;
+      var kPush = strength != null ? strength : 0.72;
       var radii = new Float32Array(n);
       var maxR = 11;
       var i;
@@ -1588,11 +1588,19 @@
       }
       var cellSize = Math.max(24, maxR * 2 + pad * 1.5);
       var invCell = 1 / cellSize;
+      var accX = new Float32Array(n);
+      var accY = new Float32Array(n);
+      var accZ = new Float32Array(n);
+      var accW = new Float32Array(n);
       var totalResolved = 0;
 
       for (var pass = 0; pass < passes; pass++) {
         var grid = new Map();
         for (i = 0; i < n; i++) {
+          accX[i] = 0;
+          accY[i] = 0;
+          accZ[i] = 0;
+          accW[i] = 0;
           var nd = list[i];
           if (nd.x == null || nd.y == null) continue;
           var nz = nd.z != null ? nd.z : 0;
@@ -1654,16 +1662,17 @@
                   var invMb = (b.fx != null && b.fy != null && b.fz != null) ? 0 : 1 / Math.max(1, rb * rb);
                   var invSum = invMa + invMb;
                   if (!(invSum > 0)) continue;
-                  var push = (minDist - dist) * kPush;
+                  var pen = minDist - dist;
                   var wa = invMa / invSum;
                   var wb = invMb / invSum;
-                  a.x -= ux * push * wa;
-                  a.y -= uy * push * wa;
-                  a.z = az - uz * push * wa;
-                  az = a.z;
-                  b.x += ux * push * wb;
-                  b.y += uy * push * wb;
-                  b.z = bz + uz * push * wb;
+                  accX[i] -= ux * pen * wa;
+                  accY[i] -= uy * pen * wa;
+                  accZ[i] -= uz * pen * wa;
+                  accW[i] += 1;
+                  accX[j] += ux * pen * wb;
+                  accY[j] += uy * pen * wb;
+                  accZ[j] += uz * pen * wb;
+                  accW[j] += 1;
                   passOverlaps += 1;
                   totalResolved += 1;
                 }
@@ -1672,6 +1681,20 @@
           }
         }
         if (passOverlaps === 0) break;
+        var maxStep = 0;
+        for (i = 0; i < n; i++) {
+          if (accW[i] <= 0) continue;
+          var damp = kPush / Math.sqrt(accW[i]);
+          var mx = accX[i] * damp;
+          var my = accY[i] * damp;
+          var mz = accZ[i] * damp;
+          list[i].x += mx;
+          list[i].y += my;
+          list[i].z = (list[i].z != null ? list[i].z : 0) + mz;
+          var mv = Math.hypot(mx, my, mz);
+          if (mv > maxStep) maxStep = mv;
+        }
+        if (maxStep < 0.05) break;
       }
       return totalResolved;
     }
@@ -1683,7 +1706,7 @@
         tickNo += 1;
         if (!simNodes.length || alpha > 0.45) return;
         if (isLowEnd() && alpha > 0.12 && (tickNo & 1)) return;
-        resolveNodeOverlaps3D(simNodes, radiusOf, padding, 1, 0.85);
+        resolveNodeOverlaps3D(simNodes, radiusOf, padding, 1, 0.50);
       }
       force.initialize = function (nodesArg) {
         simNodes = nodesArg || [];
@@ -2025,7 +2048,7 @@
         engineRunning = false;
         var activeData = typeof graph.graphData === 'function' ? graph.graphData() : null;
         var activeList = (activeData && Array.isArray(activeData.nodes)) ? activeData.nodes : nodes3d;
-        if (resolveNodeOverlaps3D(activeList, sphereRadiusFor, 4, isLowEnd() ? 4 : 8, 1.02) > 0) {
+        if (resolveNodeOverlaps3D(activeList, sphereRadiusFor, 4, isLowEnd() ? 4 : 8, 0.72) > 0) {
           for (var si = 0; si < activeList.length; si++) {
             var sn = activeList[si];
             if (sn && sn.__threeObj && sn.__threeObj.position) {
