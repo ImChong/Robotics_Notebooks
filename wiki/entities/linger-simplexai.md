@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: linger-simplexai
-tags: [entity, llm-agents, personal-agent, local-llm, agent-infrastructure, persistent-memory, computer-use]
+tags: [entity, llm-agents, personal-agent, local-llm, agent-infrastructure, persistent-memory, computer-use, simplexai]
 status: complete
 updated: 2026-11-20
 project: https://heylinger.com/
@@ -39,6 +39,8 @@ original:
 | ASR | Automatic Speech Recognition | 会议语音识别，接入时可能依赖外部服务 |
 
 ## 为什么重要
+
+- **发布团队：** Linger 开发团队（SimplexAI），官方组织仓库为 [simplexai-labs](https://github.com/simplexai-labs)。
 
 - **本地 Agent 系统选型：** [Hermes Agent](./hermes-agent.md) 强调消息网关、技能/记忆自改进；[Deep Agents](./deep-agents.md) 更偏 agent harness；Linger 重点是**个人电脑桌面 + 本机/混合模型 + 私人 wiki + 主动跟进**的一体化产品。
 - **与本知识库的关系：** Linger 的 Client / Contact / Project / Topic / Session 类型化个人 Wiki 与 [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md) 都把来源沉淀为可持续维护的页面；但 Linger 旨在服务个人工作信息，不是机器人的运动策略或实时控制器。
