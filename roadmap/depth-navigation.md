@@ -191,6 +191,7 @@ flowchart LR
 ### 推荐读什么
 - [Racing the Clock：动作预算条件下目标搜索](../wiki/entities/paper-budget-vln-2611-17442.md)：部分可观测房间级 Bellman 教师与 VLN 学生对齐。
 - [视觉–语言导航（VLN）任务页](../wiki/tasks/vision-language-navigation.md) — 主线索引页
+- [七类 VLN 基准、开源框架及评测方法](../wiki/comparisons/vln-seven-benchmarks-frameworks-evaluation.md) — R2R / R4R / VLN-CE / CVDN / HANNA / SOON / REVERIE 的官方入口和可比性边界。
 - [VLN 10 篇论文技术地图](../wiki/overview/vln-10-papers-technology-map.md) 与 [VLN 开源复现四范式](../wiki/overview/vln-open-source-repro-paradigms.md)
 - [Matterport3D Simulator](../wiki/entities/matterport3d-simulator.md) 与 [Habitat-Sim](../wiki/entities/habitat-sim.md)
 - [NaVILA](../wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 与 [Qwen-RobotNav](../wiki/entities/qwen-robot-nav.md) — 腿式 / 通才导航 VLA 锚点
