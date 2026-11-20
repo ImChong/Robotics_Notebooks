@@ -2294,6 +2294,11 @@
           renderCam = camState;
         }
       }
+      if (stageEl && stageEl.style && typeof stageEl.style.setProperty === 'function') {
+        var pitchForGlow = renderParams.pitch != null ? renderParams.pitch : 36;
+        var glowVis = (1 - smoothstep(40, 62, pitchForGlow)) * smoothstep(0.25, 0.85, heightScale);
+        stageEl.style.setProperty('--persp-horizon-glow', glowVis.toFixed(3));
+      }
       r.render(renderParams, renderCam, {
         isDark: isDark(),
         bgColor: getBgColor(),

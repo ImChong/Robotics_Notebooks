@@ -449,6 +449,7 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
   assert.ok(styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric reflection layer styled');
+  assert.ok(styleCss.includes('--persp-horizon-glow'), 'horizon glow fades out cleanly in top-down pitch');
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
   assert.ok(styleCss.includes('#mini-graph-svg line.mini-edge-hover'), 'homepage preview 2D hover edge highlight styled');
   assert.ok(styleCss.includes('.mini-graph-node.mini-node-hover-dim'), 'homepage preview 2D hover dim style present');
