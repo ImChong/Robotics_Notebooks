@@ -14,6 +14,8 @@ related:
   - ./frontier-design-benchmark.md
   - ./paper-gestalt-2610-00576.md
   - ../concepts/ai-agent-evaluation.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
 summary: "Contra Labs 官方榜上的 Gestalt (stealth)：2026-11-20 查询为设计偏好榜第 1，完整开发者、结构和权重未公开；与 GeWu-Lab 同名论文无证实关联。"
 ---
 
@@ -90,6 +92,9 @@ flowchart TD
 - [Frontier Design Benchmark](frontier-design-benchmark.md)
 - [GeWu-Lab 同名 Gestalt 论文](paper-gestalt-2610-00576.md)
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照可验证产物与真实使用效果，非 Gestalt 模型自身方法
+- [动态 Agent 工作流](../methods/claude-code-dynamic-workflows.md) — 对照 harness 对模型交付结果的影响，非本匿名模型公开架构
+- [具身模型评测选型闭环](../overview/hub-embodied-eval-benchmark.md) — 对照网页设计偏好榜与具身评测指标的不同
 
 ## 参考来源
 
