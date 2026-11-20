@@ -4,13 +4,13 @@ status: complete
 updated: 2026-11-20
 summary: "20 篇经典论文从注意力基础，经视觉与三维表征到机器人策略、扩散动作头和推理效率的分层选型索引；不把异构 benchmark 当作同口径比较。"
 original:
-  - ../../sources/papers/vima_arxiv_2210_03094_full_read_2026_11_20.md
   - ../../sources/papers/attention20_1902_10186.md
   - ../../sources/papers/attention20_2006_16236.md
   - ../../sources/papers/attention20_2010_04159.md
   - ../../sources/papers/attention20_2012_09164.md
   - ../../sources/papers/attention20_2102_05095.md
   - ../../sources/papers/attention20_2103_03206.md
+  - ../../sources/papers/vima_arxiv_2210_03094_full_read_2026_11_20.md
   - ../../sources/papers/vima_arxiv_2210_03094_full_read_2026_11_20.md
   - ../../sources/papers/attention20_2103_14030.md
   - ../../sources/papers/attention20_2205_14135.md
@@ -29,6 +29,7 @@ sources:
   - ../../sources/papers/octo_arxiv_2405_12213.md
   - ../../sources/papers/act_arxiv_2304_13705.md
   - ../../sources/papers/attention20_2103_03206.md
+  - ../../sources/papers/vima_arxiv_2210_03094_full_read_2026_11_20.md
 ---
 
 # 注意力架构到机器人策略：20 篇论文对照 / Attention Architecture to Robot Policies
