@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | HandRSI arXiv:2611.22164：手部姿态估计 Harness + 权重联合递归改进
+
+- 论文 HTML v1、官方代码运行入口与 HF 权重分别归档，建立独立 paper 实体、Mermaid 流程图及源码时序图。
+- 记录 HOT3D/ARCTIC/HOI4D 结果、初轮人工放行、许可差异及加速层级；挂入 RSI Stage 4、WiLoR 互链。
+
 ## [2026-11-20] lint | 推进 #3490 第三批：通读核对 arXiv/官方项目页/仓库源码，将 roadmap/depth-motion-generation.md 全线 25 个待补节点升至 3/3（路线达标 40/40）
 
 ## [2026-11-20] lint | ASI 论文补齐方法/评测/对比三段式
