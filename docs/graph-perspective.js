@@ -295,6 +295,20 @@
       ys.push(nd.y);
     }
     if (!activeList.length) {
+      if (activeSet && activeSet.size === 0) {
+        var emptyB = (opts.fixedBounds && isFinite(opts.fixedBounds.x) && isFinite(opts.fixedBounds.y) && opts.fixedBounds.halfSpan > 0)
+          ? { x: opts.fixedBounds.x, y: opts.fixedBounds.y, halfSpan: opts.fixedBounds.halfSpan, coreSpan: opts.fixedBounds.coreSpan || 0.78 }
+          : { x: 0, y: 0, halfSpan: 100, coreSpan: 0.78 };
+        return {
+          gridSize: G,
+          extent: extent,
+          heights: new Float32Array(G * G),
+          grads: new Float32Array(G * G * 2),
+          maxDegree: maxDeg,
+          nodeMeta: Object.create(null),
+          center: emptyB,
+        };
+      }
       for (i = 0; i < list.length; i++) {
         var n2 = list[i];
         if (!n2 || n2.x == null || n2.y == null) continue;
@@ -765,9 +779,12 @@
       'uniform float uHeightAmp;\n' +
       'uniform float uHeightScale;\n' +
       'uniform float uForceSettle;\n' +
+      'uniform float uExtent;\n' +
       varyV + 'vec3 vWorld;\n' +
       varyV + 'float vH;\n' +
       varyV + 'vec2 vGrad;\n' +
+      varyV + 'float vMeshRadial;\n' +
+      varyV + 'float vHeightScale;\n' +
       forceMotionGLSL +
       'void main() {\n' +
       '  float effAmp = uHeightAmp * uHeightScale;\n' +
@@ -776,6 +793,8 @@
       '  vWorld = vec3(mXZ.x, y, mXZ.y);\n' +
       '  vH = aH;\n' +
       '  vGrad = aGrad * effAmp;\n' +
+      '  vMeshRadial = length(aXZ) / max(0.001, uExtent);\n' +
+      '  vHeightScale = uHeightScale;\n' +
       '  gl_Position = uViewProj * vec4(vWorld, 1.0);\n' +
       '}\n';
 
@@ -783,6 +802,8 @@
       varyF + 'vec3 vWorld;\n' +
       varyF + 'float vH;\n' +
       varyF + 'vec2 vGrad;\n' +
+      varyF + 'float vMeshRadial;\n' +
+      varyF + 'float vHeightScale;\n' +
       'uniform vec3 uEye;\n' +
       'uniform vec3 uBg;\n' +
       'uniform float uIsDark;\n' +
@@ -841,11 +862,13 @@
       '  float gDf = 0.025;\n' +
       '  float gx = 1.0 - smoothstep(0.5, 1.5, abs(fract(gCoord.x - 0.5) - 0.5) / gDf);\n' +
       '  float gz = 1.0 - smoothstep(0.5, 1.5, abs(fract(gCoord.y - 0.5) - 0.5) / gDf);\n' +
-      '  float gridLine = max(gx, gz) * (1.0 - smoothstep(0.02, 0.34, vH));\n' +
+      '  float riseVis = smoothstep(0.18, 0.68, vHeightScale);\n' +
+      '  float gridFade = (1.0 - smoothstep(0.24, 0.72, vMeshRadial)) * riseVis;\n' +
+      '  float gridLine = max(gx, gz) * (1.0 - smoothstep(0.02, 0.34, vH)) * gridFade;\n' +
       '  vec3 gridCol = (uIsDark > 0.5) ? vec3(0.38, 0.54, 0.78) : vec3(0.28, 0.44, 0.68);\n' +
       '  lit = mix(lit, gridCol, gridLine * (uIsDark > 0.5 ? 0.16 : 0.14));\n' +
       '\n' +
-      '  float radial = length(vWorld.xz) / uExtent;\n' +
+      '  float radial = max(vMeshRadial, length(vWorld.xz) / uExtent);\n' +
       '  vec2 toFrag = normalize(vWorld.xz + vec2(0.0001));\n' +
       '  vec2 camDir = normalize(-uEye.xz + vec2(0.0001));\n' +
       '  float farSide = smoothstep(-0.15, 0.86, dot(toFrag, camDir));\n' +
@@ -853,8 +876,8 @@
       '    ? mix(vec3(0.74, 0.90, 1.0), vec3(1.0, 0.88, 0.66), smoothstep(0.38, 0.88, vH))\n' +
       '    : mix(vec3(0.38, 0.68, 1.0), vec3(1.0, 0.72, 0.34), smoothstep(0.42, 0.90, vH));\n' +
       '  float contourReflect = cLine * (0.34 * rim + 0.92 * specKey + 1.25 * specHorizon) * mix(0.75, 1.48, isMajor);\n' +
-      '  float horizonSheen = farSide * smoothstep(0.26, 0.82, radial) * (1.0 - smoothstep(0.84, 0.98, radial))\n' +
-      '    * (0.35 + 0.65 * (1.0 - smoothstep(0.0, 0.40, vH)));\n' +
+      '  float horizonSheen = farSide * smoothstep(0.26, 0.76, radial) * (1.0 - smoothstep(0.78, 0.92, radial))\n' +
+      '    * (0.35 + 0.65 * (1.0 - smoothstep(0.0, 0.40, vH))) * riseVis;\n' +
       '  vec3 horizonTint = (uIsDark > 0.5)\n' +
       '    ? mix(vec3(0.42, 0.70, 1.0), vec3(1.0, 0.72, 0.40), smoothstep(0.25, 0.85, vH))\n' +
       '    : vec3(0.32, 0.58, 0.96);\n' +
@@ -868,11 +891,11 @@
       '  float peakGlow = smoothstep(0.76, 1.0, vH);\n' +
       '  if (uIsDark > 0.5) lit += vec3(0.28, 0.13, 0.04) * peakGlow;\n' +
       '\n' +
-      '  float radialFade = 1.0 - smoothstep(0.46, 0.92, radial);\n' +
+      '  float radialFade = 1.0 - smoothstep(0.42, 0.86, radial);\n' +
       '  float viewDist = length(uEye - vWorld);\n' +
       '  float viewFog = exp(-max(0.0, viewDist - 2.6) * 0.35);\n' +
       '  float vis = clamp(radialFade * viewFog, 0.0, 1.0);\n' +
-      '  float valleySoft = mix(0.48, 1.0, smoothstep(0.0, 0.09, vH) + gridLine * 0.55 + cLine * 0.65 + horizonSheen * 0.45);\n' +
+      '  float valleySoft = clamp(smoothstep(0.008, 0.09, vH) + gridLine * 0.55 + cLine * 0.75 + horizonSheen * 0.45, 0.0, 1.0);\n' +
       '  ' + outAssign + ' = vec4(mix(uBg, lit, 0.92), vis * valleySoft);\n' +
       '}\n';
 
@@ -1053,6 +1076,7 @@
     var lastHeightScale = 1;
     var lastForceSettle = 1;
     var lastCommunityLabelCount = 0;
+    var lastRouteBadgeCount = 0;
 
     function resolveLocs(prog, attrs, uniforms) {
       var a = {};
@@ -1131,13 +1155,14 @@
       var focusSet = data.focusIds || null;
       var hoverNode = data.hoverNode || null;
       var sidebarNode = data.sidebarNode || null;
+      var routeFocusId = data.routeFocusNodeId || null;
       var getNodeColor = data.getNodeColor || function () { return '#5b9cf6'; };
       var getNodeAlpha = data.getNodeAlpha || function () { return 1; };
       var showEdges = !!data.showEdges;
       var isLite = !!data.isLite;
 
       var metaMap = currentField.nodeMeta;
-      var highlightCenterId = (hoverNode && hoverNode.id) || (sidebarNode && sidebarNode.id) || null;
+      var highlightCenterId = (hoverNode && hoverNode.id) || (sidebarNode && sidebarNode.id) || routeFocusId || null;
       var highlightNeighbors = null;
       var i;
       if (highlightCenterId) {
@@ -1167,7 +1192,7 @@
         var rgb = parseCssColor(getNodeColor(n), [0.36, 0.61, 0.96, 1]);
         var isFocused = !!(focusSet && focusSet.has(n.id));
         var isHovered = !!(hoverNode && hoverNode.id === n.id);
-        var isSelected = !!(sidebarNode && sidebarNode.id === n.id);
+        var isSelected = !!((sidebarNode && sidebarNode.id === n.id) || (routeFocusId && routeFocusId === n.id));
         var isNeighbor = !!(highlightNeighbors && highlightNeighbors[n.id]);
         var nodeAlpha = visible ? Math.max(0.2, alpha) : 0.14;
         if (applyHoverDim && !isHovered && !isSelected && !isNeighbor) {
@@ -1448,7 +1473,9 @@
       var heightAmp = renderOpts.heightAmp != null ? renderOpts.heightAmp : 0.46;
       var labelFade = renderOpts.labelFade != null ? renderOpts.labelFade : 1;
       var communityLabels = Array.isArray(renderOpts.communityLabels) ? renderOpts.communityLabels : [];
+      var routeBadges = Array.isArray(renderOpts.routeBadges) ? renderOpts.routeBadges : [];
       lastCommunityLabelCount = 0;
+      lastRouteBadgeCount = 0;
       if (labelFade < 0.04) return;
       if (camDist < 1.1) maxLabels = Math.round(maxLabels * 1.45);
 
@@ -1456,6 +1483,55 @@
       var hasHoverFocus = !!renderOpts.hasHoverHighlight;
       var i;
       var j;
+
+      // 0. Numbered route step badges (mirrors 2D .node-route-badge / 3D .graph-3d-route-badge)
+      if (routeBadges.length && cachedNodes3d.length) {
+        var node3dById = Object.create(null);
+        for (i = 0; i < cachedNodes3d.length; i++) {
+          var cn = cachedNodes3d[i];
+          if (cn.node && cn.node.id) node3dById[cn.node.id] = cn;
+        }
+        // Draw non-current badges first, then 'current' badge on top
+        var orderedBadges = routeBadges.slice().sort(function (a, b) {
+          return (a.state === 'current' ? 1 : 0) - (b.state === 'current' ? 1 : 0);
+        });
+        labelCtx.textAlign = 'center';
+        labelCtx.textBaseline = 'middle';
+        for (i = 0; i < orderedBadges.length; i++) {
+          var rb = orderedBadges[i];
+          var rn3 = rb && node3dById[rb.id];
+          if (!rn3) continue;
+          var rMoved = evalForceMotionXZ(rn3.wx, rn3.wz, forceSettle, 0.026);
+          var rPt = projectWorldToScreen(rMoved[0], rn3.wy * heightScale, rMoved[1], viewProj, width, height);
+          if (!rPt || rPt[2] < -1 || rPt[2] > 1) continue;
+          if (rPt[0] < 14 || rPt[0] > width - 14 || rPt[1] < 14 || rPt[1] > height - 14) continue;
+          var isCurr = rb.state === 'current';
+          var isDone = rb.state === 'done';
+          var isTodo = rb.state === 'todo';
+          var bRad = isCurr ? 10 : 8;
+          var bx = rPt[0] + 10;
+          var by = rPt[1] - 10;
+          labelCtx.save();
+          labelCtx.globalAlpha = (isTodo ? 0.48 : 0.96) * labelFade;
+          if (isCurr) {
+            labelCtx.shadowColor = 'rgba(255, 181, 71, 0.92)';
+            labelCtx.shadowBlur = 10;
+          }
+          labelCtx.beginPath();
+          labelCtx.arc(bx, by, bRad, 0, Math.PI * 2);
+          labelCtx.fillStyle = isCurr ? '#ffb547' : (isDone ? 'rgba(122, 139, 160, 0.92)' : '#5b9cf6');
+          labelCtx.fill();
+          labelCtx.shadowBlur = 0;
+          labelCtx.lineWidth = isCurr ? 1.8 : 1.2;
+          labelCtx.strokeStyle = isDarkTheme ? 'rgba(13, 17, 23, 0.92)' : 'rgba(255, 255, 255, 0.96)';
+          labelCtx.stroke();
+          labelCtx.font = '700 ' + (isCurr ? '10' : '9') + 'px ui-sans-serif, system-ui, sans-serif';
+          labelCtx.fillStyle = isCurr ? '#1a1a1a' : '#ffffff';
+          labelCtx.fillText(String(rb.index), bx, by + 0.5);
+          labelCtx.restore();
+          lastRouteBadgeCount += 1;
+        }
+      }
 
       // 1. Floating community cluster capsules (mirrors 2D .community-label / 3D .graph-3d-community-label)
       if (communityLabels.length && currentField && currentField.center) {
@@ -1751,6 +1827,7 @@
         labelFade: renderOpts.labelFade,
         hasHoverHighlight: !!renderOpts.hasHoverHighlight,
         communityLabels: renderOpts.communityLabels,
+        routeBadges: renderOpts.routeBadges,
       });
     }
 
@@ -1841,6 +1918,7 @@
           polyCount: cachedPolyNodes.length,
           hiEdgeCount: hiEdgeCount,
           communityLabelCount: lastCommunityLabelCount,
+          routeBadgeCount: lastRouteBadgeCount,
           forceSettle: Number(lastForceSettle.toFixed(3)),
         } : null;
       },
@@ -1887,6 +1965,7 @@
     var getBgColor = opts.getBgColor || function () { return isDark() ? '#191919' : '#f7f6f3'; };
     var getLabelText = opts.getLabelText || function (d) { return (d && (d._info && d._info.title || d.label)) || ''; };
     var getCommunityLabels = opts.getCommunityLabels || function () { return []; };
+    var getRouteBadges = opts.getRouteBadges || function () { return []; };
     var isLabelsVisible = opts.isLabelsVisible || function () { return true; };
     var isEdgesVisible = opts.isEdgesVisible || function () { return false; };
     var onNodeHover = opts.onNodeHover || function () {};
@@ -1936,6 +2015,7 @@
     var terrainField = null;
     var activeDragBounds = null;
     var hoveredNode = null;
+    var routeFocusNodeId = null;
     var batchesDirty = true;
     var terrainDirty = true;
     var renderRaf = 0;
@@ -2007,6 +2087,7 @@
           focusIds: data.focusIds || null,
           hoverNode: hoveredNode,
           sidebarNode: data.sidebarNode || null,
+          routeFocusNodeId: routeFocusNodeId,
           getNodeColor: data.getNodeColor,
           getNodeAlpha: data.getNodeAlpha,
           showEdges: isEdgesVisible(),
@@ -2017,6 +2098,7 @@
     }
 
     var entryAnim = null;
+    var reboundAnim = null;
 
     function nowMs() {
       return (typeof performance !== 'undefined' && typeof performance.now === 'function')
@@ -2028,7 +2110,103 @@
       entryAnim = null;
     }
 
-    function startCameraTransition(fromPitch, fromYaw, fromDist, fromHeightScale, durationMs, sweepGlint, forceMotion) {
+    function cancelReboundAnim(finalize) {
+      if (!reboundAnim) return;
+      var rb = reboundAnim;
+      reboundAnim = null;
+      if (finalize && rb.node) {
+        activeDragBounds = null;
+        onNodeDragEnd(rb.node, null);
+      }
+    }
+
+    function collectDragNeighbors(targetNode) {
+      if (!targetNode || !targetNode.id) return [];
+      var data = getGraphData() || {};
+      var nodes = data.nodes || [];
+      var edges = data.edges || [];
+      var nbIds = Object.create(null);
+      var i;
+      for (i = 0; i < edges.length; i++) {
+        var e = edges[i];
+        if (!e) continue;
+        var s = edgeEndId(e.source);
+        var t = edgeEndId(e.target);
+        if (s === targetNode.id && t && t !== targetNode.id) nbIds[t] = true;
+        else if (t === targetNode.id && s && s !== targetNode.id) nbIds[s] = true;
+      }
+      var list = [];
+      for (i = 0; i < nodes.length && list.length < 120; i++) {
+        var nd = nodes[i];
+        if (!nd || !nd.id || !nbIds[nd.id] || nd.x == null || nd.y == null) continue;
+        list.push({ node: nd, x0: nd.x, y0: nd.y, vx: 0, vy: 0 });
+      }
+      return list;
+    }
+
+    function stepReboundAnim() {
+      if (!reboundAnim) return false;
+      var nowR = nowMs();
+      var dtSteps = Math.max(0.4, Math.min(2.0, (nowR - reboundAnim.lastTime) / 16.667));
+      reboundAnim.lastTime = nowR;
+      var elapsedR = nowR - reboundAnim.startTime;
+      var rNode = reboundAnim.node;
+      // Symplectic Euler underdamped spring-mass-damper: 2-3 organic elastic bounces before rest
+      var kSpring = 0.125;
+      var damp = Math.pow(0.835, dtSteps);
+      var fx = (reboundAnim.eqX - rNode.x) * kSpring;
+      var fy = (reboundAnim.eqY - rNode.y) * kSpring;
+      reboundAnim.vx = (reboundAnim.vx + fx * dtSteps) * damp;
+      reboundAnim.vy = (reboundAnim.vy + fy * dtSteps) * damp;
+      rNode.x += reboundAnim.vx * dtSteps;
+      rNode.y += reboundAnim.vy * dtSteps;
+      onNodeDrag(rNode, rNode.x, rNode.y, null);
+
+      var shiftX = rNode.x - reboundAnim.origX;
+      var shiftY = rNode.y - reboundAnim.origY;
+      var nbResidual = 0.14;
+      var nbDamp = Math.pow(0.82, dtSteps);
+      var maxNbEnergy = 0;
+      for (var ri = 0; ri < reboundAnim.neighbors.length; ri++) {
+        var rnb = reboundAnim.neighbors[ri];
+        var tNx = rnb.x0 + shiftX * nbResidual;
+        var tNy = rnb.y0 + shiftY * nbResidual;
+        rnb.vx = (rnb.vx + (tNx - rnb.node.x) * 0.11 * dtSteps) * nbDamp;
+        rnb.vy = (rnb.vy + (tNy - rnb.node.y) * 0.11 * dtSteps) * nbDamp;
+        rnb.node.x += rnb.vx * dtSteps;
+        rnb.node.y += rnb.vy * dtSteps;
+        onNodeDrag(rnb.node, rnb.node.x, rnb.node.y, null);
+        var nbE = Math.hypot(tNx - rnb.node.x, tNy - rnb.node.y) + Math.hypot(rnb.vx, rnb.vy);
+        if (nbE > maxNbEnergy) maxNbEnergy = nbE;
+      }
+
+      terrainDirty = true;
+      batchesDirty = true;
+
+      var distEq = Math.hypot(reboundAnim.eqX - rNode.x, reboundAnim.eqY - rNode.y);
+      var speedEq = Math.hypot(reboundAnim.vx, reboundAnim.vy);
+      if ((distEq < 0.35 && speedEq < 0.25 && maxNbEnergy < 0.45) || elapsedR >= reboundAnim.maxDuration) {
+        rNode.x = reboundAnim.eqX;
+        rNode.y = reboundAnim.eqY;
+        onNodeDrag(rNode, rNode.x, rNode.y, null);
+        var finalShiftX = rNode.x - reboundAnim.origX;
+        var finalShiftY = rNode.y - reboundAnim.origY;
+        for (var fi = 0; fi < reboundAnim.neighbors.length; fi++) {
+          var fnb = reboundAnim.neighbors[fi];
+          fnb.node.x = fnb.x0 + finalShiftX * nbResidual;
+          fnb.node.y = fnb.y0 + finalShiftY * nbResidual;
+          onNodeDrag(fnb.node, fnb.node.x, fnb.node.y, null);
+        }
+        var doneNode = rNode;
+        reboundAnim = null;
+        activeDragBounds = null;
+        onNodeDragEnd(doneNode, null);
+        return false;
+      }
+      return true;
+    }
+
+    function startCameraTransition(fromPitch, fromYaw, fromDist, fromHeightScale, durationMs, sweepGlint, forceMotion, fromTargetX, fromTargetZ) {
       if (tier === 'reduced' || typeof requestAnimationFrame !== 'function' || !durationMs || durationMs <= 0) {
         entryAnim = null;
         renderNow();
@@ -2040,6 +2218,8 @@
         fromPitch: fromPitch,
         fromYaw: fromYaw,
         fromDist: fromDist,
+        fromTargetX: fromTargetX != null ? fromTargetX : camState.targetX,
+        fromTargetZ: fromTargetZ != null ? fromTargetZ : camState.targetZ,
         fromHeightScale: fromHeightScale,
         sweepGlint: !!sweepGlint,
         forceMotion: !!forceMotion,
@@ -2058,6 +2238,10 @@
       if (!r) return;
       var vp = getViewportSize();
       r.resize(vp.width || 1200, vp.height || 800, typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1);
+      var keepGoing = false;
+      if (reboundAnim && stepReboundAnim()) {
+        keepGoing = true;
+      }
       rebuildFieldAndBatches();
       var renderParams = params;
       var renderCam = camState;
@@ -2065,7 +2249,6 @@
       var forceSettle = 1;
       var glintPhase = -1;
       var labelFade = 1;
-      var keepGoing = false;
       if (entryAnim) {
         if (entryAnim.startTime == null) entryAnim.startTime = nowMs();
         var elapsed = Math.max(0, nowMs() - entryAnim.startTime);
@@ -2090,9 +2273,9 @@
         };
         renderCam = {
           distance: entryAnim.fromDist + (camState.distance - entryAnim.fromDist) * camEase,
-          targetX: camState.targetX,
+          targetX: entryAnim.fromTargetX + (camState.targetX - entryAnim.fromTargetX) * camEase,
           targetY: camState.targetY,
-          targetZ: camState.targetZ,
+          targetZ: entryAnim.fromTargetZ + (camState.targetZ - entryAnim.fromTargetZ) * camEase,
         };
         heightScale = entryAnim.fromHeightScale + (1 - entryAnim.fromHeightScale) * riseEase;
         glintPhase = entryAnim.sweepGlint ? (rawT * 1.32 - 0.12) : -1;
@@ -2111,6 +2294,11 @@
           renderCam = camState;
         }
       }
+      if (stageEl && stageEl.style && typeof stageEl.style.setProperty === 'function') {
+        var pitchForGlow = renderParams.pitch != null ? renderParams.pitch : 36;
+        var glowVis = (1 - smoothstep(40, 62, pitchForGlow)) * smoothstep(0.25, 0.85, heightScale);
+        stageEl.style.setProperty('--persp-horizon-glow', glowVis.toFixed(3));
+      }
       r.render(renderParams, renderCam, {
         isDark: isDark(),
         bgColor: getBgColor(),
@@ -2123,6 +2311,7 @@
         labelFade: labelFade,
         hasHoverHighlight: !!hoveredNode,
         communityLabels: getCommunityLabels(),
+        routeBadges: getRouteBadges(),
       });
       if (keepGoing && typeof requestAnimationFrame === 'function') {
         renderRaf = requestAnimationFrame(renderNow);
@@ -2237,7 +2426,11 @@
         if (dragState.mode === 'node') {
           if (dragState.moved) {
             if (!dragState.dragStarted) {
+              cancelReboundAnim(false);
               dragState.dragStarted = true;
+              dragState.origX = dragState.node.x;
+              dragState.origY = dragState.node.y;
+              dragState.neighbors = collectDragNeighbors(dragState.node);
               activeDragBounds = (terrainField && terrainField.center)
                 ? Object.assign({}, terrainField.center)
                 : null;
@@ -2256,6 +2449,17 @@
               dragState.node.x = nextCoords.x;
               dragState.node.y = nextCoords.y;
               onNodeDrag(dragState.node, nextCoords.x, nextCoords.y, ev);
+              // Elastic web stretch: connected neighbors lean gently toward dragged node
+              var moveDx = nextCoords.x - dragState.origX;
+              var moveDy = nextCoords.y - dragState.origY;
+              var nbs = dragState.neighbors || [];
+              var pullRatio = Math.min(0.24, 0.08 + 0.16 / Math.sqrt(1 + nbs.length / 8));
+              for (var ni = 0; ni < nbs.length; ni++) {
+                var nb = nbs[ni];
+                nb.node.x = nb.x0 + moveDx * pullRatio;
+                nb.node.y = nb.y0 + moveDy * pullRatio;
+                onNodeDrag(nb.node, nb.node.x, nb.node.y, ev);
+              }
               terrainDirty = true;
               batchesDirty = true;
               scheduleRender();
@@ -2310,12 +2514,39 @@
       dragState = null;
       if (!wasDrag) return;
       if (wasDrag.mode === 'node' && wasDrag.dragStarted) {
-        activeDragBounds = null;
         if (stageEl) stageEl.style.cursor = canDragNodesNow() ? 'grab' : '';
+        var nbs = wasDrag.neighbors || [];
+        var nbCount = nbs.length;
+        var pullBack = nbCount > 0
+          ? (0.62 + 0.26 * Math.min(1, Math.log(1 + nbCount) / Math.log(25)))
+          : 0.45;
+        var eqX = wasDrag.node.x + (wasDrag.origX - wasDrag.node.x) * pullBack;
+        var eqY = wasDrag.node.y + (wasDrag.origY - wasDrag.node.y) * pullBack;
+        var dropDist = Math.hypot(wasDrag.node.x - eqX, wasDrag.node.y - eqY);
         onNodeDragEnd(wasDrag.node, ev);
-        terrainDirty = true;
-        batchesDirty = true;
-        scheduleRender();
+        if (tier !== 'reduced' && typeof requestAnimationFrame === 'function' && dropDist > 1.5) {
+          reboundAnim = {
+            node: wasDrag.node,
+            origX: wasDrag.origX,
+            origY: wasDrag.origY,
+            eqX: eqX,
+            eqY: eqY,
+            vx: 0,
+            vy: 0,
+            neighbors: nbs,
+            startTime: nowMs(),
+            lastTime: nowMs(),
+            maxDuration: 1800,
+          };
+          terrainDirty = true;
+          batchesDirty = true;
+          scheduleRender();
+        } else {
+          activeDragBounds = null;
+          terrainDirty = true;
+          batchesDirty = true;
+          scheduleRender();
+        }
         return;
       }
       if (wasDrag.moved) return;
@@ -2445,6 +2676,7 @@
         }
       } else {
         cancelEntryAnim();
+        cancelReboundAnim(true);
         hoveredNode = null;
         dragState = null;
         activeDragBounds = null;
@@ -2510,10 +2742,39 @@
     }
 
     function fitToView() {
+      var prevDist = camState.distance;
+      var prevTx = camState.targetX;
+      var prevTz = camState.targetZ;
       camState.distance = opts.defaultDistance || 1.72;
       camState.targetX = 0;
       camState.targetZ = 0;
-      if (enabled) scheduleRender();
+      if (enabled) {
+        startCameraTransition(params.pitch, params.yaw, prevDist, 1, 420, false, false, prevTx, prevTz);
+      }
+    }
+
+    function focusNode(nodeId) {
+      routeFocusNodeId = nodeId || null;
+      batchesDirty = true;
+      if (!enabled) return;
+      if (!routeFocusNodeId) {
+        scheduleRender();
+        return;
+      }
+      if (reboundAnim) cancelReboundAnim(true);
+      rebuildFieldAndBatches();
+      var m = terrainField && terrainField.nodeMeta && terrainField.nodeMeta[routeFocusNodeId];
+      if (!m) {
+        scheduleRender();
+        return;
+      }
+      var prevDist = camState.distance;
+      var prevTx = camState.targetX;
+      var prevTz = camState.targetZ;
+      camState.targetX = Math.max(-0.9, Math.min(0.9, m.wx));
+      camState.targetZ = Math.max(-0.9, Math.min(0.9, m.wz));
+      camState.distance = Math.min(camState.distance, 1.05);
+      startCameraTransition(params.pitch, params.yaw, prevDist, 1, 520, false, false, prevTx, prevTz);
     }
 
     function syncViewport() {
@@ -2523,6 +2784,7 @@
 
     function destroy() {
       cancelEntryAnim();
+      cancelReboundAnim(false);
       if (renderRaf && typeof cancelAnimationFrame === 'function') cancelAnimationFrame(renderRaf);
       if (stageEl && typeof stageEl.removeEventListener === 'function') {
         stageEl.removeEventListener('pointerdown', onPointerDown);
@@ -2564,6 +2826,7 @@
         startCameraTransition(params.pitch, params.yaw, camState.distance, 0.12, tier === 'lite' ? 850 : 1200, true, true);
       },
       fitToView: fitToView,
+      focusNode: focusNode,
       syncViewport: syncViewport,
       refreshStageRect: function () {},
       getScreenTargets: function (limit) {
@@ -2585,8 +2848,10 @@
           },
           fieldStats: renderer ? renderer.getFieldStats() : null,
           hoveredNodeId: hoveredNode ? hoveredNode.id : null,
+          routeFocusNodeId: routeFocusNodeId,
           draggingNodeId: (dragState && dragState.mode === 'node' && dragState.dragStarted && dragState.node) ? dragState.node.id : null,
-          animating: !!entryAnim || !!draggingSlider || !!renderRaf,
+          rebounding: !!reboundAnim,
+          animating: !!entryAnim || !!reboundAnim || !!draggingSlider || !!renderRaf,
           entryAnimating: !!entryAnim,
         };
       },

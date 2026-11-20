@@ -239,21 +239,30 @@
     }
     .filter-depth-chip span:first-child { font-size: .9rem; line-height: 1; }
     /* 路线视图 chip 保持内容高度；维度 / 机构仍由手风琴吃满剩余高度 */
-    /* 路线导读条（画布右下角、操作提示条上方，选中非「全量」纵深时显示；
-       左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故固定右下；
-       bottom 抬高 72px 避开操作提示条（约 61px），也天然高于图例 FAB（约 60px） */
+    /* 路线导读条（画布右下角、操作提示条与右下角聊天按钮上方，选中非「全量」纵深时显示；
+       左上角会被筛选浮窗遮挡、左下有图例 FAB、右上有参数面板，故默认停靠右下；
+       bottom 抬高 84px 与 48×48 聊天按钮（bottom:24px）保持 12px 间距；
+       展开 AI 问答面板时由 --depth-banner-chat-shift 自动向左避让至面板左侧，窄屏自动隐退避免遮挡） */
     .depth-intro-banner {
       position: absolute;
       bottom: calc(84px + env(safe-area-inset-bottom, 0px));
-      right: 20px;
+      right: calc(20px + var(--depth-banner-chat-shift, 0px));
       z-index: 12;
-      max-width: min(420px, calc(100% - 40px));
+      max-width: min(420px, calc(100% - 40px - var(--depth-banner-chat-shift, 0px)));
       padding: 10px 12px 10px 11px;
       border-radius: 10px;
       border: 1px solid rgba(91,156,246, 0.28);
       background: rgba(13, 17, 23, 0.88);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
       pointer-events: auto;
+      transition: right .22s cubic-bezier(.4, 0, .2, 1), opacity .18s ease;
+    }
+    .depth-intro-banner.is-chat-occluded {
+      opacity: 0;
+      pointer-events: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .depth-intro-banner { transition: none; }
     }
     .depth-intro-head {
       display: flex;
@@ -980,10 +989,12 @@
       }
     }
 
-    /* ── 提示条（2D / 3D 互斥，同位置切换）── */
+    /* ── 提示条（2D / 3D 互斥，同位置切换；左右均避开 48×48 图例 / 聊天 FAB）── */
     .graph-hint {
       position: absolute;
-      bottom: calc(20px + env(safe-area-inset-bottom, 0px)); right: 84px;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      left: 84px;
+      right: 84px;
       z-index: 10;
       font-size: .72rem;
       color: rgba(255,255,255,0.2);
@@ -992,6 +1003,14 @@
       pointer-events: none;
     }
     .graph-hint[hidden] { display: none !important; }
+    @media (max-width: 768px) {
+      .graph-hint {
+        left: 80px;
+        right: 80px;
+        font-size: .66rem;
+        line-height: 1.45;
+      }
+    }
 
     /* ── SVG 节点动画 ── */
     /* 不再给全部 6k 个节点圆 / 标签挂 CSS transition：筛选滑块、hover、轻触、缩放等任何批量写
@@ -2890,15 +2909,65 @@
         && window.RNDepthFilters.isDepthHub(d, currentDepth);
     }
 
+    let kbChatPanelOpen = false;
+    let kbChatResizeObserver = null;
+    let kbChatObservedPanel = null;
+
+    function syncDepthBannerChatOffset() {
+      if (!topicIntroBanner) return;
+      const stack = document.getElementById('fabStackRight');
+      const open = kbChatPanelOpen || Boolean(stack && stack.classList.contains('is-chat-open'));
+      if (!open || topicIntroBanner.hidden) {
+        topicIntroBanner.style.removeProperty('--depth-banner-chat-shift');
+        topicIntroBanner.classList.remove('is-chat-occluded');
+        return;
+      }
+      const panelEl = document.getElementById('kbChatPanel');
+      if (panelEl && typeof ResizeObserver === 'function' && kbChatObservedPanel !== panelEl) {
+        if (kbChatResizeObserver) kbChatResizeObserver.disconnect();
+        kbChatResizeObserver = new ResizeObserver(() => {
+          syncDepthBannerChatOffset();
+        });
+        kbChatResizeObserver.observe(panelEl);
+        kbChatObservedPanel = panelEl;
+      }
+      const panelW = (panelEl && !panelEl.hidden)
+        ? Math.ceil(panelEl.getBoundingClientRect().width)
+        : 0;
+      if (panelW <= 0) {
+        topicIntroBanner.style.removeProperty('--depth-banner-chat-shift');
+        topicIntroBanner.classList.remove('is-chat-occluded');
+        return;
+      }
+      const shift = panelW + 12;
+      const wrapW = (wrap && wrap.clientWidth) ? wrap.clientWidth : window.innerWidth;
+      const availW = wrapW - 40 - shift;
+      if (availW >= 260) {
+        topicIntroBanner.style.setProperty('--depth-banner-chat-shift', shift + 'px');
+        topicIntroBanner.classList.remove('is-chat-occluded');
+      } else {
+        topicIntroBanner.style.removeProperty('--depth-banner-chat-shift');
+        topicIntroBanner.classList.add('is-chat-occluded');
+      }
+    }
+
+    document.addEventListener('rn-kb-chat:state', (ev) => {
+      kbChatPanelOpen = Boolean(ev && ev.detail && ev.detail.open);
+      syncDepthBannerChatOffset();
+      if (kbChatPanelOpen) requestAnimationFrame(syncDepthBannerChatOffset);
+    });
+
     function updateTopicIntroBanner() {
       if (!topicIntroBanner) return;
       if (!currentDepth || currentDepth === 'all') {
         topicIntroBanner.hidden = true;
+        syncDepthBannerChatOffset();
         return;
       }
       const meta = DEPTH_META[currentDepth];
       if (!meta) {
         topicIntroBanner.hidden = true;
+        syncDepthBannerChatOffset();
         return;
       }
       topicIntroBanner.hidden = false;
@@ -2913,6 +2982,7 @@
       } else if (topicIntroLink) {
         topicIntroLink.hidden = true;
       }
+      syncDepthBannerChatOffset();
     }
 
     function nodeMatchesDepth(d) {
@@ -2979,6 +3049,7 @@
     function syncRouteBadges() {
       syncRouteBadges2D();
       if (graph3dView && is3DView()) graph3dView.syncRouteBadges();
+      if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(false);
       updateRouteStepper();
     }
 
@@ -2988,6 +3059,12 @@
       if (!d) return;
       if (is3DView()) {
         if (graph3dView) graph3dView.focusNode(d);
+        return;
+      }
+      if (isPerspectiveView()) {
+        if (perspectiveController && typeof perspectiveController.focusNode === 'function') {
+          perspectiveController.focusNode(d.id);
+        }
         return;
       }
       if (d.x == null) return;
@@ -3005,7 +3082,12 @@
       syncRouteBadges();
       if (routeStep < 0) {
         if (is3DView()) { if (graph3dView) graph3dView.fitToVisible(); }
-        else fitToVisibleNodes();
+        else if (isPerspectiveView()) {
+          if (perspectiveController) {
+            if (typeof perspectiveController.focusNode === 'function') perspectiveController.focusNode(null);
+            perspectiveController.fitToView();
+          }
+        } else fitToVisibleNodes();
       } else {
         flyToRouteStep();
       }
@@ -3016,6 +3098,9 @@
       routeIndexById.clear();
       routeOrderIds.forEach((id, i) => routeIndexById.set(id, i + 1));
       routeStep = -1;
+      if (perspectiveController && typeof perspectiveController.focusNode === 'function') {
+        perspectiveController.focusNode(null);
+      }
     }
 
     if (routeStepPrevEl) routeStepPrevEl.addEventListener('click', () => setRouteStep(routeStep - 1));
@@ -3479,7 +3564,9 @@
         timelineAnimateBtn.disabled = false;
         timelineAnimateBtn.title = is3DView()
           ? '按页面首次加入日从最老到最新，在 3D 立体视图中逐帧激活节点与连线'
-          : '按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
+          : (isPerspectiveView()
+            ? '按页面首次加入日从最老到最新，在 3D 地形视图中逐帧生长山峰与节点'
+            : '按页面首次加入日从最老到最新逐帧显现节点与连线（类似 Obsidian 图谱 Animate）');
       }
     }
 
@@ -4582,6 +4669,7 @@
 
     function updateGraphViewport() {
       if (!measureGraphViewport()) return false;
+      syncDepthBannerChatOffset();
       if (simulation) {
         simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(FORCE_CENTER_STRENGTH));
         // 非磁吸时同步向心位置力目标；磁吸模式下 x/y 指向类别中心，勿覆盖。
@@ -4724,9 +4812,12 @@
     gatedCollide.initialize = (...args) => collideForce.initialize(...args);
     simulation.force('collision', gatedCollide);
 
+    let perspectiveSimActive = false;
+
     function pauseSimulation2D() {
       // 作废仍在分片中的 warmup：否则切到 3D 后剩余分片跑完会在后台 restart 隐藏的 2D 全图模拟
       warmupToken += 1;
+      perspectiveSimActive = false;
       simulation.stop();
       simulation.alphaTarget(0);
     }
@@ -4742,7 +4833,7 @@
         graph3dView.updateForces();
         return;
       }
-      if (is3DView() || isPerspectiveView()) return;
+      if (is3DView()) return;
       simulation.force('charge').strength(chargeStrength);
       
       if (isMagnetic2D) {
@@ -4771,6 +4862,11 @@
         simulation.force('y', d3.forceY(getTargetY).strength(0.18));
       } else {
         applyCenterGravity2D();
+      }
+      if (isPerspectiveView()) {
+        perspectiveSimActive = true;
+        simulation.alpha(0.38).restart();
+        return;
       }
       simulation.alpha(0.25).restart();
     }
@@ -5258,8 +5354,23 @@
         graph3dView.fitToScreen(350);
         return;
       }
-      if (isPerspectiveView() && perspectiveController && typeof perspectiveController.replayForceBloom === 'function') {
-        perspectiveController.replayForceBloom();
+      if (isPerspectiveView() && perspectiveController) {
+        perspectiveSimActive = true;
+        updateGraphViewport();
+        // 对齐 2D / 3D 立体「刷新布局」：随机打散全部节点坐标并分片 warmup，期间与后续均由力模拟实时驱动 3D 地形重排落稳
+        runStabilizedLayout2D({
+          reseed: true,
+          async: true,
+          onProgress: () => {
+            if (!isPerspectiveView() || !perspectiveSimActive) return;
+            perspectiveController.syncData(true);
+          },
+          onVisible: () => {
+            if (!isPerspectiveView() || !perspectiveSimActive) return;
+            perspectiveController.syncData(true);
+            simulation.restart();
+          },
+        });
         return;
       }
       labelsSettled2D = false;
@@ -5272,13 +5383,27 @@
 
     /* ── Tick ── */
     simulation.on('tick', () => {
-      if (is3DView() || isPerspectiveView()) return;
+      if (is3DView()) return;
+      if (isPerspectiveView()) {
+        if (perspectiveSimActive && perspectiveController) {
+          perspectiveController.syncData(true);
+        }
+        return;
+      }
       syncGraphDomFromSimulation();
     });
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
-      if (timelineAnimating || is3DView() || isPerspectiveView()) return;   // 时序动画 / 3D 期间不触发整图标签渐显 / 自适应
+      if (isPerspectiveView()) {
+        if (perspectiveSimActive) {
+          perspectiveSimActive = false;
+          syncGraphDomFromSimulation();
+          if (perspectiveController) perspectiveController.syncData(true);
+        }
+        return;
+      }
+      if (timelineAnimating || is3DView()) return;   // 时序动画 / 3D 期间不触发整图标签渐显 / 自适应
       finishSimulationLoad();
     });
 
@@ -6264,6 +6389,7 @@
 
     // 相机自适应到「已显现」节点（生长时随之缩放，类似 Obsidian）
     function fitToTimelineNodes() {
+      if (isPerspectiveView()) return;
       const vis = nodes.filter(n => timelineRevealedIds.has(n.id) && n.x != null);
       if (vis.length < 2) return;
       const transform = computeGraphFitTransform(vis, {
@@ -6282,23 +6408,27 @@
       targetIdx = Math.max(0, Math.min(timelineTotal, Math.round(targetIdx)));
       const prev = timelineIdx;
       if (targetIdx === prev) { updateTimelineProgress(timelineIdx, timelineTotal); return; }
+      const inPersp = isPerspectiveView();
 
       if (targetIdx > prev) {
         for (let i = prev; i < targetIdx; i++) {
           const d = timelineOrdered[i];
           seedTimelineNodePosition(d);          // 先按已显现邻居定位
           timelineRevealedIds.add(d.id);
-          if (animate) revealTimelineNode(d);   // 播放：逐个 pop-in（含定位）
-          else placeTimelineNode(d);            // 拖拽：仅定位，显隐交给下方批量渲染
+          if (!inPersp) {
+            if (animate) revealTimelineNode(d);   // 播放：逐个 pop-in（含定位）
+            else placeTimelineNode(d);            // 拖拽：仅定位，显隐交给下方批量渲染
+          }
         }
-        if (!animate) renderTimelineStatic();
+        if (!inPersp && !animate) renderTimelineStatic();
       } else {
         for (let i = targetIdx; i < prev; i++) timelineRevealedIds.delete(timelineOrdered[i].id);
-        renderTimelineStatic();
+        if (!inPersp) renderTimelineStatic();
       }
       syncTimelineSimulation();                 // 成员 = 已显现子集；暂停时力模拟仍继续
       timelineIdx = targetIdx;
-      updateTimelineLinks();
+      if (!inPersp) updateTimelineLinks();
+      else if (perspectiveController) perspectiveController.syncData(true);
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
@@ -6320,6 +6450,7 @@
       if (!timelineAnimating || timelinePlaying) return;
       if (timelineIdx >= timelineTotal) seekTimeline(0, false); // 已到末尾再播放则从头开始
       timelinePlaying = true;
+      if (isPerspectiveView()) perspectiveSimActive = true;
       updateTimelineControls();
       simulation.alphaTarget(0.3).restart();    // 力模拟持续运行，新节点逐帧被带动
       timelineAnimTimer = setInterval(() => {
@@ -6342,6 +6473,7 @@
       // 仅停计时器：先让刚显现的一批节点继续落位（alphaTarget>0），800 ms 后再放下加热目标
       // 自然冷却——此前暂停期间永远 alphaTarget(0.3)，暂停在末尾时等于全图每帧 tick 直到退出。
       // 退出时序绝不能走这条路径，否则 stop() 后仍残留加热目标，空白点击 restart 会永久自振。
+      if (isPerspectiveView()) perspectiveSimActive = true;
       simulation.alphaTarget(0.3).restart();
       timelinePauseCoolTimer = setTimeout(() => {
         timelinePauseCoolTimer = 0;
@@ -6361,7 +6493,7 @@
 
       snapshotTimelinePositions();
       buildTimelineAdjacency();
-      fitToScreen();                 // 先框定整图范围（用进入前布局），生长从中心展开
+      if (!isPerspectiveView()) fitToScreen(); // 先框定整图范围（用进入前布局），生长从中心展开
 
       timelineAnimating = true;
       timelineIdx = 0;
@@ -6384,6 +6516,10 @@
       setEdgePaintMode('timeline');   // 显现集为空 → 边层此刻不画任何边
       syncTimelineSimulation();
       simulation.stop();
+      if (isPerspectiveView()) {
+        perspectiveSimActive = true;
+        if (perspectiveController) perspectiveController.syncData(true);
+      }
 
       if (timelineProgressEl) timelineProgressEl.max = String(timelineTotal);
       updateTimelineProgress(0, timelineTotal);
@@ -6397,6 +6533,7 @@
       if (timeline3D) { teardownTimelineMode3D(); return; }
       // 只停计时器，不要走 pauseTimelinePlayback（会把 alphaTarget 钉在 0.3）
       stopTimelineTimer();
+      perspectiveSimActive = false;
       simulation.alphaTarget(0);
       simulation.stop();
       timelineAnimating = false;
@@ -6429,6 +6566,10 @@
       simulation.stop();
       for (const n of simulation.nodes()) { n.vx = 0; n.vy = 0; }
       syncGraphDomFromSimulation();
+      if (isPerspectiveView()) {
+        if (perspectiveController) perspectiveController.syncData(true);
+        return;
+      }
       labelsSettled2D = true;
       sync2DNodeLabels();
       fitToScreen();
@@ -6928,6 +7069,14 @@
             };
           });
         },
+        getRouteBadges: () => {
+          if (!routeOrderIds.length) return [];
+          return routeOrderIds.map((id, i) => ({
+            id,
+            index: i + 1,
+            state: routeStep < 0 ? 'all' : (i === routeStep ? 'current' : (i < routeStep ? 'done' : 'todo')),
+          }));
+        },
         isLabelsVisible: () => !timelineAnimating,
         isEdgesVisible: () => showEdges,
         onNodeHover: (d, pointerEv) => {
@@ -6963,21 +7112,22 @@
         },
         allowNodeDrag: () => !timelineAnimating,
         onNodeDragStart: (d) => {
+          if (perspectiveSimActive) pauseSimulation2D();
           hideTooltip();
-          d.fx = d.x;
-          d.fy = d.y;
+          d.fx = null;
+          d.fy = null;
         },
         onNodeDrag: (d, x, y) => {
           d.x = x;
           d.y = y;
-          d.fx = x;
-          d.fy = y;
           d.vx = 0;
           d.vy = 0;
         },
         onNodeDragEnd: (d) => {
-          d.fx = null;
-          d.fy = null;
+          if (d) {
+            d.fx = null;
+            d.fy = null;
+          }
           syncGraphDomFromSimulation();
         },
         onStateChange: syncPerspectiveControlsUi,
@@ -7446,6 +7596,12 @@
           if (is3DView() && graph3dView) {
             initialFocusDone = true;
             graph3dView.focusNode(focusNode);
+            presentNodeDetail(focusNode);
+            return;
+          }
+          if (isPerspectiveView() && perspectiveController && typeof perspectiveController.focusNode === 'function') {
+            initialFocusDone = true;
+            perspectiveController.focusNode(focusNode.id);
             presentNodeDetail(focusNode);
             return;
           }

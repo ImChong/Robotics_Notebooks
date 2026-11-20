@@ -449,6 +449,7 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
   assert.ok(styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric reflection layer styled');
+  assert.ok(styleCss.includes('--persp-horizon-glow'), 'horizon glow fades out cleanly in top-down pitch');
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
   assert.ok(styleCss.includes('#mini-graph-svg line.mini-edge-hover'), 'homepage preview 2D hover edge highlight styled');
   assert.ok(styleCss.includes('.mini-graph-node.mini-node-hover-dim'), 'homepage preview 2D hover dim style present');
@@ -459,6 +460,11 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(perspectiveSrc.includes('uCamRight') && perspectiveSrc.includes('if (r2 > 1.0) discard;'), 'hubs render as analytical round spheres');
   assert.ok(perspectiveSrc.includes('uPointScale') && perspectiveSrc.includes('if (pn.hovered) radius *= 1.10;'), 'point sprites share unified world radius with subtle 1.10x hover swell');
   assert.ok(perspectiveSrc.includes('uForceSettle') && perspectiveSrc.includes('applyForceMotion'), '3D terrain entry includes GPU force-simulation bloom motion');
+  assert.ok(perspectiveSrc.includes('vMeshRadial') && perspectiveSrc.includes('riseVis'), 'top-down entry fades terrain edge by unscaled mesh radial with zero bounded square grid floor');
+  assert.ok(perspectiveSrc.includes('stepReboundAnim') && perspectiveSrc.includes('rebounding: !!reboundAnim'), '3D node drag includes spring-force rebound simulation');
+  assert.ok(graphHtml.includes('perspectiveSimActive') && graphHtml.includes('reseed: true'), '3D terrain layout refresh randomizes nodes and restarts force simulation');
+  assert.ok(graphHtml.includes('getRouteBadges:') && perspectiveSrc.includes('function focusNode('), '3D terrain supports route step-by-step focus and numbered route badges');
+  assert.ok(graphHtml.includes('--depth-banner-chat-shift') && graphHtml.includes('syncDepthBannerChatOffset'), 'route stepper banner shifts cleanly to avoid open chat panel');
   assert.ok(graphHtml.includes('getCommunityLabels:') && perspectiveSrc.includes('communityLabelCount'), '3D terrain renders floating community cluster capsules');
   assert.ok(perspectiveSrc.includes('uHeightScale') && perspectiveSrc.includes('uGlintPhase') && perspectiveSrc.includes('startCameraTransition'), 'top-down to oblique entry swoop and horizon glint present');
   assert.ok(styleCss.includes('[data-theme="light"]'));
@@ -605,7 +611,9 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(leftState3d.hoveredNodeId, null);
   assert.equal(leftState3d.fieldStats.hiEdgeCount, 0, 'pointerleave clears 3D highlighted arcs');
 
-  // 3D node drag moves node (x, y) coordinates without orbiting camera and syncs back to 2D SVG
+  // 3D node drag moves node (x, y) coordinates without orbiting camera, rebounds on release, and syncs back to 2D SVG
+  w.requestAnimationFrame = (cb) => w.setTimeout(() => cb(w.performance.now()), 16);
+  w.cancelAnimationFrame = (id) => w.clearTimeout(id);
   const draggedNodeEl = Array.from(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node'))
     .find((el) => el.textContent.includes(t0.label.slice(0, 3)));
   const transformBefore = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
@@ -619,11 +627,14 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(midDragState.params.yaw, yawBefore, 'dragging a node must not orbit camera yaw');
   assert.equal(midDragState.params.pitch, pitchBefore, 'dragging a node must not orbit camera pitch');
   stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: t0.x + 85, clientY: t0.y + 42 }));
-  await new Promise((r) => setTimeout(r, 30));
-  const postDragState = w.RNMiniGraph.getPerspectiveState();
-  assert.equal(postDragState.draggingNodeId, null);
+  const rightAfterDrop = w.RNMiniGraph.getPerspectiveState();
+  assert.equal(rightAfterDrop.draggingNodeId, null);
+  assert.equal(rightAfterDrop.rebounding, true, 'releasing dragged 3D node triggers elastic force rebound');
+  await new Promise((r) => setTimeout(r, 40));
   const transformAfter = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
   assert.notEqual(transformAfter, transformBefore, 'dragging node in 3D updates its underlying (x, y) synced to 2D');
+  delete w.requestAnimationFrame;
+  delete w.cancelAnimationFrame;
 
   // Dragging blank terrain still orbits camera normally
   stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: 18, clientY: 18 }));
