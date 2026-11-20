@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | VLN 七基准的一手资料、框架与评测口径对照
+
+- 意图：将 R2R、VLN-CE、R4R、CVDN、HANNA、SOON、REVERIE 与对应官方数据/代码入口统一成可复现的跨任务对照。
+- 开源核查：R4R 提供数据生成器；CVDN/NDH、SOON 提供训练/评测脚本；VLN-CE 依赖历史 Habitat 环境；HANNA 数据和实验入口仍需另行检查访问性。
+- 关键页：[七类 VLN 基准与评测协议](../wiki/comparisons/vln-seven-benchmarks-frameworks-evaluation.md)；导航纵深 Stage 4 已挂载。
+
 ## [2026-11-20] ingest | sources/blogs/wechat_shenlan_world_models_11_2026_11_20.md — 编译 11 项世界模型，补录 4 项独立实体与路线对照
 
 - **意图：** 将深蓝具身智能的 11 项世界模型转为技术路线与源码可复现边界对照。
