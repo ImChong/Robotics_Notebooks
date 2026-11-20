@@ -4,7 +4,7 @@ tags: [robotics, coding-agent, mujoco, sim2real]
 status: complete
 updated: 2026-11-20
 project_id: google-deepmind-robotics-antigravity-plugin
-project: https://deepmind.google/models/gemini-robotics/
+project: https://github.com/google-deepmind/robotics-antigravity-plugin
 code: https://github.com/google-deepmind/robotics-antigravity-plugin
 summary: "为 Google Antigravity 等编程智能体提供机器人工作流技能：生成控制代码、在 MuJoCo 验证，随后经人工安全确认在真实机械臂上运行。"
 original:
