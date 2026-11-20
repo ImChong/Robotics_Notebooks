@@ -36,7 +36,6 @@
     return {
       background: dark ? '#191919' : '#f7f6f3',
       edge: dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.10)',
-      edge3d: dark ? '#a9a8a4' : '#4a4945',
       label: dark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.70)',
       stats: dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.62)',
       link: dark ? '#5b9cf6' : '#2d74da',
@@ -92,8 +91,8 @@
       tooltip.classList.remove('tt-pinned');
       tooltip.style.right = '';
       tooltip.style.bottom = '';
-      moveTooltip(ev);
       tooltip.classList.remove('hidden');
+      moveTooltip(ev);
     }
   }
 
@@ -231,6 +230,20 @@
       return e.source !== e.target && nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
     }).map(function(e){ return {source:e.source, target:e.target}; });
 
+    function edgeEndId(end) {
+      return (end && typeof end === 'object') ? end.id : end;
+    }
+
+    var previewAdj = Object.create(null);
+    edges.forEach(function (e) {
+      var s = edgeEndId(e.source);
+      var t = edgeEndId(e.target);
+      if (!previewAdj[s]) previewAdj[s] = new Set();
+      if (!previewAdj[t]) previewAdj[t] = new Set();
+      previewAdj[s].add(t);
+      previewAdj[t].add(s);
+    });
+
     var W = miniWrap.clientWidth || 700, H = 480;
     miniSvg.setAttribute('viewBox','0 0 '+W+' '+H);
 
@@ -241,10 +254,69 @@
 
     var line;
     var label;
+    var nodeG;
+    var previewMode = '2d';
+    var perspCtrl = null;
+    var hoveredNode2d = null;
+
+    function apply2dHoverState(activeNode) {
+      if (!line || !nodeG) return;
+      var theme = miniGraphTheme();
+      if (!activeNode) {
+        line
+          .classed('mini-edge-hover', false)
+          .classed('mini-edge-hover-dim', false)
+          .attr('stroke', theme.edge)
+          .attr('stroke-width', 1)
+          .attr('stroke-opacity', null);
+        nodeG
+          .classed('mini-node-hover', false)
+          .classed('mini-node-hover-neighbor', false)
+          .classed('mini-node-hover-dim', false);
+        nodeG.select('circle')
+          .attr('fill-opacity', 0.9)
+          .attr('r', nodeRadius);
+        return;
+      }
+      var activeId = activeNode.id;
+      var activeColor = nodeFill(activeNode);
+      var neighbors = previewAdj[activeId] || new Set();
+      line
+        .classed('mini-edge-hover', function (e) {
+          return edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId;
+        })
+        .classed('mini-edge-hover-dim', function (e) {
+          return edgeEndId(e.source) !== activeId && edgeEndId(e.target) !== activeId;
+        })
+        .attr('stroke', function (e) {
+          return (edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId)
+            ? activeColor : theme.edge;
+        })
+        .attr('stroke-width', function (e) {
+          return (edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId) ? 2 : 1;
+        })
+        .attr('stroke-opacity', function (e) {
+          return (edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId) ? 0.92 : null;
+        });
+      line.filter('.mini-edge-hover').raise();
+      nodeG
+        .classed('mini-node-hover', function (n) { return n.id === activeId; })
+        .classed('mini-node-hover-neighbor', function (n) { return n.id !== activeId && neighbors.has(n.id); })
+        .classed('mini-node-hover-dim', function (n) { return n.id !== activeId && !neighbors.has(n.id); });
+      nodeG.select('circle')
+        .attr('fill-opacity', function (n) {
+          return (n.id === activeId || neighbors.has(n.id)) ? 1 : 0.9;
+        })
+        .attr('r', function (n) {
+          if (n.id === activeId) return nodeRadius(n) * 1.3;
+          if (neighbors.has(n.id)) return nodeRadius(n) * 1.08;
+          return nodeRadius(n);
+        });
+    }
 
     function applyMiniGraphTheme() {
       var theme = miniGraphTheme();
-      miniWrap.style.background = theme.background;
+      miniWrap.style.background = previewMode === '3d' ? '' : theme.background;
       if (statsEl) statsEl.style.color = theme.stats;
       if (expandEl) {
         expandEl.style.color = theme.link;
@@ -252,7 +324,10 @@
       }
       if (line) line.attr('stroke', theme.edge);
       if (label) label.attr('fill', theme.label);
-      applyMode3dTheme();
+      if (previewMode === '2d' && (hoveredNode2d || pinnedNode)) {
+        apply2dHoverState(hoveredNode2d || pinnedNode);
+      }
+      if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.refreshTheme();
     }
 
     var zoom = d3.zoom().scaleExtent([0.3,4])
@@ -276,7 +351,7 @@
     line = lineLayer.selectAll('line').data(edges).join('line')
       .attr('stroke-width',1);
 
-    var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
+    nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
       .attr('class', 'mini-graph-node')
       .style('cursor','pointer')
       .on('click', function(ev, d) {
@@ -284,9 +359,11 @@
           ev.stopPropagation();
           if (pinnedNode === d) {
             pinnedNode = null;
+            apply2dHoverState(null);
             hideTooltip();
           } else {
             showTooltip(ev, d, nodeFill, communityLabelMap);
+            apply2dHoverState(d);
           }
           return;
         }
@@ -294,18 +371,27 @@
       })
       .on('mouseenter', function(ev, d) {
         if (isMobile) return;
-        d3.select(this).select('circle').attr('fill-opacity', 1).attr('r', nodeRadius(d) * 1.3);
+        hoveredNode2d = d;
+        apply2dHoverState(d);
         showTooltip(ev, d, nodeFill, communityLabelMap);
       })
       .on('mousemove', function(ev) {
         if (isMobile && pinnedNode) return;
         if (!isMobile || !pinnedNode) moveTooltip(ev);
       })
-      .on('mouseleave', function(ev, d) {
+      .on('mouseleave', function() {
         if (isMobile) return;
-        d3.select(this).select('circle').attr('fill-opacity', 0.9).attr('r', nodeRadius(d));
+        hoveredNode2d = null;
+        apply2dHoverState(null);
         if (!isMobile || !pinnedNode) hideTooltip();
       });
+
+    svg.on('mouseleave', function() {
+      if (isMobile || !hoveredNode2d) return;
+      hoveredNode2d = null;
+      apply2dHoverState(null);
+      if (!pinnedNode) hideTooltip();
+    });
 
     nodeG.append('circle')
       .attr('r', nodeRadius)
@@ -324,9 +410,12 @@
       return String(q || '').toLowerCase().split(/[^a-z0-9一-鿿]+/i)
         .filter(function(t){ return t.length >= 2; });
     }
+    var miniHighlightSet = null;
     function clearHighlight() {
+      miniHighlightSet = null;
       nodeG.classed('mini-node-dim', false).classed('mini-node-hit', false);
       line.classed('mini-edge-dim', false);
+      if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
     }
     function highlightNodes(idList, query) {
       var idSet = {};
@@ -346,6 +435,7 @@
       });
       // 预览图只含前 50 度数节点，命中可能为空；此时不淡出，避免整图变暗却无高亮的困惑
       if (!hitCount) { clearHighlight(); return; }
+      miniHighlightSet = new Set(Object.keys(hitSet));
       nodeG.classed('mini-node-dim', function(d){ return !hitSet[d.id]; });
       nodeG.classed('mini-node-hit', function(d){ return !!hitSet[d.id]; });
       line.classed('mini-edge-dim', function(d){
@@ -353,8 +443,16 @@
         var t = (d.target && d.target.id) || d.target;
         return !(hitSet[s] && hitSet[t]);
       });
+      if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
     }
-    window.RNMiniGraph = { highlight: highlightNodes, clear: clearHighlight };
+    window.RNMiniGraph = {
+      highlight: highlightNodes,
+      clear: clearHighlight,
+      getMode: function () { return previewMode; },
+      getPerspectiveState: function () { return perspCtrl ? perspCtrl.getDebugState() : null; },
+      getPerspectiveTargets: function (limit) { return perspCtrl && perspCtrl.getScreenTargets ? perspCtrl.getScreenTargets(limit) : []; },
+      getZoomTransform: function () { return typeof d3 !== 'undefined' ? d3.zoomTransform(miniSvg) : null; },
+    };
     var pending = window.__miniGraphPendingQuery;
     if (pending && (pending.query || (pending.ids && pending.ids.length))) {
       highlightNodes(pending.ids || [], pending.query || '');
@@ -385,12 +483,13 @@
     for (var wi = 0; wi < 12; wi++) sim.tick();
     nodes.forEach(function (n) { n.vx = 0; n.vy = 0; });
     sim.alpha(0.7);
-    var layoutTimer = d3.timer(function () {
+      var layoutTimer = d3.timer(function () {
       var budgetEnd = performance.now() + 8;
       while (sim.alpha() >= sim.alphaMin() && performance.now() < budgetEnd) sim.tick();
       if (sim.alpha() >= sim.alphaMin()) return;
       layoutTimer.stop();
       onLayoutReady();
+      if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(true);
     });
 
     function onLayoutReady() {
@@ -448,6 +547,7 @@
           renderPositions();
           label.attr('opacity', null);
           line.attr('stroke-opacity', null);
+          if (hoveredNode2d || pinnedNode) apply2dHoverState(hoveredNode2d || pinnedNode);
         });
       }, { threshold: 0.35 });
       entranceObserver.observe(miniWrap);
@@ -458,7 +558,10 @@
       var tooltipApi = {
         isMobile: isMobile,
         getPinned: function() { return pinnedNode; },
-        clearPin: function() { pinnedNode = null; },
+        clearPin: function() {
+          pinnedNode = null;
+          apply2dHoverState(null);
+        },
         hide: hideTooltip
       };
       window.RNGraphTooltip.bindBlankDismiss(miniSvg, tooltipApi, {
@@ -471,46 +574,25 @@
       });
     }
 
-    // ── 2D / 3D 预览切换：3D 库（vendor/3d-force-graph.min.js，1.3MB）懒加载，
-    //    仅在首次切到 3D 时注入；实例常驻，来回切换只 pause/resume 动画 ──
+    // ── 2D / 3D 连接度地形视图切换（复用 graph-perspective.js，不加载 1.3MB 3D 库）──
     var btn2d = document.getElementById('miniGraphMode2d');
     var btn3d = document.getElementById('miniGraphMode3d');
-    var wrap3d = document.getElementById('mini-graph-3d');
-    var graph3d = null;
-    var loading3d = false;
-    var lastPointer3d = { clientX: 0, clientY: 0 };
+    var stageEl = document.getElementById('mini-graph-perspective-stage');
 
-    function trackPointer3d(ev) {
-      lastPointer3d.clientX = ev.clientX;
-      lastPointer3d.clientY = ev.clientY;
-    }
-
-    function showTooltip3d(d) {
-      showTooltip(lastPointer3d, d, nodeFill, communityLabelMap);
-    }
-
-    function bindMiniGraph3dTooltipDismiss() {
-      if (!window.RNGraphTooltip || !wrap3d) return;
-      var tooltipApi = {
+    if (window.RNGraphTooltip && stageEl) {
+      var stageTooltipApi = {
         isMobile: isMobile,
         getPinned: function() { return pinnedNode; },
-        clearPin: function() { pinnedNode = null; },
+        clearPin: function() {
+          pinnedNode = null;
+          if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
+        },
         hide: hideTooltip
       };
-      window.RNGraphTooltip.bindBlankDismiss(wrap3d, tooltipApi, {
-        tooltipEl: tooltip
-      });
-      window.RNGraphTooltip.bindOutsideDismiss(wrap3d, tooltipApi, {
+      window.RNGraphTooltip.bindOutsideDismiss(stageEl, stageTooltipApi, {
         tooltipEl: tooltip,
         dismissRootEl: document.querySelector('main')
       });
-    }
-
-    function applyMode3dTheme() {
-      if (!graph3d) return;
-      var theme = miniGraphTheme();
-      graph3d.backgroundColor(theme.background);
-      graph3d.linkColor(function () { return miniGraphTheme().edge3d; });
     }
 
     function setModeButtons(mode) {
@@ -523,127 +605,123 @@
         btn3d.classList.toggle('is-active', in3d);
         btn3d.setAttribute('aria-pressed', in3d ? 'true' : 'false');
       }
-    }
-
-    function init3d() {
-      var theme = miniGraphTheme();
-      // 独立节点/边副本：2D d3 力模拟已把 edges 的端点替换为节点对象引用，
-      // 且节点带 x/y/vx/vy 等模拟状态，直接共享会与 3D 力模拟争用
-      var nodes3d = nodes.map(function (n) {
-        return {
-          id: n.id,
-          label: n.label,
-          type: n.type,
-          community: n.community,
-          summary: n.summary || '',
-          health_score: n.health_score,
-          health_gaps: n.health_gaps,
-          has_repo: n.has_repo,
-          _degree: n._degree
-        };
-      });
-      var links3d = edges.map(function (e) {
-        return {
-          source: typeof e.source === 'object' ? e.source.id : e.source,
-          target: typeof e.target === 'object' ? e.target.id : e.target
-        };
-      });
-      // controlType: orbit —— trackball 不支持 autoRotate（设了会静默无效）
-      graph3d = window.ForceGraph3D({ controlType: 'orbit' })(wrap3d)
-        .width(miniWrap.clientWidth || 700)
-        .height(miniWrap.clientHeight || 480)
-        .backgroundColor(theme.background)
-        .showNavInfo(false)
-        // 50 节点几秒即稳定；默认 cooldownTime 15s 会让 engineStop 的取景来得太晚
-        .cooldownTime(4000)
-        .nodeColor(function (d) { return nodeFill(d); })
-        .nodeVal(function (d) { return Math.max(1, d._degree); })
-        .linkColor(function () { return miniGraphTheme().edge3d; })
-        .linkOpacity(0.35)
-        .onNodeHover(function (node) {
-          if (isMobile) return;
-          if (node) showTooltip3d(node);
-          else hideTooltip();
-        })
-        .onNodeClick(function (d) {
-          if (isMobile) {
-            if (pinnedNode === d) {
-              pinnedNode = null;
-              hideTooltip();
-            } else {
-              showTooltip3d(d);
-            }
-            return;
-          }
-          window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
-        })
-        .graphData({ nodes: nodes3d, links: links3d });
-      wrap3d.addEventListener('mousemove', trackPointer3d);
-      bindMiniGraph3dTooltipDismiss();
-      // 力模拟稳定后一次性取景填满容器（与 2D 收敛后的自动 fit 对齐）；
-      // 只做首次，避免用户拖拽节点触发的后续 engineStop 抢走相机
-      var fitted3d = false;
-      graph3d.onEngineStop(function () {
-        if (fitted3d) return;
-        fitted3d = true;
-        graph3d.zoomToFit(600, 40);
-      });
-      var controls3d = graph3d.controls();
-      if (controls3d) {
-        controls3d.autoRotate = true;
-        controls3d.autoRotateSpeed = 0.9;
+      if (expandEl) {
+        expandEl.setAttribute('href', in3d ? 'graph.html?view=perspective' : 'graph.html');
       }
     }
+
+    perspCtrl = (window.RNGraphPerspective && typeof window.RNGraphPerspective.createController === 'function' && stageEl)
+      ? window.RNGraphPerspective.createController({
+          wrapEl: miniWrap,
+          stageEl: stageEl,
+          nodeCount: nodes.length,
+          persist: false,
+          allowTouchOrbit: false,
+          defaultDistance: 1.76,
+          defaultParamsByTier: {
+            full: { height: 102, contours: 14, pitch: 34, yaw: -16 },
+            lite: { height: 92, contours: 12, pitch: 32, yaw: -12 },
+            reduced: { height: 88, contours: 12, pitch: 36, yaw: -12 },
+          },
+          getViewportSize: function () {
+            return {
+              width: miniWrap.clientWidth || 700,
+              height: miniWrap.clientHeight || 480,
+            };
+          },
+          getGraphData: function () {
+            var terrainNodes = nodes.map(function (n) {
+              if (n._fx != null && n._fy != null && (n.x !== n._fx || n.y !== n._fy)) {
+                return Object.assign({}, n, { x: n._fx, y: n._fy });
+              }
+              return n;
+            });
+            return {
+              nodes: terrainNodes,
+              edges: edges,
+              focusIds: miniHighlightSet,
+              sidebarNode: isMobile ? pinnedNode : null,
+              getNodeColor: nodeFill,
+              getNodeAlpha: function (d) {
+                return (!miniHighlightSet || miniHighlightSet.has(d.id)) ? 1 : 0.16;
+              },
+            };
+          },
+          isDark: function () {
+            return document.documentElement.getAttribute('data-theme') !== 'light';
+          },
+          getBgColor: function () {
+            return miniGraphTheme().background;
+          },
+          getLabelText: function (d) { return d.label || d.id; },
+          isLabelsVisible: function () { return true; },
+          isEdgesVisible: function () { return true; },
+          onNodeHover: function (d, ev) {
+            if (isMobile) return;
+            if (d) showTooltip(ev, d, nodeFill, communityLabelMap);
+            else hideTooltip();
+          },
+          onNodeClick: function (d, ev) {
+            if (isMobile) {
+              if (pinnedNode === d) {
+                pinnedNode = null;
+                hideTooltip();
+              } else {
+                showTooltip(ev, d, nodeFill, communityLabelMap);
+              }
+              if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
+              return;
+            }
+            window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
+          },
+          onBackgroundClick: function () {
+            if (isMobile && pinnedNode) {
+              pinnedNode = null;
+              hideTooltip();
+              if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
+            }
+          },
+          onStateChange: function (st) {
+            previewMode = (st && st.enabled) ? '3d' : '2d';
+            setModeButtons(previewMode);
+            applyMiniGraphTheme();
+          },
+        })
+      : null;
 
     function show3d() {
       hideTooltip();
       pinnedNode = null;
-      miniSvg.style.display = 'none';
-      wrap3d.hidden = false;
-      setModeButtons('3d');
-      if (graph3d) {
-        graph3d.resumeAnimation();
-        return;
+      hoveredNode2d = null;
+      apply2dHoverState(null);
+      if (!perspCtrl || !perspCtrl.setEnabled(true, { silent: true })) {
+        previewMode = '2d';
+        setModeButtons('2d');
       }
-      if (typeof window.ForceGraph3D === 'function') {
-        init3d();
-        return;
-      }
-      if (loading3d) return;
-      loading3d = true;
-      wrap3d.innerHTML = '<div class="mini-graph-3d-hint">正在加载 3D 组件…</div>';
-      var script = document.createElement('script');
-      script.src = 'vendor/3d-force-graph.min.js';
-      script.onload = function () {
-        loading3d = false;
-        wrap3d.innerHTML = '';
-        if (!wrap3d.hidden) init3d();
-      };
-      script.onerror = function () {
-        loading3d = false;
-        wrap3d.innerHTML = '<div class="mini-graph-3d-hint">3D 组件加载失败，请刷新重试</div>';
-      };
-      document.head.appendChild(script);
     }
 
     function show2d() {
       hideTooltip();
       pinnedNode = null;
-      wrap3d.hidden = true;
-      miniSvg.style.display = '';
-      setModeButtons('2d');
-      if (graph3d) graph3d.pauseAnimation();
+      if (perspCtrl) {
+        perspCtrl.setEnabled(false);
+      } else {
+        previewMode = '2d';
+        setModeButtons('2d');
+        applyMiniGraphTheme();
+      }
     }
 
-    if (btn2d && btn3d && wrap3d) {
+    if (btn2d && btn3d) {
+      if (!perspCtrl || !perspCtrl.isSupported()) {
+        btn3d.disabled = true;
+        btn3d.setAttribute('aria-disabled', 'true');
+      }
       btn3d.addEventListener('click', show3d);
       btn2d.addEventListener('click', show2d);
-      // 视口尺寸变化（手机横竖屏 / 窗口缩放）时同步 3D 画布尺寸
+      // 视口尺寸变化（手机横竖屏 / 窗口缩放）时同步透视舞台几何与投影缓存
       window.addEventListener('resize', function () {
-        if (!graph3d) return;
-        graph3d
-          .width(miniWrap.clientWidth || 700)
-          .height(miniWrap.clientHeight || 480);
+        if (perspCtrl) perspCtrl.syncViewport();
       });
     }
 

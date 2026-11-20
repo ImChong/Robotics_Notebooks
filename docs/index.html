@@ -306,7 +306,7 @@
         <h2 class="section-title" data-home-copy>知识图谱预览</h2>
         <div id="mini-graph-wrap" style="position:relative;width:100%;height:480px;border-radius:12px;overflow:hidden;">
           <svg id="mini-graph-svg" style="width:100%;height:100%"></svg>
-          <div id="mini-graph-3d" hidden></div>
+          <div id="mini-graph-perspective-stage" class="graph-perspective-stage" hidden aria-label="3D 地形预览"></div>
           <div class="mini-graph-mode" role="group" aria-label="预览 2D / 3D 切换" data-home-copy>
             <button type="button" id="miniGraphMode2d" class="mini-graph-mode-btn is-active" aria-pressed="true">2D</button>
             <button type="button" id="miniGraphMode3d" class="mini-graph-mode-btn" aria-pressed="false">3D</button>
@@ -361,6 +361,7 @@
   <script src="depth-filters.js"></script>
   <script src="graph-node-size.js"></script>
   <script src="vendor/d3.min.js" defer></script>
+  <script src="graph-perspective.js" defer></script>
   <script src="mini-graph.js" defer></script>
   <script>
     if ('serviceWorker' in navigator) {

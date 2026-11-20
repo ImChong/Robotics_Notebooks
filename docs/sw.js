@@ -32,6 +32,7 @@ const OPTIONAL_ASSETS = [
   'graph-tooltip.js',
   'graph-node-size.js',
   'graph-force-params.js',
+  'graph-perspective.js',
   'graph-3d.js',
   'depth-filters.js',
   'mini-graph.js',
