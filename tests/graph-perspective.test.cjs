@@ -756,6 +756,32 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.ok(ttLink2d && ttLink2d.getAttribute('href').includes('detail.html?id='), '2D floating card contains clickable detail link');
   assert.ok(miniGraphJs.includes('allowTouchOrbit: true'), 'homepage 3D preview enables touch orbit/drag/pinch');
   assert.ok(miniGraphJs.includes('full: { height: 32,'), 'homepage 3D preview uses lower default peak height (32)');
+
+  // Verify sphere clearance above terrain peaks & slopes across both low preview height (32) and Graph View (20..100)
+  assert.ok(
+    tapTargets.length > 0 && tapTargets.every((t) => (t.wy - t.surfaceH) >= 0.04),
+    'preview 3D targets float cleanly above terrain surface at height=32'
+  );
+  const maxPrevR = w.RNGraphPerspective.computeSphereRadius3D(10, 10, true);
+  const lowAmp32 = (32 / 100) * 0.46;
+  const lowAmp20 = (20 / 100) * 0.46;
+  const fullAmp100 = (100 / 100) * 0.46;
+  const wyPreviewHub = w.RNGraphPerspective.computeNodeElevationY(1.0, 1.0, 1.0, maxPrevR, lowAmp32, true);
+  assert.ok(
+    wyPreviewHub - maxPrevR * 1.10 >= 1.0 * lowAmp32 + 0.025,
+    'preview hub sphere floats cleanly above terrain peak even at height=32'
+  );
+  const maxGraphR = w.RNGraphPerspective.computeSphereRadius3D(100, 100, false);
+  const wyGraphHillside100 = w.RNGraphPerspective.computeNodeElevationY(0.50, 0.62, 0.5, maxGraphR, fullAmp100, false);
+  assert.ok(
+    wyGraphHillside100 - maxGraphR * 1.10 >= 0.62 * fullAmp100 + 0.012,
+    'graph view hub sphere clears uphill footprint slope at height=100'
+  );
+  const wyGraphLow20 = w.RNGraphPerspective.computeNodeElevationY(0.95, 1.0, 1.0, maxGraphR, lowAmp20, false);
+  assert.ok(
+    wyGraphLow20 - maxGraphR * 1.10 >= 1.0 * lowAmp20 + 0.012,
+    'graph view hub sphere floats cleanly above terrain peak even at minimum height=20'
+  );
   assert.ok(styleCss.includes('#mini-graph-svg { position: relative; display: block; touch-action: none; }'), 'homepage 2D SVG sets touch-action: none');
   assert.ok(graphHtml.includes('function isTouchInteraction('), 'graph.html supports hybrid touch floating-card detection');
   assert.ok(

@@ -552,6 +552,54 @@
     return (h00 * (1 - tx) + h10 * tx) * (1 - tz) + (h01 * (1 - tx) + h11 * tx) * tz;
   }
 
+  /**
+   * 采样节点球体水平投影足迹内（中心 + 周边 8 方向）的最高地形归一化高度，
+   * 避免球体位于陡坡侧面时球缘切入上坡山体。
+   */
+  function sampleFootprintMaxHeight(field, wx, wz, radius) {
+    var hMax = sampleTerrainHeight(field, wx, wz);
+    if (!field || !(radius > 0.003)) return hMax;
+    var r = radius * 1.05;
+    var rd = r * 0.70710678;
+    var s1 = sampleTerrainHeight(field, wx + r, wz);
+    var s2 = sampleTerrainHeight(field, wx - r, wz);
+    var s3 = sampleTerrainHeight(field, wx, wz + r);
+    var s4 = sampleTerrainHeight(field, wx, wz - r);
+    var s5 = sampleTerrainHeight(field, wx + rd, wz + rd);
+    var s6 = sampleTerrainHeight(field, wx - rd, wz + rd);
+    var s7 = sampleTerrainHeight(field, wx + rd, wz - rd);
+    var s8 = sampleTerrainHeight(field, wx - rd, wz - rd);
+    if (s1 > hMax) hMax = s1;
+    if (s2 > hMax) hMax = s2;
+    if (s3 > hMax) hMax = s3;
+    if (s4 > hMax) hMax = s4;
+    if (s5 > hMax) hMax = s5;
+    if (s6 > hMax) hMax = s6;
+    if (s7 > hMax) hMax = s7;
+    if (s8 > hMax) hMax = s8;
+    return hMax;
+  }
+
+  /**
+   * 计算节点球心在世界坐标中的高度 wy：
+   * 无论山峰高度参数（height）调高或调矮，球体底部（含悬停放大 1.10x）始终严格浮于
+   * 足迹内最高地形表面之上并留出清晰的垂线悬浮净空，杜绝圆球嵌入山峰或坡面。
+   */
+  function computeNodeElevationY(surfaceH, footprintMaxH, degNorm, baseRadius, heightAmp, isPreview) {
+    var surf = Math.max(surfaceH || 0, footprintMaxH || 0);
+    var wySurfMax = surf * heightAmp;
+    var dNorm = degNorm || 0;
+    var baseElevH = Math.max(surf + 0.045, surf * 0.92 + 0.045 + dNorm * 0.24);
+    var propWy = baseElevH * heightAmp;
+    var r = baseRadius > 0 ? baseRadius : 0;
+    var effR = r * 1.12;
+    var minGap = isPreview
+      ? (0.026 + r * 0.42 + dNorm * 0.018)
+      : (0.012 + r * 0.45 + dNorm * 0.016);
+    var minWy = wySurfMax + effR + minGap;
+    return Math.max(propWy, minWy);
+  }
+
   /* ── 3D 相机矩阵与屏幕空间投影（column-major 4x4）── */
 
   function mulMat4(a, b) {
@@ -812,11 +860,13 @@
     }
 
     if (movedAny && field && heightAmp > 0) {
+      var isPreviewList = n <= 160;
       for (i = 0; i < n; i++) {
         var pn = items[i];
         var surfH = sampleTerrainHeight(field, pn.wx, pn.wz);
+        var footMaxH = sampleFootprintMaxHeight(field, pn.wx, pn.wz, pn.baseRadius);
         pn.wySurf = surfH * heightAmp;
-        pn.wy = Math.max(surfH + 0.045, surfH * 0.92 + 0.045 + pn.degNorm * 0.24) * heightAmp;
+        pn.wy = computeNodeElevationY(surfH, footMaxH, pn.degNorm, pn.baseRadius, heightAmp, isPreviewList);
       }
     }
     return totalResolved;
@@ -1352,12 +1402,13 @@
           nodeAlpha = 1;
         }
         var baseRadius = computeSphereRadius3D(m.deg, maxDeg, isPreview);
+        var footMaxH = sampleFootprintMaxHeight(currentField, m.wx, m.wz, baseRadius);
         cachedNodes3d.push({
           node: n,
           wx: m.wx,
           wz: m.wz,
           wySurf: m.surfaceH * heightAmp,
-          wy: m.elevH * heightAmp,
+          wy: computeNodeElevationY(m.surfaceH, footMaxH, m.degNorm, baseRadius, heightAmp, isPreview),
           degNorm: m.degNorm,
           deg: m.deg,
           baseRadius: baseRadius,
@@ -1771,7 +1822,8 @@
         if (!n3.visible && !n3.focused) continue;
         if (hasHoverFocus && !n3.focused && !n3.neighbor) continue;
         var mXZ = evalForceMotionXZ(n3.wx, n3.wz, forceSettle, 0.026);
-        var pt = projectWorldToScreen(mXZ[0], n3.wy * heightScale + 0.025, mXZ[1], viewProj, width, height);
+        var labelLift = Math.max(0.025, (n3.baseRadius || 0) * 0.92 + 0.014);
+        var pt = projectWorldToScreen(mXZ[0], n3.wy * heightScale + labelLift, mXZ[1], viewProj, width, height);
         if (!pt) continue;
         if (pt[0] < 24 || pt[0] > width - 24 || pt[1] < 24 || pt[1] > height - 24 || pt[2] < -1 || pt[2] > 1) continue;
         candidates.push({
@@ -3143,8 +3195,10 @@
     parseCssColor: parseCssColor,
     computeNodeDegrees: computeNodeDegrees,
     computeSphereRadius3D: computeSphereRadius3D,
+    computeNodeElevationY: computeNodeElevationY,
     computeTerrainField: computeTerrainField,
     sampleTerrainHeight: sampleTerrainHeight,
+    sampleFootprintMaxHeight: sampleFootprintMaxHeight,
     buildCameraMatrices: buildCameraMatrices,
     projectWorldToScreen: projectWorldToScreen,
     unprojectScreenToPlaneY: unprojectScreenToPlaneY,
