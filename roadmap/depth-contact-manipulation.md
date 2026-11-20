@@ -126,6 +126,7 @@ flowchart LR
 - [Diffusion-Based Impedance Learning｜扩散式阻抗学习](../wiki/entities/paper-diffusion-based-impedance-learning-2509-19696.md) — 由外力条件扩散模型重建 sZFT，再按能量与任务方向在线调刚度，比较圆柱/方/星形 peg-in-hole 的接触泛化。
 - [Demo Data Collection Guide](../wiki/queries/demo-data-collection-guide.md)
 - [Tactile Sensing](../wiki/concepts/tactile-sensing.md) 与 [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
+- [触觉 Scaling：跨硬件接触经验如何复用](../wiki/comparisons/tactile-scaling-data-infrastructure-2026.md) — 先检查六类传感器的物理可观测性、标定/时序/安装与数据事件覆盖，再选择 FTP-1、LingBot-Touch 等表征及 T-Rex 高频反馈路线。
 - [视觉触觉智能综述（VBTS Survey，arXiv:2608.15490）](../wiki/entities/paper-vision-based-tactile-intelligence.md) — 以传感器硬件三轴、触觉学习层次、数据/仿真和 Sim2Real 为地图，先选接触观测需求，再选传感器与策略结构
 - [触觉阻抗控制](../wiki/methods/tactile-impedance-control.md) 与 [In-Hand Reorientation](../wiki/methods/in-hand-reorientation.md)
 - [𝒩₀-Foundation](../wiki/entities/paper-n0-foundation.md) — 连接 TacUMI/真机多本体视触觉采集、NeoForce 三轴力场表征与 NeoReal/NeoSim 接触评测；适合开展触觉数据到策略的完整链路实践。
