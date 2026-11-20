@@ -2396,7 +2396,7 @@
       滚轮缩放 · 拖拽平移<br>点击节点查看详情
     </div>
     <div id="graph-hint-perspective" class="graph-hint" hidden>
-      拖拽旋转 · 缩放视图 · 右键平移<br>高度即连接数 · 点击节点查看详情
+      拖拽节点移动 · 拖空白旋转 · 滚轮缩放 · 右键平移<br>高度即连接数 · 点击节点查看详情
     </div>
     <div id="graph-hint-3d" class="graph-hint" hidden>
       拖拽旋转 · 滚轮缩放<br>点击节点查看详情
@@ -5254,6 +5254,10 @@
         graph3dView.fitToScreen(350);
         return;
       }
+      if (isPerspectiveView() && perspectiveController && typeof perspectiveController.replayForceBloom === 'function') {
+        perspectiveController.replayForceBloom();
+        return;
+      }
       labelsSettled2D = false;
       userZoomed2D = false;
       sync2DNodeLabels();   // labelsSettled2D 已复位 → 走全隐藏分支（display:none）
@@ -6814,6 +6818,9 @@
         if (graph3dView && typeof graph3dView.syncLabels === 'function') {
           graph3dView.syncLabels();
         }
+        if (perspectiveController && isPerspectiveView()) {
+          perspectiveController.refreshTheme();
+        }
       });
     }
 
@@ -6897,6 +6904,26 @@
         isDark,
         getBgColor: () => (isDark() ? '#191919' : '#f7f6f3'),
         getLabelText: (d) => d._info?.title || d.label || d.id,
+        getCommunityLabels: () => {
+          if (!communityLabelsVisible()) return [];
+          const centroids = computeCommunityCentroids();
+          const sizeRange = communityLabelSizeRange();
+          return centroids.map((c) => {
+            const meta = communityMetaMap.get(c.id);
+            const count = (meta && meta.size != null) ? meta.size : c.n;
+            const bgColor = communityColorMap.get(c.id) || COMMUNITY_COLORS[9];
+            return {
+              id: c.id,
+              label: shortCommunityLabel(c.id),
+              x: c.x,
+              y: c.y,
+              count,
+              fontSize: communityLabelFontSize3D(count, sizeRange.min, sizeRange.max),
+              bgColor,
+              textColor: communityLabelTextColor(bgColor),
+            };
+          });
+        },
         isLabelsVisible: () => !timelineAnimating,
         isEdgesVisible: () => showEdges,
         onNodeHover: (d, pointerEv) => {
@@ -6929,6 +6956,25 @@
           }
           hideTooltip();
           closeSidebar();
+        },
+        allowNodeDrag: () => !timelineAnimating,
+        onNodeDragStart: (d) => {
+          hideTooltip();
+          d.fx = d.x;
+          d.fy = d.y;
+        },
+        onNodeDrag: (d, x, y) => {
+          d.x = x;
+          d.y = y;
+          d.fx = x;
+          d.fy = y;
+          d.vx = 0;
+          d.vy = 0;
+        },
+        onNodeDragEnd: (d) => {
+          d.fx = null;
+          d.fy = null;
+          syncGraphDomFromSimulation();
         },
         onStateChange: syncPerspectiveControlsUi,
         onUnsupported: (msg) => {

@@ -226,6 +226,8 @@
       };
     });
     var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
+    var nodeById = Object.create(null);
+    nodes.forEach(function(n){ nodeById[n.id] = n; });
     var edges = gd.edges.filter(function(e){
       return e.source !== e.target && nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
     }).map(function(e){ return {source:e.source, target:e.target}; });
@@ -680,6 +682,23 @@
               hideTooltip();
               if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
             }
+          },
+          onNodeDragStart: function () {
+            hideTooltip();
+          },
+          onNodeDrag: function (d, x, y) {
+            var orig = nodeById[d.id];
+            if (orig) {
+              orig.x = x;
+              orig.y = y;
+              orig._fx = x;
+              orig._fy = y;
+            }
+            d.x = x;
+            d.y = y;
+          },
+          onNodeDragEnd: function () {
+            renderPositions();
           },
           onStateChange: function (st) {
             previewMode = (st && st.enabled) ? '3d' : '2d';
