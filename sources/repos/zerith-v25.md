@@ -3,7 +3,7 @@
 - **类型：** repo
 - **仓库：** <https://github.com/ZERITH-ZLab/ZERITH-V2.5>
 - **论文：** <https://arxiv.org/abs/2611.23746>
-- **研究主页：** <https://zerith-25-review.kindpetal17.chatgpt.site/>
+- **研究主页：** <https://www.zerith.com/blog/zerith-2-5/>
 - **模型：** <https://huggingface.co/OpenZerith/ZERITH-2.5-LIBERO-Plus>
 - **许可：** 代码 Apache-2.0；ZERITH 自有模型权重 CC BY-NC 4.0
 - **核对日期：** 2026-11-19

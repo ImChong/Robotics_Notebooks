@@ -3,9 +3,9 @@ type: entity
 project_id: zerith-v25
 tags: [paper, wam, world-action-models, video-action-model, video-pretraining, predictive-adaptation, flow-matching, manipulation, humanoid, libero]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-20
 arxiv: "2611.23746"
-project: https://zerith-25-review.kindpetal17.chatgpt.site/
+project: https://www.zerith.com/blog/zerith-2-5/
 code: https://github.com/ZERITH-ZLab/ZERITH-V2.5
 related:
   - ../concepts/world-action-models.md
@@ -25,7 +25,7 @@ summary: "ZERITH 2.5（arXiv:2611.23746）在 Wan2.2 视频生成先验上先做
 
 # ZERITH 2.5：从视频预测先验到机器人策略可学习性 | From Predictive Power to Policy Learnability
 
-**ZERITH 2.5**（*From Predictive Power to Policy Learnability*，[arXiv:2611.23746](https://arxiv.org/abs/2611.23746)，[研究主页](https://zerith-25-review.kindpetal17.chatgpt.site/)，[官方源码](https://github.com/ZERITH-ZLab/ZERITH-V2.5)）是 **Zerith Robotics（ZERITH Z-Lab）** 发布的视频–动作机器人操作模型。论文不是单纯报告视频生成得更好，而是系统分析：目标域视频预测训练在何种监督和训练顺序下，能真正帮助动作策略学习。
+**ZERITH 2.5**（*From Predictive Power to Policy Learnability*，[arXiv:2611.23746](https://arxiv.org/abs/2611.23746)，[研究主页](https://www.zerith.com/blog/zerith-2-5/)，[官方源码](https://github.com/ZERITH-ZLab/ZERITH-V2.5)）是 **Zerith Robotics（ZERITH Z-Lab）** 发布的视频–动作机器人操作模型。论文不是单纯报告视频生成得更好，而是系统分析：目标域视频预测训练在何种监督和训练顺序下，能真正帮助动作策略学习。
 
 ## 一句话定义
 
@@ -60,6 +60,7 @@ summary: "ZERITH 2.5（arXiv:2611.23746）在 Wan2.2 视频生成先验上先做
 | **输入** | 最多三相机多视角 RGB、语言指令、机器人本体状态及 VGGT 几何特征 |
 | **动作** | 每次预测 16 步动作块；官方仿真服务返回前 4 步供闭环执行 |
 | **S1/S2** | S1 视频流匹配视觉适配 3,000 updates；S2 联合视频–动作学习 27,000 updates |
+| **单卡推理（H800，batch=1）** | 单次决策平均 **331.25 ms**、P95 **365.30 ms**；约 **3.02 次规划/s**，每次执行四步折合约 **12.08 动作步/s**（作者报告，非底层电机伺服频率） |
 | **对照预算** | Direct：直接联训 30,000 updates，机器人示范与总更新数受控 |
 | **开源边界** | [代码 Apache-2.0](https://github.com/ZERITH-ZLab/ZERITH-V2.5)；自有权重 CC BY-NC 4.0 且 HF 需授权；自采预训练数据非全量公开 |
 
@@ -154,10 +155,12 @@ sequenceDiagram
 | 对照（LIBERO-Plus） | 论文结果与口径 |
 |---|---|
 | **Staged vs Direct（图 b，单次 run）** | **56.70% vs 37.54%**，均为 30k 总 updates |
-| **S1 泛化：三种几何条件、三种子** | 在对应设置下分阶段训练提高 **17.55–19.16 个百分点**；不要和单次 run 拼成同一统计样本 |
+| **S1 泛化：三种几何条件、三种子** | 静态几何：**37.64%→56.80%**（**+19.16±0.26 pp**）；加法融合 **+17.93±0.27 pp**；乘法融合 **+17.55±0.27 pp**。均为三种子均值与配对差异的 SD，勿与单次 run 混用 |
 | **权重迁移（图 c，单次 run）** | W0/R0 **37.54**；W0/R1 **33.60**；W1/R0 **57.21**；W1/R1 **56.70** |
 | **S1 噪声监督** | 宽噪声适配 **56.70**，仅在纯噪声端点适配 **35.90**；适配目标形状有影响 |
 | **梯度保留（图 d）** | Action→video **96.0%**，视觉损失 **2.9%**，video-model 梯度 **4.8%**；参数位移 **1.675%**，是机制诊断而非泛化证明 |
+
+**预算拐点：** 在 5,000 总更新步时，Staged 仅 **4.22%**，落后于 Direct 的 **21.28%**；现有实验在 30k–50k 已测总预算下 Staged 表现更好，不能说它在任何训练预算都更好（原文 §6.4–6.5）。
 
 ### 完整系统报告成绩
 
@@ -198,6 +201,8 @@ sequenceDiagram
 - **预训练资源与论文控制条件不同：** 完整模型依赖约 10,000h 数据，包含 6,000h 自采；这是不同于 30k updates 消融的另一训练设置。不能仅凭报告声称全量数据公开或易于复现。
 - **缺少一致的跨论文比较协议：** MT50 不同模型有汇总方式差异；部分基线训练配方也不同。对外比较应列清协议而不是只排名次。
 - **消融统计范围有限：** 主 S1 对照在三个几何条件上采用三种子，部分权重迁移、噪声和梯度诊断是单次 run；结论尚不能无条件推广到所有视频模型和任务。
+- **实时性限制：** H800 单卡 batch=1 的单次规划平均 331.25 ms，论文中每规划执行四个动作步、约 12.08 动作步/s；这不等于 1 kHz 关节闭环控制频率，工程接入需另行设计低层控制与异步执行。
+- **外推边界：** 受控可学习性实验只覆盖 Wan2.2-TI2V-5B、3k 视觉适配长度与 LIBERO 家族；跨视频骨干、目标域与其他 S1 预算仍需验证。
 - **权重/计算限制：** HF 权重需要授权访问，官方建议 80 GB GPU 推理；CC BY-NC 权重不附商用许可，不能按 Apache-2.0 代码许可自动授权生产环境。
 - **真机部署安全：** H1 权重不是经现场安全验收的动作执行包；其 SDK、IK、执行控制频率、避碰与失败恢复需独立验证。
 - **源码核验说明：** 已读实际 CLI、服务端和仿真评测入口；未执行 GPU 复现实验，不把作者自报结果写成本仓库测得结果。
@@ -221,6 +226,6 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [论文 HTML（含正文与附录）](https://arxiv.org/html/2611.23746v1)
-- [ZERITH 2.5 研究演示与技术报告](https://zerith-25-review.kindpetal17.chatgpt.site/)
+- [ZERITH 2.5 研究演示与技术报告](https://www.zerith.com/blog/zerith-2-5/)
 - [代码仓与中英双语 README](https://github.com/ZERITH-ZLab/ZERITH-V2.5)
 - [LIBERO-Plus 官方复现指南](https://github.com/ZERITH-ZLab/ZERITH-V2.5/blob/main/docs/simulation/libero-plus.md)
