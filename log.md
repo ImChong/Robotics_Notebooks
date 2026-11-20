@@ -527,6 +527,13 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | A Circuit for In-Context Learning v1 原文审阅与已有唯一节点完善
+
+- 复核 arXiv:2611.05344v1 正文与附录、官方 MIT 许可证、README 和单文件交互讲解入口。
+- 复用 `wiki/entities/paper-a-circuit-for-in-context-learning.md`，不重复建页；补齐原文归档与结构化阅读状态。
+- 区分读取头因果解释的部分效应、读取律 18 示例外推失败，以及仅适用于短句分类、未验证机器人策略的边界。
+- 未运行 H100 全量复现实验；源码模块尚未逐文件审计。
+
 ## [2026-11-20] lint | 合并重复项目节点 linger-personal-agent 至 linger-simplexai 并补齐 claude-code-dynamic-workflows 对比落地
 
 ## [2026-11-20] lint | health-check — 修复 4 项高频 methods 缺查询落地与 11 项缺页概念误报候选，info 预警降至 734（不含 stale 为 500）
