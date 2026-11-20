@@ -1210,7 +1210,7 @@ a.hero-stat-num:focus-visible {
 /* 健康度信息框（main.js setupHealthTip）：悬停小条弹出，逐行列出各得分项（1/1）/（0/1） */
 .node-health-tip {
   position: fixed;
-  z-index: 10002; /* 可能弹在节点浮窗（10001）里的小条上，须再高一层 */
+  z-index: 10012; /* 高于节点浮窗与展开后的聊天面板 */
   max-width: 260px;
   padding: 8px 10px;
   border-radius: 8px;
@@ -2339,7 +2339,7 @@ button.home-wiki-heatmap-cell.is-active {
 .mermaid-lightbox {
   position: fixed;
   inset: 0;
-  z-index: 10000;
+  z-index: 10010;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5158,6 +5158,10 @@ a.card:active { transform: translateY(-1px); }
   align-items: flex-end;
   gap: 12px;
   pointer-events: none;
+  transition: right .22s cubic-bezier(.4, 0, .2, 1);
+}
+.fab-stack-right.is-chat-open {
+  z-index: 10002;
 }
 .fab-stack-right [hidden] {
   display: none !important;

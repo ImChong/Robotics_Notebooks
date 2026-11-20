@@ -9323,7 +9323,8 @@
   }
 
   function init() {
-    if (!document.querySelector('body > .footer')) return;
+    var isGraphPage = Boolean(document.getElementById('graph-wrap'));
+    if (!document.querySelector('body > .footer') && !isGraphPage) return;
     if (document.querySelector('.back-to-top') || document.getElementById('fabStackRight')) return;
 
     var stack = document.createElement('div');
@@ -9484,8 +9485,12 @@
       if (nextOpen === chatOpen) return;
       var hadFocus = stack.contains(document.activeElement);
       chatOpen = nextOpen;
+      stack.classList.toggle('is-chat-open', nextOpen);
       if (nextOpen) {
         if (visible) expanded = true;
+        if (window.RNGraphTooltip && typeof window.RNGraphTooltip.hide === 'function') {
+          window.RNGraphTooltip.hide();
+        }
       } else {
         expanded = false;
       }
