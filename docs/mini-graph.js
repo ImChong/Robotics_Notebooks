@@ -91,8 +91,8 @@
       tooltip.classList.remove('tt-pinned');
       tooltip.style.right = '';
       tooltip.style.bottom = '';
-      moveTooltip(ev);
       tooltip.classList.remove('hidden');
+      moveTooltip(ev);
     }
   }
 
@@ -230,6 +230,20 @@
       return e.source !== e.target && nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
     }).map(function(e){ return {source:e.source, target:e.target}; });
 
+    function edgeEndId(end) {
+      return (end && typeof end === 'object') ? end.id : end;
+    }
+
+    var previewAdj = Object.create(null);
+    edges.forEach(function (e) {
+      var s = edgeEndId(e.source);
+      var t = edgeEndId(e.target);
+      if (!previewAdj[s]) previewAdj[s] = new Set();
+      if (!previewAdj[t]) previewAdj[t] = new Set();
+      previewAdj[s].add(t);
+      previewAdj[t].add(s);
+    });
+
     var W = miniWrap.clientWidth || 700, H = 480;
     miniSvg.setAttribute('viewBox','0 0 '+W+' '+H);
 
@@ -240,8 +254,65 @@
 
     var line;
     var label;
+    var nodeG;
     var previewMode = '2d';
     var perspCtrl = null;
+    var hoveredNode2d = null;
+
+    function apply2dHoverState(activeNode) {
+      if (!line || !nodeG) return;
+      var theme = miniGraphTheme();
+      if (!activeNode) {
+        line
+          .classed('mini-edge-hover', false)
+          .classed('mini-edge-hover-dim', false)
+          .attr('stroke', theme.edge)
+          .attr('stroke-width', 1)
+          .attr('stroke-opacity', null);
+        nodeG
+          .classed('mini-node-hover', false)
+          .classed('mini-node-hover-neighbor', false)
+          .classed('mini-node-hover-dim', false);
+        nodeG.select('circle')
+          .attr('fill-opacity', 0.9)
+          .attr('r', nodeRadius);
+        return;
+      }
+      var activeId = activeNode.id;
+      var activeColor = nodeFill(activeNode);
+      var neighbors = previewAdj[activeId] || new Set();
+      line
+        .classed('mini-edge-hover', function (e) {
+          return edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId;
+        })
+        .classed('mini-edge-hover-dim', function (e) {
+          return edgeEndId(e.source) !== activeId && edgeEndId(e.target) !== activeId;
+        })
+        .attr('stroke', function (e) {
+          return (edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId)
+            ? activeColor : theme.edge;
+        })
+        .attr('stroke-width', function (e) {
+          return (edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId) ? 2 : 1;
+        })
+        .attr('stroke-opacity', function (e) {
+          return (edgeEndId(e.source) === activeId || edgeEndId(e.target) === activeId) ? 0.92 : null;
+        });
+      line.filter('.mini-edge-hover').raise();
+      nodeG
+        .classed('mini-node-hover', function (n) { return n.id === activeId; })
+        .classed('mini-node-hover-neighbor', function (n) { return n.id !== activeId && neighbors.has(n.id); })
+        .classed('mini-node-hover-dim', function (n) { return n.id !== activeId && !neighbors.has(n.id); });
+      nodeG.select('circle')
+        .attr('fill-opacity', function (n) {
+          return (n.id === activeId || neighbors.has(n.id)) ? 1 : 0.9;
+        })
+        .attr('r', function (n) {
+          if (n.id === activeId) return nodeRadius(n) * 1.3;
+          if (neighbors.has(n.id)) return nodeRadius(n) * 1.08;
+          return nodeRadius(n);
+        });
+    }
 
     function applyMiniGraphTheme() {
       var theme = miniGraphTheme();
@@ -253,6 +324,9 @@
       }
       if (line) line.attr('stroke', theme.edge);
       if (label) label.attr('fill', theme.label);
+      if (previewMode === '2d' && (hoveredNode2d || pinnedNode)) {
+        apply2dHoverState(hoveredNode2d || pinnedNode);
+      }
       if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.refreshTheme();
     }
 
@@ -277,7 +351,7 @@
     line = lineLayer.selectAll('line').data(edges).join('line')
       .attr('stroke-width',1);
 
-    var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
+    nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
       .attr('class', 'mini-graph-node')
       .style('cursor','pointer')
       .on('click', function(ev, d) {
@@ -285,9 +359,11 @@
           ev.stopPropagation();
           if (pinnedNode === d) {
             pinnedNode = null;
+            apply2dHoverState(null);
             hideTooltip();
           } else {
             showTooltip(ev, d, nodeFill, communityLabelMap);
+            apply2dHoverState(d);
           }
           return;
         }
@@ -295,18 +371,27 @@
       })
       .on('mouseenter', function(ev, d) {
         if (isMobile) return;
-        d3.select(this).select('circle').attr('fill-opacity', 1).attr('r', nodeRadius(d) * 1.3);
+        hoveredNode2d = d;
+        apply2dHoverState(d);
         showTooltip(ev, d, nodeFill, communityLabelMap);
       })
       .on('mousemove', function(ev) {
         if (isMobile && pinnedNode) return;
         if (!isMobile || !pinnedNode) moveTooltip(ev);
       })
-      .on('mouseleave', function(ev, d) {
+      .on('mouseleave', function() {
         if (isMobile) return;
-        d3.select(this).select('circle').attr('fill-opacity', 0.9).attr('r', nodeRadius(d));
+        hoveredNode2d = null;
+        apply2dHoverState(null);
         if (!isMobile || !pinnedNode) hideTooltip();
       });
+
+    svg.on('mouseleave', function() {
+      if (isMobile || !hoveredNode2d) return;
+      hoveredNode2d = null;
+      apply2dHoverState(null);
+      if (!pinnedNode) hideTooltip();
+    });
 
     nodeG.append('circle')
       .attr('r', nodeRadius)
@@ -462,6 +547,7 @@
           renderPositions();
           label.attr('opacity', null);
           line.attr('stroke-opacity', null);
+          if (hoveredNode2d || pinnedNode) apply2dHoverState(hoveredNode2d || pinnedNode);
         });
       }, { threshold: 0.35 });
       entranceObserver.observe(miniWrap);
@@ -472,7 +558,10 @@
       var tooltipApi = {
         isMobile: isMobile,
         getPinned: function() { return pinnedNode; },
-        clearPin: function() { pinnedNode = null; },
+        clearPin: function() {
+          pinnedNode = null;
+          apply2dHoverState(null);
+        },
         hide: hideTooltip
       };
       window.RNGraphTooltip.bindBlankDismiss(miniSvg, tooltipApi, {
@@ -494,7 +583,10 @@
       var stageTooltipApi = {
         isMobile: isMobile,
         getPinned: function() { return pinnedNode; },
-        clearPin: function() { pinnedNode = null; },
+        clearPin: function() {
+          pinnedNode = null;
+          if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
+        },
         hide: hideTooltip
       };
       window.RNGraphTooltip.bindOutsideDismiss(stageEl, stageTooltipApi, {
@@ -548,6 +640,7 @@
               nodes: terrainNodes,
               edges: edges,
               focusIds: miniHighlightSet,
+              sidebarNode: isMobile ? pinnedNode : null,
               getNodeColor: nodeFill,
               getNodeAlpha: function (d) {
                 return (!miniHighlightSet || miniHighlightSet.has(d.id)) ? 1 : 0.16;
@@ -576,6 +669,7 @@
               } else {
                 showTooltip(ev, d, nodeFill, communityLabelMap);
               }
+              if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
               return;
             }
             window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
@@ -584,6 +678,7 @@
             if (isMobile && pinnedNode) {
               pinnedNode = null;
               hideTooltip();
+              if (perspCtrl && perspCtrl.isEnabled()) perspCtrl.syncData(false);
             }
           },
           onStateChange: function (st) {
@@ -597,6 +692,8 @@
     function show3d() {
       hideTooltip();
       pinnedNode = null;
+      hoveredNode2d = null;
+      apply2dHoverState(null);
       if (!perspCtrl || !perspCtrl.setEnabled(true, { silent: true })) {
         previewMode = '2d';
         setModeButtons('2d');

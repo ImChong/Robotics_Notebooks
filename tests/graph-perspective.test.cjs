@@ -417,6 +417,8 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
   assert.ok(styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric reflection layer styled');
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
+  assert.ok(styleCss.includes('#mini-graph-svg line.mini-edge-hover'), 'homepage preview 2D hover edge highlight styled');
+  assert.ok(styleCss.includes('.mini-graph-node.mini-node-hover-dim'), 'homepage preview 2D hover dim style present');
   assert.ok(styleCss.includes('#mini-graph-wrap.is-perspective-mode'));
   assert.ok(styleCss.includes('border: 1px solid var(--border);'), 'homepage 3D preview retains visible viewport border');
   const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
@@ -517,7 +519,27 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(btn3d.getAttribute('aria-pressed'), 'false');
   assert.equal(expand.getAttribute('href'), 'graph.html');
 
-  // Switch preview 3D on -> WebGL terrain draws heightfield + contour lines + polyhedra + labels
+  // 2D hover highlights connected edges + neighbor nodes and dims unrelated ones, then restores cleanly
+  const nodeGs = Array.from(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node'));
+  const mpcNodeG = nodeGs.find((el) => el.textContent.includes('MPC'));
+  assert.ok(mpcNodeG, 'found MPC node in 2D mini-graph');
+  mpcNodeG.dispatchEvent(new w.MouseEvent('mouseenter', { bubbles: false, clientX: 200, clientY: 200 }));
+  const hoverEdges = w.document.querySelectorAll('#mini-graph-svg line.mini-edge-hover');
+  const dimEdges = w.document.querySelectorAll('#mini-graph-svg line.mini-edge-hover-dim');
+  assert.equal(hoverEdges.length, 1, 'MPC has 1 connected edge highlighted on hover');
+  assert.equal(dimEdges.length, 1, 'unconnected edge dimmed on hover');
+  assert.equal(hoverEdges[0].getAttribute('stroke'), '#34d399', 'highlighted edge adopts hovered node color');
+  assert.equal(hoverEdges[0].getAttribute('stroke-width'), '2');
+  assert.equal(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node.mini-node-hover').length, 1);
+  assert.equal(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node.mini-node-hover-neighbor').length, 1);
+  assert.equal(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node.mini-node-hover-dim').length, 1);
+
+  mpcNodeG.dispatchEvent(new w.MouseEvent('mouseleave', { bubbles: false }));
+  assert.equal(w.document.querySelectorAll('#mini-graph-svg line.mini-edge-hover').length, 0);
+  assert.equal(w.document.querySelectorAll('#mini-graph-svg line.mini-edge-hover-dim').length, 0);
+  assert.equal(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node.mini-node-hover-dim').length, 0);
+
+  // Switch preview 3D on -> WebGL terrain draws heightfield + contour lines + spheres + labels
   btn3d.click();
   await new Promise((r) => setTimeout(r, 40));
   assert.equal(w.RNMiniGraph.getMode(), '3d');
@@ -530,6 +552,22 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.equal(btn2d.getAttribute('aria-pressed'), 'false');
   assert.equal(btn3d.getAttribute('aria-pressed'), 'true');
   assert.equal(expand.getAttribute('href'), 'graph.html?view=perspective');
+
+  // 3D hover picks node, highlights connected 3D arcs, and clears cleanly on pointerleave
+  stage.getBoundingClientRect = () => ({ left: 0, top: 0, width: 700, height: 480 });
+  const targets3d = w.RNMiniGraph.getPerspectiveTargets(5);
+  assert.ok(targets3d.length > 0, '3D preview exposes projected screen targets');
+  const t0 = targets3d[0];
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, clientX: t0.x, clientY: t0.y }));
+  await new Promise((r) => setTimeout(r, 30));
+  const hoverState3d = w.RNMiniGraph.getPerspectiveState();
+  assert.equal(hoverState3d.hoveredNodeId, t0.id);
+  assert.ok(hoverState3d.fieldStats && hoverState3d.fieldStats.hiEdgeCount >= 1, '3D hover builds highlighted connected arcs');
+  stage.dispatchEvent(new w.MouseEvent('pointerleave', { bubbles: false }));
+  await new Promise((r) => setTimeout(r, 30));
+  const leftState3d = w.RNMiniGraph.getPerspectiveState();
+  assert.equal(leftState3d.hoveredNodeId, null);
+  assert.equal(leftState3d.fieldStats.hiEdgeCount, 0, 'pointerleave clears 3D highlighted arcs');
 
   const drawsBeforeHighlight = mock.stats.drawCalls;
   w.RNMiniGraph.highlight(['n1'], 'PPO');

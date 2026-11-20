@@ -744,10 +744,11 @@
       '}\n';
 
     var lineFS = headF + outDecl +
+      'uniform float uFadeStart;\n' +
       varyF + 'vec4 vColor;\n' +
       varyF + 'float vRadial;\n' +
       'void main() {\n' +
-      '  float fade = 1.0 - smoothstep(0.60, 0.96, vRadial);\n' +
+      '  float fade = 1.0 - smoothstep(uFadeStart, max(uFadeStart + 0.08, 0.98), vRadial);\n' +
       '  ' + outAssign + ' = vec4(vColor.rgb, vColor.a * fade);\n' +
       '}\n';
 
@@ -869,6 +870,7 @@
     var hiLinePosBuf = gl.createBuffer();
     var hiLineColBuf = gl.createBuffer();
     var hiLineVertCount = 0;
+    var hiEdgeCount = 0;
 
     var solidPosBuf = gl.createBuffer();
     var solidQuadBuf = gl.createBuffer();
@@ -900,7 +902,7 @@
     }
 
     var tLoc = resolveLocs(terrainProg, ['aXZ', 'aH', 'aGrad'], ['uViewProj', 'uHeightAmp', 'uHeightScale', 'uEye', 'uBg', 'uIsDark', 'uContours', 'uExtent', 'uGlintPhase']);
-    var lLoc = resolveLocs(lineProg, ['aPos', 'aColor'], ['uViewProj', 'uExtent', 'uHeightScale']);
+    var lLoc = resolveLocs(lineProg, ['aPos', 'aColor'], ['uViewProj', 'uExtent', 'uHeightScale', 'uFadeStart']);
     var sLoc = resolveLocs(solidProg, ['aCenter', 'aQuad', 'aInstColor'], ['uViewProj', 'uCamRight', 'uCamUp', 'uIsDark', 'uHeightScale']);
     var pLoc = resolveLocs(pointProg, ['aPos', 'aSize', 'aColor'], ['uViewProj', 'uDpr', 'uHeightScale']);
 
@@ -973,8 +975,23 @@
       var isLite = !!data.isLite;
 
       var metaMap = currentField.nodeMeta;
-      cachedNodes3d = [];
+      var highlightCenterId = (hoverNode && hoverNode.id) || (sidebarNode && sidebarNode.id) || null;
+      var highlightNeighbors = null;
       var i;
+      if (highlightCenterId) {
+        highlightNeighbors = Object.create(null);
+        for (i = 0; i < edges.length; i++) {
+          var he = edges[i];
+          if (!he) continue;
+          var hsId = edgeEndId(he.source);
+          var htId = edgeEndId(he.target);
+          if (hsId === highlightCenterId && htId && htId !== highlightCenterId) highlightNeighbors[htId] = true;
+          else if (htId === highlightCenterId && hsId && hsId !== highlightCenterId) highlightNeighbors[hsId] = true;
+        }
+      }
+      var applyHoverDim = !!(hoverNode && !focusSet);
+
+      cachedNodes3d = [];
       for (i = 0; i < nodes.length; i++) {
         var n = nodes[i];
         if (!n || !n.id) continue;
@@ -987,6 +1004,13 @@
         var isFocused = !!(focusSet && focusSet.has(n.id));
         var isHovered = !!(hoverNode && hoverNode.id === n.id);
         var isSelected = !!(sidebarNode && sidebarNode.id === n.id);
+        var isNeighbor = !!(highlightNeighbors && highlightNeighbors[n.id]);
+        var nodeAlpha = visible ? Math.max(0.2, alpha) : 0.14;
+        if (applyHoverDim && !isHovered && !isSelected && !isNeighbor) {
+          nodeAlpha = Math.min(nodeAlpha, 0.28);
+        } else if (isHovered || isSelected || isNeighbor) {
+          nodeAlpha = 1;
+        }
         cachedNodes3d.push({
           node: n,
           wx: m.wx,
@@ -996,16 +1020,18 @@
           degNorm: m.degNorm,
           deg: m.deg,
           rgb: rgb,
-          alpha: visible ? Math.max(0.2, alpha) : 0.14,
+          alpha: nodeAlpha,
           visible: visible,
           focused: isFocused || isHovered || isSelected,
+          neighbor: isNeighbor,
         });
       }
 
-      // Rank top hubs for 3D polyhedral crystals + vertical stems
+      // Rank top hubs for 3D spherical orbs + vertical stems
       var stemCap = isLite ? 55 : (cachedNodes3d.length <= 160 ? cachedNodes3d.length : 170);
       var ranked = cachedNodes3d.slice().sort(function (a, b) {
         if (a.focused !== b.focused) return a.focused ? -1 : 1;
+        if (a.neighbor !== b.neighbor) return a.neighbor ? -1 : 1;
         if (a.visible !== b.visible) return a.visible ? -1 : 1;
         return b.deg - a.deg;
       });
@@ -1013,7 +1039,7 @@
       cachedPolyNodes = [];
       for (i = 0; i < ranked.length; i++) {
         var item = ranked[i];
-        if (i < stemCap || item.focused) {
+        if (i < stemCap || item.focused || item.neighbor) {
           polySet[item.node.id] = item;
           cachedPolyNodes.push(item);
         }
@@ -1054,6 +1080,7 @@
         var pn = orderedHubs[i];
         var radius = (nodes.length <= 160 ? 0.022 : 0.012) + pn.degNorm * (nodes.length <= 160 ? 0.022 : 0.018);
         if (pn.focused) radius *= 1.24;
+        else if (pn.neighbor) radius *= 1.07;
         for (var q = 0; q < quadCorners.length; q += 2) {
           sPos.push(pn.wx, pn.wy, pn.wz);
           sQuad.push(quadCorners[q], quadCorners[q + 1], radius);
@@ -1099,10 +1126,43 @@
         node3dMap[cachedNodes3d[i].node.id] = cachedNodes3d[i];
       }
 
-      var highlightCenterId = (hoverNode && hoverNode.id) || (sidebarNode && sidebarNode.id) || null;
       var maxBgEdges = isLite ? 1400 : 4200;
       var bgEdgeDrawn = 0;
+      hiEdgeCount = 0;
       var baseEdgeRgb = isDarkTheme ? [0.68, 0.78, 0.92] : [0.24, 0.36, 0.56];
+
+      function pushRibbonStrip(pts, nx, ny, nz, halfW, rgb, alphaCenter, alphaEdge) {
+        for (var k = 0; k < pts.length - 1; k++) {
+          var p0 = pts[k];
+          var p1 = pts[k + 1];
+          // Taper ribbon slightly at endpoints so it docks neatly into spheres
+          var t0 = Math.min(1, k / 2, (pts.length - 1 - k) / 2);
+          var t1 = Math.min(1, (k + 1) / 2, (pts.length - 2 - k) / 2);
+          var w0 = halfW * (0.55 + 0.45 * t0);
+          var w1 = halfW * (0.55 + 0.45 * t1);
+          var ox0 = nx * w0; var oy0 = ny * w0; var oz0 = nz * w0;
+          var ox1 = nx * w1; var oy1 = ny * w1; var oz1 = nz * w1;
+          var r = rgb[0]; var g = rgb[1]; var bl = rgb[2];
+          // +side quad (center -> +offset): 2 triangles
+          hlPos.push(
+            p0[0], p0[1], p0[2], p1[0], p1[1], p1[2], p1[0] + ox1, p1[1] + oy1, p1[2] + oz1,
+            p0[0], p0[1], p0[2], p1[0] + ox1, p1[1] + oy1, p1[2] + oz1, p0[0] + ox0, p0[1] + oy0, p0[2] + oz0
+          );
+          hlCol.push(
+            r, g, bl, alphaCenter, r, g, bl, alphaCenter, r, g, bl, alphaEdge,
+            r, g, bl, alphaCenter, r, g, bl, alphaEdge, r, g, bl, alphaEdge
+          );
+          // -side quad (center -> -offset): 2 triangles
+          hlPos.push(
+            p0[0], p0[1], p0[2], p0[0] - ox0, p0[1] - oy0, p0[2] - oz0, p1[0] - ox1, p1[1] - oy1, p1[2] - oz1,
+            p0[0], p0[1], p0[2], p1[0] - ox1, p1[1] - oy1, p1[2] - oz1, p1[0], p1[1], p1[2]
+          );
+          hlCol.push(
+            r, g, bl, alphaCenter, r, g, bl, alphaEdge, r, g, bl, alphaEdge,
+            r, g, bl, alphaCenter, r, g, bl, alphaEdge, r, g, bl, alphaCenter
+          );
+        }
+      }
 
       for (i = 0; i < edges.length; i++) {
         var e = edges[i];
@@ -1121,28 +1181,57 @@
         var mz = (a.wz + b.wz) * 0.5;
         var dist = Math.hypot(b.wx - a.wx, b.wz - a.wz);
         var terrainMid = sampleTerrainHeight(currentField, mx, mz) * heightAmp;
-        var arcPeak = Math.max((a.wy + b.wy) * 0.5, terrainMid + 0.03) + Math.min(0.14, dist * 0.16);
+        var arcPeak = isHi
+          ? (Math.max(a.wy, b.wy, terrainMid + 0.075) + Math.min(0.24, dist * 0.28 + 0.045))
+          : (Math.max((a.wy + b.wy) * 0.5, terrainMid + 0.03) + Math.min(0.14, dist * 0.16));
 
-        var targetPos = isHi ? hlPos : lPos;
-        var targetCol = isHi ? hlCol : lCol;
         var col = isHi ? (node3dMap[highlightCenterId] ? node3dMap[highlightCenterId].rgb : a.rgb) : baseEdgeRgb;
-        var edgeAlpha = isHi ? 0.82 : (nodes.length <= 160 ? 0.16 : 0.10);
-
-        var segs = isHi ? 6 : 3;
-        var px0 = a.wx;
-        var py0 = a.wy;
-        var pz0 = a.wz;
-        for (var sg = 1; sg <= segs; sg++) {
-          var u = sg / segs;
-          var omt = 1 - u;
-          var qx = omt * omt * a.wx + 2 * omt * u * mx + u * u * b.wx;
-          var qy = omt * omt * a.wy + 2 * omt * u * arcPeak + u * u * b.wy;
-          var qz = omt * omt * a.wz + 2 * omt * u * mz + u * u * b.wz;
-          targetPos.push(px0, py0, pz0, qx, qy, qz);
-          targetCol.push(col[0], col[1], col[2], edgeAlpha, col[0], col[1], col[2], edgeAlpha);
-          px0 = qx; py0 = qy; pz0 = qz;
+        if (isHi) {
+          hiEdgeCount += 1;
+          var coreMix = isDarkTheme ? 0.42 : 0.08;
+          var coreCol = [
+            col[0] + (1 - col[0]) * coreMix,
+            col[1] + (1 - col[1]) * coreMix,
+            col[2] + (1 - col[2]) * coreMix,
+          ];
+          var perpLen = Math.max(1e-4, dist);
+          var sx = -(b.wz - a.wz) / perpLen;
+          var sz = (b.wx - a.wx) / perpLen;
+          var hiSegs = 14;
+          var arcPts = [];
+          for (var hsg = 0; hsg <= hiSegs; hsg++) {
+            var hu = hsg / hiSegs;
+            var homt = 1 - hu;
+            arcPts.push([
+              homt * homt * a.wx + 2 * homt * hu * mx + hu * hu * b.wx,
+              homt * homt * a.wy + 2 * homt * hu * arcPeak + hu * hu * b.wy,
+              homt * homt * a.wz + 2 * homt * hu * mz + hu * hu * b.wz,
+            ]);
+          }
+          // Crossed horizontal + vertical glowing 3D ribbons (visible thickness from any pitch)
+          pushRibbonStrip(arcPts, sx, 0, sz, 0.011, col, isDarkTheme ? 0.42 : 0.34, 0.0);
+          pushRibbonStrip(arcPts, sx, 0, sz, 0.0040, coreCol, 0.96, 0.25);
+          pushRibbonStrip(arcPts, 0, 1, 0, 0.0095, col, isDarkTheme ? 0.36 : 0.28, 0.0);
+          pushRibbonStrip(arcPts, 0, 1, 0, 0.0035, coreCol, 0.92, 0.20);
+        } else {
+          var bgEdgeAlpha = highlightCenterId
+            ? (nodes.length <= 160 ? 0.04 : 0.03)
+            : (nodes.length <= 160 ? 0.16 : 0.10);
+          var px0 = a.wx;
+          var py0 = a.wy;
+          var pz0 = a.wz;
+          for (var sg = 1; sg <= 3; sg++) {
+            var u = sg / 3;
+            var omt = 1 - u;
+            var qx = omt * omt * a.wx + 2 * omt * u * mx + u * u * b.wx;
+            var qy = omt * omt * a.wy + 2 * omt * u * arcPeak + u * u * b.wy;
+            var qz = omt * omt * a.wz + 2 * omt * u * mz + u * u * b.wz;
+            lPos.push(px0, py0, pz0, qx, qy, qz);
+            lCol.push(col[0], col[1], col[2], bgEdgeAlpha, col[0], col[1], col[2], bgEdgeAlpha);
+            px0 = qx; py0 = qy; pz0 = qz;
+          }
+          bgEdgeDrawn += 1;
         }
-        if (!isHi) bgEdgeDrawn += 1;
       }
 
       lineVertCount = lPos.length / 3;
@@ -1191,10 +1280,12 @@
       if (camDist < 1.1) maxLabels = Math.round(maxLabels * 1.45);
 
       var candidates = [];
+      var hasHoverFocus = !!renderOpts.hasHoverHighlight;
       var i;
       for (i = 0; i < cachedPolyNodes.length; i++) {
         var n3 = cachedPolyNodes[i];
         if (!n3.visible && !n3.focused) continue;
+        if (hasHoverFocus && !n3.focused && !n3.neighbor) continue;
         var pt = projectWorldToScreen(n3.wx, n3.wy * heightScale + 0.025, n3.wz, viewProj, width, height);
         if (!pt) continue;
         if (pt[0] < 24 || pt[0] > width - 24 || pt[1] < 24 || pt[1] > height - 24 || pt[2] < -1 || pt[2] > 1) continue;
@@ -1202,7 +1293,7 @@
           n3: n3,
           sx: pt[0],
           sy: pt[1] - 11,
-          priority: (n3.focused ? 1000000 : 0) + n3.deg * 10 - pt[2],
+          priority: (n3.focused ? 1000000 : (n3.neighbor ? 100000 : 0)) + n3.deg * 10 - pt[2],
         });
       }
       candidates.sort(function (a, b) { return b.priority - a.priority; });
@@ -1326,6 +1417,7 @@
       gl.uniformMatrix4fv(lLoc.u.uViewProj, false, cam.viewProj);
       gl.uniform1f(lLoc.u.uExtent, currentField.extent);
       gl.uniform1f(lLoc.u.uHeightScale, heightScale);
+      gl.uniform1f(lLoc.u.uFadeStart, 0.60);
       if (lineVertCount > 0) {
         activeAttrs = {};
         bindAttrib(lLoc.a.aPos, linePosBuf, 3, activeAttrs);
@@ -1364,17 +1456,18 @@
         gl.drawArrays(gl.TRIANGLES, solidOpaqueVertCount, solidDimVertCount);
       }
 
-      // 5. Focused / Hovered Highlight Neighbor Arcs
+      // 5. Focused / Hovered Highlight Neighbor Arcs (3D glowing ribbons)
       if (hiLineVertCount > 0) {
         activeAttrs = {};
         gl.useProgram(lineProg);
         gl.uniformMatrix4fv(lLoc.u.uViewProj, false, cam.viewProj);
         gl.uniform1f(lLoc.u.uExtent, currentField.extent);
         gl.uniform1f(lLoc.u.uHeightScale, heightScale);
+        gl.uniform1f(lLoc.u.uFadeStart, 0.98);
         bindAttrib(lLoc.a.aPos, hiLinePosBuf, 3, activeAttrs);
         bindAttrib(lLoc.a.aColor, hiLineColBuf, 4, activeAttrs);
         useAttrs(activeAttrs);
-        gl.drawArrays(gl.LINES, 0, hiLineVertCount);
+        gl.drawArrays(gl.TRIANGLES, 0, hiLineVertCount);
       }
 
       gl.depthMask(true);
@@ -1388,6 +1481,7 @@
         distance: camState.distance,
         heightScale: heightScale,
         labelFade: renderOpts.labelFade,
+        hasHoverHighlight: !!renderOpts.hasHoverHighlight,
       });
     }
 
@@ -1461,6 +1555,7 @@
           maxDegree: currentField.maxDegree,
           nodeCount: cachedNodes3d.length,
           polyCount: cachedPolyNodes.length,
+          hiEdgeCount: hiEdgeCount,
         } : null;
       },
       destroy: destroy,
@@ -1717,6 +1812,7 @@
         heightScale: heightScale,
         glintPhase: glintPhase,
         labelFade: labelFade,
+        hasHoverHighlight: !!hoveredNode,
       });
       if (keepGoing && typeof requestAnimationFrame === 'function') {
         renderRaf = requestAnimationFrame(renderNow);
@@ -1849,6 +1945,16 @@
       else onBackgroundClick(ev);
     }
 
+    function onPointerLeave(ev) {
+      if (!enabled) return;
+      if (hoveredNode) {
+        hoveredNode = null;
+        batchesDirty = true;
+        scheduleRender();
+      }
+      onNodeHover(null, ev);
+    }
+
     function onWheel(ev) {
       if (!enabled) return;
       if (entryAnim) cancelEntryAnim();
@@ -1868,6 +1974,7 @@
       stageEl.addEventListener('pointermove', onPointerMove);
       stageEl.addEventListener('pointerup', onPointerUp);
       stageEl.addEventListener('pointercancel', onPointerUp);
+      stageEl.addEventListener('pointerleave', onPointerLeave);
       stageEl.addEventListener('wheel', onWheel, { passive: false });
       stageEl.addEventListener('contextmenu', onContextMenu);
     }
@@ -2036,6 +2143,7 @@
         stageEl.removeEventListener('pointermove', onPointerMove);
         stageEl.removeEventListener('pointerup', onPointerUp);
         stageEl.removeEventListener('pointercancel', onPointerUp);
+        stageEl.removeEventListener('pointerleave', onPointerLeave);
         stageEl.removeEventListener('wheel', onWheel);
         stageEl.removeEventListener('contextmenu', onContextMenu);
       }
@@ -2084,6 +2192,7 @@
             targetZ: Number(camState.targetZ.toFixed(3)),
           },
           fieldStats: renderer ? renderer.getFieldStats() : null,
+          hoveredNodeId: hoveredNode ? hoveredNode.id : null,
           animating: !!entryAnim || !!draggingSlider || !!renderRaf,
           entryAnimating: !!entryAnim,
         };

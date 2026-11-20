@@ -664,12 +664,26 @@ a.hero-stat-num:focus-visible {
 /* 搜索联动：输入关键词时背景图谱高亮相关节点、其余淡出 */
 .mini-graph-node { transition: opacity var(--transition); }
 .mini-graph-node.mini-node-dim { opacity: .15; }
+.mini-graph-node.mini-node-hover-dim { opacity: .22; }
+.mini-graph-node.mini-node-hover,
+.mini-graph-node.mini-node-hover-neighbor { opacity: 1; }
+.mini-graph-node.mini-node-hover circle {
+  stroke: rgba(255, 255, 255, .85);
+  stroke-width: 1.8;
+  paint-order: stroke;
+}
+[data-theme="light"] .mini-graph-node.mini-node-hover circle {
+  stroke: rgba(24, 24, 24, .55);
+}
 .mini-graph-node.mini-node-hit circle {
   stroke: var(--accent);
   stroke-width: 2;
   paint-order: stroke;
 }
-#mini-graph-svg line.mini-edge-dim { opacity: .08; transition: opacity var(--transition); }
+#mini-graph-svg line { transition: opacity var(--transition), stroke-opacity var(--transition); }
+#mini-graph-svg line.mini-edge-dim { opacity: .08; }
+#mini-graph-svg line.mini-edge-hover-dim { opacity: .2; }
+#mini-graph-svg line.mini-edge-hover { opacity: 1; }
 /* 3D 连接度地形舞台（无框边界径向雾化虚化，graph.html 与首页预览共用） */
 .graph-perspective-stage {
   position: absolute;
