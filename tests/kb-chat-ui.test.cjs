@@ -687,7 +687,8 @@ test('Mermaid fenced code blocks render as diagrams and support click-to-zoom li
             mode: 'ai',
             grounded: true,
             cached: false,
-            answer: '流程如下：\n```mermaid\ngraph LR\n  A --> B\n```',
+            answer:
+              '流程如下：\n```mermaid\ngraph LR\n  A --> B\n```\n时序如下：\n```\nsequenceDiagram\n  A->>B: ping\n```',
             citations: [],
           }),
         };
@@ -725,8 +726,9 @@ test('Mermaid fenced code blocks render as diagrams and support click-to-zoom li
   await new Promise((r) => setTimeout(r, 15));
 
   assert.equal(mermaidInitSecurity, 'strict');
-  const mermaidHost = window.document.querySelector('.kb-chat-md-body .mermaid');
-  assert.ok(mermaidHost);
+  const mermaidHosts = window.document.querySelectorAll('.kb-chat-md-body .mermaid');
+  assert.equal(mermaidHosts.length, 2);
+  const mermaidHost = mermaidHosts[0];
   assert.equal(window.document.querySelector('.kb-chat-md-pre'), null);
   assert.ok(mermaidHost.classList.contains('mermaid-zoomable'));
   mermaidHost.click();

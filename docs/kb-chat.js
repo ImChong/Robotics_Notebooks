@@ -1000,10 +1000,66 @@
     _fallbackLightboxEl.overlay.hidden = false;
   }
 
+  var MERMAID_HEADER_RE =
+    /^(?:flowchart|graph|sequenceDiagram|classDiagram|stateDiagram(?:-v2)?|erDiagram|gantt|pie|gitGraph|mindmap|timeline|xychart-beta|quadrantChart|journey|sankey-beta|block-beta)\b/;
+
+  function extractMermaidBlockSource(fenceInfo, codeLines) {
+    var info = String(fenceInfo || '').trim();
+    var infoLower = info.toLowerCase();
+    var rawText = codeLines.join('\n');
+    if (infoLower === 'mermaid' || infoLower === 'mmd' || infoLower === 'mermaidjs') {
+      return rawText;
+    }
+    if (/^mermaid\s+/i.test(info)) {
+      var rest = info.replace(/^mermaid\s+/i, '').trim();
+      return rest ? rest + '\n' + rawText : rawText;
+    }
+    if (!infoLower || infoLower === 'text' || infoLower === 'plaintext' || infoLower === 'diagram') {
+      var firstNonEmpty = '';
+      for (var i = 0; i < codeLines.length; i += 1) {
+        var tLine = String(codeLines[i] || '').trim();
+        if (tLine) {
+          firstNonEmpty = tLine;
+          break;
+        }
+      }
+      if (MERMAID_HEADER_RE.test(firstNonEmpty)) {
+        return rawText;
+      }
+    }
+    return null;
+  }
+
+  function restoreMermaidFallbackIfFailed(nodes) {
+    for (var i = 0; i < nodes.length; i += 1) {
+      var host = nodes[i];
+      if (!host || !host.parentNode) continue;
+      var svg = host.querySelector('svg');
+      var isErrSvg =
+        svg &&
+        (svg.getAttribute('aria-roledescription') === 'error' ||
+          /Syntax error in text/i.test(svg.textContent || ''));
+      if (!svg || isErrSvg) {
+        var raw = host.getAttribute('data-raw-mermaid') || host.textContent || '';
+        var pre = document.createElement('pre');
+        pre.className = 'kb-chat-md-pre';
+        var codeEl = document.createElement('code');
+        codeEl.textContent = raw;
+        pre.appendChild(codeEl);
+        host.parentNode.replaceChild(pre, host);
+      }
+    }
+  }
+
   function renderMessageMermaid(container) {
     if (!container || typeof container.querySelectorAll !== 'function') return;
     var nodes = Array.prototype.slice.call(container.querySelectorAll('.mermaid'));
     if (!nodes.length) return;
+    for (var k = 0; k < nodes.length; k += 1) {
+      if (!nodes[k].getAttribute('data-raw-mermaid')) {
+        nodes[k].setAttribute('data-raw-mermaid', nodes[k].textContent || '');
+      }
+    }
 
     var renderPromise;
     if (typeof window !== 'undefined' && window.RNMermaid && typeof window.RNMermaid.render === 'function') {
@@ -1024,7 +1080,7 @@
           for (var i = 0; i < nodes.length; i += 1) {
             (function (host) {
               var svg = host.querySelector('svg');
-              if (!svg) return;
+              if (!svg || svg.getAttribute('aria-roledescription') === 'error') return;
               host.classList.add('mermaid-zoomable');
               host.setAttribute('tabindex', '0');
               host.setAttribute('role', 'button');
@@ -1039,11 +1095,14 @@
 
     renderPromise
       .then(function () {
+        restoreMermaidFallbackIfFailed(nodes);
         if (state.messagesEl) {
           state.messagesEl.scrollTop = state.messagesEl.scrollHeight;
         }
       })
-      .catch(function () {});
+      .catch(function () {
+        restoreMermaidFallbackIfFailed(nodes);
+      });
   }
 
   function appendUserMessage(text, skipSave) {
@@ -1213,7 +1272,7 @@
 
       // Fenced code block (or Mermaid diagram)
       if (/^```/.test(trimmed)) {
-        var fenceLang = trimmed.slice(3).trim().toLowerCase();
+        var fenceInfo = trimmed.slice(3).trim();
         var codeLines = [];
         i += 1;
         while (i < lines.length && !/^```/.test(lines[i].trim())) {
@@ -1221,10 +1280,11 @@
           i += 1;
         }
         if (i < lines.length && /^```/.test(lines[i].trim())) i += 1;
-        if (fenceLang === 'mermaid') {
+        var mermaidSource = extractMermaidBlockSource(fenceInfo, codeLines);
+        if (mermaidSource !== null) {
           var mermaidHost = document.createElement('div');
           mermaidHost.className = 'mermaid';
-          mermaidHost.textContent = codeLines.join('\n');
+          mermaidHost.textContent = mermaidSource;
           body.appendChild(mermaidHost);
           continue;
         }
