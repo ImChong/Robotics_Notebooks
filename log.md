@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] ingest | 多模空间11月上半月具身智能风向标
+- **意图：** 将九篇重点论文按问题组织为 VLA 技术地图和独立 canonical 实体，防止只列论文清单。
+- **去重：** AnyCamVLA 与 A³-VLA 复用已存节点，另外七篇新建详情。
+- **源码结论：** NS-VLA、DynaFLIP、PersonaDrive 的开源仓及脚本入口已静态核对。
+- **未完成：** 公众号配图与全文、九篇论文必要实验和附录未完全核验，PR 保留草稿。
+
 ## [2026-11-20] ingest | sources/papers/kinetics_observer_arxiv_2406_13267.md — 收录 Kinetics Observer 紧耦合状态估计
 
 - arXiv:2406.13267v2 论文独立实体：质心动力学、黏弹性接触、IMU/wrench 校正、可观性与真实机器人证据；包括基于原文的 Mermaid 流程图。
