@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-20] lint | health-check — 修复 4 项高频 methods 缺查询落地与 11 项缺页概念误报候选，info 预警降至 734（不含 stale 为 500）
+
 ## [2026-11-20] ingest | sources/repos/linger-simplexai.md — Linger 本地个人 Agent
 
 - 依据 SimplexAI 官方 GitHub README、架构/推理/Wiki/任务文档、LICENSE 与官网 FAQ，新增 Linger 唯一实体。
