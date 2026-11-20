@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-11-17
+updated: 2026-11-20
 status: complete
 related:
   - ../entities/paper-mosu2.md
@@ -13,6 +13,7 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-open-source-repro-paradigms.md
+  - ../comparisons/vln-seven-benchmarks-frameworks-evaluation.md
   - ./zero-shot-object-navigation.md
   - ../entities/sceneverse-pp.md
   - ../entities/esi-bench.md
@@ -316,6 +317,8 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 - [LHNav](../entities/paper-lhnav.md) — 人形长时程导航：Brain 规划 → GR00T N1.7 Cerebellum 出航点/运动 latent → 冻结 SONIC 类解码器 50 Hz；仿真 522 held-out episodes SR@0.5m 52.3%（OmniNav 36.0%），G1 真机三站点 4/5；官方仓仅网站文件（arXiv:2611.12136）
 
 ## 推荐继续阅读
+
+- [VLN 七基准、框架与评测协议对照](../comparisons/vln-seven-benchmarks-frameworks-evaluation.md) — R2R、VLN-CE、R4R、CVDN、HANNA、SOON、REVERIE 的一手资料、评测口径与复现实验顺序。
 
 - [机器人论文阅读笔记：MolmoSpaces](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation.html)
 - [机器人论文阅读笔记：Thinking in 360°](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild.html)
