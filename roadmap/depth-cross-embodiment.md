@@ -121,6 +121,7 @@ flowchart LR
 - [GreenWAM](../wiki/entities/paper-greenwam.md) — 20 类机器人映射到 79 个共享解剖关节槽，联合训练世界预测与策略
 - [Qwen-RobotManip](../wiki/entities/qwen-robot-manip.md) — 80 维 canonical state-action + 相机系 EEF delta
 - [UCAG-P](../wiki/entities/paper-ucag-p.md) · [EASG](../wiki/entities/paper-easg-vlm-native-action-model.md) — 相机系几何锚点两种落法
+- [Zero-Shot Compositional Generalization for Embodied Manipulation](../wiki/entities/paper-zero-shot-compositional-generalization-manipulation.md) — 已知机械臂与技能的未见配对：把源示范经标定 FK 变成共享 TCP 目标，用正向 IK 可达见证监督异构 native decoder；区别于直接 EEF + 在线 IK。
 - [UHAS](../wiki/methods/uhas-unified-hand-action-space.md) · [AdvDex](../wiki/entities/paper-advdex.md) — 灵巧手层的两种统一动作空间（RL 球面 vs VLA 关节槽）
 - [Latent Actions Matter](../wiki/entities/paper-latent-actions-matter.md) · [LAC-WM](../wiki/entities/paper-lac-wm-cross-embodiment-latent-action-world-model.md) — 潜在动作接口的实证与跨本体世界模型用法
 - [UniT：统一物理语言](../wiki/entities/paper-unit-unified-physical-language.md) — Stage 1 视觉锚定的三分支交叉重构学习共享潜动作；VLA 用离散监督、WM 用量化前连续特征，适合对照纯动作 tokenizer 与手工 retargeting 的边界
