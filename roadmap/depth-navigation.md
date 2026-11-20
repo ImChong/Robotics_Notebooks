@@ -193,6 +193,7 @@ flowchart LR
 - [VLN 10 篇论文技术地图](../wiki/overview/vln-10-papers-technology-map.md) 与 [VLN 开源复现四范式](../wiki/overview/vln-open-source-repro-paradigms.md)
 - [Matterport3D Simulator](../wiki/entities/matterport3d-simulator.md) 与 [Habitat-Sim](../wiki/entities/habitat-sim.md)
 - [NaVILA](../wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md) 与 [Qwen-RobotNav](../wiki/entities/qwen-robot-nav.md) — 腿式 / 通才导航 VLA 锚点
+- [ROAM（野外语义风险图 → RL 腿式导航）](../wiki/entities/paper-roam-open-world-legged-navigation.md) — Science Robotics 2026；10.1 km/2.38 km 真机远距离测试，补足低频 VLM 语义与高频运动策略协同的实例。
 - [HumanoidVLN](../wiki/entities/paper-humanoidvln.md) — Isaac Sim 首个人形物理 VLN 平台与基准，四本体 RL+PD/MPC、87 场景≥100 m²；JanusVLN 平均 SR 43.55%，G1 DualVLN 20 条 sim–real r=0.935
 - [NavVerse](../wiki/entities/paper-navverse.md) — UMich CURLY，Isaac Sim 室内–户外连通导航基准，10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/安全指标；零样本 VLA 完成率最高、模块化方法最安全，专测"出门后还会不会走"的 transition 失败
 - [VTInstructor](../wiki/entities/paper-vtinstructor.md) — 第一视角轨迹压缩为导航关键帧并注入路径/转向/终点提示，生成 VLN 指令并以冻结 follower 验证下游效果
