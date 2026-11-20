@@ -2,6 +2,7 @@
 type: entity
 project_id: lidar-localization-ros2
 code: https://github.com/rsasaki0109/lidar_localization_ros2
+institutions: [independent-maintainer]
 tags: [repo, lidar, localization, global-localization, ros2, navigation, ndt, gicp, pointcloud, open-source]
 status: complete
 updated: 2026-11-20
@@ -11,6 +12,7 @@ related:
   - ./fast-lio.md
   - ./lio-sam.md
   - ../methods/lidar-odometry-fusion.md
+  - ../methods/visual-line-matching-localization.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../../roadmap/depth-navigation.md
@@ -50,7 +52,7 @@ summary: "lidar_localization_ros2：消费预建 PCD/PLY 地图，以 BBS_2D 全
 
 | 项目 | 官方原始资料证据 |
 |---|---|
-| 维护者 | Ryohei Sasaki（rsasaki0109） |
+| 维护者 | Ryohei Sasaki（rsasaki0109）；所属类型按仓库注册表标注为「独立维护者（Independent Maintainer）」，不推断其雇主或院校 |
 | 一手源码 | [lidar_localization_ros2](https://github.com/rsasaki0109/lidar_localization_ros2)；核对 main 快照 `285070fc`（2026-11-19） |
 | 开源状态 | **已公开实现**；BSD-2-Clause，ROS 2 C++ 定位组件与 Python 全局初始化 / benchmark 工具 |
 | 必需输入 | 已有 .pcd/.ply 3D 地图，sensor_msgs/PointCloud2 |
@@ -203,6 +205,7 @@ ros2 run lidar_localization_ros2 quickstart.py --map output/my_area/map.pcd \
 
 - [GN10 PointCloud Localization](./gn10-pointcloud-localization.md)
 - [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)
+- [线匹配视觉定位](../methods/visual-line-matching-localization.md) — 同为在已知场地模型中做几何关联和位姿假设验证；这里使用 3D LiDAR，视觉线匹配依赖相机和已知场地线，二者不是同一实现。
 - [导航·SLAM 技术总览](../overview/navigation-slam-autonomy-stack.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [导航纵深路线 Stage 1](../../roadmap/depth-navigation.md)
