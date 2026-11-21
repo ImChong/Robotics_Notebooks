@@ -92,6 +92,7 @@ flowchart LR
 - [Panthera-HT 六轴主从遥操平台](../wiki/entities/cn-os-panthera-ht-main.md) — Stage 1 的硬件与 LeRobot 数据采集实例，可观察关节/相机时间对齐与有效样本率
 - [HALO：人机对齐的全身移动操作示教](../wiki/entities/paper-halo-2611-16439.md) — Stage 1 直接牵引与自然步行的机器人在环采集：2.3 N 低阻力平台 + 后处理部署对齐；与 UMI 等无机器人示教的动作映射成本对照
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
+- [ITW-Ego Plus：真实场景按需采集模态](../wiki/entities/itw-ego-plus.md) — Sol 第一视角配 Body/Wrist/Exo/Touch/Sound 选配，按遮挡、全身运动和接触监督缺口选型；未公布完整 schema / 许可，勿把 HiPHI 规模当作 Plus 规模
 - [GenRobot DAS 2.0](../wiki/entities/genrobot-das-2-0.md) — 按任务选择头戴视觉、腕部近景和手部触觉；先核对设备代际与实际输出字段，不把新硬件规格套到旧版 [Gen-HumanEgo](../wiki/entities/gen-human-ego-dataset.md) 公开 MCAP 数据
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
 - [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
