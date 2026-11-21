@@ -36,6 +36,27 @@
     unsupported: '降级 2D',
   };
 
+  /**
+   * 3D 地形节点拖拽松手后的回弹物理参数：
+   * 对齐 2D（VELOCITY_DECAY=0.54）与 3D 立体（d3VelocityDecay=0.40）力模拟的粘滞过阻尼松弛，
+   * 阻尼比 ζ > 1（主节点 ζ ≈ 1.26、邻居 ζ ≈ 1.43），平滑回拉至平衡点且零过冲弹跳。
+   */
+  var REBOUND_PARAMS = {
+    kSpring: 0.036,
+    velocityDecay: 0.38,   // 每帧保留 62% 速度（过阻尼 ζ ≈ 1.26，无过冲往复），对齐 2D/3D 力模拟粘滞收敛
+    nbSpring: 0.032,
+    nbVelocityDecay: 0.40, // 邻居每帧保留 60% 速度（过阻尼 ζ ≈ 1.43）
+    nbResidual: 0.18,
+    maxDuration: 2000,
+  };
+
+  /** 根据直连邻居数量计算回拉比例（孤立节点仅微调，高连接枢纽温和回拉而不猛弹） */
+  function computeReboundPullBack(nbCount) {
+    var count = nbCount > 0 ? nbCount : 0;
+    if (count <= 0) return 0.10;
+    return 0.30 + 0.26 * Math.min(1, Math.log(1 + count) / Math.log(30));
+  }
+
   function getDefaultsForTier(tier) {
     var base = DEFAULTS_BY_TIER[tier] || DEFAULTS_BY_TIER.full;
     return {
@@ -2423,16 +2444,19 @@
         ? dragState.node.id
         : null;
       if (terrainDirty || !terrainField) {
-        degreeInfo = computeNodeDegrees(nodes, edges);
+        var isDragOrRebound = !!activeDragId || !!reboundAnim;
+        if (!degreeInfo || !isDragOrRebound) {
+          degreeInfo = computeNodeDegrees(nodes, edges);
+        }
         var gridN = tier === 'lite' ? 92 : (nodes.length <= 160 ? 120 : 148);
-        var isLiveMotion = liveSimSync || !!activeDragId || !!reboundAnim;
-        // 实时力模拟 / 拖拽 / 回弹帧保持阻尼连贯运动，不在每帧重复多轮重排；落稳后执行一次阻尼 Jacobi 防重叠烘焙
+        var isLiveMotion = liveSimSync || isDragOrRebound;
+        // 实时力模拟 / 拖拽 / 回弹帧保持阻尼连贯运动，大图拖拽与回弹阶段延后到落稳帧再统一执行完整 Jacobi 防重叠烘焙
         terrainField = computeTerrainField(nodes, degreeInfo, {
           gridSize: gridN,
           extent: (activeDragBounds && terrainField) ? terrainField.extent : undefined,
           activeIds: data.activeIds || null,
           fixedBounds: activeDragBounds,
-          skipOverlapResolve: liveSimSync,
+          skipOverlapResolve: liveSimSync || (isLiveMotion && nodes.length > 160),
           overlapPasses: isLiveMotion ? 1 : (tier === 'lite' ? 4 : 6),
           pinnedId: activeDragId,
         });
@@ -2510,36 +2534,48 @@
     function stepReboundAnim() {
       if (!reboundAnim) return false;
       var nowR = nowMs();
-      var dtSteps = Math.max(0.4, Math.min(2.0, (nowR - reboundAnim.lastTime) / 16.667));
+      var elapsedFrame = Math.max(0, Math.min(600, nowR - reboundAnim.lastTime));
       reboundAnim.lastTime = nowR;
       var elapsedR = nowR - reboundAnim.startTime;
+      var totalTicks = Math.max(0.5, elapsedFrame / 16.667);
+      var subSteps = Math.max(1, Math.ceil(totalTicks));
+      var subDt = totalTicks / subSteps; // 恒落在 [0.5, 1.0]，数值稳定且跨帧率严格同步墙钟
       var rNode = reboundAnim.node;
-      // Symplectic Euler underdamped spring-mass-damper: 2-3 organic elastic bounces before rest
-      var kSpring = 0.125;
-      var damp = Math.pow(0.835, dtSteps);
-      var fx = (reboundAnim.eqX - rNode.x) * kSpring;
-      var fy = (reboundAnim.eqY - rNode.y) * kSpring;
-      reboundAnim.vx = (reboundAnim.vx + fx * dtSteps) * damp;
-      reboundAnim.vy = (reboundAnim.vy + fy * dtSteps) * damp;
-      rNode.x += reboundAnim.vx * dtSteps;
-      rNode.y += reboundAnim.vy * dtSteps;
+      // 对齐 2D/3D 立体力模拟的粘滞过阻尼松弛：固定子步平滑回落到力平衡位置，无过冲弹跳、低帧率不突跳
+      var kSpring = REBOUND_PARAMS.kSpring;
+      var damp = Math.pow(1 - REBOUND_PARAMS.velocityDecay, subDt);
+      var nbResidual = REBOUND_PARAMS.nbResidual;
+      var nbSpring = REBOUND_PARAMS.nbSpring;
+      var nbDamp = Math.pow(1 - REBOUND_PARAMS.nbVelocityDecay, subDt);
+      for (var s = 0; s < subSteps; s++) {
+        var fx = (reboundAnim.eqX - rNode.x) * kSpring;
+        var fy = (reboundAnim.eqY - rNode.y) * kSpring;
+        reboundAnim.vx = (reboundAnim.vx + fx * subDt) * damp;
+        reboundAnim.vy = (reboundAnim.vy + fy * subDt) * damp;
+        rNode.x += reboundAnim.vx * subDt;
+        rNode.y += reboundAnim.vy * subDt;
+        var shiftX = rNode.x - reboundAnim.origX;
+        var shiftY = rNode.y - reboundAnim.origY;
+        for (var ri = 0; ri < reboundAnim.neighbors.length; ri++) {
+          var rnb = reboundAnim.neighbors[ri];
+          var tNx = rnb.x0 + shiftX * nbResidual;
+          var tNy = rnb.y0 + shiftY * nbResidual;
+          rnb.vx = (rnb.vx + (tNx - rnb.node.x) * nbSpring * subDt) * nbDamp;
+          rnb.vy = (rnb.vy + (tNy - rnb.node.y) * nbSpring * subDt) * nbDamp;
+          rnb.node.x += rnb.vx * subDt;
+          rnb.node.y += rnb.vy * subDt;
+        }
+      }
       onNodeDrag(rNode, rNode.x, rNode.y, null);
-
-      var shiftX = rNode.x - reboundAnim.origX;
-      var shiftY = rNode.y - reboundAnim.origY;
-      var nbResidual = 0.14;
-      var nbDamp = Math.pow(0.82, dtSteps);
+      var curShiftX = rNode.x - reboundAnim.origX;
+      var curShiftY = rNode.y - reboundAnim.origY;
       var maxNbEnergy = 0;
-      for (var ri = 0; ri < reboundAnim.neighbors.length; ri++) {
-        var rnb = reboundAnim.neighbors[ri];
-        var tNx = rnb.x0 + shiftX * nbResidual;
-        var tNy = rnb.y0 + shiftY * nbResidual;
-        rnb.vx = (rnb.vx + (tNx - rnb.node.x) * 0.11 * dtSteps) * nbDamp;
-        rnb.vy = (rnb.vy + (tNy - rnb.node.y) * 0.11 * dtSteps) * nbDamp;
-        rnb.node.x += rnb.vx * dtSteps;
-        rnb.node.y += rnb.vy * dtSteps;
-        onNodeDrag(rnb.node, rnb.node.x, rnb.node.y, null);
-        var nbE = Math.hypot(tNx - rnb.node.x, tNy - rnb.node.y) + Math.hypot(rnb.vx, rnb.vy);
+      for (var ci = 0; ci < reboundAnim.neighbors.length; ci++) {
+        var cnb = reboundAnim.neighbors[ci];
+        onNodeDrag(cnb.node, cnb.node.x, cnb.node.y, null);
+        var cTx = cnb.x0 + curShiftX * nbResidual;
+        var cTy = cnb.y0 + curShiftY * nbResidual;
+        var nbE = Math.hypot(cTx - cnb.node.x, cTy - cnb.node.y) + Math.hypot(cnb.vx, cnb.vy);
         if (nbE > maxNbEnergy) maxNbEnergy = nbE;
       }
 
@@ -2548,7 +2584,10 @@
 
       var distEq = Math.hypot(reboundAnim.eqX - rNode.x, reboundAnim.eqY - rNode.y);
       var speedEq = Math.hypot(reboundAnim.vx, reboundAnim.vy);
-      if ((distEq < 0.35 && speedEq < 0.25 && maxNbEnergy < 0.45) || elapsedR >= reboundAnim.maxDuration) {
+      var stopDist = Math.max(0.35, (reboundAnim.dropDist || 0) * 0.008);
+      var stopSpeed = Math.max(0.25, stopDist * 0.5);
+      var stopNb = Math.max(0.45, stopDist * 1.1);
+      if ((distEq < stopDist && speedEq < stopSpeed && maxNbEnergy < stopNb) || elapsedR >= reboundAnim.maxDuration) {
         rNode.x = reboundAnim.eqX;
         rNode.y = reboundAnim.eqY;
         onNodeDrag(rNode, rNode.x, rNode.y, null);
@@ -3057,9 +3096,7 @@
         if (stageEl) stageEl.style.cursor = canDragNodesNow() ? 'grab' : '';
         var nbs = wasDrag.neighbors || [];
         var nbCount = nbs.length;
-        var pullBack = nbCount > 0
-          ? (0.62 + 0.26 * Math.min(1, Math.log(1 + nbCount) / Math.log(25)))
-          : 0.45;
+        var pullBack = computeReboundPullBack(nbCount);
         var eqX = wasDrag.node.x + (wasDrag.origX - wasDrag.node.x) * pullBack;
         var eqY = wasDrag.node.y + (wasDrag.origY - wasDrag.node.y) * pullBack;
         var dropDist = Math.hypot(wasDrag.node.x - eqX, wasDrag.node.y - eqY);
@@ -3071,12 +3108,13 @@
             origY: wasDrag.origY,
             eqX: eqX,
             eqY: eqY,
+            dropDist: dropDist,
             vx: 0,
             vy: 0,
             neighbors: nbs,
             startTime: nowMs(),
             lastTime: nowMs(),
-            maxDuration: 1800,
+            maxDuration: REBOUND_PARAMS.maxDuration,
           };
           terrainDirty = true;
           batchesDirty = true;
@@ -3425,6 +3463,7 @@
     DEFAULTS_BY_TIER: DEFAULTS_BY_TIER,
     TOP_VIEW_PARAMS: TOP_VIEW_PARAMS,
     TIER_BADGE_TEXT: TIER_BADGE_TEXT,
+    REBOUND_PARAMS: REBOUND_PARAMS,
     getDefaultsForTier: getDefaultsForTier,
     clampParams: clampParams,
     resolveCapabilityTier: resolveCapabilityTier,
@@ -3442,6 +3481,7 @@
     worldToGraphCoords: worldToGraphCoords,
     resolveSphereOverlaps3D: resolveSphereOverlaps3D,
     evalForceMotionXZ: evalForceMotionXZ,
+    computeReboundPullBack: computeReboundPullBack,
     createController: createController,
   };
 });

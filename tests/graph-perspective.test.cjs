@@ -677,18 +677,36 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const transformBefore = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
   const yawBefore = leftState3d.params.yaw;
   const pitchBefore = leftState3d.params.pitch;
+  const dragOffsetX = t0.x > 350 ? -85 : 85;
+  const dragOffsetY = t0.y > 240 ? -42 : 42;
   stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: t0.x, clientY: t0.y }));
-  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: t0.x + 85, clientY: t0.y + 42 }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: t0.x + dragOffsetX, clientY: t0.y + dragOffsetY }));
   await new Promise((r) => setTimeout(r, 30));
   const midDragState = w.RNMiniGraph.getPerspectiveState();
   assert.equal(midDragState.draggingNodeId, t0.id, 'dragging a 3D node enters node-drag mode');
   assert.equal(midDragState.params.yaw, yawBefore, 'dragging a node must not orbit camera yaw');
   assert.equal(midDragState.params.pitch, pitchBefore, 'dragging a node must not orbit camera pitch');
-  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: t0.x + 85, clientY: t0.y + 42 }));
+  const dropTarget = w.RNMiniGraph.getPerspectiveTargets(5).find((item) => item.id === t0.id);
+  assert.ok(dropTarget, 'dragged 3D node stays visible before release');
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: t0.x + dragOffsetX, clientY: t0.y + dragOffsetY }));
   const rightAfterDrop = w.RNMiniGraph.getPerspectiveState();
   assert.equal(rightAfterDrop.draggingNodeId, null);
-  assert.equal(rightAfterDrop.rebounding, true, 'releasing dragged 3D node triggers elastic force rebound');
-  await new Promise((r) => setTimeout(r, 40));
+  assert.equal(rightAfterDrop.rebounding, true, 'releasing dragged 3D node triggers viscous rebound settling');
+  await new Promise((r) => setTimeout(r, 140));
+  const earlyRebound = w.RNMiniGraph.getPerspectiveTargets(5).find((item) => item.id === t0.id);
+  await new Promise((r) => setTimeout(r, 200));
+  const midRebound = w.RNMiniGraph.getPerspectiveTargets(5).find((item) => item.id === t0.id);
+  const dxDrop = dropTarget.x - t0.x;
+  const dyDrop = dropTarget.y - t0.y;
+  const dropSpanSq = dxDrop * dxDrop + dyDrop * dyDrop;
+  assert.ok(dropSpanSq > 4, 'drag produces measurable screen displacement');
+  assert.ok(earlyRebound && midRebound, 'rebounding node stays projected cleanly inside viewport');
+  const fracEarly = ((earlyRebound.x - t0.x) * dxDrop + (earlyRebound.y - t0.y) * dyDrop) / dropSpanSq;
+  const fracMid = ((midRebound.x - t0.x) * dxDrop + (midRebound.y - t0.y) * dyDrop) / dropSpanSq;
+  assert.ok(
+    fracEarly > 0 && fracEarly < 0.99 && fracMid > 0 && fracMid < fracEarly,
+    `overdamped rebound settles monotonically toward equilibrium without slingshotting past origin (${fracEarly.toFixed(3)} -> ${fracMid.toFixed(3)})`
+  );
   const transformAfter = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
   assert.notEqual(transformAfter, transformBefore, 'dragging node in 3D updates its underlying (x, y) synced to 2D');
   delete w.requestAnimationFrame;
@@ -839,4 +857,67 @@ test('3D terrain spheres match 3D force-graph MeshLambertMaterial shading and op
       !perspectiveSrc.includes('bn.alpha * 0.88'),
     'background point orbs split into opaque depth-writing and dimmed translucent passes without 0.88 alpha fade'
   );
+});
+
+test('3D terrain drag rebound uses overdamped viscous settling aligned with 2D and 3D force simulation', () => {
+  const gp = require('../docs/graph-perspective.js');
+  const rp = gp.REBOUND_PARAMS;
+  assert.ok(rp && typeof gp.computeReboundPullBack === 'function', 'exports REBOUND_PARAMS and computeReboundPullBack');
+
+  assert.equal(gp.computeReboundPullBack(0), 0.10, 'isolated nodes stay mostly where dropped');
+  const pb1 = gp.computeReboundPullBack(1);
+  assert.ok(pb1 > 0.30 && pb1 < 0.42, `leaf node pullBack (${pb1}) sits gently between 0.30 and 0.42`);
+  const pb30 = gp.computeReboundPullBack(30);
+  assert.ok(pb30 <= 0.58 && pb30 > pb1, `hub node pullBack (${pb30}) stays bounded <= 0.58`);
+
+  const mainDamp = 1 - rp.velocityDecay;
+  const mainZeta = -Math.log(mainDamp) / (2 * Math.sqrt(rp.kSpring));
+  assert.ok(mainZeta >= 1.0, `primary rebound must be overdamped (zeta=${mainZeta.toFixed(3)} >= 1.0)`);
+
+  const nbDamp = 1 - rp.nbVelocityDecay;
+  const nbZeta = -Math.log(nbDamp) / (2 * Math.sqrt(rp.nbSpring));
+  assert.ok(nbZeta >= 1.0, `neighbor rebound must be overdamped (zeta=${nbZeta.toFixed(3)} >= 1.0)`);
+
+  // Simulate 100-unit drag release over 120 frames (dtSteps = 1)
+  for (const nbCount of [0, 1, 25]) {
+    const pullBack = gp.computeReboundPullBack(nbCount);
+    const eqX = 100 * (1 - pullBack);
+    let x = 100;
+    let vx = 0;
+    let maxSpeed = 0;
+    let overshoot = 0;
+    for (let f = 0; f < 120; f++) {
+      const fx = (eqX - x) * rp.kSpring;
+      vx = (vx + fx) * mainDamp;
+      x += vx;
+      maxSpeed = Math.max(maxSpeed, Math.abs(vx));
+      if (x < eqX) overshoot = Math.max(overshoot, eqX - x);
+    }
+    assert.equal(overshoot, 0, `nbCount=${nbCount}: zero slingshot overshoot past eqX`);
+    assert.ok(maxSpeed < 4, `nbCount=${nbCount}: gentle peak speed (${maxSpeed.toFixed(2)} < 4)`);
+    assert.ok(Math.abs(eqX - x) < 0.5, `nbCount=${nbCount}: settles within 0.5 units of eqX`);
+  }
+
+  // Verify fixed-timestep substepping keeps low-FPS (10fps = 6 substeps/frame) convergent with 60fps
+  const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
+  assert.ok(
+    perspectiveSrc.includes('Math.ceil(totalTicks)') && perspectiveSrc.includes('var subDt = totalTicks / subSteps;'),
+    'stepReboundAnim uses wall-clock-synchronized fixed substeps across slow frames'
+  );
+  const pbHub = gp.computeReboundPullBack(25);
+  const eqHub = 100 * (1 - pbHub);
+  let x10fps = 100;
+  let v10fps = 0;
+  let overshoot10fps = 0;
+  const subDamp10 = Math.pow(mainDamp, 1.0);
+  for (let frame = 0; frame < 20; frame++) {
+    for (let s = 0; s < 6; s++) {
+      const fx = (eqHub - x10fps) * rp.kSpring;
+      v10fps = (v10fps + fx) * subDamp10;
+      x10fps += v10fps;
+      if (x10fps < eqHub) overshoot10fps = Math.max(overshoot10fps, eqHub - x10fps);
+    }
+  }
+  assert.equal(overshoot10fps, 0, '10fps substepped rebound produces zero overshoot past eqHub');
+  assert.ok(Math.abs(eqHub - x10fps) < 0.5, '10fps substepped rebound converges within 0.5 units in 2s');
 });
