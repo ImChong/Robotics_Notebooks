@@ -190,6 +190,7 @@ flowchart LR
 - 用一个开源 VLA 在移动操作仿真基准（RoboCasa 类）上跑评测，记录失败模式
 
 ### 推荐读什么
+- [Awaken-HI：原人体运动 + 机器人动作共享专家](../wiki/entities/paper-awaken-hi.md) — Stage 4 的全身 40D VLA：50K h 人类预训练 + 150 h T800 后训练、八任务均值 93.75%（作者报告）；目前无可运行代码/权重。
 - [WEVO：G1 全身 VLA 的部署域视频 WM 后训练](../wiki/entities/paper-wevo-world-model-enabled-vla-loco-manipulation.md) — 用仿真初始化、接触/行走 play 与少量真实自主轨迹校准 WM，SONIC–MuJoCo 执行全身目标；DICE-RL 在视频 WM 中后训练，三任务真机平均成功率 75.0%。
 - [DiPLO：自蒸馏扩散全身搬运规划](../wiki/entities/paper-diplo-self-distilled-diffusion-planning.md) — 先用 SBTO 动态可行轨迹训练 DiT + RL 跟踪器，再经 SD:DPO 去除 IK 先验依赖、DA:PPO 对齐物体目标；Stage 4 的生成式全身规划代表。
 - [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
