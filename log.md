@@ -527,6 +527,13 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | sources/papers/robokit_corl2026_spotlight.md — 补录 RoboKit arXiv:2611.20185 标准论文身份
+
+- **意图：** 用户提供 arXiv 编号后复用已经完整收录的 RoboKit 实体，避免重复页面。
+- **核对：** arXiv v1 正文、方法、实验、限制与附录 A–C；之前作者 PDF 的全篇归档和源码时序图保持不变。
+- **开源结论：** 官方 [openrobokit/robokit](https://github.com/openrobokit/robokit) 可公开获取；性能仅引用论文作者实验。
+- **导航：** 更新 RoboKit 实体标准 arXiv ID，并接入动作重定向纵深路线 Stage 1。
+
 ## [2026-11-21] ingest | sources/sites/noitom-robotics.md — 增补诺亦腾机器人公司路线，串联 Adam-U、ModalityNet 与联合研究，记录数据与源码开放范围
 
 ## [2026-11-21] ingest | sources/blogs/embodied_heart_itw_ego_plus_learnability_2026_11_20.md — 可学习性报道与 ITW-Ego Plus 五种选配模态一手核验
