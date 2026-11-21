@@ -22,7 +22,7 @@ tags:
 status: complete
 updated: 2026-11-21
 arxiv: '2606.26201'
-venue: CoRL 2026（arXiv v1: 2026-06-24）
+venue: CoRL 2026
 related:
 - ../tasks/loco-manipulation.md
 - ../concepts/contact-rich-manipulation.md
