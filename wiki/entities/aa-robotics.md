@@ -2,12 +2,11 @@
 type: entity
 tags: [robotics, embodied-ai, benchmark, manipulation, coding-agent, physical-evaluation]
 status: complete
-updated: 2026-11-21
+updated: 2026-10-21
 project_id: aa-robotics
 project: https://artificialanalysis.ai/articles/aa-robotics
 related:
   - ./robodojo.md
-  - ./paper-robochallenge-zero.md
   - ./paper-hexashell.md
   - ../tasks/manipulation.md
   - ../concepts/sim-vs-real-eval-gap.md
@@ -72,7 +71,7 @@ summary: "Artificial Analysis 的 AA-Robotics v0.1：用 coding-agent Harness �
 
 ## 与相关基准的关系
 
-AA-Robotics 是以语言模型 coding agent 为控制主体的真机桌面操作评测。[RoboChallenge Zero](./paper-robochallenge-zero.md) 则按月新增/改变真机任务，在严格零样本协议下比较固定系统版本；其首发 Agent 通过目标末端位姿与夹爪工具执行，不能与 AA-Robotics 的 HTTP 编程接口及分数直接互比。与 [RoboDojo](./robodojo.md) 的仿真/真机策略基准、[HexaShell](./paper-hexashell.md) 的轻量 Agent Harness 研究有关联，但任务集合、硬件、执行接口和评分口径不同，数值不可直接横向比较。在 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) 中，它属于 ③ 策略任务成功率评测层的真机桌面操作样本，适合与仿真基准一起做 sim↔real 校准。
+AA-Robotics 是以语言模型 coding agent 为控制主体的真机桌面操作评测。与 [RoboDojo](./robodojo.md) 的仿真/真机策略基准、[HexaShell](./paper-hexashell.md) 的轻量 Agent Harness 研究有关联，但任务集合、硬件、执行接口和评分口径不同，数值不可直接横向比较。在 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) 中，它属于 ③ 策略任务成功率评测层的真机桌面操作样本，适合与仿真基准一起做 sim↔real 校准。
 
 ## 参考来源
 
