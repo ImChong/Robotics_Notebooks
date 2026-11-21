@@ -346,6 +346,8 @@ print("apply control:", u.ravel())
 
 ## 关联页面
 
+- [TimesFM 3.0](../entities/timesfm-3.md) — 零样本运营时序预测可作为负荷/产能规划的外部需求先验；与 MPC 的动作条件动力学预测不同，不能直接替代控制器或系统模型。
+
 - [MPC 预测模型推导](../formalizations/mpc-prediction-model-from-floating-base-dynamics.md) — 完整动力学的来源以及离散预测模型需要补齐的步骤。
 
 - [LG-DKGP](../entities/paper-lg-dkgp.md) — 冻结 LeWM，并用已执行动作历史构造连续性先验来初始化 CEM；主设置每次规划为 300 候选 × 30 轮、执行 25 步后重规划，属于采样式滚动规划实例，不是硬实时伺服的验证。（[来源复核归档](../../sources/papers/lg_dkgp_arxiv_2611_16645.md)）
