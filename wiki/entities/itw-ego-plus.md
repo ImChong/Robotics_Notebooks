@@ -2,7 +2,7 @@
 type: entity
 title: ITW-Ego Plus（真实场景第一视角与可选物理模态）
 tags: [dataset, humanoid, motion-capture, egocentric, embodied-ai]
-status: draft
+status: complete
 updated: 2026-11-21
 project_id: itw-ego-plus
 project: https://modalitynet.com/
@@ -106,7 +106,7 @@ flowchart LR
 | “200 万小时网络视频不如 2000 小时手套数据”、公司估值/营收 | 属用户提供的二手报道信息，未在本次一手核对中取得可复现数据或独立财务证明 |
 | 端到端策略收益 | 未见 ITW-Ego Plus 在控制变量下的独立训练消融或真实机器人成功率数字 |
 
-尽管 ModalityNet 提供公开入口，数据目录的授权样本和完整 schema 尚未读取，故此页**保持 draft**，不将产品宣传等同已验证的机器人技能迁移。
+**页面完成范围：** 已按可访问的一手公告和技术文章完成产品模态、工作流程与局限的知识整理；`status: complete` 仅表示该**公开资料范围内的知识页**已具备必要结构和通读溯源，不意味着 ITW-Ego Plus 数据集的样本、许可、标定或真机效果已通过验证。ModalityNet 授权后的数据目录与完整 schema 尚未读取，相关事实继续明确标注“未核验”。
 
 ## 源码运行时序图
 
