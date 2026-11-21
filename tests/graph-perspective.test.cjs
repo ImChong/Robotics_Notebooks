@@ -793,3 +793,50 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
     'graph.html provides device-appropriate desktop and touch hint copy'
   );
 });
+
+test('3D terrain spheres match 3D force-graph MeshLambertMaterial shading and opaque depth pass', () => {
+  const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
+  assert.ok(
+    perspectiveSrc.includes('vec3 shadeLambertSphere(vec3 baseSrgb, vec3 nView, vec3 lightDirView)') &&
+      perspectiveSrc.includes('0.60382734 + 0.6 * dotNL') &&
+      perspectiveSrc.includes('srgbToLinear') &&
+      perspectiveSrc.includes('linearToSrgb') &&
+      perspectiveSrc.includes('0.000001'),
+    'shared Lambert sphere shader implements Three.js Ambient/Directional lighting and sRGB conversion with zero-pow guard'
+  );
+  const solidStart = perspectiveSrc.indexOf('var solidFS =');
+  const pointVSStart = perspectiveSrc.indexOf('var pointVS =');
+  const pointFSStart = perspectiveSrc.indexOf('var pointFS =');
+  const shaderReturnStart = perspectiveSrc.indexOf('return {\n      terrainVS:');
+  assert.ok(solidStart >= 0 && pointVSStart > solidStart && pointFSStart > pointVSStart && shaderReturnStart > pointFSStart);
+
+  const solidFSSrc = perspectiveSrc.slice(solidStart, pointVSStart);
+  const pointFSSrc = perspectiveSrc.slice(pointFSStart, shaderReturnStart);
+
+  assert.ok(
+    solidFSSrc.includes('uniform vec3 uLightDirView;') && solidFSSrc.includes('shadeLambertSphere(vColor.rgb, N, uLightDirView)'),
+    'solidFS uses shared Lambert sphere shading aligned to world +Y light'
+  );
+  assert.ok(
+    !solidFSSrc.includes('float spec =') && !solidFSSrc.includes('float rim =') && !solidFSSrc.includes('float ring ='),
+    'solidFS removes glossy specular, Fresnel rim, and outer bright ring'
+  );
+  assert.ok(
+    pointFSSrc.includes('uniform vec3 uLightDirView;') && pointFSSrc.includes('shadeLambertSphere(vColor.rgb, N, uLightDirView)'),
+    'pointFS uses identical shared Lambert sphere shading'
+  );
+  assert.ok(
+    !pointFSSrc.includes('pow(max(0.0, diff), 8.0)') && !pointFSSrc.includes('smoothstep(0.76, 1.0, r2)'),
+    'pointFS removes white specular highlight and fuzzy rim falloff'
+  );
+  assert.ok(
+    perspectiveSrc.includes('var lightDirView = [cam.view[4], cam.view[5], cam.view[6]];'),
+    'render passes view-space world +Y light direction to sphere shaders'
+  );
+  assert.ok(
+    perspectiveSrc.includes('ptOpaqueCount') &&
+      perspectiveSrc.includes('ptDimCount') &&
+      !perspectiveSrc.includes('bn.alpha * 0.88'),
+    'background point orbs split into opaque depth-writing and dimmed translucent passes without 0.88 alpha fade'
+  );
+});
