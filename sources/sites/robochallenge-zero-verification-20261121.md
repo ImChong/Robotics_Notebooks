@@ -2,29 +2,31 @@
 
 - **资料类型：** 官方平台 / 新评测榜单线索
 - **归档日期：** 2026-11-21
-- **核对范围：** 核查 RoboChallenge 官方网站首页与 Challenges 页面可检索正文、官方 GitHub 组织页公开仓库清单，并对照 Table30 V2 的官方论文入口；当前资料能证实 RoboChallenge 平台与 Table30 V2，**不能证实名为 Zero 的新榜单及其独立评测规则**。
+- **增量核查：** 2026-11-21，复查官方 Challenges、官方原始论文及年度报告；以“RoboChallenge Zero / monthly / 每月换题 / 2026-11-20”等关键词检索英文、中文和官方站点。
+- **核对范围：** 已核查可检索的 RoboChallenge 官方入口、Table30 V2 公开论文与官方年度报告相关章节，以及 GitHub 公开资源。已取得的是**旧平台与 Table30 V2 的原始材料**，并非 Zero 新榜单的原文公告；Zero 的独立官方规则尚未取得，不能声称通读。
 - **通读：** 未完成
 
-## 已找到的一手资料
+## 已找到的一手资料（注意：均非 Zero 独立原文）
 
-1. [RoboChallenge 官方首页](https://robochallenge.ai/)：官方介绍真实机器人、标准化任务和公开排名；首页可检索内容展示 Table30 / Table30 V2，而非 Zero 的完整规则。
-2. [RoboChallenge Challenges](https://robochallenge.ai/challenges)：目前可检索内容列出 Table30 V2、Table30 V2 Simulation 与 Table30；不可据此断言 Zero 不存在，只能说未取得可验证的独立条目。
-3. [RoboChallenge 官方 GitHub 组织](https://github.com/RoboChallenge)：官方公开 RoboChallengeInference、Community、openpi 等仓库；截至本次核验，公开列表未提供 Zero 独立实现仓库。
-4. [Table30 V2 原始论文（CVPR 2026 Workshops）](https://openaccess.thecvf.com/content/CVPR2026W/GigaBrainChallenge/html/Ma_Table30_V2_Evaluating_Generalized_Models_by_Real_Robots_at_Scale_CVPRW_2026_paper.html)：讨论 Table30 V2 的多任务、零样本和分布外泛化评测；**不等于** Zero 新榜单的公告。
+1. [RoboChallenge 官方首页](https://robochallenge.ai/)：公开真机评测平台、Table30 和 Table30 V2 排名入口；已检索的可读页面未给出 Zero 新榜单的完整规则。
+2. [RoboChallenge 官方 Challenges](https://robochallenge.ai/challenges)：当前可检索条目有 Table30 V2、Table30 V2 Simulation 和 Table30；这不等于证明未上线别的渠道。
+3. [RoboChallenge 官方 GitHub 组织](https://github.com/RoboChallenge)：能找到评测基础设施与既有任务资源；未找到可直接识别的新 Zero 独立源码/评测协议。
+4. [Table30 V2 原始论文，CVPRW 2026](https://openaccess.thecvf.com/content/CVPR2026W/GigaBrainChallenge/html/Ma_Table30_V2_Evaluating_Generalized_Models_by_Real_Robots_at_Scale_CVPRW_2026_paper.html)：官方摘要明确提出 **multi-task、zero-shot、out-of-domain** 评测；它描述的是 Table30 V2，而不是在 2026-11-20 发布的独立 Zero。
+5. [RoboChallenge 官方年度报告（2025 Q4–2026 Q1）](https://robochallenge.ai/2025%20RoboChallenge%20%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.pdf)：报告将“提升 Zero-Shot 能力评估覆盖”列为社区反馈与后续改进方向，**不能推导成 2026-11-20 发布的新榜单或每月换题承诺**。
 
-## 线索及证据边界
+## 已核实结论与证据边界
 
-- 用户提供线索：**“2026-11-20 前后 RoboChallenge 发布名为 Zero 的真机评测榜单，计划每月换题”。**
-- **尚未独立验证**：发布日、正式产品名、月度更题频率、是否公开隐藏任务、参赛入口、评测本体、计分规则、参测模型、榜单成绩。
-- **不得混淆**：Table30 V2 论文中的「zero-shot 评测能力」不是“RoboChallenge Zero”独立榜单已经上线的证据。
-- 以上线索不应作为已核实事实导出至正式 wiki 实体或绘制推测的技术流程图；不能据此宣称原文通读完成或健康度 3/3。
+- **已证实：** RoboChallenge 原有 Table30 真机榜、升级版 Table30 V2 及后者规划的 zero-shot / OOD 测试，均有官方独立材料支撑。
+- **未证实：** 用户线索“2026-11-20 前后发布 RoboChallenge Zero 真机榜单，计划每月换题”。截至本次检索，**没有取得 Zero 的发布帖、独立详情页、规则正文或可验证的月度轮换安排**。
+- **不可混淆：** Table30 V2 中的 **zero-shot 测试设置**、报告中的 **Zero-Shot 规划**、独立命名为 **Zero** 的新产品/榜单是不同层面的说法，不能相互替代。
+- **不做推测：** 参赛模型、硬件、任务种类、是否免微调、成绩、评分规则和真实发布时间均留待一手资料核对。
 
 ## 下一步核验清单
 
-1. 获取 RoboChallenge 官方 Zero 公告原文或独立榜单页面，核对日期与原始措辞。
-2. 通读规则文档：任务公布与轮换机制、是否允许微调、测试执行协议、成功判据、复现实验、排名与结果公开范围。
-3. 核对是否开放 Zero 专用源码、基线、数据、权重；区分已发布与计划发布。
-4. 与现有 Table30 / Table30 V2 去重，建立独立且有一手证据的实体页，并补 Mermaid 主流程与源码运行时序图（有实际可运行源码时）。
-5. 运行仓库健康度脚本和全量 CI，确认变更页面真实 3/3 后，将草稿 PR 转正。
+1. 拿到 **Zero** 官方发布帖 / 可公开访问的 Zero leaderboard / 规则正文，确认发文作者、时间、正式产品名称和 URL。
+2. 通读规则原文，核对“每月换题”的准确措辞、轮换周期与版本、训练集和测试集可见性、提交入口及评分指标。
+3. 查证是否有 Zero 专用评测代码、基线、数据、模型权重；区分实际可访问、部分开放和预告。
+4. 与既有 Table30 / V2 **先去重**，正式建立独立实体及基于原文的 Mermaid 主流程；存在可运行源码才做源码运行时序图。
+5. 执行 `python3 scripts/report_health.py --changed` 实测新增节点 **3/3** 和仓库完整预检后再将 PR 转正。
 
-> 本记录只用于保存核验进度，**不代表 Zero 项目已完成正式 ingest**。
+> **当前状态：** 仅核验源文档；没有取得 Zero 官方原文，故不把“通读：未完成”改为“已完成”，不创建臆测的 wiki 节点，不宣称健康度 3/3。
