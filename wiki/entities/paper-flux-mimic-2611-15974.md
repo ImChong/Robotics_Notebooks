@@ -3,7 +3,7 @@ type: entity
 project_id: flux-mimic-2611-15974
 tags: [paper, vla, industrial-manipulation, imitation-learning]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15974"
 project: https://www.mimicrobotics.com/blog/video-action-models-for-data-efficient-industrial-manipulation
 original:
@@ -85,6 +85,11 @@ flowchart LR
 1. 对照同数据与同测评协议，不混淆不同平台/样本统计口径。
 2. 在复现前单列训练数据、预训练、控制接口和硬件依赖。
 3. 验证边界是研究结论的必要组成，不能由示例直接推出可量产部署。
+
+## 与其他工作对比
+
+- **对比单任务扩散策略（Single-task FM）与微调 VLA（[π₀.₅](./paper-pi05-open-world-vla.md)，Table I）：** 在四项 Franka 灵巧工业任务（联合训练 vs 单任务 FM）上，FLUX-mimic 平均成功率达 **82.8%**（装配 85%、插装 85%、柔性分拣 100%、线束卡接 61.1%），显著高于单任务 CLIP+DiT Flow Matching 基线（**52.6%**）与在同数据微调的通用 π₀.₅（**27.6%**，在高精度插装与装配上偏弱）；在 Trossen 双臂夹爪两项任务上，FLUX-mimic 与 π₀.₅ 平均持平（**60.0%** vs **60.0%**，插装 70% vs 60%、装配 50% vs 60%）。
+- **对比动作数据效率与联合视频监督消融（§V-B）：** 在柔性分拣任务上，仅用 1 小时示教（全量 32 h 的 3.125%）即达到 **45.0%**（FM 7.5%、π₀.₅ 5.6%），8 小时达 **95.0%**（超过两基线用满 32 小时的 70.0% 与 85.0%）；移除训练期辅助视频预测损失会使该任务成功率由 **100%（20/20）降至 65%（13/20）**。注意该数据效率比较未把前置视频骨干预训练成本折算进动作小时数。
 
 ## 局限与风险
 

@@ -3,7 +3,7 @@ type: entity
 project_id: bwm-forge-2611-16221
 tags: [paper, world-model, embodied-data, simulation]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.16221"
 project: https://bwm-forge.github.io/
 code: https://github.com/Lcixs/BWM-Forge
@@ -104,6 +104,13 @@ sequenceDiagram
 1. 先复核指标口径与论文约束，再比较其他策略或系统。
 2. 将作者验证的模块和尚未发布/未复现的模块分开记录。
 3. 把误差、失败模式与传感器/真实场景分布偏移作为后续验收依据。
+
+## 与其他工作对比
+
+- **对比纯视频生成基线 LingBot-World Base Cam（15 项同任务配对评测，Tables 1 & 2）：**
+  - **VBench-Long（Table 1）：** BWM-Forge 在主体一致性（0.972146 vs 0.947975）、背景一致性（0.972240 vs 0.957831）、运动平滑度（0.994212 vs 0.987241）与美学质量（0.522603 vs 0.513536）高于 LingBot-World Base Cam；但动态幅度（Dynamic Degree 0.502319 vs 0.788889）较低，反映更克制的可控运动幅度。
+  - **RoboJudge-9B（Table 2）：** BWM-Forge 物理对齐分 PA 为 2.93（16 FPS 版 3.00），略高于 LingBot-World 的 2.89；指令对齐分 IA 达到 **3.33（16 FPS 版 3.40）**，比 LingBot-World（2.73）高出 **0.60 分**，得益于显式 Blender 程序化轨迹先行约束几何与动作结构。
+- **评测口径提醒：** Table 2 同时列出的 `cosmos3`、`wan26_flash`、`abot_physworld_f113` 等其余模型数值来自不同任务集与样本量的官方人工打分，原文明确声明仅作分值区间参照，不可直接与本组 15 任务自动评分横向排名。
 
 ## 局限与风险
 

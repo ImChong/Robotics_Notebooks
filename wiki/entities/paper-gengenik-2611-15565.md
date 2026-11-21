@@ -3,7 +3,7 @@ type: entity
 project_id: gengenik-2611-15565
 tags: [paper, inverse-kinematics, flow-matching, robot-control]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15565"
 project: https://icra-2027-gengenik.github.io/
 original:
@@ -85,6 +85,11 @@ flowchart LR
 1. 先复核指标口径与论文约束，再比较其他策略或系统。
 2. 将作者验证的模块和尚未发布/未复现的模块分开记录。
 3. 把误差、失败模式与传感器/真实场景分布偏移作为后续验收依据。
+
+## 与其他工作对比
+
+- **对比 [cuRobo](./curobo.md) 场景感知单点 IK（Table II，RB-Y1 252 个保留场景 1,024 题）：** 在完整点云下，GenGenIK（32-NFE + 精修）取得 **80.9% S@1 / 98.2% S@8 / 84.7% WF@1**（B1 TTFV 66.4 ms），显著高于 cuRobo 几何体基线（**29.0% S@1 / 58.1% S@8 / 59.9% WF@1**，217 ms）；在单视角局部点云下，匹配训练的 GenGenIK 达到 **61.4% S@1 / 90.1% S@8**（83.1 ms）vs cuRobo 体素基线（**12.0% / 52.1%**，132 ms）。将原始 GenGenIK 采样作为 cuRobo 初值（`Ours (raw) + cuRobo`）可在完整点云进一步把 S@1 / WF@1 推至 **90.6% / 95.4%**（173 ms）。
+- **对比 cuRobo 多目标路径 IK（Tables III & IV，150 场景 × 5 类任务）：** 1-NFE 蒸馏学生 + 精修在开关门抽屉、推物、双臂抬举、翻转及桌底取物上取得 **92.7%–100.0% Success@32**（TTFV **20.2–36.1 ms**），明显高于固定底座热启动 cuRobo 续解（**22.0%–92.0%**，TTFV **167.3–1,067.2 ms**）；条件化全路径 `H_{1:L}` 采出的首目标解中有 **58.2%** 可被 cuRobo 合法续解完整路径，而仅条件化首步 `H₁` 的 cuRobo 为 **24.3%**。
 
 ## 局限与风险
 
