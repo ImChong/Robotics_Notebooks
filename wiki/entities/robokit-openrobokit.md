@@ -4,6 +4,8 @@ tags: [robotics, robot-simulation, differentiable-optimization, mpc, inverse-kin
 status: complete
 updated: 2026-11-20
 project_id: openrobokit-robokit
+arxiv: "2611.20185"
+paper: https://arxiv.org/abs/2611.20185
 project: https://openrobokit.com/robokit/
 code: https://github.com/openrobokit/robokit
 summary: "RoboKit（UC San Diego，CoRL 2026 Spotlight）：Warp GPU 多种子并行可微优化，混合 voxel SDF/mesh、粗细碰撞/渲染/物理和策略蒸馏；官方 PDF 26 页及附录已核验，2000 IK 7.12 ms（RTX 4090，论文作者实验）。"
@@ -122,6 +124,8 @@ sequenceDiagram
 
 ## 论文实验与评测（作者报告，非独立复现）
 
+**标准论文入口**：[arXiv:2611.20185v1（2026-11-15）](https://arxiv.org/html/2611.20185v1)。以下对照按原文正文 §4 和附录 A–C 的硬件、任务规模及成功标准解释；论文各项速度为作者报告，并非独立复现。
+
 论文表 2 的优化基准主要运行于 **1× NVIDIA RTX 4090 + Intel Xeon Gold 5120 CPU**；预热后通常平均 5 次（例外见论文附录），不同任务不可直接混算倍数。
 
 | 任务/对照 | RoboKit | 基线 | 说明 |
@@ -172,6 +176,7 @@ sequenceDiagram
 - [RetargetingKit](./retargetingkit.md)
 - [GraspKit](./graspkit.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
+- [动作重定向纵深路线 Stage 1](../../roadmap/depth-motion-retargeting.md#stage-1-运动学基础与优化工具箱)
 - [机器人操作](../tasks/manipulation.md)
 - [模型预测控制](../methods/model-predictive-control.md)
 - [Robotics Antigravity Plugin](./google-deepmind-robotics-antigravity-plugin.md)
@@ -184,6 +189,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [arXiv:2611.20185 HTML 全文（v1，含附录）](https://arxiv.org/html/2611.20185v1)
 - [作者官方论文 PDF（含附录）](https://openrobokit.com/robokit/paper.pdf)
 - [官方文档](https://github.com/openrobokit/robokit/blob/main/docs/guide/overview.md)
 - [Wuji Hand 2.2 可运行示例](https://github.com/openrobokit/robokit/blob/main/src/robokit/examples/sim_mpc/10_wuji_cube.py)
