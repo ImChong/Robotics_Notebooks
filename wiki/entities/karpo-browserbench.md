@@ -11,6 +11,8 @@ related:
   - ./karpo-decision.md
   - ./karpo-decision-27b-act.md
   - ../concepts/ai-agent-evaluation.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/agent-driven-chaos-testing-loop.md
 sources:
   - ../../sources/repos/karpo-browserbench.md
 original:
@@ -112,6 +114,9 @@ sequenceDiagram
 - **评测脚本局限：** `run.py` 提供通用聊天兼容接口；不同决策模型需按其 API 输出格式适配成每步答案文件。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照 E2E 实际环境测试，理解固定离线步骤测评不能取代真实任务验证。
+- [Agent 驱动的混沌压测闭环](../methods/agent-driven-chaos-testing-loop.md) — 对照故障注入与闭环复测，区分 KBB 离线路径回放的覆盖边界。
 
 - [karpo-browser 系统](./karpo-browser.md)
 - [Karpo Decision 27B Act](./karpo-decision-27b-act.md)
