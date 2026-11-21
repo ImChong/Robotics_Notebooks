@@ -3,7 +3,7 @@ type: entity
 project_id: hibikino-home-2026-2611-16297
 tags: [paper, service-robot, ros, perception]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.16297"
 code: https://github.com/Hibikino-Musashi-Home/cutie-ros
 original:
@@ -101,6 +101,11 @@ sequenceDiagram
 1. 先复核指标口径与论文约束，再比较其他策略或系统。
 2. 将作者验证的模块和尚未发布/未复现的模块分开记录。
 3. 把误差、失败模式与传感器/真实场景分布偏移作为后续验收依据。
+
+## 与其他工作对比
+
+- **对比单算法基准论文与整机竞赛技术报告定位（Table 1）：** 本文是 RoboCup@Home / World Robot Challenge 团队技术报告（TDP），以历年 DSPL（Toyota HSR 标准平台组）与 OPL（开放平台组）竞赛名次（2017–2025 多届 JapanOpen / Asia-Pacific / Worldwide DSPL 冠亚季军）佐证整机系统稳定性，**不提供**单一新模型在标准离线数据集上与外部算法同口径的对照消融表。
+- **栈内模块取舍对比：** 感知侧将传统封闭集 YOLO 与开放词汇 Grounding DINO + NanoSAM + Cutie 分割跟踪组合对照，按任务对新物体泛化与推理帧率的需求切换；动作识别侧选用低功耗 FPGA Reservoir Computing 替代机载大显存视频网络，以迁就 HSR 机载算力与功耗限制。
 
 ## 局限与风险
 

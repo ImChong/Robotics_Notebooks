@@ -3,7 +3,7 @@ type: entity
 project_id: alloy-multimaterial-2611-16312
 tags: [paper, simulation, physics-engine, multimaterial]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 arxiv: "2611.16312"
 project: https://alloy.argonrobotics.ai/docs/
 code: https://github.com/argonrobotics-ai/alloy
@@ -104,6 +104,11 @@ sequenceDiagram
 1. 对照同数据与同测评协议，不混淆不同平台/样本统计口径。
 2. 在复现前单列训练数据、预训练、控制接口和硬件依赖。
 3. 验证边界是研究结论的必要组成，不能由示例直接推出可量产部署。
+
+## 与其他工作对比
+
+- **与底层单域及多求解器框架的关系（§2）：** 相比纯刚体/并行训练平台 [MuJoCo Warp](./mujoco-warp.md)、[Isaac Lab](./isaac-lab.md) 与 ManiSkill3，以及集成多求解器的底层引擎 [Newton](./newton-physics.md) 和 [Genesis](./genesis-sim.md)，Alloy 并不替代这些求解器，而是在其上增加统一层——用同一 MJCF 与材料卡描述把刚体/机器人交给 MuJoCo（CPU）或 MuJoCo Warp（GPU），布料/软体/弹性杆交给 Newton VBD，沙土/膏体交给 Newton 隐式 MPM，液体交给自研 SPH，并由 Coupler 在控制步内同步位姿与接触力、由 Health Monitor 逐世界标记 `OK / DEGRADED / INVALID`。
+- **评测覆盖口径：** 原文 Table 2–4 报告了单张 NVIDIA L4（`0.1.0rc2`）上 Go2 行走（4,096 并行世界、150 N 推力测试两随机种子 252/256 与 248/256 站立）、抓抬线缆（30 min 达 95.7%）、1,024 世界深度渲染吞吐与 10 项解析闭式物理误差检验，但未做跨引擎同任务的策略训练横向跑分对照。
 
 ## 局限与风险
 

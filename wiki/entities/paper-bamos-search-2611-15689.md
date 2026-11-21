@@ -3,7 +3,7 @@ type: entity
 project_id: bamos-search-2611-15689
 tags: [paper, navigation, active-perception, world-model]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15689"
 code: https://github.com/gokyeongryeol/BAMOS
 original:
@@ -101,6 +101,11 @@ Isaac Sim 与 HSSD 场景、多种误检/漏检条件的消融说明未检更新
 1. 对照同数据与同测评协议，不混淆不同平台/样本统计口径。
 2. 在复现前单列训练数据、预训练、控制接口和硬件依赖。
 3. 验证边界是研究结论的必要组成，不能由示例直接推出可量产部署。
+
+## 与其他工作对比
+
+- **对比真值几何与世界模型组件消融（Table 1，Isaac Sim / HSSD × Oracle / SAM 3 / Falcon-Perception）：** 在 Isaac Sim 中，BAMOS 与使用完美场景重建的 `true geometry` 变体基本持平甚至略高（Oracle 0.977 vs 0.971、SAM 3 0.913 vs 0.893、Falcon-Perception 0.884 vs 0.872）；在多房间杂乱 HSSD 中则落后 0.001–0.072，主要源于短距深度下的占据估计误差。移除未检测更新（`No non-detection update`）或掩码位置（`No mask position`）在全部六组评测均显著掉分（如 SAM 3 下分别由 0.913 降至 0.664 与 0.597）。
+- **对比视角选择与停止规则（Table 2，Isaac Sim）：** 完整 BAMOS（信息增益选视角 + 联合 belief 停止：SAM 3 **0.913** / Falcon-Perception **0.884**）优于可见性加权覆盖 + belief 停止（0.846 / 0.788）与无权重 FOV 覆盖 + belief 停止（0.490 / 0.574）；若把停止判据换回传统的首个检测停止（`first-mask`），误检较多的 Falcon-Perception 成功率在信息增益下直接腰斩（0.884 → 0.438），说明不完美检测下概率停止判据比视角策略本身更关键。
 
 ## 局限与风险
 

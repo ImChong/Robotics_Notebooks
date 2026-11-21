@@ -3,7 +3,7 @@ type: entity
 project_id: arts-surgery-2611-15135
 tags: [paper, robot-platform, ros2, surgical-robotics]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15135"
 code: https://github.com/MRE-Lab-UMD/arts
 original:
@@ -100,6 +100,11 @@ sequenceDiagram
 1. 保留相同模型与数据预算下的可比口径，不跨基准简单求平均。
 2. 优先复核最可能出现数据泄漏、接触失败或部署延迟的环节。
 3. 对论文未检验的部署条件单列验证计划。
+
+## 与其他工作对比
+
+- **对比现有开源手术研究平台（论文 Table I）：** **Raven-II** 依赖定制机械臂（后由衍生公司销售）；最广泛使用的 **dVRK** 依赖受赠退役临床 da Vinci 硬件且部分 dVRK-Si 固件闭源；基于工业臂的 **MOPS**（UR 驱动腕式 da Vinci 器械）、**Rodriguez 等**（UR 驱动非腕式器械 + Karl Storz 立体内窥镜）和 **DASH**（G1/Franka 适配 da Vinci 器械，未公开发布完整系统）各自覆盖链条局部。ARTS 在单一可公开采购系统内同时集成机器人立体内窥镜臂（UR5 + 硬件同步双 FLIR）、腕式 da Vinci X/Xi 器械（双 UR5e）、电外科能量输出与 Apache 2.0 开源控制栈。
+- **对比定位重复精度实测（Table II）：** 在相同 ISO 9283:1998 协议下，ARTS 单臂姿态重复精度实测 **0.14–0.25 mm**，优于论文同协议对照测得的 dVRK Classic（**0.09–1.24 mm**），并给出 54–58 ms 手到臂延迟与 2.7 ± 3.2 μs 双目同步偏差。
 
 ## 局限与风险
 

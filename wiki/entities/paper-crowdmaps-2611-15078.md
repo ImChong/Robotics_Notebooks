@@ -3,7 +3,7 @@ type: entity
 project_id: crowdmaps-2611-15078
 tags: [paper, imitation-learning, teleoperation, embodied-data]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15078"
 project: https://yilongsong.github.io/CrowdMAPS/
 original:
@@ -85,6 +85,11 @@ flowchart LR
 1. 保留相同模型与数据预算下的可比口径，不跨基准简单求平均。
 2. 优先复核最可能出现数据泄漏、接触失败或部署延迟的环节。
 3. 对论文未检验的部署条件单列验证计划。
+
+## 与其他工作对比
+
+- **对比追加真机专家遥操作轨迹 `E_added`（Table 1，5 项真机任务各 25 次 rollout）：** 在基础示教 `E_base` 上，单标签宽度 `K=1` 的众包数据 `D_MAPS` 在多项任务上仍落后于追加连续遥操作轨迹 `E_base + E_added`（例如 Drawer 36% vs 56%、Sorting 32% vs 52%），反映离散关键帧姿态标签时间保真度较低；但随动作标签宽度扩展至 `K=10`，`E_base + D_MAPS(K=10)` 在**全部 5 项任务**上反超 `E_base + E_added`（Drawer 76% vs 56%、Insertion 40% vs 24%、Pouring 92% vs 80%、Sorting 88% vs 52%、Switches+ 70/100 vs 54/100）。
+- **对比 `K=10` 高斯扰动基线与成本口径：** 论文同时对比了以众包协方差构造的高斯动作扰动替代人工标注的 `K=10` 噪声基线，验证了有效多峰分布的必要性。需注意 `D_MAPS` 与 `E_added` 约匹配了**真机占用时长**（2.2 h vs 2.3 h），但总人工标注时间约为追加遥操作的 **1.5×**，优势在于不占用额外机器人硬件工时。
 
 ## 局限与风险
 

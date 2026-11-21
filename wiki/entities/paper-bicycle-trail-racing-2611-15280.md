@@ -3,7 +3,7 @@ type: entity
 project_id: bicycle-trail-racing-2611-15280
 tags: [paper, navigation, perceptive-locomotion, sim2real]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15280"
 project: https://pages.rai-inst.com/autonomous-trail-racing/
 code: https://github.com/rai-opensource/sem_map
@@ -104,6 +104,11 @@ sequenceDiagram
 1. 对照同数据与同测评协议，不混淆不同平台/样本统计口径。
 2. 在复现前单列训练数据、预训练、控制接口和硬件依赖。
 3. 验证边界是研究结论的必要组成，不能由示例直接推出可量产部署。
+
+## 与其他工作对比
+
+- **对比分层基线（导航与底层控制解耦，§4.6 & Table 3）：** 论文在 850 块五级难度测试地形（各 4,000 仿真车次、移除树木以利于感知基线）上对比了复现自 Bokser et al. (2026) 的盲走/高程感知速度跟踪底层策略，分别搭配质心追踪、2 m 前视 Pure Pursuit 及固定速度（1.5 / 3 m/s）或额外在相同林道地形上训练的 50 Hz 上层导航策略。最优分层组合（盲走底层 + 学习导航上层 `baseline-3†⊤`）存活率随难度从 **85% 降至 46%**、均速 **2.2 m/s**；而本文联合端到端竞速策略在均速 **3.3 m/s**（快约 50%）下保持 **99%–91%** 存活率，高难度失败率低约 6–15 倍。
+- **对比人类骑手（Allmend 赛道，Table 1）与自主徒步导航（§5.4）：** 论文亦在真实 Allmend 林道与人类骑手实测速度分布参照，并讨论相较常规低速越野/徒步自主导航（关注安全避障而非高动态倾角过弯与速度调节）的控制耦合差异；但实机对照仅提供同赛道人类参考，未同场跑分层自行车基线。
 
 ## 局限与风险
 
