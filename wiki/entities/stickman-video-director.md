@@ -13,6 +13,8 @@ tags:
 status: complete
 updated: 2026-11-21
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./video-shotcraft.md
   - ./hyperframes.md
   - ./remotion.md
@@ -138,6 +140,9 @@ B5 使用 `scripts/character-explainer.mjs`，B6 使用独立的 `b6-dynamic-mem
 - **边界：** 不输出机器人可执行动作/控制器，也不解决仿真、逆动力学或真机部署质量验证。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照预览回放、独立视听审查与终片验收的证据要求；技术检查不能替代实际体验验收
+- [Claude Code 动态多 Agent 工作流](../methods/claude-code-dynamic-workflows.md) — 对照将脚本、分镜、生成、渲染和验收组织为分阶段任务的 Agent 编排方法；本 Skill 不必然采用多个子 Agent
 
 - [video-shotcraft](./video-shotcraft.md) — 产品镜头配方与 Remotion 风格的 Agent 视频制片
 - [HyperFrames](./hyperframes.md) — HTML/CSS/动画编排的视频工程运行时
