@@ -7,7 +7,11 @@
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Mimicking-Bench__A_Benchmark_for_Generalizable_Humanoid-Scene_Interaction_Learning/Mimicking-Bench__A_Benchmark_for_Generalizable_Humanoid-Scene_Interaction_Learning.html>
 - **分类：** 11_Simulation_Benchmark
 - **arXiv：** <https://arxiv.org/abs/2412.17730>
+- **项目页：** <https://mimicking-bench.github.io/>
 - **入库日期：** 2026-07-10
+- **最后核对：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文通读 `arXiv:2412.17730`（含 6 项全身交互任务、11K+ 物体、23.4K 参考轨迹、Stage 1–3 评测与 Appendix D.2）并核对官方项目页（V1 数据集 OneDrive/Dropbox 已上线；Code 按钮仍处于 HTML 注释未公开状态）
 - **一句话说明：** 让人形通过模仿人类数据学会与 3D 场景交互的通用技能，是机器人领域的关键挑战。已有的演示数据集规模小、靠手工采集。Mimicking-Bench 引入一个大规模基准：包含6 个家居（全身）交互任务、11K 多样物体形状、以及 20K 合成 + 3K 真实的人类技能参考。基准系统比较了运动重定向、运动跟踪、模仿学习及其各种组合策略，验证了模仿人类对技能习得的价值，并指出场景几何泛化等关键研究挑战与未来方向。
 
 ## 核心摘录（策展，非全文）

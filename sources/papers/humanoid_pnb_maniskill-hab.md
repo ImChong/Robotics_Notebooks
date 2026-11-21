@@ -7,7 +7,12 @@
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks.html>
 - **分类：** 11_Simulation_Benchmark
 - **arXiv：** <https://arxiv.org/abs/2412.13211>
+- **项目页：** <https://arth-shukla.github.io/mshab/>
+- **代码：** <https://github.com/arth-shukla/mshab>
 - **入库日期：** 2026-07-10
+- **最后核对：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文通读 `arXiv:2412.13211v3`（ICLR 2025，含 Table 1–13、Appendices A.1–A.6，4096 envs 4299.18 SPS vs Habitat 2.0 1397.65 SPS，光线追踪 69.90 SPS vs Behavior-1k 19.92 SPS）并核对官方仓库 `arth-shukla/mshab`（`mshab/evaluate.py:eval`、`SequentialTaskEnv`、`subtask_pointer`、`mshab/utils/label_dataset.py` 与 2025-07-26 Navigate 基线更新）
 - **一句话说明：** 高质量基准是具身 AI 的基础，能推动长时程导航、操作与重排的进展。本文提出 MS-HAB（ManiSkill-HAB）：一个 GPU 加速的家庭助理基准（Home Assistant Benchmark, HAB）实现，提供真实的低层控制，相比此前"魔法抓取（magical grasp）"实现取得 3 倍以上提速且显存更省。作者训练了 RL 与 IL 基线，并开发一个基于规则的轨迹过滤系统，以大规模生成可控的演示数据。这把以往偏抽象/魔法抓取的家务重排基准，落到真实低层操作与高效仿真上。
 
 ## 核心摘录（策展，非全文）

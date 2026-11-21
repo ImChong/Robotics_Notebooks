@@ -2,7 +2,10 @@
 type: entity
 tags: [paper, human-robot-interaction, benchmark, assistive-care, contact-rich]
 status: complete
-updated: 2026-09-15
+original:
+  - ../../sources/papers/physics_consistent_hrc_benchmark_arxiv_2609_02402.md
+  - ../../sources/sites/physics-consistent-hrc-benchmark.md
+updated: 2026-11-21
 arxiv: "2609.02402"
 related:
   - ../tasks/manipulation.md
@@ -16,7 +19,7 @@ sources:
   - ../../sources/sites/physics-consistent-hrc-benchmark.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md
   - ../../sources/blogs/wechat_embodied_station_9_papers_resources_2026-09-06.md
-summary: "Physics-Consistent HRC Benchmark（arXiv:2609.02402）：辅助洗浴接触丰富 HRC 基准；可变形被动人体 + 泄漏自由方法接口 + 物理一致评分；LLM-SM 名义 72.9% 经安全筛查降至 56.4%；benchmark 代码 Coming soon。"
+summary: "Physics-Consistent HRC Benchmark（arXiv:2609.02402）：辅助洗浴接触丰富 HRC 基准；可变形被动人体 + 泄漏自由方法接口 + 物理一致评分；LLM-SM 名义 72.9% 经安全筛查降至 56.4%；benchmark/ 快照已公开（不含 SMPL-X 资产与权重）。"
 ---
 
 # Physics-Consistent HRC Benchmark：接触丰富辅助护理评测
@@ -49,9 +52,9 @@ summary: "Physics-Consistent HRC Benchmark（arXiv:2609.02402）：辅助洗浴�
 |----|------|
 | **实例任务** | 辅助洗浴：Touch / Scrub / Push |
 | **协议** | 冻结 T1–T7；每方法 **140** 次运行 |
-| **开源** | **部分/待发布** — 预览 README + appendix；`benchmark/` Coming soon |
+| **开源** | **部分开源** — 匿名快照已含 `benchmark/`（`run.py`、`phase3_vlm`、`phase5`）与 `docs/supplement.pdf`，不含 SMPL-X 资产、策略权重与 420 条日志 |
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -79,11 +82,36 @@ flowchart TB
 2. **轻接触 ≠ 高任务完成** — VoxPoser 稳定但完成率低，选型要看优先级。
 3. **零样本 VLA 极脆弱** — π₀.₅ 0.7% 警示直接迁移风险。
 4. **shell-bone 耦合模型** — 附录给出可变形人体与刚性骨架耦合动力学。
-5. **代码待发布** — 当前仅预览仓与附录，完整 benchmark 实现 Coming soon。
+5. **快照边界明确** — 匿名仓已提供 `benchmark/` 任务、适配与 Phase-5 评分器，但端到端重跑仍缺受限 SMPL-X 人体资产、$\pi_{0.5}$/VoxPoser/ReKep 权重及 420 次 rollout 日志。
+
+## 工程实践
+
+- **匿名快照实际范围（2026-11-21 复核）**：`Physics-Consistent-Benchmark_4_HRC-8DBF` 已包含 `benchmark/` 可审查骨架与 `docs/supplement.pdf`，核心入口为根目录 `benchmark/run.py`，并联动 `experiments/phase3_vlm/run_demo.py`、`experiments/phase5/ch4c_replay.py` 与 `sim/human/config/` 人体/接触配置。
+- **开箱复现缺口**：匿名快照刻意排除了受限 SMPL-X 人体网格资产、$\pi_{0.5}$ / VoxPoser / ReKep 模型权重以及 420 条完整 rollout 日志；本地需自行准备对应人体网格与策略服务端后才能端到端跑通全部 T1–T7 闭环对照。
+- **冻结协议约束**：策略侧仅允许输入 RGB-D 与本体/机器人状态（vision-only + robot proprioception）；物理接触力与人体部位贴合等特权仿真状态（C1–C5 指标）严格保留给离线/阶段 5 评分器，防止策略端“读作弊力传感器”。
 
 ## 源码运行时序图
 
-**不适用** — `benchmark/` 实现截至 **2026-09-03** 未发布。
+```mermaid
+sequenceDiagram
+    participant Runner as benchmark/run.py
+    participant Task as sim/human/config + Tasks (T1-T7)
+    participant Policy as Policy Adapter (Phase3 VLM / pi0.5 / SM)
+    participant Sim as Deformable HRC Sim
+    participant Scorer as experiments/phase5/ch4c_replay.py
+
+    Runner->>Task: 加载辅助洗浴任务 T1-T7 与人体参数
+    Runner->>Sim: 初始化被动可变形人体与环境
+    loop 闭环控制步 (140 runs/method)
+        Sim-->>Policy: 仅输出 RGB-D 与机器人本体观测
+        Policy-->>Sim: 返回动作/子目标控制指令
+        Sim->>Sim: 计算软体接触力与擦拭轨迹
+    end
+    Sim-->>Scorer: 输出完整特权物理状态日志
+    Scorer-->>Runner: 统计任务成功率 + C1-C5 力安全/区域合规得分
+```
+
+> **源码核实说明**：`benchmark/run.py`、`experiments/phase3_vlm/run_demo.py` 与 `experiments/phase5/ch4c_replay.py` 均来自匿名仓库最新快照，但 SMPL-X 资产、外部策略权重及 420 条原始日志未随快照附带。
 
 ## 局限与风险
 

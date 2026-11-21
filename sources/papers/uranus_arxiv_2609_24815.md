@@ -12,6 +12,9 @@
 - **机构：** 地瓜机器人（D-Robotics）大模型团队
 - **版本日期：** arXiv v1 于 2026-09-21 提交；v3 于 2026-09-23 修订。项目博客页面显示日期为 2026-08-25。
 - **入库日期：** 2026-10-09
+- **最后核对：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文通读 `arXiv:2609.24815` v3（§1–§7 与 Appendices A–C，含 Table 2 训练配方、Table 5 WorldOlympiad、`GE-Sim 2.0` 长时指标、Table 8 主观一致性与 Fig 19 RoboTwin 闭环）并核对 `Uranus-OSS`（`main.py`、`uranus/runner.py`、`uranus/functional/stream_runner.py`）与 `Uranus-SDK`（`UranusSimulationSession`）
 - **一句话说明：** 给定多视角初始图像、相机标定、机器人 MJCF/URDF 与外部策略提供的未来关节轨迹，Uranus 以自回归视频扩散预测机器人执行动作后的同步多视角画面；它是可交互的视觉模拟器，不是负责输出控制动作或替代物理引擎的策略/动力学求解器。
 
 ## 开源状态（2026-10-09 核查）

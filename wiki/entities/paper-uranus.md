@@ -3,7 +3,10 @@ type: entity
 project_id: uranus
 tags: [paper, d-robotics, world-models, simulation, video-diffusion, multi-view, embodied-ai, policy-evaluation]
 status: complete
-updated: 2026-10-18
+original:
+  - ../../sources/papers/uranus_arxiv_2609_24815.md
+  - ../../sources/repos/uranus-oss.md
+updated: 2026-11-21
 arxiv: "2609.24815"
 code: "https://github.com/D-Robotics-AI-Lab/Uranus-OSS"
 related:
@@ -23,7 +26,9 @@ summary: "Uranus（arXiv:2609.24815，地瓜机器人）：面向具身策略闭
 
 # Uranus：面向具身 AI 的下一代模拟基础设施
 
-**Uranus**（*Building the Next-Generation Simulation Infrastructure for Embodied AI*，[arXiv:2609.24815](https://arxiv.org/abs/2609.24815)）由 **地瓜机器人（D-Robotics）大模型团队**提出。它把机器人结构、相机几何和上游策略给出的未来关节轨迹作为条件，滚动生成同步多视角视频。需要特别区分：Uranus 模拟的是动作之后的**视觉观测**，不负责产生策略动作，也不是带有显式接触求解的通用物理引擎。
+## 一句话定义
+
+**Uranus**（*Building the Next-Generation Simulation Infrastructure for Embodied AI*，[arXiv:2609.24815](https://arxiv.org/abs/2609.24815)）由**地瓜机器人（D-Robotics）大模型团队**提出，是一款面向策略闭环评测的可交互动作条件化多视角视频扩散世界模拟器：输入多视角初始帧、相机内外参标定、机器人 `MJCF/URDF` 几何描述与外部策略给出的未来关节轨迹 `qpos`，滚动生成同步多视角视频（最高 24 FPS）；它模拟的是动作之后的**视觉观测**，不负责产生策略动作，也不是带有显式接触求解的通用物理引擎。
 
 ## 英文缩写速查
 
@@ -40,7 +45,7 @@ summary: "Uranus（arXiv:2609.24815，地瓜机器人）：面向具身策略闭
 
 传统物理仿真可以提供显式状态与接触动力学，但高保真渲染和资产/场景搭建成本高；纯视频生成则往往缺少可控的机器人动作接口。Uranus 的切入点是把**可执行的关节轨迹**变成显式条件，并把多视角相机几何和机器人骨架纳入生成，使其可作为具身策略的交互式视觉评测环境。项目公开了推理代码、模型权重和小规模演示数据，有利于直接检验这一接口，但不代表全量训练栈与训练数据已开放。
 
-## 方法与架构
+## 核心机制与架构
 
 1. **条件输入：** 多视角参考 RGB、相机标定/Plücker rays、机器人 MJCF/URDF 骨架，以及上游策略提供的未来 qpos 序列。策略是动作源，Uranus 是视觉后果模型。
 2. **条件视频生成：** 外层自回归滚动；内层通过 flow-matching latent diffusion transformer 生成下一段 latent，再由 VAE 解码成 4 帧同步多视角 RGB。
@@ -59,36 +64,44 @@ flowchart LR
 
 ## 评测、对比与解释
 
-论文在 WorldOlympiad 等设置评估交互、物理合理性与 3D 一致性，报告 Uranus-1.3B 综合分数 0.722；这是论文特定基准与设置下的结果，基线用途、预测长度和调用粒度不同，不宜当作通用模拟器排行榜。系统实验显示其可用于策略闭环评测；但作者报告真实一致性测试中训练样本得分 86%、测试样本 58%，说明场景泛化仍是明显短板。
+- **WorldOlympiad 与长时滚动（Table 5 / GE-Sim 2.0）**：在 WorldOlympiad 评测中，论文报告 `Uranus-1.3B` 综合得分 **`0.722`**，高于同表对比的 `Cosmos-Predict-2.5`（`0.712`）与 `LingBot-World`（`0.684`）；在 140–160s 长时滚动阶段，`GE-Sim 2.0` 指标报告为 **`12.3` PSNR / `0.45` SSIM**（对比基线 **`7.1` PSNR / `0.20` SSIM**）。（基线用途、预测长度与调用粒度存在差异，应作条件化对照而非通用排行榜。）
+- **分布内外一致性检验（Table 8）**：5 位评审对采样 rollout 进行视觉与物理合理性打分，训练集样本一致性为 **`86%`**，未见测试环境降至 **`58%`**，明确暴露 OOD 场景泛化短板。
+- **闭环策略相关性（Fig. 19）**：在 RoboTwin 闭环策略评估中，Uranus 生成环境下的策略表现与真实/干净环境呈强线性相关（**`Pearson r = 0.98`**，**`MMRV = 0.01`**）。
 
-它与 [Isaac Lab](./isaac-lab.md)、[Newton Physics](./newton-physics.md) 的关系是互补而非替代：Isaac Lab/Newton 侧重显式状态推进、控制训练或物理计算，Uranus 侧重从动作条件生成图像。若任务依赖碰撞、受力或精确接触状态，应保留物理仿真/真机作为校验。
+它与 [Isaac Lab](./isaac-lab.md)、[Newton Physics](./newton-physics.md) 的关系是互补而非替代：Isaac Lab / Newton 侧重显式状态推进、控制训练与刚体接触计算，Uranus 侧重从 `qpos` 条件生成同步多视角视觉帧；若任务高度依赖精确接触力、抓取成败或物理约束，仍必须保留物理仿真或真机校验。
 
 ## 源码运行时序图
 
-公开仓库提供推理入口、模型权重和演示数据。高层运行逻辑如下；具体命令行参数与依赖版本以 [Uranus-OSS README](https://github.com/D-Robotics-AI-Lab/Uranus-OSS) 为准。
+公开推理仓库 [D-Robotics-AI-Lab/Uranus-OSS](https://github.com/D-Robotics-AI-Lab/Uranus-OSS) 与服务化封装 `Uranus-SDK` 的核心运行链路如下（详参官方 README）：
 
 ```mermaid
 sequenceDiagram
-  participant User as 用户/评测器
-  participant Policy as 上游策略
-  participant Runner as Uranus 推理入口
-  participant Model as DiT与VAE
-  participant Output as 多视角视频
-  User->>Runner: 加载样例、权重与相机/机器人配置
-  User->>Policy: 提供当前观测
-  Policy-->>Runner: 输出未来 qpos 轨迹
-  Runner->>Model: 参考图、几何条件、qpos 与历史 latent
-  Model-->>Runner: 生成下一段 latent 并解码 4 帧
-  Runner-->>Output: 写出同步多视角 RGB
-  Output-->>Policy: 作为下一轮观测（闭环调用）
+  participant User as CLI (main.py) / Uranus-SDK Session
+  participant Policy as 外部上游策略
+  participant Runner as UranusRunner (uranus/runner.py)
+  participant Skel as SkeletonEngine (MJCF/URDF+标定)
+  participant Stream as stream_runner.py
+  participant DiT as dit_decode_step + VAE
+
+  User->>Runner: UranusRunner.create() 加载权重与滑动窗口缓存
+  User->>Policy: 提供当前多视角初始帧
+  Policy-->>Runner: 输出未来关节轨迹 qpos_traj
+  User->>Runner: UranusRunner.step(qpos_traj, init_frames)
+  Runner->>Skel: 编码 Plücker ray 与骨架几何条件
+  Runner->>Stream: prefill() 编码历史参考潜空间
+  loop 自回归滚动 (每步解码 4 帧同步多视角)
+    Stream->>Stream: fill_frame_kv_cache() 更新 KV cache
+    Stream->>DiT: generate_frame() / dit_decode_step (25步或蒸馏4步)
+    DiT-->>Runner: decode_frame() 输出 384×640 同步多视角 RGB
+  end
+  Runner-->>User: 输出预测视频帧反馈给外部策略闭环调用
 ```
 
-### 复现前检查
+## 工程实践
 
-- 先用仓库 demo 确认权重、依赖和推理环境工作，再替换成自有机器人数据。
-- 自有样例需保证 qpos 时间序列、机器人描述、参考帧和相机外参/内参彼此对齐；坐标系错误会表现为视觉运动失真。
-- 把输出用于策略评测时，记录策略版本、相机、机器人模型、生成配置及失败轨迹，并用真机或物理模拟器做抽样复核。
-- 模型权重与 demo 数据下载体量可观；仓库 README/模型卡说明应优先于二手教程。
+- **训练底座与加速配方（Table 2）**：由 `Wan2.1` 初始化，在 3,300 小时多具身数据上使用 64 卡训练约 `500k` 步（`HSDP 8×8` + `SP=4`）；推理侧集成 `Flash-VAED`（**6×** 加速）、`FP8` 量化（**3.06×** 加速）与 H20 GPU 计算-通信重叠优化（单步延迟由 `535 ms` 降至 `505 ms`），配合滑动窗口 KV cache 实现最高 `24 FPS` 实时生成。
+- **双仓库分工与资产边界**：`Uranus-OSS`（Apache-2.0）开放 `main.py`、`uranus/runner.py`（`UranusRunner.create/step`）与 `uranus/functional/stream_runner.py`；`Uranus-SDK` 提供 `UranusSimulationSession` 在线仿真会话封装。Hugging Face 已发布 `Uranus-1.3B`（25 步）、`Uranus-1.3B-Distillation`（4 步，约 `17.5 GB`）和 `Uranus-Demo-Data`；论文所用 3,300 小时全量数据与完整训练脚本尚未公开。
+- **复现前检查**：自有数据必须保证关节状态 `qpos` 时间戳、机器人 `MJCF/URDF`、参考帧和相机内外参严格对齐（坐标系失配将表现为机械臂视觉畸变）；策略筛选后须结合物理仿真或真机抽样复核。
 
 ## 局限
 
@@ -123,3 +136,10 @@ sequenceDiagram
 - [Uranus-OSS](https://github.com/D-Robotics-AI-Lab/Uranus-OSS)
 - [Demo Data](https://huggingface.co/datasets/D-Robotics/Uranus-Demo-Data)
 - [模型集合](https://huggingface.co/collections/D-Robotics/uranus)
+
+## 推荐继续阅读
+
+- 论文与技术报告（`arXiv:2609.24815` v3）：<https://arxiv.org/abs/2609.24815>
+- 官方推理仓库（`Uranus-OSS`，Apache-2.0）：<https://github.com/D-Robotics-AI-Lab/Uranus-OSS>
+- 官方仿真会话封装（`Uranus-SDK`）：<https://github.com/D-Robotics-AI-Lab/Uranus-SDK>
+- 模型权重集合与演示数据（Hugging Face）：<https://huggingface.co/collections/D-Robotics/uranus>

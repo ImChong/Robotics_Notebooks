@@ -6,7 +6,9 @@
 - **类型：** paper
 - **来源：** arXiv / NeurIPS / ICRA / CoRL
 - **入库日期：** 2026-04-14
-- **最后更新：** 2026-04-14
+- **最后更新：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文通读 Rudin et al.（`arXiv:2109.11978v2`）、Margolis & Agrawal（`arXiv:2212.03238v1`，含 Appendix C Table 1）、Ma et al.（`arXiv:2310.12931v2`，Eureka）、Peng, Berseth & van de Panne（ACM TOG 35(4) / SIGGRAPH 2016，并纠正原误链 `arXiv:1606.01984`）、Portelas et al.（`arXiv:2003.04664`）
 - **一句话说明：** 覆盖 locomotion reward shaping、自动课程学习、LLM 辅助奖励设计等方法
 
 ## 核心论文摘录
@@ -38,9 +40,9 @@
   - [reward-design](../../wiki/concepts/reward-design.md)
   - [curriculum-learning](../../wiki/concepts/curriculum-learning.md)
 
-### 4) Terrain-Adaptive Locomotion Skills Using Deep RL（Peng & van de Panne, 2016）
-- **链接：** <https://arxiv.org/abs/1606.01984>
-- **核心贡献：** 早期用 RL 学习地形自适应步态；reward = 速度跟踪 + 姿态稳定；展示 RL 可从无先验知识学出合理步态
+### 4) Terrain-Adaptive Locomotion Skills Using Deep RL（Peng, Berseth & van de Panne, ACM TOG / SIGGRAPH 2016）
+- **链接：** <https://www.cs.ubc.ca/~van/papers/2016-TOG-deepRL/2016-TOG-deepRL.pdf> · DOI: `10.1145/2897824.2925881`（注：早期误写为 `arXiv:1606.01984`，该编号实为 Expectile Matrix Factorization，已核对纠正）
+- **核心贡献：** 早期用深层 Actor-Critic / RL 学习连续平面地形自适应步态（双足/四足混合地形跨越）；reward 结合位置/速度与重心/姿态跟踪，并配合相位状态编码；展示端到端 RL 可在复杂地形上自发形成跨越与落脚行为
 - **对 wiki 的映射：**
   - [reward-design](../../wiki/concepts/reward-design.md)
   - [locomotion](../../wiki/tasks/locomotion.md)

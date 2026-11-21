@@ -2,7 +2,9 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-10-06
+original:
+  - ../../sources/papers/sun_awesome_r2s2r_2508_11117_robot-policy-evaluation-for-sim-to-real.md
+updated: 2026-11-21
 arxiv: "2508.11117"
 venue: "arXiv 2025"
 summary: "A benchmarking perspective on robot policy evaluation for sim-to-real transfer"
@@ -67,39 +69,47 @@ flowchart TD
 
 ## 核心机制（归纳）
 
-### 策展导读要点
+论文 `arXiv:2508.11117v1` 围绕“高保真闭环仿真能否可信预测真机部署表现”重构 Sim-to-Real 评测闭环：
 
-A benchmarking perspective on robot policy evaluation for sim-to-real transfer
-
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+- **Task Complexity T1–T4（任务复杂度分级）**：从单步稳定原语（T1）延伸到多步组合、柔性/可变形体及动态干扰任务（T4），识别策略在长时序与复杂接触下的崩溃阈值。
+- **Visual & Scene Perturbations V1–V5（五维视觉/环境扰动）**：在 `IsaacLab` 高保真场景库中正交施加光照、纹理、相机视角偏移、背景干扰物及遮挡（V1–V5），剥离模型对静态场景纹理或初始摆放先验的记忆。
+- **Unified Policy API（统一策略接口）**：标准化观测解码、控制频率与动作空间映射，使扩散策略、VLA 与 RL 基线在同一仿真场景库下零脚手架差异复测。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2508.11117) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 同分组条目。
+- **过程与结果指标（M1–M5）**：除最终二值任务成功率外，同步记录轨迹平滑度、耗时、安全边界及中间里程碑完成率（M1–M5），诊断“虽偶发成功但过程危险或低效”的伪鲁棒策略。
+- **Sim-to-Real 迁移度量（S1–S3）**：引入包括 **MMRV**（Mean Maximum Rank Violation）与排序相关性在内的跨环境一致性指标，并形式化**贝叶斯后验达标概率 $p(S_{\text{real}} > \theta \mid S_{\text{sim}}, T, l)$**——用于定量估计“在仿真中达到得分 $S_{\text{sim}}$ 的策略，在真机达成阈值 $\theta$ 的统计置信度”。
 
 ## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 的 **Benchmarks Simulators & Datasets** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 与 [Real-to-Sim 3DGS Soft-Body Evaluation](./paper-sa-2511-04665-real-to-sim-robot-policy-evaluation-with-gaussia.md)（重点解决软体实景重建与真机相关验证 `Pearson r / MMRV`）及 [LIBERO-VPro](./paper-libero-vpro.md)（执行期视觉扰动基准）互补：本文着重确立跨任务（T1–T4）与跨扰动（V1–V5）的统一接口与贝叶斯真机置信框架。
+- 横向专题见 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)（**Benchmarks Simulators & Datasets** 分组）与 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
 
 ## 结论
 
-**这一页能给你的是「Robot Policy Evaluation for Sim-to-Real Transfer」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**可信的 Sim-to-Real 评测不应只看干净仿真成功率，而须用正交扰动矩阵（T1–T4 × V1–V5）、排名一致性（MMRV）与贝叶斯后验置信估计 $p(S_{\text{real}} > \theta \mid S_{\text{sim}}, T, l)$ 共同校准“仿真排名能多大程度推论真机部署”。**
 
-- 可确证的只有清单坐标：分组 **Benchmarks Simulators & Datasets**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. **先分层再打分**：把任务复杂度（T1–T4）与视觉域隙扰动（V1–V5）正交拆解，避免用单一总成功率掩盖具体失效维度。
+2. **用 Unified Policy API 排除脚手架偏差**：统一频率与观测—动作协议后，高保真 `IsaacLab` 场景库才能产出横向可比的 M1–M5 诊断。
+3. **当前阶段定位为设计蓝图**：`arXiv:2508.11117v1` 为方法论与框架论文，真机配对校验在文中属于规划蓝图，尚未附带开源基准代码或实机定量对比表。
 
-## 常见误区
+## 局限与常见误区
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+1. 不要把纯仿真高分或单一点估计成功率当作真机达标保证——需结合 S1–S3（MMRV 与后验达标概率）评估域隙放大风险。
+2. 本文未发布可执行开源仓库与标准排行榜数值，具体实验落地需搭配实体/实景配对基准（如 `Real2Sim-Eval` 或 `Uranus`）共同实施。
+
+## 工程实践
+
+- **按 T1–T4 与 V1–V5 二维矩阵设计消融评测**：先划分任务复杂度（T1 单步原语 → T4 长程多阶段可变形/动态交互），再正交叠加视觉与场景扰动（V1–V5：光照/纹理、遮挡、干扰物、视角偏移等），避免仅报告干净场景总分。
+- **使用 Unified Policy API 统一解耦策略与 IsaacLab 场景库**：将观测解码、控制频率与动作空间缩放隔离在统一接口外，确保多基线复用同一高保真物理/光照测试集。
+
+## 源码运行时序图
+
+**不适用** — `arXiv:2508.11117v1` 属于领域综述与评估方法论定位论文（Benchmarking Perspective），提出了 `T1–T4` / `V1–V5` / `M1–M5` / `S1–S3` 指标框架及接口设计蓝图，未随论文发布独立官方代码仓库或实验结果表。
 
 ## 关联页面
 
+- 评测闭环：[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本文提出的 `T1–T4` / `V1–V5` / `S1–S3` 指标对应闭环中的真机一致性外推与分级压测视角
 - 列表实体：[Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)
 - 技术地图：[Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
 - 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
@@ -110,7 +120,7 @@ A benchmarking perspective on robot policy evaluation for sim-to-real transfer
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2508.11117>
-- [arXiv PDF](https://arxiv.org/pdf/2508.11117)：已通读方法部分（实验与附录以略读为准）：§I–§IV（含 Fig.1 框架图；全文仅数页，其余为讨论与参考文献）
+- [arXiv PDF](https://arxiv.org/pdf/2508.11117)：已全文通读 `arXiv:2508.11117v1`（涵盖 `T1–T4`、`V1–V5`、`M1–M5`、`S1–S3` 指标规范与 Unified Policy API / IsaacLab 场景库构想）。
 
 ## 推荐继续阅读
 
