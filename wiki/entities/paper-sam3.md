@@ -172,6 +172,8 @@ SAM 3 把 Segment Anything 从「提示一个物体」推进到「提示一个�
 
 ## 关联页面
 
+- [UNVEIL：SAM 3 的可提示概念图](./paper-unveil-pcm-2611-25747.md) — 用旁路语义图与独立 presence decoder 处理阴影、透明物体、边缘等非对象概念；区别于本页实例分割任务。
+
 - [SAM](./paper-segment-anything.md) · [SAM 2](./paper-sam2.md) · [DART 实时多类检测](./paper-dart-sam3-realtime.md)
 - [ENEAS](./paper-eneas.md) — SAM 3 对照：本体验证与时序记忆
 - [BLIP-2](./paper-blip2.md)
