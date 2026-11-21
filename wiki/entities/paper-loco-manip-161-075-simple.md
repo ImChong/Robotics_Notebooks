@@ -186,6 +186,13 @@ sequenceDiagram
 - **复现入口：** 以 `physical-superintelligence-lab/SIMPLE` README 为准；底层依赖 AMO/SONIC 全身 tracking 与 Isaac Sim 渲染栈。
 - **与 Ψ₀ 关系：** SIMPLE 由同一 PSI Lab 维护，benchmark 表将 **Ψ₀** 作为强基线；Ψ₀ 模型细节见 [Psi0（161 #156）](./paper-loco-manip-161-156-psi0.md)。
 
+## 局限与风险
+
+- **仿真吞吐瓶颈：** 论文 v2 §4.6/§5 报告 Isaac Sim 同步光追约 **4 fps/GPU**；离线并行渲染能降低数据生成等待，却不能等同于在线策略实时反馈吞吐。
+- **物理对象范围：** 当前主要处理刚体，布料、绳索等可形变对象不在已验证能力内；易滑动或细粒度接触任务仍可能出现仿真与真机差异。
+- **泛化证据有限：** v2 仅在特定 G1 任务展示有限次零样本 sim-to-real 对照。L0/L1/L2 随机化也不等于覆盖所有真实部署分布；避免将成功率、模型排名直接外推到不同机器人与陌生场景。
+- **环境配置依赖：** 官方 `main` 与升级分支的 Isaac Sim/MuJoCo 版本不同；复现实验需固定环境、数据集、策略 checkpoint、WBC 及成功判据，当前未完成独立 GPU 复现。
+
 ## 结论
 
 **SIMPLE 卖的不是策略而是地基：MuJoCo 管接触物理、Isaac Sim 管光追渲染，把人形 loco-manipulation 的评测、采集与训练收进同一栈。**
@@ -203,7 +210,7 @@ sequenceDiagram
 3. **高仿真成功率 ≠ 可忽略底层 WBC**——策略仍依赖 AMO/SONIC 等 tracking；换运控栈或机器人 embodiment 需重新标定。
 4. **运动规划数据不能替代一切**——论文与项目页均显示 **遥操作数据** 对 VLA 微调显著更优。
 
-## 与其他页面的关系
+## 关联页面
 
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-03-visuomotor.md](../overview/loco-manip-161-category-03-visuomotor.md)
