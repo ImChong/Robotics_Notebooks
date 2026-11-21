@@ -3,7 +3,7 @@ type: entity
 project_id: nimo-robotics-contact-dexterity
 project: https://nimobot.ai/
 tags: [robotics, manipulation, dexterous-manipulation, teleoperation, tactile-sensing, imitation-learning, multimodal]
-status: draft
+status: complete
 updated: 2026-11-21
 summary: "Nimo Robotics 于 2026-11-18 推出 N1 示教手套、D1 灵巧手与 Nimo Core，提出以匹配运动学和视觉/触觉/声音示范学习工业接触操作；一天训练部署是官方目标，2 kHz/48 kHz 等数据尚待一手证实。"
 original:
@@ -96,7 +96,7 @@ flowchart TD
 
 ## 局限与风险
 
-- **原始资料尚未全部通读：** 官方 X 原帖直连返回 403，官网抓取失败；已核对可见的官方声明全文转录和发布视频索引，但未核对视频全片及官网内部技术文档。因此本节点状态为 **draft**，不能声称健康度满分。
+- **首发帖通读、技术资料未公开：** 已通过两份完整转发交叉核对 Nimo 官方 2026-11-18 首发帖全文，故本页作为**首发方案资料梳理**标为 complete；但官方 X 直链返回 403、官网抓取失败，尚未观看完整发布视频或取得技术规格、实验原始记录。**内容健康度只衡量本页首发帖证据与阅读骨架，不代表官方技术已完整披露或评测已复现。**
 - **型号混淆：** 网络二次转述用「CAP Glove / DEX Hand」，官方首发使用 **N1 glove / D1 hand**；目前没有证据证明是正式更名或同款型号。
 - **未证实的技术参数：** 「Interaction Episode」、力 2 kHz、音频 48 kHz、20+ 项工业操作及三手指细节，当前仅来自二次叙述，未从官方技术原文确认。
 - **没有可审计的评测指标：** 一天部署属于官方目标；未见独立实验的成功率、操作次数、训练预算和长期可靠性报告。
@@ -115,6 +115,8 @@ flowchart TD
 
 ## 参考来源
 
+- [Nimo 官方首发完整转发记录 A（保留官方原帖作者）](https://zamantika.com/profile/TheHumanoidHub)
+- [Nimo 官方首发完整转发记录 B（保留官方原帖作者）](https://teapawt.net/wangzhangup)
 - [Nimo Robotics 2026-11-18 官方首发证据与核对边界](../../sources/sites/nimo-robotics-launch-2026.md)
 - [Nimo Robotics 官方首发声明（X）](https://x.com/Nimo_Robotics/status/2123144261344592269)
 - [Nimo Robotics 官网](https://nimobot.ai/)
