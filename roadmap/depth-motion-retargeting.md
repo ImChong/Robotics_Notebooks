@@ -96,6 +96,7 @@ flowchart LR
 - [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md) — 优化目标形式化
 - [Gauss–Newton](../wiki/methods/gauss-newton.md)、[Levenberg–Marquardt](../wiki/methods/levenberg-marquardt.md)、[L-BFGS](../wiki/methods/l-bfgs.md) — 求解器族
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 的"主要方法"分节
+- [RoboKit（arXiv:2611.20185）](../wiki/entities/robokit-openrobokit.md) — Warp GPU 并行多初值 IK、GN/LM 与混合碰撞代价；适合复现实时手部/人形重定向的求解器选型，须区分批量总时间与单帧延迟。
 
 ### 学完输出什么
 - 一个能跑的末端约束 IK 重定向脚本
