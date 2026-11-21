@@ -3,11 +3,13 @@
 - **类型：** CoRL 2026 Spotlight 论文（UC San Diego）
 - **作者：** Jianglong Ye*, Xuanbin Peng*, Conor Mc Gartoll*, Changwei Jing*, Lai Wei, Jiali Chen, Xueyan Zou, Xiaolong Wang（*共同贡献；Jianglong Ye 为 project lead）
 - **论文原文（首选）：** https://openrobokit.com/robokit/paper.pdf （26 页，包含附录 A–D）
+- **arXiv 身份：** [2611.20185v1](https://arxiv.org/abs/2611.20185)（2026-11-15 提交；[HTML 全文](https://arxiv.org/html/2611.20185v1)，含附录）
 - **OpenReview：** https://openreview.net/forum?id=xfZJ2GKrZG （浏览器验证可能阻断，论文正文以作者提供的 PDF 为准）
 - **项目主页：** https://openrobokit.com/robokit/
 - **官方代码：** https://github.com/openrobokit/robokit
 - **首次入库：** 2026-11-07
 - **全文复核：** 2026-11-09（作者 PDF：正文 §1–6、表 1–6、附录 A–D、表 7–13、算法 1–4、图 1–4，含参考文献）
+- **本次 arXiv 复核：** 2026-11-21；核对 arXiv v1 的摘要、正文 §1–6、表 1–6 及附录 A–C 与原论文归档关键结论一致；此前 PDF 附录 D 通读记录保留。
 - **通读：** 已完成
 
 ## 一句话摘要
@@ -81,6 +83,7 @@ RoboKit 将 Warp 上的 GPU 多初值采样与梯度/二阶近似/MPPI 优化器
 ## 来源与 wiki 映射
 
 - 官方完整 PDF：https://openrobokit.com/robokit/paper.pdf
+- arXiv:2611.20185v1：https://arxiv.org/html/2611.20185v1
 - 作者主页（论文、项目、代码入口）：https://xuanbinpeng.com/
 - 官方源码与文档：https://github.com/openrobokit/robokit
 - [RoboKit 实体](../../wiki/entities/robokit-openrobokit.md)
