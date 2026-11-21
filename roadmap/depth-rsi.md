@@ -205,6 +205,7 @@ flowchart LR
 - [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
 - [Mendel Gödel Machine（MGM）](../wiki/entities/paper-mendel-godel-machine.md) — 在 HGM 上新增同节点多任务与跨谱系同题的比较证据指导自修改；编程 Agent 实验，不是真机自进化
 - [Hyperagents（DGM-H）](../wiki/entities/paper-hyperagents.md) — 将任务 Agent 与元级改进者放入同一可编辑程序；Genesis Go2 奖励设计属于仿真实验，不等于真机策略自修改
+- [AIDE²：AI 研究智能体递归自改进](../wiki/entities/paper-aide2-recursive-self-improvement-ai-research-agents.md) — 在固定预算与隐藏评分下迭代改写 harness；独立 benchmark 迁移与 prompt 压缩，不代表底座权重提升。
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
 - [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化
@@ -245,6 +246,7 @@ flowchart LR
 - [OpenAI Research acceleration: The jagged frontier（2026-11）](../wiki/entities/openai-research-acceleration-jagged-frontier.md) — 观察性输入/过程/产出测量：2–4 小时任务零干预成功率 23%→46%，但 79% 训练监控与 25% 推理服务栈编码显示能力边界；活动数据不是完全 RSI 的因果证据。
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — 三情景、Amdahl 瓶颈与"怎么读内部数字"对照表
 - [From AGI to ASI](../wiki/entities/paper-from-agi-to-asi.md) — DeepMind 的四条能力路径与六类瓶颈；与 RSI 机制勿混读
+- [AIDE²（arXiv:2609.26457v1）](../wiki/entities/paper-aide2-recursive-self-improvement-ai-research-agents.md) — 七次被接受的元层 harness 改写、四项 held-out 检验；3×50 步 ignition 对照结果不显著，尚不能声称递归加速。
 - [AI Auto-Research](../wiki/concepts/ai-auto-research.md) — 人机共治、分层验证与跨阶段溯源
 - [Motubrain 2.0 官方公开动态](../wiki/entities/motubrain-2-live.md) — 11-13 失败后调试**代码**再测、11-14 RSI highlights；仅展示过程，不能当权重级持久改进的外部验证
 - [Datawhale RSI 科普综述（2026-09-19）](https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A) — 五次推进叙事与 2026 夏信号

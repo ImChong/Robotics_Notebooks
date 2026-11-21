@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 related:
   - ../entities/openai-research-acceleration-jagged-frontier.md
   - ../../roadmap/depth-rsi.md
@@ -30,6 +30,7 @@ related:
   - ../entities/paper-duplexagent-rsi.md
   - ../entities/researchboost-agent.md
   - ../entities/paper-toward-self-improving-robotic-agents.md
+  - ../entities/paper-aide2-recursive-self-improvement-ai-research-agents.md
 sources:
   - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
@@ -180,6 +181,8 @@ flowchart LR
 - **加速未覆盖部分更危险。** 代码变多而理解变少（文内员工引言）；真机上这会变成不可复现的危险策略。
 
 ## 关联页面
+
+- [AIDE²：AI 研究智能体的递归自我改进](../entities/paper-aide2-recursive-self-improvement-ai-research-agents.md) — 固定预算、私有 held-out 评分下迭代改写研究 agent 的 harness；七次候选通过门控，但 ignition test 未证实递归加速，不能外推为真机机器人自主进化。
 
 - [Toward Self-Improving Robotic Agents（162 项研究综述）](../entities/paper-toward-self-improving-robotic-agents.md) — 执行/获取双轨、能力谱系与 L1–L5 实证证据审计（不同于能力增量等级）。
 
