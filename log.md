@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | sources/blogs/embodied_heart_itw_ego_plus_learnability_2026_11_20.md — 可学习性报道与 ITW-Ego Plus 五种选配模态一手核验
+
+- 复用已有 ITW-Ego Plus 实体，补齐 Sol/Jupiter 模态流程、训练场景配方与 Mermaid 图，避免重复造页。
+- 基于 2026-11-05 诺亦腾公告和官方 ModalityNet 技术文章校准 Body/Wrist/Exo/Touch/Sound；4D 重建仅部分 ITW 数据明确涉及。
+- 当前未核验 Plus 原始样本、许可、准确时序指标及独立下游消融，节点继续保持 draft；挂载具身数据 Stage 1。
+
 ## [2026-11-21] ingest | SimReady Central 官方资料复核与资产质量边界
 
 - 核对 2026-10-21 NVIDIA/Hugging Face 公告、2026-11-19 SimReady Central 官方文档、资产数据集和 GitHub 源码/验收规范。
