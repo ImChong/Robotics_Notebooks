@@ -4,7 +4,9 @@
 - **论文：** <https://arxiv.org/abs/2609.34233>
 - **关联来源：** [论文归档](../papers/gae_general_action_expert_arxiv_2609_34233.md)
 - **关联知识页：** [GAE 全身遥操作](../../wiki/entities/paper-gae-general-action-expert.md)
-- **核查日期：** 2026-10-02
+- **核查日期：** 2026-10-02（2026-11-21 复核）
+- **核对范围：** 抓取并通读项目页 <https://wangyf0928.github.io/gae-wlrobotics/> 完整文本与模块说明（01–07 节与 Citation），确认 `Get started` 指向官网商用下载页，页脚仅链接网页模板，无算法源码、权重或数据发布；未重跑视频实验。
+- **通读：** 已完成
 - **代码 / 权重 / 数据：** 项目页未列可获取的官方 GitHub、Hugging Face 或数据链接；当前按**未公开可运行实现**记录。
 
 ## 项目页核查

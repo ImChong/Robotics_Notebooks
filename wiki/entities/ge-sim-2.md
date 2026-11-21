@@ -3,7 +3,12 @@ type: entity
 tags: [world-models, video-generation, manipulation, simulation, closed-loop, agibot, multi-view, evaluation, open-source]
 status: complete
 arxiv: "2605.27491"
-updated: 2026-11-14
+code: https://github.com/AgibotTech/GE-Sim-V2
+updated: 2026-11-21
+original:
+  - ../../sources/papers/ge_sim_2_arxiv_2605_27491.md
+  - ../../sources/repos/ge_sim_v2.md
+  - ../../sources/sites/ge-sim-v2-project.md
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/agibot-june-2026-release-technology-map.md
@@ -101,10 +106,53 @@ flowchart TB
 
 二者同属 **Agibot 生态**，宜 **组合阅读**：EWMBench 量化「生成质量」，GE-Sim 2.0 推进「模拟器即训练与评测平台」。
 
+## 源码运行时序图
+
+入口：三端联动闭环——`MODEL=gesim_v2 CONFIG=configs/gesim_v2.yaml bash scripts/serve_world_model.sh`（端口 9000）+ `bash scripts/serve_policy_pi05.sh`（端口 8000）+ `python examples/closed_loop.py --episode assets/demo_000 --steps 8`。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Runner as examples/closed_loop.py
+  participant Env as gesim/env.py (WorldModelEnv)
+  participant Pol as gesim/policies/openpi.py (OpenPIPolicy)
+  participant Srv as gesim/server/app.py (WorldModelServer)
+  participant WM as models/gesim_v2/model.py (ACWMCosmos2PosePipeline)
+
+  Runner->>Env: reset(bundle, conditioning="action")
+  Env->>Srv: POST /init, /set_task, /set_camera_params, /set_episode_data
+  Srv->>WM: reset(), set_task(), set_episode_data(first_frame)
+  Runner->>Pol: policy.reset()
+  loop 每轮推理 step = 0..steps-1
+    Runner->>Pol: infer(obs) via WebSocket (port 8000)
+    Pol-->>Runner: actions (L, 16) 关节目标块
+    Runner->>Env: step(actions)
+    Env->>Env: 可选 compress_action_chunk 至 25 步 + _g01_fk.so 渲染 trajectory band
+    Env->>Srv: POST /step (二进制 action + traj/c2w)
+    Srv->>WM: step(actions) 4 步蒸馏视频扩散 + Pose Expert 解码 16D 状态
+    WM-->>Srv: StepResult(frames, state)
+    Srv-->>Env: JPEG frames + float32 state
+    Env-->>Runner: obs, reward(可选 RewardClient), state, info
+  end
+  Runner->>Env: save_video("closed_loop.mp4")
+```
+
+图依据：`AgibotTech/GE-Sim-V2@508c60f`，读过 `README.md`、`scripts/serve_world_model.sh`、`examples/closed_loop.py`、`src/gesim/env.py`、`src/gesim/server/app.py`、`src/gesim/models/gesim_v2/model.py`；未运行 GPU 推理或服务。
+
+## 工程实践
+
+| 项 | 要点 |
+|----|------|
+| **开源状态** | **部分开源**（2026-06-25 开源核心仿真端与 G01 蒸馏 4 步权重；2026-10-17 增补 WorldOracle G02/YAM 权重；**World Judge 奖励模型权重未内置**） |
+| **动作空间契约** | 客户端 `WorldModelEnv.step` 输入 `(L, 16)` 绝对关节目标 `[L7_arm, L_grip, R7_arm, R_grip]`，经 `gesim/conditioning/_g01_fk.so` 前向运动学渲染 trajectory band |
+| **回放 vs 闭环** | `examples/replay.py` 走 `conditioning="episode"`（上传录制 EEF 轨迹对齐训练分布）；`examples/closed_loop.py` 走 `conditioning="action"`（由策略输出动态驱动） |
+| **WorldOracle 评测** | G02 / YAM 20 步纯视频推理用 `scripts/infer_worldoracle.py` + `configs/worldoracle_{g02,yam}.yaml`（不可直接替换服务端 loader） |
+| **自定义奖励** | 通过 `WorldModelEnv(reward=RewardClient)` 挂载外部裁判模型，未挂载时 `reward` 返回 `None` |
+
 ## 常见误区或局限
 
 - **不是刚体物理引擎**：接触力、可微动力学与力控闭环仍不可直接替代 MuJoCo/Isaac；适合 **视觉–本体–语义层** 的策略评测与数据增广，而非高频力控辨识。
-- **开源进度**：截至 2026-05-30，[GitHub 仓](https://github.com/AgibotTech/GE-Sim-V2) 仅技术报告；**代码、权重、评测工具链** 仍标记 TODO（以仓库 README 为准）。
+- **开源边界**：[GitHub 仓](https://github.com/AgibotTech/GE-Sim-V2) 已公开闭环服务端/客户端代码与 G01/G02/YAM 2B 权重（Hugging Face `agibot-world/Genie-Envisioner-Sim-v2.0`），但 **World Judge 奖励模型权重与训练代码仍未随仓发布**（需外接自定义 `RewardClient`）。
 - **许可**：仓内非上游适配部分为 **CC BY-NC-SA 4.0**，商业复现需单独核对。
 - **开环指标仍不足够**：即便 WorldArena 领先，策略价值仍应以 **闭环成功率与真机迁移** 为最终判据（与 [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) 一致）。
 

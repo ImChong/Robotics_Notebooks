@@ -8,9 +8,12 @@
 - **作者：** Andy Zhai, Brae Liu, Bruno Fang, Chalse Cai, Ellie Ma 等（X Square Robot；Lucy Liang 项目负责人，Hao Wang 通讯）
 - **代码：** <https://github.com/X-Square-Robot/wall-x>；项目页 <https://x2robot.com/en/research/68bc2cde8497d7f238dde690>
 - **入库日期：** 2026-11-05
+- **再核日期：** 2026-11-21
 - **线索来源：** LeRobot 固定提交 `9e5ee98` 的 `docs/source/walloss.mdx`（`policy.type=wall_x`）
+- **核对范围：** 通读 `https://arxiv.org/html/2509.11766`（v1）全文，含摘要、§1 引言、§2 相关工作、§3 方法（MoE 静态路由、Inspiration / Integration 两阶段、Uni-CoT）、§4 数据构成（Table 1）、§5 评测与消融（Table 2–3、Fig. 6–7）及 §6 讨论；未运行真机实验
+- **通读：** 已完成
 
-## 核心摘录（已通读摘要、§1 引言、§3 方法的 Inspiration / Integration 两阶段、数据节与未来方向）
+## 核心摘录（已通读全篇正文 §1–§6 与 Table 1–3）
 
 - 针对 VLM 迁到具身空间的三处鸿沟（模态与数据、预训练分布、训练目标），提出紧耦合 MoE（静态路由，按 token 类型分流 VL FFN / Action FFN）。
 - 两阶段：Inspiration（复用原 FFN，具身 VQA + FAST 离散动作 token 的交叉熵）→ Integration（换成 flow matching 的连续动作头，先冻结 VLM 再联合训练）。

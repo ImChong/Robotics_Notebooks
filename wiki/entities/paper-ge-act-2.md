@@ -12,8 +12,11 @@ tags:
   - agibot
   - closed-source
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 arxiv: "2609.05588"
+original:
+  - ../../sources/papers/ge_act_2_arxiv_2609_05588.md
+  - ../../sources/sites/ge-act-v2-project.md
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md

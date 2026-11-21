@@ -8,6 +8,8 @@
 - **原始链接：** <https://generalistai.com/blog/gen-0>
 - **发表日期：** 2025-11-04（页面标注 November 4, 2025；Citation 写 Nov 2025）
 - **入库日期：** 2026-10-09
+- **核对范围：** 2026-11-22 抓取并通读 `https://generalistai.com/blog/gen-0` 正文全文（Introduction、7B 相变与 ossification、Figure 1–6、幂律公式 $L(D)=(D_c/D)^{\alpha_D}$、Harmonic Reasoning、Table 1 及全部脚注/参考文献）；未公开架构/权重/原始数据点，仅核对正文与表格。
+- **通读：** 已完成
 - **抓取方式：** curl 抓官方页 HTML，去标签后逐段核对（2026-10-09）
 - **一句话说明：** Generalist 发布 **GEN-0** 具身基础模型系列：在 **27 万+ 小时** 真实世界操作数据（每周新增 1 万+ 小时）上直接预训练，报告 **7B 附近的"相变"**（1B 出现 ossification、7B+ 能吸收数据并以少量后训练迁移）、预训练数据量与下游后训练误差之间的 **幂律 scaling law**，提出 **Harmonic Reasoning**（异步、连续时间的感知 / 动作 token 流"边想边做"），并已扩展到 **10B+**。
 

@@ -5,6 +5,8 @@
 - **URL：** <https://research.beingbeyond.com/>（公司官网 <https://beingbeyond.com>；GitHub <https://github.com/BeingBeyond>；Hugging Face <https://huggingface.co/BeingBeyond>；X <https://x.com/beingbeyond_>）
 - **机构：** 北京智在无界科技有限公司（官网页脚）；英文名 BeingBeyond；地址「北京市海淀区鼎好DH3A座702室」
 - **核查日期：** 2026-10-12
+- **核对范围：** 已通读本归档记录的 `research.beingbeyond.com` Research 页 26 条研究条目、`beingbeyond.com` 官网公开信息及 GitHub `BeingBeyond` 组织首页与各关联仓库状态；未登录内部系统或未公开资料。
+- **通读：** 已完成
 - **抓取方式：** Research 站是 Next.js 客户端渲染，正文显示「Loading...」；用 `curl` 读取首页 HTML 中的 RSC 数据，取出 26 条研究的 slug、标题、TL;DR、官网日期与会议；再逐个读取 `/<slug>` 子页提取 arXiv / GitHub / HF 链接。arXiv v1 日期用 `export.arxiv.org/api/query` 批量核对。GitHub 组织 API 在本环境不可用，改读组织仓库列表网页；HF 用公开 models / datasets API。
 - **覆盖 wiki：** [智在无界（BeingBeyond）](../../wiki/entities/beingbeyond.md)
 - **站点自述：** 「BeingBeyond is a startup company on foundation models for embodied intelligence.」；页脚「© 2025-2026」「Embody the future」

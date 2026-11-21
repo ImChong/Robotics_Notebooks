@@ -4,7 +4,7 @@ tags: [company, aether-ai, causal-ai, causal-world-model, world-model, embodied-
 title: Aether AI（因果世界模型公司）
 status: complete
 summary: "Aether AI（2026 年春成立，San Diego）由 UCSD 助理教授黄碧薇（Biwei Huang）创办，主张用因果世界模型替代纯相关性 scaling，首个落地方向是 Physical AI。2026-06 完成 2000 万美元种子轮（MPCi/经纬创投领投）。官网 11 篇博文覆盖因果范式、Causal Copilot、因果大脑、闭环因果世界模型、TC-WM、接触几何、CD-LAM、SCAR、RSIAgent、CausalWM 与 CRIS-0。"
-updated: 2026-10-10
+updated: 2026-11-21
 institutions: [aether-ai]
 related:
   - ./paper-task-centric-world-models.md
@@ -26,6 +26,10 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
   - ../overview/overseas-embodied-ai-labs-landscape-2026.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/sites/aetherlabs-blog-index.md
+  - ../../sources/blogs/aether_foundations_2026-05.md
+  - ../../sources/blogs/aether_seed_round_2026-06.md
 sources:
   - ../../sources/sites/aetherlabs-blog-index.md
   - ../../sources/blogs/aether_foundations_2026-05.md

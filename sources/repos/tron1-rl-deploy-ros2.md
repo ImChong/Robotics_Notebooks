@@ -8,6 +8,8 @@
 - **链接：** https://github.com/limxdynamics/tron1-rl-deploy-ros2
 - **分类：** 仿真环境
 - **入库日期：** 2026-09-06
+- **核对范围：** 2026-11-21 通读 `limxdynamics/tron1-rl-deploy-ros2@19e604c` 官方 `README.md` 全文（含 PF/SF/WF 10 种机型×IsaacGym/IsaacLab 共 20 组预置 ONNX 策略尺寸表、`pointfoot_hw_sim.launch.py` / `pointfoot_hw.launch.py`、500 Hz 硬件循环与 50 Hz 策略推理、`feature/humble` 与 `feature/foxy` 分支）及核心源码 `robot_hw/src/PointfootHardwareNode.cpp`、`robot_controllers/src/PointfootController.cpp`；未运行 Gazebo 或 TRON1 真机。
+- **通读：** 已完成
 - **一句话说明：** 逐际动力 开源项目 TRON1 RL Deploy ROS2（仿真环境），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-tron1-rl-deploy-ros2.md`](../../wiki/entities/cn-os-tron1-rl-deploy-ros2.md)
 

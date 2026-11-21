@@ -11,9 +11,14 @@ tags:
   - scene-refinement
   - xpeng
   - polyu
+institutions:
+  - xpeng
+  - polyu
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.06827"
+original:
+  - ../../sources/papers/r2s_ego_arxiv_2608_06827.md
 related:
   - ../concepts/sim2real.md
   - ./paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md

@@ -2,7 +2,9 @@
 
 - **类型：** repo
 - **机构：** 蚂蚁灵波 Robbyant
-- **核查日期：** 2026-10-05
+- **核查日期：** 2026-10-05（2026-11-21 复核代码入口）
+- **核对范围：** 2026-11-21 核对 `Robbyant/lingbot-va@7c6ffa9` 官方 `README.md`、`script/run_va_posttrain.sh`、`wan_va/train.py`（`Trainer` 初始化与 `attn_mode="flex"`）、`wan_va/wan_va_server.py`（`VA_Server` 模型加载与 `attn_mode="torch"`）及 `wan_va/configs/va_libero_cfg.py`（`action_snr_shift`、`used_action_channel_ids`、`norm_stat`）；未运行训练或仿真评测。
+- **通读：** 已完成
 - **项目页：** <https://technology.robbyant.com/lingbot-va/>
 - **代码：** <https://github.com/robbyant/lingbot-va>
 - **论文：** <https://arxiv.org/abs/2601.21998>

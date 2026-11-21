@@ -11,9 +11,13 @@ tags:
   - stanford
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-17
+updated: 2026-11-21
 arxiv: "2403.07788"
 code: https://github.com/j96w/DexCap
+original:
+  - ../../sources/papers/humanoid_pnb_dexcap-scalable-and-portable-mocap-data-collecti.md
+  - ../../sources/sites/dexcap.md
+  - ../../sources/repos/dexcap.md
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
   - ../methods/diffusion-policy.md
@@ -54,7 +58,7 @@ summary: "DexCap（RSS 2024）：可穿戴 SLAM+EMF 手套 mocap 与胸挂 RGB-D
 - **把 mocap 从实验室搬到野外：** 可穿戴背包方案（约 40 分钟续航）摆脱固定动捕室，支持 in-the-wild 物体交互采集。
 - **相对 VR 视觉 teleop 更抗遮挡：** 项目页对比显示握杯柄等遮挡场景下 Quest 类视觉追踪失败，而 SLAM+EMF 组合仍稳定。
 - **采集吞吐显著高于 teleoperation：** 宣称约为 teleop 的 **3×**，接近自然人类动作节奏——对规模化 dexterous IL 数据很关键。
-- **观测视角人机一致：** 相机架快拆（<20 s）可在人与机器人间切换，减少 sim2real / human2robot 视觉域差。
+- **观测视角人机一致：** 相机架快拆（<5 s 切换相机架，整体穿戴标定 <10 s）可在人与机器人间切换，减少 sim2real / human2robot 视觉域差。
 - **学术线 → 产业线：** 同团队后续 [OM-1 / Reward AI](./reward-ai-om1.md) 把可穿戴 mocap 推到商业 Omnibody 栈（闭源，非本仓库等价物）。
 
 ## 核心信息
@@ -122,7 +126,9 @@ sequenceDiagram
   Deploy->>Deploy: 点云观测 → 46D 动作 chunk
 ```
 
-复现路径：NUC 端 `conda env create -f install/env_nuc_windows.yml` 后跑 `STEP1_collect_data`；Ubuntu 工作站 `pip install -r install/env_ws_requirements.txt` 并 editable 安装 `STEP3_train_policy`，再 `demo_create_hdf5.py` 与 `scripts/train.py --config training_config/*.json`。也可直接下载 [HF 数据集](https://huggingface.co/datasets/chenwangj/DexCap-Data) 跳过采集。
+复现路径：NUC 端 `conda env create -f install/env_nuc_windows.yml` 后跑 `STEP1_collect_data`；Ubuntu 工作站 `pip install -r install/env_ws_requirements.txt` 并 editable 安装 `STEP3_train_policy`，再 `STEP2_build_dataset/demo_create_hdf5.py` 与 `scripts/train.py --config training_config/*.json`。也可直接下载 [HF 数据集](https://huggingface.co/datasets/chenwangj/DexCap-Data) 跳过采集。
+
+图依据：`j96w/DexCap@4b0bed0`，读过 `README.md` 并核对 `STEP1_collect_data/`、`STEP2_build_dataset/` 与 `STEP3_train_policy/` 目录文件；未运行硬件或 GPU 训练。
 
 ## 实验与评测
 
@@ -164,7 +170,7 @@ sequenceDiagram
 - 产业演进读 [OM-1](./reward-ai-om1.md)，但 **勿把闭源 OM-1 当 DexCap 代码的超集**。
 - 策略头为点云 [Diffusion Policy](../methods/diffusion-policy.md)；换 VLA 需自行改观测与 action 空间。
 
-## 与其他页面的关系
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 数据采集综述：[dexterous-data-collection-guide.md](../queries/dexterous-data-collection-guide.md)

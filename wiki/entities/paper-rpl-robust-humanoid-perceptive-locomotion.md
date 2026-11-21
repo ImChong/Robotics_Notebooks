@@ -21,8 +21,11 @@ tags:
   - stanford
   - berkeley
 status: complete
-updated: 2026-11-07
+updated: 2026-11-21
 arxiv: "2602.03002"
+original:
+  - ../../sources/papers/rpl_arxiv_2602_03002.md
+  - ../../sources/repos/rpl-amazon-far.md
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/humanoid-locomotion.md
@@ -89,7 +92,7 @@ summary: "RPL（arXiv:2602.03002，Amazon FAR）两阶段训练：特权高程�
 - **蒸馏技巧可复用：** **DFSV** 用速度方向 **无学习参数** 地选相机；**RSM** 用地形相关 mask 概率模拟 **未见窄道**——二者在 OOD 几何与非对称感知下互补（项目页消融可见）。
 - **工程瓶颈：多深度仿真：** 自研 **Warp 射线–动静态 mesh** 管线，在 1024 并行环境、四相机深度下相对 IsaacSim Warp **约 5× 更快**，且支持 **机器人自遮挡**——降低多视角深度 RL 的训练成本。
 
-## 方法
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
@@ -156,6 +159,16 @@ flowchart TB
 | 多相机 | 垫脚石上 **2 相机** 达专家级双向性能；单下视相机明显掉点（Table II） |
 | 消融 | **RSM** 关键于未见窄宽度；**DFSV** 关键于非对称多视角（如前相机楼梯、后相机垫脚石） |
 | 代码 | 官方仓库提供专家训练、多深度学生蒸馏与 MuJoCo sim2sim；详见下方源码运行时序图 |
+
+## 工程实践
+
+| 环节 | 官方入口与工程要点 |
+|------|--------------------|
+| **训练环境（IsaacGym）** | `bash rpl_training/training_runs/setup_env.sh` 创建 `hsgym` 环境；因 IsaacSim API 尚未支持力扰动需求，RPL 训练绑定 IsaacGym |
+| **Stage 1 专家训练** | `NGPUS=4 EXPERT=stones bash rpl_training/training_runs/run_expert.sh`（支持 `stones` / `stairs` / `slopes`，建议 4×L40S） |
+| **Stage 2 多深度蒸馏** | `NGPUS=8 bash rpl_training/training_runs/run_distill.sh`；默认加载随仓附带教师（`rpl_training/data/models/`），也可通过 `--algo.config.ckpt-teacher` 指定自有检查点，导出 `model_XXXXX.onnx` |
+| **MuJoCo Sim2Sim** | `bash rpl_sim2sim/setup_env.sh` 建立 `rplmujoco` 与 `rplinference` 双环境，分别启动 `run_sim.sh` 与 `run_policy.sh`，经 Unitree `sdk2py` DDS 与共享内存通信（深度图下采样至 48×27） |
+| **真机传感器契约** | 前后双 ZED 2i（`neural_light` 15 Hz → 48×27 下采样）；上身运行盲策略跟踪操作目标 |
 
 ## 开源状态（官方仓库核查，2026-10-21）
 

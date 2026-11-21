@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, framework, unitree, mjlab, mujoco, reinforcement-learning, sim2real, humanoid, locomotion]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/unitree_rl_mjlab.md
 related:
   - ./unitree-ros.md
   - ./unitree-rl-gym.md
@@ -24,6 +26,10 @@ summary: "unitree_rl_mjlab 是 Unitree 官方基于 mjlab 的 RL 训练框架，
 # unitree_rl_mjlab (Unitree 官方 RL 框架)
 
 **unitree_rl_mjlab** 是由 Unitree Robotics 官方维护的强化学习训练框架，以 **mjlab**（Isaac Lab API + MuJoCo Warp）为底层，覆盖旗下 7 款机器人型号，提供从仿真训练到真机部署的完整 pipeline。
+
+## 一句话定义
+
+在 mjlab（MuJoCo Warp GPU 并行仿真 + Isaac Lab 风格任务接口）上训练宇树四足与人形的速度跟踪和动作模仿策略，在每次保存 checkpoint 时自动导出带元数据的 `policy.onnx`，并直接衔接官方 C++ `unitree_sdk2` 部署到 `unitree_mujoco` 与真机。
 
 ## 英文缩写速查
 
@@ -51,36 +57,37 @@ summary: "unitree_rl_mjlab 是 Unitree 官方基于 mjlab 的 RL 训练框架，
 - **多机型覆盖**：单框架支持四足（Go2）和人形（G1、H1_2、H2 等）
 - **完整 Sim2Real 链路**：训练 → ONNX 导出 → C++ 编译 → 真机部署，有明确的操作步骤
 
-## 支持机器人
+## 核心原理
 
-Go2、A2、As2、**G1**、R1、**H1_2**、**H2**（共 7 款，含主流人形）
+`unitree_rl_mjlab` 将宇树各机型环境注册到 `mjlab` 任务表（`register_mjlab_task`），并结合 `rsl_rl` 与自定义 `VelocityOnPolicyRunner` 实现「并行训练 → 自动导出 ONNX → C++ 真机部署」闭环：
 
-## 训练任务
-
-| 任务类型 | 示例环境 |
-|---------|---------|
-| 速度跟踪（Velocity Tracking） | `Unitree-G1-Flat` |
-| 动作模仿（Motion Imitation） | `Unitree-G1-Tracking-No-State-Estimation` |
-
-训练规模：支持 4096 个并行环境（GPU 加速）。
-
-## Sim2Real 部署链路
-
-```
-MuJoCo 并行训练
-    ↓ ONNX 导出
-C++ 控制程序编译
-（cyclonedds + unitree_sdk2）
-    ↓
-unitree_mujoco 仿真验证
-    ↓
-真机部署
-（以太网 192.168.123.222，调试模式）
+```mermaid
+flowchart LR
+  CFG["任务与配置注册<br/>env_cfgs.py / rl_cfg.py"] --> TR["scripts/train.py<br/>mjlab ManagerBasedRlEnv (4096 envs)"]
+  MOT["参考动作 CSV → NPZ<br/>scripts/csv_to_npz.py"] --> TR
+  TR --> RUN["VelocityOnPolicyRunner<br/>rsl_rl PPO 训练 + 导出 policy.onnx"]
+  RUN --> PLAY["scripts/play.py<br/>MuJoCo 回放验证"]
+  RUN --> SIM["unitree_mujoco + C++ 控制器<br/>./g1_ctrl --network=lo"]
+  SIM --> REAL["真机部署 (192.168.123.222)<br/>./g1_ctrl --network=enp5s0"]
 ```
 
-关键依赖：**cyclonedds**（DDS 通信）、**unitree_sdk2**（机器人接口）。
+- **支持机器人（7 款）**：Go2、A2、As2、**G1**（含 23DoF）、R1、**H1_2**、**H2**。
+- **训练任务**：
+  - **速度跟踪（Velocity Tracking）**：如 `Unitree-Go2-Flat`、`Unitree-G1-Flat`、`Unitree-G1-23Dof-Flat`、`Unitree-H1_2-Flat`、`Unitree-A2-Flat`、`Unitree-R1-Flat`（支持 4096 并行环境与 `--gpu-ids` 多卡）。
+  - **动作模仿（Motion Imitation）**：`Unitree-G1-Tracking-No-State-Estimation`、`Unitree-G1-23Dof-Tracking-No-State-Estimation`，先由 `scripts/csv_to_npz.py` 将 30 fps 动作 CSV 转为 50 fps NPZ 再训练。
+- **产物输出**：checkpoint 默认写入 `logs/rsl_rl/<robot>_(velocity|tracking)/<date_time>/model_<iteration>.pt`，并在保存时同步导出 `policy.onnx` 与 `policy.onnx.data`（附带环境观测/动作元数据）。
 
-## 与相关框架的对比
+## 工程实践
+
+1. **训练与回放**：按 `doc/setup_en.md` 配好 `mjlab` 环境后执行：
+   ```bash
+   python scripts/train.py Unitree-G1-Flat --env.scene.num-envs=4096
+   python scripts/play.py Unitree-G1-Flat --checkpoint_file=logs/rsl_rl/g1_velocity/2026-xx-xx_xx-xx-xx/model_xx.pt
+   ```
+2. **ONNX 导出与 C++ 编译**：将生成的 `policy.onnx` 与 `policy.onnx.data` 放入 `deploy/robots/g1/config/policy/velocity/v0/exported`，在 `deploy/robots/g1/` 下使用 `cyclonedds` 与 `unitree_sdk2` 执行 `mkdir build && cd build && cmake .. && make`。
+3. **Sim2Sim 与真机部署**：先编译并启动 `unitree_mujoco`（手柄需连接），运行 `./g1_ctrl --network=lo` 验证；真机部署需在零力矩模式下按 `L2 + R2` 切入 `debug mode`、本机网口配置 `192.168.123.222/24`，再执行 `./g1_ctrl --network=enp5s0`。
+
+### 与相关框架的对比
 
 | 维度 | unitree_rl_mjlab | AMP_mjlab | legged_gym | robot_lab |
 |------|-----------------|-----------|------------|-----------|
@@ -93,6 +100,12 @@ unitree_mujoco 仿真验证
 **与官方其它 RL 仓的关系**：同属 [unitreerobotics](./unitree.md) 组织时，`unitree_rl_gym`（Isaac Gym）与 `unitree_rl_lab`（Isaac Lab）是并行训练入口；本仓特长是 **mjlab + 官方 ONNX→C++** 闭环。组织级仓库地图见 [sources/repos/unitree.md](../../sources/repos/unitree.md)。
 
 **与 `unitree_ros` 的分工**：`unitree_ros` 提供 ROS1 + Gazebo8 的 URDF 与关节级仿真/控制示例（README 明确 Gazebo 不做高层行走）；`unitree_rl_mjlab` 面向当前研究常用的 **MuJoCo 并行训练 + SDK2** 部署闭环。二者同属官方开源，但中间件与仿真器代际不同，见 [unitree_ros](./unitree-ros.md)。
+
+## 局限与风险
+
+- **观测与动作配置不可跨仓混用**：本仓任务注册、观测顺序与动作缩放和 `unitree_rl_gym` / `unitree_rl_lab` 不通用，切勿跨仓直接套用 checkpoint。
+- **C++ 与驱动依赖链敏感**：真机部署依赖 `cyclonedds`、`unitree_sdk2` 以及导出 `policy.onnx` + `policy.onnx.data` 配套；仿真（`--network=lo`）与真机（`--network=enp5s0`）网口参数和 `192.168.123.222` 网段须严格核对。
+- **物理安全前提**：上机前务必让机器人在悬吊状态下进入零力矩模式并按 `L2 + R2` 确认进入 `debug mode`；本轮仅核查源码入口，未实际运行 GPU 训练或真机测试。
 
 ## 源码运行时序图
 
@@ -155,4 +168,10 @@ sequenceDiagram
 
 - [sources/repos/unitree_rl_mjlab.md](../../sources/repos/unitree_rl_mjlab.md)
 - [unitreerobotics/unitree_rl_mjlab GitHub Repo](https://github.com/unitreerobotics/unitree_rl_mjlab)
-- 源码核对（2026-11-02）：unitreerobotics/unitree_rl_mjlab@1425b15，读过 README.md、scripts/train.py、src/tasks/velocity/__init__.py、src/tasks/velocity/rl/runner.py、src/tasks/velocity/rl/__init__.py；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-21）：unitreerobotics/unitree_rl_mjlab@1425b15，读过 README.md、scripts/train.py、src/tasks/velocity/__init__.py、src/tasks/velocity/config/g1/__init__.py、src/tasks/velocity/rl/runner.py、src/tasks/velocity/rl/__init__.py；时序图依据以上文件，未运行代码。
+
+## 推荐继续阅读
+
+- [unitreerobotics/unitree_rl_mjlab 官方仓库](https://github.com/unitreerobotics/unitree_rl_mjlab)
+- [mjlab 官方文档](https://mujocolab.github.io/mjlab/index.html)
+- [BeyondMimic / whole_body_tracking 动作处理说明](https://github.com/HybridRobotics/whole_body_tracking/blob/main/README.md#motion-preprocessing--registry-setup)

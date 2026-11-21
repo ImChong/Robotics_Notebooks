@@ -6,10 +6,13 @@ tags:
 - world-model
 - vla
 status: complete
-updated: '2026-10-05'
+updated: '2026-11-21'
 arxiv: '2508.05635'
 venue: arXiv 2025
 code: https://github.com/AgibotTech/Genie-Envisioner
+original:
+- ../../sources/papers/genie_envisioner_arxiv_2508_05635.md
+- ../../sources/repos/genie-envisioner-v1.md
 summary: Genie Envisioner 以 GE-Base 视频预训练表示为底座，分别适配 GE-Act 动作生成与 GE-Sim 动作条件视觉仿真，三者有不同运行接口。
 related:
 - ../entities/awesome-world-models.md
@@ -23,6 +26,7 @@ related:
 - ./ge-sim-2.md
 - ./paper-ge-act-2.md
 sources:
+- ../../sources/papers/genie_envisioner_arxiv_2508_05635.md
 - ../../sources/papers/sun_awesome_wm_2508_05635_genie-envisioner-a-unified-world-foundat.md
 - ../../sources/papers/sun_awesome_wm_catalog.md
 - ../../sources/repos/awesome-world-models.md
@@ -58,6 +62,16 @@ Genie Envisioner 以 GE-Base 视频预训练表示为底座，分别适配 GE-Ac
 
 仓库支持 LTX 与 Cosmos 系视频骨干；当前公开版本与论文初版要按配置区分。GE-Sim 2、GE-Act 2 是后续独立工作，不能把它们的架构和评测归给 V1。
 
+### 流程总览
+
+```mermaid
+flowchart TB
+  DATA["AgiBot-World-Beta\n1M 轨迹 / 三视角 RGB + 指令"] --> BASE["GE-Base 世界基座\nLTX-Video / Cosmos2 2B + 稀疏记忆\nMR (3-30 Hz) → LF (5 Hz)"]
+  BASE --> ACT["GE-Act (160M 平行动作 DiT)\n慢快异步: 5 Hz 视觉缓存 → 30 Hz 动作块"]
+  BASE --> SIM["GE-Sim 视觉仿真\nPose2Image + Motion Vector 动作条件"]
+  BASE --> EWM["EWMBench 评测\n场景一致性 / 轨迹 SA-TA-DYN / 语义"]
+```
+
 ## 源码运行时序图
 
 ```mermaid
@@ -79,6 +93,8 @@ sequenceDiagram
 ```
 
 图对应 GE-Act 路径；GE-Sim 的动作条件视频生成使用另一入口，不能替代策略执行。
+
+图依据：`AgibotTech/Genie-Envisioner-V1@d41358f`，读过 `README.md`、`main.py`、`scripts/train.sh`、`web_infer_scripts/run_server.sh`、`gesim_video_gen_examples/infer_gesim.py`；未运行 GPU 训练或推理服务。
 
 ## 工程实践
 
@@ -118,6 +134,7 @@ GE-Base 读世界预测与 EWMB；GE-Act 读操作成功率（公开 Calvin 权�
 
 ## 参考来源
 
+- [Genie Envisioner 论文原文归档（arXiv:2508.05635）](../../sources/papers/genie_envisioner_arxiv_2508_05635.md)
 - [Genie Envisioner 官方源码核查](../../sources/repos/genie-envisioner-v1.md)
 
 ## 推荐继续阅读

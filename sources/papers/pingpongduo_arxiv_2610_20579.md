@@ -3,11 +3,14 @@
 > 来源归档（ingest）
 
 - **标题：** PingpongDuo: Agile Humanoid Table Tennis Doubles with Safe Team Coordination
-- **arXiv：** <https://arxiv.org/abs/2610.20579>（Submitted 2026-10-14，v1；PDF：<https://arxiv.org/pdf/2610.20579>）
+- **arXiv：** <https://arxiv.org/abs/2610.20579>（v1 提交 2026-10-14；v2 2026-11-13；PDF：<https://arxiv.org/pdf/2610.20579>）
 - **项目页：** <https://www.archon.tech/research/PingpongDuo>（页内提供论文 PDF、完整视频、交互式仿真回放与 BibTeX；**无代码链接**）
 - **作者：** Haoran Jiang, Yichao Zhong, Kai Zhang, Cheng Liu, Yixuan Pan, Zhenjie Yang, Jingbo Wang, Tianyu Li, Li Chen
 - **机构（PDF 首页）：** 上海创智学院（Shanghai Innovation Institute）；源策未来（Archon Robotics）；香港大学（HKU）；英伟达（NVIDIA）
 - **入库日期：** 2026-10-15
+- **再核日期：** 2026-11-21
+- **核对范围：** 通读 `https://arxiv.org/html/2610.20579`（v2，2026-11-13）全文（Abstract、§I 引言、§II 相关工作、§III 系统总览、§IV 风险感知团队协同、§V 步法/击球技能与球拍臂残差、§VI 实验与 Table I–III、§VII 结论与局限），并复核项目页 `<https://www.archon.tech/research/PingpongDuo>` 确认无代码仓库链接。边界：未在仿真/真机复现。
+- **通读：** 已完成
 - **类型：** paper / humanoid / table-tennis / multi-robot-coordination / rl / sim2real
 - **一句话说明：** 双台 Unitree G1 乒乓球双打：团队层联合选择站位并用学习风险估计过滤提案，个体层分离步法与击球技能，再用球拍臂残差在标定仿真中做回球反馈修正。
 
@@ -35,7 +38,8 @@
 | Table III（策略对比，仿真，5 seeds） | 本文 Composed：SRC **67.4%**、SRH **55.6%**、Ep **7.43 cm**；复现的 HITTER Composed：SRC 55.2%、SRH 42.4%；复现的 SMASH Composed：SRC 53.8%、SRH 35.8% |
 | 消融：击球残差（§VI-D） | 去掉 arm refinement 时 SRC 55.2% → 67.4%，SRH 44.2% → 55.6% |
 
-- SRC = 接触成功率，SRH = 回球成功率（由正文 §VI-D 的表述推断，定义以表 II 为准，未逐条核实）。
+- Table II 已明确给出指标定义：$SR_C$ 为球拍触球率（Percentage of balls contacted by the racket），$SR_H$ 为合法回球成功率（Percentage of balls legally returned），$E_p / E_v / E_n$ 分别为击球时刻 $t^\star$ 的球拍位置/速度/法向误差，$E_M$ 为让位结束横向位置误差，MPJPE 为骨盆对齐后的全身参考跟踪误差。
+- 局限（§VII）：真机依赖外部 MoCap 估计球与机器人状态，尚未包含球旋转测量与空气/碰撞自旋建模。
 - 基线 HITTER [4] 与 SMASH [9] 为作者按双打移动指令改编后复现，不是原作者实现。
 
 ## 对 wiki 的映射

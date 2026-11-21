@@ -9,7 +9,9 @@
 - **Helix 专题页：** https://www.figure.ai/helix
 - **Helix 2.5 新闻：** https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization（2026-09-17：Index 预训练 + 30 家庭零样本全身 locomanipulation）
 - **入库日期：** 2026-05-07
-- **一句话说明：** 美国人形机器人公司，主打 **Figure 02** 平台与自研 **Helix** 系列视觉-语言-动作（VLA）模型，强调全身控制与端侧部署。
+- **核对范围：** 读取 Figure 官方主站 <https://www.figure.ai/>、<https://www.figure.ai/helix> 与官方 Helix / Helix 02 / Helix 2.5 三篇技术发布页（2026-11-21 复核），确认无公开 GitHub / Hugging Face 模型权重、训练代码或 Index 数据集下载入口。
+- **通读：** 已完成
+- **一句话说明：** 美国人形机器人公司，主打 **Figure 02 / Figure 03** 平台与自研 **Helix** 系列视觉-语言-动作（VLA）模型，强调全身控制与端侧部署。
 - **沉淀到 wiki：** 是 → [`wiki/entities/figure-ai.md`](../../wiki/entities/figure-ai.md)
 
 ## 第三方报道（合作与模型路线）

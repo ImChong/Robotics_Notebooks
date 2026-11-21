@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, paper, llm-agents, computer-use, recursive-self-improvement, agent-harness, memory, causal, self-improvement, aether-ai, ucsd, uic]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-21
 project_id: rsiagent
 arxiv: "2609.15364"
 project: https://aetherlabsai.github.io/RSIAgent/
@@ -20,8 +20,12 @@ related:
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-agent-evaluation.md
   - ../queries/rsi-four-tier-five-pushes.md
+original:
+  - ../../sources/blogs/aether_rsiagent.md
+  - ../../sources/papers/rsiagent_arxiv_2609_15364.md
 sources:
   - ../../sources/blogs/aether_rsiagent.md
+  - ../../sources/papers/rsiagent_arxiv_2609_15364.md
 summary: "RSIAgent（Aether AI，arXiv:2609.15364，2026-09-15 博客）：不更新参数的数字智能体自改进框架，curriculum/actor/verifier 围绕可演化记忆先并行广度探索（BRS）再串行深度探索（DRS），冻结因果经验记忆后复用；Kimi-K3+GLM-5.3 在 OSWorld 2.0 partial 78.98%、ALE Near-term 84.82%（自报，GPT-6 Astra 72.60/82.26）；代码 Apache-2.0 开源；只在软件环境评测，无机器人实验。"
 ---
 
@@ -138,6 +142,8 @@ sequenceDiagram
     EV-->>U: 结果写入 results/batches/run_01/
 ```
 
+图依据：`AetherLabsAI/RSIAgent@4d7ef43`（`run_osworld.py` 与 `benchmarks/osworld/pipeline`）。
+
 ## 实验与评测
 
 ### 主结果（自报，单位 %）
@@ -241,6 +247,7 @@ RSIAgent 的位置：在 [RSI 四层标准](../queries/rsi-four-tier-five-pushes
 
 ## 参考来源
 
+- [RSIAgent 论文原文归档（arXiv:2609.15364v2）](../../sources/papers/rsiagent_arxiv_2609_15364.md)
 - [Aether AI RSIAgent 博客与论文 / 代码归档](../../sources/blogs/aether_rsiagent.md)
 - [官方博客（2026-09-15）](https://aetherlabs.ai/articles/rsiagent-autonomous-exploration-for-recursive-self-improvement.html)
 - [arXiv:2609.15364](https://arxiv.org/abs/2609.15364)

@@ -8,6 +8,8 @@
 - **预览模型：** <https://huggingface.co/LightOriginsHQ/Light-O1-Preview>
 - **Playground：** <https://huggingface.co/spaces/LightOriginsHQ/Light-O1-Preview-playground>
 - **入库日期：** 2026-09-21
+- **核对范围：** 通读官方 Tech Blog 全文（`https://www.lightorigins.com/en/blog/light-o1`，含 01 Introduction、02 Cross-embodiment Transfer Scaling Law 3.75B–120B 幂律实验、03–04 定量评测 Motion Arena Elo 1472.8 与 HY-Motion-Bench SSAE 78.0、05 Data Pipeline & Pretraining/Adaptation 双路径、06–07 Open Release）；未运行真机 loco-manipulation（完整权重未开源）。
+- **通读：** 已完成
 
 ## 开源核查（入库日）
 

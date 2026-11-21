@@ -15,7 +15,7 @@ tags:
 - manipulation
 - x-square-robot
 status: complete
-updated: 2026-10-09
+updated: 2026-11-21
 arxiv: '2606.01955'
 code: https://github.com/X-Square-Robot/wall-wm
 summary: "WALL-WM（自变量机器人，arXiv:2606.01955，官网 2026-05-29）：用「动作语义事件」替代定长 chunk 作为视频–动作预训练单元。Wan2.2-5B 视频塔通过单向逐层交叉注意力驱动动作塔，同一骨干支持事件模式和统一模式两种推理。真机四套件平均 Task Progress 58.30（π0.5 37.76 / DreamZero 31.54）。代码 Apache-2.0 已开源；截至 2026-10-09，权重与训练数据未发布。"
@@ -40,7 +40,12 @@ related:
 - ./paper-wall-ss.md
 - ./cn-os-wall-x.md
 - ./paper-host-one-shot-human-video.md
+original:
+- ../../sources/papers/wall_wm_arxiv_2606_01955.md
+- ../../sources/repos/wall-wm.md
+- ../../sources/sites/x2robot-wall-wm.md
 sources:
+- ../../sources/papers/wall_wm_arxiv_2606_01955.md
 - ../../sources/sites/x2robot-wall-wm.md
 - ../../sources/papers/rcl_awesome_wam_2606_01955_wall-wm-carving-world-action-modeling-at.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
@@ -311,7 +316,8 @@ DMD 蒸馏如果去掉保留的动作损失，动作 MAE 恶化 **53%**；整套
 
 ## 参考来源
 
-- [WALL-WM 项目页归档（含 2026-10-09 开源核查）](../../sources/sites/x2robot-wall-wm.md)
+- [WALL-WM 论文原文归档（arXiv:2606.01955v2）](../../sources/papers/wall_wm_arxiv_2606_01955.md) — 论文全文精读（方法架构、DMuon、实验与局限）
+- [WALL-WM 项目页归档（含 2026-10-09 / 2026-11-21 开源核查）](../../sources/sites/x2robot-wall-wm.md)
 - [WALL-WM 源码归档](../../sources/repos/wall-wm.md)（<https://github.com/X-Square-Robot/wall-wm>）
 - [RCL 清单条目摘录](../../sources/papers/rcl_awesome_wam_2606_01955_wall-wm-carving-world-action-modeling-at.md) · [RCL 列表总表](../../sources/papers/rcl_awesome_wam_catalog.md) · [RCL 仓库归档](../../sources/repos/awesome-world-action-models-rcl.md)
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

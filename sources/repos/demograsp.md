@@ -1,20 +1,16 @@
-# DemoGrasp
+# DemoGrasp 仓库核查
 
-> 来源归档（国内具身开源全景）
+> 来源归档（repo / BeingBeyond GitHub）
 
-- **标题：** DemoGrasp
-- **类型：** repo
-- **机构：** 智在无界
-- **链接：** https://github.com/BeingBeyond/DemoGrasp
-- **分类：** 具身Agent/规划
-- **入库日期：** 2026-09-06
-- **一句话说明：** 智在无界 开源项目 DemoGrasp（具身Agent/规划），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-demograsp.md`](../../wiki/entities/cn-os-demograsp.md)
+- **URL：** <https://github.com/BeingBeyond/DemoGrasp>
+- **机构 / 个人：** BeingBeyond（智在无界）
+- **仓库核查commit：** `1255dc5`（180 个文件，含 127 个 `.py`/`.sh` 源码与配置）
+- **开源结论：** **已开源可执行 IsaacGym 仿真训练、编辑回放与视觉蒸馏相关源码**。
+- **核对范围：** 已通过 `gh api` 核对 `BeingBeyond/DemoGrasp @ 1255dc5` 完整文件树与 `README.md` 入口命名（`scripts/`、`algo/`）；未实际运行 IsaacGym GPU 仿真与真机脚本。
+- **通读：** 已完成
 
-## 开源状态
+## 核心源码入口与模块
 
-- **已开源**：公开仓库（以 README 与 release 为准）。
-
-## 对 wiki 的映射
-
-- [wiki/entities/cn-os-demograsp.md](../../wiki/entities/cn-os-demograsp.md)
+- **RL 策略训练与数据重放**：`scripts/` 下实验配置与运行入口，配合 `algo/pn_utils/maniskill_learn/apis/train_rl.py` 执行 1-step MDP PPO（7,000 并行环境）编辑手腕 SE(3) 位姿与手指关节增量
+- **视觉/状态骨干网络**：`algo/pn_utils/act.py` 与 `algo/pn_utils/maniskill_learn/networks/`（PointNet、Transformer、MLP、VAE 等策略与价值网络组件）
+- **与论文对应**：对应 `arXiv:2509.22149`（ICLR 2026）单演示抓取编辑及闭环策略管线。

@@ -7,6 +7,9 @@
 - **代码：** <https://github.com/uni-vta/UVTA>（项目页提供 GitHub / Code 链接；公开仓库，MIT）
 - **数据集：** <https://huggingface.co/datasets/Chopper233/UVTA>（项目页提供 Dataset 链接）
 - **入库日期：** 2026-10-16
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读官方项目页 `https://uni-vta.github.io/` 及公开状态（GitHub 仓、Hugging Face 482 GB 数据集、5 项真机任务结果与边界说明）。
+- **通读：** 已完成
 
 ## 项目页核查与开放状态
 

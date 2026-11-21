@@ -3,7 +3,9 @@
 - **类型：** 论文项目页
 - **标题：** Towards Human-Like Manipulation through RL-Augmented Teleoperation and Mixture-of-Dexterous-Experts VLA
 - **链接：** <https://sites.google.com/view/mode-vla/home>
-- **核查日期：** 2026-10-16
+- **核查日期：** 2026-10-16（2026-11-21 复核）
+- **核对范围：** 通读官方项目页 `https://sites.google.com/view/mode-vla/home` 全页文本、系统概览与演示视频说明，核查页内无公开 GitHub/模型权重/数据集链接。
+- **通读：** 已完成
 - **论文：** <https://arxiv.org/abs/2603.08122>
 - **代码 / 权重 / 数据：** 项目页未列公开仓库或下载链接；截至核查日未确认开源。
 - **演示：** 页面嵌入 MoDE-VLA 演示视频。

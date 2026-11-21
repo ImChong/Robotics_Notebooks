@@ -5,6 +5,9 @@
 - **项目页：** <https://machembodied.com/ME-Brain/ME-VLM.html>
 - **代码：** <https://github.com/MachEmbodied/ME-VLM>（技术报告已释；推理/训练/权重 TODO）
 - **入库日期：** 2026-09-25
+- **复核日期：** 2026-11-21
+- **核对范围：** 通读 `arXiv:2609.24526v1` HTML 全文（§1–§8：具身认知与数字 Agent 双能力迁移边界、数据构建、具身能力注入 SFT + 双专家 RL + 多教师 on-policy 蒸馏、M100 SoC Max–Min token 压缩 + W4A8 量化软硬件协同优化 400 ms→188 ms prefill、26 项具身基准 Table 1 与 Agent/驾驶/导航迁移实验）；代码与权重尚未开源，未在本地复现评测。
+- **通读：** 已完成
 - **索引来源：** [具身智能研究室 四篇盘点](../blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)
 - **一句话说明：** 统一 VLM（4B / 35B-A3B）融合具身认知与数字 Agent；双专家 RL + 多教师 on-policy 蒸馏；ME-Brain 认知核训练路线。
 

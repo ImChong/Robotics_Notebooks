@@ -2,7 +2,9 @@
 type: entity
 tags: [blog, industry-perspective, data-collection, manipulation, generalist-ai, physical-ai]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/generalist_physical_commonsense_2026.md
 related:
   - ./generalist-gen1-thousand-hands.md
   - ./generalist-ai-robotics.md
@@ -38,12 +40,41 @@ summary: "Generalist AI 2026 博文：Physical commonsense 是机器人「暗物
 - **Light-O1 引言对照：** [Light-O1 blog ref [3]](https://www.lightorigins.com/en/blog/light-o1) 与 **人类视频 / ergonomic 采集** 并列，解释 **为何 internet human video** 是机器人专项数据的 complement。
 - **数据战争核心：** 与 [GEN-1 Thousand Hands](./generalist-gen1-thousand-hands.md)、[Dyna-2](./dyna-2.md) 同属 **「堆真实交互数据」** 叙事。
 
-## 核心论点
+## 核心原理
 
-1. **Teleop 失真：** 高延迟、弱触觉 → 操作者被迫 System-2 规划 → 轨迹 **僵硬、慢**。
-2. **Ergonomic 采集：** 轻量 handheld / 力反馈设备 → 操作者 **停止思考、开始反应** → 数据含 **micro-corrections**。
-3. **Emergent behaviors：** GEN-0 类模型可出现 **未显式编程** 的恢复/调整（产业 demo 叙事）。
-4. **与 language scaling 正交：** 更大 LLM **不替代** 接触丰富闭环直觉。
+```mermaid
+flowchart LR
+  subgraph bad["传统远程遥操作路径（失真）"]
+    T1["高延迟 / 弱触觉遥操作"] --> T2["操作者被迫 System-2 慢规划"]
+    T2 --> T3["轨迹僵硬、缺乏微修正"]
+  end
+  subgraph good["Generalist 物理常识路径（自述）"]
+    E1["轻量化手持 / 力反馈采集设备"] --> E2["操作者切入 System-1 反应模式"]
+    E2 --> E3["保留滑移恢复 / 轻推 / 重抓反射"]
+    E3 --> E4["GEN-0 大规模预训练物理先验"]
+    E4 --> E5["接触丰富任务涌现纠错与高频控制"]
+  end
+```
+
+1. **Tacit knowledge 与 Moravec 悖论：** 引用 Polanyi（1966）隐性知识与 Moravec（1988）悖论——人类通过身体闭环演化出的感知–运动直觉难以用语言命题表达；互联网文本和图像缺乏本体感觉、干预与物理后果，只产出语义常识（如 PaLM-E / Code as Policies 式高层规划），不产生接触物理直觉。
+2. **Teleop 失真：** 高延迟、低力反馈与不自然接口会迫使操作者退回 System-2 逐步规划（“先把一根手指放这里……”），导致采集轨迹僵硬缓慢；事后人工倍速无法匹配真实物理动力学（物体不会两倍速下落）。
+3. **Ergonomic 采集保留反射：** Generalist 使用平衡感更好、带力反馈的轻量化手持设备，让操作者几分钟后停止刻意“思考”而转为直觉反应（编织、削土豆、微缩画涂装），在数据中保留微修正（micro-corrections）与实时恢复。
+4. **涌现恢复与高层推理交融：** 基于 GEN-0 预训练加后训练的端到端模型可出现超出后训练分布的细节动作（滑落垫圈二次轻推卡入槽位、翻转盒盖并拍平压实、另一只指头补救折盒、把盒装物从箱壁推开留出抓取空隙），并将反应式控制与序列推理（如 one-shot 乐高复制）融合在同一模型中。
+
+## 工程实践
+
+| 项 | 实践要点 |
+|----|----------|
+| **采集设备选型** | 评估遥操作与手持设备时，优先关注 **系统延迟、力/触觉反馈与人体工学负担**，检查操作员是否能在数分钟内进入连续无停顿反应节奏 |
+| **反倍速原则** | 不要将慢速僵硬遥操作轨迹通过简单时间抽帧/倍速当作高速示范训练，避免观测动力学与重力/惯性响应失配 |
+| **评测视角** | 除静态成功率外，单独构造滑移、壁面贴边、可变形盒舌对位等需微修正的扰动测试，区分“脚本回放”与“物理常识恢复” |
+| **源码运行时序图** | **不适用**（产业观点博文，无公开代码、权重或采集设备硬件图纸） |
+
+## 局限与风险
+
+- **证据等级：** 属于公司观点博文（Idea 栏目），非同行评审论文，无受控量化消融表或基准对比分数。
+- **设备与模型黑箱：** 轻量化手持力反馈设备的机械结构、传感器参数、GEN-0 架构与训练数据配方均未开源，外部团队无法直接复现其“涌现恢复”。
+- **外推边界：** “互联网文本/图像无法提供物理常识”是对纯文本/静态图像而言，不等价于否定第一人称人类视频或仿真触觉在跨具身预训练中的互补作用。
 
 ## 结论
 
@@ -56,15 +87,19 @@ summary: "Generalist AI 2026 博文：Physical commonsense 是机器人「暗物
 
 ## 关联页面
 
-- [Generalist GEN-1](./generalist-gen1-thousand-hands.md)
+- [Generalist AI（公司入口）](./generalist-ai-robotics.md)
+- [GEN-0：随物理交互规模化的具身基础模型](./generalist-gen0.md)
+- [GEN-1 千手：跨末端执行器泛化](./generalist-gen1-thousand-hands.md)
 - [Light-O1](./light-o1.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 
 ## 参考来源
 
-- [generalist_physical_commonsense_2026.md](../../sources/blogs/generalist_physical_commonsense_2026.md)
+- [The Dark Matter of Robotics: Physical Commonsense（来源归档）](../../sources/blogs/generalist_physical_commonsense_2026.md)
 - 原文：<https://generalistai.com/blog/physical-commonsense>
 
 ## 推荐继续阅读
 
-- [GEN-1: Scaling to Thousand Hands](./generalist-gen1-thousand-hands.md)
+- [The Dark Matter of Robotics: Physical Commonsense（原文）](https://generalistai.com/blog/physical-commonsense)
+- [GEN-0: Embodied Foundation Models That Scale with Physical Interaction](https://generalistai.com/blog/gen-0)
+- [Towards Machines with a Thousand Hands](https://generalistai.com/blog/towards-machines-with-a-thousand-hands)

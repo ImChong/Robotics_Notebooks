@@ -8,6 +8,8 @@
 - **链接：** https://github.com/roboterax/robotera_vla
 - **分类：** VLA/操作模型
 - **入库日期：** 2026-09-06
+- **核对范围：** 克隆 `roboterax/robotera_vla@9ff7067`，通读 `README.md`、`inference/examples/main.py`、`inference/examples/config.py`（`STATE_DIM=57`、`ACTION_DIM=38`、`chunk_size=20`、`CONTROL_HZ=100`）、`model_worker.py`、`hardware_interface.py`、`stream.py`、`frame_decoder.py` 与 `inference.Dockerfile`；未下载 checkpoint 或在 M7 真机/GPU 运行。
+- **通读：** 已完成
 - **一句话说明：** 星动纪元 开源项目 robotera_vla（VLA/操作模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-robotera-vla.md`](../../wiki/entities/cn-os-robotera-vla.md)
 

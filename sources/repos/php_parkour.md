@@ -7,8 +7,10 @@
 - **论文：** <https://arxiv.org/abs/2602.15827>（RSS 2026）
 - **许可证：** Apache-2.0（仓库代码；使用外部依赖或动作资产时仍需核查其许可）
 - **入库 / 核查日期：** 2026-10-10
-- **源码快照：** `554edcc33393fbd8bd2a725a781ffb867f6c467a`
+- **源码快照：** `554edcc33393fbd8bd2a725a781ffb867f6c467a`（2026-11-21 复核 `main@c7c9ce3`）
 - **依赖快照：** `thirdparty/holosoma` gitlink `4a0bf04cde5930af5ed59da797568d32be972525`，不要直接用 Holosoma 最新 main 替代。
+- **核对范围：** 阅读 `amazon-far/php_parkour` 官方 `README.md`、`motion_matching/`、`wbt_training/`、`run_php_sim.sh`、`run_php_inference.sh` 与 `scripts/download_assets.py`；核实三阶段流程、296 对预制训练示例边界及 MuJoCo `(1, 1, 58, 87)` 共享内存双 ONNX 推理入口；未在本地 GPU 运行 IsaacSim 训练或 MuJoCo 图形界面。
+- **通读：** 已完成
 - **一句话说明：** 官方已公开离线 motion matching、IsaacSim 专家训练、WARP 深度学生蒸馏与 MuJoCo Sim2Sim；Release 同时提供动作数据库、五组预制训练数据及学生 ONNX 双模型。
 
 ## 官方入口与原始资料

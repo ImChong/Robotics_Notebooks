@@ -12,6 +12,8 @@
 - **主要语言：** Python
 - **分类：** 基础模型（UnifoLM）
 - **入库日期：** 2026-07-24；深度刷新 2026-09-10
+- **核对范围：** 2026-11-21 通读 `unitreerobotics/unifolm-world-model-action@3e198de` 官方 `README.md` 全文（Open-Source Plan、安装依赖、HF 权重与 9 个数据集、三阶段训练与双模式配置、交互仿真与真机部署步骤）及服务端/客户端入口 `scripts/run_real_eval_server.sh`、`unitree_deploy/scripts/robot_client.py`（`LongConnectionClient`、`ACTTemporalEnsembler`、`make_real_env`）；未实际运行推理或真机实验。
+- **通读：** 已完成
 - **一句话说明：** 官方 UnifoLM-WMA-0：世界模型作仿真引擎 + 动作头策略增强；训练/推理/权重/部署全开源。
 - **沉淀到 wiki：** 是 → [`wiki/entities/unifolm-world-model-action.md`](../../wiki/entities/unifolm-world-model-action.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)

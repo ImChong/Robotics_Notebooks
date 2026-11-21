@@ -2,7 +2,10 @@
 type: entity
 tags: [model, vla, physical-ai, robodojo, simate, manipulation, memory, long-horizon]
 status: complete
-updated: 2026-10-09
+updated: 2026-11-21
+code: https://github.com/SIPAILab/simate-beta
+original:
+  - ../../sources/repos/simate_beta.md
 related:
   - ./simate.md
   - ./robodojo.md
@@ -11,22 +14,23 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/repos/simate_beta.md
   - ../../sources/blogs/simate_beta_robodojo_2026-09.md
-summary: "Simate-beta（Simate 首版模型，2026-09）：「通用物理快系统」，主打 4D 物理感知与分层时序记忆；2026-09-23 上 RoboDojo 仿真榜，平均 Score 33.95 / SR 27.96%，长程项 57.84 最高、open 项 9.12 最弱；架构与规模未披露，未开源。"
+summary: "Simate-beta（Simate 首版视觉记忆 VLA，~3.37B FP32）：SigLIP + AE 4×4 历史压缩编码器（25 帧×16 token = 400 历史 token）+ Gemma-2B 前缀 + Gemma-300M flow-matching 动作头；2026-09-23 上 RoboDojo 仿真榜（Score 33.95 / SR 27.96%，long-horizon 57.84 最高）；后续已开源 SIPAILab/simate-beta 训练仓、HF 权重/数据与 XPolicyLab 评测适配（仍无正式技术论文）。"
 institutions:
   - simate
 ---
 
 # Simate-beta（Simate 首版通用物理快系统）
 
-**Simate-beta** 是 [Simate](./simate.md)（硅基伙伴，Silicon Mate）在成立约三个月后发布的第一款模型，2026-09-23 提交至 [RoboDojo](./robodojo.md) 仿真榜。公开信息来自媒体转述的公司披露与榜单数据，**没有技术报告、代码或权重**。
+**Simate-beta** 是 [Simate](./simate.md)（硅基伙伴，Silicon Mate）在成立约三个月后发布的第一款具身视觉记忆策略模型，2026-09-23 提交至 [RoboDojo](./robodojo.md) 仿真榜（当时未随榜单公开代码或报告）；随后官方通过 [`SIPAILab/simate-beta`](https://github.com/SIPAILab/simate-beta)（MIT）、Hugging Face [`SIPAILab`](https://huggingface.co/SIPAILab/simate-beta-init) 与 [XPolicyLab](./xpolicylab.md)（`policy/Simate_beta`）公开了模型结构、初始化/评测权重、训练配方与训练数据集，但截至 2026-11-21 仍无正式 arXiv 技术论文。
 
 | 项目 | 内容 |
 |------|------|
-| 机构 | [Simate](./simate.md) |
+| 机构 | [Simate](./simate.md)（开源组织名 `SIPAILab`） |
 | 上榜日期 | 2026-09-23（RoboDojo News） |
 | 榜单类别 | RoboDojo 前端标注为 `vla` |
-| 开源（2026-10-09 核查） | **未开源**，无技术报告 |
+| 开源状态（2026-11-21 核查） | **训练与评测代码/权重/数据已开源**（`SIPAILab/simate-beta` MIT、`XPolicyLab/policy/Simate_beta`、HF `simate-beta-init` / `sipai-robodojo-eval-ae` / `simate-beta-training-data`）；**仍无正式技术论文** |
 
 ## 一句话定义
 
@@ -47,16 +51,28 @@ institutions:
 - **长程项突出、开放任务偏弱：** 榜单分项显示 long-horizon Score 57.84 / SR 43.42 为六项最高，open 仅 9.12 / 8.5——和它强调的「分层时序记忆」一致，也说明开放指令泛化仍是短板。
 - **研发方式是卖点之一：** 公司称 Simate-beta 是其 AutoResearch（人定假设、引擎自动跑实验）体系的第一个产物，从成立到上榜约三个月。
 
-## 核心信息
+## 核心原理
 
-### 公司披露的设计要点
+从 `SIPAILab/simate-beta` 源码（`configs/simate-beta_mem20_ae_80k.yaml`）与 `XPolicyLab/policy/Simate_beta/network.py` 可直接核对出模型的完整架构与时序记忆实现（总参数量 `3,374,422,288`，FP32 推理）：
 
-| 要点 | 说明 |
-|------|------|
-| 定位 | 通用物理快系统：实时感知变化中的物理世界并快速输出动作 |
-| 4D 物理感知 | 同时捕捉空间结构与时间动态，让表征直接服务于动作 |
-| 分层时序记忆 | 长程任务需要记住历史、连续操作需要追踪状态，同时不能被历史拖慢反应 |
-| 未披露 | 具体架构、参数规模、训练数据——称将在后续技术报告中公布 |
+### 模型结构与时空记忆机制
+
+| 组件 | 开源源码实现 | 关键超参与作用 |
+|------|--------------|----------------|
+| **视觉与历史压缩编码（`Prefix`）** | `SigLIPVisionEncoder`（`siglip_so400m_patch14_224`）+ `HistoryEncoder`（AE 压缩） | 编码当前 3 路相机（`primary` / `left_wrist` / `right_wrist`）；主视角按间隔 `20` 步采样 `25` 帧历史（`t-500 .. t-20`），经 `4×4` AE 网格与 `512` 维隐藏层压缩为 `25 × 16 = 400` 个历史 token |
+| **多模态前缀骨干（`Prefix`）** | `Gemma-2B`（`width=2048, depth=18, heads=8, kv_heads=1`） | 拼接压缩历史 token、当前多视角视觉 token 与 SentencePiece 指令 token（`max_token_len=200`），生成前向 KV cache |
+| **Flow-Matching 动作头（`ActionHead`）** | `Gemma-300M`（`width=1024, depth=18, intermediate=4096, adaptive_norm=True`） | 以正弦时间编码 + 2 层 SiLU MLP 条件化 AdaRMSNorm，对 `horizon=50, action_dim=32` 噪声执行 `10` 步 Euler 去噪，输出相对关节角（双臂 14 维 `arx_x5`）与绝对夹爪开度；默认每次执行 `exec_chunk_size=10` 步 |
+| **训练配方与反事实监督** | `simate-beta_mem20_ae_80k.yaml` | 冻结 SigLIP 与 AE 编码器；`80k` 步、`4×8` GPU（全局 batch 128）、BF16 HSDP、EMA 0.99；采用 `25%` 记忆事件采样与反事实成对流损失（`counterfactual_pair_flow`），数据源 `robodojo_all : make_kong : play_tic_tac_toe = 5 : 0.7 : 1` |
+
+```mermaid
+flowchart LR
+  HIST["主视角历史帧 (25帧 · 步距20)<br/>t-500 .. t-20"] --> AE["SigLIP + HistoryEncoder (AE 4×4)<br/>400 个历史 token"]
+  CUR["当前 3 视角图像 + 指令 token"] --> PRE["Gemma-2B Prefix 骨干<br/>生成多模态 KV Cache"]
+  AE --> PRE
+  PRE --> HEAD["Gemma-300M Flow-Matching Head<br/>10 步去噪 → horizon=50, dim=32"]
+  HEAD --> ACT["exec_chunk_size=10 步执行<br/>arx_x5 14-DoF 关节 + 夹爪"]
+  ACT -->|"每步回流 primary 帧"| HIST
+```
 
 ### RoboDojo 仿真榜分项（2026-09-23 提交）
 
@@ -70,22 +86,57 @@ institutions:
 | Open | 9.12 | 8.50 |
 | **平均** | **33.95** | **27.96** |
 
+## 源码运行时序图
+
+对齐 `SIPAILab/simate-beta@8ae595c`（训练）与 `XPolicyLab/XPolicyLab/policy/Simate_beta`（`eval.sh` / `deploy.py` / `model.py` / `network.py` 评测）：
+
 ```mermaid
-flowchart LR
-  H["人类研究员\n假设 / 目标 / 约束"] --> A["AutoResearch\n拆实验 · 跑训练 · 回传结果"]
-  A --> M["Simate-beta\n4D 物理感知 + 分层时序记忆"]
-  M --> E["RoboDojo 仿真榜\n2026-09-23 · 33.95 / 27.96%"]
-  M --> R["真机展示\n任务适应 · 记忆 · 长程 · 精细操作"]
-  E -->|"证据回流"| A
-  R -->|"证据回流"| A
+sequenceDiagram
+  autonumber
+  actor U as 研究者 / 评测脚本
+  participant EV as eval.sh / deploy.py<br/>eval_one_episode()
+  participant MC as XPolicyLab Policy Server<br/>Simate_beta/model.py
+  participant CH as CameraHistory<br/>history.py (25×20)
+  participant NET as SimateBetaNetwork<br/>Prefix + ActionHead
+  participant ENV as RoboDojo TASK_ENV<br/>(arx_x5 / joint)
+
+  U->>EV: EVAL_ENV_TYPE=sim bash eval.sh RoboDojo ...
+  EV->>MC: reset_evaluation(scope)
+  MC->>CH: 清空该 evaluation_id 的历史队列
+  loop 未到 episode 结束
+    ENV-->>EV: get_obs()（primary / wrist 图像 + qpos + task）
+    EV->>MC: update_obs(obs) → 写入 CameraHistory
+    EV->>MC: get_action(scope)
+    MC->>CH: frames_for(scope, env_idx) 取 25 帧历史
+    MC->>NET: Prefix(3视角 + 历史AE + 文本) → ActionHead 10步flow去噪
+    NET-->>MC: 归一化 chunk(50×32) → decode_actions
+    MC-->>EV: 前 exec_chunk_size=10 步动作字典
+    loop chunk 内每步（step 0..9）
+      EV->>ENV: take_action(action)
+      opt 未结束且非最后一步
+        ENV-->>EV: get_obs()
+        EV->>MC: update_obs(obs)（chunk 内逐帧刷新历史）
+      end
+    end
+  end
 ```
 
-## 常见误区或局限
+图依据：`XPolicyLab/XPolicyLab` `policy/Simate_beta/`（`README.md`、`eval.sh`、`deploy.py`、`model.py`、`network.py`、`history.py`）及 `SIPAILab/simate-beta@8ae595c`（`README.md`、`configs/simate-beta_mem20_ae_80k.yaml`、`tools/train.py`），未实际下载权重或运行训练/仿真。
+
+## 工程实践
+
+| 场景 | 可执行入口（核查自开源仓） |
+|------|---------------------------|
+| **RoboDojo 评测** | 在 `XPolicyLab/policy/Simate_beta/` 运行 `bash install.sh` → `bash download_checkpoint.sh`（拉取 `SIPAILab/sipai-robodojo-eval-ae`）→ `EVAL_ENV_TYPE=debug` 或 `sim` 执行 `bash eval.sh RoboDojo stack_bowls simate-beta-robodojo-eval arx_x5 joint 0 0 1 simate-beta-eval RoboDojo` |
+| **从初始化权重复训** | 拉取 `SIPAILab/simate-beta-init` 与数据集 `SIPAILab/simate-beta-training-data`；按 `SIPAILab/simate-beta` 配置 `SIMATE_INIT_CHECKPOINT` / `SIMATE_TOKENIZER` / `SIMATE_STATISTICS` 后运行 `bash tools/run_distributed_train.sh --config configs/simate-beta_mem20_ae_80k.yaml` |
+| **工程注意点** | 1）仅支持 `arx_x5 / joint`（双臂 6+6 关节 + 1+1 夹爪）与 **FP32 AE 权重**（pooling checkpoint 会直接报错）；2）即使在 `exec_chunk_size=10` 的 chunk 内执行期间，每一物理步仍必须调用 `update_obs` 更新 `CameraHistory`，否则 20 步采样间隔会错位。 |
+
+## 局限与风险
 
 - **「登顶」有时效：** 上榜当日公司称排名第一；2026-09-28 港大 MMLab × Kinetix 的 [Physical RSI 1.0](./physical-rsi.md) 以 Score 36 / SR 31% 列 Overall 第一。引用名次时注明日期。
-- **仿真榜 ≠ 真机成绩：** 33.95 是 RoboDojo 仿真榜结果；真机能力只有公司视频展示，没有成功率统计。
-- **「未针对榜单优化」是公司说法：** 无法独立核实。
-- **不可复现：** 无技术报告、代码、权重和数据；RoboDojo 的开源上榜门槛要求见 [RoboDojo](./robodojo.md)，此条目是否满足 verified 条件未见说明。
+- **仍缺正式技术论文：** 截至 2026-11-21 虽已开源代码与权重，但仍无公开 arXiv 论文系统报告消融实验（如反事实监督与不同记忆长度的影响）和真机定量成功率。
+- **硬件与形态受限：** 开源推理适配器硬编码校验 `arx_x5 / joint`（双 6-DoF 臂 + 夹爪）及 FP32 权重；3.37B FP32 推理与 `4×8` GPU 80k 步训练配方算力门槛较高。
+- **「未针对榜单优化」与数据源组成：** 公开训练配置 `simate-beta_mem20_ae_80k.yaml` 明确以 `robodojo_all`（权重 5）为主数据源并辅以 `make_kong`（0.7）与 `play_tic_tac_toe`（1），复现与跨模型对比时需同时核对训练数据分布与 RoboDojo protocol 口径。
 
 ## 关联页面
 
@@ -96,9 +147,13 @@ flowchart LR
 
 ## 参考来源
 
+- [SiPAI / Simate-beta 官方开源代码与 HF 权重归档](../../sources/repos/simate_beta.md)
 - [Simate-beta 与 RoboDojo 上榜：媒体报道与榜单数据归档](../../sources/blogs/simate_beta_robodojo_2026-09.md)
 
 ## 推荐继续阅读
 
+- [SIPAILab/simate-beta 官方 GitHub 仓库](https://github.com/SIPAILab/simate-beta) — SiPAI 训练框架与 `simate-beta_mem20_ae_80k.yaml` 配置
+- [XPolicyLab `policy/Simate_beta` 评测适配器](https://github.com/XPolicyLab/XPolicyLab/tree/main/policy/Simate_beta) — RoboDojo 独立推理与评测脚本
+- [SIPAILab/simate-beta-init（Hugging Face）](https://huggingface.co/SIPAILab/simate-beta-init) — 初始化权重与参数布局说明
 - [RoboDojo Leaderboard](https://robodojo-benchmark.com/leaderboard) — 查看最新名次与分项
 - [量子位报道（36氪转载）](https://eu.36kr.com/zh/p/3999916051157129) — 设计思路与 AutoResearch 介绍

@@ -10,7 +10,9 @@ tags:
   - sharpa-robotics
   - berkeley
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
+original:
+  - ../../sources/papers/do_as_i_do_arxiv_2606_19333.md
 project_id: do-as-i-do
 arxiv: "2606.19333"
 project: "https://do-as-i-do.com/"
@@ -138,6 +140,8 @@ sequenceDiagram
 
 图下说明：复现主路径是 `reconstruction/run_pipeline.sh` → `retargeting/launch.py --task <视频名> --raw-dir ../reconstruction/<视频名>` → `deployment/mujoco_replay/replay_retarget.py` → `deployment/robot_replay/`。仓库自带 whisking 示例可免重跑回放；真机段需要专有的 Sharpa Wave SDK。
 
+图依据：`malik-group/do-as-i-do@824591b`（仓库描述标注 CoRL 2026），核对 `README.md` 与 `reconstruction/`、`retargeting/`、`deployment/` 目录入口（未在本地 GPU/真机运行）。
+
 ## 实验与评测
 
 **重建（论文 Table 2，自报）：**
@@ -197,9 +201,11 @@ sequenceDiagram
 - **局限（作者自述）：** 假设刚体与较准的单目度量深度；单目下难分「真接触」与「遮挡」；只重建手与单个物体，不含场景、障碍与铰接；仿真近似动力学。
 - **局限（本页补充）：** 重建指标用的是物体级跟踪（评测时提供真值手）；500 条人工核验轨迹的筛选标准与耗时论文未量化；未报告下游用这些数据训练策略的效果，即「数据好用」尚缺策略级证据。
 
-## 复现边界
+## 工程实践
 
-| 项 | 结论（2026-10-16 核查：项目页 + GitHub README / LICENSE / 各目录 README） |
+### 复现边界
+
+| 项 | 结论（2026-10-16 核查；2026-11-21 复核） |
 |----|------|
 | 项目页 | [do-as-i-do.com](https://do-as-i-do.com/)：头部有 Paper、Code 链接；页内无数字结果，仅视频 |
 | 代码 | **已开源**：[malik-group/do-as-i-do](https://github.com/malik-group/do-as-i-do)，MIT；含 `reconstruction/`、`retargeting/`、`deployment/` 与带作者修改的 git 子模块 |

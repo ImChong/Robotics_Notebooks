@@ -3,12 +3,15 @@
 > 来源归档 — 项目页 <https://lightorigins.github.io/Light-INSIGHT-Bench/> + 仓库 README 核查
 
 - **标题：** INSIGHT-Bench：Isaac Sim 上的诊断式 object-goal 导航评测
-- **类型：** benchmark
+- **类型：** benchmark（依托 LightNav-0 arXiv:2608.30935 § IV-D / § VI-D 发表）
+- **关联论文：** [LightNav-0 (arXiv:2608.30935)](https://arxiv.org/abs/2608.30935)
 - **项目页：** <https://lightorigins.github.io/Light-INSIGHT-Bench/>
 - **代码：** <https://github.com/lightorigins/Light-INSIGHT-Bench>
 - **数据集：** <https://huggingface.co/datasets/LightOriginsHQ/light-insight-bench>
-- **Tech Blog（数据引擎背景）：** <https://www.lightorigins.com/blog/lightnav-0>
+- **Tech Blog（数据引擎背景）：** <https://www.lightorigins.com/en/blog/lightnav-0>
 - **入库日期：** 2026-09-21
+- **核对范围：** 通读 `arXiv:2608.30935v1` § IV-D（多视角预标注 0.6 m 聚类门限、规则+Seed2.0 双路径指令生成、语义+到点视觉检查、5×5 诊断矩阵与 1,683/210 场景切分）及官方项目页；未在本地 RTX GPU 上运行 Isaac Sim 评测。
+- **通读：** 已完成
 - **一句话说明：** 1097 episodes / 210 held-out 场景；5 场景类 × 5 指令类型矩阵；统一单目前向 RGB 协议；evidence-pack 可验证 leaderboard。
 
 ## 开源状态

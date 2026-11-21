@@ -11,7 +11,9 @@ tags:
   - multi-view
   - x-square-robot
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+project_id: wall-ss
+arxiv: "2608.26239"
 code: https://github.com/X-Square-Robot/wall-ss
 related:
   - ../methods/generative-world-models.md
@@ -33,6 +35,10 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/manipulation.md
   - ./agibot-world-2026.md
+original:
+  - ../../sources/papers/wall_ss_x_square_2026.md
+  - ../../sources/repos/wall-ss.md
+  - ../../sources/sites/x2robot-wall-ss.md
 sources:
   - ../../sources/papers/wall_ss_x_square_2026.md
   - ../../sources/sites/x2robot-wall-ss.md
@@ -42,7 +48,7 @@ summary: "WALL-SS（自变量，2026-08-26）：InfinityStar 初始化的下一�
 
 # WALL-SS（下一尺度自回归长程世界模型）
 
-**WALL-SS**（*WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression*，[PDF](https://github.com/X-Square-Robot/wall-ss/blob/main/wall-ss-paper.pdf)，2026-08-26，[项目页](http://x2robot.com/pages/ss)，[GitHub](https://github.com/X-Square-Robot/wall-ss)）由 **自变量机器人（X Square Robot）** 提出：把具身轨迹写成 **观察–动作交错的因果序列**，用 coarse-to-fine **下一尺度自回归** 生成每一帧未来视觉，并在有界记忆下做最长约 **60 秒** 的流式推演。页眉为 `arXiv:submit/7998075`；截至 **2026-08-28** 尚无公开 `arxiv.org/abs` 编号。
+**WALL-SS**（*WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression*，[arXiv:2608.26239](https://arxiv.org/abs/2608.26239) / [GitHub PDF](https://github.com/X-Square-Robot/wall-ss/blob/main/wall-ss-paper.pdf)，2026-08-26，[项目主页](https://wall-ss.ws-robotics.workers.dev/) / [官网页](http://x2robot.com/pages/ss)，[GitHub](https://github.com/X-Square-Robot/wall-ss)）由 **自变量机器人（X Square Robot）** 提出：把具身轨迹写成 **观察–动作交错的因果序列**，用 coarse-to-fine **下一尺度自回归** 生成每一帧未来视觉，并在有界记忆下做最长约 **60 秒** 的流式推演。仓库 README 与项目主页已标注正式编号 `arXiv:2608.26239`。
 
 ## 一句话定义
 
@@ -179,7 +185,7 @@ On-policy 对齐相对监督 checkpoint：动作跟随 **0.264→0.290**，轨�
 - **接触乐观** — 插入阶段条件转移偏差最高；用 WM 筛策略时应对接触任务加真机复核。
 - **动作空间窄** — 末端+夹爪，无力觉与完整关节；多指灵巧与全身 loco-manip 未证明。
 - **闭环策略来自 WALL-WM 家族 checkpoint** — 校准结论绑在该策略族与六桌面任务，不宜写成任意 VLA 的通用替代。
-- **无公开 arXiv abs** — 引用请链 GitHub PDF；编号落地后应回填。
+- **训练与推理代码尚未发布** — GitHub 仓截至 2026-11-21 仍只有论文 PDF 与占位 README（`Release the training and inference code` 勾选框未勾），尚无法第三方复现 0.290 / 0.93 等数字。
 
 ## 关联页面
 
@@ -206,7 +212,8 @@ On-policy 对齐相对监督 checkpoint：动作跟随 **0.264→0.290**，轨�
 
 ## 推荐继续阅读
 
+- arXiv — <https://arxiv.org/abs/2608.26239>
 - 论文 PDF — <https://github.com/X-Square-Robot/wall-ss/blob/main/wall-ss-paper.pdf>
-- 项目页 — <http://x2robot.com/pages/ss>
+- 项目主页 — <https://wall-ss.ws-robotics.workers.dev/> · 官网页 <http://x2robot.com/pages/ss>
 - InfinityStar（骨干）— <https://arxiv.org/abs/2511.04675>
 - WALL-WM（同机构 WAM 前作，arXiv:2606.01955）— <https://arxiv.org/abs/2606.01955>

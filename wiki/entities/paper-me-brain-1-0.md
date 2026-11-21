@@ -8,9 +8,12 @@ tags:
   - li-auto
   - open-source
 status: complete
-updated: 2026-10-09
+updated: 2026-11-21
 arxiv: "2609.24271"
 code: https://github.com/MachEmbodied/ME-Brain-1.0
+original:
+  - ../../sources/papers/me_brain_1_0_arxiv_2609_24271.md
+  - ../../sources/repos/me_brain_1_0.md
 related:
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -104,21 +107,46 @@ flowchart LR
 
 ## 源码运行时序图
 
+图依据：基于 `MachEmbodied/ME-Brain-1.0` `README.md` 与 `MachEmbodied/Focus-VLWA@0aaf1f5` 的 `README.md` 与 `pyproject.toml`（`focus-vlwa` CLI、`HeadHistoryBuffer`、`FocusVLWAPolicy` 及 HF 权重 `zhengjingxie/focus-vlwa`）核实。
+
 ```mermaid
 sequenceDiagram
   autonumber
   participant U as 开发者
-  participant F as Focus-VLWA 仓库
+  participant F as Focus-VLWA@0aaf1f5 + HF 权重
+  participant Buf as HeadHistoryBuffer (20 帧)
   participant M as ME-Brain-1.0 占位仓
-  participant S as 仿真或真机
-  U->>F: clone + 安装依赖（已发布路径）
-  U->>F: 训练/推理动作模型
-  Note over M: 完整 me_brain/ 记忆+认知闭环 TODO
-  U->>S: 可选：单独评测动作模型
-  S-->>U: RoboMME / RoboDojo 指标
+  participant S as 仿真 (XPolicyLab) 或真机
+  U->>F: uv sync --extra train & focus-vlwa install-transformers-patch
+  U->>F: focus-vlwa check-checkpoint / 下载 zhengjingxie/focus-vlwa
+  opt 两阶段后训练
+    U->>F: focus-vlwa post-train --stage joint -> --stage frozen
+  end
+  loop 控制与重规划闭环
+    S->>Buf: observe(step, cam_high) 维护 25 FPS 历史缓冲
+    Buf->>F: FocusVLWAPolicy.infer(3 路当前视角 + 20 帧历史)
+    F-->>S: actions [50, 14] (joint flow matching)
+  end
+  Note over M: 完整 me_brain/ 记忆图演化 + ME-VLM 认知核仍为 TODO
 ```
 
-**完整 ME-Brain 闭环：** 截至 2026-10-09，README 已发布 Focus-VLWA 训练/推理代码；预训练权重、ME-VLM 认知核和完整框架/仿真/真机集成仍在 Todo。
+**完整 ME-Brain 闭环：** 截至 2026-11-21，`Focus-VLWA` 动作模型代码与 HF 权重 `zhengjingxie/focus-vlwa` 已释；ME-VLM 认知核与完整 `me_brain/`/`robot/`/`simulation/` 集成仍在 Todo。
+
+## 工程实践
+
+| 项 | 建议与代码要点 |
+|----|----------------|
+| **动作模型环境与补丁** | 独立虚拟环境安装 `transformers==4.53.2`，运行 `uv run focus-vlwa install-transformers-patch` 并用 `check-checkpoint` 校验权重张量映射 |
+| **头部历史缓冲契约** | `head_history` 每 25 个控制步采样 1 帧共 20 帧（每帧 16 tokens，3 路当前视角各 256 tokens，总计 1088 视觉 tokens）；每新 episode 须 `history.reset()` |
+| **两阶段后训练** | 先 `--stage joint` 联合训练动作与 300M 18 层世界模型专家（`2.5e-5`，batch 288），再 `--stage frozen` 冻结 WM 专家精调动作头 |
+| **仿真与真机桥接** | RoboDojo / XPolicyLab 适配器位于 `XPolicyLab/policy/FocusVLWA`；推理包使用 `asset_id="arx_x5_sim"` 对齐归一化统计 |
+
+## 局限与风险
+
+- **系统主仓未完整开源：** `ME-Brain-1.0` 主仓中 `me_brain/`（Evolvable Memory 外部记忆图）、`ME-VLM` 认知核及真机/仿真协同框架仍处于 TODO 状态，目前仅动作模型 `Focus-VLWA` 可独立运行。
+- **长期终身记忆膨胀风险（论文 §9.2）：** 连续部署下轨迹不断入库会导致检索延迟与存储成本攀升，亟需基于任务相关性与访问频次的记忆压缩、去重与动态裁剪机制。
+- **接触密集型操作瓶颈：** Piper 真机 ME-RealBench 平均 SR 66.7%，但插充电器任务仅 1/10；RoboDojo 总成功率仅 16.03%，精细插接与力控仍依赖高频局部反馈或触觉建模。
+- **端侧隐私与受控消融缺口：** 论文 §9.2 指出端侧本地终身记忆隐私保护以及长程技能复用/遗忘的系统化消融尚属未来工作。
 
 ## 关联页面
 

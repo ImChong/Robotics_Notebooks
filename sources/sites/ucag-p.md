@@ -8,8 +8,10 @@
 - **原始链接：** <https://public-bots.github.io/UCAG-P>
 - **论文：** <https://arxiv.org/abs/2608.26058>
 - **代码入口：** 页头写 *Project Page & Code*；实际 GitHub [Public-BOTs/UCAG-P](https://github.com/Public-BOTs/UCAG-P) 截至 **2026-09-02** **无训练/推理代码**
-- **复核日期：** 2026-09-02
+- **复核日期：** 2026-11-22
 - **入库日期：** 2026-08-28
+- **核对范围：** 读取项目页 <https://public-bots.github.io/UCAG-P> HTML 内容与外链（Paper / Code / BibTeX），并复核 `Public-BOTs/UCAG-P` 代码仓仍为 Coming Soon 状态。
+- **通读：** 已完成
 - **一句话说明：** 官方对外页：用相机可观测锚点把异构操作演示接到共享几何接口，再经几何条件翻译器出各本体命令；展示 11 数据集 / 6,300+ 小时 / 9 embodiment / 单 checkpoint 数字与真机 Piper 视频。
 
 ## 开源状态（项目页核查，2026-09-02）

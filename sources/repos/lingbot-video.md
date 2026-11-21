@@ -8,6 +8,8 @@
 - **链接：** https://github.com/Robbyant/lingbot-video
 - **分类：** 世界模型
 - **入库日期：** 2026-09-06
+- **核对范围：** 2026-11-21 核对 `Robbyant/lingbot-video@dd5c231` 官方 `README.md`、`scripts/inference.py`、`lingbot_video/inference_backend.py`、`runner.py`、`pipeline_lingbot_video.py`、`scripts/multi-gpus/run_moe_t2v_refiner_fsdp_cp8.sh`，并阅读主论文 [arXiv:2607.07675v1](https://arxiv.org/html/2607.07675) HTML（摘要、§1 引言、§2 单流稀疏 MoE DiT/3D MM-RoPE/AdaLN-Single/级联 Refiner）；未运行 30B MoE 推理。
+- **通读：** 已完成
 - **一句话说明：** 蚂蚁灵波 开源项目 LingBot-Video（世界模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-lingbot-video.md`](../../wiki/entities/cn-os-lingbot-video.md)
 

@@ -6,6 +6,8 @@
 - **类型：** site / project-page
 - **官方入口：** <https://qizekun.github.io/Humanoid-GPT/>
 - **入库日期：** 2026-06-04
+- **核对范围：** 已对照论文 `arXiv:2606.03985` 全文与官方仓库 `GalaxyGeneralRobotics/Humanoid-GPT@9f9e7b7` 核对项目页全部公开主张、对比表、视频类别与 BibTeX 信息
+- **通读：** 已完成
 - **一句话说明：** 论文配套站点：强调 **2B 帧语料 + HME 多样性 + GPT 式因果 Transformer tracker** 同时覆盖 **高动态** 与 **零样本泛化**；含与 **SONIC** 四类并排对比视频、训练外真机舞蹈/居家任务演示、scaling 曲线与 **TensorRT <1.5ms** 延迟表。
 
 ## 页面公开信息（检索自 2026-06-04）

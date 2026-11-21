@@ -2,7 +2,9 @@
 
 - **URL：** <https://www.wlrobo.com/GAEDownload>（GAE 下载）；<https://www.wlrobo.com/module1>（具身大模型，官网根路径重定向至此）
 - **机构：** 西湖机器人科技（杭州）有限公司（Westlake Robotics）
-- **核查日期：** 2026-10-10（Playwright 渲染 innerText + 前端 bundle 中的下载接口；下载接口返回的 OSS 地址为 1 小时签名链接，下文只记录不含签名的路径）
+- **核查日期：** 2026-10-10（Playwright 渲染 innerText + 前端 bundle 中的下载接口；2026-11-21 复核接口 `latest_release_version` 仍为 `V1.2.0`）
+- **核对范围：** 核查 `wlrobo.com/GAEDownload`、`wlrobo.com/module1`、OSS 元数据接口与飞书《GAE操控平台产品使用手册》，并克隆 `westlakerobotics/GAEApp-API@cdcfd67` 核对 `README.md` 与示例目录结构；未购买加密狗或运行闭源 `.exe` / `.run` 安装包。
+- **通读：** 已完成
 - **关联来源：** [GAE 项目页](gae-general-action-expert.md)；[GAE 论文归档](../papers/gae_general_action_expert_arxiv_2609_34233.md)
 - **关联知识页：** [GAE 全身遥操作](../../wiki/entities/paper-gae-general-action-expert.md)；[西湖机器人](../../wiki/entities/westlake-robotics.md)；[TITAN O1](../../wiki/entities/westlake-titan-o1.md)
 - **代码 / 权重 / 数据：** 下载页提供**闭源商用二进制安装包**（Windows 客户端 + 机器人端安装包），不提供算法源码、训练代码、模型权重文件或训练数据；使用需购买并配套 USB 加密狗与密钥。

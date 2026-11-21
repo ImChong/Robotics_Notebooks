@@ -14,6 +14,9 @@
 - **项目页：** 未找到独立项目页（arXiv 摘要页、论文 PDF 均未列项目页；Sharpa 官方研究博客有一篇解读页，仅回链 arXiv，见下表）
 - **代码：** 检索发现官方 GitHub 组织下的 [sharpa-robotics/sharpa-tacmap](https://github.com/sharpa-robotics/sharpa-tacmap)（README 引用本论文；Apache-2.0；初始提交 2026-04-08）。arXiv 摘要页、论文 PDF 与 Sharpa 解读页均未列此链接，是检索组织主页后得到，入库日按「已开源（仅仿真传感器子集）」处理，见下方开源核查
 - **入库日期：** 2026-10-16
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读 arXiv:2602.21625 PDF v1/v2 全文（双表面射线投射几何、3 轴台架翻译网络、Table I 对齐评测、效率与零样本手内旋转及局限），并核对官方部分开源仓 `sharpa-robotics/sharpa-tacmap`（commit `e4f8827`）的 `README.md`、`run.py`、`env.py`、`env_cfg.py` 与 `tactile_align_wrapper.py`（未在本地 Isaac Lab 环境中实际运行）。
+- **通读：** 已完成
 - **一句话说明：** 把仿真侧（物体与指尖弹性体的 3D 穿透深度）与真实侧（学习从原始触觉图像到深度图的映射）统一到同一种「deform map」几何表示，使纯仿真训练的手内旋转策略零样本迁移到 SharpaWave 真机。
 
 ## 相关资料（策展）

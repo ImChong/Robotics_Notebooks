@@ -9,6 +9,8 @@
 - **代码：** <https://github.com/roboterax/humanoid-gym>
 - **作者：** Xinyang Gu*, Yen-Jen Wang*, Jianyu Chen（RobotEra / 上海期智研究院 / 清华大学）
 - **入库日期：** 2026-06-09
+- **核对范围：** 通读 `arXiv:2404.05695v2`（2024-05-18）正文 I–V 节与 Appendix（Table I–IV、Fig. 1–7）及官方项目页 <https://sites.google.com/view/humanoid-gym/>；未重跑真机或 GPU 训练。
+- **通读：** 已完成
 - **一句话说明：** 基于 **Isaac Gym + legged_gym 范式** 的人形专用 RL 框架，用 **步态相位奖励 + 非对称 AC 特权训练 + 域随机** 在 **XBot-S / XBot-L** 上实现 **零样本 sim2real**；内置 **Isaac Gym → MuJoCo sim2sim** 校验管线。
 
 ## 摘要级要点

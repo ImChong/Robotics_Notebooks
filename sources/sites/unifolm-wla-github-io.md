@@ -8,6 +8,8 @@
 - **数据集：** <https://huggingface.co/collections/unitreerobotics/unifolm-wla-10>
 - **机构：** 宇树科技（Unitree）
 - **入库日期：** 2026-09-18
+- **核对范围：** 2026-11-21 抓取并通读项目页 `<https://unigen-x.github.io/unifolm-wla.github.io/>` 全文（UnifoLM-ER-1 16 项空间与多模态基准对比表、动态区域预测与光流 VQ-VAE、三路 RVQ 离散动作学习、MMDiT Action Expert 训练架构与 ~2,500h 数据/64 任务/10 全身+54 桌面介绍）。
+- **通读：** 已完成
 
 ## 一句话摘要
 

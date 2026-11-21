@@ -14,6 +14,8 @@
 ## 开源状态
 
 - **已开源**：公开仓库（以 README 与 release 为准）。
+- **核对范围：** 通读 `AgibotTech/agibot_x1_infer@9e0b818` 的 `README.md` 及核心运行代码 `src/pkg/pkg1/pkg_main.cc`、`src/module/control_module/src/rl_controller.cc`、`src/module/dcu_driver_module/src/dcu_driver_module.cc`；未编译或运行真机 EtherCAT/AimRT 节点。
+- **通读：** 已完成
 
 ## 对 wiki 的映射
 

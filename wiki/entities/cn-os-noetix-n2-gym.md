@@ -1,16 +1,20 @@
 ---
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+status: complete
+updated: 2026-11-21
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
+  - ./cn-os-noetix-e1-lab.md
+  - ./cn-os-noetix-sdk-bumi.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/noetix_n2_gym.md
-summary: "松延动力 开源项目 noetix_n2_gym（运动RL/技能训练）：为N2人形机器人提供Isaac Gym训练环境、动作加载、AMP和Sim2Sim工具。…"
+original:
+  - ../../sources/repos/noetix_n2_gym.md
+summary: "松延动力开源的 N2 双足人形机器人 Isaac Gym RL 运动训练框架（基于 humanoid-gym），支持 n2 (18DoF)、n2_10dof 与 n2_mimic 任务、JIT/ONNX 导出及 MuJoCo Sim2Sim 验证。"
 institutions:
   - noetix
 ---
@@ -38,22 +42,32 @@ institutions:
 
 ## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 松延动力 |
-| 类别 | 运动RL/技能训练 |
-| 官方组织 | https://github.com/Noetix-Robotics |
+`noetix_n2_gym` 是 [松延动力](https://github.com/Noetix-Robotics) 基于 `humanoid-gym` 构建、面向 N2 人形机器人的 Isaac Gym Preview 4 强化学习运动控制仓库：
+
+- **三类核心任务（`humanoid/envs/__init__.py`）**：注册 `n2`（18DoF 全身双足控制）、`n2_10dof`（10DoF 下肢版本）与 `n2_mimic`（动作模仿任务），依托 `N2Env`（继承 `LeggedRobot`）执行物理步进与奖励计算。
+- **PPO / AMP 策略训练栈**：在 `PyTorch 1.13.1 (cu118)` 下通过 `OnPolicyRunner` 与 `ActorCritic` 执行大规模并行 rollout 与策略更新（默认示例 `--num_envs 4096`）。
+- **Sim2Sim 跨仿真迁移验证**：`play.py` 将训练权重导出为 TorchScript JIT 与 ONNX 文件至 `logs/<exp>/exported/policies`，随后由 `sim2sim/sim2sim.py` 在 MuJoCo 物理引擎中以历史观测堆叠 + PD 控制闭环验证。
+
+```mermaid
+flowchart LR
+  C["任务配置 (n2 / n2_10dof / n2_mimic)"] --> IG["Isaac Gym (N2Env decimation)"]
+  IG --> RL["OnPolicyRunner (PPO / AMP)"]
+  RL --> EX["play.py 导出 JIT 与 ONNX"]
+  EX --> MJ["sim2sim/sim2sim.py (MuJoCo PD 验证)"]
+```
+
+> 图依据：[`Noetix-Robotics/noetix_n2_gym@153aad1`](https://github.com/Noetix-Robotics/noetix_n2_gym) `README.md`、`humanoid/scripts/{train,play}.py`、`sim2sim/sim2sim.py`。
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `noetix_n2_gym` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+1. **环境对齐**：严格匹配 README 指定的 `Python 3.8 + Isaac Gym Preview 4 + PyTorch 1.13.1/cu118 + MuJoCo`；新代号/新版本硬件可对比面向 E1 的 [noetix_e1_lab](./cn-os-noetix-e1-lab.md)（Isaac Lab + RSL-RL）。
+2. **标准训练与导出**：运行 `python humanoid/scripts/train.py --task=n2 --headless --num_envs 4096`，完成后运行 `python humanoid/scripts/play.py --task=n2` 导出策略至 `exported/policies`。
+3. **Sim2Sim 配置文件同步**：运行 `python sim2sim/sim2sim.py` 前务必将导出策略拷入 `sim2sim/policy` 并检查 `sim2sim/configs/` 下对应 YAML 的关节顺序与默认姿态是否匹配所选任务（默认配置指向 `n2_10dof.yaml`）。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+- 依赖已停止迭代的 **Isaac Gym Preview 4** 与较旧 Python 3.8 / PyTorch 1.13.1 栈，在新架构 GPU 或现代驱动上部署前需确认兼容性。
+- 本仓库主要覆盖仿真训练与 MuJoCo Sim2Sim 验证，真机部署仍需对齐实机通讯接口、传感器延迟与关节安全限幅（参考 [noetix_sdk_bumi](./cn-os-noetix-sdk-bumi.md)）；本次核对未物理执行 GPU 训练与仿真。
 
 ## 源码运行时序图
 

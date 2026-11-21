@@ -8,7 +8,9 @@
 - **原始链接：** https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization
 - **发表日期：** 2026-09-17
 - **入库日期：** 2026-09-17
-- **抓取方式：** 官方新闻页直接抓取（WebFetch）
+- **核对范围：** 抓取并通读 <https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization> 完整正文与 Appendix（Detailed Eval Criteria 与 Index Categorization），确认盲评协议、30 家庭零样本定义、9%→56% 消融、8× 数据 scaling law（0.54% 预测误差）及未开源边界；为公司官方技术博客（非同行评审论文），未复现实验。
+- **通读：** 已完成
+- **抓取方式：** 官方新闻页直接抓取（WebFetch / curl）
 - **一句话说明：** Figure 发布 **Helix 2.5**：在 **Index** 人类行为数据上预训练的单基座模型，经任务数据微调后产出整理客厅、叠毛巾、铺床三项 **全身 locomanipulation** 行为；在 **30 套从未采集数据的湾区家庭** 中 **零样本** 部署同一 checkpoint，盲评成功率 **56%**（对照随机初始化仅 **9%**），并报告人→人形 **迁移 scaling law**。
 
 ## 核心摘录（归纳，非全文）

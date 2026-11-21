@@ -8,6 +8,8 @@
 - **原始链接：** <https://www.pi.website/blog/partner>
 - **发表日期：** 2026-02-24
 - **入库日期：** 2026-09-28
+- **核对范围：** 2026-11-22 尝试直接 `curl` 与经 `r.jina.ai` 读取原文 `<https://www.pi.website/blog/partner>`，均返回 HTTP 429 `Vercel Security Checkpoint`（反爬验证门禁），且本地 `chrome_devtools` 未连接（`DevToolsActivePort` 不存在）；按规则不绕过验证门禁或使用缓存副本，当前归档仅保留 2026-09-28 既有摘要，原文未完成通读。
+- **通读：** 未完成
 - **一句话说明：** 把 π₀ 到 π\*₀.₆ 描述成可复用的机器人基础模型层，并转述 Weave 洗衣与 Ultra 打包的现场部署。
 
 ## 开源状态（步骤 2.5，2026-09-28）

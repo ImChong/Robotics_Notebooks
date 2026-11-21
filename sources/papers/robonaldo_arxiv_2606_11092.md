@@ -14,7 +14,9 @@
 - **作者：** Yichao Zhong†, Yidan Lu†, Yuhang Lu, Tianyang Tang, Haoguang Mai, Yixuan Pan, Tianyu Li‡, Li Chen‡, Jingbo Wang, Zhongyu Li, Peng Lu‡, Hongyang Li‡（† 共同一作；‡ 共同指导）
 - **机构：** 香港大学；香港中文大学；Archon Robotics（OpenDriveLab 项目页托管）
 - **入库日期：** 2026-06-10
-- **再核日期：** 2026-07-28
+- **再核日期：** 2026-11-21
+- **核对范围：** 通读 `https://arxiv.org/html/2606.11092`（v3，2026-06-11）全文：Abstract、§1 引言、§2 相关工作、§3 方法（3.1 任务建模、3.2 三阶段课程与启发式规划器、3.3 奖励设计与 Instant Interaction Reward）、§4 仿真实验与消融（Table 1–2）、§5 真机硬件感知与结果（Table 3）、§6 结论与局限，以及 Appendix A–E（观测 547 维拆解、奖励权重、超参数与域随机化、部署细节）。边界：未在本地 GPU/真机环境复现训练。
+- **通读：** 已完成
 - **开源状态：** **已开源**（2026-06 训练+部署代码发布；项目页 Code 链已挂 GitHub）
 - **一句话说明：** 以 **单条人类踢球参考** 为 scaffold 的 **三阶段 motion-guided curriculum RL**：先学稳定全身踢球先验，再适应任意球位定点射门，最后经 **locomotion 命令 + kick-trigger 接口** 泛化到 **来球射门**；仿真误差较基线 **−48.6%**、球速 **2.96×**；**Unitree G1** 机载 LiDAR/IR 感知在真草场外实现 **3 m 平均误差 0.73 m（任意球）/ 0.86 m（来球）**、触球后球速最高 **13.10 m/s**。
 

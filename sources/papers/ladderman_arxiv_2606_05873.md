@@ -8,12 +8,16 @@
 - **arXiv HTML：** <https://arxiv.org/html/2606.05873>
 - **PDF：** <https://arxiv.org/pdf/2606.05873>
 - **项目页：** <https://ladderman-robot.github.io/>（归档见 [`sources/sites/ladderman-robot-github-io.md`](../sites/ladderman-robot-github-io.md)）
+- **代码：** <https://github.com/amazon-far/LadderMan>（CoRL 2026 Spotlight；2026-11 已开源，归档见 [`sources/repos/ladderman.md`](../repos/ladderman.md)）
 - **机构：** Amazon FAR、USC、UC Berkeley、Stanford University、CMU；† Amazon FAR team co-lead
 - **作者：** Siheng Zhao, Yuanhang Zhang, Ziqi Lu, Pieter Abbeel, Rocky Duan, Koushil Sreenath, Yue Wang, C. Karen Liu, Guanya Shi
 - **硬件：** Unitree G1（1.3 m、29-DoF）；机载 **Intel RealSense D435i**；机载 **NVIDIA Jetson Orin**
-- **仿真：** NVIDIA **IsaacSim**；深度渲染 **NVIDIA Warp**；专家策略 **PPO**；统一策略 **DAgger + PPO + KL 到专家**
+- **仿真：** NVIDIA **IsaacSim**（开源代码使用 Isaac Sim 4.5.0 + Isaac Lab v2.2.0）；深度渲染 **NVIDIA Warp**；专家策略 **PPO**；统一策略 **DAgger + PPO + KL 到专家**
 - **参考动作：** 单条 OptiTrack 动捕参考（梯子 A：倾角 $\phi=65.5°$，踏棍间距 $z=24.8$ cm）
 - **入库日期：** 2026-06-09
+- **复核日期：** 2026-11-21
+- **核对范围：** 通读 `arXiv:2606.05873v1` HTML 全文（Abstract、§1–§5 Conclusion and Limitation：Hybrid Motion Tracking 单参考多几何专家、DAgger+PPO+KL 统一视觉策略、Fast-FoundationStereo VFM 深度与 RFM 踏棍聚焦遮罩、梯上双智能体遥操作、真机梯子 A/B/C 消融与 75°/灵巧手局限）并核对 2026-11 开源仓库 `amazon-far/LadderMan@9a8d5ed`；未在本地 GPU 运行 Isaac Lab 训练。
+- **通读：** 已完成
 - **一句话说明：** **两阶段** 人形 **梯子攀爬 + 梯上操作** 系统：Stage 1 用 **hybrid motion tracking**（上身松弛跟踪 + 梯子中心接触/攀爬奖励）从 **单条参考动作** 学多几何 **专家**；Stage 2 以 **hybrid DAgger + RL** 蒸馏为 **深度 visuomotor 统一攀爬策略**；真机深度经 **VFM（Fast-FoundationStereo）** 与 **rung-focused masking（RFM）** 桥接 sim-to-real；梯上 manipulation 用 **双智能体**（下身稳定 + 上身遥操作）解耦，相对 TWIST2 更稳。
 
 ## 相关资料（策展）

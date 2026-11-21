@@ -8,6 +8,8 @@
 - **URL：** <https://generalistai.com/blog/physical-commonsense>
 - **发布：** 2026-01-29
 - **入库日期：** 2026-09-21
+- **核对范围：** 2026-11-22 抓取并通读 `https://generalistai.com/blog/physical-commonsense` 正文全文（全部 7 节 + 视频图注 + 13 条参考文献，核对 Polanyi tacit knowledge、System-1 vs System-2 teleop 失真、轻量化手持力反馈采集设备与 GEN-0 恢复案例）。
+- **通读：** 已完成
 - **一句话说明：** 主张机器人「物理常识」像暗物质——不可见但决定大部分有效交互；需从 **高保真、闭环、低延迟** 的真实操作数据（非僵硬的远程遥操作轨迹）中学习 reactive micro-corrections。
 
 ## 核心摘录

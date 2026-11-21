@@ -12,7 +12,7 @@ tags:
   - action-tokenization
   - x-square-robot
 status: complete
-updated: 2026-11-05
+updated: 2026-11-21
 project_id: wall-oss-0-5
 arxiv: "2605.30877"
 code: https://github.com/X-Square-Robot/wall-x
@@ -34,6 +34,10 @@ related:
   - ../concepts/embodied-scaling-laws.md
   - ../overview/hub-cross-embodiment.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/wall_oss_05_arxiv_2605_30877.md
+  - ../../sources/repos/wall-x.md
+  - ../../sources/sites/x2robot-wall-oss.md
 sources:
   - ../../sources/sites/x2robot-wall-oss.md
   - ../../sources/repos/wall-x.md

@@ -11,7 +11,9 @@
 - **社媒：** [X @SimateAI](https://x.com/SimateAI) · [YouTube @simate_ai](https://www.youtube.com/@simate_ai) · Bilibili · 微信公众号（站内 QR）
 - **演示视频 CDN：** `mate-robot.cn/open_videos/`（真机 demo 与 Sipai showcase 托管于此，非 Simate 自有 GitHub）
 - **入库日期：** 2026-09-23
-- **补核（2026-10-09）：** `https://mate-robot.cn/home/` 为同一套站点（国内域名），页面内容一致、无博客或带日期的技术发布；Sipai 页仍标 *Evaluation in progress*，但首版模型 Simate-beta 已于 2026-09-23 上 RoboDojo 仿真榜（33.95 / 27.96%），见 [Simate-beta 归档](../blogs/simate_beta_robodojo_2026-09.md)。
+- **核对范围：** 2026-11-21 抓取并通读 Simate 官网 `<https://simate.ai/home/>`、`<https://simate.ai/research/sipai/>` 与 `<https://simate.ai/research/sinfra/>` 全部公开页面正文（Platform+Model+Scientist 三分法、Sinfra Define/Validate/Deploy 门控与四套公开数据集策展、Sipai 页面状态与算力展示口径）；未登录闭源 `/sifra/` 企业工作区。
+- **通读：** 已完成
+- **补核（2026-10-09）：** `https://mate-robot.cn/home/` 为同一套站点（国内域名），页面内容一致、无博客或带日期的技术发布；Sipai 页仍标 *Evaluation in progress*，但首版模型 Simate-beta 已于 2026-09-23 上 RoboDojo 仿真榜（33.95 / 27.96%），见 [Simate-beta 归档](../blogs/simate_beta_robodojo_2026-09.md)。随后 `SIPAILab/simate-beta` 已在 GitHub 与 Hugging Face 公开训练代码及权重，见 [Simate-beta 源码归档](../repos/simate_beta.md)。
 - **一句话说明：** Simate 面向 Physical AI 的 **Platform + Model + Scientist** 闭环：**Sinfra** 把任务从定义经训练/仿真/部署串成可审计流水线；**Sipai** 为具身动作模型栈（正进行 **RoboDojo** 评测）；**RoboScientist** 把实验与证据转为下一轮迭代输入。
 - **沉淀到 wiki：** [`wiki/entities/simate.md`](../../wiki/entities/simate.md)
 

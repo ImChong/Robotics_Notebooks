@@ -1,7 +1,9 @@
 ---
 type: entity
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
+original:
+  - ../../sources/papers/tacbpm_arxiv_2609_18174.md
 project_id: tacbpm
 arxiv: "2609.18174"
 venue: "arXiv 2026（cs.RO，v1 2026-09-16；未见录用信息）"
@@ -121,7 +123,7 @@ flowchart LR
 | 评测协议 | Sharpa Wave，每行 1000 次随机化尝试（另注除外）；成功为超时或掉落前达到目标朝向 0.2 rad 内 |
 | 真机回路 | 本体与触觉反馈 20 Hz；关节增益按 1 Hz 正弦响应匹配；手内回路不使用物体位姿 |
 | 臂-手任务 | 29 维动作（22 手 + 7 臂）；橡胶锤教师，尺度随机 0.9 到 1.1；下游 8192 环境；真机用 FoundationPose + 正运动学取关键点 |
-| 源码运行时序图 | **不适用**（无官方代码仓库，见复现边界） |
+| 源码运行时序图 | **不适用**（截至 2026-11-21 项目页 Code 仍标 `(Soon)`，无官方代码仓库） |
 
 ## 实验与评测
 

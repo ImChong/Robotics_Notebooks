@@ -2,7 +2,9 @@
 
 - **类型：** 官方公司技术页 / 项目入口核查
 - **官方入口：** <https://galbot.com/about/>
-- **核查日期：** 2026-10-05
+- **核查日期：** 2026-10-05（2026-11-21 复核）
+- **核对范围：** 已通读 `https://galbot.com/about/` 与 `https://galbot.com/news/` 全文文本，并与 `GalaxyGeneralRobotics/Humanoid-GPT@9f9e7b7`（AstraBrain-WBC 0.5 官方代码）交叉核对公开边界；WAM/WAM-TTT 无公开代码或独立 arXiv 论文可供源码核对
+- **通读：** 已完成
 - **新闻入口：** <https://galbot.com/news/>
 - **WBC 项目页：** <https://qizekun.github.io/Humanoid-GPT/>
 - **WBC 代码：** <https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>

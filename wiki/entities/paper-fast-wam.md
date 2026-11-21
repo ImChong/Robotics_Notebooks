@@ -8,7 +8,7 @@ tags:
   - galaxea
   - tsinghua
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2603.16666"
 code: https://github.com/yuantianyuan01/FastWAM
 related:
@@ -23,7 +23,10 @@ sources:
   - ../../sources/repos/lerobot.md
   - ../../sources/sites/fast-wam.md
   - ../../sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md
-summary: "Fast-WAM（arXiv:2603.16666）：训练期保留视频共训、推理期跳过未来视频去噪，190 ms 延迟（>4× 快于 imagine-then-execute WAM）；LIBERO 97.6% / RoboTwin 91.8%。"
+original:
+  - ../../sources/papers/fast-wam_arxiv_2603_16666.md
+  - ../../sources/repos/fast_wam.md
+summary: "Fast-WAM（arXiv:2603.16666）：训练期保留 Wan2.2-5B + 1B Action Expert（MoT）视频共训，推理期跳过未来视频去噪、单步直读首帧 clean latent，190 ms 延迟（>4× 快于 Fast-WAM-IDM 810 ms）；LIBERO 97.6% / RoboTwin 2.0 91.8%。"
 ---
 
 # Fast-WAM（arXiv:2603.16666）
@@ -72,36 +75,37 @@ flowchart TD
 
 | 项 | 内容 |
 |----|------|
-| **arXiv** | [2603.16666](https://arxiv.org/abs/2603.16666) |
-| **开源** | **已开源** |
-| **要点** | Wan2.2-TI2V 视频骨干 + Action DiT；推理只过一遍 clean latent 直接出动作 chunk。 |
-| **文内指标** | 仿真与真机折毛巾等；无具身预训练仍 competitive（作者报告）。 |
-
+| **arXiv / 代码** | [2603.16666v2](https://arxiv.org/abs/2603.16666) · [`yuantianyuan01/FastWAM`](https://github.com/yuantianyuan01/FastWAM)（**已开源**） |
+| **骨干与参数** | Wan2.2-TI2V-5B 视频 DiT + 1B Action Expert（`d_a=1024`，总约 6B），采用 Mixture-of-Transformers (MoT) 共享全注意与结构化因果/非因果掩码 |
+| **训练与推理解耦** | **训练期**保留联合 Flow Matching（$\mathcal{L}=\mathcal{L}_{\text{act}}+\lambda \mathcal{L}_{\text{vid}}$）强迫中间层隐状态保留时空动态表征，且禁止动作 token 注意未来视频 token；**测试期**仅编码首帧 clean latent 缓存视频 KV，直接对 `h=32` 动作 chunk 执行 10 步去噪（CFG=1.0），延迟 **190 ms**（RTX 5090D V2，vs Fast-WAM-IDM 810 ms） |
 
 ## 源码运行时序图
+
+入口：`scripts/precompute_text_embeds.py` → `scripts/train.py`（或 `bash scripts/train_zero1.sh`）训练 `src/fastwam/models/wan22/fastwam.py`（`FastWAM`），评估调用 `experiments/libero/run_libero_manager.py` 或 `src/fastwam/runtime.py`。
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant D as LeRobot 轨迹
-    participant P as scripts/precompute_text_embeds.py
-    participant T as scripts/train.py
-    participant M as FastWAM checkpoint
-    participant E as experiments/libero/run_libero_manager.py
-    participant S as LIBERO 环境
-    D->>P: 任务文本
-    P-->>T: 文本 embedding 缓存
-    D->>T: 视频与动作训练 batch
-    T-->>M: 视频共训的策略权重
-    E->>M: checkpoint 与匹配 dataset_stats
-    loop 闭环评测
-        S->>E: 当前观测
-        E->>M: 推理（不去噪未来视频）
-        M-->>S: 动作 chunk
+    participant D as "LeRobot / HDF5 数据集"
+    participant P as "scripts/precompute_text_embeds.py"
+    participant T as "scripts/train.py (train_zero1.sh)"
+    participant F as "src/fastwam/models/wan22/fastwam.py (FastWAM)"
+    participant E as "experiments/libero/run_libero_manager.py"
+    participant R as "src/fastwam/runtime.py"
+    D->>P: "任务文本指令"
+    P-->>T: "预计算 UMT5 文本 embedding 缓存"
+    D->>T: "视频帧 + 本体状态 + 动作 chunk"
+    T->>F: "training_loss()：MoT 视频与动作联合 Flow Matching"
+    F-->>T: "L_act + lambda * L_vid 与 checkpoint"
+    E->>R: "加载 FastWAM ckpt 与 dataset_stats"
+    loop "闭环评测 / 真机调度"
+        E->>R: "当前首帧观测 + 任务文本"
+        R->>F: "infer_action() / infer_joint()（可选 Optional-IDM）"
+        F-->>E: "h=32 动作 chunk，跳过未来视频扩散"
     end
 ```
 
-图下说明：复现以 [`sources/repos/fast_wam.md`](../../sources/repos/fast_wam.md) 与官方 README 为准。
+> 图依据：[`yuantianyuan01/FastWAM@7faa711`](https://github.com/yuantianyuan01/FastWAM) `README.md`、`scripts/precompute_text_embeds.py`、`scripts/train.py`、`scripts/train_zero1.sh`、`experiments/libero/run_libero_manager.py`、`src/fastwam/runtime.py`、`src/fastwam/models/wan22/fastwam.py`。
 
 
 ### LeRobot 移植的运行时序（固定提交 `9e5ee98`）
@@ -144,13 +148,31 @@ sequenceDiagram
 - **LIBERO 夹爪**：`toggle_action_dimensions=[-1]`（`processor_fastwam.py: FastWAMActionToggleProcessorStep`）。
 - **相对动作**：`use_relative_actions=true` 时预测相对当前 `observation.state` 的偏移，夹爪默认保持绝对。
 - **文本编码器**：冻结 UMT5-XXL 约 11 GB，可 `text_encoder_device=cpu`；推理时任务嵌入缓存到 `reset()`。
-- **LeRobot 文档结果**：`lerobot/fastwam_libero_uncond_2cam224` 在 LIBERO 四套件各 500 episode：spatial 97.6%、object 99.0%、goal 95.0%、libero_10 94.0%，平均 96.4%（文档）。**不一致提示**：本页顶部引用的 `LIBERO 97.6%` 来自公众号二手摘录（作者表述，未核实），LeRobot 文档中的 97.6% 对应的是 `libero_spatial` 单套件，平均为 96.4%，两者口径不同，勿混用。
+- **数据与官方口径对齐**：`arXiv:2603.16666` Table 2 报告 Fast-WAM 在 LIBERO 四套件分别为 Spatial **98.2%**、Object **100.0%**、Goal **97.0%**、Long **95.2%**，四套件均值正是 **97.6%**（非公众号虚构数字）；上游仓库 `yuantianyuan01/FastWAM` 更新版 First-frame 模式达到 **97.75%**（启用 Optional-IDM 后 **98.55%**）。`lerobot/fastwam_libero_uncond_2cam224` 为 LeRobot 社区独立移植权重，其四套件（97.6% / 99.0% / 95.0% / 94.0%，平均 **96.4%**）与上游论文权重不可直接混为同一版本。
 - **代码中的相邻工作**：`modeling_fastwam.py` 注释提到可选的 Faster-WAM（arXiv 2608.02365）选项（`lite_kv_fusion`、`retracted_1d_rope`，默认关闭）；库内节点见 [Faster-WAM](./paper-rcl-2608-02365-faster-wam-do-world-action-models-need-deep-acti.md)，本页不展开。
 
 ## 实验与评测
 
-- 仿真与真机折毛巾等；无具身预训练仍 competitive（作者报告）。
-- **读法：** 索引级摘要；逐项 baseline 以原文 PDF 为准。
+| 基准 / 设置 | Fast-WAM | 关键消融 / 对照组 | 依据 |
+|-------------|----------|-------------------|------|
+| **RoboTwin 2.0（50 任务）** | **91.8%**（Clean 91.88% / Rand 91.78%） | Joint **90.6%**；Fast-WAM-IDM **91.3%**；**w/o video co-training 83.8%**（下降 8.0 pts） | arXiv Table 1 |
+| **LIBERO（4 套件均值）** | **97.6%**（Spatial 98.2 / Object 100.0 / Goal 97.0 / Long 95.2） | Joint **98.5%**；Fast-WAM-IDM **98.0%**；**w/o video co-training 93.5%** | arXiv Table 2 |
+| **真机 Galaxea R1 Lite（叠毛巾等）** | 60h 遥操作、30k 步训练可稳定完成长程柔性物体操作 | **w/o video co-training 跌至 10%**（无具身预训练前提下视频共训决定接触后迁移） | arXiv §4 |
+| **单步推理延迟** | **190 ms**（RTX 5090D V2，10 步去噪 CFG=1.0）；上游编译优化后 **110 ms**（RTX 4090）/ **210 ms**（H20） | Fast-WAM-IDM（先生成未来视频再过 IDM）**810 ms**（>4× 更慢） | arXiv Table 3 & README |
+
+- **读法**：以上数字均已在 `arXiv:2603.16666v2` 原文与 `yuantianyuan01/FastWAM@7faa711` README 核对；跨方法比较须保持相同推理分辨率、去噪步数与是否使用额外具身预训练。
+
+## 工程实践
+
+1. **权重预处理与文本缓存**：训练前先使用官方 `preprocess_action_dit_backbone.py` 合并/切分 Wan2.2-TI2V-5B 骨干权重，并用 `scripts/precompute_text_embeds.py` 离线缓存冻结 UMT5-XXL 文本嵌入，以节省显存并支持 `scripts/train_zero1.sh` 多卡 ZeRO-1 训练。
+2. **模式与超参对齐**：论文默认 First-frame clean latent 模式，而仓库最新更新支持 **Optional IDM（`infer_joint`）** 开关；另外需注意原生仓库与 LeRobot 移植在扩散 `sigma_shift`（如 1.0 vs 5.0）和图像归一化（`VISUAL: IDENTITY` 内部放缩至 `[-1, 1]`）上的配置差异。
+3. **推理延迟优化**：通过单次首帧 KV Prefill + `torch.compile` 动作推理图可将端到端单块延迟压至 **110–190 ms**，结合 `h=32` 动作块与 `runtime.py` 满足多数准高频双臂真机控制需求。
+
+## 局限与风险
+
+- **结构化掩码制约**：为防止测试时信息泄漏，训练时禁止动作 token 注意未来噪声视频 token；若下游任务高度依赖长时程物理反演（多跳阻挡预测），显式未来想象分支（Optional-IDM）仍可能带来小幅精度上限增益（如 LIBERO 97.75% → 98.55%）。
+- **模型体量与显存门槛**：核心骨干仍为 5B Wan2.2-TI2V + 1B Action DiT（约 6B 参数），即便推理跳过视频扩散，多卡微调与显存占用（含 11 GB 冻结 UMT5-XXL）仍高于轻量级 DP/VLA。
+- **物理真实世界与跨版本可比性**：真机实验仅基于特定 60h 遥操作集合，未涵盖全量开放词汇泛化；本文档未在本地 GPU 实际复现训练与真机评测。
 
 ## 与其他工作对比
 
@@ -167,11 +189,11 @@ sequenceDiagram
 
 ## 结论
 
-**Fast-WAM 证明 WAM 价值可在训练期视频建模中兑现，推理不必每步想象；TempoWAM/MemoryWAM 是互补层。**
+**Fast-WAM 证明：世界动作模型（WAM）的视频建模收益主要来自训练期联合动态表征监督，推理期直接读取首帧 clean latent 并跳过未来视频扩散即可达到与慢速想象策略持平甚至更优的操作成功率，同时将延迟压低 >4× 至 110–190 ms。**
 
-1. 开源边界：**已开源** — 以项目页/仓库实际链接为准（入库日 2026-09-23）。
-2. 核心机制：Wan2.2-TI2V 视频骨干 + Action DiT；推理只过一遍 clean latent 直接出动作 chunk。…
-3. 部署前核对硬件栈与评测协议，勿直接横比公众号摘录数字。
+1. **核心机制**：6B 参数 MoT 架构（Wan2.2-TI2V-5B 视频骨干 + 1B Action Expert）+ 因果掩码解耦训练/推理；视频共训在 RoboTwin 2.0 带来 +8.0 pts（83.8% → 91.8%）、真机叠毛巾带来 10% → 稳定收敛的关键增益。
+2. **开源与工程就绪度**：**已开源**（[`yuantianyuan01/FastWAM`](https://github.com/yuantianyuan01/FastWAM) 原生仓库及 Hugging Face 权重/数据集，另已有 LeRobot 社区移植），支持 `precompute_text_embeds`、ZeRO-1、编译加速及可选 Optional-IDM 模式。
+3. **选型边界**：高实时闭环场景优先用 Fast-WAM First-frame 模式（190 ms 内出块）；仅在可容忍 ~4× 延迟的离线评测中考虑 Optional-IDM / 想象分支；记忆与超长程时序扩展可搭配 [MemoryWAM](./paper-memorywam.md) 与 [TempoWAM](./paper-tempowam.md)。
 
 ## 关联页面
 

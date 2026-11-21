@@ -10,8 +10,14 @@ tags:
   - dexterous-grasp
   - manipulation
   - xiaomi-robotics
+institutions:
+  - xiaomi-robotics
+project: https://vitacphys.github.io/ViTacPhys/
+original:
+  - ../../sources/papers/vitacphys_arxiv_2608_21355.md
+  - ../../sources/sites/vitacphys-github-io.md
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.21355"
 venue: "arXiv 2026"
 related:
@@ -66,7 +72,7 @@ summary: "ViTacPhys（arXiv:2608.21355，小米机器人实验室）：人体视
 | **状态** | 2026-08 arXiv 预印本，同行评审前 |
 | **开源** | 项目页标注 Code/Dataset **Coming Soon**（截至 2026-08-24） |
 
-## 核心方法与结构
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
@@ -143,7 +149,7 @@ flowchart TB
 - **误区：** 认为摩擦是物体固有属性——标注为 **硅胶接触对** 静摩擦系数（斜面法）。
 - **局限：** 单参与者采集；OOD 仅 6 对物体各 3 试次；触觉无法直接测切向力，质量/摩擦只能分档；VLM 先验有秒级冷启动延迟。
 
-## 与其他页面的关系
+## 关联页面
 
 - [ViTacFormer](./paper-sa-2506-15953-vitacformer-learning-cross-modal-representation.md) — 视触觉灵巧操作基线
 - [ViTacWorld](./paper-vitacworld.md) — 视触觉世界模型缩放（上科大）

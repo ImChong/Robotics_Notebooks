@@ -3,8 +3,10 @@
 - **类型：** 官方站点索引（博客列表 + 新闻列表）
 - **链接：** Blog <https://aetherlabs.ai/blog.html>；News <https://aetherlabs.ai/news.html>
 - **机构：** Aether AI（总部 San Diego，CA；创始人 UCSD 助理教授 Biwei Huang / 黄碧薇）。官网未写成立日期；成立于 **2026 年春** 据 San Diego Business Journal（2026-07-06）："Huang launched Aether this spring"，<https://sdbj.com/technology/aether-taking-ai-to-its-next-logical-step/>
-- **核查日期：** 2026-10-10
+- **核查日期：** 2026-10-10（2026-11-21 复核 HTTP 200 可达）
 - **方法：** `curl -sSL -A "Mozilla/5.0"` 读取 `blog.html` 与 `news.html`（静态 HTML，服务端直出）后去标签，核对标题、日期、链接；列表页未见分页或「加载更多」。官网左侧索引把博文编为 01–11。
+- **核对范围：** 通读 `https://aetherlabs.ai/blog.html` 与 `https://aetherlabs.ai/news.html` 全量列表及条目标题、日期、外链入口
+- **通读：** 已完成
 - **用途：** 确认公司页 [Aether AI](../../wiki/entities/aether-ai.md) 覆盖全部官方博文与新闻。
 - **同名区分：** arXiv 2503.18945 *Aether: Geometric-Aware Unified World Modeling*（署名 Aether Team，Haoyi Zhu 等，2025-03）是另一组作者的项目，与本公司无关，见 [该页](../../wiki/entities/paper-sa-2503-18945-aether-geometric-aware-unified-world-modeling.md)。
 

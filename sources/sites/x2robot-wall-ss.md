@@ -9,6 +9,9 @@
 - **代码：** <https://github.com/X-Square-Robot/wall-ss>
 - **机构：** 自变量机器人（X Square Robot）
 - **入库日期：** 2026-08-28
+- **再核日期：** 2026-11-21（核对 `wall-ss` README 更新的公开 arXiv 编号 `2608.26239` 与主页镜像 `https://wall-ss.ws-robotics.workers.dev/`，训练/推理代码仍待发布）
+- **核对范围：** 核对官方项目页入口、`X-Square-Robot/wall-ss` README 与 `wall-ss-paper.pdf` 开放边界
+- **通读：** 已完成
 - **一句话说明：** 官方项目页展示 Observation+Action 条件、next-scale 粗到细生成与闭环 rollout；与 GitHub 互指。页面为前端渲染，静态抓取几乎无正文——开源判断以 GitHub README / TODO 为准。
 
 ## 开源核查（2026-08-28）

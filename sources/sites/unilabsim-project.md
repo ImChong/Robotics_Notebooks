@@ -7,7 +7,9 @@
 - **URL：** <https://unilabsim.github.io>
 - **论文：** <https://arxiv.org/abs/2605.30313>
 - **代码：** <https://github.com/unilabsim/UniLab>
-- **入库日期：** 2026-05-31（初入库）；**复核：** 2026-09-18
+- **入库日期：** 2026-05-31（初入库）；**复核：** 2026-11-21
+- **核对范围：** 已通读项目页 `https://unilabsim.github.io` 全部正文、支持栈矩阵、17 项浏览器 MotrixSim 试玩清单及论文 `arXiv:2605.30313v3` Table 3 跨平台训练分钟数对照（注：已确认页面正文、demo 清单与跨平台指标，未逐个打开外部视频流/WASM 实例）
+- **通读：** 已完成
 - **会议：** CoRL 2026 **Accepted**（项目页 banner，2026-09 复核）
 - **一句话说明：** 产品叙事与演示：3–10× 端到端加速、macOS 一等公民、双物理后端、**14 个已上线任务**、7 类算法、5 类机器人、与 GPU-centric 栈对比表、**17 项**浏览器 MotrixSim 策略试玩、六类 to-real 视频、跨平台墙钟训练表。
 - **沉淀到 wiki：** [UniLab](../../wiki/entities/unilab.md)

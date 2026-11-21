@@ -2,7 +2,9 @@
 type: entity
 tags: [physical-ai, foundation-model, humanoid, china-embodied, light-origins, company]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-21
+original:
+  - ../../sources/sites/lightorigins-about.md
 related:
   - ./light-o1.md
   - ./light-react.md
@@ -56,30 +58,41 @@ summary: "亮源新创（Light Origins，2024）：Physical AI 基础模型公�
 | **价值观** | 主人翁意识 · 坦诚高效 · 突破创新 · 追求极致 |
 | **创始人** | Roger Jiang（CEO；UMD 物理学 Ph.D.；前 OpenAI） |
 
+## 核心原理
+
+亮源新创以 **Intelligence-first** 组织研发，将具身基础模型演进拆解为三个依次递进且形成数据回流闭环的规模化范式：
+
+1. **规模化预训练（Scalable Pre-training）：** 从海量互联网人类视频恢复 3D 动作并离散化，预训练可迁移人类动作先验（代表成果：[Light-O1](./light-o1.md)，验证跨本体 Transfer Scaling Law）。
+2. **规模化对齐（Scalable Alignment）：** 依托 Real2Sim2Real 数据引擎将 2,000+ 真实场景转化为 4,000+ 小时交互经验，经 ER 中期训练、SFT 与在线 RL 对齐空间智能与多本体导航（代表成果：[LightNav-0](./paper-lightnav-0.md)、[LightNav-ER](./lightnav-er.md)、[INSIGHT-Bench](./insight-bench.md)）。
+3. **规模化部署（Scalable Deployment）：** 以全身韧性控制与紧凑机载策略应对真实运行中的外力扰动、硬件失效与接触丰富地形，持续收集真实反馈反哺预训练与对齐（代表成果：[Light REACT](./light-react.md)、[Light-Loco-Parkour](./paper-light-loco-parkour.md)、[Lightbot 0](./lightbot-0.md)）。
+
 ## 公开技术成果（截至 2026-09-21）
 
 | 阶段 | 代表成果 | 站内页 | 开源（摘要） |
 |------|----------|--------|--------------|
 | 规模化预训练 | Light-O1 | [light-o1](./light-o1.md) | Preview 推理 + HF 权重 **已开源** |
-| 规模化对齐 | LightNav-0 + INSIGHT-Bench | [paper-lightnav-0](./paper-lightnav-0.md) · [insight-bench](./insight-bench.md) | 代码 + HF 权重 **已开源**；1097-episode 诊断评测 **已开源** |
+| 规模化对齐 | LightNav-0 + LightNav-ER + INSIGHT-Bench | [paper-lightnav-0](./paper-lightnav-0.md) · [lightnav-er](./lightnav-er.md) · [insight-bench](./insight-bench.md) | LightNav-0 代码+权重、INSIGHT-Bench **已开源** |
 | 规模化部署 | Light REACT | [light-react](./light-react.md) | 截至入库日 **未开源** |
-| 全身跑酷 | Light-Loco-Parkour | [paper-light-loco-parkour](./paper-light-loco-parkour.md) | **未开源** |
+| 全身跑酷 / 平台 | Light-Loco-Parkour + Lightbot 0 | [paper-light-loco-parkour](./paper-light-loco-parkour.md) · [lightbot-0](./lightbot-0.md) | **未开源** |
 
 ```mermaid
 flowchart LR
-  pre[规模化预训练<br/>Light-O1] --> align[规模化对齐<br/>LightNav-0]
-  align --> deploy[规模化部署<br/>Light REACT]
-  pre --> hw[Lightbot 0 / 人形硬件]
+  pre["规模化预训练\nLight-O1"] --> align["规模化对齐\nLightNav-0 / LightNav-ER"]
+  align --> deploy["规模化部署\nLight REACT"]
+  pre --> hw["Lightbot 0 / 人形硬件"]
   hw --> deploy
-  deploy --> loop[真实世界反馈 → 持续学习]
+  deploy --> loop["真实世界反馈 → 持续学习"]
   loop --> pre
 ```
 
 ## 工程实践
 
-1. **按三段读成果：** 预训练看 Light-O1 的 human action prior 与 Transfer Scaling Law；对齐看 LightNav-0 的 VLM 空间意图 token 化；部署看 Light REACT 的全身 ICL 韧性。
-2. **开源边界：** 以 [GitHub 组织](https://github.com/lightorigins) 与各项目页为准；Light-O1 **完整训练 checkpoint** 与 Light REACT **代码/论文** 截至入库日均未公开。
-3. **机构命名：** 中文官方名 **亮源新创**（非「光原点」）；英文品牌 **Light Origins**。
+| 项 | 说明 |
+|----|------|
+| **源码运行时序图** | **不适用**（机构实体总览页，无单一运行入口；各子项目运行时序见 [Light-O1](./light-o1.md)、[LightNav-0](./paper-lightnav-0.md)、[INSIGHT-Bench](./insight-bench.md)） |
+| **按三段读成果** | 预训练看 Light-O1 的 human action prior 与 Transfer Scaling Law；对齐看 LightNav-0 的 VLM 空间意图 token 化；部署看 Light REACT 的全身 ICL 韧性 |
+| **开源边界** | 以 [GitHub 组织](https://github.com/lightorigins) 与各项目页为准；Light-O1 完整训练 checkpoint、LightNav-ER 独立权重与 Light REACT 代码/论文截至 2026-11-21 均未公开 |
+| **机构命名** | 中文官方名 **亮源新创**（非「光原点」）；英文品牌 **Light Origins** |
 
 ## 局限与风险
 
@@ -87,12 +100,13 @@ flowchart LR
 - **硬件依赖：** 多项真机演示绑定 **Lightbot 0** 或自研人形，跨本体复现需核对观测/动作契约。
 - **发布节奏快：** 2026 年内连续公开 O1 / REACT / Nav 等，工程文档与 arXiv 可能滞后于微信/Tech Blog。
 
-## 与其他页面的关系
+## 关联页面
 
 - **概念：** [Robot In-Context Learning](../concepts/robot-in-context-learning.md) — Light REACT 的部署段 ICL 读法
 - **任务：** [Humanoid Locomotion](../tasks/humanoid-locomotion.md) — Light-Loco-Parkour 跑酷线
 - **盘点：** [国内具身开源 424 覆盖](../queries/china-domestic-opensource-424-coverage.md) — 亮源新创条目
 - **国内公司对照：** [Robbyant（蚂蚁灵波）](./robbyant.md) — 感知→世界模型→VLA 的 LingBot 模型全栈路线
+- **子项目技术地图：** [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
 
 ## 推荐继续阅读
 
