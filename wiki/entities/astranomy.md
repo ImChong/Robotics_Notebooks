@@ -4,11 +4,12 @@ project_id: astranomy
 project: https://research.nvidia.com/labs/srl/projects/astranomy/
 tags: [nvidia, manipulation, robot-policy, evaluation, embodied-ai]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-21
 related:
   - ./paper-gpt-6-astra-embodied-policy.md
   - ./robolab.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ./openai-robotics-reorganization-aiwang-2026.md
 sources:
   - ../../sources/sites/astranomy-nvidia.md
 summary: "Astranomy 是 NVIDIA SRL 对 GPT-6 Astra 作为原生机器人策略的 RoboLab-120 仿真研究；Agentic Policy 成功率最高（74.8%），但推理延迟与 token 成本限制实时部署。"
@@ -107,6 +108,7 @@ summary: "Astranomy 是 NVIDIA SRL 对 GPT-6 Astra 作为原生机器人策略�
 
 ## 关联页面
 
+- [OpenAI 机器人团队重组与通用模型路线评论审计](./openai-robotics-reorganization-aiwang-2026.md) — 用本报告实验限制检验媒体关于「专用模型被通用模型吸收」的产业推断。
 - [GPT 6 Astra as an Embodied Policy](./paper-gpt-6-astra-embodied-policy.md) — 独立的 GPT-6 Astra 与 π0.5 混合策略评测。
 - [RoboLab](./robolab.md) — Astranomy 所使用的仿真基准与任务库。
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 将 benchmark 结果放进策略评测与选型流程中解释。
