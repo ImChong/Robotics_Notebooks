@@ -616,6 +616,94 @@
       attributeFilter: ['data-theme']
     });
 
+    /**
+     * 2D 节点对称阻尼 Jacobi 防重叠解算：
+     * 首页仅预览 Top-N（<=50）节点，在布局落稳、2D 拖拽收敛及 3D 切回 2D 时同步消解重叠，
+     * 保持任意两节点圆心距 >= r_a + r_b + padding（与 d3.forceCollide 标尺一致）。
+     */
+    function resolveMiniNodeOverlaps2D(targetNodes, opts) {
+      var list = targetNodes || nodes;
+      var n = list.length;
+      if (n < 2) return 0;
+      var cfg = opts || {};
+      var pad = cfg.padding != null ? cfg.padding : 5;
+      var maxPasses = cfg.maxPasses != null ? cfg.maxPasses : 40;
+      var kPush = cfg.kPush != null ? cfg.kPush : 0.78;
+      var radii = new Float32Array(n);
+      var invMass = new Float32Array(n);
+      var accX = new Float32Array(n);
+      var accY = new Float32Array(n);
+      var accW = new Float32Array(n);
+      var i;
+      for (i = 0; i < n; i++) {
+        var r = nodeRadius(list[i]);
+        radii[i] = r;
+        var fixed = list[i].fx != null && list[i].fy != null;
+        invMass[i] = fixed ? 0 : 1 / Math.max(1, r * r);
+      }
+      var totalResolved = 0;
+      for (var pass = 0; pass < maxPasses; pass++) {
+        for (i = 0; i < n; i++) {
+          accX[i] = 0;
+          accY[i] = 0;
+          accW[i] = 0;
+        }
+        var passOverlaps = 0;
+        for (i = 0; i < n - 1; i++) {
+          var a = list[i];
+          var ra = radii[i];
+          var invMa = invMass[i];
+          for (var j = i + 1; j < n; j++) {
+            var b = list[j];
+            var invMb = invMass[j];
+            var invSum = invMa + invMb;
+            if (!(invSum > 0)) continue;
+            var minDist = ra + radii[j] + pad;
+            var dx = b.x - a.x;
+            var dy = b.y - a.y;
+            var d2 = dx * dx + dy * dy;
+            if (d2 >= minDist * minDist) continue;
+            var dist = Math.sqrt(d2);
+            var ux;
+            var uy;
+            if (dist < 1e-4) {
+              var ang = (((i * 2654435761 + j * 1597334677) >>> 0) % 1024) * (Math.PI * 2 / 1024);
+              ux = Math.cos(ang);
+              uy = Math.sin(ang);
+            } else {
+              ux = dx / dist;
+              uy = dy / dist;
+            }
+            var pen = minDist - dist;
+            var wa = invMa / invSum;
+            var wb = invMb / invSum;
+            accX[i] -= ux * pen * wa;
+            accY[i] -= uy * pen * wa;
+            accW[i] += 1;
+            accX[j] += ux * pen * wb;
+            accY[j] += uy * pen * wb;
+            accW[j] += 1;
+            passOverlaps += 1;
+            totalResolved += 1;
+          }
+        }
+        if (passOverlaps === 0) break;
+        var maxStep = 0;
+        for (i = 0; i < n; i++) {
+          if (accW[i] <= 0) continue;
+          var damp = kPush / Math.sqrt(accW[i]);
+          var mx = accX[i] * damp;
+          var my = accY[i] * damp;
+          list[i].x += mx;
+          list[i].y += my;
+          var mv = Math.hypot(mx, my);
+          if (mv > maxStep) maxStep = mv;
+        }
+        if (maxStep < 0.05) break;
+      }
+      return totalResolved;
+    }
+
     function renderPositions() {
       line
         .attr('x1',function(d){ return d.source.x; }).attr('y1',function(d){ return d.source.y; })
@@ -625,6 +713,7 @@
 
     sim.on('tick', renderPositions);
     sim.on('end', function() {
+      resolveMiniNodeOverlaps2D(nodes, { padding: 5, maxPasses: 24 });
       renderPositions();
     });
 
@@ -655,6 +744,7 @@
     }
 
     function onLayoutReady() {
+      resolveMiniNodeOverlaps2D(nodes, { padding: 5, maxPasses: 24 });
       var xs=nodes.map(function(n){return n.x;}), ys=nodes.map(function(n){return n.y;});
       var x0=Math.min.apply(null,xs), x1=Math.max.apply(null,xs);
       var y0=Math.min.apply(null,ys), y1=Math.max.apply(null,ys);
@@ -771,6 +861,7 @@
       }
     }
 
+    var dirtyFrom3dDrag = false;
     perspCtrl = (window.RNGraphPerspective && typeof window.RNGraphPerspective.createController === 'function' && stageEl)
       ? window.RNGraphPerspective.createController({
           wrapEl: miniWrap,
@@ -846,6 +937,7 @@
             hideTooltip();
           },
           onNodeDrag: function (d, x, y) {
+            dirtyFrom3dDrag = true;
             var orig = nodeById[d.id];
             if (orig) {
               orig.x = x;
@@ -889,6 +981,15 @@
         setModeButtons('2d');
         applyMiniGraphTheme();
       }
+      nodes.forEach(function (n) {
+        n.fx = null;
+        n.fy = null;
+        n.vx = 0;
+        n.vy = 0;
+      });
+      resolveMiniNodeOverlaps2D(nodes, { padding: 5, maxPasses: dirtyFrom3dDrag ? 60 : 24 });
+      dirtyFrom3dDrag = false;
+      renderPositions();
     }
 
     if (btn2d && btn3d) {

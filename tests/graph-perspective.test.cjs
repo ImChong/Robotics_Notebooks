@@ -921,3 +921,147 @@ test('3D terrain drag rebound uses overdamped viscous settling aligned with 2D a
   assert.equal(overshoot10fps, 0, '10fps substepped rebound produces zero overshoot past eqHub');
   assert.ok(Math.abs(eqHub - x10fps) < 0.5, '10fps substepped rebound converges within 0.5 units in 2s');
 });
+
+test('homepage 3D node drag resolves 2D circle overlaps upon switching back to 2D', async () => {
+  assert.ok(
+    miniGraphJs.includes('function resolveMiniNodeOverlaps2D('),
+    'mini-graph.js defines symmetric damped Jacobi 2D overlap solver'
+  );
+
+  const dom = new JSDOM(indexHtml, { url: 'https://example.test/', runScripts: 'outside-only' });
+  const w = dom.window;
+  const mock = makeMockCanvasEnv();
+  const origGetContext = w.HTMLCanvasElement.prototype.getContext;
+  w.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2' || type === 'webgl' || type === 'experimental-webgl') return mock.gl;
+    if (type === '2d') return mock.ctx2d;
+    return origGetContext ? origGetContext.call(this, type) : null;
+  };
+  w.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const denseGraph = {
+    communities: [
+      { id: 'c-rl', label: '强化学习' },
+      { id: 'c-ctrl', label: '运动控制' },
+    ],
+    nodes: [
+      { id: 'n1', label: 'PPO', type: 'method', community: 'c-rl' },
+      { id: 'n2', label: 'MPC', type: 'method', community: 'c-ctrl' },
+      { id: 'n3', label: 'Sim2Real', type: 'concept', community: 'c-rl' },
+      { id: 'n4', label: 'WBC', type: 'method', community: 'c-ctrl' },
+      { id: 'n5', label: 'VLA', type: 'method', community: 'c-rl' },
+    ],
+    edges: [
+      { source: 'n1', target: 'n2' },
+      { source: 'n1', target: 'n3' },
+      { source: 'n1', target: 'n4' },
+      { source: 'n2', target: 'n4' },
+      { source: 'n3', target: 'n5' },
+      { source: 'n2', target: 'n5' },
+    ],
+  };
+  w.RNLinkGraph = { ensure: () => Promise.resolve(denseGraph) };
+  w.RNGraphTooltip = {
+    getCommunityColors: () => ['#5b9cf6', '#34d399'],
+    buildCommunityColorMap: () => ({ 'c-rl': '#5b9cf6', 'c-ctrl': '#34d399' }),
+    formatTooltipSummary: s => s || '',
+    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>' + (o.linkHtml || ''),
+    bindBlankDismiss() {},
+    bindOutsideDismiss() {},
+  };
+
+  w.eval(readFileSync(resolve(__dirname, '../docs/vendor/d3.min.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-node-size.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8'));
+  w.eval(miniGraphJs);
+  await new Promise((r) => setTimeout(r, 90));
+
+  const stage = w.document.getElementById('mini-graph-perspective-stage');
+  const btn2d = w.document.getElementById('miniGraphMode2d');
+  const btn3d = w.document.getElementById('miniGraphMode3d');
+  stage.getBoundingClientRect = () => ({ left: 0, top: 0, width: 700, height: 480 });
+  const installRaf = () => {
+    w.requestAnimationFrame = (cb) => w.setTimeout(() => cb(w.performance.now()), 16);
+    w.cancelAnimationFrame = (id) => w.clearTimeout(id);
+  };
+  const removeRaf = () => {
+    delete w.requestAnimationFrame;
+    delete w.cancelAnimationFrame;
+  };
+
+  function assertNo2DOverlapAndSyncedLines(label) {
+    const circleNodes = Array.from(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node')).map((el) => {
+      const tr = el.getAttribute('transform') || '';
+      const m = /translate\(\s*([^,\s]+)\s*,\s*([^)\s]+)\s*\)/.exec(tr);
+      const circle = el.querySelector('circle');
+      const r = circle ? parseFloat(circle.getAttribute('r')) : 0;
+      const text = (el.textContent || '').trim();
+      assert.ok(m && Number.isFinite(parseFloat(m[1])) && Number.isFinite(parseFloat(m[2])), `${label}: valid node transform (${text})`);
+      return { text, x: parseFloat(m[1]), y: parseFloat(m[2]), r };
+    });
+    assert.equal(circleNodes.length, denseGraph.nodes.length, `${label}: all 2D nodes rendered`);
+    let minGap = Infinity;
+    for (let i = 0; i < circleNodes.length; i++) {
+      for (let j = i + 1; j < circleNodes.length; j++) {
+        const a = circleNodes[i];
+        const b = circleNodes[j];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        const gap = dist - (a.r + b.r);
+        if (gap < minGap) minGap = gap;
+        assert.ok(
+          gap >= 4.5,
+          `${label}: 2D circles "${a.text}" & "${b.text}" must not overlap (dist=${dist.toFixed(2)}, rSum=${(a.r + b.r).toFixed(2)}, gap=${gap.toFixed(2)})`
+        );
+      }
+    }
+    const lines = Array.from(w.document.querySelectorAll('#mini-graph-svg line'));
+    assert.equal(lines.length, denseGraph.edges.length, `${label}: all 2D edges rendered`);
+    for (const ln of lines) {
+      const x1 = parseFloat(ln.getAttribute('x1'));
+      const y1 = parseFloat(ln.getAttribute('y1'));
+      const x2 = parseFloat(ln.getAttribute('x2'));
+      const y2 = parseFloat(ln.getAttribute('y2'));
+      const hasStart = circleNodes.some((n) => Math.hypot(n.x - x1, n.y - y1) < 0.2);
+      const hasEnd = circleNodes.some((n) => Math.hypot(n.x - x2, n.y - y2) < 0.2);
+      assert.ok(hasStart && hasEnd, `${label}: line endpoints (${x1},${y1})->(${x2},${y2}) align with resolved node centers`);
+    }
+    return minGap;
+  }
+
+  // Case 1: Enter 3D, drag a node onto another visible node, release and immediately switch back to 2D
+  btn3d.click();
+  await new Promise((r) => setTimeout(r, 40));
+  installRaf();
+  const tList1 = w.RNMiniGraph.getPerspectiveTargets(10);
+  assert.ok(tList1.length >= 2, 'at least 2 targets visible in 3D preview');
+  const src1 = tList1[0];
+  const dst1 = tList1.find((item) => item.id !== src1.id && Math.hypot(item.x - src1.x, item.y - src1.y) > 10) || tList1[1];
+  stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: src1.x, clientY: src1.y }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: dst1.x, clientY: dst1.y }));
+  await new Promise((r) => setTimeout(r, 30));
+  assert.equal(w.RNMiniGraph.getPerspectiveState().draggingNodeId, src1.id, 'dragged source node in 3D onto sibling');
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: dst1.x, clientY: dst1.y }));
+  btn2d.click();
+  removeRaf();
+  assert.equal(w.RNMiniGraph.getMode(), '2d');
+  assertNo2DOverlapAndSyncedLines('immediate-switch-to-2d');
+
+  // Case 2: Re-enter 3D, drag another node onto a neighbor, let rebound progress/settle, then switch to 2D
+  btn3d.click();
+  await new Promise((r) => setTimeout(r, 40));
+  installRaf();
+  const tList2 = w.RNMiniGraph.getPerspectiveTargets(10);
+  assert.ok(tList2.length >= 2, 'at least 2 targets visible on re-entry');
+  const src2 = tList2[tList2.length - 1];
+  const dst2 = tList2.find((item) => item.id !== src2.id && Math.hypot(item.x - src2.x, item.y - src2.y) > 10) || tList2[0];
+  stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: src2.x, clientY: src2.y }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: dst2.x, clientY: dst2.y }));
+  await new Promise((r) => setTimeout(r, 30));
+  assert.equal(w.RNMiniGraph.getPerspectiveState().draggingNodeId, src2.id, 'dragged second source node in 3D onto neighbor');
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: dst2.x, clientY: dst2.y }));
+  await new Promise((r) => setTimeout(r, 380));
+  btn2d.click();
+  removeRaf();
+  assert.equal(w.RNMiniGraph.getMode(), '2d');
+  assertNo2DOverlapAndSyncedLines('post-rebound-switch-to-2d');
+});
