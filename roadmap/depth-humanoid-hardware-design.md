@@ -116,6 +116,7 @@ flowchart LR
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) 的 L4 一节（刚度/强度/公差三张判据表）
 - [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 跳跃工况 → 衍生式连杆 → FEA/疲劳/模态/重仿真闭环
 - [机器人结构模态分析](../wiki/concepts/robot-structural-modal-analysis.md) — 固有频率 / 振型 / 阻尼比三件套：串联悬臂构型的低阶模态常落在 10 Hz 量级且随姿态漂移，比静强度更早卡死轨迹精度与力控带宽；试验 FRF 与仿真 MAC 怎么对账、激励–模态频率如何在设计期分离
+- [机器人结构静刚度与末端变形预算](../wiki/concepts/robot-structural-static-stiffness-deformation-check.md) — 从 TCP 精度反推零件/关节/结合面静变形预算，手算 + FEA + 实测对账；含悬臂梁案例的数量级勘误。
 - [Actuator 102 · 06：工业执行器陷阱](../wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md) — 货架件按平方律失效的机械原因
 - ISO 1101 / ASME Y14.5（几何公差）、ISO 286 / ISO 2768（配合与未注公差）— [ISO 检索入口](https://www.iso.org/search.html?q=1101)
 
