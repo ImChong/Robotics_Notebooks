@@ -203,6 +203,7 @@ flowchart LR
 - [Dexterous Kinematics（灵巧手运动学）](../wiki/concepts/dexterous-kinematics.md) 与 [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 手部映射抽象
 - [TopoRetarget](../wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md)、[SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) 与 [DynaRetarget vs TopoRetarget（对比）](../wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 接触保持灵巧手重定向
 - [Bunny-VisionPro 实时双手灵巧遥操作（论文笔记）](../wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)、[DexUMI（论文笔记）](../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)、[DexterCap（论文笔记）](../wiki/entities/paper-notebook-dextercap.md) — 视觉/手持手指采集
+- [ManuPrax ARC-0 Preview](../wiki/entities/manuprax-arc0.md) — TeleDexter 后续的 S2→S0 分层接口与同类别新物体泛化（演示/采访级证据，尚无开放训练代码）。
 - [TeleDexter](../wiki/entities/paper-teledexter.md) — **hand–object co-tracking** 低层控制器：MoCap 指尖+物体目标 → 仿真 RL 零样本真机；七任务平均 **75.2% SR**，并作灵巧采数引擎（**未开源**）
 - [NestDex](../wiki/entities/paper-nestdex.md) — **copilot 嵌套采数**：人控臂 + 1-DoF clutch，内层本体感觉手技能生成手指；部署时外层 visuomotor **卸掉内层**（arXiv:2608.13362，**未开源**）
 - [GLIDE](../wiki/entities/paper-glide-beyond-human-demonstration.md) — 从任务描述和遥操作代码推断失败模式，把规则护栏插入采集与部署过程，帮助完成难以直接示范的动作。
