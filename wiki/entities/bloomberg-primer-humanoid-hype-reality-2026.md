@@ -13,6 +13,9 @@ original:
 related:
   - ../overview/physical-ai.md
   - ../tasks/teleoperation.md
+  - ../methods/imitation-learning.md
+  - ../tasks/manipulation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/sim2real.md
   - ../queries/humanoid-robot-data-collection-landscape.md
   - ./nvidia-robotics-chatgpt-moment-deepu-talla-2026.md
@@ -130,6 +133,9 @@ flowchart TD
 
 - [Physical AI 全景](../overview/physical-ai.md) — 物理世界感知、决策和执行闭环
 - [遥操作](../tasks/teleoperation.md) — 控制权和示教数据的真实记录链
+- [模仿学习](../methods/imitation-learning.md) — 如何利用示教数据学习动作策略
+- [操作任务](../tasks/manipulation.md) — 在真实工位评估机器人抓取和物体处理
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 明确任务测评指标、统计口径和证据边界
 - [Sim2Real](../concepts/sim2real.md) — 仿真与真机之间的物理差距
 - [人形机器人数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md) — 数据采集形态与成本
 - [NVIDIA 机器人 ChatGPT 时刻访谈](./nvidia-robotics-chatgpt-moment-deepu-talla-2026.md) — 相关的部署门槛与分层控制观点
