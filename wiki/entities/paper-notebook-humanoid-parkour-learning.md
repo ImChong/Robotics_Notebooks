@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, parkour, perceptive-locomotion, reinforcement-learning, dagger, sim2real, unitree, shanghai-pil, shanghaitech, tsinghua, humanoid-paper-notebooks]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-21
 arxiv: "2406.10759"
 venue: "CoRL 2024"
 related:
@@ -19,6 +19,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_humanoid-parkour-learning.md
   - ../../sources/sites/humanoid-parkour-learning.md
+original:
+  - ../../sources/papers/humanoid_pnb_humanoid-parkour-learning.md
 summary: "Humanoid Parkour Learning（CoRL 2024）先在十类地形上训练 scandots oracle，再用多进程 DAgger 蒸馏 48×64 深度学生，使 Unitree H1 无动作先验完成 0.42 m 跳台、0.8 m 跨沟和 1.8 m/s 野外跑；对应代码未公开。"
 ---
 
@@ -135,7 +137,7 @@ Student 用 CNN 替换 scandots encoder，并继承 oracle 的 GRU/MLP 权重。
 - 多 GPU DAgger 成本高，且论文实现依赖旧 Isaac Gym。
 - 真机失败统计按小样本任务配置给出，缺长期跌落、结构冲击和热持续数据。
 
-## 与其他页面的关系
+## 关联页面
 
 - 路线入口：[感知越障纵深](../../roadmap/depth-perceptive-locomotion.md)
 - 训练范式：[Privileged Training](../concepts/privileged-training.md)、[DAgger](../methods/dagger.md)

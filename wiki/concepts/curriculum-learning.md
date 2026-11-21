@@ -3,13 +3,19 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-11-15
+updated: 2026-11-21
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
+sources:
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
+original:
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
 ---
 
 # Curriculum Learning（课程学习）
 
-## 是什么
+## 一句话定义
 
 Curriculum Learning 是一种训练策略：在学习早期提供更简单的任务或环境，随着策略能力提升逐渐增加难度，模拟人类"从简单到复杂"的学习过程。
 
@@ -41,7 +47,7 @@ Curriculum Learning 是一种训练策略：在学习早期提供更简单的任
 
 ---
 
-## 典型实现形式
+## 核心原理与典型实现
 
 ### 1. 手动课程（Manual Curriculum）
 人工预定义难度序列：
@@ -115,12 +121,17 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 
 ---
 
-## 工程注意事项
+## 工程实践
 
-- **课程切换时机**：过早升级 → 策略尚未收敛，出现遗忘；过晚 → 浪费训练时间
-- **双向调整**：难了降级，容了升级，避免卡在某一阶段
-- **并行环境不同步**：8192 个 env 各有自己的难度等级，避免全局同步导致的振荡
-- **奖励归一化**：不同难度的奖励量级不同，需在课程变化时注意归一化
+- **课程切换时机**：过早升级 → 策略尚未收敛，出现遗忘；过晚 → 浪费训练时间。
+- **双向调整（Rudin et al., 2022 游戏式课程）**：走出当前地形块一半距离以上升级难度，未能达标且移动不足预期一半则降级；满级后随机重分配至任意难度以防灾变遗忘。
+- **并行环境不同步**：`4096+` 并行 env 各自维护独立地形等级，避免全局同步导致的训练振荡。
+- **奖励归一化**：不同难度的奖励量级不同，需在课程变化时注意观测/价值函数尺度稳定。
+
+## 局限与风险
+
+- **难度高原与分布漂移**：手工设计的地形或指令课程若在某一级存在几何奇异（如高台阶边缘碰撞），大量 env 会卡死在边界级别；满级未混合低难度时易在平地步态上退化。
+- **过度耦合启发式阈值**：晋级判据（如位移百分比）往往针对特定任务定制，难以无修改迁移至离散垫脚石或双臂协同操纵等非平移目标。
 
 ---
 
@@ -156,3 +167,9 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [AWARE](../entities/paper-aware-wheeled-legged-reflexive-evasion.md) — 轮足动态障碍速度课程
 - [wheel_legged_genesis](../entities/wheel-legged-genesis.md) — Genesis 双轮足地形课程（v0.0.2 起）
 - [LP-ACRL](../entities/paper-lp-acrl-scaling-rough-terrain-locomotion.md) — learning progress softmax 自动课程（ANYmal D rough 高速）
+
+## 推荐继续阅读
+
+- [Rudin et al. 2022（legged_gym 论文页）](../entities/legged-gym.md) — 并行 RL 游戏式地形课程与满级回放规范
+- [感知越障纵深路线](../../roadmap/depth-perceptive-locomotion.md) — 离散地形与跑酷中课程学习的进阶演化
+- [Domain Randomization](./domain-randomization.md) — 与地形/任务课程协同工作的物理与感知随机化体系

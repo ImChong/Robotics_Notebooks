@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, biped, reinforcement-learning, perceptive-locomotion, neural-mapping, teacher-student, attention, sim2real, eth, anymal, limx]
 status: complete
 summary: "AME-2：全局+局部 AME 编码器 + 不确定性神经高程映射 + Teacher–Student RL，在 ANYmal-D 与 TRON1 上同时实现 parkour 级敏捷与稀疏/未见地形泛化。"
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2601.08485"
 venue: "arXiv 2026"
 related:
@@ -26,11 +26,16 @@ sources:
   - ../../sources/sites/ame-2-leggedrobotics.md
   - ../../sources/repos/ame2_kitjesen.md
   - ../../sources/papers/ame_arxiv_2506_09588.md
+original:
+  - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
+  - ../../sources/papers/ame_arxiv_2506_09588.md
 ---
 
 # AME-2 — Agile and Generalized Legged Locomotion
 
-**一句话定义**：在 [AME（AME-1）](./paper-ame-attention-based-map-encoding.md) 的 **本体条件地图注意力** 之上，引入 **全局地形上下文 + 轻量 Bayesian 深度映射（带不确定性）+ Teacher（GT 地图）→ Student（在线同栈映射）蒸馏**，使 **ANYmal-D** 与 **LimX TRON1** 在 **同一训练配方** 下兼具 **parkour 级敏捷**（~**2 m/s** 往返最难跑酷）与 **稀疏/组合/未见地形零样本泛化**。
+## 一句话定义
+
+在 [AME（AME-1）](./paper-ame-attention-based-map-encoding.md) 的 **本体条件地图注意力** 之上，引入 **全局地形上下文 + 轻量 Bayesian 深度映射（带不确定性）+ Teacher（GT 地图）→ Student（在线同栈映射）蒸馏**，使 **ANYmal-D** 与 **LimX TRON1** 在 **同一训练配方** 下兼具 **parkour 级敏捷**（~**2 m/s** 往返最难跑酷）与 **稀疏/组合/未见地形零样本泛化**。
 
 ## 英文缩写速查
 
@@ -111,11 +116,17 @@ Teacher 输入 **3D** 坐标；Student 输入 **4D** $(x,y,z,u)$（$u$ 为不确
 - **Student**：在线映射 + **LSIO 20 步**本体（**无 $v_b$**，因 odom 噪声/延迟）；损失 = PPO + action distill + **map embedding MSE**；前 **5k** iter **关 PPO surrogate**。
 - **连续部署**：actor 观测 **clip 目标距离 2 m**、去掉 remaining time；远目标时 **随机 yaw** 便于 steering。
 
-## 训练地形与奖励
+## 工程实践（地形、奖励与部署栈）
 
-- **训练**：dense / climbing / sparse 三类 **primitive** 地形 + 课程。
-- **测试**：未见或 **训练+未见组合**（梁+沟、双行错落踏石、钻石布局等）。
+- **训练地形**：dense / climbing / sparse 三类 **primitive** 地形 + 课程。
+- **测试地形**：未见或 **训练+未见组合**（梁+沟、双行错落踏石、钻石布局等）。
 - **奖励**：goal position/heading + move + stand；**不显式 foothold 位置奖/罚**，允许 **膝接触、近缘脚** 等全身行为涌现。
+- **训练超参（Table IV）**：Isaac Gym 并行 **4800 envs**、24 steps/iter、4 epochs、3 mini-batches；entropy 衰减 `0.004 -> 0.001`；Student 阶段采用 action distill 系数 `0.02` + representation loss 系数 `0.2`（前 5000 iter 关闭 PPO surrogate，学习率 `0.001`）。
+- **感知地图与机载延迟**：ANYmal-D 高程图 `36×14 @ 8 cm`（局部稠密 `51×31 @ 4 cm`）、TRON1 `18×13 @ 8 cm`（局部 `31×31 @ 4 cm`）；里程计采用 CompSLAM + GraphMSF（ANYmal-D）与 DLIO（TRON1）；机载推理建图约 **5 ms**（CPU）/ **~2.5 ms**（ONNX），策略约 **~2 ms**（ONNX）。
+
+## 源码运行时序图
+
+**不适用（官方完整训练与实机部署源码未开源）。** 项目页 [ame-2](../../sources/sites/ame-2-leggedrobotics.md) 主要发布视频与论文说明；社区仓库 [Kitjesen/ame2](../../sources/repos/ame2_kitjesen.md) 属第三方复现，并非官方原始实现。
 
 ## 实验与评测
 

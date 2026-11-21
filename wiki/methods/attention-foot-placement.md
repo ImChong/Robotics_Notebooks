@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, perception, footstep-planning, attention, reinforcement-learning]
 status: complete
-updated: 2026-09-04
+updated: 2026-11-21
 summary: "Attention 落足点优化：用注意力机制在机器人中心高程图或候选落脚点集合上选择可行走区域，是飞书 Know-How 中感知 loco 与落足规划交叉模块；站内代表实现含 AME 等。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -14,6 +14,11 @@ related:
   - ../overview/humanoid-motion-control-know-how-technology-map.md
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md
+  - ../../sources/papers/ame_arxiv_2506_09588.md
+  - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
+original:
+  - ../../sources/papers/ame_arxiv_2506_09588.md
+  - ../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md
 ---
 
 # Attention 落足点优化
@@ -81,6 +86,8 @@ sources:
 ## 参考来源
 
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
+- [AME（arXiv:2506.09588）](../../sources/papers/ame_arxiv_2506_09588.md) — 本体条件化地图注意力原论文归档
+- [AME-2（arXiv:2601.08485）](../../sources/papers/humanoid_pnb_ame-2-agile-and-generalized-legged-locomotion-vi.md) — 全局上下文 + Bayesian 神经高程图扩展
 
 ## 推荐继续阅读
 

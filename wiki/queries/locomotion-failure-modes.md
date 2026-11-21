@@ -2,7 +2,7 @@
 type: query
 tags: [rl, locomotion, debugging, training, simulation]
 status: complete
-updated: 2026-06-18
+updated: 2026-11-21
 related:
   - ./robot-policy-debug-playbook.md
   - ./reward-shaping-guide.md
@@ -10,6 +10,10 @@ related:
   - ../entities/legged-gym.md
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
+original:
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
 summary: "RL 训练失败模式分析：原地踏步、关节抖动（高频振荡）、双脚起跳与策略崩溃等 locomotion 典型现象的诊断与奖励/PD 对策。"
 ---
 
