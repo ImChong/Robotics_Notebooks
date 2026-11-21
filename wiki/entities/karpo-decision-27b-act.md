@@ -10,6 +10,8 @@ related:
   - ./karpo-browser.md
   - ./karpo-browserbench.md
   - ../concepts/ai-agent-evaluation.md
+  - ../methods/claude-code-dynamic-workflows.md
+  - ../methods/agentic-manipulation-policies.md
 sources:
   - ../../sources/models/karpo-decision-27b-act.md
   - ../../sources/repos/karpo-decision.md
@@ -113,6 +115,9 @@ sequenceDiagram
 - 没有机械动力学与控制闭环，不应称为机器人低层动作模型。
 
 ## 关联页面
+
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 对照任务级 Agent harness 与外层规划分工，不等同于模型训练方法。
+- [Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md) — 仅对照上层任务决策与下层执行器分离的架构思想；该机器人方法与浏览器动作模型属于不同执行域。
 
 - [Karpo Decision 通用模型家族](./karpo-decision.md)
 - [karpo-browser](./karpo-browser.md)
