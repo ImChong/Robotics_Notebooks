@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | ReLoco arXiv:2611.23916 — 单策略人形跌倒恢复与命令续行
+
+- 通读论文 v1 和项目主页，归档行为条件双头 AMP、仿真精炼动作、真机实验与硬件保护统计。
+- 创建独立论文知识节点并接入 Balance Recovery 与人形 RL Locomotion 进阶路线。
+- 官方项目页有 MuJoCo 交互演示；截至入库日未发现公开训练/部署源码和权重，未虚构运行时序图。
+
 ## [2026-11-21] ingest | sources/papers/robokit_corl2026_spotlight.md — 补录 RoboKit arXiv:2611.20185 标准论文身份
 
 - **意图：** 用户提供 arXiv 编号后复用已经完整收录的 RoboKit 实体，避免重复页面。
