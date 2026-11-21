@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | 推进 #3490 第二批（depth-embodied-eval）：通读 MMHU/WorldEcho/WorldScore/PRM-as-a-Judge/SoftVTBench/HumanTracker/Bet4Sim2Real/XPolicyLab/RoboSynChallenge/H2R-Bench/CALVIN/RLBench/HumanoidBench 与 Evo-SOTA 原文及官方仓，将 14 个实体节点健康度升至 3/3；复核发现 H2R-Bench 已补齐 benchmark 与 evaluation/、PRM-as-a-Judge 迁至 YuyangLiu2003 且已发 RoboPulse++、WorldEcho 仓库链接仍返回 404
+
 ## [2026-11-21] lint | 推进 #3997 P1-2 治理第 2 批：核对 14 篇 arXiv 原文并补齐 Alloy/ARTS/BAMOS/Bicycle/BWM-Forge/CrowdMAPS/DexRemo/Elastra/FLUX-mimic/GenGenIK/HALO/Hibikino/MOSAIC/MoViC 对比小节
 
 ## [2026-11-21] lint | 推进 #3997 P1 治理第 1 批：补齐 paper-agnes-sys1 来源键（P1-1 清零）及 WorldFlow/HOVER/FloMo/DepthGS/PROOF/Cosmos Policy/ReCogDrive/Alpamayo-R1/WorldEngine/SGDrive/Envisioning/Zero-Shot 等 12 篇原文核对对比小节
