@@ -255,6 +255,7 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：RL 微调与自改进**
+- [π*₀.₆ / RECAP：VLA 从自主经验中学习](../wiki/entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) — 离线 RL 预训练 + 真机 rollout/人工纠正 + 分布式价值函数与优势条件；用成功率及每小时成功次数同时衡量专精效果（官方完整训练代码未开放）。
 - [TidyBot](../wiki/entities/paper-tidybot-2305-05658.md)、[OLAF](../wiki/entities/paper-olaf-verbal-correction.md)、[LMPC](../wiki/entities/paper-lmpc-2402-11450.md) — 对照规则总结、动作重标注和语言模型微调三种适应对象。
 - [PAFF](../wiki/entities/paper-paff-2212-07398.md) — 用基础模型反馈重标注目标域交互，再监督微调策略；对照 RL 与重标注驱动的适应。
 - 用 RL / 真机数据闭环继续改进预训练策略
