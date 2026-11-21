@@ -8,6 +8,9 @@
 - **原始链接：** <https://deltai.com/en/blog/delta-0>
 - **发表日期：** 2026-09（页眉标注 September 2026）
 - **入库日期：** 2026-09-28
+- **再次核对：** 2026-11-21
+- **核对范围：** 完整通读官方英文博客 `https://deltai.com/en/blog/delta-0` 全文（6 项核心能力、MoT 三分支与 4 种训练模式、69-DoF 全身控制器与 delta-action、154→180 维共享动作空间通道映射、real-to-sim-to-real 评测与 OOD 洗碗机 `4/20 -> 13/20` 实验），确认仍无 arXiv 论文或开源代码发布。
+- **通读：** 已完成
 - **一句话说明：** 官方发布人形基础模型 Δ₀：脑（潜空间 world–action MoT）与 69-DoF 全身控制器协同设计，强调人数据预训练、real-to-sim-to-real 评测与 delta-action 真机 RL。
 
 ## 开源状态（步骤 2.5，2026-09-28）

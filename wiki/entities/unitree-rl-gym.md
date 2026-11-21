@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-gym, locomotion, sim2real]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/unitree_rl_gym.md
 related:
   - ./unitree.md
   - ./unitree-rl-lab.md
@@ -49,10 +51,11 @@ summary: "unitree_rl_gym 是宇树官方基于 Isaac Gym + legged_gym 风格的 
 
 ## 核心原理
 
-```text
-Train (Isaac Gym) → Play (同环境可视化)
-        → Sim2Sim (如 MuJoCo / 其它仿真)
-        → Sim2Real (SDK2 / 真机)
+```mermaid
+flowchart LR
+  T["Train (Isaac Gym)<br/>legged_gym/scripts/train.py"] --> P["Play 验证与导出<br/>play.py → policy_1.pt / policy_lstm_1.pt"]
+  P --> S2S["Sim2Sim 验证 (MuJoCo)<br/>deploy_mujoco.py + YAML"]
+  S2S --> S2R["Sim2Real 真机部署<br/>deploy_real.py / cpp_g1 (unitree_sdk2)"]
 ```
 
 | 阶段 | 含义 |

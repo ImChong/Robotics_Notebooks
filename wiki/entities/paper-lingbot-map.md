@@ -2,7 +2,10 @@
 type: entity
 tags: [paper, robbyant, 3d-reconstruction, foundation-model, slam, streaming-perception, pose-estimation, depth-estimation, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-22
+updated: 2026-11-21
+original:
+  - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
+  - ../../sources/repos/lingbot-map.md
 arxiv: "2604.14141"
 venue: "ECCV 2026 oral"
 code: https://github.com/Robbyant/lingbot-map
@@ -91,6 +94,8 @@ flowchart LR
   A & W & M --> P & Z
 ```
 
+图依据：[arXiv:2604.14141v3](https://arxiv.org/html/2604.14141) §3.1–§3.3（GCT 与 GCA 三类几何上下文）。
+
 ## 核心原理
 
 ### 1. Geometric Context Attention（GCA）
@@ -120,14 +125,18 @@ sequenceDiagram
   U->>D: --model_path --image_folder / --video_path
   D->>M: load_model → GCTStream.eval()
   D->>D: load_images → 预处理 tensor
-  M->>KV: clean_kv_cache()
-  loop 逐帧流式
-    D->>M: inference_streaming(frame_t)
-    M->>KV: GCA 更新 anchor/window/memory
-    M-->>D: pose_enc + depth / world_points
-    D->>V: postprocess → 浏览器 3D 查看
+  alt streaming 模式（默认）
+    D->>M: inference_streaming(images)
+    M->>KV: 初始化/更新 GCA anchor/window/memory
+    M-->>D: camera poses + depth / world_points
+  else windowed 模式（--mode windowed）
+    D->>M: inference_windowed(images, overlap_keyframes)
+    M-->>D: 全局对齐点云与轨迹
   end
+  D->>V: postprocess → 浏览器 3D 查看
 ```
+
+> 图依据：[`Robbyant/lingbot-map@b9dd1b1`](https://github.com/Robbyant/lingbot-map) `README.md`、`demo.py`、`lingbot_map/models/gct_stream.py`（注：实际 `demo.py` 直接调用 `inference_streaming`/`inference_windowed`，内部完成状态初始化与维护，而非在脚本顶层显式调用 `clean_kv_cache`）。
 
 **复现路径：** `conda` 环境 → `pip install -e .` + `flashinfer-python` → 从 [HF](https://huggingface.co/robbyant/lingbot-map) 下载 `lingbot-map.pt` → `python demo.py --model_path ... --image_folder example/courthouse --mask_sky`。超长序列用 `--keyframe_interval` 或 `--mode windowed`。
 
@@ -154,7 +163,7 @@ sequenceDiagram
 
 | 项 | 建议 |
 |----|------|
-| **权重选型** | 长序列/大场景 → `lingbot-map-long`；论文基准与离线 demo → `lingbot-map`；双向实验 → `lingbot-map-stage1` 载入 VGGT |
+| **权重选型** | 当前 `b9dd1b1` README 实际已发布 `lingbot-map`（论文基准与离线 demo）与 `lingbot-map-stage1`（载入 VGGT）；长序列/大场景模型 `lingbot-map-long` 在 README 仍标为 coming soon |
 | **超长序列** | KV 超过训练 RoPE（~320 views）时用 `--keyframe_interval` 或 `--mode windowed --overlap_keyframes` |
 | **依赖** | 推荐 **torch 2.8.0 + cu128**（Kaolin 预编译轮）；交互 demo 需 `[vis]`；批量渲染需 Kaolin + ffmpeg |
 | **加速** | `--compile` + FlashInfer；`gct_profile.py` 验证硬件 |

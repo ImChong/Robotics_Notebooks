@@ -11,6 +11,8 @@
 - **权重：** <https://huggingface.co/collections/robbyant/lingbot-world-v2>
 - **机构：** 蚂蚁灵波（Robbyant / Ant Group）
 - **入库日期：** 2026-09-10
+- **核对范围：** 2026-11-21 通读 arXiv `2607.07534v1`（2026-07-08）HTML 全文（摘要、§1 与表 1 对比、§2 数据引擎与多维块级标注、§3 因果世界建模/MoBA 混合注意掩码/一致性蒸馏+长程 self-rollout DMD、§4 系统优化/Director-Pilot 双 Agent 交互与跟踪模式/时空 refiner/动态 KV cache/UI 设计、§5 结果、§6 结论与局限）；未运行多卡视频生成。
+- **通读：** 已完成
 - **一句话说明：** LingBot-World 2.0 在 1.0 视频世界模型上引入 **无界交互视界**、**720p@60fps 实时 causal-fast 蒸馏**、**多样交互元素** 与 **Pilot/Director 双 Agent harness**；14B 主模型 + 1.3B 单卡部署；代码与全量变体权重已开源（CC BY-NC-SA 4.0）。
 
 ## 摘录 1：四大升级（摘要）

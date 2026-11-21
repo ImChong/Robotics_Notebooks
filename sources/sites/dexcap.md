@@ -10,6 +10,8 @@
 - **数据集：** <https://huggingface.co/datasets/chenwangj/DexCap-Data>
 - **会议：** RSS 2024
 - **入库日期：** 2026-09-17
+- **核对范围：** 通读项目页全文（<https://dex-cap.github.io/>，2026-11-21 复核硬件简介、遮挡对比、in-the-wild 演示与 GitHub/HF 链接）。
+- **通读：** 已完成
 - **一句话说明：** 可穿戴 SLAM+EMF 手套 mocap 与胸挂 RGB-D 点云观测，配合 DexIL（指尖 IK + 点云 Diffusion Policy）把野外人类灵巧示范迁移到 LEAP Hand 双臂平台。
 - **开源状态（2026-09-17 核查）：** **已开源**（MIT）— 项目页与 GitHub 均列代码与 Hugging Face 数据集；仓库含采集（NUC/Windows）、处理、HDF5 构建与 robomimic 训练全链路。
 

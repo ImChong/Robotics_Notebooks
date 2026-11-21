@@ -8,8 +8,15 @@ tags:
   - policy-evaluation
   - full-body-manipulation
   - 1x-technologies
+institutions:
+  - 1x-technologies
+project: https://www.1x.tech/discover/redwood-ai-world-model
+original:
+  - ../../sources/papers/1x_world_model_redwood.md
+  - ../../sources/sites/1x-world-model-redwood.md
+  - ../../sources/repos/1xgpt.md
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 venue: "1X Technologies Technical Progress Report 2025"
 code: https://github.com/1x-technologies/1xgpt
 related:
@@ -125,7 +132,8 @@ sequenceDiagram
 
 ## 实验与评测
 
-- 博文/报告展示：多任务（Airfryer / Arcade / Shelf）随数据缩放的生成质量；WM 预测成功率与真机任务分相关；给定真机 15% 差距时，对「更好策略」的判别可显著高于随机。
+- 博文/报告展示：在 4 秒片段（256×256 与 512×512 分辨率）上，随自治交互 rollout 数据缩放，模型对物体物理与形变动力学建模显著增强；Shelf 任务上，216M 基础 token 达 **63.06%**，混入 +1.46B Arcade rollout token 后跨任务迁移提升至 **71.17%**。
+- **排序一致性协议：** 以折扣 +1/-1 状态价值标签训练 `state-value` 头；在 Arcade 评测指标 `(successes - 3*resets + 0.3*attempts)/attempts` 与双盲 A/B 实机对照下，当两策略真机差距约 **15%** 时，1XWM 在 **70%** 相关对齐下可实现约 **90%** 的 checkpoint 优选准确率。
 - **画面像 ≠ 排序准：** 作者明确 imitation loss 与真机表现相关性弱，价值头对齐才是评测用途的关键。
 
 ## 结论

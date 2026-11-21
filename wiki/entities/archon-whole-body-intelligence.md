@@ -3,8 +3,11 @@ type: entity
 tags: [company, archon-robotics, whole-body-intelligence, humanoid-foundation-model, humanoid, loco-manipulation, behavior-foundation-model, whole-body-control, human-centric-data, pretraining, technical-blog]
 status: complete
 title: 全身智能 WBI：Archon 的人形基础模型预训练路线（技术博文）
-updated: 2026-10-12
+updated: 2026-11-21
 institutions: [archon-robotics]
+original:
+  - ../../sources/blogs/archon_whole_body_intelligence.md
+  - ../../sources/sites/archon-tech.md
 related:
   - ./archon-robotics.md
   - ./helix-02.md
@@ -167,7 +170,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-入口（按仓库 README 的流水线顺序）：`eh2-collect-human` → `eh2-sync-human` → `eh2-align` / `eh2-visual-align` → `eh2-norm-stats` → `eh2-train`（或 `torchrun ... --module eh2_policy.train`）→ `eh2-serve` → SONIC 侧 `run_vla_inference.py`。以下为仓库内各入口的调用关系，不含 SONIC 控制器本体。
+WBI 博文自身未附开源代码与模型仓库；以下时序图展示同机构署名关联工作 [EgoHumanoid-V2](./paper-egohumanoid-v2.md)（`OpenDriveLab/EgoHumanoid-V2@682199e`）的公开人类数据采集、对齐、训练与 SONIC 推理流水线（作 WBI 人类数据工程栈的参考实现）。入口（按仓库 README 的流水线顺序）：`eh2-collect-human` → `eh2-sync-human` → `eh2-align` / `eh2-visual-align` → `eh2-norm-stats` → `eh2-train`（或 `torchrun ... --module eh2_policy.train`）→ `eh2-serve` → SONIC 侧 `run_vla_inference.py`。以下为仓库内各入口的调用关系，不含 SONIC 控制器本体。
 
 ```mermaid
 sequenceDiagram

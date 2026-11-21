@@ -12,6 +12,8 @@
 - **许可：** CC BY-NC-SA 4.0
 - **基座：** [Wan2.2](https://github.com/Wan-Video/Wan2.2)
 - **入库日期：** 2026-09-10
+- **核对范围：** 2026-11-21 核对 `robbyant/lingbot-world-v2@1895d30` 官方 `README.md`、`run_fast.sh`、`generate.py`（`run_causal`、`generate`、`_parse_args`）、`wan/__init__.py`、`wan/image2video.py`（`WanI2VCausal.__init__` 与 `_generate_causal_fast` 相机/编码/采样/KV cache 段）；未运行推理（无本地权重与多卡 GPU）。
+- **通读：** 已完成
 - **一句话说明：** 因果交互世界模型推理栈：`generate.py` 分块 causal 推理 + KV cache；14B/1.3B 多 variant；需 torch≥2.4 + flash-attn。
 
 ## 模型变体（2026-09-10）

@@ -8,7 +8,9 @@
 - **原始链接：** <https://aetherlabs.ai/news/aether-ai-raises-20m-seed-round.html>
 - **发表日期：** 官网列表 2026-06-17；正文电头 "SAN DIEGO, California, June 16, 2026"；GlobeNewswire 通稿电头 June 18, 2026
 - **入库日期：** 2026-10-10
-- **抓取方式：** `curl -sSL -A "Mozilla/5.0"` 读取官网 HTML 去标签；通稿与媒体同法抓取
+- **抓取方式：** `curl -sSL -A "Mozilla/5.0"` 读取官网 HTML 去标签（2026-11-21 复核官网公告 HTTP 200）；通稿与媒体同法抓取
+- **核对范围：** 通读官网融资公告全文，并与 GlobeNewswire / 中文通稿 / ACCESS Newswire / 机器之心报道交叉核对；估值与未公开客户细节以未披露标明
+- **通读：** 已完成
 - **一句话说明：** 官网宣布完成 2000 万美元种子轮，用于因果世界模型研发、工程与科学团队扩张、Physical AI / 机器人首批商业部署；官网正文 **不点名投资方**，投资方见公司发出的新闻通稿。
 
 ## 事实分层

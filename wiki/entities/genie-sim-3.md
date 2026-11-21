@@ -2,7 +2,11 @@
 type: entity
 tags: [agibot, simulation, benchmark, sim2real, open-source]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-21
+original:
+  - ../../sources/papers/genie_sim_3_arxiv_2601_02078.md
+  - ../../sources/repos/genie_sim.md
+  - ../../sources/repos/genie_sim_robocoliseum.md
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/agibot-june-2026-release-technology-map.md
@@ -12,6 +16,7 @@ related:
   - ../queries/simulator-selection-guide.md
   - ../overview/robot-training-stack-layers-technology-map.md
 sources:
+  - ../../sources/papers/genie_sim_3_arxiv_2601_02078.md
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/repos/genie_sim.md
   - ../../sources/sites/genie_sim.md
@@ -45,23 +50,45 @@ summary: "Genie Sim 3.0 是智元开源的仿真训练与评测平台：支持�
 - **训练栈：** 支持 RLinf、并行仿真、标准 Gym 接口与 **在线微调**。
 - **Sim2Real 叙事：** 材料称相同模型在仿真与真机评测差异 **<10%**（策展文建议等待更多任务验证）。
 
-## 源码架构与运行
+## 核心原理
 
-依据 [官方源码快照](../../sources/repos/genie_sim.md)，目前先用 `geniesim` CLI 管理容器和工作区，再按目标选择两条**独立的运行栈**：
+依据 [Genie Sim 3.0 论文](../../sources/papers/genie_sim_3_arxiv_2601_02078.md) 与 [官方源码快照](../../sources/repos/genie_sim.md)，平台由「资产与场景构建—双路采集—两条独立仿真运行栈—闭环评测」组成：
+
+```mermaid
+flowchart TB
+  GEN["Genie Sim Generator\n意图解析 + ChromaDB 5140 资产检索 + DSL 组装 USD"]
+  REC["真实环境重建\nMetaCam LiDAR + 3DGS + Difix3D+ + PGSR Mesh"]
+  DATA["双路数据生成\nPICO VR 遥操作 / cuRobo+GraspNet 自动采集 (10k+ h)"]
+  CLI["geniesim CLI (Docker / 工作区)"]
+  BM["geniesim_benchmark\nIsaac / MuJoCo / Newton / libuipc 闭环评测"]
+  ROS["geniesim_ros (RT Engine)\nROS 2 实时物理 + MoveIt 2 + ros2_control"]
+  EVAL["RoboColiseum 四榜 & RLinf 训练\nInstruction / Spatial / Manip / Robust"]
+  GEN & REC --> CLI
+  GEN --> DATA --> EVAL
+  CLI --> BM --> EVAL
+  CLI --> ROS
+```
+
+目前先用 `geniesim` CLI 管理容器和工作区，再按目标选择两条**独立的运行栈**：
 
 | 路径 | 用途与边界 |
 |------|------------|
-| `geniesim_benchmark` | 直接使用 Isaac Sim 运行基准、连接策略推理服务并评分；RoboColiseum 使用同一评测生态。 |
+| `geniesim_benchmark` | 直接使用 Isaac Sim（或 MuJoCo / Newton / libuipc）运行基准、连接策略推理服务并评分；RoboColiseum 使用同一评测生态。 |
 | `geniesim_ros` | ROS 2 实时交互引擎，物理、渲染与机器人共享仿真时间，接入 MoveIt 2、ros2_control、遥操作和记录。 |
 
-官方计划将 benchmark 重构为 `geniesim_ros` 之上的层；截至该快照仍未合并，场景格式和启动流程不能假设互通。场景生成、世界生成、遥操作和自动采集分别由其他模块承担；`geniesim_world` 输出的 Gaussian/PLY 接入实时引擎仍在计划中。
+官方计划将 benchmark 重构为 `geniesim_ros` 之上的层；截至源码快照仍未合并，场景格式和启动流程不能假设互通。场景生成、世界生成、遥操作和自动采集分别由其他模块承担；`geniesim_world` 输出的 Gaussian/PLY 接入实时引擎仍在计划中。
 
-### 实践入口与限制
+## 工程实践
 
-- 默认容器以 **Isaac Sim 5.1 + ROS 2 Jazzy** 为目标；官方将 Humble 限定在已停止新功能支持的 Isaac Sim 4.5 容器。现有 Humble 系统集成应先检查容器与接口兼容性。
-- RT Engine 支持 Isaac Sim PhysX、实验性 Isaac Sim Newton 与独立 Newton；官方说明独立 Newton 路径支持布料和软体。后端能力不能一概而论。
-- 仓库公开代码并提供外置资产、数据集入口；README 仍将上传全部资产和数据集列为待办。`geniesim_*` 和 `data_collection` 默认 MPL 2.0，重建模块含多种许可，使用前需逐项核对。
-- 官方展示的仿真与真机结果是特定任务、数据量和模型下的实验结果，不能推断所有任务均有同等 Sim2Real 精度。README 宣布 2026-11-02 有重大更新，具体内容应待发布后核实。
+- **运行时选择：** `main@a3995e9` 主线默认容器已升级至 **Python 3.12 + Isaac Sim 6.2**（`geniesim docker` / `docker6.2` 对应 `geniesim4:latest`）；旧版 **Isaac Sim 4.5 / 5.1**（Humble / Jazzy 旧容器）已标记为 E.O.L. 废弃，既有 ROS 2 系统集成前应先核对容器镜像与分支兼容。
+- **物理后端：** RT Engine 支持 Isaac Sim PhysX、实验性 Isaac Sim Newton 与独立 Newton；官方说明独立 Newton 路径支持布料和软体，后端能力不可混同。
+- **资产与数据接入：** 资产托管于 [Hugging Face GenieSimAssets](https://huggingface.co/datasets/agibot-world/GenieSimAssets) / ModelScope，合成数据见 `GenieSim3.0-Dataset`（LeRobot v2.1 格式），闭环评测采用 `WebSocket + msgpack` 解耦推理服务与仿真端。
+
+## 局限与风险
+
+- **开源与许可边界：** 仓库已公开代码与资产/数据集下载入口，但 `geniesim_*` 和 `data_collection` 默认 MPL 2.0，重建模块含多种许可，商用或二次分发前须逐目录核对。
+- **Sim2Real 外推边界：** 官方在四项任务上的仿真与真机对比（Sim2Real 差距 <10%）是在特定任务、数据量和 $\pi_{0.5}$ 模型下的实验结果，不能无条件外推到所有接触丰富任务；长程连续分拣（`Sorting Packages Continuous`）和空间构造类任务在当前基准上仍接近未解（≤0.30）。
+- **两套运行栈未统一：** `geniesim_benchmark` 与 `geniesim_ros` 的场景格式、启动方式和资产接口仍各自独立，迁移成本需提前评估。
 
 ## 与 GE-Sim 2.0 / GO-2
 
@@ -112,12 +139,14 @@ sequenceDiagram
 ## 关联页面
 
 - [仿真训练与评测分类 hub](../overview/agibot-release-category-02-sim-training-eval.md)
-- [Paper Notebooks 索引实体](./genie-sim-3.md)
+- [Genie Sim 3.0 论文节点（Agentic Stub）](./paper-agentic-2601-02078.md)
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)
 - [RoboColiseum](./robocoliseum.md) — Genie Sim 在线仿真挑战赛与四榜
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ / ④ 层：Genie Sim Benchmark 五类能力仿真评测与 sim2real 对接
 
 ## 参考来源
+
+- [Genie Sim 3.0 论文原文归档（arXiv:2601.02078）](../../sources/papers/genie_sim_3_arxiv_2601_02078.md)
 
 - [Genie Sim 3.0 源码归档](../../sources/repos/genie_sim_3.md)（<https://github.com/AgibotTech/genie_sim>）
 

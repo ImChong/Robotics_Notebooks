@@ -11,6 +11,8 @@
 - **数据集：** <https://huggingface.co/datasets/chenwangj/DexCap-Data>
 - **许可：** MIT
 - **入库日期：** 2026-09-17
+- **核对范围：** 通读 `j96w/DexCap@4b0bed0` 的 `README.md` 并核对 `STEP1_collect_data/`、`STEP2_build_dataset/`（`demo_create_hdf5.py`、`pybullet_ik_bimanual.py`）、`STEP3_train_policy/robomimic/` 目录结构与入口脚本；未运行真机采集或 GPU 训练。
+- **通读：** 已完成
 - **一句话说明：** RSS 2024 DexCap 官方实现：NUC 端 Rokoko 手套流 + 胸挂相机采集，Ubuntu 工作站处理/建 HDF5，robomimic 训练点云 Diffusion Policy。
 - **开源状态：** **已开源** — `STEP1_collect_data`、`STEP2` 处理脚本、`STEP3_train_policy/robomimic` 训练配置与文档齐全；硬件 BOM 见项目页与 2024-08 Google Doc。
 - **沉淀到 wiki：** [`paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti.md`](../../wiki/entities/paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti.md)

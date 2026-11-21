@@ -8,6 +8,8 @@
 - **链接：** https://github.com/roboterax/video-prediction-policy
 - **分类：** VLA/操作模型
 - **入库日期：** 2026-09-06
+- **核对范围：** 克隆 `roboterax/video-prediction-policy@75cf37a`，通读 `README.md`，并核对 `step1_train_svd.py`、`step2_train_action_calvin.py`、`policy_evaluation/calvin_evaluate.py` 及 `policy_conf/`、`policy_models/` 目录布局；未下载模型权重或运行训练/评测。
+- **通读：** 已完成
 - **一句话说明：** 星动纪元 开源项目 video-prediction-policy（VLA/操作模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/paper-shenlan-wm-02-vpp.md`](../../wiki/entities/paper-shenlan-wm-02-vpp.md)
 

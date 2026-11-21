@@ -10,6 +10,8 @@
 - **项目页：** <https://www.pi.website/research/human_to_robot>
 - **机构：** 物理智能（Physical Intelligence）；佐治亚理工学院（Georgia Tech）
 - **入库日期：** 2026-09-28
+- **核对范围：** 2026-11-22 通读 `https://arxiv.org/html/2512.22414v1` 论文全文（Sec. I–VI 及 Appendix A–C）与官方研究博客 `https://www.pi.website/research/human_to_robot`（经 r.jina.ai 读取全文）；确认未发布代码、人视频或机器人数据集，未在本地复现实验。
+- **通读：** 已完成
 - **一句话说明：** π₀.₅ 预训练足够多样之后，把第一人称人视频当成另一种本体一起微调，人→机器人迁移才会出现。
 
 ## 开源状态（步骤 2.5，2026-09-28）

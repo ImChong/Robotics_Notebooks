@@ -4,10 +4,12 @@
 
 - **URL：** <https://opendrivelab.com/EgoHumanoid-V2/>
 - **标题：** EgoHumanoid-V2: Human-to-Humanoid Transfer of Coordinated Whole-Body Skills for Loco-Manipulation
-- **核查日期：** 2026-10-12
+- **核查日期：** 2026-10-12（2026-11-21 复核）
+- **核对范围：** 读取 `https://opendrivelab.com/EgoHumanoid-V2/` 官方项目页全文与按钮链接（Paper、Code -> `OpenDriveLab/EgoHumanoid-V2`），并复核 2026-11-04 仓库 commit `682199e` 后 checklist 全部勾齐的状态。
+- **通读：** 已完成
 - **代码：** <https://github.com/OpenDriveLab/EgoHumanoid-V2>（项目页 Code 按钮）
 - **论文：** <https://arxiv.org/abs/2609.37181>
-- **许可与开放状态：** 官方仓库标注 Apache-2.0；截至核查日属于**部分开源**，不是论文全部训练/部署流水线的完整复现包
+- **许可与开放状态：** 官方仓库标注 Apache-2.0；截至 2026-11-04 commit `682199e` 已开放全流程代码（采集、动作对齐、视觉对齐、训练与部署），论文全量训练数据与任务微调后权重仍需自备/自训
 - **源码归档：** [OpenDriveLab/EgoHumanoid-V2](../repos/egohumanoid-v2.md)
 - **论文归档：** [arXiv:2609.37181](../papers/egohumanoid_v2_arxiv_2609_37181.md)
 - **覆盖 wiki：** [EgoHumanoid-V2](../../wiki/entities/paper-egohumanoid-v2.md)
@@ -18,9 +20,9 @@
 
 ## 代码开放核查
 
-项目页提供 Code 链接。核查其指向的官方 GitHub README，仓库公开并使用 Apache-2.0。README release checklist 将**硬件配置、环境安装、人类数据采集、动作对齐**列为已提供；其中动作对齐能用 `eh2-align` 和 `eh2-replay` 跑通样例轨迹。下列部分仍标记为 Coming soon / 未完成：机器人数据采集流程、视觉对齐代码、策略训练流水线、策略部署流水线。
+项目页提供 Code 链接。复核其指向的官方 GitHub README（@ `682199e`，2026-11-04），仓库公开并使用 Apache-2.0，Workflow & Release Checklist 中**硬件配置、环境安装、人类数据采集、动作对齐、视觉对齐、策略训练流水线（OpenPI π₀.₅）、策略部署流水线（`eh2-serve` + SONIC `run_vla_inference.py`）**均已勾选发布。
 
-仓库提供四项任务的动作对齐示例，但 README 未列出论文全部人类训练数据或策略 checkpoint 的完整下载入口。故此页记录为**训练/数据采集/动作对齐部分开源**：已经有可运行的对齐入口，但研究论文的端到端训练与部署链尚未全部公开。
+仓库提供四项任务的动作对齐示例及 3 个任务的视觉对齐示例（`motion.npz` + 对比动画），但未列出论文全量 200 条/任务人类训练集或微调后任务 checkpoint 的直接下载包，复现仍需自备 `pi05_base`、SONIC、SAM 3.1 权重及机器人硬件。
 
 ## 项目关系
 

@@ -2,7 +2,10 @@
 type: entity
 tags: [platform, vla, physical-ai, infrastructure, evaluation, simate, simate-ai, manipulation]
 status: complete
-updated: 2026-10-09
+updated: 2026-11-21
+original:
+  - ../../sources/sites/simate-ai.md
+  - ../../sources/repos/simate_beta.md
 related:
   - ./simate-beta.md
   - ./physical-rsi.md
@@ -16,8 +19,9 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/simate-ai.md
+  - ../../sources/repos/simate_beta.md
   - ../../sources/blogs/simate_beta_robodojo_2026-09.md
-summary: "Simate（硅基伙伴，simate.ai / mate-robot.cn，约 2026-06 成立）Physical AI 三连体：Sinfra 平台串起训练/仿真/部署，Sipai 为可插拔模型框架，RoboScientist / AutoResearch 把实验转为证据；首版模型 Simate-beta 2026-09-23 上 RoboDojo 仿真榜（33.95 / 27.96%）。平台与模型均未开源。"
+summary: "Simate（硅基伙伴，simate.ai / mate-robot.cn，约 2026-06 成立）Physical AI 三连体：Sinfra 平台串起训练/仿真/部署，Sipai 为可插拔模型框架，RoboScientist / AutoResearch 把实验转为证据；首版模型 Simate-beta 2026-09-23 上 RoboDojo 仿真榜（33.95 / 27.96%），随后已在 SIPAILab/simate-beta（MIT）与 HF 公开 Sipai 训练框架与模型权重；Sinfra SaaS 与 RoboScientist 仍未开源。"
 ---
 
 # Simate（Physical AI Platform + Model + Scientist）
@@ -30,7 +34,7 @@ summary: "Simate（硅基伙伴，simate.ai / mate-robot.cn，约 2026-06 成立
 | 成立 | 约 2026-06（媒体称 2026-09 时「成立仅三个月」，推测） |
 | 团队 | 创始人兼 CEO 张颖（前头部自动驾驶公司一段式端到端技术负责人之一）；占方能（港科大）、季马泽宇（前 ARI 创始成员）——见 [报道归档](../../sources/blogs/simate_beta_robodojo_2026-09.md) |
 | 工作区 | <https://simate.ai/sifra/#/login>（Enterprise / Cloud） |
-| 开源状态 | **平台与 Sipai 模型：未开源**（见下方「局限与风险」） |
+| 开源状态 | **Sinfra / RoboScientist 闭源**；**Sipai（`SIPAILab/simate-beta`）训练代码与 `Simate-beta` 权重/数据已开源**（MIT / Apache-2.0 / Gemma） |
 
 ## 一句话定义
 
@@ -52,14 +56,14 @@ Simate 用 **Sinfra** 承载任务定义、训练、仿真验证与真机部署�
 - **与社区基准对齐而非自造榜：** 首版模型 [Simate-beta](./simate-beta.md) 2026-09-23 提交 **[RoboDojo](./robodojo.md)** 仿真榜，平均 Score 33.95 / SR 27.96%（上榜当日第一，2026-09-28 被 [Physical RSI 1.0](./physical-rsi.md) 超过）；官网 Sipai 页仍标 *Evaluation in progress*（2026-10-09 核查）。
 - **数据集策展入口：** Sinfra 页聚合 AgiBot World、Daimon-Infinity、ABC-130k、Open X-Embodiment 等 **第三方开放数据**，降低「选数据 → 开训」摩擦（数据本身仍受各源许可约束）。
 
-## 核心结构
+## 核心原理
 
 ### 三分产品
 
 | 产品 | 站内状态 | 核心职责 |
 |------|----------|----------|
 | **Sinfra** | Platform · IN DEVELOPMENT | DEFINE → TRAIN → VALIDATE → DEPLOY → IMPROVE；Task planner、成本估算、实验对比、工作区登录 |
-| **Sipai** | Model · ROBODOJO EVALUATION | 具身动作模型栈：「One config. Everything.」— 组合数据、模型与训练配方 |
+| **Sipai** | Model · ROBODOJO EVALUATION（源码已以 `SIPAILab/simate-beta` 开源） | 具身动作模型栈（「One config. Everything.」）：`sipai` 注册表式数据/模型/引擎框架（SigLIP + AE 历史压缩 + Gemma-2B/300M flow-matching） |
 | **RoboScientist** | AI Scientist · RESEARCH PREVIEW | 实验画廊与证据链，把 run / comparison / decision 转为可检索洞察 |
 
 ### 媒体披露的研发体系（2026-09）
@@ -99,19 +103,19 @@ flowchart LR
 | **复现 Ring placement 等 demo** | 站内视频托管于 `mate-robot.cn` — 仅作 **行为展示**，**无** 官方训推仓库可拉 |
 | **在 Sinfra 上开训** | 申请 Enterprise access 或登录 `/sifra/`；先用 Task planner 明确任务类型（单臂 / 双手 / 移动操纵等）与算力优先级 |
 | **选公开数据** | 优先从 Sinfra 策展的四套入口核对 **许可**（如 AgiBot NC、Daimon CC BY-NC-SA）；见 [Daimon-Infinity](./cn-os-daimon-infinity.md) |
-| **与开源 VLA 栈对照** | 需要可 fork 的训推链时，并行评估 [Isaac GR00T](./isaac-gr00t.md)、[XPolicyLab](./xpolicylab.md) 适配目录等 **已开源** 路径 |
+| **与开源 VLA 栈对照** | 需要可 fork 的训推链时，可直接使用已开源的 [Simate-beta（SiPAI）](./simate-beta.md)（`SIPAILab/simate-beta`），或并行评估 [Isaac GR00T](./isaac-gr00t.md)、[XPolicyLab](./xpolicylab.md) 适配目录 |
 
 ## 局限与风险
 
-- **平台与模型未开源（截至 2026-09-23）：** 项目页 **无** Simate 官方 GitHub / HF 模型仓；Sipai 的 Training / Evaluation / Deployment 均标 **In development** — 复现与审计依赖后续发布。
-- **RoboDojo 成绩口径：** Simate-beta 为 **仿真榜** 结果（33.95 / 27.96%），无技术报告；是否满足 [RoboDojo](./robodojo.md) 的开源 verified 门槛未见说明，勿与 verified 条目混读。
+- **Sinfra 与 RoboScientist 仍未开源：** 官网 Sinfra 工作区（`/sifra/#/login`）与 RoboScientist / AutoResearch 引擎为闭源申请制 SaaS；而 **Sipai 模型框架与首版 `Simate-beta` 权重/数据** 已后续通过 GitHub `SIPAILab/simate-beta`（MIT）与 Hugging Face `SIPAILab` 开源（官网营销页本身仍标 *Evaluation in progress* / *In development*，阅读时注意区分官网状态与 GitHub 开源进度）。
+- **RoboDojo 成绩口径：** Simate-beta 为 **仿真榜** 结果（33.95 / 27.96%），虽已补齐 XPolicyLab 适配器与权重，但仍无正式技术论文或大规模真机成功率统计。
 - **算力与价格为展示口径：** 页内 H100 / 5090 / H20 数量与 ¥/GPU·h 为 **DISPLAY / ILLUSTRATIVE**，非实时容量承诺。
-- **演示视频 ≠ 开源：** `mate-robot.cn` 托管的真机 MP4 不能替代权重与评测脚本。
+- **演示视频 ≠ 开源：** `mate-robot.cn` 托管的真机 MP4 不能替代真机复现评测。
 - **RoboScientist 仍为 Research preview：** 画廊偏叙事展示，工程 API 边界未在开源仓中验证。
 
 ## 源码运行时序图
 
-**不适用** — 截至入库日 Simate 未在官网列出可运行的官方训练 / 推理 / 部署代码仓库；Sinfra 工作区为闭源 SaaS / Enterprise 形态。待官方发布开源入口后，应按 [ingest 步骤 5](../../schema/ingest-workflow.md) 补 `sequenceDiagram` 并对齐 `sources/repos/`。
+**不适用（平台侧）** — Sinfra 工作区与 RoboScientist / AutoResearch 平台均为闭源 SaaS / Enterprise 形态，官网未提供平台级可运行调度代码。若需查看已开源的 **Sipai（`simate-beta`）模型训练与 XPolicyLab 评测源码运行时序图**，请参阅独立实体页 [Simate-beta](./simate-beta.md)。
 
 ## 关联页面
 
@@ -130,4 +134,5 @@ flowchart LR
 ## 参考来源
 
 - [Simate 官网归档](../../sources/sites/simate-ai.md)
+- [SiPAI / Simate-beta 官方开源代码与 HF 权重归档](../../sources/repos/simate_beta.md)
 - [Simate-beta 与 RoboDojo 上榜：媒体报道与榜单数据](../../sources/blogs/simate_beta_robodojo_2026-09.md)

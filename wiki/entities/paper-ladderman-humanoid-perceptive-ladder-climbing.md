@@ -15,9 +15,15 @@ tags:
   - unitree-g1
   - isaac-sim
   - amazon-far
+  - open-source
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 arxiv: "2606.05873"
+venue: "CoRL 2026 Spotlight"
+code: https://github.com/amazon-far/LadderMan
+original:
+  - ../../sources/papers/ladderman_arxiv_2606_05873.md
+  - ../../sources/repos/ladderman.md
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-08-real-tasks.md
@@ -36,9 +42,10 @@ related:
 sources:
   - ../../sources/papers/ladderman_arxiv_2606_05873.md
   - ../../sources/sites/ladderman-robot-github-io.md
+  - ../../sources/repos/ladderman.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
-summary: "LadderMan（arXiv:2606.05873，Amazon FAR）两阶段：hybrid motion tracking 从单参考学多几何攀爬专家，hybrid DAgger+RL 蒸馏为深度统一策略；VFM+RFM 零样本 sim-to-real；梯上双智能体遥操作相对 TWIST2 更稳；G1 真机多样梯子双向攀爬约 3.4 s/踏棍。"
+summary: "LadderMan（CoRL 2026 Spotlight，arXiv:2606.05873，Amazon FAR）两阶段：hybrid motion tracking 从单参考学多几何攀爬专家，hybrid DAgger+RL 蒸馏为深度统一策略；VFM+RFM 零样本 sim-to-real；梯上双智能体遥操作；G1 真机约 3.4 s/踏棍；amazon-far/LadderMan 已开源。"
 ---
 
 # LadderMan：人形感知梯子攀爬与梯上操作
@@ -71,7 +78,7 @@ summary: "LadderMan（arXiv:2606.05873，Amazon FAR）两阶段：hybrid motion 
 - **深度 sim-to-real 新配方：** 相对重度 depth randomization，**VFM 真机深度 + RFM + 极简噪声** 在 **细薄踏棍** 上更关键（真机消融：w/o VFM **3/10**，w/o RFM **0/10**）。
 - **梯上 loco-manipulation：** **双智能体** 下身稳、上身跟 VR，相对 **TWIST2** 等现成全身遥操作在梯顶不易失稳——把「能爬上去」延伸到 **维护/搬运类任务**。
 
-## 方法
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
@@ -133,7 +140,41 @@ flowchart TB
 | 真机梯子 | A/B/C 不同材料与几何；**双向攀爬 ~20 s** |
 | 速度 | **~3.4 s/踏棍**（人类 ~3.2 s） |
 | 真机消融（梯子 A, 10 次） | Ours **9/10**；w/o RL **2/10**；w/o VFM **3/10**；w/o RFM **0/10** |
-| 代码 | 论文承诺开源；入库时 **无公开仓库** |
+| 代码 | **已开源** [amazon-far/LadderMan](https://github.com/amazon-far/LadderMan)（Apache-2.0，2026-11 发布）；真机部署对接 [EGalahad/sim2real](https://github.com/EGalahad/sim2real) |
+
+## 源码运行时序图
+
+图依据：基于 `amazon-far/LadderMan@9a8d5ed` 的 `README.md`、`scripts/train_teachers.sh`、`scripts/train.py`、`active_adaptation/learning/ppo/ppo_me_dagger.py` 与 `scripts/play.py` 源码核实。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Setup as setup.sh / IsaacLab v2.2.0
+    participant Teacher as scripts/train.py (algo=teacher)
+    participant Vec as data/vecnorm/ladder_vecnorm.pt
+    participant Student as ppo_me_dagger.py (algo=student)
+    participant Play as scripts/play.py (export_policy=true)
+    participant Real as EGalahad/sim2real (G1)
+    Dev->>Setup: 安装 Isaac Sim 4.5.0 + Isaac Lab v2.2.0
+    Dev->>Teacher: train_teachers.sh 按倾角 x 间距网格训专家 (7500 iter)
+    Teacher->>Vec: 共享冻结观测归一化统计
+    Dev->>Student: 传入 teacher_checkpoint_path_list 训深度学生
+    Note over Student: 7500 iter 纯 ME-DAgger -> 2500 线性衰减 -> 3000 纯 PPO
+    Student-->>Dev: checkpoints/checkpoint_final.pt
+    Dev->>Play: 仿真回放并导出 .onnx / .json / .yaml
+    Play->>Real: 部署 ONNX 至 Unitree G1 实机
+```
+
+## 工程实践
+
+| 环节 | 官方入口与工程要点 |
+|------|--------------------|
+| **环境与仿真后端** | `bash setup.sh` 安装 Python 3.10、`isaacsim==4.5.0` 与 `IsaacLab v2.2.0`（注意与论文正文笼统提及的 IsaacSim 区别）；运行需 `export OMNI_KIT_ACCEPT_EULA=YES` |
+| **共享 VecNorm 契约** | 所有教师与学生必须共享同一冻结 `data/vecnorm/ladder_vecnorm.pt`；修改观测或参考动作后需先以 `vecnorm=train vecnorm_path=null` 重算 |
+| **显存与多专家网格** | 默认 `4096 envs` 在单张 NVIDIA L40S（48 GB）运行；蒸馏阶段在 BC 权重归零前所有教师驻留显存，显存不足时下调 `task.num_envs` |
+| **依赖故障排查** | Conda 内启动 Isaac Sim 若报 `GLIBCXX` 缺失，按 README 设置 `export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6` |
+| **导出与真机部署** | `scripts/play.py export_policy=true` 将归一化层直接打包进 ONNX，输出 `.onnx` / `.json` / `.yaml` 后对接 [EGalahad/sim2real](https://github.com/EGalahad/sim2real) |
 
 ## 结论
 
@@ -144,14 +185,14 @@ flowchart TB
 3. **真机消融：RFM/VFM/RL 都硬** — 梯子 A 10 次：Ours **9/10**；w/o RL **2/10**；w/o VFM **3/10**；w/o RFM **0/10**。
 4. **速度接近人类** — 双向攀爬约 **20 s**；约 **3.4 s/踏棍**（人类约 **3.2 s**）；A/B/C 不同材料与几何。
 5. **两阶段蒸馏可操作** — Stage 1 按 \((\phi,z)\) 训 hybrid-tracking 专家；Stage 2 DAgger+PPO+KL 蒸馏到深度策略；真机用 Fast-FoundationStereo，无硬件改装。
-6. **操作与攀爬分策略** — \(\pi^l/\pi^u\) 双智能体做梯上遥操作；未见负重攀爬强调；入库时无公开仓库。
+6. **操作与攀爬分策略** — \(\pi^l/\pi^u\) 双智能体做梯上遥操作；2026-11 已开源 `amazon-far/LadderMan` 训练与导出代码（基于 HDMI `active_adaptation`）。
 
 ## 常见误区或局限
 
 - **误区：「梯子 = 另一种楼梯」。** 踏棍 **细、稀、悬空**，高程图常难以精确表达；LadderMan 强调 **端到端深度** 与 **踏棍聚焦**，与 [FastStair](./paper-faststair-humanoid-stair-ascent.md) 的 **重复踢面 + DCM 监督上楼** 问题形态不同。
 - **误区：「有 DAgger 就够」。** 动态接触-rich 任务中纯模仿误差会累积；论文真机 **w/o RL** 仅 **2/10**——**RL 恢复行为** 不可或缺。
 - **误区：「深度 randomization 越多越好」。** 梯子场景用 **VFM + 轻量噪声** 替代重度 hand-tuned DR；RFM 针对 **结构化几何差距**（扶手/背景）。
-- **局限：** 攀爬与操作 **分策略**；极端上肢遮挡仍可能影响深度；论文未强调 **负重攀爬**（对照 [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) 的 2 kg 载荷线）。
+- **局限（论文 §5）：** (1) 目前主要在倾角 **$\le 75°$** 斜梯上验证，尚不能覆盖对接触力与稳定裕度要求更苛刻的 **垂直梯（vertical ladders）**；(2) 缺乏 **灵巧手（dexterous end-effectors）** 限制了梯上精细操作品类；(3) 攀爬与梯上操作 **分策略** 独立运行，极端上肢遮挡仍可能干扰深度观测。
 
 ## 与其他工作对比
 
@@ -181,10 +222,12 @@ flowchart TB
 ## 参考来源
 
 - [LadderMan 论文摘录（arXiv:2606.05873）](../../sources/papers/ladderman_arxiv_2606_05873.md)
+- [LadderMan 官方仓库归档（amazon-far/LadderMan）](../../sources/repos/ladderman.md)
 - [LadderMan 项目页归档](../../sources/sites/ladderman-robot-github-io.md)
 
 ## 推荐继续阅读
 
+- 官方仓库：<https://github.com/amazon-far/LadderMan>
 - 论文 HTML：<https://arxiv.org/html/2606.05873>
 - 论文 PDF：<https://arxiv.org/pdf/2606.05873>
 - 项目页（演示视频）：<https://ladderman-robot.github.io/>

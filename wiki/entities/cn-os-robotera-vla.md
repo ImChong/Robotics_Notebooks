@@ -2,7 +2,9 @@
 type: entity
 tags: [robotera, repo, china-embodied-opensource, open-source, project]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-21
+original:
+  - ../../sources/repos/robotera_vla.md
 related:
   - ./robotera.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -38,7 +40,19 @@ code: https://github.com/roboterax/robotera_vla
 
 这一入口补足[星动纪元](./robotera.md)研究与产品之间的工程接口；读者可核对公开代码和厂商运行环境的边界，避免仅凭仓库名推断完整复现能力。
 
-## 核心结构
+## 核心原理
+
+`robotera_vla` 是面向 43-DoF 固定工位半身平台 M7 的 $\pi_{0.5}$ / `openpi` 工程基线，通过标准化数据契约连接「离线采集导出 → 统计量归一化与微调训练 → 100 Hz 同步推理插值执行」全链路；其中 `inference/examples/config.py` 严格锁定 57 维观测拼接顺序（`OBS_STRUCTURE`：双臂关节/末端位姿、双手关节、腰部、颈部）与 38 维动作输出（`ACT_STRUCTURE`：双臂末端位姿 + 双手 12-DoF 关节），模型输出 20 步 20 Hz 动作块后线性插值为 100 步在 100 Hz 下执行前 80 步。
+
+```mermaid
+flowchart LR
+  DC["data_collection/<br/>XOS/Quest 采集导出与 Schema 校验"] --> TR["training/<br/>compute_norm_stats.py + pi0.5 微调"]
+  TR --> CKPT["pi05_M7_pp_opensource Checkpoint"]
+  CAM["ROS 2 观测: 3相机 H264 + 57维本体状态"] --> INF["inference/examples/main.py<br/>OpenPIWorker 推理 (chunk=20)"]
+  CKPT --> INF
+  INF --> INT["stream.interpolate_actions (100步)<br/>100Hz 执行前80步 -> 38维目标"]
+  INT --> ROS["/servo_poses + /hand_controller/commands"]
+```
 
 | 机构 | 星动纪元（ROBOTERA） |
 | --- | --- |
@@ -66,7 +80,8 @@ code: https://github.com/roboterax/robotera_vla
 
 ```mermaid
 sequenceDiagram
-    participant M as examples/main.py VlaSyncInferenceNode
+    autonumber
+    participant M as "examples/main.py VlaSyncInferenceNode"
     participant HW as examples/hardware_interface.py RobotInterface
     participant FD as examples/frame_decoder.py H264FrameDecoder
     participant MW as examples/model_worker.py OpenPIWorker
@@ -103,7 +118,7 @@ sequenceDiagram
     Note over M: need_reset 为真时，循环开头改为 smooth_reset(init_vec, 2.0) 后继续
 ```
 
-图依据：robotera_vla@9ff7067，读过 README.md、inference/README.md、inference/examples/main.py、inference/examples/model_worker.py、inference/examples/hardware_interface.py（订阅、发布与 get_observation、publish_action 段）、inference/examples/stream.py 与 frame_decoder.py（函数与类定义）、inference.Dockerfile（末段）；`config.py` 未读，`EXECUTE_STEPS` 与控制频率取值未核对。未运行代码（需 M7 机器人与 GPU 环境）。
+图依据：`robotera_vla@9ff7067`，读过 `README.md`、`inference/README.md`、`inference/examples/main.py`、`inference/examples/config.py`（`STATE_DIM=57`、`ACTION_DIM=38`、`chunk_size=20`、`CONTROL_HZ=100`、`EXECUTE_STEPS=80`）、`inference/examples/model_worker.py`、`inference/examples/hardware_interface.py`（订阅、发布与 `get_observation`、`publish_action` 段）、`inference/examples/stream.py` 与 `frame_decoder.py`（函数与类定义）、`inference.Dockerfile`（末段）。未运行代码（需 M7 机器人与 GPU 环境）。
 
 ## 关联页面
 

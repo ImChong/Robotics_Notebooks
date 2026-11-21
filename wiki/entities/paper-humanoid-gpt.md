@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, imitation-learning, reinforcement-learning, transformer, dagger, scaling-law, zero-shot, unitree-g1, cvpr2026, galbot, tsinghua]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 arxiv: "2606.03985"
 venue: "CVPR 2026"
 code: https://github.com/GalaxyGeneralRobotics/Humanoid-GPT
@@ -21,6 +21,10 @@ related:
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ./paper-gentrack.md
   - ./paper-humantracker.md
+original:
+  - ../../sources/papers/humanoid_gpt_arxiv_2606_03985.md
+  - ../../sources/sites/humanoid-gpt-qizekun-github-io.md
+  - ../../sources/repos/humanoid_gpt_galaxy_general_robotics.md
 sources:
   - ../../sources/papers/humanoid_gpt_arxiv_2606_03985.md
   - ../../sources/sites/humanoid-gpt-qizekun-github-io.md
@@ -28,12 +32,14 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/repos/humanoid-gpt.md
-summary: "Humanoid-GPT（arXiv:2606.03985，CVPR 2026）在 2B 帧 G1 重定向语料上，以 HME 聚类训练数百 PPO motion expert，再经并行 DAgger 蒸馏为 GPT 式因果 Transformer 通用人形 tracker，同时实现高动态跟踪与未见动作零样本泛化，并给出数据/模型 scaling law；真机 G1 相对 SONIC 四类对比与 TensorRT <1.5ms 部署。"
+summary: "Humanoid-GPT（arXiv:2606.03985，CVPR 2026）在 2B 帧 G1 重定向语料上，以 HME 聚类训练 ~384 个 PPO motion expert，再经并行 DAgger 蒸馏为带 RoPE 的 GPT 式因果 Transformer 通用人形 tracker，实现高动态跟踪与未见动作零样本泛化，并给出数据/模型 scaling law；官方已公开 @9f9e7b7 推理、评测与 G1/Jetson/BrainCo 部署入口。"
 ---
 
 # Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）
 
-**Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR 2026**）：在 **约 20 亿帧** Unitree G1 重定向运动上，用 **Harmonic Motion Embedding (HME)** 组织数据多样性，先训 **~300 个簇级 PPO expert**，再以带 **RoPE** 的 **因果 Transformer + DAgger** 蒸馏为 **单一通才 tracker**，在仿真与真机上同时追求 **高动态敏捷** 与 **训练外零样本泛化**。
+## 一句话定义
+
+**Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR 2026**，官方仓同时标注为 **AstraBrain-WBC 0.5**）：在 **约 20 亿帧** Unitree G1 重定向运动上，用 **Harmonic Motion Embedding (HME)** 组织数据多样性，先训 **~300+ 个（附录为 384 个）簇级 PPO expert**，再以带 **RoPE** 的 **因果 Transformer + 并行 DAgger** 蒸馏为 **单一通才 tracker**，在仿真与真机上同时实现 **高动态敏捷** 与 **训练外零样本泛化**。
 
 ## 英文缩写速查
 
@@ -123,9 +129,16 @@ flowchart TB
 - **真机**：训练外舞蹈 MPJPE/MPJVE 接近仿真；在线 MoCap→G1 **全身遥操作** 无需任务微调。
 - **延迟**：ONNX + TensorRT，RTX 4090 **<1.5ms**（项目页：约 **5×** TWIST）。
 
-## 开源工程（官方仓库，2026-06-19）
+## 工程实践
 
-官方 [GitHub](https://github.com/GalaxyGeneralRobotics/Humanoid-GPT) 已发布 **推理 / 评测 / 真机部署** 与 ONNX checkpoint **`pns_wo_priv216.onnx`**；**完整训练代码与 2B 训练数据** 仍标注为计划中。
+官方 [GitHub](https://github.com/GalaxyGeneralRobotics/Humanoid-GPT)（`@9f9e7b7`）已发布 **推理 / 评测 / 真机部署** 与 ONNX checkpoint（当前 README 指向 **`storage/ckpts/pns_wo_priv264.onnx`**，早期快照为 `pns_wo_priv216.onnx`）；**完整 384 个 PPO expert + DAgger 训练代码与 2B 训练数据** 仍标注为计划中（`TODO`）。
+
+| 工程维度 | 参数 / 入口事实 | 来源说明 |
+|---|---|---|
+| 训练算力口径（Table 8） | 约 384 个 PPO expert（约 12,000 RTX 4090 GPUh）+ S/B/L 三档 DAgger 蒸馏（约 3,000 H100 GPUh），总计约 15,000 GPUh | `arXiv:2606.03985` Table 8 |
+| 推理与上下文配置 | 默认历史上下文窗口 `H = 32`；G1 硬件版号通过 `G1_VERSION=5010` 切换资产目录 `storage/assets/unitree_g1_${G1_VERSION}/` | 论文 §4 & README |
+| 仿真推理与批测 | `python -m scripts.inference --onnx_track storage/ckpts/pns_wo_priv264.onnx --track_dir storage/test`；`scripts.eval_parallel` 支持 32 worker 并行评测 | `@9f9e7b7` README & `scripts/` |
+| 真机与机载部署 | `python -m deploy.play_track --real --net <nic_name>`；支持 Jetson Orin 机载（`deploy/onboard_deploy/`）、主机重定向流式（`onboard_deploy_wo_GMR/`）与 BrainCo 灵巧手（`deploy/brainco/`） | `@9f9e7b7` `deploy/` |
 
 | 模块 | 路径 / 入口 | 说明 |
 |------|-------------|------|

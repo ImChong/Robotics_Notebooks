@@ -8,7 +8,9 @@
 - **URL：** https://www.lightorigins.com/blog/lightparkour
 - **发表日期：** 2026-08-03
 - **入库日期：** 2026-09-21
-- **抓取方式：** WebFetch
+- **抓取方式：** WebFetch / `urllib` 全文读取（`https://www.lightorigins.com/en/blog/lightparkour`）
+- **核对范围：** 通读 LightParkour Tech Blog 全文（含 The data problem、Real2Sim2Real 三阶段、45→75 cm 课程消融、Transition training +65 pp 消融与 Lightbot 0 实机部署节）；未直接运行硬件或未开源代码。
+- **通读：** 已完成
 - **一句话说明：** 官方 Tech Blog 正文 ingest；引用项目/论文均建独立 wiki 节点。
 
 ## 引用 → 本库节点

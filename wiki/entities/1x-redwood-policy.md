@@ -1,7 +1,12 @@
 ---
 type: entity
 status: complete
-updated: '2026-10-05'
+updated: '2026-11-21'
+project: https://www.1x.tech/discover/redwood-ai
+institutions:
+  - 1x-technologies
+original:
+  - ../../sources/sites/1x-redwood-policy.md
 summary: Redwood AI 是 1X 面向 EVE / NEO 的机载视觉语言动作策略，把移动、双臂操作与骨盆姿态联合预测；它与同名 World Model 是不同发布物。
 tags:
 - 1x-technologies
@@ -39,12 +44,27 @@ Redwood AI 是 1X 面向 EVE / NEO 的机载视觉语言动作策略，把移动
 
 | 环节 | 官方公开的机制 |
 | --- | --- |
-| 输入 | 语言嵌入、视觉 token、关节位置与施力历史的本体嵌入 |
-| 表征 | transformer 聚合多模态信息，得到共享 latent |
-| 动作 | diffusion policy 解码到 EVE 或 NEO；联合手臂/手、步行与骨盆指令 |
-| 辅助目标 | 预测手和相关物体在图像中的位置，增强空间 grounding |
+| 输入 | offboard LLM 抽取语音目标后的句子嵌入、预训练 ViT 视觉 token、关节位置与施力历史的本体嵌入 |
+| 表征 | 多层 transformer 聚合多模态信息，得到跨本体共享 latent（约 160M 参数） |
+| 动作 | diffusion policy 解码到 EVE 或 NEO；联合预测手臂/灵巧手、步行与骨盆姿态指令 |
+| 辅助目标与失败数据 | 预测手与目标物体在图像中的位置等认知目标；成功样本监督动作+认知，失败 rollout 仅监督认知头以抗过拟合 |
 
-训练包含 EVE / NEO 遥操作与自主轨迹。官方展示靠墙支撑、开门、取物等多接触行为；共享表征不表示两个本体的动作维度完全相同。
+```mermaid
+flowchart LR
+  Voice["语音目标 -> Offboard LLM + Sentence Encoder"] --> MM["Multimodal Transformer (approx 160M)"]
+  Vis["Pretrained ViT 视觉 Token"] --> MM
+  Prop["关节位置 + 施力历史序列"] --> MM
+  MM --> Latent["共享 Latent 表征"]
+  Latent --> DP["Diffusion Policy Head (成功样本监督)"]
+  Latent --> Cog["Cognitive Grounding Head (手/物位置, 成败样本共训)"]
+  DP --> Act["EVE/NEO 联合动作 (arm+hand / walk / pelvis, ~5 Hz 机载)"]
+```
+
+训练包含 EVE / NEO 在办公室与员工家庭采集的遥操作与自主轨迹。官方展示靠墙支撑、开门、动态选左手/右手/双手取物等多接触移动操作行为；共享表征不表示两个本体的动作维度完全相同。
+
+## 源码运行时序图
+
+**不适用（商业闭源机载策略）。** 官方发布页（<https://www.1x.tech/discover/redwood-ai>）未公开模型源码、推理权重或训练数据集下载链接，因此无法绘制基于真实源码入口的运行时序图。
 
 ## 工程实践
 

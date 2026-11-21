@@ -14,6 +14,9 @@
 - **作者：** James Wang、Primo Pu、Zephyr Fung 等 22 人（BibTeX 末三位 Qian Wang、Roy Gan、Hao Wang）；论文标注 † Project Lead / ‡ Correspondence，HTML 版未能还原对应到人
 - **日期：** 论文 2026-04-14；项目页标 *April 2026*；官网博客时间线 2026-06-10；HF 数据集创建 2026-05-16；GitHub 最后提交 2026-05-21
 - **入库日期：** 2026-10-09
+- **再核日期：** 2026-11-21
+- **核对范围：** 核对 `https://x2robot.com/x2go` RSC 负载、`https://github.com/X-Square-Robot/XRZero-G0`（确认仓库仍仅含 `README.md` 与 `imgs/`）及 HF 数据集 `x-square-robot/XRZero-G0-3K` 结构；论文正文另归档于 `sources/papers/xrzero_g0_arxiv_2604_13001.md`
+- **通读：** 已完成
 - **一句话说明：** 背包 + PICO 4 VR 头显 + 两种手持夹爪（H 型按压 / G 型手指驱动）做无本体双臂采数；用「采集→质检→训练→评测」闭环把有效率做到 85%，并报告 robot-free : 真机 = 10:1 时可追平 500 条纯真机基线。页面为 Next.js 前端渲染，正文取自 RSC payload。
 
 ## 开源核查（2026-10-09）

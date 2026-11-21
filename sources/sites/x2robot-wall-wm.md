@@ -11,6 +11,8 @@
 - **机构：** 自变量机器人（X Square Robot）；作者署名 *X Square Robot Team*
 - **官方页日期：** 2026-05-29（页眉 *X Square Robot · Tech Report · May 29, 2026*）
 - **入库日期：** 2026-10-09
+- **核对范围：** 核对 `https://x2robot.com/pages/wm` RSC 负载、`wall-wm` 仓库 README/源码与 HF 组织页权重发布状态，并与 `arXiv:2606.01955v2` 正文交叉核对
+- **通读：** 已完成
 - **一句话说明：** 官方技术报告页给出「事件而非定长 chunk」的核心论点、三大支柱（事件级对齐 / 双推理模式 / 规模化基建）、WorldArena 视频生成表与真机四套件 Task Progress 汇总。页面是 Next.js 前端渲染，正文藏在 RSC payload 内嵌的 HTML 里，静态抓取需解析 `self.__next_f` 才能拿到文字。
 
 ## 开源核查（2026-10-09）

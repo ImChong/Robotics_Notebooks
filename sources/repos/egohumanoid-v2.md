@@ -11,30 +11,31 @@
 - **论文：** <https://arxiv.org/abs/2609.37181>
 - **项目页归档：** [egohumanoid-v2-opendrivelab.md](../sites/egohumanoid-v2-opendrivelab.md)
 - **Wiki 主实体：** [EgoHumanoid-V2](../../wiki/entities/paper-egohumanoid-v2.md)
-- **核查日期：** 2026-10-12
+- **核查日期：** 2026-10-12（2026-11-21 复核至 commit `682199e`，2026-11-04）
+- **核对范围：** 拉取 `OpenDriveLab/EgoHumanoid-V2` @ `682199e`（"Release policy training and inference for motion tokens and Revo2 hands"），通读 `README.md`、`data_alignment/action_alignment/src/pipeline.py`、`data_alignment/vision_alignment/src/pipeline.py`、`model_training/src/train.py` 与 `model_training/src/serve.py`。边界：未在本地 GPU/G1 真机运行。
+- **通读：** 已完成
 
 ## 仓库覆盖范围
 
-官方 README 提供 Ubuntu/Python/CUDA/SONIC/PICO/G1/Revo2 等硬件与环境配置，并描述人类示范采集、同步、动作对齐与回放操作。已公开的重要入口如下：
+官方 README 提供 Ubuntu/Python/CUDA/SONIC/PICO/G1/Revo2 等硬件与环境配置，并完整公开人类示范采集、同步、动作对齐、视觉对齐、OpenPI π₀.₅ 微调与 SONIC 推理部署代码。已公开的重要入口如下：
 
 | 用途 | README 入口 / 路径 | 状态 |
 |------|-------------------|------|
-| 人类数据采集 | `eh2-collect-human` | README 有操作步骤 |
-| 同步与质量检查 | `eh2-sync-human --root data/{task}` | README 有操作步骤；数据输出为同步后的 LeRobot 格式 |
-| 粗到细动作对齐 | `data_alignment/action_alignment`；`eh2-align --input ... --endpoints hands|feet --output ...` | 有源码与四项任务样例 |
-| 前后动作仿真回放 | `eh2-replay --mode smpl|token` | 有命令和输出说明，结果写 `replay.mp4` |
-| 视觉对齐 | README 的 Vision Alignment | Coming soon |
-| VLA 策略训练 | Policy Training & Serving 环境有安装说明；Training pipeline checklist 未完成 | 完整项目训练命令/流水线尚待发布 |
-| 策略部署 | Policy Deployment checklist | 尚待发布 |
+| 人类数据采集 | `eh2-collect-human` | 已公开；网页端录制 LeRobot 格式数据 |
+| 同步与质量检查 | `eh2-sync-human --root data/{task}` | 已公开；50 Hz 同步并生成质检报告 |
+| 粗到细动作对齐 | `data_alignment/action_alignment`；`eh2-align --input ... --endpoints hands\|feet --output ...` | 已公开；含四项任务样例与预训练 response MLP |
+| 前后动作仿真回放 | `eh2-replay --mode smpl\|token` | 已公开；结果写 `replay.mp4` |
+| 视觉对齐 | `data_alignment/vision_alignment`；`eh2-visual-align` | 已公开（升级至 **SAM 3.1** + DiffuEraser + G1 手臂渲染；论文为 SAM 2） |
+| VLA 策略训练 | `model_training`；`eh2-norm-stats`、`eh2-train` / `torchrun --module eh2_policy.train` | 已公开（2026-11-04 `682199e` 新增；基于 OpenPI PyTorch `pi05_base`） |
+| 策略部署 | `eh2-serve`（FastAPI `/health` & `/act`）+ SONIC `run_vla_inference.py` | 已公开（2026-11-04 `682199e` 新增；43 维状态 → action_horizon × 76 动作） |
 
-README 声明 action alignment 示例输入放在 `{task}/input.parquet`，对齐输出目录含 `data.parquet`（人体 SMPL 动作及对齐 token）和 `run.json`（逐轮指标与被选轮次）。其 `H→K→D` 与论文一致：SONIC rollout 建立初始化、IK 修正参考、执行响应反馈驱动离线迭代。这里的结构概括结合论文方法与 README 命令；不是独立运行验收报告。
+README 声明 action alignment 示例输入放在 `{task}/input.parquet`，对齐输出目录含 `data.parquet`（人体 SMPL 动作及对齐 token）和 `run.json`（逐轮指标与被选轮次）；视觉对齐在仓库中按 `STAGE_DEPENDENCIES`（`segment -> geometry & inpaint -> render`）执行并用输入与代码 sha256 记录 `run.json` 断点；策略服务校验 43 维状态与 76 维动作（64 维 SONIC token + 左右手各 6 维 Revo2 命令）。
 
 ## 开源与复现边界
 
-- **部分开源，有可运行的数据对齐入口。** 论文所需的动作对齐流程不是占位 README，仓库有对应实现目录、CLI 和示例，因此可对这一段绘制运行时序图。
-- **端到端复现仍不完整。** README 将视觉对齐、VLA 模型训练、部署列为未完成；未见完整论文数据集或 checkpoint 下载入口。能重跑示例对齐不等于可以从原始示范重训出论文策略并部署到 G1。
-- **硬件和依赖成本显著。** README 指定多套主机/机器人环境，并依赖 G1、BrainCo Revo2、SONIC 控制栈、PICO 追踪和 GoPro。复现者应以当前 README 为准检查版本、设备和 checkpoint 来源。
-- **许可证范围。** Apache-2.0 适用于仓库所发布内容；不自动覆盖未发布的人体采集数据、模型权重、上游依赖和仓库中引用的第三方媒体。
+- **代码链已完整开源（Apache-2.0）。** 从采数、动作/视觉对齐到 OpenPI 微调与 SONIC 服务部署均具备可运行 CLI 与模块，可直接对齐源码绘制完整运行时序图。
+- **数据与外部权重仍需自备。** 仓库提供动作对齐示例、response MLP 权重与 3 项视觉对齐样例，未随仓提供论文全量 200 条/任务人类示范数据集与任务微调后策略权重；复现者需另行获取 `pi05_base`、SONIC 控制器与权重、SAM 3.1 权重及 G1/Revo2/PICO/GoPro 硬件。
+- **视觉分割模型版本差异。** 论文 §3.4 使用 SAM 2，而公开仓库实现已升级为 SAM 3.1（需 Hugging Face 授权下载）。
 
 ## 上下游关系
 

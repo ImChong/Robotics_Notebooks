@@ -16,9 +16,14 @@ tags:
   - manipulation
   - humanoid
 status: complete
-updated: 2026-10-28
+updated: 2026-11-21
 arxiv: "2609.17210"
 code: https://github.com/FluxVLA/FluxVLA
+original:
+  - ../../sources/papers/fluxvla_arxiv_2609_17210.md
+  - ../../sources/repos/fluxvla.md
+  - ../../sources/models/fluxvla-engine-huggingface.md
+  - ../../sources/sites/limx-fluxvla-product.md
 related:
   - ./limx-cosa.md
   - ../methods/vla.md
@@ -142,8 +147,10 @@ sequenceDiagram
   ROB-->>INF: 传感器反馈（闭环）
 ```
 
-- **最短复现路径：** `install_env.sh sim-only` → 选 README Performance 表对应 `configs/` → `torchrun scripts/train.py` → `eval.sh` → HF checkpoint 可跳过自训。
+- **最短复现路径：** `install_env.sh sim-only` → 选 README Performance 表对应 `configs/` → `torchrun scripts/train.py` → `eval.sh` → HF checkpoint 可跳过自训；在线 RL 后训练可用 `rlinf-only` 模式。
 - **真机路径：** `real-only` 或 `full` → `docs/franka.md` / `docs/oli_whole_body.md` → `inference_real_robot.py`；远程算力见 `docs/remote_inference_serving.md`。
+
+图依据：`FluxVLA/FluxVLA@b401e52`，读过 `README.md`、`scripts/train.py` 与 `scripts/inference_real_robot.py`（`Config.fromfile`、`build_runner_from_cfg`、`inference_runner.run_setup/run`），未实际运行训练或真机推理。
 
 ## 支持的策略与评测（README 摘要）
 
@@ -159,6 +166,26 @@ sequenceDiagram
 **RoboDojo 提醒：** π0.5 平均 progress/success **13.61% / 8.83%** 仍显著低于 LIBERO  tabletop 分数——长程泛化是 **平台能测、模型仍难** 的显例。
 
 **结果口径：** GitHub README 报 π0.5 LIBERO 四套件平均 97.95%，[HF 模型卡](../../sources/models/fluxvla-engine-huggingface.md)报 97.85%；两个来源的分项也不同，不能直接视为同一次实验或取平均。选定 checkpoint 和评测配置后再复现。
+
+### 论文实证补充（arXiv:2609.17210v2）
+
+- **RoboTwin 与在线 RL 后训练（RLinf）：** 在 RoboTwin 50 任务（每任务 50 clean + 500 randomized）多任务训练中，FastWAM Clean/Random 达 `90.86% / 89.96%`（平均 `90.41%`）；可选 **RLinf** PPO/GAE 前端在不改原生预处理的前提下，将 SmolVLA 在 LIBERO-10 从 `66.2%` 提至 `76.2%`（+10.0 pt）、在 10 项 RoboTwin Clean 任务从 `45.9%` 提至 `61.3%`（+15.4 pt）。
+- **推理加速数值对齐与轨迹后处理：** GR00T 加速路径（算子融合 + CUDA Graph）相对基线随机权重余弦相似度 `> 0.99999`（最大绝对误差约 `0.02`），RTX 5090 达 `42.6 Hz`（Training-time RTC `47.6 Hz`）、AGX Orin 64GB 达 `7.4 Hz`；12-DoF 50 步合成轨迹上，Ruckig 滤波主机端均值延迟 `1.17 ms`、Joint MPC 为 `4.90 ms`。
+- **真机多平台评测（Project-reported）：**
+  - **ALOHA 6 任务（90 trials/模型）：** `π0.5` 汇总成功率 `72.22%`，`GR00T N1.7` `62.22%`，`FastWAM` `61.11%`。
+  - **Oli 人形 4 任务：** `π0.5` 糖果拾取 `62.5%`、桌面清理 `45.0%`、4 阶段搬箱全流程 `33.33%`（1–3 阶段 `61.67%`）。
+  - **Rebot 4 任务（80 trials）：** `π0.5` `77.50%`；**双臂 Franka 5 任务（100 trials）：** `GR00T N1.7` `88.00%`、`π0.5` `79.00%`。
+  - **生态分工规划（arXiv §6.2）：** 围绕稳定契约拆分为 `FluxMimir`（离线数据）→ `FluxBisim`（仿真与数据生成）→ `FluxDAgger`（人在环干预）→ `FluxVLA Engine`（训推核心）→ `FluxThemis`（仿真/真机评测编排）→ `FluxHermes`（编译与部署打包）。
+
+## 结论
+
+**FluxVLA Engine 的核心工程价值不是「新刷榜模型」，而是把异构 VLA/WAM/RL 的数据、配置、训练、评测、RTC 与真机执行接口收敛到同一套可审计契约上。**
+
+1. **做跨模型对照时先锁契约再看数字**：LIBERO/RoboCasa/RoboTwin 表格训练预算与微调条件并不对齐，跨行比较须用同一 `configs/` 与数据配方重跑。
+2. **模型推理频率 ≠ 机器人闭环频率**：5090 上的 `40+ Hz` 仅代表模型前向路径，端到端闭环仍受相机采集、ZMQ 序列化、RTC 衔接与轨迹后处理影响。
+3. **长程泛化暴露真实瓶颈**：同一平台上 LIBERO 普遍 `>94%` 而 RoboDojo 仅 `0.93%–8.83%` 成功率，说明难点在长程记忆与随机布局泛化，而非训练框架。
+4. **分清开源底座与商业 OS 边界**：需要开源 VLA 训推与端侧运行时选 FluxVLA；需要 S2 认知调度与机上 1000 Hz 运控仍依赖 COSA 或自研上层调度。
+5. **用子系统边界管理复杂度**：结合 `FluxBisim`、`FluxDAgger` 与 `FluxThemis` 分仓演化，避免在主仓耦合全部仿真器与评测脚本。
 
 ## 工程实践
 
@@ -179,13 +206,13 @@ sequenceDiagram
 4. **环境档：** 仿真-only 勿装全量真机依赖；Orin/ROS 路径单独跟文档，避免 `full` 安装失败误判「平台不可复现」。
 5. **生态子仓：** DAgger 与 Bisim 版本独立迭代，issue 时注明主仓 vs 子仓。
 
-## 常见误区或局限
+## 局限与风险
 
 - **误区：「支持列表 = LimX 官方维护全部上游权重」。** License 与 checkpoint 仍遵循 OpenPI、NVIDIA 等；平台提供 **接口与发布权重链接**。
 - **误区：「装了 FluxVLA = 论文算法已 SOTA」。** 平台论文主张 **工程可复现**；各 backbone 数字是 **在统一栈上的对照**，不是单一模型 claim。
-- **局限：** 策略族迭代快，README News 快于 arXiv v1 正文；**GPT-6 Astra LIBERO API 评测** 等条目属平台扩展，与论文核心主张（开源契约）正交。
+- **局限：** 策略族迭代快，README News 快于 arXiv v1/v2 正文；论文 §5.8 明确指出当前尚未完成全模型同预算对照、注入延迟下的 RTC 消融以及多机统一协议基准。
 
-## 与其他页面的关系
+## 关联页面
 
 - [LimX COSA](./limx-cosa.md) — 调度 FluxVLA 训练出的 VLA 作为 S1 技能
 - [VLA 方法页](../methods/vla.md) — 策略族总览

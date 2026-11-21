@@ -4,7 +4,11 @@
 - **数据集：** <https://huggingface.co/datasets/x-square-robot/x2real-assets>
 - **发布方：** X Square Robot（自变量机器人，Hugging Face 组织页）
 - **关联论文：** <https://arxiv.org/abs/2609.27449>
-- **一句话说明：** X2Real 仿真用静态资产快照，包含机器人、物体、室内场景、材质、纹理、抓取标签与任务采样池；它不是机器人动作或轨迹数据集。
+- **关联代码：** <https://github.com/X-Square-Robot/x2real>
+- **再核日期：** 2026-11-21
+- **核对范围：** 通读 `https://huggingface.co/datasets/x-square-robot/x2real-assets/raw/main/README.md` 并与 `X-Square-Robot/x2real` 的 `assets/manifest.json` 要求及 `OPEN_SOURCE_SCOPE.md` 交叉核对；未下载 44.2 GB TAR 分片实体文件
+- **通读：** 已完成
+- **一句话说明：** X2Real 仿真用静态资产快照，包含机器人、物体、室内场景、材质、纹理、抓取标签与任务采样池；它不是机器人动作或轨迹数据集（轨迹数据集另见 `x-square-robot/X2Real-Dataset`）。
 
 ## 页面核实到的内容
 

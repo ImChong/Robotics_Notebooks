@@ -3,7 +3,7 @@ type: entity
 tags: [company, scaling, world-action-model, video-policy, pretraining, evaluation, rhoda-ai]
 title: Rhoda：网络视频预训练的真机 scaling 研究
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
 summary: "Rhoda AI 博客（2026-09-10）在同一工业拆包任务上固定逆动力学模型与后训练流程，只改视频模型规模与预训练算力：规模 XS→S→M→L 的 100 秒内无人工干预完成率为 3.7%→65.0%→75.3%→84.7%，算力越多越好但数据充足时差距小；自定义 DINO FD 与任务表现同序；超过 200 小时真机评测，单任务单本体，闭源。"
 related:
   - ./rhoda-ai.md
@@ -16,6 +16,9 @@ related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/sites/rhoda-ai.md
+  - ../../sources/sites/rhoda-scaling-web-video-pretraining-2026.md
+original:
+  - ../../sources/sites/rhoda-scaling-web-video-pretraining-2026.md
 ---
 
 # Rhoda：网络视频预训练的真机 scaling 研究
@@ -46,6 +49,34 @@ sources:
 - **少见的真机 scaling 曲线：** 多数 scaling 论述来自仿真或离线指标；这里每个策略做 100 到数百次真机试验，总计超过 **200 小时**真机评测。
 - **回答「网络视频值不值」：** 把预训练规模与任务表现直接挂钩，可与 [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) 中以机器人交互数据为轴的结论对照。
 - **提出可在预训练阶段监控的代理指标：** DINO FD 不需要机器人，也不需要后训练，便宜到可在预训练全程记录。
+
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph stage1 ["Stage 1：通用网络视频预训练（本篇唯一自变量）"]
+    WV["无动作标注通用网络视频"] --> PV["因果视频模型<br/>规模 XS→L / 算力 0.08×→1×"]
+    PV -.->|"留出网络视频单窗口预测<br/>DINOv2 ViT-L/14 CLS 特征"| DF["DINO FD 预训练质量度量<br/>（无需机器人数据）"]
+  end
+  subgraph stage2 ["Stage 2：任务后训练（固定配方）"]
+    RD["工业拆包示范视频<br/>（100% / 50% / 25% / 12.5%）"] --> PT["后训练视频模型"]
+    PV --> PT
+  end
+  subgraph eval ["真机闭环评测（固定 IDM 与 100s SOP）"]
+    PT -->|"预测未来画面"| IDM["固定逆动力学模型 IDM<br/>（多机器人数据预训一次）"]
+    IDM -->|"末端动作"| ROB["真机执行与 200h+ 评测"]
+    ROB -->|"观测帧"| PT
+  end
+```
+
+图依据：原文 Fig. 2（DVA training and evaluation）、Measuring pre-training quality 与 Appendix C/F。
+
+## 核心原理
+
+- **变量隔离与两阶段解耦：** 依托 [DVA](./rhoda-direct-video-action.md) 架构，动作解码由一个在多机器人数据上训练一次并全局冻结的 **IDM** 负责；策略的高维视觉世界先验完全由阶段一**无动作通用网络视频**预训练提供，从而把“网络视频预训练规模/算力是否提升真机表现”分离成可独立观测的变量。
+- **临界批大小与非算力匹配扫描：** 预训练采用 Kaplan et al. 临界批大小配方。模型规模实验（XS/S/M/L）共享固定梯度步数直到验证损失平台，各模型均训练超过 compute-optimal 点以压缩推理成本（因此更大模型同时消耗了更多 token 与算力）；算力实验则取 M 模型同一训练轨迹的 4 个累积算力检查点（0.08×–1×）。
+- **预训练质量度量（DINO FD）：** 在留出通用网络视频上由 EMA 权重模型根据真值上下文做单窗口未来帧预测，经视频 tokenizer 解码后送入冻结的 **DINOv2 ViT-L/14**（取 CLS token），分别在 40 万帧预测图与真值图上拟合高斯分布计算 Fréchet 距离（越低越好；不测时序连贯性，只测单帧分布质量）。
+- **为什么用代理指标选后训练检查点：** 作者在实验中复现了“验证损失最低点往往对应较差真机策略（最差 48.0% vs 较好 74.5%–76.0%）”，因此改用无需真机试跑的内部代理指标极小值筛选上线检查点（详见原文 Appendix D）。
 
 ## 实验设置
 
@@ -121,6 +152,7 @@ sources:
 
 ## 参考来源
 
+- [Rhoda AI 网络视频预训练 scaling 官方原文核对（2026-11-21）](../../sources/sites/rhoda-scaling-web-video-pretraining-2026.md)
 - [Rhoda AI 官网研究页、新闻稿与团队页核查（2026-10-16）](../../sources/sites/rhoda-ai.md)
 - 原文：<https://www.rhoda.ai/research/scaling-web-video-pretraining>
 

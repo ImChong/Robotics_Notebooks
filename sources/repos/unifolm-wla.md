@@ -12,6 +12,8 @@
 - **主要语言：** Markdown / 技术文档（截至入库日无 Python 训练推理入口）
 - **分类：** 基础模型（UnifoLM）
 - **入库日期：** 2026-09-18
+- **核对范围：** 2026-11-21 通读 `unitreerobotics/unifolm-wla@0a1aa87` 官方 `README.md`、`docs/train_action_expert_en.md`（安装、评估、Dex1 msgpack 服务、微调/从头训练与 LoRA）与 `docs/robot_action_state_processing_en.md`（54 维动作 / 60 维状态与 SE(3) 相对位姿规范），并阅读离线评估脚本 `examples/unifolm_wla/eval_files/unitree/eval_local_episode.py` 与服务入口 `model_server/action_server_wbc_msgpack_unitree.py`；未实际运行模型训练或真机部署。
+- **通读：** 已完成
 - **一句话说明（2026-09-18 快照）：** 官方 UnifoLM-WLA-1.0 枢纽仓：6B 通用人形 WLA 模型说明、HF 权重/数据集索引与统一动作空间处理规范；ER-1/ER-Flow 权重已发，WLA-Base 与后训练代码待发布。
 - **沉淀到 wiki：** 是 → [`wiki/entities/unifolm-wla.md`](../../wiki/entities/unifolm-wla.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)

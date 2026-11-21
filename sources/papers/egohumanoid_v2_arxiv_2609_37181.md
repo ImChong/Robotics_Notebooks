@@ -4,7 +4,9 @@
 
 - **作者：** Jin Chen, Yiming Jiang, Chongyang Xu, Modi Shi, Shijia Peng, Li Chen, Tianyu Li, Mu Xu, Yilun Chen, Steven Hoi, Hongyang Li
 - **机构：** OpenDriveLab at The University of Hong Kong、Alibaba Group、Shanghai Innovation Institute、Fudan University、Beihang University、Sichuan University、Archon Robotics
-- **提交日期：** 2026-09-29（v1）；截至 2026-10-12 收录 arXiv 预印本
+- **提交日期：** 2026-09-29（v1）；截至 2026-11-21 收录 arXiv 预印本
+- **核对范围：** 通读 `https://arxiv.org/html/2609.37181v1` 全文：Abstract、§1–§2、§3 方法（3.1–3.4 H/K/D 动作对齐与视觉适配）、§4 实验（Q1–Q4、Table 1–3）、§5 结论与局限，以及 Appendix A–B（数据准备、动作对齐细节、响应模型训练与策略评测口径）。边界：未在本地 GPU/Unitree G1 真机复现实验。
+- **通读：** 已完成
 - **论文：** <https://arxiv.org/abs/2609.37181>
 - **全文：** <https://arxiv.org/html/2609.37181v1>
 - **PDF：** <https://arxiv.org/pdf/2609.37181>
@@ -44,7 +46,7 @@
 - 真实评测是四个物理环境任务、四个独立策略；论文的起始位置/物体变化测试仍属于任务内执行，不构成单策略的未见任务泛化。
 - 每个条件 20 次，论文未报告误差条；成本以人员配置、设备设置、校准、排障和场景复位等具体统计口径为准。
 - 对齐本身仍有不稳定动作，重复 IK 和仿真 rollout 会限制数据处理吞吐量。
-- 当前官方仓库只开放了部分采集与动作对齐链路；视觉对齐、VLA 训练流水线和部署管线仍在 README release checklist 中待发布。详见 [源码核查](../repos/egohumanoid-v2.md)。
+- 官方仓库 `OpenDriveLab/EgoHumanoid-V2`（@ `682199e`，2026-11-04）已补齐人体采集、动作对齐、视觉对齐、OpenPI π₀.₅ 训练与 FastAPI 服务部署代码；但论文全量 200 条/任务原始示范集与训练后任务 checkpoint 未直接随仓附带。详见 [源码核查](../repos/egohumanoid-v2.md)。
 
 ## 关联资料
 

@@ -4,6 +4,8 @@
 - **链接：** https://generalistai.com/blog （栏目筛选：Research / Ideas / Stories / Company）
 - **机构：** Generalist AI, Inc.；官网 About 写明团队位于 Bay Area（CA）与 Boston（MA），未写成立日期。成立年份 **2024** 据 TechCrunch（2026-08-25）：<https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/>
 - **核查日期：** 2026-10-09
+- **核对范围：** 2026-11-22 重新抓取并通读 `https://generalistai.com/blog` 全部 10 篇列表项与 `https://generalistai.com/about` 全文，确认与已归档标题、日期及团队背景一致。
+- **通读：** 已完成
 - **方法：** curl 读取 `/blog` 列表页 HTML（服务端渲染）中的标题、日期与链接；列表页未见分页或「加载更多」。
 - **用途：** 确认公司页 [Generalist AI](../../wiki/entities/generalist-ai-robotics.md) 覆盖全部官方博文。
 

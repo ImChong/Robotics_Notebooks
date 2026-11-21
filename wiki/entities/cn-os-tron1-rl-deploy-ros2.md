@@ -7,7 +7,9 @@ tags:
 - sim2real
 - reinforcement-learning
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+- ../../sources/repos/tron1-rl-deploy-ros2.md
 related:
 - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
 - ../entities/humanoid-motion-intelligence.md
@@ -46,7 +48,17 @@ TRON1 RL Deploy ROS2 用 ROS 2 控制器与 ONNX Runtime 执行训练后的运�
 
 ## 核心原理
 
-`robot_hw` 负责状态读取、仿真/真机抽象与执行；`robot_controllers` 把观测组织成策略输入，经 ONNX 推理生成动作，再交给硬件层。低层依赖 `limxsdk-lowlevel`。
+```mermaid
+flowchart LR
+  CMD["手柄 / /cmd_vel 速度指令"] --> HW["PointfootHardwareNode<br/>HardwareLoop (500 Hz)"]
+  SENS["IMU + 关节状态 (limxsdk-lowlevel)"] --> HW
+  HW --> CTRL["ros2_control 控制器 (50 Hz)<br/>Pointfoot / Solefoot / Wheelfoot"]
+  CTRL --> ORT["ONNX Runtime<br/>encoder.onnx → policy.onnx"]
+  ORT -->|"目标关节位姿 + PD (kp/kd)"| HW
+  HW -->|"publishRobotCmd"| ROB["Gazebo (tron1-gazebo-ros2) / TRON1 真机"]
+```
+
+`robot_hw` 负责状态读取、仿真/真机抽象与执行；`robot_controllers` 根据 `ROBOT_TYPE` 自动选择点足（`PointfootController`）、脚掌（`SolefootController`）或轮足（`WheelfootController`），把 IMU 与关节观测组织成策略输入，经 ONNX Runtime 推理（`encoder.onnx` + `policy.onnx`）生成关节目标，再交给硬件层。仓库内建 10 种机型在 `isaacgym` 与 `isaaclab` 下训练的共 20 组 ONNX 策略，低层依赖 `limxsdk-lowlevel`（ROS 2 `main` 面向 Iron，另有 `feature/humble` 与 `feature/foxy` 分支）。
 
 这是训练结果的部署仓库，不能把它当成训练数据、奖励与 PPO 实现均已包含的 RL 框架。
 
@@ -139,7 +151,7 @@ sequenceDiagram
 
 - [官方部署仓库归档](../../sources/repos/tron1-rl-deploy-ros2.md)
 
-- 源码核对（2026-11-02）：limxdynamics/tron1-rl-deploy-ros2@2e70026，读过 README.md、robot_hw/src/PointfootHardwareNode.cpp、robot_hw/src/HardwareLoop.cpp、robot_hw/src/HardwareBase.cpp、robot_hw/src/PointfootHardware.cpp、robot_hw/launch/pointfoot_hw.launch.py、robot_hw/launch/pointfoot_hw_sim.launch.py、robot_controllers/config/robot_controllers.yaml、robot_controllers/src/ControllerBase.cpp，以及 robot_controllers/src/PointfootController.cpp 的关键段；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-21）：limxdynamics/tron1-rl-deploy-ros2@19e604c（原 2026-11-02 基于 @2e70026 绘制时序图），读过 README.md、robot_hw/src/PointfootHardwareNode.cpp、robot_hw/src/HardwareLoop.cpp、robot_hw/src/HardwareBase.cpp、robot_hw/src/PointfootHardware.cpp、robot_hw/launch/pointfoot_hw.launch.py、robot_hw/launch/pointfoot_hw_sim.launch.py、robot_controllers/config/robot_controllers.yaml、robot_controllers/src/ControllerBase.cpp，以及 robot_controllers/src/PointfootController.cpp 的关键段；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

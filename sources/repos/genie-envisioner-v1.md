@@ -28,3 +28,5 @@
 - **入口：** `scripts/get_statistics.py`；`scripts/train.sh main.py` + `configs/ltx_model/{video_model_lerobot,policy_model_lerobot}.yaml`；`web_infer_scripts/run_server.sh`；`gesim_video_gen_examples/infer_gesim.py`。
 - **许可：** 复用的 LTX/Cosmos/pipeline/openpi-client 目录 Apache-2.0；其余代码与数据 CC BY-NC-SA 4.0。
 - **版本：** README 列 2026-05-28 GE-Sim 2、2026-09-10 GE-Act 2；这些是独立后续发布，不等于 V1 全面替换。
+- **核对范围：** 通读 `AgibotTech/Genie-Envisioner-V1@d41358f` 的 `README.md` 及入口文件 `main.py`、`scripts/train.sh`、`web_infer_scripts/run_server.sh`、`gesim_video_gen_examples/infer_gesim.py`；未运行 GPU 训练或服务。
+- **通读：** 已完成

@@ -6,6 +6,8 @@
 - **类型：** site / research post（官方研究页 ×2）
 - **机构：** 自变量机器人（X Square Robot）
 - **入库日期：** 2026-10-09
+- **核对范围：** 核对 `https://x2robot.com/research/68bc2cde8497d7f238dde690`（WALL-OSS）、`https://x2robot.com/oss`（Wall-OSS-0.5）与 GitHub/HF 入口的交叉一致性，并与两代 arXiv 论文正文逐项比对
+- **通读：** 已完成
 - **研究列表页：** <https://x2robot.com/research>（英文 <https://x2robot.com/en/research>）——时间线两条：**WALL-OSS-0.5 · 2026.05.28**（"fully open-source, trained with gradient-bridged co-training, and deployable on real robots straight from pretraining."，链接 `/oss`）；**WALL-OSS · 2025.09.08**（链接 `/research/68bc2cde8497d7f238dde690`）
 - **代码：** <https://github.com/X-Square-Robot/wall-x>（两代共用同一仓库，见 [wall-x 仓库归档](../repos/wall-x.md)）
 - **Hugging Face 组织：** <https://huggingface.co/x-square-robot>

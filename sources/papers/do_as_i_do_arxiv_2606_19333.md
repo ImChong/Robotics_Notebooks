@@ -12,6 +12,9 @@
 - **代码：** <https://github.com/malik-group/do-as-i-do>（项目页头部 Code 链接；2026-10-16 复核：仓库公开，MIT 许可）
 - **开源状态：** **已开源（仅代码）**——仓库含 `reconstruction/`、`retargeting/`、`deployment/` 三个目录与 git 子模块；README 未提及数据集或模型权重发布；Sharpa Wave 手部 SDK 为专有，未随仓库提供（见 `deployment/README.md`）。
 - **入库日期：** 2026-10-16
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读 arXiv:2606.19333v1 HTML 全文与项目页 `https://do-as-i-do.com/`，并核对官方开源仓库 `malik-group/do-as-i-do`（commit `824591b`，MIT，仓库描述标注 CoRL 2026）根目录 `README.md` 及 `reconstruction/`、`retargeting/`、`deployment/` 目录结构（未在本地 GPU/真机运行）。
+- **通读：** 已完成
 - **索引来源：** [wechat_sharpa_dexterous_manipulation_2026-10-16.md](../blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md)
 
 ## 一句话说明

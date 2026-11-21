@@ -2,8 +2,11 @@
 type: entity
 tags: [dataset, egocentric, egocentric-video, manipulation, huggingface, lerobot, mcap, vla, imitation-learning, lightwheel, open-source, physical-ai]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-21
 date: 2026-08-26
+original:
+  - ../../sources/blogs/hf_lightwheel_egosuite_open100k.md
+  - ../../sources/blogs/lightwheel_egosuite.md
 related:
   - ./lightwheel-egosuite.md
   - ./cn-os-lw-egosuite-devkit.md
@@ -131,6 +134,7 @@ flowchart TB
 | **数据集（EgoStandard / EgoPro / EgoDemo）** | **已开放获取**（HF access + Bucket） |
 | **LW-Egosuite-DevKit** | **已开源** — MCAP 转换与可视化 |
 | **官方训练/推理代码** | **无** 独立仓库；消费方自建管线 |
+| **源码运行时序图** | **不适用**（仅开放数据集，无官方训练/推理代码；MCAP 工具链时序见 [LW-Egosuite-DevKit](./cn-os-lw-egosuite-devkit.md)） |
 
 ## 局限与风险
 

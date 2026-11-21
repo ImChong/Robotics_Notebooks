@@ -12,7 +12,9 @@
 - **许可证：** Apache-2.0
 - **分类：** 强化学习训练
 - **入库日期：** 2026-07-24
-- **最近复核：** 2026-08-07
+- **最近复核：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `unitreerobotics/unitree_rl_lab@4960b84` 官方 `README.md` 全文（Isaac Sim 5.1.0 / Isaac Lab 2.3.0 依赖、USD/URDF 资产配置、`unitree_rl_lab.sh -i/-l/-t/-p`、`unitree_mujoco` Sim2Sim 与 `deploy/robots/*/g1_ctrl` C++ Sim2Real）及训练入口 `scripts/rsl_rl/train.py`（`AppLauncher`、任务自动发现、Hydra 配置解析与 `OnPolicyRunner` 调度）；未实际运行 Isaac Lab 或真机。
+- **通读：** 已完成
 - **一句话说明：** 官方 Isaac Lab 2.x RL 环境，面向 Go2/H1/G1-29dof 的并行训练入口，并含 C++ deploy（Sim2Sim / Sim2Real）。
 - **沉淀到 wiki：** 是 → [`wiki/entities/unitree-rl-lab.md`](../../wiki/entities/unitree-rl-lab.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)

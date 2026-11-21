@@ -11,6 +11,8 @@
 - **文档：** https://docs.lightwheel.net/lw_benchhub
 - **项目页：** https://lightwheel.ai/lightwheel-platform
 - **入库日期：** 2026-08-17
+- **核对范围：** 2026-11-22 浅克隆 `LightwheelAI/LW-BenchHub`（HEAD `b2bcb2d`），通读根目录 `README.md`、`env_server.sh`、`lw_benchhub/scripts/env_server.py`、`lw_benchhub/scripts/policy/eval_policy.py` 及官方文档首页 `https://docs.lightwheel.net/lw_benchhub`，核对目录结构、远程 IPC/RESTful 环境服务与策略评测入口；未在本机无 Isaac Sim/GPU 环境下实际运行仿真。
+- **通读：** 已完成
 - **一句话说明：** 光轮在 Isaac Lab-Arena 上的具身仿真评测底座：多本体厨房任务、遥操作采数、RL/IL 与 EnvHub 策略评测。
 - **交叉归档：** [LW BENCHHUB TOUR](lw_benchhub_tour.md)、[Lightwheel Platform](../sites/lightwheel-platform.md)
 - **沉淀到 wiki：** 主节点 [cn-os-lw-benchhub](../../wiki/entities/cn-os-lw-benchhub.md)（2026-10-10 升格）；工程闭环见 [lw-benchhub-tour](../../wiki/entities/lw-benchhub-tour.md)

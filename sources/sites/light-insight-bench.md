@@ -8,6 +8,8 @@
 - **数据集：** <https://huggingface.co/datasets/LightOriginsHQ/light-insight-bench>
 - **机构：** 亮源新创（Light Origins）
 - **入库日期：** 2026-09-21
+- **核对范围：** 核对官方项目页（`https://lightorigins.github.io/Light-INSIGHT-Bench/`）全页内容（5×5 诊断矩阵分布、480×270 单目 RGB 统一部署协议、Leaderboard 与 evidence-pack PR 提交流程）；未在本地运行 Isaac Lab 评测。
+- **通读：** 已完成
 
 ## 开源核查（2026-09-21）
 

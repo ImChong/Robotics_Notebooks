@@ -6,7 +6,9 @@
 - **论文：** <https://arxiv.org/abs/2606.03985>
 - **项目页：** <https://qizekun.github.io/Humanoid-GPT/>
 - **收录日期：** 2026-06-04
-- **最近复核：** 2026-06-19
+- **最近复核：** 2026-11-21（`@9f9e7b7`）
+- **核对范围：** 已通读 `GalaxyGeneralRobotics/Humanoid-GPT@9f9e7b7` `README.md`、`scripts/inference.py`、`projects/transformer/inference.py`、`tracking/infer_utils.py`（前 50 行与结构）、`tracking/policy.py` 与 `deploy/play_track.py`；说明文档核对，未独立运行 GPU/真机或执行未公开的训练管线
+- **通读：** 已完成
 - **Stars / Forks：** ~243 / 0（2026-06-19 检索）
 - **许可证：** Apache 2.0
 - **维护方：** Galaxy General Robotics（Galbot Inc. 关联开源组织）

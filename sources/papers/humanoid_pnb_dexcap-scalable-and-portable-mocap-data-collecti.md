@@ -13,6 +13,8 @@
 - **数据集：** <https://huggingface.co/datasets/chenwangj/DexCap-Data>
 - **分类：** 06_Manipulation
 - **入库日期：** 2026-06-11（占位）；2026-09-17 深读升格
+- **核对范围：** 通读 arXiv HTML 全文（<https://arxiv.org/html/2403.07788>，§I–§VI，含硬件标定与续航参数、DexIL 点云与指尖 IK 机制、Table I–IV 实验数据及 Limitations）；未复现硬件或运行实机。
+- **通读：** 已完成
 - **一句话说明：** 可穿戴 SLAM+EMF 手套 mocap 与胸挂 RGB-D 点云，经 DexIL（指尖 IK + 点云模仿学习）把人类野外示范迁移到 LEAP Hand 双臂，可选人机闭环修正。
 
 ## 核心摘录（策展，非全文）

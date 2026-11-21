@@ -3,7 +3,9 @@ type: entity
 tags: [company, vla, deployment, manipulation, physical-intelligence]
 title: The Physical Intelligence Layer
 status: complete
-updated: 2026-10-14
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/pi_physical_intelligence_layer_2026-02-24.md
 related:
   - ../methods/pi0-policy.md
   - ./paper-pi05-open-world-vla.md
@@ -55,6 +57,8 @@ flowchart LR
 Weave 写旧金山洗衣店的真实折叠（T 恤、长袖、短裤、长裤）。正文结论是：π₀.₆ SFT 比 π₀.₅ SFT 提高自主时间占比；Weave 数据进入预训练后，连续漏抓（连续两次及以上）减少 **42%**，每筐干预减少 **50%**。柱状图的其余读数没有写进句子。
 
 Ultra 写美国客户仓库的订单打包。一段连续镜头标注自主率 **96.4%**。正文称 π₀.₆ 比 π₀.₅ 成功率更高，伙伴数据进预训练后再提高件/小时吞吐，并配有 95% 置信区间，但没有把柱顶数字写出来。定性部分提到提示拆成子任务后能覆盖更多流程，长尾情况下恢复策略更多。失败时由人工介入保证订单正确。
+
+- **源码运行时序图：** **不适用**（商业伙伴部署叙事博客，未开源伙伴栈代码与权重）。
 
 ## 局限与风险
 

@@ -3,8 +3,10 @@ type: entity
 tags: [company, westlake-robotics, westlake, humanoid, quadruped, teleoperation, motion-tracking, embodied-foundation-model, vla, china]
 title: 西湖机器人（Westlake Robotics）
 status: complete
+updated: 2026-11-21
+original:
+  - ../../sources/sites/wlrobo-com.md
 summary: "西湖机器人（西湖机器人科技（杭州）有限公司）是王东林西湖大学 MiLAB 的产业化公司：工商登记 2021-06-08、2023-12 起以现团队实际运营；主打「大脑 LM-VLM / VLA + 通用小脑 GAE」双预训练架构，硬件有四足傲天U1 与人形 TITAN O1（2026-03-23 发布）；2025-01 天使+近亿元，2026-02 → 09 连续五轮累计超 5 亿元（媒体报道）；GAE 以闭源二进制 + 加密狗授权分发。"
-updated: 2026-10-10
 institutions: [westlake-robotics]
 related:
   - ./westlake-titan-o1.md
@@ -176,6 +178,10 @@ flowchart LR
 - 公司是 MiLAB 的落地项目（36 氪项目库、量子位、潮新闻一致），但 **实验室论文 ≠ 公司产品**。例如深蓝盘点把「全身运动 RL 与控制 RL2AC」列为 MiLAB 代表成果、把「四足小西、人形 Titan o1」列为足式平台——前者是实验室学术工作，本库未找到公司把 RL2AC 作为产品的表述。
 - 王东林以西湖大学身份参与的大量合作论文（如与港科大（广州）李昊昂团队的 VLA 方向工作，本库有 [CapVector](./paper-capvector-capability-vectors-vla.md) 等）作者单位是西湖大学而非公司；只有 GAE 论文明确署名「西湖机器人（Westlake Robotics）」。
 - 官网大事记把 AAAI 2026 最佳论文记作「西湖机器人创始人王东林团队」的成果——这是把 PI 的学术成果计入公司宣传，引用时应写作西湖大学 / 港科大（广州）合作论文。
+
+## 源码运行时序图
+
+**不适用**：截至 2026-11-21，西湖机器人的通用小脑 GAE 以闭源商用二进制 + USB 加密狗授权分发，`westlakerobotics/GAEApp-API` 仅包含客户端 WebSocket/HTTP 对接说明与发帧示例；大脑 LM-VLM / WR1 亦未公开代码或权重。
 
 ## 工程实践
 

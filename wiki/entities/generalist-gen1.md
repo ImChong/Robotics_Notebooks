@@ -3,7 +3,10 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, foundation-policy, scaling, mastery, dexterous-manipulation, from-scratch, generalist-ai]
 status: complete
 title: GEN-1：把具身基础模型扩展到 Mastery（Generalist AI）
-updated: 2026-10-09
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/generalist_gen1.md
+  - ../../sources/blogs/generalist_beyond_world_models.md
 institutions: [generalist-ai]
 related:
   - ./generalist-ai-robotics.md

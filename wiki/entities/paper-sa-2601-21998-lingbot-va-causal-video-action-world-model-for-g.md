@@ -6,7 +6,10 @@ tags:
 - world-action-model
 - vla
 status: complete
-updated: '2026-10-17'
+updated: '2026-11-21'
+original:
+- ../../sources/papers/lingbot_va_arxiv_2601_21998.md
+- ../../sources/repos/lingbot-va.md
 arxiv: '2601.21998'
 venue: arXiv 2026
 code: https://github.com/Robbyant/lingbot-va
@@ -68,31 +71,35 @@ flowchart TD
 
 ## 核心原理
 
-**因果交错建模 → 动作解码 → 执行 → 真实观测替换视频缓存 → 下一轮推理**。视频流与动作流保持概念区分，MoT、KV cache 和异步执行共同降低重复计算。
+**因果交错建模 → 动作解码 → 执行 → 真实观测替换视频缓存 → 下一轮推理**。根据 [arXiv:2601.21998v2](https://arxiv.org/html/2601.21998v2)（§3–§4）：模型由 Wan2.2-5B 视频流（`d_v=3072`、30 层）与非对称 350M 动作流（`d_a=768`）构成 **5.3B** 双流 MoT，借助 Wan2.2 因果 VAE（`4×16×16` + `2×` patchify，每帧 192 token）与时间稀疏化（`τ=4`）形成交错序列；训练使用 **Noisy History Augmentation**（`p=0.5`, `s_aug ∈ [0.5, 1.0]`）使推理时视频仅需部分去噪（如 3 Euler 步至 `s=0.6`）即可解码动作，异步执行端引入 **FDM-grounded** 前向预测将最新真实观测重新锚定到 KV cache，避免长程漂移。预训练汇聚约 16K 小时多本体数据并统一为 30 维双臂动作空间 `(7 EEF + 7 joints + 1 gripper) × 2`。
 
 公开仓目前提供 **shared backbone** 的基座与 RoboTwin / LIBERO-Long 后训练权重；分离双流版本不能仅凭论文描述认定已经发布。VA 2.0 的 semantic visual-action tokenizer、因果 DiT 与 MoE 另见[公司家族页](./robbyant.md)。
 
 ## 源码运行时序图
 
+入口：后训练 `NGPU=8 CONFIG_NAME='robotwin_train' bash script/run_va_posttrain.sh`（调用 `python -m wan_va.train`）；评测服务端 `bash evaluation/robotwin/launch_server.sh` / `evaluation/libero/launch_server.sh`（启动 `wan_va/wan_va_server.py` 中 `VA_Server`）。
+
 ```mermaid
 sequenceDiagram
     autonumber
-    participant D as LeRobot dataset
-    participant T as script/run_va_posttrain.sh
-    participant M as wan_va 模型与配置
-    participant C as 仿真或机器人客户端
-    D->>T: 轨迹与归一化统计
-    T->>M: 后训练 batch
-    loop 闭环推理
-        C->>M: 当前视觉与本体状态
-        M->>M: 因果视频/动作生成与缓存更新
-        M-->>C: 解码动作块
-        C->>C: 执行动作并采集真实帧
-        C->>M: 新真实观测校正历史
+    participant D as LeRobot dataset (MultiLatentLeRobotDataset)
+    participant T as script/run_va_posttrain.sh -> wan_va/train.py
+    participant M as wan_va/wan_va_server.py VA_Server
+    participant C as evaluation/{robotwin,libero} 客户端
+    D->>T: 预提 VAE latents + action_config + 30D 归一化统计
+    T->>T: load_transformer(attn_mode="flex") + FSDP 训练更新
+    T-->>M: 导出 post-train checkpoint
+    M->>M: 加载 Wan VAE/T5 + transformer(attn_mode="torch")
+    loop 闭环推理 (WebSocket server-client)
+        C->>M: 当前视觉观测与本体状态
+        M->>M: 因果视频/动作流匹配生成与 KV cache 更新
+        M-->>C: 解码动作块 (30D -> used_action_channel_ids)
+        C->>C: 仿真/真机执行动作并采集真实帧
+        C->>M: 回传新真实观测校正历史缓存
     end
 ```
 
-模型进程与客户端是分离运行环境；部署细节以 README 对应 benchmark 的服务脚本为准。
+图依据：`Robbyant/lingbot-va@7c6ffa9`，核对过 `README.md`、`script/run_va_posttrain.sh`、`wan_va/train.py`、`wan_va/wan_va_server.py` 与 `wan_va/configs/va_libero_cfg.py`；模型进程与客户端在独立环境运行，部署细节以 README 对应 benchmark 脚本为准。
 
 ### LeRobot 移植的运行时序（固定提交 `9e5ee98`）
 

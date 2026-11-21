@@ -3,7 +3,11 @@
 - **标题：** LadderMan — Learning Humanoid Perceptive Ladder Climbing
 - **类型：** site / project-page
 - **URL：** <https://ladderman-robot.github.io/>
+- **代码：** <https://github.com/amazon-far/LadderMan>（CoRL 2026 Spotlight；2026-11 开源，归档见 [`sources/repos/ladderman.md`](../repos/ladderman.md)）
 - **入库日期：** 2026-06-09
+- **复核日期：** 2026-11-21
+- **核对范围：** 核对项目页 `https://ladderman-robot.github.io/` 全页内容（CoRL 2026 Spotlight 标识、arXiv/PDF/Code 链接、On-ladder manipulation、双向攀爬、VFM vs Raw Depth 消融）；确认 Code 链接已指向 `amazon-far/LadderMan`。
+- **通读：** 已完成
 - **配套论文：** [LadderMan（arXiv:2606.05873）](https://arxiv.org/abs/2606.05873) — 归档见 [`sources/papers/ladderman_arxiv_2606_05873.md`](../papers/ladderman_arxiv_2606_05873.md)
 
 ## 一句话摘要

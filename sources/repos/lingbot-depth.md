@@ -8,6 +8,8 @@
 - **链接：** https://github.com/Robbyant/LingBot-Depth
 - **分类：** 工程与工具
 - **入库日期：** 2026-09-06
+- **核对范围：** 2026-11-21 核对 `robbyant/lingbot-depth@f3a237e` 官方 `README.md`、`example.py`、`mdm/model/v2.py`（`from_pretrained`、`forward`、`infer`），并通读主论文 [arXiv:2601.17895v1](https://arxiv.org/html/2601.17895) HTML 全文（摘要、§1–§6 含 MDM 架构、ConvStack 解码器、3.2M 自采/合成与 10M 训练配方、Depth Completion / FoundationStereo / 3D 跟踪 / 灵巧抓取实验）；未运行模型推理代码。
+- **通读：** 已完成
 - **一句话说明：** 蚂蚁灵波 开源项目 LingBot-Depth（工程与工具），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-lingbot-depth.md`](../../wiki/entities/cn-os-lingbot-depth.md)
 

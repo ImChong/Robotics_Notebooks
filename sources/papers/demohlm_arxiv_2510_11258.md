@@ -1,77 +1,28 @@
-# DemoHLM: From One Demonstration to Generalizable Humanoid Loco-Manipulation（arXiv:2510.11258）
+# DemoHLM: From One Demonstration to Generalizable Humanoid Loco-Manipulation
 
-> 来源归档（ingest）
+> 来源归档（paper / arXiv:2510.11258v1）
 
-- **标题：** DemoHLM: From One Demonstration to Generalizable Humanoid Loco-Manipulation
-- **类型：** paper / humanoid / loco-manipulation / imitation-learning / data-generation / mimicgen / sim2real
-- **arXiv abs：** <https://arxiv.org/abs/2510.11258>
-- **arXiv HTML：** <https://arxiv.org/html/2510.11258v1>
-- **PDF：** <https://arxiv.org/pdf/2510.11258>
+- **URL：** <https://arxiv.org/abs/2510.11258>
+- **PDF：** <https://arxiv.org/pdf/2510.11258.pdf>
 - **项目页：** <https://beingbeyond.github.io/DemoHLM/>
-- **代码：** <https://github.com/BeingBeyond/DemoHLM>（截至 2026-09-20 仅 README + 项目站镜像，**无可运行训练/推理脚本**）
-- **机构：** 北京大学（PKU）、智在无界（BeingBeyond）；通讯作者 Zongqing Lu
-- **作者：** Yuhui Fu*、Feiyang Xie*、Chaoyi Xu、Jing Xiong、Haoqi Yuan、Zongqing Lu §（* 共一）
-- **发表：** arXiv 预印本 2025-10-11；IEEE RA-L 2026-02-19（DOI: 10.1109/LRA.2026.3666395）
-- **硬件：** Unitree G1 + 2-DoF 主动颈 + Intel RealSense D435 RGB-D；部分任务换 3D 打印平行夹爪
-- **入库日期：** 2026-09-20
-- **一句话说明：** 仿真中 VR 遥操作采集 **单条示范** → 物体/本体坐标系分段重放 + AMO 式 RL 全身控制器 → 合成数百–数千条轨迹 → BC（ACT/DP/MLP）训练高层操纵策略；G1 真机 **10 任务** 空间泛化 zero-shot 部署。
+- **代码仓库：** <https://github.com/BeingBeyond/DemoHLM>（`@cb913c1` 仅项目页与文档，无源码）
+- **标题：** DemoHLM: From One Demonstration to Generalizable Humanoid Loco-Manipulation
+- **作者：** Yuhui Fu, Feiyang Xie, Chaoyi Xu, Jing Xiong, Haoqi Yuan, Zongqing Lu
+- **机构：** BeingBeyond（智在无界）、Peking University
+- **年份：** 2025（arXiv 2025-10-13）
+- **核对范围：** 已获取并通读 `arXiv:2510.11258v1` PDF 抽取全文（Sections 1–5 及 Appendix A–C，涵盖 IsaacGym Apple Vision Pro 单演示采集、Pink 多目标 IK、三阶段轨迹重放合成管线、AMO 50 Hz 全身底层 + 2-DoF 主动视觉比例跟踪、10 Hz 高层 BC 策略及 10 项仿真与 7 项 Unitree G1 真机测试）；未独立复现仿真与真机硬件部署。
+- **通读：** 已完成
 
-## 摘要级要点
+## 摘要与核心贡献
 
-- **问题：** 人形 loco-manipulation 常依赖任务定制 RL 奖励、大量真机遥操作数据，或 SMPL 仿真方案难以上真机；MimicGen 系工作限于固定底座机械臂。
-- **层次架构：** 低层 **AMO 式 RL 全身控制器**（50 Hz）将 $(v_x,v_y,\omega,h,r,p,y,\mathbf{q}_{upper})$ 映射为全身关节 PD 目标；高层 **BC 操纵策略**（10 Hz）闭环输出上述高层命令，观测含本体 + 相机系物体 6D 位姿。
-- **数据生成（MimicGen 扩展）：** 单条 VR 示范 $\tau^h$ 在首次接触 $t_c$ 切为 pre-contact / post-contact；pre 段 **object-centric** 末端位姿，post 段 **proprioception-centric**；三阶段拼接：**locomotion**（PD 速度引导靠近）→ **pre-manipulation**（插值对齐 + object-centric 重放）→ **manipulation**（切换 proprio-centric 处理「相对物体静止」段）。
-- **示范采集：** Apple Vision Pro + VisionProTeleop → Pink IK 解 $(h,r,p,y,\mathbf{q}_{upper})$；仿真 IsaacGym + SAPIEN/PartNet-Mobility 资产。
-- **BC 架构：** 对比 ACT、带 action chunk 的 MLP、Diffusion Policy；5k 合成数据规模下 ACT/DP 显著优于 MLP。
-- **真机感知：** 单头 RealSense D435 + **FoundationPose++** 估计/跟踪物体 6D 位姿（与仿真观测对齐）；Unitree SDK v2 PD @ 500 Hz。
+1. **单演示可泛化人形移动操作数据引擎**：针对真实全身遥操作难扩展的问题，仅通过 Apple Vision Pro 在 IsaacGym 中采集 **1 条人类参考演示**，按初次接触时刻 $t_c$ 切分为**接触前（物体相对坐标系 $T_{\text{obj}}^{\text{eef}}$）**与**接触后（本体相对坐标系 $T_{\text{pro}}^{\text{eef}}$）**两段；当机械人与物体位姿在预设区域 $R_1$–$R_3$ 随机化时，自动编排**Locomotion（PD 引导行走至近处）-> Pre-manipulation（插值衔接 + 物体相对轨迹）-> Manipulation（本体相对轨迹）**并经 Pink 多目标 IK 与底层控制器回放，自动合成百至五千条成功轨迹。
+2. **分层控制与硬件改造**：
+   - 底层通用全身控制器沿用 **AMO（50 Hz）**，接收低维高层指令 $(v_x, v_y, \omega, h, r, p, y, q_{\text{upper}})$ 并以 500 Hz Unitree SDK v2 PD 驱动 Unitree G1（29 DoF）；
+   - 自制 **2-DoF 主动云台颈部**（Dynamixel XC330）+ **RealSense D435 RGB-D**（640×480 @ 60 Hz，按目标相机系位置 $(x_c, y_c)$ 做比例伺服跟踪）以及 3D 打印平行夹爪；
+   - 高层策略对比 **MLP / ACT / Diffusion Policy（10 Hz）**，真机依靠 **FoundationPose / FoundationPose++（~25 Hz 异步跟踪）** 提供相机系物体 6D 位姿。
+3. **仿真与真机表现**：10 项任务随合成数据从 100 增至 5,000 条呈单调提升（LiftBox 达 **98.83%**，PushCart **95.79%**，Handover **57.50%**，ACT 与 DP 显著优于 MLP）；7 项 Unitree G1 真机零样本迁移取得与仿真一致表现（LiftBox **5/5**、PressCube **5/5**、PushCube **4/5**、Handover **4/5**、GraspCube **3/5**、OpenCabinet **2/5**、EraseBoard **2/5**）。
 
-## 核心摘录（面向 wiki 编译）
+## 与知识库关联
 
-### 十项 loco-manipulation 任务
-
-| 分组 | 任务 | 要点 |
-|------|------|------|
-| 橡胶手 | LiftBox / PressCube / PushCube / Handover | 推/按/抬/双手交接 |
-| 平行夹爪 | GraspCube / OpenCabinet / PushCart / EraseBoard / PourWater / ExchangeCube | 抓取/拉柜/推车/擦板/倒水/换手 |
-
-### 仿真成功率 vs 数据规模（Table 1，5k 轨迹，5000 rollout × 3 seed）
-
-| 任务 | 100 | 500 | 1k | 5k |
-|------|-----|-----|-----|-----|
-| LiftBox | 86.4 | 96.2 | 98.6 | **98.8** |
-| PushCart | 75.8 | 92.6 | 93.4 | **95.8** |
-| GraspCube | 57.0 | 75.5 | 77.6 | **87.9** |
-| OpenCabinet | 18.9 | 49.5 | 54.9 | **67.3** |
-| Handover | 28.5 | 47.0 | 52.1 | **57.5** |
-| ExchangeCube | 13.4 | 34.0 | 44.3 | **52.9** |
-
-趋势：**合成数据量与策略成功率单调正相关**，边际收益递减。
-
-### BC 架构（Table 2，5k 数据）
-
-- ACT 与 Diffusion Policy 整体接近且优于 MLP；MLP 在 Handover / EraseBoard / ExchangeCube 等长时序/双手任务跌幅最大。
-- 论文默认报告 ACT 结果。
-
-### 真机 zero-shot（Table 4，每任务 5 trials）
-
-| LiftBox | PressCube | PushCube | Handover | GraspCube | OpenCabinet | EraseBoard |
-|---------|-----------|----------|----------|-----------|-------------|------------|
-| 5/5 | 5/5 | 4/5 | 4/5 | 3/5 | 2/5 | 2/5 |
-
-PushCart / PourWater / ExchangeCube 等未列入该表（论文 §4.4 侧重已部署的 7 项）。
-
-### 局限（§5）
-
-- 纯仿真数据 → 动力学/视觉 sim2real 间隙；单 RGB-D 在遮挡/ clutter 受限；依赖 FoundationPose 需物体模型，难泛化未建模物体。
-
-## 对 wiki 的映射
-
-- 沉淀实体页：[DemoHLM（161 #136 / arXiv）](../../wiki/entities/paper-loco-manip-161-136-demohlm.md)
-- 交叉：[loco-manipulation](../../wiki/tasks/loco-manipulation.md)、[HumanoidMimicGen](../../wiki/entities/paper-humanoidmimicgen.md)、[Being-0](../../wiki/entities/paper-loco-manip-161-057-being-0.md)、[unitree-g1](../../wiki/entities/unitree-g1.md)
-
-## 参考来源（原始）
-
-- arXiv:2510.11258 — 论文正文
-- [loco_manip_161_survey_136_demohlm.md](loco_manip_161_survey_136_demohlm.md) — 161 篇策展索引
-- [demohlm 项目页归档](../sites/demohlm.md)
-- [demohlm 代码归档](../repos/demohlm.md)
+- 实体节点：[paper-loco-manip-161-136-demohlm.md](../../wiki/entities/paper-loco-manip-161-136-demohlm.md)
+- 代码与项目页归档：[demohlm.md](../repos/demohlm.md)、[demohlm.md](../sites/demohlm.md)

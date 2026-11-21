@@ -7,7 +7,7 @@
 - **类型：** blog / patent survey
 - **原文：** <https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg>
 - **一句话说明：** 把小鹏 IRON 相关 54 件 CN 专利按本体头颈臂(11)、灵巧手(12)、腿腰动力(9)、双足步态(7)、全身具身(15)五类逐项给出标题、日期与摘要级要点。
-- **核对范围：** 2026-11 重新访问公众号链接，返回微信「环境异常」验证页，未能重新取得原文页面；仅逐条读完入库时 WebFetch 落盘的 `sources/patents/xpeng_iron_patents_cn.md`（54 条的标题、类别、日期、摘要）与 `sources/blogs/wechat_xpeng_iron_54_patents_2026-09-24.md` 的节点映射表。未读任一专利的权利要求书 / 说明书全文，也无法确认落盘内容与公众号全文一致，故不能算作原文已读完。
+- **核对范围：** 2026-11-22 再次访问公众号链接 `https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg`，仍返回微信「环境异常 / 当前环境异常，完成验证后即可继续访问」反爬验证页，无法取回原文；仅逐条读完入库时 WebFetch 落盘的 `sources/patents/xpeng_iron_patents_cn.md`（54 条的标题、类别、日期、摘要）与 `sources/blogs/wechat_xpeng_iron_54_patents_2026-09-24.md` 的节点映射表。未读任一专利的权利要求书 / 说明书全文，也无法确认落盘内容与公众号全文一致，故不能算作原文已读完。
 - **通读：** 未完成
 
 ## 核心摘录（均出自落盘内容）

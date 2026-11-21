@@ -4,8 +4,12 @@ tags: [company, beingbeyond, embodied-foundation-model, vla, world-action-models
 title: 智在无界（BeingBeyond）
 status: complete
 summary: "智在无界（BeingBeyond，北京）2025-01 成立（媒体口径），创始人为北大计算机学院副教授、前智源多模态交互研究中心负责人卢宗青。路线是以人为中心的具身基础模型：用大规模第一视角人类视频预训练灵巧操作 VLA / 潜空间 WAM（Being-H0 → H0.5 → H0.7 → H0.8），并行做人体动作生成到人形 WAM（Being-M）、人形全身控制（BumbleBee / FAST）与灵巧抓取 RL。Research 站 26 条研究；GitHub 27 个公开仓库，Being-H0 / H0.5 / TTP 权重在 HF。"
-updated: 2026-10-12
+updated: 2026-11-21
 institutions: [beingbeyond]
+original:
+  - ../../sources/sites/research-beingbeyond-com.md
+  - ../../sources/papers/being_h07.md
+  - ../../sources/papers/being_m07.md
 related:
   - ./paper-notebook-being-h0-vision-language-action-pretraining-from.md
   - ./cn-os-being-h.md
@@ -52,6 +56,15 @@ sources:
 - **版本谱系清楚：** H0 显式手部动作建模 → H0.5 统一动作空间、跨 30 种本体（媒体口径）→ H0.7 潜空间 WAM（先验–后验对齐，推理不滚像素）→ H0.8 把触觉并入潜世界状态。读者可以沿同一团队观察 VLA 到 WAM 的演化。
 - **操作与全身控制并行：** 同一团队同时发表人形全身控制（BumbleBee、FAST、RLPF、DemoHLM）与灵巧操作，Being-M0.7 把潜空间 WAM 用到人形移动操作。
 - **开源面较大：** GitHub 组织 27 个公开仓库，HF 上有 Being-H0（1B / 8B / 14B）、Being-H05-2B 与 TTP 权重；但 H0.7 之后的旗舰（M0.7、H0.8）项目页未列代码与权重。
+
+## 核心原理
+
+BeingBeyond（智在无界）围绕「以人类为中心的具身大数据预训练 + 通用世界-动作表征与全身控制」构建四条相互耦合的技术主线：
+
+1. **人体运动基座（Being-M 系列与物理对齐）**：通过 [MotionLib](paper-notebook-scaling-large-motion-models-with-million-level-h.md) / [HuMo100M](paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md) 从大规模人类视频抽取 SMPL 运动学表征，结合 2D-LFQ / 部位感知残差量化 PRQ 训出实时可控视觉-语言-运动模型，并以 [RLPF](paper-notebook-rl-from-physical-feedback-aligning-large-motion.md) 物理仿真反馈将生成动作对齐至真实人形可行域。
+2. **以人为中心灵巧 VLA 与世界-动作模型（Being-H 与 JALA / VIPA-VLA）**：利用 UniHand / UniHand 2.0 百万级第一视角手-物交互轨迹与物理空间尺度对齐（[Being-H0](paper-notebook-being-h0-vision-language-action-pretraining-from.md) / [VIPA-VLA](cn-os-vipa-vla.md) / [Rethink_VLA](cn-os-rethink-vla.md)），进一步向潜空间隐式世界-动作模型（[Being-H0.7](../methods/being-h07.md) / `Being-M0.7` / [JALA](cn-os-jala.md)）演进，在推理期避免高昂的像素级未来视频生成开销。
+3. **人形全身控制与移动操作（BumbleBee / FAST / DemoHLM / Being-0）**：从 [BumbleBee](paper-notebook-from-experts-to-a-generalist.md) 的分簇专家真机微调+蒸馏，发展到 [FAST](cn-os-fast.md) 的单阶段 12 专家 MoE + CoM-Aware + Parseval 残差快速适配；并在上层配合 [Being-0](paper-loco-manip-161-057-being-0.md) 机载连接器或 [DemoHLM](paper-loco-manip-161-136-demohlm.md) 单演示仿真数据合成完成长程移动操作。
+4. **跨本体触觉技能迁移（UniTacHand 与 TTP）**：通过 [UniTacHand](cn-os-unitachand.md) 将异构人类触觉手套与灵巧手传感器统一投影至 351 维 MANO UV 表面空间，并在 [TTP](cn-os-ttp.md) 上扩增为 160 小时 H-Tac 预训练语料与双专家 Flow-Matching（动作 + 未来触觉预测）系统。
 
 ## 公司概况
 

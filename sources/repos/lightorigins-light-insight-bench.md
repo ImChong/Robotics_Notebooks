@@ -2,7 +2,10 @@
 
 - **URL：** <https://github.com/lightorigins/Light-INSIGHT-Bench>
 - **组织：** lightorigins
+- **核对版本：** `main@1dcbe82`
 - **许可证：** Apache-2.0
+- **核对范围：** 阅读 `README.md`、`src/insight_bench/cli.py`、`policies/insight_policy/server.py` 与 `scripts/eval_lightnav0.sh`；核实 CLI 六个子命令（`check-data`、`check-policy`、`run`、`vis`、`pack`、`verify`）及四端点 HTTP 协议（`/health`、`/reset`、`/act`、`/finish`）；未在本地 Isaac Sim 5.1 环境运行仿真评测。
+- **通读：** 已完成
 - **关联项目页：** [INSIGHT-Bench 项目页](../sites/light-insight-bench.md)
 - **关联论文：** [LightNav-0 arXiv:2608.30935](../papers/lightnav0_arxiv_2608_30935.md)
 

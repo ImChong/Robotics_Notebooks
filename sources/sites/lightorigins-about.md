@@ -8,6 +8,8 @@
 - **URL（ZH）：** <https://www.lightorigins.com/about>
 - **入库日期：** 2026-09-21
 - **机构：** 亮源新创（Light Origins）
+- **核对范围：** 核对官网 About 页全文（`https://www.lightorigins.com/en/about` 与 `/about`：公司定位、Intelligence-first 闭环、三段范式使命、价值观、创始人 Roger Jiang 履历及办公地）；未访问未公开内部文档。
+- **通读：** 已完成
 - **一句话说明：** 亮源新创官方 About 页：Physical AI 基础模型公司；Intelligence-first 技术路线；使命为突破「规模化预训练 → 规模化对齐 → 规模化部署」三段范式、实现 Physical AGI；创始人 Roger Jiang（前 OpenAI，GPT-4 技术报告 8 次署名）。
 
 ## 开源核查（步骤 2.5，2026-09-21）

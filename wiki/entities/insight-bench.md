@@ -10,7 +10,11 @@ tags:
   - open-source
   - isaac-sim
 status: complete
-updated: 2026-10-08
+updated: 2026-11-21
+original:
+  - ../../sources/papers/insight_bench_lightorigins_2026.md
+  - ../../sources/sites/light-insight-bench.md
+  - ../../sources/repos/lightorigins-light-insight-bench.md
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./light-origins.md
@@ -94,31 +98,39 @@ summary: "INSIGHT-Bench：Isaac Sim 上 1097-episode object-goal 导航评测；
 
 Episode 分布（官方站）：Apartment 239、House 216、Commercial 195、Institution 219、Outdoor 228；指令列 Base 237、Direction 239、Relation 193、Extremum 250、Ordinal 178。
 
+## 核心原理
+
+INSIGHT-Bench 通过两阶段自动化构建与双轴固定标注，将跨渲染形态（Mesh + 3DGS）的导航评测统一到单目前向 RGB 接口下：
+
+1. **多视角预标注与一致性门限（arXiv:2608.30935 § IV-D1）：** 对无标签场景（Habitat-GS / HM3D / MP3D / VLNVerse）在可通行点渲染 4 朝向 RGB-D，使用 **Molmo2** 开放词表指点并经 metric depth 升维至 3D；仅保留跨 ≥2 个视角支持且 3D 定位离散度 **< 0.6 m** 的合并实例（InteriorGS 直接使用官方 GT 框）。
+2. **双路径指令生成与语义/到点校核（§ IV-D2）：** 规则路径依据目标所在视角与水平像素确定精确自我中心方位；视频路径由 **Seed2.0** 基于 6 帧均匀采样生成带地标叙述的草稿；随后统一经 LLM 改写（校验中心名词与方位词一致），并在最后 1/3/6/10 帧运行到点视觉核验。
+3. **5×5 诊断矩阵：** 固定场景类（布局复杂度）× 指令类型（语言解析机制）双标签，使评估结果可定位到具体短板单元格。
+
 ### 流程总览
 
 ```mermaid
 flowchart LR
-  subgraph data [数据与场景]
-    hf[HF episodes + 10 Habitat-GS]
-    scenes[其余 200 场景按许可自备]
+  subgraph data ["数据与场景 (210 held-out)"]
+    hf["HF episodes + 10 Habitat-GS"]
+    scenes["其余 200 场景按许可自备"]
   end
-  subgraph sim [Isaac Lab Runner]
-    runner[insight_bench runner]
-    policySrv[policy HTTP server]
+  subgraph sim ["Isaac Lab Runner"]
+    runner["insight_bench runner"]
+    policySrv["policies/insight_policy HTTP server"]
   end
-  subgraph eval [统一协议]
-    rgb[前向 RGB 480x270]
-    act[300-step 控制]
-    metrics[SR / SPL / NE]
+  subgraph eval ["统一协议 (480x270 / 120° HFOV)"]
+    rgb["前向单目 RGB"]
+    act["300-step 控制 (0.1 s/step)"]
+    metrics["SR / SPL / terminal NE"]
   end
-  subgraph lb [Leaderboard]
-    pack[evidence-pack.zip]
-    verify[insight-bench verify]
-    pr[PR submissions/*.json]
+  subgraph lb ["Leaderboard"]
+    pack["evidence-pack.zip"]
+    verify["insight-bench verify"]
+    pr["PR submissions/*.json"]
   end
   hf --> runner
   scenes --> runner
-  runner <-->|/act /reset| policySrv
+  runner <-->|"/health /reset /act /finish"| policySrv
   runner --> rgb
   rgb --> act
   act --> metrics
@@ -154,23 +166,27 @@ flowchart LR
 
 ## 源码运行时序图
 
+图依据：`lightorigins/Light-INSIGHT-Bench@1dcbe82` 的 `src/insight_bench/cli.py`（6 个子命令）、`policies/insight_policy/server.py`（四端点 HTTP 协议 `/health`、`/reset`、`/act`、`/finish`）与 `scripts/eval_lightnav0.sh`。
+
 ```mermaid
 sequenceDiagram
     autonumber
     actor Dev as 开发者
     participant HF as HF light-insight-bench
-    participant IL as Isaac Lab + insight_bench
-    participant Pol as Policy 服务
-    participant Pack as evidence-pack
-    Dev->>HF: hf download episodes + 10 scenes
-    Dev->>IL: check-data / 补齐 200 场景
-    Dev->>Pol: 启动 eval_*.sh 对应 policy server
+    participant IL as Isaac Lab + insight-bench CLI
+    participant Pol as policies/insight_policy server
+    participant Pack as evidence-pack.zip
+    Dev->>HF: hf download episodes + 10 场景
+    Dev->>IL: insight_bench check-data / 补齐 200 场景
+    Dev->>Pol: eval_lightnav0.sh 启动模型服务 (GET /health)
     loop 1097 episodes
-        IL->>Pol: /reset + /act(rgb)
-        Pol-->>IL: Step.primitives / waypoints / stop
+        IL->>Pol: POST /reset (instruction, episode_id)
+        IL->>Pol: POST /act (480x270 JPEG RGB)
+        Pol-->>IL: Step.waypoints / primitives / stop
+        IL->>Pol: POST /finish (episode_id)
     end
-    IL-->>Dev: run-result.json + traces
-    Dev->>Pack: insight_bench pack + verify
+    IL-->>Dev: run-result.json + traces + vis.html
+    Dev->>Pack: insight-bench pack + verify
     Dev->>Dev: PR submissions/*.json
 ```
 
