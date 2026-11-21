@@ -4,7 +4,7 @@ project_id: zero-shot-compositional-generalization-2611-22797
 arxiv: "2611.22797"
 tags: [paper, cross-embodiment, manipulation, zero-shot-transfer, geometric-supervision, latent-action, imitation-learning, robot-kinematics, vla, pku, d-robotics, uestc, cuhk]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-21
 related:
   - ../overview/hub-cross-embodiment.md
   - ../methods/imitation-learning.md
@@ -163,6 +163,12 @@ flowchart TB
 3. 必须对跨本体目标使用**正向 IK 可达 witness mask**，并记录失败率、求解容差和采样分布。
 4. 验证须区分**外本体工具误差**、**缺失配对闭环任务成功率**和**seen 任务保持性**。
 5. 真机复用前仍需单独处理**碰撞、动态约束、冗余构型连续性与接触误差**；论文仿真结果不足以替代安全验收。
+
+## 与其他工作对比
+
+- **对比 Native Joints 原生关节基线（Table 1）：** 在 RoboTwin 与 ManiSkill3 Push 评测中，分别基于 [π₀.₅](./paper-pi05-open-world-vla.md)、[OpenWAM](./paper-openwam-composable-world-action-models.md) 与 [FastWAM](./paper-fast-wam.md) 训练的原生关节策略在未见「已知本体 × 已知技能」组合上成功率仅 **9.7%–34.8%**（RoboTwin）与 **3.1%–11.6%**（ManiSkill3）；本文 Full 方案将其提升至 **29.8%–46.5%** 与 **28.6%–43.5%**（+11.7 至 +32.8 个百分点），同时保持 Seen 组合性能不退化。
+- **对比 Direct EEF + IK 与接口/策略阶段消融（Table 2）：** 仅做源本体自重建的 Source（Held-out：OpenWAM 33.4% / FastWAM 17.7%）在加入外本体可微 FK 监督后（Cross）升至 **42.9% / 26.3%**，外本体 TCP 误差从 302.13 mm 降至 4.37 mm；叠加策略阶段 FK 的 Full 进一步达到 **46.5% / 29.8%**，超过直接预测末端位姿并调用在线数值求解的 **Direct EEF + IK**（41.5% / 25.2%）5.0 / 4.6 个百分点，且模型侧指令生成中位时延快 **1.71×**。
+- **与 [Open X-Embodiment](./paper-open-x-embodiment.md) / [Octo](./paper-octo.md) 跨本体路线定位区分：** Open-X 与 Octo 依赖多本体数据汇总及共享/可插拔动作头，而本文利用标定 FK 与正向 IK witness 在**无需目标组合示范**的条件下对齐原生解码器，前提是每台机器人与每项技能各自在训练集中已出现且运动学标定准确。
 
 ## 局限与风险
 

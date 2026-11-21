@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, nvidia, stanford]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-21
 arxiv: "2601.16163"
 venue: —
 summary: "微调 Cosmos-Predict2 视频基础模型实现视觉运动控制与规划。"
@@ -138,6 +138,12 @@ flowchart LR
 
 - 目标本体示范、视频基座及多候选规划带来数据和计算成本，不能把离线 benchmark 直接推断为真机实时性能。
 - 缺少已确认的完整源码调用链时，不应宣传为一键复现。
+
+## 与其他工作对比
+
+- **对比微调 VLA 与从零训练扩散策略（LIBERO，Table 1）：** 在四项套件共 6,000 次仿真评测中，Cosmos Policy 直接策略平均成功率 **98.5%**（Long 97.6%），高于微调 VLA 基线 CogVLA（97.4%）、OpenVLA-OFT（97.1%）、[π₀.₅](./paper-pi05-open-world-vla.md)（96.9%）、[UniVLA](./paper-rcl-2505-06111-univla-learning-to-act-anywhere-with-task-centri.md)（95.2%）、[π₀](./paper-pi0.md)（94.2%），以及从零训练的扩散策略 Dita（92.3%）与 Diffusion Policy（72.4%）。
+- **对比数据量更高的 VLA 与视频/潜动作策略（RoboCasa 24 任务，Table 2）：** 仅用 **50 条示范/任务** 取得 **67.1%** 平均成功率，高于使用 300–3,000 demos 的 GR00T-N1.5 + HAMLET（66.4%）、FLARE（66.4%）、Video Policy（66.0%）、GR00T-N1.5（64.1%）、π₀（62.5%）、UWM（60.8%，1000 demos）与 GR00T-N1 + [DreamGen](./paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md)（57.6%，300 demos + 10k 合成），以及同为 50 demos 的 UVA（50.0%）。
+- **对比无规划直接策略与无世界模型 Q 值规划（ALOHA，§5.4）：** 在双臂 ALOHA 挑战初始条件下，基于 rollout 微调后的世界模型 `V(s')` 规划器比无规划基础 Cosmos Policy 平均高 **12.5 个百分点**，也高于直接预测 `Q(s, a)` 的无世界模型变体；但代价是模型规划时单次 action chunk 推理耗时升至约 5 秒。与 DreamGen 等先生成视频再另训 IDM 的解耦方案不同，Cosmos Policy 通过 latent frame injection 在单阶段统一建模 `(s, a, s', V(s'))`。
 
 ## 参考来源
 

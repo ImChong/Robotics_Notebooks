@@ -8,7 +8,7 @@ tags:
   - reinforcement-learning
   - sim2real
 status: complete
-updated: 2026-11-17
+updated: 2026-11-21
 arxiv: "2611.18305"
 project: https://syw-robotics.github.io/proof-loco/
 code: https://github.com/syw-robotics/proof-loco
@@ -121,6 +121,11 @@ PROOF 将感知失效处理从被动噪声增强推进到显式不确定性驱�
 - 在断续视觉信号下检验 0.8/0.5 滞回阈值与切换抖动。
 - 区分正常视觉跑酷能力与视觉失效后的盲走安全边界。
 - 将电机温升、推理时延和部署代码缺口纳入真机验收。
+
+## 与其他工作对比
+
+- **对比无教师回退监督与无门控蒸馏基线（论文 Table 1）：** 在 Isaac Lab 课程 level 5 的五类非跑酷地形强深度扰动评测中（100 episodes/类），**Baseline 1（移除教师外感知掩码）** 因学生缺乏无视觉时的本体回退目标，五类地形成功率全部跌至 **0%**；**Baseline 2（保留教师掩码但用 MSE 回归潜变量、无 NLL 方差头与 gate）** 在 rough flat / uphill / downhill / upstairs / downstairs 的成功率分别为 96% / 79% / 84% / 73% / 91%，而完整 **PROOF** 通过不确定性估计与滞回门控完全切断受损视觉通道，将成功率进一步提升至 **100% / 99% / 100% / 95% / 100%**（速度跟踪奖励也均高于两基线）。
+- **与传统端到端视觉跑酷及盲走策略对比（§4.3）：** 相比 [Extreme Parkour](../tasks/stair-obstacle-perceptive-locomotion.md) 等依赖连续深度输入的方法，PROOF 在视觉正常时保留跨沟/爬台跑酷能力，在强光反射或遮挡时主动退回本体行走；相比单纯依赖本体估计（如 DreamWaQ 类无外感知方案），PROOF 在宽沟（70 cm）和高平台（50 cm）等需要提前落脚规划的任务上具备前瞻地形感知。论文同时明确：既有视觉跑酷工作多采用约 12 kg 的 A1/Go1/Lite3，而本文使用 15 kg 的 Unitree Go2（并将仿真力矩限幅从 45 Nm 调至 30 Nm），因此不直接与异构轻量化平台做跨硬件数字排名。
 
 ## 局限与风险
 

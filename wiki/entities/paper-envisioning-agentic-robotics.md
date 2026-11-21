@@ -3,7 +3,7 @@ type: entity
 project_id: envisioning-agentic-robotics-261118359
 tags: [paper, agentic-robotics, embodied-ai, foundation-model, robotics-systems, evaluation, grid-robotics]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 arxiv: "2611.18359"
 project: https://grid-robotics-official.github.io/agentic-robotics-roadmap/
 original:
@@ -164,6 +164,12 @@ flowchart TD
 3. 工具输出必须区分被接收、终止、物理效果、最终意图满足四层。
 4. 自主等级应同时报告职责 L1–L4、空间范围和持续时间。
 5. 优先研究物理时限内推理、跨任务可信状态、跨本体适配和利用物理反馈的持续改进。
+
+## 与其他工作对比
+
+- **对比同期 Embodied S2 / Brain / Harness 文献定义（论文 Appendix A / Table 12）：** 原文逐一对照了 RoboBench（将 System 2 定义为负责决策的多模态认知大脑）、*From WAMs to Embodied Brains*（区分模型本体与外围 harness）与 Thea（指出物理世界不免费提供状态读取与结果判定）等界定；本文的差异是明确把 **embodied harness（上下文、工具契约、持久记忆、物理 verifier）纳入 Embodied S2 本体**，并将用户上下文单列、把 S1/S0 定义为 S2 可调用的工具与实时执行层。
+- **对比数字软件 / 编程 Agent（§5 / Table 10）：** 数字 Agent 具备原生可读写状态、确定性单测、低成本沙箱克隆与重置；物理 Agent 面临传感延迟/遮挡、工具调用回执不等于物理成功、力/触觉数据稀缺以及碰撞与硬件磨损不可逆等约束，因此需要四层结果核查与并发事件安全监控。
+- **对比预设工业自动化与端到端 [VLA](../methods/vla.md) 策略（Table 13）：** 预设工站速度与精度高但换产重编成本高；端到端 VLA 策略可泛化至同类单任务（L2），但缺乏任务编排、自检验与异常恢复（商用部署常依赖远程人类操作员补位 S2）。本文提出 L1–L4 职责阶梯来定位 Embodied S2 的演进目标，但同时明确当前非结构化场景仍缺可靠 L4 实证，可与 [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) 配合选型。
 
 ## 局限与风险
 
