@@ -3,11 +3,12 @@
 > 来源归档
 
 - **标题：** CO-Calib
-- **类型：** repo（即将开源）
+- **类型：** repo（已开源）
 - **链接：** https://github.com/HKUST-Aerial-Robotics/CO-Calib
 - **维护方：** HKUST Aerial Robotics Group（Shaojie Shen 组）
 - **入库日期：** 2026-07-16
-- **一句话说明：** 多鱼眼相机标定 **plug-in 数据构造框架**：学习型标定板检测 + 误差分析引导帧选择，提升 Kalibr 类 BA 管线的初始化鲁棒性与成功率。
+- **通读：** 已完成
+- **一句话说明：** 多鱼眼相机标定 **plug-in 数据构造框架**（`omnicalib` CLI + NN-Detector Task13 + Datawash + Kalibr Docker 镜像 `hkustswarm/co-calib:v1.0`）：学习型标定板检测 + 误差分析引导帧选择，提升 Kalibr 类 BA 管线的初始化鲁棒性与成功率。
 - **对应论文：** arXiv:2607.05777 — *Observation Quality Matters: Robust Multi-Fisheye Calibration via Failure-Oriented Analysis*
 
 ---

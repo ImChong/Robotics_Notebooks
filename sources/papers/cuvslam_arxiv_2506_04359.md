@@ -11,6 +11,7 @@
 - **代码：** <https://github.com/nvidia-isaac/cuVSLAM>
 - **ROS 2：** <https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam>
 - **入库日期：** 2026-09-24
+- **通读：** 已完成
 - **一句话说明：** CUDA 全栈加速的模块化 VSLAM：前端低延迟里程计 + 异步后端 PGO/回环；1–32 相机与 VI/RGB-D 模式；KITTI / EuRoC 等基准上报告 SOTA 级精度与 Jetson 实时性。
 
 ## 核心摘录（面向 wiki 编译）

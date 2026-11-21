@@ -11,6 +11,7 @@
 - **代码：** <https://github.com/sjtuyinjie/Ultra-Fusion>
 - **扩展基准 / 数据集：** <https://github.com/sjtuyinjie/M3DGR>
 - **入库日期：** 2026-06-24（2026-07-01 补全作者与仓库归档）
+- **通读：** 已完成
 - **一句话说明：** 提出 **统一滑窗估计器**，在 **同一优化窗口** 内按时间戳排序并接纳 **WIO / VIO / LIO / LVIO** 及可选 **轮速 / GNSS** 因子；配合 **可观测性感知初始化**、**因子级可靠性调度（FRS）** 与 **在线 LiDAR–IMU 时空标定（OSC）**，在 M3DGR、M2DGR-Plus、KAIST、GrandTour、MARS-LVIG 上对 **60+** 开源 SLAM 系统做大规模鲁棒性评测，覆盖轮式、腿式与 UAV 平台。
 
 ## 核心摘录（面向 wiki 编译）

@@ -11,7 +11,7 @@ tags:
   - berkeley
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2310.07896"
 code: https://github.com/robodhruv/visualnav-transformer
 related:
@@ -26,6 +26,8 @@ sources:
   - ../../sources/papers/humanoid_pnb_nomad-goal-masked-diffusion-policies-for-navigat.md
   - ../../sources/sites/nomad.md
   - ../../sources/repos/visualnav-transformer-nomad.md
+original:
+  - ../../sources/papers/humanoid_pnb_nomad-goal-masked-diffusion-policies-for-navigat.md
 summary: "NoMaD（ICRA 2024 Best Paper，arXiv:2310.07896）用 attention goal mask 在同一 Transformer+action diffusion 中切换 ImageGoal 与无目标探索；100+ h 多机器人 RGB 数据，10-step 1D UNet，与 topological memory 配合完成长程导航。相对 subgoal diffusion 探索提升 25% 且参数少 15×；MIT 代码与权重已发布。"
 ---
 
@@ -175,7 +177,7 @@ sequenceDiagram
 - 部分训练数据不公开，公开 checkpoint 可部署但严格数据可复现性有限。
 - 主要验证轮式平台；被人形 roadmap 引用不等于论文已在 humanoid 上验证。
 
-## 与其他页面的关系
+## 关联页面
 
 - [Diffusion Policy](../methods/diffusion-policy.md) — 扩散直接生成短时动作序列，需区分目标掩码、噪声训练和部署执行时域。
 - [机器人自主探索](../tasks/autonomous-exploration.md) — 无目标模式与拓扑全局记忆共同服务探索，局部策略本身不负责全部长程规划。

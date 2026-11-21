@@ -4,12 +4,15 @@
 
 - **标题：** From Region Arrival to Instance-Level Grounding in Vision-and-Language Navigation
 - **类型：** paper / VLN / REVERIE / instance grounding / evaluation
-- **arXiv：** <https://arxiv.org/abs/2607.03792>
+- **arXiv：** <https://arxiv.org/abs/2607.03792>（CoRL 2026 录用）
 - **PDF：** <https://arxiv.org/pdf/2607.03792>
+- **代码 / 基准仓库：** <https://github.com/sxyxs/REVERIE-AIM>（已开源 `REVERIE-AIM` 数据集与 `realm_bench` 评测代码，MIT 协议）
 - **作者：** Xiangyu Shi, Ruoxi Yang, Wei Tao, Jiwen Zhang, Yanyuan Qiao（Project Lead）, Qi Wu（通讯作者）
 - **机构：** 阿德莱德大学澳大利亚机器学习研究所（AIML）、如一动力（Ruyi Dynamics）、复旦大学、洛桑联邦理工学院（EPFL）
 - **入库日期：** 2026-07-10
-- **一句话说明：** 指出连续 VLN（尤其 REVERIE-CE）在 **3 m 区域到达** 与 **实例级可见接地** 之间的 **Last-3-Meter Grounding Gap**；提出可插拔精修模块 **REALM**、实例中心指标 **ONS/GS/OracleGS** 与数据集 **REVERIE-AIM**（含 180K 短视界末段样本），在 ETPNav / UniNaVid / SmartWay 等四类骨干上一致提升细粒度接地，并在 Hello Robot Stretch 真机验证。
+- **最近核对：** 2026-11-21
+- **通读：** 已完成
+- **一句话说明：** 指出连续 VLN（尤其 REVERIE-CE）在 **3 m 区域到达** 与 **实例级可见接地** 之间的 **Last-3-Meter Grounding Gap**；提出可插拔精修模块 **REALM**、实例中心指标 **ONS/GS/OracleGS** 与数据集 **REVERIE-AIM**（含 180K 短视界末段样本），在 ETPNav / UniNaVid / SmartWay 等四类骨干上一致提升细粒度接地，并在 Hello Robot Stretch 真机验证（12 episodes ONS@0.5m `8.33% → 33.33%`）；目前已开源基准与评测套件 `sxyxs/REVERIE-AIM`。
 
 ## 摘要级要点
 
@@ -49,7 +52,16 @@
 | ETPNav-ZS | REALM Full | **14.66** | **21.13** | **6.10** | **16.52** |
 | ETPNav-FT | 无精修 | 6.32 | 12.20 | 4.46 | 11.31 |
 | ETPNav-FT | REALM Full | **17.19** | **25.89** | **8.48** | **20.24** |
+| UniNaVid-ZS | 无精修 | 13.61 | 18.08 | 5.65 | 12.20 |
+| UniNaVid-ZS | REALM Full | **14.96** | **20.68** | **6.85** | **16.37** |
+| SmartWay | 无精修 | 7.81 | 11.83 | 1.49 | 4.69 |
+| SmartWay | REALM Full | **13.99** | **19.72** | **5.65** | **15.92** |
 | Human | — | 50.40 | 74.71 | 38.24 | 80.38 |
+
+### 开源边界（2026-11-21 核查 `sxyxs/REVERIE-AIM`）
+
+- 官方仓库公开 `data/reverie_aim_train.json.gz`（3,691）、`data/reverie_aim_val_unseen.json`（1,344）、`data/target_phrases.json` 与 `realm_bench/`（`evaluate.py`、`sim.py`、`metrics.py`、`grounding.py` 使用 `google/owlv2-base-patch16-ensemble`，停止相机参数统一 `224×224`、`90°` HFOV、`1.25 m` 高度），依赖 `habitat-sim==0.1.7` / `habitat-lab==0.1.7`（Python 3.8）及 Matterport3D 资产。
+- 该仓库面向基准数据与指标评测（含 `examples/etpnav_ft_endpoints.json` 复现样例），独立精修策略权重与 LoRA 训练脚本未在该仓同时分发。
 
 ## 对 wiki 的映射
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, embodied-ai, navigation, vln, vlm, pixel-to-3d, memory, grpo, zhejiang-university]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-21
 arxiv: "2608.17512"
 project_id: embodied-navigator-tamp-nav
 project: https://zju-omniai.github.io/Embodied-Navigator/
@@ -13,6 +13,7 @@ related:
   - ./paper-supernav-agentic-navigation.md
 sources:
   - ../../sources/papers/embodied_navigator_arxiv_2608_17512.md
+original: ../../sources/papers/embodied_navigator_arxiv_2608_17512.md
 summary: "Embodied-Navigator（TAMP-Nav，arXiv:2608.17512）：VLM 选二维像素，经深度投影给 SLAM；选择性 CoT、锚点轨迹记忆与 STI 压缩长程上下文，双层 GRPO 优化；R2R-CE Val-Unseen SR 66.2%，用 90k 轨迹。"
 ---
 
@@ -34,6 +35,12 @@ summary: "Embodied-Navigator（TAMP-Nav，arXiv:2608.17512）：VLM 选二维像
 | GRPO | Group Relative Policy Optimization | 论文双层策略优化所用算法 |
 | VLN | Vision-and-Language Navigation | 视觉与语言条件下的具身导航 |
 | SR / SPL | Success Rate / Success weighted by Path Length | 成功率 / 路径长度加权成功率 |
+
+## 为什么重要
+
+- **弥合 VLM 二维预训练与三维几何执行鸿沟：** VLM 直接回归度量坐标效果很差（SFT 消融显示 R2R-CE SR 仅 30.9%），改为 2D 像素点选择并由深度反投影给 SLAM 后即跃升至 **55.7%**，充分利用了预训练视觉定位能力。
+- **推理算力集中在刀刃上：** 通过 MultiNav-CoT 学会只在路口、房间切换等关键节点展开 CoT（触发密度 **26.3%**），把 RL 对齐前后走廊上的冗余推理从 38% 降到 11%，平均只需约 **9 次**交互即可走完一条轨迹。
+- **可落地的强基线与真机零样本迁移：** 在 R2R-CE（**66.2% SR**）与 RxR-CE（**65.7% SR**）刷新记录，且未经目标机器人微调即在 **Unitree Go2**（4 路 RGB-D + Hesai XT16）**100 次**实机试验取得 **60.0%** 零样本成功率。
 
 ## 流程总览
 
@@ -103,7 +110,43 @@ Anchor-Trajectory Memory（AT-Mem）以关键节点作为长程记忆锚点，�
 
 ## 开源与复现状态
 
-论文 v2 于 **2026-08-27** 更新。项目主页说明完整系统还会使用深度完成像素到三维投影，并用里程计编码 STI。代码链接现指向作者迁移后的 [ZJU-OmniAI/Embodied-Omni](https://github.com/ZJU-OmniAI/Embodied-Omni)；复现时需核对该仓当前提供的训练、数据与评测组件，不能仅凭论文主页推断所有真机部署依赖均已开源。
+论文 v2 与官方仓库 `ZJU-OmniAI/Embodied-Omni`（子目录 `embodied_navigator/`）及 Hugging Face 权重 `UnderTides/Embodied-Navigator-7B-GRPO` 均已公开发布：完整开放了 MultiNav-CoT 处理、SFT、Two-Level GRPO 训练脚本、R2R-CE/RxR-CE 评测脚本与真机 FastAPI+ROS2 服务代码；完整 90k MultiNav-CoT 全集、HM3D 场景与 100 次真机全程录像需另行申请/下载。
+
+## 源码运行时序图
+
+`ZJU-OmniAI/Embodied-Omni/embodied_navigator` 按「SFT 冷启动 → Two-Level GRPO 对齐 → 仿真评测 / Unitree Go2 真机闭环」组织执行：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant SFT as scripts/sft_dthink_7b.sh
+  participant GRPO as scripts/grpo_dthink_7b.sh
+  participant Eval as scripts/evaluate.sh & src/eval/
+  participant Policy as src/agent/ & src/model/ (Qwen2.5-VL-7B)
+  participant Server as src/server/ (FastAPI + ROS2 Go2)
+
+  SFT->>Policy: 加载 MultiNav-CoT 数据集训练初始策略
+  GRPO->>Policy: G=8 轨迹 × M=4 候选动作双层 GRPO 优化
+  alt Habitat 连续环境评测
+    Eval->>Policy: 输入四向 RGB + STI/AT-Mem 上下文
+    Policy-->>Eval: 可选 CoT + (view, u, v) -> 深度转 3D waypoint
+  else Unitree Go2 真机部署
+    Server->>Policy: /reset 与 /step 请求（4 路 D435i RGB-D）
+    Policy-->>Server: 3D 航点下发给 FastLIO + FAR Planner 执行
+  end
+```
+
+## 工程实践
+
+- **环境配置：** 官方依赖 Python 3.10+、PyTorch 2.0+、Habitat-Lab 0.3.0 与 Transformers 4.40+；预训练权重可直接拉取 `UnderTides/Embodied-Navigator-7B-GRPO`。
+- **训练与评测入口：** SFT 运行 `bash scripts/sft_dthink_7b.sh config/sft_dthink_7b.yaml`，Two-Level GRPO 运行 `bash scripts/grpo_dthink_7b.sh config/grpo_dthink_7b.yaml`，验证评测运行 `bash scripts/evaluate.sh config/eval_r2r_ce.yaml`。
+- **真机部署链路：** 借助 `src/server/` 提供的 FastAPI (`/reset`, `/step`) 与 ROS2 客户端对接 4 路 D435i 与 Hesai XT16，底层依赖 FastLIO 里程计与 FAR Planner 局部避障（深度不直接输入 VLM，仅在后处理阶段反投影）。
+
+## 常见误区或局限
+
+- **误区：完全不需要深度与里程计** — VLM 虽然只看四路 RGB，但像素到 3D 航点投影仍依赖对齐深度图，STI 时空编码依赖里程计 `(t, x, y, sin yaw, cos yaw)`。
+- **对感知遮挡敏感：** 真机失败案例显示，当目标位于四相机视角死角外且接近终点区域时，策略可能幻觉判停导致过早停止；当深度出现 0.2 倍乘性噪声时 SR 由 66.2% 微降至 63.4%。
+- **局部奖励依赖仿真真值：** Two-Level GRPO 的测地距离、Oracle 成功与 SPL 等奖惩信号依托 Habitat 仿真状态，直接迁到真实世界 RL 训练仍需改造奖励来源。
 
 ## 结论
 
@@ -117,7 +160,12 @@ Anchor-Trajectory Memory（AT-Mem）以关键节点作为长程记忆锚点，�
 
 ## 参考来源
 
-- [论文摘录](../../sources/papers/embodied_navigator_arxiv_2608_17512.md)
+- [论文摘录（原文通读）](../../sources/papers/embodied_navigator_arxiv_2608_17512.md)
 - [项目主页](https://zju-omniai.github.io/Embodied-Navigator/)
 - [作者代码仓库](https://github.com/ZJU-OmniAI/Embodied-Omni)
-- [arXiv PDF](https://arxiv.org/pdf/2608.17512)：已通读方法部分（实验与附录以略读为准）：§2 MultiNav-CoT 数据集、§3 方法（3.1–3.3）；§4 实验略读
+- [arXiv PDF v2](https://arxiv.org/pdf/2608.17512)
+
+## 推荐继续阅读
+
+- [Embodied-Navigator-7B-GRPO 权重卡](https://huggingface.co/UnderTides/Embodied-Navigator-7B-GRPO)
+- [Embodied-Omni 官方源码目录](https://github.com/ZJU-OmniAI/Embodied-Omni/tree/main/embodied_navigator)

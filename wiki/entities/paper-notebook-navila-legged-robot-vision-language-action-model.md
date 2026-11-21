@@ -13,7 +13,8 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
+project_id: navila-legged-vla
 arxiv: "2412.04453"
 code: https://github.com/AnjieCheng/NaVILA
 related:
@@ -32,6 +33,7 @@ sources:
   - ../../sources/sites/navila.md
   - ../../sources/repos/navila.md
   - ../../sources/papers/arcadia_arxiv_2512_00076.md
+original: ../../sources/papers/humanoid_pnb_navila-legged-robot-vision-language-action-model.md
 summary: "NaVILA（RSS 2025，arXiv:2412.04453）把腿式 VLN 分成高层 VLA 语言动作与实时视觉 locomotion：VLA 输出“前进 75 cm”等中层命令，RL 策略执行关节控制。R2R-CE SR 54%、VLN-CE-Isaac Go2/H1 SR 50.2/45.3%，真机 Go2/T1；训练、评测、权重与标注已开源。"
 ---
 
@@ -126,6 +128,7 @@ Go2 的 15 Hz LiDAR 点云构建 2.5D height map；policy 同时读取 proprioce
 | 训练 | 修改 `llava/data/datasets_mixture.py` 路径，运行 `scripts/train/sft_8frames.sh` |
 | 标准评测 | `evaluation/scripts/eval/r2r.sh CKPT_PATH ...`，再用 `evaluation/scripts/eval_jsons.py` 汇总 |
 | 数据边界 | YouTube 原视频因版权不发布，只提供 video IDs 与 annotations；EnvDrop 也只提供 annotations |
+| 实机推理延迟 | **W4A16 AWQ 量化：** 367.8 ms / step、显存 8.6 GB（对比 FP16 594.6 ms / 18.5 GB），搭配 Unitree L1 15 Hz 360×90 LiDAR 2.5D 高程图 |
 | 兼容性 | VLN-CE 依赖旧 Habitat 0.1.7、特定 FlashAttention / Transformers / WebDataset，README 要求源码构建和 hotfix |
 | 开源 | 训练、评测、模型、标注已发布；低层与 Isaac benchmark 分属补充仓库，完整真机链仍需硬件与机器人接口 |
 
@@ -185,7 +188,7 @@ sequenceDiagram
 - [CrossTracer](./paper-crosstracer.md) 把 OmniVLA 改成像素轨迹提案，再用本体残差打 NaviTrace / 轮腿真机；窄腰是 8 个航点而不是本页的语言命令，且截至入库日无代码。
 - [HumanoidVLN](./paper-humanoidvln.md) 把本页策略当 **零样本被测对象**（离散动作 + PD 跟踪）：G1 SR 28.19%，H1 SR 21.97% 且 FR **70.95%**——说明 VLN-CE-Isaac 的 H1 分数不能外推到「可通行筛选 + 摔倒即终止」协议。
 
-## 与其他页面的关系
+## 关联页面
 
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — NaVILA 是腿式连续 VLN 的代表实现
 - [导航纵深路线 Stage 4](../../roadmap/depth-navigation.md) — “语言→中层命令→locomotion”的分层锚点

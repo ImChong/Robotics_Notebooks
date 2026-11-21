@@ -7,7 +7,8 @@
 - **链接：** https://github.com/sjtuyinjie/Ultra-Fusion
 - **Stars：** ~469（2026-07）
 - **入库日期：** 2026-07-01
-- **一句话说明：** Ultra-Fusion 官方实现：统一滑窗多传感器紧耦合 SLAM（WIO/VIO/LIO/LVIO + 可选轮速/GNSS），含因子级可靠性调度与在线时空标定。
+- **开源形态（2026-11 实查）：** 提供 **ROS1 Noetic（v0.1.3，含 Ultra-Fusion-Omni UFO 360° 相机+LiDAR）** 与 **ROS2 Humble（v0.2.2）** 预编译 `.deb` 二进制包及 Dockerfiles（统一 YAML + `uf_node` 流程）；核心估计器 C++ 源码未随仓库公开。
+- **一句话说明：** Ultra-Fusion 官方发布仓库：统一滑窗多传感器紧耦合 SLAM（WIO/VIO/LIO/LVIO + 可选轮速/GNSS），含因子级可靠性调度与在线时空标定。
 - **沉淀到 wiki：** [paper-ultra-fusion-multi-sensor-slam](../../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md)、[lidar-slam-lio-vio-selection](../../wiki/comparisons/lidar-slam-lio-vio-selection.md)
 
 ---

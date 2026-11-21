@@ -11,6 +11,7 @@
 - **项目页：** <https://general-navigation-models.github.io/nomad/>
 - **代码：** <https://github.com/robodhruv/visualnav-transformer>（**已开源**，MIT；含 checkpoint、训练与 ROS 部署）
 - **入库日期：** 2026-06-11
+- **通读：** 已完成
 - **一句话说明：** NoMaD 用 attention goal mask 在同一扩散策略中统一 ImageGoal 导航与无目标探索，并以拓扑记忆完成长程任务。
 
 ## 核心摘录（策展，非全文）

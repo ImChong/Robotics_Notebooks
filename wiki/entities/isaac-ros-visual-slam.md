@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, nvidia, ros2, visual-slam, jetson, isaac-ros]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-21
 related:
   - ../entities/isaac-ros-nvblox.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -11,12 +11,17 @@ related:
 sources:
   - ../../sources/repos/isaac_ros_visual_slam.md
   - ../../sources/repos/cuvslam.md
+  - ../../sources/papers/cuvslam_arxiv_2506_04359.md
+original:
+  - ../../sources/papers/cuvslam_arxiv_2506_04359.md
 summary: "Isaac ROS Visual SLAM 基于 NVIDIA cuVSLAM，在 Jetson/x86+GPU 上提供加速视觉里程计/SLAM，作为 ROS 2 组件接入 Nav2 感知链。"
 ---
 
 # Isaac ROS Visual SLAM
 
-**isaac_ros_visual_slam**（[NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam)）封装 **cuVSLAM**，在 **CUDA** 上加速立体/多相机视觉里程计，面向 **Isaac ROS** 与 **Jetson** 部署。
+## 一句话定义
+
+**Isaac ROS Visual SLAM（`isaac_ros_visual_slam`）** 是 NVIDIA 将 **cuVSLAM**（arXiv:2506.04359）CUDA 视觉-惯性 SLAM 核心封装为 ROS 2 `ComposableNode` 的高性能感知包，面向 Jetson 与 GPU 移动平台提供低延迟里程计、多立体 **FIG** 建图与 Nav2 定位接入。
 
 ## 英文缩写速查
 
@@ -36,11 +41,29 @@ summary: "Isaac ROS Visual SLAM 基于 NVIDIA cuVSLAM，在 Jetson/x86+GPU 上�
 - **ROS 2 原生**：与 [nvblox](./isaac-ros-nvblox.md)、Nav2 代价地图插件同一生态。
 - 与 CPU 系 [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) / [VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) 形成 **部署路径** 对比。
 
-## 核心结构/机制
+## 核心机制与 CUDA 加速栈
 
-- 输入：校准后的立体或双目红外等图像流。
-- 输出：里程计、位姿 TF，可与 IMU 融合（以 release 文档为准）。
-- 依赖：**NVIDIA GPU**、Isaac ROS 公共依赖与容器化工作流。
+| 层次 | 原文指标与机制（cuVSLAM arXiv:2506.04359 & ROS2 封装） |
+|------|------|
+| **CUDA 前端跟踪** | 分块均匀特征筛选 + 改进 Lucas–Kanade 光流 + 跨相机三角化；Jetson Orin AGX 双目单帧耗时 **1.8 ms**（CPU 占 **5.5%**、GPU 占 **1.7%** @ 60 fps） |
+| **多立体 FIG 图** | 支持最多 **32 路相机** 自动构建 **Frustum Intersection Graph（FIG）**，Carter 四双目 R2B 基准 SLAM 精度提升 **40%**，抗单一视角遮挡能力强 |
+| **稀疏局部 BA + 位姿图** | 关键帧触发 CUDA 加速稀疏光束法平差（SBA）与回环闭环优化；KITTI Odometry 0.85% RTE / 0.0025 deg/m |
+| **ROS 2 零拷贝封装** | `VisualSlamNode` 与 `sequencer` 时间对齐多流图像/IMU，输出 `map->odom` / `odom->base_link` TF 与 `tracking/*` 话题直连 `nvblox` 与 Nav2 |
+
+```mermaid
+flowchart LR
+    cams["单双目 / 多立体相机 + IMU"] --> seq["ROS 2 Sync & Sequencer<br/>时间戳对齐"]
+    seq --> front["cuVSLAM CUDA 前端<br/>分块特征 + LK光流 + FIG跨相机"]
+    front --> odom["CUDA 稀疏 BA 里程计<br/>发布 odom -> base TF"]
+    odom --> slam["后端位姿图回环<br/>发布 map -> odom TF"]
+    slam --> nav["nvblox / Nav2 代价地图"]
+```
+
+## 工程实践
+
+- **硬件级时间同步：** 部署多对立体相机（如 Carter 4-Stereo）时必须保证硬件触发时间戳对齐并精确标定 Rig 外参，否则 `VisualSlamImpl::CallbackImage` 同步队列丢帧或 FIG 跨相机三角化发散。
+- **运动速度与帧率配置：** cuVSLAM 默认几乎免调参，但人速以上自主移动推荐 VGA+ 分辨率与 ≥30 fps、短曝光以控制运动模糊。
+- **地图持久化：** 支持 `Reset` / `SaveMap` / `LoadMap` / `LocalizeInMap` ROS 2 服务，适合仓内固定路径重定位部署；实验性 `Multisensor` 任意 RGB/RGB-D 混合模式需启用 `cuNLS` 构建。
 
 ## 常见误区或局限
 
@@ -87,6 +110,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [sources/papers/cuvslam_arxiv_2506_04359.md](../../sources/papers/cuvslam_arxiv_2506_04359.md) — NVIDIA cuVSLAM 技术报告（arXiv:2506.04359）
 - [sources/repos/isaac_ros_visual_slam.md](../../sources/repos/isaac_ros_visual_slam.md)
 - [sources/repos/cuvslam.md](../../sources/repos/cuvslam.md) — 底层 cuVSLAM 库
 - [cuVSLAM 论文实体](./paper-cuvslam.md)

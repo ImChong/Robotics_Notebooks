@@ -11,31 +11,31 @@
 - **作者：** Junzhe Wu, Yue Hu, Zeyu Han, Po-Hsun Chang, Yinan Dong, Behrad Rabiei, Maani Ghaffari
 - **机构：** 密歇根大学（University of Michigan / UMich）；CURLY 实验室
 - **入库日期：** 2026-09-13
-- **一句话说明：** 物理启用的室内–室外连通具身导航基准：100 室内 + 50 城市户外 + 50 室内外连通场景，10k episode 覆盖 ObjNav / PlaceNav / VLN，在 Isaac Sim 可执行 rollout 上同时报告成功、效率与安全指标。
+- **最近核对：** 2026-11-21
+- **通读：** 已完成
+- **一句话说明：** 基于 Isaac Sim 5.1.0 + Isaac Lab 2.3.0 的室内–室外连通具身导航基准：100 室内 GRScenes + 50 Virtual Community 城市户外 + 50 门–立面混合场景，10,000 episode（ObjNav / PlaceNav / VLN），暴露出口寻找（25–48% 无法走到室外）与过渡后性能骤降；已于 2026-09-30 开源。
 
 ---
 
-## 摘要级要点
+## 原文通读要点（arXiv:2607.19695）
 
 1. **问题：** 配送、校园、应急响应等场景要求机器人在**单次连续 episode** 内从建筑内部走到街道；既有 benchmark 多把室内/户外分开评，且常抽象掉机器人执行，出口寻找、边界穿越、域迁移与运动学失败未被系统度量。
-2. **场景规模：** **100** 室内、**50** 城市户外、**50** 室内–户外连通（scene-disjoint split）；城市资产含道路/地形/车辆，室内布局通过门–立面装配接到户外。
-3. **Episode 套件（10,000）：** ObjNav **4,027**、PlaceNav **2,973**、VLN **3,000**。
-4. **任务：** **ObjNav**（物体类别目标）、**PlaceNav**（语义地点/POI，如餐厅/银行）、**VLN**（自然语言路线指令）。
-5. **评测：** 可执行机器人接口 rollout；指标除 **SR / SPL** 外含 **CE**（coverage efficiency）、**CR**（碰撞率）、**ADO**（平均障碍距离）、**NSR**（可通行表面比）及 transition 诊断（室内-only / reach-outside / pre-exit / post-exit 等）。
-6. **仿真栈：** **Isaac Sim** 物理启用 rollout。
-7. **零样本基线（论文摘要）：** RL（PoliFormer）、VLA（UniNaVid）、模块化（SGImagineNav）、VLA-RL（LongNav-R1）；**端到端 VLA 零样本 SR 最高**，模块化方法 **安全指标最强**；PlaceNav 在 outdoor → indoor-to-outdoor 上跌幅最明显，适应仍是瓶颈。
+2. **场景规模与构造：** **100** GRScenes 室内、**50** Virtual Community 城市户外（OSM 道路下沉 0.2 m + 121 个 Objaverse 资产 + 101 个 Gemini3-Pro 店面外观）、**50** 门–立面（door-to-facade）室内–户外连通场景（scene-disjoint split）。
+3. **Episode 套件与本体（10,000）：** ObjNav **4,027**、PlaceNav **2,973**（餐厅、银行等 POI）、VLN **3,000**；主评测以 **Boston Dynamics Spot** 四足控制接口执行（Table 7 另含 Spot 与 Turtlebot 跨本体对照）。
+4. **评测指标：** 除 **SR / SPL** 外包含 **CE**（coverage efficiency）、**CR**（碰撞率）、**ADO**（平均障碍距离）、**NSR**（可通行表面比）及 transition 阶段诊断。
+5. **仿真栈：** **Isaac Sim 5.1.0 + Isaac Lab 2.3.0** 物理启用 rollout。
+6. **核心实验结论（§5）：** RL（PoliFormer）、VLA（UniNaVid）、模块化（SGImagineNav）、VLA-RL（LongNav-R1）全零样本评测显示 **UniNaVid** SR 最高（ObjNav 11.62%、PlaceNav 11.38%、VLN 10.67%），但其 ObjNav 在室内→室外（I2O）场景由 17.65% 跌至 **3.64%**，且 25–48% 失败样本全程未能找到出口走出室外；**SGImagineNav** 安全与可通行表面比最佳（CR 0.21、NSR 0.16）。
 
-## 开源边界（步骤 2.5，截至 2026-09-13）
+## 开源与仓库核查（2026-11-21）
 
-| 已发布 | 备注 |
-|--------|------|
-| arXiv PDF | abs + PDF 可下载 |
-| 项目页 | 榜单、transition 诊断、定性 rollout 视频 |
-| GitHub 仓 | 公开，但默认分支 `website` **仅静态项目站** |
-| Isaac Sim 仿真 / 评测代码 | 项目页标注 **Code Coming soon**；仓内未见 |
-| 场景 / episode 数据 | **未见** 公开下载入口 |
+| 已发布组件 | 核查结论 |
+|------------|----------|
+| arXiv PDF & HTML | 已公开发布（`arXiv:2607.19695`） |
+| 项目页 | 含榜单（2026-11-09 接入 GPT-6 Astra）、transition 诊断与定性视频 |
+| GitHub 主代码库 | **已开源**（2026-09-30 释放）：含 `navverse/`、`baselines/`、`scripts/`、`configs/`、`docker/`、`setup.py`、`tests/` 及 `navverse-run` 启动器 |
+| 场景与 Episode 数据 | **已开源**：Hugging Face `tccoin/navverse-benchmark` 提供 `navverse_v1_july23.tar.gz`（含 `vc_plus`、`grscenes_commercial`、`navmesh`、`episodes/`）与 SHA-256 校验 |
 
-**综合判定：** **待发布** — 论文与项目站已上线，可复现 benchmark 代码与数据仍待官方发布。
+**综合判定：** **已开源** — 代码、基线包装器、Isaac Sim Docker 与 v1 场景/episode 资产均已发布。
 
 ## 对 wiki 的映射
 

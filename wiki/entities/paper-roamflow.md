@@ -14,7 +14,7 @@ tags:
   - jetson
   - ntu
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2606.29934"
 venue: "arXiv"
 summary: "RoamFlow（NTU，arXiv:2606.29934）：MeanFlow 一步轨迹生成 + IL→RL 任务对齐 + 轨迹评估器；Habitat Gibson SR 68.7%/19.6 ms，Go2+Orin NX 真机 SR 1.00；确认未开源。"
@@ -31,9 +31,15 @@ related:
   - ../methods/diffusion-policy.md
 sources:
   - ../../sources/papers/roamflow_arxiv_2606_29934.md
+original:
+  - ../../sources/papers/roamflow_arxiv_2606_29934.md
 ---
 
 # RoamFlow
+
+## 一句话定义
+
+**RoamFlow** 是通过 **MeanFlow** 平均速度场单步传输生成多模态候选轨迹、结合 **IL 初始化 → Habitat PPO 精炼** 与安全评估器重排的实时图像目标（Image-Goal）导航策略，兼顾低延迟与高成功率。
 
 **RoamFlow**（*Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation*，南洋理工大学 NTU，arXiv:2606.29934）面向 **image-goal 导航**：用 **MeanFlow** 预测轨迹区间的 **平均速度场**，实现 **一步（少步）轨迹生成**，避免扩散多步去噪与常规 flow 数值积分的延迟；并以 **专家模仿 → Habitat PPO** 两阶段把生成策略对齐成功到达与避碰目标，再用轻量 **轨迹评估器** 从多样本候选中选安全路径。Habitat 与 **Unitree Go2（Jetson Orin NX）** 真机均有评测。
 

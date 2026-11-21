@@ -15,6 +15,7 @@
 - **真机：** Unitree **Go2** + Jetson Orin NX 16GB + RealSense D435i；ROS1 Noetic；控制环 **10 Hz**
 - **项目页 / 代码：** 截至入库日 **无**（arXiv Code 区无官方仓；GitHub 检索无 RoamFlow 官方实现）
 - **入库日期：** 2026-08-05
+- **通读：** 已完成
 - **一句话说明：** 用 **MeanFlow** 预测区间平均速度场做 **一步轨迹生成**，再以 **IL→RL** 两阶段对齐任务目标，并在 Habitat 与 Go2 真机上兼顾 SR/SPL 与低延迟。
 
 ## 相关资料（策展）

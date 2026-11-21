@@ -11,7 +11,8 @@ tags:
   - minco
   - zju
 status: complete
-updated: 2026-09-25
+updated: 2026-11-21
+project_id: flap-active-perception-3d-navigation
 arxiv: "2606.17630"
 venue: arXiv 2026
 related:
@@ -23,6 +24,7 @@ related:
   - ./mavsdk.md
 sources:
   - ../../sources/papers/flap_arxiv_2606_17630.md
+original: ../../sources/papers/flap_arxiv_2606_17630.md
 summary: "FLAP（arXiv:2606.17630）：ZJU 无先验地图 3D UAV 规划——传感器系 FOV 主动感知惩罚 + 可优化 AP 子段 + MINCO 联合时空优化；窄垂直 FOV 与竖向机动仿真/真机验证。"
 ---
 
@@ -101,6 +103,17 @@ flowchart LR
 - 适用边界：面向 **无先验地图的 3D 竖向机动**（螺旋爬升、头顶障碍、高墙翻越），前端只需简单加权 A*；但它不替代 SLAM/建图，仍依赖 onboard 占据栅格与 ESDF 更新。
 - 主要失败模式：可见性约束 **不建模遮挡**，靠 AP 末端 safeguard 与重规划兜底；known–unknown 边界由前端决定，边界估计误差在极窄 FOV 下可致优化失败或急停。
 - 工程状态：截至 ingest 时 arXiv 页未列公开仓库，复现需自行实现 MINCO + 双 ESDF + 传感器系惩罚链；相对 [EGO-Planner Swarm](./ego-planner-swarm.md) / [MIGHTY](./paper-mighty-hermite-spline-trajectory-planning.md) 它多的是 FOV 建模，而不是 ROS 工程生态或 swarm 支持。
+
+## 源码运行时序图
+
+**不适用**：截至 **2026-11-21**，arXiv 论文页与公开 GitHub 检索均未发现作者开源仓库；需依赖下文工程参数按论文 §III–§V 自行实现 MINCO ($h=3$) + 双 ESDF + 传感器系优化。
+
+## 工程实践
+
+- **传感器配置与安装倾角：** LiDAR 可直接代入非对称垂直区间（如 Livox Mid-360 为 `[-7°, 52°]` 并关闭水平视场约束，真机前倾 `15°` 可将前向视场调平衡至约 `[-22°, 37°]` 减少低头 blind zone）；深度相机（如 Orbbec Gemini 335 `78°×64°`，有效测距 `0.26–3 m`）须联合约束水平 `yaw` 与俯仰 `pitch`。
+- **已知–未知边界与重规划衔接：** 实时监测边界观测点 ESDF 变化及 AP 子段末端 $o_{pf}$；预设固定求解时限 $T_R$ 并在交接时刻 $t_c + T_R$ 施加三阶导数 `jerk-matching` 罚项，防止重规划切换引起的机头姿态抖动与视场震荡。
+- **未知段与终端状态松弛：** 对条件可通行未知段 $S_t$ 设截断长度 $l_u$，并将临时终端速度 $\dot{p}_f$ 与偏航 $\psi_f$ 留作优化变量，避免在未知边界前过度刹车停顿。
+- **复现路线建议：** 目前尚无官方源码，建议基于开源 [EGO-Planner Swarm](./ego-planner-swarm.md) / MINCO 工具链增量扩展双 ESDF（$E_s / E_u$）、边界平面重参数化 $\mathcal{B}$ 与传感器系约束代价。
 
 ## 常见误区或局限
 

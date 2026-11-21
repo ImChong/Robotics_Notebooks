@@ -4,7 +4,11 @@ status: complete
 title: HiPAN（Hierarchical Posture-Adaptive Navigation）
 tags: [quadruped, navigation, rl, hierarchical-rl, depth, curriculum-learning, sim2real, legged]
 summary: "四足在非结构化 3D 场景中的分层导航：高层从深度输出平面速度与体姿态指令，低层做姿态自适应足式跟踪；用路径引导课程缓解短视，teacher–student 蒸馏实现无显式 3D 建图的机载部署。"
-updated: 2026-11-15
+updated: 2026-11-21
+sources:
+  - ../../sources/papers/hipan.md
+original:
+  - ../../sources/papers/hipan.md
 ---
 
 # HiPAN（Hierarchical Posture-Adaptive Navigation）
@@ -83,6 +87,12 @@ flowchart TB
     PGCL --> HT
   end
 ```
+
+## 工程实践
+
+- **仿真与真机运行频率：** Isaac Gym 在 Unitree Go1 上并行训练；部署时高层学生策略以 **10 Hz** 消费单目深度图（裁剪至 `0–4 m` 并经 hole-filling 滤波去噪），低层学生策略以 **50 Hz** 输出关节偏移量经 PD 控制器执行。
+- **训练规模参考：** 单张 RTX 4090 上高/低层教师-学生依次分阶段训练（低层教师 4096 机器人 12h + 学生 2h；高层教师 1024 机器人 18h + 学生 6h）。
+- **透明/镜面障碍局限：** 红外/双目深度相机对玻璃门墙易产生穿透误检，部署玻璃走廊环境时需叠加视觉语义或机械防碰冗余。
 
 ## 常见误区或局限
 
