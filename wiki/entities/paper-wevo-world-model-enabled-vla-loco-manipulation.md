@@ -7,7 +7,7 @@ original: ../../sources/papers/wevo_arxiv_2611_25251.md
 status: complete
 updated: 2026-11-21
 tags: [paper, humanoid, loco-manipulation, vla, world-models, reinforcement-learning, sim2real, unitree-g1, amazon, stanford, ut-austin]
-topic: [vla, humanoid, world-models]
+topic: [vla, world-models]
 related:
   - ./paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md
   - ./paper-legs-embodied-gaussian-splatting-vla.md
