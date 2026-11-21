@@ -12,6 +12,7 @@ related:
   - ./paper-robogene.md
   - ../concepts/motion-retargeting.md
   - ../tasks/teleoperation.md
+  - ../methods/vla.md
   - ../concepts/embodied-data-cleaning.md
 sources:
   - ../../sources/sites/ymate-robogene-fzmotion-primary.md
@@ -101,6 +102,7 @@ flowchart TD
 - [同名 RoboGene 论文（区分身份）](./paper-robogene.md)
 - [动作重定向](../concepts/motion-retargeting.md)
 - [遥操作](../tasks/teleoperation.md)
+- [VLA 视觉语言动作策略](../methods/vla.md) — 下游训练数据消费者
 - [具身数据清洗](../concepts/embodied-data-cleaning.md)
 - [具身数据纵深路线](../../roadmap/depth-embodied-data.md)
 
