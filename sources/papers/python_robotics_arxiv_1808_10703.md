@@ -9,6 +9,10 @@
 - **TeX 源：** <https://github.com/AtsushiSakai/PythonRoboticsPaper>
 - **代码仓库：** <https://github.com/AtsushiSakai/PythonRobotics>
 - **入库日期：** 2026-06-09
+- **复核日期：** 2026-11-21
+- **原文下载/核对日：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文 353 行（8 页论文全文：Localization / Mapping / SLAM / Path Planning / Path Tracking 五大模块设计原则、依赖约束与教学定位）
 - **一句话说明：** 2018 年介绍 PythonRobotics 开源项目的短文（8 页）：强调用 Python3 最小依赖实现常用自主导航算法，并配以动画帮助初学者建立直觉。
 
 ## 核心摘录（面向 wiki 编译）

@@ -12,8 +12,9 @@ tags:
   - multi-agent
   - sapienza
 status: complete
-updated: 2026-09-25
+updated: 2026-11-21
 arxiv: "2607.01044"
+code: https://github.com/S4b3/CommNav
 related:
   - ./habitat-sim.md
   - ./paper-icrowdnav.md
@@ -24,10 +25,12 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../tasks/vision-language-navigation.md
   - ../../roadmap/depth-navigation.md
+original:
+  - ../../sources/papers/commnav_arxiv_2607_01044.md
 sources:
   - ../../sources/papers/commnav_arxiv_2607_01044.md
   - ../../sources/repos/commnav.md
-summary: "CommNav（arXiv:2607.01044，IROS 2026）：多人体场景下机器人主动问路定位目标；Habitat 3.0c + COMM 预训练模块；ES +10 pp；口语指令与结构化线索接近；官方仓占位待发布。"
+summary: "CommNav（arXiv:2607.01044，IROS 2026）：多人体场景下机器人主动问路定位目标；Habitat 3.0c + COMM 预训练模块；ES +10 pp；口语指令与结构化线索接近；官方 MIT 源码、release 脚本与 v1.0.0 权重已开源。"
 ---
 
 # CommNav（通信使能社交导航）
@@ -65,7 +68,7 @@ summary: "CommNav（arXiv:2607.01044，IROS 2026）：多人体场景下机器�
 |------|------|
 | 机构 | 罗马第一大学（Sapienza University of Rome） |
 | 发表 | IROS 2026（官方仓 bibtex）；arXiv [2607.01044](https://arxiv.org/abs/2607.01044) |
-| 代码 | <https://github.com/S4b3/CommNav> — **待发布**（README under preparation，截至 2026-08-09） |
+| 代码 | <https://github.com/S4b3/CommNav> — **已开源（MIT，758 files，含 `v1.0.0` release 权重与启动脚本）** |
 | 仿真 | Habitat 3.0 → **Habitat 3.0c**（多人、通信、ORCA；\(p=0.25\) 忽略机器人） |
 | 策略 | DDPPO；视觉 ResNet（深度 + 人体检测）；动作线/角速度 |
 | 通信内容 \(\mathcal{S}\) | \(x_h\)（见过否）、\(x_t\)（多久前）、\(\mathbf{x}_l\)、\(\mathbf{x}_d\)、\(\mathbf{x}_p\)（100 点轨迹）；说话者相对坐标 |
@@ -116,14 +119,37 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**：截至 **2026-08-09**，官方仓 [S4b3/CommNav](https://github.com/S4b3/CommNav) 仅含 README；正文写明 *under preparation*，训练/评测、Habitat 3.0c 配置、COMM 实现与生成数据均 **coming soon**，无可对齐的运行入口。待正式 release 后按 README 补 `sequenceDiagram` 与复现路径。详见 [仓库归档](../../sources/repos/commnav.md)。
+官方仓以 `habitat-baselines/scripts/release/` 作为完整训练与评测启动面，配合 `habitat-lab/habitat/tasks/rearrange/multi_agent_sensors.py` 中的 `OtherAgentCommunicationWithinThreshold` 与 `DidAgentsCollide` 等传感器/度量运行四阶段流水线。
+
+```mermaid
+sequenceDiagram
+    participant Rel as scripts/release/*.sh
+    participant Base as train_baseline.sh (DDPPO)
+    participant Comm as communication_module_[text_]train.py
+    participant Nav as train_commnav.sh / eval_commnav.sh
+    participant Hab as Habitat 3.0c (multi_agent_sensors.py)
+
+    Rel->>Base: 1. 训练无通信基础导航策略
+    Base->>Hab: HSSD 多人体社交场景 rollout -> checkpoints/baseline/
+    Rel->>Comm: 2. 训练 COMM 目标回归模块
+    Note over Comm: train_comm_module_numeric.sh (CSV) 或 train_comm_module_text.sh (Prompts+BERT)
+    Comm-->>Rel: 输出 comm_checkpoints/{numeric,text}/
+    Rel->>Nav: 3. 加载 baseline 初始化 + COMM 权重跑 train_commnav.sh
+    loop 策略对齐与微调
+        Hab-->>Nav: OtherAgentCommunicationWithinThreshold + ReID/视觉观测
+        Nav->>Hab: COMM 预测目标位置 -> 冻结/联合微调 DDPPO
+    end
+    Rel->>Nav: 4. eval_commnav.sh (按 COMM_MODE 加载策略与 COMM 权重评测)
+```
+
+图依据：`S4b3/CommNav`（`MIT`，`pushed_at: 2026-09-26`）`habitat-baselines/EXPERIMENTS.md`、`habitat-baselines/scripts/release/{train_baseline,train_comm_module_numeric,train_comm_module_text,train_commnav,eval_commnav}.sh` 与 `habitat-lab/habitat/tasks/rearrange/multi_agent_sensors.py`。
 
 ## 工程实践
 
-| 项 | 建议 / 论文设定 |
-|----|----------------|
-| 复现现状 | **代码未发布**；仅能作任务定义与对照，见 [仓库归档](../../sources/repos/commnav.md) |
-| 仿真依赖 | Habitat 3.0 生态 + 本文 3.0c 扩展（配置待开源） |
+| 项 | 建议 / 论文与源码设定 |
+|----|----------------------|
+| 复现现状 | **已完整开源（MIT + `v1.0.0` checkpoint）**；human-study 原始数据未随仓分发，详见 [仓库归档](../../sources/repos/commnav.md) |
+| 官方入口 | 优先走 `habitat-baselines/scripts/release/` 五套启动脚本与 `EXPERIMENTS.md` 约定目录 |
 | 训练技巧 | 先训无通信 DDPPO，再 **Fine-tune + 冻结 COMM**（Table IV：优于从零带 COMM 训） |
 | 通信设计 | egocentric、相对说话者；勿依赖语义地名 grounding |
 | 指标读法 | 主看 **ES / S / CR / \(\mathrm{CR}_T\)**；\(S_{\text{steps}}\) 已含问路绕行代价 |
@@ -153,11 +179,11 @@ flowchart TB
 3. **口语够用** — 人体研究指令欠指定，但定位误差与结构化/LLM 路径接近，ES 不崩。
 4. **\(x_h\) 与说话者轨迹最值钱** — 消融里对 ES 打击最大；设计传感器/话术时勿砍这两项。
 5. **训练配方：视觉先稳，再挂 COMM** — Fine-tune 冻结 COMM 优于从零联合训，并省算力。
-6. **选型边界** — 相对 [iCrowdNav](./paper-icrowdnav.md)（拥挤绕行不问路）、[PioneeR](./paper-notebook-learning-social-navigation-from-positive-and-neg.md)（正负示范舒适性）、[HUMEMBR](./paper-humembr.md)（多日记忆找人），本文专攻 **即时信息寻求型找人**；代码未开源前只作对照。
+6. **选型边界** — 相对 [iCrowdNav](./paper-icrowdnav.md)（拥挤绕行不问路）、[PioneeR](./paper-notebook-learning-social-navigation-from-positive-and-neg.md)（正负示范舒适性）、[HUMEMBR](./paper-humembr.md)（多日记忆找人），本文专攻 **即时信息寻求型找人**；官方仓已完整发布 MIT 源码、`scripts/release/` 与 `v1.0.0` 权重，可直接复用 Habitat 3.0c 多代理传感器。
 
 ## 局限与风险
 
-- **代码待发布：** 无法复现 Habitat 3.0c episode 或核对 COMM 超参。
+- **人工研究原始包未发布：** MIT 源码、`v1.0.0` checkpoint 与合成训练脚本均已开源，但人类口语研究原数据未随仓分发。
 - **仿真假设强：** 无噪声传感、完美 egocentric、oracle 级人体检测；真机需额外感知栈（见 [Sim2Real](../concepts/sim2real.md)）。
 - **单轮交互：** 无多轮澄清/对话管理；复杂指代与纠错留给后续。
 - **场景拥挤饱和：** 三人全速时碰撞本就难避；通信增益在半速/更大可通行空间更明显。
@@ -169,11 +195,11 @@ flowchart TB
 | 路线 | 人扮演角色 | 核心机制 | 开源/复现 |
 |------|------------|----------|-----------|
 | **DDPPO / SDA Social Nav** | 动态障碍 / 轨迹线索 | 避障 +（SDA）可见轨迹编码 | Habitat 3.0 文献栈 |
-| **iCrowdNav** | 需绕行的人群 | BEV + 姿态意图 PPO | 仓占位待发布 |
+| **iCrowdNav** | 需绕行的人群 | BEV + 姿态意图 PPO | **MIT 源码已开源（缺权重/Nucleus 场景）** |
 | **PioneeR 正负示范** | 舒适性示范源 | 密度奖励 + 规则 + teacher | 未开源 |
 | **HUMEMBR** | 多日例行目标 | 身份库 + LLM 记忆检索 | 代码已开源 |
 | **VLN / 语言指令导航** | 指令下达者 | 语言→路径/动作 | 任务族不同 |
-| **CommNav（本文）** | **信息提供者（非目标路人）** | **COMM 线索→目标估计** | **仓占位，代码待发布** |
+| **CommNav（本文）** | **信息提供者（非目标路人）** | **COMM 线索→目标估计** | **MIT 源码与 `v1.0.0` 权重已开源** |
 
 ## 关联页面
 
@@ -195,6 +221,6 @@ flowchart TB
 ## 推荐继续阅读
 
 - Sacco, Scofano, Spinelli, Galasso — *Robots Ask the Way: Communication-Enabled Social Navigation* — [arXiv:2607.01044](https://arxiv.org/abs/2607.01044)
-- [GitHub 占位仓（跟进代码发布）](https://github.com/S4b3/CommNav)
+- [S4b3/CommNav（官方 MIT 源码仓）](https://github.com/S4b3/CommNav)
 - Puig et al., *Habitat 3.0* — [arXiv:2310.13724](https://arxiv.org/abs/2310.13724)
 - Scofano et al., *Following the Human Thread in Social Navigation*（SDA）— ICLR 2025

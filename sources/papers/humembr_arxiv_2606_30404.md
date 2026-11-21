@@ -12,6 +12,10 @@
 - **作者：** Samira Huber, Klaas Pelzer, Duc M. Nguyen, Xuesu Xiao, Sören Pirk
 - **机构：** 基尔大学（Kiel University）；乔治梅森大学（George Mason University）
 - **入库日期：** 2026-08-06
+- **复核日期：** 2026-11-21
+- **原文下载/核对日：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文 930 行（Abstract、§I–§VI 身份记忆构建与工具调用检索、PersonEQA 基准、Spot 例行条件导航真机评测）+ `samirahuber/humembr` 源码
 - **一句话说明：** 面向办公等真人日常环境的 **人中心长时程记忆** 系统：并行构建身份感知记忆（人脸 DBSCAN + KPR ReID、Qwen 字幕 + 向量检索）与 LLM **工具调用检索**，支持 PersonEQA 与 Spot 上的例行条件导航；相对全上下文基线用更少 token 提升长程推理。
 
 ## 核心论文摘录（MVP）

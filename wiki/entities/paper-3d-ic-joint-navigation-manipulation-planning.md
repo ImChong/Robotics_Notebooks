@@ -14,7 +14,7 @@ tags:
   - ict
   - ucas
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 venue: "2026 · ICML"
 code: https://github.com/kekeZ66/3D-IC
 related:
@@ -104,22 +104,48 @@ flowchart TB
 - **重规划频率：** 摘要强调 **执行下一 waypoint 后随观测 replan**——工程上需平衡 **地图更新延迟** 与 **控制稳定性**。
 - **硬件参照：** 论文在 **Stretch 3** 上验证；与 REALM 等 Stretch 工作可共享 **相机标定、底盘控制、仿真–真机 gap** 经验。
 
-## 评测要点
+## 评测要点（ICML 2026 Poster #809 `61610.png` 核对）
 
-- **验证平台：** 仿真环境 + **Hello Robot Stretch 3** 真机，覆盖开放词汇移动操作的长视界取放/交互任务。
-- **主要指标：** **任务成功率** 与 **轨迹效率**（路径长度）；论文报告二者相对分阶段基线 **一致提升**。
-- **对照基线：** 将导航与操作 **先后独立** 处理的分阶段管线；3D-IC 的共享 3D 特征图 + 交互链联合规划在成功率–效率折中上占优。
-- **清单索引说明：** 具体数值以 [论文摘录](../../sources/papers/3d_ic_icml_2026.md) 与官方仓库 README 为准；本页为溯源索引，细节待深读补充。
+| 评测设定 | 关键指标对比 |
+|----------|--------------|
+| **OVMM 仿真基准（Table 1）** | **3D-IC (Ours)**：FindObj **69.1 / 26.7**，Pick **64.0 / 26.5**，FindRec **55.6 / 13.2**，Place **21.9 / 4.9**，Avg SR **52.7%**，Step **844.1**（对比 OVMM (RL) 48.4% / 989.7 步、MoManipVLA 49.4% / 1240.5 步、MoTo 49.6% / 1195.1 步、UniTeam 50.4% / 1027.7 步） |
+| **Stretch 3 真机（Table 2，Intra / Cross）** | **3D-IC**：Intra **44.0%**（FindObj 64 / Pick 44 / FindRec 40 / Place 28）、Cross **40.0%**（70 / 40 / 30 / 20）；对比 Heuristic 基线 Intra 33.0% / Cross 25.0% |
+| **来源完整性说明** | 上表数字于 2026-11-21 核对自 ICML 官方 Poster `#809`（`61610.png`）；OpenReview 论文全文 PDF（`oVB2xYWvpv`）因 HTTP 403 访问受阻暂未通读，故 `original` 仍保留待补状态 |
+
+## 源码运行时序图
+
+入口：`projects/habitat_ovmm/eval_baselines_agent.py` 构建基于 HomeRobot `OVMMEvaluator` 的评测环境并实例化 `OpenVocabManipAgent`（定义于 `src/home_robot/home_robot/agent/ovmm_agent/ovmm_3dic_agent.py`），结合 `mapping/clip3d/{voxel_map,spare_token_map,clip_model}.py` 在每步观测中更新共享 3D 特征体素并由 `act()` 分发导航/抓取/放置技能。
+
+```mermaid
+sequenceDiagram
+    participant Eval as eval_baselines_agent.py
+    participant Env as OVMMEvaluator (Habitat OVMM)
+    participant Agent as OpenVocabManipAgent (ovmm_3dic_agent.py)
+    participant Map as VoxelMap / SparseTokenMap (clip3d)
+    participant VLM as CLIPModel / VLM Feasibility
+
+    Eval->>Agent: OpenVocabManipAgent(agent_config, device_id)
+    Eval->>Env: OVMMEvaluator(env_config, data_dir)
+    loop 每个时间步 t
+        Env-->>Agent: RGB-D + 位姿观测 obs
+        Agent->>Map: 更新 3D 语义/几何体素地图与 SparseTokenMap
+        Agent->>VLM: 提取候选路点特征与可行性/转移代价评分
+        VLM-->>Agent: 最优交互链下一路点与技能 Skill
+        Agent-->>Env: act(obs) 返回导航或操作控制动作
+    end
+```
+
+图依据：`kekeZ66/3D-IC`（`MIT`，`pushed_at: 2026-07-03`）`projects/habitat_ovmm/eval_baselines_agent.py`、`src/home_robot/home_robot/agent/ovmm_agent/ovmm_3dic_agent.py`（`OpenVocabManipAgent::act`）及 `mapping/clip3d/`。
 
 ## 结论
 
 **3D-IC 的关键不是引入 VLM，而是把导航与操作重新放回同一张 3D 特征图上联合出路点——它解决的是分阶段管线「到了但够不着 / 能操作但绕远」的阶段错配，代价是规划时延与对地图和 VLM 质量的强依赖。**
 
-- 真正起作用的是 **共享 3D 特征图 + 阶段对齐交互路点**：可行性由 VLM 在 waypoint-centric 3D 特征上判、效率由阶段间转移代价判，二者在同一条候选链上打分，才谈得上「成功率–轨迹效率」折中最优。
+- 真正起作用的是 **共享 3D 特征图 + 阶段对齐交互路点**：可行性由 VLM 在 waypoint-centric 3D 特征上判、效率由阶段间转移代价判，二者在同一条候选链上打分，才谈得上「成功率–轨迹效率」折中最优（OVMM 仿真 Avg SR 从 UniTeam 50.4% 提至 52.7% 且平均步长由 1027.7 降至 844.1）。
 - 适用边界是 **轮式/全向底座 + 操作臂** 的长视界、多阶段、开放词汇家务任务；证据集中在仿真与 Stretch 3，迁移到双足 loco-manipulation 或高动态全身时，路点定义与转移代价都要重标定。
 - 主要失败模式沿链传播：遮挡、深度噪声、开放词汇接地错误与 VLM 幻觉会产出「看似可行实则不可达」的路点；候选链枚举加 VLM 推理还把 replan 频率与执行流畅度变成一对需要调的取舍。
 - 路线定位是 **显式规划 + VLM 推理**，不直接输出连续动作：与 [VLA](../methods/vla.md) 是分层组合而非替代关系；与同平台的 [REALM](./paper-realm-last-3-meter-vln-grounding.md) 互补——后者管 VLN 末段实例接地，本页管全链导航–操作联合。
-- 工程状态需保守对待：本页为清单索引，具体数值以论文摘录与官方 README 为准，[代码仓库](https://github.com/kekeZ66/3D-IC) 在 ingest 时为新建仓，勿假设可直接复现。
+- 工程与阅读现状：`kekeZ66/3D-IC`（MIT）已公开 HomeRobot 扩展源码，`61610.png` Poster 已核对关键实验表；但 OpenReview 全文 PDF（`oVB2xYWvpv`）于 2026-11-21 返回 HTTP 403 且本地无可用浏览器调试会话，因此本页按实保持 `2/3`（待获取全文 PDF 后再升 `3/3`）。
 
 ## 局限与风险
 
@@ -127,7 +153,7 @@ flowchart TB
 - **计算与延迟：** 候选链枚举 + VLM 推理在长视界任务上可能带来 **规划时延**；真机闭环需关注 **replan 频率 vs 执行流畅度**。
 - **平台特异性：** 当前证据集中在 **Stretch 3** 与仿真；向 **双足 loco-manipulation** 或 **高动态全身** 迁移时，路点定义与转移代价需重新标定。
 - **与端到端 VLA 的边界：** 3D-IC 是 **显式规划 + VLM 推理** 路线，不直接输出连续动作；与 [VLA](../methods/vla.md) **分层组合** 或 **对比** 时需明确各层接口。
-- **预印本与代码成熟度：** ICML 2026 公开时 **arXiv 尚未检索到**；[GitHub 仓库](https://github.com/kekeZ66/3D-IC) ingest 时为新建仓，复现前应以官方 README 为准。
+- **预印本与代码核对状态：** [kekeZ66/3D-IC](https://github.com/kekeZ66/3D-IC)（MIT）已公开 HomeRobot OVMM 扩展源码，且 ICML 2026 Poster `#809` 已核对主要评测表；但 OpenReview 全文 PDF（`oVB2xYWvpv`）返回 HTTP 403 且 arXiv 暂未检索到，部分超参/消融细节仍待原文 PDF 解锁后复核。
 
 ## 与其他工作对比
 

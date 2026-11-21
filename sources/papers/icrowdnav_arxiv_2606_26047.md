@@ -8,11 +8,15 @@
 - **arXiv：** <https://arxiv.org/abs/2606.26047>
 - **期刊：** IEEE Robotics and Automation Letters（RA-L），2026，Vol. 11, No. 5, pp. 6186–6193；doi:[10.1109/LRA.2026.3677748](https://doi.org/10.1109/LRA.2026.3677748)
 - **项目页：** <https://broln7.github.io/socialbev.io/>
-- **代码：** <https://github.com/BRoln7/icrowdnav>（截至 2026-07-28：**TODO Release codes**，无可运行入口）
+- **代码：** <https://github.com/BRoln7/icrowdnav>（**2026-11-21 复核：已开源**，`MIT`，322 files，`pushed_at: 2026-09-17`；含 `drl_policy/` 训练推理代码与 Isaac Sim/ROS 包装，Nucleus USD 场景与预训练权重未随仓分发；归档见 [`sources/repos/icrowdnav.md`](../repos/icrowdnav.md)）
 - **视频：** <https://www.youtube.com/watch?v=8q0dhAiWCEA>
 - **作者：** Han Bao†, Bingyi Xia†, Hanjing Ye, Yu Zhan, Hao Cheng, Baozhi Jia, Wenjun Xu, Jiankun Wang（† equal contribution）
 - **机构：** 南方科技大学（SUSTech）；锐冠信息（Reconova）；鹏城实验室（Peng Cheng Laboratory）
 - **入库日期：** 2026-07-28
+- **复核日期：** 2026-11-21
+- **原文下载/核对日：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文 1354 行（Abstract、§I–§V 时空 BEV + I²Former + PPO 架构、SocNav-Gym 消融与基准对比、Clearpath Dingo 零样本真机部署与局限）+ `BRoln7/icrowdnav` 源码（`policy_train.py`, `policy_inference.py`）
 - **一句话说明：** 面向 **密集人群视觉导航** 的 DRL 方法：用 **时空 BEV 编码器** 提取占据特征，用 **I²Former（Intent-Interact Former）** 从 **3D 人体姿态** 推断行人意图，融合机器人状态后以 **PPO** 训练；Isaac Sim **SocNav-Gym** 上优于 DRL-VO / SARL\*-OM / ViNT / DWA，并在健身房 / 地铁站 / 商场 **零样本** 真机部署（Clearpath Dingo，双 RealSense，板载 RTX 2060 ~15 Hz）。
 
 ## 核心论文摘录（MVP）

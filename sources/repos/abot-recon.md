@@ -12,9 +12,9 @@
 - **Demo：** https://huggingface.co/spaces/acvlab/abot-recon-streaming-3d
 - **许可：** Apache-2.0
 - **语言：** Python 3.10+
-- **入库日期：** 2026-09-06（策展快照）；**2026-09-13** 深化论文 ingest
+- **入库日期：** 2026-09-06（策展快照）；**2026-09-13** 深化论文 ingest；**2026-11-21** 复核同步 `train` 与 `visualization` 分支状态
 - **一句话说明：** 固定 **12 帧**局部上下文的单目 RGB 长视频流式 3D 重建：每步预测点图 + 相邻相对位姿，序贯组合全局几何；单目即可、有界内存。
-- **开源状态：** **已开源**（`demo.py`、`abot_recon.ABotRecon` API、HF 自动拉权重、可选 FlashInfer/cuRoPE）
+- **开源状态：** **已开源**（`Apache-2.0`，99 files；含 `demo.py`、`abot_recon.ABotRecon` API、HF 自动拉权重、`train` 微调分支、`eval` 评测分支与 `visualization/` 点云/轨迹可视化脚本）
 - **沉淀到 wiki：** [paper-abot-recon](../../wiki/entities/paper-abot-recon.md)（原 `cn-os-abot-recon` 策展页已并入此页）
 
 ---

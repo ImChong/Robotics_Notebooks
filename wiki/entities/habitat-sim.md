@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, embodied-ai, navigation, meta, habitat, gpu-rendering, habitat-lab, bullet]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-21
 related:
   - ./matterport3d-simulator.md
   - ./igibson.md
@@ -22,8 +22,11 @@ related:
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/quadruped-vln-embodied-workshop.md
   - ./paper-travexplorer.md
+original:
+  - ../../sources/papers/habitat_arxiv_1904_01201.md
 sources:
   - ../../sources/repos/habitat-sim.md
+  - ../../sources/papers/habitat_arxiv_1904_01201.md
   - ../../sources/sites/aihabitat-org.md
   - ../../sources/sites/aihabitat-habitat-sim-docs.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
@@ -190,6 +193,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [Habitat 论文全文归档（ICCV 2019 / arXiv:1904.01201）](../../sources/papers/habitat_arxiv_1904_01201.md)
 - [Habitat-Sim 仓库归档](../../sources/repos/habitat-sim.md)
 - [aihabitat.org 门户归档](../../sources/sites/aihabitat-org.md)
 - [Habitat Sim Docs 归档](../../sources/sites/aihabitat-habitat-sim-docs.md)

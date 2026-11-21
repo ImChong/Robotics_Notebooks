@@ -92,7 +92,7 @@ flowchart LR
 - [Ultra-Fusion](../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — 韧性多传感器融合前沿
 - [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md) — 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
 - [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md) — memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
-- [KILVO](../wiki/entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；代码仓占位待开放
+- [KILVO](../wiki/entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；已开源（ROS Noetic C++ GPL-2.0 + 15 段 rosbag）
 - [ABot-Recon](../wiki/entities/paper-abot-recon.md) — 阿里 AMap CV Lab，固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建，状态不随序列长度增长；Oxford Spires ATE 4.35 m（约 −40%），与 SLAMFormer-∞ 同属单目稠密流式 SLAM 前沿；已开源（GitHub + HF 权重）
 
 ### 学完输出什么
@@ -155,9 +155,9 @@ flowchart LR
 - [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md) — 人形导航深读锚点
 - [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
-- [iCrowdNav](../wiki/entities/paper-icrowdnav.md) — RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（代码待发布）
+- [iCrowdNav](../wiki/entities/paper-icrowdnav.md) — RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（MIT 源码已开源，缺权重与 Nucleus USD 场景）
 - [SPLC](../wiki/entities/paper-splc.md) — **自动社交偏好准则** 学 Offline RL 奖励并挂 IQL/CQL/TD3BC；仿真相对手调/人工偏好基线提升成功率，TurtleBot4 真机验证（代码 coming soon）
-- [CommNav](../wiki/entities/paper-commnav.md) — **主动向路人打听** 目标时空线索的社交导航（Habitat 3.0c + COMM；ES +10 pp；代码待发布）
+- [CommNav](../wiki/entities/paper-commnav.md) — **主动向路人打听** 目标时空线索的社交导航（Habitat 3.0c + COMM；ES +10 pp；MIT 源码与 `v1.0.0` 权重已开源）
 - [RoamFlow](../wiki/entities/paper-roamflow.md) — MeanFlow 一步（少步）轨迹生成 + IL→RL 任务对齐 + 轨迹评估器筛选；Habitat Gibson SR 68.7%/19.6 ms 全面超 NoMaD/NavDP，Go2 + Orin NX 真机 20 runs SR 1.00；确认未开源
 - [X-NavDP](../wiki/entities/paper-x-navdp.md) — NavDP + GQRM 跨本体 RL 后训练（Isaac Lab）；仿真 SR 84.28%、真机 hard case ~65%；**已开源** `NavDP/baselines/x-navdp` + HF 权重（arXiv:2607.28560）
 - [HUMEMBR](../wiki/entities/paper-humembr.md) — **身份感知多日记忆** + LLM 工具检索的 PersonEQA / Spot 例行找人（代码已开源；COBD 数据暂私有）

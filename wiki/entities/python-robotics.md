@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, education, autonomous-navigation, path-planning, slam, localization, python, textbook, mit]
 status: complete
-updated: 2026-09-18
+updated: 2026-11-21
 related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../overview/autonomous-driving-core-algorithms-series.md
@@ -17,6 +17,8 @@ related:
   - ../concepts/state-estimation.md
   - ../concepts/ros2-basics.md
   - ../entities/humanoid-system-curriculum.md
+original:
+  - ../../sources/papers/python_robotics_arxiv_1808_10703.md
 sources:
   - ../../sources/repos/python_robotics.md
   - ../../sources/papers/python_robotics_arxiv_1808_10703.md
@@ -28,6 +30,10 @@ summary: "PythonRobotics 是高星 Python 自主导航算法代码集与 Sphinx 
 # PythonRobotics
 
 **PythonRobotics**（[AtsushiSakai/PythonRobotics](https://github.com/AtsushiSakai/PythonRobotics)）是 GitHub 上最受欢迎的机器人教学型开源项目之一（约 3 万 star），提供 **Python3 可运行示例** 与配套 **[在线教材](https://atsushisakai.github.io/PythonRobotics/)**，帮助初学者在仿真中建立 **定位—建图—规划—跟踪** 的算法直觉，再迁移到 [Navigation2](./navigation2.md) 等工程框架。
+
+## 一句话定义
+
+**面向自主导航初学者的 Python3 最小依赖算法集与可视化教材**：用独立、可读、带动画的单文件脚本讲清定位、建图、SLAM、路径规划与轨迹跟踪原型，但不替代 ROS/ROS 2 实车工程栈。
 
 ## 英文缩写速查
 
@@ -82,7 +88,16 @@ flowchart LR
 | **Path Tracking** | Pure Pursuit、Stanley、LQR、MPC、C-GMRES | Nav2 controller / 自动驾驶跟踪 |
 | **Arm / Aerial / Bipedal** | 机械臂 IK、四旋翼轨迹、倒立摆步态 | 与移动导航主线弱耦合，作扩展阅读 |
 
-**依赖与许可：** MIT；运行依赖极少；CI 覆盖 Linux/macOS/Windows。
+**依赖与许可：** MIT；运行依赖极少（以 NumPy、SciPy、Matplotlib、cvxpy 等标准科学计算库为主）；CI 覆盖 Linux/macOS/Windows。
+
+## 工程实践
+
+| 项 | 建议 / 论文设定（arXiv:1808.10703） |
+|----|-------------------------------------|
+| 环境运行 | 直接 `python3 <模块>/<脚本>.py` 单文件运行与弹动画；论文强调零复杂构建链、面向教育可读性 |
+| 学习路线 | 先跑 Localization（EKF/PF）与 Mapping（栅格）→ PathPlanning（A\*/RRT\*/DWA/Frenet）→ PathTracking（Pure Pursuit/LQR/MPC） |
+| 迁移工程栈 | 在本项目理解公式与参数敏感度后，再对接 [Navigation2](./navigation2.md) 的 Planner/Controller 插件、`costmap_2d` 与 `tf2` |
+| 常见踩坑 | 切勿直接把 Python 单步绘图脚本用于实车高频控制循环（缺乏线程调度、异步消息与硬碰撞安全护栏） |
 
 ## 常见误区或局限
 
