@@ -8,6 +8,8 @@
 - **入库日期：** 2026-07-27
 - **一句话说明：** 开源 **AI 驱动 3D 网格生产工作台**（v2.1.0）：Kanban / Node Graph 编排 **ComfyUI** 与外部 API，覆盖文生图、图像编辑、mesh 生成、Mesh Editor（UV/Retopo/Rig/投影）、本地资产库与 **MCP Server**；导出 GLB / OBJ / FBX 等。
 - **沉淀到 wiki：** 是 → [`wiki/entities/3dgenstudio.md`](../../wiki/entities/3dgenstudio.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `visualbruno/3DGenStudio` 官方 `README.md`（24,935 字节）。
 
 ## 开源状态核查（2026-07-27）
 

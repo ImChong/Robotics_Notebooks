@@ -16,6 +16,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** 高性能开源 OMG DDS 实现（C 核心 + 独立 C++/Python 绑定仓）；ROS 2 **tier-1** 中间件；Unitree 等厂商真机栈常用。
 - **沉淀到 wiki：** 是 → [`wiki/entities/cyclone-dds.md`](../../wiki/entities/cyclone-dds.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `eclipse-cyclonedds/cyclonedds` 官方 `README.md`（368 行）。
 
 ## 开源状态（2026-07-28）
 

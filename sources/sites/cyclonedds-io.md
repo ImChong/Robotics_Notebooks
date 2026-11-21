@@ -12,6 +12,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** 高性能、可互操作的 OMG DDS 实现项目入口；强调低延迟/低抖动、发现开销聚合、DDS-Security 与 ROS 2 tier-1 中间件定位。
 - **沉淀到 wiki：** 是 → [`wiki/entities/cyclone-dds.md`](../../wiki/entities/cyclone-dds.md)、[`wiki/concepts/dds-communication.md`](../../wiki/concepts/dds-communication.md)
+- **通读：** 已完成
+- **核对范围：** 核对 Cyclone DDS 官网文档定位与 `eclipse-cyclonedds/cyclonedds` 官方 `README.md`。
 
 ## 为什么值得保留
 

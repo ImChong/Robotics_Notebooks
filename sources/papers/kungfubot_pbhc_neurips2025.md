@@ -10,6 +10,8 @@
 - **机构：** TeleAI、SJTU、ECUST、HIT、ShanghaiTech
 - **收录日期：** 2026-07-09
 - **一句话说明：** 面向高动态人类行为（武术、舞蹈）的 physics-based 全身控制：多阶段 motion 处理（提取/滤波/校正/重定向）+ **双层优化自适应跟踪容差课程** + **非对称 actor-critic** RL，在 Unitree G1 真机稳定复现踢腿、旋子、太极等。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2506.12851` PDF 全文与 `TeleHuman/PBHC` 官方 `README.md`。
 
 ## 核心摘录（策展，非全文）
 

@@ -14,7 +14,7 @@ tags:
   - cau
   - booster
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2511.03996"
 doi: "10.1126/scirobotics.aed1152"
 code: https://zenodo.org/records/21620490
@@ -38,6 +38,9 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
 summary: "Vision-Driven Reactive Soccer（Science Robotics 2026 / arXiv:2511.03996）：虚拟感知 + encoder-decoder 耦合 AMP 与机载视觉；前场 ~90% 踢球 SR；Zenodo 部分开源 Isaac Gym 训练与 checkpoint。"
+original:
+  - ../../sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md
+  - ../../sources/sites/humanoid-kick-vision-driven-soccer.md
 ---
 
 # Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots
@@ -194,7 +197,7 @@ sequenceDiagram
 - 策展来源含公众号摘要，细节以 Science Robotics / arXiv PDF 为准。
 - 与联赛战术栈正交：本文聚焦单机反应式技能。
 
-## 与其他页面的关系
+## 关联页面
 
 - 总框架：[人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP：[amp-reward](../methods/amp-reward.md) · [AMP survey](../overview/humanoid-amp-motion-prior-survey.md)

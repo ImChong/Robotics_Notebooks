@@ -8,15 +8,23 @@ related:
   - ../concepts/whole-body-coordination.md
   - ../entities/paper-gamma-world-multi-agent.md
 sources:
+  - ../../sources/papers/ctde_marl_primary_refs.md
   - ../../sources/papers/survey_papers.md
   - ../../sources/papers/gamma_world_arxiv_2605_28816.md
 summary: "CTDE（集中式训练，分布式执行）vs 完全去中心化：多智能体 RL 两大训练范式的选型对比。"
-updated: 2026-11-17
+updated: 2026-11-22
+original:
+  - ../../sources/papers/ctde_marl_primary_refs.md
+  - ../../sources/papers/gamma_world_arxiv_2605_28816.md
 ---
 
 # CTDE vs 完全去中心化 MARL
 
 在 [多智能体强化学习（MARL）](../methods/marl.md) 里，多个机器人在同一空间协作或竞争（多臂流水线、机器人足球、集群导航）。两个核心难点是 **非平稳性**（别人的策略在变，环境转移也在变）与 **联合动作空间维度爆炸**。围绕「训练时能看到多少信息」这条轴，MARL 分成两大范式：**CTDE** 与 **完全去中心化**。
+
+## 一句话定义
+
+**CTDE vs 完全去中心化 MARL**：集中式训练、分布式执行（CTDE，如 MAPPO、QMIX、MADDPG）利用训练期全局状态缓解多智能体环境非平稳性与信用分配难题，而执行期仍各看局部观测；完全去中心化（如 IPPO、IQL）在训练与执行期均仅使用局部信息，以换取大规模集群的无边界扩展性。
 
 ## 英文缩写速查
 
@@ -26,6 +34,11 @@ updated: 2026-11-17
 | CTDE | Centralized Training, Decentralized Execution | 训练可利用集中信息，执行按各体可用观测决策 |
 | PPO | Proximal Policy Optimization | MAPPO 与 IPPO 使用的策略优化方法 |
 | RLCR | Reinforcement Learning from Collective Rewards | 用集体回报训练共享策略的软件 Agent 方法 |
+
+## 为什么重要
+
+- **决定多机仿真扩展上限与收敛稳定性**：在机器人足球、多臂装配或集群导航中，体数在 2–12 左右且能从仿真获得完整状态时，跳过 CTDE 强行采用完全去中心化极易因队友策略同时改变而引发振荡不收敛。
+- **明确“无通信执行”与“集体推理回报”的边界**：不要把训练期用了集中式 Critic 误认为真实部署就需要集中基站通信；同时需区分机器人物理协同 MARL 与软件 Agent 按共享 wall-clock 回报训练的 RLCR 机制。
 
 ## 核心对比
 
@@ -37,6 +50,10 @@ updated: 2026-11-17
 | **可扩展性** | 受集中式 critic 输入维度限制 | 体数增长更平滑（各体独立） |
 | **部署耦合度** | 低（执行期不需通信） | 低（天然分布式） |
 | **代表算法** | MAPPO、MADDPG、QMIX | 独立 PPO/Q-learning（IPPO/IQL） |
+
+## 核心原理
+
+依据 MAPPO（arXiv:2103.01955）、QMIX（arXiv:1803.11485）与 MADDPG（arXiv:1706.02275）原始理论：完全去中心化将他体折叠进单个智能体的转移概率 $P(s'|s,a_i)$，因他体策略随训练更新使该环境变非平稳；CTDE 则引入观测全局信息 $x$（与联合动作）的集中式值网络 $V(x)$ / 混合超网络 $Q_{\text{tot}}$，在保证个体执行策略 $\pi_i(a_i|o_i)$（或满足 IGM 单调性条件）仅依赖本地观测前提下，提供无偏或低方差优势估计。
 
 ## CTDE（Centralized Training, Decentralized Execution）
 
@@ -67,6 +84,10 @@ updated: 2026-11-17
 | 需部署时各体独立运行 | 两者皆可（执行期都只用局部观测） | 关键差异在训练期信息 |
 | 强协作、信用分配难 | CTDE | 去中心化非平稳性放大协作难度 |
 
+## 工程实践
+
+- **工程起步优先 MAPPO 基线**：除非机群规模达百架且仿真状态维数爆表，多机器人任务应按 MAPPO 论文实践先做集中式全局特征筛选（避免在 Critic 中盲目堆叠冗余个体局部特征）与适度裁剪/epoch 配置，待基线跑通再比较是否退回完全去中心化或耦合共享通讯通道。
+
 ## 与 RLCR 集体推理时扩展的选型边界
 
 [RLCR：集体推理时扩展](../methods/rlcr-collective-inference-time-scaling.md) 讨论共享策略的软件 Agent 如何借集体回报、通信与 wall-clock 截止时间学习协作。**训练/执行的信息范围**和**奖励/时延激励**是不同选型轴；不能仅因 RLCR 使用共享回报，就把它归成集中式 critic 的 CTDE 实现。
@@ -79,12 +100,23 @@ updated: 2026-11-17
 
 这里的 RLCR 对照依据 [General Reasoning 官方博客归档](../../sources/blogs/gr_how_to_train_a_swarm_2026_11_02.md)。Avalon-M1 的截止时间方案不会给截止前同分但更快的 rollout 额外奖励；其软件任务观察也没有验证机器人通信、安全或群控收益。
 
+## 局限与风险
+
+- **CTDE 维度爆炸与特征过拟合**：当智能体数量持续增加时，固定拼装全局状态的 Critic 网络面临输入维度膨胀、体间置换不变性缺失以及仿真观测特权过拟合真机难以获取的问题。
+
 ## 参考来源
 
 - [How to Train a Swarm 官方博客归档](../../sources/blogs/gr_how_to_train_a_swarm_2026_11_02.md) — RLCR 的奖励、通信、时间约束及软件任务证据边界
 - Vinyals, O., et al. (2019). *Grandmaster level in StarCraft II using multi-agent reinforcement learning*.
 - [sources/papers/survey_papers.md](../../sources/papers/survey_papers.md) — MARL 综述与范式分类
 - [sources/papers/gamma_world_arxiv_2605_28816.md](../../sources/papers/gamma_world_arxiv_2605_28816.md) — 多智能体生成式交互世界模型
+
+- [../../sources/papers/ctde_marl_primary_refs.md](../../sources/papers/ctde_marl_primary_refs.md)
+
+## 推荐继续阅读
+
+- 核心一手论文索引：[CTDE MARL 论文（MAPPO / QMIX / MADDPG）](../../sources/papers/ctde_marl_primary_refs.md)
+- 领域总方法：[多智能体强化学习（MARL）](../methods/marl.md)
 
 ## 关联页面
 

@@ -9,6 +9,8 @@
 - **官方模型：** <https://huggingface.co/ADSKAILab/Zero-To-CAD-Qwen3-VL-2B>（[模型归档](../models/zero-to-cad-qwen3-vl-2b.md)）
 - **精选数据集：** <https://huggingface.co/datasets/ADSKAILab/Zero-To-CAD-100k>（[数据集归档](../datasets/zero-to-cad-100k.md)）
 - **项目实体：** [Zero-to-CAD](../../wiki/entities/zero-to-cad.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2604.24479`（Zero-to-CAD）PDF 全文（56,354 字符）。
 
 ## 论文摘要级要点
 

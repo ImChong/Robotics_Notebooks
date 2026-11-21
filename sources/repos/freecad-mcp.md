@@ -9,6 +9,8 @@
 - **入库日期**：2026-07-10
 - **一句话说明：** 面向 **Claude Desktop / 通用 MCP 宿主** 的 **FreeCAD 远程控制桥**：FreeCAD 内 **MCP Addon 工作台** 启动 **RPC 服务**，外部 Python **`freecad-mcp` MCP server** 经 MCP 暴露建文档、改对象、执行 Python、`get_view` 截图、**CalculiX FEM** 等工具——让编码代理用自然语言驱动已安装的桌面 FreeCAD，而非另起脚本 CAD 栈。
 - **沉淀到 wiki：** 是 → [`wiki/entities/freecad-mcp.md`](../../wiki/entities/freecad-mcp.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `neka-nat/freecad-mcp` 官方 `README.md`（2,970 字节）。
 
 ## 仓库概况（2026-07-10 GitHub API / README）
 

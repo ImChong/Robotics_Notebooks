@@ -15,6 +15,8 @@
 - **机构：** 意大利技术研究院（Istituto Italiano di Tecnologia, IIT）Humanoids and Human-Centered Mechatronics；EU Horizon 2020 EuROBIN（No.101070596）
 - **入库日期：** 2026-08-11
 - **一句话说明：** 面向 **68 kg KYON 四足** 的 **执行器功率损失（power loss）容错步态**：非对称 actor–critic + **latent-alignment**，动作为关节位置偏差 + **可学习步态频率**，仿真崎岖地形与真机平地零样本验证。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2608.07328` PDF 全文与官方项目页 `fault_tolerant_locomotion`。
 
 ## 核心论文摘录（MVP）
 

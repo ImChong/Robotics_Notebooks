@@ -13,6 +13,8 @@
 - **一句话说明：** 从 RoboCup 真机比赛录像训练 transformer 扩散端到端控制；`poetry` + `cli` 入口；含数据集工具与蒸馏流程。
 - **开源状态：** **已开源**（MIT；README 标注 ongoing research）。
 - **沉淀到 wiki：** [`wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md`](../../wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `bit-bots/SoccerDiffusion` 官方 `README.md`（64 行）。
 
 ## 仓库概况（2026-07-28）
 

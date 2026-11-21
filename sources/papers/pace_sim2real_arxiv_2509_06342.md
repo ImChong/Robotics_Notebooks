@@ -13,6 +13,8 @@
 - **文档：** <https://pace.filipbjelonic.com/>
 - **入库日期：** 2026-07-15
 - **一句话说明：** PACE 将足式 sim2real RL 与 PMSM 物理能量模型结合：用 chirp 悬空数据 + CMA-ES 辨识紧凑关节动力学参数（$I_a,d,\tau_f,\tilde q_b,T_d$），再以四项奖励（速度跟踪、能量、碰撞、足端触地）在 Isaac Lab 盲策略训练并零样本上真机；主平台 ANYmal / Tytan / Minimal，另部署 10+ 机器人，ANYmal CoT 降至 1.27（相对 SOTA −32%），且无需动力学 DR。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2509.06342`（PACE）PDF 全文、`leggedrobotics/pace-sim2real` `README.md` 与文档站。
 
 ## 核心论文摘录（MVP）
 

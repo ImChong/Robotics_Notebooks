@@ -3,6 +3,7 @@ type: query
 tags: [control, clf, cbf, wbc, mpc, qp, stability, safety, optimization, humanoid]
 status: complete
 summary: "CLF 与 CBF 如何在 WBC/MPC 中联合使用：通过 CLF-CBF-QP 框架同时保证系统收敛到目标（CLF）和维持安全集（CBF），本页梳理公式、冲突处理策略与实际工程实现要点。"
+original: ../../sources/papers/ames_cbf_ecc2019_arxiv_1903_11199.md
 sources:
   - ../../sources/papers/optimal_control.md
 related:

@@ -9,6 +9,8 @@
 - **入库日期：** 2026-08-13
 - **一句话说明：** GPL-3.0 开源的 **节点图扩散/生成引擎**：GUI + HTTP/WebSocket API + 图执行后端，覆盖图像、视频、音频、3D 与文本工作流；不捆绑大模型权重。
 - **沉淀到 wiki：** 是 → [`wiki/entities/comfyui.md`](../../wiki/entities/comfyui.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `Comfy-Org/ComfyUI` 官方 `README.md`（10,398 字节）。
 
 ## 开源状态核查（2026-08-13）
 

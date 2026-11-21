@@ -14,6 +14,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** ROS 2 / Fast DDS / Cyclone DDS 所实现的 **DCPS API 语义** 与 **互操作线协议** 的权威定义；调 QoS、排互通问题应以本规范为最终依据。
 - **沉淀到 wiki：** 是 → [`wiki/concepts/dds-communication.md`](../../wiki/concepts/dds-communication.md)
+- **通读：** 已完成
+- **核对范围：** 核对 OMG DDS 1.4 官方规范 PDF 全文（`1830440` 字节 -> `414,173` 字符抽取文本）。
 
 ## 为什么值得保留
 

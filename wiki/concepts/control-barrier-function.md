@@ -13,6 +13,7 @@ related:
   - ../comparisons/clf-vs-cbf.md
   - ../methods/disney-olaf-character-robot.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
+original: ../../sources/papers/ames_cbf_ecc2019_arxiv_1903_11199.md
 sources:
   - ../../sources/papers/optimal_control_theory.md
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
@@ -51,7 +52,7 @@ CBF 回答的是：**"给定一个当前控制律，如何在最小修改的前�
 3. **可与任意上层控制器结合**：作为"安全过滤器"叠加在 WBC、MPC 或学习策略之上
 4. **与物理约束天然对接**：接触力锥约束、关节限位、碰撞避免都可建模为 CBF
 
-## 核心定义
+## 核心原理（核心定义）
 
 ### 安全集与屏障函数
 
@@ -139,7 +140,11 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 
 约束条件变为 $\dot{\psi}_1(x, u) \geq -\alpha_2(\psi_1(x))$，其对控制输入 $u$ 仍然是线性的。
 
-## 常见误区
+## 工程实践
+
+- **扩展类-$\mathcal{K}$ 增益 $\alpha$ 调参**：过大 $\alpha$ 允许高速冲向安全边界后急刹、易触及力矩饱和；过小则过于保守阻碍任务。建议配合动力学执行器边界联合验证可行域（Ames et al., ECC 2019 § III）。
+
+## 常见误区或局限
 
 1. **CBF 不等于稳定性**：CBF 只保证安全集的不变性，不保证系统收敛到目标状态——这是 CLF 的工作。两者需要联合使用（CLF-CBF-QP）。
 
@@ -151,6 +156,7 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 
 ## 参考来源
 
+- [ames_cbf_ecc2019_arxiv_1903_11199.md](../../sources/papers/ames_cbf_ecc2019_arxiv_1903_11199.md) — Ames et al., *Control Barrier Functions: Theory and Applications* (arXiv:1903.11199v1)
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CBF-QP 奠基论文
 - Ames et al., *Control Barrier Functions: Theory and Applications* (ECC, 2019) — 综述
 - [sources/papers/optimal_control_theory.md](../../sources/papers/optimal_control_theory.md) — 最优控制与安全约束背景

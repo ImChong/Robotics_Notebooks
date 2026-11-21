@@ -17,6 +17,7 @@ related:
   - ../entities/paper-fail-passive-gap.md
   - ./llm-robotics-control-interfaces.md
   - ./model-hardware-standard.md
+original: ../../sources/papers/brunke_safe_learning_robotics_arxiv_2108_06266.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/sim2real.md
@@ -64,7 +65,7 @@ sources:
 2. **部署代价低**：无需重训策略，就能为现有控制栈加一层安全壳。
 3. **便于调试**：当系统失败时，可以区分“策略错”还是“保护层没接住”。
 
-## 常见实现方式
+## 核心原理（常见实现方式）
 
 ### 1. CBF-QP 安全过滤
 
@@ -126,7 +127,11 @@ Safety Filter
 - **对照：训练期屏障、部署无滤波** — [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) 把 Joint-CBF 投影仅作仿真 `+filter` 上限；真机部署的 Link-CBF 策略**不**走运行时安全层，靠训练内化避碰
 - **对照：认证功能安全** — 过滤器给的是控制层约束，不是 ISO 13849 的 PFHD/PL。工业人形保护停还卡在机侧反应链，见 [Fail-Passive Gap](../entities/paper-fail-passive-gap.md)
 
-## 常见误区
+## 工程实践
+
+- **三类核心工程权衡（Brunke et al., arXiv:2108.06266v2 § 3.3）**：预测/CBF 过滤器依赖精确安全备份集 $\Omega_{\text{safe}}$，需防止名义策略过度试探边界引发高频切换振荡（chattering）；学习式残差过滤则应在下层串联硬件扭矩/急停兜底。
+
+## 常见误区或局限
 
 - **误区 1：有 safety filter 就不需要改策略。**  
   过滤器能兜底，但不能替代策略本身的质量；若长期大量修正，说明上层策略本身有问题。
@@ -139,6 +144,7 @@ Safety Filter
 
 ## 参考来源
 
+- [brunke_safe_learning_robotics_arxiv_2108_06266.md](../../sources/papers/brunke_safe_learning_robotics_arxiv_2108_06266.md) — Brunke et al., *Safe Learning in Robotics* (arXiv:2108.06266v2 § 3.3 Safety Filter)
 - [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md) — QP 约束控制与安全约束背景
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — 真机部署中的安全与调试经验
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems*
@@ -161,3 +167,8 @@ Safety Filter
 - [LLM 机器人控制接口](./llm-robotics-control-interfaces.md) — 访问级别即能力
 - [Model Hardware Standard](./model-hardware-standard.md) — 设备驱动层强制安全限（研究预览）
 - [ResSafe](../entities/paper-ressafe.md) — G1 残差 RL 作隐式安全过滤；性能与安全 decoupling（arXiv:2609.15988；代码待发布）
+
+## 推荐继续阅读
+
+- [Control Barrier Function](./control-barrier-function.md) — 最小二乘 CBF-QP 实时安全投影
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 算法过滤与功能安全硬急停链的边界

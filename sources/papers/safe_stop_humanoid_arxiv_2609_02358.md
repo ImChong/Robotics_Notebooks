@@ -14,6 +14,8 @@
 - **最后更新：** 2026-09-04
 - **索引来源：** [具身智能小站 8 篇盘点](../blogs/wechat_embodied_station_8_papers_open_source_2026-09-03.md)；2026-09-04 与 [WM-LOCO](wm_loco_arxiv_2609_02542.md)、[FOCUS](focus_foot_observation_confidence_arxiv_2609_02222.md) 并行升格，**不另造第二详情节点**
 - **一句话说明：** 将急停建模为 reach-avoid；learned stop policy + 双互补 stoppability 估计器；仅当两者均认为可停才提交停止，否则 damping fallback。
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2609.02358 全文 PDF（1,623 行），核对学习式紧急制动策略、任务无关停机能力值估计器（arm-masked 输入）、滑窗 stop/fall 规则及 Unitree G1 实机 OOD 96.4% 急停成功率与 3.89% 误放行率
 
 ## 开源状态（步骤 2.5，2026-09-04 再核）
 

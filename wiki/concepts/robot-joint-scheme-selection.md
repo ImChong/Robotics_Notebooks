@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, joint, actuator, reducer, harmonic-drive, planetary-gear, roller-screw, selection, wechat]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-22
 related:
   - ../overview/humanoid-actuator-102-decision-species.md
   - ../overview/humanoid-actuator-102-gear-reflected-inertia.md
@@ -14,6 +14,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_zane_hub_robot_joint_scheme_selection_2026-10-03.md
 summary: "依据 Zane Hub 公众号随笔，把旋转（谐波/RV/行星/摆线针轮）、直线（丝杠）与力控（QDD/SEA/力矩传感器）关节方案放进同一选型框架：先定负载谱、运动谱、精度与交互要求，再走七步计算与台架验证，按关节部位配置，避开峰值选型、精度过度、忽视反驱三个坑。"
+original: ../../sources/blogs/wechat_zane_hub_robot_joint_scheme_selection_2026-10-03.md
 ---
 
 # 机器人关节方案选型
@@ -47,6 +48,10 @@ summary: "依据 Zane Hub 公众号随笔，把旋转（谐波/RV/行星/摆线�
 | 精度与交互 | 重复定位精度、空程、扭转刚度、力控带宽与精度 | 刚度与精度约束 |
 
 只覆盖其中一条约束的计算是不完整的；常见现场故障是只算峰值转矩、把峰值当额定。精度与交互要求最容易被过度要求，也最容易被忽略。
+
+## 核心原理
+
+关节选型以**物理约束守恒**而非单列指标对比为核心：依据负载谱（峰值/额定转矩、占空比）、运动谱（转速与反向驱动要求）及精度交互要求，沿“传动构型（谐波/RV/行星/摆线针轮旋转 vs 梯形/滚珠/行星滚柱丝杠直线）× 集成层级（无框定制 / 准直驱 QDD / 一体化模组）× 力控路由（电流环 / SEA / 力矩传感）”三维约束边界匹配平衡点，再依次校核 $\tau_{\mathrm{peak}}$、惯量比匹配、$\tau_{\mathrm{rms}}$ 热平衡、疲劳寿命与台架刚度滞回曲线。
 
 ## 四类旋转传动
 
@@ -138,6 +143,11 @@ L ≈ L_rated × (τ_rated / τ_eq)³
 
 同一台机器混搭是常态：全尺寸人形上肢用谐波保精度，下肢用行星或准直驱抗冲击，直线关节用行星滚柱丝杠换推力密度，是按工况分配重量与成本预算的结果，不是妥协。
 
+## 工程实践
+
+- **严格执行七步校核链路**：任何关节不能只看目录样本中的峰值扭矩；必须依任务循环核算 $\tau_{\mathrm{rms}}$ 绕组温升极限及润滑脂工作温度上限，并遵循下肢抗冲击优先选行星/QDD/行星滚柱丝杠、上肢轻量化精度优先选谐波的分区混搭原则。
+- **依托国标台架验证装配一致性**：按 GB/T 35089 等测试方法测定空载摩擦、回差与扭转刚度滞回曲线，重点预防柔轮杯底疲劳裂纹与丝杠预紧衰减。
+
 ## 三个常见的坑
 
 1. **按峰值转矩选型，忽略占空比与热校核**：演示能出大峰值不等于能连续工作；热约束往往比转矩约束更早触顶。
@@ -145,6 +155,10 @@ L ≈ L_rated × (τ_rated / τ_eq)³
 3. **忽视反驱性与力控需求**：反驱性由传动原理决定，事后无法靠算法补救；凡将来可能涉及人机交互、柔顺装配或动态运动的关节，反驱性应在选型阶段作为一票项。
 
 结论（作者）：关节方案没有最优解，只有与工况匹配的解；先定义负载谱、运动谱、精度要求，再让传动方案去满足，返工概率低于先定路线再找理由。
+
+## 局限与风险
+
+- **来源口径与参数边界**：本页主干指标与经验系数整理自 Zane Hub 工程随笔作者经验表述（如各传动效率与寿命区间），仅作原理建模与选型对照框架；工程定型前必须以实测台架数据和具体厂商样本为准。
 
 ## 关联页面
 
@@ -159,3 +173,8 @@ L ≈ L_rated × (τ_rated / τ_eq)³
 ## 参考来源
 
 - [Zane Hub《机器人不同关节方案如何选？》来源归档](../../sources/blogs/wechat_zane_hub_robot_joint_scheme_selection_2026-10-03.md)
+
+## 推荐继续阅读
+
+- 原文随笔归档：[Zane Hub 关节方案选型](../../sources/blogs/wechat_zane_hub_robot_joint_scheme_selection_2026-10-03.md)
+- 相关深读：[Humanoid Actuator 102 地图](../overview/humanoid-actuator-102-technology-map.md)

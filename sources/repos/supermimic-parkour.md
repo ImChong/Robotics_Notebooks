@@ -9,6 +9,8 @@
 - **许可证：** Apache-2.0；第三方数据的条款需另行核查。
 - **核查日期：** 2026-11-01
 - **沉淀到 wiki：** [SuperMimic Parkour](../../wiki/entities/supermimic-parkour.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `yhx1203/supermimic_parkour` 官方 `README.md`（51 行，含五类动作与 train/play 入口）。
 
 ## 内容与核查范围
 

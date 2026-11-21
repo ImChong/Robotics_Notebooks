@@ -6,6 +6,8 @@
 - **wiki 总览：** [humanoid-amp-motion-prior-survey.md](../../wiki/overview/humanoid-amp-motion-prior-survey.md)
 - **入库日期：** 2026-05-26
 - **一句话说明：** 将 AMP 专题 19 篇论文分别落成独立 source 与 `wiki/entities/paper-amp-survey-*` 节点。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md` 19 篇原文梳理与目录映射。
 
 ## 论文（19）
 

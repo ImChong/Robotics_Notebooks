@@ -15,6 +15,8 @@
 - **仿真栈：** Isaac Sim 5.0 训练；MuJoCo 评测；FastSAC off-policy RL；单卡 NVIDIA A100 80GB
 - **入库日期：** 2026-05-04（初稿）；**最后更新：** 2026-07-02（arXiv / 项目页 / 仓库深读升格）
 - **一句话说明：** 从国家级武术运动员日常训练视频构建 **KungFuAthlete** 高动态数据集（848 样本 / Ground+Jump 子集），提出 GVHMR→GMR 后 **根高度漂移抛物线校正 + SG 平滑** 管线，并用 **单策略 FastSAC** 联合高动态 motion tracking 与 **GRSI 重力随机跌倒恢复**，在 G1 真机实现抗扰长时程武术跟踪。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2602.13656` PDF 全文（59,365 字符）与 `NPCLEI/KungFuAthleteBot` `README.md`。
 
 ## 摘要级要点
 

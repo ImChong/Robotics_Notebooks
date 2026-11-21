@@ -12,7 +12,7 @@ tags:
   - uni-hamburg
   - bit-bots
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2504.20808"
 code: https://github.com/bit-bots/SoccerDiffusion
 related:
@@ -28,6 +28,9 @@ sources:
   - ../../sources/sites/bit-bots-soccerdiffusion.md
   - ../../sources/repos/soccerdiffusion.md
 summary: "SoccerDiffusion（arXiv:2504.20808）：从 RoboCup 真机比赛录像学 transformer 扩散端到端关节轨迹；蒸馏单步推理；跌倒恢复真机 95%；已开源 bit-bots/SoccerDiffusion + 数据集。"
+original:
+  - ../../sources/papers/humanoid_pnb_soccerdiffusion-toward-learning-end-to-end-human.md
+  - ../../sources/repos/soccerdiffusion.md
 ---
 
 # SoccerDiffusion：从比赛录像学端到端人形足球
@@ -95,6 +98,11 @@ flowchart LR
 - 教师 30 步轨迹作目标，学生 **1 步** MSE；蒸馏时 **冻编码器、只训解码器**。
 - 执行侧按推理耗时裁掉轨迹头部过期点，重叠滚动生成，近似训练时「瞬时推理」假设。
 
+## 工程实践
+
+- **真机录制数据管线迁移**：按照 `bit-bots/SoccerDiffusion` 管道同步重采样 ROS 2 `.mcap` 录像中的 50 Hz 关节/IMU 流与 10 Hz 视觉图像至 SQLite，先训练多步 DDIM 扩散教师（ResNet-18 晚融合特征），再通过一致性/单步蒸馏压进 Wolfgang-OP 机载 Ryzen 7 APU 的实时推理预算（同时须配合执行器通信时延补偿窗口）。
+- **定位为冷启动/偏好微调底座**：不要指望纯行为克隆从零胜出全部赛场对抗，适合将该模型用作后续 RL 精修或动作先验底座。
+
 ## 源码运行时序图
 
 ```mermaid
@@ -147,7 +155,7 @@ sequenceDiagram
 - 部分 2024 IMU 不完整；跨队数据因时间未并入评测。
 - 仓库标注 ongoing；接口与权重可能继续变动。
 
-## 与其他页面的关系
+## 关联页面
 
 - 任务：[Humanoid Soccer](../tasks/humanoid-soccer.md)
 - 对照全栈：[ARTEMIS](./paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md)

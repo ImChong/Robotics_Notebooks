@@ -2,7 +2,7 @@
 type: concept
 tags: [real-time, clock-sync, ptp, ethercat, hardware, networking]
 status: complete
-updated: 2026-10-30
+updated: 2026-11-22
 related:
   - ./ethercat-protocol.md
   - ./lcm-basics.md
@@ -11,13 +11,19 @@ related:
   - ../formalizations/udp-multicast-dynamics.md
   - ../queries/real-time-control-middleware-guide.md
 sources:
+  - ../../sources/sites/linuxptp_ieee1588_docs.md
   - ../../sources/papers/sim2real.md
 summary: "时钟同步算法：把 PTP（IEEE 1588）与 EtherCAT 分布式时钟（DC）抽象成一套主时钟选举 + 偏置/漂移估计 + 周期校正的统一框架，解释多板卡运控中如何把跨节点抖动压到亚微秒级。"
+original: ../../sources/sites/linuxptp_ieee1588_docs.md
 ---
 
 # 时钟同步算法 (Clock Synchronization Algorithms)
 
 **时钟同步算法** 解决一个看似简单、却在多板卡运控里反复折腾人的问题：**两台机器的时间到底差多少，怎么把这个差距持续压到与控制环路相比可忽略的水平？** 在人形机器人里，IMU 在一块板、关节驱动器在另一条总线、视觉感知挂在第三个 NUC，如果时钟不同步，融合出来的状态就会带上一个"网络抖动"形状的虚假项，直接污染 [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) 与 [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md) 中的所有测量。
+
+## 一句话定义
+
+**时钟同步算法**：通过“主时钟选举（BMCA/参考从站）→ 双向时间戳估计偏置与漂移（$\theta,\gamma$）→ 本地时钟伺服（PI 调频/ASIC 硬件补偿）”的三段式架构，在多板卡实时运控与传感网络中把跨节点时间偏差压至亚微秒级。
 
 ## 英文缩写速查
 
@@ -36,6 +42,11 @@ summary: "时钟同步算法：把 PTP（IEEE 1588）与 EtherCAT 分布式时�
 | IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
 | ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
+## 为什么重要
+
+- **决定多板卡状态融合与环路预算的确定性**：人形机器人中 IMU、关节驱动板与视觉主控分布在多条总线与节点上；若时钟偏差达到毫秒级 NTP 量级，时间对齐误差会直接转化为虚假速度项并消耗 [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) 的安全裕度。
+- **决定协议与物理层选型边界**：在标准以太网下采用 IEEE 1588 PTP + NIC/PHY 硬件时间戳（如 Linux `linuxptp` 通过 `SO_TIMESTAMPING` 与 PHC 驱动），在多轴强同步工业环网下采用 ASIC 级 EtherCAT 分布式时钟（DC），二者对应完全不同的交换机与线束成本。
+
 ## 为什么单靠 NTP 不够
 
 家用与服务器场景常用的 **NTP** 在跨广域网下精度约 $\sim 1\sim 10\ ms$，最好的 LAN 配置也只能到 $\sim 100\ \mu s$。这个量级对**视频通话**够用，对 **1 kHz 力矩闭环**完全失格——它本身已经接近一个控制周期。机器人需要的是**亚微秒到纳秒级**的同步，于是引出两套主流方案：
@@ -44,6 +55,12 @@ summary: "时钟同步算法：把 PTP（IEEE 1588）与 EtherCAT 分布式时�
 - **EtherCAT 分布式时钟 (DC)**：跑在 EtherCAT 总线上的特化方案，精度通常 $< 100\ ns$。
 
 两者在数学结构上**高度同构**，理解了一边，另一边就是工程参数差异。
+
+## 核心原理
+
+### 共同的三段式同步机制
+
+无论标准以太网 PTP（IEEE 1588 / 802.1AS gPTP）还是工业总线 EtherCAT DC，核心数学原理同构：先由 BMCA（或总线拓扑序）选定域主时钟，再利用环回/四时间戳（$t_1,t_2,t_3,t_4$）求解单向传输延 $d$ 与静态偏置 $\theta$，最后用锁相/PI 控制器平滑微调本地振荡器频率比 $\gamma$ 而避免时间硬跳变引起控制微分脉冲。
 
 ## 共同的三段式抽象
 
@@ -126,7 +143,12 @@ EtherCAT 走另一条路：既然总线是确定性环网，不如让所有从�
 
 工程经验法则：**$\sigma_\theta$ 必须 $< T_{\text{ctrl}} / 100$**，否则同步误差会成为闭环带宽的隐形上限。
 
-## 常见误区
+## 工程实践
+
+- **PTP/Linux (`linuxptp`) 部署检查**：务必启用网卡 PHY 硬件时间戳与 Linux PHC（`ethtool -T` 确认），并在多跳网络中使用支持 Transparent Clock / Boundary Clock 的交换机以抑制上下行非对称与排队抖动。
+- **EtherCAT 整机对时与监控**：由主站周期读取参考从站 `0x0910` 系统时间并执行 `ARMW/FRMW` 漂移补偿；上机验收时必须采样同步偏置尾分布（P99 / Max）而非仅看均值。
+
+## 局限与风险
 
 - **误把 NTP 当作"够用"**：在 1 ms 控制周期下，NTP 的 100 µs 精度已等价于一次完整环路抖动，会污染所有 deadline 统计。
 - **忘记关闭 Linux NTP/chrony**：开了 PTP 又留着 NTP，两个守护进程会互相打架，时钟出现锯齿状跳变。
@@ -157,6 +179,8 @@ EtherCAT 走另一条路：既然总线是确定性环网，不如让所有从�
 - IEEE Std 802.1AS-2020, *Timing and Synchronization for Time-Sensitive Applications*.
 - EtherCAT Technology Group, *EtherCAT Distributed Clocks: System Description*.
 - Mills, D. L., *Computer Network Time Synchronization: The Network Time Protocol on Earth and in Space*, 2nd ed., CRC Press, 2010.
+
+- [../../sources/sites/linuxptp_ieee1588_docs.md](../../sources/sites/linuxptp_ieee1588_docs.md)
 
 ## 推荐继续阅读
 

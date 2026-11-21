@@ -13,7 +13,7 @@ tags:
   - flocking
   - sfu
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 venue: "Sensors 2025, 25(11):3496"
 doi: "10.3390/s25113496"
 related:
@@ -26,6 +26,9 @@ sources:
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md
 summary: "Sensors 2025：面向人形足球队的去中心化群智能框架——轻量 UDP + ACO 蚁群角色分配 + Reynolds flocking 编队 + 自适应故障恢复；Webots 4v4 相对集中式基线进球 +25–40%、控球 +8–10%，角色重分配约 2.3 s。"
+original:
+  - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
+  - ../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md
 ---
 
 # Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams
@@ -107,6 +110,10 @@ flowchart TB
 - **UDP** 小包：序号、机器人 ID、时间戳、位姿、速度、角色、优先级、电量、可选意图；**>10 Hz** 目标。
 - **RLE** 压缩静止字段；拥塞时降频/裁剪非关键 payload。
 
+## 工程实践
+
+- **极低开销分布部署**：完整群智能决策层在普通 CPU（i5-8265U）单周期均值仅 **4.7±0.3 ms**，通过 RLE 压缩的 UDP 位置/意图/健康状态广播运行在 100 ms ACO 决策循环上；工程移植时需针对具体机型校准 `balance penalty`（$\gamma=0.2$）和场地网格尺度（论文采用 $90\times60$、0.1 m/格），并留好单机失效及 >20% 丢包时的本地退化阈值。
+
 ## 实验摘要（Webots 4v4）
 
 | 指标 | ACO + flocking vs 集中式/静态 |
@@ -129,14 +136,14 @@ flowchart TB
 4. **真机缺口** — Webots 为主；换真草与联赛规则需重标定。
 5. **选型** — 要仿真快协商选本文；要真机夺冠栈选 [ARTEMIS](./paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md)。
 
-## 常见误区与局限
+## 局限与风险
 
 - **不是真机群控论文：** 截至发表，验证主要在 **Webots R2025a**；双足噪声、真草、联赛规则差异待实机复现。
 - **不等于 MARL 端到端：** 与 [MARL](../methods/marl.md) 离线自博弈不同，本文强调 **零/极少训练、毫秒级本地规则**；D3 仅为轻量 RL 信号而非深度策略。
 - **通信并非零：** 仍需周期性 UDP；与 [SPL 市场拍卖式协调](../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md) 的 **事件驱动极低带宽** 是不同设计点。
 - **参数需按场地调：** 信息素蒸发、 flocking 距离阈值对 KidSize 4v4 调优，换 Adult-Size 或更多球员需重标定（作者声称计算可线性扩展）。
 
-## 与其他页面的关系
+## 关联页面
 
 - [Humanoid Soccer](../tasks/humanoid-soccer.md) — 任务总览；单机 RL 射门（PAiD/RoboNaldo）与 **多机战术层** 正交
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) — 集中式 vs 去中心化选型

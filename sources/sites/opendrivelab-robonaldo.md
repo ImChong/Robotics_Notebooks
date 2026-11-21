@@ -9,6 +9,8 @@
 - **再核日期：** 2026-07-28
 - **一句话说明：** 论文配套站点：强调 **通用场景下亚米级人形射门**、**单条人类参考 → 跟踪 → 偏离适应** 的三阶段课程，以及 **G1 机载感知 + 室外多场地** 真机演示（任意球 / 来球、多目标高度与球位 sweep）。
 - **开源状态（2026-07-28 项目页核查）：** **已开源** — 头部资源区提供 **paper / Video / Code**；Code → [OpenDriveLab/RoboNaldo](https://github.com/opendrivelab/RoboNaldo)（训练）；部署见配套 [RoboNaldo_Deploy](https://github.com/OpenDriveLab/RoboNaldo_Deploy)。
+- **通读：** 已完成
+- **核对范围：** 核对 `opendrivelab.com/RoboNaldo` 官方项目页（33,940 字节 HTML）与 `arXiv:2606.11092`。
 
 ## 页面公开信息（检索自 2026-07-28）
 

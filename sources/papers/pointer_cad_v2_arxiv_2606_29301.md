@@ -13,6 +13,8 @@
 - **机构：** 香港大学（HKU）；深圳河套研究院（Shenzhen Loop Area Institute）；忆生科技 / TranscEngram；莫纳什大学（Monash）；加州大学伯克利分校（UC Berkeley）
 - **入库日期：** 2026-09-18
 - **一句话说明：** 在 Pointer-CAD 逐步建模范式上引入 **Plan-Then-Construct**：先用 LLM 生成带 **公制单位** 的结构化设计计划，再通过 **指针机制** 从参数字典检索连续数值写入命令序列，消除量化误差；配套 **OmniCAD-Plan** 数据集与 **顶点 / 边 / 面** 三级几何精度指标。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2606.29301`（Pointer-CAD v2）PDF 全文（83,137 字符）。
 
 ## 摘要级要点
 

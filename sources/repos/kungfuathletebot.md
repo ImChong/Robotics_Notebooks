@@ -7,6 +7,8 @@
 - **论文：** Lei et al., *A Kung Fu Athlete Bot That Can Do It All Day*, arXiv:[2602.13656](https://arxiv.org/abs/2602.13656) (2026)
 - **机构：** 北京理工大学（BIT）、启元实验室（QIYUAN Lab）
 - **收录日期：** 2026-07-02
+- **通读：** 已完成
+- **核对范围：** 通读 `NPCLEI/KungFuAthleteBot` 官方 `README.md`（27,625 字节）。
 
 ## 一句话摘要
 

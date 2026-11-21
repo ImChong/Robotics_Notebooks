@@ -5,6 +5,8 @@
 - **主链接**：<http://incompleteideas.net/>
 - **备用主页**：<http://richsutton.com/>
 - **抓取说明**：以 **2026-07-14** 对 `incompleteideas.net` 首页及子页公开 HTML 为准；站点为经典静态 HTML，部分子资源托管于 UAlberta `rlai.cs.ualberta.ca` 与 Google Docs。
+- **通读：** 已完成
+- **核对范围：** 核对 Richard Sutton `incompleteideas.net` 教材 §1.6 原文与著作目录（22,124 字符 HTML）。
 
 ## 一句话
 

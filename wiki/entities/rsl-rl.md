@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, rl, ppo, distillation, mixed-precision, bf16, isaac-lab, eth, nvidia]
 status: complete
-updated: 2026-10-01
+updated: 2026-11-22
 arxiv: "2509.10771"
 code: https://github.com/leggedrobotics/rsl_rl
 related:
@@ -20,6 +20,9 @@ sources:
   - ../../sources/repos/rsl_rl.md
   - ../../sources/papers/rsl_rl_arxiv_2509_10771.md
 summary: "RSL-RL（leggedrobotics/rsl_rl，arXiv:2509.10771）：ETH RSL + NVIDIA 的 GPU PPO / 蒸馏库；可选 BF16 autocast（4090 单次 update 2.39×、显存 −33%）；Isaac Lab / Legged Gym / mjlab 默认后端之一。"
+original:
+  - ../../sources/papers/rsl_rl_arxiv_2509_10771.md
+  - ../../sources/repos/rsl_rl.md
 ---
 
 # RSL-RL
