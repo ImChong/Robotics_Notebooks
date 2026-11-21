@@ -5,19 +5,24 @@ project: https://huggingface.co/collections/MachinePulseAI/karpo-decision
 code: https://github.com/machinepulse-ai/karpo-decision
 tags: [decision-model, multimodal, llm, structured-decision, agent, qwen3.5, gemma4, open-weights]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-21
 related:
   - ../concepts/ai-agent-evaluation.md
   - ./paper-intern-decision.md
   - ./typesafe-jev.md
   - ./valen.md
+  - ./karpo-decision-27b-act.md
+  - ./karpo-browser.md
+  - ./karpo-browserbench.md
   - ../methods/vla.md
 sources:
   - ../../sources/models/karpo-decision-weights.md
   - ../../sources/repos/karpo-decision.md
+  - ../../sources/sites/karpo-ten-appetites.md
 original:
   - ../../sources/models/karpo-decision-weights.md
   - ../../sources/repos/karpo-decision.md
+  - ../../sources/sites/karpo-ten-appetites.md
 summary: "Karpo Decision 是 MachinePulse 开放的 0.8B–31B 多模态结构化决策模型家族，直接对 choice、noul、score 的候选输出概率；推理代码 Apache-2.0，权重授权需以模型卡当前 LICENSE 为准。"
 ---
 
@@ -95,6 +100,20 @@ flowchart TD
 
 这些结果来自模型发布者/榜单报告，尚未在本仓复跑；不能将 Decision Index 分数视作机器人任务成功率、运动控制时延或真实世界安全性保证。
 
+## 官方体验与网页动作专用分支
+
+### Ten Appetites, One Menu
+
+- [官方交互页](https://karpo.ai/models/decision/ten-appetites) 使用两组相同的 **10 位虚构顾客**和 **8 道菜**，根据预算、过敏硬约束和口味偏好选择菜单；不同房间同时开始计时。
+- 演示向 Karpo Decision 一次发送完整 **state（菜单和顾客）**与每位顾客一个 `choice` 问题，包含售罄及不合适菜品在内的所有候选均不预过滤。模型输出逐候选概率，不生成解释；第二轮售罄事件只调整受影响顾客订单。
+- 计时在浏览器完成，包括网络等待、不包括上菜动画。该互动不应被当作真实餐厅安全决策或 GPU 纯推理计时。[原文归档](../../sources/sites/karpo-ten-appetites.md)。
+
+### Karpo Decision 27B Act 与浏览器 Agent
+
+- [Karpo Decision 27B Act](./karpo-decision-27b-act.md) 是独立的 **Qwen3.8-27B 衍生网页动作 checkpoint**（26.1B BF16），不应加入上表六款通用模型的尺寸表。它读取编号网页动作、截图与任务状态，预测 `CLICK/FILL/SELECT` 等候选概率。
+- [karpo-browser](./karpo-browser.md) 由 System 1 选每步操作，System 2 提供目标、字段值并核验终态；[Karpo BrowserBench](./karpo-browserbench.md) 则固定真实网页录制轨迹，离线考核每一步是否选择合理候选。
+- 官方给出的 Browserbase Benchmark v2 **84%** 是发布者自测端到端任务成功率，而 KBB 单步准确率与 Decision Index 属于不同评测。官方模型卡还注明浏览器客户端 POST 路径与开源推理服务的 `/v1/systemone` 不直接兼容，需要适配测试。
+
 ## 源码运行时序图
 
 根据 `src/karpo_decision/decider.py` 的 `Decider` / `logits` 及 `src/karpo_decision/serve/server.py` 的 `Handler.do_POST` / `Ranks.run` / `Runner.run` 绘制，表示源码可见调用关系，**不是实测 trace**。
@@ -144,7 +163,7 @@ torchrun --standalone --nproc_per_node 1 -m karpo_decision.serve.server --checkp
 - **输入并非无限长：** 默认单序列最多 32,768 tokens；超限按问题拆分，单问题无法容纳则报错，不静默截断。
 - **视觉评测边界：** 小模型官方卡说明图像输入虽然有视觉塔，所列评测并未验证图像能力；不能从接口存在推断视觉可靠性。
 - **部署安全：** 官方 HTTP server 默认回环监听，**没有内置 TLS / 身份认证**；暴露公网需独立加固。
-- **权重许可与代码许可不同：** 推理仓 Apache-2.0；31B 模型卡记录自 2026-11-12 起权重改用 **MachinePulse Community License**，商业产品对外提供的署名及高营收实体生产使用受附加条件约束。较早的网页缓存/README 仍可能出现 Apache-2.0，具体以目标权重仓当前 LICENSE 及获得时间为准。
+- **权重许可存在版本差异：** 本仓 2026-11-17 原文归档曾记录 31B 社区许可证描述，而 2026-11-21 再读取的 Hugging Face 页面又标注 Apache-2.0；不能在未对照权重文件内 LICENSE、历史 revision 和获取时间前断言某个 checkpoint 的当前可用条款。推理代码仓则为 Apache-2.0。
 
 ## 与其他工作对比
 
@@ -157,6 +176,10 @@ torchrun --standalone --nproc_per_node 1 -m karpo_decision.serve.server --checkp
 
 ## 关联页面
 
+- [Karpo Decision 27B Act](./karpo-decision-27b-act.md) — 网页专用决策权重。
+- [karpo-browser](./karpo-browser.md) — 双系统浏览器 Agent。
+- [Karpo BrowserBench](./karpo-browserbench.md) — 离线逐步决策评测。
+
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 把候选概率与实际任务终态分开评测。
 - [Intern-Decision](./paper-intern-decision.md) — 多问题一次前向的另一种技术路线。
 - [TypeSafe Jev](./typesafe-jev.md) — System One 接口与服务生态。
@@ -164,6 +187,8 @@ torchrun --standalone --nproc_per_node 1 -m karpo_decision.serve.server --checkp
 - [VLA](../methods/vla.md) — 与执行连续机器人动作的策略区别。
 
 ## 参考来源
+
+- [Ten Appetites 交互体验官方说明归档](../../sources/sites/karpo-ten-appetites.md)
 
 - [官方全系列模型卡与权重原文归档](../../sources/models/karpo-decision-weights.md)
 - [官方推理仓源码核对归档](../../sources/repos/karpo-decision.md)
