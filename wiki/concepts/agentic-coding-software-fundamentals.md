@@ -8,9 +8,10 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
+  - ./agentic-software-factory-harness.md
   - ./coding-agent-orchestration-and-cognitive-oversight.md
   - ../entities/mattpocock-skills.md
   - ../entities/archify.md
@@ -48,6 +49,8 @@ sources:
   - ../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md
   - ../../sources/blogs/anthropic_context_engineering_2026-07-24.md
   - ../../sources/blogs/felix_rieseberg_how_to_be_more_ambitious_2026-10-13.md
+  - ../../sources/blogs/runway_building_a_software_factory_2026-11-20.md
+  - ../../sources/blogs/openai_harness_engineering_2026-02-11.md
   - ../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md
   - ../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md
   - ../../sources/blogs/anthropic_claude_code_review_2026-10-15.md
@@ -132,6 +135,10 @@ flowchart TD
 2. **用评测闭环代替语感。** 与 [autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md) 一致：没有自动 verify，agent 只能 vibe。软件侧对应单测/集成/负载；真机侧对应 reset + 自动判分。
 3. **架构按阶段换，不按潮流换。** 原型简单、生产加可观测与降级、规模化再动数据分片与服务边界。让 agent 「按大厂模板生成」往往跳阶段。
 
+### 从编程 Agent 到可运转的软件工厂
+
+[Agent-first 软件工厂与 Harness Engineering](./agentic-software-factory-harness.md) 汇总 Runway 的「CI→评审→按风险审批→浏览器 QA→主干故障→协调器」逐工位交接，以及 OpenAI 借助仓库知识、隔离 worktree、浏览器和可观测工具提高 agent 自治水平的 Harness Engineering。Felix Rieseberg 的四类雄心提供任务设计维度：目标高度、专业深度与跨领域工具，而不仅是让模型更快打字。这三篇工程/观点文章的内部数据与机器人真机安全不能直接等同。
+
 ### Agent 吞吐上升后，开发基础设施会成为瓶颈
 
 Anthropic 的 Scion 案例把上述「生产运维」判断推到极端：该公司报告每日合并量在 2026 年 5 月至 9 月从约 2,500 增至超过 30,000，主分支历史接近 100 GB、CI 每天约 2,500 万次 checkout。团队发现瓶颈逐渐从写代码转向源码控制、构建和 CI。
@@ -200,6 +207,7 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - [ENPIRE](../methods/enpire.md) — coding agent 真机策略自改进；核心贡献是环境接口不是模型
 - [AI Auto-Research](./ai-auto-research.md) — 研究全生命周期自动化；SWE 能力与科研能力不等价
 - [Data Flywheel](./data-flywheel.md) — 数据生命周期与回流；对应本页「Managing data」
+- [Agent-first 软件工厂与 Harness Engineering](./agentic-software-factory-harness.md) — 风险审批、CI/QA、主干监控与反馈闭环
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 把判断编译进持久 wiki，而不是每次让 agent 从零 vibe
 
 ## 多 Agent 管理与认知把关
@@ -225,6 +233,8 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - [Thariq Shihipar，Finding your unknowns（本站归档）](../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md)
 - [Thariq Shihipar，The new rules of context engineering（本站归档）](../../sources/blogs/anthropic_context_engineering_2026-07-24.md)
 - [Felix Rieseberg，How to be more ambitious（本站归档）](../../sources/blogs/felix_rieseberg_how_to_be_more_ambitious_2026-10-13.md)
+- [Runway，Building a Software Factory（本站归档）](../../sources/blogs/runway_building_a_software_factory_2026-11-20.md)
+- [OpenAI，Harness engineering（本站归档）](../../sources/blogs/openai_harness_engineering_2026-02-11.md)
 - [Andrew Ng，AI Engineering Skills Map: Software engineering fundamentals（本站归档）](../../sources/blogs/andrew_ng_ai_engineering_skills_se_fundamentals.md)
 - [Anthropic，Redesigning source control at Anthropic（本站归档）](../../sources/blogs/anthropic_redesigning_source_control_2026-10-13.md)
 - [Anthropic，How the Claude Code team does code review（本站归档）](../../sources/blogs/anthropic_claude_code_review_2026-10-15.md)
