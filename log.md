@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | sources/sites/noitom-robotics.md — 增补诺亦腾机器人公司路线，串联 Adam-U、ModalityNet 与联合研究，记录数据与源码开放范围
+
 ## [2026-11-21] ingest | sources/blogs/embodied_heart_itw_ego_plus_learnability_2026_11_20.md — 可学习性报道与 ITW-Ego Plus 五种选配模态一手核验
 
 - 复用已有 ITW-Ego Plus 实体，补齐 Sol/Jupiter 模态流程、训练场景配方与 Mermaid 图，避免重复造页。
