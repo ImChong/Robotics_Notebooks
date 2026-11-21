@@ -248,6 +248,7 @@ flowchart LR
 - 真机样本不足时，用下注式方法给出区间而不是点估计
 
 ### 推荐读什么
+- [SIMPLE：人形全身移动操作仿真基准](../wiki/entities/paper-loco-manip-161-075-simple.md) — Stage 5 的人形策略 sim↔real 对照；须区分论文 v2 的 16 项与官网的 60 项口径，并核对有限任务的真机迁移证据。
 - [World Models as Unit Tests：代码世界模型做控制程序回归测试](../wiki/entities/world-models-as-unit-tests.md) — 34 个程序的模型内成功率与原模拟器相关 r=0.974，但绝对成功率偏乐观，**尚无物理真机 sim↔real 校准**；作为 Stage 5 的反例边界读。
 - [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — 可复现性 ↔ 代表性代价表与缩小 gap 的三条工程路线
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) — 把评测当可扩展闭环基建，把迭代速度从墙钟瓶颈换成算力瓶颈的前提条件

@@ -9,6 +9,7 @@
 - **配套论文：** arXiv:2606.08278 — 归档见 [sources/papers/simple_arxiv_2606_08278.md](../papers/simple_arxiv_2606_08278.md)
 - **代码：** <https://github.com/physical-superintelligence-lab/SIMPLE>
 - **入库日期：** 2026-07-16
+- **本次核查：** 2026-11-21（官网 60 项 / 9 模型，arXiv v2 16 项 / 7 主表模型）
 - **一句话说明：** SIMPLE 官方落地页：双仿真器架构说明、60/50/1000+ 规模统计、运动规划与 VR 遥操作数据采集效率表、9 策略 × 6 任务 × L0/L1/L2 benchmark、域随机化/数据 scaling 消融，以及零样本 sim-to-real 并排演示。
 
 ## 摘录要点（与论文分工）
@@ -25,6 +26,11 @@
 - 论文：<https://arxiv.org/abs/2606.08278>
 - **已开源：** GitHub `physical-superintelligence-lab/SIMPLE`；评测环境见 Hugging Face `USC-PSI-Lab/psi-data/tree/main/simple-eval`
 - 项目页 Footer 链到 arXiv、GitHub 与 HF 数据集
+
+## 与 arXiv v2 的口径对照
+
+- 官网当前展示 **60 whole-body tasks / 9 policies**；论文 [v2](https://arxiv.org/html/2606.08278v2) 的 Abstract、Conclusion、Appendix A.5 使用 **16 个基准任务**，主文 Table 1 是 **7 个模型**。v2 §3.2 却仍写 60，原始文本内部也不一致，需保留两个版本的出处。
+- 官方代码 2026-11 公布另一个 **17 项 decoupled-WBC 数据集**（12 Teleop + 5 MP），不是 v2 Table 8 的 16 项多任务测试集，详见 [代码归档](../repos/simple_usc_psi.md)。
 
 ## 对 wiki 的映射
 
