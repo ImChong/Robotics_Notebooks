@@ -109,11 +109,11 @@ sequenceDiagram
     Sim-->>CLI: result.json 中的成功率和任务进度
 ```
 
-**可核验入口**：```python -m roboicl.run deposit_coin --shots 0 --seed 0 --layout 0 --profile configs/protocols/zero_shot_b25.json --dry-run```；去掉 ```--dry-run``` 并配置 API/仿真环境后才执行评测，退出码为 0 不代表任务成功。
+**可核验入口**：`python -m roboicl.run deposit_coin --shots 0 --seed 0 --layout 0 --profile configs/protocols/zero_shot_b25.json --dry-run`；去掉 `--dry-run` 并配置 API/仿真环境后才执行评测，退出码为 0 不代表任务成功。
 
 ## 工程实践
 
-1. 先固定 RoboDojo/Isaac Sim 版本与 SHA256 资产引用；用 ```--dry-run``` 和 ```--capture-only``` 分别验证依赖/相机。
+1. 先固定 RoboDojo/Isaac Sim 版本与 SHA256 资产引用；用 `--dry-run` 和 `--capture-only` 分别验证依赖/相机。
 2. 分开部署 VLM 策略进程和仿真/驱动进程，记录 API 延迟、每步 token、动作块长度与实际执行频率。
 3. 在动作输出和低层控制间设置维度、幅值、碰撞、超时与执行回执校验；记录被拒动作与追踪误差。
 4. 保留 zero-shot/one-shot 的 TRAIN/LIVE 配比以及失败场景，不能只取最佳视频案例。
@@ -144,6 +144,8 @@ sequenceDiagram
 
 - [具身 ICL 概念](../concepts/robot-in-context-learning.md)
 - [VLA 方法](../methods/vla.md)
+- [模仿学习](../methods/imitation-learning.md) — 对照训练期更新权重与推理期示范适应。
+- [机器人操作任务](../tasks/manipulation.md) — RoboDojo 与真机少样本任务对应的执行、成功率及失败判据。
 - [H-VLA](./paper-h-vla.md) 与 [Co-VLA](./paper-co-vla.md)
 - [ICL 纵深路线](../../roadmap/depth-icl.md)
 
