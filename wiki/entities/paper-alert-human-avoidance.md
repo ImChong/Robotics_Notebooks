@@ -10,6 +10,8 @@ related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/safety-filter.md
   - ../tasks/teleoperation.md
+  - ../methods/beyondmimic.md
+  - ../tasks/humanoid-locomotion.md
   - ./nvidia-sonic.md
   - ./paper-twist2.md
   - ./paper-bfm-zero.md
@@ -189,6 +191,8 @@ $$
 - [BFM-Zero](./paper-bfm-zero.md)
 - [Safety Filter](../concepts/safety-filter.md)
 - [Teleoperation](../tasks/teleoperation.md)
+- [BeyondMimic：参考动作模仿学习方法](../methods/beyondmimic.md)
+- [Humanoid Locomotion：人形行走任务](../tasks/humanoid-locomotion.md)
 - [人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md)
 - [BFM 纵深路线](../../roadmap/depth-bfm.md)
 
