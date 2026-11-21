@@ -8,6 +8,7 @@ related:
   - ../entities/paper-adp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-host-humanoid-standingup.md
+  - ../entities/paper-reloco-unified-locomotion-fall-recovery.md
   - ../entities/paper-argus-dynamic-symmetry.md
   - ../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md
   - ../entities/paper-fddc.md
@@ -146,6 +147,9 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - 已在 Atlas、Valkyrie 等机器人上验证
 
 ### RL 方法
+
+**ReLoco（2026）** 把“倒地起身后恢复速度指令”纳入同一个本体感知策略，训练阶段按姿态路由 AMP 专家池和双输出判别器，但部署时不切换独立控制器；真机保护事件须单独计入评估（[独立论文详情](../entities/paper-reloco-unified-locomotion-fall-recovery.md)）。
+
 
 近年来 RL 在平衡恢复上取得了强结果，尤其是在不规则扰动和复杂地形上：
 
