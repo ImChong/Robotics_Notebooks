@@ -527,6 +527,13 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | SimReady Central 官方资料复核与资产质量边界
+
+- 核对 2026-10-21 NVIDIA/Hugging Face 公告、2026-11-19 SimReady Central 官方文档、资产数据集和 GitHub 源码/验收规范。
+- 复用已有 `wiki/entities/nvidia-simready-central.md`，更新 2,919 个 USD 资产、近月 1,731,953 下载及 CC BY 4.0 数据集许可口径；添加官方目录构建代码时序图和物理校验清单。
+- 区分 ABB RobotStudio HyperReality 99% 宣传指标与 SimReady Central 资产库；未证实的趋势排名、3 吨货架与抽屉驱动传闻不当作事实。
+- 同步更新 `sources/sites/`、`sources/repos/`、`sources/datasets/` 归档，并挂载 `roadmap/depth-real2sim.md` Stage 2。
+
 ## [2026-11-20] ingest | 推进 #3490：depth-perceptive-locomotion 10 个 2/3 节点补齐原文通读归档并升至 3/3
 
 ## [2026-11-20] ingest | Lumina 触觉 Scaling：异构传感器、事件数据与跨本体表征
