@@ -2,7 +2,11 @@
 type: comparison
 tags: [motor, simulation, fem, thermal, cfd, hardware, actuator, humanoid]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-21
+original:
+  - ../../sources/sites/femm_info.md
+  - ../../sources/repos/pyleecan.md
+  - ../../sources/papers/opencfs.md
 related:
   - ../overview/motor-design-workflow.md
   - ../concepts/motor-torque-speed-curve.md
@@ -26,7 +30,9 @@ summary: "电机设计三类仿真（电磁 FEA、流体散热 CFD、热分析�
 
 # 电机电磁与多物理场仿真软件选型
 
-> 对比轴：**人形/腿足关节电机预研**、**汽车电驱量产**、**高校多物理场研究** 三类典型需求。
+## 一句话定义
+
+**针对机器人/电驱力矩电机的三物理域（电磁 FEA、流体 CFD、热分析），对比商业主流套件（Motor-CAD、Maxwell、JMAG、Flux、COMSOL）与开源求解链（[FEMM](../entities/femm.md)、[PYLEECAN](../entities/pyleecan.md)、[openCFS](../entities/opencfs.md)）的定位与分工组合。**
 
 ## 英文缩写速查
 
@@ -39,6 +45,11 @@ summary: "电机设计三类仿真（电磁 FEA、流体散热 CFD、热分析�
 | IPM | Interior Permanent Magnet | 内置式永磁电机，弱磁与效率优化常见 |
 | NVH | Noise, Vibration, Harshness | 噪声、振动与声振粗糙度 |
 
+## 为什么重要
+
+- 单靠电磁 FEA 只能预测冷机转矩常与齿槽转矩，真正卡住人形关节持续工作能力的是 **损耗发热、温升与风/液冷却边界**。
+- 商业套件许可昂贵且产业界常用「两软件分工」；把开源 2D/多场栈（FEMM / PYLEECAN / openCFS）接入学习与预研管线，可实现零许可下的可脚本化扫参与教学入门。
+
 ## 一句话结论
 
 - **最快出 TN/效率/温升结果、电驱与关节模组预研**：优先 **Motor-CAD**。
@@ -46,9 +57,9 @@ summary: "电机设计三类仿真（电磁 FEA、流体散热 CFD、热分析�
 - **高端伺服与 IPM、日系汽车供应链**：**JMAG**。
 - **电磁+热+流体+结构一套耦合、研究院所**：**COMSOL Multiphysics**。
 - **机器人关节厂常见组合**：**Maxwell（电磁）+ Motor-CAD（热与效率地图）**。
-- **零许可入门 / 开源重设计**：[FEMM](../entities/femm.md) + [FEMM-FOC](../entities/femm-foc-simulation.md) / [PYLEECAN](../entities/pyleecan.md)；轴向用 [axfluxmdo](../entities/axfluxmdo.md)。固定样机教材见 [电磁设计完整度对比](./open-source-torque-motor-em-design.md)。
+- **零许可入门 / 开源重设计**：[FEMM](../entities/femm.md) + [FEMM-FOC](../entities/femm-foc-simulation.md) / [PYLEECAN](../entities/pyleecan.md) / [openCFS](../entities/opencfs.md)；轴向用 [axfluxmdo](../entities/axfluxmdo.md)。固定样机教材见 [电磁设计完整度对比](./open-source-torque-motor-em-design.md)。
 
-## 三类仿真与典型输出
+## 核心原理：三类仿真与典型输出
 
 ```mermaid
 flowchart LR
@@ -77,7 +88,7 @@ flowchart LR
 | **Altair Flux** | 通用电磁 FEA | PMSM、BLDC、SRM、感应电机；学术界常见 | 机器人厂曝光度低于 Maxwell/Motor-CAD |
 | **COMSOL** | 多物理场耦合平台 | 电磁-热-流体-结构同一环境；适合研究院 | 电机专用模板与产业工作流不如 Motor-CAD 快 |
 
-## 行业典型工作流
+## 工程实践与行业典型工作流
 
 ### 方案 A：机器人关节 / 人形模组厂（最常见）
 
@@ -115,7 +126,7 @@ flowchart LR
 
 掌握后可分析：TN/[TI](../concepts/motor-torque-current-curve.md) 曲线、MTPA、齿槽转矩、反电势、效率与连续/峰值功率边界，并与 [热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md) 中的散热目标对照。开源项目完整度选型见 [开源力矩电机电磁设计完整度对比](./open-source-torque-motor-em-design.md)。
 
-## 常见误判
+## 常见误区或局限
 
 | 误判 | 实际情况 |
 |------|----------|
@@ -123,6 +134,8 @@ flowchart LR
 | COMSOL 可完全替代 Motor-CAD | COMSOL 灵活但电机专用效率与模板不如 Motor-CAD 快 |
 | 仿真 TN 等于整机 TN | 关节含减速器、驱动限流与整机散热，需台架验证 |
 | 选一个「最全」软件即可 | 产业界常见 **分工组合**（如 Maxwell + Motor-CAD） |
+
+- **资料核对边界**：开源栈（[FEMM](../entities/femm.md)、[PYLEECAN](../entities/pyleecan.md)、[openCFS](../entities/opencfs.md)）已通过官方文档、论文或源码入口全文核对（其中 FEMM 只支援 2D/轴对称且 AC 量为 Peak 值、无运动涡流）；商业闭源软件（Motor-CAD、Maxwell、JMAG、Flux、COMSOL）以行业公开工作流与策展经验对比，未对闭源商业手册逐页实测。
 
 ## 关联页面
 

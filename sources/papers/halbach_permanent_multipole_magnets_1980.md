@@ -10,7 +10,8 @@
 - **DOI：** https://doi.org/10.1016/0029-554X(80)90094-4
 - **期刊：** Nuclear Instruments and Methods 169 (1980) 1–10
 - **OA PDF（eScholarship / LBL-9604）：** https://escholarship.org/content/qt20b829tr/qt20b829tr.pdf
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 完成 LBL-9604 原文 1566 行 PDF 全文通读与公式核对）
+- **通读：** 已完成
 - **一句话说明：** Halbach 阵列圆柱/多极几何的奠基文：定向稀土钴（REC）易轴取向配方、易轴旋转定理、连续与分段多极；孔径场可达约 1.2–1.4 T，外部场可理想为零。
 - **开源状态：** **不适用**（理论/设计论文；无代码）。全文有 **绿色 OA** PDF（eScholarship）。
 - **沉淀到 wiki：** [halbach-array](../../wiki/concepts/halbach-array.md)、[paper-halbach-permanent-multipole-magnets](../../wiki/entities/paper-halbach-permanent-multipole-magnets.md)

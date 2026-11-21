@@ -2,7 +2,10 @@
 type: query
 tags: [humanoid, hardware, battery, thermal, engineering]
 status: complete
-updated: 2026-10-19
+updated: 2026-11-21
+original:
+  - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/sites/robot-energy-compute-pcb-review.md
 related:
   - ../overview/humanoid-motion-control-know-how.md
   - ../entities/humanoid-robot.md
@@ -11,6 +14,8 @@ related:
 sources:
   - ../overview/humanoid-motion-control-know-how.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
+  - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/sites/robot-energy-compute-pcb-review.md
 summary: "人形机器人电池与热管理指南：探讨了在大功率电机输出下的电池放电倍率策略、电芯温度监控以及主动/被动散热设计，以保障真机运行的安全性与续航。"
 ---
 
@@ -61,15 +66,18 @@ summary: "人形机器人电池与热管理指南：探讨了在大功率电机�
 ## 3. 工程最佳实践
 
 - **母线电容设计**：在每个关节驱动器端并联高耐压电容，吸收电机刹车时的反向感应电动势（Regenerative Braking），防止烧毁 BMS。
+- **电芯体系与封装热权衡**：三元 NMC（高能量密度与 >10 C 峰值脉冲能力）vs 磷酸铁锂 LFP（低能量密度但高温晶格稳定性强）；圆柱电芯天然留出蜂窝流道便于风/液散热，方形电芯体积效率高但无自然气隙须配冷板，软包减重达 30% 但抗穿刺依赖刚性壳体保护；监测保护芯片如 TI BQ76952（3–16 串）需配合外部热敏电阻与功率级保护开关组成完整认证 BMS（UL 2271 口径）。
 - **导热路径**：利用铝合金机身作为巨大的散热片，确保电机外壳与结构件之间有良好的导热硅脂连接。
 
 ## 关联页面
+- [Humanoid Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
 - [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)
 - [人形机器人 (Humanoid Robot)](../entities/humanoid-robot.md)
 - [实时运控中间件配置指南](./real-time-control-middleware-guide.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 
 ## 参考来源
+- [Humanoid Hardware 101（电池、计算与 PCB 全文落盘）](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md) — NMC/NCA/LFP 选型、圆柱/方形/软包热管理与 >10 C 峰值倍率分析
+- [TI BQ76952 与 Jetson Thor 官方资料复核](../../sources/sites/robot-energy-compute-pcb-review.md) — 3–16 串电芯监测/保护 IC 与端侧算力热包络（40–130 W）
 - [humanoid-motion-control-know-how.md](../overview/humanoid-motion-control-know-how.md)
 - [sources/papers/humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
-- Unitree / Boston Dynamics 公开技术博客摘要。

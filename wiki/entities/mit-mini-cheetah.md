@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, mini-cheetah, mit, mpc, qdd, locomotion, sim2real, foc, open-source, hardware, actuator]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 code: https://github.com/mit-biomimetics/Cheetah-Software
 related:
   - ./benjamin-katz.md
@@ -85,7 +85,33 @@ summary: "MIT Mini Cheetah（~0.3 m / 9 kg）：部分开源 QDD 四足实验床
 
 ## 核查范围与未读资料
 
-本页的"原文通读"只覆盖官方软件仓库 [Cheetah-Software](../../sources/repos/cheetah-software.md) 的 README 与三份文档（构建、仿真、上真机流程）。以下资料**本次没有取得全文**，相关表述是转引：ICRA 2019 平台论文（IEEE 付费墙，作者站点链接 404）、Katz 硕士论文（DSpace 下载返回 429 限流，未绕过）、Di Carlo 等 IROS 2018 Convex MPC 论文。硬件规格另与 Margolis 等（arXiv:2205.02824）和 WBIC+MPC（arXiv:1909.06586）两篇论文的相关段落交叉核对过（非通读）：二者都把平台描述为 30 cm 高、9 kg、12 个准直驱执行器。
+本页的"原文通读"覆盖官方软件仓库 [Cheetah-Software](../../sources/repos/cheetah-software.md) 的 `README.md`、三份官方构建/仿真/真机文档，以及核心执行链源码（`user/MIT_Controller/main.cpp`、`robot/src/main_helper.cpp`、`robot/src/RobotRunner.cpp`、`robot/src/SimulationBridge.cpp`、`robot/src/HardwareBridge.cpp`、`user/MIT_Controller/MIT_Controller.cpp`），并核对了 `bgkatz/motorcontrol` 固件底层（`main.c`、`foc.c`、`can.c`）。以下闭源/限流文献**未取得全文**：ICRA 2019 平台论文（IEEE 付费墙）、Katz 硕士论文（MIT DSpace 返回 HTTP 429 验证页，未绕过）、Di Carlo IROS 2018 Convex MPC 论文，文中性能数字均明确标注来源并交叉核对。
+
+## 源码运行时序图（`Cheetah-Software` 主循环）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as user/MIT_Controller/main.cpp
+  participant Helper as main_helper.cpp (robot)
+  participant Bridge as SimulationBridge / MiniCheetahHardwareBridge
+  participant Runner as RobotRunner (init / run)
+  participant Ctrl as MIT_Controller (ControlFSM + GaitScheduler)
+  participant Leg as LegController + Hardware/Sim
+
+  CLI->>Helper: main_helper(argc, argv, new MIT_Controller())
+  Helper->>Bridge: 解析 3/m、s/r 后派发 Bridge::run()
+  Bridge->>Runner: RobotRunner::init() 构建 MiniCheetah 模型与状态估计器
+  Runner->>Ctrl: initializeController()
+  loop 1 kHz 控制周期 (700 Hz 腿数据同步)
+    Bridge->>Runner: runRobotControl() -> RobotRunner::run()
+    Runner->>Runner: _stateEstimator->run() + setupStep()
+    Runner->>Ctrl: runController() -> _gaitScheduler->step() -> _controlFSM->runFSM()
+    Ctrl->>Leg: 下发足力/PD/前馈力矩指令至共享内存或 SPI/CAN
+  end
+```
+
+图依据：`mit-biomimetics/Cheetah-Software` `master` 分支上述 6 个 C++ 源文件；驱动板固件底层为 `bgkatz/motorcontrol` `Core/Src/{main,foc,can}.c`（PWM 更新事件触发 triple injected ADC `analog_sample()` → `dq0()` / `abc()` FOC → `set_dtc()` 与 CAN 轮询 `can_tx_rx()`）。
 
 ## 开源状态（步骤 2.5 核查）
 

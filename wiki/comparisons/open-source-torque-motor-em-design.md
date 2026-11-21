@@ -2,7 +2,12 @@
 type: comparison
 tags: [hardware, actuator, motor, fem, femm, open-source, qdd, pmsm, axial-flux, humanoid]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-21
+original:
+  - ../../sources/repos/ironless_qdd_actuator.md
+  - ../../sources/papers/halbach_permanent_multipole_magnets_1980.md
+  - ../../sources/repos/femm_foc_simulation.md
+  - ../../sources/repos/pyleecan.md
 related:
   - ./open-source-qdd-actuator-projects.md
   - ./motor-em-simulation-software.md
@@ -42,7 +47,9 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 
 # 开源机器人力矩电机：电磁设计完整度对比
 
-> 对比轴：**定转子几何 · 槽极/绕组 · 磁钢 · 电磁仿真文件 · 可制造结构 · 实物验证**。与 [开源 QDD 关节项目对比](./open-source-qdd-actuator-projects.md)（系统/驱动侧）互补。
+## 一句话定义
+
+**按「定转子几何、槽极绕组、磁钢/Halbach 理论、电磁 FEM 仿真、可制造 CAD/BOM、实物台架验证」六个维度评估开源力矩电机与工具仓库，明确区分硬件教学样机与参数化重设计软件。**
 
 ## 英文缩写速查
 
@@ -52,14 +59,14 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 | FOC | Field-Oriented Control | 磁场定向控制 |
 | PMSM | Permanent Magnet Synchronous Motor | 永磁同步电机 |
 | QDD | Quasi-Direct Drive | 准直驱低减速比作动 |
-| Halbach | Halbach Array | 单侧聚磁的永磁阵列 |
+| Halbach | Halbach Array | 单侧聚磁的永磁阵列布置 |
 | MDO | Multidisciplinary Design Optimization | 多学科设计优化 |
 
 ## 一句话结论
 
 - **要复现「电磁 → 绕线 → 转子 → FEM → 减速 → 驱动 → 台架」整条链**：优先 [Ironless-QDD-Actuator](../entities/ironless-qdd-actuator.md)。
 - **要先建立 Halbach / 无铁芯轴向手算直觉（无 CAD 仓）**：读 [Caden Kraft Axial Flux Part 1](../entities/cadenkraft-ironless-axial-flux-motor.md)，再回 Ironless 打开 FEMM。
-- **要读 Halbach 一手文献**：概念页 [Halbach Array](../concepts/halbach-array.md) → [Mallinson 1973](../entities/paper-mallinson-one-sided-fluxes.md) / [Halbach 1980](../entities/paper-halbach-permanent-multipole-magnets.md) / [Zhu & Howe 2001](../entities/paper-zhu-howe-halbach-pm-machines-review.md)。
+- **要读 Halbach 一手理论（已通读 LBL-9604 原文）**：概念页 [Halbach Array](../concepts/halbach-array.md) → [Halbach 1980](../entities/paper-halbach-permanent-multipole-magnets.md)（导出 2D 极数 $N$ 与分段衰减因子 $K_N=\cos^N(\pi/M)\frac{\sin(N\pi/M)}{N\pi/M}$、每极段数 $M'=M/N\ge 8$ 的工程临界线）→ [Zhu & Howe 2001](../entities/paper-zhu-howe-halbach-pm-machines-review.md)。
 - **要学 FEMM + FOC 扫角入门**：先读 [FEMM](../entities/femm.md) 官方 Tutorial/Examples，再用 [FEMM-FOC-Simulation](../entities/femm-foc-simulation.md)。
 - **要学 PCB 轴向绕组可制造文件**：用 [PCB Motor](../entities/pcb-motor.md)（WIP，偏小关节）。
 - **要自己重设人形外转子径向磁通**：用 [PYLEECAN](../entities/pyleecan.md)；轴向磁通早期权衡用 [axfluxmdo](../entities/axfluxmdo.md)；自动优化研究用 [ACMOP](../entities/acmop.md)（非入门）。
@@ -69,7 +76,7 @@ summary: "按电磁设计完整度对比开源力矩电机：几何/绕组/磁�
 
 网上「开源电机」多数只开 CAD 或只开固件；同时公开 **槽极绕组 + 磁钢磁化 + 可打开的 FEM 文件 + 可造结构** 的项目极少。人形髋/膝还要看连续温升与冲击寿命——多数开源仓到不了工业验证，但仍是学电磁设计最稀缺的教材。
 
-## 完整度对照
+## 核心原理与完整度对照
 
 | 项目 | 几何 | 绕组 | 磁钢 | FEM/仿真 | CAD/制造 | 实物 | 人形适用 |
 |------|------|------|------|----------|----------|------|----------|

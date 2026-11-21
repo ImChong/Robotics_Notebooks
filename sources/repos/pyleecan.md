@@ -8,8 +8,9 @@
 - **链接：** https://github.com/Eomys/pyleecan
 - **文档：** https://www.pyleecan.org/
 - **许可：** Apache-2.0
-- **星标（截至 2026-07-25）：** ~221
-- **入库日期：** 2026-07-25
+- **星标（截至 2026-11-21）：** 238
+- **入库日期：** 2026-07-25（2026-11-21 核对 `README.md` 与 `Simu1/run_single.py`、`MagFEMM/solve_FEMM.py` 主求解调用链）
+- **通读：** 已完成
 - **一句话说明：** 径向磁通电机开源多物理场设计/优化框架：SPMSM/IPMSM 等拓扑 GUI、绕组与材料库、FEMM 耦合、损耗、参数扫描与多目标优化。
 - **开源状态：** **已开源**
 - **项目页归档：** [pyleecan_org.md](../sites/pyleecan_org.md)

@@ -6,7 +6,8 @@
 - **类型：** repo
 - **来源：** <https://github.com/Capo01/odrive_based_electric_motor_dynamometer>
 - **关联硬件生态：** [ODrive Robotics](https://odriverobotics.com/)
-- **入库日期：** 2026-07-24
+- **入库日期：** 2026-07-24（2026-11-21 克隆仓库逐行核对 `README.md`、`dyno_test_procedure.py` 与 `dyno_functions.py` 485 行源码）
+- **通读：** 已完成
 - **一句话说明：** 基于 ODrive 的开源 **四象限** 无刷电机对拖测功台：吸收电机加载 + 负载传感器测扭矩，可扫效率地图与静态 \(K_t\)。
 - **代码：** <https://github.com/Capo01/odrive_based_electric_motor_dynamometer>（已开源；README 标注项目曾暂停维护）
 - **沉淀到 wiki：** [motor-dynamometer](../../wiki/concepts/motor-dynamometer.md)

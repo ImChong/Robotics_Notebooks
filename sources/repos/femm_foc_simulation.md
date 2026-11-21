@@ -7,8 +7,9 @@
 - **作者：** yoga-cycle
 - **链接：** https://github.com/yoga-cycle/FEMM-FOC-Simulation
 - **许可：** GitHub API `license: null`
-- **星标（截至 2026-07-25）：** ~17
-- **入库日期：** 2026-07-25
+- **星标（截至 2026-11-21）：** 19
+- **入库日期：** 2026-07-25（2026-11-21 逐行通读 `README.md` 与 `resources/FOC_sim.lua` 全文）
+- **通读：** 已完成
 - **一句话说明：** 用 FEMM + Lua 对径向 BLDC 做 FOC 电流与转子角扫描、输出转矩曲线的教学仿真仓；含定/转子 DXF 与已配置 .fem。
 - **开源状态：** **已开源**（公开仓库；无 SPDX license 元数据）
 - **沉淀到 wiki：** [femm-foc-simulation](../../wiki/entities/femm-foc-simulation.md)

@@ -2,7 +2,9 @@
 type: entity
 tags: [software, motor, fem, femm, open-source, pmsm, optimization, simulation, eomys, pyleecan]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-21
+original:
+  - ../../sources/repos/pyleecan.md
 related:
   - ./femm.md
   - ../comparisons/open-source-torque-motor-em-design.md
@@ -59,7 +61,36 @@ flowchart LR
   fem --> loss --> opt
 ```
 
-**主拓扑能力（官方 README）：** SPMSM、IPMSM、SCIM、DFIM、WRSM、SRM、SynRM 等；GUI 可跑单速电流驱动磁 FEMM；支持 DXF 导入槽/孔、GMSH 网格耦合第三方多物理场。
+**主拓扑能力（官方 README）：** SPMSM、IPMSM、SCIM、DFIM、WRSM、SRM、SynRM 等；GUI 可跑单速电流驱动磁 FEMM；支持 DXF 导入槽/孔、GMSH 网格耦合第三方多物理场（目前 `pyleecan.org` 官网处于迁移维护中，主代码与文档以 GitHub `Eomys/pyleecan` 为准）。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Script as 用户脚本 / GUI
+  participant Simu as Simu1.run_single()
+  participant Input as InputCurrent.gen_input()
+  participant Mag as MagFEMM.solve_FEMM()
+  participant FEMM as _FEMMHandler (FEMM 进程)
+  participant Post as Force / Loss / PostMethod
+
+  Script->>Simu: 配置 Machine + Simu1 并调用 run()
+  Simu->>Simu: output.geo = self.machine.comp_output_geo()
+  Simu->>Input: gen_input() 生成电流矩阵 Is(qs, Nt) 与转角向量
+  opt elec 模块启用
+    Simu->>Simu: self.elec.run()
+  end
+  Simu->>Mag: self.mag.run() -> solve_FEMM()
+  loop Nt 个时间步 / 转子位置
+    Mag->>FEMM: 更新绕组电流与转子旋转角
+    Mag->>FEMM: 求气隙径/切向磁密 (Br, Bt)、Tem 与 Phi_wind
+  end
+  Simu->>Post: 依次执行 force.run()、struct.run()、loss.run() 与 postproc_list
+  Post-->>Script: 返回 Output 对象与性能曲线
+```
+
+图依据：`Eomys/pyleecan` `pyleecan/Methods/Simulation/Simu1/run_single.py` 与 `MagFEMM/solve_FEMM.py`。
 
 ## 工程实践
 
