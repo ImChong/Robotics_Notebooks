@@ -10,8 +10,8 @@
 - **数据集：** <https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv>
 - **平台与分析代码：** <https://github.com/alphaXiv/OpenResearch>
 - **交互分析：** <https://molab.marimo.io/notebooks/nb_aErVM5Au66szGmvh5u4gpu>
-- **核对范围：** 已核对 alphaXiv 论文页面、摘要及 PDF 的研究设计、主要结果、审稿/复核、局限、数据与代码公开章节，并阅读官方 OpenResearch README 和 CLI 关键实现；尚未逐页通读论文全部正文、附录与逐项数据。
-- **通读：** 未完成
+- **核对范围：** 已通读 alphaXiv `2611.society-ai-scientists.pdf` 正文 §1–§7.1（含 Limitations 与 References，共 7,259 行），核对 35 实验室、936 Agent、23,811 条数值审计与 46 篇同期 arXiv 独立对照细节。
+- **通读：** 已完成
 
 ## 一句话
 

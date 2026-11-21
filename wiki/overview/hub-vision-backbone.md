@@ -3,6 +3,9 @@ type: overview
 tags: [hub, hub-vision-backbone, cnn, vit, perception, detection]
 status: complete
 updated: 2026-11-07
+original:
+  - ../../sources/papers/resnet_arxiv_1512_03385.md
+  - ../../sources/papers/yolo_arxiv_1506_02640.md
 summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头与策略输入的衔接，覆盖 ResNet/YOLO 选型与生成式视觉预训练对机器人表征的影响；课程级全量节点见 Transformer 视觉应用策展。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -37,8 +40,14 @@ related:
 - **检测 ≠ 策略输入**：需 explicit 设计「骨干 → 任务头 → 策略」衔接。
 - **V24 知识链**：本库把分散的 backbone/detection 页收成图谱视图。
 
-## 本知识链覆盖什么
+## 核心原理
 
+```mermaid
+flowchart LR
+  IN["机载 RGB / Depth 图像"] --> BB["视觉骨干 (ResNet / ViT / ConvNeXt)"]
+  BB --> HD["检测/分割头 (YOLO / DETR / SAM)"]
+  BB --> VPR["策略视觉表征接口 (Token / 空间特征)"]
+```
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
 | 概念 | 视觉骨干总览 | [Vision Backbones](../concepts/vision-backbones.md) |
@@ -60,6 +69,15 @@ related:
 - **[状态估计](./hub-state-estimation.md)**：VIO 与检测/feature 共享视觉栈。
 - **[Sim2Real](./hub-sim2real.md)**：视觉域差距与随机化。
 
+## 工程实践
+
+- **边缘延迟预算先于准确率：** 机载高频控制环优先选择轻量 CNN/YOLO/小型 ViT，并做 TensorRT FP16/INT8 量化后再核实掉点范围。
+- **任务域与预训练对齐：** 操作/导航对空间几何、近距遮挡敏感，可优先评估深度/分割与自监督（MAE/DINO）表征而非纯分类特征。
+
+## 常见误区或局限
+
+- **脱离控制频率谈骨干精度：** 大参数 ViT 在桌面基准上 AP 更优，但在机器人 50–100 Hz 闭环中若带来显著端到端延迟，系统真实成功率反而下降。
+
 ## 关联页面
 
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
@@ -75,3 +93,9 @@ related:
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`vision-backbone` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[ResNet：深度残差学习（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)、[YOLO v1：统一实时目标检测（arXiv:1506.02640）](../../sources/papers/yolo_arxiv_1506_02640.md)、[经典视觉骨干与实时检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
 - 课程大纲策展：[Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
+
+
+## 推荐继续阅读
+
+- [Vision Backbones 概念页](../concepts/vision-backbones.md)
+- [CNN vs ViT Backbones 选型对比](../comparisons/cnn-vs-vit-backbones.md)

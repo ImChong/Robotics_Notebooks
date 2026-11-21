@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, sim2real, domain-adaptation, few-shot, privileged-training, dagger, lora, whole-body-control, locomotion, unitree-g1, cmu, planner-idm, inverse-dynamics]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/fada_arxiv_2606_28476.md
 arxiv: "2606.28476"
 venue: "arXiv 2026"
 related:
@@ -21,6 +23,8 @@ summary: "FADA（arXiv:2606.28476，CMU）三阶段 Planner–IDM：仿真 oracl
 ---
 
 # FADA（Few-Shot Domain Adaptation via Dynamics Alignment）
+
+## 一句话定义
 
 **FADA** 是 CMU LeCAR-Lab 提出的 **人形控制少样本域适应** 框架（arXiv:2606.28476，[项目页](https://lecar-lab.github.io/FADA-humanoid/)）：把策略分解为 **Planner（命令→短视界本体感知意图）** 与 **IDM 逆动力学模型（意图+历史→动作）**，源域用特权 oracle + DAgger 训练；部署时 **冻结 planner**，仅用约 **2 分钟** 目标域 rollout 的 **(观测, 执行动作)** 对 **LoRA 微调 IDM**，使「如何把意图执行出来」对齐新动力学，而无需目标奖励、专家演示或仿真重标定。
 
@@ -159,6 +163,10 @@ $$
 - **不是 SysID / 仿真对齐**：不改仿真器参数；直接在 **部署控制器** 上对齐动力学。
 - **未覆盖 HOI**：论文明确 **全身人–物交互** 与 **视觉/触觉条件** 为未来方向。
 - **源训练仍有成本**：oracle RL + DAgger 蒸馏与域随机化仍是前置投入。
+
+## 工程实践
+
+- **约 2 分钟实机微调清单：** 部署期保持 Planner 完全冻结（避免微调破坏全局任务结构），仅收集几段真实交互下的 `(o_t, a_t)` 轨迹以自监督逆动力学损失对 IDM 施加低秩 LoRA 微调，使 Unitree G1 / Booster T1 快速吸收负载或软地面失配。
 
 ## 关联页面
 

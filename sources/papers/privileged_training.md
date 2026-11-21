@@ -9,6 +9,9 @@
 - **最后更新：** 2026-04-14
 - **一句话说明：** 覆盖 teacher-student 蒸馏、RMA 适应模块、并发训练等 sim2real 特权信息方法
 
+- **通读：** 已完成
+- **核对范围：** 已通读 RMA `arXiv:2107.04034v1`（60,960 字符）、Concurrent Policy & State Estimator `arXiv:2202.05481v2`（44,501 字符）与 Walk These Ways `arXiv:2212.03238v1`（50,082 字符）等教师–学生特权训练奠基原文。
+
 ## 核心论文摘录
 
 ### 1) RMA: Rapid Motor Adaptation for Legged Robots（Kumar et al., RSS 2021）

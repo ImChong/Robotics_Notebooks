@@ -4,6 +4,8 @@ type: entity
 tags: [paper, robot-description, urdf, urdd, preprocessing, yale, apollo-lab, rust, bevy, three-js, collision-geometry, forward-kinematics, arxiv-2512-23135, linux-foundation]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
 arxiv: "2512.23135"
 code: https://github.com/Apollo-Lab-Yale/apollo-rust
 related:
@@ -27,6 +29,8 @@ summary: "URDD（Universal Robot Description Directory，arXiv:2512.23135）把�
 ---
 
 # URDD（Beyond URDF: Universal Robot Description Directory）
+
+## 一句话定义
 
 **URDD** 是 Klein-Seetharaman 与 Rakita 提出的 **机器人描述「派生层」**：保留 **URDF（等）原始规格** 的同时，把下游常算的 **结构化派生信息** 分模块写入 **目录树**（JSON / YAML 为主），使仿真、控制、规划、可视化等栈可以 **共享同一份预处理结果**，而不是各自解析 URDF 再各算一遍。
 
@@ -110,6 +114,10 @@ flowchart LR
 - **不是又一个单一 XML 替代格式**：输入仍可主要是 URDF；URDD 是 **派生产物**，与 URDF+ / Extended URDF 等 **规格层扩展** 正交互补。
 - **体积与新鲜度**：含凸分解与多格式网格时目录变大；模块 **版本标签** 意味着流水线需要 **缓存失效 / 再生成策略**。
 - **权威模块集合**：以作者公开文档（论文脚注中的 Notion 文档入口）为准，本页不复制其模块枚举全文。
+
+## 工程实践
+
+- **以派生目录消除重复几何计算：** 通过 `apollo-rust` 一次性预处理 URDF/MJCF 导出凸包分解、OBB 近似、关节映射与连杆关系树，再由下游仿真、运动学规划、渲染与网页端直接按统一 JSON/YAML 模块消费。
 
 ## 关联页面
 

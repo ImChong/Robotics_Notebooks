@@ -3,6 +3,8 @@ type: concept
 tags: [control, humanoid, vla, mpc, wbc, safety, architecture, latency]
 status: complete
 updated: 2026-09-16
+original:
+  - ../../sources/blogs/wechat_shenlan_embodied_three_layer_control_2026-09-16.md
 summary: "具身机器人常按大脑（做什么）/小脑（怎么做）/脊髓（保命）三层划分控制栈：VLM·VLA 规划、MPC·WBC 协调、阈值反射安全；层间以时延预算与故障降级组织算力。"
 related:
   - ./mpc-wbc-integration.md

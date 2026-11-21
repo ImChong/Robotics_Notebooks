@@ -3,6 +3,8 @@ type: entity
 tags: [paper, dexterous-manipulation, benchmark, imitation-learning, multi-embodiment, visuomotor, bimanual, contact-rich, isaac-lab, berkeley, hku, unc-chapel-hill]
 status: complete
 updated: 2026-11-18
+original:
+  - ../../sources/papers/dexverse_arxiv_2607_08751.md
 arxiv: "2607.08751"
 venue: "arXiv 2026"
 related:
@@ -23,6 +25,8 @@ summary: "DexVerse（arXiv:2607.08751，UNC/HKU/Berkeley）发布 100 项模块�
 ---
 
 # DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）
+
+## 一句话定义
 
 **DexVerse**（arXiv:[2607.08751](https://arxiv.org/abs/2607.08751)，[项目页](https://ycyao216.github.io/DexVerse.site/)，UNC-Chapel Hill / HKU / UC Berkeley，通讯作者 Mingyu Ding）是面向 **通才灵巧操作策略** 的大规模模块化仿真 benchmark：在 **Isaac Lab** 上统一 **100** 项任务、**3** 种机械臂 × **6** 种灵巧手、可配置 **视觉/非视觉域随机**，并提供 **3,180** 条 VR 遥操作专家轨迹（本体、RGB、深度、点云、仿真状态）。论文在 **19** 项 baseline 任务上评测 Diffusion Policy、DP3、OpenVLA、π₀.₅，最佳平均在线成功率仅 **34%**，且 **无单一方法统治全部技能族**。
 
@@ -137,6 +141,11 @@ flowchart TB
 - **Shadow 手主导示范：** 单目标任务 50/55 来自 Shadow Hand，跨手泛化仍需依赖 retarget 与 per-hand 少量轨迹——读表时注意 **具身分布偏斜**。
 - **与 loco-manipulation 正交：** 桌面臂–手设定；全身人形 dexterous loco-manip 见同团队系的 [CoorDex](./paper-coordex-dexterous-humanoid-loco-manipulation.md)。
 - **≠ DexBench：** [DexBench](./dexbench.md)（RLWRLD × NVIDIA，dexbench.org）是工业任务**规格**，官方评测仓与 Arena 集成仍标 coming soon；不要和本页已开源的 100 任务 Isaac Lab bench 混名。另有 `sail-ucf/dexbench`（LLM 推理）也无关。
+
+## 工程实践
+
+- **State replay 降存储开销：** 先保存轻量 `action–state` 轨迹，在目标传感器设定下重放物理状态再生 RGB/深度/点云，方便切换相机预设与视觉 DR。
+- **跨具身插拔校验：** 切换机械臂 × 灵巧手配置前，需对齐关节命名映射与驱动力矩上限，避免 IK 重定向轨迹在边缘自由度饱和。
 
 ## 关联页面
 

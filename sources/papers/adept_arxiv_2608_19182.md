@@ -15,6 +15,9 @@
 - **入库日期：** 2026-08-21
 - **索引来源：** [具身智能小站 8 篇综述](../blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)（<https://mp.weixin.qq.com/s/30hu9SRxbRNXJcGLnNwl_g>）
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2608.19182` PDF 提取全文（`2608.19182.pdf`，2,751,881 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 相关资料（策展）
 
 | 类型 | 链接 | 说明 |

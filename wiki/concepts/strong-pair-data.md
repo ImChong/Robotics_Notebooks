@@ -3,6 +3,8 @@ type: concept
 tags: [human-robot-transfer, egocentric-video, data-curation, cross-embodiment, psibot, manipulation]
 status: complete
 updated: 2026-09-23
+original:
+  - ../../sources/blogs/psibot_scaling_pair_data_embodied_intelligence_zh.md
 summary: "强 pair data（strong pair data）指人类与机器人演示在场景、逐帧时序与可 replay 动作上严格对齐的成对样本；相对仅任务语义一致的弱 pair，可把 human dynamic 拉入 robot domain，支撑预训练对齐与 ICL 上下文。"
 related:
   - ../overview/hub-contact-force-control.md

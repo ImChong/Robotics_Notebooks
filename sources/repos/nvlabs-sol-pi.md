@@ -12,6 +12,9 @@
 - **一句话说明：** Pi（`@earendil-works/pi-coding-agent`）上的独立效率扩展包：四条 opt-in 机制（Action Fusion、ObservationPack、Evidence-Preserving Reducer、Online Context Compact），不改 Pi 源码、默认全关。
 - **沉淀到 wiki：** 是 → [`wiki/entities/sol-pi.md`](../../wiki/entities/sol-pi.md)
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `NVlabs/SoL-Pi` 官方仓库 README（12,267 字符）及 `nvlabs.github.io/SoL-Pi/` 项目页与四项核心扩展目录结构。
+
 ## 开源状态（步骤 2.5）
 
 - **代码：** 完整 TypeScript 扩展于 `src/sol-pi/extensions/*`；`docs/configuration.md`、`docs/compatibility.md`。

@@ -1,5 +1,8 @@
 # LAC-WM 论文来源归档
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2610.10846` PDF 提取全文（`2610.10846.txt`，70,358 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 元数据
 
 - **题目：** Cross-Embodiment Robot Foundation World Models with Latent Actions

@@ -11,6 +11,8 @@ tags:
   - isaac-lab
 status: complete
 updated: 2026-09-17
+original:
+  - ../../sources/papers/recmorph_arxiv_2609_18359.md
 arxiv: "2609.18359"
 related:
   - ../queries/cross-embodiment-transfer-strategy.md

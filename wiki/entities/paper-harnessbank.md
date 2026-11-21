@@ -3,6 +3,8 @@ type: entity
 tags: [paper, llm-agents, agent-harness, self-evolution, quality-diversity, prompt-optimization, evermind, shanda]
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/harnessbank_arxiv_2607_13683.md
 arxiv: "2607.13683"
 related:
   - ./paper-skillcorpus.md

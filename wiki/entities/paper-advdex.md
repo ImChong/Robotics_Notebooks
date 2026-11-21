@@ -14,6 +14,8 @@ tags:
   - paxini
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/advdex_arxiv_2608_14028.md
 arxiv: "2608.14028"
 related:
   - ../methods/uhas-unified-hand-action-space.md

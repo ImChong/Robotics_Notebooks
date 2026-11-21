@@ -13,6 +13,9 @@
 - **代码：** <https://github.com/omarrayyann/fetchman>（占位仓；README：**Code will be added by September 1**）
 - **一句话说明：** 在 MolmoSpaces 上生成 15 万场景脚本演示 → DINOv3+DiT BC → Flow-GRPO 稀疏奖励 refinement → Unitree G1 零样本 loco-manip。
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2608.17027` PDF 提取全文（`2608.17027.pdf`，28,025,408 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 开源状态（步骤 2.5）
 
 - **项目页（2026-08-25 再核）：** 页头 **Data & Code** → [omarrayyann/fetchman](https://github.com/omarrayyann/fetchman)；含摘要、架构、消融视频与 BibTeX。

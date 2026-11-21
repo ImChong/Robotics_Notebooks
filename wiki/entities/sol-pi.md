@@ -11,6 +11,9 @@ tags:
   - open-source
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/repos/nvlabs-sol-pi.md
+  - ../../sources/sites/sol-pi-nvlabs.md
 related:
   - ./karpathy-autoresearch.md
   - ./paper-harnessbank.md

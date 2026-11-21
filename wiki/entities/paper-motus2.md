@@ -17,6 +17,8 @@ tags:
   - bit
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/motus2_arxiv_2608_30237.md
 arxiv: "2608.30237"
 related:
   - ./paper-gwm-first-principles.md
@@ -80,8 +82,7 @@ summary: "Motus2（arXiv:2608.30237v2）：单一共享 video–action 模型暴
 | 机端数据 | mid-training **>100 h** 机器人轨迹 + 人对齐 |
 | 开源状态（2026-10-05） | **官方仓已公开，代码/权重未核实发布** — 仓库 README 显示路线图，所有发布项未勾选；HF 为团队模型主页 |
 
-## 方法与核心结构
-
+## 核心原理
 | 模块 | 作用 |
 |------|------|
 | **Policy（WAM）** | 从语言、本体感觉与视觉工作记忆提出 **action chunk** |
@@ -214,8 +215,7 @@ sequenceDiagram
 4. **触觉 +12.5 pt** — 接触丰富任务上轻量 expert 值得跟；与 [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) 的「原生触觉 WAM」路线互补。
 5. **工程边界：未开源** — 可引方法与 demo，不可当可复现基线；与 [FACT](./paper-fact.md)（失败感知因果训练 + 已开源）作失败数据利用对照。
 
-## 与其他页面的关系
-
+## 关联页面
 | 关系 | 页面 |
 |------|------|
 | 范式前作 | [Motus（索引）](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) |

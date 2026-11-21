@@ -14,6 +14,9 @@
 - **一句话说明：** 用物理一致的随机形态扩展训练分布，并以语义关节映射与本体图网络对齐异构人形，检验不更新权重的跨人形控制边界。
 - **策展入口：** [HMI 论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) · [逐篇解读 P037](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P037.md)
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 XHugWBC `arXiv:2602.05791v3` 全文（72,001 字符），核对 7 种跨人形具身零样本迁移实验与形态/动力学分布随机化方法。
+
 ## 开源状态（步骤 2.5）
 
 - **结论：** 截至入库日未见稳定公开训练仓（以项目/论文页再核）

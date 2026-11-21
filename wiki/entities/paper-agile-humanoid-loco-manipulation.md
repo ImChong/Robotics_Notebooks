@@ -14,6 +14,8 @@ tags:
 - loco-manip-161-survey
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/agile_arxiv_2603_20147.md
 arxiv: '2603.20147'
 code: https://github.com/nvidia-isaac/WBC-AGILE
 related:

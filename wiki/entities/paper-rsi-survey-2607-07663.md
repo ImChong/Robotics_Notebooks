@@ -3,6 +3,8 @@ type: entity
 tags: [paper, survey, recursive-self-improvement, llm-agents, ai-auto-research, self-evaluation, governance, literature-review]
 status: complete
 updated: 2026-11-11
+original:
+  - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
 arxiv: "2607.07663"
 code: https://github.com/deepgrounding/recursive-self-improvement
 related:

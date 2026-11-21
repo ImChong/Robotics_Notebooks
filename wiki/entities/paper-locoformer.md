@@ -9,6 +9,8 @@ tags:
   - skild-ai
 status: complete
 updated: 2026-11-15
+original:
+  - ../../sources/papers/locoformer_corl_2025.md
 arxiv: "2509.23745"
 related:
   - ./skild-ai.md
@@ -108,6 +110,14 @@ flowchart TD
 1. 开源：官方项目页未见资产入口；勿凭博客引用臆断可复现性。
 2. 与 [Light REACT](./light-react.md) / [LightNav-0](./paper-lightnav-0.md) / [Light-Loco-Parkour](./paper-light-loco-parkour.md) 按能力轴交叉阅读。
 3. 定量指标以原文 PDF 为准；本页为博客 ingest 级摘要。
+
+## 工程实践
+
+- **程序化形态生成器 + 长跨度上下文记忆：** 在训练阶段用大量随机拓扑、连杆尺度、质量分布与执行器损坏程序化生成机器人体并施加剧烈 DR，采用跨 episode 保留记忆的 Transformer-XL 骨干，使真机遇到锁膝、轮卡死或突加负载时可在数次试错内自发适应。
+
+## 常见误区或局限
+
+- **初始探索试错风险：** 跨 episode 自适应依赖先出现最初几次次优试探轨迹以积累隐式辨识上下文；安全敏感任务上首个试错周期仍需保护护栏或低增益启动。
 
 ## 关联页面
 

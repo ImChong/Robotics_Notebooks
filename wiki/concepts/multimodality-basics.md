@@ -8,6 +8,8 @@ tags:
   - foundation-model
 status: complete
 updated: 2026-11-07
+original:
+  - ../../sources/papers/clip_arxiv_2103_00020.md
 summary: "多模态学习联合建模图像、文本、音频等异质信号，核心是对齐共享语义空间并支持跨模态检索、生成与推理；是 VLM/VLA 的概念地基。"
 related:
   - ./vision-language-feature-fusion.md

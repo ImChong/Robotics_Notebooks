@@ -8,6 +8,9 @@ tags:
   - deep-learning
 status: complete
 updated: 2026-09-21
+original:
+  - ../../sources/papers/gu_mamba_arxiv_2312_00752.md
+  - ../../sources/papers/gu_s4_arxiv_2111_00396.md
 summary: "状态空间模型用隐状态递推刻画序列动力学；Mamba 等选择性 SSM 在保持近线性复杂度的同时获得强长程建模，成为 Transformer 的重要替代路线。"
 related:
   - ../comparisons/rnn-cnn-transformer-mamba.md
