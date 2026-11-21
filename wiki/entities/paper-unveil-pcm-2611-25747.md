@@ -16,6 +16,8 @@ related:
   - ./paper-sam3.md
   - ./paper-dart-sam3-realtime.md
   - ../concepts/image-segmentation-taxonomy.md
+  - ../methods/fcn-semantic-segmentation.md
+  - ../methods/object-detection.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
 summary: "UNVEIL（arXiv:2611.25747，A*STAR CFAR 与南开大学）微调 SAM 3 的语义路径，将短语映射成阴影、透明物体、镜面、显著/伪装目标、边缘、骨架等像素概念图；独立 presence decoder 输出存在/none。PCM-Bench 七任务均值 90.5，作者代码及附加权重已开放。"
 ---
@@ -203,6 +205,8 @@ UNVEIL 七任务对应报告分数：shadow **98.2**、transparent object **95.6
 - [SAM 3：Segment Anything with Concepts](./paper-sam3.md) — UNVEIL 所依赖、且保持原生分支的基础模型。
 - [DART：SAM 3 实时多类检测](./paper-dart-sam3-realtime.md) — 同基座、不同目标（检测吞吐而非多类型概念图）。
 - [图像分割任务分类](../concepts/image-segmentation-taxonomy.md) — 区别语义、实例与结构/光学概念图。
+- [FCN 语义分割](../methods/fcn-semantic-segmentation.md) — 对照固定类别像素监督与短语条件的概念图，澄清二者任务差异。
+- [目标检测方法](../methods/object-detection.md) — 对照 bbox/存在置信度与 UNVEIL 的像素空间语义图、独立 presence 判别。
 - [GO2 3D 语义建图方案](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 机器人侧深度融合与建图接口；UNVEIL 并非已集成。
 
 ## 参考来源
