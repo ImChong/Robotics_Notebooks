@@ -2,7 +2,9 @@
 type: entity
 tags: [paper, humanoid, reinforcement-learning, unsupervised-rl, bfm, behavior-foundation-model, motion-tracking, contrastive-learning, temporal-distance, whole-body-control, unitree-g1, roboparty, mjlab]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-21
+original:
+  - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
 venue: "2026 · RoboParty Lab"
 code: https://github.com/Roboparty/UFO
 summary: "TeCH：RoboParty Lab 基于 TLDR 对比时间距离表征的无监督人形全身控制；隐空间密集进度奖励 + off-policy 训练，零样本跟踪/目标到达；G1 上跟踪精度对标 SONIC(TER.) 且 GPU 小时降近两个数量级，真机抗扰与跌倒恢复优于监督跟踪基线。"
@@ -29,6 +31,10 @@ sources:
 **TeCH**（*Temporal Distance modeling via Contrastive representation learning for Humanoid whole-body Control*，[RoboParty Lab 成果页](https://lab.roboparty.com/outputs/tech)）提出一种 **基于 TLDR 对比时间距离表征** 的无监督人形全身控制框架：在隐空间中建模时间可达性，用 **距离变化构造密集进度奖励**，以 off-policy 方式学习可 prompt 的统一策略，并 **零样本** 支持运动跟踪与离散目标到达。
 
 > **工程落点：** 方法已集成于 [UFO](./roboparty-ufo.md)（MJLab backend）；与 [BFM-Zero](./paper-bfm-zero.md) 的 FB 表征形成 **同框架不同表征** 的对照线。
+
+## 一句话定义
+
+TeCH 是 RoboParty Lab 把 TLDR 时间距离表征用于人形无监督控制的方法：通过学习隐空间的时间可达性与进度奖励，训练一个能零样本跟踪运动轨迹并到达目标姿态的策略。
 
 ## 英文缩写速查
 
@@ -96,6 +102,12 @@ flowchart TB
 | **轨迹跟踪** | 前瞻窗口加权聚合 $\phi(s_{t'})$ | 比 FB 更紧的逐步跟踪行为 |
 
 > TeCH **不提供** FB 式统一值函数奖励优化接口；优势在 **时间可达性显式编码** 带来的跟踪紧致性。
+
+## 工程实践
+
+- **公开运行入口：** [UFO](https://github.com/Roboparty/UFO) 的 README 分别给出 `./run_train.sh --robot g1 --agent tech --gpu-ids all`、`./run_inference.sh tracking` 与 `./run_inference.sh goal`。训练与推理时须使用相同机器人的数据、配置与 checkpoint；这些是官方入口，**不是本次实际运行结果**。
+- **评测边界：** RoboParty Lab 成果页报告的 29-DoF G1 / IsaacLab 实验与 UFO 当前 README 的多机型 mjlab 工程框架属于不同呈现口径，不可直接将网页实验指标套用于任意版本的公开权重。UFO README 明确提示 **RP1 TeCH 策略尚未进行真机测试**。
+- **原文范围：** 已通读[Lab TeCH 成果页](https://lab.roboparty.com/outputs/tech)的正文、实验、消融、结论与参考文献；未将无法获取的独立 PDF 声称为已通读，见[来源归档](../../sources/sites/roboparty_lab_tech_humanoid_control.md)。
 
 ## 实验与评测
 
