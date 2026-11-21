@@ -202,6 +202,8 @@ UNVEIL 七任务对应报告分数：shadow **98.2**、transparent object **95.6
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — UNVEIL 的二维提示式概念图位于检测/分割层；若用于机器人语义建图，仍需深度融合、时序一致性和真实任务验证，不能直接视为已完成 3D 感知闭环。
+
 - [SAM 3：Segment Anything with Concepts](./paper-sam3.md) — UNVEIL 所依赖、且保持原生分支的基础模型。
 - [DART：SAM 3 实时多类检测](./paper-dart-sam3-realtime.md) — 同基座、不同目标（检测吞吐而非多类型概念图）。
 - [图像分割任务分类](../concepts/image-segmentation-taxonomy.md) — 区别语义、实例与结构/光学概念图。
