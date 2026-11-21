@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | Issue #3490 Batch 3 纵深节点健康度推进：全文通读与官方仓库/项目页核查 13 篇（PackLab/LIBERO-VPro/Uranus/ManiSkill-HAB/Mimicking-Bench/Barkour/Physics-Consistent HRC/Real2Sim 2511.04665/2508.11117/WM Eval 2606.15032/Motion Difficulty 2512.07248/TrackerLab/humanoid-policy-reward-functions），补齐源码运行时序图、实验结论与 original 归档，depth-embodied-eval.md 提升至 63/67 3/3
+
 ## [2026-11-21] ingest | TimesFM 3.0 官方零样本时序预测基础模型
 
 - 原文：Google Research 2026-08-31 技术博客、google-research/timesfm 官方源码、Connected Sheets + BigQuery ML 官方帮助。
