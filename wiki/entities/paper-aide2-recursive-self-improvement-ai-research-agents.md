@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, recursive-self-improvement, ai-auto-research, agents, harness, benchmark, weco-ai]
+tags: [paper, recursive-self-improvement, ai-auto-research, agents, harness, meta-optimization, weco-ai]
 status: complete
 updated: 2026-11-21
 project_id: aide2-recursive-self-improvement-ai-research-agents
