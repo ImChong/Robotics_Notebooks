@@ -17,6 +17,8 @@ sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/mit_mini_cheetah_control_papers.md
   - ../../sources/personal/mit_mini_cheetah_learning_stack_curator.md
+original:
+  - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
 # SRBD + 凸 MPC + WBC

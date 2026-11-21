@@ -9,7 +9,7 @@ tags:
   - vla
   - deep-learning
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./vision-backbones.md
@@ -25,6 +25,8 @@ related:
 sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
+original:
+  - ../../sources/papers/resnet_arxiv_1512_03385.md
 summary: "视觉表征作为策略输入有三条路径：端到端联合训练、冻结预训练骨干、机器人专用预训练表征（R3M/VC-1/DINOv2）；按数据量、样本效率与域差距在三者间取舍。"
 ---
 
@@ -51,7 +53,9 @@ summary: "视觉表征作为策略输入有三条路径：端到端联合训练�
 - **域差距（domain gap）**：仿真渲染与真机相机的像素分布差异，常比策略本身更致命；强通用表征对光照/纹理变化更鲁棒（参见 [sim2real](./sim2real.md)）。
 - **解耦感知与控制**：冻结骨干让感知层可独立迭代、复用，与 [基础策略](./foundation-policy.md) 的「预训练 → 下游微调」范式一致。
 
-## 三条路径与取舍
+## 核心机制与三条路径
+
+### 三条路径与取舍
 
 | 路径 | 表征来源 | 样本效率 | 泛化 | 典型风险 |
 |------|----------|----------|------|----------|
@@ -81,6 +85,11 @@ flowchart TB
 ## 与视觉骨干、检测头的衔接
 
 视觉骨干输出的特征有两种下游接法：一是经 **检测/分割头**（见 [目标检测](../methods/object-detection.md)）得到结构化的物体/位姿，再喂给策略；二是把骨干 **特征图/CLS token 直接** 当作策略输入。前者可解释、便于安全约束，后者保留更多信息、契合端到端 [VLA](../methods/vla.md)。骨干族（CNN vs ViT）的选择见 [CNN vs ViT 视觉骨干对比](../comparisons/cnn-vs-vit-backbones.md)。
+
+## 工程实践
+
+- **冻结强预训练骨干 + 轻量空间压缩层起步：** 用 Spatial Softmax、交叉注意力或轻量适配器把冻结特征投影到动作头维度，先跑通闭环控制再决定是否解冻微调。
+- **把视角一致性与手眼时序齐备作为前置检查：** 确认图像时间戳、相机畸变参数与腕/头多视角同步误差在阈值内，再做表征骨干对比消融。
 
 ## 常见误区或局限
 

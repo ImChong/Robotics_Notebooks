@@ -10,6 +10,8 @@
 - **代码/项目：** N/A
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
+- **通读：** 已完成
+- **核对范围：** 已下载并通读 `arXiv:2504.21738v1` PDF（Abstract、§I、§III 教师 RL + CVAE 学生端到端蒸馏、§IV.G LLM 分解与 Table IV 域随机化、§V-§VI 局限与结论）
 - **一句话说明：** 语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。
 
 ## 核心摘录（策展，非全文）

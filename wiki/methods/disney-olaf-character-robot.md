@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, rl, imitation, entertainment-robotics, reward-shaping, thermal, sim2real, isaac-sim]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-21
 related:
   - ../concepts/reward-design.md
   - ../tasks/locomotion.md
@@ -18,12 +18,16 @@ related:
 sources:
   - ../../sources/papers/disney_olaf_character_robot.md
   - ../../sources/sites/disney-research-la.md
+original:
+  - ../../sources/papers/disney_olaf_character_robot.md
 summary: "Disney Research 将动画角色 Olaf 做成实机：非对称腿+泡沫裙隐藏机构、动画参考驱动的 PPO 策略，并把执行器温度与落地噪声显式写进观测与奖励（含 CBF 风格约束项）。"
 ---
 
 # Disney Olaf 角色机器人（实机动画角色）
 
-**一句话定义：** 面向「高角色保真 + 紧凑机电包络」的娱乐型双足平台：用**动画参考 + RL** 解决非物理比例与风格化步态，用**机构设计**解决「看不见腿」与**热/声学**等实演约束。
+## 一句话定义
+
+面向「高角色保真 + 紧凑机电包络」的娱乐型双足平台：用**动画参考 + RL** 解决非物理比例与风格化步态，用**机构设计**解决「看不见腿」与**热/声学**等实演约束。
 
 ## 英文缩写速查
 
@@ -93,13 +97,18 @@ flowchart LR
   SHOW[Show PD 与映射] --> FACE[眼颌臂]
 ```
 
+## 工程实践
+
+- **把热学与声学约束写进 MDP 观测与 CBF 奖励：** 先在实机台架上最小二乘标定执行器 Joule 热动力学参数（$\dot{T}=-\alpha(T-T_\mathrm{ambient})+\beta\tau^2$），再将截断温度输入观测并叠加 CBF 约束奖励与饱和垂向触地降噪项。
+- **主干动力学 RL 与表演自由度 PD 解耦：** 对 50 Hz RL 主干输出做一阶保持上采样至 600 Hz 并加 37.5 Hz 低通后发给电机，同时把眼、眉、颌等低惯量表情链拆给经典前馈 + PD 追踪以隔离耦合。
+
 ## 常见误区或局限
 
 - **「像动画」≠ 物理最优：** 风格化步态与heel-toe 等艺术选择会增大力与声学挑战，需要额外项而不是单靠模仿权重硬扛。
 - **热与 costume 强耦合：** 温度模型与 clip 区间依赖实机数据与保守阈值，换角色外形或环境对流条件需重标定。
 - **分层边界要维护：** show 自由度若与躯干动力学强耦合，「全 RL」与「全经典」的拆分不再成立；本文假设 show 惯量可忽略。
 
-## 与其他页面的关系
+## 关联页面
 
 - 奖励工程中模仿、正则与**安全/约束奖励**的配比，见 [Reward Design](../concepts/reward-design.md)。
 - CBF 在奖励里作为「软约束惩罚」的写法，可与 [Control Barrier Function](../concepts/control-barrier-function.md) 的形式化定义对照。

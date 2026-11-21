@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, reinforcement-learning, unsupervised-rl, bfm, behavior-foundation-model, motion-tracking, contrastive-learning, temporal-distance, whole-body-control, unitree-g1, roboparty, mjlab]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-21
 venue: "2026 · RoboParty Lab"
 code: https://github.com/Roboparty/UFO
 summary: "TeCH：RoboParty Lab 基于 TLDR 对比时间距离表征的无监督人形全身控制；隐空间密集进度奖励 + off-policy 训练，零样本跟踪/目标到达；G1 上跟踪精度对标 SONIC(TER.) 且 GPU 小时降近两个数量级，真机抗扰与跌倒恢复优于监督跟踪基线。"
@@ -22,9 +22,16 @@ sources:
   - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
   - ../../sources/repos/roboparty_ufo.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
+original:
+  - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
+  - ../../sources/repos/roboparty_ufo.md
 ---
 
 # TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制
+
+## 一句话定义
+
+**TeCH 用基于 TLDR 的对比时间距离表征替代 Forward–Backward（FB）值分解来构造密集隐空间进度奖励，并在 off-policy 无监督训练中叠加风格判别与非对称特权正则，以单卡级算力开销获得紧致跟踪、不连续目标到达与真机跌倒自主起身能力。**
 
 **TeCH**（*Temporal Distance modeling via Contrastive representation learning for Humanoid whole-body Control*，[RoboParty Lab 成果页](https://lab.roboparty.com/outputs/tech)）提出一种 **基于 TLDR 对比时间距离表征** 的无监督人形全身控制框架：在隐空间中建模时间可达性，用 **距离变化构造密集进度奖励**，以 off-policy 方式学习可 prompt 的统一策略，并 **零样本** 支持运动跟踪与离散目标到达。
 
@@ -156,6 +163,11 @@ flowchart TB
 | **[Teacher-Student 多技能 BFM](../methods/teacher-student-multi-skill-bfm.md)** | 特权教师蒸馏多技能 | 另一条 BFM 工程路径；TeCH 走 **无监督表征**，无需多任务特权教师 |
 
 > 跨论文比较须注明条件：SONIC 用 128 GPU 与更大数据，硬件与 early-termination 设定不同，直接比 wall-clock 不严谨。
+
+## 工程实践
+
+- **按论文消融固定默认训练配比：** 主实验中将隐维度设为 $D=256$、编码器学习率设为 `8e-7`，在线隐目标刷新间隔 `update-z-every=10` 步，可在收敛速度与动作分布匹配（EMD）之间取得最佳平衡。
+- **直接借用 `Roboparty/UFO` 的统一训练与推理入口：** 用 `run_train.sh --robot g1 --agent tech` 启动训练，并在部署阶段严格核对 G1/RP1 各自专属的 LaFAN 数据包（README 明示 RP1 TeCH 尚未经实机测试）。
 
 ## 局限与风险
 

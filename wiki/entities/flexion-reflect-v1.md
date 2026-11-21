@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, loco-manipulation, vla, vlm, reinforcement-learning, whole-body-control, long-horizon, semantic-mapping, runtime, flexion]
 status: complete
-updated: 2026-07-20
+updated: 2026-11-21
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./flexion-niantic-nvidia-rgb-sim2real-pipeline.md
@@ -17,6 +17,8 @@ related:
   - ./current-robotics-curr0.md
 sources:
   - ../../sources/blogs/flexion_reflect_v1_0.md
+  - ../../sources/blogs/flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md
+original:
   - ../../sources/blogs/flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md
 summary: "Flexion Reflect v1.0（2026-06）是人形长程自主智能平台：Reflect-VLM 任务级 tool 推理 + VLA/RL 运动层 + Reflex 全身控制 + FlexComm 运行时与 3DGS 全栈仿真；单条 NL 指令跨楼层取件—乘梯—开箱—上架全程无人工介入，16 步 mission 评测 SFT+RL 90% 完成率。"
 ---
@@ -137,6 +139,11 @@ flowchart TB
 ### 与 Niantic × NVIDIA RGB 导航管线（2026-07）
 
 [Flexion × Niantic Spatial × NVIDIA RGB Sim2Real 管线](./flexion-niantic-nvidia-rgb-sim2real-pipeline.md) 把 Reflect 栈中的 **3DGS 仿真理念** 落到可复制的 **部署现场数字孪生**：360° 扫描 → NuRec USDZ → Isaac Lab **纯 RGB 局部导航 RL** → **零样本真机**。联合文将 **全任务仿真评测**（导航 + 交互 + 规划 + 恢复）列为下一步，与 Reflect v1.0 长程自主方向直接衔接。
+
+## 工程实践
+
+- **长程任务拆分为 Mission VLM + RL 技能库 + 实时 WBC 三层闭环：** 让高层专注于语义地图查询、工具调度与视觉进度确认，避免用 VLM 直接输出高频率平衡控制量。
+- **上线前跑通 3DGS 数字孪生全栈预演：** 参照 Niantic × NVIDIA 联合实践，使用现场扫描重建（NuRec USDZ / 3DGS）配合 FlexComm 全链路追踪先验证长程恢复逻辑再部署真机。
 
 ## 常见误区或局限
 

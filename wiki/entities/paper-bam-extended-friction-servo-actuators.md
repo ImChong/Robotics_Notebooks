@@ -13,7 +13,7 @@ tags:
 - google
 - repo
 status: complete
-updated: 2026-11-06
+updated: 2026-11-21
 arxiv: '2410.08650'
 venue: ICRA 2025
 code: https://github.com/Rhoban/bam
@@ -32,6 +32,8 @@ sources:
 - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
 - ../../sources/repos/rhoban_bam.md
 - ../../sources/sites/bam-readthedocs.md
+original:
+- ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
 summary: ICRA 2025：为舵机提出 M1–M6 可辨识扩展摩擦上界模型，摆锤 CMA-ES 标定后在 MuJoCo 2R 臂上相对 Coulomb–Viscous 将轨迹 MAE 降至约一半，面向 RL 低增益下的执行器 sim2real。
 project_id: bam-extended-friction-servo-actuators
 ---
@@ -39,6 +41,10 @@ project_id: bam-extended-friction-servo-actuators
 # 扩展摩擦模型：舵机物理仿真（BAM 论文）
 
 **Extended Friction Models for the Physics Simulation of Servo Actuators**（arXiv [2410.08650](https://arxiv.org/abs/2410.08650v1)，ICRA 2025）针对 **MuJoCo / Isaac Gym 等默认 Coulomb–Viscous 摩擦** 在舵机减速箱上失真的问题，给出 **M1–M6 递进解析模型**、**摆锤台架辨识流程** 与 **物理引擎在线更新摩擦参数** 的方法，并在 **Dynamixel MX-64/106** 与 **eRob80 谐波减速** 上验证。
+
+## 一句话定义
+
+**BAM 将舵机减速箱内随负载、速度和驱动/反驱方向剧烈变化的复杂摩擦抽象为 M1–M6 解析上界模型，通过摆锤台架 CMA-ES 辨识并在仿真每步动态注入物理引擎，从而在 RL 常见的低增益设置下显著压缩执行器 Sim2Real 轨迹误差。**
 
 ## 英文缩写速查
 
@@ -142,6 +148,11 @@ flowchart TB
 2. **「只调仿真器默认 frictionloss 就够」：** 论文强调需 **负载与 Stribeck 的动态上界**，静态两参数不够。
 3. **「仅适用于 Dynamixel」：** eRob 谐波减速需 **M6 二次项**；减速比与传动类型决定模型阶数。
 4. **忽略控制律：** 摩擦与 **PID + 电压/电流限幅** 耦合；辨识同时估计 $k_t,R,J_m$。
+
+## 工程实践
+
+- **从摆锤全激励采集到 2R/多轴交叉验证：** 采集涵盖高低 $K_p$ 与 `sin_time_square`、`lift_and_drop` 等正反向轨迹的样本，并用 CMA-ES 拟合，再在独立 2R 验证集比对不同模型阶数（Dynamixel 优选 M4，eRob 谐波优选 M6）以防过拟合。
+- **在物理引擎步进前实时裁剪上界摩擦：** 仿真的每一步需用上一时刻外载估算 $\tau_e$ 刷新静态/粘滞摩擦边界，并用停滞力矩 $\tau_{f,stop}$ 做对称 `clip`，避免零速附近的数值震荡。
 
 ## 局限（作者自述）
 

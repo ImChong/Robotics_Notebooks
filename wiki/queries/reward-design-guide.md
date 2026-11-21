@@ -6,6 +6,8 @@ summary: "Reward Design 实战指南"
 updated: 2026-08-28
 sources:
   - ../../sources/papers/reward_design.md
+original:
+  - ../../sources/papers/reward_design.md
 ---
 
 # Reward Design 实战指南

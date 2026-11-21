@@ -3,8 +3,10 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bigai, sdu, tsinghua]
 status: complete
-updated: 2026-10-14
-venue: curated
+updated: 2026-11-21
+arxiv: "2511.18509"
+original: ../../sources/papers/humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md
+venue: "arXiv:2511.18509 / curated"
 summary: "SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -81,16 +83,22 @@ SafeFall 不是让机器人永远不摔，而是在检测到跌倒不可避免�
 - 主要取舍在于柔顺/恢复策略要在 **接触丰富** 与 **长期稳定** 之间折中，不能只看单帧姿态。
 - 本页是策展编译级归纳；量化 benchmark、消融与实机指标以原文 PDF / 项目页为准。
 
-## 常见误区
+## 工程实践
+
+- **观测与动作接口（来自 arXiv:2511.18509v1 § III.A）**：仅使用板载 IMU 与关节编码器，不依赖外部动捕或全局 root 位置/速度；策略输出 `R^29` PD 目标关节角，运行于正常控制器旁路，预测器未触发时保持休眠（零正常步态性能退化）。
+- **两阶段训练与诱导跌倒域随机化**：覆盖观察噪声 `2-10×` 放大、随机 `[0, 200] ms` 延迟、关节刚度/阻尼 `[0.2, 3]×` 及 `0.1 m` 质心偏移，在跌倒不可挽回窗口内延长触地缓冲时间并把冲击载荷分散到非易损部件。
+
+## 常见误区或局限
 
 1. 柔顺/恢复策略要在 **接触丰富** 与 **长期稳定** 间折中，不能只看单帧姿态。
+2. 保护策略激活后以 **保硬件** 为第一目标，主动放弃继续维持原行走轨迹，依赖外层状态机完成倒后停机或复位。
 
 ## 实验与评测
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+- **实机验证平台与指标（Unitree G1，arXiv:2511.18509v1）**：对比无保护跌倒与阻尼模式，GRU 跌倒预测器达到 **0.06%** 误报率（FAR）；RL 保护策略使 **峰值接触力下降 68.3%**、**关节力矩下降 78.4%**、**关节反作用力下降 66.8%**，并消除了 **99.3%** 对头部传感器与灵巧手等易损件的碰撞。
+- 涵盖前向踏空、后仰跌倒、**3 m/s 奔跑绳绊** 与侧向推扰等全向极端场景（详见 [arXiv:2511.18509](https://arxiv.org/abs/2511.18509) 与 [SafeFall 项目页](https://safefall.github.io)）。
 
-## 与其他页面的关系
+## 关联页面
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)

@@ -2,7 +2,7 @@
 type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, control]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-21
 related:
   - ../entities/allegro-hand.md
   - ../entities/shadow-hand.md
@@ -25,12 +25,20 @@ sources:
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/papers/wm_craftnet_arxiv_2609_07002.md
   - ../../sources/papers/artmanip_arxiv_2609_12498.md
+original:
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/uhas_arxiv_2607_03570.md
+  - ../../sources/papers/teledexter_arxiv_2607_11481.md
 summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在不借助于外部环境（如桌面）的前提下，通过手指间的协同动作改变掌心中物体位姿的技术。"
 ---
 
 # In-hand Reorientation (手内重定向)
 
-**手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro Hand 或 Shadow Hand）在不松开物体、且不利用桌面等外部支撑的情况下，仅依靠手指间的动态协作，将物体从初始姿态调整到预期的目标姿态。
+## 一句话定义
+
+**手内重定向（In-hand Reorientation）是指多指灵巧手在不释放物体、不依赖桌面等外在支撑面的条件下，仅通过手指间高频交替支撑–滑移–重抓将物体从当前位姿连续调整到目标 6-DoF/绕轴位姿的精细操作技能。**
+
+**任务背景：** 这是灵巧操作（Dexterous Manipulation）中最核心也最具接触切换挑战的任务之一。
 
 ## 英文缩写速查
 
@@ -40,13 +48,20 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 
+## 为什么重要
+
+- **是工具使用与长程装配的前置技能：** 拧螺丝、拿取换向与在狭小空间内对齐插销前，往往先要靠指间微调解决抓取角度偏差。
+- **是检验 RL、触觉反馈与跨本体动作空间的试金石：** 因为高频多指自遮挡与离散接触切换，UHAS 跨手动作空间、TeleDexter 共跟踪与 ADEPT 预训练微调均将其作核心基准。
+
 ## 核心挑战
 
 1. **频繁的接触切换 (Hybrid Dynamics)**：为了让物体旋转，手指必须交替进行“支撑-滑动-抬起-再接触”的循环，系统动力学具有极强的离散非线性。
 2. **感知遮挡 (Perception Occlusion)**：在手内旋转时，手指会频繁遮挡物体，导致基于视觉的位姿估计失效。
 3. **欠驱动与滑移**：由于接触点面积有限，物体极易发生意外滑脱（Slip），需要极高频的力反馈调节。
 
-## 主要方法路线
+## 主要技术路线
+
+## 核心原理
 
 ### 1. 强化学习 (Deep RL)
 目前最成功的手内重定向成果多来自于无模型强化学习（Model-free RL）。
@@ -68,6 +83,16 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - **关联**：[触觉感知 (Tactile Sensing)](../concepts/tactile-sensing.md)。
 - **外在灵巧对照**：[TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) 在欠驱动多指手上用 **腕部重定位 + regrasp**（而非纯指间 gait）把当前触觉图伺服到目标触觉图——与「不借外力的手内重定向」形成互补路径。
 - **硬件 + 遥操作实例**：[VTAP Gripper](../entities/paper-vtap-gripper.md) 用三指协同演示球体重定向（约 \(\pm 15^\circ/\pm 20^\circ\)）与注射器手内对齐；主动掌参与柱塞按压等接触重分配（arXiv:2607.15448）。
+
+## 工程实践
+
+- **优先用大范围域随机化与物体形态多样化防止记忆单物体动力学：** 真机指尖摩擦和质量分布极易偏离 CAD 默认值，仿真阶段需随机化摩擦、质量与关节阻尼并用本体+历史或触觉对齐状态估计。
+- **按可用硬件选纯指间 vs 借力外在灵巧：** 高自由度刚性/触觉手可走 PPO/UHAS 纯手内旋转；欠驱动多指手应结合腕部运动与外在接触重抓（参考 TacRefineNet）。
+
+## 常见误区或局限
+
+- **视觉遮挡与多指穿模：** 在真机高速手指交替阶段纯视觉位姿估计极易丢帧或漂移，往往需要视触觉融合或腕部传感器互补。
+- **高维动作空间的真机寿命与样本成本：** 从零纯 RL 在真机直接训练容易加速腱绳磨损与掉物，通常必须借助大规模并行仿真或遥操作预训练初始化。
 
 ## 典型应用场景
 
@@ -96,3 +121,8 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 - [sources/papers/tacrefinenet_arxiv_2509_25746.md](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — TacRefineNet 外在灵巧 regrasp
 - [sources/papers/teledexter_arxiv_2607_11481.md](../../sources/papers/teledexter_arxiv_2607_11481.md) — TeleDexter co-tracking 手内重定向
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 手内重定向与 singulation
+
+## 推荐继续阅读
+
+- [UHAS（统一手部动作空间）](./uhas-unified-hand-action-space.md)
+- [Tactile Impedance Control](./tactile-impedance-control.md)

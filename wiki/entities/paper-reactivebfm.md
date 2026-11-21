@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, behavior-foundation-model, closed-loop, motion-planning, diffusion, text-conditioned, exposure-bias, curriculum-learning, unitree-g1, cuhk, shanghai-ai-lab, sim2real, asynchronous-control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2606.30362"
-venue: "arXiv 2026"
+venue: "CoRL 2026 (arXiv:2606.30362v3)"
+code: https://github.com/zjwzcx/ReactiveBFM
 related:
   - ../concepts/behavior-foundation-model.md
   - ../concepts/whole-body-control.md
@@ -18,10 +19,16 @@ related:
   - ./amass.md
 sources:
   - ../../sources/papers/reactivebfm_arxiv_2606_30362.md
-summary: "ReactiveBFM（arXiv:2606.30362）把 BFM 类 universal tracker 与自回归运动扩散规划器闭合成实时规划–控制框架：scheduled prefix sampling 缓解 exposure bias，异步重规划 + trajectory chunking 对齐 50 Hz 跟踪；Unitree G1 真机实现文本条件全身运动、流式指令切换与零样本移动目标到达，扰动下 sim-to-sim 成功率 93.1%。"
+original:
+  - ../../sources/papers/reactivebfm_arxiv_2606_30362.md
+summary: "ReactiveBFM（CoRL 2026，arXiv:2606.30362v3）：把 BFM 类 universal tracker 与自回归运动扩散规划器闭合成实时规划–控制框架；scheduled prefix sampling 缓解 exposure bias，异步重规划 + trajectory chunking 对齐 50 Hz 跟踪；Unitree G1 真机实现文本条件全身运动、流式指令切换与零样本移动目标到达，扰动下 sim-to-sim 成功率 93.1%，代码开源于 zjwzcx/ReactiveBFM。"
 ---
 
 # ReactiveBFM
+
+## 一句话定义
+
+**ReactiveBFM 把通用跟踪型行为基础模型（BFM）与基于本体感知持续重规划的自回归运动扩散规划器闭合成环，通过 scheduled prefix sampling 克服闭环曝光偏差、并用异步块集成实现 50 Hz Unitree G1 实时抗扰与流式响应。**
 
 **ReactiveBFM** 是港中大与上海人工智能实验室提出的 **闭环全身运动规划–控制** 框架（arXiv:2606.30362，[项目页](https://xiao-chen.tech/reactivebfm)）：在 [BFM](./paper-behavior-foundation-model-humanoid.md) / [SONIC](./nvidia-sonic.md) 类 **通用跟踪控制器** 之上，接入 **根据本体感知持续重规划** 的 **自回归运动扩散规划器（AR-MDM）**，使行为基础模型从「开环执行预定义参考」升级为 **对环境偏移与跟踪误差具有恢复能力的 reactive WBC**。
 
@@ -138,6 +145,11 @@ flowchart TB
 - **相对 [ScaleBFM](./paper-scaling-bfm-humanoid.md)**：同 Shanghai AI Lab 栈与 G1 真机文化；ScaleBFM 专注 **低层 BFM scaling 与 Humanoid Transformer**，ReactiveBFM 在其 tracker 类能力之上叠 **闭环运动规划**。
 - **相对 TextOp / DART / Kimodo + SONIC 开环级联**：同类「文本/运动生成 + tracker」，但 ReactiveBFM **闭合 proprioceptive 反馈环**，扰动下成功率差距显著。
 - **相对 CLoSD、DartControl**：同为闭环递归规划，但 ReactiveBFM 强调 **真机部署、异步时延、exposure bias 课程** 三件套同时成立。
+
+## 工程实践
+
+- **以异步缓冲与实时优先级隔离解耦规划延迟和 50 Hz 控制：** 保持底层 tracker 占高优先级 RT CPU 核以 5.9 ms 闭环执行，当缓冲残余帧低于 $N_{\mathrm{buf}}=10$ 时后台非阻塞触发 TensorRT AR-MDM（19.3 ms），再由 trajectory chunking 平滑重叠块边界。
+- **Compact 36-dim 状态表示与前缀自回归训练缺一不可：** 剔除接触标志与冗余速度减小误差维度，训练按课程从 teacher forcing 逐步切换为带噪 self-rollout（去掉该课程 sim-to-sim 成功率从 93.1% 跌至 70.5%）。
 
 ## 常见误区或局限
 

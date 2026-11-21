@@ -2,7 +2,7 @@
 type: method
 tags: [residual-learning, reinforcement-learning, control, locomotion, manipulation, motion-tracking, sim2real, shared-autonomy]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-21
 related:
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -17,12 +17,16 @@ sources:
   - ../../sources/personal/residual-policy-reading-list.md
   - ../../sources/papers/refine_dp_arxiv_2603_13707.md
   - ../../sources/papers/robotdancing_arxiv_2509_20717.md
+original:
+  - ../../sources/papers/precise_se3_end_effector_tracking_resgac_arxiv_2610_09479.md
 summary: "Residual Policy Learning（残差策略学习）：最终动作 = 基础动作 + 学习残差，a=a_base+Δa。基础部分可以是传统控制器、MPC、参考轨迹、技能解码器、运动生成器甚至人的输入；RL 只学补偿量，从而收窄探索空间、保住 base 先验、提升样本效率。本页给出统一形式、代表论文谱系与选型建议。"
 ---
 
 # Residual Policy Learning（残差策略学习）
 
-**Residual Policy Learning** 是一类「base + 残差」的机器人学习方法：最终动作由**已有的基础行为产生器**（传统控制器、MPC、参考轨迹、技能解码器、运动生成器、 Motion Tracking 策略，甚至人的操作命令）与**可学习的残差策略**相加而成，RL 只负责学习补偿量 $\Delta a$，处理 base 难以覆盖的接触、摩擦、模型误差与动力学失配。
+## 一句话定义
+
+**Residual Policy Learning 将执行动作分解为「已有基础策略/控制器输出 + 可学习的残差修正量」（$a_t = a_t^{\text{base}} + \Delta a_t$），在不丢失经典控制或预训练先验稳定性的前提下，把学习探索空间压缩到接触、摩擦与动力学失配的局部修正分布。**
 
 ## 英文缩写速查
 
@@ -107,7 +111,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 4. **残差输入可以宽于 base**：残差网络可以看到 base 看不到的信息（物体状态、人的原始指令、特权参考），这是残差 ≠ 简单增益调度的关键。
 5. **部署检查**：确认残差空间在真机物理可实现（RFC 根部外力不可直接上真机）；确认 base 与残差的**控制频率**匹配（Jumping 500 Hz 管线 vs ARS 策略频率）。
 
-## 局限与风险
+## 常见误区或局限（与风险）
 
 - **base 天花板**：残差继承 base 的结构性缺陷（如 Jumping 只支持 pronking 四足同起同落步态）；base 与任务分布严重失配时残差也救不回来（ReSkill 局限节明示）。
 - **双组件非平稳性**：base 与残差若同时训练（ARRL、ReSkill），目标非平稳，需要 on-policy 算法或专门优化器组合。

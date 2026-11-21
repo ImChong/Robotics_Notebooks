@@ -7,6 +7,8 @@
 - **来源：** Roboparty（GitHub 组织）
 - **链接：** https://github.com/Roboparty/UFO
 - **入库日期：** 2026-07-14（仓库复核 2026-10-27）
+- **通读：** 已完成
+- **核对范围：** 已读取 `Roboparty/UFO` 最新 `README.md` 全文 153 行（含 FB/TeCH 统一 CLI、LaFAN-40 数据、8×H20 192M 步 4h45m 实测及 CC BY-NC 4.0 许可边界）
 - **一句话说明：** 面向研发、完全开源的人形机器人无监督强化学习控制开发框架，覆盖训练基础设施、数据管线、算法研究与推理部署全流程。
 - **沉淀到 wiki：** 是（`wiki/entities/roboparty-ufo.md`）
 

@@ -7,6 +7,8 @@
 - **关联论文：** [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487)（IEEE TPAMI 2025）
 - **入库日期：** 2026-05-26
 - **最近刷新：** 2026-07-11（列表增至 **42 篇**；Adaptation 微调组新增 Any2Any arXiv:2605.23733）
+- **通读：** 已完成
+- **核对范围：** 已通读上游 `friedrichyuan/awesome-bfm-papers` `README.md` 全文 144 行（Pre-training 三类、Adaptation 两类及 10 大数据集表），并与 TPAMI 2025 BFM 综述 `arXiv:2506.20487v5` 对账
 - **Tags：** #bfm #behavior-foundation-model #humanoid #whole-body-control #survey #curated-list
 
 ## 一句话说明

@@ -9,7 +9,7 @@ tags:
   - deep-learning
   - robotics
 status: complete
-updated: 2026-11-07
+updated: 2026-11-21
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -24,6 +24,9 @@ sources:
   - ../../sources/blogs/wechat_human_five_vit_intro.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
+  - ../../sources/papers/vit_dosovitskiy_arxiv_2010_11929.md
+original:
+  - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vit_dosovitskiy_arxiv_2010_11929.md
 summary: "CNN（ResNet 系）以卷积归纳偏置在小数据/边缘部署占优，ViT 系靠大数据与全局注意力在规模化时反超；机器人感知按数据量、分辨率/吞吐与下游迁移需求在两者间取舍。"
 ---
@@ -45,6 +48,11 @@ summary: "CNN（ResNet 系）以卷积归纳偏置在小数据/边缘部署占�
 | SSL | Self-Supervised Learning | 自监督预训练（如 MAE / DINOv2） |
 | FPN | Feature Pyramid Network | 多尺度特征融合 neck |
 
+## 为什么重要
+
+- **决定机载算力预算与迁移数据门槛：** CNN（ResNet 等）凭强局部归纳偏置在少量遥操作或边缘检测下更快收敛；ViT 依赖千万级以上或自监督预训练才能跨越前期过拟合区（如 ViT 原文 JFT 子集规模化试验）。
+- **贯穿上游感知与下游策略输入：** 视觉骨干不仅是检测器/分割器的前置特征器，也是现代 VLA 与视觉策略的视觉编码器起点。
+
 ## 比较对象
 
 | 骨干族 | 代表 | 核心机制 | 典型角色 |
@@ -52,7 +60,7 @@ summary: "CNN（ResNet 系）以卷积归纳偏置在小数据/边缘部署占�
 | **CNN** | ResNet / ConvNeXt / CSP-轻量 | 卷积 + 残差 + 层次下采样 | 边缘实时检测、小数据微调 |
 | **ViT** | ViT / Swin / DINOv2 | Patch token + 多头自注意力 | 大数据规模化、通用预训练表征 |
 
-## 核心差异
+## 核心机制与差异
 
 | 维度 | CNN（ResNet 系） | ViT 系 |
 |------|------------------|--------|
@@ -64,7 +72,12 @@ summary: "CNN（ResNet 系）以卷积归纳偏置在小数据/边缘部署占�
 | 边缘部署 | 成熟（TensorRT/量化算子全） | 算子支持与延迟仍偏重 |
 | 迁移/规模化 | 规模增益趋缓 | 数据/参数越大增益越显著 |
 
-## 机器人感知中的取舍
+## 工程实践（机器人感知中的取舍）
+
+- **机载高帧率封闭检测优先 TensorRT 量化的 CNN / ConvNeXt：** 在 Jetson 等边缘芯片与固定类目（球、锥桶、托盘）下延迟确定性更强。
+- **跨场景通用表征优先冻结 DINOv2 / ViT SSL + 轻量适配头：** 若直接用全监督微调整颗 ViT，极易破坏预训练空间几何，先冻结或配合通道–空间注意力折中往往更稳。
+
+### 决策流程总览
 
 ```mermaid
 flowchart TB

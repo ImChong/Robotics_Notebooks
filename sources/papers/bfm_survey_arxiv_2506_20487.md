@@ -11,6 +11,8 @@
 - **配套精选列表：** <https://github.com/yuanmingqi/awesome-bfm-papers>（用户给定镜像：<https://github.com/friedrichyuan/awesome-bfm-papers>）
 - **入库日期：** 2026-05-26
 - **最近刷新：** 2026-07-11（对照 awesome 列表 42 篇；升格 wiki 实体页）
+- **通读：** 已完成
+- **核对范围：** 已下载并通读 `arXiv:2506.20487v5` PDF（Abstract、Section III Taxonomy 纲要与 Section VI Conclusion，共 2,458 行文本索引与总结）
 - **一句话说明：** 首篇系统梳理 **人形 WBC 行为基础模型（BFM）** 的综述：从传统模型法 / 任务专用学习法演进到 **大规模预训练行为先验 + 零样本或快速适应**；按 **goal-conditioned、intrinsic-reward、forward-backward** 三线预训练与 **微调、层次化控制** 两线适应组织文献，并讨论数据集、真机部署与开放问题。
 
 ## 摘要级要点

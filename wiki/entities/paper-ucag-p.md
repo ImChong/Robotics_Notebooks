@@ -34,6 +34,8 @@ sources:
   - ../../sources/sites/ucag-p.md
   - ../../sources/repos/ucag-p.md
   - ../../sources/blogs/wechat_embodied_station_wam_vla_cross_embodiment_9_papers_2026-08-28.md
+original:
+  - ../../sources/papers/ucag_p_arxiv_2608_26058.md
 summary: "UCAG-P（arXiv:2608.26058，小米具身智能×澳门大学）：共享相机系腕/抓取锚点几何 + 几何条件翻译器；单 checkpoint 在 LIBERO 98.3%、RoboTwin Easy/Hard 88.7%/89.2%、LIBERO-Plus 零样本 82.0%、RoboCasa GR-1 62.0%；训练代码 coming soon。"
 ---
 

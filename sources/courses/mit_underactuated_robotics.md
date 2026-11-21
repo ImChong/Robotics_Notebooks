@@ -8,6 +8,8 @@
 - **主站：** <https://underactuated.mit.edu/index.html>
 - **入库日期：** 2026-09-23
 - **版本注记：** 站点标注 Spring 2024 学期持续更新；Preface 强调 **HTML 在线版为主版本**，PDF 次之。
+- **通读：** 已完成
+- **核对范围：** 已通读 MIT Underactuated Robotics（underactuated.csail.mit.edu，2024 版）公开网页课程第 8 章（LQR，889 行）、第 10 章（Trajectory Optimization / Direct Collocation / iLQR / DDP / MPC，1,794 行）、第 17 章（Planning and Control through Contact，452 行）与第 22 章 / Appendix A（Drake，116 行）
 
 ## 为什么值得保留
 

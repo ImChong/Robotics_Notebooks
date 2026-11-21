@@ -14,6 +14,9 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/survey_papers.md
+original:
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/diffusion_and_gen.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「做机器人操作用模仿学习还是 RL？怎么收集数据？」

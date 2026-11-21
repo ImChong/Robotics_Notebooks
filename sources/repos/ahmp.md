@@ -13,6 +13,8 @@
 - **入库日期：** 2026-08-18
 - **一句话说明：** CEM-MD 接触发现 + SE(3) 切空间全身 TO 的开源实现；Docker 入口，Talos 扶手/烟囱实验脚本。
 - **沉淀到 wiki：** [`wiki/entities/paper-ahmp.md`](../../wiki/entities/paper-ahmp.md)
+- **通读：** 已完成
+- **核对范围：** 已通读官方仓库 GitHub README（87 行），核对 Handrails / Chimney 视频示例、200s 中位求解时耗统计与 Docker/HSL_MA97/IPOPT 编译运行入口
 
 ---
 

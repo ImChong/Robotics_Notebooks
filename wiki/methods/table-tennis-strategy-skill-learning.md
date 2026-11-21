@@ -2,7 +2,9 @@
 type: method
 tags: [character-animation, table-tennis, hierarchical-rl, ase, vr, multi-agent, mode-collapse]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-21
+arxiv: "2407.16210"
+original: ../../sources/papers/table_tennis_strategy_skill_arxiv_2407_16210.md
 related:
   - ../entities/paper-sony-ai-ace-table-tennis.md
   - ../entities/paper-from-hitter-to-player-humanoid-table-tennis.md
@@ -22,6 +24,10 @@ summary: "PhysicsPingPong：技能层用 ASE 五专家 + mixer 混合缓解 mode
 
 **PhysicsPingPong**（Wang et al., SIGGRAPH 2024, [arXiv:2407.16210](https://arxiv.org/abs/2407.16210)）为物理仿真乒乓球提出 **策略层 + 技能层** 分层控制：技能层保证五种击球动作的 **多样性、过渡与落点精度**；策略层在 **双智能体对打** 与 **VR 人–机** 场景中学会 **选技能与定落点**。
 
+## 一句话定义
+
+**PhysicsPingPong** 把物理仿真乒乓球拆成「五路 ASE 专家 + Mixer 混合」的底层技能层与「迭代 CVAE 行为克隆」的高层策略层，在不牺牲技能多样的前提下解决落点精度与长程博弈。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -40,6 +46,8 @@ summary: "PhysicsPingPong：技能层用 ASE 五专家 + mixer 混合缓解 mode
 - **VR 全身物理对打**：Unity 渲染 + Isaac Gym 仿真，用户球拍刚体跟 VR 手柄——相对仅浮动球拍的商业 VR 乒乓球更接近 **全身动力学** 交互。
 
 ## 主要技术路线
+
+## 核心原理
 
 ```mermaid
 flowchart TB
@@ -75,10 +83,15 @@ flowchart TB
 
 [SMPLOlympics](../entities/smplolympics.md) 在同一作者群生态中提供 **乒乓球练习环境** 与 **PULSE+AMP 基线**（Avg Hits 1.83）；本工作专注 **多技能 + 策略 + 人–机 VR**，是专项深化而非替代 benchmark。
 
-## 常见误区
+## 工程实践
+
+- **分层解耦训推**：技能层三阶段（Imitation → Ball Control → Mixer）训练冻结后再训策略层 CVAE，保证对打或 VR 实时交互时不会因策略探索破坏底层平衡与击球姿态。
+- **多技能扩展边界**：由于每种击球技能独立训练专家策略并通过 Mixer 过渡，适合 5–10 种离散主导技能族；若扩展至百级无标签技能仍需与通用潜在空间方法混合。
+
+## 常见误区或局限
 
 - **不是人形机器人真机**——物理 **角色动画**；与人形硬件跑酷/模仿真机工作正交。真机 ITTF 竞技对照见 [Sony AI Ace](../entities/paper-sony-ai-ace-table-tennis.md)（Nature 2026）。
-- **开源完整度有限**：GitHub 主要发布数据链接，训练代码需联系作者（见仓库 README）。
+- **物理建模与开源局限（arXiv:2407.16210 Discussion）**：乒乓球空气阻力仅用速度阻尼近似，未建模旋转引起的马格努斯（Magnus）效应；GitHub 主要发布数据链接，训练代码需联系作者（见仓库 README）。
 
 ## 关联页面
 

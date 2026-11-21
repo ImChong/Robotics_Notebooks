@@ -14,6 +14,7 @@ related:
   - ./crocoddyl.md
   - ./pinocchio.md
   - ./unitree-g1.md
+original: ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md
 sources:
   - ../../sources/papers/se3_tangent_to_arxiv_2508_11520.md
   - ../../sources/repos/se3_trajopt.md

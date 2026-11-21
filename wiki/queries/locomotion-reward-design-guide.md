@@ -9,6 +9,9 @@ sources:
   - ../../sources/papers/reward_design.md
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
+original:
+  - ../../sources/papers/reward_design.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「怎么设计 locomotion RL 的奖励函数？」

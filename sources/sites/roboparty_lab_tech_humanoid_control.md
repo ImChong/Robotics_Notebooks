@@ -7,6 +7,8 @@
 - **机构：** 机器人派对（RoboParty）· RoboParty Lab
 - **类型：** paper / lab output
 - **入库日期：** 2026-07-14
+- **通读：** 已完成
+- **核对范围：** 已直接抓取并通读 `https://lab.roboparty.com/outputs/tech` 全部页面正文（342 行，含 TLDR 时间距离表征公式、多 Critic 预训练、LAFAN1/100-Style 表 I 对比及 $D=256$ / `lr` / `update-z-every` 消融）
 - **一句话说明：** RoboParty Lab 提出的无监督人形全身控制方法：在 TLDR 对比时间距离表征框架上，用隐空间距离变化构造密集奖励，实现零样本运动跟踪与目标到达；仿真与真机均优于或对标 BFM-Zero / SONIC，且训练成本降近两个数量级。
 
 ## 核心摘录（策展，非全文）

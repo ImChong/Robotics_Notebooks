@@ -3,7 +3,7 @@ type: concept
 status: complete
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-09-21
+updated: 2026-11-21
 related:
   - ../entities/embodied-interview-qa.md
   - ./backpropagation.md
@@ -31,11 +31,17 @@ sources:
   - ../../sources/repos/rasbt_llms_from_scratch.md
   - ../../sources/courses/karpathy_intro_llms_youtube.md
   - ../../sources/blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md
+original:
+  - ../../sources/papers/resnet_arxiv_1512_03385.md
+  - ../../sources/repos/rasbt_llms_from_scratch.md
+  - ../../sources/blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md
 ---
 
 # 深度学习基础 (Deep Learning Foundations)
 
-> **一句话定义**: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
+## 一句话定义
+
+深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念，是现代机器人感知、策略网络与生成式动作模型的共同函数逼近底座。
 
 ## 英文缩写速查
 
@@ -49,7 +55,7 @@ sources:
 
 深度学习是现代机器人感知与控制（如 Foundation Policy, Visual Servoing）的核心底层技术。理解其数学原理有助于优化模型收敛速度、提升鲁棒性并解释复杂决策行为。
 
-## 核心架构与机制
+## 核心机制与架构
 
 ### 1. 神经网络组合性 (Compositionality)
 深度神经网络通过多个非线性层（ReLU, Sigmoid 等）的组合，能够逼近复杂的连续函数。其核心在于：
@@ -74,6 +80,16 @@ sources:
 - **感知 (Perception)**: 卷积神经网络 (CNN) 和 Transformer 用于处理图像、点云和触觉信号；[视觉骨干](./vision-backbones.md) 与 [目标检测](../methods/object-detection.md)（如 [YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）是机载感知常见模块。
 - **控制 (Control)**: 强化学习 (RL) 中的策略网络（Policy Network）通过深度学习进行函数逼近。
 - **生成 (Generation)**: [生成式模型基础](../formalizations/generative-foundations.md) 为动作轨迹生成提供数学底座。
+
+## 工程实践
+
+- **按任务闭环频率与数据维度匹配优化器与正则：** 策略网络常用带解耦权重衰减的 AdamW 配梯度裁剪稳定强化学习或模仿训练；加深视觉主干时优先残差跳连与归一化防止梯度退化。
+- **监控训练与部署分布一致：** 离线验证损失下降不代表闭环控制不发散，需同步关注 BatchNorm 统计量固化、权重导出精度及 OOD 输入稳健性。
+
+## 常见误区或局限
+
+- **混淆表达能力（模型规模）与泛化能力：** 深网在小样本具身数据上极易过拟合示范噪声，必须结合数据增强、有效度约束或预训练先验。
+- **忽视非独立同分布（non-i.i.d.）闭环效应：** 经典监督学习假定样本独立同分布，而机器人在线交互轨迹存在强时序相关与复合误差放大。
 
 ## 关联页面
 - [AI 架构地图](../overview/ai-architecture-map.md) — 前馈 / 空间 / 序列 / 生成 / 图 / 决策六支选型
