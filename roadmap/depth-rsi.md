@@ -131,6 +131,7 @@ flowchart LR
 - [SPIN：Self-Play Fine-Tuning](../wiki/entities/paper-spin-self-play-fine-tuning.md) — ICML 2024 的语言模型有界权重迭代基线：旧模型生成负例、SFT 参考数据作外部锚、SPINTrainer 对比优化；非机器人自博弈实验
 - [Motus2](../wiki/entities/paper-motus2.md) — 真机权重级有界闭环的代表；五任务宏平均 84%，MBRL+Planning 75%；截至入库日未开源
 - [LWD](../wiki/methods/lwd.md) — 车队级 offline-to-online：异构部署经验 → 单一通用策略持续改进
+- [WeightCode：可执行权重程序与留出验证](../wiki/entities/paper-weightcode.md) — 冻结 LLM 生成可迁移参数编辑并进行受限候选筛选；作为**权重改造与验证方法的对照**，论文并未证明递归自我改进或机器人真机能力。
 - [Cortex：把上下文巩固进参数](../wiki/entities/paper-cortex-parametric-memory.md) — FFN 参数记忆、前瞻查询与 CR/RR 测评的对照材料；论文主要研究文本 LLM，**不是**机器人真机自改进或完整 RSI 闭环
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第二次推进— STaR / SPIN 与"目标分布仍人类"的边界
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) · [Bitter Lesson](../wiki/concepts/bitter-lesson.md) — 规模与结构之争的背景读法
