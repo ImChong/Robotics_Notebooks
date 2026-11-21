@@ -3,7 +3,7 @@ type: entity
 project_id: driving-sgdrive
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2601.05640"
 code: https://github.com/LogosIntelligenceLab/SGDrive
 summary: "SGDrive：场景、关键交通参与者和短期目标的分层认知。在VLM中引入场景/agent/goal分层世界知识查询，通过block-wise attention避免信息泄漏，世界表征作为条件送入DiT扩散规划器，并可进行强化微调。"
@@ -105,6 +105,12 @@ sequenceDiagram
 1. 先使用官方公开checkpoint与现有评测脚本建立基线。
 2. 明确划分论文提出的完整系统和当前代码实际已开放的部分。
 3. 记录数据、版本、硬件与指标，避免不同评测设定的数字错比。
+
+## 与其他工作对比
+
+- **对比 VLM+DiT 及多传感器规划器（NAVSIM v1 navtest，Table 1）：** 在两阶段 SFT 口径下，基于 2B 骨干的 `SGDrive-2B` 取得 **87.4 PDMS**，高于同为 SFT 的 [ReCogDrive](./paper-recogdrive-2506-08052.md)-2B（86.5）、ReCogDrive-8B（86.8）、AutoVLA-3B（80.5）以及纯视觉非 VLM 基线 `Epona`（86.2）、`PARA-Drive`（84.0）、[UniAD](./paper-uniad.md)（83.4）；在相同的 RL 后训练（RFT）协议下，`SGDrive-2B` 达到 **91.1 PDMS**，优于 ReCogDrive-2B（90.8）、ReCogDrive-8B（90.5）、AutoVLA-3B（89.1）与含 LiDAR 基线 `SeerDrive`（88.9）、`WoTE`（88.3）及 [DiffusionDrive](./paper-diffusiondrive.md)（88.1）。
+- **对比 NAVSIM v2 扩展指标（Table 2）：** `SGDrive-2B (SFT)` 达到 **86.2 EPDMS**，优于 DiffusionDrive（84.3）、ReCogDrive-8B（83.6）与 ARTEMIS（83.1），无碰撞（NC 98.6）与 TTC（97.9）突出，但可行驶区域合规（DAC 94.3）略低于 ReCogDrive-8B（95.2）与 DiffusionDrive（96.0）。
+- **与 ReCogDrive 的结构差异（§4.3 / Table 6）：** ReCogDrive 将未显式分区的 VLM 隐状态送入 DiT；SGDrive 显式结构化为 Scene / Agent / Goal 分层世界查询并配合分块注意力隔离跨类别噪声，定性对比中能更好抑制多交通参与者避让和弯道偏离碰撞，二者均需 1–2 TB 训练缓存。
 
 ## 局限与风险
 

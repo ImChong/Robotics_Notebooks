@@ -3,7 +3,7 @@ type: entity
 project_id: driving-recogdrive
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2506.08052"
 code: https://github.com/xiaomi-research/recogdrive
 summary: "ReCogDrive：驾驶认知引导扩散规划与DiffGRPO。三阶段驾驶问答知识生成、提炼、质检微调InternVL3；将VLM隐状态送入DiT连续轨迹规划；DiffGRPO用规划奖励对扩散去噪策略进行后训练。"
@@ -104,6 +104,12 @@ sequenceDiagram
 1. 先使用官方公开checkpoint与现有评测脚本建立基线。
 2. 明确划分论文提出的完整系统和当前代码实际已开放的部分。
 3. 记录数据、版本、硬件与指标，避免不同评测设定的数字错比。
+
+## 与其他工作对比
+
+- **对比端到端多模态与纯视觉规划器（NAVSIM navtest，Table 1）：** 仅使用相机输入的 ReCogDrive 达到 **90.8 PDMS**，高于同为纯视觉的 `PARA-Drive`（84.0）、[UniAD](./paper-uniad.md)（83.4）、`DrivingGPT`（82.4）与 `VADv2-V8192`（80.9），同时也超越使用相机+LiDAR 的 [DiffusionDrive](./paper-diffusiondrive.md)（88.1）和 `WoTE`（88.3）。
+- **对比直接微调 VLM 基线：** 论文在相同 NAVSIM 轨迹数据上复现的 `InternVL3-8B†` 与 `QwenVL2.5-8B†` 均为 83.3 PDMS；ReCogDrive 通过驾驶问答认知注入、条件 DiT 规划头及 DiffGRPO 奖励后训练取得 +7.5 PDMS 增益（后续 [SGDrive](./paper-sgdrive-2601-05640.md) 进一步以分层世界查询在 RFT 下达 91.1 PDMS）。
+- **对比 CARLA Bench2Drive 闭环排行榜（Table 2）：** ReCogDrive 取得 **45.45% 场景成功率**与 **71.36 Driving Score**，高于 `DriveTransformer-L`（35.01% / 63.46）、`DriveAdapter*`（33.08% / 64.22）、`UniAD-B`（16.36% / 45.81）与 `VAD`（15.00% / 42.35），紧急制动（69.09%）和交通标志遵守（71.34%）突出，但 Comfort（17.45）与让行（20.00%）落后于部分经典端到端基线，且依赖 1–2 TB VLM 隐状态磁盘缓存。
 
 ## 局限与风险
 

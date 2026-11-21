@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-21
 arxiv: "2410.21229"
 venue: "2025 · ICRA"
 code: https://github.com/NVlabs/HOVER/
@@ -124,6 +124,12 @@ sequenceDiagram
 - 关键取舍是 **goal / reference / command 条件化**——一套策略覆盖多种目标条件技能，而不是每类目标各训一个控制器。
 - 边界写得很直白：goal-conditioned 跟踪 **不等于 unlimited skills**，仍受数据分布、接触建模与实机 Sim2Real 约束。
 - 工程可及性较好（代码 <https://github.com/NVlabs/HOVER/>），需单独准备授权动作数据、teacher 与命令掩码配置。
+
+## 与其他工作对比
+
+- **对比单模式全身控制 Specialist：** 论文 §III-A 将 HOVER 固定到不同掩码模式，分别对齐 [ExBody](./paper-exbody-expressive-humanoid.md)（上身关节 + 根速度）、[HumanPlus](./paper-loco-manip-161-012-humanplus.md)（全身关节 + 根速度）、H2O（8 关键点位置）与 [OmniH2O](./paper-hrl-stack-08-omnih2o.md)（头/双手关键点）四类模式并重训各自 RL specialist（Table III），外加左/右/双手与头部跟踪四组模式（Table IV）。单一通用策略 HOVER 在各先验模式下至少 **7/12** 项指标优于专门训练的 specialist，真机 Unitree H1 上也有 **11/12** 项优于 specialist（Table V），说明 Oracle 蒸馏在单模式跟踪上同样超越从零 RL。
+- **对比多模式从头 RL 训练（Multi-mode RL）：** 论文 §III-B 对照了使用完全相同 mode/sparsity 掩码流程但直接从零用 PPO 训练的多模式基线；HOVER 在全部 8 种模式共 **32 项**评估指标上全面胜出，表明两阶段「全信息 Oracle → DAgger 掩码蒸馏」显著降低了多接口联合学习的优化难度。
+- **在 BFM 与遥操作生态中的定位：** HOVER 解决的是单一控制器对多输入模态（遥操作关键点 vs 关节角 vs 根速度）的兼容接口问题，但自身不含自动模式切换与上层任务规划，且官方代码已由原论文 Isaac Gym 迁移为 Isaac Lab 2.0 移植版。
 
 ## 局限与风险
 
