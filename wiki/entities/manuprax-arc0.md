@@ -65,17 +65,12 @@ sources:
 flowchart TB
   human["人手与物体的高精度参考运动"]
   reference["手物协同参考与运动子目标"]
-  sim["仿真强化学习
-学习手指接触调整与控制"]
-  s0["ARC-0 Preview / System 0
-灵巧手底层执行"]
+  sim["仿真强化学习\n学习手指接触调整与控制"]
+  s0["ARC-0 Preview / System 0\n灵巧手底层执行"]
   instruction["自然语言与场景需求"]
-  s2["System 2
-理解意图与任务规划"]
-  trajectory["目标物体 6-DoF 运动轨迹
-采访所述接口"]
-  hand["多指接触执行
-旋拧 / 重定向 / 工具操作"]
+  s2["System 2\n理解意图与任务规划"]
+  trajectory["目标物体 6-DoF 运动轨迹\n采访所述接口"]
+  hand["多指接触执行\n旋拧 / 重定向 / 工具操作"]
 
   human --> reference --> sim --> s0
   instruction --> s2 --> trajectory --> s0 --> hand
