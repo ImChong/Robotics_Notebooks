@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | 完成 Issue #3490 第 4 批 12 篇深度通读与 health 补全（roadmap/depth-bfm；更新 GigaBrain-WBC-0.5 与 ScaleBFM 开源代码入口及 MetaMotivo/MaskedMimic/PHC/Perceptive-BFM 等原文指标与时序图）
+
 ## [2026-11-21] lint | 推进 #3997 P1-2 治理第 3 批（收尾清零）：核对最后 13 篇 arXiv 原文并补齐 NSDL/PAFF/Passive-Soft/Physical-Recipe/PreNav/Robo-SWE/Robot-Weight/SO101/SPARC/TCP4D/VIM/VINE/VOKE 对比小节
 
 ## [2026-11-21] ingest | Issue #3490 Batch 3 纵深节点健康度推进：全文通读与官方仓库/项目页核查 13 篇（PackLab/LIBERO-VPro/Uranus/ManiSkill-HAB/Mimicking-Bench/Barkour/Physics-Consistent HRC/Real2Sim 2511.04665/2508.11117/WM Eval 2606.15032/Motion Difficulty 2512.07248/TrackerLab/humanoid-policy-reward-functions），补齐源码运行时序图、实验结论与 original 归档，depth-embodied-eval.md 提升至 63/67 3/3
