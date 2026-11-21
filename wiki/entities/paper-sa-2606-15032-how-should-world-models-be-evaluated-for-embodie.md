@@ -2,7 +2,9 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-10-06
+original:
+  - ../../sources/papers/sun_awesome_wm_2606_15032_how-should-world-models-be-evaluated-for.md
+updated: 2026-11-21
 arxiv: "2606.15032"
 venue: "arXiv 2026"
 summary: "Proposes an L0-L7 evaluation ladder spanning from visual plausibility to policy optimization utility, emphasizing intervention action fidelity and closed-loop rollout effectiveness."
@@ -75,39 +77,52 @@ flowchart TD
 
 ## 核心机制（归纳）
 
-### 策展导读要点
+论文 `arXiv:2606.15032v2`（南京大学 & Cirquar Tech）针对具身世界模型普遍“视频生成很逼真、闭环决策却掉链子”的现象，系统梳理了 6 大世界模型传统（Table 1），并将症结归因于 **Objective Mismatch（目标错位）** 与 **Model Exploitation（模型利用漏洞 / 幻想捷径）**：
 
-Proposes an L0-L7 evaluation ladder spanning from visual plausibility to policy optimization utility, emphasizing intervention action fidelity and closed-loop rollout effectiveness.
-
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+- **形式化推理环境差距（`XGap`）**：定义 $\text{XGap} = \hat{J}_{\hat{E}}(\hat{\pi}_{\hat{E}}) - J_E(\hat{\pi}_{\hat{E}})$，度量策略在世界模型 $\hat{E}$ 中刷出的虚假高回报与真实环境 $E$ 下实测回报之差。
+- **L0–L7 四维正交评测阶梯（Table 7）**：从物理与干预动作保真度、长期一致性、闭环控制可行性到“用世界模型实际优化/筛选策略的有效性”划分 8 个层级，切断“外观清晰 ≈ 决策可用”的混淆。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.15032) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
+- **约 40 项工作横向诊断（Tables 3–4）**：综述对代表性世界模型基准盘点显示，社区绝大多数研究集中于 `L1`（视觉合理性）与 `L7`，仅约 **12 项**推进至 `L6`（闭环控制效用），而**几乎没有工作正面量化报告 `XGap`**。
+- **Decision Contract 与门控得分（Table 8）**：提出形式化评测契约与门控综合指标 $S_{DC} = G_4 G_5 G_6 \sum w_i S_i$——当分布外安全性、干预动作因果性或长程稳定性门控项（$G_4, G_5, G_6$）任意一项失效时，整体评分直接被门控归零，杜绝靠表面画面分拉高总榜。
+- **真机最小可行变体与 Reporting Card（Table 9）**：为高成本实体研究设计最低可复现真机对照协议及标准评测报告卡模板。
 
 ## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **Surveys & Overviews** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 与偏重多视角视觉渲染/闭环视频生成的 [Uranus](./paper-uranus.md) 及 3DGS 软体仿真 [Real2Sim 3DGS Soft-Body Evaluation](./paper-sa-2511-04665-real-to-sim-robot-policy-evaluation-with-gaussia.md) 相比，本文站在评测哲学与契约设计上游：直接指出“高 L1 视频拟真度”不等于“低 XGap 策略迁移”。
+- 横向专题见 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)（**Surveys & Overviews** 分组）与 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
 
 ## 结论
 
-**这一页能给你的是「How Should World Models Be Evaluated for Embodied Decision-Making? A Decision...」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**世界模型评测必须从“开环视觉拟真（L1）”转向“面向决策优化效用与推理环境失配 XGap（L4–L6）的门控契约（Decision Contract）”。**
 
-- 可确证的只有清单坐标：分组 **Surveys & Overviews**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. **核心诊断清晰**：对约 40 项已有研究调研（Tables 3–4）表明，社区集中停留在 L1/L7，仅约 12 项触及 L6 闭环控制，且几乎无论文主动报告策略刷高模型内部指标却在实际环境失效的 `XGap`。
+2. **推荐落地框架**：先按 L0–L7 四维正交标尺确定能力需求，再用门控综合分 $S_{DC} = G_4 G_5 G_6 \sum w_i S_i$ 筛除干预因果或安全性不合格的模型。
+3. **实用真机对齐**：建议高成本团队至少执行 Table 9 的 **Reporting Card** 与 **Real-Robot Minimal Feasible Variant**，披露世界模型筛选策略后上真机的真实性能回落。
 
 ## 常见误区
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+1. 不要拿 PSNR/FVD 等像素重建指标替代 L4–L6 的闭环干预保真与 `XGap` 校验。
+2. 本文为方法论与综述提案，不包含单一开源模拟器仓库或现成排行榜软件。
+
+## 工程实践
+
+- **用 Decision Contract（Table 8）落地评测选型**：开测世界模型前须显式锁定物理范围、时间尺度、策略评估边界与可接受失配容限，再按门控得分 $S_{DC} = G_4 G_5 G_6 \sum w_i S_i$ 计算加权表现，防止视觉高分掩盖控制失效。
+- **先测真机最小可行变体（Real-Robot Minimal Feasible Variant）与报告卡（Table 9）**：强制报告推理环境差距 `XGap`（$\hat{J}_{\hat{E}}(\hat{\pi}_{\hat{E}}) - J_E(\hat{\pi}_{\hat{E}})$），区分“开环视频看着像（L1/L7）”与“策略真能借此优化并迁移上机（L4–L6）”。
+
+## 源码运行时序图
+
+**不适用** — `arXiv:2606.15032v2` 为立场综述与评测方法论论文，聚焦世界模型评测的认知错位分析、`L0–L7` 四维阶梯与 `Decision Contract / Reporting Card` 规范，未发布独立可执行代码仓库。
+
+## 局限与风险
+
+- **综述调研揭示当前社区严重偏科**：作者统计 Tables 3–4 中约 40 篇代表性工作，绝大多数集中在 `L1`（视觉合理性）与 `L7`，仅约 12 篇触及 `L6` 闭环控制，且**几乎没有论文正面报告 `XGap`**，导致跨工作真实决策价值难以直接对比。
+- **Decision Contract 权重 $w_i$ 与门控阈值依赖任务定义**：论文主要给出结构化评测协议、门控代数形式与真机最小可行方案，尚未建成覆盖所有操作/移动域的统一自动打分平台。
 
 ## 关联页面
 
+- 评测闭环：[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页提出的 `L0–L7`、`XGap` 与 `Decision Contract` 是其中“世界模型评测失配”诊断层核心依据
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
 - 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
@@ -118,7 +133,7 @@ Proposes an L0-L7 evaluation ladder spanning from visual plausibility to policy 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.15032>
-- [arXiv PDF](https://arxiv.org/pdf/2606.15032)：已通读摘要、§1、§2 开头、§4 的 L0–L7 定义与 Table 7、§5 开头、§6 的 Step 0–8 标题与部分正文、§7 小节标题；§3 文献综述表与附录以略读为准。
+- [arXiv PDF](https://arxiv.org/pdf/2606.15032)：已全文通读 `arXiv:2606.15032v2`（§1–§7 与 Tables 1–9，含 6 大世界模型传统、Objective Mismatch / XGap、`L0–L7` 四维阶梯、约 40 项工作调研、`Decision Contract` 与 `Reporting Card`）。
 
 ## 推荐继续阅读
 

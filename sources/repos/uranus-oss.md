@@ -12,6 +12,9 @@
 - **演示数据：** <https://huggingface.co/datasets/D-Robotics/Uranus-Demo-Data>
 - **模型集合：** <https://huggingface.co/collections/D-Robotics/uranus>
 - **核查日期：** 2026-10-09
+- **最后核对：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 核对 `D-Robotics-AI-Lab/Uranus-OSS`（README、`main.py`、`uranus/runner.py`、`uranus/functional/stream_runner.py`、`SkeletonEngine`、`dit_decode_step`）与 `D-Robotics-AI-Lab/Uranus-SDK`（`UranusSimulationSession`）
 - **沉淀到 wiki：** [Uranus](../../wiki/entities/paper-uranus.md)
 
 ## 仓库能力与使用边界

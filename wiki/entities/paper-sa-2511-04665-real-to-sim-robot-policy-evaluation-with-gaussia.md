@@ -2,7 +2,11 @@
 type: entity
 tags: [paper, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-10-06
+project: https://real2sim-eval.github.io/
+code: https://github.com/kywind/real2sim-eval
+original:
+  - ../../sources/papers/sun_awesome_r2s2r_2511_04665_real-to-sim-robot-policy-evaluation-with.md
+updated: 2026-11-21
 arxiv: "2511.04665"
 venue: "arXiv 2025"
 summary: "Real-to-sim robot policy evaluation with Gaussian splatting simulation of soft-body interactions"
@@ -75,39 +79,66 @@ flowchart TD
 
 ## 核心机制（归纳）
 
-### 策展导读要点
+论文与官方仓库 [kywind/real2sim-eval](https://github.com/kywind/real2sim-eval) 打通了从真机场景采集到可变形软体闭环评测的 Real-to-Sim 管线：
 
-Real-to-sim robot policy evaluation with Gaussian splatting simulation of soft-body interactions
-
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+- **真机采集与 3DGS 多软件配准**：依托 `xArm 7 + RealSense D405/D455 + GELLO` 采集示范与网格评测基准（`Toy packing 39 demos / 20 grid eval`、`Rope 56 / 27`、`Push-T 60 / 16`），以 `Scaniverse` 和 `SuperSplat` 重建 3D 高斯资产后，执行 `ICP/RANSAC` 刚体配准并采用**二次 IRLS 颜色对齐**修正相机曝光与白平衡域隙。
+- **Warp PhysTwin 动力学 + LBS 驱动渲染**：采用 NVIDIA Warp 弹簧-质点模型 `PhysTwin` 求解柔性体接触碰撞和大形变，并通过线性混合蒙皮（`LBS`）实时变形 3D 高斯椭球传入 `GSRenderer`，单 GPU 达到 **5–30 FPS** 闭环推理。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2511.04665) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 同分组条目。
+- **Table I 真机—仿真排位一致性（Pearson `r` / `MMRV`）**：
+  - 软体与重排三项任务在 Real2Sim-Eval 中取得 **`0.944 / 0.076`**、**`0.901 / 0.174`**（同任务传统物理仿真 `IsaacLab` 为 `0.237`）以及 **`0.915 / 0.108`**（`IsaacLab` 为 `0.649`）。
+- **大规模扩展稳定性**：在 **200-episode** 大规模评测扩展实验中，与真机表现仍维持 **`r ≥ 0.897`** 的强相关性，显著优于纯刚体几何建模方案。
 
 ## 与其他工作对比
 
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 的 **31 Real2Sim from Video** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 与纯网格/刚体物理仿真（如 `IsaacLab` 默认场景）相比，引入 `PhysTwin + 3DGS` 显著抬升了绳索/玩具等柔性交互任务的真机相关性（`0.901` vs `0.237`）；与基于纯视频生成的世界模型（如 [Uranus](./paper-uranus.md)）相比，保留了基于显式物理弹簧-质点的碰撞与形变求解。
+- 横向专题见 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)（**31 Real2Sim from Video** 分组）与 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
 
 ## 结论
 
-**这一页能给你的是「Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Sof...」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**面向柔性物体与复杂桌面材质的 Real2Sim 策略评测，把“3DGS 实景外观 + IRLS 颜色校准 + Warp PhysTwin 软体动力学”耦合进闭环后，能稳定跑出 `r = 0.901–0.944`、低违序率（`MMRV = 0.076–0.174`）的真机排序保真度。**
 
-- 可确证的只有清单坐标：分组 **31 Real2Sim from Video**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. **开源工具链已具备端到端入口**：官方仓 `kywind/real2sim-eval` 公开 `experiments/eval_policy.py`、`sim/envs/env.py:BaseEnv`、`GSRenderer` 与 `PhysTwinDynamics`，并附 HuggingFace `gs-scans`/`phystwin-*` 资产。
+2. **颜色对齐与软体建模缺一不可**：仅建 3DGS 外观而不做二次 IRLS 颜色校准会让视觉策略过早失效，而不引入 PhysTwin 弹簧-质点则会像纯刚体基准一样拉垮相关性。
+3. **适用于高成本真机前筛与大样本统计**：单 GPU 5–30 FPS 足以支撑 200-episode 级扩展评估（`r ≥ 0.897`），显著压低实体机械臂耗损。
 
-## 常见误区
+## 局限与常见误区
 
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+1. 不要将其视作零样本全自动跨场景通用模拟器——每换新实体桌面与软体材质仍需通过 Scaniverse/SuperSplat 重建并标定物性参数。
+2. 不可忽视照明漂移：真机光源大幅变化时仍需重新拟合 IRLS 颜色对齐参数。
+
+## 工程实践
+
+- **传感器采集与多软件标定对齐**：论文基准在 `xArm 7 + RealSense D405/D455 + GELLO` 平台上构建；利用 `Scaniverse` 与 `SuperSplat` 获取静态 Gaussian Splat 资产后，须经 `ICP/RANSAC` 刚体配准及**二次 IRLS 颜色对齐（quadratic IRLS color align）**消除真实相机曝光与白平衡偏移。
+- **Warp PhysTwin + LBS 软体动力学耦合**：在 NVIDIA Warp 中以弹簧-质点网格（PhysTwin）物理演化软体几何，并通过线性混合蒙皮（LBS）驱动 3D 高斯椭球同步形变，兼顾 `5–30 FPS/GPU` 的闭环渲染与软体交互。
+- **按任务特性对齐评测网格规模**：复现标准评测需分别准备对应规模初始状态网格（论文 Toy packing `39 demos / 20 grid eval`、Rope routing `56 / 27`、Push-T `60 / 16`），并可直接调用 HuggingFace `gs-scans` 与 `phystwin-*` 资产。
+
+## 源码运行时序图
+
+以下时序基于官方仓库 [kywind/real2sim-eval](https://github.com/kywind/real2sim-eval)（`master` 分支）：
+
+```mermaid
+sequenceDiagram
+    participant CLI as experiments/eval_policy.py
+    participant Env as BaseEnv (sim/envs/env.py)
+    participant Phys as PhysTwinDynamics (Warp + LBS)
+    participant GS as GSRenderer
+    participant Pol as PolicyInferenceWrapper
+
+    CLI->>Env: 初始化 Real2Sim 场景与初始物体位姿网格
+    loop 闭环仿真步进 (5–30 FPS/GPU)
+        Env->>GS: 基于当前刚体/软体位姿渲染 3DGS 多视角图像
+        GS-->>Pol: 下发对齐颜色后的视觉帧 + 关节状态
+        Pol-->>Env: 返回机器人末端/关节动作指令
+        Env->>Phys: Warp PhysTwin 步进软体动力学并用 LBS 形变高斯点
+    end
+    CLI-->>CLI: 汇总成功率并计算与真机的 Pearson r 与 MMRV
+```
 
 ## 关联页面
 
+- 评测闭环：[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 提供含软体交互的 3DGS Real2Sim 保真闭环与真机相关性验证
 - 列表实体：[Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)
 - 技术地图：[Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md)
 - 方法/任务：[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)
@@ -118,7 +149,7 @@ Real-to-sim robot policy evaluation with Gaussian splatting simulation of soft-b
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2511.04665>
-- [arXiv PDF](https://arxiv.org/pdf/2511.04665)：已通读方法部分（实验与附录以略读为准）：§III Method（问题定义、PhysTwin、Real-to-Sim GS 仿真构建、策略评测）、Fig. 2
+- [arXiv PDF](https://arxiv.org/pdf/2511.04665)：已全文通读 `arXiv:2511.04665v2`（涵盖 §III 方法、PhysTwin + IRLS + LBS 流程、Table I、200-episode 扩展实验，并核对 `kywind/real2sim-eval` 仓库）。
 
 ## 推荐继续阅读
 

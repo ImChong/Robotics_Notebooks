@@ -7,21 +7,24 @@
 - **编号：** 537/571
 - **入库日期：** 2026-08-10
 - **arXiv：** 2606.15032
-- **出处：** arXiv 2026
+- **出处：** arXiv 2026（v2，南京大学 & Cirquar Tech）
 - **论文：** <https://arxiv.org/abs/2606.15032>
-- **代码：** 未在清单中标注
+- **代码：** 无公开代码仓库（立场综述与评测方法论论文）
+- **最后核对：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文通读 `arXiv:2606.15032v2`（§1–§7 与 Tables 1–9，覆盖 6 大世界模型传统、Objective Mismatch 与 Model Exploitation / XGap 定义、四维正交 L0–L7 评测阶梯、约 40 项工作调研结果、Decision Contract 与门控得分 $S_{DC}$、真机最小可行协议及 Table 9 Reporting Card）
 
 - **Highlights（清单）：** Proposes an L0-L7 evaluation ladder spanning from visual plausibility to policy optimization utility, emphasizing intervention action fidelity and closed-loop rollout effectiveness.
 - **沉淀到 wiki：** [`wiki/entities/paper-sa-2606-15032-how-should-world-models-be-evaluated-for-embodie.md`](../../wiki/entities/paper-sa-2606-15032-how-should-world-models-be-evaluated-for-embodie.md)
 
 ---
 
-## 开源边界（步骤 2.5）
+## 开源边界（2026-11-21 复核）
 
-| 已发布 | 备注 |
-|--------|------|
-| 清单条目元数据 | 本 source 为策展摘录，非全文转存 |
-| 代码/权重 | 以项目页 / GitHub 实际链接为准；清单标注见上 |
+| 组件 | 状态 |
+|------|------|
+| `arXiv:2606.15032v2` 论文原文 | 已通读；立场综述与评测协议提案（Tables 1–9） |
+| 代码/基准实现 | 无独立官方代码仓 |
 
 ## 对 wiki 的映射
 

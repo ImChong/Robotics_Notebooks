@@ -8,7 +8,10 @@ tags:
   - benchmark
   - simulation
 status: complete
-updated: 2026-10-18
+original:
+  - ../../sources/papers/packlab_arxiv_2609_23784.md
+  - ../../sources/repos/packlab.md
+updated: 2026-11-21
 arxiv: "2609.23784"
 code: https://github.com/Correr-Zhou/PackLab
 related:
@@ -49,45 +52,60 @@ summary: "PackLab（arXiv:2609.23784）：把仿真平台、专用多模态模�
 | **arXiv** | [2609.23784](https://arxiv.org/abs/2609.23784) |
 | **开源** | **已开源** |
 | **要点** | 仿真平台 + 专用 MLLM + 分难度评测，随箱内状态更新决策。 |
-| **文内指标** | 公众号称主要证据来自物理仿真；未给具体数字。 |
+| **文内指标** | `PackLab-Bench`（60 cases / 905 steps）：`PackLab-VLM-9B` 达 `0.882 / 0.718 / 0.660`，对比 `SDF-Pack`（`0.602`）、`DBLF`（`0.554`）、`Qwen3.5-9B`（`0.209`）；含 AUBO 真机验证。 |
 
 ## 源码运行时序图
 
-以下为按仓库入口（`Correr-Zhou/PackLab`）推断的通用运行链路；入库日仅核实仓库可达，未逐文件阅读，具体脚本名以 README 为准。
+以下时序基于官方仓库 [Correr-Zhou/PackLab](https://github.com/Correr-Zhou/PackLab) 实际代码入口（评测：`eval/vllm_runner.py`；训练：`train/launch_verl.py`）：
 
 ```mermaid
 sequenceDiagram
-  participant U as 用户
-  participant R as Correr-Zhou/PackLab
-  participant E as 环境 / 数据
-  participant M as 模型 / 策略
-  U->>R: clone + 安装依赖（README）
-  U->>E: 准备基准 / 数据集或真机接口
-  U->>R: 训练或加载预训练权重
-  R->>M: 构建 PackLab 模型
-  U->>R: 运行评测脚本
-  R->>E: 重置环境、取观测
-  E-->>M: 观测
-  M-->>E: 动作 / 预测
-  R-->>U: 指标与日志
+  participant Runner as eval/vllm_runner.py
+  participant EvalLoop as rollout_case_with_client
+  participant Env as PackingEnv
+  participant Policy as PolicyLLMJson (vLLM)
+  participant Metric as PackingScore / EpisodeControl
+
+  Runner->>EvalLoop: 加载 PackLab-Bench 案例配置 (60 cases / 905 steps)
+  loop 按步更新箱内当前状态
+    Env-->>EvalLoop: 导出当前箱体多视角图像与候选物体状态
+    EvalLoop->>Policy: 发送结构化状态提示并请求 JSON 选件与落点
+    Policy-->>EvalLoop: 返回目标物体 ID 与摆放位姿
+    EvalLoop->>Env: 在物理仿真中执行放置并检测碰撞/稳定性
+    Env->>Metric: 累计装入体积比例、紧凑度与停止条件
+  end
+  Metric-->>Runner: 汇总分难度评测结果（训练侧对应 train/launch_verl.py）
 ```
+
+## 工程实践
+
+- **训练与评测解耦入口**：仓库通过 `train/launch_verl.py` 基于 `verl` 在 `PackData-20K` 语料上微调装箱 MLLM 策略；评测时通过 `eval/vllm_runner.py` 对接 vLLM 服务端并发跑完 `PackLab-Bench`。
+- **闭环状态更新替代静态规划**：每步均把已放入箱内后的真实物理碰撞与堆叠状态传回下一步提示词，迫使策略考虑为后续大件/规则件保留剩余空间。
+- **实体机械臂落地对齐**：作者将仿真落点与抓取流程映射到真实 **AUBO 机械臂**平台，检查物理碰撞与真实视觉反馈偏差。
 
 ## 实验与评测
 
-- 公众号称主要证据来自物理仿真；未给具体数字。
-- **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
+- **基准规模**：`PackLab-Bench` 共包含 **60 个分难度装箱案例**、累计 **905 步序贯决策**；配套训练语料为 **`PackData-20K`**。
+- **核心量化对比**：专用多模态模型 **`PackLab-VLM-9B`** 在三档/分项指标达到 **`0.882 / 0.718 / 0.660`**，显著高于几何启发式方法 **`SDF-Pack`（`0.602`）**、**`DBLF`（`0.554`）** 以及未微调基础模型 **`Qwen3.5-9B`（`0.209`）**。
+- **真机验证**：除物理仿真评测外，作者报告在 AUBO 机械臂真机环境下完成闭环装箱验证，证明多步决策策略具备可迁移的物理稳定性。
+
+## 局限与风险
+
+- **状态漂移与视觉遮挡风险**：真机深堆叠场景下的顶部遮挡或深度噪点会破坏下一步箱内可用空间估计，从而引发碰撞或悬空失效。
+- **吞吐延迟高于经典启发式**：每步通过 `PolicyLLMJson` 调用 vLLM 进行推理，节拍远慢于 `DBLF` 等纯几何算法；工业高节拍分拣线仍需模型蒸馏或加速部署。
+- **物体形态覆盖有限**：基准主要验证常见规则与一般刚体货箱，极端软包变形或高摩擦嵌合装箱不在当前主评估覆盖之内。
 
 ## 与其他工作对比
 
-- 横向索引见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)；同 arXiv 不重复造页。
+- 横向索引见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)；与仅考单次抓取或桌面重排的 [ManiSkill-HAB](./paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) 相比，PackLab 突出连续空间分配与多步布局余量约束。
 
 ## 结论
 
-**序贯装箱评测应同时看体积与紧凑度，且证据目前停留在仿真。**
+**序贯装箱必须采用“每步更新物理状态后的闭环指标”，仅靠未微调 MLLM（`0.209`）或传统静态启发式（`0.554`–`0.602`）难以稳定处理分难度紧致装箱。**
 
-1. 开源边界：**已开源** — 仓库可达（git ls-remote）。
-2. 核心机制：仿真平台 + 专用 MLLM + 分难度评测，随箱内状态更新决策。
-3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
+1. **开源可运行入口清晰**：训练入口为 `train/launch_verl.py`，闭环评测入口为 `eval/vllm_runner.py`（含 `rollout_case_with_client`、`PackingEnv`、`PolicyLLMJson`、`PackingScore`、`EpisodeControl`）。
+2. **专用闭环微调收益显著**：在 `PackLab-Bench`（60 cases / 905 steps）上，`PackLab-VLM-9B` 达到 `0.882 / 0.718 / 0.660`，较基础 `Qwen3.5-9B`（`0.209`）实现数量级跃升。
+3. **工程部署需平衡推理延迟**：上线前应对真机遮挡鲁棒性与 JSON 解码耗时进行压测，并与混合启发式策略对齐控制节拍。
 
 ## 关联页面
 

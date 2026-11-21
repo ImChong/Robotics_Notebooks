@@ -2,7 +2,9 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook, motion-imitation, evaluation, benchmark, humanoid]
 status: complete
-updated: 2026-11-06
+original:
+  - ../../sources/papers/humanoid_pnb_benchmarking-humanoid-imitation-learning-with-mo.md
+updated: 2026-11-21
 arxiv: "2512.07248"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
@@ -182,7 +184,7 @@ $$
 4. **适用边界要记牢。** 只在 SMPL 人形上做了定量验证，只用了两个策略，动力学假设理想化，标注计算慢；G1 上仅有定性演示。
 5. **复现前先核对开源状态。** 论文承诺公开分数与流水线，但截至 2026-11-06 没有可核实的仓库链接，附录公式方向与 MID 曲线也需要以原文 PDF 复核。
 
-## 与其他页面的关系
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
@@ -190,6 +192,10 @@ $$
 - 数据集与策略：[AMASS](./amass.md)（论文的数据源）、[PHC](./phc.md)（论文评测的策略之一）
 - 相关概念：[Imitation Learning](../methods/imitation-learning.md)、[Curriculum Learning](../concepts/curriculum-learning.md)（附录 C.1 的课程学习应用）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — MDS 与策略无关、刻画参考动作本身的难度，可在 ③ 策略任务成功率层评测时作任务难度维度
+
+## 源码运行时序图
+
+**不适用** — 论文 `arXiv:2512.07248v2` 提出策略无关的 `TVS`/`MDS` 运动难度度量、分级数据集 `MD-AMASS` 及 `MID`/`DSJE` 指标，未随论文附带公开可运行的训练或评测代码仓库。
 
 ## 参考来源
 
