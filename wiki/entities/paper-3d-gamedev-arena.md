@@ -133,6 +133,10 @@ flowchart TD
 - **证据层级：** 本页核对论文 HTML 全文与表格，不代表本地复现或验证论文各个系统结果；论文为 2026-11-18 v1 预印本。
 - **应用边界：** 游戏软件成功不等于仿真控制精度、Sim2Real 迁移效果或真机安全可信。
 
+## 与具身评测的边界
+
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：仅作**评测设计的跨领域对照**。GameDev Arena 的软件功能、试玩与真人偏好三轨可启发过程/结果分层评估，但其游戏开发分数不能充当机器人操作成功率、物理预测精度或 Sim2Real 证据。
+
 ## 关联页面
 
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)

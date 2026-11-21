@@ -130,6 +130,11 @@ flowchart TD
 - **评估版次：** REVERIE 仓库明列原版/v2 与 2026 新的 leaderboard 通知；提交结果时要核对当期规则。
 - **机器人落地：** 离散节点的成功率不覆盖局部避障、轮足动力学、感知延迟、场景变化、恢复策略及真机安全。
 
+## 与具身模型选型知识链的关系
+
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md)：本页的 VLN 任务属于语言条件下的空间导航，不能将 VLN 的路径成功率直接当作 VLA 操作能力或世界模型预测保真度。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：本页 NE/SR/SPL/nDTW 等导航指标应在该闭环中按任务、动作空间、停止条件与可复现性分别选用；它们不直接替代真机 Sim2Real 指标。
+
 ## 关联页面
 
 - [视觉–语言导航（VLN）任务总览](../tasks/vision-language-navigation.md)
