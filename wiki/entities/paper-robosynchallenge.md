@@ -2,9 +2,12 @@
 type: entity
 tags: [paper, dexterous-manipulation, synthetic-data, benchmark, challenge, vla, sim2real]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 arxiv: "2608.12416"
 code: https://github.com/EDEM-AI/RoboSynChallenge
+original:
+  - ../../sources/papers/robosynchallenge_arxiv_2608_12416.md
+  - ../../sources/repos/robosynchallenge.md
 related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
@@ -67,24 +70,27 @@ flowchart LR
 
 ## 源码运行时序图
 
-官方仓 [EDEM-AI/RoboSynChallenge](https://github.com/EDEM-AI/RoboSynChallenge)（归档见 [sources/repos/robosynchallenge.md](../../sources/repos/robosynchallenge.md)）：
+官方仓 [`EDEM-AI/RoboSynChallenge@45d9b9c`](https://github.com/EDEM-AI/RoboSynChallenge) 以 `scripts/eval_policy.py`（动态解析 `policy/{policy_name}/deploy_policy.yml` 并桥接 EmbodiChain Gymnasium 环境）和各策略目录 `policy/{act,dp}/eval.sh` 为实际入口（归档见 [sources/repos/robosynchallenge.md](../../sources/repos/robosynchallenge.md)）：
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor Dev as 开发者
     participant Install as EmbodiChain 安装
-    participant Data as HF datasets
-    participant Train as 训练脚本\nPI0/PI0.5/Motus/ACT/DP
-    participant Eval as 真实环境评测
-    Dev->>Install: 按 README 装依赖
-    Dev->>Data: 拉取 RoboSynChallenge/datasets
-    Dev->>Train: sim 上训练策略
-    Dev->>Eval: 提交/运行 real unseen 评测
-    Eval-->>Dev: 泛化分数
+    participant Data as HF RoboSynChallenge datasets
+    participant Train as 训练与权重<br/>PI0 / PI0.5 / Motus / ACT / DP
+    participant Eval as scripts/eval_policy.py<br/>与 policy/*/eval.sh
+    participant Real as 双臂 AgileX Piper<br/>真实未见环境
+    Dev->>Install: 按文档配置 EmbodiChain 与 Isaac Sim
+    Dev->>Data: 拉取 10 任务合成数据与 HF checkpoint
+    Dev->>Train: sim 上训练或加载已发布权重
+    Dev->>Eval: eval_policy.py --config deploy_policy.yml
+    Eval-->>Dev: 对照 evaluation_results/ pinned sim 结果
+    Dev->>Real: 提交到 unseen real 环境实测
+    Real-->>Dev: 真实操作成功率
 ```
 
-- **最短复现：** 装 [EmbodiChain](./embodichain.md) → 下 HF 数据 → 跑官方训练入口 → 对照 `evaluation_results/`。
+- **最短复现：** 装 [EmbodiChain](./embodichain.md) → 下 HF 数据 → 跑 `bash policy/act/eval.sh <task> random <ckpt> 0 --headless True` 或 `policy/dp/eval.sh` 对照 `evaluation_results/`。
 
 ## 工程实践
 
@@ -111,7 +117,15 @@ sequenceDiagram
 
 ## 实验与评测
 
-挑战赛 **只在未见真实环境** 终评；基线含 Transformer、Diffusion、VLA、WAM。具体 leaderboard 见项目页与 `evaluation_results/`。
+全套涵盖 **10 个双 AgileX Piper 6-DoF 臂灵巧操作任务**（Entry 4 / Mid 3 / High 3），每任务含 EmbodiChain **1,000** 条合成训练轨迹与 **60** 条真机评测样本（5 环境条件 × 4 位置 × 3 朝向，CC BY-NC-SA 4.0）：
+
+| 模型 | Sim 总成功率 | Real 总成功率 | 口径来源 |
+|------|--------------|---------------|----------|
+| **π0.5** | **38.50%** | **33.00%** | 论文 Table（10 任务） |
+| **Motus** | 31.50% | 27.50% | 论文 Table（10 任务） |
+| **π0** | 22.00% | 22.50% | 论文 Table（10 任务） |
+| **ACT（5 任务发布快照）** | **55.6%** | — | `evaluation_results/README.md` 100 ep/task |
+| **Diffusion Policy（10-step 快照）** | 33.4% | — | `evaluation_results/README.md` 100 ep/task |
 
 ## 与其他工作对比
 

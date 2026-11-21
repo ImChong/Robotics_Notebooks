@@ -17,8 +17,10 @@ tags:
   - jhu
   - ut-austin
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2507.12463"
+original:
+  - ../../sources/papers/mmhu_arxiv_2507_12463.md
 related:
   - ../overview/autonomous-driving-core-algorithms-series.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md

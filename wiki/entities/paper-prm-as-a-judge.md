@@ -11,9 +11,12 @@ tags:
   - baai
   - casia
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.14284"
-code: https://github.com/Yuheng2000/PRM-as-a-Judge
+code: https://github.com/YuyangLiu2003/PRM-as-a-Judge
+original:
+  - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
+  - ../../sources/repos/prm-as-a-judge.md
 related:
   - ../concepts/progress-reward-modeling.md
   - ./paper-progress-reward-modeling-survey.md
@@ -32,7 +35,7 @@ summary: "PRM-as-a-Judge 1.5（arXiv:2608.14284，BAAI / CASIA）：用 PRM 把 
 
 # PRM-as-a-Judge：机器人执行过程评测
 
-**PRM-as-a-Judge 1.5**（*A Toolkit for Robot Process Assessment*，[arXiv:2608.14284](https://arxiv.org/abs/2608.14284)，[项目页](https://prm-as-a-judge.github.io/)，[代码](https://github.com/Yuheng2000/PRM-as-a-Judge)）由 **北京智源人工智能研究院（BAAI）** / **中国科学院自动化研究所（CASIA）** 提出：不改被评策略，只消费其 rollout 视频，经过程奖励模型（PRM）得到进度曲线，再输出 Outcome–Process–Diagnosis（OPD）指标与交互报告。1.0 见 [arXiv:2603.21669](https://arxiv.org/abs/2603.21669)。
+**PRM-as-a-Judge 1.5**（*A Toolkit for Robot Process Assessment*，[arXiv:2608.14284](https://arxiv.org/abs/2608.14284)，[项目页](https://prm-as-a-judge.github.io/)，[代码](https://github.com/YuyangLiu2003/PRM-as-a-Judge)）由 **北京智源人工智能研究院（BAAI）** / **中国科学院自动化研究所（CASIA）** 提出：不改被评策略，只消费其 rollout 视频，经过程奖励模型（PRM）得到进度曲线，再输出 Outcome–Process–Diagnosis（OPD）指标与交互报告。1.0 见 [arXiv:2603.21669](https://arxiv.org/abs/2603.21669)。
 
 ## 一句话定义
 
@@ -90,21 +93,25 @@ flowchart LR
 
 ## 源码运行时序图
 
+对齐 [`YuyangLiu2003/PRM-as-a-Judge`](https://github.com/YuyangLiu2003/PRM-as-a-Judge) 仓内实际入口 `eval/run_eval.sh`、`eval/run_judge.py` 与 `eval/prm_judge/cli.py`（含 `eval` / `visualize` / `serve` 子命令与 `--prm dopamine|recorded|robometer` 后端）：
+
 ```mermaid
 sequenceDiagram
   autonumber
   participant U as 用户
   participant HF as Hugging Face
   participant SH as eval/run_eval.sh
-  participant J as eval/run_judge.py
-  participant R as 报告服务
+  participant J as run_judge.py / cli.py
+  participant P as curves + metrics.py
+  participant R as serve HTTP Range 报告
   U->>HF: hf download Robo-Dopamine-GRM-2.0-8B-Preview
   U->>SH: MANIFEST + PRM_PATH + VISUALIZE=1
-  SH->>J: 读 JSONL，采样视频
-  J->>J: PRM 出曲线，算 OPD
-  J-->>U: eval/results/run_* 与 metrics.xlsx
-  U->>J: serve --run-root
-  J->>R: 交互报告（视频↔曲线）
+  SH->>J: 调用 prm_judge.cli eval (--prm dopamine|robometer|recorded)
+  J->>P: manifest 校验 + PRM 推理 + 平滑 postprocess_progress
+  P->>J: 计算 MP/MC@q/PPL/CRA/STR/DRR/FNS/SQS
+  J-->>U: eval/results/run_* + metrics.xlsx + 报告
+  U->>J: python eval/run_judge.py serve --run-root
+  J->>R: 启动交互轨迹浏览器（视频↔进度曲线）
 ```
 
 复现从 `getting_started/PRM_as_a_Judge_quickstart.ipynb` 或捆绑 `eval/examples/manifest_demo_cases.jsonl` 起步；自备数据只改 manifest。
@@ -141,7 +148,7 @@ sequenceDiagram
 3. **真影响：Sim 高分不外推 Real** — 与 [sim↔real 评测 gap](../concepts/sim-vs-real-eval-gap.md) 同结论，这里给了过程指标版相关。
 4. **次要代价：judge 偏差** — 默认 Robo-Dopamine；重复动作与回退识别仍弱。
 5. **部署读法：** 先跑捆绑 demo，再把自有视频写成 JSONL；振荡任务换 sequence-style 对照。
-6. **工程读法：套件已开、RoboPulse++ 数据未齐** — 可复现评测管线，区间基准发布仍待跟。
+6. **工程读法：套件与 RoboPulse++ 均已开源** — 可直接复现评测管线，并以 [HF `lyy0715/RoboPulsePlusPlus`](https://huggingface.co/datasets/lyy0715/RoboPulsePlusPlus)（2026-08-31 发布）检验自研 judge。
 
 ## 与其他工作对比
 
@@ -154,7 +161,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **开源边界：** 工具仓可跑；RoboPulse++ 数据集截至 2026-08-17 仍 Coming Soon。
+- **开源边界（2026-11-21 复核）：** 原 `Yuheng2000/PRM-as-a-Judge` 链接返回 404，仓库已托管至 [YuyangLiu2003/PRM-as-a-Judge](https://github.com/YuyangLiu2003/PRM-as-a-Judge)；`RoboPulse++` 现已在 HF 发布（[`lyy0715/RoboPulsePlusPlus`](https://huggingface.co/datasets/lyy0715/RoboPulsePlusPlus)），仅依赖大模型推理资源与权重下载。
 - **Judge 即偏差：** 曲线质量上限是 PRM；负进度监督不足是论文自己点名的缺口。
 - **不改策略：** 诊断能指导采数/重加权，但本套件不是训练代码。
 - **冻结榜快照：** 分析绑在 2026-07-03 RoboDojo 公开视频，后续上榜模型需重跑。

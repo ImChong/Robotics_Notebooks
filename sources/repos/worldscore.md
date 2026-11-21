@@ -11,6 +11,8 @@
 - **项目页：** <https://haoyi-duan.github.io/WorldScore/>
 - **Hugging Face：** 数据集 [Howieeeee/WorldScore](https://huggingface.co/datasets/Howieeeee/WorldScore)；榜单 [Howieeeee/WorldScore_Leaderboard](https://huggingface.co/spaces/Howieeeee/WorldScore_Leaderboard)
 - **入库日期：** 2026-07-27
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 克隆 `haoyi-duan/WorldScore` 并核对 `worldscore/run_evaluate.py`、`world_generators/` 目录结构
 - **一句话说明：** 官方 WorldScore 工具链：配置 `.env` → 下载 3000 例数据集 → 在 `world_generators/` 适配 3D/4D/视频模型并生成 → `worldscore/run_evaluate.py` 跑十项指标 → 可选提交 JSON 上 HF 榜。
 - **沉淀到 wiki：** [WorldScore（论文实体）](../../wiki/entities/paper-worldscore.md)
 

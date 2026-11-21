@@ -2,7 +2,11 @@
 type: entity
 tags: [leaderboard, benchmark, vla, dexterous-manipulation, open-source, sjtu, evomind, meta-world, libero, calvin, robotwin]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+code: https://github.com/MINT-SJTU/Evo-SOTA.io
+original:
+  - ../../sources/sites/sota-evomind-tech.md
+  - ../../sources/repos/evo-sota-io.md
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -49,7 +53,7 @@ summary: "EvoMind & MINT-SJTU 维护的 VLA / 灵巧手多基准 SOTA 排行榜�
 
 | 轨道 | 基准（主指标） |
 |------|----------------|
-| **VLA** | LIBERO、LIBERO Plus、Meta-World、CALVIN（主看 ABC→D Avg. Len.）、RoboTwin 2.0（Hard SR）、RoboChallenge（Score）、RoboCasa-GR1-Tabletop |
+| **VLA** | LIBERO、LIBERO Plus、Meta-World、CALVIN（主看 ABC→D Avg. Len.）、RoboTwin 2.0（Hard SR）、RoboChallenge（Score）、RoboCasa-GR1-Tabletop、RoboCasa365 |
 | **Dex**（`/dex/`） | Adroit、DexArt、Bi-DexHands |
 
 ### 数据与排名逻辑

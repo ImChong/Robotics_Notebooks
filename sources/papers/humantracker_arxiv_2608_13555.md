@@ -11,8 +11,10 @@
   - 代码：<https://github.com/GalaxyGeneralRobotics/HumanTracker>
 - **机构：** 南开大学；清华大学；银河通用（Galbot）；上海交通大学；北京大学；上海期智研究院
 - **入库日期：** 2026-08-15
-- **最近复核：** 2026-08-15
-- **一句话说明：** 用 **153 h / 25K** 四族光学动捕基准 + 偏好对齐指标 **HumanScore**，纠正「MPJPE 好看但视频难看」的人形 motion tracking 评测错位；零样本对照 GMT / TWIST2 / SONIC / Humanoid-GPT。
+- **最近复核：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.13555v1 PDF 全文 1,647 行及官方仓 `GalaxyGeneralRobotics/HumanTracker` `README.md` 与 `src/humantracker/` 入口
+- **一句话说明：** 用 **153 h / 25K** 四族光学动捕基准 + 偏好对齐指标 **HumanScore**，纠正「MPJPE 好看但视频难看」的人形 motion tracking 评测错位；零样本对照 GMT / TWIST2 / SONIC / Humanoid-GPT（仓库 README 2026-09-28 续评 ScaleBFM / HEFT / HoloMotion 等 9 个 G1 tracker）。
 
 ## 核心论文摘录（MVP）
 

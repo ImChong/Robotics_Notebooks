@@ -9,6 +9,8 @@
 - **维护：** EvoMind Tech & MINT-SJTU（项目负责人 Lin Tao / @EvoMind）
 - **联系：** `business@evomind-tech.com`；GitHub Issues
 - **入库日期：** 2026-07-23
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对官方仓 `MINT-SJTU/Evo-SOTA.io@1ebb7d6` `README.md` 与 `app/benchmarks/` 路由结构，确认新增 `RoboCasa365` 支持
 - **一句话说明：** 社区维护的 **VLA + 灵巧手** 多基准排行榜：从已发表论文/仓库**摘录分数**（不重跑实验），按开源状态与评测协议分类展示，覆盖 LIBERO / Meta-World / CALVIN / RoboTwin 2.0 / LIBERO Plus / RoboChallenge / RoboCasa-GR1-Tabletop 与 Adroit / DexArt / Bi-DexHands。
 
 ## 覆盖基准（站点 README + Methodology）

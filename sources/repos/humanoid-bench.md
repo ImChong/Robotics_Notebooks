@@ -6,8 +6,11 @@
 - **类型：** repo
 - **技术路线分组：** 工程与实机部署
 - **链接：** https://github.com/carlosferrazza/humanoid-bench
+- **论文：** <https://arxiv.org/abs/2403.10506>
 - **入库日期：** 2026-07-30
-- **一句话说明：** 在人形仿真中提供十五项全身操作与十二项运动任务，并附Dreamer、SAC、PPO和TD-MPC2等训练代码；统一MuJoCo环境适合检验算法能否同时处理高维身体控制与任务交互。
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2403.10506v2 PDF 全文 3,298 行及官方仓 `carlosferrazza/humanoid-bench@cb11890` `README.md`、`humanoid_bench/env.py`
+- **一句话说明：** 基于 MuJoCo 的人形全身控制基准（默认 Unitree H1 + 双 Shadow Hands，61 维动作空间 / 151 维本体观测 @ 50 Hz，支持 H1/G1/Digit 与 448 个全身触觉 taxel），包含 15 项全身操作与 12 项运动任务及 DreamerV3 / TD-MPC2 / SAC / PPO / HRL（MJX）训练代码。
 - **开源状态（据主表）：** 已开源（以官方仓库 README 为准）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 - **沉淀到 wiki：** 是 → [`wiki/entities/humanoid-bench.md`](../../wiki/entities/humanoid-bench.md)

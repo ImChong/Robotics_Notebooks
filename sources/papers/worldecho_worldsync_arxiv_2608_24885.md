@@ -7,8 +7,10 @@
 - **原始链接：** <https://arxiv.org/abs/2608.24885>
 - **作者：** Sixiang Chen、Jiaming Liu、Jixian Wu、Yichen Guo、Tinghao Wang、Siyuan Qian、Hao Chen、Jiajun Cao、Jian Tang、Shanghang Zhang
 - **机构：** 北京大学多媒体信息处理国家重点实验室 / 计算机学院；北京人形机器人创新中心；纽约大学；电子科技大学；南洋理工大学；香港中文大学
-- **项目页 / 代码：** 论文与公开检索均未列项目页或 GitHub
+- **项目页 / 代码：** arXiv PDF v2 标注代码仓库 `<https://github.com/PKU-HMI-Lab/WorldEcho>`，但 **2026-11-21 实测返回 HTTP 404**，尚未公开
 - **入库日期：** 2026-08-27
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.24885v2 PDF 全文 4,903 行（主文 §1–§6、Table 1–10、Appendix A–H）；代码链接 `PKU-HMI-Lab/WorldEcho` 实测返回 HTTP 404
 - **一句话说明：** **WorldEcho** 用视觉完整性门控 + \(\mathrm{SE}(3)\) 末端 NDTW 评测专家与四类 off-expert 动作跟随；**WorldSync** 用覆盖扩展 + Action-Forcing Expert + Intervention-Effect 监督把 Cosmos 系 AC-WM 训成更可信的策略改进模拟器。
 
 ## 核心摘录（MVP）
