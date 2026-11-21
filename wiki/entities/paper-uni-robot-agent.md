@@ -6,7 +6,7 @@ project: https://uni-robot-agent.com
 code: https://github.com/Open-RUA/uni-robot-agent
 tags: [llm-agents, robot-manipulation, benchmark, open-source, tsinghua, uc-berkeley]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-21
 summary: "Uni-Robot-Agent 以统一工具和环境适配器连接开放模型与机器人，借助并行调度、物理状态快照及动作反馈完成跨环境闭环操作。"
 related:
   - ../entities/ora-open-robot-use-agents.md
@@ -145,6 +145,43 @@ sequenceDiagram
 - 基础复现：Python 3.11 Linux GPU 环境中安装 `uni-robot-agent`，使用 `setup --integration robodojo` 准备环境；运行前需配置模型 endpoint/key。**RoboDojo 代码默认启用 depth**，复现实验主设置须显式传 `--no-depth` 且保留相机标定。详见 [官方 README](https://github.com/Open-RUA/uni-robot-agent#quick-start) 和 [配置说明](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/integrations.md)。
 - 开源仓库中的真机执行涉及物理设备、驱动、标定及操作者安全流程，不应把安装示例直接当成上机验证。作者没有证明任意机器人即插即用；精密空间定位、双臂协调和长任务仍具挑战。
 - 本次仅进行论文与公开源码静态核查；**未实测复现 benchmark、API 成本或硬件控制**。
+
+### 2026-11-17 上游 main 新增 Piper-X（尚未包含在 v0.2.0 发布包）
+
+- **开源范围：** [Piper-X 集成原始文档](https://github.com/Open-RUA/uni-robot-agent/blob/main/uni_robot_agent/integrations/piper_x/README.md) 和 [源码](https://github.com/Open-RUA/uni-robot-agent/tree/main/uni_robot_agent/integrations/piper_x) 已在上游 `main` 发布：双臂 CAN + RealSense RGB-D，通过共享 Direct 工具和 Body 原生服务接入；`readonly` 模式仅观测。官方 [v0.2.0 Release](https://github.com/Open-RUA/uni-robot-agent/releases/tag/v0.2.0) 不包含 Piper-X，需要源码安装及独立原生服务。Franka 仍为 coming soon。
+- **真实运行入口：** `python -m uni_robot_agent.integrations.piper_x validate --deployment ...`（离线检查）→ `host-config` → 分别启动 arms/cameras Body → `python -m uni_robot_agent.integrations.piper_x environment --execute ...` → `uni-robot-agent run --integration piper_x --robot-id ... --env-url ... --agent codex --model ... --action-profile direct`。只有经安装现场标定与验收后才可启用 `--execute`；`readonly` 不需要该开关。详见官方部署指南，命令省略的必填部署参数不可直接照抄上机。
+- **执行与安全：** `adapter.py` 的 `step_path` 走组路径 Body RPC，`control.py` 负责租约、执行回执和停止确认；`command_limits` **不检查桌面、自碰与双臂互碰**，不能等同碰撞安全通过。未知动作结果不会重发，需人工恢复；软件停止也不是认证急停。真机 `task_success` 由外部评估，不从 Agent 自称完成推断。
+- **证据边界：** [官方 Piper-X README](https://github.com/Open-RUA/uni-robot-agent/blob/main/uni_robot_agent/integrations/piper_x/README.md#validation-boundary) 记录 2026-11-13 两次受监督放水果试验：一次验收通过、另一次因末端撤回跟踪误差 **30.66 mm** 超过 **30 mm** 阈值，保留 `execution_uncertain`/quarantine。它们不是论文的 19 项真机基准，也不足以证明部署可靠性；本次只核对官方文档和源码，未实际上电。
+
+上游代码运行时序（`piper_x/__main__.py`、`environment/server.py`、`environment/adapter.py`、`environment/control.py`）：
+
+```mermaid
+sequenceDiagram
+  participant O as Operator
+  participant M as piper_x.__main__
+  participant B as Native Body hosts
+  participant E as EnvironmentService
+  participant P as Agent / shared tools
+  participant A as Piper-X Adapter
+  participant C as Control / Body RPC
+  O->>M: validate / host-config (offline)
+  O->>B: launch arms and cameras Body hosts
+  O->>M: environment --execute (after commissioning)
+  M->>E: build_service / serve
+  O->>P: run --integration piper_x
+  P->>E: Direct tool action via environment service
+  E->>A: step_path(PathCommand)
+  A->>C: invoke_group / wait_operations
+  C->>B: authenticated control request
+  B-->>C: measured status and operation receipts
+  C-->>A: confirmed or unknown outcome
+  A-->>E: structured step receipt
+  E-->>P: action evidence for next decision
+  opt Operator cancellation
+    O->>E: SIGTERM / Ctrl-C
+    E->>A: finish("operator_cancelled")
+  end
+```
 
 ## 局限与风险
 

@@ -219,6 +219,7 @@ flowchart LR
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor
 - [ACE-CaP-0](../wiki/entities/paper-ace-cap-0.md) — 开发期按需示范/仿真，冻结代码策略在执行期脱离编码 Agent
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
+- [Uni-Robot-Agent / OpenRUA](../wiki/entities/paper-uni-robot-agent.md) — Stage 4 统一 Tool/环境适配器、带回执的执行与资源调度；同一 Qwen 在 RoboDojo 的 1.90→31.39 是跨 harness 比较而非新权重训练。工程侧可对照已发布 ARX ONE 与仅源码可用的 Piper-X；复现实验应区分 Score/SR、相机标定、深度输入和真机安全条件。
 - [STVLA](../wiki/entities/paper-stvla-spatial-temporal-memory.md) — 用空间几何与有界历史记忆改善长任务中遮挡与状态歧义
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
 - [ARP：异步机器人策略](../wiki/entities/paper-asynchronous-robot-policies.md) — 将 VLM 低频语义缓存与自带实时视觉的高频动作专家分进程运行，训练显式建模缓存陈旧和执行延迟；动态扰动更稳，但通用 RoboLab 仍落后 π0.5（官方源码/权重待发布）
