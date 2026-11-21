@@ -256,6 +256,7 @@ flowchart LR
 - 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[导航纵深](depth-navigation.md)
 
 **方向 C：评测与安全一致性**
+- [WAM 设计要素受控实证](../wiki/entities/paper-wam-design-empirical-study.md) — 六种因果、八种潜表征、四类目标的 ID/OOD 对照；用时序反转和 DROID 离线验证区分辅助世界监督与真实闭环价值。
 - [HINT-WAM：未来视频自蒸馏后训练](../wiki/entities/paper-hint-wam.md) — 无 reward 的学生自采样分布监督，比较新任务收益与原任务遗忘。
 - 同时看世界侧（保真、物理常识、动作可推断性）与策略侧（成功率、长程、sim2real）；避免单侧代理
 - [VLAW：真实失败校准与想象策略改进](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 对照接触物理误判、Qwen3-VL 奖励 FP/FN 和真机策略成功率，强调视觉逼真与物理可信不同；为 WM 辅助策略后训练的边界案例。

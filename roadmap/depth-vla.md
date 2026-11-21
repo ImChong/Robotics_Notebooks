@@ -207,6 +207,8 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+- [H-VLA（关键动作→规划）](../wiki/entities/paper-h-vla.md) — 统一双臂相机坐标、关键末端目标与连续规划接口；关注相机标定和阶段间失效。
+- [Co-VLA（双臂协同 SAE/LAC）](../wiki/entities/paper-co-vla.md) — 共享/残差双臂结构加执行期修正，逐项对照 Handover 与 OOD 任务的正负增益。
 - [VLA 动作到关节力矩的执行链路](../wiki/concepts/vla-action-to-joint-torque.md) — 从模型动作反归一化、IK 与阻抗控制贯通到关节力矩与伺服电流环，核对模式、频率和安全约束。
 - [Agentic-Teacher：失败驱动 VLA 后训练](../wiki/entities/paper-agentic-teacher-2611-17394.md)：定向生成纠错演示并通过流匹配损失过滤。
 - [PEAR：仿真强化学习训练机器人原生推理模型](../wiki/entities/paper-pear-robot-use-rl.md)：记录大模型动作接口与分布式 rollout 部署前验收。

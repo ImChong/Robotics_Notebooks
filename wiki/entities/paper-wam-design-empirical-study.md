@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: wam-design-empirical-study
 tags:
   - paper
   - wam
@@ -15,8 +16,10 @@ tags:
   - whu
   - zhongguancun-academy
 status: complete
-updated: 2026-09-22
+updated: 2026-11-21
 arxiv: "2609.24048"
+original:
+  - ../../sources/papers/wam_design_empirical_arxiv_2609_24048.md
 venue: arXiv 2026
 related:
   - ../concepts/world-action-models.md
@@ -202,7 +205,10 @@ flowchart TB
 6. **真机信号一致：** DROID 离线四项指标支持因果/framewise/VG 三条 simulation 结论的方向性。
 7. **选型动作：** 读系统论文时先问三轴——**动作是否读未来 route、latent 是否 inter-frame、辅助目标在第几阶段**。
 
-## 与其他页面的关系
+## 关联页面
+
+- [RoboICL 具身上下文学习](./paper-roboicl.md) — 冻结多模态策略在执行期利用上下文，不等同训练期 WAM 世界辅助监督。
+- [VLA 纵深](../../roadmap/depth-vla.md) 与 [WAM 纵深](../../roadmap/depth-wam.md) — 对照动作预测、未来世界建模与部署架构的不同边界。
 
 - [World Action Models](../concepts/world-action-models.md) — WAM 范式总览；本文补 **受控设计原则**
 - [VLA](../methods/vla.md) — BC-only 在 ID 上相对 WAM 辅助目标的定位
@@ -212,6 +218,8 @@ flowchart TB
 - [LIBERO benchmark](./libero-benchmark.md) — LIBERO-Plus OOD 协议背景
 
 ## 参考来源
+
+- [arXiv v1 HTML（含消融与附录）](https://arxiv.org/html/2609.24048v1)
 
 - [wam_design_empirical_arxiv_2609_24048](../../sources/papers/wam_design_empirical_arxiv_2609_24048.md)
 - 论文：<https://arxiv.org/abs/2609.24048>
