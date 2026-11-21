@@ -6,6 +6,8 @@
 - **关联仓库：** <https://github.com/leggedrobotics/pace-sim2real>
 - **关联论文：** arXiv:2509.06342
 - **收录日期：** 2026-07-15
+- **通读：** 已完成
+- **核对范围：** 核对 `pace.filipbjelonic.com` 官方文档站（28,765 字节 HTML）与 `arXiv:2509.06342`。
 
 ## 一句话
 

@@ -12,6 +12,8 @@
 - **原始抓取落盘：** [wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026-08-27.md](../raw/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026-08-27.md)
 - **姊妹长文：** [42 篇 RL 运动控制](wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（身体系统栈总框架）
 - **一句话说明：** 把 *Science Robotics* 11(117) 同期三篇——[ZEST](../../wiki/entities/paper-zest.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[视觉驱动反应式足球](../../wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)——读成**三个系统层级**（技能编译器 / 运动基础模型 / 感知任务策略），而不是互相竞争的通用 tracker。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026-08-27.md` 419 行全文及三篇《Science Robotics》论文。
 
 ## 核心摘录（归纳，非全文）
 

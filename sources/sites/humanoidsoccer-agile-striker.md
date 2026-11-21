@@ -8,6 +8,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** UT Austin / Sony AI 人形连续踢球项目页：四阶段教师–学生管线、真机连续踢球视频、仿真/真机数字与消融摘要。
 - **开源状态（2026-07-28 核查）：** **已开源** — 官方代码仓 [Daffan/humanoid-soccer](https://github.com/Daffan/humanoid-soccer)（README 标明 ICRA 2026 code release；项目页为配套站点）。
+- **通读：** 已完成
+- **核对范围：** 核对 `humanoidsoccer.github.io` 官方项目页（17,012 字节 HTML）与 `arXiv:2512.06571`。
 
 ## 页面公开信息（检索自 2026-07-28）
 

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, reinforcement-learning, swarm, gym, quadcopter, multi-agent, mit]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./gym-pybullet-drones.md
@@ -11,11 +11,16 @@ related:
 sources:
   - ../../sources/repos/quad_swarm_rl.md
 summary: "quad-swarm-rl 提供 OpenAI Gym 兼容的多四旋翼环境，用于群体强化学习（编队、避碰、协同任务）的原型实验。"
+original: ../../sources/repos/quad_swarm_rl.md
 ---
 
 # quad-swarm-rl
 
 **quad-swarm-rl**（[Zhehui-Huang/quad-swarm-rl](https://github.com/Zhehui-Huang/quad-swarm-rl)）是 **多四旋翼 Gym 环境** 的轻量实现，面向 **MARL / swarm RL** 快速试验。
+
+## 一句话定义
+
+**quad-swarm-rl**：基于扩展 `gym_art` 动力学与 Sample Factory 异步 PPO（APPO）引擎的开源多四旋翼群体强化学习仿真环境，专注于大规模并行无人机集群编队、局部邻域观测、障碍避碰与协同目标追踪算法验证。
 
 ## 英文缩写速查
 
@@ -28,13 +33,13 @@ summary: "quad-swarm-rl 提供 OpenAI Gym 兼容的多四旋翼环境，用于�
 - 与 [gym-pybullet-drones](./gym-pybullet-drones.md) **功能重叠但社区更小**，适合作为 **第二实现** 对照观测/动作/reward 设计。
 - 真机 swarm 部署应看 [Crazyswarm2](./crazyswarm2.md) 等 **真机编排** 栈，而非仅 Gym 仿真。
 
-## 核心结构/机制
+## 核心机制
 
 - 多 quad 同场景并行步进  
 - Gym 风格 `reset` / `step`  
 - 用于编队、避碰、协同追踪等 MARL 任务原型  
 
-## 常见误区或局限
+## 局限与风险
 
 - **局限：维护与文档** — Stars 与 issue 活跃度低于 UTIAS 环境；生产研究优先 gym-pybullet-drones。
 - **局限：无 PX4 耦合** — 纯仿真 RL，上真机需完整迁移管线。
@@ -69,6 +74,10 @@ sequenceDiagram
 ```
 
 图依据：Zhehui-Huang/quad-swarm-rl@e18d692，读过 `README.md`、`setup.py`、`train.sh`、`swarm_rl/train.py`、`swarm_rl/enjoy.py`（仅入口）、`swarm_rl/env_wrappers/quad_utils.py`、`reward_shaping.py`（step 片段）、`swarm_rl/runs/single_quad/{single_quad,baseline}.py`、`gym_art/quadrotor_multi/quadrotor_multi.py`（reset/step 片段）、`quadrotor_single.py`（_step 片段）。`sample_factory` 内部（第三方）、神经网络结构细节、渲染与 sim2real 未读，未画。
+
+## 工程实践
+
+- **环境配置与多 GPU 启动**：使用 Python >= 3.11 通过 `pip install -e .` 安装，调用 `python -m sample_factory.launcher.run --run=swarm_rl.runs.single_quad.single_quad` 启动 APPO 并行采样；务必配合 `anneal_collision_steps` 退火机间碰撞惩罚系数并使用 `swarm_rl.enjoy` 做定性轨迹验证，留意该库仅覆盖 Gym 仿真而无真机 PX4/动捕硬件对接。
 
 ## 参考来源
 

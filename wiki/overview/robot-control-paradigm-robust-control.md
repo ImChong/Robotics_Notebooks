@@ -14,6 +14,7 @@ related:
   - ../methods/sliding-mode-control.md
   - ../methods/h-infinity-control.md
   - ../methods/mu-synthesis-control.md
+original: ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 ---

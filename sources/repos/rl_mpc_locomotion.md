@@ -12,6 +12,8 @@
 - **核查：** 仓库可达（`git ls-remote`，浅克隆读 README，不运行代码）
 - **文章星标（文章表述）：** 946
 - **沉淀到 wiki：** [`wiki/entities/rl-mpc-locomotion.md`](../../wiki/entities/rl-mpc-locomotion.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `silvery107/rl-mpc-locomotion` 官方 `README.md`（122 行）。
 
 ## README 摘录（入库日人工阅读）
 

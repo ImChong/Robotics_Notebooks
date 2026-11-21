@@ -16,7 +16,7 @@ tags:
   - archon-robotics
   - perception
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2606.11092"
 code: https://github.com/OpenDriveLab/RoboNaldo
 related:
@@ -38,6 +38,10 @@ sources:
   - ../../sources/repos/robonaldo.md
   - ../../sources/repos/robonaldo-deploy.md
 summary: "RoboNaldo（arXiv:2606.11092）：以单条人类踢球参考为 scaffold 的三阶段 motion-guided curriculum RL；G1 真草室外 3 m 平均误差 0.73 m/0.86 m、最高 13.10 m/s；已开源 Isaac Lab 训练仓 + RoboNaldo_Deploy 真机/MuJoCo 部署。"
+original:
+  - ../../sources/papers/robonaldo_arxiv_2606_11092.md
+  - ../../sources/repos/robonaldo.md
+  - ../../sources/repos/robonaldo-deploy.md
 ---
 
 # RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）

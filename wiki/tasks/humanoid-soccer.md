@@ -1,8 +1,8 @@
 ---
 type: task
 tags: [humanoid, soccer, robocup, rl, perception, kicking]
-status: draft
-updated: 2026-11-11
+status: complete
+updated: 2026-11-22
 related:
   - ../entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md
   - ../entities/paper-joga-humanoid-soccer.md
@@ -50,6 +50,11 @@ sources:
   - ../../sources/sites/joga-humanoid-soccer.md
   - ../../sources/repos/joga-neck.md
 summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。"
+original:
+  - ../../sources/papers/robonaldo_arxiv_2606_11092.md
+  - ../../sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md
+  - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
+  - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
 ---
 
 # Humanoid Soccer
@@ -60,7 +65,24 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 
 让两队人形机器人在足球场上像人类一样踢球，不摔倒、能进球、懂配合。
 
-## 核心挑战
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| ACO | Ant Colony Optimization | 蚁群优化；人形足球 swarm 角色分配常用机制 |
+| SPL | Standard Platform League | RoboCup NAO 人形联赛；通信配额极严 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
+## 为什么重要
+
+- **人形全栈自主能力的集中试金石**：与单一实验室演示动作不同，RoboCup 人形足球在对抗性、非结构草坪与严格通信限制下同时考察全向敏捷移动、视觉主动感知、高冲量单脚踢球与多机角色战术协作。
+- **从单机技能到团队涌现的演进主线**：梳理了从基于 HTWK-Gym / Booster RoboCup Demo 的模块化分层状态机，向 PAiD / RoboNaldo / Joga 感知–动作端到端技能以及 ARTEMIS / Swarm 去中心化多机协调迁移的系统全景。
+
+## 核心机制与核心挑战
 
 ### 1. 动态感知与定位
 机器人必须在快速移动中识别高速滚动的足球、对手机器人、场地边线和球门，并实时更新自身位姿。广播/第三人称侧的检测–跟踪–俯视投影可参考 [Roboflow Sports](../entities/roboflow-sports.md)；网球广播对照见 [Tennis-Vision](../entities/tennis-vision.md)（地板单应失效与拒报）。机载场线定位见 [视觉场线定位流水线](../queries/soccer-visual-field-localization-pipeline.md)。
@@ -113,17 +135,15 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 | **踢球 (Kick)** | 单脚支撑平衡、摆腿轨迹规划、高冲量触球时机 | RLVisionKick / PAiD / RoboNaldo / Vision-Driven Reactive Soccer |
 | **跌倒恢复 (Get up)** | 接触力反馈、全身协同规划 | 预设 Keyframe / RL Getup |
 
-## 英文缩写速查
+## 工程实践
 
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| ACO | Ant Colony Optimization | 蚁群优化；人形足球 swarm 角色分配常用机制 |
-| SPL | Standard Platform League | RoboCup NAO 人形联赛；通信配额极严 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+- **感知–决策–底层控制分频落地**：工程队伍常见做法是在 Jetson Orin / AGX 跑高频轻量检测与 GameController 裁判协议对接（如 ROS 2 分层树），将底层双足行走、踢球与倒地起身封装为由 RL（Isaac Gym/Lab 或 mjlab + JIT/ONNX）导出的参数化技能库。
+- **严格核算机载通信与感知噪声预算**：受 RoboCup 严苛的队均 WiFi 带宽和单播限制约束，训练环境需显式注入检测时延、丢帧与草地接触摩擦随机化，避免理想仿真高成功率在实场大幅退化。
+
+## 局限与风险
+
+- **模块化延后与端到端长时程冲突**：规则状态机配合技能库易出现“看到但出脚迟滞”，而纯端到端扩散/RL 策略在长时程球队角色换防和通信极度受限场上仍面临样本覆盖与可控性边界。
+- **部分课程资料受限于登录墙**：大纲关联的深蓝学院视频讲义受会员登录墙保护未全面核对细节，任务系统选型仍以开源论文（RoboNaldo / PAiD / ARTEMIS / Sensors 2025）及代码仓为实证基准。
 
 ## 参考来源
 
@@ -140,7 +160,12 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 - [humanoid_soccer_swarm_intelligence_sensors_2025.md](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md) — 人形足球 swarm 群控（Sensors 2025）
 - [artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md) — ARTEMIS 冠军系统群控摘录
 
-## 关联系统/方法
+## 推荐继续阅读
+
+- 技能选型指南：[人形足球技能学习方法选型指南](../queries/humanoid-soccer-skill-learning-method-selection.md)
+- 纵深主线：[人形机器人足球纵深路线](../../roadmap/depth-humanoid-soccer.md)
+
+## 关联页面
 
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch6–7 感知定位与 RoboCup 实践地图
 - [足球场仿真环境](../concepts/soccer-field-simulation.md) / [场地线检测](../methods/soccer-field-line-detection.md) / [线匹配](../methods/visual-line-matching-localization.md) / [线特征 EKF](../methods/visual-line-ekf-fusion.md)

@@ -10,6 +10,8 @@
 - **路线：** Loco-Manipulation
 - **入库日期：** 2026-06-11
 - **一句话说明：** 列入 Paper Notebooks 阅读进度，深读笔记尚未完成；本文件为 **进度 → wiki** 溯源锚点。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2509.16638`（KungfuBot2）PDF 全文与 `TeleHuman/PBHC` 官方 `README.md`。
 
 ## 核心摘录（策展，非全文）
 

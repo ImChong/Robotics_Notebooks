@@ -8,6 +8,8 @@
 - **数据：** <https://huggingface.co/datasets/LuluCao/KungfuAthleteBot>
 - **源码状态：** 已开源部分训练、动作处理与部署流程；README 勾选数据、height-adjustment、training、FastSAC、1307 恢复 checkpoint 与 real deployment。项目页仍保留旧版 arXiv 2602.13656 / 848 样本简介，且写有更多模型将发布。
 - **数据状态：** HF 当前数据卡计 992 样本（Ground 822、Jump 170），标记 Apache-2.0；原始武术视频因人物隐私/素材许可不再分发。新论文附录 E 对应写 848 筛选样本、30 fps robot qpos，并称完整资料将在接收后 MIT 发布。公开页面之间版本和许可口径不一致，使用者应逐资产核对。
+- **通读：** 已完成
+- **核对范围：** 核对 `kungfuathletebot.github.io`（68,235 字节 HTML）、`arXiv:2602.13656` 与 `NPCLEI/KungFuAthleteBot` `README.md`。
 
 ## 项目页可确认的信息
 

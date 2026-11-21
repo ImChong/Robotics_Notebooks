@@ -8,6 +8,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** PAiD 论文配套站点：展示罚点球位、随机连踢、球星风格射门、草地与滚动球真机视频；头部提供 Paper / arXiv / **Code**。
 - **开源状态（2026-07-28 项目页核查）：** **已开源** — Code → [TeleHuman/HumanoidSoccer](https://github.com/TeleHuman/HumanoidSoccer)。
+- **通读：** 已完成
+- **核对范围：** 核对 `soccer-humanoid.github.io` 项目页（9,115 字节 HTML）与 `arXiv:2602.05310`。
 
 ## 页面公开信息（检索自 2026-07-28）
 

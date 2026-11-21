@@ -12,6 +12,7 @@ related:
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ../entities/isaac-rl-two-wheel-legged-bot.md
+original: ../../sources/papers/brunke_safe_learning_robotics_arxiv_2108_06266.md
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
@@ -22,6 +23,10 @@ summary: "安全强化学习（Safe RL）旨在满足显式安全约束的前提
 # Safe RL（安全强化学习）
 
 **安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agent）持续试错、学习和最大化任务奖励（Reward）的过程中，能够**提供数学或经验层面上的绝对安全保证**，确保其行为永远不违反预定义的物理边界或致命约束。
+
+## 一句话定义
+
+**Safe RL（安全强化学习）** 在策略优化与在线探索中显式约束状态与执行器物理边界（经 CMDP 期望约束、控制屏障惩罚/终止或外置安全过滤器），确保机器人训练与真机部署可控而不致硬件损伤。
 
 ## 英文缩写速查
 
@@ -37,7 +42,7 @@ summary: "安全强化学习（Safe RL）旨在满足显式安全约束的前提
 | CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
 | MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
 
-## 为什么需要专属的 Safe RL？
+## 为什么重要（为何需要 Safe RL）
 
 在传统的无模型强化学习（Vanilla Model-Free RL）中，处理约束最常见的手法是**奖励塑形（Reward Shaping）**——即在奖励函数中直接减去违反规则的惩罚项（例如：$R = r_{task} - 100 \times \text{撞墙}$）。然而，这种软性惩罚在复杂的具身智能应用中存在难以逾越的障碍：
 
@@ -45,7 +50,7 @@ summary: "安全强化学习（Safe RL）旨在满足显式安全约束的前提
 2. **缺乏硬边界（No Hard Guarantees）**：普通的策略梯度优化（如 PPO）没有任何机制保证下一步动作绝对安全，在真实硬件（如机械臂、双足机器人）的训练和部署中，这意味着必然发生的撞击毁损风险。
 3. **探索期的危险性**：强化学习在早期依赖高方差的随机动作探索空间，这就决定了它不可能在零样本、纯黑盒的情况下安全地在物理世界直接试错。
 
-## 核心理论框架：受限马尔可夫决策过程 (CMDP)
+## 核心原理：受限马尔可夫决策过程 (CMDP)
 
 Safe RL 在理论上主要构建于 **Constrained MDP (CMDP)** 之上。在 CMDP 中，除了标准的奖励函数 $R(s, a)$ 外，还显式引入了一组独立的代价函数 $C_i(s, a)$ 和对应的阈值 $\hat{c}_i$。优化的核心目标从“无底线最大化”变为了严谨的带约束优化问题：
 $$ \max_{\pi} J_R(\pi) \quad \text{s.t.} \quad J_{C_i}(\pi) \leq \hat{c}_i \quad \forall i $$
@@ -86,6 +91,14 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - **验证侧互补：** 在线 Safe RL / 安全层管「部署时别越界」；商业栈上用 AST/DiFS + PCA 挖稀有碰撞与 eigenfailures 见 [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md)（离线验证，不替代硬约束）。
 - **感知感知 CBF-RL：** [PAC-MAN](../entities/paper-pac-man-perceptive-cbf-rl.md) 把全身 Link-CBF 写进训练奖励、部署去掉运行时滤波，在 Unitree G1 上用机载掩膜深度零样本躲避球（19/20）。
 
+## 工程实践
+
+- **从确定性仿真走向不确定真机（Brunke et al., arXiv:2108.06266v2 § 4）**：纯奖励罚或期望 CMDP 在训练未收敛前仍会出现违例；实际足式与人形真机常联合采用「约束即终止 + PAC-MAN/SafeWBC 类感知-安全过滤 + 物理级阻尼急停」。
+
+## 局限与常见误区
+
+- 算法级期望安全约束无法替代功能安全级硬保护（参见 Fail-Passive Gap）；域随机化外推失败时仍需要独立保护策略接管。
+
 ## 关联页面
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Control Barrier Function](../concepts/control-barrier-function.md)
@@ -97,8 +110,14 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - [lab.flamingo](../entities/isaac-rl-two-wheel-legged-bot.md) — CaT（约束即终止）在双轮足 Isaac Lab 任务上的实现
 
 ## 参考来源
+- [brunke_safe_learning_robotics_arxiv_2108_06266.md](../../sources/papers/brunke_safe_learning_robotics_arxiv_2108_06266.md) — Brunke et al., *Safe Learning in Robotics* (arXiv:2108.06266v2 全文综述)
 - [机器人论文阅读笔记：RMA](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
 - Achiam, J., et al. (2017). *Constrained Policy Optimization*.
 - Ray, A., et al. (2019). *Benchmarking Safe Deep Reinforcement Learning*.
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md)
 - [PAC-MAN 论文策展](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)
+
+## 推荐继续阅读
+
+- [CMDP 形式化](../formalizations/cmdp.md) — 约束优化数学底座
+- [Safety Filter](../concepts/safety-filter.md) — 运行时硬投影安全壳

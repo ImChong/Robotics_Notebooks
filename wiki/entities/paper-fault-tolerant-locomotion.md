@@ -13,7 +13,7 @@ tags:
   - kyon
   - iit
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2608.07328"
 related:
   - ../tasks/locomotion.md
@@ -29,6 +29,7 @@ sources:
   - ../../sources/papers/fault_tolerant_locomotion_arxiv_2608_07328.md
   - ../../sources/sites/fault-tolerant-locomotion-github-io.md
 summary: "Fault-Tolerant Locomotion（arXiv:2608.07328，IIT）：非对称 actor–critic + latent-alignment，动作为关节目标 + 可学习步态频率，应对执行器功率损失；KYON 68 kg 崎岖仿真与平地真机零样本；截至 2026-08-11 确认未开源。"
+original: ../../sources/papers/fault_tolerant_locomotion_arxiv_2608_07328.md
 ---
 
 # Fault-Tolerant Locomotion（执行器失效自适应步态）

@@ -11,6 +11,8 @@
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
 - **一句话说明：** 底层 motor control 成熟后上层协作/战术才有空间。
+- **通读：** 已完成
+- **核对范围：** 通读 DeepMind *From Motor Control to Team Play in Simulated Humanoid Football* (`arXiv:2105.12196`, 195,006 字符) PDF 全文。
 
 ## 核心摘录（策展，非全文）
 

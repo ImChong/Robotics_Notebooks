@@ -13,6 +13,8 @@
 - **机构：** Garena、东南亚人工智能实验室（Sea AI Lab）、新加坡国立大学（NUS）
 - **入库日期：** 2026-06-25
 - **一句话说明：** **单一去中心化 Transformer 策略** + **队友 token 交叉注意力**，配合 **masked AMP**（交互部位用 $D_{\text{mask}}$、非交互用 $D_{\text{full}}$），在 2–8 人协作搬桌任务上零重训泛化队形与桌面几何。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2603.07988` TeamHOI PDF 全文与 `sail-sg/TeamHOI` `README.md`。
 
 ## 摘要级要点
 

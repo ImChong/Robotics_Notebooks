@@ -16,6 +16,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** OMG DDS / RTPS 的完整 C++ 实现；ROS 2 默认 RMW 之一（经 `rmw_fastrtps`）；双层 DDS+RTPS API、多传输与 Discovery Server。
 - **沉淀到 wiki：** 是 → [`wiki/entities/fast-dds.md`](../../wiki/entities/fast-dds.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `eProsima/Fast-DDS` 官方 `README.md`（201 行）。
 
 ## 开源状态（2026-07-28）
 

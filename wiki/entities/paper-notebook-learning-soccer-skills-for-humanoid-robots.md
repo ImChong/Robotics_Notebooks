@@ -15,7 +15,7 @@ tags:
   - zju
   - sjtu
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2602.05310"
 code: https://github.com/TeleHuman/HumanoidSoccer
 related:
@@ -35,6 +35,9 @@ sources:
   - ../../sources/sites/soccer-humanoid-paid.md
   - ../../sources/repos/humanoid_soccer.md
 summary: "PAiD（arXiv:2602.05310）：运动跟踪 → 轻量感知融合 → 物理对齐 Sim2Real 三阶段；G1 仿真静球 SR 91.3%、滚动拦截 71.9%；已开源 TeleHuman/HumanoidSoccer。"
+original:
+  - ../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md
+  - ../../sources/repos/humanoid_soccer.md
 ---
 
 # PAiD：Learning Soccer Skills for Humanoid Robots
@@ -120,6 +123,11 @@ flowchart TB
 - 观测侧加入面向球定位的物理引导噪声，而非无结构大范围 DR。
 - 真机球位由 **视觉 + 雷达** 融合持续提供。
 
+## 工程实践
+
+- **两阶段脚本流复用**：复现时直接调用官方 `TeleHuman/HumanoidSoccer` 的 progressive shell 脚本与 Isaac Lab v2.1.1 栈，先校准 13 条标准及球星 kicking MoCap 的 GMR 重定向轨迹，再微调 LSTM 感知融合超参。
+- **真机与草坪迁移**：真机部署依赖球接触物理辨识（CMA-ES）与第一视角观测噪声注入；在室外粗糙草地测试前宜增加球体质量/阻尼扰动覆盖。
+
 ## 源码运行时序图
 
 ```mermaid
@@ -176,7 +184,7 @@ sequenceDiagram
 - 真机依赖视觉–雷达球定位质量；极端光照与遮挡会放大 Stage II 噪声假设外误差。
 - 仓库许可 SPDX 为 `NOASSERTION`，复现时以 README / 根目录声明为准。
 
-## 与其他页面的关系
+## 关联页面
 
 - 方法摘要：[PAiD Framework](../methods/paid-framework.md)
 - 任务：[Humanoid Soccer](../tasks/humanoid-soccer.md)

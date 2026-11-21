@@ -2,7 +2,7 @@
 type: concept
 tags: [dynamics, simulation, urdf, mujoco, sysid, actuator, inertia]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ./armature-modeling.md
   - ./system-identification.md
@@ -20,6 +20,9 @@ sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/urdf_link_inertia_real_robot_check.md
 summary: "连杆惯量是 URDF/刚体动力学中的 link 空间惯量；转子惯量经减速比以 G² 反射到关节侧，在 MuJoCo 等仿真器中常记为 armature——二者不可混在同一参数位上。"
+original:
+  - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
+  - ../../sources/papers/urdf_link_inertia_real_robot_check.md
 ---
 
 # 连杆惯量与转子惯量（Robot Link vs Rotor Inertia）
@@ -56,6 +59,10 @@ summary: "连杆惯量是 URDF/刚体动力学中的 link 空间惯量；转子�
 | RL + 固定 PD 增益 | 影响落地冲击 | 影响振荡与带宽 | ✅ |
 
 > Pinocchio、Drake 等 **默认刚体模型** 消费 URDF 的 link 惯量；**不自动** 包含转子反射项——须在仿真器 joint 属性或执行器子模型中补齐（见 [Armature Modeling](./armature-modeling.md)）。
+
+## 核心原理
+
+开放链刚体动力学（Modern Robotics Ch.8）将各连杆的质心质量与空间惯性张量通过递推公式组装为构型相关的广义质量阵 $M(q)$，其取决于连杆几何与 `<inertial>` 参量；而经过高减速比齿轮箱旋转的电机转子对关节广义坐标产生平方级放大附加项 $I_{\mathrm{arm}} \approx J_r G^2$（MuJoCo XML `armature`），两者在物理起源、URDF/MJCF 表达位点与 SysID 可辨识组合（Gautier–Khalil 最小参数集）上严格正交。
 
 ## 连杆惯量：规范与动力学角色
 
@@ -140,7 +147,12 @@ flowchart LR
   Dyn --> Sim2Real["仿真 ↔ 真机对齐"]
 ```
 
-## 常见误区
+## 工程实践
+
+- **CAD→URDF→MuJoCo 分离校验**：在 URDF 中先把 `<inertial>` 主轴对齐、校准 SolidWorks/CAD 惯量积负号约定，再通过 Pinocchio 计算总质量 $\sum m$ 与重力矩 $g(q)$ 对照真机；随后在 MJCF `<joint armature>` 或等价关节驱动器模型中单独填入反射转子惯量 $J_r G^2$。
+- **结合可辨识性审视拟合结果**：单个连杆的 10 个惯性参数并不全部独立可辨识，闭环辨识位置曲线常给出 $J/k_t$ 比值而非物理连杆质量本身，切忌随意修改 CAD 正确质量以强行吸收高减速比阻尼或背隙误差。
+
+## 局限与风险
 
 - **把 armature 写进 URDF 质量**：破坏质心位置与重力项，且不同构型下等效惯量投影错误。
 - **只用 CAD 惯量、不补 armature**：高减速比关节 Sim2Real 高频振荡的常见原因。

@@ -15,6 +15,8 @@
 - **机构：** Siemens Foundational Technologies，Siemens Corporation（Princeton, NJ, USA）
 - **入库日期：** 2026-08-17
 - **一句话说明：** 工业人形的安全态是**主动平衡站住**，违反 ISO 13849-1 / EN 60204-1 的 fail-passive（断电即安全）假设；用已认证外部安全链当「量尺」，把不可认证残差钉在机侧反应链（SDA ↔ 平衡策略接口）。
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2608.02809v1 全文 PDF（824 行），核对 ISO 13849-1 / EN 60204-1 fail-passive 与步行人形主动安全态矛盾、Siemens S7-1500/PROFIsafe 外部安全链、Unitree G1 EDU 3×1.5m 工位实测时延预算与结论
 
 ## 核心论文摘录（MVP）
 

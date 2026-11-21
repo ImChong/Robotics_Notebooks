@@ -11,6 +11,8 @@
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26
 - **一句话说明：** ASAP 的完整思想是 Aligning Simulation and Real Physics。它关注敏捷全身动作在仿真和真实之间的动力学偏差。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2502.01143`（ASAP）PDF 全文及 `sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md`。
 
 ## 核心摘录（策展，非全文）
 

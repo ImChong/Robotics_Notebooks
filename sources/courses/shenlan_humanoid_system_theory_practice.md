@@ -4,6 +4,8 @@
 - **来源：** 具身智能研究室（微信公众号）课程大纲整理；深蓝学院「人形机器人系统 - 理论与实践」
 - **课程链接：** <https://www.shenlanxueyuan.com/course/802/task/33927/show>
 - **收录日期：** 2026-07-23
+- **通读：** 未完成
+- **阻塞说明：** 课程页 <https://www.shenlanxueyuan.com/course/802/task/33927/show> 设有会员登录墙（「请先登录」）；公开可见部分仅为课程章节大纲整理，完整视频讲义与实践代码未开放。
 - **一句话说明：** 以 Unitree G1 为主平台，串起 **RL 双足行走 → LiDAR 建图定位 → A\*/DWA 导航 → TARE/FAR 自主探索 → RealSense+YOLO 感知 → RoboCup 足球 → 大模型/VLN/NaVid** 的人形系统工程闭环。
 
 ## 为什么值得保留

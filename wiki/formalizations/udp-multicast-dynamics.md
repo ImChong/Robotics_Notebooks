@@ -2,7 +2,7 @@
 type: formalization
 tags: [real-time, communication, middleware, lcm, networking, math]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-22
 related:
   - ./control-loop-latency-modeling.md
   - ../concepts/lcm-basics.md
@@ -11,13 +11,19 @@ related:
   - ../comparisons/ros2-vs-lcm.md
   - ../queries/real-time-control-middleware-guide.md
 sources:
+  - ../../sources/papers/rfc1112_lcm_udp_multicast.md
   - ../../sources/papers/sim2real.md
 summary: "UDP 组播动力学：把 LCM 等基于 UDP 多播的中间件抽象成丢包-迟到-乱序-不一致四类随机过程，给出丢包率、订阅者间一致性偏差与控制端可用观测窗口之间的可计算约束。"
+original: ../../sources/papers/rfc1112_lcm_udp_multicast.md
 ---
 
 # UDP 组播动力学 (UDP Multicast Dynamics)
 
 **UDP 组播动力学** 把 [LCM](../concepts/lcm-basics.md) 这类“即发即弃”的多播中间件，抽象成一个发送方 → 多个接收方的随机过程网络。它不研究单条消息怎么走，而是回答四个工程问题：**丢多少包？谁先收到？大家收到的内容是否一致？数据老化到什么程度还能拿来闭环？** 把这些问题写成公式，意味着抖动不再只是“真机感觉卡”，而是可以套到 [控制环路延迟建模](./control-loop-latency-modeling.md) 里去定量预算。
+
+## 一句话定义
+
+**UDP 组播动力学**：将基于 IP 组播（RFC 1112“尽最大努力、不保证送达与保序”语义）与 LCM 架构的机器人实时通信抽象为“突发丢包（Gilbert-Elliott）× 右偏端到端时延分布 × 多订阅者一致性偏差”的随机过程约束，为控制环和状态估计器提供可定量计算的失真预算。
 
 ## 英文缩写速查
 
@@ -26,6 +32,11 @@ summary: "UDP 组播动力学：把 LCM 等基于 UDP 多播的中间件抽象�
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 | IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
 | ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
+## 为什么重要
+
+- **打破“局域网 UDP 基本不丢包”的幻觉**：实机 1 kHz 高频总线 + 视觉载荷下交换机瞬间突发队列溢出会让丢包从 $10^{-5}$ 阶跃恶化；不量化突发长度 $\mathbb{E}[B]$ 与截止迟到概率 $p_{\mathrm{late}}(D)$，状态估计器就会在未知丢包窗口下静默发散。
+- **打通通信抖动与控制参数之间的换算桥梁**：使采样周期、滑动状态缓存深度与插值退化超时拥有严格不等式依据。
 
 ## 为什么要形式化
 
@@ -36,6 +47,10 @@ UDP 没有重传，没有 ACK。LCM 的设计哲学就是“最新一帧最重�
 - 状态估计器在 1 ms 内没收到新一帧编码器，是该外推还是该退化？
 
 不写下来，就只能凭经验调 socket buffer。写下来之后，**丢包率 $p$、抖动 $\sigma$、订阅者一致性偏差 $\Delta$、控制可用窗口 $W$** 之间的换算就是几个不等式。
+
+## 核心原理
+
+立足 RFC 1112 确立的无连接尽力投递本质（发方不重传、收方不反馈）与 LCM 点对点多播设计：将传输异常拆分为永远丢失 $L_{i,k}$、超截止时间 $D$ 迟到 $T_{i,k}$ 与后发先至乱序 $R_{i,k}$ 互斥事件；丢包用两态 Markov 链描述并发相关性，延迟用网卡→交换机→内核→反序列化四段右偏卷积分布描述，由此导出各订阅节点间的一致性最大偏差和控制器可用数据时间窗 $W$。
 
 ## 多播信道的四类随机事件
 
@@ -146,7 +161,12 @@ $$
 
 `lcm-spy`、`tcpdump -G` 与 `ss -mu` 是这套测量的最低成本工具组合。
 
-## 方法局限性
+## 工程实践
+
+- **按实测突发长度与 P99 延迟配置缓冲区与退化门限**：调整 Linux 内核 `net.core.rmem_max` 防止 `recvmsg` 队列被视觉大数据包挤爆；根据 $3\mathbb{E}[B]$ 预设编码器与 IMU 丢失外推窗口上限，超时即安全降级或切换静态保持。
+- **多订阅者同构时间戳校验**：发送端在结构体封装单调发送序列号与 PTP 硬件同步时钟戳，下游融合节点显式校验相邻通道时钟一致性偏差而非无条件混用。
+
+## 局限与风险
 
 - **Gilbert-Elliott 是二阶近似**：实际交换机拥塞往往涉及多状态 / 自相似，长尾比两态模型重；
 - **独立性假设过强**：发送方阻塞时四类事件高度耦合（一旦 socket buffer 溢出，丢包与延迟同时爆涨）；
@@ -176,6 +196,8 @@ $$
 - Gilbert, E. N., *Capacity of a Burst-Noise Channel*, Bell System Technical Journal, 1960.
 - Elliott, E. O., *Estimates of Error Rates for Codes on Burst-Noise Channels*, Bell System Technical Journal, 1963.
 - Kaul, S., Yates, R., Gruteser, M., *Real-Time Status: How Often Should One Update?*, INFOCOM 2012.
+
+- [../../sources/papers/rfc1112_lcm_udp_multicast.md](../../sources/papers/rfc1112_lcm_udp_multicast.md)
 
 ## 推荐继续阅读
 

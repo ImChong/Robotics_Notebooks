@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, google-deepmind]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-22
 arxiv: "2105.12196"
 venue: "2021 · Science Robotics"
 summary: "底层 motor control 成熟后上层协作/战术才有空间。"
@@ -16,6 +16,7 @@ sources:
   - ../../sources/papers/bfm_awesome_teamplay_arxiv_2105_12196.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+original: ../../sources/papers/bfm_awesome_teamplay_arxiv_2105_12196.md
 ---
 
 # TeamPlay
@@ -86,6 +87,10 @@ flowchart TD
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+## 工程实践
+
+- **复现三阶段渐进与先验正则接口**：工程构建物理拟人团队对抗智能体时，切忌直接在 2v2/多机环境下端到端探索——应如 `arXiv:2105.12196` §3 般先以 ~1.75h 动捕切片经 RL+蒸馏沉淀潜在瓶颈低层控制器（NPMP），再为追/带/射等中层技能训练专家并蒸馏出可按任务观测读取的 drill priors，最后在 Nash Averaging 种群博弈 MARL 中通过 KL 先验约束保持动作自然协调。
+
 ## 结论
 
 **TeamPlay 在 BFM 谱系里被当作「底层先成熟、上层才有空间」的论据：协作与战术是低层 motor control 打牢之后才谈得上的能力。**
@@ -94,7 +99,7 @@ flowchart TD
 - 它提示的取舍是层级分工：上层战术的上限受 **底层动作库与跟踪鲁棒性** 约束，而不只由协作算法决定。
 - 本页为 **清单索引条目**，无量化归纳；指标与实机细节以原文为准。
 
-## 常见误区
+## 局限与风险
 
 1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。
 
@@ -103,7 +108,7 @@ flowchart TD
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
-## 与其他页面的关系
+## 关联页面
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

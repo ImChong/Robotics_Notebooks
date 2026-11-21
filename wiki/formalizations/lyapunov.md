@@ -8,6 +8,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../tasks/locomotion.md
   - ../concepts/centroidal-dynamics.md
+original: ../../sources/courses/mit_underactuated_robotics.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/optimal_control_theory.md
@@ -42,7 +43,7 @@ updated: 2026-09-15
 - 许多控制器（LQR、MPC 终端设计、阻抗控制、WBC 局部线性化）最终都要回到稳定性分析
 - 在接触切换和非线性动力学场景里，Lyapunov 语言比单纯线性系统极点分析更通用
 
-## 基本形式
+## 核心原理（基本形式）
 
 考虑平衡点 $x^*=0$ 的非线性系统：
 
@@ -87,7 +88,11 @@ LQR 的二次型代价函数和 Riccati 方程解本质上就给出了一个 Lya
 - 在 sim2real 中，一个策略即使奖励高，也可能没有稳定性裕度；Lyapunov 分析能帮助区分“会走”和“稳定可部署”
 - 在 VLA / 端到端策略场景中，通常缺少显式 Lyapunov 证明，因此部署时更依赖外层安全控制器兜底
 
-## 常见误区
+## 工程实践
+
+- **吸引域（RoA）计算（MIT Underactuated Robotics Ch. 9）**：面对非线性系统或饱和执行器，全局 Lyapunov 函数往往不存在；工程中常结合多项式动力学与平方和（SOS）半定规划估计局部平衡点周围的可验证吸引域水平集。
+
+## 常见误区或局限
 
 - **误区 1：稳定 = 轨迹误差很小。** 误差小只说明当前状态好，不代表受到扰动后仍能保持稳定。
 - **误区 2：有 Lyapunov 函数就一定全局稳定。** 还要看函数定义域和负定条件，很多机器人结论只是局部稳定。
@@ -103,6 +108,7 @@ LQR 的二次型代价函数和 Riccati 方程解本质上就给出了一个 Lya
 
 ## 参考来源
 
+- [mit_underactuated_robotics.md](../../sources/courses/mit_underactuated_robotics.md) — MIT *Underactuated Robotics* Ch. 9 (Lyapunov Analysis & SOS 验证)
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — LQR / iLQR 一手资料索引
 - [optimal_control](../../sources/papers/optimal_control.md) — LQR / iLQR / 最优控制主线
 - [最优控制理论（Optimal Control Theory）](../../sources/papers/optimal_control_theory.md) — 轨迹优化与稳定性分析背景

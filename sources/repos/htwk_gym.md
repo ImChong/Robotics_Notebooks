@@ -9,6 +9,8 @@
 - **入库日期：** 2026-04-27
 - **一句话说明：** 针对人形机器人（Booster T1/K1）足球任务的强化学习框架，支持参数化步行与踢球动作训练。
 - **沉淀到 wiki：** [htwk-gym](../../wiki/methods/htwk-gym.md), [humanoid-soccer](../../wiki/tasks/humanoid-soccer.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `NaoHTWK/htwk-gym` 官方 `README.md`（404 行）。
 
 ---
 

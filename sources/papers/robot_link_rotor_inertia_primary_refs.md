@@ -7,6 +7,8 @@
 - **入库日期：** 2026-05-20
 - **一句话说明：** 汇总 URDF 连杆惯性张量、开放链刚体动力学教材表述、Gautier–Khalil 最小惯性参数集、以及 MuJoCo `armature`（转子反射惯量）的官方定义，作为「连杆惯量 vs 转子惯量」分工的原始依据。
 - **沉淀到 wiki：** 是 → [`wiki/concepts/robot-link-and-rotor-inertia.md`](../../wiki/concepts/robot-link-and-rotor-inertia.md)
+- **通读：** 已完成
+- **核对范围：** 通读 Lynch & Park *Modern Robotics* Ch.8 PDF（`MR.pdf`）、ROS Wiki `urdf/XML/link`、MuJoCo `XMLreference.rst` `armature` 规范，并核对 Gautier & Khalil (1990) `hal-05223021` 开放摘要与方法口径。
 
 ## 为什么值得保留
 

@@ -15,6 +15,8 @@
 - **一句话说明：** RoboNaldo **仿真训练**官方仓：BeyondMimic 风格 Isaac Lab 扩展 `whole_body_tracking` + RSL-RL PPO；右脚踢球 NPZ 与 Stage 1–3 YAML 预设；`train` / `play` / `eval` 与 ONNX 导出对接部署仓。
 - **开源状态：** **已开源**（2026-06 News：Training and deployment code release）— 训练代码 + 默认 `motions/right_kick.npz`；G1 URDF 需另下；预训练权重走 W&B / 自训 checkpoint。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md`](../../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `OpenDriveLab/RoboNaldo` 官方 `README.md`（10,686 字节）。
 
 ## 仓库概况（2026-07-28 GitHub API / README）
 

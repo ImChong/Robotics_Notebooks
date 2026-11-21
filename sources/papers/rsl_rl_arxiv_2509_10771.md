@@ -10,6 +10,8 @@
 - **代码：** <https://github.com/leggedrobotics/rsl_rl>
 - **入库日期：** 2026-08-28
 - **一句话说明：** ETH RSL 把 GPU PPO 训练栈写成可引用论文；仓库同期提供 Student–Teacher Distillation 与可选 BF16 混合精度。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2509.10771` PDF 全文与 `leggedrobotics/rsl_rl` 官方 `README.md`。
 
 ## 核心摘录（MVP）
 

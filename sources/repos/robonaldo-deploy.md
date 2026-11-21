@@ -14,6 +14,8 @@
 - **一句话说明：** RoboNaldo **真机与 MuJoCo 部署**官方仓：FSM 多策略切换（FreeKick / Loco / AMP 等）、机载 LiDAR/相机感知、Xbox 手柄触发；消费训练仓导出的 ONNX。
 - **开源状态：** **已开源**（代码公开；README 指向 2026-06 训练+部署发布）。项目页 Code 主链指向训练仓；部署仓由训练仓 README / submodule 引用。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md`](../../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `OpenDriveLab/RoboNaldo_Deploy` 官方 `README.md`（12,017 字节）。
 
 ## 仓库概况（2026-07-28）
 

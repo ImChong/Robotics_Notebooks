@@ -3,6 +3,9 @@ type: comparison
 tags: [control, optimization, rl, trajectory-optimization, decision-making]
 status: complete
 updated: 2026-08-18
+original: ../../sources/courses/mit_underactuated_robotics.md
+sources:
+  - ../../sources/courses/mit_underactuated_robotics.md
 related:
   - ../methods/trajectory-optimization.md
   - ../methods/reinforcement-learning.md
@@ -15,6 +18,10 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 # 轨迹优化 vs 强化学习（Trajectory Optimization vs Reinforcement Learning）
 
 在足式机器人运动控制领域，**轨迹优化 (Trajectory Optimization, TO)** 和 **强化学习 (Reinforcement Learning, RL)** 是两种截然不同但又互补的技术路线。
+
+## 一句话定义
+
+**轨迹优化（TO）** 依靠已知动力学与梯度的非线性规划/iLQR 求解开环或滚动最稳轨迹，而 **强化学习（RL）** 靠大规模并行接触交互学习非参数/神经网络闭环反馈策略。
 
 ## 英文缩写速查
 
@@ -29,7 +36,11 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
 
-## 核心对比
+## 为什么重要
+
+- **计算边界互补（MIT Underactuated Robotics Ch. 10 & Wensing T-RO 2024）**：直接配点与 DDP 在精确低/中自由度动力学上可微且可附带硬约束；面对高频非光滑随机接触及多传感器融合，RL 能无梯度跨越接触跳变，而二者结合（如 TO 生成参考 + 残差 RL 跟踪）成为高难动作主流架构。
+
+## 核心原理与对比
 
 | 维度 | Trajectory Optimization (TO) | Reinforcement Learning (RL) |
 |------|------------------------------|-----------------------------|
@@ -67,6 +78,10 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 2. **TO 引导 RL**：利用 TO 产生的最优轨迹作为模仿学习的专家数据，加速 RL 训练。[SE(3) 切空间 TO](../entities/paper-se3-tangent-to.md) 的社区仓 `go2_flip_TO` 把 Go2 空翻写成 50 Hz AMP txt，就是这条落地。
 3. **WBC + RL**：上层用 RL 产生任务目标，下层用 WBC (基于 QP 的 TO) 保证物理安全性。
 
+## 工程实践
+
+- **何时用 TO 热启动/引导 RL**：窄通道避障（如 Unitree G1 钻孔）或长时域多接触翻越宜先用全阶/切空间 TO 生成无碰可行引导，再用残差 RL 吸收真机动力学失配与延迟。
+
 ## 关联页面
 - [Trajectory Optimization (TO)](../methods/trajectory-optimization.md)
 - [SE(3) 切空间浮动基 TO](../entities/paper-se3-tangent-to.md) — 开环空翻计划 → AMP 参考
@@ -75,6 +90,12 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 - [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md)
 
 ## 参考来源
+- [mit_underactuated_robotics.md](../../sources/courses/mit_underactuated_robotics.md) — Tedrake, *Underactuated Robotics* Ch. 10 (Direct Collocation / iLQR / DDP)
 - [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)
 - Siciliano, B., et al. (2009). *Robotics: Modelling, Planning and Control*.
+
+## 推荐继续阅读
+
+- [Model Predictive Control](../methods/model-predictive-control.md) — TO 在线滚动闭环版本
+- [WBC vs RL 选型指南](../queries/when-to-use-wbc-vs-rl.md) — 真机部署成本与鲁棒性实操决策

@@ -4,11 +4,13 @@ type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, snu]
 status: complete
 updated: 2026-10-06
-venue: curated
+arxiv: "2605.25546"
+venue: "arXiv:2605.25546 / curated"
 summary: "安全：控制屏障函数接到全身控制后面。输入是全身控制命令、状态约束和扰动裕度；实现上用输入到状态安全控制屏障函数修正控制量，使关节限位、自碰撞、障碍距离等约束保持安全；重点是把安全层接到 WBC/策略输出后面。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
+original: ../../sources/papers/motion_cerebellum_survey_36_safewbc.md
 sources:
   - ../../sources/papers/motion_cerebellum_survey_36_safewbc.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
@@ -64,7 +66,12 @@ sources:
 - 适用边界：本条目属运动小脑的 **身体层**（D 全身跟踪基座），只保障控制量层面的约束满足，不承担 VLA/世界模型那一层的任务规划与语义安全。
 - 本页是 64 篇 survey 的策展编译（#36/64），机构信息（首尔大学 朴在亨课题组）自标为待最终核对；量化 benchmark 与实机指标请回到项目页与原文，不要拿本页当性能依据。
 
-## 常见误区
+## 工程实践
+
+- **三层安全传递链路（arXiv:2605.25546v1 / DYROS safeWBC）**：`KinWBC` 生成优先序运动学参考 → `ISSf-CBF` 速度安全过滤器在有界扰动裕度下最小修正参考（覆盖关节限位、自碰撞与双臂工作空间）→ `DynWBC`（`qpOASES`）追踪修正参考并强制全身动力学与接触稳定性约束。
+- **运动学至动力学安全边距标定**：对 ISSf-CBF 参数保守调定以吸收底层追踪误差与模型失配。
+
+## 常见误区或局限
 
 1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。
 
@@ -73,7 +80,7 @@ sources:
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
-## 与其他页面的关系
+## 关联页面
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-04-wbt-base.md](../overview/motion-cerebellum-category-04-wbt-base.md)

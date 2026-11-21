@@ -6,6 +6,8 @@
 - **代码：** <https://github.com/visualbruno/3DGenStudio>（已开源，见 [仓库归档](../repos/3dgenstudio.md)）
 - **收录日期**：2026-07-27
 - **抓取说明**：以 **2026-07-27** 对首页公开文案与导航结构的抓取为准；版本号与功能列表会随发布周期更新（首页标注 **v2.1.0**）。
+- **通读：** 已完成
+- **核对范围：** 核对 3DGenStudio 项目入口与对应 `visualbruno/3DGenStudio` 官方文档 `README.md`。
 
 ## 一句话
 

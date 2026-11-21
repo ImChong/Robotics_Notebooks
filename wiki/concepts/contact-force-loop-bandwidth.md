@@ -2,7 +2,7 @@
 type: concept
 tags: [control, contact, force-control, impedance, manipulation, tactile]
 status: complete
-updated: 2026-09-01
+updated: 2026-11-22
 summary: "力控闭环带宽 ↔ 接触稳定性概念页：明示感知时延、控制刚度、接触离散化如何共同决定可达带宽与接触震荡/穿透边界，以及它与阻抗/导纳选型的耦合关系。"
 sources:
   - ../../sources/papers/contact_dynamics.md
@@ -14,6 +14,9 @@ related:
   - ./force-control-basics.md
   - ./contact-estimation.md
   - ./hybrid-force-position-control.md
+original:
+  - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/contact_planning.md
 ---
 
 # Contact-Force-Loop Bandwidth（力控闭环带宽 ↔ 接触稳定性）
@@ -38,6 +41,10 @@ related:
 
 接触力控的不稳定几乎都能归到「带宽开太高」这一条上。原因是：机器人末端与刚性环境构成一个闭环，环境刚度 $K_e$ 越大，闭环极点越容易被推到不稳定区。此时唯一能换回稳定裕度的，要么是**降控制刚度**，要么是**降带宽**。理解这条边界，才能解释为什么「环境越硬、阻抗刚度反而要调得越低」这个反直觉的经验法则（见 [Impedance Control](./impedance-control.md)）。
 
+## 核心原理
+
+从连续物理闭环角度，机器人末端（等效阻抗 $Z_r(s)$）与环境（等效刚度 $K_e$）构成机械耦合反馈环：接触感知与状态估计引入纯延迟 $e^{-s\tau_d}$，控制器与电机指令经采样周期 $T_s$ 零阶保持（ZOH）后作用到非线性离散接触约束（$0 \le \phi(q) \perp \lambda \ge 0$）。当环境刚度 $K_e$ 增大且控制增益或采样步长未同步退让时，相位滞后迅速耗尽稳定裕度并触发高频接触震颤。
+
 ## 三个共同决定带宽的因素
 
 | 因素 | 怎么压低可达带宽 | 工程对策 |
@@ -60,7 +67,12 @@ related:
 - **穿透边界**：带宽/刚度开太低或步长太大 → 接触检测不及时，末端「穿」进环境再被弹回，表现为冲击力尖峰。
 - 健康的工作点夹在两者之间，且随环境刚度移动——这正是为什么力控调参不能一套参数走天下。
 
-## 常见误区
+## 工程实践
+
+- **标定最大允许刚度与滤波延迟预算**：在真机接触任务中先测 F/T 传感链 + 状态估计总滞后 $\tau_d$，确保期望闭环穿越频率显著低于 $1/(4\tau_d)$ 与结构一阶模态，并在碰撞瞬间通过降刚度/阻尼缓冲冲击尖峰。
+- **区分仿真离散穿透与真机硬件失稳**：调参前先排除仿真时间步长过大（离散化注入能量）或规划阶段接触序列不匹配（MICP / CITO 约束违背）造成的伪震荡。
+
+## 局限与风险
 
 - **误区 1：采样率拉满就能提带宽。** 采样率只解决离散化与时延，若控制刚度已逼近临界，提采样率也救不回稳定裕度。
 - **误区 2：带宽越高接触越稳。** 恰恰相反，刚性接触下盲目提带宽是头号失稳来源；稳定的接触往往来自「克制的带宽 + 匹配的刚度」。
@@ -78,3 +90,8 @@ related:
 - [Contact Estimation（接触估计）](./contact-estimation.md) — 感知时延这一项的来源
 - [Hybrid Force-Position Control（力位混合控制）](./hybrid-force-position-control.md) — 子空间划分下的带宽分配
 - 纵深汇总：[接触力控（知识链汇总）](../overview/hub-contact-force-control.md) — 「🤝 接触力控」[图谱路线视图](../../docs/graph.html?depth=contact-force-control)的统一入口
+
+## 推荐继续阅读
+
+- 接触建模与规划一手归档：[contact_dynamics.md](../../sources/papers/contact_dynamics.md)、[contact_planning.md](../../sources/papers/contact_planning.md)
+- 闭环汇总：[接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md)

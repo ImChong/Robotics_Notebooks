@@ -9,6 +9,8 @@
 - **入库日期：** 2026-05-27
 - **一句话说明：** **大规模 Crazyflie 群体** 起飞与轨迹跟踪框架（ROS2）：动捕/Lighthouse 定位、Python 脚本编排、与 [crazyflie-firmware](crazyflie_firmware.md) 配套。
 - **沉淀到 wiki：** [crazyswarm2](../../wiki/entities/crazyswarm2.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `IMRCLab/crazyswarm2` 官方 `README.md`（23 行及文档入口）。
 
 ---
 

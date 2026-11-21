@@ -21,6 +21,7 @@ related:
   - ../overview/hub-systems-engineering.md
   - ./unitree-g1.md
   - ../formalizations/control-loop-latency-modeling.md
+original: ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 sources:
   - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 summary: "Fail-Passive Gap（arXiv:2608.02809，西门子基础技术/普林斯顿）：工业人形的安全态是主动平衡站住，切电即摔倒，违反 ISO 13849-1 fail-passive。用认证外部 D–E–R 链当量尺，把不可认证残差钉在机侧反应链（SDA↔平衡策略）。G1 EDU 单元最坏响应约 1.1 s；不宣称端到端 PL e/SIL 3。确认未开源。"
