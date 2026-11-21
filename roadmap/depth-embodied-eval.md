@@ -269,6 +269,7 @@ flowchart LR
 **方向 A：评测基建与集成成本**
 - N 个策略 × M 个环境的集成爆炸怎么收敛成 O(N+M)；统一策略–环境契约与依赖隔离 serving 长什么样
 - 关键词：[XPolicyLab](../wiki/entities/xpolicylab.md)（同一 adapter 服务 RoboTwin / RoboDojo-sim / RoboDojo-real）、[仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md)、[AgiBot 仿真训练与评测分类](../wiki/overview/agibot-release-category-02-sim-training-eval.md)
+- [RoboScope Kit：统一 Policy 接口与评测进程池](../wiki/entities/paper-roboscope-kit.md) — 对比 XPolicyLab 的侧重：保持原生 benchmark 规则，针对 K/g 独立调度、动作块边界渲染、并发搜索和总耗时审计；选型时分清同硬件提速与多卡增益
 
 **方向 B：榜单治理与可复现性**
 - verified 上榜要不要强制开源训推与权重、公布评测视频；合成训练 + 仅真实评测的挑战赛协议怎么设计
