@@ -8,7 +8,9 @@
 - **链接：** https://github.com/Roboparty/Party_OS
 - **官网：** https://lab.roboparty.com
 - **入库日期：** 2026-07-14
-- **路线核查：** 2026-10-06（仓库复核 2026-10-27）
+- **路线核查：** 2026-10-06（仓库复核 2026-10-27；2026-11-21 再次核对）
+- **核对范围：** 完整通读官方 `Roboparty/Party_OS` `main` 的英文 `README.md`（Roadmap、Projects、Datasets、Star History、License），核对其项目表、数据集授权边界及当前发布状态；未将 README 链出的所有子仓库源码或外部数据集视作已通读。
+- **通读：** 已完成
 - **一句话说明：** RoboParty Lab 的人形机器人研发底座，连接本体、数据、训练、动作工具链、Sim2Real、真机验证与开源发布，首批开源 MimicLite、UFO、hhtools 三项工具链。
 - **沉淀到 wiki：** 是（`wiki/entities/party-os.md`、`wiki/overview/roboparty-lab-party-os-technology-map.md`）
 
@@ -65,3 +67,10 @@ Party OS 是 RoboParty Lab 对外沉淀的 **开放研发基础设施**，目标
 - [roboparty-lab-party-os-technology-map](../../wiki/overview/roboparty-lab-party-os-technology-map.md)
 - 后加入子模块：[paper-i-bfm](../../wiki/entities/paper-i-bfm.md)、[paper-p-bfm](../../wiki/entities/paper-p-bfm.md)、[paper-intact](../../wiki/entities/paper-intact.md)
 - 子模块：[mimiclite](../../wiki/entities/mimiclite.md)、[roboparty-ufo](../../wiki/entities/roboparty-ufo.md)、[human-humanoid-tools](../../wiki/entities/human-humanoid-tools.md)
+
+## 2026-11-21 官方 README 全文复核
+
+- **项目层级：** 当前 `Projects` 表除 hhtools、MimicLite、UFO 外，新增 PartyMimic（model-based motion tracking）、I-BFM、P-BFM、INTACT-JEPA 以及 SADL（representation-learning loss）；旧 2026-10-27 表格是历史快照。
+- **仍未开放：** 运动数据生成 `generate` 继续标注 `Coming soon`；VLA / Agentic Humanoids 是 Roadmap 方向，README 未证明已有通用成品可部署。
+- **数据授权：** `Datasets` 表仅列上游来源及下载入口，README 明确写明 Party OS **不重新分发数据**，每个数据集和各子项目各自保留授权。
+- **范围限制：** 本次通读仅指聚合仓官方 README，不意味着逐行阅读各子项目代码，也不等于运行复现。
