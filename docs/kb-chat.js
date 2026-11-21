@@ -355,7 +355,11 @@
   function ensureLiteIndex() {
     if (_liteIndex) return Promise.resolve(_liteIndex);
     if (_litePromise) return _litePromise;
-    _litePromise = fetchJsonWithTimeout('search-index-lite.json', 20000)
+    var sharedPromise = (typeof window !== 'undefined' && window.RNSearchIndexLite &&
+        typeof window.RNSearchIndexLite.ensure === 'function')
+      ? window.RNSearchIndexLite.ensure()
+      : fetchJsonWithTimeout('search-index-lite.json', 20000);
+    _litePromise = Promise.resolve(sharedPromise)
       .then(function (data) {
         if (!data || !Array.isArray(data.docs)) throw new Error('Invalid lite search index');
         _liteIndex = data;
@@ -565,40 +569,67 @@
     var tokens = tokenizeQuery(question);
     if (!tokens.length) return [];
 
-    var scored = [];
+    var TOP_K = 6;
+    var top = [];
     for (var i = 0; i < docs.length; i += 1) {
       var doc = docs[i];
       if (!doc || !doc.id) continue;
-      var title = String(doc.title || '').toLowerCase();
-      var summary = String(doc.summary || '').toLowerCase();
-      var tags = Array.isArray(doc.tags) ? doc.tags.join(' ').toLowerCase() : '';
-      var aliases = Array.isArray(doc.search_aliases) ? doc.search_aliases.join(' ').toLowerCase() : '';
-      var path = String(doc.path || '').toLowerCase();
+      var all = doc._kbAll;
+      if (all === undefined) {
+        var title = String(doc.title || '').toLowerCase();
+        var summary = String(doc.summary || '').toLowerCase();
+        var tags = Array.isArray(doc.tags) ? doc.tags.join(' ').toLowerCase() : '';
+        var aliases = Array.isArray(doc.search_aliases) ? doc.search_aliases.join(' ').toLowerCase() : '';
+        var path = String(doc.path || '').toLowerCase();
+        doc._kbTitle = title;
+        doc._kbSummary = summary;
+        doc._kbTags = tags;
+        doc._kbAliases = aliases;
+        doc._kbPath = path;
+        all = doc._kbAll = aliases + '\n' + title + '\n' + tags + '\n' + summary + '\n' + path;
+      }
 
+      var anyHit = false;
+      for (var t0 = 0; t0 < tokens.length; t0 += 1) {
+        if (all.indexOf(tokens[t0]) >= 0) {
+          anyHit = true;
+          break;
+        }
+      }
+      if (!anyHit) continue;
+
+      var dAliases = doc._kbAliases;
+      var dTitle = doc._kbTitle;
+      var dTags = doc._kbTags;
+      var dSummary = doc._kbSummary;
+      var dPath = doc._kbPath;
       var score = 0;
       for (var t = 0; t < tokens.length; t += 1) {
         var tok = tokens[t];
         var w = tok.length >= 2 ? (tok.length >= 4 ? 3 : 2) : 0.4;
-        if (aliases.indexOf(tok) >= 0) score += w * 4.5;
-        if (title.indexOf(tok) >= 0) score += w * 4;
-        if (tags.indexOf(tok) >= 0) score += w * 2.5;
-        if (summary.indexOf(tok) >= 0) score += w * 2;
-        if (path.indexOf(tok) >= 0) score += w * 1.5;
+        if (dAliases.indexOf(tok) >= 0) score += w * 4.5;
+        if (dTitle.indexOf(tok) >= 0) score += w * 4;
+        if (dTags.indexOf(tok) >= 0) score += w * 2.5;
+        if (dSummary.indexOf(tok) >= 0) score += w * 2;
+        if (dPath.indexOf(tok) >= 0) score += w * 1.5;
       }
       if (currentId && doc.id === currentId && score > 0) {
         score += 3;
       }
       if (score >= 1.5) {
-        scored.push({ doc: doc, score: score });
+        if (top.length === TOP_K && score <= top[TOP_K - 1].score) continue;
+        var pos = top.length;
+        while (pos > 0 && top[pos - 1].score < score) pos -= 1;
+        if (pos < TOP_K) {
+          top.splice(pos, 0, { doc: doc, score: score });
+          if (top.length > TOP_K) top.pop();
+        }
       }
     }
 
-    scored.sort(function (a, b) {
-      return b.score - a.score;
-    });
-    return scored.slice(0, 6).map(function (entry) {
-      return entry.doc;
-    });
+    var out = new Array(top.length);
+    for (var k = 0; k < top.length; k += 1) out[k] = top[k].doc;
+    return out;
   }
 
   function selectLocalExcerpts(bodies, docMetaById, question) {

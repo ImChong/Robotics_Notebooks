@@ -17,23 +17,17 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
-  <script id="sponsor-js" src="sponsor.js?v=2"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#191919" />
-  <!-- Plotly 同域加载（vendor/，版本 2.35.2）；同域脚本失败时回退 jsDelivr，避免外网 CDN 不可达导致 "Plotly is not defined" -->
-  <script src="vendor/plotly.min.js"></script>
-  <script>
-    if (!window.Plotly) {
-      var s = document.createElement('script');
-      s.src = 'https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js';
-      document.head.appendChild(s);
-    }
-  </script>
-  <script src="graph-tooltip.js"></script>
-  <script src="depth-filters.js"></script>
-  <script src="org-route-order.js"></script>
-  <script src="wiki-type-labels.js"></script>
+  <!-- 首屏不阻塞 <head> 解析：预加载星标数据与 Plotly（4.5 MB），等首次绘制后再按需装配 -->
+  <link rel="preload" href="exports/star-history.json" as="fetch" crossorigin />
+  <link rel="preload" href="vendor/plotly.min.js" as="script" />
+  <script src="graph-tooltip.js" defer></script>
+  <script src="depth-filters.js" defer></script>
+  <script src="org-route-order.js" defer></script>
+  <script src="wiki-type-labels.js" defer></script>
   <style>
     /* 七个视图在窄屏换行，并与副标题拉开距离 */
     #trend-tabs { flex-wrap: wrap; }
@@ -257,10 +251,13 @@
         return { x: x, y: x.map(function (d) { return byDay[d]; }) };
       }
 
-      // 每日定时任务记录的星标总数快照 [[日期, 总数], ...]
-      var starCounts = getJSON('exports/star-history.json').then(function (d) {
-        return { x: d.counts.map(function (c) { return c[0]; }), y: d.counts.map(function (c) { return c[1]; }) };
-      });
+      // 每日定时任务记录的星标总数快照 [[日期, 总数], ...]（按需加载）
+      var starCountsPromise = null;
+      function starCounts() {
+        return starCountsPromise || (starCountsPromise = getJSON('exports/star-history.json').then(function (d) {
+          return { x: d.counts.map(function (c) { return c[0]; }), y: d.counts.map(function (c) { return c[1]; }) };
+        }));
+      }
 
       // link-graph / wiki-activity 是紧凑格式，用 main.js 的共享还原逻辑展开（见 expandLinkGraph / expandWikiActivity）；
       // main.js 在本脚本之后同步/延后加载，首包命中缓存时需等 DOM 脚本执行完毕后再展开。
@@ -277,16 +274,19 @@
         return formats && typeof formats[kind] === 'function' ? formats[kind](data) : data;
       }
 
-      var addedNodes = Promise.all([getJSON('exports/wiki-activity.json'), afterDomScripts()]).then(function (pair) {
-        var a = expandExport('expandWikiActivity', pair[0]);
-        var out = [];
-        a.days.forEach(function (d) {
-          d.nodes.forEach(function (n) {
-            if (n.action === 'added') out.push({ date: d.date, path: n.path || '', detailId: n.detail_id });
+      var addedNodesPromise = null;
+      function addedNodes() {
+        return addedNodesPromise || (addedNodesPromise = Promise.all([getJSON('exports/wiki-activity.json'), afterDomScripts()]).then(function (pair) {
+          var a = expandExport('expandWikiActivity', pair[0]);
+          var out = [];
+          a.days.forEach(function (d) {
+            d.nodes.forEach(function (n) {
+              if (n.action === 'added') out.push({ date: d.date, path: n.path || '', detailId: n.detail_id });
+            });
           });
-        });
-        return out;
-      });
+          return out;
+        }));
+      }
 
       // 社区、节点趋势及分类统计共用当前图谱快照，按需加载。
       var linkGraphPromise = null;
@@ -344,7 +344,7 @@
         var theme = mode === 'health' ? document.documentElement.getAttribute('data-theme') : 'dark';
         var key = mode + '/' + theme;
         if (!nodeTrendCache.has(key)) {
-          nodeTrendsPromise = nodeTrendsPromise || Promise.all([addedNodes, linkGraph()]);
+          nodeTrendsPromise = nodeTrendsPromise || Promise.all([addedNodes(), linkGraph()]);
           nodeTrendCache.set(key, nodeTrendsPromise.then(function (data) {
             return buildNodeTrends(data[0], data[1], mode, theme);
           }));
@@ -421,7 +421,7 @@
       }
 
       function depthDaily() {
-        return addedNodes.then(function (n) {
+        return addedNodes().then(function (n) {
           return dailyFromDates(n.filter(function (v) { return /^roadmap\/depth-/.test(v.path); })
             .map(function (v) { return v.date; }));
         });
@@ -429,11 +429,11 @@
 
       var VIEWS = [
         { id: 'stars', label: '星数趋势', unit: '星标', kind: 'line',
-          load: function () { return starCounts; } },
+          load: function () { return starCounts(); } },
         { id: 'stars-daily', label: '每日星数', unit: '新增星标', kind: 'bar',
           load: function () {
             // 相邻快照之差；有取消星标时可能为负
-            return starCounts.then(function (s) {
+            return starCounts().then(function (s) {
               return { x: s.x, y: s.y.map(function (n, i) { return n - (i ? s.y[i - 1] : 0); }) };
             });
           } },
@@ -626,6 +626,38 @@
       VIEWS = VIEWS.filter(function (v) { return !v.hidden; });
 
       var touch = window.matchMedia('(pointer: coarse)').matches;
+      var plotlyPromise = null;
+      function loadScript(src) {
+        return new Promise(function (resolve, reject) {
+          var s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          s.onload = function () { resolve(); };
+          s.onerror = function () { reject(new Error('Failed to load ' + src)); };
+          document.head.appendChild(s);
+        });
+      }
+      function ensurePlotly() {
+        if (window.Plotly) return Promise.resolve(window.Plotly);
+        if (plotlyPromise) return plotlyPromise;
+        plotlyPromise = loadScript('vendor/plotly.min.js')
+          .then(function () {
+            if (window.Plotly) return window.Plotly;
+            throw new Error('Plotly missing after vendor load');
+          })
+          .catch(function () {
+            return loadScript('https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js')
+              .then(function () {
+                if (window.Plotly) return window.Plotly;
+                throw new Error('Plotly missing after CDN fallback');
+              });
+          })
+          .catch(function (err) {
+            plotlyPromise = null;
+            throw err;
+          });
+        return plotlyPromise;
+      }
       function esc(s) {
         return String(s == null ? '' : s)
           .replace(/&/g, '&amp;')
@@ -676,7 +708,8 @@
           b.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
         status.textContent = '加载中…';
-        view.load().then(function (s) {
+        Promise.all([view.load(), ensurePlotly()]).then(function (pair) {
+          var s = pair[0];
           var job = drawing.then(function () { if (version === renderVersion) return draw(view, s); });
           drawing = job.catch(function () {});
           return job;
@@ -1141,18 +1174,25 @@
         });
         stackBar.appendChild(b);
       });
-      var params = new URLSearchParams(location.search);
-      var requestedStack = params.get('stack');
-      if (Object.prototype.hasOwnProperty.call(NODE_STACK_MODES, requestedStack)) nodeStackMode = requestedStack;
-      var wanted = params.get('view');
-      // 旧收藏链接仍可打开：原「路线健康度」并入统一图的健康度模式。
-      if (wanted === 'route-health') {
-        wanted = 'depth-nodes';
-        if (!params.has('stack')) nodeStackMode = 'health';
+      function bootTrendPage() {
+        var params = new URLSearchParams(location.search);
+        var requestedStack = params.get('stack');
+        if (Object.prototype.hasOwnProperty.call(NODE_STACK_MODES, requestedStack)) nodeStackMode = requestedStack;
+        var wanted = params.get('view');
+        // 旧收藏链接仍可打开：原「路线健康度」并入统一图的健康度模式。
+        if (wanted === 'route-health') {
+          wanted = 'depth-nodes';
+          if (!params.has('stack')) nodeStackMode = 'health';
+        }
+        render(VIEWS.filter(function (v) { return v.id === wanted; })[0] || VIEWS[0]);
       }
-      render(VIEWS.filter(function (v) { return v.id === wanted; })[0] || VIEWS[0]);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootTrendPage, { once: true });
+      } else {
+        bootTrendPage();
+      }
     })();
   </script>
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

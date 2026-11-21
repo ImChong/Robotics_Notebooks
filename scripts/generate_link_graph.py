@@ -89,6 +89,7 @@ GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 # 节点摘要单独下发（按 nodes 顺序的字符串数组）：占 link-graph gzip 的 53%，图谱首屏构图用不到
 SUMMARIES_PATH = REPO_ROOT / "exports" / "link-graph-summaries.json"
+MINI_GRAPH_PATH = REPO_ROOT / "exports" / "mini-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
 HUB_RANKINGS_PATH = REPO_ROOT / "exports" / "hub-rankings.json"
@@ -1799,6 +1800,14 @@ def _compute_graph_stats(
         "node_count": len(nodes),
         "edge_count": len(edges),
         "community_count": len(communities),
+        "communities": [
+            {
+                "id": str(c["id"]),
+                "label": str(c.get("label") or c["id"]),
+                "size": int(c.get("size") or 0),
+            }
+            for c in communities
+        ],
         "top_hubs": hub_list,
         "top_paper_hubs": paper_hub_list,
         "top_community_hubs": community_hub_list,
@@ -1841,6 +1850,90 @@ def precompute_graph_layout(graph_path: Path) -> list[list[int]] | None:
     if result.stderr.strip():
         print(f"   {result.stderr.strip()}")
     return json.loads(result.stdout)
+
+
+def build_mini_graph(
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, str]],
+    summaries: list[str],
+    communities: list[dict[str, Any]],
+    top_n: int = 50,
+) -> dict[str, Any]:
+    """构建首页 Top-N 连接度预览子图（exports/mini-graph.json），避免首页下载全图与全量摘要。"""
+    degree_map: dict[str, int] = {}
+    adj: dict[str, list[str]] = defaultdict(list)
+    for edge in edges:
+        src = str(edge["source"])
+        dst = str(edge["target"])
+        degree_map[src] = degree_map.get(src, 0) + 1
+        degree_map[dst] = degree_map.get(dst, 0) + 1
+        if src != dst:
+            adj[src].append(dst)
+            adj[dst].append(src)
+
+    max_degree = max(degree_map.values(), default=1)
+    max_degree = max(1, max_degree)
+
+    ranked = sorted(
+        nodes,
+        key=lambda n: (-degree_map.get(str(n["id"]), 0), str(n["id"])),
+    )
+    top_ids: set[str] = {str(n["id"]) for n in ranked[:top_n]}
+
+    def _has_neighbor(node_id: str, id_set: set[str]) -> bool:
+        return any(nb in id_set for nb in adj.get(node_id, ()))
+
+    dropped = True
+    while dropped:
+        dropped = False
+        for node_id in list(top_ids):
+            if not _has_neighbor(node_id, top_ids):
+                top_ids.remove(node_id)
+                dropped = True
+
+    for cand in ranked:
+        if len(top_ids) >= top_n:
+            break
+        cid = str(cand["id"])
+        if cid in top_ids:
+            continue
+        if _has_neighbor(cid, top_ids):
+            top_ids.add(cid)
+
+    mini_nodes: list[dict[str, Any]] = []
+    for idx, node in enumerate(nodes):
+        nid = str(node["id"])
+        if nid not in top_ids:
+            continue
+        entry: dict[str, Any] = {
+            "id": nid,
+            "label": node.get("label") or nid,
+            "type": node.get("type") or "",
+            "community": node.get("community") or "",
+            "summary": summaries[idx] if idx < len(summaries) else "",
+            "_degree": degree_map.get(nid, 0),
+        }
+        if node.get("detail_id"):
+            entry["detail_id"] = node["detail_id"]
+        if node.get("health_score") is not None:
+            entry["health_score"] = node["health_score"]
+        if node.get("health_gaps") is not None:
+            entry["health_gaps"] = node["health_gaps"]
+        if node.get("has_repo"):
+            entry["has_repo"] = True
+        mini_nodes.append(entry)
+
+    mini_edges = [
+        {"source": str(e["source"]), "target": str(e["target"])}
+        for e in edges
+        if e["source"] != e["target"] and e["source"] in top_ids and e["target"] in top_ids
+    ]
+    return {
+        "max_degree": max_degree,
+        "communities": communities,
+        "nodes": mini_nodes,
+        "edges": mini_edges,
+    }
 
 
 def main() -> None:
@@ -1894,7 +1987,7 @@ def main() -> None:
 
     summaries = [str(node.pop("summary", "") or "") for node in nodes]
 
-    graph = {
+    graph: dict[str, Any] = {
         "nodes": nodes,
         "edge_format": "index",
         "edges": pack_edges_as_indices(nodes, edges),
@@ -1916,9 +2009,18 @@ def main() -> None:
     print(
         f"✅ link-graph-summaries.json: {len(summaries)} 条 → {SUMMARIES_PATH.relative_to(REPO_ROOT)}"
     )
+    mini_graph_payload = build_mini_graph(nodes, edges, summaries, communities)
+    MINI_GRAPH_PATH.write_text(
+        json.dumps(mini_graph_payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    print(
+        f"✅ mini-graph.json: {len(mini_graph_payload['nodes'])} nodes / "
+        f"{len(mini_graph_payload['edges'])} edges → {MINI_GRAPH_PATH.relative_to(REPO_ROOT)}"
+    )
     layout = precompute_graph_layout(OUT_PATH)
     if layout is not None:
         graph["layout"] = layout
+        graph["layout_resolved"] = True
         OUT_PATH.write_text(
             json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
         )

@@ -149,13 +149,32 @@
 
   var TABLEAU10 = ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f','#edc948','#b07aa1','#ff9da7','#9c755f','#bab0ac'];
 
-  // 与 main.js 搜索区的社区下拉共用同一份 link-graph.json（原先各自 fetch，首页一次加载请求两遍 9 MB）；
-  // 共享数据只读，下面只复制出预览子图再交给力模拟
-  var graphDataPromise = (window.RNLinkGraph && typeof window.RNLinkGraph.ensure === 'function')
-    ? window.RNLinkGraph.ensure()
-    : fetch('exports/link-graph.json').then(function(r){ return r.json(); }).then(function (gd) {
-        return window.RNExportFormats ? window.RNExportFormats.expandLinkGraph(gd) : gd;
-      });
+  function fallbackFullGraphPromise() {
+    if (window.RNLinkGraph) {
+      if (typeof window.RNLinkGraph.ensureSummaries === 'function') {
+        return window.RNLinkGraph.ensureSummaries();
+      }
+      if (typeof window.RNLinkGraph.ensure === 'function') {
+        return window.RNLinkGraph.ensure();
+      }
+    }
+    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+      return window.RNExportFormats ? window.RNExportFormats.expandLinkGraph(gd) : gd;
+    });
+  }
+
+  // 优先读取 14 KB 预裁剪首页预览子图 exports/mini-graph.json，避免首页首屏下载 708 KB 全图与 716 KB 全量摘要；
+  // 预裁剪产物缺失或无 fetch（单元测试）时无缝回退共享加载器。
+  var graphDataPromise = (typeof window.fetch === 'function')
+    ? fetch('exports/mini-graph.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .catch(fallbackFullGraphPromise)
+    : ((window.RNLinkGraph && typeof window.RNLinkGraph.ensure === 'function')
+        ? window.RNLinkGraph.ensure()
+        : Promise.reject(new Error('No graph data source')));
   graphDataPromise.then(function(gd) {
     var palette = (window.RNGraphTooltip && window.RNGraphTooltip.getCommunityColors)
       ? window.RNGraphTooltip.getCommunityColors()
@@ -185,72 +204,102 @@
       return palette[palette.length - 1];
     }
 
-    // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
-    var degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
-    var maxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
+    var isPrePruned = typeof gd.max_degree === 'number' && gd.nodes && gd.nodes.length <= PREVIEW_TOP_N &&
+      (!gd.nodes.length || typeof gd.nodes[0]._degree === 'number');
+    var degreeMap;
+    var maxDegree;
+    var nodes;
+    var edges;
     function nodeRadius(d) {
       return window.RNGraphNodeSize.radiusForDegree(d._degree, maxDegree);
     }
 
-    // 邻接表：预览取 Top-N 诱导子图后，可能出现「全局度数高但邻居都不在 Top-N」的孤立点
-    var adj = {};
-    (gd.edges || []).forEach(function (e) {
-      if (e.source === e.target) return;
-      if (!adj[e.source]) adj[e.source] = [];
-      if (!adj[e.target]) adj[e.target] = [];
-      adj[e.source].push(e.target);
-      adj[e.target].push(e.source);
-    });
-    function hasNeighborInSet(id, idSet) {
-      var neighbors = adj[id] || [];
-      for (var i = 0; i < neighbors.length; i++) {
-        if (idSet.has(neighbors[i])) return true;
-      }
-      return false;
-    }
-
-    var ranked = gd.nodes.slice().sort(function (a, b) {
-      return (degreeMap[b.id] || 0) - (degreeMap[a.id] || 0);
-    });
-    var topIds = new Set(
-      ranked.slice(0, PREVIEW_TOP_N).map(function (n) { return n.id; })
-    );
-    // 剔除诱导子图孤立点（迭代至稳定，避免级联），再按度数序回填可连通候选
-    var dropped = true;
-    while (dropped) {
-      dropped = false;
-      Array.from(topIds).forEach(function (id) {
-        if (!hasNeighborInSet(id, topIds)) {
-          topIds.delete(id);
-          dropped = true;
-        }
+    if (isPrePruned) {
+      maxDegree = Math.max(1, gd.max_degree);
+      nodes = gd.nodes.map(function (n) {
+        return {
+          id: n.id,
+          detail_id: n.detail_id,
+          label: n.label || n.id,
+          type: n.type || '',
+          community: n.community || '',
+          summary: n.summary || '',
+          health_score: n.health_score,
+          health_gaps: n.health_gaps,
+          has_repo: n.has_repo,
+          _degree: n._degree || 0
+        };
       });
-    }
-    for (var ri = 0; ri < ranked.length && topIds.size < PREVIEW_TOP_N; ri++) {
-      var cand = ranked[ri].id;
-      if (topIds.has(cand)) continue;
-      if (hasNeighborInSet(cand, topIds)) topIds.add(cand);
-    }
+      var prunedIds = new Set(nodes.map(function (n) { return n.id; }));
+      edges = (gd.edges || []).filter(function (e) {
+        return e.source !== e.target && prunedIds.has(e.source) && prunedIds.has(e.target);
+      }).map(function (e) { return { source: e.source, target: e.target }; });
+    } else {
+      // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
+      degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
+      maxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
 
-    var nodes = gd.nodes.filter(function(n){ return topIds.has(n.id); }).map(function(n){
-      return {
-        id: n.id,
-        label: n.label || n.id,
-        type: n.type || '',
-        community: n.community || '',
-        summary: n.summary || '',
-        health_score: n.health_score,
-        health_gaps: n.health_gaps,
-        has_repo: n.has_repo,
-        _degree: degreeMap[n.id] || 0
-      };
-    });
-    var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
+      // 邻接表：预览取 Top-N 诱导子图后，可能出现「全局度数高但邻居都不在 Top-N」的孤立点
+      var adj = {};
+      (gd.edges || []).forEach(function (e) {
+        if (e.source === e.target) return;
+        if (!adj[e.source]) adj[e.source] = [];
+        if (!adj[e.target]) adj[e.target] = [];
+        adj[e.source].push(e.target);
+        adj[e.target].push(e.source);
+      });
+      function hasNeighborInSet(id, idSet) {
+        var neighbors = adj[id] || [];
+        for (var i = 0; i < neighbors.length; i++) {
+          if (idSet.has(neighbors[i])) return true;
+        }
+        return false;
+      }
+
+      var ranked = gd.nodes.slice().sort(function (a, b) {
+        return (degreeMap[b.id] || 0) - (degreeMap[a.id] || 0);
+      });
+      var topIds = new Set(
+        ranked.slice(0, PREVIEW_TOP_N).map(function (n) { return n.id; })
+      );
+      // 剔除诱导子图孤立点（迭代至稳定，避免级联），再按度数序回填可连通候选
+      var dropped = true;
+      while (dropped) {
+        dropped = false;
+        Array.from(topIds).forEach(function (id) {
+          if (!hasNeighborInSet(id, topIds)) {
+            topIds.delete(id);
+            dropped = true;
+          }
+        });
+      }
+      for (var ri = 0; ri < ranked.length && topIds.size < PREVIEW_TOP_N; ri++) {
+        var cand = ranked[ri].id;
+        if (topIds.has(cand)) continue;
+        if (hasNeighborInSet(cand, topIds)) topIds.add(cand);
+      }
+
+      nodes = gd.nodes.filter(function(n){ return topIds.has(n.id); }).map(function(n){
+        return {
+          id: n.id,
+          detail_id: n.detail_id,
+          label: n.label || n.id,
+          type: n.type || '',
+          community: n.community || '',
+          summary: n.summary || '',
+          health_score: n.health_score,
+          health_gaps: n.health_gaps,
+          has_repo: n.has_repo,
+          _degree: degreeMap[n.id] || 0
+        };
+      });
+      var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
+      edges = gd.edges.filter(function(e){
+        return e.source !== e.target && nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
+      }).map(function(e){ return {source:e.source, target:e.target}; });
+    }
     var nodeById = Object.create(null);
     nodes.forEach(function(n){ nodeById[n.id] = n; });
-    var edges = gd.edges.filter(function(e){
-      return e.source !== e.target && nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
-    }).map(function(e){ return {source:e.source, target:e.target}; });
 
     function edgeEndId(end) {
       return (end && typeof end === 'object') ? end.id : end;

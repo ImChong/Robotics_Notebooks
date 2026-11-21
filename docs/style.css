@@ -168,6 +168,13 @@ p { text-wrap: pretty; }
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
+@media (max-width: 768px), (hover: none) {
+  /* 移动端/触屏缩减模糊半径，降低滚动合成开销同时保留半透明磨砂质感 */
+  .site-header {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
 .header-inner {
   max-width: var(--content-max-width);
   margin: 0 auto;
@@ -361,15 +368,9 @@ body.sponsor-dialog-open {
   animation: hero-badge-dot-breathe 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 @keyframes hero-badge-dot-breathe {
-  /* 下限保持可见，避免「灭灯」感；外环只做微强弱，不扩光晕 */
-  0%, 100% {
-    opacity: 0.68;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
-  }
-  40%, 55% {
-    opacity: 1;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
-  }
+  /* 纯 opacity 动画走 compositor 合成层，避免每帧重绘 box-shadow */
+  0%, 100% { opacity: 0.68; }
+  40%, 55% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-badge-dot {
@@ -1046,6 +1047,8 @@ a.hero-stat-num:focus-visible {
     gap: 4px 8px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 72px;
   }
   .home-hub-row:last-child { border-bottom: none; padding-bottom: 0; }
   .home-hub-row-rank, .home-hub-row-type, .home-hub-row-degree { font-size: .78rem; }
@@ -1100,7 +1103,14 @@ a.hero-stat-num:focus-visible {
   box-shadow: 0 0 0 3px var(--bg);
 }
 .updates-day-meta { font-size: .78rem; font-weight: 400; color: var(--text-muted); margin-left: .55rem; }
-.updates-day-list { list-style: none; margin: 8px 0 0; padding: 0; --updates-badge-col-width: 3.25rem; }
+.updates-day-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  --updates-badge-col-width: 3.25rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 280px;
+}
 /* 超量日：预览 10 条；交互含再展开/展开全部/收起，视觉沿用 PR#1245 箭头+文案（非 btn-secondary） */
 .updates-day-actions {
   display: flex;
@@ -4379,6 +4389,10 @@ body.roadmap-ltree-map-open {
   /* 底部「收起本章」收起后 scrollIntoView 回到标题行，与全站锚点跳转同款头部避让 */
   scroll-margin-top: 96px;
 }
+.roadmap-major-section:not([open]) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 56px;
+}
 .roadmap-major-section-summary {
   display: flex;
   align-items: center;
@@ -4946,6 +4960,8 @@ body.roadmap-ltree-map-open {
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--bg-alt);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 110px;
 }
 .co-node-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .co-node-title { margin: 0; font-size: 1rem; line-height: 1.35; }

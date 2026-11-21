@@ -23,10 +23,14 @@ function harness(responder) {
     },
   });
   vm.runInContext(source.slice(start, end), context);
-  return { calls, ensure: () => context.ensureLinkGraphData() };
+  return {
+    calls,
+    ensure: () => context.ensureLinkGraphData(),
+    ensureSummaries: () => context.ensureLinkGraphSummaries(),
+  };
 }
 
-test('concurrent and later readers share one request and one parse', async () => {
+test('concurrent and later readers share one topology request without eagerly fetching summaries', async () => {
   let parses = 0;
   const h = harness(() => ({
     ok: true,
@@ -35,11 +39,26 @@ test('concurrent and later readers share one request and one parse', async () =>
   }));
   const [first, second] = await Promise.all([h.ensure(), h.ensure()]);
   const third = await h.ensure();
-  assert.deepEqual(h.calls, ['exports/link-graph.json', 'exports/link-graph-summaries.json']);
+  assert.deepEqual(h.calls, ['exports/link-graph.json']);
   assert.equal(parses, 1);
   assert.equal(first, second);
   assert.equal(second, third);
-  assert.equal(first.nodes[0].summary, '摘要', '摘要按 nodes 顺序合回节点');
+  assert.equal(first.nodes[0].summary, undefined);
+});
+
+test('ensureSummaries lazily hydrates summaries and reuses cached topology', async () => {
+  const h = harness(() => ({
+    ok: true,
+    status: 200,
+    json: async () => ({ nodes: [{ id: 'wiki/a.md' }] }),
+  }));
+  const topo = await h.ensure();
+  const hydrated = await h.ensureSummaries();
+  const cached = await h.ensureSummaries();
+  assert.deepEqual(h.calls, ['exports/link-graph.json', 'exports/link-graph-summaries.json']);
+  assert.equal(hydrated, topo);
+  assert.equal(cached, topo);
+  assert.equal(hydrated.nodes[0].summary, '摘要', '摘要按 nodes 顺序合回节点');
 });
 
 test('a failed load is not cached and the next reader retries', async () => {
@@ -55,9 +74,16 @@ test('a failed load is not cached and the next reader retries', async () => {
 test('detail modules keep no private graph fetch of their own', () => {
   const sites = source.split("fetch('exports/link-graph.json'").length - 1;
   assert.equal(sites, 1, '只剩共享加载器；搜索社区下拉与 mini-graph.js 都经 window.RNLinkGraph 复用');
-  assert.ok(source.includes('window.RNLinkGraph = { ensure: ensureLinkGraphData };'), '共享加载器对 mini-graph.js 可见');
+  assert.ok(
+    source.includes('window.RNLinkGraph = { ensure: ensureLinkGraphData, ensureSummaries: ensureLinkGraphSummaries };'),
+    '共享加载器（含按需摘要）对 mini-graph.js 可见',
+  );
   const miniGraph = readFileSync(resolve(__dirname, '../docs/mini-graph.js'), 'utf8');
-  assert.ok(miniGraph.includes('window.RNLinkGraph.ensure()'), 'mini-graph.js 优先复用共享加载器');
+  assert.ok(miniGraph.includes('exports/mini-graph.json'), '首页迷你图谱优先加载轻量 exports/mini-graph.json');
+  assert.ok(
+    miniGraph.includes('window.RNLinkGraph.ensureSummaries()') && miniGraph.includes('window.RNLinkGraph.ensure()'),
+    'mini-graph.js 在无预裁剪文件或拓扑回退时复用共享加载器',
+  );
 });
 
 test('detail pages no longer download hub-rankings.json for has_repo / type', () => {

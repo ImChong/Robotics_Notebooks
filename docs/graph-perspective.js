@@ -122,12 +122,17 @@
     };
   }
 
-  /* ── 颜色解析 ── */
+  /* ── 颜色解析（记忆化，避免构建 8k+ 节点批次时重复正则解析）── */
 
-  function parseCssColor(str, fallback) {
+  var CSS_COLOR_CACHE = Object.create(null);
+
+  function parseCssColorFast(str, fallback) {
     var fb = fallback || [0.36, 0.61, 0.96, 1];
-    if (!str || typeof str !== 'string') return fb.slice();
+    if (!str || typeof str !== 'string') return fb;
+    var cached = CSS_COLOR_CACHE[str];
+    if (cached) return cached;
     var s = str.trim();
+    var parsed = null;
     if (s.charAt(0) === '#') {
       var hex = s.slice(1);
       if (hex.length === 3) {
@@ -136,21 +141,30 @@
       if (hex.length >= 6) {
         var n = parseInt(hex.slice(0, 6), 16);
         if (Number.isFinite(n)) {
-          return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255, 1];
+          parsed = [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255, 1];
         }
       }
-      return fb.slice();
+    } else {
+      var m = s.match(/^rgba?\(\s*([\d.]+)\s*[,\s]\s*([\d.]+)\s*[,\s]\s*([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)/i);
+      if (m) {
+        parsed = [
+          Math.min(1, Math.max(0, Number(m[1]) / 255)),
+          Math.min(1, Math.max(0, Number(m[2]) / 255)),
+          Math.min(1, Math.max(0, Number(m[3]) / 255)),
+          m[4] !== undefined ? Math.min(1, Math.max(0, Number(m[4]))) : 1,
+        ];
+      }
     }
-    var m = s.match(/^rgba?\(\s*([\d.]+)\s*[,\s]\s*([\d.]+)\s*[,\s]\s*([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)/i);
-    if (m) {
-      return [
-        Math.min(1, Math.max(0, Number(m[1]) / 255)),
-        Math.min(1, Math.max(0, Number(m[2]) / 255)),
-        Math.min(1, Math.max(0, Number(m[3]) / 255)),
-        m[4] !== undefined ? Math.min(1, Math.max(0, Number(m[4]))) : 1,
-      ];
+    if (parsed) {
+      CSS_COLOR_CACHE[str] = parsed;
+      return parsed;
     }
-    return fb.slice();
+    return fb;
+  }
+
+  function parseCssColor(str, fallback) {
+    var fb = fallback || [0.36, 0.61, 0.96, 1];
+    return parseCssColorFast(str, fb).slice();
   }
 
   /* ── 连接度统计与 2D -> 3D 地形高度场（O(G^2 + N)）── */
@@ -767,6 +781,13 @@
     }
     var cellSize = Math.max(0.012, maxR * 2 + gap * 1.5);
     var invCell = 1 / cellSize;
+    var tableSize = 1024;
+    while (tableSize < n * 4) tableSize <<= 1;
+    var mask = tableSize - 1;
+    var head = new Int32Array(tableSize);
+    var next = new Int32Array(n);
+    var cellX = new Int32Array(n);
+    var cellZ = new Int32Array(n);
     var accX = new Float32Array(n);
     var accZ = new Float32Array(n);
     var accW = new Float32Array(n);
@@ -775,37 +796,38 @@
     var totalResolved = 0;
 
     for (pass = 0; pass < maxPasses; pass++) {
-      var grid = new Map();
+      head.fill(-1);
       for (i = 0; i < n; i++) {
         accX[i] = 0;
         accZ[i] = 0;
         accW[i] = 0;
         var it = items[i];
-        var gx = Math.floor(it.wx * invCell);
-        var gz = Math.floor(it.wz * invCell);
-        var key = (gx + 32768) * 65536 + (gz + 32768);
-        var bucket = grid.get(key);
-        if (bucket) bucket.push(i);
-        else grid.set(key, [i]);
+        var gx = Math.floor(it.wx * invCell) | 0;
+        var gz = Math.floor(it.wz * invCell) | 0;
+        cellX[i] = gx;
+        cellZ[i] = gz;
+        var h = (Math.imul(gx, 73856093) ^ Math.imul(gz, 19349663)) & mask;
+        next[i] = head[h];
+        head[h] = i;
       }
 
       var passOverlaps = 0;
       for (i = 0; i < n; i++) {
         var a = items[i];
         var ra = a.baseRadius;
-        var gxa = Math.floor(a.wx * invCell);
-        var gza = Math.floor(a.wz * invCell);
+        var gxa = cellX[i];
+        var gza = cellZ[i];
         var aPinned = pinnedId && a.node && a.node.id === pinnedId;
         var invMa = aPinned ? 0 : 1 / Math.max(1e-6, ra * ra);
 
         for (var oz = -1; oz <= 1; oz++) {
+          var qz = (gza + oz) | 0;
+          var hz = Math.imul(qz, 19349663);
           for (var ox = -1; ox <= 1; ox++) {
-            var nKey = (gxa + ox + 32768) * 65536 + (gza + oz + 32768);
-            var cell = grid.get(nKey);
-            if (!cell) continue;
-            for (var k = 0; k < cell.length; k++) {
-              var j = cell[k];
-              if (j <= i) continue;
+            var qx = (gxa + ox) | 0;
+            var qh = (Math.imul(qx, 73856093) ^ hz) & mask;
+            for (var j = head[qh]; j !== -1; j = next[j]) {
+              if (j <= i || cellX[j] !== qx || cellZ[j] !== qz) continue;
               var b = items[j];
               var rb = b.baseRadius;
               var minDist = ra + rb + gap;
@@ -1264,6 +1286,35 @@
     var terrainGradBuf = gl.createBuffer();
     var terrainIdxBuf = gl.createBuffer();
     var terrainIdxCount = 0;
+    var uploadedGridSize = 0;
+    var uploadedExtent = -1;
+    var cachedEdgeAdjRef = null;
+    var cachedEdgeAdjLen = -1;
+    var cachedEdgeAdj = null;
+
+    function getEdgeAdj(edges) {
+      if (cachedEdgeAdj && cachedEdgeAdjRef === edges && cachedEdgeAdjLen === edges.length) {
+        return cachedEdgeAdj;
+      }
+      var map = Object.create(null);
+      for (var ei = 0; ei < edges.length; ei++) {
+        var edge = edges[ei];
+        if (!edge) continue;
+        var es = edgeEndId(edge.source);
+        var et = edgeEndId(edge.target);
+        if (!es || !et) continue;
+        if (!map[es]) map[es] = [];
+        map[es].push({ s: es, t: et });
+        if (et !== es) {
+          if (!map[et]) map[et] = [];
+          map[et].push({ s: es, t: et });
+        }
+      }
+      cachedEdgeAdjRef = edges;
+      cachedEdgeAdjLen = edges.length;
+      cachedEdgeAdj = map;
+      return map;
+    }
 
     var linePosBuf = gl.createBuffer();
     var lineColBuf = gl.createBuffer();
@@ -1334,38 +1385,42 @@
       currentField = field;
       var G = field.gridSize;
       var ext = field.extent;
-      var xz = new Float32Array(G * G * 2);
-      for (var z = 0; z < G; z++) {
-        var wz = -ext + (2 * ext * z) / (G - 1);
-        for (var x = 0; x < G; x++) {
-          var wx = -ext + (2 * ext * x) / (G - 1);
-          var off = (z * G + x) * 2;
-          xz[off] = wx;
-          xz[off + 1] = wz;
+      if (uploadedGridSize !== G || uploadedExtent !== ext) {
+        var xz = new Float32Array(G * G * 2);
+        for (var z = 0; z < G; z++) {
+          var wz = -ext + (2 * ext * z) / (G - 1);
+          for (var x = 0; x < G; x++) {
+            var wx = -ext + (2 * ext * x) / (G - 1);
+            var off = (z * G + x) * 2;
+            xz[off] = wx;
+            xz[off + 1] = wz;
+          }
         }
-      }
-      var indices = new Uint16Array((G - 1) * (G - 1) * 6);
-      var ptr = 0;
-      for (var r = 0; r < G - 1; r++) {
-        for (var c = 0; c < G - 1; c++) {
-          var i0 = r * G + c;
-          var i1 = i0 + 1;
-          var i2 = i0 + G;
-          var i3 = i2 + 1;
-          indices[ptr++] = i0; indices[ptr++] = i2; indices[ptr++] = i1;
-          indices[ptr++] = i1; indices[ptr++] = i2; indices[ptr++] = i3;
+        var indices = new Uint16Array((G - 1) * (G - 1) * 6);
+        var ptr = 0;
+        for (var r = 0; r < G - 1; r++) {
+          for (var c = 0; c < G - 1; c++) {
+            var i0 = r * G + c;
+            var i1 = i0 + 1;
+            var i2 = i0 + G;
+            var i3 = i2 + 1;
+            indices[ptr++] = i0; indices[ptr++] = i2; indices[ptr++] = i1;
+            indices[ptr++] = i1; indices[ptr++] = i2; indices[ptr++] = i3;
+          }
         }
+        terrainIdxCount = indices.length;
+        gl.bindBuffer(gl.ARRAY_BUFFER, terrainXZBuf);
+        gl.bufferData(gl.ARRAY_BUFFER, xz, gl.STATIC_DRAW);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, terrainIdxBuf);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
+        uploadedGridSize = G;
+        uploadedExtent = ext;
       }
-      terrainIdxCount = indices.length;
 
-      gl.bindBuffer(gl.ARRAY_BUFFER, terrainXZBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, xz, gl.STATIC_DRAW);
       gl.bindBuffer(gl.ARRAY_BUFFER, terrainHBuf);
       gl.bufferData(gl.ARRAY_BUFFER, field.heights, gl.STATIC_DRAW);
       gl.bindBuffer(gl.ARRAY_BUFFER, terrainGradBuf);
       gl.bufferData(gl.ARRAY_BUFFER, field.grads, gl.STATIC_DRAW);
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, terrainIdxBuf);
-      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
     }
 
     function buildDynamicBatches(data, heightAmp, isDarkTheme) {
@@ -1385,16 +1440,17 @@
       var metaMap = currentField.nodeMeta;
       var highlightCenterId = (hoverNode && hoverNode.id) || (sidebarNode && sidebarNode.id) || routeFocusId || null;
       var highlightNeighbors = null;
+      var edgeAdj = (highlightCenterId && edges.length > 0) ? getEdgeAdj(edges) : null;
+      var hiAdjList = (highlightCenterId && edgeAdj) ? edgeAdj[highlightCenterId] : null;
       var i;
       if (highlightCenterId) {
         highlightNeighbors = Object.create(null);
-        for (i = 0; i < edges.length; i++) {
-          var he = edges[i];
-          if (!he) continue;
-          var hsId = edgeEndId(he.source);
-          var htId = edgeEndId(he.target);
-          if (hsId === highlightCenterId && htId && htId !== highlightCenterId) highlightNeighbors[htId] = true;
-          else if (htId === highlightCenterId && hsId && hsId !== highlightCenterId) highlightNeighbors[hsId] = true;
+        if (hiAdjList) {
+          for (i = 0; i < hiAdjList.length; i++) {
+            var he = hiAdjList[i];
+            if (he.s === highlightCenterId && he.t !== highlightCenterId) highlightNeighbors[he.t] = true;
+            else if (he.t === highlightCenterId && he.s !== highlightCenterId) highlightNeighbors[he.s] = true;
+          }
         }
       }
       var applyHoverDim = !!(hoverNode && !focusSet);
@@ -1410,7 +1466,7 @@
         var visible = !activeIds || activeIds.has(n.id);
         var alpha = getNodeAlpha(n);
         if (!visible && alpha <= 0.08 && (!focusSet || !focusSet.has(n.id))) continue;
-        var rgb = parseCssColor(getNodeColor(n), [0.36, 0.61, 0.96, 1]);
+        var rgb = parseCssColorFast(getNodeColor(n), [0.36, 0.61, 0.96, 1]);
         var isFocused = !!(focusSet && focusSet.has(n.id));
         var isHovered = !!(hoverNode && hoverNode.id === n.id);
         var isSelected = !!((sidebarNode && sidebarNode.id === n.id) || (routeFocusId && routeFocusId === n.id));
@@ -1588,60 +1644,68 @@
         }
       }
 
-      for (i = 0; i < edges.length; i++) {
-        var e = edges[i];
-        if (!e) continue;
-        var sId = edgeEndId(e.source);
-        var tId = edgeEndId(e.target);
-        var a = node3dMap[sId];
-        var b = node3dMap[tId];
-        if (!a || !b) continue;
-
-        var isHi = highlightCenterId && (sId === highlightCenterId || tId === highlightCenterId);
-        if (!isHi && (!showEdges || bgEdgeDrawn >= maxBgEdges)) continue;
-        if (!isHi && (!a.visible || !b.visible)) continue;
-
-        var mx = (a.wx + b.wx) * 0.5;
-        var mz = (a.wz + b.wz) * 0.5;
-        var dist = Math.hypot(b.wx - a.wx, b.wz - a.wz);
-        var terrainMid = sampleTerrainHeight(currentField, mx, mz) * heightAmp;
-        var arcPeak = isHi
-          ? (Math.max(a.wy, b.wy, terrainMid + 0.055) + Math.min(0.18, dist * 0.22 + 0.032))
-          : (Math.max((a.wy + b.wy) * 0.5, terrainMid + 0.03) + Math.min(0.14, dist * 0.16));
-
-        var col = isHi ? (node3dMap[highlightCenterId] ? node3dMap[highlightCenterId].rgb : a.rgb) : baseEdgeRgb;
-        if (isHi) {
+      if (hiAdjList) {
+        var hiColBase = node3dMap[highlightCenterId] ? node3dMap[highlightCenterId].rgb : null;
+        var hiCoreMix = isDarkTheme ? 0.36 : 0.08;
+        var wScaleHi = isPreview ? 1.0 : 0.62;
+        for (i = 0; i < hiAdjList.length; i++) {
+          var heItem = hiAdjList[i];
+          var aHi = node3dMap[heItem.s];
+          var bHi = node3dMap[heItem.t];
+          if (!aHi || !bHi) continue;
+          var mxHi = (aHi.wx + bHi.wx) * 0.5;
+          var mzHi = (aHi.wz + bHi.wz) * 0.5;
+          var distHi = Math.hypot(bHi.wx - aHi.wx, bHi.wz - aHi.wz);
+          var terrainMidHi = sampleTerrainHeight(currentField, mxHi, mzHi) * heightAmp;
+          var arcPeakHi = Math.max(aHi.wy, bHi.wy, terrainMidHi + 0.055) + Math.min(0.18, distHi * 0.22 + 0.032);
+          var colHi = hiColBase || aHi.rgb;
           hiEdgeCount += 1;
-          var coreMix = isDarkTheme ? 0.36 : 0.08;
           var coreCol = [
-            col[0] + (1 - col[0]) * coreMix,
-            col[1] + (1 - col[1]) * coreMix,
-            col[2] + (1 - col[2]) * coreMix,
+            colHi[0] + (1 - colHi[0]) * hiCoreMix,
+            colHi[1] + (1 - colHi[1]) * hiCoreMix,
+            colHi[2] + (1 - colHi[2]) * hiCoreMix,
           ];
-          var perpLen = Math.max(1e-4, dist);
-          var sx = -(b.wz - a.wz) / perpLen;
-          var sz = (b.wx - a.wx) / perpLen;
+          var perpLen = Math.max(1e-4, distHi);
+          var sx = -(bHi.wz - aHi.wz) / perpLen;
+          var sz = (bHi.wx - aHi.wx) / perpLen;
           var hiSegs = 14;
           var arcPts = [];
           for (var hsg = 0; hsg <= hiSegs; hsg++) {
             var hu = hsg / hiSegs;
             var homt = 1 - hu;
             arcPts.push([
-              homt * homt * a.wx + 2 * homt * hu * mx + hu * hu * b.wx,
-              homt * homt * a.wy + 2 * homt * hu * arcPeak + hu * hu * b.wy,
-              homt * homt * a.wz + 2 * homt * hu * mz + hu * hu * b.wz,
+              homt * homt * aHi.wx + 2 * homt * hu * mxHi + hu * hu * bHi.wx,
+              homt * homt * aHi.wy + 2 * homt * hu * arcPeakHi + hu * hu * bHi.wy,
+              homt * homt * aHi.wz + 2 * homt * hu * mzHi + hu * hu * bHi.wz,
             ]);
           }
           // Fine crossed horizontal + vertical luminous 3D ribbons (~1.6-2.0px crisp line across viewports)
-          var wScale = isPreview ? 1.0 : 0.62;
-          pushRibbonStrip(arcPts, sx, 0, sz, 0.0032 * wScale, col, isDarkTheme ? 0.24 : 0.20, 0.0);
-          pushRibbonStrip(arcPts, sx, 0, sz, 0.0013 * wScale, coreCol, 0.94, 0.15);
-          pushRibbonStrip(arcPts, 0, 1, 0, 0.0026 * wScale, col, isDarkTheme ? 0.20 : 0.16, 0.0);
-          pushRibbonStrip(arcPts, 0, 1, 0, 0.0011 * wScale, coreCol, 0.88, 0.12);
-        } else {
-          var bgEdgeAlpha = highlightCenterId
-            ? (nodes.length <= 160 ? 0.04 : 0.03)
-            : (nodes.length <= 160 ? 0.16 : 0.10);
+          pushRibbonStrip(arcPts, sx, 0, sz, 0.0032 * wScaleHi, colHi, isDarkTheme ? 0.24 : 0.20, 0.0);
+          pushRibbonStrip(arcPts, sx, 0, sz, 0.0013 * wScaleHi, coreCol, 0.94, 0.15);
+          pushRibbonStrip(arcPts, 0, 1, 0, 0.0026 * wScaleHi, colHi, isDarkTheme ? 0.20 : 0.16, 0.0);
+          pushRibbonStrip(arcPts, 0, 1, 0, 0.0011 * wScaleHi, coreCol, 0.88, 0.12);
+        }
+      }
+
+      if (showEdges) {
+        var bgEdgeAlpha = highlightCenterId
+          ? (nodes.length <= 160 ? 0.04 : 0.03)
+          : (nodes.length <= 160 ? 0.16 : 0.10);
+        for (i = 0; i < edges.length && bgEdgeDrawn < maxBgEdges; i++) {
+          var e = edges[i];
+          if (!e) continue;
+          var sId = edgeEndId(e.source);
+          var tId = edgeEndId(e.target);
+          if (highlightCenterId && (sId === highlightCenterId || tId === highlightCenterId)) continue;
+          var a = node3dMap[sId];
+          var b = node3dMap[tId];
+          if (!a || !b || !a.visible || !b.visible) continue;
+
+          var mx = (a.wx + b.wx) * 0.5;
+          var mz = (a.wz + b.wz) * 0.5;
+          var dist = Math.hypot(b.wx - a.wx, b.wz - a.wz);
+          var terrainMid = sampleTerrainHeight(currentField, mx, mz) * heightAmp;
+          var arcPeak = Math.max((a.wy + b.wy) * 0.5, terrainMid + 0.03) + Math.min(0.14, dist * 0.16);
           var px0 = a.wx;
           var py0 = a.wy;
           var pz0 = a.wz;
@@ -1652,7 +1716,7 @@
             var qy = omt * omt * a.wy + 2 * omt * u * arcPeak + u * u * b.wy;
             var qz = omt * omt * a.wz + 2 * omt * u * mz + u * u * b.wz;
             lPos.push(px0, py0, pz0, qx, qy, qz);
-            lCol.push(col[0], col[1], col[2], bgEdgeAlpha, col[0], col[1], col[2], bgEdgeAlpha);
+            lCol.push(baseEdgeRgb[0], baseEdgeRgb[1], baseEdgeRgb[2], bgEdgeAlpha, baseEdgeRgb[0], baseEdgeRgb[1], baseEdgeRgb[2], bgEdgeAlpha);
             px0 = qx; py0 = qy; pz0 = qz;
           }
           bgEdgeDrawn += 1;
@@ -1930,7 +1994,7 @@
       lastHeightScale = heightScale;
       lastForceSettle = forceSettle;
       var isDarkTheme = !!renderOpts.isDark;
-      var bgArr = parseCssColor(renderOpts.bgColor || (isDarkTheme ? '#191919' : '#f7f6f3'), [0.098, 0.098, 0.098, 1]);
+      var bgArr = parseCssColorFast(renderOpts.bgColor || (isDarkTheme ? '#191919' : '#f7f6f3'), [0.098, 0.098, 0.098, 1]);
 
       gl.depthMask(true);
       gl.disable(gl.CULL_FACE);
@@ -2083,20 +2147,57 @@
 
     function pickNodeAtScreen(localX, localY, extraSlop) {
       if (!lastViewProj || !cachedNodes3d.length) return null;
+      var vp = lastViewProj;
+      var m0 = vp[0], m1 = vp[1], m2 = vp[2], m3 = vp[3];
+      var m4 = vp[4], m5 = vp[5], m6 = vp[6], m7 = vp[7];
+      var m8 = vp[8], m9 = vp[9], m10 = vp[10], m11 = vp[11];
+      var m12 = vp[12], m13 = vp[13], m14 = vp[14], m15 = vp[15];
       var slop = extraSlop > 0 ? extraSlop : 0;
+      var settled = lastForceSettle >= 0.999;
+      var settleEase = settled ? 1 : (1 - Math.pow(1 - Math.max(0, lastForceSettle), 3));
+      var radialAmp = 0.026 * (1 - settleEase);
+      var swirlAng = (1 - settleEase) * 0.22;
+      var swirlSin = settled ? 0 : Math.sin(swirlAng);
+      var swirlCos = settled ? 1 : Math.cos(swirlAng);
+      var hScale = lastHeightScale;
+      var halfW = width * 0.5;
+      var halfH = height * 0.5;
       var best = null;
       var bestScore = Infinity;
       for (var i = 0; i < cachedNodes3d.length; i++) {
         var n3 = cachedNodes3d[i];
         if (!n3.visible && !n3.focused) continue;
-        var mXZ = evalForceMotionXZ(n3.wx, n3.wz, lastForceSettle, 0.026);
-        var pt = projectWorldToScreen(mXZ[0], n3.wy * lastHeightScale, mXZ[1], lastViewProj, width, height);
-        if (!pt || pt[2] < -1 || pt[2] > 1) continue;
+        var wx = n3.wx;
+        var wz = n3.wz;
+        if (!settled) {
+          var rad = Math.hypot(wx, wz);
+          if (rad > 1e-4) {
+            var sRad = 1 + (radialAmp * (1 / (0.35 + rad))) / rad;
+            var rx = wx * sRad;
+            var rz = wz * sRad;
+            var sw = swirlSin * Math.min(1, rad);
+            var cwRot = Math.cos(sw);
+            var swRot = Math.sin(sw);
+            wx = rx * cwRot - rz * swRot;
+            wz = rx * swRot + rz * cwRot;
+          } else if (swirlCos !== 1) {
+            wx = wx * swirlCos - wz * swirlSin;
+            wz = wx * swirlSin + wz * swirlCos;
+          }
+        }
+        var wy = n3.wy * hScale;
+        var cw = m3 * wx + m7 * wy + m11 * wz + m15;
+        if (cw <= 0.001) continue;
+        var invW = 1 / cw;
+        var sx = ((m0 * wx + m4 * wy + m8 * wz + m12) * invW + 1) * halfW;
+        var sy = (1 - (m1 * wx + m5 * wy + m9 * wz + m13) * invW) * halfH;
+        var ndcZ = (m2 * wx + m6 * wy + m10 * wz + m14) * invW;
+        if (ndcZ < -1 || ndcZ > 1) continue;
         var projR = n3.baseRadius ? (n3.baseRadius * height * 0.75) : (n3.degNorm > 0.35 ? 16 : 11);
         var hitRadius = Math.max(9, Math.min(28, projR + 5)) + (n3.focused ? 3 : 0) + slop;
-        var distPx = Math.hypot(pt[0] - localX, pt[1] - localY);
+        var distPx = Math.hypot(sx - localX, sy - localY);
         if (distPx <= hitRadius) {
-          var score = distPx + pt[2] * 2;
+          var score = distPx + ndcZ * 2;
           if (score < bestScore) {
             bestScore = score;
             best = n3.node;
@@ -2559,7 +2660,11 @@
       if (stageEl && stageEl.style && typeof stageEl.style.setProperty === 'function') {
         var pitchForGlow = renderParams.pitch != null ? renderParams.pitch : 36;
         var glowVis = (1 - smoothstep(40, 62, pitchForGlow)) * smoothstep(0.25, 0.85, heightScale);
-        stageEl.style.setProperty('--persp-horizon-glow', glowVis.toFixed(3));
+        var glowStr = glowVis.toFixed(3);
+        if (glowStr !== lastGlowVal) {
+          lastGlowVal = glowStr;
+          stageEl.style.setProperty('--persp-horizon-glow', glowStr);
+        }
       }
       r.render(renderParams, renderCam, {
         isDark: isDark(),
@@ -2609,11 +2714,71 @@
     var activePointers = new Map();
     var pinchState = null;
     var gestureSuppressedTap = false;
+    var cachedStageRect = null;
+    var lastGlowVal = null;
+    var hoverRaf = 0;
+    var pendingHoverEv = null;
+    var saveParamsTimer = 0;
+    var pendingSaveParams = null;
+
+    function invalidateStageRect() {
+      cachedStageRect = null;
+    }
+
+    function cancelPendingHover() {
+      pendingHoverEv = null;
+      if (hoverRaf && typeof cancelAnimationFrame === 'function') {
+        cancelAnimationFrame(hoverRaf);
+        hoverRaf = 0;
+      }
+    }
+
+    function scheduleSaveParams(nextParams) {
+      if (!persist) return;
+      pendingSaveParams = nextParams;
+      if (saveParamsTimer) return;
+      saveParamsTimer = setTimeout(function () {
+        saveParamsTimer = 0;
+        if (pendingSaveParams) {
+          var p = pendingSaveParams;
+          pendingSaveParams = null;
+          saveParamsIfEnabled(p);
+        }
+      }, 250);
+    }
+
+    function flushSaveParams() {
+      if (saveParamsTimer) {
+        clearTimeout(saveParamsTimer);
+        saveParamsTimer = 0;
+      }
+      if (pendingSaveParams) {
+        var p = pendingSaveParams;
+        pendingSaveParams = null;
+        saveParamsIfEnabled(p);
+      }
+    }
 
     function getStageLocalPoint(ev) {
       if (!stageEl) return [0, 0];
-      var rect = stageEl.getBoundingClientRect();
-      return [ev.clientX - rect.left, ev.clientY - rect.top];
+      if (!cachedStageRect) cachedStageRect = stageEl.getBoundingClientRect();
+      return [ev.clientX - cachedStageRect.left, ev.clientY - cachedStageRect.top];
+    }
+
+    function performHoverPick(ev) {
+      if (!enabled || !renderer || !ev) return;
+      if (dragState && dragState.id != null) return;
+      var pt = getStageLocalPoint(ev);
+      var hit = renderer.pickNodeAtScreen(pt[0], pt[1]);
+      var prevId = hoveredNode ? hoveredNode.id : null;
+      var nextId = hit ? hit.id : null;
+      if (prevId !== nextId) {
+        hoveredNode = hit || null;
+        if (stageEl) stageEl.style.cursor = (hit && canDragNodesNow()) ? 'grab' : '';
+        batchesDirty = true;
+        scheduleRender();
+      }
+      onNodeHover(hit || null, ev);
     }
 
     function canDragNodesNow() {
@@ -2642,6 +2807,8 @@
 
     function onPointerDown(ev) {
       if (!enabled || !stageEl) return;
+      cancelPendingHover();
+      cachedStageRect = null;
       if (entryAnim) cancelEntryAnim();
       var isTouch = ev.pointerType === 'touch';
       // W3C Pointer Events: isPrimary 标志新一轮手势的首指，清理可能残留的旧指针避免误入双指捏合
@@ -2825,7 +2992,7 @@
             pitch: nextPitch,
             yaw: nextYaw,
           }, tier);
-          saveParamsIfEnabled(params);
+          scheduleSaveParams(params);
           onStateChange(getPublicState());
           scheduleRender();
           return;
@@ -2837,20 +3004,27 @@
         }
       }
       if (ev.pointerType === 'touch') return;
-      var pt = getStageLocalPoint(ev);
-      var hit = renderer.pickNodeAtScreen(pt[0], pt[1]);
-      var prevId = hoveredNode ? hoveredNode.id : null;
-      var nextId = hit ? hit.id : null;
-      if (prevId !== nextId) {
-        hoveredNode = hit || null;
-        if (stageEl) stageEl.style.cursor = (hit && canDragNodesNow()) ? 'grab' : '';
-        batchesDirty = true;
-        scheduleRender();
+      if (typeof requestAnimationFrame === 'function') {
+        pendingHoverEv = {
+          clientX: ev.clientX,
+          clientY: ev.clientY,
+          pointerType: ev.pointerType,
+        };
+        if (!hoverRaf) {
+          hoverRaf = requestAnimationFrame(function () {
+            hoverRaf = 0;
+            var latest = pendingHoverEv;
+            pendingHoverEv = null;
+            if (latest) performHoverPick(latest);
+          });
+        }
+      } else {
+        performHoverPick(ev);
       }
-      onNodeHover(hit || null, ev);
     }
 
     function onPointerUp(ev) {
+      flushSaveParams();
       if (ev.pointerId != null) activePointers.delete(ev.pointerId);
       if (pinchState) {
         if (activePointers.size < 2) {
@@ -2925,6 +3099,8 @@
     }
 
     function onPointerLeave(ev) {
+      cancelPendingHover();
+      invalidateStageRect();
       if (!enabled) return;
       if (dragState && dragState.mode === 'node' && dragState.dragStarted) return;
       if (stageEl) stageEl.style.cursor = '';
@@ -2958,6 +3134,10 @@
       stageEl.addEventListener('pointerleave', onPointerLeave);
       stageEl.addEventListener('wheel', onWheel, { passive: false });
       stageEl.addEventListener('contextmenu', onContextMenu);
+    }
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+      window.addEventListener('resize', invalidateStageRect, { passive: true });
+      window.addEventListener('scroll', invalidateStageRect, { passive: true });
     }
     bindCanvasEvents();
 
@@ -3041,6 +3221,9 @@
           startCameraTransition(78, 0, camState.distance * 1.14, 0.04, tier === 'lite' ? 950 : 1450, true, true);
         }
       } else {
+        cancelPendingHover();
+        flushSaveParams();
+        invalidateStageRect();
         cancelEntryAnim();
         cancelReboundAnim(true);
         hoveredNode = null;
@@ -3148,14 +3331,21 @@
     }
 
     function syncViewport() {
+      invalidateStageRect();
       if (!enabled) return;
       renderNow();
     }
 
     function destroy() {
+      cancelPendingHover();
+      flushSaveParams();
       cancelEntryAnim();
       cancelReboundAnim(false);
       if (renderRaf && typeof cancelAnimationFrame === 'function') cancelAnimationFrame(renderRaf);
+      if (typeof window !== 'undefined' && typeof window.removeEventListener === 'function') {
+        window.removeEventListener('resize', invalidateStageRect);
+        window.removeEventListener('scroll', invalidateStageRect);
+      }
       if (stageEl && typeof stageEl.removeEventListener === 'function') {
         stageEl.removeEventListener('pointerdown', onPointerDown);
         stageEl.removeEventListener('pointermove', onPointerMove);
@@ -3198,7 +3388,7 @@
       fitToView: fitToView,
       focusNode: focusNode,
       syncViewport: syncViewport,
-      refreshStageRect: function () {},
+      refreshStageRect: invalidateStageRect,
       getScreenTargets: function (limit) {
         return renderer && typeof renderer.getTopScreenTargets === 'function'
           ? renderer.getTopScreenTargets(limit)

@@ -44,6 +44,7 @@ const OPTIONAL_ASSETS = [
   'vendor/d3.min.js',
   'exports/home-stats.json',
   'exports/graph-stats.json',
+  'exports/mini-graph.json',
 ].map(asset);
 
 function isHtmlShellPath(url) {
