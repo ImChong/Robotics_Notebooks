@@ -6,7 +6,9 @@
 - **论文：** <https://arxiv.org/abs/2608.13555>
 - **项目页：** <https://dairuliu.github.io/humantracker/>
 - **收录日期：** 2026-08-15
-- **最近复核：** 2026-08-15
+- **最近复核：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 克隆 `GalaxyGeneralRobotics/HumanTracker` 并核对 `README.md` 与 `src/humantracker/` 入口
 - **Stars / Forks：** ~10 / 0（2026-08-15 检索）
 - **许可证：** Apache-2.0（`thirdparty/` 上游与 G1 网格另有各自许可）
 - **维护方：** Galaxy General Robotics（Galbot 关联开源组织）

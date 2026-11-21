@@ -9,6 +9,8 @@
 - **作者：** Yujia Chen、Bowen Weng
 - **代码：** <https://github.com/ISUSAIL/Bet4Sim2Real-Certificate>
 - **入库日期：** 2026-08-30
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.21572v1 PDF 全文 2,224 行及 `ISUSAIL/Bet4Sim2Real-Certificate` 仓库 `readme.md` 与子目录脚本
 - **一句话说明：** 在每次真机结果揭晓前参考大规模模拟器库下注，把累计财富转成 anytime-valid 的性能区间，减少昂贵真机试验。
 
 ## 核心摘录（MVP）

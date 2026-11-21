@@ -11,6 +11,8 @@
 - **代码：** <https://github.com/TuojingAI/SoftVTBench>
 - **数据集：** [Hugging Face `Arthur12137/SoftVTBench`](https://huggingface.co/datasets/Arthur12137/SoftVTBench) · [ModelScope `Arthur12137/SoftVTBench`](https://www.modelscope.cn/datasets/Arthur12137/SoftVTBench)
 - **入库日期：** 2026-07-29
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2607.04234v2 PDF 全文 1,178 行及官方仓 `TuojingAI/SoftVTBench` `evaluate_softvtbench.sh` / `tools/`
 - **一句话说明：** Isaac Sim + FEM 可变形体上的 **安全感知视触觉操作基准**：分开报告 **Goal Success** 与 **Safety Success**，暴露「目标达成但过压/掉落」的虚假成功；π₀.₅ VO/VT 基线显示触觉主要抬高安全成功率而非刚体目标成功率。
 
 ## 开源状态（核查，2026-07-29）
