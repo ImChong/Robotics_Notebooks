@@ -179,6 +179,7 @@ flowchart LR
 - [CloudRobo-WM（WM-1.0 / WM1.2 版本核验）](../wiki/entities/cloudrobo-wm.md) — 华为云世界动作模型家族：公开 RoboTwin 适配器与 WM-1.0 checkpoint、官方 WM1.2 DualAct/PPA 宣传和版本归属边界，禁止跨版本误引用。
 - [ResWAM：冻结 DINOv3 上的未来视觉残差](../wiki/entities/paper-reswam-2611-19559.md) — 用特征变化代替整帧未来监督，0.5B 双流 DiT 同训动作与未来残差；区分 2.3B 总参数与 92.7 ms 真机延迟。
 - [WATO：可微优化训练联合 WAM](../wiki/entities/paper-wato-2611-17626.md)：通过世界模型动力学约束优化回传任务目标，区分训练求解与推理采样。
+- [MAWAM：多智能体联合世界–动作模型](../wiki/entities/paper-mawam-coordinated-manipulation.md) — **Stage 3 多机器人扩展**：共享跨智能体注意力联合生成各机器人私有未来视图与动作；分开核对角色归属、团队未来监督、四臂交接消融和推理时延。
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
 - [InternW0-Δ（Causal Imprint / 20K+ h 异构数据）](../wiki/entities/paper-internw0-delta.md) — Joint MoT（视频专家 + 动作专家），训练期 future-feature + Track4World 监督、部署期 action-only 去噪；代码与四类权重已公开，跨本体仍需 adapter 和 post-training。
