@@ -89,6 +89,7 @@ flowchart LR
 
 ### 推荐读什么
 - [数据手套 vs 视觉遥操作（对比）](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集通道选型主入口
+- [诺亦腾机器人 · Adam-U](../wiki/entities/noitom-robotics.md) — 查看动捕输入如何经 ROS 2 重定向到机器人关节状态，并区分头显双目回传与录制数据。
 - [XRoboToolkit](../wiki/entities/paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（PICO/Quest）
 - [ACE 跨平台视觉外骨骼系统（论文笔记）](../wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md) 与 [NuExo 上肢外骨骼（论文笔记）](../wiki/entities/paper-notebook-nuexo-a-wearable-exoskeleton-covering-all-upper.md) — 外骨骼 cockpit
 - [UME-EXO](../wiki/entities/paper-ume-exo.md) — 外骨骼实时力矩反馈 + 全身臂形采集

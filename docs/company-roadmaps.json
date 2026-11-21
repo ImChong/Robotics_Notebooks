@@ -3283,6 +3283,106 @@
       ]
     },
     {
+      "key": "noitom",
+      "name": "诺亦腾机器人（Noitom Robotics）",
+      "founded_year": 2025,
+      "founded_source": "https://www.qimingvc.com/en/node/7706",
+      "founded_note": "诺亦腾机器人于 2025 年分拆成立；2024 年的 Isaac 动捕案例由诺亦腾科技发布，列为技术前序。",
+      "lenses": [
+        "humanoid",
+        "wbc"
+      ],
+      "summary": "从动捕遥操作与 Adam-U 联合数采平台，到 ModalityNet 人体多模态数据。NEAR Lab 研究涵盖运动数据基准、跨本体重定向及人形技能学习。",
+      "official": "https://noitomrobotics.com/research/",
+      "nodes": [
+        {
+          "date": "2024-09",
+          "title": "动捕 × NVIDIA Isaac",
+          "track": "技术前序",
+          "desc": "诺亦腾科技用 MocapApi 将人体运动接入 Isaac，对照真人动捕、仿真遥操作和真机遥操作三种采集路径。",
+          "id": "entity-noitom-robotics",
+          "url": "https://www.noitom.com.cn/news/20240914001.html",
+          "date_note": "采用诺亦腾科技官网 2024-09-14 的案例日期，早于机器人公司分拆。"
+        },
+        {
+          "date": "2025-07",
+          "title": "Adam-U",
+          "track": "真机遥操作",
+          "desc": "诺亦腾机器人提供动捕遥操作，PNDbotics 提供本体，因时机器人提供触觉灵巧手。联合平台支持双目画面回传与多模态示范采集。",
+          "id": "entity-noitom-robotics",
+          "url": "https://noitomrobotics.com/purpose-built-humanoid-data-collection-platform-for-embodied-ai/",
+          "date_note": "采用 WAIC 2025 的 7 月首秀；官方文章另记载 8 月 EAI Show 展出。"
+        },
+        {
+          "date": "2026-03",
+          "title": "ModalityNet",
+          "track": "人体多模态数据",
+          "desc": "用 HiPHI-MOV 覆盖全身运动，HiPHI-OM 采集精细手–物交互，ITW 扩展到自然环境。各数据分支的公开范围分别核查。",
+          "id": "entity-noitom-robotics",
+          "url": "https://noitomrobotics.com/art-of-modalities/",
+          "date_note": "采用 Episode 1 的 2026 年 3 月发布日期；v1.0 技术规范另标 5 月。"
+        },
+        {
+          "date": "2026-06",
+          "title": "World Compiler",
+          "track": "动作与状态标注",
+          "desc": "提出用高精度人体数据训练补全模型，为自然场景的稀疏观测估计深度、手部轨迹与遮挡体段。",
+          "id": "entity-noitom-robotics",
+          "url": "https://noitomrobotics.com/world-compiler/",
+          "date_note": "采用 Episode 2 的 2026 年 6 月发布日期。"
+        },
+        {
+          "date": "2026-06",
+          "title": "OmniContact",
+          "track": "接触技能学习",
+          "desc": "以关键体段轨迹和接触时序连接多个移动操作技能；配套人体动捕数据与 MuJoCo 仿真部署实现。诺亦腾机器人参与联合研究。",
+          "id": "entity-paper-omnicontact-humanoid-loco-manipulation",
+          "url": "https://omnicontact.github.io/",
+          "date_note": "arXiv v1 提交于 2026-06-24。",
+          "date_source": "https://arxiv.org/abs/2606.26201"
+        },
+        {
+          "date": "2026-08",
+          "title": "HiPHI",
+          "track": "人体运动基准",
+          "desc": "FrameNet 引导人体动作覆盖，同步记录全身动作与物体轨迹。617.5 小时含左右镜像；数据在 Hugging Face 门控发布。",
+          "id": "entity-paper-hiphi",
+          "url": "https://noitom-robotics.github.io/hiphi/",
+          "date_note": "WRC 数据发布公告为 2026-08-19；arXiv v1 提交于 08-17。",
+          "date_source": "https://noitomrobotics.com/noitom-robotics-releases-hiphi-one-of-the-largest-high-precision-human-motion-datasets-ever-made-public-at-the-world-robot-conference-2/"
+        },
+        {
+          "date": "2026-08",
+          "title": "AdaPT",
+          "track": "运动规划与跟踪",
+          "desc": "把转播视频与动捕提取的网球动作迁移到人形。规划器生成风格化轨迹，跟踪器适应执行速度；公开仓提供部分训练实现。",
+          "id": "entity-paper-adapt",
+          "url": "https://humanoidtennis.github.io/AdaPT/",
+          "date_note": "arXiv v1 提交于 2026-08-20；诺亦腾机器人等机构联合研究。",
+          "date_source": "https://arxiv.org/abs/2608.20087"
+        },
+        {
+          "date": "2026-09",
+          "title": "UMR",
+          "track": "跨本体重定向",
+          "desc": "学习人体与机器人表面点云的稠密对应，在运动学约束下迁移姿态与接触；项目页提供官方代码和 UMR Studio。",
+          "id": "entity-paper-umr-unified-motion-retargeting",
+          "url": "https://hanyang9.github.io/UMR/umr_project.html",
+          "date_note": "arXiv v1 提交于 2026-09-02；诺亦腾机器人等机构联合研究。",
+          "date_source": "https://arxiv.org/abs/2609.02134"
+        },
+        {
+          "date": "2026-11",
+          "title": "ITW-Ego Plus",
+          "track": "真实环境采集",
+          "desc": "用 Sol 与 Jupiter 在自然环境记录第一视角视频和全身运动；扩展模态取决于采集配置。完整下载与许可尚未核实。",
+          "id": "entity-itw-ego-plus",
+          "url": "https://www.globenewswire.com/fr/news-release/2026/11/05/3396456/0/en/noitom-robotics-introduces-itw-ego-plus-at-corl-2026-in-the-wild-egocentric-data-with-full-body-motion.html",
+          "date_note": "采用公司 2026-11-05 的 CoRL 展前公告日期。"
+        }
+      ]
+    },
+    {
       "key": "deltai",
       "name": "德塔智能 Delta Intelligence",
       "founded_year": 2026,
