@@ -7,7 +7,7 @@ original: ../../sources/papers/reloco_arxiv_2611_23916.md
 status: complete
 updated: 2026-11-21
 tags: [paper, humanoid, locomotion, fall-recovery, reinforcement-learning, amp, sim2real, hust, x-humanoid]
-topic: [control, humanoid, reinforcement-learning]
+topic: [locomotion, motion-imitation]
 related:
   - ../tasks/balance-recovery.md
   - ../tasks/locomotion.md
