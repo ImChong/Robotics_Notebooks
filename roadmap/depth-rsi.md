@@ -192,6 +192,7 @@ flowchart LR
 - **门控是必需品**：HarnessBank 用语义 Harness Gene Bank + 门控筛选在冻结模型下做可信自进化（七基准 Test Pass@1 +5.1%–15.4%）——没有门控，harness 搜索就是题库过拟合
 - **先省再 scale**：SoL-Pi 经 152 → 4 的 auto-research 环筛出四条效率扩展，EdgeBench 约保留 94% 分数而 token / 成本显著下降——"efficiency for efficiency"是把闭环转得更久的前提
 - **迁移性检查**：进化出来的 harness 换一个任务分布、换一个底座模型还成立吗？不成立就只是局部最优配置
+- **继承可解释的改进经验**：[SIM / CRSI](../wiki/entities/paper-self-improvement-memory-crsi.md) 除演化后的 harness 外保留根因、修改理由、预测与实测、评测上下文；跨模型同起点 Workspace 10 轮 84.75 vs 73.42，编程十组配对平均 +2.36，但不涉及模型权重更新或真机自改进。
 - **正则化搜索轨迹**：[RRSI](../wiki/entities/paper-rrsi-2609-24972.md) 同时约束 proposal 与 selection：编辑预算退火、历史去重探索、泄漏 critic、噪声门槛、token 成本规则与无效组件剪枝；检查收益是否迁移到 held-out 基准
 
 ### 推荐做什么
@@ -206,6 +207,7 @@ flowchart LR
 - [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
 - [Mendel Gödel Machine（MGM）](../wiki/entities/paper-mendel-godel-machine.md) — 在 HGM 上新增同节点多任务与跨谱系同题的比较证据指导自修改；编程 Agent 实验，不是真机自进化
 - [Hyperagents（DGM-H）](../wiki/entities/paper-hyperagents.md) — 将任务 Agent 与元级改进者放入同一可编辑程序；Genesis Go2 奖励设计属于仿真实验，不等于真机策略自修改
+- [SIM：Self-Improvement Memory / 持续递归自改进记忆](../wiki/entities/paper-self-improvement-memory-crsi.md) — 对改进根因、编辑预测和评测结果做跨模型/跨数据集延续；含独立编程配对和单次 Workspace 对照，警惕迁移退化与内存成本。
 - [AIDE²：AI 研究智能体递归自改进](../wiki/entities/paper-aide2-recursive-self-improvement-ai-research-agents.md) — 在固定预算与隐藏评分下迭代改写 harness；独立 benchmark 迁移与 prompt 压缩，不代表底座权重提升。
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
