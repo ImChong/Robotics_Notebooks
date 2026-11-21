@@ -3,8 +3,9 @@ type: entity
 project_id: nvidia-simready-central
 project: https://huggingface.co/spaces/nvidia/simready-central
 code: https://github.com/NVIDIA-Omniverse/simready-central
+original: ../../sources/sites/nvidia-simready-central.md
 status: complete
-updated: 2026-10-25
+updated: 2026-11-21
 tags:
   - entity
   - nvidia
@@ -24,6 +25,7 @@ related:
   - ./isaac-lab.md
   - ./embodichain.md
   - ../concepts/sim2real.md
+  - ../../roadmap/depth-real2sim.md
 sources:
   - ../../sources/sites/nvidia-simready-central.md
   - ../../sources/repos/nvidia-simready-central.md
@@ -88,7 +90,38 @@ NVIDIA 公告给出的典型流程是：按任务描述检索资产 → 将资�
 
 ### NVIDIA/SimReady Assets 数据集实例
 
-Hugging Face 上的 [NVIDIA SimReady Assets 数据集](https://huggingface.co/datasets/nvidia/simready-assets)是该生态中的一个具体资产集。数据集页在 2026-10-25 显示 2,575 个 3D Assets、222 行 Viewer 数据和 472 GB 总文件大小；这些是页面上的不同统计口径。页面尚无 dataset card，因而需根据单个资产、profile 和元数据核验物理属性与许可。不能把 SimReady 的目标能力概括成“每个模型都带质量、重心、材质”。
+Hugging Face 上的 [NVIDIA SimReady Assets 数据集](https://huggingface.co/datasets/nvidia/simready-assets)是该生态中的**一个具体数据集**，不能与包含多家 OEM 供应商的 SimReady Central 全部库混为一谈。
+
+- **2026-11-21 页面快照：** 2,919 个 **3D Assets（USD）**、518 GB 总文件大小；Dataset Viewer 已禁用。页面展示的 **1,731,953 Downloads last month** 是“最近一个月下载量”，不是项目成立以来的累计下载次数，也不是资产数量。
+- **许可：** 该特定数据集卡片当前标注 `cc-by-4.0`；其他 OEM 的数据集及单个包各自确定许可，仍须核对包内记录。
+- **物理覆盖：** 不能从“SimReady”名称推断每件资产都含有准确的质量、重心、摩擦和关节驱动配置；应读取 profile、验证报告、benchmark 并在目标运行时测试。
+
+## 源码运行时序图
+
+下面是官方 GitHub 仓库明确提供的**本地资产目录构建流程**，不是 SimReady Central 服务端检索实现，更不是机器人训练代码。它依次使用仓库的 `docs/index-to-library-guide.md`、`docs/examples/index_to_library.py` 与 `docs/examples/library_page.py`。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as "开发者"
+  participant CLI as "simready-manage"
+  participant HF as "Hugging Face 固定版本包"
+  participant Index as "index_to_library.py"
+  participant Verify as "WorkspaceManager.verify()"
+  participant Page as "library_page.py"
+  User->>CLI: "pull --from-file submissions/..."
+  CLI->>HF: "按提交 SHA 下载各资产包"
+  HF-->>CLI: "USD、包定义与验证/benchmark sidecar"
+  CLI-->>User: "workspace/ 与 manifest.csv"
+  User->>Index: "传入 workspace 和 submission-file"
+  Index->>Verify: "读取 manifest 与 sidecar 验证结果"
+  Verify-->>Index: "逐资产验证和 benchmark 记录"
+  Index-->>User: "library.json"
+  User->>Page: "读取 library.json"
+  Page-->>User: "library.html 许可/验证/基准结果浏览页"
+```
+
+关键复现路径是先使用 `simready-manage pull --no-convert` 保留源包，再由两个示例 Python 脚本生成 `library.json` 和 `library.html`。官方示例明确可能包含失败的验证、未通过的 grasp-and-lift 或被跳过的 Newton drop 测试；**被收录或可检索不等于全部运行时测试通过**。
 
 ## 工程实践
 
@@ -100,12 +133,19 @@ Hugging Face 上的 [NVIDIA SimReady Assets 数据集](https://huggingface.co/da
 | 提交 OEM 资产 | 通过 [NVIDIA-Omniverse/simready-central](https://github.com/NVIDIA-Omniverse/simready-central) 文档先完成 onboarding，再按包清单和验证流程提交审核 |
 | 复现和引用 | 记录数据集、资产包版本、profile 与运行时版本；保留固定来源以便重建场景 |
 
+## 资产验收与真实性检查
+
+根据 [NVIDIA 官方 Acceptance criteria](https://github.com/NVIDIA-Omniverse/simready-central/blob/main/docs/acceptance-criteria.md)，资产提交需提供包定义、license、固定 Hugging Face 提交 SHA、校验文件清单、profile 验证报告和 benchmark 证据。其人工审查阶段还会检查资产能否在 Isaac Sim 中打开，以及物理资产在 PhysX 简单落体测试中是否异常穿透或解体。
+
+用于机器人操作前，建议执行：核对质量/惯量/摩擦数量级 → 检查关节轴、限位与驱动参数 → 检查 collision shape → 查看 profile 必选项和 `validation.passed` → 在实际 Isaac Sim/PhysX 或目标引擎做 drop、开合与抓取测试。对于关节 drive 为零或质量量级异常的传闻，应先锁定**具体资产名、版本、USD 字段和 issue**，避免未经核实地记为官方承认的缺陷。
+
 ## 开放状态
 
 - **资产发现入口：** 官方称 Hugging Face 库免费且无需门控，公告发布时列出 2,000 多个资产。
 - **来源：** 资产由多个 OEM 和资产供应商通过各自 Hugging Face 数据集提供；不要把集合入口误写成单一 NVIDIA 自制资产集。
 - **代码：** [SimReady Central GitHub 仓库](https://github.com/NVIDIA-Omniverse/simready-central)公开，仓库中 NVIDIA 编写的代码采用 Apache-2.0；它提供 OEM 提交/审核工作流与本地资产目录工具。
-- **许可：** Apache-2.0 只覆盖 GitHub 仓库的代码，不自动覆盖资产。每个包需根据来源数据集和资产元数据分别核对许可、归属及商业使用条款。
+- **许可：** Apache-2.0 只覆盖 GitHub 仓库的代码，不自动覆盖资产。NVIDIA `nvidia/simready-assets` 数据集页面标注 CC BY 4.0，但其他提供方需逐包核对来源、元数据和商业使用条款。
+- **地区及浏览器范围：** [NVIDIA 文档（2026-11-19 更新）](https://docs.omniverse.nvidia.com/simready/latest/simready-central.html)指出：所有通过审核的许可类型可进入 Hugging Face 搜索/SimReady Central 浏览入口，但面向中国分发及 Isaac Sim 内置资产浏览器仅支持符合要求的 CC BY 4.0 资产。
 - **提交权限：** OEM 提交需 onboarding 和协作者权限；公开浏览与搜索不等于开放提交。
 
 ## 局限与风险
@@ -116,6 +156,12 @@ Hugging Face 上的 [NVIDIA SimReady Assets 数据集](https://huggingface.co/da
 - **运行时需匹配：** OpenUSD 表达、SimReady profile 与物理运行时共同决定可用性，跨仿真器时应验证物理属性和行为。
 - **与 Lightwheel 同名体系区分：** [Lightwheel SimReady](./lightwheel-simready.md) 是光轮自己的资产产品与物理测量体系；NVIDIA SimReady Central 是多方资产发现和 OEM 提交审查入口，两者有关联生态但不是同一个产品或单一许可证。
 
+## 传播数据与 ABB 案例的证据边界
+
+- **下载量：** 2026-11-21 Hugging Face 数据集显示最近一个月 **1,731,953 次下载**；可验证“月下载破百万”，不能推成上线两日累计百万。关于“上线两天即 Hugging Face 趋势第一”，本次未找到可以复核日期/排行的官方历史榜单证据。
+- **社区瑕疵：** “货架质量 3 吨”“抽屉 drive 为零”“官方承诺下一版修复”等具体说法，本次未找到可定位资产版本和维护者回复的一手 issue 或修复记录，**暂不作为已核实事实**；参见上文逐资产检查方法。
+- **ABB 99%：** [ABB 2026-03-09 官方新闻稿](https://www.abb.com/global/en/news/134030/prsrl-abb-robotics-partners-with-nvidia-to-deliver-industrial-grade-physical-ai-at-scale)将“最高 99%”归于 **RobotStudio HyperReality 集成 NVIDIA Omniverse** 的合作与 Foxconn 试点，时间早于 2026-10-21 SimReady Central 公告；不能解读为使用本资产库得到的通用 sim-to-real 精度，更不能据此保证单件资产的动力学准确性。
+
 ## 关联页面
 
 - [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md) — NVIDIA Hugging Face 数据与资产集合；SimReady Central 提供更专门的仿真资产发现/提交入口。
@@ -124,6 +170,7 @@ Hugging Face 上的 [NVIDIA SimReady Assets 数据集](https://huggingface.co/da
 - [Isaac Sim](./isaac-sim.md) / [Isaac Lab](./isaac-lab.md) — 场景仿真与机器人学习工作流。
 - [EmbodiChain](./embodichain.md) — 另一套使用 SimReady/生成式资产准备仿真环境的机器人软件栈。
 - [Sim2Real](../concepts/sim2real.md) — 仿真场景与真实部署之间的差距和验证问题。
+- [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md) — Stage 2 中的物性、关节化与可仿真资产验收。
 
 ## 参考来源
 
@@ -138,3 +185,5 @@ Hugging Face 上的 [NVIDIA SimReady Assets 数据集](https://huggingface.co/da
 - [NVIDIA SimReady Assets 数据集](https://huggingface.co/datasets/nvidia/simready-assets)
 - [SimReady Foundation](https://github.com/NVIDIA/simready-foundation) — 规范、profile 与校验工具
 - [USD Search](https://github.com/NVIDIA-Omniverse/usd-search) — OpenUSD 资产检索组件
+- [SimReady Central Acceptance criteria](https://github.com/NVIDIA-Omniverse/simready-central/blob/main/docs/acceptance-criteria.md) — 包、验证与 benchmark 审核规则
+- [ABB Robotics × NVIDIA 官方新闻稿](https://www.abb.com/global/en/news/134030/prsrl-abb-robotics-partners-with-nvidia-to-deliver-industrial-grade-physical-ai-at-scale) — 99% 指标的真正来源
