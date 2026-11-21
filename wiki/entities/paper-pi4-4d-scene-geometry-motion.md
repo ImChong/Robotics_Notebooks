@@ -13,6 +13,9 @@ related:
   - ./paper-vggt-visual-geometry-grounded-transformer.md
   - ./paper-gensfm.md
   - ../../roadmap/depth-real2sim.md
+  - ../methods/lingbot-map.md
+  - ../methods/stereo-matching-foundation-models.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/pi4_arxiv_2611_23144.md
   - ../../sources/sites/pi4-4d-scene-geometry-motion.md
@@ -185,6 +188,9 @@ sequenceDiagram
 - [GenSfM：联合形状生成与相机估计](paper-gensfm.md) — 物体生成补全与场景几何跟踪的分工。
 - [Real2Sim 纵深 Stage 1](../../roadmap/depth-real2sim.md) — 视觉感知结果如何接入下游可仿真资产构建。
 - [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — 相机、点图和点跟踪的更广泛谱系。
+- [LingBot-Map：流式三维重建](../methods/lingbot-map.md) — 对比 π⁴ 一次前向联合处理多帧与流式建图的输入窗口、内存管理和长程一致性。
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 对比需校正双目几何的视差/深度输出，与 π⁴ 不依赖标定的多视角点图/相机/轨迹联合估计。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 将 π⁴ 放进稠密几何、运动分割、轨迹跟踪与算力/实时性选型。
 
 ## 参考来源
 
