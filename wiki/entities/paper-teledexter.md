@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-teleoperation, hand-object-co-tracking, sim2real, reinforcement-learning, imitation-learning, in-hand-manipulation, tool-use, bigai, tsinghua, pku]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-21
 arxiv: "2607.11481"
 venue: "arXiv 2026"
 summary: "TeleDexter（arXiv:2607.11481，清华/BIGAI/北大）用 hand–object co-tracking 低层控制器把操作员的同步指尖与物体位姿意图映射为接触丰富执行；Isaac Gym 单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署到 SharpaWave/LeapHand，七任务平均 75.2% SR；示范可训 Diffusion Policy。项目页另展示 Pen Spinning 与 LeapHand 连续随机子目标；截至 2026-09-19 官方未开源。"
@@ -21,6 +21,7 @@ related:
   - ./paper-hrl-stack-06-hdmi.md
   - ./paper-dexverse.md
   - ./paper-spd.md
+  - ./manuprax-arc0.md
   - ./franka-research-3.md
   - ../../roadmap/depth-teleoperation.md
 original: ../../sources/papers/teledexter_arxiv_2607_11481.md
@@ -198,6 +199,8 @@ flowchart TB
 - [DexVerse](./paper-dexverse.md) — 灵巧多任务 benchmark 与 VR 示范对照
 - [SPD](./paper-spd.md) — 仿真 VR 预训练 + 真机短微调；同系 Sharpa Wave（CoRL 2026；代码待发布）
 - [Sim2Real](../concepts/sim2real.md) / [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 迁移与重定向背景
+
+- [ManuPrax ARC-0 Preview](./manuprax-arc0.md) — 从 TeleDexter 的 object-specific 参考跟踪走向同类物体泛化与 S2→S0 物体轨迹接口（2026-11-21 采访陈述，非本论文的实验结果）。
 
 ## 参考来源
 
