@@ -32,6 +32,10 @@ original:
 
 # sim2real：G1 部署运行时与跨代码库跟踪评测
 
+## 一句话定义
+
+**EGalahad/sim2real** 是 RoboParty Lab 使用的 G1 策略部署与统一参考动作跟踪评测栈，在共享 MuJoCo 环境中接入不同 ONNX 策略并保存可供离线评分的轨迹。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -41,7 +45,15 @@ original:
 | G1 | Unitree G1 | 本仓库主要支持的人形机器人平台 |
 | XR | Extended Reality | Pico/XR 动作输入与遥操作工具链 |
 
+## 为什么重要
+
+跨框架跟踪结果常受动作集、模型 I/O、控制频率与失败判定的差异影响；统一评测的价值，是固定这些变量并保留可复核的完整轨迹，而不是把单项误差解释为真机性能。
+
 [EGalahad/sim2real](https://github.com/EGalahad/sim2real) 是一个轻量、模块化的人形控制部署栈，覆盖外部策略适配、ONNX 推理、MuJoCo sim2sim 跟踪、遥操作与 Unitree G1 真机 I/O。它是一套工程 runtime，不是一篇提出新学习算法的论文。
+
+## 核心原理
+
+部署适配器负责策略观测与关节控制接口，评测运行器将**冻结动作 → 同一仿真器中的策略 rollout → 轨迹保存 → 离线打分**拆为可检查的步骤。训练算法仍由各项目独立提供，故评测可比较跟踪结果，但不代表训练配置完全同一。
 
 ## Runtime 架构
 
@@ -170,12 +182,18 @@ uv run scripts/tracking_experiment/run_motiondecode_eval.py \
 
 **结果解释补充：** 官方 [README](https://github.com/EGalahad/sim2real/blob/main/README.md) 还报告各发布策略所需未来参考动作窗口（motion-lookahead）：Mimic Lite v1.1 为 0.08 s、HEFT 为 0.12 s、SONIC release 为 0.90 s、SONIC low-latency 为 0.18 s；这是参考窗口需求而不是真实端到端推理时延。榜单 GPU Hours 来源与训练流程可能不同，不等于相同设备实测的可比训练成本。
 
-## 使用与边界
+## 工程实践与使用边界
 
 - 安装入口采用 uv；CPU 推理 extra 可用于通用环境，G1 真机 mode 需额外安装对应 SDK/依赖并遵照网络与硬件配置文档。
 - 大型 checkpoints 与 third-party runtime artifacts 从项目提供的共享资源下载，不在 git 主仓库中完整分发。
 - 迁移策略要核对 observation/history、joint ordering、PD gains、action scale；单独拿到 ONNX 不等于部署适配完成。
 - [官方项目文档](https://egalahad.github.io/sim2real/)、[Leaderboard](https://egalahad.github.io/sim2real/leaderboard/) 与 [复现实验教程](https://egalahad.github.io/sim2real/tutorials/cross-codebase-evaluation/) 是此栈的主要使用入口。
+
+## 局限与风险
+
+- **仿真替代不了真机：** 统一 MuJoCo 跟踪未覆盖实际网络延迟、驱动温度、接触稳定性与跨机体迁移；在真机部署前仍需独立验证安全边界。
+- **动作跟踪替代不了任务成功率：** Manipulation-48 的手腕/姿态误差并非抓取、插入或交互的成功率。
+- **榜单并非恒定事实：** 排名对应官方页面最近一次发布的基准快照，改动模型、数据 revision、失败准则或 Root 口径后应重新评测；本次未独立复现榜单成绩。
 
 ## 参考来源
 
@@ -183,6 +201,12 @@ uv run scripts/tracking_experiment/run_motiondecode_eval.py \
 - [官方文档归档](../../sources/sites/egalahad-sim2real-docs.md)
 - [排行榜和评测协议归档](../../sources/sites/egalahad-sim2real-leaderboard.md)
 - [RoboParty 官方 MimicLite 第 6 章来源归档](../../sources/sites/mimiclite-official-guide-2026-11-11.md)
+
+## 推荐继续阅读
+
+- [RoboParty MimicLite 官方指南：Evaluation §6](https://roboparty.com/documents/party-os?doc=mimiclite&lang=zh) — 原始评测入口与各集合定义。
+- [Cross-Codebase Tracking Evaluation](https://egalahad.github.io/sim2real/tutorials/cross-codebase-evaluation/) — 复现命令、冻结数据、失败与指标口径。
+- [EGalahad/sim2real 官方实现](https://github.com/EGalahad/sim2real/tree/main/scripts/tracking_experiment) — 批量运行器、MuJoCo 环境与离线指标源码。
 
 ## 关联页面
 
