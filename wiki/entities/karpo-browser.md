@@ -11,6 +11,8 @@ related:
   - ./karpo-browserbench.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/llm-robotics-control-interfaces.md
+  - ../methods/claude-code-dynamic-workflows.md
+  - ../methods/coding-agent-verification-loops.md
 sources:
   - ../../sources/repos/karpo-browser.md
   - ../../sources/models/karpo-decision-27b-act.md
@@ -126,6 +128,9 @@ sequenceDiagram
 4. **测试范围：** 源仓有运行入口与测试，本仓尚未在真实浏览器中复跑或验证所有网站兼容性。
 
 ## 关联页面
+
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 对照外层 System 2 任务分解与工具编排，非浏览器实现本身。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照页面操作后复核终态、保留执行证据的必要性。
 
 - [Karpo Decision 通用模型家族](./karpo-decision.md)
 - [Karpo Decision 27B Act 专用权重](./karpo-decision-27b-act.md)
