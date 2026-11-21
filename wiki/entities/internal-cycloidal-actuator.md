@@ -2,7 +2,9 @@
 type: entity
 tags: [hardware, actuator, qdd, open-source, cycloidal, bldc]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/internal_cycloidal_actuator.md
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./berkeley-humanoid-lite.md
@@ -70,6 +72,10 @@ flowchart TB
 - **外转子**：大间隙半径 → 高扭矩密度，支撑低减速比仍有可用输出力矩。
 - **同轴集成**：偏心轴随转子转，减速器成为电机一部分（作者对标 Mini Cheetah「定子内行星」思路，此处换成摆线）。
 - **绕组**：成品 10010 定子；6×26AWG、6 匝/槽（作者称有效 36 匝/槽）。
+
+## 源码运行时序图
+
+**不适用（纯硬件 CAD/BOM 仓库）。** 官方仓库仅包含 `36N42P Winding Scheme.png`、`BOM.xlsx` 与 `Internal Cycloidal Actuator.zip` CAD 模型，未包含控制固件源码；电机底层驱动直接使用商业开源 **ODrive S1** 运行 FOC 闭环。
 
 ## 工程实践
 

@@ -6,7 +6,8 @@
 - **类型：** site / course（结构化教程 + API）
 - **链接：** <https://docs.simplefoc.com/>
 - **镜像仓库：** <https://github.com/simplefoc/simplefoc.github.io>
-- **入库日期：** 2026-05-26
+- **入库日期：** 2026-05-26（2026-11-21 通读官方仓库 Theory Corner 原文档：`FOC_routine.md` 305 行、`voltage_torque_control.md` 506 行、`pwm_modulation.md` 175 行、`cs_align.md` 及 `foc_current.md`；硬件外设移植页未逐页通读）
+- **通读：** 已完成
 - **一句话说明：** SimpleFOC 库的官方文档：安装、硬件接线、FOC 理论、运动/扭矩控制模式、PID 调参、电流采样对齐与多 MCU 移植说明。
 - **关联 repo 来源：** [simplefoc_arduino_foc.md](../repos/simplefoc_arduino_foc.md)
 

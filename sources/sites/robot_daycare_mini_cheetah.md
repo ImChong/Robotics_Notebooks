@@ -7,7 +7,8 @@
 - **作者：** Ben Katz
 - **链接：** https://robot-daycare.com/posts/2019-03-04-hello-there-mini-cheetah/
 - **站点：** https://robot-daycare.com/
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 抓取原文并逐行通读博文与评论区技术问答全 227 行）
+- **通读：** 已完成
 - **一句话说明：** 作者对 Mini Cheetah / Katz 模块化执行器的第一人称叙事：与 Hobbyking Cheetah 的延续关系、硬件分工（Katz）与高层控制（Di Carlo / Convex MPC）、以及后空翻实验背景。
 - **开源状态：** 博客本身非代码仓；代码边界以 thesis 附录 A 与 [bgkatz_3phase_integrated](../repos/bgkatz_3phase_integrated.md) 为准（**部分开源**：电子/固件开、机械 CAD 未在附录列出）。平台总览见 [mit-mini-cheetah](../../wiki/entities/mit-mini-cheetah.md)。
 - **沉淀到 wiki：** [mit-mini-cheetah](../../wiki/entities/mit-mini-cheetah.md)、[paper-low-cost-modular-actuator-katz](../../wiki/entities/paper-low-cost-modular-actuator-katz.md)

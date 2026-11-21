@@ -2,7 +2,9 @@
 type: entity
 tags: [quadruped, biped, hardware, open-source, odri, torque-control, qdd, actuator]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md
 related:
   - ./paper-open-torque-controlled-modular-robot-solo.md
   - ./quadruped-robot.md
@@ -46,17 +48,62 @@ summary: "Open Dynamic Robot Initiative（ODRI）：开源扭矩控制腿足平�
 - **完整开源力控关节**：`open_robot_actuator_hardware` 覆盖机械结构、行星或皮带减速、电机驱动 PCB、编码器、电流环与关节力矩控制、CAN/以太网、装配与测试——是 [开源 QDD 学习路线](../comparisons/open-source-qdd-actuator-projects.md) 中**最优先**的完整关节教材。
 - 架构可迁移到小型/中型人形髋、膝、踝原型（原平台为四足，不限于四足形态）。
 
-## 执行器硬件要点（open_robot_actuator_hardware）
+## 核心原理与执行器硬件要点
 
-| 模块 | 学什么 |
-|------|--------|
-| 机械 | 关节结构；行星减速或皮带减速 |
-| 电机策略 | 低减速比 + 高扭矩密度**成品**外转子无刷（典型 QDD） |
-| 电气 | 驱动 PCB、编码器（含双编码器位置测量叙事） |
-| 控制 | 电流控制与关节力矩控制 |
-| 工程 | 装配步骤、测试方法、热管理、执行器测试台 |
+```mermaid
+flowchart LR
+  Motor["T-Motor 4004 (300KV)<br/>Avago AEDM 5810 (5000 CPR)"] --> Belt["9:1 双级同步带<br/>Conti Synchroflex AT3 (150 g)"]
+  Belt --> Actuator["QDD 关节输出<br/>τ = 0.225·i (峰值 2.7 N·m @ 12 A)"]
+  Switch["10 g 光学孔径足底开关<br/>270° / 3 N / 3 ms"] --> Micro["MPI Micro-Driver<br/>TMS320F28069M + 2×DRV8305 (10 kHz FOC)"]
+  Micro <--> Master["ESP32 Master Board (35 µs SPI)<br/>以太网 200 µs / WiFi 1.1 ms @ 1 kHz"]
+  Master <--> PC["Ubuntu RT-Preempt C++/Python<br/>kino-dynamic 优化 + CoM QP 跟踪"]
+```
 
-**局限：** 电机本体一般采购现成无刷外转子，**不含完整电磁设计**。
+| 模块 | 原文实证与开源要点（`arXiv:1910.00093v2` + `open_robot_actuator_hardware`） |
+|------|------|
+| 机械与传动 | `mechanics/actuator_module_v1`、`quadruped_robot_8dof_v1/v2`、`12dof`：3D 打印壳体 + **9:1** 双级 Conti AT3 同步带；仅电机轴与带轮机加；Solo 整机 **2.2 kg**（~€4,000） |
+| 电机与传感 | T-Motor Antigravity 4004（$k_i=0.025\,\text{N}\cdot\text{m/A}$）+ Avago AEDM 5810（5000 CPR 光学编）；足底 **10 g** 光学孔径开关 **3 N / 3 ms**（vs 纯电流估计 ~31 ms） |
+| 电气与驱动 | `electronics/micro_driver_electronics`（TMS320F28069M + 2×DRV8305，40 V，10 kHz 双电机 FOC）；ESP32 Master Board 单次 35 µs 双向 SPI 轮询 8 块板 |
+| 控制与表征 | 准静态足端刚度指令 20–360 N/m 下最高实测 **266 N/m**（无量纲腿刚度 $\tilde{k}=10.8$，与人类跑步 10–22 可比）；垂直跳跃 **0.65 m** |
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant PC as Ubuntu RT-Preempt C++ 控制循环 (1 kHz)
+  participant MB as ESP32 Master Board (mac_layer / raw Ethernet)
+  participant MD as MPI Micro-Driver (10 kHz FOC)
+  participant HW as 4004 BLDC + 9:1 同步带 + 足底开关
+
+  loop 每个 1 ms 全身控制周期
+    PC->>PC: CoM 阻抗 + QP 足力分配 + 腿长低阻抗 PD
+    PC->>MB: raw MAC 帧（全量关节指令）
+    MB->>MD: 35 µs 双向 SPI 交换 8 块双驱动板数据
+    loop 10 kHz 电流内环
+      MD->>HW: 施加相电流 / FOC 调制
+      HW-->>MD: 5000 CPR 光学编码器 + 3 N 接触开关状态
+    end
+    MD-->>MB: 关节位置/速度/电流/开关帧
+    MB-->>PC: 200 µs RTT 以太网（WiFi 1100 µs）回传全机状态
+  end
+```
+
+仓库目录 `mechanics/` 与 `electronics/`（`micro_driver_electronics`、`ti_electronics`）提供硬件原理图、PCB 与 STL/CAD，配套固件与 SDK 位于同组织 `master-board`、`odri_control_interface`（BSD-3-Clause）。
+
+## 工程实践
+
+| 项 | 设计启示与验收方法 |
+|---|---|
+| 接触检测不能只靠电流 | 实测电机电流估力在低阻抗或构型变化时触发阈值延迟约 **31 ms**，足底 **10 g** 光学开关可将延迟压到 **3 ms** |
+| 高比功轻量设计 | 2.2 kg 轻质量 + 9:1 同步带抗冲击特性支持高动态跳跃（0.65 m）且可 ±3 圈连续旋转，方便跌倒翻身重构 |
+| 网络鲁棒协议 | ESP32 采用无 ACK 多播/广播 raw MAC 帧全量状态覆盖包，即使 WiFi 丢包 4% 仍维持 **1 kHz** 实时性 |
+
+## 常见误区或局限
+
+- **不含电机本体电磁设计**：电机采购成品航模无刷外转子（T-Motor 4004），非自研定转子电磁设计。
+- **小功率尺度约束**：单模组峰值 2.7 N·m 适合 2–4 kg 级研究实验平台，无法直接外推至全尺寸成人形高负载关节。
+- **低速齿槽转矩**：使用低成本航模无刷电机在极低速精控时会出现一定转矩脉动，文中标注精密慢速操作需主动补偿。
 
 ## 开源入口
 

@@ -2,7 +2,11 @@
 type: query
 tags: [real-time, middleware, deployment, ethercat, hardware, linux]
 status: complete
-updated: 2026-08-12
+updated: 2026-11-21
+original:
+  - ../../sources/repos/soem.md
+  - ../../sources/sites/openethercatsociety-github-io.md
+  - ../../sources/sites/ethercat-technology-group-technology.md
 related:
   - ../comparisons/ros2-vs-lcm.md
   - ../comparisons/ethercat-vs-ethernet-ip.md
@@ -14,6 +18,7 @@ sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/repos/soem.md
   - ../../sources/sites/openethercatsociety-github-io.md
+  - ../../sources/sites/ethercat-technology-group-technology.md
 summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux 环境下通过内核优化和周期同步（DC），实现 2kHz 以上、高确定性的工业级伺服控制闭环。"
 ---
 
@@ -83,8 +88,8 @@ summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux �
 - [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)
 
 ## 参考来源
-- EtherCAT Technology Group (ETG) 官方规范。
+- [EtherCAT Technology Group 技术总览（官方）](../../sources/sites/ethercat-technology-group-technology.md) — on-the-fly 帧处理、分布式时钟 DC <1 µs 抖动与 CoE/CiA 402
 - IgH EtherCAT Master Documentation.
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
-- [sources/repos/soem.md](../../sources/repos/soem.md)
+- [sources/repos/soem.md](../../sources/repos/soem.md) — `ec_sample.c` DC 同步偏移（`syncoffset`/`ecx_dcsync0`）与 `wkc` 周期监测
 - [sources/sites/openethercatsociety-github-io.md](../../sources/sites/openethercatsociety-github-io.md)

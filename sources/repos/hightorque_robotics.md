@@ -7,8 +7,9 @@
 - **机构：** 广州高擎机电科技有限公司（High Torque Technology Co., Ltd.）
 - **链接：** <https://github.com/HighTorque-Robotics>
 - **官网：** <https://hightorque.cn/>
-- **入库日期：** 2026-07-09
-- **一句话说明：** 国产桌面级人形与开源机械臂平台商；GitHub 组织提供 Mini Pi Plus 全身跟踪/RL/sim2real 管线、Panthera-HT 六轴臂全栈开源，以及 RoboCup 人形小尺寸赛队工作区。
+- **入库日期：** 2026-07-09（2026-11-21 核对 `livelybot_hardware_sdk`、`Mini_Pi_RL_Baseline`、`Mini-Pi-Plus_BeyondMimic`、`Panthera-HT_Main`、`Panthera-HT_SDK`、`hi_dynamic_control` 仓库入口与协议实现）
+- **通读：** 已完成
+- **一句话说明：** 国产桌面级人形与开源机械臂平台商；GitHub 组织提供 Mini Pi Plus 全身跟踪/RL/sim2real 管线、`livelybot_hardware_sdk`（0xF7 CRC8/CRC16 USB-CDC 串口反馈节点）、Panthera-HT 六轴臂 C++/Python SDK/URDF/MoveIt 全栈开源。
 
 ## 组织概况（GitHub API，2026-07-09）
 

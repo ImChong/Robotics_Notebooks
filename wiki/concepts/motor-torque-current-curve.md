@@ -2,7 +2,11 @@
 type: concept
 tags: [motor, actuator, hardware, humanoid, torque, current, efficiency]
 status: complete
-updated: 2026-07-24
+updated: 2026-11-21
+original:
+  - ../../sources/papers/modern_robotics_ch8_actuators.md
+  - ../../sources/sites/simplefoc_documentation.md
+  - ../../sources/repos/odrive_based_electric_motor_dynamometer.md
 related:
   - joint-motor-rated-current-overload.md
   - ./motor-torque-speed-curve.md
@@ -41,7 +45,7 @@ TI 曲线回答：「要输出这么多力矩，需要多大电流」——从�
 - **与 TN 曲线互补**：[TN 曲线](./motor-torque-speed-curve.md) 给速度维度的能力包络；TI 曲线解释这些力矩是「用多少安培换来的」。
 - **系统辨识**：从实测 TI 可反推 \(K_t\)、连续/峰值转矩，比单独相信 datasheet 标称峰值更可靠。
 
-## 核心结构/机制
+## 核心原理与结构
 
 ### 理想线性区
 
@@ -85,7 +89,13 @@ T_{\mathrm{cont}} \approx K_t \cdot I_{\mathrm{cont}}, \quad T_{\mathrm{peak}} \
 
 这比单独标注「峰值 48 Nm」更能看出电流代价，并与 [热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md) 中的峰值:持续目标对照。
 
-## 常见误区
+## 工程实践
+
+- **静态力臂测 $K_t$ 与温漂修正**：利用测功机或固定力臂称重传感器标定不同 $i_q$ 阶跃下的实测 $\tau$ 拟合 $K_t$（例如 [ODrive 测功机](../../sources/repos/odrive_based_electric_motor_dynamometer.md)）；钕铁硼剩磁温漂约 $-0.11\%/^\circ\mathrm{C}$，无位置/力传感器纯电流力控在 60 K 温升下可带来 ~6%–7% 力矩误差。
+- **开环估算的 $R(T)$ 与 $K_v$ 校核**：仅靠电阻+反电势估算电流（无实测电流闭环）时，铜阻按 $R(T) = R_{20}[1 + 0.004(T-20^\circ\mathrm{C})]$ 随温度漂移，SimpleFOC 文档建议实配置 $K_v$ 可在手册值基础上留 10%–20% 修正系数，高精度动态场景仍须使用实测相电流的 FOC 闭环。
+- **以 $I_{\mathrm{rms}}$ 校核连续发热**：依据完整负载谱计算 $I_{\mathrm{rms}} = \sqrt{\sum I_i^2 t_i / \sum t_i}$，密封关节按自由空气额定电流的 0.65–0.75 打折，防止高电流区铜损平方放大与磁钢高温不可逆退磁。
+
+## 常见误区或局限
 
 | 误区 | 实际情况 |
 |------|----------|
@@ -107,6 +117,9 @@ T_{\mathrm{cont}} \approx K_t \cdot I_{\mathrm{cont}}, \quad T_{\mathrm{peak}} \
 ## 参考来源
 
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
+- [Modern Robotics Ch. 8.9 Actuators](../../sources/papers/modern_robotics_ch8_actuators.md) — 线性 $\tau = k_t I$ 与连续电流热限区
+- [SimpleFOC 官方文档](../../sources/sites/simplefoc_documentation.md) — `voltage_torque_control.md` 中参数敏感性与真实电流闭环对比
+- [ODrive 开源电力测功机](../../sources/repos/odrive_based_electric_motor_dynamometer.md) — load-cell 静态 $K_t$ 扫测脚本
 - [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
 
 ## 推荐继续阅读

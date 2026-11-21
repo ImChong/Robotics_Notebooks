@@ -10,7 +10,8 @@
   - 文档（需登录）：<https://docs.rt-labs.com/soem>
 - **Stars / 活跃度（核查日 2026-08-12）：** ~2046 stars；~902 forks；`pushed_at` 2026-06-12；default branch `master`；最新 release **v2.0.0**（2025-07-11）；语言 C；topics：`c` / `ethercat` / `industrial-automation` / `protocol-library` / `soem`
 - **许可：** 双许可 — **GPLv3** + **商业许可**（`LICENSE.md`；产品闭源通常需联系 sales@rt-labs.com）
-- **入库日期：** 2026-08-12
+- **入库日期：** 2026-08-12（2026-11-21 克隆主仓核对 `README.md`、`samples/ec_sample/ec_sample.c` 349 行与 `src/ec_dc.c` 分布式时钟接口实现；`docs.rt-labs.com/soem` 需账号登录未读）
+- **通读：** 已完成
 - **一句话说明：** 用户态、轻量 EtherCAT MainDevice 库（CMake ≥3.28，project VERSION 2.0.0）；Linux/Windows/RT-Kernel 一等公民，contrib 覆盖 RTEMS/VxWorks/macOS 等；含 CoE/FoE/SoE/EoE/DC 与 samples。
 - **沉淀到 wiki：** [wiki/entities/soem.md](../../wiki/entities/soem.md)
 

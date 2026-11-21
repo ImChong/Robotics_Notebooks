@@ -6,7 +6,8 @@
 - **类型：** blog
 - **作者：** Zane Zhang（公众号署名）
 - **原始链接：** https://mp.weixin.qq.com/s/sN92pyUm26oRHasfkbyxpg
-- **入库日期：** 2026-09-13
+- **入库日期：** 2026-09-13（2026-11-21 逐行通读全文 70 行，核对需求谱/五件套/制造/四层测试矩阵）
+- **通读：** 已完成
 - **一句话说明：** 从需求定义、传动构型、五件套选型、结构设计、标定控制、装配制造到四层测试矩阵，串起自研旋转关节模组的完整工程链路；强调负载谱而非单点峰值扭矩、扭矩密度与批次一致性。
 - **沉淀到 wiki：** [`wiki/concepts/joint-module-self-development-workflow.md`](../../wiki/concepts/joint-module-self-development-workflow.md)
 

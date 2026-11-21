@@ -2,10 +2,12 @@
 type: entity
 tags: [paper, qdd, actuator, manipulation, compliant-control, backdrivability, low-cost, ros, berkeley, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "1904.03815"
 code: https://github.com/berkeleyopenarms/blue_core
 venue: "ICRA / RA-L 2019"
+original:
+  - ../../sources/papers/humanoid_pnb_quasi-direct-drive-for-low-cost-compliant-roboti.md
 related:
   - ./paper-notebook-human-level-actuation-for-humanoids.md
   - ./paper-low-cost-modular-actuator-katz.md
@@ -68,11 +70,19 @@ QDD 以较大气隙半径无刷外转子换取电机力矩，再用小于 10:1 �
 
 ### 2）同步带差动模块
 
-15 mm GT3 belt 提供 >95% 效率、低背隙和连续转动；两个平面传动合成 pitch/roll 差动输出并共享部分载荷。电机可沿带传动后移到肩部，使肩部重力矩和飞行惯量估算各降约 30%。
+15 mm GT3 belt（16T→114T，7.125:1）提供 >95% 效率、低背隙与 1.3 kN·m/rad 带刚度（整机等效刚度 1.2 kN·m/rad）；两个平面传动合成 pitch/roll 差动输出并共享双电机载荷。电机沿带传动后移到肩/肘近端，使肩部重力矩和连杆转动惯量估算各降约 30%。
 
-### 3）任务适配而非工业过度设计
+### 3）任务适配与系统架构流程
 
 论文把“useful”定义为人尺度、7-DoF、2 kg、柔顺、重复性 <10 mm。视觉闭环、遥操作与学习方法容忍毫米级误差，设计预算因此可以用于背驱、安全与低成本。
+
+```mermaid
+flowchart LR
+  Motor["大直径外转子 BLDC<br/>20 kHz 本地电流环"] --> Belt["15 mm GT3 同步带<br/>7.125:1 (>95% 效率)"]
+  Belt --> Diff["2-DoF 塑料齿轮差动<br/>双电机分载 + 近端后移 (~30% 减负)"]
+  Diff --> Arm["7-DoF Blue 柔顺臂<br/>2 kg 负载 / 13.8 Hz 力矩带宽"]
+  Host["上位机 ROS (blue_core)<br/>170 Hz RS485 @ 1 Mbps"] <--> Motor
+```
 
 ## 源码运行时序图
 
@@ -83,23 +93,23 @@ sequenceDiagram
   participant Bringup as blue_bringup
   participant CM as blue_controller_manager
   participant Ctrl as blue_controllers
-  participant HW as blue_hardware_interface
-  participant Driver as blue_hardware_drivers
-  participant Arm as Blue QDD arm
+  participant HW as blue_hardware_interface (BlueHW)
+  participant Driver as blue_hardware_drivers (BLDCDriver_node)
+  participant Arm as Blue QDD arm (1 Mbps RS485)
 
   User->>Bringup: roslaunch right.launch param_file:=blue_params.yaml
   Bringup->>CM: 加载关节配置与控制器
-  User->>CM: 切换 position / velocity / EE controller
-  CM->>Ctrl: 下发目标
-  Ctrl->>HW: joint command
-  HW->>Driver: 映射为 actuator command
-  Driver->>Arm: 电机电流 / 位置命令
-  Arm-->>Driver: encoder / current feedback
+  User->>CM: 切换 position / velocity / effort controller
+  CM->>Ctrl: 下发关节目标
+  Ctrl->>HW: joint effort / position command
+  HW->>Driver: 差动运动学解耦 + 重力前馈 → actuator command
+  Driver->>Arm: 170 Hz RS485 指令（下位机 20 kHz 电流环）
+  Arm-->>Driver: 14-bit 磁编码 / 12-bit 电流 / 温度与加速度计反馈
   Driver-->>HW: actuator state
   HW-->>Ctrl: joint state
 ```
 
-最小复现路径是克隆 `blue_core` 与 `blue_configs`，配置 ROS workspace 后从 `blue_bringup` 启动；无实机时可使用同组织 MuJoCo / simulator 仓库，但版本与许可需单独核查。
+最小复现路径是克隆 `blue_core` 与 `blue_configs`，配置 ROS workspace 后从 `blue_bringup` 启动（源码已核对 `blue_hardware_interface/src/blue_hardware_interface.cpp` 的 `BlueHW` 与 `blue_hardware_drivers/src/BLDCDriver_node.cpp`）。
 
 ## 工程实践
 
@@ -124,9 +134,9 @@ sequenceDiagram
 
 ## 实验与评测
 
-- Blue 达到 **2 kg** 臂展端负载，home repeatability 在 **4 mm** 半径内，end-pose repeatability 在 **3 mm** 内。
-- 名义位置控制带宽 **7.5 Hz**；锁定输出、10 N·m、0.1–60 Hz chirp 的保守力矩带宽估计为 **13.8 Hz**，高于论文引用的人体二头肌 **2.3 Hz**。
-- 90% pick-and-place 功耗集中在基座与肩部前三个电机，说明热模型与散热设计应优先看近端。
+- Blue 达到 **2 kg** 臂展端负载，home repeatability 为 **3.7 mm** 半径（平均偏差 **2.6 mm**），end-pose repeatability 在 **3 mm** 内；7 台原型实测单臂 BOM **$3,328**（含一次性模具 NRE 等约 $160k 工具 + $12k NRE 后，>1,500 台量产目标 `< $5,000`）。
+- 名义位置控制带宽 **7.5 Hz**；锁定输出、10 N·m、0.1–60 Hz chirp 的保守力矩带宽估计为 **13.8 Hz**（对比人体二头肌 **2.3 Hz**）；力矩滞回 **2.6 N·m**（单带轮齿槽 0.47 N·m、空载滞回 0.89 N·m）。
+- 热学实测无风冷热导 **0.3 W/°C**、加风扇 **0.93 W/°C**，70 °C 下单电机连续耗散 **40 W**（~20 N·m / 0.5 kg）；热容 **1103 W·s/K**，支持 2 min 峰值工作 + 7 min 休息（23% 占空比，2 kg 负载下 >35 N·m 且留 10 N·m 裕量）；Pick-and-place 中前三个近端关节耗去约 **90%** 功耗。
 - 项目展示 lead-through、VR 咖啡/清洁、螺钉拾取与遥操作；这些验证任务可用性，但不是大规模可靠性或寿命试验。
 
 ## 结论
@@ -134,19 +144,19 @@ sequenceDiagram
 **Blue 证明低成本柔顺操作不必复制工业臂规格：低减速 QDD 能用较低精度换来背驱、力矩带宽和安全交互，但热与量产假设必须单独验收。**
 
 1. **减速比是系统级选择** — 7.125:1 同时影响力矩、背驱、惯量、带宽与电机尺寸。
-2. **近端质量布局很值钱** — belt 允许后移电机，降低肩负担。
-3. **电流估力矩有边界** — 齿槽、摩擦、温漂和 belt 迟滞仍需标定。
-4. **“低于 5,000 美元”是量产目标** — 依赖 >1,500 臂，不等于单台原型采购价。
+2. **近端质量布局很值钱** — belt 允许后移电机，降低肩负担约 30%。
+3. **电流估力矩有边界** — 齿槽（0.47 N·m）、摩擦、温漂和 belt 迟滞仍需标定。
+4. **“低于 5,000 美元”是量产目标** — 原型 BOM 为 $3,328，量产价格依赖 >1,500 臂摊销 $160k 模具与 $12k NRE。
 5. **公开软件不等于整机全开源** — `blue_core` 可运行，但制造资料和辅助仓库边界需逐项核查。
 
-## 局限与风险
+## 常见误区或局限
 
 - QDD 的低扭矩密度与热持续能力限制高负载或高 duty 任务。
 - belt 张力、塑料结构刚度与差动耦合增加标定和维护变量。
 - 论文 2019 年 ROS 栈与现代 ROS 2 / 实时总线集成有迁移成本。
 - 成本分析依赖大批量模具与供应链假设；论文未给完整商业交付结果。
 
-## 与其他页面的关系
+## 关联页面
 
 - 路线入口：[力矩控制电机设计纵深](../../roadmap/depth-torque-motor-design.md)
 - 人级指标对照：[Human-Level Actuation](./paper-notebook-human-level-actuation-for-humanoids.md)

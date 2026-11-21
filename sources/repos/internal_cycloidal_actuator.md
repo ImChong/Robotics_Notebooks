@@ -8,8 +8,9 @@
 - **链接：** https://github.com/aaedmusa/Internal-Cycloidal-Actuator
 - **项目页：** https://www.aaedmusa.com/projects/internalcycloidalactuator
 - **许可：** GitHub API 显示 `license: null`（使用前自行确认）
-- **星标（截至 2026-07-25）：** ~291
-- **入库日期：** 2026-07-25
+- **星标（截至 2026-11-21）：** 325
+- **入库日期：** 2026-07-25（2026-11-21 核对官方仓库 `README.md` 与 `36N42P Winding Scheme.png` / `BOM.xlsx` / `Internal Cycloidal Actuator.zip` 结构）
+- **通读：** 已完成
 - **一句话说明：** 自制外转子 BLDC + 定子内嵌双摆线减速的一体 QDD 关节；含 CAD、BOM 与装配过程，偏电机本体学习。
 - **开源状态：** **已开源**（CAD/BOM；项目页有规格与绕组说明）
 - **项目页归档：** [sources/sites/aaedmusa_internal_cycloidal_actuator.md](../sites/aaedmusa_internal_cycloidal_actuator.md)

@@ -10,7 +10,8 @@
   - WB32 高速涡流：<https://www.magtrol.com/wp-content/uploads/wb32manual.pdf>
   - WB/PB 涡流/磁粉：见 manuals 页 WB/PB 条目
   - M-TEST 7：<https://www.magtrol.com/wp-content/uploads/mtest7.pdf>
-- **入库日期：** 2026-07-24
+- **入库日期：** 2026-07-24（2026-11-21 下载并抽取官方 PDF：`mtest7.pdf` 468 行全文通读、`wb32manual.pdf` 序言/冷却/耗散章节与 `hdmanual.pdf` 第 4–5 章精度/耗散/传感原理章节通读；未在物理台架运行）
+- **通读：** 已完成
 - **一句话说明：** 工业测功机的经典一手手册：三类吸收制动原理、扭矩–转速–功率选型边界，以及用 M-TEST 扫出电机性能曲线的软件能力。
 - **代码：** 不适用（商业封闭硬件/软件；手册与规格公开）
 - **沉淀到 wiki：** [motor-dynamometer](../../wiki/concepts/motor-dynamometer.md)

@@ -7,7 +7,8 @@
 - **作者：** Zane Hub（微信公众号）
 - **原始链接：** https://mp.weixin.qq.com/s/i1rdM39LPMbgbJsoX2CNBQ
 - **发表日期：** 2026-09-20
-- **入库日期：** 2026-09-20
+- **入库日期：** 2026-09-20（2026-11-21 逐行通读原始落盘全文 122 行）
+- **通读：** 已完成
 - **抓取方式：** 移动端 WeChat UA + HTML 解析（`curl`；`--no-images`）；本环境未预装 `wechat-article-for-ai`
 - **原始落盘：** [wechat_zanehub_joint_motor_topology_selection_2026-09-20.md](../raw/wechat_zanehub_joint_motor_topology_selection_2026-09-20.md)
 - **一句话说明：** 从人形关节真实工况（转矩/响应/热三笔账）出发，对比无框力矩、空心杯、轴向磁通三条量产路线的物理边界、供应链与按关节分级选型；强调先定减速器再定电机、峰值 vs 连续口径与 AFM 公差链。

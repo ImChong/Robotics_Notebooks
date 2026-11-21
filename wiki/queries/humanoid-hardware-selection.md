@@ -4,7 +4,11 @@ title: 人形机器人硬件选型指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-09-15
+updated: 2026-11-21
+original:
+  - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+  - ../../sources/sites/unitree_g1_product_page_reading_g1spec.md
+  - ../../sources/sites/agility-robotics.md
 summary: 对比当前主流人形机器人平台（G1 / H1 / Unitree B2 / Figure / Atlas），从研究场景和工程目标给出选型建议。
 related:
   - ../overview/humanoid-hardware-101-technology-map.md
@@ -160,8 +164,9 @@ tags: [unitree]
 
 ## 参考来源
 
-- [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — human five 公众号硬件 101（部件级权衡）
-- Unitree G1 产品页与 SDK 文档
+- [Humanoid Hardware 101（原始长文落盘）](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md) / [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 部件级 BOM 与执行器权衡
+- [Unitree G1 官方产品页规格通读](../../sources/sites/unitree_g1_product_page_reading_g1spec.md) — 23–43 DoF、90/120 N·m 膝扭矩与 13 串电池实测规格
+- [Agility Robotics 官网与 Research + Analysis 全文核查](../../sources/sites/agility-robotics.md) — Digit 4/5 工业 RaaS 与安全/Sim2Real 工程架构
 - Fourier GR1 技术白皮书
 - Rudin et al., *Learning to Walk in Minutes* (2022) — 大规模仿真训练基准
 - [Figure AI](../entities/figure-ai.md) — Figure 与 Helix 路线归纳（2026-05 更新）

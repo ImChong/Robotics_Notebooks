@@ -2,7 +2,11 @@
 type: concept
 tags: [motor, actuator, hardware, humanoid, torque, datasheet]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-21
+original:
+  - ../../sources/papers/modern_robotics_ch8_actuators.md
+  - ../../sources/sites/simplefoc_documentation.md
+  - ../../sources/sites/magtrol_dynamometer_manuals.md
 related:
   - ./motor-torque-current-curve.md
   - ../comparisons/motor-em-simulation-software.md
@@ -40,7 +44,7 @@ TN 曲线回答：「这个关节在某一转速下最多能出多大力矩」�
 - **与 Actuator 102 指标对齐**：[决策与物种](../overview/humanoid-actuator-102-decision-species.md) 要求峰值:持续力矩 **≥3:1**；[热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md) 强调行走脉冲负载下持续区比宣传峰值更关键。
 - **功率误判**：高力矩低速电机的 **机械功率** 未必高于中等力矩中速电机；跑步、快速摆腿等动态动作更依赖 **峰值功率** \(P \approx T\omega\)，不能只看峰值转矩标称值。
 
-## 核心结构/机制
+## 核心原理与结构
 
 ### 坐标与典型分区
 
@@ -80,7 +84,13 @@ TN 曲线回答：「这个关节在某一转速下最多能出多大力矩」�
 | **基速** | 恒转矩结束点 → 最高可持续摆腿速度量级 |
 | **峰值:持续比** | 与散热设计、谐波/减速器效率强相关 |
 
-## 常见误区
+## 工程实践
+
+- **第一性电压包络估算**：按 Modern Robotics Sec. 8.9.1 稳态电机方程，恒压上限 $V_{\max}$ 下转速与转矩呈线性折中：$w = \frac{V_{\max}}{k_t} - \frac{R}{k_t^2}\tau$，空载极速 $w_0 = V_{\max}/k_t$、堵转转矩 $\tau_{\mathrm{stall}} = k_t V_{\max}/R$；高速段还受电感交叉耦合压降 $\omega_e L_q i_q$ 与控制器 SVPWM 线性极限（$U_{q,\max} \approx V_{\mathrm{supply}}/\sqrt{3} \approx 0.577 V_{\mathrm{supply}}$，SinePWM 仅 $0.5 V_{\mathrm{supply}}$）提前压低基速。
+- **母线与减速比协同**：48 V 平台若在最高摆腿速度贴近反电势墙，优先校核 SVPWM/弱磁裕度或抬升母线电压（如 48→72 V 可线性扩充恒转矩转速域）。
+- **测功台实测复核**：用磁滞/对拖测功机（见 [电机测功机](./motor-dynamometer.md)）在给定母线电压和安装散热条件下分别做全速扫描（峰值限时保护）与 ≥1 小时热稳态扫点，核对连续包络线而非仅采样本冷态单点。
+
+## 常见误区或局限
 
 | 误区 | 实际情况 |
 |------|----------|
@@ -102,6 +112,9 @@ TN 曲线回答：「这个关节在某一转速下最多能出多大力矩」�
 ## 参考来源
 
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
+- [Modern Robotics Ch. 8.9 Actuators](../../sources/papers/modern_robotics_ch8_actuators.md) — 稳态 TN 线性边界方程与连续/间歇工作区
+- [SimpleFOC 官方文档](../../sources/sites/simplefoc_documentation.md) — PWM 调制电压利用率与 BEMF 约束
+- [Magtrol 测功机手册](../../sources/sites/magtrol_dynamometer_manuals.md) — M-TEST 7 全速扫描与热耗时边界
 - [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
 
 ## 推荐继续阅读

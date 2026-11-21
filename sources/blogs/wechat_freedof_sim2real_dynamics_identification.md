@@ -7,7 +7,8 @@
 - **作者：** 自由度FreeDof（微信公众号）
 - **原始链接：** https://mp.weixin.qq.com/s/B_sH9VNRxB6GCTJwnx6esQ
 - **发表日期：** 2026-08-12
-- **入库日期：** 2026-08-14
+- **入库日期：** 2026-08-14（2026-11-21 通读原始落盘全文 597 行，核对多级实验辨识流程与动力学模型公式）
+- **通读：** 已完成
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`--no-images`）；直连一次成功。Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原文归档：** [`sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md`](../raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md)
 - **一句话说明：** 单关节 PD 闭环下，惯量/延迟/摩擦/阻尼在同一条阶跃曲线上纠缠；先建模、再判断结构性不可辨识，再用分级实验把它们拆开，而不是把全部参数丢给优化器。
