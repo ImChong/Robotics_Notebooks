@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-21] ingest | 推进 #3490（perceptive locomotion 批次）：完成 AME-1/2、InfiniteDiffusion、FastStair、Explicit Stair Geometry、ANYmal/Humanoid Parkour、RPL、DAgger、ResNet、YOLO 原文通读核对，将 depth-perceptive-locomotion 15 个 wiki 节点健康度升至 3/3（该路线 41/44）
+
 ## [2026-11-21] ingest | RoboScope Kit：补齐 PyPI 复现链、上游新增适配与评测纵深导航
 
 - 复用 `wiki/entities/paper-roboscope-kit.md` 唯一论文实体（arXiv:2611.03850），保留已核对的全文、Mermaid 方法图与源码时序图。
