@@ -2,7 +2,8 @@
 type: task
 tags: [locomotion, balance, stability, humanoid, bipedal, control]
 status: complete
-updated: 2026-10-14
+updated: 2026-11-21
+original: ../../sources/papers/reloco_arxiv_2611_23916.md
 related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-adp.md
@@ -59,7 +60,7 @@ Locomotion 是动态平衡问题，真实环境中扰动不可避免：
 
 ---
 
-## 核心理论工具
+## 核心原理与理论工具
 
 ### Capture Point / DCM（Divergent Component of Motion）
 
@@ -148,10 +149,9 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 
 ### RL 方法
 
-**ReLoco（2026）** 把“倒地起身后恢复速度指令”纳入同一个本体感知策略，训练阶段按姿态路由 AMP 专家池和双输出判别器，但部署时不切换独立控制器；真机保护事件须单独计入评估（[独立论文详情](../entities/paper-reloco-unified-locomotion-fall-recovery.md)）。
-
-
 近年来 RL 在平衡恢复上取得了强结果，尤其是在不规则扰动和复杂地形上：
+
+**ReLoco（2026）** 把“倒地起身后恢复速度指令”纳入同一个本体感知策略，训练阶段按姿态路由 AMP 专家池和双输出判别器，但部署时不切换独立控制器；真机保护事件须单独计入评估（[独立论文详情](../entities/paper-reloco-unified-locomotion-fall-recovery.md)）。
 
 **端到端 RL**（如 ANYmal 系列）：
 - 在仿真中以随机推力作为扰动进行域随机化训练
@@ -163,6 +163,19 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - 用 RL 学习高层稳定策略（是否迈步、迈到哪里）
 - 用 TSID/WBC 执行底层动作
 - 结合两者优点
+
+---
+
+## 工程实践
+
+可将恢复能力按“**避免跌倒 → 跌倒后自主起身 → 起身后继续原运动任务**”三层验收，避免只统计站起动作。以已通读的 [ReLoco（arXiv:2611.23916v1）](../../sources/papers/reloco_arxiv_2611_23916.md) 为具体工程实例：
+
+1. **收集完整试验账本：** 把“不倒继续 / 倒地后恢复 / 硬件保护 / 其他未恢复”分开统计；不能将触发保护的试验剔除后，把有效样本成功率当作总体成功率。ReLoco 真机站立受扰 47 次中，34 次倒地后恢复、5 次未倒、8 次触发硬件保护。
+2. **量化任务续行：** 起身成功还应验证速度指令能否重新跟踪。ReLoco 在仿真 push-recovery 评测中使用 5 s 测量窗及速度 RMSE ≤ 0.3 m/s 的判据；工程复现应同时记录命令、实际速度、恢复时长和是否出现保护。
+3. **核查参考数据的接触可行性：** 运动重定向后检查地面穿透、自碰撞、关节限位，再决定是否用于运动先验训练；ReLoco 用离线 tracking rollout 精炼 expert pool。
+4. **训练监督与部署接口分开审查：** ReLoco 的姿态分路 AMP 仅在训练期使用；上机是一个本体感知 actor + 关节 PD，不能把训练时的路由标签误当作真机外部策略 FSM。
+
+以上是基于 ReLoco 的 **2026-11-21 增量原文核对**；本页既有 Capture Point/DCM、MPC、早期机器人案例仍由下文各自来源支持，不把这篇单独论文描述为全部经典方法的验证依据。
 
 ---
 
@@ -193,6 +206,34 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 
 ---
 
+## 局限与风险
+
+- **模型边界：** Capture Point / DCM 公式基于简化倒立摆假设；复杂姿态、撞地后的多接触运动和动态变形支撑不能仅由支撑多边形内外一条规则判断。
+- **恢复不等于安全：** 自主起身过程中手、头、膝与环境可能发生额外接触；保护停机属于独立安全结果，不能计作成功起身，也不应为追求恢复率关闭保护。
+- **实验条件需交代：** 推踢外力、表面、起始姿态和软硬件保护阈值会改变结果。ReLoco 实机冲击没有力传感量化记录，不能反推“可承受最大推力”。
+- **复现条件：** ReLoco 项目页虽有 MuJoCo 交互演示，截至 2026-11-21 尚无公开训练/部署源码与权重入口；论文统计不能当成已复现的跨平台性能保证。
+
+---
+
+
+## 一句话记忆
+
+> 平衡恢复是让机器人在被推之后不摔倒还能继续走的能力——从 Capture Point 的几何直觉，到踝-髋-迈步的策略层次，再到现代 RL 的端到端学习，都是在解决"扰动后稳回来"这一个问题。
+
+## 关联页面
+
+- [Capture Point / DCM](../concepts/capture-point-dcm.md) — 平衡恢复的核心理论工具，步位规划的依据
+- [Locomotion](./locomotion.md) — 平衡恢复是高鲁棒 locomotion 的子问题
+- [Whole-Body Control](../concepts/whole-body-control.md) — WBC 执行恢复策略输出的关节指令
+- [TSID](../concepts/tsid.md) — 经典恢复策略的底层执行器
+- [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — 在线步位规划常用 MPC 求解
+- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法直接从仿真中学习鲁棒恢复策略
+- [ReLoco](../entities/paper-reloco-unified-locomotion-fall-recovery.md) — 姿态条件化双头 AMP，倒地后恢复原速度指令，需区分安全保护事件
+- [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP](../entities/paper-adp.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[HoST](../entities/paper-host-humanoid-standingup.md)、[G1 Compliant-Surface Stand-Up](../entities/paper-g1-compliant-surface-standup.md)、[KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 人形恢复/起身：AMP 统一策略、动力学先验抗扰、生成式中间层、纯 RL 多姿态起身、软地参考引导仿真起身、tracking∪recovery 武术
+- [FDDC](../entities/paper-fddc.md) — **预防**失稳的单腿站住（Perfect hold），对照本节「迈步/hop 恢复」的 Marginal 读法
+- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 工业保护停是受约束的恢复（单支撑先落步），不是切电
+- [Ha & Liu 多接触跌倒规划（IROS 2015）](../entities/paper-ha-liu-multiple-contact-fall-planning.md) — 不可避免跌倒时，以接触顺序逐步耗散动量
+
 ## 参考来源
 
 - Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery* (2006) — Capture Point 理论基础
@@ -202,6 +243,7 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 - Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 足式机器人扰动恢复
 - **ingest 档案：** [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)
 - **ingest 档案：** [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — Nobili 2017 本体感知状态估计（平衡恢复的感知基础）
+- **本次通读原文：** [ReLoco（arXiv:2611.23916v1）](../../sources/papers/reloco_arxiv_2611_23916.md) — 统一行走、倒地恢复和命令续行，含真机保护事件统计
 - **ingest 档案：** [SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — G1 单策略走跑起身与俯卧/仰卧恢复
 - **ingest 档案：** [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) — 状态条件扩散中间件生成类人恢复轨迹
 - **ingest 档案：** [HoST（arXiv:2502.08378）](../../sources/papers/host_humanoid_standingup_arxiv_2502_08378.md) — 无参考轨迹、多 critic PPO，G1 跨沙发/坡/墙/俯仰卧等多样姿态真机起身（RSS 2025 系统论文 finalist）
@@ -214,19 +256,8 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 
 ---
 
-## 关联页面
+## 推荐继续阅读
 
-- [Capture Point / DCM](../concepts/capture-point-dcm.md) — 平衡恢复的核心理论工具，步位规划的依据
-- [Locomotion](./locomotion.md) — 平衡恢复是高鲁棒 locomotion 的子问题
-- [Whole-Body Control](../concepts/whole-body-control.md) — WBC 执行恢复策略输出的关节指令
-- [TSID](../concepts/tsid.md) — 经典恢复策略的底层执行器
-- [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — 在线步位规划常用 MPC 求解
-- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法直接从仿真中学习鲁棒恢复策略
-- [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[ADP](../entities/paper-adp.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[HoST](../entities/paper-host-humanoid-standingup.md)、[G1 Compliant-Surface Stand-Up](../entities/paper-g1-compliant-surface-standup.md)、[KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 人形恢复/起身：AMP 统一策略、动力学先验抗扰、生成式中间层、纯 RL 多姿态起身、软地参考引导仿真起身、tracking∪recovery 武术
-- [FDDC](../entities/paper-fddc.md) — **预防**失稳的单腿站住（Perfect hold），对照本节「迈步/hop 恢复」的 Marginal 读法
-- [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 工业保护停是受约束的恢复（单支撑先落步），不是切电
-- [Ha & Liu 多接触跌倒规划（IROS 2015）](../entities/paper-ha-liu-multiple-contact-fall-planning.md) — 不可避免跌倒时，以接触顺序逐步耗散动量
-
-## 一句话记忆
-
-> 平衡恢复是让机器人在被推之后不摔倒还能继续走的能力——从 Capture Point 的几何直觉，到踝-髋-迈步的策略层次，再到现代 RL 的端到端学习，都是在解决"扰动后稳回来"这一个问题。
+- [ReLoco v1 原始论文](https://arxiv.org/html/2611.23916) — 区分静止起身、push-recovery 和真机保护结果的完整评测
+- [ReLoco 项目主页](https://lequn-f.github.io/ReLoco/) — MuJoCo 交互与真实天工 3.0 演示
+- [HoST 原论文](https://arxiv.org/abs/2502.08378) — 将纯起身控制与单策略任务续行分开比较
