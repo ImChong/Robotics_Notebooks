@@ -7,10 +7,14 @@
 - **arXiv abs：** <https://arxiv.org/abs/2607.09661>
 - **PDF：** <https://arxiv.org/pdf/2607.09661>
 - **项目页：** <https://lihaoy-ux.github.io/panoworld-page/>
+- **代码：** <https://github.com/Insta360-Research-Team/PanoWorld>（2026-07 开源部分模型、推理与 Stage 1/2/4 脚本；Stage 3 Memory 与 World360 待释放）
+- **权重：** <https://huggingface.co/Insta360-Research/PanoWorld>
 - **发表日期：** 2026-07-10（arXiv v1）
 - **机构：** Insta360 Research；中国科学院自动化研究所；清华大学；武汉大学；UC Merced
 - **通讯作者：** Lu Qi（Project Lead）
 - **入库日期：** 2026-07-15
+- **最近核对：** 2026-11-21
+- **通读：** 已完成
 - **一句话说明：** **PanoWorld** 利用 ERP **旋转等变** 将相机运动简化为 **固定朝向平移**，以 **Dense Panoramic Ray-Conditioning（DPRC）** 与 **Geometry-aware Memory Augmentation（GMA）** 实现可控全景视频生成与长程记忆；配套 **World360**（12 万 clip：7 万真实 UAV + 5 万 AirSim360 仿真）与 **Wan2.2-5B** 三阶段 LoRA 训练；相对 Imagine360 / Matrix-3D / OmniRoam 在分布保真与轨迹 PSNR 上显著领先，并可经 **Causal Forcing** 蒸馏实时生成。
 
 ## 摘要级要点
@@ -24,7 +28,7 @@
 - **World360：** **120,000** 高质量序列（**70k 真实 + 50k AirSim360**），**多高度 aerial 3D 轨迹**、pose、depth（仿真侧）、text、**2K** 视频；相对 360-1M / PanoWan 等强调 **multi-altitude 户外物理变化**。
 - **骨干与算力：** **Wan2.2-5B** + LoRA；480p/720p 评测；完整模型 ~**4 min 48 s**/clip；**Causal Forcing + DMD 蒸馏** 后 **161 帧 / 8 s**（单 H20），相对 Matrix-3D（~16.5 min）、OmniRoam（~31 min）数量级加速。
 - **主要结果（480p）：** FID **27.64**（次优 Imagine360 81.18）；PSNR$_{75-80}$ **20.92**（Matrix-3D 18.02）；GMA 消融相对 w/o GMA **+1.07 PSNR**；ViPE 重建轨迹与 GT 对齐最紧。
-- **开源承诺：** 模型、训练代码与 World360 **将公开**（论文结论口径）。
+- **开源实际进展（2026-11-21 核查 `Insta360-Research-Team/PanoWorld`）：** **部分开源**——已发布 `Action-Model/`、`Casual-forcing/`、480p/720p HF 权重（`lora`/`action`/`casual`）、`inference_action.sh` / `inference_preview.sh` / `utils/run_metrics.sh` 及 `scripts/train/{01_video_lora,02_action}.sh`；**Stage 3 GMA Memory 训练代码与完整 World360 数据集仍标注 coming soon**。
 - **局限：** 仍依赖预训练透视/视频先验 + LoRA 适配；实时蒸馏版有轻微质量折中；户外真实数据以 **UAV 航拍** 为主，地面/室内机器人 egocentric 覆盖有限。
 
 ## 核心论文摘录

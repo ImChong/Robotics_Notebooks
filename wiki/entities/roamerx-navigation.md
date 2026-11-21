@@ -2,7 +2,7 @@
 type: entity
 tags: [navigation, slam, ros2, quadruped, genisom, path-planning]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 related:
   - ./matrix-simulation-platform.md
   - ./quadruped-control-curriculum.md
@@ -13,6 +13,8 @@ related:
   - ./navigation2.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+  - ../../sources/repos/genisom_roamerx_open.md
+original:
   - ../../sources/repos/genisom_roamerx_open.md
 summary: "RoamerX 是智身科技开源的四足导航栈（GENISOM-AI）：ROS2 Nav2 增强、LiDAR SLAM、MPPI 局部规划与行为树，与 MATRiX/RL 运动策略分层集成。"
 ---
@@ -44,19 +46,34 @@ summary: "RoamerX 是智身科技开源的四足导航栈（GENISOM-AI）：ROS2
 2. **与 MATRiX 同厂商闭环**：仿真中验证 SLAM + 规划 + RL loco，再迁移到 **ZSL-1 / 钢镚** 等实机。
 3. **开源可复现**：[`zsibot/genisom_roamerx_open`](https://github.com/zsibot/genisom_roamerx_open) 提供 Gazebo/UE 仿真与 NX/3588 硬件支持。
 
-## 核心模块（开源仓库）
+## 核心机制与开源模块
 
-| 模块 | 功能 |
-|------|------|
-| `robot_slam` | LiDAR SLAM；2D 栅格图 + 3D 点云图 |
-| `navigo_bt_navigator` | 行为树导航编排 |
-| `navigo_mppi_controller` | MPPI 局部路径跟踪 |
-| `navigo_costmap_2d` | 实时障碍代价地图 |
-| `navigo_navfn_planner` | 全局路径规划 |
+| 模块 / 接口 | 功能（按官方 README 507 行核对） |
+|-------------|------|
+| `robot_slam` / 建图分支 | 面向四足机器人的建图与重定位模块，生成 2D 栅格图与点云图 |
+| `navigo_bt_navigator` | 行为树导航编排与失败恢复管理 |
+| `navigo_navfn_planner` | Nav2 扩展全局路径规划器（GridBased） |
+| `navigo_mppi_controller` | MPPI 局部路径跟踪与动态避障控制 |
+| `navigo_costmap_2d` | 实时二维障碍代价地图 |
+| `robot_navigo` + 通信桥接 | 支持 `UDP` / `LCM` 与 `rmw_zenoh_cpp` 跨域通信，按 `mc_controller_type`（`RL_TRACK_VELOCITY` / `RL_TRACK_PATH`）对接底层运控 |
 
-典型流程：`ros2 launch robot_slam slam.launch.py` → 建图/定位服务 → Nav2 跟踪目标点 → 底层 RL 执行步态。
+```mermaid
+flowchart LR
+    sim["MATRiX UE / Gazebo / 实机传感器"] --> slam["robot_slam 建图定位"]
+    slam --> costmap["navigo_costmap_2d"]
+    costmap --> planner["navigo_navfn_planner<br/>全局路径"]
+    planner --> mppi["navigo_mppi_controller<br/>局部轨迹跟踪"]
+    mppi --> smooth["VelocityOptimizer 限幅平滑"]
+    smooth -->|UDP / LCM / rmw_zenoh_cpp| rl["底层 RL/PD 步态控制器<br/>RL_TRACK_VELOCITY / RL_TRACK_PATH"]
+```
 
-## 与其他页面的关系
+## 工程实践
+
+- **一键启动脚本：** 通过 `bash script/bash/start_navigation.sh nav` 拉起 `robot_navigo navigation_bringup.launch.py`，常用切换参数包括 `platform:=UE|Gazebo|Hardware`、`mc_controller_type:=RL_TRACK_VELOCITY|RL_TRACK_PATH` 与 `communication_type:=UDP|LCM`。
+- **ROS 2 分布式通信：** 在机载 RK3588 / Jetson NX 与上位机之间官方适配 `rmw_zenoh_cpp`，规避复杂局域网下的 DDS 组播发现问题。
+- **首条指令接管安全边界：** `vel_cmd_udp_publisher.cpp` 仅在收到第一条有效 `cmd_vel` 后才接管底层速度控制权，调试前应先确认 RViz2 与生命周期节点状态正常。
+
+## 关联页面
 
 - [Model Predictive Path Integral (MPPI)](../methods/mppi.md) — MPPI 局部规划位于 SLAM/行为树与底层运动策略之间，应核对采样成本和控制周期。
 
@@ -65,7 +82,7 @@ summary: "RoamerX 是智身科技开源的四足导航栈（GENISOM-AI）：ROS2
 - 对比：[LiDAR SLAM 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - 通用人形/移动栈：[Navigation2](./navigation2.md)、[Navigation SLAM Overview](../overview/navigation-slam-autonomy-stack.md)
 
-## 常见误区
+## 常见误区与局限
 
 - **误区：「有 RoamerX 就不需要 RL loco」。** 导航栈解决 **去哪里**；崎岖地形上的 **怎么站稳走** 仍靠 RL/PD 运动层。
 - **误区：「3D 点云图够就不用 2D costmap」。** 局部规划与 Nav2 生态仍以 **2D 投影代价图** 为主力接口。

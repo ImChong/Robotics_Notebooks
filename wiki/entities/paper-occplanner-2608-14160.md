@@ -9,7 +9,7 @@ tags:
   - diffusion-policy
   - uestc
 status: complete
-updated: 2026-10-10
+updated: 2026-11-21
 project_id: occplanner-2608-14160
 arxiv: "2608.14160"
 related:
@@ -19,12 +19,16 @@ related:
   - ../../roadmap/depth-navigation.md
 sources:
   - ../../sources/papers/occplanner_arxiv_2608_14160.md
+original:
+  - ../../sources/papers/occplanner_arxiv_2608_14160.md
 summary: "OccPlanner（arXiv:2608.14160 v2）：以度量目标接地和目标相关局部 3D 占据共同条件化扩散轨迹规划；L3ROcc 从单目视频生成几何监督。仿真评测并在 Unitree Go2 上闭环验证；官方代码/权重未能从一手资料核实。"
 ---
 
 # OccPlanner：占用条件扩散式 PixelGoal 导航
 
-**一句话定义：** OccPlanner 将图像目标接地为机器人局部度量目标，并结合局部 3D 占据特征，条件化扩散模型生成避障轨迹。
+## 一句话定义
+
+OccPlanner 将图像目标接地为机器人局部度量目标，并结合局部 3D 占据特征，条件化扩散模型生成避障轨迹。
 
 ## 英文缩写速查
 

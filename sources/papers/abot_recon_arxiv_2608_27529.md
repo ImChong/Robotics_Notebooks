@@ -12,13 +12,17 @@
 - **Demo：** <https://huggingface.co/spaces/acvlab/abot-recon-streaming-3d>
 - **机构：** 阿里巴巴（高德 / AMap CV Lab，amap-cvlab）
 - **入库日期：** 2026-09-13
+- **复核日期：** 2026-11-21
+- **原文下载/核对日：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文 3289 行（Abstract、§1–§5 局部 12 帧 KV 上下文设计与序贯组合、7-Scenes/TUM-RGBD/ETH3D/ScanNet/KITTI 等单目长程评测与消融、附录）+ `amap-cvlab/ABot-Recon` README/源码
 - **一句话说明：** 长视频流式 3D 重建：固定 **12 帧**（前 11 帧 KV + 当前帧）局部上下文，每步预测当前相机系点图与相邻相对位姿，**序贯组合** 得全局轨迹与几何；单目 RGB、有界内存与算力。
 
 ## 开源状态（步骤 2.5）
 
-- **项目页核查（2026-09-13）：** 页头链 GitHub、HF 模型与 **HF Space** 在线 demo；技术报告 PDF 在仓库内。
-- **仓库核查：** `pip install -e .`、`demo.py`、`abot_recon.ABotRecon` Python API；checkpoint 自动从 HF 下载；可选 FlashInfer + cuRoPE 加速；Apache-2.0。
-- **结论：** **已开源**（推理 / demo / 权重齐全；训练脚本以 README 发布范围为准）。
+- **项目页核查（2026-11-21 复核）：** 页头链 GitHub、HF 模型与 **HF Space** 在线 demo；技术报告 PDF 在仓库内。
+- **仓库核查：** `pip install -e .`、`demo.py`、`abot_recon.ABotRecon` Python API；checkpoint 自动从 HF 下载；可选 FlashInfer + cuRoPE 加速；Apache-2.0；**微调训练代码已于 2026-09-25 发布在 `train` 分支（18 个数据源、EMA/验证/断点续训），2026-10-14 补充 `visualization/` 点云视频与轨迹鸟瞰脚本**。
+- **结论：** **已开源**（推理 / demo / 权重 / 训练分支 / 评测分支 `eval` 齐全）。
 
 ## 摘录 1：方法与局部上下文（Abstract / README）
 

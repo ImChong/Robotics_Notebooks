@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, navigation, mpc, reinforcement-learning, visibility-graph, hierarchical-control, sim2real, ucla, booster-t1]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2607.15701"
 related:
   - ../comparisons/mpc-vs-rl.md
@@ -12,6 +12,8 @@ related:
   - ./paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md
   - ../concepts/mpc-wbc-integration.md
   - ./far-planner.md
+original:
+  - ../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md
 sources:
   - ../../sources/papers/raven_rl_adaptive_visibility_graph_arxiv_2607_15701.md
 summary: "RAVEN（UCLA RoMeLa，arXiv:2607.15701）：RL meta-policy 在线调节可见图障碍膨胀半径，DAVG+cf-MPC 跟踪并接 Booster Gym 底层行走；相对固定膨胀 MPC 与端到端 RL，在延迟下路径更短、穿透可控，Booster T1 真机验证；截至 2026-07-28 未开源。"

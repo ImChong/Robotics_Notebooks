@@ -6,6 +6,7 @@
 - **作者：** Binling Huang（第一作者）、Nianjin Ye、Xi Yang、Liang Hu、Zhou Huang、Shuang Wei、Longrui Yang、Yanchi Chen、Lanpeng Jia
 - **机构：** Changhong Intelligent Robot；University of Electronic Science and Technology of China（电子科技大学，UESTC）。arXiv HTML 作者栏未能稳定对应每位作者的机构标记，因此不推断个人归属。
 - **arXiv：** [2608.14160](https://arxiv.org/abs/2608.14160)
+- **通读：** 已完成
 - **核对版本：** v2，2026-09-17 修订；[v2 摘要](https://arxiv.org/abs/2608.14160v2) · [v2 HTML 正文](https://arxiv.org/html/2608.14160v2) · [v2 PDF](https://arxiv.org/pdf/2608.14160v2)
 - **项目页 / 官方代码 / 权重：** 论文及可核实的一手入口未提供可确认链接；不把 NavDP、π³ 或其他相关工作仓库误列为 OccPlanner 源码。
 - **数据：** 论文使用 InternData-N1 与 InternScenes，但 v2 页面没有提供可直接核对的数据下载地址或许可信息。

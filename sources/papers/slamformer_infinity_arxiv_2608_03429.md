@@ -14,6 +14,7 @@
 - **机构：** IIIS, Tsinghua University（清华大学交叉信息研究院）
 - **版本：** arXiv:2608.03429v1（Submitted 2026-08-04）
 - **入库日期：** 2026-08-08
+- **通读：** 已完成
 - **一句话说明：** 面向 **无界长程单目稠密 SLAM** 的几何 Transformer：以 **memory condition** 定义局部坐标系/尺度，前端保局部算力；后端 **PGGO** 在同一 transformer 先验下联合迭代精炼长程位姿与 dense pointmap；KITTI/Waymo 相对 VGGT-Long 降 ATE，并演示 **>17 km** 城市场景。
 
 ## 核心摘录

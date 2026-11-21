@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, social-navigation, human-following, constrained-rl, ppo, upenn, uc-riverside, stanford, nvidia, georgia-tech]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.10056"
 code: https://github.com/tasl-lab/nav-ps-balance
 related:
@@ -11,6 +11,8 @@ related:
   - ./paper-hui360.md
   - ../methods/ppo.md
   - ../overview/navigation-slam-autonomy-stack.md
+original:
+  - ../../sources/papers/nav_ps_balance_arxiv_2608_10056.md
 sources:
   - ../../sources/papers/nav_ps_balance_arxiv_2608_10056.md
   - ../../sources/sites/nav-ps-balance.md

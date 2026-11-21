@@ -2,7 +2,7 @@
 type: concept
 tags: [vqa, 3d-scene-understanding, vlm, spatial-reasoning, embodied-ai]
 summary: "3D 空间 VQA 要求模型根据多视图或视频观测回答关于物体几何关系、距离、方位与房间尺度等问题，是检验视觉–语言模型空间推理能力的关键任务。"
-updated: 2026-11-07
+updated: 2026-11-21
 status: complete
 related:
   - ../entities/sceneverse-pp.md
@@ -14,11 +14,16 @@ sources:
   - ../../sources/repos/sceneverse-pp.md
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
   - ../../sources/papers/mmhu_arxiv_2507_12463.md
+original:
+  - ../../sources/papers/esi_bench_arxiv_2605_18746.md
+  - ../../sources/papers/mmhu_arxiv_2507_12463.md
 ---
 
 # 3D 空间 VQA（3D Spatial Visual Question Answering）
 
-**3D 空间 VQA**：在 **三维室内场景** 条件下，模型需要结合视觉观测与自然语言问题，推理物体间 **几何关系**（远近、相对方位、计数、尺度、路径顺序等）并给出答案——常见形式包括选择题与数值题。
+## 一句话定义
+
+> **3D 空间 VQA** 要求视觉–语言模型基于三维场景的多视角图像或 egocentric 视频流，回答涉及物体间几何距离、相对方位、计数、尺度及行为/路径关系的问答任务，是连接被动语义识别与具身空间决策的核心评测枢纽。
 
 ## 英文缩写速查
 
@@ -31,51 +36,59 @@ sources:
 | LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
 | SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
 
-## 为什么重要？
+## 为什么重要
 
 - **与传统 2D VQA 的差异**：单张 RGB 缺乏可靠尺度与遮挡背后的几何；3D 空间 VQA 逼迫模型利用 **多视图一致性**、**深度/几何先验** 或显式 **场景图**，更接近机器人「在房间里弄明白方位」的需求。
 - **与 VLM / VLA 的关系**：网页图文训练的 VLM 擅长语义与外观，但对「左转后哪个物体更近」类 **度量空间关系** 往往偏弱；需要 3D 监督数据（自动或人工）补足。
-- **评测载体**：例如 **VSI-Bench** 等基准将 egocentric 室内扫描转为多类型空间 QA，用于对比不同训练数据来源（真实扫描、合成、互联网重建等）。**ESI-Bench**（[实体页](../entities/esi-bench.md)）则进一步要求智能体在仿真中 **主动探索**（感知 / 移动 / 操作）以闭合 **感知–行动环**；论文四协议对照（单视角 / 随机多视角 / 主动 / oracle）表明其 **随机额外视角（30 张）的被动多视角协议常加噪**，不等价于具身主动传感；这一结论限于随机视角设置，不代表所有主动选视角或多视角融合方法都无效（v2 原文 §4）。
+- **具身主动探测 vs 被动多视角**：**VSI-Bench** 将 egocentric 室内扫描转为被动多类空间 QA；**ESI-Bench**（[实体页](../entities/esi-bench.md)）进一步要求智能体在 OmniGibson 中 **主动探索** 以闭合感知–行动环——其四协议对照表明 **随机额外视角（30 张）的被动多视角协议常因视点杂乱而加噪**，不等价于主动选视角或有序多视角融合（v2 §4）。
+- **向动态与人本行为延伸**：在驾驶与共享人类空间中，[MMHU](../entities/paper-mmhu.md)（1.73M 帧 / 57k 人体实例）把街景行人行为写为 13 类闭式 Behavior VQA（如 Qwen2.5-VL 经 LoRA 微调后准确率从 35.31% 提至 67.77%），揭示通用 VLM 对领域安全属性仍高度依赖域内对齐。
 
-## 核心结构（典型管线）
+## 核心机制与流程总览
 
-1. **场景表示**：点云/网格、或从多视图 lift 得到的 **3D 场景图**（实例节点 + 空间关系边）。
-2. **命题生成**：模板或 LLM/VLM 基于场景图生成 QA 对，控制题型（计数、相对距离、朝向、房间大小、路线规划等）。
-3. **模型**：在通用 VLM 上 LoRA/SFT，输入仍为图像序列或视频帧，但标签强调 **空间推理** 而非仅物体识别。
+1. **场景与时序表示**：点云/网格、多视图帧序列或基于 SMPL 姿态重建的分层描述（如 MMHU 将关节文本与视频关键帧聚合）。
+2. **命题生成与校验**：由模板、LLM/VLM 或人机协同管线生成 QA 对（覆盖计数、相对距离、朝向、房间大小或行为判断），并通过正反问（如 MMHU direct vs counter question）过滤格式与随机猜测误差。
+3. **模型微调与主动闭环**：被动 QA 在 VLM 上作 LoRA/SFT（保持视觉干路、低秩微调投影与语言层）；具身 VQA 则串联导航/探索动作选视角再推理。
 
-自动构造数据时要注意 **域差距**：互联网重建场景与实验室扫描设备采集的分布不同，可能出现「某类题型涨、某类题型掉」——需与数据来源与过拟合一起讨论。
+```mermaid
+flowchart LR
+  obs["多视图图像 / 视频流\n(+ 可选深度 / 场景图)"] --> enc["空间-时序表征\n点云 Lift / 3D 场景图 / 关键帧聚合"]
+  q["空间或行为提问\n(距离 / 方位 / 计数 / 安全属性)"] --> vlm["VLM / 具身推理器"]
+  enc --> vlm
+  vlm -->|被动 VQA| ans["选择题 / 数值答案"]
+  vlm -->|具身主动 VQA| act["选下一步探索视角 / 移动"]
+  act --> obs
+```
 
-## 常见误区
+## 工程实践
 
-- **误区**：「接了深度估计就等于会做 3D VQA。」深度网络给出像素级距离，但 **关系推理**（多物体约束、组合计数）仍是独立难点。
-- **误区**：「只在 ScanNet 等标注扫描上训练就足够泛化。」真实部署会遇到家具分布、户型与相机轨迹差异；互联网规模数据的价值在于 **覆盖与多样性**，但仍需警惕标注噪声。
+- **区分“多视图帧数多”与“视角有效”：** 如 ESI-Bench 四协议所示，盲目堆入随机多视角图片反而降低部分模型表现；部署 3D 空间 VQA 前应先做视角去重、位姿索引或主动下一视点筛选。
+- **控制数据域差与正负采样均衡：** 自动构造的互联网重建 QA 与实扫数据集在物体密度、尺度与轨迹分布上差异明显；如 MMHU 所示，对长尾类别（如轮椅、踏板车）采用均衡重采样 + 正反双问核验能显著减少微调偏置。
+- **切勿直接把 VQA 准确率等价于导航 SR：** 空间 VQA 只评测到“答对问题”，不包含底盘碰撞、末 3 米遮挡或长程记忆管理；落到移动机器人仍需接 [VLN](../tasks/vision-language-navigation.md) 与物理闭环评测。
 
-## 与其他页面的关系
+## 常见误区或局限
 
-- **数据实体**：[SceneVerse++](../entities/sceneverse-pp.md) 从网页视频构建大规模空间 VQA，并与 VSI-Bench 格式对齐以验证迁移。
-- **具身评测**：[ESI-Bench](../entities/esi-bench.md) 在 OmniGibson 上度量「为看见而行动」的空间能力，与被动 3D VQA 形成对照。
-- **兄弟任务**：[视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) 同样依赖「语言 + 空间」，但更强调 **动作序列** 而非单一答案。
-- **模型范式**：[VLA](../methods/vla.md) 若承载高层「去哪、找什么」的语义，底层仍需可靠几何感知；3D 空间 VQA 可作为 **空间推理能力** 的中间监督或评测。
-- **驾驶人本相邻**：[MMHU](../entities/paper-mmhu.md) 把街景行人行为写成闭式 Behavior VQA（13 类安全属性），与几何空间问答互补。
+- **误区**：「接了深度估计就等于会做 3D VQA。」深度网络给出像素级距离，但 **跨帧组合关系推理**（遮挡重建、相对方位转换、计数）仍是独立难点。
+- **误区**：「只在 ScanNet 等标注扫描上训练就足够泛化。」真实部署会遇到家具分布、户型与相机轨迹差异；互联网规模数据与领域视频（如 MMHU 的驾驶行人片段）各自补足不同分布。
+- **局限**：封闭选项 QA 容易引入语言先验猜测偏置；若缺乏主动交互、双问一致性核验或真实几何测量对照，高分数可能高估模型真正的 3D 理解力。
 
 ## 参考来源
 
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
-- [ESI-Bench 论文摘录](../../sources/papers/esi_bench_arxiv_2605_18746.md) — 主动探索 vs 被动多视角的具身空间智能基准（arXiv:2605.18746）
+- [ESI-Bench 论文通读（arXiv:2605.18746）](../../sources/papers/esi_bench_arxiv_2605_18746.md) — 主动探索 vs 被动多视角的具身空间智能基准
+- [MMHU 论文通读（arXiv:2507.12463）](../../sources/papers/mmhu_arxiv_2507_12463.md) — 驾驶人本 13 类 Behavior VQA 与人机协同标注
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — 3D spatial VQA 数据生成与 VSI-Bench 实验设定
-- [MMHU 论文归档](../../sources/papers/mmhu_arxiv_2507_12463.md) — 驾驶人本 Behavior VQA（arXiv:2507.12463）
 
 ## 关联页面
 
-- [SceneVerse++](../entities/sceneverse-pp.md)
-- [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md)
+- [SceneVerse++](../entities/sceneverse-pp.md) — 从网页视频构建大规模 3D 空间 VQA 数据
+- [ESI-Bench（具身空间智能基准）](../entities/esi-bench.md) — OmniGibson 上的主动探索空间智能评测
 - [MMHU](../entities/paper-mmhu.md) — 驾驶场景人体行为 VQA / 运动基准
-- [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
-- [VLA](../methods/vla.md)
+- [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 从空间问答迈向动作序列导航
+- [VLA](../methods/vla.md) — 视觉-语言-动作策略上游表征
 - [具身大模型分类学选型闭环（知识链枢纽）](../overview/hub-embodied-foundation-model.md) — 3D 空间 VQA 属五层闭环的 VLM 感知理解层
 
 ## 推荐继续阅读
 
 - VSI-Bench 原文与数据卡片（SceneVerse++ 论文中作为主要 3D 空间 VQA 评测之一）
 - Hong et al., [ESI-Bench](https://arxiv.org/abs/2605.18746) — 闭合感知–行动环的具身空间智能基准
-- VLM-3R 等「从 3D 场景生成推理数据」的相关工作（可与 SceneVerse++ 对照）
+- Li et al., [MMHU](https://arxiv.org/abs/2507.12463) — 57k 行人实例与 13 类安全行为 VQA

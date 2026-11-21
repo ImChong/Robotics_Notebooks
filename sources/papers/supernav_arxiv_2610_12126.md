@@ -10,19 +10,20 @@
 - **项目页：** <https://zju3dv.github.io/SuperNav/>
 - **代码：** <https://github.com/zju3dv/SuperNav>
 - **论文日期：** 2026-10-08（v1）
-- **一句话说明：** 给预训练多模态大模型配上导航 agent harness，以视觉点目标、可调用导航工具、Skills 和任务进度管理支持跨任务/场景导航，不对 MLLM 做导航专用微调。
+- **通读：** 已完成
+- **一句话说明：** 通过 Codex CLI + MCP 工具（`hab_init_scene` / `hab_panorama` / `hab_turn` / `hab_visual_point_navigate` / `hab_close_session`）+ 按需 Markdown Skills + 仅保留关键视觉观测的上下文裁剪，把预训练冻结 MLLM（GPT-5.6 Terra / GPT-6 Astra）直接编排为通用导航 Agent；无需导航微调即可衔接可替换的几何执行器与基于 Flow Matching 的学习执行器。
 
-## 论文要点
+## 原文通读要点（arXiv:2610.12126v1）
 
-SuperNav 将请求理解、场景判断与高层动作选择交给预训练 MLLM，由 harness 维持持续运行所需的状态，并通过导航工具执行观测与移动。核心视觉点接口让模型在四向 RGB 观测图中指定归一化像素坐标，执行器返回新观测与执行反馈，模型据此继续决策。
+SuperNav 将请求理解、场景判断与高层动作选择交给冻结预训练 MLLM（实验主力 GPT-5.6 Terra 与 GPT-6 Astra），由基于 Codex CLI 与 MCP（Model Context Protocol）协议的 agent harness 维持长程循环、结构化任务进度与仅媒体保留的上下文裁剪。核心 4 视角 PointNav(`view`, `[u, v]`) 接口让模型在前后左右四向 RGB 中指点，执行器返回新观测与执行诊断。
 
-Harness 包括三个相互配合的部分：
+Harness 与执行 backends 详情：
 
-1. **Agent loop：** 持续处理用户请求、观测、工具返回与交互历史；追踪待完成/已找到目标，支持多目标任务和显式结束。
-2. **Agent-oriented tools：** 提供初始化、观测、转向、视觉点导航、目标进度更新与结束操作。任务完成声明由 MLLM 报告，基准另行核验成功。
-3. **Navigation Skills：** 按需读取的 Markdown 指南，覆盖搜索、核验、受阻恢复等流程；Skills 提供指导，不会强制动作序列或代替模型判断。
-
-视觉点导航可连接不同运动后端：几何执行器以深度、相机标定和位姿将像素点转到可达地图位置后规划路径；学习执行器根据图像目标点与近期 RGB 历史预测局部位移增量和停止信号。该接口把高层目的地选择与具体运动策略解耦。
+1. **Agent loop 与 MCP 工具链：** 提供 `hab_init_scene`、`hab_panorama`、`hab_turn`、`hab_visual_point_navigate` / `hab_local_navigate`、`hab_close_session` 等工具与进度管理；任务声明完成由 MLLM 触发但独立核验。
+2. **Navigation Skills 与上下文裁剪：** 以按需读取的 Markdown 指南组织 Search / Recheck / Recover / Complete 等策略包，并在长程历史中进行 media-only 上下文裁剪防止 token 溢出。
+3. **两类可互换运动后端：**
+   - **Geo-based Executor：** 基于深度与 NavMesh（在 Go2 实机中采用 4 路 RGB + Hesai LiDAR 构筑体素地图与 `ReplanningAStar`）规划到达像素反投影目标点的路径。
+   - **Learned Executor（Flow-based）：** 借鉴 NoMaD，采用 DINOv2 ViT-S/14 编码器 + 年龄感知（age-aware）≤12 帧历史 Transformer + 4 步 1D UNet Flow Matching 生成短时局部轨迹 chunk 与停止信号。
 
 ## 评测摘要
 

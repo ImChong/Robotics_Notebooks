@@ -12,6 +12,10 @@
 - **作者：** Shiting Gong、Jianpeng Yao、Jinfeng Wang、Marco Pavone、Jiachen Li
 - **机构：** 宾夕法尼亚大学；加州大学河滨分校；斯坦福；NVIDIA Research；佐治亚理工
 - **入库日期：** 2026-08-18
+- **复核日期：** 2026-11-21
+- **原文下载/核对日：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文 1398 行（Abstract、§I–§V 约束分解 CMDP、PPO-Lagrangian + DtACI、人群跟随仿真 Table 1/2/3 与 ROSMASTER X3 零样本真机验证）+ `tasl-lab/nav-ps-balance` 源码
 - **一句话说明：** 人群跟随拆成稀疏任务奖励与独立 cost 约束（有行为含义的阈值），并把行人预测不确定性写进 cost；ROSMASTER X3 真机零样本。
 
 ## 开源状态（步骤 2.5）
