@@ -58,6 +58,10 @@ project: https://omnicontact.github.io/
 
 **OmniContact**（*Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation*，arXiv:2606.26201，[项目页](https://omnicontact.github.io/)）提出以 **Contact Flow（CF）** 为规划–执行共享接口的分层 loco-manipulation 框架：**CF-Track** 在统一 RL 策略下跟踪多样 meta-skill，**CF-Gen** 用物体几何规则合成 CF 并在 **50 Hz** 闭环重规划，实现长时程 **skill chaining**、**自主 recovery** 与 **VLM 语义分解**；配套自采 **OmniContact MoCap HOI 数据集**（1,274 序列 / 22.29 h）与 [MuJoCo sim2sim 仓库](https://github.com/Ingrid789/OmniContact_sim2sim)；CF-Track [Isaac Lab 训练代码](https://github.com/Ingrid789/OmniContact)也已开放。
 
+## 一句话定义
+
+OmniContact 以接触流（Contact Flow）联结 CF-Gen 规则规划和 CF-Track 统一策略跟踪，支持人形机器人长时程移动操作中的技能组合与闭环恢复。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -276,7 +280,7 @@ sequenceDiagram
 
 此图核对自 [官方训练仓库](https://github.com/Ingrid789/OmniContact) 的 `scripts/rsl_rl/train.py`；回放/ONNX 导出由 `scripts/rsl_rl/play.py` 实现，运行需额外配置 Isaac Lab 及动作资产，未在此处执行训练验证。
 
-## 项目资源与工程补充
+## 工程实践与项目资源
 
 ### 核心能力
 
