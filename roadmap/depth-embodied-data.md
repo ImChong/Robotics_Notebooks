@@ -92,6 +92,7 @@ flowchart LR
 - [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md) — 硬件选型、质量保障与常见陷阱
 - [Panthera-HT 六轴主从遥操平台](../wiki/entities/cn-os-panthera-ht-main.md) — Stage 1 的硬件与 LeRobot 数据采集实例，可观察关节/相机时间对齐与有效样本率
 - [HALO：人机对齐的全身移动操作示教](../wiki/entities/paper-halo-2611-16439.md) — Stage 1 直接牵引与自然步行的机器人在环采集：2.3 N 低阻力平台 + 后处理部署对齐；与 UMI 等无机器人示教的动作映射成本对照
+- [YMate RoboGene：FZMotion 多模态数据采集系统](../wiki/entities/ymate-robogene-data-collection.md) — 商用多工位同步采集与清洗验收入库；动作重定向及仿真策略训练属于配套 RoboMaster，公开网页未给可运行源码
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
 - [ITW-Ego Plus：真实场景按需采集模态](../wiki/entities/itw-ego-plus.md) — Sol 第一视角配 Body/Wrist/Exo/Touch/Sound 选配，按遮挡、全身运动和接触监督缺口选型；未公布完整 schema / 许可，勿把 HiPHI 规模当作 Plus 规模
 - [GenRobot DAS 2.0](../wiki/entities/genrobot-das-2-0.md) — 按任务选择头戴视觉、腕部近景和手部触觉；先核对设备代际与实际输出字段，不把新硬件规格套到旧版 [Gen-HumanEgo](../wiki/entities/gen-human-ego-dataset.md) 公开 MCAP 数据
