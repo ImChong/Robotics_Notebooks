@@ -23,8 +23,8 @@ GigaAI / 清华等联合提出的 **Behavior World Model（BWM）** 官方站点
 - **能力对照表：** 相对 GMT/TWIST/SONIC/HoloMotion-1/Humanoid-GPT/SceneBot/CMP/BFM-Zero，宣称唯一同时覆盖 diverse tracking、teleop、terrain/object interaction、OOD robust、fall robust。
 - **Sim-to-sim（MuJoCo，Table 核心）：** Terrain SR **81.3%**（最强基线 15.3%，4.3×）；OOD SR **83.1%**；Fall recovery **99.3%**（16.8× 最强基线 5.9%）。
 - **真机：** 与 SONIC 同指令并排对比（搬箱、灭火器、上平台、坐椅/坐箱）；缺失支撑/扰动/OOD 命令 best-effort 演示；完整真机 footage 标注 forthcoming。
-- **代码 / 数据（步骤 2.5，2026-09-07 复核）：** 页面 Resources 区 **Code → coming soon**；**无** GitHub / Hugging Face 链接。按 **宣称将开源 / 待发布** 处理。
-- **arXiv：** [2608.18234v2](https://arxiv.org/abs/2608.18234v2)（2026-08-23 修订；v1 为 2026-08-18）。
+- **代码 / 数据（步骤 2.5，2026-11-21 复核）：** 已发布官方仓库 <https://github.com/open-gigaai/giga-brain-wbc>（Apache-2.0）与 HF 数据集 `open-gigaai/GigaBrain-WBC-0.5-TerrainData`；原 2026-09-07 复核时的 coming soon 已解除（归档见 [`sources/repos/giga-brain-wbc.md`](../repos/giga-brain-wbc.md)）。
+- **arXiv：** [2608.18234v5](https://arxiv.org/abs/2608.18234v5)（2026-11-05 修订；v1 为 2026-08-18）。
 - **真机：** Full demo 仍写 *Real-robot footage forthcoming*；已有 SONIC 并排短片（搬箱、灭火器、上平台、坐椅等）。
 
 ## 为何值得保留

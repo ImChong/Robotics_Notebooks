@@ -10,9 +10,12 @@
 - **项目页：** <https://shepherd1226.github.io/gigabrain-wbc-0.5/>
 - **机构：** 清华大学（Tsinghua University）；极佳视界（GigaAI）；上海理工大学（University of Shanghai for Science and Technology）；北京交通大学（Beijing Jiaotong University）；中国科学院自动化研究所（Institute of Automation, CAS）；中国科学院大学（University of Chinese Academy of Sciences）
 - **作者：** Ziyang Cheng、Tianshu Tang、Jinxin Lan、Xinze Chen、Yuhan Gong、Zhichao Liu、Changzhong Wu、Yahao Mao、Zongyan Deng、Mingxuan Ma、Huasen Xi、Yilong Liu、Yutong Wu、Xiaofeng Wang、Yang Wang、Yun Ye、Guan Huang、Xiaojie Jin、Zheng Zhu#、Jiwen Lu#
-- **发表 / 上传：** 2026-08-18（arXiv v1）；**修订：** 2026-08-23（[v2](https://arxiv.org/abs/2608.18234v2)）
-- **训练栈：** Isaac Lab + PPO；4096 envs（flat）；512 envs（terrain + fallen init）；Unitree G1 29 DoF @ 50 Hz
+- **发表 / 上传：** 2026-08-18（arXiv v1）；**修订：** 2026-11-05（[v5](https://arxiv.org/abs/2608.18234v5)）
+- **代码：** <https://github.com/open-gigaai/giga-brain-wbc>（已开源，530 文件；见 [`sources/repos/giga-brain-wbc.md`](../repos/giga-brain-wbc.md)）
+- **训练栈：** Isaac Lab + PPO；Unitree G1（29 DoF @ 50 Hz）+ Maker L01
 - **入库日期：** 2026-08-21
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `arXiv:2608.18234v5` 全文 PDF（978 行抽取文本：§1–§5、Table 1–5 与附录）及官方代码仓 `open-gigaai/giga-brain-wbc` README/训练与评测入口（`giga_brain_wbc/train.py`、`ppo_trainer_aux_loss.py`、`export.py`、`evaluation/run.py`）。
 - **索引来源：** [具身智能小站 8 篇综述](../blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)（<https://mp.weixin.qq.com/s/30hu9SRxbRNXJcGLnNwl_g>）
 
 ## 相关资料（策展）
@@ -24,11 +27,10 @@
 | 数据 | Bones-Seed / MotionMillion / MotionDecode | 识别 terrain-interaction 子集混合 flat-ground |
 | 基线 | SONIC / HoloMotion-1 / Humanoid-GPT | Table 3 sim-to-sim 对照 |
 
-## 开源状态（步骤 2.5，2026-09-07 复核）
+## 开源状态（步骤 2.5，2026-11-21 复核）
 
-- **宣称将开源 / 待发布：** [项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/) Resources **Code → coming soon**；截至 **2026-09-07** 复核仍 **无** GitHub / Hugging Face URL；GitHub 检索 `gigabrain-wbc` 无官方仓库。
-- **处理：** wiki 标待发布；`## 源码运行时序图` 标不适用。
-- **真机素材：** 项目页 Full demo 仍标注 *Real-robot footage forthcoming*（与 2026-08-24 一致）。
+- **已开源：** 官方已发布 GitHub 仓库 [open-gigaai/giga-brain-wbc](https://github.com/open-gigaai/giga-brain-wbc)（Apache-2.0，530 个文件，含 Unitree G1 29-DoF 与 Maker L01 Isaac Lab 训练、ONNX 编码器/解码器导出、MuJoCo 基准评测与真机/PICO 遥操作部署）与 Hugging Face 数据集 [`open-gigaai/GigaBrain-WBC-0.5-TerrainData`](https://huggingface.co/datasets/open-gigaai/GigaBrain-WBC-0.5-TerrainData)（459 MB `bundles/data.tar`）。
+- **处理：** 归档 [`sources/repos/giga-brain-wbc.md`](../repos/giga-brain-wbc.md)，并在 wiki 实体页补充真实入口符号与 `sequenceDiagram`。
 
 ## 摘要级要点
 

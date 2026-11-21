@@ -13,7 +13,7 @@ tags:
   - rai-institute
   - boston-dynamics
 status: complete
-updated: 2026-09-22
+updated: 2026-11-21
 arxiv: "2602.00401"
 doi: "10.1126/scirobotics.aec7695"
 venue: "Science Robotics 2026"
@@ -33,6 +33,8 @@ related:
 sources:
   - ../../sources/papers/zest.md
   - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
+original:
+  - ../../sources/papers/zest.md
 summary: "ZEST（Science Robotics 2026，DOI 10.1126/scirobotics.aec7695）：RAI × 波士顿动力的单阶段极简运动模仿。MoCap / 单目视频 / 动画三类参考，无接触标签与状态估计，零样本上 Atlas、G1、Spot。确认未开源。"
 ---
 

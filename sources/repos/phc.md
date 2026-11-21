@@ -8,6 +8,8 @@
 - **项目页：** https://www.zhengyiluo.com/PHC-Site/
 - **论文：** ICCV 2023，arXiv:2305.06456
 - **入库日期：** 2026-06-08
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `ZhengyiLuo/PHC` 完整 `README.md`（431 行）与 316 文件目录树，核对 `convert_amass_data.py`、`phc/run_hydra.py` 与 `scripts/pmcp/forward_pmcp.py` 入口参数及 `eval_in_isaaclab.py` 新增支持。
 - **一句话说明：** 物理人形控制与大规模动作模仿框架；提供 SMPL→自定义人形的 shape/motion fitting 重定向脚本（`docs/retargeting.md`），常与 GMR / OmniRetarget 作基线对比。
 - **沉淀到 wiki：** 是 → [`wiki/entities/phc.md`](../../wiki/entities/phc.md)
 
