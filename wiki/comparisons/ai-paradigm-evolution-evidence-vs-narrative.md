@@ -24,6 +24,8 @@ related:
   - ../concepts/functional-taxonomy-world-models.md
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
+  - ../overview/hub-embodied-foundation-model.md
+  - ../overview/hub-embodied-eval-benchmark.md
   - ../../roadmap/depth-model-architecture.md
   - ../../roadmap/depth-embodied-eval.md
 sources:
@@ -147,6 +149,8 @@ flowchart TB
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md)
 - [VLA 方法](../methods/vla.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
+- [具身大模型分类学选型闭环](../overview/hub-embodied-foundation-model.md) — VLM/VLA/WAM 的任务与输入输出边界
+- [具身模型评测基准选型枢纽](../overview/hub-embodied-eval-benchmark.md) — 区分感知基准分数、策略成功率与真机部署证据
 - [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
 - [具身模型测评纵深路线](../../roadmap/depth-embodied-eval.md)
 
