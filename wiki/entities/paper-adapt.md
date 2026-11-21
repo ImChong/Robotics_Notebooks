@@ -11,7 +11,7 @@ tags:
   - shanghai-ai-lab
   - sjtu
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.20087"
 venue: "arXiv 2026"
 related:
@@ -26,6 +26,8 @@ related:
   - ./paper-umr-unified-motion-retargeting.md
   - ../methods/table-tennis-strategy-skill-learning.md
   - ../overview/video-contact-control-10-papers-technology-map.md
+original:
+  - ../../sources/papers/adapt_arxiv_2608_20087.md
 sources:
   - ../../sources/papers/adapt_arxiv_2608_20087.md
   - ../../sources/sites/adapt-humanoidtennis.md
@@ -65,7 +67,7 @@ summary: "AdaPT（arXiv:2608.20087，Noitom / 上海 AI Lab / 上交）：人形
 - **多源运动与多机体：** 转播视频（GVHMR→GMR）与 MoCap（[UMR](./paper-umr-unified-motion-retargeting.md)）统一管线；**G1** 与 **~1.7 m Atom** 验证尺度泛化。UMR 官方实现见 [hanyang9/UMR](https://github.com/hanyang9/UMR)（含 `humanoid_retarget_pipeline_adapt.py` body+racket 支路）。
 - **工程可复现入口：** [noitom-robotics/AdaPT](https://github.com/noitom-robotics/AdaPT) 已发布 **Stage1 发球跟踪** 训练/play（Apache-2.0）。
 
-## 核心方法与结构
+## 核心机制与结构
 
 | 模块 | 作用 |
 |------|------|
@@ -153,10 +155,10 @@ Stage1 在随机执行速度下学习跟踪参考发球动作；完整对拉闭�
 
 ## 常见误区或局限
 
-- **误区：** 认为已开源即完整 AdaPT；当前仓主要为 **发球跟踪 Stage1**。
+- **误区：** 认为已开源即完整 AdaPT；当前仓主要为 **发球跟踪 Stage1**。已核对的 `stage1_tracking_env_cfg.py` 是无球与落点指令的 motion-only mimic 配置，不能当作完整发球规划器或对拉部署代码。
 - **局限：** 风格数据依赖特定球员与视角；GVHMR 腕部需后处理；长 horizon 复合误差仍可能积累。
 
-## 与其他页面的关系
+## 与其他页面的关联
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 体育竞技子类
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — GVHMR/GMR 管线
