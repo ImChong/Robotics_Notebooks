@@ -59,6 +59,7 @@ flowchart LR
 
 ### 推荐读什么
 - [人形与腿式策略的网络架构](../wiki/concepts/humanoid-policy-network-architecture.md) — 本路线的总纲：从浅层 MLP、AMP 判别器、MoE 到 Transformer/Diffusion chunk 与 VLA/WAM 的代际对照表
+- [CNN→Transformer→VLA/WAM：技术演进证据与营销叙事](../wiki/comparisons/ai-paradigm-evolution-evidence-vs-narrative.md) — Stage 0 先审查同预算基线、消融、OOD 外推及部署成本，避免把跨维度术语排成必然进化链
 - [人形运控策略的观测输入](../wiki/concepts/humanoid-policy-observation-inputs.md) — 五类输入按"部署是否可得"分类，决定架构的输入端设计
 - [具身三层控制架构](../wiki/concepts/embodied-three-layer-control-architecture.md) — 大脑 / 小脑 / 脊髓的时延预算与故障降级
 - [控制频率与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md) — 低频策略与高频执行环之间的三类接口
