@@ -75,6 +75,7 @@ flowchart TB
 ### 推荐读什么
 
 - [DiT-Block Policy 实体](../wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md)
+- **跨领域选读（不占本路线 8 篇主线）**：[Diffusion Planner（ICLR 2025）](../wiki/entities/paper-diffusion-planner-autonomous-driving.md) — DiT 联合生成自动驾驶自车/邻车未来轨迹并可微引导，适合对比车辆轨迹规划与机器人动作块扩散的输入、输出和闭环协议。
 - 项目：<https://dit-policy.github.io/> · 代码：<https://github.com/SudeepDasari/dit-policy> · arXiv：<https://arxiv.org/abs/2410.10088>
 
 ### 学完输出什么
