@@ -15,6 +15,7 @@ original:
 summary: "VLAW（ICML 2026）：真实策略成功/失败轨迹校准 Ctrl-World，Qwen3-VL 筛选想象成功轨迹，后训练 π₀.₅；五任务附录表 46.0%→86.8%，官方只开放 WM 后训练部分。"
 related:
   - ./paper-ctrl-world.md
+  - ./paper-wevo-world-model-enabled-vla-loco-manipulation.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
   - ../methods/model-based-rl.md
@@ -157,6 +158,7 @@ sequenceDiagram
 - [Ctrl-World](./paper-ctrl-world.md)（arXiv:2510.10125）重点是可控多视角 WM 与 π 策略想象闭环；VLAW（arXiv:2602.12063）在此基础上加入真机失败数据、奖励筛选与迭代策略后训练。**是两篇不同论文，不能合并节点**。
 - **Filtered BC-2** 与 VLAW 使用同一真实数据预算，区别是后者额外混合 WM 合成成功轨迹；从 75.2% 到 86.8% 可归因于论文的这个比较协议，不代表任意新任务都可照搬。
 - VLAW 的 WM 用于训练期生成/评估，策略部署时并非必须实时跑视频预测，因此与 **Joint WAM（推理中联合动作/未来）** 有清晰系统边界。
+- [WEVO](./paper-wevo-world-model-enabled-vla-loco-manipulation.md)（arXiv:2611.25251）将训练期视频 WM 后训练扩展到 G1 全身移动操作，结合 LEGS play、20 条/任务自主真机轨迹与进度密集 RL；不是 VLAW 的同篇论文，也不是推理期 Joint WAM。
 
 ## 局限与风险
 
