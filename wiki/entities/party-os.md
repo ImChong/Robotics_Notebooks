@@ -2,7 +2,9 @@
 type: entity
 tags: [humanoid, open-source, infrastructure, roboparty, motion-tracking, reinforcement-learning, motion-retargeting]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-21
+original:
+  - ../../sources/repos/party_os.md
 related:
   - ./roboparty.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -28,6 +30,10 @@ summary: "Party OS 是 RoboParty Lab 的人形机器人研发基础设施聚合�
 
 **Party OS** 是 [RoboParty](./roboparty.md) 旗下 [RoboParty Lab](https://lab.roboparty.com) 对外沉淀的 **开放研发基础设施**，目标是把人形机器人研发中最耗时、最分散、最难复现的底层能力做成可复用模块，让开发者把时间花在真正前沿的问题上，而非反复从零搭建基建。
 
+## 一句话定义
+
+Party OS 是 RoboParty Lab 的人形机器人研发项目聚合与路线图：以动作数据、重定向、监督/无监督运动控制为基础，逐层连接感知交互、全身操作与 Agent 能力；它不是一个可直接安装的通用操作系统。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -44,7 +50,7 @@ summary: "Party OS 是 RoboParty Lab 的人形机器人研发基础设施聚合�
 2. **从单机到 infra 的演进**：在 [Roboto Origin](./roboto-origin.md)「开源一台人形」之后，RoboParty 进一步走向 **建设开源人形机器人基础设施**。
 3. **首批三段工具链已落地**：动作准备（hhtools）→ 监督跟踪（MimicLite）→ 无监督控制（UFO），并预留跨 codebase 部署层。
 
-## 核心结构
+## 核心原理与结构
 
 Party OS 首批开源子模块可理解为「三段流水线 + 一个聚合入口」：
 
@@ -95,6 +101,9 @@ flowchart TB
 
 ## 工程实践
 
+**官方 README 复核（2026-11-21）：** 除首批 hhtools / MimicLite / UFO，当前项目表还列有 [PartyMimic](./partymimic.md)（监督运动跟踪）、[I-BFM](./paper-i-bfm.md)、[P-BFM](./paper-p-bfm.md)、[INTACT](./paper-intact.md) 与 [SADL](./paper-sadl-2611-21596.md)；数据生成 `generate` 仍标 Coming soon。它们是分别维护的项目，**不能把聚合索引当作可直接运行的单一软件栈**。完整项目表见[官方 README](https://github.com/Roboparty/Party_OS)；本次通读范围记于[来源归档](../../sources/repos/party_os.md)。
+
+
 - **入口：** [lab.roboparty.com](https://lab.roboparty.com) 与 [Party_OS](https://github.com/Roboparty/Party_OS) 仓库。
 - **选型建议：**
   - 上游动作/数据准备优先 [hhtools](./human-humanoid-tools.md)；
@@ -126,7 +135,7 @@ flowchart TB
 - [party_os.md](../../sources/repos/party_os.md)
 - [lab_roboparty_com.md](../../sources/sites/lab_roboparty_com.md)
 - [roboparty_com.md](../../sources/sites/roboparty_com.md)
-- [Roboparty/Party_OS README（2026-10-27 核查）](https://github.com/Roboparty/Party_OS)
+- [Roboparty/Party_OS README（2026-11-21 复核）](https://github.com/Roboparty/Party_OS)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 
 ## 推荐继续阅读
