@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier, science-robotics]
 status: complete
 summary: "AME（AME-1，Science Robotics 10(105) eadv3604）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；官方无训练代码，Zenodo 数据 + SII-FUSC 社区 G1 复现。"
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2506.09588"
 doi: "10.1126/scirobotics.adv3604"
 venue: "Science Robotics 2025"
@@ -24,6 +24,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_ame1_ame2_2026-09-10.md
   - ../../sources/repos/ame_locomotion_sii_fusc.md
   - ../../sources/repos/senlanke_mimic.md
+original:
+  - ../../sources/papers/ame_arxiv_2506_09588.md
 ---
 
 # AME — Attention-Based Map Encoding
@@ -70,7 +72,7 @@ sources:
 | **开源** | **官方训练代码未发布**；[Zenodo 数据](https://doi.org/10.5281/zenodo.14499786)；社区 [SII-FUSC/AME_Locomotion](https://github.com/SII-FUSC/AME_Locomotion)（**非官方**，G1 + Isaac Lab） |
 | **arXiv** | <https://arxiv.org/abs/2506.09588> |
 
-## 系统结构
+## 流程总览
 
 ```mermaid
 flowchart LR
@@ -95,7 +97,7 @@ flowchart LR
 
 **与 model-based 的抽象对应（论文 Discussion）**：map encoding ≈ **隐式 contact planner**（注意力选 foothold）；后续 MLP ≈ **whole-body tracker**——但 **端到端联合训练** 缓解 **模型失配、滑移、可变形地面** 与 **分模块调参** 成本。
 
-## 训练要点
+## 工程实践（训练与超参配方）
 
 | 阶段 | 地形 | 感知 |
 |------|------|------|
@@ -103,6 +105,8 @@ flowchart LR
 | **Stage 2** | Pentagon stones、single-column stones、narrow pallets、consecutive gaps 等 | **噪声、漂移、推力**；载荷/摩擦 DR |
 
 - **10 级地形课程**：走出边界升级，否则降级（Rudin et al. 式）。
+- **网络与感知尺度**：点级 MHA（$d=64, h=16, n=1$）+ 2 层 kernel-5 零填充 CNN（保持空间网格分辨率，GR-1 扫描 `17×11`、ANYmal-D 扫描 `26×16`）。
+- **PPO 与算力开销（原文 Materials & Methods）**：batch `24 × 4096 = 98304`、mini-batch `8 × 4096 = 32768`、5 epochs、clip 0.2、$\gamma=0.99$、GAE $\lambda=0.95$、desired KL `0.01`、entropy 系数 Stage 1 `0.005` → Stage 2 `0.002`；ANYmal-D 为 **18000 + 3600 epochs**（Tesla A100-40GB 约 6 天，24 s/epoch），GR-1 为 **15000 + 3200 epochs**（RTX 4090 约 3.5 天，14 s/epoch）。
 - **Ablation**：无 Stage 1 初始化时，稀疏地形 **几乎不收敛**；全地形从头+理想感知（C2）或基地形+噪声从头（C3）均显著差于 **Ours**。
 
 ## 实验与评测

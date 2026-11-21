@@ -9,7 +9,9 @@
 - **机构：** ETH Zurich Robotic Systems Lab（Chong Zhang*, Victor Klemm, Fan Yang, Marco Hutter）；ETH AI Center；ETH SRI Lab
 - **平台：** ANYmal-D（四足）、LimX Dynamics TRON1（双足，23-DoF 级）
 - **分类（Paper Notebooks）：** 03_High_Impact_Selection
-- **入库日期：** 2026-07-13（progress 锚点 2026-06-11；本次 arXiv 归纳升格）
+- **入库日期：** 2026-07-13（progress 锚点 2026-06-11；2026-11-21 复核 arXiv 全文）
+- **核对范围：** 2026-11-21 通读 `arXiv:2601.08485v3`（pdftotext 2674 行）全文：Abstract、I–V（网络结构、PWTA Bayesian 神经建图、Teacher-Student 与表征蒸馏、4 项泛化/敏捷评测与实机 ANYmal-D/TRON1）、Appendix / Table I–VI（4800 envs、24 步/iter、4 epochs、3 mini-batches、student 蒸馏损失系数 0.02 + rep loss 0.2；ANYmal-D `36×14` @ 8 cm + `51×31` @ 4 cm、TRON1 `18×13` @ 8 cm + `31×31` @ 4 cm；Fig. 16 Test1–4 Student 成功率 90.0% / 77.7% / 89.1% / 72.9%，均 82.4%；机载 mapping ~5 ms CPU / ~2.5 ms ONNX，policy ~2 ms ONNX）。官方完整训练/部署源码未公开，故无官方源码通读。
+- **通读：** 已完成
 - **一句话说明：** **AME-2** 在 [AME（arXiv:2506.09588）](ame_arxiv_2506_09588.md) 基础上加入 **全局地形特征 + 全局–本体联合 query 的 MHA**，并配套 **轻量 Bayesian 深度→局部高程+不确定性** 映射管线（Probabilistic Winner-Take-All 融合）；**Teacher（GT 高程图）→ Student（在线神经映射 + LSIO 本体 + 表征蒸馏）** 在 **Isaac Gym** 并行仿真中 **同栈训练**；ANYmal-D **零样本** 最难 parkour/rubble，TRON1 **0.48 m 上攀 / 0.88 m 下攀**，稀疏梁/踏石/组合地形与 **主动感知、膝撑恢复** 等涌现行为；相对 AME-1、MoE actor、单目 generalist 等在 benchmark 上 **敏捷与泛化兼得**。
 
 ## 核心摘录（面向 wiki 编译）

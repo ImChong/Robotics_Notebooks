@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, backbone, representation-learning, policy-input, robotics, deployment, vla]
 status: complete
-updated: 2026-06-09
+updated: 2026-11-21
 summary: "机器人感知骨干/表征选型 Query：从「分类骨干 / 检测头 / 通用预训练表征」三类出发，给出从延迟预算、数据量与下游接法切入的选型决策树、推荐组合 pipeline 与典型失败模式。"
 related:
   - ../concepts/vision-backbones.md
@@ -17,6 +17,9 @@ sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/vision_backbone_detection_classics.md
+original:
+  - ../../sources/papers/resnet_arxiv_1512_03385.md
+  - ../../sources/papers/yolo_arxiv_1506_02640.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「机器人感知栈里到底该怎么选视觉骨干和表征？什么时候用一个普通分类骨干，什么时候要接检测/分割头，什么时候直接拿通用预训练表征（DINOv2 / R3M / VC-1）喂策略？选型的第一刀应该砍在哪？」
