@@ -126,6 +126,7 @@ flowchart LR
 - [CRISP（Contact-guided Real2Sim）](../wiki/methods/crisp-real2sim.md) — 接触引导遮挡补全 + RL 物理一致性闭环
 - [PhysX-Omni](../wiki/entities/physx-omni.md) · [Articraft](../wiki/entities/articraft.md) — sim-ready 资产的生成式与 agentic 程序化两条路线
 - [光轮 SimReady](../wiki/entities/lightwheel-simready.md) — OpenUSD 物理准确仿真资产体系与资产库（自报 2,000+ 件，部分 CC BY-NC 开源）
+- [NVIDIA SimReady Central](../wiki/entities/nvidia-simready-central.md) — Stage 2 可复用 OpenUSD 资产发现、profile 验证和 Isaac Sim/PhysX benchmark 的工程入口；与光轮资产体系区分
 - [NeuIDO（视觉到连续材料本构算子）](../wiki/entities/paper-neuido-neural-intrinsic-dynamics-operator.md) — Stage 2 软体/颗粒物性辨识：视频对齐共享弹塑性函数并接入可微 MPM；**不解决**刚体关节化或完整接触资产生成，代码发布尚不完整。
 - [接触操作纵深](depth-contact-manipulation.md) — "接触可信"判据的任务侧邻接路线
 
