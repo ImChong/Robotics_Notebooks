@@ -3,8 +3,9 @@
 type: entity
 tags: [framework, robot-rl, systems, heterogeneous-training, cpu-simulation, gpu-learning, mujoco, motrixsim, cross-platform, macos, ppo, sac, tsinghua]
 status: complete
-updated: 2026-09-18
+updated: 2026-11-21
 arxiv: "2605.30313"
+code: https://github.com/unilabsim/UniLab
 related:
   - ../methods/flashsac.md
   - ./isaac-gym-isaac-lab.md
@@ -18,6 +19,10 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ./unitree-g1.md
+original:
+  - ../../sources/papers/unilab_arxiv_2605_30313.md
+  - ../../sources/repos/unilab.md
+  - ../../sources/sites/unilabsim-project.md
 sources:
   - ../../sources/papers/unilab_arxiv_2605_30313.md
   - ../../sources/repos/unilab.md
@@ -127,12 +132,60 @@ flowchart TB
 | 严格同步 PPO、仿真已 GPU 饱和 | 增益可能有限（论文：与 MjLab 可比） | 若已有成熟 GPU 管线可继续 |
 | 视觉主导、渲染/感知占主导 | 收益可能变小（论文 Discussion） | 视具体栈 |
 
-## 常见误区
+## 源码运行时序图
 
-1. **「反对 GPU 仿真」：** 论文明确 **不** 宣称 GPU 仿真过时；当仿真不再是瓶颈或需超大 GPU 集群时，GPU 驻留仍可能更优。
-2. **「等于换了个 MuJoCo wrapper」：** 贡献在 **端到端 runtime 与异构调度**，不是单点加速物理引擎。
-3. **「任意任务都 10×」：** 强同步 PPO、视觉主导 workload 可能看不到同等幅度增益。
-4. **「替代 Isaac 传感器仿真」：** UniLab 聚焦 **刚体、仿真主导控制**；可变形体/流体未覆盖。
+图依据：`unilabsim/UniLab@97b75f4` 的 `pyproject.toml`、`src/unilab/cli.py`、`src/unilab/scripts/{train_rsl_rl.py,train_appo.py,train_flashsac.py,train_offpolicy.py}` 与 `src/unilab/training/run.py`（说明文档核对，未独立启动训练或物理仿真进程）。控制台命令 `train` / `eval` / `demo` 均经 `unilab.cli` 参数校验与路线分发进入算法脚本与统一运行时。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User as "用户 (uv run train / eval / demo)"
+    participant CLI as "unilab/cli.py (train_main / eval_main)"
+    participant Script as "scripts/train_*.py (rsl_rl / appo / offpolicy)"
+    participant Env as "EnvConfigAdapter + CPU SimBackend (MuJoCoUni / MotrixSim)"
+    participant Runtime as "Unified Runtime + ExperimentTracker"
+    participant Runner as "GPU Learner (OnPolicyRunner / OffPolicy Runner)"
+
+    User->>CLI: "train --algo sac/ppo/appo/flashsac --task <t> --sim <backend>"
+    CLI->>CLI: "build_route(): 解析 owner YAML 与保留覆盖键"
+    CLI->>Script: "run_process_with_graceful_interrupt(subprocess)"
+    Script->>Runtime: "初始化 Seed / ExperimentTracker / ProcessDevice"
+    alt "on-policy PPO (train_rsl_rl.py)"
+        Script->>Env: "create_env() + RslRlVecEnvAdapter"
+        Script->>Runner: "OnPolicyRunner.learn(max_iterations)"
+        loop "同步 rollout/update 周期"
+            Env-->>Runner: "批量采样观测/奖励 -> GPU"
+            Runner->>Runner: "PPO 策略更新"
+        end
+    else "off-policy SAC / FlashSAC (train_offpolicy.py) 或 APPO"
+        Script->>Runner: "build_runner(algo_name, cfg, log_dir)"
+        par "CPU 异步采样与打包"
+            Env-->>Runtime: "步进批量环境并写入共享内存 Replay / Ring 缓冲"
+        and "GPU 重叠更新与异步 H2D"
+            Runtime-->>Runner: "提前一拍异步 H2D 预取批次"
+            Runner->>Runner: "策略/价值更新并发布新权重给采样器"
+        end
+    end
+    opt "play_only=false 且开启 playback"
+        Script->>Env: "play_ppo() / play_offpolicy() 回放（可选 --sim motrix sim2sim）"
+    end
+```
+
+## 工程实践
+
+| 工程维度 | 说明 |
+|---|---|
+| 统一 CLI 与安装 | 推荐 `uv` + `make setup`；控制台提供 `train`、`eval`、`demo`（`pyproject.toml` 注册自 `unilab.cli`），可选后端如 MotrixSim / Newton 通过 `uv run --extra motrix ...` 启用 |
+| 训练与 Sim2Sim 评测 | `uv run train --algo sac --task g1_walk_flat --sim mujoco` 训练；支持 `--sim motrix --render-mode interactive --load-run -1` 或 `viser` 做跨仿真器 Sim2Sim 校验 |
+| 算法路由与参数边界 | `algo`、`task`、`training.sim_backend` 与 `training.play_only` 为保留路由参数，必须走 CLI 旗标，禁止在 Hydra passthrough 中覆盖（`cli.py`） |
+| 跨平台与混合设备 | 除 Linux CUDA（单机 RTX 4090 + R9 9950X3D 为论文基准，G1 Walk Flat FastSAC **3.0 min**）外，已打通 Apple Silicon M5 Max（**18.8 min**）、AMD ROCm（8060S，**9.4 min**）与 Intel XPU（Table 3） |
+
+## 局限与风险
+
+1. **适用工作负载边界（论文 §7 Limitations）：** UniLab 假设训练由刚体物理仿真主导且采样与学习可解耦；对**渲染、感知与表征学习主导的视觉 RL**，以及严格同步且通信受限的管线，CPU/GPU 解耦能隐藏的开销有限，增益会明显收敛甚至不再领先。
+2. **单机基准与多卡扩展边界：** 论文 3–10× 结论建基于受控的**单 CPU / 单 GPU 工作站**对照；论文明确说明超大规模多 GPU 分布式训练会改变瓶颈位置与硬件配比，非本版基准覆盖范围。
+3. **仅限刚体，不含软体与流体：** 当前 UniLab 主栈聚焦刚体关节型机器人控制（`MuJoCoUni` 与 CPU 批量 `MotrixSim` 后端）；论文明确尚未扩展到可变形体、连续软体与流体耦合任务。
+4. **避免工程误读：** UniLab 的本质是**异构 runtime 调度与采样–更新重叠**，并非宣称 GPU 仿真过时；在仅靠同步 PPO 且 GPU 仿真已饱和或高度依赖 Omniverse 复杂传感器的大场景中，需按任务瓶颈实测选型。
 
 ## 关联页面
 

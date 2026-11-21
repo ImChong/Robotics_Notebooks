@@ -3,7 +3,10 @@
 type: entity
 tags: [humanoid, hardware, open-source, ros2, isaac-lab, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-21
+original:
+  - ../../sources/repos/roboto_origin.md
+  - ../../sources/sites/roboparty_com_roboto_origin_doc.md
 related:
   - ./roboparty.md
   - ./roboparty-rp1.md
@@ -37,7 +40,9 @@ summary: "Roboto Origin（萝博头原型机 / RPO）是 RoboParty 发布的开�
 
 # Roboto Origin（开源人形机器人基线）
 
-**Roboto Origin（萝博头原型机，RPO）** 是 [RoboParty](./roboparty.md) 发布的「全链路开源」人形机器人项目入口，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。
+## 一句话定义
+
+**Roboto Origin（萝博头原型机，RPO）** 是 [RoboParty](./roboparty.md) 发布的「全链路开源」双足人形机器人基线（约 1.25 m、23 DOF、34 kg），以聚合快照汇总硬件、描述、IsaacLab 训练、ROS2 部署与固件五个可独立开发的子仓库。
 
 ## 英文缩写速查
 
@@ -70,9 +75,20 @@ summary: "Roboto Origin（萝博头原型机 / RPO）是 RoboParty 发布的开�
 | 电池 | 48 V, 15 Ah；续航 2 h+ |
 | 可选感知 | Intel D435i、3D 激光雷达 |
 
-## 核心结构
+## 核心原理
 
-Roboto Origin 的仓库体系可理解为「多段流水线 + 聚合快照」：
+### 流程总览
+
+```mermaid
+flowchart LR
+  HW["rpo_hardware\nCAD / PCB / BOM"] --> DESC["rpo_description\nURDF / MJCF 模型"]
+  DESC --> TR["roboparty_train\nIsaacLab RL + MuJoCo Sim2Sim"]
+  TR -->|"policy.onnx"| DEP["roboparty_deploy\nROS2 Humble + ONNX Runtime"]
+  FW["roboparty_firmware\nUSB2CAN + OrangePi 守护进程"] --> DEP
+  DEP -->|"关节指令与反馈"| ROB["RPO 23-DoF 真机"]
+```
+
+Roboto Origin 的仓库体系可理解为「五段模块化流水线 + 聚合快照」：
 
 - **rpo_hardware / rpo_description**：机械与模型（CAD/PCB/BOM、URDF/MJCF）；历史索引见 [atom01-hardware](./atom01-hardware.md)、[atom01-description](./atom01-description.md)
 - **roboparty_train**：IsaacLab 训练与 Sim2Sim；历史索引见 [roboparty_train](./roboparty-train.md)
@@ -85,6 +101,15 @@ Roboto Origin 的仓库体系可理解为「多段流水线 + 聚合快照」：
 ### 与 Party OS / RP1 的演进关系（2026-10）
 
 Roboto Origin（RPO）是独立于 RP1 的已开放人形项目；[RoboParty Lab / Party OS](./party-os.md) 进一步沉淀 **训练、控制与数据工具链基础设施**（[MimicLite](./mimiclite.md)、[UFO](./roboparty-ufo.md)、[hhtools](./human-humanoid-tools.md)）。RoboParty 后续推出 [RP1（ROBOTO 01）](./roboparty-rp1.md)，两者有各自的本体配置、模型和代码路径，不能混用参数或把一个项目的实测结果转用到另一个。RP1 当前的模块入口与开放/许可边界见[官方核查归档](../../sources/sites/roboparty_rp1_official.md)和[仓库索引](../../sources/repos/roboparty_rp1.md)；2026-10-15 的状态快照保留为历史记录。详见 [技术地图](../overview/roboparty-lab-party-os-technology-map.md)。
+
+## 工程实践
+
+| 阶段 | 工程落地要点（基于 `roboto_origin@d94afba` 与官方文档） |
+|------|---------------------------------------------------------|
+| **硬件复刻** | 官方 `README_cn.md` 说明可通过公开电商与 PCB 打样（BOM + Gerber/CAD）自行采购组装；腿部关节峰值扭矩 `120 N·m`、手臂 `27 N·m`、供电 `48 V 15 Ah` |
+| **模型与仿真** | `rpo_description` 提供 URDF/MJCF 供 `roboparty_train`（Isaac Sim 4.5.0 / IsaacLab 2.1.1 + RSL-RL）训练并导出现有 Sim2Sim（MuJoCo）验证策略 |
+| **真机推理部署** | 在 `modules/roboparty_deploy/` 下执行 `./tools/start_robot.sh --robot rpo --policy default`；编译 `colcon build --symlink-install` 并以 `mlockall` 锁定内存运行 `inference_node`（C++17 + ONNX Runtime）与 `joy_node` |
+| **贡献与版本隔离** | `roboto_origin` 为快照聚合仓（GPL-3.0），开发 PR 应提至对应 `rpo_*` / `roboparty_*` 子仓；切勿与 [RP1（ROBOTO 01）](./roboparty-rp1.md) 混用配置文件或参数 |
 
 ## 常见误区 / 局限
 
@@ -152,6 +177,8 @@ sequenceDiagram
 - [Atom01 Train](./roboparty-train.md)
 - [Atom01 Deploy](./roboparty-deploy.md)
 - [Atom01 Firmware](./atom01-firmware.md)
+- [强化学习（Reinforcement Learning）](../methods/reinforcement-learning.md)
+- [双足运动（Locomotion）](../tasks/locomotion.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 作为「中性研究型开源人形」对照组：机构未为角色形象做妥协，与 Disney Olaf 形成两端
 
 ## 推荐继续阅读

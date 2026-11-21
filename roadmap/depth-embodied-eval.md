@@ -66,10 +66,12 @@ flowchart LR
 - 写一页"我要回答的评测问题"：给谁看（自己迭代 / 对外发版 / 论文投稿）、能承受多少真机 rollout 成本、可接受多大的外推风险
 
 ### 推荐读什么
+- [OpenAI 机器人团队重组：通用模型与专用策略的证据审计](../wiki/entities/openai-robotics-reorganization-aiwang-2026.md) — Stage 0 反例：一次团队调整与 RoboLab 仿真分数不能证明专用 VLA/WAM 必然消失；先核对时延、成本和真机协议。
 - [具身评测基准选型闭环（知识链汇总）](../wiki/overview/hub-embodied-eval-benchmark.md) — 本路线的枢纽页
 - [Query：具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md) — 四层决策树与逐层误判速查
 - [仿真评测可复现性 ↔ 真实代表性取舍](../wiki/concepts/sim-vs-real-eval-gap.md) — 这条 gap 的物理根因
 - [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — 姊妹链：先选模型家族，再回本路线做验收
+- [Bloomberg Primer：人形机器人热度与真实落地差距](../wiki/entities/bloomberg-primer-humanoid-hype-reality-2026.md) — 把视频演示、遥操作、数据缺口与 GXO 仓库试点的错误/人工介入拆成可验收证据
 
 ### 学完输出什么
 - 一张"我的评测链停在第几层、还缺哪一层"的自检表

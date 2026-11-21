@@ -2,7 +2,9 @@
 type: entity
 tags: [humanoid, reinforcement-learning, unsupervised-rl, bfm, open-source, roboparty, teleoperation, mjlab]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/roboparty_ufo.md
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -28,6 +30,10 @@ summary: "UFO 是 Roboparty 面向人形机器人的开源无监督强化学习�
 **UFO**（*Unsupervised RL Control Development Framework*）是 [Party OS](./party-os.md) 首批开源的 **无监督强化学习控制全栈框架**，覆盖训练基础设施、数据管线、算法研究与推理部署，目标降低无监督 RL 控制的研发门槛，使研究者能快速复现 SOTA、探索新行为表征、适配不同机器人平台，并实现训练到真机遥操的一体化开发。
 
 > **命名辨析：** 本页 **UFO** 专指 Roboparty GitHub 仓库 [Roboparty/UFO](https://github.com/Roboparty/UFO)，与通用缩写无关。
+
+## 一句话定义
+
+UFO 是 RoboParty 基于 mjlab 实现的人形机器人无监督强化学习框架，提供 FB / TeCH 训练、匹配机型的动作数据导入、运动跟踪 / 奖励 / 目标推理，并将 G1 真机部署指向独立部署分支。
 
 ## 英文缩写速查
 
@@ -182,7 +188,7 @@ sequenceDiagram
 - [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [roboparty_ufo.md](../../sources/repos/roboparty_ufo.md)
-- [Roboparty/UFO 官方 README 与 docs（2026-10-27 核查）](https://github.com/Roboparty/UFO)
+- [Roboparty/UFO 官方 README 与 docs（2026-11-21 README 复核）](https://github.com/Roboparty/UFO)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 - [roboparty_lab_tech_humanoid_control.md](../../sources/sites/roboparty_lab_tech_humanoid_control.md)
 - [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)

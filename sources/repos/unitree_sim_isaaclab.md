@@ -11,7 +11,9 @@
 - **主要语言：** Python
 - **分类：** 遥操作与采数
 - **入库日期：** 2026-07-24
-- **一句话说明：** 基于 Isaac Lab 的 G1/H1-2 仿真环境，可与 xr_teleoperate 同 DDS 做仿真采数。
+- **核对范围：** 2026-11-21 通读 `unitreerobotics/unitree_sim_isaaclab@84a15e5` 官方 `README.md` 全文（支持 `r1a7d`/`r17a`/`g1d`/`g129`/`h1_2` 与 Dex1/Dex3/Dex2-5/Inspire/LinkerHand O6、Isaac Sim 6.2.0 / Isaac Lab 3.0.0 环境与 Docker、资产下载、`teleimager` ZMQ/WebRTC 端口、DDS 主题表、数据回放与增强生成）及主入口 `sim_main.py`（CLI 参数与 `_create_env_cfg`）；未实际启动 Isaac Sim。
+- **通读：** 已完成
+- **一句话说明：** 基于 Isaac Lab 的 Unitree 人形/双臂操作仿真环境，可与 xr_teleoperate 同 DDS 做仿真采数、回放与策略验证。
 - **沉淀到 wiki：** 是 → [`wiki/entities/unitree-sim-isaaclab.md`](../../wiki/entities/unitree-sim-isaaclab.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)
 

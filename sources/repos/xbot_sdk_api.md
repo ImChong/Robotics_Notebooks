@@ -8,6 +8,8 @@
 - **链接：** https://github.com/roboterax/xbot_sdk_api
 - **分类：** SDK/驱动
 - **入库日期：** 2026-09-06
+- **核对范围：** 克隆 `roboterax/xbot_sdk_api@f542ed2`，通读 `README.md`、`examples/basic_robot_control.py`、`robot_controller/robot_controller.py`、`robot_controller/trajectory_controller.py` 等源码接口；确认底层 ROS 2 服务端与 MPC 求解器实现不在仓内；未连接真机运行。
+- **通读：** 已完成
 - **一句话说明：** 星动纪元 开源项目 xbot_sdk_api（SDK/驱动），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-xbot-sdk-api.md`](../../wiki/entities/cn-os-xbot-sdk-api.md)
 

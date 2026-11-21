@@ -15,8 +15,11 @@ tags:
   - open-source
   - project
 status: complete
-updated: 2026-10-10
+updated: 2026-11-21
 code: https://github.com/LightwheelAI/LW-BenchHub
+original:
+  - ../../sources/blogs/lightwheel_benchhub_arena_posts.md
+  - ../../sources/repos/lw-benchhub.md
 related:
   - ./lightwheel.md
   - ./lightwheel-robofinals.md
@@ -187,6 +190,8 @@ sequenceDiagram
 ```
 
 复现关键：先起 `env_server` 再跑客户端；`env_cfg` 未给的字段由客户端默认值补齐（`scene_backend=robocasa`、`num_envs=1`、`execute_mode=eval` 等）。批量并行评测需把 `num_envs` 调大，单进程默认是 1。
+
+图依据：`LightwheelAI/LW-BenchHub@b2bcb2d`（`env_server.sh`、`lw_benchhub/scripts/env_server.py`、`lw_benchhub/scripts/policy/eval_policy.py`）。
 
 ## 工程实践
 

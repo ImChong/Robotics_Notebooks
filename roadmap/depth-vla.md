@@ -219,6 +219,7 @@ flowchart LR
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor
 - [ACE-CaP-0](../wiki/entities/paper-ace-cap-0.md) — 开发期按需示范/仿真，冻结代码策略在执行期脱离编码 Agent
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
+- [Uni-Robot-Agent / OpenRUA](../wiki/entities/paper-uni-robot-agent.md) — Stage 4 统一 Tool/环境适配器、带回执的执行与资源调度；同一 Qwen 在 RoboDojo 的 1.90→31.39 是跨 harness 比较而非新权重训练。工程侧可对照已发布 ARX ONE 与仅源码可用的 Piper-X；复现实验应区分 Score/SR、相机标定、深度输入和真机安全条件。
 - [STVLA](../wiki/entities/paper-stvla-spatial-temporal-memory.md) — 用空间几何与有界历史记忆改善长任务中遮挡与状态歧义
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
 - [ARP：异步机器人策略](../wiki/entities/paper-asynchronous-robot-policies.md) — 将 VLM 低频语义缓存与自带实时视觉的高频动作专家分进程运行，训练显式建模缓存陈旧和执行延迟；动态扰动更稳，但通用 RoboLab 仍落后 π0.5（官方源码/权重待发布）
@@ -255,6 +256,7 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：RL 微调与自改进**
+- [π*₀.₆ / RECAP：VLA 从自主经验中学习](../wiki/entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) — 离线 RL 预训练 + 真机 rollout/人工纠正 + 分布式价值函数与优势条件；用成功率及每小时成功次数同时衡量专精效果（官方完整训练代码未开放）。
 - [TidyBot](../wiki/entities/paper-tidybot-2305-05658.md)、[OLAF](../wiki/entities/paper-olaf-verbal-correction.md)、[LMPC](../wiki/entities/paper-lmpc-2402-11450.md) — 对照规则总结、动作重标注和语言模型微调三种适应对象。
 - [PAFF](../wiki/entities/paper-paff-2212-07398.md) — 用基础模型反馈重标注目标域交互，再监督微调策略；对照 RL 与重标注驱动的适应。
 - 用 RL / 真机数据闭环继续改进预训练策略

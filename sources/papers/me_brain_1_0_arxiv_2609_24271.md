@@ -6,6 +6,8 @@
 - **代码：** <https://github.com/MachEmbodied/ME-Brain-1.0>（框架占位；动作模型见 [Focus-VLWA](https://github.com/MachEmbodied/Focus-VLWA)）
 - **初次入库：** 2026-09-25
 - **v2 复核日期：** 2026-10-09
+- **核对范围：** 通读 `arXiv:2609.24271v2` HTML 全文（§1–§9：ME-Brain 闭环、Evolvable Memory 短/中/长三层外部记忆图、Cognitive Core、Focus-VLWA 关键帧/EventCell/动作条件记忆调制、Cognitive Core / RoboMME / RoboDojo / Piper ME-RealBench 实验与 §9.2 Future Work）；未在真机硬件上运行系统。
+- **通读：** 已完成
 - **作者（arXiv v2）：** Wei He, Hengtao Li, Chenfeng Wang, Zhongrui Yu, Xuhan Zhu, Maokui He, Zide Liu, Xiyue Zhang, Xianwei Mao, Chunpeng Zhou, Jia Shi, Yanze Xin, Jingwen Li, Jingxie Zheng, Sijie Zeng, Fan Lu, Zeyu Zhang, Shuai Guo, Hengxuan Zhang, Pengfei Yu, Jia Shi, Yu Liu, Kun Zhan, Yan Xie
 - **机构：** Li Auto Inc.（理想汽车，MachEmbodied）
 - **索引来源：** [具身智能研究室 四篇盘点](../blogs/wechat_li_auto_me_brain_vlm_u0_dex_2026-09-25.md)

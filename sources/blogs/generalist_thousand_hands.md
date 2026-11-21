@@ -8,11 +8,10 @@
 - **原始链接：** <https://generalistai.com/blog/towards-machines-with-a-thousand-hands>
 - **发表日期：** 2026-07（博客 Citation 写 Jul 2026）
 - **入库日期：** 2026-07-24
+- **核对范围：** 2026-11-22 抓取并通读 `https://generalistai.com/blog/towards-machines-with-a-thousand-hands` 正文全文（12,784 字符，~9,000 末端变体与 >50 万小时交互数据、多语言类比、task vector ΔW=W_ft-W_0 相对参数范数 2.5%–11.4% 与子系统分解、任务中途换手与参考文献）。
+- **通读：** 已完成
 - **抓取方式：** Jina Reader（`r.jina.ai`）；官方页直连 HTML 仅作交叉核对
 - **一句话说明：** Generalist **GEN-1** 将同一具身基础模型扩展到 **约 9000 种末端执行器变体**（五指手、螺丝刀、夹钳、打蛋器、刮铲等）与 **>50 万小时** 真实交互预训练数据；主张「手可变、物理不变」，用多手预训练学通用 sensorimotor / physical commonsense representations，并报告任务向量式权重更新分析（相对范数 **2.5%–11.4%**）与 **任务中途换手** 的同模型在线适应演示。
-
-- **通读：** 已完成
-- **核对范围：** 已通读 Generalist AI 官方博文 `Towards Machines with a Thousand Hands`（12,784 字符），核对 50 万+小时多末端数据与 2.5%–11.4% 权重更新分析。
 
 ## 开源 / 项目页核查（步骤 2.5）
 

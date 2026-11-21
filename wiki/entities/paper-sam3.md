@@ -2,9 +2,11 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, sam3, sam31, open-vocabulary, computer-vision, meta, promptable-segmentation, video-tracking]
 status: complete
-updated: 2026-09-29
+updated: 2026-11-21
 arxiv: "2511.16719"
 code: https://github.com/facebookresearch/sam3
+original:
+  - ../../sources/papers/sam3_arxiv_2511_16719.md
 related:
   - ./paper-dart-sam3-realtime.md
   - ./paper-segment-anything.md
@@ -140,8 +142,13 @@ sequenceDiagram
 
 ## 实验与评测
 
-- 论文报告在 PCS 设定上相对既有系统约 **2×** 精度增益，并改进前代 SAM 视觉分割能力。
-- 发布 **SA-Co** 基准以覆盖远超 COCO/LVIS 规模的概念集（研究页叙述）。
+来自 [SAM 3 arXiv:2511.16719v2 全文](https://arxiv.org/html/2511.16719v2) §5–6 及附录，以下指标均为**论文报告值**：
+
+- **图像 PCS：** SA-Co/Gold 的开放词汇 `cgF1` 相比最强的 OWLv2 基线超过 **2×**；定义 `cgF1 = 100 × pmF1 × IL_MCC`，同时检查定位与图像级概念存在性，不能当成 COCO AP 或语义分割 mIoU。
+- **数据规模：** SA-Co/HQ 包含约 **5.2M** 图像和 **4M** 独特短语；SA-Co/VIDEO 包含 **52.5K** 视频、约 **24.8K** 独特短语。Gold/Silver/Bronze/Bio 与 VEval 拆分的标注密度及任务不同。
+- **视频 PCS（SAM 3 原版）：** SA-Co/VEval YT-Temporal-1B 的 `cgF1/pHOTA` 为 **50.8/69.9**；SmartGlasses 为 **36.4/63.6**。视频跟踪指标不能直接和图像分割结果横比。
+- **可视提示 PVS：** MOSEv2 val `J&F` **60.3**；SA-37 交互图像 1/3/5 次点击平均 mIoU 为 **66.1/81.3/85.1**。并非所有 click 设置都超过 SAM 2。
+- **SAM 3.1 的改进边界：** 附录 H 的 Object Multiplex（默认每 bucket 16 个对象）与官方 3.1 Release 的额外优化分开看。官方约 **7×** 的 128 对象速度比较限定单 H100、2025-11 发布版基线，不适用于任意设备。
 
 ## 结论
 
@@ -159,6 +166,7 @@ SAM 3 把 Segment Anything 从「提示一个物体」推进到「提示一个�
 - **不是 3D 模型：** 不输出度量网格；提升误差见 2D→3D Gap 页。
 - **延迟：** 全概念穷尽比单目标 SAM2 更重；多目标视频在 3.0 前随实例数线性恶化，3.1 Multiplex 缓解但未消除机载压力。
 - **与 SAM 3D Body 区分：** [SAM 3D Body](./sam-3d-body.md) 是人体网格，不是本 PCS 模型。
+- **提示与长尾概念：** 论文附录 B 指出仅支持简短名词短语；医疗、热红外等域外细粒度概念的零样本泛化受限。多属性长指代需另接多模态语言模型，不能视为 SAM 3 原生能力。
 
 ## 与其他工作对比
 
@@ -171,6 +179,8 @@ SAM 3 把 Segment Anything 从「提示一个物体」推进到「提示一个�
 | [ENEAS](./paper-eneas.md) | 文本实例跟踪 + 语义发现；强调离屏重识别与 doppelganger 过滤；SA-Co/VEval 略优 SAM 3 |
 
 ## 关联页面
+
+- [UNVEIL：SAM 3 的可提示概念图](./paper-unveil-pcm-2611-25747.md) — 用旁路语义图与独立 presence decoder 处理阴影、透明物体、边缘等非对象概念；区别于本页实例分割任务。
 
 - [SAM](./paper-segment-anything.md) · [SAM 2](./paper-sam2.md) · [DART 实时多类检测](./paper-dart-sam3-realtime.md)
 - [ENEAS](./paper-eneas.md) — SAM 3 对照：本体验证与时序记忆

@@ -8,6 +8,8 @@
 - **链接：** <https://github.com/roboterax/humanoid-gym>
 - **Stars：** ~2.0k（2026-06）
 - **入库日期：** 2026-06-09
+- **核对范围：** 克隆 `roboterax/humanoid-gym@ae46e20`，核对 `README.md`、`humanoid/scripts/train.py`、`play.py`、`sim2sim.py`、`humanoid/envs/custom/humanoid_env.py`、`humanoid_config.py`、`humanoid/utils/task_registry.py`、`helpers.py` 与 `humanoid/algo/ppo/on_policy_runner.py`；确认 `humanoid_dwl` 在 README 仍标 `(coming soon)` 且仓内无 DWL 实现；未启动 Isaac Gym / MuJoCo 运行。
+- **通读：** 已完成
 - **一句话说明：** **Humanoid-Gym** 官方开源：Isaac Gym Preview 4 上人形 **PPO locomotion** 训练栈，含 **JIT 导出、MuJoCo sim2sim** 与 XBot 真机零样本迁移文档；论文 [arXiv:2404.05695](https://arxiv.org/abs/2404.05695)。
 - **沉淀到 wiki：** [`wiki/entities/humanoid-gym.md`](../../wiki/entities/humanoid-gym.md)
 

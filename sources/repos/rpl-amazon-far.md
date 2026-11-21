@@ -6,10 +6,13 @@
 - **类型：** repo / humanoid / perceptive locomotion / RL / distillation / sim2sim
 - **来源：** Amazon FAR（Frontier AI & Robotics）
 - **链接：** <https://github.com/amazon-far/RPL>
+- **核对版本：** `main@1ca0250`（2026-10-20）
 - **许可证：** Apache-2.0
 - **配套论文：** [arXiv:2602.03002](https://arxiv.org/abs/2602.03002)
 - **项目页：** <https://rpl-humanoid.github.io/>
 - **入库日期：** 2026-10-21
+- **核对范围：** 阅读 `amazon-far/RPL@1ca0250` 官方 `README.md` 与目录结构（`thirdparty/holosoma/`、`rpl_training/`、`rpl_sim2sim/`），核实专家训练（`run_expert.sh`）、学生蒸馏（`run_distill.sh`）与双进程 MuJoCo sim2sim（`run_sim.sh` / `run_policy.sh` via Unitree SDK2 DDS + 共享内存）；未在本地 GPU 运行训练或真机部署。
+- **通读：** 已完成
 - **一句话说明：** RPL 官方代码库，基于 Holosoma 提供分地形 RL 专家训练、多视角深度学生的 DAgger 蒸馏，以及 MuJoCo sim2sim 验证流程。
 - **沉淀到 wiki：** [`wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md`](../../wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)
 

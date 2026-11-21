@@ -2,7 +2,9 @@
 type: entity
 tags: [robotera, repo, china-embodied-opensource, open-source, project]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/xbot_sdk_api.md
 related:
   - ./robotera.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -38,7 +40,19 @@ code: https://github.com/roboterax/xbot_sdk_api
 
 这一入口补足[星动纪元](./robotera.md)研究与产品之间的工程接口；读者可核对公开代码和厂商运行环境的边界，避免仅凭仓库名推断完整复现能力。
 
-## 核心结构
+## 核心原理
+
+`xbot_sdk_api` 通过 ROS 2（Humble + CycloneDDS，`ROS_DOMAIN_ID=211`）在应用层与星动纪元机器人机载服务之间提供 Python 封装：以 `RobotController` 负责节点生命周期、状态订阅及手/底盘指令，以 `TrajectoryController` 通过动作与插值发布关节目标，以 `MPCController` 接管算法权限并下发 `ServoPose`；底层控制器与求解器运行于机器人侧仓外服务。
+
+```mermaid
+flowchart LR
+  APP["用户应用脚本<br/>examples/basic_robot_control.py"] --> RC["RobotController<br/>服务生命周期 / 状态 / 手与底盘"]
+  APP --> TC["TrajectoryController<br/>SimpleActions / 线性插值发布"]
+  APP --> MC["MPCController<br/>算法控制权限 / ServoPose"]
+  RC -- "/dynamic_launch · /ready_service · /joint_states" --> BOT["机器人侧 ROS 2 服务 (仓外)<br/>L3 / L7 / Q5 控制底座"]
+  TC -- "/simple_actions · HybridJointCommand" --> BOT
+  MC -- "MPC 服务 · ServoPose" --> BOT
+```
 
 | 机构 | 星动纪元（ROBOTERA） |
 | --- | --- |

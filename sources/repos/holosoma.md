@@ -6,10 +6,14 @@
 - **类型：** repo
 - **来源：** Amazon FAR（Frontier AI & Robotics）
 - **链接：** <https://github.com/amazon-far/holosoma>
+- **核对版本：** `main@3b2c6fe`（2026-11-21）
 - **License：** Apache-2.0
 - **Stars：** ~1.4k（2026-06，以 GitHub 为准）
 - **入库日期：** 2026-06-08
-- **一句话说明：** Amazon FAR 开源的 **人形全身 RL 训练与部署** 框架（希腊语「全身」），集成 **locomotion / whole-body tracking** 与 **OmniRetarget 运动重定向**；支持 IsaacGym、IsaacSim、MJWarp、MuJoCo 与 G1/T1 真机推理管线。
+- **复核日期：** 2026-11-21
+- **核对范围：** 阅读 `amazon-far/holosoma@3b2c6fe` 的 `README.md`、`src/holosoma/holosoma/train_agent.py`、`src/holosoma/holosoma/run_sim.py`、`src/holosoma_inference/README.md`、`src/holosoma_inference/pyproject.toml`、`src/holosoma_inference/docs/workflows/sim-to-sim-locomotion.md` 与 `src/holosoma_retargeting/README.md`；核实当前 `main` 已移除 IsaacGym 支持（保留至 `holosoma-v0.0.3` tag）、支撑 IsaacSim / MJWarp 训练与 MuJoCo / 真机推理双进程 bridge；未在本地运行仿真或真机硬件。
+- **通读：** 已完成
+- **一句话说明：** Amazon FAR 开源的 **人形全身 RL 训练与部署** 框架（希腊语「全身」），集成 **locomotion / whole-body tracking** 与 **OmniRetarget 运动重定向**；`main` 支持 IsaacSim、MJWarp、MuJoCo（仅推理）与 G1/T1 真机推理管线（IsaacGym 冻结在 `holosoma-v0.0.3`）。
 - **沉淀到 wiki：** [`wiki/entities/holosoma.md`](../../wiki/entities/holosoma.md)、[`wiki/entities/paper-hrl-stack-03-omniretarget.md`](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)
 
 ---

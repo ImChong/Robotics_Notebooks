@@ -11,6 +11,8 @@
 - **主要语言：** Python
 - **分类：** 强化学习训练
 - **入库日期：** 2026-07-24
+- **核对范围：** 2026-11-21 通读 `unitreerobotics/unitree_rl_gym@276801e` 官方 `README.md` 全文（支持机型、Train→Play→Sim2Sim→Sim2Real 流程、参数表、网络导出、`deploy_mujoco.py`、`deploy_real.py` 与 `cpp_g1` C++ 部署）及训练入口 `legged_gym/scripts/train.py`（`task_registry.make_env` / `make_alg_runner` / `ppo_runner.learn`）；未运行 Isaac Gym / 真机部署。
+- **通读：** 已完成
 - **一句话说明：** 官方 Isaac Gym + legged_gym 风格 RL 仓（组织内星标最高），覆盖 Train→Play→Sim2Sim→Sim2Real。
 - **沉淀到 wiki：** 是 → [`wiki/entities/unitree-rl-gym.md`](../../wiki/entities/unitree-rl-gym.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)

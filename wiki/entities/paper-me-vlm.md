@@ -7,9 +7,12 @@ tags:
   - agent
   - li-auto
 status: complete
-updated: 2026-09-25
+updated: 2026-11-21
 arxiv: "2609.24526"
 code: https://github.com/MachEmbodied/ME-VLM
+original:
+  - ../../sources/papers/me_vlm_arxiv_2609_24526.md
+  - ../../sources/repos/me_vlm.md
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -100,7 +103,23 @@ flowchart TB
 
 ## 源码运行时序图
 
-不适用：GitHub README Todo 列 **Inference code / Training code / Pretrained weights** 均为未完成（2026-09-25）。待官方发布推理入口后，应按「加载 4B/35B → 多模态 prompt + 图像 → 具身/Agent 决策 JSON → 下游执行器」补序图。
+不适用：核对 `MachEmbodied/ME-VLM@4717f41` 官方仓库 `README.md`，Todo 中 **Inference code / Training code / Pretrained model weights (4B / 35B-A3B) / Edge deployment toolkit** 均为未完成（仓库当前仅含技术报告 PDF）。待官方发布推理入口后，应按「加载 4B/35B → 多模态 prompt + 图像 → 具身/Agent 决策 → 下游执行器」补序图。
+
+## 工程实践
+
+| 项 | 论文披露工程做法 |
+|----|-----------------|
+| **源码运行时序图** | **不适用**（代码与权重未开源；仅技术报告已发布） |
+| **视觉 Token 压缩** | 免训练即插即用 **Max–Min 贪心多样性筛选**，多视角各自按同比例压缩（4,096 → 3,328 tokens），并按原时序索引重排以保时空结构（4B 保留 96.7%、35B 保留 98.2% 分数） |
+| **M100 SoC 软硬件协同** | 4B 变体采用 **W4A8 量化**（权重降 75%，精度损失 <1%），由 **Arm CPU 推理运行时 + M100 NPU RISC-V 固件** 协同执行，prefill 延迟由 **400 ms 降至 188 ms（2.13× 加速）** |
+| **跨域迁移** | 具身能力可直接轻量适配自动驾驶（MAPLM / CODA-LM / nuScenes-QA）与具身导航（R2R / RxR 闭集离散动作多轮对话接口） |
+
+## 局限与风险
+
+- **代码与权重尚未开源：** 截至 2026-11-21，`MachEmbodied/ME-VLM` 仅放出了技术报告 PDF，4B/35B-A3B 权重、训练脚本与端侧部署工具包均未发布，第三方无法复现榜单数字。
+- **部分评测项存在异常空缺：** Table 1 中 4B 模型在 MindCube 与 RoboBench-Error 两项基准录得异常结果（记为 `-`），说明小参数版在特定多视角/错误诊断基准上稳定性仍弱于 35B-A3B。
+- **硬件协同指标绑定自研芯片：** 400 ms→188 ms prefill 延迟优化深度依赖理想 M100 SoC（24 核 Arm CPU + LPDDR5X 273 GB/s + M100 编译工具链），在通用桌面 GPU 上的吞吐收益未单列验证。
+- **综合均分与真机统计边界：** 70.9 / 72.5 均为多基准平均分且部分基线标注了复测或未报告差异；论文主要给出真机定性复合放置示例，缺乏大样本真机成功率统计。
 
 ## 关联页面
 

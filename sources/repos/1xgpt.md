@@ -3,11 +3,13 @@
 > 来源归档（repo）
 
 - **标题：** 1X World Model Challenge（1xgpt）
-- **代码：** <https://github.com/1x-technologies/1xgpt>
+- **代码：** <https://github.com/1x-technologies/1xgpt>（`0069734`）
 - **类型：** research-code / challenge baseline（GENIE-style + MAGVIT2；EVE 第一人称 token 数据）
 - **License：** Apache-2.0
 - **关联产品叙事：** [1X World Model / Redwood](https://www.1x.tech/discover/redwood-ai-world-model)
 - **首次入库：** 2026-07-26
+- **核对范围：** 通读 `1x-technologies/1xgpt@0069734` 的 `README.md`、`build.sh`、`data.py`（`RawTokenDataset`）、`train.py`（参数解析、`STMaskGIT` 初始化、AdamW 与 `get_maskgit_collator` 数据加载）、`genie/generate.py`（`maskgit_generate` 自回归帧采样）及 `visualize.py`（`VQModel` 解码导出 GIF）；未下载 `1x-technologies/worldmodel` 数据集或运行训练/推理（仅离线代码核对）。
+- **通读：** 已完成
 
 ## 一句话摘要
 

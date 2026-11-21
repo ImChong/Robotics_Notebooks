@@ -3,7 +3,9 @@ type: entity
 tags: [company, dexterous-hand, tactile-sensing, data-flywheel, humanoid, sharpa-robotics]
 title: 夏帕机器人（Sharpa Robotics）
 status: complete
-updated: 2026-11-13
+updated: 2026-11-21
+original:
+  - ../../sources/sites/sharpa-com.md
 related:
   - ./paper-sata.md
   - ./paper-tacmap.md
@@ -33,6 +35,7 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/visuo-tactile-fusion.md
 sources:
+  - ../../sources/sites/sharpa-com.md
   - ../../sources/blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md
   - ../../sources/blogs/wechat_tiannan_sharpa_academic_route_2026-10-22.md
 summary: "夏帕机器人（Sharpa Robotics）：2024 年成立、总部新加坡的灵巧操作公司，以 22 自由度触觉灵巧手 SharpaWave 为平台；学术线主张「数据→接触→跨本体表征」三条主线，用 System 0/1/2 分层把接触交给高频触觉底层。"
@@ -70,6 +73,24 @@ summary: "夏帕机器人（Sharpa Robotics）：2024 年成立、总部新加�
 - **数据两难的一个回应**：遥操作缺接触感受，人类视频缺力与触觉。公司路线是 **无本体采集**（AE01 手套 + 指尖触觉）与 **仿真补全接触**（Dex-X）并行。
 - **分层架构**：文中描述 System 2（约 1 Hz，VLM）、System 1（约 10 Hz，运动）、System 0（约 100 Hz，实时触觉交互）。这是公司学术线的组织框架，不等于已公开的统一产品架构。
 
+## 核心原理
+
+官网将全栈能力组织为「触觉灵巧硬件（D01 / Wave W01 & W02 / Avatar AE01）+ 分层 VTLA 模型（CraftNet）」闭环：
+
+```mermaid
+flowchart LR
+  S2["System 2 · ~1 Hz\nReasoning Brain (VLM)"] -->|"Semantic Intent + Progress Vector"| S1["System 1 · ~10 Hz\nMotion Brain"]
+  S1 -->|"Physical Intent + Coarse Actions"| S0["System 0 · ~100 Hz\nInteraction Brain"]
+  S0 -->|"Fine Actions"| HW["硬件平台\nD01 / Wave W01 & W02"]
+  HW -->|"State Vector + 视觉/触觉/力矩"| S0
+  HW -->|"Tactile & Proprioception"| S1
+  AE["Avatar AE01 数据手套\n+ 人类视频 / 仿真数据"] -->|"训练数据流"| S2
+```
+
+- **System 2（~1 Hz，Reasoning Brain）**：VLM 结合语言与视觉输出语义意图（Semantic Intent）与进度向量（Progress Vector）。
+- **System 1（~10 Hz，Motion Brain）**：承接语义与进度向量，生成物理意图（Physical Intent）与粗粒度动作（Coarse Actions）。
+- **System 0（~100 Hz，Interaction Brain）**：基于实时指尖/全身触觉与本体力矩反馈输出细粒度动作（Fine Actions），并向高层回传 State Vector。
+
 ## 公开技术路线与时间
 
 | 时间 | 事件 | 来源 |
@@ -97,6 +118,7 @@ summary: "夏帕机器人（Sharpa Robotics）：2024 年成立、总部新加�
 
 - 库内其他以 Sharpa 手为平台的论文：[SPD](./paper-spd.md)、[TeleDexter](./paper-teledexter.md)、[ArtManip](./paper-artmanip.md)、[WM-Craftnet](./paper-wm-craftnet.md)、[EigenDexplore](./paper-eigendexplore.md)（后两者 arXiv 与文章中的 CraftNet 不同，不等同）。
 - 研究者视角的硬件要求（文章转述）：可靠性（“坏了之后一修又要两周”不可接受）与标定一致性，使仿真强化学习到真机的迁移更顺畅。
+- **源码运行时序图：不适用。** 公司级实体不设全栈统一开源仓库（CraftNet 为专有 VTLA 模型）；各学术子项目的代码开放状态与运行时序图见对应论文实体页（如 [Tacmap](./paper-tacmap.md)、[T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md)、[UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md)、[GALATEA](./paper-galatea.md)）。
 
 ## 局限与风险
 
@@ -108,9 +130,18 @@ summary: "夏帕机器人（Sharpa Robotics）：2024 年成立、总部新加�
 ## 关联页面
 
 - 触觉与接触：[接触丰富操作](../concepts/contact-rich-manipulation.md)、[视触觉融合](../concepts/visuo-tactile-fusion.md)
+- 方法与任务：[VLA（视觉–语言–动作模型）](../methods/vla.md)、[灵巧操作任务](../tasks/manipulation.md)
 - 论文节点（本次 ingest）：[SaTA](./paper-sata.md)、[Tacmap](./paper-tacmap.md)、[DexEMG](./paper-dexemg.md)、[FTP-1](./paper-ftp-1.md)、[Do as I Do](./paper-do-as-i-do.md)、[Play2Perfect](./paper-play2perfect.md)、[Dex-X](./paper-dex-x.md)、[TacBPM](./paper-tacbpm.md)、[UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md)
 
 ## 参考来源
 
+- [sharpa-com.md](../../sources/sites/sharpa-com.md) — Sharpa 官网首页、关于页与研究博客目录（2026-11-21 通读）
 - [硬件、数据到模型：Sharpa如何系统性推进灵巧操作（机器之心，2026-10-16）](../../sources/blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md)
+- [Sharpa 学术路线阅读坐标来源归档（天南，2026-10-22）](../../sources/blogs/wechat_tiannan_sharpa_academic_route_2026-10-22.md)
 - [Sharpa 量产与成立时间（PR Newswire 新闻稿，2025-12-16，经 Utusan 转载）](https://www.utusan.com.my/pr-newswire-en/2025/12/ai-robotmaker-sharpa-reaches-key-milestone-with-mass-production-of-worlds-most-advanced-human-sized-robotic-hand/)
+
+## 推荐继续阅读
+
+- [Sharpa 官网](https://www.sharpa.com/)
+- [Sharpa Research Blog](https://www.sharpa.com/blogs/research)
+- [Sharpa 学术路线阅读坐标（wiki）](../overview/sharpa-academic-route-three-lines.md)

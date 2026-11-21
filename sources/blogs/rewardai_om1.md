@@ -9,10 +9,9 @@
 - **发表日期：** 2026-09（博客 Citation 写 Sep 2026）
 - **入库日期：** 2026-09-15
 - **抓取方式：** WebFetch + HTML 交叉核对（含 BibTeX、视频清单）
-- **一句话说明：** Reward AI 发布 **Omnibody** 全栈：**Omnibody Hand**（7-DoF 可穿戴采集）+ **One Data Interface**（多模态人类操作数据）+ **OM-1**（仅人类示范、无遥操作/无机载数据的通才操作策略）+ **Control Any Body**（高频 RL 控制层跨工业臂到人形）；宣称 **<30 分钟** 人类数据即可上手新任务。
-
+- **核对范围：** 通读官方博客全文（<https://www.rewardai.com/blog/OM-1/>，13,612 字符，核对 Omnibody Hand 7-DoF 功能灵巧设计与 One Model / Any Body 栈；2026-11-21 复核正文与外链，确认无论文 PDF 或公开 GitHub/Hugging Face 代码仓）。
 - **通读：** 已完成
-- **核对范围：** 已通读 Reward AI 官方博文 `OM-1` 全文（13,612 字符），核对 Omnibody Hand 7-DoF 功能灵巧设计与 One Model / Any Body 栈。
+- **一句话说明：** Reward AI 发布 **Omnibody** 全栈：**Omnibody Hand**（7-DoF 可穿戴采集）+ **One Data Interface**（多模态人类操作数据）+ **OM-1**（仅人类示范、无遥操作/无机载数据的通才操作策略）+ **Control Any Body**（高频 RL 控制层跨工业臂到人形）；宣称 **<30 分钟** 人类数据即可上手新任务。
 
 ## 开源 / 项目页核查（步骤 2.5）
 

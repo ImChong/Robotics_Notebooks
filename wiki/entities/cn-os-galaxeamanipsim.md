@@ -1,16 +1,19 @@
 ---
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+status: complete
+updated: 2026-11-21
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
+  - ./cn-os-galaxeadp.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/galaxeamanipsim.md
-summary: "星海图 开源项目 GalaxeaManipSim（仿真环境）：官方仿真环境与模型接入：联调、策略回放与 Sim2Sim 验证…"
+original:
+  - ../../sources/repos/galaxeamanipsim.md
+summary: "星海图开源的 ManiSkill3/SAPIEN 双臂操作仿真基准，支持 Galaxea R1 / R1 Pro / R1 Lite 与 mplib 演示采集、Relaxed-IK 动作重放及 LeRobot/GalaxeaDP 数据导出（MIT 许可）。"
 institutions:
   - galaxea
 ---
@@ -38,22 +41,41 @@ institutions:
 
 ## 核心原理
 
-| 字段 | 内容 |
+`GalaxeaManipSim` 基于 ManiSkill3 架构向 [星海图](./cn-os-galaxeadp.md)（Galaxea）双臂机器人提供标准化桌面操作仿真与自动化数据管线：
+
+- **支持本体与环境规模**：内置 `Galaxea R1`、`R1 Pro` 与 `R1 Lite` 三款双臂构型，覆盖 **30+ 个仿真环境 / 17 类操作任务**（如 `Dual Bottles Pick`、`Blocks Stack` 等）。
+- **双模式控制抽象**：提供关节空间控制器 `bimanual_joint_position` 与基于 **Relaxed IK** 的末端位姿控制器 `bimanual_relaxed_ik`，便于将采集轨迹在不同控制接口间重映射。
+- **规划采集 → 回放 → 策略导出闭环**：利用 `mplib` 运动规划器按任务预定义 `solution()` 阶段自动生成演示 HDF5，再经目标控制器重放与成功过滤，最后转换为标准 LeRobot 或 Galaxea LeRobot 数据格式供 [GalaxeaDP](./cn-os-galaxeadp.md) 训练评估。
+
+```mermaid
+flowchart LR
+  U["URDF / 30+ ManiSkill3 环境"] --> C["collect_demos.py (mplib 规划)"]
+  C --> H1["collected/*.h5"]
+  H1 --> R["replay_demos.py (joint / relaxed_ik)"]
+  R --> H2["replayed/*.h5 (成功过滤)"]
+  H2 --> CV["convert_to_lerobot / galaxea_lerobot"]
+  CV --> TR["GalaxeaDP / LeRobot DP 训练与闭环评估"]
+```
+
+> 图依据：[`OpenGalaxea/GalaxeaManipSim@abe7f51`](https://github.com/OpenGalaxea/GalaxeaManipSim) `README.md` 及 `galaxea_sim/scripts/collect_demos.py`。
+
+| 维度 | 说明 |
 |------|------|
-| 机构 | 星海图 |
-| 类别 | 仿真环境 |
-| 官方组织 | https://github.com/OpenGalaxea |
+| **开源许可** | MIT License（<https://github.com/OpenGalaxea/GalaxeaManipSim>） |
+| **支持本体** | Galaxea R1 / R1 Pro / R1 Lite |
+| **基线表现（README 表）** | R1 `Dual Bottles Pick Easy` 98%；R1 Pro `Blocks Stack Easy` OpenDP 68% / LeRobot 64%；R1 Lite `Blocks Stack Easy` OpenDP 51% / LeRobot 42% |
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `GalaxeaManipSim` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+1. **快速采集与重采样流程**：先运行 `python -m galaxea_sim.scripts.collect_demos --env-name R1ProBlocksStackEasy --num-demos 100` 生成关节轨迹，再通过 `replay_demos.py --target_controller_type bimanual_relaxed_ik` 重映射至末端空间并过滤失败样本。
+2. **格式转换与基线对照**：转换脚本同时支持标准 LeRobot (`convert_single_galaxea_sim_to_lerobot`) 与 Galaxea LeRobot (`convert_single_galaxea_sim_to_galaxea_lerobot`) 两条分支，可分别对接 `lerobot` DP 与 [GalaxeaDP](./cn-os-galaxeadp.md)。
+3. **版本与依赖检查**：克隆后核对 `README.md` 中的 SAPIEN / ManiSkill / mplib / LeRobot 版本约束，避免直接套用下游真机控制器的关节限位配置。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+- 当前主要面向桌面操作仿真与离线策略基线（OpenDP / LeRobot DP），并非高保真全身动力学或移动底盘导航仿真器。
+- README 报告的成功率（如 R1 98%、R1 Pro 68%、R1 Lite 51%）对应特定简单任务与给定采集规模，不代表未见场景或真机泛化表现。
+- Sim-to-Real 仍依赖相机外参标定、真机控制延迟匹配与 [EFMNode](./cn-os-efmnode.md) 侧安全限幅；本地核对未实际运行仿真器。
 
 ## 源码运行时序图
 

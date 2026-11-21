@@ -2,11 +2,14 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, berkeley, cmu, stanford, body-system-stack]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-21
 project_id: perceptive-humanoid-parkour
 project: https://php-parkour.github.io/
 code: https://github.com/amazon-far/php_parkour
 arxiv: "2602.15827"
+original:
+  - ../../sources/papers/php_parkour_arxiv_2602_15827.md
+  - ../../sources/repos/php_parkour.md
 venue: "RSS 2026"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -46,6 +49,10 @@ summary: "PHP（arXiv:2602.15827）用 motion matching 将 OmniRetarget 原子�
 **PHP**（Perceptive Humanoid Parkour: Chaining Dynamic Human Skills via Motion Matching，arXiv:[2602.15827](https://arxiv.org/abs/2602.15827)，[项目页](https://php-parkour.github.io/)）是 Amazon FAR 与伯克利 / CMU / Stanford 合作的人形**感知跑酷**工作（RSS 2026）：在动态人类跑酷数据稀缺的前提下，用 **motion matching** 离线合成大量「locomotion ↔ 原子技能」长程运动学轨迹，再训练多技能 **motion-tracking 专家** 并 **DAgger + PPO** 蒸馏为**单一深度策略**，使 **Unitree G1** 仅凭**机载深度**与**离散 2D 速度命令**自主选择 step / climb / vault / roll 等技能并完成长程障碍课。
 
 > **arXiv 说明：** 论文正式编号为 **2602.15827**。用户常一并提供的 [2509.26633](https://arxiv.org/abs/2509.26633) 是上游 **[OmniRetarget](./paper-hrl-stack-03-omniretarget.md)**（交互保留重定向），PHP 正文以其构建原子技能库。
+
+## 一句话定义
+
+**先用 OmniRetarget 建原子跑酷技能库并通过离线 Motion Matching 合成长程参考，再以「DAgger + success-driven PPO」蒸馏出仅凭机载深度与离散 2D 速度指令就能在 1.25 m 墙攀与多障碍间自主切换的单一人形策略。**
 
 ## 英文缩写速查
 
@@ -160,7 +167,7 @@ flowchart TB
 | 感知 | 机载深度 + 速度命令 | 各异 | 多不强调跑酷感知链 |
 | 蒸馏 | DAgger + PPO 课程 | 常为纯 IL 或纯 RL | 风格 reward + RL |
 
-## 常见误区
+## 常见误区与局限
 
 - **把 PHP 与 OmniRetarget 混为同一篇：** 2509.26633 是**重定向与数据增广引擎**；2602.15827 是**感知策略与技能链**。
 - **以为 motion matching 在线运行：** 本文用于**离线**参考合成；实机闭环由**深度策略**完成，matching 不在部署时计算。
@@ -255,7 +262,7 @@ BACKBONE=/tmp/php-student/depth_backbone.onnx STUDENT=/tmp/php-student/student.o
 - 环境风险包括 IsaacSim / Holosoma 的依赖约束，以及旧 editable 安装导入错误版本；使用 pinned 子模块与官方 setup，不随意升级替换。
 - 本次完成文档与源码核查、知识库导出及 Mermaid 检查，**未运行上游模型、IsaacSim 训练或真机控制**；实机需要额外相机标定、时延 / 控制接口核对和安全验证。
 
-## 与其他页面的关系
+## 关联页面
 
 - 数据上游：[OmniRetarget（arXiv:2509.26633）](./paper-hrl-stack-03-omniretarget.md)、[holosoma](./holosoma.md)（开源重定向与 WBT 管线）
 - 蒸馏算法：[DAgger](../methods/dagger.md)、[Imitation Learning](../methods/imitation-learning.md)

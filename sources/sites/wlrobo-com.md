@@ -4,7 +4,9 @@
 
 - **URL：** <https://www.wlrobo.com/>
 - **机构：** 西湖机器人科技（杭州）有限公司（Westlake Robotics）；页脚「Copyright@ 2025 西湖机器人科技(杭州)有限公司 版权所有」，浙ICP备2023048012号-1
-- **核查日期：** 2026-10-10
+- **核查日期：** 2026-10-10（2026-11-21 复核 API 接口仍返回 `V1.2.0`）
+- **核对范围：** 依据 Playwright 渲染读取官网 `/module1`–`/module5` 及 `/GAEDownload` 全页面正文、参数 PNG 图片、关节模组 Tab、飞书《GAE操控平台产品使用手册》及 `/api/oss_access/gae_release_dist/metadata` 接口；2026-11-21 复核首页 200 OK 与下载接口 `latest_release_version=V1.2.0`；未购买硬件或加密狗运行二进制。
+- **通读：** 已完成
 - **抓取方式：** 站点为 React 客户端渲染 SPA。用 Playwright（Chromium headless）逐页打开、等待 networkidle + 4 s、滚动到底后读 `document.body.innerText`；大量参数是 **图片内文字**（`TITAN-prop`、`U1-props` 等 PNG），另行下载图片人工读取；TITAN O1 关节模组参数通过点击页内 Tab 读取；GAE 下载按钮触发的接口 `/api/oss_access/gae_release_dist/metadata` 用 curl 读取。
 - **覆盖 wiki：** [西湖机器人](../../wiki/entities/westlake-robotics.md)、[TITAN O1](../../wiki/entities/westlake-titan-o1.md)、[傲天U1](../../wiki/entities/westlake-aotian-u1.md)
 - **页脚社媒：** 小红书 <https://xhslink.com/m/7ewCmfculmE>、Bilibili <https://space.bilibili.com/3546824866531623/>、抖音、X <https://x.com/westlake_robot>

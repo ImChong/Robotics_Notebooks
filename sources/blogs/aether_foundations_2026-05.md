@@ -6,7 +6,9 @@
 - **组织：** Aether AI（创始人 Biwei Huang / 黄碧薇，UCSD）
 - **发表日期：** 2026-05-17（四篇均为此日期）
 - **入库日期：** 2026-10-10
-- **抓取方式：** `curl -sSL -A "Mozilla/5.0"` 读取官网静态 HTML 后去标签核对全文
+- **抓取方式：** `curl -sSL -A "Mozilla/5.0"` 读取官网静态 HTML 后去标签核对全文（2026-11-21 复核 4 篇原文 URL 均 HTTP 200 且 `Causal-Copilot` HEAD 为 `a31aa7cab277d7e19478bc326dbec154525969cc`）
+- **核对范围：** 通读官网奠基四篇博文全文（01–04）及 `Lancelot39/Causal-Copilot@a31aa7c` 入口源码（`main.py` 等）；未运行 Causal-Copilot web_demo
+- **通读：** 已完成
 - **一句话说明：** 公司开站时的四篇纲领文：①为什么因果是下一代 AI 范式；②Causal Copilot 因果分析智能体（可运行原型，MIT 开源）；③World Agent 的「因果大脑」= 记忆 + 世界模型 + 模块化能力 + 因果；④因果世界模型的闭环配方（因果引导探索 → 统一潜动作 → 因果校验器 → 控制）。
 
 | 编号 | 标题 | 原始链接 | 阅读时长（官网标注） |

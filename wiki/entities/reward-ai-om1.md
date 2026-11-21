@@ -3,9 +3,10 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, imitation-learning, cross-embodiment, dexterous-manipulation, wearable-mocap, foundation-policy, reward-ai]
 status: complete
 title: OM-1 通才操作策略（Reward AI）
-updated: 2026-09-15
+updated: 2026-11-21
 original:
   - ../../sources/blogs/rewardai_om1.md
+  - ../../sources/sites/rewardai.md
 related:
   - ./reward-ai-robotics.md
   - ./paper-notebook-dexcap-scalable-and-portable-mocap-data-collecti.md

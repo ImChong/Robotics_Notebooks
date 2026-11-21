@@ -11,7 +11,9 @@
 - **论文：** [arXiv:2606.14752](https://arxiv.org/abs/2606.14752)
 - **项目页：** https://x2robot.com/pages/x-tokenizer ；镜像 https://x-square-robot.github.io/X-Tokenizer_projectPage/
 - **分类：** VLA/操作模型（动作分词器）
-- **入库日期：** 2026-09-06（复核 2026-10-09）
+- **入库日期：** 2026-09-06（复核 2026-10-09；2026-11-21 复核 `HEAD` 提交 `9733990b16a07d51fb8b5d305ad8c16abb57aef2`）
+- **核对范围：** 检出 `X-Square-Robot/X-Tokenizer@9733990`，核对 `README.md`、`pyproject.toml`、`xtokenizer/api.py`、`examples/01_encode_decode.py`、`examples/02_compute_statistics.py` 与目录结构；确认仓库仅含推理侧 encode/decode 与统计量工具，未含预训练代码与三个语义辅助头；未在真机或 GPU 上运行权重
+- **通读：** 已完成
 - **一句话说明：** 26 维双臂末端 + 底盘 + 升降 + 头部动作的残差 VQ 分词器推理包：4 倍时间压缩，每个潜步 4 级 × 2048 码，`chunk_size ∈ [8, 64]` 免重载，可输出 `time_major` / `quantizer_major` 两种 token 排布。来源一：[国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-x-tokenizer.md`](../../wiki/entities/cn-os-x-tokenizer.md)
 

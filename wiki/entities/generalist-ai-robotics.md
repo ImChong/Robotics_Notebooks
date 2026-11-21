@@ -4,7 +4,16 @@ tags: [company, embodied-foundation-model, dataset, scaling, generalist-ai, foun
 title: Generalist AI（机器人）
 status: complete
 summary: "Generalist AI（2024 年成立）是以超大规模真实交互数据预训练具身基础模型的商业团队；官网 10 篇博文覆盖 2025-06 Research Preview、乐高 one-shot 拼装评测、GEN-0 → GEN-1 → GEN-1.5、物理常识、千手与 2026-06 融资公告，引用应以官网博客为准且注意闭源边界。"
-updated: 2026-11-15
+updated: 2026-11-21
+original:
+  - ../../sources/sites/generalistai-blog-index.md
+  - ../../sources/blogs/generalist_research_preview.md
+  - ../../sources/blogs/generalist_robots_build_now_too.md
+  - ../../sources/blogs/generalist_accelerating_physical_ai.md
+  - ../../sources/blogs/generalist_gen0.md
+  - ../../sources/blogs/generalist_physical_commonsense_2026.md
+  - ../../sources/blogs/generalist_gen1.md
+  - ../../sources/blogs/generalist_thousand_hands.md
 related:
   - ./generalist-gen0.md
   - ./generalist-gen1.md
@@ -120,6 +129,17 @@ sources:
 
 ## 核心原理（对外可核对部分）
 
+```mermaid
+flowchart LR
+  RP["2025-06 / 09 早期演示<br/>100 Hz 端到端控制 · 乐高 one-shot 复制"] --> G0["2025-11 GEN-0<br/>27 万+ h 预训练 · 7B+ 相变 · Harmonic Reasoning"]
+  G0 --> PC["2026-01 物理常识<br/>ergonomic 采集保留 System-1 反应"]
+  G0 --> G1["2026-04 GEN-1<br/>&gt;50 万 h 人类可穿戴 · ~99% 从零训练 · Mastery"]
+  G1 --> TH["2026-07 千手扩展<br/>~9,000 末端变体 · 中途换手适应"]
+  G1 --> G15["2026-08 GEN-1.5<br/>One-Shot Physical Prompting (1-10 步微调)"]
+  G1 -.->|"2026-06 融资 $400M / 累计 &gt;$500M"| FW["商业部署与真实业务数据飞轮（闭源）"]
+  FW -.-> G15
+```
+
 公司不公开架构配方；外部读者可核对的主张主要是：
 
 1. **规模化真实交互预训练** 驱动通才物理策略（对照 [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)）。
@@ -135,6 +155,7 @@ sources:
 | 设计灵巧操作评测 | 借鉴 Research Preview 的多轴任务设计（精度 / 双手协同 / 高频 / 抗扰）与乐高「看结构复制」任务，用自有开源栈实现 |
 | 做跨末端研究 | 借鉴「千手」的 **task-vector 诊断** 与 **mid-episode tool swap** 评测设计 |
 | 产线选型 | **不要**假设可下载 GEN-1；评估闭源 API/集成需直接对接厂商 |
+| 源码运行时序图 | **不适用**（闭源商业团队，官网 10 篇博文及 About 页均未公开代码、权重或数据集） |
 
 ## 局限与风险
 

@@ -12,6 +12,8 @@
 - **venue：** ECCV 2026 oral（README 标注）
 - **版本：** arXiv v3（2026-09-08）；作者列表含 Shangzhan Zhang
 - **入库日期：** 2026-05-17；**2026-09-11** 同步 v3 与 HF 直链
+- **核对范围：** 2026-11-21 通读 arXiv `2604.14141v3`（2026-09-08）HTML 全文（摘要、§1–§2 相关工作、§3.1–§3.4 GCT/GCA 三类几何上下文与复杂度分析/Paged KV FlashInfer、§4 两阶段训练与 31 个数据集表 1/Direct 与 VO 推理模式、§5–§6 Oxford Spires/ETH3D/7-Scenes/T&T/NRGBD/Sintel/KITTI 实验与消融表 2–9、§7 结论与局限）；未在本地运行硬件评测。
+- **通读：** 已完成
 - **一句话说明：** 面向**流式**单目视频 3D 重建的前馈基础模型：用 **Geometric Context Attention（GCA）** 在单一注意力框架里显式维护 **锚点坐标/尺度接地、局部稠密几何窗口、轨迹记忆** 三类互补上下文，配合 **Paged KV Cache（FlashInfer）** 在长序列上近似常数每帧成本；报告约 **20 FPS**（518×378）与 **>10k 帧** 稳定推理，并在 Oxford Spires、7-Scenes、Tanks and Temples、ETH3D 等基准上相对既有流式与迭代优化类方法取得优势。
 
 ## 核心论文摘录（MVP）

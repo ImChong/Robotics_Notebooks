@@ -3,8 +3,10 @@ type: entity
 tags: [paper, vla, flow-matching, knowledge-insulation, manipulation, physical-intelligence]
 title: Knowledge Insulation 知识隔离 VLA
 status: complete
-updated: 2026-09-28
+updated: 2026-11-21
 arxiv: "2505.23705"
+original:
+  - ../../sources/papers/knowledge_insulation_arxiv_2505_23705.md
 related:
   - ../methods/pi0-policy.md
   - ./paper-pi05-open-world-vla.md
@@ -40,19 +42,24 @@ summary: "Knowledge Insulation（arXiv:2505.23705）：FAST token 训练 VLM 骨
 
 ```mermaid
 flowchart TB
-  obs[图像 语言 本体] --> vlm[VLM 骨干]
-  vlm --> fast[FAST 动作 token 损失]
-  vlm --> web[网页 VLM 与高层规划损失]
-  vlm -.->|表征前向 梯度停止| ae[动作专家]
-  noise[噪声] --> ae
-  ae --> flow[flow matching 连续动作]
+  obs["图像 · 语言 · 本体状态"] --> vlm["PaliGemma 2B VLM 骨干"]
+  vlm --> fast["FAST 动作 token 交叉熵损失"]
+  vlm --> web["网页 VLM 与高层规划损失"]
+  vlm -.->|"表征前向 / sg(K_b, V_b) 梯度停止"| ae["300M 动作专家"]
+  noise["高斯噪声 (H=50)"] --> ae
+  ae --> flow["flow matching 连续动作"]
 ```
 
-推理时只走动作专家，离散 token 丢弃。博客强调：单独 stop-gradient 不够，因为骨干不再从机器人数据收到学习信号；FAST token 用来把控制表征写进骨干，又比连续损失更少破坏语言预训练。再加上 π₀.₅ 的数据混合物（网页视觉语言与高层机器人命令），语义泛化才一起回来。
+- **模型结构（Appendix B）：** VLM 骨干初始化自 PaliGemma（2B，18 层，`width=2048`），动作专家为更窄的独立投影网络（300M，18 层，`width=1024`，动作块长度 $H=50$），两者仅通过自注意力交互。
+- **双目标与掩码（Sec. 5.1–5.2）：** 联合目标 $\mathcal{L}_{\text{CO-VLA}}$ 同时训练 VLM 的文本 / FAST 离散动作自回归损失与动作专家的连续流匹配损失；通过注意力掩码 $A$ 禁止 FAST token 与连续动作 token 互看，并在注意力投影上施加 $\mathrm{sg}(K_b(X_b))$ 与 $\mathrm{sg}(V_b(X_b))$ 阻断专家梯度回传骨干（梯度隔离后流匹配权重可直接取 $\alpha=1$）。
+- **为什么需要双信号：** 推理时只走动作专家（约 10 Hz，vs $\pi_0$-FAST 约 1.3 Hz / 750 ms），离散 token 丢弃。论文强调单独 stop-gradient 不够，因为骨干不再从机器人数据收到学习信号；FAST token 用来把控制表征写进骨干，又比连续损失更少破坏语言预训练，再叠加网页 VLM（CapsFusion / COCO / Cambrian-7M / PixMo / VQAv2 / 定位框）与高层规划数据，语义泛化才一起回来。
 
 ## 评测
 
-项目页把 π₀.₅+KI 对上联合训练、冻结骨干、π₀ 与 π₀-FAST。作者报告：衬衫折叠上冻结骨干不可用；通才 bussing 的训练步数约为 π₀ 的 1/7.5，推理仍由动作专家完成；单本体 bussing 上 π₀-FAST 完成时间约为 KI 的两倍。移动操作的物体泛化实验里，网页数据对分布外抓取帮助最大，没有网页数据时 stop-gradient 仍然有用。显著性标注以论文图为准。
+论文在 12 种构型的真实机器人（单臂静态、双臂静态、移动双臂）及 DROID / LIBERO 上对比 $\pi_0$、$\pi_0$-FAST、HybridVLA、OpenVLA-OFT、Transfusion 与冻结骨干：
+
+- **真机与速度：** `items in drawer`（未见厨房）上联合训练或 $\pi_0$ 均出现语言跟随退化，冻结骨干在衬衫折叠上不可用；通才 `table bussing` 上达到相近性能所需训练步数约为 $\pi_0$ 的 1/7.5，推理仍由动作专家实时执行（单本体 bussing 上自回归 $\pi_0$-FAST 完成时间约为 KI 的两倍）。移动操作的物体泛化实验（OOD Follow Rate）表明网页 VLM 数据对分布外抓取帮助最大，没有网页数据时 stop-gradient 仍然有效。
+- **公开基准（Sec. 6 & Table 1）：** DROID 真实桌面平均得分达 **0.55 ± 0.09**（$\pi_0$ 为 0.49 ± 0.09，$\pi_0$-FAST 为 0.45 ± 0.09）；通才微调版在 LIBERO-Spatial / Object / Goal / 10（Long）/ 90 成功率分别达到 **98.0% / 97.8% / 95.6% / 85.8% / 96.0%**。
 
 ## 结论
 
@@ -74,13 +81,23 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（KI 训练环）。openpi 可加载 KI 预训练的 π₀.₅ 并做 flow matching 推理与微调；[openpi#649](https://github.com/Physical-Intelligence/openpi/issues/649) 写明微调目前不会用 FAST 目标去更新骨干，动作专家梯度会进入 VLM。要复现本文的训练，不能直接跑仓库里的 `train.py`。
+**不适用**（KI 训练环）。[openpi](https://github.com/Physical-Intelligence/openpi) `README.md` 写明已发布基于 KI 预训练/微调的 `pi05_base`、`pi05_libero`、`pi05_droid` 检查点并支持 flow matching 推理与微调；但同一 README 与 [openpi#649](https://github.com/Physical-Intelligence/openpi/issues/649) 写明仓库目前仅支持 flow matching 头，微调 `train.py` 不会用 FAST 目标更新骨干，动作专家梯度会进入 VLM。要复现本文的 KI 训练配方，不能直接跑仓库里的 `train.py`。
+
+## 工程实践
+
+| 项 | 实践要点 |
+|----|----------|
+| **开源检查点使用** | 若仅需推理或常规流匹配适配，可直接在 `openpi` 中加载 `pi05_droid` / `pi05_libero` / `pi05_base`；若微调多任务且高度依赖语言跟随，需留意 `openpi` 缺失 FAST + stop-gradient 分支可能带来的骨干退化 |
+| **状态表示选择** | 论文附录 C 对比文本状态、特殊 token 与连续线性投影：文本与连续状态均可配合 KI 正常工作，而离散特殊 token 效果最差 |
+| **训练算力权衡** | 同时计算离散与连续头使单步训练算力增加约 **20%**，但收敛步数大幅下降（通才任务上总墙钟训练时间仍明显快于纯流匹配的 $\pi_0$） |
+| **VLM 共训配比** | 面向分布外新物体与指令泛化时，应在机器人动作数据之外保留 VQA / captioning / bounding-box 等非动作 VLM 数据共训 |
 
 ## 局限与风险
 
-- 「训练快 7.5 倍」是相对 π₀ 的 bussing 曲线，不是所有任务的墙钟时间。
+- 「训练步数少 7.5 倍」是相对 $\pi_0$ 的通才 bussing 曲线，且单步额外引入约 20% 离散+连续双头计算开销，并非所有任务的墙钟时间都按同比例缩短。
 - 微调阶段作者自己也说，只冻骨干、不给 FAST 目标，效果往往更差；openpi 又还没提供这条微调路径。
-- 语言跟随失败的例子（抓垃圾而不是按指令放勺子）是机制说明，不是统一基准分。
+- LIBERO-10（Long）上论文录得 85.8%，低于 OpenVLA-OFT 的 94.5%（Table 1），说明长程子任务分解仍受上下文/混合配比约束。
+- 语言跟随仍远非完美，训练数据中的相关偏差仍可能导致模型忽略文本指令（Sec. 7）。
 
 ## 关联页面
 

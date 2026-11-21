@@ -1,18 +1,22 @@
 ---
 type: entity
-tags: [paper, humanoid, world-model, locomotion, denoising, hmi-papers, humanoid-paper-notebooks]
+tags: [paper, robotera, humanoid, world-model, locomotion, denoising, hmi-papers, humanoid-paper-notebooks]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 arxiv: "2408.14472"
-venue: "HMI curated · Paper Notebooks"
+venue: "RSS 2024 (Best Paper Award Finalist)"
+original:
+  - ../../sources/papers/dwl_arxiv_2408_14472.md
 related:
   - ../concepts/world-action-models.md
   - ../methods/dreamwaq.md
   - ../tasks/humanoid-locomotion.md
+  - ./humanoid-gym.md
   - ./paper-notebook-one-policy-but-many-worlds-a-scalable-unified-po.md
   - ../queries/hmi-papers-coverage.md
   - ../overview/paper-notebook-category-05-locomotion.md
 sources:
+  - ../../sources/papers/dwl_arxiv_2408_14472.md
   - ../../sources/papers/hmi_p017_denoising-world-model-locomotion.md
   - ../../sources/papers/humanoid_pnb_advancing-humanoid-locomotion-mastering-challeng.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -44,56 +48,65 @@ summary: "Denoising World Model Locomotion（arXiv:2408.14472，HMI P017）：�
 
 ## 核心原理
 
-去噪世界模型从带噪本体/地形观测中恢复对控制有用的潜在动态，再支撑策略在挑战地形上决策。阅读时抓住：输入噪声模型、去噪目标、以及策略如何消费世界模型表征。
+去噪世界模型（DWL）把仿真到真机的差距统一建模为四类噪声：**环境噪声、动力学噪声、传感噪声与掩码噪声**（真机缺少线速度、接触力与高程图）。算法用递归编码器-解码器从带噪本体观测历史中恢复对控制有用的完整状态：
+
+- **编码器与瓶颈潜空间（Table VI）**：以 47 维本体观测历史为输入，经 `GRU(47 → 256) → Linear(256 → 256) → ELU → Linear(256 → 24)` 输出稀疏潜表征 $z_t \in \mathbb{R}^{24}$。
+- **解码器与联合损失（Eq. 2 / Eq. 5）**：解码器 `Linear(24 → 64 → 184)` 重建含 96 维地形高程图、基地线速度、接触掩码与当前步奖励在内的 184 维特权状态 $\tilde{s}_t$。去噪损失 $L_{\text{denoise}} = \|\tilde{s}_t - s_t\|^2 + \lambda_r \|z_t\|_1$（$\lambda_r=0.002$），并与 PPO 非对称 Actor-Critic 联合优化 $L_{\text{DWL}} = L_{\text{denoise}} + \lambda_\pi L_\pi + \lambda_v L_v$（$\lambda_\pi=\lambda_v=5$），Critic 直接读取 184 维 $s_t$，Actor 仅消费 24 维 $z_t$（约 32 万参数）。
+- **五次多项式足端轨迹与闭链主动踝**：摆动相采用五次多项式 $f(t)=\sum_{k\le 5} a_k t^k$ 约束触地速度以实现轻柔接触；硬件在 XBot-S（1.2 m / 38 kg）与 XBot-L（1.65 m / 57 kg）上启用闭链 2-DoF 主动踝关节（仿真以虚拟电机代理，部署重映射至实际电机）。
 
 ```mermaid
 flowchart LR
-  A["带噪观测"] --> B["去噪世界模型"]
-  B --> C["潜在动态 / 表征"]
-  C --> D["Locomotion 策略"]
-  D --> E["关节目标 / 真机"]
+  S["184维特权状态 (含高程图/线速度/接触)"] --> N["掩码与域随机噪声注入"]
+  N --> O["47维本体观测历史"]
+  O --> E["GRU+MLP 编码器"]
+  E --> Z["24维稀疏潜表征 z_t"]
+  Z --> D["MLP 解码器重建 s_t (去噪损失)"]
+  Z --> A["Actor (100Hz 12维关节目标)"]
+  S --> C["Critic (特权价值估计)"]
+  A --> R["500Hz PD + 闭链2-DoF主动踝"]
 ```
 
 ## 方法栈与流程
 
-把上面的核心原理拆成可核对的流水线（各步细节以 PDF 为准）：
+把核心原理拆成可核对的流水线（依据 `arXiv:2408.14472v1` Section IV 与 Appendix A–C）：
 
-1. **观测建模**：明确本体/地形观测的噪声与遮挡模型，划定训练分布内的扰动范围。
-2. **去噪世界模型**：从带噪观测中恢复对控制有用的潜在动态/表征，去噪目标是把观测噪声与地形不确定性从表征里剥离。
-3. **策略消费表征**：locomotion 策略以去噪后的潜在动态/表征为输入，在挑战地形上做决策（RL/PPO 主线）。
-4. **动作执行**：输出关节目标经真机执行，形成闭环。
-
-阅读顺序：先抓「输入噪声模型 → 去噪目标 → 策略如何消费世界模型表征」，再谈网络结构与数值。
+1. **观测与噪声建模**：单帧 47 维本体输入（时钟 $\sin/\cos$、速度指令、$q,\dot{q}$、角速度、欧拉角、上一步动作），结合 Table II 10 项域随机化（0–10 ms 延迟、[-5, 20] kg 载荷、PD 倍率 [80%, 120%]）。
+2. **去噪世界模型**：在 12,288 个 Isaac Gym 并行环境中联合训练编码器-解码器与非对称 Actor-Critic（batch $12288 \times 24$，lr $10^{-5}$）。
+3. **柔顺接触奖励**：结合周期性站立掩码 $I(t)$ 与五次多项式足端高度/速度轨迹（$T=0.5\text{ s}, h_{\max}=0.1\text{ m}$）替代稀疏接触力奖励。
+4. **零样本真机执行**：部署时仅运行编码器与 Actor（100 Hz），输出 12 维腿部关节位置目标经 500 Hz PD 与闭链电机映射控制真机。
 
 ## 工程实践
 
-| 检查项 | 建议 |
-|--------|------|
-| 开源 | 以项目页/作者声明再核 |
-| 对照 | 与 DreamPolicy、感知跑酷线分开记账 |
-| 一手来源 | arXiv PDF + HMI P017 |
+| 检查项 | 原文核对结论 |
+|--------|--------------|
+| 开源状态 | `roboterax/humanoid-gym@ae46e20` README 收录 DWL 论文，但 `humanoid_dwl` 仍标 `(coming soon)`，官方仓内暂无 DWL 训练/部署源码 |
+| 硬件与频控 | 策略 100 Hz / PD 500 Hz；XBot-S 踝关节 $K_p=20, K_d=5$（vs 被动踝 $K_p=0, K_d=10$）；需在仿真虚拟踝电机与真机闭链驱动器间做映射 |
+| 与前作衔接 | 继承 [Humanoid-Gym](./humanoid-gym.md) 步态与对称设计，将观测由 15 帧堆叠改为 GRU 递归潜表征并引入 184 维特权重建 |
 
 ## 源码运行时序图
 
-**不适用**（截至本库升格日未绑定单一可运行官方训练仓为复现入口）。
+**不适用**（`roboterax/humanoid-gym@ae46e20` 中 `humanoid_dwl` 仍标注 `(coming soon)`，尚未发布可运行的 DWL 训练/推理源码与权重）。
 
 ## 实验与评测读法
 
-- 分清仿真地形通过率与真机证据。
-- 关注噪声/遮挡设定是否匹配部署传感器。
+- **室内四类地形（Table III，XBot-S 真机）**：斜坡（0.25 坡度）DWL 100% vs PPO 80% / 被动踝 DWLp 80%；上楼（20×10 cm）100% vs 20% / 20%；下楼 100% vs 60% / 100%；不平路面（高差达 10 cm）100% vs 20% / 40%。
+- **户外与载荷鲁棒性**：单策略零样本通过雪地、砖路与泥土；支持行走中加 15 kg 负重、背负 20 kg、手推 60 kg 推车及多向抗推击；XBot-L（1.65 m / 57 kg）亦完成雪地与户外复杂地形部署。
+- **状态估计精度**：MuJoCo 60 s 前向速度估计 MSE 0.046、偏航角 MSE 0.074；真机静态 IMU 偏航漂移降低约 **87%**。
 
 ## 结论
 
-**P017 应作为「去噪世界模型 → 人形复杂地形」节点阅读，并与 DreamPolicy 对照问题接口。**
+**DWL 的核心贡献是用 GRU 稀疏潜瓶颈把多源 sim2real 噪声与 184 维特权地形/动力学状态重建耦合到端到端 PPO 中，并证明闭链 2-DoF 主动踝对人形崎岖地形与抗扰动至关重要。**
 
-- 先核对噪声模型与观测契约，再谈策略结构。
-- 本页同时承接 Paper Notebooks 占位，不再另建平行实体。
-- 开源与数值以一手来源为准。
+- 不要把这里的「世界模型」误读为未来视频生成或基于模型的 MPC 规划器——它是从本体历史到当前特权状态的去噪自编码器。
+- 上楼梯与不平路面的主要拉分项（20%/40% → 100%）来自主动踝控制与高程图隐式估计的共同作用。
+- 论文将当前步奖励也放入特权重建目标 $s_t$，仅在训练阶段计算，不影响部署观测接口。
+- 截至 2026-11-21 官方仓库尚未释放 `humanoid_dwl` 代码，复现需自行在 [Humanoid-Gym](./humanoid-gym.md) 上实现 GRU 编码-解码器与五次多项式奖励。
 
 ## 局限与风险
 
-- 计划索引阶段遗留信息可能过时；以 PDF 为准。
-- 世界模型误差会传导到策略；需看失败模式是否被报告。
+- 仅依赖本体传感，无法预见大台阶/坑洞并做主动落脚规划，作者在 Section VII 指出视觉接入为后续方向。
+- Isaac Gym 不原生支持闭链连杆，需依靠虚拟电机代理与真机映射，跨本体移植需重新标定运动学映射。
+- 官方 `humanoid_dwl` 代码尚未开源，真机实验结果（Table III）依赖 RobotEra XBot-S/L 硬件，暂无第三方独立复测。
 
 ## 与其他工作对比
 
@@ -113,6 +126,7 @@ flowchart LR
 
 ## 参考来源
 
+- [DWL 论文原文核对（arXiv:2408.14472v1）](../../sources/papers/dwl_arxiv_2408_14472.md)
 - [hmi_p017_denoising-world-model-locomotion.md](../../sources/papers/hmi_p017_denoising-world-model-locomotion.md)
 - [humanoid_pnb_advancing-humanoid-locomotion-mastering-challeng.md](../../sources/papers/humanoid_pnb_advancing-humanoid-locomotion-mastering-challeng.md)
 - [humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)

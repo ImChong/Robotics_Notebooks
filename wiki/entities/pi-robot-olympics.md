@@ -3,7 +3,9 @@ type: entity
 tags: [company, vla, manipulation, evaluation, physical-intelligence]
 title: PI Robot Olympics 微调演示
 status: complete
-updated: 2026-10-03
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/pi_robot_olympics_2025-12-22.md
 related:
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-pi-human-to-robot.md
@@ -74,6 +76,8 @@ flowchart TD
 ## 工程实践
 
 多数任务数据少于 9 小时。成功并不稳定：作者自报平均成功率 **52%**、任务进度 **72%**。VLM 对照没有完成任何任务，平均进度 **9%**。两项金级因夹爪几何做不到，其中剥橙依赖额外工具，被明确排除。
+
+- **源码运行时序图：** **不适用**（能力演示博客，确认未开源代码、权重与采集数据）。
 
 ## 局限与风险
 

@@ -16,10 +16,10 @@ tags:
   - hit
   - tsinghua
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+arxiv: "2607.25593"
 original:
   - ../../sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md
-arxiv: "2607.25593"
 related:
   - ../overview/hub-cross-embodiment.md
   - ../queries/cross-embodiment-transfer-strategy.md

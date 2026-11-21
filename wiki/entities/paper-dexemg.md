@@ -3,7 +3,9 @@ type: entity
 project_id: dexemg
 tags: [paper, teleoperation, dexterous-teleoperation, emg, hand-pose-estimation, motion-retargeting, dexterous-manipulation, sharpa-robotics, sjtu]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
+original:
+  - ../../sources/papers/dexemg_arxiv_2603_05861.md
 arxiv: "2603.05861"
 venue: "arXiv 2026（cs.RO；仅 v1，2026-03-06）"
 related:
@@ -160,12 +162,14 @@ flowchart TB
 - **证据口径窄：** 评测是单一桌面抓取放置与两个长程任务，每格 20 次试验；未披露训练数据时长、受试者人数，也没有与手套 / 视觉遥操作并列对比。
 - **二手转述的数字口径：** Sharpa 研究博客把 MAE 0.09 rad 写成灵巧手本身的精度；论文原文该数字是 EMG2Pose 在抓取任务上的关节角误差，引用时以论文为准。
 
-## 复现边界
+## 工程实践
+
+### 复现边界
 
 | 项 | 结论 |
 |----|------|
 | 项目页 | **未找到**（arXiv 摘要页、论文 PDF 均未列） |
-| 代码 / 权重 / 数据 | **未找到**；论文未承诺发布，正文也未披露采集规模；Sharpa 官方 GitHub 组织无 DexEMG / EMG 相关仓库（2026-10-16 查） |
+| 代码 / 权重 / 数据 | **未找到**；论文未承诺发布，正文也未披露采集规模；Sharpa 官方 GitHub 组织无 DexEMG / EMG 相关仓库（2026-10-16 查，2026-11-21 复核） |
 | 源码运行时序图 | **不适用**（无官方可运行代码） |
 | 自建所需 | gForce 类 8 通道 sEMG 臂带、Manus 手套（仅训练期）、HTC Vive Tracker、Sharpa Wave 手，以及自采的同步 sEMG–手姿数据 |
 | 可参考的既有架构 | 论文引用的 emg2pose 基准架构（NeurIPS 2024）；本页未核对其代码许可 |
@@ -173,7 +177,8 @@ flowchart TB
 ## 关联页面
 
 - [夏帕机器人（Sharpa Robotics）](../entities/sharpa-robotics.md) — 公司页与「数据—接触—跨本体」叙事
-- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 遥操作任务页与系统对照
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) / [Manipulation（操作任务）](../tasks/manipulation.md) — 遥操作与灵巧操作任务背景
+- [Imitation Learning（模仿学习）](../methods/imitation-learning.md) — 遥操作所服务的下游策略学习背景
 - [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md) — 输入模态选型对照
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 人手到机器人手的重定向背景
 - [Data Flywheel](../concepts/data-flywheel.md) / [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md) — 采数通道选型

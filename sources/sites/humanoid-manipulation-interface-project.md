@@ -8,6 +8,8 @@
 - **论文：** <https://arxiv.org/abs/2602.06643>
 - **机构：** 清华大学、上海期智研究院（Shanghai Qi Zhi Institute）、千寻智能（Spirit.AI）、上海交通大学
 - **入库日期：** 2026-07-19
+- **核对范围：** 检查官方项目页（<https://humanoid-manipulation-interface.github.io>，2026-11-21 复核页面 HTML，仍为论文与演示展示页，未列出公开 GitHub 源码仓库）。
+- **通读：** 已完成
 - **代码：** 截至入库日项目页 **未列出** GitHub / Hugging Face / Zenodo 等公开仓库链接（仅有 Paper 按钮与 BibTeX）
 - **一句话说明：** 清华/期智/Spirit.AI/上交官方页：背包式无机器人全身示范采集（UMI 夹爪 + Vive Ultimate 五追踪器）、人机闭环 IK 预览、分层扩散策略 + 操作中心全身 RL 控制器、G1 五项全身任务与野外泛化视频；对比遥操作 **3×** 采集吞吐。
 

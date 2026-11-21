@@ -3,10 +3,14 @@ type: entity
 project_id: egohumanoid-v2
 tags: [paper, humanoid, loco-manipulation, whole-body-control, hku, archon-robotics]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-21
 arxiv: "2609.37181"
 project: https://opendrivelab.com/EgoHumanoid-V2/
 code: https://github.com/OpenDriveLab/EgoHumanoid-V2
+original:
+  - ../../sources/papers/egohumanoid_v2_arxiv_2609_37181.md
+  - ../../sources/sites/egohumanoid-v2-opendrivelab.md
+  - ../../sources/repos/egohumanoid-v2.md
 related:
   - ../tasks/locomotion.md
   - ../tasks/loco-manipulation.md
@@ -104,59 +108,65 @@ flowchart TD
 
 ## 源码运行时序图
 
-官方仓库已提供 `data_alignment/action_alignment` 和 `eh2-align` 命令，可运行对齐与仿真回放；下图只画已公开的离线动作对齐路径，不代表完整的 VLA 训练和真机部署代码已经发布。
+官方仓库 `OpenDriveLab/EgoHumanoid-V2`（@ `682199e`，2026-11-04）已完整发布从人类采数、动作/视觉对齐到 OpenPI π₀.₅ 训练与 FastAPI 服务部署的代码入口。以下时序图基于实仓源码绘制：
 
 ```mermaid
 sequenceDiagram
   autonumber
-  actor User as 研究者
-  participant CLI as eh2-align
-  participant SONIC as SONIC rollout / encoder
-  participant IK as K reference correction
-  participant Refine as D response refinement
-  participant Out as results/<task>
-  User->>CLI: --input input.parquet --endpoints hands|feet --output
-  CLI->>SONIC: 加载人体动作并仿真初始化 H
-  SONIC-->>CLI: 关节轨迹与 SONIC tokens
-  CLI->>IK: 对末端目标做离线约束 IK
-  IK-->>CLI: 修正参考轨迹并重新编码 K
-  loop 每轮优化与新 rollout
-    CLI->>Refine: token 序列 + 执行残差
-    Refine-->>SONIC: 更新候选 token
-    SONIC-->>Refine: 仿真执行响应/末端误差
-  end
-  CLI->>Out: 保存 data.parquet 与 run.json
-  User->>CLI: eh2-replay --mode smpl|token
-  CLI->>Out: 写入 before/after/replay.mp4
+  participant U as 操作者
+  participant HC as eh2-collect-human / eh2-sync-human
+  participant AA as eh2-align（action_alignment）
+  participant VA as eh2-visual-align（vision_alignment）
+  participant TR as eh2-norm-stats / eh2-train
+  participant SV as eh2-serve（FastAPI）
+  participant SO as SONIC run_vla_inference.py（外部 sonic 目录）
+  U->>HC: eh2-collect-human --task-name --task
+  HC-->>U: 网页 127.0.0.1:8080 录制，按 LeRobot 格式存入 data/{task}
+  U->>HC: eh2-sync-human --root data/{task}
+  HC->>HC: 动作与视频同步到 50 Hz，写 data/{task}_synced/ 与 meta 质检报告
+  U->>AA: eh2-align --input --endpoints hands 或 feet --output
+  AA->>AA: 读入 .parquet（eh2.reference 元数据）或 .npz 参考轨迹
+  AA->>AA: run_prepared：H 初始化 → K 约束 IK → 8 轮 refine_round（D）
+  AA->>AA: selection.rank_candidates 选出最优候选写 data.parquet 与 run.json
+  U->>VA: eh2-visual-align --video --motion --output --runtime
+  VA->>VA: 按 STAGE_DEPENDENCIES：segment（SAM 3.1）→ geometry & inpaint（DiffuEraser）→ render
+  U->>TR: eh2-norm-stats --dataset --assets
+  U->>TR: eh2-train 或 torchrun --module eh2_policy.train（默认 30000 步，batch 256）
+  TR-->>U: checkpoints/eh2/{run}/{step}/（含 policy.json、归一化统计）
+  U->>SV: eh2-serve --checkpoint --host --port
+  SV->>SV: 校验 43 维状态 / 76 维动作，启动 GET /health 与 POST /act
+  SO->>SV: POST /act（jpeg_base64、43 维 state、ego_view、instruction）
+  SV-->>SO: actions（action_horizon × 76）
+  SO->>SO: 发送 SONIC 全身 token 与 Revo2 手部控制指令
 ```
 
-按仓库 README，复现入口是先安装 `data_alignment/action_alignment` 环境，再运行 `eh2-align`，随后用 `eh2-replay` 对照 SMPL 原动作与 token 对齐动作。README 当前的 release checklist 仍将策略训练流水线、策略部署、视觉对齐代码标为待发布。
+图依据：`OpenDriveLab/EgoHumanoid-V2@682199e`，实读 `README.md`、`data_alignment/action_alignment/src/pipeline.py`（`run_prepared` 与 `main`）、`data_alignment/vision_alignment/src/pipeline.py`（`STAGE_DEPENDENCIES` 与 `main`）、`model_training/src/train.py` 与 `model_training/src/serve.py`（`create_app` 与 `main`）。`eh2-collect-human`、`eh2-sync-human` 内部实现未逐行通读，仅对齐 README 契约；SONIC `run_vla_inference.py` 位于外部仓库未读。未运行代码。
 
 ## 工程实践与开放状态
 
-截至 2026-10-12，项目页提供官方代码链接；代码仓库公开且采用 Apache-2.0。开放是**部分实现**：
+截至 2026-11-21 复核（repo @ `682199e`，2026-11-04 发布）：仓库采用 Apache-2.0，**全流程代码已开源**（采集、动作对齐、视觉对齐、π₀.₅ 训练、FastAPI 服务与 SONIC 推理入口），但论文全量训练数据与任务微调后策略权重未随仓分发：
 
 | 组件 | 当前状态 | 复现影响 |
 |------|----------|----------|
-| 人体数据采集 | 提供 PICO、GoPro 配置及 `eh2-collect-human` / `eh2-sync-human` 使用流程 | 可照硬件说明采集自有数据；论文训练数据集未作为完整公开下载集列出 |
-| 动作对齐 | `data_alignment/action_alignment`、四个任务示例、`eh2-align` 与 `eh2-replay` 可用 | 可复核离线动作适配，但需满足 SONIC 与仿真环境依赖 |
-| 视觉对齐 | 项目仓 README 标记为 Coming soon | 论文用的 SAM2 分割、DiffuEraser 修补、机器人手臂合成流水线尚非仓库现成入口 |
-| VLA 训练 | README 标记 Training pipeline 待发布；提供 OpenPI 环境安装说明 | 无法仅凭公开 repo 完整重建论文中每任务 π₀.₅ 策略训练结果 |
-| 真机部署 | README 标记 Deployment pipeline 待发布 | 暂无可核验的端到端部署命令；硬件说明不等于部署软件已齐备 |
-| 数据与权重 | 当前 README 展示少量对齐示例；未列出论文全部人类示范或策略权重下载 | 复现实验需自行采数、补齐尚未发布部分并准备机器人/控制器 |
+| 人体数据采集 | 提供 PICO、GoPro 配置及 `eh2-collect-human` / `eh2-sync-human` | 可照硬件说明采集自有 50 Hz LeRobot 数据；论文 200 条/任务原始集未打包分发 |
+| 动作对齐 | `data_alignment/action_alignment`、`eh2-align`、`eh2-replay` 与手/足 response MLP 权重可用 | 可直接跑通四项任务样例与 `H→K→D` 对齐，依赖 SONIC 与 MuJoCo 环境 |
+| 视觉对齐 | `data_alignment/vision_alignment`、`eh2-visual-align` 已开源（升级为 **SAM 3.1** + DiffuEraser，与论文 SAM 2 不同） | 需 48 GB 显存 GPU、约 35 GB 磁盘及 Hugging Face 上 `facebook/sam3.1` 访问授权 |
+| VLA 训练 | `model_training`、`eh2-norm-stats`、`eh2-train` / `torchrun --module eh2_policy.train` 已开源 | 依赖 OpenPI PyTorch 环境与自备 `pi05_base` 转换权重，默认 8 卡 global batch 256 / 30k 步 |
+| 真机部署 | `eh2-serve`（端口 8000 `/act`）+ SONIC `run_vla_inference.py` 链路已公开 | 需同时部署 SONIC 控制器、GoPro 视频流、BrainCo Revo2 SDK 与 G1 硬件 |
+| 数据与权重 | 仓库含动作/视觉对齐样例及 response MLP，不含微调后的任务 π₀.₅ checkpoint | 复现论文分数仍需自行采集或准备任务级示范并从 `pi05_base` 微调 |
 
-项目主页和 README 会变化；本页开源状态按核查日期记录。应先核实最新 release checklist、硬件/依赖版本、SONIC checkpoint 获取方式及机器人接口，再规划复现。
+项目主页和 README 会变化；本页开源状态按核查日期记录。应先核实硬件/依赖版本、SONIC 与 SAM 3.1 权重获取方式及机器人接口，再规划复现。
 
 ## 结论
 
-**一句话总判：** EgoHumanoid-V2 用“执行器感知的离线动作标签修正 + 视觉域适配”把人类全身示范转成 G1 任务策略监督，在四项真机任务上展示了有潜力的零目标任务遥操作迁移，但当前论文结果的可完整复现程度受训练、视觉与部署代码未齐影响。
+**一句话总判：** EgoHumanoid-V2 用“执行器感知的离线动作标签修正 + 视觉域适配”把人类全身示范转成 G1 任务策略监督，在四项真机任务上展示了零目标任务遥操作迁移；随 2026-11-04 仓库全流程代码开源，端到端复现主要瓶颈已从“缺失代码”转为“硬件栈、SONIC/OpenPI 依赖与自备示范数据”。
 
 1. **先把对齐作为独立模块验收。** 以 H、H+K、H+K+D 的末端误差和整段运动稳定性分层检查，不只看 token 是否生成。
 2. **动作标签应匹配真实执行器。** K 负责几何目标，D 利用 SONIC 的执行反馈补偿动力学误差；单纯在线覆写 IK 指令可能破坏平衡。
-3. **视觉改造需按任务消融。** 增强和手臂渲染是互补方案，但表中关笔记本任务并非简单叠加就更优。
+3. **视觉改造需按任务消融，注意代码版本差异。** 增强和手臂渲染整体互补（关笔记本任务单独增强优于组合），且开源实现已将论文 SAM 2 升级为 SAM 3.1。
 4. **把 task score 当分级完成度阅读。** 每次试验会累加三个子任务的部分分数，均分 51.67% 不代表 51.67% 的整任务成功率。
 5. **成本优势有具体比较边界。** 76.36% 是每条数据的平均劳动秒数差，且遥操作需要两人；分数—数据量对照只覆盖两项任务。
-6. **开源可用部分目前是数据采集与动作对齐。** 需等待或自行实现视觉处理、VLA 训练和部署剩余链路后，才能尝试复现完整论文策略。
+6. **开源代码已全链路闭环，数据与基础权重需自备。** 采集、对齐、OpenPI 微调与 `eh2-serve` 已全公开，但论文全量示范数据与最终任务 checkpoint 未提供直接下载。
 
 ## 局限与风险
 

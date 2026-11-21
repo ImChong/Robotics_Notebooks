@@ -7,6 +7,9 @@
 - **来源：** Roboparty（GitHub 组织）
 - **链接：** https://github.com/Roboparty/human-humanoid-tools
 - **入库日期：** 2026-07-14
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读 `Roboparty/human-humanoid-tools` 官方 `README.md` 全部章节（4 类工作流、桌面端 0.1.6 发布形态、源码 `uv sync` 与 `hhtools web` / CLI / Agent MCP 入口、Apache-2.0 许可及 SMPL 外部模型边界）；未在本地运行桌面包或 GVHMR。
+- **通读：** 已完成
 - **一句话说明：** 高效开源 Human-to-Humanoid 动作重定向工具，Web 前端操作，支持 30 秒级复杂全身动作迁移、任意数据集/URDF 与机器人到机器人（R2R）互转。
 - **沉淀到 wiki：** 是（`wiki/entities/human-humanoid-tools.md`）
 

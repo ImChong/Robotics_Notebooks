@@ -3,7 +3,7 @@ type: entity
 tags: [company, aether-ai, causal-ai, robot-agent, world-model, world-action-model, task-graph, failure-recovery, long-horizon, manipulation, tool-use]
 status: complete
 title: CRIS-0：因果驱动的真实世界机器人智能系统（Aether AI）
-updated: 2026-10-10
+updated: 2026-11-21
 institutions: [aether-ai]
 related:
   - ./aether-ai.md
@@ -18,6 +18,8 @@ related:
   - ../tasks/manipulation.md
   - ./paper-saycan.md
   - ./paper-sam3.md
+original:
+  - ../../sources/blogs/aether_cris_0.md
 sources:
   - ../../sources/blogs/aether_cris_0.md
 summary: "Aether AI CRIS-0（2026-10-08）：因果引导机器人智能体 + 因果世界模型；以显式因果变量表示任务阶段，从少量遥操作示范自动分解阶段、生成验证脚本与工具（规则函数 / 策略 / SLAM / 世界模型），按任务图闭环「识别阶段→选工具→验证→重试/重规划」并自修工具。官方博文无数字；新闻稿与量子位自报咖啡任务平均 2 s 重规划（量子位称 9/10 恢复）、微波场景 0.2 s 安全停、个性化抓放 90%（18/20）。未开源。"

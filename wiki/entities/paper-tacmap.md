@@ -3,7 +3,9 @@ type: entity
 project_id: tacmap
 tags: [paper, tactile-sensing, sim2real, tactile-simulation, dexterous-manipulation, in-hand-manipulation, reinforcement-learning, sharpa-robotics, nvidia, hkust]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
+original:
+  - ../../sources/papers/tacmap_arxiv_2602_21625.md
 arxiv: "2602.21625"
 venue: "arXiv 2026（cs.RO；v1 2026-02-25，v2 2026-05-12 仅改参考文献）"
 code: https://github.com/sharpa-robotics/sharpa-tacmap
@@ -133,6 +135,23 @@ sequenceDiagram
 
 图下说明：仓库复现的是 **仿真侧 deform map 生成与按压可视化**；真实侧翻译网络、采集台架数据与手内旋转 RL 训练代码未在仓库中出现。`run.py` 通过 `sys.path` 指向仓库父目录并以 `tacmap_sensor.*` 包名导入，据此推断克隆后目录需命名为 `tacmap_sensor`（推断，未验证）。
 
+图依据：`sharpa-robotics/sharpa-tacmap@e4f8827`，核对 `README.md`、`run.py`、`env.py`、`env_cfg.py` 与 `tactile_align_wrapper.py`（未在本地 Isaac Lab 环境中实际运行）。
+
+## 工程实践
+
+- **仿真侧可独立复用**：`SharpaTacmap` 基于 Isaac Lab `MultiMeshRayCaster`，可直接作为插件挂载到自定义操作环境，并通过 `--save_exit` 导出 `sim_vbts_deform.npy`、`sim_tactile_force.npy`、`sim_tactile_contact_pos.npy`。
+- **真机侧需自建闭环**：开源仓库不含真实端 ResNet 图像→深度翻译网络及 3 轴平台采集脚本；若需真机部署，需自行采集几何压头配对数据并回归 `deform map` 与净力 `F`。
+
+### 复现边界
+
+| 项 | 结论 |
+|----|------|
+| 项目页 | **未找到**（截至 2026-10-16；2026-11-21 复核仍未见） |
+| 官方代码 | **部分开源**：[sharpa-robotics/sharpa-tacmap](https://github.com/sharpa-robotics/sharpa-tacmap)，Apache-2.0，2026-04-08 初始提交；含 `SharpaTacmap` 传感器、示例环境、按压测试与 SharpaWave 资产 |
+| 未公开 | 真实端翻译网络与采集台架数据、手内旋转 RL 训练代码、MuJoCo 实现（仓库内无相关字样） |
+| 链接来源 | arXiv 摘要页与论文均未列该仓库；经检索 Sharpa 官方 GitHub 组织发现，其 README 引用本论文 |
+| 源码运行时序图 | 见上文，据源码阅读整理，**未运行** |
+
 ## 实验与评测
 
 以下数字均为 **论文自报**（PDF v1，v2 数字一致）。
@@ -186,16 +205,6 @@ PPO 纯仿真训练，观测含实时 Tacmap 流；部署到 SharpaWave 时不�
 - **深度误差偏大：** Table I 中 deform 深度误差 14.71%–18.53%（自报中位数），不同压头、不同接触位置的分布未给出。
 - **来源口径：** 本页数字取自论文 PDF 与 arXiv 摘要；Sharpa 研究博客与微信文章均为二手转述，未提供额外数据。
 
-## 复现边界
-
-| 项 | 结论 |
-|----|------|
-| 项目页 | **未找到**（截至 2026-10-16） |
-| 官方代码 | **部分开源**：[sharpa-robotics/sharpa-tacmap](https://github.com/sharpa-robotics/sharpa-tacmap)，Apache-2.0，2026-04-08 初始提交；含 `SharpaTacmap` 传感器、示例环境、按压测试与 SharpaWave 资产 |
-| 未公开 | 真实端翻译网络与采集台架数据、手内旋转 RL 训练代码、MuJoCo 实现（仓库内无相关字样） |
-| 链接来源 | arXiv 摘要页与论文均未列该仓库；经检索 Sharpa 官方 GitHub 组织发现，其 README 引用本论文 |
-| 源码运行时序图 | 见上文，据源码阅读整理，**未运行** |
-
 ## 关联页面
 
 - [夏帕机器人（Sharpa Robotics）](../entities/sharpa-robotics.md) — 本文所属公司页与 System 0/1/2 叙事
@@ -203,7 +212,8 @@ PPO 纯仿真训练，观测含实时 Tacmap 流；部署到 SharpaWave 时不�
 - [Tactile Sensing（触觉感知）](../concepts/tactile-sensing.md)
 - [Sim2Real](../concepts/sim2real.md) / [物理保真度与 Sim2Real 缺口](../concepts/physics-fidelity-sim2real-gap.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) / [视触觉融合](../concepts/visuo-tactile-fusion.md)
-- [In-hand Reorientation](../methods/in-hand-reorientation.md) — 手内旋转任务背景
+- [In-hand Reorientation](../methods/in-hand-reorientation.md) / [Reinforcement Learning](../methods/reinforcement-learning.md) — 手内旋转与纯仿真 RL 训练方法
+- [Manipulation](../tasks/manipulation.md) — 灵巧操作任务背景
 - [TacSL](./paper-sa-2408-06506-tacsl-a-library-for-visuotactile-sensor-simulati.md)、[Taccel](./paper-sa-2504-17614-taccel-scaling-up-vision-based-tactile-robotics.md)、[Tac2Real](./paper-sa-2603-28475-tac2real-reliable-and-gpu-visuotactile-simulatio.md) — 触觉仿真同类工作
 - [ADEPT](./paper-adept-dexterity.md)、[WM-Craftnet](./paper-wm-craftnet.md) — 同为 Sharpa 手的 sim2real 工作
 - [SaTA](./paper-sata.md) — 文章同段中的触觉锚定表征工作

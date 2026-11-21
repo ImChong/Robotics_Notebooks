@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, teleoperation, xr, humanoid, imitation-learning]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/xr_teleoperate.md
 related:
   - ./unitree.md
   - ./unitree-g1.md
@@ -51,11 +53,22 @@ summary: "xr_teleoperate 是宇树官方 XR（AVP/PICO/Quest）全身遥操作�
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  XR["XR 头显 (AVP / PICO / Quest)"] --> TV["televuer (Vuer / WebRTC)"]
+  TV --> MAIN["teleop_hand_and_arm.py<br/>ArmIK + HandRetargeting"]
+  IMG["teleimager v2.0.8 (ZMQ / WebRTC)"] --> MAIN
+  MAIN -->|"--sim: DDS domain 1"| SIM["unitree_sim_isaaclab 仿真"]
+  MAIN -->|"真机: DDS domain 0"| REAL["G1 / H1 / H1_2 / H2 / R1 真机"]
+  MAIN -->|"--record"| REC["EpisodeWriter (JSON + 图像) → unitree_lerobot"]
+```
+
 | 能力 | 说明 |
 |------|------|
-| 机型 | G1（29DoF）等标为 Complete；H1/H1_2 手臂配置见仓库表格与 Wiki |
-| 末端 | Dex3-1 等灵巧手组合（视频 demo：G1+Dex3-1） |
-| 仿真 | v1.5+；可传 CycloneDDS 网卡名参数 |
+| 机型 | G1（29/23 DoF）、H1（4-DoF 臂）、H1_2/H2（7-DoF 臂）、R1（5/7-DoF 臂，v1.6 新增）均标为 Complete |
+| 末端 | Dex1-1（含 `dex1_internal` 电机 31/33 内线模式）、Dex3-1、Inspire（DFX/FTP）、BrainCo（v1.6 新增手柄/追踪输入） |
+| 仿真 | v1.5+（`--sim` 切 DDS domain 1）；可传 CycloneDDS `--network-interface` 参数 |
+| 控制模式 | 支持 `--display-mode`（`immersive`/`ego`/`pass-through`）、`--motion`（Regular 模式行走）、`--ipc`（代理程序控制） |
 | 文档 | 仓库 Wiki + 官方开发者文档「应用开发」章节 |
 
 **周边仓（sources 归档，不单独成 wiki 页，避免重复节点）**：
@@ -85,6 +98,7 @@ summary: "xr_teleoperate 是宇树官方 XR（AVP/PICO/Quest）全身遥操作�
 
 ```mermaid
 sequenceDiagram
+    autonumber
     participant Op as 操作员与 XR 设备
     participant Main as teleop_hand_and_arm.py（__main__）
     participant Img as teleimager ImageClient（图像服务）
@@ -125,7 +139,7 @@ sequenceDiagram
     end
 ```
 
-图依据：unitreerobotics/xr_teleoperate@817fb00，README.md、teleop/teleop_hand_and_arm.py、teleop/robot_control/robot_arm.py（部分）、teleop/robot_control/robot_arm_ik.py（部分）、teleop/robot_control/robot_hand_unitree.py（部分）、teleop/robot_control/hand_retargeting.py（部分）、.gitmodules。televuer、teleimager 为子模块，未拉取，其内部实现未读，图中仅按调用点画出。
+图依据：unitreerobotics/xr_teleoperate@817fb00 及 @7e5026e（2026-11-21 复核），读过 README.md、.gitmodules、teleop/teleop_hand_and_arm.py（支持 `--display-mode`、`--ipc`、H2/R1 与 `dex1_internal`）、teleop/robot_control/robot_arm.py（部分）、robot_arm_ik.py（部分）、robot_hand_unitree.py（部分）、hand_retargeting.py（部分）。televuer、teleimager（钉扎 v2.0.8）为子模块，未拉取，其内部实现未读，图中仅按调用点画出。
 
 ## 关联页面
 

@@ -11,8 +11,10 @@
 - **论文：** <https://arxiv.org/abs/2609.17210>（Zenodo [10.5281/zenodo.20049506](https://doi.org/10.5281/zenodo.20049506)）
 - **HF 权重：** <https://huggingface.co/limxdynamics/FluxVLAEngine>
 - **入库日期：** 2026-09-06（国内开源全景初录）
-- **复核日期：** 2026-10-28（README 与公开仓库核对）
-- **一句话说明：** 配置驱动的 **VLA 全栈工程平台**：LeRobot 兼容数据、`fluxvla/` 训练/评测/推理引擎、多 backbone 微调（π0/π0.5、GR00T、Cosmos3、FastWAM、DiT4DiT、DreamZero、SmolVLA 等）、LIBERO / RoboCasa / RoboDojo 统一评测、RTC + Triton + ZMQ 远程推理与 Franka / Oli 真机 runner。
+- **复核日期：** 2026-11-21（README 与公开仓库核对）
+- **核对范围：** 2026-11-21 通读 `FluxVLA/FluxVLA@b401e52` 官方 `README.md`（LIBERO/RoboCasa/RoboDojo/RoboTwin 评测表、2026-11-10 RLinf 集成等 Latest News、`install_env.sh` 环境档与入口说明）及核心入口 `scripts/train.py`、`scripts/inference_real_robot.py`；未实际运行训练或真机。
+- **通读：** 已完成
+- **一句话说明：** 配置驱动的 **VLA 全栈工程平台**：LeRobot 兼容数据、`fluxvla/` 训练/评测/推理引擎、多 backbone 微调（π0/π0.5、GR00T、Cosmos3、FastWAM、DiT4DiT、DreamZero、SmolVLA 等）、LIBERO / RoboCasa / RoboDojo / RoboTwin 统一评测、RLinf 在线 PPO、RTC + Triton + ZMQ 远程推理与 Franka / Oli / Rebot / ALOHA 真机 runner。
 
 ## 开源状态（README / 项目页核查 2026-09-28）
 

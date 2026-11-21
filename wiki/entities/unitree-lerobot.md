@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, imitation-learning, lerobot, teleoperation, humanoid]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/unitree_lerobot.md
 related:
   - ./unitree.md
   - ./lerobot.md
@@ -49,6 +51,15 @@ summary: "unitree_lerobot 是宇树基于 Hugging Face LeRobot 的官方改版�
 - 与 [`xr_teleoperate`](./xr-teleoperate.md)、[`unitree_sim_isaaclab`](./unitree-sim-isaaclab.md) 组成人形 IL 闭环。
 
 ## 核心原理
+
+```mermaid
+flowchart LR
+  RAW["xr_teleoperate / sim 采数<br/>JSON + 图像/深度"] --> ED["data_editor<br/>裁剪与删坏轨迹"]
+  ED --> CONV["sort_and_rename_folders.py +<br/>convert_unitree_json_to_lerobot.py"]
+  CONV --> DS["LeRobotDataset (v2 / v3.0)<br/>HF Hub / 本地缓存"]
+  DS --> TR["lerobot_train.py<br/>ACT / Diffusion / Pi0 / Pi05 / GR00T"]
+  TR --> EV["评估与回放<br/>eval_g1.py / eval_g1_sim.py / replay_robot.py"]
+```
 
 | 目录 | 职责 |
 |------|------|

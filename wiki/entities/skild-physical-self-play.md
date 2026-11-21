@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, self-play, reinforcement-learning, sim2real, humanoid, soccer, skild-ai, nvidia]
 title: Skild Physical Self-Play（后训练自博弈）
 status: complete
-updated: 2026-11-15
+updated: 2026-11-21
 related:
   - ../concepts/universal-post-training-robotics.md
   - ./skild-s1.md
@@ -15,6 +15,9 @@ related:
   - ./isaac-sim.md
   - ./paper-notebook-robostriker.md
   - ../concepts/bitter-lesson.md
+original:
+  - ../../sources/blogs/skild_physical_self_play_2026-09-23.md
+  - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
 sources:
   - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
   - ../../sources/blogs/skild_physical_self_play_2026-09-23.md

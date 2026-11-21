@@ -6,10 +6,14 @@
 - **类型：** repo
 - **组织：** X-Square-Robot（自变量机器人）
 - **代码：** <https://github.com/X-Square-Robot/wall-ss>
+- **arXiv：** <https://arxiv.org/abs/2608.26239>
 - **论文 PDF：** <https://github.com/X-Square-Robot/wall-ss/blob/main/wall-ss-paper.pdf>
-- **项目页：** <http://x2robot.com/pages/ss>
+- **项目页：** <https://wall-ss.ws-robotics.workers.dev/>（原官网：<http://x2robot.com/pages/ss>）
 - **许可：** MIT（LICENSE 已在；README 写 *Code will be released under the MIT License*）
 - **入库日期：** 2026-08-28
+- **复核日期：** 2026-11-21（检出 `X-Square-Robot/wall-ss`，确认 README 新增 arXiv:2608.26239 链接，但 TODO `Release the training and inference code` 仍未勾选，仓内仍无训练/推理源码与权重）
+- **核对范围：** 通读 `X-Square-Robot/wall-ss` 仓库全部文件（`README.md`、`LICENSE`、`assets/`、`wall-ss-paper.pdf` 确认）
+- **通读：** 已完成
 - **一句话说明：** 截至入库日为 **论文 + 项目页占位仓**：无训练/推理脚本、无权重；README 声明四能力（统一 / 可变长度 / 流式 / 可奖励优化）与三项关键配方。
 
 ## 入口速查（对齐 README，2026-08-28）

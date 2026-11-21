@@ -2,9 +2,13 @@
 type: entity
 tags: [robotera, paper, world-models, shenlan-survey, open-source, berkeley, shanghai-ai-lab, shanghai-pil, tsinghua, china-embodied-opensource, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-10-09
+updated: 2026-11-21
 arxiv: "2412.14803"
 venue: ICML 2025
+original:
+  - ../../sources/papers/vpp_arxiv_2412_14803.md
+  - ../../sources/repos/video-prediction-policy.md
+  - ../../sources/sites/video-prediction-policy.md
 summary: "视频扩散生成当前+未来视觉表征，隐式逆动力学；Calvin 与真机灵巧操作显著提升。"
 related:
   - ./robotera.md
@@ -21,6 +25,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
 sources:
+  - ../../sources/papers/vpp_arxiv_2412_14803.md
   - ../../sources/sites/video-prediction-policy.md
   - ../../sources/papers/shenlan_wm_survey_02_vpp.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
@@ -66,9 +71,18 @@ VPP 先将通用视频扩散模型适配到操作视频，再用模型内部的�
 
 ## 核心机制
 
-1. **视频阶段**：统一人类与机器人操作视频的生成目标，先提取 latent，再微调文本条件 SVD，得到包含当前状态及未来动态的信息。
-2. **动作阶段**：从视频模型内部聚合预测视觉表征，以扩散动作模型学习隐式逆动力学；CALVIN 与 XBot 的数据、归一化和动作接口分别适配。
-3. **部署阶段**：观测和任务条件进入模型，动作头输出控制序列；视频生成质量会影响动作学习。视频预测和实际控制成功不是同一个指标。
+```mermaid
+flowchart LR
+  DATA["人类操作视频 (SthV2) + 机器人数据 (OXE/下游)"] --> TVP["Stage 1: 微调 1.5B SVD 为文本条件 TVP 模型"]
+  OBS["当前观测 s_0 + 语言指令 (CLIP)"] --> FWD["Stage 2 推理: 单步前向提取上采样层特征"]
+  TVP --> FWD
+  FWD --> AGG["特征插值拼接 F_p + Video Former (空间/时序注意力)"]
+  AGG --> DIT["DiT 扩散动作头 (10步 Action Chunk, 7-10 Hz)"]
+```
+
+1. **视频阶段**：统一人类（Something-Something-v2 191,642 条）与机器人操作视频（Open-X 及下游任务合计 375,192 条轨迹，Table 8）的生成目标，微调 1.5B 文本条件 SVD（输出 $16 \times 256 \times 256$），使其编码当前状态及未来动态。
+2. **动作阶段**：冻结 TVP，**不做完整多步像素去噪**，而是单步前向传播后聚合上采样层预测视觉表征 $F_p$，经 Video Former 压缩为固定 token $Q''$，驱动 DiT 扩散动作模型学习隐式逆动力学（单卡 RTX 4090 耗时约 140 ms，达 7–10 Hz 闭环）。
+3. **部署阶段**：观测和任务条件进入模型，动作头输出 10 步动作序列；视频生成质量会影响动作学习，但视频指标（如 FVD 41.4）和实际控制成功不是同一个指标。
 
 ## 源码运行时序图
 
@@ -91,11 +105,11 @@ sequenceDiagram
   end
 ```
 
-这是 README 的 CALVIN 复现路径；真机对应 `step2_train_action_xbot.py` 与 `step3_deploy_real_xbot.py`，需要自行核对本体接口和状态/动作统计。
+图依据：`roboterax/video-prediction-policy@75cf37a`，核对 `README.md`、`step1_train_svd.py`、`step2_train_action_calvin.py` 与 `policy_evaluation/calvin_evaluate.py`；这是 README 的 CALVIN 复现路径；真机对应 `step2_train_action_xbot.py` 与 `step3_deploy_real_xbot.py`，需要自行核对本体接口和状态/动作统计。未运行训练与评测代码。
 
 ## 工程实践与开放范围
 
-- 公开入口包含视频/动作训练、CALVIN 评测、预测示例和真机适配脚本。README 推荐 Python 3.10，CALVIN 需另装环境与 ABC-D 数据（约 500 GB）。训练报告单节点 8 张 A800/H100；本页未实际重跑。
+- 公开入口包含视频/动作训练、CALVIN 评测、预测示例和真机适配脚本。README 推荐 Python 3.10，CALVIN 需另装环境与 ABC-D 数据（约 500 GB）。论文报告 Stage 1 需 8× A100 训 2–3 天，Stage 2 需 4× A100 训 6–12 小时（README 写单节点 8 张 A800/H100）；本页未实际重跑。
 - README 链接 `svd-robot`、`svd-robot-calvin-ft`、`dp-calvin` 权重与 `vpp_svd_latent` 特征。公开部分资产，不推定自采 XHAND 原始训练池全部开放。
 - 先运行 `make_prediction.py` 检查预测质量，再训练动作模型；真机部署不能直接复用 CALVIN 动作尺度。
 
@@ -103,9 +117,9 @@ sequenceDiagram
 
 | 来源 | 报告与读法 |
 | --- | --- |
-| 官方 README | CALVIN ABC 平均完成链长 4.33；单一策略覆盖 100+ 真机灵巧操作任务，是来源报告而非本库复测 |
-| arXiv v2 摘要 | CALVIN ABC-D 相对提升 18.6%，复杂真机灵巧操作成功率增加 31.6% |
-| 官方项目页 | CALVIN 相对提升写为 41.5%，与当前摘要的 18.6% 不同；未确认统一基线口径，不能互换 |
+| 官方 README | CALVIN ABC 平均完成链长 4.33（10% 标注数据达 3.25）；MetaWorld 50 任务平均成功率 0.682（vs GR-1 0.574）；真机 xArm+XHAND 100+ 任务 Seen 0.75 / Unseen 0.60 / 工具使用 0.68（Franka Panda Seen 0.85 / Unseen 0.73），均为来源报告而非本库复测 |
+| arXiv v2 摘要 | CALVIN ABC-D 相对提升 18.6%（对应 Table 1 中 4.33 对比 RoboUniview `3.65`），复杂真机灵巧操作成功率增加 31.6%（相对 Table 5 最强基线 Susie） |
+| 官方项目页 / 正文引言 | CALVIN 相对提升写为 41.5%（对应 4.33 对比 `GR-1` 的 `3.06`）；两者参照基线不同，引用时须写明对比对象 |
 
 ## 与其他工作对比
 
@@ -140,6 +154,7 @@ VPP 在[世界动作模型](../concepts/world-action-models.md)谱系中属于�
 
 ## 参考来源
 
+- [VPP 论文原文核对（arXiv:2412.14803v2）](../../sources/papers/vpp_arxiv_2412_14803.md)
 - [官方项目页核查](../../sources/sites/video-prediction-policy.md)
 - [官方源码与 README 补核](../../sources/repos/video-prediction-policy.md)
 - [既有论文归档](../../sources/papers/shenlan_wm_survey_02_vpp.md)

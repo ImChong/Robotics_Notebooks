@@ -2,7 +2,9 @@
 type: entity
 tags: [humanoid, loco-manipulation, vla, foundation-policy, zero-shot, figure-ai, index]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/figure_ai_helix_25_zero_shot_30_home_generalization.md
 related:
   - ./figure-ai.md
   - ../methods/vla.md
@@ -126,6 +128,10 @@ Helix 2.5 基座本身 **仅 Index 预训练**；Helix 02 则从 **预训练 VLM
 - 用小 run **预报** 最大 run loss 至 **四位小数**，误差 **0.54%**（全 8× 范围变异内）。
 
 **边界：** 测的是 **预训练数据 scaling**，非模型 width/depth 或下游 RL 全栈；是否外推到 **成功率** 未在文内建立同样精度的 law。
+
+## 源码运行时序图
+
+**不适用**：Helix 2.5 与 Index 数据集均为商业闭源资产，截至 2026-11-21 官方博客未公开模型代码、权重或数据下载。
 
 ## 工程实践
 

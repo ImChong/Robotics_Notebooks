@@ -2,7 +2,10 @@
 type: entity
 tags: [repo, world-model, video-generation, robbyant, physical-ai]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-21
+original:
+  - ../../sources/repos/lingbot-world.md
+  - ../../sources/repos/lingbot-world-v2.md
 related:
   - ./lingbot-vla.md
   - ./lingbot-vla-v2.md
@@ -37,16 +40,32 @@ summary: "robbyant/lingbot-world：蚂蚁灵波开源世界模型主线（视频
 - **长时序任务：** 文章强调「长周期连续任务预测、视频–动作联合建模」，对应世界模型而非纯 VLA 推理。
 - **与 VLA 栈并列：** 同一团队 [LingBot-VLA](./lingbot-vla.md) 负责操纵；World 负责 **预测 / 仿真**。
 
+## 核心原理
+
+```mermaid
+flowchart LR
+    IN["首帧图像 + 文本提示 + 控制序列 (poses.npy / action_string)"] --> ENC["T5 文本编码 + Wan VAE 首帧条件编码"]
+    IN --> CAM["Plucker 相机/动作嵌入 (AdaLN 注入)"]
+    ENC --> DIT["因果块注意力 DiT (MoE / causal_fast, 维持 KV Cache)"]
+    CAM --> DIT
+    DIT --> SCH["FlowUniPC 多步/少步流匹配调度"]
+    SCH --> DEC["Wan VAE 解码 -> 长时交互视频 MP4"]
+```
+
+图依据：[arXiv:2601.20540v1](https://arxiv.org/html/2601.20540) §3（三阶段演化与 Plücker AdaLN 动作注入）与 `robbyant/lingbot-world-v2@1895d30` `wan/image2video.py`。
+
+**核心机制：** 基于 Wan2.2 14B 图生视频扩散基座，经三阶段演化构建世界模拟器（详见[论文索引页](./paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md)）：Stage I 通用视频先验 → Stage II 双向 MoE 中期训练（5 秒渐进到 60 秒长程一致，Plücker 嵌入与动作向量通过 AdaLN 调制 DiT）→ Stage III 块因果注意力与少步蒸馏（KV cache 支撑 16 fps、<1 s 延迟实时交互）。仓库层面，`robbyant/lingbot-world`（1.0，Apache-2.0，含 `Base Cam` / `Base Act` / `Fast`）现已停止积极维护，官方将后续更新与 2.0（14B + 1.3B，`CC BY-NC-SA 4.0`）全部迁移至 `robbyant/lingbot-world-v2`。
+
 ## 工程实践
 
-1. 权重与推理脚本见 GitHub README 与 [HF 集合](https://huggingface.co/collections/robbyant/lingbot-world-v2)。
-2. v2 栈依赖 torch≥2.4、flash-attn 等；按仓内 `requirements` 钉版本。
-3. License 常为 **CC BY-NC-SA**（以 README 为准）。
+1. 1.0 仓 `robbyant/lingbot-world`（Apache-2.0）包含 `generate.py` 与 `generate_fast.py` / `run_fast.sh`；新部署官方推荐迁移至 [lingbot-world-v2](https://github.com/robbyant/lingbot-world-v2)（[HF 集合](https://huggingface.co/collections/robbyant/lingbot-world-v2)）。
+2. v2 栈依赖 `torch>=2.4`、`flash-attn` 与多卡 FSDP / Ulysses 序列并行（`--dit_fsdp --t5_fsdp --ulysses_size`）；1.3B causal-fast 变体共享 14B 的 T5/VAE 资产（`--assets_dir`）。
+3. **许可差异：** 1.0 仓为 **Apache-2.0**；2.0 仓 `lingbot-world-v2` 为 **CC BY-NC-SA 4.0**（非商业共享），商业集成前务必核对版本与许可。
 
-## 局限与使用注意
+## 局限与风险
 
-- **非机器人低层控制器：** 不能直接替代 [rsl-rl](./rsl-rl.md) 步态训练。
-- **org 易混：** 勿使用失效的 `antgroup/lingbot` 链接。
+- **非机器人低层控制器：** 输出像素视频世界演化而非关节力矩，不能直接替代 [rsl-rl](./rsl-rl.md) 步态或操作策略。
+- **org 与维护状态：** 勿使用失效的 `antgroup/lingbot` 链接；`robbyant/lingbot-world`（1.0）README 已声明不再积极维护。
 
 ## 源码运行时序图
 

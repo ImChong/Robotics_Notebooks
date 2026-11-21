@@ -240,9 +240,11 @@ flowchart LR
 
 ### 推荐读什么
 - [NVIDIA Deepu Talla：机器人的 ChatGPT 时刻](../wiki/entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md) — 从三类计算平台、分层频率、蒸馏到可部署门槛的系统访谈；将“十秒大关”当成熟度比喻而不是任务时限。
+- [Inkling 2 Mini：循环式多模态 Transformer](../wiki/entities/inkling-2-mini.md) — 开放权重的 26.4B MoE 以共享中间 12 层三次循环 + NVFP4/MXFP8 取舍模型体积、内部计算与本地 Agent 延迟；不属于已验证的机器人动作策略。
 - [MACaQ：模型无关的 MXFP4 W4A4 校准量化](../wiki/entities/paper-macaq.md) — 逐线性层缩放、旋转、指数筛选与 Flip-Refinement；用于研究低比特模型部署，但需另测机器人闭环质量与实际时延。
 - [AIInfraGuide：AI Infra 全栈学习指南](../wiki/entities/aiinfraguide.md) — 单卡 Kernel、显存与多卡通信到推理调度的分层 Profiling 路线，用于给架构选型补性能证据
 - [Zero to SGLang｜从零手搓推理服务](../wiki/entities/zero-to-sglang.md) — 为 VLA 语义层补上 KV Cache、Continuous Batching、请求生命周期和 Profiling 的推理服务基础；不替代机载低层控制环时延测试
+- [Kaplan Scaling Laws（2020）](../wiki/entities/paper-scaling-laws-neural-language-models.md) — 先学原始 LM 交叉熵的 N/D/C 幂律与 compute-efficient 约束；防过拟合数据需求不等于最优 token 配比，具身任务须重新验证。
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) — 数据 / 参数 / 泛化的幂律关系与边界
 - [实时性与泛化取舍](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) — 规模与推演步长如何压住控制带宽
 - [ONNX Runtime vs MNN vs TensorRT](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 机载推理栈选型

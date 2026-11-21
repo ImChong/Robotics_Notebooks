@@ -4,6 +4,9 @@
 - **类型：** site / project-page
 - **URL：** <https://tactile-reactive-dexterous.github.io/>
 - **入库日期：** 2026-07-01
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读官方项目页 `https://tactile-reactive-dexterous.github.io/` 全部板块（50h/100h 数据集口径、异步级联示意图、12 任务结果与 6 类失败案例）；2026-11-21 复核 arXiv v2 另标注镜像域名 `https://tactile-rex.github.io/`。
+- **通读：** 已完成
 - **配套论文：** [T-Rex（arXiv:2606.17055）](https://arxiv.org/abs/2606.17055) — 归档见 [`sources/papers/trex_arxiv_2606_17055.md`](../papers/trex_arxiv_2606_17055.md)
 - **代码：** <https://github.com/ZhuoyangLiu2005/T-Rex>
 

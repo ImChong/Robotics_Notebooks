@@ -6,10 +6,13 @@ tags:
 - dataset
 - vla
 status: complete
-updated: '2026-10-05'
+updated: '2026-11-21'
 arxiv: '2503.06669'
 venue: arXiv 2025
 code: https://github.com/OpenDriveLab/AgiBot-World
+original:
+- ../../sources/papers/agibot_world_colosseo_arxiv_2503_06669.md
+- ../../sources/repos/agibot-world.md
 summary: Colosseo 将大规模真机操作数据、评测与 GO-1 通才策略连接成可扩展平台；数据集发布与模型开源是不同时间的事件。
 related:
 - ../entities/awesome-world-models.md
@@ -21,6 +24,7 @@ related:
 - ./agibot-world-2026.md
 - ./go-2.md
 sources:
+- ../../sources/papers/agibot_world_colosseo_arxiv_2503_06669.md
 - ../../sources/papers/sun_awesome_wm_2503_06669_agibot-world-colosseo-a-large-scale-mani.md
 - ../../sources/papers/sun_awesome_wm_catalog.md
 - ../../sources/repos/awesome-world-models.md
@@ -49,9 +53,28 @@ Colosseo 将大规模真机操作数据、评测与 GO-1 通才策略连接成�
 
 ## 核心原理
 
-论文的 GO-1 使用 **ViLLA**：视觉语言骨干提取条件，Latent Planner 提供潜动作计划，Action Expert 生成动作 chunk。官方 **GO-1 Air 不含 Latent Planner**，可用于检查规划模块的成本与收益。
+论文的 GO-1 使用 **ViLLA**：视觉语言骨干（InternVL2.5-2B）提取多视角与指令条件，Latent Planner（24 层双向 transformer）在 VQ-VAE 潜动作空间（$k=4$ token）预测潜动作计划，Action Expert 通过扩散去噪生成连续动作 chunk（$H=30$）。官方 **GO-1 Air 不含 Latent Planner**，可用于检查规划模块的成本与收益。
 
-数据覆盖约百万轨迹、100 台机器人、100 多个真实场景；这些是数据集规模说明，不能替代任务覆盖、轨迹质量和训练采样比例检查。
+数据基于 100+ 台同构 AgiBot G1、覆盖 1,001,552 条轨迹（2,976.4 小时）、217 个任务、87 项原子技能与 106 个真实场景（含约 1% 失败恢复轨迹）；这些是数据集规模说明，不能替代任务覆盖、轨迹质量和训练采样比例检查。
+
+### 流程总览
+
+```mermaid
+flowchart TB
+  subgraph data ["Stage 0: 数据采集与质检闭环"]
+    G1["100+ 台 AgiBot G1\n8 相机 + 夹爪/灵巧手/触觉 (30 Hz)"] --> HIL["Human-in-the-Loop 质检\n语言标注 + 去空闲帧 + 1% 失败恢复"]
+  end
+  subgraph villa ["ViLLA 三阶段策略 (GO-1)"]
+    LAM["Stage 1: LAM\n网络人类视频 + 跨本体轨迹 → VQ-VAE 潜动作 token"]
+    VLM["InternVL2.5-2B\n三视角 RGB + 语言指令"]
+    LP["Stage 2: Latent Planner\n24 层双向 Transformer 预测潜动作"]
+    AE["Stage 3: Action Expert\n条件化扩散生成 30 步连续动作块"]
+    LAM -.->|"伪标签监督"| LP
+    VLM --> LP --> AE
+  end
+  HIL -->|"1M+ 轨迹预训练"| villa
+  AE -->|"30 Hz 闭环控制"| EXEC["真机 / 仿真评测"]
+```
 
 ## 源码运行时序图
 
@@ -72,6 +95,8 @@ sequenceDiagram
 ```
 
 训练与服务是两个阶段；客户端执行动作后采集新观测形成闭环。
+
+图依据：`OpenDriveLab/AgiBot-World@98f136e`，读过 `README.md`、`go1/shell/train.sh`、`go1/configs/go1_sft_libero.py`、`evaluate/deploy.py`；未运行 GPU 训练或服务。
 
 ## 数据模态与版本
 
@@ -113,6 +138,7 @@ GO-1 与 GO-1 Air 的差别是 Latent Planner，可作为潜动作规划的结�
 
 ## 参考来源
 
+- [AgiBot World Colosseo 论文原文归档（arXiv:2503.06669）](../../sources/papers/agibot_world_colosseo_arxiv_2503_06669.md)
 - [官方数据与 GO-1 仓库核查](../../sources/repos/agibot-world.md)
 - [AgiBot World 项目页](../../sources/sites/agibot-world.md)
 

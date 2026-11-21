@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, cross-embodiment, manipulation, end-effector, foundation-policy, scaling, generalist-ai]
 status: complete
 title: GEN-1 千手（跨末端执行器泛化）
-updated: 2026-11-15
+updated: 2026-11-21
 original:
   - ../../sources/blogs/generalist_thousand_hands.md
 related:

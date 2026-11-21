@@ -217,6 +217,7 @@ flowchart LR
 **方向 D：评测、选型与工业级案例**
 - 建立自己的评测基线，跟踪工业界的整机方案
 - 关键词：[Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)、[AgiBot BFM-2](../wiki/entities/agibot-bfm-2.md)
+- [RoboParty / sim2real Motion Tracking Leaderboard](../wiki/entities/egalahad-sim2real.md) — Stage 5 跨代码库跟踪对照：冻结 MotionDecode + G1 MuJoCo + 50 Hz ONNX 统一评测；同时读 Body Pos、Progress、未来参考窗口，勿当真机综合排名。
 
 ---
 

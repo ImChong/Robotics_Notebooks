@@ -9,6 +9,8 @@
 - **原始链接：** <https://lightwheel.ai/egosuite>（博客列表 <https://lightwheel.ai/blogs> 中「Lightwheel Introduces EgoSuite」条目指向此页）
 - **发布日期：** 2025-12-04（与 RoboFinals 发布博客同日）
 - **入库 / 核查日期：** 2026-10-10
+- **核对范围：** 2026-11-22 抓取并通读光轮官方产品与发布页 `https://lightwheel.ai/egosuite`、Open100K 官方博文 `https://lightwheel.ai/media/egosuite-open100k` 及数据规范文档 `https://docs.lightwheel.net/egocentric_data/` 与 `mcap_data/overview`；商业数据服务本体与未公开硬件参数不在公开文档覆盖范围内。
+- **通读：** 已完成
 - **一句话说明：** 光轮把 EgoSuite 定位为面向具身 AI 与世界模型的 **全栈 egocentric 人类数据方案**：多类采集设备 + 全球现场运营网络 + 统一数据管理与后处理平台，交付 3D 手姿 / 3D 全身姿态 / 帧级语义标注；2026-08 起以 EgoSuite-Open100K 形式部分开放。
 
 ## 1. 2025-12-04 发布博客核心摘录（官方自报）

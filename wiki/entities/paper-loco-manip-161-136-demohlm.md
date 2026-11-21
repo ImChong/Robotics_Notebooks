@@ -2,8 +2,12 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, sim2real, unitree-g1, pku, beingbeyond, loco-manip-161-survey]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-21
 arxiv: "2510.11258"
+institutions: [beingbeyond]
+original:
+  - ../../sources/papers/demohlm_arxiv_2510_11258.md
+  - ../../sources/sites/demohlm.md
 venue: "arXiv preprint; IEEE RA-L 2026-02-19"
 code: https://github.com/BeingBeyond/DemoHLM
 related:
@@ -171,7 +175,7 @@ flowchart TB
 - **物体 6D 位姿需模型/跟踪器** → 难直接迁移到未知几何物体。
 - **官方代码/权重未发布** → 截至 2026-09-20 无法一键复现（[sources/repos/demohlm.md](../../sources/repos/demohlm.md)）。
 
-## 与其他页面的关系
+## 关联页面
 
 - 任务页：[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 同类数据生成：[HumanoidMimicGen](./paper-humanoidmimicgen.md)、[DexMimicGen](./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md)

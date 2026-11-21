@@ -14,7 +14,7 @@ tags:
   - vla
   - x-square-robot
 status: complete
-updated: 2026-10-09
+updated: 2026-11-21
 project_id: xrzero-g0
 arxiv: "2604.13001"
 project: https://x2robot.com/x2go
@@ -36,7 +36,11 @@ related:
   - ./cn-os-wall-x.md
   - ../methods/imitation-learning.md
   - ../concepts/motion-retargeting.md
+original:
+  - ../../sources/papers/xrzero_g0_arxiv_2604_13001.md
+  - ../../sources/sites/x2robot-xrzero-g0.md
 sources:
+  - ../../sources/papers/xrzero_g0_arxiv_2604_13001.md
   - ../../sources/sites/x2robot-xrzero-g0.md
 summary: "XRZero-G0（自变量，arXiv:2604.13001，2026-04）：背包 + PICO 4 VR 头显 + H/G 两种手持夹爪的无本体双臂采数系统；采集→质检→训练→评测闭环有效率 85%；500 robot-free + 50 真机（10:1）追平 500 条纯真机基线，成本约 1/20。仅 HF 数据子集公开，代码与权重未发布。"
 ---
@@ -197,7 +201,8 @@ flowchart LR
 
 ## 参考来源
 
-- [XRZero-G0 项目页 / 论文 / 开源核查归档](../../sources/sites/x2robot-xrzero-g0.md) — 2026-10-09 核查代码、权重、数据、硬件四项，含 HF 数据结构与产品页对应
+- [XRZero-G0 论文原文归档（arXiv:2604.13001v2）](../../sources/papers/xrzero_g0_arxiv_2604_13001.md) — 原文 HTML 全文精读（含 §1–§6、Table 1 及硬件/数据/闭环核查）
+- [XRZero-G0 项目页 / 论文 / 开源核查归档](../../sources/sites/x2robot-xrzero-g0.md) — 2026-10-09 / 2026-11-21 核查代码、权重、数据、硬件四项，含 HF 数据结构与产品页对应
 - Wang et al., *XRZero-G0: Pushing the Frontier of Dexterous Robotic Manipulation with Interfaces, Quality and Ratios*, arXiv:2604.13001 — <https://arxiv.org/abs/2604.13001>
 
 ## 推荐继续阅读

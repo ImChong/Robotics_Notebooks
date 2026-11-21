@@ -2,10 +2,12 @@
 type: entity
 tags: [paper, humanoid, table-tennis, multi-robot-coordination, rl, motion-tracking, sim2real, unitree-g1, archon-robotics, hku, shanghai-innovation-institute, nvidia]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-21
 project_id: pingpongduo
 arxiv: "2610.20579"
 project: https://www.archon.tech/research/PingpongDuo
+original:
+  - ../../sources/papers/pingpongduo_arxiv_2610_20579.md
 related:
   - ./archon-robotics.md
   - ./paper-sony-ai-ace-table-tennis.md
@@ -33,7 +35,7 @@ summary: "PingpongDuo（arXiv:2610.20579）：双台 Unitree G1 乒乓球双打�
 | PingpongDuo | 论文框架名（非缩写） | 本文框架：人形双打乒乓球系统 |
 | CBF | Control Barrier Function | 控制屏障函数，作为启发式安全过滤的对照 |
 | RL | Reinforcement Learning | 团队站位策略与技能训练的基础范式 |
-| SRC / SRH | 论文表 III 指标缩写（未在摘要中展开） | SRC 为接触成功率，SRH 为回球成功率（由正文推断，定义以表 II 为准） |
+| $SR_C$ / $SR_H$ | Contact / Legal Return Success Rate | Table II 定义：$SR_C$ 为球拍触球率，$SR_H$ 为合法过网落台回球成功率 |
 | MPJPE | Mean Per-Joint Position Error | 策略对自身参考动作的跟踪误差 |
 | MoCap | Motion Capture | 实验中用于机器人与球状态估计的动捕系统 |
 
@@ -120,7 +122,7 @@ flowchart TB
 ## 局限与风险
 
 - **仅双机、单桌、单球路：** 论文场景固定为两台 G1 与一张乒乓台，扩展到更多机器人或复杂对手未验证。
-- **依赖动捕：** 球与机器人状态由 MoCap 估计，真实比赛的视觉感知未覆盖。
+- **依赖动捕与无旋转建模：** 球与机器人状态由外部 MoCap 估计（未做机载视觉）；当前感知与轨迹/碰撞模型均不包含球旋转（ball spin）测量与建模（§VII）。
 - **仿真指标与真机指标不同口径：** 13.2% 为仿真回球成功率提升，摘要未说明相对/绝对；真机只给出清球时间与交替次数。
 - **未开源：** 无代码与权重，复现依赖自行实现分层框架与标定流程。
 

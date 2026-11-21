@@ -8,6 +8,8 @@
 - **链接：** https://github.com/roboterax/teleop_client
 - **分类：** 遥操作与数据采集
 - **入库日期：** 2026-09-06
+- **核对范围：** 克隆 `roboterax/teleop_client@578353e`，通读 `README.md`、`l3_pub_client.py`、`q5_pub_client.py` 与仓内目录结构；确认机器人侧 ROS 2 服务端、recorder 及 `rbclient` 均在仓外；未在真实机器人或 ROS 2 运行时执行。
+- **通读：** 已完成
 - **一句话说明：** 星动纪元 开源项目 teleop_client（遥操作与数据采集），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-teleop-client.md`](../../wiki/entities/cn-os-teleop-client.md)
 

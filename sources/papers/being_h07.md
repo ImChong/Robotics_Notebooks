@@ -1,58 +1,32 @@
-# Being-H0.7
+# Being-H0.7: A Latent World-Action Model from Egocentric Videos
 
-> 来源归档（ingest）
+> 来源归档（paper / arXiv:2605.00078v1）
 
+- **URL：** <https://arxiv.org/abs/2605.00078>
+- **PDF：** <https://arxiv.org/pdf/2605.00078.pdf>
+- **项目页：** <https://research.beingbeyond.com/being-h07>
+- **代码仓库：** <https://github.com/BeingBeyond/Being-H>（`Being-H07/README.md` @ `27ec67b`，截至 2026-11-21 仅含说明文档，未释出 H0.7 源码与权重）
 - **标题：** Being-H0.7: A Latent World-Action Model from Egocentric Videos
-- **类型：** paper
-- **来源：** [项目页](https://research.beingbeyond.com/being-h07)；arXiv:2605.00078
-- **入库日期：** 2026-05-12
-- **最后更新：** 2026-05-12
-- **一句话说明：** 用大规模第一人称人视频 + 机器人演示，在**潜空间**对齐「未来感知」监督，训练可部署的**世界–动作**先验；推理时不滚未来像素，直接输出动作。
-
+- **作者：** Hao Luo, Wanpeng Zhang, Yicheng Feng, Sipeng Zheng, Haiweng Xu, Chaoyi Xu, Ziheng Xi, Yuhui Fu, Zongqing Lu（BeingBeyond Team）
+- **机构：** BeingBeyond（智在无界）、Peking University、Renmin University of China、Tsinghua University
+- **年份：** 2026（arXiv 2026-04-30）
+- **核对范围：** 已获取并通读 `arXiv:2605.00078v1` PDF 抽取全文（78,862 字符，Sections 1–5，涵盖 Latent Query + Prior/Posterior 双分支 MoT 打包、前瞻 V-JEPA2.1 Perceiver 嵌入、Frobenius 对齐损失与范数/谱熵防坍塌正则、6 项仿真与 12 项真机盲测及 UAC 延迟数据）、BeingBeyond 官方研究页 `being-h07`（9,494 字符）及 GitHub `BeingBeyond/Being-H/Being-H07/README.md @ 27ec67b`；未独立复现训练与真机实验。
 - **通读：** 已完成
-- **核对范围：** 已通读 `arXiv:2605.00078v1` 全文（78,862 字符）及 BeingBeyond 官方研究页 `being-h07`（9,494 字符），核对双分支共享上下文潜世界–动作架构及 200k 小时人类视频预训练设定。
 
-## 核心论文摘录（MVP）
+## 摘要与核心贡献
 
-### 1) 问题动机：VLA 稀疏监督 vs 像素世界模型昂贵
+1. **隐式世界-动作模型（Latent WAM）定位**：指出直接 VLA 易从稠密观测学到动作捷径，而显式像素生成式 WAM 计算开销大、且重建纹理光照与动作控制无关。Being-H0.7 在多模态上下文 $c = [x; o_{-H:0}; s]$ 与含噪动作块 $a_{0:T}$ 之间插入 $K=16$ 个可学习 **Latent Queries** $Q \in \mathbb{R}^{K\times d}$，在推理期**完全不生成未来帧**。
+2. **训练期双分支序列打包（Dual-Branch MoT）**：基于 Being-H0.5 的 Mixture-of-Transformers（`InternVL3.5` 理解专家 + `Qwen3` 动作专家，纯 RGB 输入，`V-JEPA2.1` + Perceiver Resampler 提取上下文与未来观测表征）：
+   - **Prior Branch（训练+部署）**：仅看当前指令、$H=4$ 历史观测与本体状态，通过 Latent Queries 推理未来控制相关因子并驱动 Flow Matching 速度场；
+   - **Posterior Branch（仅训练期）**：在相同位置用未来观测 $o_{0:T}$ 经冻结 ViT + Perceiver 提取的 $z^{\text{post}}$ 替换 $Q$，揭示对动作真正有用的未来演化；
+   - 两分支共享前序上下文、在单一序列中通过 **Dual-Branch Attention Mask** 互相隔离、共享位置 ID，在最后 $L=9$ 层对齐隐状态 $\mathcal{L}_{\text{align}}$。
+3. **防隐空间坍塌正则**：联合优化双分支 Flow-Matching 损失与对齐损失（$w_{\text{align}}=10^{-3}$），并加入下界范数正则 $R_{\text{norm}}(h)=[\text{ReLU}(\tau-\|h\|_2)]^2$ 与负谱熵多样性正则 $R_{\text{rank}}(H)=\sum p_i \log p_i$（$w_{\text{norm}}=w_{\text{rank}}=10^{-4}$）。下游微调时仅保留 Flow-Matching 与对齐损失。
+4. **仿真与真机五维盲测及 UAC 部署**：
+   - 六项仿真基准：LIBERO `99.2%`、LIBERO-plus 零样本 `82.1%` / 微调 `84.8%`、RoboCasa-50 `62.1%`、GR1 `49.2%`、CALVIN `4.67 / 4.48`、RoboTwin 2.0 `90.2 / 89.6`；
+   - 三平台（PND Adam-U 31 DoF、Unitree G1 26 DoF + 50 Hz AMO 全身后端、Franka FR3 13 DoF，统一配 Linkerbot O6 6-DoF 灵巧手）× 12 项高难度真机盲测（各 20 次）全面领先 $\pi_{0.5}$、Being-H0.5、Fast-WAM；配合客户端 **UAC（Universal Async Chunking，锁前缀、按延迟拼后缀）** 达成 **3–4 ms/step** 在线步长控制延迟。
 
-- **链接：** <https://research.beingbeyond.com/being-h07>
-- **摘录要点：** 标准 VLA 动作监督稀疏，易把视觉差异很大的状态塌缩成少数重复行为；像素级未来预测能利用稠密未来结构，但推理慢、脆弱，难塞进真实控制环。
-- **对 wiki 的映射：**
-  - [VLA](../../wiki/methods/vla.md) — 与「端到端语言–视觉–动作」路线的数据效率与行为塌缩讨论互证
-  - [Generative World Models](../../wiki/methods/generative-world-models.md) — 对比「视频即仿真」的高推理成本与本文的潜空间折中
+## 与知识库关联
 
-### 2) 方法：可学习 latent queries + 打包双分支（先验 / 后验）
-
-- **链接：** <https://arxiv.org/abs/2605.00078>
-- **摘录要点：** 在「多模态理解」与「稠密动作生成」之间插入**可学习潜变量查询**，作为内部 world–action 工作空间。训练时**后验分支**可访问未来观测的紧凑嵌入，与仅含查询的**先验分支**在潜空间对齐 hidden；**单序列 + 共享上下文 + 双分支注意力掩码**，非两套独立网络。测试时只用指令、观测历史、本体状态与 latent queries，**不显式生成未来图像**。
-- **对 wiki 的映射：**
-  - [Latent Imagination](../../wiki/concepts/latent-imagination.md) — 同属「在紧凑表示里吸收未来结构」，但本文面向操作 VLA 式策略而非经典 RSSM rollout
-  - [Being-H0.7 方法页](../../wiki/methods/being-h07.md) — 结构化归纳与部署栈
-
-### 3) 数据规模、评测与系统部署
-
-- **链接：** <https://research.beingbeyond.com/being-h07>
-- **摘录要点：** 训练数据约 **20 万小时** 第一人称人视频 + **1.5 万小时** 机器人演示。仿真覆盖 LIBERO / LIBERO-plus、GR1、CALVIN、RoboCasa、Robotwin2 等；真机 12 任务、3 平台（PND Adam-U、Unitree G1、Franka FR3）、Linkerbot O6 手，对比 Being-H0.5、π₀.5、Fast-WAM。部署侧：**分块动作预测** + 客户端 **Universal Async Chunking (UAC)**；G1 上与 **AMO** 全身低层策略组合（上半身接口不变，AMO 管下肢与腰）。
-- **对 wiki 的映射：**
-  - [Action Chunking](../../wiki/methods/action-chunking.md) — 与异步 chunk 缓冲控制延迟
-  - [Imitation Learning](../../wiki/methods/imitation-learning.md) — 人视频 + 机器人演示的规模化模仿学习范式
-
-## 关键术语
-
-- **Latent world–action model**：用潜变量工作空间同时承担「世界相关预测结构」与「动作先验」接口。
-- **Packed dual-branch attention**：先验槽位放 queries，后验槽位换为同形状未来嵌入，共享上下文、掩码隔离分支。
-- **UAC (Universal Async Chunking)**：已提交动作前缀实时执行，异步请求下一 chunk，到达后再拼接后缀，平滑模型与网络抖动。
-
-## 关联 Wiki 页面
-
-- [Being-H0.7](../../wiki/methods/being-h07.md)
-- [VLA](../../wiki/methods/vla.md)
-- [Generative World Models](../../wiki/methods/generative-world-models.md)
-
-## 当前提炼状态
-
-- [x] 核心动机与潜空间接口
-- [x] 双分支训练与部署假设
-- [x] 数据规模、基准与系统栈（UAC / AMO）
-- [ ] 细读 arXiv 全文后补充损失形式与架构细节
+- 方法节点：[being-h07.md](../../wiki/methods/being-h07.md)
+- 独立论文实体：[paper-rcl-2605-00078-being-h0-7-a-latent-world-action-model-from-egoc.md](../../wiki/entities/paper-rcl-2605-00078-being-h0-7-a-latent-world-action-model-from-egoc.md)
+- 前代基座：[cn-os-being-h.md](../../wiki/entities/cn-os-being-h.md)

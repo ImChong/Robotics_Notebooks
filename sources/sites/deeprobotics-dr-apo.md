@@ -6,8 +6,11 @@
 - **arXiv：** <https://arxiv.org/abs/2610.16618>（提交于 12 Oct 2026，arXiv 摘要页）
 - **项目页：** <https://developer.deeprobotics.cn/research/articles/dr-apo/index.html>
 - **作者 / 机构：** Runhua Zhang、Yingjie Niu、Chao Li；DEEP Robotics、浙江大学
-- **代码 / 数据：** 项目页未列代码链接（仅 Paper / Video）
+- **代码 / 数据：** 项目页未列代码链接（仅 Paper / Video），截至 2026-11-21 复核仍未开源
 - **入库日期：** 2026-10-24
+- **再核日期：** 2026-11-21
+- **核对范围：** 读取 `<https://developer.deeprobotics.cn/research/articles/dr-apo/index.html>` 全文、方法说明、Table I 实验对比与 Paper/Video 链接（无代码按钮）。
+- **通读：** 已完成
 - **入口：** 云深处开发者中心前沿探索页 <https://developer.deeprobotics.cn/research/>
 - **一句话说明：** DR-APO（arXiv:2610.16618；云深处）：把策略改进与策略表示解耦，以优势引导的目标动作改进 + 表示兼容的直接动作拟合，统一高斯 / 扩散 / 流策略；MuJoCo-v5 五任务与 NavDP 导航后训练（仿真 SR 70.33%→89.55%，真机 25%→65%）。
 

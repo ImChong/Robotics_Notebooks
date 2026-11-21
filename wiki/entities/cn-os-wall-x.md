@@ -12,7 +12,7 @@ tags:
   - project
   - x-square-robot
 status: complete
-updated: 2026-11-05
+updated: 2026-11-21
 project_id: wall-oss
 arxiv: "2509.11766"
 code: https://github.com/X-Square-Robot/wall-x
@@ -38,6 +38,10 @@ related:
   - ./lerobot.md
   - ./libero-benchmark.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/wall_oss_arxiv_2509_11766.md
+  - ../../sources/repos/wall-x.md
+  - ../../sources/sites/x2robot-wall-oss.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/wall-x.md

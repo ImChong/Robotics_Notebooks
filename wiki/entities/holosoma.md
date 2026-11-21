@@ -2,8 +2,11 @@
 type: entity
 tags: [repo, humanoid, rl, motion-retargeting, whole-body-tracking, locomotion, amazon-far, isaacgym, isaacsim, mujoco, unitree-g1, booster-t1]
 status: complete
-updated: 2026-11-18
-summary: "holosoma 是 Amazon FAR 开源的人形全身 RL 训练、推理与 OmniRetarget 重定向一体化框架；支持 IsaacGym/IsaacSim/MJWarp/MuJoCo、PPO/FastSAC、G1/T1 与 sim-to-real 部署管线。"
+updated: 2026-11-21
+code: https://github.com/amazon-far/holosoma
+original:
+  - ../../sources/repos/holosoma.md
+summary: "holosoma 是 Amazon FAR 开源的人形全身 RL 训练、推理与 OmniRetarget 重定向一体化框架；main 分支支持 IsaacSim/MJWarp/MuJoCo 推理与 PPO/FastSAC、G1/T1 部署管线（IsaacGym 冻结至 holosoma-v0.0.3）。"
 related:
   - ./paper-hil-hybrid-imitation-learning.md
   - ./paper-hrl-stack-03-omniretarget.md
@@ -24,6 +27,10 @@ sources:
 # holosoma（Amazon FAR 人形 RL + 重定向框架）
 
 **holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源框架，名称取自希腊语「全身」。它将 **[OmniRetarget](./paper-hrl-stack-03-omniretarget.md)** 的 interaction-mesh 重定向与 **locomotion / whole-body tracking（WBT）** 训练、**sim-to-sim / sim-to-real** 推理统一在同一仓库，是论文承诺的 **代码与可复现管线入口**。
+
+## 一句话定义
+
+**把交互保留运动重定向（`holosoma_retargeting`）、多仿真器全身 RL 训练（`holosoma`）与跨 MuJoCo/真机的 C++ 底层推理引擎（`holosoma_inference`）集成在一个开源仓库的人形全栈基础框架。**
 
 ## 英文缩写速查
 
@@ -71,7 +78,7 @@ flowchart LR
     aug --> wbt
     hf --> wbt
   end
-  subgraph deploy [holosoma_inference]
+  subgraph deploy ["holosoma_inference"]
     sim["MuJoCo sim-to-sim"]
     real["G1 / T1 真机"]
     wbt --> sim
@@ -79,13 +86,55 @@ flowchart LR
   end
 ```
 
-## 工程要点
+## 源码运行时序图
 
-- **环境脚本分离：** `setup_isaacgym.sh`、`setup_isaacsim.sh`、`setup_mujoco.sh`、`setup_retargeting.sh`、`setup_inference.sh` 按子任务安装依赖。
-- **Wandb 集成：** 视频日志、ONNX 自动上传、从 Wandb 直接拉 checkpoint。
-- **机器人：** 官方 README 列出 **Unitree G1** 与 **Booster T1**；与 OmniRetarget 论文跨 embodiment 演示一致。
+图依据：基于 `amazon-far/holosoma@3b2c6fe` 的 `README.md`、`src/holosoma/holosoma/train_agent.py`、`src/holosoma/holosoma/run_sim.py` 与 `src/holosoma_inference/docs/workflows/sim-to-sim-locomotion.md` 核实。
 
-## 与其他页面的关系
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Retarget as robot_retarget.py
+    participant Train as holosoma/train_agent.py
+    participant Sim as holosoma/run_sim.py (MuJoCo)
+    participant Bridge as Robot SDK Bridge (lo / DDS)
+    participant Infer as holosoma_inference/run_policy.py
+    opt 运动数据重定向 (OmniRetarget)
+        Dev->>Retarget: OMOMO / LAFAN1 / MoCap 逐帧 SQP 重定向
+        Retarget-->>Dev: 输出机器人 .npz 轨迹
+    end
+    Dev->>Train: exp:g1-29dof-fast-sac simulator:isaacsim
+    Train-->>Dev: 导出 ONNX 策略至本地或 Wandb
+    par Sim2Sim 或真机双进程闭环
+        Dev->>Sim: 启动 MuJoCo 物理与桥接 (run_sim.py)
+    and
+        Dev->>Infer: 加载 ONNX 并绑定 --task.interface lo
+    end
+    loop 控制闭环
+        Sim->>Bridge: 发布机器人关节与本体状态
+        Bridge->>Infer: 转发观测并计算动作
+        Infer->>Bridge: 下发关节目标指令
+        Bridge->>Sim: 驱动 MuJoCo 或真机执行
+    end
+```
+
+## 工程实践
+
+| 项 | 说明 |
+|----|------|
+| **环境脚本分离** | `setup_isaacsim.sh`（Ubuntu 22.04+）、`setup_mujoco.sh` / `setup_mujoco_via_uv.sh`、`setup_inference.sh`、`setup_retargeting.sh` 按子任务隔离依赖 |
+| **仿真器版本边界** | `main` 分支已正式移除 IsaacGym 支持（仅保留在历史标签 `holosoma-v0.0.3` / `holosoma 0.0.3`）；当前主线支持 **IsaacSim、MJWarp** 训练与 **MuJoCo** 仅推理 |
+| **Wandb 集成** | 内置视频日志、ONNX 自动上传与直接从 Wandb 拉取 checkpoint |
+| **平台支持矩阵** | Unitree G1 支持 Locomotion 与 WBT（IsaacSim & MuJoCo）；Booster T1 当前支持 Locomotion，WBT 标为未支持 |
+| **下游衍生仓注意** | [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) 与 [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 锁定各自 `thirdparty/holosoma/` gitlink（RPL 仍依赖 IsaacGym 力扰动 API），不可直接用最新 `holosoma` main 替换 |
+
+## 局限与风险
+
+- **IsaacGym 与主线分叉：** 早期基于 IsaacGym 的衍生项目（如 RPL）无法直接升级到 `holosoma` `main`，必须单独维护 `holosoma-v0.0.3` 环境。
+- **平台与任务覆盖不对称：** `holosoma_inference` README 明确 Booster T1 尚不支持 WBT；真机部署目前主要针对 G1/T1 的 SDK 桥接。
+- **桥接传输开销：** 在 `run_sim.py` 中开启 SDK bridge 会给每个物理仿真步带来额外传输开销，需按 `bridge/README.md` 调优步频与通信参数。
+
+## 关联页面
 
 - [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 全身 RL 栈中的 PPO 路线需对齐仿真后端、参考动作与采样配置。
 - [SAC（Soft Actor-Critic）](../methods/sac.md) — 理解框架所列 FastSAC 的离策略、回放与熵正则背景，具体实现差异以框架版本为准。

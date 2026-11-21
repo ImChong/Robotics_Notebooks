@@ -3,8 +3,10 @@ type: entity
 tags: [quadruped, robot-hardware, westlake-robotics, westlake, navigation, inspection, elderly-care, china]
 title: 傲天U1（西湖机器人四足）
 status: complete
-summary: "傲天U1 是西湖机器人的四足机器狗：官网标 695×313×457.5 mm、15.7 kg、标准 / 极限负载 7 / 10 kg、续航 3–6 h，演示多楼层地图导航、递送、校园巡检与视觉区分草坪 / 道路；2025-10 报道已在杭州古荡、翠苑街道做养老助手（约 14 kg、激光雷达 + 摄像头）；发布日期官方未写。"
-updated: 2026-10-10
+summary: "傲天U1 是西湖机器人的四足机器狗产品：官网标 695×313×457.5 mm、15.7 kg、标准 / 极限负载 7 / 10 kg、续航 3–6 h，演示多楼层地图导航、递送、校园巡检与视觉区分草坪 / 道路；2025-10 报道已在杭州古荡、翠苑街道做养老助手（约 14 kg、激光雷达 + 摄像头）；发布日期官方未写。"
+updated: 2026-11-21
+original:
+  - ../../sources/sites/wlrobo-com.md
 institutions: [westlake-robotics]
 related:
   - ./westlake-robotics.md
@@ -79,6 +81,10 @@ flowchart LR
 **发布日期：** 官网与检索到的报道都没有给出傲天U1 的正式发布日；本库能确认的最早点名报道是 **2025-10-14**。
 
 **「小西」与傲天U1：** 两者都出现在古荡街道养老场景，深蓝盘点又把「小西」列为王东林团队的四足平台；**推测**「小西」是该四足在社区的昵称或早期型号，但没有来源直接说明二者为同一产品。
+
+## 源码运行时序图
+
+**不适用**：傲天U1 为商业四足硬件产品，官网未提供控制算法源码、权重或公开 SDK。
 
 ## 工程实践
 

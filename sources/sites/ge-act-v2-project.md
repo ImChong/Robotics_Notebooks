@@ -5,6 +5,8 @@
 - **站点**：<https://ge-act-v2.github.io/>
 - **论文**：<https://arxiv.org/abs/2609.05588>
 - **代码：** 页内标注 **Code · Coming soon**（无 URL）
+- **核对范围：** 通读官方项目页（<https://ge-act-v2.github.io/>，2026-11-21 复核正文与 AgiBot Research `featured.js`，确认仍未公布 GitHub 仓库或权重下载）。
+- **通读：** 已完成
 
 ## 一句话
 

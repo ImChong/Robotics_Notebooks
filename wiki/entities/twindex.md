@@ -13,7 +13,7 @@ tags:
   - x-square-robot
   - closed-source
 status: complete
-updated: 2026-09-02
+updated: 2026-11-21
 related:
   - ../tasks/teleoperation.md
   - ../queries/dexterous-data-collection-guide.md
@@ -26,6 +26,8 @@ related:
   - ../overview/humanoid-hardware-101-sensing-end-effectors.md
   - ./paper-wall-ss.md
   - ./xrzero-g0.md
+original:
+  - ../../sources/sites/x2robot-twindex.md
 sources:
   - ../../sources/sites/x2robot-twindex.md
 summary: "TwinDEX（自变量，2026-09-02）：三指 9 DoF（7 主动+2 被动）外骨骼与同构机械手共设计；宣称纯 robot-free 数据即可部署，采数吞吐 5.3× 真机遥操作。项目页未开源，论文待发。"

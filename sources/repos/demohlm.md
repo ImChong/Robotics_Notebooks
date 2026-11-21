@@ -1,41 +1,15 @@
-# DemoHLM
+# DemoHLM 仓库核查
 
-> 来源归档
+> 来源归档（repo / BeingBeyond GitHub）
 
-- **标题：** DemoHLM
-- **类型：** repo
-- **机构：** 智在无界（BeingBeyond）、北京大学（PKU）
-- **链接：** <https://github.com/BeingBeyond/DemoHLM>
-- **论文：** <https://arxiv.org/abs/2510.11258>
-- **项目页：** <https://beingbeyond.github.io/DemoHLM/>
-- **许可：** MIT（README badge）
-- **入库日期：** 2026-09-06（国内开源全景初录）
-- **再核日期：** 2026-09-20（arXiv ingest 步骤 2.5）
-- **一句话说明：** DemoHLM 官方 GitHub 组织仓；**当前为项目站镜像 + 引用信息**，尚无可复现的训练/数据生成/真机部署代码入口。
-- **沉淀到 wiki：** [`wiki/entities/paper-loco-manip-161-136-demohlm.md`](../../wiki/entities/paper-loco-manip-161-136-demohlm.md)
+- **URL：** <https://github.com/BeingBeyond/DemoHLM>
+- **机构 / 个人：** BeingBeyond（智在无界）
+- **仓库核查commit：** `cb913c1`（共 34 个文件，全部为 `README.md` 与 `docs/` 静态项目页资产，`.py`/`.sh` 可运行代码数为 0）
+- **开源结论：** **未开源可执行代码**（仓库仅托管项目主页镜像与论文引用说明，无 IsaacGym 数据生成脚本、AMO WBC 接口或真机部署源码）。
+- **核对范围：** 已通过 `gh api` 拉取并核对 `BeingBeyond/DemoHLM` 完整文件树及 `README.md @ cb913c1`；无训练/推理代码可供剖析。
+- **通读：** 已完成
 
----
+## 核心摘要
 
-## 开源状态
-
-- **部分开源（2026-09-20 核查）：** 仓库公开，但 `main` 分支仅含 `README.md` 与 `docs/`（Bulma 静态站、overview.svg、任务 demo mp4）。**无** `requirements.txt`、训练脚本、IsaacGym 环境或 checkpoint 发布。
-- **跟进建议：** 关注 org 后续 commit / release；复现仍以论文方法描述 + 项目页视频为准。
-
----
-
-## 仓库结构（2026-09-20）
-
-| 路径 | 说明 |
-|------|------|
-| `README.md` | 摘要、Website/arXiv 链接、BibTeX |
-| `docs/` | 项目页静态镜像（`index.html`、css/js、images、video） |
-
----
-
-## 与仓库内实体的关系
-
-| 关联 | 说明 |
-|------|------|
-| [paper-loco-manip-161-136-demohlm](../../wiki/entities/paper-loco-manip-161-136-demohlm.md) | 论文实体与方法归纳 |
-| [demohlm_arxiv_2510_11258.md](../papers/demohlm_arxiv_2510_11258.md) | arXiv 摘录 |
-| [demohlm.md](../sites/demohlm.md) | 项目页归档 |
+- `README.md` 链接了项目页 <https://beingbeyond.github.io/DemoHLM/> 与论文 `arXiv:2510.11258`，简述从单条演示合成大规模仿真轨迹以学习通用人形移动操作。
+- 仓库 `LICENSE` 标注 MIT，但截至 `cb913c1` 尚未包含源码、模型权重或仿真环境文件。
