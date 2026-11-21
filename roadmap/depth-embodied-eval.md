@@ -70,6 +70,7 @@ flowchart LR
 - [Query：具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md) — 四层决策树与逐层误判速查
 - [仿真评测可复现性 ↔ 真实代表性取舍](../wiki/concepts/sim-vs-real-eval-gap.md) — 这条 gap 的物理根因
 - [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — 姊妹链：先选模型家族，再回本路线做验收
+- [Bloomberg Primer：人形机器人热度与真实落地差距](../wiki/entities/bloomberg-primer-humanoid-hype-reality-2026.md) — 把视频演示、遥操作、数据缺口与 GXO 仓库试点的错误/人工介入拆成可验收证据
 
 ### 学完输出什么
 - 一张"我的评测链停在第几层、还缺哪一层"的自检表
