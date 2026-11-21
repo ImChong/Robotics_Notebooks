@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, sim2sim, sim2real, deployment, motion-tracking, benchmark, unitree-g1, mujoco, onnx]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-21
 project_id: egalahad-sim2real
 code: https://github.com/EGalahad/sim2real
 project: https://egalahad.github.io/sim2real/
@@ -24,6 +24,10 @@ sources:
   - ../../sources/repos/egalahad-sim2real.md
   - ../../sources/sites/egalahad-sim2real-docs.md
   - ../../sources/sites/egalahad-sim2real-leaderboard.md
+  - ../../sources/sites/mimiclite-official-guide-2026-11-11.md
+original:
+  - ../../sources/sites/egalahad-sim2real-leaderboard.md
+  - ../../sources/repos/egalahad-sim2real.md
 ---
 
 # sim2real：G1 部署运行时与跨代码库跟踪评测
@@ -52,6 +56,12 @@ flowchart LR
 ```
 
 仓库把 policy runtime 与执行后端解耦。Root project 负责推理、tracking 和 MuJoCo；Pico/XR retargeting、viewer 与 motion recording 使用单独环境。官方文档列出 x86_64 PC 通过 Ethernet 连接 G1，以及在 G1 onboard Orin 本地运行两种硬件布局。当前资料重点在 Unitree G1，不能据此推断任意 humanoid 都可直接部署。
+
+## 官方归属：RoboParty Lab 的跨代码库跟踪评测
+
+[RoboParty Party OS 的 MimicLite 使用指南 §6](https://roboparty.com/documents/party-os?doc=mimiclite&lang=zh) 将这个页面作为 tracking leaderboard 入口，并公开了运行命令。EGalahad/sim2real 的 README 将项目 citation 作者署为 **RoboParty Lab Team**，可将其理解为 RoboParty 使用的开源运动跟踪基准实现，而非另一份独立排行榜。
+
+它固定 **Unitree G1 + MuJoCo + CPU ONNX Runtime**，测量跟随给定参考动作的保真度与完成程度；不是跨机器人、跨硬件的真实运动控制能力总榜。此评测的 `Manipulation` 指手腕和全身运动**跟踪**，并不评测物体抓取成功率。
 
 ## Leaderboard：15 个条目映射到 10 个唯一项目节点
 
@@ -113,6 +123,53 @@ flowchart LR
 
 Manipulation-48 仍是 humanoid reference-motion tracking 集，不测抓取/插入等物体任务成功率。排行榜是可复现实验快照，不能脱离上述评估器、数据版本与指标口径直接比较不同论文的原始结果。
 
+## 源码运行时序图
+
+下图按官方 [评测启动脚本](https://github.com/EGalahad/sim2real/blob/main/scripts/tracking_experiment/run_motiondecode_eval.py)、[批量执行器](https://github.com/EGalahad/sim2real/blob/main/scripts/tracking_experiment/run_tracking_metrics_eval.py) 和 [评分脚本](https://github.com/EGalahad/sim2real/blob/main/scripts/tracking_experiment/compute_tracking_metrics.py) 的实际调用路径整理，而非推测性训练架构。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 研究者 CLI
+  participant R as MotionDecode runner
+  participant HF as Frozen HF datasets
+  participant B as Tracking eval batch
+  participant SIM as integrated_sim2sim
+  participant M as Offline metrics
+  U->>R: --download --policy name=deploy.yaml
+  R->>HF: snapshot_download 指定 revision
+  HF-->>R: G1 NPZ 和 checksums.json
+  R->>R: SHA256 和 ordered motion 校验
+  R->>B: 每个 split 调用批量运行器
+  loop 每个 policy 和 motion 与 seed=0
+    B->>SIM: python -m integrated_sim2sim onnx-cpu
+    SIM-->>B: 保存完整轨迹 NPZ
+  end
+  B->>M: compute_tracking_metrics.py
+  M-->>B: tracking_metrics.csv 和 json
+  B-->>R: runs.csv 和 summary.json
+  R-->>U: motiondecode_summary.json
+```
+
+## 复现：官方命令与冻结数据
+
+在 [sim2real 仓库](https://github.com/EGalahad/sim2real) 根目录使用已适配的 `policy.yaml`（需要匹配 ONNX、观测历史、关节顺序、PD 与 action scale）：
+
+```bash
+uv sync --extra inference-cpu
+uv run scripts/tracking_experiment/run_motiondecode_eval.py \
+  --download \
+  --policy my_policy=checkpoints/my_policy/policy.yaml \
+  --output-dir outputs/my_policy_motiondecode \
+  --max-workers 8
+```
+
+默认评估 Locomotion-80 与 Manipulation-48；追加 `--splits locomotion manipulation ground dance` 可评四组，追加第二条 `--policy name=path` 可比较不同策略。`--dry-run` 用于先下载与校验，不执行仿真；`--skip-existing` 只适用于冻结了策略、仿真和数据版本后的重新计分。官方冻结源是 ChingMu MotionDecode 的 G1 120 Hz 转换子集，并以 [motiondecode.json](https://github.com/EGalahad/sim2real/blob/main/scripts/tracking_experiment/manifests/motiondecode.json) 的独立 revision 与 SHA256 校验保证输入一致。每个 split 输出原始 trajectories、`runs.csv`、`tracking_metrics.csv/json`、`summary.json`，顶层另有 `motiondecode_summary.json`。
+
+**评分关键约束：** 运行 seed 0、50 Hz policy frames、初始暂停 0、无 runtime cap；骨盆高度差严格大于 **0.3 m** 或投影重力 Z 差严格大于 **0.8** 则判失败。失败后的位置误差不进入均值，Tracking Return 不含失败帧，因此必须把 **Body Pos 与 Progress 一起看**。Global Root 是 Locomotion 专属、起始 XY/yaw 对齐后的有效终点 XYZ 距离；历史 root 轨迹均值口径不能直接与之混合比较。原始 MotionDecode 数据许可仍适用，不应改采样或未经验证转到其他机器人。
+
+**结果解释补充：** 官方 [README](https://github.com/EGalahad/sim2real/blob/main/README.md) 还报告各发布策略所需未来参考动作窗口（motion-lookahead）：Mimic Lite v1.1 为 0.08 s、HEFT 为 0.12 s、SONIC release 为 0.90 s、SONIC low-latency 为 0.18 s；这是参考窗口需求而不是真实端到端推理时延。榜单 GPU Hours 来源与训练流程可能不同，不等于相同设备实测的可比训练成本。
+
 ## 使用与边界
 
 - 安装入口采用 uv；CPU 推理 extra 可用于通用环境，G1 真机 mode 需额外安装对应 SDK/依赖并遵照网络与硬件配置文档。
@@ -125,6 +182,7 @@ Manipulation-48 仍是 humanoid reference-motion tracking 集，不测抓取/插
 - [仓库归档](../../sources/repos/egalahad-sim2real.md)
 - [官方文档归档](../../sources/sites/egalahad-sim2real-docs.md)
 - [排行榜和评测协议归档](../../sources/sites/egalahad-sim2real-leaderboard.md)
+- [RoboParty 官方 MimicLite 第 6 章来源归档](../../sources/sites/mimiclite-official-guide-2026-11-11.md)
 
 ## 关联页面
 
