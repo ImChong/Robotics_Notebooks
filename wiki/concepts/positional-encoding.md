@@ -2,13 +2,14 @@
 type: concept
 tags: [transformer, deep-learning, attention, positional-encoding, llm]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 summary: "位置编码为序列注意力提供位置信号：从 GPT-2 可学习绝对向量、Transformer 固定正弦向量，到 RoPE 的 Q/K 旋转与 Partial RoPE、NoPE、相对位置偏置；区分数学相对性、上下文外推与工程内存收益。"
 related:
   - ./transformer.md
   - ./multi-head-attention.md
   - ../entities/paper-attention-is-all-you-need.md
   - ../entities/llms-from-scratch-raschka.md
+  - ../entities/inkling-2-mini.md
   - ../../roadmap/depth-model-architecture.md
 original:
   - ../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md
@@ -168,6 +169,7 @@ sequenceDiagram
 - [Attention Is All You Need](../entities/paper-attention-is-all-you-need.md) — 原始正弦编码与 Transformer 基线
 - [LLMs-from-scratch（Sebastian Raschka）](../entities/llms-from-scratch-raschka.md) — 可读的 PyTorch 实现
 - [模型架构纵深路线 Stage 1](../../roadmap/depth-model-architecture.md) — 学习路径入口
+- [Inkling 2 Mini](../entities/inkling-2-mini.md) — 循环 Transformer 实例；模型的相对位置处理应以具体模型配置为准
 
 ## 参考来源
 
