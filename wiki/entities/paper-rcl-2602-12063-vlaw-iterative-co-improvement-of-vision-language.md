@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, vla, manipulation, model-based-rl]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 project_id: "vlaw-2602-12063"
 arxiv: "2602.12063"
 venue: "ICML 2026"
