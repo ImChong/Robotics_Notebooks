@@ -6,6 +6,10 @@
 - **类型：** site（项目页 + 交互 demo + 数据集可视化）
 - **URL：** <https://omnicontact.github.io/>
 - **论文：** <https://arxiv.org/abs/2606.26201>
+- **训练代码：** <https://github.com/Ingrid789/OmniContact>（CF-Track / Isaac Lab）
+- **部署代码：** <https://github.com/Ingrid789/OmniContact_sim2sim>（CF-Gen / MuJoCo）
+- **数据集：** <https://huggingface.co/datasets/lightcone02/OmniContact-Dataset>
+- **链接复核：** 2026-11-21，官方页面分别列出 Github Training Code、Github Test Code 和 Dataset
 - **机构：** 诺亦腾机器人（Noitom Robotics）、香港科技大学（HKUST）、武汉大学（WHU）、香港大学（HKU）
 - **入库日期：** 2026-07-01
 - **一句话说明：** 官方页：框架概览、MuJoCo WASM + ONNX 在线策略 viewer、OmniContact 数据集 t-SNE/动作预览、meta-skill 泛化/chaining/recovery 视频、VLM 语义任务与 G1 交互 GLB 序列、baseline 对比。

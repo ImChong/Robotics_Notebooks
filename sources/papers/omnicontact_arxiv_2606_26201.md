@@ -15,6 +15,10 @@
 - **机构：** 诺亦腾机器人（Noitom Robotics）、香港科技大学（HKUST）、武汉大学（WHU）、香港大学（HKU）
 - **硬件：** Unitree G1（29 DoF）；项目页含 MuJoCo WASM + ONNX 在线 viewer 与 G1 交互 GLB 序列
 - **入库日期：** 2026-07-01
+- **原文版本：** arXiv:2606.26201v1（2026-06-24）
+- **原文复核日期：** 2026-11-21
+- **核对范围：** 通读 arXiv HTML v1 的 Introduction、Related Work、Method §§3.1–3.5、Experiments §§4.1–4.3、Conclusion，以及附录 A–F（数据集、技能相位、鲁棒性与长时程实验、训练配置、评测协议、VLM 案例）；交叉核对项目页与官方 CF-Track 训练、CF-Gen/MuJoCo 部署仓库 README 和实际训练/仿真入口。
+- **通读：** 已完成
 - **一句话说明：** 以 **Contact Flow（CF）**——稀疏关键体轨迹 + 四端二进制接触信号——作为规划–执行共享接口：**CF-Track** 统一 RL 低层 meta-skill 库，**CF-Gen** 规则合成/在线重规划实现长时程技能链与自主恢复；配套 **OmniContact MoCap HOI 数据集**（1,274 序列 / 22.29 h）与 MuJoCo sim2sim 部署栈。
 
 ## 核心论文摘录（MVP）
@@ -91,6 +95,12 @@
   - 项目页 t-SNE：**74,641** MoCap clips 按 skill 着色。
 - **对 wiki 的映射：**
   - [OmniContact Dataset](../../sources/datasets/omnicontact-dataset.md)、[Motion Retargeting](../../wiki/concepts/motion-retargeting.md)。
+
+## 2026-11-21 原文复核补充
+
+- **评测范围：** 主实验为仿真随机目标测试；5 个种子 × 每种子 200 回合，合计约 1,000 回合/任务（Appendix E.1）。论文附录 D.1 另说明 G1 真机使用 Noitom 动捕，机器人 pelvis 与物体挂 tracker 获得全局位置，策略 50 Hz、动捕 100 Hz；不能把动捕辅助的演示等同于无外部定位的自主部署。
+- **40 分钟耐力的边界：** Appendix C.4 Table 10 中，协议 I（同一物体连续目标）40 min 存活率为 **100%**，协议 II（单物体重新采样）为 **29.5%**，协议 III（五物体连续目标）仅 **10.0%**。不能只引用「40 分钟」作为所有长时程任务的成功率。
+- **新增官方训练代码：** [Ingrid789/OmniContact](https://github.com/Ingrid789/OmniContact) 已公开 CF-Track 在 Isaac Lab 2.1.1 / Isaac Sim 4.5.0 下的 PPO/AMP MLP、Transformer 训练与回放；入口 `scripts/rsl_rl/train.py`、`scripts/rsl_rl/play.py`，区别于 [MuJoCo CF-Gen/部署仓库](https://github.com/Ingrid789/OmniContact_sim2sim)。后者 README 将可选策略明确为 `omnicontact_transformer.onnx` 和 `omnicontact_mlp.onnx`。
 
 ## 对 wiki 的映射（汇总）
 
