@@ -14,6 +14,7 @@ related:
   - ./astranomy.md
   - ./robolab.md
   - ../methods/vla.md
+  - ../tasks/manipulation.md
   - ../concepts/world-action-models.md
   - ../concepts/control-inference-frequency-decoupling.md
   - ../concepts/llm-robotics-control-interfaces.md
@@ -59,7 +60,7 @@ Fortune 于 **2026-11-13** 报道并引述 OpenAI 确认：撤销 stand-alone ro
 
 | 公开一手材料 | 文章提及的结果 | 条件 / 不能直接外推的边界 |
 |---|---|---|
-| [NVIDIA Astranomy](https://research.nvidia.com/labs/srl/projects/astranomy/) | RoboLab-120：GPT-6 Astra **Direct 66.3%**、**Agentic 74.8%**、**Orchestrated 66.5%**；报告图中的 Lakeside **51.0%** | 仿真 DROID 形态、120 任务、每任务 5 次；模型推理期间**物理暂停**；Direct 平均 **18.56 秒/调用**，Agentic 平均 **$36.40/成功 episode**（报告估算），非实时真机指标 |
+| [NVIDIA Astranomy](https://research.nvidia.com/labs/srl/projects/astranomy/) | RoboLab-120：GPT-6 Astra **Direct 66.3%**、**Agentic 74.8%**、**Orchestrated 66.5%**；报告图中的 Lakeside **51.0%** | 仿真 DROID 形态、120 任务、每任务 5 次；模型推理期间**物理暂停**；Direct 平均 **18.56 秒/调用**，Agentic 平均 **$36.40/episode**（报告估算），非实时真机指标 |
 | [RoboLab 实时榜](https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html) | 本次核对显示 AMP1（Agentic LM）**86.0%**（2579/3000），Lakeside 51.0% | 报告「最强显示对照 51%」**不能当实时全榜最高值**；策略类型、运行次数和训练条件不同，不能跨列概括 |
 | [Anthropic Fable 5.2](https://www.anthropic.com/claude-fable-and-mythos-5-2) | **RoboDojo Sim 64.9%**，同 harness 的 Fable 5.1 为 **27.6%**、GPT-6 Astra 为 **29.8%** | Anthropic 内部运行；和 RoboLab 是**不同任务/平台/评测协议**，不能把 64.9 与 74.8 直接比较 |
 | [Google DeepMind Gemini Robotics 2.5](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/) | Apptronik Apollo 2 在 Mercedes-Benz 产线零件装盘概念验证中报 **96%**；Gemini Robotics ER 管工作流、2.5 action model 管手臂 | 厂商发布的**特定试点**结果，不代表跨工位零样本或产业标准化认证；这恰好体现通用推理与**专用动作模型并存** |
@@ -145,6 +146,7 @@ flowchart TD
 - [Astranomy：Astra 原生机器人策略](./astranomy.md) — 66.3%、74.8%、推理延迟和仿真暂停的证据来源。
 - [RoboLab-120](./robolab.md) — 基准定义、协议与动态榜单读法。
 - [VLA](../methods/vla.md) — 专用动作策略并未因为通用模型做规划而在定义上消失。
+- [机器人操作任务](../tasks/manipulation.md) — 将语义推理效果落实到抓放、接触与任务执行的成功判据。
 - [世界–动作模型（WAM）](../concepts/world-action-models.md) — 不应将全部物理世界预测方案当成一个待被取代的产品类别。
 - [控制–推理频率解耦](../concepts/control-inference-frequency-decoupling.md) 和 [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 分层执行的具体工程入口。
 - [Physical AI 总览](../overview/physical-ai.md) — 对接数据、仿真、模型和真实执行。
