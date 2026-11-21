@@ -32,7 +32,7 @@ summary: "机器人结构静刚度：从工艺 TCP 精度要求分配连杆/关�
 | FEA | Finite Element Analysis | 有限元分析，预测连杆/结合面受载变形 |
 | FEM | Finite Element Method | 有限元法，FEA 的数值建模方法 |
 | ISO | International Organization for Standardization | ISO 9283 规定工业机器人性能与相关测试方法 |
-| RV | Rotary Vector | 工业用摆线针轮类精密减速器的常见产品类别称呼 |
+| RV | Rotor Vector | Nabtesco 对该系列精密摆线减速器名称的官方释义 |
 
 ## 为什么重要
 
