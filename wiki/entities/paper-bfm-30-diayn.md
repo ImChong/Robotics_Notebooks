@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, unsupervised-rl, skill-discovery, google, berkeley, awesome-bfm-papers, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "1802.06070"
 venue: "2018 · ICLR"
 code: https://github.com/ben-eysenbach/sac/blob/master/DIAYN.md
@@ -26,6 +26,8 @@ sources:
   - ../../sources/papers/rcl_awesome_wam_ref_8c0a34d0c6ab6b64e3ae_diversity-is-all-you-need-learning-skill.md
   - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
+original:
+  - ../../sources/papers/bfm_awesome_diayn_iclr_2018.md
 summary: "DIAYN（ICLR 2018）：互信息 + 最大熵 SAC 无奖励发现可区分技能；Ant 涌现走/跳/翻，可作 BFM 03 类 intrinsic 预训练与下游 init/分层/模仿的原型。"
 ---
 

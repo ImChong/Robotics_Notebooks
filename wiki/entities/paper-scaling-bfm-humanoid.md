@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, behavior-foundation-model, motion-tracking, scaling-law, transformer, ppo, unitree-g1, isaac-lab, cuhk, sjtu, zju, pku, tsinghua, galbot, shanghai-ai-lab, sim2real]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-21
 arxiv: "2607.15163"
 venue: "arXiv 2026"
+code: https://github.com/zengweishuai/ScaleBFM
 related:
   - ./egalahad-sim2real.md
   - ../concepts/behavior-foundation-model.md
@@ -24,12 +25,19 @@ sources:
   - ../../sources/sites/scalebfm-github-io.md
   - ../../sources/repos/scalebfm.md
   - ../../sources/repos/scalebfm-plus.md
+original:
+  - ../../sources/papers/scaling_bfm_arxiv_2607_15163.md
+  - ../../sources/repos/scalebfm.md
 summary: "ScaleBFM（arXiv:2607.15163）系统给出人形 BFM 规模化配方：全局坐标系 integrated whole-body motion tracking + on-policy rollout 数量与参考运动多样性协同 + Humanoid Transformer（3M 参数）；Unitree G1 真机 50 Hz，whole-body 模式相对 SONIC 等基线 G-MPKPE 最高降约 82%（global）、L-MPKPE 降 >10%（local）。"
 ---
 
 # ScaleBFM（Scaling Behavior Foundation Model for Humanoid Robots）
 
 **ScaleBFM** 是上海人工智能实验室牵头、多校与 Galbot 合作的人形 **BFM scaling 技术报告**（arXiv:2607.15163，[项目页](https://scalebfm.github.io/)）：在 [BFM](./paper-behavior-foundation-model-humanoid.md) 同团队的「行为与任务解耦」叙事上，把 **motion tracking** 确立为可扩展预训练范式，并实证 **学习范式 × 训练数据 × Humanoid Transformer 架构** 三轴如何协同放大控制保真度与跨域泛化。
+
+## 一句话定义
+
+**把 PPO 全局坐标系整体动作跟踪作为可扩展预训练代理任务，用并行 GPU × 滚动步数（数量）协同多源异质动作库（多样性）与 3M 档 Humanoid Transformer（RMSNorm 超球面潜空间），让单一 G1 策略同时兼容从仅根节到全身 8 种控制模式并零样本真机部署。**
 
 ## 英文缩写速查
 
@@ -138,7 +146,7 @@ flowchart TB
 - 数据扩展分两种 regime：**同质扩展**（域内 occupancy 已 ~0.94）只有边际收益，**异质扩展**（S→L，occupancy→0.9995）才在跨源未见动作的 Ours Test 上大幅提升；on-policy 侧则需 GPU width 与 rollout horizon **联合扩维**，单扩一维不稳定。
 - 架构确实 matters，但不是单调「越大越好」：3M 参数的 Humanoid Transformer 已优于显著更大的 MLP，继续放大则出现 **跨控制模式的 trade-off**，与共享 RMSNorm 超球面潜空间的模式收敛直接相关。
 - 适用边界在部署侧：**Global 模式依赖外部根定位**（VIVE Ultimate Tracker），换到无全局定位的 Local 模式后 whole-body Succ 掉到 0.73；读表必须把指标绑定「模式 + G-/L-MPKPE 口径」，否则容易得出相反结论。
-- 工程与开源：训练在 IsaacLab、评测走 MuJoCo sim-to-sim，真机为 [Unitree G1](./unitree-g1.md) 50 Hz BFM + 200 Hz PD；截至 2026-07-18 **代码待发布**，属部分开源，勿假设可即刻复现。
+- 工程与开源：训练在 IsaacLab、评测走 MuJoCo sim-to-sim，真机为 [Unitree G1](./unitree-g1.md) 50 Hz BFM + 200 Hz PD；官方上游仓库 [`zengweishuai/ScaleBFM`](https://github.com/zengweishuai/ScaleBFM) 现已开源 ScaleRetarget / ScaleTrack / ScaleBridge 全链路代码与预训练权重（HuggingFace `WeishuaiZeng/ScaleBFM`）。
 - 定位上它与 [BFM（CVAE）](./paper-behavior-foundation-model-humanoid.md) 是互补路线而非 v2，相对 [SONIC](./nvidia-sonic.md) 的增量在于把 scaling 拆成可分别度量的三轴，而 [ReactiveBFM](./paper-reactivebfm.md) 在这层基座上叠高层闭环规划。
 
 ## 与其他工作的关系
@@ -148,11 +156,36 @@ flowchart TB
 - **[ReactiveBFM](./paper-reactivebfm.md)**：共享 Zeng / Niu / Pang / Wang 等作者；ScaleBFM 提供 **低层可扩展 tracker 基座**，ReactiveBFM 在其上叠 **闭环 AR-MDM 规划**。
 - **[Perceptive BFM](./paper-perceptive-bfm.md)**：补 **地形感知** 与 operator–environment mismatch；ScaleBFM 假设参考在全局/局部重锚定后可跟踪，未显式建模楼梯/块级几何。
 
-## 工程实践与开源状态
+## 源码运行时序图
 
-- **训练：** IsaacLab（Unitree G1, 29 DoF）；评测 MuJoCo sim-to-sim。
-- **真机：** G1 + 板载/外接 GPU；Wi-Fi TCP 缓冲带时间戳的流式控制信号；八模式可 **在线切换**。
-- **开源（截至 2026-10-25）：** 项目页链接的上游仓库已公开 ScaleRetarget、ScaleTrack 与 ScaleBridge 的代码和指南。用户提供的 fork [`Hxxxz0/ScaleBFM_Plus`](https://github.com/Hxxxz0/ScaleBFM_Plus) 还记录 SuperMimic-style 学习世界模型训练、32 步 imagined BPTT，以及 M checkpoint / ONNX 导出；其约 26× 训练速度和与 ScaleBFM-M 持平的跟踪结果是 fork 维护者报告，不是论文原文结果。
+节点对齐 [`zengweishuai/ScaleBFM`](https://github.com/zengweishuai/ScaleBFM)（[sources/repos/scalebfm.md](../../sources/repos/scalebfm.md) 与 `ScaleTrack/README.md`）实际入口：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 维护者
+    participant RET as ScaleRetarget/<br/>retarget.py
+    participant PKG as package_motions.py +<br/>create_yaml.py
+    participant TR as rsl_rl/train.py<br/>(OnPolicyRunner)
+    participant EXP as play_export_check_<br/>humanoid_transformer*.py
+    participant DEP as ScaleBridge/<br/>scalebridge/run.py
+    U->>RET: 多源 SMPL/BVH 重定向至 Unitree G1 (.pkl)
+    U->>PKG: 重采样 50 FPS 并生成 motions.yaml
+    U->>TR: 单卡/多机 torchrun (--task G1-BFM-Transformer-Tracking)
+    loop 共享内存运动库 + PPO
+        TR->>TR: LOCAL_RANK=0 加载 npz 至共享内存 → OnPolicyRunner.learn()
+    end
+    U->>EXP: 导出 mode_table.pt 与 *_tensorrt.pt / _onboard.py aarch64 编译
+    EXP-->>DEP: 下发 checkpoint + metadata JSON
+    DEP->>DEP: bfm_agent.before_step / get_action → MuJoCo 或实机 G1 LCM
+```
+
+## 工程实践
+
+- **训练：** IsaacLab（Unitree G1, 29 DoF）；多机 `torchrun` 时每节点仅 `LOCAL_RANK=0` 读取 `.npz` 并写入共享 CPU 内存以节省显存与 I/O。
+- **回放与模式切换：** `rsl_rl/play.py` 支持 `--mode_index 0..7` 切换 8 种掩码控制模式及 `--local_tracking`（要求当前模式含 Pelvis）。
+- **真机：** G1 机载 aarch64 不可直接复用 x86_64 TensorRT 引擎，须在机器人端执行 `play_export_check_humanoid_transformer_onboard.py` 重编引擎；`ScaleBridge/scalebridge/run.py` 经 LCM + SDK2 驱动 200 Hz PD，并接入 VIVE Tracker（Global 模式）或 Wi-Fi TCP 流式指令。
+- **开源与社区扩展（2026-11-21 复核）：** 上游仓库 [zengweishuai/ScaleBFM](https://github.com/zengweishuai/ScaleBFM)（1,263 文件）已公开 `ScaleRetarget`、`ScaleTrack` 与 `ScaleBridge`，并于 HF `WeishuaiZeng/ScaleBFM` 提供 M（3M）/ XL checkpoint（`model_22200.pt`）。fork [`Hxxxz0/ScaleBFM_Plus`](https://github.com/Hxxxz0/ScaleBFM_Plus) 另增 SuperMimic-style 世界模型 32 步 imagined BPTT 与 ONNX 导出（仓库自报单步 26× 加速与持平 ScaleBFM-M，不作原文结论）。
 
 ## 常见误区或局限
 

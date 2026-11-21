@@ -2,7 +2,7 @@
 type: method
 tags: [bfm, teacher-student, multi-skill, humanoid, reinforcement-learning]
 status: complete
-updated: 2026-07-14
+updated: 2026-11-21
 summary: "BFM 路线之一：用 Teacher-Student 在仿真特权信息下学习多动作/多技能跟踪，再蒸馏为可部署策略；与 BFM-Zero（FB 无监督）和 SONIC（规模化跟踪）并列。"
 related:
   - ../concepts/behavior-foundation-model.md
@@ -12,6 +12,9 @@ related:
   - ../concepts/privileged-training.md
   - ../../roadmap/depth-bfm.md
 sources:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
+  - ../../sources/papers/humanoid_motion_control_know_how.md
+original:
   - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
 ---

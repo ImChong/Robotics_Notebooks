@@ -10,6 +10,8 @@
 - **代码/项目：** <https://github.com/ZhengyiLuo/PHC>
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `arXiv:2305.06456v3` 全文 PDF（全 841 行抽取文本：摘要、§1–§6、Table 1–6 与附录）及官方仓 `ZhengyiLuo/PHC` `README.md` 与训练/PMCP 入口列表。
 - **一句话说明：** 长期稳定 avatar 控制；身体行为连续性是 BFM 前置积累。
 
 ## 核心摘录（策展，非全文）

@@ -6,7 +6,9 @@
 - **类型：** course-map / long-form guide
 - **来源：** 飞书 <https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87>
 - **入库日期：** 2026-04-18
-- **最后更新：** 2026-07-14（全文再 ingest）
+- **最后更新：** 2026-11-21（核对全 2269 行导出正文通读状态）
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读本地完整 Markdown 导出 `sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md` 全 2269 行（含全部章节原理、伪代码与工程局限）。
 - **一句话说明：** RoboParty 万字长文：趋势、双学习路线、建模+求解、Sim2Real、技术框架五条思考、Model-based 七段链与 Learning-based 全方法族；每法「原理 / 伪代码 / 局限性」。
 
 ## 全文归档

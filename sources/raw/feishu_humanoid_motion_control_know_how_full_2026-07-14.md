@@ -9,6 +9,9 @@ note: 用户提供的全文 Markdown 导出；内嵌图片路径为 Images_attac
 
 # 人形机器人运动控制Know\-How
 
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读飞书导出的全部 2269 行正文（含 §1 趋势、§2–§4 路线/框架、§5 Model-based、§6 Learning-based（RL/DAgger/DreamWaQ/PIE/Attention/Retarget/DeepMimic/AMP/BFM）与全部伪代码及局限性）。
+
 # 人形机器人运动控制发展趋势
 
 ![图片5\.png](Images_attachments/图片5.png)
