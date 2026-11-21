@@ -121,6 +121,8 @@ flowchart LR
 - 有哪些专门针对 contact-rich 的学习方法
 
 ### 推荐读什么
+- [PSR（预测式接触感觉运动表征）](../wiki/entities/paper-psr-vla.md) — 先预测 F/T、关节 effort 与位移，再跨层注入 π0.5；核对六类真机任务与传感同步。
+- [Co-VLA（双臂协同）](../wiki/entities/paper-co-vla.md) — 用共享/残差动作分解与 LAC 处理交接同步；与接触动力学感知 PSR 互补。
 - [XHAND 1 Pro-U：DexUMI 兼容灵巧手](../wiki/entities/xhand-1-pro-u.md)：对齐外骨骼示教关节与五指手动作映射。
 - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
 - [Diffusion-Based Impedance Learning｜扩散式阻抗学习](../wiki/entities/paper-diffusion-based-impedance-learning-2509-19696.md) — 由外力条件扩散模型重建 sZFT，再按能量与任务方向在线调刚度，比较圆柱/方/星形 peg-in-hole 的接触泛化。
