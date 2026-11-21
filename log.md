@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-22] ingest | company-nodes-health — 按公司路线批量补全 165/167 个未满分节点一手原文核读、阅读骨架与 Mermaid 图表至 3/3（其余 2 项因反爬/验证码门禁保留未完成记录）
+
 ## [2026-11-21] ingest | 力矩电机设计纵深 42 节点（Clusters A-D）原文通读与阅读骨架补齐，roadmap/depth-torque-motor-design.md 直连 70 节点全部 3/3
 
 ## [2026-11-21] ingest | 完成导航纵深 Stage 1–5 剩余节点（Stage 1/2/3/4/5 共 33 页）原文通读与代码入口核验，roadmap/depth-navigation.md 达成 69/70 满分（仅 paper-3d-ic 因 OpenReview 403 阻断保留 2/3）
