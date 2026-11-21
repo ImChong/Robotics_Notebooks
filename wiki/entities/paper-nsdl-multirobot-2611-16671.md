@@ -3,7 +3,7 @@ type: entity
 project_id: nsdl-multirobot-2611-16671
 tags: [paper, robot-agent, multi-robot, task-planning]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.16671"
 code: https://github.com/Xincheng-Tan/NSDL
 original:
@@ -101,6 +101,11 @@ sequenceDiagram
 1. 对照同数据与同测评协议，不混淆不同平台/样本统计口径。
 2. 在复现前单列训练数据、预训练、控制接口和硬件依赖。
 3. 验证边界是研究结论的必要组成，不能由示例直接推出可量产部署。
+
+## 与其他工作对比
+
+- **对比端到端多机器人规划器（VIKI-L2，Table I）：** 在同一 7B 骨干上，端到端训练基线 `VIKI-R 7B (SFT+GRPO)` 虽在 ID 达 0.952，但 OOD 骤降至 **0.333**（`Ans-SFT 7B` 为 0.256；零样本 `GPT-4o` / `Qwen2.5-VL` 仅 0.004–0.226 ID / 0.000–0.100 OOD）；而 `NSDL 7B (SFT)` 在 ID/OOD 分别达 **0.980 / 0.970**（拒绝率 0.0%），且在 3B 与 Qwen3-VL-8B 上均保持显著抗分布外退化优势。
+- **对比形式化翻译基线（Formalize-then-plan）与无求解器消融（Tables I–II）：** 将目标判定完全交给固定规则的 `Prompt-only`（VIKI 0.086 / 0.022）、`Full-translation`（0.513 / 0.674）与 `Trained-translation`（0.637 / 0.406；LOCUS 均分 0.415）均明显落后于 NSDL。在 LOCUS-Bench 上，`NSDL-RL 7B` 均分达 **0.513**（ID 0.839），高于 `NSDL-SFT 7B`（0.472）、原生协议 `VIKI-R 7B`（0.269）与同工具零样本 `gpt-5.6-terra`（0.168）；移除确定性求解器 `Φ`（`w/o Φ`）使 VIKI OOD 下降 9.9 分、LOCUS 均分跌至 0.315 且拒绝率由 0.2%/0.5% 飙升至 23.2%。
 
 ## 局限与风险
 

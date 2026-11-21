@@ -3,7 +3,7 @@ type: entity
 project_id: physical-action-training-recipe-2611-16450
 tags: [paper, imitation-learning, formalization, robot-learning]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.16450"
 original:
   - ../../sources/papers/physical-action-training-recipe-2611-16450.md
@@ -82,6 +82,11 @@ flowchart LR
 1. 先复核指标口径与论文约束，再比较其他策略或系统。
 2. 将作者验证的模块和尚未发布/未复现的模块分开记录。
 3. 把误差、失败模式与传感器/真实场景分布偏移作为后续验收依据。
+
+## 与其他工作对比
+
+- **对比经验型 Scaling Law 与数据配比研究（§1 Related Work）：** 既有机器人缩放或数据混比研究（如分布鲁棒混合物、示范多样性分析）多围绕特定策略训练后的任务成功率或经验损失曲线展开；本文则固定共同的条件专家目标 `p_ξ(a|h)` 与精确对数损失/KL 口径（Table 1 展示在固定策略下条件熵变化会使 KL 与 NLL 方向出现分化），在统一概率分析账本下拆分容量、目标加权采集、表征信息损失、优化泛化与部署分布偏移五项决策。
+- **对比预训练视觉表征在公开轨迹上的实证分析（Fig. 1）：** 在 PushT 固定特征几何分析中对比了预训练 ResNet-50、CLIP 与 DINOv2 四层深度的信息保留差异；但本文明确属于理论分析与数值校准论文，不训练新机器人控制策略，也不与 VLA/BC 实体模型直接对比闭环成功率。
 
 ## 局限与风险
 
