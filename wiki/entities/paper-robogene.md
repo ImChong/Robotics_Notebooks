@@ -4,7 +4,7 @@ project_id: robogene
 tags: [paper, vla, manipulation, data-generation, dataset, x-humanoid]
 topic: [vla, manipulation]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-21
 arxiv: "2602.16444"
 project: https://robogene-boost-vla.github.io/
 original:
@@ -100,6 +100,8 @@ flowchart TB
 5. **注意实验计数**：18k 是四种任务生成方法合计采集的轨迹，不能夸大成单一方案产量。
 
 ## 与其他工作对比
+
+- **同名消歧：** [元客视界 RoboGene 商用多模态数据采集系统](./ymate-robogene-data-collection.md) 基于 FZMotion 动捕和数据管理，不是本论文的 LLM 任务生成器；不同发布方、功能与公开资源，不可混用指标。
 
 - [RoboAug](./paper-roboaug.md)：在**既有演示轨迹**上做物体分割、背景合成和区域对比；RoboGene 在**采集之前**规划任务覆盖。
 - [Robo-ValueRL](./paper-robo-valuerl.md)：在**采集之后**评价哪些动作有用；RoboGene 解决前端“采什么”的问题。
