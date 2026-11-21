@@ -17,6 +17,8 @@ tags:
   - amazon-far
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/ladderman_arxiv_2606_05873.md
 arxiv: "2606.05873"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -71,8 +73,7 @@ summary: "LadderMan（arXiv:2606.05873，Amazon FAR）两阶段：hybrid motion 
 - **深度 sim-to-real 新配方：** 相对重度 depth randomization，**VFM 真机深度 + RFM + 极简噪声** 在 **细薄踏棍** 上更关键（真机消融：w/o VFM **3/10**，w/o RFM **0/10**）。
 - **梯上 loco-manipulation：** **双智能体** 下身稳、上身跟 VR，相对 **TWIST2** 等现成全身遥操作在梯顶不易失稳——把「能爬上去」延伸到 **维护/搬运类任务**。
 
-## 方法
-
+## 核心原理
 | 模块 | 作用 |
 |------|------|
 | **Stage 1 专家** | 对每个目标梯子 $(\phi,z)$ 训 **状态专家** $\pi^{\text{expert}}_{\phi,z}$；**hybrid tracking** + **接触/攀爬奖励** + 梯子相对位姿观测 |
@@ -164,6 +165,11 @@ flowchart TB
 | 蒸馏 | **DAgger + PPO + KL** | DAgger | DAgger + PPO | 分速专家 | 单阶段 MoE |
 | 操作 | **梯上双智能体 VR** | 2 kg 载荷行走 | — | — | 全身 LLC |
 | 平台 | **G1** | G1 | G1 | LimX Oli | G1 |
+
+## 工程实践
+
+- **教师–学生深度表征蒸馏：** Stage 1 特权教师依赖梯档真值位姿先学会多点抓握与脚踏切换；Stage 2 通过 DAgger 蒸馏至机载双摄深度图输入，并对强反光金属梯柱加入图像噪声与掩码随机化。
+- **攀爬与梯上操作解耦：** 到达目标高度后锁死脚/单手抓牢梯柱作为锚点，再交由上肢遥操作完成涂画或灯泡更换。
 
 ## 关联页面
 

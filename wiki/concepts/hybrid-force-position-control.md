@@ -3,6 +3,8 @@ type: concept
 tags: [control, manipulation, force-control, position-control, contact-rich, assembly]
 status: complete
 updated: 2026-11-06
+original:
+  - ../../sources/papers/contact_dynamics.md
 summary: "力位混合控制把不同方向上的控制目标拆分为位置跟踪与力跟踪两类，是接触丰富操作中最常见的执行层结构之一。"
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
@@ -33,7 +35,9 @@ related:
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| F/T | Force/Torque Sensor | 六维力/力矩传感器，提供法向力闭环反馈 |
+| Task Frame | Compliance / Constraint Frame | Mason 任务坐标系，正交切分位置与力子空间 |
+| DoF | Degrees of Freedom | 末端任务空间中按 $S$ 与 $\bar{S}$ 分配的自由度 |
 
 ## 为什么重要
 
@@ -41,8 +45,17 @@ related:
 
 力位混合控制（Hybrid Control）通过 **任务空间的正交分解**，在不同的物理维度上分别满足位置约束和力约束。它是工业装配（插拔、打磨）、协作机器人交互以及人形机器人精细操作的基础。
 
-## 核心原理：任务框架（Task Frame）
+## 核心原理
 
+```mermaid
+flowchart LR
+  TASK["Task Frame 分解"] --> POS["位置子空间 S (切向)
+f_pos"]
+  TASK --> FRC["力子空间 S̄ = I - S (法向)
+f_force"]
+  POS --> SUM["τ = Jᵀ (S·f_pos + S̄·f_force)"]
+  FRC --> SUM
+```
 力位混合控制的核心在于 **Mason 提出的任务框架（Task Frame）** 概念。在接触发生时，任务空间被划分为两个正交的子空间：
 
 1. **位置子空间（Position Subspace）**：机器人可以自由移动或需要精确跟踪轨迹的方向（通常是切线方向）。
@@ -88,14 +101,12 @@ $$ \tau = J^T ( S f_{pos} + \bar{S} f_{force} ) $$
 | **稳定性** | 在刚性接触中可能存在切换震荡 | 物理本质上更稳定（Passive） |
 | **适用场景** | 高精度力跟踪（如称重、恒压打磨） | 碰撞处理、人机协作、不确定地形步行 |
 
-## 实施中的挑战
-
+## 常见误区或局限
 1. **选择矩阵的实时更新**：当接触面几何形状复杂或发生变化时，任务框架的方向必须实时重定位（例如擦拭一个球体表面），这对感知系统提出了高要求。
 2. **接触切换的瞬态性能**：从自由运动切换到接触运动时，由于系统刚度的突变，容易产生冲击力或受力方向的逻辑冲突。
 3. **传感器噪声与延迟**：末端力传感器（六维力/力矩传感器）的噪声和控制环路的延迟会限制力控的带宽，可能导致高频震荡。
 
-## 何时使用
-
+## 工程实践
 - **选择混合控制**：当你明确知道任务在哪些维度需要力，哪些维度需要位（如平面作业、已知几何体的装配）。
 - **选择阻抗控制**：当环境非常不确定，或者任务目标是保持整体柔顺性（如在人群中行走、抓取位置未知的物体）。
 
@@ -116,3 +127,20 @@ $$ \tau = J^T ( S f_{pos} + \bar{S} f_{force} ) $$
 - [Whole-Body Control](./whole-body-control.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
+
+
+## 关联页面
+
+- [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
+- [阻抗控制](./impedance-control.md)
+- [力控闭环带宽](./contact-force-loop-bandwidth.md)
+
+## 参考来源
+
+- [深蓝控制八大体系](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md)
+- [接触动力学核心论文](../../sources/papers/contact_dynamics.md)
+
+## 推荐继续阅读
+
+- Raibert & Craig (1981), *Hybrid Position/Force Control of Manipulators*
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md)

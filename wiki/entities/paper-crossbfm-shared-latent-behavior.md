@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, behavior-foundation-model, cross-embodiment, distillation]
 status: complete
 updated: 2026-10-03
+original:
+  - ../../sources/papers/crossbfm_arxiv_2609_38087.md
 arxiv: "2609.38087"
 related:
   - ./paper-behavior-foundation-model-humanoid.md
@@ -17,8 +19,7 @@ summary: "CrossBFM（arXiv:2609.38087）：用跨本体对应动作蒸馏共享�
 
 **CrossBFM**（*Distilling a Shared Latent Behavior Space Across Humanoid Embodiments*，[arXiv:2609.38087](https://arxiv.org/abs/2609.38087)，[项目页](https://dotandung.github.io/crossbfm/)）研究如何让同一个行为提示在不同人形机器人的潜在动作空间中具有相近含义。
 
-## 一句话理解
-
+## 一句话定义
 对齐不同本体的动作表示，让共享行为提示由每台机器人自己的跟踪控制器落实。
 
 ## 英文缩写速查
@@ -27,6 +28,11 @@ summary: "CrossBFM（arXiv:2609.38087）：用跨本体对应动作蒸馏共享�
 |---|---|---|
 | BFM | Behavior Foundation Model | 行为基础模型 |
 | DoF | Degrees of Freedom | 自由度 |
+| FB | Forward-Backward Representation | 用于无监督预训练可执行行为基座的表示学习方法 |
+
+## 为什么重要
+
+现有基于 Forward-Backward 的行为基础模型（BFM）单机预训练需数百 GPU 小时，且跨平台训练会学出互不对齐的私密潜空间；CrossBFM 将潜行为空间本身视为可迁移资产，在不到 **1 GPU 小时** 内利用帧级重定向把多款异构人形对齐到同一个共享提示接口上。
 
 ## 流程总览
 
@@ -48,8 +54,7 @@ flowchart TD
     N4 --> N5
 ```
 
-## 方法要点
-
+## 核心原理
 - 利用跨本体对应动作蒸馏共享行为编码器。
 - 共享的是高层行为表示；各机器人仍保留各自的身体控制器。
 - 该设计将跨机器人复用放在行为接口上，而不是直接复制关节命令。
@@ -60,6 +65,7 @@ flowchart TD
 
 ## 参考来源
 
+- [CrossBFM 原文精读归档](../../sources/papers/crossbfm_arxiv_2609_38087.md)
 - [arXiv:2609.38087](https://arxiv.org/abs/2609.38087)
 - [项目页](https://dotandung.github.io/crossbfm/)
 - [Day 2 文章来源索引](../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md)
@@ -76,7 +82,21 @@ flowchart TD
 
 CrossBFM把跨机器人复用放在共享行为表示上，同时让各本体保留自己的低层控制器。
 
+## 工程实践
+
+- **两阶段解耦部署：** Stage 1 采用无机器人专属参数的统一编码器，利用 1/4 数据量即能把冻结源 BFM 潜空间高精度蒸馏给多款新具身；Stage 2 在目标机器人上搭配约 200 Hz 仿真/50 Hz 控制频率的潜条件全身跟踪器落实物理动作。
+
+## 常见误区或局限
+
+- **跨本体泛化仍受帧级运动重定向品质限制：** 若源与目标人形关节比例差异过大导致运动学重定向失真，潜空间对齐后跟踪器仍需额外接触修正。
+
 ## 关联页面
 
 - [paper-behavior-foundation-model-humanoid](./paper-behavior-foundation-model-humanoid.md)
 - [paper-any2any-cross-embodiment-wbt](./paper-any2any-cross-embodiment-wbt.md)
+
+
+## 推荐继续阅读
+
+- [arXiv:2609.38087](https://arxiv.org/abs/2609.38087)
+- [CrossBFM 项目主页](https://dotandung.github.io/crossbfm/)

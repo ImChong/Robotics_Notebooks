@@ -4,6 +4,9 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, loco-manip-survey, sim2real, teleoperation, flow-matching, domain-randomization, unitree-g1, isaac-sim, teleai]
 status: complete
 updated: 2026-11-06
+original:
+  - ../../sources/papers/loco_manip_survey_04_oasis.md
+  - ../../sources/papers/oasis_humanoid_loco_manip_2606_08548.md
 arxiv: "2606.08548"
 code: https://github.com/TeleHuman/OASIS
 project: https://oasis-humanoid.github.io/
@@ -37,6 +40,8 @@ summary: "OASIS（arXiv:2606.08548）用 Hunyuan3D+Qwen3-VL 从真实图建仿�
 ---
 
 # OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）
+
+## 一句话定义
 
 **OASIS** 是中国电信 TeleAI 等团队提出的人形 **loco-manipulation 纯仿真数据框架**（arXiv:2606.08548，2026-06）：用 **真实物体照片** 自动生成物理仿真资产，在 **Isaac Sim** 中通过 **便携 VR teleop** 采集全身轨迹状态，再 **离线高保真渲染 + 视觉域随机化** 把少量操作员时间扩成大规模多样训练集；层级 **Flow Matching** 高层规划器配合 **Teleopit** 低层 WBC，在 **Unitree G1** 上 **零样本** 完成四类行走–操作任务。论文报告：在相同轨迹预算下，**仅仿真数据** 训练的策略在真机成功率 **不低于甚至高于** 纯真机 teleop，**混合数据** 最优。
 
@@ -219,6 +224,10 @@ sequenceDiagram
 - **不是 RL 探索数据：** 与 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 的 PPO 教师不同，OASIS 数据来自 **人类 VR teleop**，motion 多样性受操作员上限；**未做** 全身轨迹动力学扰动（易破坏平衡）。
 - **视觉随机化为主：** 不做 motion-level 扩增；复杂反光/透明物体资产仍可能拉宽 sim2real gap。
 - **栈绑定：** Hunyuan3D、Qwen3-VL、Isaac Sim、Teleopit、GMR 与 G1+RealSense 配置需整体复现。
+
+## 工程实践
+
+- **Real-to-Sim 资产生成与遥操提速：** 利用仿真资产快速重组不同桌高、光照和杂物分布，50 条轨迹采集效率较真机遥操最高快 1.84x，同时在策略层面保持纯机载相机输入与 Unitree G1 零样本部署一致。
 
 ## 关联页面
 

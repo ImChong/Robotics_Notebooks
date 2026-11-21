@@ -12,6 +12,8 @@ tags:
 - open-source
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/metarsi_v1_arxiv_2609_06396.md
 arxiv: '2609.06396'
 code: https://github.com/CosmosMind-ai/RSI-Harness
 related:

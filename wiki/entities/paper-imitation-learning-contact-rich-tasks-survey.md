@@ -6,6 +6,8 @@ venue: "The International Journal of Robotics Research (OnlineFirst, 2026)"
 tags: [paper, survey, imitation-learning, contact-rich, manipulation, robot-learning]
 status: complete
 updated: 2026-11-06
+original:
+  - ../../sources/papers/contact_rich_imitation_learning_survey_doi_10_1177_02783649261417694.md
 related:
   - ../methods/imitation-learning.md
   - ../concepts/contact-rich-manipulation.md
@@ -18,7 +20,9 @@ summary: "这篇 IJRR 综述从示教采集、感知模态、学习方法与应�
 
 # A survey on imitation learning for contact-rich tasks in robotics（接触丰富任务中的模仿学习综述）
 
-**一句话定义：** 本文系统组织接触丰富机器人任务的模仿学习研究，沿着示教数据如何采集、算法如何学习、方法如何进入应用来梳理技术路线。
+## 一句话定义
+
+本文系统组织接触丰富机器人任务的模仿学习研究，沿着示教数据如何采集、算法如何学习、方法如何进入应用来梳理技术路线。
 
 ## 英文缩写速查
 
@@ -34,8 +38,14 @@ summary: "这篇 IJRR 综述从示教采集、感知模态、学习方法与应�
 
 接触丰富任务包括插入、装配、擦拭、工具使用和人机辅助等。接触力、摩擦和接触状态会随微小位姿误差而改变，纯粹依赖预设轨迹或视觉观察容易在真实执行中失效。综述将模仿学习放在这一现实约束下讨论：专家示教可携带难以显式建模的力调节与接触经验，而有效学习又依赖能否采到足够丰富、可观测的演示数据。
 
-## 方法脉络
+## 核心原理
 
+```mermaid
+flowchart LR
+  D["接触定义: 非线性动力学 + 遮挡"] --> C["示教采集: 手把手 / 遥操作 / VR / 观察"]
+  C --> L["学习范式: BC / DMP / Diffusion / IRL / RL"]
+  L --> E["多维泛化评测: 几何·物体·视角·Sim2Real"]
+```
 论文按实现接触丰富 IL 的自然流程展开：先界定接触任务与挑战，再讨论演示数据采集，随后比较学习范式，最后梳理应用案例。其覆盖范围可读作一条从数据到技能的路线：
 
 1. **定义接触问题：** 关注非线性接触动力学、状态可观测性和学习稳定性。

@@ -12,6 +12,9 @@
 - **一句话说明：** 通用策略 + 在线辨识器：从历史估计动力学参数并调节动作，是在线适应早期形态。
 - **沉淀到 wiki：** [`wiki/entities/paper-up-osi-universal-policy-online-sysid.md`](../../wiki/entities/paper-up-osi-universal-policy-online-sysid.md)
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `arXiv:1702.02453v3`（UP-OSI 原论文，48,380 字符）及 Freedof 公众号长文全文（20,907 字符）。
+
 ## 核心摘录（归纳）
 
 - 文内与 RMA 并列的「推迟辨识」代表。

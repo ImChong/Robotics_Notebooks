@@ -3,6 +3,8 @@ type: entity
 tags: [nvidia, isaac-lab, sim2real, quadruped, spot, boston-dynamics, reinforcement-learning, jetson, locomotion, domain-randomization]
 status: complete
 updated: 2026-08-30
+original:
+  - ../../sources/blogs/nvidia_isaac_lab_spot_locomotion_sim2real.md
 related:
   - ./isaac-lab.md
   - ./isaac-lab-default-environments.md

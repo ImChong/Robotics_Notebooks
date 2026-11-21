@@ -3,6 +3,8 @@ type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
 summary: "人形 Loco-Manip 161 篇 · 02 上半身中心控制与移动操作接口（24 篇）— 手臂、躯干、根部和末端执行器之间的协同控制。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -15,6 +17,10 @@ sources:
 
 > **分类页**：**02 上半身中心控制与移动操作接口**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 一句话定义
+
+聚焦人形移动操作中 **上身操作目标、躯干协调与移动底座接口** 的 24 篇代表工作，涵盖根坐标/末端跟踪、上下肢解耦与统一全身策略对比。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -25,9 +31,16 @@ sources:
 | WM | World Model | 学习环境动态以供想象/规划的世界模型 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 
-## 核心问题
-
+## 为什么重要
 手臂、躯干、根部和末端执行器之间的协同控制
+
+## 核心原理
+
+```mermaid
+flowchart LR
+  SRC["人手/全身示范或感知目标"] --> IFACE["接口抽象: 上身指令 / 重定向 / 全身遥操"]
+  IFACE --> POL["全身策略 / 控制执行"]
+```
 
 ## 本组论文（24 篇）
 
@@ -57,6 +70,14 @@ sources:
 | 053 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-053-n053](../entities/paper-doorman-opening-sim2real-door.md) |
 | 054 | 用于人形策略学习的对抗性运动和运动模仿 | [paper-loco-manip-161-054-n054](../entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) |
 | 055 | 用于跨人形运动的可扩展和通用全身控制 | [paper-loco-manip-161-055-n055](../entities/paper-loco-manip-161-055-n055.md) |
+
+## 工程实践
+
+- **选型判断核心：** 若任务仅需下盘稳站、上身遥操或轻负载抓放，可先用上下半身指令解耦（如 HOMIE/ULC）；若涉及蹲起、大重物抗扰或全身碰撞，应评估统一接口（WholeBodyVLA/SplitAdapter）。
+
+## 常见误区或局限
+
+- 综述目录页仅作主题归类索引；各项具体成功率、传感器型号与开源状态以各子实体页及原始论文 PDF 核验为准。
 
 ## 关联页面
 

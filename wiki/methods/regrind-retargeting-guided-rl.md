@@ -4,6 +4,8 @@ tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learn
 status: complete
 date: 2026-07-16
 updated: 2026-09-15
+original:
+  - ../../sources/papers/regrind_arxiv_2607_11874.md
 arxiv: "2607.11874"
 code: https://github.com/yunhaif/regrind
 related:
@@ -22,6 +24,8 @@ summary: "REGRIND（arXiv:2607.11874）：光学 MoCap 单次人手–物体演�
 ---
 
 # REGRIND（重定向引导灵巧操作 RL）
+
+## 一句话定义
 
 **REGRIND**（*A Minimalist Retargeting-Guided Reinforcement Learning Recipe for Dexterous Manipulation* / *REtargeting-Guided ReINforcement learning for Dexterous manipulation*，Feng 等，arXiv:[2607.11874](https://arxiv.org/abs/2607.11874)，[项目页](https://www.yunhaifeng.com/REGRIND/)，[GitHub](https://github.com/yunhaif/regrind)，Cornell + Amazon FAR）把人形 WBT 上已验证的 **「重定向参考 + RL 跟踪」** 极简配方扩展到 **contact-rich 灵巧工具操作**。从 **单次光学动捕** 人手–物体演示出发，先做 **交互保留重定向**，再在仿真中用 **残差 RL** 跟踪 **物体-centric 关键点**，经 **系统辨识** 后 **零样本** 部署到 **LEAP / WUJI** 手，完成剪刀开合、螺丝刀旋转等任务。
 

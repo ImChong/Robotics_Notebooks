@@ -11,6 +11,9 @@
 - **入库日期：** 2026-06-15
 - **一句话说明：** 提出 **反向传播（back-propagation）** 训练程序：在多层 **neurone-like** 网络中反复按误差信号调整连接权重，使 **隐藏层** 自动学到任务域的重要特征，从而突破单层感知机的线性可分局限。
 
+- **通读：** 已完成
+- **核对范围：** 已通读 Nature Vol.323 pp.533–536 原文 PDF（`RumelhartHintonWilliams-BackPropError.86.pdf`，27,631 字符）核心公式 (6)-(7) 与隐藏单元特征学习推导，并交叉核对 `udlbook.github.io`  syllabus。
+
 ## 核心摘录（面向 wiki 编译）
 
 ### 1) 多层网络与隐藏单元表征

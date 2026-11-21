@@ -12,6 +12,8 @@ tags:
   - agency-for-defense-development
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/actuator_constrained_rl_high_speed_quadruped_arxiv_2312_17507.md
 arxiv: "2312.17507"
 venue: "arXiv 2023"
 related:

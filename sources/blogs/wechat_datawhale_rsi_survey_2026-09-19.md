@@ -12,6 +12,9 @@
 - **原始落盘：** [wechat_datawhale_rsi_survey_2026-09-19.md](../raw/wechat_datawhale_rsi_survey_2026-09-19.md)
 - **一句话说明：** Datawhale 万字科普：用 **四层 RSI 标准**（持久改进 → 有界闭环 → 递归增益/ignition → 稳健可控）梳理 **五次边界推进**（记忆、权重、AI 打分、harness、训练/研究过程），并汇总 2026 夏 GPT-5.6 RSI Index、AIDE² Level 1 与 AI4AI-Bench 反向证据——强调 **闭环已出现、点火仍待证**。
 
+- **通读：** 已完成
+- **核对范围：** 已通读 Datawhale 公众号原作全文（16,566 字符，838 行）及 `sources/raw/` 原始存档，核对四层能力分类与五次推进框架。
+
 ## 核心摘录（归纳，非全文）
 
 ### 主判断

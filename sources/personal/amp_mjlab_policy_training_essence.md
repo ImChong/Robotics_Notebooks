@@ -6,6 +6,9 @@
   - AMP_mjlab Policy 训练解析：<https://chatgpt.com/share/6a2ed607-5584-83ea-907f-55750a58d997>
 - **用途**：为 [神经反馈控制器（RL Policy）](../../wiki/concepts/neural-feedback-controller.md)、[AMP_mjlab](../../wiki/entities/amp-mjlab.md)、[PPO](../../wiki/methods/ppo.md) 提供可追溯编译来源；正文以 wiki 页为准。
 
+- **通读：** 已完成
+- **核对范围：** 已通过 `agent-reach read` 完整读取 ChatGPT 分享对话原文（10,899 字符），核对状态反馈控制器与 PPO/AMP 双目标解读。
+
 ## 对话要点：Policy 训练产物与更新本质
 
 ### 训练产物是什么

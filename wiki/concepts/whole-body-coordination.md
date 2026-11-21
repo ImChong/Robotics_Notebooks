@@ -7,6 +7,9 @@ sources:
   - ../../sources/papers/whole_body_control.md
   - ../../sources/papers/exoactor.md
 updated: 2026-09-15
+original:
+  - ../../sources/papers/exoactor.md
+  - ../../sources/papers/whole_body_control.md
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ./whole-body-control.md
@@ -57,8 +60,14 @@ related:
 
 4. **接触拓扑变化**：行走时接触点不断切换（双支撑→单支撑→飞行），每次切换都改变了系统的约束结构，全身协调必须适应这种动态变化。
 
-## 核心概念
+## 核心原理
 
+```mermaid
+flowchart TB
+  GOAL["高层全身任务 (末端位姿 + 行走目标)"] --> COORD["时空协调层: CoM/ZMP 平衡 + 角动量补偿 + 零空间投影"]
+  COORD --> WBC["执行级 WBC / QP 或端到端全身 RL"]
+  WBC --> JOINTS["腿·腰·双臂协同关节力矩 / 位控指令"]
+```
 ### 1. 运动层级（Motion Hierarchy）
 
 全身协调通常通过任务优先级框架实现：
@@ -165,8 +174,7 @@ Loco-Manipulation（边走边操作）是全身协调最复杂的场景：
 
 [ExoActor](../methods/exoactor.md) 在零样本 loco-manipulation 评测中，按 **导航 + 交互复杂度** 把任务分成三级：**B**（纯到达 / 绕障）、**A**（粗交互如扫物、坐下、跨障）、**S**（多步精细手物操作）。这一分级把「全身协调」从抽象概念落到 **可复现的验收维度**——A/S 级失败往往来自 **手臂–躯干–步态耦合**（如行走抖动拖累末端精度、手部高度误差需工程补偿），而非单一子系统能力不足。读者在评估自家 loco-manipulation 栈时，可借用该分级设计 **由易到难的协调回归用例**。
 
-## 常见误区
-
+## 常见误区或局限
 1. **协调 ≠ 同步**：全身协调不是让所有关节同时运动，而是让不同关节在**各自适当的时机**运动，并相互配合。
 
 2. **高自由度不等于高协调**：自由度多提供了更多可能性，但不自动产生协调——协调需要显式设计或学习。
@@ -179,6 +187,11 @@ Loco-Manipulation（边走边操作）是全身协调最复杂的场景：
 - Cheng et al., *Expressive Whole-Body Control for Humanoid Robots* (2024) — 学习方法实现全身协调
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — WBC / TSID / HQP 技术实现背景
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — B/A/S 难度分级评测切片
+
+## 工程实践
+
+- **自由度优先级划分（Task Priority）：** 在接触支撑腿保持无滑移与 CoM/ZMP 稳定为最高硬约束，其零空间（nullspace）内再分配上半身抓取追踪与避障。
+- **协调接口解耦检查：** 若使用端到端双策略或 RL+WBC 分层，需验证移动产生的底座扰动能否及时前馈给手臂动作头。
 
 ## 关联页面
 

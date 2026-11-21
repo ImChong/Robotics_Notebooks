@@ -14,6 +14,9 @@
 - **最后更新：** 2026-05-03
 - **一句话说明：** ExoActor 把"第三人称视频生成"作为人形机器人交互行为建模的统一接口，再通过人体动作估计 + 通用动作跟踪控制器，把生成视频转化成 Unitree G1 的可执行行为，实现零真实数据的零样本任务泛化。
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2604.27711` PDF 提取全文（`2604.27711.txt`，83,033 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 核心摘录
 
 ### 1) ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control（Zhou, Ma, Peng, Sun, Bai, Karlsson 等，BAAI，2026）

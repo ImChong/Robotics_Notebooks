@@ -3,6 +3,8 @@ type: entity
 tags: [paper, latent-action, vla, empirical-study, fudan, xiaomi]
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/latent_actions_matter_arxiv_2608_19613.md
 arxiv: "2608.19613"
 code: https://github.com/XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning
 related:
@@ -33,6 +35,7 @@ summary: "Latent Actions 实证研究（arXiv:2608.19613）：统一 41 项 LAM 
 |------|----------|----------|
 | LAM | Latent Action Model | 从无标注视频学紧凑动作代理 |
 | LAPO | Latent Action Pretraining from Observations | IDM-FDM 自监督潜动作框架 |
+| VLM | Vision-Language Model | 可在下游物理动作前通过潜动作微调增强时空理解的视觉语言基座 |
 | JAP | Joint Latent-Action Prediction | 潜动作与物理动作并行预测头 |
 
 ## 为什么重要
@@ -40,8 +43,7 @@ summary: "Latent Actions 实证研究（arXiv:2608.19613）：统一 41 项 LAM 
 - 纳入 [具身智能小站 2026-08-22 十篇盘点](../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md) 的「视频→接触→控制→VLA 持续学习」主线。
 - 开源状态（入库日）：**已开源**。
 
-## 核心信息
-
+## 核心原理
 | 项 | 内容 |
 |----|------|
 | **机构** | 复旦大学；清华大学；小米 EV 等 |
@@ -96,8 +98,15 @@ sequenceDiagram
     S3->>RW: LA-Tuned vs 基线对比
 ```
 
-## 与其他页面的关系
+## 工程实践
 
+- **三阶段可比评测准则：** 先在 Stage I 对齐表征骨干（推荐 DINO/特征差分代替纯像素 MSE 重建，避免背景杂波主导潜变量），Stage II 独立衡量动作可解码率，Stage III 在统一 OpenVLA-OFT 接口上用下游 LIBERO/真机成功率验收。
+
+## 常见误区或局限
+
+- **像素重建误差低不等于潜动作有效：** 模型可能把码本容量浪费在静态纹理或光照抖动上；必须对码本维数与目标物体运动灵敏度做消融诊断。
+
+## 关联页面
 - [vla](../methods/vla.md)
 - [paper-sa-2601-05230-learning-latent-action-world-models-in-the-wild](./paper-sa-2601-05230-learning-latent-action-world-models-in-the-wild.md)
 - [imitation-learning](../methods/imitation-learning.md)

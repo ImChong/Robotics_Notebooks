@@ -9,6 +9,8 @@ tags:
   - sim2real
 status: complete
 updated: 2026-10-18
+original:
+  - ../../sources/papers/norm2tex_arxiv_2609_25398.md
 arxiv: "2609.25398"
 project: https://utn-air.github.io/norm2tex
 code: https://github.com/utn-air/norm2tex
@@ -92,6 +94,16 @@ flowchart TD
 1. 开源边界：**待发布** — 项目页链接的 github.com/utn-air/norm2tex 经 git ls-remote 不可读（仓库不存在或未公开），暂按待发布处理。
 2. 核心机制：法线纹理 → 高度信息 → 修改深度图 → 触觉渲染。
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
+
+## 工程实践
+
+- **作为渲染前置算子插拔：** 在 TACTO 或 Taxim 渲染管线前插入 Norm2Tex，将物体法线贴图积分/还原为局部高度微扰并叠加到接触深度图上。
+- **GPU 批处理开销控制：** 相比修改底层 FEM 网格，在深度图像空间叠加纹理细节只需轻量前向卷积或解析偏移，可在单步渲染中保持毫秒级开销。
+
+## 常见误区或局限
+
+- 高度偏移属于几何视觉增强而非真实弹性力学耦合；大法向剪切滑移下的硅胶非刚性变形仍需高保真力学求解。
+- 官方代码仓 `utn-air/norm2tex` 暂未公开可检出分支。
 
 ## 关联页面
 

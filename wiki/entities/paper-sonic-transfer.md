@@ -14,6 +14,8 @@ tags:
   - isaac-lab
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
 venue: "draft preprint, 2026（项目页 PDF；暂无 arXiv）"
 code: https://github.com/meetsitaram/sonic-x2
 related:

@@ -5,6 +5,8 @@ tags: [paper, soft-robotics, manipulation, reinforcement-learning, sim2real, pro
 topic: [manipulation, reinforcement-learning]
 status: complete
 updated: 2026-10-09
+original:
+  - ../../sources/papers/distributed_whole_arm_interaction_soft_robot_arxiv_2608_30773.md
 arxiv: "2608.30773"
 related:
   - ../concepts/contact-rich-manipulation.md

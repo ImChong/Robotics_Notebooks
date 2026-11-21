@@ -3,6 +3,8 @@ type: entity
 tags: [paper, vlm, vla, action-grounding, zero-shot, manipulation, cross-embodiment, libero, wrist-camera, zju, tsinghua, shanghai-ai-lab]
 status: complete
 updated: 2026-10-12
+original:
+  - ../../sources/papers/easg_arxiv_2610_12832.md
 arxiv: "2610.12832"
 project_id: easg
 project: https://general-robo.github.io/EASG/

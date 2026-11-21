@@ -14,6 +14,9 @@
 - **入库日期：** 2026-09-02
 - **一句话说明：** 给驾驶 World Action Model 加可插拔 Scheduler：用 Latent Evaluator 估计已揭示风险与 Future Planning Gain，用 Rollout Gate 逐步做 Roll/Stop；配套反事实数据集 CounterDrive。**不是** OpenDriveLab 那篇同名 RISE（arXiv:2602.11075）。
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2608.20430` PDF 提取全文（`2608.20430.pdf`，7,143,803 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 开源状态（步骤 2.5，2026-09-02）
 
 | 资源 | 状态 | 说明 |

@@ -4,6 +4,8 @@ tags: [company, embodied-foundation-model, cross-embodiment, manipulation, end-e
 status: complete
 title: GEN-1 千手（跨末端执行器泛化）
 updated: 2026-11-15
+original:
+  - ../../sources/blogs/generalist_thousand_hands.md
 related:
   - ./generalist-ai-robotics.md
   - ./generalist-gen15-one-shot.md

@@ -3,6 +3,8 @@ type: entity
 tags: [paper, mobile-manipulation, dexterous-grasping, reinforcement-learning, tactile-sensing, whole-body-control, sim2real, shanghaitech, leap-hand]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
 arxiv: "2604.12879"
 related:
   - ../tasks/manipulation.md
@@ -62,8 +64,7 @@ summary: "FastGrasp（arXiv:2604.12879，上海科技大学）用 CVAE 点云抓
 - **部分点云鲁棒性：** 在遮挡/噪声点云下仍达 **38.51%** 平均成功率，而力方向两阶段基线 **归零**——包络度指标不依赖显式法向，适合腕摄现实感知。
 - **与上科大灵巧线衔接：** 作者组在 DexGrasp Anything、DexH2R 等工作中积累 **物理感知灵巧抓取**；FastGrasp 将问题推进到 **轮式移动全身 + 动态速度**。
 
-## 方法
-
+## 核心原理
 | 阶段 | 模块 | 要点 |
 |------|------|------|
 | **1 · 抓取引导** | CVAE + PointNet | 478k 合成抓取预训练；推理每物体采样 **150** 候选 |
@@ -130,8 +131,12 @@ flowchart TB
 - **误区：「触觉必须是高分辨率视觉触觉」。** 本文刻意用 **二值压力** 换 **15 Hz 实时推理** 与更小 sim2real 差距；与 T-Rex 等高维触觉 VLA 路线互补而非替代。
 - **局限：** **平底/桌面** 场景为主；对 **极扁平物体** 作者自述仍困难；臂第 4 关节锁定、底盘 **1.3 m/s** 上限约束动态包络；**暂无开源代码**（截至论文页）。
 
-## 与其他页面的关系
+## 工程实践
 
+- **控制频率与滤波器对齐：** 真机按 **15 Hz** 推理并对关节动作施加低通滤波（LPF），同时开启机械臂关节极限保护与底盘 1.3 m/s 限速以防高速接近撞台。
+- **二值触觉替代高维阵列的权衡：** 用指尖二值压力触发闭环握持可显著降低 sim2real 差距，但无法分辨精细切向滑移方向。
+
+## 关联页面
 - [Manipulation](../tasks/manipulation.md) — 灵巧操作与触觉增强学习路线总览
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 轮式移动 + 上肢操作的全身协调（非人形双足）
 - [抓取知识链](../overview/hub-grasp.md) — 动态高速抓取的数据与感知锚点

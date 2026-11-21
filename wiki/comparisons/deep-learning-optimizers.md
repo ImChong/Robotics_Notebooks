@@ -3,6 +3,9 @@ type: comparison
 tags: [deep-learning, optimization, sgd, adam, adamw, muon, training, comparison]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/deep_learning_optimizers.md
+  - ../../sources/papers/muon_optimizer_primary_refs.md
 summary: "深度学习一阶优化器（SGD→AdamW→Lion→Muon）的机制对比与机器人/LLM 训练选型指南；Muon 面向隐藏层矩阵正交化更新，LLM 预训练证据强于机器人 RL。"
 related:
   - ../methods/sgd.md
@@ -31,8 +34,7 @@ sources:
 
 **背景**：[反向传播](../concepts/backpropagation.md) 算出梯度后，需用 **优化器** 决定如何更新参数。从经典 [SGD](../methods/sgd.md) 到现代 [AdamW](../methods/adamw.md)、[Lion](../methods/lion.md) 与 [Muon](../methods/muon.md)，算法演进主线是：**加速收敛** → **per-parameter 自适应** → **正确正则化** → **降低内存/算力** → **矩阵正交化几何（LLM）**。
 
-## 一句话定位
-
+## 一句话定义
 > 小 CNN 用 SGD+Momentum；机器人 RL 默认 Adam；大模型预训练用 AdamW（或探索 Muon 混用）；内存紧再试 Lion——Muon 主要服务隐藏层矩阵与 LLM 预训练，其余参数仍配 AdamW。
 
 ## 英文缩写速查
@@ -55,8 +57,11 @@ sources:
 
 ---
 
-## 优化器族谱
+## 为什么重要
 
+在机器人 PPO、模仿学习与 VLA 预训练中，不同参数维度面临截然不同的曲率条件数与梯度的信噪比；错误将 L2 正则等同于解耦 Weight Decay 或盲目沿用过大动量会直接导致策略震荡、表征坍缩甚至显存超限。
+
+## 核心原理
 ```mermaid
 flowchart TD
   SGD["SGD<br/>Robbins & Monro 1951"]
@@ -98,8 +103,7 @@ flowchart TD
 
 ---
 
-## 机器人场景选型
-
+## 工程实践
 | 场景 | 推荐起点 | 备选 | 避免 |
 |------|---------|------|------|
 | 仿真 RL（PPO/SAC） | [Adam](../methods/adam.md) | SGD+Momentum | 纯 SGD 无调度 |
@@ -130,8 +134,7 @@ flowchart TD
 
 ---
 
-## 常见误区
-
+## 常见误区或局限
 | 误区 | 澄清 |
 |------|------|
 | 「Adam 永远优于 SGD」 | 部分视觉任务调优 SGD 泛化更好；RL 中 Adam 更常见因调参成本低 |

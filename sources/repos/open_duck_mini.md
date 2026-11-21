@@ -13,6 +13,9 @@
 
 ---
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `apirrone/Open_Duck_Mini` README（3.7 KB）、`Open_Duck_Mini_Viewer` README（9.7 KB）、Disney Research BDX 页面（2,594 字符）与 tnkr 文档（911 字符）。
+
 ## 项目定位
 
 - **灵感来源：** Disney Imagineering 的 [BDX Droid](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/)（BD-X 小型双足角色机器人）。

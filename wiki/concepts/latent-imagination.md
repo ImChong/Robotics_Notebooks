@@ -3,6 +3,12 @@ type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
 updated: 2026-11-14
+original:
+  - ../../sources/papers/being_h07.md
+  - ../../sources/papers/lucid_arxiv_2608_07746.md
+  - ../../sources/papers/odeworld_arxiv_2607_27924.md
+  - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
+  - ../../sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md
 related:
   - ../entities/paper-odeworld.md
   - ./rl-runner.md
@@ -31,7 +37,9 @@ summary: "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技
 
 # Latent Imagination (潜空间想象)
 
-**潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉重的物理仿真器中反复试错，而是在一个完全由数据学出来的“脑内模型”中进行极其高速的并行进化。
+## 一句话定义
+
+**潜空间想象（Latent Imagination）** 是在学得的紧凑隐动力学模型内部快速并行展开未来状态–动作–奖励轨迹并优化策略，从而以高样本效率替代代价高昂的真实物理交互。
 
 ## 英文缩写速查
 
@@ -42,8 +50,20 @@ summary: "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技
 | Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
 | DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
 
-## 核心工作原理
+## 为什么重要
 
+在真机与重型仿真上采样每条物理轨迹耗时且具有硬件损耗风险；在紧凑潜空间内部完成百万步假想推演，可在极低实机试错成本下训练前瞻策略与值函数，同时把多模态未来不确定性压缩为低维推理。
+
+**潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉重的物理仿真器中反复试错，而是在一个完全由数据学出来的“脑内模型”中进行极其高速的并行进化。
+
+## 核心原理
+
+```mermaid
+flowchart LR
+  OBS["真实观测 oₜ"] --> ENC["编码器 → 隐状态 zₜ"]
+  Z["zₜ + 候选动作 aₜ"] --> DYN["潜空间世界模型 p(zₜ₊₁ | zₜ, aₜ)"]
+  DYN --> IMAG["多步并行想象轨迹 → 优化 Actor / Critic"]
+```
 潜空间想象通常建立在 **RSSM (Recurrent State Space Model)** 之上。其流程分为“梦境构建”和“梦中训练”两个阶段：
 
 ### 1. 构建世界模型（学习“梦境”的法则）
@@ -77,6 +97,15 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - **ODEWorld**：把离散 RSSM 步换成 **物理时间 ODE**——在解耦后的单 token 动力学 latent 上积分 \(v_\theta\)，任意 \(\tau\) / 反向预测，再把 \(z_\tau\) 当策略子目标；见 [ODEWorld](../entities/paper-odeworld.md)。不是 Dreamer 式「梦中 actor-critic」，而是连续时间潜空间展开。
 - **RISE（酷哇，驾驶 WAM）**：测试时在 V-JEPA latent 前缀上逐步 Roll/Stop，用规划增益对代价，而不是固定 horizon 或 Dreamer 式梦中 actor-critic；见 [RISE 自适应想象](../entities/paper-rise-adaptive-imagination-wam.md)。勿与 OpenDriveLab 同名操作 RISE 混淆。
 
+## 工程实践
+
+- **模型复利误差控制（Horizon Selection）：** 想象步长 $H$ 需随动力学预测置信度调整（典型 $H \in [5, 15]$）；过长展开会将单步模型偏差指数放大，需以真实样本锚定值函数估计。
+- **测试时想象 vs 蒸馏部署：** 真实高频控制环可选择训练期想象 + 测试期单步直出策略（如 Dreamer 策略头 / Being-H0.7 先验分支），避免推理卡顿。
+
+## 常见误区或局限
+
+- **模型幻觉利用（Model Exploitation）：** 策略可能学会利用潜动力学近似误差刷出虚假高回报，需配合集成不确定性惩罚、KL 正则或真实轨迹定期回放。
+
 ## 关联页面
 - [Model-Based RL](../methods/model-based-rl.md)
 - [RL Runner（训练循环编排）](./rl-runner.md) — Model-based Runner 把想象 rollout 嵌进训练循环
@@ -102,3 +131,9 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [RISE 自适应想象（驾驶 WAM Roll/Stop）](../../sources/papers/rise_adaptive_imagination_arxiv_2608_20430.md)
 - [lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID 技能级想象控制
 - [odeworld_arxiv_2607_27924.md](../../sources/papers/odeworld_arxiv_2607_27924.md) — PT-Flow 连续时间潜空间预测
+
+
+## 推荐继续阅读
+
+- Hafner et al., *Mastering Diverse Domains through World Models (DreamerV3)*, [arXiv:2301.04104](https://arxiv.org/abs/2301.04104)
+- [Model-Based RL](../methods/model-based-rl.md)

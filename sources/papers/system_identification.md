@@ -9,6 +9,9 @@
 - **最后更新：** 2026-04-14
 - **一句话说明：** 覆盖惯性参数辨识、激励轨迹设计、神经网络执行器模型等系统辨识方法
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `arXiv:2605.17681v1`（PRIME 物理一致惯量与接触辨识, 60,872 字符）与《机器人动态标定》及域随机化奠基原文 `arXiv:1710.06537`。
+
 ## 核心论文摘录
 
 ### 1) Physically Consistent State Estimation and System Identification for Contacts（Nguyen & Park, IJRR 2011）
