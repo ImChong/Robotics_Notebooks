@@ -122,6 +122,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [WeightCode：通过可执行权重程序安装新能力（arXiv:2611.25476）](paper-weightcode.md)：Gen-Verse 独立研究，验证程序复算、继承与受约束验收；与本页 MIT 博客不是同一实验。
+
 - [iWSP：可解释权重空间编程（arXiv:2611.18114）](paper-interpretable-weight-space-programming.md)：另一研究团队通过可解释权重/特征构造、审计与脑编码评测推进该思路；不同于本页 MIT 博客实验。
 
 - [Robotics Weight Editing](robotics-weight-editing.md)：将权重空间编辑用于 π₀.₅ 机器人策略，包含 YAM 初步真机评估。
