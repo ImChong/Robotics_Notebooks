@@ -1,7 +1,6 @@
 ---
 type: entity
 project_id: robowild-xlang
-paper: https://huggingface.co/datasets/xlangai/RoboWild/blob/main/RoboWild.pdf
 project: https://robowild.xlang.ai/
 code: https://github.com/xlang-ai/RoboWild
 tags:
