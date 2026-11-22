@@ -15,6 +15,8 @@ updated: 2026-11-22
 original:
   - ../../sources/repos/pbakaus-impeccable.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./taste-skill.md
   - ./skillry.md
   - ./anthropic-frontend-design-skill.md
@@ -110,6 +112,9 @@ flowchart LR
 - **局限：** 机器人研究页（纯文档型）收益小于 **交互 dashboard / 营销站**；Sim 可视化若用 React 则仍适用。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 区分 detector 规则与真实界面运行证据
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 组合审查、打磨和独立验证步骤
 
 - [UI/UX Pro Max](ui-ux-pro-max-skill.md) — 检索式设计指导
 - [Claude Code Frontend Skills](claude-code-frontend-skills.md) — 设计审查的编排入口

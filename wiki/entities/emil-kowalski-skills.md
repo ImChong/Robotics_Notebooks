@@ -15,6 +15,8 @@ updated: 2026-11-22
 original:
   - ../../sources/repos/emil-kowalski-skills.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./find-skills-skill.md
   - ./anthropic-frontend-design-skill.md
   - ./mattpocock-skills.md
@@ -104,6 +106,9 @@ flowchart LR
 - **验证条件很关键。** 若 agent 无法启动应用或无法访问真实设备，动效和触控建议通常只能做静态推断。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 动效修改必须验证交互、焦点和降级行为
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 交互评审与实现分离，避免自我验收
 
 - [UI/UX Pro Max](ui-ux-pro-max-skill.md) — 配色字体规则检索
 - [Claude Code Frontend Skills](claude-code-frontend-skills.md) — 多 Skill 动效阶段路由

@@ -8,6 +8,8 @@ updated: 2026-11-22
 original:
   - ../../sources/repos/nextlevelbuilder-ui-ux-pro-max-skill.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./anthropic-frontend-design-skill.md
   - ./impeccable.md
   - ./taste-skill.md
@@ -93,6 +95,9 @@ sequenceDiagram
 - 不应误将上游数量说明当实际执行得到的检索指标。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 设计检索结果应用于代码后仍应通过运行页面、E2E 与截图核验
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 为不同 UI 问题选择检索、实现、独立审查阶段
 
 - [Anthropic frontend-design](anthropic-frontend-design-skill.md) — 风格方向
 - [Impeccable](impeccable.md) — detector 与审查

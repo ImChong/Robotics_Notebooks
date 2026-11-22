@@ -8,6 +8,8 @@ updated: 2026-11-22
 original:
   - ../../sources/repos/jaimejunr-claude-code-frontend-skills.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./anthropic-frontend-design-skill.md
   - ./ui-ux-pro-max-skill.md
   - ./impeccable.md
@@ -95,6 +97,9 @@ sequenceDiagram
 - Skill 文本应当作外部代码/指令依赖审查，不等于安全执行沙箱。
 
 ## 关联页面
+
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 对比脚本编排与本项目的 Skill router 优先级
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 分开产出 Skill 与独立验证交付质量
 
 - [frontend-design](anthropic-frontend-design-skill.md) — 基础方向
 - [UI/UX Pro Max](ui-ux-pro-max-skill.md) — 设计规则查询

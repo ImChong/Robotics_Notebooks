@@ -8,6 +8,8 @@ updated: 2026-11-22
 original:
   - ../../sources/repos/leonxlnx-taste-skill-classics.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./taste-skill.md
   - ./anthropic-frontend-design-skill.md
   - ./impeccable.md
@@ -77,6 +79,9 @@ flowchart LR
 - 风格包并不提供软件运行时、用户测试或跨设备验收；需要浏览器实际评估。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 历史风格规则不能取代已实现页面的实际验收
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 将显式选风格、实现与审查拆成有边界的任务阶段
 
 - [Taste Skill](taste-skill.md) — 当前主线
 - [frontend-design](anthropic-frontend-design-skill.md) — 主题驱动的基座审美

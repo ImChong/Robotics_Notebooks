@@ -15,6 +15,8 @@ updated: 2026-11-22
 original:
   - ../../sources/repos/leonxlnx-taste-skill.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./impeccable.md
   - ./taste-skill-classics.md
   - ./claude-code-frontend-skills.md
@@ -116,6 +118,9 @@ sequenceDiagram
 - **局限：** 高 star 不等于安全审计 — 仍应读 SKILL 变更日志再升级。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 浏览器一致性门禁与独立用户路径测试互补
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 先定品牌和页面类型，再编排实现、测试阶段
 
 - [Taste Skill Classics](taste-skill-classics.md) — 历史版三旋钮、极简与工业风格
 - [Claude Code Frontend Skills](claude-code-frontend-skills.md) — 多 Skill 冲突裁决

@@ -15,6 +15,8 @@ updated: 2026-11-22
 original:
   - ../../sources/repos/anthropics-frontend-design-skill.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./anthropic-claude-api-skill.md
   - ./find-skills-skill.md
   - ./gsap-skills.md
@@ -97,6 +99,9 @@ flowchart LR
 - **局限：** 英文 skill；中文站需自行在 brief 中约束字体与文案风格。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 设计方案完成后以真实 UI 证据审查
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 将设计计划、实现和独立校验拆分为阶段
 
 - [UI/UX Pro Max](ui-ux-pro-max-skill.md) — 设计规则数据库与 Token 导出
 - [Claude Code Frontend Skills](claude-code-frontend-skills.md) — Skill 组合时的路由和冲突裁决
