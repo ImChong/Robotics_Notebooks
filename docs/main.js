@@ -588,10 +588,27 @@
     return api.formatBilingual(type);
   }
 
-  // 与「最新知识节点」行后缀一致：开源 ⭐️ + 社区短标签
+  function uiIconHtml(name) {
+    if (window.RNIcons && window.RNIcons.svg) return window.RNIcons.svg(name);
+    if (name === 'star') {
+      return '<svg class="ui-icon ui-icon--star" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+        '<path d="M8 1.8l1.85 3.76 4.15.6-3 2.93.71 4.13L8 11.27l-3.71 1.95.71-4.13-3-2.93 4.15-.6L8 1.8Z" fill="currentColor" stroke="currentColor" stroke-width="0.9" stroke-linejoin="round"/></svg>';
+    }
+    return '';
+  }
+
+  function depthIconHtml(key, meta) {
+    if (window.RNIcons && window.RNIcons.depthSvg) {
+      return window.RNIcons.depthSvg(key, meta && meta.icon);
+    }
+    return uiIconHtml('tag');
+  }
+
+  // 与「最新知识节点」行后缀一致：开源星标 + 社区短标签
   function renderUpdatesItemRepoStar(meta) {
     if (!meta || !meta.has_repo) return '';
-    return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+    if (window.RNIcons && window.RNIcons.repoStarHtml) return window.RNIcons.repoStarHtml();
+    return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">' + uiIconHtml('star') + '</span>';
   }
 
   // 详情页标题：has_repo（导出期判定，见 export_minimal.page_has_repo_source）时在标题末尾加 ⭐️（与列表行同口径）；
@@ -6570,7 +6587,7 @@
       var html = '';
       for (var i = 0; i < topics.length; i++) {
         var key = topics[i];
-        var meta = TF.DEPTH_META[key] || { emoji: '🏷️', label: key };
+        var meta = TF.DEPTH_META[key] || { icon: 'tag', label: key };
         // 中英文分别成组：空间不足时在括号前换行，英文连同括号一起保留。
         var labelParts = /^(.+?)([（(][^（）()]+[）)])$/.exec(meta.label);
         var labelHtml = labelParts
@@ -6578,7 +6595,7 @@
           : escapeHtml(meta.label);
         html += '<a class="detail-meta-badge detail-meta-route-badge" href="graph.html?depth=' + encodeURIComponent(key) +
           '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」路线视图">' +
-          '<span>' + meta.emoji + '</span><span class="detail-meta-route-label">' + labelHtml + '</span></a>';
+          depthIconHtml(key, meta) + '<span class="detail-meta-route-label">' + labelHtml + '</span></a>';
       }
 
       renderDetailMetaItemRow(depthRowId, rowLabel, html);
@@ -6644,7 +6661,7 @@
         var label = labelById[id] || id;
         html += '<a class="detail-meta-badge" href="graph.html?institution=' + encodeURIComponent(id) +
           '" title="在知识图谱中查看「' + escapeHtml(label) + '」机构视图">' +
-          '<span>🏛️</span><span>' + escapeHtml(label) + '</span></a>';
+          uiIconHtml('building') + '<span>' + escapeHtml(label) + '</span></a>';
       }
 
       renderDetailMetaItemRow(instRowId, '所属机构', html);
@@ -6715,7 +6732,7 @@
     if (stages.length) {
       var stageLabel = stages.length + ' 个阶段';
       var stagesHtml = '<a class="detail-meta-badge" href="#roadmap-flow" title="跳转到阶段速览">' +
-        '<span>🗺️</span><span>' + escapeHtml(stageLabel) + '</span></a>';
+        uiIconHtml('map-route') + '<span>' + escapeHtml(stageLabel) + '</span></a>';
       renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', stagesHtml);
     } else {
       renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', '');
@@ -9122,9 +9139,10 @@
       var explain = queryTokens && queryTokens.length
         ? '<span class="result-match">' + matchExplanation(item, queryTokens) + '</span>'
         : '';
+      var graphLinkIcon = (window.RNIcons && window.RNIcons.svg) ? window.RNIcons.svg('link') : '';
       var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" class="js-graph-btn" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
-        + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
+        + 'title="查看图谱邻居" tabindex="-1">' + graphLinkIcon + '图谱</a>';
       var fullSummary = item.summary || '';
       var needsPreview = fullSummary.length > 120;
       var summaryHtml = fullSummary

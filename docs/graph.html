@@ -16,7 +16,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://imchong.github.io/Robotics_Notebooks/graph.html" />
   <title>知识图谱 | Robotics Notebooks</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-graph.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
   <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
@@ -1409,6 +1410,13 @@
       font-size: .8rem; font-weight: 700; color: rgba(255,255,255,0.65);
       letter-spacing: .03em;
     }
+    .physics-header > span:first-child,
+    .filter-header > span:first-child,
+    .physics-toggle > span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
     .physics-body {
       flex: 1 1 auto;
       min-height: 0;
@@ -2269,13 +2277,13 @@
   <!-- ── 共用 Header ── -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks | 机器人技术栈地图</a>
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页"><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg>Robotics Notebooks | 机器人技术栈地图</a>
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
         <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式">
-          <span class="icon-sun">☀️</span>
-          <span class="icon-moon">🌙</span>
+          <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
+          <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
         </button>
       </div>
     </div>
@@ -2287,13 +2295,13 @@
     <datalist id="graph-search-list"></datalist>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按社区筛选">
-      <span>🔍</span><span id="filter-label">筛选</span>
+      <span><svg class="chip-icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.1" cy="7.1" r="4.3"/><path d="M10.4 10.4 13.7 13.7"/></svg></span><span id="filter-label">筛选</span>
       <span id="filter-count" class="filter-count" hidden></span>
     </button>
     <div class="toolbar-right">
       <span id="graph-node-count">加载中…</span>
       <div class="toolbar-sep"></div>
-      <button id="physics-toggle" class="chip" title="力导向参数、布局刷新与时序动画"><span>⚙</span><span> 参数</span></button>
+      <button id="physics-toggle" class="chip" title="力导向参数、布局刷新与时序动画"><span><svg class="chip-icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5h11M2.5 11h11"/><circle cx="6" cy="5" r="1.6" fill="currentColor"/><circle cx="10.4" cy="11" r="1.6" fill="currentColor"/></svg></span><span> 参数</span></button>
       <div class="toolbar-sep"></div>
       <button id="fit-to-screen" class="chip" title="适配屏幕"><span><svg class="chip-icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></span><span> 适配屏幕</span></button>
       <div class="toolbar-sep"></div>
@@ -2330,13 +2338,13 @@
       </div>
       <a id="depth-intro-link" class="depth-intro-link" href="#">打开路线页 →</a>
     </div>
-    <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例">🎨</button>
+    <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="5.2" cy="5.2" r="1.7"/><circle cx="10.8" cy="5.2" r="1.7"/><circle cx="5.2" cy="10.8" r="1.7"/><circle cx="10.8" cy="10.8" r="1.7"/></svg></button>
     <div id="graph-legend-scrim" hidden aria-hidden="true"></div>
     <div id="graph-legend" role="region" aria-label="图谱图例"></div>
     <!-- ── 物理参数面板 ── -->
     <div id="physics-panel" class="physics-panel" hidden>
       <div class="physics-header">
-        <span>⚙ 图谱参数</span>
+        <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 5h11M2.5 11h11"/><circle cx="6" cy="5" r="1.6" fill="currentColor"/><circle cx="10.4" cy="11" r="1.6" fill="currentColor"/></svg>图谱参数</span>
         <button id="physics-close" class="physics-close" aria-label="关闭面板">✕</button>
       </div>
       <div class="physics-body">
@@ -2354,7 +2362,7 @@
         <div class="slider-row">
           <label class="physics-toggle" for="check-magnetic">
             <input type="checkbox" id="check-magnetic" />
-            <span>🧲 磁吸模式</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.2 3.5v4.6a3.8 3.8 0 0 0 7.6 0V3.5M4.2 6h2.2M9.6 6h2.2"/></svg>磁吸模式</span>
           </label>
         </div>
 
@@ -2364,7 +2372,7 @@
           <label class="physics-toggle" for="check-show-edges"
                  title="关闭后只显示节点，隐藏全部连线（2D / 3D 共享同一开关）">
             <input type="checkbox" id="check-show-edges" />
-            <span>🔗 显示连线</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.7 9.3 9.3 6.7M5.7 11.2l-.9.9a2.4 2.4 0 0 1-3.4-3.4l.9-.9M10.3 4.8l.9-.9a2.4 2.4 0 0 1 3.4 3.4l-.9.9"/></svg>显示连线</span>
           </label>
         </div>
 
@@ -2372,7 +2380,7 @@
           <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
                  title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用；默认开启，可在此关闭）">
             <input type="checkbox" id="check-community-labels" checked />
-            <span>🏘 显示社区标签</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 2.5 13.5 5.6 8 8.7 2.5 5.6 8 2.5ZM2.5 8.6 8 11.7l5.5-3.1M2.5 11.4 8 14.3l5.5-2.9"/></svg>显示社区标签</span>
           </label>
         </div>
 
@@ -2380,7 +2388,7 @@
           <label class="physics-toggle" for="check-recency-dim"
                  title="按节点更新时间指数调整明暗：越新越亮（近期更陡），越旧越暗；无更新日期的节点按最暗显示（均保持可见）">
             <input type="checkbox" id="check-recency-dim" />
-            <span>🕰 更新明度渐变</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.5"/><path d="M8 4.8V8l2.3 1.4"/></svg>更新明度渐变</span>
           </label>
         </div>
 
@@ -2470,7 +2478,7 @@
     <div id="filter-panel-scrim" hidden aria-hidden="true"></div>
     <div id="filter-panel" class="filter-panel" hidden>
       <div class="filter-header">
-        <span id="filter-panel-title">🔍 图谱筛选</span>
+        <span id="filter-panel-title"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="7.1" cy="7.1" r="4.3"/><path d="M10.4 10.4 13.7 13.7"/></svg>图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
       <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
@@ -2519,25 +2527,25 @@
         <details class="filter-depth-section" id="filter-dimension-section" open>
           <summary class="filter-depth-summary">
             <span class="filter-depth-summary-label" id="filter-dimension-label">按社区</span>
-            <span class="filter-depth-summary-current" id="filter-dimension-current"><span>🧩</span><span>全部</span></span>
+            <span class="filter-depth-summary-current" id="filter-dimension-current"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.2 5.4h2.5a1.3 1.3 0 1 1 2.6 0h2.5v2.5a1.3 1.3 0 1 1 0 2.6V13H8.3a1.3 1.3 0 1 0-2.6 0H3.2v-2.5a1.3 1.3 0 1 0 0-2.6V5.4Z"/></svg></span><span>全部</span></span>
           </summary>
           <div class="filter-dimension-list" id="filter-panel-body"></div>
         </details>
         <details class="filter-depth-section" id="filter-depth-section">
           <summary class="filter-depth-summary">
             <span class="filter-depth-summary-label">路线视图</span>
-            <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
+            <span class="filter-depth-summary-current" id="filter-depth-current"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.5"/><ellipse cx="8" cy="8" rx="2.5" ry="5.5"/><path d="M2.7 8h10.6"/></svg></span><span>全量</span></span>
           </summary>
           <!-- 路线 chip 由 depth-filters.js 的 DEPTH_ORDER / DEPTH_META 渲染（见 renderDepthChips），
                静态只留「全量」，避免此处列表与单一事实源脱节 -->
           <div class="filter-depth-chips" id="filter-depth-chips">
-            <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
+            <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.5"/><ellipse cx="8" cy="8" rx="2.5" ry="5.5"/><path d="M2.7 8h10.6"/></svg></span><span>全量</span></button>
           </div>
         </details>
         <details class="filter-depth-section" id="filter-institution-section">
           <summary class="filter-depth-summary">
             <span class="filter-depth-summary-label">研究机构</span>
-            <span class="filter-depth-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
+            <span class="filter-depth-summary-current" id="filter-institution-current"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.6 6.4 8 3.2l5.4 3.2M4.3 6.4v6M8 6.4v6M11.7 6.4v6M2.5 12.6h11"/></svg></span><span>全部</span></span>
           </summary>
           <div class="filter-institution-list" id="filter-institution-list"></div>
         </details>
@@ -2598,6 +2606,7 @@
 
   <!-- ── D3.js + 3D 图谱 ── -->
   <script src="vendor/d3.min.js"></script>
+  <script src="ui-icons.js"></script>
   <script src="wiki-type-labels.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
@@ -2706,11 +2715,21 @@
     const filterDimensionCurrent = document.getElementById('filter-dimension-current');
     const filterPanelScrim = document.getElementById('filter-panel-scrim');
     const FILTER_DIMENSION_META = {
-      type: { emoji: '🏷️', unit: '项' },
-      community: { emoji: '🧩', unit: '个社区' },
-      opensource: { emoji: '⭐', unit: '项' },
-      health: { emoji: '💚', unit: '项' },
+      type: { icon: 'tag', unit: '项' },
+      community: { icon: 'puzzle', unit: '个社区' },
+      opensource: { icon: 'star', unit: '项' },
+      health: { icon: 'heart-pulse', unit: '项' },
     };
+
+    function graphUiIconHtml(name) {
+      return (window.RNIcons && window.RNIcons.svg) ? window.RNIcons.svg(name) : '';
+    }
+
+    function graphDepthIconHtml(key, meta) {
+      return (window.RNIcons && window.RNIcons.depthSvg)
+        ? window.RNIcons.depthSvg(key, meta && meta.icon)
+        : graphUiIconHtml('tag');
+    }
 
     /* 筛选浮窗三区手风琴：维度 / 路线视图 / 研究机构 同时仅展开一个；默认「按社区」 */
     const FILTER_ACCORDION_DEFAULT_ID = 'filter-dimension-section';
@@ -2988,7 +3007,7 @@
       const cur = document.getElementById('filter-institution-current');
       if (!cur) return;
       const n = activeInstitutions.size;
-      cur.innerHTML = '<span>🏛️</span><span>' + (n ? n + ' 个机构' : '全部') + '</span>';
+      cur.innerHTML = '<span>' + graphUiIconHtml('building') + '</span><span>' + (n ? n + ' 个机构' : '全部') + '</span>';
     }
 
     function renderInstitutionFilterSection() {
@@ -3137,7 +3156,7 @@
       }
       topicIntroBanner.hidden = false;
       if (topicIntroBadge) {
-        topicIntroBadge.innerHTML = '<span>' + (meta.emoji || '🏷️') + '</span><span>'
+        topicIntroBadge.innerHTML = '<span>' + graphDepthIconHtml(currentDepth, meta) + '</span><span>'
           + escapeHtml(meta.label || currentDepth) + '</span>';
       }
       if (topicIntroText) topicIntroText.textContent = meta.description || '';
@@ -5601,14 +5620,13 @@
       const text = n ? (n + ' ' + meta.unit) : '全部';
       if (filterDimensionLabel) filterDimensionLabel.textContent = getColorModeLabel(colorMode);
       if (filterDimensionCurrent) {
-        filterDimensionCurrent.innerHTML = '<span>' + meta.emoji + '</span><span>' + text + '</span>';
+        filterDimensionCurrent.innerHTML = '<span>' + graphUiIconHtml(meta.icon) + '</span><span>' + text + '</span>';
       }
     }
 
     function renderFilterPanel() {
-      const title = '🔍 图谱筛选';
       if (filterToggle) filterToggle.title = '图谱筛选（当前' + getColorModeLabel(colorMode) + '）';
-      if (filterPanelTitle) filterPanelTitle.textContent = title;
+      if (filterPanelTitle) filterPanelTitle.innerHTML = graphUiIconHtml('search') + '<span>图谱筛选</span>';
       if (filterLabel) filterLabel.textContent = '筛选';
       if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
       if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
@@ -6618,8 +6636,11 @@
       topicChipsEl.insertAdjacentHTML('beforeend', window.RNDepthFilters.DEPTH_ORDER.map(key => {
         const meta = DEPTH_META[key] || {};
         const label = escapeHtml(meta.label || key);
+        const iconHtml = (window.RNIcons && window.RNIcons.depthSvg)
+          ? window.RNIcons.depthSvg(key, meta.icon)
+          : '';
         return '<button class="filter-depth-chip" type="button" data-depth="' + escapeHtml(key)
-          + '" title="' + label + '"><span>' + (meta.emoji || '🏷️') + '</span><span>'
+          + '" title="' + label + '"><span>' + iconHtml + '</span><span>'
           + label + '</span></button>';
       }).join(''));
     }

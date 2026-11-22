@@ -10,9 +10,11 @@ const SHELL_ASSETS = [
   'index.html',
   'style.css',
   'theme-init.js',
+  'ui-icons.js',
   'main.js',
   'org-route-order.js',
   'home-i18n.js',
+  'assets/icons/favicon-home.svg',
 ].map(asset);
 // 可选资源：其余页面外壳与小体积数据，逐个缓存，单个失败只降级该资源的离线可用性。
 // 搜索索引、全图、活动全集与榜单不再预取（安装时下载量最大的四份），改为访问时

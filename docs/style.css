@@ -186,10 +186,19 @@ p { text-wrap: pretty; }
   width: 100%;
 }
 .site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--text);
   letter-spacing: -0.01em;
+}
+.site-brand-mark {
+  width: 1.32em;
+  height: 1.32em;
+  flex-shrink: 0;
+  display: block;
 }
 .site-title:hover {
   color: var(--accent);
@@ -242,16 +251,47 @@ p { text-wrap: pretty; }
   border-color: var(--accent);
   color: var(--accent);
 }
-.icon-sun { display: inline; }
-.icon-moon { display: none; }
+.icon-sun { display: inline-flex; align-items: center; justify-content: center; }
+.icon-moon { display: none; align-items: center; justify-content: center; }
 [data-theme="light"] .icon-sun { display: none; }
-[data-theme="light"] .icon-moon { display: inline; }
+[data-theme="light"] .icon-moon { display: inline-flex; }
 
 .sponsor-toggle:hover {
   border-color: #e2566a;
+  color: #e2566a;
 }
 .sponsor-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #e2566a;
+}
+.ui-icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+}
+.theme-toggle .ui-icon,
+.sponsor-toggle .ui-icon {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+.ui-icon--star {
+  color: #f5b938;
+}
+[data-theme="light"] .ui-icon--star {
+  color: #d97706;
+}
+.js-graph-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+}
+.js-graph-btn .ui-icon {
+  vertical-align: middle;
 }
 body.sponsor-dialog-open {
   overflow: hidden;
@@ -879,6 +919,9 @@ a.hero-stat-num:focus-visible {
   gap: 6px;
 }
 .home-hub-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38em;
   font-size: .78rem;
   padding: 4px 14px;
   border-radius: 999px;
@@ -3142,7 +3185,9 @@ button.home-wiki-heatmap-cell.is-active {
   .site-title {
     font-size: 1rem;
     line-height: 1.25;
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
     font-weight: 700;
     flex: 0 1 auto;
     width: calc(100% - 130px);

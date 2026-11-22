@@ -225,6 +225,27 @@
     return '<div class="tt-meta-badges">' + html + '</div>';
   }
 
+  var FALLBACK_ICON_PATHS = {
+    compass: '<circle cx="8" cy="8" r="5.6"/><polygon points="10.4,5.6 9.1,9.1 5.6,10.4 6.9,6.9" fill="currentColor" stroke="none"/>',
+    calendar: '<rect x="2.6" y="3.8" width="10.8" height="9.4" rx="1.6"/><path d="M2.6 7h10.8M5.4 2.3v2.5M10.6 2.3v2.5"/>',
+    tag: '<path d="M2.8 8.3V3.4a.6.6 0 0 1 .6-.6h4.9l4.9 4.9a.9.9 0 0 1 0 1.3l-4.2 4.2a.9.9 0 0 1-1.3 0L2.8 8.3Z"/><circle cx="5.8" cy="5.8" r="1" fill="currentColor" stroke="none"/>',
+    star: '<path d="M8 1.8l1.85 3.76 4.15.6-3 2.93.71 4.13L8 11.27l-3.71 1.95.71-4.13-3-2.93 4.15-.6L8 1.8Z" fill="currentColor" stroke="currentColor" stroke-width="0.9" stroke-linejoin="round"/>'
+  };
+
+  function uiIconHtml(name) {
+    if (window.RNIcons && window.RNIcons.svg) return window.RNIcons.svg(name);
+    var body = FALLBACK_ICON_PATHS[name] || FALLBACK_ICON_PATHS.tag;
+    var cls = name === 'star' ? 'ui-icon ui-icon--star' : 'ui-icon';
+    return '<svg class="' + cls + '" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + body + '</svg>';
+  }
+
+  function depthIconHtml(key, meta) {
+    if (window.RNIcons && window.RNIcons.depthSvg) {
+      return window.RNIcons.depthSvg(key, meta && meta.icon);
+    }
+    return uiIconHtml('tag');
+  }
+
   /** 与详情页一致的社区跳转按钮；communityColor 与图谱节点社区色一致 */
   function buildCommunityBadgeHtml(communityId, communityLabel, communityColor, tooltip) {
     if (!communityId || !communityLabel) return '';
@@ -232,7 +253,7 @@
     return '<a class="detail-meta-badge detail-community-badge"' + communityBadgeStyleAttr(communityColor) +
       ' href="graph.html?community=' + encodeURIComponent(communityId) +
       '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
-      '<span>🧭</span>' + (tooltip ? tooltipLabelHtml(communityLabel) : '<span>' + escapeHtml(label) + '</span>') + '</a>';
+      uiIconHtml('compass') + (tooltip ? tooltipLabelHtml(communityLabel) : '<span>' + escapeHtml(label) + '</span>') + '</a>';
   }
 
   /**
@@ -390,12 +411,12 @@
 
   /**
    * 浮窗社区标签：放在摘要下方单独一行（不进顶部类型徽章行，避免两枚徽章挤在一起），
-   * 描边胶囊 + 🧭 与详情页「所属社区」按钮同一视觉语言，与实心类型徽章区分。
+   * 描边胶囊 + 罗盘图标与详情页「所属社区」按钮同一视觉语言，与实心类型徽章区分。
    */
   function buildTooltipCommunityHtml(communityLabel, communityColor) {
     if (!communityLabel) return '';
     return '<div class="tt-community"' + communityBadgeStyleAttr(communityColor) + '>' +
-      '<span aria-hidden="true">🧭</span>' + tooltipLabelHtml(communityLabel) + '</div>';
+      uiIconHtml('compass') + tooltipLabelHtml(communityLabel) + '</div>';
   }
 
   /**
@@ -461,7 +482,7 @@
     return '<div class="tt-routes"><span class="tt-health-label">所属路线</span>' + routes.map(function (key) {
       var meta = filters.DEPTH_META[key];
       return '<a class="detail-meta-badge" href="graph.html?depth=' + encodeURIComponent(key) + '">' +
-        '<span>' + escapeHtml(meta.emoji) + '</span>' + tooltipLabelHtml(meta.label) + '</a>';
+        depthIconHtml(key, meta) + tooltipLabelHtml(meta.label) + '</a>';
     }).join('') + '</div>';
   }
 
@@ -470,7 +491,7 @@
     var updated = resolved.updated || (node && node.updated) || '';
     if (!/^\d{4}-\d{2}-\d{2}$/.test(updated)) return '';
     return '<div class="tt-updated"><span class="tt-health-label">更新时间</span>' +
-      '<span class="detail-meta-badge detail-meta-date"><span aria-hidden="true">📅</span>' +
+      '<span class="detail-meta-badge detail-meta-date">' + uiIconHtml('calendar') +
       '<time datetime="' + escapeHtml(updated) + '">' + escapeHtml(updated) + '</time></span></div>';
   }
 
@@ -478,9 +499,11 @@
     opts = opts || {};
     var badges = buildMetaBadgesHtml(opts);
     var title = escapeHtml(prepareMathText(opts.title || opts.id || ''));
-    // 有开源代码（has_repo：关联 sources/repos/ 或 frontmatter code: 仓库）：标题末尾加 ⭐️，与列表行 / 详情页标题同标记
+    // 有开源代码（has_repo：关联 sources/repos/ 或 frontmatter code: 仓库）：标题末尾加开源星标，与列表行 / 详情页标题同标记
     if (opts.hasRepo) {
-      title += '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+      title += (window.RNIcons && window.RNIcons.repoStarHtml)
+        ? window.RNIcons.repoStarHtml()
+        : '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">' + uiIconHtml('star') + '</span>';
     }
     var summary = opts.summary
       ? '<div class="tt-summary">' + renderInlineMarkdown(prepareMathText(opts.summary)) + '</div>'
