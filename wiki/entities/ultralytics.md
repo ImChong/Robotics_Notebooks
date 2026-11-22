@@ -18,6 +18,7 @@ related:
   - ./rf-detr.md
   - ./hiertext.md
   - ../methods/yolo26-ocr-document-parsing.md
+  - ../methods/yolo26-edge-model-optimization.md
   - ./booster-robocup-demo.md
   - ../tasks/humanoid-soccer.md
   - ../methods/soccer-field-line-detection.md
@@ -182,6 +183,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [YOLO26 边缘部署与压缩：ONNX、量化、剪枝、蒸馏](../methods/yolo26-edge-model-optimization.md) — 核对官方 PTQ/QAT、NMS 分支、蒸馏与推理后端，避免直接引用未验证的转载 FPS。
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第②层 2D 检测/分割选型**（单阶段实时检测代表）
 - [目标检测（方法）](../methods/object-detection.md)
 - [目标检测模型选型](../queries/object-detection-model-selection.md)
