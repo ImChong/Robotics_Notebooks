@@ -1103,6 +1103,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # queries/legged-humanoid-rl-pd-gain-setting.md 与
     # methods/joint-actuator-parameter-identification.md 覆盖。
     "stiffness",
+    # behavior-1k：家务长程仿真评测基准实体，canonical 节点已是 entities/behavior-1k.md
+    # （另见 entities/paper-pi05-inference-settings-behavior-1k.md）。
+    "behavior-1k",
+    # starvla：StarVLA 统一具身 VLA 代码框架与方法系列，已由
+    # methods/star-vla.md、entities/paper-starvla-framework.md 与
+    # entities/paper-starvla-alpha.md 覆盖。
+    "starvla",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key

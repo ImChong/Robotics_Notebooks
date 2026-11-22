@@ -326,6 +326,8 @@ def test_atlas_entity_homonyms_do_not_mask_missing_mechanism(tmp_path, monkeypat
         "基于 **PyTorch** 原生推理后端。",
         "设计 **Reward** 稀疏与塑形项。",
         "调小关节 `stiffness` 与阻尼增益。",
+        "在 **BEHAVIOR-1K** 长程家务基准上评测。",
+        "接入 `starVLA` 统一代码框架基线。",
     ],
 )
 def test_existing_names_and_runtime_tokens_preserve_new_concept_signal(
