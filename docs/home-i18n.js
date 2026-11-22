@@ -6,7 +6,6 @@
   var storageKey = 'robotics-home-language', language = 'zh';
   try { if (localStorage.getItem(storageKey) === 'en') language = 'en'; } catch (_) { /* optional */ }
   var copy = {
-    '🗺️ Robotics Notebooks | 机器人技术栈地图': '🗺️ Robotics Notebooks | Robotics Knowledge Map',
     'Robotics Notebooks | 机器人技术栈地图': 'Robotics Notebooks | Robotics Knowledge Map',
     '机器人技术栈地图首页': 'Robotics Knowledge Map Home',
     '切换白天黑夜模式': 'Toggle light / dark mode',
@@ -78,11 +77,11 @@
     '当前筛选条件下暂无索引条目，或数据仍在加载。': 'No entries match these filters, or data is still loading.',
     '搜索暂时无法加载，请检查网络后重试。': 'Search could not load. Check your connection and try again.',
     '重试搜索': 'Retry search', '浏览知识图谱': 'Browse knowledge graph',
-    '预览全文': 'Show full summary', '收起': 'Collapse', '🔗图谱': '🔗Graph',
+    '预览全文': 'Show full summary', '收起': 'Collapse', '图谱': 'Graph',
     '查看图谱邻居': 'View graph neighbors', '精确匹配': 'Exact matches',
     '潜在关联': 'Related results', '摘要命中': 'Summary match', '正文匹配': 'Body match',
     '打开路线页 →': 'Open roadmap →', '打开详情页 →': 'Open details →',
-    '赞助我': 'Support my work', '微信扫一扫，赞助支持作者 ☕': 'Scan with WeChat to support the author ☕',
+    '赞助我': 'Support my work', '微信扫一扫，赞助支持作者': 'Scan with WeChat to support the author',
     '微信收款码': 'WeChat payment QR code', '关闭': 'Close',
     '新增': 'Added', '维护': 'Updated', '回到顶部': 'Back to top',
     '知识问答': 'Knowledge Q&A',
