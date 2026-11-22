@@ -86,6 +86,7 @@ flowchart LR
 - 对比"上身固定 / 上身随机动作"两种课程下，下身策略的抗扰能力
 
 ### 推荐读什么
+- [Humanoid Hanoi：共享 WBC 的长程技能组合](../wiki/entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md) — Stage 1 的统一低层控制接口与技能交接故障诊断；七次搬箱 DR 仿真 Extended 47%、Digit V3 真机 6/15，官方只开源基准环境。
 - [FORGE：力感知多粒度移动操作](../wiki/entities/paper-forge-force-aware-loco-manipulation.md) — 速度/足端/双腕/载荷命令与冻结 locomotion 先验的残差协调。
 - [PolyMorphWBC：跨臂形态四足移动操作](../wiki/entities/paper-polymorphwbc-quadruped.md) — 用末端轨迹预览自动协调底座与机械臂 IK。
 - [HOMIE](../wiki/entities/paper-loco-manip-161-040-homie.md) 与 [FALCON](../wiki/entities/paper-loco-manip-161-109-falcon.md) — 上下身解耦锚点
