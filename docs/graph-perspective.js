@@ -26,6 +26,7 @@
     reduced: { height: 86, contours: 14, pitch: 38, yaw: -14 },
     unsupported: { height: 100, contours: 12, pitch: 36, yaw: 0 },
   };
+  var PREVIEW_HEIGHT_BY_TIER = { full: 32, lite: 29, reduced: 28 };
 
   var TOP_VIEW_PARAMS = { pitch: 76, yaw: 0 };
 
@@ -2359,6 +2360,9 @@
 
     function resolveDefaultForTier(t) {
       var base = getDefaultsForTier(t);
+      if (opts.usePreviewTerrainHeight && PREVIEW_HEIGHT_BY_TIER[t] != null) {
+        base.height = PREVIEW_HEIGHT_BY_TIER[t];
+      }
       if (defaultOverrides && defaultOverrides[t] && typeof defaultOverrides[t] === 'object') {
         return clampParams(Object.assign({}, base, defaultOverrides[t]), t);
       }

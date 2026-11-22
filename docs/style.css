@@ -1978,6 +1978,11 @@ button.home-wiki-heatmap-cell.is-active {
   border-color: rgba(91, 156, 246, 0.5);
 }
 .detail-meta-badge > span:first-child { font-size: .95em; line-height: 1; }
+.detail-meta-type,
+.detail-meta-type:hover {
+  border-color: color-mix(in srgb, var(--type-color) 38%, transparent);
+  background: color-mix(in srgb, var(--type-color) 12%, transparent);
+}
 .detail-meta-route-badge {
   max-width: 100%;
 }
@@ -2041,6 +2046,31 @@ button.home-wiki-heatmap-cell.is-active {
   font-size: .78rem;
   color: var(--text-muted);
 }
+#detailMiniMapWrap .detail-mini-map-head {
+  align-items: flex-start;
+}
+.page-hero #detailMiniMapMeta {
+  margin: 2px 0 0;
+  font-size: .78rem;
+}
+.detail-mini-map-modes {
+  display: flex;
+  flex: none;
+  gap: 4px;
+}
+.detail-mini-map-modes button {
+  min-width: 44px;
+  min-height: 32px;
+}
+.detail-mini-map-viewport {
+  --persp-horizon-edge: var(--bg);
+  --persp-stage-bg: var(--bg);
+  position: relative;
+  height: clamp(280px, 46vw, 360px);
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg);
+}
 .detail-mini-map-foot {
   display: flex;
   justify-content: flex-end;
@@ -2058,15 +2088,26 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-mini-map-svg {
   display: block;
   width: 100%;
-  height: 180px;
-  border-radius: 8px;
-  background: var(--bg);
+  height: 100%;
   cursor: grab;
+  touch-action: pan-y;
+}
+.detail-mini-map-viewport.is-perspective-mode .detail-mini-map-svg {
+  display: none;
 }
 .detail-mini-map-svg:active {
   cursor: grabbing;
 }
 .detail-mini-map-svg text { font-family: var(--font-sans); }
+.detail-mini-map-svg .mini-node,
+.detail-mini-map-svg .mini-node-current {
+  touch-action: none;
+  cursor: grab;
+}
+.detail-mini-map-svg .mini-node:active,
+.detail-mini-map-svg .mini-node-current:active {
+  cursor: grabbing;
+}
 .detail-mini-map-svg .mini-node-current circle {
   stroke: var(--accent);
   stroke-width: 2.4px;
