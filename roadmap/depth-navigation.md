@@ -231,6 +231,7 @@ flowchart LR
 
 **方向 D：导航世界模型与新载体**
 - 用 WAM 联合预测未来观测与动作；空中 VLN 等新设定
+- [VLN-AR：机载分层空中视觉–语言导航](../wiki/entities/paper-vln-ar-aerial-navigation.md) — Stage 5 空中载体工程对照：2 Hz 高层语义与 >200 Hz 几何轨迹专家异步分层、3DGS + GRPO、记忆式长任务；Jetson Orin NX 机载 91/101 次真实飞行任务成功，官方代码尚未开放
 - 关键词：[OpenNWM（潜动作预训练的导航世界模型）](../wiki/entities/paper-opennwm.md)、[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[PanoWorld（真实世界全景可控生成）](../wiki/entities/paper-panoworld-real-world-panoramic-generation.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[iCrowdNav](../wiki/entities/paper-icrowdnav.md)、[SPLC](../wiki/entities/paper-splc.md)、[CommNav](../wiki/entities/paper-commnav.md)
 
 **方向 E：户外社会与交通情境导航**
