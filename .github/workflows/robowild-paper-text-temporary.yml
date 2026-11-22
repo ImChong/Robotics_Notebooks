@@ -1,0 +1,36 @@
+name: RoboWild paper text temporary
+on:
+  push:
+    branches:
+      - ingest/robowild-xlang-benchmark-20261122
+    paths:
+      - .github/workflows/robowild-paper-text-temporary.yml
+permissions:
+  contents: read
+jobs:
+  paper-text:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch public official PDF and extract all page text
+        shell: bash
+        run: |
+          python3 -m pip -q install pypdf==5.9.0
+          python3 - <<'PY'
+          import io
+          import urllib.request
+          from pypdf import PdfReader
+          url = "https://huggingface.co/datasets/xlangai/RoboWild/resolve/main/RoboWild.pdf"
+          req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+          with urllib.request.urlopen(req, timeout=80) as response:
+              data = response.read()
+              print("SOURCE_URL", response.url)
+              print("PDF_BYTES", len(data))
+          if not data.startswith(b"%PDF"):
+              raise RuntimeError("Response is not a PDF")
+          pdf = PdfReader(io.BytesIO(data))
+          print("PAGE_COUNT", len(pdf.pages))
+          for i, page in enumerate(pdf.pages, 1):
+              print(f"\\n================ PAGE {i} BEGIN ================\\n")
+              print(page.extract_text(extraction_mode="layout") or "[NO_EXTRACTABLE_TEXT]")
+              print(f"\\n================ PAGE {i} END ================\\n")
+          PY
