@@ -17,6 +17,7 @@ related:
   - ./isaac-sim.md
   - ./legged-gym.md
   - ./mjlab-playground.md
+  - ./mjlab-hand.md
   - ./amp-mjlab.md
   - ./open-beni.md
   - ./smp-g1-mjlab.md
@@ -136,6 +137,7 @@ mjlab 架构
 
 ## 关联页面
 
+- [mjlab_hand：跨手型灵巧操作任务库](./mjlab-hand.md) — Allegro/LEAP/Shadow/Sharpa/Wuji/XHand 抓取、旋转、双手交接、转盘、保定球与杂耍；提供 ContactExplorer 接触探索奖励及评测 CLI。
 - [Open-BENI](./open-beni.md) — BENI 策略训练与浏览器端 MuJoCo + ONNX 演示
 - [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 [MuJoCo Warp](./mujoco-warp.md)）
 - [MuJoCo Warp](./mujoco-warp.md) — 实际 GPU 刚体后端；PGS/PLUGIN 缺口与 AD 未通见该页
