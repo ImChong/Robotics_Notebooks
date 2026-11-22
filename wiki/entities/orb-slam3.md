@@ -118,7 +118,7 @@ sequenceDiagram
 - [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 局部 BA、惯性 BA 与位姿图承担不同校正职责，可结合非线性最小二乘背景分开阅读。
 - [机器人自主探索](../tasks/autonomous-exploration.md) — Atlas 与重定位可服务长程探索，仍需自行对齐 ROS 2、TF、规划和避障接口。
 
-- [RigVis：双目惯性 SLAM 与稠密点云](rigvis.md) — 轻量实验系统，对照 ORB-SLAM3 的视觉惯性闭环与地图优化；源码和指标尚待独立核验。
+- [RigVis：双目 SLAM + 松耦合 ESKF](rigvis.md) — 已核查 C++17 官方实现：ORB/PnP、Ceres BA、关键帧 SGBM 稠密点云；当前 ESKF 在前端之后独立融合，区别于 ORB-SLAM3 的紧耦合优化；KITTI 指标仍是作者报告。
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [VINS-Fusion](../entities/vins-fusion.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
