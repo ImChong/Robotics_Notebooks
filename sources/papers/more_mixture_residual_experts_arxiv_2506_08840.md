@@ -12,6 +12,9 @@
 - **机构：** 中国科学技术大学（USTC）、中国电信人工智能研究院（TeleAI）、哈尔滨工程大学（HEU）、上海科技大学（ShanghaiTech）；通讯作者 Chenjia Bai
 - **硬件：** Unitree G1 + Intel RealSense D435i 深度相机
 - **入库日期：** 2026-06-25
+- **核对日期：** 2026-11-22
+- **核对范围：** `arXiv:2506.08840v2` 全文 §I–§VI（含 Table I–IV、Warp 深度渲染与 body mask 细节、t-SNE 潜空间分析及真机试验）
+- **通读：** 已完成
 - **一句话说明：** 两阶段训练：先用深度相机学复杂地形 base locomotion，再以 **latent residual MoE + 多判别器 AMP** 在 gait command 下切换 Walk-Run / High-Knees / Squat 等人形步态，G1 真机 50 Hz 部署。
 
 ## 摘要级要点

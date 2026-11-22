@@ -8,6 +8,9 @@
 - **机构：** 中国科学技术大学（USTC）、中国电信人工智能研究院（TeleAI）、哈尔滨工程大学（HEU）、上海科技大学（ShanghaiTech）
 - **硬件：** Unitree G1（16 DoF 腿+臂）+ Intel RealSense D435i
 - **收录日期：** 2026-07-13
+- **核对日期：** 2026-11-22
+- **核对范围：** `TeleHuman/MoRE` README、目录结构、`legged_gym/scripts/train.py`、`deploy/deploy_mujoco/deploy_mujoco_with_resi.py`
+- **通读：** 已完成
 - **许可：** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.en)
 
 ## 一句话摘要

@@ -2,8 +2,11 @@
 type: entity
 tags: [paper, humanoid, perceptive-locomotion, brachiation, lidar, teacher-student, sim2real, eth, engineai]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: "2608.29769"
+original:
+  - ../../sources/papers/agile_perceptive_traversal_arxiv_2608_29769.md
+  - ../../sources/sites/sparse-3d-traversal-github-io.md
 related:
   - ./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ./paper-ladderman-humanoid-perceptive-ladder-climbing.md

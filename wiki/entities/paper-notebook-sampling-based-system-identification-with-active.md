@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, sim2real, system-identification, active-exploration, cma-es, locomotion, unitree-go2, unitree-g1, isaac-gym, corl-2025, cmu]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2505.14266"
 venue: "CoRL 2025 Oral"
 code: https://github.com/LeCAR-Lab/SPI-Active
@@ -28,6 +28,10 @@ sources:
   - ../../sources/sites/spi-active.md
   - ../../sources/papers/humanoid_pnb_spi-active.md
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
+original:
+  - ../../sources/papers/spi_active_arxiv_2505_14266.md
+  - ../../sources/repos/spi-active.md
+  - ../../sources/sites/spi-active.md
 summary: "SPI-Active（CoRL 2025 Oral，CMU/LeCAR）：GPU 并行采样式 SysID + 主动探索最大化 FIM，辨识 Go2 质量/惯量与电机模型；高精度技能零样本迁移相对基线提升 42–63%。官方仓部分开源（SPI/Active/下游训练已发，Dataset Replay 与 Sim2real 待发）。"
 ---
 
@@ -220,7 +224,7 @@ sequenceDiagram
 - **平台默认 Go2：** 自定义机器人/电机模型文档称将陆续放出；G1 有配置线索但非完整教程。
 - **激励不足仍会失败：** 若只用弱激励轨迹，FIM 再优化也救不了不可辨识参数——这是 SysID 共性风险。
 
-## 与其他页面的关系
+## 关联页面
 
 - [System Identification](../concepts/system-identification.md) — 腿足采样式 + 主动探索实例
 - [Sim2Real](../concepts/sim2real.md) / [Domain Randomization](../concepts/domain-randomization.md) — 辨识 vs 盲目随机化的选型语境

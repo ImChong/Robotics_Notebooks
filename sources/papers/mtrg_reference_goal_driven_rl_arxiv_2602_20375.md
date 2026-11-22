@@ -13,7 +13,10 @@
 - **演示视频：** <https://youtu.be/9NamvWhtFPM>
 - **作者：** Jiashun Wang, M. Eva Mungai, He Li, Jean Pierre Sleiman, Jessica Hodgins, Farbod Farshidian
 - **机构：** RAI Institute, Carnegie Mellon University
-- **入库日期：** 2026-06-12（2026-06-19 补录 GfR 项目页与 RSS 2026 定稿信息）
+- **入库日期：** 2026-06-12（2026-06-19 补录 GfR 项目页与 RSS 2026 定稿信息；2026-11-22 补齐全文核对）
+- **开源状态：** **未发布本文官方源码**（arXiv 与 GfR 项目页 `jiashunwang.github.io/GfR/` 均无代码仓库入口；一作另有独立工作仓 `jiashunwang/Hybrid-Motion-Imitation`）
+- **核对范围：** 通过 `arXiv:2602.20375v1` PDF 抽取全文（1,584 行，通读 Abstract、§I–§IV、Table I–II、Fig. 1–5 与 Appendix A–B 课程/任务混合参数公式）；未运行闭源训练管线。
+- **通读：** 已完成
 - **一句话说明：** 单一 **goal-conditioned** 策略在**共享观测/动作空间**上联合优化两类任务——**(i) 参考塑形模仿**（参考只进奖励、不进策略输入）与 **(ii) 纯目标泛化**（随机目标、稀疏任务奖励）——无需对抗、相位或部署时参考轨迹，在 **Unitree G1** 箱式跑酷场上实现 walk-jump / walk-climb / climb-down 的 OOD 初始条件泛化与长程技能组合。
 
 ## 核心摘录

@@ -12,6 +12,9 @@
 - **项目页：** <https://lecar-lab.github.io/spi-active_/>
 - **视频：** <https://youtu.be/pxyig4D1ZFs>
 - **入库日期：** 2026-07-31
+- **核对日期：** 2026-11-22
+- **核对范围：** `arXiv:2505.14266` 正文 §1–§8 与 Appendix A–E（含 Table 1–9、Optuna + CMA-ES Stage-1 SPI 辨识公式、FIM 主动探索、`κ_i tanh(τ_PD/κ_i)` 电机模型与 Limitations）
+- **通读：** 已完成
 - **一句话说明：** SPI-Active 两阶段框架：GPU 并行采样（CMA-ES）最小化仿真–真实轨迹误差以辨识腿足质量/惯量与电机参数；再优化探索策略指令以最大化 Fisher 信息（D-最优），采集高信息量数据后 refinement；Go2 / G1 高精度技能零样本迁移，相对基线提升 42–63%。
 
 ## 核心论文摘录（MVP）

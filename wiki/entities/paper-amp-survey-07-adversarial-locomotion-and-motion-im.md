@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, loco-manipulation, adversarial-rl, teleai, shanghaitech, neurips]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2504.14305"
 venue: NeurIPS 2025
+code: https://github.com/TeleHuman/ALMI-Open
 summary: "ALMI（NeurIPS 2025）将人形拆为下半身 locomotion 与上半身 mimic 两策略，用互相对抗的迭代 RL 达到走跑稳健与上肢跟踪的纳什均衡，并发布 ALMI-X 数据集。"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -21,6 +22,9 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_07_adversarial_locomotion_and_motion_imitation_for.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+original:
+  - ../../sources/papers/almi_adversarial_locomotion_motion_imitation_arxiv_2504_14305.md
+  - ../../sources/repos/almi-open.md
 ---
 
 # ALMI：对抗 locomotion 与运动模仿的人形策略学习
@@ -110,20 +114,50 @@ flowchart TB
 - 副产物 **ALMI-X**（>80k 轨迹 + 模板化语言标注）与 ALMI-Open 开源，是这篇工作留给下游 Transformer 全身基础模型的实际抵押品。
 - 与 [MoRE #08](./paper-amp-survey-08-more.md) 对照：后者是**单策略 + 多判别器 + 深度地形**，ALMI 是**双策略上下半身对抗**，不含多步态 gait command。
 
-## 常见误区
+## 源码运行时序图
+
+图依据：基于 `TeleHuman/ALMI-Open` `README.md`、`ALMI_RL/README.md` 与 `ALMI_RL/legged_gym/scripts/train.py` 核实（注：官方 TODO 中真机 deployment 代码仍未勾选发布）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as Developer
+  participant TR as ALMI_RL/legged_gym/scripts/train.py
+  participant Task as task_registry & h1_2_* Env
+  participant PPO as RSL-RL PPO Runner
+  participant Data as Data_Collection / ALMI_trans
+
+  U->>TR: --task=h1_2_wb_curriculum (迭代 1 下半身，配 all_wave.pkl 课程)
+  TR->>Task: make_env + make_alg_runner
+  Task-->>PPO: learn() 输出 lower-1 ckpt
+  U->>TR: --task=h1_2_upper (在 h1_2_upper_config.py 指定 lower-1)
+  TR->>PPO: 固定 lower-1 + 速度对抗，输出 upper-1
+  U->>TR: --task=h1_2_lower (在 h1_2_lower_config.py 指定 upper-1)
+  TR->>PPO: 交替迭代三轮后输出协调全身 (π^l, π^u)
+  U->>Data: MuJoCo 采样 >80k ALMI-X 轨迹，训练 Transformer 策略
+```
+
+## 工程实践
+
+- **分模块开放范围（`TeleHuman/ALMI-Open`）：** 已开源 `ALMI_RL/` 迭代训练、`Data_Collection/` ALMI-X 采数与 `ALMI_trans/` Transformer 基础模型训练/推理脚本（[HuggingFace ALMI-X](https://huggingface.co/datasets/TeleEmbodied/ALMI-X) / `ALMI-trans` 权重）；**`Release ALMI deployment code` 在官方 README TODO 仍未勾选**。
+- **迭代切换配置：** 第一轮下半身用 `h1_2_wb_curriculum` + AMASS 存活率排序文件（`all_wave.pkl` / `mean_episode_length.csv`），随后分别在 `h1_2_upper_config.py` 与 `h1_2_lower_config.py` 手动填入上一轮检查点。
+- **算力与环境：** `almi-rl` conda 环境（Python 3.8 + PyTorch 2.3.1 + Isaac Gym + `rsl_rl`），4096 并行环境，三轮迭代总耗时约 **17 h**。
+
+## 常见误区或局限
 
 1. **ALMI = 两个独立真机策略硬切换：** 训练期分体 + 对抗；部署为 **协调全身**，不是 FSM 换 checkpoint（细节见项目页）。
 2. **全身 AMP 加权重就行：** 论文显示 **ALMI(whole)** 上肢 JPE **0.7022 m** 远差于分体 **0.2116 m**——结构分解非简单调参。
 3. **与 MoRE 重复：** MoRE 是 **单策略 + 多判别器 + 深度地形**；ALMI 是 **双策略 + 上下半身对抗**，无多步态 gait command。
 4. **只适用 H1-2：** 主实验 H1-2；G1 泛化有报告，跨形态需重训与 retarget。
+5. **原文局限（§7 Conclusion）：** 在强动态全身联动动作（如复杂舞蹈）上表现仍次优；且全量 ALMI-X 离线训练时 Transformer 基础模型性能较单子集退化，数据效率与模型架构仍有提升空间。
 
 ## 实验与评测
 
 - **CMU MoCap Hard：** 存活率、上肢 JPE vs Exbody / Exbody2 / OmniH2O / 全身一体 ALMI。
-- **G1 迁移：** 相对 OmniH2O、Exbody2 更稳（论文 §实验）。
-- **三轮迭代 ~17 h**（单卡量级，见论文）；消融对抗课程与分体结构。
+- **G1 迁移（Table 5）：** 存活率 **0.9484**（上肢 JPE **0.2367 m**），显著高于 OmniH2O（`0.3882` / `1.0826 m`）与 ExBody2（`0.8848` / `0.3821 m`）。
+- **三轮迭代 ~17 h**（单卡量级，见论文）；Table 6 验证去掉 arm curriculum 或停在 `lower-1` 时 Hard 存活率由 `0.9723` 跌至 `0.8480 / 0.8743`。
 
-## 与其他页面的关系
+## 关联页面
 
 - 同段姊妹：[GMP #06](./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[Hiking #09](./paper-hiking-in-the-wild.md)
 - 任务：[locomotion.md](../tasks/locomotion.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)

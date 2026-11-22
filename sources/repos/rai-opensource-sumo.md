@@ -4,7 +4,9 @@
 - **URL：** <https://github.com/rai-opensource/sumo>
 - **项目页：** <https://sumo.rai-inst.com/>
 - **论文：** <https://arxiv.org/abs/2604.08508>
-- **核查日期：** 2026-10-08
+- **核查日期：** 2026-10-08（2026-11-22 复核代码树与 CLI 入口）
+- **核对范围：** 通读 `rai-opensource/sumo` `main` 分支 `README.md`、`sumo/cli.py`（Hydra + `dora_utils.launch.run` 装配与 `judo` 配置继承）及仓库目录结构（`g1_extensions/g1_rollout.cpp`、`sumo/app/dora/`、`sumo/configs/sumo_default.yaml`）；未在本地安装 Pixi 与构建 C++ 扩展运行仿真。
+- **通读：** 已完成
 - **Wiki：** [Sumo](../../wiki/methods/sumo.md)
 - **配套来源：** [论文归档](../papers/sumo.md)、[RAI 路线核查](../sites/rai-institute.md)
 
