@@ -87,7 +87,7 @@ flowchart TD
   TrainModels -.-> Key
   TrainModels -.-> Video
   TrainModels -.-> IDM
-  Teleop -. "可选混合训练" .-> Policy
+  Teleop -.-> Policy
 ```
 
 **监督边界**：人视频只提供操作行为及场景，机器人动作由机器人数据训练的 IDM 产生，不能把生成关节动作视为人视频直接测得的真实力矩/接触力。
