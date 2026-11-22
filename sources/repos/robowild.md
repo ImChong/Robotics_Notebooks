@@ -4,7 +4,7 @@
 - **官方 RoboWild：** https://github.com/xlang-ai/RoboWild
 - **官方 Harness：** https://github.com/xlang-ai/RoboWild-Harness
 - **项目：** https://robowild.xlang.ai/
-- **论文：** https://huggingface.co/datasets/xlangai/RoboWild/blob/main/RoboWild.pdf
+- **论文：** https://huggingface.co/datasets/xlangai/RoboWild/resolve/main/RoboWild.pdf
 - **数据：** https://huggingface.co/datasets/xlangai/RoboWild
 - **许可：** RoboWild 仓库根 LICENSE / README 标示 Apache-2.0；第三方仿真资产及依赖需各自核查
 - **核对日期：** 2026-11-22
