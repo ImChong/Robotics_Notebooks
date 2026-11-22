@@ -318,6 +318,7 @@ flowchart LR
 **方向 D：重定向即数据引擎**
 - 大规模重定向管线为 BFM / 全身跟踪基座批量生产训练数据
 - 关键词：[OmniRetarget 数据集](../wiki/entities/omniretarget-dataset.md)、[Query：人形训练数据管线](../wiki/queries/humanoid-training-data-pipeline.md)、[BFM 纵深路线](depth-bfm.md)
+- [BeyondRetarget Plus：互联网视频到人形参考动作](../wiki/entities/paper-beyondretarget-monocular-humanoid.md#beyondretarget-plus2026-11-22-扩展) — Stage 6 离线数据引擎案例：移动相机/全局轨迹、冻结 TRAM/VIMO 与 C-RC1 后处理；与 base 实时遥操作能力分开验证。
 
 ---
 

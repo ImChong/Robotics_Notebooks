@@ -209,6 +209,7 @@ flowchart LR
 - [EgoScale](../wiki/methods/egoscale.md) — 人视频预训练 + 小规模视点对齐 mid-training 的两段式配方
 - [Real2Sim 纵深](depth-real2sim.md) 与 [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 仿真侧资产供给的姊妹路线
 - [PHUMA](../wiki/entities/dataset-bfm-phuma.md) 与 [动作重定向纵深](depth-motion-retargeting.md) — 人 → 本体折算的物理可靠性侧
+- [BeyondRetarget Plus（单目人体视频 → 多机运动数据）](../wiki/entities/paper-beyondretarget-monocular-humanoid.md#beyondretarget-plus2026-11-22-扩展) — Stage 4 海量离线人视频折算：移动相机/世界轨迹 + C-RC1，须量化失败片段与许可证
 - [SoftMimicGen](../wiki/entities/paper-softmimicgen.md) — 少量遥操作示范 + 子任务标注 + 自动轨迹生成，批量合成毛巾 / 绳索 / 毛绒玩具等可变形物体操作数据（ICRA 2026）
 
 ### 学完输出什么
