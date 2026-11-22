@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-22] ingest | live-panel-skill JSON/Excalidraw 动态架构图工具入库
+
+- 读取 ythx-101/live-panel-skill 官方 README、SKILL.md 及 render/check_frames/livepanel 源码，归档已开源项目与可执行渲染链路。
+- 新增独立项目实体（双语标题、Mermaid 流程总览与源码运行时序图），从 Diagrams 建立入链；不硬挂机器人算法纵深路线。
+- 明确动画并非真实遥测，未在本次环境运行上游渲染与全套测试。
+
 ## [2026-11-22] ingest | sources/repos/humancalib.md — 走路人体自动标定多相机外参并接入动捕路线
 
 - 新增独立 HumanCalib 双语项目页，基于官方 METHOD、HOWTO 和 CLI/BA/后处理源码核实流程、运行时序与许可。
