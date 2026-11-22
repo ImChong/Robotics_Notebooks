@@ -12,6 +12,8 @@ related:
   - ./mermaid-js.md
   - ./archify.md
   - ./diagram-design.md
+  - ../methods/claude-code-dynamic-workflows.md
+  - ../methods/coding-agent-verification-loops.md
 sources:
   - ../../sources/repos/ythx-101-live-panel-skill.md
 summary: "live-panel-skill 是 MIT 开源的 Agent Skill 与 Python 渲染器：将 JSON 或导入的 Excalidraw 图变成固定布局、状态持续变化的架构动图，逐帧驱动 Chromium 并编码为 MP4 或循环 HTML；不读取真实系统遥测。"
@@ -141,6 +143,8 @@ python3 scripts/check_frames.py --config examples/minimal/config.json --out-dir 
 - [Mermaid.js](./mermaid-js.md) — Wiki 中直接显示的文本式静态流程图、时序图
 - [Archify](./archify.md) — JSON IR 到可校验架构工件，可比较与 live-panel 的视觉用途差异
 - [Diagram Design](./diagram-design.md) — 绘制与审查技术架构图的设计流程
+- [Claude Code 动态多 Agent 工作流](../methods/claude-code-dynamic-workflows.md) — Agent 如何编排任务专用流程；live-panel 的 SKILL 负责可视化产出而非调度 Agent
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 将配置生成后的帧溢出、重叠及回放校验纳入可复核交付门禁；不将校验通过误作图中系统真实运行
 
 ## 参考来源
 
