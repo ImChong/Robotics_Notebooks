@@ -4,7 +4,7 @@ title: "panda：车辆 CAN/CAN FD 接口与安全固件 / comma.ai panda"
 project_id: commaai-panda
 project: https://github.com/commaai/panda
 code: https://github.com/commaai/panda
-tags: [entity, can, can-fd, functional-safety, embedded, hardware]
+tags: [entity, can, can-fd, functional-safety, embedded, hardware, commaai]
 status: complete
 updated: 2026-11-22
 summary: "comma.ai panda 用 STM32H725 提供车辆 CAN/CAN FD 通信，固件结合 opendbc 车型安全规则限制控制消息。"

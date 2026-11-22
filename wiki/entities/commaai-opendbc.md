@@ -4,7 +4,7 @@ title: "opendbc：车辆接口与安全规则 / opendbc Car Interface"
 project_id: commaai-opendbc
 project: https://github.com/commaai/opendbc
 code: https://github.com/commaai/opendbc
-tags: [entity, autonomous-driving, can, dbc, safety, control]
+tags: [entity, autonomous-driving, can, dbc, safety, control, commaai]
 status: complete
 updated: 2026-11-22
 summary: "comma.ai 的车辆 Python 接口、DBC 报文定义与安全策略集合，用于解析车况并把控制指令映射为车型 CAN 报文。"

@@ -4,7 +4,7 @@ title: "msgq：共享内存进程间消息队列 / msgq IPC"
 project_id: commaai-msgq
 project: https://github.com/commaai/msgq
 code: https://github.com/commaai/msgq
-tags: [entity, ipc, message-queue, robotics, open-source]
+tags: [entity, ipc, message-queue, robotics, open-source, commaai]
 status: complete
 updated: 2026-11-22
 summary: "comma.ai 的单发布者多订阅者消息总线，采用环形缓冲区，在 openpilot 的 cereal 下提供进程间传输。"

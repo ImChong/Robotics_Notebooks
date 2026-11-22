@@ -4,7 +4,7 @@ title: "openpilot：模块化驾驶辅助系统 / openpilot Modular Driver Assis
 project_id: commaai-openpilot
 project: https://github.com/commaai/openpilot
 code: https://github.com/commaai/openpilot
-tags: [entity, autonomous-driving, robotics, control, software]
+tags: [entity, autonomous-driving, robotics, control, software, commaai]
 status: complete
 updated: 2026-11-22
 summary: "comma.ai 开源驾驶辅助系统，利用模型感知、消息总线、控制器、车端接口与独立安全固件实现车道及纵向辅助控制。"
