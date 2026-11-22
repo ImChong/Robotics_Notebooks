@@ -1,8 +1,6 @@
 name: RoboWild paper text temporary
 on:
-  push:
-    branches:
-      - ingest/robowild-xlang-benchmark-20261122
+  pull_request:
     paths:
       - .github/workflows/robowild-paper-text-temporary.yml
 permissions:
