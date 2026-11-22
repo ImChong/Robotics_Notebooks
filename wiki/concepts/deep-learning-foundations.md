@@ -3,9 +3,10 @@ type: concept
 status: complete
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-11-21
+updated: 2026-11-22
 related:
   - ../entities/embodied-interview-qa.md
+  - ../entities/accumulatemore-cv.md
   - ./backpropagation.md
   - ./vision-backbones.md
   - ./transformer.md
@@ -24,6 +25,7 @@ related:
 sources:
   - ../../sources/books/udl_book.md
   - ../../sources/papers/deep_learning_optimizers.md
+  - ../../sources/repos/accumulatemore-cv.md
   - ../../sources/repos/pytorch-official.md
   - ../../sources/repos/tensorflow-official.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
@@ -110,6 +112,7 @@ original:
 - [Sim2Real](../concepts/sim2real.md)
 - [PyTorch](../entities/pytorch.md)
 - [TensorFlow](../entities/tensorflow.md)
+- [AccumulateMore/CV 中文深度学习课程笔记](../entities/accumulatemore-cv.md) — PyTorch/CNN/Transformer/RAG 的分编号 Notebook 练习；使用前核查训练数据划分与依赖
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 - [MiniMind](../entities/minimind.md) — 中文社区「从 0 训练小 LLM」PyTorch 全链路开源教程
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
@@ -118,6 +121,7 @@ original:
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 - [Deep Learning Optimizers 论文摘录](../../sources/papers/deep_learning_optimizers.md)
+- [AccumulateMore/CV 源仓库与代表性 Notebook 核验](../../sources/repos/accumulatemore-cv.md)
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)
 - [TensorFlow 官方站点与文档索引](../../sources/repos/tensorflow-official.md)
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
