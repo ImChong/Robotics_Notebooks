@@ -187,6 +187,7 @@ flowchart LR
 - 完整跑一遍 sim2real checklist，产出一次 sim2sim 回归报告再上真机
 
 ### 推荐读什么
+- [Xbotics-Embodied-Guide](../wiki/entities/xbotics-embodied-guide.md) — 起步导航：从仿真学习与 LeRobot 示例定位 Sim2Real 方向；并非独立部署框架，逐项落地仍用下列工程检查单
 - [Query：Sim2Real Checklist](../wiki/queries/sim2real-checklist.md) — 完整工程清单（含 3 分钟快速版）
 - [处理器在环 Sim2Real](../wiki/concepts/processor-in-the-loop-sim2real.md)
 - [Software-in-the-Loop](../wiki/concepts/software-in-the-loop.md) 与 [Hardware-in-the-Loop](../wiki/concepts/hardware-in-the-loop.md) — 把上一条补成 SIL → PIL → HIL 的完整在环阶梯：哪些环节可以留在纯软件回归（仿真机器人 + ROS 2 bridge），哪些必须把真实控制器 / 驱动 / 总线接进实时闭环再上整机；含 OPAL-RT 与 RHILS 的一手工程口径，并与同缩写的 Hybrid Imitation Learning 消歧
@@ -250,7 +251,7 @@ flowchart LR
 - [Sim2Real 概念页](../wiki/concepts/sim2real.md) 与 [Sim2Real 方法横向对比](../wiki/comparisons/sim2real-approaches.md)
 - Tobin et al., *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* (2017, [arXiv:1703.06907](https://arxiv.org/abs/1703.06907))
 - [RMA: Rapid Motor Adaptation for Legged Robots](https://arxiv.org/abs/2107.04034) — RMA（RSS 2021）
-- [Xbotics-Embodied-Guide (Xbotics 社区具身智能学习指南)](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-Guide) — Sim2Real SOP 工程步骤
+- [Xbotics-Embodied-Guide（Xbotics 社区具身智能学习指南）](../wiki/entities/xbotics-embodied-guide.md) — Sim2Real 学习导航（上游只提供路线与示例，不是完整可运行 SOP）
 - [SAGE: Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage) — 执行器层 gap 度量工具链
 - [Train an SO-101 Robot From Sim-to-Real With NVIDIA Isaac](https://docs.nvidia.com/learning/physical-ai/sim-to-real-so-101/latest/index.html) — DR / Co-training / Cosmos / SAGE+GapONet 四类策略对照
 - Tobin et al. 2017（Domain Randomization 奠基）；Peng et al. 2018（Dynamics Randomization）
