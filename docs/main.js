@@ -5877,7 +5877,7 @@
     return head || base;
   }
 
-  function resolveCompactRowDisplayType(page, detailId, communityIndex) {
+  function resolvePageDisplayType(page, detailId, communityIndex) {
     if (communityIndex && detailId && communityIndex.detailIdToNodeType) {
       var byId = communityIndex.detailIdToNodeType.get(detailId);
       if (byId) return byId;
@@ -5917,7 +5917,7 @@
     return {
       id: detailId,
       detail_id: detailId,
-      type: resolveCompactRowDisplayType(safePage, detailId, communityIndex),
+      type: resolvePageDisplayType(safePage, detailId, communityIndex),
       title: buildInternalLinkTitle(detailId, safePage),
       community_label: communityLabel,
       has_repo: hasRepo,
@@ -6528,6 +6528,14 @@
     row.hidden = false;
   }
 
+  function renderDetailMetaType(rowId, type) {
+    var typeColors = (window.RNGraphTooltip && window.RNGraphTooltip.GRAPH_NODE_TYPE_COLOR) || ROADMAP_KMAP_TYPE_COLOR;
+    var color = typeColors[type] || typeColors[''];
+    var badge = '<span class="detail-meta-badge detail-meta-type" style="--type-color:' + escapeHtml(color) + '">' +
+      escapeHtml(wikiTypeLabel(type, 'node')) + '</span>';
+    renderDetailMetaItemRow(rowId, '页面类型', badge);
+  }
+
   function renderDetailMetaDateBadge(dateStr) {
     if (!dateStr) return '';
     return '<span class="detail-meta-badge detail-meta-date">' + escapeHtml(String(dateStr)) + '</span>';
@@ -6711,6 +6719,7 @@
       '更新时间',
       updated ? renderDetailMetaDateBadge(updated) : ''
     );
+    renderDetailMetaType('roadmapMetaType', 'roadmap_page');
 
     if (stages.length) {
       var stageLabel = stages.length + ' 个阶段';
@@ -7029,11 +7038,17 @@
 
   function renderDetailMiniMap(detailPage, detailPages) {
     var wrap = document.getElementById('detailMiniMapWrap');
+    var viewport = document.getElementById('detailMiniMapViewport');
     var svgEl = document.getElementById('detailMiniMapSvg');
+    var stage = document.getElementById('detailMiniMapPerspective');
+    var flatButton = document.getElementById('detailMiniMapMode2d');
+    var perspectiveButton = document.getElementById('detailMiniMapMode3d');
     var metaEl = document.getElementById('detailMiniMapMeta');
     var allNeighborsLink = document.getElementById('detailMiniMapAllNeighbors');
     var tooltipEl = document.getElementById('detail-mini-map-tooltip');
-    if (!wrap || !svgEl || typeof window.d3 === 'undefined') return;
+    var d3 = window.d3;
+    var nodeSize = window.RNGraphNodeSize;
+    if (!wrap || !viewport || !svgEl || !d3 || !nodeSize) return;
     var currentPath = (detailPage && detailPage.path) || '';
     if (!currentPath) return;
 
@@ -7041,7 +7056,7 @@
       var tooltipApi = window.RNGraphTooltip;
       var palette = (tooltipApi && typeof tooltipApi.getCommunityColors === 'function')
         ? tooltipApi.getCommunityColors()
-        : ((window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10);
+        : (d3.schemeTableau10 || DETAIL_MINI_TABLEAU10);
       var communityColor = (tooltipApi && typeof tooltipApi.buildCommunityColorMap === 'function')
         ? tooltipApi.buildCommunityColorMap(gd.communities || [])
         : {};
@@ -7068,8 +7083,8 @@
       };
 
       // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
-      var degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
-      var maxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
+      var degreeMap = nodeSize.computeDegreeMap(gd.edges);
+      var maxDegree = nodeSize.maxDegreeOf(degreeMap);
 
       var neighborSet = {};
       (gd.edges || []).forEach(function (e) {
@@ -7087,13 +7102,13 @@
         if (db !== da) return db - da;
         return String(nodeMap[a].label || a).localeCompare(String(nodeMap[b].label || b), 'zh-CN');
       });
-      // 低度数全显示；高度数取规模 Top-K，避免 180px 迷你图拥挤
+      // 低度数全显示；高度数取规模 Top-K，保持局部图可读。
       var MAX_NEIGHBORS = 16;
       if (neighborIds.length > MAX_NEIGHBORS) neighborIds = neighborIds.slice(0, MAX_NEIGHBORS);
 
       wrap.hidden = false;
-      var W = wrap.clientWidth || 700;
-      var H = 180;
+      var W = viewport.clientWidth || 700;
+      var H = viewport.clientHeight || 360;
 
       var pathToId = buildPathToDetailIdIndex(detailPages);
       var currentSummary = current.summary || (detailPage && detailPage.summary) || '';
@@ -7118,6 +7133,9 @@
         };
       }));
       var edges = neighborIds.map(function (id) { return { source: currentPath, target: id }; });
+      var totalDeg = Object.keys(neighborSet).length;
+      var shown = neighborIds.length;
+      var neighborLabel = (shown < totalDeg ? '规模最大的 ' + shown + ' / ' + totalDeg : shown) + ' 个邻居';
 
       function nodeFill(d) {
         var cc = d.community && communityColor[d.community];
@@ -7129,22 +7147,40 @@
 
       var hoverTip = setupGraphHoverTooltip(tooltipEl);
       hoverTip.bindBlankDismiss(svgEl, '.mini-node, .mini-node-current');
-      hoverTip.bindOutsideDismiss(svgEl, document.body);
+      hoverTip.bindOutsideDismiss(wrap, document.body);
+      var flatHint = hoverTip.isMobile ? '拖动节点 · 点按预览' : '拖动节点 · 拖拽空白处平移 · 点击跳转';
 
-      function detailMiniNodeRadius(d, scale) {
-        var base = window.RNGraphNodeSize.radiusForDegree(d._degree || 0, maxDegree);
-        return base * (scale || 1);
+      function setGraphHint(hint) {
+        if (metaEl) metaEl.textContent = neighborLabel + ' · ' + hint;
+      }
+
+      function showNodeTooltip(ev, d, pin) {
+        hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages), pin);
+      }
+
+      function clearPreview() {
+        hoverTip.hide();
+        detailBridgeHighlightBody('');
+      }
+
+      function clickNode(d, ev) {
+        if (d.isCurrent) return;
+        if (hoverTip.isMobile || ev.pointerType === 'touch') {
+          if (hoverTip.getPinned() === d) clearPreview();
+          else showNodeTooltip(ev, d, true);
+          return;
+        }
+        var pid = pathToId[d.id] || d.detail_id;
+        if (pid) window.location.href = pageHref(pid, detailPages);
+      }
+
+      function detailMiniNodeRadius(d) {
+        return nodeSize.radiusForDegree(d._degree || 0, maxDegree);
       }
 
       // 近 = 重要：邻居半径归一化到 [0,1]，用于弹簧距离/强度
       function neighborImportanceT(d) {
-        var rMin = window.RNGraphNodeSize.R_MIN;
-        var rMax = window.RNGraphNodeSize.R_MAX;
-        var r = window.RNGraphNodeSize.radiusForDegree(d._degree || 0, maxDegree);
-        var t = (r - rMin) / (rMax - rMin || 1);
-        if (t < 0) t = 0;
-        if (t > 1) t = 1;
-        return t;
+        return (detailMiniNodeRadius(d) - nodeSize.R_MIN) / (nodeSize.R_MAX - nodeSize.R_MIN);
       }
 
       // 星图边恒为 current → neighbor；兼容 forceLink 解析前后的 id / 节点对象
@@ -7157,20 +7193,20 @@
         return { _degree: 0 };
       }
 
-      svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       svgEl.innerHTML = '';
 
-      var svg = window.d3.select(svgEl);
+      var svg = d3.select(svgEl);
       var panRoot = svg.append('g').attr('class', 'detail-mini-map-pan');
       var lineLayer = panRoot.append('g');
       var nodeLayer = panRoot.append('g');
 
-      var zoom = window.d3.zoom()
-        .scaleExtent([0.45, 1])
+      var zoom = d3.zoom()
+        .extent(function () { return [[0, 0], [W, H]]; })
+        .scaleExtent([0.1, 1])
+        .clickDistance(4)
         .filter(function (event) {
           if (event.type === 'wheel' || event.type === 'dblclick') return false;
-          // 触屏拖动留给页面滚动：窄屏下地图几乎占满一屏宽，交给 d3 平移时手指一落到地图上
-          // 页面就滚不动（上滑回顶会卡在地图处）。地图在布局结束时已自动取景，触屏点按节点仍可用。
+          // 触屏在节点上拖动时移动节点，从空白处滑动时仍可滚动页面。
           if (event.type.indexOf('touch') === 0) return false;
           return !event.button;
         })
@@ -7179,67 +7215,82 @@
         });
       svg.call(zoom).on('dblclick.zoom', null);
 
-      var sim = window.d3.forceSimulation(nodes)
-        .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; })
+      d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(edges).id(function (d) { return d.id; })
           .distance(function (link) {
-            // 大邻居更短弹簧（约 40–72）
-            return 72 - neighborImportanceT(linkNeighborNode(link)) * 32;
+            // 大邻居使用更短的弹簧；较长的基准间距给标签和拖动留出空间。
+            return 116 - neighborImportanceT(linkNeighborNode(link)) * 42;
           })
           .strength(function (link) {
             // 大邻居更强吸引（约 0.35–0.85）
             return 0.35 + neighborImportanceT(linkNeighborNode(link)) * 0.5;
           }))
-        .force('charge', window.d3.forceManyBody().strength(-160).distanceMax(220))
-        .force('center', window.d3.forceCenter(W / 2, H / 2).strength(0.12))
-        .force('collision', window.d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
-        .alphaDecay(0.05);
+        .force('charge', d3.forceManyBody().strength(-260).distanceMax(320))
+        .force('center', d3.forceCenter(W / 2, H / 2).strength(0.12))
+        .force('collision', d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
+        .alphaDecay(0.05)
+        .stop().tick(100);
+      nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+      nodes[0].fx = nodes[0].fy = null;
 
       var line = lineLayer.selectAll('line').data(edges).join('line')
         .style('stroke', 'var(--border-strong)')
         .attr('stroke-width', 1);
 
+      var nodeDrag = d3.drag().clickDistance(4)
+        .filter(function (event) { return !event.button && !(event.touches && event.touches.length > 1); })
+        .on('start', function (ev, d) {
+          d._dragStartX = ev.x;
+          d._dragStartY = ev.y;
+          d._dragMoved = false;
+        })
+        .on('drag', function (ev, d) {
+          var camera = d3.zoomTransform(svgEl);
+          var threshold = ev.sourceEvent.type === 'touchmove' ? 7 : 4;
+          if (!d._dragMoved) {
+            if (Math.hypot(ev.x - d._dragStartX, ev.y - d._dragStartY) * camera.k < threshold) return;
+            d._dragMoved = true;
+            clearPreview();
+          }
+          var pad = detailMiniNodeRadius(d) * camera.k + 4;
+          d.fx = d.x = Math.max(camera.invertX(pad), Math.min(camera.invertX(W - pad), ev.x));
+          d.fy = d.y = Math.max(camera.invertY(pad), Math.min(camera.invertY(H - pad), ev.y));
+          nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+          renderPositions();
+        })
+        .on('end', function (ev, d) {
+          d.fx = d.fy = null;
+        });
+
       var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
         .attr('class', function (d) { return d.isCurrent ? 'mini-node-current' : 'mini-node'; })
-        .style('cursor', function (d) { return d.isCurrent ? 'default' : 'pointer'; })
+        .call(nodeDrag)
         .on('click', function (ev, d) {
-          if (hoverTip.isMobile && !d.isCurrent) {
-            ev.stopPropagation();
-            if (hoverTip.getPinned() === d) {
-              hoverTip.clearPin();
-              hoverTip.hide();
-            } else {
-              hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages));
-            }
-            return;
-          }
-          if (d.isCurrent) return;
-          var pid = pathToId[d.id] || d.detail_id;
-          if (pid) window.location.href = pageHref(pid, detailPages);
+          if (ev.defaultPrevented || d._dragMoved) return;
+          clickNode(d, ev);
         })
         .on('mouseenter', function (ev, d) {
           detailBridgeHighlightBody(d.isCurrent ? '' : d.id);
           if (hoverTip.isMobile) return;
-          window.d3.select(this).select('circle')
-            .attr('fill-opacity', 1)
-            .attr('r', function (node) { return detailMiniNodeRadius(node, 1.3); });
-          hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages));
+          d3.select(this).select('circle').attr('fill-opacity', 1);
+          showNodeTooltip(ev, d);
         })
         .on('mousemove', function (ev) {
-          if (hoverTip.isMobile && hoverTip.getPinned()) return;
-          if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.move(ev);
+          if (!hoverTip.getPinned()) hoverTip.move(ev);
         })
         .on('mouseleave', function () {
           detailBridgeHighlightBody('');
           if (hoverTip.isMobile) return;
-          window.d3.select(this).select('circle')
-            .attr('fill-opacity', 0.9)
-            .attr('r', function (node) { return detailMiniNodeRadius(node); });
-          if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.hide();
+          d3.select(this).select('circle').attr('fill-opacity', 0.9);
+          if (!hoverTip.getPinned()) hoverTip.hide();
         });
 
-      // 正文内链悬停时点亮迷你图中的同一节点
+      var perspective = null;
+      var linkedNode = null;
       detailLinkBridge.highlightMiniNode = function (path) {
         nodeG.classed('mini-node-linked', function (d) { return !!path && d.id === path; });
+        linkedNode = nodes.find(function (d) { return d.id === path; }) || null;
+        if (perspective) perspective.syncData(false);
       };
 
       nodeG.append('circle')
@@ -7254,39 +7305,115 @@
         .style('fill', 'var(--text-muted)')
         .attr('pointer-events', 'none');
 
-      sim.on('tick', function () {
+      function renderPositions() {
         line
           .attr('x1', function (d) { return d.source.x; }).attr('y1', function (d) { return d.source.y; })
           .attr('x2', function (d) { return d.target.x; }).attr('y2', function (d) { return d.target.y; });
         nodeG.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
-      });
+      }
 
-      sim.on('end', function () {
-        var allN = nodes.filter(function (n) { return n.x != null && n.y != null; });
-        if (!allN.length) return;
-        var xs = allN.map(function (n) { return n.x; });
-        var ys = allN.map(function (n) { return n.y; });
-        var x0 = Math.min.apply(null, xs);
-        var x1 = Math.max.apply(null, xs);
-        var y0 = Math.min.apply(null, ys);
-        var y1 = Math.max.apply(null, ys);
-        var pad = 36;
+      function fitFlatView() {
+        W = viewport.clientWidth || W;
+        H = viewport.clientHeight || H;
+        svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        var x0 = d3.min(nodes, function (d) { return d.x - Math.max(detailMiniNodeRadius(d), 45); });
+        var x1 = d3.max(nodes, function (d) { return d.x + Math.max(detailMiniNodeRadius(d), 45); });
+        var y0 = d3.min(nodes, function (d) { return d.y - detailMiniNodeRadius(d); });
+        var y1 = d3.max(nodes, function (d) { return d.y + detailMiniNodeRadius(d) + 14; });
         var cx = (x0 + x1) / 2;
         var cy = (y0 + y1) / 2;
-        var scale = Math.min(1, Math.max(0.45, Math.min(W / (x1 - x0 + pad), H / (y1 - y0 + pad))));
-        svg.transition().duration(450).call(zoom.transform,
-          window.d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale));
-      });
-
-      var totalDeg = Object.keys(neighborSet).length;
-      var shown = neighborIds.length;
-      if (metaEl) {
-        if (shown < totalDeg) {
-          metaEl.textContent = '规模最大的 ' + shown + ' / ' + totalDeg + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
-        } else {
-          metaEl.textContent = shown + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
-        }
+        var scale = Math.min(1, (W - 16) / (x1 - x0), (H - 16) / (y1 - y0));
+        svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale));
       }
+
+      renderPositions();
+      fitFlatView();
+      setGraphHint(flatHint);
+
+      if (flatButton && perspectiveButton && stage) {
+        var wantsPerspective = false;
+        var inPerspective = false;
+        function updatePerspectiveState(state) {
+          if (inPerspective === state.enabled) return;
+          inPerspective = state.enabled;
+          flatButton.classList.toggle('is-active', !inPerspective);
+          flatButton.setAttribute('aria-pressed', String(!inPerspective));
+          perspectiveButton.classList.toggle('is-active', inPerspective);
+          perspectiveButton.setAttribute('aria-pressed', String(inPerspective));
+          if (inPerspective) {
+            setGraphHint('拖动节点 · 拖拽空白处旋转');
+          } else {
+            nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+            renderPositions();
+            fitFlatView();
+            setGraphHint(flatHint);
+          }
+        }
+
+        flatButton.addEventListener('click', function () {
+          wantsPerspective = false;
+          clearPreview();
+          if (perspective) perspective.setEnabled(false);
+          setGraphHint(flatHint);
+        });
+        perspectiveButton.addEventListener('click', async function () {
+          if (inPerspective) return;
+          wantsPerspective = true;
+          clearPreview();
+          perspectiveButton.disabled = true;
+          try {
+            if (!window.RNGraphPerspective) {
+              setGraphHint('正在加载 3D 视角…');
+              await loadExternalAsset({ url: 'graph-perspective.js' });
+            }
+            if (!wantsPerspective) return;
+            if (!perspective) {
+              perspective = window.RNGraphPerspective.createController({
+                wrapEl: viewport,
+                stageEl: stage,
+                nodeCount: nodes.length,
+                persist: false,
+                defaultDistance: 2.1,
+                getGraphData: function () {
+                  return { nodes: nodes, edges: edges, getNodeColor: nodeFill, sidebarNode: linkedNode || nodes[0] };
+                },
+                getBgColor: function () { return getComputedStyle(viewport).backgroundColor; },
+                isEdgesVisible: function () { return true; },
+                onNodeHover: function (d, ev) {
+                  detailBridgeHighlightBody(d && !d.isCurrent ? d.id : '');
+                  if (hoverTip.isMobile || hoverTip.getPinned()) return;
+                  if (d) showNodeTooltip(ev, d);
+                  else hoverTip.hide();
+                },
+                onNodeClick: clickNode,
+                onBackgroundClick: clearPreview,
+                onNodeDragStart: clearPreview,
+                onStateChange: updatePerspectiveState,
+                onUnsupported: function (message) { setGraphHint(message || '当前浏览器不支持 3D 视角'); }
+              });
+              new MutationObserver(function () { perspective.refreshTheme(); }).observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['data-theme']
+              });
+            }
+            perspective.syncData();
+            perspective.setEnabled(true);
+          } catch (_error) {
+            if (perspective) perspective.setEnabled(false);
+            setGraphHint('3D 加载失败，可点击 3D 重试');
+          } finally {
+            perspectiveButton.disabled = !!perspective && !perspective.isSupported();
+          }
+        });
+      }
+
+      function resizeGraph() {
+        if (perspective && perspective.isEnabled()) perspective.syncViewport();
+        else fitFlatView();
+      }
+      if (typeof ResizeObserver === 'function') new ResizeObserver(resizeGraph).observe(viewport);
+      else window.addEventListener('resize', resizeGraph);
+
       if (allNeighborsLink) {
         if (totalDeg > 0) {
           allNeighborsLink.hidden = false;
@@ -7430,6 +7557,7 @@
         '更新时间',
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
+      renderDetailMetaType('detailMetaType', resolvePageDisplayType(detailPage, detailId));
       renderDetailMetaItemRow('detailMetaHealth', '健康度', renderHealthMetaHtml(detailPage));
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
       renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');

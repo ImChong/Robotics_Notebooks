@@ -11,6 +11,7 @@ const styleCss = readFileSync(resolve(__dirname, '../docs/style.css'), 'utf8');
 const indexHtml = readFileSync(resolve(__dirname, '../docs/index.html'), 'utf8');
 const miniGraphJs = readFileSync(resolve(__dirname, '../docs/mini-graph.js'), 'utf8');
 const swSource = readFileSync(resolve(__dirname, '../docs/sw.js'), 'utf8');
+const readDoc = file => readFileSync(resolve(__dirname, '../docs', file), 'utf8');
 
 function button() {
   return {
@@ -558,6 +559,74 @@ test('createController isolates persist:false defaults and accepts degree-terrai
   }
 });
 
+test('detail mini-graph loads 3D on demand, retries a failed load and separates nodes on return to 2D', async (t) => {
+  const { window: w } = new JSDOM(readDoc('detail.html'), {
+    url: 'https://example.test/detail.html?id=demo', runScripts: 'outside-only',
+  });
+  t.after(() => w.close());
+  const mock = makeMockCanvasEnv();
+  w.HTMLCanvasElement.prototype.getContext = type => type === '2d' ? mock.ctx2d : mock.gl;
+  w.matchMedia = () => ({ matches: false });
+
+  const current = 'wiki/concepts/current.md';
+  const paths = [current, 'wiki/concepts/a.md', 'wiki/concepts/b.md'];
+  const graph = {
+    nodes: paths.map(id => ({ id, label: id, type: 'concept' })),
+    edges: paths.slice(1).map(target => ({ source: current, target })),
+    communities: [],
+  };
+  let loads = 0;
+  Object.assign(w, {
+    ensureLinkGraphData: async () => graph,
+    buildPathToDetailIdIndex: () => ({}),
+    setupGraphHoverTooltip: () => ({ bindBlankDismiss() {}, bindOutsideDismiss() {}, hide() {} }),
+    detailLinkBridge: {},
+    detailBridgeHighlightBody() {},
+    loadExternalAsset: async ({ url }) => {
+      loads++;
+      if (loads === 1) throw new Error('network offline');
+      w.eval(readDoc(url));
+    },
+  });
+  for (const file of ['vendor/d3.min.js', 'graph-node-size.js']) w.eval(readDoc(file));
+  const main = readDoc('main.js');
+  w.eval(main.slice(main.indexOf('  function renderDetailMiniMap('), main.indexOf('  function renderDetailPage(')));
+  w.renderDetailMiniMap({ path: current }, {});
+  await new Promise(setImmediate);
+
+  const dom = w.document;
+  const flat = dom.getElementById('detailMiniMapMode2d');
+  const perspective = dom.getElementById('detailMiniMapMode3d');
+  const stage = dom.getElementById('detailMiniMapPerspective');
+  const neighbors = [...dom.querySelectorAll('#detailMiniMapSvg g.mini-node')];
+  assert.equal(neighbors.length, 2);
+  assert.equal(loads, 0);
+  assert.equal(stage.hidden, true);
+
+  perspective.click();
+  await new Promise(setImmediate);
+  assert.match(dom.getElementById('detailMiniMapMeta').textContent, /3D 加载失败/);
+  assert.equal(perspective.disabled, false);
+  assert.equal(flat.getAttribute('aria-pressed'), 'true');
+  assert.equal(stage.hidden, true);
+
+  perspective.click();
+  await new Promise(setImmediate);
+  assert.equal(loads, 2);
+  assert.equal(stage.hidden, false);
+  assert.equal(perspective.getAttribute('aria-pressed'), 'true');
+  assert.ok(mock.stats.drawCalls > 0);
+
+  const [a, b] = neighbors.map(el => el.__data__);
+  b.x = a.x;
+  b.y = a.y;
+  flat.click();
+  assert.equal(flat.getAttribute('aria-pressed'), 'true');
+  assert.equal(stage.hidden, true);
+  const radiusSum = neighbors.reduce((sum, el) => sum + Number(el.querySelector('circle').getAttribute('r')), 0);
+  assert.ok(Math.hypot(a.x - b.x, a.y - b.y) >= radiusSum);
+});
+
 test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with search highlight linkage', async () => {
   assert.ok(!indexHtml.includes('id="mini-graph-3d"'), 'obsolete WebGL #mini-graph-3d container removed');
   assert.ok(!miniGraphJs.includes('3d-force-graph'), 'mini-graph.js must not reference 3d-force-graph');
@@ -923,11 +992,6 @@ test('3D terrain drag rebound uses overdamped viscous settling aligned with 2D a
 });
 
 test('homepage 3D node drag resolves 2D circle overlaps upon switching back to 2D', async () => {
-  assert.ok(
-    miniGraphJs.includes('function resolveMiniNodeOverlaps2D('),
-    'mini-graph.js defines symmetric damped Jacobi 2D overlap solver'
-  );
-
   const dom = new JSDOM(indexHtml, { url: 'https://example.test/', runScripts: 'outside-only' });
   const w = dom.window;
   const mock = makeMockCanvasEnv();

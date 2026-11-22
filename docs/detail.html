@@ -56,6 +56,7 @@
             <h3>页面信息</h3>
             <div id="detailMeta" class="detail-meta-list data-loading">
               <p id="detailMetaUpdated" class="detail-meta-item data-meta">正在加载更新时间…</p>
+              <p id="detailMetaType" class="detail-meta-item" hidden></p>
               <p id="detailMetaCommunity" class="detail-meta-item" hidden></p>
               <p id="detailMetaDepth" class="detail-meta-item" hidden></p>
               <p id="detailMetaInstitution" class="detail-meta-item" hidden></p>
@@ -66,10 +67,19 @@
         </div>
         <aside id="detailMiniMapWrap" class="detail-mini-map" aria-label="知识地图局部视图" hidden>
           <div class="detail-mini-map-head">
-            <h3>关联知识图谱</h3>
-            <span id="detailMiniMapMeta" class="detail-mini-map-meta">正在加载关联关系…</span>
+            <div>
+              <h3>关联知识图谱</h3>
+              <p id="detailMiniMapMeta" class="detail-mini-map-meta" aria-live="polite">正在加载关联关系…</p>
+            </div>
+            <div class="detail-mini-map-modes" role="group" aria-label="关联知识图谱视角">
+              <button type="button" id="detailMiniMapMode2d" class="mini-graph-mode-btn is-active" aria-pressed="true">2D</button>
+              <button type="button" id="detailMiniMapMode3d" class="mini-graph-mode-btn" aria-pressed="false">3D</button>
+            </div>
           </div>
-          <svg id="detailMiniMapSvg" class="detail-mini-map-svg" role="img" aria-label="当前节点 1-hop 邻居图"></svg>
+          <div id="detailMiniMapViewport" class="detail-mini-map-viewport">
+            <svg id="detailMiniMapSvg" class="detail-mini-map-svg" role="img" aria-label="当前节点 1-hop 邻居图"></svg>
+            <div id="detailMiniMapPerspective" class="graph-perspective-stage" hidden aria-label="关联知识图谱 3D 视角"></div>
+          </div>
           <div class="detail-mini-map-foot">
             <a id="detailMiniMapAllNeighbors" class="detail-mini-map-all-link" href="graph.html" hidden>查看全部关联节点 →</a>
           </div>
