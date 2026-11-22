@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, human-video, cross-embodiment, nvidia, ut-austin, hkust, berkeley, uw, stanford, kaist, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 arxiv: "2602.06949"
 venue: "ICML 2026"
 code: https://github.com/NVIDIA/DreamDojo

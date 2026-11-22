@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, hardware, open-source, odri, torque-control, qdd, actuator, impedance, locomotion, max-planck, nyu, laas]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "1910.00093"
 code: https://github.com/open-dynamic-robot-initiative/open_robot_actuator_hardware
 related:

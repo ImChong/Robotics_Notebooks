@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, world-models, reading-roadmap, technology-map, embodied-ai]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 original:
   - ../../sources/papers/rt_1_arxiv_2212_06817.md
   - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
@@ -33,6 +33,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
   - ../../sources/raw/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
+  - ../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md
 summary: "依据具身智能研究室 2026-09-02 阅读路线，把 10 篇 VLA/基础论文 + 4 篇世界模型读成对齐基座、VLA 主线、动作头实践与 WM 服务策略四组；14/14 独立 paper-* 节点。"
 ---
 
@@ -153,7 +154,7 @@ flowchart TB
 ## 局限与风险
 
 - **经典基线不覆盖最新效率与 RL 后训练分支**：14 篇聚焦 VLA 与 WM 主干奠基工作，未纳入 2026 年的轻量化加速、稀疏记忆及真机 RL 微调工作（相关后续入口见 [VLA 纵深路线](../../roadmap/depth-vla.md)）。
-- **开源状态分化显著**：RT-2 官方训练未开源，而 OpenVLA、Octo、OpenPI 虽开源代码但依赖的大规模跨本体语料或预训练算力仍高。
+- **开源状态分化显著**：RT-2 官方训练未开源，而 OpenVLA、Octo、OpenPI、DreamDojo（已公开预训练/后训练/蒸馏入口与 2B/14B 权重）虽开源代码，但依赖的大规模跨本体语料或预训练算力仍高；引用 DreamDojo 时须区分 DreamDojo-HV（约 43,827 h）与混合训练全量（约 44,711 h），且蒸馏后 10 FPS 为特定硬件与分辨率口径。
 
 ## 关联页面
 
@@ -173,6 +174,7 @@ flowchart TB
 - [π0 原文归档（arXiv:2410.24164）](../../sources/papers/pi0_arxiv_2410_24164.md) — Flow Matching 动作专家代表（04）
 - [具身智能研究室 2026-09-02 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [原始抓取](../../sources/raw/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
+- [DreamDojo 一手论文与代码核读（arXiv:2602.06949）](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md) — 数据口径、10 FPS 蒸馏边界与 2B/14B 公开权重核查（2026-11-17）
 
 ## 推荐继续阅读
 

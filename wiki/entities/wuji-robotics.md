@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand, wuji-robotics]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 related:
   - ./humanoid-robot.md
   - ./allegro-hand.md
@@ -24,6 +24,7 @@ sources:
   - ../../sources/sites/wuji_robotics.md
   - ../../sources/sites/allhandsup-org.md
   - ../../sources/repos/wuji-ego-mint.md
+  - ../../sources/papers/coordex_arxiv_2606_23680.md
 summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电机（F 系列 / Pan Motor 叙事）与官方文档确认的五指灵巧手 Wuji Hand，配套 SDK、ROS2、MuJoCo 描述与遥操作 Retargeting；研发在上海、量产在常州。"
 ---
 
@@ -147,7 +148,7 @@ sequenceDiagram
 - [VLA](../methods/vla.md) — 招聘与产业报道中偶见「多模态 / VLA」方向岗位，与整机 **感知–语言–动作** 栈相关，但 **不等于** 该公司已发布可复现的公开模型栈
 - [Curr-0（Current Robotics）](./current-robotics-curr0.md) — 博客将 **21-DoF Wuji Hand** 作为 System 0 灵巧手部署样例（2026-06）
 - [CurrentWorld-0](./current-robotics-currentworld.md) — 跨本体世界模型将 **Wuji 灵巧手** 列为人形末端配置之一（2026-08）
-- [CoorDex（论文实体）](./paper-coordex-dexterous-humanoid-loco-manipulation.md) — G1+**20-DoF WUJI** 连续 dexterous loco-manipulation 仿真主平台（arXiv:2606.23680）
+- [CoorDex（论文实体）](./paper-coordex-dexterous-humanoid-loco-manipulation.md) — G1+**20-DoF WUJI** 连续 dexterous loco-manipulation 仿真主平台（arXiv:2606.23680）；2026-11-19 仓库核查为**部分开源**（`Skevinci/coordex` 已公开 WalkGrab / OpenFridge 的 `kinematic_wrist_16k.pt` 与 WalkPickTurn 的 `active_wrist_20k.pt` 回放权重及 `play_locomanip.py`，尚不含从头训练脚本）
 - [TopoRetarget（交互保留灵巧重定向）](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md) — 论文在 Wuji Hand 上零样本 sim2real 转笔与魔方重定向（arXiv:2606.16272）；[官方代码](https://github.com/wuji-technology/toporetarget) 由 `wuji-technology` 组织以 MIT 开源，附 Wuji Hand 2 转笔数据转换示例（下游训练见 [wuji-mjlab](https://github.com/wuji-technology/wuji-mjlab)）
 - [Kyber Labs](./kyber-labs.md) — 同为产业侧 **五指灵巧手 × 具身 AI** 路线；Kyber 强调背驱动与数百美元级成本叙事
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 无级机器人的执行器/灵巧手硬件是本驱动链的产业实体之一
@@ -159,6 +160,7 @@ sequenceDiagram
 - [舞肌科技原始资料汇编](../../sources/sites/wuji_robotics.md)
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
 - [wuji-ego-mint 代码仓库索引](../../sources/repos/wuji-ego-mint.md)
+- [CoorDex 论文与开源补充归档](../../sources/papers/coordex_arxiv_2606_23680.md) — G1+20-DoF WUJI 回放权重与源码开放边界（2026-11-19）
 - 源码核对（2026-11-02）：wuji-technology/wuji-ego-mint@1bd21e4，读过 README.md、mint/cli.py、mint/inference/runner.py、mint/inference/engine.py、mint/viewer/app.py、eval/model_effect/visualization/viewer_web.py、eval/model_effect/visualization/viewer/routes.py、eval/model_effect/visualization/viewer/store.py、eval/model_effect/inference/registry.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读

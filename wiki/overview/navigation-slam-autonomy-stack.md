@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-22
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -288,9 +288,9 @@ flowchart TB
 - [PanoLOG / G²PS](../entities/paper-panolog-ggps.md) — 全景户外 3DGS 重建（novel-view 资产）
 - [Arena-Rosnav](../entities/arena-rosnav.md) — ROS 2 社交导航仿真与 benchmark（RSS 2025 / Arena 5.0；**已开源**）
 - [LegNav/CALF](../entities/paper-legnav-calf.md) — 踝高 LiDAR 腿部社交导航 CALF+RL（arXiv:2607.27922；**已开源**）
-- [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL（局部社交层对照；代码待发布）
+- [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL（局部社交层对照；MIT 已开源 `drl_policy/`，USD/权重未随仓）
 - [SPLC](../entities/paper-splc.md) — 自动社交偏好奖励 + Offline RL 人群导航（代码 coming soon）
-- [CommNav](../entities/paper-commnav.md) — 主动向路人打听目标位置（Habitat 3.0c；代码待发布）
+- [CommNav](../entities/paper-commnav.md) — 主动向路人打听目标位置（Habitat 3.0c；MIT v1.0.0 源码与权重已开源）
 - [HUMEMBR](../entities/paper-humembr.md) — 人中心长时程记忆 + PersonEQA；Spot GraphNav 高层路点（非替代经典栈）
 - [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 越野开销地理学习 costmap + A\* LRP；局部仍走 MPPI（数据已开源，训练代码待发布）
 - [RTNav](../entities/paper-rtnav.md) — 30 Hz 墙钟实时评测零样本 ObjectNav，异步感知/建图/规划/按需 VLM 推理减少延迟损失

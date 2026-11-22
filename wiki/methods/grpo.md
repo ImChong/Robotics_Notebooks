@@ -4,7 +4,7 @@ tags: [reinforcement-learning, llm, policy-optimization, grpo]
 status: complete
 original:
   - ../../sources/papers/deepseekmath_grpo_2024.md
-updated: 2026-11-18
+updated: 2026-11-22
 related:
   - ./policy-optimization.md
   - ./ppo.md

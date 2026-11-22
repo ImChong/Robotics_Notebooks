@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 original:
   - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 related:
@@ -15,6 +15,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
   - ../../sources/papers/grasp_arxiv_2611_05754.md
   - ../../sources/sites/reflexarc.md
+  - ../../sources/papers/flomo_arxiv_2611_05062.md
 summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接触丰富物理重定向（深读）、MESA 分项泛化评测、AIRoA-0 手持夹爪示范，以及灵巧操作、策略评测、世界模型与控制、移动导航与人机交互等 43 篇；43/43 独立节点（新建 28 / 复用 15）。"
 ---
 
@@ -39,7 +40,7 @@ summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接�
 ## 为什么重要
 
 - 公众号一次列出 43 篇（1 深读 + 2 跟进 + 40 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
-- 初始索引中的数字来自公众号转述；GRASP 与后续复核的 ARP 已有一手原文归档，具体核对范围见独立节点。开源结论按各节点注明的最近核查日期阅读。
+- 初始索引中的数字来自公众号转述；GRASP 与后续复核的 ARP、FloMo（v2）已有一手原文归档，具体核对范围见独立节点。开源结论按各节点注明的最近核查日期阅读。
 
 ## 流程总览
 
@@ -55,7 +56,7 @@ flowchart TB
 ## 工程实践
 
 1. **按任务筛选：** 从下方四个主题分组找到目标问题，跳转独立论文节点阅读方法、实验证据和局限，避免把 43 条短摘要当成完整论证。
-2. **核对实验数字：** 公众号给出的指标仅作为初筛线索；定量比较必须回到对应论文、实验设置和表格。GRASP、ARP 已有独立全文通读归档；其余节点的阅读/复现程度分别以各自页面为准。ARP 的动态扰动收益与 RoboLab 综合能力须分开：原文 ARP-3B 在 RoboLab 报告 20.0%，π0.5-DROID 为 37.9%，且训练数据与视觉特征不同；真机任务进度也不等于完成率，详见[原文核对](../../sources/papers/asynchronous_robot_policies_arxiv_2611_05155.md)。
+2. **核对实验数字：** 公众号给出的指标仅作为初筛线索；定量比较必须回到对应论文、实验设置和表格。GRASP、ARP、FloMo（[v2 原文核对](../../sources/papers/flomo_arxiv_2611_05062.md)，已核实 OOD 主比较每条件 10 次与去人视频消融每条件 5 次的样本量差异及 20D/14D 动作表示口径）已有独立全文通读归档；其余节点的阅读/复现程度分别以各自页面为准。ARP 的动态扰动收益与 RoboLab 综合能力须分开：原文 ARP-3B 在 RoboLab 报告 20.0%，π0.5-DROID 为 37.9%，且训练数据与视觉特征不同；真机任务进度也不等于完成率，详见[原文核对](../../sources/papers/asynchronous_robot_policies_arxiv_2611_05155.md)。
 3. **检查复现入口：** 开源列为入库或最近核验时的状态，点击独立实体页核对代码、权重与训练入口。例：ReflexArc 可在官方页看交互演示，但作者仍标注 `Code Coming soon`，不能据此将其计为可复现开源实现。
 
 ## 分组索引
@@ -101,7 +102,7 @@ flowchart TB
 | 论文 | 节点 | 开源 |
 |------|------|------|
 | Action-Conditioned Latent Foresight | [paper-action-conditioned-latent-foresight](../entities/paper-action-conditioned-latent-foresight.md) | 待发布 |
-| FloMo | [paper-flomo](../entities/paper-flomo.md) | 已开源 |
+| FloMo | [paper-flomo](../entities/paper-flomo.md)（已有 v2 原文复核） | 已开源（代码 + HF 权重） |
 | Hybrid Particle-Voxel Dynamics | [paper-hybrid-particle-voxel-dynamics](../entities/paper-hybrid-particle-voxel-dynamics.md)（复用） | 已开源 |
 | HiLo-WAM | [paper-hilo-wam](../entities/paper-hilo-wam.md) | 已开源 |
 | Future Representation Distillation | [paper-future-representation-distillation](../entities/paper-future-representation-distillation.md) | 待发布 |
@@ -140,6 +141,7 @@ flowchart TB
 - [wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md](../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md)
 - [ReflexArc 官方项目页核查归档](../../sources/sites/reflexarc.md) — 2026-11-12 代码仍待发布
 - [grasp_arxiv_2611_05754.md](../../sources/papers/grasp_arxiv_2611_05754.md) — GRASP 原文通读：OakInk2 Sharpa 双手 1,352 条示范，1,024 粒子成功率 92.8%、2,000 粒子 94.2%（成功率来自仿真；arXiv:2611.05754）
+- [flomo_arxiv_2611_05062.md](../../sources/papers/flomo_arxiv_2611_05062.md) — FloMo（arXiv:2611.05062v2）全文核对：SpatialTrackerV2 3D 场景流 + Wan 2.2 5B DiT+LoRA、真机/RoboTwin 2.0 结果与样本/表示口径（2026-11-19）
 
 ## 推荐继续阅读
 

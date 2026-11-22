@@ -11,7 +11,7 @@ sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
 summary: "Contact Complementarity（接触互补约束）"
-updated: 2026-09-15
+updated: 2026-11-22
 ---
 
 # Contact Complementarity（接触互补约束）

@@ -13,7 +13,7 @@ tags:
   - tsinghua
   - hku
 status: complete
-updated: 2026-11-19
+updated: 2026-11-22
 arxiv: "2604.19734"
 project: https://xpeng-robotics.github.io/unit/
 venue: "arXiv 2026"

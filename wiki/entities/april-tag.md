@@ -2,7 +2,7 @@
 type: entity
 tags: [perception, apriltag, calibration, computer-vision, slam, umich]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/AprilRobotics/apriltag
 related:
   - ../methods/visual-servoing.md

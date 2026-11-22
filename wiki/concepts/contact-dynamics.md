@@ -14,7 +14,7 @@ sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/gentlehumanoid_upper_body_compliance.md
 summary: "Contact Dynamics 研究接触力 (Contact Force)、摩擦锥 (Friction Cone) 和物理约束如何改变机器人动力学，是 locomotion 与操作控制的核心物理基础。"
-updated: 2026-11-07
+updated: 2026-11-22
 ---
 
 # Contact Dynamics

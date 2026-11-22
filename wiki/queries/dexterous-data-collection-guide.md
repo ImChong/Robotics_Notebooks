@@ -2,7 +2,7 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md

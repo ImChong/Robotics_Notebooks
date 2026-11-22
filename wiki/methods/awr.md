@@ -2,7 +2,7 @@
 type: method
 tags: [rl, off-policy, regression, xbpeng]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-22
 related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md

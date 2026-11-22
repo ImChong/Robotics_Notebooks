@@ -12,7 +12,7 @@ sources:
   - ../../sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md
   - ../../sources/blogs/wechat_shenlan_mpc_floating_base_derivation_2026-11-16.md
 summary: "Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。"
-updated: 2026-11-07
+updated: 2026-11-22
 ---
 
 # Floating Base Dynamics

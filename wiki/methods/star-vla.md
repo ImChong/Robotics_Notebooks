@@ -5,7 +5,7 @@ status: complete
 original:
   - ../../sources/papers/star_vla_alpha_arxiv_2604_11757_full_reading_2026_11_15.md
   - ../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
@@ -62,7 +62,7 @@ StarVLA 方法路线是先用统一数据/动作接口建立VLM到动作的简�
 1. 固定骨干、数据划分、动作归一化、chunk长度与评测种子，先跑单基准。
 2. 比较动作头时保持其他因素相同，分别记录成功率、推理延迟和资源成本。
 3. 联合训练时保存数据配比与本体适配规则，明确哪些测试基准已出现在训练中。
-4. 当前官方LIBERO脚本默认QwenPI/Qwen3.5-0.8B；要复现α，必须显式匹配Qwen3-VL-4B+MLP的配置。模型服务和仿真客户端分别检查，不能从一次smoke推断全基准复现。
+4. 当前 `starVLA_dev` 活跃开发分支（与 `starVLA` 稳定分支区分）LIBERO 脚本默认 `QwenPI`/`Qwen3.5-0.8B`（YAML 为 `QwenGR00T`），使用 FAST 须匹配动作词表版本；要复现α，必须显式匹配 `Qwen3-VL-4B`+MLP 的配置。模型服务和仿真客户端分别检查，不能从一次smoke推断全基准复现。
 
 ## 实验读法
 
@@ -70,7 +70,7 @@ StarVLA 方法路线是先用统一数据/动作接口建立VLM到动作的简�
 
 ## 局限与风险
 
-强VLM加MLP是已测设置下的基线，不是所有动态/接触任务的最优结构。轻量头不消除VLM推理开销；框架支持列表不代表每个训练分支已完整发布，RL adaptation在已读指南中仍为待办。OOD成绩限于原文测试条件。
+强VLM加MLP是已测设置下的基线，不是所有动态/接触任务的最优结构。轻量头不消除VLM推理开销；框架支持列表不代表每个训练分支已完整发布。关于 RL 适配（2026-11-19 核对）：arXiv v1 §3.1.4 原将 RLinf 联动写为正在集成，但官方 README（2026-04-09 更新）已列出 StarVLA × RLinf 教程，不能笼统写成仍完全待办，也不能由单一教程推导所有 RL 算法已支持；跨表引用（如框架论文 RoboCasa-GR1 Table 5 OFT 48.8% vs Table 9 53.8%）须标注原表，OOD成绩限于原文测试条件。
 
 ## 关联页面
 

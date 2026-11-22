@@ -3,7 +3,7 @@
 type: entity
 tags: [tooling, motion-editing, keyframes, urdf, mujoco, imitation-learning, data-pipeline, nvidia, stanford]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ./blender.md
   - ./mujoco.md

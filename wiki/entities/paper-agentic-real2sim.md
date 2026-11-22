@@ -20,7 +20,7 @@ tags:
   - style3d
 status: complete
 original: ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
-updated: 2026-11-16
+updated: 2026-11-22
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md

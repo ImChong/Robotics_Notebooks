@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-22
 related:
   - ../entities/paper-viola-human-data-control.md
   - ./locomotion.md
@@ -145,7 +145,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [HIL](../methods/hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — TOG 2026 物理角色跑酷 + heading；官方代码未开源
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线选型
 - [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) — Light Origins / Lightbot 0；稀疏种子 Real2Sim2Real + 多专家蒸馏，无技能标签机载深度跑酷（代码未开源）
-- [ParkourFormer](../entities/paper-parkourformer.md) — HKUST-GZ 等；Transformer 查询历史 + 未来两步 AMP 监督；G1 九类地形单策略平均穿越 93.85%（代码 Coming Soon）
+- [ParkourFormer](../entities/paper-parkourformer.md) — HKUST-GZ 等；Transformer 查询历史 + 未来两步 AMP 监督；G1 九类地形单策略平均穿越 **93.96%**（arXiv:2605.25782v4，v3 为 93.85%；代码 Coming Soon）
 
 ### 运动先验与生成式控制
 
@@ -217,7 +217,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [ADP（arXiv:2607.03454）](../../sources/papers/adp_arxiv_2607_03454.md) — 动力学对抗先验抗扰 locomotion；代码待发布。
 - [HumoSlope（arXiv:2607.07830）](../../sources/papers/humoslope_arxiv_2607_07830.md) — 局部平面 ZMP + BSGA 坡条件步态；G1 盲穿户外草地坡 32.1°；代码未开源。
 - [P³（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md) — VAE-PPO 边缘似然；G1 踏石/楼梯/缺口真机。
-- [ParkourFormer（arXiv:2605.25782）](../../sources/papers/parkourformer_arxiv_2605_25782.md) — query 历史 + 未来两步 AMP 监督；G1 九类地形单策略 93.85%。
+- [ParkourFormer（arXiv:2605.25782）](../../sources/papers/parkourformer_arxiv_2605_25782.md) — query 历史 + 未来两步 AMP 监督；G1 九类地形单策略 **93.96%**（v4 核对）。
 - [TRAMP（IEEE RA-L 2026）](../../sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md) — 单阶段深度 + 层次特征/MoE + 平地/楼梯地形相关 AMP；SJTU 人形真机坡/楼梯/高台/沟与户外；代码未开源。
 
 

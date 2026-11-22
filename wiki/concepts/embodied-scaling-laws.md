@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -83,7 +83,7 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 
 ## 宏观算力背景（与具身 scaling 的层级差）
 
-DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)（arXiv:2606.12683）在 **后 AGI** 情景下讨论 **有效算力 ~10×/年** 的历史复合增长，并强调 **并行实例、测试时算力与多智能体集体** 可能在单模型平台期后仍推高系统级能力。该叙事针对 **通用认知栈**，不替代本页的 **轨迹/参数/任务** 幂律；二者可对照阅读：宏观算力决定 **仿真集群、数据工厂与多机 fleet** 的上限，微观 embodied scaling 决定 **单位算力能换多少泛化**。
+DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)（arXiv:2606.12683v3）在 **后 AGI** 情景下讨论 **有效算力 ~10×/年** 的历史复合增长，并强调 **并行实例、测试时算力与多智能体集体** 可能在单模型平台期后仍推高系统级能力，同时指出包含 **Evaluation Problem**（第 7 类）在内的七类阻力可能制约规模化红利。该叙事针对 **通用认知栈**，不替代本页的 **轨迹/参数/任务** 幂律；二者可对照阅读：宏观算力决定 **仿真集群、数据工厂与多机 fleet** 的上限，微观 embodied scaling 决定 **单位算力能换多少泛化**。
 
 ## 机器人领域的特殊挑战
 

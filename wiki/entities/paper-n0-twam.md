@@ -13,7 +13,7 @@ tags:
 - awesome-touch
 - sun254667-touch
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 venue: Technical Report
 code: https://github.com/neoteai/N0-TWAM
 related:

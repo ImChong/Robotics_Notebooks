@@ -4,7 +4,7 @@ tags: [paper, foundation-model, segmentation, sam, computer-vision, meta, prompt
 status: complete
 original:
   - ../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md
-updated: 2026-11-15
+updated: 2026-11-22
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, standing-up, fall-recovery, unitree-g1, ppo, sim2real, whole-body-control, isaac-gym, multi-critic]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2502.08378"
 related:
   - ../tasks/balance-recovery.md
@@ -11,11 +11,13 @@ related:
   - ./unitree-g1.md
   - ./hightorque-robotics.md
   - ./paper-unified-walk-run-recovery-sdamp.md
+  - ./paper-reloco-unified-locomotion-fall-recovery.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/host_humanoid_standingup_arxiv_2502_08378.md
   - ../../sources/sites/host-humanoid-standingup-project.md
   - ../../sources/repos/host_internrobotics.md
+  - ../../sources/papers/reloco_arxiv_2611_23916.md
 summary: "HoST（arXiv:2502.08378，RSS 2025 系统论文 finalist）用多 critic PPO、四地形课程与竖直拉力探索，从零学习 Unitree G1 跨地面/平台/墙/坡等多姿态起身，并以 L2C2 与动作 rescaler 约束实现真机直接部署。"
 ---
 
@@ -139,6 +141,7 @@ flowchart TB
 - [Learning Humanoid Standing-up Control across Diverse Postures（arXiv:2502.08378）](../../sources/papers/host_humanoid_standingup_arxiv_2502_08378.md)
 - [HoST 项目页](../../sources/sites/host-humanoid-standingup-project.md)
 - [InternRobotics/HoST 代码仓库](../../sources/repos/host_internrobotics.md)
+- [ReLoco 论文核对归档（arXiv:2611.23916v1）](../../sources/papers/reloco_arxiv_2611_23916.md) — 与 HoST 在 1000 组随机静置倒地上的成功率/时间/能耗对照（2026-11-21）
 
 ## 关联页面
 
@@ -156,3 +159,4 @@ flowchart TB
 ## 新增对照论文
 
 - [RISE：感知式人形起身的测试时运动引导](./paper-rise-humanoid-fall-recovery.md) — 用视觉预测的未来身体状态，在测试时按路径、朝向或速度引导恢复动作。
+- [ReLoco：统一行走与跌倒恢复的行为条件运动先验](./paper-reloco-unified-locomotion-fall-recovery.md) — 用单策略行为条件 AMP 统一走跑与起身；据 ReLoco（arXiv:2611.23916v1）在 1,000 组随机静置倒地对照中，HoST 成功率 **99.9%**、起身 **1.57 s**、机械功 **10.7 kJ**（对比 ReLoco 98.3% / 2.02 s / 3.1 kJ），体现纯起身专精策略与统一行走-恢复策略在成功率、速度与能耗上的取舍。

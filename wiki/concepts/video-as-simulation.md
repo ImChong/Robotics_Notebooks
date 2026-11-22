@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 related:
   - ../entities/paper-pixvid-back-to-pixels.md
   - ../entities/paper-vgi-white-paper.md

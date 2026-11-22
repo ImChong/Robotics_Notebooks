@@ -4,7 +4,7 @@ tags: [company, archon-robotics, humanoid, humanoid-foundation-model, whole-body
 title: 源策未来（Archon Robotics）
 status: complete
 summary: "源策未来（Archon Robotics）以全身智能（WBI）为核心，2026-07 至 11 官网 Research 发布 WBI 技术路线、PingpongDuo 双机控制、Anchor 1 精准全身运控和 Compass 1 历史记忆导航；RoboNaldo 与 EgoHumanoid-V2 亦有公司合作署名。对外成果包含论文、演示与部分 OpenDriveLab 展示仓，尚不能视为完整通用人形基础模型已开源。"
-updated: 2026-11-16
+updated: 2026-11-22
 institutions: [archon-robotics]
 related:
   - ./archon-whole-body-intelligence.md

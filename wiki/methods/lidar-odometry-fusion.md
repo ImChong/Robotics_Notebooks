@@ -2,7 +2,7 @@
 type: method
 tags: [localization, lidar, odometry, sensor-fusion, slam, navigation, ekf]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-22
 related:
   - ../concepts/sensor-fusion.md
   - ../formalizations/ekf.md
@@ -60,7 +60,7 @@ summary: "里程计与激光雷达融合定位：高频 odom 预测 + 激光 sca
 | Scan-to-mesh | 当前扫描 ↔ **Poisson 三角 mesh** | [PUMA](../entities/paper-puma-lidar-mesh-odometry.md)（ray cast + P2L；研究管线） |
 | 退化感知 P2L | 当前扫描 ↔ 点/面地图 + **Schur 物理轴 PCG** | [DCReg](../entities/paper-dcreg-degenerate-lidar-registration.md)（长廊/停车场等弱约束；Eigen+PCL 模块） |
 | LIO | LiDAR + IMU（紧/松） | [FAST-LIO](../entities/fast-lio.md)、LIO-SAM |
-| 人形 KILV | 关节运动学 + IMU + LiDAR + 相机 | [KILVO](../entities/paper-kilvo.md)（ESIKF + 接触估计 + 模态自适应；代码待开放） |
+| 人形 KILV | 关节运动学 + IMU + LiDAR + 相机 | [KILVO](../entities/paper-kilvo.md)（ESIKF + 接触估计 + 模态自适应；GPL-2.0 源码与 G1 rosbag 已开源） |
 | 因子图 | 多传感器因子 | 后端平滑、回环 |
 
 ## 核心原理
@@ -130,7 +130,7 @@ flowchart LR
 - [EKF](../formalizations/ekf.md)
 - [传感器融合](../concepts/sensor-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
-- [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉 ESIKF（代码待开放）
+- [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉 ESIKF（GPL-2.0 源码与 15 段 G1 rosbag 已开源）
 - [SUPER ODOMETRY 2.0](../entities/paper-super-odometry-2.md) — 四级自适应融合 + 学习式 IMU；slim ROS 2 已开
 - [FOCUS](../entities/paper-focus-foot-observation-confidence.md) — 无外感知时的人形腿式 odom；连续 FK 可靠度进 EKF
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md)

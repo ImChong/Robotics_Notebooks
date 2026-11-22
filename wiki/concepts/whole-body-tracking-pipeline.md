@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-11-15
+updated: 2026-11-22
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT 等主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -13,6 +13,7 @@ related:
   - ./behavior-foundation-model.md
   - ../entities/nvidia-sonic.md
   - ../entities/paper-ila-interface-level-adapter.md
+  - ../entities/paper-alert-human-avoidance.md
   - ../methods/beyondmimic.md
   - ../methods/any2track.md
   - ../methods/deepmimic.md
@@ -52,6 +53,7 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md
   - ../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md
   - ../../sources/papers/humanoid_pnb_vmp.md
+  - ../../sources/papers/alert_arxiv_2611_22258.md
 ---
 
 # Whole-Body Tracking Pipeline（全身运动跟踪流水线）
@@ -217,7 +219,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 - **推理层**：[ONNX](../entities/onnx.md) / [ONNX Runtime](../entities/onnxruntime.md) / TensorRT（选型见 [对比页](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)），控制频率通常 50 Hz；策略冻结。
 - **安全监督层**：力矩限位、关节速度护栏、跌倒检测、故障切换到安全姿态；详见 [Balance Recovery](../tasks/balance-recovery.md)。
-- **在线适配层**：残差策略（residual policy）、安全 LoRA 微调、CBF/CLF 安全壳。这是后续真机 RL 微调的入口（见 V23 P2 真机安全微调纵深）。
+- **在线适配层**：残差策略（residual policy）、安全 LoRA 微调、CBF/CLF 安全壳。例如 [ALERT](../entities/paper-alert-human-avoidance.md)（arXiv:2611.22258v1）保留 SONIC / TWIST2 / BFM-Zero 原生 reference-conditioning，仅在冻结动作网络中加入 LiDAR 人体包络势场条件化的低秩 LoRA 修正以扩展主动人体避障（截至 2026-11-21 官方实现尚未核实开放）。这是后续真机 RL 微调与安全扩展的入口（见 V23 P2 真机安全微调纵深）。
 
 ## 六条主流落地路径对比
 
@@ -325,8 +327,11 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md](../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md) — SONIC 在 42 篇栈中的策展条目
 - [humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md](../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md) — BeyondMimic 在 42 篇栈中的策展条目
 - [humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md](../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md) — Heracles 在 42 篇栈中的策展条目
+- [alert_arxiv_2611_22258.md](../../sources/papers/alert_arxiv_2611_22258.md) — ALERT：用条件 LoRA 为 SONIC / TWIST2 / BFM-Zero 扩展主动人体避障
 
 ## 关联页面
+
+- [ALERT：人形动作跟踪主动避障](../entities/paper-alert-human-avoidance.md) — 冻结基座 + LiDAR 人体包络势场条件 LoRA 适配（不改原生参考编码）
 
 - [ILA：可迁移接口级柔顺适配器](../entities/paper-ila-interface-level-adapter.md) — 在冻结的 MT、MimicLite 与 Sonic 全身跟踪器前修改上肢参考；属于 WBT 部署侧的人机交互接口，而非新的动作重定向器。
 

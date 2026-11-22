@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -389,7 +389,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 下一尺度自回归长程 WM + 虚实校准（示例：WALL-SS）
 
-[WALL-SS](../entities/paper-wall-ss.md)（自变量机器人，2026-08-26）把 clip 级扩散换成 **InfinityStar next-scale AR**：观察–动作写成因果序列，粗尺度钉状态转移、细尺度补接触；有界时间–尺度记忆支撑约 **60 s** 流式；on-policy 视觉对齐只优化动作跟随与长程一致性。WorldArena 风格动作跟随 **0.290**（Cosmos3-Nano **0.044**）；**600** 组虚实配对成功率 MAE **0.062**、\(r=0.93\)。相对 Ctrl-World，卖点是 **自回归长程 + 校准协议**，不是合成 SFT；**训练推理代码待发布**。
+[WALL-SS](../entities/paper-wall-ss.md)（自变量机器人，[arXiv:2608.26239](https://arxiv.org/abs/2608.26239)）把 clip 级扩散换成 **InfinityStar next-scale AR**：观察–动作写成因果序列，粗尺度钉状态转移、细尺度补接触；有界时间–尺度记忆支撑约 **60 s** 流式；on-policy 视觉对齐只优化动作跟随与长程一致性。WorldArena 风格动作跟随 **0.290**（Cosmos3-Nano **0.044**）；**600** 组虚实配对成功率 MAE **0.062**、\(r=0.93\)。相对 Ctrl-World，卖点是 **自回归长程 + 校准协议**，不是合成 SFT；**训练推理代码待发布**。
 
 ### 跨本体交互模拟器 + Human-in-the-World-Model（示例：CurrentWorld-0）
 
@@ -572,7 +572,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [mimic-video（Video-Action Model）](./mimic-video.md) — 互联网视频骨干潜计划 + 流匹配动作解码器的操作策略。
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — Agibot **5B 统一视频–动作世界模型**：异构掩码预训练 + 测试时 propose–evaluate–revise（技术报告 2026-05-31）。
 - [Flex-π](../entities/paper-flex-pi.md) — **冻结 Wan VAE 共享编码 RGB+pointmap** 的多流 Joint WAM；部署算力柔性（arXiv:2608.10860；代码、权重与数据已公开）。
-- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234v2；截至 2026-09-07 代码 coming soon）。
+- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234v5；Apache-2.0 仓库 `open-gigaai/giga-brain-wbc` 与 HF 数据集已开源）。
 - [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。
 - [GaussianDream++](../entities/paper-gaussiandream-plusplus.md) — 训练期高斯世界、部署 20 令牌
 - [ConfAL-WM](../entities/paper-confal-wm.md) — 稠密置信度主动后训练

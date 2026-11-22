@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./tactile-sensing.md
@@ -170,7 +170,7 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 | WAM | [𝒩₀-TWAM](../entities/paper-n0-twam.md) | **预测通路**（VAE 未来触觉）+ **观测通路**（NeoForce 力场）角色分离 |
 
 - **与注意力融合的差别：** 不是「多拼触觉 token」，而是先统一物理量、再决定预测 vs 观测何时进动作头。
-- **开源提醒：** OpenNeoData（5k h）已放；模型代码/权重截至 2026-07-26 仍为占位（Roadmap 写 7/31）。
+- **开源提醒：** OpenNeoData（5k h）与 𝒩₀-Foundation（arXiv:2608.29601v2，2026-11-19 复核）的 NeoForce 训练/评测代码及 HF 权重、NeoSim 仿真代码已公开；完整 30k h NeoData、真机 NeoReal 与 𝒩₀-VTLA / 𝒩₀-TWAM 仓库交付仍以各独立仓库最新核查为准。
 
 ### 跨传感器表示预训练
 
