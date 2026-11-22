@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, long-tail, distillation, teacher-student, reinforcement-learning, xpeng, sonic]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2607.04837"
 institutions:
   - xpeng
@@ -134,6 +134,16 @@ flowchart TB
 - 收益量级要看清主战场：held-out 是 98.18→99.26% / 91.81→94.89% 这一档的边际改善，长尾 balance 子集才有 90.60→94.73%、MPJPE-W 101.99→88.61 mm；正因为单阈值 SR 在这个 regime 已难区分，才需要 STC/TIS/MPJPE-W。
 - 适用边界绑得很紧：结论依附于 **80 kg 行星滚柱丝杠闭链小鹏人形** 与 **同平台重实现的 SONIC-Base**，绝对数值不可与 SONIC 原文或 G1 发布 checkpoint 对齐；与 OmniTrack「参考物理修正即可单策略覆盖难动作」的结论互补且部分对立。
 - 落地状态需保守：本文聚焦 System 0 WBC 长尾，尚无公开项目页与系统性真机定量，可复用的更多是 **评测工具与配方思路** 而非现成权重。
+
+## 与其他工作对比
+
+| 对比维度 / 工作 | Athena-WBC（本文，v2） | [SONIC-Base（同平台重实现）](./nvidia-sonic.md) | BumbleBee / [Parkour in the Wild](./paper-parkour-in-the-wild.md) | [EGM](../methods/egm-efficient-general-mimic.md) / GMT（MoE） / OmniTrack |
+|---|---|---|---|---|
+| 解决长尾的核心思路 | **改能力配方**：在同一残余集 $\mathcal{R}_{\mathrm{gen}}$ 上并行训去保守奖励+Grad-CAPS 动态专家与重力课程平衡专家，按 rollout SR 路由蒸馏 | 单一通用配方 + 自适应采样；受 effort/temp 保守奖励与初始重力条件制约 | 按语义/运动聚类或地形分专家，再蒸馏 + RLFT | 偏重数据分配（难样本过采样 / bin 课程）、MoE 容量路由或参考轨迹物理修正 |
+| 平滑性与动态权衡 | 去掉 $r^{\mathrm{effort}}/r^{\mathrm{temp}}$ 后用 Grad-CAPS 抑制高频抖动（8–25 Hz 能量 0.007），RLFT 后 Action Rate 1.03 | 保守平滑奖励使 Action Rate 维持 0.54，但高动态/平衡长尾易失败（No-smoothness 基线虽提跟踪但 Action Rate 升至 1.46） | 多阶段蒸馏与 RLFT 保持部署平滑 | OmniTrack 报告参考物理修正后单策略即可覆盖高难动作（与本文 80 kg 闭链观察互补） |
+| 评测与平台口径 | 提出 STC/TIS/MPJPE-W；80 kg 闭链小鹏人形（AMASS-eval SR 99.26%、Omni-eval 94.89%） | 同平台对照（AMASS-eval SR 98.18%、Omni-eval 91.81%），非 NVIDIA G1 发布权重 | 多地形跑酷等特定场景 | 各自平台与协议，不可跨机器人直接对齐绝对 SR |
+
+> **核对边界**：据 [athena_wbc_arxiv_2607_04837.md](../../sources/papers/athena_wbc_arxiv_2607_04837.md) 核查，论文 v3 已于 2026-08-24 因实验数据集授权与治理问题撤稿，上表指标均摘自历史 v2 版本与同平台重实现基线，尚无系统真机定量验证，不可直接视为已定论基准。
 
 ## 工程实践
 

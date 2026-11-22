@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2504.11054"
 venue: "2025 · ICLR"
 code: https://github.com/facebookresearch/metamotivo
@@ -158,6 +158,16 @@ sequenceDiagram
 - **人工评估（50 人盲评）：** Reward 与 Goal 上 FB-CPR 被评比 TD3 更自然的比例为 **83.5%** 与 **69.1%**；在「移动+举手」组合任务上更达 **97.8%**。
 - **行为插值与欠定激励：** 对手写简陋方程如 `RUN_eq`（仅速度阈值）、`WALK-LAM_eq` 与 `STAND-RTM/H_eq`，可零样本直接抽出自然跑步、高抬右腿等行为。
 - **与 BFM-Zero（arXiv:2511.04131）及 DIAYN / METRA 的消融：** 纯线上 FB（Reward 24.47 / Goal 0）与纯 METRA（Reward 6.37 / Goal 0）在该 SMPL 人形环境均近乎零分；METRA-ASE 仍显著落后于 FB-CPR。
+
+## 与其他工作对比
+
+| 对比维度 / 工作 | Meta Motivo / FB-CPR（本文） | 单任务 TD3† / PHC† / Oracle MPPI† | ASE / CALM / 纯无监督 FB·METRA | [BFM-Zero](./paper-bfm-zero.md)（FB-CPR-Aux） |
+|---|---|---|---|---|
+| 训练与适配模式 | 无任务奖励在线预训 + 无标签 AMASS，推理阶段 **零样本** 求解多类任务 | 逐任务重训（TD3/PHC）或单幕 30 分钟级在线规划（Oracle MPPI） | ASE/CALM 需额外独立轨迹编码器；纯 FB/METRA 无人类行为正则在 69-DoF 人形近乎坍塌 | 继承 FB-CPR 潜空间并加入辅助目标与抗扰训练 |
+| 性能与自然度权衡 | `M-1`（288M）达 Reward **179.94**、Goal Succ **0.66**、Track Succ **0.84**；50 人盲评在 Reward/Goal/组合上分别 **83.5% / 69.1% / 97.8%** 显著更像人 | TD3 标量回报最高（249.74），但欠定奖励下易出现奇异 reward-hacking 姿态 | ASE 离线复现 Reward 105.73 / Track Succ 0.40；纯 FB 24.47 / METRA 6.37 | 面向稀疏指令与强抗扰改进 |
+| 硬件与感知边界 | 30 Hz MuJoCo SMPL 纯本体仿真（CC BY-NC 4.0），无视觉/高度图与真机验证 | 仿真专项基线或离线轨迹优化 | 仿真虚拟角色基准 | 推进至 **Unitree G1 真机** 部署 |
+
+> **核对边界**：所有对照数字均来自 [bfm_awesome_metamotivo_arxiv_2504_11054.md](../../sources/papers/bfm_awesome_metamotivo_arxiv_2504_11054.md) 所记录的 `arXiv:2504.11054v1`（HumEnv 基准 Table 1 及 Appendix 消融），不涵盖外部真机跨平台基准。
 
 ## 结论
 

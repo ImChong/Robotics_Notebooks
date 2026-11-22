@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mobile-manipulation, dexterous-grasping, reinforcement-learning, tactile-sensing, whole-body-control, sim2real, shanghaitech, leap-hand]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 original:
   - ../../sources/papers/fastgrasp_arxiv_2604_12879.md
 arxiv: "2604.12879"
@@ -124,6 +124,16 @@ flowchart TB
 - Sim2Real 不是可选项：高速设定下 **无 DR 或无 LPF 直接 0%**——这条消融比主指标更能说明部署难度来自哪里。
 - 边界与风险：仿真 **50.09%** 与真机 **~32%** 差距明显，任务是最长 **2 s** 的短窗抓取–撤离；平底/桌面场景为主，极扁平物体作者自述仍困难，臂第 4 关节锁定与底盘 1.3 m/s 上限约束动态包络；截至论文页 **暂无开源代码**。
 - 定位互补而非替代：相对 [HRDexDB](./hrdexdb-dataset.md) 的静态台架数据与 T-Rex 类高维触觉 VLA 路线，本文占的是 **动态移动执行 + 低维触觉** 这一格。
+
+## 与其他工作对比
+
+| 对比维度 / 工作 | FastGrasp（本文，TS+ES） | 力方向两阶段（TS+FS） | 反应式移动抓取（Burgess-Limerick [3]）/ 单阶段策略 | 静态灵巧抓取（UniDexGrasp / DexGrasp Anything）与夹爪接物（Catch it!） |
+|---|---|---|---|---|
+| 移动与末端形态 | 移动底盘 + 5-DoF 臂 + **16-DoF LeapHand**，全身 15 Hz PPO 协同 | 同平台两阶段，但以力方向质量排序 | [3] 物体简化为单点（无点云/灵巧手）；单阶段 PointNet 策略难统筹全身 | UniDexGrasp/DexGrasp Anything 为固定基座；Catch it! 用平行夹爪 |
+| 仿真全点云 / 部分点云 | **50.09%** / **38.51%**（unseen 物体） | 41.99% / **归零**（依赖显式表面法向，抗噪差） | [3] 部分点云 8.31%；单阶段全点云 **3.03%** | 各自静态或空中抛接设定，非桌面高速移动灵巧包络 |
+| 引导与触觉闭环 | CVAE 150 候选 + GWC/GDC 包络度；去触觉观测掉 15.65%，真机去 TA 从 32% 降至 26.87% | 随机引导 14.45%、仅 GDC 34.57%、仅 GWC 18.90% | 缺包络度引导与接触收紧闭环 | 多数依赖高维触觉或无动态移动冲击窗口约束 |
+
+> **核对边界**：定量对比均来自 [fastgrasp_arxiv_2604_12879.md](../../sources/papers/fastgrasp_arxiv_2604_12879.md) 所核对的 `arXiv:2604.12879` Table I/III 及消融节；截至论文发布暂无官方开源代码可供独立复现。
 
 ## 常见误区或局限
 

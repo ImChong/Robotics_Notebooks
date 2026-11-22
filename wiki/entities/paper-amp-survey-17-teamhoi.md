@@ -127,6 +127,17 @@ flowchart TB
 - **对照：** CooHOI-*2/4/8 三独立策略；TeamHOI 单策略跨配置更稳（项目页视频）。
 - **消融：** Transformer vs MLP 固定维；无 masked AMP 时协作多样性下降。
 
+## 与其他工作对比
+
+| 对比维度 / 工作 | TeamHOI（本文） | CooHOI | [PhysHSI（AMP #15）](./paper-amp-survey-15-physhsi.md) | [MoRE（#08）](./paper-amp-survey-08-more.md) / [Goalkeeper（#13）](./paper-amp-survey-13-humanoid-goalkeeper.md) |
+|---|---|---|---|---|
+| 队形与可扩展性 | **单策略任意 $N$**（2–8 人训练，OOD 队形零重训泛化） | 每队形（2/4/8）独立策略，无显式队友状态 | 单人 HSI | 单人全身控制 |
+| 协作通信机制 | 队友 token $\mathcal{T}_t^i$ + Cross-Attention + 分队形归一化 PPO advantage | 依赖共享物体动力学作隐式耦合 | 不适用 | 不适用 |
+| AMP 先验构造 | **$D_{\text{full}}$ + 遮蔽手/前臂的 $D_{\text{mask}}$**，按交互指示 $\sigma(\alpha_t)$ 连续混合 | 单人全身 AMP | 单人–物体 MoCap 先验 | 按步态（MoRE）或身体区域（Goalkeeper）分判别器 |
+| 任务与部署边界 | 仿真多智能体协作搬桌（方/矩/圆桌，64 边缘候选接触点） | 仿真协作搬运 | 含真机单人搬箱/坐躺站 | 仿真多样化步态 / 守门动作 |
+
+> **核对边界**：据已读归档（[teamhoi_arxiv_2603_07988.md](../../sources/papers/teamhoi_arxiv_2603_07988.md)），本文定量与视频对照集中在 CooHOI-*2/4/8 独立策略及内部消融（Transformer vs MLP 固定维、去 masked AMP），尚未包含真机多机实测对比。
+
 ## 关联页面
 
 - [多智能体强化学习（MARL） ／ Multi-Agent Reinforcement Learning](../methods/marl.md) — 去中心化策略利用队友 token 协作搬运，需核对人数、归一化与队形变化的评测条件。

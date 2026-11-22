@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2504.21738"
 venue: "2025 · arXiv"
 summary: "语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。"
@@ -105,6 +105,16 @@ flowchart TD
 ## 实验与评测
 
 - 原文通过 Table III 验证完整 CLIP+CVAE+相对跟踪目标显著优于 No-Rel 及 MLP 基线（CLIP+CVAE 隐空间插值可生成平滑过渡步态，单纯 CLIP+MLP 出现抖动），并在 G1 真机完成抗踹击及 LLM 长任务拆解演示（如先快走 4 s 再挥手 5 s）；另见后续 [ADAPT](./paper-adapt-text-driven-humanoid.md) 对照。
+
+## 与其他工作对比
+
+| 对比维度 / 工作 | LangWBC（本文） | No-Rel / CLIP+MLP（原文消融） | [ADAPT](./paper-adapt-text-driven-humanoid.md) | [LeVerb](./paper-bfm-36-leverb.md)（#36/41） |
+|---|---|---|---|---|
+| 语义到身体接口 | **CLIP 文本 + 128 维 CVAE** 直接条件端到端 WBC（10 Hz / 2s 本体历史） | 无相对跟踪目标（No-Rel）或直接 CLIP+MLP（插值易抖动） | 帧级扩散先验 + 残差动作控制 | 双系统：10 Hz 视觉-语言潜变量 + 50 Hz DAgger 底层策略 |
+| 视觉感知与任务拆解 | **无视觉闭环**；长程任务依赖外部 LLM 拆分为「文本指令:秒数」序列 | 同无视觉接口 | 文本驱动端到端人形全身控制 | 接入第一/第三人称视觉（SigLIP）与 GRL 跨模态对齐 |
+| 性能与边界对照 | Table III 显著优于 No-Rel 与 CLIP+MLP；后续 ADAPT 论文表中记其 Success 0.923 / R@1 40.9% | 隐空间平滑度与跟踪表现均弱于完整 CVAE 方案 | 同表作为后续文本控制迭代对照 | 面向视觉-语言导航与交互，G1 零样本词表泛化 |
+
+> **核对边界**：据 [bfm_awesome_langwbc_arxiv_2504_21738.md](../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md) 与本页参考文献说明，已通读 `arXiv:2504.21738v1` §III–§IV-G（实验部分以略读为主）；Success 0.923 / R@1 40.9% 口径引自站内后续页 [ADAPT](./paper-adapt-text-driven-humanoid.md) 的同表对照，且 LangWBC 无公开代码可供独立复现。
 
 ## 关联页面
 

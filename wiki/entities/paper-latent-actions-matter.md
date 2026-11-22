@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, latent-action, vla, empirical-study, fudan, xiaomi]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 original:
   - ../../sources/papers/latent_actions_matter_arxiv_2608_19613.md
 arxiv: "2608.19613"
@@ -80,6 +80,16 @@ flowchart LR
 - 潜动作维度 32 跨 7/14-DoF 平台最优
 - FDM 重建指标比 probe 更可靠预测下游
 - 缩放 Stage-II 视频微调持续改善下游
+
+## 与其他工作对比
+
+| 对比维度 / 工作 | 本文（41 项 LAM 统一实证） | 纯像素 MSE 重建 LAM（体系内对照） | [Learning Latent Action World Models In The Wild](./paper-sa-2601-05230-learning-latent-action-world-models-in-the-wild.md) |
+|---|---|---|---|
+| 研究定位与框架 | 在统一 autoencoding 框架下横向消融 **41 项 LAM 设计**（LAPO IDM-FDM、ΔDINO 等），服务三阶段 VLA 初始化（Stage I → Qwen3-VL → OpenVLA-OFT） | 同三阶段框架下的像素级重建基线 | 面向野外视频（YoutubeTemporal1B）联合训练冻结 V-JEPA 2-L + IDM + ViT-L 世界模型（WAM 预训练） |
+| 关键表征与评估发现 | **LAPO 与语义帧差 ΔDINO** 为强基线；**潜动作维度 32** 在 7-DoF/14-DoF 均最优；**FDM 重建指标** 比 probe 更可靠预测下游 | 易把码本容量浪费在静态纹理或光照抖动上，下游泛化弱于特征差分 | 侧重将潜动作作为通用世界模型控制接口（信息正则化 IDM + AdaLN-zero WM） |
+| 评测平台与开源 | LIBERO / LIBERO-Plus / RoboTwin2.0 + Franka 真机（LA-Tuned vs 基线）；**GitHub + HF `XizoB/LAM` 已开源** | 体系内消融对比 | Awesome World Models 清单索引，侧重野外视频前向预测 |
+
+> **核对边界**：据 [latent_actions_matter_arxiv_2608_19613.md](../../sources/papers/latent_actions_matter_arxiv_2608_19613.md) 归档，已通读 `arXiv:2608.19613` 全文并提炼定性/结构对比结论，但各基准（LIBERO / RoboTwin2.0 / Franka）逐项原始成功率数值未转抄至 source 归档，精确数值需查阅原文表格或复跑开源仓库。
 
 ## 源码运行时序图
 
