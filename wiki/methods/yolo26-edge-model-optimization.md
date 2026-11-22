@@ -14,6 +14,7 @@ sources:
 related:
   - ../entities/ultralytics.md
   - ../entities/paper-yolo26-unified-realtime-e2e-vision.md
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./object-detection.md
   - ../concepts/vision-backbones.md
   - ../concepts/visual-representation-for-policy.md
@@ -45,7 +46,11 @@ related:
 
 本文根据[公众号文章归档](../../sources/blogs/wechat_ahu_yolo26_edge_compression_2026_11_22.md)的工程场景，使用[Ultralytics 官方文档与源码](../../sources/sites/ultralytics_yolo26_edge_deployment_guide_2026_11_22.md)纠正默认 NMS、INT8 精度和跨格式支持等结论；**所有未附可复跑配置的转载速度表仅是作者自述，不作为本页 benchmark**。
 
-## 核心原理与技术路线
+## 核心原理
+
+部署优化的关键是把感知精度与真实设备约束拆开核算：先固定检测模型、数据集和输入输出协议，再选择推理运行时与压缩策略，最终在业务数据和目标硬件上验证。
+
+## 主要技术路线
 
 ### 1. 先选运行时，再定压缩路线
 
@@ -206,6 +211,7 @@ sequenceDiagram
 
 - [Ultralytics YOLO 主仓](../entities/ultralytics.md) — 模型家族、统一 API 与许可
 - [YOLO26 论文详情](../entities/paper-yolo26-unified-realtime-e2e-vision.md) — DFL、端到端头及官方基准的研究背景
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 检测器部署前后仍需与数据采集、推理后处理、视觉表征及下游任务统一验收
 - [目标检测方法](./object-detection.md) — 模型评测、检测输出接口
 - [视觉骨干](../concepts/vision-backbones.md) — 感知模块的参数量/特征计算预算
 - [策略视觉表征](../concepts/visual-representation-for-policy.md) — 机载视觉编码与策略接口
