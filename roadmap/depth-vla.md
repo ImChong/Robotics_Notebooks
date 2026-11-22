@@ -208,6 +208,7 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+- [PGX：人形长程任务的物理接地执行](../wiki/entities/paper-pgx-2611-26596.md) — 对照「单个 VLA 承担全任务」：谓词 FSM 负责阶段与恢复，WCL 负责位置精度，同权重 GR00T 咖啡任务 C0 35%→80%；源码暂无公开入口。
 - [H-VLA（关键动作→规划）](../wiki/entities/paper-h-vla.md) — 统一双臂相机坐标、关键末端目标与连续规划接口；关注相机标定和阶段间失效。
 - [Co-VLA（双臂协同 SAE/LAC）](../wiki/entities/paper-co-vla.md) — 共享/残差双臂结构加执行期修正，逐项对照 Handover 与 OOD 任务的正负增益。
 - [VLA 动作到关节力矩的执行链路](../wiki/concepts/vla-action-to-joint-torque.md) — 从模型动作反归一化、IK 与阻抗控制贯通到关节力矩与伺服电流环，核对模式、频率和安全约束。
