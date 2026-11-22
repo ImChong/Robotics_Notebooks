@@ -147,6 +147,12 @@ flowchart TB
 - **PCGrad 与分行为 Critic 消融（Table 2）：** `AHC (ours)` 任务梯度余弦相似度 **0.535** vs 单共享 critic 无 PCGrad `0.247`，同时避免共享 critic 因奖励尺度差异忽略 locomotion。
 - **真机：** 跌倒后起身续走（含斜坡与前后外力推搡）、复杂地形；关节加速度波动显著低于 HoST。
 
+## 与其他工作对比
+
+- [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)：训练期门控的单策略多行为控制；AHC 采用专精策略、MoE 蒸馏、再强化微调的阶段化路线，不能把两者视为同一训练方法。
+- [HoST](./paper-host-humanoid-standingup.md)：侧重人形起身；AHC 进一步将起身恢复与持续行走、地形自适应联合训练。两者的对比应限定在论文实际报告的起身与恢复指标。
+- [HAML](./paper-amp-survey-12-haml.md)：条件 AMP teacher 的多技能路线；AHC 的多行为融合核心是蒸馏后结合双 critic 与 PCGrad 微调。
+
 ## 关联页面
 
 - 多技能姊妹：[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)、[HAML #12](./paper-amp-survey-12-haml.md)、[MoRE #08](./paper-amp-survey-08-more.md)
