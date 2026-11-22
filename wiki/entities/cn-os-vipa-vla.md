@@ -79,6 +79,8 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — VIPA-VLA 的 Cut3R 空间编码对应感知栈的 2D→3D 几何表征环节；论文的操作成功率不能代替单独的深度精度、时延及下游控制闭环验收。
+
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)
 - 同路线人类视频预训练：[Being-H0：大规模人手视频 VLA](paper-notebook-being-h0-vision-language-action-pretraining-from.md) 与 [JALA：野外视频联合隐动作对齐](cn-os-jala.md)
 - 后续隐式世界-动作模型：[Being-H0.7](../methods/being-h07.md)

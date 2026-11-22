@@ -143,6 +143,8 @@ flowchart TD
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照认知推理、策略执行和 sim-to-real 四层证据，避免将评论引用的仿真分数直接等同于真机部署效果。
+
 - [Astranomy：Astra 原生机器人策略](./astranomy.md) — 66.3%、74.8%、推理延迟和仿真暂停的证据来源。
 - [RoboLab-120](./robolab.md) — 基准定义、协议与动态榜单读法。
 - [VLA](../methods/vla.md) — 专用动作策略并未因为通用模型做规划而在定义上消失。
