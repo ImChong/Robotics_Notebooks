@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, magnetics, halbach, permanent-magnet, motor, sheffield, review, pmsm]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 venue: "IEE Proc. Electr. Power Appl. 2001"
 related:
   - ../concepts/halbach-array.md

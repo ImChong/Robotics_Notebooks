@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, dexterous-manipulation, reinforcement-learning, ppo, motion-prior, residual-learning, latent-space, whole-body, unitree-g1, wuji-robotics, isaac-lab, berkeley]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-22
 project_id: coordex
 arxiv: "2606.23680"
 project: https://skevinci.github.io/coordex/

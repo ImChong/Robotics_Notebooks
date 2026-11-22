@@ -11,7 +11,7 @@ tags:
   - ai2
   - uw
 status: complete
-updated: 2026-11-06
+updated: 2026-11-22
 arxiv: "1506.02640"
 venue: "CVPR 2016"
 code: https://github.com/pjreddie/darknet

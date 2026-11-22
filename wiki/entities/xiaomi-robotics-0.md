@@ -4,7 +4,7 @@ tags: [vla, open-source, diffusion, flow-matching, real-time, bimanual, cross-em
 arxiv: "2602.12684"
 code: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md

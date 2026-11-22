@@ -4,7 +4,7 @@ tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2re
 status: complete
 original:
   - ../../sources/papers/legs_arxiv_2606_01458_full_reading_2026_11_15.md
-updated: 2026-11-15
+updated: 2026-11-22
 arxiv: "2606.01458"
 code: https://github.com/hojjunekim/LEGS
 project: https://hojjunekim.github.io/legs/

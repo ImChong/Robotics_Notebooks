@@ -2,7 +2,7 @@
 type: entity
 tags: [unitree, hardware, sdk, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 sources:
   - ../../sources/repos/unitree.md
   - ../../sources/sites/unitree-g1-official.md

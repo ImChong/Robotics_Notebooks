@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, data-generation, technology-map, wechat]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../entities/paper-embodiedswe.md
   - ../entities/paper-vlaquantbench.md

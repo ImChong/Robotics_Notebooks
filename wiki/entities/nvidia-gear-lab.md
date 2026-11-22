@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, research-lab, embodied-ai, foundation-models, humanoid, vla, simulation, gear]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-22
 related:
   - ../methods/aspire.md
   - ../methods/egoscale.md

@@ -2,7 +2,7 @@
 type: concept
 tags: [gnn, graph, architecture, relational]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-22
 summary: "图神经网络在节点与边上做邻域聚合，适合运动学树、场景图与接触关系等可变拓扑；它是结构编码器，通常不替代高频向量策略。"
 related:
   - ./mlp.md

@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-22
 related:
   - ../concepts/open-source-humanoid-reproduction-gate.md
   - ../overview/humanoid-hardware-101-technology-map.md

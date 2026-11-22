@@ -14,7 +14,7 @@ tags:
 - rcl
 - curated-list
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 arxiv: '2609.16074'
 code: https://github.com/RCL-Robotics/Awesome-World-Action-Models
 related:

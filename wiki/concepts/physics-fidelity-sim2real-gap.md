@@ -3,7 +3,7 @@ type: concept
 tags: [simulation, sim2real, physics, dynamics, contact, friction, fidelity]
 status: complete
 original: ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/simulation-physics-fidelity.md

@@ -2,7 +2,7 @@
 type: concept
 tags: [wbc, tsid, optimization, qp, humanoid, control]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 summary: "HQP 用严格层级的二次规划（词典序最小化）表达任务优先级：Kanoun 2011 的 QP 级联与 Escande 2014 的单一有效集求解器，面向速度级逆运动学，并可扩展到 TSID 的加速度/力层。"
 sources:
   - ../../sources/papers/escande_hqp_ijrr_2014.md

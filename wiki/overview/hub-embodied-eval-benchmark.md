@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md

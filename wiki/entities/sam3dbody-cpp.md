@@ -3,7 +3,7 @@
 type: entity
 tags: [perception, human-mesh-recovery, onnx, cpp, deployment, motion-capture, bvh, real-time, open-source, meta]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./sam-3d-body.md

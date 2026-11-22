@@ -9,7 +9,7 @@ tags:
   - autonomous-experimentation
   - agent-infrastructure
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ./paper-wikiskill.md
   - ./karpathy-autoresearch.md

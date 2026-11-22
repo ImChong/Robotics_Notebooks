@@ -2,7 +2,7 @@
 type: concept
 tags: [rnn, lstm, gru, sequence-modeling, architecture]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-22
 summary: "循环网络用隐状态沿时间递推压缩历史；LSTM/GRU 用门控缓解梯度消失，适合短中程部分可观测控制，长上下文则让位 Transformer 或 Mamba。"
 related:
   - ./mlp.md

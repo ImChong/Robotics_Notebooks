@@ -4,7 +4,7 @@ tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, re
 status: complete
 original:
   - ../../sources/papers/fail_passive_gap_reading_arxiv_2608_02809_reading_hubsys.md
-updated: 2026-10-08
+updated: 2026-11-22
 summary: "机器人系统工程知识链：按实时控制面 / 机载软件面 / 数据与服务面 / 部署与运维面 / 安全与合规五层，索引 OS、IPC、网络、数据库、缓存、消息、分布式、容器、可观测性、RTOS、DDS、边云、频率解耦、OTA 与安全状态机等站内节点。"
 ---
 

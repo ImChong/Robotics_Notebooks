@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, electrical-design, power-distribution, bms, safety-circuit, emc, wiring]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-22
 related:
   - humanoid-wire-harness-types-protection.md
   - ./humanoid-mechanical-layout-design.md

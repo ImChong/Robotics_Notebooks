@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, memory, visuomotor, act, diffusion-policy, long-horizon, zeno-ai, zju, zjut, usyd]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-22
 arxiv: "2606.14551"
 related:
   - ../methods/imitation-learning.md

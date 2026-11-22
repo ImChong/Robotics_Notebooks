@@ -5,7 +5,7 @@ doi: 10.1109/IROS.2015.7353756
 venue: IROS 2015
 tags: [paper, humanoid, fall-safety, contact-planning, trajectory-optimization]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 summary: "Ha 与 Liu 将人形机器人平面跌倒建模为接触图约束下的多触点冲量峰值优化，用动态规划自动选择接触顺序、时机与位置。"
 related:
   - ./paper-hrl-stack-41-safefall.md

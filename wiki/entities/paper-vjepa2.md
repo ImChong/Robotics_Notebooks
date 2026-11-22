@@ -12,7 +12,7 @@ tags:
 status: complete
 original:
   - ../../sources/papers/vjepa2_arxiv_2506_09985_full_reading_2026_11_15.md
-updated: 2026-11-15
+updated: 2026-11-22
 arxiv: "2506.09985"
 code: https://github.com/facebookresearch/vjepa2
 related:

@@ -19,7 +19,7 @@ tags:
 status: complete
 arxiv: "2607.06988"
 venue: arxiv
-updated: 2026-11-12
+updated: 2026-11-22
 original: ../../sources/papers/wam_ttt_arxiv_2607_06988.md
 related:
   - ../concepts/world-action-models.md

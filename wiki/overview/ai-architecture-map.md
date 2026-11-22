@@ -2,7 +2,7 @@
 type: overview
 tags: [architecture, deep-learning, mlp, moe, cnn, vit, transformer, mamba, diffusion, dit, gnn, vla, technology-map]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-22
 summary: "按数据几何把神经网络分成前馈、空间、序列、生成、图与机器人决策六支，对照 MLP/MoE、CNN/ResNet/U-Net/ViT、RNN–Mamba、VAE/GAN/Diffusion/DiT、GNN 与五类策略骨干，服务选型而不是罗列模型名。"
 related:
   - ../concepts/gru.md

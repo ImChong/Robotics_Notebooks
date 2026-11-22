@@ -2,7 +2,7 @@
 title: "Qwen-RobotNav（面向智能体系统的可扩展导航基础模型）"
 type: entity
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 project_id: qwen-robot-nav
 arxiv: "2606.18112"
 paper: https://arxiv.org/abs/2606.18112

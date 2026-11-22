@@ -3,7 +3,7 @@ type: concept
 tags: [locomotion, control, dynamics, bipedal]
 status: complete
 summary: "LIP/ZMP 用简化倒立摆和零力矩点刻画双足稳定性，是经典 humanoid 行走控制的理论基础。"
-updated: 2026-11-07
+updated: 2026-11-22
 original:
   - ../../sources/papers/lip_zmp_dcm_walking_reading_primary_papers.md
 sources:

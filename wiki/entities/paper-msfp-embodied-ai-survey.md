@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "survey", "perception", "sensor-fusion", "embodied-ai", "tsinghua", "ustc"]
 status: complete
-updated: 2026-09-22
+updated: 2026-11-22
 arxiv: "2506.19769"
 venue: "arXiv 2025"
 summary: "MSFP Survey：任务无关梳理具身 AI 多传感器融合感知的四条技术轴（多模态/多智能体/时间序列/MM-LLM），便于按融合粒度与实时性选型。"

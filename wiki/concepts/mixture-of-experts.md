@@ -2,7 +2,7 @@
 type: concept
 tags: [moe, mixture-of-experts, architecture, vla, scaling]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-22
 summary: "混合专家用门控网络为每个样本稀疏选择若干专家子网，使参数容量与逐步算力解耦；机器人里它是多技能/跨本体动作专家，而不是低层力矩环的默认结构。"
 related:
   - ./mlp.md

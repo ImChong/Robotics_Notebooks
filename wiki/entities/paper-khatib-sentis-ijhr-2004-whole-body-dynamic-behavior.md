@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, wbc, humanoid, operational-space, null-space, classic, stanford, priority-control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 venue: "IJHR 2004"
 doi: "10.1142/S0219843610000027"
 summary: "IJHR 2004：Khatib–Sentis 等人形 WBC 系统化起点——约束/操作任务/姿态三层优先级、浮基与接触动力学、操作空间递归投影。"

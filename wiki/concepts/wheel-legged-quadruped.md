@@ -2,7 +2,7 @@
 type: concept
 tags: [wheel-legged, quadruped, locomotion, hybrid, unitree]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ../tasks/hybrid-locomotion.md
   - ../tasks/locomotion.md
