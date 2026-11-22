@@ -197,6 +197,8 @@ flowchart LR
 
 ### 推荐读什么
 - [机器人整机通信架构](../wiki/concepts/robot-onboard-communication-architecture.md) — 本阶段主线知识页
+- [CyberBeast 关节软件栈](../wiki/overview/cyberbeast-joint-software-stack.md) — SDK、ROS 2、SLCAN 与 CAN Bootloader 分层及时间预算边界
+- [JointSDK（纯 C99 协议栈）](../wiki/entities/cyberbeast-jointsdk.md) · [JointROS（lifecycle + ros2_control）](../wiki/entities/cyberbeast-jointros.md) · [USB2CAN SLCAN 固件](../wiki/entities/cyberbeast-canable2-n32.md)
 - [CAN vs EtherCAT 关节总线选型](../wiki/comparisons/can-vs-ethercat-joint-bus.md) 与 [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md)
 - [Query：EtherCAT 主站优化指南](../wiki/queries/ethercat-master-optimization.md) 与 [Query：实时运控中间件配置指南](../wiki/queries/real-time-control-middleware-guide.md)
 - [时钟同步算法](../wiki/concepts/clock-synchronization-algorithms.md) 与 [DDS 通信机制](../wiki/concepts/dds-communication.md)
