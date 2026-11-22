@@ -13,7 +13,12 @@
 - **作者：** Tianyu Xiong*、Yi Lu*、Jinrui Wang、Ziqi Liang、Dandan Lei、Xiaoyang Zhou、Xiao-xiao Long、Qiu Shen†、Xun Cao（* 共同一作；† 通讯）
 - **机构：** 南京大学电子科学与工程学院；南京大学智能科学与技术学院；江苏移动信息系统集成有限公司；中国移动紫金（江苏）创新研究院
 - **入库日期：** 2026-09-26
-- **开源状态（步骤 2.5，2026-09-26）：** GitHub **已开源**（`scripts/setup_rgb2robo.sh`、推理脚本、HMR2 预处理；checkpoint 经 Google Drive）；当前发布为 **base 版**（满足遥操作实时性；**不支持** 浮动相机与大范围全局轨迹；项目页承诺后续 **performance 版**）。
+- **复核日期：** 2026-11-22
+- **核对范围：** arXiv:2609.29850v1 HTML 全文（Introduction、Related Work、§3 Method、§4 Experiments/Tables 1–4、§5 Limitations）；区分原论文的 base 数值与独立发布的 Plus 代码。
+- **通读：** 已完成
+- **Plus 新版官方主页：** <https://bear-ty.github.io/BR_plus_web/> — [主页归档](../sites/beyondretarget-plus.md)
+- **Plus 新版源码：** <https://github.com/bear-ty/BeyondRetarget_plus> — [源码归档](../repos/beyondretarget-plus.md)
+- **开源状态（步骤 2.5，2026-09-26）：** GitHub **已开源**（`scripts/setup_rgb2robo.sh`、推理脚本、HMR2 预处理；checkpoint 经 Google Drive）；论文原始评测为 **base 版**（实时性、固定相机设定）；**2026-11-22 Plus 已独立开源**移动相机/大范围轨迹离线管线，不能将两版本评测指标混用。
 
 ## 核心论文摘录（MVP）
 
@@ -38,3 +43,7 @@
 - **相对 GVHMR/WHAM → GMR/NMR：** 报告 **RAMPJPE 26.36 mm**、**Simulation SR 95.86%**；两阶段基线 **motion collapse** 与更高 failure rate。
 - **流式推理（同 GPU）：** **Latency ~192.8 ms**、**~50 FPS throughput** vs GVHMR→GMR **~1369 ms**。
 - **对 wiki 的映射：** [SONIC / 全身遥操作栈](../../wiki/entities/nvidia-sonic.md)（真机 teleop 可经 SONIC + 本项目 GR00T ZMQ 接口对接）
+
+## 后续工作进展（2026-11-22）
+
+官方 [Plus 项目页](../sites/beyondretarget-plus.md) 与 [Plus 仓库](../repos/beyondretarget-plus.md) 已公开移动相机与全局轨迹的离线运动数据生成实现。该发布仍引用原论文 **2609.29850**，本归档保留原论文身份，不把 Plus 误标成另一篇独立论文。

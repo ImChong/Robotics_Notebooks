@@ -28,6 +28,9 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/blogs/wechat_robotshub_more_principle_to_code_2026-09-15.md
+original:
+  - ../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md
+  - ../../sources/repos/more.md
 ---
 
 # MoRE：复杂地形上的人形多步态残差专家混合
@@ -121,7 +124,7 @@ flowchart TB
 | 域随机化 | 摩擦、质量、PD、动作延迟、深度噪声/偏差/遮挡等（Table II） |
 | 真机 | G1 + D435i；640×480 → RealSense 滤波 → 64×64；策略 **50 Hz** |
 
-## 官方代码（TeleHuman/MoRE）
+## 工程实践（TeleHuman/MoRE）
 
 [GitHub 仓库](https://github.com/TeleHuman/MoRE) 将论文两阶段拆为两个 `legged_gym` 任务，便于分步复现：
 
@@ -186,12 +189,13 @@ sequenceDiagram
 - **必须先有 base**：残差专家站在冻结/预训练步态之上，不要从零只训 MoE。
 - **分布式**：可用 `torchrun --nproc_per_node=2` 加速（见 README）。
 
-## 常见误区
+## 常见误区或局限
 
 1. **MoRE = 部署期 FSM 切策略：** 仍是 **单一网络**；步态由 **gait command**（及 Stage 2 训练时的采样）选择判别器分支与 gait reward，不是多个独立 checkpoint 硬切换。
 2. **先有 AMP 再有地形：** Stage 1 **故意不用 motion prior**，先保证复杂地形 **可达性**；AMP 仅在 Stage 2 注入 **风格**，顺序与「平地 AMP 再加大感知」不同。
 3. **多判别器 = SD-AMP 双判别器：** [SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md) 按 **机体是否跌倒** 门控 recovery/loco；MoRE 按 **用户步态命令** 门控 **三种人形步态** 判别器，且依赖 **深度外感知**——问题设定与路由信号均不同。
 4. **MoE 在 base 层：** Expert 只出现在 **Stage 2 残差模块**，Stage 1 base actor 为常规模型。
+5. **自遮挡与扩展边界（论文 §IV / §VI）：** NVIDIA Warp 渲染深度不含机器人自身遮挡，须 Stage 2 末 10k iter 补 inject Isaac Gym `body_mask_data`；步态种类当前覆盖 Walk-Run / High-Knees / Squat 三类，更剧烈特技与复杂过渡仍有待扩展。
 
 ## 实验与评测
 
@@ -211,7 +215,7 @@ sequenceDiagram
 5. **真机锚点** — G1 + RealSense D435i（深度 10 Hz → 64×64），策略 **50 Hz**；官方仓分 `g1_16dof_loco` → `g1_16dof_resi_moe`，必须先有 base checkpoint。
 6. **勿与 SD-AMP 混路由信号** — MoRE 按用户步态命令切判别器；[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md) 按是否跌倒切 recovery/loco。
 
-## 与其他页面的关系
+## 关联页面
 
 - AMP 纵深总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#08/19）
 - 方法基线：[amp-reward.md](../methods/amp-reward.md)

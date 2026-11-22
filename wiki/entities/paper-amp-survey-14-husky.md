@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, skateboarding, hybrid-contact, sim2real, unitree-g1, teleai, shanghaitech, sjtu, hku, ustc]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: "2602.03205"
 venue: "RSS 2026"
 code: https://github.com/TeleHuman/humanoid_skateboarding
@@ -18,9 +18,13 @@ related:
   - ./paper-amp-survey-13-humanoid-goalkeeper.md
 sources:
   - ../../sources/papers/husky_humanoid_skateboarding_arxiv_2602_03205.md
+  - ../../sources/repos/humanoid_skateboarding.md
   - ../../sources/papers/humanoid_amp_survey_14_husky_humanoid_skateboarding_system_via_physics.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+original:
+  - ../../sources/papers/husky_humanoid_skateboarding_arxiv_2602_03205.md
+  - ../../sources/repos/humanoid_skateboarding.md
 ---
 
 # HUSKY：物理感知人形滑板全身控制
@@ -105,20 +109,48 @@ flowchart TB
 - 落地状态较好：RSS 2026 + 开源 [TeleHuman/humanoid_skateboarding](https://github.com/TeleHuman/humanoid_skateboarding)，室内外多板型与抗扰真机验证。
 - 与 [PhysHSI #15](./paper-amp-survey-15-physhsi.md) 对照：后者是静态场景交互，本文的支持面 **随人移动且受非完整滚动约束**，属更高一级的动力学难度。
 
-## 常见误区
+## 源码运行时序图
+
+图依据：基于 `TeleHuman/humanoid_skateboarding` `README.md`、`src/mjlab_husky/scripts/train.py` 与 `test_scene/sim.py` 核实。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as Developer
+  participant Train as uv run train (scripts/train.py)
+  participant Env as mjlab G1SkaterManagerBasedRlEnv
+  participant Runner as RSL-RL AMPOnPolicyRunner
+  participant Sim as test_scene/sim.py (MuJoCo + ORT)
+
+  U->>Train: Mjlab-Skater-Flat-Unitree-G1 --env.scene.num-envs 4096
+  Train->>Env: load_env_cfg + G1+Skateboard MJCF（含 Eq.(1) 耦合与 k,d）
+  Train->>Runner: 加载 dataset/skate_push AMP 参考并运行 AMP-PPO
+  Runner-->>U: 输出 .pt 与导出 .onnx (如 ckpts/test.onnx)
+  U->>Sim: bash test_scene/sim.sh ckpts/test.onnx
+  Sim->>Sim: OnnxPolicyWrapper 50 Hz 推理 + 键盘方向键控板
+```
+
+## 工程实践
+
+- **仿真与代码栈：** `TeleHuman/humanoid_skateboarding` 基于 **mjlab**（MuJoCo 物理 + IsaacLab API）+ `uv` + 定制 `rsl_rl`（`amp_ppo.py`）；Ubuntu 22.04 + CUDA 13.0，4096 并行环境，真机 G1 以 **50 Hz** 策略 + **500 Hz** PD 运行。
+- **滑板物理辨识（Sim2Real 核心，§IV-E）：** 用自由滚转衰减测量相邻峰值 $\phi(t), \phi(t+T)$ 反推阻尼比 $\zeta$、扭转刚度 $k=I\omega_n^2$ 与阻尼 $d=2\zeta\sqrt{kI}$。论文 Fig. 8 证实**若混用软/硬滑板参数，轻则上板踩空失败，重则转向过倾跌倒**。
+- **即开即跑验证：** `bash test_scene/sim.sh ckpts/test.onnx` 可直接用键盘在 `test_scene/mjlab_scene.xml` 中测试推进与转向。
+
+## 常见误区或局限
 
 1. **AMP 贯穿全程：** 仅 **推地相** 用 AMP；转向靠物理与任务奖，不是「全程像人滑滑板」单判别器。
 2. **≠ 平地 locomotion AMP：** 命令是 **板速 $v_{cmd}$ + 航向 $\psi$ + 周期相位**，不是速度矢量行走。
 3. **不是纯 RL 黑箱：** 显式 $\tan\sigma=\tan\lambda\sin\gamma$ 是训练能收敛的关键先验；去掉物理耦合转向极难探索。
 4. **G1 23 DoF：** 腕部不控；与守门 29 DoF 设定不同，读对比实验时注意 embodiment。
+5. **原文局限（§VI Perception Integration & Complex Terrains）：** 当前相机视场角受限，难以在闭环中直接观测滑板与轮–地接触；且实验局限于相对简单平缓场地，尚不能执行滑板公园障碍与空中特技。
 
 ## 实验与评测
 
-- **仿真：** 非对称 actor-critic；critic 见滑板位姿、倾角、足力等特权量。
-- **真机：** 完整推地–转向–切换；多户外场景与不同滑板；抗外力扰动（项目页 Fig. 1）。
+- **仿真基准（Table III，5 seeds × 1000 episodes）：** **HUSKY** 任务成功率 **100.00±0.00%**（$E_{\text{vel}}=0.056\text{ m/s}$，$E_{\text{yaw}}=0.208\text{ rad}$），显著高于 Tracking-Based（`11.12%`）、Gait-Based（`82.38%`）、w/o Tilt Guidance（`96.72%`）、AMP Transition（`85.12%`）与 Mixed Initialization（`86.03%`）。
+- **真机与多板型：** 完整推地–转向–切换；室内外及软/硬两块滑板（配合对应辨识 $k,d$）与抗外力扰动稳定滑行。
 - **对照维度：** Table I 量化人形 vs 四足滑板在 DoF、接触点数、CoM 高度、侧向转向、腿重定向等差异。
 
-## 与其他页面的关系
+## 关联页面
 
 - [Locomotion](../tasks/locomotion.md) — 推地、倾身转向与滑行构成接触模式切换，需结合轨迹引导和真实地面条件评价运动能力。
 

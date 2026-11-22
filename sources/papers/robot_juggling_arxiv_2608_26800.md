@@ -11,7 +11,9 @@
 - **代码 / 数据：** 截至 2026-09-05 **未列** GitHub / Hugging Face / 数据集
 - **作者：** Taeyoon Lee\*、Chunpeng Wang、Christopher G. Atkeson、Alfred A. Rizzi、Nicolas Rojas（\* 通讯：tlee@rai-inst.com）
 - **机构：** 机器人与人工智能研究所（RAI Institute）；卡内基梅隆大学（CMU，Atkeson）
-- **入库日期：** 2026-09-05
+- **入库日期：** 2026-09-05（2026-11-22 补齐 PDF 全文通读）
+- **核对范围：** 通过 `arXiv:2608.26800v2` PDF 抽取全文（3,024 行，完整通读 §1 引言与 Table 1、§2 结果与 Table 2–3 / Fig. 1–5、§3 讨论局限及 §4 Materials & Methods 含 MRS 式 (1)–(10)、正则化记忆学习式 (11)–(21) 与 EfficientTAM+FastGICP 感知流水线）；官方未开源代码/数据集。
+- **通读：** 已完成
 - **一句话说明：** 正则化记忆学习 + 互达集（MRS）安全约束，让 AthenaZero 双臂多指手在 **<5 分钟** 真机交互内学会五种三球抛接花样（cascade / tennis / half-shower / shower / box）；先验模型零样本连一轮都完不成，但其一阶信息仍能引导学习。
 
 ## 开源状态（步骤 2.5）

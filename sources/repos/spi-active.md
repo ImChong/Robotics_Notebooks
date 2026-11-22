@@ -11,6 +11,9 @@
 - **视频：** <https://youtu.be/pxyig4D1ZFs>
 - **许可：** MIT（`pyproject.toml` / README badge；GitHub license 元数据为空、根目录未见 `LICENSE` 文件）
 - **入库日期：** 2026-07-31
+- **核对日期：** 2026-11-22
+- **核对范围：** `LeCAR-Lab/SPI-Active` README、`active_sysid.md`、`downstream_tasks.md` 及实际入口脚本 `scripts/mass_opt.py`、`spigym/run_active_sysid.py`（核实部分开源边界：Dataset Replay 与 Sim2Real 仍待发布）
+- **通读：** 已完成
 - **一句话说明：** CoRL 2025 Oral 官方实现：Isaac Gym 上用 **采样式 SysID（SPI）+ 主动探索（最大化 FIM）** 辨识 Unitree Go2 的 base mass / CoM / 惯量与模块化电机模型，并提供下游 locomotion 训练脚本；结构对齐 HumanoidVerse / ASAP。
 
 ## 开源状态（项目页 + 仓库核查，2026-07-31）

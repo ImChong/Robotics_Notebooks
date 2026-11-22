@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-22
 arxiv: "2602.07439"
 venue: "arXiv 2026"
+code: https://github.com/TeleHuman/TextOp
 summary: "TextOp（arXiv:2602.07439，TeleAI/SJTU/ECUST）：流式文本驱动 G1 全身控制——高层自回归运动扩散（VAE+LDM，T_hist=2/T_fut=8）+ 低层 Isaac Lab RL 跟踪；真机用户交互延迟约 0.73 s；GitHub 已开源。"
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
@@ -24,6 +25,10 @@ sources:
   - ../../sources/repos/textop.md
   - ../../sources/papers/loco_manip_161_survey_022_textop.md
   - ../../sources/papers/loco_manip_161_survey_105_textop.md
+original:
+  - ../../sources/papers/textop_arxiv_2602_07439.md
+  - ../../sources/repos/textop.md
+  - ../../sources/sites/textop.md
 ---
 
 # TextOp
@@ -216,14 +221,15 @@ sequenceDiagram
 | 已知限制 | 无相机/障碍感知；2026-02 后「最新数据集」仍在更新（README News） |
 | 源码运行时序图 | 见上节（适用） |
 
-## 常见误区
+## 常见误区或局限
 
 1. **把 TextOp 当成端到端语言策略** — 它是 **生成 + 跟踪** 两阶段；与 [ADAPT](./paper-adapt-text-driven-humanoid.md) / LangWBC 的端到端扩散不同。
 2. **忽略开环 exposure bias** — 跟踪偏差会使上层生成脱离训练分布；扰动场景需 [ReactiveBFM](./paper-reactivebfm.md) 类闭环。
 3. **用情感 prompt 当连续风格控制** — [PAMoR](./paper-pamor.md) 显示 TextOp 加情感词 Top-1 仅 chance；V-A 平面是更可解释替代。
 4. **161 双槽位 ≠ 两篇论文** — #022 与 #105 是同一 canonical 实体在不同策展分类下的坐标。
+5. **原文局限（§V Conclusion）** — 缺少显式环境感知与交互物理推理，无法绕障或灵巧操作周围物体。
 
-## 与其他页面的关系
+## 关联页面
 
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 物理安全对照：[SafeFlow](./paper-loco-manip-161-104-safeflow.md)

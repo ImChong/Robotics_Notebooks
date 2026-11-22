@@ -12,6 +12,9 @@
 - **机构：** 哈尔滨工程大学、中国电信 TeleAI、中科大、上海科技大学、哈工大、西北工业大学深圳研究院等
 - **硬件：** Unitree **G1**（50 Hz 策略 / 500 Hz PD）
 - **入库日期：** 2026-06-25
+- **核对日期：** 2026-11-22
+- **核对范围：** `arXiv:2511.06371v3` 正文 Introduction–Conclusion（含 Table 1–2、PCGrad 式(5)、双 GPU 并行微调与 Future Work）及项目主页 `https://ahc-humanoid.github.io`（`Code (coming soon...)`）
+- **通读：** 已完成
 - **一句话说明：** **AHC** 两阶段：**行为专精策略**（起身 $\pi^b_r$ + 平地走 $\pi^b_w$，均含 **AMP**）→ **DAgger + MoE 蒸馏** 得统一 $\pi^d$ → **多任务 PPO 微调**（行为专属 critic + **PCGrad** + 地形课程）得地形自适应 $\pi^{\mathrm{AHC}}$。
 
 ## 摘要级要点

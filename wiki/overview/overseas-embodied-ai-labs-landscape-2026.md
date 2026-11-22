@@ -8,7 +8,10 @@ tags:
   - technology-transfer
   - wechat-curator
 status: complete
-updated: 2026-08-26
+updated: 2026-11-22
+original:
+  - ../../sources/blogs/wechat_shenlan_overseas_embodied_labs_43_2026.md
+  - ../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md
 related:
   - ./realab-14-papers-technology-map-2026.md
   - ./china-embodied-ai-labs-landscape-2026.md

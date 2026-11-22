@@ -9,7 +9,12 @@ tags:
   - real-time-control
   - nju
 status: complete
-updated: 2026-09-26
+project_id: beyondretarget
+original:
+  - ../../sources/papers/beyondretarget_arxiv_2609_29850.md
+  - ../../sources/sites/beyondretarget-plus.md
+  - ../../sources/repos/beyondretarget-plus.md
+updated: 2026-11-22
 arxiv: "2609.29850"
 venue: "arXiv 2026"
 related:
@@ -25,8 +30,10 @@ sources:
   - ../../sources/papers/beyondretarget_arxiv_2609_29850.md
   - ../../sources/sites/beyondretarget-github-io.md
   - ../../sources/repos/beyondretarget.md
+  - ../../sources/sites/beyondretarget-plus.md
+  - ../../sources/repos/beyondretarget-plus.md
   - ../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md
-summary: "BeyondRetarget（arXiv:2609.29850）：单目 RGB 端到端映射共享 robot-oriented motion 表征，经多机 decoder 与 contact-aware refine 输出可执行人形轨迹；仿真 SR 95.86%、流式 ~193 ms；GitHub 已开源 base 版。"
+summary: "BeyondRetarget（arXiv:2609.29850）base 以单目视频直接预测多机参考动作（仿真 SR 95.86%、约 193 ms）；Plus 2026-11-22 开源冻结 TRAM/VIMO 的移动相机与全局轨迹离线数据引擎，性能数字不得混用。"
 ---
 
 # BeyondRetarget（单目视频 → 可执行人形 motion）
@@ -87,6 +94,90 @@ flowchart LR
 - **实时：** Latency **192.8 ms**、throughput **~50 FPS**、peak VRAM **7.03 GiB**（同 GPU 流式管线，对照 GVHMR→GMR **1369.4 ms**）。
 - **真机：** 项目页含单臂大圆、深蹲抬腿、侧 stretch、双手背后等 **真机 vs 两阶段** 视频；teleop 段声明 **仅单目相机**。
 
+## BeyondRetarget Plus（2026-11-22 扩展）
+
+**定位变更：** Plus 是同一 BeyondRetarget 工作的**离线全局轨迹与互联网视频数据引擎**，并非新论文，也不是把 base 的约 193 ms 流式指标直接延伸到移动相机场景。官方目前仍引用原论文 [arXiv:2609.29850v1](https://arxiv.org/abs/2609.29850)，另发布了 [Plus 项目页](https://bear-ty.github.io/BR_plus_web/) 与 [独立 Plus 代码](https://github.com/bear-ty/BeyondRetarget_plus)。
+
+### 与基础版的工程差异
+
+| 维度 | BeyondRetarget（base） | BeyondRetarget Plus |
+|---|---|---|
+| 目标 | 单目视频到多机动作；低延迟遥操作 | 海量互联网人体视频到离线多机运动数据 |
+| 视觉模型 | HMR2 特征、TCAM、robot decoder | **冻结 TRAM/VIMO 视频骨干** + robot adapter / static head |
+| 相机与根轨迹 | base 主要面向固定相机/有限位移 | 支持 moving / static / auto 前端，估计相机世界轨迹并转换 world-Z-up 机器人根运动 |
+| 后处理 | 论文接触感知 refine | 完整 **C-RC1** 重投影/足端修正；保存 raw、final 与诊断数据 |
+| 权重 / 训练 | base 独立 checkpoint 与运行入口 | Plus 多机器人联合 checkpoint、冻结特征缓存和机器人头/静态头训练入口 |
+| 性能证据 | 论文 Table 1/4 中 347/362 成功与 192.8 ms（**仅 base**） | 官网提供动态演示与完整代码；暂未公开足以直接对应上述指标的 **Plus 定量对照表** |
+
+**关键区别：** Plus 源码的 `TramRobotAdapter` 使用冻结的 TRAM/VIMO 人体视频模型、内部 SMPL pose/shape 特征条件与机器人 DoF adapter；因此不能把 base 论文的「不依赖显式 SMPL→GMR 两阶段串联」误写成 Plus 内部完全没有人体表征。
+
+### 流程总览（Plus）
+
+```mermaid
+flowchart LR
+  Video["连续单人单镜头 RGB 视频"] --> Track["YOLO 人体跟踪框"]
+  Video --> Joints["YOLO COCO17 关键点"]
+  Track --> Camera["SAM 人体 mask + TRAM 相机前端"]
+  Camera --> CamTraj["SPEC / DROID-SLAM / ZoeDepth<br/>相机轨迹与图像内参"]
+  Video --> VIMO["冻结 TRAM / VIMO 视频骨干"]
+  Track --> VIMO
+  CamTraj --> VIMO
+  VIMO --> RobotHead["机器人 DoF adapter + static/contact head"]
+  CamTraj --> World["世界坐标 root / world-Z-up"]
+  RobotHead --> Raw["机器人关节 + 原始 root"]
+  Raw --> CRC1["C-RC1 重投影 / 足端修正"]
+  World --> CRC1
+  Joints --> CRC1
+  CRC1 --> Output["final_motion.npz + 诊断报告"]
+```
+
+此图为官方 README 与 `scripts/` 入口抽象；Plus root motion 的估计仍来自冻结 TRAM/VIMO，不应把 camera trajectory 画成直接覆盖 root motion 的训练监督。
+
+### 源码运行时序图（Plus）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 用户 / CLI
+  participant Track as extract_video_boxes.py
+  participant Pose as extract_video_coco17.py
+  participant Cam as prepare_robot_video_camera.py
+  participant TRAM as lib.camera (TRAM)
+  participant Infer as infer_beyondretarget.py
+  participant Model as TramRobotAdapter
+  participant CRC as postprocess_beyondretarget.py
+  participant NPZ as outputs / final_motion.npz
+  CLI->>Track: --video --weights --output track.npz
+  Track-->>CLI: 原始帧对齐 bbox/valid/frame
+  CLI->>Pose: --video --boxes track.npz
+  Pose-->>CLI: coco17.npz
+  CLI->>Cam: --video --boxes --camera-mode moving
+  Cam->>TRAM: SAM masks + calibrate_intrinsics + run_metric_slam
+  TRAM-->>Cam: world_cam_R/T + 相机内参
+  Cam-->>CLI: camera.npy + enriched boxes.npz
+  CLI->>Infer: --cfg --video --boxes --checkpoint --camera-trajectory --keypoints --confirm-single-shot
+  Infer->>Model: infer_sequence(帧, bbox, 内参)
+  Model-->>Infer: 冻结视频骨干特征 + robot DoF/root/static
+  Infer->>Infer: 相机到 world-Z-up root 坐标转换
+  Infer->>NPZ: 原始轨迹 sidecar
+  Infer->>CRC: process_prediction(C-RC1, 视频/bbox/keypoints)
+  CRC-->>Infer: final motion + diagnostics + stages
+  Infer->>NPZ: 保存最终轨迹与报告
+```
+
+官方训练链：`cache_tram_robot_features.py`（16 帧冻结 VIMO 特征）→ `train_beyondretarget.py`（机器人头）；另有 `generate_static_labels.py` / `build_true_world_static.py` → `train_static_head.py` 静态头训练。实际部署是 **离线管线**，源码图不代表端到端低时延闭环控制。
+
+### 开源、复现和局限
+
+- **代码已开放：** [Plus 官方仓库](https://github.com/bear-ty/BeyondRetarget_plus) 可查看训练、推理、相机预处理、CPU 回归测试；官方 Drive 提供 `beyondretarget_plus_8robots.pth` 与机器人资源，支持 G1/R1/H1、GR1-T1/GR2-V3、Booster T1、Tienkung、Atlas 八机。
+- **复现前置：** Linux x86_64、Python 3.10、CUDA PyTorch；额外准备 SPEC/camcalib、TRAM/DROID-SLAM/SAM/ZoeDepth 模型及授权 SMPL、BEDLAM/H36M/3DPW/EMDB 资源。仓库代码为 **CC BY-NC 4.0**，第三方模型与数据各有许可。
+- **输入约束：** C-RC1 推理要求至少 **16 帧连续单人单镜头视频**，bbox / COCO17 / 内参须使用原图像素系并按原始帧对齐；不应把中断目标轨迹插值后伪装成真实观测。
+- **失败案例：** 低纹理/均匀背景可能使相机运动估计漂移；滑冰、体操等动作的运动模糊或 OOD 也会导致重建失败；项目页并未提供可推广到任意网络视频的质量保证。
+- **待发布边界：** 官方网页「改进骨干、训练数据、监督」细节卡片仍是 `Coming soon`；单目 RGB **低时延直接控制**也是下一项工作预告，不能算作 Plus 已实测的实时功能。
+- **实验比较：** 原论文 Table 1 的 95.86% 仿真执行成功率及 Table 4 的 192.8 ms 中位延迟均属于 **base 原论文协议**。Plus 暂未公布同口径量化增益，评估扩产价值应自建视频类型 × 相机模式 × 根轨迹误差 × 足滑 × 有效片段率的质检表。
+
+完整复现资料：[Plus 项目页归档](../../sources/sites/beyondretarget-plus.md) · [Plus 源码归档](../../sources/repos/beyondretarget-plus.md)；工程路径参见 [动作重定向纵深路线](../../roadmap/depth-motion-retargeting.md) 和 [具身数据纵深路线](../../roadmap/depth-embodied-data.md)。
+
 ## 源码运行时序图
 
 ```mermaid
@@ -114,7 +205,7 @@ sequenceDiagram
 | 项目页 | <https://bear-ty.github.io/Beyondretarget_page/> |
 | 代码 | **已开源** [bear-ty/BeyondRetarget](https://github.com/bear-ty/BeyondRetarget)；`scripts/setup_rgb2robo.sh` + Google Drive checkpoint |
 | Demo | [HF Space bear-ty/BeyondRetarget](https://huggingface.co/spaces/bear-ty/BeyondRetarget) |
-| 版本 | 当前 **base 版**：实时 teleop；**不支持** moving camera / 大尺度 global trajectory（**performance 版** 计划后续开源） |
+| 版本 | **base**：实时 teleop 取向；**Plus（2026-11 已开源）**：移动相机与大尺度全局轨迹的离线数据生成，独立仓库与运行入口 |
 | 依赖 | Linux x86_64、CUDA 12.1、Python 3.10、PyTorch 2.3；HMR2/YOLOv8x 权重随 setup 下载 |
 | 真机闭环 | README：**SONIC 单独安装**，经本项目 **GR00T ZMQ** 接口接视觉遥操作 |
 
@@ -124,7 +215,7 @@ sequenceDiagram
 
 1. **主指标：** 项目页报告 **Sim SR 95.86%**、**RAMPJPE 26.36 mm**，且 **failure rate（>65 mm）0%** 相对两阶段 GVHMR/WHAM 管线显著更低。
 2. **collapse 是硬差异：** 双手背后/大画圆等场景两阶段 **GT SMPL 仍失败** 的 qualitative 说明瓶颈不只在估计噪声，而在 **human-centric 中间表示**。
-3. **部署读法：** 选型 **base 版** 时默认 **固定相机、无大全局轨迹**；户外/跟拍需等 **performance 版** 或自研后处理。
+3. **部署读法：** **base** 对低延迟遥操作优先；户外/跟拍与离线动作数据生产可测试已开源的 **Plus**，但需独立测全局轨迹误差和外部相机依赖。
 4. **工程入口：** 复现从 `infer_video.py` 与 Drive checkpoint 开始；真机 teleop 预算 **SONIC + ZMQ** 集成时间。
 5. **与 GMR、NMR 对照：** 仍可把输出轨迹接 **whole-body tracking / IL**；上游质量逻辑与 [Retargeting Matters](./paper-hrl-stack-01-retargeting-matters.md) 一致，但 **生成路径** 不同。
 
@@ -138,6 +229,12 @@ sequenceDiagram
 | [HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md) | 在 SMPL 轨迹上 **后处理 refine**；BeyondRetarget **推理期不要 SMPL** |
 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | 下游 **WAM 闭环 loco-manip**；BeyondRetarget 解决 **上游单目→参考 motion / teleop** |
 
+## 局限与风险
+
+- 原论文的定量表只支持 **base** 结论；Plus 的泛化与重建提升尚无同协议全面量化对比，不推断真实机器人成功率或延迟。
+- 单目遮挡、全局尺度与相机漂移、缺乏复杂场景接触监督仍限制将生成动作直接当作真机安全执行指令。
+- Plus 外部版权模型/数据集需要单独许可，开源仓库不等于全部权重/训练数据可自由商用。
+
 ## 关联页面
 
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
@@ -145,15 +242,21 @@ sequenceDiagram
 - [NMR](../methods/neural-motion-retargeting-nmr.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [SONIC](./nvidia-sonic.md)
+- [动作重定向纵深路线](../../roadmap/depth-motion-retargeting.md)
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md)
 
 ## 参考来源
 
 - [beyondretarget_arxiv_2609_29850.md](../../sources/papers/beyondretarget_arxiv_2609_29850.md)
 - [beyondretarget-github-io.md](../../sources/sites/beyondretarget-github-io.md)
 - [beyondretarget.md](../../sources/repos/beyondretarget.md)
+- [BeyondRetarget Plus 官方项目页](../../sources/sites/beyondretarget-plus.md)
+- [BeyondRetarget Plus 完整源码](../../sources/repos/beyondretarget-plus.md)
 
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2609.29850)
 - [GitHub README 推理入口](https://github.com/bear-ty/BeyondRetarget/blob/main/README.md)
+- [Plus 项目演示与研究说明](https://bear-ty.github.io/BR_plus_web/)
+- [Plus 训练 / 相机预处理 / 离线推理源码](https://github.com/bear-ty/BeyondRetarget_plus)
 - [Retargeting Matters（两阶段质量命题）](./paper-hrl-stack-01-retargeting-matters.md)

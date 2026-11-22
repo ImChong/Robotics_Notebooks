@@ -3,6 +3,9 @@ type: method
 tags: [humanoid, reinforcement-learning, motion-imitation, parkour, goal-conditioned, unitree-g1, sim2real]
 status: complete
 updated: 2026-11-22
+original:
+  - ../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
+  - ../../sources/sites/gfr-project.md
 related:
   - ./zest.md
   - ../entities/paper-zest.md
@@ -21,6 +24,10 @@ summary: "GfR/MTRG 用单一 goal-conditioned 策略联合参考塑形模仿与�
 # MTRG / GfR: Multi-Task Reference and Goal-Driven RL
 
 **GfR**（[Generalizing from References](https://jiashunwang.github.io/GfR/)，**RSS 2026**）提出多任务 RL 范式，把参考运动当作**行为塑形先验**而非部署时约束。本库方法页以 **MTRG**（Multi-Task Reference and Goal-Driven RL）作导航标签，与官方项目名 **GfR** 指同一工作：一个策略只观察当前状态与 **2D 目标位置**，在训练中同时接受**稠密模仿奖励**与**稀疏目标奖励**，从而学会可复用、可转向、可应对 OOD 初始条件的人形跑酷技能。
+
+## 一句话定义
+
+**把人类参考运动当训练期塑形先验而非部署输入：单策略在共享观测/动作空间联合优化「参考模仿」与「随机目标泛化」，靠辅助扳手与任务混合 $\lambda$ 课程迁出参考分布。**
 
 ## 英文缩写速查
 
@@ -94,6 +101,15 @@ Critic 见 task indicator 与接触力、辅助扳手等特权信息，仅用于
 - **MuJoCo sim-to-sim**：Isaac Lab 训练策略不经重训即在 MuJoCo 中组合执行，验证跨物理引擎鲁棒性。
 - **对比**：ZEST mocap 在 beyond-nominal 上 walk-jump success **0.17** vs GfR/MTRG **0.62**（论文 Table I）。
 
+## 工程实践
+
+| 检查项 | 论文设定与落地要点 |
+|--------|--------------------|
+| **开源边界** | 截至 2026-11-22 `arXiv:2602.20375` 与 GfR 主页均**未发布官方源码**；一作另建非官方 G1 混合模仿仓 `jiashunwang/Hybrid-Motion-Imitation` |
+| **动作空间关键细节** | PD 残差 $\bm{q}^{cmd}=\bar{\bm{q}}+\bm{\Sigma}\bm{a}_t$ **刻意去掉**参考关节角前馈，否则策略在偏离参考时被拉回原轨迹 |
+| **课程必需性（Table II）** | 去掉 $\lambda$ 任务课程后 `walk-jump` / `walk-climb` 成功率直接掉至 `0.00`；去掉泛化分支后 OOD 成功率从 `0.62 / 0.76` 跌至 `0.27 / 0.53` |
+| **长程组合与真机接口** | 部署期按箱体布局由上层状态机切换子策略（`walk-jump` / `walk-climb` / `climb-down`），真机使用 MoCap 全局位姿反馈（未接入机载视觉） |
+
 ## 长程技能组合与 sim-to-sim
 
 部署时策略仅见 \((s_t, g_t)\)，长程跑酷由**上层规则状态机**提供分段 goal，而非在策略内维护参考相位：
@@ -132,7 +148,7 @@ flowchart LR
 | [ZEST](./zest.md) | 多形态硬件模仿 | 部署时下一步参考 | 否 | 是 |
 | **MTRG** | G1 箱式跑酷 | 仅训练奖励塑形 | 否 | 是（MoCap 全局位姿） |
 
-## 常见误区
+## 常见误区或局限
 
 - **不是** ZEST 的简单超集——部署时**不需要**参考轨迹；与 ZEST「极简 tracking 接口」是互补路线。
 - **感知**：硬件实验依赖 MoCap 全局位姿反馈；论文讨论可扩展机载外感受，但当前 box 技能未给箱体精确位姿。

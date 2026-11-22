@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-22
 arxiv: "2509.16757"
 venue: "arXiv 2025"
+code: https://github.com/LeCAR-Lab/HDMI
 summary: "HDMI（HumanoiD iMitation for Interaction，arXiv:2509.16757，CMU/LeCAR）从单目 RGB 人类 HOI 视频抽取人体、物体轨迹与接触点，重定向为结构化 motion.npz，再用 robot-object co-tracking RL、统一物体表示、残差动作空间与接触奖励训练 G1 策略；真机实现 67 次连续双向开门穿越、6 类真实 loco-manip 任务与 14 类仿真任务，官方 LeCAR-Lab/HDMI 已开放 IsaacLab 训练代码。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -32,6 +33,10 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+original:
+  - ../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md
+  - ../../sources/repos/hdmi.md
+  - ../../sources/sites/hdmi-project.md
 ---
 
 # HDMI

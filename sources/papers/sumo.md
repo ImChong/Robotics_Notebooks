@@ -2,9 +2,11 @@
 
 - **标题**: Sumo: Dynamic and Generalizable Whole-Body Loco-Manipulation
 - **链接**: https://arxiv.org/abs/2604.08508
-- **作者**: John Z. Zhang, Maks Sorokin, Zachary Manchester, Simon Le Cléac’h 等
-- **机构**: RAI Institute, Carnegie Mellon University (CMU)
-- **发表日期**: 2026-04
+- **作者**: John Z. Zhang, Maks Sorokin, Jan Brüdigam, Brandon Hung, Zachary Manchester, Simon Le Cléac’h 等
+- **机构**: RAI Institute, MIT, Cornell University
+- **发表日期**: 2026-04（`arXiv:2604.08508v3`, 2026-09-09）
+- **核对范围**: 通过 `arXiv:2604.08508v3` PDF 抽取全文（1,666 行，通读 Abstract、§I–§VI 含 Policy-in-the-Loop Rollout 式 (1)–(2)、Algorithm 1、动作屏蔽式 (3)–(4)、Move/Upright 代价函数式 (5)–(6)、Table I–III 仿真消融与 Spot 8 项真机 / G1 4 项仿真评测及局限）及开源基准声明；未安装 Pixi/MuJoCo 本地跑通仿真。
+- **通读：** 已完成
 - **核心关注点**: 全身移动操作 (Whole-Body Loco-Manipulation)、层级控制 (Hierarchical Control)、MPC-over-RL、重物操纵
 
 ## 核心摘要
