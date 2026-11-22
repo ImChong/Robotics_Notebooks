@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-22] ingest | sources/repos/humancalib.md — 走路人体自动标定多相机外参并接入动捕路线
+
+- 新增独立 HumanCalib 双语项目页，基于官方 METHOD、HOWTO 和 CLI/BA/后处理源码核实流程、运行时序与许可。
+- 关键边界：免棋盘格外参标定，仍要求同步视频、已知内参、步行主体和真实身高；输出 Pose2Sim TOML 而非人体动作。
+- 更新 FreeMoCap 交叉引用和 Motion Retargeting Stage 2 数据采集路径。
+
 ## [2026-11-22] ingest | RoboWild | 复杂仿真家务的 VLM-RUA 评测
 
 - **意图：** 将 XLANG Lab 的 RoboWild（38 场景、4480 交互物体、341 任务–本体组合）补入具身评测路线，厘清“最强 13.28%”不是实机成功率。
