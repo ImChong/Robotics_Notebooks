@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-22] lint | 推进 #3997 P1-1 与 27 条非历史信息型预警清理：补齐 paper-robochallenge-zero venue 键、easy-quadruped 源码复核升级 3/3、新建 Chaos Loop 选型 Query、锚定 6 处时间敏感措辞、收敛 15 个 missing_concept_pages 词条并补齐 karpo-browserbench 评测闭环回链（其余 3 处 crosslink 留待 PR #4081）
+
 ## [2026-11-22] ingest | 实验室路线（docs/lab-roadmaps.json）全量 54 个节点提升至 3/3 健康度：完成 ETH RSL / OpenDriveLab / RAI Institute / LeCAR Lab / TeleAI 共 19 个缺项节点的一手原文与开源入口通读核对、阅读骨架与 Mermaid 图表补齐
 
 ## [2026-11-22] ingest | sources/repos/cyberbeast-robot-mc.md — CyberBeast 关节电机全软件栈（5 项目 + 总览）
