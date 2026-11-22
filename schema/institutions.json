@@ -4476,7 +4476,7 @@
       ]
     },
     "humancalib": {
-      "label": "HumanCalib 开源项目（HumanCalib Project）",
+      "label": "人体多相机标定开源项目（HumanCalib Project）",
       "aliases": [
         "humancalib"
       ]
