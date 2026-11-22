@@ -3,7 +3,7 @@
 type: overview
 tags: [hardware, firmware, motor-drive, fieldbus, can-bus, canopen, ethercat, embedded, robotics, mit]
 status: complete
-updated: 2026-08-12
+updated: 2026-11-22
 related:
   - ../concepts/joint-module-electromagnetic-isolation.md
   - ../concepts/can-bus-protocol.md
@@ -210,6 +210,7 @@ flowchart TD
 - 轴数、周期阈值（如 ≥20 轴 / <1 ms）为选型经验，属推断，应以实测为准。
 
 ## 关联页面
+- [CyberBeast 关节软件栈分层实战](cyberbeast-joint-software-stack.md)
 - [关节模组电磁隔离](../concepts/joint-module-electromagnetic-isolation.md)
 
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
