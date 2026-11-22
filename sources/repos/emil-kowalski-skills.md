@@ -9,6 +9,9 @@
 - **主页 / 分发：** https://aiforui.dev/skills · `npx skills@latest add emilkowalski/skills`
 - **代码：** MIT；本次核查的仓库 HEAD 为 [e8a175d](https://github.com/emilkowalski/skills/commit/e8a175de22ae1e49370fc144c1f3bb9aeedf988d)（2026-10-02）
 - **入库日期：** 2026-10-09
+- **复核日期：** 2026-11-22
+- **核对范围：** 官方 README 技能目录，以及 `skills/emil-design-eng/SKILL.md` 的动画决策、时长、曲线和审查说明；未执行页面动画。
+- **通读：** 已完成
 - **一句话说明：** 面向设计与前端工程的 Agent Skills 集合，把动效、界面设计、原型、多端适配、Swift 和 UI 压力测试经验写成可按需安装的 `SKILL.md`。
 - **为什么值得保留：** 它将作者的设计工程判断转为可在 coding agent 中复用的工作规约，覆盖「设计—实现—审查—反例验证」；适合与通用 frontend-design、工程技能集对照，而不是当作 UI 组件库或自动设计器。
 - **沉淀到 wiki：** 是 → [Emil Kowalski Skills](../../wiki/entities/emil-kowalski-skills.md)
@@ -31,3 +34,8 @@
 - [上游 MIT License](https://github.com/emilkowalski/skills/blob/e8a175de22ae1e49370fc144c1f3bb9aeedf988d/LICENSE)
 - [作者技能介绍页](https://aiforui.dev/skills)
 - [上游提交 e8a175d](https://github.com/emilkowalski/skills/commit/e8a175de22ae1e49370fc144c1f3bb9aeedf988d)
+
+## 2026-11-22 增量核对
+
+- README 现增列 `remove-animations`、`choreograph`、`animation-performance`、`gestures`、`learn-taste`、`ask-emil` 等模块；2026-10-02 的 14 项是旧快照。
+- 核心技能建议先判断动画是否有必要，高频快捷键倾向无动画、进入用 ease-out，再讨论微交互；属于设计工程方法而非自动化验收通过证据。
