@@ -51,6 +51,10 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 - **「Universal」有边界**：通用控制在分布外地形、外骨骼负载或新硬件上仍需 **再训练或对齐模块**（参见 ASAP 等论文主张，以原文为准）。
 - **in submission / workshop 标注**：主页出版物区部分条目状态会更新，引用前请核对 **最新会议或 arXiv 版本**。
 
+## 2026-11-18 GRASP 演讲：从运动追踪到 WAM
+
+演讲原始活动信息及一手材料核对见 [SONIC × GR00T 2 Turbo 双层闭环编译](../queries/sonic-gr00t2-wam-humanoid-dual-brain.md)。本文把 SONIC 的全身跟踪、GRAIL 的合成操作数据与 GR00T 2 Turbo 的板载 WAM 连接起来，区分经白皮书验证的指标和中文转述中的研究观点。
+
 ## 关联页面
 
 - [Jim Fan（范林熹）](./jim-fan.md)
