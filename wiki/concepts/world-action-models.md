@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-14
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
+  - ../entities/paper-ar-wam.md
   - ../entities/paper-mawam-coordinated-manipulation.md
   - ../entities/paper-self-evolving-wam-futuring.md
   - ../entities/paper-forcewam.md
@@ -323,6 +324,9 @@ flowchart TB
 ```
 
 ## 实例库（按「未来预测拿来干什么」分组）
+
+- [AR-WAM（视觉框 + 原子动作 token）](../entities/paper-ar-wam.md) — 将 Agent 的目标空间接地与原子技能作为低层条件，冻结 DINOv3/共享 Transformer 联合预测 action chunk 与视觉、语义潜前瞻；RoboTwin 2.0 clean/random 87.2%/84.2%，真机 71.7%，外部 Agent 负责长程记忆及失败重定位。与语言条件 VLA 对照时，须看同数据消融（文本 74.2% vs 视觉框 87.2%）。
+
 
 以下 36 条实例横跨 Cascaded / Joint 两族，但绝大多数是 Joint，按架构分组读起来重复度很高。这里改按上文 RCL 强调的 **control utility** 视角编排：**未来预测最终被拿去做什么**。分组是本页的阅读编排，不是综述原文的 taxonomy；每条的架构归属以其自身标注为准。
 
