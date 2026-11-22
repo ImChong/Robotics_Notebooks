@@ -3552,14 +3552,18 @@
           else hideTooltip();
         },
         onPointerMove: (ev) => {
-          if (!is3DView() || timelineAnimating || isMobile) return;
+          if (!is3DView() || timelineAnimating || isTouchInteraction(ev) || pinnedNode) return;
           if (!graph3dHoverNode) return;
           if (sidebarFocusIds) {
-            if (sidebarFocusIds.has(graph3dHoverNode.id)) showTooltip(ev, graph3dHoverNode);
+            if (sidebarFocusIds.has(graph3dHoverNode.id)) {
+              if (tooltipNode === graph3dHoverNode && !tooltip.classList.contains('tt-pinned')) moveTooltip(ev);
+              else showTooltip(ev, graph3dHoverNode);
+            }
             return;
           }
           if (hasActiveGraphFilter() && !visibleNodeIds.has(graph3dHoverNode.id)) return;
-          showTooltip(ev, graph3dHoverNode);
+          if (tooltipNode === graph3dHoverNode && !tooltip.classList.contains('tt-pinned')) moveTooltip(ev);
+          else showTooltip(ev, graph3dHoverNode);
         },
         onBackgroundClick: () => {
           graph3dHoverNode = null;
@@ -4156,7 +4160,7 @@
         .then(list => {
           if (!Array.isArray(list) || list.length !== nodes.length) return false;
           for (let i = 0; i < nodes.length; i++) nodes[i]._info.summary = list[i] || '';
-          if (tooltipNode && !tooltip.classList.contains('hidden')) refreshTooltipContent();
+          if (tooltipNode) refreshTooltipContent();
           if (sidebarNode) renderSidebarSummary(sidebarNode);
           return true;
         })
@@ -5999,51 +6003,84 @@
     let tooltipMoveRaf = 0;
     let tooltipPendingX = 0;
     let tooltipPendingY = 0;
+    let tooltipHasCoords = false;
     function refreshTooltipContent() {
       tooltipW = 0;
       tooltipH = 0;
       tooltip.innerHTML = tooltipHtml(tooltipNode);
       window.RNGraphTooltip?.renderMath?.(tooltip);
+      if (tooltipNode && !tooltip.classList.contains('hidden') && !tooltip.classList.contains('tt-pinned') && tooltipHasCoords) {
+        applyTooltipPosition(tooltipPendingX, tooltipPendingY);
+      }
     }
     function applyTooltipPosition(cx, cy) {
-      if (!tooltipNode || tooltip.classList.contains('hidden') || tooltip.classList.contains('tt-pinned')) return;
+      if (!tooltipNode || tooltip.classList.contains('tt-pinned')) return;
+      if (!Number.isFinite(cx) || !Number.isFinite(cy)) return;
       const x = cx + 14;
       const y = cy - 10;
       if (!tooltipW || !tooltipH) {
         tooltipW = tooltip.offsetWidth;
         tooltipH = tooltip.offsetHeight;
       }
-      tooltip.style.left = (x + tooltipW > window.innerWidth - 20 ? x - tooltipW - 28 : x) + 'px';
-      tooltip.style.top = (y + tooltipH > window.innerHeight - 20 ? y - tooltipH : y) + 'px';
+      const left = Math.max(12, (x + tooltipW > window.innerWidth - 20 ? x - tooltipW - 28 : x));
+      const top = Math.max(12, (y + tooltipH > window.innerHeight - 20 ? y - tooltipH : y));
+      tooltip.style.right = '';
+      tooltip.style.bottom = '';
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
       tooltip.style.transform = '';
+      tooltip.classList.remove('hidden');
     }
     function showTooltip(ev, d, pinned) {
       if (!d) return;
+      const shouldPin = Boolean(pinned || isTouchInteraction(ev));
+      if (!shouldPin) {
+        const hasEventCoords = Boolean(ev && Number.isFinite(ev.clientX) && Number.isFinite(ev.clientY));
+        if (!hasEventCoords && !tooltipHasCoords) return;
+        // 同一节点持续悬停 / 移动时不重绘并保留坐标，防止 3D 地形/立体每次指针移动都闪回左上角
+        if (tooltipNode === d && !tooltip.classList.contains('tt-pinned')) {
+          if (hasEventCoords) moveTooltip(ev);
+          return;
+        }
+      }
+      const needsPositionBeforeReveal = tooltip.classList.contains('hidden') || tooltip.classList.contains('tt-pinned') || !tooltip.style.left || !tooltip.style.top;
       tooltipNode = d;
       ensureSummaries();
-      refreshTooltipContent();
-      tooltip.classList.remove('hidden');
-      // 清理可能残留的 left/top/width，确保重新计算尺寸
-      tooltip.style.left = '';
-      tooltip.style.top = '';
-      tooltip.style.width = '';
-      tooltip.style.transform = '';
-      if (pinned || isTouchInteraction(ev)) {
+      if (shouldPin) {
         if (tooltipMoveRaf) { cancelAnimationFrame(tooltipMoveRaf); tooltipMoveRaf = 0; }
+        tooltipHasCoords = false;
+        refreshTooltipContent();
         tooltip.classList.add('tt-pinned');
+        tooltip.style.left = '';
+        tooltip.style.top = '';
+        tooltip.style.width = '';
+        tooltip.style.transform = '';
         tooltip.style.right = '20px';
         tooltip.style.bottom = 'calc(84px + env(safe-area-inset-bottom, 0px))';
         pinnedNode = d;
+        tooltip.classList.remove('hidden');
       } else {
         tooltip.classList.remove('tt-pinned');
-        moveTooltip(ev);
+        tooltip.style.right = '';
+        tooltip.style.bottom = '';
+        tooltip.style.width = '';
+        tooltip.style.transform = '';
+        // 首次显示或刚从固定态切回悬停态时保持 hidden，等 rAF 写入 left/top 后再显示，避免在 (0, 0) 闪现
+        if (needsPositionBeforeReveal) tooltip.classList.add('hidden');
+        refreshTooltipContent();
+        if (ev && Number.isFinite(ev.clientX) && Number.isFinite(ev.clientY)) {
+          moveTooltip(ev);
+        } else if (tooltipHasCoords) {
+          applyTooltipPosition(tooltipPendingX, tooltipPendingY);
+        }
       }
     }
 
     function moveTooltip(ev) {
-      if (!ev || ev.clientX == null || ev.clientY == null) return;
+      if (!ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return;
       tooltipPendingX = ev.clientX;
       tooltipPendingY = ev.clientY;
+      tooltipHasCoords = true;
       if (tooltipMoveRaf) return;
       // rAF 合并定位，避免 mouseover 刚写完节点 class 后立即同步读 offsetWidth 触发 28k SVG 全树重排
       tooltipMoveRaf = requestAnimationFrame(() => {
@@ -6056,6 +6093,7 @@
       tooltipNode = null;
       tooltipW = 0;
       tooltipH = 0;
+      tooltipHasCoords = false;
       if (tooltipMoveRaf) { cancelAnimationFrame(tooltipMoveRaf); tooltipMoveRaf = 0; }
       tooltip.classList.add('hidden');
       tooltip.classList.remove('tt-pinned');

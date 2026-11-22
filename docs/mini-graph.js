@@ -16,6 +16,7 @@
     lastPointerWasTouch = true;
   }, { capture: true, passive: true });
   var pinnedNode = null;
+  var tooltipNode = null;
 
   function escapeHtml(s) {
     return String(s)
@@ -77,8 +78,31 @@
     return '';
   }
 
+  function applyTooltipPosition(ev) {
+    if (!tooltip || !ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return false;
+    var x = ev.clientX + 14;
+    var y = ev.clientY - 10;
+    var tw = tooltip.offsetWidth;
+    var th = tooltip.offsetHeight;
+    tooltip.style.left = Math.max(12, (x + tw > window.innerWidth - 20 ? x - tw - 28 : x)) + 'px';
+    tooltip.style.top = Math.max(12, (y + th > window.innerHeight - 20 ? y - th : y)) + 'px';
+    tooltip.style.transform = '';
+    return true;
+  }
+
   function showTooltip(ev, d, nodeFill, communityLabelMap, pinned) {
-    if (!tooltip) return;
+    if (!tooltip || !d) return;
+    var shouldPin = Boolean(pinned || isMobile);
+    var dockCorner = isMobile || window.innerWidth <= 768 || !ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY);
+    if (!shouldPin) {
+      if (!ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return;
+      // 3D 地形每次鼠标微移都会回调 onNodeHover：同一节点仅更新坐标，不重绘 DOM / KaTeX
+      if (tooltipNode === d && !tooltip.classList.contains('hidden') && !tooltip.classList.contains('tt-pinned')) {
+        moveTooltip(ev);
+        return;
+      }
+    }
+    tooltipNode = d;
     tooltip.innerHTML = tooltipHtml(d, nodeFill, communityLabelMap);
     if (window.RNGraphTooltip && window.RNGraphTooltip.renderMath) {
       window.RNGraphTooltip.renderMath(tooltip);
@@ -86,8 +110,6 @@
     tooltip.setAttribute('aria-hidden', 'false');
     tooltip.style.width = '';
     tooltip.style.transform = '';
-    var shouldPin = Boolean(pinned || isMobile);
-    var dockCorner = isMobile || window.innerWidth <= 768 || !ev || ev.clientX == null || ev.clientY == null;
     if (shouldPin) {
       tooltip.classList.add('tt-pinned');
       pinnedNode = d;
@@ -100,31 +122,24 @@
       } else {
         tooltip.style.right = '';
         tooltip.style.bottom = '';
-        tooltip.classList.remove('hidden');
-        moveTooltip(ev);
+        if (applyTooltipPosition(ev)) tooltip.classList.remove('hidden');
       }
     } else {
       tooltip.classList.remove('tt-pinned');
       tooltip.style.right = '';
       tooltip.style.bottom = '';
-      tooltip.classList.remove('hidden');
-      moveTooltip(ev);
+      // 先完成定位再移除 hidden，避免在定位前闪现到其他位置
+      if (applyTooltipPosition(ev)) tooltip.classList.remove('hidden');
     }
   }
 
   function moveTooltip(ev) {
     if (!tooltip || tooltip.classList.contains('hidden')) return;
-    if (!ev || ev.clientX == null || ev.clientY == null) return;
-    var x = ev.clientX + 14;
-    var y = ev.clientY - 10;
-    var tw = tooltip.offsetWidth;
-    var th = tooltip.offsetHeight;
-    tooltip.style.left = Math.max(12, (x + tw > window.innerWidth - 20 ? x - tw - 28 : x)) + 'px';
-    tooltip.style.top = Math.max(12, (y + th > window.innerHeight - 20 ? y - th : y)) + 'px';
-    tooltip.style.transform = '';
+    applyTooltipPosition(ev);
   }
 
   function hideTooltip() {
+    tooltipNode = null;
     if (!tooltip) return;
     tooltip.classList.add('hidden');
     tooltip.classList.remove('tt-pinned');
@@ -490,7 +505,10 @@
       })
       .on('end', function(ev, d) {
         d3.select(this).style('cursor', 'grab');
-        if (d._dragReheated && !ev.active) sim.alphaTarget(0);
+        if (d._dragReheated && !ev.active) {
+          if (sim.alpha() < 0.18) sim.alpha(0.18);
+          sim.alphaTarget(0);
+        }
         d._dragReheated = false;
         d.fx = null;
         d.fy = null;
@@ -824,7 +842,7 @@
           isLabelsVisible: function () { return true; },
           isEdgesVisible: function () { return true; },
           onNodeHover: function (d, ev) {
-            if (isMobile || pinnedNode) return;
+            if (isMobile || lastPointerWasTouch || pinnedNode) return;
             if (d) showTooltip(ev, d, nodeFill, communityLabelMap, false);
             else hideTooltip();
           },

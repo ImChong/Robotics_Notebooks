@@ -2821,7 +2821,7 @@
         batchesDirty = true;
         scheduleRender();
       }
-      onNodeHover(hit || null, ev);
+      if (hit || prevId !== null) onNodeHover(hit || null, ev);
     }
 
     function canDragNodesNow() {
@@ -3027,6 +3027,12 @@
           return;
         }
         if (dragState.mode === 'orbit' && dragState.moved) {
+          if (hoveredNode) {
+            hoveredNode = null;
+            if (stageEl) stageEl.style.cursor = '';
+            batchesDirty = true;
+            onNodeHover(null, ev);
+          }
           var nextYaw = ((params.yaw - dx * 0.38 + 540) % 360) - 180;
           var nextPitch = Math.max(BOUNDS.pitch.min, Math.min(BOUNDS.pitch.max, params.pitch + dy * 0.28));
           params = clampParams({
@@ -3041,6 +3047,12 @@
           return;
         }
         if (dragState.mode === 'pan' && dragState.moved) {
+          if (hoveredNode) {
+            hoveredNode = null;
+            if (stageEl) stageEl.style.cursor = '';
+            batchesDirty = true;
+            onNodeHover(null, ev);
+          }
           panCameraByDelta(dx, dy);
           scheduleRender();
           return;

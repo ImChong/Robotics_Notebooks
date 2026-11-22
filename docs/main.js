@@ -6362,34 +6362,59 @@
 
   function setupGraphHoverTooltip(tooltipEl) {
     var pinnedNode = null;
+    var activeNode = null;
+    var activeHtml = '';
     var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-    function moveTooltip(ev) {
-      if (!tooltipEl || tooltipEl.classList.contains('hidden')) return;
+    function applyPosition(ev) {
+      if (!tooltipEl || !ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return false;
       var x = ev.clientX + 14;
       var y = ev.clientY - 10;
       var tw = tooltipEl.offsetWidth;
       var th = tooltipEl.offsetHeight;
-      tooltipEl.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
-      tooltipEl.style.top = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
+      tooltipEl.style.left = Math.max(12, (x + tw > window.innerWidth - 20 ? x - tw - 28 : x)) + 'px';
+      tooltipEl.style.top = Math.max(12, (y + th > window.innerHeight - 20 ? y - th : y)) + 'px';
       tooltipEl.style.transform = '';
+      return true;
+    }
+
+    function moveTooltip(ev) {
+      if (!tooltipEl || tooltipEl.classList.contains('hidden')) return;
+      applyPosition(ev);
     }
 
     function hideTooltip() {
       pinnedNode = null;
+      activeNode = null;
+      activeHtml = '';
       if (!tooltipEl) return;
       tooltipEl.classList.add('hidden');
+      tooltipEl.classList.remove('tt-pinned');
+      tooltipEl.style.right = '';
+      tooltipEl.style.bottom = '';
       tooltipEl.setAttribute('aria-hidden', 'true');
     }
 
     function showTooltip(ev, d, html, forcePin) {
       if (!tooltipEl) return;
+      var shouldPin = Boolean(isMobile || forcePin);
+      if (!shouldPin) {
+        if (!ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return;
+        // 3D 地形鼠标在同节点内微移时复用已渲染内容，只更新位置
+        if (d != null && activeNode === d && activeHtml === html &&
+            !tooltipEl.classList.contains('hidden') && !tooltipEl.classList.contains('tt-pinned')) {
+          moveTooltip(ev);
+          return;
+        }
+      }
+      activeNode = d;
+      activeHtml = html;
       tooltipEl.innerHTML = html;
       renderDetailMath(tooltipEl);
       tooltipEl.setAttribute('aria-hidden', 'false');
       tooltipEl.style.width = '';
       tooltipEl.style.transform = '';
-      if (isMobile || forcePin) {
+      if (shouldPin) {
         tooltipEl.classList.add('tt-pinned');
         tooltipEl.style.left = '';
         tooltipEl.style.top = '';
@@ -6402,8 +6427,8 @@
         tooltipEl.classList.remove('tt-pinned');
         tooltipEl.style.right = '';
         tooltipEl.style.bottom = '';
-        tooltipEl.classList.remove('hidden');
-        moveTooltip(ev);
+        // 先算完合法 left/top 再去除 hidden，避免在默认位置闪现
+        if (applyPosition(ev)) tooltipEl.classList.remove('hidden');
       }
     }
 
@@ -7232,7 +7257,7 @@
         });
       svg.call(zoom).on('dblclick.zoom', null);
 
-      d3.forceSimulation(nodes)
+      var sim = d3.forceSimulation(nodes)
         .force('link', d3.forceLink(edges).id(function (d) { return d.id; })
           .distance(function (link) {
             // 大邻居使用更短的弹簧；较长的基准间距给标签和拖动留出空间。
@@ -7244,30 +7269,48 @@
           }))
         .force('charge', d3.forceManyBody().strength(-260).distanceMax(320))
         .force('center', d3.forceCenter(W / 2, H / 2).strength(0.12))
+        .force('x', d3.forceX(W / 2).strength(function (d) { return d.isCurrent ? 0.55 : 0.06; }))
+        .force('y', d3.forceY(H / 2).strength(function (d) { return d.isCurrent ? 0.55 : 0.06; }))
         .force('collision', d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
-        .alphaDecay(0.05)
-        .stop().tick(100);
+        .velocityDecay(0.54)
+        .alphaDecay(0.04)
+        .alphaMin(0.005)
+        .stop();
+      sim.tick(100);
       nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
       nodes[0].fx = nodes[0].fy = null;
 
+      var inPerspective = false;
       var line = lineLayer.selectAll('line').data(edges).join('line')
         .style('stroke', 'var(--border-strong)')
         .attr('stroke-width', 1);
 
       var nodeDrag = d3.drag().clickDistance(4)
-        .filter(function (event) { return !event.button && !(event.touches && event.touches.length > 1); })
+        .filter(function (event) { return !inPerspective && !event.button && !(event.touches && event.touches.length > 1); })
         .on('start', function (ev, d) {
+          if (inPerspective) return;
           d._dragStartX = ev.x;
           d._dragStartY = ev.y;
           d._dragMoved = false;
+          d._dragReheated = false;
+          d.fx = d.x;
+          d.fy = d.y;
+          d3.select(this).style('cursor', 'grabbing');
         })
         .on('drag', function (ev, d) {
+          if (inPerspective) return;
           var camera = d3.zoomTransform(svgEl);
-          var threshold = ev.sourceEvent.type === 'touchmove' ? 7 : 4;
+          var srcEv = ev.sourceEvent;
+          var isTouchEv = Boolean(srcEv && (srcEv.type === 'touchmove' || srcEv.pointerType === 'touch'));
+          var threshold = isTouchEv ? 7 : 4;
           if (!d._dragMoved) {
             if (Math.hypot(ev.x - d._dragStartX, ev.y - d._dragStartY) * camera.k < threshold) return;
             d._dragMoved = true;
             clearPreview();
+          }
+          if (!d._dragReheated) {
+            d._dragReheated = true;
+            sim.alphaTarget(0.2).restart();
           }
           var pad = detailMiniNodeRadius(d) * camera.k + 4;
           d.fx = d.x = Math.max(camera.invertX(pad), Math.min(camera.invertX(W - pad), ev.x));
@@ -7276,6 +7319,13 @@
           renderPositions();
         })
         .on('end', function (ev, d) {
+          d3.select(this).style('cursor', null);
+          if (d._dragReheated && !ev.active) {
+            // 保证极短快拖松手后仍有足够 alpha 完成平滑回弹（参考 graph view 2D 阻尼收敛节奏）
+            if (sim.alpha() < 0.3) sim.alpha(0.3);
+            sim.alphaTarget(0);
+          }
+          d._dragReheated = false;
           d.fx = d.fy = null;
         });
 
@@ -7283,7 +7333,10 @@
         .attr('class', function (d) { return d.isCurrent ? 'mini-node-current' : 'mini-node'; })
         .call(nodeDrag)
         .on('click', function (ev, d) {
-          if (ev.defaultPrevented || d._dragMoved) return;
+          if (ev.defaultPrevented || d._dragMoved) {
+            d._dragMoved = false;
+            return;
+          }
           clickNode(d, ev);
         })
         .on('mouseenter', function (ev, d) {
@@ -7329,10 +7382,25 @@
         nodeG.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
       }
 
+      sim.on('tick', function () {
+        if (inPerspective) return;
+        renderPositions();
+      });
+      sim.on('end', function () {
+        if (inPerspective) return;
+        nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+        renderPositions();
+      });
+
       function fitFlatView() {
         W = viewport.clientWidth || W;
         H = viewport.clientHeight || H;
         svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        sim.force('center', d3.forceCenter(W / 2, H / 2).strength(0.12));
+        var fx = sim.force('x');
+        var fy = sim.force('y');
+        if (fx && typeof fx.x === 'function') fx.x(W / 2);
+        if (fy && typeof fy.y === 'function') fy.y(H / 2);
         var x0 = d3.min(nodes, function (d) { return d.x - Math.max(detailMiniNodeRadius(d), 45); });
         var x1 = d3.max(nodes, function (d) { return d.x + Math.max(detailMiniNodeRadius(d), 45); });
         var y0 = d3.min(nodes, function (d) { return d.y - detailMiniNodeRadius(d); });
@@ -7349,7 +7417,6 @@
 
       if (flatButton && perspectiveButton && stage) {
         var wantsPerspective = false;
-        var inPerspective = false;
         function updatePerspectiveState(state) {
           if (inPerspective === state.enabled) return;
           inPerspective = state.enabled;
@@ -7358,6 +7425,8 @@
           perspectiveButton.classList.toggle('is-active', inPerspective);
           perspectiveButton.setAttribute('aria-pressed', String(inPerspective));
           if (inPerspective) {
+            sim.stop();
+            sim.alphaTarget(0);
             setGraphHint('拖动节点 · 拖拽空白处旋转');
           } else {
             nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
