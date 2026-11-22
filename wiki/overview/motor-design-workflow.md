@@ -2,7 +2,7 @@
 type: overview
 tags: [motor, actuator, hardware, humanoid, design, foc, simulation]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 original:
   - ../../sources/sites/simplefoc_documentation.md
   - ../../sources/sites/femm_info.md
@@ -25,6 +25,7 @@ related:
   - ../entities/cadenkraft-ironless-axial-flux-motor.md
   - ../entities/pygeartrain.md
   - ../concepts/joint-module-self-development-workflow.md
+  - ../queries/joint-module-engineer-motor-design-literacy.md
   - ../concepts/halbach-array.md
   - ../entities/paper-halbach-permanent-multipole-magnets.md
 sources:
@@ -34,6 +35,7 @@ sources:
   - ../../sources/sites/femm_info.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
   - ../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md
+  - ../../sources/blogs/wechat_zanehub_joint_module_engineer_motor_design_2026-11-22.md
 summary: "关节电机从指标定义、电磁/热仿真、样机台架到 FOC 驱动验证的标准迭代流程；人形选型需同时满足 TN/TI 曲线与连续散热边界；开源路径挂接 Ironless/PYLEECAN/FEMM；Caden 轴向 Part 1 作 Halbach 手算入门。"
 ---
 
@@ -169,6 +171,12 @@ flowchart TD
 - **样机–仿真闭环标定**：台架实测反电动势 $K_e$（电钻/对拖反拖）、LCR 相电阻与电感以及测功机 TN/TI 曲线，反哺 FEMM/PYLEECAN 槽满率与端部漏磁修正。
 - **CAE / CFD 自动化工具入口**：电磁、结构与热流体分析软件接口可选读 [CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md)（如 [Ansys AEDT MCP](../entities/laplaceyoung-ansys-aedt-mcp.md)、[Mechanical MCP](../entities/codersag-mechanical-mcp.md)、[OpenFOAM Claude Suite](../entities/swtbkim-openfoam-claude-suite.md)）；自动化结果仍须与台架实测对照。
 
+## 关节结构工程师的学习与供应商评审边界
+
+- 需要了解无框电机的定子—壳体接触热阻、气隙同轴度、槽极/齿槽转矩、连续 TN 与质量口径，但不必以独立完成电机量产设计为首个目标。
+- 采购评审前统一供应商的测试电压、安装冷却条件、连续/峰值时长以及裸电机/整机质量；用解析初算、FEMM 与台架记录交叉验证。
+- 关于**分阶段自学、谐波寿命模型及自研/外购/联合定制的六维判据**，见 [关节模组工程师的电机设计学习边界](../queries/joint-module-engineer-motor-design-literacy.md)；文章归档附标准名称与寿命口径的勘误。
+
 ## 常见误区或局限
 
 | 误区 | 实际情况 |
@@ -190,6 +198,7 @@ flowchart TD
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md)
 - [自研关节模组开发流程](../concepts/joint-module-self-development-workflow.md) — 传动构型、五件套、制造与验收全链路
+- [关节模组工程师是否需要学习电机设计？](../queries/joint-module-engineer-motor-design-literacy.md) — 学习深度、规格评审与自研/外购决策
 
 ## 参考来源
 
@@ -200,6 +209,7 @@ flowchart TD
 - [motor_dynamometer_primary_refs.md](../../sources/sites/motor_dynamometer_primary_refs.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
 - [Caden Kraft Axial Flux Part 1](../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md)
+- [Zane Hub：关节模组设计工程师有没有必要自学电机设计？](../../sources/blogs/wechat_zanehub_joint_module_engineer_motor_design_2026-11-22.md)
 - [Modern Robotics Ch. 8.9 Actuators](../../sources/papers/modern_robotics_ch8_actuators.md) — 理想 TN 曲线、连续/间歇区与 $G^2$ 反射惯量
 - [Halbach 1980](../../sources/papers/halbach_permanent_multipole_magnets_1980.md)
 

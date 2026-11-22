@@ -54,6 +54,7 @@ flowchart LR
 
 ### 推荐读什么
 - [电机转矩-转速曲线（TN 曲线）](../wiki/concepts/motor-torque-speed-curve.md)
+- [关节模组工程师的电机设计学习边界](../wiki/queries/joint-module-engineer-motor-design-literacy.md) — 先确定学习目标：规格/热/气隙/寿命/供应商评审，而不是一上来做全套电机研发
 - [电机转矩-电流曲线（TI 曲线）](../wiki/concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) — 先只读"为什么要在 dq 轴看电机"的部分
 - [Humanoid 执行器 102：八章技术地图](../wiki/overview/humanoid-actuator-102-technology-map.md) — 全景扫一遍，知道后面每一站在哪
@@ -102,6 +103,7 @@ flowchart LR
 
 ### 推荐读什么
 - [电机设计流程](../wiki/overview/motor-design-workflow.md) 步骤 2–5（拓扑槽极 → FEA → 热与 CFD → 机械集成）
+- [机械设计师如何自学电机设计并评审供应商](../wiki/queries/joint-module-engineer-motor-design-literacy.md) — FEMM、安装态热与台架验收的最小能力闭环；附谐波寿命口径辨析
 - [电机电磁与多物理场仿真软件选型](../wiki/comparisons/motor-em-simulation-software.md)
 - [开源力矩电机电磁设计完整度对比](../wiki/comparisons/open-source-torque-motor-em-design.md) — Ironless（样机+FEMM）→ FEMM-FOC → PYLEECAN/axfluxmdo 重设计
 - [FEMM](../wiki/entities/femm.md) — 官方文档/示例与开源 2D FEA 底座
