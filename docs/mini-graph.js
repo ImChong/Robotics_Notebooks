@@ -780,12 +780,13 @@
           stageEl: stageEl,
           nodeCount: nodes.length,
           persist: false,
+          usePreviewTerrainHeight: true,
           allowTouchOrbit: true,
           defaultDistance: 1.76,
           defaultParamsByTier: {
-            full: { height: 32, contours: 14, pitch: 34, yaw: -16 },
-            lite: { height: 29, contours: 12, pitch: 32, yaw: -12 },
-            reduced: { height: 28, contours: 12, pitch: 36, yaw: -12 },
+            full: { contours: 14, pitch: 34, yaw: -16 },
+            lite: { contours: 12, pitch: 32, yaw: -12 },
+            reduced: { contours: 12, pitch: 36, yaw: -12 },
           },
           getViewportSize: function () {
             return {

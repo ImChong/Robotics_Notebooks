@@ -12,6 +12,7 @@ const indexHtml = readFileSync(resolve(__dirname, '../docs/index.html'), 'utf8')
 const miniGraphJs = readFileSync(resolve(__dirname, '../docs/mini-graph.js'), 'utf8');
 const swSource = readFileSync(resolve(__dirname, '../docs/sw.js'), 'utf8');
 const readDoc = file => readFileSync(resolve(__dirname, '../docs', file), 'utf8');
+const previewHeightByTier = { full: 32, lite: 29, reduced: 28 };
 
 function button() {
   return {
@@ -576,6 +577,7 @@ test('detail mini-graph loads 3D on demand, retries a failed load and separates 
     communities: [],
   };
   let loads = 0;
+  let controller;
   Object.assign(w, {
     ensureLinkGraphData: async () => graph,
     buildPathToDetailIdIndex: () => ({}),
@@ -586,6 +588,11 @@ test('detail mini-graph loads 3D on demand, retries a failed load and separates 
       loads++;
       if (loads === 1) throw new Error('network offline');
       w.eval(readDoc(url));
+      const createController = w.RNGraphPerspective.createController;
+      w.RNGraphPerspective.createController = options => {
+        controller = createController(options);
+        return controller;
+      };
     },
   });
   for (const file of ['vendor/d3.min.js', 'graph-node-size.js']) w.eval(readDoc(file));
@@ -616,6 +623,7 @@ test('detail mini-graph loads 3D on demand, retries a failed load and separates 
   assert.equal(stage.hidden, false);
   assert.equal(perspective.getAttribute('aria-pressed'), 'true');
   assert.ok(mock.stats.drawCalls > 0);
+  assert.equal(controller.getParams().height, previewHeightByTier[controller.getTier()]);
 
   const [a, b] = neighbors.map(el => el.__data__);
   b.x = a.x;
@@ -712,6 +720,8 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   btn3d.click();
   await new Promise((r) => setTimeout(r, 40));
   assert.equal(w.RNMiniGraph.getMode(), '3d');
+  const previewState = w.RNMiniGraph.getPerspectiveState();
+  assert.equal(previewState.params.height, previewHeightByTier[previewState.tier]);
   assert.equal(wrap.classList.contains('is-perspective-mode'), true);
   assert.equal(stage.hidden, false);
   assert.ok(mock.stats.programsCreated >= 4, 'compiled WebGL terrain/edge/poly/point programs');
@@ -842,7 +852,6 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const ttLink2d = tooltipEl.querySelector('.tt-link');
   assert.ok(ttLink2d && ttLink2d.getAttribute('href').includes('detail.html?id='), '2D floating card contains clickable detail link');
   assert.ok(miniGraphJs.includes('allowTouchOrbit: true'), 'homepage 3D preview enables touch orbit/drag/pinch');
-  assert.ok(miniGraphJs.includes('full: { height: 32,'), 'homepage 3D preview uses lower default peak height (32)');
 
   // Verify sphere clearance above terrain peaks & slopes across both low preview height (32) and Graph View (20..100)
   assert.ok(

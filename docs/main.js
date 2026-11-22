@@ -7373,6 +7373,7 @@
                 stageEl: stage,
                 nodeCount: nodes.length,
                 persist: false,
+                usePreviewTerrainHeight: true,
                 defaultDistance: 2.1,
                 getGraphData: function () {
                   return { nodes: nodes, edges: edges, getNodeColor: nodeFill, sidebarNode: linkedNode || nodes[0] };
