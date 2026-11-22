@@ -28,7 +28,8 @@ Unitree **G1、R1、H1**；Booster **T1**；**Tienkung**；Fourier **GR1-T1、GR
 
 ## 版本边界
 
-- 仓库与项目页当前均为 **base version**：实时 teleop 取向；**不含** floating camera / 大尺度全局轨迹（performance 版待发布）。
+- **本仓库**为 **base version**：实时 teleop 取向，不包含移动相机/大尺度轨迹的 Plus 前端。
+- **2026-11-22 版本更新：** [Plus 独立仓库](../repos/beyondretarget-plus.md) 已开源移动相机与大范围全局轨迹离线生成管线；不能将 Plus 与本仓库的实时遥操作性能等同。
 
 ## 关联 wiki
 
