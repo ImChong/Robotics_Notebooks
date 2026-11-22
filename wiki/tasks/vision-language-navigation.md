@@ -19,6 +19,7 @@ related:
   - ../entities/esi-bench.md
   - ../entities/insight-bench.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
+  - ../entities/paper-vln-ar-aerial-navigation.md
   - ../entities/paper-uni-lavira.md
   - ../entities/paper-humembr.md
   - ../entities/paper-mind-palace-laeqa.md
@@ -63,6 +64,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/repos/sceneverse-pp.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
+  - ../../sources/papers/vln_ar_arxiv_2611_23930.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/papers/humembr_arxiv_2606_30404.md
   - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
@@ -105,6 +107,8 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 | Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 为什么重要？
+
+- **机载空中 VLN 的异步分层：** [VLN-AR（arXiv:2611.23930）](../entities/paper-vln-ar-aerial-navigation.md) 以 2 Hz 多模态语义决策给 >200 Hz 免训练轨迹专家提供 3D 目标，结合 3DGS 数据、GRPO 与任务记忆；真实 UAV 91/101 次成功。对比 [WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 的自回归世界–动作方案，注意论文的 7.1–9.4 倍指机载 token 解码加速，并非整机导航速度；官方源码未开放。
 
 - **户外交通情境导航对照：** [MOSU2](../entities/paper-mosu2.md) 保留 GPS 全局子目标与 LiDAR + SAM3 可通行轨迹筛选，复杂交互时再查询车辆/行人位置、速度来决定礼让、停走。它不是以自然语言指令为目标的 VLN benchmark，而是 VLM 场景理解与几何运动闭环的工程对照。
 
