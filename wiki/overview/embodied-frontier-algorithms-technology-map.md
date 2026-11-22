@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, wam, locomotion, manipulation, planning, technology-map]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 related:
   - ../entities/paper-vla-adapter.md
   - ../entities/paper-fast-wam.md

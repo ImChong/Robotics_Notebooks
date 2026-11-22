@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, shanghai-pil, pku, tsinghua, galbot]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2509.13833"
 venue: "2025 · arXiv"
 code: https://github.com/GalaxyGeneralRobotics/OpenTrack
@@ -149,6 +149,15 @@ sequenceDiagram
 - **仿真基准（Table IV，AMASS-test + LAFAN1 无扰动）：** AnyTracker SR **89.23%**、MPJPE **27.96 mm**、MPJVE **6.43 mm/frame**；优于 Exbody2（79.68% / 34.70 / 13.69）与 OmniH2O（75.64% / 36.12 / 12.24）。消融显示去 CAS 降至 84.92%，去蒸馏降至 83.32%。
 - **在线扰动适应（Table V，LAFAN1）：** 无扰动 SR **89.8%**、地形 **83.2%**、外力 **59.0%**、物理属性变化 **80.6%**；全面超过 PPO+DR、RMA Stage 1/2、DWL、Dual History。消融去 Adapter 跌至 82.4%/57.6%（地形/外力），去 World Model 跌至 49.8%/70.4%（外力/物理变化）。
 - **Unitree G1 真机（Table VI，5 轨迹均值）：** 无扰动 MPJPE **17.38 mm**（vs PPO 29.38 mm）、复杂地形 **18.34 mm**（vs 37.21 mm）、外力牵拉 **19.17 mm**（vs 39.84 mm）、5 kg 负重 **23.24 mm**（vs 37.52 mm）。
+
+## 与其他工作对比
+
+| 评测维度 / 对照对象 | Any2Track (OpenTrack) 表现 | 论文基线 / 同族方法对比 |
+|------|------|------|
+| **无扰动通用跟踪（Table IV，AMASS-test + LAFAN1）** | AnyTracker SR **89.23%**、MPJPE **27.96 mm**、MPJVE **6.43 mm/frame** | 显著优于复现的 **Exbody2**（`79.68%` / `34.70 mm` / `13.69 mm/frame`）与 **OmniH2O**（`75.64%` / `36.12 mm` / `12.24 mm/frame`） |
+| **在线扰动适应（Table V，LAFAN1）** | 无扰动 **89.8%** / 地形 **83.2%** / 外力 **59.0%** / 物理变化 **80.6%** | 全面超过 **PPO+DR**（`87.4% / 73.0% / 50.0% / 73.6%`）、**RMA Stage 1/2**、**DWL** 与 **Dual History**；解耦两阶段避免直接加 DR 导致的保守退化 |
+| **真机抗扰（Table VI，Unitree G1 5 轨迹）** | 无扰动 **17.38 mm** / 复杂地形 **18.34 mm** / 外力牵拉 **19.17 mm** / 5 kg 负重 **23.24 mm** | 较带域随机化的 **PPO+DR** 基线（`29.38 / 37.21 / 39.84 / 37.52 mm`）误差降低约 38%–52% |
+| **方法架构定位（与 RGMT / [Extreme-RGMT](./paper-extreme-rgmt.md) 对照）** | 冻结 AnyTracker 主干 + $H=79$ 步历史编码器与 $N=20$ 步世界模型预测辅助，微调零初始化逐层 AnyAdapter | 同族 [any2track](../methods/any2track.md) 页将本文与 RGMT 归为自适应与时序建模两条补充路径；Extreme-RGMT 侧重 PACE/STAR 高动态持续学习，Any2Track 主打动力学扰动下的鲁棒跟踪且已开源全链代码与权重 |
 
 ## 工程实践
 

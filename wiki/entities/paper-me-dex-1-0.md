@@ -10,7 +10,7 @@ tags:
   - li-auto
   - open-source
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2609.21449"
 code: https://github.com/MachEmbodied/ME-Dex-1.0
 original:
@@ -60,7 +60,7 @@ summary: "ME-Dex 1.0（arXiv:2609.21449，理想汽车 Foundation Model）：三
 - **范式推进：** 相对「VLA/WAM + 当前触觉条件」（Figure 1a–b），ME-Dex 1.0 把 **future tactile** 与 **future video** 并列作为预测目标（Figure 1c），动作生成可读取两种未来动力学表示。
 - **跨具身触觉：** Canonical Hand Model + Unified Tactile AE 解决 **Representation Gap**——多手型/夹爪/传感布局映射到共享空间后再联合训练。
 - **数据引擎：** Agentic Tactile Data Engine 在 RoboTwin / DexJoCo 轨迹回放时从仿真力传感器录触觉，缓解 **Data Gap**（原生 benchmark 无触觉）。
-- **工程触点：** RoboTwin Clean→Random **78.9% avg**（论文 Table 1 口径），最新开源 VAE 变体更达 **82.5% avg**；**推理 runtime、Clean50 触觉训练脚本与 HF 数据集/权重现均已开源**。
+- **工程触点：** RoboTwin Clean→Random **78.9% avg**（论文 Table 1 口径），2026-10 开源 VAE 变体（`main@a2db63b`）更达 **82.5% avg**；**推理 runtime、Clean50 触觉训练脚本与 HF 数据集/权重现均已开源**。
 
 ## 核心信息
 

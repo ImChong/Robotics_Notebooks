@@ -14,11 +14,15 @@ tags:
   - tsinghua
   - shanghai-pil
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
+project_id: heft
 arxiv: "2607.02332"
 original: ../../sources/papers/heft_arxiv_2607_02332.md
 venue: "arXiv"
+project: https://heft.axell.top/
 code: https://github.com/Axellwppr/motion_tracking
+code_scope: "论文 arXiv:2607.02332 方法与实验对应全栈实现（main 训练管线与 sim2real 真机部署/checkpoint 分支）"
+project_distinction: "HEFT 论文实体（arXiv:2607.02332，聚焦 PMG/WPC 算法、L7 24 kg 真机重载评测与基线对比）；仓库工程代码模块结构与脚本调用链见 axellwppr-motion-tracking。"
 summary: "HEFT：PMG 从嘈杂 VR 跟踪人类意图 + WPC 窗化双手负载课程，在 G1 与全尺寸 L7（175 cm/65 kg）上实现 24 kg 级重载全身遥操作与高动态跟踪；训练/检查点开源。"
 related:
   - ./egalahad-sim2real.md

@@ -6,7 +6,7 @@ tags:
 - world-action-model
 - vla
 status: complete
-updated: '2026-11-21'
+updated: '2026-11-22'
 original:
 - ../../sources/papers/lingbot_va_arxiv_2601_21998.md
 - ../../sources/repos/lingbot-va.md
@@ -71,7 +71,7 @@ flowchart TD
 
 ## 核心原理
 
-**因果交错建模 → 动作解码 → 执行 → 真实观测替换视频缓存 → 下一轮推理**。根据 [arXiv:2601.21998v2](https://arxiv.org/html/2601.21998v2)（§3–§4）：模型由 Wan2.2-5B 视频流（`d_v=3072`、30 层）与非对称 350M 动作流（`d_a=768`）构成 **5.3B** 双流 MoT，借助 Wan2.2 因果 VAE（`4×16×16` + `2×` patchify，每帧 192 token）与时间稀疏化（`τ=4`）形成交错序列；训练使用 **Noisy History Augmentation**（`p=0.5`, `s_aug ∈ [0.5, 1.0]`）使推理时视频仅需部分去噪（如 3 Euler 步至 `s=0.6`）即可解码动作，异步执行端引入 **FDM-grounded** 前向预测将最新真实观测重新锚定到 KV cache，避免长程漂移。预训练汇聚约 16K 小时多本体数据并统一为 30 维双臂动作空间 `(7 EEF + 7 joints + 1 gripper) × 2`。
+**因果交错建模 → 动作解码 → 执行 → 真实观测替换视频缓存 → 下一轮推理**。根据 [arXiv:2601.21998v2](https://arxiv.org/html/2601.21998v2)（§3–§4）：模型由 Wan2.2-5B 视频流（`d_v=3072`、30 层）与非对称 350M 动作流（`d_a=768`）构成 **5.3B** 双流 MoT，借助 Wan2.2 因果 VAE（`4×16×16` + `2×` patchify，每帧 192 token）与时间稀疏化（`τ=4`）形成交错序列；训练使用 **Noisy History Augmentation**（`p=0.5`, `s_aug ∈ [0.5, 1.0]`）使推理时视频仅需部分去噪（如 3 Euler 步至 `s=0.6`）即可解码动作，异步执行端引入 **FDM-grounded** 前向预测将新采样的真实观测重新锚定到 KV cache，避免长程漂移。预训练汇聚约 16K 小时多本体数据并统一为 30 维双臂动作空间 `(7 EEF + 7 joints + 1 gripper) × 2`。
 
 公开仓目前提供 **shared backbone** 的基座与 RoboTwin / LIBERO-Long 后训练权重；分离双流版本不能仅凭论文描述认定已经发布。VA 2.0 的 semantic visual-action tokenizer、因果 DiT 与 MoE 另见[公司家族页](./robbyant.md)。
 

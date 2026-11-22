@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: gr00t-n1-5
 tags:
   - paper
   - vla
@@ -9,8 +10,11 @@ tags:
   - diffusion-policy
   - open-source
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
+project: https://research.nvidia.com/labs/gear/gr00t-n1_5/
 code: https://github.com/NVIDIA/Isaac-GR00T
+code_scope: "Isaac-GR00T 中的 n1d5 分支与 GR00T-N1.5-3B 检查点（冻结 Eagle 2.5 VLM + FLARE 未来表征对齐，non-commercial 许可）"
+project_distinction: "GR00T N1.5 独立版本实体（2025-06 GEAR 发布，无独立 arXiv）；与 N1 原论文（paper-hrl-stack-34-gr00t-n1，arXiv:2503.14734）及 N1.7 GA 版本（paper-gr00t-n1-7）在 VLM 骨干、FLARE 目标与许可上均不同。"
 related:
   - ./paper-hrl-stack-34-gr00t-n1.md
   - ./isaac-gr00t.md

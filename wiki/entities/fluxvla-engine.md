@@ -16,7 +16,7 @@ tags:
   - manipulation
   - humanoid
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2609.17210"
 code: https://github.com/FluxVLA/FluxVLA
 original:
@@ -208,9 +208,12 @@ sequenceDiagram
 
 ## 局限与风险
 
+- **局限：** 策略族迭代快，README News 快于 arXiv v1/v2 正文；论文 §5.8 明确指出当前尚未完成全模型同预算对照、注入延迟下的 RTC 消融以及多机统一协议基准。
+
+## 常见误区
+
 - **误区：「支持列表 = LimX 官方维护全部上游权重」。** License 与 checkpoint 仍遵循 OpenPI、NVIDIA 等；平台提供 **接口与发布权重链接**。
 - **误区：「装了 FluxVLA = 论文算法已 SOTA」。** 平台论文主张 **工程可复现**；各 backbone 数字是 **在统一栈上的对照**，不是单一模型 claim。
-- **局限：** 策略族迭代快，README News 快于 arXiv v1/v2 正文；论文 §5.8 明确指出当前尚未完成全模型同预算对照、注入延迟下的 RTC 消融以及多机统一协议基准。
 
 ## 关联页面
 

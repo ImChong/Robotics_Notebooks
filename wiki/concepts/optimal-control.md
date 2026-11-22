@@ -2,7 +2,7 @@
 type: concept
 summary: "Optimal Control 研究如何在动力学约束下最优地生成控制序列，是 MPC、trajectory optimization 和 RL 的共同上游。"
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 original:
   - ../../sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md
   - ../../sources/sites/mit_underactuated_ch8_lqr_reading.md

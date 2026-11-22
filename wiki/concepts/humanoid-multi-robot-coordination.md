@@ -9,7 +9,7 @@ tags:
   - decentralized-control
   - marl
 status: complete
-updated: 2026-11-13
+updated: 2026-11-22
 original:
   - ../../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md
   - ../../sources/papers/be-my-eye-arxiv-2611-12295.md

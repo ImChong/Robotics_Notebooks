@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 related:
   - ../overview/modern-robotics-wechat-principles-series.md
   - ./homogeneous-coordinates-transform.md

@@ -2,7 +2,7 @@
 type: concept
 tags: [actuator, simulation, sim2real, control, rl, nvidia]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 related:
   - ./sim2real.md
   - ./torque-source-abstraction-gap.md

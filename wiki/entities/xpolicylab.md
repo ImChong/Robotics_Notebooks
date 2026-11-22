@@ -1,10 +1,14 @@
 ---
 type: entity
+project_id: xpolicylab
 tags: [vla, policy, evaluation, serving, open-source, infrastructure, robodojo, benchmark, hku, tsinghua, paper]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2608.09892"
+project: https://xpolicylab.github.io/
 code: https://github.com/XPolicyLab/XPolicyLab
+code_scope: "XPolicyLab 平台核心框架（XPolicyLab.py、client_server/ WebSocket 契约、scripts/create_policy.sh 与评测接线基础设施）"
+project_distinction: "XPolicyLab 统一策略 serving 与评测适配框架论文及开源平台实体（arXiv:2608.09892）；仓内 policy/CloudRobo_WM 仅为华为云世界动作模型 CloudRobo-WM 的 RoboTwin 适配器（独立实体见 cloudrobo-wm）。"
 original:
   - ../../sources/papers/xpolicylab_arxiv_2608_09892.md
   - ../../sources/repos/xpolicylab.md

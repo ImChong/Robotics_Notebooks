@@ -1,12 +1,15 @@
 ---
 
 type: entity
+project_id: gr00t-n1
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
+code_scope: "Isaac-GR00T N1 初代发布基线（GR00T-N1-2B，Eagle-2 VLM + DiT flow-matching 双系统，对应白皮书 arXiv:2503.14734）"
+project_distinction: "GR00T N1 论文 canonical 实体（arXiv:2503.14734）；与同仓后续演进的 GR00T N1.5（paper-gr00t-n1-5，无独立 arXiv）及 GR00T N1.7（paper-gr00t-n1-7，main GA 版本）为不同模型版本。"
 summary: "GR00T N1（arXiv:2503.14734）是 NVIDIA 开源的人形通才 VLA：Eagle-2 VLM（System 2）+ DiT flow-matching 动作头（System 1），以数据金字塔联合真机/仿真/人类视频预训练；GR00T-N1-2B 在 GR-1 真机双臂操作达 76.8% 平均成功率且 10% 数据仍 42.6%。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2605.00078"
 venue: "2026"
 summary: "Being-H0.7 trains a robot policy to anticipate useful future information inside latent queries. A future-aware training branch aligns its hidden states with a deployable branch that sees only current context, avoiding vi"
@@ -79,9 +79,9 @@ Being-H0.7 trains a robot policy to anticipate useful future information inside 
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2605.00078) 为准。
-- 横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 同分组条目。
+- **六项仿真基准（来源归档全文核对）：** LIBERO **99.2%**、LIBERO-plus 零样本 **82.1%** / 微调 **84.8%**、RoboCasa-50 **62.1%**、GR1 **49.2%**、CALVIN **4.67 / 4.48**、RoboTwin 2.0 **90.2 / 89.6**；三真机平台（PND Adam-U / Unitree G1+AMO / Franka FR3，配 Linkerbot O6）12 项盲测全面领先 $\pi_{0.5}$ / Being-H0.5 / Fast-WAM，配合客户端 **UAC** 达成 **3–4 ms/step** 在线步长控制延迟。
+- **开源状态：** 官方仓库 [BeingBeyond/Being-H](https://github.com/BeingBeyond/Being-H)（`Being-H07/README.md` @ `27ec67b`）截至 2026-11-21 仅含说明文档，未释出 H0.7 源码与权重。
+- 评测口径与具体细节以 [原文 / 研究页](https://arxiv.org/abs/2605.00078) 与 [完整来源归档](../../sources/papers/being_h07.md) 为准。
 
 ## 与其他工作对比
 
@@ -115,7 +115,8 @@ Being-H0.7 trains a robot policy to anticipate useful future information inside 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.00078>
-- [arXiv PDF](https://arxiv.org/pdf/2605.00078)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1-3.3）、§4.1 训练细节
+- [`sources/papers/being_h07.md`](../../sources/papers/being_h07.md) — `arXiv:2605.00078v1` 全文核对（双分支 MoT、Frobenius 对齐与范数/谱熵正则、6 项仿真/12 项真机盲测与 UAC 延迟）
+- [arXiv PDF](https://arxiv.org/pdf/2605.00078)：已通读 §1–§5 全文与研究页 `being-h07`（方法细节、实验数字与代码仓状态）
 
 ## 推荐继续阅读
 

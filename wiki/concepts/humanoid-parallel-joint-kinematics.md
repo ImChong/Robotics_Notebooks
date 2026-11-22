@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, kinematics, closed-chain, parallel-mechanism, ankle, simulation]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 related:
   - ../entities/asimov-v1.md
   - ../entities/humanoid-robot.md

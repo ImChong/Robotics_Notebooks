@@ -6,18 +6,20 @@ project: https://psi-lab.ai/Psi0/
 code: https://github.com/physical-superintelligence-lab/Psi0
 tags: [paper, vla, humanoid, loco-manipulation, whole-body-control, flow-matching, multimodal, usc]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-09-vla-world-models.md
   - ../tasks/loco-manipulation.md
   - ../methods/vla.md
   - ../comparisons/vla-open-source-ecosystem-2026-three-shifts.md
+  - ./paper-loco-manip-161-075-simple.md
 original:
   - ../../sources/papers/psi0_arxiv_2603_12263_full_reading.md
 sources:
   - ../../sources/papers/psi0_arxiv_2603_12263_full_reading.md
   - ../../sources/papers/loco_manip_161_survey_156_psi0.md
+  - ../../sources/papers/simple_arxiv_2606_08278.md
 summary: "Ψ₀（arXiv:2603.12263，USC PSI Lab 主导）通过人类第一视角视频预训练视觉语义、少量人形真机轨迹训练 flow 动作专家、目标任务微调，结合下层 RL 动作跟踪及 RTC 处理 G1 移动操作；官方权重、训练、SIMPLE 与实机部署入口公开。"
 ---
 
@@ -107,6 +109,7 @@ sequenceDiagram
 | 同对照任务综合成功率 | 相比部分使用 10 倍以上数据的基线高于约 40% | 作者报告、特定任务集合，不能视为通用零样本收益 |
 | 目标任务微调 | 官方称最少约 80 条任务轨迹可获得新技能 | 不等于任意任务均只要 80 条 |
 | 策略推理 | 典型单次推理约 160 ms，配合 RTC | 策略生成速度不是低层稳定控制频率 |
+| SIMPLE v2 评测（arXiv:2606.08278v2 Appendix Table 8） | 16 任务多任务 L0/L1/L2 均 SR：**64.4% / 59.7% / 48.8%**（DreamZero 64.4/58.1/46.9） | 2026-11-21 SIMPLE v2 复核；OpenFaucet 等精细接触任务仍低；v2 测 16 任务与官网 60 任务口径需分开 |
 
 ## 结论
 
@@ -129,7 +132,7 @@ sequenceDiagram
 - **准备**：依据 README 将真实机器人示范转成 LeRobot 格式，核验关节顺序、动作归一化和训练任务配置。
 - **微调**：使用 `scripts/train/psi0/finetune-real-psi0.sh`，记录数据量、checkpoint 与任务分布。
 - **部署**：`scripts/deploy/serve_psi0-rtc.sh` 与 `real/scripts/deploy_psi0-rtc.sh` 在匹配版本与已验证安全环境中运行；需有保护、限幅、急停与回退策略。
-- **仿真**：使用官方 SIMPLE 独立评测入口，不将 sim2sim 成功等同真机部署成功。
+- **仿真**：使用官方 [SIMPLE](./paper-loco-manip-161-075-simple.md) 独立评测入口，不将 sim2sim 成功等同真机部署成功；SIMPLE 官方 README（2026-11-11）已发布 **12 Teleop + 5 MP** decoupled-WBC 数据集及 Ψ₀ checkpoints（17 为公开数据集任务数，与论文 16 任务多任务评测分开统计）。
 
 ## 局限与风险
 
@@ -148,6 +151,7 @@ sequenceDiagram
 
 - [Ψ₀ 论文全文与源码归档](../../sources/papers/psi0_arxiv_2603_12263_full_reading.md)
 - [原 161 篇策展索引](../../sources/papers/loco_manip_161_survey_156_psi0.md)
+- [SIMPLE v2 全文核对（arXiv:2606.08278v2）](../../sources/papers/simple_arxiv_2606_08278.md) — Ψ₀ 在 16 任务多任务评测表现与 2026-11-11 decoupled-WBC 数据/权重发布核查（2026-11-21）
 - [官方项目](https://psi-lab.ai/Psi0/)
 - [官方源码](https://github.com/physical-superintelligence-lab/Psi0)
 

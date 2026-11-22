@@ -10,7 +10,7 @@ tags:
   - perception
   - microsoft
 status: complete
-updated: 2026-11-06
+updated: 2026-11-22
 arxiv: "1512.03385"
 venue: "CVPR 2016"
 code: https://github.com/KaimingHe/deep-residual-networks

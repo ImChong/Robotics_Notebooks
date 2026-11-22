@@ -15,7 +15,7 @@ tags:
 status: complete
 arxiv: "2509.15246"
 date: 2026-05-21
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ./gencad.md
   - ../concepts/text-to-cad.md

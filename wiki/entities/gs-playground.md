@@ -4,7 +4,7 @@ type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026, nvidia]
 status: complete
 original: ../../sources/repos/gs_playground.md
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md

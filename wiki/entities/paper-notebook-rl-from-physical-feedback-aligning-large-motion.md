@@ -3,7 +3,7 @@ type: entity
 title: "RL from Physical Feedback: Aligning Large Motion Models with Humanoid Control (RLPF)"
 summary: "智在无界（BeingBeyond）ECCV 2026 物理反馈对齐工作：以冻结人形全身跟踪策略在物理仿真中的可跟踪性（GRPO 二值成功奖励）联合对比语义验证器（R_TA + R_MA），微调 LLaMA2-7B 离散运动生成模型，使 IsaacGym 跟踪成功率从 43%–48% 跃升至 90%–97% 并落地 Unitree G1。"
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2506.12769"
 institutions: [beingbeyond]
 tags: [beingbeyond, paper, rlpf, grpo, motion-generation, humanoid-wbc, sim2real, unitree-g1]
@@ -56,11 +56,15 @@ flowchart TD
 
 ## 工程实践
 
-- **物理仿真与跨引擎效果**：
-  - **IsaacGym** 物理跟踪成功率：Base 仅 **0.43（CMU）/ 0.48（AMASS）**，经 RLPF 对齐后升至 **0.95 / 0.97（CMU）与 0.92 / 0.90（AMASS）**；
-  - **MuJoCo** 跨物理引擎零样本迁移成功率达 **0.75 / 0.61（CMU）与 0.63 / 0.66（AMASS）**，同时保持与预训练基线相当的语义指标。
-- **真机部署配置**：在 Unitree G1 上通过机载 Jetson Orin NX 运行对齐后的运动模型与 Student WBC 跟踪策略，策略推理控制频率 **50 Hz**、通过 **LCM @ 200 Hz** 收发关节指令。
+- **训练配置与部署栈**：基于在 MotionX（81,082 条片段）上预训练的 LLaMA2-7B 离散 T2M 基座做 GRPO 后训练；Unitree G1 真机端通过机载 Jetson Orin NX 运行对齐后的运动模型与 Student WBC 跟踪策略，策略推理控制频率 **50 Hz**、通过 **LCM @ 200 Hz** 收发关节指令。
 - **开源状态核查**：**源码运行时序图：不适用**（截至 2026-11-21，官方仓库 [BeingBeyond/RLPF](https://github.com/BeingBeyond/RLPF) commit `4e49492` 仅含占位 `README.md` 与 `docs/` 展示图，README 声明 *"We will release our code soon."*，尚未开源可运行代码）。
+
+## 实验与评测
+
+- **IsaacGym 物理跟踪成功率（Unitree G1）**：在未对齐的预训练 Base 模型上，CMU / AMASS 物理跟踪成功率仅 **0.43 / 0.48**；经 RLPF 对齐后分别跃升至 **0.95 / 0.97（CMU）与 0.92 / 0.90（AMASS）**。
+- **跨物理引擎 MuJoCo 零样本迁移**：从 IsaacGym 裁判对齐后的模型直接迁移至 MuJoCo 评测，成功率达 **0.75 / 0.61（CMU）与 0.63 / 0.66（AMASS）**，同时保持与预训练基线相当的文本-动作语义指标。
+- **Alignment Verification 消融**：去掉文本-动作对比奖励 $R_{\text{TA}}$（$\beta=0.3$）与参考-对齐动作对比奖励 $R_{\text{MA}}$（$\gamma=0.7$）后，模型会退化为静止或原地微晃站立，导致 FID 恶化至 **`32.53 / 41.97`**。
+- **真机实测**：在 Unitree G1 上完成 50 Hz 策略推理与 200 Hz LCM 闭环控制部署，验证对齐后参考动作的实机站立与可执行性。
 
 ## 结论
 
@@ -68,6 +72,15 @@ flowchart TD
 - 冻结 WBC 裁判 + GRPO 免除了复杂梯度反向穿透非可微物理引擎的难题；
 - 文本-动作与动作-动作双重对比校验是防止站立偏好导致「动作僵死」的关键；
 - 跨仿真器迁移与 Unitree G1 50 Hz 实机运行证实其生成的参考动作具备实用鲁棒性。
+
+## 与其他工作对比
+
+| 对比对象 | 核心差异与实验读法 |
+|------|------|
+| **未对齐离散 T2M 基座（Base LLaMA2-7B）** | 仅从文本-动作对学习易出现重心悬空、脚底打滑与高频关节跃变，IsaacGym 跟踪成功率仅 `0.43`（CMU）/ `0.48`（AMASS）；RLPF 通过冻结 WBC 物理反馈 + GRPO 将成功率提升至 `0.95/0.97`（CMU）与 `0.92/0.90`（AMASS） |
+| **纯物理奖励（无 Alignment Verification）** | 只奖励仿真器不摔倒会诱发语义坍塌（退化为原地站立），FID 恶化至 `32.53 / 41.97`；RLPF 引入 $R_{\text{TA}} + R_{\text{MA}}$ 双对比验证保住生成多样性 |
+| [Being-M0](./paper-notebook-scaling-large-motion-models-with-million-level-h.md) / [Being-M0.5](./paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md) | 同团队上游大模型路线聚焦百万/亿级语料（MotionLib / HuMo100M）与运动学/部位可控生成（Being-M0 仅在数据层做 `π_refine` 平滑）；RLPF 则在后训练阶段直接接入物理仿真器跟踪成败信号，打通真机可站立闭环 |
+| **底层全身跟踪控制（ExBody2 风格 WBC / [BumbleBee](./paper-notebook-from-experts-to-a-generalist.md)）** | 下游 WBC 解决「给定参考轨迹如何在真机稳态跟踪」；RLPF 位于上游，利用冻结 WBC 当裁判去改进「文本生成参考动作本身的可跟踪性」 |
 
 ## 局限与风险
 

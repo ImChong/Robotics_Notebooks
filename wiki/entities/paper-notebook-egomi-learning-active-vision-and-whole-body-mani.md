@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, manipulation, bimanual, active-perception, egocentric, vr-teleoperation, memory, berkeley]
 status: complete
-updated: 2026-10-03
+updated: 2026-11-22
 arxiv: "2511.00153"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md

@@ -6,7 +6,7 @@ tags:
 - vla
 - hierarchical-control
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 venue: '2025'
 original:
 - ../../sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md
@@ -50,7 +50,7 @@ Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享�
 
 ## 核心原理
 
-**System 2**（7B 开源 VLM 骨干，7–9 Hz）接收单目图像、腕部/手指状态与自然语言指令，蒸馏出连续语义 latent；**System 1**（80M 交叉注意力 Transformer + 仿真预训练多尺度全卷积视觉骨干，200 Hz）受该 latent 条件化，结合最新视觉与本体状态直接回归 35-DoF 连续上半身动作（双腕位姿、手指屈伸/外展、头与躯干朝向）及合成“任务完成百分比”终止信号。全模型端到端以回归损失联合优化（训练时在 S1/S2 输入间加入与部署时延匹配的时间偏移），并部署在双机载嵌入式 GPU 上异步流式运行。
+**System 2**（7B 开源 VLM 骨干，7–9 Hz）接收单目图像、腕部/手指状态与自然语言指令，蒸馏出连续语义 latent；**System 1**（80M 交叉注意力 Transformer + 仿真预训练多尺度全卷积视觉骨干，200 Hz）受该 latent 条件化，结合当前实时视觉与本体状态直接回归 35-DoF 连续上半身动作（双腕位姿、手指屈伸/外展、头与躯干朝向）及合成“任务完成百分比”终止信号。全模型端到端以回归损失联合优化（训练时在 S1/S2 输入间加入与部署时延匹配的时间偏移），并部署在双机载嵌入式 GPU 上异步流式运行。
 
 ```mermaid
 flowchart LR

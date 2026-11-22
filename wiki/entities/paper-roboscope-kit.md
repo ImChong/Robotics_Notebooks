@@ -7,7 +7,7 @@ tags:
   - evaluation
   - sjtu
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2611.03850"
 project: https://mint-sjtu.github.io/RoboScope-Kit/
 code: https://github.com/MINT-SJTU/RoboScope-Kit
@@ -158,7 +158,7 @@ sequenceDiagram
 4. 动作块之间少渲染仅适用于策略明确不读取的观测，不能降低物理或成功判定频率。
 5. 最快 RoboTwin 配置仅报告一次运行，跨策略、基准、硬件的性能须重新测量。
 
-## 最新开源能力与最小运行链（2026-11-21；非论文 v1 的实验范围）
+## 开源能力扩展与最小运行链（2026-11-21 核对；非论文 v1 的实验范围）
 
 **版本分离**：论文 v1（2026-11-02）报告六类 benchmark family 及固定硬件上的 StarVLA 结果。上游仓库 [README](https://github.com/MINT-SJTU/RoboScope-Kit/blob/1b17df6fa3ad96149d4c6e16781df570a22bdcd8/README.md) 在本次核对时已列出 **12 个独立基准条目**：LIBERO、LIBERO-Plus、LIBERO-Pro、RoboTwin、RoboDojo、RoboCasa GR-1 Tabletop、RoboCasa365、CALVIN、MetaWorld、RLBench、robomimic、SimplerEnv。这里统计的是 README 的条目而非论文所称的 family，**不能把后续适配宣称为论文中已实测的加速结果**。
 

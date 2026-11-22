@@ -10,7 +10,7 @@ tags:
 - deep-learning
 - foundation-model
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: '2103.00020'
 code: https://github.com/openai/CLIP
 related:

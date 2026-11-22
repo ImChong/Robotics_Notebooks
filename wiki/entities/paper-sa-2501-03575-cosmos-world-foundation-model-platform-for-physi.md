@@ -1,11 +1,14 @@
 ---
 type: entity
+project_id: cosmos-wfm-platform
 tags: [paper, nvidia, world-models, physical-ai, wfm, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 arxiv: "2501.03575"
 venue: "arXiv 2025 (v3)"
 code: https://github.com/NVIDIA/cosmos
+code_scope: "Cosmos 1.0 历史基线（Cosmos-Predict1 / Tokenizer1 平台论文时代入口，当前 NVIDIA/cosmos 主线已演进至 Cosmos 3）"
+project_distinction: "Cosmos 1.0 平台论文实体（arXiv:2501.03575）；与涵盖 1.0/2.5/3.0 三代的平台总实体 nvidia-cosmos 及 Cosmos 3 交互式仿真技术报告（arXiv:2611.06627）相互独立。"
 related:
   - ./nvidia-cosmos.md
   - ./cosmos-3.md

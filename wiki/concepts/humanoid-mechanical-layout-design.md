@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, mechanical-design, layout, dof, inertia, tolerance, fea]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ./humanoid-parallel-joint-kinematics.md
   - ./robot-link-and-rotor-inertia.md

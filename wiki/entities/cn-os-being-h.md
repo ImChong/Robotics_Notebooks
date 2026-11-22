@@ -1,9 +1,12 @@
 ---
 type: entity
+project_id: being-h
 tags: [repo, china-embodied-opensource, open-source, project, vla, manipulation]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/BeingBeyond/Being-H
+code_scope: "BeingBeyond/Being-H 开源家族多版本聚合仓库（being-h0 分支、Being-H05/、Being-H07/ 与 tutorials/Being-H-EDU/）"
+project_distinction: "Being-H 官方开源家族仓库节点，聚合 Being-H0（arXiv:2507.15597）、Being-H0.5（arXiv:2601.12993）、Being-H0.7（arXiv:2605.00078）与教学教程；各代独立论文详情分别位于对应 paper-* 实体页。"
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md

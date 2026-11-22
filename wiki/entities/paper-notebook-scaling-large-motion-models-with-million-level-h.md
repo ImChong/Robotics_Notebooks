@@ -3,7 +3,7 @@ type: entity
 title: "Scaling Large Motion Models with Million-Level Human Motions (Being-M0)"
 summary: "智在无界（BeingBeyond）ICML 2025 百万级人体运动大模型：构建 1.21M 片段/1456.4h/2.48M 分级描述数据集 MotionLib 与免 IK 的 SMPL-D135 2D-LFQ MotionBook 离散词表，并在 GPT-2 至 LLaMA-3 8B 验证数据与全参数微调的 OOD 扩展律。"
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2410.03311"
 institutions: [beingbeyond]
 tags: [beingbeyond, paper, human-motion-generation, motionlib, 2d-lfq, scaling-law, smpl]
@@ -71,6 +71,22 @@ flowchart TD
 - 2D-LFQ 在保持 16× 时间-维度压缩的同时以 16,384 码本容量避免经典 VQ 码本坍塌；
 - UNSEEN-90K OOD FID 降至 `11.930`（降幅 >83%）证明大语料规模是泛化第一驱动力；
 - 局限在于纯离线文本生成且缺乏部分控制精度与物理机器人闭环约束，后续由 Being-M0.5 与 RLPF 补齐。
+
+## 实验与评测
+
+- **数据规模对比（MotionLib）**：构建 **1.21M 片段、1456.4 小时、2.48M 分级文本标注**（body-level + part-level + PoseScript），规模较既有 HumanML3D（约 1.4 万条）与 Motion-X（约 8 万条）提升 **≥15×**。
+- **离散分词压缩与保真（2D-LFQ MotionBook）**：将 SMPL-D135（9D 根特征 + 21 关节×6D 连续旋转）量化为 $2^{16}=16384$ 隐码，在将序列压缩至原长 **1/16** 的同时提升重建保真度与词汇利用率。
+- **域内与域外扩展律（HumanML3D / KIT-ML / Motion-X / UNSEEN-90K）**：系统测试 GPT-2（355M）、LLaMA-2（7B、13B）与 LLaMA-3（8B）：
+  - **微调策略**：全参数微调在动作保真与语义相关性上持续显著优于 LoRA；
+  - **OOD 泛化（UNSEEN-90K）**：当模型规模（355M → 7B/8B → 13B）与 MotionLib 数据量协同扩展时，UNSEEN-90K 域外 FID 从基于 HumanML3D 训练的 **`82.674`** 与 Motion-X 训练的 **`70.547`** 降至 **`11.930`**（降幅 >83%）。
+
+## 与其他工作对比
+
+| 对比维度 | Being-M0 方案 | 既有基线与同族演进工作对照 |
+|------|------|------|
+| **数据规模与标注** | MotionLib（1.21M 片段 / 1456.4h / 2.48M 分级描述）+ `π_refine` 物理平滑 | 较 HumanML3D（~14K）与 Motion-X（~80K）扩大 ≥15×，在 UNSEEN-90K 上 OOD FID 从 `82.674` / `70.547` 降至 `11.930`；后续 [Being-M0.5](./paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md) 进一步扩充至 HuMo100M（500 万+ 序列 / 1 亿指令） |
+| **动作表示与量化** | SMPL-D135（免逆运动学）+ 2D-LFQ MotionBook（16,384 隐码、1/16 压缩、无查表坍塌） | 摆脱传统 HM3D263 依赖离线 IK 反解关节旋转带来的抖动与延迟；后续 [Being-M0.5](./paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md) 升级为 5 部位解耦 PRQ 以支持逐部位控制与实时逐帧解码 |
+| **训练与微调范式** | LLM（GPT-2 / LLaMA-2 / LLaMA-3）全参数自回归微调 | 实验验证全参微调持续优于 LoRA；仅在数据构建期用 `π_refine` 去抖，而后续 [RLPF](./paper-notebook-rl-from-physical-feedback-aligning-large-motion.md) 在后训练接入冻结 WBC + GRPO 物理反馈，使动作满足人形真机站立与跟踪约束 |
 
 ## 局限与风险
 

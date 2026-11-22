@@ -2,7 +2,7 @@
 type: concept
 tags: [evaluation, benchmark, sim2real, simulation, embodied-ai, reproducibility, world-model]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 summary: "仿真评测能否外推真机，取决于接触、感知和任务分布的覆盖及虚实校准证据；可复现性与真实代表性须分别验收，结合 Fidelity Gap 与 RoboLab 的指标、样本量和版本边界。"
 original:
   - ../../sources/papers/fidelity_gap_reading_arxiv_2610_12464_simreal_eval.md

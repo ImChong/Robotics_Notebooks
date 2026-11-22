@@ -5,7 +5,7 @@ status: complete
 original:
   - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../entities/paper-abot-recon.md
   - ./embodied-perception-six-spatial-representations.md

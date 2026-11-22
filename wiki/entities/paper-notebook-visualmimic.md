@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, visual-rl, sim2real, hierarchical-control, teacher-student, dagger, ppo, keypoint-tracking, depth, humanoid-paper-notebooks, stanford]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 original:
   - ../../sources/papers/humanoid_pnb_visualmimic.md
   - ../../sources/papers/visualmimic_arxiv_2509_20322.md
@@ -119,19 +119,22 @@ flowchart TB
 | **Kick / Dribble Ball** | 足球盘带与踢球；gentle kick、碰撞恢复 |
 | **户外泛化** | 光照、地面、地点变化下 push 仍稳定 |
 
-### 方法对比（Table I 归纳）
-
-| 方法 | 全身 dex | Loco-manip | 视觉策略 |
-|------|:--------:|:----------:|:--------:|
-| TWIST | ✓ | ✓ | ✗ |
-| VideoMimic | ✗ | ✗ | ✓ |
-| Hitter | ✗ | ✓ | ✗ |
-| **VisualMimic** | ✓ | ✓ | ✓ |
-
 ### 开源状态（GitHub）
 
 - **已发布：** Sim2Sim 管线、真机任务 checkpoints（`sim2sim.py --task kick_ball|kick_box|push_box|lift_box`）。
 - **待发布：** 低/高层训练代码、Sim2Real 全流程（README：论文接收后全面开源）。
+
+## 与其他工作对比
+
+| 方法 | 全身 dex | Loco-manip | 视觉策略 | 与 VisualMimic 的关键路线差异 |
+|------|:--------:|:----------:|:--------:|------|
+| [TWIST](./paper-twist.md) | ✓ | ✓ | ✗ | 同作者线；无第一视角视觉策略，VisualMimic 复用其低层 $r_{\mathrm{motion}}$ 奖励与 GMR 数据链，拓展分层关键点接口 + depth 高层 |
+| [VideoMimic](./videomimic.md) | ✗ | ✗ | ✓ | 有视觉策略，但偏环境交互（坐、爬梯），缺乏全身物体操作与 loco-manipulation |
+| Hitter | ✗ | ✓ | ✗ | 具备 loco-manipulation，但缺视觉策略与全身灵巧度（论文 Table I） |
+| [ResMimic](./paper-resmimic.md) | ✓ | ✓ | ✗ | GMT + 残差 loco-manipulation，依赖 OptiTrack 配对人–物 MoCap 轨迹；VisualMimic 无需配对人–物数据，仅用轻量 shaping 奖励 |
+| [VIRAL](./paper-viral-humanoid-visual-sim2real.md) | ✓ | ✓ | ✓ | 采用规模化 RGB 蒸馏 + WBC API；VisualMimic 使用 egocentric depth（heavy masking DR）+ root 与 5 关键点窄接口 |
+| [DreamMimic](./paper-dreammimic.md) | — | — | ✓ | 采用 RSSM + PCG 仿真视觉学生，尚无真机实验；VisualMimic 已完成零样本真机与户外泛化 |
+| **VisualMimic** | ✓ | ✓ | ✓ | 同时满足全身灵巧度、loco-manipulation 与第一视角深度视觉策略 |
 
 ## 结论
 

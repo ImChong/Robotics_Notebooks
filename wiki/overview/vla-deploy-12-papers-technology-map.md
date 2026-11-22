@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, deployment, world-model, humanoid, technology-map]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-22
 related:
   - ../entities/fluxvla-engine.md
   - ../entities/paper-jeplo.md

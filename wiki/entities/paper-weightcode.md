@@ -6,7 +6,7 @@ project: https://gen-verse.github.io/WeightCode/
 code: https://github.com/Gen-Verse/WeightCode
 tags: [paper, llm, model-editing, weight-programming, machine-learning]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 summary: "WeightCode 由冻结语言模型合成可执行权重程序，在有限检查与保留旧能力的门槛下为网络安装新技能；研究已验证跨权重重运行及接续编辑，尚无真机证据。"
 related:
   - weight-space-programming.md
@@ -158,6 +158,15 @@ sequenceDiagram
 3. 对同构不同初始化网络**重新运行程序**，不要把一次编辑的数值差分当通用模块。
 4. 在接续安装第二项能力时同时测试第一项能力的保持程度；只报告新指标上涨不够。
 5. 将 SCAN、BabyAI、ResNet-18 的结论视为具体基准证据；上机前仍须做机器人策略、时延、动力学及安全回归实测。
+
+## 与其他工作对比
+
+| 对比维度 / 对象 | WeightCode 方案与表现 | 基线与相邻权重编程 / 编辑工作对照 |
+|------|------|------|
+| **梯度微调基线（ImageNet ResNet-18 高斯噪声）** | 在 64 噪声 + 64 干净样本与干净准确率约束下，两个无梯度权重程序取得 **`+10.47` / `+17.62 pt`** 净增益；CIFAR-10-C ViT-Lite 噪声门控实验净增益 `+31.75 pt` | 同预算下八种常规微调方法最优为 **`+8.67 pt`**；但在 **CIFAR-100 增量五类**上 WeightCode 为 `17.20%`，低于简单对照 `21.70%` |
+| **直接数值权重差分迁移** | 在 5 个独立训练的同类网络上**重新执行权重程序 $p$**，保留原增益约 **`83–110%`** | 将一个网络算出的数值差分 $W'-W$ 原样相加到另一网络在主要迁移设置下失败 |
+| **[Sparks of Weight-Space Programming](weight-space-programming.md) / [iWSP](./paper-interpretable-weight-space-programming.md)** | 冻结 LLM 合成可重放参数更新程序，配合留出验收门控与 SHA-256 校验安装新能力（不要求透明模型结构） | Sparks 为 MIT 同期直接权重编程早期探索；iWSP 聚焦透明 Transformer 与脑响应模型的可解释权重空间编程 |
+| **[Robotics Weight Editing](robotics-weight-editing.md) / [CapVector](./paper-capvector-capability-vectors-vla.md)** | 目前仅在 SCAN、BabyAI、ImageNet/CIFAR 等基准完成验证，尚无真实机器人策略部署 | 前者面向机器人控制策略权重编辑，后者通过能力向量/权重差分实现 VLA 能力迁移；证据域与部署闭环不同 |
 
 ## 局限与风险
 

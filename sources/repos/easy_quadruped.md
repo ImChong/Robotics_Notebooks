@@ -9,6 +9,7 @@
 - **上游：** https://github.com/stanfordroboticsclub/StanfordQuadruped（MIT，Stanford Student Robotics，2020）
 - **Stars：** ~2（2026-05，GitHub API）
 - **入库日期：** 2026-05-24
+- **通读：** 已完成
 - **一句话说明：** 基于 Stanford Pupper 控制栈的独立 fork：保留步态/支撑/摆腿/状态机与逆运动学核心，补齐 MuJoCo 浮动机身闭环仿真、任务调度器与舵机标定脚本，适合低成本四足模型控制入门与调参。
 - **沉淀到 wiki：** 是 → [`wiki/entities/easy-quadruped.md`](../../wiki/entities/easy-quadruped.md)
 
@@ -111,3 +112,11 @@ python sim/run_floating_base.py --headless --duration 8 --task-sequence "rest:1.
 | 四足平台语境 | 交叉更新 `wiki/entities/quadruped-robot.md`、`wiki/entities/stanford-doggo-and-pupper.md` |
 | 步态概念 | `wiki/concepts/gait-generation.md` |
 | 仿真索引 | `references/repos/simulation.md` |
+
+---
+
+## 2026-11-22 内容鲜度与源码核验
+
+- **核对范围：** 读取上游 `Xzgz718/easy_quadruped@main` 的 `README.md`、`sim/run_floating_base.py` 与 `src/Controller.py`（未在本地启动 MuJoCo viewer 运行仿真）。
+- **结构核验：** 仓库 `src/`、`pupper/`、`sim/`、`calibrate_servos.py` 目录与 CLI 参数（`--mode`、`--task-sequence`、`--kp`、`--kd`、`--torque-limit`、`--headless`、`--rebuild`）与 2026-05 入库记录一致，仍保持 StanfordQuadruped 模型控制 + MuJoCo 浮动机身闭环定位。
+- **源码入口实录：** `sim/run_floating_base.py:main()` 先按需调用 `build_mjcf()` 生成 `pupper_floating.xml`，再进入 `run_loop()`；每控制 tick 通过 `SimObservationInterface.sync_state()` 与 `SimIMU.read_orientation()` 刷新 `State`，可选经 `apply_feedback()` 叠 Attitude/Velocity 反馈后调用 `Controller.run(state, command)`，最后经 `SimHardwareInterface.set_actuator_postions(state.joint_angles)` 与 `step()` 推进 MuJoCo 并在姿态异常/发散时抛出 `RuntimeError`；`src/Controller.py` 内建 `DEACTIVATED`/`REST`/`TROT`/`HOP`/`FINISHHOP` 状态转移映射并由 `step_gait()` 分派支撑/摆动腿足端规划。

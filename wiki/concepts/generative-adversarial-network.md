@@ -2,7 +2,7 @@
 type: concept
 tags: [gan, generative-model, sim2real, architecture]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-22
 summary: "生成对抗网络用生成器与判别器的极小极大博弈隐式匹配数据分布；图像质量高但训练脆，机器人里更多用于视觉域迁移与对抗运动先验，而不是直接当策略头。"
 related:
   - ./autoencoder.md

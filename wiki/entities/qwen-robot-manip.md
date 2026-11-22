@@ -2,7 +2,7 @@
 title: "Qwen-RobotManip（对齐驱动的可扩展操作基础模型）"
 type: entity
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 project_id: qwen-robot-manip
 arxiv: "2606.17846"
 paper: https://arxiv.org/abs/2606.17846

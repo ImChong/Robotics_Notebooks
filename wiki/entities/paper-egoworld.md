@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, egocentric, exocentric, view-translation, diffusion, latent-diffusion, hand-pose, point-cloud, hoi, image-generation, iclr, lg-electronics, kaist, oxford]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 date: 2026-07-24
 arxiv: "2506.17896"
 venue: "ICLR 2026"
@@ -15,10 +15,12 @@ related:
   - ../tasks/manipulation.md
   - ../overview/ego-category-01-data-collection.md
   - ../concepts/visual-representation-for-policy.md
+  - ./paper-vbot-exo2ego-policy.md
 sources:
   - ../../sources/papers/egoworld_arxiv_2506_17896.md
   - ../../sources/sites/egoworld-github-io.md
   - ../../sources/repos/egoworld.md
+  - ../../sources/papers/vbot_exo2ego_arxiv_2611_16417.md
 summary: "EgoWorld（ICLR 2026，arXiv:2506.17896，LG/KAIST/Oxford）：单张第三人称图经点云重投影稀疏 egocentric RGB、3D 第一人称手姿与 VLM 文本，条件化潜扩散生成稠密第一人称视图；H2O/TACO/Assembly101/Ego-Exo4D SOTA；代码与权重已开源（MIT）。与 StellarNex EgoWorld-100W 数据集同名异物。"
 ---
 
@@ -169,6 +171,7 @@ sequenceDiagram
 | **CFLD** | 同属条件生成基线；本文在四基准未见设定上全面更高 |
 | **[EgoWorld-100W](./egoworld-100w.md)** | **同名异物**：数据规模产品 vs 本页视图翻译方法 |
 | **[EgoScale](../methods/egoscale.md) / [EgoSteer](./paper-egosteer.md)** | 人视频→策略；本页停在 **视觉域 exo→ego**，不输出动作 |
+| **[VBot Exo2Ego Policy](./paper-vbot-exo2ego-policy.md)** | 扩展至 **EXO→EGO 视频序列生成**（MiniMax-H3 Ref2VA + 训练期 Plücker rays + 语义掩码/ACE 手部辅助监督），推理同样免目标相机标定；截至 2026-11-16 未核实公开代码仓库 |
 
 ## 局限与风险
 
@@ -185,12 +188,14 @@ sequenceDiagram
 - [EgoMimic](./paper-ego-03-egomimic.md) — 第一视角人数据进 IL。
 - [Manipulation](../tasks/manipulation.md) — 手物交互任务总览。
 - [Ego 数据采集分类](../overview/ego-category-01-data-collection.md) — 自中心数据生态入口。
+- [VBot Exo2Ego Policy（arXiv:2611.16417v1）](./paper-vbot-exo2ego-policy.md) — 视频级 EXO→EGO 生成与手物辅助监督对照。
 
 ## 参考来源
 
 - [EgoWorld 论文摘录（arXiv:2506.17896）](../../sources/papers/egoworld_arxiv_2506_17896.md)
 - [EgoWorld 项目页归档](../../sources/sites/egoworld-github-io.md)
 - [redorangeyellowy/EgoWorld 仓库归档](../../sources/repos/egoworld.md)
+- [VBot Exo2Ego Policy 原文归档（arXiv:2611.16417v1）](../../sources/papers/vbot_exo2ego_arxiv_2611_16417.md) — 视频级 exo→ego 延伸对照（2026-11-16）
 
 ## 推荐继续阅读
 

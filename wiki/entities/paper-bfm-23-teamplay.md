@@ -108,6 +108,15 @@ flowchart TD
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
+## 与其他工作对比
+
+| 对比维度 / 工作 | TeamPlay（本文） | 端到端多智能体 RL（无分层先验） | 同期 MuJoCo 角色（ASE / PHC / MoConVQ） | 面向真机的 BFM / WBC 路线 |
+|---|---|---|---|---|
+| 技能与协同分层 | 三阶段渐进：1.75h 动捕蒸馏低层 NPMP → PBT+RL 蒸馏 4 类 drill priors → 2v2 Nash Averaging MARL + 混合先验 KL 正则 | 直接在 2v2 物理环境中从零探索全身控制与协同 | 聚焦单角色无对抗通用技能或参考跟踪，不含多智能体种群博弈战术 | 先验或跟踪器需额外纳入域随机化、足端摩擦与执行器延迟建模 |
+| 物理与部署边界 | 仿真人形 2v2 足球（MuJoCo 角色物理），侧重验证「底层成熟度决定上层战术空间」 | 高维拟人身体下易动作僵硬或陷入局部非自然步态 | 同样针对仿真图形学/物理角色，缺真机 Sim2Real 适配 | 面向真机抗扰与硬件部署（如 Unitree G1 等平台） |
+
+> **核对边界**：本页目前已精读并校验 `arXiv:2105.12196` §3（3.1–3.4）三阶段方法框架与 [bfm-category-02-goal-conditioned-learning.md](../overview/bfm-category-02-goal-conditioned-learning.md) 策展定位；原文 §4 量化胜率与消融数值尚未展开到本页，对比仅覆盖结构范式与部署边界。
+
 ## 关联页面
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)

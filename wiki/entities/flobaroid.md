@@ -2,7 +2,7 @@
 type: entity
 tags: [software, system-identification, dynamics, friction, urdf, open-source, iit]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 code: https://github.com/kjyv/FloBaRoID
 related:
   - ../methods/joint-actuator-parameter-identification.md

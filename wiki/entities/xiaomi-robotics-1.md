@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, foundation-policy, umi, scaling-laws, mobile-manipulation, cross-embodiment, flow-matching, xiaomi, xiaomi-robotics]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 arxiv: "2607.15330"
 code: https://github.com/XiaomiRobotics/Xiaomi-Robotics-1
 related:

@@ -16,10 +16,12 @@ tags:
 status: complete
 original:
   - ../../sources/papers/xrobotoolkit_arxiv_2508_00097.md
-updated: 2026-11-15
+updated: 2026-11-22
+project_id: xrobotoolkit
 arxiv: "2508.00097"
 venue: "SII 2026 (Best Paper)"
-code: https://github.com/XR-Robotics
+project: https://xr-robotics.github.io/
+code: https://github.com/XR-Robotics/XRoboToolkit-Teleop-Sample-Python
 summary: "XRoboToolkit（arXiv:2508.00097，ByteDance PICO / Georgia Tech / GMU）：基于 OpenXR 的跨平台 XR 遥操作套件——低延迟立体视觉、QP-IK、头/手柄/手/tracker 多模态追踪；全栈开源，并用采数 LoRA 微调 π₀ 验证数据质量。"
 related:
   - ../tasks/teleoperation.md

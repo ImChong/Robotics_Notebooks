@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-22
 summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k、Unidata Pico 4 Ultra 量产采集与 Macrodata 度量手轨迹配方。"
 related:
   - ./ego-9-papers-technology-map.md
@@ -92,7 +92,7 @@ original:
 - [ViDiHand](../entities/paper-vidihand.md) — 采集后的 **双手 4D 标注** 可用 video diffusion 先验 **无 detector** 规模化重建，支撑模仿/策略监督
 - [Ego4D](../entities/paper-ego4d.md) — FAIR 联盟 **~3,670 h** 全球日常 egocentric 视频 + 五大 benchmark（CVPR 2022）；后续多数 Ego 语料的规模/任务锚点（HumanNet 表标 **Indirect**）
 - [Ego-Exo4D-HM](../entities/paper-egoexo4d-hm.md) — 在 [Ego-Exo4D](https://ego-exo4d-data.org/) 同步多视角上发布 **2,649 takes / 104.59 h** SMPL-H 4D 重建（HF npz + MIT 管线）；ego-exo 视频→**稠密 3D 说明书** 层，机器人策略收益仍待下游验证
-- [Ego-OSCAR / Stereo-550](../entities/paper-ego-oscar.md) — 第一人称视觉实验室（FPV Labs）**~USD 200** 开源硬件硬同步立体+IMU 头戴；**~550 h/相机** gated 语料验证众包续采（观测-only，非 teleop）
+- [Ego-OSCAR / Stereo-550](../entities/paper-ego-oscar.md) — 第一人称视觉实验室（FPV Labs）**~USD 200**（v3 Table 1 BoM INR 19,600 / ~USD 205）开源硬件硬同步立体+IMU 头戴；`fpv-labs/ego-oscar` 已以 Apache-2.0 开源固件与 Radxa 录制器，**~550 h/相机** Stereo-550 语料仍须申请 gated 定制许可；v3 与录制器默认 IMU **180 Hz**（官网博客留存 120 Hz 口径差异）
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 活数据集（Aria / 产业 / 手机采集）与 EgoDB 接入；与本组「人类作分布式采集者」同动机、更偏操纵向 Direct 标注
 - [VBot Exo2Ego Policy](../entities/paper-vbot-exo2ego-policy.md) — 双 iPhone 真实 EGO/EXO 配对与第三人称→第一人称视频生成的数据扩增；生成影像并非具动作真值的示教轨迹
 - [EgoWorld-100W](../entities/egoworld-100w.md) — StellarNex **百万级** 第一人称操作语料（**申请制**；四维 Scene×Object×Action×Handedness）；与 ICLR [EgoWorld 视图翻译](../entities/paper-egoworld.md) **同名异物**

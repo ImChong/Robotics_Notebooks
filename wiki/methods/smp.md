@@ -2,7 +2,7 @@
 type: method
 tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1, paper, amp, motion-prior, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 venue: arXiv
 related:
   - ../entities/paper-smp.md

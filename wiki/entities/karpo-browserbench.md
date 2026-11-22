@@ -5,7 +5,7 @@ project: https://karpo.ai/benchmarks/browserbench
 code: https://github.com/machinepulse-ai/karpo-browserbench
 tags: [benchmark, browser-agent, evaluation, multimodal, decision-model, open-source]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 related:
   - ./karpo-browser.md
   - ./karpo-decision.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../methods/coding-agent-verification-loops.md
   - ../methods/agent-driven-chaos-testing-loop.md
+  - ../overview/hub-embodied-eval-benchmark.md
 sources:
   - ../../sources/repos/karpo-browserbench.md
 original:
@@ -122,6 +123,7 @@ sequenceDiagram
 - [Karpo Decision 27B Act](./karpo-decision-27b-act.md)
 - [Karpo Decision 模型家族](./karpo-decision.md)
 - [AI Agent 评测方法](../concepts/ai-agent-evaluation.md)
+- [具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md) — 边界对照：本页聚焦浏览器离线决策轨迹，具身闭环评测仍需按四层基准链补齐物理执行与 sim↔real 校准。
 
 ## 参考来源
 

@@ -2,10 +2,12 @@
 type: entity
 project_id: agnes-harness
 code: https://github.com/AgnesAI-Labs/agnes-harness
+code_scope: "全仓 FDE agent runtime 本体（agnes.mjs、packages/{cli,sdk,host,loop-default,ai} 与 AgnesHub/MHS 插件体系）"
+project_distinction: "Agnes Harness 软件运行时项目主实体；独立系统技术报告（账本语义与受治理 Playbook RSI 研究评估）见 paper-agnes-harness-rsi-technical-report。"
 tags: [llm-agents, agent-infrastructure, open-source, device-integration, mcp, hardware]
 status: complete
 date: 2026-10-11
-updated: 2026-11-20
+updated: 2026-11-22
 related:
   - ../concepts/model-hardware-standard.md
   - ../concepts/llm-robotics-control-interfaces.md

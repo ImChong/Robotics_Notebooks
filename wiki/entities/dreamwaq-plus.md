@@ -11,7 +11,7 @@ tags:
   - point-cloud
   - kaist
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 arxiv: "2409.19709"
 venue: "IEEE T-RO 2026"
 related:

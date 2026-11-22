@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, simulation, benchmark, real-to-sim, sim2real, mujoco, isaac-sim, vla, wam, teleoperation, usc]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 project_id: simple-humanoid-loco-manipulation
 arxiv: "2606.08278"
 project: https://psi-lab.ai/SIMPLE/
@@ -202,6 +202,16 @@ sequenceDiagram
 - 采集侧结论直接：仿真内 VR 遥操作 **310 demos/hr** 对运动规划 **59 demos/hr**，且 teleop-only 训练平均 **7.56/10** 优于 MP-only **5.00/10**——自动化管线便宜但替代不了人类演示。
 - 边界在 L2 与底层运控：GR00T N1.6、InternVLA 在 Mobile P&P 等高动态任务 L2 骤降；所有策略仍依赖 AMO/SONIC tracking，换运控栈或 embodiment 需重新标定。
 - 工程状态是它相对多数 161 条目的优势：代码已开源、OOD 评测场景托管在 HF；与同 lab 的 [Psi0](./paper-loco-manip-161-156-psi0.md) 是「基准与被测强基线」的关系，引用时注意 161 策展初稿曾把它误述为 VLA + 世界模型。
+
+## 与其他工作对比
+
+| 对比维度 / 工作 | SIMPLE（本文 testbed） | 桌面 / 轮式基准（LIBERO / SimplerEnv / RoboCasa） | [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) / [TeleOpBench](./paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md) | 平台内被测策略与采集方式对比 |
+|---|---|---|---|---|
+| 物理与视觉架构 | **MuJoCo 接触物理 + Isaac Sim 光追渲染（~4 fps/GPU）**，耦合 AMO/SONIC 全身 WBC | 主要面向固定桌面臂或轮式平台，缺双足全身平衡耦合 | SimFoundry 侧重 real-to-sim 场景生成；TeleOpBench 聚焦双臂遥操作评测 | 统一 Gym 接口（32D 状态 / 36D 动作），公平横比 VLA/WAM/IL |
+| 资产规模与评测口径 | v2 基准 **16 任务**（官网与 v2 §3.2 称 60）、50 场景、1000+ 物体；**L0/L1/L2** 三级 OOD DR | 侧重桌面抓取/放置或固定基座多任务 | 各自聚焦场景生成或双臂遥操作 | v2 Table 8（16 任务 L0/L1/L2）：[Ψ₀](./paper-loco-manip-161-156-psi0.md)（64.4/59.7/48.8%）与 DreamZero（64.4/58.1/46.9%）领先；GR00T N1.6 / InternVLA 在 Mobile P&P L2 骤降 |
+| 数据采集与 Sim2Real | PICO XR 遥操作 **310.3 demos/hr**（平均 **7.56/10**）vs 运动规划 **58.9 demos/hr**（**5.00/10**）；纯仿真微调支持 G1 零样本迁移（Pick&Place 0.90→0.80） | 多数偏纯仿真基准或桌面真机对照 | 各自特定资产管线 | 9 策略 × 6 任务族上仿真排序与真机强相关；限刚体，暂不支持布料/绳索 |
+
+> **核对边界**：据 [simple_arxiv_2606_08278.md](../../sources/papers/simple_arxiv_2606_08278.md) 核对，论文 v2（16 任务 / 7 模型主表 / 5 模型附录表）与官网/v2 §3.2（60 任务 / 9 模型榜单）存在版本口径差异，不可混表排名；本次尚未在本地 GPU 环境下独立重跑评测脚本。
 
 ## 常见误区
 

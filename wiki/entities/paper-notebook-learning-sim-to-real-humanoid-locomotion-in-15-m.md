@@ -1,10 +1,14 @@
 ---
 type: entity
+project_id: fastsac-humanoid-15m
 tags: [paper, humanoid, rl, sim2real, off-policy, fastsac, unitree-g1, booster-t1, amazon-far]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2512.01996"
+project: https://younggyo.me/fastsac-humanoid/
 code: https://github.com/amazon-far/holosoma
+code_scope: "src/holosoma/（FastSAC / FastTD3 大规模并行 locomotion 配置，如 exp:g1-29dof-fast-sac；IsaacGym 配方冻结于 holosoma-v0.0.3）"
+project_distinction: "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes 论文实体（arXiv:2512.01996）；在 holosoma 仓库内聚焦 FastSAC/FastTD3 行走配方，而非 holosoma 全栈框架总节点或 OmniRetarget 数据集节点。"
 related:
   - ../methods/flashsac.md
   - ./holosoma.md
@@ -112,7 +116,7 @@ sequenceDiagram
 
 | 项 | 建议 |
 |----|------|
-| **入口** | `exp:g1-29dof-fast-sac`（G1）；T1 见 Holosoma 配置族 |
+| **入口** | `exp:g1-29dof-fast-sac`（G1）；T1 见 Holosoma 配置族（注意 `main` 已移除 IsaacGym，若复用早期 IsaacGym 脚本需切至 `holosoma-v0.0.3`，现行 `main` 使用 `simulator:isaacsim` / MJWarp） |
 | **对照** | 同仓 **PPO** 基线可用，但墙钟通常显著更长 |
 | **延伸** | WBT、OmniRetarget 重定向见 Holosoma 三子包文档 |
 | **后继** | 要渐近性能 → [FlashSAC](../methods/flashsac.md)；要 WBT 质量/墙钟平衡 → [LooperMuscle](./paper-loopermuscle.md) |

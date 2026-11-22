@@ -8,7 +8,7 @@ tags:
   - galaxea
   - tsinghua
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2603.16666"
 code: https://github.com/yuantianyuan01/FastWAM
 related:
@@ -165,7 +165,7 @@ sequenceDiagram
 ## 工程实践
 
 1. **权重预处理与文本缓存**：训练前先使用官方 `preprocess_action_dit_backbone.py` 合并/切分 Wan2.2-TI2V-5B 骨干权重，并用 `scripts/precompute_text_embeds.py` 离线缓存冻结 UMT5-XXL 文本嵌入，以节省显存并支持 `scripts/train_zero1.sh` 多卡 ZeRO-1 训练。
-2. **模式与超参对齐**：论文默认 First-frame clean latent 模式，而仓库最新更新支持 **Optional IDM（`infer_joint`）** 开关；另外需注意原生仓库与 LeRobot 移植在扩散 `sigma_shift`（如 1.0 vs 5.0）和图像归一化（`VISUAL: IDENTITY` 内部放缩至 `[-1, 1]`）上的配置差异。
+2. **模式与超参对齐**：论文默认 First-frame clean latent 模式，而上游仓库（`@7faa711`，2026-10-05 核对）后续更新支持 **Optional IDM（`infer_joint`）** 开关；另外需注意原生仓库与 LeRobot 移植在扩散 `sigma_shift`（如 1.0 vs 5.0）和图像归一化（`VISUAL: IDENTITY` 内部放缩至 `[-1, 1]`）上的配置差异。
 3. **推理延迟优化**：通过单次首帧 KV Prefill + `torch.compile` 动作推理图可将端到端单块延迟压至 **110–190 ms**，结合 `h=32` 动作块与 `runtime.py` 满足多数准高频双臂真机控制需求。
 
 ## 局限与风险

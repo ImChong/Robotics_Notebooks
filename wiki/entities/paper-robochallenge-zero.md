@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, benchmark, evaluation, embodied-ai, manipulation, vla, zero-shot, real-robot]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 topic: [evaluation]
+venue: "RoboChallenge Technical Report 2026"
 project_id: robochallenge-zero
 project: https://robochallenge.ai/benchmark_detail/zero
 original:

@@ -8,7 +8,7 @@ tags:
   - backbone
   - perception
 status: complete
-updated: 2026-11-20
+updated: 2026-11-22
 summary: "卷积神经网络用局部卷积核与权值共享提取层次化视觉特征，是检测/分割与机器人机载感知长期默认骨干，也是理解 ViT 替代路径的对照基线。"
 related:
   - ./vision-backbones.md

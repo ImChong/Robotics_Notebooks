@@ -1,9 +1,14 @@
 ---
 type: entity
+project_id: ultralytics
 tags: [repo, tooling, computer-vision, object-detection, yolo, real-time, perception, robotics, ultralytics]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
+project: https://docs.ultralytics.com/
 code: https://github.com/ultralytics/ultralytics
+code_scope: "ultralytics/ultralytics 全仓 Python 包与 yolo CLI 工程工具链（覆盖 YOLOv8/11/26/RT-DETR/SAM 多代多任务训练、跟踪与导出）"
+project_distinction: "Ultralytics 开源工程主仓与工具链实体（pip install ultralytics）；独立论文 YOLO26（arXiv:2606.03748）的机制与评测见 paper-yolo26-unified-realtime-e2e-vision。"
+original: ../../sources/repos/ultralytics.md
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/object-detection.md

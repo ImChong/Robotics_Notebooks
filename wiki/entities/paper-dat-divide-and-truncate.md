@@ -1,11 +1,14 @@
 ---
 type: entity
+project_id: dat-divide-and-truncate
 tags: [paper, simulation, contact, multi-physics, collision, siggraph, nvidia, newton]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 arxiv: "2604.15513"
 venue: SIGGRAPH 2026
 code: https://github.com/newton-physics/newton
+code_scope: "newton/_src/solvers/vbd/ 与 newton/examples/multiphysics/example_vbd_dat_rigid_soft.py（SolverVBD 中的 Planar-DAT 与刚软截断核函数）"
+project_distinction: "DAT 论文实体（arXiv:2604.15513 / SIGGRAPH 2026）；在 Newton 单仓内仅对应 SolverVBD 几何无穿透截断实现，与 Kamino（闭链极大坐标 PADMM）、Mixed MPM（SolverImplicitMPM）及 Steel（SolverSteel）为独立求解器与独立研究。"
 related:
   - ./newton-physics.md
   - ./paper-mixed-mpm-stiff-elastoplasticity.md

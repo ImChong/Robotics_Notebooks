@@ -2,7 +2,7 @@
 type: concept
 tags: [control, manipulation, impedance-control, force-control, contact-rich, whole-body-control]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 summary: "Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。"
 original:
   - ../../sources/papers/mayr_cartesian_impedance_reading_arxiv_2212_11215_imp1.md

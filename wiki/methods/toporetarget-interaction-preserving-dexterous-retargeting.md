@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real]
 status: complete
 date: 2026-06-17
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, rl, imitation-learning, sim2real, unitree-g1, uiuc, iros2026, isaac-gym]
 status: complete
-updated: 2026-09-29
+updated: 2026-11-22
 arxiv: "2603.03279"
 venue: "IROS 2026"
 code: https://github.com/Sirui-Xu/ULTRA

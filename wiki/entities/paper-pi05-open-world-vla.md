@@ -9,9 +9,12 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 arxiv: '2504.16054'
+project: https://www.pi.website/blog/pi05
 code: https://github.com/Physical-Intelligence/openpi
+code_scope: "openpi 中的 π₀.₅ 模型配置与流匹配微调/服务入口（pi05_base、pi05_libero、pi05_droid、pi05 模式）"
+project_distinction: "π₀.₅ 论文 canonical 实体（arXiv:2504.16054）；与同仓的初代 π₀ 论文（paper-pi0，arXiv:2410.24164）及第三方/NVIDIA 边缘 TensorRT 部署教程（jetson-openpi-pi05-on-thor）相互独立。"
 venue: HMI curated · 2025
 summary: π0.5 通过异构数据协同训练与分层语义/动作推理，增强未见家庭环境中的长时程操作泛化；openpi 已开放部分代码和模型 checkpoint。
 related:

@@ -10,9 +10,11 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-10
+updated: 2026-11-22
 arxiv: '2410.24164'
 code: https://github.com/Physical-Intelligence/openpi
+code_scope: "openpi 中的 π₀ 模型族与推理/微调配置（如 pi0_base、pi0_aloha_sim、Pi0.sample_actions）"
+project_distinction: "π₀ 论文 canonical 实体（arXiv:2410.24164，RSS 2025）；与同仓托管的后续开放世界分层模型 π₀.₅（paper-pi05-open-world-vla，arXiv:2504.16054）及 Jetson Thor TensorRT 部署教程（jetson-openpi-pi05-on-thor）相互独立。"
 related:
 - ../methods/pi0-policy.md
 - ../methods/pi07-policy.md

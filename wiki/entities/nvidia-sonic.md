@@ -4,7 +4,7 @@ project_id: nvidia-sonic-humanoid-wbc-2026
 tags: [paper, humanoid, imitation-learning, motion-tracking, whole-body-control, foundation-model, reinforcement-learning, nvidia, vla, teleoperation, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey, unitree-g1]
 status: complete
 date: 2026-05-14
-updated: 2026-11-16
+updated: 2026-11-22
 arxiv: "2511.07820"
 doi: "10.1126/scirobotics.aed4592"
 venue: "Science Robotics 2026"
@@ -179,7 +179,7 @@ SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标�
 - **WAM 上游接口：** [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)（arXiv:2606.09215）将 SONIC **FSQ motion token** 作为 **World Action Model 的统一全身动作空间**，由 Video DiT 单次前向隐状态条件 Motion DiT 预测，再经 SONIC 解码闭环执行 G1 loco-manipulation——与 GR00T+VLA 分层接 SONIC 形成 **动力学先验 vs 语义先验** 对照。[ω-0](./paper-omega-0.md)（arXiv:2608.06375）同样以 **SONIC 兼容全身 action latent** 为接口，但世界信号改为 **潜空间未来观测 embedding**（非视频 DiT），并在家务 11 任务上报告 Omni **SR 81.8%**；采集侧亦用 SONIC 作 Pico VR 遥操作策略与公共运动仿真回放接地。
 - **感知地形扩展：** [Perceptive BFM](./paper-perceptive-bfm.md)（CoRL 2026 submission）在 **保留 raw 参考接口** 的 BFM 叙事上叠加 **机器人中心高程感知**；项目页报告无视觉消融 reward **54.6 → 3.6**，可与 SONIC 的 **无感知大规模 tracking** 形成「接口开放 vs 地形落地」对照。
 - **接触丰富场景扩展：** [SceneBot](./paper-scenebot.md)（arXiv:2606.27581）在 **同一 PPO tracking 范式** 上叠加 **per-link contact label** 与 **hindsight scene reconstruction** 数据引擎；sim-to-sim 上 **自由空间与 SONIC 同级**，但 object/terrain/sit 成功率 **95–100% vs 0–15%**——说明 scaling 型 tracker 需额外 **接触意图接口** 才能落地搬箱、楼梯与坐椅等场景交互。
-- **高覆盖率训练集长尾：** [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md)（arXiv:2607.04837，小鹏机器人）在 **同平台重实现 SONIC-Base** 上发现 **残余训练集失败**（高动态/平衡关键）不全是曝光问题，而是 **保守 effort/temporal 奖励** 与 **名义重力冷启动** 造成的 **capability bottleneck**；用 **能力对齐 dynamic/balance expert → 路由 DAgger → RL 微调** 改善长尾与 held-out，并提出 **STC/TIS/MPJPE-W** 评测——与本文「scaling 仍留长尾」形成互补阅读。
+- **高覆盖率训练集长尾：** [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md)（arXiv:2607.04837，小鹏机器人；**注意：v3 已于 2026-08-24 因实验数据集授权与治理争议由作者撤稿，定量基准仅供参考**）在 **同平台重实现 SONIC-Base** 上发现 **残余训练集失败**（高动态/平衡关键）不全是曝光问题，而是 **保守 effort/temporal 奖励** 与 **名义重力冷启动** 造成的 **capability bottleneck**；用 **能力对齐 dynamic/balance expert → 路由 DAgger → RL 微调** 改善长尾与 held-out，并提出 **STC/TIS/MPJPE-W** 评测——与本文「scaling 仍留长尾」形成互补阅读。
 
 ## 公开材料要点（论文摘要 + 官网，2026-05）
 
@@ -458,7 +458,7 @@ sequenceDiagram
 - [HumanTracker](./paper-humantracker.md)：四族光学基准 + HumanScore；复用 SONIC 终止准则，零样本表上本文 Ground 观感更好、整体贴合落后 Humanoid-GPT
 - [SceneBot](./paper-scenebot.md)：contact-prompted 单策略 tracker；论文以 SONIC 为自由空间强基线，在 **地形+物体** 交互上展示 contact label 与场景重建数据的必要性
 - [HumanoidArena](./paper-humanoidarena.md)：将 SONIC 与 TWIST2 并列为 **分层全身学习的双 GMT 后端**，在 7 项腿关键 HOI/HSI 上评测 **跨 GMT 迁移** 与扰动泛化（arXiv:2606.17833）
-- [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md)：以 **SONIC 配方** 为强基线，研究 **训练集长尾残余** 的 **能力对齐专家蒸馏**（arXiv:2607.04837）；绝对数字不与 G1 发布权重直接可比
+- [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md)：以 **SONIC 配方** 为强基线，研究 **训练集长尾残余** 的 **能力对齐专家蒸馏**（arXiv:2607.04837，**v3 已因数据集授权争议撤稿**；绝对数字不与 G1 发布权重直接可比且不宜作已定论基准）
 - [ScaleBFM（BFM scaling 配方）](./paper-scaling-bfm-humanoid.md)：同 motion-tracking BFM 预训练叙事，但系统拆解 **on-policy 数量 × 参考多样性 × Humanoid Transformer** 三轴 scaling；whole-body 基准上 **BFM-Global** 相对 SONIC **G-MPKPE 降幅约 54%（BONES）/ 82%（Ours）**（arXiv:2607.15163）
 - [Teleopit](./paper-teleopit.md)：在 mocap/PICO 持出跟踪表中以 SONIC 为基线之一；主线是 **VR 全身体+连续灵巧手** 遥操作闭环（arXiv:2608.01834）
 - [FDDC](./paper-fddc.md)：单腿平衡 sim2sim 基准上 SONIC 为**最强通用侧**（Fail 18.9%、Marginal 81.1%），但仍 **Perfect 0/90**——规模带来稳健，不等于根因单腿平衡（arXiv:2608.00500）

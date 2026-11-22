@@ -2,7 +2,7 @@
 type: method
 tags: [evolutionary-computation, genetic-programming, program-synthesis, symbolic-regression, robotics]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-22
 related:
   - ./genetic-algorithm.md
   - ./reinforcement-learning.md

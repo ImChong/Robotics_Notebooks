@@ -7,7 +7,7 @@ tags: [hardware, teleoperation, dual-arm, dataset-collection, deepmind, stanford
 original:
   - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 summary: "ALOHA 是 Tony Z. Zhao 等研究者提出的低成本、开源双臂遥操作硬件系统，与 ACT 配套；原始项目与后续 ALOHA 2 应区分。"
-updated: 2026-11-15
+updated: 2026-11-22
 ---
 
 # ALOHA (双臂遥操作硬件)

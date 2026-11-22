@@ -10,7 +10,7 @@ tags:
   - ucsd
   - open-source
 status: complete
-updated: 2026-11-05
+updated: 2026-11-22
 arxiv: "2310.16828"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md

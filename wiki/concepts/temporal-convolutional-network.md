@@ -2,7 +2,7 @@
 type: concept
 tags: [tcn, convolution, sequence-modeling, architecture]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/locuslab/TCN
 summary: "时间卷积网络（TCN）以因果膨胀一维全卷积与残差块对序列建模，在训练并行性、稳定梯度与长延迟复制任务上显著强于通用 LSTM/GRU，适合机器人固定时间窗口（IMU/触觉/本体状态）特征编码，但受限于固定感受野与评估期历史缓存开销。"
 related:

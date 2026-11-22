@@ -1,8 +1,12 @@
 ---
 type: entity
+project_id: easy-quadruped
+code: https://github.com/Xzgz718/easy_quadruped
 tags: [quadruped, open-source, stanford, mujoco, model-based-control, education, pupper]
 status: complete
-updated: 2026-05-24
+updated: 2026-11-22
+original:
+  - ../../sources/repos/easy_quadruped.md
 related:
   - ./stanford-doggo-and-pupper.md
   - ./quadruped-robot.md
@@ -47,7 +51,11 @@ summary: "easy_quadruped 是 StanfordQuadruped（Pupper）控制栈的独立 for
 
 > **非官方声明：** 维护方 Xzgz718 在 `NOTICE` 中明确本仓非 Stanford Student Robotics 官方发布；名称仅用于标明上游来源。
 
-## 控制架构概览
+## 核心原理
+
+`easy_quadruped` 以参数化相位步态调度 + 逆运动学（IK）+ 关节 PD 替代端到端强化学习策略：每个控制周期先从 MuJoCo 浮动机身读取躯干姿态、速度与触地状态回填 `State`，再由 `Controller` 按 `DEACTIVATED` / `REST` / `TROT` / `HOP` 状态机分派支撑相（`StanceController`）与摆动相（`SwingLegController`）足端目标位置，最后经 `four_legs_inverse_kinematics` 求解 12 个关节角送入 MuJoCo 位置/PD 执行器推进仿真。
+
+### 控制架构概览
 
 ```mermaid
 flowchart LR
@@ -101,6 +109,48 @@ python sim/run_floating_base.py --headless --duration 8 --task-sequence "rest:1.
 ```
 
 更细参数与任务语法见上游 [`sim/README.md`](https://github.com/Xzgz718/easy_quadruped/blob/main/sim/README.md)。
+
+## 源码运行时序图
+
+图依据：`Xzgz718/easy_quadruped@main`（2026-11-22 核对），基于 `sim/run_floating_base.py` 与 `src/Controller.py` 源码整理，未在本地执行 MuJoCo viewer。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 用户 CLI
+  participant Main as sim/run_floating_base.py:main
+  participant MJCF as build_floating_base_mjcf.py
+  participant Runner as run_loop
+  participant Obs as SimObservationInterface / SimIMU
+  participant Cmd as command_source / apply_feedback
+  participant Ctrl as src/Controller.py:Controller
+  participant HW as SimHardwareInterface (MuJoCo)
+  User->>Main: --mode / --task-sequence / --kp --kd
+  Main->>MJCF: 按需 build_mjcf(pupper_floating.xml)
+  Main->>Runner: 加载 MjModel/MjData 并启动闭环
+  loop 每个控制 tick
+    Runner->>Obs: sync_state() + read_orientation()
+    Obs-->>Runner: 更新 State（关节、触地、姿态）
+    Runner->>Cmd: apply_step_config() + get_command()
+    Cmd-->>Runner: Command（含可选 attitude/velocity 反馈）
+    Runner->>Ctrl: run(state, command) → step_gait() + IK
+    Ctrl-->>Runner: state.joint_angles
+    Runner->>HW: set_actuator_postions() + step()
+  end
+  Runner-->>User: 输出位移、足端误差与 |roll|/|pitch| 统计
+```
+
+## 工程实践
+
+1. **先建模后无头验证：** 修改几何或执行器参数后先加 `--rebuild` 重新生成 `pupper_floating.xml`，再以 `--headless --duration 8 --task-sequence "rest:1.0,trot:4.0,rest"` 跑通闭环与稳定检查（`qpos[2] >= 0.05` 且无非有限值）。
+2. **调参边界对齐：** 默认 `--kp 24.0`、`--kd 2.2`、`--torque-limit 3.0` 与 `--z-clearance 0.03`、`--swing-time 0.11` 绑定于 Pupper 几何尺度，迁移到不同负载或更长步态周期时应先固定无反馈基线再开启 `--attitude-kp` / `--velocity-kp`。
+3. **版本鲜度确认（2026-11-22 复核）：** 上游仍聚焦早期 StanfordQuadruped 模型控制与 MuJoCo 闭环入口，未合入 Pupper v3 的 ROS 2 / GIM4305 / RL-VLM 代码路径，选型时与 [Stanford Pupper v3](./stanford-doggo-and-pupper.md) 保持明确区分。
+
+## 局限与风险
+
+- **无动力学全身优化与地形感知：** 采用运动学步态 + IK 与可选轻量姿态/速度反馈，不含 WBC、MPC 或视觉地形感知，复杂崎岖地形鲁棒性有限。
+- **单机非并行仿真：** 仅面向单机器人 MuJoCo 教学与调参，不提供 Isaac Gym / Isaac Lab 大规模 GPU 并行环境。
+- **未在本地真机实测：** 实机部署需另外完成树莓派 GPIO PWM 接口适配与 `calibrate_servos.py` 零位标定；本页结论基于仓库源码阅读，未对真实 Pupper 硬件开展联调。
 
 ## 与 Stanford Pupper / RL 生态的关系
 

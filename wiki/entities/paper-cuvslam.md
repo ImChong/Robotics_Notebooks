@@ -11,7 +11,7 @@ tags:
   - isaac-ros
   - multi-camera
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: "2506.04359"
 venue: "arXiv 2025"
 code: https://github.com/nvidia-isaac/cuVSLAM

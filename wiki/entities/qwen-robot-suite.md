@@ -2,7 +2,7 @@
 type: entity
 tags: [qwen, embodied-ai, vla, navigation, world-models, agentic, foundation-model]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-22
 related:
   - ./qwen-robot-nav.md
   - ./qwen-robot-manip.md

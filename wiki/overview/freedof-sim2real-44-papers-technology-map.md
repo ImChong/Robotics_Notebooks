@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, sim2real, system-identification, domain-randomization, technology-map]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../concepts/sim2real.md

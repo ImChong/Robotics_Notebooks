@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 related:
   - ../entities/cartwheel-control.md
   - ../entities/paper-throwing-tight-spiral-football.md

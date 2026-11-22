@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, sim2real, video-generation, open-source]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 related:
   - ./paper-cosmos-transfer1.md
   - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md
@@ -54,7 +54,7 @@ code: https://github.com/nvidia-cosmos/cosmos-transfer2.5
 
 - **解析仿真解决不了「看起来假」：** [Newton](./newton-physics.md) / [Omniverse](./nvidia-omniverse.md) 给几何与接触；Transfer 吃仿真 RGB + depth/seg，吐策略能吃的照片级视频。产品 FAQ 把这条写成官方分工。
 - **控制可分区：** Transfer1 的时空权重图让前景跟 Edge/Vis（保机器人外形），背景跟 Depth/Seg（换厨房材质）。这是比「整段 style transfer」更接近机器人数据增广的接口。
-- **体积在缩小：** [Predict2.5 论文](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) 报 Transfer2.5-2B 比 Transfer1-7B **小 3.5×** 仍提高控制遵循与画质。
+- **体积在缩小：** [Predict2.5 论文](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) 报 Transfer2.5-2B 比 Transfer1-7B 模型参数规模**小 3.5×**（不能直接外推为统一速度收益），仍提高控制遵循与画质。
 - **配方已经按任务拆好：** [Cookbook](./cosmos-cookbook.md) 有 CARLA、X-Mobility、农机、仓库、GR00T-Mimic；不要从零猜 JSON。
 
 ## 核心原理
@@ -67,7 +67,7 @@ code: https://github.com/nvidia-cosmos/cosmos-transfer2.5
 | **Transfer2.5（2025-10）** | Predict2.5 flow | **2B**；auto 多视角；robot-multiview | JSON `controlnet_specs`；可当场算 depth/seg | [cosmos-transfer2.5](https://github.com/nvidia-cosmos/cosmos-transfer2.5) |
 | **Cosmos 3（2026-06）** | 全模态 MoT | 4B / 16B / 64B | 统一 Generator；Edge **不支持** V2V transfer | [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) |
 
-**核对说明：** 本页「Transfer1」一栏及下文机制/数字已对照 arXiv:2503.14492v2 全文（2026-11-07）；**Transfer2.5 与 Cosmos 3 两栏沿用既有归档（官方文档 / 仓库 / Predict2.5 摘录），本次未回到原文复核**。
+**核对说明：** 本页「Transfer1」一栏及下文机制/数字已对照 arXiv:2503.14492v2 全文（2026-11-07）；Predict2.5/Transfer2.5 已于 2026-11-17 补读 [arXiv:2511.00062](../../sources/papers/cosmos_predict25_arxiv_2511_00062.md) 一手原文（确认 3.5× 为模型尺寸比较、PAI-Bench I2W post-train Overall 0.810 为特定评测口径，且须将当前 Predict2.5/Transfer2.5 发布线与已迁至 Cosmos 3 的继任主线分开）。
 
 机制细节与 TransferBench 数字见 [Transfer1 论文](./paper-cosmos-transfer1.md)；2.5 代 PAI-Bench-C 见 [PAI-Bench 基准](./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md) 与 [Predict2.5 / Transfer2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)。
 

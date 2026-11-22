@@ -128,6 +128,19 @@ flowchart TB
 - **受控实验：** 论文另报告定量/定性消融（细节见 arXiv 正文 §IV–VII）。
 - **与 swarm 论文不可直接比数值：** 联赛规则、机体尺寸、对手强度不同；选型应看 **部署形态**（真机联赛 vs 仿真 swarm 基准）。
 
+## 与其他工作对比
+
+| 维度 | ARTEMIS（本文，arXiv:2512.09431） | [Swarm ACO+flocking（Sensors 2025）](./paper-humanoid-soccer-swarm-intelligence.md) | SPL DWM+DTA（arXiv:2401.15026） |
+|---|---|---|---|
+| **决策拓扑** | 单机集中 `Behavior planner`（每机自主，战术逻辑集中设计） | 全去中心化 ACO + flocking | 分布式市场拍卖 + Voronoi |
+| **通信机制** | 队友/对手主要靠机载视觉检测（ZED 2 + CLAP），非重点依赖通信 | 周期性 UDP 状态 | 极低带宽事件通信 |
+| **验证形态** | **RoboCup 2024 Adult-Size 真机国际赛冠军** | Webots 仿真为主 | NAO 真机 RoboCup |
+| **核心强项** | 感知–导航（DAVG+cf-MPC）–1 kHz 全身控制一体化与成人尺寸动态对抗 | 角色重分配快、丢包与故障容忍 | 规则驱动下的极限低通信协调 |
+
+- **vs 纯单机 Deep RL 足球技能（论文 §I 所指如 Booster 2025、Haarnoja 2024）：** 近年单机 RL 技能多聚焦追球射门，策略内部未建模队友、对手避障与团队角色；ARTEMIS 可将这类 RL 技能嵌入 `Kick Manager`，由模型基中层 `DAVG + cf-MPC` 将其他机器人作为移动障碍统一规避。
+- **vs 同实验室导航演进 [RAVEN](./paper-raven-rl-adaptive-visibility-graph-mpc.md)：** RAVEN 在 ARTEMIS 的 DAVG+cf-MPC 导航骨干基础上引入 RL 自适应障碍膨胀，用于吸收感知延迟与跟踪误差。
+- **对比读法：** 三类多机路线见 [人形多机协调](../concepts/humanoid-multi-robot-coordination.md)；因联赛规则、机体尺寸与对手强度不同，不把真机冠军表现与仿真 swarm 数值直接横比。
+
 ## 结论
 
 **ARTEMIS 证明：成人尺寸真机联赛冠军仍然依赖「强感知 + 中层避障 + 集中战术」全栈，单机 RL 射门只是可嵌入模块。**

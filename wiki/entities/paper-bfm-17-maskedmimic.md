@@ -1,11 +1,15 @@
 ---
 
 type: entity
+project_id: maskedmimic
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 venue: "SIGGRAPH Asia 2024 · ACM TOG"
+project: https://research.nvidia.com/labs/par/maskedmimic/assets/SIGGRAPHAsia2024_MaskedMimic.pdf
 code: https://github.com/NVlabs/ProtoMotions
+code_scope: "protomotions/agents/supervised/masked_mimic_model.py 与 examples/experiments/masked_mimic/（SIGGRAPH Asia 2024 MaskedMimic C-VAE 运动补全算法实现）"
+project_distinction: "MaskedMimic 论文实体（SIGGRAPH Asia 2024 TOG，69-DoF SMPL 虚拟角色稀疏运动补全）；有别于基于 ProtoMotions 的下游人形真机执行层论文 Metatron（paper-metatron-promptable-whole-body-execution，arXiv:2610.38027）与浏览器演示游戏 g1-football-metatron-goalkeeper。"
 summary: "MaskedMimic（TOG 2024，NVIDIA PAR）：将物理角色控制表述为掩码运动补全（CVAE + Transformer 先验 + 结构化时序掩码蒸馏），单策略支持任意关节任意时刻、文本与物体交互，官方实现合入 NVlabs/ProtoMotions。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -138,6 +142,15 @@ sequenceDiagram
 3. **单一大型策略超越 MoE 门槛：** 当动作多样且多地形混训时，统一 Transformer 先验比 PHC/PULSE 类多专家混合更易在线蒸馏且 test 泛化更稳。
 4. **真机定位清晰：** 论文针对 69-DoF SMPL 虚拟角色（30B + 10B 步、4× A100 训 2 周），工程上真机人形演化参考 `NVlabs/ProtoMotions` 的 G1 / Metatron 配方。
 
+## 与其他工作对比
+
+| 对照对象 | 核心机制差异 | 实验对比要点（原文 Table 1–4 & 仓库对照） |
+|---|---|---|
+| **[PHC / PHC+](./phc.md) 与 PULSE** | PHC+/PULSE 依赖渐进乘性原语（PMCP/MoE）与分层技能融合；MaskedMimic 采用单一 Transformer 先验 + 残差 C-VAE 在线 DAgger 蒸馏 | 平地全约束测试 MaskedMimic 达 **99.2% / 35.1 mm**（优于 PULSE 97.1% / 54.1 mm，持平 PHC+ 99.2% / 36.1 mm）；零微调稀疏 VR 跟踪达 **98.1% / 58.1 mm**（PULSE 为 93.4% / 88.6 mm） |
+| **ASE / CALM** | 对抗运动先验与条件潜在技能先验；MaskedMimic 将部分约束补全直接表述为结构化时序掩码条件生成 | 平地稀疏 VR 测试中 MaskedMimic 成功率 **98.1%**，显著高于 ASE（37.6%）与 CALM（10.1%） |
+| **[DeepMimic](../methods/deepmimic.md)** | 逐帧完整参考模仿；MaskedMimic 通过结构化时序掩码与 time-gap 适应长窗口缺失与高层文本/物体条件 | 支持任意关节-任意时刻稀疏约束及 XCLIP 文本、8 角点包围盒零微调下游控制 |
+| **[METATRON](./paper-metatron-promptable-whole-body-execution.md)** | 同托管于 [NVlabs/ProtoMotions](./protomotions.md)：MaskedMimic 为 69-DoF SMPL 虚拟角色算法母体；METATRON 将球面条件 VAE 蒸馏与确定性 Prior 导出落至 Unitree G1 真机执行层 | MaskedMimic 未含真机传感器噪声/延迟域随机化与 C++ TensorRT 部署链，真机部署对照见 METATRON |
+
 ## 常见误区
 
 1. **Goal-conditioned 跟踪不等于无上限技能：** 仍受 AMASS/HumanML3D/SAMP 数据分布覆盖（未见物理交互模态难凭空产生）以及高度图局部 2.5D 表示限制。
@@ -154,6 +167,7 @@ sequenceDiagram
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 代码生态：[protomotions.md](./protomotions.md) — MaskedMimic 所属 NVIDIA 开源仿人仿真与训练平台（含 Metatron）
+- 真机延伸：[METATRON（可提示人形执行层）](./paper-metatron-promptable-whole-body-execution.md) — ProtoMotions 中面向 Unitree G1 的球面 VAE 真机演化线
 - 前置对比：[phc.md](./phc.md) — `π^FC` 对比对象（PHC+/PULSE），展示单体大网络相对 MoE 路线的优势
 - [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 稀疏约束下的物理动作补全与完整参考轨迹模仿可据此对照。
 - [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 对比逐帧参考跟踪与 masked motion inpainting 的控制条件差异。

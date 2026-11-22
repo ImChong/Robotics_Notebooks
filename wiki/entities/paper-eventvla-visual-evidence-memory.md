@@ -17,7 +17,7 @@ tags:
   - tsinghua
   - pku
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 arxiv: "2606.20092"
 venue: "CoRL 2026"
 code: https://github.com/InternRobotics/EventVLA

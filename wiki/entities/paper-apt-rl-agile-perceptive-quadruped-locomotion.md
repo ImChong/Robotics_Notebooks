@@ -15,7 +15,7 @@ tags:
   - agency-for-defense-development
   - diden-robotics
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 doi: "10.1126/scirobotics.adz7397"
 arxiv: "2607.13579"
 venue: "Science Robotics 2026"

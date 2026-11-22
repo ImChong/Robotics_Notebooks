@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, instruction-generalization, libero, sjtu]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 project_id: gsr-paravla
 arxiv: "2608.02497"
 code: https://github.com/AutoLab-SAI-SJTU/GSR-ParaVLA
@@ -15,6 +15,7 @@ related:
   - ./paper-reflexvla.md
   - ./paper-ego2robot.md
   - ./paper-compression-is-routing.md
+  - ./paper-vge-2611-22625.md
 original:
   - ../../sources/papers/gsr_paravla_arxiv_2608_02497.md
   - ../../sources/repos/gsr-paravla.md
@@ -22,6 +23,7 @@ sources:
   - ../../sources/papers/gsr_paravla_arxiv_2608_02497.md
   - ../../sources/repos/gsr-paravla.md
   - ../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md
+  - ../../sources/papers/vge_arxiv_2611_22625.md
 summary: "GSR / ParaVLA（arXiv:2608.02497，交大 AutoLab）：VLA 改写崩溃来自 joint V-L 路由而非不懂语义；冻结 T5 重绑原生视觉并重训动作专家。LIBERO-Para 上 SmolVLA +44.6 pp，π₀.₅ PRIDE 70.4。训练与 HF 权重已开源。"
 ---
 
@@ -139,7 +141,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-相对「堆改写语料」：GSR 正交，给已经大规模共训的 \(\pi_{0.5}\) 仍能再涨。相对 [Xiaomi-Robotics-0](./xiaomi-robotics-0.md)：报告 Para SR 76.0 略高，但 GSR+\(\pi_{0.5}\) 的 PRIDE 更高。相对 [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md)：后者拆动作时间结构，本文拆语言路由。
+相对「堆改写语料」：GSR 正交，给已经大规模共训的 \(\pi_{0.5}\) 仍能再涨。相对 [Xiaomi-Robotics-0](./xiaomi-robotics-0.md)：报告 Para SR 76.0 略高，但 GSR+\(\pi_{0.5}\) 的 PRIDE 更高。相对 [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md)：后者拆动作时间结构，本文拆语言路由。相对 [VGE（arXiv:2611.22625v1）](./paper-vge-2611-22625.md)：VGE 将冻结 Qwen3.5-9B 的上下文特征注入 Grounding DINO-base 解决静态图像的广义指代目标定位（GREC 0/1/多目标对指令改写与冗余上下文稳健，源码待发表后发布），而 GSR 侧重机器人闭环动作专家的指令改写鲁棒性，二者在定位前端与动作路由端互补。
 
 ## 结论
 
@@ -169,6 +171,7 @@ sequenceDiagram
 - [ReflexVLA](./paper-reflexvla.md) — 同校；延迟感知动态任务，不是指令路由
 - [Ego2Robot](./paper-ego2robot.md) — 数据侧补语言/物体扰动
 - [Compression is Routing](./paper-compression-is-routing.md) — 路由脆弱性的另一解：重建误差路由 vs 语义重绑
+- [VGE（冻结 VLM 指导广义指代目标定位）](./paper-vge-2611-22625.md) — 静态目标定位层的指令改写/冗余上下文稳健性对照
 
 ## 参考来源
 
@@ -176,6 +179,7 @@ sequenceDiagram
 - [GSR-ParaVLA 仓库归档](../../sources/repos/gsr-paravla.md)
 - [具身智能小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md)
 - [arXiv:2608.02497](https://arxiv.org/abs/2608.02497)
+- [VGE 原文归档（arXiv:2611.22625v1）](../../sources/papers/vge_arxiv_2611_22625.md) — 广义指代目标定位改写稳健性互补对照（2026-11-19）
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, transformer, sequence-modeling, nlp, architecture, google, google-brain, deep-learning]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 arxiv: "1706.03762"
 venue: "NeurIPS 2017"
 code: https://github.com/tensorflow/tensor2tensor

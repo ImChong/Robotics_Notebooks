@@ -2,7 +2,7 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-22
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
@@ -16,10 +16,12 @@ related:
   - ../entities/paper-cortex-parametric-memory.md
   - ../entities/paper-robocasa-mem.md
   - ../entities/paper-false-belief-mandela-effect-multi-agent.md
+  - ../entities/paper-self-improvement-memory-crsi.md
 sources:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
   - ../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md
   - ../../sources/videos/google-cloud-tech-agent-memory-architecture-2026-10-28.md
+  - ../../sources/papers/self_improvement_memory_arxiv_2611_18856.md
 summary: "Agent 记忆 = 会话间保留的经验笔记；Anthropic 把它拆成「当场写笔记」与「dreaming 后台整理」（纠错、建 wiki 表示、提升到上层、按目标塑形、补缺口），并用 CL-Bench、Pokémon Red、企业文档 wiki 的评测说明：强模型自己判断显著性优于写死规则。"
 ---
 
@@ -127,7 +129,13 @@ flowchart LR
 | [PolyStrata](../entities/polystrata-local-inference.md) | 多引擎 MoE 本地推理，部分模型复用 Niko Strata |
 | [Linger](../entities/linger-simplexai.md) | 本地个人 Agent、知识 Wiki、电脑工具与权限控制 |
 
+## 改进过程记忆对照：SIM / CRSI（2026-11-21）
+
+- [Self-Improvement Memory（SIM / CRSI，arXiv:2611.18856v1）](../entities/paper-self-improvement-memory-crsi.md)：不同于本页关注「执行任务的策略 agent 在会话间记什么、如何 dreaming」，SIM 是提供给 **harness proposer 与 selector** 的改进过程记忆——在单 JSON 中记录每次修改的根因、评测前预测、评测后已修/未修项及跨域迁移线索，用于接口兼容条件下的持续递归自改进（CRSI）。跨模型 Workspace 实验报告 Full SIM 84.75 vs 仅继承 harness 73.42（coding 10 组配对平均 +2.36 分），但也有跨代际（4 Argon CRSI 94.8 vs Fresh RSI 95.6）非必胜实例；当前无公开完整实现，且无机器人真机或在线力控验证（[SIM 原文精读归档](../../sources/papers/self_improvement_memory_arxiv_2611_18856.md)）。
+
 ## 关联页面
+
+- [Self-Improvement Memory（SIM / CRSI）](../entities/paper-self-improvement-memory-crsi.md) — 面向 harness 优化器（proposer/selector）的过程改进记忆，与本页任务执行记忆互补
 
 - [Cortex：上下文到参数记忆](../entities/paper-cortex-parametric-memory.md) — 对比外部持久笔记与权重级巩固
 
@@ -147,6 +155,7 @@ flowchart LR
 - [Anthropic：The components of agent memory（归档）](../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md)
 - [Claude Cookbook：Dreaming with a dynamic workflow（归档）](../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md)
 - [Sleep-time Compute（arXiv:2504.13171）](https://arxiv.org/abs/2504.13171)
+- [SIM / CRSI 原文精读归档（arXiv:2611.18856v1）](../../sources/papers/self_improvement_memory_arxiv_2611_18856.md) — 改进过程记忆对照（2026-11-21）
 
 ## 推荐继续阅读
 

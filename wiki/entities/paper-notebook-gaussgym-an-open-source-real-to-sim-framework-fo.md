@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: stub
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2510.15352"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md

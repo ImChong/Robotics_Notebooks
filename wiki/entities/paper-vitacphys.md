@@ -17,7 +17,7 @@ original:
   - ../../sources/papers/vitacphys_arxiv_2608_21355.md
   - ../../sources/sites/vitacphys-github-io.md
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2608.21355"
 venue: "arXiv 2026"
 related:
@@ -134,6 +134,15 @@ flowchart TB
 - **VLM 先验补接触前** — 五帧 pre-contact RGB 文本假设与接触后视触觉证据因子化，消融去掉文本质量 Acc 可降 **21.5 pp**。
 - **与 ViTacFormer 分界** — 后者学跨模态表征/下一触觉帧；ViTacPhys 专注 **物理属性估计 → 策略条件化** 系统闭环。
 - **待开源** — 代码与 1800 示范数据集均 **Coming Soon**；复现前只能参照论文与项目页表图。
+
+## 与其他工作对比
+
+| 对比维度 / 对象 | ViTacPhys 方案与表现 | 基线与相邻视触觉工作对照 |
+|------|------|------|
+| **ACT（纯视觉模仿学习基线）** | 在统一 4 层 encoder/decoder Transformer 与优化预算下，将质量/刚度/摩擦预测嵌入 `4×512` token 注入 ACT；ID 总成功率 **95.0%**、OOD **83.4%**，OOD 共同成功物体绝对力误差 **-19.7%** | 仅依赖视觉输入而无显式物理属性条件，面对视觉相似但物理属性不同的 OOD 物体易过力压扁或欠力滑落；ViTacPhys 相对 ACT 的 clean-success 在 ID/OOD 分别高 **`+12.5 pp` / `+38.9 pp`**，力剖面 Pearson $r$ 高 **`+0.414`** |
+| **[ViTacFormer](./paper-sa-2506-15953-vitacformer-learning-cross-modal-representation.md)** | 聚焦「人体视触觉示范 → 物理属性估计 → 人→机迁移 → 在线力自适应抓取」系统闭环 | 作为论文对比基线之一；侧重跨模态表征学习与下一触觉帧预测，不显式预测质量/刚度/摩擦条件 token |
+| **[ViTacWorld](./paper-vitacworld.md)** | 面向力自适应抓取的物理属性估计与策略条件化 | 侧重视触觉世界模型缩放方向 |
+| **人→机迁移与先验消融** | 人体预训练 + 遥操作 + Seedance 2.0 机器人风格 RGB 增广 + 匹配动作人体数据（OOD 质量 Acc **78.0%**） | **仅遥操作微调**在 OOD 上质量 Acc 仅 `44.5%`；移除接触前 5 帧 **VLM 语义先验**后质量 Acc 下降 `21.5 pp` |
 
 ## 工程实践与开源状态
 

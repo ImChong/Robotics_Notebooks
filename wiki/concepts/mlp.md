@@ -2,7 +2,7 @@
 type: concept
 tags: [mlp, feedforward, deep-learning, policy, architecture]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-22
 summary: "多层感知机是逐层仿射+非线性的向量函数逼近器，也是机器人低频观测与高频关节策略最常见的默认骨干；加深靠残差，扩容靠 MoE，而不是无限加宽一层。"
 related:
   - ./mixture-of-experts.md

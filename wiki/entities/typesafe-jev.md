@@ -2,7 +2,7 @@
 type: entity
 tags: [typesafe-ai, jev, system-one-model, llm-agents, agent-infrastructure, open-source, decision-api]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-22
 related:
   - ./valen.md
   - ./laya.md
@@ -16,6 +16,7 @@ related:
   - ./paper-navjev-efficient-vln-jev.md
   - ./dimensionalos-dimos.md
   - ../tasks/vision-language-navigation.md
+  - ./paper-so-arena.md
 sources:
   - ../../sources/blogs/typesafe_ai_introducing_system_one_models_jev.md
   - ../../sources/sites/typesafe-ai.md
@@ -33,6 +34,7 @@ sources:
   - ../../sources/repos/jevpilot.md
   - ../../sources/sites/jevpilot.md
   - ../../sources/repos/jev-robotics-demo.md
+  - ../../sources/papers/so_arena_arxiv_2611_15777.md
 summary: "Jev 是 TypeSafe AI 首个 System One Model：并行采样、schema 约束的类型安全结构化决策 + 校准概率，用 RLCD 训练；官方 JS/Python SDK 与 Agent Skills 已 MIT 开源，模型为早期访问 API（非权重开放）。开源对照见 [Laya](./laya.md)、多模态开源延伸 [Valen](./valen.md)。"
 ---
 
@@ -158,6 +160,10 @@ sequenceDiagram
 - **类型错误率：** LLM 侧来自 OpenRouter 统计；Jev 侧 schema 匹配 **0%**（结构性保证，非经验估计）。
 - **Demo：** Doom ~10 QPS；Wikiracing 多步链接选择。
 
+### 综合能力与决策可靠性基准（SO-Arena）
+
+- **[SO-Arena](./paper-so-arena.md)（arXiv:2611.15777v1，2026-11）：** 跨 11 领域、2,919 任务评测 System One 模型的能力分 C 与决策可靠性分 R（由选项序稳定性 S 与无答案辨别力 N 合成）。18 个完整测得 R 的模型中 **JevAny-27B** 可靠性排名第一，而能力分领先者仅列可靠性第七，证明能力高分不等于结构化拒答与序稳健性；作者 H100 batch=1 计时显示开源 System One 平均单题 <0.3 s（不直接构成机器人实时控制保证）。
+
 ### 机器人导航（第三方基准）
 
 - **[Can Jev Nav? / Nav Arena](./dimensional-can-jev-nav-benchmark.md)（Dimensional，2026）：** Habitat **327** object-goal 任务；Jev **2 Hz typed drive**（无 tool）得 **mean SPL 0.263 / 45.9% arrived**，低于 **Dimcode 导航 tool（0.743 / 88.4%）** 与 **Pi+Astra（0.522 / 76%）**；**&lt;10 m** 子集 **71.1% arrived**、**~$0.055/run**。报告强调 **WorldState 须 robot-frame + 语言 helper**（否则 Jev 完成率骤降）。
@@ -200,6 +206,7 @@ sequenceDiagram
 - [Can Jev Nav?（Nav Arena）](./dimensional-can-jev-nav-benchmark.md) — Habitat 上 Jev vs Dimcode vs Pi agent
 - [NavJev 论文](./paper-navjev-efficient-vln-jev.md) — VLN-CE typed waypoint 选择
 - [DimOS](./dimensionalos-dimos.md) — 评测运行时与 Go2/Habitat 导航栈
+- [SO-Arena](./paper-so-arena.md) — System One 能力谱系 C 与决策可靠性 R（S/N）基准，JevAny-27B 可靠性领先
 
 ## 参考来源
 
@@ -214,6 +221,7 @@ sequenceDiagram
 - [Awesome Jev（yibie）](../../sources/repos/awesome-jev-yibie.md)
 - [Awesome JEV（社区）](../../sources/repos/awesome-jev.md)
 - [Awesome JEV 中文（社区）](../../sources/repos/awesome-jev-zh.md)
+- [SO-Arena 论文归档（arXiv:2611.15777v1）](../../sources/papers/so_arena_arxiv_2611_15777.md) — System One 模型能力与可靠性基准（2026-11-19）
 
 ## 推荐继续阅读
 

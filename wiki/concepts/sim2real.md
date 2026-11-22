@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../entities/paper-gamma-art-smart.md
   - ../entities/egalahad-sim2real.md
@@ -404,8 +404,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Instant NuRec](../entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS；~1.5 s vs 逐场景 75 min，AlpaSim 策略排序对齐（arXiv:2607.14203）
 - [DA-Nav](../entities/paper-da-nav.md) — CARLA 方向感知 VLN → Go2 / Kuavo-V 零样本户外导航（arXiv:2607.11638）
 - [Arcadia](../entities/paper-arcadia.md) — 自采 + 3DGS USD + 共享 VLN/VLA + 真机反馈写回；G1 46/27（arXiv:2512.00076；部分开源）
-- [HumanoidVLN](../entities/paper-humanoidvln.md) — 3DGS 室内场景与 G1 DualVLN 20 条 sim–real 相关（arXiv:2608.12860；待开源）
-- [iCrowdNav](../entities/paper-icrowdnav.md) — SocNav-Gym 视觉人群导航 → Dingo 零样本（BEV+姿态意图；代码待发布）
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — 3DGS 室内场景与 G1 DualVLN 20 条 sim–real 相关（arXiv:2608.12860；截至 2026-11 无公开代码仓）
+- [iCrowdNav](../entities/paper-icrowdnav.md) — SocNav-Gym 视觉人群导航 → Dingo 零样本（BEV+姿态意图；MIT 源码已开源）
 - [ZONDA](../entities/paper-zonda.md) — Habitat ObjectNav → TITA 轮腿双足（离散→MPPI；arXiv:2607.21025）
 - [轮腿双足](./wheel-legged-biped.md)
 - [tita_rl](../entities/tita-rl.md)

@@ -1,11 +1,15 @@
 ---
 type: entity
+project_id: mixed-mpm-stiff-elastoplasticity
 tags: [paper, simulation, mpm, elastoplasticity, granular, snow, fluid, siggraph, nvidia, newton]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 doi: "10.1145/3811345"
 venue: SIGGRAPH 2026
+project: https://research.nvidia.com/labs/prl/mixed_mpm/
 code: https://github.com/newton-physics/newton
+code_scope: "newton/_src/solvers/implicit_mpm/（SolverImplicitMPM 与双向耦合）及 newton/examples/mpm/"
+project_distinction: "Mixed MPM 论文实体（SIGGRAPH 2026，DOI:10.1145/3811345）；在 Newton 单仓内仅对应隐式混合物质点法求解器 SolverImplicitMPM，与 DAT（SolverVBD）、Kamino（SolverKamino）和 Steel（SolverSteel）相互独立。"
 related:
   - ./newton-physics.md
   - ./paper-dat-divide-and-truncate.md

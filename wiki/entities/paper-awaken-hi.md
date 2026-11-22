@@ -7,7 +7,7 @@ project: https://engineai-robotics.github.io/Awaken-HI/
 code: https://github.com/engineai-robotics/Awaken-HI
 tags: [paper, humanoid, locomotion, manipulation, vla, imitation-learning, egocentric]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 summary: "Awaken-HI（EngineAI，arXiv:2611.26420v1）以约5万小时同步全身人类第一视角经验预训练共享动作专家，联合监督原人体运动和T800重定向动作；真机八任务均值93.75%，代码/权重未发布，HF仅开放样例。"
 original:
   - ../../sources/papers/awaken_hi_arxiv_2611_26420.md
@@ -132,6 +132,16 @@ flowchart TD
 - 关注**动作接口与低层控制**：40D 是全身目标，不是关节力矩，也不意味着无须独立安全保护。
 - 分开记录八单任务、两长程、四新指令组合与未见对象的指标；样本量均有限。
 - 项目应归类为**论文与数据样例公开、模型运行资源待发布**，不能标成已可复现开源 VLA。
+
+## 与其他工作对比
+
+| 对比维度 / 工作 | Awaken-HI（本文） | $\pi_{0.5}$ / GR00T N1.7（同平台后训练对照） | [Open-HumanWAM](./paper-open-humanwam.md) | [λ₀](./paper-lambda0-egocentric-human-pretraining.md) |
+|---|---|---|---|---|
+| 预训练数据与形态信号 | Awaken-Human ~50k h（PICO 双目 + 5 身体追踪器），联合监督 161D 原始人体运动 + 40D 重定向动作 + 18D 腕姿 | 未含 Awaken-Human 50k h 全身人类预训练，仅共享相同 ~150 h T800 遥操作后训练 | 同量级（~50k h）人机经验规模化与世界-动作建模开放配方 | 聚焦人类第一视角全身经验向人形机器人的迁移预训练 |
+| T800 八任务 / 长程均值 | **93.75%**（工业/家务长程 **90% / 80%**，新组合 **90%**） | $\pi_{0.5}$：**57.5%**（长程 10%/20%，新组合 10%）；GR00T N1.7：**58.75%**（30%/10%，17.5%） | 不同平台与评测协议 | 不同平台与评测协议 |
+| 开放与可复现边界 | 代码、权重、仿真平台未发布；HF 仅开放 1 条 33.8 s 样例（学术非商用） | 依各自公开/后训练基线版本 | 对照开放配方程度 | 依其公开实现口径 |
+
+> **核对边界**：论文 §5 的 $\pi_{0.5}$ 与 GR00T N1.7 对比均在 T800 上使用同份 ~150 h 遥操作数据后训练（每任务 10 次独立试验），且 Awaken-HI 未开放权重/推理代码与全量 50k h 人类数据集，无法独立复现验证。
 
 ## 局限与风险
 

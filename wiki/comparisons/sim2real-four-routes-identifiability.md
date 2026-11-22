@@ -2,7 +2,7 @@
 type: comparison
 tags: [sim2real, system-identification, domain-randomization, online-adaptation, residual-learning, identifiability, locomotion, deployment]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
