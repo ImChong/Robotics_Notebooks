@@ -7,6 +7,7 @@ tags: [course, education, tutorial, lerobot, vla, imitation-learning, reinforcem
 status: complete
 updated: 2026-11-02
 related:
+  - ./xbotics-embodied-guide.md
   - ./lerobot.md
   - ./libero-benchmark.md
   - ./paper-fast-wam.md
@@ -28,7 +29,7 @@ summary: "Xbotics 社区 MIT 许可的 21 讲具身智能实践教程：从系�
 
 # Xbotics 具身智能教程（21 讲）
 
-**一句话：** [Xbotics-Embodied-AI-Handbook](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-AI-Handbook) 是 Xbotics 社区的开源实践课（MIT）：围绕"感知—状态—策略—控制—数据—部署—失败回流"整条链路，用 SO101 机械臂和 Unitree G1 为载体，配套 LeRobot 工作流，把 21 讲排成六个部分、五个阶段项目。它是姊妹仓 Xbotics-Embodied-Guide（全局路线）的动手版。
+**一句话：** [Xbotics-Embodied-AI-Handbook](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-AI-Handbook) 是 Xbotics 社区的开源实践课（MIT）：围绕"感知—状态—策略—控制—数据—部署—失败回流"整条链路，用 SO101 机械臂和 Unitree G1 为载体，配套 LeRobot 工作流，把 21 讲排成六个部分、五个阶段项目。它是姊妹仓 [Xbotics-Embodied-Guide](./xbotics-embodied-guide.md)（全局路线）的动手版。
 
 ## 英文缩写速查
 
@@ -123,6 +124,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Xbotics-Embodied-Guide](./xbotics-embodied-guide.md) — 全局路线、仿真与行业导航；本教程承接动手环节
 - [LeRobot](./lerobot.md) — 教程 Part 3 全程使用的采集 / 训练 / 部署框架
 - [VLA 方法](../methods/vla.md) — L11–L13 对应的方法总览
 - [模仿学习](../methods/imitation-learning.md) — L10 的 ACT / Diffusion / Flow Matching 背景
@@ -134,5 +136,5 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [Xbotics-Embodied-Guide](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-Guide) — 姊妹仓：路线图与公司图谱
+- [Xbotics-Embodied-Guide 站内详情](./xbotics-embodied-guide.md) · [官方仓库](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-Guide) — 姊妹仓：路线图与公司图谱
 - [LeRobot 文档](https://huggingface.co/docs/lerobot) — 教程所用工作流的官方说明
