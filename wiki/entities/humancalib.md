@@ -3,7 +3,7 @@ type: entity
 project_id: flodelaplace-humancalib
 project: https://github.com/flodelaplace/HumanCalib
 code: https://github.com/flodelaplace/HumanCalib
-tags: [repo, camera-calibration, motion-capture, markerless, multi-view, computer-vision, biomechanics]
+tags: [repo, camera-calibration, motion-capture, markerless, multi-view, computer-vision, biomechanics, humancalib]
 status: complete
 updated: 2026-11-22
 summary: "HumanCalib 利用人在多台同步固定相机中的行走骨架自动求相机外参，再由身高和步行估计米制尺度与竖直方向，导出 Pose2Sim 标定文件；仍需已知内参与准确同步。"
@@ -35,6 +35,9 @@ sources:
 | TOML | Tom's Obvious Minimal Language | Pose2Sim 相机内参/外参配置文件格式 |
 
 ## 为什么重要
+
+**维护主体的知识图谱分类：** 官方 `CITATION.cff` 署名 Florian Delaplace；目前未据此推定任何大学或公司隶属关系。`humancalib` 机构标签仅代表 HumanCalib 开源项目自身，便于图谱归档。
+
 
 - **省去外参标定物：** 传统多相机动捕通常要布置棋盘格或标定杆；此工具改用正在步行的人体姿态作为跨视角几何约束，可适合重新布设固定摄像机的动捕场地。
 - **补上米制与世界竖直方向：** 单凭相对投影几何难得到真实尺度；工具将身高与多帧步态几何结合，输出可用于下游三角化与运动学分析的坐标系。
