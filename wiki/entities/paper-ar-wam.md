@@ -45,7 +45,7 @@ summary: "AR-WAM（arXiv:2609.23578v2）：用外部 Agent 发出的目标框和
 | VLM | Vision-Language Model | Agent 可用来定位物体、分解任务、判断失败的视觉语言模型 |
 | AdaLN | Adaptive Layer Normalization | 将视觉框与操作 token 等条件调制到策略骨干的机制 |
 | IDM / FDM | Inverse / Forward Dynamics Model | 离线用首末帧特征压缩和重建未来潜特征 |
-| RLA | Representation Learning for Action | 官方 RLA 预训练入口所用的潜表征提取器流程 |
+| RLA | RLA（官方代码模块命名） | train_rla.py 的离线端点帧潜表征训练，未在本次核对代码中确认缩写全称 |
 | KV | Key-Value Cache | 多步去噪重用注意力缓存以缩短 chunk 推理时延 |
 
 ## 为什么重要
