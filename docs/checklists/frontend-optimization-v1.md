@@ -349,3 +349,10 @@
 - [x] 详情页和首页预览共用 3D 地形高度，常规模式为 32、轻量模式为 29、减弱动效模式为 28。
 - [x] 回归测试覆盖 3D 按需加载、加载失败后重试，以及切回 2D 的节点避让。
 
+## 2026-11-22 3D 浮窗左上角闪现与详情页关联图谱 2D 拖拽回弹修复
+
+- [x] 修复图谱页 `graph.html`（3D 地形 / 3D 立体 / 2D）、首页 `mini-graph.js` 与全站 `main.js` `setupGraphHoverTooltip` 悬停浮窗先移除 `.hidden` 或清空 `left`/`top` 再在下一帧定位导致的左上角闪现问题：统一在写入合法 `left`/`top`（且无坐标不显隐、同节点移动不清空重建）之后再取消隐藏；同步修正 `graph-3d.js` `lastPointer` 初值 `(0, 0)` 兜底与 `graph-perspective.js` 冗余空悬停及拖拽视角时清除悬停态。
+- [x] 修复 `detail.html`「关联知识图谱」2D 模式节点拖拽后静止不回弹问题（`docs/main.js` `renderDetailMiniMap`）：接入对齐 `graph.html` 2D 的粘滞阻尼与向心回复力（`velocityDecay(0.54)` / `alphaDecay(0.04)` / `alphaMin(0.005)` / `forceX`/`forceY`），拖拽时以 `sim.alphaTarget(0.2).restart()` 联动牵引，松手释放 `fx`/`fy` 平滑回弹。
+- [x] 新增前端回归测试 `tests/tooltip-position-and-detail-rebound.test.cjs`，并通过 headless Chrome 实测验证零左上角闪现与 2D 拖拽回弹。
+
+
