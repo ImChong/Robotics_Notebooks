@@ -5,7 +5,7 @@ status: complete
 project: https://mimicking-bench.github.io/
 original:
   - ../../sources/papers/humanoid_pnb_mimicking-bench.md
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2412.17730"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
@@ -95,6 +95,15 @@ Mimicking-Bench 要：一个**大规模、统一**的人形-场景交互基准�
 - 三阶段消融揭示核心断层：即便 Stage 2 `Improved HST` 达 `68/59`，在 Stage 3 视觉-场景闭环下 `ACT w/ elevation` 也仅 `54/51%`，纯 `RGBD (C+D)` 更降至 `4/4%`。
 - 合成 + 真实混合参考（UniHSI+ROAM + CORE4D）是用低边际成本扩充全身示范的实用范式，比单项排行榜更具方法迁移意义。
 - 开源状态边界：官网 V1 数据集已可下载，但 `Code` 入口当前尚未公开，策略复现前须自行补全仿真环境与训练脚手架。
+
+## 与其他工作对比
+
+| 对比维度 | Mimicking-Bench 定位与评测结果 | 基准内基线 / 既有数据集与方法对照 |
+|------|------|------|
+| **数据与任务规模** | 6 项全身家居交互任务、11K+ 物体形状、23.4K 人类技能参考（20K UniHSI+ROAM 合成 + 3K CORE4D 真实示范） | 既有演示数据集规模小且主要依赖手工采集，缺少统一的大规模全身—3D 场景交互测试台 |
+| **Stage 1：运动重定向** | 基于优化与骨架形状对齐的重定向在几何保真与物理可行性上表现最佳 | 优于拷贝旋转（copy-rotation）与 OmniH2O 重定向基线 |
+| **Stage 2：全身运动跟踪** | Improved HST 在 Unitree H1（19-DoF @ 50 Hz）全身跟踪上达到 `68/59` 成功率 | 领先 Simplified PHC 基线（`55/44`） |
+| **Stage 3：视觉场景交互策略** | 融合 `128×128` 局部高程图的 `ACT w/ elevation` 取得 `54/51%` 最高成功率 | 优于 `OmniH2O`（`41/39%`）、`HIT`（`30/25%`）与 `PPO`（`28/13%`）；移除地形/几何先验的纯视觉 `RGBD (C+D)` 仅剩 `4/4%` |
 
 ## 工程实践
 

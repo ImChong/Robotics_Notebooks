@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, panoramic, video-generation, diffusion, uav, dataset, tsinghua, whu, insta360]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 project_id: panoworld-real-world-panoramic-generation
 arxiv: "2607.09661"
 project: https://lihaoy-ux.github.io/panoworld-page/
@@ -143,6 +143,15 @@ flowchart TB
 - 适用边界由数据决定：World360 以 UAV 环视航拍为主，地面人形 egocentric 与手眼操纵覆盖有限；高 PSNR/FID 也**不保证**可用于 closed-loop 控制或 Sim2Real，仍需 [Video-as-Simulation](../concepts/video-as-simulation.md) 类交互/接触校验。
 - 明确不做的事同样重要：不做全局 mesh/GS 重建，持久 editable 3D 资产非目标，本工作是视频级 world rollout；重建侧对照见 [PanoLOG / G²PS](./paper-panolog-ggps.md)。
 - 工程与开源进展（2026-11-21 复核）：[Insta360-Research-Team/PanoWorld](https://github.com/Insta360-Research-Team/PanoWorld) 与 HF 模型 `Insta360-Research/PanoWorld` 已部分开源（含 480p/720p `lora`/`action`/`casual` 权重、推理与 Stage 1/2/4 训练评测脚本）；**Stage 3 GMA Memory 训练代码与完整 World360 数据集仍标记 coming soon**。
+
+## 与其他工作对比
+
+| 对比维度 / 对象 | PanoWorld 方案与表现 | 基线及相邻全景 / 世界模型对照 |
+|------|------|------|
+| **视觉保真与轨迹控制（480p）** | FID **27.64**、$\mathrm{FID}_{\mathrm{pole}}$ **47.21**、$\mathrm{QA}_{\mathrm{qual.}}$ **4.0202**、$\mathrm{PSNR}_{75\text{-}80}$ **20.92** | 优于 **Imagine360**（FID `81.18`）、**Matrix-3D**（$\mathrm{PSNR}_{75\text{-}80}$ `18.02`，显式 3D 重建 + inpainting 在高度变化时易产生 void）、**OmniRoam**（$\mathrm{PSNR}_{75\text{-}80}$ `17.02`，固定高度训练导致竖向指令出现 ghosting） |
+| **生成延迟与实时交互** | 完整模型 ~**4 min 48 s**/clip；Causal Forcing + DMD 蒸馏后 **~8 s / 161 帧**（单 H20） | 相比 **Matrix-3D**（~`16.5 min`）与 **OmniRoam**（~`31 min`）实现数量级推理加速 |
+| **全景数据集基准** | **World360**（120k：70k 真实 UAV + 50k AirSim360，多高度 3D 轨迹 + pose + 仿真深度） | 相对 **360-1M**（1076k 平面街景，无深度）、**PanoWan**（13k 平面，无 pose/depth）与 **Matrix-Pano**（116k 纯仿真 3D），补齐真实+仿真多高度户外物理变化基准 |
+| **知识库相邻世界模型与重建路线** | 视频级可控 ERP rollout（不做全局 mesh/3DGS 重建） | 对比同机构全景户外 3DGS 重建 [PanoLOG / G²PS](./paper-panolog-ggps.md)（重建持久资产 vs 生成预测）、[GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md)（策略评测世界模型）与 [WEM](./paper-wem-world-ego-modeling.md)（world/ego 长程记忆分解） |
 
 ## 源码运行时序图
 

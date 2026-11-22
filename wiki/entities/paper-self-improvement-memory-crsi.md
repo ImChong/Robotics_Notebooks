@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, paper, llm-agents, recursive-self-improvement, agent-harness, agent-memory, continual-learning, cross-model-transfer, google]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 project_id: self-improvement-memory-crsi
 arxiv: "2611.18856"
 project: https://lucasxinyu.github.io/sim/
@@ -131,6 +131,15 @@ flowchart TD
 4. 评测中区分**独立优化种子**与同一次运行的多条 rollout。
 5. 每个新环境都验证同起点、同预算的消融，并独立衡量 source retention。
 6. 机器人方向先落地离线 harness 版本、仿真测试与人工安全否决，不能将上述分数视作真机收益。
+
+## 与其他工作对比
+
+| 对比维度 / 对象 | SIM (CRSI) 设计与表现 | 基线与相邻 RSI / Agent 记忆工作对照 |
+|------|------|------|
+| **论文内部记忆消融（同起点、10 轮×5 候选）** | **Full SIM**（根因 + 编辑理由 + 预测/实测正反结果 + 上下文）：跨模型 Workspace 达 **84.75**；10 组 TB2.1→TB4 编程平均最终 **21.70**（9/10 组胜出，均值 **+2.36**，p=0.003） | **Cold Start**（未演化种子 73.89）；**Harness Transfer**（仅继承代码，无历史诊断：Workspace 73.42，TB4 平均 19.33）；**Problem-Only**（仅留根因标签：Workspace 79.22，不同设置正负不一）；另 **4 Argon 代际** CRSI `94.8` 略低于 **Fresh RSI** `95.6` |
+| **[Harness²](./paper-harness2.md)** | 继承源演化 harness 后在同起点上通过完整追加式 JSON 记忆延续跨模型/跨数据集优化 | 单任务采用 Propose–Probe–Compose 按行为轨迹筛改八类文件，跨任务从公共 $H_0$ 启动并检索 `EXPERIENCE.md` 改进库，不直接继承前一任务专用执行 harness |
+| **[AIDE²](./paper-aide2-recursive-self-improvement-ai-research-agents.md)** | 聚焦迁移阶段的「修改理由与实验成败过程记忆」继承，不重写底层评分器 | 采用双层树搜索（外层 AIDE_human 改写内层研究 agent harness），在固定研发预算与私有留出集上筛选新版本 |
+| **[Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md)** | 面向 **harness 优化器**（proposer/selector）记录优化历程与负例证据，策略模型权重冻结 | 常规 Agent 记忆存储面向未来用户任务的偏好、事实或情景经验，不专门追踪 harness 补丁的假设与评测归因 |
 
 ## 源码运行时序图
 

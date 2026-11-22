@@ -11,7 +11,7 @@ tags:
   - uni-luxembourg
   - unizar
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 project_id: vs-graphs-visual-slam-scene-graph
 arxiv: "2503.01783"
 venue: "IEEE RA-L 2026"
@@ -107,15 +107,14 @@ flowchart TB
 | **场景理解** | AutoSense MR01–03；对比 S-Graphs、Hydra | 墙/房间 **精度 0.86–0.96**、**召回 0.92–1.00**，接近 LiDAR S-Graphs |
 | **实时性** | i9-11950H + T600 | **22±3 FPS**（基线 **29±3 FPS**） |
 
-## 与代表性路线的对照
+## 与其他工作对比
 
-| 维度 | ORB-SLAM3 | Hydra / HOV-SG | LiDAR S-Graphs | vS-Graphs |
+| 维度 | [ORB-SLAM3](./orb-slam3.md) / ElasticFusion / BAD SLAM | Hydra / HOV-SG | LiDAR S-Graphs | vS-Graphs（本文） |
 |------|-----------|----------------|----------------|-----------|
-| 在线 SLAM | 是 | 多离线/需全图 | 是（激光） | **是（RGB-D）** |
-| 场景图 | 无 | 有（常离线） | 可优化分层图 | **可优化分层图** |
-| 传感器 | 单/双/ RGB-D + IMU | 多模态 | LiDAR | **RGB-D** |
-| 布局实体 | 无 | 房间等 | 墙/房间/楼层 | **墙/地面/房间/楼层** |
-| 标记依赖 | 无 | 无 | 无 | **无（ArUco 可选）** |
+| 在线 SLAM 与联合优化 | 是（仅几何特征/稠密地图，不含建筑布局实体） | 多离线/需全图构建 | 是（激光，可优化分层图） | **是（RGB-D，在 Local/Global BA 中联合优化位姿与场景图）** |
+| 场景图与布局实体 | 无 | 物体/房间等分层图（常离线） | 墙 / 房间 / 楼层 | **墙 / 地面 / 房间 / 楼层** |
+| 传感器与标记依赖 | 视觉 / RGB-D / IMU，无标记 | 多模态，常依赖真值/离线语义 | LiDAR，无标记 | **RGB-D，无 fiducial 依赖（ArUco 仅作可选语义命名）** |
+| 精度与实时性实测 | ORB-SLAM3 基线帧率 `29±3 FPS` | — | AutoSense 基准对照 | 全库平均 ATE 相对基线 **改善 15.22%**（MR 序列 `9.39–16.47%`），AutoSense 墙/房间检测精度 `0.86–0.96` / 召回 `0.92–1.00` 接近 LiDAR S-Graphs；帧率 **`22±3 FPS`** |
 
 ## 结论
 
