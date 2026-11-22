@@ -10,8 +10,16 @@
 - **入库日期：** 2026-11-22
 - **核对范围：** 阅读公开动态页对作者 RigVis 原帖的引用文本，包含主要模块、ICP 融合描述与 KITTI 00 自报误差；未打开原帖独立页面、项目完整 README、源码或实验日志。
 - **通读：** 未完成
-- **开源状态：** **待核实**。作者公布“Code, plots and the 3D map”短链，但未确认目标 URL 与可访问仓库，因此不能等同于源码已公开核验。
+- **开源状态（复核）：** **已开源**。2026-11-22 后续定位作者 GitHub 账号及 [官方仓库](https://github.com/ekrrems/Stereo-inertial-slam)，详见 [已通读的官方源码归档](../repos/rigvis.md)；本条 LinkedIn 短链尚未直接解析。
 - **对应 wiki：** [RigVis 项目实体](../../wiki/entities/rigvis.md)
+
+## 2026-11-22 官方源码复核更新
+
+- 作者公开仓库：[ekrrems/Stereo-inertial-slam](https://github.com/ekrrems/Stereo-inertial-slam)，已阅读完整 README 与关键运行入口，源码归档另见 [sources/repos/rigvis.md](../repos/rigvis.md)。
+- 原先说“1 m 回环阈值”与实际默认 `loopSearchRadiusMeters_=50.0` m 不符；“8 次回环”和“约 570 万点”未从 README 的正式结果表证实。
+- 官方 README 确认 KITTI 00 `t_rel=1.20%`、`r_rel=0.50°/100m`、`ATE(RMSE)=2.81m`，是**作者报告**，本仓库尚未复现实测。
+- 源码明确 **loosely coupled ESKF**；IMU 进入 BA 是作者 Roadmap，稠密 ICP 默认 `dense_icp: 0` 且作为可选局部 BA 相对位姿因子，并非默认运行。
+- 本文件是历史公开动态来源记录，因未独立通读原帖仍保持「通读：未完成」；RigVis wiki 的 `original` 已指向完成阅读的官方仓库归档。
 
 ## 作者公开说明中可核对的信息
 
