@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, unitree, iros-2026, open-source, galbot, tsinghua, pku, shanghai-pil]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2603.12686"
 code: https://github.com/GalaxyGeneralRobotics/LATENT
 related:
@@ -118,6 +118,18 @@ sequenceDiagram
 - **仿真回球性能（Table 3，10,000 次随机发球试验，峰值球速 >15 m/s，2.5 m 落点阈值）：** 正手 SR **96.52%**（DE 1.32 m）、反手 **82.10%**（1.89 m）、前场 **86.35%**（1.73 m）、后场 **89.80%**（1.55 m），显著高于 PULSE（71.85% / 63.38% / 74.52% / 72.94%）、ASE（63.47% / 55.22% / 71.36% / 68.59%）与 AMP；Vanilla PPO 与 MotionVAE 未能收敛。
 - **核心设计消融（Table 4）：** 去除右手腕直接修正（w/o Corr.）反手 SR 从 82.10% 跌至 **68.94%**；去除 LAB（w/o LAB）关节加速度平滑度指标从 25.61 恶化至 **37.64**、平均力矩从 7.40 升至 **12.53**。
 - **真机连续对打（Table 5 & 附录 A.2）：** 20 场人机连续对打（Unitree G1，有效回球落入对方半场）正手 **90.90%**、反手 **77.78%**、前场 **88.89%**、后场 **81.82%**（去掉球动力学随机化后跌至 14.29%–28.57%）；仿真双机自博弈 50 局最高连续 **25 拍**回合。
+
+## 与其他工作对比
+
+| 方法 / 路线 | 正手 SR | 反手 SR | 前场 SR | 后场 SR | 核心机制差异与表现读法 |
+|---|---|---|---|---|---|
+| **LATENT（本文，Table 3 仿真）** | **96.52%** | **82.10%** | **86.35%** | **89.80%** | 可修正条件 VIB 隐空间 + 右手腕直接修正 + LAB 马氏界限约束 |
+| **PULSE** | 71.85% | 63.38% | 74.52% | 72.94% | 现有潜空间运动先验，未针对不完美数据手腕失真与 LAB 抖动抑制做解耦修正 |
+| **ASE** | 63.47% | 55.22% | 71.36% | 68.59% | 无监督技能先验发现；高精度来球回击落点成功率低于 LATENT |
+| **AMP / Vanilla PPO / MotionVAE** | 低于 LATENT / 不收敛 | 低于 LATENT / 不收敛 | 低于 LATENT / 不收敛 | 低于 LATENT / 不收敛 | Vanilla PPO 与 MotionVAE 在高速动态网球回击设定下未收敛 |
+
+- **vs [LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md)（人形羽毛球，EngineAI PM01）：** LHBS 基于干净专业 MoCap 经四阶段 Imitation-to-Interaction（DAgger + AMP + 羽毛球流形扩展）实现零样本挑球；LATENT 针对 5 小时业余不完美网球动作碎片，在可修正 VIB 潜空间内叠加腕部残差直控与 LAB 约束完成真人多拍对打。
+- **vs [SoccerBot（Latent Motion Priors）](./paper-soccerbot-latent-motion-priors.md)：** 同属潜动作先验驱动的人形体育技能路线，SoccerBot 聚焦足球方向潜先验与多技能组合。
 
 ## 结论
 

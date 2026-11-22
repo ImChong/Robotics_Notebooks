@@ -3,7 +3,7 @@ type: entity
 title: "From Experts to a Generalist: Toward General Whole-Body Control for Humanoid Robots (BumbleBee)"
 summary: "智在无界（BeingBeyond）NeurIPS 2025 Spotlight 通用人形全身控制框架（BB）：将 8,179 条 AMASS 动作聚为 6 行为簇训练分簇专家，结合 2 轮真机 ASAP delta-action 仿真校正后用 DAgger KL 蒸馏为单一 Gated Transformer-XL 通才策略，在 MuJoCo 达 66.84% 且真机迭代至 70.37%。"
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2506.12779"
 institutions: [beingbeyond]
 tags: [beingbeyond, paper, wbc, humanoid, expert-generalist, dagger, sim2real, unitree-g1]
@@ -54,9 +54,25 @@ flowchart TD
 
 ## 工程实践
 
-- **跨仿真与同级基准对比**：在独立物理引擎 **MuJoCo** 零样本迁移测试中，BumbleBee 平均成功率达到 **66.84%**，显著高于同阶段强基线 ExBody2（`50.19%`）、Hover（`16.12%`）与 OmniH2O（`15.64%`）。
-- **真机迭代 Sim2Real 增益**：Unitree G1 真实测试表明，两轮真机残差标定使平均成功率从初始 `Iter 0: 51.49%` 稳步升至 `Iter 1: 60.33%`、`Iter 2: 70.37%`；最终蒸馏后单一通才策略仍保持在 **69%** 量级水平。
-- **开源状态核查**：**源码运行时序图：不适用**（截至 2026-11-21，官方仓库 [BeingBeyond/BumbleBee](https://github.com/BeingBeyond/BumbleBee) commit `5aff81f` 仅包含占位 `README.md` 与 `docs/` 展示资源，README 声明 *"We will release our code soon."*，尚未释出训练与真机部署代码）。
+- **硬件与控制自由度配置：** Unitree G1 共有 29 DoF，实际控制启用 **23 active DoF**（锁定未驱动腕部关节）；真机残差标定聚焦脚踝等 **4 个核心 DoF**，以 2 层 64 维 MLP 拟合 Delta-Action 修正仿真物理失配。
+- **分阶段防遗忘实践：** 先在修正后的仿真器内二次微调各簇专家，再经 DAgger KL 蒸馏汇总进单一 Gated Transformer-XL 通才，避免在单一通才上直接做真机微调导致跨簇灾难性遗忘。
+- **开源状态核查：** **源码运行时序图：不适用**（截至 2026-11-21，官方仓库 [BeingBeyond/BumbleBee](https://github.com/BeingBeyond/BumbleBee) commit `5aff81f` 仅包含占位 `README.md` 与 `docs/` 展示资源，README 声明 *"We will release our code soon."*，尚未释出训练与真机部署代码）。
+
+## 实验与评测
+
+- **数据与跨引擎评测设置：** 基于 **8,179 条** PHC 物理清洗后的 AMASS 动作轨迹（聚为 `K=6` 行为簇：`Jump`、`Walk-slow`、`Walk-fast`、`Stand-up`、`Stand-mid`、`Stand-low`），在独立物理引擎 **MuJoCo** 上测试零样本跨仿真器迁移，并在 **Unitree G1（23 active DoF）** 上开展真机闭环迭代测试。
+- **MuJoCo 零样本迁移主结果：** BumbleBee 平均成功率达到 **66.84%**，跨过单一通用策略在异构动作簇间的性能瓶颈。
+- **Unitree G1 真机两轮迭代残差标定增益：** 引入 2 轮真机数据采集与 ASAP Delta-Action 残差标定后，分簇平均成功率从 `Iter 0: 51.49%` 稳步提升至 `Iter 1: 60.33%`、`Iter 2: 70.37%`；最终经 DAgger KL 蒸馏得到的单一 **Gated Transformer-XL** 通才策略仍稳定保持在 **69%** 量级水平且无专家间干扰。
+
+## 与其他工作对比
+
+| 工作 | 训练与结构路线 | MuJoCo 零样本成功率 / 真机定位 | 核心差异与取舍 |
+|---|---|---|---|
+| **BumbleBee（本文，arXiv:2506.12779v3）** | AE+BERT K=6 聚类 → Base PPO → 簇专家 → 2 轮 ASAP Delta-Action 标定 → DAgger KL 蒸馏 Gated Transformer-XL | **66.84%**（真机迭代 `51.49% → 70.37%`，通才稳在 **~69%**） | 先分治隔离动作梯度冲突，再以轻量化残差标定专家后蒸馏合流；多阶段工程链路偏重 |
+| **ExBody2** | 同阶段强全身控制对比基线 | **50.19%** | MuJoCo 零样本跨仿真迁移比 BumbleBee 低 16.65 个百分点 |
+| **Hover** | 单一通用全身控制策略基线 | **16.12%** | 高爆发跳跃与慢走/蹲起混合分布下易发生梯度冲突 |
+| **OmniH2O** | 通用人形全身控制策略基线 | **15.64%** | 在多簇高动态动作混合测试集上受限于单策略共训折中 |
+| **[FAST](./cn-os-fast.md)** | 同团队后续演化：单阶段 MoE + CoM-Aware + Parseval 残差自适应 | 简化 BumbleBee 四步接力管线 | 避免多阶段专家重训与重构成本，适合需要单阶段快速自适应的场景 |
 
 ## 结论
 

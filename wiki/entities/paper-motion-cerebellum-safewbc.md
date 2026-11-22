@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, snu]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2605.25546"
 venue: "arXiv:2605.25546 / curated"
 summary: "安全：控制屏障函数接到全身控制后面。输入是全身控制命令、状态约束和扰动裕度；实现上用输入到状态安全控制屏障函数修正控制量，使关节限位、自碰撞、障碍距离等约束保持安全；重点是把安全层接到 WBC/策略输出后面。"
@@ -79,6 +79,16 @@ sources:
 
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
+## 与其他工作对比
+
+| 工作 | 所属组别与定位 | 安全介入层与机制 | 触发与代价权衡 |
+|---|---|---|---|
+| **SafeWBC（本文，arXiv:2605.25546v1）** | [D 全身跟踪基座](../overview/motion-cerebellum-category-04-wbt-base.md) #36/64 | `KinWBC` 与 `DynWBC`（`qpOASES`）之间接入 **ISSf-CBF 速度安全过滤器** | 在有界扰动裕度下最小修正速度参考，统一约束关节限位、自碰撞与双臂工作空间；对上游控制器解耦，但仅修正动作量不改变任务意图 |
+| **[ConstrainedMimic](./paper-motion-cerebellum-constrainedmimic.md)** | D 全身跟踪基座 #35/64 | 在 motion tracking 策略动作外叠加实时约束投影/安全过滤 | 保留跟踪策略动作表现同时守住关节/接触/碰撞边界，侧重 RL 运动跟踪输出投影 |
+| **[SafeFall](./paper-hrl-stack-41-safefall.md)** | D 全身跟踪基座 #37/64（`arXiv:2511.18509`） | 轻量 GRU 跌倒预测器 + 旁路保护策略（正常时休眠） | 不阻止正常步态越界，而是在跌倒不可避免时主动放弃原轨迹以降低接触力与关节冲击 |
+
+> 注：SafeWBC 实体页在策展编译与 TOCABI 三层链路上归纳机制，不把不同硬件平台（TOCABI vs G1）的数值直接横向对比；完整消融与实机指标以原论文与项目页为准。
 
 ## 关联页面
 

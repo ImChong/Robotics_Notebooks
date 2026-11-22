@@ -114,6 +114,13 @@ flowchart TB
 - **仿真：** 多难度 motion 集上 PBHC **一致优于** 可部署基线，接近 oracle；Tai Chi 等 sim-to-real 根轨迹形态对齐（真机根位姿不可测，实验固定原点）。
 - **真机（G1）：** Jump/roundhouse/side/front/back kick、360° spin、舞蹈、李小龙 pose、组合拳、马步、太极、stretch leg 等（见 [项目页](https://kungfubot.github.io/) 视频）。
 
+## 与其他工作对比
+
+- **vs 可部署基线与特权 Oracle：** 在多难度 motion 集合仿真评测中，KungfuBot（PBHC）在各难度级别上均一致优于可部署基线，性能接近特权观测 oracle（MaskedMimic 除外）。
+- **课程机制内部消融（双层自适应容差 vs 固定 tracking factor）：** 项目页消融表明，随当前跟踪误差动态调参的双层优化课程在各类高动态动作上均可接近最优，而固定 tracking factor 变体在不同难度动作间表现分化明显。
+- **vs 续作 [KungfuBot 2 / VMS](./paper-notebook-kungfubot-2.md)：** v1 聚焦单技能高动态动作与自适应跟踪容差课程；v2（VMS）转为面向单策略多技能覆盖与分钟级长序列稳定（混合局部-全局目标 + OMoE + 段级奖励）。
+- **vs 同领域高动态/长时程工作：** [KungFuAthleteBot](./paper-kungfuathlete-humanoid-martial-arts-tracking.md) 侧重武术运动员数据集与 tracking + 跌倒 recovery 整合；[RobotDancing](./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) 聚焦长时程舞蹈并在其 Table V 中将 KungfuBot-style 作为同协议重实现基线对比选择性残差动作与长尾采样。
+
 ## 源码运行时序图
 
 官方实现 [TeleHuman/PBHC](https://github.com/TeleHuman/PBHC)（KungfuBot）：重定向 `mink_retarget/` 或 `phc_retarget/`；训练 `humanoidverse/train_agent.py +simulator=isaacgym +exp=motion_tracking`；评估 `eval_agent.py`；部署 `humanoidverse/urci.py +simulator=mujoco +checkpoint=…onnx`。一次完整运行如下：

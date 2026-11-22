@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2502.14795"
 venue: "arXiv 2025 (2502.14795v2)"
 summary: "Humanoid-VLA（西湖大学，arXiv:2502.14795）：语言-动作预对齐 + 参数高效第一视角视频交叉注意力微调 + 无标注视频自监督 QA 增强；接全身跟踪控制器在 Unitree G1 上完成踢球/避障（9/10）与握手/挥手（8–10/10）等 8 项自主视觉交互。"
@@ -63,6 +63,12 @@ Humanoid-VLA 的实现路径是先把相机图像/多视角观测、人类视频
 - **运动学保真度（Table 3）：** HumanML3D 上 FID 达 **0.467±0.018**（优于 MDM 0.889、T2M-GPT 0.531）；消融证明引入大规模视频运动恢复数据把 FID 从 0.557 降至 0.467（约 -16%）。
 - **物理可执行性（IsaacGym Table 2）：** 多条件中难度（D+T）下，全身跟踪 `Empjpe` 达 **31.07 mm**、`PA-MPJPE` **1.18 mm**。
 - **Unitree G1 真机视觉交互（Table 5，各 10 次试验）：** Turn to object 10/10、Hold object 9/10、Wave 10/10、Avoid obstacle 9/10、Jump over 9/10、Dance with partner 8/10、Punch obstacle 10/10、Kick a ball 9/10。
+
+## 与其他工作对比
+
+- **HumanML3D 运动生成基线（Table 3）：** Humanoid-VLA 的 FID 为 **0.467±0.018**，优于 **MDM**（`0.889`）与 **T2M-GPT**（`0.531`）；消融显示引入无标注视频恢复运动 QA 对将 FID 从 `0.557` 降至 `0.467`（约 -16%）。
+- **vs [LeVERB](./paper-bfm-36-leverb.md)（同属 [06 特殊任务、接触规划与视觉闭环](../overview/loco-manip-161-category-06-contact-tasks.md)）：** LeVERB 冻结 SigLIP 并用残差运动学编码器将视觉-语言指令压缩成低维潜动作变量 `z` 驱动 System 1 策略；Humanoid-VLA 则以 Llama3-70B 与分部 VQ-VAE 做语言-动作预对齐，再冻结主干插接第一视角交叉注意力层并用无标注视频伪标注扩展覆盖面。
+- **vs [GentleHumanoid](./paper-gentlehumanoid.md)（同组接触任务路线）：** GentleHumanoid 专注于肩-肘-腕多连杆阻抗参考动力学与 5–15 N 可调安全力阈值以保障物理接触安全；Humanoid-VLA 侧重保留 VLM 语义理解、融合第一视角视觉观测并接全身跟踪控制器完成踢球、避障与视觉交互。
 
 ## 结论
 

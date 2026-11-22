@@ -6,7 +6,7 @@ project: https://arth-shukla.github.io/mshab/
 code: https://github.com/arth-shukla/mshab
 original:
   - ../../sources/papers/humanoid_pnb_maniskill-hab.md
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2412.13211"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
@@ -92,6 +92,18 @@ ManiSkill-HAB 要：一个 **GPU 加速、真实低层、可大规模生成演�
   - **`RL-Per` vs `RL-All` vs `IL`（Table 1）**：按子任务训练的 `RL-Per` 显著领先单一全能策略 `RL-All` 与纯模仿学习（如 `CloseFr` 验证取得 **`0.00%`** 墙体碰撞率）。
   - **演示质量过滤（Tables 2–3）**：以 `mshab/utils/label_dataset.py` 按物理事件规则过滤后，放置—掉落比（Place:Drop）由未过滤时的 **`1:2.22`** 提升至 **`3.17:1`**；但 `Cracker Box` 等复杂几何长程重排仍是多阶段高频失败源。
   - **Diffusion Policy vs BC（Table 5）**：`DP` 在过滤数据集上相比标准 `BC` 对多模态轨迹分布的拟合更稳健，但顺序长程耦合仍受前序误差传导限制。
+
+## 与其他工作对比
+
+| 基准 / 基线 | 物理抓取抽象 | 并行吞吐与显存 / 光线追踪速度 | 核心差异与定位 |
+|---|---|---|---|
+| **ManiSkill-HAB（本文，arXiv:2412.13211v3）** | **真实低层连续控制**（无魔法抓取） | 4,096 环境 **`4299.18 ± 26.36 SPS` / `15.35 GB`**；光追 **`69.90 SPS`** | GPU 并行加速低层家务重排基准，配套规则事件过滤生成可控演示数据 |
+| **Habitat 2.0** | **魔法抓取（magical grasp）**瞬时绑定 | 4,096 环境 `1397.65 ± 11.02 SPS` / `22.60 GB` | 抽象抓取易高估抓握成功率；MS-HAB 实现 **3× 以上提速**且显存占用更低 |
+| **Behavior-1k** | 低层家居交互仿真 | 光线追踪渲染 `19.92 SPS` | 光追吞吐低于 ManiSkill-HAB（`69.90 SPS`） |
+
+- **基准内部策略范式对照（Tables 1–5）：**
+  - **`RL-Per` vs `RL-All` vs `IL`（Table 1）：** 按子任务/物体分别训练的专长策略 `RL-Per`（Pick/Place 用 SAC、Open/Close 用 PPO）显著优于单一全能策略 `RL-All` 与纯模仿学习（如 `CloseFr` 验证取得 `0.00%` 墙体碰撞率）。
+  - **`Diffusion Policy (DP)` vs 标准 `BC`（Table 5）：** 在 `mshab/utils/label_dataset.py` 规则过滤后的高质量轨迹（每任务/子任务/物体 1,000 条，Place:Drop 由 `1:2.22` 提升至 `3.17:1`）上，`DP` 相比标准 `BC` 对多模态动作分布拟合更稳健。
 
 ## 结论
 
