@@ -120,24 +120,24 @@ sequenceDiagram
   actor User as 用户 CLI
   participant Main as sim/run_floating_base.py:main
   participant MJCF as build_floating_base_mjcf.py
-  participant Loop as run_loop
+  participant Runner as run_loop
   participant Obs as SimObservationInterface / SimIMU
   participant Cmd as command_source / apply_feedback
   participant Ctrl as src/Controller.py:Controller
   participant HW as SimHardwareInterface (MuJoCo)
   User->>Main: --mode / --task-sequence / --kp --kd
   Main->>MJCF: 按需 build_mjcf(pupper_floating.xml)
-  Main->>Loop: 加载 MjModel/MjData 并启动闭环
+  Main->>Runner: 加载 MjModel/MjData 并启动闭环
   loop 每个控制 tick
-    Loop->>Obs: sync_state() + read_orientation()
-    Obs-->>Loop: 更新 State（关节、触地、姿态）
-    Loop->>Cmd: apply_step_config() + get_command()
-    Cmd-->>Loop: Command（含可选 attitude/velocity 反馈）
-    Loop->>Ctrl: run(state, command) → step_gait() + IK
-    Ctrl-->>Loop: state.joint_angles
-    Loop->>HW: set_actuator_postions() + step()
+    Runner->>Obs: sync_state() + read_orientation()
+    Obs-->>Runner: 更新 State（关节、触地、姿态）
+    Runner->>Cmd: apply_step_config() + get_command()
+    Cmd-->>Runner: Command（含可选 attitude/velocity 反馈）
+    Runner->>Ctrl: run(state, command) → step_gait() + IK
+    Ctrl-->>Runner: state.joint_angles
+    Runner->>HW: set_actuator_postions() + step()
   end
-  Loop-->>User: 输出位移、足端误差与 |roll|/|pitch| 统计
+  Runner-->>User: 输出位移、足端误差与 |roll|/|pitch| 统计
 ```
 
 ## 工程实践
