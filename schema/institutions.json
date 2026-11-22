@@ -4475,6 +4475,12 @@
         "simplexai-labs"
       ]
     },
+    "humancalib": {
+      "label": "HumanCalib 开源项目（HumanCalib Project）",
+      "aliases": [
+        "humancalib"
+      ]
+    },
     "cyberbeast": {
       "label": "北京守护兽科技有限公司（CyberBeast）",
       "aliases": [
