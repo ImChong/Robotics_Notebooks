@@ -17,6 +17,8 @@ tags:
   - tsinghua
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/roboreact_arxiv_2608_03387.md
 arxiv: "2608.03387"
 related:
   - ../tasks/loco-manipulation.md
@@ -60,8 +62,7 @@ summary: "RoboReact（港中深/京东/清华，arXiv:2608.03387）：单帧 ego
 - **生成先验几乎够用：** 四任务均值 SR **81.3%**，one-shot 真人视频先验 **80.0%**。瓶颈从「有没有真人视频」转到「怎么编译和再接地」。
 - **开源边界：** 截至 **2026-08-14** 项目页无训练仓。今日读表和看视频，不能当可跑通复现栈。
 
-## 核心信息
-
+## 核心原理
 | 字段 | 内容 |
 |------|------|
 | 作者 | Shuliang He, Shuai Wang, Bo Yue, Junchi Teng, Changyu Wang, Guiliang Liu（通讯） |

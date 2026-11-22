@@ -9,6 +9,9 @@
 - **最后更新：** 2026-04-14
 - **一句话说明：** 覆盖 MuJoCo、Isaac Gym/Lab、Genesis 等主流机器人仿真框架的原始论文
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `arXiv:2108.10470v2`（Isaac Gym, 90,542 字符）与 IsaacLab 官方 README（12 KB）及 MuJoCo/Genesis 官方资料。
+
 ## 核心论文摘录
 
 ### 1) MuJoCo: A Physics Engine for Model-Based Control（Todorov et al., IROS 2012）

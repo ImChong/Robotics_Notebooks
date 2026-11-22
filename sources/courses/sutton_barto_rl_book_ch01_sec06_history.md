@@ -6,6 +6,8 @@
 - **所属教材**：[Sutton & Barto, *Reinforcement Learning: An Introduction*](http://incompleteideas.net/book/the-book-2nd.html)（第 1 版 LaTeX2HTML 在线版；第 2 版 PDF 第 1 章对应小节）
 - **收录日期**：2026-08-30
 - **抓取说明**：以 **2026-08-30** 对 `incompleteideas.net/book/ebook/node12.html` 公开 HTML 为准；HTTPS 证书异常，HTTP 可访问。
+- **通读：** 已完成
+- **核对范围：** 通读 Sutton & Barto *Reinforcement Learning: An Introduction* §1.6 公开 HTML 全文（22,124 字符）。
 
 ## 一句话
 

@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, sim2real, online-adaptation, world-model, film, grl, amp, physhsi, unitree-g1, isaac-gym, mujoco, box-manipulation, samsung]
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/splitadapter_arxiv_2606_03297.md
 arxiv: "2606.03297"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -28,6 +30,8 @@ summary: "SplitAdapter（arXiv:2606.03297）冻结 PhysHSI 类 AMP 人形搬箱�
 ---
 
 # SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）
+
+## 一句话定义
 
 **SplitAdapter** 是 Samsung Future Robot AI Group 的人形 **负载感知 loco-manipulation 适配** 论文（arXiv:2606.03297，2026）：在 **冻结** 的 [PhysHSI](./paper-amp-survey-15-physhsi.md) 风格 **AMP 搬箱策略** 上，学习 **因子化** 的在线适配模块，把 **物体/负载变化** 与 **机器人侧动力学失配** 分到两条 latent 支路，经 **分裂世界模型** 与 **GRL 交叉对抗** 抑制信息泄漏，再用 **分层 FiLM** 注入冻结策略。论文在 **MuJoCo sim-to-sim** 与 **Unitree G1 零样本真机** 上验证，相对基策略与 **统一 latent 的 WM-FiLM** 基线，在 **2/4/6 kg** 与 **0/30/60 cm** 搬放高度下提高 **Lift-up** 与 **Full-task**（接近–抬起–搬运–放置全流程）成功率，**6 kg 重载**（含训练质量范围外与 **0 cm 地面搬起**）改进最明显。
 
@@ -159,6 +163,10 @@ flowchart TB
 - **不是端到端重训 loco-manip：** 性能上界仍受 **冻结 PhysHSI 类策略** 能力束缚；适配器解决的是 **载荷/动力学变化下的残余误差**，非从零学新技能。
 - **与统一 WM-FiLM 的差异在「分解」而非「是否有世界模型」：** AnyAdapter 式 **单 latent** 也能预测转移，但论文认为 **负载与动力学混编** 会削弱重载表现。
 - **代码：** 截至 ingest 时 **项目页未给出公开仓库**；复现以论文与 arXiv 为准。
+
+## 工程实践
+
+- **冻结基策略的增量部署：** 基策略（如 PhysHSI 类 AMP 控制器）在预训练后全程冻结；针对 0–6 kg 重载及不同搬放高度（0/30/60 cm）变化，仅需训练双分支负载/动力学历史编码器、分裂世界模型头与分层 FiLM 调制。
 
 ## 关联页面
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, whole-body-control, inverse-kinematics, impedance-control, utokyo]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-22
 project_id: rigid-soft-hybrid-link-humanoid
 arxiv: "2610.15073"
 related:
@@ -12,6 +12,7 @@ related:
 sources:
   - ../../sources/papers/rigid_soft_hybrid_link_humanoid_arxiv_2610_15073.md
 summary: "东京大学的刚-软混合人形研究：以 PCS 描述柔性腿部构件，结合逆运动学与主动柔顺优化；跳跃/行走为仿真验证，实验验证限于单、双支撑站立平衡。"
+original: ../../sources/papers/rigid_soft_hybrid_link_humanoid_arxiv_2610_15073.md
 ---
 
 # 刚-软混合链路人形机器人建模与控制

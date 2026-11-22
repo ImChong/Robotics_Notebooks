@@ -14,7 +14,7 @@ tags:
   - sony
   - booster
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2512.06571"
 code: https://github.com/Daffan/humanoid-soccer
 related:
@@ -32,6 +32,9 @@ sources:
   - ../../sources/sites/humanoidsoccer-agile-striker.md
   - ../../sources/repos/humanoid-soccer-agile-striker.md
 summary: "Agile Striker（arXiv:2512.06571，ICRA 2026）：四阶段教师–学生——追球→定向踢→DAgger 蒸馏→N-P3O 精修；仿真 SR 79.5%，Booster T1 真机 66.7%；已开源 Daffan/humanoid-soccer。"
+original:
+  - ../../sources/papers/humanoid_pnb_learning-agile-striker-skills-for-humanoid-socce.md
+  - ../../sources/repos/humanoid-soccer-agile-striker.md
 ---
 
 # Learning Agile Striker Skills for Humanoid Soccer Robots
@@ -112,6 +115,11 @@ flowchart TB
 - 最大化任务回报，同时约束正则代价（N-P3O），缓解触球前时段的不均匀惩罚。
 - 消融：N-P3O **79.5%** SR / **108.6 J/s** vs PPO 固定正则 **64.8%** / **255.8 J/s**；adaptation 前学生仅 **52.3%** SR。
 
+## 工程实践
+
+- **噪声对齐与约束精修两步**：复现时先按 `Daffan/humanoid-soccer` 完成 Stage 1–2 特权教师长距追球与定向踢球，再向 Stage 3 DAgger 注入机载 ZED 2i + YOLOv8 的真实速度相关误差和异步延迟；Stage 4 务必使用 N-P3O 约束代替代价系数静态调参，以解决临近触球高回报期导致的抖腿失稳。
+- **机载硬件资源**：在 Booster T1（23 DoF）机载 NVIDIA AGX Orin 上以 50 Hz 闭环运行策略，配合腿部惯导里程计估门位。
+
 ## 源码运行时序图
 
 ```mermaid
@@ -169,7 +177,7 @@ sequenceDiagram
 - 真机评测规模较小（每球位 3 trials）；读 66.7% 时注意置信区间。
 - 仓库 LICENSE SPDX `NOASSERTION`，以根目录声明为准。
 
-## 与其他页面的关系
+## 关联页面
 
 - 任务：[Humanoid Soccer](../tasks/humanoid-soccer.md)
 - 选型：[技能学习方法选型](../queries/humanoid-soccer-skill-learning-method-selection.md)

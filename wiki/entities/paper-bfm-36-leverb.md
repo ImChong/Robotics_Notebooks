@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley, cmu]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 arxiv: "2506.13751"
 venue: "2025 · arXiv"
 summary: "视觉-语言指令压成适合全身的 latent；语义到身体接口。"
@@ -17,6 +17,8 @@ sources:
   - ../../sources/papers/bfm_awesome_leverb_arxiv_2506_13751.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+original:
+  - ../../sources/papers/bfm_awesome_leverb_arxiv_2506_13751.md
 ---
 
 # LeVerb
@@ -97,16 +99,22 @@ flowchart TD
 - 常见误读是把瓶颈归给上层 token 设计；实际更常卡在 **底层跟踪鲁棒性**。
 - 本页保留 survey 坐标（**#36/41，05 Hierarchical control**）与交叉引用，方法背景见通用方法页 [vla](../methods/vla.md)；机制细节与量化实验以原文为准。
 
-## 常见误区
+## 工程实践
 
-1. 语言/VLA 调用身体时，瓶颈往往在 **底层跟踪鲁棒性**，而非上层 token 设计 alone。
+- **上下层分布重采样对齐（LeVERB-A 训练关键）：** System 2 运行于 10 Hz 而 System 1 跑在 50 Hz，蒸馏 LeVERB-A 时须每 5 步从 System 2 高斯分布重采样潜变量并移除历史观测（原文发现带观测历史会旁路 latent 指令）。
+- **纯合成光追视觉数据 + GRL 跨模态对齐：** 通过梯度反转判别器对齐含视觉与纯文本数据分布，在 G1 机载 CPU C++ ONNX 跑 50 Hz 下层、外接 RTX 4090 ROS2 跑 10 Hz 上层实现零样本迁移。
+
+## 常见误区或局限
+
+- 语言/VLA 调用身体时，瓶颈往往在 **底层跟踪鲁棒性**，而非上层 token 设计 alone。
+- **有限未来视域与缺少快视觉闭环：** 原文 §6 指出 LeVERB 仅预测未来数秒短视域且 LeVERB-A 无快速视觉直接闭环；高敏捷灵巧交互还需后训练对齐。
 
 ## 实验与评测
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+- **LeVERB-Bench（>150 任务 / 10 大类）：** 原文 §5.1 在未见材质/物体组合场景测得 **58.9%** 平均成功率（摘要汇总口径 **58.5%**；简单视觉导航 **80%**），较朴素分层 VLA（NS 消融）提升 **7.8 倍**；去掉 GRL 判别器（ND）或低层 latent 重采样（NLS）均明显掉点。
+- **真机：** 在 Unitree G1 上展示视觉导航、转身与坐下等零样本词表泛化；与同栈姊妹篇对照请见 [BFM 技术地图](../overview/bfm-41-papers-technology-map.md)。
 
-## 与其他页面的关系
+## 关联页面
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

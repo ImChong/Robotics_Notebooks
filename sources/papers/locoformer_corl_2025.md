@@ -13,7 +13,7 @@
 - **Tech Blog 引用：** <https://www.lightorigins.com/blog/light-react>
 - **入库日期：** 2026-09-21
 - **再核日期：** 2026-11-21
-- **核对范围：** 通读 `https://arxiv.org/html/2509.23745v1` 全文（含摘要、§1 引言、§2 方法 2.1–2.2、§3 仿真与真机实验 3.1–3.2 与 Table 1、§4 相关工作、§5 结论、§6 局限及 Appendix A–C）与官方项目页 `https://generalist-locomotion.github.io/`；官方未开源代码/权重，未运行策略
+- **核对范围：** 通读 `arXiv:2509.23745v1` HTML 与 PDF 提取全文（42,723 字符，含摘要、§1 引言、§2 方法 2.1–2.2、§3 仿真与真机实验 3.1–3.2 与 Table 1、§4 相关工作、§5 结论、§6 局限及 Appendix A–C）与官方项目页 `https://generalist-locomotion.github.io/`；官方未开源代码/权重，未运行策略
 - **通读：** 已完成
 - **一句话说明：** 大规模 PPO + 程序生成机器人（100k 形态）+ Transformer-XL 跨 episode 记忆；在未见双足/四足/轮足形态及断腿/锁膝/锁轮等极端故障下实现秒级或跨试次 test-time 上下文自适应。
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, dds, ros2, middleware, qos, realtime, eprosima, eclipse, omg]
 status: complete
-updated: 2026-07-28
+updated: 2026-11-22
 related:
   - ./ros2-basics.md
   - ./rmw-interface.md
@@ -30,6 +30,11 @@ sources:
   - ../../sources/sites/ros2-official-documentation.md
   - ../../sources/repos/ros2.md
 summary: "DDS（Data Distribution Service）：OMG DCPS/QoS 与 DDSI-RTPS 线协议；ROS 2 经 RMW 使用 Fast DDS / Cyclone DDS 等实现，解释可靠性与实时性权衡。"
+original:
+  - ../../sources/sites/omg-dds-spec.md
+  - ../../sources/sites/ros2-design-rmw-interface.md
+  - ../../sources/repos/fast-dds.md
+  - ../../sources/repos/cyclonedds.md
 ---
 
 # DDS 通信机制（Data Distribution Service）

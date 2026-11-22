@@ -9,6 +9,8 @@
 - **再核日期：** 2026-08-22
 - **一句话说明：** 清华 / 字节跳动 Seed / 中国农大视觉驱动反应式足球技能项目页：AMP + 虚拟感知 + encoder-decoder；室外与 RoboCup 演示；**Science Robotics 2026** 正式发表。
 - **开源状态（2026-08-22 项目页核查）：** **部分开源** — 页头 **Code** 链至 Zenodo [21620490](https://zenodo.org/records/21620490)（`code.zip`：Isaac Gym 训练 + MuJoCo/Isaac 推理 + `model.pth`）；**无 GitHub 训练仓**。真机部署栈未随包发布。
+- **通读：** 已完成
+- **核对范围：** 核对 `humanoid-kick.github.io` 官方项目页（26,764 字节 HTML）与 `arXiv:2511.03996`。
 
 ## 页面公开信息
 

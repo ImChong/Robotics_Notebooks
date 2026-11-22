@@ -2,7 +2,7 @@
 type: concept
 tags: [reinforcement-learning, history, theory, education]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-22
 related:
   - ../methods/reinforcement-learning.md
   - ../entities/sutton-barto-rl-book.md
@@ -19,6 +19,10 @@ sources:
   - ../../sources/papers/genetic_algorithms_foundations.md
   - ../../sources/papers/genetic_programming_foundations.md
 summary: "现代强化学习由试错学习、最优控制/动态规划、时序差分三条研究脉络在 1980 年代末汇合而成；读懂谱系有助于区分 RL 与监督学习及 model-based 控制。"
+original:
+  - ../../sources/courses/sutton_barto_rl_book_ch01_sec06_history.md
+  - ../../sources/papers/genetic_algorithms_foundations.md
+  - ../../sources/papers/genetic_programming_foundations.md
 ---
 
 # 强化学习史（Sutton & Barto §1.6）
@@ -90,6 +94,14 @@ flowchart TB
 - **Sutton（1988）**：TD 与 control 分离；**TD(λ)**。
 - **Watkins（1989）**：**Q-learning** — 三线正式汇合。
 - **Tesauro（1992）**：**TD-Gammon** 将注意力引向实用 RL。
+
+## 核心原理
+
+Sutton & Barto 在 §1.6 中指出，现代强化学习并非单一理论线性演化，而是三条彼此独立研究多年的方法学主线在 1980 年代末汇合的结果：
+
+1. **试错学习（选择 + 联想）**：源自 Thorndike 效果律与 Klopf/Barto/Sutton 对监督信号的批判，强调动作本身必须主动试探未知回报并把情境特征绑定到动作选择上。
+2. **最优控制 / 动态规划（Bellman 方程）**：以状态转移模型与 Bellman 递归方程分解长期累计回报，给出精确与近似动态规划基准。
+3. **时序差分（TD Bootstrapping）**：用相邻时刻价值预测误差更新评估函数（Samuel → Witten → Sutton），与试错探索结合形成 Actor–Critic 与 Q-learning（Watkins, 1989），并区分开 Holland（1962）与 Koza（1994）等以群体适应度搜索整条候选策略或程序树的进化路线。
 
 ## 工程实践（读者怎么用这段史）
 

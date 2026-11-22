@@ -4,6 +4,9 @@ status: complete
 summary: "反向传播是在分层可微计算图上高效应用链式法则、逐层回传损失梯度以训练神经网络权重的核心算法，是现代机器人端到端感知与策略学习的优化底座。"
 description: 反向传播（Backpropagation）算法：链式法则、前向/反向两趟、与自动微分及机器人策略训练的关系。
 updated: 2026-09-21
+original:
+  - ../../sources/papers/rumelhart_backprop_learning_representations_nature_1986.md
+  - ../../sources/books/udl_book.md
 related:
   - ./deep-learning-foundations.md
   - ./transformer.md
@@ -21,6 +24,8 @@ sources:
 ---
 
 # 反向传播算法 (Backpropagation)
+
+## 一句话定义
 
 > **一句话定义**：在分层 **可微** 计算图上，用 **链式法则（chain rule）** 从损失函数出发 **自顶向下** 高效计算每个参数梯度的算法；一次前向求值 + 一次反向传梯度，即可端到端训练含隐藏层的深度网络。
 
@@ -41,6 +46,13 @@ sources:
 - **与自动微分一体两面**：在 [PyTorch](../entities/pytorch.md) 等框架中，`loss.backward()` 触发的正是反向模式自动微分；理解 BP 有助于诊断 **梯度消失/爆炸**、检查计算图断点、解释 Sim2Real 中哪些模块可微、哪些必须黑盒。
 
 ## 核心机制
+
+```mermaid
+flowchart LR
+  X["输入 x · 参数 θ"] -->|前向计算图| L["损失 L(θ)"]
+  L -->|反向链式法则 ∂L/∂zᵢ| J["逐层乘局部雅可比 ∂zᵢ/∂θᵢ"]
+  J --> G["参数梯度 ∇_θ L → 优化器更新"]
+```
 
 ### 1. 计算图与前向传播
 
@@ -78,6 +90,11 @@ BP **只负责算梯度**；[SGD](../methods/sgd.md)、[Adam](../methods/adam.md
 - **感知栈**：[视觉骨干](./vision-backbones.md)、[目标检测](../methods/object-detection.md) 的 ImageNet 预训练权重，皆由 BP + SGD 在分类损失上习得表征。
 - **策略与模仿**：[强化学习](../methods/reinforcement-learning.md) 中策略网络 $\pi_\theta(a|s)$ 的 $\nabla_\theta J$ 经 **策略梯度定理** 仍化为对 $\theta$ 的反向传播；[Transformer](./transformer.md) / ACT 动作块预测同理。
 - **何时刻意避免完整 BP**：[LWD](../methods/lwd.md) 等对 flow-matching **多步生成头** 用 **Adjoint Matching** 等局部回归，就是为绕开对整条生成轨迹做不稳定的全链反向传播。
+
+## 工程实践
+
+- **计算图断点检查：** 使用 `loss.backward()` 前确认观测预处理与损失计算全程可微；任何 `detach()`、`torch.no_grad()` 或硬仿真步进都会直接切断梯度反传。
+- **稳定性防线：** 深层网络、RNN 或策略网络训练应开启梯度裁剪（`clip_grad_norm_`）、激活归一化与合理权重初始化（如正交/He 初始化）以防梯度爆炸与消失。
 
 ## 关联页面
 

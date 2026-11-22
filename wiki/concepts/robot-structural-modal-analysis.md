@@ -18,6 +18,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
+original:
+  - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
 summary: "结构模态由固有频率、振型与阻尼比描述；串联悬臂机器人低阶模态常落在 10 Hz 量级且随姿态漂移，决定力控/速度环可用带宽，须用试验 FRF 与仿真 MAC 对账并在设计阶段做激励–模态频率分离。"
 ---
 

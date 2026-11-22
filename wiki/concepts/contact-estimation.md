@@ -3,13 +3,18 @@ title: Contact Estimation（接触估计）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-09-15
+updated: 2026-11-21
+original: ../../sources/papers/state_estimation.md
+sources:
+  - ../../sources/papers/state_estimation.md
+  - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/motion_control_projects.md
 summary: 在无直接力传感器时，从关节力矩/速度信号推断足端或末端执行器的接触状态，是步态规划和 WBC 的重要感知前提。
 ---
 
 # Contact Estimation（接触估计）
 
-## 是什么
+## 一句话定义（是什么）
 
 Contact Estimation 是指在机器人运动过程中，**实时判断哪个足/末端执行器处于接触状态（与地面或物体接触）**，并尽可能估计接触力的大小和方向。
 
@@ -46,7 +51,7 @@ Contact Estimation 是指在机器人运动过程中，**实时判断哪个足/�
 
 ---
 
-## 常用方法
+## 核心原理与常用方法
 
 ### 1. 基于力/力矩传感器（Force/Torque Sensor, FT Sensor）
 - 足端安装六维 F/T 传感器，直接测量接触力
@@ -107,7 +112,12 @@ J^T · f = τ_gravity_compensation - τ_actuator
 
 ---
 
-## 工程实现参考
+## 常见误区或局限
+
+- **纯二值开关漏检微滑与延迟**：基于关节电流/力矩阈值的硬分类在低刚度地面（碎石、雪地、软垫）易产生假阴性或振荡切换；Hartley et al.（arXiv:1904.09251v2）通过将接触点位置嵌入 $SE_k(3)$ 状态矩阵并用接触辅助 InEKF 融合 IMU 与腿运动学，使误差动力学具备不依赖当前状态估计的对数线性收敛域，显著提升 Cassie 步行与 LiDAR 建图精度。
+- **忽略执行器传动损耗与反射惯量**：谐波或高减速比齿轮箱摩擦会使纯电流端估算足底反力产生滞后与死区误差。
+
+## 工程实践（实现参考与 Sim2Real）
 
 | 平台 | 接触估计方法 | 采样率 |
 |-----|------------|--------|
@@ -120,11 +130,18 @@ J^T · f = τ_gravity_compensation - τ_actuator
 
 ## 参考来源
 
-- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（MuJoCo 接触模型 / CBF 接触一致性）
+- [state_estimation.md](../../sources/papers/state_estimation.md) — Hartley et al. (IJRR 2020, arXiv:1904.09251v2, Contact-Aided InEKF on Cassie) 与腿式状态估计档案
+- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力学与动力学建模档案
 - Bledt et al., *Contact Model Fusion for Event-Based Locomotion in Unstructured Terrains* (ICRA 2018) — MIT Cheetah 接触估计
 - Bloesch et al., *State Estimation for Legged Robots - Consistent Fusion of Leg Kinematics and IMU* (RSS 2013) — 腿式机器人状态与接触估计
 - Camurri et al., *Probabilistic Contact Estimation and Impact Detection for State Estimation of Quadruped Robots* (RA-L 2017) — 概率接触检测
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — HumanX 说明了接触图模仿奖励与仅靠本体感知历史进行外力估计的做法
+
+## 推荐继续阅读
+
+- [InEKF / State Estimation 论文档案](../../sources/papers/state_estimation.md) — 接触辅助不变卡尔曼滤波（Cassie 实机）与世界系/机体系公式对比
+- [Whole-Body Control](./whole-body-control.md) — 接触集合确定后的动力学 QP 求解
+- [Friction Cone](../formalizations/friction-cone.md) — 支撑接触点必须满足的力学切向边界
 
 ---
 

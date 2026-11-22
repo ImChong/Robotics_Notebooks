@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, sim2real, visual-rl, flow-matching, grpo, behavior-cloning, unitree-g1, molmospaces, ucla, ai2, uw]
 status: complete
 updated: 2026-08-25
+original:
+  - ../../sources/papers/fetchman_arxiv_2608_17027.md
 arxiv: "2608.17027"
 related:
   - ../tasks/loco-manipulation.md

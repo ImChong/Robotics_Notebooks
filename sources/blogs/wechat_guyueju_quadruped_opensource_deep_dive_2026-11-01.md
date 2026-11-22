@@ -11,6 +11,8 @@
 - **抓取方式：** `scripts/fetch_wechat_article.py`（Chromium + 微信内置 UA），正文 18453 字符
 - **一句话说明：** 按「极简运动学 / ROS / 优化控制 / 强化学习 / 轮足 / 研究级硬件」六条流派梳理 GitHub 上 20 多个四足开源项目，附资源汇总与趋势判断。
 - **说明：** 文中点名 **36 个 GitHub 仓库**（Stanford Pupper 与 Stanford Doggo 在库内共用一个节点）：**新建 24、复用 12 个节点**，每个项目唯一节点。星标数为文章表述，入库日未复核；README 核查见各节点与下表。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md` 1,055 行全文与点名开源仓库 README。
 
 ## 项目 → 节点
 

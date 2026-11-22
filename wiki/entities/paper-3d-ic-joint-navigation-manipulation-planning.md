@@ -15,6 +15,8 @@ tags:
   - ucas
 status: complete
 updated: 2026-11-21
+original:
+  - ../../sources/papers/3d_ic_icml_2026.md
 venue: "2026 · ICML"
 code: https://github.com/kekeZ66/3D-IC
 related:

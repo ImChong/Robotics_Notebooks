@@ -11,6 +11,9 @@ sources:
   - ../../sources/notes/legged_humanoid_rl_pd_gains.md
   - ../../sources/blogs/wechat_shenlan_humanoid_rl_policy_training_system.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
+original:
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/notes/legged_humanoid_rl_pd_gains.md
 ---
 
 # 人形机器人 RL 策略训练完整 Checklist

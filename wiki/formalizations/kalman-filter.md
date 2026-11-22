@@ -9,6 +9,7 @@ related:
   - ../concepts/sensor-fusion.md
   - ./lqr.md
   - ../entities/tennis-vision.md
+original: ../../sources/books/barfoot_state_estimation_2ed.md
 sources:
   - ../../sources/repos/python_robotics.md
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
@@ -74,7 +75,7 @@ $$P_{k|k} = (I - K_k C) P_{k|k-1}$$
 
 **Kalman 增益** $K_k$ 在「模型预测不确定度」与「传感器噪声」之间做最优权衡：$R$ 大则更不信观测，$Q$ 大则更不信模型。
 
-## 流程总览
+## 核心原理与流程总览
 
 ```mermaid
 flowchart LR
@@ -98,7 +99,11 @@ flowchart LR
 
 非线性系统应优先判断是否可用 **误差状态 KF（ESKF）** 或 **InEKF**，再决定是否裸用 EKF（见 [State Estimation](../concepts/state-estimation.md)）。
 
-## 常见误区
+## 工程实践
+
+- **等价视角选型（Barfoot 2ed Ch. 3 § 3.3）**：KF 同时是线性高斯系统下的递归 MAP 估计器、贝叶斯高斯推理与最小均方误差增益最优解；数值实现中常使用 Joseph 形式协方差更新 $(I-KC)P(I-KC)^T + KRK^T$ 以防止舍入破坏对称正定性。
+
+## 常见误区或局限
 
 - **把 EKF 当 KF**：在非线性系统上仍称「卡尔曼最优」，忽略线性化误差与一致性。
 - **$Q,R$ 只调一次**：接触切换、打滑、振动工况下应 **时变或自适应** $R$（见 [field-robotics-troubleshooting](../queries/field-robotics-troubleshooting.md)）。
@@ -116,6 +121,7 @@ flowchart LR
 
 ## 参考来源
 
+- [barfoot_state_estimation_2ed.md](../../sources/books/barfoot_state_estimation_2ed.md) — Barfoot《State Estimation for Robotics 2ed》Ch. 3 线性高斯估计与可观测性
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — Kalman (1960)、Kalman–Bucy (1961)、Gelb / Maybeck / Simon 等一手索引
 - [welch_bishop_kalman_filter.md](../../sources/courses/welch_bishop_kalman_filter.md) — KF 入门教程 PDF
 - [mit_underactuated_kalman_lqr.md](../../sources/courses/mit_underactuated_kalman_lqr.md) — MIT 估计与 LQG 课程模块

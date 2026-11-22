@@ -11,6 +11,7 @@ related:
   - ./unitree-g1.md
   - ./paper-fmp-motion-priors.md
   - ../overview/vla-deploy-12-papers-technology-map.md
+original: ../../sources/papers/ressafe_arxiv_2609_15988.md
 sources:
   - ../../sources/papers/ressafe_arxiv_2609_15988.md
   - ../../sources/sites/ressafe-sciautonomy.md
@@ -83,6 +84,11 @@ flowchart LR
 | [Safe RL](../methods/safe-rl.md) | CMDP 累积代价 vs 瞬时跌倒；ResSafe 针对 **瞬时失稳** |
 | [ResMimic](./paper-resmimic.md) | 同为 G1 残差，但 ResMimic 补 **跟踪/操作**，ResSafe 补 **安全** |
 | [FMP](./paper-fmp-motion-priors.md) | 同 G1 时间窗；FMP 改 **运动先验奖励**，正交问题 |
+
+## 工程实践
+
+- **性能-安全解耦训练顺序（arXiv:2609.15988v1）**：先固定名义任务策略专门追求任务表现，再在其输出之上训练残差 RL 隐式最小范数安全过滤器，规避单策略多目标奖励权重拉锯。
+- **真机部署边界**：因残差安全过滤器仍属数据驱动、无理论硬不变集保证，人形高负载平衡实机仍需串联硬件急停限位及常规系统辨识/域随机化。
 
 ## 局限与风险
 

@@ -3,6 +3,8 @@ type: entity
 tags: [paper, duke, humanoid, locomotion, imitation-learning, physical-interaction, compliance]
 status: complete
 updated: 2026-10-14
+original:
+  - ../../sources/papers/codance_arxiv_2610_05324.md
 project_id: codance
 arxiv: "2610.05324"
 project: https://generalroboticslab.com/CoDance
@@ -21,6 +23,8 @@ summary: "CoDance 从一段双人舞视频构造双手受力感知训练片段�
 ---
 
 # CoDance: Learning Reactive and Compliant Human-Humanoid Interaction from Video
+
+## 一句话定义
 
 CoDance 用单段双人舞视频生成机器人参考动作与舞伴运动，再把结构化双手外力注入多连杆顺应增强，以训练能跟随人并对接触作出响应的人形策略。
 

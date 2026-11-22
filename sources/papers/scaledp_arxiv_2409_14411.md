@@ -9,6 +9,8 @@
 - **会议：** IEEE ICRA 2025（Accepted）
 - **项目页：** <https://scaling-diffusion-policy.github.io/> — [`sources/sites/scaling-diffusion-policy-github-io.md`](../sites/scaling-diffusion-policy-github-io.md)
 - **入库日期：** 2026-09-28
+- **通读：** 已完成
+- **核对范围：** 已下载并通读 `arXiv:2409.14411v2` 全文 PDF 提取文本 1,311 行，核对 Table I 模型规模与 MetaWorld/Franka/UR5 实测表
 - **一句话说明：** **ScaleDP** 用 **AdaLN 条件融合 + 非因果（unmasking）动作自注意力** 稳定 **DP-T** 训练，把扩散 Transformer 策略从 **10M 扩到 1B** 参数并获 MetaWorld / 真机增益。
 
 ## 核心摘录（面向 wiki 编译）

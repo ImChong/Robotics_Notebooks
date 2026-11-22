@@ -16,6 +16,9 @@
 - **机构：** Inria / Université de Lorraine / CNRS（LORIA，Nancy）；帕特雷大学 LAR；Archimedes / Athena RC
 - **入库日期：** 2026-08-18
 - **一句话说明：** 外层 CEM-MD 并行采样接触构型（末端二进制编码 + 对数时长），内层用 SE(3) 切空间全身 TO 评可行性；Talos 在扶手走廊与烟囱场景上于数分钟内给出动态多接触计划。
+- **HAL 开放全文：** https://hal.science/hal-05072261v3/file/2025_agile_whole_body.pdf
+- **通读：** 已完成
+- **核对范围：** 已通读 HAL 开放全文 PDF（977 行，Humanoids 2025 pp. 33–40），核对外层 CEM-MD（50% 精英率消融）+ 内层 SE(3) 切空间全身 TO、Handrails/Chimney 1m&3m 求解耗时与 VI. Conclusion
 
 ## 开源状态（步骤 2.5）
 

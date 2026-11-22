@@ -10,6 +10,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** Fast DDS（原 Fast RTPS）的权威文档：DDS/RTPS 双层 API、传输（UDP/TCP/SHM）、Discovery Server、安全、XML QoS、Fast DDS-Gen。
 - **沉淀到 wiki：** 是 → [`wiki/entities/fast-dds.md`](../../wiki/entities/fast-dds.md)、[`wiki/concepts/dds-communication.md`](../../wiki/concepts/dds-communication.md)
+- **通读：** 已完成
+- **核对范围：** 核对 Fast DDS 文档定位与 `eProsima/Fast-DDS` 官方 `README.md`。
 
 ## 为什么值得保留
 

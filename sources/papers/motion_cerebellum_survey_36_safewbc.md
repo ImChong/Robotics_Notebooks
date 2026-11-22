@@ -9,6 +9,10 @@
 - **项目页：** https://kwlee365.github.io/SafeWBC-Website/
 - **入库日期：** 2026-06-18
 - **一句话说明：** 安全：控制屏障函数接到全身控制后面。输入是全身控制命令、状态约束和扰动裕度；实现上用输入到状态安全控制屏障函数修正控制量，使关节限位、自碰撞、障碍距离等约束保持安全；重点是把安全层接到 WBC/策略输出后面。
+- **arXiv：** https://arxiv.org/abs/2605.25546
+- **GitHub 源码：** https://github.com/dyroshumanoid/safeWBC/tree/nightly
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2605.25546v1 全文 PDF（1,395 行）与 SafeWBC 项目页（47 行）及 GitHub README（123 行），核对 KinWBC + ISSf-CBF 速度安全过滤器 + qpOASES DynWBC 三层结构、TOCABI 部署局限与结论
 
 ## 核心摘录（策展，非全文）
 

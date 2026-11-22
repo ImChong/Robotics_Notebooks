@@ -11,6 +11,7 @@ related:
   - ../formalizations/ekf.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../queries/sim2real-checklist.md
+original: ../../sources/blogs/wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md
 sources:
   - ../../sources/blogs/wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md
 summary: "IMU 六轴测量原理、误差标定、Mahony/Madgwick/EKF 姿态融合，以及 Linux V4L2/IIO 下相机–IMU 时间同步、EIS 与滚动快门补偿的工程链。"

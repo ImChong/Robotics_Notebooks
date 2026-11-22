@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, humanoid-paper-notebooks, amp, motion-prior, badminton, sim2real, dagger, goal-conditioned-rl, hku]
 status: complete
-updated: 2026-09-27
+updated: 2026-11-21
 arxiv: "2602.08370"
+original: ../../sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -125,7 +126,12 @@ flowchart TB
 4. **仿真主结果** — Isaac Lab 物理 200 Hz/策略 50 Hz，SR 0.9516/0.9153、MSE 0.0062/0.0108（easy/hard），优于 E2E-AMP（SR 0.86/0.74）等基线。
 5. **真机** — EngineAI PM01 零样本正手挑球 90%、反手挑球 70% SR（各 10 trials），作者称首个拟人羽毛球零样本 sim2real。
 
-## 常见误区
+## 工程实践
+
+- **自由度补偿与全身协同（EngineAI PM01，arXiv:2602.08370v2 § IV.C）**：PM01 每臂仅 5 DoF、缺乏人类手腕灵巧自由度，策略通过耦合腰部 yaw 旋转、箭步压低重心与收尾缓冲脚步补偿臂端姿态覆盖。
+- **阶段边界检查**：切入 Stage 4（羽毛球交互）前须确认 Stage 2 DAgger 蒸馏与 Stage 3 AMP 风格稳定均已收敛，否则空间落点精度易明显恶化。
+
+## 常见误区或局限
 
 1. **≠ 纯 MoCap 跟踪：** 四阶段终点是 **物理击球交互**；停在 Stage 1–2 只是「像人挥拍」，未必触球成功。
 2. **AMP 不是全程唯一监督：** Stage 1 是模仿跟踪，Stage 3 才引入 AMP；与 **E2E-AMP** 基线（SR 0.86/0.74 easy/hard）相比，分阶段管线更稳。
@@ -139,7 +145,7 @@ flowchart TB
 - **主结果（Ours）：** SR 0.9516/0.9153，MSE 0.0062/0.0108（easy/hard）；全面优于 w/o Stab.、E2E-AMP、w/o Interact.、ASE/VQ 基线。
 - **真机（PM01）：** 正手挑球 **90%**、反手挑球 **70%** SR（各 10 trials）；项目页与论文 Fig. 1 展示触球瞬间。
 
-## 与其他页面的关系
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 球类姊妹：[LATENT](./paper-notebook-latent.md)（网球）、[Whole-Body Badminton（Annealed RL）](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[ETH ANYmal 四足 Sci. Rob.](./paper-coordinated-badminton-skills-anymal.md)

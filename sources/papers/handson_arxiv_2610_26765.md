@@ -1,5 +1,8 @@
 # HandsOn 论文来源归档
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2610.26765` PDF 提取全文（`2610.26765.pdf`，34,088,947 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 元数据
 
 - **题目：** HandsOn: A Large-Scale Simulation Benchmark for Generalizable Dexterous Manipulation

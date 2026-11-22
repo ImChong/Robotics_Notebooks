@@ -15,6 +15,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** 定义 ROS 2 **中间件抽象层 C API**（`rmw` 包）与实现者工具：节点/发布订阅/服务、wait set、图内省、错误与分配器等；具体 DDS vendor 实现在独立 `rmw_*` 仓。
 - **沉淀到 wiki：** 是 → [`wiki/concepts/rmw-interface.md`](../../wiki/concepts/rmw-interface.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `ros2/design` `060_ros_middleware_interface.md`（369 行）与 ROS 2 Humble Vendor 官方文档。
 
 ## 开源状态（2026-07-28）
 

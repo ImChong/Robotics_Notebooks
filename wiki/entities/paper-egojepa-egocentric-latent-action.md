@@ -3,6 +3,8 @@ type: entity
 tags: [paper, egocentric-video, latent-action, jepa, dexterous-manipulation, cross-embodiment, world-model]
 status: complete
 updated: 2026-10-22
+original:
+  - ../../sources/papers/egojepa_arxiv_2610_20904.md
 project_id: egojepa
 arxiv: "2610.20904"
 related:
@@ -17,6 +19,8 @@ summary: "EgoJEPA（arXiv:2610.20904）：三阶段从第一视角人类视频�
 ---
 
 # EgoJEPA：超越重定向的第一视角视频灵巧操作学习
+
+## 一句话定义
 
 **EgoJEPA 绕开手工设计的人手到机器人重定向：先从人类视频学习效果相关的潜在动作，再用轻量适配器接到不同机器人。**
 

@@ -4,6 +4,9 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, visual-rl, sim2real, hierarchical-control, teacher-student, dagger, ppo, keypoint-tracking, depth, humanoid-paper-notebooks, stanford]
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/humanoid_pnb_visualmimic.md
+  - ../../sources/papers/visualmimic_arxiv_2509_20322.md
 arxiv: "2509.20322"
 venue: "2025 · arXiv"
 code: https://github.com/visualmimic/VisualMimic
@@ -146,8 +149,11 @@ flowchart TB
 - **低层先验边界：** HMS clip 假设高层探索应留在人类动作统计内；极端非人形接触策略可能被抑制。
 - **代码未全开源：** 截至入库日仅 Sim2Sim + checkpoint；复现完整训练链需等待后续发布。
 
-## 与其他页面的关系
+## 工程实践
 
+- **高低层解耦训练与真机零样本迁移：** 先以大规模人类动作经 PPO 训练任务无关的低层关键点跟踪器并冻结，再由特权状态教师经 DAgger 蒸馏至机载 egocentric 深度视觉高层，实机迁移需做深度空洞与延迟随机化。
+
+## 关联页面
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 任务语境：[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 运动跟踪同族：[paper-twist.md](./paper-twist.md)

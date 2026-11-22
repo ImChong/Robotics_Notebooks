@@ -12,6 +12,8 @@
 - **原始抓取落盘：** [`sources/raw/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md`](../raw/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - **一句话说明：** 以 **可辨识性** 为轴，把 Sim2Real 四条主流路线（系统辨识 / 域随机化 / 在线适应 / 残差学习）放在同一问题下比较；给出分层组合、症状查表与论文阅读判据。
 - **开源状态（步骤 2.5）：** 综述文，无项目页、无代码仓 → **步骤 2.5 不适用**。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md` 全文及 44 篇对照索引。
 
 ## 核心摘录（归纳，非全文）
 

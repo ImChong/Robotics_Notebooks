@@ -1,5 +1,8 @@
 # 高阶形态先验（Hodge 消息传递）论文来源归档
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2610.10934` PDF 提取全文（`2610.10934.txt`，26,221 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 元数据
 
 - **题目：** Higher-Order Morphology Priors for Quadruped Reinforcement Learning Under Actuator Degradation

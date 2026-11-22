@@ -13,6 +13,8 @@
 - **入库日期：** 2026-08-18
 - **一句话说明：** 论文声明的 SE(3) 切空间全身 TO：Pinocchio 解析导数 + cyipopt；示例在 `src/examples/agile_exps/`。
 - **沉淀到 wiki：** [`wiki/entities/paper-se3-tangent-to.md`](../../wiki/entities/paper-se3-tangent-to.md)
+- **通读：** 已完成
+- **核对范围：** 已通读官方仓库 GitHub README（104 行），核对 Pinocchio + cyipopt + meshcat-python 依赖安装、`src/examples/talos_trajopt.py --vis` 入口与敏捷动作示例
 
 ---
 

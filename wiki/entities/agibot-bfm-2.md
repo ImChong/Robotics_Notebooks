@@ -3,8 +3,6 @@ type: entity
 tags: [agibot, motion-control, bfm, whole-body-control]
 status: complete
 updated: 2026-11-21
-original:
-  - ../../sources/sites/motion-between-bfm-2.md
 related:
   - ../overview/agibot-june-2026-release-technology-map.md
   - ../overview/agibot-release-category-05-body-foundations.md
@@ -15,6 +13,9 @@ sources:
   - ../../sources/sites/motion-between-bfm-2.md
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+original:
+  - ../../sources/sites/motion-between-bfm-2.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
 summary: "BFM-2 是智元公开的运动小脑运控基座：二阶段 Motion-Between 设计，强调动作间稳定过渡与动态任务闭环；与 awesome-bfm-papers 学术索引及 paper-bfm-* 实体不同物。"
 ---
 
@@ -78,9 +79,21 @@ flowchart TB
 | [paper-bfm-*](./phc.md) 等 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **学术论文索引实体** |
 | [行为基础模型](../concepts/behavior-foundation-model.md) | 跨机构 **概念** 页 |
 
-## 信息边界
+## 核心机制与全状态推演
 
-- 截至 ingest 时，公开材料主要为 **视频标题与简介**（无字幕全文）；技术细节须以后续论文/仓库为准。
+依据智元 2026-05-26 官网发布披露，BFM-2 引入端到端 **DOF Feather Motion Generator** 生成式训练机制与 **二阶段 Motion-Between 架构**：
+
+1. **实时状态与接触条件化：** 结合全身动力学状态、接触约束状态以及高层随机/离散目标构型，在高维运动流形中连续概率建模并推演过渡轨迹。
+2. **全状态空间演化而非单一跌倒脚本：** 覆盖仰躺、趴地、大幅倾斜、悬空偏移及外力踹击/指令跳变后的动态重规划，解决上层 VLA 离散跳变与底层全身控制须连续稳定间的接口矛盾（未来规划演进为多模态输入 BFM-3）。
+
+## 工程实践
+
+- **把 BFM-2 当作衔接 VLA 与底层全身执行器的中间插值底座：** 用于吸收遥操作或上层规划器发出的离散/稀疏子目标跳变，而非替代带传感器闭环的高频底层安全保护。
+- **产品宣传参数须等开源仓库或白皮书核验后上线：** 在正式披露控制频率、跨本体支持列表与鲁棒恢复率前，应结合独立测试场景评估负载边界。
+
+## 常见误区或局限（信息边界）
+
+- 截至 2026-11 官网文章核查，公开材料主要为官方发布通稿与演示动画，**未公开模型网络权重、控制频率、训练算力及跨本体定量消融指标**；技术细节仍须以后续论文或开源仓库为准。
 
 ## HMI 开源主表入口
 

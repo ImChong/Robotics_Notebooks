@@ -11,6 +11,7 @@
 - **入库日期：** 2026-07-30（2026-11-21 补充官方全文通读）
 - **核对范围：** 通读智元官网官方发布全文（<https://www.agibot.com.cn/article/315/detail/161.html>，含 DOF Feather Motion Generator 与二阶段 Motion-Between 架构描述、与 VLA 关系及 BFM-3 规划）；经官网与 GitHub 检索确认无公开技术论文、代码仓库或模型权重。
 - **通读：** 已完成
+- **一句话说明：** 当前全身动力学、接触状态与高层目标构型共同条件化二阶段Motion-Between模型，输出连续的状态间过渡。它为VLA提供身体层执行接口，公开证据尚不足以判断控制频率和跨本体范围。
 - **开源状态：** **确认未开源**（仅官方新闻稿与公开视频演示，无公开论文/GitHub 仓库/权重）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 - **沉淀到 wiki：** 是 → [`wiki/entities/agibot-bfm-2.md`](../../wiki/entities/agibot-bfm-2.md)

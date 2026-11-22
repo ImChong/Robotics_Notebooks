@@ -14,6 +14,8 @@
 - **入库日期：** 2026-06-25
 - **再核日期：** 2026-09-27（arXiv v2 online 2026-09-14；项目页仍无代码仓）
 - **一句话说明：** **Imitation-to-Interaction** 四阶段渐进 RL——MoCap 教师模仿 → DAgger 目标条件蒸馏 → AMP 风格稳定 → 羽毛球物理交互 + **流形扩展**；PM01 真机 **零样本** 完成正/反手挑球等拟人击球。
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2602.08370v2 全文 PDF（1080 行），核对四阶段 Imitation-to-Interaction 管线、流形扩展、Isaac Lab easy/hard 消融表与 EngineAI PM01 零样本真机正/反手挑球结果
 
 ## 摘要级要点
 

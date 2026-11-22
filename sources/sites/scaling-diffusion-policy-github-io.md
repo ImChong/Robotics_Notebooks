@@ -9,6 +9,8 @@
 - **会议：** IEEE ICRA 2025（Accepted）
 - **机构（页眉）：** 美的集团（Midea Group）；华东师范大学（East China Normal University）；上海大学（Shanghai University）；北京人形机器人创新中心（X-Humanoid / Beijing Innovation Center of Humanoid Robotics）
 - **入库日期：** 2026-09-28
+- **通读：** 已完成
+- **核对范围：** 已通读 `https://scaling-diffusion-policy.github.io/` 全页 HTML 提取文本，并核对站内 `+22.5%` 概括与论文 Table II/III 实测值的口径差异及 Code 按钮错链
 - **一句话说明：** 展示 **ScaleDP** 相对 **DP-T** 的架构改动（AdaLN + unmasking）、MetaWorld/真机实验与 **S→H 随参数量上升的成功率表**。
 
 ## 开源核查（步骤 2.5，2026-09-28）

@@ -12,7 +12,10 @@ related:
   - ../entities/asimov-v1.md
   - ../queries/sim2real-gap-reduction.md
   - ../queries/real-time-control-middleware-guide.md
+sources:
+  - ../../sources/blogs/menlo_noise_is_all_you_need.md
 summary: "处理器在环（Processor-in-the-loop）Sim2Real：在仿真里跑真实生产固件，经外设总线仿真注入传感器寄存器语义、CAN 请求–响应抖动与线程时序约束，把嵌入式与通信层纳入腿式策略训练闭环。"
+original: ../../sources/blogs/menlo_noise_is_all_you_need.md
 ---
 
 # 处理器在环 Sim2Real（Processor-in-the-loop）
@@ -73,6 +76,11 @@ flowchart LR
   MJ --> I2C --> FUS --> CTL --> CANin --> MOT
   MOT -->|"力矩 / 关节指令"| MJ
 ```
+
+## 工程实践
+
+- **真实固件 + 外设总线仿真**：Menlo Asimov 栈在 MuJoCo `lsm6dsox` 与 I2C 寄存器仿真上运行生产 C 固件（`xioTechnologies/Fusion`），使定点/浮点截断与线程优先级成为训练期可见动力学。
+- **请求-响应抖动注入（`0.4-2 ms`）**：在 CAN 总线与电机路径上覆盖 datasheet 标称 `0.4 ms` 延迟并做 CI 回归测试，提前暴露策略对总线抖动的敏感与驱动锁竞争。
 
 ## 常见误区或局限
 

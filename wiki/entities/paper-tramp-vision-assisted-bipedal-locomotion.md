@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, depth, amp, motion-prior, mixture-of-experts, single-stage-rl, sim2real, sjtu, ieee-ral]
 status: complete
 updated: 2026-09-18
+original:
+  - ../../sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md
 doi: "10.1109/LRA.2026.3707326"
 venue: "IEEE RA-L 2026"
 related:
@@ -183,7 +185,7 @@ flowchart TB
 - **截至入库日未开源**；选型时按 IEEE RA-L + ResearchGate 全文评估，勿假设有官方复现仓。
 - 与 [T-GMP](./paper-motion-cerebellum-t-gmp.md) 并列阅读可看清「生成式地形流形」vs「判别式双示范先验」两条路。
 
-## 与其他页面的关系
+## 关联页面
 
 - 任务索引：[楼梯/障碍感知 locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)、[Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - 方法：[AMP 奖励](../methods/amp-reward.md)、[强化学习](../methods/reinforcement-learning.md)

@@ -3,6 +3,8 @@ type: entity
 tags: [paper, human-demonstration, data-pipeline, retargeting, object-centric, cross-embodiment, urdf, post-training, simulation]
 status: complete
 updated: 2026-10-15
+original:
+  - ../../sources/papers/human_demos_object_retargeting_arxiv_2610_20351.md
 project_id: human-demos-object-retargeting
 arxiv: "2610.20351"
 project: https://playground.dxtr.co/
@@ -17,6 +19,8 @@ summary: "人类示范「重定向物体而非人手」（arXiv:2610.20351）：
 ---
 
 # 人类示范：重定向物体而非人手
+
+## 一句话定义
 
 **Human Demonstrations as Post-Training Data for Any Robot Body: Retargeting the Object, Not the Hand**（[arXiv:2610.20351](https://arxiv.org/abs/2610.20351)，[项目页](https://playground.dxtr.co/)）提出用物体中心的示范记录替代人手中心的重定向：人类示范只记录物体怎么动，再逐机器人判断能否执行，并把每一次判定记录为通过、失败模式或拒绝。
 

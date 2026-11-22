@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware-design, generative-design, electro-hydraulic, eha, lightweight, dynamics-simulation, zju, avic-facri]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 doi: "10.13245/j.hust.260645"
 venue: "华中科技大学学报（自然科学版） 2026, 54(6)"
 related:
@@ -17,6 +17,7 @@ related:
 sources:
   - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 summary: "罗元春等（浙大流体动力国重 + 中航西飞控所，华中科技大学学报 2026）：电液混合 5-DoF 人形下肢；Simscape 跳跃仿真提载荷 → Fusion 衍生式多工况轻量化大/小腿连杆（−62.5%/−61.6%），跳跃高度 0.303→0.327 m；无代码开源。"
+original: ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
 ---
 
 # 动力学仿真驱动的人形机器人下肢衍生式设计

@@ -19,6 +19,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../tasks/loco-manipulation.md
+original: ../../sources/papers/g1_confined_space_wbp_arxiv_2608_10220.md
 sources:
   - ../../sources/papers/g1_confined_space_wbp_arxiv_2608_10220.md
   - ../../sources/sites/confined-space-wbp-humanoid-github-io.md

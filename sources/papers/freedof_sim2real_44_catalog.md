@@ -8,6 +8,8 @@
 - **博客归档：** [`wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md`](../blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - **入库日期：** 2026-09-20
 - **一句话说明：** 44/44 独立 wiki 详情节点（新建 + 复用已有 canonical 页），**0 重复 arXiv 节点**。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md` 全文 44 篇目录与节点映射。
 
 ## 44 篇 → 本库节点
 

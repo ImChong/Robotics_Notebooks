@@ -16,7 +16,7 @@ tags:
   - archon-robotics
   - perception
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 arxiv: "2606.11092"
 code: https://github.com/OpenDriveLab/RoboNaldo
 original:

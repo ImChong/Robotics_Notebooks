@@ -14,7 +14,7 @@ tags:
   - umich
   - berkeley
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2607.12114"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -29,6 +29,7 @@ related:
 sources:
   - ../../sources/papers/gaitspan_arxiv_2607_12114.md
 summary: "GaitSpan（arXiv:2607.12114，UMich/UC Berkeley）：冻结行走策略为种子，GaitWave 组合相位尺度 action waves、H-SLIP 塑形动态步幅、残差补细节；单策略连续走–慢跑–跑，五套人形 embodiment 与 Booster T1/K1、G1 真机零样本户外部署。"
+original: ../../sources/papers/gaitspan_arxiv_2607_12114.md
 ---
 
 # GaitSpan：从行走到跑步的人形技能生长
@@ -72,7 +73,7 @@ summary: "GaitSpan（arXiv:2607.12114，UMich/UC Berkeley）：冻结行走策�
 - **形态与地形泛化：** 同一训练管线覆盖 **五套 embodiment**；训练仅平地/缓坡，真机可上 **波场、砂石、草地、林间坡道**，并耐受 **负重与低摩擦鞋** 扰动。
 - **与 SPRINT 互补：** [SPRINT](./paper-sprint-humanoid-athletic-sprints.md) 用极少 MoCap **频谱外推** 至 6 m/s 冲刺；GaitSpan 强调 **从已有行走 checkpoint 生长**、**无外部动作库**，更贴近「已会走的人形如何加速」工程路径。
 
-## 方法
+## 核心机制
 
 | 模块 | 机制 |
 |------|------|
@@ -121,6 +122,11 @@ flowchart TB
   residual --> out
 ```
 
+## 工程实践
+
+- **冻结行走种子复用**：工程上无需丢弃已有稳定的低速行走策略；将 $\pi_{\mathrm{seed}}$ 冻结后，只需把目标速度重映射回种子训练域并叠加相位尺度 GaitWave 组合与小残差即可连续过渡到 2.2–2.8 m/s 慢跑与奔跑。
+- **形态与硬件迁移提示**：论文在 5 套 23/29-DoF 人形形态和 Booster T1/K1、Unitree G1 真机验证零样本迁移；部署需保证与种子一致的相位观测输入与低层 PD 接口。
+
 ## 实验要点（归纳）
 
 | 轴 | 报告口径（以论文为准） |
@@ -142,7 +148,7 @@ flowchart TB
 - 能力上限清晰：训练偏置集中于约 2.2 m/s、评测含 2.5 m/s OOD、项目页展示至约 2.8 m/s，低于 [SPRINT](./paper-sprint-humanoid-athletic-sprints.md) 的冲刺向工作；两者分别对应「已会走的人形如何加速」与「极速外推」。
 - 泛化面比峰值速度更有工程价值：同一管线覆盖五套 embodiment、Booster T1/K1 与 G1 真机，训练仅平地/缓坡却能上波场、砂石、草地、林间坡道并耐受负重与低摩擦鞋扰动；代价是代码尚未公开。
 
-## 常见误区或局限
+## 局限与风险
 
 - **误区：「相位加倍就等于跑起来」。** 补充实验表明 **直接相位缩放** 在种子训练域外 **跟踪误差大**，需 **GaitWave 自适应组合** 而非固定频率。
 - **误区：「残差 alone 够用」。** Vanilla seed–residual 无法承担全速域动态生长；残差应补 **waves 未覆盖的细节**。

@@ -11,6 +11,8 @@
 - **抓取方式：** wechat-article-for-ai（Camoufox）
 - **原始抓取落盘：** [`sources/raw/wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md`](../raw/wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md)
 - **一句话说明：** 从 MEMS 六轴原理、误差标定、Mahony/Madgwick/EKF 姿态融合，到 Linux V4L2/IIO 驱动分工、曝光/元数据/时钟同步、EIS 与滚动快门补偿的完整 IMU–相机工程链教程。
+- **通读：** 已完成
+- **核对范围：** 已通读本地落盘原始全文 wechat_feiyiyangcheng_imu_principles_algorithms_camera_2026-09-05.md（718 行），核对六轴 MEMS 比力/角速度积分误差、Mahony/Madgwick/EKF/ESKF 融合及 Linux V4L2/IIO 曝光同步与诊断链
 
 ## 对 wiki 的映射
 

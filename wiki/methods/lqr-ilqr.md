@@ -2,7 +2,8 @@
 type: method
 tags: [control, lqr, ilqr, optimal-control, optimization, locomotion]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-21
+original: ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-classical-linear-feedback.md
@@ -16,6 +17,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
+  - ../../sources/courses/mit_underactuated_robotics.md
 summary: "LQR / iLQR 是机器人最优控制与轨迹优化的基石，通过 Riccati 递归高效求解线性及非线性轨迹优化问题。"
 ---
 
@@ -26,6 +28,24 @@ summary: "LQR / iLQR 是机器人最优控制与轨迹优化的基石，通过 R
 ## 一句话定义
 
 > LQR 是线性系统下的“一步到位”解析解；iLQR 是非线性系统下的“反复横跳”迭代优化，是现代高性能轨迹优化器（如 Crocoddyl）的核心引擎。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
+## 为什么重要
+
+- **最优控制理论基石**：MIT *Underactuated Robotics* Ch. 8 从 HJB 方程出发，利用二次型代价值函数假设 $J^*(x)=x^T S x$ 推导出连续与离散代数 Riccati 方程（ARE），是高维线性化平衡控制少有的全局解析解。
+- **高自由度非线性扩展引擎**：网格动态规划在 4–5 维以上即遭遇维度灾难，而 iLQR / DDP（Ch. 10）仅需在标称轨迹周围进行反向 Riccati 传递与前向动力学滚动，单次迭代复杂度随步长 $N$ 线性增长，可直接用于人形与四足全身轨迹规划。
+
+## 核心原理与方法栈
 
 ---
 
@@ -97,7 +117,7 @@ iLQR 常被称为“DDP 的简化版”。
 
 ---
 
-## 4. 实践中的 Trick (Engineering Know-How)
+## 工程实践（4. 实践中的 Trick）
 
 ### 正则化 (Regularization)
 在计算 $Q_{uu}^{-1}$ 时，如果 $Q_{uu}$ 接近奇异（比如处于非物理状态或过大控制步长），会导致数值崩溃。
@@ -121,17 +141,6 @@ iLQR 常被称为“DDP 的简化版”。
 2. **灵巧操作规划**：在 MuJoCo 中规划手指拨动物体的复杂序列。
 3. **全身控制器内核**：作为 MPC 的底层求解器，每 10-20ms 运行一次以应对扰动。
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
-| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
-| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-
 ## 参考来源
 
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：LQR 代表算法
@@ -140,6 +149,11 @@ iLQR 常被称为“DDP 的简化版”。
 - [cmu_optimal_control_16_745_2025_youtube.md](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — CMU 16-745 Lec 8 LQR three ways / Lec 12 DDP
 - [mit_underactuated_kalman_lqr.md](../../sources/courses/mit_underactuated_kalman_lqr.md) — Tedrake Underactuated 估计 / LQR 模块（勿与上条 playlist 混淆）
 - [optimal_control.md](../../sources/papers/optimal_control.md) — 最优控制与 DDP 历史主线
+
+## 局限与常见误区
+
+- **无原生硬约束能力**：标准 LQR/iLQR 假定无不等式硬约束；加入控制限幅或摩擦锥约束时必须改用 Box-DDP、增广拉格朗日（ALTRO）或外层罚函数。
+- **二阶与非光滑接触陷阱**：DDP 与 iLQR 依赖对 $f(x,u)$ 求微商（MIT Ch. 10 指出 DDP 多出动力学二阶张量且常被文献误称为 iLQR），遇到刚体碰撞开关跳变时易停滞于局部最优，需要配合预设接触序列或平滑接触模型。
 
 ## 关联页面
 
@@ -151,3 +165,9 @@ iLQR 常被称为“DDP 的简化版”。
 - [Trajectory Optimization](./trajectory-optimization.md) — 轨迹优化全景
 - [Crocoddyl](../entities/crocoddyl.md) — 基于 iLQR/FDDP 的工业级开源求解器
 - [MPC](./model-predictive-control.md) — LQR 在线滚动的形态
+
+## 推荐继续阅读
+
+- [Nonlinear Model Predictive Control](./nonlinear-model-predictive-control.md) — 在线滚动求解非线性最优控制
+- [Trajectory Optimization](./trajectory-optimization.md) — 直接配点、直接打靶与 iLQR/DDP 对比
+- [Quadratic Programming](../formalizations/quadratic-programming.md) — 处理瞬时多接触不等式硬约束的标准方法

@@ -10,7 +10,7 @@
 - **作者：** Hao Luo, Wanpeng Zhang, Yicheng Feng, Sipeng Zheng, Haiweng Xu, Chaoyi Xu, Ziheng Xi, Yuhui Fu, Zongqing Lu（BeingBeyond Team）
 - **机构：** BeingBeyond（智在无界）、Peking University、Renmin University of China、Tsinghua University
 - **年份：** 2026（arXiv 2026-04-30）
-- **核对范围：** 已获取并通读 `arXiv:2605.00078v1` PDF 抽取全文（Sections 1–5，涵盖 Latent Query + Prior/Posterior 双分支 MoT 打包、前瞻 V-JEPA2.1 Perceiver 嵌入、Frobenius 对齐损失与范数/谱熵防坍塌正则、6 项仿真与 12 项真机盲测及 UAC 延迟数据）及 GitHub `BeingBeyond/Being-H/Being-H07/README.md @ 27ec67b`；未独立复现训练与真机实验。
+- **核对范围：** 已获取并通读 `arXiv:2605.00078v1` PDF 抽取全文（78,862 字符，Sections 1–5，涵盖 Latent Query + Prior/Posterior 双分支 MoT 打包、前瞻 V-JEPA2.1 Perceiver 嵌入、Frobenius 对齐损失与范数/谱熵防坍塌正则、6 项仿真与 12 项真机盲测及 UAC 延迟数据）、BeingBeyond 官方研究页 `being-h07`（9,494 字符）及 GitHub `BeingBeyond/Being-H/Being-H07/README.md @ 27ec67b`；未独立复现训练与真机实验。
 - **通读：** 已完成
 
 ## 摘要与核心贡献

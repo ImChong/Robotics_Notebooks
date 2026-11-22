@@ -3,6 +3,8 @@ type: entity
 tags: [paper, vla, lora, adapter, pi0, pi05, x-vla, libero, metaworld, ustc, sjtu, nus, ntu, tongji]
 status: complete
 updated: 2026-10-15
+original:
+  - ../../sources/papers/morphact_arxiv_2610_20019.md
 project_id: morphact
 arxiv: "2610.20019"
 code: https://github.com/MINT-SJTU/MorphAct
@@ -18,6 +20,8 @@ summary: "MorphAct（arXiv:2610.20019）：为共享 VLA 按情境生成低秩�
 ---
 
 # MorphAct：机器人策略随操作情境改变参数
+
+## 一句话定义
 
 **MorphAct 让 VLA 的低秩参数更新随当前情境生成，并让视觉语言侧与动作侧生成器耦合训练，以缓解共享参数在不同操作之间的梯度冲突。**
 

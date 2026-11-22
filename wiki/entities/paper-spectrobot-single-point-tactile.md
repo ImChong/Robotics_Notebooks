@@ -9,6 +9,8 @@ tags:
   - vision-encoder
 status: complete
 updated: 2026-10-18
+original:
+  - ../../sources/papers/spectrobot_single_point_tactile_arxiv_2609_24621.md
 arxiv: "2609.24621"
 project: https://huggingface.co/jogarulfop
 related:
@@ -86,6 +88,16 @@ flowchart TD
 1. 开源边界：**项目页未列 GitHub** — 公众号给的 GitHub 为组织主页（本环境访问返回 403，无法核实具体仓库）；项目页为 Hugging Face 个人主页，未见具体项目链接。
 2. 核心机制：高带宽单点信号 → 时频图 → 视觉编码器。
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
+
+## 工程实践
+
+- **高带宽采样转 STFT 时频图：** IEPE 振动传感采得高速接触振动后转成固定窗长频谱图，可直接复用预训练 2D 视觉骨干网络（如 ResNet）而不需重设计专有 1D 架构。
+- **传感安装刚度与动态范围：** 压电/IEPE 单点负载传感缺乏真静态响应，工程部署适合捕捉碰撞瞬态、微滑移与材质摩擦声振而非静态称重。
+
+## 常见误区或局限
+
+- 单点高带宽传感器不包含空间接触面积或局部形变矢量；多指精细操弄仍需结合多点/阵列表征。
+- 目前仅给出 HF 组织主页，完整训练权重与代码仓尚未公开。
 
 ## 关联页面
 

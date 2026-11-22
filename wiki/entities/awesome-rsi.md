@@ -3,6 +3,8 @@ type: entity
 tags: [curated-list, recursive-self-improvement, llm-agents, agent-harness, self-evolution, benchmarks]
 status: complete
 updated: 2026-10-17
+original:
+  - ../../sources/repos/awesome-rsi.md
 related:
   - ../queries/rsi-four-tier-five-pushes.md
   - ../concepts/recursive-self-improvement.md
@@ -46,8 +48,7 @@ summary: "Prism-Shadow 维护的 Awesome RSI：按 RSI artifact（改什么）�
 - **基准与方法对齐**：29 条 benchmark 标注被测 workflow 中演化的 artifact 与 Online/Offline 协议 — 读 [HarnessBank](./paper-harnessbank.md) / [MetaRSI-v1](./paper-metarsi-v1.md) 时可回查同类评测语境。
 - **与 Auto-Research 分工**：[AI Auto-Research](../concepts/ai-auto-research.md) 覆盖 **学术全生命周期**；Awesome RSI 深耕 **agent 状态自更新** 子空间；[RSI Survey（2607.07663）](./paper-rsi-survey-2607-07663.md) 提供 **1,250 篇全谱系 taxonomy + 验证层级** 与开源语料。
 
-## 核心结构（怎么读）
-
+## 核心原理
 ### RSI 闭环（清单共识）
 
 ```mermaid
@@ -81,12 +82,15 @@ flowchart LR
 | Harness 效率再 scale | [SoL-Pi](./sol-pi.md) |
 | 宏观 RSI 与具身跟随 | [递归自改进](../concepts/recursive-self-improvement.md) · [四层×五次 query](../queries/rsi-four-tier-five-pushes.md) |
 
-## 局限与使用注意
-
+## 常见误区或局限
 - **清单滞后**：awesome 依赖社区 PR；以 arXiv / 官方仓为准。
 - **非可运行栈**：无统一训练代码；各条目开源状态需 **逐条** 核项目页（见 [sources/repos/awesome-rsi.md](../../sources/repos/awesome-rsi.md) 步骤 2.5）。
 - **与「完全 RSI」保持距离**：多数条目是 **部分 artifact 自更新** 或 **长程经验改进**，不等同于 Anthropic 文内的「自主设计后继模型」。
 - **机器人读者**：本清单主体为 **软件 agent**；具身专门索引见 [Awesome Embodied Self-Improvement](../../sources/repos/awesome-embodied-self-improvement.md)，按 L1–L4 与可执行动作集增量评估机器人 / Physical AI 的部署后自我改进。真机闭环工程前提仍看 [真机 autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md)。
+
+## 工程实践
+
+- **三轴检索导航方法：** 使用该索引选题或构造基线时，先锁定变更载体（artifact：权重 / harness / 上下文 / 记忆 / 技能），再对齐评估模式（online vs offline），避免直接拿只改 prompt 的收益横比参数更新方法。
 
 ## 关联页面
 

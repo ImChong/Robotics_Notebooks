@@ -3,6 +3,8 @@ type: query
 tags: [recursive-self-improvement, llm-agents, agent-harness, self-improvement, ai-auto-research, governance, benchmarks]
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
 summary: "用四层 RSI 标准（持久改进→有界闭环→ignition→开放式）与五次边界推进梳理 LLM/agent 自进化史：记忆、权重、AI 打分、harness 与研究过程逐层内收；2026 夏闭环可净正转几圈，点火与开放式 RSI 仍待证。"
 related:
   - ../../roadmap/depth-rsi.md

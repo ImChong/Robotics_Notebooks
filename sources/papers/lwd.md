@@ -9,6 +9,9 @@
 - **最后更新：** 2026-05-06
 - **一句话说明：** AGIBOT 提出 LWD —— 一个面向 VLA 通用策略的车队级 offline-to-online RL 后训练框架，把部署阶段的异构经验（成功/失败/人为干预）转化为持续改进信号。
 
+- **通读：** 已完成
+- **核对范围：** 已通读 AgiBot Finch 官方 `lwd-paper.pdf` 全文（85,937 字符），核对 DIVL、QAM（Q-learning via Adjoint Matching）及 16 台双臂真机 95% 成功率指标。
+
 ## 核心论文摘录（MVP）
 
 ### 1) Learning while Deploying: Fleet-Scale Reinforcement Learning for Generalist Robot Policies（AGIBOT Research, 2026）

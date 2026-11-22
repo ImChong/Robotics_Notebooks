@@ -8,6 +8,8 @@
 - **原始链接：** https://mp.weixin.qq.com/s/6rbLz_6nQz9z6kma9K4BFQ
 - **发表日期：** 2026-07-28（frontmatter）
 - **入库日期：** 2026-07-28
+- **通读：** 已完成
+- **核对范围：** 已通读原始落盘长文 `sources/raw/wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md` 共 314 行（系统辨识基准、观测/动作/奖励约束、DR 与课程学习、前馈与在线适应、分层安全）
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`；`--no-images`）；正文约 1.17 万字 / 27 图；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始落盘：** [wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md](../raw/wechat_shenlan_sim2real_sysid_to_adaptation_2026-07-28.md)
 - **课程出处（文末声明）：** 深蓝学院联合纽卡斯尔大学潘为《四足机器人：从动力学建模到强化学习》

@@ -10,6 +10,9 @@ tags:
   - deep-learning
 status: complete
 updated: 2026-11-16
+original:
+  - ../../sources/papers/ai_architecture_foundations.md
+  - ../../sources/papers/unet_ronneberger_arxiv_1505_04597.md
 summary: "U-Net 用对称编码器–解码器与同尺度跳跃连接保留像素级空间边界，最初用于医学图像分割，现广泛应用于扩散模型去噪骨干与机器人视觉/触觉密集预测。"
 related:
   - ../concepts/image-segmentation-taxonomy.md

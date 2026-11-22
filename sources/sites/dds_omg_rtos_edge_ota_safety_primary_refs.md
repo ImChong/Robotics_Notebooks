@@ -7,6 +7,8 @@
 - **入库日期：** 2026-07-21
 - **一句话说明：** 补齐机器人系统工程中「中间件底层、实时 OS、边云部署、模型发布、故障安全」五块与运控强相关的独立节点依据。
 - **沉淀到 wiki：** 是 → [dds-communication](../../wiki/concepts/dds-communication.md)、[rtos-realtime-scheduling](../../wiki/concepts/rtos-realtime-scheduling.md)、[edge-cloud-robotics](../../wiki/concepts/edge-cloud-robotics.md)、[control-inference-frequency-decoupling](../../wiki/concepts/control-inference-frequency-decoupling.md)、[model-versioning-ota](../../wiki/concepts/model-versioning-ota.md)、[robot-safety-state-machine](../../wiki/concepts/robot-safety-state-machine.md)
+- **通读：** 已完成
+- **核对范围：** 核对 OMG DDS 1.4 规范全文 PDF（414,173 字符）、ROS 2 RMW 设计文档、RAUC 与 RT-Thread 官方档案。
 
 ## 核心摘录
 

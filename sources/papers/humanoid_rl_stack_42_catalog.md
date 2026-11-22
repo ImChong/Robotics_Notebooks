@@ -6,6 +6,8 @@
 - **wiki 总览：** [humanoid-rl-motion-control-body-system-stack.md](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)
 - **入库日期：** 2026-05-26
 - **一句话说明：** 将具身智能研究室 42 篇 humanoid RL 运动控制论文分别落成独立 `sources/papers/humanoid_rl_stack_*` 与 `wiki/entities/paper-hrl-stack-*` 节点。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md` 42 篇目录及映射表。
 
 ## 论文（42）
 

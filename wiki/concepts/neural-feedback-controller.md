@@ -3,6 +3,8 @@ type: concept
 tags: [rl, control, policy, ppo, amp, humanoid, locomotion, deployment]
 status: complete
 updated: 2026-06-14
+original:
+  - ../../sources/personal/amp_mjlab_policy_training_essence.md
 summary: "RL 训练产出的 Policy 本质是状态反馈神经控制器 π(x)：把仿真经验压缩进 MLP 权重，PPO 逐步强化高奖励的状态→动作关联；典型 locomotion 策略推理仅 1–5M FLOPs/步，真机算力瓶颈 seldom 在 policy 本身。"
 related:
   - ../methods/ppo.md
@@ -46,8 +48,7 @@ Policy 不是「背下一条动作录像」，而是把 **「在这种状态下�
 - **与经典控制对照**：PID/LQR 的 $u=Kx$ 是线性反馈；AMP/PPO policy 是同构思路的 **非线性版**，便于和 [WBC](./whole-body-control.md)、MPC 分层讨论。
 - **算力预算**：人形常见 **Policy 100 Hz + PD 1 kHz**；policy 推理通常只占整机算力极小比例，视觉/VLA 才是瓶颈（见下文 FLOPs 估算）。
 
-## 训练产物：压缩了什么
-
+## 核心原理
 以 [AMP_mjlab](../entities/amp-mjlab.md) 类项目为例，训练结束得到 `model.pt` 或 `policy.onnx`：
 
 ```text
@@ -102,8 +103,7 @@ flowchart LR
 
 **本质**：强化导致高奖励的 **状态→动作** 神经连接，削弱导致摔倒、打滑、偏航的连接。数亿步之后，形成可用的 $\pi$。
 
-## 推理算力：参数量 ≠ FLOPs
-
+## 工程实践
 典型 locomotion MLP（`obs ~700 → 1024 → 512 → 256 → action ~23`）：
 
 - **参数量**：约 1–3M（远小于「2000 万参数」的夸张说法）。
@@ -118,8 +118,7 @@ flowchart LR
 
 **工程结论**：在 **Policy 100 Hz / PD 1 kHz** 架构下，真机算力压力通常在 **深度、VLA、点云、世界模型**，而非低层 policy 推理。
 
-## 常见误区
-
+## 常见误区或局限
 - **「Policy 学会了跑步这一段动作」** — 学会的是 **反馈律**；换指令/扰动会走不同步态，而非回放固定 clip。
 - **「参数量 = 推理 FLOPs」** — MLP 前向 FLOPs 与参数量同阶但不相等；应用 FLOPs × 控制频率估算部署负载。
 - **「网络越大 locomotion 越强」** — 真机 SOTA 常是 **2–3 层、256–512 宽 MLP**；瓶颈在观测、奖励、sim2real（见 [人形策略网络架构](./humanoid-policy-network-architecture.md)）。

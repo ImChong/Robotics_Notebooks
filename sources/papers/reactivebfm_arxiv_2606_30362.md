@@ -5,13 +5,16 @@
 - **标题：** ReactiveBFM: Reactive Closed-Loop Motion Planning Towards Universal Humanoid Whole-Body Control
 - **缩写：** **ReactiveBFM**
 - **类型：** paper / humanoid whole-body control + closed-loop motion planning
-- **arXiv：** <https://arxiv.org/abs/2606.30362>
+- **arXiv：** <https://arxiv.org/abs/2606.30362>（v3 已标注 CoRL 2026 接收）
 - **PDF：** <https://arxiv.org/pdf/2606.30362>
 - **项目页：** <https://xiao-chen.tech/reactivebfm>
-- **发表日期：** 2026-06-29
+- **代码仓库：** <https://github.com/zjwzcx/ReactiveBFM>（v3 公开；含 `deploy`、`reactivebfm`、`scripts`）
+- **发表日期：** 2026-06-29（v3 更新于 2026-10-22）
 - **作者：** Xiao Chen, Weishuai Zeng, Xiaojie Niu, Zirui Wang, Jianan Li, Huayi Wang, Furui Xu, Jiahe Chen, Weixiang Zhong, Lihe Ding, Kailin Li, Jiangmiao Pang, Tai Wang, Tianfan Xue, Jingbo Wang
 - **机构：** 香港中文大学、上海人工智能实验室
 - **入库日期：** 2026-07-01
+- **通读：** 已完成
+- **核对范围：** 已下载并通读 `arXiv:2606.30362v3` PDF（Abstract、§1–§5、Table 实验与附录 B.4/B.5/C 数据集统计 37.14 h / 102M 帧 BFM），并核查 `github.com/zjwzcx/ReactiveBFM` 目录结构
 - **一句话说明：** 把 **BFM 类通用跟踪控制器** 与 **自回归运动扩散规划器** 真正闭合成 **实时闭环规划–控制** 系统：用 **scheduled prefix sampling** 从 imperfect 物理状态学误差恢复，用 **异步重规划 + trajectory chunking 时间集成** 解决 AR 规划与 50 Hz 跟踪的时延失配；Unitree G1 真机实现 **文本条件全身运动、流式指令切换、零样本移动目标到达** 与强扰动恢复。
 
 ## 核心论文摘录（MVP）

@@ -8,6 +8,8 @@
 - **论文：** <https://arxiv.org/abs/2610.03388>
 - **Hugging Face 卡片 license 字段：** Apache-2.0（这是数据卡当前元数据；论文则称代码、数据、checkpoint 将在接收后 MIT 发布，授权口径有差异，须按资产条款核验）。
 - **资源形态：** GVHMR 人体重建结果、G1 29-DoF 的 robot qpos 及相关处理/示例文件；原始运动员视频未公开。
+- **通读：** 已完成
+- **核对范围：** 核对 Hugging Face `LuluCao/KungfuAthleteBot` 数据卡 `README.md`（8,446 字节，Apache-2.0，992 条目统计）。
 
 ## 规模与格式
 

@@ -4,6 +4,8 @@ project_id: last-ai-built-by-humans-rsi
 tags: [paper, survey, recursive-self-improvement, ai-auto-research, llm-agents, self-evaluation, governance]
 status: complete
 updated: 2026-10-09
+original:
+  - ../../sources/papers/last_ai_built_by_humans_2609_11873.md
 arxiv: "2609.11873"
 project: https://theseus-labs-rsi.github.io/
 related:
@@ -23,6 +25,8 @@ summary: "arXiv:2609.11873（v3，2026-09-22）提出五级改进自治框架与
 
 # The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement
 
+## 一句话定义
+
 **这篇论文不是一个新模型，而是用五级自治框架和 HCI 衡量 AI 改进闭环离“真正递归自改进”还有多远。**
 
 ## 英文缩写速查
@@ -38,8 +42,7 @@ summary: "arXiv:2609.11873（v3，2026-09-22）提出五级改进自治框架与
 
 “AI 能帮忙改进 AI”很容易被用作强结论，但实验自动化、训练时自我迭代、策略/工具自优化和系统自主设计下一轮改进并非同一件事。本文的贡献是提供一把判别尺：既看系统执行改进的能力，也看它能否决定策略、获得新经验、适应变化环境，并进一步改进改进过程本身。对机器人而言，这能帮助审读“自主研发”“自我进化”叙事，避免把自动调参当成闭环 RSI。
 
-## 核心方法与框架
-
+## 核心原理
 ### 五级改进自治
 
 论文将 RSI 能力分解为五个递进方面：

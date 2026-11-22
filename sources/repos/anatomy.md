@@ -8,6 +8,8 @@
 - **入库日期：** 2026-10-11
 - **一句话说明：** Claude Code 技能：把技术原理转成有真实部件、交互读数和动画的等轴测机械插图，输出 SVG / HTML / React；可选 WebGL 特效，3D 动作模式为 beta。
 - **知识节点：** [Anatomy](../../wiki/entities/anatomy-skill.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `wheresryan22/anatomy` 官方 `README.md`（26,199 字节）。
 
 ## 开源状态核查（2026-10-11）
 

@@ -29,6 +29,9 @@ sources:
   - ../../sources/repos/ultralytics.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
+original:
+  - ../../sources/papers/yolo_arxiv_1506_02640.md
+  - ../../sources/papers/resnet_arxiv_1512_03385.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「机器人感知栈里到底该选单阶段（YOLO 系）还是两阶段（Faster R-CNN 系）检测器？机载实时和服务器侧高精度的选型逻辑有什么不同？2D 框够用吗？」

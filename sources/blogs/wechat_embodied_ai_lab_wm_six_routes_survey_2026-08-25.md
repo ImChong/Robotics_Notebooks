@@ -8,6 +8,8 @@
 - **原始链接：** https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5GQ
 - **发表日期：** 2026-08-25
 - **入库日期：** 2026-08-25
+- **通读：** 已完成
+- **核对范围：** 已通读本地原始长文 `sources/raw/wechat_embodied_wm_six_routes_survey_2026-08-25/近100余项工作调研！万字长文讲透具身世界模型的前世今生——从动力学预测到机器人应用闭环.md` 共 295 行
 - **抓取方式：** Agent Reach + `wechat-article-for-ai`（Camoufox）；`--no-images`
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_wm_six_routes_survey_2026-08-25/`](../raw/wechat_embodied_wm_six_routes_survey_2026-08-25/)
 - **一句话说明：** 按 **模型构建 / 规划 / 学习 / 行动 / 评估 / 上下文** 六条闭环职责 taxonomy 串读具身世界模型百年脉络；核心判断：世界模型正从「生成未来内容」变为 **管理行动后果与决策不确定性的系统组件**。

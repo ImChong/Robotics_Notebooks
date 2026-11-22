@@ -9,7 +9,7 @@ tags:
   - legged-gym
   - isaac-gym
 status: complete
-updated: 2026-11-01
+updated: 2026-11-22
 code: https://github.com/clearlab-sustech/Wheel-Legged-Gym
 related:
   - ../entities/legged-gym.md
@@ -21,6 +21,7 @@ sources:
   - ../../sources/repos/wheel_legged_gym.md
   - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "Wheel-Legged-Gym（南方科技大学 CLEAR Lab）是基于 legged_gym 与 rsl_rl 的轮足机器人强化学习环境。"
+original: ../../sources/repos/wheel_legged_gym.md
 ---
 
 # Wheel-Legged-Gym
@@ -50,6 +51,10 @@ summary: "Wheel-Legged-Gym（南方科技大学 CLEAR Lab）是基于 legged_gym
 | **最近提交** | 2024-06-19 |
 | **可达性** | `git ls-remote` 可达（2026-11-01） |
 | **文章归类** | 轮足机器人 |
+
+## 核心原理
+
+继承 `legged_gym` 与 `rsl_rl` 训练架构并扩展轮腿专用观测与动力学：`LeggedRobotVMC` 环境类将开链与闭链轮腿统一映射到虚拟腿极坐标（VMC）空间计算等效末端力与关节力矩，并采用独立的脚部/轮端力传感器配置规避 Isaac Gym GPU 网格地形下 `net_contact_force_tensor` 的串联力传播失真问题。
 
 ## 文章说法核对
 
@@ -99,6 +104,14 @@ sequenceDiagram
 
 图依据：clearlab-sustech/Wheel-Legged-Gym@c354431，实际读过 `README.md`（安装、训练与回放命令）、`wheel_legged_gym/scripts/train.py`（`train`）、`wheel_legged_gym/utils/task_registry.py`（`make_env` 与 `make_alg_runner` 的调用段落）、`wheel_legged_gym/envs/__init__.py`（任务注册）、`wheel_legged_gym/envs/base/legged_robot.py`（`step` 与 `post_physics_step` 的调用顺序）、`wheel_legged_gym/envs/wheel_legged_vmc/wheel_legged_vmc.py`（`LeggedRobotVMC.step`、`post_physics_step` 与 `_compute_torques` 的签名）、`wheel_legged_gym/rsl_rl/runners/on_policy_runner.py`（`__init__` 中 PPO 构造与 `learn` 循环）、`wheel_legged_gym/rsl_rl/algorithms/ppo.py`（`act`、`process_env_step`、`update` 的签名与代理损失段）。`ActorCritic` 的网络结构、`compute_observations` 的观测细节、奖励项名称未逐行追踪；未运行训练。
 
+## 工程实践
+
+- **入口与任务切换**：通过 `python wheel_legged_gym/scripts/train.py --task=wheel_legged_vmc_flat` 快速验证闭链/开链统一的 VMC 环境，再切换到崎岖地形版本与 `play.py` 评估。
+- **常见环境坑**：依赖 Python 3.8 与 Isaac Gym Preview 4，需留意 `libpython3.8` 动态库路径，且 GPU 网格地形务必按 README 示例开启脚端专用 `ForceSensorProperties` 以排除重力项。
+
+## 局限与风险
+
+- **环境冻结与扩展边界**：依赖停止更新的 Isaac Gym Preview 4；官方仓侧重仿真环境训练，真机部署仍需配合实际闭链连杆机械偏置标定与电机低层控制节点。
 
 ## 关联页面
 
@@ -114,3 +127,8 @@ sequenceDiagram
 - [wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)
 - 源码核对（2026-11-02）：clearlab-sustech/Wheel-Legged-Gym@c354431，读过 README.md、wheel_legged_gym/scripts/train.py、utils/task_registry.py、envs/__init__.py、envs/base/legged_robot.py、envs/wheel_legged_vmc/wheel_legged_vmc.py、rsl_rl/runners/on_policy_runner.py、rsl_rl/algorithms/ppo.py；时序图依据以上文件，未运行代码。
+
+## 推荐继续阅读
+
+- 仓库入口：<https://github.com/clearlab-sustech/Wheel-Legged-Gym>
+- 上游基准：[legged_gym](./legged-gym.md) 与 [RSL-RL](./rsl-rl.md)

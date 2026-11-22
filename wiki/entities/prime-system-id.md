@@ -15,6 +15,8 @@ tags:
   - hmi-opensource-table
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/prime_arxiv_2605_17681.md
 arxiv: "2605.17681"
 code: https://github.com/well-robotics/PRIME
 related:

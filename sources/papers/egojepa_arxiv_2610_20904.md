@@ -11,6 +11,9 @@
 - **一句话说明：** 三阶段从第一视角人类视频学习潜在动作，轻量适配器接到不同机器人，无需手工重定向。
 - **沉淀到 wiki：** [`wiki/entities/paper-egojepa-egocentric-latent-action.md`](../../wiki/entities/paper-egojepa-egocentric-latent-action.md)
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2610.20904` PDF 提取全文（`2610.20904.pdf`，5,102,390 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 摘要要点（arXiv 摘要页）
 
 - 重定向方法需要按本体重新标定，并把手部跟踪误差传递到控制。

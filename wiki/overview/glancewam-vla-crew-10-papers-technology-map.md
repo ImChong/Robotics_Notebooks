@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, wam, vla, multi-robot, technology-map]
 status: complete
-updated: 2026-08-30
+updated: 2026-11-21
 related:
   - ../entities/paper-glancewam.md
   - ../entities/paper-indi.md
@@ -21,6 +21,9 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md
   - ../../sources/raw/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md
+original:
+  - ../../sources/blogs/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md
+  - ../../sources/raw/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md
 summary: "依据具身智能小站 2026-08-30 十篇盘点，把近期工作读成异步想象、意图与评测、多机/计划保证、导航接触与工业模块、仿真证书五组。"
 ---
 
@@ -28,7 +31,7 @@ summary: "依据具身智能小站 2026-08-30 十篇盘点，把近期工作读�
 
 > **本页定位**：为 [具身智能小站 · 10 篇盘点](https://mp.weixin.qq.com/s/MdCtmijSM_VfYp19f-nZQw)（2026-08-30）提供 **按五类问题组织的阅读坐标**；不复述每篇方法细节。姊妹近期盘点见 [开源 8 篇](./open-source-8-papers-technology-map.md)、[WAM / VLA / 跨本体 9 篇](./wam-vla-cross-embodiment-9-papers-technology-map.md)、[世界模型与真实执行 10 篇](./world-model-exec-10-papers-technology-map.md)。
 
-## 一句话观点
+## 一句话定义
 
 **具身下一阶段是把隐式结构改成显式接口：想象何时发生、行为目标如何进入解码器、谁验证多机动作、模拟如何变成证书、模块怎样在仿真与真机之间保持一致。**
 
@@ -42,7 +45,7 @@ summary: "依据具身智能小站 2026-08-30 十篇盘点，把近期工作读�
 | SSR | Subgoal Success Rate | Meta-Ctrl 在 WAH-NL 的主轴 |
 | GOLEM | Generalized Open Library of Embodied Modules | 人形工业模块库 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - 公众号把 10 篇放在「显式接口」叙事里：异步想象、意图蒸馏、多机编排、双臂遮蔽、意图评测、导航–接触、规划保证、仿真证书、模块化人形。
 - **Indi / DreamMimic** 站内已有完整详情页，可直接点开深读。
@@ -114,6 +117,16 @@ flowchart TB
 | Meta-Ctrl | **未开源** |
 | Bet4Sim2Real | **已开源** 无 SPDX |
 | GOLEM | **待核实** org API 404 |
+
+## 工程实践
+
+- **优先复用带明确开源协议与复现入口的项目：** 如 GlanceWAM（MIT + HF）、Physical Agentic AI（MIT）与 Bet4Sim2Real（已开源，部署前注意补齐许可证审计），避免基于未开源条目盲目排期。
+- **按「接口位置」而非宣传词选型：** 需要降低动作头延迟时看异步想象（GlanceWAM 48 ms）；需要多机编排零误派时独立设计规划与执行之间的确定性门控（Physical Agentic AI）；双臂多模态缺失场景优先验证训练期遮蔽（M3）而非改推理骨架。
+
+## 常见误区或局限
+
+- **十篇汇总不代表成熟度一致：** 本专题 10 项工作开源状态分化较大，包含 Indi、M3、Meta-Ctrl 等未开源工作及尚待核实仓状态的条目，落地可行性需逐项核查实体页。
+- **公众号叙事偏向提炼「显式接口」主线：** 对单篇实验边界、硬件选型与长程失败案例的描述高度浓缩，关键参数须回查各 `paper-*` 实体页与对应论文原文。
 
 ## 关联页面
 

@@ -3,6 +3,8 @@ type: entity
 tags: [world-action-models, world-models, robotics, cross-embodiment, cosmos]
 status: complete
 updated: 2026-11-06
+original:
+  - ../../sources/papers/greenwam_arxiv_2610_18774.md
 project_id: greenwam
 arxiv: "2610.18774"
 project: https://greenvla.github.io/GreenWAM/

@@ -3,6 +3,8 @@ type: entity
 tags: [paper, vla, manipulation, imitation-learning, human-to-robot, cross-embodiment, world-model, teleoperation, pku, cuhk, baai-aether]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/last_hd_arxiv_2606_23685.md
 arxiv: "2606.23685"
 code: https://siriyep.github.io/last-hd-project-page/
 related:
@@ -42,8 +44,7 @@ summary: "LaST-HD（arXiv:2606.23685）：用动作条件世界模型把非配�
 - **方法切口：** 把 **跨具身对齐** 从 **动作/未来帧视觉** 推进到 **动作条件前向动力学潜空间**，与 EgoMimic、EgoScale 等 **表征或动作级共训** 形成对照。
 - **工程闭环：** **OOL Glove**（>200 Hz、亚毫米级关键点）+ **mixed co-training** + **人手 DAgger 式在线纠偏**，给出从 **规模化人手预训** 到 **新环境快速适应** 的可操作配方。
 
-## 核心信息
-
+## 核心原理
 | 字段 | 内容 |
 |------|------|
 | 机构 | 北京大学（PKU）、香港中文大学（CUHK）、Simplexity Robotics、Aether Tech |
@@ -120,6 +121,10 @@ flowchart TB
 | **EgoScale** | 同属大规模 egocentric 人视频预训练 VLA；对照 **表征级共训**，LaST-HD 用世界模型把「动作→物理后果」嵌入共享潜空间监督推理专家。 |
 | **LaST0** | 论文潜式 CoT VLA 基线；LaST-HD 在其上加 **动作条件 WM 潜监督**，域内 SR **73% > 63%**、去掉潜式推理回落 **73%→60%**。 |
 | **π₀.₅ / Cosmos-Policy** | 强 VLA / 世界–动作模型 baseline；域内 LaST-HD **73%** > π₀.₅ **62%** > Cosmos-Policy **52%**，泛化场景差距进一步拉大。 |
+
+## 工程实践
+
+- **Mix-to-Human 两阶段真机配方：** 先混合非配对人手（低成本 OOL Glove）与机器人演示共训物理预测推理专家，再在目标机器上仅采集约 20 分钟少量遥操作纠偏完成混合微调，避免运动学逐关节硬映射造成的误差传递。
 
 ## 关联页面
 

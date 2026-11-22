@@ -3,6 +3,8 @@ type: concept
 tags: [systems-engineering, edge-computing, cloud, robotics, deployment]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
 related:
   - ./container-orchestration-cicd.md
   - ./model-versioning-ota.md

@@ -15,6 +15,8 @@
 - **入库日期：** 2026-05-26
 - **深读归档：** 2026-06-25 — [teamhoi_arxiv_2603_07988.md](teamhoi_arxiv_2603_07988.md)
 - **一句话说明：** 单一去中心化 Transformer + masked AMP，2–8 人协作搬桌单策略泛化。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2603.07988` TeamHOI PDF 全文、`sail-sg/TeamHOI` `README.md` 及 `sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md`。
 
 ## 核心摘录（策展，非全文）
 

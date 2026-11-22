@@ -4,6 +4,8 @@ tags: [paper, manipulation, grasping, dexterous, proprioception, contact-rich, m
 topic: [manipulation, contact-tactile]
 status: complete
 updated: 2026-10-04
+original:
+  - ../../sources/papers/see_to_reach_feel_to_grasp_arxiv_2609_31323.md
 arxiv: "2609.31323"
 institutions: [mit, snu, yonsei]
 related:
@@ -20,6 +22,8 @@ summary: "Blind Grasp Reflex 将臂部到达与手部接触控制拆分；20-DoF
 ---
 
 # Blind Grasp Reflex：本体感觉驱动的灵巧手抓取反射
+
+## 一句话定义
 
 **Blind Grasp Reflex** 将手臂的全局到达与灵巧手的局部接触控制分开：手部策略只根据关节编码器历史及命令误差调整抓取，并输出抓取分数供手臂控制器决定何时继续抬升或操作。
 
@@ -138,6 +142,11 @@ flowchart TD
 3. **静态抓取并非最高：** 本文 96%/95% 对照 98%/97%，更突出的改进在报告的动态物体与训练区外位姿条件。
 4. **报告边界要分开：** 92% 动态成功是仿真指定移动方式的结果；29 个真机物体只是无重复次数的定性验证。
 5. **复现仍受限：** 项目页代码状态为待发布，完整的训练、推理与评测暂时无法从公开材料复跑。
+
+## 工程实践
+
+- **异步频域分层：** 底层伺服运行在 1 kHz，手臂全局轨迹模块与盲抓反射手策略均运行在 200 Hz，手部策略仅看关节编码器历史与命令误差而完全不依赖腕部视觉。
+- **就绪分数阈值校准：** 部署时需针对目标手型与物体刚度标定稳定抓取分数阈值，过低会在半虚握时提前抬臂引发掉落。
 
 ## 关联页面
 

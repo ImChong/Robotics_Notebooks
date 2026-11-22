@@ -2,6 +2,8 @@
 
 > 来源归档（primary sources）
 
+- **通读：** 已完成
+- **核对范围：** 经 Agent-Reach Exa 通道通读 Holland (1962) *Outline for a Logical Theory of Adaptive Systems* JACM 全文（20,065 字符）与 Goldberg & Holland (1988) *Machine Learning* 导论全文；Holland (1975/1992) 与 Goldberg (1989) 专著按书目与目录边界标注。
 ## 书目与一手入口
 
 - **John H. Holland**, *Adaptation in Natural and Artificial Systems: An Introductory Analysis with Applications to Biology, Control, and Artificial Intelligence*. 初版 University of Michigan Press, 1975；MIT Press 1992 修订版：[出版社页](https://mitpress.mit.edu/9780262082136/adaptation-in-natural-and-artificial-systems/)，[DOI](https://doi.org/10.7551/mitpress/1090.001.0001)。

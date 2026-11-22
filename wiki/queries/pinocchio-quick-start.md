@@ -4,6 +4,7 @@ tags: [pinocchio, dynamics, kinematics, wbc, python, quick-start]
 status: complete
 summary: "Pinocchio 快速上手：最小可运行动力学示例"
 updated: 2026-11-07
+original: ../../sources/papers/robot_kinematics_tools.md
 sources:
   - ../../sources/papers/robot_kinematics_tools.md
   - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md

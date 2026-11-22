@@ -13,6 +13,8 @@ tags:
   - icml-2026
 status: complete
 updated: 2026-10-12
+original:
+  - ../../sources/papers/lac_wm_arxiv_2610_10846.md
 arxiv: "2610.10846"
 project: https://lacwm.github.io/
 related:

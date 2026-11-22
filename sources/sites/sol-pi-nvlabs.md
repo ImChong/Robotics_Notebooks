@@ -11,6 +11,9 @@
 - **一句话说明：** NVIDIA 用规模化 auto-research 环在 Pi coding-agent harness 上搜索 token 效率机制；152 条候选中 4 条机制（Action Fusion、Online Context Compact、ObservationPack、Evidence-Preserving Reducer）组成 SoL-Pi，EdgeBench 上约保留 Pi 94% 分数、token/成本降约 45–64%。
 - **沉淀到 wiki：** 是 → [`wiki/entities/sol-pi.md`](../../wiki/entities/sol-pi.md)
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `nvlabs.github.io/SoL-Pi/` 官方项目页及配套 `NVlabs/SoL-Pi` README，核对 152 候选→4 存活机制与 EdgeBench / Terminal-Bench 4 数据。
+
 ## 开源状态（步骤 2.5）
 
 - **项目页 Footer / 正文：** 链到 [NVlabs/SoL-Pi](https://github.com/NVlabs/SoL-Pi) 四个 extension 子目录（action-fusion、online-context-compact、observation-pack、evidence-preserving-reducer）。

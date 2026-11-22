@@ -4,6 +4,8 @@ project_id: hodge-morphology-priors-quadruped-degradation
 tags: [paper, quadruped, reinforcement-learning, graph-neural-network, fault-tolerance, hodge, unitree-go1, mujoco-playground, princeton]
 status: complete
 updated: 2026-10-12
+original:
+  - ../../sources/papers/hodge_morphology_arxiv_2610_10934.md
 arxiv: "2610.10934"
 related:
   - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md

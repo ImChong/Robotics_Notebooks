@@ -11,6 +11,8 @@
 - **作者：** Zhengyi Luo, Jiashun Wang, Kangni Liu, Haotian Zhang, Chen Tessler, Jingbo Wang, Ye Yuan, Jinkun Cao, Zihui Lin, Fengyi Wang, Jessica Hodgins, Kris Kitani（CMU + NVIDIA）
 - **入库日期：** 2026-06-12
 - **一句话说明：** 在 **SMPL / SMPL-X 兼容** 的统一仿真人形上提供 **10 项奥运风格运动**（田赛 + 球类对抗）环境与基线 reward/state 设计，用 **PPO / AMP / PULSE** 对照证明「强运动先验 + 简单任务奖励」可学到类人策略，并给出 **TRAM→PHC** 视频示范管线。
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2407.00187v1 全文 PDF（1681 行），核对 Isaac Gym 60Hz/策略 30Hz 参数、SMPL/SMPL-X 动作空间（R^69 / R^153）与 PPO/AMP/PULSE 基准实验与结论
 
 ## 核心摘录
 

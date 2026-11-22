@@ -14,6 +14,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md
   - ../../sources/papers/blackmore_autonomous_precision_landing_space_rockets.md
+original:
+  - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
 # 建模与求解（控制问题框架）

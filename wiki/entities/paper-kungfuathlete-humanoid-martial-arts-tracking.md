@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, fall-recovery, motion-dataset, sim2real]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2610.03388"
 code: https://github.com/NPCLEI/KungFuAthleteBot
 summary: "KungfuAthleteBot 从武术公开视频构建 G1 高动态运动参考，结合物理引导修复、伪低动能采样与统一跟踪-抗扰-恢复策略；新版论文报告真机任意跌倒约 0.7 秒恢复。"
@@ -18,11 +18,19 @@ sources:
   - ../../sources/sites/kungfuathletebot.md
   - ../../sources/repos/kungfuathletebot.md
   - ../../sources/datasets/kungfuathletebot-hf.md
+original:
+  - ../../sources/papers/kung_fu_athlete_bot.md
+  - ../../sources/papers/kungfuathletebot_arxiv_2610_03388.md
+  - ../../sources/repos/kungfuathletebot.md
 ---
 
 # KungfuAthleteBot：视频高动态动作学习与统一恢复
 
 **KungfuAthleteBot（KAB）** 将武术公开视频变为人形机器人可学习的高动态运动，并用同一策略处理跟踪、扰动拒绝和跌倒恢复。
+
+## 一句话定义
+
+**KungfuAthleteBot（KAB）**：针对单目武术视频动作重建物理失真（悬空/穿地）与缺乏驱动信息的痛点，提出物理引导抛物线根修正、伪低动能初始化采样（LKE）和重力随机跌倒状态扩增（GRSI），使单一策略同时掌握 Unitree G1 高动态武术跟踪、抗扰与跌倒恢复。
 
 ## 英文缩写速查
 
@@ -36,6 +44,12 @@ sources:
 ## 为什么重要
 
 武术视频比受控动捕容易获得，但单目重建的运动可能漂浮、穿地或抖动，且没有驱动力信息。直接把重定向结果当作机器人可执行轨迹，容易把策略初始化在动力学不可能状态。KAB 的价值不只是加大动作库，而是同时处理数据物理一致性、可学习初始化与跌倒后的任务连续性。
+
+## 方法栈
+
+### 文献版本状态核对（2026-10-06）
+
+注：原 `arXiv:2610.03388` 已于 2026-10-06 被第一作者主动撤回（撤回声明称本意是更新前序论文 [arXiv:2602.13656](https://arxiv.org/abs/2602.13656)，误提交为新编号）。核心物理修复、LKE/GRSI 方法和开源资产仍以主文 `2602.13656`、官方 GitHub 仓库及 Hugging Face 数据卡为准。
 
 ## 方法栈：从视频到统一策略
 
@@ -61,7 +75,7 @@ flowchart LR
   P --> E[MuJoCo评测与G1部署]
 ```
 
-## 工程实践：代码、数据与部署
+## 工程实践
 
 官方仓库当前含 retarget/height-adjustment 脚本、Unitree RL Mjlab 训练代码、训练配置、1307 长时程恢复 checkpoint 和回放/部署说明。README 提供 `scripts/train.py` 的 Stage I–III 入口与 `scripts/play.py` 的 MuJoCo 回放，并接 Unitree RL Mjlab 部署路径。不要据此声称任一预训练权重都对应新论文所有实验。
 

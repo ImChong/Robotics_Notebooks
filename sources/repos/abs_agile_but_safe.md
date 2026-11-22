@@ -12,6 +12,8 @@
 - **核查：** 仓库可达（`git ls-remote`，浅克隆读 README，不运行代码）
 - **文章星标（文章表述）：** （文中未给）
 - **沉淀到 wiki：** [`wiki/entities/abs-agile-but-safe.md`](../../wiki/entities/abs-agile-but-safe.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `LeCAR-Lab/ABS` 官方 `README.md`（206 行）。
 
 ## README 摘录（入库日人工阅读）
 

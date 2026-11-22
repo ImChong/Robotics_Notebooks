@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, boxing, marl, self-play, motion-tracking, sim2real, unitree, sjtu, shanghai-ai-lab, shanghai-innovation-institute, pku, hkust-gz, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2601.22517"
+original: ../../sources/papers/humanoid_pnb_robostriker.md
 related:
   - ./rek.md
   - ./smplolympics.md
@@ -132,7 +133,7 @@ Encoder、Decoder 与状态条件 Prior 把跟踪技能压成连续 latent。Gau
 - 有界 latent 会继承技能库盲区；未覆盖的闪避或组合拳无法靠高层策略凭空产生。
 - 两人零和设定弱化裁判规则、局部伤害、长期能耗与多目标安全约束。
 
-## 与其他页面的关系
+## 关联页面
 
 - 路线入口：[人形拳击纵深](../../roadmap/depth-humanoid-boxing.md)
 - 低层前置：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)、[GMR](../methods/motion-retargeting-gmr.md)、[DeepMimic](../methods/deepmimic.md)

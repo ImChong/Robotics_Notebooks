@@ -9,6 +9,8 @@ tags:
   - trends
 status: complete
 updated: 2026-10-16
+original:
+  - ../../sources/papers/sam_vfm_arxiv_2304_02643.md
 summary: "视觉基础模型五大趋势：单模态→多模态、小模型→基础模型、专用→通用、闭集→开集、纯感知→感知+推理；指导机器人感知栈演进判断。"
 related:
   - ./generative-vision-pretraining.md

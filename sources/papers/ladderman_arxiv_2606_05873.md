@@ -16,7 +16,7 @@
 - **参考动作：** 单条 OptiTrack 动捕参考（梯子 A：倾角 $\phi=65.5°$，踏棍间距 $z=24.8$ cm）
 - **入库日期：** 2026-06-09
 - **复核日期：** 2026-11-21
-- **核对范围：** 通读 `arXiv:2606.05873v1` HTML 全文（Abstract、§1–§5 Conclusion and Limitation：Hybrid Motion Tracking 单参考多几何专家、DAgger+PPO+KL 统一视觉策略、Fast-FoundationStereo VFM 深度与 RFM 踏棍聚焦遮罩、梯上双智能体遥操作、真机梯子 A/B/C 消融与 75°/灵巧手局限）并核对 2026-11 开源仓库 `amazon-far/LadderMan@9a8d5ed`；未在本地 GPU 运行 Isaac Lab 训练。
+- **核对范围：** 通读 `arXiv:2606.05873v1` HTML 与 PDF 提取全文（Abstract、§1–§5 Conclusion and Limitation：Hybrid Motion Tracking 单参考多几何专家、DAgger+PPO+KL 统一视觉策略、Fast-FoundationStereo VFM 深度与 RFM 踏棍聚焦遮罩、梯上双智能体遥操作、真机梯子 A/B/C 消融与 75°/灵巧手局限）并核对 2026-11 开源仓库 `amazon-far/LadderMan@9a8d5ed`；未在本地 GPU 运行 Isaac Lab 训练。
 - **通读：** 已完成
 - **一句话说明：** **两阶段** 人形 **梯子攀爬 + 梯上操作** 系统：Stage 1 用 **hybrid motion tracking**（上身松弛跟踪 + 梯子中心接触/攀爬奖励）从 **单条参考动作** 学多几何 **专家**；Stage 2 以 **hybrid DAgger + RL** 蒸馏为 **深度 visuomotor 统一攀爬策略**；真机深度经 **VFM（Fast-FoundationStereo）** 与 **rung-focused masking（RFM）** 桥接 sim-to-real；梯上 manipulation 用 **双智能体**（下身稳定 + 上身遥操作）解耦，相对 TWIST2 更稳。
 

@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, whole-body-control, compliant-control, reinforcement-learning, unitree-g1, ucsd, yonsei]
 status: complete
 updated: 2026-10-10
+original:
+  - ../../sources/papers/oclo_arxiv_2610_05678.md
 project_id: oclo-dataset-free-compliant-humanoid-loco-manipulation
 arxiv: "2610.05678"
 project: https://oclo-humanoid.github.io/
@@ -19,6 +21,8 @@ sources:
 ---
 
 # Dataset-Free Compliant Humanoid Loco-Manipulation with Dynamic Online Posture（OCLO）
+
+## 一句话定义
 
 **一句话定义**：OCLO 是一种面向 Unitree G1 的无人体动作数据移动操作框架，它从双末端目标在线补全骨盆/躯干姿态，并通过力反馈参考偏移训练全身顺应性。
 

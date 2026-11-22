@@ -17,6 +17,8 @@
 - **为什么值得保留：** 直接对照本库已有 [CAD Skills](../../wiki/entities/cad-skills.md)（同一套 P1–P10 prompt）。核心判断不是「又一个写 build123d 的 agent」，而是 **结构化状态传递 + 确定性翻译器** 把测试时算力从对话重放里抠出来。机器人夹具草稿可抄这条「少 token、可审计中间件」的组织方式。
 - **开源状态（2026-09-05 核查）：** **已开源** — 训练不涉及；推理/编排代码完整（`python -m multi_agent_cad.graph` / Web UI）。需自备 OpenAI 兼容 API Key（默认阿里云 DashScope `qwen3.7-max`）。无权重发布。
 - **沉淀到 wiki：** 是 → [`wiki/entities/multi-agent-cad.md`](../../wiki/entities/multi-agent-cad.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `Pan-Chera/Multi-Agent-CAD` 官方 `README.md`（18,954 字节）。
 
 ## 仓库概况（2026-09-05 GitHub API / README）
 

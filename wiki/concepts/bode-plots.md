@@ -9,6 +9,7 @@ related:
   - ../methods/pid-control.md
   - ../methods/pole-placement-control.md
   - ../methods/sim2real-joint-sysid-experiment-design.md
+original: ../../sources/courses/mit_2161_first_second_order_transfer_functions.md
 sources:
   - ../../sources/papers/bode-1940-attenuation-phase-feedback.md
   - ../../sources/books/bode-network-analysis-feedback-1945.md
@@ -19,6 +20,10 @@ sources:
 # Bode 图（Bode Plot）
 
 **Bode 图**用两条曲线展示系统对不同频率正弦输入的响应：上图是幅值（通常用 dB），下图是相位（通常用度），横轴是对数频率。读它可以知道系统跟不跟得上快速变化、在哪些频率容易放大/共振，以及在标准负反馈条件下离失稳有多近。
+
+## 一句话定义
+
+**Bode 图（Bode Plot）** 在对数频率坐标上并列绘制线性时不变系统的幅频增益（dB）与相频滞后（度），用于直观评估控制回路带宽、机械谐振峰值与开环稳定裕度。
 
 ## 英文缩写速查
 
@@ -31,7 +36,12 @@ sources:
 | GM | Gain Margin | 增益裕度；标准负反馈环路在相位到达 −180° 时还能增加的环路增益 |
 | PM | Phase Margin | 相位裕度；环路增益为 1（0 dB）时离 −180° 还差的相位 |
 
-## 图上画的是什么
+## 为什么重要
+
+- **直读机械结构谐振与执行器带宽（MIT 2.161 §5）**：一阶滞后极点决定截止频率 $-3\text{ dB}$ 响应极限，二阶欠阻尼谐振峰直观暴露柔性连杆或谐波减速器刚度不足导致的震荡风险。
+- **负反馈稳定裕度判据**：相位裕度与增益裕度直接决定提高 PD 刚度或伺服带宽时何时触及振荡边界。
+
+## 核心原理：图上画的是什么
 
 给系统输入一个频率为 $\omega$ 的正弦波，等瞬态消退后，稳定 LTI 系统的输出仍是同频率正弦波，只是幅值和相位改变。若传递函数为 $H(s)$，频率响应为：
 
@@ -86,6 +96,10 @@ $\omega_c$ 是转折角频率：
 - **分层控制：** 电机内环、关节位置环、机器人姿态/运动环带宽不同。某层带宽不能脱离采样率、通信延迟、滤波器和下一层闭环单独解释。
 - **定位振荡：** 若峰值或相位骤降落在结构/传动共振频率附近，先检查柔性、齿隙、滤波和传感器延迟，再决定是否改控制增益。
 
+## 工程实践
+
+- **扫频辨识实测传递函数**：在关节注入多正弦（chirp / multisine）力矩激励并对比位置/速度响应 FFT，核实名义极点之外的通讯采样延迟（额外线性相位滞后 $-\omega T_d$）。
+
 ## 易混淆点与局限
 
 - **Bode 图不是时域轨迹。** 它描述线性化模型或特定工作点附近的稳态正弦响应，不能直接展示饱和、碰撞、摩擦死区或大幅姿态变化。
@@ -108,3 +122,8 @@ $\omega_c$ 是转折角频率：
 - [MIT 2.161 一阶与二阶传递函数讲义](../../sources/courses/mit_2161_first_second_order_transfer_functions.md) — 已归档的一手课程讲义。
 - [MathWorks bodeplot 文档](../../sources/sites/mathworks-bodeplot-docs.md) — 连续/离散频率响应计算约定。
 - [用户提供的公众号文章](https://mp.weixin.qq.com/s/7lcUQ4vqpnW9FMN9FKDoYQ) — 用户说明文章主题为 Bode 图；正文无法读取，未将其作为具体技术结论的依据。
+
+## 推荐继续阅读
+
+- [阻尼系统形式化](../formalizations/damped-systems.md) — 一阶/二阶传递函数阻尼比与共振峰推导
+- [PID Control](../methods/pid-control.md) — 基于带宽和相位裕度的串级 PD 参数整定

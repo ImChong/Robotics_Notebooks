@@ -9,6 +9,8 @@
 - **入库日期：** 2026-05-27
 - **一句话说明：** 浙大 FAST Lab 的 **单/多机局部轨迹规划**：基于 ESDF 地图的 B-spline 优化，支持 swarm 避碰与 ROS 仿真/真机管线。
 - **沉淀到 wiki：** [ego-planner-swarm](../../wiki/entities/ego-planner-swarm.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `ZJU-FAST-Lab/ego-planner-swarm` 官方 `README.md`（236 行）。
 
 ---
 
