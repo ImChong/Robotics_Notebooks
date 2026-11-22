@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-22] ingest | 完成全站 30 条纵深路线最终轮 Batch 3（contact-manipulation / sim2real / loco-manipulation / model-architecture / cross-embodiment / rsi 共 107 节点通过 arXiv 全文与 Agent-Reach/GitHub 一手资料核读升至 3/3，全库 26/30 路线全满分、1589/1593 节点达 3/3；仅 HUST/OpenReview/IEEE 3 个唯一外部受阻论文按实保留 2/3 并标注阻塞原因）
+
+## [2026-11-22] ingest | Route Health Sweep Batch 2 (Cluster A+B): 补齐 73 个纵深节点一手原文通读与完整骨架（含 Agent-Reach 读取 Holland 1962 / Goldberg 1988 / Mordatch SCA 2012 / Zenodo 元数据），闭环 depth-safe-control (29/29)、depth-rocket-landing (38/38)、depth-rl-locomotion (49/49)、depth-humanoid-soccer (30/30)、depth-humanoid-swarm-performance (32/32)，depth-humanoid-hardware-design 推进至 57/58（paper-humanoid-leg-generative-design-dynamics 因 HUST 超时及 CNKI 验证码诚实保留 2/3）
+
+## [2026-11-21] ingest | 批次1纵深节点满分升级：通读开放一手原文并补齐阅读骨架，关闭 depth-bfm (55/55)、depth-humanoid-boxing (22/22)、depth-classical-control (49/49) 等路线共 71 节点达 3/3，如实记录 3D-IC 与 TRAMP 外部 403/付费墙阻塞
+
 ## [2026-11-22] ingest | company-nodes-health — 按公司路线批量补全 165/167 个未满分节点一手原文核读、阅读骨架与 Mermaid 图表至 3/3（其余 2 项因反爬/验证码门禁保留未完成记录）
 
 ## [2026-11-21] ingest | 力矩电机设计纵深 42 节点（Clusters A-D）原文通读与阅读骨架补齐，roadmap/depth-torque-motor-design.md 直连 70 节点全部 3/3
