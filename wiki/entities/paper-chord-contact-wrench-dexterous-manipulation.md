@@ -2,9 +2,13 @@
 type: entity
 tags: [paper, dexterous-manipulation, contact-rich, imitation-learning, reinforcement-learning, benchmark, bimanual, nvidia, isaac-lab, sim2real]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-22
+project_id: chord-contact-wrench
 arxiv: "2607.00033"
+project: https://nvidia-isaac.github.io/video_to_data/chord/
 code: https://github.com/nvidia-isaac/video_to_data
+code_scope: "robotic_grounding/（CHORD 接触力旋量空间 CWS 奖励与灵巧手 RL 策略接地模块及 4,739 项 benchmark）"
+project_distinction: "CHORD 技术报告与论文实体（arXiv:2607.00033）；聚焦 Video-to-Data 三阶段管线中的 Robotic Grounding（CWS 奖励灵巧手 RL），与同仓生成多视角 HOI 原始标注的数据集 FORM-HOI（dataset-form-hoi）职责独立。"
 venue: "2026 · NVIDIA（arXiv:2607.00033，cs.RO）"
 summary: "CHORD 以物体中心接触力旋量（CWS）空间奖励把人类双手演示迁移到灵巧手 RL 策略，在 4,739 项 benchmark 上训练、1,831 项评测达 82.12% 平均成功率，并扩展到 G1 全身与 Sharpa 真机。"
 original:

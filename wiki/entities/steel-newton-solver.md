@@ -3,11 +3,11 @@ type: entity
 project_id: steel-newton
 tags: [simulation, physics, newton, nvidia, robot-learning, gpu]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 project: https://skild.ai/blogs/steel
 code: https://github.com/newton-physics/newton/tree/main/newton/_src/solvers/steel
 code_scope: newton/_src/solvers/steel
-project_distinction: "Steel 是 Skild AI 与 NVIDIA 合作开发的基于缩减坐标与 PGS 的异构机器人刚体求解器（SolverSteel）；与同一 Newton 单仓内 Disney Research 的闭链极大坐标 PADMM 求解器 Kamino（newton/_src/solvers/kamino）是独立实现和独立研究项目。"
+project_distinction: "Steel 是 Skild AI 与 NVIDIA 合作开发的基于缩减坐标与 PGS 的异构机器人刚体求解器（SolverSteel）；与同一 Newton 单仓内 Disney Research 的闭链极大坐标 PADMM 求解器 Kamino（newton/_src/solvers/kamino）、DAT（newton/_src/solvers/vbd/）和 Mixed MPM（newton/_src/solvers/implicit_mpm/）是独立实现和独立研究项目。"
 original:
   - ../../sources/sites/steel-skild-ai.md
 related:

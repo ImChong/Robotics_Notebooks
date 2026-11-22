@@ -12,11 +12,13 @@ tags:
   - hf-blog
   - streaming-generation
 status: complete
-updated: 2026-11-12
+updated: 2026-11-22
 project_id: cosmos-interactive-world-simulation
 arxiv: "2611.06627"
 project: https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/
 code: https://github.com/nvidia/cosmos
+code_scope: "Cosmos3-Nano 交互式流式世界仿真分支（Sim-Auto / Sim-Bimanual / Sim-Transfer / Transfer-Auto 四组后训练 checkpoint 与 SF-DMD 蒸馏配方）"
+project_distinction: "Cosmos Interactive World Simulation 技术报告实体（arXiv:2611.06627，Cosmos 3 的流式交互仿真后训练分支）；有别于 Cosmos 平台总实体 nvidia-cosmos 及 Cosmos 1.0 平台论文（arXiv:2501.03575）。"
 related:
   - ./cosmos-3.md
   - ./nvidia-cosmos.md

@@ -10,9 +10,12 @@ tags:
   - dexterous-manipulation
   - beingbeyond
 status: complete
-updated: 2026-11-12
+updated: 2026-11-22
 arxiv: "2601.12993"
+project: https://research.beingbeyond.com/being-h05
 code: https://github.com/BeingBeyond/Being-H
+code_scope: "Being-H05/（main 分支中 MoT、200 维统一动作空间、Flow Matching、MPG 与 Training-Time RTC/ZMQ 推理实现）"
+project_distinction: "Being-H0.5 论文实体（arXiv:2601.12993）；仓库中仅 Being-H05/ 子目录对应本篇论文实现，Being-H 家族仓库总览见 cn-os-being-h。"
 original: ../../sources/papers/being-h05_arxiv_2601_12993.md
 related:
   - ../methods/vla.md

@@ -1,11 +1,15 @@
 ---
 type: entity
+project_id: kamino
 tags: [paper, simulation, physics-engine, gpu, closed-chain, kinematic-loop, reinforcement-learning, newton, warp, disney, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2603.16536"
 venue: arXiv preprint
+project: https://disneyresearch.github.io/kamino/
 code: https://github.com/newton-physics/newton/tree/main/newton/_src/solvers/kamino
+code_scope: "newton/_src/solvers/kamino"
+project_distinction: "Kamino 论文实体（arXiv:2603.16536，Disney Research × NVIDIA 闭链极大坐标 PADMM GPU 求解器 SolverKamino）；与同一 Newton 单仓内的 Steel（SolverSteel）、DAT（SolverVBD）和 Mixed MPM（SolverImplicitMPM）为独立研究与独立求解器模块。"
 related:
   - ./newton-physics.md
   - ./nvidia-warp.md

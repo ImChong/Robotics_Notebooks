@@ -2,9 +2,10 @@
 title: "Swarm of Micro Flying Robots in the Wild（Science Robotics 2022 / EGO-Planner-v2）"
 type: entity
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 project_id: ego-planner-v2-swarm
-paper: https://www.science.org/doi/10.1126/scirobotics.abm5954
+doi: "10.1126/scirobotics.abm5954"
+venue: "Science Robotics 2022"
 code: https://github.com/ZJU-FAST-Lab/ego-planner-v2
 tags:
   - aerial-swarm

@@ -2,10 +2,12 @@
 type: entity
 tags: [dataset, human-object-interaction, multiview, 4d-reconstruction, nvidia, robot-learning]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 project_id: form-hoi
 project: https://huggingface.co/datasets/nvidia/form-hoi
 code: https://github.com/nvidia-isaac/video_to_data
+code_scope: "docs/form-hoi/、reconstruction/（MV-HOI 多视角标定与 4D 重建导出管线）及 robotic_grounding/（SOMA 重定向）"
+project_distinction: "FORM-HOI 多视角 4D 人–物交互数据集实体（Hugging Face nvidia/form-hoi）；使用 video_to_data 的 MV-HOI 重建与导出流水线生成数据，有别于同仓内面向灵巧手接触力旋量 RL 的 CHORD 论文实体（paper-chord-contact-wrench-dexterous-manipulation，arXiv:2607.00033）。"
 summary: "FORM-HOI：NVIDIA 四视角标定 RGB-D 人–物交互多模态数据集；清洗发布集含 4,135 段、约 29.144 小时、61 个对象与 22 名参与者，提供 SOMA/MHR 人体姿态、SE(3) 物体位姿与质量评估段（CC BY 4.0）。"
 original:
   - ../../sources/datasets/form_hoi_nvidia.md

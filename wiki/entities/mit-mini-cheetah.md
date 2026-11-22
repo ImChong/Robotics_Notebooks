@@ -1,9 +1,12 @@
 ---
 type: entity
+project_id: mit-mini-cheetah
 tags: [quadruped, mini-cheetah, mit, mpc, qdd, locomotion, sim2real, foc, open-source, hardware, actuator]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 code: https://github.com/mit-biomimetics/Cheetah-Software
+code_scope: "Cheetah-Software 全仓硬件平台与学习栈总览（robot/ 硬件/仿真桥、user/MIT_Controller/、lcm-types/ 与执行器/驱动配套）"
+project_distinction: "MIT Mini Cheetah 整机平台与学习栈枢纽实体（覆盖机械/执行器/FOC/多代 MPC-WBIC-RL 生态）；WBIC+MPC 论文（arXiv:1909.06586）独立节点见 paper-wbic-mpc-mini-cheetah。"
 related:
   - ./benjamin-katz.md
   - ./paper-low-cost-modular-actuator-katz.md

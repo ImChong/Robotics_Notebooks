@@ -1,10 +1,14 @@
 ---
 type: entity
+project_id: omniretarget-dataset
 title: OmniRetarget Dataset（G1 交互重定向轨迹）
 tags: [dataset, humanoid, loco-manipulation, motion-retargeting, unitree-g1, huggingface, amazon-far, omomo]
 summary: "Hugging Face 上的 OmniRetarget 公开轨迹集：4.0 小时 Unitree G1 物体/地形/联合交互重定向数据（MIT 许可，.npz qpos[T, 36/43] + fps）；支持结合 holosoma_retargeting 重建 LAFAN1 并直连 WBT 训练。"
-updated: 2026-11-15
+updated: 2026-11-22
+project: https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset
 code: https://github.com/amazon-far/holosoma
+code_scope: "src/holosoma_retargeting/（LAFAN1/MoCap 交互网格重定向与 50 Hz 转换脚本；4.0 小时公开 .npz 数据集托管于 Hugging Face）"
+project_distinction: "Hugging Face 公开的 4.0 小时 Unitree G1 交互重定向轨迹数据集实体；有别于 holosoma 框架总页、OmniRetarget 论文（paper-hrl-stack-03-omniretarget）及 FastSAC 15 分钟行走论文（arXiv:2512.01996）。"
 status: complete
 related:
   - ./paper-hrl-stack-03-omniretarget.md

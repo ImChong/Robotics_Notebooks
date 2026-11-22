@@ -1,8 +1,10 @@
 ---
 type: entity
+project_id: nvidia-cosmos
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
+project: https://www.nvidia.com/en-us/ai/cosmos/
 related:
   - ./cosmos-3.md
   - ./alpamayo2-edge.md
@@ -44,6 +46,8 @@ sources:
   - ../../sources/repos/nvidia_cosmos_transfer25.md
 summary: "NVIDIA Cosmos 是 Physical AI 世界基础模型开放平台：从 Cosmos 1.0（Predict/Transfer/Reason 分模型）经 Predict2.5 flow WFM，到 Cosmos 3 全模态 MoT；配套 Curator / Evaluator / cosmos-framework。与 Newton / Omniverse 的解析仿真互补。"
 code: https://github.com/NVIDIA/cosmos
+code_scope: "NVIDIA/cosmos 平台总仓（Cosmos 3 全模态模型族推理 cookbook、serving 与多代平台入口）"
+project_distinction: "NVIDIA Cosmos 世界基础模型开放平台总实体（串联 1.0 / 2.5 / 3.0 三代体系）；独立的 1.0 平台论文（arXiv:2501.03575）见 paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi，Cosmos3-Nano 交互式世界仿真技术报告（arXiv:2611.06627）见 paper-cosmos-interactive-world-simulation。"
 ---
 
 # NVIDIA Cosmos（世界基础模型平台）

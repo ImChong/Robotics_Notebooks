@@ -1,9 +1,12 @@
 ---
 type: entity
+project_id: holosoma
 tags: [repo, humanoid, rl, motion-retargeting, whole-body-tracking, locomotion, amazon-far, isaacgym, isaacsim, mujoco, unitree-g1, booster-t1]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-22
 code: https://github.com/amazon-far/holosoma
+code_scope: "全仓人形 RL 与推理部署框架（src/holosoma/、src/holosoma_inference/ 与 src/holosoma_retargeting/ 总览）"
+project_distinction: "Amazon FAR 开源人形全身强化学习与重定向框架总实体；独立的 OmniRetarget HF 数据集见 omniretarget-dataset，15 分钟 FastSAC locomotion 论文（arXiv:2512.01996）见 paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m。"
 original:
   - ../../sources/repos/holosoma.md
 summary: "holosoma 是 Amazon FAR 开源的人形全身 RL 训练、推理与 OmniRetarget 重定向一体化框架；main 分支支持 IsaacSim/MJWarp/MuJoCo 推理与 PPO/FastSAC、G1/T1 部署管线（IsaacGym 冻结至 holosoma-v0.0.3）。"

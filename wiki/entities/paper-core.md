@@ -16,10 +16,13 @@ tags:
 - kimodo
 - unitree-g1
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 doi: 10.1109/Humanoids65713.2025.11203055
 venue: Humanoids 2025
+project: https://tmjeong1103.github.io/CoRe-page/
 code: https://github.com/tmjeong1103/CoRe
+code_scope: "CoRe 全栈与接触感知精炼阶段（3_initial_collision–9_diagnostics，含 ARA 根调整、FPA 落脚 IK 与 CLI/Serve 接口）"
+project_distinction: "CoRe 论文与软件实体（Humanoids 2025，DOI:10.1109/Humanoids65713.2025.11203055）；其流程第 2 阶段 DMR 复用了独立发表的 RMR 论文（paper-rmr，IROS 2025）。"
 related:
 - ./paper-rmr.md
 - ../concepts/motion-retargeting.md
