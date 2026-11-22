@@ -329,3 +329,8 @@
   - `star-history.html`：FCP PC 1,856 → 220 ms（8.4×）、移动 5,904 → 680 ms（8.7×）；默认星标视图传输 2,237.8 → 1,500.7 KB gz（零 `wiki-activity.json` 请求）。
   - `change-log.html`：初始 DOM 23,704 → 4,360（-81.6%）；`company.html` / `hubs.html` / `detail.html` / `roadmap.html` 均同步提速，全 16 组测例控制台零报错、零未命中预加载警告。
 
+## 2026-11-22 增长趋势「每日节点数」维护口径切换
+
+- [x] `docs/star-history.html` 在 `view=nodes-daily` 视图下参考 `change-log.html` 增加「新增节点 / 显示维护节点」切换按钮（`#trend-activity`）及 `默认仅计新增 · 切换后含维护总量` 提示；默认保持仅新增口径（与 `节点数趋势` 共用首次加入日去重缓存），切至「显示维护节点」后按日去重汇总 `added + maintained` 并同步更新 URL（`&maintained=1`）、状态栏、纵轴标题与统一悬停提示（不重复请求 `wiki-activity.json`）。
+- [x] 在 `tests/trend-community-nodes.test.cjs` 补充单日去重统计、`nodes` 累计视图隔离、按钮点击切换与 `?view=nodes-daily&maintained=1` 深链启动回归测试。
+
