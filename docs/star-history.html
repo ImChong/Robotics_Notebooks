@@ -57,6 +57,7 @@
     .trend-range-hint { color: var(--text-muted); font-size: .8rem; margin-left: 4px; }
     @media (max-width: 640px) {
       #trend-stack .trend-range-hint { flex-basis: 100%; margin-left: 0; }
+      #trend-activity .trend-range-hint { flex-basis: 100%; margin-left: 0; }
     }
     /* 时间线的公司 / 实验室名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
     #trend-chart .main-svg a { pointer-events: all; cursor: pointer; }
@@ -90,6 +91,12 @@
         <div class="trend-range" id="trend-stack" role="group" aria-label="堆叠依据" hidden>
           <span class="trend-range-hint">堆叠依据</span>
         </div>
+        <div class="trend-range" id="trend-activity" role="group" aria-label="每日节点统计口径" hidden>
+          <span class="trend-range-hint">节点口径</span>
+          <button type="button" class="home-hub-tab is-active" data-activity="added" aria-pressed="true">新增节点</button>
+          <button type="button" class="home-hub-tab" data-activity="all" aria-pressed="false">显示维护节点</button>
+          <span class="trend-range-hint">默认仅计新增 · 切换后含维护总量</span>
+        </div>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
         <div class="trend-range" id="trend-range" role="group" aria-label="时间范围" hidden></div>
         <div id="trend-chart" style="width:100%;min-height:460px"></div>
@@ -116,6 +123,7 @@
       var legend = document.getElementById('trend-legend');
       var rangeBar = document.getElementById('trend-range');
       var stackBar = document.getElementById('trend-stack');
+      var activityBar = document.getElementById('trend-activity');
       var chart = document.getElementById('trend-chart');
       var description = document.getElementById('trend-description');
       var defaultDescription = description.textContent;
@@ -136,6 +144,7 @@
         health: { label: '健康度', description: '节点健康度', key: function (n) { return String(Math.max(0, Math.min(3, n.health_score || 0))); } }
       };
       var nodeStackMode = 'community';
+      var dailyIncludeMaintained = false;
       var OPEN_SOURCE_COLORS = { open: '#2dd4bf', closed: '#fb7185' };
 
       function healthColors(theme) {
@@ -274,14 +283,33 @@
         return formats && typeof formats[kind] === 'function' ? formats[kind](data) : data;
       }
 
+      var wikiActivityPromise = null;
+      function wikiActivity() {
+        return wikiActivityPromise || (wikiActivityPromise = Promise.all([getJSON('exports/wiki-activity.json'), afterDomScripts()]).then(function (pair) {
+          return expandExport('expandWikiActivity', pair[0]);
+        }));
+      }
+
       var addedNodesPromise = null;
       function addedNodes() {
-        return addedNodesPromise || (addedNodesPromise = Promise.all([getJSON('exports/wiki-activity.json'), afterDomScripts()]).then(function (pair) {
-          var a = expandExport('expandWikiActivity', pair[0]);
+        return addedNodesPromise || (addedNodesPromise = wikiActivity().then(function (a) {
           var out = [];
-          a.days.forEach(function (d) {
-            d.nodes.forEach(function (n) {
+          (a.days || []).forEach(function (d) {
+            (d.nodes || []).forEach(function (n) {
               if (n.action === 'added') out.push({ date: d.date, path: n.path || '', detailId: n.detail_id });
+            });
+          });
+          return out;
+        }));
+      }
+
+      var allActivityNodesPromise = null;
+      function allActivityNodes() {
+        return allActivityNodesPromise || (allActivityNodesPromise = wikiActivity().then(function (a) {
+          var out = [];
+          (a.days || []).forEach(function (d) {
+            (d.nodes || []).forEach(function (n) {
+              out.push({ date: d.date, path: n.path || '', detailId: n.detail_id });
             });
           });
           return out;
@@ -296,7 +324,7 @@
         }));
       }
 
-      function buildNodeTrends(added, graph, mode, theme) {
+      function buildNodeTrends(entries, graph, mode, theme, includeMaintained) {
         mode = mode || 'community';
         var groups = nodeTrendGroups(graph, mode, theme);
         var known = new Set(groups.map(function (c) { return c.id; }));
@@ -305,9 +333,11 @@
         var seen = new Set();
         var used = new Set();
         var byDay = new Map();
-        // 重复路径只计最早的新增日。缺路径时可用详情 ID 去重，仍归为未分类。
-        added.slice().sort(function (a, b) { return a.date.localeCompare(b.date); }).forEach(function (entry) {
-          var key = entry.path || (entry.detailId && 'detail:' + entry.detailId);
+        // 仅新增口径下重复路径只计最早的新增日；含维护口径下按日去重（同日同一节点只计一次）。
+        // 缺路径时可用详情 ID 去重，仍归为未分类。
+        entries.slice().sort(function (a, b) { return a.date.localeCompare(b.date); }).forEach(function (entry) {
+          var rawKey = entry.path || (entry.detailId && 'detail:' + entry.detailId);
+          var key = rawKey && (includeMaintained ? entry.date + '\0' + rawKey : rawKey);
           if (key && seen.has(key)) return;
           if (key) seen.add(key);
           var node = byPath.get(entry.path);
@@ -337,16 +367,16 @@
         return { x: x, series: series, daily: daily, cumulative: cumulative({ x: x, y: daily }).y };
       }
 
-      var nodeTrendsPromise;
       var nodeTrendCache = new Map();
-      function nodeTrends() {
+      function nodeTrends(includeMaintained) {
+        var withMaintained = !!includeMaintained;
         var mode = nodeStackMode;
         var theme = mode === 'health' ? document.documentElement.getAttribute('data-theme') : 'dark';
-        var key = mode + '/' + theme;
+        var key = mode + '/' + theme + '/' + (withMaintained ? 'all' : 'added');
         if (!nodeTrendCache.has(key)) {
-          nodeTrendsPromise = nodeTrendsPromise || Promise.all([addedNodes(), linkGraph()]);
-          nodeTrendCache.set(key, nodeTrendsPromise.then(function (data) {
-            return buildNodeTrends(data[0], data[1], mode, theme);
+          var source = withMaintained ? allActivityNodes() : addedNodes();
+          nodeTrendCache.set(key, Promise.all([source, linkGraph()]).then(function (data) {
+            return buildNodeTrends(data[0], data[1], mode, theme, withMaintained);
           }));
         }
         return nodeTrendCache.get(key);
@@ -437,8 +467,10 @@
               return { x: s.x, y: s.y.map(function (n, i) { return n - (i ? s.y[i - 1] : 0); }) };
             });
           } },
-        { id: 'nodes', label: '节点数趋势', unit: '节点', kind: 'line', load: nodeTrends },
-        { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar', load: nodeTrends },
+        { id: 'nodes', label: '节点数趋势', unit: '节点', kind: 'line', nodeTrend: true,
+          load: function () { return nodeTrends(false); } },
+        { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar', nodeTrend: true, hasMaintainedToggle: true,
+          load: function () { return nodeTrends(dailyIncludeMaintained); } },
         { id: 'depth', label: '纵深数趋势', unit: '纵深路线', kind: 'line', hidden: true,
           load: function () { return depthDaily().then(cumulative); } },
         { id: 'depth-daily', label: '每日纵深数', unit: '新增纵深路线', kind: 'bar', hidden: true,
@@ -677,10 +709,18 @@
         var version = ++renderVersion;
         if (legend.classList.contains('trend-legend--interactive')) legend.hidden = true;
         current = view;
-        var stackable = view.load === nodeTrends || view.id === 'depth-nodes' || !!view.rowMode || !!view.orgNodes;
+        var stackable = !!view.nodeTrend || view.id === 'depth-nodes' || !!view.rowMode || !!view.orgNodes;
+        var hasMaintainedToggle = !!view.hasMaintainedToggle;
+        var includeMaintained = hasMaintainedToggle && dailyIncludeMaintained;
         stackBar.hidden = !stackable;
         stackBar.querySelectorAll('button').forEach(function (b) {
           var active = b.dataset.stack === nodeStackMode;
+          b.className = 'home-hub-tab' + (active ? ' is-active' : '');
+          b.setAttribute('aria-pressed', String(active));
+        });
+        activityBar.hidden = !hasMaintainedToggle;
+        activityBar.querySelectorAll('button[data-activity]').forEach(function (b) {
+          var active = (b.dataset.activity === 'all') === includeMaintained;
           b.className = 'home-hub-tab' + (active ? ' is-active' : '');
           b.setAttribute('aria-pressed', String(active));
         });
@@ -698,8 +738,10 @@
           ? '仅统计路线知识地图中实际收录的现存节点，路线内去重；按' +
             NODE_STACK_MODES[nodeStackMode].description + '堆叠。' +
             (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
-          : view.load === nodeTrends
-            ? '按现存页面的 Git 首次加入日统计，按当前知识图谱的' + NODE_STACK_MODES[nodeStackMode].description + '回溯归类。'
+          : view.nodeTrend
+            ? (includeMaintained
+              ? '按现存页面的 Git 每日更新记录（含新增与维护，单日内去重）统计，按当前知识图谱的' + NODE_STACK_MODES[nodeStackMode].description + '归类。'
+              : '按现存页面的 Git 首次加入日统计，按当前知识图谱的' + NODE_STACK_MODES[nodeStackMode].description + '回溯归类。')
               + (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
             : defaultDescription;
         Array.prototype.forEach.call(tabs.children, function (b) {
@@ -710,7 +752,7 @@
         status.textContent = '加载中…';
         Promise.all([view.load(), ensurePlotly()]).then(function (pair) {
           var s = pair[0];
-          var job = drawing.then(function () { if (version === renderVersion) return draw(view, s); });
+          var job = drawing.then(function () { if (version === renderVersion) return draw(view, s, includeMaintained); });
           drawing = job.catch(function () {});
           return job;
         }).catch(function (e) {
@@ -720,10 +762,11 @@
           if (window.Plotly) Plotly.purge('trend-chart');
         });
         history.replaceState(null, '', '?view=' + view.id +
-          (stackable && nodeStackMode !== 'community' ? '&stack=' + nodeStackMode : ''));
+          (stackable && nodeStackMode !== 'community' ? '&stack=' + nodeStackMode : '') +
+          (includeMaintained ? '&maintained=1' : ''));
       }
 
-      function draw(view, s) {
+      function draw(view, s, includeMaintained) {
         if (current !== view) return;
         var version = renderVersion;
         var css = getComputedStyle(document.documentElement);
@@ -732,7 +775,7 @@
         var grid = css.getPropertyValue('--border').trim();
         var accent = css.getPropertyValue('--accent').trim();
         var bg = css.getPropertyValue('--bg').trim();
-        var nodeTrend = view.load === nodeTrends;
+        var nodeTrend = !!view.nodeTrend;
         var hidden = hiddenGroups.get(nodeStackMode);
         var bar = view.kind === 'bar';
         rangeBar.hidden = true;
@@ -749,7 +792,7 @@
         if (view.kind === 'gantt') return drawGantt(view, s, text, muted, grid, bg);
         if (!nodeTrend) legend.hidden = true;
         var y = nodeTrend ? (bar ? s.daily : s.cumulative) : s.y;
-        var traces = nodeTrend ? nodeTrendTraces(s, bar, text, hidden) : [Object.assign(bar
+        var traces = nodeTrend ? nodeTrendTraces(s, bar, text, hidden, includeMaintained) : [Object.assign(bar
           ? { type: 'bar', marker: { color: accent }, width: 0.8 * DAY_MS } // 日期不连续时固定为 0.8 天宽
           : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } }, {
           x: s.x, y: y, hovertemplate: '%{x|%Y-%m-%d}<br>%{y} ' + view.unit + '<extra></extra>'
@@ -767,7 +810,7 @@
               { dtickrange: [14 * DAY_MS + 1, null], value: '%Y-%m' }
             ]
           },
-          yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
+          yaxis: { gridcolor: grid, title: includeMaintained ? '节点' : view.unit, rangemode: 'tozero' },
           bargap: 0.2,
           modebar: { bgcolor: 'rgba(0,0,0,0)', color: muted, activecolor: text },
           // 触屏上拖拽框选会吞掉页面滚动；缩放交给下方范围滑条
@@ -780,7 +823,7 @@
           layout.hoverdistance = -1;
           layout.hoverlabel = { bgcolor: bg, bordercolor: grid, font: { color: text, size: 12 } };
           layout.xaxis.hoverformat = '%Y-%m-%d';
-          layout.uirevision = view.id;
+          layout.uirevision = view.id + (includeMaintained ? '-maintained' : '');
           if (s.x.length) {
             var firstDate = Date.parse(s.x[0]);
             var lastDate = Date.parse(s.x[s.x.length - 1]);
@@ -798,7 +841,9 @@
         if (nodeTrend && touch) config.doubleClick = false;
         var plotted = Plotly.react('trend-chart', traces, layout, config);
         var total = bar ? y.reduce(function (a, b) { return a + b; }, 0) : (y[y.length - 1] || 0);
-        status.textContent = view.label + '：' + (bar ? '合计 ' : '当前 ') + total + ' ' + view.unit
+        var statusLabel = includeMaintained ? view.label + '（含维护）' : view.label;
+        var statusUnit = includeMaintained ? '节点次' : view.unit;
+        status.textContent = statusLabel + '：' + (bar ? '合计 ' : '当前 ') + total + ' ' + statusUnit
           + (s.x.length ? '（' + s.x[0] + ' → ' + s.x[s.x.length - 1] + '）' : '');
         return nodeTrend ? plotted.then(function (gd) {
           if (version === renderVersion) drawNodeTrendLegend(gd, view, s.series, hidden);
@@ -806,7 +851,7 @@
         }) : plotted;
       }
 
-      function nodeTrendTraces(s, daily, text, hidden) {
+      function nodeTrendTraces(s, daily, text, hidden, includeMaintained) {
         var key = daily ? 'daily' : 'cumulative';
         var traces = s.series.map(function (c, i) {
           // Plotly 将 uid 用于 CSS 选择器。每种堆叠模式使用独立的图层标识。
@@ -827,7 +872,7 @@
           customdata: s.x.map(function (_, i) {
             return s.series.map(function (c, j) { return c[key][i] ? labels[j] + c[key][i] : ''; }).join('');
           }),
-          hovertemplate: '<b>' + (daily ? '当日新增' : '截至当日') + '合计 %{y} 节点</b>%{customdata}<extra></extra>'
+          hovertemplate: '<b>' + (daily ? (includeMaintained ? '当日更新（含维护）' : '当日新增') : '截至当日') + '合计 %{y} 节点</b>%{customdata}<extra></extra>'
         });
         return traces;
       }
@@ -868,7 +913,7 @@
       // 触屏轻点按日期定位，即使点在空白或零新增的日期也能查看明细。
       var trendTap = null;
       chart.addEventListener('pointerdown', function (ev) {
-        if (!current || current.load !== nodeTrends || ev.pointerType !== 'touch' || !ev.target.matches('.nsewdrag')) return;
+        if (!current || !current.nodeTrend || ev.pointerType !== 'touch' || !ev.target.matches('.nsewdrag')) return;
         ev.preventDefault(); // 此处只处理触摸手势，避免兼容鼠标事件盖掉日期浮窗。
         trendTap = { view: current, target: ev.target, id: ev.pointerId, x: ev.clientX, y: ev.clientY };
       });
@@ -1174,10 +1219,23 @@
         });
         stackBar.appendChild(b);
       });
+      activityBar.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-activity]');
+        if (!b || !current || !current.hasMaintainedToggle) return;
+        var next = b.dataset.activity === 'all';
+        if (dailyIncludeMaintained === next) return;
+        dailyIncludeMaintained = next;
+        trendTap = null;
+        render(current);
+      });
       function bootTrendPage() {
         var params = new URLSearchParams(location.search);
         var requestedStack = params.get('stack');
         if (Object.prototype.hasOwnProperty.call(NODE_STACK_MODES, requestedStack)) nodeStackMode = requestedStack;
+        var requestedMaintained = params.get('maintained');
+        if (requestedMaintained === '1' || requestedMaintained === 'true' || params.get('activity') === 'all') {
+          dailyIncludeMaintained = true;
+        }
         var wanted = params.get('view');
         // 旧收藏链接仍可打开：原「路线健康度」并入统一图的健康度模式。
         if (wanted === 'route-health') {

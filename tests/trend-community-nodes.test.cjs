@@ -3,6 +3,7 @@ const { readFileSync } = require('node:fs');
 const { resolve } = require('node:path');
 const { test } = require('node:test');
 const vm = require('node:vm');
+const { JSDOM } = require('jsdom');
 
 const page = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'utf8');
 const tooltip = readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8');
@@ -175,4 +176,142 @@ test('switching mode or theme reuses data requests and cached series with matchi
   assert.equal(await view('nodes').load(), results.get('health'));
   assert.equal(requests.filter((url) => url === 'exports/link-graph.json').length, 1);
   assert.equal(requests.filter((url) => url === 'exports/wiki-activity.json').length, 1);
+});
+
+const maintained = (path) => ({ action: 'maintained', path });
+
+test('dailyIncludeMaintained counts added and maintained nodes per day while cumulative nodes stay added-only', async () => {
+  const days = [
+    { date: '2026-02-27', nodes: [added('wiki/a.md'), added('wiki/b.md')] },
+    { date: '2026-02-28', nodes: [maintained('wiki/b.md'), maintained('wiki/b.md')] },
+    { date: '2026-03-01', nodes: [added('wiki/c.md'), maintained('wiki/a.md')] },
+    { date: '2026-03-02', nodes: [maintained('wiki/a.md')] },
+  ];
+  const { context, requests, view } = loadViews(days);
+
+  const addedDaily = plain(await view('nodes-daily').load());
+  assert.deepEqual(addedDaily.x, ['2026-02-27', '2026-02-28', '2026-03-01']);
+  assert.deepEqual(addedDaily.daily, [2, 0, 1]);
+
+  context.dailyIncludeMaintained = true;
+  const withMaintained = plain(await view('nodes-daily').load());
+  assert.deepEqual(withMaintained.x, ['2026-02-27', '2026-02-28', '2026-03-01', '2026-03-02']);
+  assert.deepEqual(withMaintained.daily, [2, 1, 2, 1]);
+  assert.deepEqual(withMaintained.series.find(({ id }) => id === 'vla').daily, [1, 0, 2, 1]);
+  assert.deepEqual(withMaintained.series.find(({ id }) => id === 'control').daily, [1, 1, 0, 0]);
+
+  const cumulative = plain(await view('nodes').load());
+  assert.deepEqual(cumulative.x, ['2026-02-27', '2026-02-28', '2026-03-01']);
+  assert.deepEqual(cumulative.cumulative, [2, 2, 3]);
+
+  assert.equal(requests.filter((url) => url === 'exports/link-graph.json').length, 1);
+  assert.equal(requests.filter((url) => url === 'exports/wiki-activity.json').length, 1);
+});
+
+function bootTrendDom(url, days) {
+  const dom = new JSDOM(page, { url, runScripts: 'outside-only' });
+  const w = dom.window;
+  const plotCalls = [];
+  w.matchMedia = () => ({ matches: false, addEventListener: () => {} });
+  w.Plotly = {
+    react: async (el, traces, layout) => {
+      plotCalls.push({ traces, layout });
+      const gd = typeof el === 'string' ? w.document.getElementById(el) : el;
+      gd.on = () => {};
+      gd.removeAllListeners = () => {};
+      return gd;
+    },
+    restyle: async () => {},
+    relayout: async () => {},
+    purge: () => {},
+    Fx: { hover: () => {} },
+  };
+  w.fetch = async (target) => {
+    const payloads = {
+      'exports/star-history.json': { counts: [['2026-02-27', 10]] },
+      'exports/wiki-activity.json': { days },
+      'exports/link-graph.json': graph,
+    };
+    assert.ok(Object.hasOwn(payloads, target), target);
+    return { ok: true, json: async () => payloads[target] };
+  };
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/org-route-order.js'), 'utf8'));
+  w.eval(typeLabels);
+  const scripts = Array.from(w.document.querySelectorAll('script:not([src])'));
+  w.eval(scripts.at(-1).textContent);
+  return { w, plotCalls };
+}
+
+const flushAsync = async () => {
+  for (let i = 0; i < 8; i++) await new Promise(setImmediate);
+};
+
+test('nodes-daily toggles between added-only and include-maintained modes in the DOM', async () => {
+  const days = [
+    { date: '2026-02-27', nodes: [added('wiki/a.md'), added('wiki/b.md')] },
+    { date: '2026-02-28', nodes: [maintained('wiki/b.md')] },
+  ];
+  const { w, plotCalls } = bootTrendDom('https://example.test/star-history.html?view=nodes-daily', days);
+  await flushAsync();
+
+  const bar = w.document.getElementById('trend-activity');
+  const addedBtn = bar.querySelector('button[data-activity="added"]');
+  const maintainedBtn = bar.querySelector('button[data-activity="all"]');
+  const status = w.document.getElementById('trend-status');
+
+  assert.equal(bar.hidden, false);
+  assert.equal(addedBtn.getAttribute('aria-pressed'), 'true');
+  assert.equal(maintainedBtn.getAttribute('aria-pressed'), 'false');
+  assert.ok(addedBtn.classList.contains('is-active'));
+  assert.ok(!maintainedBtn.classList.contains('is-active'));
+  assert.match(status.textContent, /合计 2 新增节点/);
+  assert.equal(plotCalls.at(-1).layout.yaxis.title, '新增节点');
+  assert.match(plotCalls.at(-1).traces.at(-1).hovertemplate, /当日新增合计/);
+
+  maintainedBtn.click();
+  await flushAsync();
+
+  assert.equal(addedBtn.getAttribute('aria-pressed'), 'false');
+  assert.equal(maintainedBtn.getAttribute('aria-pressed'), 'true');
+  assert.ok(!addedBtn.classList.contains('is-active'));
+  assert.ok(maintainedBtn.classList.contains('is-active'));
+  assert.match(w.location.search, /view=nodes-daily&maintained=1/);
+  assert.match(status.textContent, /每日节点数（含维护）：合计 3 节点次/);
+  assert.equal(plotCalls.at(-1).layout.yaxis.title, '节点');
+  assert.match(plotCalls.at(-1).traces.at(-1).hovertemplate, /当日更新（含维护）合计/);
+
+  const nodesTab = w.document.querySelector('#trend-tabs button[data-view="nodes"]');
+  nodesTab.click();
+  await flushAsync();
+  assert.equal(bar.hidden, true);
+  assert.doesNotMatch(w.location.search, /maintained=1/);
+  assert.match(status.textContent, /节点数趋势：当前 2 节点/);
+
+  const dailyTab = w.document.querySelector('#trend-tabs button[data-view="nodes-daily"]');
+  dailyTab.click();
+  await flushAsync();
+  assert.equal(bar.hidden, false);
+  assert.equal(maintainedBtn.getAttribute('aria-pressed'), 'true');
+
+  addedBtn.click();
+  await flushAsync();
+  assert.equal(addedBtn.getAttribute('aria-pressed'), 'true');
+  assert.equal(w.location.search, '?view=nodes-daily');
+  assert.match(status.textContent, /合计 2 新增节点/);
+});
+
+test('booting with maintained=1 opens nodes-daily with maintained nodes enabled', async () => {
+  const days = [
+    { date: '2026-02-27', nodes: [added('wiki/a.md')] },
+    { date: '2026-02-28', nodes: [maintained('wiki/a.md')] },
+  ];
+  const { w } = bootTrendDom('https://example.test/star-history.html?view=nodes-daily&maintained=1', days);
+  await flushAsync();
+
+  const bar = w.document.getElementById('trend-activity');
+  assert.equal(bar.hidden, false);
+  assert.equal(bar.querySelector('button[data-activity="all"]').getAttribute('aria-pressed'), 'true');
+  assert.match(w.document.getElementById('trend-status').textContent, /合计 2 节点次/);
 });
