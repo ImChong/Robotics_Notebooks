@@ -2,7 +2,7 @@
 type: entity
 project_id: ruoyiqiao-mjlab-hand
 code: https://github.com/ruoyiqiao/mjlab_hand
-tags: [repo, mjlab, mujoco, reinforcement-learning, dexterous-manipulation, in-hand-manipulation, multi-embodiment, contact-exploration]
+tags: [repo, mjlab, mujoco, reinforcement-learning, dexterous-manipulation, in-hand-manipulation, multi-embodiment, contact-exploration, independent-maintainer]
 status: complete
 updated: 2026-11-22
 related:
@@ -36,6 +36,8 @@ summary: "mjlab_hand 是基于 mjlab 的六类灵巧手任务库，覆盖抓取�
 | CLI | Command-Line Interface | `train`、`train-object`、`eval-policy` 等入口 |
 
 ## 为什么重要
+
+**维护主体：** 项目位于 [ruoyiqiao 的个人 GitHub 仓库](https://github.com/ruoyiqiao/mjlab_hand)，官方 README 署名 Ruoyi Qiao；机构归属未见项目声明。本页使用知识库既有 `independent-maintainer` 维护主体分类，**不代表对作者任职机构的判断**。
 
 - **跨手型研究同一技能：** `HandSpec` 统一手掌刚体、指尖 keypoints、可动/固定手模型的身份配置，便于对照手型而非重写一套训练底座。
 - **从静态到动态：** 范围不仅有抓握和物体重定向，还包括双手交接、手指转盘、保定球及不同模式的三球杂耍；可逐步增加失接触、重抓、飞行轨迹难度。
