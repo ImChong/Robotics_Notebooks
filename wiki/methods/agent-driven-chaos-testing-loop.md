@@ -8,13 +8,14 @@ tags:
   - chaos-engineering
   - observability
 status: complete
-updated: 2026-11-19
+updated: 2026-11-22
 summary: "Agent 驱动的 Chaos Loop 将故障注入、压测、细粒度遥测、假设验证、可逆修复与人工风险审批组成可复测的系统可靠性改进闭环，以 Claude Docs 上线实践为一手案例。"
 original:
   - ../../sources/blogs/claude_dev_chaos_loop_docs_launch_2026-11-17.md
 sources:
   - ../../sources/blogs/claude_dev_chaos_loop_docs_launch_2026-11-17.md
 related:
+  - ../queries/coding-agent-chaos-loop-and-verification-selection.md
   - ./claude-code-dynamic-workflows.md
   - ./coding-agent-verification-loops.md
   - ../concepts/observability-logs-metrics-tracing.md
@@ -112,6 +113,7 @@ flowchart TD
 
 ## 关联页面
 
+- [Coding Agent 验证闭环与混沌压测闭环工程选型](../queries/coding-agent-chaos-loop-and-verification-selection.md) — 何时从单 PR 验证升级到 Chaos Loop、前置条件、人工门禁与机器人迁移边界。
 - [Claude Code 动态多 Agent 工作流](claude-code-dynamic-workflows.md) — 动态创建 harness 和组织独立 Agent 的方法。
 - [Coding Agent 验证闭环](coding-agent-verification-loops.md) — E2E 与独立校验机制。
 - [可观测性：日志、指标与追踪](../concepts/observability-logs-metrics-tracing.md) — 把观察转化为可归因反馈。

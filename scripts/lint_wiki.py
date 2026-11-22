@@ -544,6 +544,28 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # sync：推理/时钟同步模式枚举与包名（`async` / `sync` 执行模式、Isaac Teleop `SYNC`、
     # PTP `Sync` 报文）；与 auto / default / direct 同类模式枚举 token，不单建概念页。
     "sync",
+    # async：与上面 sync 成对的异步执行/推理模式枚举与 Python `asyncio` 生态 token
+    # （SLAM Toolbox **Async**、cn-os-efmnode / OMG 的 `async` 闭环、wam-realtime-async
+    # 的 **async** 行标签），与 sync / real / full 同类模式标签，不单建概念页。
+    "async",
+    # done：RL 环境终止标志与浏览器/Agent 停止动作枚举（Gymnasium 旧版 `step()` 返回
+    # `done`、karpo-browser / karpo-browserbench / karpo-decision-27b-act 的 `DONE`）；
+    # 与 stop / reset 同类代码与动作枚举 token，不单建概念页。
+    "done",
+    # live：多义的运行时模式与状态标签（HandUMI 的 **live** 运动消费、Impeccable
+    # **Live** 模式、LT-Mem **Live** 当前对象状态、RoboICL **LIVE** 历史策略）；互不
+    # 相干的模式标签，非独立机器人概念。
+    "live",
+    # master：Git 仓库分支名（robosuite **master**、real2sim-eval / ros2_control /
+    # trackerLab `master` 分支）；与 v2 / main 同类版本控制分支 token，非机器人概念。
+    "master",
+    # tanh：通用双曲正切激活函数 token（MLP 激活选择已在 concepts/mlp.md 覆盖，SAC 动作
+    # 边界挤压与 Jacobian 修正已在 methods/sac.md 覆盖），与基础数学算子同类，不单建概念页。
+    "tanh",
+    # todo：仓库 README 与开源状态表的待办/待发布占位标记（gen2humanoid / paper-glob3r /
+    # paper-me-vlm / paper-partialbigrasp / paper-seen2scene 的 **TODO**）；与 draft /
+    # complete 同类成熟度标记 token，非机器人概念。
+    "todo",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -1044,6 +1066,43 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # concepts/foundation-policy.md 按底座维度记述，不单建概念页。
     "qwen3-vl-4b",
     "qwen3-vl-4b-instruct",
+    # bc：Behavior Cloning 缩写，canonical 方法页已是 methods/behavior-cloning.md
+    # （与 rl / sft / wbc 同属「缩写 slug ≠ 页面 stem」）。
+    "bc",
+    # digit：同名异义且均已有归属——Agility Robotics 人形机器人 Digit 由
+    # entities/painode-293-agilityroboticsdigit.md、entities/humanoid-robot.md 与
+    # paper-digit-humanoid-locomotion-rl.md 承载；高分辨率视觉触觉传感器 DIGIT 由
+    # concepts/tactile-sensing.md、concepts/visuo-tactile-fusion.md 与
+    # entities/dataset-rct-robotic-contact-tactile.md 等页覆盖。与 atlas / pace 同类。
+    "digit",
+    # fastwam：Fast-WAM 模型及 LeRobot `policy.type=fastwam` 配置名，本体已由
+    # entities/paper-fast-wam.md 承载，与 smolvla / pi05 同类模型名。
+    "fastwam",
+    # mcp：Model Context Protocol 的缩写，canonical 概念页已是
+    # concepts/model-context-protocol.md（缩写 slug ≠ 页面 stem）；PHC 中的组合器
+    # Multiplicative Compositional Policies（MCP）已在 entities/phc.md 释义。
+    "mcp",
+    # navila：Legged Robot VLA for Navigation 模型名，本体已由
+    # entities/paper-notebook-navila-legged-robot-vision-language-action-model.md
+    # 承载，与 smolvla / vggt 同类论文模型名。
+    "navila",
+    # pd：比例–微分（Proportional–Derivative）控制，原理与无积分抗饱和选型已由
+    # methods/pid-control.md、concepts/impedance-control.md 与
+    # queries/legged-humanoid-rl-pd-gain-setting.md 覆盖（另有少量课程分期缩写 PD
+    # 在具体实体页内释义），不另建同名缩略页。
+    "pd",
+    # pytorch：深度学习框架与工具链实体，canonical 节点已是 entities/pytorch.md，
+    # 与 lerobot / mujoco / transformers 同类「工具库归 entities」。
+    "pytorch",
+    # reward：强化学习奖励函数设计与塑形已由 concepts/reward-design.md、
+    # concepts/humanoid-policy-reward-functions.md、concepts/progress-reward-modeling.md
+    # 与 formalizations/mdp.md 覆盖，其余命中处多为代码键或 MDP 表行标签。
+    "reward",
+    # stiffness：与已豁免的 damping 对称的 MuJoCo/Isaac Lab 关节执行器刚度属性 token，
+    # 物理含义、增益整定与辨识已由 concepts/impedance-control.md、
+    # queries/legged-humanoid-rl-pd-gain-setting.md 与
+    # methods/joint-actuator-parameter-identification.md 覆盖。
+    "stiffness",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
