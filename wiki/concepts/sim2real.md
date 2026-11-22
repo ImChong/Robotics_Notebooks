@@ -197,7 +197,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ### Sim2Real SOP（标准作业程序）
 
-根据 [xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 的总结，为了提高 Sim2Real 的可复现性，应遵循标准化的工程步骤：
+作为入门导航，[Xbotics-Embodied-Guide](../entities/xbotics-embodied-guide.md) 提供 Sim2Real 学习路线索引，**但上游并未提供完整可执行的部署 SOP**。以下结合本库的系统辨识、域随机化与部署资料，整理可按平台核对的工程检查项：
 - **前置阶段**：精确的 URDF 建模与动力学参数初步对齐；若场景物体来自 **生成式 sim-ready 管线**（如 [PhysX-Omni](../entities/physx-omni.md) 导出的 URDF/XML），须单独验收 **惯性、碰撞盒与关节轴** 是否与目标仿真器一致，不宜默认「生成即可用」。
 - **仿真验证**：在 [isaac-gym-isaac-lab](../entities/isaac-gym-isaac-lab.md) 或 [genesis-sim](../entities/genesis-sim.md) 中完成基础策略训练，并通过域随机化覆盖物理参数偏差。软件栈集成可先走 [SIL](./software-in-the-loop.md)，目标硬件就绪后走 [HIL](./hardware-in-the-loop.md) 台架。
 - **评测基础设施**：产业侧亦将可信仿真用于 **real-to-sim 闭环排序**（训练仍主要来自真机），见 [仿真评测基础设施](simulation-evaluation-infrastructure.md) 与 [Genesis World 1.0](../entities/genesis-world-10.md)。

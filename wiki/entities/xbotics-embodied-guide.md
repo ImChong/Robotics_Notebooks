@@ -25,6 +25,8 @@ summary: "Xbotics-Embodied-Guide（Roadmap to Embodied AI）是 Xbotics 社区�
 
 # Xbotics 具身智能学习指南（Xbotics-Embodied-Guide / Roadmap to Embodied AI）
 
+## 一句话定义
+
 **一句话：** [Xbotics-Embodied-Guide](https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-Guide) 是面向机器人学习入门者和工程实践者的**文档式路线图**：从具身综述选方向，再沿十条技术路线走向仿真、开源硬件练习与可复现的项目作品；它是导航资料，不是可直接启动训练的策略框架。
 
 ## 英文缩写速查
