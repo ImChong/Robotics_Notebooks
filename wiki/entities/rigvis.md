@@ -1,8 +1,10 @@
 ---
 type: entity
 project_id: rigvis
+project: https://github.com/ekrrems/Stereo-inertial-slam
+code: https://github.com/ekrrems/Stereo-inertial-slam
 tags: [slam, visual-inertial, stereo, imu, mapping, state-estimation, research]
-status: draft
+status: complete
 updated: 2026-11-22
 related:
   - ./orb-slam3.md
@@ -11,123 +13,184 @@ related:
   - ../methods/gauss-newton.md
   - ../tasks/autonomous-exploration.md
 original:
-  - ../../sources/blogs/rigvis_ekrem_ozturk_2026_11.md
+  - ../../sources/repos/rigvis.md
 sources:
+  - ../../sources/repos/rigvis.md
   - ../../sources/blogs/rigvis_ekrem_ozturk_2026_11.md
-summary: "RigVis 是 Ekrem Öztürk 报告的双目惯性 SLAM 实验项目：ORB 双目几何、ESKF、Ceres 局部 BA/位姿图和按关键帧锚定的稠密点云；源码入口与指标定义仍待核验。"
+summary: "RigVis（ekrrems）是开源 C++17 双目 SLAM：ORB/PnP、局部 BA、回环图优化、SGBM 稠密点云，以及独立松耦合 18 维 ESKF 的 VIO 输出；ICP 因子默认关闭。"
 ---
 
-# RigVis：双目惯性 SLAM 与可校正稠密点云（Stereo-Inertial SLAM）
+# RigVis：双目惯性 SLAM 与关键帧锚定稠密地图（Stereo-Inertial SLAM）
 
 ## 一句话定义
 
-**RigVis** 是 Ekrem Öztürk 公开介绍的 C++ 双目惯性 SLAM 实验项目：以双目 ORB 特征辅助跟踪，结合 IMU 的 ESKF 状态融合、关键帧优化及稠密双目深度，在回环和位姿修正后同步维护稀疏与稠密地图。**本页为待源码复核的项目记录，不代表已经完成代码审计。**
+**RigVis**（Ekrem Serdar Öztürk，[官方源码](https://github.com/ekrrems/Stereo-inertial-slam)）是 C++17 双目视觉 SLAM 系统：ORB/PnP 跟踪与 Ceres 局部 BA、回环位姿图和全局 BA 构成地图主线，SGBM 生成随关键帧位姿修正的稠密点云；另以 **松耦合 ESKF** 将 IMU 和逐帧 VO 相对位姿融合成独立 VIO 轨迹。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| SLAM | Simultaneous Localization and Mapping | 同时估计平台位姿并维护地图 |
-| IMU | Inertial Measurement Unit | 提供角速度和加速度的惯性传感器 |
-| ESKF | Error-State Kalman Filter | 以误差状态对标称惯性状态进行校正的滤波器 |
-| ORB | Oriented FAST and Rotated BRIEF | 稀疏视觉特征检测与描述方法 |
-| BA | Bundle Adjustment | 联合优化相机位姿和三维结构的非线性最小二乘方法 |
-| ICP | Iterative Closest Point | 用点云对应关系约束两片三维几何结构 |
-| SGBM | Semi-Global Block Matching | 一类双目视差估计算法，RigVis 是否采用仍待源码确认 |
-| ATE | Absolute Trajectory Error | 绝对轨迹误差；作者的 2.8 m 是否采用该定义待核验 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| VIO | Visual-Inertial Odometry | 视觉惯性里程计，本项目独立融合输出轨迹 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| ESKF | Error-State Kalman Filter | 18 维误差状态、随相机帧更新参考系的滤波器 |
+| ORB | Oriented FAST and Rotated BRIEF | 稀疏特征检测、匹配与数据关联 |
+| PnP | Perspective-n-Point | 由 3D 地标与 2D 特征估计相机位姿 |
+| BA | Bundle Adjustment | Ceres 局部及全局联合优化相机位姿与地图点 |
+| SGBM | Semi-Global Block Matching | OpenCV 半全局立体匹配，生成稠密视差 |
+| ICP | Iterative Closest Point | 关键帧稠密点云匹配，本项目默认关闭 |
+| ATE | Absolute Trajectory Error | 对齐后绝对轨迹 RMSE |
 
 ## 为什么重要
 
-典型稀疏特征 SLAM 可以给出定位轨迹，却不必然生成可用于障碍判断的稠密几何。RigVis 的公开技术说明重点在于：**让稠密深度点云随关键帧位姿优化一起更新**，并进一步把关键帧之间的 point-to-plane ICP 几何约束加入 Ceres 图优化，而不只依赖稀疏特征点。
+本项目把**稀疏定位主线、关键帧稠密几何、松耦合惯性融合**清楚分开，是阅读 SLAM 工程实现、研究地图回环一致性和认识“松耦合 vs 紧耦合”的案例。
 
-这给自主导航工程提供了一个值得研究的设计问题：如何让定位优化与重建地图保持一致，而不是在回环后仅修正轨迹、稠密点云仍留在旧坐标位置。
+尤其应区分：作者 README 描述的 **IMU 预积分因子进入 BA 是未来规划**；当前 `VisualInertialFusion` 不向视觉前端反馈预测，也未在 BA 中加入惯性残差。
 
-## 核心原理
+## 核心原理与流程总览
 
-| 子模块 | 已公开的描述 | 仍需核实 |
-|--------|----------------|----------|
-| 双目前端 | ORB 特征、双目对应匹配与相机跟踪 | 匹配筛选、PnP + RANSAC 的实际代码入口与触发条件 |
-| 惯性融合 | IMU 与 ESKF 误差状态融合 | 状态维度、噪声模型、时延/外参、是否与 BA 形成真正紧耦合 |
-| 稀疏优化 | 局部 BA、回环修正与 Ceres SE(3) 位姿图 | 回环候选生成、位姿约束、全局 BA 是否执行及执行时机 |
-| 稠密建图 | 每关键帧生成双目稠密深度；点云锚定关键帧位姿 | SGBM 参数、滤波/降采样规则、全局融合结构 |
-| 几何补充约束 | 关键帧点云之间 point-to-plane ICP，额外因子进入 Ceres 图 | 对应点关联、鲁棒核、权重、ICP 失败回退 |
-
-### 流程总览（基于作者技术说明的模块级示意）
-
-图中只表示公开提到的模块与**概念层数据流**；ESKF、关键帧跟踪和 Ceres 求解器的真实调用顺序需以源码确认为准。
+以下流程由官方 `README.md`、`src/main.cpp`、`src/StereoFrontend.cpp`、`src/VisualInertialFusion.cpp`、`src/LoopClosing.cpp` 等实际源码核对；实线表示相应数据流，虚线表示可选 ICP 约束。
 
 ```mermaid
 flowchart TD
-    Stereo["双目图像"] --> ORB["ORB 特征与双目匹配"]
-    ORB --> Track["视觉跟踪 / 关键帧"]
-    IMU["IMU 测量"] --> ESKF["ESKF 视觉惯性融合"]
-    Track --> ESKF
-    ESKF --> Local["局部 BA / 关键帧状态"]
-    Local --> Graph["回环与 Ceres 位姿图优化"]
-    Stereo --> Depth["逐关键帧稠密双目深度"]
-    Depth --> ICP["Point-to-plane ICP 约束"]
-    ICP --> Graph
-    Graph --> Poses["优化后关键帧位姿"]
-    Poses --> Sparse["稀疏特征地图"]
-    Poses --> Dense["锚定关键帧的稠密点云重定位"]
-    Depth --> Dense
+    A["KITTI 双目相机帧"] --> B["ORB 特征、栅格分布、行带立体匹配"]
+    B --> C["匀速预测 + 局部地图 PnP RANSAC"]
+    C --> D{"是否插入关键帧"}
+    D -->|是| E["地图点融合、筛除与 Ceres 局部 BA"]
+    E --> F["回环候选、PnP 验证与一致性"]
+    F --> G["SE(3) 位姿图、地图点融合、全局 BA"]
+    A --> H["关键帧 SGBM 稠密深度"]
+    H --> I["关键帧坐标下的稠密点云"]
+    G --> J["校正后的关键帧位姿"]
+    I --> K["按最新关键帧位姿导出稠密 PLY"]
+    J --> K
+    I -.-> L["可选异步 point-to-plane ICP"]
+    L -.-> E
+    M["KITTI IMU / OXTS"] --> N["18 维 robocentric ESKF"]
+    C --> O["VO 帧间相对位姿"]
+    O --> N
+    N --> P["独立 VIO 轨迹"]
+    J --> Q["最终 BA + 回环轨迹"]
 ```
 
-以上示意**不能被解读为已核对的源码流程图**；它只汇总作者所述设计意图，待官方实现可访问后修订。
-
-## 评测与数据证据
-
-| 维度 | 当前可说明的内容 |
-|------|----------------|
-| 数据集 | KITTI Odometry Sequence 00，约 3.7 km（作者公开说明） |
-| 漂移 | **1.2%**（作者报告，原帖描述为 *drift*；精确 RPE/平移误差定义待核验） |
-| 全局误差 | **2.8 m**（作者报告，原帖描述为 *global error*；是否为 ATE RMSE 待核验） |
-| 回环与点云规模 | **8 次回环、1 m 阈值、约 570 万点**来自用户提供的摘要，暂未从公开实验表或源码复核 |
-| 可比性 | 缺运行参数、估计轨迹、评测脚本、IMU 数据源及对齐方式；**不应直接与 ORB-SLAM3 / VINS-Fusion 的论文数字排名** |
-
-## 工程实践
-
-- **可借鉴的系统分层**：双目图像提供稀疏跟踪和稠密深度两条信息流；IMU 增强运动估计；Ceres 优化维护关键帧间的全局约束。
-- **地图一致性**：稠密数据绑定关键帧坐标，优化更新位姿时重投影地图；点云 ICP 可以补充仅基于稀疏特征的几何约束。
-- **复现前必查**：项目是否有公开、可运行的 KITTI 00 入口；双目/IMU 的时间同步；Ceres 优化变量与因子；实时帧率和地图内存占用；可重复运行的 ATE/RPE 评测脚本。
-- **可能应用**：室内、隧道、城市峡谷等 GNSS 不可靠区域的机器人定位与三维重建；要接入真实避障/路径规划仍需可用占据表示、动态障碍处理与规划接口，不能从点云规模推断导航系统已完整实现。
+- **前端**：双目 ORB 特征沿矫正图像行带匹配；运动模型和局部共视图投影搜索，PnP RANSAC 失败时回退上一帧双目跟踪。
+- **稀疏后端**：关键帧触发 Ceres BA（mono/stereo 重投影、Huber、卡方剔除）；回环先搜索近邻旧关键帧，再以 PnP ≥60 内点、相邻关键帧候选一致性判断，通过后执行 SE(3) 位姿图、地图点融合和全局 BA。
+- **惯性融合**：`VisualInertialFusion::addImu` 调用 ESKF IMU 传播；`addCameraFrame` 把前端帧间 VO 位姿作为观测进行更新，按 IMU 帧间运动累计 **单独的 VIO 轨迹**，不是紧耦合滑窗优化。
+- **稠密输出**：`DenseMapper.cpp` 的 OpenCV StereoSGBM 生成 1–20 m 视差深度（README）；`MapExport.cpp` 用优化后关键帧位姿放置点云并执行 10 cm 体素聚合。
+- **可选 ICP**：`dense_icp: 0` 为官方示例默认值；打开后，邻近关键帧点云 point-to-plane ICP 在工作线程计算，在弱特征跟踪、质量门限通过时，作为**局部 BA 的相对位姿因子**加入 Ceres，不是无条件写进回环位姿图。
 
 ## 源码运行时序图
 
-**暂不适用（待核实）**：作者公开动态指向“Code, plots and the 3D map”的短链，但当前无法解析为可访问的官方仓库，未读取源文件或运行入口。因此不编造 `sequenceDiagram`；补全源码后按真实 `main`、视觉前端、ESKF、后端优化与地图更新调用链绘制。
+官方实际入口：`src/main.cpp::main` 对应 `./rigvis_dataset_runner [config.yaml]`，由 `CMakeLists.txt` 构建；无需 ROS。图中同步处理顺序与选项依据上述代码核查。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Main as rigvis_dataset_runner main
+    participant DL as DataLoader
+    participant FE as StereoFrontend
+    participant BA as LocalBundleAdjuster
+    participant LC as LoopClosing/PoseGraph
+    participant VI as VisualInertialFusion
+    participant ES as Estimator
+    participant Export as MapExport/Evaluation
+    Main->>DL: load config + calibration + KITTI records
+    Main->>VI: construct(calibration), set noise
+    Main->>FE: construct(calibration), optional setDenseIcp
+    loop DataLoader.next(event) 按时间排序
+        DL-->>Main: IMU 或 StereoFrame
+        alt IMU 事件
+            Main->>VI: addImu(sample)
+            VI->>ES: imuPropagate(sample)
+        else 双目事件
+            Main->>FE: process(stereo)
+            FE->>FE: extractFeatures + stereoMatches + PnP tracking
+            opt 新关键帧
+                FE->>FE: saveCurrentAsKeyframe + dense cloud
+                FE->>BA: runLocalBundleAdjustment(..., icpConstraints)
+                opt 开启且符合门限的 ICP
+                    FE->>FE: launchDenseIcp / collectFinishedIcp
+                    FE->>BA: later BA uses accepted relative-pose factors
+                end
+                FE->>LC: detectAndCloseLoop()
+                opt 回环通过双次一致性
+                    LC->>LC: optimizePoseGraph + fuseLoopMapPoints
+                    LC->>BA: global BA on all keyframes
+                end
+            end
+            FE-->>Main: currentPose + frameStats
+            Main->>VI: addCameraFrame(time, VO pose, valid)
+            VI->>ES: propagateTo / updateRelativePose / shiftReferenceFrame
+            VI-->>Main: cameraPose (VIO)
+            Main->>Main: write online VO / VIO trajectories and CSV
+        end
+    end
+    Main->>FE: finalTrajectory()
+    Main->>Export: sparse / dense / cameras PLY + keyframes.csv
+    Main->>Export: groundTruthFromOxts + evaluateTrajectory
+    Export-->>Main: KITTI t_rel/r_rel + ATE + RPE
+```
+
+该图依据 `ekrrems/Stereo-inertial-slam@3dee4bc` 的官方运行入口与函数调用。**未实际编译或用 KITTI 数据运行**；ICP 为默认关闭的实验分支。
+
+## 实验与评测
+
+以下是**作者官方 README 报告的 KITTI 00 结果，不是本仓库独立复现实测**。
+
+| 项目 | 作者报告 |
+|------|----------|
+| 测试数据 | KITTI raw `2011_10_03_drive_0027`（KITTI odometry 00），4544 帧，约 3.7 km |
+| 相对平移漂移 `t_rel` | **1.20%**（KITTI 100–800 m 子轨迹） |
+| 相对旋转误差 `r_rel` | **0.50°/100 m** |
+| ATE（RMSE） | **2.81 m**（Umeyama 刚体、**不调整尺度**） |
+| 单帧 RPE | **0.057 m，0.100°** |
+| 回环次数 / 稠密点数 | 用户提供了“8 次、约 570 万点”，但 README 未将其列为统一实验结果，仍待对应日志或 PLY 验证 |
+
+评测路径 `src/Evaluation.cpp::evaluateTrajectory` 使用 KITTI OXTS 真值；主程序分别记录**在线 VO、松耦合 VIO、BA+回环最终轨迹**，不能混为一个输出。官方 README 中 ORB-SLAM2 论文指标只作参照，不能据此证明相同设置下公平优劣。
+
+## 工程实践
+
+- **构建**：CMake ≥3.30、C++17、Eigen3、OpenCV、Ceres；官方 MIT 开源。`README.md` 提示 OpenCV 5 的 CMake 模块名，使用 OpenCV 4 时需自行改 `features2d/calib3d` 组件。
+- **准备数据**：KITTI raw `2011_10_03_drive_0027_sync` 与日期标定文件；可选 `*_extract` 的 100 Hz OXTS IMU。若不提供 `imu_path`，取 sync 的 10 Hz 数据。`imu_time_offset_s` 示例为 −0.05 s。
+- **运行**：`cp config/rigvis.example.yaml config/rigvis.yaml`，设置 `dataset_path`，`cd build && ./rigvis_dataset_runner`。
+- **结果**：`trajectory_kitti.txt`、`trajectory_vio.txt`、`trajectory_final.txt`；`map_dense.ply`、`map_sparse.ply`、`keyframes.csv`、`frame_stats.csv`、`fusion_stats.csv`。
+- **离线再评测**：`./rigvis_evaluate trajectory_final.txt /path/to/2011_10_03_drive_0027_sync`，不需再次跑 SLAM。
+- **规划接口**：目前是 KITTI 离线运行与 PLY/CSV 导出；实时 ROS 2、飞控或避障规划接口在作者未来 Roadmap，不应误称当前已提供。
 
 ## 局限与风险
 
-1. **来源阅读尚未完成**：目前依据作者公开动态的可检索引用文本，并非完整官方 README/源码核验。对应 [来源归档](../../sources/blogs/rigvis_ekrem_ozturk_2026_11.md) 标为“通读：未完成”。
-2. **开源状态待核实**：公开短链 <https://lnkd.in/dFMwckqB> 的最终目标和许可证无法验证；C++17、无 ROS、SGBM、PnP/RANSAC、8 回环与 1 m 阈值等仅是用户提供的待验证线索。
-3. **视觉惯性适用边界**：弱纹理、强曝光变化、运动模糊和标定或时间同步误差都会影响视觉估计；惯性融合并不意味着完全无漂移。
-4. **评测不等于实机交付**：KITTI 单序列自报轨迹指标不证明高速无人机或灾后现场的系统鲁棒性；稠密地图还需要内存预算、障碍语义/动态性和导航集成验证。
+1. **默认并非紧耦合视觉惯性**：前端从视觉结果获得 VO，ESKF 是之后单独融合；IMU 预积分进入 BA 尚待作者后续实现。
+2. **参数与数字应以代码为准**：回环候选搜索 `loopSearchRadiusMeters_=50.0` m，不是早期摘要的“1 m 阈值”；回环接受还需 PnP 内点等约束。
+3. **稠密 ICP 默认不启用**：`config/rigvis.example.yaml` 为 `dense_icp: 0`。因此“默认所有点云 ICP 直接反馈图优化”不成立。
+4. **实测尚未复现**：README 的 KITTI 指标可追溯到源码定义，但缺可直接比对的本次运行日志；未核对 8 次回环与约 570 万点。
+5. **导航能力需另集成**：稠密 PLY 不能直接等同实时动态障碍物检测、占据栅格和路径规划能力。
 
 ## 结论
 
-**RigVis 最值得追踪的是“稠密点云随关键帧优化重定位 + ICP 反馈图优化”这条工程设计，而非未经复现的 KITTI 数字。**
+**RigVis 是研究双目稀疏 SLAM、关键帧稠密地图与松耦合 IMU 融合的可读 C++ 项目；最重要的是区分三个独立输出和实验性 ICP 的真实开关。**
 
-- 优先取得真正的官方仓库、README、许可证和可运行入口。
-- 验证 ICP 是否确实构成 Ceres 图的独立几何因子，及其回环前后的收益。
-- 核查 ESKF 与稀疏视觉优化的耦合方式，避免把“融合 IMU”误写为联合优化。
-- 用同一数据和对齐设置复测 1.2% / 2.8 m，再与 ORB-SLAM3 比较。
-- 将轨迹、稀疏图和稠密图分别验收，避免用轨迹精度代替地图质量。
+- 看地图质量先跟 `map_dense.ply`、关键帧位姿、稀疏重投影误差走，而不是只看 ATE。
+- 想验证惯性贡献，分别评估在线 VO 与 `trajectory_vio.txt`。
+- 想评估回环贡献，用 `trajectory_final.txt` 与在线 VO 对比。
+- 想验证 ICP 收益，先打开 `dense_icp: 1`，记录 BA 中的 ICP edges、RMSE 与误差变化，再进行 ablation。
+- 复现 KITTI 结果时保留 OXTS 数据源、时间偏置、100–800 m 子路径及 ATE 对齐方式。
 
 ## 关联页面
 
-- [ORB-SLAM3](orb-slam3.md) — 成熟多地图视觉惯性 SLAM 的架构与基准参照。
-- [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 双目惯性方案与激光/其他 VIO 的适用边界。
-- [导航·SLAM·自动驾驶开源栈](../overview/navigation-slam-autonomy-stack.md) — 连接定位建图与规划执行。
-- [导航纵深路线 Stage 1](../../roadmap/depth-navigation.md) — 在 SLAM 与状态估计阶段学习和验证。
-- [Gauss-Newton 非线性最小二乘方法](../methods/gauss-newton.md) — 理解 BA 和 Ceres 位姿图中的残差、Jacobian 与优化收敛。
-- [机器人自主探索](../tasks/autonomous-exploration.md) — 理解 SLAM 稠密建图如何向探索、障碍感知与规划提供空间信息。
+- [ORB-SLAM3](orb-slam3.md) — 正式视觉惯性联合优化、多地图与闭环算法对照。
+- [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 各传感器和估计路线的边界。
+- [Gauss-Newton](../methods/gauss-newton.md) — 理解 Ceres BA 的残差和二阶曲率近似。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 将定位与建图对接探索任务。
+- [导航纵深路线 Stage 1](../../roadmap/depth-navigation.md) — SLAM 与状态估计练习阶段。
+- [导航·SLAM·自动驾驶开源栈](../overview/navigation-slam-autonomy-stack.md) — 与规划执行对接的位置。
 
 ## 参考来源
 
-- [RigVis 作者公开技术说明（来源归档，待源码核实）](../../sources/blogs/rigvis_ekrem_ozturk_2026_11.md)
-- [作者提及的代码/图表/地图入口短链（尚未核实目标）](https://lnkd.in/dFMwckqB)
+- [RigVis 官方源码与通读记录](../../sources/repos/rigvis.md) — `ekrrems/Stereo-inertial-slam@3dee4bc` 的 README、关键实现与运行时序核对。
+- [作者公开技术说明与早期线索](../../sources/blogs/rigvis_ekrem_ozturk_2026_11.md) — 二手引用及此前待核验事项。
+- [RigVis 官方 README](https://github.com/ekrrems/Stereo-inertial-slam/blob/main/README.md)
 
 ## 推荐继续阅读
 
-- [ORB-SLAM3：Visual, Visual-Inertial and Multi-Map SLAM（arXiv:2007.11898）](https://arxiv.org/abs/2007.11898)
-- [KITTI Vision Benchmark Suite — Odometry](https://www.cvlibs.net/datasets/kitti/eval_odometry.php)
+- [ORB-SLAM3: An Accurate Open-Source Library for Visual, Visual-Inertial, and Multi-Map SLAM](https://arxiv.org/abs/2007.11898)
+- [KITTI Visual Odometry / SLAM Benchmark](https://www.cvlibs.net/datasets/kitti/eval_odometry.php)
