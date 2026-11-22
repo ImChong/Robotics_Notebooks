@@ -19,6 +19,7 @@ related:
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/robodojo.md
+  - ../entities/paper-mind2act-world.md
   - ../entities/paper-gm-100.md
   - ../entities/paper-coap-embodied-turing-machines.md
   - ../entities/robolab.md
@@ -54,6 +55,7 @@ sources:
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/papers/robodojo_arxiv_2607_04434.md
+  - ../../sources/papers/mind2act-world-arxiv-2611-26444.md
   - ../../sources/papers/coap_embodied_turing_machines_arxiv_2610_12369.md
   - ../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md
   - ../../sources/papers/softvtbench_arxiv_2607_04234.md
@@ -148,6 +150,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - **评测器自身要做鲁棒性检验**：跨评审模型 / prompt 的一致性（ICC）、标注噪声扰动、纯文本基线（排除语言先验）是同类 MLLM-as-judge 基准应有的配套（推断：可迁移到 ② 层的世界模型裁判）。
 
 ## 评测选型的关键取舍
+
+- **认知—动作组合不能靠单项分数替代：** [Mind2Act World](../entities/paper-mind2act-world.md) 使用 10 个 Mind、10 个 Act 与 10 个 Mind2Act 任务分开测记忆推理、精细接触与“执行→核验反馈→修复决策”，让失败按阶段定位；仅适用于当前双臂仿真及其固定工具/预算协议。
 
 - **高处长时程维护**：[Fiatlux](../entities/paper-fiatlux.md)提供 G1 攀梯换灯的十二子任务门控。部分进度不是成功率；八项遥操作可达与四项攀爬欠验证须分别报告，子任务独立重置也不能证明完整串联成功。
 
