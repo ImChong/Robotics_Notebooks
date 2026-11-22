@@ -209,6 +209,8 @@ flowchart LR
 ---
 
 ## Stage 4 部署职责三分：执行 · 修正 · 筛选（+ 接触 / 几何）
+> **SONIC × GR00T 2 Turbo 实例：** [从 Motion Tracking 到 WAM 的人形双层闭环](../wiki/queries/sonic-gr00t2-wam-humanoid-dual-brain.md) — 在本 Stage 对照 Joint WAM 的高层异频预测、motion token 中间接口、50 Hz 全身跟踪与 1000 Hz 关节伺服，及 state-to-action 延迟口径。
+
 
 **把"动作发出去以前，世界会怎样变"落到可插拔接口：直接执行、在线修正基础 VLA、或部署前筛选。**
 

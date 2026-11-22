@@ -203,6 +203,10 @@ flowchart TD
 - [VLA 方法](../methods/vla.md)
 - [全身移动操作任务](../tasks/loco-manipulation.md)
 
+## 演讲脉络与部署接口补读
+
+[Zhengyi Luo：SONIC × GR00T 2 Turbo 的人形双层闭环](../queries/sonic-gr00t2-wam-humanoid-dual-brain.md) 将本模型与 50 Hz SONIC、1000 Hz 关节 PD 以及 GRAIL 数据来源贯通，并记录 2026-11-18 GRASP 演讲的转述核验状态；这里的白皮书性能指标仍以本论文自身的试验协议为准。
+
 ## 参考来源
 
 - [NVIDIA 官方项目页归档](../../sources/sites/gr00t-2-gear.md)：主页文字核实完成

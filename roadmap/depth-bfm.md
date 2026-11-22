@@ -164,6 +164,8 @@ flowchart LR
 ---
 
 ## Stage 4 适应与整合：微调、层次化与双栈
+> **跨栈案例：** [SONIC × GR00T 2 Turbo 从运动跟踪到 WAM](../wiki/queries/sonic-gr00t2-wam-humanoid-dual-brain.md) — 对照通用低层 tracking、共享运动 token、合成/遥操作数据和高层 WAM，明确 System 0 与语义策略的职责分工。
+
 
 **预训练出的行为先验怎么用：微调、层次化，以及当前人形系统的主流工程形态——高层 VLA + 低层 BFM。**
 
