@@ -9,6 +9,9 @@
 - **论文：** <https://arxiv.org/abs/2509.16757>
 - **机构：** LeCAR Lab / CMU
 - **核查日期：** 2026-07-22
+- **核对日期：** 2026-11-22
+- **核对范围：** `LeCAR-Lab/HDMI` README、目录结构及入口脚本 `scripts/train.py`、`scripts/play.py`（基于 `active_adaptation` 与 IsaacLab v2.2.0 `AppLauncher`）
+- **通读：** 已完成
 - **GitHub 状态：** 公开仓库；默认分支 `main`；GitHub API 未返回标准 licenseInfo；2026-01-17 有更新
 - **一句话说明：** HDMI 官方训练代码仓，基于 IsaacSim 4.5 / IsaacLab 2.2，提供 `ppo_roa_train` / `ppo_roa_finetune` teacher-student 训练、motion replay、MuJoCo 可视化和 policy export。
 

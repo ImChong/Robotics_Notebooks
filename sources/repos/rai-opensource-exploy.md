@@ -10,7 +10,9 @@
 - **作者：** Dario Bellicoso、Annika Wollschläger（仓库元数据）
 - **许可证：** MIT
 - **版本：** `0.1.0`（README / pyproject.toml / CMake 均对齐）
-- **入库日期：** 2026-10-08
+- **入库日期：** 2026-10-08（2026-11-22 复核）
+- **核对范围：** 通读 `rai-opensource/exploy` `main` 分支 `README.md` 与仓库目录结构（`python/exploy/`、`control/include/exploy/*.hpp`、`ros/`、`examples/`）；未在本地安装 Pixi 与 GPU 运行示例。
+- **通读：** 已完成
 - **一句话说明：** Python 导出器把强化学习环境与策略的观测、前向推理和动作后处理整合为 ONNX 图；C++ ONNX Runtime 控制器与 ROS wrapper 提供部署侧接口。
 - **开源状态：** **已开源**（Python、C++、ROS、示例、测试和文档均在仓库中；MIT）
 - **沉淀到 wiki：** 是 → [`wiki/entities/exploy.md`](../../wiki/entities/exploy.md)

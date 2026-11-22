@@ -7,7 +7,11 @@ code: https://github.com/rai-opensource/exploy
 date: 2026-10-07
 tags: [robotics, reinforcement-learning, sim2real, onnx, deployment, cpp, ros2]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-22
+original:
+  - ../../sources/blogs/introducing_exploy_rai_2026-10-07.md
+  - ../../sources/sites/exploy-docs.md
+  - ../../sources/repos/rai-opensource-exploy.md
 summary: "Exploy 将仿真环境中的观测构造、策略前向与动作后处理跟踪为自包含 ONNX 计算图，并用 C++/ROS 控制器接到机器人接口，减少训练代码与部署代码重复维护。"
 related:
   - ./onnx.md

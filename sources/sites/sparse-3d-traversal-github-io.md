@@ -5,7 +5,9 @@
 - **URL：** <https://nemantor.github.io/sparse-3d-traversal-website/>
 - **arXiv：** <https://arxiv.org/abs/2608.29769>
 - **入库日期：** 2026-09-02
-- **再核日期：** 2026-09-04
+- **再核日期：** 2026-09-04（2026-11-22 复核）
+- **核对范围：** 抓取并通读官方项目页（<https://nemantor.github.io/sparse-3d-traversal-website/>）全部正文、模块交互说明与页脚致谢/链接区，核实无 GitHub / Hugging Face / Zenodo 公开仓。
+- **通读：** 已完成
 - **配套论文：** [Agile Perceptive Traversal（arXiv:2608.29769）](../papers/agile_perceptive_traversal_arxiv_2608_29769.md)
 
 ## 一句话摘要

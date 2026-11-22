@@ -7,6 +7,9 @@
 - **技术路线分组：** 动作跟踪与全身控制
 - **链接：** https://github.com/TeleHuman/ALMI-Open
 - **入库日期：** 2026-07-30
+- **核对日期：** 2026-11-22
+- **核对范围：** `TeleHuman/ALMI-Open` README、`ALMI_RL/README.md` 与 `ALMI_RL/legged_gym/scripts/train.py`（核实 TODO 状态：`ALMI_RL` / `Data_Collection` / `ALMI_trans` 已开放，真机 deployment 代码仍未勾选）
+- **通读：** 已完成
 - **一句话说明：** 先独立训练下肢行走和上肢模仿策略，再让两者在联合训练中互相施加扰动，最终蒸馏为统一全身模型；这里的对抗指策略间适应，不是AMP判别器，仓库还开放ALMI-X数据。
 - **开源状态（据主表）：** 已开源（以官方仓库 README 为准）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)

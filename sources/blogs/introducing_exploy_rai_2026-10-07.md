@@ -9,7 +9,9 @@
 - **机构：** Robotics and AI Institute（RAI Institute）
 - **代码：** <https://github.com/rai-opensource/exploy>（MIT，已公开）
 - **文档：** <https://rai-opensource.github.io/exploy/>
-- **入库日期：** 2026-10-08
+- **入库日期：** 2026-10-08（2026-11-22 复核）
+- **核对范围：** 抓取并通读官方博客全文（<https://rai-inst.com/resources/blog/introducing-exploy-simplifying-rl-policy-deployment-in-autonomous-robotics/>，6,914 字符，80 段，涵盖 ONNX/tracing 痛点、Exporter/Controller 架构、IsaacLab/MjLab 适配与 Roadrunner/Spot/UMV/G1/Atlas 部署案例）。
+- **通读：** 已完成
 - **一句话说明：** RAI 介绍 Exploy 如何把仿真环境中的观测生成、策略前向与动作处理统一导出为 ONNX 计算图，并由 C++/ROS 控制器接入机器人状态与命令接口。
 - **沉淀到 wiki：** 是 → [`wiki/entities/exploy.md`](../../wiki/entities/exploy.md)
 

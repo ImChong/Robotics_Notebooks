@@ -3,7 +3,9 @@
 - **类型：** site / research-organization
 - **官网：** <https://rai-inst.com/>
 - **机构：** 机器人与人工智能研究所（Robotics and AI Institute，RAI Institute）
-- **核查日期：** 2026-10-08
+- **核查日期：** 2026-10-08（2026-11-22 复核）
+- **核对范围：** 通读 RAI 官网 [About](https://rai-inst.com/about/)、[Resources](https://rai-inst.com/resources/) 公开文本及《公司路线日期核查》中 ZEST / AthenaZero / Sumo / Robot Juggling / SMPC-to-RL / Exploy 一手证据汇总；未将闭源内部实现声称为可运行。
+- **通读：** 已完成
 - **Wiki：** [RAI Institute](../../wiki/entities/rai-institute.md)
 
 ## 机构与成立时间
