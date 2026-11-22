@@ -91,6 +91,7 @@ flowchart LR
 - [lidar_localization_ros2](../wiki/entities/lidar-localization-ros2.md) — 预建 PCD/PLY 地图中的 BBS 全局初始化 + NDT/GICP scan-to-map，支持无 GPS / 无手动首位姿的 ROS 2 定位，另需警惕对称地图误匹配；与上条 GN10 的 ESDF/CUDA 实现互补。
 - [Ultra-Fusion](../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — 韧性多传感器融合前沿
 - [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md) — 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
+- [RigVis：双目惯性 SLAM 与稠密点云](../wiki/entities/rigvis.md) — Stage 1 实现案例：ORB/ESKF/Ceres + 关键帧锚定稠密点云和 ICP 因子；作者自报 KITTI 数据待源码与评测脚本核验。
 - [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md) — memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
 - [KILVO](../wiki/entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；已开源（ROS Noetic C++ GPL-2.0 + 15 段 rosbag）
 - [ABot-Recon](../wiki/entities/paper-abot-recon.md) — 阿里 AMap CV Lab，固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建，状态不随序列长度增长；Oxford Spires ATE 4.35 m（约 −40%），与 SLAMFormer-∞ 同属单目稠密流式 SLAM 前沿；已开源（GitHub + HF 权重）
