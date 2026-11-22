@@ -527,6 +527,13 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-22] ingest | sources/repos/cyberbeast-robot-mc.md — CyberBeast 关节电机全软件栈（5 项目 + 总览）
+
+- 录入 robot_mc、OpenBootloader、JointSDK、JointROS、canable2-fw-n32 五个独立开源项目，附官方源码链接、控制流程与运行时序 Mermaid 图。
+- 归档 Motor Wizard 官方手册调试入口；EXE 文件大小和现时下载状态未作事实认定。
+- 形成 firmware 40 kHz FOC → CAN/CAN-FD C99 SDK → ROS 2 1 kHz tick 的分层认知，区分 CAN Bootloader Classic 500 kbit/s 升级链与 SLCAN USB2CAN 诊断链。
+- 注册 CyberBeast 所属机构，链接力矩电机与人形硬件纵深路线，节点健康度由 GitHub CI 核验。
+
 ## [2026-11-22] ingest | 完成全站 30 条纵深路线最终轮 Batch 3（contact-manipulation / sim2real / loco-manipulation / model-architecture / cross-embodiment / rsi 共 107 节点通过 arXiv 全文与 Agent-Reach/GitHub 一手资料核读升至 3/3，全库 26/30 路线全满分、1589/1593 节点达 3/3；仅 HUST/OpenReview/IEEE 3 个唯一外部受阻论文按实保留 2/3 并标注阻塞原因）
 
 ## [2026-11-22] ingest | Route Health Sweep Batch 2 (Cluster A+B): 补齐 73 个纵深节点一手原文通读与完整骨架（含 Agent-Reach 读取 Holland 1962 / Goldberg 1988 / Mordatch SCA 2012 / Zenodo 元数据），闭环 depth-safe-control (29/29)、depth-rocket-landing (38/38)、depth-rl-locomotion (49/49)、depth-humanoid-soccer (30/30)、depth-humanoid-swarm-performance (32/32)，depth-humanoid-hardware-design 推进至 57/58（paper-humanoid-leg-generative-design-dynamics 因 HUST 超时及 CNKI 验证码诚实保留 2/3）
