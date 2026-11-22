@@ -65,6 +65,7 @@ flowchart LR
 - [控制频率与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md) — 低频策略与高频执行环之间的三类接口
 - [神经反馈控制器](../wiki/concepts/neural-feedback-controller.md) — 把 policy 读成状态反馈律 $\pi(x)$，建立推理算力直觉
 - [深度学习基础](../wiki/concepts/deep-learning-foundations.md) · [反向传播](../wiki/concepts/backpropagation.md) — 函数逼近与可微计算图底座
+- [AccumulateMore/CV 深度学习 Notebook 合集](../wiki/entities/accumulatemore-cv.md) — Stage 0 先修练习：Dataset/DataLoader、CNN、反向传播与优化器；再进入 Stage 1 骨干选型（非机器人专用训练框架）
 
 ### 学完输出什么
 - 一张自己场景的分层频率表（层 × 周期 × 输入 × 时延上限 × 降级）
