@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-22] ingest | DTMR 论文深读与官方源码开放状态核实
+
+- 对照 arXiv:2609.38617v1 全文，完善现有唯一实体节点；纠正 12.9% DTW 指标解释，区分 G1 全语料 1% 与 H1-2 9.5% 总时长变化。
+- 项目页 Code 已正式指向 nicolejrkim/DTMR；核对 MuJoCo Warp GPU MPC 跟踪器、CLI、示例运行时序、配置和后处理指标，不将离线重定向误写为真机实时控制。
+- 更新动作重定向纵深 Stage 3 关联，保留前端派生数据及 log.md 由部署流水线生成。
+
 ## [2026-11-22] ingest | sources/papers/pgx_arxiv_2611_26596.md — 收录 PGX 物理接地长时程人形移动操作
 
 - 原文 arXiv:2611.26596v1 与官方项目页已核对，独立实体及 Mermaid 框架流程图已入库。
