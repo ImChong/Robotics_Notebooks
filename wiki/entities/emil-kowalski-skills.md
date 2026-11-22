@@ -11,11 +11,15 @@ tags:
   - ux
   - agent-infrastructure
 status: complete
-updated: 2026-10-09
+updated: 2026-11-22
+original:
+  - ../../sources/repos/emil-kowalski-skills.md
 related:
   - ./find-skills-skill.md
   - ./anthropic-frontend-design-skill.md
   - ./mattpocock-skills.md
+  - ./ui-ux-pro-max-skill.md
+  - ./claude-code-frontend-skills.md
   - ./humanlayer-skills.md
 sources:
   - ../../sources/repos/emil-kowalski-skills.md
@@ -25,6 +29,10 @@ summary: "emilkowalski/skills 是 Emil Kowalski 面向设计与前端工程的 A
 # Emil Kowalski Skills
 
 **Emil Kowalski Skills**（[emilkowalski/skills](https://github.com/emilkowalski/skills)）是设计工程师 Emil Kowalski 发布的一组可通过 `npx skills` 安装的 Agent Skills，用操作规约把动效、界面品味、原型迭代与前端边界测试经验带入 coding-agent 工作流。
+
+## 一句话定义
+
+将是否需要动效、动画曲线与时长、交互反馈和边界状态写成编码代理可复用的设计工程规约。
 
 ## 英文缩写速查
 
@@ -41,6 +49,10 @@ summary: "emilkowalski/skills 是 Emil Kowalski 面向设计与前端工程的 A
 - **可组合而非整套绑定：** 每个技能可按需安装；同一个项目可组合总体设计、实现动效、审查和移动端体验技能。
 - **与通用设计技能互补：** [Anthropic frontend-design](anthropic-frontend-design-skill.md) 偏向生成界面时的整体审美与实现指引；Emil 的技能更细分于动画设计工程、交互细节与具体验证步骤。
 
+## 核心原理
+
+`skills/emil-design-eng/SKILL.md` 先评估交互频次：高频键盘行为通常不需要动画；有空间与状态转换需求时再选择 ease-out、ease-in-out、持续时长与属性。此为设计指导，不是已通过界面验收的证据。
+
 ## 核心技能（上游快照）
 
 | 技能 | 主要用途 |
@@ -56,7 +68,7 @@ summary: "emilkowalski/skills 是 Emil Kowalski 面向设计与前端工程的 A
 | `break-ui` | 用长文本、空列表、极端数量、多语言等真实边界数据进行 UI 压测 |
 | `pick-ui-library` / `write-swift` / `ask-sonner` | UI 库选型、Swift 编写、Sonner toast 使用 |
 
-仓库 README 在 2026-10-02 的快照列出 14 项技能；此表按主题归并，不能替代上游变动中的技能清单。
+2026-10-02 的 14 项属于历史快照；2026-11-22 的 README 还列出 `remove-animations`、`choreograph`、`animation-performance`、`gestures`、`learn-taste`、`ask-emil` 等，表格按主题选读。
 
 ## 工作流
 
@@ -74,6 +86,16 @@ flowchart LR
 
 安装命令：`npx skills@latest add emilkowalski/skills`。安装后应针对任务选具体技能，并由 agent 在目标仓库中读取技能文件；验证环节仍需真实运行应用或检查截图，不能只凭技能文本判定完成。
 
+## 源码运行时序图
+
+**不适用**：核心 `SKILL.md` 是外部 Agent 读取的 Markdown 规约，不存在该仓库内统一运行时程序；`npx skills` 是外部安装器，不能虚构 Skill 内部调用链。
+
+## 工程实践
+
+- 安装 `npx skills@latest add emilkowalski/skills`，针对动效制作、审查或异常数据验证选 `animate`、`review-animations`、`break-ui` 等。
+- 高频的机器人遥操作 UI 更重视即时反馈；为营销官网或低频 onboarding 才考虑复杂动效。
+- 实际质量应在浏览器中检查触控、焦点、长文案、性能与 reduced-motion。
+
 ## 局限与使用边界
 
 - **Skill 是提示与流程资产，不是可执行产品代码。** 不能提供组件、设计稿或动画运行时；它影响 agent 的工作方式，实际质量仍取决于模型与上下文。
@@ -82,6 +104,9 @@ flowchart LR
 - **验证条件很关键。** 若 agent 无法启动应用或无法访问真实设备，动效和触控建议通常只能做静态推断。
 
 ## 关联页面
+
+- [UI/UX Pro Max](ui-ux-pro-max-skill.md) — 配色字体规则检索
+- [Claude Code Frontend Skills](claude-code-frontend-skills.md) — 多 Skill 动效阶段路由
 
 - [find-skills（Vercel 元技能）](find-skills-skill.md) — 搜索与安装 Agent Skills 的发现层
 - [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — 通用界面生成与审美指导
