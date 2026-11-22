@@ -8,6 +8,8 @@ related:
   - ./orb-slam3.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../overview/navigation-slam-autonomy-stack.md
+  - ../methods/gauss-newton.md
+  - ../tasks/autonomous-exploration.md
 original:
   - ../../sources/blogs/rigvis_ekrem_ozturk_2026_11.md
 sources:
@@ -117,6 +119,8 @@ flowchart TD
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 双目惯性方案与激光/其他 VIO 的适用边界。
 - [导航·SLAM·自动驾驶开源栈](../overview/navigation-slam-autonomy-stack.md) — 连接定位建图与规划执行。
 - [导航纵深路线 Stage 1](../../roadmap/depth-navigation.md) — 在 SLAM 与状态估计阶段学习和验证。
+- [Gauss-Newton 非线性最小二乘方法](../methods/gauss-newton.md) — 理解 BA 和 Ceres 位姿图中的残差、Jacobian 与优化收敛。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 理解 SLAM 稠密建图如何向探索、障碍感知与规划提供空间信息。
 
 ## 参考来源
 
