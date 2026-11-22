@@ -44,7 +44,7 @@ summary: "Xbotics-Embodied-Guide（Roadmap to Embodied AI）是 Xbotics 社区�
 - **从阅读走向交付：** 主 README 的求职路线要求最小 Demo → 基线复现/改造 → 可量化结果 → README 与演示素材，比只汇总论文链接更接近工程实践。
 - **与本库分工：** 本页适合挑选起步路径；机制与可复现代码细节仍需进入 [RL](../methods/reinforcement-learning.md)、[模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md) 等知识节点；[Xbotics 21 讲教程](./xbotics-embodied-ai-handbook.md) 承接实际课程。
 
-## 核心结构
+## 核心原理：路线图的组织与学习闭环
 
 | 上游部分 | 原始内容 | 在本知识库中的作用 |
 | --- | --- | --- |
