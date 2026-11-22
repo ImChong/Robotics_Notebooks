@@ -56,14 +56,14 @@ sequenceDiagram
   autonumber
   participant Host as tools/mc_ep.py / CAN 主站
   participant CAN as can_cyberbeast.c
-  participant Loop as main.c 中断/FSM
+  participant Core as main.c 中断/FSM
   participant FOC as foc.c
   participant HW as ATIM1/ADC/功率级
   Host->>CAN: 控制帧 / 参数请求
-  CAN->>Loop: 解析目标及状态
+  CAN->>Core: 解析目标及状态
   loop 每 25 us (40 kHz)
-    HW-->>Loop: 电流 ADC 与编码器反馈
-    Loop->>FOC: 当前状态与控制目标
+    HW-->>Core: 电流 ADC 与编码器反馈
+    Core->>FOC: 当前状态与控制目标
     FOC->>HW: 更新三相 PWM 占空比
   end
   CAN-->>Host: 心跳/反馈帧
