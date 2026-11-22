@@ -92,9 +92,10 @@ sequenceDiagram
     participant RE as reselect_person.py
     participant POST as postprocessing/*
     U->>CLI: humancalib run VIDEO_DIR CALIB_TOML OUT --height H
-    CLI->>POSE: 运行 MeTRAbs 子进程
-    opt pose_engine 为 rtmpose
-      CLI->>POSE: 改用 RTMPose 子进程 + VideoPose3D lift
+    alt 默认 MeTRAbs
+      CLI->>POSE: 运行 MeTRAbs 子进程，输出 2D + 3D
+    else 可选 RTMPose 后端
+      CLI->>POSE: RTMPose 子进程，随后 VideoPose3D lift
     end
     POSE-->>CLI: 多视角二维/三维骨架与候选人
     CLI->>CAM: create_cameras_from_toml / write_session
