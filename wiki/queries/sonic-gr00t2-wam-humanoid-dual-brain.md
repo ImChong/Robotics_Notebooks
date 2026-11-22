@@ -27,7 +27,7 @@ related:
 
 # 从 Motion Tracking 到 World Action Model：SONIC × GR00T 2 Turbo 的人形全身闭环
 
-> **Query 产物：** 本页回答「如何把 SONIC 运动追踪控制器、GRAIL 合成/遥操作数据与 GR00T 2 Turbo 世界动作模型连成可板载运行的人形 loco-manipulation 闭环，并正确解释异频控制与延迟？」综合 SONIC、GR00T 2 与 GRAIL 的官方论文，以及 2026-11-18 GRASP 演讲的一手活动信息；演讲的中文转述仍单独标注未独立核验之处。
+> **Query 产物**： 本页回答「如何把 SONIC 运动追踪控制器、GRAIL 合成/遥操作数据与 GR00T 2 Turbo 世界动作模型连成可板载运行的人形 loco-manipulation 闭环，并正确解释异频控制与延迟？」综合 SONIC、GR00T 2 与 GRAIL 的官方论文，以及 2026-11-18 GRASP 演讲的一手活动信息；演讲的中文转述仍单独标注未独立核验之处。
 
 ## 一句话定义
 
