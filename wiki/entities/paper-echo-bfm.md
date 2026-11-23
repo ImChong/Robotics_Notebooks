@@ -13,6 +13,8 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../concepts/whole-body-control.md
   - ../tasks/teleoperation.md
+  - ../tasks/locomotion.md
+  - ../methods/reinforcement-learning.md
   - ./unitree-g1.md
   - ./paper-heft.md
   - ./nvidia-sonic.md
@@ -59,7 +61,7 @@ sources:
 
 ## 流程总览
 
-下图依据论文 Fig. 2、`3 绘制，是**论文方法数据流**，非官方代码调用时序。
+下图依据论文 Fig. 2、§3 绘制，是**论文方法数据流**，非官方代码调用时序。
 
 ```mermaid
 flowchart TB
@@ -81,7 +83,7 @@ flowchart TB
   robot --> hist
 ```
 
-## 核心机制（论文 `3 与附录 `6）
+## 核心机制（论文 §3 与附录 §6）
 
 ### MIAS：单阶段学高动态与日常动作
 
@@ -166,6 +168,8 @@ a_final = a_prior + πΔ(本体, 参考运动, z, a_prior)
 - [BFM 纵深](../../roadmap/depth-bfm.md) Stage 4
 - [ICL 纵深](../../roadmap/depth-icl.md) 与示范上下文的区别
 - [遥操作](../tasks/teleoperation.md)
+- [Locomotion](../tasks/locomotion.md) — 动作跟踪中的全身移动与支撑技能
+- [强化学习](../methods/reinforcement-learning.md) — ECHO-PRE 与残差策略的 PPO 训练基础
 
 ## 参考来源
 
