@@ -209,6 +209,7 @@ flowchart LR
 - [Perceptron Isaac 0.5](../wiki/entities/perceptron-isaac-05.md) — 通用视频置换 teleop 的开源等高线，本阶段最可操作的量化锚点
 - [EgoScale](../wiki/methods/egoscale.md) — 人视频预训练 + 小规模视点对齐 mid-training 的两段式配方
 - [Real2Sim 纵深](depth-real2sim.md) 与 [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 仿真侧资产供给的姊妹路线
+- [Movens-Zero / Movens-5M](../wiki/entities/paper-movens-zero.md) — Stage 4 视频→机器人动作的规模化数据实例：15M 人类序列经修复、G1 重定向、闭环跟踪筛选为论文报告的 5M 可执行轨迹；分清 HF 预览与全量 tar shards 及 `other` 许可
 - [PHUMA](../wiki/entities/dataset-bfm-phuma.md) 与 [动作重定向纵深](depth-motion-retargeting.md) — 人 → 本体折算的物理可靠性侧
 - [BeyondRetarget Plus（单目人体视频 → 多机运动数据）](../wiki/entities/paper-beyondretarget-monocular-humanoid.md#beyondretarget-plus2026-11-22-扩展) — Stage 4 海量离线人视频折算：移动相机/世界轨迹 + C-RC1，须量化失败片段与许可证
 - [SoftMimicGen](../wiki/entities/paper-softmimicgen.md) — 少量遥操作示范 + 子任务标注 + 自动轨迹生成，批量合成毛巾 / 绳索 / 毛绒玩具等可变形物体操作数据（ICRA 2026）
