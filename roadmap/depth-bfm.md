@@ -116,6 +116,7 @@ flowchart LR
 - [XMimic & XSoma（arXiv:2611.20452）](../wiki/entities/paper-xmimic-xsoma-2611-20452.md) — 用可微世界模型和 JAX 多卡缩短 G1 参考跟踪 / 地形速度跟踪达标时间；与原 [XMimic 独立工作](../wiki/entities/paper-xmimic-jax.md) 区分论文版本与训练目标。
 - 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)
 - [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 工程可用的跟踪基座
+- [2026 人形 WBC 12 项开源路线对照](../wiki/comparisons/humanoid-wbc-open-source-12-2026.md) — 按 tracking、跨模态生成、无监督技能和任务级 VLA/移动操作分层，帮助确定 Stage 2 低层控制与后续 Stage 3–4 的接口边界。
 - [MoViC（arXiv:2611.19998）](../wiki/entities/paper-movic-monocular-video-whole-body-control.md) — 局部重建 DFM 形成 320-D θ 时间上下文 + 下一步显式参考，PPO Transformer 跟踪 PM01；仿真消融 SR 99%，视觉参考 10→50 Hz 异步外推
 - [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md) — BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
 - [PFM-HR](../wiki/entities/paper-pfm-hr.md) — 无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励，冻结挂载 ADD/BeyondMimic 不改部署栈；高动态技能（Backflip、Double Kong 等）样本效率相对 PDF-HR 提升 14–29%，LaFAN1 通用跟踪位置误差相对 ADD/PDF-HR 均降约 8–10%；代码仓占位待开放
