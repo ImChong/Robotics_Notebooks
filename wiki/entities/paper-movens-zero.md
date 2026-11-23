@@ -75,7 +75,7 @@ flowchart LR
     O --> E["Movens-Intent 语义/运动/跟踪评测"]
 ```
 
-**依据**：论文 `3 的五阶段数据引擎、`5 的多模态条件生成和 MM-RTC、`4/`6 的评测。这里的「闭环跟踪执行验证」是论文数据构建和实验环节，不能误当作本仓库 CLI 默认直接连接真机。
+**依据**：论文第 3 节的五阶段数据引擎、第 5 节的多模态条件生成和 MM-RTC、第 4、6 节的评测。这里的「闭环跟踪执行验证」是论文数据构建和实验环节，不能误当作本仓库 CLI 默认直接连接真机。
 
 ## 核心机制
 
@@ -191,7 +191,7 @@ sequenceDiagram
 - [Movens-5M Hugging Face 原始数据卡归档](../../sources/datasets/movens-5m.md)
 - [Movens-Zero 项目主页归档](../../sources/sites/movens-zero.md)
 - [Movens-Zero 官方 GitHub 代码归档](../../sources/repos/movens-zero.md)
-- [arXiv HTML 全文 `3–6、附录 A–G](https://arxiv.org/html/2610.41877)
+- [arXiv HTML 全文第 3–6 节、附录 A–G](https://arxiv.org/html/2610.41877)
 - [Movens-5M 官方数据卡](https://huggingface.co/datasets/wendell0218/Movens-5M)
 
 ## 推荐继续阅读

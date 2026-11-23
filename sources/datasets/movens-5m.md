@@ -9,7 +9,7 @@
 - **项目：** https://movens-zero.github.io/
 - **源码：** https://github.com/wendell0218/Movens-Zero
 - **核对日期：** 2026-11-23
-- **核对范围：** 官方 Hugging Face Dataset Card 的 Overview、Full dataset access、Data format、Data construction pipeline、Data loading、Limitations 与 License；结合论文 `3、`5–6、附录 A–B 校核物理验证口径。
+- **核对范围：** 官方 Hugging Face Dataset Card 的 Overview、Full dataset access、Data format、Data construction pipeline、Data loading、Limitations 与 License；结合论文第 3、5–6 节及附录 A–B 校核物理验证口径。
 - **通读：** 已完成
 - **沉淀到 wiki：** [Movens-Zero / Movens-5M](../../wiki/entities/paper-movens-zero.md)
 
