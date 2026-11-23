@@ -133,6 +133,7 @@ flowchart LR
 - [GigaWorld-1 策略评估](../wiki/entities/paper-gigaworld-1-policy-evaluation.md) — WMBench + 7 类视频 WM、4 种动作编码、32.4 万+ rollout；核心结论是**长时序动作忠实 rollout 比短时视觉逼真更决定评估质量**
 - [WorldEcho / WorldSync](../wiki/entities/paper-worldecho-worldsync.md) — 视觉门控 + \(\mathrm{SE}(3)\) NDTW 专测 off-expert 动作跟随
 - [WorldScore](../wiki/entities/paper-worldscore.md) — 开放域 3D/4D/视频多场景世界生成的 Ctrl/Quality/Dynamics 统一榜（相邻轴，**不要**用来代替操纵保真）
+- [WorldTrace / LoopBench](../wiki/entities/paper-worldtrace-addressable-memory-video-world-models.md) — Stage 2 的**长程场景回访一致性**分支：返回旧位置时测 DINOv2/LPIPS 并单列缓存额外显存与延迟；不把视觉记忆改善视为动作忠实或物理仿真成功。
 - [HarnessEval-W](../wiki/entities/paper-harnesseval-w.md) — 交互式世界模型 agentic 评测：干预/持久证据树，Intentional 排序与人类 ρ=0.93
 - [Uranus](../wiki/entities/paper-uranus.md) — 动作条件多视角视频模拟器：外部策略给 qpos、模型自回归预测视觉后果，用于具身策略闭环评估
 - [SC3-Eval](../wiki/entities/paper-sc3-eval.md) — 反向用法：把自一致视频生成本身当真机 VLA 策略评估器，闭环 Pearson 0.929
