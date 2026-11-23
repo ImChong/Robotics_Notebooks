@@ -7536,6 +7536,40 @@ a.kb-chat-citation-passage:hover {
   box-shadow: none;
 }
 
+:root:not([data-ui="classic"]) .card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--line-strong);
+}
+
+:root:not([data-ui="classic"]) .card-meta {
+  border-radius: var(--r-btn);
+  border-color: var(--line);
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 3px 9px;
+}
+
+:root:not([data-ui="classic"]) .chip-list {
+  gap: 6px;
+}
+
+:root:not([data-ui="classic"]) .data-chip {
+  border-radius: var(--r-btn);
+  border-color: var(--line);
+  background: var(--bg);
+  padding: 4px 9px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+:root:not([data-ui="classic"]) .chip-list > .detail-community-badge {
+  border-radius: var(--r-btn);
+  padding: 4px 9px;
+  font-size: 0.78rem;
+}
+
 :root:not([data-ui="classic"]) .detail-content-sync .detail-markdown-body {
   border: 0;
   background: transparent;

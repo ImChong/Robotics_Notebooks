@@ -65,6 +65,31 @@
     }
     /* 时间线的公司 / 实验室名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
     #trend-chart .main-svg a { pointer-events: all; cursor: pointer; }
+    :root:not([data-ui="classic"]) #trend-tabs {
+      border: 0;
+      background: transparent;
+      gap: 6px;
+    }
+    :root:not([data-ui="classic"]) #trend-tabs .home-hub-tab,
+    :root:not([data-ui="classic"]) .trend-range .home-hub-tab {
+      min-height: 32px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--r-btn);
+      background: var(--surface);
+    }
+    :root:not([data-ui="classic"]) #trend-tabs .home-hub-tab:hover,
+    :root:not([data-ui="classic"]) .trend-range .home-hub-tab:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) #trend-tabs .home-hub-tab.is-active,
+    :root:not([data-ui="classic"]) .trend-range .home-hub-tab.is-active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
     :root:not([data-ui="classic"]) .trend-legend--interactive button {
       border-radius: 2px;
       border-color: var(--line);
