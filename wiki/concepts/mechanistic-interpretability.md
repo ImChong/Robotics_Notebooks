@@ -2,9 +2,10 @@
 type: concept
 tags: [mechanistic-interpretability, neural-networks, ai-safety, robotics]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-23
 summary: "机制可解释性通过分析神经元、电路和因果干预理解模型计算；Goodfire 的原生神经元证据值得跟进，但不能推出所有网络已安全或完全可解释。"
 related:
+  - ./research-distillation-public-explanations.md
   - ./deep-learning-foundations.md
   - ./ai-auto-research.md
   - ./out-of-distribution-generalization.md
@@ -92,6 +93,7 @@ flowchart LR
 
 ## 关联页面
 
+- [研究蒸馏与公开技术解释（Chris Olah / Distill）](./research-distillation-public-explanations.md) — 解释为什么原文、可视化与因果核验要共同出现；不把职业成长故事当作算法证据。
 - [深度学习基础](./deep-learning-foundations.md)
 - [Neurons as an Interpretable Basis](../entities/paper-neurons-as-interpretable-basis.md)
 - [AI Auto-Research](./ai-auto-research.md)
