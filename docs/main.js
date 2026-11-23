@@ -1,63 +1,231 @@
 (function () {
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
+  const uiStyleToggle = document.getElementById('uiStyleToggle');
+  const mobileUiStyleToggle = document.getElementById('mobileUiStyleToggle');
   const key = 'robotics-notebooks-theme';
+  const uiKey = 'robotics-notebooks-ui';
+  const THEME_COLOR_MAP = {
+    tech: { dark: '#0a0b0d', light: '#f5f4f0' },
+    classic: { dark: '#191919', light: '#ffffff' }
+  };
+
+  function currentUiMode() {
+    return root.getAttribute('data-ui') === 'classic' ? 'classic' : 'tech';
+  }
+
+  function syncThemeMeta() {
+    const theme = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    const ui = currentUiMode();
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute('content', THEME_COLOR_MAP[ui][theme]);
+    }
+  }
+
   const saved = localStorage.getItem(key);
   const dark = saved ? saved === 'dark' : true;
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
 
+  const savedUi = localStorage.getItem(uiKey);
+  root.setAttribute('data-ui', savedUi === 'classic' ? 'classic' : 'tech');
+  syncThemeMeta();
+
   function updateThemeToggle() {
     if (!themeToggle) return;
     const isDark = root.getAttribute('data-theme') === 'dark';
-    themeToggle.setAttribute('title', isDark ? '切换到白天模式' : '切换到黑夜模式');
+    themeToggle.setAttribute('title', isDark ? '切换到白天模式 (Ctrl+Shift+L)' : '切换到黑夜模式 (Ctrl+Shift+L)');
     themeToggle.setAttribute('aria-label', isDark ? '切换到白天模式' : '切换到黑夜模式');
   }
 
-  updateThemeToggle();
+  function updateUiStyleToggles() {
+    const isClassic = currentUiMode() === 'classic';
+    if (uiStyleToggle) {
+      uiStyleToggle.textContent = isClassic ? '新版' : '旧版';
+      uiStyleToggle.setAttribute('aria-pressed', isClassic ? 'true' : 'false');
+      uiStyleToggle.setAttribute('title', isClassic ? '切换到新版样式' : '切换到旧版样式');
+      uiStyleToggle.setAttribute('aria-label', isClassic ? '切换到新版样式' : '切换到旧版样式');
+    }
+    if (mobileUiStyleToggle) {
+      const labelEl = mobileUiStyleToggle.querySelector('[data-nav-label]') || mobileUiStyleToggle;
+      labelEl.textContent = isClassic ? '新版样式' : '旧版样式';
+      mobileUiStyleToggle.setAttribute('aria-pressed', isClassic ? 'true' : 'false');
+    }
+  }
 
-  function toggleTheme() {
-    const isDark = root.getAttribute('data-theme') === 'dark';
-    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    localStorage.setItem(key, isDark ? 'light' : 'dark');
-    updateThemeToggle();
+  function syncHomeUiLayout(ui) {
+    const miniSection = document.getElementById('mini-graph-section');
+    const heroFrame = document.querySelector('#hero .hero-frame');
+    const homeHubSection = document.getElementById('home-hub-section');
+    if (!miniSection || !heroFrame || !homeHubSection) return;
+    if (ui === 'classic') {
+      miniSection.classList.remove('hero-viewport');
+      if (miniSection.parentNode !== homeHubSection.parentNode || miniSection.nextElementSibling !== homeHubSection) {
+        homeHubSection.parentNode.insertBefore(miniSection, homeHubSection);
+      }
+    } else {
+      miniSection.classList.add('hero-viewport');
+      if (miniSection.parentNode !== heroFrame) {
+        heroFrame.appendChild(miniSection);
+      }
+    }
+  }
+
+  updateThemeToggle();
+  updateUiStyleToggles();
+  syncHomeUiLayout(currentUiMode());
+
+  function runWithViewTransition(anchorEl, mutator) {
+    let reduceMotion = false;
+    try {
+      reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch { /* 老浏览器无 matchMedia：按未开启减动处理 */ }
+    if (typeof document.startViewTransition !== 'function' || reduceMotion || !anchorEl) {
+      mutator();
+      return;
+    }
+    // 新主题从按钮中心圆形扩散揭开；快照期间关闭颜色过渡（style.css .is-theme-switching），
+    // 否则新画面会先做 0.3s 颜色渐变再被揭开，边缘发灰
+    const rect = anchorEl.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    root.classList.add('is-theme-switching');
+    const transition = document.startViewTransition(mutator);
+    transition.ready.then(function () {
+      root.animate(
+        { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
+        { duration: 560, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    }).catch(function () { /* 过渡被跳过时主题已由回调切换 */ });
+    transition.finished.finally(function () {
+      root.classList.remove('is-theme-switching');
+    });
+  }
+
+  function rerenderActiveMermaid() {
     const detailContentEl = document.getElementById('detailContent');
     if (detailContentEl) renderDetailMermaid(detailContentEl);
     const roadmapContentEl = document.getElementById('roadmapContent');
     if (roadmapContentEl) renderDetailMermaid(roadmapContentEl);
   }
 
+  function toggleTheme() {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem(key, isDark ? 'light' : 'dark');
+    syncThemeMeta();
+    updateThemeToggle();
+    rerenderActiveMermaid();
+  }
+
+  function toggleUiStyle() {
+    const nextUi = currentUiMode() === 'classic' ? 'tech' : 'classic';
+    root.setAttribute('data-ui', nextUi);
+    localStorage.setItem(uiKey, nextUi);
+    syncThemeMeta();
+    updateUiStyleToggles();
+    syncHomeUiLayout(nextUi);
+    rerenderActiveMermaid();
+    if (typeof window.__rnRefreshHomeNavFab === 'function') {
+      window.__rnRefreshHomeNavFab();
+    }
+    window.dispatchEvent(new CustomEvent('rn:uichange', { detail: { ui: nextUi } }));
+    window.dispatchEvent(new Event('resize'));
+  }
+
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
-      let reduceMotion = false;
-      try {
-        reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      } catch { /* 老浏览器无 matchMedia：按未开启减动处理 */ }
-      if (typeof document.startViewTransition !== 'function' || reduceMotion) {
-        toggleTheme();
-        return;
-      }
-      // 新主题从按钮中心圆形扩散揭开；快照期间关闭颜色过渡（style.css .is-theme-switching），
-      // 否则新画面会先做 0.3s 颜色渐变再被揭开，边缘发灰
-      const rect = themeToggle.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-      const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-      root.classList.add('is-theme-switching');
-      const transition = document.startViewTransition(toggleTheme);
-      transition.ready.then(function () {
-        root.animate(
-          { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
-          { duration: 560, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' }
-        );
-      }).catch(function () { /* 过渡被跳过时主题已由回调切换 */ });
-      transition.finished.finally(function () {
-        root.classList.remove('is-theme-switching');
-      });
+      runWithViewTransition(themeToggle, toggleTheme);
     });
   }
 
-  const links = document.querySelectorAll('.page-subnav a, .main-nav a');
-  const sections = Array.from(links)
+  if (uiStyleToggle) {
+    uiStyleToggle.addEventListener('click', function () {
+      runWithViewTransition(uiStyleToggle, toggleUiStyle);
+    });
+  }
+
+  if (mobileUiStyleToggle) {
+    mobileUiStyleToggle.addEventListener('click', function () {
+      toggleUiStyle();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'L' || e.key === 'l')) {
+      e.preventDefault();
+      runWithViewTransition(themeToggle, toggleTheme);
+    }
+  });
+
+  // ── 移动端全屏导航抽屉（首页 tech 模式） ──
+  (function setupMobileNavSheet() {
+    const toggle = document.getElementById('mobileMenuToggle');
+    const sheet = document.getElementById('mobileNavSheet');
+    if (!toggle || !sheet) return;
+    const openIcon = toggle.querySelector('.mobile-menu-icon--open');
+    const closeIcon = toggle.querySelector('.mobile-menu-icon--close');
+
+    function syncMenuIcon(isOpen) {
+      if (openIcon) openIcon.hidden = isOpen;
+      if (closeIcon) closeIcon.hidden = !isOpen;
+    }
+
+    function closeSheet() {
+      if (!sheet.classList.contains('is-open')) return;
+      sheet.classList.remove('is-open');
+      sheet.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      syncMenuIcon(false);
+      document.body.style.overflow = '';
+      if (sheet.contains(document.activeElement)) toggle.focus();
+    }
+
+    function openSheet() {
+      sheet.hidden = false;
+      sheet.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      syncMenuIcon(true);
+      document.body.style.overflow = 'hidden';
+    }
+
+    toggle.addEventListener('click', function () {
+      if (sheet.classList.contains('is-open')) closeSheet();
+      else openSheet();
+    });
+
+    sheet.addEventListener('click', function (e) {
+      if (e.target.closest('a, button')) closeSheet();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeSheet();
+    });
+
+    if (typeof window.matchMedia === 'function') {
+      const mq = window.matchMedia('(min-width: 768px)');
+      const onMqChange = function () { if (mq.matches) closeSheet(); };
+      if (typeof mq.addEventListener === 'function') mq.addEventListener('change', onMqChange);
+      else if (typeof mq.addListener === 'function') mq.addListener(onMqChange);
+    }
+
+    window.addEventListener('rn:uichange', function (ev) {
+      if (ev && ev.detail && ev.detail.ui === 'classic') closeSheet();
+    });
+  })();
+
+  const subnavLinks = document.querySelectorAll('.page-subnav a');
+  const subnavSections = Array.from(subnavLinks)
+    .map(function (link) {
+      var href = link.getAttribute('href');
+      if (!href || !/^#.+/.test(href)) return null;
+      return document.querySelector(href);
+    })
+    .filter(Boolean);
+
+  const mainNavLinks = document.querySelectorAll('.main-nav a, .mobile-nav-sheet a');
+  const mainNavSections = Array.from(mainNavLinks)
     .map(function (link) {
       var href = link.getAttribute('href');
       if (!href || !/^#.+/.test(href)) return null;
@@ -66,19 +234,34 @@
     .filter(Boolean);
 
   function updateActive() {
-    const scrollPos = window.scrollY + 100;
-    let currentId = sections.length ? '#' + sections[0].id : '';
-    // ⚡ Bolt Optimization: Replace .forEach with standard for loop
-    // Expected impact: Eliminates closure allocation during hot scroll events.
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].offsetTop <= scrollPos) currentId = '#' + sections[i].id;
+    if (subnavSections.length) {
+      const scrollPos = window.scrollY + 100;
+      let currentId = '#' + subnavSections[0].id;
+      // ⚡ Bolt Optimization: Replace .forEach with standard for loop
+      // Expected impact: Eliminates closure allocation during hot scroll events.
+      for (var i = 0; i < subnavSections.length; i++) {
+        if (subnavSections[i].offsetTop <= scrollPos) currentId = '#' + subnavSections[i].id;
+      }
+      for (var j = 0; j < subnavLinks.length; j++) {
+        subnavLinks[j].classList.toggle('active', subnavLinks[j].getAttribute('href') === currentId);
+      }
     }
-    for (var j = 0; j < links.length; j++) {
-      links[j].classList.toggle('active', links[j].getAttribute('href') === currentId);
+    if (mainNavSections.length) {
+      var activeMainId = '';
+      var threshold = 150;
+      for (var k = 0; k < mainNavSections.length; k++) {
+        if (mainNavSections[k].getBoundingClientRect().top <= threshold) {
+          activeMainId = '#' + mainNavSections[k].id;
+        }
+      }
+      for (var m = 0; m < mainNavLinks.length; m++) {
+        var isMatch = activeMainId && mainNavLinks[m].getAttribute('href') === activeMainId;
+        mainNavLinks[m].classList.toggle('active', Boolean(isMatch));
+      }
     }
   }
 
-  if (sections.length) {
+  if (subnavSections.length || mainNavSections.length) {
     let ticking = false;
     // ⚡ Bolt Optimization: Throttle scroll event using requestAnimationFrame
     // Expected impact: Prevents excessive layout recalculations during scrolling, reducing main thread jank.
@@ -2547,6 +2730,42 @@
   function getMermaidThemeVariables(isDark, fontSizePx) {
     var size = Math.max(11, Math.round(fontSizePx || getMermaidFontSizePx()));
     var fontSize = String(size) + 'px';
+    var isClassic = document.documentElement.getAttribute('data-ui') === 'classic';
+    if (!isClassic) {
+      var techLightThemeVars = {
+        primaryColor: '#ffffff',
+        primaryTextColor: '#111214',
+        primaryBorderColor: '#1947c2',
+        lineColor: '#595b61',
+        secondaryColor: '#eceae4',
+        tertiaryColor: '#f5f4f0',
+        mainBkg: '#ffffff',
+        nodeBorder: '#1947c2',
+        clusterBkg: '#eceae4',
+        clusterBorder: 'rgba(17, 18, 20, 0.24)',
+        edgeLabelBackground: '#f5f4f0',
+        titleColor: '#111214',
+        fontFamily: 'inherit',
+        fontSize: fontSize
+      };
+      var techDarkThemeVars = {
+        primaryColor: '#111317',
+        primaryTextColor: '#efeff1',
+        primaryBorderColor: '#5ca4ff',
+        lineColor: '#8f949e',
+        secondaryColor: '#0f1115',
+        tertiaryColor: '#0a0b0d',
+        mainBkg: '#111317',
+        nodeBorder: '#5ca4ff',
+        clusterBkg: '#0f1115',
+        clusterBorder: 'rgba(239, 239, 241, 0.24)',
+        edgeLabelBackground: '#0a0b0d',
+        titleColor: '#efeff1',
+        fontFamily: 'inherit',
+        fontSize: fontSize
+      };
+      return isDark ? techDarkThemeVars : techLightThemeVars;
+    }
     var lightThemeVars = {
       primaryColor: '#eaf1fb',
       primaryTextColor: '#37352f',
@@ -8402,8 +8621,9 @@
       var bh = Math.max(box.height, 0);
       var w = Math.max(bw + pad * 2, 1);
       var h = Math.max(bh + pad * 2, 1);
-      var cardRadius = parseFloat(style.borderTopLeftRadius) || 12;
-      var radius = Math.min(cardRadius + pad, w / 2, h / 2);
+      var parsedRadius = parseFloat(style.borderTopLeftRadius);
+      var cardRadius = Number.isFinite(parsedRadius) ? parsedRadius : 12;
+      var radius = cardRadius > 0 ? Math.min(cardRadius + pad, w / 2, h / 2) : 0;
 
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       // 相对 padding edge 左移 border+pad，使 SVG 对称外扩于 border-box
@@ -8752,8 +8972,10 @@
     var glowRaf = 0;
     var renderDotGlow = function () {
       glowRaf = 0;
-      dotGlow.classList.toggle('is-active', glowActive);
-      if (glowActive) {
+      var isClassicUi = document.documentElement.getAttribute('data-ui') === 'classic';
+      var activeNow = glowActive && isClassicUi;
+      dotGlow.classList.toggle('is-active', activeNow);
+      if (activeNow) {
         var left = glowX - DOT_GLOW_RADIUS;
         var top = glowY - DOT_GLOW_RADIUS;
         dotGlow.style.transform = 'translate(' + left + 'px, ' + top + 'px)';
@@ -8764,7 +8986,7 @@
         var host = dotGlowHosts[hi];
         var rect = host.getBoundingClientRect();
         // 指针在容器外但光圈仍会覆盖容器边缘时也点亮，避免贴边处光圈被截断
-        var near = glowActive &&
+        var near = activeNow &&
           glowX > rect.left - DOT_GLOW_RADIUS && glowX < rect.right + DOT_GLOW_RADIUS &&
           glowY > rect.top - DOT_GLOW_RADIUS && glowY < rect.bottom + DOT_GLOW_RADIUS;
         host.classList.toggle('is-dot-glow', near);
@@ -10201,12 +10423,7 @@
     return svg;
   }
 
-  function init() {
-    if (!document.getElementById('hero')) return;
-    if (document.querySelector('.home-nav-fab')) return;
-
-    // 章节按 DOM 顺序收集，只收有 .section-title 的板块：没有可见标题的过渡区
-    // （如首页入口卡片区 #home-start）不进菜单
+  function collectHomeNavItems() {
     var items = [{ id: 'hero', label: '顶部' }];
     var sections = document.querySelectorAll('main > section[id]');
     for (var i = 0; i < sections.length; i++) {
@@ -10216,6 +10433,16 @@
       var label = titleEl ? titleEl.textContent.trim() : '';
       if (label) items.push({ id: sec.id, label: label });
     }
+    return items;
+  }
+
+  function init() {
+    if (!document.getElementById('hero')) return;
+    if (document.querySelector('.home-nav-fab')) return;
+
+    // 章节按 DOM 顺序收集，只收有 .section-title 的板块：没有可见标题的过渡区
+    // （如首页入口卡片区 #home-start）不进菜单
+    var items = collectHomeNavItems();
     if (items.length < 2) return;
 
     var overlay = document.createElement('div');
@@ -10242,15 +10469,33 @@
     menu.setAttribute('aria-label', '章节导航');
 
     var list = document.createElement('ul');
-    for (var j = 0; j < items.length; j++) {
-      var li = document.createElement('li');
-      var link = document.createElement('a');
-      link.href = '#' + items[j].id;
-      link.textContent = items[j].label;
-      li.appendChild(link);
-      list.appendChild(li);
-    }
     menu.appendChild(list);
+
+    var links = [];
+    var sectionTargets = [];
+    var lastActive = -1;
+
+    function rebuildMenuItems() {
+      items = collectHomeNavItems();
+      list.textContent = '';
+      for (var j = 0; j < items.length; j++) {
+        var li = document.createElement('li');
+        var link = document.createElement('a');
+        link.href = '#' + items[j].id;
+        link.textContent = items[j].label;
+        li.appendChild(link);
+        list.appendChild(li);
+      }
+      links = menu.querySelectorAll('a');
+      sectionTargets = items.map(function (it) { return document.getElementById(it.id); });
+      lastActive = -1;
+    }
+
+    rebuildMenuItems();
+    window.__rnRefreshHomeNavFab = function () {
+      rebuildMenuItems();
+      updateActive();
+    };
 
     // 按钮先入 DOM，保证 Tab 顺序是「按钮 → 菜单项」
     fab.appendChild(toggle);
@@ -10287,10 +10532,7 @@
     });
 
     // 滚动高亮当前章节：判定线取吸顶 header 下沿，与 html 的 scroll-padding-top 同口径
-    var links = menu.querySelectorAll('a');
     var navHeader = document.querySelector('.site-header');
-    var sectionTargets = items.map(function (it) { return document.getElementById(it.id); });
-    var lastActive = -1;
     function updateActive() {
       var line = (navHeader ? navHeader.getBoundingClientRect().height : 0) + 24;
       var current = 0;

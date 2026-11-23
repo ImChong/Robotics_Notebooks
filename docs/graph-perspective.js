@@ -2016,7 +2016,11 @@
       lastHeightScale = heightScale;
       lastForceSettle = forceSettle;
       var isDarkTheme = !!renderOpts.isDark;
-      var bgArr = parseCssColorFast(renderOpts.bgColor || (isDarkTheme ? '#191919' : '#f7f6f3'), [0.098, 0.098, 0.098, 1]);
+      var isClassicUi = typeof document !== 'undefined' && document.documentElement.getAttribute('data-ui') === 'classic';
+      var fallbackBg = isClassicUi
+        ? (isDarkTheme ? '#191919' : '#f7f6f3')
+        : (isDarkTheme ? '#0a0b0d' : '#f5f4f0');
+      var bgArr = parseCssColorFast(renderOpts.bgColor || fallbackBg, [0.039, 0.043, 0.051, 1]);
 
       gl.depthMask(true);
       gl.disable(gl.CULL_FACE);
@@ -2336,7 +2340,11 @@
     var isDark = opts.isDark || function () {
       return typeof document === 'undefined' || document.documentElement.getAttribute('data-theme') !== 'light';
     };
-    var getBgColor = opts.getBgColor || function () { return isDark() ? '#191919' : '#f7f6f3'; };
+    var getBgColor = opts.getBgColor || function () {
+      var isClassicUi = typeof document !== 'undefined' && document.documentElement.getAttribute('data-ui') === 'classic';
+      if (isClassicUi) return isDark() ? '#191919' : '#f7f6f3';
+      return isDark() ? '#0a0b0d' : '#f5f4f0';
+    };
     var getLabelText = opts.getLabelText || function (d) { return (d && (d._info && d._info.title || d.label)) || ''; };
     var getCommunityLabels = opts.getCommunityLabels || function () { return []; };
     var getRouteBadges = opts.getRouteBadges || function () { return []; };

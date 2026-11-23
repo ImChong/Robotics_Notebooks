@@ -313,7 +313,9 @@
     });
 
     function backgroundColor() {
-      return isDark() ? '#191919' : '#f7f6f3';
+      var classic = typeof document !== 'undefined' && document.documentElement.getAttribute('data-ui') === 'classic';
+      if (classic) return isDark() ? '#191919' : '#f7f6f3';
+      return isDark() ? '#0a0b0d' : '#f5f4f0';
     }
 
     function getCameraDistance() {
