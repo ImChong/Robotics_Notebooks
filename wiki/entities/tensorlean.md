@@ -17,6 +17,8 @@ related:
   - ./hello-gpu.md
   - ./flashinfer.md
   - ../concepts/multi-head-attention.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/yolo26-edge-model-optimization.md
 summary: "TensorLean 是哥伦比亚大学与 CertiK 公布的 PTX 级生产 GPU Kernel 形式化验证框架；研究方报告 149 个实例、83 个证明及多个上游缺陷，框架源码尚待发布。"
 ---
 
@@ -118,6 +120,8 @@ flowchart TD
 - [hello-gpu：Profiling 与算子优化](./hello-gpu.md) — 从算子测速与优化走向正确性证据。
 - [FlashInfer](./flashinfer.md) — 推理算子加速与工程实现的对照。
 - [多头注意力](../concepts/multi-head-attention.md) — FlashAttention 相关的 Attention 数学对象。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 属性测试、差分测试与可复核的 CI 证据，补充形式化验证之前和之后的工程门禁。
+- [YOLO26 边缘部署与模型优化](../methods/yolo26-edge-model-optimization.md) — 对照推理算子优化、目标硬件适配与真实任务精度/时延验收；TensorLean 的 PTX 正确性证明不替代部署验收。
 
 ## 参考来源
 
