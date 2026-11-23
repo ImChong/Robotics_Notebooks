@@ -93,6 +93,7 @@ flowchart LR
 - [π⁴（Pi4）：4D 场景几何与运动基础模型](../wiki/entities/paper-pi4-4d-scene-geometry-motion.md) — 未标定单图/图集/视频的场景点图、相机尺度、轨迹与动态掩码；作为 Stage 1 感知上游，**不包含**可直接物理仿真的碰撞/物性资产。
 - [GenSfM：生成式结构与相机联合恢复](../wiki/entities/paper-gensfm.md) — 2–4 张未标定物体前景视图联合生成 mesh / 3DGS 与相机；论文量化评测采用四视图，适合物体级稀疏重建，不负责碰撞、摩擦和关节化。
 - [DepthGS：深度引导高质量表面重建](../wiki/entities/paper-depthgs.md) — 在 PGSR 基础上通过深度差自适应法线约束与跨视角双深度一致性改进静态 mesh 几何；DTU CD 0.51 mm，**不包含**物性 / 碰撞建模，归 Stage 1 而非 Stage 2。
+- [visloc-rs：SfM → 3DGS → mesh 的 Rust 重建链](../wiki/entities/visloc-rs.md) — Stage 1 视觉几何/外观上游：照片注册、可重用 COLMAP 模型、wgpu 3DGS 和 mesh；不自动附带接触物性或关节化。
 - [i3dGS](../wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — 乱序 RGB 照片流 **即时** 3DGS 重建 + 全局回环（SIGGRAPH 2026；GraphDeco 官方代码已开源）；漫游捕获 / 补拍混采的上游，不含碰撞 mesh
 - [Skyfall-GS](../wiki/entities/paper-skyfall-gs.md) — **卫星影像** → city-block 可漫游 3DGS（ECCV 2026；Stage 1 伪深度 + Stage 2 IDU/FlowEdit；Apache 2.0 已开源）；远程城市几何锚定，非街景 COLMAP
 - [Spark vs Aholo：Web 大场景 3DGS 渲染选型](../wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md) — 重建资产的浏览器可视化栈
