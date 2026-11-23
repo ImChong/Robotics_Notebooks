@@ -190,6 +190,7 @@ flowchart LR
 - [GR00T-WholeBodyControl](../wiki/entities/gr00t-wholebodycontrol.md) 与 [Humanoid-VLA](../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md)
 - [ReactiveBFM](../wiki/entities/paper-reactivebfm.md)
 - [ILA：接口级柔顺适配器](../wiki/entities/paper-ila-interface-level-adapter.md) — 在已有冻结 WBT 策略前修正上肢参考运动；与微调/内部特征适配形成接口层对照（MT、MimicLite、Sonic 三种 tracker 验证）。
+- [ECHO：上下文行为基础模型（arXiv:2611.25778）](../wiki/entities/paper-echo-bfm.md) — 冻结通用 ECHO-PRE，用状态—动作历史编码物性，再用残差策略适配负载与动力学；无需推理时梯度更新。
 - [ALERT：通用 Motion Tracker 的轻量主动避人适配](../wiki/entities/paper-alert-human-avoidance.md) — Stage 4 轻量适配案例：冻结 SONIC/TWIST2/BFM-Zero 的原生参考编码与动作主干，在动作层用 LiDAR 人体势场和条件 LoRA 学局部避让；并区分习得避障与形式化安全约束。
 
 ### 学完输出什么

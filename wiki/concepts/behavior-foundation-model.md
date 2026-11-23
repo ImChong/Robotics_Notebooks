@@ -158,6 +158,7 @@ flowchart TB
 - [BFM（Behavior Foundation Model for Humanoid Robots）](../entities/paper-behavior-foundation-model-humanoid.md) — CVAE+掩码人形 WBC 单篇深读
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — raw 参考 + 地形感知 PMT/TCRS
 - [ReactiveBFM](../entities/paper-reactivebfm.md) — 闭环 AR 规划 + BFM 跟踪，真机 reactive WBC
+- [ECHO：In-Context BFM](../entities/paper-echo-bfm.md) — MIAS 学通用全身动作先验，CRA 用物性上下文残差适配冻结先验；不同于示范提示式 ICL。
 - [ScaleBFM](../entities/paper-scaling-bfm-humanoid.md) — BFM scaling 三轴配方与 Humanoid Transformer
 - [TTCO](../entities/paper-ttco-test-time-compute-humanoid-bfm.md) — 冻结行为基础模型，通过采样优化缩小 motion command 的执行误差
 - [GPC](../entities/paper-gpc-generative-pretrained-controllers.md) — FSQ 离散技能 + GPT 式预训练生成式控制器（>600 h，SIGGRAPH 2026）
