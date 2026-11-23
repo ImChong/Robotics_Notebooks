@@ -18,6 +18,8 @@ jobs:
         run: |
           set -euo pipefail
           curl -fL --retry 4 --retry-delay 4 --max-time 210 --user-agent "Mozilla/5.0 robotics-notebooks-research/1.0" -o /tmp/drivesta.pdf https://arxiv.org/pdf/2611.27515v1
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
           file /tmp/drivesta.pdf
           pdfinfo /tmp/drivesta.pdf | head -20
           pdftotext -layout /tmp/drivesta.pdf /tmp/drivesta.txt
