@@ -18,6 +18,8 @@
   <title>知识图谱 | Robotics Notebooks</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-graph.svg" />
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
   <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
@@ -2255,9 +2257,144 @@
     }
     .graph-notice:empty { padding: 0; border: 0; }
     .graph-notice.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ── Taste Skill 瑞士工程风（默认 tech，classic 回退原样式）── */
+    :root:not([data-ui="classic"]) body,
+    :root:not([data-ui="classic"]) #graph-wrap,
+    :root:not([data-ui="classic"]) #graph-canvas-3d,
+    :root:not([data-ui="classic"]) #graph-loading {
+      background: var(--bg);
+    }
+    :root:not([data-ui="classic"]) #graph-wrap::before {
+      display: none;
+    }
+    :root:not([data-ui="classic"]) #graph-wrap.is-perspective-mode,
+    :root:not([data-ui="classic"])[data-theme="light"] #graph-wrap.is-perspective-mode {
+      background: var(--persp-stage-bg);
+    }
+    :root:not([data-ui="classic"]) #graph-toolbar {
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    :root:not([data-ui="classic"]) #graph-search,
+    :root:not([data-ui="classic"]) .chip,
+    :root:not([data-ui="classic"]) #graph-back,
+    :root:not([data-ui="classic"]) .filter-depth-chip,
+    :root:not([data-ui="classic"]) .mode-chip,
+    :root:not([data-ui="classic"]) .filter-mode-chip,
+    :root:not([data-ui="classic"]) .view-mode-btn {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) #graph-search {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) #graph-search::placeholder {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) #graph-search:focus,
+    :root:not([data-ui="classic"]) .chip:hover,
+    :root:not([data-ui="classic"]) #graph-back:hover,
+    :root:not([data-ui="classic"]) .filter-depth-chip:hover {
+      border-color: var(--line-strong);
+      color: var(--ink);
+      background: var(--surface-hover);
+    }
+    :root:not([data-ui="classic"]) .chip.is-running,
+    :root:not([data-ui="classic"]) .filter-depth-chip.is-active,
+    :root:not([data-ui="classic"]) .view-mode-btn.is-active,
+    :root:not([data-ui="classic"]) .filter-mode-chip.is-active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) #graph-node-count,
+    :root:not([data-ui="classic"]) #graph-back,
+    :root:not([data-ui="classic"]) .legend-count,
+    :root:not([data-ui="classic"]) .filter-count-badge,
+    :root:not([data-ui="classic"]) .graph-loading-pct {
+      font-family: var(--font-mono);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-panel,
+    :root:not([data-ui="classic"]) .physics-panel,
+    :root:not([data-ui="classic"]) #graph-tooltip,
+    :root:not([data-ui="classic"]) #graph-legend,
+    :root:not([data-ui="classic"]) #graph-legend-fab,
+    :root:not([data-ui="classic"]) .depth-intro-banner,
+    :root:not([data-ui="classic"]) .graph-notice,
+    :root:not([data-ui="classic"]) .graph-hint {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .graph-hint {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) #graph-sidebar {
+      background: var(--bg);
+      border-left: 1px solid var(--line);
+    }
+    :root:not([data-ui="classic"]) .sb-title,
+    :root:not([data-ui="classic"]) .tt-title,
+    :root:not([data-ui="classic"]) .graph-loading-title {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .sb-summary,
+    :root:not([data-ui="classic"]) .tt-summary {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .sb-related-list li a,
+    :root:not([data-ui="classic"]) .sb-open-link,
+    :root:not([data-ui="classic"]) .tt-link,
+    :root:not([data-ui="classic"]) .depth-intro-badge,
+    :root:not([data-ui="classic"]) .depth-intro-link {
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .sb-open-link,
+    :root:not([data-ui="classic"]) .tt-link,
+    :root:not([data-ui="classic"]) .sb-tag {
+      border-radius: 2px;
+    }
+    :root:not([data-ui="classic"]) .graph-loading-bar {
+      border-radius: 0;
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .graph-loading-bar-fill {
+      border-radius: 0;
+      background: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .graph-loading-spinner {
+      border-color: var(--line);
+      border-top-color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle {
+      border-radius: 2px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--ink-muted);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle:hover,
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle:focus-visible {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      color: var(--ink);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle[aria-expanded="true"] {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: none;
+    }
   </style>
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#191919" />
+  <meta name="theme-color" content="#0a0b0d" />
   <script>
     if ('serviceWorker' in navigator) {
       // 图谱页首屏要下载 1 MB 以上的数据：SW 安装会并行预缓存十几项离线壳资源，与之抢带宽。
@@ -2281,9 +2418,11 @@
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
         <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式">
           <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
           <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
         </button>
       </div>
     </div>
@@ -7565,7 +7704,7 @@
     // 尽早写入当前可视高度
     syncGraphShellToViewport();
 
-    /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
+    /* ── 主题/UI 切换监听：同步更新 D3 SVG 元素与 3D 背景颜色 ── */
     new MutationObserver(() => {
       scheduleEdgeDraw();   // 边色随主题变，重绘整层即可
       if (created2DLabels.length) {
@@ -7578,7 +7717,7 @@
       if (perspectiveController && isPerspectiveView()) perspectiveController.refreshTheme();
     }).observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['data-theme'],
+      attributeFilter: ['data-theme', 'data-ui'],
     });
 
     /* ════════════════════════════════════════════

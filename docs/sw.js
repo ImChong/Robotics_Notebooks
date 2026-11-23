@@ -47,6 +47,10 @@ const OPTIONAL_ASSETS = [
   'exports/home-stats.json',
   'exports/graph-stats.json',
   'exports/mini-graph.json',
+  'fonts/geist-latin-wght-normal.woff2',
+  'fonts/geist-latin-ext-wght-normal.woff2',
+  'fonts/geist-mono-latin-wght-normal.woff2',
+  'fonts/geist-mono-latin-ext-wght-normal.woff2',
 ].map(asset);
 
 function isHtmlShellPath(url) {

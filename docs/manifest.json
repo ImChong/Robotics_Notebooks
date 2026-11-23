@@ -5,8 +5,8 @@
   "start_url": "/Robotics_Notebooks/",
   "scope": "/Robotics_Notebooks/",
   "display": "standalone",
-  "background_color": "#191919",
-  "theme_color": "#191919",
+  "background_color": "#0a0b0d",
+  "theme_color": "#0a0b0d",
   "lang": "zh-CN",
   "icons": [
     {

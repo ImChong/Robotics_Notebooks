@@ -10,6 +10,36 @@
     '机器人技术栈地图首页': 'Robotics Knowledge Map Home',
     '切换白天黑夜模式': 'Toggle light / dark mode',
     '跳到正文': 'Skip to content',
+    '主导航': 'Main navigation',
+    '移动端导航': 'Mobile navigation',
+    '打开或关闭导航菜单': 'Open or close navigation menu',
+    '顶部': 'Top',
+    '搜索': 'Search',
+    '最新': 'Latest',
+    '榜单': 'Rankings',
+    '完整图谱': 'Full Graph',
+    '增长趋势': 'Trends',
+    '旧版': 'Classic',
+    '新版': 'Modern',
+    '旧版样式': 'Classic UI',
+    '新版样式': 'Modern UI',
+    '切换到旧版样式': 'Switch to classic UI',
+    '切换到新版样式': 'Switch to modern UI',
+    '[00] 机器人研究与工程知识库 · RL / IL · SIM2REAL': '[00] ROBOTICS RESEARCH & ENGINEERING KB · RL / IL · SIM2REAL',
+    '进入主路线': 'Start Main Roadmap',
+    '更新记录': 'Changelog',
+    '知识图谱预览 · TOP-50 枢纽': 'GRAPH PREVIEW · TOP-50 HUBS',
+    '打开完整图谱': 'Open full knowledge graph',
+    '2D 力导图': '2D Force',
+    '3D 地形': '3D Terrain',
+    'Top-50 枢纽': 'Top-50 Hubs',
+    '实时搜索联动': 'Live Search',
+    '完整图谱 ↗': 'Full Graph ↗',
+    '01 / 探索入口': '01 / GATEWAYS',
+    '路线矩阵与知识入口': 'Roadmaps & Knowledge Gateways',
+    '02 / 知识检索': '02 / SEARCH',
+    '03 / 近期变更': '03 / LATEST',
+    '04 / 核心枢纽': '04 / HUBS',
     '持续更新的机器人技术栈地图': 'An evolving robotics knowledge map',
     '面向人形机器人': 'For humanoid robots', '运动控制的知识入口': 'humanoid motion control',
     '从运动控制到': 'From motion control to ', '物理智能': 'Physical AI',
@@ -102,7 +132,8 @@
 
   // This allowlist excludes route links, company links, hot-topic labels, titles, summaries and graph nodes.
   var selector = [
-    '[data-home-copy]', '#homeNavToggle', '#homeNavMenu', '#backToTop', '#kbChatToggle', '#fabMainToggle',
+    '[data-home-copy]', '#uiStyleToggle', '#mobileUiStyleToggle', '#homeNavToggle', '#homeNavMenu', '#backToTop', '#kbChatToggle', '#fabMainToggle',
+    '#miniGraphTelemetryMode', '#miniGraphTelemetryLinkage',
     '#homeRouteToggle', '#homeCompanyToggle', '#homeLabToggle', '#wikiCommunityFilter option[value=""]',
     '#homeLatestWikiModule > .data-meta', '#homeLatestWikiModule .home-latest-more a',
     '#homeLatestWikiModule .updates-badge', '.home-latest-row-type',
@@ -126,6 +157,7 @@
     [/^展开全部 (\d+) 个实验室 ↓$/, 'Show all $1 labs ↓'],
     [/^首次需下载约 (\d+) MB$/, 'Requires ~$1 MB initial download'],
     [/^互链 (\d+)$/, 'Connections $1'], [/^· (\d+) 项$/, '· $1 results'],
+    [/^(\d+) 个节点命中$/, '$1 hits'],
     [/^预览：全站连接度 Top-(\d+) 枢纽节点$/, 'Preview: top $1 nodes by connections'],
     [/^别名命中: /, 'Alias match: '], [/^核心标签命中: /, 'Tag match: '],
     [/^标题命中: /, 'Title match: ']
@@ -196,7 +228,8 @@
     roots.forEach(function (root) { if (root) apply(root); });
   });
   function observeMounts() {
-    ['homeRouteToggle', 'homeCompanyToggle', 'homeLabToggle', 'wikiCommunityFilter', 'wikiSearchResults',
+    ['uiStyleToggle', 'mobileUiStyleToggle', 'miniGraphTelemetryMode', 'miniGraphTelemetryLinkage',
+      'homeRouteToggle', 'homeCompanyToggle', 'homeLabToggle', 'wikiCommunityFilter', 'wikiSearchResults',
       'homeLatestWikiModule', 'homeHubPanelAll', 'homeHubPanelPaper', 'homeHubPanelCommunity',
       'mini-graph-stats', 'mini-graph-tooltip', 'sponsorDialog'
     ].forEach(function (id) {

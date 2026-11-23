@@ -19,12 +19,14 @@
   <title>互链枢纽完整榜单 | Robotics Notebooks</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-home.svg" />
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <script src="theme-init.js"></script>
   <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
   <link rel="preload" href="exports/hub-rankings.json" as="fetch" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#191919" />
+  <meta name="theme-color" content="#0a0b0d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到正文</a>
@@ -34,9 +36,11 @@
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
         <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
           <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
           <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
         </button>
       </div>
     </div>

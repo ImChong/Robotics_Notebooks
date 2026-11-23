@@ -16,12 +16,14 @@
   <title>增长趋势 | Robotics Notebooks</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-home.svg" />
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
   <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#191919" />
+  <meta name="theme-color" content="#0a0b0d" />
   <!-- 首屏不阻塞 <head> 解析：预加载星标数据与 Plotly（4.5 MB），等首次绘制后再按需装配 -->
   <link rel="preload" href="exports/star-history.json" as="fetch" crossorigin />
   <link rel="preload" href="vendor/plotly.min.js" as="script" />
@@ -63,6 +65,14 @@
     }
     /* 时间线的公司 / 实验室名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
     #trend-chart .main-svg a { pointer-events: all; cursor: pointer; }
+    :root:not([data-ui="classic"]) .trend-legend--interactive button {
+      border-radius: 2px;
+      border-color: var(--line);
+      font-family: var(--font-sans);
+    }
+    :root:not([data-ui="classic"]) .trend-range-hint {
+      font-family: var(--font-mono);
+    }
   </style>
 </head>
 <body>
@@ -73,9 +83,11 @@
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
         <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
           <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
           <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
         </button>
       </div>
     </div>
@@ -1199,11 +1211,15 @@
         b.addEventListener('click', function () { render(v); });
         tabs.appendChild(b);
       });
-      // 主题切换后按新配色重绘；main.js 加载时会重设同值 data-theme，需跳过
+      // 主题或样式切换后按新配色重绘；main.js 加载时会重设同值属性，需跳过
       new MutationObserver(function (records) {
-        var theme = document.documentElement.getAttribute('data-theme');
-        if (current && records.some(function (r) { return r.oldValue !== theme; })) render(current);
-      }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'], attributeOldValue: true });
+        var rootEl = document.documentElement;
+        if (!current) return;
+        var changed = records.some(function (r) {
+          return r.oldValue !== rootEl.getAttribute(r.attributeName);
+        });
+        if (changed) render(current);
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-ui'], attributeOldValue: true });
       // 跨过窄屏断点时切换长 / 短标签（甘特图切换机构名位置）
       narrowMq.addEventListener('change', function () {
         if (current && (current.kind === 'category' || current.kind === 'gantt')) render(current);

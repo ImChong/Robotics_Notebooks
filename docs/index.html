@@ -21,91 +21,192 @@
   <title data-home-copy>Robotics Notebooks | 机器人技术栈地图</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-home.svg" />
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <script src="theme-init.js"></script>
   <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
   <link rel="preload" href="exports/home-stats.json" as="fetch" crossorigin />
   <link rel="preload" href="exports/mini-graph.json" as="fetch" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#191919" />
+  <meta name="theme-color" content="#0a0b0d" />
 </head>
-<body>
+<body class="page-home">
   <a class="skip-link" href="#main-content" data-home-copy>跳到正文</a>
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页" data-home-copy><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg>Robotics Notebooks | 机器人技术栈地图</a>
+      <div class="header-start">
+        <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页" data-home-copy><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg>Robotics Notebooks | 机器人技术栈地图</a>
+        <nav class="main-nav" aria-label="主导航" data-home-copy>
+          <a href="#home-start" data-home-copy>入口</a>
+          <a href="#wiki-search" data-home-copy>搜索</a>
+          <a href="#home-latest-wiki-section" data-home-copy>最新</a>
+          <a href="#home-hub-section" data-home-copy>榜单</a>
+          <a href="graph.html" data-home-copy>完整图谱</a>
+          <a href="star-history.html" data-home-copy>增长趋势</a>
+        </nav>
+      </div>
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式" data-home-copy>旧版</button>
         <button type="button" id="homeLanguageToggle" class="home-language-toggle" aria-label="Switch homepage to English" hidden>English</button>
         <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式" data-home-copy>
           <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
           <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
+        </button>
+        <button type="button" id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobileNavSheet" aria-label="打开或关闭导航菜单" data-home-copy>
+          <svg class="ui-icon mobile-menu-icon--open" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2.5 4.2h11M2.5 8h11M2.5 11.8h11"/></svg>
+          <svg class="ui-icon mobile-menu-icon--close" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" aria-hidden="true" focusable="false" hidden><path d="M3.8 3.8l8.4 8.4M12.2 3.8l-8.4 8.4"/></svg>
         </button>
       </div>
     </div>
   </header>
 
+  <nav id="mobileNavSheet" class="mobile-nav-sheet" aria-label="移动端导航" hidden data-home-copy>
+    <ul>
+      <li><a href="#hero"><span data-nav-label data-home-copy>顶部</span><span class="mobile-nav-index">00</span></a></li>
+      <li><a href="#home-start"><span data-nav-label data-home-copy>入口</span><span class="mobile-nav-index">01</span></a></li>
+      <li><a href="#wiki-search"><span data-nav-label data-home-copy>搜索</span><span class="mobile-nav-index">02</span></a></li>
+      <li><a href="#home-latest-wiki-section"><span data-nav-label data-home-copy>最新</span><span class="mobile-nav-index">03</span></a></li>
+      <li><a href="#home-hub-section"><span data-nav-label data-home-copy>榜单</span><span class="mobile-nav-index">04</span></a></li>
+      <li><a href="graph.html"><span data-nav-label data-home-copy>完整图谱</span><span class="mobile-nav-index">↗</span></a></li>
+      <li><a href="star-history.html"><span data-nav-label data-home-copy>增长趋势</span><span class="mobile-nav-index">↗</span></a></li>
+      <li><button type="button" id="mobileUiStyleToggle" class="mobile-nav-action" aria-pressed="false"><span data-nav-label data-home-copy>旧版样式</span><span class="mobile-nav-index">UI</span></button></li>
+    </ul>
+  </nav>
+
   <main id="main-content">
     <section id="hero" class="hero">
-      <div class="hero-backdrop dot-glow-host" aria-hidden="true"></div>
+      <div class="hero-backdrop dot-glow-host classic-only" aria-hidden="true"></div>
       <div class="container">
-        <span class="hero-badge" data-home-copy><i class="hero-badge-dot" aria-hidden="true"></i>持续更新的机器人技术栈地图</span>
-        <h1 class="hero-title" data-home-copy>面向人形机器人<br />从运动控制到<span style="white-space:nowrap" data-home-copy>物理智能</span></h1>
-        <p class="hero-subtitle" data-home-copy>先选一个入口，沿 <strong data-home-copy>路线、图谱、模块、论文</strong> 逐步深入。</p>
+        <div class="hero-frame">
+          <div class="hero-primary">
+            <div class="hero-primary-top">
+              <p class="hero-kicker tech-only" data-home-copy>[00] 机器人研究与工程知识库 · RL / IL · SIM2REAL</p>
+              <span class="hero-badge classic-only" data-home-copy><i class="hero-badge-dot" aria-hidden="true"></i>持续更新的机器人技术栈地图</span>
+              <h1 class="hero-title" data-home-copy>面向人形机器人<br />从运动控制到<span style="white-space:nowrap" data-home-copy>物理智能</span></h1>
+              <p class="hero-meta-line tech-only" data-home-copy>HUMANOID CONTROL · VLA · WORLD MODELS · REAL-WORLD DEPLOYMENT</p>
+              <p class="hero-subtitle" data-home-copy>先选一个入口，沿 <strong data-home-copy>路线、图谱、模块、论文</strong> 逐步深入。</p>
+            </div>
 
-        <ul class="hero-stats" aria-label="知识库当前规模" data-home-copy>
-          <li class="hero-stat">
-            <a class="hero-stat-num" id="heroNodeCount" href="graph.html" aria-label="查看知识图谱（知识节点）" data-home-copy>5410</a>
-            <span class="hero-stat-label" data-home-copy>知识节点</span>
-          </li>
-          <li class="hero-stat">
-            <a class="hero-stat-num" id="heroEdgeCount" href="graph.html" aria-label="查看知识图谱（互链关系）" data-home-copy>47285</a>
-            <span class="hero-stat-label" data-home-copy>互链关系</span>
-          </li>
-          <li class="hero-stat">
-            <a class="hero-stat-num" id="heroMainRouteCount" href="#home-start-main-route" aria-label="定位到从零开始入口卡" data-home-copy>1</a>
-            <span class="hero-stat-label" data-home-copy>主路线</span>
-          </li>
-          <li class="hero-stat">
-            <!-- 运行时由首页路线入口数量同步，部署时更新兜底统计 -->
-            <a class="hero-stat-num" id="heroDepthRouteCount" href="#home-more-routes" aria-label="定位到更多路线入口卡" data-home-copy>26</a>
-            <span class="hero-stat-label" data-home-copy>纵深路线</span>
-          </li>
-          <li class="hero-stat">
-            <!-- 运行时由首页「公司路线」入口按钮数量同步 -->
-            <a class="hero-stat-num" id="heroCompanyCount" href="#home-company-routes" aria-label="定位到公司路线入口卡" data-home-copy>16</a>
-            <span class="hero-stat-label" data-home-copy>公司路线</span>
-          </li>
-          <li class="hero-stat">
-            <!-- 运行时由首页「实验室路线」入口按钮数量同步 -->
-            <a class="hero-stat-num" id="heroLabCount" href="#home-lab-routes" aria-label="定位到实验室路线入口卡" data-home-copy>4</a>
-            <span class="hero-stat-label" data-home-copy>实验室路线</span>
-          </li>
-        </ul>
-        <script>
-          /* 解析到数字后、首屏绘制前归零，避免「终值 → 0」闪跳；reduced-motion 保留终值 */
-          (function () {
-            try {
-              if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            } catch (e) { /* ignore */ }
-            var ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount', 'heroCompanyCount', 'heroLabCount'];
-            for (var i = 0; i < ids.length; i++) {
-              var el = document.getElementById(ids[i]);
-              if (!el) continue;
-              if (!el.getAttribute('data-fallback')) {
-                el.setAttribute('data-fallback', String(el.textContent || '').trim());
-              }
-              el.textContent = '0';
-              el.classList.add('is-count-pending');
-            }
-          })();
-        </script>
+            <div class="hero-primary-bottom">
+              <div class="hero-actions tech-only">
+                <a class="btn-primary hero-cta" href="roadmap.html?id=roadmap-motion-control"><span data-home-copy>进入主路线</span><span class="btn-arrow" aria-hidden="true">→</span></a>
+                <div class="hero-social-row">
+                  <a class="link-draw" href="#wiki-search" data-focus-search data-trace-target="wiki-search-panel" data-home-copy>搜索知识库</a>
+                  <a class="link-draw" href="graph.html" data-home-copy>完整图谱</a>
+                  <a class="link-draw" href="star-history.html" data-home-copy>增长趋势</a>
+                  <a class="link-draw" href="change-log.html" data-home-copy>更新记录</a>
+                </div>
+              </div>
+
+              <ul class="hero-stats" aria-label="知识库当前规模" data-home-copy>
+                <li class="hero-stat">
+                  <a class="hero-stat-num" id="heroNodeCount" href="graph.html" aria-label="查看知识图谱（知识节点）" data-home-copy>5410</a>
+                  <span class="hero-stat-label" data-home-copy>知识节点</span>
+                </li>
+                <li class="hero-stat">
+                  <a class="hero-stat-num" id="heroEdgeCount" href="graph.html" aria-label="查看知识图谱（互链关系）" data-home-copy>47285</a>
+                  <span class="hero-stat-label" data-home-copy>互链关系</span>
+                </li>
+                <li class="hero-stat">
+                  <a class="hero-stat-num" id="heroMainRouteCount" href="#home-start-main-route" aria-label="定位到从零开始入口卡" data-home-copy>1</a>
+                  <span class="hero-stat-label" data-home-copy>主路线</span>
+                </li>
+                <li class="hero-stat">
+                  <!-- 运行时由首页路线入口数量同步，部署时更新兜底统计 -->
+                  <a class="hero-stat-num" id="heroDepthRouteCount" href="#home-more-routes" aria-label="定位到更多路线入口卡" data-home-copy>26</a>
+                  <span class="hero-stat-label" data-home-copy>纵深路线</span>
+                </li>
+                <li class="hero-stat">
+                  <!-- 运行时由首页「公司路线」入口按钮数量同步 -->
+                  <a class="hero-stat-num" id="heroCompanyCount" href="#home-company-routes" aria-label="定位到公司路线入口卡" data-home-copy>16</a>
+                  <span class="hero-stat-label" data-home-copy>公司路线</span>
+                </li>
+                <li class="hero-stat">
+                  <!-- 运行时由首页「实验室路线」入口按钮数量同步 -->
+                  <a class="hero-stat-num" id="heroLabCount" href="#home-lab-routes" aria-label="定位到实验室路线入口卡" data-home-copy>4</a>
+                  <span class="hero-stat-label" data-home-copy>实验室路线</span>
+                </li>
+              </ul>
+              <script>
+                /* 解析到数字后、首屏绘制前归零，避免「终值 → 0」闪跳；reduced-motion 保留终值 */
+                (function () {
+                  try {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                  } catch (e) { /* ignore */ }
+                  var ids = ['heroNodeCount', 'heroEdgeCount', 'heroMainRouteCount', 'heroDepthRouteCount', 'heroCompanyCount', 'heroLabCount'];
+                  for (var i = 0; i < ids.length; i++) {
+                    var el = document.getElementById(ids[i]);
+                    if (!el) continue;
+                    if (!el.getAttribute('data-fallback')) {
+                      el.setAttribute('data-fallback', String(el.textContent || '').trim());
+                    }
+                    el.textContent = '0';
+                    el.classList.add('is-count-pending');
+                  }
+                })();
+              </script>
+            </div>
+          </div>
+
+          <section class="section section-alt hero-viewport" id="mini-graph-section">
+            <div class="container">
+              <h2 class="section-title classic-only" data-home-copy>知识图谱预览</h2>
+              <div class="kin-header tech-only">
+                <span class="kin-title" data-home-copy>知识图谱预览 · TOP-50 枢纽</span>
+                <div class="kin-controls">
+                  <a class="kin-icon-btn" href="graph.html" aria-label="打开完整图谱" title="打开完整图谱" data-home-copy>↗</a>
+                </div>
+              </div>
+              <div id="mini-graph-wrap">
+                <svg id="mini-graph-svg"></svg>
+                <div id="mini-graph-perspective-stage" class="graph-perspective-stage" hidden aria-label="3D 地形预览"></div>
+                <div class="mini-graph-mode" role="group" aria-label="预览 2D / 3D 切换" data-home-copy>
+                  <button type="button" id="miniGraphMode2d" class="mini-graph-mode-btn is-active" aria-pressed="true">2D</button>
+                  <button type="button" id="miniGraphMode3d" class="mini-graph-mode-btn" aria-pressed="false">3D</button>
+                </div>
+                <div id="mini-graph-stats"></div>
+                <a href="graph.html" id="mini-graph-expand" data-home-copy>打开完整图谱 →</a>
+              </div>
+              <div class="kin-telemetry tech-only">
+                <div class="kin-metric">
+                  <span class="kin-metric-key">VIEW</span>
+                  <span class="kin-metric-val" id="miniGraphTelemetryMode" data-home-copy>2D 力导图</span>
+                </div>
+                <div class="kin-metric">
+                  <span class="kin-metric-key">SAMPLE</span>
+                  <span class="kin-metric-val" data-home-copy>Top-50 枢纽</span>
+                </div>
+                <div class="kin-metric">
+                  <span class="kin-metric-key">LINKAGE</span>
+                  <span class="kin-metric-val" id="miniGraphTelemetryLinkage" data-home-copy>实时搜索联动</span>
+                </div>
+                <div class="kin-metric">
+                  <span class="kin-metric-key">GRAPH</span>
+                  <a class="kin-metric-val kin-metric-link" href="graph.html" data-home-copy>完整图谱 ↗</a>
+                </div>
+              </div>
+              <div id="mini-graph-tooltip" class="graph-hover-tooltip hidden" role="tooltip" aria-hidden="true"></div>
+            </div>
+          </section>
+        </div>
       </div>
     </section>
 
     <section class="section" id="home-start" aria-label="入口" data-home-copy>
       <div class="container">
+        <div class="band-head tech-only">
+          <div>
+            <p class="band-kicker" data-home-copy>01 / 探索入口</p>
+            <h2 class="section-title" data-home-copy>路线矩阵与知识入口</h2>
+          </div>
+          <div class="band-aside">
+            <span class="projects-index-badge" data-home-copy>ROADMAPS · RESEARCH · PLATFORMS</span>
+          </div>
+        </div>
         <div class="card-grid home-entry-grid">
           <a class="card home-entry-card" id="home-start-main-route" href="roadmap.html?id=roadmap-motion-control">
             <span class="home-entry-label" data-home-copy>从零开始</span>
@@ -270,7 +371,15 @@
 
     <section class="section section-alt" id="wiki-search">
       <div class="container">
-        <h2 class="section-title" data-home-copy>搜索知识库</h2>
+        <div class="band-head">
+          <div>
+            <p class="band-kicker tech-only" data-home-copy>02 / 知识检索</p>
+            <h2 class="section-title" data-home-copy>搜索知识库</h2>
+          </div>
+          <div class="band-aside tech-only">
+            <span class="projects-index-badge" data-home-copy>INSTANT INDEX · COMMUNITY FILTER</span>
+          </div>
+        </div>
         <div class="search-bar-wrap" id="wiki-search-panel">
           <input
             id="wikiSearchInput"
@@ -299,34 +408,28 @@
 
     <section class="section" id="home-latest-wiki-section" aria-labelledby="home-latest-wiki-heading">
       <div class="container">
-        <h2 class="section-title" id="home-latest-wiki-heading" data-home-copy>最新知识节点</h2>
+        <div class="band-head">
+          <div>
+            <p class="band-kicker tech-only" data-home-copy>03 / 近期变更</p>
+            <h2 class="section-title" id="home-latest-wiki-heading" data-home-copy>最新知识节点</h2>
+          </div>
+          <div class="band-aside tech-only">
+            <a class="ledger-link" href="change-log.html" data-home-copy>查看全部更新 →</a>
+          </div>
+        </div>
         <div id="homeLatestWikiModule" class="home-latest-wiki-mount data-loading" data-compact aria-live="polite">
           <p class="data-meta" data-home-copy>加载中…</p>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="mini-graph-section">
-      <div class="container">
-        <h2 class="section-title" data-home-copy>知识图谱预览</h2>
-        <div id="mini-graph-wrap" style="position:relative;width:100%;height:480px;border-radius:12px;overflow:hidden;">
-          <svg id="mini-graph-svg" style="width:100%;height:100%"></svg>
-          <div id="mini-graph-perspective-stage" class="graph-perspective-stage" hidden aria-label="3D 地形预览"></div>
-          <div class="mini-graph-mode" role="group" aria-label="预览 2D / 3D 切换" data-home-copy>
-            <button type="button" id="miniGraphMode2d" class="mini-graph-mode-btn is-active" aria-pressed="true">2D</button>
-            <button type="button" id="miniGraphMode3d" class="mini-graph-mode-btn" aria-pressed="false">3D</button>
-          </div>
-          <div id="mini-graph-stats" style="position:absolute;bottom:12px;left:16px;font-size:.72rem;line-height:1.8;pointer-events:none"></div>
-          <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;text-decoration:none;" data-home-copy>打开完整图谱 →</a>
-        </div>
-        <div id="mini-graph-tooltip" class="graph-hover-tooltip hidden" role="tooltip" aria-hidden="true"></div>
-      </div>
-    </section>
-
     <section class="section" id="home-hub-section" aria-labelledby="home-hub-heading">
       <div class="container">
         <div class="home-hub-head">
-          <h2 class="section-title" id="home-hub-heading" data-home-copy>互链枢纽 · Top 10</h2>
+          <div>
+            <p class="band-kicker tech-only" data-home-copy>04 / 核心枢纽</p>
+            <h2 class="section-title" id="home-hub-heading" data-home-copy>互链枢纽 · Top 10</h2>
+          </div>
           <div class="home-hub-tabs" role="group" aria-label="切换全站 / 论文 / 社区互链枢纽" data-home-copy>
             <button type="button" id="homeHubTabAll" class="home-hub-tab is-active" aria-pressed="true" data-home-copy>全站</button>
             <button type="button" id="homeHubTabPaper" class="home-hub-tab" aria-pressed="false" data-home-copy>论文</button>
