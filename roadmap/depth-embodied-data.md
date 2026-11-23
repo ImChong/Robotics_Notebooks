@@ -99,6 +99,7 @@ flowchart LR
 - [GenRobot DAS 2.0](../wiki/entities/genrobot-das-2-0.md) — 按任务选择头戴视觉、腕部近景和手部触觉；先核对设备代际与实际输出字段，不把新硬件规格套到旧版 [Gen-HumanEgo](../wiki/entities/gen-human-ego-dataset.md) 公开 MCAP 数据
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
 - [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
+- [HumanCOIN：注视/肌电/脑电分层采集](../wiki/entities/paper-humancoin-human-intent-egocentric-manipulation.md) — L1 10,000 h 估计注视、L2 2,000 h 实测肌电、L3 500 h 实测脑电；按真实模态覆盖选择采集与建模方案。
 - [EgoScale](../wiki/methods/egoscale.md) · [EgoMimic](../wiki/entities/paper-ego-03-egomimic.md) — 第一视角人视频作为可缩放监督源
 - [VBot Exo2Ego Policy](../wiki/entities/paper-vbot-exo2ego-policy.md) — 双 iPhone EGO/EXO 配对 RGB-D + 单视角众包采集，区分真实视角与生成视角；尚非带机器人动作真值的示教数据
 
