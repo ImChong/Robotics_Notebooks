@@ -3,7 +3,7 @@ type: entity
 project_id: tensorlean
 project: https://tensorlean.ai/
 code: https://github.com/TensorLean/TensorLean
-tags: [gpu, ai-infra, formal-verification, lean, ptx, flashattention, deepseek]
+tags: [columbia, gpu, ai-infra, formal-verification, lean, ptx, flashattention, deepseek]
 status: complete
 updated: 2026-11-23
 original:
