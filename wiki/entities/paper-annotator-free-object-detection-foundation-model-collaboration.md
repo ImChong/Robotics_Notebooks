@@ -61,8 +61,8 @@ flowchart TB
   img["目标域无人工标注图像"] --> sam["SAM 生成 mask 与 bbox 候选"]
   img --> land["CLIP 对象 landmark 特征"]
   sam --> land
-  land --> graph["近邻图、连通分量与 medoid 聚类"]
-  graph --> lvlm["LVLM 代表图像场景标签与标签传播"]
+  land --> clusterGraph["近邻图、连通分量与 medoid 聚类"]
+  clusterGraph --> lvlm["LVLM 代表图像场景标签与标签传播"]
   lvlm --> dict["标签词典与同义词对齐"]
   dict --> align["CLIP 区域与文本匹配"]
   sam --> align
