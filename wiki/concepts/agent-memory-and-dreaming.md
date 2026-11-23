@@ -13,6 +13,7 @@ related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../entities/paper-life-learning-to-live.md
   - ../entities/paper-memforest.md
+  - ../entities/paper-mape-agent-memory-program-evolution.md
   - ../entities/paper-cortex-parametric-memory.md
   - ../entities/paper-robocasa-mem.md
   - ../entities/paper-false-belief-mandela-effect-multi-agent.md
@@ -132,6 +133,10 @@ flowchart LR
 ## 改进过程记忆对照：SIM / CRSI（2026-11-21）
 
 - [Self-Improvement Memory（SIM / CRSI，arXiv:2611.18856v1）](../entities/paper-self-improvement-memory-crsi.md)：不同于本页关注「执行任务的策略 agent 在会话间记什么、如何 dreaming」，SIM 是提供给 **harness proposer 与 selector** 的改进过程记忆——在单 JSON 中记录每次修改的根因、评测前预测、评测后已修/未修项及跨域迁移线索，用于接口兼容条件下的持续递归自改进（CRSI）。跨模型 Workspace 实验报告 Full SIM 84.75 vs 仅继承 harness 73.42（coding 10 组配对平均 +2.36 分），但也有跨代际（4 Argon CRSI 94.8 vs Fresh RSI 95.6）非必胜实例；当前无公开完整实现，且无机器人真机或在线力控验证（[SIM 原文精读归档](../../sources/papers/self_improvement_memory_arxiv_2611_18856.md)）。
+
+## 对照：MAPE 的程序进化式 Agent 记忆（2026-11-23）
+
+- [MAPE：通过程序进化发现有效的智能体记忆设计（arXiv:2611.17068）](../entities/paper-mape-agent-memory-program-evolution.md)：与本文的在线写笔记 / dreaming 事后校验不同，MAPE 将 Build、Retrieve、Compose 组成可执行程序，在离线进化循环里同时评价答案准确率与 token 服务成本。论文消融显示保留原始轮次有助于弥补笔记抽取遗漏，RQS 对检索到的证据执行日期、计数与偏好相关编排；结论仅来自 LoCoMo / LongMemEval 文本问答，不能外推为机器人真机记忆收益。详见[论文原文归档](../../sources/papers/mape_agent_memory_program_evolution_arxiv_2611_17068.md)。
 
 ## 关联页面
 
