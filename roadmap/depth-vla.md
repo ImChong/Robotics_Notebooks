@@ -243,6 +243,10 @@ flowchart LR
 - [Legato](../wiki/entities/paper-legato.md)（RSS 2026 · 上交/千寻/清华等）— 训练期以动作–噪声混合与重塑速度场目标学会三段调度动作延续，异步部署时无需推理期 VJP 反向传播、真机 $\pi_{0.5}$ / GR00T N1.6 抑制块间模态切换并缩短执行时间（MIT 仅开源 `Legato-kinetix` 2D 仿真实现）
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)
 
+### 加速方法与闭环延迟选型
+
+- [VLA 加速 25 法：模型内部、异步执行、动作头与云边协同](../wiki/comparisons/vla-acceleration-25-methods-2026.md) — 按耗时位置选择优化层，保留硬件、动作可用延迟、任务完成时间与成功率的可比口径（Turing Post 2026-11-22 原文策展）。
+
 ### 学完输出什么
 - 一份目标平台上的 VLA 部署延迟分解与优化清单
 - 能为"单臂桌面任务 / 移动操作 / 人形全身"三类场景分别给出 VLA 的接入方案
