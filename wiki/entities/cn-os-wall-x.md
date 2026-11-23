@@ -23,6 +23,7 @@ related:
   - ../queries/china-domestic-opensource-424-coverage.md
   - ../queries/hmi-opensource-projects-coverage.md
   - ./paper-wall-oss-0-5.md
+  - ./wall-oss-1-0.md
   - ../methods/vla.md
   - ../concepts/flow-matching-embodied-policy.md
   - ./paper-pi0.md
@@ -55,7 +56,7 @@ institutions:
 
 # WALL-OSS 与 WALL-X（自变量具身基础模型 + 开源代码）
 
-**WALL-OSS**（*Igniting VLMs toward the Embodied Space*，[arXiv:2509.11766](https://arxiv.org/abs/2509.11766)，[官方页](https://x2robot.com/research/68bc2cde8497d7f238dde690)，2025-09-08）是 **自变量机器人（X Square Robot）** 发布的端到端具身基础模型。**WALL-X**（[X-Square-Robot/wall-x](https://github.com/X-Square-Robot/wall-x)）是 WALL 系列模型共用的开源训练与推理仓库。本页是 WALL-OSS 一代和 wall-x 代码的主节点；第二代 **WALL-OSS-0.5**（2026-05-28）有独立技术报告，单独成页：[Wall-OSS-0.5](./paper-wall-oss-0-5.md)。
+**WALL-OSS**（*Igniting VLMs toward the Embodied Space*，[arXiv:2509.11766](https://arxiv.org/abs/2509.11766)，[官方页](https://x2robot.com/research/68bc2cde8497d7f238dde690)，2025-09-08）是 **自变量机器人（X Square Robot）** 发布的端到端具身基础模型。**WALL-X**（[X-Square-Robot/wall-x](https://github.com/X-Square-Robot/wall-x)）是 WALL 系列模型共用的开源训练与推理仓库。本页是 WALL-OSS 一代和 wall-x 代码的主节点；第二代 **WALL-OSS-0.5**（2026-05-28）有独立技术报告，单独成页：[Wall-OSS-0.5](./paper-wall-oss-0-5.md)。第三代 **WALL-OSS-1.0**（2026-11-23）已发布新的 [官方技术博客与独立节点](./wall-oss-1-0.md)：Qwen3.5 原生 VLA 预训练及 Lite/Nano/Gen/AR 家族；**现有 wall-x README 尚未证明 1.0 专属训练代码或权重已发布**。
 
 ## 一句话定义
 
