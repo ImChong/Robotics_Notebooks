@@ -14,6 +14,8 @@ related:
   - ../concepts/retrieval-augmented-generation.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../concepts/llm-wiki-karpathy.md
+  - ../methods/vla.md
+  - ../methods/coding-agent-verification-loops.md
 ---
 
 # Hallucination as a Computational Boundary：幻觉作为计算边界——必然性层级与预言机逃逸
@@ -153,6 +155,8 @@ flowchart TB
 - [RAG：检索增强生成](../concepts/retrieval-augmented-generation.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [Karpathy LLM Wiki 知识组织](../concepts/llm-wiki-karpathy.md)
+- [VLA：视觉语言动作方法](../methods/vla.md) — 下游机器人应用：检索与生成的可靠性须通过任务成功率和真机安全验证；该论文未评测 VLA。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 下游智能体应用：将事实证据与实际执行测试结合；这是工程迁移建议，不是本文实验。
 
 ## 参考来源
 
