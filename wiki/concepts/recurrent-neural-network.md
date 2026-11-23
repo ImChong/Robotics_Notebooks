@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-22
 summary: "循环网络用隐状态沿时间递推压缩历史；LSTM/GRU 用门控缓解梯度消失，适合短中程部分可观测控制，长上下文则让位 Transformer 或 Mamba。"
 related:
+  - ./research-distillation-public-explanations.md
   - ./mlp.md
   - ./transformer.md
   - ./temporal-convolutional-network.md
@@ -89,6 +90,7 @@ RNN 定义时间状态递推与沿时间参数共享；GAN 则定义一套生成
 
 ## 关联页面
 
+- [研究蒸馏与公开技术解释（Chris Olah / Distill）](./research-distillation-public-explanations.md) — 分析 Olah 2015 LSTM 图解如何把序列依赖、门控与状态更新讲清楚。
 - [DNN、CNN、RNN、GAN：结构轴与训练轴](../comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md) — 区分序列骨干与对抗目标
 
 - [GRU](./gru.md)
@@ -108,4 +110,4 @@ RNN 定义时间状态递推与沿时间参数共享；GAN 则定义一套生成
 
 ## 推荐继续阅读
 
-- [Understanding LSTM Networks (colah)](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+- [Understanding LSTM Networks (Chris Olah, 2015)](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) — [原文核对归档](../../sources/blogs/chris-olah-understanding-lstm-networks-2015.md)
