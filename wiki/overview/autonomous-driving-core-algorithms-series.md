@@ -2,7 +2,7 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-23
 related:
   - ../entities/paper-diffusion-planner-autonomous-driving.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -24,6 +24,7 @@ related:
   - ../methods/vla.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-mmhu.md
+  - ../entities/paper-drivesta.md
 original:
   - ../../sources/papers/apollo_em_planner_reading_arxiv_1807_08048_adcore.md
 sources:
@@ -123,6 +124,8 @@ flowchart TB
 | 控制 | PID | 纵向速度基线 |
 | 控制 | LQR | 横向最优反馈（Riccati） |
 | 控制 | MPC | 约束滚动优化，极限工况上限高 |
+
+**端到端多候选规划：** [DriveSTA](../entities/paper-drivesta.md) 将单条人类驾驶日志扩展为可评分的多条候选轨迹，以 Proposal 生成/评分和 JEPA 条件精修组合规划；作者报告 NAVSIM v1 NAVTEST 95.55 PDMS（论文原文已核对、未独立复现、非车端认证）。
 
 **学习型规控补充：** [Diffusion Planner（ICLR 2025）](../entities/paper-diffusion-planner-autonomous-driving.md) 将自车未来规划与邻车未来预测做联合 DiT 扩散；nuPlan Test14 Reactive 纯输出 82.93、Test14-hard Reactive 69.22（无规则后处理），但仍依赖结构化地图及下游车辆轨迹跟踪控制器，而非传感器到执行器的端到端整车部署。
 
