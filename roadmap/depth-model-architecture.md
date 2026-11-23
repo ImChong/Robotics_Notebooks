@@ -240,6 +240,8 @@ flowchart LR
 - 选一条压缩路径（蒸馏或量化）做一次 A/B：记录成功率、动作平滑度与最坏时延三项，而不是只看平均时延
 
 ### 推荐读什么
+- [ITT：Inner Thinking Transformer](../wiki/entities/paper-inner-thinking-transformer.md) — ACL 2025 的 token 级动态深度与残差思考：相同参数可多用计算提升语言准确率，但无机器人闭环验证；同时核算 FLOPs、训练显存和 P95 延迟。
+
 - [YOLO26 边缘部署与模型压缩](../wiki/methods/yolo26-edge-model-optimization.md) — 用官方导出/量化矩阵选择 ONNX、TensorRT、NCNN，区分 PTQ/QAT、结构化剪枝与蒸馏；按实际设备 mAP 与 P95/P99 延迟验收，而非套用转载加速比。
 - [NVIDIA Deepu Talla：机器人的 ChatGPT 时刻](../wiki/entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md) — 从三类计算平台、分层频率、蒸馏到可部署门槛的系统访谈；将“十秒大关”当成熟度比喻而不是任务时限。
 - [Inkling 2 Mini：循环式多模态 Transformer](../wiki/entities/inkling-2-mini.md) — 开放权重的 26.4B MoE 以共享中间 12 层三次循环 + NVFP4/MXFP8 取舍模型体积、内部计算与本地 Agent 延迟；不属于已验证的机器人动作策略。
