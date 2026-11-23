@@ -3,12 +3,14 @@
 > 论文来源归档（ingest）
 
 - **标题：** Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
-- **作者：** Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktächel, Sebastian Riedel, Douwe Kiela（Facebook AI Research / UCL / UW）
+- **作者：** Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, Sebastian Riedel, Douwe Kiela（Facebook AI Research / UCL / UW）
 - **类型：** paper / nlp / retrieval / generation / knowledge-intensive
 - **arXiv：** <https://arxiv.org/abs/2005.11401> · PDF：<https://arxiv.org/pdf/2005.11401.pdf>
 - **会议：** NeurIPS 2020
-- **代码：** DPR <https://github.com/facebookresearch/DPR>；HuggingFace `transformers` RAG 实现
+- **代码：** [Hugging Face Transformers RAG 实现](https://github.com/huggingface/transformers/tree/main/examples/rag)；[DPR](https://github.com/facebookresearch/DPR) 为原论文使用的独立预训练检索器。
 - **入库日期：** 2026-09-20
+- **核对范围：** 已对照 [arXiv:2005.11401v4 HTML 全文](https://arxiv.org/html/2005.11401v4)（2021-04-12），核对正文 §1–6、RAG-Sequence/RAG-Token 概率定义、DPR 与 BART、训练/解码、Natural Questions/TriviaQA/WebQuestions/CuratedTrec/MS-MARCO/Jeopardy/FEVER 评测、表 1–6、检索消融、索引热替换，以及附录 A–I 的实施与任务协议。未独立复现实验；引用文献未逐篇复查。
+- **通读：** 已完成
 - **一句话说明：** 提出 **RAG** 范式：把 **非参数化检索器**（Dense Passage Retrieval）与 **参数化 seq2seq 生成器**（BART）结合，在开放域 QA 等知识密集型任务上 **减少幻觉、可更新知识、可溯源**，成为后续 LLM 应用与 agent grounding 的奠基工作。
 
 ## 开源状态（步骤 2.5，2026-09-20）
@@ -25,7 +27,7 @@
 
 ### 2) RAG 架构：检索器 + 生成器
 
-- **要点：** **Retriever** $p_\eta(z|x)$ 从大规模语料（如 Wikipedia）取 top-$k$ 段落 $z$；**Generator** $p_\theta(y|x,z)$ 以查询 $x$ 与检索段 $z$ 为条件生成答案 $y$。检索与生成 **端到端可微**（通过检索段作为生成器额外输入）。
+- **要点：** **Retriever** $p_\eta(z|x)$ 从大规模语料（如 Wikipedia）取 top-$k$ 段落 $z$；**Generator** $p_\theta(y|x,z)$ 以查询 $x$ 与检索段 $z$ 为条件生成答案 $y$。训练时通过检索段边际化优化查询编码器和生成器；原论文保持文档编码器与索引冻结（§2.4），不是所有模块同时更新。
 - **对 wiki 的映射：** [`wiki/concepts/retrieval-augmented-generation.md`](../../wiki/concepts/retrieval-augmented-generation.md) — 核心原理
 
 ### 3) RAG-Sequence vs RAG-Token
@@ -35,7 +37,7 @@
 
 ### 4) DPR：双塔稠密检索
 
-- **要点：** 查询编码器与段落编码器分别映射到向量空间，**内积相似度** 近似 BM25；比稀疏检索更适合语义匹配，是 modern RAG **向量检索** 的直接前传。
+- **要点：** 查询编码器与段落编码器分别映射到向量空间，**内积相似度** 做稠密向量检索（与 BM25 是不同类型的检索器）；比稀疏检索更适合语义匹配，是 modern RAG **向量检索** 的直接前传。
 - **对 wiki 的映射：** [`wiki/concepts/retrieval-augmented-generation.md`](../../wiki/concepts/retrieval-augmented-generation.md) — 检索子系统
 
 ### 5) 实验结论（开放域 QA）
