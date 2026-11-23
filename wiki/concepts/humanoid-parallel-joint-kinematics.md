@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, kinematics, closed-chain, parallel-mechanism, ankle, simulation]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-23
 related:
   - ../entities/asimov-v1.md
   - ../entities/humanoid-robot.md
@@ -132,6 +132,7 @@ flowchart TB
 
 - 产品级 **RSU 并联踝**叙事与公开 MJCF 折衷：[Asimov v1](../entities/asimov-v1.md)。
 - 闭链在操作方向的类比：[Dexterous Kinematics](./dexterous-kinematics.md)。
+- 腕部并联机构在**工作空间与驱动耦合**上的具体对比：[iCub 腕关节六构型比较（Shah 等，2019）](../entities/paper-icub-wrist-mechanisms-comparison.md) — 同一 iCub 设计约束下比较球面五/六杆、OmniWrist 与 Quaternion；并非踝机构的直接性能对照。
 - 并联/双驱动对**惯量建模**的影响：[Armature Modeling](./armature-modeling.md)。
 - 人形平台总览：[人形机器人](../entities/humanoid-robot.md)。
 
