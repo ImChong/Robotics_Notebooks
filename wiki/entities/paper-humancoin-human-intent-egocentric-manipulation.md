@@ -17,6 +17,7 @@ related:
   - ./humannet.md
   - ./dataset-opentouch.md
   - ../methods/imitation-learning.md
+  - ../methods/auto-labeling-pipelines.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/humancoin_human_intent_egocentric_manipulation_arxiv_2611_26434.md
@@ -54,6 +55,7 @@ summary: "HumanCOIN（智源牵头，arXiv:2611.26434v1）是 12,500 h 第一视
 | 代码 | [FlagOpen/HumanCOIN](https://github.com/FlagOpen/HumanCOIN)，Apache-2.0 |
 | 数据入口 | [HumanCOIN 数据组织](https://huggingface.co/HumanCOIN)、[数据门户](https://flagopen.github.io/HumanCOIN-DataManager/)；多数子仓 gated |
 | 数据许可 | CC BY-NC 4.0，非商业使用 |
+| 重定向就绪度 | 未验证：以人类手部/头部状态及生理代理为主，若用于目标机器人策略，需要核验坐标系、动作定义、骨架及具身约束，不能直接视为可部署控制轨迹 |
 | 信息边界 | 论文是数据论文，尚未给出意图模态增强的机器人策略训练成功率/真机基准 |
 
 ## 为什么重要
@@ -150,6 +152,14 @@ sequenceDiagram
 - **同步审计**：附录报告部分运动姿态存在重复时间戳、摄像头容器与时间戳表帧数不一致，数据消费者应以 timestamp 表为准。
 - **尚缺**：没有执行 `p(a|o,m)` 与 `p(a|o)` 同域策略消融，没有真机成功率提升结论，没有跨采集地点的稳健策略验证。
 
+## 与其他工作对比
+
+| 对照数据路线 | 核心差异 | 实际使用边界 |
+|---|---|---|
+| [EgoVerse](./paper-egoverse.md) | 人类第一视角示教与跨具身共训侧重手/头位姿和任务覆盖；HumanCOIN 重点增加分层的注意、肌肉和脑电代理 | 两者的时长及标注/真实传感覆盖口径不同，不能直接比较“机器人可用动作小时数” |
+| [HumanNet](./humannet.md) | 大规模第一、第三人称混合人中心语料；HumanCOIN 强调有时间戳的多频生理信号 | HumanNet 总视频规模不等于相同模态的实测规模 |
+| [OpenTouch](./dataset-opentouch.md) | 全手触觉提供手–物接触观测；HumanCOIN 的 EMG 反映前臂肌肉活动 | EMG 不能替代触觉或接触力标定；二者是互补测量而非同一种标签 |
+
 ## 结论
 
 **HumanCOIN 的贡献是把“谁注意哪里、如何准备出力、何时出现皮层准备”变成可对齐和消融的多模态数据问题，而不是已实现的人类意图解码器。**
@@ -183,6 +193,8 @@ sequenceDiagram
 - [EgoVerse](./paper-egoverse.md) / [HumanNet](./humannet.md) — 人类演示语料与跨本体监督路线比较
 - [OpenTouch](./dataset-opentouch.md) — 触觉实测与肌电代理的差异
 - [Imitation Learning](../methods/imitation-learning.md) — 加入生理代理前需要解决输入/动作空间的具身对齐
+- [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md) — 对照数据集的动作/任务标签自动生成与人工复核步骤
+- [Manipulation 机器人操作任务](../tasks/manipulation.md) — 人类第一视角操作的观测、动作与接触约束需经过任务和本体映射
 - [具身数据纵深 Stage 1](../../roadmap/depth-embodied-data.md) — 数据采集传感模态选型
 
 ## 参考来源
