@@ -242,9 +242,14 @@
         health_score: n.health_score,
         health_gaps: n.health_gaps,
         has_repo: n.has_repo,
+        added: n.added || '',
         _degree: degreeMap[n.id] || 0
       };
     });
+    var latestMiniAddedTs = nodes.reduce(function (mx, n) {
+      var ts = n && n.added ? Date.parse(String(n.added)) : 0;
+      return isFinite(ts) && ts > mx ? ts : mx;
+    }, 0);
     var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
     var nodeById = Object.create(null);
     nodes.forEach(function(n){ nodeById[n.id] = n; });
@@ -729,7 +734,7 @@
           nodeCount: nodes.length,
           persist: false,
           allowTouchOrbit: true,
-          defaultDistance: 1.76,
+          defaultDistance: 1.92,
           defaultParamsByTier: {
             full: { height: 32, contours: 14, pitch: 34, yaw: -16 },
             lite: { height: 29, contours: 12, pitch: 32, yaw: -12 },
@@ -740,6 +745,12 @@
               width: miniWrap.clientWidth || 700,
               height: miniWrap.clientHeight || 480,
             };
+          },
+          getSearchMatchIds: function () { return miniHighlightSet; },
+          isNodeNew: function (d) {
+            if (!latestMiniAddedTs || !d || !d.added) return false;
+            var ts = Date.parse(String(d.added));
+            return isFinite(ts) && (latestMiniAddedTs - ts) <= 14 * 86400000;
           },
           getGraphData: function () {
             var terrainNodes = entranceActive

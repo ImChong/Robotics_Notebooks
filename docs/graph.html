@@ -432,6 +432,36 @@
     .chip[data-type="comparison"].active { background: #c084fc; }
     .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
     .chip[data-type="formalization"].active { background: #fb923c; }
+    .toolbar-view-mode {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 2px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+    .toolbar-view-btn {
+      height: 24px;
+      padding: 0 9px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: rgba(255,255,255,0.56);
+      font-size: .74rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .toolbar-view-btn:hover { color: rgba(255,255,255,0.9); }
+    .toolbar-view-btn.is-active {
+      background: rgba(91,156,246,0.22);
+      color: #8cc0ff;
+    }
+    .toolbar-view-btn:disabled { opacity: 0.45; cursor: not-allowed; }
     .toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
     .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     #graph-node-count {
@@ -497,6 +527,9 @@
     #graph-wrap.is-perspective-mode #graph-canvas,
     #graph-wrap.is-perspective-mode #graph-edge-canvas {
       display: none !important;
+    }
+    #graph-wrap.is-perspective-mode.sidebar-open {
+      right: 0;
     }
     #graph-canvas-3d {
       width: 100%; height: 100%;
@@ -968,6 +1001,14 @@
       .toolbar-right {
         gap: 4px;
       }
+      .toolbar-view-btn {
+        height: 22px;
+        padding: 0 6px;
+        font-size: .68rem;
+      }
+      .toolbar-view-label-extra {
+        display: none;
+      }
     }
 
     /* 触屏设备：节点详情用底部固定浮窗，不展示右侧侧边栏 */
@@ -977,6 +1018,15 @@
       }
       #graph-wrap.sidebar-open {
         right: 0 !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #fit-to-screen span:last-child {
+        display: none;
+      }
+      #fit-to-screen {
+        padding: 0 7px;
       }
     }
 
@@ -1293,6 +1343,49 @@
       border-color: rgba(15,23,42,0.09);
       color: rgba(15,23,42,0.58);
       box-shadow: 0 4px 14px rgba(15,23,42,0.08);
+    }
+    .graph-terrain-legend {
+      position: absolute;
+      left: 20px;
+      bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(13,17,23,0.62);
+      color: rgba(255,255,255,0.58);
+      font-size: .67rem;
+      line-height: 1.3;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .graph-terrain-legend[hidden] { display: none !important; }
+    .graph-terrain-legend span + span::before {
+      content: '·';
+      margin-right: 9px;
+      opacity: .42;
+    }
+    [data-theme="light"] .graph-terrain-legend {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(15,23,42,0.09);
+      color: rgba(15,23,42,0.6);
+    }
+    @media (max-width: 768px) {
+      .graph-terrain-legend { display: none !important; }
+    }
+    [data-theme="light"] .toolbar-view-mode {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+    }
+    [data-theme="light"] .toolbar-view-btn { color: rgba(0,0,0,0.55); }
+    [data-theme="light"] .toolbar-view-btn:hover { color: rgba(0,0,0,0.88); }
+    [data-theme="light"] .toolbar-view-btn.is-active {
+      background: rgba(45,116,218,0.14);
+      color: #2d74da;
     }
 
     /* ── 筛选面板（白天模式）── */
@@ -2063,6 +2156,10 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
       gap: 10px;
     }
+    .sb-header > div {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
     #graph-sidebar .tt-meta-badges {
       display: flex;
       flex-wrap: wrap;
@@ -2082,6 +2179,40 @@
       margin-bottom: 6px;
     }
     .sb-title { font-size: .92rem; font-weight: 700; color: #e8e8e4; line-height: 1.3; }
+    .sb-metrics {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 6px;
+      margin-top: 7px;
+      font-size: .68rem;
+      color: rgba(255,255,255,0.62);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .sb-metrics > span {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .sb-metrics[hidden] { display: none !important; }
+    .sb-metric-bar {
+      flex: 1 1 32px;
+      min-width: 24px;
+      max-width: 72px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      overflow: hidden;
+    }
+    .sb-metric-bar > i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: #5b9cf6;
+    }
+    [data-theme="light"] .sb-metrics { color: rgba(0,0,0,0.58); }
+    [data-theme="light"] .sb-metric-bar { background: rgba(0,0,0,0.1); }
+    [data-theme="light"] .sb-metric-bar > i { background: #2d74da; }
     .sb-close {
       background: none; border: none; color: rgba(255,255,255,0.35);
       font-size: 1rem; cursor: pointer; padding: 2px 4px; border-radius: 4px;
@@ -2207,6 +2338,11 @@
       <span>🔍</span><span id="filter-label">筛选</span>
       <span id="filter-count" class="filter-count" hidden></span>
     </button>
+    <div id="toolbar-view-mode" class="toolbar-view-mode" role="group" aria-label="2D / 3D 地形 / 3D 立体视图切换">
+      <button type="button" id="toolbar-view-2d" class="toolbar-view-btn is-active" aria-pressed="true">2D</button>
+      <button type="button" id="toolbar-view-perspective" class="toolbar-view-btn" aria-pressed="false">3D<span class="toolbar-view-label-extra"> 地形</span></button>
+      <button type="button" id="toolbar-view-3d" class="toolbar-view-btn" aria-pressed="false">3D<span class="toolbar-view-label-extra"> 立体</span></button>
+    </div>
     <div class="toolbar-right">
       <span id="graph-node-count">加载中…</span>
       <div class="toolbar-sep"></div>
@@ -2472,12 +2608,19 @@
       <span class="hint-touch">双指缩放<span class="hint-sep" aria-hidden="true">·</span>单指拖拽<br>轻触节点查看详情</span>
     </div>
     <div id="graph-hint-perspective" class="graph-hint" hidden>
-      <span class="hint-desktop">拖节点移动<span class="hint-sep" aria-hidden="true">·</span>拖空白旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>右键平移<span class="hint-sep" aria-hidden="true">·</span>高度即连接数</span>
-      <span class="hint-touch">单指旋转/拖节点<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>高度即连接数<span class="hint-sep" aria-hidden="true">·</span>轻触看详情</span>
+      <span class="hint-desktop">点击节点/社区聚焦<span class="hint-sep" aria-hidden="true">·</span>拖节点移山<span class="hint-sep" aria-hidden="true">·</span>拖空白旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮指向缩放<span class="hint-sep" aria-hidden="true">·</span>右键平移</span>
+      <span class="hint-touch">单指旋转/拖节点<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>高度即连接数<span class="hint-sep" aria-hidden="true">·</span>轻触节点/社区聚焦</span>
     </div>
     <div id="graph-hint-3d" class="graph-hint" hidden>
       <span class="hint-desktop">拖拽旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>点击节点查看详情</span>
       <span class="hint-touch">单指旋转<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>轻触节点查看详情</span>
+    </div>
+    <div id="graph-terrain-legend" class="graph-terrain-legend" hidden aria-label="3D 地形编码图例">
+      <span>▲ 山高 = 连接度</span>
+      <span>〰 等高线 = 海拔层级</span>
+      <span>● 球径 = 枢纽权重</span>
+      <span>◌ 虚线 = 社区疆界</span>
+      <span>◉ = 近期新增</span>
     </div>
   </div>
 
@@ -2489,6 +2632,7 @@
         <div id="sb-community" class="sb-community"></div>
         <div class="sb-title" id="sb-title">选择节点查看详情</div>
         <div id="sb-health" hidden></div>
+        <div id="sb-metrics" class="sb-metrics" hidden></div>
       </div>
       <button id="sb-close" class="sb-close" aria-label="关闭侧边栏">✕</button>
     </div>
@@ -3292,10 +3436,14 @@
     const viewMode2dBtn = document.getElementById('view-mode-2d');
     const viewModePerspectiveBtn = document.getElementById('view-mode-perspective');
     const viewMode3dBtn = document.getElementById('view-mode-3d');
+    const toolbarView2dBtn = document.getElementById('toolbar-view-2d');
+    const toolbarViewPerspBtn = document.getElementById('toolbar-view-perspective');
+    const toolbarView3dBtn = document.getElementById('toolbar-view-3d');
     const perspectiveControlsEl = document.getElementById('perspective-controls');
     const graphHint2dEl = document.getElementById('graph-hint-2d');
     const graphHintPerspectiveEl = document.getElementById('graph-hint-perspective');
     const graphHint3dEl = document.getElementById('graph-hint-3d');
+    const graphTerrainLegendEl = document.getElementById('graph-terrain-legend');
     const graphNoticeEl = document.getElementById('graph-notice');
     let graphNoticeTimer = 0;
 
@@ -3321,25 +3469,34 @@
         graphHintPerspectiveEl.hidden = !inPersp;
       }
       if (graphHint3dEl) graphHint3dEl.hidden = !in3d;
+      if (typeof graphTerrainLegendEl !== 'undefined' && graphTerrainLegendEl) {
+        graphTerrainLegendEl.hidden = !inPersp;
+      }
       if (typeof syncDepthBannerChatOffset === 'function') syncDepthBannerChatOffset();
+    }
+
+    function syncViewBtnPair(btnA, btnB, active) {
+      if (btnA) {
+        btnA.classList.toggle('is-active', active);
+        btnA.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
+      if (typeof btnB !== 'undefined' && btnB) {
+        btnB.classList.toggle('is-active', active);
+        btnB.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
     }
 
     function updateViewModeButtons() {
       const in3d = is3DView();
       const inPersp = isPerspectiveView();
       const in2d = !in3d && !inPersp;
-      if (viewMode2dBtn) {
-        viewMode2dBtn.classList.toggle('is-active', in2d);
-        viewMode2dBtn.setAttribute('aria-pressed', in2d ? 'true' : 'false');
-      }
-      if (typeof viewModePerspectiveBtn !== 'undefined' && viewModePerspectiveBtn) {
-        viewModePerspectiveBtn.classList.toggle('is-active', inPersp);
-        viewModePerspectiveBtn.setAttribute('aria-pressed', inPersp ? 'true' : 'false');
-      }
-      if (viewMode3dBtn) {
-        viewMode3dBtn.classList.toggle('is-active', in3d);
-        viewMode3dBtn.setAttribute('aria-pressed', in3d ? 'true' : 'false');
-      }
+      syncViewBtnPair(viewMode2dBtn, typeof toolbarView2dBtn !== 'undefined' ? toolbarView2dBtn : null, in2d);
+      syncViewBtnPair(
+        typeof viewModePerspectiveBtn !== 'undefined' ? viewModePerspectiveBtn : null,
+        typeof toolbarViewPerspBtn !== 'undefined' ? toolbarViewPerspBtn : null,
+        inPersp
+      );
+      syncViewBtnPair(viewMode3dBtn, typeof toolbarView3dBtn !== 'undefined' ? toolbarView3dBtn : null, in3d);
       if (typeof perspectiveControlsEl !== 'undefined' && perspectiveControlsEl) {
         perspectiveControlsEl.hidden = !inPersp;
       }
@@ -3527,17 +3684,19 @@
         setSpatialViewMode('3d', opts);
         return Promise.resolve();
       }
-      if (viewMode3dBtn) {
-        viewMode3dBtn.disabled = true;
-        viewMode3dBtn.setAttribute('aria-busy', 'true');
-      }
+      [viewMode3dBtn, typeof toolbarView3dBtn !== 'undefined' ? toolbarView3dBtn : null].forEach((btn) => {
+        if (!btn) return;
+        btn.disabled = true;
+        btn.setAttribute('aria-busy', 'true');
+      });
       return ensureGraph3DLibrary()
         .catch((err) => { console.warn('3D library unavailable; falling back to 2D:', err); })
         .then(() => {
-          if (viewMode3dBtn) {
-            viewMode3dBtn.disabled = false;
-            viewMode3dBtn.removeAttribute('aria-busy');
-          }
+          [viewMode3dBtn, typeof toolbarView3dBtn !== 'undefined' ? toolbarView3dBtn : null].forEach((btn) => {
+            if (!btn) return;
+            btn.disabled = false;
+            btn.removeAttribute('aria-busy');
+          });
           if (seq !== spatialRequestSeq) return;   // 期间用户已改主意（点了 2D）
           // 库缺失时这里会命中既有失败路径：恢复 2D + 提示，不另写一套降级。
           setSpatialViewMode('3d', opts);
@@ -3636,6 +3795,7 @@
       syncTimeline3DState();
       syncMagneticCheckbox();
       if (mode === '3d' || needsFull2DRestore) updateForces();
+      if (typeof syncGraphUrlParams === 'function') syncGraphUrlParams();
       if (initializationFailed) {
         showGraphNotice('当前无法打开 3D 视图，已恢复 2D。你可以继续浏览，或在支持 WebGL 的浏览器中重试。');
       }
@@ -4062,6 +4222,7 @@
          f(t)=(e^{k t}-1)/(e^k-1)
        映射到 [RECENCY_DIM_MIN, 1]，使越新的节点越明亮、近期对比更陡；
        无更新日期（无 activity）的节点按最暗 RECENCY_DIM_MIN 处理 ── */
+    let latestGraphAddedTs = 0;
     (function assignRecencyDim() {
       let minTs = Infinity;
       let maxTs = -Infinity;
@@ -4074,6 +4235,7 @@
         n._addedTs = Number.isFinite(addedTs) && addedTs > 0 ? addedTs : null;
         n._addedDate = (n.added && /^\d{4}-\d{2}-\d{2}/.test(n.added))
           ? n.added.slice(0, 10) : null;
+        if (n._addedTs && n._addedTs > latestGraphAddedTs) latestGraphAddedTs = n._addedTs;
         n._recencyTs = n._activityTs;
         n._recencyDate = n._activityDate;
         if (n._recencyTs !== null) {
@@ -5304,6 +5466,9 @@
           pauseSimulation2D();
           perspectiveController.syncViewport();
           perspectiveController.syncData(true);
+          if (hasActiveGraphFilter() && visibleNodeIds.size > 0 && visibleNodeIds.size < nodes.length) {
+            perspectiveController.frameNodes(visibleNodeIds);
+          }
         }
       }
     }
@@ -5718,9 +5883,11 @@
 
     function moveTooltip(ev) {
       if (!ev || ev.clientX == null || ev.clientY == null) return;
-      const x = ev.clientX + 14, y = ev.clientY - 10;
+      const offX = isPerspectiveView() ? 22 : 14;
+      const offY = isPerspectiveView() ? -14 : -10;
+      const x = ev.clientX + offX, y = ev.clientY + offY;
       const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
-      tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
+      tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - offX * 2 : x) + 'px';
       tooltip.style.top  = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
       tooltip.style.transform = '';
     }
@@ -6178,6 +6345,7 @@
       renderFilterPanel();
       applyFilters();
       updateFilterCount();
+      if (typeof syncGraphUrlParams === 'function') syncGraphUrlParams();
     });
     document.getElementById('filter-close').addEventListener('click', (ev) => {
       ev.stopPropagation();
@@ -6369,7 +6537,15 @@
       syncFilterSimulation(hasFilter);
       updateCount(visible);
       if (graph3dView && is3DView()) graph3dView.syncFilters();
-      if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(true);
+      if (perspectiveController && isPerspectiveView()) {
+        perspectiveController.syncData(true, { morph: true });
+        if ((focusedCommunityId || searchQuery || (currentDepth && currentDepth !== 'all'))
+            && visibleNodeIds.size > 0 && visibleNodeIds.size < nodes.length) {
+          perspectiveController.frameNodes(visibleNodeIds);
+        } else if (!hasFilter && !sidebarNode) {
+          perspectiveController.fitToView();
+        }
+      }
       if (searchQuery) flyToVisible();
     }
 
@@ -6981,6 +7157,10 @@
         graph3dView.fitToVisible();
         return;
       }
+      if (isPerspectiveView() && perspectiveController) {
+        perspectiveController.frameNodes(visibleNodeIds);
+        return;
+      }
       const transform = computeGraphFitTransform(
         nodes.filter(n => visibleNodeIds.has(n.id)),
         {
@@ -7019,6 +7199,10 @@
     function flyToVisible() {
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
       if (visNodes.length === 0 || visNodes.length > 15) return;
+      if (isPerspectiveView() && perspectiveController) {
+        perspectiveController.frameNodes(visibleNodeIds);
+        return;
+      }
       const transform = computeGraphFitTransform(visNodes, {
         minScale: GRAPH_ZOOM_MIN,
         maxScale: GRAPH_ZOOM_MAX,
@@ -7239,6 +7423,25 @@
       return dim;
     }
 
+    const newNodeCutoffTs = latestGraphAddedTs > 0 ? (latestGraphAddedTs - 14 * 86400000) : 0;
+    function isRecentNewNode(d) {
+      return !!(newNodeCutoffTs && d && d._addedTs && d._addedTs >= newNodeCutoffTs);
+    }
+
+    function syncGraphUrlParams() {
+      if (typeof history === 'undefined' || typeof history.replaceState !== 'function') return;
+      try {
+        const u = new URL(location.href);
+        if (spatialViewMode === '2d') u.searchParams.delete('view');
+        else u.searchParams.set('view', spatialViewMode);
+        if (sidebarNode && sidebarNode.id) u.searchParams.set('focus', sidebarNode.id);
+        else u.searchParams.delete('focus');
+        if (focusedCommunityId) u.searchParams.set('community', focusedCommunityId);
+        else u.searchParams.delete('community');
+        history.replaceState(null, '', u.pathname + u.search + u.hash);
+      } catch (_e) { /* ignore */ }
+    }
+
     if (window.RNGraphPerspective && typeof window.RNGraphPerspective.createController === 'function') {
       perspectiveController = window.RNGraphPerspective.createController({
         wrapEl: wrap,
@@ -7246,7 +7449,7 @@
         nodeCount: nodes.length,
         persist: true,
         allowTouchOrbit: true,
-        defaultDistance: 1.72,
+        defaultDistance: 1.92,
         getViewportSize: () => ({ width: W, height: H }),
         getGraphData: () => ({
           nodes,
@@ -7262,6 +7465,9 @@
         isDark,
         getBgColor: () => (isDark() ? '#191919' : '#f7f6f3'),
         getLabelText: (d) => d._info?.title || d.label || d.id,
+        getActiveCommunityId: () => focusedCommunityId,
+        getSearchMatchIds: () => (searchQuery ? visibleNodeIds : null),
+        isNodeNew: isRecentNewNode,
         getCommunityLabels: () => {
           if (!communityLabelsVisible()) return [];
           const centroids = computeCommunityCentroids();
@@ -7292,6 +7498,16 @@
         },
         isLabelsVisible: () => !timelineAnimating,
         isEdgesVisible: () => showEdges,
+        onCommunityClick: (cid) => {
+          if (areFiltersLocked() || !cid) return;
+          focusedCommunityId = (focusedCommunityId === cid) ? null : cid;
+          if (colorMode !== 'community') setColorMode('community');
+          renderLegend();
+          renderFilterPanel();
+          applyFilters();
+          updateFilterCount();
+          syncGraphUrlParams();
+        },
         onNodeHover: (d, pointerEv) => {
           if (timelineAnimating || isTouchInteraction(pointerEv) || pinnedNode) return;
           if (sidebarFocusIds) {
@@ -7409,6 +7625,15 @@
     if (viewMode3dBtn) {
       viewMode3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
     }
+    if (toolbarView2dBtn) {
+      toolbarView2dBtn.addEventListener('click', () => requestSpatialViewMode('2d'));
+    }
+    if (toolbarViewPerspBtn) {
+      toolbarViewPerspBtn.addEventListener('click', () => requestSpatialViewMode('perspective'));
+    }
+    if (toolbarView3dBtn) {
+      toolbarView3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
+    }
     if (spatialViewMode === 'perspective') {
       if (perspectiveController && !perspectiveController.isSupported()) {
         spatialViewMode = '2d';
@@ -7442,6 +7667,7 @@
     const sbCommunity  = document.getElementById('sb-community');
     const sbTitle      = document.getElementById('sb-title');
     const sbHealth     = document.getElementById('sb-health');
+    const sbMetrics    = document.getElementById('sb-metrics');
     const sbTags       = document.getElementById('sb-tags');
     const sbSummary    = document.getElementById('sb-summary');
     const sbNeighborsSec  = document.getElementById('sb-neighbors-section');
@@ -7631,6 +7857,14 @@
         sbHealth.innerHTML = window.RNGraphTooltip?.buildTooltipHealthHtml?.(d) || '';
         sbHealth.hidden = !sbHealth.innerHTML;
       }
+      if (sbMetrics) {
+        const deg = d._degree || 0;
+        const pct = Math.max(4, Math.min(100, Math.round((Math.log(1 + deg) / Math.log(1 + Math.max(2, graphMaxDegree))) * 100)));
+        const dateStr = d._activityDate || d._addedDate || '';
+        sbMetrics.innerHTML = '<span>连接 ' + deg + '</span><span class="sb-metric-bar" title="相对最高连接枢纽比例"><i style="width:' + pct + '%"></i></span>'
+          + (dateStr ? '<span>更新 ' + escapeHtml(dateStr) + '</span>' : '');
+        sbMetrics.hidden = false;
+      }
       renderSidebarSummary(d);
 
       renderSidebarCatalogParts(d);
@@ -7659,6 +7893,15 @@
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
       scheduleSidebarViewportSync();
+      if (isPerspectiveView() && perspectiveController) {
+        if (typeof perspectiveController.setSidebarOffset === 'function') {
+          perspectiveController.setSidebarOffset(isMobile ? 0 : 150);
+        }
+        if (typeof perspectiveController.focusNode === 'function') {
+          perspectiveController.focusNode(d.id);
+        }
+      }
+      syncGraphUrlParams();
       // 目录尚未到达：先按空目录渲染，取回后若侧栏仍停在该节点再补 tags / related
       if (!indexItems.length) {
         ensureCatalog().then(ok => { if (ok && sidebarNodeId === d.id) renderSidebarCatalogParts(d); });
@@ -7683,9 +7926,18 @@
       sidebar.classList.remove('open');
       wrap.classList.remove('sidebar-open');
       if (isMobile) hideTooltip();
+      if (perspectiveController) {
+        if (typeof perspectiveController.setSidebarOffset === 'function') {
+          perspectiveController.setSidebarOffset(0);
+        }
+        if (typeof perspectiveController.focusNode === 'function') {
+          perspectiveController.focusNode(null);
+        }
+      }
       // 侧栏未开时空白点击也会走到这里：此时绘图区宽度没变，无需重新取景。
       if (wasOpen) scheduleSidebarViewportSync({ refit: true });
       clearNodeNeighborHighlight();
+      syncGraphUrlParams();
     }
 
     sbClose.addEventListener('click', closeSidebar);
