@@ -23,7 +23,9 @@ related:
   - ../entities/pico-4-ultra-egocentric-capture.md
   - ../entities/tsing-ego-pro.md
   - ../entities/paper-vbot-exo2ego-policy.md
+  - ../entities/paper-humancoin-human-intent-egocentric-manipulation.md
 sources:
+  - ../../sources/papers/humancoin_human_intent_egocentric_manipulation_arxiv_2611_26434.md
   - ../../sources/sites/maxinsights-official.md
   - ../../sources/blogs/maxinsights-beyond-1m-hours-physical-ai-data.md
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
@@ -87,6 +89,8 @@ original:
 
 ## 关联页面
 
+- [HumanCOIN：注视/肌电/脑电的分层第一视角数据](../entities/paper-humancoin-human-intent-egocentric-manipulation.md) — L1 估计注视、L2 实测肌电、L3 实测脑电，不能把 12,500 h 全部当实测三模态示教。
+
 - [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)
 - [人→机器人](./ego-category-02-human-to-robot.md)
 - [ViDiHand](../entities/paper-vidihand.md) — 采集后的 **双手 4D 标注** 可用 video diffusion 先验 **无 detector** 规模化重建，支撑模仿/策略监督
@@ -107,6 +111,8 @@ original:
 - [TSING-EGO PRO](../entities/tsing-ego-pro.md) — 清研精准面向工业操作的第一视角采集方案；详细参数仍需核实
 
 ## 参考来源
+
+- [HumanCOIN 论文原文归档](../../sources/papers/humancoin_human_intent_egocentric_manipulation_arxiv_2611_26434.md)
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md)
