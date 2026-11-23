@@ -78,6 +78,11 @@ flowchart LR
 - Redwood 与 ArchitectLabs 同名训练加速项目无关。
 - 约 5 Hz 的上层模型需要下层执行器接口支持；公开材料不足以确定完整高频控制实现。
 
+## 方法与任务关联
+
+- [视觉语言动作策略（VLA）](../methods/vla.md)：Redwood 的多模态输入与动作生成属于 VLA 应用，但具体训练与模型权重尚未公开，不能按通用 VLA 开源实现复现。
+- [移动操作（Loco-Manipulation）](../tasks/loco-manipulation.md)：Redwood 将步行、骨盆姿态与手臂操作联合预测，区别于只做静态桌面抓取的策略。
+
 ## 关联页面
 
 - [1X 公司与 EVE / NEO](./1x-technologies.md)

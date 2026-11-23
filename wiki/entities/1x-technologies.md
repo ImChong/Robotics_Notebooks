@@ -131,6 +131,11 @@ sequenceDiagram
 
 图依据：1x-technologies/1xgpt@0069734，读过 `README.md`、`build.sh`、`train.py`（主循环与数据加载段）、`data.py`、`genie/st_mask_git.py`、`genie/generate.py`、`genie/evaluate.py`（`GenieEvaluator` 前段）、`visualize.py`。`train.py` 中 Llama 分支为注释/可选，未画。
 
+## 方法与任务关联
+
+- [视觉语言动作策略（VLA）](../methods/vla.md)：Redwood 是 1X 在 EVE/NEO 上的机载策略实例；此关联不代表其模型权重或完整训练栈开源。
+- [遥操作（Teleoperation）](../tasks/teleoperation.md)：1X Expert 与 VR 示教属于数据采集和远程辅助环节，不能等同于完全自主执行。
+
 ## 关联页面
 
 - [1X World Model（1XWM）](./paper-1xwm-redwood-world-model.md)
