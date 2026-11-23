@@ -7077,8 +7077,9 @@ a.kb-chat-citation-passage:hover {
   border-top: 0;
   border-bottom: 1px solid var(--line);
 }
-:root:not([data-ui="classic"]) body.page-home #home-start {
+:root:not([data-ui="classic"]) body.page-home #home-start.section {
   background: var(--bg-alt);
+  padding-top: 72px;
 }
 :root:not([data-ui="classic"]) body.page-home #wiki-search {
   background: var(--bg);
@@ -7092,7 +7093,8 @@ a.kb-chat-citation-passage:hover {
 }
 
 @media (max-width: 639px) {
-  :root:not([data-ui="classic"]) body.page-home main > .section {
+  :root:not([data-ui="classic"]) body.page-home main > .section,
+  :root:not([data-ui="classic"]) body.page-home #home-start.section {
     padding: 52px 0;
   }
 }
