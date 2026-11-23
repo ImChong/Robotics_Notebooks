@@ -240,6 +240,7 @@ flowchart LR
 - 选一条压缩路径（蒸馏或量化）做一次 A/B：记录成功率、动作平滑度与最坏时延三项，而不是只看平均时延
 
 ### 推荐读什么
+- [WePM：统一多模态模型的层级冲突协调](../wiki/entities/paper-wepm-hierarchical-conflict-reconciliation.md) — 2B/4B 同一视觉语言骨干统一表征、生成与类型化决策；区分 BF16 驻留权重节省、训练峰值显存与实际机器人闭环时延。
 - [ITT：Inner Thinking Transformer](../wiki/entities/paper-inner-thinking-transformer.md) — ACL 2025 的 token 级动态深度与残差思考：相同参数可多用计算提升语言准确率，但无机器人闭环验证；同时核算 FLOPs、训练显存和 P95 延迟。
 
 - [YOLO26 边缘部署与模型压缩](../wiki/methods/yolo26-edge-model-optimization.md) — 用官方导出/量化矩阵选择 ONNX、TensorRT、NCNN，区分 PTQ/QAT、结构化剪枝与蒸馏；按实际设备 mAP 与 P95/P99 延迟验收，而非套用转载加速比。

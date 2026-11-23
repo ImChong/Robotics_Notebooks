@@ -7,7 +7,7 @@ tags:
   - deep-learning
   - foundation-model
 status: complete
-updated: 2026-11-07
+updated: 2026-11-23
 original:
   - ../../sources/papers/clip_arxiv_2103_00020.md
 summary: "多模态学习联合建模图像、文本、音频等异质信号，核心是对齐共享语义空间并支持跨模态检索、生成与推理；是 VLM/VLA 的概念地基。"
@@ -67,6 +67,8 @@ flowchart LR
 「多模态」不等于「具身」；缺少动作与力模态时不能直接当策略。幻觉与错误接地在物理世界代价更高。
 
 ## 关联页面
+
+- [WePM：统一多模态模型的层级冲突协调](../entities/paper-wepm-hierarchical-conflict-reconciliation.md) — 共享图文骨干实现检索嵌入、文本生成和类型化决策，尚非机器人闭环动作策略。
 
 - [依赖、压缩与协同：多模态信息论](../entities/paper-multimodal-information-theory.md) — 用信息总量、压缩与交互分型补充融合目标的选型视角。
 
