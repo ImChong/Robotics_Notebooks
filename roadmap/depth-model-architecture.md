@@ -247,6 +247,7 @@ flowchart LR
 - [AIInfraGuide：AI Infra 全栈学习指南](../wiki/entities/aiinfraguide.md) — 单卡 Kernel、显存与多卡通信到推理调度的分层 Profiling 路线，用于给架构选型补性能证据
 - [Zero to SGLang｜从零手搓推理服务](../wiki/entities/zero-to-sglang.md) — 为 VLA 语义层补上 KV Cache、Continuous Batching、请求生命周期和 Profiling 的推理服务基础；不替代机载低层控制环时延测试
 - [Kaplan Scaling Laws（2020）](../wiki/entities/paper-scaling-laws-neural-language-models.md) — 先学原始 LM 交叉熵的 N/D/C 幂律与 compute-efficient 约束；防过拟合数据需求不等于最优 token 配比，具身任务须重新验证。
+- [Perplexity and Intelligence（OpenAI 2026）](../wiki/entities/openai-perplexity-and-intelligence.md) — Stage 5 的测评边界补充：预训练 log-PPL 能跟踪部分潜在能力进展，但既非闭环机器人成功率，也不等于安全认证；内部代码评测阈值不可迁移到 VLA。
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) — 数据 / 参数 / 泛化的幂律关系与边界
 - [实时性与泛化取舍](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) — 规模与推演步长如何压住控制带宽
 - [ONNX Runtime vs MNN vs TensorRT](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 机载推理栈选型
