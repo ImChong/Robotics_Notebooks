@@ -2,8 +2,12 @@
 type: entity
 tags: [paper, humanoid, manipulation, proprioception, interactive-perception, sim2real, unitree, tu-darmstadt, dfki]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-23
+project_id: blind-dexterity
 arxiv: "2608.29487"
+project: https://aditya.bhatts.org/BlindDexterity/
+original:
+  - ../../sources/papers/blind_dexterity_arxiv_2608_29487.md
 related:
   - ./unitree-g1.md
   - ../tasks/loco-manipulation.md
@@ -56,7 +60,7 @@ summary: "Blind Dexterity（arXiv:2608.29487，TU Darmstadt/DFKI）：G1 纯本�
 | **平台** | Unitree G1；PD 接口 \(q^{des}_t = q^{default} + 0.25 a_t\) |
 | **仿真** | Isaac Sim；PPO（RSL-RL）；物理步 0.005 s，decimation 4 |
 | **网络** | Actor/Critic MLP [1024,512,256]；估计器 [256,256,256,128] |
-| **开源** | **待发布**（项目页 **Code (to be released)**，截至 **2026-09-02**） |
+| **开源** | **待发布**（项目页 **Code (to be released)**，**2026-11-23** 复核） |
 
 ## 流程总览
 
@@ -99,7 +103,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用** — 项目页标注 **Code (to be released)**，截至 2026-09-02 **无 GitHub**。若开源，预期路径：Isaac Sim 环境注册 → PPO 训 blind 策略（+ 可选并行 SE）→ 导出 Torch 策略 → G1 50 Hz PD 部署。
+**不适用** — 项目页仍标注 **Code (to be released)**（2026-11-23 复核），未提供可检查的官方运行入口，因此不能凭论文推断源码调用顺序。论文描述 Isaac Sim / RSL-RL PPO 训练与 G1 50 Hz PD 部署，但这不是源码运行时序图。
 
 ## 工程实践
 
@@ -137,7 +141,7 @@ flowchart LR
 4. **估计器** — 适合 **分析信息含量**；闭环 +SE 非必需，有时有害。
 5. **部署** — 遮挡/动态场景可优先 proprio；与 vision **分层融合** 是自然扩展。
 6. **局限** — 空间分辨率粗、多接触模式歧义、sim PD 与真机差异需 DR。
-7. **开源** — **待发布**；复现等待 TU Darmstadt 放代码与任务配置。
+7. **开源** — **待发布**（2026-11-23 项目页复核）；复现仍需官方代码与任务配置。
 
 ## 与其他工作对比
 
@@ -163,6 +167,7 @@ flowchart LR
 - [Loco-manipulation](../tasks/loco-manipulation.md) — 全身操作任务语境
 - [GentleHumanoid](./paper-gentlehumanoid.md) — 柔顺全身 RL（本文把柔顺当传感）
 - [Current as Touch](./paper-current-as-touch-proprioceptive-contact.md) — 另一路「本体即触觉」
+- [Blind Precise Assembly](./paper-blind-proprioceptive-assembly.md) — 将关节历史接触推断用于局部精密插装
 - [DAgger](../methods/dagger.md) — 本文蒸馏失败的对照
 - [Sim2Real](../concepts/sim2real.md) — 域随机化迁移
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本文是该闭环的**下界对照**：整条视觉栈置零、只留本体交互式感知时策略还能做到什么，可用来判断某任务是否真的需要①～③层

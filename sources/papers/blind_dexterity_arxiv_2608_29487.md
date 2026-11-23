@@ -13,6 +13,8 @@
 - **发表 / 上传：** 2026-08（arXiv）
 - **平台：** Unitree G1
 - **入库日期：** 2026-09-02
+- **核对范围：** arXiv HTML v1 全文（引言、相关工作、§III–VI 方法与四项任务、实验表 I–III、消融、局限和结论）；官方项目页代码状态（2026-11-23）。
+- **通读：** 已完成
 
 ## 相关资料（策展）
 
@@ -23,9 +25,9 @@
 | 平台 | [Unitree G1](../../wiki/entities/unitree-g1.md) | 29-DoF 实验人形 |
 | 对照 | [GentleHumanoid](../../wiki/entities/paper-gentlehumanoid.md) | 柔顺全身 RL（本文把柔顺当传感通道） |
 
-## 开源状态（步骤 2.5，2026-09-02 复核）
+## 开源状态（步骤 2.5，2026-11-23 复核）
 
-- **宣称将开源 / 待发布：** 项目页 **Code (to be released)**；截至入库日 **无** GitHub URL。
+- **宣称将开源 / 待发布：** 项目页 **Code (to be released)**；2026-11-23 项目页仍未列出可运行官方代码仓库。
 - **论文：** 「Complete task configurations … will be released with the code.」
 - **处理：** wiki 标待发布；`## 源码运行时序图` 标不适用。
 
