@@ -2,8 +2,9 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-23
 related:
+  - ../entities/paper-worldtrace-addressable-memory-video-world-models.md
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
   - ../entities/paper-lpwm.md
@@ -682,6 +683,15 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Cheng, K., et al. (2026). *M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming* — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
 - Jiang, F., et al. (2026). *ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU* — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。
 - ForeDrive（2026）— [arXiv v2](https://arxiv.org/html/2609.26299v2)；来源摘录：[foredrive_arxiv_2609_26299.md](../../sources/papers/foredrive_arxiv_2609_26299.md)。
+
+## WorldTrace：视频世界模型长程场景回访记忆（NeurIPS 2026）
+
+[WorldTrace / Addressable Memory for Video World Models](../entities/paper-worldtrace-addressable-memory-video-world-models.md) 针对交互视频世界模型的**旧场景可寻址性**：远端 KV-cache 在超出 temporal RoPE 训练相对距离后即使保留内容也可能检索失败，跨时间直接平均旋转后的 key 还会发生相位抵消。方法采用 `slot-rank virtual positions`、canonical-key Field 摘要和冻结场景入口帧 Landmark；推理期插入，无须重训 backbone。
+
+- **LoopBench**：Matrix-Game-2 的 12 个场景回访配置，组合方法平均 DINOv2 **0.587→0.778（相对 +32.6%）**；度量的是**生成场景回忆相似**，不是机器人物理准确率或控制成功率。
+- **代价与边界**：同为 6 帧 attended-cache，但组合方案额外 **3.1 GB** GPU 记忆库，论文实测每块 **1.10→1.40 s（+27%）**；14B LingBot-World 的跨架构评估有条件未领先。
+- **工程位置**：属于视频世界模型的**推理期缓存寻址与压缩**分支；与 [X-Cache](../entities/paper-x-cache.md) 的跨 chunk 计算复用不同，主要改善长期回访。
+- [原文归档](../../sources/papers/worldtrace_addressable_memory_arxiv_2608_07408.md) · [NVIDIA 项目页](https://research.nvidia.com/labs/sil/projects/WorldTrace/)
 
 ## 交互式视听生成案例
 
