@@ -5,7 +5,7 @@ code: https://github.com/anthropics/FlashProve
 project: https://www.anthropic.com/research/provable-inference
 tags: [anthropic, inference, security, verification]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-23
 original:
   - ../../sources/sites/flashprove-technical-report.md
 sources:
@@ -100,6 +100,7 @@ sequenceDiagram
 ## 关联页面
 
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
+- [TensorLean：PTX 级 GPU 算子形式化验证](./tensorlean.md) — 对照 GPU Kernel 正确性证明与 FlashProve 的推理结果证明，保障层级不同。
 - [Anthropic Claude API Skill](anthropic-claude-api-skill.md)
 
 ## 参考来源
