@@ -83,6 +83,7 @@ flowchart LR
 ### 推荐读什么
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) — 本阶段主线知识页
 - [人形并联/连杆关节运动学](../wiki/concepts/humanoid-parallel-joint-kinematics.md) 与 [人形腿部行星滚柱丝杠直线驱动](../wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)
+- [iCub 腕部六构型比较（Shah et al., 2019）](../wiki/entities/paper-icub-wrist-mechanisms-comparison.md) — 从 Gimbal / mk.2 到球面五六杆、OmniWrist 与 Quaternion 的工作空间与耦合取舍；Stage 1 的腕部减重、传动和机构选型参考
 - [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 电液混合 5-DoF + EHA/电机分工的布置实例
 - [刚-软混合链路人形](../wiki/entities/paper-rigid-soft-hybrid-link-humanoid.md) — 东京大学的刚-软混合人形研究：以 PCS 描述柔性腿部构件，结合逆运动学与主动柔顺优化；跳跃/行走为仿真验证，实验验证限于单、双支撑站立平衡。
 - [Agility Robotics（ATRIAS→Cassie→Digit 5 机械布局演化）](../wiki/entities/agility-robotics.md) — 从叶簧被动动力学（Digit 3）到刚性连杆（Digit 4）再到摆线传动 + `Heel→Ankle→Knee` 分级冲击柔顺与协作安全质量代价（Digit 5 `129 kg` / `23 kg` 负载）的一线商业整机取舍
