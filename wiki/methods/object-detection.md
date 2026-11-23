@@ -7,7 +7,7 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-11-22
+updated: 2026-11-23
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -21,6 +21,7 @@ related:
   - ../entities/roboflow-trackers.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/rf-detr.md
+  - ../entities/paper-annotator-free-object-detection-foundation-model-collaboration.md
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
   - ../overview/autonomous-driving-core-algorithms-series.md
@@ -32,6 +33,7 @@ sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
   - ../../sources/papers/rf_detr_arxiv_2511_09554.md
+  - ../../sources/papers/annotator_free_object_detection_arxiv_2611_06195.md
   - ../../sources/repos/ultralytics.md
   - ../../sources/repos/roboflow-trackers.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
@@ -151,7 +153,12 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 
 [CamoDreamer（ACM MM 2026）](../entities/paper-camodreamer-context-decoupled-camouflage-generation.md) 在输入前景掩码和背景检索库的条件下，用 CCB/CDAS/FACB 生成与环境视觉协调的伪装图像。其作者在 LAKE-RED 训练数据合成后，以 ZoomNet 的 CAMO、COD10K、NC4K 伪装目标识别/分割测试检验增强价值；这是**图像级合成数据实验，不是机器人实时目标框检测或真机结果**。截至 2026-11-11 官方仓库无可运行代码。
 
+## 免人工目标域标注：基础模型协作 + 自精炼（2026）
+
+[Annotator-Free Object Detection via Foundation Model Collaboration](../entities/paper-annotator-free-object-detection-foundation-model-collaboration.md)（arXiv:2611.06195）将 **SAM 候选 → CLIP 语义对齐 → LVLM 词表/标注 → YOLO World 自精炼** 组合为目标数据集无需人工 bbox/类别标签的离线构建管线；原文报告 COCO **60.8 AP**、LVIS **47.4 AP**（AP@[.50:.95]）。Landmark 聚类用于摊销 LVLM 离线查询，**并非**直接增加机载推理 FPS。COCO OVD 的一个对照实验使用基础类 ground truth 训练，且截至 2026-11-23 未发现本文公开可运行代码，详见论文独立节点的监督/性能口径说明。
+
 ## 关联页面
+- [基础模型协作免标注检测（独立论文）](../entities/paper-annotator-free-object-detection-foundation-model-collaboration.md) — 目标域伪标签自动生成和开放世界检测器自精炼
 - [CamoDreamer：上下文解耦伪装图像生成](../entities/paper-camodreamer-context-decoupled-camouflage-generation.md) — 伪装目标识别训练数据合成与下游验证
 
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
@@ -172,6 +179,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 2D/3D 检测与跟踪上游
 
 ## 参考来源
+- [基础模型协作免标注目标检测论文核对](../../sources/papers/annotator_free_object_detection_arxiv_2611_06195.md)
 
 - [YOLO v1 论文摘录（arXiv:1506.02640）](../../sources/papers/yolo_arxiv_1506_02640.md)
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
