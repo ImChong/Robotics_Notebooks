@@ -10,6 +10,7 @@ related:
   - ./paper-scaling-laws-neural-language-models.md
   - ../concepts/bitter-lesson.md
   - ../methods/vla.md
+  - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/blogs/openai-perplexity-and-intelligence-2026.md
 original:
@@ -122,6 +123,7 @@ flowchart TD
 - [Scaling Laws for Neural Language Models](./paper-scaling-laws-neural-language-models.md) — 语言模型 N/D/C 与 CE 的实证基础
 - [The Bitter Lesson](../concepts/bitter-lesson.md) — 通用计算和学习方法的历史视角
 - [VLA](../methods/vla.md) — 模型预测质量如何与机器人动作成功率分开验证
+- [强化学习（Reinforcement Learning）](../methods/reinforcement-learning.md) — 原文将其列为后训练能力引出手段之一；不把 RL 收益等同于预训练 PPL 的改善
 - [模型架构纵深路线 Stage 5](../../roadmap/depth-model-architecture.md) — 规模与部署的指标边界
 
 ## 参考来源
