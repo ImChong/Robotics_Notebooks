@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-23] ingest | sources/papers/icub_wrist_mechanisms_robotics_2019.md — 归档 iCub 六种腕关节机构比较
+
+- 一手来源：Shah 等，*A Comparison of Robot Wrist Implementations for the iCub Humanoid*，Robotics 2019；DOI 10.3390/robotics8010011；全文第 1–8 节与图表已核对。
+- 知识沉淀：新建唯一论文实体，比较 Gimbal、mk.2、球面五杆/六杆、OmniWrist-III、Quaternion 的工作空间、驱动耦合、warping；挂载人形硬件设计 Stage 1。
+- 重要边界：论文的 Quaternion 推荐来自 CAD 运动学评测，不代表实机验证；未找到可运行官方求解器/模型的公开入口，因此不生成虚构源码时序图。
+
 ## [2026-11-23] ingest | Inner Thinking Transformer | 归档动态深度语言模型论文
 
 - 论文：[Inner Thinking Transformer: Leveraging Dynamic Depth Scaling to Foster Adaptive Internal Thinking](https://arxiv.org/abs/2502.13842)，ACL 2025。
