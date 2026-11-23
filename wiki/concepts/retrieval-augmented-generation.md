@@ -4,6 +4,10 @@ tags: [rag, retrieval, llm, grounding, knowledge-base, agent, vlm, nlp]
 status: complete
 updated: 2026-11-23
 summary: "RAG（Retrieval-Augmented Generation）在生成前从外部知识库检索相关片段再条件生成，用可更新、可溯源的非参数记忆补足 LLM 参数化知识，是 agent grounding、VLM 约束与 LLM Wiki 对照范式的共同基座。"
+original:
+  - ../../sources/papers/lewis_rag_neurips_2020.md
+  - ../../sources/papers/rag_survey_arxiv_2312_10997.md
+  - ../../sources/papers/hallucination_computational_boundary_arxiv_2508_07334.md
 related:
   - ../concepts/llm-wiki-karpathy.md
   - ./ai-auto-research.md
@@ -140,6 +144,8 @@ flowchart LR
 - [Easy-Vibe（Datawhale）](../entities/easy-vibe.md) — Stage 3 / 附录 **交互式 RAG** 教程
 
 ## 参考来源
+
+- **一手原文核对（2026-11-23）：** Lewis et al. [arXiv:2005.11401v4](https://arxiv.org/html/2005.11401v4) 正文及附录 A–I；Gao et al. [arXiv:2312.10997v5](https://arxiv.org/html/2312.10997v5) I–VIII 节；新增对 Oracle 限制的解读来自 [arXiv:2508.07334v2](https://arxiv.org/html/2508.07334v2)。均为原文整理，未独立复现 RAG 实验、未逐篇验证综述所引全部文献。
 
 - [Lewis et al. RAG（NeurIPS 2020）](../../sources/papers/lewis_rag_neurips_2020.md)
 - [Gao et al. RAG Survey（arXiv:2312.10997）](../../sources/papers/rag_survey_arxiv_2312_10997.md)
