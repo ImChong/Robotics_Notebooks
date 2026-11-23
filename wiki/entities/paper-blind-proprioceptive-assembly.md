@@ -2,9 +2,11 @@
 type: entity
 tags: [paper, mit, proprioception, contact-rich-manipulation, sim2real, reinforcement-learning, assembly]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-23
 project_id: blind-proprioceptive-assembly
 arxiv: "2610.23849"
+original:
+  - ../../sources/papers/blind_precise_assembly_arxiv_2610_23849.md
 project: https://younghyopark.me/blind-proprioceptive-assembly/
 code: https://github.com/younghyopark/mjfit
 related:
@@ -39,11 +41,30 @@ summary: "仅凭关节位置、速度和动作历史训练盲装配策略；插�
 
 视觉被遮挡、力传感器难集成或接触力很轻时，机器人关节编码器仍能通过状态变化提供接触线索。该工作把这种本体信号从粗大而有力的足地接触扩展到毫米级装配，并直接比较了泛化能力与完成速度之间的取舍。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  shape["mjfit 精确凸碰撞几何与随机化装配场景"] --> sim["MuJoCo 仿真：插销 / 齿轮 / 螺母"]
+  sim --> obs["关节状态与动作历史：30 帧 / 0.6 秒"]
+  obs --> enc["时序卷积编码器 + MLP 策略"]
+  sim --> privileged["仅训练时可用的接触标签与物体状态"]
+  privileged --> aux["非对称 Critic + 接触监督解码器"]
+  aux --> enc
+  enc --> cmd["关节位置增量 / 阻抗控制"]
+  cmd --> sim
+  enc --> deploy["移除接触解码器，零样本部署插销策略"]
+```
+
+该图依据论文 §2.2–2.3、Fig.7 和附录 A；`mjfit` 的公开范围仅为几何与场景工具，图中策略训练与部署不是已发布的源码入口。
+
 ## 核心原理
 
 策略观测只包含短时的关节位置、速度和过去动作。零件、孔位和抓取位姿不提供给策略；接触引起的关节运动变化帮助策略判断碰撞、对齐和插入进展。训练在仿真中覆盖随机零件形状、抓取和接触，任务包括插销入孔、齿轮啮合和螺母旋入。
 
 论文同时强调仿真几何必须保留真实装配间隙。`mjfit` 将复杂零件拆成精确拼合的凸棱柱，使 MuJoCo 原生凸碰撞能够表达孔隙、螺纹和齿轮啮合，避免近似凸分解把孔隙填掉，也避免网格 SDF 在微小接触上慢或漏检。
+
+论文附录 A 给出 50 Hz 策略、1 kHz 物理仿真，以及 30 帧历史编码；训练中接触监督直接约束编码器，但特权标签和接触解码器不进入部署策略。
 
 ## 源码运行时序图
 
@@ -70,11 +91,11 @@ sequenceDiagram
 | 观测设计 | 仅使用一段关节位置、速度与动作历史 | 不意味着能从本体状态恢复通用六维物体位姿 |
 | 任务随机化 | 同时变化零件形状、尺寸、抓取和接触条件 | 对未见外形的泛化不等于对所有材料与摩擦都鲁棒 |
 | 仿真碰撞 | `mjfit` 精确构造带装配间隙的凸几何 | 仓库是几何与场景工具，不是完整策略代码 |
-| 实机验证 | 插销任务进行零样本迁移 | 报告的 73% 是论文所测零件和试验条件下的成功率 |
+| 实机验证 | Flexiv Rizon 4S + Robotiq 2F-85 上 50 Hz 零样本插销 | 173/237 次成功（73%）；初始必须已在夹具表面接触附近 |
 
 ## 实验与评测
 
-- 论文报告在真实机器人上插入不同形状和尺寸的插销，成功率为 73%。
+- 论文报告在 Flexiv Rizon 4S 上对 8 种打印插销进行 237 次真机试验，**173 次成功（73%）**；初始条件为已抓持零件且在孔附近接触夹具。
 - 仿真中的匹配对照显示，本体感知策略对未见零件外形和尺寸泛化更好，但可能耗时更长。
 - `mjfit` 的公开基准比较精确凸几何与 CoACD、V-HACD、网格 SDF 在小间隙下的几何准确度和仿真步进速度。
 
@@ -99,6 +120,8 @@ sequenceDiagram
 
 ## 局限与风险
 
+**任务边界：** 论文把精密装配明确限定为 last-mile skill；每次从零件已接触夹具表面且距离孔较近的状态开始，不负责远距离寻找夹具，也不能处理零件滑出夹爪等非局部恢复。
+
 策略以关节运动变化作为接触信号，观测能力依赖具体机器人机构、关节传动、摩擦和控制器；不能直接替代触觉或力传感器在滑移检测、力估计等任务中的功能。实机成功率来自论文设定的插销测试集。开源范围目前只确认包括 `mjfit` 几何生成器，不能据此复现论文策略。
 
 ## 关联页面
@@ -107,6 +130,7 @@ sequenceDiagram
 - [Contact estimation](../concepts/contact-estimation.md) — 从机器人传感信号推断接触
 - [Reinforcement learning](../methods/reinforcement-learning.md) — 仿真中的策略训练方法
 - [Manipulation](../tasks/manipulation.md) — 操作任务类别与评价
+- [Blind Dexterity](./paper-blind-dexterity.md) — 粗粒度全身接触探索的相关对照
 
 ## 参考来源
 
