@@ -94,6 +94,7 @@ flowchart LR
 
 ### 推荐读什么
 
+- [ReMe：动态程序性记忆](../wiki/entities/paper-reme-procedural-memory.md) — 成功/失败轨迹提炼经验，按场景检索并按使用成效淘汰；仅外部记忆级改进，论文无机器人真机评测
 - [STRATA：三层结构化经验图](../wiki/entities/paper-strata-experience-graphs.md) — 成功/失败经验归纳、压力式遗忘与反向任务负迁移；只改变外部经验，不改变权重
 - [Kytheros Strata MCP 记忆](../wiki/entities/kytheros-strata-mcp-memory.md) — 质量门控的跨会话技术决策和故障复用
 - [Jeremy Kamber Strata Memory](../wiki/entities/jeremykamber-strata-tiered-memory.md) — 按时间/访问频率将记忆在热/温/冷层间迁移，学习规则式维护与可恢复归档
