@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-23
 related:
   - ../entities/paper-behavior-spatial.md
   - ../entities/paper-recova.md
@@ -642,3 +642,11 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前模仿学习 SOTA 路线之一）
 - Unitree 开源操作项目：<https://github.com/unitreerobotics>
 
+
+## 2026-11 操作策略与工程工具补充
+
+- [AFFECT：动作忠实的世界模型](../entities/paper-affect-action-effect-matching.md) — 以扰动和真实结果匹配，区别于只优化生成视频逼真度。
+- [WAM-Policy：四足前腿操作策略](../entities/paper-wam-policy.md) — WAM 跨形态迁移、OPSD 与任务专用专家蒸馏。
+- [Eden：Genesis 任务配置与训练部署框架](../entities/eden-embodied-ai-nexus.md) — 将操作任务定义、并行训练和 sim2sim 接通。
+- [Hebbian RUA：工具化机械臂智能体](../entities/hebbian-rua.md) — 把模型决策与实时执行和安全检查分层。
+- [SO-ARM102：开源领从机械臂](../entities/so-arm102-robonine.md) — LeRobot 演示采集和硬件/夹爪选型入口。
