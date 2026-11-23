@@ -1,7 +1,7 @@
 # DriveSTA：Rtwotwo/DriveSTA 官方开源实现
 
 - **地址：** https://github.com/Rtwotwo/DriveSTA
-- **论文：** https://arxiv.org/abs/2611.27515（原文未成功读取）
+- **论文：** https://arxiv.org/abs/2611.27515（官方 v1 PDF 全文已通读，方法和结果归档见 sources/papers/）
 - **项目：** https://rtwotwo.github.io/DriveSTA/
 - **资产入口：** https://huggingface.co/Rtwotwo/DriveSTA
 - **许可：** Apache-2.0（主仓原始代码；third_party 与外部数据需分别查许可）
