@@ -120,6 +120,7 @@ flowchart LR
 - 用 LoRA 把一个小 VLA 微调到自己的数据上，记录数据量–成功率曲线
 
 ### 推荐读什么
+- [WALL-OSS-1.0：原生 VLA 预训练与多分支动作生成](../wiki/entities/wall-oss-1-0.md) — 自变量 Qwen3.5 原生语言/视觉/动作预训练，Action Expert + RTC、Lite/Nano/Gen/AR 家族；区分 312 项零样本真机 55.1% 与 X2Real 仿真 67.55 分，API 可申请但 1.0 代码/权重未核实。
 - [BiCAT：双臂协调动作分词](../wiki/entities/paper-bicat.md) — 共享 token 原语、跨臂注意力与两块动作预测，补齐离散动作接口。
 - [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md) — 主线索引页
 - [VLA / 世界模型 14 篇阅读路线](../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — CLIP→RT→OpenVLA→π₀ + 四篇 WM，每篇独立 `paper-*`
