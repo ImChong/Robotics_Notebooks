@@ -1,47 +1,82 @@
 # DriveSTA：Beyond a Single Human Demonstration: Learning from Scored Trajectory Alternatives for End-to-End Driving
 
-- **类型：** paper / end-to-end autonomous driving / multimodal trajectory planning
-- **论文：** <https://arxiv.org/abs/2611.27515>；[arXiv v1 PDF](https://arxiv.org/pdf/2611.27515v1)；2026-11-20 提交，21 页、9 图（含补充材料），未经同行评审的预印本
-- **作者：** Xinyao Rao¹、Zecheng Tang²、Liuxuan Sun¹、Zheyuan Lai³、Minjun Yu³、Xun Cao¹、Wei Li¹ ³（通讯）
-- **机构：** ¹南京大学（Nanjing University），²北京大学（Peking University），³EABOT.AI
-- **项目主页：** <https://rtwotwo.github.io/DriveSTA/>
-- **官方源码：** <https://github.com/Rtwotwo/DriveSTA>
-- **模型与轨迹资产：** <https://huggingface.co/Rtwotwo/DriveSTA>
-- **入库与全文复核：** 2026-11-23
-- **核对范围：** 获取 arXiv:2611.27515v1 官方 21 页 PDF，以 `pdftotext -layout` 提取并通读第 1–9 页摘要/引言/相关工作/§3 方法/§4 结果/§5 局限/§6 结论，第 9–11 页参考文献，第 12–16 页补充材料 Appendix A（数据和评测公式）、B（搜寻筛选/模型/训练/JEPA/消融/耗时），第 17–21 页 Appendix C 图 S1–S5 的图注；图像本身仅按图注、正文及官方项目页作语义核查，未逐像素复核细节。同步静态核查官方 README / MINING / INFERENCE / 模型源文件。**未独立复现实验**。
+- **类型：** paper / end-to-end autonomous driving
+- **中文标题：** 超越单条人类示范：从带评分的备选轨迹学习端到端驾驶
+- **正式标题：** Beyond a Single Human Demonstration: Learning from Scored Trajectory Alternatives for End-to-End Driving
+- **作者：** Xinyao Rao、Zecheng Tang、Liuxuan Sun、Zheyuan Lai、Minjun Yu、Xun Cao、Wei Li（通讯作者）
+- **机构：** 南京大学、北京大学、EABOT.AI
+- **论文：** https://arxiv.org/abs/2611.27515
+- **PDF（原文）：** https://arxiv.org/pdf/2611.27515v1
+- **版本：** arXiv:2611.27515v1，cs.CV，2026-11-20；预印本，非独立同行评审结论
+- **项目主页：** https://rtwotwo.github.io/DriveSTA/
+- **代码：** https://github.com/Rtwotwo/DriveSTA
+- **模型/数据入口：** https://huggingface.co/Rtwotwo/DriveSTA（项目指向，下载与复现未单独验证）
+- **入库日期：** 2026-11-23
+- **核对范围：** 已读取用户提供的同篇 21 页 PDF（正文第 1–11 页、Supplementary Material 第 12–21 页），逐节核对 Introduction、Related Work、Method §3.1–3.5、Experiments §4.1–4.4、Discussion/Limitations、Conclusion、Appendix A 数据与指标协议、Appendix B 搜索/训练/JEPA/消融/时延、Appendix C 可视化及 Table 1–8、S1–S4。与既有官方项目页和官方仓库静态审读记录交叉校验；未独立执行训练或 benchmark。
 - **通读：** 已完成
 
-## 一手原文核心摘录（以论文 §/Table/Eq 为锚）
+## 核心问题与贡献（正文 §1、§3，图 1–2）
 
-1. **问题界定（Abstract / §1）：** 单条记录轨迹不能提供同一场景多种可行行为的几何与质量监督；ChainFlow-VLA 的 VLM 条件精修推理开销高。本文在保留 AR Proposal + residual diffusion 表达下，让离线多备选监督生成、精修和评分，并通过 JEPA 提供共享时序特征。
-2. **轨迹构造（§3.2 Eq.1 / Appendix B.1）：** 使用五次 smoothstep `b(r)=6r^5−15r^4+10r^3`，`x_t(u)=x_t^expert+b((t−1)/(H−1))u`，在记录轨迹上做自车系纵横平滑终点偏移；初始纵向偏移 [−5,8] m、横向 [−3,3] m，可恢复扩展到 [−15,40] / [−12,12] m；按固定时间采样及轨迹切线重建方向，跟踪后与日志交通流比较并由 NAVSIM v1 计算评分。
-3. **搜索与筛选（§3.2 / Appendix B.1）：** 每批 64 查询，25% 全局探索、其余在优质候选附近搜索；预算 3,072→8,192→32,768；保留跨质量区间 3,072 路径（训练 scorer），另要求 256 条 `PDMS≥95` 的有效候选入池。筛选须通过 NC/DAC/TTC/comfort/DDC、车体足迹、轨迹连续、跟踪误差和方向检查；多样性要求候选两两全路径 ADE≥0.25 m，至多保留 32 条高分目标。**来源统计：** 95,998 有筛选目标的真实场景、2.61M 目标，平均约 27 条；7,265 场景没有通过筛选的目标仍保留专家和评分监督。
-4. **Stage 1（§3.3 Eq.2/3）：** 四个相机视角的 DINOv2+LoRA 生成 64 个 AR 自行车积分轨迹；对轮换至多 8 个筛选目标做一对一 Hungarian 匹配，目标几何距离为 `|dx|+|dy|+0.25|dheading|` 平均，`L_G=L_E+0.25 min(1,e/2)L_A`；score head 预测六个组件，使用 BCE + 0.5×聚合评分平方误差，并用 64 条跨质量重播轨迹辅助标定。
-5. **Stage 2（§3.4 Eq.4/5 / Appendix B.4）：** 每条 detached Proposal 最多选择 4 个兼容目标，门槛分别为全路径位置 ADE≤3 m、终点≤6 m、航向误差≤0.5 rad；把目标与 parent 的位置/角度差作为 residual，以 DiT v-prediction+几何损失学习，重建后选择误差最小目标；未匹配轨迹用较小权重 0.05 的零残差监督。推理是 12 次确定性 DDIM 迭代精修 64 条候选，而非仅精修已选中的一条。
-6. **共享 JEPA（§3.4 Eq.6 / Appendix B.3/B.4）：** 从 Drive-JEPA checkpoint 初始化 ViT-L；训练阶段用 8 帧视频掩码预测 EMA 目标特征、`L_J` 为 L1 特征损失。规划分支编码前一帧与当前前视图，输出经 stop-gradient 分别送到 DiT 条件适配器和 Scorer 适配器，**共享一次 observed-frame 编码**。未来帧、predictor、EMA 目标网络仅用于训练；并非在线推理使用未来视频或独立大 VLM。
-7. **评分与选择（§3.3–3.5 Eq.3/7/8）：** Stage 2 对全部精修结果重新做 evaluator 标签及 scorer 学习，防止沿用精修前的候选排序；Rank 用 0.005 质量差筛正样本并做 pairwise logistic，v1 真实数据 `λ_R=0`，混合 `λ_R=0.05`；推理取 64 条路径预测 aggregate score 最大者。NAVSIM v2 实验采用单独选择的 S1 + Rank checkpoint，不能将其与 v1 S2 混称。
-8. **模型/训练（Appendix B.2 Table S2/S3）：** 4 个当前相机视角 1148×672；DINOv2 ViT-S/14 LoRA rank32；64 个场景 token×256、一个 ego token；JEPA ViT-L width 1024；DiT 12 blocks/8 heads/width256；64 proposals×8 个 `(x,y,θ)` 位姿（4 s/0.5 s）；训练 Stage1 25 epoch / Stage2 40 epoch，8×H20 GPU、每 GPU batch6、AdamW、BF16（评测 FP32）；**一套配置一个训练随机种子**，每次报告该 run 完整评测中的最好 checkpoint。
-9. **NAVSIM v1（§4.2 Table1）：** 12,146 NAVTEST 场景，DriveSTA S1 94.76、S2 95.14 PDMS（约 103k 训练）；DriveSTA-Scale S1 95.09、S2 **95.55**（232,672 真实+合成场景）。S2 在约 103k regime 中居表列模型之首；Scale 结论限定于论文比较的数据规模和方法。项目页另列 FPD-Drive-Pro 95.69，应特别核查是论文引用/发布版本和精度口径，不能混为同一训练预算。
-10. **闭环 HUGSIM（§4.2 Table2 / Appendix A.3）：** 345 场景（49 E、126 M、86 H、84 X），DriveSTA S2 的 RC/HD-Score 为 55.2/44.0，Scale S2 **56.1/46.7**；在 Extreme 子集 S2 相对 S1 更差，Scale comfort 从 99.6 降到 95.0，存在性能权衡。评测每 0.25s 重规划、common controller、50ms 控制预算，不等于网络 forward 延迟低于 50ms。
-11. **匹配时延（§4.2 Table3 / Appendix B.7）：** 相同 12,146 Navtest、H20、batch1、64 candidates、S2 12 DDIM steps，ChainFlow-VLA **1294.68±4.47 ms**，DriveSTA S2 **349.30±5.21 ms**（约 −73%）；S1 **148.99±0.85 ms**。计时从 GPU 已驻留输入到轨迹选择，**排除磁盘/预处理/传输/仿真打分**，不是车端 end-to-end wall-clock。ChainFlow-VLA 使用 BF16 InternVL、eager attention 且未启用 FlashAttention2，需保留作为对比边界。
-12. **消融（§4.3 Table4–6）：** Stage1 dense matches 在控制变量下将 selected PDMS 93.92→94.53、Oracle 99.31→99.77；加入 Replay、Rank 并非对真实域都正收益。Stage2 Screen+多目标兼容匹配+JEPA adaptation 分别改善所选指标，视频条件化 Fixed-pool 对 S2 scorer 的初始/精修候选分别提升 4.41/3.20 PDMS（配对区间见 Table6），但 scorer 的价值受候选分布和阶段约束。
-13. **NAVSIM v2（§4.4 Table7/8）：** DriveSTA-Scale S1 在 Navtest EPDMS **91.32**，低于 WA-JEPA **91.7**；在 Navhard **56.13**，低于 DriveZero-Scale **57.1**；在 Navhard 合成反应延续集的 extended comfort 由 70.6→32.3，表明 v1 单条轨迹优化不保证连续规划平滑。
-14. **局限（§5 / Appendix B.3/B.5/B.6）：** 参考轨迹平滑形变限制离散驾驶动作覆盖；评分和有效性依赖非反应式 evaluator；真实交通参与者不会因备选自车路径改变行为；逐候选监督未显式约束跨重规划周期的舒适一致性。JEPA 初始化 checkpoint 的完整 driving-domain pretraining 配方尚未公开；每配置一个训练种子及挑选最好完整 checkpoint，不能推断独立重复稳定性。
-15. **视觉与补充材料（Appendix C 图 S1–S5）：** 图注与正文显示 JEPA cross-attention、精选 NAVSIM 碰撞对照及 HUGSIM rollout；可视化样本来自 41 场景筛选池，注意力权重**不是因果解释**、精选案例不代表统计失败率。图像细节未逐像素复核；定量以原文 Table1–8 / S1–S4 为准。
+每个场景只有一条实际驾驶轨迹，不意味着其它行驶决策错误。DriveSTA 继承 ChainFlow-VLA 的自回归候选生成与残差流精修，但用**离线仿真评分的多样化轨迹**同时提供：①互异 proposal 的几何训练目标，②局部残差精修目标，③含成功/失败样本的候选评分标签。另以**共享且适配过的 JEPA 历史视频编码**取代在线大 VLM 条件推理。
 
-## 评测口径与工程结论
+输入为四个当前相机视角、前视相机的已观察帧、自车历史状态和导航指令；输出选定轨迹为 **8×(x,y,heading)**，以 0.5 s 为间隔覆盖未来 4 s。候选数 **64**，Stage 2 对全部候选执行 **12 步 DDIM** 后重评分再选最优（正文 §3.1、§3.5）。
 
-| 指标 | 官方原文结果 | 必要限定 |
-|---|---|---|
-| NAVSIM v1 Navtest PDMS | 95.1424（Base S2）/95.5520（Scale S2） | 12,146 场景；不与 EPDMS 等价 |
-| HUGSIM 闭环 | 56.1 RC /46.7 HD-Score（Scale S2） | 345 episodes，加权难度分布；Extreme 退化 |
-| NAVSIM v2 EPDMS | Navtest 91.32、Navhard 56.13（Scale S1） | 不是 S2 结果；低于所比较的个别基线 |
-| Planner forward latency | 349.30 ms 对 1294.68 ms（−73%） | H20 batch1/64 candidates/12 DDIM；排除 I/O 与预处理 |
+## 离线备选轨迹构造（正文 §3.2，附录 B.1）
+
+- **连续变形：** 以人类示范前端为锚，将终点纵横向偏移 `u` 沿 8 个时刻逐步施加，平滑步进函数 `b(r)=6r^5-15r^4+10r^3`，保留起始位置且两端位移导数为零（式 1）。采样时刻固定，因此变形同时影响速度；航向随轨迹切向更新。
+- **搜索与评价：** 每批 64 次查询中 25% 广域探索，其余聚焦高分邻域；预算由 **3,072 → 8,192 → 32,768** 次递增。每场景保留跨分数区间的 3,072 条记录用于评分训练，准入需至少 256 条分数 ≥95 的路径。
+- **几何筛选：** 分项 NC/DAC/TTC/Comfort/DDC 全分，再检查方向、车辆轮廓、运动连续性、跟踪误差；要求轨迹总分 `J≥0.95`、相互全轨迹 ADE 至少 **0.25 m**；上限 **32** 个目标，最多 256 次跟踪校验。**7,265** 个没有合格筛选目标的场景仍保留专家与评分监督。
+- **规模：** 103,263 个训练场景；其中 **95,998** 个含筛选目标，共 **2.61M** 条。注意附录 B.6 的 **317.3M** 是搜索归档总路径数，不是 2.61M 筛选训练目标；另 **55.45%** 的含目标场景存在评分高于人类参考的备选路径。
+
+## Stage 1：多目标 Proposal + 评分（正文 §3.3）
+
+- **感知与生成：** DINOv2 + LoRA 编码四路当前视角；自回归模型通过 GRU 与自行车模型积分提出 64 条轨迹。
+- **多解匹配：** Hungarian 一对一地把轮换的最多八条高质轨迹匹配到不同 proposal（式 2）；几何距离是平均 `|Δx|+|Δy|+0.25|wrap(Δθ)|`，`L_G=L_E+0.25 min(1,e/2)L_A`。相对于只监督最近示范，这直接改善候选覆盖。
+- **质量打分：** 评分头预测 **NC、DAC、TTC、Comfort、DDC、EP** 六分项；NAVSIM v1 的预测聚合为 `NC × DAC × (5EP+5TTC+2Comfort)/12`，DDC 参与监督但不进入 v1 聚合（式 3、附录 A.2/S1）。
+- **负例与排序：** 对原生 64 候选重新仿真评分，同时混入 64 条离线高/中/低/零分回放。可选 pairwise ranking 仅在混合数据主配置启用；真实数据主配置不加该项，不能笼统写成“排序损失必然有益”（正文 §3.5、表 4）。
+
+## Stage 2：多目标残差精修 + 共享 JEPA（正文 §3.4–3.5）
+
+- **兼容性门控：** 每个 proposal 最多选四条高质量备选作为残差目标，要求位置 ADE ≤3 m、终点 ≤6 m、平均航向误差 ≤0.5 rad；残差是备选轨迹减 proposal（航向取 wrap）。
+- **去噪目标：** 在候选兼容目标中按**重建误差最小**选定一个，使用 DiT 的 `v-prediction` 与几何目标共同监督（式 4–5）；无法匹配者以弱权重 0.05 学习**零残差**，降低误修风险。
+- **历史时序：** JEPA 自 Drive-JEPA 初始化，以 **8 帧、2 Hz** 的 masked video-feature prediction 适配；回归 EMA 教师的归一化特征。规划模块只使用“此前+当前”的**已观察**前视帧，且 JEPA 编码只算一次供 DiT 与 scorer 共享；训练未来帧仅参与 JEPA 表征学习，不泄露给在线规划（式 6、附录 B.3）。
+- **重评分：** 对 64 条 proposal 实际执行 target-free DDIM 精修后**重新取得仿真标签**训练评分器。训练中用到的 archive、真实分数、未来帧、JEPA predictor、EMA encoder 均不进入在线推理（正文 §3.5）。
+- **模型设定：** DINOv2 ViT-S/14（LoRA rank 32）；JEPA ViT-L（宽 1024）；DiT 12 blocks×8 heads，训练使用八张 H20 GPU；附录 B.2、Table S2–S3。此为作者训练报告，不表示本仓库已复现。
+
+## 实验与消融核对（正文 §4，表 1–8；附录表 S4）
+
+| 版本 | NAVSIM v1 Navtest PDMS | HUGSIM RC | HUGSIM HD-Score |
+|---|---:|---:|---:|
+| DriveSTA S1 | 94.76 | 51.9 | 36.9 |
+| DriveSTA S2 | 95.14 | 55.2 | 44.0 |
+| DriveSTA-Scale S1 | 95.09 | 54.0 | 44.0 |
+| DriveSTA-Scale S2 | **95.55** | **56.1** | **46.7** |
+
+- **数据口径：** Base 103,263 NAVSIM 训练场景；Scale 另加 129,409 SimScale，合计 **232,672**；Navtest 共 **12,146** 场景。作者在表 1 所列**发布基线**中，Scale S2 的 PDMS 四舍五入为 95.6（领先该表）；官方项目页展示的另一组同类对照含 **FPD-Drive-Pro 95.69**，所以不得跨不同实验/精度口径称“所有模型绝对第一”。
+- **闭环：** HUGSIM 是 **345** 条匹配 episode；四个难度组 E/M/H/X 为 49/126/86/84。Scale S2 的平均 RC 56.1、HD-Score 46.7 在表 2 的对照中领先，但 **Extreme 组**从 S1 的 30.3 降到 S2 的 **27.3** HD-Score，不能夸称所有场景都改善。
+- **消融：** 表 4 显示 Dense 在真实数据上提高候选 Oracle +0.49、所选 PDMS +0.64；Replay、Ranking 在真实数据并非单调提升。表 5 显示多目标局部筛选、共享视频条件及 JEPA 适配分别产生增益；表 6 显示视频观测恢复可使固定候选池的 S2 评分提高 +3.20 PDMS。
+- **NAVSIM v2：** 仅用 **S1** 评测；Navtest EPDMS Base/Scale 为 **91.15/91.32**，低于 WA-JEPA 的 **91.7**；Navhard EPDMS Base/Scale 为 **50.80/56.13**，后者低于 DriveZero-Scale 的 **57.1**。v2 额外惩罚跨次规划不舒适，不能把 v1 PDMS 排名直接移植到 v2。
+
+### 73% 推理时延：已核实（正文第 6–7 页 Table 3，附录 B.7）
+
+| 方法 | 平均前向时延（ms） | P95（ms） | 吞吐等效（Hz） |
+|---|---:|---:|---:|
+| ChainFlow-VLA | 1294.68 | 1302.79 | 0.77 |
+| DriveSTA S1 | 148.99 | 150.32 | 6.71 |
+| DriveSTA-Scale S2 | 349.30 | 359.29 | 2.86 |
+
+**相对 ChainFlow-VLA 下降约 73%**，计算为 `(1294.68−349.30)/1294.68≈73.0%`。这是作者的 **H20、batch 1、同样 64 候选及 12 DDIM 步、12,146 Navtest 场景**的实现级前向比较，**只**包括 GPU resident 输入到选定轨迹（包含编码、生成、精修、评分与选择），不包含磁盘、预处理、传输和仿真执行；ChainFlow-VLA 使用 BF16 InternVL，其 VLM 与注意力实现及数据流有差异，故不能将该比例简单解读为模型架构单变量加速或车端控制频率保证。
+
+## 局限和实践边界（正文 §5，附录 A/B）
+
+1. 搜索由人类参考轨迹的平滑形变定义，覆盖不了所有机动行为；评分与有效性依赖 evaluator，非真实道路安全验证。
+2. 离线对“已记录周围交通”的模拟不能真实表达对抗/交互反应；HUGSIM 仅做特定闭环模拟。
+3. 候选逐条训练不直接优化相邻 replanning 的一致性；v2 Expanded 训练的 Extended Comfort 下降，表明单轨迹分数与舒适性不等价。
+4. 报告采用每配置**一个训练随机种子**，比较基线主要使用公开论文分数而非全部重新共同复现，注意实验不确定性。
+5. 仅静态核对源码 CLI / 模块；未在本次环境执行 NAVSIM/HUGSIM，也未据此宣称具备实车部署认证。
 
 ## 对 wiki 的映射
 
-- [DriveSTA 论文独立实体](../../wiki/entities/paper-drivesta.md)
-- [官方主页归档](../sites/drivesta.md)
-- [官方源码归档](../repos/drivesta.md)
-
-**提醒：** 本归档是官方 v1 PDF 全文方法、实验和附录的事实编译；没有复现模型运行和原始训练，也没有将注意力热图作为可解释性因果证明。
+- [DriveSTA 独立论文实体](../../wiki/entities/paper-drivesta.md)
+- [官方项目主页归档](../sites/drivesta.md)
+- [官方代码仓库归档](../repos/drivesta.md)
