@@ -3,12 +3,14 @@
 > 论文来源归档（ingest）
 
 - **标题：** Retrieval-Augmented Generation for Large Language Models: A Survey
-- **作者：** Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Liu, Jiawei Liu, Haofen Wang, Haofen Wang, Yuqiang Li, et al.（同济大学 / 复旦大学等）
+- **作者：** Yunfan Gao、Yun Xiong、Xinyu Gao、Kangxiang Jia、Jinliu Pan、Yuxi Bi、Yi Dai、Jiawei Sun、Meng Wang、Haofen Wang（同济大学 / 复旦大学等）
 - **类型：** paper / survey / rag / llm / retrieval
 - **arXiv：** <https://arxiv.org/abs/2312.10997> · PDF：<https://arxiv.org/pdf/2312.10997.pdf>
 - **发表：** 2023-12（v1）；后续多版修订
 - **配套：** GitHub 综述仓库 <https://github.com/Tongji-KGLLM/RAG-Survey>（论文索引与分类）
 - **入库日期：** 2026-09-20
+- **核对范围：** 已对照 [arXiv:2312.10997v5 HTML 全文](https://arxiv.org/html/2312.10997v5)（2024-03-27），核对正文 I–VIII 节、Naive/Advanced/Modular 三代架构、检索源与索引、查询重写/HyDE/混合检索、rerank/上下文压缩、迭代/递归/自适应增强、评价任务/指标、表 I–IV 与生产化风险；参考文献表已浏览，未逐篇复核被引论文。综述本身不提供统一实验复现。
+- **通读：** 已完成
 - **一句话说明：** 系统梳理 **Naive RAG → Advanced RAG → Modular RAG** 三代演进，按 **检索（索引/查询/后处理）— 生成（融合/控制）— 增强流程（预/中/后检索）** 分解组件，并汇总评测、瓶颈与机器人/agent 外延，适合作为 RAG 工程选型的 **taxonomy 一手索引**。
 
 ## 开源状态（步骤 2.5，2026-09-20）
