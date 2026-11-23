@@ -32,7 +32,7 @@ summary: "MAPE 把 Agent 记忆 Build/Retrieve/Compose 作为可进化 Python �
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| MAPE | Memory Agent Program Evolution（论文框架名） | 从最小种子进化完整记忆程序，统一比较多个生命周期阶段 |
+| MAPE | 论文框架名称（原文未明确展开） | 从最小种子进化完整记忆程序，统一比较多个生命周期阶段 |
 | RQS | Query-Routed Scaffolding | 根据查询意图，为检索证据准备时间、聚合、更新、偏好等专用脚手架 |
 | RRF | Reciprocal Rank Fusion | 将稠密嵌入与 BM25 稀疏排序融合的检索方式 |
 | BM25 | Best Matching 25 | 按词项相关性排名的经典稀疏检索算法 |
