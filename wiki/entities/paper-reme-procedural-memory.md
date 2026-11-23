@@ -198,6 +198,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — ReMe 在线写入和淘汰的工程落地需要独立任务验收；此页提供证据驱动测试思路，**不是论文使用的直接评测方法**。
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 可作为把已检索程序性经验编排为执行与独立核查步骤的软件 Agent 工作流参照；论文未直接测试这一框架。
 - [Agent 记忆与 Dreaming](../concepts/agent-memory-and-dreaming.md)
 - [递归自我改进](../concepts/recursive-self-improvement.md)
 - [Procedural Graphs：自演化程序知识图](./paper-procedural-graphs-self-evolving-llm-agents.md)
