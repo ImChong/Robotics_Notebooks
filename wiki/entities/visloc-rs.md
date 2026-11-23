@@ -3,7 +3,7 @@ type: entity
 project_id: visloc-rs
 project: https://rsasaki0109.github.io/visloc-rs/
 code: https://github.com/rsasaki0109/visloc-rs
-tags: [repo, rust, slam, visual-inertial, sfm, 3dgs, gaussian-splatting, mapping, navigation]
+tags: [repo, rust, slam, visual-inertial, sfm, 3dgs, gaussian-splatting, mapping, navigation, independent-maintainer]
 status: complete
 updated: 2026-11-23
 related:
