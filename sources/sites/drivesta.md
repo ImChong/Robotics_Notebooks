@@ -2,11 +2,11 @@
 
 - **标题：** Beyond a Single Human Demonstration: Learning from Scored Trajectory Alternatives for End-to-End Driving
 - **网站：** https://rtwotwo.github.io/DriveSTA/
-- **论文：** https://arxiv.org/abs/2611.27515（用户提供，当前原文不可获取）
+- **论文：** https://arxiv.org/abs/2611.27515（官方 2026-11-20 v1，21 页 PDF 全文已核对）
 - **代码：** https://github.com/Rtwotwo/DriveSTA（已开源，可运行推理、训练与 NAVSIM v1 评分）
 - **模型与数据入口：** https://huggingface.co/Rtwotwo/DriveSTA（官方引用，下载可用性未单独复核）
 - **入库日期：** 2026-11-23
-- **核对范围：** 完整可读取项目页的 Method 概述、NAVTEST 对比表、HUGSIM 按难度结果表、Results。项目视频未逐帧分析。
+- **核对范围：** 官方项目页 Method、NAVTEST/HUGSIM 表、Results，与 arXiv v1 §3–5 和附录 A/B 交叉核对；项目视频未逐帧分析。
 - **通读：** 已完成
 
 ## 主页证据与数字口径
@@ -19,6 +19,6 @@
 
 ## 原始资料分工
 
-- [论文归档](../papers/drivesta_arxiv_2611_27515.md)：说明 arXiv 原文不可读取的阻塞
+- [论文归档](../papers/drivesta_arxiv_2611_27515.md)：21 页 v1 全文方法、结果、附录精读
 - [官方仓库归档](../repos/drivesta.md)：代码与复现入口
 - [Wiki 方法归纳](../../wiki/entities/paper-drivesta.md)
