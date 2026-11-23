@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-23
 related:
   - ../entities/cartwheel-control.md
   - ../entities/paper-throwing-tight-spiral-football.md
@@ -12,6 +12,7 @@ related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
   - ../comparisons/wbc-vs-rl.md
+  - ../comparisons/humanoid-wbc-open-source-12-2026.md
   - ./sim2real.md
   - ./contact-estimation.md
   - ./foundation-policy.md
@@ -110,6 +111,10 @@ flowchart TD
 用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。
 
 代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)，以及 **行为基础模型（BFM）** 谱系——见 [Behavior Foundation Model 概念页](./behavior-foundation-model.md)（综述 taxonomy + [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）；单篇深读见把多种 mode 抽到 **位级掩码 + CVAE** 的 [BFM 论文实体](../entities/paper-behavior-foundation-model-humanoid.md)，以及把 BFM tracker 与 **闭环 AR 运动规划** 集成的 [ReactiveBFM](../entities/paper-reactivebfm.md)（arXiv:2606.30362，G1 真机 reactive WBC）。学习型 **解耦 WBC**（下肢 RL + 上肢默认/IK）的可运行开源样本见 [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md)（Isaac Lab 单 GPU、G1 零样本）与 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)。
+
+### 2026 年开源技术栈的位置
+
+[2026 人形 WBC 12 项技术路线对照](../comparisons/humanoid-wbc-open-source-12-2026.md) 将 5 个全身跟踪/训练系统、3 个多模态/无监督技能系统与 4 个遥操作/移动操作系统对齐，分别回答「参考动作从哪里来、策略如何学、如何和任务级模型衔接」；其 WBC 为广义学习式全身控制生态，**不能与上文 QP/HQP 显式约束求解混为一谈**。这篇综述复用既有 12 个项目节点，详细复现与实验数值仍回到原始论文/源码。
 
 ## 最小代码骨架
 
