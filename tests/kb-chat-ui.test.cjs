@@ -1133,3 +1133,404 @@ test('graph.html harmonizes #kbChatToggle with #graph-legend-fab while leaving g
     'global style.css keeps default accent styling for non-graph pages',
   );
 });
+
+test('Author info queries reply immediately with clickable personal website link and 0 network fetches while sparing paper author queries', async () => {
+  const { dom, window, fetchCalls } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+  });
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('请问作者信息是什么？个人网站链接发一下');
+  assert.equal(fetchCalls.length, 0, 'Chinese author query requires 0 network requests');
+  const msgsZh = window.document.querySelectorAll('.kb-chat-msg--assistant');
+  assert.equal(msgsZh.length, 1);
+  const linkZh = msgsZh[0].querySelector('a.kb-chat-md-link');
+  assert.ok(linkZh);
+  assert.equal(linkZh.getAttribute('href'), 'https://imchong.github.io/index.html');
+  assert.equal(linkZh.getAttribute('target'), '_blank');
+  assert.equal(linkZh.getAttribute('rel'), 'noopener noreferrer');
+
+  window.RNKbChat.setLanguage('en');
+  await window.RNKbChat.ask('Who is the author of this knowledge base?');
+  assert.equal(fetchCalls.length, 0, 'English author query requires 0 network requests');
+  const msgsEn = window.document.querySelectorAll('.kb-chat-msg--assistant');
+  assert.equal(msgsEn.length, 2);
+  const linkEn = msgsEn[1].querySelector('a.kb-chat-md-link');
+  assert.ok(linkEn);
+  assert.equal(linkEn.getAttribute('href'), 'https://imchong.github.io/index.html');
+  assert.match(msgsEn[1].textContent, /Chong Liu/);
+
+  // Paper / third-party repo author questions must NOT be intercepted as site author info
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('这个项目的作者是谁？'), true);
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('你是谁做的？'), true);
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('PPO 论文作者是谁？'), false);
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('BeyondMimic 的作者是谁？'), false);
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('BeyondMimic 项目的作者是谁？'), false);
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('Isaac Lab 仓库的维护者是谁？'), false);
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('你可以告诉我 BeyondMimic 的作者是谁吗？'), false);
+  assert.equal(window.RNKbChat._internals.isAuthorInfoQuery('Who are the authors of Diffusion Policy?'), false);
+  assert.equal(window.RNKbChat._internals.isKbTrendQuery('本仓库最近节点趋势'), true);
+  assert.equal(window.RNKbChat._internals.isKbTrendQuery('Isaac Lab 仓库最近有什么更新？'), false);
+  assert.equal(window.RNKbChat._internals.isKbTrendQuery('scene graph recent updates'), false);
+  dom.window.close();
+});
+
+test('Markdown link sanitizer allows strict author URL and safe static pages while stripping arbitrary external URLs', async () => {
+  const { dom, window } = setupDom({
+    withFooter: true,
+    config: {
+      endpoint: 'https://kb-chat.example.workers.dev/chat',
+      turnstileSiteKey: '1x00000000000000000000AA',
+    },
+    fetchImpl: async (url) => {
+      if (url === 'https://kb-chat.example.workers.dev/chat') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            ok: true,
+            mode: 'ai',
+            grounded: true,
+            cached: false,
+            answer:
+              '[作者主页](https://imchong.github.io/index.html) · [节点趋势](star-history.html#nodes-daily) · [恶意](https://evil.example) · [伪造子路径](https://imchong.github.io/evil) · [XSS](javascript:alert(1))',
+            citations: [],
+          }),
+        };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.turnstile = {
+    render: (_el, opts) => {
+      window.__tsCallback = opts.callback;
+      return 'wid-1';
+    },
+    reset: () => {},
+    execute: () => window.__tsCallback('tok-links'),
+  };
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  await window.RNKbChat.ask('什么是全身控制 WBC？');
+  const msg = window.document.querySelector('.kb-chat-msg--assistant');
+  const links = [...msg.querySelectorAll('a.kb-chat-md-link')];
+  assert.equal(links.length, 2);
+  assert.equal(links[0].getAttribute('href'), 'https://imchong.github.io/index.html');
+  assert.equal(links[0].getAttribute('target'), '_blank');
+  assert.equal(links[1].getAttribute('href'), 'star-history.html#nodes-daily');
+  assert.equal(links[1].getAttribute('target'), null);
+  assert.match(msg.textContent, /恶意/);
+  assert.match(msg.textContent, /伪造子路径/);
+  assert.match(msg.textContent, /XSS/);
+  dom.window.close();
+});
+
+test('Local node trends answer reads graph-stats.json or falls back to compact wiki-activity.json cleanly', async () => {
+  const sampleStatsWithTrends = {
+    generated_at: '2026-11-23',
+    node_count: 8200,
+    edge_count: 67000,
+    community_count: 35,
+    node_trends: {
+      as_of: '2026-11-23',
+      latest_activity_date: '2026-11-23',
+      total_nodes: 8200,
+      total_edges: 67000,
+      total_communities: 35,
+      windows: {
+        '7d': {
+          days: 7,
+          start_date: '2026-11-17',
+          end_date: '2026-11-23',
+          added: 45,
+          prev_added: 30,
+          maintained: 16,
+          prev_maintained: 12,
+          active_days: 6,
+          open_source_added: 20,
+          top_communities: [{ label: '触觉感知', added: 12 }, { label: 'VLA', added: 9 }],
+          type_breakdown: { entity: 35, method: 10 },
+        },
+        '30d': {
+          days: 30,
+          start_date: '2026-10-25',
+          end_date: '2026-11-23',
+          added: 180,
+          prev_added: 140,
+          maintained: 65,
+          prev_maintained: 50,
+          active_days: 25,
+          open_source_added: 70,
+          top_communities: [{ label: 'VLA', added: 48 }],
+          type_breakdown: { entity: 140, method: 40 },
+        },
+      },
+      daily_recent: [
+        { date: '2026-11-22', added: 8, maintained: 2 },
+        { date: '2026-11-23', added: 10, maintained: 4 },
+      ],
+      monthly_recent: [{ month: '2026-11', added: 180, maintained: 65 }],
+      recent_added_nodes: [
+        {
+          detail_id: 'wiki-concepts-wbc',
+          label: '全身控制（WBC）',
+          date: '2026-11-23',
+          type: 'concept',
+          community_label: '全身控制',
+          has_repo: true,
+        },
+      ],
+    },
+  };
+
+  // 1. Primary path: graph-stats.json includes node_trends
+  const primary = setupDom({
+    withFooter: true,
+    fetchImpl: async (url) => {
+      if (url === 'exports/graph-stats.json') {
+        return { ok: true, status: 200, json: async () => sampleStatsWithTrends };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  primary.window.eval(fabBlock);
+  primary.window.eval(chatSource);
+  primary.window.RNKbChat.open();
+
+  await primary.window.RNKbChat.ask('最近7天本知识库节点趋势怎么样？');
+  const msgZh = primary.window.document.querySelector('.kb-chat-msg--assistant');
+  assert.ok(msgZh);
+  assert.match(msgZh.textContent, /8200/);
+  assert.match(msgZh.textContent, /45/);
+  assert.match(msgZh.textContent, /触觉感知/);
+  assert.ok(msgZh.querySelector('a[href="star-history.html#nodes-daily"]'));
+  assert.ok(msgZh.querySelector('a[href="change-log.html"]'));
+  assert.ok(msgZh.querySelector('a[href^="detail.html?id=wiki-concepts-wbc"]'));
+
+  primary.window.RNKbChat.setLanguage('en');
+  await primary.window.RNKbChat.ask('How many nodes were added in the last 30 days?');
+  const msgsEn = primary.window.document.querySelectorAll('.kb-chat-msg--assistant');
+  assert.match(msgsEn[1].textContent, /Last 30 days/);
+  assert.match(msgsEn[1].textContent, /\+180/);
+  primary.dom.window.close();
+
+  // 2. Fallback path: graph-stats.json lacks node_trends -> computes from compact-v1 wiki-activity.json
+  const compactActivity = {
+    generated_at: '2026-11-23',
+    source: 'git',
+    format: 'compact-v1',
+    node_index: {
+      'wiki-entities-demo-1': {
+        label: 'Demo Node 1',
+        type: 'entity',
+        path: 'wiki/entities/demo-1.md',
+        has_repo: true,
+        community_label: '触觉感知（Tactile） 社区',
+      },
+      'wiki-entities-demo-2': {
+        label: 'Demo Node 2',
+        type: 'method',
+        path: 'wiki/methods/demo-2.md',
+        community_label: 'VLA 社区',
+      },
+    },
+    days: [
+      { date: '2026-11-20', count: 1, nodes: [['wiki-entities-demo-1', 'added']] },
+      { date: '2026-11-23', count: 2, nodes: [['wiki-entities-demo-2', 'added'], ['wiki-entities-demo-1', 'maintained']] },
+    ],
+  };
+  const fallbackAct = setupDom({
+    withFooter: true,
+    fetchImpl: async (url) => {
+      if (url === 'exports/graph-stats.json') {
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ generated_at: '2026-11-23', node_count: 500, edge_count: 2000, community_count: 10 }),
+        };
+      }
+      if (url === 'exports/wiki-activity.json') {
+        return { ok: true, status: 200, json: async () => compactActivity };
+      }
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  fallbackAct.window.eval(fabBlock);
+  fallbackAct.window.eval(chatSource);
+  fallbackAct.window.RNKbChat.open();
+
+  await fallbackAct.window.RNKbChat.ask('最近本知识库有哪些节点趋势？');
+  const actMsg = fallbackAct.window.document.querySelector('.kb-chat-msg--assistant');
+  assert.ok(actMsg);
+  assert.match(actMsg.textContent, /500/);
+  assert.match(actMsg.textContent, /Demo Node 2/);
+  assert.match(actMsg.textContent, /新增 2 个节点/);
+  fallbackAct.dom.window.close();
+});
+
+test('Cloud node trends support trendGrounded AI answers, silent legacy-worker fallback, and 503 quota fallback', async () => {
+  const sampleStats = {
+    generated_at: '2026-11-23',
+    node_count: 8200,
+    edge_count: 67000,
+    community_count: 35,
+    node_trends: {
+      as_of: '2026-11-23',
+      latest_activity_date: '2026-11-23',
+      total_nodes: 8200,
+      total_edges: 67000,
+      total_communities: 35,
+      windows: {
+        '7d': {
+          days: 7,
+          start_date: '2026-11-17',
+          end_date: '2026-11-23',
+          added: 45,
+          prev_added: 30,
+          maintained: 16,
+          prev_maintained: 12,
+          active_days: 6,
+          open_source_added: 20,
+          top_communities: [{ label: '触觉感知', added: 12 }],
+          type_breakdown: { entity: 45 },
+        },
+      },
+      daily_recent: [{ date: '2026-11-23', added: 10, maintained: 4 }],
+      monthly_recent: [{ month: '2026-11', added: 45, maintained: 16 }],
+      recent_added_nodes: [
+        { detail_id: 'wiki-concepts-wbc', label: '全身控制 WBC', date: '2026-11-23', type: 'concept' },
+      ],
+    },
+  };
+
+  for (const modeCase of ['ai-ok', 'legacy-400', 'legacy-200', 'quota-503']) {
+    const { dom, window } = setupDom({
+      withFooter: true,
+      config: {
+        endpoint: 'https://kb-chat.example.workers.dev/chat',
+        turnstileSiteKey: '1x00000000000000000000AA',
+      },
+      fetchImpl: async (url) => {
+        if (url === 'https://kb-chat.example.workers.dev/chat') {
+          if (modeCase === 'ai-ok') {
+            return {
+              ok: true,
+              status: 200,
+              json: async () => ({
+                ok: true,
+                mode: 'ai',
+                grounded: true,
+                trendGrounded: true,
+                cached: false,
+                answer: 'AI 趋势总结：近 7 天新增 45 个节点，见 [1] 与 [2]。',
+                citations: [
+                  {
+                    index: 1,
+                    id: 'page-star-history',
+                    title: '知识库节点趋势统计',
+                    heading: '近期增长',
+                    snippet: '近 7 天新增 45 个节点。',
+                    url: 'star-history.html#nodes-daily',
+                  },
+                  {
+                    index: 2,
+                    id: 'page-change-log',
+                    title: '更新记录',
+                    heading: '最新新增节点',
+                    snippet: '2026-11-23 全身控制 WBC',
+                    url: 'change-log.html',
+                  },
+                ],
+              }),
+            };
+          }
+          if (modeCase === 'legacy-400') {
+            return {
+              ok: false,
+              status: 400,
+              json: async () => ({
+                ok: false,
+                code: 'INVALID_PAYLOAD',
+                fallback: 'local_search',
+              }),
+            };
+          }
+          if (modeCase === 'legacy-200') {
+            return {
+              ok: true,
+              status: 200,
+              json: async () => ({
+                ok: true,
+                mode: 'ungrounded',
+                grounded: false,
+                cached: false,
+                answer: '站内暂未找到与该问题直接相关的内容。',
+                citations: [],
+              }),
+            };
+          }
+          return {
+            ok: false,
+            status: 503,
+            json: async () => ({
+              ok: false,
+              code: 'QUOTA_OR_AI_UNAVAILABLE',
+              fallback: 'local_search',
+            }),
+          };
+        }
+        if (url === 'exports/graph-stats.json') return { ok: true, status: 200, json: async () => sampleStats };
+        if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => mockLiteIndex };
+        if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => mockCatalog };
+        return { ok: false, status: 404, json: async () => ({}) };
+      },
+    });
+    window.turnstile = {
+      render: (_el, opts) => {
+        window.__tsCallback = opts.callback;
+        return 'wid-1';
+      },
+      reset: () => {},
+      execute: () => window.__tsCallback(`tok-${modeCase}`),
+    };
+    window.eval(fabBlock);
+    window.eval(chatSource);
+    window.RNKbChat.open();
+
+    await window.RNKbChat.ask('最近本知识库有哪些节点趋势？');
+    const msg = window.document.querySelector('.kb-chat-msg--assistant');
+    assert.ok(msg);
+    const badgeMode = window.document.querySelector('.kb-chat-mode-badge').getAttribute('data-mode');
+    const note = msg.querySelector('.kb-chat-status-note');
+    if (modeCase === 'ai-ok') {
+      assert.equal(badgeMode, 'ai');
+      assert.equal(note, null);
+      assert.match(msg.textContent, /AI 趋势总结：近 7 天新增 45 个节点/);
+      assert.ok(msg.querySelector('a[href="star-history.html#nodes-daily"]'));
+    } else if (modeCase === 'legacy-400' || modeCase === 'legacy-200') {
+      assert.equal(badgeMode, 'local');
+      assert.equal(note, null, 'legacy worker silently renders accurate local trend summary');
+      assert.match(msg.textContent, /8200/);
+      assert.match(msg.textContent, /45/);
+    } else {
+      assert.equal(badgeMode, 'fallback');
+      assert.ok(note && /繁忙/.test(note.textContent));
+      assert.match(msg.textContent, /45/);
+    }
+    dom.window.close();
+  }
+});
