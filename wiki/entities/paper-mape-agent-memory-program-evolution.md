@@ -15,6 +15,8 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/retrieval-augmented-generation.md
   - ../concepts/recursive-self-improvement.md
+  - ../methods/genetic-programming.md
+  - ../methods/coding-agent-verification-loops.md
   - ./paper-self-improvement-memory-crsi.md
 sources:
   - ../../sources/papers/mape_agent_memory_program_evolution_arxiv_2611_17068.md
@@ -199,6 +201,8 @@ uv run python -m evolution.orchestrator --config configs/evolution/locomo_accura
 
 ## 关联页面
 
+- [遗传编程（Genetic Programming）](../methods/genetic-programming.md) — 对比可执行程序结构搜索：传统 GP 常用受限语法和交叉变异，MAPE 由 LLM 提案与诊断驱动程序重写，二者不可等同
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照候选代码的 sanity check、隔离评测和独立诊断，区别于真实软件 E2E 交付验收
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 在线/后台整理与离线程序搜索的互补关系
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — Judge、数据隔离与成本/准确率双指标
 - [检索增强生成](../concepts/retrieval-augmented-generation.md) — 对照 RAG 的检索与证据组织分工
