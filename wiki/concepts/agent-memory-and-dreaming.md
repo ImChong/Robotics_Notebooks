@@ -2,7 +2,7 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-23
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-robocasa-mem.md
   - ../entities/paper-false-belief-mandela-effect-multi-agent.md
   - ../entities/paper-self-improvement-memory-crsi.md
+  - ../entities/paper-reme-procedural-memory.md
 sources:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
   - ../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md
@@ -145,6 +146,7 @@ flowchart LR
 - [AI Agent 评测](./ai-agent-evaluation.md)
 - [JitRL：免梯度的测试时经验检索与 logit 修正](../entities/paper-jitrl-just-in-time-rl.md)（经验库 + 推理时修正，论文实验在 WebArena / Jericho）
 - [Agentic Coding 软件基础](./agentic-coding-software-fundamentals.md)
+- [ReMe：动态程序性记忆](../entities/paper-reme-procedural-memory.md) — 从成败轨迹提炼可复用操作经验，按使用情境召回并按贡献度淘汰；与 Anthropic 的后台 dreaming 是不同的更新机制
 - [MemForest（agent 记忆论文节点）](../entities/paper-memforest.md)
 - [RoboCasa-Mem（长程移动操作中的环境与过程记忆基准）](../entities/paper-robocasa-mem.md)
 - [False Belief Dissemination：多 Agent 错误信念传播](../entities/paper-false-belief-mandela-effect-multi-agent.md)
