@@ -14,10 +14,10 @@ A robotics technology-stack knowledge base / robotics research and engineering w
 
 ## Live Demo
 
-[![Site walkthrough showing instant search, AI Q&A with citations, graph node details, and rotating and zooming the 3D terrain](media/site-demo.gif)](https://imchong.github.io/Robotics_Notebooks/)
+[![Site walkthrough showing the redesigned home page, instant search, Q&A citations, graph node details, and 3D terrain](media/site-demo.gif)](https://imchong.github.io/Robotics_Notebooks/)
 
 - The **home page** provides entry points for learning paths, search, and the graph. **Find a project** and **Knowledge graph** scroll to and highlight their sections. Enter keywords to find knowledge pages instantly. [Open the live site](https://imchong.github.io/Robotics_Notebooks/)
-- Open **AI Knowledge Q&A** with the chat button in the bottom-right corner. Enter a question or choose a starter prompt, then expand the cited excerpts or open the source pages. The GIF uses a preset sample answer.
+- Open **AI Knowledge Q&A** with the chat button in the bottom-right corner. Enter a question or choose a starter prompt, then expand the cited excerpts or open the source pages. The GIF shows excerpts returned by the built-in wiki search mode.
 - In the **knowledge graph**, nodes represent pages, colors identify technical communities, and edges link related pages. Hover over a node for a summary, or click it to open a details sidebar with a link to its page. Use **Parameters (参数)** to switch between **2D**, **3D Terrain**, and **3D Spatial**. Scroll to zoom, drag to pan in 2D or orbit in 3D Terrain, and adjust the peak height and viewing angle in 3D Terrain. [Open the knowledge graph](https://imchong.github.io/Robotics_Notebooks/graph.html)
 
 ---
