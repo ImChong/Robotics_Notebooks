@@ -17,6 +17,9 @@
 - HUGSIM 345 场景：Scale Refinement **RC 56.09**、**HD-Score 46.69**；HUGSIM 是闭环评测，不等同于 NAVSIM v1 的开环/非反应评分。
 - 项目页的 41 段 NAVSIM 片段经过挑选（DriveSTA ≥95、三基线 <80），是**选择性定性示例**；全套 12.1k 场景评分才是量化报告口径。
 
+
+- **原文 Table 3 / Appendix B.7 补核：** 作者在 H20、batch1、64 候选、12 步 DDIM 的对齐前向测试中报告 ChainFlow-VLA 平均 1294.68 ms、DriveSTA-Scale S2 349.30 ms（约 −73%）；不含预处理、数据传输及仿真执行。论文基线 Table 1 与官网另组复现对照不可混为一张榜单。
+
 ## 原始资料分工
 
 - [论文归档](../papers/drivesta_arxiv_2611_27515.md)：21 页 v1 全文方法、结果、附录精读
