@@ -7,7 +7,7 @@ tags:
   - evaluation
   - sjtu
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 arxiv: "2611.03850"
 project: https://mint-sjtu.github.io/RoboScope-Kit/
 code: https://github.com/MINT-SJTU/RoboScope-Kit
@@ -51,6 +51,8 @@ RoboScope Kit 在保留原生基准评测协议的前提下，用统一 Policy �
 | 主论文 | arXiv:2611.03850v1，2026-11-02；核对正文 1–8 与附录 A–E |
 | 机构 | 上海交通大学人工智能学院；作者另有中南大学、同济大学、上海科技大学、中国农业科学院、南京大学联合署名 |
 | 官方代码 | MINT-SJTU/RoboScope-Kit，Apache-2.0，已开源 |
+| 研究团队 | [MINT 实验室（Machine Intelligence and Interaction Lab @ SJTU）](https://mint-sjtu.github.io/) |
+| 安装与导入 | `python -m pip install roboscope-kit`；Python ≥3.11；模块名 `roboscope_kit` |
 | 源码核对版本 | `44fa1adb934456c40df809a7baad27152182488d`；与论文历史实验构建分开记录 |
 | 评测模型 | LIBERO：StarVLA/Qwen2.5-VL-OFT-LIBERO-4in1；RoboTwin：StarVLA/Qwen3-VL-OFT-Robotwin2 |
 
@@ -156,6 +158,34 @@ sequenceDiagram
 4. 动作块之间少渲染仅适用于策略明确不读取的观测，不能降低物理或成功判定频率。
 5. 最快 RoboTwin 配置仅报告一次运行，跨策略、基准、硬件的性能须重新测量。
 
+## 开源能力扩展与最小运行链（2026-11-21 核对；非论文 v1 的实验范围）
+
+**版本分离**：论文 v1（2026-11-02）报告六类 benchmark family 及固定硬件上的 StarVLA 结果。上游仓库 [README](https://github.com/MINT-SJTU/RoboScope-Kit/blob/1b17df6fa3ad96149d4c6e16781df570a22bdcd8/README.md) 在本次核对时已列出 **12 个独立基准条目**：LIBERO、LIBERO-Plus、LIBERO-Pro、RoboTwin、RoboDojo、RoboCasa GR-1 Tabletop、RoboCasa365、CALVIN、MetaWorld、RLBench、robomimic、SimplerEnv。这里统计的是 README 的条目而非论文所称的 family，**不能把后续适配宣称为论文中已实测的加速结果**。
+
+| 当前官方公开入口 | 可执行范围与限定 |
+|---|---|
+| [PyPI 包与使用指南](https://github.com/MINT-SJTU/RoboScope-Kit/blob/1b17df6fa3ad96149d4c6e16781df570a22bdcd8/packages/roboscope-kit/README.md) | Python ≥3.11；安装包为 `roboscope-kit`，导入 `roboscope_kit`。旧 `roboscope-inference-sdk`（≤0.7.0b77）在 0.8.0b1 起改名，**无兼容导入别名** |
+| 扩展的 benchmark adapter | LIBERO-Pro：16 个单扰动 suite；RLBench：`peract_18`（**不是** RLBench 全量）；robomimic：`ph_low_dim`；RoboCasa365：`target50` / `atomic_seen` / `composite_seen` / `composite_unseen`；SimplerEnv：三种官方列明 profile |
+| 现成 Policy 示例 | `examples/starvla/`、`openvla/`、`xvla/`、`xpolicylab/`、`peract/`、`robocasa365_diffusion/`、`robomimic/`、`rt1/`；各自只对 README 列出的 checkpoint、任务与接口范围负责 |
+| 评测完整性 | 需分别提供 Policy 程序与 `roboscope-policy.json`（`schema_version: 2`）、所选基准的 `benchmark-manifest.json`、本地 checkpoint；`--quick-test` 以单 worker / 单 server 做短的**真实评测**；`--self-test` 检查基准运行时，不加载用户 Policy |
+| 调参和结果目录 | 自动探索 K/g 会消耗真实试跑时间；相同版本、manifest、checkpoint 与硬件条件下可复用 run cache；固定参数须成对设置 `--concurrency K --replicas G`。每次正常评测使用新的或空的 `--output-dir`，已有结果文件**不会自动断点续跑** |
+
+按官方 README 的最小 LIBERO 路径（把示意路径替换为真实文件，且先自行编写 Policy）：
+
+```bash
+python -m pip install roboscope-kit
+# 在上游仓库检出目录内，另行安装基准环境与资产
+benchmarks/libero/build-runtime.sh /sim/libero
+python -m roboscope_kit.runtime.benchmark \
+  --benchmark libero --suite libero_10 \
+  --checkpoint-source /models/my-checkpoint \
+  --benchmark-manifest /sim/libero/benchmark-manifest.json \
+  --policy-config /path/to/roboscope-policy.json \
+  --output-dir /runs/libero_10 --quick-test
+```
+
+`pip install` **只安装 Kit 的 Python 包**，不包含仿真器、数据、模型权重或完整 GPU 环境；官方说明真实评测需要 Linux x86_64、GPU 与联网。上述是经 README 核验的使用步骤，**本次未安装依赖，也未运行 GPU 仿真与测速**。新增基准与模型示例的确切覆盖请以固定版本上游 README 为准。
+
 ## 工程实践
 
 官方 quick start：Python ≥3.11，`pip install roboscope-kit`；先用各基准 `build-runtime.sh` 构建固定依赖，再用 `python -m roboscope_kit.runtime.benchmark` 指定 benchmark、suite、checkpoint、manifest、policy config 和输出目录。先 `--quick-test` 验证真实短评测，再选择自动或固定 `--concurrency`、`--replicas`；MPS 另加 `--cuda-mps`。
@@ -173,6 +203,7 @@ sequenceDiagram
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [VLA 方法](../methods/vla.md)
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)
+- [具身模型测评纵深路线 · Stage 6](../../roadmap/depth-embodied-eval.md)：统一模型接口与评测工程化
 - [XPolicyLab](xpolicylab.md)：同为「一次接入、多基准评测」的策略–环境接口
 - [RoboDojo](robodojo.md)：Isaac Sim 异构并行仿真评测
 

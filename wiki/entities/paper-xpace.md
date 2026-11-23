@@ -10,9 +10,15 @@ tags:
   - self-improvement
   - cross-embodiment
   - xpeng
+institutions:
+  - xpeng
 status: complete
-updated: 2026-09-20
+updated: 2026-11-21
 arxiv: "2609.17372"
+project: https://xpeng-robotics.github.io/xpace/
+original:
+  - ../../sources/papers/xpace_arxiv_2609_17372.md
+  - ../../sources/sites/xpace-project.md
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -64,18 +70,18 @@ summary: "XPACE（arXiv:2609.17372，XPENG Robotics）：共享 video backbone �
 | **数据规模** | 约 **5000h** embodied video（L1 无动作 + L2 人动作 + L3 bridge + L4 IRON teleop） |
 | **开源** | **未开源** — 项目页仅链 [xpeng-robotics](https://github.com/xpeng-robotics) 组织，**无 XPACE 仓库/权重**（核查 2026-09-20） |
 
-## 核心结构
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
-| **共享 Video Transformer** | Causal video backbone；policy 与 simulator 共用视觉动力学表征 |
-| **Action Transformer** | 读多级 video feature + 当前 state → **16-step action chunk**；embodiment-specific I/O 投影对齐人/机动作 schema |
-| **Simulation 分支** | 历史 + **prescribed skeleton controls** + camera pose → 未来视频；**无语言指令、无 action 输出** |
-| **数据分层** | L1 无动作视频；L2 人视频–动作；L3 task/appearance bridge；L4 IRON 示范；**F 失败/恢复仅 simulator** |
+| **共享 Video Transformer** | Causal video backbone（anchor latent \(z_0\) + 4 帧/chunk = 16 视频帧，chunk 内双向、跨 chunk 因果注意力）；policy 与 simulator 共用视觉动力学表征 |
+| **Action Transformer** | 15 个 block 分别读 Video Transformer 第 16–30 层稠密视觉特征 + 当前状态 \(\mathbf{s}^m\)（训练以 0.5 概率掩码）→ **16-step action chunk**；embodiment-specific 线性输入/输出投影对齐人/机动作 schema |
+| **Simulation 分支** | 历史 + **prescribed 2D skeleton controls**（经零初始化 patch embedding token addition 注入）+ camera pose → 未来视频；**无语言指令、无 action 输出** |
+| **数据分层** | 约 5,000h：L1 无动作视频；L2 人视频–动作；L3 task/appearance bridge；L4 IRON 示范；**F 失败/恢复仅 simulator** |
 | **Stage I** | 预训练 video backbone 适配具身视频（**无动作监督**） |
-| **Stage II** | Flow-matching 联合训练；每步等概率采样 video–action 或 simulation；human→bridge→robot **三相位**粗到细 |
-| **Stage III-sim** | SGF 适配 simulator 到自生成上下文；围绕专家 pivot 扰动 EE → 渲染 deviation/recovery → 过滤 |
-| **Stage III-policy** | 自 Phase II-c 复制；**8% 合成 recovery + 92% 原配方** 微调；simulator 固定 |
+| **Stage II** | Flow-matching 联合训练；每步等概率采样 video–action（\(\mathcal{L}_v+\mathcal{L}_a\)）或 simulation（\(\mathcal{L}_v\)）；human→bridge→robot **三相位**粗到细（II-c 保留人类 replay 防遗忘） |
+| **Stage III-sim** | SGF（8 步 ODE 采样无梯度 rollout + 重编码前缀做上下文感知 flow matching）适配 simulator 到自生成上下文 |
+| **Stage III-policy** | 自 Phase II-c 复制；围绕专家 pivot 扰动 EE → simulator 渲染 + 一致性过滤 → **8% 合成 recovery + 92% 原配方** 微调（<1 天）；simulator 固定 |
 
 ### 流程总览
 
@@ -115,7 +121,17 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-09-20：项目页与 [xpeng-robotics](https://github.com/xpeng-robotics) 组织均未发布 XPACE 可运行代码、权重或 README 入口；仅有技术报告与演示页）。
+**不适用**（截至 2026-11-22 复核：项目页与 [xpeng-robotics](https://github.com/xpeng-robotics) 组织均未发布 XPACE 可运行代码、权重或 README 入口；仅有论文与演示页）。
+
+## 工程实践
+
+| 环节 | 原文设定与工程要点（arXiv:2609.17372v1） |
+|------|----------------------------------------|
+| 真机异步部署 | IRON 上采用流式 VAE（每 4 帧产 1 个 latent frame）与异步动作推理，发布端以约 **10 Hz** 做 **overlapping-horizon stitching**（保留已提交指令、裁剪重叠前缀并做衰减修正平滑拼接） |
+| 数据与失败隔离 | 失败/低进度/恢复集（F）只进 simulation 分支、**严禁进入 policy 模仿**，以免污染名义行为克隆又可防止 simulator 盲目乐观幻觉 |
+| 多级文本课程 | 每 clip 配原指令、稠密描述、原子动作与 LLM 改写，早期重稠密描述贴近视频基座分布，Phase II-c 转向任务指令对齐部署 |
+| 自改进微调配比 | SGF simulator 合成并过滤偏离–恢复轨迹后，仅按 **8% 合成 recovery + 92% Phase II-c 配方** 做 <1 天微调；需注意对比未单独分离额外优化步数与数据贡献 |
+| 开源状态 | **未开源**（仅技术报告与项目页演示；复现需自建因果 MoT 视频–动作基座与 IRON 遥操/人视频金字塔） |
 
 ## 实验与评测
 

@@ -2,7 +2,10 @@
 type: formalization
 tags: [motor-control, foc, pmsm, bldc, embedded, actuators, formalization]
 status: complete
-updated: 2026-06-10
+updated: 2026-11-21
+original:
+  - ../../sources/sites/simplefoc_documentation.md
+  - ../../sources/repos/simplefoc_arduino_foc.md
 related:
   - ../concepts/field-oriented-control.md
   - ../concepts/motor-torque-current-curve.md
@@ -45,7 +48,7 @@ FOC 的本质是：在 **与转子磁链同步旋转** 的 \(dq\) 坐标系里�
 
 ---
 
-## 推导总览
+## 核心原理与推导总览
 
 ```mermaid
 flowchart TD
@@ -322,7 +325,15 @@ u_c &= -\tfrac{1}{2} u_\alpha - \tfrac{\sqrt{3}}{2} u_\beta
 
 ---
 
-## 常见误区
+## 工程实践
+
+对照 SimpleFOC v2.4 官方文档与 `Arduino-FOC` 源码（`src/BLDCMotor.cpp`、`src/common/foc_utils.cpp`）：
+
+- **定点查表与零点对齐（`initFOC` / `cs_align`）**：实时中断用 65 点正弦插值查找表 `_sin`/`_cos` 控制计算抖动；上电必须先完成编码器电角度零偏与方向对齐，以及相电流采样 `cs_align`——向单一相施加电压、其余相接地，校验实测电流呈 $I_a$ 与 $-0.5 I_a$（且大于 100 mA）比例以自动纠正 ADC 通道映射与极性。
+- **调制模式与母线利用率**：`SinePWM` 线性最大 $U_{q,\max} = 0.5 V_{\mathrm{supply}}$；`SpaceVectorPWM` 注入共模中点偏移（代码以最大最小相电压均值中点钳位实现三次谐波等价效果），可将线电压利用率提升约 15% 至 $\approx 0.577 V_{\mathrm{supply}}$，更适配电池供电与高速区；低侧采样（lowside current sensing）需留意 PWM 中心对齐配置（`modulation_centered`）。
+- **真电流闭环 vs 参数估算**：估算模式（只靠 $R, KV, L$）受铜阻温漂与加减速 $L di_q/dt$ 瞬态误差制约，高动态机器人关节须采用 1–5 kHz（或更高）实测相电流双 PI 闭环，并在高速段叠加前馈解耦项 $\mp \omega_e L i$。
+
+## 常见误区或局限
 
 | 误区 | 说明 |
 |------|------|

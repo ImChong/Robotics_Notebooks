@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../entities/paper-gamma-art-smart.md
   - ../entities/egalahad-sim2real.md
@@ -197,7 +197,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ### Sim2Real SOP（标准作业程序）
 
-根据 [xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 的总结，为了提高 Sim2Real 的可复现性，应遵循标准化的工程步骤：
+作为入门导航，[Xbotics-Embodied-Guide](../entities/xbotics-embodied-guide.md) 提供 Sim2Real 学习路线索引，**但上游并未提供完整可执行的部署 SOP**。以下结合本库的系统辨识、域随机化与部署资料，整理可按平台核对的工程检查项：
 - **前置阶段**：精确的 URDF 建模与动力学参数初步对齐；若场景物体来自 **生成式 sim-ready 管线**（如 [PhysX-Omni](../entities/physx-omni.md) 导出的 URDF/XML），须单独验收 **惯性、碰撞盒与关节轴** 是否与目标仿真器一致，不宜默认「生成即可用」。
 - **仿真验证**：在 [isaac-gym-isaac-lab](../entities/isaac-gym-isaac-lab.md) 或 [genesis-sim](../entities/genesis-sim.md) 中完成基础策略训练，并通过域随机化覆盖物理参数偏差。软件栈集成可先走 [SIL](./software-in-the-loop.md)，目标硬件就绪后走 [HIL](./hardware-in-the-loop.md) 台架。
 - **评测基础设施**：产业侧亦将可信仿真用于 **real-to-sim 闭环排序**（训练仍主要来自真机），见 [仿真评测基础设施](simulation-evaluation-infrastructure.md) 与 [Genesis World 1.0](../entities/genesis-world-10.md)。
@@ -404,8 +404,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [Instant NuRec](../entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS；~1.5 s vs 逐场景 75 min，AlpaSim 策略排序对齐（arXiv:2607.14203）
 - [DA-Nav](../entities/paper-da-nav.md) — CARLA 方向感知 VLN → Go2 / Kuavo-V 零样本户外导航（arXiv:2607.11638）
 - [Arcadia](../entities/paper-arcadia.md) — 自采 + 3DGS USD + 共享 VLN/VLA + 真机反馈写回；G1 46/27（arXiv:2512.00076；部分开源）
-- [HumanoidVLN](../entities/paper-humanoidvln.md) — 3DGS 室内场景与 G1 DualVLN 20 条 sim–real 相关（arXiv:2608.12860；待开源）
-- [iCrowdNav](../entities/paper-icrowdnav.md) — SocNav-Gym 视觉人群导航 → Dingo 零样本（BEV+姿态意图；代码待发布）
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — 3DGS 室内场景与 G1 DualVLN 20 条 sim–real 相关（arXiv:2608.12860；截至 2026-11 无公开代码仓）
+- [iCrowdNav](../entities/paper-icrowdnav.md) — SocNav-Gym 视觉人群导航 → Dingo 零样本（BEV+姿态意图；MIT 源码已开源）
 - [ZONDA](../entities/paper-zonda.md) — Habitat ObjectNav → TITA 轮腿双足（离散→MPPI；arXiv:2607.21025）
 - [轮腿双足](./wheel-legged-biped.md)
 - [tita_rl](../entities/tita-rl.md)

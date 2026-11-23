@@ -1,5 +1,8 @@
 # Human2Dex 论文来源归档
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2610.13119` PDF 提取全文（`2610.13119.pdf`，3,877,312 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 元数据
 
 - **题目：** Human2Dex: Dexterous Robot Learning from Wrist-Centric Human Demonstrations

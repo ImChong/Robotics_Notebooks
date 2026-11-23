@@ -2,7 +2,7 @@
 type: entity
 tags: [tool, wbc, operational-space, middleware, ros, classic, ut-austin, stanford, open-source]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: "1506.01075"
 code: https://github.com/liangfok/controlit
 summary: "ControlIt!（arXiv:1506.01075）：UT Austin Sentis 组 WBOSC 开源 ROS 中间件；Task/Constraint 插件、多线程 ~0.5ms 伺服；Dreamer 力控上半身验证。"

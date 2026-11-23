@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, wbt-base]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 summary: "运动小脑 64 篇长文 · D 全身跟踪基座（13 篇）— 跟踪策略等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md
@@ -46,7 +46,7 @@ sources:
 | 33 | Any2Track | [any2track.md](../methods/any2track.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 34 | Stubborn | [paper-motion-cerebellum-stubborn.md](../entities/paper-motion-cerebellum-stubborn.md) | [catalog](../../sources/papers/motion_cerebellum_survey_34_stubborn.md) |
 | 35 | ConstrainedMimic | [paper-motion-cerebellum-constrainedmimic.md](../entities/paper-motion-cerebellum-constrainedmimic.md) | [catalog](../../sources/papers/motion_cerebellum_survey_35_constrainedmimic.md) |
-| 36 | SafeWBC | [paper-motion-cerebellum-safewbc.md](../entities/paper-motion-cerebellum-safewbc.md) | [catalog](../../sources/papers/motion_cerebellum_survey_36_safewbc.md) |
+| 36 | SafeWBC（`arXiv:2605.25546`；`dyroshumanoid/safeWBC`） | [paper-motion-cerebellum-safewbc.md](../entities/paper-motion-cerebellum-safewbc.md) | [catalog](../../sources/papers/motion_cerebellum_survey_36_safewbc.md) |
 | 37 | SafeFall | [paper-hrl-stack-41-safefall.md](../entities/paper-hrl-stack-41-safefall.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
 ## 关联页面

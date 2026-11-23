@@ -10,7 +10,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-09-21
+updated: 2026-11-22
 arxiv: "2608.30935"
 original:
   - ../../sources/papers/lightnav0_reading_arxiv_2608_30935_ln0r.md

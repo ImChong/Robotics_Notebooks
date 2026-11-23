@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, locomotion, representation-learning, teacher-student, height-map, depth, humanoid, quadruped]
 status: complete
-updated: 2026-08-13
+updated: 2026-11-21
 summary: "感知行走里 Encoder 输出的 terrain latent 通常不是可读的高度图，而是深度/高程经 CNN 压缩后的地形摘要向量；Policy 只需足够支撑正确落脚的动作，不必重建显式 64×64 栅格。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -20,6 +20,12 @@ related:
 sources:
   - ../../sources/personal/perceptive_locomotion_representation_essence.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/papers/hmi_p130_robot-parkour-learning.md
+  - ../../sources/papers/humanoid_pnb_anymal-parkour-robust-perceptive-locomotion.md
+original:
+  - ../../sources/papers/p3_arxiv_2607_25541.md
+  - ../../sources/papers/hmi_p130_robot-parkour-learning.md
+  - ../../sources/papers/humanoid_pnb_anymal-parkour-robust-perceptive-locomotion.md
 ---
 
 # 地形 Latent 表征（Terrain Latent Representation）
@@ -49,7 +55,7 @@ Latent 回答的是「前方地形对落脚决策 **足够用** 的摘要是什�
 - **Teacher–Student 设计**：Teacher 可用显式高度图；Student 的 latent 只需让 **动作接近 Teacher**，不必 **长得像** 高度图（见 [特权信息训练](./privileged-training.md)）。
 - **接口选型**：显式 Height Map 可解释但维数高；Latent 紧凑但不可读——影响 sim2real 调试与安全壳设计。
 
-## 两条表征路线
+## 核心机制：两条表征路线
 
 | 路线 | 数据流 | 特点 |
 |------|--------|------|
@@ -89,11 +95,18 @@ Height Map → Encoder → 128 维 latent → Teacher Policy
 - [视觉表征作为策略输入](./visual-representation-for-policy.md) 侧重 **操作/VLA 骨干选型**（R3M、DINOv2 等）；本页侧重 **locomotion 地形几何** 的压缩表示。
 - [DreamWaQ++](../entities/dreamwaq-plus.md) 等用 **点云 latent** 而非栅格高度图，同属「压缩摘要」思路。
 
-## 常见误区
+## 工程实践
+
+- **latent 维数与正则化约束：** 感知编码输出不宜过宽（典型 16–64 维瓶颈），以免 Student 在图像/深度噪声下过拟合无关纹理；结合 KL 或重建分支（如 [ANYmal Parkour](../entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) 中的三维体素注意力编码）可兼顾可解释性与压缩效率。
+- **训练期模态对齐：** 若部署依赖前向深度而训练用特权高程/scandots，建议在 Stage 2 DAgger 同时叠加观测噪声（盲区空洞、时间延迟）与隐向量 MSE/KL 对齐损失，防止纯动作克隆导致视觉分支退化。
+- **随机策略梯度截断（P³）：** 当地形或本体 VAE 编码器输出含随机采样的分布时，PPO 计算概率比必须围绕边缘/重构后动作分布截断，避免辅助解码损失污染策略梯度。
+
+## 局限与风险（及常见误区）
 
 - **「有深度相机 = 策略用了感知」** — 数据须进入 **可优化目标**（policy 输入或奖励）；仅堆传感器而 policy 盲感知仍会摔（参见 [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) 对照实验）。
 - **「Student 的 latent 必须重建 Teacher 的高度图」** — 蒸馏目标是 **动作一致**；latent 是中间瓶颈，不要求可解释栅格。
 - **「显式几何一定优于隐式 latent」** — 显式利于调试；隐式 latent 在维数、端到端优化、与深度噪声鲁棒性上常更实用（见 [显式楼梯几何 token 论文](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md) 作为显式路线的对照）。
+- **跨传感器泛化局限：** 隐式地形 latent 对相机视场、外参安装角与深度空洞模式高度敏感；更换机载深度相机型号时，编码器往往需要重新标定渲染并微调。
 
 ## 关联页面
 
@@ -109,6 +122,8 @@ Height Map → Encoder → 128 维 latent → Teacher Policy
 
 - [感知 Locomotion 表征与蒸馏本质 FAQ（维护者整理）](../../sources/personal/perceptive_locomotion_representation_essence.md)
 - [P³ 论文摘录（arXiv:2607.25541）](../../sources/papers/p3_arxiv_2607_25541.md)
+- [Robot Parkour Learning 论文归档](../../sources/papers/hmi_p130_robot-parkour-learning.md)
+- [ANYmal Parkour 论文归档（arXiv:2306.14874）](../../sources/papers/humanoid_pnb_anymal-parkour-robust-perceptive-locomotion.md)
 
 ## 推荐继续阅读
 

@@ -2,9 +2,9 @@
 type: entity
 tags: ['paper', 'humanoid', 'tsinghua', 'galbot', 'bit', 'hit', 'pku', 'shanghai-pil', 'social-hri', 'co-speech-gesture', 'diffusion', 'unitree-g1']
 status: complete
-updated: 2026-09-28
+updated: 2026-11-21
 arxiv: "2608.28693"
-summary: "RoboGesture（arXiv:2608.28693，清华/银河通用等）：300+ 类手势 + 半合成 1000 h 数据；分层语义–声学对齐 + DiT-CFM + Anti-Inertia Masking；G1 真机 ≈120 FPS；项目页未见代码。"
+summary: "RoboGesture（arXiv:2608.28693，ECCV 2026，清华/银河通用等）：300+ 类手势 + 1000 h 半合成机器人音–动数据；Mimi token 分层语义–声学对齐 + DiT-CFM + Anti-Inertia CFG Masking；OSQP 自碰撞滤波将碰撞帧率由 4.16% 降至 0.13%；已开源推理、G1 部署、54 类权重与训练核心示例。"
 related:
   - ../tasks/loco-manipulation.md
   - ./paper-pamor.md
@@ -12,9 +12,15 @@ related:
   - ./paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti.md
   - ./unitree-g1.md
   - ../methods/diffusion-motion-generation.md
+code: https://github.com/GalaxyGeneralRobotics/RoboGesture
+original:
+  - ../../sources/papers/robogesture_arxiv_2608_28693.md
+  - ../../sources/sites/robogesture-arxiv.md
+  - ../../sources/repos/robogesture.md
 sources:
   - ../../sources/papers/robogesture_arxiv_2608_28693.md
   - ../../sources/sites/robogesture-arxiv.md
+  - ../../sources/repos/robogesture.md
 ---
 
 # RoboGesture：人形实时语义对齐伴随语音手势
@@ -64,15 +70,47 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-28** [项目页](https://RoboGesture.github.io) **未见** 可运行官方仓库或权重；无法对齐 README 训练/推理入口。
+图依据：`GalaxyGeneralRobotics/RoboGesture@2913f1d` 的 `robogesture/cli.py`、`robogesture/offline.py`、`robogesture/model.py`、`robogesture/motion.py`、`robogesture/collision.py`、`robogesture/app.py`、`robogesture/session.py` 与 `robogesture/robot.py`（说明文档核对，未连接实机或运行 GPU checkpoint）。公开仓库分两条可执行路径：**离线 WAV 生成与渲染**，以及 **真机整句英文对话播放**（另有合成张量演示 `python -m training_examples.demo`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant CLI as "robogesture CLI (cli.py)"
+    participant App as "app.py / offline.py"
+    participant ASRLLM as "ASR + Qwen3 LoRA + TTS"
+    participant Gen as "MotionGenerator (model.py)"
+    participant Col as "CollisionFilter OSQP (collision.py)"
+    participant Sess as "MotionSession + Robot DDS"
+
+    CLI->>App: "infer wav -> .npz / stream --execute --confirm SEND_MOTION"
+    opt "stream 真机对话链路 (app.run)"
+        Sess->>Sess: "Robot.start() FSM 501 + RobotAudioClient.probe()"
+        App->>ASRLLM: "listen_once -> transcribe -> LocalAssistant.reply -> synthesize"
+        ASRLLM-->>App: "24 kHz PCM 语音"
+    end
+    App->>Gen: "generate(pcm): 2x1s 静音历史预热 + Mimi 2-codebook + 50 步 CFM"
+    Gen-->>App: "raw_motion [T, 41] (30 FPS)"
+    App->>App: "model_to_robot + smooth_model_blocks / build_timeline"
+    App->>Col: "filter(frames, legs, state.frame)"
+    Col-->>App: "safe/corrected/held frames (53-DoF qpos)"
+    alt "infer 离线导出"
+        App-->>CLI: "写入 60 列 qpos NPZ + 对齐 WAV（可选 render 输出 MP4）"
+    else "stream 实机播放 (MotionSession.play)"
+        Sess->>Sess: "audio.stage(utterance_id, audio)"
+        loop "逐帧 30 Hz 节拍"
+            Sess->>Sess: "robot.send(frame) 与到点触发 audio.play"
+        end
+    end
+```
 
 ## 工程实践
 
 | 项 | 说明 |
 |----|------|
-| 开源状态 | **未开源** — 项目页无 GitHub；论文 ECCV 2026 Poster |
-| 复现入口 | arXiv + 项目页演示；真机系统级联 **ASR → LoRA LLM → TTS → 流式 motion → 执行**（延迟主因在上游语音） |
-| 数据 | RoboGesture 数据集（300+ 类；半合成 **1000 h**）未公开下载 |
+| 开源状态 | **推理与部署代码已开源（2026-11-21 复核 `@2913f1d`）**；含 Git LFS 54 类 `MotionModel`（`checkpoints/motion/`）、Qwen LoRA（`checkpoints/qwen_lora/`）与 15 组配对示例，**1000 h 数据集与完整预处理/大规模训练脚本未公开** |
+| 离线复现入口 | `robogesture infer examples/sample_06.wav --output outputs/generated.npz` 与 `robogesture render outputs/generated.npz --output outputs/generated.mp4`；`python -m training_examples.demo` 运行合成张量 Stage 0/1 训练核心验证 |
+| 实机对话与控制链路 | `robogesture stream --execute --confirm SEND_MOTION` 级联 Volcengine ASR → `Qwen/Qwen3-4B-Instruct-2507` + LoRA（带动作标签）→ Volcengine TTS → `MotionGenerator`（2 s 静音预热后每秒出 30 帧）→ `CollisionFilter`（OSQP）→ G1 DDS FSM 501 与 BrainCo Revo2 灵巧手 30 Hz 同步播放 |
+| 安全与损失参数 | Stage 1 采用 15% 概率整批置零 Past Motion（Anti-Inertia CFG Masking）、手部联合空间权重 `w_hand = 4.0`、语义关键帧权重 `{5, 10}`；OSQP 自碰撞滤波在论文评测中将自碰撞帧率从 `4.16%` 降至 `0.13%` |
 
 ## 实验与评测
 
@@ -126,6 +164,7 @@ RoboGesture 把 **语义–韵律–安全** 绑成可部署的 listen–respond
 
 - [robogesture_arxiv_2608_28693.md](../../sources/papers/robogesture_arxiv_2608_28693.md)
 - [robogesture-arxiv.md](../../sources/sites/robogesture-arxiv.md)
+- [robogesture.md](../../sources/repos/robogesture.md)
 - [公众号周更策展](../../sources/blogs/wechat_shenlan_weekly_papers_2026-09-04.md)
 
 ## 推荐继续阅读

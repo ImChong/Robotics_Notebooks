@@ -1,5 +1,8 @@
 # GreenWAM 论文来源归档
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2610.18774` PDF 提取全文（`2610.18774.pdf`，7,800,685 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 元数据
 - **题目：** GreenWAM: A World Foundation Model for Robotics
 - **作者：** Gennady Sidorov、Valerii Kornilov、Denis Grankin、Polina Fedotova、Aleksey Postnikov

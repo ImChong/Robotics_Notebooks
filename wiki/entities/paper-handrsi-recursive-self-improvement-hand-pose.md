@@ -159,6 +159,10 @@ sequenceDiagram
 - **复现成本：** ACE-Ego-Hand 视频骨干、MANO、WiLoR、多个模型资产和 8 卡级 RSI 循环；推理可能落在单 GPU，但速度受硬件与模块配置影响。
 - **许可：** 权重 CC BY-NC 4.0 不等同代码 MIT 许可证；商业用途不应仅凭代码仓开放判断。
 
+## 感知栈选型关联
+
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：HandRSI 位于视频手部感知及 2D→3D 姿态恢复环节；应在相机/时序对齐、精度、延迟和下游策略消费之间独立验收。HOT3D 的 MPJPE 改善不能直接推断真机操作成功率。
+
 ## 关联页面
 
 - [WiLoR：手部检测与重建](../methods/wilor.md)

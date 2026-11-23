@@ -8,6 +8,9 @@
 - **入库日期：** 2026-04-14
 - **最后更新：** 2026-04-14
 - **一句话说明：** 覆盖 MPC 经典理论、足式机器人应用和人形实现，支撑 MPC、MPC-WBC 集成等 wiki 页面。
+- **补充开放全文：** Kim et al. 2019 (https://arxiv.org/abs/1909.06586)、Sleiman et al. 2021 (https://arxiv.org/abs/2103.00946)、Wensing et al. 2024 (https://arxiv.org/abs/2211.11644)
+- **通读：** 已完成
+- **核对范围：** 已通读 Sleiman et al. RA-L 2021（arXiv:2103.00946，1,147 行）、Kim et al. 2019 MIT Mini-Cheetah MPC+WBIC（arXiv:1909.06586，1,029 行，3.7 m/s 奔跑与 2 ms WBIC QP 式 26）及 Wensing et al. T-RO 2024（arXiv:2211.11644）
 
 ## 核心论文摘录（MVP）
 

@@ -12,7 +12,7 @@ tags:
   - midea
   - x-humanoid
 status: complete
-updated: 2026-09-28
+updated: 2026-11-21
 arxiv: "2409.14411"
 related:
   - ../methods/diffusion-policy.md
@@ -24,7 +24,10 @@ related:
 sources:
   - ../../sources/papers/scaledp_arxiv_2409_14411.md
   - ../../sources/sites/scaling-diffusion-policy-github-io.md
-summary: "ScaleDP（ICRA 2025，arXiv:2409.14411，美的/华东师大/上海大学/X-Humanoid）：AdaLN + 非因果动作注意力使 DP-T 从 10M 扩至 1B；MetaWorld +21.6% vs DP-T；项目页 Code 误链 DexVLA，截至入库日无官方代码。"
+original:
+  - ../../sources/papers/scaledp_arxiv_2409_14411.md
+  - ../../sources/sites/scaling-diffusion-policy-github-io.md
+summary: "ScaleDP（ICRA 2025，arXiv:2409.14411，美的/华东师大/上海大学/X-Humanoid）：AdaLN + 非因果动作注意力使 DP-T 从 10M 扩至 1B；MetaWorld 50 任务相对 DP-T 平均 +21.6%，4 项 Franka 单臂 / 3 项双臂 UR5 真机分别达 87.50% / 98.33%；项目页 Code 误链 DexVLA。"
 ---
 
 # ScaleDP：十亿参数可扩展扩散 Transformer 操作策略

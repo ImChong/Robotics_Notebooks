@@ -5,6 +5,8 @@
 - **官方代码：** <https://github.com/RT-Thread/rt-thread>
 - **许可证：** 官方主仓库当前标注 Apache-2.0；需要按 tag 核对历史版本许可证
 - **核查日期：** 2026-10-04
+- **通读：** 已完成
+- **核对范围：** 核对 RT-Thread 官方文档入口与 `RT-Thread/rt-thread` 官方 `README.md`（155 行）。
 
 ## 项目概览
 

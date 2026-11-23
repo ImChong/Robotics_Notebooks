@@ -12,7 +12,7 @@ tags:
   - unitree-g1
   - hit
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.05647"
 code: https://github.com/JixinGao/KILVO
 related:
@@ -24,11 +24,13 @@ related:
   - ../formalizations/ekf.md
   - ./unitree-g1.md
   - ../overview/navigation-slam-autonomy-stack.md
+original:
+  - ../../sources/papers/kilvo_arxiv_2608_05647.md
 sources:
   - ../../sources/papers/kilvo_arxiv_2608_05647.md
   - ../../sources/repos/kilvo.md
   - ../../sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md
-summary: "KILVO（arXiv:2608.05647，HIT，TMECH）：人形运动学–惯性–激光–视觉里程计；异步–顺序混合 ESIKF + 接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；代码仓占位待开放。"
+summary: "KILVO（arXiv:2608.05647，HIT，TMECH）：人形运动学–惯性–激光–视觉里程计；异步–顺序混合 ESIKF + 接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；ROS Noetic C++ 源码（GPL-2.0）与 15 段 Unitree G1 rosbag 已开源。"
 ---
 
 # KILVO：人形多传感器运动学–惯性–激光–视觉里程计
@@ -67,7 +69,7 @@ summary: "KILVO（arXiv:2608.05647，HIT，TMECH）：人形运动学–惯性�
 | **发表** | IEEE/ASME Transactions on Mechatronics（DOI: 10.1109/TMECH.2026.3721778） |
 | **传感器** | 关节编码器、IMU、LiDAR、相机（标准人形配置） |
 | **数据** | 公共 LIKO / HR²-KILO；自采 15 序列（含 Unitree G1 等） |
-| **开源** | **代码待开放** — 仓 [JixinGao/KILVO](https://github.com/JixinGao/KILVO) 仅占位 README（复核日 2026-08-11） |
+| **开源** | **已开源（2026-11-02）** — 仓 [`JixinGao/KILVO`](https://github.com/JixinGao/KILVO)（GPL-2.0，46 files）含完整 ROS Noetic C++ 源码与 OneDrive 15 段 Unitree G1 rosbag |
 
 ## 核心原理
 
@@ -99,17 +101,50 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（官方可运行代码尚未发布）。** 截至 2026-08-11 复核：仓库 README 仍写「code and datasets would be available soon」，根目录无实现。发布后应补：rosbag/数据集回放 → ESIKF 异步–顺序更新 → 轨迹/地图输出的 `sequenceDiagram`。
+入口：`roslaunch kilvo mapping_mid360_d455i.launch`（或 `mapping_mid360_mvs.launch` / `mapping_liko.launch`）加载相机与 LiDAR-IMU 配置后启动 `kilvo` 节点（`src/main.cpp`）；节点构建 `LIVMapper`、注册话题回调并进入主循环。
+
+```mermaid
+sequenceDiagram
+    participant ROS as roslaunch / rosbag
+    participant Main as main() (src/main.cpp)
+    participant Map as LIVMapper (src/LIVMapper.cpp)
+    participant IMU as IMU_Processing
+    participant KIO as KIOManager (kio.cpp)
+    participant LIO as VoxelMapManager (voxel_map.cpp)
+    participant VIO as VIOManager (vio.cpp)
+
+    ROS->>Main: roslaunch kilvo mapping_mid360_d455i.launch
+    Main->>Map: LIVMapper(nh) & initializeSubscribersAndPublishers()
+    ROS-->>Map: livox_pcl_cbk / imu_cbk / leg_cbk / img_cbk
+    loop ros::ok() @ 5000 Hz spinOnce (LIVMapper::run)
+        Main->>Map: slam_mode_adjust() 检查退化/失联并切换 KILVO/KILO/LIVO/ONLY_KIO/ONLY_LIO
+        Map->>Map: sync_packages() / async_packages()
+        Map->>Map: handleFirstFrame() & estiContact() (KIO 接触估计)
+        Map->>IMU: processImu_()
+        Map->>Map: stateEstimationAndMapping()
+        alt lio_vio_flg == KIO
+            Map->>KIO: handleKIO() -> ProcessLeg()
+        else lio_vio_flg == LIO / LO
+            Map->>LIO: handleLIO() -> 降采样与体素面更新
+        else lio_vio_flg == VIO
+            Map->>VIO: handleVIO() -> processFrame() 与点云着色发布
+        end
+        Map-->>ROS: publish_odometry / publish_path
+    end
+    Main->>Map: savePCD()
+```
+
+图依据：`JixinGao/KILVO`（`pushed_at: 2026-11-02`）`src/main.cpp`、`src/LIVMapper.cpp`（`run()`、`slam_mode_adjust()`、`stateEstimationAndMapping()`、`handleKIO()`/`handleLIO()`/`handleVIO()`）及 `launch/mapping_mid360_d455i.launch`。
 
 ## 工程实践
 
-| 项 | 建议 / 论文设定 |
-|----|----------------|
+| 项 | 建议 / 论文与源码设定 |
+|----|----------------------|
 | 何时用 | 人形需 **腿运动学 + LIO/VIO** 且担心传感器中断/退化时 |
 | 对照基线 | FAST-LIO2、FAST-LIVO2、LIO-SAM、LIKO、HR²-KILO、R3LIVE |
 | 接触 | 优先复用估计器内部线索；勿只靠 GRF 阈值（软地/急停易失效） |
-| 失效演练 | 注入丢编码/LiDAR/图像片段，检查是否平滑降级而非发散 |
-| 复现现状 | **等代码与数据集**；先读 Table IV–VI 做选型 |
+| 失效演练 | 复现仓内 `slam_mode_adjust()` 对丢失/退化（`lid_deg` / `cam_deg` / 超时）降级策略，检查能否平滑切回 |
+| 复现入口 | `roslaunch kilvo mapping_mid360_d455i.launch` + OneDrive 15 段 Unitree G1 rosbag 序列（需先配置 ROS Noetic catkin 环境） |
 
 ## 实验与评测
 
@@ -129,7 +164,7 @@ flowchart TB
 3. **真影响：内生接触** — 无足底力计平台也可约束腿运动学。
 4. **次要代价：视觉对冲击敏感** — 曝光/模糊限制下，视觉贡献不稳定，需靠多源互补。
 5. **部署读法：** 先看是否具备编码器+IMU+LiDAR(+相机)；缺一仍可跑降级模态。
-6. **工程读法：代码占位** — 论文已接收，但复现入口未开；选型先对照 FAST-LIVO2/HR²-KILO。
+6. **工程读法：源码与 15 段数据集已开源** — 可直接用 [`JixinGao/KILVO`](https://github.com/JixinGao/KILVO)（GPL-2.0）与 OneDrive 15 段 G1 rosbag 复现并比对 FAST-LIVO2/HR²-KILO；需注意 GPL-2.0 协议与 ROS Noetic 环境要求。
 
 ## 与其他工作对比
 
@@ -142,7 +177,7 @@ flowchart TB
 
 ## 局限与风险
 
-- **代码与数据未开放：** 论文写 released，仓为 coming soon——以核查日仓内容为准。
+- **GPL-2.0 授权与 ROS 1 绑定：** 官方源码（GPL-2.0）依赖 ROS Noetic，商用闭源集成或迁移 ROS 2 需自行隔离或重写通信与接口层。
 - **标定与同步敏感：** 多传感器时间戳/外参误差会直接进紧耦合残差。
 - **滑移与活动地砖：** 接触/运动学假设被破坏时，需依赖外感与适配逻辑兜底。
 - **非回环 SLAM：** 主叙事是里程计式估计；长时全局一致仍可能需上层回环。
@@ -161,13 +196,13 @@ flowchart TB
 ## 参考来源
 
 - [kilvo_arxiv_2608_05647.md](../../sources/papers/kilvo_arxiv_2608_05647.md) — 论文摘录与开源核查
-- [kilvo.md](../../sources/repos/kilvo.md) — 官方仓占位核查
+- [kilvo.md](../../sources/repos/kilvo.md) — 官方仓与 15 段 rosbag 开源核查（GPL-2.0）
 - [arXiv:2608.05647](https://arxiv.org/abs/2608.05647) — 原文
 - [DOI:10.1109/TMECH.2026.3721778](https://doi.org/10.1109/TMECH.2026.3721778) — 期刊版本
 
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：KILVO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots/KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots.html)
-- [KILVO GitHub（占位）](https://github.com/JixinGao/KILVO)
+- [JixinGao/KILVO（官方开源仓库与数据集入口）](https://github.com/JixinGao/KILVO)
 - [KILVO PDF](https://arxiv.org/pdf/2608.05647)
 - [FAST-LIO2 论文](https://github.com/hku-mars/FAST_LIO) — LIO 工程对照

@@ -2,7 +2,7 @@
 type: method
 tags: [evolutionary-computation, genetic-algorithm, optimization, robotics, locomotion]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-22
 related:
   - ./genetic-programming.md
   - ./reinforcement-learning.md

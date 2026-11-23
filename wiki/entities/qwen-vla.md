@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, qwen, open-source, flow-matching, generalist, cross-embodiment, navigation, manipulation]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md

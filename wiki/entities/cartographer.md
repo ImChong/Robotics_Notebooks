@@ -2,19 +2,24 @@
 type: entity
 tags: [repo, slam, google, 2d, 3d, ros]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
 sources:
   - ../../sources/repos/cartographer.md
+  - ../../sources/papers/cartographer_icra_2016.md
+original:
+  - ../../sources/papers/cartographer_icra_2016.md
 summary: "Google Cartographer 提供实时 2D/3D SLAM：子图 scan matching + 位姿图优化，cartographer_ros 广泛用于工业与科研。"
 ---
 
 # Cartographer
 
-**Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。
+## 一句话定义
+
+**Cartographer** 是 Google 开源的实时 **2D/3D 子图 SLAM** 系统，通过 **局部概率栅格子图匹配** 与基于 **预计算多分辨率金字塔分支定界（BnB）** 的全局稀疏位姿调整（SPA）闭环，在大规模室内场景实现低漂移建图。
 
 ## 英文缩写速查
 
@@ -32,13 +37,28 @@ summary: "Google Cartographer 提供实时 2D/3D SLAM：子图 scan matching + �
 - **工业成熟度**：大量仓储/服务机器人历史部署案例。
 - **子图架构**：局部匹配 + 全局优化，利于大规模环境。
 
-## 核心结构/机制
+## 核心原理与子图架构
 
-| 模块 | 说明 |
+| 模块 | 原文机制（Hess et al., ICRA 2016） |
 |------|------|
-| **Local SLAM** | 扫描匹配、子图插入 |
-| **Global SLAM** | 闭环检测、位姿图优化 |
-| **cartographer_ros** | ROS/ROS2 桥接与传感器配置 |
+| **Local SLAM** | 运动滤波后用 **Ceres 非线性最小二乘扫描匹配**（双三次插值概率栅格）对齐至当前活跃 **Submap**，达到固定扫描帧数后冻结子图防止内部持续漂移 |
+| **BnB 全局闭环** | 构建 7 层 **预计算最大概率金字塔栅格（Precomputed Grids）**，以高层栅格严格上界做深度优先 **分支定界（Branch-and-Bound）** 搜索，消除大范围闭环检索开销 |
+| **Global SPA 优化** | 后台异步执行 **稀疏位姿调整（SPA）** 并以 **Huber Loss** 抑制错误回环离群点，论文在 Deutsches Museum（2253 m）达 **5.3x 实时** 速率 |
+| **cartographer_ros** | 通过 `.lua` 配置传感器坐标系、`TRAJECTORY_BUILDER_2D/3D` 与 `POSE_GRAPH` 权重接入 ROS 生态 |
+
+```mermaid
+flowchart LR
+    sensor["LiDAR + IMU / Odom"] --> local["Local SLAM<br/>Ceres Scan Match -> Submap"]
+    local -->|冻结子图| global["Global SLAM<br/>7层金字塔 BnB 回环检索"]
+    global --> spa["Ceres SPA 位姿图优化<br/>Huber 抗误闭环"]
+    spa --> out["全局一致 Submap 拼接与 /map 输出"]
+```
+
+## 工程实践
+
+- **核心配置入口：** 所有传感器话题、体素滤波、子图尺寸与闭环频率由 `.lua` 文件（如 `backpack_2d.lua`）控制，调参重点为 `TRAJECTORY_BUILDER_2D.num_accumulated_range_data` 与 `POSE_GRAPH.constraint_builder.min_score`。
+- **低成本雷达验证：** ICRA 2016 原文证明即使使用 **5 Hz / 单层 49 € 级 Neato Revo LDS** 配合 5 cm 栅格仍可完成厘米级室内大环闭环，但依赖精确的 `URDF` 外参与 IMU 时间同步。
+- **与 Nav2 / SLAM Toolbox 配合：** 在 ROS 2 新项目里若需在线续建与 `.posegraph` 持久化优先考虑 [SLAM Toolbox](./slam-toolbox.md)；已有成熟 `.pbstream` 资产或 3D 多线激光+IMU 子图流程可继续沿用 Cartographer。
 
 ## 常见误区或局限
 
@@ -87,6 +107,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [sources/papers/cartographer_icra_2016.md](../../sources/papers/cartographer_icra_2016.md) — Hess et al., *Real-Time Loop Closure in 2D LIDAR SLAM*, ICRA 2016
 - [sources/repos/cartographer.md](../../sources/repos/cartographer.md)
 - [cartographer-project/cartographer](https://github.com/cartographer-project/cartographer)
 - 源码核对（2026-11-02）：cartographer-project/cartographer@877157a，读过 cartographer/cloud/map_builder_server_main.cc、cartographer/cloud/internal/map_builder_server.cc、cartographer/cloud/internal/handlers/add_sensor_data_batch_handler.cc、cartographer/cloud/internal/handlers/add_trajectory_handler.cc、cartographer/mapping/map_builder.cc、cartographer/mapping/internal/collated_trajectory_builder.cc、cartographer/mapping/internal/global_trajectory_builder.cc、cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc、cartographer/mapping/internal/2d/pose_graph_2d.cc、README.rst；时序图依据以上文件，未运行代码。

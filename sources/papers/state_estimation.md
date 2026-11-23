@@ -8,6 +8,9 @@
 - **入库日期：** 2026-04-14
 - **最后更新：** 2026-04-14
 - **一句话说明：** 覆盖 EKF 足式机器人里程计、不变 EKF（InEKF）、基于学习的状态估计等方法
+- **补充开放全文：** Hartley et al. 2020 (https://arxiv.org/abs/1904.09251, *Contact-Aided Invariant Extended Kalman Filtering for Robot State Estimation*, IJRR)
+- **通读：** 已完成
+- **核对范围：** 已通读 Hartley et al. IJRR（arXiv:1904.09251v2 全文 PDF，4,398 行），核对 SE_k(3) 李群接触辅助右/左不变 EKF、log-linear 误差动力学与 Cassie 双足真机 Mocap/LiDAR 实验结论
 
 ## 核心论文摘录
 

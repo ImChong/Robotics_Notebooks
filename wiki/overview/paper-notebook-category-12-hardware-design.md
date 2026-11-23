@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）。"
@@ -58,7 +58,7 @@ original:
 - [AGILOped](../entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md) — 待深读
 - [Aero Hand Open](../entities/paper-aero-hand-open.md) — 腱驱手 MuJoCo sim2real（[索引页](../entities/paper-aero-hand-open.md)）
 - [Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand](../entities/paper-notebook-antagonistic-bowden-cable-actuation-of-a-lightwe.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html)
-- [Berkeley Humanoid Lite](../entities/berkeley-humanoid-lite.md) — 待深读
+- [Berkeley Humanoid Lite](../entities/berkeley-humanoid-lite.md) — 见 wiki 实体页（已完成 arXiv:2504.17249v1 全文通读：22 关节 / 美区 BOM $4,312·中国 $3,236、摆线效率 ~90%、60 h 摆锤耐久）
 - [Berkeley Humanoid](../entities/paper-notebook-berkeley-humanoid-a-research-platform-for-learni.md) — 待深读
 - [ByteWrist](../entities/paper-notebook-bytewrist-a-parallel-robotic-wrist-enabling-flex.md) — 待深读
 - [CAD-Driven Co-Design for Flight-Ready Jet-Powered Humanoids](../entities/paper-notebook-cad-driven-co-design-for-flight-ready-jet-powere.md) — 待深读

@@ -77,4 +77,5 @@
 - [x] wiki 页面映射确认
 - [x] 关联 wiki 页面的参考来源段落已添加 ingest 链接
 
+- **核对范围：** 通读 `arXiv:2608.26058v1` HTML 全文（§1–7、Appendix §8、Table 1–4、Table 8.1–8.2、Fig. 1–8），并复核项目页 <https://public-bots.github.io/UCAG-P> 与 GitHub 仓库 `Public-BOTs/UCAG-P`（截至 2026-11-22 仍为项目页配图占位仓，代码尚未放出）。
 - **通读：** 已完成

@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, video-generation, multimodal, open-source, audio-video, comfyui, synthetic-data]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-23
 project: https://www.minimax.io/blog/minimax-h3
 code: https://github.com/MiniMax-AI/MiniMax-H3
 original:
@@ -21,6 +21,7 @@ related:
   - ./minimax-h3-orb360-cardspin.md
   - ./minimax-h3-360-orbit-lora.md
   - ./minimax-h3-image.md
+  - ./paper-spark-h3.md
 sources:
   - ../../sources/sites/minimax-h3-blog.md
   - ../../sources/repos/minimax-h3.md
@@ -130,6 +131,10 @@ sequenceDiagram
 | **Hailuo / platform.minimax.io** | 产品/API | 与开源权重并行，非同一 SLA |
 
 **RunningHub RH Enhanced（Camp）：** URL `https://rhtv.runninghub.cn/projects/camp/view/2103108085243867138`。入库日 SPA **无法无 token 抓取正文**；同生态公开 **All-In-One** 工作流说明提到 **合并 T2V/I2V/参考**、**两段式 latent 放大 (~1080p)**、缓解 turbo LoRA 塑料感与高运动糊——可作为 Camp **能力策展参照**（是否同一 JSON 需登录 UI 核对）。
+
+## 第三方稀疏注意力加速（独立论文）
+
+[**Spark-H3（arXiv:2611.24256）**](paper-spark-h3.md) 是面向 MiniMax-H3 的第三方免训练推理后端：Reblock 重排注意力 token，Reweight 修正压缩 KV 注意力质量；官方论文 Table 1 的 10% exact-block density 在固定 20-step、1344×768 条件下报告 **DiT 2.49×**，非端到端加速。Spark-H3 已开源推理核、Ref2VA 与 ComfyUI 集成，但**不分发 MiniMax-H3 基础权重**；不改变本页所说的 MiniMax-H3 首发自身稀疏注意力模块开放边界。
 
 ## 360° 环绕 LoRA 选型
 

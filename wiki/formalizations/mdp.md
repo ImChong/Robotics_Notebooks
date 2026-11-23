@@ -17,7 +17,7 @@ sources:
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
 summary: "马尔可夫决策过程（MDP）：用状态、动作、转移动力学、奖励与折扣描述序贯决策的标准框架，及回报、价值函数、Bellman 方程与最优性；是强化学习的数学基础。"
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 ---
 
 # Markov Decision Process (MDP)

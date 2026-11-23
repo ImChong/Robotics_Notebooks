@@ -3,7 +3,7 @@ type: entity
 project_id: passive-soft-extensions-2611-15386
 tags: [paper, continuum-robotics, soft-robotics, control]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15386"
 project: https://ignaciocuiral.com/passive_soft_extension_control/
 code: https://github.com/nachocz/passive_soft_extension_control
@@ -103,6 +103,11 @@ UR10 仿真与真实系统中的局部尖端调节；有辨识误差、不可达
 1. 保留相同模型与数据预算下的可比口径，不跨基准简单求平均。
 2. 优先复核最可能出现数据泄漏、接触失败或部署延迟的环节。
 3. 对论文未检验的部署条件单列验证计划。
+
+## 与其他工作对比
+
+- **对比被动刚性延伸与有源混合刚软机器人（Fig. 1 & §I）：** 被动刚性延伸段在受限孔道内难以柔顺绕障、易碰撞受损；现有混合刚软方案（将微型连续体/软体臂装在刚性机械臂末端）通常需给软体段配备独立驱动电机、电源与控制线束，增大末端负载与集成复杂度。本文通过机械臂零空间冗余运动拉动锚定在上游连杆的外部肌腱，实现无电机/无传感器/低成本（演示泡沫软体管低于 10 美元）的主动末端形变控制，代价是可控形变维度与工作空间受 EE 约束及肌腱跨度域限制。
+- **内部约束与肌腱构型对照（§VI–VII）：** 仿真（UR10）对比了自由 EE、位置约束 EE 与孔口支点约束（RCM），以及关闭 vs 开启 CBF 障碍屏障（穿透 18.8 mm vs 保持 >10.7 mm 净距）；真机（125 Hz）对比了平行肌腱（Exps. 1–5）与螺旋肌腱（Exp. 6）路由。需注意真机 9–14 mm 为 4 个追踪标记点联合 RMS 误差，与仿真 1.5 mm 单尖端误差口径不同，不可混比。
 
 ## 局限与风险
 

@@ -12,7 +12,7 @@ tags:
 - project
 - mujoco-demo
 status: complete
-updated: 2026-10-27
+updated: 2026-11-22
 arxiv: '2610.06129'
 venue: 2026 · arXiv preprint
 related:

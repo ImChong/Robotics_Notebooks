@@ -3,6 +3,8 @@ type: entity
 tags: [humanoid, loco-manipulation, foundation-model, wearable, exoskeleton, world-model, dexterous-manipulation, wuji-hand, current-robotics]
 status: complete
 updated: 2026-08-17
+original:
+  - ../../sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md
 related:
   - ./current-robotics-currentworld.md
   - ../tasks/loco-manipulation.md
@@ -127,6 +129,10 @@ flowchart TB
 - **不等于「消灭真机」：** 世界模型环降低高频介入与重置成本，但 **grounding、校准与终验** 仍依赖硬件。
 - **硬件栈未完全公开：** 除 **Wuji Hand 21-DoF** 外，具体人形平台型号与完整驱动接口博客未给出 datasheet 级说明。
 - **与开源学术栈的接口未知：** 与 G1+SONIC、GR00T 等公开基线的 **同条件对比** 尚未见独立第三方报告。
+
+## 工程实践
+
+- **可穿戴 HumanEx + 三系统闭环耦合：** 借助 21k 小时可穿戴人类行为数据按 System 2（推理）/ System 1（全身）/ System 0（21-DoF Wuji 手）统一端到端训练，避免行走与灵巧手操作策略拼接造成的接触期重心冲突，并利用多模态世界模型加速长程故障回溯定位。
 
 ## 关联页面
 

@@ -13,7 +13,7 @@ tags:
   - hku
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2505.08712"
 code: https://github.com/InternRobotics/NavDP
 related:
@@ -28,6 +28,8 @@ sources:
   - ../../sources/papers/humanoid_pnb_navdp.md
   - ../../sources/sites/navdp.md
   - ../../sources/repos/navdp.md
+original:
+  - ../../sources/papers/humanoid_pnb_navdp.md
 summary: "NavDP（arXiv:2505.08712，ICRA 2026）用仿真 ESDF/A* 生成 363.2 km、1244 场景 RGB-D 数据；共享 Transformer 的扩散头生成多条轨迹、critic 用特权 ESDF 监督筛安全样本，零样本迁移轮式/四足/人形。代码和 benchmark 已开源，checkpoint 需表单获取。"
 ---
 
@@ -181,7 +183,7 @@ sequenceDiagram
 - DepthAnything / RGB-D 域差、motion blur 与相机姿态会影响 critic 的局部安全判断。
 - 仓库已演化为 InternVLA-N1 benchmark；复现论文结果时应锁定版本，不要把后续模型能力归因于原始 NavDP。
 
-## 与其他页面的关系
+## 关联页面
 
 - [A* 全局路径规划](../methods/a-star.md) — 仿真 ESDF/A* 负责训练轨迹生成，需与学习得到的候选轨迹生成器分开阅读。
 - [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — benchmark 用异步 MPC follower 执行轨迹，规划服务与控制跟随的延迟和接口应分别验收。

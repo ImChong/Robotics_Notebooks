@@ -9,6 +9,9 @@
 - **项目页：** <https://uni-vta.github.io/>
 - **数据集：** <https://huggingface.co/datasets/Chopper233/UVTA>
 - **入库日期：** 2026-10-16
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读 `uni-vta/UVTA`（commit `74f4270`，MIT）官方 `README.md` 全部章节（安装、Zarr v2 28 分片数据格式、`scripts/train.py`、`scripts/eval_action_quality.py`、`cet/relative_policy_rollout.py` 与 `cet/robot_env.py` 适配边界）及 `scripts/`、`cet/` 目录清单；未下载 482 GB 数据集或实机运行。
+- **通读：** 已完成
 - **一句话说明：** UVTA 官方实现，提供视触觉条件扩散策略训练、离线动作质量评估与机器人 rollout；公开数据集独立托管于 Hugging Face。
 
 ## 开源范围

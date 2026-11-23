@@ -4,6 +4,7 @@ tags: [control, lyapunov, clf, stability, qp, optimization, safety]
 status: complete
 updated: 2026-11-14
 summary: "Control Lyapunov Function（控制李雅普诺夫函数）通过构造满足 V̇(x)≤-αV(x) 的标量函数，为控制系统提供可证明的渐近稳定性保证，是 CLF-CBF-QP 框架的稳定性核心。"
+original: ../../sources/papers/ames_cbf_ecc2019_arxiv_1903_11199.md
 sources:
   - ../../sources/papers/optimal_control_theory.md
 related:
@@ -43,7 +44,7 @@ Lyapunov 稳定性分析是控制理论的核心工具，但传统 Lyapunov 方�
 3. **实时控制中的应用**：CLF 条件对控制输入是线性的，可以直接作为 QP 约束，适合嵌入高频控制回路
 4. **理论严谨性**：CLF 提供渐近稳定性的严格数学保证，比单纯的代价函数优化更可靠
 
-## 核心定义
+## 核心原理（核心定义）
 
 ### Lyapunov 稳定性回顾
 
@@ -144,7 +145,11 @@ $$\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \leq -\lambda_{
 
 其中 $A$ 是线性系统的状态矩阵，$B$ 是控制输入矩阵（即 $\dot{x} = Ax + Bu$ 中的 $A, B$），$Q, R$ 分别为状态和控制代价权重。因此 LQR 是 CLF 理论在线性系统上的特例，LQR 的最优代价函数自然满足 CLF 条件。
 
-## 常见误区
+## 工程实践
+
+- **快速指数稳定与力矩受限折中（Ames et al., arXiv:1903.11199v1）**：结合控制输入边界与 CBF 安全约束构成 CLF-CBF-QP 时，CLF 衰减项须附带松弛变量 $\delta$，保证可行性永远优先让渡给安全约束与执行器限幅。
+
+## 常见误区或局限
 
 1. **CLF 不保证安全性**：CLF 只驱动系统到达目标，不阻止系统经过危险区域。需要 CBF 共同工作才能同时保证稳定性和安全性。
 
@@ -156,6 +161,7 @@ $$\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \leq -\lambda_{
 
 ## 参考来源
 
+- [ames_cbf_ecc2019_arxiv_1903_11199.md](../../sources/papers/ames_cbf_ecc2019_arxiv_1903_11199.md) — Ames et al., ECC 2019 (CLF-CBF-QP 联合综合与松弛变量机制)
 - Sontag, *A universal construction of Artstein's theorem on nonlinear stabilization* (1989) — CLF 奠基理论（Artstein-Sontag 公式）
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CLF-CBF-QP 联合框架
 - [sources/papers/optimal_control_theory.md](../../sources/papers/optimal_control_theory.md) — 最优控制与 Lyapunov 方法背景

@@ -527,6 +527,158 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-23] ingest | sources/papers/icub_wrist_mechanisms_robotics_2019.md — 归档 iCub 六种腕关节机构比较
+
+- 一手来源：Shah 等，*A Comparison of Robot Wrist Implementations for the iCub Humanoid*，Robotics 2019；DOI 10.3390/robotics8010011；全文第 1–8 节与图表已核对。
+- 知识沉淀：新建唯一论文实体，比较 Gimbal、mk.2、球面五杆/六杆、OmniWrist-III、Quaternion 的工作空间、驱动耦合、warping；挂载人形硬件设计 Stage 1。
+- 重要边界：论文的 Quaternion 推荐来自 CAD 运动学评测，不代表实机验证；未找到可运行官方求解器/模型的公开入口，因此不生成虚构源码时序图。
+
+## [2026-11-23] ingest | Inner Thinking Transformer | 归档动态深度语言模型论文
+
+- 论文：[Inner Thinking Transformer: Leveraging Dynamic Depth Scaling to Foster Adaptive Internal Thinking](https://arxiv.org/abs/2502.13842)，ACL 2025。
+- 原文：[sources/papers/inner-thinking-transformer_arxiv_2502_13842.md](../sources/papers/inner-thinking-transformer_arxiv_2502_13842.md)，按 v2 全文核对方法、实验和局限。
+- Wiki：[ITT 独立详情](../wiki/entities/paper-inner-thinking-transformer.md)，含机制图、消融与成本读法。
+- 关联：[Transformer](../wiki/concepts/transformer.md) 和 [模型架构纵深 Stage 5](../roadmap/depth-model-architecture.md)。
+- 官方代码：论文和 ACL 记录未提供 ITT 实现仓库，源码运行时序图不适用；没有机器人闭环结果。
+- 校验：通过 GitHub 提交内容；执行环境无法连接 GitHub 克隆仓库，因此本地 make ci-preflight 与 report_health.py --changed 尚未执行，待 PR GitHub Actions 验证。
+
+## [2026-11-23] ingest | human_to_robot.pdf | PI 人视频到机器人迁移官方 PDF 复核
+
+- 意图：用户提供 PI 官方 13 页 PDF，复用已存在的论文实体 paper-pi-human-to-robot（arXiv:2512.22414），不创建重复节点。
+- 原文与改动：通读 Sec. I–VI、Fig. 1–13、Appendix A–C；增补官方 PDF 直链、18/16 维动作语义、四任务计分和 20–40 次评测，细化 Mermaid 技术流程图。
+- 开源核对：PI 官方研究页未列本文专属可运行代码和实验数据；源码运行时序图不适用。
+- 纵深路线：更新 VLA Stage 3、跨本体迁移 Stage 4 的知识页入链。
+- 原文：https://www.pi.website/download/human_to_robot.pdf
+
+## [2026-11-22] ingest | live-panel-skill JSON/Excalidraw 动态架构图工具入库
+
+- 读取 ythx-101/live-panel-skill 官方 README、SKILL.md 及 render/check_frames/livepanel 源码，归档已开源项目与可执行渲染链路。
+- 新增独立项目实体（双语标题、Mermaid 流程总览与源码运行时序图），从 Diagrams 建立入链；不硬挂机器人算法纵深路线。
+- 明确动画并非真实遥测，未在本次环境运行上游渲染与全套测试。
+
+## [2026-11-22] ingest | sources/repos/humancalib.md — 走路人体自动标定多相机外参并接入动捕路线
+
+- 新增独立 HumanCalib 双语项目页，基于官方 METHOD、HOWTO 和 CLI/BA/后处理源码核实流程、运行时序与许可。
+- 关键边界：免棋盘格外参标定，仍要求同步视频、已知内参、步行主体和真实身高；输出 Pose2Sim TOML 而非人体动作。
+- 更新 FreeMoCap 交叉引用和 Motion Retargeting Stage 2 数据采集路径。
+
+## [2026-11-22] ingest | RoboWild | 复杂仿真家务的 VLM-RUA 评测
+
+- **意图：** 将 XLANG Lab 的 RoboWild（38 场景、4480 交互物体、341 任务–本体组合）补入具身评测路线，厘清“最强 13.28%”不是实机成功率。
+- **结果：** 新增独立论文详情、官网/README/源码核查归档、Mermaid 项目流与源码时序，挂载评测路线 Stage 3 与四层评测枢纽。
+- **开源：** RoboWild + RoboWild-Harness 仿真与评价代码公开，Hugging Face 资产公开；未执行 GPU 复现。
+- **原文核对：** 已通过官方 PDF 直链通读 2026-11-20 版 51 页论文（含附录 A–G）；确认 239 个等权 setup / 341 个本体评测实例、G1 在本文 ScaleBFM + Harness 方案下五模型均无成功、深度与 Coding Agent 消融结果；论文节点更新到 complete。
+- **关键页：** [RoboWild](../wiki/entities/paper-robowild.md)
+
+## [2026-11-22] ingest | comma.ai openpilot 工程栈
+
+- 意图：归纳 openpilot、msgq、panda、opendbc 四个独立开源项目的真实模块边界与安全执行链。
+- 开源与资料：四个 master 仓库公开，核对 README、核心执行入口与部分源码；未做实车/HIL 测试。
+- 知识沉淀：四个实体页分别包含 Mermaid 数据流、源码运行时序和双语标题；挂载安全控制 Stage 4 工程对照案例。
+
+## [2026-11-22] ingest | DTMR 论文深读与官方源码开放状态核实
+
+- 对照 arXiv:2609.38617v1 全文，完善现有唯一实体节点；纠正 12.9% DTW 指标解释，区分 G1 全语料 1% 与 H1-2 9.5% 总时长变化。
+- 项目页 Code 已正式指向 nicolejrkim/DTMR；核对 MuJoCo Warp GPU MPC 跟踪器、CLI、示例运行时序、配置和后处理指标，不将离线重定向误写为真机实时控制。
+- 更新动作重定向纵深 Stage 3 关联，保留前端派生数据及 log.md 由部署流水线生成。
+
+## [2026-11-22] ingest | sources/papers/pgx_arxiv_2611_26596.md — 收录 PGX 物理接地长时程人形移动操作
+
+- 原文 arXiv:2611.26596v1 与官方项目页已核对，独立实体及 Mermaid 框架流程图已入库。
+- 核心是谓词 FSM 编排、VLA 操作技能、WCL 世界系稳定；同权重 GR00T 咖啡 C0 35%→80%。
+- 截至入库日官方项目页未列 PGX 可运行代码或权重，源码运行时序图标明不适用。
+- 挂载移动操作 / VLA 纵深路线及移动操作任务页。
+
+## [2026-11-22] lint | 推进 #3997 P1-1 与 27 条非历史信息型预警清理：补齐 paper-robochallenge-zero venue 键、easy-quadruped 源码复核升级 3/3、新建 Chaos Loop 选型 Query、锚定 6 处时间敏感措辞、收敛 15 个 missing_concept_pages 词条并补齐 karpo-browserbench 评测闭环回链（其余 3 处 crosslink 留待 PR #4081）
+
+## [2026-11-22] ingest | 实验室路线（docs/lab-roadmaps.json）全量 54 个节点提升至 3/3 健康度：完成 ETH RSL / OpenDriveLab / RAI Institute / LeCAR Lab / TeleAI 共 19 个缺项节点的一手原文与开源入口通读核对、阅读骨架与 Mermaid 图表补齐
+
+## [2026-11-22] ingest | sources/repos/cyberbeast-robot-mc.md — CyberBeast 关节电机全软件栈（5 项目 + 总览）
+
+- 录入 robot_mc、OpenBootloader、JointSDK、JointROS、canable2-fw-n32 五个独立开源项目，附官方源码链接、控制流程与运行时序 Mermaid 图。
+- 归档 Motor Wizard 官方手册调试入口；EXE 文件大小和现时下载状态未作事实认定。
+- 形成 firmware 40 kHz FOC → CAN/CAN-FD C99 SDK → ROS 2 1 kHz tick 的分层认知，区分 CAN Bootloader Classic 500 kbit/s 升级链与 SLCAN USB2CAN 诊断链。
+- 注册 CyberBeast 所属机构，链接力矩电机与人形硬件纵深路线，节点健康度由 GitHub CI 核验。
+
+## [2026-11-22] ingest | 完成全站 30 条纵深路线最终轮 Batch 3（contact-manipulation / sim2real / loco-manipulation / model-architecture / cross-embodiment / rsi 共 107 节点通过 arXiv 全文与 Agent-Reach/GitHub 一手资料核读升至 3/3，全库 26/30 路线全满分、1589/1593 节点达 3/3；仅 HUST/OpenReview/IEEE 3 个唯一外部受阻论文按实保留 2/3 并标注阻塞原因）
+
+## [2026-11-22] ingest | Route Health Sweep Batch 2 (Cluster A+B): 补齐 73 个纵深节点一手原文通读与完整骨架（含 Agent-Reach 读取 Holland 1962 / Goldberg 1988 / Mordatch SCA 2012 / Zenodo 元数据），闭环 depth-safe-control (29/29)、depth-rocket-landing (38/38)、depth-rl-locomotion (49/49)、depth-humanoid-soccer (30/30)、depth-humanoid-swarm-performance (32/32)，depth-humanoid-hardware-design 推进至 57/58（paper-humanoid-leg-generative-design-dynamics 因 HUST 超时及 CNKI 验证码诚实保留 2/3）
+
+## [2026-11-21] ingest | 批次1纵深节点满分升级：通读开放一手原文并补齐阅读骨架，关闭 depth-bfm (55/55)、depth-humanoid-boxing (22/22)、depth-classical-control (49/49) 等路线共 71 节点达 3/3，如实记录 3D-IC 与 TRAMP 外部 403/付费墙阻塞
+
+## [2026-11-22] ingest | company-nodes-health — 按公司路线批量补全 165/167 个未满分节点一手原文核读、阅读骨架与 Mermaid 图表至 3/3（其余 2 项因反爬/验证码门禁保留未完成记录）
+
+## [2026-11-21] ingest | 力矩电机设计纵深 42 节点（Clusters A-D）原文通读与阅读骨架补齐，roadmap/depth-torque-motor-design.md 直连 70 节点全部 3/3
+
+## [2026-11-21] ingest | 完成导航纵深 Stage 1–5 剩余节点（Stage 1/2/3/4/5 共 33 页）原文通读与代码入口核验，roadmap/depth-navigation.md 达成 69/70 满分（仅 paper-3d-ic 因 OpenReview 403 阻断保留 2/3）
+
+## [2026-11-21] ingest | 完成 Issue #3490 导航纵深第 1 批 12 篇 3/3 提升（补全 KILVO/iCrowdNav/CommNav 最新开源实现与时序图、补齐 PythonRobotics/ORB-SLAM3/Habitat-Sim/SocialNav 全文归档，并如实记录 3D-IC OpenReview 403 阻塞）
+
+## [2026-11-21] ingest | 完成 Issue #3490 第 4 批 12 篇深度通读与 health 补全（roadmap/depth-bfm；更新 GigaBrain-WBC-0.5 与 ScaleBFM 开源代码入口及 MetaMotivo/MaskedMimic/PHC/Perceptive-BFM 等原文指标与时序图）
+
+## [2026-11-21] lint | 推进 #3997 P1-2 治理第 3 批（收尾清零）：核对最后 13 篇 arXiv 原文并补齐 NSDL/PAFF/Passive-Soft/Physical-Recipe/PreNav/Robo-SWE/Robot-Weight/SO101/SPARC/TCP4D/VIM/VINE/VOKE 对比小节
+
+## [2026-11-21] ingest | Issue #3490 Batch 3 纵深节点健康度推进：全文通读与官方仓库/项目页核查 13 篇（PackLab/LIBERO-VPro/Uranus/ManiSkill-HAB/Mimicking-Bench/Barkour/Physics-Consistent HRC/Real2Sim 2511.04665/2508.11117/WM Eval 2606.15032/Motion Difficulty 2512.07248/TrackerLab/humanoid-policy-reward-functions），补齐源码运行时序图、实验结论与 original 归档，depth-embodied-eval.md 提升至 63/67 3/3
+
+## [2026-11-21] ingest | TimesFM 3.0 官方零样本时序预测基础模型
+
+- 原文：Google Research 2026-08-31 技术博客、google-research/timesfm 官方源码、Connected Sheets + BigQuery ML 官方帮助。
+- 知识：新增 `wiki/entities/timesfm-3.md`，说明 330M 参数、CPM、交替时间/变量注意力、多变量预测与 9 分位数；补 `wiki/methods/model-predictive-control.md` 边界对照。
+- 校对：TimesFM 2.5 为 200M；3.0 源代码 Apache-2.0，但下载权重是非商业/非生产许可；Google Sheets 依托 Connected Sheets + BigQuery ML。
+- 关联 PR：#4045。
+
+## [2026-11-21] ingest | 推进 #3490 第二批（depth-embodied-eval）：通读 MMHU/WorldEcho/WorldScore/PRM-as-a-Judge/SoftVTBench/HumanTracker/Bet4Sim2Real/XPolicyLab/RoboSynChallenge/H2R-Bench/CALVIN/RLBench/HumanoidBench 与 Evo-SOTA 原文及官方仓，将 14 个实体节点健康度升至 3/3；复核发现 H2R-Bench 已补齐 benchmark 与 evaluation/、PRM-as-a-Judge 迁至 YuyangLiu2003 且已发 RoboPulse++、WorldEcho 仓库链接仍返回 404
+
+## [2026-11-21] lint | 推进 #3997 P1-2 治理第 2 批：核对 14 篇 arXiv 原文并补齐 Alloy/ARTS/BAMOS/Bicycle/BWM-Forge/CrowdMAPS/DexRemo/Elastra/FLUX-mimic/GenGenIK/HALO/Hibikino/MOSAIC/MoViC 对比小节
+
+## [2026-11-21] lint | 推进 #3997 P1 治理第 1 批：补齐 paper-agnes-sys1 来源键（P1-1 清零）及 WorldFlow/HOVER/FloMo/DepthGS/PROOF/Cosmos Policy/ReCogDrive/Alpamayo-R1/WorldEngine/SGDrive/Envisioning/Zero-Shot 等 12 篇原文核对对比小节
+
+## [2026-11-21] ingest | 推进 #3490（perceptive locomotion 批次）：完成 AME-1/2、InfiniteDiffusion、FastStair、Explicit Stair Geometry、ANYmal/Humanoid Parkour、RPL、DAgger、ResNet、YOLO 原文通读核对，将 depth-perceptive-locomotion 15 个 wiki 节点健康度升至 3/3（该路线 41/44）
+
+## [2026-11-21] ingest | RoboScope Kit：补齐 PyPI 复现链、上游新增适配与评测纵深导航
+
+- 复用 `wiki/entities/paper-roboscope-kit.md` 唯一论文实体（arXiv:2611.03850），保留已核对的全文、Mermaid 方法图与源码时序图。
+- 对照 MINT 官方 README 与包指南，补充 `roboscope-kit` 安装、Policy/manifest 接口、quick-test、run cache、12 个当前 benchmark 条目的范围与限制。
+- 将后续开源扩展与论文 v1 的 StarVLA 性能数字严格分开，挂载至具身模型测评 Stage 6；未进行 GPU 仿真复现。
+
+## [2026-11-21] ingest | Zane Hub #398 机器人结构静刚度与末端变形预算
+
+- 来源：sources/blogs/wechat_zanehub_robot_component_stiffness_deformation_2026-11-21.md；用户提供全文，微信原页未取得。
+- 新增：wiki/concepts/robot-structural-static-stiffness-deformation-check.md，连接人形硬件设计纵深 Stage 2。
+- 方法：以 TCP 工艺允许偏差为起点，分配连杆/关节/结合面静变形预算，经过梁手算、FEA、雅可比柔度映射、实测闭环。
+- 勘误：按文章给定数值，I=1.12×10⁶ mm⁴、L=800 mm 挠度≈0.10884 mm、L=1200 mm≈0.36735 mm，均与原文不符；ISO 9283 静柔顺度与定位重复性分开对待。
+- 证据边界：行业经验阈值、减速器参数、结合面 30% 与补偿 50% 等未逐条验证，不作为通用验收标准。
+
+## [2026-11-21] ingest | ReLoco arXiv:2611.23916 — 单策略人形跌倒恢复与命令续行
+
+- 通读论文 v1 和项目主页，归档行为条件双头 AMP、仿真精炼动作、真机实验与硬件保护统计。
+- 创建独立论文知识节点并接入 Balance Recovery 与人形 RL Locomotion 进阶路线。
+- 官方项目页有 MuJoCo 交互演示；截至入库日未发现公开训练/部署源码和权重，未虚构运行时序图。
+
+## [2026-11-21] ingest | sources/papers/robokit_corl2026_spotlight.md — 补录 RoboKit arXiv:2611.20185 标准论文身份
+
+- **意图：** 用户提供 arXiv 编号后复用已经完整收录的 RoboKit 实体，避免重复页面。
+- **核对：** arXiv v1 正文、方法、实验、限制与附录 A–C；之前作者 PDF 的全篇归档和源码时序图保持不变。
+- **开源结论：** 官方 [openrobokit/robokit](https://github.com/openrobokit/robokit) 可公开获取；性能仅引用论文作者实验。
+- **导航：** 更新 RoboKit 实体标准 arXiv ID，并接入动作重定向纵深路线 Stage 1。
+
+## [2026-11-21] ingest | sources/sites/noitom-robotics.md — 增补诺亦腾机器人公司路线，串联 Adam-U、ModalityNet 与联合研究，记录数据与源码开放范围
+
+## [2026-11-21] ingest | sources/blogs/embodied_heart_itw_ego_plus_learnability_2026_11_20.md — 可学习性报道与 ITW-Ego Plus 五种选配模态一手核验
+
+- 复用已有 ITW-Ego Plus 实体，补齐 Sol/Jupiter 模态流程、训练场景配方与 Mermaid 图，避免重复造页。
+- 基于 2026-11-05 诺亦腾公告和官方 ModalityNet 技术文章校准 Body/Wrist/Exo/Touch/Sound；4D 重建仅部分 ITW 数据明确涉及。
+- 当前未核验 Plus 原始样本、许可、准确时序指标及独立下游消融，节点继续保持 draft；挂载具身数据 Stage 1。
+
+## [2026-11-21] ingest | SimReady Central 官方资料复核与资产质量边界
+
+- 核对 2026-10-21 NVIDIA/Hugging Face 公告、2026-11-19 SimReady Central 官方文档、资产数据集和 GitHub 源码/验收规范。
+- 复用已有 `wiki/entities/nvidia-simready-central.md`，更新 2,919 个 USD 资产、近月 1,731,953 下载及 CC BY 4.0 数据集许可口径；添加官方目录构建代码时序图和物理校验清单。
+- 区分 ABB RobotStudio HyperReality 99% 宣传指标与 SimReady Central 资产库；未证实的趋势排名、3 吨货架与抽屉驱动传闻不当作事实。
+- 同步更新 `sources/sites/`、`sources/repos/`、`sources/datasets/` 归档，并挂载 `roadmap/depth-real2sim.md` Stage 2。
+
+## [2026-11-20] ingest | 推进 #3490：depth-perceptive-locomotion 10 个 2/3 节点补齐原文通读归档并升至 3/3
+
 ## [2026-11-20] ingest | Lumina 触觉 Scaling：异构传感器、事件数据与跨本体表征
 
 - 意图：将 Lumina具身智能文章的六种传感路线、四层跨硬件差异和数据基础设施机会整理为工程选型对照。

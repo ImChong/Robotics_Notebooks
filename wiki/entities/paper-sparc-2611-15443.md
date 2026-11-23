@@ -3,7 +3,7 @@ type: entity
 project_id: sparc-2611-15443
 tags: [paper, robot-platform, locomotion, navigation]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15443"
 project: https://rrl.robocup.org/sparc/
 code: https://github.com/STAR-Explorer-Robotics/Robocup_system
@@ -87,6 +87,11 @@ flowchart LR
 1. 先复核指标口径与论文约束，再比较其他策略或系统。
 2. 将作者验证的模块和尚未发布/未复现的模块分开记录。
 3. 把误差、失败模式与传感器/真实场景分布偏移作为后续验收依据。
+
+## 与其他工作对比
+
+- **对比传统 RoboCup Rescue League（RRL）异构平台模式（§I、§II-D）：** 过去二十余年 RRL 虽然标准化了灾后测试通道与客观评分规程，但各参赛队自研硬件差异巨大，导致工程重复投入且算法难以跨队公平复现与对比；SPARC 借鉴 RoboCup Soccer 标准平台组（SPL）经验，以商用轮足机器人 Unitree A2-W 统一移动底座与感知接口，并规定赛后强制开源软件栈，将研究竞争聚焦于定位、建图、导航规划与具身决策。
+- **与已有单点开源基准数据对比定位（§IV）：** 不同于纯粹室内桌面或通用街景数据集，SPARC 同步开放来自 IEEE ICRA 2026 LRC（Unitree A2 Pro 倾斜赛道 ROS 2 bags + 手持高精度彩色点云真值）与 RoboCup Rescue 2026（Incheon 实赛 Unitree A2-W ROS 2 bags）的两组实测救援数据集；原文定位是竞赛平台与生态发布，未给出不同外部导航算法在该平台的横向跑分表。
 
 ## 局限与风险
 

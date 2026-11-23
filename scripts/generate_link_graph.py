@@ -68,7 +68,7 @@ from export_minimal import (
 from lint_wiki import has_section
 from markdown_it import MarkdownIt
 from original_reading import original_fully_read
-from utils.community_labels import load_topics
+from utils.community_labels import community_short_label, load_topics
 from utils.markdown import (
     extract_internal_links as _extract_md_links,
 )
@@ -89,6 +89,7 @@ GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 # 节点摘要单独下发（按 nodes 顺序的字符串数组）：占 link-graph gzip 的 53%，图谱首屏构图用不到
 SUMMARIES_PATH = REPO_ROOT / "exports" / "link-graph-summaries.json"
+MINI_GRAPH_PATH = REPO_ROOT / "exports" / "mini-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 ACTIVITY_PATH = REPO_ROOT / "exports" / "wiki-activity.json"
 HUB_RANKINGS_PATH = REPO_ROOT / "exports" / "hub-rankings.json"
@@ -1799,6 +1800,14 @@ def _compute_graph_stats(
         "node_count": len(nodes),
         "edge_count": len(edges),
         "community_count": len(communities),
+        "communities": [
+            {
+                "id": str(c["id"]),
+                "label": str(c.get("label") or c["id"]),
+                "size": int(c.get("size") or 0),
+            }
+            for c in communities
+        ],
         "top_hubs": hub_list,
         "top_paper_hubs": paper_hub_list,
         "top_community_hubs": community_hub_list,
@@ -1841,6 +1850,272 @@ def precompute_graph_layout(graph_path: Path) -> list[list[int]] | None:
     if result.stderr.strip():
         print(f"   {result.stderr.strip()}")
     return json.loads(result.stdout)
+
+
+def build_mini_graph(
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, str]],
+    summaries: list[str],
+    communities: list[dict[str, Any]],
+    top_n: int = 50,
+) -> dict[str, Any]:
+    """构建首页 Top-N 连接度预览子图（exports/mini-graph.json），避免首页下载全图与全量摘要。"""
+    degree_map: dict[str, int] = {}
+    adj: dict[str, list[str]] = defaultdict(list)
+    for edge in edges:
+        src = str(edge["source"])
+        dst = str(edge["target"])
+        degree_map[src] = degree_map.get(src, 0) + 1
+        degree_map[dst] = degree_map.get(dst, 0) + 1
+        if src != dst:
+            adj[src].append(dst)
+            adj[dst].append(src)
+
+    max_degree = max(degree_map.values(), default=1)
+    max_degree = max(1, max_degree)
+
+    ranked = sorted(
+        nodes,
+        key=lambda n: (-degree_map.get(str(n["id"]), 0), str(n["id"])),
+    )
+    top_ids: set[str] = {str(n["id"]) for n in ranked[:top_n]}
+
+    def _has_neighbor(node_id: str, id_set: set[str]) -> bool:
+        return any(nb in id_set for nb in adj.get(node_id, ()))
+
+    dropped = True
+    while dropped:
+        dropped = False
+        for node_id in list(top_ids):
+            if not _has_neighbor(node_id, top_ids):
+                top_ids.remove(node_id)
+                dropped = True
+
+    for cand in ranked:
+        if len(top_ids) >= top_n:
+            break
+        cid = str(cand["id"])
+        if cid in top_ids:
+            continue
+        if _has_neighbor(cid, top_ids):
+            top_ids.add(cid)
+
+    mini_nodes: list[dict[str, Any]] = []
+    for idx, node in enumerate(nodes):
+        nid = str(node["id"])
+        if nid not in top_ids:
+            continue
+        entry: dict[str, Any] = {
+            "id": nid,
+            "label": node.get("label") or nid,
+            "type": node.get("type") or "",
+            "community": node.get("community") or "",
+            "summary": summaries[idx] if idx < len(summaries) else "",
+            "_degree": degree_map.get(nid, 0),
+        }
+        if node.get("detail_id"):
+            entry["detail_id"] = node["detail_id"]
+        if node.get("health_score") is not None:
+            entry["health_score"] = node["health_score"]
+        if node.get("health_gaps") is not None:
+            entry["health_gaps"] = node["health_gaps"]
+        if node.get("has_repo"):
+            entry["has_repo"] = True
+        mini_nodes.append(entry)
+
+    mini_edges = [
+        {"source": str(e["source"]), "target": str(e["target"])}
+        for e in edges
+        if e["source"] != e["target"] and e["source"] in top_ids and e["target"] in top_ids
+    ]
+    return {
+        "max_degree": max_degree,
+        "communities": communities,
+        "nodes": mini_nodes,
+        "edges": mini_edges,
+    }
+
+
+TREND_WINDOW_DAYS: tuple[tuple[str, int], ...] = (
+    ("7d", 7),
+    ("14d", 14),
+    ("30d", 30),
+    ("90d", 90),
+)
+_TREND_SKIP_COMMUNITIES = frozenset({"", "其他", "未分类"})
+
+
+def compute_node_trends(
+    activity_days: list[dict[str, Any]],
+    *,
+    total_nodes: int,
+    total_edges: int,
+    total_communities: int,
+    as_of: str,
+    recent_nodes_limit: int = 12,
+) -> dict[str, Any]:
+    """基于 wiki-activity 口径汇总近期节点增长趋势，供 AI 问答与趋势检索使用。"""
+    parsed_days: list[tuple[date, str, dict[str, Any]]] = []
+    for day in activity_days:
+        raw_date = str(day.get("date") or "")
+        try:
+            d_obj = date.fromisoformat(raw_date)
+        except ValueError:
+            continue
+        parsed_days.append((d_obj, raw_date, day))
+
+    if not parsed_days:
+        return {
+            "as_of": as_of,
+            "latest_activity_date": "",
+            "total_nodes": total_nodes,
+            "total_edges": total_edges,
+            "total_communities": total_communities,
+            "windows": {},
+            "daily_recent": [],
+            "monthly_recent": [],
+            "recent_added_nodes": [],
+        }
+
+    parsed_days.sort(key=lambda item: item[0])
+
+    # 新增口径与 star-history.html 对齐：按全局最早新增日去重（优先 path，缺省回退 detail_id）
+    seen_added_keys: set[str] = set()
+    daily_records: list[tuple[date, str, list[dict[str, Any]], int]] = []
+    for d_obj, d_str, day in parsed_days:
+        raw_nodes = day.get("nodes") or []
+        added_nodes_day: list[dict[str, Any]] = []
+        inferred_maintained = 0
+        for node in raw_nodes:
+            if not isinstance(node, dict):
+                continue
+            action = node.get("action")
+            if action == "added":
+                detail_id = str(node.get("detail_id") or "")
+                path = str(node.get("path") or "")
+                dedup_key = path or (f"detail:{detail_id}" if detail_id else "")
+                if dedup_key:
+                    if dedup_key in seen_added_keys:
+                        continue
+                    seen_added_keys.add(dedup_key)
+                added_nodes_day.append(node)
+            elif action:
+                inferred_maintained += 1
+
+        raw_maintained = day.get("maintained_count")
+        maintained = int(raw_maintained) if isinstance(raw_maintained, int) else inferred_maintained
+        daily_records.append((d_obj, d_str, added_nodes_day, maintained))
+
+    latest_date = daily_records[-1][0]
+    latest_date_str = daily_records[-1][1]
+
+    windows: dict[str, dict[str, Any]] = {}
+    for win_key, win_days in TREND_WINDOW_DAYS:
+        start_d = latest_date - timedelta(days=win_days - 1)
+        prev_end_d = start_d - timedelta(days=1)
+        prev_start_d = start_d - timedelta(days=win_days)
+
+        added_count = 0
+        maintained_count = 0
+        prev_added = 0
+        prev_maintained = 0
+        active_days = 0
+        open_source_added = 0
+        comm_counts: Counter[str] = Counter()
+        type_counts: Counter[str] = Counter()
+
+        for d_obj, _d_str, added_nodes_day, day_maintained in daily_records:
+            if start_d <= d_obj <= latest_date:
+                day_added = len(added_nodes_day)
+                added_count += day_added
+                maintained_count += day_maintained
+                if day_added + day_maintained > 0:
+                    active_days += 1
+                for node in added_nodes_day:
+                    if node.get("has_repo"):
+                        open_source_added += 1
+                    short_comm = community_short_label(str(node.get("community_label") or ""))
+                    if short_comm not in _TREND_SKIP_COMMUNITIES:
+                        comm_counts[short_comm] += 1
+                    node_type = str(node.get("type") or "unknown")
+                    type_counts[node_type] += 1
+            elif prev_start_d <= d_obj <= prev_end_d:
+                prev_added += len(added_nodes_day)
+                prev_maintained += day_maintained
+
+        top_comms = [
+            {"label": label, "added": count}
+            for label, count in sorted(comm_counts.items(), key=lambda kv: (-kv[1], kv[0]))[:6]
+        ]
+        type_breakdown = dict(sorted(type_counts.items(), key=lambda kv: (-kv[1], kv[0])))
+        windows[win_key] = {
+            "days": win_days,
+            "start_date": start_d.isoformat(),
+            "end_date": latest_date_str,
+            "added": added_count,
+            "prev_added": prev_added,
+            "maintained": maintained_count,
+            "prev_maintained": prev_maintained,
+            "active_days": active_days,
+            "open_source_added": open_source_added,
+            "top_communities": top_comms,
+            "type_breakdown": type_breakdown,
+        }
+
+    daily_recent = [
+        {"date": d_str, "added": len(added_nodes_day), "maintained": day_maintained}
+        for _d_obj, d_str, added_nodes_day, day_maintained in daily_records
+        if len(added_nodes_day) + day_maintained > 0
+    ][-14:]
+
+    monthly_agg: dict[str, list[int]] = {}
+    for _d_obj, d_str, added_nodes_day, day_maintained in daily_records:
+        month = d_str[:7]
+        bucket = monthly_agg.setdefault(month, [0, 0])
+        bucket[0] += len(added_nodes_day)
+        bucket[1] += day_maintained
+    monthly_recent = [
+        {"month": m, "added": counts[0], "maintained": counts[1]}
+        for m, counts in sorted(monthly_agg.items())[-6:]
+    ]
+
+    recent_added_nodes: list[dict[str, Any]] = []
+    seen_recent_ids: set[str] = set()
+    for _d_obj, d_str, added_nodes_day, _day_maintained in reversed(daily_records):
+        for node in added_nodes_day:
+            detail_id = str(node.get("detail_id") or "")
+            if detail_id:
+                if detail_id in seen_recent_ids:
+                    continue
+                seen_recent_ids.add(detail_id)
+            entry: dict[str, Any] = {
+                "detail_id": detail_id,
+                "label": str(node.get("label") or detail_id),
+                "date": d_str,
+                "type": str(node.get("type") or ""),
+            }
+            short_comm = community_short_label(str(node.get("community_label") or ""))
+            if short_comm not in _TREND_SKIP_COMMUNITIES:
+                entry["community_label"] = short_comm
+            if node.get("has_repo"):
+                entry["has_repo"] = True
+            recent_added_nodes.append(entry)
+            if len(recent_added_nodes) >= recent_nodes_limit:
+                break
+        if len(recent_added_nodes) >= recent_nodes_limit:
+            break
+
+    return {
+        "as_of": as_of,
+        "latest_activity_date": latest_date_str,
+        "total_nodes": total_nodes,
+        "total_edges": total_edges,
+        "total_communities": total_communities,
+        "windows": windows,
+        "daily_recent": daily_recent,
+        "monthly_recent": monthly_recent,
+        "recent_added_nodes": recent_added_nodes,
+    }
 
 
 def main() -> None:
@@ -1894,7 +2169,7 @@ def main() -> None:
 
     summaries = [str(node.pop("summary", "") or "") for node in nodes]
 
-    graph = {
+    graph: dict[str, Any] = {
         "nodes": nodes,
         "edge_format": "index",
         "edges": pack_edges_as_indices(nodes, edges),
@@ -1916,9 +2191,18 @@ def main() -> None:
     print(
         f"✅ link-graph-summaries.json: {len(summaries)} 条 → {SUMMARIES_PATH.relative_to(REPO_ROOT)}"
     )
+    mini_graph_payload = build_mini_graph(nodes, edges, summaries, communities)
+    MINI_GRAPH_PATH.write_text(
+        json.dumps(mini_graph_payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    print(
+        f"✅ mini-graph.json: {len(mini_graph_payload['nodes'])} nodes / "
+        f"{len(mini_graph_payload['edges'])} edges → {MINI_GRAPH_PATH.relative_to(REPO_ROOT)}"
+    )
     layout = precompute_graph_layout(OUT_PATH)
     if layout is not None:
         graph["layout"] = layout
+        graph["layout_resolved"] = True
         OUT_PATH.write_text(
             json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
         )
@@ -1926,6 +2210,13 @@ def main() -> None:
 
     # 图谱页加载进度条的分母：gzip 下发时 Content-Length 是压缩后字节数，页面流里数到的是原始字节数
     stats["link_graph_bytes"] = OUT_PATH.stat().st_size
+    stats["node_trends"] = compute_node_trends(
+        activity_days,
+        total_nodes=int(stats["node_count"]),
+        total_edges=int(stats["edge_count"]),
+        total_communities=int(stats["community_count"]),
+        as_of=str(stats["generated_at"]),
+    )
     STATS_PATH.write_text(
         json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

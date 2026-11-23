@@ -2,7 +2,7 @@
 type: method
 tags: [video-generation, world-models, humanoid, motion-tracking, loco-manipulation, baai]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ./generative-world-models.md
   - ../concepts/video-as-simulation.md

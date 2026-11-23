@@ -15,24 +15,30 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>公司技术路线 | Robotics Notebooks</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-home.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <script src="theme-init.js"></script>
-  <script id="sponsor-js" src="sponsor.js?v=2"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
+  <link rel="preload" href="company-roadmaps.json" as="fetch" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#191919" />
+  <meta name="theme-color" content="#0a0b0d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到正文</a>
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks | 机器人技术栈地图</a>
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页"><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg>Robotics Notebooks | 机器人技术栈地图</a>
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
         <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
-          <span class="icon-sun">☀️</span>
-          <span class="icon-moon">🌙</span>
+          <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
+          <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
         </button>
       </div>
     </div>
@@ -44,7 +50,7 @@
         <p class="co-breadcrumb"><a href="index.html#home-company-routes">← 首页 · 公司路线</a></p>
         <div class="home-hub-head">
           <h1 class="section-title" id="company-heading">公司技术路线</h1>
-          <a class="home-hub-tab" href="star-history.html?view=company-timeline">📅 全部公司时间线 →</a>
+          <a class="home-hub-tab" href="star-history.html?view=company-timeline"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.6" y="3.8" width="10.8" height="9.4" rx="1.6"/><path d="M2.6 7h10.8M5.4 2.3v2.5M10.6 2.3v2.5"/></svg><span>全部公司时间线 →</span></a>
         </div>
         <p class="section-subtitle">按时间查看公开技术演进；每个节点可跳本库笔记或官方原文。公司可同时属于多个阅读视角。按成立年份从早到晚排列，未注明时按最早知识节点日期，不代表性能排名。</p>
         <div id="companyRoadmapPage" class="data-loading" aria-live="polite">
@@ -56,10 +62,11 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© <a href="https://imchong.github.io/index.html" target="_blank" rel="noopener noreferrer">Chong Liu</a> 2026 · Robotics Notebooks</p>
+      <p>© <a href="https://imchong.github.io/index.html" target="_blank" rel="noopener noreferrer">刘冲</a> 2026 · 机器人技术栈地图</p>
     </div>
   </footer>
 
+  <script src="ui-icons.js"></script>
   <script src="wiki-type-labels.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="depth-filters.js"></script>

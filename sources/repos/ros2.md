@@ -15,6 +15,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** ROS 2 **元仓库**：本身几乎不含应用代码，核心产物是 `ros2.repos`——用 vcstool 拉取 ament、rcl、rmw、DDS vendor、消息与工具等整棵工作区树。
 - **沉淀到 wiki：** 是 → [`wiki/concepts/ros2-basics.md`](../../wiki/concepts/ros2-basics.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `ros2/ros2` 官方 `README.md`（2,297 字节）与 ROS 2 文档架构总览。
 
 ## 开源状态（2026-07-28）
 

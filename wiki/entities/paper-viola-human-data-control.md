@@ -4,6 +4,8 @@ project_id: viola-human-data-generalist-humanoid-control
 tags: [paper, humanoid, human-motion, vla, wam, imitation-learning, human-demonstration, motion-latent, locomotion, manipulation, eth, max-planck, university-of-tubingen]
 status: complete
 updated: 2026-10-13
+original:
+  - ../../sources/papers/viola_arxiv_2610_12435.md
 arxiv: "2610.12435"
 project: https://viola.is.tue.mpg.de/
 venue: "arXiv preprint"
@@ -24,7 +26,9 @@ summary: "VioLA 将通用人形策略的动作空间设为共享 body/hand motio
 
 # VioLA：从人类数据学习人形通用控制
 
-**一句话定义：** VioLA 不让通用策略直接输出高维关节命令，而是预测与冻结机器人控制器对齐的身体和手部动作潜变量；人类动作因此可以直接构成策略的动作标签。
+## 一句话定义
+
+VioLA 不让通用策略直接输出高维关节命令，而是预测与冻结机器人控制器对齐的身体和手部动作潜变量；人类动作因此可以直接构成策略的动作标签。
 
 ## 英文缩写速查
 
@@ -37,6 +41,10 @@ summary: "VioLA 将通用人形策略的动作空间设为共享 body/hand motio
 | FSQ | Finite Scalar Quantization | 论文动作编码器使用的有限标量量化 |
 | SMPL | Skinned Multi-Person Linear Model | 人体动作表示，body 编码器的人类动作输入 |
 | MANO | Model for Articulated and Non-rigid Hands | 手部姿态 / 形状模型，用于拟合手部标注 |
+
+## 为什么重要
+
+人体遥操作成本高且真机演示极度稀缺，而直接在原生 30+ DoF 关节空间回归人类动作极易因形态动力学失配而倾覆。VioLA 利用冻结的物理安全全身控制器（如 SONIC）提供统一运动潜空间，让廉价人体视频动作标签可直接监督人形通用策略。
 
 ## 方法栈
 
@@ -115,6 +123,10 @@ VioLA 的关键贡献是让人类动作标签和机器人可执行动作共享�
 3. **人类数据存在任务差异：** locomotion 获益明显；当前 manipulation 指标中 robot-only 更高。
 4. **谨慎解释 zero-shot：** 无任务专属微调，但任务家族仍见于训练；实验只在一台 G1 上进行。
 5. **暂按预印本跟踪：** 官方代码 / checkpoint 尚待发布，接触反馈、抓取与持物仍是短板。
+
+## 工程实践
+
+- **潜变量对齐与冻结控制器复用：** 上游策略输出低维身体+手部 motion latent，由下游冻结全身跟踪器负责实时 50–100 Hz 平衡维持与底层 PD 控制解耦，微调新任务无需从零重训抗跌倒策略。
 
 ## 关联页面
 

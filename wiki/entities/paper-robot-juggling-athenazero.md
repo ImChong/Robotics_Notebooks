@@ -12,9 +12,11 @@ tags:
   - rai-institute
   - cmu
 status: complete
-updated: 2026-09-22
+updated: 2026-11-22
 arxiv: "2608.26800"
 venue: "arXiv:2608.26800"
+original:
+  - ../../sources/papers/robot_juggling_arxiv_2608_26800.md
 related:
   - ./paper-athenazero.md
   - ../tasks/manipulation.md

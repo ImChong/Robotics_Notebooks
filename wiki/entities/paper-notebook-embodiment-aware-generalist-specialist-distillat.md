@@ -2,7 +2,10 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, cross-embodiment, distillation, reinforcement-learning, sjtu, shanghai-ai-lab, icra-2026]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
+original:
+  - ../../sources/papers/eagle_wbc_arxiv_2602_02960.md
+  - ../../sources/papers/humanoid_pnb_embodiment-aware-generalist-specialist-distillat.md
 arxiv: "2602.02960"
 venue: "ICRA 2026"
 summary: "EAGLE-WBC（arXiv:2602.02960，SJTU / Shanghai AI Lab）用 generalist→specialist 微调→DAgger 回蒸的迭代循环，配合统一速度/高度/pitch 指令接口，让单一策略跨 H1/G1/T1/N1/Adam 等人形 WBC；仿真 5 机、真机 4 机验证，截至入库日未开源。"
@@ -127,6 +130,17 @@ flowchart TB
 | 对比读法 | vs **per-robot PPO**（专门调参）：相当或更好；vs **不蒸馏多本体共训**：EAGLE 显著更好；vs **无 embodiment 编码**：大 DoF 差平台掉点 |
 | 证据层级 | 项目页真机视频为最强工程信号；精确数值表以 **论文 PDF** 为准 |
 
+## 与其他工作对比
+
+- **论文内部基线与消融（定性，精确数值表以 `arXiv:2602.02960v2` PDF 为准）：**
+  - **vs per-robot PPO（每机独立调参训专才）：** EAGLE 单策略达到相当或更优表现，且无需为每款机型单独重调奖励函数；
+  - **vs 无蒸馏的多本体联合训练（joint training）：** 纯多机共训易折中退化（race-to-the-bottom），EAGLE 先用 specialist 推高各机上限再通过 DAgger 回蒸，性能显著更优；
+  - **vs 无 embodiment 编码变体：** 去掉 embodiment ID 与拓扑描述后，在 DoF 差异较大的平台（H1 / G1 / T1 / N1 / Adam）上跟踪明显掉点。
+- **跨本体人形 WBC 同路线对照（见 [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)）：**
+  - **vs [XHugWBC](./paper-xhugwbc-cross-humanoid.md)：** XHugWBC 侧重训练期形态随机化与语义关节槽对齐；EAGLE 走「embodiment 条件化 + generalist–specialist 迭代蒸馏循环 + 统一速度/高度/pitch 命令向量 $c_t$」。
+  - **vs [Any2Any](./paper-any2any-cross-embodiment-wbt.md)：** Any2Any 采取冻结源机策略再向目标本体后训练；EAGLE 从多本体仿真池联合训练 generalist 并迭代扩充。
+  - **vs [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md)：** 同属多教师蒸馏，Athena-WBC 偏全身运动跟踪（WBT）长尾动作覆盖，EAGLE 聚焦速度/高度/躯干 pitch 统一低层控制接口。
+
 ## 结论
 
 **EAGLE 把「一份策略管多种人形」拆成可操作的训练闭环：generalist 兜共性、specialist 推各机上限、DAgger 把上限写回共性——前提是命令与 embodiment 条件化先把跨机接口对齐。**
@@ -137,8 +151,7 @@ flowchart TB
 - **扩展新机型的预期路径：** 为新机器人加一个 specialist + 再跑一轮蒸馏，而非从零重调全套奖励——但 **尚无开源代码** 验证工程成本。
 - **选型边界：** 本文聚焦 **速度/姿态类统一 WBC**，非 motion tracking 全库覆盖；与 SONIC / HugWBC / XHugWBC 等路线互补，不宜直接比绝对 tracking 指标。
 
-## 常见误区
-
+## 常见误区或局限
 1. **「多本体一起训就行」：** 纯共训易全体平庸；specialist 阶段负责把各机推满，蒸馏负责把上限合并。
 2. **「蒸馏一次就够」：** 论文方法是 **迭代循环**；停止条件应是各本体接近 specialist，而非单轮 BC。
 3. **「embodiment 编码可有可无」：** 消融显示在 DoF 差大的平台上 **明显掉点**；条件化是单网吃多机的关键之一。
@@ -154,8 +167,7 @@ flowchart TB
 | 上层接口 | 若接 VLA / planner，优先对齐 $c_t$ 语义（速度 + 高度 + pitch）而非各机私有 API |
 | 加新机器人 | 预期流程：新 specialist + 一轮蒸馏；实际成本待代码发布后核实 |
 
-## 与其他页面的关系
-
+## 关联页面
 - **概念：** [Whole-Body Control](../concepts/whole-body-control.md)
 - **跨具身选型：** [cross-embodiment-transfer-strategy](../queries/cross-embodiment-transfer-strategy.md) — EAGLE 属「多具身联合训练 + 蒸馏压缩」支路
 - **相邻跨本体 WBC：** [XHugWBC](./paper-xhugwbc-cross-humanoid.md)、Paper Notebooks [HugWBC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller.html)

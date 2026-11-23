@@ -10,6 +10,8 @@
 - **代码/项目：** N/A
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
+- **通读：** 已完成
+- **核对范围：** 已下载并通读 `arXiv:2506.13751v3` PDF 全文（Abstract、§3 数据集、§4 双过程架构 LeVERB-VL 10Hz / LeVERB-A 50Hz、§5.1 LeVERB-Bench 150+ 任务消融、§5.2 G1 部署与 §6-§7 局限/结论）
 - **一句话说明：** 视觉-语言指令压成适合全身的 latent；语义到身体接口。
 
 ## 核心摘录（策展，非全文）

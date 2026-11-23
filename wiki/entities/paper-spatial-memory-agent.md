@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, spatial-intelligence, memory-agent, frozen-vlm, procedure-memory]
 status: complete
-updated: 2026-10-11
+updated: 2026-11-22
 arxiv: "2608.12743"
 related:
   - ../methods/vla.md

@@ -7,6 +7,9 @@
 - **收录日期**：2026-07-14
 - **站点索引**：[incompleteideas-net-rich-sutton.md](../sites/incompleteideas-net-rich-sutton.md)
 
+- **通读：** 已完成
+- **核对范围：** 已通读 Rich Sutton 原文 *The Bitter Lesson*（6.9 KB 全文），核对通用计算缩放（搜索与学习）替代人工领域知识核心论断。
+
 ## 一句话
 
 70 年 AI 研究的最大教训：**能随算力规模扩展的通用方法（search 与 learning）最终最有效**；把研究者的人类领域知识硬编码进系统虽短期有效，长期往往 plateau 并阻碍进一步突破。

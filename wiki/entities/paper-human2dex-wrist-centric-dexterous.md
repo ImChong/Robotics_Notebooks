@@ -3,6 +3,8 @@ type: entity
 tags: [paper, dexterous-hand, human-demonstration, retargeting, diffusion-policy, wrist-camera, cross-embodiment, real-robot, baai]
 status: complete
 updated: 2026-10-12
+original:
+  - ../../sources/papers/human2dex_arxiv_2610_13119.md
 arxiv: "2610.13119"
 project_id: human2dex-wrist-centric-dexterous
 project: https://human2dex.pages.dev/

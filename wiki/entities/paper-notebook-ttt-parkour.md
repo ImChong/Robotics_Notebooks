@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, unitree]
 status: stub
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2602.02331"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md

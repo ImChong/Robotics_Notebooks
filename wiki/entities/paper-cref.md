@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, depth, cross-attention, gru, foothold, stairs, parkour, sim2real, ppo, isaac-gym, zju, sdu, agibot]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 arxiv: "2603.29452"
+original: ../../sources/papers/cref_arxiv_2603_29452.md
 venue: "IEEE RA-L 体例（received 2026-04-22, accepted 2026-07-26）"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md

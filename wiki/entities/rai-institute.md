@@ -5,7 +5,9 @@ project_id: rai-institute
 project: https://rai-inst.com/
 tags: [rai-institute, robotics, whole-body-control, dynamic-manipulation, sim2real]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-22
+original:
+  - ../../sources/sites/rai-institute.md
 summary: "2022 年成立的机器人与人工智能研究机构：从全身技能、动态接触和规划学习，到自包含 ONNX 部署；路线复用项目详情并区分研究演示与开放资产。"
 related:
   - ./rai-spot-perceptive-manipulation.md

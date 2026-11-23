@@ -2,7 +2,7 @@
 type: task
 tags: [task, objectnav, zero-shot, navigation, embodied-ai, open-vocabulary, habitat, vln]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-22
 related:
   - ./vision-language-navigation.md
   - ../entities/paper-travexplorer.md

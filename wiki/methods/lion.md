@@ -2,7 +2,7 @@
 type: method
 tags: [deep-learning, optimization, lion, adaptive, training]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/google/automl
 summary: "Lion（EvoLved Sign Momentum）是由符号程序搜索发现的一阶优化器：仅维护单一动量并以 sign 输出全维度等幅步长，相对 AdamW 显存约减半、步速提升 2–15%，同时要求学习率缩小 3–10× 且权重衰减同步放大 3–10×。"
 related:

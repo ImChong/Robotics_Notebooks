@@ -9,6 +9,8 @@
 - **论文：** <https://arxiv.org/abs/2604.24479>（[论文来源](../papers/zero_to_cad_arxiv_2604_24479.md)）
 - **配套模型：** <https://huggingface.co/ADSKAILab/Zero-To-CAD-Qwen3-VL-2B>（[模型归档](../models/zero-to-cad-qwen3-vl-2b.md)）
 - **项目实体：** [Zero-to-CAD](../../wiki/entities/zero-to-cad.md)
+- **通读：** 已完成
+- **核对范围：** 核对 Hugging Face `ADSKAILab/Zero-To-CAD-100k` 数据卡 `README.md`（6,844 字节）及 `arXiv:2604.24479` 原文。
 
 ## 数据卡核查
 

@@ -12,7 +12,7 @@ tags:
   - stanford
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2604.00416"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
@@ -26,6 +26,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_egonav.md
   - ../../sources/sites/egonav.md
+original:
+  - ../../sources/papers/humanoid_pnb_egonav.md
 summary: "EgoNav（arXiv:2604.00416）用 5 小时人类行走数据训练 46M 参数扩散导航先验；360° RGB-D-语义记忆 + DINOv3 生成 5 秒多模态 6-DoF 轨迹，零机器人数据迁移 Unitree G1，累计 1137 m、96%+ 自主时间；代码与数据截至 2026-07-28 待发布。"
 ---
 
@@ -149,7 +151,7 @@ flowchart LR
 - 控制器的点云碰撞检测看不见透明面；DINOv3 只能提供经验补偿，不构成几何安全保证。
 - 项目页“we release”与按钮“Coming Soon”存在发布时态差异，工程选型应以实际下载入口为准。
 
-## 与其他页面的关系
+## 关联页面
 
 - [导航纵深路线 Stage 3](../../roadmap/depth-navigation.md) — 人形第一视角与扩散导航的学习节点
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) — EgoNav 位于任务规划与低层 locomotion 之间

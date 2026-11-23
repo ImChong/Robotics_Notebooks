@@ -13,6 +13,8 @@
 - **作者：** Miracle Kang、Lights Shi、Lucy Liang、Roy Gan、Dongxiu Liu、Pushi Zhang、Sylas Chen、Shawn Qin、Yinan Zheng、Jinliang Zheng、Hao Wang、Xianyuan Zhan、Hang Su
 - **官方新闻：** 官网 /news 2026-07-02 条目「自变量发布跨模态具身动作分词器X-Tokenizer，多模态对齐能力提升13.5%，长程任务性能提升8.25%」（外链网易新闻）
 - **入库日期：** 2026-10-09
+- **核对范围：** 核对 `https://x2robot.com/pages/x-tokenizer` RSC 图表数据与开源入口、`X-Square-Robot/X-Tokenizer` 与 HF `x-square-robot/X-Tokenizer` 发布范围，并与 `arXiv:2606.14752v2` 正文交叉核对
+- **通读：** 已完成
 - **一句话说明：** 官网页标语为 "A multimodal action tokenizer that doubles as a semantic interface between vision-language reasoning and continuous robot control"。页面为 Next.js 渲染，正文以内嵌 HTML 形式放在 RSC payload 中；本归档的数字取自该 payload 中的图表 `DATA` 与论文正文，二者一致。
 
 ## 开源核查（2026-10-09）

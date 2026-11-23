@@ -14,7 +14,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-21
+updated: 2026-11-21
 related:
 - ./physical-rsi.md
 - ./paper-gpt-6-astra-embodied-policy.md
@@ -23,6 +23,7 @@ related:
 - ../methods/vla.md
 - ../tasks/manipulation.md
 - ../queries/embodied-eval-benchmark-selection-loop.md
+- ./paper-robochallenge-zero.md
 - ../overview/hub-embodied-eval-benchmark.md
 - ../overview/frontier-models-3d-cad-robotics-survey.md
 - ../concepts/simulation-evaluation-infrastructure.md
@@ -217,6 +218,8 @@ sequenceDiagram
 - **与认知基准不可混比：** [RoboBench](./robo-bench.md) 高分不蕴含 RoboDojo 高成功率。
 
 ## 关联页面
+
+- [RoboChallenge Zero](./paper-robochallenge-zero.md) — 月度刷新真机操作任务、以严格零样本协议检验固定系统版本；与 RoboDojo 的 sim-and-real 评测维度互补，不能直接比较成功率
 
 - [AA-Robotics v0.1](./aa-robotics.md) — coding-agent 驱动单臂真机的八项桌面评测；与 RoboDojo 的任务集合、硬件、评分口径不同，不可直接比数值。
 

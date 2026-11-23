@@ -98,6 +98,7 @@ flowchart LR
 - [Bimanual Manipulation](../wiki/tasks/bimanual-manipulation.md)
 - [Query：操作任务里的模仿学习](../wiki/queries/il-for-manipulation.md)
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集方案选型
+- [Nimo Robotics：N1 Glove × D1 Hand 接触感知灵巧操作](../wiki/entities/nimo-robotics-contact-intelligence.md) — 匹配示教端与执行端，以视觉/触觉/声音学习工业接触技能；目前仅厂商首发资料，参数与一天部署目标待验证。
 - [DexVerse](../wiki/entities/paper-dexverse.md) — 100 任务 × 3 臂 × 6 手灵巧操作 benchmark；π₀.₅ / DP3 均值成功率仅 34%，暴露跨技能泛化与亚厘米接触对齐瓶颈
 - [DexBench](../wiki/entities/dexbench.md) — RLWRLD × NVIDIA 工业灵巧操作开放规格：OSC 六轴诊断难度、五种 Dexterity Regime 规定能力包络，18 任务 / 55 用例 + 可采购实物；官方评测仓与 Isaac Lab-Arena 集成待发布
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
@@ -121,6 +122,9 @@ flowchart LR
 - 有哪些专门针对 contact-rich 的学习方法
 
 ### 推荐读什么
+- [mjlab_hand｜六种灵巧手的 RL 操作任务与 ContactExplorer](../wiki/entities/mjlab-hand.md) — 可从抓取与手内旋转开始，进一步对照双手交接、保定球、转盘、三球杂耍；README 提供训练、回放和分类评测入口，注意任务间指标不直接可比。
+- [PSR（预测式接触感觉运动表征）](../wiki/entities/paper-psr-vla.md) — 先预测 F/T、关节 effort 与位移，再跨层注入 π0.5；核对六类真机任务与传感同步。
+- [Co-VLA（双臂协同）](../wiki/entities/paper-co-vla.md) — 用共享/残差动作分解与 LAC 处理交接同步；与接触动力学感知 PSR 互补。
 - [XHAND 1 Pro-U：DexUMI 兼容灵巧手](../wiki/entities/xhand-1-pro-u.md)：对齐外骨骼示教关节与五指手动作映射。
 - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
 - [Diffusion-Based Impedance Learning｜扩散式阻抗学习](../wiki/entities/paper-diffusion-based-impedance-learning-2509-19696.md) — 由外力条件扩散模型重建 sZFT，再按能量与任务方向在线调刚度，比较圆柱/方/星形 peg-in-hole 的接触泛化。

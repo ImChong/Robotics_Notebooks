@@ -1,20 +1,15 @@
-# JALA
+# JALA 仓库核查
 
-> 来源归档（国内具身开源全景）
+> 来源归档（repo / BeingBeyond GitHub）
 
-- **标题：** JALA
-- **类型：** repo
-- **机构：** 智在无界
-- **链接：** https://github.com/BeingBeyond/JALA
-- **分类：** VLA/操作模型
-- **入库日期：** 2026-09-06
-- **一句话说明：** 智在无界 开源项目 JALA（VLA/操作模型），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-jala.md`](../../wiki/entities/cn-os-jala.md)
+- **URL：** <https://github.com/BeingBeyond/JALA>
+- **机构 / 个人：** BeingBeyond（智在无界）
+- **仓库核查commit：** `d80a1c6`（12 个文件，仅 `README.md`、`LICENSE` 与 `docs/assets/` 图片，`.py`/`.sh` 可运行代码数为 0）
+- **开源结论：** **未开源可执行代码与模型权重**（仓库仅托管展示图片与 CVPR 2026 论文引用；已据此修正早期自动归档对“已开源”的误标）。
+- **核对范围：** 已通过 `gh api` 拉取并核对 `BeingBeyond/JALA @ d80a1c6` 完整文件树与 `README.md`；无源码可供执行流分析。
+- **通读：** 已完成
 
-## 开源状态
+## 核心摘要
 
-- **已开源**：公开仓库（以 README 与 release 为准）。
-
-## 对 wiki 的映射
-
-- [wiki/entities/cn-os-jala.md](../../wiki/entities/cn-os-jala.md)
+- 提供项目主页 <https://research.beingbeyond.com/jala> 与论文 `arXiv:2602.21736`（CVPR 2026）链接。
+- 截至 2026-11-21 尚未释放 InternVL3 + LAP/LSP/MCP 预训练或 DiT 微调源码。

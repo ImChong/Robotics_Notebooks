@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, whole-body, reinforcement-learning, moe, adaptive-sampling, ppo, dagger, sim2real, unitree-g1, ucsd, sfu, gmt, loco-manip-161-survey, humanoid-paper-notebooks]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2506.14770"
 code: https://github.com/zixuan417/humanoid-general-motion-tracking
 related:

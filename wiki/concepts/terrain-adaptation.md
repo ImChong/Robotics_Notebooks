@@ -2,10 +2,11 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-23
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../entities/paper-terrain-adaptive-quadruped-gaits.md
   - ../entities/paper-ame-attention-based-map-encoding.md
   - ../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ../entities/paper-discrete-terrain-minimal-proximity-sensing.md
@@ -115,6 +116,8 @@ sources:
 在 **摆动相** 用足端 **短距 ToF** 获取 **接触前** 局部几何，绕开机身深度/LiDAR 的 **自遮挡与地图延迟**；ETH RSL 在 ANYmal-D 上验证踏石/沟/平衡木场景（见 [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md)）。
 
 ## 主要策略路线
+
+**地形驱动的步态选择：** [Bellegarda & Ijspeert 2026：11 种 CPG 步态及运动风格](../entities/paper-terrain-adaptive-quadruped-gaits.md)把地形高程、目标速度与能耗/机身稳定性等指标输入两阶段 RL 体系：先学不同步态的可执行参数，再冻结执行策略，训练专门的步态选择器；Go1/Go2 机载深度感知有真机验证。
 
 | 路线 | 做法 | 优点 | 局限 |
 |------|------|------|------|

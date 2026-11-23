@@ -1,16 +1,20 @@
 ---
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+status: complete
+updated: 2026-11-21
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
+  - ./cn-os-galaxeamanipsim.md
+  - ./cn-os-efmnode.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/galaxeadp.md
-summary: "星海图 开源项目 GalaxeaDP（VLA/操作模型）：把相机观测、机器人状态和任务条件映射为连续动作块，用扩散策略完成双臂或移动操作；项目适合作为GalaxeaVLA之外的模仿学习基线。…"
+original:
+  - ../../sources/repos/galaxeadp.md
+summary: "星海图开源的 Diffusion Policy（DP）双臂操作训练与评估框架（Hydra + PyTorch Lightning），贯通 GalaxeaManipSim 仿真与 GalaxeaLeRobot 数据集，支持关节位置与末端位姿控制（MIT 许可）。"
 institutions:
   - galaxea
 ---
@@ -38,22 +42,34 @@ institutions:
 
 ## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 星海图 |
-| 类别 | VLA/操作模型 |
-| 官方组织 | https://github.com/OpenGalaxea |
+`GalaxeaDP` 是面向双臂/移动操作任务的模块化 Diffusion Policy（DP）训练与评测工程框架（MIT License），基于 **Hydra** 管理配置、**PyTorch Lightning** 驱动训练循环，并与 [GalaxeaManipSim](./cn-os-galaxeamanipsim.md) 及 GalaxeaLeRobot 数据管线直接对接：
+
+- **观测—动作映射与策略核心**：通过 `DiffusionPolicyBCModule` 封装 `DiffusionUnetImagePolicy`，在训练前基于数据集统计初始化归一化器（`set_normalizer`），并在 DDPM 条件去噪采样（`conditional_sample`）中输出多步连续动作块（默认按 `num_action_steps=16` 执行）。
+- **双控制接口支持**：同时支持关节空间（`make_single_frame_batch_joints`）与末端位姿控制（`make_single_frame_batch_eef`），图像输入统一缩放到 `224x224`。
+- **端到端实验脚手架**：`scripts/sim_r1pro_blocks.sh` 串起仿真演示采集、重放、格式转换、`src/train.py` 训练、开环 HTML 可视化评估（`eval_open_loop.py`）与仿真闭环评估（`eval_sim.py`）。
+
+```mermaid
+flowchart LR
+  D["GalaxeaManipSim / GalaxeaLeRobot 数据"] --> DM["GalaxeaLeRobotDataModule"]
+  DM --> N["Normalizer 状态/动作归一化"]
+  N --> TR["DiffusionPolicyBCModule (Hydra + Lightning)"]
+  TR --> OP["eval_open_loop.py (HTML 可视化对比)"]
+  TR --> EV["eval_sim.py (30 Hz 仿真闭环 DDPM 去噪)"]
+```
+
+> 图依据：[`OpenGalaxea/GalaxeaDP@21abf51`](https://github.com/OpenGalaxea/GalaxeaDP) `README.md`、`scripts/sim_r1pro_blocks.sh`、`src/train.py`。
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `GalaxeaDP` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+1. **一体化仿真基线复现**：在配置好 [GalaxeaManipSim](./cn-os-galaxeamanipsim.md) 环境后，直接运行 `bash scripts/sim_r1pro_blocks.sh` 即可跑通从采集到闭环评测的全链路；或单独调用 `bash scripts/train.sh task=sim/<task>` 覆盖 Hydra 配置。
+2. **开环与闭环两级诊断**：部署进仿真前先跑 `scripts/eval_open_loop.sh` 生成预测轨迹与真值对比 HTML，定位归一化或相机视角错位后再跑 `scripts/eval_sim.sh`。
+3. **与真机部署衔接**：如需真机运行更大规模 VLA/具身基座模型，可对照 [EFMNode](./cn-os-efmnode.md) 的 ROS2 节点与频率调度模式。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+- 定位为模仿学习 / Diffusion Policy **实验基线仓库**，不包含多模态大语言模型推理或全身动力学规划模块。
+- `README.md` 明确标注面向真实机器人 **MCAP 数据的转换与训练管线仍处于 Coming soon**，开箱即用流水线主要覆盖仿真数据与 LeRobot 格式。
+- 策略泛化高度受限于演示覆盖面与动作表征选择（关节 vs 末端），跨机器人构型需重新采集与对齐传感器频率；本次核对未实际启动 GPU 训练。
 
 ## 源码运行时序图
 

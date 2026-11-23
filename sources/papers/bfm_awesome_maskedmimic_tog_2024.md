@@ -11,6 +11,8 @@
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **项目页/PDF 归档：** [`sources/sites/maskedmimic-nvidia-par.md`](../sites/maskedmimic-nvidia-par.md)
 - **入库日期：** 2026-05-26（步骤 2.5 复核 2026-09-27）
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `SIGGRAPHAsia2024_MaskedMimic.pdf` 全文（全 1334 行抽取文本：§1–§9、Table 1–6 及 Appendix A–B 状态动作空间、超参表与 Listing 1 结构化掩码源码）及 `NVlabs/ProtoMotions` 中的 `protomotions/agents/supervised/masked_mimic_model.py` 与 `examples/experiments/masked_mimic/transformer.py`。
 - **一句话说明：** 稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。
 
 ## 核心摘录（策展，非全文）

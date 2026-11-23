@@ -6,7 +6,9 @@ tags:
 - depth-estimation
 - perception
 status: complete
-updated: '2026-10-05'
+updated: '2026-11-21'
+original:
+- ../../sources/repos/lingbot-depth.md
 related:
 - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
 - ../entities/humanoid-motion-intelligence.md
@@ -44,9 +46,24 @@ LingBot-Depth 通过 masked depth modeling 学习 RGB 与几何关联，将含�
 
 ## 核心原理
 
-输入 RGB、原始深度和相机内参，利用视觉先验补全/修复深度。官方 `MDMModel` 返回 `depth` 与 `points`。v0.5 是官方推荐的修正版本，另有稀疏补全任务模型。
+```mermaid
+flowchart LR
+    RGB["RGB 图像 (全观测)"] --> PE1["RGB Patch Embedding (14x14)"]
+    DEP["原始深度图 (含缺测/噪声)"] --> MSK["自然/随机掩码 (60%-90% 遮挡)"]
+    MSK --> PE2["Depth Patch Embedding (未遮挡 token)"]
+    PE1 --> ADD["共享空间位置编码 + 模态编码 (1/2)"]
+    PE2 --> ADD
+    ADD --> VIT["ViT-L/14 编码器 (DINOv2 初始化, 24 层)"]
+    VIT --> DEC["丢弃潜深度 token, 保留上下文 token + cls"]
+    DEC --> CONV["ConvStack 多尺度金字塔解码器 (含 UV 编码)"]
+    CONV --> OUT["度量稠密深度 + 相机系 3D 点云"]
+```
 
-公开 **3,019,200 RGB-D 样本**包含真实室内、VLA 采集与仿真子集；[Vision](cn-os-lingbot-vision.md) 中另介绍 Depth 2.0，用新的视觉骨干和更大训练池，不能混淆两代开放数据规模。
+图依据：[arXiv:2601.17895v1](https://arxiv.org/html/2601.17895) §2（Masked Depth Modeling、分离 patch 嵌入、ConvStack 解码器）与 `robbyant/lingbot-depth@f3a237e` `README.md`。
+
+输入 RGB、原始深度和相机内参，利用视觉先验补全/修复深度。论文将真实深度相机在反光、透明与弱纹理表面的缺测视为「自然掩码（natural masks）」，通过分离 patch embedding 与 60%–90% 掩码率迫使 ViT-L 编码器从完整 RGB 上下文与有效深度 token 中学习跨模态几何对齐，再由 MoGe 风格 ConvStack 解码器输出与输入分辨率对齐的度量深度。官方 `MDMModel` 返回 `depth` 与 `points`；v0.5 是官方推荐的修正版本，另有稀疏补全任务模型 `LingBot-Depth-DC`。
+
+公开 **3,019,200 RGB-D 样本**（`robbyant/mdm_depth`）包含 RobbyReal 1.4M 真实室内、RobbyVla 580,960 操作任务、RobbySim 999,264 仿真与 RobbySimVal 38,976 验证子集（论文全量预训练共约 10M 样本，含开源数据补充）；[Vision](cn-os-lingbot-vision.md) 中另介绍 Depth 2.0，改用 LingBot-Vision 骨干与 150M 训练池，不能混淆两代开放数据规模。
 
 ## 工程实践
 

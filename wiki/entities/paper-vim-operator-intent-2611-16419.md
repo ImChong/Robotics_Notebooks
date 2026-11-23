@@ -3,7 +3,7 @@ type: entity
 project_id: vim-operator-intent-2611-16419
 tags: [paper, teleoperation, shared-autonomy, intention-prediction]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.16419"
 project: https://see-want.github.io/
 code: https://github.com/see-want/VIM
@@ -104,6 +104,11 @@ VI AMO 6600 段 episode、13,653 个动作、9702 个 mission，VIM 在行动与
 1. 对照同数据与同测评协议，不混淆不同平台/样本统计口径。
 2. 在复现前单列训练数据、预训练、控制接口和硬件依赖。
 3. 验证边界是研究结论的必要组成，不能由示例直接推出可量产部署。
+
+## 与其他工作对比
+
+- **对比通用与具身 VLM 零样本基线（VI AMO 测试集，Table II & Fig. 4）：** 在 9 个动作进度截断时刻的平均评测下，VIM 在当前动作 OA 与上层任务 OM 上全面超越 6 个对照基线（`GPT-5.6 Luna`、`GPT-4o`、`Qwen Base 27B/9B`、`RynnBrain 1.1-9B`、`RoboBrain 2.5-8B`）：OA/OM SBERT 分别达 **0.825 / 0.821**（最强基线 `Qwen Base 27B` 为 0.581 / 0.564）、SigLIP 达 **0.879 / 0.872**（vs 0.744 / 0.722）、Top-10 召回达 **76.59% / 78.77%**（vs 39.14% / 39.33%）。即便在训练未出现的 386 条纯未见标签切片上，VIM 仍保持 0.726 / 0.717 SBERT（基线最高 0.570 / 0.564）；同时说明经过机器人感知微调的 `RynnBrain` 与 `RoboBrain` 并不自动胜任层级操作意图推断。
+- **对比视角、上下文与时序历史消融（Table III）：** 去掉腕部视角（`Front-only` OA/OM SBERT 0.798/0.798）、去掉已完成动作文本（`No context` 0.767/0.788）或仅保留单帧起始图（`Single @ 0%` 0.793/0.792）均导致指标下降，证实多视角短时历史与执行上下文的互补性。
 
 ## 局限与风险
 

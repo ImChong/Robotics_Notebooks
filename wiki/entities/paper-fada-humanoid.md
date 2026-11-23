@@ -2,9 +2,14 @@
 type: entity
 tags: [paper, humanoid, sim2real, domain-adaptation, few-shot, privileged-training, dagger, lora, whole-body-control, locomotion, unitree-g1, cmu, planner-idm, inverse-dynamics]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-23
+project_id: fada-humanoid
+project: https://lecar-lab.github.io/FADA-humanoid/
+code: https://github.com/LeCAR-Lab/FADA
+original:
+  - ../../sources/papers/fada_arxiv_2606_28476.md
 arxiv: "2606.28476"
-venue: "arXiv 2026"
+venue: "CoRL 2026 (arXiv:2606.28476v2)"
 related:
   - ../concepts/sim2real.md
   - ../concepts/privileged-training.md
@@ -17,10 +22,14 @@ related:
   - ./unitree-g1.md
 sources:
   - ../../sources/papers/fada_arxiv_2606_28476.md
+  - ../../sources/sites/fada-humanoid.md
+  - ../../sources/repos/fada-humanoid.md
 summary: "FADA（arXiv:2606.28476，CMU）三阶段 Planner–IDM：仿真 oracle+DAgger 蒸馏后，部署冻结 planner、仅用约 2 分钟目标域 rollout 的观测–动作对 LoRA 微调 IDM，对齐目标动力学；G1/T1 真机高精度全身任务成功率 20%→90%，无需目标奖励或仿真重标定。"
 ---
 
-# FADA（Few-Shot Domain Adaptation via Dynamics Alignment）
+# FADA：通过动力学对齐实现人形控制少样本域适应（Few-Shot Domain Adaptation via Dynamics Alignment for Humanoid Control）
+
+## 一句话定义
 
 **FADA** 是 CMU LeCAR-Lab 提出的 **人形控制少样本域适应** 框架（arXiv:2606.28476，[项目页](https://lecar-lab.github.io/FADA-humanoid/)）：把策略分解为 **Planner（命令→短视界本体感知意图）** 与 **IDM 逆动力学模型（意图+历史→动作）**，源域用特权 oracle + DAgger 训练；部署时 **冻结 planner**，仅用约 **2 分钟** 目标域 rollout 的 **(观测, 执行动作)** 对 **LoRA 微调 IDM**，使「如何把意图执行出来」对齐新动力学，而无需目标奖励、专家演示或仿真重标定。
 
@@ -33,6 +42,7 @@ summary: "FADA（arXiv:2606.28476，CMU）三阶段 Planner–IDM：仿真 oracl
 | WBC | Whole-Body Control | 人形全身协调控制任务层 |
 | LoRA | Low-Rank Adaptation | 目标域仅更新 IDM 低秩适配器 |
 | DR | Domain Randomization | 源域 IsaacSim 训练中的物理参数随机化 |
+| ONNX | Open Neural Network Exchange | 源域与适应后模型在推理端的导出格式 |
 
 ## 为什么重要
 
@@ -71,6 +81,46 @@ flowchart TB
   lora --> loop
   p --> loop
 ```
+
+## 源码运行时序图
+
+截至 **2026-11-23**，[官方 FADA 仓库](https://github.com/LeCAR-Lab/FADA) 已发布训练、适应及 locomotion 推理入口。以下按官方 README 六步流程、实际 `train.py` / `eval_checkpoint.py` / `finetune_idm_lora.py` / `run_policy.py` 入口整理（不是抽象部署模板）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as "复现者"
+    participant Oracle as "train_agent.py / Oracle PPO"
+    participant Sim as "IsaacSim"
+    participant DAgger as "holosoma.fada.planner_idm.train"
+    participant Eval as "eval_checkpoint"
+    participant MJ as "run_sim.py / MuJoCo"
+    participant Runner as "run_policy.py / LocomotionPolicy_FADA"
+    participant H5 as "dataset.h5"
+    participant Tune as "finetune_idm_lora"
+
+    User->>Oracle: exp:g1_29dof_oracle
+    Oracle->>Sim: 训练特权 Oracle + 域随机化
+    Sim-->>Oracle: oracle checkpoints (model_*.pt)
+    User->>DAgger: --expert-checkpoint model_24999.pt
+    DAgger->>Sim: DAgger student rollout + oracle relabeling
+    Sim-->>DAgger: 轨迹及 oracle 对齐监督
+    DAgger-->>Eval: model_final.pt
+    User->>Eval: --checkpoint model_final.pt
+    Eval-->>Runner: planner_idm_policy.onnx
+    User->>MJ: 启动目标域 MuJoCo 仿真
+    User->>Runner: --task.collect-data --task.model-path
+    Runner->>MJ: 下发动作
+    MJ-->>Runner: 机器人状态与本体感知反馈
+    Runner->>H5: 保存目标域 rollout (dataset.h5)
+    User->>Tune: --checkpoint --target-datasets
+    H5-->>Tune: 历史、未来观测与执行动作
+    Tune->>Tune: 冻结 Planner/预训练 IDM；只更新 IDM LoRA
+    Tune-->>Runner: 输出适应后 ONNX
+    User->>Runner: 相同命令序列评估 pre/post ONNX
+```
+
+真机采集使用同一 `run_policy.py` 和 FADA locomotion preset，把仿真运行替换为按硬件文档配置的机器人接口；**请先在 MuJoCo 验证起身、安全与动作空间**。本次未实际运行上述代码，也不将论文的全身跟踪实验等同于已发布的 whole-body tracking 源码。
 
 ## 核心机制（归纳）
 
@@ -128,6 +178,10 @@ $$
 - T1 Falcon（外力牵引 loco）增益最大：MuJoCo 误差 **0.347**（FADA）vs **0.880**（FADA-zs）。
 - TF-CoPred-ft 劣于零样本 → **只改未来预测不够，须改动作生成**。
 
+### 跨条件适应边界（arXiv v2 §5.3）
+
+在 Booster T1 携载 20 kg 的 MuJoCo 实验中，**FADA** 归一化速度误差/存活率 **1.28 / 0.94**，而 **FADA-zs** 为 **2.44 / 0.43**；当携载增至 30 kg 时，FADA 仅达到 **2.40 / 0.36**。论文说明：即使零样本 rollout 发生跌倒，跌倒前轨迹依然可以用于监督，但严重失配导致轨迹过短时适应能力会下降。这里的改进不应被推广为所有负载都能恢复。
+
 ### 关键消融
 
 | 因素 | 结论 |
@@ -159,6 +213,15 @@ $$
 - **不是 SysID / 仿真对齐**：不改仿真器参数；直接在 **部署控制器** 上对齐动力学。
 - **未覆盖 HOI**：论文明确 **全身人–物交互** 与 **视觉/触觉条件** 为未来方向。
 - **源训练仍有成本**：oracle RL + DAgger 蒸馏与域随机化仍是前置投入。
+- **任务模块开源未齐全**：官方代码仓库当前尚未标记 whole-body tracking 部分为已发布；同时只有部分目标动力学条件能提供足够有信息量的安全 rollout。
+
+## 工程实践
+
+- **约 2 分钟实机微调清单：** 部署期保持 Planner 完全冻结（避免微调破坏全局任务结构），仅收集几段真实交互下的 `(o_t, a_t)` 轨迹以自监督逆动力学损失对 IDM 施加低秩 LoRA 微调，使 Unitree G1 / Booster T1 快速吸收负载或软地面失配。
+- **公开代码入口：** 官方仓库基于 Holosoma（Apache-2.0），主要入口为 `src/holosoma/holosoma/train_agent.py` → `holosoma.fada.planner_idm.train` → `holosoma.fada.planner_idm.eval_checkpoint` → `run_policy.py` 采集 `dataset.h5` → `holosoma.fada.planner_idm.finetune_idm_lora`；复现参数见[源码归档](../../sources/repos/fada-humanoid.md)。
+- **论文附录 B.3 参考设置：** LoRA rank 8、alpha 16、dropout 0.05；离线更新 800 step、学习率 3e-4、batch size 4096。这是论文实验配置，不保证直接适配其他硬件。
+- **开源边界（2026-11-23）：** 官方 README 已发布 oracle PPO、DAgger 蒸馏、LoRA、sim2sim、sim2real locomotion 与 G1/T1 oracle 权重；**whole-body tracking 项仍未勾选开放**，相关复现实验不能标注为全部可运行；[项目主页核对](../../sources/sites/fada-humanoid.md)。
+- **前后对照：** README 要求在相同 seed、命令与初始条件下运行适应前、后的 ONNX，并分别采集 `mocap_unified.npz`；官方流程只输出轨迹文件，具体指标需额外计算。
 
 ## 关联页面
 
@@ -170,10 +233,13 @@ $$
 - [RMA（Rapid Motor Adaptation）](./paper-rma-rapid-motor-adaptation.md)
 - [BFM-Zero](./paper-bfm-zero.md)
 - [Unitree G1](./unitree-g1.md)
+- [Sim2Real 纵深路线](../../roadmap/depth-sim2real.md) — 少样本适应与真机安全微调阶段已有本页入口
 
 ## 参考来源
 
-- [sources/papers/fada_arxiv_2606_28476.md](../../sources/papers/fada_arxiv_2606_28476.md)
+- [论文归档：FADA arXiv:2606.28476v2](../../sources/papers/fada_arxiv_2606_28476.md)
+- [官方项目页开放资源核查](../../sources/sites/fada-humanoid.md)
+- [官方 FADA 源码及运行入口](../../sources/repos/fada-humanoid.md)
 - Xie, Sobanbabu, Shikhare, Wang, Simchowitz, Shi. *FADA: Few-Shot Domain Adaptation via Dynamics Alignment for Humanoid Control*. arXiv:2606.28476, 2026. <https://arxiv.org/abs/2606.28476>
 - [FADA 项目页](https://lecar-lab.github.io/FADA-humanoid/)
 

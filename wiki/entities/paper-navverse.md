@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, benchmark, vln, navigation, objnav, isaac-sim, umich, outdoor-navigation, sim2real]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+project_id: navverse-benchmark
 arxiv: "2607.19695"
 code: https://github.com/UMich-CURLY/NavVerse-Benchmark
 related:
@@ -19,7 +20,8 @@ sources:
   - ../../sources/papers/navverse_arxiv_2607_19695.md
   - ../../sources/sites/navverse-benchmark-github-io.md
   - ../../sources/repos/navverse-benchmark.md
-summary: "NavVerse（UMich CURLY，arXiv:2607.19695）：Isaac Sim 物理启用室内–户外连通具身导航基准；10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/安全指标；零样本 VLA 完成最高、模块化最安全；截至入库日代码待发布。"
+original: ../../sources/papers/navverse_arxiv_2607_19695.md
+summary: "NavVerse（UMich CURLY，arXiv:2607.19695）：基于 Isaac Sim 5.1.0 + Isaac Lab 2.3.0 的物理启用室内–户外连通具身导航基准；10k episode（ObjNav/PlaceNav/VLN）+ SR/SPL/CE/CR/ADO/NSR 指标，已于 2026-09-30 正式开源。"
 ---
 
 # NavVerse：室内–户外连续具身导航基准
@@ -51,10 +53,10 @@ summary: "NavVerse（UMich CURLY，arXiv:2607.19695）：Isaac Sim 物理启用�
 |------|------|
 | **机构** | 密歇根大学（University of Michigan / UMich）；CURLY 实验室 |
 | **arXiv** | [2607.19695](https://arxiv.org/abs/2607.19695)（2026-07-22） |
-| **仿真** | **Isaac Sim** 物理启用连续 rollout |
-| **场景** | 100 室内 + 50 城市户外 + 50 室内–户外连通（scene-disjoint） |
+| **仿真** | **Isaac Sim 5.1.0 + Isaac Lab 2.3.0** 物理启用连续 rollout（主评测 **Boston Dynamics Spot**，Table 7 另含 Turtlebot 对照） |
+| **场景** | 100 GRScenes 室内 + 50 Virtual Community 城市户外（含 OSM 下沉 0.2 m 道路、121 Objaverse 资产、101 Gemini3-Pro 店面）+ 50 门–立面连通场景 |
 | **Episode** | **10,000**（ObjNav 4,027 / PlaceNav 2,973 / VLN 3,000） |
-| **开源（截至 2026-09-13）** | **待发布** — arXiv + 项目页已上线；GitHub 仓仅 `website` 静态站，**未见** 仿真/评测代码与数据 |
+| **开源（2026-11-21 复核）** | **已开源**（2026-09-30 发布）— GitHub 已释放完整仿真环境、基线适配器与 Docker；v1 场景与 episode 由 Hugging Face `tccoin/navverse-benchmark` 分发 |
 
 ## 为什么重要
 
@@ -63,7 +65,7 @@ summary: "NavVerse（UMich CURLY，arXiv:2607.19695）：Isaac Sim 物理启用�
 - **物理改变「进步」定义：** 可执行 rollout 暴露碰撞、净空、表面合法性、摔倒与超时——仅用 SR/SPL 会掩盖不安全或无效移动（与 [ESI-Bench](./esi-bench.md)「行动选择」叙事互补，但聚焦 **跨场景导航**）。
 - **零样本对照清晰：** 同一协议下并排 **模块化 / RL / VLA / VLA-RL**，便于读 [VLN 四范式复现](../overview/vln-open-source-repro-paradigms.md) 与 [VLA](../methods/vla.md) 在 **transition** 场景的短板。
 
-## 基准构造（核心结构）
+## 核心机制与流程总览
 
 | 模块 | 内容 |
 |------|------|
@@ -103,39 +105,37 @@ flowchart TB
 
 ## 源码运行时序图
 
-官方标注 **Code Coming soon**；截至 **2026-09-13**，GitHub 仓仅托管项目站（`website` 分支），**无可运行评测入口**。预期发布后的复现路径（待官方确认）：
+[UMich-CURLY/NavVerse-Benchmark](https://github.com/UMich-CURLY/NavVerse-Benchmark) 已于 2026-09-30 正式开放完整运行链路，统一入口 `navverse-run`（`python -m navverse.launcher.cli`）串联环境搭建、数据拉取、`navverse/` 仿真内核与 `baselines/` 评测调度：
 
 ```mermaid
 sequenceDiagram
   autonumber
   actor U as 研究者
-  participant NV as NavVerse-Benchmark
-  participant IS as Isaac Sim
-  participant AG as 基线智能体\n(SGImagineNav / PoliFormer / UniNaVid / LongNav-R1)
-  participant MET as 指标汇总
-  U->>NV: 下载场景与 episode 定义（待发布）
-  U->>IS: 加载室内/户外/连通场景
-  loop 每个 episode
-    NV->>IS: 初始化机器人位姿与任务目标
-    IS-->>AG: egocentric 观测流
-    AG-->>IS: 连续控制 / 高层动作
-    IS-->>NV: 物理状态（碰撞、表面、是否到达户外）
+  participant CLI as navverse-run (navverse.launcher.cli)
+  participant HF as tccoin/navverse-benchmark
+  participant ENV as navverse/sim.py & vln_env_wrapper.py
+  participant AG as baselines/eval_navverse.py
+  participant MET as navverse/measures.py
+  U->>CLI: setup / download（校验 SHA-256 并写入 .env）
+  CLI->>HF: 下载 navverse_v1_july23.tar.gz 与 episodes/
+  U->>CLI: navverse-run benchmark --preset ...
+  CLI->>ENV: 启动 Isaac Sim 5.1.0 + Isaac Lab 2.3.0 与 Spot/Turtlebot 接口
+  loop 每个连续 episode
+    ENV-->>AG: egocentric RGB-D / 位姿观测
+    AG-->>ENV: 控制指令（UniNaVid / StreamVLN / PoliFormer / LongNav-R1 / GPT 等）
+    ENV->>MET: 统计碰撞、净空与是否穿越出口至户外
   end
-  NV->>MET: SR / SPL / CE + CR / ADO / NSR + transition 表
-  Note over U,MET: 当前仅项目页榜单与 arXiv 可核对；runner 未发布
+  MET-->>CLI: 输出 SR / SPL / CE + CR / ADO / NSR + Transition 诊断
 ```
-
-- **现状：** 项目页可查看 **零样本榜单** 与 transition 诊断；**不可** 本地复现 rollout。
-- **仓内实际内容：** 静态 HTML/JS/CSS + 媒体资源，见 [sources/repos/navverse-benchmark.md](../../sources/repos/navverse-benchmark.md)。
 
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
-| **选型** | 研究 **跨场景导航 / 出口适应 / 户外 POI 接地** → 关注 NavVerse；仅室内 VLN-CE 分数 **不可外推** |
-| **读榜** | 同时看 **SR + 安全三联（CR/ADO/NSR）+ transition 表**；UniNaVid SR 高不等于安全最优 |
-| **复现** | 关注 `UMich-CURLY/NavVerse-Benchmark` 是否发布非 `website` 分支或 Isaac Sim 安装文档 |
-| **开源状态** | **待发布**（arXiv + 项目页 **已上线**；代码/数据 **未见**） |
+| **环境与数据** | 通过 `python -m navverse.launcher.cli setup --env-name navverse` 配 Conda 环境（或使用 `docker/` 构建）；运行 `navverse-run download` 从 `tccoin/navverse-benchmark` 解压 `vc_plus`、`grscenes_commercial`、`navmesh` 与 `episodes/` |
+| **选型** | 研究 **跨场景导航 / 出口适应 / 户外 POI 接地** → 使用 NavVerse；仅室内 VLN-CE 分数 **不可外推** |
+| **读榜** | 同时看 **SR + 安全三联（CR/ADO/NSR）+ transition 表**；UniNaVid SR 高但 I2O 场景从 17.65% 骤降至 **3.64%** 且 25–48% 未能走出室外 |
+| **开源状态** | **已开源** — 代码、基线封装与 v1 场景/episode 均已发布（v2 episodes 规划中） |
 
 ## 评测与指标（零样本摘要）
 
@@ -163,7 +163,7 @@ sequenceDiagram
 
 ### Transition 诊断（读榜要点）
 
-- 大量 indoor-to-outdoor episode **在到达户外前即失败**（pre-exit / indoor-only）。
+- 大量 indoor-to-outdoor episode **在到达户外前即失败**（不同方法有 25–48% 样本未走出室外；UniNaVid 在 ObjNav 从 pure-indoor/single-context 跌至 I2O 的 **3.64%**，较 17.65% 大幅衰退）。
 - 穿越出口后，**户外覆盖效率（post-exit CE）普遍下降**；各方法主导失败模式不同（wrong-goal / fall / timeout）。
 - **PlaceNav** 从纯 outdoor 到 indoor-to-outdoor 的跌幅最明显，说明 **POI 接地 + 场景切换** 是主要瓶颈。
 
@@ -174,15 +174,15 @@ sequenceDiagram
 - 最有信息量的不是绝对 SR（全方法 <12% 量级），而是 **transition 失败分解**——许多 episode 死在出口前，户外段效率再低说明「出了门也不会走」。
 - **UniNaVid 等端到端 VLA 零样本 SR/SPL 领先**，但 **SGImagineNav 模块化方法 CR/NSR 更好**——成功、安全、效率 **无单一主导者**，选型不能只看 SR。
 - **PlaceNav** 是户外语义与 POI 接地的试金石；outdoor → indoor-to-outdoor 跌幅大于 ObjNav/VLN，提示 **地点级目标** 比物体类别更难跨域。
-- 适用边界：截至入库日 **代码待发布**，榜单只能作方法对照锚点；与 [DA-Nav](./paper-da-nav.md) 等真机户外 VLN 互补但 **仿真协议不可直接混比**。
+- 适用边界：代码与 v1 数据已于 2026-09-30 开源，可用于本地 Isaac Sim 5.1 + Isaac Lab 2.3 零样本复现与提交评测榜单（含 2026-11 接入的 GPT-6 Astra 对照）；与 [DA-Nav](./paper-da-nav.md) 等真机户外 VLN 互补但 **仿真协议不可直接混比**。
 - 开放问题：transition-aware 探索、出口发现、穿越后快速适应与 **安全约束下的 VLA** 部署。
 
 ## 常见误区或局限
 
 - **误区：** 把 Habitat/VLN-CE 室内 SR 直接等同于「能走出建筑」——NavVerse 显示 **连通场景** 会暴露额外失败模式。
 - **误区：** 只看 SR 选模型——**CR/ADO/NSR** 与 transition 表可能推翻「SR 最高即可部署」的判断。
-- **局限：** 当前为 **仿真基准**；Isaac Sim 与真机动力学/感知仍有 gap。
-- **局限：** **代码与数据未发布**，第三方无法独立复现榜单数字。
+- **局限：** 当前为 **仿真基准**；Isaac Sim 与真机动力学/感知仍有 gap，且高分辨率资产解压需要较大磁盘与显存开销。
+- **局限：** v1 仅公布零样本榜单设定，部分跨本体（如 Spot vs Turtlebot Table 7）对比仍受限于具体低层路径跟踪器参数。
 
 ## 与其他工作对比
 

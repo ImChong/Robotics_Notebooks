@@ -11,6 +11,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** 解释为何在 ROS 客户端库与具体 DDS（或其它）实现之间引入 **抽象中间件接口（RMW）**：支持多 vendor、隐藏 DDS 细节、运行时切换实现。
 - **沉淀到 wiki：** 是 → [`wiki/concepts/rmw-interface.md`](../../wiki/concepts/rmw-interface.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `ros2/design` 官方 `060_ros_middleware_interface.md` 设计原稿（369 行）。
 
 ## 为什么值得保留
 

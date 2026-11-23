@@ -13,6 +13,7 @@ related:
   - ../overview/hub-systems-engineering.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-fail-passive-gap.md
+original: ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
 sources:
   - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md

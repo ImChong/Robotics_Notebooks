@@ -6,7 +6,8 @@
 - **类型：** blog
 - **作者：** Caden Kraft（CKraft11）
 - **链接：** https://cadenkraft.com/designing-a-coreless-axial-flux-motor-part-1/
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 抓取并逐行通读博文正文 179 行，核对 Halbach 匝数/相电阻实测口径）
+- **通读：** 已完成
 - **一句话说明：** DIY 无铁芯轴向磁通电机：Halbach 转子替代铁芯聚磁；按 Batzel 等文献估算匝数（12 极 / 18 线圈、约 14 匝/线圈）；3D 打印结构 + LCR 相电阻校验；**文内未列专用 CAD/代码仓**。
 - **开源状态：** **未开源**（截至入库日项目页/博文未列 GitHub CAD 或仿真仓；仅博文叙述、公式与装配照片）
 - **项目页归档：** [cadenkraft_coreless_axial_flux_motor_part1.md](../sites/cadenkraft_coreless_axial_flux_motor_part1.md)

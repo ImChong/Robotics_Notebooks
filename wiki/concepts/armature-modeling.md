@@ -2,7 +2,12 @@
 type: concept
 tags: [robotics, dynamics, simulation, sim2real, actuator]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+original:
+  - ../../sources/raw/wechat_freedof_sim2real_dynamics_identification_2026-08-12.md
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
+  - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
+  - ../../sources/papers/modern_robotics_ch8_actuators.md
 related:
   - ./robot-link-and-rotor-inertia.md
   - ./humanoid-parallel-joint-kinematics.md
@@ -24,7 +29,9 @@ summary: "Armature（电枢惯量 / 反射惯量）是电机转子经过减速�
 
 # Armature Modeling（电枢惯量建模）
 
-在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。
+## 一句话定义
+
+**电枢惯量（Armature Inertia / Reflected Rotor Inertia）** 是电机转子转动惯量经减速比平方（$G^2$）反射到关节输出侧的等效转动惯量；准确建模并辨识该项，是高减速比关节在仿真器中匹配真机冲击、带宽与 PD 稳定性的物理基础。
 
 ## 英文缩写速查
 
@@ -46,7 +53,7 @@ summary: "Armature（电枢惯量 / 反射惯量）是电机转子经过减速�
 - **控制稳定性**：如果仿真中没有建模 Armature，但现实中存在巨大的反射惯量，训练出的策略在真机上容易产生高频振荡。
 - **PD 增益设计**：合理的 PD 增益应与关节的总惯量（连杆惯量 + Armature）成比例。
 
-## 物理定义与计算
+## 核心原理：物理定义与计算
 
 对于一个典型的执行器系统：
 - $J_r$：电机转子的转动惯量。
@@ -83,14 +90,24 @@ $$
 ### Isaac Gym / Isaac Lab
 在 `ArticulatedView` 或机器人描述配置中，可以手动计算并补偿到关节的动态参数中，或者在 `SimConfig` 中通过 `armature` 属性全局或局部设置。Isaac Lab 文档指出：使用 **explicit** 执行器（用户侧算力矩）时若数值不稳定，可 **增大 `armature`** 阻尼关节响应；这与 [Implicit / Explicit 执行器建模](./implicit-explicit-actuator-modeling.md) 中的稳定性建议一致。
 
-## BeyondMimic 的工程实践
+## 工程实践（BeyondMimic 与分级辨识）
 
-[BeyondMimic](../methods/beyondmimic.md) 强调了精确建模 Armature 是减少 Sim2Real 差距的核心手段：
-1. **精确计算**：不再将 armature 视为仿真调参的旋钮，而是通过电机手册数据严格计算。
+### 1. BeyondMimic 参数化实践
+
+[BeyondMimic](../methods/beyondmimic.md) 强调精确建模 Armature 是减少 Sim2Real 差距的核心手段：
+1. **精确计算**：不再将 `armature` 视为仿真调参的旋钮，而是依据电机手册转子惯量与减速比计算 $I_{\mathrm{arm}} = J_{\mathrm{rotor}} G^2$（对应 *Modern Robotics* Sec. 8.9.2–8.9.3 的表观惯量）并实测校验。
 2. **PD 增益关联**：
-   - 设定自然频率 $\omega = 2\pi \times 10$ Hz。
-   - 设定阻尼比 $\zeta = 2.0$。
-   - 则：$k_p = I_{arm} \cdot \omega^2$, $k_d = 2 \cdot I_{arm} \cdot \zeta \cdot \omega$。
+   - 设定自然频率 $\omega = 2\pi \times 10$ Hz，阻尼比 $\zeta = 2.0$；
+   - 则 $k_p = I_{\mathrm{arm}} \cdot \omega^2$，$k_d = 2 \cdot I_{\mathrm{arm}} \cdot \zeta \cdot \omega$。
+
+### 2. 分级实验辨识（FreeDof Sim2Real 路径）
+
+- 不可直接拿闭环阶跃曲线同时拟合 `armature`、延迟、阻尼与摩擦（结构不可辨识会导致错误互相掩盖）；应先做无外载慢速标定摩擦、再用高频力矩阶跃/扫频分离折算惯量与通信延迟。
+
+## 常见误区或局限
+
+- **把 `armature` 当万能数值稳定旋钮**：虽然显式执行器积分时加大 `armature` 能抑制震荡，但过度偏离物理值会扭曲碰撞冲量、步态回弹频率与电机反驱特性。
+- **忽略减速比与并联交叉耦合**：高减速比下 $G^2 I_{\mathrm{rotor}}$ 可大于连杆自身惯量；双驱动并联或差速机构（如脚踝）的对角 `armature` 项无法表达非对角惯量耦合，需从闭合链路动力学矩阵导出或通过独立辨识核对。
 
 ## 关联页面
 
@@ -109,6 +126,13 @@ $$
 ## 参考来源
 
 - [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — `armature` 是物理量；$G^2$ 折算与并联矩阵容量
+- [Modern Robotics Ch. 8.9 Actuators](../../sources/papers/modern_robotics_ch8_actuators.md) — Sec. 8.9.2–8.9.3 转子表观/反射惯量 $G^2 I_{\text{rotor}}$ 教材推导
+- [Isaac Lab Implicit / Explicit Actuators](../../sources/courses/isaac_lab_implicit_explicit_actuators.md) — 执行器反射惯量配置与数值稳定性
 - [机器人连杆惯量与转子惯量（一手资料索引）](../../sources/papers/robot_link_rotor_inertia_primary_refs.md) — MuJoCo `armature` / 反射惯量 $G^2$ 官方定义
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - BeyondMimic 技术报告关于物理建模的部分。
+
+## 推荐继续阅读
+
+- [robot-link-and-rotor-inertia](./robot-link-and-rotor-inertia.md) — 区分 URDF `<inertial>` 与关节 `armature`
+- [sim2real-joint-sysid-experiment-design](../methods/sim2real-joint-sysid-experiment-design.md) — 解耦惯量、延迟、摩擦与阻尼的分级实验设计

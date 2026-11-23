@@ -10,6 +10,9 @@
 - **关联项目页：** <https://manifoldai.cn/>
 - **官方评测入口：** <https://robodojo-benchmark.com/>
 
+- **通读：** 已完成
+- **核对范围：** 已通读搜狐原文报道及主论文 `arXiv:2607.18840v3`（WorldScape Policy 2.0, 91,161 字符）。
+
 ## 报道要点
 
 - 报道将 R²SI 展开为 **Recursive Robot Self-Improvement**，称其以内外两层 Agent 形成迭代闭环：内层 Robot Agent 根据多视角 RGB、本体状态、任务描述和回合记忆调用 Skill 执行；外层 Recursion Agent 跨轮次复盘、修订 Skill，并通过测试、版本管理后更新内层。

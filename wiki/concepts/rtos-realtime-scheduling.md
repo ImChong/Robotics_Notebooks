@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, rtos, realtime, scheduling, freertos, preempt-rt]
 status: complete
-updated: 2026-10-04
+updated: 2026-11-22
 related:
   - ./operating-system-basics.md
   - ../queries/real-time-control-middleware-guide.md
@@ -14,6 +14,9 @@ sources:
   - ../../sources/sites/rt-thread-github-io.md
   - ../../sources/repos/rt-thread.md
 summary: "实时操作系统与实时调度：硬/软实时、优先级调度、FreeRTOS 与 PREEMPT_RT Linux 在机器人分层中的位置。"
+original:
+  - ../../sources/sites/dds_omg_rtos_edge_ota_safety_primary_refs.md
+  - ../../sources/repos/rt-thread.md
 ---
 
 # RTOS 与实时调度

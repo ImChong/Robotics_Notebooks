@@ -4,11 +4,13 @@
 
 - **作者：** Zhongxiang Lei, Lulu Cao, Xuyang Wang, Tianyi Qian, Jinyan Liu, Xuesong Li
 - **机构：** Beijing Institute of Technology；QIYUAN Lab
-- **论文：** <https://arxiv.org/abs/2610.03388> · [HTML v1](https://arxiv.org/html/2610.03388v1)
+- **论文：** <https://arxiv.org/abs/2610.03388> · [HTML v1（2026-10-06 已被作者撤回，见下）](https://arxiv.org/html/2610.03388v1)
 - **项目页：** <https://kungfuathletebot.github.io/>
 - **代码：** <https://github.com/NPCLEI/KungFuAthleteBot>
 - **数据：** <https://huggingface.co/datasets/LuluCao/KungfuAthleteBot>
-- **前序预印本：** *A Kung Fu Athlete Bot That Can Do It All Day*, arXiv:2602.13656；本次按 2610.03388 更新既有项目实体，不重复建页。
+- **前序主论文：** *A Kung Fu Athlete Bot That Can Do It All Day*, [arXiv:2602.13656](https://arxiv.org/abs/2602.13656)（2026-10-06 作者将 `2610.03388` v2 标为 *withdrawn*，原因为“I wanted to update my previous paper, but I accidentally submitted a new paper instead”）
+- **通读：** 已完成
+- **核对范围：** 核对 `https://arxiv.org/abs/2610.03388` 官方撤回页声明（2026-10-06 v2 withdrawn），并通读主版本 `arXiv:2602.13656` 全文、`NPCLEI/KungFuAthleteBot` 官方 `README.md` 与 `LuluCao/KungfuAthleteBot` Hugging Face 数据卡。
 - **一句话说明：** 从武术公开视频重建运动参考，通过物理引导轨迹修复、伪低动能采样和三阶段课程补偿视频缺乏驱动力信息的问题，再让同一 G1 策略联合跟踪、抗扰与跌倒恢复。
 
 ## 核心摘录

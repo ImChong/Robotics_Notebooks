@@ -11,7 +11,10 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
+original:
+  - ../../sources/sites/light-o1.md
+  - ../../sources/repos/lightorigins-light-o1.md
 code: https://github.com/lightorigins/Light-O1
 related:
   - ./light-origins.md
@@ -71,17 +74,21 @@ summary: "Light-O1（亮源新创，2026-09-21）：从互联网视频恢复结�
 | **适配数据** | Nymeria（第一视角人类）、HIW-500（Unitree G1）、LightBot 自采 loco-manip |
 | **开源** | **已开源** [lightorigins/Light-O1](https://github.com/lightorigins/Light-O1) 推理栈 + HF Preview 权重 |
 
+## 核心原理
+
+Light-O1 以「通过压缩实现智能（intelligence through compression）」为核心思想：将互联网人类视频中蕴含的行为先验提炼为统一离散动作 token，在交错多模态自回归序列上预训练后，经双接口适配器迁移至不同机器人本体。
+
 ### 流程总览
 
 ```mermaid
 flowchart LR
-  video[互联网人类视频] --> recover[3D 动作恢复 + 语言标注]
-  recover --> token[高保真 action tokenization]
-  token --> ar[自回归 Transformer 预训练]
-  ar --> prior[Transferable human action prior]
-  prior --> post[目标本体 post-training]
-  post --> bfm[BFM / action expert 执行]
-  bfm --> robot[LightBot / Unitree G1 真机]
+  video["互联网人类视频"] --> recover["3D 动作恢复 + 语言标注"]
+  recover --> token["高保真 action tokenization\n(human_action_138_v1)"]
+  token --> ar["自回归 Transformer 预训练\n(Qwen3.5-4B 基座)"]
+  ar --> prior["Transferable human action prior"]
+  prior --> post["目标本体 post-training + RLHF"]
+  post --> bfm["Action Decoder 或 Diffusion Action Expert\n→ BFM 执行"]
+  bfm --> robot["LightBot / Unitree G1 真机"]
 ```
 
 ### Transfer Scaling Law（tech blog 口径）
@@ -111,22 +118,25 @@ flowchart LR
 
 ## 源码运行时序图
 
+图依据：`lightorigins/Light-O1@90e0568` 的 `pyproject.toml`（CLI 入口）、`light_deploy/generate.py`（`generate_action`）与 `examples/sonic/simulation.py`（200 Hz MuJoCo / 50 Hz ONNX 闭环仿真）。
+
 ```mermaid
 sequenceDiagram
     autonumber
     actor Dev as 开发者
     participant Repo as lightorigins/Light-O1
     participant HF as HuggingFace Preview 权重
-    participant Deploy as light-deploy
-    participant BFM as BFM / GEAR-SONIC
+    participant Deploy as light-deploy / light-deploy-server
+    participant Gen as light_deploy.generate
+    participant BFM as examples/sonic/simulation.py
     Dev->>Repo: clone + uv sync --extra inference
-    Dev->>HF: 下载 Light-O1-Preview
-    Dev->>Deploy: CLI / Web console 输入 prompt
-    Deploy->>Deploy: 语言推理 + action token 自回归
-    Deploy-->>Dev: human_action.npy (frames, 138)
-    opt G1 仿真
-        Dev->>BFM: Sonic 示例 action adapter
-        BFM-->>Dev: MuJoCo 闭环 rollout
+    Dev->>HF: 下载 Light-O1-Preview（含 action_decoder.safetensors）
+    Dev->>Deploy: 启动 CLI 或 Web console (port 8090 / API 8030)
+    Deploy->>Gen: generate_action(prompt, enable_thinking=True)
+    Gen-->>Dev: 推理文本 + human_action.npy (frames, 138 @ 20 FPS)
+    opt G1 MuJoCo 闭环仿真 (--extra sonic)
+        Dev->>BFM: 通过 action adapter 送入 GEAR-SONIC ONNX
+        BFM-->>Dev: 200 Hz MuJoCo 物理 / 50 Hz 控制闭环
     end
 ```
 

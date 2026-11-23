@@ -7,6 +7,8 @@
 - **Type**: Research Framework / Simulation Engine
 - **License**: Apache-2.0
 - **Documentation**: https://protomotions.github.io/
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `NVlabs/ProtoMotions` 当前 `README.md`（262 行，含 Oct 2026 `main` 模块化重构说明）、`protomotions/train_agent.py`、`protomotions/agents/supervised/masked_mimic_model.py` 与 `examples/experiments/masked_mimic/transformer.py`。
 
 ## 核心内容（仓库 README 归纳）
 

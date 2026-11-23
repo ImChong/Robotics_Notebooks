@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, locomotion, motion-control, motion-prior, amp, cvae, terrain-adaptation, perceptive-locomotion, sim2real, kuavo, hit, leju]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2606.06944"
 venue: arXiv
 related:

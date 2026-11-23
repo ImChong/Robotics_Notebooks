@@ -5,7 +5,9 @@
 - **链接：** https://github.com/AgibotTech/genie_sim
 - **项目页：** https://agibot-world.com/genie-sim
 - **论文：** https://arxiv.org/abs/2601.02078
-- **核查日期：** 2026-10-28；源码快照 [`30d2bc1`](https://github.com/AgibotTech/genie_sim/tree/30d2bc123d4eda624770dc0daa528541257de580)
+- **核查日期：** 2026-10-28；源码快照 [`30d2bc1`](https://github.com/AgibotTech/genie_sim/tree/30d2bc123d4eda624770dc0daa528541257de580)（2026-11-21 复核 `main@a3995e9` README：主线已升级至 Python 3.12 + Isaac Sim 6.2 / `geniesim4:latest`，4.5 与 5.1 标记 deprecated E.O.L.）
+- **核对范围：** 通读 `AgibotTech/genie_sim` 官方 `README.md`（`@30d2bc1` 及 `@a3995e9`）、`source/README.md`、`source/geniesim_benchmark/benchmark_test_docs.md` 与 `geniesim_cli`/`geniesim_benchmark` 评测调用链；未运行 Docker/Isaac Sim 仿真。
+- **通读：** 已完成
 - **一句话说明：** 场景重建与生成、机器人仿真、数据采集和策略评测工具链。
 - **沉淀到 wiki：** [Genie Sim 3.0](../../wiki/entities/genie-sim-3.md)
 

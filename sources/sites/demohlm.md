@@ -1,33 +1,15 @@
 # DemoHLM 项目页
 
-> 来源归档
+> 来源归档（site / BeingBeyond 官方项目页）
 
-- **标题：** DemoHLM: From One Demonstration to Generalizable Humanoid Loco-Manipulation
-- **类型：** site
-- **链接：** <https://beingbeyond.github.io/DemoHLM/>
-- **机构：** 北京大学（PKU）、智在无界（BeingBeyond）
-- **论文：** <https://arxiv.org/abs/2510.11258>
-- **代码：** <https://github.com/BeingBeyond/DemoHLM>
-- **入库日期：** 2026-09-20
-- **再核日期：** 2026-09-20
-- **一句话说明：** BeingBeyond 官方项目页：方法总览、十任务真机视频、BibTeX；页脚链到 arXiv 与 GitHub。
+- **URL：** <https://beingbeyond.github.io/DemoHLM/>
+- **镜像仓库：** <https://github.com/BeingBeyond/DemoHLM>（commit `cb913c1`，含项目主页与文档，无训练/控制源码）
+- **关联论文：** `arXiv:2510.11258`（见 [demohlm_arxiv_2510_11258.md](../papers/demohlm_arxiv_2510_11258.md)）
+- **核对范围：** 已核对 GitHub 镜像仓库 `BeingBeyond/DemoHLM @ cb913c1` 中 `README.md` 与 `docs/` 文件清单及官方 arXiv 全文，确认项目页展示了 10 项移动操作任务、Unitree G1 2-DoF 主动视觉颈部/夹爪改装及真机闭环对比视频说明；项目页未发布训练或推理脚本。
+- **通读：** 已完成
 
-## 开源状态（步骤 2.5 核查）
+## 核心要点
 
-| 资源 | 状态 |
-|------|------|
-| 项目页 / 视频 / BibTeX | **已发布** |
-| GitHub 仓库 | **部分开源**：公开仓存在，但 **截至 2026-09-20 仅含 README 与 `docs/` 项目站镜像**（overview 图、演示 mp4），**无训练 / 数据生成 / 部署脚本** |
-| 预训练权重 / 仿真环境包 | **未发布**（README 与项目页均未列 HF / Drive / release） |
-
-## 页面要点
-
-- **方法图：** 单条 VR 仿真示范 → 物体坐标系轨迹 → 三阶段数据生成 → BC 训练 → 真机闭环部署。
-- **真机视频：** LiftBox / PressCube / PushCube / Handover / GraspCube 等 ego + 第三视角 rollout。
-- **作者：** Fu* / Xie* / Xu / Xiong / Yuan / Lu §；PKU + BeingBeyond。
-
-## 对 wiki 的映射
-
-- [paper-loco-manip-161-136-demohlm.md](../../wiki/entities/paper-loco-manip-161-136-demohlm.md)
-- [demohlm_arxiv_2510_11258.md](../papers/demohlm_arxiv_2510_11258.md)
-- [demohlm.md](../repos/demohlm.md)
+- 展示「单演示 -> 仿真三阶段轨迹合成 -> 模仿学习策略 -> Unitree G1 零样本 Sim2Real」完整闭环。
+- 明确底层采用 AMO 50 Hz 全身控制器、高层采用 10 Hz 模仿学习策略（ACT/DP）及 RealSense D435 + FoundationPose++ 物体 6D 位姿感知。
+- 截至 2026-11-21，项目页与关联 GitHub 仓库均未释出训练/部署代码与合成数据集。

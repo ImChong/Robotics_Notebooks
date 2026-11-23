@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, single-leg-balance, capture-point, xcom, fastsac, sim2sim, benchmark, unitree-g1, pku, onnx, reward-design]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2608.00500"
 venue: "2026 · arXiv"
 related:
@@ -20,6 +20,7 @@ related:
 sources:
   - ../../sources/papers/fddc_arxiv_2608_00500.md
 summary: "FDDC（arXiv:2608.00500，PKU）：支撑足相对动态 CoM/xCoM 观测首次直接进可部署 actor，配人体姿势控制奖励库 + asymmetric FastSAC；单腿基准 86/90 Perfect（八个通用 SOTA 0/90），G1 真机无蒸馏；宣称全栈开源但截至入库日无 URL。"
+original: ../../sources/papers/fddc_arxiv_2608_00500.md
 ---
 
 # FDDC：首个可部署的动态 CoM 单腿平衡策略与基准

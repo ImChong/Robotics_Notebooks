@@ -4,7 +4,11 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, flow-matching, bimanual, contact-rich, imitation-learning, egocentric-video, dataset, berkeley, nvidia, stanford, nvidia-gear]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-21
+original:
+  - ../../sources/papers/trex_arxiv_2606_17055.md
+  - ../../sources/sites/tactile-reactive-dexterous-github-io.md
+  - ../../sources/repos/t-rex-zhuoyangliu.md
 arxiv: "2606.17055"
 code: https://github.com/ZhuoyangLiu2005/T-Rex
 related:
@@ -158,7 +162,17 @@ sequenceDiagram
 ```
 
 - **双频推理**：视觉慢时钟与触觉快时钟分离，是复现接触反应的关键。
-- **完整预训练**在其他分支；`main` 侧重 post-train + 部署。
+- **完整预训练**在其他分支（`full-pipeline`）；`main` 侧重 post-train + 部署。
+- 图依据：`ZhuoyangLiu2005/T-Rex@ba4047c`，核对 `README.md`、`scripts/train.sh`、`scripts/test.sh`、`scripts/train.py`、`scripts/test.py` 及 `hardware_code/eval/eval_trex_async.py`（未运行真机）。
+
+## 工程实践
+
+| 项 | 复现与部署要点（基于 `ZhuoyangLiu2005/T-Rex` README） |
+|----|--------------------------------------------------------|
+| **开源范围** | 代码 MIT（`main` 分支含 post-train + ZMQ 推理 + 硬件客户端；预训练/mid-training 在 `full-pipeline` 分支）；Hugging Face 公开 `~50 h` 子集与 midtrain checkpoint，完整 `100 h` 原始预训练语料未随该发布包公开 |
+| **环境依赖** | CUDA 12.4、`torch==2.6.0`、`transformers>=4.57`（Qwen3-VL-2B）；若使用 LeRobot v3.0 路径需另装 `lerobot` |
+| **数据与训练** | 原始 `.h5` + 3 路 `.mp4` 经 `utils/gen_json_tac_deltabase_eef_bimanual_parallel.py` 或 `utils/convert_inlab_to_lerobot.sh` 转换；`scripts/train.sh` 从 midtrain checkpoint 续训，embedded VQ-VAE 自动随权重加载 |
+| **真机部署** | `scripts/test.sh` 启动 ZMQ REP 服务端（`slow` / `fast` / `slow_and_fast`），由 `hardware_code/eval/eval_trex_async.py` 驱动 Dexmate Vega-1 + Sharpa Wave；支持 `--disable_tactile 1` 对照消融 |
 
 ## 结论
 

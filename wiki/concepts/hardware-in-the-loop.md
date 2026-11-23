@@ -15,6 +15,7 @@ related:
   - ../methods/hil-hybrid-imitation-learning.md
   - ../entities/paper-hil-harc.md
   - ../queries/robot-policy-debug-playbook.md
+original: ../../sources/papers/martin_emami_2008_rhils_manipulator_hil.md
 sources:
   - ../../sources/sites/nvidia-isaac-sim-hil-tutorial.md
   - ../../sources/sites/opal-rt-hardware-in-the-loop.md
@@ -49,7 +50,7 @@ summary: "Hardware-in-the-Loop（HIL）在实时仿真植物模型与真实被�
 - **机器人多子系统耦合：** 机械臂/人形涉及 **驱动链 + 实时主控 + 通信总线**；Fedák 等六轴臂案例即在 **SINAMICS S120 + CAN + RT-LAB** 上验证驱动级算法（见 [论文归档](../../sources/papers/fedak_2015_industrial_robot_6dof_hil_simulator.md)）。
 - **先进控制落地桥梁：** 柔性连杆等难建模对象可用 HIL 在 **真实执行器 + 仿真植物** 组合下评测 HOSMC 等算法（[Arisoy & Sen 2025](../../sources/papers/arisoy_sen_2025_flexible_link_arm_hil_hosmc.md)）。
 
-## 核心结构
+## 核心原理（核心结构）
 
 ```mermaid
 flowchart LR

@@ -11,6 +11,8 @@
 - **数据集：** <https://huggingface.co/datasets/Arthur12137/SoftVTBench> · <https://www.modelscope.cn/datasets/Arthur12137/SoftVTBench>
 - **License：** Apache-2.0
 - **入库日期：** 2026-07-29
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 克隆 `TuojingAI/SoftVTBench` 并核对 `openpi/scripts/evaluate_softvtbench.sh`、`tools/` 目录
 - **一句话说明：** SoftVTBench 官方实现：Isaac Sim/Lab 视触觉仿真扩展、π₀.₅ 训练转换管线、闭环评测脚本与安全阈值配置；数据与 USD 外置 HF/ModelScope。
 - **沉淀到 wiki：** [SoftVTBench（论文实体）](../../wiki/entities/paper-softvtbench.md)
 

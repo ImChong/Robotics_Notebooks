@@ -3,6 +3,9 @@ type: concept
 tags: [scaling-laws, reinforcement-learning, methodology, ai-history]
 status: complete
 updated: 2026-10-11
+original:
+  - ../../sources/blogs/sutton_bitter_lesson.md
+  - ../../sources/sites/incompleteideas-net-rich-sutton.md
 related:
   - ../entities/richard-sutton.md
   - ../concepts/embodied-scaling-laws.md
@@ -20,6 +23,8 @@ summary: "The Bitter Lesson：AI 进步最终来自能随算力扩展的通用�
 ---
 
 # The Bitter Lesson（惨痛教训）
+
+## 一句话定义
 
 **The Bitter Lesson**：Richard Sutton 2019 年提出的 AI 方法论观察——**通用、可随算力规模扩展的方法（search 与 learning）长期压倒内置人类领域知识的路线**。
 

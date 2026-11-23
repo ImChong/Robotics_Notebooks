@@ -2,7 +2,7 @@
 type: method
 tags: [control, manipulation, contact-rich, tactile-sensing, impedance-control, force-control, dexterity]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-21
 related:
   - ../concepts/impedance-control.md
   - ../concepts/force-control-basics.md
@@ -18,6 +18,8 @@ related:
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
+  - ../../sources/papers/humanoid_touch_dream.md
+original:
   - ../../sources/papers/humanoid_touch_dream.md
 summary: "基于触觉的阻抗控制（Tactile Impedance Control）把指尖触觉读数实时回馈到阻抗参数中：让等效刚度、阻尼乃至期望位置随接触状态在线调整，从而在灵巧抓取与精细装配中实现自适应力度。"
 ---
@@ -40,7 +42,7 @@ summary: "基于触觉的阻抗控制（Tactile Impedance Control）把指尖触
 | RL / IL | Reinforcement / Imitation Learning | 学习式变阻抗的两种训练范式 |
 | CWC | Contact Wrench Cone | 接触力旋量锥，多指协同时的约束空间 |
 
-## 为什么仅靠固定参数阻抗不够
+## 为什么重要：仅靠固定参数阻抗不够
 
 经典 [阻抗控制](../concepts/impedance-control.md) 把末端动力学写成：
 
@@ -57,6 +59,8 @@ $$
 固定参数等价于事先押注一种环境硬度，押错了就不是「过软抓不稳」就是「过硬把物体捏坏」。Tactile Impedance Control 的思路是：**让触觉信号承担在线辨识的角色**，把阻抗参数变成接触状态的函数 $K_d(s_{\text{tac}}), B_d(s_{\text{tac}})$。
 
 ## 主要技术路线
+
+## 核心机制
 
 1. **规则化变阻抗**：用人写的映射 $K_d = f(s_{\text{tac}})$，可解释、参数少。
 2. **学习式变阻抗**：策略网络输出 $\Delta K, \Delta B, \Delta x_d$，与 RL/IL 联合训练。
@@ -117,7 +121,7 @@ $$
 | [Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md) | 接触瞬间视觉与触觉**信息**如何融合 | 本页处理的是融合后的触觉信号如何**驱动控制器** |
 | [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md) | 触觉作为 RL 的状态 / 奖励 | 本页是 RL 输出动作的一种具体形式：变阻抗参数 |
 
-## 实现要点
+## 工程实践与实现要点
 
 ### 1. 时间尺度匹配
 
@@ -158,7 +162,7 @@ $$
 - **数据里必须含「失败的滑移片段」**：只示范成功抓取的数据集会让模型不知道滑移是什么，部署时一旦打滑就完全不会收紧。
 - **报警优先于优化**：当 $f_n$ 异常飙高（接近硬件极限）时，立即切到「最低刚度 + 释放」的安全策略，而不是继续按学习的策略行动。
 
-## 常见误区
+## 常见误区或局限
 
 - **误区 1：把 $K_d$ 当作越大越快越好的「响应速度」参数。**
   对硬质环境，刚度上限由稳定性约束（环境刚度 × 控制延迟）决定，越大越易振荡。
@@ -194,3 +198,8 @@ $$
 - Khansari-Zadeh, S. M., Kronander, K., Billard, A. (2014). *Learning to Play Minigolf: A Dynamical System-based Approach* — 变阻抗与触觉反馈结合的早期实证.
 - Calandra, R., et al. (2018). *More than a feeling: Learning to grasp and regrasp using vision and touch*.
 - Lambeta, M., et al. (2020). *DIGIT: A Novel Design for a Low-Cost Compact High-Resolution Tactile Sensor*.
+
+## 推荐继续阅读
+
+- [Impedance Control（阻抗控制）](../concepts/impedance-control.md)
+- [Humanoid Touch Dream（实体页）](../entities/paper-humanoid-touch-dream.md)

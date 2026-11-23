@@ -13,7 +13,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 arxiv: "2604.27792"
 related:
   - ./motubrain-2-live.md

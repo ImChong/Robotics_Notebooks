@@ -3,6 +3,8 @@ type: entity
 tags: [nvidia, isaac-lab, sim2real, manipulation, assembly, ur10e, universal-robots, industreal, isaac-ros, impedance-control, reinforcement-learning]
 status: complete
 updated: 2026-08-30
+original:
+  - ../../sources/blogs/nvidia_isaac_lab_ur10e_industrial_assembly_sim2real.md
 related:
   - ./isaac-lab.md
   - ./isaac-lab-default-environments.md

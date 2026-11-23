@@ -3,7 +3,7 @@ type: entity
 project_id: prenav-2611-15093
 tags: [paper, navigation, diffusion, object-search]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.15093"
 original:
   - ../../sources/papers/prenav-2611-15093.md
@@ -82,6 +82,11 @@ flowchart LR
 1. 先复核指标口径与论文约束，再比较其他策略或系统。
 2. 将作者验证的模块和尚未发布/未复现的模块分开记录。
 3. 把误差、失败模式与传感器/真实场景分布偏移作为后续验收依据。
+
+## 与其他工作对比
+
+- **对比 `SGM` 语义地图补全导航基线（Gibson 6 类 600 episodes & 10 类 1,000 episodes，Tables I–II）：** 在 6 类子集上，无先验 `SGM` 仅达 55.0% SR / 29.6% SPL；即使向 `SGM` 同步输入墙体与同范围 5 类家具的像素级真值语义图先验，其表现升至 62.0% SR / 36.2% SPL，而仅需每件家具 2D 包围盒的 **PreNav** 在相同家具先验下取得 **64.3% SR / 39.2% SPL**（+2.3% SR / +3.0% SPL）；若再补齐场景中未标注的其余家具 2D 框（`SGM` 类别体系不支持），PreNav 进一步跃升至 **70.3% SR / 39.8% SPL**。在 10 类全集上，同先验下 PreNav 仍以 +1.4% SR 领先 `SGM`（SPL 持平）。
+- **对比感知前端与标注口径（Table III）：** 对照 `Mask R-CNN`、`SAM 3` 与 `3DSG oracle`，表明 `book/bottle/clock/cup` 四类扩展目标的瓶颈主要在感知与地图标注分歧（例如不同标注源缺失类别），而非全局搜索路线生成本身。
 
 ## 局限与风险
 

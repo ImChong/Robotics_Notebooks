@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3dgs, 3d-reconstruction, surface-reconstruction, depth, real2sim, sustech, xjtu, cityu-hk]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 project_id: depthgs-2611-13628
 arxiv: "2611.13628"
 venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence (2026, online ahead of print)"
@@ -129,6 +129,12 @@ flowchart TD
 3. 多视角应单独比较 `D_u` 和 `D_𝒟` 的变换、重投影与采样误差，并统计有效像素。
 4. 比较几何重建时以 DTU CD、Tanks and Temples F1 为主，不把 LPIPS 单独用作表面质量结论。
 5. 只有论文与单卡实验、暂缺官方代码；实际工程复现还需要自行实现和复核训练、TSDF 提取及坐标约定。
+
+## 与其他工作对比
+
+- **对比隐式神经表面重建（NeRF / VolSDF / NeuS / Neuralangelo / MonoSDF）：** 在 DTU（Table I）上，NeRF（1.49 mm）、VolSDF（0.86 mm）与 NeuS（0.84 mm）均需超过 12 小时优化，而 DepthGS 以 **17.6 min** 达到 **0.51 mm** 平均 CD；在 Tanks and Temples（Table II）上，DepthGS 取得 **0.503** 平均 F1，明显高于 NeuS（0.378）与 MonoSDF（0.392），略低于耗时更长的 Neuralangelo（0.505）。
+- **对比显式高斯表面重建（2DGS / GOF / PGSR / GSPrior）：** DepthGS 直接构建于 **PGSR** 之上，通过单视角深度差自适应法线正则与跨视角双深度一致性，将 DTU CD 从 PGSR 的 0.53 mm 降至 **0.51 mm**（2DGS 为 0.79 mm），TnT F1 从 0.495 提至 **0.503**（3DGS 0.090、2DGS 0.263、GOF 0.458），Mip-NeRF360 总体 PSNR / LPIPS 从 PGSR 的 27.45 dB / 0.181 改善至 **27.72 dB / 0.175**（整体 LPIPS 在表中最优），代价是 DTU 峰值显存从 7.12 GB 增至 7.50 GB。但相比同期方法 **GSPrior**，DepthGS 在 DTU CD（0.51 vs 0.50 mm）与 TnT F1（0.503 vs 0.507）均居次席，且 bicycle 场景 test PSNR 相对 PGSR 低 0.05 dB。
+- **与机器人 Real2Sim 可碰撞重建路线的定位区分：** 相比 [CRISP](../methods/crisp-real2sim.md) 等以接触原语和可碰撞物理资产为导向的方法，DepthGS 专注于静态多视角表面几何与新视角渲染质量，不处理材质、质量分布或物理接触参数。
 
 ## 源码运行时序图
 

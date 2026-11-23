@@ -11,9 +11,13 @@ tags:
   - stanford
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-17
+updated: 2026-11-22
 arxiv: "2403.07788"
 code: https://github.com/j96w/DexCap
+original:
+  - ../../sources/papers/humanoid_pnb_dexcap-scalable-and-portable-mocap-data-collecti.md
+  - ../../sources/sites/dexcap.md
+  - ../../sources/repos/dexcap.md
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
   - ../methods/diffusion-policy.md
@@ -54,7 +58,7 @@ summary: "DexCap（RSS 2024）：可穿戴 SLAM+EMF 手套 mocap 与胸挂 RGB-D
 - **把 mocap 从实验室搬到野外：** 可穿戴背包方案（约 40 分钟续航）摆脱固定动捕室，支持 in-the-wild 物体交互采集。
 - **相对 VR 视觉 teleop 更抗遮挡：** 项目页对比显示握杯柄等遮挡场景下 Quest 类视觉追踪失败，而 SLAM+EMF 组合仍稳定。
 - **采集吞吐显著高于 teleoperation：** 宣称约为 teleop 的 **3×**，接近自然人类动作节奏——对规模化 dexterous IL 数据很关键。
-- **观测视角人机一致：** 相机架快拆（<20 s）可在人与机器人间切换，减少 sim2real / human2robot 视觉域差。
+- **观测视角人机一致：** 相机架快拆（<5 s 切换相机架，整体穿戴标定 <10 s）可在人与机器人间切换，减少 sim2real / human2robot 视觉域差。
 - **学术线 → 产业线：** 同团队后续 [OM-1 / Reward AI](./reward-ai-om1.md) 把可穿戴 mocap 推到商业 Omnibody 栈（闭源，非本仓库等价物）。
 
 ## 核心信息
@@ -122,7 +126,9 @@ sequenceDiagram
   Deploy->>Deploy: 点云观测 → 46D 动作 chunk
 ```
 
-复现路径：NUC 端 `conda env create -f install/env_nuc_windows.yml` 后跑 `STEP1_collect_data`；Ubuntu 工作站 `pip install -r install/env_ws_requirements.txt` 并 editable 安装 `STEP3_train_policy`，再 `demo_create_hdf5.py` 与 `scripts/train.py --config training_config/*.json`。也可直接下载 [HF 数据集](https://huggingface.co/datasets/chenwangj/DexCap-Data) 跳过采集。
+复现路径：NUC 端 `conda env create -f install/env_nuc_windows.yml` 后跑 `STEP1_collect_data`；Ubuntu 工作站 `pip install -r install/env_ws_requirements.txt` 并 editable 安装 `STEP3_train_policy`，再 `STEP2_build_dataset/demo_create_hdf5.py` 与 `scripts/train.py --config training_config/*.json`。也可直接下载 [HF 数据集](https://huggingface.co/datasets/chenwangj/DexCap-Data) 跳过采集。
+
+图依据：`j96w/DexCap@4b0bed0`，读过 `README.md` 并核对 `STEP1_collect_data/`、`STEP2_build_dataset/` 与 `STEP3_train_policy/` 目录文件；未运行硬件或 GPU 训练。
 
 ## 实验与评测
 
@@ -133,6 +139,12 @@ sequenceDiagram
 | 长程任务 | 泡茶、剪刀等需 **1 h mocap + 30 次 HITL 修正** fine-tune |
 | 对比基线 | 项目页强调相对 VR 视觉 hand tracking 的遮挡鲁棒性；吞吐约为 teleop **3×** |
 | 局限 | 需定制可穿戴硬件（SLAM 相机、EMF 手套、胸挂 RGB-D）；LEAP Hand + 特定双臂栈，跨本体需重新 IK 与点云处理 |
+
+## 与其他工作对比
+
+- **vs 桌面 VR 视觉遥操作 / 纯视觉手部追踪（如 Quest 类视觉追踪）：** 项目页对比显示，在握杯柄等手指或物体互遮挡场景下纯视觉手部追踪易失效，而 DexCap 的 **SLAM 腕追踪 + Rokoko EMF 手套** 对遮挡更鲁棒；且野外脱离机器人直接采集吞吐约为 teleoperation 的 **3×**（30 分钟 mocap 即可无 teleop 训练自主策略），代价是需自备并标定穿戴式传感器背包，硬件门槛高于纯软件 VR teleop。
+- **vs [DexUMI](./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)（同域灵巧数据采集对照）：** 二者均致力于缩小人类示范与多指机器人手之间的形态和视角域差（详见 [灵巧数据采集指南](../queries/dexterous-data-collection-guide.md) 与 [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)）；DexCap 通过胸挂快拆 RGB-D 点云（配 FK 叠加 LEAP Hand 点云 mesh）+ 指尖 IK 实现重定向，并支持脚踏式 residual / teleop IK 人机闭环修正。
+- **vs 商业闭源后继 [OM-1 / Reward AI](./reward-ai-om1.md)：** 同团队后续将可穿戴 mocap 路线演进为商业 Omnibody 栈，但 OM-1 为商业闭源系统，其软件与数据能力边界不等价于 MIT 开源的 DexCap 四阶段管线。
 
 ## 工程实践
 
@@ -164,7 +176,7 @@ sequenceDiagram
 - 产业演进读 [OM-1](./reward-ai-om1.md)，但 **勿把闭源 OM-1 当 DexCap 代码的超集**。
 - 策略头为点云 [Diffusion Policy](../methods/diffusion-policy.md)；换 VLA 需自行改观测与 action 空间。
 
-## 与其他页面的关系
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 数据采集综述：[dexterous-data-collection-guide.md](../queries/dexterous-data-collection-guide.md)

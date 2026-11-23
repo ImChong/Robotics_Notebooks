@@ -9,21 +9,23 @@
 - **博客：** <https://prm-as-a-judge.github.io/blog.html>
 - **榜单：** <https://prm-as-a-judge.github.io/leaderboard.html>
 - **论文：** <https://arxiv.org/abs/2608.14284>（1.5）；1.0 见 <https://arxiv.org/abs/2603.21669>
-- **代码：** <https://github.com/Yuheng2000/PRM-as-a-Judge>
+- **代码：** <https://github.com/YuyangLiu2003/PRM-as-a-Judge>（原 `Yuheng2000` 链接截至 2026-11-21 返回 404）
 - **机构：** 北京智源人工智能研究院（BAAI）；中国科学院自动化研究所（CASIA）
 - **入库日期：** 2026-08-17
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核查项目页实时外链：`YuyangLiu2003/PRM-as-a-Judge` 与 HF `lyy0715/RoboPulsePlusPlus` 已上线
 - **一句话说明：** 官方站：把轨迹视频变成稠密进度信号；提供文档、博客、RoboChallenge Table30 过程榜与社区入口。
 
-## 开源状态（项目页核查，2026-08-17）
+## 开源状态（项目页核查，2026-11-21 复核）
 
 | 项 | 状态 |
 |----|------|
 | Paper | arXiv **2608.14284**（1.5）；站内亦链 1.0 |
-| Code | **已开源** [Yuheng2000/PRM-as-a-Judge](https://github.com/Yuheng2000/PRM-as-a-Judge) |
+| Code | **已开源** [YuyangLiu2003/PRM-as-a-Judge](https://github.com/YuyangLiu2003/PRM-as-a-Judge) |
 | 默认 PRM 权重 | [Robo-Dopamine 8B Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview) |
 | RoboPulse | [HF 数据集已上线](https://huggingface.co/datasets/yuheng2000/RoboPulse) |
-| RoboPulse++ | 项目页 / README 仍标 **Coming Soon** |
-| 结论 | **评测套件已开源**；区间级评测集发布未齐 |
+| RoboPulse++ | **已开源** [HF `lyy0715/RoboPulsePlusPlus`](https://huggingface.co/datasets/lyy0715/RoboPulsePlusPlus)（2026-08-31 发布） |
+| 结论 | **评测套件 + RoboPulse / RoboPulse++ 基准均已开源** |
 
 ## 页面结构（策展）
 

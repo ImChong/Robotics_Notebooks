@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, behavior-world-model, terrain-interaction, motion-tracking, reinforcement-learning, unitree-g1, tsinghua, gigaai, bjtu, usst, casia, ucas, isaac-lab]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.18234"
 venue: "2026 · arXiv"
+code: https://github.com/open-gigaai/giga-brain-wbc
 related:
   - ./nvidia-sonic.md
   - ./paper-twist2.md
@@ -19,9 +20,13 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
 sources:
   - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
+  - ../../sources/repos/giga-brain-wbc.md
   - ../../sources/sites/gigabrain-wbc-0-5-github-io.md
   - ../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md
-summary: "GigaBrain-WBC-0.5（arXiv:2608.18234v2，清华/GigaAI 等）：首个 humanoid Behavior World Model；因果 Transformer 联合预测 action/state/next-command GMM；自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；截至 2026-09-07 代码仍 coming soon。"
+original:
+  - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
+  - ../../sources/repos/giga-brain-wbc.md
+summary: "GigaBrain-WBC-0.5（arXiv:2608.18234v5，清华/GigaAI 等）：首个 humanoid Behavior World Model；因果 Transformer 联合预测 action/state/next-command GMM；自动 3D terrain 标注 + 在线 Mahalanobis retract；Terrain SR 81.3%、Fall recovery 99.3%；官方代码 open-gigaai/giga-brain-wbc 已开源。"
 ---
 
 # GigaBrain-WBC-0.5：环境交互行为世界模型
@@ -58,7 +63,7 @@ summary: "GigaBrain-WBC-0.5（arXiv:2608.18234v2，清华/GigaAI 等）：首个
 | **平台** | Unitree G1（29 DoF，50 Hz）；跨具身 Maker L01（G1 checkpoint fine-tune） |
 | **数据** | Bones-Seed / MotionMillion / MotionDecode 中识别 terrain-interaction 子集（合计 ~72.6 h）混合 flat-ground |
 | **栈** | Isaac Lab + PPO；4096 envs（flat）→ 512 envs（terrain + fallen）；MuJoCo sim-to-sim 评测 |
-| **开源** | **待发布**（截至 **2026-09-07** [项目页 Code → coming soon](https://shepherd1226.github.io/gigabrain-wbc-0.5/)，无 GitHub/HF；Full demo 仍标注 forthcoming） |
+| **代码与资产** | **已开源（Apache-2.0）**：[open-gigaai/giga-brain-wbc](https://github.com/open-gigaai/giga-brain-wbc)（530 文件，含 Unitree G1 29-DoF / Maker L01 训练、ONNX 导出、MuJoCo 评测与 PICO 部署）+ HF [`open-gigaai/GigaBrain-WBC-0.5-TerrainData`](https://huggingface.co/datasets/open-gigaai/GigaBrain-WBC-0.5-TerrainData) |
 
 ## 核心原理
 
@@ -100,7 +105,31 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至复核日（**2026-09-07**）[项目页](https://shepherd1226.github.io/gigabrain-wbc-0.5/) 仍标注 **Code coming soon**，无可克隆官方仓库。若后续开源，预期路径为：terrain 标注 → Isaac Lab 训练 BWM → MuJoCo 四 regime 评测 → G1 真机部署 + \(R_{safe}\) 在线 filter。
+节点对齐 [`open-gigaai/giga-brain-wbc`](https://github.com/open-gigaai/giga-brain-wbc)（[sources/repos/giga-brain-wbc.md](../../sources/repos/giga-brain-wbc.md)）实测入口：`docs/training.md` 描述两阶段发布配方（阶段 1 `exp=recovery` → 阶段 2 `exp=terrain_recovery`），`giga_brain_wbc/train.py` 经 `ManagerEnvWrapper`、`Actor`/`Critic` 与 `TRLAuxLossPPOTrainer` 驱动分布式训练，导出拆分为 `_encoder.onnx` + `_decoder.onnx`（cached Transformer）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 维护者
+    participant DATA as download_release.py /<br/>check_data.py
+    participant TR as giga_brain_wbc/train.py
+    participant ENV as ManagerEnvWrapper<br/>(Isaac Lab)
+    participant POL as Actor (UniversalToken +<br/>Causal Transformer)
+    participant PPO as TRLAuxLossPPOTrainer
+    participant EXP as giga_brain_wbc/export.py
+    participant EVAL as evaluation/run.py<br/>(SynchronousMujocoSim)
+    U->>DATA: 拉取 bundles/data.tar 与转换 Bones-SEED CSV
+    U->>TR: exp=recovery → exp=terrain_recovery
+    TR->>ENV: create_manager_env + materialize_lazy_params
+    loop PPO + World Model Aux Loss
+        ENV-->>POL: policy / critic obs + token_state
+        POL-->>ENV: action + aux_losses (next-state / latent)
+        PPO->>POL: clip PPO + aux_loss_scale * aux_losses
+    end
+    U->>EXP: 导出 model_step_*_encoder.onnx + _decoder.onnx
+    EXP-->>EVAL: 加载 ONNX 双件套
+    EVAL->>EVAL: 跑 standard / terrain / fall 基准指标
+```
 
 ## 工程实践
 
@@ -111,7 +140,7 @@ flowchart TB
 | 数据 | terrain 子集来自现有 corpus 识别 + 3D 标注，不必另采 7.5 h 专用 interaction mocap（对照 SceneBot） |
 | 命令通道 | 仅需 online reference window（VR / planner / replay），**不要** per-link contact label |
 | 跨具身 | G1→L01 用同一 recipe fine-tune；from-scratch L01 收敛慢 — BWM 结构可迁移 |
-| 复现等待 | 代码未发布前以 sim-to-sim Table 3 + 项目页真机并排视频为证据 |
+| 复现现状 | **已开源**：遵循 `docs/training.md` 下载 `bundles/data.tar`，两阶段 `exp=recovery` → `exp=terrain_recovery` 复现（推荐 24× RTX 5090）；快速验证可直接跑 `evaluation/run.py` |
 
 ## 实验与评测
 
@@ -142,7 +171,7 @@ flowchart TB
 4. **OOD + Fall** — **83.1%** OOD SR + **99.3%** fall recovery，且同一策略、无 specialist handoff。
 5. **Flat tracking 不牺牲** — Standard SR **96.3%**、MPKPE **76.6** mm 仍优于 SONIC（82.3 mm）。
 6. **部署** — Mahalanobis retract 闭式、可调 \(R_{safe}\)；真机 footage 项目页标注 forthcoming。
-7. **开源** — 截至 **2026-09-07** 仍 **coming soon**；复现前勿假设已有 checkpoint。
+7. **已开源（2026-11-21 复核）** — `open-gigaai/giga-brain-wbc` 与 `open-gigaai/GigaBrain-WBC-0.5-TerrainData` 均已发布，提供 Isaac Lab 两阶段配方、ONNX 导出及 MuJoCo 基准套件。
 
 ## 与其他工作对比
 
@@ -152,14 +181,14 @@ flowchart TB
 | 命令接口 | Reference window | Reference / token | + per-link contact | Task context | Latent / multi-mode |
 | OOD 机制 | Self-predicted GMM retract | Enlarge corpus | — | Context reweight | Latent recovery |
 | Fall | In-tracker recovery | ✗ | ✗ | ✗ | ✓ latent |
-| 代码（本库核查） | **coming soon** | 已开源 | 待核实 | 无 URL | 已开源 |
+| 代码（本库核查） | **已开源**（2026-11-21 复核） | 已开源 | 待核实 | 无 URL | 已开源 |
 
 ## 局限与风险
 
-- **Sim-to-sim 为主：** 核心 Table 3 在 MuJoCo；真机定量与 latency 消融标注 future work。
-- **Terrain 数据审计：** §4.3 强调 annotation 质量 audit；错误几何会污染 interaction 行为。
+- **Sim-to-sim 为主：** 核心 Table 3 在 MuJoCo；真机对比（Figure 1 / §4.2）以视觉定性为主，系统端到端 latency 消融仍标为 future work。
+- **Terrain 数据审计：** §4.3 与 Table 5 显示人工标注质量审计通过率约 92%，其余样本存在过密或缺失接触点，需依赖数据管线持续过滤。
 - **Filter 精度代价：** \(R_{safe}\) 增大提升 robustness 但可能牺牲 tracking fidelity（论文 §4.4 讨论 frontier）。
-- **未开源：** terrain 标注管线、训练配置与 checkpoint 均待发布；选型应跟踪项目页 Code 状态。
+- **算力与数据门槛高：** `docs/training.md` 两阶段训练推荐 **24× RTX 5090**，且平地动作库须用户自行下载 Bones-SEED CSV 后转换。
 - **与 VLA 上层接口：** 本文聚焦 low-level WBC；上层 VLA/teleop 如何生成 compatible reference 仍依赖现有栈。
 
 ## 关联页面
@@ -174,6 +203,7 @@ flowchart TB
 ## 参考来源
 
 - [GigaBrain-WBC-0.5 论文归档](../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md)
+- [GigaBrain-WBC-0.5 官方代码归档](../../sources/repos/giga-brain-wbc.md)
 - [gigabrain-wbc-0.5 项目页](../../sources/sites/gigabrain-wbc-0-5-github-io.md)
 - [具身智能小站 8 篇综述](../../sources/blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)
 

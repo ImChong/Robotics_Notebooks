@@ -2,10 +2,13 @@
 type: entity
 tags: ["paper", "quadruped", "locomotion", "perception", "privileged-learning", "eth", "hmi-papers"]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-22
 arxiv: "2201.08117"
-venue: "HMI curated · 2022"
-summary: "Robust Perceptive Locomotion（HMI P012）：用循环 Belief Encoder 融合带噪高程图与本体历史，使四足在外感知失效时仍能退回身体反馈、在野外稳健行走。"
+venue: "Science Robotics 2022"
+doi: "https://doi.org/10.1126/scirobotics.abk2822"
+original:
+  - ../../sources/papers/hmi_p012_robust-perceptive-locomotion-wild.md
+summary: "Robust Perceptive Locomotion（Science Robotics 2022 / arXiv:2201.08117，ETH RSL）：通过带注意力门控的循环 Belief Encoder 融合带噪 2.5D 高程图与本体历史（BC + 特权重建损失），在外感知漂移/失效时无缝退回盲走；完成瑞士 Etzel 山 2.2 km 徒步及 DARPA SubT 地下赛任务。"
 related:
   - ../concepts/privileged-training.md
   - ../concepts/terrain-latent-representation.md
@@ -58,26 +61,36 @@ sources:
 
 常见感知运动管线把点云融合成2.5D高程图，再把地图高度送给控制器。问题是雪、植被、反光、遮挡、位姿漂移和视野外区域都会让地图出现假台阶或空洞。本文没有假设地图总是正确，而是让一个循环Belief Encoder把带噪地形观测与本体感觉历史融合成信念状态，控制器可以在外感知可靠时提前调整，在外感知异常时退回身体反馈。
 
-### 流程直觉
+### 流程总览（依据 arXiv:2201.08117 Fig. 5 & §4）
 
 ```mermaid
-flowchart LR
-  A["问题 / 数据 / 观测"] --> B["Robust Perceptive Locomotion"]
-  B --> C["控制 / 策略 / 数据产物"]
-  C --> D["评测或真机闭环"]
+flowchart TB
+  subgraph t [Stage 1 · 特权教师 PPO（RaiSim）]
+    p1["本体感知 + 无噪高度采样<br/>+ 特权状态（接触/力/摩擦/扰动）"] --> e1["外感知 encoder g_e & 特权 encoder g_p"]
+    e1 --> mlp1["Teacher MLP -> 相位差 Δφ_l + 关节残差 Δq_i"]
+  end
+  subgraph s [Stage 2 · Belief Encoder 学生蒸馏]
+    n["三工况噪声高度采样<br/>(60% 正常 / 30% 大偏移 / 10% 大噪声)"] --> enc["循环 GRU Belief Encoder<br/>注意力门控 α=σ(g_a(b'_t))"]
+    prop["本体感知序列 o^p_t"] --> enc
+    enc --> b["信念状态 b_t = g_b(b'_t) + l^e_t ⊙ α"]
+    b --> dec["Belief Decoder -> 重建无噪高度与特权状态"]
+    b --> mlp2["Student MLP（教师权重初始化）-> 动作模仿 BC"]
+  end
+  subgraph d [Stage 3 · ANYmal-C 真机零样本部署]
+    pc["双球面 LiDAR 或四目 D435 -> GPU 2.5D 高程图 (20 Hz)"] --> pol["Student 策略 50 Hz -> 关节目标"]
+  end
+  t --> s --> d
 ```
-
-模块边界与符号定义以原文为准；上图只固定阅读骨架。
 
 ## 工程实践
 
-行为克隆损失回答“下一步动作是否像教师”，重建损失回答“中间表示是否保留了与控制有关的环境信息”。编码器中的门控决定多少外感知进入belief，因此策略不必在每一帧都同等相信地图。
+行为克隆损失回答“下一步动作是否像教师”，重建损失回答“信念状态是否保留了与控制有关的环境与地形信息”。GRU 门控 $\alpha = \sigma(g_a(b'_t))$ 动态决定各维度外感知特征进入 `b_t` 的权重，因此在雪地反光、植被遮挡或里程计漂移时策略不必同等相信高程图；真机实验在瑞士 Etzel 山 2.2 km（爬升 120 m、最大坡度 38%）78 分钟完赛（与徒步指南 76 分钟相当），最大平地速度达 `1.2 m/s`（盲走基线 `0.6 m/s`），最高可过 `30.5 cm` 台阶。
 
 | 检查项 | 建议 |
 |--------|------|
-| 一手来源 | 回 arXiv / DOI / 项目页核对数值与声明 |
-| 开源边界 | 论文未作为本库主复现入口挂代码；概念影响后续感知 loco 管线 |
-| 本库定位 | 详情编译页；深入公式与实验表读原文 |
+| 一手来源 | 已通读 `arXiv:2201.08117v1` 全文（*Science Robotics* `eabk2822`） |
+| 开源边界 | 论文未发布 RL 训练与策略代码；作者另开源 GPU 高程建图组件 `leggedrobotics/elevation_mapping_cupy` |
+| 本库定位 | 独立论文实体页；公式与 60%/30%/10% 噪声课程参数见 `sources/` 归档与原文 §4 |
 
 ## 源码运行时序图
 

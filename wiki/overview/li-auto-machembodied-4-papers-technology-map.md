@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, world-model, li-auto, technology-map]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-22
 related:
   - ../entities/paper-me-brain-1-0.md
   - ../entities/paper-me-vlm.md

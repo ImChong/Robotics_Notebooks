@@ -11,6 +11,10 @@
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26
 - **一句话说明：** SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。
+- **arXiv：** https://arxiv.org/abs/2511.18509 （arXiv:2511.18509v1，SDU / BIGAI / THU）
+- **项目页：** https://safefall.github.io
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2511.18509v1 全文 PDF（1126 行），核对轻量 GRU fall predictor（FAR 0.06%）、RL 保护策略、Unitree G1 实机对比（峰值接触力降 68.3%、关节力矩降 78.4%、关节反作用力降 66.8%、易损件碰撞消除 99.3%）与结论局限
 
 ## 核心摘录（策展，非全文）
 

@@ -9,6 +9,9 @@ tags:
   - deep-learning
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/genception_arxiv_2607_09024.md
+  - ../../sources/papers/vision_banana_arxiv_2604_20329.md
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -93,8 +96,12 @@ Vision Banana 的关键设计是把任务输出 **参数化为 RGB 图像**：
 - **局限：** 深度/法线经 **RGB 编码** 有量化误差；开放词汇分割依赖 **颜色聚类**，对细粒度或同色实例敏感。
 - **局限：** 复杂 **推理分割 / presence 判断** 仍外包 **MLLM**（Gemini），非纯视觉端到端。
 
-## 与其他页面的关系
+## 工程实践
 
+- **生成表征外化选型：** 对单帧高分辨率深度/法线/分割读取，优先验证轻量指令微调或单步 feed-forward 探测头，避免在实时机器人闭环中运行多步迭代扩散采样。
+- **物理一致性校验：** 生成式骨干可能保留外观语义而漂移空间几何，接入操作策略前需校准度量深度尺度或关键点误差。
+
+## 关联页面
 - [Vision Banana](../entities/vision-banana.md) — 图像域实证：NBP 基座 + instruction-tuning
 - [GenCeption](../entities/genception.md) — 视频域实证：WAN 2.1 + feed-forward 统一感知
 - [SenseNova-U1.5](../entities/sensenova-u1-5.md) — 原生统一（encoder-free）实证：同序列出文本与像素

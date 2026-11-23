@@ -2,8 +2,10 @@
 type: entity
 tags: [paper, humanoid, hardware, open-source, berkeley, reinforcement-learning, qdd, humanoid-paper-notebooks, cycloidal, actuator]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2504.17249"
+original:
+  - ../../sources/papers/humanoid_pnb_berkeley-humanoid-lite-an-open-source-accessible.md
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -48,14 +50,29 @@ summary: "Berkeley Humanoid Lite（BHL）：UC Berkeley 低成本准直驱开源
 - **最接近「人形关节需求」的开源整机**：含整机 CAD、3D 打印摆线、电机与关节参数、控制器配置、BOM、底层控制、**Isaac Lab** 训练与实机部署。
 - 在 [开源 QDD 学习路线](../comparisons/open-source-qdd-actuator-projects.md) 中排在 ODRI 之后：学完力控关节后，看执行器如何进人形。
 
-## 关节与电机要点（策展）
+## 关节与电机要点（原文核对）
 
 | 项 | 内容 |
 |----|------|
-| 减速 | 约 **15:1** 3D 打印摆线 + 外转子电机 |
-| 电机 | 约 **14 对极**；力矩常数约 **0.1176 N·m/A** |
-| 控制 | 公开电流环、位置环、速度环等参数 |
-| 值得对照 | 髋/膝布置；电机参数→关节参数映射；电流/力矩限制 |
+| 整机规格 | 高 **0.8 m**、重 **16 kg**，22 DoF（**10× 6512** + **12× 5010** 摆线执行器），6S 4000 mAh LiPo（~30 min） |
+| 6512 执行器 | MAD M6C12 150KV 外转子（14 对极，$K_T\approx0.1176\,\text{N}\cdot\text{m/A}$）+ B-G431B-ESC1 + AS5600 + 6811ZZ，PLA 摆线减速箱；BOM 美区 **$188** / 中国 **$157** |
+| 5010 执行器 | 5010 无刷外转子 + B-G431B-ESC1 + AS5600 + 3D 打印摆线；BOM 美区 **$136** / 中国 **$94** |
+| 整机 BOM | 美区 **$4,312** / 中国 **$3,236**（所有打印件适配 200×200×200 mm 桌面 FDM 打印机） |
+| 通信与计算 | Intel N95 mini PC + 4 路 1 Mbps USB-CAN 2.0 + BNO085 IMU，底层读写与状态更新 **250 Hz**，PPO 行走策略推理 **25 Hz**（仅消耗极限力矩 30%） |
+| 台架实测（§IV） | 摆线机械效率 **~90%**；PLA 传输刚度 **319.49 N·m/rad**；新打印 6 只 6512 最大背隙 **0.0229 rad**（$\sigma=0.0042\,\text{rad}$）；力矩误差 **±0.5 N·m**；5-DoF 臂末端重复定位标准差 **3.433 mm**；60 h @ 0.5 Hz 耐久无故障 |
+
+## 核心机制与硬件系统总览
+
+```mermaid
+flowchart LR
+  Motor["M6C12 / 5010 外转子电机<br/>+ B-G431B-ESC1 + AS5600"] --> Cyc["FDM-PLA 3D 打印摆线减速<br/>黄铜六角嵌件+贯通螺钉防分层"]
+  Cyc --> CAN["4 路 1 Mbps USB-CAN<br/>250 Hz 底层读写 + BNO085 IMU"]
+  CAN --> N95["Intel N95 Mini PC<br/>25 Hz PPO 行走策略 / Pinocchio+Pink IK"]
+  VR["SteamVR / OptiTrack 遥操作"] --> N95
+```
+
+- **用摆线替代行星以容忍桌面 FDM 精度**：相比行星细齿对层间结合与印制公差的严苛要求，摆线多齿同时啮合分散载荷，并借助贯通螺钉与嵌入黄铜六角柱抑制 PLA 层间剥离（§III-C2）。
+- **整机架构去耦合与重构**：每关节自包含电源与 CAN（单总线理论挂载上限 64 节点），可把下肢更换碳纤维管扩展为成人尺度或重组成四足/桌面基座（§III-D）。
 
 ## 论文与深读状态
 
@@ -63,7 +80,16 @@ summary: "Berkeley Humanoid Lite（BHL）：UC Berkeley 低成本准直驱开源
 |------|------|
 | 论文 | *Berkeley Humanoid Lite: An Open-source, Accessible, and Customizable 3D-printed Humanoid Robot*，<https://arxiv.org/abs/2504.17249> |
 | Paper Notebooks 分类 | 12_Hardware_Design（[分类父节点](../overview/paper-notebook-category-12-hardware-design.md)） |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）；笔记完成后在本页链向笔记站并深化归纳 |
+| 深读状态 | 已在本库完成 `arXiv:2504.17249v1` 全文核对与核心源码入口校验 |
+
+## 工程实践
+
+| 环节 | 实证取舍与操作规范 |
+|---|---|
+| 打印与结构强化 | 全部结构件均用 PLA 适配 200 mm³ 构建盒；高载输入轴需嵌入黄铜六角柱并用贯通螺钉压紧层间 |
+| 刚度与背隙预期 | PLA 摆线刚度（**319.49 N·m/rad**）明显低于 PA-CF（文献 1468 N·m/rad），高频高载荷下需控制力矩带宽与控制增益避免振荡 |
+| 控制器选型 | B-G431B-ESC1 + M6C12/5010 为低成本量产妥协方案，高动态需求可平替 moteus / ODrive / VESC |
+| 热边界与降额 | 原论文明确指出尚未系统评测塑料结构长时热软化（§VI），连续高负载测试须监测壳体与绕组温升 |
 
 ## 开源入口
 

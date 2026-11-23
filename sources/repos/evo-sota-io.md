@@ -9,6 +9,8 @@
 - **线上站：** <https://sota.evomind-tech.com/>
 - **许可：** MIT
 - **入库日期：** 2026-07-23
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 `MINT-SJTU/Evo-SOTA.io@1ebb7d6` `README.md`、`app/` 路由表与目录结构
 - **一句话说明：** VLA / 灵巧手多基准排行榜的 **Next.js 静态站源码**；论文摘录分数存于 `public/data/*.json`，支持开源过滤、RL/SFT 分类与中英双语。
 - **沉淀到 wiki：** [VLA SOTA Leaderboard](../../wiki/entities/vla-sota-leaderboard.md)
 

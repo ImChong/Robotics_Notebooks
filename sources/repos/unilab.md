@@ -7,7 +7,9 @@
 - **代码：** <https://github.com/unilabsim/UniLab>
 - **论文：** <https://arxiv.org/abs/2605.30313>
 - **项目页：** <https://unilabsim.github.io>
-- **入库日期：** 2026-05-31（初入库）；**复核：** 2026-09-18
+- **入库日期：** 2026-05-31（初入库）；**复核：** 2026-11-21（`@97b75f4`）
+- **核对范围：** 已通读 `unilabsim/UniLab@97b75f4` `README.md`、`pyproject.toml`、`src/unilab/cli.py`、`src/unilab/training/run.py`、`src/unilab/scripts/{train_rsl_rl.py,train_appo.py,train_flashsac.py,train_offpolicy.py}`；说明文档与运行时入口核对，未独立执行训练或下载资产
+- **通读：** 已完成
 - **开源状态：** **已开源**（Apache-2.0；GitHub API 2026-09-17 更新，~939 stars）
 - **一句话说明：** 完整可扩展训练系统：CPU 批量物理（MuJoCoUni / MotrixSim）+ GPU learner + 共享内存 IPC；统一训练/评测入口与 task/backend 接口。
 - **沉淀到 wiki：** [UniLab](../../wiki/entities/unilab.md)

@@ -15,6 +15,9 @@
 - **入库日期：** 2026-09-14
 - **一句话说明：** 把 RSI 从「单表面、可形式化评测域」推进为 **同一 loop kernel 上 Data-RSI / Harness-RSI / Model-RSI 三算子的可组合调度**；两轴优化器联合决定算子顺序与各算子 proposal policy，meta-level policy 跨 term 修订 schedule；在 code 与 closed-form science 标准评测上 **无外部 teacher** 自举验证。
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2609.06396` PDF 提取全文（`2609.06396.txt`，196,922 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 开源状态（步骤 2.5）
 
 - **项目页（2026-09-14）：** 列出 PDF + GitHub（RSI-Harness）+ Hugging Face — **Harness-RSI 实现已公开**。

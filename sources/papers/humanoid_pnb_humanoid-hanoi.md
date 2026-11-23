@@ -1,26 +1,38 @@
 # Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement
 
-> 来源归档（ingest · Robot Learning Paper Notebooks 深读笔记）
+> 论文一手资料核对归档（复用既有唯一论文节点，不存储受版权保护的全文）
 
-- **标题：** Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement
-- **类型：** paper
-- **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement.html>
-- **分类：** 04_Loco-Manipulation_and_WBC
-- **arXiv：** <https://arxiv.org/abs/2602.13850>
-- **入库日期：** 2026-07-10
-- **一句话说明：** 研究一个技能化（skill-based）的人形搬箱重排框架：通过在任务层把可复用技能串接来支持长时程执行。架构上，所有技能都经由一个「共享、任务无关的全身控制器（shared, task-agnostic WBC）」执行——这为技能组合提供了一致的闭环接口，区别于「每个技能各配一个低层控制器」的非共享设计。作者发现：直接朴素复用同一个预训练 WBC 会在长时程上削弱鲁棒性，因为新技能及其组合会引入偏移的状态与指令分布。他们用一个简单的数据聚合（data aggregation）过程来解决：把闭环技能执行在域随机化下的 rollout 回灌到共享 WBC 的训练里。为评估方法，他们提出 Humanoid Hanoi ——一个汉诺塔式的长时程箱体重排基准，并在仿真与 Digit V3 人形机器人上给出结果，展示了完全自主的长时程重排，并量化了共享 WBC 相对非共享基线的收益。
+- **类型：** paper / CoRL 2026（官方主页标明 accepted）
+- **论文：** <https://arxiv.org/html/2602.13850>
+- **arXiv ID / 版本：** 2602.13850v4，2026-10-11
+- **PDF：** <https://arxiv.org/pdf/2602.13850>
+- **项目：** <https://osudrl.github.io/Humanoid_Hanoi/>
+- **代码：** <https://github.com/osudrl/Humanoid_Hanoi>（仅基准环境，无训练代码）
+- **作者：** Minku Kim、Kuan-Chia Chen、Aayam Shrestha、Li Fuxin、Stefan Lee、Alan Fern
+- **机构：** 俄勒冈州立大学（Oregon State University）
+- **核对范围：** arXiv v4 HTML 全文 §1–8、Figures 1–6、Tables 1、附录 A（MHC 掩码及数据聚合）、B（四技能、PPO 与 DR）、C（仿真分布与误差/失败模式）、D（真机单技能比较）、E（真机硬件设置、感知、失败和精简两塔实验）；官方项目页与公开源码 README/入口也已核对。前版笔记“实验与附录略读”记录由本次 v4 完整核对更新。
+- **通读：** 已完成
+- **复核日期：** 2026-11-22
 
-## 核心摘录（策展，非全文）
+## 核心摘录（归纳，非全文）
 
-- 本文件为 **Paper Notebooks → 本库 wiki** 的溯源锚点；方法细节请读笔记页与论文 PDF。
-- 知识归纳见 wiki 实体页：[paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c](../../wiki/entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md).
+1. **问题定义（§3）：** 三箱、三塔、七次移动，每次包含 GoTo → Pickup → GoTo-with-Box → Place；仿真对照均使用相同 100 个随机实例，含 DR / 无 DR 两种环境。
+2. **系统（§4，附录 A.1/B）：** 高层四种 LSTM 技能以 50 Hz 发 masked directives；共享预训练 MHC 输出 20 关节 PD 位置目标，下层 PD 2 kHz 跟踪。PDDL 规划接口有实现，但实验采用汉诺塔递归、未评测规划性能。
+3. **扩展方式（§5，附录 A.2）：** Pickup/Place 各 9 条成功 directive+mask 序列，采集时**无**动力学随机化；与原参考集拼接，**继续训练时**使用原跟踪目标、DR 与扰动。明确不称为新的 DAgger 算法。
+4. **仿真（§6，Fig.4）：** DR 条件下 Base 24%、Finetune 21%、Residual 19%、Joint 16%、Extended **47%** 完整完成率；Extended 单技能全高度 DR Pickup **96.92%**、Place **93.03%**（Table 1）。
+5. **控制器交接干预（§6.4）：** 10 步线性插值使 Finetune 21→32%、Residual 19→32%、Joint 16→38%；仍低于 Extended 47%，说明过渡冲击只是部分原因。
+6. **真机（§7/附录 E）：** Digit V3、两台 D455 + AprilTag/IMU，三种配置各 5 次，Extended 3/5、2/5、1/5，总计 **6/15**；其他基线 **0/15**。成功整段约 5 分钟，精简两塔任务连续成功五次但并非三塔完整任务。
+7. **边界（§8、附录 C.3/C.4/E）：** 以状态式策略研究控制及组合，仿真不是视觉策略；长时程多数故障发生在 Place；不同成功子集的放置误差不能直接作跨方法精度排行。真机感知丢标记、偏航误差与机械碰箱属于单独限制。
 
 ## 对 wiki 的映射
 
-- [paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c](../../wiki/entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md)
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
+- [唯一论文详情节点](../../wiki/entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md)
+- [移动操作 Stage 1 路线](../../roadmap/depth-loco-manipulation.md)
+- [官方项目归档](../sites/humanoid-hanoi.md)
+- [官方源码归档](../repos/humanoid-hanoi.md)
 
-## 参考来源（原始）
+## 原始来源
 
-- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement.html>
-- 论文：<https://arxiv.org/abs/2602.13850>
+- [论文原文 HTML v4](https://arxiv.org/html/2602.13850)
+- [官方项目页](https://osudrl.github.io/Humanoid_Hanoi/)
+- [官方代码（环境）](https://github.com/osudrl/Humanoid_Hanoi)

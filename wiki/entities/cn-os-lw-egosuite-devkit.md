@@ -2,7 +2,10 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project, mcap, egocentric, foxglove, lightwheel, data-tooling]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-21
+code: https://github.com/LightwheelAI/LW-Egosuite-DevKit
+original:
+  - ../../sources/repos/lw-egosuite-devkit.md
 related:
   - ./lightwheel.md
   - ./lightwheel-egosuite.md
@@ -77,12 +80,36 @@ flowchart LR
 - **Python API：** `lw_egosuite_backend.mcap_reader.iter_messages` 按 topic 迭代解码后的 proto；`EgosuiteMcapReader.iter_video_frames` 把视频解成 `numpy`（H×W×3 uint8）或 `torch` 张量。
 - 消息定义来自 `lw-egosuite-msg` 包；字段规范见 [EgoSuite 数据文档](https://docs.lightwheel.net/egocentric_data/mcap_data/overview)。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 用户 / 训练管线
+  participant CLI as tyro_cli.py<br/>(lw-egosuite)
+  participant SP as StdPipeline<br/>(std_pipeline.py)
+  participant EXP as ExportMcapVideo<br/>(export_mcap_video.py)
+  participant MR as mcap_reader.py<br/>+ ffmpeg
+  U->>CLI: lw-egosuite convert --mcap ep.mcap
+  CLI->>SP: StdPipeline.run()
+  SP->>SP: _load_session_metadata() + set_readers()
+  SP->>SP: 读 /pose/* 与 /annotation/semantic_segments
+  SP->>SP: postprocess_mcap() 清理空 topic，写出 _vis.mcap
+  U->>CLI: lw-egosuite export-video --mcap ep.mcap -o out.mp4
+  CLI->>EXP: export_video_run()
+  EXP->>MR: iter_messages(/sensor/camera/head_left/video) → ffmpeg stream copy
+  MR-->>U: 输出 MP4（+faststart）
+  U->>MR: EgosuiteMcapReader.iter_video_frames(output="numpy|torch")
+  MR-->>U: 逐帧解码 RGB 张量
+```
+
+图依据：`LightwheelAI/LW-Egosuite-DevKit@ef23daa`（`pyproject.toml`、`lw_egosuite_backend/tyro_cli.py`、`lw_egosuite_backend/std_pipeline.py`、`lw_egosuite_backend/export_mcap_video.py`、`lw_egosuite_backend/mcap_reader.py`）。
+
 ## 工程实践
 
-1. `pip install lw-egosuite-devkit`，对单文件 `lw-egosuite convert --mcap ep.mcap`，批量时对目录循环（输出与源文件同目录）。
+1. `pip install lw-egosuite-devkit`，对单文件 `lw-egosuite convert --mcap ep.mcap`，批量时对目录循环（输出与源文件同目录）；`lw-egosuite` 亦提供 `show`（`server.py`）与 `export-video` 子命令。
 2. 打开 LW-VIZ → Layouts 导入 `assets/default_layout.json` → **同时** 加载 `ep.mcap` 与 `ep_vis.mcap`。
 3. 训练侧不必经 MCAP：Open100K 同时提供 LeRobot v3 版本；MCAP 适合自建管线或需要原始标定 / 原始视频 / 音频时使用（格式取舍见 [HDF5 / MCAP / LeRobot](../comparisons/hdf5-mcap-lerobot-data-formats.md)）。
-4. 源码运行时序图：**不适用**（工具链非训练/推理代码，上图已给出 CLI 与 API 数据流）。
 
 ## 局限与风险
 

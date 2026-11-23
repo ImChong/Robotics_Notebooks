@@ -3,6 +3,9 @@
 - **类型**：学者个人站点 / 履历、新闻与论文列表（原始资料归档）
 - **收录日期**：2026-05-14
 - **主链接**：<https://www.zhengyiluo.com/>
+- **再次核对日期**：2026-11-22
+- **核对范围：** 已通读作者官方个人主页 <https://www.zhengyiluo.com/> 的 About、News、Selected Research、Affiliations、Publications、项目及代码入口，以及官方独立出版物页 <https://www.zhengyiluo.com/publications/> 的公开完整列表、署名、发表场所与链接。**这仅意味着个人学术站点两页已通读，不代表逐篇通读其所有论文，更不代表已取得或通读 2026-11-18 GRASP 演讲录像/逐字稿。**
+- **通读：** 已完成
 
 ## 一句话
 
@@ -12,6 +15,12 @@
 
 - **CMU → NVIDIA GEAR 职业与论文时间线**：新闻栏写明 **2025-05 入职 GEAR**、**博士答辩** 等节点；出版物区给出 arXiv、项目站与 **GitHub** 成对链接，适合与 [Tairan He](../../wiki/entities/tairan-he.md)、[SONIC](../../wiki/entities/nvidia-sonic.md) 等页互链，理解 **LECAR / GEAR 人形研究簇**。
 - **通用控制表示与遥操作主线**：PHC、PULSE、OmniH2O、Real-Time Teleoperation 等工作与仓库 [Teleoperation](../../wiki/tasks/teleoperation.md)、[运动重定向](../../wiki/concepts/motion-retargeting.md) 主题直接相交。
+
+## 2026-11-22 官方网页补充核对
+
+- 作者主页 News 栏在 **2026-08-12** 将 SONIC 标注为已发表于 **Science Robotics 2026**，而不再仅是早期的 in submission 状态。
+- 作者主页 News 栏在 **2026-10-20** 将 GRAIL 标注为 **CoRL 2026 Best Paper Award Finalist**；其出版物列表将 Zhengyi Luo 列为 GRAIL 的 project lead 之一。不得把 finalist 写成获奖。
+- 页面中列出了 SONIC、GRAIL、CHIP、CHORD 的论文、项目和部分源码入口；研究方向与履历依据官方作者自述，论文结论仍应以各论文原文独立核对。
 
 ## 履历要点（来自主页自述，2026-05-14 抓取）
 

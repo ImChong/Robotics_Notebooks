@@ -3,7 +3,7 @@ type: concept
 tags: [cad, generative-ai, hardware, design, api, manufacturing, llm, robotics]
 status: complete
 date: 2026-05-14
-updated: 2026-10-11
+updated: 2026-11-22
 related:
   - ../entities/urdf-studio.md
   - ../entities/atom01-hardware.md
@@ -41,11 +41,21 @@ sources:
   - ../../sources/models/zero-to-cad-qwen3-vl-2b.md
   - ../../sources/datasets/zero-to-cad-100k.md
 summary: "文字生成 CAD 已从纯研究演示进入可用早期：适合概念件与参数化初稿，复杂装配与生产级 DFM 仍依赖专业 CAD；机器人方向更稳的是 LLM + CadQuery/OpenSCAD 参数化脚本再导出 STEP。"
+original:
+  - ../../sources/papers/gencad_arxiv_2409_16294.md
+  - ../../sources/papers/gencad3d_arxiv_2509_15246.md
+  - ../../sources/papers/pointer_cad_v2_arxiv_2606_29301.md
+  - ../../sources/papers/zero_to_cad_arxiv_2604_24479.md
+  - ../../sources/sites/text-to-cad-tools.md
 ---
 
 # 文字生成 CAD（Text-to-CAD）
 
 **文字生成 CAD** 指用**自然语言提示**或**对话式代理**，自动生成或迭代**可编辑的 CAD 几何**（常见为 **B-rep** 实体），并通常导出 **STEP**、**STL**、**DXF** 等交换格式；其工程目标偏向**加工、公差与装配**，而不是仅输出可视化网格。
+
+## 一句话定义
+
+**文字生成 CAD（Text-to-CAD）**：指以自然语言或多模态视觉提示驱动生成可参数化编辑的工业几何（B-rep / CadQuery / OpenSCAD 等 CAD 操作序列），而非单纯输出不可编辑的三角网格。
 
 ## 英文缩写速查
 
@@ -75,7 +85,7 @@ summary: "文字生成 CAD 已从纯研究演示进入可用早期：适合概�
 
 仍**很难**在无强人工审图的前提下，**完全替代**专业 CAD 工程师完成：**复杂装配**、**全公差链**、**大规模约束与可靠性设计**、**产线级 DFM**。
 
-## 为什么对机器人研究重要
+## 为什么重要
 
 - **硬件与夹具链路**：从概念支架、传感器支架到末端执行器零件，研发流程仍大量依赖 **STEP / 参数化模型** 与供应链沟通；若 LLM 参与设计，需要知道「生成的是否为制造级模型」。
 - **与仿真资产的关系**：仿真常用的 **URDF / MJCF** 多消费 **网格与惯性近似**；STEP 往往是**上游真值**或**加工真值**，中间通常还有 **CAD → 网格 / URDF** 的转换与简化（见 [URDF-Studio](../entities/urdf-studio.md) 等工具链）。另一条相邻路线是 **程序化可关节 3D**（例如 [Articraft](../entities/articraft.md) 所归纳的 agent + SDK + harness），侧重带关节与验证闭环的 **仿真就绪网格资产**，与制造向 B-rep 流程目标不同但常在同一仿真管线中汇合。
@@ -91,6 +101,10 @@ summary: "文字生成 CAD 已从纯研究演示进入可用早期：适合概�
 | 与游戏 / 渲染 | 可选 | 主战场 |
 
 **说明性机械插图不等于 Text-to-CAD：** [Anatomy](../entities/anatomy-skill.md) 会把技术原理转成可交互的等轴测 SVG/HTML 图，能用机械外观解释运动关系，但它不生成制造级 STEP/B-rep、工程图或机器人仿真模型。它更适合科普与文档表达。
+
+## 核心原理
+
+当代 Text-to-CAD 两条主技术范式分别是：（1）**端到端参数化序列生成**（如 GenCAD / GenCAD-3D / Pointer-CAD v2 通过自回归或对比-扩散潜空间映射生成草图–拉伸等参数指令序列，解决量化精度与规划结构约束）；（2）**LLM/VLM + 执行器反馈脚本合成**（如 Zero-to-CAD 通过多视角渲染监督 Qwen3-VL 生成可执行 CadQuery 代码，或通过 FreeCAD MCP 闭环校验几何合法性）。
 
 ## 代表工具谱系（简评）
 
@@ -214,6 +228,11 @@ flowchart LR
 - **可验证**：脚本可 diff、可跑测试（体积、孔距、壁厚下限），比单次对话 mesh 更易做回归。
 - **与供应链衔接**：STEP 进入企业 CAD 后，再补 **工程图、公差、表面处理与工艺审查**。
 
+## 工程实践
+
+- **机器人选型与管线**：机械支架、传感器转接板等原型部件优先走 **LLM/VLM + CadQuery/OpenSCAD → STEP** 路线，导出后必须经人工尺寸公差审查及物理引擎等效惯量/碰撞网格二次校验，再转入 URDF/MJCF。
+- **数据集与开源基准参考**：工程上可用 Zero-to-CAD 100K/1M 合成代码集作为微调或格式参考基准，但在面向产线装配与高强度承力件时仍须依赖专业 CAD 工具完成 FEA 与公差链闭合。
+
 ## 当前能力边界（经验法则）
 
 **现阶段相对容易做好的：**
@@ -226,7 +245,7 @@ flowchart LR
 - **复杂人形总装**与整机可靠性设计
 - **精密公差链**、产线级 **DFM**、大规模 **装配约束** 与维护性设计
 
-## 常见误区
+## 局限与风险
 
 - **误区**：拿到 STEP 就等于仿真就绪。实际上往往需要**简化拓扑、划分碰撞凸包、对齐坐标系**，再进入 MuJoCo / Isaac 等管线。
 - **误区**：把「能生成好看网格」当成「能直接上五轴」。加工可行性仍取决于**材料、公差、夹持与工序**；LLM 输出应视为**初稿**。

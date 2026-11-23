@@ -3,8 +3,9 @@
 type: entity
 tags: [benchmark, humanoid, simulation, smpl, sports, reinforcement-learning, isaac-gym, cmu, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2407.00187"
+original: ../../sources/papers/smplolympics_arxiv_2407_00187.md
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./zhengyi-luo.md
@@ -55,7 +56,7 @@ summary: "SMPLOlympics：SMPL/SMPL-X 统一仿真人形上的 10 项奥运风格
 
 竞争性任务含 **交替自博弈**（冻结一方、训练另一方）；足球/篮球团队 reward 为 rudimentary 起点，论文明确弱于专用系统（如 DeepMimic Soccer）。
 
-## 主要技术路线
+## 核心机制与主要技术路线
 
 ```mermaid
 flowchart LR
@@ -85,7 +86,12 @@ flowchart LR
 - **PULSE + AMP + 视频示范** 在乒乓球上 **连续回球数** 最佳；纯 AMP 易忽视落点精度。
 - **课程学习** 对跳高 1.5 m 杆与 110 m 跨栏完赛必不可少。
 
-## 常见误区
+## 工程实践
+
+- **统一仿真与动作空间（arXiv:2407.00187 § Experiments）**：运行于 Isaac Gym（物理 `60 Hz`、策略 `30 Hz`），三层 MLP `[2048, 1024, 512]`，所有关节驱动上限设为 `500 Nm`；无指 SMPL 具 `24` 关节/`23` 驱动自由度（动作维度 `R^69`），含指 SMPL-X 具 `52` 关节/`51` 驱动自由度（`R^153`），单任务可在单张 RTX 3090 上 1–3 天训成。
+- **PULSE+AMP 与课程选择**：田赛/多阶段任务必须先开动作先验与课程难度（如跳高 `1.5 m` 杆、跨栏），避免纯任务奖励过早收敛到非人姿局部最优。
+
+## 常见误区或局限
 
 - **不是真机 benchmark**——面向 **物理角色动画 / 仿真人形 RL**；与 [ZEST](../methods/zest.md) 等硬件迁移工作正交。
 - **reward 非最优**：论文自述团队运动 reward 仅为起点，不宜直接当作 SOTA 足球/篮球控制器。

@@ -34,7 +34,13 @@
     toggle.setAttribute('aria-label', '赞助我');
     toggle.setAttribute('title', '赞助我');
     toggle.setAttribute('aria-haspopup', 'dialog');
-    toggle.innerHTML = '<span class="sponsor-icon" aria-hidden="true">☕</span>';
+    var coffeeSvg =
+      (window.RNIcons && window.RNIcons.svg && window.RNIcons.svg('coffee')) ||
+      '<svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<path d="M3 6.2h7.6v3.9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6.2Z"/>' +
+      '<path d="M10.6 7.3h1.3a1.7 1.7 0 0 1 0 3.4h-1.3M5.3 3.2c0 .7.6 1 .6 1.6M8.3 3.2c0 .7.6 1 .6 1.6"/>' +
+      '</svg>';
+    toggle.innerHTML = '<span class="sponsor-icon" aria-hidden="true">' + coffeeSvg + '</span>';
 
     headerRight.appendChild(toggle);
 
@@ -50,7 +56,7 @@
       '<div class="sponsor-dialog-card">' +
         '<div class="sponsor-dialog-header">' +
           '<h2 id="sponsorDialogTitle" class="sponsor-dialog-title">赞助我</h2>' +
-          '<p class="sponsor-dialog-hint">微信扫一扫，赞助支持作者 ☕</p>' +
+          '<p class="sponsor-dialog-hint">微信扫一扫，赞助支持作者</p>' +
         '</div>' +
         '<div class="sponsor-dialog-body">' +
           // 二维码 206 KB，弹窗默认隐藏：点开时再赋 src，不随每个页面首屏下载

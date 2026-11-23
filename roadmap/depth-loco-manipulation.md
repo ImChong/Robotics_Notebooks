@@ -86,6 +86,7 @@ flowchart LR
 - 对比"上身固定 / 上身随机动作"两种课程下，下身策略的抗扰能力
 
 ### 推荐读什么
+- [Humanoid Hanoi：共享 WBC 的长程技能组合](../wiki/entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md) — Stage 1 的统一低层控制接口与技能交接故障诊断；七次搬箱 DR 仿真 Extended 47%、Digit V3 真机 6/15，官方只开源基准环境。
 - [FORGE：力感知多粒度移动操作](../wiki/entities/paper-forge-force-aware-loco-manipulation.md) — 速度/足端/双腕/载荷命令与冻结 locomotion 先验的残差协调。
 - [PolyMorphWBC：跨臂形态四足移动操作](../wiki/entities/paper-polymorphwbc-quadruped.md) — 用末端轨迹预览自动协调底座与机械臂 IK。
 - [HOMIE](../wiki/entities/paper-loco-manip-161-040-homie.md) 与 [FALCON](../wiki/entities/paper-loco-manip-161-109-falcon.md) — 上下身解耦锚点
@@ -190,6 +191,11 @@ flowchart LR
 - 用一个开源 VLA 在移动操作仿真基准（RoboCasa 类）上跑评测，记录失败模式
 
 ### 推荐读什么
+
+- [WAM-Policy：四足前腿世界动作模型](../wiki/entities/paper-wam-policy.md) — 机械臂 WAM 跨形态迁移并经在线蒸馏和 RL 专家改进。
+- [PGX：物理谓词阶段编排 + VLA 技能 + WCL](../wiki/entities/paper-pgx-2611-26596.md) — Stage 4 的分层执行对照：保持 VLA 权重不变，用真实物理事件守卫任务阶段并在世界系稳定站位/接触点；注意其不替代低层 WBC。
+- [Awaken-HI：原人体运动 + 机器人动作共享专家](../wiki/entities/paper-awaken-hi.md) — Stage 4 的全身 40D VLA：50K h 人类预训练 + 150 h T800 后训练、八任务均值 93.75%（作者报告）；目前无可运行代码/权重。
+- [WEVO：G1 全身 VLA 的部署域视频 WM 后训练](../wiki/entities/paper-wevo-world-model-enabled-vla-loco-manipulation.md) — 用仿真初始化、接触/行走 play 与少量真实自主轨迹校准 WM，SONIC–MuJoCo 执行全身目标；DICE-RL 在视频 WM 中后训练，三任务真机平均成功率 75.0%。
 - [DiPLO：自蒸馏扩散全身搬运规划](../wiki/entities/paper-diplo-self-distilled-diffusion-planning.md) — 先用 SBTO 动态可行轨迹训练 DiT + RL 跟踪器，再经 SD:DPO 去除 IK 先验依赖、DA:PPO 对齐物体目标；Stage 4 的生成式全身规划代表。
 - [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 - [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)

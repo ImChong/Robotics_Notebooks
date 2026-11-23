@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, wam, vla, cross-embodiment, technology-map]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ../entities/paper-zero-wam.md
   - ../entities/paper-streampi.md

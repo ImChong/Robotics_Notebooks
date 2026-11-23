@@ -2,7 +2,7 @@
 type: concept
 tags: [mamba, ssm, sequence-modeling, architecture]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/state-spaces/mamba
 summary: "Mamba 在 S4 状态空间基础上引入输入依赖的选择机制（S6），以 GPU 片上 SRAM 融合并行扫描取代受限于 LTI 的全局卷积，在语言、DNA 与音频上以线性时间训练和常数空间推理匹敌同级 Transformer。"
 related:

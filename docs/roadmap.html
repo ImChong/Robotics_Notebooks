@@ -16,23 +16,30 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>Robotics Notebooks | 技术路线指南</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-roadmap.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0a0b0d" />
   <script src="theme-init.js"></script>
-  <script id="sponsor-js" src="sponsor.js?v=2"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
+  <link rel="preload" href="exports/site-catalog-v1.json" as="fetch" crossorigin />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到正文</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-title" href="index.html">🚀 Robotics Notebooks | 技术路线指南</a>
+      <a class="site-title" href="index.html"><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg>Robotics Notebooks | 技术路线指南</a>
       <div class="header-spacer"></div>
       <div class="header-right">
         <a class="github-link" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
         <button class="theme-toggle" id="themeToggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
-          <span class="icon-sun">☀️</span>
-          <span class="icon-moon">🌙</span>
+          <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
+          <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
         </button>
       </div>
     </div>
@@ -55,8 +62,9 @@
             <h3>路线元信息</h3>
             <div id="roadmapMeta" class="detail-meta-list data-loading">
               <p id="roadmapMetaUpdated" class="detail-meta-item data-meta">正在读取更新时间…</p>
-              <p id="roadmapMetaStages" class="detail-meta-item" hidden></p>
+              <p id="roadmapMetaType" class="detail-meta-item" hidden></p>
               <p id="roadmapMetaCommunity" class="detail-meta-item" hidden></p>
+              <p id="roadmapMetaStages" class="detail-meta-item" hidden></p>
               <p id="roadmapMetaDepth" class="detail-meta-item" hidden></p>
               <p id="roadmapMetaInstitution" class="detail-meta-item" hidden></p>
               <!-- 健康度是状态行（三格小条，不是徽章；说明在悬停信息框里），放在最后，不打断上面各行徽章的对齐 -->
@@ -107,7 +115,7 @@
           <p id="roadmapTocSubtitle" class="section-subtitle">章节快速导航</p>
           <div style="margin-bottom: 1.2rem;">
             <a id="roadmapGraphLink" href="graph.html" class="btn-secondary" style="display:flex; align-items:center; gap:6px; justify-content:center; padding:8px; border-color:rgba(0,212,255,0.3); color:var(--text);">
-              <span>🕸️</span> 关联图谱节点
+              <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="3.8" cy="12" r="1.6"/><circle cx="12.2" cy="4" r="1.6"/><circle cx="12.2" cy="12" r="1.6"/><circle cx="7.6" cy="7.6" r="1.8"/><path d="M5 10.8 6.4 9M9 6.3l1.9-1.4M9 8.9l2 2"/></svg></span> 关联图谱节点
             </a>
           </div>
           <nav id="roadmapTocList" class="detail-toc-list data-loading" aria-label="路线正文目录">
@@ -170,9 +178,10 @@
 
   <footer class="footer">
     <div class="container footer-stack">
-      <p>© <a href="https://imchong.github.io/index.html" target="_blank" rel="noopener noreferrer">Chong Liu</a> 2026 · Robotics Notebooks</p>
+      <p>© <a href="https://imchong.github.io/index.html" target="_blank" rel="noopener noreferrer">刘冲</a> 2026 · 机器人技术栈地图</p>
     </div>
   </footer>
+  <script src="ui-icons.js"></script>
   <script src="wiki-type-labels.js"></script>
   <script defer src="graph-tooltip.js"></script>
   <script defer src="depth-filters.js"></script>

@@ -13,10 +13,22 @@ tags:
   - astar
   - zju
   - cuhk
+institutions:
+  - xpeng
+  - ntu
+  - astar
+  - zju
+  - cuhk
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2608.29242"
+code: https://github.com/xpeng-robotics/AnyWorld
+project: https://xpeng-robotics.github.io/anyworld/
 venue: "arXiv 2026"
+original:
+  - ../../sources/papers/anyworld_arxiv_2608_29242.md
+  - ../../sources/repos/anyworld.md
+  - ../../sources/sites/xpeng-robotics-anyworld.md
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -30,7 +42,8 @@ related:
 sources:
   - ../../sources/papers/anyworld_arxiv_2608_29242.md
   - ../../sources/sites/xpeng-robotics-anyworld.md
-summary: "AnyWorld（arXiv:2608.29242，小鹏机器人等）：动作–相机–具身因子化 egocentric 扩散世界模型，无配对人–机数据即可把人类交互重组合成 GR1/IRON 等机器人域 rollout；UniT 适配阶段 +4.8pp（仿真）/+35pp（真机抓香蕉）；定向干预可修假完成先验与语言空间目标。截至入库日未开源。"
+  - ../../sources/repos/anyworld.md
+summary: "AnyWorld（arXiv:2608.29242，小鹏机器人等，已开源 xpeng-robotics/AnyWorld）：动作–相机–具身因子化 egocentric 扩散世界模型，无配对人–机数据即可把人类交互重组合成 GR1/IRON 等机器人域 rollout；UniT 适配阶段 +4.8pp（仿真）/+35pp（真机抓香蕉）；定向干预可修假完成先验与语言空间目标。"
 ---
 
 # AnyWorld（因子化 Egocentric 跨具身世界模型）
@@ -68,7 +81,7 @@ summary: "AnyWorld（arXiv:2608.29242，小鹏机器人等）：动作–相机�
 | **骨干初始化** | [WAN Fun-Control 14B](https://huggingface.co/alibaba-pai/Wan2.1-Fun-14B-Control) |
 | **训练数据** | EgoDex 预训练；混合微调含 EgoDex、RoboCasa GR1、IRON（无配对） |
 | **评测平台** | RoboCasa GR1 仿真；IRON 真机 |
-| **开源** | **未开源**（截至 2026-09-02，[项目页](https://xpeng-robotics.github.io/anyworld/) 未列代码/权重） |
+| **开源** | **已开源（Apache-2.0）**：[xpeng-robotics/AnyWorld](https://github.com/xpeng-robotics/AnyWorld) 已发布首帧具身编辑器训练/推理及 Wan2.1 Combined-Control 世界模型推理代码（适配权重与基座模型按 `docs/MODEL_WEIGHTS.md` 另配） |
 
 ## 核心原理
 
@@ -122,7 +135,40 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至 2026-09-02，[项目页](https://xpeng-robotics.github.io/anyworld/) 与 `xpeng-robotics` 组织 **未提供** 可运行训练/推理仓库。
+入口一（首帧具身编辑）：`python image_editing/infer.py --input ... --checkpoint .../anyworld_image_editor.safetensors`（训练入口为 `bash scripts/train_image_editor.sh` → `accelerate launch ... image_editing/training/train.py`）。入口二（世界模型视频生成）：`bash scripts/infer_world_model.sh` 分 GPU rank 启动 `python world_model/scripts/infer.py --base-model-path ... --anyworld-model-path ... --validation-file validation.json`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 开发者
+    participant IE as image_editing/infer.py
+    participant QP as DiffSynth QwenImagePipeline
+    participant SH as scripts/infer_world_model.sh
+    participant WM as world_model/scripts/infer.py
+    participant VG as FastVideo VideoGenerator
+
+    U->>IE: 传入人类首帧或视频及编辑 checkpoint
+    IE->>IE: prepare_images 必要时用 ffmpeg 抽首帧
+    IE->>QP: 加载 Qwen-Image-Edit-2511 并注入 dit 权重
+    loop 对每个分片输入图像
+        IE->>QP: pipeline(prompt, edit_image=[image], zero_cond_t=True)
+        QP-->>IE: 替换为 IRON 等目标具身首帧
+    end
+    IE-->>U: 写出编辑首帧 PNG 与 manifest_rank*.csv
+    U->>SH: 配置 GPU_IDS 与 validation.json 并启动多卡推理
+    SH->>WM: 按 rank/world_size 启动多进程
+    WM->>WM: validate_records 校验 caption/控制视频/外参/内参
+    WM->>VG: VideoGenerator.from_pretrained(workload_type="i2v_combined_control")
+    loop 对分片内每条样本
+        WM->>VG: generate_video(prompt, sampling_param)
+        VG-->>WM: 生成机器人域视频 MP4
+        WM->>WM: 保存 metadata JSON
+    end
+    WM->>VG: generator.shutdown()
+    WM-->>U: 汇总写出 rank*_results.json
+```
+
+图依据：`xpeng-robotics/AnyWorld@2ed9d9c`，实际读过 `README.md`、`image_editing/infer.py`（全文 229 行）、`scripts/train_image_editor.sh`、`scripts/infer_world_model.sh`、`world_model/scripts/infer.py`（全文 196 行）及 `world_model/fastvideo/entrypoints/video_generator.py`（`generate_video` 与 `from_pretrained`）。未运行 GPU 推理。
 
 ## 工程实践
 
@@ -132,7 +178,7 @@ flowchart TB
 | VLA 适配 | 与目标域真机数据 **1:1** 混入重组 EgoDex rollout（第二阶段 only） |
 | 定向修补 | 针对 **已知策略缺口** 构造缺失状态或左右对称反事实对 |
 | 动作标定 | 人腕轨迹 → 目标机 **相对 EEF**；避免直接迁移人臂尺度 |
-| 复现依赖 | 需自建 EgoDex/GR1/IRON 因子化管线；骨干可参照 WAN Fun-Control |
+| 复现依赖 | 使用 [xpeng-robotics/AnyWorld](https://github.com/xpeng-robotics/AnyWorld) 的 `image_editing/` 与 `world_model/` 推理管线；训练世界模型仍需按论文两阶段自建 EgoDex/GR1/IRON 因子化数据与 WAN Fun-Control 14B 训练栈 |
 
 ## 实验与评测
 
@@ -167,14 +213,14 @@ VBench 四项平均 **0.971**，与强基线相当或略优。
 3. **适配阶段数据引擎** — 在已 EgoDex 预训练的 UniT 上，仿真 **+4.8pp**、真机抓香蕉 **+35pp**；混入比 **1:1**。  
 4. **视觉与动作必须联合转移** — 语言空间目标选择：动作-only 反事实失败，说明需要 **机器人原生观测** 而不仅是动作重标。  
 5. **人:机微调 2:1** — 纯人数据多会损 EmbodAcc；纯机数据多损动作多样性；需平衡而非单边堆量。  
-6. **局限** — 无触觉/力；依赖跟踪质量；仅 3 具身；**未开源** 阻碍直接复现。
+6. **局限** — 无触觉/力；依赖跟踪质量；仅 3 具身；世界模型预训练脚本未随推理仓一同放出。
 
 ## 局限与风险
 
 - 视觉 rollout **不能替代** 接触力与触觉反馈；精细接触仍依赖真机数据。  
 - 动作–相机提取在遮挡、快速运动、剧烈抖动下可能退化。  
 - 评测覆盖 GR1 桌面与 IRON 抓取；更长程、更多形态与物体泛化未充分验证。  
-- 截至入库日 **无官方代码**；复现需复刻因子化数据管线与 14B 级训练栈。
+- 官方仓库 [xpeng-robotics/AnyWorld](https://github.com/xpeng-robotics/AnyWorld) 已开源首帧编辑训练/推理与世界模型推理入口，但未直接附带完整的 14B 世界模型多阶段训练脚本与全部适配权重。
 
 ## 与其他工作对比
 
@@ -199,8 +245,11 @@ VBench 四项平均 **0.971**，与强基线相当或略优。
 
 - [anyworld_arxiv_2608_29242.md](../../sources/papers/anyworld_arxiv_2608_29242.md)
 - [xpeng-robotics-anyworld.md](../../sources/sites/xpeng-robotics-anyworld.md)
+- [AnyWorld 官方源码归档](../../sources/repos/anyworld.md)（<https://github.com/xpeng-robotics/AnyWorld>）
 
 ## 推荐继续阅读
+
+- [AnyWorld 官方 GitHub 仓库](https://github.com/xpeng-robotics/AnyWorld)
 
 - [机器人论文阅读笔记：AnyWorld](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization/AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization.html)
 - [项目页](https://xpeng-robotics.github.io/anyworld/)

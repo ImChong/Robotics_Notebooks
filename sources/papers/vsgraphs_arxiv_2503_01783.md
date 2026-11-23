@@ -12,7 +12,9 @@
 - **项目页：** <https://snt-arg.github.io/vsgraphs-results/>
 - **代码：** <https://github.com/snt-arg/visual_sgraphs>
 - **入库日期：** 2026-07-02
-- **一句话说明：** 在 **ORB-SLAM 3.0** 基线上新增 **建筑构件识别**（墙/地面）与 **结构元素推断**（房间/楼层）线程，将环境驱动语义实体纳入 **可联合优化的分层 3D 场景图**，在标准 RGB-D 基准与自采 **AutoSense** 数据上相对 SOTA VSLAM 平均 **ATE 降低 15.22%**，纯视觉场景理解精度接近 **LiDAR S-Graphs**。
+- **最近核对：** 2026-11-21
+- **通读：** 已完成
+- **一句话说明：** 在 **ORB-SLAM 3.0** 基线上新增 **建筑构件识别**（墙/地面）与 **结构元素推断**（房间/楼层）线程，将环境驱动语义实体纳入 **可联合优化的分层 3D 场景图**，在 ICL/OpenLORIS/ScanNet/TUM-RGBD 与自采 **SMapper / AutoSense**（约 44 min / 618.8 m）上相对 SOTA VSLAM 平均 **ATE 降低 15.22%**，纯视觉场景理解精度接近 **LiDAR S-Graphs**；官方仓库已支持 ROS2 Jazzy 与 Docker 部署。
 
 ## 核心摘录（面向 wiki 编译）
 

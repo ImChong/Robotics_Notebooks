@@ -6,6 +6,9 @@
 - **博客入口：** <https://www.skild.ai/blogs>（旗舰 [S1](https://www.skild.ai/blogs/s1)）
 - **GitHub org：** <https://github.com/skild-ai>（截至 **2026-09-06：0 个公开仓**，19 followers，2023-06 创建）
 - **联系：** press@skild.ai
+- **再核日期：** 2026-11-21（复核 `https://www.skild.ai/` 与 `https://www.skild.ai/blogs` 均返回 HTTP 200）
+- **核对范围：** 通读 `https://www.skild.ai/` 官网首页叙事、三大应用平台与 `skild.ai/blogs` 入口；公司产品与权重完全闭源
+- **通读：** 已完成
 
 ## 一句话
 

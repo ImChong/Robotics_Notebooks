@@ -12,6 +12,8 @@
 - **一句话说明：** ICRA 2026 Agile Striker 官方实现：`run.py` 单入口串联 PPO → DAgger → P3O 四阶段；基于 Booster Gym，面向 Booster T1。
 - **开源状态：** **已开源**（2026-07-28）；根目录有 `LICENSE`（GitHub SPDX：`NOASSERTION`）。
 - **沉淀到 wiki：** [`wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md`](../../wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `Daffan/humanoid-soccer` 官方 `README.md`（6,525 字节）。
 
 ## 仓库概况（2026-07-28）
 

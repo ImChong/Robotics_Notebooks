@@ -10,6 +10,9 @@
 - **核心贡献：** Ian Huang\*†、Jing Shu\*；通讯 Hao Wang‡、Qian Wang（\* 同等贡献；† 项目负责人）
 - **日期：** 项目页与新闻稿 2026-09-02
 - **入库日期：** 2026-09-02
+- **再核日期：** 2026-11-21（重新抓取 `https://x2robot.com/en/pages/twindex` Next.js RSC 负载全文，确认页底仍标 `BibTeX / Paper (coming soon)`，未发布论文 PDF、代码仓库或数据集）
+- **核对范围：** 通读官网项目页 `https://x2robot.com/en/pages/twindex` 全文（Overview、Dexterity、Consistency、Scalability、One Take、Conclusion & Outlook 及前端 JS 中 5 项演示条目描述）与 PR Newswire 通稿；技术报告与代码均未公开，未复现或查看未公开报告
+- **通读：** 已完成
 - **一句话说明：** 可穿戴三指外骨骼与同构机器人末端成对共设计；宣称用纯 robot-free 数据训策略，数据效率与真机遥操作重叠，采数吞吐约 **5.3×**。页面为 Next.js 前端渲染；开源判断以页内链接与 GitHub 组织检索为准。
 
 ## 开源核查（2026-09-02）

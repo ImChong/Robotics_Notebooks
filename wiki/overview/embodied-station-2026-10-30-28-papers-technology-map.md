@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-22
 related:
   - ../entities/paper-event2reward.md
   - ../entities/paper-tacos.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md
+  - ../../sources/papers/worldflow_arxiv_2610_39278.md
 summary: "具身智能小站 2026-10-30 盘点：Event2Reward 用进度关系监督稠密奖励（深读）、TACOS 接触监督落脚预测与 Kairos 规划引擎调度（跟进），以及 VLA 量化与推理设置、示范评测与采集、世界模型、人形与灵巧操作、多机器人协作等 28 篇；28/28 独立节点（新建 28）。"
 ---
 
@@ -33,7 +34,7 @@ summary: "具身智能小站 2026-10-30 盘点：Event2Reward 用进度关系监
 ## 为什么单独做这张地图
 
 - 公众号一次列出 28 篇（1 深读 + 2 跟进 + 25 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
-- 节点内的数字为公众号转述，未核验原文表格；开源结论为入库日核查结果，见各节点「为什么重要」。
+- 节点内的数字为公众号转述，未核验原文表格（其中 WorldFlow 已于 2026-11-20 补齐 arXiv v2 原文核对）；开源结论为入库日或最近复核日核查结果，见各节点「为什么重要」及独立复核归档。
 
 ## 流程总览
 
@@ -84,7 +85,7 @@ flowchart TB
 | 论文 | 节点 | 开源 |
 |------|------|------|
 | TERRA | [paper-terra-targeted-exploration-rover-adaptation](../entities/paper-terra-targeted-exploration-rover-adaptation.md) | 已开源 |
-| WorldFlow | [paper-worldflow](../entities/paper-worldflow.md) | 已开源 |
+| WorldFlow | [paper-worldflow](../entities/paper-worldflow.md)（已有 v2 原文复核） | 待发布（官方仓 `roboscience-ai/worldflow` 仅论文与展示素材，模型代码/权重未发布，2026-11-20 核查） |
 | GenSight | [paper-gensight](../entities/paper-gensight.md) | 待发布 |
 
 ### 示范数据与评测（5 篇）
@@ -122,6 +123,7 @@ flowchart TB
 ## 参考来源
 
 - [wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md](../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md)
+- [WorldFlow v2 原文核对归档（arXiv:2610.39278v2）](../../sources/papers/worldflow_arxiv_2610_39278.md) — 联合视频/3D 位移基准与官方仓库模型代码未发布纠偏（2026-11-20）
 
 ## 推荐继续阅读
 

@@ -8,6 +8,10 @@
 - **入库日期：** 2026-04-14
 - **最后更新：** 2026-04-14
 - **一句话说明：** 覆盖刚体接触建模、LCP 互补约束、MuJoCo 接触模型等接触动力学基础
+- **纠错备注：** 原文列表中 Shirai et al. (2023) 的 arXiv 编号 `2311.01273` 实为无关 NLP 论文，切勿引用该号；接触力学与摩擦锥采用下述已核验开放一手资料。
+- **核验一手资料：** MIT *Underactuated Robotics* Ch. 17（`underactuated.csail.mit.edu/contact.html`）、Wensing et al. 2024（`arXiv:2211.11644` § II/VI 接触互补与摩擦锥）、Boyd & Vandenberghe《Convex Optimization》§ 4.4.2 SOCP
+- **通读：** 已完成
+- **核对范围：** 已通读 MIT Underactuated Ch. 17（452 行，混杂模式/浮动基动力学与 Grandia SOCP 摩擦锥松弛）、Wensing et al. arXiv:2211.11644 摩擦锥与互补规划、以及 Boyd § 4.4.2 二阶锥规划原文
 
 ## 核心论文摘录
 

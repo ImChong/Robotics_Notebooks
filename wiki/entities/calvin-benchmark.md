@@ -10,8 +10,8 @@ tags:
 - paper
 - awesome-sim2real
 - longchao-sim2real
-status: draft
-updated: 2026-11-15
+status: complete
+updated: 2026-11-21
 summary: CALVIN：把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。
 related:
 - ../concepts/sim2real.md
@@ -32,10 +32,13 @@ sources:
 - ../../sources/papers/lc_awesome_sim2real_2112_03227_calvin-a-benchmark-for-language-conditio.md
 - ../../sources/papers/lc_awesome_sim2real_catalog.md
 - ../../sources/repos/awesome-sim2real.md
+original:
+- ../../sources/papers/lc_awesome_sim2real_2112_03227_calvin-a-benchmark-for-language-conditio.md
+- ../../sources/repos/calvin-benchmark.md
 project_id: calvin-benchmark
 arxiv: '2112.03227'
 code: https://github.com/mees/calvin
-venue: IEEE Robotics and Automation
+venue: IEEE Robotics and Automation Letters (RA-L) 2022
 ---
 
 # CALVIN
@@ -50,46 +53,36 @@ venue: IEEE Robotics and Automation
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| CALVIN | CALVIN | CALVIN 相关缩写，详见正文 |
-| Sim2Real | Simulation to Real | 仿真到真机部署主线 |
-| RL | Reinforcement Learning | 训练与评测常用框架 |
-| API | Application Programming Interface | 仿真/中间件编程接口 |
-
-| MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
-| DR | Domain Randomization | 域随机化 |
-| FM | Foundation Model | 大模型/基础模型增强迁移 |
+| CALVIN | Composing Actions from Language and Vision | 本文长程语言条件桌面操作基准（arXiv:2112.03227） |
+| LH-MTLC | Long-Horizon Multi-Task Language Control | 1,000 条 5 指令连续无重置评测协议 |
+| MCIL | Multi-Context Imitation Learning | 原文基线：多上下文潜计划模仿学习 |
+| SLERP / VR | Spherical Linear Interpolation / Virtual Reality | 遥操作 VR 约 24h 非结构化 Play Data 采集 |
 
 ## 为什么重要
 
-- **主表工程定位清晰**：该条目被放在「工程与实机部署」下，说明它服务的是这条人形运动智能问题链上的具体环节，而不是泛泛的链接收藏。
-- **可对照开源边界**：主表已概括其可复现范围（训练/推理/部署或仅方法页）；选型时应先读本页「开源状态」，再回官方 README / 项目页核对许可证与平台支持。
-- **便于知识库交叉引用**：独立节点让路线图、对比页与 ingest 日志可以稳定链接，避免只在策展列表里「点名」却无法下钻。
+- **长程无重置串行评测**：不同于单步 pick-and-place，CALVIN 将 **1,000 条各含 5 个连续语言子目标** 的长链串起，暴露子任务切换与错误累积。
+- **跨环境零样本泛化口径清晰**：4 个 PyBullet 桌面环境（**A / B / C / D**，不同桌子纹理与开关/抽屉布局）划分出 **D→D**、**ABCD→D** 与最严格的零样本 **ABC→D**。
+- **弱标注大规模 Play Data**：~24 小时 VR 遥操作（~2.4M 步、~40M 窗口）中仅 **1%** 附带 MiniLM（384-d）语言标注，迫使策略利用无标注探索片段。
 
 ## 核心原理
 
-### 在技术路线中的位置
+### 基准规格与评测协议
 
-| 字段 | 内容 |
-|------|------|
-| 主表分组 | 工程与实机部署 |
-| 官方入口 | https://github.com/mees/calvin |
-| 开源状态（据主表） | 已开源（以官方仓库 README 为准） |
+| 维度 | 规格（arXiv:2112.03227v4） |
+|------|----------------------------|
+| **仿真与本体** | PyBullet 四套桌面环境（A、B、C、D），7-DoF Franka Panda 机械臂 |
+| **观测与动作** | 静态第三人称 RGB-D + 腕部 RGB-D + 本体状态 + 触觉；7-DoF 末端增量控制 + 夹爪 |
+| **任务与数据** | **34** 个操作任务；~24h Play Data（~2.4M 步）；仅 1% 带人类自由语言标注 |
+| **LH-MTLC 基线** | MCIL（静态 RGB）在 **D→D** 单子任务成功率 **53.9%** / 5 连贯 **0.08%**；在 **ABC→D** 下 **38.6%**（RGB+D 为 **43.7%**、5 连贯 **0%**） |
 
-主表给出的技术定位可压缩为：
-
-> 把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。
-
-阅读时建议抓住三点：**(1) 输入是什么数据或观测；(2) 输出是参考轨迹、策略、数据还是中间件能力；(3) 公开材料能否支撑训练/部署复现。**
-
-### 流程直觉（对照主表叙事）
+### 评测与长程链流程
 
 ```mermaid
 flowchart LR
-  A["上游数据 / 观测 / 配置"] --> B["CALVIN"]
-  B --> C["下游策略 / 部署 / 评测"]
+  Play["~24h VR Play Data<br/>(1% MiniLM 语言标注)"] --> Train["多上下文模仿 / VLA<br/>ABC 或 ABCD 训练"]
+  Train --> Eval["未见环境 D<br/>1000 条 5 步长程链 (LH-MTLC)"]
+  Eval --> Metric["平均连续完成长度 Avg. Len. (0-5)<br/>及第 1..5 步成功率"]
 ```
-
-具体模块边界以官方文档为准；本页不替代 README。
 
 ## 工程实践
 

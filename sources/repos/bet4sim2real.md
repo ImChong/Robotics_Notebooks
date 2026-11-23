@@ -9,6 +9,8 @@
 - **论文：** <https://arxiv.org/abs/2608.21572>
 - **许可：** README 未声明 SPDX
 - **入库日期：** 2026-08-30
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 克隆 `ISUSAIL/Bet4Sim2Real-Certificate` 并核对 `readme.md` 及四组实验目录
 - **一句话说明：** 仿真下注证书的可复现实现：合成实验 + GR00T G1 / NIST / ASTM Go2 三组回放。
 - **沉淀到 wiki：** [`wiki/entities/paper-bet4sim2real.md`](../../wiki/entities/paper-bet4sim2real.md)
 

@@ -7,6 +7,9 @@
 - **来源：** Roboparty（GitHub 组织）
 - **链接：** https://github.com/Roboparty/roboto_origin
 - **入库日期：** 2026-04-25
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读 `Roboparty/roboto_origin`（commit `d94afba`）`README_cn.md` 及 `modules/roboparty_deploy/` 关键部署入口文件（`README.md`、`tools/start_robot.sh`、`src/inference/launch/inference.launch.py`、`src/inference/src/inference_node.cpp`、`inference_node.hpp`、`ros_interface.cpp`、`robot_interface.cpp`）；未逐行阅读训练/固件全部源码或在真机硬件运行。
+- **通读：** 已完成
 - **一句话说明：** Roboparty 发布的萝博头原型机（RPO / Roboto Origin）开源聚合入口，快照汇总硬件、部署、训练、描述、固件等子仓库，目标是可复现的 DIY 人形机器人研发链路。
 - **沉淀到 wiki：** 是（`wiki/entities/roboto-origin.md`）
 

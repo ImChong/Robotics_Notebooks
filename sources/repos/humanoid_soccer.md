@@ -13,6 +13,8 @@
 - **一句话说明：** 基于 PAiD 框架的人形机器人足球技能学习系统，支持 Unitree G1 机器人的类人化踢球动作。
 - **开源状态：** **已开源**（项目页 Code 链指向本仓；Isaac Lab v2.1.1 + `shell/progressive_soccer_train_play.sh`）。
 - **沉淀到 wiki：** [paper-notebook-learning-soccer-skills-for-humanoid-robots](../../wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md), [paid-framework](../../wiki/methods/paid-framework.md), [humanoid-soccer](../../wiki/tasks/humanoid-soccer.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `TeleHuman/HumanoidSoccer` 官方 `README.md`（145 行）。
 
 ---
 

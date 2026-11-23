@@ -2,7 +2,9 @@
 type: entity
 tags: [humanoid, hardware, open-source, hightorque, robotics, research, manipulation]
 status: complete
-updated: 2026-07-09
+updated: 2026-11-21
+original:
+  - ../../sources/repos/hightorque_robotics.md
 related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
@@ -101,11 +103,44 @@ flowchart LR
 
 二者在 sim2real 语境下常并列出现（如 [HoST](./paper-host-humanoid-standingup.md) 同时支持 G1 与 Mini Pi）；选型时可与 [开源人形硬件方案对比](./open-source-humanoid-hardware.md) 及 [Unitree](./unitree.md) 交叉阅读。
 
-## 常见误区
+## 源码运行时序图（硬件通信 SDK 与训练部署栈）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Train as Isaac Gym / Lab (train.py)
+  participant Sim2Sim as MuJoCo sim2sim.py
+  participant ROS as livelybot_hardware_sdk (robot_node)
+  participant Ser as lively_serial (0xF7 CRC8/CRC16)
+  participant Joint as 自研关节电机 (USB-CDC / CAN)
+
+  Train->>Sim2Sim: 训练 PPO/BeyondMimic 并导出 JIT/ONNX
+  Sim2Sim-->>ROS: 验证运动跟踪与步态稳定
+  ROS->>Ser: 加载 YAML 参数 (6dof_STM32H730...) 并初始化串口
+  loop 控制与实时反馈循环
+    ROS->>Ser: 下发关节目标位置/速度/前馈力矩
+    Ser->>Joint: 串口打包发送至 CAN 控制板
+    Joint-->>Ser: 回传 0xF7 帧头状态包 (CRC8 头校验 + CRC16 体校验)
+    Ser-->>ROS: 发布 /joint_states 与电机反馈
+  end
+```
+
+## 工程实践
+
+| 环节 | 仓库入口与核对实证 |
+|---|---|
+| 关节硬件接入 | `livelybot_hardware_sdk`：先配置串口权限并运行 `motor_feedback.sh`（启动 `livelybot_bringup/motor_feedback.launch`），串口通信使用 `0xF7` 帧头 + `Get_CRC8_Check_Sum` + `crc_ccitt`（`lively_serial.cc`） |
+| 经典 RL 行走 | `Mini_Pi_RL_Baseline`：`python scripts/train.py --task=pai_ppo --run_name v1 --headless` → 导出 JIT 后走 MuJoCo sim2sim 与 ROS1 `sim2real` |
+| 全身跟踪 | `Mini-Pi-Plus_BeyondMimic`：含 `GMR/`、`scripts/{bvh_to_robot.py,csv_to_npz.py,convert2rknn.py,sim2sim.py}`，支持向 RKNN/TensorRT 转换 |
+| 模型基双足 | `hi_dynamic_control`：基于 OCS2 `ocs2_legged_robot_ros` + ROS1 Noetic 的串并联踝 Hi 人形 NMPC+WBC |
+| 开源六轴臂 | `Panthera-HT_SDK` 含 `panthera_cpp` 与 `panthera_python`，并与 `Panthera-HT_ROS2`（MoveIt）及 LeRobot 对接 |
+
+## 常见误区或局限
 
 - **不是玩具级舵机方案：** 官方强调自研高功率密度关节与工业级控制栈，与廉价舵机双足不同。
 - **不止一条软件栈：** BeyondMimic（跟踪）、PPO 基线（行走）、OCS2（MPC+WBC）环境依赖不同，需按任务选型而非混装。
 - **GitHub 组织 ≠ 全部历史仓：** 部分早期 RL 基线曾以 `HighTorque-Locomotion` 等账号发布，当前维护以 `HighTorque-Robotics` 组织为准。
+- **电机本体闭源：** 自研集成伺服关节的定转子电磁设计、硅钢冲片图纸与内部固件未随 SDK 仓库公开。
 
 ## 推荐继续阅读
 

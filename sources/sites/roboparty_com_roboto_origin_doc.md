@@ -7,6 +7,9 @@
 - **机构：** 机器人派对（RoboParty）
 - **类型：** site（产品文档）
 - **入库日期：** 2026-07-14
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读官方产品文档页 `https://roboparty.com/roboto_origin/doc` 基本介绍、规格参数表、系统特点与开源范围列表，并与聚合仓库 `Roboparty/roboto_origin` `README_cn.md` 交叉验证。
+- **通读：** 已完成
 - **一句话说明：** Roboto Origin（萝博头原型机 / RPO）官方文档站入口：产品背景、参数表、系统架构与开源范围；与 GitHub [roboto_origin](../repos/roboto_origin.md) 聚合仓互为补充。
 
 ## 为什么值得保留

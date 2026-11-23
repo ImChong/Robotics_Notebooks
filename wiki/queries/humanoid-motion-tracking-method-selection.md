@@ -3,9 +3,10 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-11-15
+updated: 2026-11-21
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
+  - ../../sources/papers/alert_arxiv_2611_22258.md
   - ../../sources/papers/loopermuscle_arxiv_2608_00820.md
   - ../../sources/papers/gmt_arxiv_2506_14770.md
   - ../../sources/papers/shooting_for_contact_arxiv_2608_03116.md
@@ -66,6 +67,7 @@ flowchart TD
 | 证明「能跟参考跑起来」 | 显式 tracking reward | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
 | 多动作通用 tracker | 规模化 tracking policy | [GMT](../entities/paper-gmt.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../entities/nvidia-sonic.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md)、[UniTracker](../entities/paper-loco-manip-161-024-unitracker.md)（CVAE 蒸馏；G1；**代码未开源**） |
+| 已有全身 tracker，但需要主动避让旁人 | 势场条件化 LoRA + 速度流奖励 | [ALERT](../entities/paper-alert-human-avoidance.md)（SONIC/TWIST2/BFM-Zero 冻结骨干微调；G1 真机避人；无形式化安全保证） |
 | 工业极简、跨形态真机 tracking | 下一步参考 + 无估计器 | [ZEST](../entities/paper-zest.md)（Atlas/G1/Spot；部署仍要播参考） |
 | SciRob 同期三层怎么放 | 配方 / 底座 / 感知任务，勿与 WBT 方法族混表 | [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) |
 | 比较多个已有 tracker | 四族光学基准 + HumanScore，勿只报 AMASS-140 / MPJPE | [HumanTracker](../entities/paper-humantracker.md)（评测代码已开，153 h 数据待发布） |
@@ -105,6 +107,9 @@ flowchart TD
 若已有 **AMASS 级大库** 且 tracker 已选定（如 Any2Track / TWIST2），优先评估 **[LIMMT / GQS](../methods/limmt-gqs-motion-curation.md)**：**离线** 三阶段策展（仿真可行性 → HME 多样性 → 复杂度加权 FPS）可在 **≈3% 数据** 上击败全量训练，且 **plug-and-play** 不改动算法——适合作为 WBT **阶段 3 前置数据模块**。
 
 当 **全训练集 SR 已 >98%** 但仍有 **高动态/平衡关键** 片段反复失败，且 **对失败子集加训仍学不会** 时，问题往往不在曝光而在 **acquisition capability**（保守 effort/temporal 奖励、名义重力冷启动等）。此时优先评估 **[Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md)**：**dynamic expert**（去保守奖励 + Grad-CAPS 辅助平滑）与 **balance expert**（重力课程）并行于同一残余集，再 **按 rollout 路由 DAgger 蒸馏 + RL 微调**；评测除单阈值 SR 外应看 **STC/TIS/MPJPE-W**，避免「高 SR 掩盖长尾」。
+
+
+**若 tracker 在舞蹈、踢腿或实时遥操作中可能碰到旁人，**再读 [ALERT](../entities/paper-alert-human-avoidance.md)：给冻结的动作网络加 LiDAR 凸人体包络、叠加斥力场、目标速度流与条件 LoRA，以**局部偏离后恢复原参考**为目标。它与安全滤波不同，是习得避障而非形式化碰撞保证；需要独立安全监护和急停。
 
 ### 4. 接触柔顺、场景交互与生成式补充
 

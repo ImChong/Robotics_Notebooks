@@ -3,6 +3,8 @@ type: entity
 tags: [paper, benchmark, dexterous-manipulation, manipulation, imitation-learning, simulation, sim2real, isaac-sim, tsinghua, bupt, pku]
 status: complete
 updated: 2026-10-31
+original:
+  - ../../sources/papers/handson_arxiv_2610_26765.md
 project_id: handson
 arxiv: "2610.26765"
 code: https://github.com/TsinghuaC3I/HandsOn
@@ -26,6 +28,8 @@ summary: "HandsOn（arXiv:2610.26765，清华大学等）是跨具身灵巧操�
 
 # HandsOn：面向泛化灵巧操作的大规模仿真基准
 
+## 一句话定义
+
 **HandsOn**（*A Large-Scale Simulation Benchmark for Generalizable Dexterous Manipulation*，[arXiv:2610.26765](https://arxiv.org/abs/2610.26765)，[项目页](https://llltttwww.github.io/HandsOn-website/)）是清华大学、北京邮电大学、NatureWill 与北京大学提出的仿真平台和跨具身灵巧操作 benchmark。它把多种机械臂与灵巧手、可组合任务、人工示范及闭环评测放在统一协议下，重点观察策略能否跨资产、关系、技能组合与可变形物体泛化。
 
 ## 英文缩写速查
@@ -45,8 +49,7 @@ summary: "HandsOn（arXiv:2610.26765，清华大学等）是跨具身灵巧操�
 - **暴露接触丰富任务的现实难点。** 官方分析指出，建立有效接触、协调多指/双手、按顺序完成组合任务并维持已达成目标，仍会造成显著失败。
 - **数据、代码和分数的开放边界不同。** 环境和评测入口已开源，PhysX 示范数据已公开，Newton 数据待发布；论文策略 checkpoint 未随仓库提供。
 
-## 核心信息
-
+## 核心原理
 | 项 | 内容 |
 |----|------|
 | **机构** | 清华大学、北京邮电大学、NatureWill、北京大学 |

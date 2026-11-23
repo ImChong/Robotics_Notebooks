@@ -2,6 +2,8 @@
 type: entity
 status: complete
 updated: 2026-10-21
+original:
+  - ../../sources/papers/visionhope_arxiv_2609_33325.md
 project_id: visionhope
 arxiv: "2609.33325"
 code: https://github.com/PSRben/VisionHOPE

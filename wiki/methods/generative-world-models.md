@@ -2,8 +2,9 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-23
 related:
+  - ../entities/paper-worldtrace-addressable-memory-video-world-models.md
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
   - ../entities/paper-lpwm.md
@@ -389,7 +390,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 下一尺度自回归长程 WM + 虚实校准（示例：WALL-SS）
 
-[WALL-SS](../entities/paper-wall-ss.md)（自变量机器人，2026-08-26）把 clip 级扩散换成 **InfinityStar next-scale AR**：观察–动作写成因果序列，粗尺度钉状态转移、细尺度补接触；有界时间–尺度记忆支撑约 **60 s** 流式；on-policy 视觉对齐只优化动作跟随与长程一致性。WorldArena 风格动作跟随 **0.290**（Cosmos3-Nano **0.044**）；**600** 组虚实配对成功率 MAE **0.062**、\(r=0.93\)。相对 Ctrl-World，卖点是 **自回归长程 + 校准协议**，不是合成 SFT；**训练推理代码待发布**。
+[WALL-SS](../entities/paper-wall-ss.md)（自变量机器人，[arXiv:2608.26239](https://arxiv.org/abs/2608.26239)）把 clip 级扩散换成 **InfinityStar next-scale AR**：观察–动作写成因果序列，粗尺度钉状态转移、细尺度补接触；有界时间–尺度记忆支撑约 **60 s** 流式；on-policy 视觉对齐只优化动作跟随与长程一致性。WorldArena 风格动作跟随 **0.290**（Cosmos3-Nano **0.044**）；**600** 组虚实配对成功率 MAE **0.062**、\(r=0.93\)。相对 Ctrl-World，卖点是 **自回归长程 + 校准协议**，不是合成 SFT；**训练推理代码待发布**。
 
 ### 跨本体交互模拟器 + Human-in-the-World-Model（示例：CurrentWorld-0）
 
@@ -572,7 +573,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [mimic-video（Video-Action Model）](./mimic-video.md) — 互联网视频骨干潜计划 + 流匹配动作解码器的操作策略。
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — Agibot **5B 统一视频–动作世界模型**：异构掩码预训练 + 测试时 propose–evaluate–revise（技术报告 2026-05-31）。
 - [Flex-π](../entities/paper-flex-pi.md) — **冻结 Wan VAE 共享编码 RGB+pointmap** 的多流 Joint WAM；部署算力柔性（arXiv:2608.10860；代码、权重与数据已公开）。
-- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234v2；截至 2026-09-07 代码 coming soon）。
+- [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234v5；Apache-2.0 仓库 `open-gigaai/giga-brain-wbc` 与 HF 数据集已开源）。
 - [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。
 - [GaussianDream++](../entities/paper-gaussiandream-plusplus.md) — 训练期高斯世界、部署 20 令牌
 - [ConfAL-WM](../entities/paper-confal-wm.md) — 稠密置信度主动后训练
@@ -682,6 +683,15 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - Cheng, K., et al. (2026). *M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulation and Minute-long Streaming* — 见 [sources/papers/m4world_arxiv_2607_14005.md](../../sources/papers/m4world_arxiv_2607_14005.md)。
 - Jiang, F., et al. (2026). *ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU* — 见 [sources/papers/abot_world_0_arxiv_2607_19191.md](../../sources/papers/abot_world_0_arxiv_2607_19191.md)。
 - ForeDrive（2026）— [arXiv v2](https://arxiv.org/html/2609.26299v2)；来源摘录：[foredrive_arxiv_2609_26299.md](../../sources/papers/foredrive_arxiv_2609_26299.md)。
+
+## WorldTrace：视频世界模型长程场景回访记忆（NeurIPS 2026）
+
+[WorldTrace / Addressable Memory for Video World Models](../entities/paper-worldtrace-addressable-memory-video-world-models.md) 针对交互视频世界模型的**旧场景可寻址性**：远端 KV-cache 在超出 temporal RoPE 训练相对距离后即使保留内容也可能检索失败，跨时间直接平均旋转后的 key 还会发生相位抵消。方法采用 `slot-rank virtual positions`、canonical-key Field 摘要和冻结场景入口帧 Landmark；推理期插入，无须重训 backbone。
+
+- **LoopBench**：Matrix-Game-2 的 12 个场景回访配置，组合方法平均 DINOv2 **0.587→0.778（相对 +32.6%）**；度量的是**生成场景回忆相似**，不是机器人物理准确率或控制成功率。
+- **代价与边界**：同为 6 帧 attended-cache，但组合方案额外 **3.1 GB** GPU 记忆库，论文实测每块 **1.10→1.40 s（+27%）**；14B LingBot-World 的跨架构评估有条件未领先。
+- **工程位置**：属于视频世界模型的**推理期缓存寻址与压缩**分支；与 [X-Cache](../entities/paper-x-cache.md) 的跨 chunk 计算复用不同，主要改善长期回访。
+- [原文归档](../../sources/papers/worldtrace_addressable_memory_arxiv_2608_07408.md) · [NVIDIA 项目页](https://research.nvidia.com/labs/sil/projects/WorldTrace/)
 
 ## 交互式视听生成案例
 

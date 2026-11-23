@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, martial-arts, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, hit, shanghaitech, neurips-2025]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2506.12851"
 code: https://github.com/TeleHuman/PBHC
 venue: "NeurIPS 2025"
@@ -26,6 +26,9 @@ sources:
   - ../../sources/repos/pbhc.md
   - ../../sources/papers/humanoid_pnb_kungfubot-physics-based-humanoid-whole-body-cont.md
 summary: "KungfuBot（TeleAI/SJTU 等，NeurIPS 2025）以多阶段 SMPL motion 处理 + 双层优化自适应跟踪容差课程 + 非对称 actor-critic RL，在 Unitree G1 真机复现武术/舞蹈高动态技能；官方实现 PBHC 开源 IsaacGym→MuJoCo/真机管线。"
+original:
+  - ../../sources/papers/kungfubot_pbhc_neurips2025.md
+  - ../../sources/repos/pbhc.md
 ---
 
 # KungfuBot（Physics-Based Highly-Dynamic WBT）
@@ -111,6 +114,13 @@ flowchart TB
 - **仿真：** 多难度 motion 集上 PBHC **一致优于** 可部署基线，接近 oracle；Tai Chi 等 sim-to-real 根轨迹形态对齐（真机根位姿不可测，实验固定原点）。
 - **真机（G1）：** Jump/roundhouse/side/front/back kick、360° spin、舞蹈、李小龙 pose、组合拳、马步、太极、stretch leg 等（见 [项目页](https://kungfubot.github.io/) 视频）。
 
+## 与其他工作对比
+
+- **vs 可部署基线与特权 Oracle：** 在多难度 motion 集合仿真评测中，KungfuBot（PBHC）在各难度级别上均一致优于可部署基线，性能接近特权观测 oracle（MaskedMimic 除外）。
+- **课程机制内部消融（双层自适应容差 vs 固定 tracking factor）：** 项目页消融表明，随当前跟踪误差动态调参的双层优化课程在各类高动态动作上均可接近最优，而固定 tracking factor 变体在不同难度动作间表现分化明显。
+- **vs 续作 [KungfuBot 2 / VMS](./paper-notebook-kungfubot-2.md)：** v1 聚焦单技能高动态动作与自适应跟踪容差课程；v2（VMS）转为面向单策略多技能覆盖与分钟级长序列稳定（混合局部-全局目标 + OMoE + 段级奖励）。
+- **vs 同领域高动态/长时程工作：** [KungFuAthleteBot](./paper-kungfuathlete-humanoid-martial-arts-tracking.md) 侧重武术运动员数据集与 tracking + 跌倒 recovery 整合；[RobotDancing](./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) 聚焦长时程舞蹈并在其 Table V 中将 KungfuBot-style 作为同协议重实现基线对比选择性残差动作与长尾采样。
+
 ## 源码运行时序图
 
 官方实现 [TeleHuman/PBHC](https://github.com/TeleHuman/PBHC)（KungfuBot）：重定向 `mink_retarget/` 或 `phc_retarget/`；训练 `humanoidverse/train_agent.py +simulator=isaacgym +exp=motion_tracking`；评估 `eval_agent.py`；部署 `humanoidverse/urci.py +simulator=mujoco +checkpoint=…onnx`。一次完整运行如下：
@@ -142,6 +152,10 @@ sequenceDiagram
 - **motion pipeline 与 policy pipeline 分离**：换重定向后端不必改训练脚本接口。
 - **URCI** 是统一机器人控制入口，仿真与真机靠 `+simulator=` 切换。
 
+## 工程实践
+
+- **严格执行多阶段数据质检与双层容差训练**：在官方 [PBHC](https://github.com/TeleHuman/PBHC)（CC BY-NC 4.0）管线中先通过 `smpl_vis` 与物理接触滤波器清除重定向高难动作中的穿透与速度突变，再启用基于跟踪误差动态收窄的双层优化课程，并在 IsaacGym 收敛后用 MuJoCo sim2sim 单独核对关节峰值扭矩与足端触地冲击再上真机 G1。
+
 ## 结论
 
 **高动态 WBT 的关键不是固定 tracking factor，而是物理约束 motion 管线 + 按误差自适应的双层容差课程。**
@@ -153,13 +167,13 @@ sequenceDiagram
 5. **复现栈** — PBHC：`mink/phc_retarget` → IsaacGym `train_agent` → `urci.py` 切 MuJoCo/真机；注意 CC BY-NC，且仓内已混入 v2 模块勿混淆。
 6. **同域分工** — 相对 KungFuAthleteBot 的数据集+recovery，本文抓单技能高动态与自适应容差。
 
-## 常见误区
+## 局限与风险
 
 1. **PBHC ≠ 仅论文代码：** 2025-10 起同一仓库已支持 KungfuBot2 **general motion tracking**——读 README 时区分 v1 论文方法与 v2 VMS 模块。
 2. **不是纯 BC：** 核心是 **physics-based RL 模仿** + 课程，而非行为克隆直接回归关节角。
 3. **与 KungFuAthlete 不同重点：** 后者强调 **运动员级数据集统计 + tracking∪recovery**；KungfuBot v1 强调 **单技能高动态 + 自适应容差**。
 
-## 与其他页面的关系
+## 关联页面
 
 - **续作：** [KungfuBot 2 / VMS](./paper-notebook-kungfubot-2.md) — 单策略多技能、OMoE、段级奖励、长序列
 - **姊妹：** [KungFuAthleteBot](./paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 武术数据集 + 跌倒恢复

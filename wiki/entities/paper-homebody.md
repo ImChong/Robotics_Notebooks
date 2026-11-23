@@ -12,7 +12,7 @@ tags:
   - stanford
   - caltech
 status: complete
-updated: 2026-11-06
+updated: 2026-11-22
 venue: "Project page September 2026"
 related:
   - ../tasks/loco-manipulation.md

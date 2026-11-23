@@ -11,7 +11,7 @@ tags:
   - ucsb
   - nvidia
 status: complete
-updated: 2026-11-11
+updated: 2026-11-21
 arxiv: "2611.06817"
 project: https://dagroup-pku.github.io/open-humanwam/
 code: https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM
@@ -243,6 +243,8 @@ sequenceDiagram
 - 项目根代码标注 Apache-2.0；Goal 原生模型组件还涉及 NVIDIA Cosmos 的 OpenMDW-1.1、独立的模型权重与数据卡许可，应分别检查。
 
 ## 关联页面
+
+- [Awaken-HI：50K 小时同步全身人类经验的 T800 VLA](paper-awaken-hi.md) — 对照其原人体运动 + 重定向动作共享专家与本工作的双路线 WAM；Awaken-HI 目前只开放 1 条数据样例与项目说明。
 
 - [模仿学习](../methods/imitation-learning.md)
 - [机器人操作](../tasks/manipulation.md)

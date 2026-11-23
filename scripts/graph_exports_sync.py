@@ -13,6 +13,7 @@ from pathlib import Path
 GRAPH_EXPORT_FILES: tuple[str, ...] = (
     "link-graph.json",
     "link-graph-summaries.json",
+    "mini-graph.json",
     "graph-stats.json",
     "home-stats.json",
     "wiki-activity.json",

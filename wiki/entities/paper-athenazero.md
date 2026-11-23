@@ -11,9 +11,13 @@ tags:
   - effective-mass
   - rai-institute
 status: complete
-updated: 2026-09-22
+updated: 2026-11-22
+arxiv: "2609.19194"
 doi: "10.1126/scirobotics.aee1868"
 venue: "Science Robotics 2026"
+original:
+  - ../../sources/papers/athenazero_scirobotics_aee1868.md
+  - ../../sources/sites/rai-athenazero-blog.md
 related:
   - ./paper-robot-juggling-athenazero.md
   - ./paper-zest.md
@@ -229,6 +233,7 @@ sequenceDiagram
 - [深蓝具身智能 · SciRob 封面导读（2026-09-22）](../../sources/blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md)
 - [RAI AthenaZero 博客归档](../../sources/sites/rai-athenazero-blog.md)
 - [effective_mass_analysis 仓库归档](../../sources/repos/effective_mass_analysis.md)
+- [arXiv:2609.19194 公开预印本](https://arxiv.org/abs/2609.19194)
 - [Science Robotics DOI](https://doi.org/10.1126/scirobotics.aee1868)
 
 ## 推荐继续阅读

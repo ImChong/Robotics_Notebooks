@@ -1,9 +1,15 @@
 ---
 type: entity
+project_id: motion-x
+arxiv: "2307.00818"
+venue: "NeurIPS 2023"
+project: https://motion-x-dataset.github.io
 tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, idea, tsinghua, cuhk-sz]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/IDEA-Research/Motion-X
+code_scope: "Motion-X v1 管线与划分（datasets/{all,train,val,test}.txt、mocap-dataset-process/ 与 tomato_represenation/ 81.1K SMPL-X 322 维管线）"
+project_distinction: "NeurIPS 2023 初代 Motion-X 数据集与论文实体（arXiv:2307.00818，81.1K 序列 / 144.2h）；多模态升级版（120.5K 序列 / 80.8K 视频 / 45.3K 音频）见独立论文与数据集节点 dataset-bfm-motion-xpp（arXiv:2501.05098）。"
 summary: "面向 3D 表现力全身人体运动的大规模数据集与自动标注管线，统一 81.1K 条序列（15.6M 帧、144.2 小时 @30fps）的 322 维 SMPL-X 身体/双手/面部参数与双粒度文本标注。"
 related:
   - ./dataset-bfm-motion-xpp.md

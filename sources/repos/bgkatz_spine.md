@@ -9,7 +9,8 @@
 - **许可：** （仓库未在 API 中钉死 SPDX；以 GitHub 页面为准）
 - **星标（截至 2026-07-25）：** ~118
 - **固件（mbed）：** https://os.mbed.com/users/benkatz/code/SPIne/
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 克隆核对 `SPIne_V2/` Eagle 原理图/PCB/BOM 目录与文件边界）
+- **通读：** 已完成
 - **一句话说明：** Mini Cheetah / Katz 四足中的「计算机 ↔ 四路 CAN」桥接板；论文附录 A 列为 SPIne 硬件入口。
 - **开源状态：** **已开源**（硬件；固件在 mbed）
 - **关联论文：** [low_cost_modular_actuator_katz_mit_2018](../papers/low_cost_modular_actuator_katz_mit_2018.md)

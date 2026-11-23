@@ -8,6 +8,9 @@
 - **入库日期：** 2026-04-08
 - **最后更新：** 2026-09-15
 - **一句话说明：** 聚焦任务空间控制、层级 QP 与动力学一致控制，用于支撑 WBC、TSID、HQP 等核心页面。
+- **补充开放全文：** Wensing et al. 2024 (https://arxiv.org/abs/2211.11644)、Kim et al. 2019 (https://arxiv.org/abs/1909.06586)、OSQP (https://arxiv.org/abs/1711.08013)
+- **通读：** 已完成
+- **核对范围：** 已通读 Wensing et al. T-RO 2024（arXiv:2211.11644）§ VI WBC/HQP 形式化与对比、Kim et al. 2019（arXiv:1909.06586）WBIC QP + τ_j 求解与 Stellato et al. OSQP（arXiv:1711.08013v4，2,679 行）
 
 ## 核心论文摘录（MVP）
 

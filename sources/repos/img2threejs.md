@@ -14,6 +14,8 @@
 - **开源状态：** **已开源** — 主仓许可证为 Apache-2.0；仓库包含 `SKILL.md`、`forge/`、`grimoire/`、文档与脚本。配套插件通过单独仓库分发，个别插件可能需要授权访问。
 - **项目身份：** 当前官方主仓为 `img2threejs/img2threejs`；早期归档的 `hoainho/img2threejs` 是该项目的旧仓库地址，不另建实体。
 - **沉淀到 wiki：** 是 → [`wiki/entities/img2threejs.md`](../../wiki/entities/img2threejs.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `img2threejs/img2threejs` 官方 `README.md`（46,391 字节）。
 
 ## 为何值得保留
 

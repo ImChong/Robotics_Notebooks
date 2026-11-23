@@ -13,6 +13,9 @@
 - **索引来源：** [具身智能小站 10 篇盘点](../../sources/blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md)（<https://mp.weixin.qq.com/s/EmC4gNgcQdPX34vxy-qSVQ>）
 - **一句话说明：** 见下方摘录与 wiki 映射。
 
+- **通读：** 已完成
+- **核对范围：** 已通读主论文 `arXiv:2608.19613` PDF 提取全文（`2608.19613.txt`，92,341 字节），核对核心方法、公式、实验基准与局限章节。
+
 ## 开源状态（步骤 2.5）
 
 - **已开源**：[`XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning`](https://github.com/XizoB/What-Matters-for-Latent-Actions-in-Robot-Learning)；HF 模型 [`XizoB/LAM`](https://huggingface.co/XizoB/LAM)。

@@ -18,6 +18,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/test-driven-development.md
   - ../entities/open-code-review.md
+  - ../entities/oh-my-pi.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ../entities/paper-3d-gamedev-arena.md
 original:
@@ -140,6 +141,8 @@ flowchart TD
 [3D GameDev Arena（arXiv:2611.24073）](../entities/paper-3d-gamedev-arena.md) 将从零构建浏览器游戏的功能规则、代理试玩和人类盲选分成三层；说明功能测试通过与真正的用户体验偏好不能等同。该研究**不是机器人现场安全测试**。
 
 ## 关联页面
+
+- [oh-my-pi（OMP）](../entities/oh-my-pi.md) — 终端 Coding Agent 将 LSP/DAP、子代理与开发工具合入执行运行时；生成代码后的测试与独立验收仍按本页执行。
 
 - [Coding Agent 验证与代码评审分工](../comparisons/coding-agent-verification-vs-code-review.md) — 对照行为证据与审查、审批、发布门禁。
 

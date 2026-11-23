@@ -15,6 +15,9 @@
 - **模型：** [Hugging Face Collection](https://huggingface.co/collections/xandergos/terrain-diffusion)
 - **许可：** MIT（Modrinth 标注）
 - **入库日期：** 2026-07-14
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `github.com/xandergos/terrain-diffusion` 官方仓库 `README.md`、`terrain_diffusion/__main__.py`（CLI `explore`/`api`/`generate`/`mc-api`/`tiff-export`）、`terrain_diffusion/inference/api.py` 及 `terrain_diffusion/inference/world_pipeline.py`（`WorldPipeline.from_pretrained` / `.bind` / `.get` / `_compute_elev` / `_compute_climate`）。
+- **通读：** 已完成
 - **一句话说明：** SIGGRAPH 2026 **InfiniteDiffusion** 的官方 Python 实现与 **Terrain Diffusion** 分层地形模型；提供探索 GUI、REST 式 API、Azgaar→GeoTIFF 条件导出，以及可游玩的 **Minecraft Fabric** 世界类型集成。
 - **沉淀到 wiki：** [InfiniteDiffusion / Terrain Diffusion](../../wiki/entities/paper-infinite-diffusion-terrain-diffusion.md)
 

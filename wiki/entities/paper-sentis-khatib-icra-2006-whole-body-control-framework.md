@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, wbc, humanoid, operational-space, priority-control, impedance, classic, stanford, honda]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 venue: "ICRA 2006"
 doi: "10.1109/ROBOT.2006.1642100"
 summary: "ICRA 2006：Sentis–Khatib 人形环境全身控制框架——约束/操作/姿态层级、浮基动力学、运行时可行性监测与阻抗交互。"

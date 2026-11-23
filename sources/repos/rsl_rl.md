@@ -14,6 +14,8 @@
 - **入库日期：** 2026-08-28
 - **一句话说明：** GPU 加速的轻量机器人 RL 库：PPO 与 Student–Teacher Distillation；`update()` 可选 bfloat16 混合精度；对接 Isaac Lab / Legged Gym / mjlab / MuJoCo Playground。
 - **沉淀到 wiki：** 是 → [`wiki/entities/rsl-rl.md`](../../wiki/entities/rsl-rl.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `leggedrobotics/rsl_rl` 官方 `README.md`（2,483 字节）与 `arXiv:2509.10771`。
 
 ## 开源核查（2026-08-28）
 

@@ -3,7 +3,7 @@
 type: entity
 tags: [world-models, model-based-rl, isaac-lab, anymal, eth-rsl, open-source, dynamics-model, offline-rl, eth]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ../methods/model-based-rl.md

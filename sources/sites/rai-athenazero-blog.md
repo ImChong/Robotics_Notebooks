@@ -7,7 +7,9 @@
 - **配套学习论文：** [`sources/papers/robot_juggling_arxiv_2608_26800.md`](../papers/robot_juggling_arxiv_2608_26800.md)
 - **机构：** 机器人与人工智能研究所（RAI Institute）
 - **发布日期：** 2026-04-07（博客页）
-- **入库日期：** 2026-09-05（2026-09-17 更新：链 SciRob 论文与开源仓）
+- **入库日期：** 2026-09-05（2026-09-17 更新：链 SciRob 论文与开源仓；2026-11-22 复核）
+- **核对范围：** 通读官方博客全文（<https://rai-inst.com/resources/blog/bimanual-robot-for-dynamic-manipulation/>，12,896 字符，56 段正文含有效质量、准直驱/远端化、棒球投接打 70/41/31 mph、FR3/UR5e 对比与控制/热限局限）。
+- **通读：** 已完成
 
 ## 一句话摘要
 

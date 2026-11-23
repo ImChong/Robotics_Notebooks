@@ -9,7 +9,7 @@ tags:
   - autonomous-experimentation
   - research-automation
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 related:
   - ./andrej-karpathy.md
   - ./darwin-skill.md
@@ -26,6 +26,8 @@ related:
   - ./paper-metarsi-v1.md
   - ../../schema/ingest-workflow.md
 sources:
+  - ../../sources/repos/karpathy-autoresearch.md
+original:
   - ../../sources/repos/karpathy-autoresearch.md
 summary: "karpathy/autoresearch 把单 GPU nanochat 训练收成三文件闭环：代理只改 train.py，在固定 5 分钟预算内以 val_bpb 做 keep/discard 循环；人类迭代 program.md 作为轻量研究组织技能，是 AI Auto-Research S3 阶段的可复现最小实例。"
 ---
@@ -54,7 +56,7 @@ summary: "karpathy/autoresearch 把单 GPU nanochat 训练收成三文件闭环�
 - **与机器人 ML 的间接关系：** 本仓训练 LLM，但 **固定预算实验环、单一验证指标、代理改训练脚本** 的结构可迁移到 sim 中策略训练、小模型 ablation 或 benchmark 复现 — 前提是环境能提供 **自动 reset + 可比 metric**（参见 [ENPIRE](../methods/enpire.md) 的真机 autoresearch 叙事）。
 - **Skill 域映射：** [Darwin Skill](./darwin-skill.md) 将同一 **keep/revert 棘轮** 映射到 `SKILL.md` 优化（9 维评分 + 独立评委 + 人在回路），与 [Nuwa](./nuwa-skill.md) / [Cangjie](./cangjie-skill.md) 的「造 skill」形成闭环。
 
-## 核心结构
+## 核心机制与结构
 
 | 文件 | 角色 | 修改者 |
 |------|------|--------|
@@ -92,14 +94,19 @@ flowchart LR
 | 验证 | val_bpb + 固定时长 | `make ci-preflight`、lint | TDD、code review | 9 维分 + test-prompts |
 | 目标 | 更优 LLM 训练配置 | 知识编译与交叉引用 | 可交付软件质量 | 更优 skill rubric |
 
-## 常见误区
+## 工程实践
+
+- **冻结评估与数据基线再放权：** 保持 `prepare.py` 只读，先单独跑通 1 次 5 分钟基线验证 `val_bpb` 可复现、日志格式稳定，再交给代理通宵迭代 `train.py`。
+- **把领域契约写进 `program.md`：** 明确单次修改粒度、git commit/revert 约定与 OOM 异常处理规则，避免代理一次大改多处超参导致归因失真。
+
+## 常见误区或局限
 
 - **误区 1：stars 多 = 已解决科研自动化。** 仓库刻意极小；成功依赖 **GPU、数据准备、代理权限与 `program.md` 质量**，并非开箱端到端发论文。
 - **误区 2：应直接改 `prepare.py` 扩平台。** README 明确 `prepare.py` 不在代理编辑面内；跨平台应 fork 或参考完整 nanochat，而非破坏可比契约。
 - **误区 3：val_bpb 低即「更好模型」可泛化。** 固定 5 分钟预算优化的是 **该平台上的短时训练配置**；跨硬件/数据集的排行榜意义有限。
 - **误区 4：`program.md` 只是 README 附录。** 它是 **可版本化的研究组织程序** — 迭代它等价于迭代「自主研究部门」的行为，而非润色提示词。
 
-## 与其他页面的关系
+## 关联页面
 
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 生命周期框架；本仓落 **S3** 与 **Explore→Execute→Verify** 分层。
 - [Andrej Karpathy](./andrej-karpathy.md) — 作者；nanochat / Zero to Hero 教育栈的实验自动化延伸。

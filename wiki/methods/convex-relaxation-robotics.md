@@ -8,6 +8,7 @@ related:
   - ../concepts/optimal-control.md
   - ./penalty-barrier-augmented-lagrangian.md
   - ../formalizations/riemannian-manifold-tangent-space.md
+original: ../../sources/papers/graesdal_tight_convex_relaxations_arxiv_2402_10312.md
 sources:
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "机器人凸松弛：QCQP 松弛、Riemannian Staircase、分布式松弛与 GNC，用于姿态、抓取、配准等非凸问题的可解近似。"
@@ -31,7 +32,11 @@ summary: "机器人凸松弛：QCQP 松弛、Riemannian Staircase、分布式松
 | SOCP | Second-Order Cone Program | 范数/摩擦类约束 |
 | SVD | Singular Value Decomposition | 投影回可行旋转的常用后处理 |
 
-## 核心方法（课程第 6 章）
+## 为什么重要
+
+- **不依赖初值的近全局规划（Graesdal et al., RSS 2024 arXiv:2402.10312v2）**：含旋转几何和接触开关的多体规划问题高度非凸，传统直接轨迹优化极易陷入局部极小值；通过半定规划（SDP）对接触模态内 QCQP 做紧松弛并组合凸集图（GCS），可在无人工初值下求出接近全局最优的推挤接触序列。
+
+## 核心原理（核心方法）
 
 ### 6.2 QCQP 凸松弛
 
@@ -63,7 +68,11 @@ Huber / Geman-McClure 等 **鲁棒核** 可视为 GNC 的连续版本，与 [Adj
 | 点云配准 outlier | GNC / ICP 变体 |
 | 足端接触时序 | 混合整数松弛 |
 
-## 常见误区
+## 工程实践
+
+- **SDP 松弛求解 + 廉价局部舍入（Rounding）**：离线先解带秩-1 约束的紧凸松弛下界（或用对角/低阶锥逼近降耗时），再执行轻量局部 NLP 舍入并下发混合 MPC 真机跟踪（Kuka LBR iiwa 7 验证）；目前大型 SDP 尚不适于毫秒级在线反推。
+
+## 常见误区或局限
 
 - **松弛解总是可行**：需 projection / rounding 回物理可行集。
 - **SDP 可实时**：规模一大仅离线；在线用 SOCP/QP 近似。
@@ -78,7 +87,7 @@ Huber / Geman-McClure 等 **鲁棒核** 可视为 GNC 的连续版本，与 [Adj
 | GNC | 鲁棒核 / outlier | 逐步收紧凸 surrogate |
 | 分布式 ADMM | 因子图 | 局部 SOCP/QP |
 
-## 与其他页面的关系
+## 关联页面
 
 - [Optimal Control](../concepts/optimal-control.md) — 非凸 OCP 出口
 - [Symmetric Cone Programming](../formalizations/symmetric-cone-programming.md)
@@ -91,4 +100,5 @@ Huber / Geman-McClure 等 **鲁棒核** 可视为 GNC 的连续版本，与 [Adj
 
 ## 参考来源
 
+- [graesdal_tight_convex_relaxations_arxiv_2402_10312.md](../../sources/papers/graesdal_tight_convex_relaxations_arxiv_2402_10312.md) — Graesdal et al., *Towards Tight Convex Relaxations for Contact-Rich Manipulation* (RSS 2024, arXiv:2402.10312v2)
 - [sources/courses/numerical_optimization_foundations_robotics.md](../../sources/courses/numerical_optimization_foundations_robotics.md) — 第 5 章 5.1、第 6 章凸松弛

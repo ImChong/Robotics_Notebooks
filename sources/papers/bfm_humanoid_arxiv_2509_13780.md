@@ -11,6 +11,8 @@
 - **作者：** Weishuai Zeng, Shunlin Lu, Kangning Yin, Xiaojie Niu, Minyue Dai, Jingbo Wang, Jiangmiao Pang
 - **机构：** 北京大学、香港中文大学（深圳）、上海交通大学、复旦大学、**上海人工智能实验室**
 - **入库日期：** 2026-05-18
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `arXiv:2509.13780v1` 全文 PDF（全 614 行抽取文本：§1–§6、Table I–IV 奖励/域随机/benchmark 与图注）。
 - **一句话说明：** 以 **掩码在线蒸馏 + CVAE** 把人形 **全身控制（WBC）** 的多种控制接口（根、关节、关键点等）抽象成 **位级掩码可选** 的 **条件生成模型**，在 Unitree G1 上做 motion tracking / VR 遥操作 / locomotion 等多任务统一策略，并通过 **潜空间插值 + classifier-free 调制 + 残差解码器** 实现行为组合与新技能（如 Side Salto）少样本获取。
 
 ## 摘要级要点（与 abs / HTML 一致）

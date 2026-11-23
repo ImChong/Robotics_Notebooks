@@ -7,6 +7,7 @@ related:
   - ../concepts/state-estimation.md
   - ../concepts/sensor-fusion.md
   - ../concepts/contact-estimation.md
+original: ../../sources/books/barfoot_state_estimation_2ed.md
 sources:
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/papers/state_estimation.md
@@ -50,7 +51,7 @@ updated: 2026-09-15
 
 EKF 每步在局部用雅可比替代 $A,C$，其余与 **线性 KF** 相同。完整符号、矩阵含义与 predict–update 推导见独立形式化页 [Kalman Filter (KF)](./kalman-filter.md)；一手文献见 [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md)（Kalman 1960；Gelb 1974 EKF 章节）。
 
-## EKF：非线性扩展
+## 核心原理（EKF 非线性扩展）
 
 非线性系统：
 
@@ -104,7 +105,12 @@ EKF 在旋转相关状态上有一致性问题（observability 不一致）。**
 
 代表工作：Hartley et al. *Contact-Aided Invariant EKF*，是当前足式机器人状态估计的主流算法之一。
 
-## EKF 的局限
+## 工程实践
+
+- **雅可比一致性与迭代改进（Barfoot 2ed § 4.2.3–4.2.6）**：每步围绕最新名义状态 $\hat{x}_{k-1}, \check{x}_k$ 求一阶解析雅可比 $F_{k-1}, G_k$；当强非线性观测导致线性化误差过大时，采用迭代 EKF（IEKF）即可等价收敛到批处理 Gauss-Newton MAP 解。
+- **双足本体融合（Hartley IJRR 2020）**：在李群上使用接触辅助 Invariant EKF（$SE_k(3)$）使误差动力学脱离估计状态本身，消除传统四元数 EKF 的虚假可观性与发散倾向。
+
+## 局限与误区（EKF 的局限）
 
 | 问题 | 描述 |
 |------|------|
@@ -129,6 +135,7 @@ EKF 在旋转相关状态上有一致性问题（observability 不一致）。**
 
 ## 参考来源
 
+- [barfoot_state_estimation_2ed.md](../../sources/books/barfoot_state_estimation_2ed.md) — Barfoot《State Estimation for Robotics 2ed》Ch. 4（§ 4.2.3 EKF 与 § 4.2.5 IEKF）
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 一手论文与教材索引（Kalman 1960；Gelb 1974；Simon 2006 等）
 - [mit_underactuated_kalman_lqr.md](../../sources/courses/mit_underactuated_kalman_lqr.md) — MIT 估计与 EKF 应用讲义
 - Hartley et al., *Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation* (2020) — 足式机器人 InEKF 代表（亦见 [state_estimation.md](../../sources/papers/state_estimation.md)）

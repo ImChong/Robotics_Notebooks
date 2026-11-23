@@ -2,7 +2,9 @@
 type: entity
 tags: [robotera, repo, china-embodied-opensource, open-source, project]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/teleop_client.md
 related:
   - ./robotera.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -38,7 +40,17 @@ code: https://github.com/roboterax/teleop_client
 
 这一入口补足[星动纪元](./robotera.md)研究与产品之间的工程接口；读者可核对公开代码和厂商运行环境的边界，避免仅凭仓库名推断完整复现能力。
 
-## 核心结构
+## 核心原理
+
+`teleop_client` 是位于操作端与机载服务端之间的轻量 ROS 2 客户端/接口包，提供统一的状态机生命周期命令（`start_sdk → init_teleop → start_teleop → stop_teleop → stop_sdk`）以及 `xbot_common_interfaces` 消息定义，不包含机器人侧底层运动控制、VR/WebXR 重定向服务端或数采 recorder 实现。
+
+```mermaid
+flowchart LR
+  CMD["操作者命令<br/>start_sdk / init_teleop / start_teleop"] --> CLI["teleop_client (ROS 2 客户端)<br/>l3_pub_client.py / q5_pub_client.py"]
+  CLI -- "Trigger / DynamicLaunch / SimpleTrajectory" --> SRV["机器人侧 ROS 2 服务端 (仓外)<br/>关节初始化 / 复位 / 激活"]
+  CLI -- "StringMessage JSON (/teleoperation/service)" --> TEL["遥操作与数采服务 (仓外)<br/>webxr / retargetx / mpc / rl"]
+  VR["VR / Gamepad / 相机设备"] --> TEL
+```
 
 | 机构 | 星动纪元（ROBOTERA） |
 | --- | --- |

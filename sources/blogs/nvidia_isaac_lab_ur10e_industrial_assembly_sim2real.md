@@ -9,6 +9,9 @@
 - **入库日期：** 2026-08-30
 - **一句话说明：** 在 Isaac Lab 中用 IndustReal 思路训练 UR10e **齿轮装配**（抓取 / 自由空间运动 / 插入三技能），经 **Isaac ROS（Segment Anything + FoundationPose）** 感知与 **UR Direct Torque 阻抗控制（500 Hz URScript）** 实现 **零样本 sim-to-real**。
 
+- **通读：** 已完成
+- **核对范围：** 已通读 NVIDIA Developer 官方博文全文（18,307 字符）与 `isaac-sim/IsaacLab` README。
+
 ## 开源与项目页核查（步骤 2.5）
 
 | 组件 | 开放程度 | 说明 |

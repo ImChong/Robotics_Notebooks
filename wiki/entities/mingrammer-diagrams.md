@@ -11,6 +11,7 @@ related:
   - ./archify.md
   - ./gitdiagram.md
   - ./diagram-design.md
+  - ./ythx-101-live-panel-skill.md
 original:
   - ../../sources/repos/mingrammer-diagrams.md
   - ../../sources/sites/diagrams-mingrammer-com.md
@@ -138,6 +139,7 @@ with Diagram("Web Service", show=False):
 - [Archify](./archify.md) — Agent 写 JSON IR，经确定性检查与渲染生成独立 HTML/SVG 架构工件
 - [GitDiagram](./gitdiagram.md) — 用模型辅助分析现有 GitHub 仓库并生成 Mermaid 架构解释；不同于手写 Diagrams 拓扑
 - [Diagram Design](./diagram-design.md) — 架构与演示视觉交付相关 Skill
+- [live-panel-skill](./ythx-101-live-panel-skill.md) — 将 JSON/Excalidraw 架构图渲染成 MP4 或循环网页；与 Diagrams 的静态图互补
 
 ## 参考来源
 

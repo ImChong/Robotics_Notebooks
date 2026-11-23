@@ -9,7 +9,7 @@ tags:
   - representation
   - 3d-motion
 status: complete
-updated: 2026-11-20
+updated: 2026-11-21
 summary: "WorldFlow：以 Cosmos-Nano 为基础联合生成未来视频和查询点 3D 位移，WorldFlowBench 评估轨迹预测，并以独立抓取/规划/控制管线验证机器人操作；当前官方仓库仅开放文档与素材。"
 related:
   - ../concepts/world-action-models.md
@@ -136,6 +136,12 @@ flowchart TD
 3. 64 点/49 帧与 40 步生成带来实际推理预算，论文未提供公开可运行权重，不能据此认定已有部署时延。
 4. 对跨场景泛化特别留意伪标注、遮挡、点采样、相机估计和不同源域尺度。
 5. 与 [WAM 纵深路线](../../roadmap/depth-wam.md) 的 Stage 1 共同阅读：它提供世界预测与几何计划接口，而非端到端世界—动作联合生成。
+
+## 与其他工作对比
+
+- **对比「视频生成 + 事后 3D 追踪」两阶段管线：** 在 WorldFlowBench（Table 1）上，论文对比了 NovaFlow、`Cosmos3-Nano + Track4World (T4W) / 4RC` 与 `LingBot-Video-MoE + T4W / 4RC`。即便以同一 WorldFlow 检查点先生成未来视频再用 `T4W` / `4RC` 追踪轨迹，SpatialCog ADE 仍从直接生成 flow 的 `0.060 m` 升至 `0.083 m` 和 `0.098 m`，说明显式联合生成 3D flow token 能减少像素到三维追踪的级联误差；不过在 Real3 上，WorldFlow 的 PWT（`0.311`）仍略低于 `Cosmos3-Nano + 4RC`（`0.332`）。
+- **对比「直接预测 3D flow」方法与 flow-only 消融：** 在直接流预测基线 `MolmoMotion-AR-H1`、`μ₀`、`EgoWAM` 及同架构 `WorldFlow (flow-only)` 对照中，WorldFlow 在 Sim7/Real3/SpatialCog 均取得最低 ADE/FDE（相对 `flow-only` ADE 分别降低 `48.5%`、`19.8%`、`55.9%`），证明预训练视频视觉演化的联合监督显著收紧几何预测误差。
+- **对比端到端 [WAM](../concepts/world-action-models.md) 与 [VLA](../methods/vla.md) 策略：** 如 [FloMo](./paper-flomo.md) 与 [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) 都在同一骨干中联合预测机器人动作 chunk；WorldFlow 则不预测关节或末端动作，只在独立抓取、IK 与控制管线中作为可替换的 3D 运动预测前端（RoboLab Orch 相比同管线 `μ₀` 从 `3.82%` 升至 `38.54%`，Table 2 中其余独立训练策略如 `Cosmos3-Nano-Policy` 仅作不同协议的背景参照）。
 
 ## 工程实践
 

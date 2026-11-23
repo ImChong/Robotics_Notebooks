@@ -10,7 +10,7 @@ tags:
   - navigation
   - legged-gym
 status: complete
-updated: 2026-11-01
+updated: 2026-11-22
 code: https://github.com/LeCAR-Lab/ABS
 related:
   - ../entities/legged-gym.md
@@ -23,6 +23,7 @@ sources:
   - ../../sources/repos/abs_agile_but_safe.md
   - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "ABS 是「Agile But Safe: Learning Collision-Free High-Speed Legged Locomotion」（RSS 2024）的官方实现：在 legged_gym / rsl_rl 之上训练高速且无碰撞的四足运动。"
+original: ../../sources/repos/abs_agile_but_safe.md
 ---
 
 # ABS（Agile But Safe）
@@ -53,6 +54,10 @@ summary: "ABS 是「Agile But Safe: Learning Collision-Free High-Speed Legged Lo
 | **最近提交** | 2024-07-11 |
 | **可达性** | `git ls-remote` 可达（2026-11-01） |
 | **文章归类** | 强化学习 |
+
+## 核心原理
+
+将四足高速自主穿越分解为“敏捷运动（agile policy）”与“故障/碰撞安全恢复（recovery policy）”两条策略（含 PPO-Lagrangian 约束变体 `go1_pos_rough_ppo_lagrangian`）；通过训练期代价计算 `compute_cost` 与物理防护约束，使四足机器人在追求 3–4 m/s 高速奔跑的同时具备动态避碰与安全兜底能力。
 
 ## 文章说法核对
 
@@ -97,6 +102,16 @@ sequenceDiagram
 
 图依据：ABS@9b95329，读过 `README.md`、`training/legged_gym/legged_gym/scripts/train.py`、`envs/__init__.py`、`utils/task_registry.py`、`envs/base/legged_robot.py`（step、post_physics_step）、`envs/base/legged_robot_pos.py`（方法列表与 compute_cost）、`envs/go1/go1_pos_config.py`（PPO 配置类）、`training/rsl_rl/rsl_rl/runners/on_policy_runner.py` 与 `on_policy_runner_cost.py`（learn）、`algorithms/ppo.py`（方法签名）。`testbed.py`（Reach-Avoid 网络）、`camrec.py` 与 `deployment/` 未读，未画。
 
+## 工程实践
+
+- **多任务训练顺序**：先按 README 在 `training/legged_gym/legged_gym` 分别训练敏捷定位策略（`go1_pos_rough` 或 `go1_pos_rough_ppo_lagrangian`）和恢复策略（`go1_rec_rough`），再用 `play.py` 在仿真验证安全触发阈值。
+- **依赖版本红线**：严格绑定 `numpy` 1.21（必须 `< 1.24` 且 `> 1.20`）与 `setuptools==59.5.0` 及内置 fork 版 `rsl_rl` / `legged_gym`。
+
+## 局限与风险
+
+- **商用限制许可**：代码仓库及继承的 Legged Gym / RSL-RL 组件采用 CC BY-NC 4.0 协议，明确禁止商业用途。
+- **传感器与部署边界**：高速真机避障表现强依赖机载深度感知视场角、局部占据栅格时延与实机电池功率余量。
+
 ## 关联页面
 
 - [legged-gym](../entities/legged-gym.md)
@@ -113,3 +128,7 @@ sequenceDiagram
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)
 - 源码核对（2026-11-02）：LeCAR-Lab/ABS@9b95329，读过 README.md、training/legged_gym/legged_gym/{scripts/train.py,envs/__init__.py,utils/task_registry.py,envs/base/legged_robot.py,envs/base/legged_robot_pos.py,envs/go1/go1_pos_config.py}、training/rsl_rl/rsl_rl/{runners/on_policy_runner.py,runners/on_policy_runner_cost.py,algorithms/ppo.py}；时序图依据以上文件，未运行代码。
 
+## 推荐继续阅读
+
+- 项目页与仓库：<https://github.com/LeCAR-Lab/ABS>
+- 对比基准：[四足开源技术地图](../overview/quadruped-open-source-projects-technology-map.md)

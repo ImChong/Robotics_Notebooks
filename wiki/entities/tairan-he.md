@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, sim2real, loco-manipulation, teleoperation, visual-rl, reinforcement-learning, cmu, nvidia, openai]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-22
 related:
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./paper-doorman-opening-sim2real-door.md
@@ -18,6 +18,8 @@ related:
   - ./nvidia-sonic.md
   - ../concepts/privileged-training.md
 sources:
+  - ../../sources/sites/tairan-he.md
+original:
   - ../../sources/sites/tairan-he.md
 summary: "何泰然（Tairan He）现为 OpenAI Member of Technical Staff；CMU RI 博士（2026-04 答辩）、NVIDIA GEAR 实习背景，研究聚焦人形规模化学习与视觉 Sim2Real；代表作含 OmniH2O、HOVER、ASAP、VIRAL / DoorMan 等。"
 ---
@@ -67,9 +69,23 @@ flowchart LR
   Align --> Real["真机部署\n零样本或少微调"]
 ```
 
-## 常见误区或局限
+## 工程实践（从作者索引进入可核验的研究实现）
+
+本页是**研究者与论文路线索引**，不是可运行的统一控制算法。以下条目从作者官网各论文的自述摘要归纳；训练参数、代码入口和实验协议应以各项目论文/官方仓库为准。
+
+| 工程问题 | 首选入口 | 官网所述技术链条 | 建议核对 |
+|---|---|---|---|
+| 全身遥操作与演示数据 | [OmniH2O](https://omni.human2humanoid.com/) | 运动学姿态共享接口；人类动作重定向及增强；特权教师模仿；稀疏传感输入部署 | 机器人与操作者映射、重定向误差、传感器边界 |
+| RGB 视觉控制连续 loco-manipulation | [VIRAL](https://viral-humanoid.github.io/) | 特权 RL Teacher、delta 动作与 reference state 初始化；RGB Student 使用在线 DAgger + 行为克隆蒸馏 | 教师/学生观测差异、视觉随机化、相机和灵巧手 real-to-sim 对齐 |
+| 动作跟踪的动力学 Sim2Real | [ASAP](https://agile.human2humanoid.com/) | 仿真预训练 motion tracking；真机轨迹训练 delta action 模型；将模型反馈至仿真微调策略 | 真机采样与训练安全边界、残差动作定义、目标机器人动力学差异 |
+| 多模式全身控制 | [HOVER](https://hover-versatile-humanoid.github.io/) | 多种控制模式在全身运动模仿接口下统一蒸馏 | 各模式的命令空间、状态切换与目标硬件适配 |
+
+**核验路径：** 从本页确认研究问题 → 到各项目页确认论文、代码和数据开放状态 → 对照论文中的观测/动作空间与训练、部署实验 → 再选择目标机器人验证。不能把不同项目的训练模块拼成一个未经论文支持的标准流水线。
+
+## 局限与风险
 
 - **主页 ≠ 最新事实源**：OpenAI 具体项目分工、在投论文状态以 **机构新闻与论文页** 为准；本页不替代一手引用。
+- **人物页不是单一实现**：VIRAL 的视觉 Teacher–Student、ASAP 的残差动力学对齐与 OmniH2O 的全身遥操作是不同研究任务，其训练流程不应混同。
 - **合著与一作分工**：如 SONIC 等以合作者一作为主叙事站点，阅读时应区分 **个人贡献边界**。
 - **「博士阶段」表述已过时**：截至 2026-06 主页，其 **当前任职已为 OpenAI**；引用职业身份时应以最新主页为准。
 
@@ -91,7 +107,7 @@ flowchart LR
 
 ## 参考来源
 
-- [Tairan He 个人主页原始资料](../../sources/sites/tairan-he.md)
+- [Tairan He 个人主页原始资料（含 2026-11-22 核对范围）](../../sources/sites/tairan-he.md)
 
 ## 推荐继续阅读
 

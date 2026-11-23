@@ -83,6 +83,7 @@ flowchart LR
 ### 推荐读什么
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) — 本阶段主线知识页
 - [人形并联/连杆关节运动学](../wiki/concepts/humanoid-parallel-joint-kinematics.md) 与 [人形腿部行星滚柱丝杠直线驱动](../wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)
+- [iCub 腕部六构型比较（Shah et al., 2019）](../wiki/entities/paper-icub-wrist-mechanisms-comparison.md) — 从 Gimbal / mk.2 到球面五六杆、OmniWrist 与 Quaternion 的工作空间与耦合取舍；Stage 1 的腕部减重、传动和机构选型参考
 - [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 电液混合 5-DoF + EHA/电机分工的布置实例
 - [刚-软混合链路人形](../wiki/entities/paper-rigid-soft-hybrid-link-humanoid.md) — 东京大学的刚-软混合人形研究：以 PCS 描述柔性腿部构件，结合逆运动学与主动柔顺优化；跳跃/行走为仿真验证，实验验证限于单、双支撑站立平衡。
 - [Agility Robotics（ATRIAS→Cassie→Digit 5 机械布局演化）](../wiki/entities/agility-robotics.md) — 从叶簧被动动力学（Digit 3）到刚性连杆（Digit 4）再到摆线传动 + `Heel→Ankle→Knee` 分级冲击柔顺与协作安全质量代价（Digit 5 `129 kg` / `23 kg` 负载）的一线商业整机取舍
@@ -116,6 +117,7 @@ flowchart LR
 - [人形整机机械布局设计](../wiki/concepts/humanoid-mechanical-layout-design.md) 的 L4 一节（刚度/强度/公差三张判据表）
 - [动力学仿真驱动的人形下肢衍生式设计](../wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 跳跃工况 → 衍生式连杆 → FEA/疲劳/模态/重仿真闭环
 - [机器人结构模态分析](../wiki/concepts/robot-structural-modal-analysis.md) — 固有频率 / 振型 / 阻尼比三件套：串联悬臂构型的低阶模态常落在 10 Hz 量级且随姿态漂移，比静强度更早卡死轨迹精度与力控带宽；试验 FRF 与仿真 MAC 怎么对账、激励–模态频率如何在设计期分离
+- [机器人结构静刚度与末端变形预算](../wiki/concepts/robot-structural-static-stiffness-deformation-check.md) — 从 TCP 精度反推零件/关节/结合面静变形预算，手算 + FEA + 实测对账；含悬臂梁案例的数量级勘误。
 - [Actuator 102 · 06：工业执行器陷阱](../wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md) — 货架件按平方律失效的机械原因
 - ISO 1101 / ASME Y14.5（几何公差）、ISO 286 / ISO 2768（配合与未注公差）— [ISO 检索入口](https://www.iso.org/search.html?q=1101)
 
@@ -196,6 +198,8 @@ flowchart LR
 
 ### 推荐读什么
 - [机器人整机通信架构](../wiki/concepts/robot-onboard-communication-architecture.md) — 本阶段主线知识页
+- [CyberBeast 关节软件栈](../wiki/overview/cyberbeast-joint-software-stack.md) — SDK、ROS 2、SLCAN 与 CAN Bootloader 分层及时间预算边界
+- [JointSDK（纯 C99 协议栈）](../wiki/entities/cyberbeast-jointsdk.md) · [JointROS（lifecycle + ros2_control）](../wiki/entities/cyberbeast-jointros.md) · [USB2CAN SLCAN 固件](../wiki/entities/cyberbeast-canable2-n32.md)
 - [CAN vs EtherCAT 关节总线选型](../wiki/comparisons/can-vs-ethercat-joint-bus.md) 与 [电机驱动器底软通信协议总览](../wiki/overview/motor-drive-firmware-bus-protocols.md)
 - [Query：EtherCAT 主站优化指南](../wiki/queries/ethercat-master-optimization.md) 与 [Query：实时运控中间件配置指南](../wiki/queries/real-time-control-middleware-guide.md)
 - [时钟同步算法](../wiki/concepts/clock-synchronization-algorithms.md) 与 [DDS 通信机制](../wiki/concepts/dds-communication.md)

@@ -1,5 +1,7 @@
 ---
 type: entity
+project_id: pbakaus-impeccable
+code: https://github.com/pbakaus/impeccable
 tags:
   - llm-agents
   - coding-agents
@@ -9,11 +11,17 @@ tags:
   - open-source
   - agent-infrastructure
 status: complete
-updated: 2026-10-27
+updated: 2026-11-22
+original:
+  - ../../sources/repos/pbakaus-impeccable.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./taste-skill.md
   - ./skillry.md
   - ./anthropic-frontend-design-skill.md
+  - ./ui-ux-pro-max-skill.md
+  - ./claude-code-frontend-skills.md
   - ./find-skills-skill.md
   - ../comparisons/skillry-taste-skill-impeccable.md
   - ../../schema/ingest-workflow.md
@@ -48,7 +56,7 @@ summary: "Impeccable 是 Apache-2.0 的设计语言 skill：24 条 /impeccable �
 - **相对 Anthropic frontend-design：** 官方 skill 教 **计划与 tell 清单**；Impeccable 追加 **可重复命令** 与 **可运行 detector**（README 明示血缘）。
 - **相对 Taste Skill：** Taste 在 **SKILL 内旋钮 + 禁令**；Impeccable 在 **项目级 MD + hook 闭环** — 长期产品更合适 Impeccable 作主架，Taste 作生成风格 boost。
 
-## 核心结构
+## 核心原理
 
 | 层次 | 内容 |
 |------|------|
@@ -60,7 +68,9 @@ summary: "Impeccable 是 Apache-2.0 的设计语言 skill：24 条 /impeccable �
 | **Design directions** | 站点 curation（如 Neo Mirai case study） |
 | **协议** | Apache-2.0 |
 
-### 编辑闭环（hook + detector）
+## 源码运行时序图
+
+本图为上游 README 中 hook 驱动的编辑反馈关系，实际可执行 CLI 入口另见工程实践。
 
 ```mermaid
 sequenceDiagram
@@ -75,6 +85,25 @@ sequenceDiagram
   D-->>A: 0 findings
 ```
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["现有 UI 与上下文"] --> B["PRODUCT.md 和 DESIGN.md"]
+  B --> C["critique / audit"]
+  C --> D["polish / harden"]
+  D --> E["Detector 和 Hook"]
+  E --> F{"有发现项？"}
+  F -->|是| D
+  F -->|否| G["实际页面验收"]
+```
+
+## 工程实践
+
+- 官方 `package.json` 的 `bin` 是 `cli/bin/cli.js`；launcher 查找平台二进制/缓存及校验 checksum。`npx impeccable detect src/` 是源码扫描入口；对 URL 的扫描可增加渲染层证据。
+- `live` 模式面向**本地** dev server；官方 README 提到 Apply 的一种 fallback 会直接启动跳过审批/沙箱的 CLI，使用时需先确认工作区可信及权限设置。
+- Detector 不能替代人工评审和本仓库的 lint、测试。
+
 ## 常见误区或局限
 
 - **误区：有 detector 就不需人眼。** LLM-only 的 **critique** 与确定性规则 **互补**； hierarchy 仍可能需设计师判断。
@@ -83,6 +112,12 @@ sequenceDiagram
 - **局限：** 机器人研究页（纯文档型）收益小于 **交互 dashboard / 营销站**；Sim 可视化若用 React 则仍适用。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 区分 detector 规则与真实界面运行证据
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 组合审查、打磨和独立验证步骤
+
+- [UI/UX Pro Max](ui-ux-pro-max-skill.md) — 检索式设计指导
+- [Claude Code Frontend Skills](claude-code-frontend-skills.md) — 设计审查的编排入口
 
 - [shadcn-admin](shadcn-admin.md) — 可复用管理后台页面与组件，可配合设计审查。
 

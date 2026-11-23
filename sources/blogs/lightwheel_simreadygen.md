@@ -9,6 +9,8 @@
 - **产品入口：** https://lightwheel.ai/simreadygen/ （试用 https://lightwheel.ai/simreadygen/try）
 - **发布日期：** 2026-07-20（博客列表页；正文页无日期）
 - **入库日期：** 2026-10-10
+- **核对范围：** 2026-11-22 抓取并通读官方发布博文 `https://lightwheel.ai/media/simreadygen` 全文及示例提示词；产品本体 `https://lightwheel.ai/simreadygen/` 为需登录与积分充值的闭源商业 Web 服务，且官方无论文或开源代码仓库，未登录调用生成后端。
+- **通读：** 已完成
 - **一句话说明：** 光轮的 agentic 仿真资产生成引擎：文本 prompt（可选参考图）→ 结构化 OpenUSD SimReady 资产，物理参数来自 SimReady Foundry 实测管线；集成 NVIDIA Omniverse Content Agents；以积分制 Web 服务提供，**无论文、无代码**。
 - **前置产品：** [SimReady 博文合集](./lightwheel_simready.md)
 - **沉淀到 wiki：** [`wiki/entities/lightwheel-simreadygen.md`](../../wiki/entities/lightwheel-simreadygen.md)

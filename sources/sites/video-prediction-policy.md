@@ -4,7 +4,9 @@
 - **项目页：** https://video-prediction-policy.github.io/
 - **论文：** https://arxiv.org/abs/2412.14803
 - **代码：** https://github.com/roboterax/video-prediction-policy
-- **核查日期：** 2026-10-08
+- **核查日期：** 2026-10-08（2026-11-21 复核）
+- **核对范围：** 抓取并核对官方项目页 <https://video-prediction-policy.github.io/> 完整文本与视频/数据说明，并与 `arXiv:2412.14803v2` 正文及 Table 1 对照（确认 41.5% 对应相对 GR-1 `3.06` 的提升，18.6% 对应相对 RoboUniview `3.65` 的提升）；未重跑视频生成或真机实验。
+- **通读：** 已完成
 - **机构：** 清华大学、加州大学伯克利分校、上海人工智能实验室、上海期智研究院、星动纪元
 
 ## 页面核查

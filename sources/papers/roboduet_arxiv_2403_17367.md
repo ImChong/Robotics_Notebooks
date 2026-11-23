@@ -13,6 +13,9 @@
 - **项目页标注：** Guoping Pan 与 Qingwei Ben 共同贡献；项目页称论文被 RA-L 2025 接收。
 - **入库日期：** 2026-10-11
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `arXiv:2403.17367v5` 全文（42,822 字符）及 `locomanip-duet/RoboDuet_Deployment` master README（5.5 KB）。
+
 ## 论文要点
 
 - RoboDuet 面向配备机械臂的四足机器人，目标是在移动过程中实现对末端位姿的精确跟踪和全身协调。

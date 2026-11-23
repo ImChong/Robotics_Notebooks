@@ -2,7 +2,7 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/sim2real.md

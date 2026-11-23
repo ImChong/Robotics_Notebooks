@@ -8,10 +8,14 @@
 - **arXiv：** <https://arxiv.org/abs/2607.01044>
 - **会议：** IEEE/RSJ International Conference on Intelligent Robots and Systems（IROS）2026（官方仓 bibtex）
 - **项目页：** 无独立 `*.github.io`；官方入口为 GitHub README
-- **代码：** <https://github.com/S4b3/CommNav>（截至 2026-08-09：**under preparation**，无可运行训练/评测入口）
+- **代码：** <https://github.com/S4b3/CommNav>（**2026-11-21 复核：已开源**，`MIT`，758 files，`pushed_at: 2026-09-26`，v1.0.0 release 含 checkpoint；含 `habitat-baselines/scripts/release/` 全流程脚本与 `habitat-lab/habitat/tasks/rearrange/multi_agent_sensors.py`；human-study bundle 未随仓发布；归档见 [`sources/repos/commnav.md`](../repos/commnav.md)）
 - **作者：** Valentino Sacco\*、Luca Scofano\*、Indro Spinelli、Fabio Galasso（\* equal contribution）
 - **机构：** 罗马第一大学（Sapienza University of Rome）
 - **入库日期：** 2026-08-09
+- **复核日期：** 2026-11-21
+- **原文下载/核对日：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文 1046 行（Abstract、§I–§V CommNav 任务形式化、Habitat 3.0c、结构化与语言 COMM 模块、Table I–III 实验消融）+ `S4b3/CommNav` 源码与发布脚本
 - **一句话说明：** 提出 **Communication-enabled Social Navigation（CommNav）**：多居住者场景下机器人主动询问非目标路人，获取「是否见过 / 何时 / 位置 / 方向 / 说话者轨迹」等稀疏线索以定位目标；扩展 Habitat 3.0 → **Habitat 3.0c**，并用预训练 **COMM** 模块把结构化或自然语言线索回归为类 PointGoal 的目标估计，接入 DDPPO；相对无通信基线 Episode Success **+10 pp**；口语指令与结构化数据在 ES 上统计接近。
 
 ## 核心论文摘录（MVP）
@@ -52,7 +56,7 @@
 ### 4) 开源与部署边界（§IV-D / GitHub）
 
 - **链接：** <https://github.com/S4b3/CommNav>
-- **核心贡献：** 论文写「Code can be found at」GitHub；仓库 README（2026-07-01）明确 **under preparation**，训练/评测/Habitat 3.0c 配置/COMM 实现/生成通信数据均 **coming soon**。评测为仿真、无噪声传感与完美 egocentric grounding；真机需人分割/识别等 oracle 假设外模块。单轮交互、同意主体伦理边界见文末。
+- **核心贡献：** 官方仓库已于 2026-09 释放 MIT 源码（758 files）与 `v1.0.0` release 模型权重，含 `habitat-baselines/scripts/release/` 五套训练/评测启动脚本与 `habitat-lab/habitat/tasks/rearrange/multi_agent_sensors.py` 扩展；human-study bundle 未随仓分发。评测仍基于仿真无噪声传感与 egocentric grounding 假设；单轮交互、同意主体伦理边界见文末。
 - **对 wiki 的映射：**
   - [CommNav 仓库归档](../repos/commnav.md)
   - [Sim2Real](../../wiki/concepts/sim2real.md)

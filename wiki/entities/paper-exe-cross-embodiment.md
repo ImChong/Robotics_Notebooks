@@ -5,7 +5,7 @@ project_id: exe-cross-embodiment
 arxiv: "2610.33685"
 tags: [paper, robotics, humanoid, robot-learning]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-22
 summary: "EXE 将第一视角手部动作与机器人动作分为共享位置、私有控制因子，通过 RVQ 离散码本与 VLM 预训练，再微调连续机器人动作；已核对官方论文全文。"
 original:
   - ../../sources/papers/exe-cross-embodiment.md

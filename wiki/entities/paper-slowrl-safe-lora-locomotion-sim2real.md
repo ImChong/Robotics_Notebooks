@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, sim2real, lora, ppo, safe-rl, unitree-go2, isaac-lab, mujoco]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-21
 arxiv: "2603.17092"
 code: https://github.com/unitreerobotics/unitree_rl_lab
 related:
@@ -17,12 +17,18 @@ related:
   - ../entities/paper-faststair-humanoid-stair-ascent.md
 sources:
   - ../../sources/papers/slowrl_arxiv_2603_17092.md
+original:
+  - ../../sources/papers/slowrl_arxiv_2603_17092.md
 summary: "SLowRL（arXiv:2603.17092）冻结仿真预训练腿足策略，用 rank-1 LoRA 与训练期 Recovery 安全滤波在 Unitree Go2 真机上微调 jump/trot，墙钟约快 46.5%、近零摔倒，主张 sim2real 残差为低维流形对齐。"
 ---
 
 # SLowRL：安全低秩 RL 真机运动微调
 
-**SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态腿足策略的 sim-to-real 后微调**：不全参更新预训练网络，而用 **LoRA 低秩扰动** 吸收环境差异，并用 **任务无关 Recovery Policy + Safety Filter** 把探索限制在安全集内。在 **Unitree Go2** 的 trot / jump 上，相对标准 **全参 PPO 微调** 报告约 **46.5%** 墙钟缩短与 **近零** 训练期摔倒。
+## 一句话定义
+
+**SLowRL（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）冻结仿真预训练腿足策略基座权重，在真机/目标域微调阶段仅对 Actor 与 Critic 同步施加低秩 LoRA 适配并叠加任务无关的 Recovery 安全滤波，以极少摔倒代价安全消除残余 Sim2Real 偏差。**
+
+**核心设定：** 面向 **动态腿足策略的 sim-to-real 后微调**——不全参更新预训练网络，而用 **LoRA 低秩扰动** 吸收环境差异，并用 **任务无关 Recovery Policy + Safety Filter** 把探索限制在安全集内；在 **Unitree Go2** 的 trot / jump 上，相对标准 **全参 PPO 微调** 报告约 **46.5%** 墙钟缩短与 **近零** 训练期摔倒。
 
 ## 英文缩写速查
 
@@ -88,7 +94,12 @@ flowchart TB
 - **Sim-to-real：** Go2 + Vicon 真值；4 seeds；jump / trot；对比 Zero-shot、FFT、FFT+安全。
 - **平滑性：** 训练期动作变化率相对 FFT 在 trot 上约 **88.9%** 额外下降（相对自身起点），低秩约束抑制 bang-bang 高频指令。
 
-## 常见误区
+## 工程实践
+
+- **起步先验证 Recovery 安全边界：** 上真机 LoRA 微调前，先独立测试任务无关 Recovery 策略在姿态/角速度越界时能否把机器人拉回名义直立低速状态 \(s_{nom}\)，再开启探索噪声。
+- **Actor + Critic 同步挂 rank-1 LoRA：** 遵循 $B=0$ 初始化以保证零步兼容仿真策略，同时保持 Critic 同步低秩适配以匹配目标域接触与积分器分布，优先以 $\rho=1$ 验证真机收敛速度。
+
+## 常见误区或局限
 
 1. **「LoRA 只改 Actor 就够」：** 本文实验表明 **Critic 必须一起低秩适配**，否则价值估计仍活在源仿真分布里。
 2. **「rank 越大越强」：** 在固定真机时间预算下，**rank-1 往往最优**；额外自由度主要放大接触 RL 的梯度噪声。

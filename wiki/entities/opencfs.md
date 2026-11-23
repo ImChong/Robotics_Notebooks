@@ -5,7 +5,9 @@ project: https://opencfs.org/
 code: https://gitlab.com/openCFS/cfs
 tags: [software, fem, simulation, multiphysics, open-source, fau]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-21
+original:
+  - ../../sources/papers/opencfs.md
 related:
   - ./femm.md
   - ./pyleecan.md
@@ -50,7 +52,38 @@ summary: "openCFS：采用 MIT 许可的有限元多物理场仿真工具，覆�
 | 分析方式 | 静态、瞬态、谐波、多谐波与特征频率 |
 | 扩展能力 | 非共形网格、模型降阶、结构优化 |
 
-声学论文进一步介绍吸收边界与非共形接口；openCFS-Data 和 pyCFS-data 则补充数据处理材料。配套资料统一保存在本实体，不将每篇说明论文拆成独立项目。
+声学论文（`arXiv:2207.04443v3`）进一步给出类层次 `basePDE` → `stdPDE` → `singlePDE`（如 `acousticPDE`、电磁模块 `openCFS-Edyn`）及 Mortar 非共形旋转网格接口；`pyCFS-data`（`arXiv:2405.03437v3`）则提供 `pyCFS.data.io.CFSReader/CFSWriter`（读写 HDF5 `.cfs`）、RBF/投影插值与 SNGR 源项前后处理。配套资料统一保存在本实体，不将每篇说明论文拆成独立项目。
+
+```mermaid
+flowchart LR
+  XML["XML 仿真描述 (CFS.xsd)<br/>fileFormats / domain / sequenceStep"] --> Driver["openCFS C++ Driver<br/>basePDE → stdPDE → singlePDE"]
+  Mesh["外部网格 (CGNS / Exodus / HDF5)"] --> Driver
+  Driver --> Step["SolveStep 循环<br/>静态 / 瞬态 (HHT) / 谐波 / 特征值"]
+  Step --> Out["HDF5 .cfs 结果"]
+  Out <--> PyCFS["pyCFS-data (io / operators / extras)<br/>CFSReader/Writer + 插值/Modal/FFT"]
+```
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as 用户 CLI (cfs) / pyCFS
+  participant XML as XML Schema (CFS.xsd)
+  participant PDE as singlePDE 实例 (Edyn/Mech/Acou)
+  participant Sol as 代数系统与求解器
+
+  User->>XML: 解析 <fileFormats> / <domain> / <sequenceStep>
+  XML->>PDE: Init：CreateFeSpaces() + DefineIntegrators() + DefineNcIntegrators()
+  loop 每个 sequenceStep / timeStep / frequencyBin
+    PDE->>Sol: 组装与边界消去 (DefineRhsLoadIntegrators / Dirichlet null-space)
+    PDE->>Sol: DefineSolveStep() 求解 Mp̈ + Cṗ + Kp = f
+    Sol-->>PDE: DefinePrimaryResults() / DefinePostProcResults()
+  end
+  PDE-->>User: 写入 HDF5 .cfs，由 pyCFS.data.io.CFSReader 读取后处理
+```
+
+图依据：`arXiv:2207.04443v3` §3–§4（PDE 基类接口与 C++ 执行周期）、`arXiv:2405.03437v3` §2–§4（`pyCFS.data.io` / `operators`）与 GitLab `openCFS/cfs` 源码树（`source/`、`Testsuite/`、`CMakeLists.txt`）。
 
 ## 工程实践
 

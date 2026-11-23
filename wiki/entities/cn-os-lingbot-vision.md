@@ -6,7 +6,9 @@ tags:
 - vision-transformer
 - perception
 status: complete
-updated: '2026-10-05'
+updated: '2026-11-21'
+original:
+- ../../sources/repos/lingbot-vision.md
 related:
 - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
 - ../entities/humanoid-motion-intelligence.md
@@ -44,9 +46,25 @@ LingBot-Vision 用 masked boundary modeling 预训练视觉 Transformer，兼顾
 
 ## 核心原理
 
-通过以边界为中心的自监督目标，使 patch 表征同时保留语义分组与几何结构。官方模型覆盖 ViT-S/B/L/G，Giant 约 **1.1B 参数**，小模型由 teacher 蒸馏。
+```mermaid
+flowchart LR
+    IMG["输入图像 (全局/局部裁剪)"] --> STU["学生 ViT 接收边界强制掩码 M+ = M U B"]
+    IMG --> TEA["EMA 教师 ViT (在线预测分类边界场)"]
+    TEA --> VAL["a-contrario 线验证 -> 发现边界 token B"]
+    VAL --> STU
+    STU --> ROUTE{"按几何类型路由损失"}
+    ROUTE -->|"全部掩码 token"| SEM["iBOT 语义自蒸馏损失"]
+    ROUTE -->|"边界 token B"| BND["离散边界场分类损失 (距离/角度)"]
+    SEM --> BACK["ViT-g/16 (1.1B) -> 蒸馏 ViT-L/B/S"]
+    BND --> BACK
+    BACK --> DOWN["backbone-only .pt (Depth 2.0 / 分割 / VOS)"]
+```
 
-发布资产是 **backbone-only `.pt`**，不含 optimizer、投影头或训练期 boundary heads。可用于深度估计、分割、视频目标传播；Depth 2.0 把该骨干用于 RGB-D 几何学习。
+图依据：[arXiv:2607.05247v1](https://arxiv.org/html/2607.05247) §3（边界强制掩码建模与分类边界场）与 `robbyant/lingbot-vision@151e463` `README.md`。
+
+通过以边界为中心的自监督目标（Masked Boundary Modeling），使 patch 表征同时保留语义分组与几何结构。教师在线预测离散化的边界场并经 a-contrario 检验筛选出边界 token，将其强制并入学生掩码集合；随后按几何路由监督：所有掩码 token 接受语义自蒸馏，边界 token 额外匹配教师边界场分布。官方模型覆盖 ViT-S/B/L/G，Giant 约 **1.1B 参数**，小模型由 teacher 蒸馏。
+
+发布资产是 **backbone-only `.pt`**，不含 optimizer、投影头或训练期 boundary heads。可用于深度估计、分割、视频目标传播；Depth 2.0 把该骨干用于 RGB-D 几何学习（见 [arXiv:2607.05247](https://arxiv.org/html/2607.05247) §6）。
 
 ## 工程实践
 

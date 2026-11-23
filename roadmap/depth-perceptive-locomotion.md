@@ -135,6 +135,7 @@ flowchart LR
 - [Multi-Expert Distillation（多专家蒸馏）](../wiki/methods/multi-expert-distillation.md) — 分地形/分技能 RL 专家 → DAgger 聚合 → 可选 RLFT；一手资料索引见 sources
 - [Parkour in the Wild（IJRR 2026）](../wiki/entities/paper-parkour-in-the-wild.md) — 9 专家 MED + 四深度 LSTM + RLFT；ANYmal D wild 部署；训练代码未开源
 - [Robot Parkour Learning](../wiki/entities/paper-robot-parkour-learning.md) — CoRL 2023 五技能 DAgger 蒸馏先例（**已开源**）
+- [地形自适应四足最优步态与风格（2026）](../wiki/entities/paper-terrain-adaptive-quadruped-gaits.md) — **步态选择而非技能切换**：CPG+PPO 学 11 种步态，冻结后按能耗/机身稳定/关节平滑度选步态，Go1/Go2 机载深度越障；适合作为本 Stage 的可解释多步态对照
 - [Extreme Parkour](../wiki/entities/extreme-parkour.md)
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - [Humanoid Parkour Learning 深读笔记](../wiki/entities/paper-notebook-humanoid-parkour-learning.md)

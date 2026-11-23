@@ -7,6 +7,8 @@
 - **来源：** unitreerobotics（Unitree 官方 GitHub 组织）
 - **链接：** https://github.com/unitreerobotics/unitree_rl_mjlab
 - **入库日期：** 2026-04-29
+- **核对范围：** 2026-11-21 通读 `unitreerobotics/unitree_rl_mjlab@1425b15` 官方 `README.md` 全文（7 款机型、速度跟踪与 `csv_to_npz.py` 动作模仿训练、`play.py`、`policy.onnx`/`policy.onnx.data` 导出、`unitree_mujoco` 仿真与 `g1_ctrl` 真机部署），并阅读 `scripts/train.py`、`src/tasks/velocity/__init__.py`、`src/tasks/velocity/config/g1/__init__.py` 及 `src/tasks/velocity/rl/runner.py`；未运行 GPU 训练或真机部署。
+- **通读：** 已完成
 - **一句话说明：** Unitree 官方基于 mjlab + MuJoCo Warp 的人形/四足机器人 RL 训练框架，覆盖 Go2/G1/H1_2/H2 等 7 款机型，支持速度跟踪与动作模仿，内建 Sim2Real 部署链路（ONNX → C++ 部署）。
 - **沉淀到 wiki：** 是 → [`wiki/entities/unitree-rl-mjlab.md`](../../wiki/entities/unitree-rl-mjlab.md)
 

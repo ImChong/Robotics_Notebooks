@@ -4,7 +4,7 @@ status: complete
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../comparisons/self-improving-agents-embodied-lifelong-learning.md
   - ./embodied-data-flywheel-minimal-closed-loop.md
@@ -68,7 +68,7 @@ sources:
 
 主流数据飞轮以"部署 → 抽取好动作 → 模仿学习"为主，本质把部署当成**高质量演示的来源**。AGIBOT 在 [LWD](../methods/lwd.md) 中提出了另一种范式：把成功 / 失败 / 半成 / 救场 / 人为干预**全部**作为 RL 训练信号，offline 与 online 阶段共用同一个学习器，形成 **offline-to-online RL 数据飞轮**——不再丢弃失败轨迹，长程任务上的提升尤其显著。
 
-在宏观 AI 进展框架下，DeepMind [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md) 把 **test-time 搜索/推理结果蒸馏回训练集**（AlphaZero 式）与 **仿真/交互轨迹扩增** 列为对抗 **数据墙** 的主通道之一——与具身飞轮「部署产生新数据」同构，但强调 **算力换数据质量** 而非仅堆人类演示。
+在宏观 AI 进展框架下，DeepMind [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)（arXiv:2606.12683v3）把 **test-time 搜索/推理结果蒸馏回训练集**（AlphaZero 式）与 **仿真/交互轨迹扩增** 列为对抗 **数据墙** 的主通道之一，同时在其新增的第 7 类瓶颈 **Evaluation Problem** 中提醒：若缺乏可扩展且防投机利用的评测反馈，递归数据/策略自改进会停滞甚至退化——这与具身飞轮要求「策展是质量闸门」相呼应。
 
 第三条产业读法：[S1](../entities/skild-s1.md) 主张 **ICL 把新任务部署压到分钟级**（盆栽示例：录示范到真机约 11 分钟），才能把现场交互及时喂回预训练；若每个新任务仍要数小时遥操作 + 微调，飞轮转不起来。这是 **适应延迟** 对飞轮转速的约束，与 LWD 的「别丢失败轨迹」互补。
 

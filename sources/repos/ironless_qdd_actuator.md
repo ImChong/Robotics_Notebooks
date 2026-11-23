@@ -8,8 +8,9 @@
 - **链接：** https://github.com/CKraft11/Ironless-QDD-Actuator
 - **项目页：** https://cadenkraft.com/ironless-cycloidal-planetary-actuator/
 - **许可：** README 声明 MIT（GitHub API `license: null`）
-- **星标（截至 2026-07-25）：** ~269
-- **入库日期：** 2026-07-25
+- **星标（截至 2026-11-21）：** 307
+- **入库日期：** 2026-07-25（2026-11-21 核对仓内 `README.md`、`FEMM/` 文件集与 `MKS XDrive Config.json` 完整配置参数）
+- **通读：** 已完成
 - **一句话说明：** 低成本无铁芯 Halbach 转子 + 采购 10010 定子自绕 36N42P + 摆线—行星减速（~7:1，pygeartrain）+ 集成驱动；仓库含 FEMM/CAD/BOM；报告静态保持约 29.4 N·m。
 - **开源状态：** **已开源**
 - **项目页归档：** [cadenkraft_ironless_cycloidal_planetary_actuator.md](../sites/cadenkraft_ironless_cycloidal_planetary_actuator.md)

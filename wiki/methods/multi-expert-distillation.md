@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, dagger, teacher-student, locomotion, parkour, distillation, privileged-training]
 status: complete
-updated: 2026-09-22
+updated: 2026-11-21
 summary: "多专家蒸馏：为不同子任务/地形分别训练 RL 或特权专家，再用 DAgger 式在线聚合把专家动作蒸馏进单一可部署策略；常配合感知模态迁移（高程图→深度）与蒸馏后 RL 微调。"
 related:
   - ./dagger.md
@@ -19,6 +19,12 @@ related:
   - ../comparisons/rl-vs-il.md
 sources:
   - ../../sources/papers/multi_expert_distillation_locomotion.md
+  - ../../sources/papers/parkour_in_the_wild_arxiv_2505_11164.md
+  - ../../sources/papers/hmi_p130_robot-parkour-learning.md
+  - ../../sources/papers/light_loco_parkour_light_origins_2026.md
+  - ../../sources/papers/rpl_arxiv_2602_03002.md
+  - ../../sources/papers/ross_dagger_aistats_2011.md
+original:
   - ../../sources/papers/parkour_in_the_wild_arxiv_2505_11164.md
   - ../../sources/papers/hmi_p130_robot-parkour-learning.md
   - ../../sources/papers/light_loco_parkour_light_origins_2026.md

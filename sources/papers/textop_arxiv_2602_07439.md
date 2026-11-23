@@ -8,7 +8,10 @@
 - **作者：** Weiji Xie, Jiakun Zheng, Jinrui Han, Jiyuan Shi, Weinan Zhang, Chenjia Bai, Xuelong Li
 - **机构：** 中国电信人工智能（TeleAI）、上海交通大学（SJTU）、华东理工大学（ECUST）
 - **入库日期：** 2026-09-16
-- **最后更新：** 2026-09-16
+- **最后更新：** 2026-11-22
+- **核对日期：** 2026-11-22
+- **核对范围：** `arXiv:2602.07439v1` 正文 §I–§V（含 Table I–V、`ft` 机器人骨架表征公式、TextOp-M+G 与 SnapMoGen 泛化权衡及 §V 局限）
+- **通读：** 已完成
 - **项目页：** <https://text-op.github.io/>
 - **代码：** <https://github.com/TeleHuman/TextOp>（MIT；含预训练权重与数据集脚本）
 - **一句话说明：** 实时流式文本驱动人形全身控制：高层自回归运动扩散（VAE+LDM，\(T_{\mathrm{hist}}=2,T_{\mathrm{fut}}=8\)）+ 低层 Isaac Lab RL 通用跟踪；G1 真机「一镜到底」多技能切换，用户交互延迟约 **0.73 s**；**已开源**。

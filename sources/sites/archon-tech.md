@@ -4,7 +4,9 @@
 
 - **URL：** <https://www.archon.tech/>（博客列表 <https://www.archon.tech/blog>；招聘 <https://careers.archonrobotics.tech>）
 - **机构：** Archon Robotics 源策未来；页脚「Archon Robotics 源策未来 © 2026」；静态资源域名 `assets.archonrobotics.tech`
-- **核查日期：** 2026-10-10
+- **核查日期：** 2026-10-10（2026-11-21 复核）
+- **核对范围：** 读取 `<https://www.archon.tech/>`、`/blog/whole-body-intelligence`、`/blog/whole-body-intelligence-cn` 全文，并复核 GitHub `ArchonRobotics`（仅有 `.github` 配置仓，无代码仓）与 Hugging Face `ArchonRobotics`（0 模型 / 0 数据集 / 1 Space）。
+- **通读：** 已完成
 - **抓取方式：** `curl -sSL -A "Mozilla/5.0"` 读取首页、`/blog`、`/blog/whole-body-intelligence`、`/blog/whole-body-intelligence-cn`。站点是 Next.js 服务端直出文字，图片和视频懒加载（页面显示 "Loading media..."）；从 HTML 中提取 `img` / `video` 地址。招聘站是客户端渲染，用 Playwright（Chromium headless）读取 `document.body.innerText`。YouTube 元数据用 oEmbed 接口读取，观看页返回 429，未取得上传日期。
 - **覆盖 wiki：** [源策未来（Archon Robotics）](../../wiki/entities/archon-robotics.md)、[Archon 全身智能（WBI）](../../wiki/entities/archon-whole-body-intelligence.md)
 - **社媒（页脚）：** X <https://x.com/archon_robotics>；LinkedIn <https://www.linkedin.com/company/archon_robotics>；YouTube <https://www.youtube.com/@archon_robotics>

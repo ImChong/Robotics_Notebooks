@@ -11,7 +11,9 @@
   - 代码：<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>
 - **机构：** 清华大学；Galbot Inc.；上海交通大学；北京大学；上海期智研究院（以 arXiv 作者脚注为准）
 - **入库日期：** 2026-06-04
-- **最近复核：** 2026-06-19
+- **最近复核：** 2026-11-21
+- **核对范围：** 已通读 `arXiv:2606.03985v1` PDF 全文 §1–§6 及 Appendix A–D（含 Table 1–8 指标、HME/GQS/DAgger 细节与 15,000 GPUh 算力开销）、项目页与官方仓库 `@9f9e7b7`
+- **通读：** 已完成
 - **一句话说明：** 在 **20 亿帧** G1 重定向语料上，用 **HME 聚类 → 数百 PPO motion expert → 并行 DAgger** 蒸馏为 **GPT 式因果 Transformer** 通用人形 tracker，同时实现 **高动态跟踪** 与 **未见动作零样本泛化**，并给出数据/模型 scaling law；真机 Unitree G1 与 SONIC 对比及 <1.5ms（RTX 4090 + TensorRT）部署叙事。
 
 ## 核心论文摘录（MVP）

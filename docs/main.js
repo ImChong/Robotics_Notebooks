@@ -1,63 +1,231 @@
 (function () {
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
+  const uiStyleToggle = document.getElementById('uiStyleToggle');
+  const mobileUiStyleToggle = document.getElementById('mobileUiStyleToggle');
   const key = 'robotics-notebooks-theme';
+  const uiKey = 'robotics-notebooks-ui';
+  const THEME_COLOR_MAP = {
+    tech: { dark: '#0a0b0d', light: '#f5f4f0' },
+    classic: { dark: '#191919', light: '#ffffff' }
+  };
+
+  function currentUiMode() {
+    return root.getAttribute('data-ui') === 'classic' ? 'classic' : 'tech';
+  }
+
+  function syncThemeMeta() {
+    const theme = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    const ui = currentUiMode();
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute('content', THEME_COLOR_MAP[ui][theme]);
+    }
+  }
+
   const saved = localStorage.getItem(key);
   const dark = saved ? saved === 'dark' : true;
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
 
+  const savedUi = localStorage.getItem(uiKey);
+  root.setAttribute('data-ui', savedUi === 'classic' ? 'classic' : 'tech');
+  syncThemeMeta();
+
   function updateThemeToggle() {
     if (!themeToggle) return;
     const isDark = root.getAttribute('data-theme') === 'dark';
-    themeToggle.setAttribute('title', isDark ? '切换到白天模式' : '切换到黑夜模式');
+    themeToggle.setAttribute('title', isDark ? '切换到白天模式 (Ctrl+Shift+L)' : '切换到黑夜模式 (Ctrl+Shift+L)');
     themeToggle.setAttribute('aria-label', isDark ? '切换到白天模式' : '切换到黑夜模式');
   }
 
-  updateThemeToggle();
+  function updateUiStyleToggles() {
+    const isClassic = currentUiMode() === 'classic';
+    if (uiStyleToggle) {
+      uiStyleToggle.textContent = isClassic ? '新版' : '旧版';
+      uiStyleToggle.setAttribute('aria-pressed', isClassic ? 'true' : 'false');
+      uiStyleToggle.setAttribute('title', isClassic ? '切换到新版样式' : '切换到旧版样式');
+      uiStyleToggle.setAttribute('aria-label', isClassic ? '切换到新版样式' : '切换到旧版样式');
+    }
+    if (mobileUiStyleToggle) {
+      const labelEl = mobileUiStyleToggle.querySelector('[data-nav-label]') || mobileUiStyleToggle;
+      labelEl.textContent = isClassic ? '新版样式' : '旧版样式';
+      mobileUiStyleToggle.setAttribute('aria-pressed', isClassic ? 'true' : 'false');
+    }
+  }
 
-  function toggleTheme() {
-    const isDark = root.getAttribute('data-theme') === 'dark';
-    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    localStorage.setItem(key, isDark ? 'light' : 'dark');
-    updateThemeToggle();
+  function syncHomeUiLayout(ui) {
+    const miniSection = document.getElementById('mini-graph-section');
+    const heroFrame = document.querySelector('#hero .hero-frame');
+    const homeHubSection = document.getElementById('home-hub-section');
+    if (!miniSection || !heroFrame || !homeHubSection) return;
+    if (ui === 'classic') {
+      miniSection.classList.remove('hero-viewport');
+      if (miniSection.parentNode !== homeHubSection.parentNode || miniSection.nextElementSibling !== homeHubSection) {
+        homeHubSection.parentNode.insertBefore(miniSection, homeHubSection);
+      }
+    } else {
+      miniSection.classList.add('hero-viewport');
+      if (miniSection.parentNode !== heroFrame) {
+        heroFrame.appendChild(miniSection);
+      }
+    }
+  }
+
+  updateThemeToggle();
+  updateUiStyleToggles();
+  syncHomeUiLayout(currentUiMode());
+
+  function runWithViewTransition(anchorEl, mutator) {
+    let reduceMotion = false;
+    try {
+      reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch { /* 老浏览器无 matchMedia：按未开启减动处理 */ }
+    if (typeof document.startViewTransition !== 'function' || reduceMotion || !anchorEl) {
+      mutator();
+      return;
+    }
+    // 新主题从按钮中心圆形扩散揭开；快照期间关闭颜色过渡（style.css .is-theme-switching），
+    // 否则新画面会先做 0.3s 颜色渐变再被揭开，边缘发灰
+    const rect = anchorEl.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    root.classList.add('is-theme-switching');
+    const transition = document.startViewTransition(mutator);
+    transition.ready.then(function () {
+      root.animate(
+        { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
+        { duration: 560, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    }).catch(function () { /* 过渡被跳过时主题已由回调切换 */ });
+    transition.finished.finally(function () {
+      root.classList.remove('is-theme-switching');
+    });
+  }
+
+  function rerenderActiveMermaid() {
     const detailContentEl = document.getElementById('detailContent');
     if (detailContentEl) renderDetailMermaid(detailContentEl);
     const roadmapContentEl = document.getElementById('roadmapContent');
     if (roadmapContentEl) renderDetailMermaid(roadmapContentEl);
   }
 
+  function toggleTheme() {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem(key, isDark ? 'light' : 'dark');
+    syncThemeMeta();
+    updateThemeToggle();
+    rerenderActiveMermaid();
+  }
+
+  function toggleUiStyle() {
+    const nextUi = currentUiMode() === 'classic' ? 'tech' : 'classic';
+    root.setAttribute('data-ui', nextUi);
+    localStorage.setItem(uiKey, nextUi);
+    syncThemeMeta();
+    updateUiStyleToggles();
+    syncHomeUiLayout(nextUi);
+    rerenderActiveMermaid();
+    if (typeof window.__rnRefreshHomeNavFab === 'function') {
+      window.__rnRefreshHomeNavFab();
+    }
+    window.dispatchEvent(new CustomEvent('rn:uichange', { detail: { ui: nextUi } }));
+    window.dispatchEvent(new Event('resize'));
+  }
+
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
-      let reduceMotion = false;
-      try {
-        reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      } catch { /* 老浏览器无 matchMedia：按未开启减动处理 */ }
-      if (typeof document.startViewTransition !== 'function' || reduceMotion) {
-        toggleTheme();
-        return;
-      }
-      // 新主题从按钮中心圆形扩散揭开；快照期间关闭颜色过渡（style.css .is-theme-switching），
-      // 否则新画面会先做 0.3s 颜色渐变再被揭开，边缘发灰
-      const rect = themeToggle.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-      const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-      root.classList.add('is-theme-switching');
-      const transition = document.startViewTransition(toggleTheme);
-      transition.ready.then(function () {
-        root.animate(
-          { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
-          { duration: 560, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' }
-        );
-      }).catch(function () { /* 过渡被跳过时主题已由回调切换 */ });
-      transition.finished.finally(function () {
-        root.classList.remove('is-theme-switching');
-      });
+      runWithViewTransition(themeToggle, toggleTheme);
     });
   }
 
-  const links = document.querySelectorAll('.page-subnav a, .main-nav a');
-  const sections = Array.from(links)
+  if (uiStyleToggle) {
+    uiStyleToggle.addEventListener('click', function () {
+      runWithViewTransition(uiStyleToggle, toggleUiStyle);
+    });
+  }
+
+  if (mobileUiStyleToggle) {
+    mobileUiStyleToggle.addEventListener('click', function () {
+      toggleUiStyle();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'L' || e.key === 'l')) {
+      e.preventDefault();
+      runWithViewTransition(themeToggle, toggleTheme);
+    }
+  });
+
+  // ── 移动端全屏导航抽屉（首页 tech 模式） ──
+  (function setupMobileNavSheet() {
+    const toggle = document.getElementById('mobileMenuToggle');
+    const sheet = document.getElementById('mobileNavSheet');
+    if (!toggle || !sheet) return;
+    const openIcon = toggle.querySelector('.mobile-menu-icon--open');
+    const closeIcon = toggle.querySelector('.mobile-menu-icon--close');
+
+    function syncMenuIcon(isOpen) {
+      if (openIcon) openIcon.hidden = isOpen;
+      if (closeIcon) closeIcon.hidden = !isOpen;
+    }
+
+    function closeSheet() {
+      if (!sheet.classList.contains('is-open')) return;
+      sheet.classList.remove('is-open');
+      sheet.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      syncMenuIcon(false);
+      document.body.style.overflow = '';
+      if (sheet.contains(document.activeElement)) toggle.focus();
+    }
+
+    function openSheet() {
+      sheet.hidden = false;
+      sheet.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      syncMenuIcon(true);
+      document.body.style.overflow = 'hidden';
+    }
+
+    toggle.addEventListener('click', function () {
+      if (sheet.classList.contains('is-open')) closeSheet();
+      else openSheet();
+    });
+
+    sheet.addEventListener('click', function (e) {
+      if (e.target.closest('a, button')) closeSheet();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeSheet();
+    });
+
+    if (typeof window.matchMedia === 'function') {
+      const mq = window.matchMedia('(min-width: 768px)');
+      const onMqChange = function () { if (mq.matches) closeSheet(); };
+      if (typeof mq.addEventListener === 'function') mq.addEventListener('change', onMqChange);
+      else if (typeof mq.addListener === 'function') mq.addListener(onMqChange);
+    }
+
+    window.addEventListener('rn:uichange', function (ev) {
+      if (ev && ev.detail && ev.detail.ui === 'classic') closeSheet();
+    });
+  })();
+
+  const subnavLinks = document.querySelectorAll('.page-subnav a');
+  const subnavSections = Array.from(subnavLinks)
+    .map(function (link) {
+      var href = link.getAttribute('href');
+      if (!href || !/^#.+/.test(href)) return null;
+      return document.querySelector(href);
+    })
+    .filter(Boolean);
+
+  const mainNavLinks = document.querySelectorAll('.main-nav a, .mobile-nav-sheet a');
+  const mainNavSections = Array.from(mainNavLinks)
     .map(function (link) {
       var href = link.getAttribute('href');
       if (!href || !/^#.+/.test(href)) return null;
@@ -66,19 +234,34 @@
     .filter(Boolean);
 
   function updateActive() {
-    const scrollPos = window.scrollY + 100;
-    let currentId = sections.length ? '#' + sections[0].id : '';
-    // ⚡ Bolt Optimization: Replace .forEach with standard for loop
-    // Expected impact: Eliminates closure allocation during hot scroll events.
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].offsetTop <= scrollPos) currentId = '#' + sections[i].id;
+    if (subnavSections.length) {
+      const scrollPos = window.scrollY + 100;
+      let currentId = '#' + subnavSections[0].id;
+      // ⚡ Bolt Optimization: Replace .forEach with standard for loop
+      // Expected impact: Eliminates closure allocation during hot scroll events.
+      for (var i = 0; i < subnavSections.length; i++) {
+        if (subnavSections[i].offsetTop <= scrollPos) currentId = '#' + subnavSections[i].id;
+      }
+      for (var j = 0; j < subnavLinks.length; j++) {
+        subnavLinks[j].classList.toggle('active', subnavLinks[j].getAttribute('href') === currentId);
+      }
     }
-    for (var j = 0; j < links.length; j++) {
-      links[j].classList.toggle('active', links[j].getAttribute('href') === currentId);
+    if (mainNavSections.length) {
+      var activeMainId = '';
+      var threshold = 150;
+      for (var k = 0; k < mainNavSections.length; k++) {
+        if (mainNavSections[k].getBoundingClientRect().top <= threshold) {
+          activeMainId = '#' + mainNavSections[k].id;
+        }
+      }
+      for (var m = 0; m < mainNavLinks.length; m++) {
+        var isMatch = activeMainId && mainNavLinks[m].getAttribute('href') === activeMainId;
+        mainNavLinks[m].classList.toggle('active', Boolean(isMatch));
+      }
     }
   }
 
-  if (sections.length) {
+  if (subnavSections.length || mainNavSections.length) {
     let ticking = false;
     // ⚡ Bolt Optimization: Throttle scroll event using requestAnimationFrame
     // Expected impact: Prevents excessive layout recalculations during scrolling, reducing main thread jank.
@@ -90,7 +273,7 @@
         });
         ticking = true;
       }
-    });
+    }, { passive: true });
     updateActive();
   }
 
@@ -506,6 +689,30 @@
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
     }
+    var homeCommunityFilter = document.getElementById('wikiCommunityFilter');
+    if (homeCommunityFilter && graphStats && Array.isArray(graphStats.communities) &&
+        !homeCommunityFilter.getAttribute('data-communities-populated')) {
+      homeCommunityFilter.setAttribute('data-communities-populated', '1');
+      var preservedCommunity = homeCommunityFilter.value;
+      var sortedCommunities = graphStats.communities.slice().sort(function (a, b) {
+        if (a.id === 'community-other') return 1;
+        if (b.id === 'community-other') return -1;
+        return (b.size || 0) - (a.size || 0);
+      });
+      var optHtml = '<option value="">全部社区</option>';
+      for (var ci = 0; ci < sortedCommunities.length; ci++) {
+        var cItem = sortedCommunities[ci];
+        if (!cItem || !cItem.id) continue;
+        var cLabel = cItem.label || cItem.id;
+        if (cItem.size != null) cLabel += ' (' + cItem.size + ')';
+        optHtml += '<option value="' + escapeHtml(cItem.id) + '">' + escapeHtml(cLabel) + '</option>';
+      }
+      homeCommunityFilter.innerHTML = optHtml;
+      if (preservedCommunity) {
+        homeCommunityFilter.value = preservedCommunity;
+        if (homeCommunityFilter.value !== preservedCommunity) homeCommunityFilter.value = '';
+      }
+    }
   }
 
   function detailHref(id) {
@@ -564,10 +771,27 @@
     return api.formatBilingual(type);
   }
 
-  // 与「最新知识节点」行后缀一致：开源 ⭐️ + 社区短标签
+  function uiIconHtml(name) {
+    if (window.RNIcons && window.RNIcons.svg) return window.RNIcons.svg(name);
+    if (name === 'star') {
+      return '<svg class="ui-icon ui-icon--star" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+        '<path d="M8 1.8l1.85 3.76 4.15.6-3 2.93.71 4.13L8 11.27l-3.71 1.95.71-4.13-3-2.93 4.15-.6L8 1.8Z" fill="currentColor" stroke="currentColor" stroke-width="0.9" stroke-linejoin="round"/></svg>';
+    }
+    return '';
+  }
+
+  function depthIconHtml(key, meta) {
+    if (window.RNIcons && window.RNIcons.depthSvg) {
+      return window.RNIcons.depthSvg(key, meta && meta.icon);
+    }
+    return uiIconHtml('tag');
+  }
+
+  // 与「最新知识节点」行后缀一致：开源星标 + 社区短标签
   function renderUpdatesItemRepoStar(meta) {
     if (!meta || !meta.has_repo) return '';
-    return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+    if (window.RNIcons && window.RNIcons.repoStarHtml) return window.RNIcons.repoStarHtml();
+    return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">' + uiIconHtml('star') + '</span>';
   }
 
   // 详情页标题：has_repo（导出期判定，见 export_minimal.page_has_repo_source）时在标题末尾加 ⭐️（与列表行同口径）；
@@ -790,7 +1014,7 @@
         hide();
       }
     });
-    document.addEventListener('scroll', function () { if (anchor) hide(); }, true);
+    document.addEventListener('scroll', function () { if (anchor) hide(); }, { capture: true, passive: true });
   }
   setupHealthTip();
 
@@ -1529,15 +1753,33 @@
       );
     }
 
+    var dayMetasByDate = Object.create(null);
+
     function applyDayShowCount(daySection, showCount) {
       if (!daySection) return;
       var total = Number(daySection.getAttribute('data-total')) || 0;
       var next = Math.max(TIMELINE_FOLD_SHOW, Math.min(Number(showCount) || TIMELINE_FOLD_SHOW, total || TIMELINE_FOLD_SHOW));
       daySection.setAttribute('data-show', String(next));
       daySection.classList.toggle('is-collapsed', next <= TIMELINE_FOLD_SHOW);
-      var items = daySection.querySelectorAll('.updates-day-list > .updates-item');
-      for (var ii = 0; ii < items.length; ii++) {
-        items[ii].classList.toggle('updates-item-folded', ii >= next);
+      var listEl = daySection.querySelector('.updates-day-list');
+      if (listEl) {
+        var mounted = listEl.children.length;
+        if (next > mounted) {
+          var dateKey = daySection.getAttribute('data-date') || '';
+          var allMetas = dayMetasByDate[dateKey];
+          if (allMetas && allMetas.length) {
+            var endIdx = Math.min(next, allMetas.length);
+            var addHtml = '';
+            for (var ai = mounted; ai < endIdx; ai++) {
+              addHtml += renderTimelineItem(allMetas[ai], false);
+            }
+            if (addHtml) listEl.insertAdjacentHTML('beforeend', addHtml);
+          }
+        }
+        var items = listEl.children;
+        for (var ii = 0; ii < items.length; ii++) {
+          items[ii].classList.toggle('updates-item-folded', ii >= next);
+        }
       }
       var actionsHtml = renderDayActions(total, next);
       var actionsEl = daySection.querySelector('.updates-day-actions');
@@ -1552,9 +1794,11 @@
     function renderTimelineDay(dateLabel, metas, totalCount, dayStats) {
       var fold = metas.length > TIMELINE_FOLD_LIMIT;
       var showCount = fold ? TIMELINE_FOLD_SHOW : metas.length;
+      if (fold) dayMetasByDate[dateLabel || ''] = metas;
       var itemsHtml = '';
-      for (var ii = 0; ii < metas.length; ii++) {
-        itemsHtml += renderTimelineItem(metas[ii], fold && ii >= showCount);
+      // 长列表（单日数百条）首屏只挂载可见条数，点展开时再按步长增量插入 DOM
+      for (var ii = 0; ii < showCount; ii++) {
+        itemsHtml += renderTimelineItem(metas[ii], false);
       }
       var dayMeta = formatDayMeta(metas, totalCount, dayStats);
       return (
@@ -1562,7 +1806,7 @@
         (fold ? ' is-collapsible is-collapsed' : '') +
         '"' +
         (fold
-          ? ' data-total="' + metas.length + '" data-show="' + showCount + '"'
+          ? ' data-date="' + escapeHtml(dateLabel || '') + '" data-total="' + metas.length + '" data-show="' + showCount + '"'
           : '') +
         '>' +
         '<h3 class="updates-day-date"><span class="updates-day-dot" aria-hidden="true"></span>' +
@@ -1973,6 +2217,11 @@
     const pages = siteData && siteData.pages ? siteData.pages : {};
     const detailPages = pages.detail_pages || {};
     const roadmapPages = pages.roadmap_pages || {};
+    if (buildMarkdownRouteIndex._detailRef === detailPages &&
+        buildMarkdownRouteIndex._roadmapRef === roadmapPages &&
+        buildMarkdownRouteIndex._result) {
+      return buildMarkdownRouteIndex._result;
+    }
     const routeIndex = {};
 
     // ⚡ Bolt Optimization: Replace Object.keys().forEach with for...in
@@ -1990,6 +2239,9 @@
       }
     }
 
+    buildMarkdownRouteIndex._detailRef = detailPages;
+    buildMarkdownRouteIndex._roadmapRef = roadmapPages;
+    buildMarkdownRouteIndex._result = routeIndex;
     return routeIndex;
   }
 
@@ -2478,6 +2730,42 @@
   function getMermaidThemeVariables(isDark, fontSizePx) {
     var size = Math.max(11, Math.round(fontSizePx || getMermaidFontSizePx()));
     var fontSize = String(size) + 'px';
+    var isClassic = document.documentElement.getAttribute('data-ui') === 'classic';
+    if (!isClassic) {
+      var techLightThemeVars = {
+        primaryColor: '#ffffff',
+        primaryTextColor: '#111214',
+        primaryBorderColor: '#1947c2',
+        lineColor: '#595b61',
+        secondaryColor: '#eceae4',
+        tertiaryColor: '#f5f4f0',
+        mainBkg: '#ffffff',
+        nodeBorder: '#1947c2',
+        clusterBkg: '#eceae4',
+        clusterBorder: 'rgba(17, 18, 20, 0.24)',
+        edgeLabelBackground: '#f5f4f0',
+        titleColor: '#111214',
+        fontFamily: 'inherit',
+        fontSize: fontSize
+      };
+      var techDarkThemeVars = {
+        primaryColor: '#111317',
+        primaryTextColor: '#efeff1',
+        primaryBorderColor: '#5ca4ff',
+        lineColor: '#8f949e',
+        secondaryColor: '#0f1115',
+        tertiaryColor: '#0a0b0d',
+        mainBkg: '#111317',
+        nodeBorder: '#5ca4ff',
+        clusterBkg: '#0f1115',
+        clusterBorder: 'rgba(239, 239, 241, 0.24)',
+        edgeLabelBackground: '#0a0b0d',
+        titleColor: '#efeff1',
+        fontFamily: 'inherit',
+        fontSize: fontSize
+      };
+      return isDark ? techDarkThemeVars : techLightThemeVars;
+    }
     var lightThemeVars = {
       primaryColor: '#eaf1fb',
       primaryTextColor: '#37352f',
@@ -4119,59 +4407,14 @@
       );
       parts.push('<div class="roadmap-ltree-gates" data-dir="in" hidden></div>');
       parts.push('<div class="roadmap-ltree-stage roadmap-ltree-pan"><div class="roadmap-ltree-tree">');
-      parts.push('<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodesHtml(p) + '</div></div>');
+      // 仅首阶段在初始加载时挂载节点卡片；其余阶段与全局总览弹窗按需懒挂载，大幅削减长路线首屏 DOM 节点
+      parts.push('<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + (p === 0 ? nodesHtml(0) : '') + '</div></div>');
       parts.push('<div class="roadmap-ltree-gates" data-dir="out" hidden></div>');
       parts.push('</section>');
     }
     parts.push('</div></div>');
     treeEl.innerHTML = parts.join('');
     if (metaEl) metaEl.textContent = columns.length + ' 个阶段 · ' + total + ' 个知识节点';
-
-    var mapParts = [
-      '<div class="roadmap-ltree-map-backdrop" data-map-close></div>',
-      '<div class="roadmap-ltree-map-panel">',
-        '<div class="roadmap-ltree-map-bar">',
-          '<h2 id="roadmap-ltree-map-title" class="roadmap-ltree-map-title">',
-            '<span>全局总览</span>',
-            '<span class="roadmap-ltree-map-count">' + total + ' 个节点 · ' + columns.length + ' 个阶段</span>',
-          '</h2>',
-          '<div class="roadmap-ltree-map-legend">',
-            '<p>实线为阶段内互链，虚线为相邻阶段互链。悬停节点（触屏上点一下）点亮树链与相邻互链；点阶段名切到该阶段。</p>',
-            '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--mouse">拖动或滚轮平移；Ctrl / ⌘ + 滚轮、触控板捏合或 + / − 键缩放，0 键复位。</p>',
-            '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--touch">单指拖动平移，双指捏合缩放；点节点弹出详情浮窗，再点浮窗内链接进入。</p>',
-          '</div>',
-          '<div class="roadmap-ltree-map-controls" role="group" aria-label="缩放">',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-out" aria-label="缩小" title="缩小 (-)">',
-              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3.5 8h9"/></svg>',
-            '</button>',
-            '<output class="roadmap-ltree-map-level" aria-live="polite">100%</output>',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-in" aria-label="放大" title="放大 (+)">',
-              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 3.5v9M3.5 8h9"/></svg>',
-            '</button>',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-reset" aria-label="复位（0 键）" title="复位（0 键）">',
-              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10"/></svg>',
-            '</button>',
-            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-layout">放大阅读</button>',
-          '</div>',
-          '<button type="button" class="roadmap-ltree-map-close" data-map-close aria-label="关闭" title="关闭 (Esc)">',
-            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
-          '</button>',
-        '</div>',
-        '<div class="roadmap-ltree-map-viewport" tabindex="0" role="group" aria-label="全局总览图：方向键平移，+ / − 缩放，0 键复位">',
-          '<div class="roadmap-ltree-map-sizer">',
-            '<div class="roadmap-ltree-map-canvas">',
-              '<div class="roadmap-ltree-ov">',
-                '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>'
-    ];
-    for (var o = 0; o < columns.length; o++) {
-      mapParts.push(
-        '<div class="roadmap-ltree-ov-stage" role="group" aria-label="' + escapeHtml(marks[o] + ' ' + columns[o].title) + '">' +
-          '<button type="button" class="roadmap-ltree-ov-head" data-stage="' + o + '">' + markHtml(o) +
-          '<span class="roadmap-ltree-ov-title">' + escapeHtml(columns[o].title) + '</span></button>' +
-          '<div class="roadmap-ltree-tree">' + nodesHtml(o) + '</div></div>'
-      );
-    }
-    mapParts.push('</div></div></div></div></div>');
 
     var mapEl = document.createElement('div');
     mapEl.id = 'roadmap-ltree-map';
@@ -4180,25 +4423,26 @@
     mapEl.setAttribute('aria-modal', 'true');
     mapEl.setAttribute('aria-labelledby', 'roadmap-ltree-map-title');
     mapEl.hidden = true;
-    mapEl.innerHTML = mapParts.join('');
     document.body.appendChild(mapEl);
 
     var root = treeEl.firstChild;
-    var mapPanel = mapEl.querySelector('.roadmap-ltree-map-panel');
-    var mapViewport = mapEl.querySelector('.roadmap-ltree-map-viewport');
-    var mapSizer = mapEl.querySelector('.roadmap-ltree-map-sizer');
-    var mapCanvas = mapEl.querySelector('.roadmap-ltree-map-canvas');
-    var mapClose = mapEl.querySelector('.roadmap-ltree-map-close');
-    var mapZoomIn = mapEl.querySelector('.roadmap-ltree-map-zoom-in');
-    var mapZoomOut = mapEl.querySelector('.roadmap-ltree-map-zoom-out');
-    var mapReset = mapEl.querySelector('.roadmap-ltree-map-reset');
-    var mapLevel = mapEl.querySelector('.roadmap-ltree-map-level');
-    var mapLayoutBtn = mapEl.querySelector('.roadmap-ltree-map-layout');
-    var ov = mapCanvas.querySelector('.roadmap-ltree-ov');
-    var ovSvg = ov.firstChild;
-    var ovNodes = ov.querySelectorAll('.roadmap-ltree-node');
-    var ovTrees = ov.querySelectorAll('.roadmap-ltree-tree');
+    var mapBuilt = false;
+    var mapPanel = null;
+    var mapViewport = null;
+    var mapSizer = null;
+    var mapCanvas = null;
+    var mapClose = null;
+    var mapZoomIn = null;
+    var mapZoomOut = null;
+    var mapReset = null;
+    var mapLevel = null;
+    var mapLayoutBtn = null;
+    var ov = null;
+    var ovSvg = null;
+    var ovNodes = [];
+    var ovTrees = [];
     var crossEdges = []; // 全局总览里相邻阶段的互链 [前一阶段节点序号, 后一阶段节点序号]
+    var latestLinked = {};
     var rail = root.querySelector('.roadmap-ltree-rail');
     var tabs = root.querySelectorAll('.roadmap-ltree-tab');
     var overviewBtn = root.querySelector('.roadmap-ltree-overview-btn');
@@ -4210,7 +4454,11 @@
         panel: panelEls[ps],
         tree: tree,
         svg: tree.firstChild,
-        nodes: tree.querySelectorAll('.roadmap-ltree-node'),
+        nodes: ps === 0 ? tree.querySelectorAll('.roadmap-ltree-node') : [],
+        rendered: ps === 0,
+        placedLayout: null,
+        gatesLinkedRef: null,
+        layout: null,
         parent: []
       });
     }
@@ -4237,17 +4485,48 @@
       document.dispatchEvent(new CustomEvent('rn-hide-inline-tooltip'));
     }
 
+    function ensureStageMounted(s) {
+      var st = stages[s];
+      if (!st) return;
+      if (!st.rendered) {
+        st.tree.innerHTML = '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodesHtml(s);
+        st.svg = st.tree.firstChild;
+        st.nodes = st.tree.querySelectorAll('.roadmap-ltree-node');
+        st.rendered = true;
+      }
+      if (st.layout && st.placedLayout !== st.layout) {
+        placeRoadmapLtreeNodes(st.tree, st.nodes, st.layout);
+        st.placedLayout = st.layout;
+      }
+      if (st.gatesLinkedRef !== latestLinked && latestLinked !== null) {
+        renderGates(s, s - 1, 'in', '前置', latestLinked);
+        renderGates(s, s + 1, 'out', '通往', latestLinked);
+        st.gatesLinkedRef = latestLinked;
+      }
+    }
+
     function applyLayout(s, linked) {
       var st = stages[s];
       var lay = layoutRoadmapLearningStage(columns[s].items, linked);
+      st.layout = lay;
       st.parent = lay.parent;
       st.centered = false;
-      placeRoadmapLtreeNodes(st.tree, st.nodes, lay);
-      placeRoadmapLtreeNodes(ovTrees[s], Array.prototype.slice.call(ovNodes, offsets[s], offsets[s] + st.nodes.length), lay);
+      if (st.rendered) {
+        placeRoadmapLtreeNodes(st.tree, st.nodes, lay);
+        st.placedLayout = lay;
+      }
+      if (mapBuilt && ovTrees[s] && ovNodes.length) {
+        placeRoadmapLtreeNodes(
+          ovTrees[s],
+          Array.prototype.slice.call(ovNodes, offsets[s], offsets[s] + columns[s].items.length),
+          lay
+        );
+      }
     }
 
     // 全局总览：各阶段框内的树边 + 相邻阶段互链（阶段框上下排开，互链从上一阶段节点底边接到下一阶段节点顶边）
     function drawOverview() {
+      if (!mapBuilt || !ov || !ovSvg) return;
       var box = ov.getBoundingClientRect();
       if (!box.width) return;
       var html = '';
@@ -4278,6 +4557,7 @@
 
     // 画边并同步可拖动状态（节点有最小宽度，放不下就在框内拖动查看）
     function showStage(st) {
+      if (!st || !st.rendered) return;
       drawRoadmapLtreeEdges(st);
       syncRoadmapLtreePan(st.tree.parentNode, st);
     }
@@ -4347,6 +4627,7 @@
     }
 
     function fitMap() {
+      if (!mapBuilt) return;
       var avail = mapAvailableSize();
       if (avail.w <= 0 || avail.h <= 0) return;
       mapCanvas.style.transform = 'none';
@@ -4363,7 +4644,220 @@
       applyMapLayout();
     }
 
+    function buildOverviewMap() {
+      if (mapBuilt) return;
+      var mapParts = [
+        '<div class="roadmap-ltree-map-backdrop" data-map-close></div>',
+        '<div class="roadmap-ltree-map-panel">',
+          '<div class="roadmap-ltree-map-bar">',
+            '<h2 id="roadmap-ltree-map-title" class="roadmap-ltree-map-title">',
+              '<span>全局总览</span>',
+              '<span class="roadmap-ltree-map-count">' + total + ' 个节点 · ' + columns.length + ' 个阶段</span>',
+            '</h2>',
+            '<div class="roadmap-ltree-map-legend">',
+              '<p>实线为阶段内互链，虚线为相邻阶段互链。悬停节点（触屏上点一下）点亮树链与相邻互链；点阶段名切到该阶段。</p>',
+              '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--mouse">拖动或滚轮平移；Ctrl / ⌘ + 滚轮、触控板捏合或 + / − 键缩放，0 键复位。</p>',
+              '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--touch">单指拖动平移，双指捏合缩放；点节点弹出详情浮窗，再点浮窗内链接进入。</p>',
+            '</div>',
+            '<div class="roadmap-ltree-map-controls" role="group" aria-label="缩放">',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-out" aria-label="缩小" title="缩小 (-)">',
+                '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3.5 8h9"/></svg>',
+              '</button>',
+              '<output class="roadmap-ltree-map-level" aria-live="polite">100%</output>',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-in" aria-label="放大" title="放大 (+)">',
+                '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 3.5v9M3.5 8h9"/></svg>',
+              '</button>',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-reset" aria-label="复位（0 键）" title="复位（0 键）">',
+                '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10"/></svg>',
+              '</button>',
+              '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-layout">放大阅读</button>',
+            '</div>',
+            '<button type="button" class="roadmap-ltree-map-close" data-map-close aria-label="关闭" title="关闭 (Esc)">',
+              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
+            '</button>',
+          '</div>',
+          '<div class="roadmap-ltree-map-viewport" tabindex="0" role="group" aria-label="全局总览图：方向键平移，+ / − 缩放，0 键复位">',
+            '<div class="roadmap-ltree-map-sizer">',
+              '<div class="roadmap-ltree-map-canvas">',
+                '<div class="roadmap-ltree-ov">',
+                  '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>'
+      ];
+      for (var o = 0; o < columns.length; o++) {
+        mapParts.push(
+          '<div class="roadmap-ltree-ov-stage" role="group" aria-label="' + escapeHtml(marks[o] + ' ' + columns[o].title) + '">' +
+            '<button type="button" class="roadmap-ltree-ov-head" data-stage="' + o + '">' + markHtml(o) +
+            '<span class="roadmap-ltree-ov-title">' + escapeHtml(columns[o].title) + '</span></button>' +
+            '<div class="roadmap-ltree-tree">' + nodesHtml(o) + '</div></div>'
+        );
+      }
+      mapParts.push('</div></div></div></div></div>');
+      mapEl.innerHTML = mapParts.join('');
+      mapPanel = mapEl.querySelector('.roadmap-ltree-map-panel');
+      mapViewport = mapEl.querySelector('.roadmap-ltree-map-viewport');
+      mapSizer = mapEl.querySelector('.roadmap-ltree-map-sizer');
+      mapCanvas = mapEl.querySelector('.roadmap-ltree-map-canvas');
+      mapClose = mapEl.querySelector('.roadmap-ltree-map-close');
+      mapZoomIn = mapEl.querySelector('.roadmap-ltree-map-zoom-in');
+      mapZoomOut = mapEl.querySelector('.roadmap-ltree-map-zoom-out');
+      mapReset = mapEl.querySelector('.roadmap-ltree-map-reset');
+      mapLevel = mapEl.querySelector('.roadmap-ltree-map-level');
+      mapLayoutBtn = mapEl.querySelector('.roadmap-ltree-map-layout');
+      ov = mapCanvas.querySelector('.roadmap-ltree-ov');
+      ovSvg = ov.firstChild;
+      ovNodes = ov.querySelectorAll('.roadmap-ltree-node');
+      ovTrees = ov.querySelectorAll('.roadmap-ltree-tree');
+      mapBuilt = true;
+
+      for (var os = 0; os < stages.length; os++) {
+        if (stages[os].layout) {
+          placeRoadmapLtreeNodes(
+            ovTrees[os],
+            Array.prototype.slice.call(ovNodes, offsets[os], offsets[os] + columns[os].items.length),
+            stages[os].layout
+          );
+        }
+      }
+
+      ov.addEventListener('mouseover', onHover);
+      ov.addEventListener('focusin', onHover);
+      ov.addEventListener('mouseleave', clearAllTraces);
+      mapZoomIn.addEventListener('click', function () { zoomMapTo(mapState.scale * MAP_ZOOM_STEP); });
+      mapZoomOut.addEventListener('click', function () { zoomMapTo(mapState.scale / MAP_ZOOM_STEP); });
+      mapReset.addEventListener('click', resetMapView);
+      mapLayoutBtn.addEventListener('click', function () {
+        mapState.reading = !mapState.reading;
+        applyMapLayout();
+      });
+      mapViewport.addEventListener('scroll', hideMapTooltip, { passive: true });
+      mapPanel.addEventListener('keydown', function (ev) {
+        if (ev.key !== 'Tab') {
+          if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+          var key = ev.key;
+          if (key === '+' || key === '=') {
+            zoomMapTo(mapState.scale * MAP_ZOOM_STEP);
+          } else if (key === '-' || key === '_') {
+            zoomMapTo(mapState.scale / MAP_ZOOM_STEP);
+          } else if (key === '0') {
+            resetMapView();
+          } else if (MAP_PAN_KEYS[key] && mapViewport.contains(ev.target)) {
+            var step = ev.shiftKey ? 240 : 60;
+            mapViewport.scrollLeft += MAP_PAN_KEYS[key][0] * step;
+            mapViewport.scrollTop += MAP_PAN_KEYS[key][1] * step;
+          } else {
+            return;
+          }
+          ev.preventDefault();
+          return;
+        }
+        var focusables = Array.prototype.filter.call(
+          mapPanel.querySelectorAll('a[href], button:not([hidden]):not([disabled]), [tabindex="0"]'),
+          function (item) { return item.offsetParent !== null; }
+        );
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (ev.shiftKey && document.activeElement === first) {
+          ev.preventDefault();
+          last.focus();
+        } else if (!ev.shiftKey && document.activeElement === last) {
+          ev.preventDefault();
+          first.focus();
+        }
+      });
+
+      (function bindMapPanZoom() {
+        var drag = null;
+        var pinch = null;
+        var gesture = null;
+
+        mapViewport.addEventListener('pointerdown', function (ev) {
+          if (ev.pointerType === 'touch' || ev.button !== 0) return;
+          drag = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop, moved: false };
+        });
+        mapViewport.addEventListener('pointermove', function (ev) {
+          if (!drag || ev.pointerId !== drag.id) return;
+          var dx = ev.clientX - drag.x;
+          var dy = ev.clientY - drag.y;
+          if (!drag.moved) {
+            if (Math.abs(dx) + Math.abs(dy) < 5) return;
+            drag.moved = true;
+            if (mapViewport.setPointerCapture) mapViewport.setPointerCapture(ev.pointerId);
+            mapViewport.classList.add('is-dragging');
+            hideMapTooltip();
+            clearAllTraces();
+          }
+          if (window.getSelection) window.getSelection().removeAllRanges();
+          mapViewport.scrollLeft = drag.left - dx;
+          mapViewport.scrollTop = drag.top - dy;
+        });
+        function endDrag(ev) {
+          if (!drag || ev.pointerId !== drag.id) return;
+          if (drag.moved) {
+            mapState.suppressClick = true;
+            setTimeout(function () { mapState.suppressClick = false; }, 0);
+            mapViewport.classList.remove('is-dragging');
+          }
+          drag = null;
+        }
+        mapViewport.addEventListener('pointerup', endDrag);
+        mapViewport.addEventListener('pointercancel', endDrag);
+
+        function touchCenter(touches) {
+          var a = touches[0];
+          var b = touches[1];
+          return {
+            x: (a.clientX + b.clientX) / 2,
+            y: (a.clientY + b.clientY) / 2,
+            d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
+          };
+        }
+        mapViewport.addEventListener('touchstart', function (ev) {
+          if (ev.touches.length !== 2) return;
+          var c = touchCenter(ev.touches);
+          var frame = mapCanvas.getBoundingClientRect();
+          pinch = { d: c.d, scale: mapState.scale, x: (c.x - frame.left) / mapState.scale, y: (c.y - frame.top) / mapState.scale };
+          hideMapTooltip();
+          clearAllTraces();
+        }, { passive: true });
+        mapViewport.addEventListener('touchmove', function (ev) {
+          if (!pinch || ev.touches.length !== 2 || pinch.d < 1) return;
+          ev.preventDefault();
+          var c = touchCenter(ev.touches);
+          setMapScale(clampMapScale(pinch.scale * c.d / pinch.d));
+          keepMapPoint(pinch.x, pinch.y, c.x, c.y);
+        }, { passive: false });
+        function endPinch(ev) {
+          if (ev.touches.length < 2) pinch = null;
+        }
+        mapViewport.addEventListener('touchend', endPinch);
+        mapViewport.addEventListener('touchcancel', endPinch);
+
+        mapViewport.addEventListener('wheel', function (ev) {
+          if (!ev.ctrlKey && !ev.metaKey) return;
+          ev.preventDefault();
+          var delta = ev.deltaY;
+          if (ev.deltaMode === 1) delta *= 16;
+          else if (ev.deltaMode === 2) delta *= mapViewport.clientHeight;
+          zoomMapTo(mapState.scale * Math.exp(-delta * 0.002), ev.clientX, ev.clientY);
+        }, { passive: false });
+
+        mapEl.addEventListener('gesturestart', function (ev) {
+          ev.preventDefault();
+          gesture = pinch ? null : { scale: mapState.scale };
+        });
+        mapEl.addEventListener('gesturechange', function (ev) {
+          ev.preventDefault();
+          if (gesture && !pinch) zoomMapTo(gesture.scale * ev.scale, ev.clientX, ev.clientY);
+        });
+        mapEl.addEventListener('gestureend', function (ev) {
+          ev.preventDefault();
+          gesture = null;
+        });
+      })();
+    }
+
     function openMap() {
+      buildOverviewMap();
       mapState.opener = document.activeElement;
       mapState.reading = false;
       mapEl.hidden = false;
@@ -4388,6 +4882,7 @@
       }
       // 窄屏阶段栏是横向滚动的一排编号：把选中的滚到中间（宽屏不滚动，赋值无效果）
       if (tabs[stage]) rail.scrollLeft = tabs[stage].offsetLeft - (rail.clientWidth - tabs[stage].offsetWidth) / 2;
+      ensureStageMounted(stage);
       for (var i = 0; i < stages.length; i++) {
         stages[i].panel.hidden = i !== stage;
         if (i === stage) showStage(stages[i]);
@@ -4403,6 +4898,7 @@
 
     // 全局总览悬停 / 触屏点按：点亮所在阶段的树链，以及与它直接互链的相邻阶段节点
     function traceOverview(s, k) {
+      if (!mapBuilt || !ov) return;
       var g = offsets[s] + k;
       var lit = {};
       var chain = roadmapLtreeChain(stages[s].parent, k);
@@ -4423,7 +4919,8 @@
     }
 
     function clearAllTraces() {
-      [root, ov].forEach(function (scope) {
+      var scopes = ov ? [root, ov] : [root];
+      scopes.forEach(function (scope) {
         var lit = scope.querySelectorAll('.is-tracing, .is-path');
         for (var i = 0; i < lit.length; i++) lit[i].classList.remove('is-tracing', 'is-path');
         scope.classList.remove('is-tracing');
@@ -4501,145 +4998,6 @@
       clearAllTraces();
       hideMapTooltip();
     });
-    ov.addEventListener('mouseover', onHover);
-    ov.addEventListener('focusin', onHover);
-    ov.addEventListener('mouseleave', clearAllTraces);
-
-    mapZoomIn.addEventListener('click', function () { zoomMapTo(mapState.scale * MAP_ZOOM_STEP); });
-    mapZoomOut.addEventListener('click', function () { zoomMapTo(mapState.scale / MAP_ZOOM_STEP); });
-    mapReset.addEventListener('click', resetMapView);
-    mapLayoutBtn.addEventListener('click', function () {
-      mapState.reading = !mapState.reading;
-      applyMapLayout();
-    });
-    mapViewport.addEventListener('scroll', hideMapTooltip);
-
-    mapPanel.addEventListener('keydown', function (ev) {
-      if (ev.key !== 'Tab') {
-        if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
-        var key = ev.key;
-        if (key === '+' || key === '=') {
-          zoomMapTo(mapState.scale * MAP_ZOOM_STEP);
-        } else if (key === '-' || key === '_') {
-          zoomMapTo(mapState.scale / MAP_ZOOM_STEP);
-        } else if (key === '0') {
-          resetMapView();
-        } else if (MAP_PAN_KEYS[key] && mapViewport.contains(ev.target)) {
-          var step = ev.shiftKey ? 240 : 60;
-          mapViewport.scrollLeft += MAP_PAN_KEYS[key][0] * step;
-          mapViewport.scrollTop += MAP_PAN_KEYS[key][1] * step;
-        } else {
-          return;
-        }
-        ev.preventDefault();
-        return;
-      }
-      var focusables = Array.prototype.filter.call(
-        mapPanel.querySelectorAll('a[href], button:not([hidden]):not([disabled]), [tabindex="0"]'),
-        function (item) { return item.offsetParent !== null; }
-      );
-      if (!focusables.length) return;
-      var first = focusables[0];
-      var last = focusables[focusables.length - 1];
-      if (ev.shiftKey && document.activeElement === first) {
-        ev.preventDefault();
-        last.focus();
-      } else if (!ev.shiftKey && document.activeElement === last) {
-        ev.preventDefault();
-        first.focus();
-      }
-    });
-
-    // 鼠标 / 触控笔按住拖动平移；触屏单指交给原生滚动（有惯性），双指捏合在这里算缩放
-    (function bindMapPanZoom() {
-      var drag = null;
-      var pinch = null;
-      var gesture = null;
-
-      mapViewport.addEventListener('pointerdown', function (ev) {
-        if (ev.pointerType === 'touch' || ev.button !== 0) return;
-        drag = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop, moved: false };
-      });
-      mapViewport.addEventListener('pointermove', function (ev) {
-        if (!drag || ev.pointerId !== drag.id) return;
-        var dx = ev.clientX - drag.x;
-        var dy = ev.clientY - drag.y;
-        if (!drag.moved) {
-          if (Math.abs(dx) + Math.abs(dy) < 5) return;
-          drag.moved = true;
-          if (mapViewport.setPointerCapture) mapViewport.setPointerCapture(ev.pointerId);
-          mapViewport.classList.add('is-dragging');
-          hideMapTooltip();
-          clearAllTraces();
-        }
-        if (window.getSelection) window.getSelection().removeAllRanges();
-        mapViewport.scrollLeft = drag.left - dx;
-        mapViewport.scrollTop = drag.top - dy;
-      });
-      function endDrag(ev) {
-        if (!drag || ev.pointerId !== drag.id) return;
-        if (drag.moved) {
-          mapState.suppressClick = true;
-          setTimeout(function () { mapState.suppressClick = false; }, 0);
-          mapViewport.classList.remove('is-dragging');
-        }
-        drag = null;
-      }
-      mapViewport.addEventListener('pointerup', endDrag);
-      mapViewport.addEventListener('pointercancel', endDrag);
-
-      function touchCenter(touches) {
-        var a = touches[0];
-        var b = touches[1];
-        return {
-          x: (a.clientX + b.clientX) / 2,
-          y: (a.clientY + b.clientY) / 2,
-          d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
-        };
-      }
-      mapViewport.addEventListener('touchstart', function (ev) {
-        if (ev.touches.length !== 2) return;
-        var c = touchCenter(ev.touches);
-        var frame = mapCanvas.getBoundingClientRect();
-        pinch = { d: c.d, scale: mapState.scale, x: (c.x - frame.left) / mapState.scale, y: (c.y - frame.top) / mapState.scale };
-        hideMapTooltip();
-        clearAllTraces();
-      }, { passive: true });
-      mapViewport.addEventListener('touchmove', function (ev) {
-        if (!pinch || ev.touches.length !== 2 || pinch.d < 1) return;
-        ev.preventDefault();
-        var c = touchCenter(ev.touches);
-        setMapScale(clampMapScale(pinch.scale * c.d / pinch.d));
-        keepMapPoint(pinch.x, pinch.y, c.x, c.y);
-      }, { passive: false });
-      function endPinch(ev) {
-        if (ev.touches.length < 2) pinch = null;
-      }
-      mapViewport.addEventListener('touchend', endPinch);
-      mapViewport.addEventListener('touchcancel', endPinch);
-
-      mapViewport.addEventListener('wheel', function (ev) {
-        if (!ev.ctrlKey && !ev.metaKey) return;
-        ev.preventDefault();
-        var delta = ev.deltaY;
-        if (ev.deltaMode === 1) delta *= 16;
-        else if (ev.deltaMode === 2) delta *= mapViewport.clientHeight;
-        zoomMapTo(mapState.scale * Math.exp(-delta * 0.002), ev.clientX, ev.clientY);
-      }, { passive: false });
-
-      mapEl.addEventListener('gesturestart', function (ev) {
-        ev.preventDefault();
-        gesture = pinch ? null : { scale: mapState.scale };
-      });
-      mapEl.addEventListener('gesturechange', function (ev) {
-        ev.preventDefault();
-        if (gesture && !pinch) zoomMapTo(gesture.scale * ev.scale, ev.clientX, ev.clientY);
-      });
-      mapEl.addEventListener('gestureend', function (ev) {
-        ev.preventDefault();
-        gesture = null;
-      });
-    })();
 
     function onDocPointerDown(ev) {
       lastPointer = ev.pointerType || '';
@@ -4678,14 +5036,17 @@
       if (resize && typeof resize.disconnect === 'function') resize.disconnect();
     };
 
-    for (var st0 = 0; st0 < stages.length; st0++) applyLayout(st0, {});
+    for (var st0 = 0; st0 < stages.length; st0++) applyLayout(st0, latestLinked);
     select(0);
     var resize = new ResizeObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
         var stAttr = entries[i].target.parentNode && entries[i].target.parentNode.parentNode
           ? entries[i].target.parentNode.parentNode.getAttribute('data-stage')
           : null;
-        if (stAttr !== null && stages[Number(stAttr)]) showStage(stages[Number(stAttr)]);
+        var stIdx = stAttr !== null ? Number(stAttr) : -1;
+        if (stIdx >= 0 && stages[stIdx] && stages[stIdx].rendered && !stages[stIdx].panel.hidden) {
+          showStage(stages[stIdx]);
+        }
       }
     });
     for (var ro = 0; ro < stages.length; ro++) {
@@ -4699,12 +5060,17 @@
         for (var w = 0; w < columns[c].items.length; w++) wanted[columns[c].items[w]] = true;
       }
       var linked = roadmapLtreeLinkedPairs(gd, wanted);
+      latestLinked = linked;
+      crossEdges = [];
       var treeEdges = 0;
       for (var s2 = 0; s2 < stages.length; s2++) {
         applyLayout(s2, linked);
         for (var pj = 0; pj < stages[s2].parent.length; pj++) if (stages[s2].parent[pj] >= 0) treeEdges++;
-        renderGates(s2, s2 - 1, 'in', '前置', linked);
-        renderGates(s2, s2 + 1, 'out', '通往', linked);
+        if (stages[s2].rendered) {
+          renderGates(s2, s2 - 1, 'in', '前置', linked);
+          renderGates(s2, s2 + 1, 'out', '通往', linked);
+          stages[s2].gatesLinkedRef = linked;
+        }
         if (s2 === 0) continue;
         var prev = columns[s2 - 1].items;
         var cur = columns[s2].items;
@@ -4715,7 +5081,7 @@
         }
       }
       for (var v = 0; v < stages.length; v++) if (!stages[v].panel.hidden) showStage(stages[v]);
-      if (!mapEl.hidden) fitMap();
+      if (mapBuilt && !mapEl.hidden) fitMap();
       if (metaEl && treeEdges) {
         metaEl.textContent += ' · ' + treeEdges + ' 条阶段内连线';
         metaEl.title = '箭头：同一阶段内两节点有站内互链，方向为路线列表里的先后；前置 / 通往：与相邻阶段互链的节点';
@@ -4936,34 +5302,35 @@
     if (!headings.length || !navItems.length) return;
 
     let lastActiveHref = '';
+    let lastActiveEl = null;
+    const navByHref = Object.create(null);
+    for (var nj = 0; nj < navItems.length; nj++) {
+      const nh = navItems[nj].getAttribute('href') || navItems[nj].getAttribute('data-href') || '';
+      if (nh) navByHref[nh] = navItems[nj];
+    }
 
-    function scrollTocActiveIntoView() {
-      const activeItem = tocContainer.querySelector('a.active, .toc-entry.active');
+    function scrollTocActiveIntoView(activeItem) {
       if (!activeItem || typeof activeItem.scrollIntoView !== 'function') return;
       activeItem.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
     }
 
     function updateActiveTocLink() {
       let activeId = headings[0].id;
-      // ⚡ Bolt Optimization: Replace .forEach with standard for loop
-      // Expected impact: Eliminates closure allocation during hot scroll events.
       for (var i = 0; i < headings.length; i++) {
         if (headings[i].getBoundingClientRect().top <= 140) activeId = headings[i].id;
+        else if (i > 0) break;
       }
       const activeHref = '#' + activeId;
-      for (var j = 0; j < navItems.length; j++) {
-        const itemHref = navItems[j].getAttribute('href') || navItems[j].getAttribute('data-href') || '';
-        navItems[j].classList.toggle('active', itemHref === activeHref);
-      }
-      if (activeHref !== lastActiveHref) {
-        lastActiveHref = activeHref;
-        scrollTocActiveIntoView();
-      }
+      if (activeHref === lastActiveHref) return;
+      if (lastActiveEl) lastActiveEl.classList.remove('active');
+      const nextEl = navByHref[activeHref] || null;
+      if (nextEl) nextEl.classList.add('active');
+      lastActiveEl = nextEl;
+      lastActiveHref = activeHref;
+      scrollTocActiveIntoView(nextEl);
     }
 
     let tocTicking = false;
-    // ⚡ Bolt Optimization: Throttle TOC scroll spy using requestAnimationFrame
-    // Expected impact: Mitigates performance degradation on long pages by avoiding rapid `getBoundingClientRect()` calls per scroll tick.
     window.addEventListener('scroll', function() {
       if (!tocTicking) {
         window.requestAnimationFrame(function() {
@@ -4974,7 +5341,11 @@
       }
     }, { passive: true });
     window.addEventListener('hashchange', updateActiveTocLink);
-    updateActiveTocLink();
+    if (typeof window.requestAnimationFrame === 'function') {
+      window.requestAnimationFrame(updateActiveTocLink);
+    } else {
+      updateActiveTocLink();
+    }
   }
 
   /** 在程序化改变滚动位置后触发一次 TOC spy，避免初始带 hash 时高亮与侧栏滚动不同步。 */
@@ -5602,6 +5973,8 @@
   // 不能就地写 x/y/vx/vy 等模拟状态。
   var _linkGraphData = null;
   var _linkGraphPromise = null;
+  var _linkGraphSummariesLoaded = false;
+  var _linkGraphSummariesPromise = null;
 
   // link-graph.json 的边是节点下标对 [i, j]（scripts/generate_link_graph.py 写出，
   // 比重复两个完整路径小 10 倍）；读入后还原成 {source, target}，各消费方不感知格式。
@@ -5625,26 +5998,17 @@
   function ensureLinkGraphData() {
     if (_linkGraphData) return Promise.resolve(_linkGraphData);
     if (_linkGraphPromise) return _linkGraphPromise;
-    // 摘要拆在 link-graph-summaries.json（按 nodes 顺序的字符串数组）并行取回后合回 node.summary，
-    // 各消费方（详情页知识地图浮窗、首页预览图）口径不变；取不到则摘要为空
-    _linkGraphPromise = Promise.all([
-      fetch('exports/link-graph.json').then(function (r) {
+    // 摘要拆在 link-graph-summaries.json，默认不随通用图谱加载，仅在调用方需要图谱节点摘要时按需拉取
+    _linkGraphPromise = fetch('exports/link-graph.json')
+      .then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
-      }),
-      fetch('exports/link-graph-summaries.json')
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .catch(function () { return null; }),
-    ])
-      .then(function (results) {
-        var data = expandLinkGraph(results[0]);
-        var summaries = results[1];
-        if (data && Array.isArray(data.nodes) && Array.isArray(summaries) && summaries.length === data.nodes.length) {
-          for (var i = 0; i < data.nodes.length; i++) {
-            if (data.nodes[i]) data.nodes[i].summary = summaries[i] || '';
-          }
+      })
+      .then(function (raw) {
+        var data = expandLinkGraph(raw);
+        if (typeof window !== 'undefined' && window.RNGraphTooltip && window.RNGraphTooltip.setGraphData) {
+          window.RNGraphTooltip.setGraphData(data);
         }
-        if (typeof window !== 'undefined' && window.RNGraphTooltip && window.RNGraphTooltip.setGraphData) window.RNGraphTooltip.setGraphData(data);
         _linkGraphData = data;
         _linkGraphPromise = null;
         return _linkGraphData;
@@ -5654,6 +6018,34 @@
         throw error;
       });
     return _linkGraphPromise;
+  }
+
+  function ensureLinkGraphSummaries() {
+    if (_linkGraphData && _linkGraphSummariesLoaded) return Promise.resolve(_linkGraphData);
+    if (_linkGraphSummariesPromise) return _linkGraphSummariesPromise;
+    _linkGraphSummariesPromise = Promise.all([
+      ensureLinkGraphData(),
+      fetch('exports/link-graph-summaries.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; })
+    ])
+      .then(function (results) {
+        var data = results[0];
+        var summaries = results[1];
+        if (data && Array.isArray(data.nodes) && Array.isArray(summaries) && summaries.length === data.nodes.length) {
+          for (var i = 0; i < data.nodes.length; i++) {
+            if (data.nodes[i]) data.nodes[i].summary = summaries[i] || '';
+          }
+          _linkGraphSummariesLoaded = true;
+        }
+        _linkGraphSummariesPromise = null;
+        return data;
+      })
+      .catch(function (error) {
+        _linkGraphSummariesPromise = null;
+        throw error;
+      });
+    return _linkGraphSummariesPromise;
   }
 
   function ensureDetailCommunityIndex() {
@@ -5706,7 +6098,7 @@
   // 首页 mini-graph.js 与搜索区的社区下拉原先各自 fetch 一份 link-graph.json，
   // 一次打开首页要下载两遍 9 MB；统一走上面的共享加载器。
   if (typeof window !== 'undefined') {
-    window.RNLinkGraph = { ensure: ensureLinkGraphData };
+    window.RNLinkGraph = { ensure: ensureLinkGraphData, ensureSummaries: ensureLinkGraphSummaries };
     // graph.html / star-history.html 自行 fetch 时也用同一套还原逻辑
     window.RNExportFormats = { expandLinkGraph: expandLinkGraph, expandWikiActivity: expandWikiActivity };
   }
@@ -5721,7 +6113,7 @@
     return head || base;
   }
 
-  function resolveCompactRowDisplayType(page, detailId, communityIndex) {
+  function resolvePageDisplayType(page, detailId, communityIndex) {
     if (communityIndex && detailId && communityIndex.detailIdToNodeType) {
       var byId = communityIndex.detailIdToNodeType.get(detailId);
       if (byId) return byId;
@@ -5761,7 +6153,7 @@
     return {
       id: detailId,
       detail_id: detailId,
-      type: resolveCompactRowDisplayType(safePage, detailId, communityIndex),
+      type: resolvePageDisplayType(safePage, detailId, communityIndex),
       title: buildInternalLinkTitle(detailId, safePage),
       community_label: communityLabel,
       has_repo: hasRepo,
@@ -6085,14 +6477,13 @@
   function findRelatedByTags(currentId, currentTags, detailPages, maxResults) {
     if (!Array.isArray(currentTags) || !currentTags.length) return [];
     maxResults = typeof maxResults === 'number' ? maxResults : 5;
+    if (maxResults <= 0) return [];
     var tagSet = {};
     for (var t = 0; t < currentTags.length; t++) {
       tagSet[currentTags[t]] = true;
     }
 
-    var scored = [];
-    // ⚡ Bolt Optimization: Replace Object.keys().forEach with for...in
-    // Expected impact: Eliminates intermediate array allocations of all page IDs and closures, reducing memory overhead and GC pressure when rendering related tags.
+    var top = [];
     for (var id in detailPages) {
       if (!Object.prototype.hasOwnProperty.call(detailPages, id) || id === currentId) continue;
       var page = detailPages[id];
@@ -6104,22 +6495,24 @@
       for (var j = 0; j < pageTags.length; j++) {
         if (tagSet[pageTags[j]]) matchCount++;
       }
-      if (matchCount > 0) {
-        scored.push({ id: id, page: page, score: matchCount, topTag: pageTags[0] || '' });
+      if (matchCount <= 0) continue;
+      if (top.length === maxResults && matchCount < top[maxResults - 1].score) continue;
+
+      var candidate = { id: id, score: matchCount, page: page };
+      var candTitle = candidate.page.title || '';
+      var pos = top.length;
+      while (pos > 0) {
+        var prev = top[pos - 1];
+        if (prev.score > candidate.score) break;
+        if (prev.score === candidate.score && (prev.page.title || '').localeCompare(candTitle) >= 0) break;
+        pos -= 1;
+      }
+      if (pos < maxResults) {
+        top.splice(pos, 0, candidate);
+        if (top.length > maxResults) top.pop();
       }
     }
-
-    scored.sort(function (a, b) {
-      if (b.score !== a.score) return b.score - a.score;
-      return (b.page.title || '').localeCompare(a.page.title || '');
-    });
-
-    var result = [];
-    var limit = Math.min(scored.length, maxResults);
-    for (var k = 0; k < limit; k++) {
-      result.push({ id: scored[k].id, score: scored[k].score, page: scored[k].page });
-    }
-    return result;
+    return top;
   }
 
   function resolveDetailPage(detailId, detailPages) {
@@ -6188,34 +6581,59 @@
 
   function setupGraphHoverTooltip(tooltipEl) {
     var pinnedNode = null;
+    var activeNode = null;
+    var activeHtml = '';
     var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-    function moveTooltip(ev) {
-      if (!tooltipEl || tooltipEl.classList.contains('hidden')) return;
+    function applyPosition(ev) {
+      if (!tooltipEl || !ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return false;
       var x = ev.clientX + 14;
       var y = ev.clientY - 10;
       var tw = tooltipEl.offsetWidth;
       var th = tooltipEl.offsetHeight;
-      tooltipEl.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
-      tooltipEl.style.top = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
+      tooltipEl.style.left = Math.max(12, (x + tw > window.innerWidth - 20 ? x - tw - 28 : x)) + 'px';
+      tooltipEl.style.top = Math.max(12, (y + th > window.innerHeight - 20 ? y - th : y)) + 'px';
       tooltipEl.style.transform = '';
+      return true;
+    }
+
+    function moveTooltip(ev) {
+      if (!tooltipEl || tooltipEl.classList.contains('hidden')) return;
+      applyPosition(ev);
     }
 
     function hideTooltip() {
       pinnedNode = null;
+      activeNode = null;
+      activeHtml = '';
       if (!tooltipEl) return;
       tooltipEl.classList.add('hidden');
+      tooltipEl.classList.remove('tt-pinned');
+      tooltipEl.style.right = '';
+      tooltipEl.style.bottom = '';
       tooltipEl.setAttribute('aria-hidden', 'true');
     }
 
     function showTooltip(ev, d, html, forcePin) {
       if (!tooltipEl) return;
+      var shouldPin = Boolean(isMobile || forcePin);
+      if (!shouldPin) {
+        if (!ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return;
+        // 3D 地形鼠标在同节点内微移时复用已渲染内容，只更新位置
+        if (d != null && activeNode === d && activeHtml === html &&
+            !tooltipEl.classList.contains('hidden') && !tooltipEl.classList.contains('tt-pinned')) {
+          moveTooltip(ev);
+          return;
+        }
+      }
+      activeNode = d;
+      activeHtml = html;
       tooltipEl.innerHTML = html;
       renderDetailMath(tooltipEl);
       tooltipEl.setAttribute('aria-hidden', 'false');
       tooltipEl.style.width = '';
       tooltipEl.style.transform = '';
-      if (isMobile || forcePin) {
+      if (shouldPin) {
         tooltipEl.classList.add('tt-pinned');
         tooltipEl.style.left = '';
         tooltipEl.style.top = '';
@@ -6228,8 +6646,8 @@
         tooltipEl.classList.remove('tt-pinned');
         tooltipEl.style.right = '';
         tooltipEl.style.bottom = '';
-        tooltipEl.classList.remove('hidden');
-        moveTooltip(ev);
+        // 先算完合法 left/top 再去除 hidden，避免在默认位置闪现
+        if (applyPosition(ev)) tooltipEl.classList.remove('hidden');
       }
     }
 
@@ -6371,6 +6789,14 @@
     row.hidden = false;
   }
 
+  function renderDetailMetaType(rowId, type) {
+    var typeColors = (window.RNGraphTooltip && window.RNGraphTooltip.GRAPH_NODE_TYPE_COLOR) || ROADMAP_KMAP_TYPE_COLOR;
+    var color = typeColors[type] || typeColors[''];
+    var badge = '<span class="detail-meta-badge detail-meta-type" style="--type-color:' + escapeHtml(color) + '">' +
+      escapeHtml(wikiTypeLabel(type, 'node')) + '</span>';
+    renderDetailMetaItemRow(rowId, '页面类型', badge);
+  }
+
   function renderDetailMetaDateBadge(dateStr) {
     if (!dateStr) return '';
     return '<span class="detail-meta-badge detail-meta-date">' + escapeHtml(String(dateStr)) + '</span>';
@@ -6413,7 +6839,7 @@
       var html = '';
       for (var i = 0; i < topics.length; i++) {
         var key = topics[i];
-        var meta = TF.DEPTH_META[key] || { emoji: '🏷️', label: key };
+        var meta = TF.DEPTH_META[key] || { icon: 'tag', label: key };
         // 中英文分别成组：空间不足时在括号前换行，英文连同括号一起保留。
         var labelParts = /^(.+?)([（(][^（）()]+[）)])$/.exec(meta.label);
         var labelHtml = labelParts
@@ -6421,7 +6847,7 @@
           : escapeHtml(meta.label);
         html += '<a class="detail-meta-badge detail-meta-route-badge" href="graph.html?depth=' + encodeURIComponent(key) +
           '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」路线视图">' +
-          '<span>' + meta.emoji + '</span><span class="detail-meta-route-label">' + labelHtml + '</span></a>';
+          depthIconHtml(key, meta) + '<span class="detail-meta-route-label">' + labelHtml + '</span></a>';
       }
 
       renderDetailMetaItemRow(depthRowId, rowLabel, html);
@@ -6487,7 +6913,7 @@
         var label = labelById[id] || id;
         html += '<a class="detail-meta-badge" href="graph.html?institution=' + encodeURIComponent(id) +
           '" title="在知识图谱中查看「' + escapeHtml(label) + '」机构视图">' +
-          '<span>🏛️</span><span>' + escapeHtml(label) + '</span></a>';
+          uiIconHtml('building') + '<span>' + escapeHtml(label) + '</span></a>';
       }
 
       renderDetailMetaItemRow(instRowId, '所属机构', html);
@@ -6554,11 +6980,12 @@
       '更新时间',
       updated ? renderDetailMetaDateBadge(updated) : ''
     );
+    renderDetailMetaType('roadmapMetaType', 'roadmap_page');
 
     if (stages.length) {
       var stageLabel = stages.length + ' 个阶段';
       var stagesHtml = '<a class="detail-meta-badge" href="#roadmap-flow" title="跳转到阶段速览">' +
-        '<span>🗺️</span><span>' + escapeHtml(stageLabel) + '</span></a>';
+        uiIconHtml('map-route') + '<span>' + escapeHtml(stageLabel) + '</span></a>';
       renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', stagesHtml);
     } else {
       renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', '');
@@ -6872,11 +7299,17 @@
 
   function renderDetailMiniMap(detailPage, detailPages) {
     var wrap = document.getElementById('detailMiniMapWrap');
+    var viewport = document.getElementById('detailMiniMapViewport');
     var svgEl = document.getElementById('detailMiniMapSvg');
+    var stage = document.getElementById('detailMiniMapPerspective');
+    var flatButton = document.getElementById('detailMiniMapMode2d');
+    var perspectiveButton = document.getElementById('detailMiniMapMode3d');
     var metaEl = document.getElementById('detailMiniMapMeta');
     var allNeighborsLink = document.getElementById('detailMiniMapAllNeighbors');
     var tooltipEl = document.getElementById('detail-mini-map-tooltip');
-    if (!wrap || !svgEl || typeof window.d3 === 'undefined') return;
+    var d3 = window.d3;
+    var nodeSize = window.RNGraphNodeSize;
+    if (!wrap || !viewport || !svgEl || !d3 || !nodeSize) return;
     var currentPath = (detailPage && detailPage.path) || '';
     if (!currentPath) return;
 
@@ -6884,7 +7317,7 @@
       var tooltipApi = window.RNGraphTooltip;
       var palette = (tooltipApi && typeof tooltipApi.getCommunityColors === 'function')
         ? tooltipApi.getCommunityColors()
-        : ((window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10);
+        : (d3.schemeTableau10 || DETAIL_MINI_TABLEAU10);
       var communityColor = (tooltipApi && typeof tooltipApi.buildCommunityColorMap === 'function')
         ? tooltipApi.buildCommunityColorMap(gd.communities || [])
         : {};
@@ -6911,8 +7344,8 @@
       };
 
       // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
-      var degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
-      var maxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
+      var degreeMap = nodeSize.computeDegreeMap(gd.edges);
+      var maxDegree = nodeSize.maxDegreeOf(degreeMap);
 
       var neighborSet = {};
       (gd.edges || []).forEach(function (e) {
@@ -6930,34 +7363,40 @@
         if (db !== da) return db - da;
         return String(nodeMap[a].label || a).localeCompare(String(nodeMap[b].label || b), 'zh-CN');
       });
-      // 低度数全显示；高度数取规模 Top-K，避免 180px 迷你图拥挤
+      // 低度数全显示；高度数取规模 Top-K，保持局部图可读。
       var MAX_NEIGHBORS = 16;
       if (neighborIds.length > MAX_NEIGHBORS) neighborIds = neighborIds.slice(0, MAX_NEIGHBORS);
 
       wrap.hidden = false;
-      var W = wrap.clientWidth || 700;
-      var H = 180;
+      var W = viewport.clientWidth || 700;
+      var H = viewport.clientHeight || 360;
 
       var pathToId = buildPathToDetailIdIndex(detailPages);
+      var currentSummary = current.summary || (detailPage && detailPage.summary) || '';
       var nodes = [{
         id: currentPath, label: current.label || currentPath,
         type: current.type || '', community: current.community || '',
-        summary: current.summary || '', isCurrent: true,
+        summary: currentSummary, isCurrent: true,
         health_score: current.health_score, health_gaps: current.health_gaps,
         has_repo: current.has_repo,
         _degree: degreeMap[currentPath] || 0,
         fx: W / 2, fy: H / 2
       }].concat(neighborIds.map(function (id) {
         var n = nodeMap[id];
+        var nbDetailId = n.detail_id || pathToId[id];
+        var nbPage = detailPages && nbDetailId ? detailPages[nbDetailId] : null;
         return {
           id: id, label: n.label || id, type: n.type || '', community: n.community || '',
-          summary: n.summary || '', isCurrent: false,
+          summary: n.summary || (nbPage && nbPage.summary) || '', isCurrent: false,
           health_score: n.health_score, health_gaps: n.health_gaps,
           has_repo: n.has_repo,
           _degree: degreeMap[id] || 0
         };
       }));
       var edges = neighborIds.map(function (id) { return { source: currentPath, target: id }; });
+      var totalDeg = Object.keys(neighborSet).length;
+      var shown = neighborIds.length;
+      var neighborLabel = (shown < totalDeg ? '规模最大的 ' + shown + ' / ' + totalDeg : shown) + ' 个邻居';
 
       function nodeFill(d) {
         var cc = d.community && communityColor[d.community];
@@ -6969,22 +7408,40 @@
 
       var hoverTip = setupGraphHoverTooltip(tooltipEl);
       hoverTip.bindBlankDismiss(svgEl, '.mini-node, .mini-node-current');
-      hoverTip.bindOutsideDismiss(svgEl, document.body);
+      hoverTip.bindOutsideDismiss(wrap, document.body);
+      var flatHint = hoverTip.isMobile ? '拖动节点 · 点按预览' : '拖动节点 · 拖拽空白处平移 · 点击跳转';
 
-      function detailMiniNodeRadius(d, scale) {
-        var base = window.RNGraphNodeSize.radiusForDegree(d._degree || 0, maxDegree);
-        return base * (scale || 1);
+      function setGraphHint(hint) {
+        if (metaEl) metaEl.textContent = neighborLabel + ' · ' + hint;
+      }
+
+      function showNodeTooltip(ev, d, pin) {
+        hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages), pin);
+      }
+
+      function clearPreview() {
+        hoverTip.hide();
+        detailBridgeHighlightBody('');
+      }
+
+      function clickNode(d, ev) {
+        if (d.isCurrent) return;
+        if (hoverTip.isMobile || ev.pointerType === 'touch') {
+          if (hoverTip.getPinned() === d) clearPreview();
+          else showNodeTooltip(ev, d, true);
+          return;
+        }
+        var pid = pathToId[d.id] || d.detail_id;
+        if (pid) window.location.href = pageHref(pid, detailPages);
+      }
+
+      function detailMiniNodeRadius(d) {
+        return nodeSize.radiusForDegree(d._degree || 0, maxDegree);
       }
 
       // 近 = 重要：邻居半径归一化到 [0,1]，用于弹簧距离/强度
       function neighborImportanceT(d) {
-        var rMin = window.RNGraphNodeSize.R_MIN;
-        var rMax = window.RNGraphNodeSize.R_MAX;
-        var r = window.RNGraphNodeSize.radiusForDegree(d._degree || 0, maxDegree);
-        var t = (r - rMin) / (rMax - rMin || 1);
-        if (t < 0) t = 0;
-        if (t > 1) t = 1;
-        return t;
+        return (detailMiniNodeRadius(d) - nodeSize.R_MIN) / (nodeSize.R_MAX - nodeSize.R_MIN);
       }
 
       // 星图边恒为 current → neighbor；兼容 forceLink 解析前后的 id / 节点对象
@@ -6997,20 +7454,20 @@
         return { _degree: 0 };
       }
 
-      svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       svgEl.innerHTML = '';
 
-      var svg = window.d3.select(svgEl);
+      var svg = d3.select(svgEl);
       var panRoot = svg.append('g').attr('class', 'detail-mini-map-pan');
       var lineLayer = panRoot.append('g');
       var nodeLayer = panRoot.append('g');
 
-      var zoom = window.d3.zoom()
-        .scaleExtent([0.45, 1])
+      var zoom = d3.zoom()
+        .extent(function () { return [[0, 0], [W, H]]; })
+        .scaleExtent([0.1, 1])
+        .clickDistance(4)
         .filter(function (event) {
           if (event.type === 'wheel' || event.type === 'dblclick') return false;
-          // 触屏拖动留给页面滚动：窄屏下地图几乎占满一屏宽，交给 d3 平移时手指一落到地图上
-          // 页面就滚不动（上滑回顶会卡在地图处）。地图在布局结束时已自动取景，触屏点按节点仍可用。
+          // 触屏在节点上拖动时移动节点，从空白处滑动时仍可滚动页面。
           if (event.type.indexOf('touch') === 0) return false;
           return !event.button;
         })
@@ -7019,67 +7476,110 @@
         });
       svg.call(zoom).on('dblclick.zoom', null);
 
-      var sim = window.d3.forceSimulation(nodes)
-        .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; })
+      var sim = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(edges).id(function (d) { return d.id; })
           .distance(function (link) {
-            // 大邻居更短弹簧（约 40–72）
-            return 72 - neighborImportanceT(linkNeighborNode(link)) * 32;
+            // 大邻居使用更短的弹簧；较长的基准间距给标签和拖动留出空间。
+            return 116 - neighborImportanceT(linkNeighborNode(link)) * 42;
           })
           .strength(function (link) {
             // 大邻居更强吸引（约 0.35–0.85）
             return 0.35 + neighborImportanceT(linkNeighborNode(link)) * 0.5;
           }))
-        .force('charge', window.d3.forceManyBody().strength(-160).distanceMax(220))
-        .force('center', window.d3.forceCenter(W / 2, H / 2).strength(0.12))
-        .force('collision', window.d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
-        .alphaDecay(0.05);
+        .force('charge', d3.forceManyBody().strength(-260).distanceMax(320))
+        .force('center', d3.forceCenter(W / 2, H / 2).strength(0.12))
+        .force('x', d3.forceX(W / 2).strength(function (d) { return d.isCurrent ? 0.55 : 0.06; }))
+        .force('y', d3.forceY(H / 2).strength(function (d) { return d.isCurrent ? 0.55 : 0.06; }))
+        .force('collision', d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
+        .velocityDecay(0.54)
+        .alphaDecay(0.04)
+        .alphaMin(0.005)
+        .stop();
+      sim.tick(100);
+      nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+      nodes[0].fx = nodes[0].fy = null;
 
+      var inPerspective = false;
       var line = lineLayer.selectAll('line').data(edges).join('line')
         .style('stroke', 'var(--border-strong)')
         .attr('stroke-width', 1);
 
+      var nodeDrag = d3.drag().clickDistance(4)
+        .filter(function (event) { return !inPerspective && !event.button && !(event.touches && event.touches.length > 1); })
+        .on('start', function (ev, d) {
+          if (inPerspective) return;
+          d._dragStartX = ev.x;
+          d._dragStartY = ev.y;
+          d._dragMoved = false;
+          d._dragReheated = false;
+          d.fx = d.x;
+          d.fy = d.y;
+          d3.select(this).style('cursor', 'grabbing');
+        })
+        .on('drag', function (ev, d) {
+          if (inPerspective) return;
+          var camera = d3.zoomTransform(svgEl);
+          var srcEv = ev.sourceEvent;
+          var isTouchEv = Boolean(srcEv && (srcEv.type === 'touchmove' || srcEv.pointerType === 'touch'));
+          var threshold = isTouchEv ? 7 : 4;
+          if (!d._dragMoved) {
+            if (Math.hypot(ev.x - d._dragStartX, ev.y - d._dragStartY) * camera.k < threshold) return;
+            d._dragMoved = true;
+            clearPreview();
+          }
+          if (!d._dragReheated) {
+            d._dragReheated = true;
+            sim.alphaTarget(0.2).restart();
+          }
+          var pad = detailMiniNodeRadius(d) * camera.k + 4;
+          d.fx = d.x = Math.max(camera.invertX(pad), Math.min(camera.invertX(W - pad), ev.x));
+          d.fy = d.y = Math.max(camera.invertY(pad), Math.min(camera.invertY(H - pad), ev.y));
+          nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+          renderPositions();
+        })
+        .on('end', function (ev, d) {
+          d3.select(this).style('cursor', null);
+          if (d._dragReheated && !ev.active) {
+            // 保证极短快拖松手后仍有足够 alpha 完成平滑回弹（参考 graph view 2D 阻尼收敛节奏）
+            if (sim.alpha() < 0.3) sim.alpha(0.3);
+            sim.alphaTarget(0);
+          }
+          d._dragReheated = false;
+          d.fx = d.fy = null;
+        });
+
       var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
         .attr('class', function (d) { return d.isCurrent ? 'mini-node-current' : 'mini-node'; })
-        .style('cursor', function (d) { return d.isCurrent ? 'default' : 'pointer'; })
+        .call(nodeDrag)
         .on('click', function (ev, d) {
-          if (hoverTip.isMobile && !d.isCurrent) {
-            ev.stopPropagation();
-            if (hoverTip.getPinned() === d) {
-              hoverTip.clearPin();
-              hoverTip.hide();
-            } else {
-              hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages));
-            }
+          if (ev.defaultPrevented || d._dragMoved) {
+            d._dragMoved = false;
             return;
           }
-          if (d.isCurrent) return;
-          var pid = pathToId[d.id] || d.detail_id;
-          if (pid) window.location.href = pageHref(pid, detailPages);
+          clickNode(d, ev);
         })
         .on('mouseenter', function (ev, d) {
           detailBridgeHighlightBody(d.isCurrent ? '' : d.id);
           if (hoverTip.isMobile) return;
-          window.d3.select(this).select('circle')
-            .attr('fill-opacity', 1)
-            .attr('r', function (node) { return detailMiniNodeRadius(node, 1.3); });
-          hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId, detailPages));
+          d3.select(this).select('circle').attr('fill-opacity', 1);
+          showNodeTooltip(ev, d);
         })
         .on('mousemove', function (ev) {
-          if (hoverTip.isMobile && hoverTip.getPinned()) return;
-          if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.move(ev);
+          if (!hoverTip.getPinned()) hoverTip.move(ev);
         })
         .on('mouseleave', function () {
           detailBridgeHighlightBody('');
           if (hoverTip.isMobile) return;
-          window.d3.select(this).select('circle')
-            .attr('fill-opacity', 0.9)
-            .attr('r', function (node) { return detailMiniNodeRadius(node); });
-          if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.hide();
+          d3.select(this).select('circle').attr('fill-opacity', 0.9);
+          if (!hoverTip.getPinned()) hoverTip.hide();
         });
 
-      // 正文内链悬停时点亮迷你图中的同一节点
+      var perspective = null;
+      var linkedNode = null;
       detailLinkBridge.highlightMiniNode = function (path) {
         nodeG.classed('mini-node-linked', function (d) { return !!path && d.id === path; });
+        linkedNode = nodes.find(function (d) { return d.id === path; }) || null;
+        if (perspective) perspective.syncData(false);
       };
 
       nodeG.append('circle')
@@ -7094,39 +7594,132 @@
         .style('fill', 'var(--text-muted)')
         .attr('pointer-events', 'none');
 
-      sim.on('tick', function () {
+      function renderPositions() {
         line
           .attr('x1', function (d) { return d.source.x; }).attr('y1', function (d) { return d.source.y; })
           .attr('x2', function (d) { return d.target.x; }).attr('y2', function (d) { return d.target.y; });
         nodeG.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+      }
+
+      sim.on('tick', function () {
+        if (inPerspective) return;
+        renderPositions();
+      });
+      sim.on('end', function () {
+        if (inPerspective) return;
+        nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+        renderPositions();
       });
 
-      sim.on('end', function () {
-        var allN = nodes.filter(function (n) { return n.x != null && n.y != null; });
-        if (!allN.length) return;
-        var xs = allN.map(function (n) { return n.x; });
-        var ys = allN.map(function (n) { return n.y; });
-        var x0 = Math.min.apply(null, xs);
-        var x1 = Math.max.apply(null, xs);
-        var y0 = Math.min.apply(null, ys);
-        var y1 = Math.max.apply(null, ys);
-        var pad = 36;
+      function fitFlatView() {
+        W = viewport.clientWidth || W;
+        H = viewport.clientHeight || H;
+        svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        sim.force('center', d3.forceCenter(W / 2, H / 2).strength(0.12));
+        var fx = sim.force('x');
+        var fy = sim.force('y');
+        if (fx && typeof fx.x === 'function') fx.x(W / 2);
+        if (fy && typeof fy.y === 'function') fy.y(H / 2);
+        var x0 = d3.min(nodes, function (d) { return d.x - Math.max(detailMiniNodeRadius(d), 45); });
+        var x1 = d3.max(nodes, function (d) { return d.x + Math.max(detailMiniNodeRadius(d), 45); });
+        var y0 = d3.min(nodes, function (d) { return d.y - detailMiniNodeRadius(d); });
+        var y1 = d3.max(nodes, function (d) { return d.y + detailMiniNodeRadius(d) + 14; });
         var cx = (x0 + x1) / 2;
         var cy = (y0 + y1) / 2;
-        var scale = Math.min(1, Math.max(0.45, Math.min(W / (x1 - x0 + pad), H / (y1 - y0 + pad))));
-        svg.transition().duration(450).call(zoom.transform,
-          window.d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale));
-      });
-
-      var totalDeg = Object.keys(neighborSet).length;
-      var shown = neighborIds.length;
-      if (metaEl) {
-        if (shown < totalDeg) {
-          metaEl.textContent = '规模最大的 ' + shown + ' / ' + totalDeg + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
-        } else {
-          metaEl.textContent = shown + ' 个 1-hop 邻居（近=重要）· 悬停预览 · 拖拽平移 · 点击跳转';
-        }
+        var scale = Math.min(1, (W - 16) / (x1 - x0), (H - 16) / (y1 - y0));
+        svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale));
       }
+
+      renderPositions();
+      fitFlatView();
+      setGraphHint(flatHint);
+
+      if (flatButton && perspectiveButton && stage) {
+        var wantsPerspective = false;
+        function updatePerspectiveState(state) {
+          if (inPerspective === state.enabled) return;
+          inPerspective = state.enabled;
+          flatButton.classList.toggle('is-active', !inPerspective);
+          flatButton.setAttribute('aria-pressed', String(!inPerspective));
+          perspectiveButton.classList.toggle('is-active', inPerspective);
+          perspectiveButton.setAttribute('aria-pressed', String(inPerspective));
+          if (inPerspective) {
+            sim.stop();
+            sim.alphaTarget(0);
+            setGraphHint('拖动节点 · 拖拽空白处旋转');
+          } else {
+            nodeSize.resolveOverlaps2D(nodes, detailMiniNodeRadius);
+            renderPositions();
+            fitFlatView();
+            setGraphHint(flatHint);
+          }
+        }
+
+        flatButton.addEventListener('click', function () {
+          wantsPerspective = false;
+          clearPreview();
+          if (perspective) perspective.setEnabled(false);
+          setGraphHint(flatHint);
+        });
+        perspectiveButton.addEventListener('click', async function () {
+          if (inPerspective) return;
+          wantsPerspective = true;
+          clearPreview();
+          perspectiveButton.disabled = true;
+          try {
+            if (!window.RNGraphPerspective) {
+              setGraphHint('正在加载 3D 视角…');
+              await loadExternalAsset({ url: 'graph-perspective.js' });
+            }
+            if (!wantsPerspective) return;
+            if (!perspective) {
+              perspective = window.RNGraphPerspective.createController({
+                wrapEl: viewport,
+                stageEl: stage,
+                nodeCount: nodes.length,
+                persist: false,
+                usePreviewTerrainHeight: true,
+                defaultDistance: 2.1,
+                getGraphData: function () {
+                  return { nodes: nodes, edges: edges, getNodeColor: nodeFill, sidebarNode: linkedNode || nodes[0] };
+                },
+                getBgColor: function () { return getComputedStyle(viewport).backgroundColor; },
+                isEdgesVisible: function () { return true; },
+                onNodeHover: function (d, ev) {
+                  detailBridgeHighlightBody(d && !d.isCurrent ? d.id : '');
+                  if (hoverTip.isMobile || hoverTip.getPinned()) return;
+                  if (d) showNodeTooltip(ev, d);
+                  else hoverTip.hide();
+                },
+                onNodeClick: clickNode,
+                onBackgroundClick: clearPreview,
+                onNodeDragStart: clearPreview,
+                onStateChange: updatePerspectiveState,
+                onUnsupported: function (message) { setGraphHint(message || '当前浏览器不支持 3D 视角'); }
+              });
+              new MutationObserver(function () { perspective.refreshTheme(); }).observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['data-theme']
+              });
+            }
+            perspective.syncData();
+            perspective.setEnabled(true);
+          } catch (_error) {
+            if (perspective) perspective.setEnabled(false);
+            setGraphHint('3D 加载失败，可点击 3D 重试');
+          } finally {
+            perspectiveButton.disabled = !!perspective && !perspective.isSupported();
+          }
+        });
+      }
+
+      function resizeGraph() {
+        if (perspective && perspective.isEnabled()) perspective.syncViewport();
+        else fitFlatView();
+      }
+      if (typeof ResizeObserver === 'function') new ResizeObserver(resizeGraph).observe(viewport);
+      else window.addEventListener('resize', resizeGraph);
+
       if (allNeighborsLink) {
         if (totalDeg > 0) {
           allNeighborsLink.hidden = false;
@@ -7270,6 +7863,7 @@
         '更新时间',
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
+      renderDetailMetaType('detailMetaType', resolvePageDisplayType(detailPage, detailId));
       renderDetailMetaItemRow('detailMetaHealth', '健康度', renderHealthMetaHtml(detailPage));
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
       renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');
@@ -7314,6 +7908,7 @@
     }
     if (contentEl) {
       contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext) : '<p>这篇知识页暂无正文。</p>';
+      removeLoadingState(contentEl);
       renderDetailMath(contentEl);
       detailMermaidPromise = renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
@@ -7327,7 +7922,6 @@
       scrollToCitationTarget(contentEl);
       notifyTocSpyScrollSync();
       setupDetailInlineLinkPreview(contentEl, detailPages);
-      removeLoadingState(contentEl);
     }
 
     renderChipList(tagEl, detailPage.tags, {
@@ -7552,6 +8146,7 @@
     renderDetailMetaSource(detail, 'roadmapContentSourceLink');
     if (contentEl) {
       contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);
+      removeLoadingState(contentEl);
       renderDetailMath(contentEl);
       enhanceDetailHeadings(contentEl);
       var stagesEmbedded = String(roadmapId).indexOf('roadmap-depth-') === 0
@@ -7570,7 +8165,6 @@
       scrollToDetailHashTarget(contentEl);
       scrollToCitationTarget(contentEl);
       notifyTocSpyScrollSync();
-      removeLoadingState(contentEl);
     }
     syncRoadmapStagesMetaHref(roadmapPage);
   }
@@ -7594,11 +8188,11 @@
     return catalog;
   }
 
-  function requestPageJson(url, validate) {
+  function requestPageJson(url, validate, noCache) {
     if (pageDataRequests.has(url)) return pageDataRequests.get(url);
     var controller = new AbortController();
     var timer = window.setTimeout(function () { controller.abort(); }, 30000);
-    var request = fetch(url, { signal: controller.signal, cache: 'no-cache' })
+    var request = fetch(url, { signal: controller.signal, cache: noCache ? 'no-cache' : 'default' })
       .then(function (response) {
         if (!response.ok) {
           var error = new Error('HTTP ' + response.status);
@@ -7637,7 +8231,7 @@
     return requestPageJson(PAGE_CATALOG_URL, function (data) {
       return data && data.version === 'v1' && data.content_mode === 'per-page-v1' &&
         data.pages && data.pages.detail_pages && data.pages.roadmap_pages && data.pages.page_aliases;
-    }).then(function (catalog) {
+    }, !!refreshed).then(function (catalog) {
       hydrateCatalogIds(catalog);
       loadedPageCatalog = catalog;
       return catalog;
@@ -7740,6 +8334,7 @@
   }
 
   if (detailRoot || roadmapPageMount) {
+    if (typeof ensureLinkGraphData === 'function') ensureLinkGraphData().catch(function () {});
     startPageDataLoad(false);
   }
 
@@ -7914,12 +8509,26 @@
   // 展开态列表出现滚动条时实测其宽度写入 --links-sb（样式用负右外边距抵消），胶囊不因滚动条变窄而跳动
   function syncHomeLinksScrollbar(links) {
     if (!links) return;
-    links.style.removeProperty('--links-sb');
     if (!links.classList.contains('is-expanded') && !links.classList.contains('is-filtering')) {
-      links.scrollTop = 0;
+      links.style.removeProperty('--links-sb');
+      if (links.scrollTop) links.scrollTop = 0;
       return;
     }
-    links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+    var flushScrollbar = function () {
+      links._sbRaf = 0;
+      links.style.removeProperty('--links-sb');
+      if (!links.classList.contains('is-expanded') && !links.classList.contains('is-filtering')) {
+        if (links.scrollTop) links.scrollTop = 0;
+        return;
+      }
+      links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+    };
+    if (typeof window === 'undefined' || typeof window.requestAnimationFrame !== 'function') {
+      flushScrollbar();
+      return;
+    }
+    if (links._sbRaf) return;
+    links._sbRaf = window.requestAnimationFrame(flushScrollbar);
   }
 
   function applyHomeLinksFilter(links, toggle, emptyEl, query) {
@@ -8012,8 +8621,9 @@
       var bh = Math.max(box.height, 0);
       var w = Math.max(bw + pad * 2, 1);
       var h = Math.max(bh + pad * 2, 1);
-      var cardRadius = parseFloat(style.borderTopLeftRadius) || 12;
-      var radius = Math.min(cardRadius + pad, w / 2, h / 2);
+      var parsedRadius = parseFloat(style.borderTopLeftRadius);
+      var cardRadius = Number.isFinite(parsedRadius) ? parsedRadius : 12;
+      var radius = cardRadius > 0 ? Math.min(cardRadius + pad, w / 2, h / 2) : 0;
 
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       // 相对 padding edge 左移 border+pad，使 SVG 对称外扩于 border-box
@@ -8362,8 +8972,10 @@
     var glowRaf = 0;
     var renderDotGlow = function () {
       glowRaf = 0;
-      dotGlow.classList.toggle('is-active', glowActive);
-      if (glowActive) {
+      var isClassicUi = document.documentElement.getAttribute('data-ui') === 'classic';
+      var activeNow = glowActive && isClassicUi;
+      dotGlow.classList.toggle('is-active', activeNow);
+      if (activeNow) {
         var left = glowX - DOT_GLOW_RADIUS;
         var top = glowY - DOT_GLOW_RADIUS;
         dotGlow.style.transform = 'translate(' + left + 'px, ' + top + 'px)';
@@ -8374,7 +8986,7 @@
         var host = dotGlowHosts[hi];
         var rect = host.getBoundingClientRect();
         // 指针在容器外但光圈仍会覆盖容器边缘时也点亮，避免贴边处光圈被截断
-        var near = glowActive &&
+        var near = activeNow &&
           glowX > rect.left - DOT_GLOW_RADIUS && glowX < rect.right + DOT_GLOW_RADIUS &&
           glowY > rect.top - DOT_GLOW_RADIUS && glowY < rect.bottom + DOT_GLOW_RADIUS;
         host.classList.toggle('is-dot-glow', near);
@@ -8482,8 +9094,32 @@
         revealObserver.observe(below[rbi]);
       }
     };
+    var revealRaf = 0;
+    function scheduleRegisterReveal(mutations) {
+      if (Array.isArray(mutations) && mutations.length) {
+        var relevant = false;
+        for (var mi = 0; mi < mutations.length; mi++) {
+          var tgt = mutations[mi].target;
+          if (!tgt || !tgt.closest) { relevant = true; break; }
+          if (!tgt.closest('.hero-stats, .graph-tooltip, #mini-graph-svg')) {
+            relevant = true;
+            break;
+          }
+        }
+        if (!relevant) return;
+      }
+      if (typeof window.requestAnimationFrame !== 'function') {
+        registerReveal();
+        return;
+      }
+      if (revealRaf) return;
+      revealRaf = window.requestAnimationFrame(function () {
+        revealRaf = 0;
+        registerReveal();
+      });
+    }
     registerReveal();
-    new MutationObserver(registerReveal).observe(revealMain, {
+    new MutationObserver(scheduleRegisterReveal).observe(revealMain, {
       childList: true,
       subtree: true,
       attributes: true,
@@ -8727,6 +9363,12 @@
       return _searchIndexPromise;
     }
 
+    if (typeof window !== 'undefined') {
+      window.RNSearchIndexLite = {
+        ensure: function () { return ensureSearchIndex(); }
+      };
+    }
+
     function ensureFullSearchIndex() {
       if (_fullSearchIndex) return Promise.resolve(_fullSearchIndex);
       if (_fullSearchIndexPromise) return _fullSearchIndexPromise;
@@ -8917,9 +9559,10 @@
       var explain = queryTokens && queryTokens.length
         ? '<span class="result-match">' + matchExplanation(item, queryTokens) + '</span>'
         : '';
+      var graphLinkIcon = (window.RNIcons && window.RNIcons.svg) ? window.RNIcons.svg('link') : '';
       var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" class="js-graph-btn" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
-        + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
+        + 'title="查看图谱邻居" tabindex="-1">' + graphLinkIcon + '图谱</a>';
       var fullSummary = item.summary || '';
       var needsPreview = fullSummary.length > 120;
       var summaryHtml = fullSummary
@@ -9118,17 +9761,16 @@
           var k1_plus_1 = k1 + 1;
           var liteIndexData = searchIndexIsLite(indexData) ? indexData : null;
 
-          // ⚡ Bolt Optimization: Single-pass search filtering
-          // Expected impact: Eliminates redundant `substringScore` and `.map()` iterations, reducing search CPU time by ~40% for large indexes.
-          var matched = [];
+          var SEARCH_TOP_K = 10;
+          var top = [];
+          var hasQuery = queryTokens.length > 0;
           for (var i = 0; i < docs.length; i++) {
             var doc = docs[i];
             var graphNode = graphNodeMap.get(doc.path);
             if (communityVal && (!graphNode || graphNode.community !== communityVal)) continue;
 
-            var partial = 0;
-            var bm25 = 0;
-            if (queryTokens.length) {
+            var score = 0;
+            if (hasQuery) {
               var docTokens = doc.tokens || {};
               var hasTokens = false;
               for (var j = 0; j < queryTokens.length; j++) {
@@ -9137,32 +9779,80 @@
                   break;
                 }
               }
+              if (!hasTokens) {
+                var hay = doc._haystack;
+                if (hay === undefined) {
+                  var parts = [doc.title || '', doc.path || '', doc.summary || ''];
+                  if (Array.isArray(doc.tags) && doc.tags.length) parts.push(doc.tags.join('\n'));
+                  if (Array.isArray(doc.search_aliases) && doc.search_aliases.length) parts.push(doc.search_aliases.join('\n'));
+                  for (var tkKey in docTokens) {
+                    if (Object.prototype.hasOwnProperty.call(docTokens, tkKey)) parts.push(tkKey);
+                  }
+                  hay = doc._haystack = parts.join('\n').toLowerCase();
+                }
+                var anySub = false;
+                for (var tj = 0; tj < queryTokens.length; tj++) {
+                  var qt = queryTokens[tj];
+                  if (qt && qt.length >= 2 && hay.indexOf(qt) >= 0) {
+                    anySub = true;
+                    break;
+                  }
+                }
+                if (!anySub) continue;
+              }
 
-              partial = substringScore(doc, queryTokens);
+              var partial = substringScore(doc, queryTokens);
               if (!hasTokens && partial === 0) continue;
-              bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfOf, k1_plus_1);
+              var bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfOf, k1_plus_1);
+              score = bm25 + partial;
             }
 
-            matched.push({
-              id: doc.id,
-              path: doc.path,
-              title: doc.title,
-              summary: doc.summary,
-              page_type: doc.page_type,
-              tags: doc.tags || [],
-              search_aliases: doc.search_aliases || [],
-              health_score: graphNode && graphNode.health_score,
-              health_gaps: graphNode && graphNode.health_gaps,
-              has_repo: graphNode && graphNode.has_repo,
-              community: graphNode && graphNode.community,
-              _score: bm25 + partial
-            });
+            if (top.length === SEARCH_TOP_K) {
+              var worst = top[SEARCH_TOP_K - 1];
+              if (hasQuery && score < worst._score) continue;
+              if ((!hasQuery || score === worst._score) &&
+                  String(worst.doc.title || '').localeCompare(String(doc.title || '')) <= 0) {
+                continue;
+              }
+            }
+
+            var docTitle = String(doc.title || '');
+            var pos = top.length;
+            while (pos > 0) {
+              var prevItem = top[pos - 1];
+              if (hasQuery && prevItem._score > score) break;
+              if ((!hasQuery || prevItem._score === score) &&
+                  String(prevItem.doc.title || '').localeCompare(docTitle) <= 0) {
+                break;
+              }
+              pos -= 1;
+            }
+            if (pos < SEARCH_TOP_K) {
+              top.splice(pos, 0, { doc: doc, graphNode: graphNode, _score: score });
+              if (top.length > SEARCH_TOP_K) top.pop();
+            }
           }
 
-          matched = matched.sort(function(a, b) {
-            if (queryTokens.length && b._score !== a._score) return b._score - a._score;
-            return String(a.title || '').localeCompare(String(b.title || ''));
-          }).slice(0, 10);
+          var matched = new Array(top.length);
+          for (var wi = 0; wi < top.length; wi++) {
+            var wItem = top[wi];
+            var wd = wItem.doc;
+            var wg = wItem.graphNode;
+            matched[wi] = {
+              id: wd.id,
+              path: wd.path,
+              title: wd.title,
+              summary: wd.summary,
+              page_type: wd.page_type,
+              tags: wd.tags || [],
+              search_aliases: wd.search_aliases || [],
+              health_score: wg && wg.health_score,
+              health_gaps: wg && wg.health_gaps,
+              has_repo: wg && wg.has_repo,
+              community: wg && wg.community,
+              _score: wItem._score
+            };
+          }
           miniGraphHighlight(q, matched.map(function(m){ return m.id; }));
           if (!matched.length) {
             if (communityVal && !q) {
@@ -9236,7 +9926,7 @@
     });
     if (communityFilter) {
       communityFilter.addEventListener('change', triggerSearch);
-      ensureGraphNodeByPath();
+      communityFilter.addEventListener('focus', function () { ensureGraphNodeByPath(); }, { once: true });
     }
 
     var _qParam = new URLSearchParams(window.location.search).get('q');
@@ -9360,6 +10050,12 @@
     var last = -1;
 
     function update() {
+      // 未接近页底时直接跳过 getBoundingClientRect，避免长页面滚动首段每帧触发布局测量
+      if (last === 0) {
+        var docEl = document.documentElement;
+        var scrollY = window.pageYOffset || docEl.scrollTop || 0;
+        if (scrollY + window.innerHeight < docEl.scrollHeight - 400) return;
+      }
       // 页脚顶边高于视口底边多少，就把按钮抬多少；页脚未露头时为 0
       var lift = Math.round(Math.max(0, window.innerHeight - footer.getBoundingClientRect().top));
       if (lift === last) return;
@@ -9727,12 +10423,7 @@
     return svg;
   }
 
-  function init() {
-    if (!document.getElementById('hero')) return;
-    if (document.querySelector('.home-nav-fab')) return;
-
-    // 章节按 DOM 顺序收集，只收有 .section-title 的板块：没有可见标题的过渡区
-    // （如首页入口卡片区 #home-start）不进菜单
+  function collectHomeNavItems() {
     var items = [{ id: 'hero', label: '顶部' }];
     var sections = document.querySelectorAll('main > section[id]');
     for (var i = 0; i < sections.length; i++) {
@@ -9742,6 +10433,16 @@
       var label = titleEl ? titleEl.textContent.trim() : '';
       if (label) items.push({ id: sec.id, label: label });
     }
+    return items;
+  }
+
+  function init() {
+    if (!document.getElementById('hero')) return;
+    if (document.querySelector('.home-nav-fab')) return;
+
+    // 章节按 DOM 顺序收集，只收有 .section-title 的板块：没有可见标题的过渡区
+    // （如首页入口卡片区 #home-start）不进菜单
+    var items = collectHomeNavItems();
     if (items.length < 2) return;
 
     var overlay = document.createElement('div');
@@ -9768,15 +10469,33 @@
     menu.setAttribute('aria-label', '章节导航');
 
     var list = document.createElement('ul');
-    for (var j = 0; j < items.length; j++) {
-      var li = document.createElement('li');
-      var link = document.createElement('a');
-      link.href = '#' + items[j].id;
-      link.textContent = items[j].label;
-      li.appendChild(link);
-      list.appendChild(li);
-    }
     menu.appendChild(list);
+
+    var links = [];
+    var sectionTargets = [];
+    var lastActive = -1;
+
+    function rebuildMenuItems() {
+      items = collectHomeNavItems();
+      list.textContent = '';
+      for (var j = 0; j < items.length; j++) {
+        var li = document.createElement('li');
+        var link = document.createElement('a');
+        link.href = '#' + items[j].id;
+        link.textContent = items[j].label;
+        li.appendChild(link);
+        list.appendChild(li);
+      }
+      links = menu.querySelectorAll('a');
+      sectionTargets = items.map(function (it) { return document.getElementById(it.id); });
+      lastActive = -1;
+    }
+
+    rebuildMenuItems();
+    window.__rnRefreshHomeNavFab = function () {
+      rebuildMenuItems();
+      updateActive();
+    };
 
     // 按钮先入 DOM，保证 Tab 顺序是「按钮 → 菜单项」
     fab.appendChild(toggle);
@@ -9813,15 +10532,15 @@
     });
 
     // 滚动高亮当前章节：判定线取吸顶 header 下沿，与 html 的 scroll-padding-top 同口径
-    var links = menu.querySelectorAll('a');
-    var lastActive = -1;
+    var navHeader = document.querySelector('.site-header');
     function updateActive() {
-      var header = document.querySelector('.site-header');
-      var line = (header ? header.getBoundingClientRect().height : 0) + 24;
+      var line = (navHeader ? navHeader.getBoundingClientRect().height : 0) + 24;
       var current = 0;
-      for (var k = 0; k < items.length; k++) {
-        var target = document.getElementById(items[k].id);
-        if (target && target.getBoundingClientRect().top <= line) current = k;
+      for (var k = 0; k < sectionTargets.length; k++) {
+        var target = sectionTargets[k];
+        if (!target) continue;
+        if (target.getBoundingClientRect().top <= line) current = k;
+        else if (k > 0) break;
       }
       if (current === lastActive) return;
       lastActive = current;

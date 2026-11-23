@@ -1,8 +1,8 @@
 ---
 type: method
 tags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]
-status: draft
-updated: 2026-09-15
+status: complete
+updated: 2026-11-22
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/humanoid-soccer.md
@@ -16,6 +16,9 @@ sources:
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
   - ../../sources/repos/robonaldo.md
 summary: "PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。"
+original:
+  - ../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md
+  - ../../sources/repos/humanoid_soccer.md
 ---
 
 # PAiD Framework
@@ -42,6 +45,10 @@ PAiD 的成功关键在于其结构化的训练方案：
     - **领域随机化**：对质量、摩擦力、视觉噪声进行大规模扰动。
     - **时延模拟**：在仿真中引入控制环路的时延，增强鲁棒性。
 - **输出**：可直接部署到 Unitree G1 上的部署策略。
+
+## 核心原理
+
+采用**阶段化策略延续与状态空间渐进扩展**：Stage I 基于 GMR 重定向的 13 条踢球参考以自适应跟踪收敛稳定动作底座；Stage II 从 Stage I 检查点恢复，将骨盆系球位置及门位置引入状态并通过 RNN/LSTM 聚合滚动球时序运动信息；Stage III 叠加球接触 CMA-ES 动力学对齐与控制延迟模拟实现 G1 真机室内外鲁棒执行。
 
 ## 主要技术路线
 
@@ -78,6 +85,19 @@ PAiD 的成功关键在于其结构化的训练方案：
 - 动态调整踢球方向和力度以射门或传球。
 - 在受到轻微外部扰动时仍能维持平衡并完成动作。
 
+## 工程实践
+
+- **开源训练一键渐进启动**：仓库通过 `bash shell/progressive_soccer_train_play.sh` 先跑 Stage I motion tracking，再自动承接恢复权重训练滚动球阶段（`Tracking-Flat-G1-SoccerMoving-RNN-v0`），部署前可借 `exp/` 下 MuJoCo 回放检查。
+- **依赖版本与数据要求**：严格基于 Isaac Lab v2.1.1；室内地板到室外草坪迁移时注意调整球摩擦与观测丢帧噪声范围。
+
+## 局限与风险
+
+- **指标侧重成功率而非高冲量极值**：与 RoboNaldo 相比，PAiD 更强调不同方位与滚动来球踢球成功率（静球仿真 91.3%、滚球 71.9%），未突出 13 m/s 级出球极速与精确点射门，也不包含对手阻挡博弈。
+
+## 一句话定义
+
+**PAiD（Perception-Action integrated Decision-making）**：由 TeleHuman 团队提出的三阶段人形足球技能学习框架——先用人类踢球 MoCap 习得拟人摆腿先验，再加入第一视角位置/速度特征进行 RNN 感知融合，最后经接触与控制延迟领域随机化部署到 Unitree G1。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -89,11 +109,21 @@ PAiD 的成功关键在于其结构化的训练方案：
 | MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
 | PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
 
+## 为什么重要
+
+- **打破敏捷踢球中的拟人性与感知闭环矛盾**：跳过单纯靠黑盒奖励“暴力甩腿”的非类人步态，保留生物力学自然度同时具备响应静止和滚动球的能力。
+- **给出完整的公开复现入口与对比锚点**：仓库公开了运动数据 `motions`、Isaac Lab 环境、RSL-RL progressive 脚本与 MuJoCo sim2sim 接口，方便与同平台 RoboNaldo 做对照开发。
+
 ## 参考来源
 
 - [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)
 - [Learning Soccer Skills for Humanoid Robots（Paper Notebooks 摘录）](../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md)
 - [robonaldo_arxiv_2606_11092.md](../../sources/papers/robonaldo_arxiv_2606_11092.md) — 并发射门工作对照摘录
+
+## 推荐继续阅读
+
+- 开源代码仓库：<https://github.com/TeleHuman/HumanoidSoccer>
+- 论文实体详情：[PAiD：Learning Soccer Skills for Humanoid Robots](../entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md)
 
 ## 关联页面
 

@@ -8,6 +8,8 @@
 - **机构：** Google DeepMind（Ken Caluwaerts, Atil Iscen, J. Chase Kew, Wenhao Yu, Tingnan Zhang 等）
 - **补充材料入口：** <https://sites.google.com/view/barkour>
 - **入库日期：** 2026-05-18
+- **通读：** 已完成
+- **核对范围：** 全文通读 `arXiv:2305.14654`（含 Table I–III 与物理跑道评测）、核对官方 `google-deepmind/barkour_robot`、`google/brax/experimental/barkour/score_barkour.py` 与 MuJoCo Menagerie 资产说明
 - **一句话说明：** 提出 **5m×5m** 障碍课（起终点台、绕杆、A 字坡、宽跳）与 **时间型敏捷分** \(R_{\text{agility}}\)，并给出 **三专长 PPO（LeggedGym/Isaac Gym）+ 高层导航状态机** 与 **专长蒸馏的 Locomotion-Transformer 通才策略** 两套基线，在 **自研四足** 上 **零样本 sim2real** 完成课程（论文称约为犬用时的约一半速度量级作为对照叙事）。
 
 ## 核心摘录（面向 wiki 编译）

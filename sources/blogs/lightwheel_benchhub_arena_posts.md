@@ -9,6 +9,8 @@
 - **代码：** <https://github.com/LightwheelAI/LW-BenchHub>（README 声明 Apache 2.0）；<https://github.com/LightwheelAI/AutoDataGen>（Apache 2.0）；<https://github.com/isaac-sim/IsaacLab-Arena>
 - **数据集：** Hugging Face `LightwheelAI/Lightwheel-Tasks-{Double-Piper,G1-WBC,G1-Controller,X7S}`、`LightwheelAI/lightwheel_tasks`（2025-12 更新）；EnvHub 环境仓 `LightwheelAI/lw_benchhub_env`
 - **入库日期：** 2026-10-10
+- **核对范围：** 2026-11-22 抓取并逐段通读 3 篇光轮官方博文全文（`https://lightwheel.ai/media/lightwheel-benchmark-anouncement`、`https://lightwheel.ai/media/robofinals-isaac-lab`、`https://lightwheel.ai/media/il-arena-benchmark-study`），核对任务数、机器人变体、并行评测配置与墙钟时间；2026-02-04 文内链接的 Google Doc 原始实验表未另行抓取。
+- **通读：** 已完成
 - **一句话说明：** LW-BenchHub 是光轮在 Isaac Lab-Arena 之上的 benchmark 托管/执行层：先把 YCB / LIBERO / RoboCasa 迁进 Arena「同一骨架」，再以 LW-RoboCasa-Tasks + LW-LIBERO-Tasks（268 任务）开源，并用 GR00T N1.5 实测 Arena GPU 并行评测相对 MuJoCo/RoboCasa 顺序执行最高 **13.5×**（自报）。
 - **既有相关归档：** [Behind RoboFinals 单篇](../sites/lightwheel_robofinals_isaac_lab_arena.md)、[LW-BenchHub 仓库（2026-08 快照）](../repos/lw-benchhub.md)、[国内开源全景条目](../repos/cn_os_lw_benchhub.md)、[Lightwheel-YCB 仓库](../repos/lightwheel-ycb.md)
 - **沉淀到 wiki：** [`wiki/entities/cn-os-lw-benchhub.md`](../../wiki/entities/cn-os-lw-benchhub.md)

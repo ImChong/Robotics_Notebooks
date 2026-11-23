@@ -3,12 +3,15 @@
 > 来源归档（paper / tech report）
 
 - **标题：** 1X World Model: Evaluating Bits, not Atoms（补充技术进展报告；产品叙事亦称 Redwood AI World Model）
+- **作者：** Daniel Ho, Jack Monas, Juntao Ren, Christina Yu（1X World Model Team；Phase 1 博客作者 Jack Monas, Eric Jang）
 - **类型：** paper / company tech report
 - **机构：** 1X Technologies
-- **项目/博文：** <https://www.1x.tech/discover/redwood-ai-world-model>（2025-06-16）
+- **项目/博文：** <https://www.1x.tech/discover/redwood-ai-world-model>（2025-06-16）、Phase 1 博文 <https://www.1x.tech/discover/1x-world-model>（2024-09-17）
 - **技术报告 PDF：** <https://www.1x.tech/1x-world-model.pdf>
 - **相关开源挑战：** <https://github.com/1x-technologies/1xgpt>（World Model Challenge 数据集与 GENIE 基线；**不等于** 本报告所述完整 1XWM 评测引擎）
 - **入库日期：** 2026-07-26
+- **核对范围：** 通读 1X 技术进展报告 PDF（<https://www.1x.tech/1x-world-model.pdf>，12 页全文）、发现页（`redwood-ai-world-model`）及 Phase 1 博文（`1x-world-model`），核对其四项核心能力、Shelf/Arcade 离线-真机相关性指标与 Arcade 评分协议；未获取 Redwood 闭源评测栈源码与完整真机权重，未在真实硬件或私有数据集上复现实验。
+- **通读：** 已完成
 - **一句话说明：** 面向全身人形（NEO）的动作条件视频世界模型：预测未来观测并输出任务级 state-value，用作策略/checkpoint **离线评测引擎**；强调动作可控性、与真机评测相关性，以及自治 rollout 数据的缩放。
 
 ## 核心摘录（MVP）

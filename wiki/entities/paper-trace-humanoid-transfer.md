@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, whole-body-control, transfer-learning, behavior-foundation-model, sonic, lora, ppo, unitree, hkust-gz, hkust]
 status: complete
 updated: 2026-10-17
+original:
+  - ../../sources/papers/trace_humanoid_transfer_arxiv_2610_17999.md
 project_id: trace-humanoid-transfer
 arxiv: "2610.17999"
 code: https://github.com/QinnyuLan/SONIC_unitree_h2
@@ -24,6 +26,8 @@ summary: "TRACE（arXiv:2610.17999）：把预训练 SONIC 全身控制器从 Un
 ---
 
 # TRACE：把现成的全身控制器搬到另一台人形上
+
+## 一句话定义
 
 **TRACE 保留预训练全身控制器（SONIC）的运动表征，只对目标人形重调反馈控制：先用运动学先验与动力学对齐把新本体"接"进旧网络，再用编码器蒸馏加低秩 RL 的两阶段课程，在小规模筛选运动集上完成适配。**
 

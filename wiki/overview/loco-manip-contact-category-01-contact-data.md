@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, contact-rich, category-hub, survey, data-pipeline]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 summary: "Loco-Manip 接触专题 · 01 接触数据（8 篇）— 带物体状态、场景约束、接触时序与本体可执行性的交互数据从哪来？"
 related:
   - ./loco-manip-contact-technology-map.md
@@ -11,6 +11,7 @@ related:
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
+  - ../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md
 ---
 
 # Loco-Manip 接触分类 01：接触数据从哪来
@@ -48,6 +49,7 @@ sources:
 - **共同难题：** 视频里有丰富接触，却没有天然的机器人动作标签。
 - **Human-as-Humanoid / HumanoidUMI：** 降低采集成本，也把 **跨本体误差** 带入控制链路。
 - **HumanoidMimicGen / VLK：** 偏 **数据制造**——规划或重建场景批量产出可训练轨迹。
+- **HumanX 开源更新（2026-11-18 核对）：** 官方仓库 `wyhuai/humanx` 已公开 XGen 编辑器、HOI 数据转换与 XMimic Isaac Gym 仿真训练/评测入口（许可为 `Apache-2.0 WITH Commons-Clause`，开源范围以仿真侧为主，不含完整 ROS/Unitree 真机控制与 Sim2Real 标定链）；arXiv v2 统计为 9 项技能（NEP 5 / MoCap 4），官网摘要口径为 10 项。
 
 ## 关联页面
 
@@ -58,6 +60,7 @@ sources:
 ## 参考来源
 
 - [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+- [HumanX v2 原文核对与开源仓库更新（arXiv:2602.02473v2）](../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md) — `wyhuai/humanx` 仿真范围开源与许可核查（2026-11-18）
 
 ## 推荐继续阅读
 

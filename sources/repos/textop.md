@@ -8,6 +8,9 @@
 - **类型：** paper / text-driven-humanoid-control
 - **机构：** 中国电信人工智能（TeleAI）、上海交通大学（SJTU）、华东理工大学（ECUST）
 - **收录日期：** 2026-09-16
+- **核对日期：** 2026-11-22
+- **核对范围：** `TeleHuman/TextOp` README、`USAGE.md` 及仓库目录树（核实 `TextOpRobotMDAR` / `TextOpTracker` / `TextOpDeploy` 与 ROS2 `textop_ctrl` / C++ ONNX 接口）
+- **通读：** 已完成
 - **开源结论：** **已开源** — 训练、推理与 G1 部署脚本齐全；README 提供预训练 RobotMDAR 与 Tracker 权重及公开数据集处理流程
 
 ## 一句话摘要

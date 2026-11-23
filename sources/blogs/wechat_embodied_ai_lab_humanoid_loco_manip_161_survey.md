@@ -12,6 +12,9 @@
 - **姊妹篇：** [运动小脑 64 篇](wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)、[Loco-Manip 8 篇数据入口](wechat_embodied_ai_lab_loco_manip_8_papers_survey.md)、[42 篇 humanoid RL 身体系统栈](wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - **一句话说明：** 将 **161 篇** 人形 loco-manip 论文按 **十个方向** 策展：运控底座 → 移动操作接口 → 视觉/生成/人类示范 → 接触任务 → 数据遥操作 → 硬件部署 → VLA/WM → ego 视频；核心判断：应按 **能力形成顺序** 串读，而非按时间堆摘要。
 
+- **通读：** 已完成
+- **核对范围：** 已通读本地原始长文归档 `sources/raw/wechat_humanoid_loco_manip_161_2026-06-26/*.md`（148,312 字节，全 161 篇十大方向全景梳理）。
+
 ## 核心摘录（归纳，非全文）
 
 ### 十个大类（文内编号）

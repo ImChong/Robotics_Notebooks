@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 summary: "世界模型动作后果专题 · 04 — 策略评估与世界模型进入研发链路"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
@@ -19,11 +19,18 @@ sources:
   - ../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md
   - ../../sources/blogs/current_robotics_currentworld.md
   - ../../sources/papers/wall_ss_x_square_2026.md
+original:
+  - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
+  - ../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md
 ---
 
 # 世界模型动作后果分类 04：训练与评估闭环
 
 > **分类页**：对应 [具身智能研究室 · 世界模型动作后果专题](https://mp.weixin.qq.com/s/a5ZDDv70CLDfY98mfviWuA) 的 **04 训练与评估闭环** 段；总地图见 [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)。
+
+## 一句话定义
+
+**本分类梳理把世界模型接入研发管线后端的两大闭环应用：一是以虚实高度相关的闭环生成替代昂贵真机策略排序（Eval），二是通过失败态回滚与想象分支合成反馈纠错信号做策略后训练（Post-train）。**
 
 ## 英文缩写速查
 
@@ -34,7 +41,14 @@ sources:
 | WM | World Model | 预测动作后果的潜变量或视频模型 |
 | MoE | Mixture of Experts | 异构动作模态的专家混合架构 |
 
-## 本组工作
+## 为什么重要
+
+- **打通离线评测与真机部署的最后一公里：** 通过 SC3-Eval、WALL-SS 等闭环评测器可将虚实成功率 Pearson/Spearman 相关性推高到 \(r \approx 0.93\) 量级，使新策略上线前的多候选筛查成本大幅降低。
+- **把失败轨迹转化为可复用的纠错经验：** WorldEcho / WorldSync 与 CurrentWorld-0 展示了世界模型不仅是「裁判」，还可从失败状态回滚分叉，生成合规纠错数据用于后训练。
+
+## 核心机制与本组工作
+
+该路线通常由「高动作忠实度预测主干（动作条件视频 WM 或 Next-Scale AR WM）+ 非专家反例对齐配方（如 AFE/IE 或自一致约束）+ 失败分支回滚 / 虚实校准」组成，分别承担策略评估器和想象后训练沙盒两种角色。
 
 | 工作 | Wiki 实体 | 文内角色 |
 |------|-----------|----------|
@@ -53,6 +67,16 @@ sources:
 | TACO | [../entities/paper-taco-tactile-wm-vla-posttrain](../entities/paper-taco-tactile-wm-vla-posttrain.md) | 失败片段纠错后训练 |
 | EmbodiedGen V2 | [../entities/paper-embodiedgen-v2-sim-ready-world-engine](../entities/paper-embodiedgen-v2-sim-ready-world-engine.md) | 环境与数据扩展 |
 
+## 工程实践
+
+- **把「虚实相关性验证」作为评测器上线前置条件：** 对照 SC3-Eval（闭环 \(r=0.929\)）与 WALL-SS（600 对虚实校准 \(r=0.93\)），新世界模型充当策略考场前，必须先跑通不同水平策略的真实排序相关性校验。
+- **失败态样本优先进入微调闭环：** 构建 WorldEcho / WorldSync 类非专家数据集或 CurrentWorld-0 类分支回滚时，重点采集接近失败边界与恢复动作片段，而不是只喂成功专家演示。
+
+## 常见误区或局限
+
+- **闭源产业系统复现受限：** WorldEcho / WorldSync 与 CurrentWorld-0 均已确认未开源，且部分技术报告未给出完整超参、算力开销或跨本体泛化界限。
+- **评估偏差与自圆其说风险：** 若后训练策略直接优化同一世界模型打分而缺乏真机定期校准，策略可能利用模型幻觉捷径（reward hacking）而非提升真实操作物理成功率。
+
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)
@@ -65,3 +89,10 @@ sources:
 
 - [wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [current_robotics_currentworld.md](../../sources/blogs/current_robotics_currentworld.md)
+- [sc3_eval_arxiv_2606_18610.md](../../sources/papers/sc3_eval_arxiv_2606_18610.md)
+- [worldecho_worldsync_arxiv_2608_24885.md](../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md)
+
+## 推荐继续阅读
+
+- [具身世界模型六路线 · 评估主导型](./embodied-wm-route-evaluation.md)
+- [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)

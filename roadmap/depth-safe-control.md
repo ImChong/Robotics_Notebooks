@@ -149,6 +149,7 @@ flowchart LR
 - [ResSafe](../wiki/entities/paper-ressafe.md) / [SafeWBC](../wiki/entities/paper-motion-cerebellum-safewbc.md) — 学习型 / CBF 型安全层接在策略或 WBC 输出之后
 - [SafeFall](../wiki/entities/paper-hrl-stack-41-safefall.md) 与 [Balance Recovery](../wiki/tasks/balance-recovery.md) — 摔倒预测 + 减损策略，平时 dormant
 - [Hardware-in-the-Loop](../wiki/concepts/hardware-in-the-loop.md) / [人形测试流程 L0–L5](../wiki/concepts/humanoid-testing-workflow.md) — 上机前的逐级验证
+- **车载分层安全工程对照案例**：[panda](../wiki/entities/commaai-panda.md)（MCU 发送限制）＋ [opendbc](../wiki/entities/commaai-opendbc.md)（车型 CAN 信号与安全规则）＋ [openpilot](../wiki/entities/commaai-openpilot.md)（驾驶模型／控制进程）＋ [msgq](../wiki/entities/commaai-msgq.md)（进程消息总线）。案例仅用于借鉴架构，不等于人形硬件或安全认证
 - [SLowRL](../wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — 真机微调期用 Recovery 安全滤波限制探索（衔接 Stage 3）
 - [模型版本管理与 OTA](../wiki/concepts/model-versioning-ota.md) — 仅 Passive / Safe 态允许换权重
 - [RL 策略真机调试 Playbook](../wiki/queries/robot-policy-debug-playbook.md)

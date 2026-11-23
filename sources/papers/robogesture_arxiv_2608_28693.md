@@ -11,8 +11,10 @@
 - **PDF：** <https://arxiv.org/pdf/2608.28693>
 - **项目页：** <https://RoboGesture.github.io>
 - **会议：** ECCV 2026 Poster（Session 2 · ExHall #178 · 2026-09-10 16:30–18:30 CEST）
-- **开源：** 项目页 **未见** GitHub / 权重 / 数据集（复核 **2026-09-28**）
-- **入库日期：** 2026-09-07（周更索引）；**2026-09-28** 用户指定 arXiv 正式 ingest 补全元数据
+- **开源：** 已于 GitHub 发布部署推理、安全碰撞滤波、54 类 `MotionModel` / Qwen LoRA 权重及 `training_examples` 训练核心示例：<https://github.com/GalaxyGeneralRobotics/RoboGesture>（2026-11-21 复核；注：全量 1000 h / 300+ 类数据集与完整预处理/大规模训练脚本未公开）
+- **核对范围：** 已通读 arXiv `2608.28693v1` 论文正文 §1–§6 与实验表（含 Table 1–6、200 次真机长时实验与延迟分解）、项目页与官方开源仓库 `@2913f1d`
+- **通读：** 已完成
+- **入库日期：** 2026-09-07（周更索引）；2026-09-28 补全元数据；2026-11-21 论文全文与开源仓库核对
 - **策展索引：** [wechat_shenlan_weekly_papers_2026-09-04.md](../blogs/wechat_shenlan_weekly_papers_2026-09-04.md)
 
 ## 核心论文摘录

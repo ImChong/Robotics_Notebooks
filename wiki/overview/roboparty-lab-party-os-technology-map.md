@@ -2,7 +2,14 @@
 type: overview
 tags: [roboparty, humanoid, open-source, infrastructure, motion-tracking, unsupervised-rl, motion-retargeting, survey]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
+original:
+  - ../../sources/repos/party_os.md
+  - ../../sources/sites/lab_roboparty_com.md
+  - ../../sources/repos/mimiclite.md
+  - ../../sources/repos/roboparty_ufo.md
+  - ../../sources/repos/human_humanoid_tools.md
+  - ../../sources/sites/roboparty_lab_tech_humanoid_control.md
 related:
   - ../entities/roboparty.md
   - ../entities/party-os.md
@@ -38,7 +45,7 @@ summary: "依据 RoboParty 2026-07 Lab 成立公众号，把 Party OS 首批三�
 
 > **本页定位**：为 [RoboParty Lab 成立 · 三项工具链开源](https://mp.weixin.qq.com/s/DL-ypgpyLVnypxMwA5d5pw) 提供 **按研发链路组织的阅读坐标**；不复述各仓库安装细节，只保留 **Lab 定位、Party OS 底座分工、三项工具挂接、与 BFM/训练栈的交叉引用**。概念与工程细节见子实体页（均为 **complete**，非 stub）。
 
-## 一句话观点
+## 一句话定义
 
 RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party OS** 作为研发底座，首批开源 **hhtools（动作重定向）→ MimicLite（监督跟踪 infra）→ UFO（无监督 RL 控制）** 三段工具链，并预留跨 codebase 评测与 sim2real 部署层——方向是从 [Roboto Origin](../entities/roboto-origin.md) 的「开源一台人形」演进到「开源人形机器人基础设施」。
 
@@ -54,7 +61,7 @@ RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party O
 | HSI | Human Scene Interaction | 人–场景交互 |
 | HOI | Human Object Interaction | 人–物体交互 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - [Roboto Origin](../entities/roboto-origin.md) 已覆盖 **单机 DIY 五段流水线**（hardware → description → train → deploy → firmware）；本页补 **2026-07 起 Lab 级 infra 叙事**。
 - [BFM 41 篇地图](./bfm-41-papers-technology-map.md) 回答学术 **运控基座** 脉络；MimicLite / UFO 提供 **RoboParty 工程化落点**（跟踪 infra + 无监督 RL 框架）。
@@ -134,6 +141,22 @@ flowchart LR
 | 演进叙事 | ROBOTO Origin → RoboParty Lab：从单机开源到 **持续生长的开放技术系统** |
 | WM 接口 | [INTACT](../entities/paper-intact.md) 把 Manipulation 方向的 World Model 从「预测+搜索」推进到 **无搜索意图读出**（上游已发布实现，组织 fork 仍为预览） |
 | 任务坐标对照 | [FB / BFM-Zero / INTACT / Mimic / VLA](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) 把 MimicLite、UFO/BFM-Zero、INTACT 读成三种 latent 几何赌注，而非三条无关 demo |
+
+## 工程实践
+
+| 工具 / 模块 | 当前可运行入口与使用边界（2026-11-21 复核官方 README） |
+|-------------|--------------------------------------------------------|
+| **hhtools** | 桌面端 0.1.6（Win/Linux/macOS）或源码 `uv sync --locked --extra all && uv run hhtools web`，支持 CLI 与 MCP Agent 驱动；SMPL/SMPL-H/SMPL-X 与 GVHMR 权重需用户向原授权方自行获取 |
+| **MimicLite** | 子模块已拆为 `EGalahad/mimic-lite`、`active-adaptation`、`sim2real` 与 `any4hdmi`；`scripts/train.py` 训练、`play.py` 导出 ONNX+YAML、`sim2real` 统一直连部署；已发布的 G1 PPO（92.3 GPU-h）与 ROA（173.2 GPU-h）模型训练条件不同于早期发布口径 |
+| **UFO** | 基于 MJLab backend，`uv sync --locked` 后通过 `scripts/download_data.sh` 拉取数据，`run_train.sh --robot g1|rp1 --agent fb|tech` 训练，`run_inference.sh tracking|reward|goal` 推理（`reward` 模式仅支持 FB） |
+| **Party OS 聚合仓** | `Roboparty/Party_OS` 为 GPL-3.0 聚合索引（2026-11 新增 PartyMimic、I-BFM、P-BFM、SADL）；不直接再分发数据集，各子仓与数据集保留各自独立许可证 |
+
+## 局限与风险
+
+- **路线规划与已发布代码的边界：** `Party_OS` README 中运动数据生成模块（`generate`）仍标注 `Coming soon`，VLA 与 Agentic Humanoid 属 Lab 演进规划，不能视作已有通用成品可直接部署。
+- **混合许可不可混用：** `hhtools` 为 Apache-2.0、`MimicLite` 与 `Party_OS` 为 GPL-3.0、`UFO` 为 **CC BY-NC 4.0（非商业研究）**；商业项目选型须按子仓库单独合规审查。
+- **平台与真机验证范围：** `UFO` 官方明确 **RP1 上的 TeCH 策略尚未真机测试**；`MimicLite` `docs/checkpoints.md` 显示 A3 原生集成 ONNX/sim2real 仍待验证；跨机器人直接套用权重易受关节限位与观测契约差异影响。
+- **文档与报告口径差异：** 早期发布宣传中的训练耗时与当前多 GPU 实测配置存在口径变化；`MimicLite` 仓库内 `mimic-lite.pdf` 与 `TeCH` 成果页外链独立 PDF 本次均未通读，技术细节以各子仓库公开 README 与代码为准。
 
 ## 关联页面
 

@@ -75,6 +75,26 @@ class TopCommunitiesTest(unittest.TestCase):
         coverage = {"covered": 1, "total": 2, "percent": 50}
         payload = ghs.build_payload({}, coverage)
         self.assertNotIn("top_communities", payload)
+        self.assertNotIn("communities", payload)
+
+    def test_all_communities_and_payload_passthrough(self) -> None:
+        stats = {
+            "communities": [
+                {"id": "c-rl", "label": "强化学习（RL） 社区", "size": 172},
+                {"id": "", "label": "invalid", "size": 99},
+                {"id": "c-wbc", "size": 102},
+            ]
+        }
+        items = ghs.all_communities(stats)
+        self.assertEqual(
+            items,
+            [
+                {"id": "c-rl", "label": "强化学习（RL） 社区", "size": 172},
+                {"id": "c-wbc", "label": "c-wbc", "size": 102},
+            ],
+        )
+        payload = ghs.build_payload(stats, {"covered": 1, "total": 2, "percent": 50})
+        self.assertEqual(payload["communities"], items)
 
 
 if __name__ == "__main__":

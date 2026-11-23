@@ -15,6 +15,8 @@
 - **为什么值得保留：** 为人形足球 / RoboCup 感知提供 **第三人称广播视角** 对照实现——尤其是 **球场关键点 → 单应 → 俯视坐标** 与小目标球跟踪；与本库 [场线检测](../../wiki/methods/soccer-field-line-detection.md)、[Ultralytics](../../wiki/entities/ultralytics.md) 直接互补。
 - **开源状态（2026-09-29 核查）：** **已开源** — 库代码 + soccer 示例完整可跑；预训练 `.pt` 与样例视频经 `examples/soccer/setup.sh`（`gdown`）从 Google Drive 拉取；Universe 挂 **足球三集** + **篮球球场关键点** + **篮球球衣 OCR**（见下表）。
 - **沉淀到 wiki：** 是 → [`wiki/entities/roboflow-sports.md`](../../wiki/entities/roboflow-sports.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `roboflow/sports` 官方 `README.md`（51 行）。
 
 ---
 

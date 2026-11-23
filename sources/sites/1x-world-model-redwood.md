@@ -7,6 +7,8 @@
 - **官方入口：** <https://www.1x.tech/discover/redwood-ai-world-model>
 - **技术报告：** <https://www.1x.tech/1x-world-model.pdf>
 - **入库日期：** 2026-07-26
+- **核对范围：** 通读发现页 `<https://www.1x.tech/discover/redwood-ai-world-model>`（2025-06-16，作者 1X AI Team）及关联技术报告 PDF，核查开源资源链接（`1x-technologies/1xgpt`、`huggingface.co/1x-technologies`）与生产栈边界；未获取私有模型权重与内部评测平台源码。
+- **通读：** 已完成
 - **一句话说明：** 1X 官方发现页：用动作条件世界模型加速人形策略评测；提供 PDF 下载与方法/缩放/相关性叙事。
 
 ## 页面公开信息（检索自 2026-07-26）

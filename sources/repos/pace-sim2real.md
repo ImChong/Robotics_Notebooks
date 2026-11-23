@@ -11,6 +11,8 @@
 - **入库日期：** 2026-07-15
 - **一句话说明：** ETH RSL 开源的足式 sim2real 管线：chirp 数据采集 → Isaac Lab 并行仿真 + CMA-ES 关节动力学辨识 → 盲 locomotion RL 训练与零样本部署；绑定 Isaac Sim 5.0 / Isaac Lab latest。
 - **沉淀到 wiki：** [wiki/entities/paper-pace-sim2real-legged-robots.md](../../wiki/entities/paper-pace-sim2real-legged-robots.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `leggedrobotics/pace-sim2real` 官方 `README.md`（7,877 字节）。
 
 ---
 

@@ -3,10 +3,13 @@ type: entity
 project_id: humanoid-manipulation-interface
 tags: [paper, humanoid, loco-manipulation, loco-manip-161-survey, imitation-learning, diffusion-policy, whole-body-control, umi, robot-free, teleoperation, visuomotor, unitree-g1, motion-retargeting, tsinghua, shanghai-pil, spirit-ai, sjtu]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2602.06643"
 project: https://humanoid-manipulation-interface.github.io
 venue: "arXiv 2026"
+original:
+  - ../../sources/papers/humi_arxiv_2602_06643.md
+  - ../../sources/sites/humanoid-manipulation-interface-project.md
 related:
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
@@ -39,6 +42,10 @@ summary: "HuMI（arXiv:2602.06643，清华/期智/Spirit.AI/上交）首个无�
 **HuMI**（*Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations*，arXiv:2602.06643，[项目页](https://humanoid-manipulation-interface.github.io)）提出首个面向人形 **全身操作** 的 **无机器人示范** 框架：在 [UMI](https://umi-gripper.github.io/) 手持夹爪之上叠加 **HTC Vive Ultimate** 全身独立追踪，同步记录 **骨盆、双手、双脚** 与腕部视觉；通过 **在线 IK 预览** 让人类示教者在 **不缩放轨迹** 的前提下调整至 **Unitree G1** 运动学可行域，再由 **分层 visuomotor 管线**（扩散高层 + 操作中心全身 RL 低层）迁移到真机。论文在求婚跪地、拔剑、投掷、行走清扫、深蹲拾瓶等任务上验证，相对 [TWIST2](./paper-twist2.md) 遥操作实现约 **3×** 采集吞吐，未见环境/物体泛化成功率 **70%**。
 
 > 本页同时服务 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 分类 **04_Loco-Manipulation_and_WBC**，并合并收录 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的双槽位坐标（**#025/161** 运控基座与通用全身跟踪 & **#084/161** 视觉感知驱动的人形移动操作）；方法细节以 arXiv 与项目页为准。
+
+## 一句话定义
+
+**HuMI** 是通过「UMI 腕部视觉 + Vive 全身五追踪器 + 实时虚拟 G1 IK 预览」实现不缩放人体轨迹的无机器人示教采集，并结合 5 Hz 扩散高层与 50 Hz 操作中心全身 RL 低层迁移到人形真机的分层框架。
 
 ## 英文缩写速查
 

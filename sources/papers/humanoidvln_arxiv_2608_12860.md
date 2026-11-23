@@ -11,9 +11,10 @@
 - **作者：** Quan-Dung Pham, Anh Dao, The-Anh Nguyen, Minh Nguyen-Dinh, Phuong Nam Dang, Tri Pham, Hung Tran, Bach Dao, Tuyen P. Le, Truong Nguyen（VinMotion）；Quan Nguyen（南加州大学，USC）
 - **机构：** 越南人形机器人（VinMotion, Inc.）；南加州大学（USC）
 - **入库日期：** 2026-08-14
-- **一句话说明：** 在 NVIDIA Isaac Sim 上做人形专属物理 VLN：四本体分层控制（RL 步态 + PD/MPC 跟踪）、≥100 m² 可通行场景、Generator–Reviewer–Paraphraser 指令 + 人工核验；零样本评测 NaVILA / DualVLN / StreamVLN / JanusVLN；G1 上 DualVLN 20 条 sim–real 试点。代码宣称录用后开源。
+- **通读：** 已完成
+- **一句话说明：** 在 NVIDIA Isaac Sim 5.1 上做人形专属物理 VLN：四本体分层控制（RL 步态 + PD/MPC 跟踪）、87 个 ≥100 m² 可通行场景（含 gsplat 无偏深度/法向 TSDF USDZ）、933 条 Generator–Reviewer–Paraphraser 指令 + 人工核验；零样本评测 NaVILA / DualVLN / StreamVLN / JanusVLN；G1 上 DualVLN 20 条 sim–real 试点。截至 2026-11 仍无公开 GitHub 代码仓。
 
-## 摘要级要点
+## 原文通读要点（arXiv:2608.12860）
 
 - **问题：** 既有 VLN 基准用运动学传送或把人形当「多种机器人之一」共用控制代理；双足步态约束、跨本体形态差、行走引起的相机抖动都不进评测。
 - **平台：** Isaac Sim；四本体（Unitree G1 / H1、Internal-A / Internal-B）下身 10–12 DoF、身高 1.17–1.80 m；低层 **RL locomotion** 出关节力矩，高层 **PD**（离散动作模型）或 **MPC**（连续速度模型）跟踪全局计划。

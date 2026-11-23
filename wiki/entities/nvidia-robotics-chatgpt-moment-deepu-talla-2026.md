@@ -199,6 +199,7 @@ flowchart LR
 - [操作任务](../tasks/manipulation.md) 与 [Sim2Real](../concepts/sim2real.md)：讨论灵巧操作和真机偏差。
 - [Isaac Lab](./isaac-lab.md) · [Isaac Sim](./isaac-sim.md) · [Newton](./newton-physics.md)：分别核验训练、场景与物理引擎的实际能力。
 - [模型架构纵深路线](../../roadmap/depth-model-architecture.md)：Stage 4–5 的访谈交叉阅读资料。
+- [Bloomberg Primer：人形机器人热度与现实差距](./bloomberg-primer-humanoid-hype-reality-2026.md)：交叉验证数据稀缺、遥操作与实际仓库试点的人工介入和 ROI 口径。
 
 ## 参考来源
 

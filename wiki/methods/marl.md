@@ -2,7 +2,7 @@
 type: method
 tags: [rl, multi-agent, swarm, coordination]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-22
 related:
   - ./reinforcement-learning.md
   - ./rlcr-collective-inference-time-scaling.md

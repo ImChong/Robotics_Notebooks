@@ -2,8 +2,11 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-21
 arxiv: "2508.07863"
+institutions: [beingbeyond]
+original:
+  - ../../sources/papers/being-m0-5_arxiv_2508_07863.md
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -177,7 +180,7 @@ $$\mathcal{L}(\Theta) = -\sum_{j=1}^{L} \log P_\Theta\left(y_j \mid X_Q, \hat{y}
 
 ## 局限与风险
 
-- **代码未发布**：项目页链接的 GitHub 仓库 README 仅写明 "We will release our code and part of our dataset soon"（核查日 2026-11-06），无可运行入口。因此无法复现 PRQ 与训练流程，本页的 "已开源" 不成立。注意：[sources/repos/being-m0_5.md](../../sources/repos/being-m0_5.md) 目前写为 "已开源"，与此核查结果不符，需另行修正（本次未改动该文件）。
+- **代码未发布**：项目页链接的 GitHub 仓库 [BeingBeyond/Being-M0.5](https://github.com/BeingBeyond/Being-M0.5)（commit `67dec3c`）仅含占位 `README.md` 与项目图，声明 "We will release our code and part of our dataset soon"，无可运行源码入口。[sources/repos/being-m0_5.md](../../sources/repos/being-m0_5.md) 已同步修正为「未开源可执行代码」。
 - **评测偏向**：大多数基准（HuMo-T2M、I2M、Unseen、I2PM、I2LM、MPI）由作者从 HuMo100M 采样构建，部位标注与指令由 Gemini 1.5 Pro 等 LMM 生成，与训练数据同源，对比结果需谨慎解读。
 - **HumanML3D 上并非全面领先**：PRQ4 的 FID（0.056）高于 MoMask-RQ6（0.045），论文正文的 "consistently outperforms" 表述需以表格为准。
 - **Baseline 不完全统一**：论文称各基线使用相同动作数据，但不同方法使用的模型规模（GPT-2 至 LLaMA-13B）与训练设置差异大；Table 2 仅纳入公开训练代码的方法。
@@ -186,7 +189,7 @@ $$\mathcal{L}(\Theta) = -\sum_{j=1}^{L} \log P_\Theta\left(y_j \mid X_Q, \hat{y}
 - **层数与解码的权衡**：PRQ 层数增加（如 PRQ6）会改善重建但损害生成（Table 6）；frame-by-frame 解码是论文自陈的设计依赖。
 - **功能边界**：视频到动作估计（motion estimation）仅在论文中作为 "future work" 提及，不能视为已验证能力。
 
-## 与其他页面的关系
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

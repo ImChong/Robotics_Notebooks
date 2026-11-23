@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, motion-control, know-how, roboparty, roadmap, model-based, reinforcement-learning, bfm]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-22
 related:
   - ./humanoid-motion-control-trends.md
   - ./humanoid-model-based-control-stack.md

@@ -2,7 +2,10 @@
 type: concept
 tags: [motor, actuator, hardware, humanoid, dynamometer, test-bench, torque]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-21
+original:
+  - ../../sources/sites/magtrol_dynamometer_manuals.md
+  - ../../sources/repos/odrive_based_electric_motor_dynamometer.md
 related:
   - ./motor-torque-speed-curve.md
   - ./motor-torque-current-curve.md
@@ -45,7 +48,7 @@ summary: "测功机（Dynamometer）在可控负载下测电机/关节的扭矩�
 - **标准接口**：国内一体化关节验收对标 [GB/T 43200-2023](../../sources/sites/gbt_43200_2023_robot_joint_performance.md)；国际电机效率直接法依赖扭矩–转速测功（[IEC 60034-2-1](../../sources/sites/iec_60034_2_1_motor_efficiency.md)）。
 - **Sim2Real 上游**：台架阶跃/摩擦数据是 [Actuator Network](../methods/actuator-network.md) 与隐式/显式执行器建模的原料。
 
-## 核心结构/机制
+## 核心原理与结构
 
 ### 测功机家族（先分清吸收 vs 对拖）
 

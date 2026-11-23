@@ -2,7 +2,10 @@
 type: concept
 tags: [humanoid, hardware, actuator, joint-module, manufacturing, testing, harmonic-drive]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/wechat_zanehub_joint_module_self_development_workflow.md
+  - ../../sources/raw/wechat_zanehub_joint_motor_topology_selection_2026-09-20.md
 related:
   - ../overview/motor-design-workflow.md
   - ../overview/humanoid-hardware-101-integrated-actuators.md

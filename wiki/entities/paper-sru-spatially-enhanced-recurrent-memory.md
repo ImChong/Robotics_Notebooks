@@ -2,7 +2,7 @@
 title: "SRU：面向长程无地图导航的空间增强循环记忆（IJRR 2025）"
 type: entity
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 project_id: sru-spatially-enhanced-recurrent-memory
 arxiv: "2506.05997"
 paper: https://arxiv.org/abs/2506.05997

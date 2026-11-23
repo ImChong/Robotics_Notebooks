@@ -2,8 +2,12 @@
 type: entity
 tags: [paper, world-model, cross-embodiment, manipulation, benchmark, video-generation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.13049"
+code: https://github.com/Rongdingyi/H2R-Bench
+original:
+  - ../../sources/papers/h2r_bench_arxiv_2608_13049.md
+  - ../../sources/repos/h2r-bench.md
 related:
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
@@ -50,7 +54,7 @@ summary: "H2R-Bench（arXiv:2608.13049）：人类第一视角操作视频→指
 | **出处** | arXiv:2608.13049（2026-08） |
 | **任务** | 给定人类操作视频 + 目标机器人本体，生成对应机器人操作视频 |
 | **评测轴** | 目标状态、动作事件、功能接触、本体正确性、视频质量 |
-| **开源（截至 2026-08-19）** | **部分开源**：项目页 + GitHub 骨架；**评测代码与 benchmark 标注未发布** |
+| **开源（2026-11-21 复核）** | **已开源基准标注与 MLLM 评测代码**：[`Rongdingyi/H2R-Bench@d41cecb`](https://github.com/Rongdingyi/H2R-Bench) 含 120 场景 `annotations.jsonl`、240 条 `generation.jsonl`、`evaluation/`（`prepare.py` / `run.py` 等）；源/生成视频需自备，M1–M4 默认调用 Qwen/Gemini/GPT OpenAI 兼容 API |
 
 ## 核心原理
 
@@ -73,17 +77,51 @@ flowchart LR
 | 本体正确性 | 手/夹爪/臂是否符合目标机器人 |
 | 视频质量 | 时序一致与视觉保真 |
 
+## 源码运行时序图
+
+对齐 [`Rongdingyi/H2R-Bench@d41cecb`](https://github.com/Rongdingyi/H2R-Bench) 现已发布的 `benchmark/`、`prompts/` 与 `evaluation/`（`prepare.py`、`run.py`、`goal_action.py`、`contact.py`、`embodiment.py`、`aggregate.py`）：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as 评测者
+  participant Prep as evaluation.prepare
+  participant Bench as benchmark/annotations.jsonl<br/>& prompts/generation.jsonl
+  participant Run as evaluation.run
+  participant CV as sample_frames()<br/>25 帧均匀采样
+  participant API as MLLM 裁判群<br/>Qwen3.7-Plus / Gemini3.5-Flash / GPT-5.4
+  participant Score as goal_action / contact<br/>embodiment
+  participant Out as scores.jsonl &<br/>summary.csv / per_video.jsonl
+  U->>Prep: --source-dir --generated-dir --model
+  Prep->>Bench: 按 scene_id 与 target_embodiment 配对标注
+  Prep-->>U: 生成 manifest.jsonl
+  U->>Run: python -m evaluation.run --manifest --providers qwen,gemini,gpt
+  loop 每条 (源视频, 生成视频) case
+    Run->>CV: 解码并 JPEG base64 编码 25 帧
+    Run->>API: 并行发 M1_M2 / M3 / M4 提示词
+    API-->>Run: 结构化 JSON 评判
+    Run->>Score: clean + coverage@3/@4 + score
+  end
+  Score-->>Out: 汇总 H2RCore 并写 scores.jsonl / summary.csv
+```
+
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
-| 源码运行时序图 | **不适用**（评测脚本与标注未发布） |
-| 读榜 | 分开看本体正确性与功能接触，不要只看视频质量 |
+| 依赖与环境 | Python 3.10+，`pip install -r requirements.txt`；运行前设 `H2R_{QWEN,GEMINI,GPT}_{API_KEY,BASE_URL}`，可用 `--dry-run` 先校验 manifest 与提示词 |
+| 读榜 | 分开看 `mechanical_arm`（夹爪）与 `dexterous_hand`（灵巧手），不要只看 M5 视频质量 |
 | 对照 | 与 [Ego2Robot](./paper-ego2robot.md) 的数据管线问题不同：本文评 **生成**，不是采集 |
 
 ## 实验与评测
 
-文内结论：当前 11 个模型在 **本体一致性、功能交互、任务执行** 上仍明显受限——世界模型「能看」不等于「能当 robot 训练素材」。
+从 120 个 EgoDex 测试片段 × 2 本体 = **240** 条测试例横评 11 个生成模型：
+
+| 发现轴 | 验证数字（arXiv:2608.13049 & README） |
+|--------|----------------------------------------|
+| **人工相关性** | 3-MLLM 加权裁判与人工标注 Pearson $r=0.930$、Spearman $\rho=0.883$ |
+| **梯队榜首（H2RCore）** | **Seedance 2.0**（Gripper **77.3** / Hand **84.6**）、**Wan2.7**（76.5 / 83.1）、**Kling-V3**（74.5 / 81.7）显著领先帧条件模型（如 Veo 3.1：49.6 / 57.0，Wan2.2：32.4 / 33.7） |
+| **指标解耦** | **M5 视频质量**与 H2RCore 仅弱相关（Spearman $\rho=0.14$）——「画质好」几乎不能预测「本体与接触对」 |
 
 ## 结论
 
@@ -91,12 +129,12 @@ flowchart LR
 
 1. **五维分开报** — 否则 FVD 会掩盖本体错。
 2. **生成≠可用数据** — 功能接触与动作事件是硬门槛。
-3. **开源未完成** — 截至入库日只能读论文/项目页，不能本地复现全榜。
+3. **基准与代码已开源（需 API 裁判）** — 可用 `evaluation.prepare` 与 `evaluation.run` 复现五维打分，但依赖自备视频与三个 MLLM API 端点。
 4. **与 Ego2Robot 互补** — 一个评生成 faithful，一个扩数据规模。
 
 ## 局限与风险
 
-- 评测代码与标注未公开，第三方无法复核榜单。
+- GitHub 仓库已开放 `annotations.jsonl` 与 MLLM 评测脚本，但运行 M1–M4 强依赖商业 MLLM API（Qwen / Gemini / GPT）与本地 EgoDex 源视频准备。
 - 仅覆盖 2 种机器人本体与 6 类操作，外推需谨慎。
 - 生成视频质量高仍可能本体/接触全错。
 

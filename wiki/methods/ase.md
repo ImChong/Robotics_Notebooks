@@ -11,7 +11,7 @@ tags:
   - awesome-bfm-papers
   - nvidia
 status: complete
-updated: 2026-11-19
+updated: 2026-11-22
 code: https://github.com/nv-tlabs/ASE
 venue: "2022 · TOG"
 arxiv: "2205.01906"

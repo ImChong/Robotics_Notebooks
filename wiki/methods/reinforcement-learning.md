@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 related:
   - ../entities/paper-cl1-biological-neural-platform-kagan-2025.md
   - ../entities/paper-kamino.md

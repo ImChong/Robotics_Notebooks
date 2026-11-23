@@ -11,6 +11,9 @@
 - **项目页：** <https://humanoid4parkour.github.io/>（[本地归档](../sites/humanoid-parkour-learning.md)）
 - **源码：** 截至 2026-07-28 未公开；作者的 `ZiwenZhuang/parkour` 是四足前作，不是本文实现
 - **入库日期：** 2026-06-07
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `arXiv:2406.10759v2`（CoRL 2024，pdftotext 1628 行）全文：Abstract、§1–§6（10 类公园地形、scandots 特权教师 + GRU 状态估计、多进程 DAgger 48×64 深度学生蒸馏、Unitree H1 0.42 m 跳台 / 0.8 m 跨沟 / 1.8 m/s 野外跑与上肢通道覆盖迁移、Table I–V 消融、Limitations）与 Appendix；对应人形官方训练/部署源码未公开。
+- **通读：** 已完成
 - **一句话说明：** 用 RL 在仿真里练「神谕」地形策略（scandots 地形编码 + GRU 状态估计），再通过 DAgger 把感知蒸馏成机载深度图 CNN，在 无参考轨迹、无抬脚奖励项 的前提下，让人形在多种跑酷障碍上 零样本 sim-to-real，并能跟随摇杆转向命令；手臂通道可覆盖以迁移到移动操作。
 
 ## 核心摘录（策展，非全文）

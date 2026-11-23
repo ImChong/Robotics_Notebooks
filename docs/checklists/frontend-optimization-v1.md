@@ -7,7 +7,13 @@
 
 ## 一、 视觉降噪 (Visual De-cluttering)
 
-- [x] 3D 连接度地形全量视觉与交互升级（2026-11-23）：保留既有暗/亮双色板与零外部 3D 库依赖，全面升级 `docs/graph-perspective.js`、`docs/graph.html` 与 `docs/mini-graph.js` 的渲染精度、空间层级与交互手感：多极值 $L_4$ 合成高度场、200×200 精细网格与低地 FBM 微地形起伏；`fwidth` 抗锯齿等高线/参考网格、球体接地阴影/溢出光与贴地双重高亮环；超级枢纽高亮发光丝带 Top-K 限流防白屏；贴地平滑社区凸包疆界线与可点击 `◈` 社区胶囊（含按社区筛选联动）；邻接标签碰撞消隐与按缩放距离动态 LOD；35° 窄 FOV 阻尼轨道相机、光标缩放锚点、侧边栏视锥偏移（`setSidebarOffset`）与筛选平滑地形变形（`morph`）；悬浮游标测高准星、周期地形雷达扫描、节点状态脉冲环、单 Draw Call 氛围粒子与 7 秒无操作缓旋；离屏 FBO 竖向移轴柔焦、高光提取 Bloom 与防色带颗粒后处理（含慢 GPU 自动降级）；`graph.html` 顶栏三态直达切换器、左下角极简地形图例条、侧边栏节点度数进度条与 `?view/focus/community` URL 深链同步。
+- [x] 3D 连接度地形全量视觉与交互升级（2026-11-23）：保留既有暗/亮与瑞士工程双色板及零外部 3D 库依赖，全面升级 `docs/graph-perspective.js`、`docs/graph.html` 与 `docs/mini-graph.js` 的渲染精度、空间层级与交互手感：多极值 $L_4$ 合成高度场、200×200 精细网格与低地 FBM 微地形起伏；`fwidth` 抗锯齿等高线/参考网格、球体接地阴影/溢出光与贴地双重高亮环；超级枢纽高亮发光丝带 Top-K 限流防白屏；贴地平滑社区凸包疆界线与可点击 `◈` 社区胶囊（含按社区筛选联动）；邻接标签碰撞消隐与按缩放距离动态 LOD；35° 窄 FOV 阻尼轨道相机、光标缩放锚点、侧边栏视锥偏移（`setSidebarOffset`）与筛选平滑地形变形（`morph`）；悬浮游标测高准星、周期雷达扫描、节点状态脉冲环、单 Draw Call 氛围粒子与 7 秒无操作缓旋；离屏 FBO 竖向移轴柔焦、高光提取 Bloom 与防色带颗粒后处理（含慢 GPU 自动降级）；`graph.html` 顶栏三态直达切换器、左下角极简地形图例条、侧边栏节点度数进度条与 `?view/focus/community` URL 深链同步；对齐全站 `0a0b0d/f5f4f0` 瑞士双样式系统与 Lambert 球体着光规范。
+
+- [x] 全站 Taste Skill 瑞士工程风视觉升级与「新版 / 旧版」双样式切换（2026-11-23）：借鉴 [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io) 新设计系统升级全站视觉语言：自托管 `Geist` + `Geist Mono` 可变字体（`docs/fonts/`，SIL OFL 1.1），暗色 Telemetry Blue（`#0a0b0d` / `#0f1115` / `#111317` / `#5ca4ff`）与瑞士亮色 Swiss Light Cobalt（`#f5f4f0` / `#eceae4` / `#ffffff` / `#1947c2`）纯平零磨砂高对比色板、`64px` 实色顶栏与主锚点导航 + 移动端全屏抽屉、`^⇧L` 快捷键提示与 View Transitions 圆形切换；首页扩宽为 `1280px` 12 栏栅格与 **Hero 7+5 1px 线框分栏**（左 7 栏首屏主视觉、CTA 与 `3×2` KPI 网格，右 5 栏直嵌实时 2D 力导图 / WebGL 3D 地形「知识图谱预览」+ 2×2 遥测底栏），入口矩阵与「最新知识节点 / 互链枢纽」重构为 1px 细线工程台账；`detail` / `roadmap` / `hubs` / `change-log` / `company` / `lab` / `star-history` / `graph` / `404` 全量对齐 `2px / 0px` 锐利圆角、无柔和投影及 `graph-3d.js` / `graph-perspective.js` / Mermaid / Plotly 画布配色；所有 10 个有顶栏页面均支持「旧版 / 新版」一键热切换（`#uiStyleToggle` / `localStorage['robotics-notebooks-ui']`，默认 `tech`，`classic` 完整回退原 Notion 视觉系统与布局），新增回归测试 `tests/ui-tech-redesign.test.cjs` 并完成桌面 `1440px` / 移动 `390px` 零误差高分截图核验。
+
+- [x] 全站品牌主 Logo（方案 B）、F2 同源分页 Favicon 与 E3 全量 SVG 图标化（2026-11-22）：将全站顶栏主标由彩色卡通 `🗺️` / `🚀` 升级为原创「拓扑折页地图（Topo Stack Map）」内联矢量 SVG（`docs/assets/icons/brand-logo.svg` + `.site-brand-mark`，随暗/亮主题自动响应 `currentColor` 与 `--accent`）；11 个 HTML 页面统一改用 F2 同源家族 Favicon SVG（`docs/assets/icons/favicon-{home,graph,detail,roadmap,refs}.svg`，主标折页地图 + 语义色路线与角标色点）并补齐本地 `apple-touch-icon.png`（180×180）与 `manifest.json` 本地 PNG（192/512，移除 `icons8.com` 外链）；新增集中式单色线性图标库 `docs/ui-icons.js`（`window.RNIcons`，`1.55px` 描边），将顶栏主题/赞助按钮、图谱工具栏与参数/筛选面板、详情页与列表元信息徽标以及 `docs/depth-filters.js` 全部 31 条纵深路线图标全面替换为矢量 SVG（含开源仓库标记保留精致金色星星 SVG），刷新 `docs/assets/og-cover.png`，并新增回归测试 `tests/brand-and-ui-icons.test.cjs`。
+
+- [x] 知识问答「参考来源」紧凑同页聚合清单 & AI 回复防截断（2026-11-20）：将 `docs/kb-chat.js` 与 `docs/style.css` 的「参考来源」卡片重构为按文档 ID 聚合的高密度紧凑清单（方案 D），同文档多处引用只展示一次标题与社区/路线/更新日期/健康度元信息，命中章节收为直达按钮，长摘录默认收起并支持一键「显示摘录 ▾ / 收起摘录 ▴」切换，大幅压缩对话区参考来源占地面积（760px 同页 3 条引用 `413px → 100px`、-76%）；同步将 Worker `MAX_OUTPUT_TOKENS` 由 `1024` 放宽至 `2048`（硬上限 `2400`、正文与 D1 记录上限 `4000 → 8000` 字符、Worker / 前端超时放宽至 `18s / 22s`），并增加前端流程图边标签 `-->|...|>` 自动容错修正，减少长回答与 Mermaid 图表截断回退。
 
 - [x] 图谱页 `graph.html` 与首页「知识图谱预览」WebGL 3D 连接度地形视图及参数控制（2026-11-19，[#3958](https://github.com/ImChong/Robotics_Notebooks/issues/3958)）：在不修改图谱数据 schema、力布局与交互语义的前提下，于渲染层重构 `docs/graph-perspective.js` 为独立 WebGL 3D 连接度地形引擎（WebGL2 / WebGL1 自适应 + HiDPI 屏幕标签碰撞消隐），`docs/style.css` 统一提供舞台 `.graph-perspective-*` 与暗/亮 `--persp-*` 派生变量；地形高度与闭合等高线（地平线层）由节点连接数（`log1p(degree)`）经平滑极大值与高斯滤波生成、凹凸明显且圆润无棱角，全部节点采用平滑 3D 圆形球体渲染，切换进入 3D 时平滑执行从正俯视到斜视角的镜头俯冲、山体隆起与地平线镜面反光扫掠特效（减弱动效模式自动跳过），边界柔和雾化；`graph.html` 支持「2D 平面 / 3D 地形 / 3D 立体」三态互斥切换（默认保持 2D），紧凑参数浮窗提供开关、山峰高度、等高线层数、俯仰视角、方位偏转滑块及「恢复默认 / 正俯视」按钮，支持左键旋转 / 滚轮缩放 / 右键平移及全屏筛选联动；首页 `index.html`「知识图谱预览」（`mini-graph.js`）的 `3D` 视图同步切换为该 3D 连接度地形视图（保持与 2D 相同尺寸的圆角视野边框、移除 `1.3MB` 第三方 3D 包依赖并保留搜索联动、悬停/触控浮窗、首页竖向滚动防误触与 `graph.html?view=perspective` 联动跳转），按设备能力与 `prefers-reduced-motion` 自动分级（`full` / `lite` / `reduced` / `unsupported`）。
 
@@ -316,3 +322,41 @@
 - [x] 读者向轻量前端问答与安全渲染：新增按需加载的 `docs/kb-chat.js`，精简读者向标题与提示文案（如「知识问答 / 站内检索 / 基于站内文档回答」），支持中英双语、本地 `search-index-lite.json` + `exports/page-content/<sha256>.json` 段落检索摘要、`detail.html?id=...` / `roadmap.html?id=...` 跳转溯源，以及云端不可用/限额时自动无缝降级；全程 `createElement` + `textContent` 防 XSS 并为带页脚页面补充兼容 CSP `<meta>`。
 - [x] Workers Free 网关与回归验证：新增零密钥 `workers/kb-chat/`（Burst/Minute 边缘限速 + Isolate 并发锁 + Turnstile `siteverify` + 公共缓存 + 无工具 `env.AI.run`）及 `tests/kb-chat-worker.test.cjs`、`tests/kb-chat-ui.test.cjs`、`scripts/verify_kb_chat_limits.py`。
 - [ ] 线上 Cloudflare 部署与超额实测：合入后需站长本机运行 `wrangler secret put TURNSTILE_SECRET_KEY` 与 `wrangler deploy`，回填公开 Worker URL / Turnstile Site Key，并使用 `scripts/verify_kb_chat_limits.py` 完成线上 429 与日额度硬停止实测。
+
+## 2026-11-21 全站首屏与交互性能优化（移动端 + PC 端）
+
+- [x] 构建与导出管线瘦身：新增预裁剪首页子图 `exports/mini-graph.json`（50 节点 / 258 边，约 9.53 KB gz）、在 `home-stats.json` 下发完整 `communities` 列表供首页社区下拉直接使用、`precompute_graph_layout.cjs` 内置零分配二维空间哈希去重叠并标记 `layout_resolved: true`；`docs/sw.js` 将 `exports/mini-graph.json` 纳入 `OPTIONAL_ASSETS`（不改版本号）。
+- [x] `index.html` 与共用数据链路优化：`docs/mini-graph.js` 优先消费 `exports/mini-graph.json`；`RNLinkGraph.ensure()` 仅拉取 `link-graph.json` 拓扑，摘要改为按需 `ensureSummaries()`；`requestPageJson` 恢复默认 HTTP 缓存并仅在目录刷新时 `no-cache`；`company-roadmap.js` 并行拉取并在元数据到达前先渲染时间线正文、`kb-chat.js` 复用 `RNSearchIndexLite` 并缓存预处理文档；`change-log.html` 长日列表按需增量插入 DOM、`roadmap.html` 阶段树懒挂载阶段面板并延迟构造总览模态内容。
+- [x] 图谱页与 3D 地形响应优化：`graph.html` 命中 `layout_resolved` 时跳过首屏力模拟预热与去重叠；用模板 `cloneNode` + `DocumentFragment` + 事件委托替代 8,272 节点逐个绑定；2D 节点 `<text>` 按可见节点单节点懒挂载；聚焦/悬停采用 O(deg) CSS 类与 `incidentEdges2D` 邻接边索引，侧栏改用 GPU `transform` 位移，缓存 `--app-vh` / 壳层尺寸与 rAF 节流 `moveTooltip`、防抖搜索（避开 IME 组字）；`graph-perspective.js` 采用零分配 3D 空间哈希去重叠、材质颜色缓存、O(deg) 悬停拾取与边绘制、rAF 合并拾取与缓存容器 `getBoundingClientRect()`。
+- [x] 首屏渲染与 CSS 合成：`star-history.html` 将 4.56 MB `vendor/plotly.min.js` 移出阻塞 `<head>` 改为 `preload` + `ensurePlotly()` 按需加载，`wiki-activity.json` 延迟至切到节点视图时获取；全站 HTML 首屏关键 JSON 补齐 `preload` 且 `#sponsor-js` 统一 `defer`；`style.css` 收敛呼吸圆点为纯 `opacity` 动画、移动端降低 `.site-header` `backdrop-filter` 模糊半径、对离线重列表容器启用 `content-visibility: auto`。
+- [x] 实测（headless Chrome，gzip 本地服务，冷缓存上下文；移动端为 390×844 触屏 + 4× CPU 节流）：
+  - `index.html`：传输 1,750.5 → 345.2 KB gz（-80.3%）；首屏就绪 PC 3,719 → 2,287 ms、移动 4,455 → 2,746 ms（另一轮 2,063 ms），首页不请求 `link-graph.json`。
+  - `graph.html`：首屏就绪 PC 6,689 → 2,488 ms（2.69×）、移动 19,013 → 10,714 ms（8,203 ms 批次），DOM 36,880 → 28,606；简化聚焦选择器后高连接度节点（`sim2real`）点击至侧栏首帧实测 313.8 ms（rAF 327.4 ms）。
+  - `star-history.html`：FCP PC 1,856 → 220 ms（8.4×）、移动 5,904 → 680 ms（8.7×）；默认星标视图传输 2,237.8 → 1,500.7 KB gz（零 `wiki-activity.json` 请求）。
+  - `change-log.html`：初始 DOM 23,704 → 4,360（-81.6%）；`company.html` / `hubs.html` / `detail.html` / `roadmap.html` 均同步提速，全 16 组测例控制台零报错、零未命中预加载警告。
+
+## 2026-11-22 增长趋势「每日节点数」维护口径切换
+
+- [x] `docs/star-history.html` 在 `view=nodes-daily` 视图下参考 `change-log.html` 增加「新增节点 / 显示维护节点」切换按钮（`#trend-activity`）及 `默认仅计新增 · 切换后含维护总量` 提示；默认保持仅新增口径（与 `节点数趋势` 共用首次加入日去重缓存），切至「显示维护节点」后按日去重汇总 `added + maintained` 并同步更新 URL（`&maintained=1`）、状态栏、纵轴标题与统一悬停提示（不重复请求 `wiki-activity.json`）。
+- [x] 在 `tests/trend-community-nodes.test.cjs` 补充单日去重统计、`nodes` 累计视图隔离、按钮点击切换与 `?view=nodes-daily&maintained=1` 深链启动回归测试。
+
+## 2026-11-22 页面元信息类型徽章
+
+- [x] 详情页「页面信息」与学习路线页「路线元信息」在「更新时间」之后、「所属社区」之前显示双语页面类型徽章，沿用图谱节点类型配色。
+- [x] 复用站点目录中的路径和类型字段识别知识页细分类、参考页及技术节点。图谱数据加载失败时仍可显示页面类型。
+- [x] 前端回归测试覆盖各类详情页、路线页、旧目录数据和找不到页面的情况。
+
+## 2026-11-22 详情页关联知识图谱交互
+
+- [x] 关联图谱高度从 180px 调整为 280–360px。2D 下可拖动节点并实时避让相邻节点，触屏从空白处滑动仍可滚动页面。
+- [x] 添加 2D / 3D 切换。首次打开 3D 时加载站内地形渲染器，支持旋转和拖动节点。切回 2D 时保留节点位置并重新处理重叠。
+- [x] 详情页和首页预览共用 3D 地形高度，常规模式为 32、轻量模式为 29、减弱动效模式为 28。
+- [x] 回归测试覆盖 3D 按需加载、加载失败后重试，以及切回 2D 的节点避让。
+
+## 2026-11-22 3D 浮窗左上角闪现与详情页关联图谱 2D 拖拽回弹修复
+
+- [x] 修复图谱页 `graph.html`（3D 地形 / 3D 立体 / 2D）、首页 `mini-graph.js` 与全站 `main.js` `setupGraphHoverTooltip` 悬停浮窗先移除 `.hidden` 或清空 `left`/`top` 再在下一帧定位导致的左上角闪现问题：统一在写入合法 `left`/`top`（且无坐标不显隐、同节点移动不清空重建）之后再取消隐藏；同步修正 `graph-3d.js` `lastPointer` 初值 `(0, 0)` 兜底与 `graph-perspective.js` 冗余空悬停及拖拽视角时清除悬停态。
+- [x] 修复 `detail.html`「关联知识图谱」2D 模式节点拖拽后静止不回弹问题（`docs/main.js` `renderDetailMiniMap`）：接入对齐 `graph.html` 2D 的粘滞阻尼与向心回复力（`velocityDecay(0.54)` / `alphaDecay(0.04)` / `alphaMin(0.005)` / `forceX`/`forceY`），拖拽时以 `sim.alphaTarget(0.2).restart()` 联动牵引，松手释放 `fx`/`fy` 平滑回弹。
+- [x] 新增前端回归测试 `tests/tooltip-position-and-detail-rebound.test.cjs`，并通过 headless Chrome 实测验证零左上角闪现与 2D 拖拽回弹。
+
+

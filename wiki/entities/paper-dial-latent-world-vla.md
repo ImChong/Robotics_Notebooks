@@ -3,12 +3,17 @@ type: entity
 project_id: xpeng-dial
 tags: [paper, vla, world-model, robocasa, manipulation, repo, open-source, china-embodied-opensource, project]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2603.29844"
 code: https://github.com/xpeng-robotics/DIAL
 project: https://xpeng-robotics.github.io/dial/
 institutions:
   - xpeng
+  - hku
+  - unc-chapel-hill
+original:
+  - ../../sources/papers/dial_arxiv_2603_29844.md
+  - ../../sources/repos/dial.md
 related:
   - ./light-o1.md
   - ./robocasa.md
@@ -137,8 +142,18 @@ sequenceDiagram
 
 ## 实验与评测
 
-- **RoboCasa GR1 Tabletop Simulation** 为主要仿真 benchmark 之一（与 Light-O1 同设定：24 厨房任务、1000 demo/task 训练、50 ep 评测）。
-- 具体 macro success **以原文 Table 为准**；Light-O1 blog 将其列为 **published baseline** 而非本库复现数值。
+- **RoboCasa GR1 Tabletop Simulation（24 任务 × 50 ep，47 维状态/动作，H=16）：**
+  - **全量数据（24,000 轨）：** DIAL 平均成功率 **70.2%**（Pick & Place **68.9%**，Articulated **74.3%**），高于 FLARE（55.0%）与 GR00T-N1.6（47.6%）。
+  - **Few-shot（10% 数据，2,400 轨）：** DIAL 达 **58.3%**，以 10× 更少演示超过全量 FLARE（55.0%）；同设定下 GR00T-Qwen2.5 冻结为 21.8%、-FT 为 30.6%、+SEER 49.6%、+SEER-EV 47.2%、+FLARE 51.9%、DIAL-DINO（跨隐空间）47.2%。
+  - **人类数据共训（加入 EgoDex `basic_pick_place` 27,419 轨）：** Few-shot Pick & Place **56.0% → 60.8%**，三大 OOD 平均 **46.2% → 51.2%**（Unseen Object Types 34.8→41.1%，Combinations 53.0→58.7%，Appearances 50.7→53.8%）；Articulated 任务因人类数据集不含铰接交互无提升（65.3% vs 62.0%）。
+- **IRON-R01-1.11 真机实验（50 维状态/动作，H=16/50）：** 去掉 Stage 1 解耦热身导致 ID 平均成功率从 **77.5% → 57.5%**、OOD 从 **58.3% → 30.0%**；去掉人类数据预训练使 OOD 降至 **26.7%**。多阶段协同任务（Handover & Shelving、Trash Collection & Emptying，H=50）显著减少无前瞻基线的阶段循环卡死。
+- **跨库基准参考：** [Light-O1 Tech Blog](https://www.lightorigins.com/en/blog/light-o1) 在 RoboCasa GR-1 24 任务同数据设定下将其列为 published baseline；各消融与任务明细以 [arXiv:2603.29844v2](https://arxiv.org/abs/2603.29844) 原文图表为准。
+
+## 局限与风险
+
+- **System-1 容量与冻结 ViT 权衡：** 原文指出当前 System-1 的 16 层 DiT 骨干规模仍较小；且为保证特征空间对齐而冻结 VLM 原生 ViT，限制了视觉表征对物理接触细节的进一步适配（作者提出未来可用 EMA 目标编码 + 潜在 token 压缩探索端到端 ViT 微调）。
+- **人类数据域覆盖依赖：** EgoDex `basic_pick_place` 显著提升桌面抓放与 OOD 泛化，但对需要铰接操作（Articulated）的任务无增益甚至略降，跨具身收益受限于人类数据的任务分布匹配度。
+- **真机与多阶段依赖：** 多阶段长程协同任务仍需采用更大的动作块（H=50）与机器人原生序列，真机零样本泛化主要在实验室桌面/货架/桌布五类 OOD 设定上验证，尚未证明跨形态任意硬件零样本通用性。
 
 ## 与其他工作对比
 

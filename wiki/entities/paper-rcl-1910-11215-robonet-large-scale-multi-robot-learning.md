@@ -3,6 +3,8 @@ type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/rcl_awesome_wam_1910_11215_robonet-large-scale-multi-robot-learning.md
 arxiv: "1910.11215"
 venue: "CoRL 2019"
 summary: "RoboNet pools robot experience to make visual control transferable. Pretraining improves adaptation with a few hundred target-robot trajectories, but relevant subsets can outperform the broader pool. Its central contribu"
@@ -33,6 +35,7 @@ RoboNet pools robot experience to make visual control transferable. Pretraining 
 |------|----------|----------|
 | WAM | World Action Model | 世界预测与动作生成耦合 |
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
+| VF | Visual Foresight | 基于视频预测前向模型的无标定视觉规划方法 |
 | IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
 | WM | World Model | 环境前向预测模型 |
 
@@ -97,10 +100,13 @@ RoboNet pools robot experience to make visual control transferable. Pretraining 
 - 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
 - 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
 
-## 常见误区
-
+## 常见误区或局限
 1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
 2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+
+## 工程实践
+
+- **跨平台预训练子集选择：** 论文实证表明盲目混入所有异构机械臂未必最优；在目标硬件上微调时，优先过滤与目标夹爪几何、相机视角相近的高相关性子集往往超过全量池混合效果。
 
 ## 关联页面
 

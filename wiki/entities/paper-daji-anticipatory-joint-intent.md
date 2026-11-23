@@ -13,7 +13,7 @@ tags:
   - limx
   - sdu
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2605.14417"
 code: https://github.com/Hxxxz0/DAJI
 related:

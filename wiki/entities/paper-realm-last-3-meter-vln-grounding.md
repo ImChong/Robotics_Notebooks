@@ -13,8 +13,11 @@ tags:
   - epfl
   - ruyi-dynamics
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+project_id: realm-last-3-meter-vln-grounding
 arxiv: "2607.03792"
+venue: "CoRL 2026"
+code: https://github.com/sxyxs/REVERIE-AIM
 summary: "REALM（arXiv:2607.03792）：揭示 REVERIE-CE 等连续 VLN 在 3 m 区域到达与实例可见接地之间的 Last-3-Meter Grounding Gap；提出可插拔末段精修模块 REALM、实例指标 ONS/GS/OracleGS 与 REVERIE-AIM 数据集，在四类 VLN 骨干上一致提升细粒度接地并验证真机 Stretch。"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -27,6 +30,7 @@ related:
   - ./paper-green-for-go-vla-nav-grounding.md
 sources:
   - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
+original: ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
 ---
 
 # REALM（Last-3-Meter VLN · 实例级接地）
@@ -107,6 +111,34 @@ flowchart LR
 - 最大的工程优势是 **上游冻结、架构无关**：在 ETPNav-ZS/FT、UniNaVid-ZS、SmartWay 四类骨干上一致提升 ONS/GS/OracleGS，ETPNav-ZS 的 ONS@0.1m 相对翻倍（7.07%→14.66%）。
 - 失败模式是级联的：开放词汇检测与短语抽取的错误会直接传导到 GS；真机（Stretch，12 episode）虽有约 3–4× 提升，但样本量小，只能作初步证据。
 - 定位互补而非竞争：绝对性能仍远低于 Human 上界，且未覆盖室外与 manipulator 级后续交互；与 [3D-IC](./paper-3d-ic-joint-navigation-manipulation-planning.md) 的全链导航–操作联合规划可叠加使用。
+
+## 源码运行时序图
+
+[sxyxs/REVERIE-AIM](https://github.com/sxyxs/REVERIE-AIM)（MIT 协议）已公开基准数据集（3,691 条训练 / 1,344 条未见验证）与 `realm_bench` 评测套件（注：精修策略 LoRA 训练脚本未在该仓同时发布）：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Agent as 上游 VLN / 精修策略
+  participant Data as data/reverie_aim_val_unseen.json
+  participant CLI as python -m realm_bench.evaluate
+  participant Sim as realm_bench/sim.py (Habitat 0.1.7 MP3D)
+  participant Grd as realm_bench/grounding.py (OWLv2)
+  participant Met as realm_bench/metrics.py
+
+  Agent-->>CLI: 提交各 episode 终止位姿 endpoints JSON
+  CLI->>Data: 读取实例级边界框、target_phrases 与可导航邻点
+  CLI->>Sim: 在 MP3D 连续场景定位终止位姿并渲染 224x224 (90° HFOV) 视图
+  Sim->>Met: 计算 ONS@0.1m / ONS@0.5m 与 OracleGS (GT >=1%)
+  Sim->>Grd: 在 OracleGS 帧调用 OWLv2 检出 target_phrase 框
+  Grd->>Met: IoU >= 0.5 结算最终 GS 指标并导出 JSON
+```
+
+## 工程实践
+
+- **基准复现环境：** `sxyxs/REVERIE-AIM` 复用 `habitat-sim==0.1.7` + `habitat-lab==0.1.7`（Python 3.8）与 Matterport3D（`.glb` / `.navmesh` / `_semantic.ply` / `.house`）；可用随附 `examples/etpnav_ft_endpoints.json` 一键校验是否复现论文 Table 2 的 ETPNav-FT 无精修基线（`ONS@0.1=6.32`、`ONS@0.5=12.20`、`GS=4.46`、`OracleGS=11.31`）。
+- **相机与坐标系约定：** 评测停靠帧统一 `224×224` 分辨率、`90° HFOV`、`1.25 m` 安装高度；提交 JSON 朝向需为 `[w, x, y, z]` 四元数（数据集中 `start_rotation` 为 `[x, y, z, w]`），避免四元数序错位导致背向判错。
+- **检测解耦开关：** 调试几何近邻接近能力时可用 `--no-gs` 跳过 OWLv2 检测节省显存，使用 `--save-rgb DIR` 导出停靠视角人工排查失败案例。
 
 ## 常见误区或局限
 

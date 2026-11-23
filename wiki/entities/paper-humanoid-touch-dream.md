@@ -52,6 +52,8 @@ sources:
 - ../../sources/repos/humanoid_touch_dream.md
 - ../../sources/repos/isaaclab_decoupled_wbc.md
 - ../../sources/sites/humanoid-touch-dream.md
+original:
+- ../../sources/papers/humanoid_touch_dream.md
 summary: HTD（IROS 2026，CMU/UTA/Bosch）：RL 解耦 WBC + VR 全身采数 + 多模态 Transformer 行为克隆；Touch Dreaming 预测未来手部力与触觉 latent，五任务真机相对更强 ACT 基线约 +90.9% relative；WBC 已开源，策略与遥操作仍 on-going。
 project_id: humanoid-touch-dream
 ---

@@ -2,8 +2,10 @@
 type: entity
 tags: [paper, eth, rai, badminton, loco-manipulation, reinforcement-learning, visuomotor, sim2real, quadruped, science-robotics, whole-body-control]
 status: complete
-updated: 2026-09-26
+updated: 2026-11-21
 doi: "10.1126/scirobotics.adu3922"
+arxiv: "2505.22974"
+original: ../../sources/papers/coordinated_badminton_skills_scirobotics_adu3922.md
 venue: "Science Robotics 2025"
 project: https://articuno144.github.io/Learning-agile-badminton-skills/
 related:

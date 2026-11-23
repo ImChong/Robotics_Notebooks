@@ -1,9 +1,14 @@
 ---
-
 type: entity
 tags: [hardware, humanoid, industry, teleoperation, 1x-technologies]
+institutions:
+  - 1x-technologies
 status: complete
-updated: 2026-11-15
+updated: 2026-11-21
+original:
+  - ../../sources/repos/1x-technologies.md
+  - ../../sources/papers/1x_world_model_redwood.md
+  - ../../sources/repos/1xgpt.md
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ./paper-1xwm-redwood-world-model.md
@@ -43,6 +48,30 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 - **硬件形态分叉**：同时押注「轮式 + 上半身人形」与「双足全身人形」，反映了商业化上对续航、通过性与成本的权衡。
 - **数据闭环叙事**：家庭场景产品常与大规模真实交互数据、模仿学习与遥操作数据采集联系在一起（具体能力与时间表以官方为准）。LeoInAI Substack（2026-09）转述其使用 **Meta Quest 3** 让操作员完成困难任务以供机器人复现。
 - **产业节点**：与美国人形赛道（Figure、Tesla、Agility 等）并行，代表欧洲与美国西海岸混合供应链路线的一支独立力量。
+
+## 核心原理
+
+1X Technologies 将硬件安全合规性（肌腱驱动 + 软体晶格包覆）与数据闭环 AI（机载 VLA 策略 Redwood + 离线世界模型评测 1XWM / 1xgpt）耦合在同一垂直产品体系中。
+
+```mermaid
+flowchart TB
+  HW["EVE (轮式) / NEO (双足, 22-DoF 手, Revo1 肌腱驱动)"] --> Teleop["Meta Quest 3 / 1X Expert 遥操作与家用采集"]
+  Teleop --> Data["多任务成功与失败轨迹数据"]
+  Data --> Policy["Redwood AI 策略 (160M VLA, ~5 Hz 机载 Jetson Thor)"]
+  Data --> WM["1XWM 世界模型 (反事实未来帧 + State-Value 离线筛 checkpoint)"]
+  WM --> Policy
+  Policy --> HW
+  Data -. "EVE 第一人称 VQ-Token 子集 (Apache-2.0)" .-> Challenge["1xgpt World Model Challenge (GENIE 基线)"]
+```
+
+- **硬件代际与平台演进**：2014 年作为 Halodi Robotics 创立，2018 年推出 Revo1 低减速比肌腱驱动伺服，2022 年将轮式 EVE 部署于工业现场，2024–2025 年依次推出家用双足 **NEO Beta / Gamma** 并规划 2026 年 Early Access 交付。
+- **软件与评测双轮**：前线控部署依靠约 160M 参数的机载策略 [Redwood](./1x-redwood-policy.md) 联合输出手臂、步态与骨盆姿态；研发迭代则依托 [1X World Model](./paper-1xwm-redwood-world-model.md) 对海量候选 checkpoint 做离线动作可控评测与排序。
+
+## 工程实践
+
+- **NEO 公开工程参数（官网规格）**：自重约 30 kg（66 lbs）、身高 5'6"、全身 75 DoF（双手各 22 DoF、双臂各 7 DoF、颈 3、脊柱 2、双腿各 6），842 Wh 电池标称续航 4 小时，声噪 22 dB，算力采用 1X NEO Cortex（NVIDIA Jetson Thor，标称最高 2070 FP4 TFLOPS）与双目 8.85 MP 90 Hz 鱼眼相机。
+- **人机协作运营闭环**：常规家务由机载 Redwood AI 自主运行；遇到未掌握任务时通过「1X Expert」预约远程示教完成作业并反哺训练数据。
+- **可运行开源边界**：商业产品栈（NEO 固件、Redwood 策略权重、完整 1XWM 生产评测）均未开源；社区可直接运行的是 `1x-technologies/1xgpt`（World Model Challenge 的 EVE 第一人称 token 数据与 GENIE 风格时空 Transformer 基线）。
 
 ## 产品与路线（归纳）
 
@@ -101,6 +130,11 @@ sequenceDiagram
 ```
 
 图依据：1x-technologies/1xgpt@0069734，读过 `README.md`、`build.sh`、`train.py`（主循环与数据加载段）、`data.py`、`genie/st_mask_git.py`、`genie/generate.py`、`genie/evaluate.py`（`GenieEvaluator` 前段）、`visualize.py`。`train.py` 中 Llama 分支为注释/可选，未画。
+
+## 方法与任务关联
+
+- [视觉语言动作策略（VLA）](../methods/vla.md)：Redwood 是 1X 在 EVE/NEO 上的机载策略实例；此关联不代表其模型权重或完整训练栈开源。
+- [遥操作（Teleoperation）](../tasks/teleoperation.md)：1X Expert 与 VR 示教属于数据采集和远程辅助环节，不能等同于完全自主执行。
 
 ## 关联页面
 

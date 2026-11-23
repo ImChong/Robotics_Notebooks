@@ -10,6 +10,8 @@
 - **Stars：** ~29（2026-09-21）
 - **入库日期：** 2026-09-21
 - **一句话说明：** whIRLwind 维护的 **Booster K1 × mjlab** 集成：K1 机器人模型、平地/ rough 速度跟踪与 motion tracking 任务、LAFAN1 重定向 AMP 管线；`uv` 驱动训练，W&B 管理 checkpoint 与 motion artifact；浏览器 WASM demo 与真机 AMP 行走视频见项目页。
+- **通读：** 已完成
+- **核对范围：** 通读 `IntelligentRoboticsLab/booster_mjlab` 官方 `README.md`（120 行）。
 
 ## 入口速查（README · 2026-09-21）
 

@@ -57,6 +57,7 @@ flowchart LR
 ### 推荐读什么
 - [具身数据从采集到飞轮（四篇系列地图）](../wiki/overview/embodied-data-collection-to-flywheel-album.md) — 术语→金字塔→飞轮→监督分流的公众号连载枢纽
 - [Data Pyramid for Embodied Manipulation](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 五层金字塔与三类基础模型的数据配方视角，本阶段的骨架页
+- [诺亦腾机器人 · ModalityNet](../wiki/entities/noitom-robotics.md) — 对照全身运动、精细手–物交互和自然场景记录，判断哪些物理量直接采到、哪些要靠模型补全。
 - [训练数据管线（知识链汇总）](../wiki/overview/hub-data-pipeline.md) — 原始动作 → 质量评估 → 重定向 → 策略输入的端到端链路
 - [Motion Data Quality（动作数据质量维度）](../wiki/concepts/motion-data-quality.md) — 四轴质量口径及其与重定向必要性的因果
 - [人形训练数据管线选型指南](../wiki/queries/humanoid-training-data-pipeline.md) — 参考运动来源 / 重定向方案 / 训练范式三层互相约束的决策树
@@ -91,10 +92,14 @@ flowchart LR
 - [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md) — 硬件选型、质量保障与常见陷阱
 - [Panthera-HT 六轴主从遥操平台](../wiki/entities/cn-os-panthera-ht-main.md) — Stage 1 的硬件与 LeRobot 数据采集实例，可观察关节/相机时间对齐与有效样本率
 - [HALO：人机对齐的全身移动操作示教](../wiki/entities/paper-halo-2611-16439.md) — Stage 1 直接牵引与自然步行的机器人在环采集：2.3 N 低阻力平台 + 后处理部署对齐；与 UMI 等无机器人示教的动作映射成本对照
+- [YMate RoboGene：FZMotion 多模态数据采集系统](../wiki/entities/ymate-robogene-data-collection.md) — 商用多工位同步采集与清洗验收入库；动作重定向及仿真策略训练属于配套 RoboMaster，公开网页未给可运行源码
+- [Nimo Robotics N1 Glove / D1 Hand](../wiki/entities/nimo-robotics-contact-intelligence.md) — 匹配运动学的专家示教与视觉/触觉/声音接触操作数据思路；数据采样率与开放性尚待官方原文证实。
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
+- [ITW-Ego Plus：真实场景按需采集模态](../wiki/entities/itw-ego-plus.md) — Sol 第一视角配 Body/Wrist/Exo/Touch/Sound 选配，按遮挡、全身运动和接触监督缺口选型；未公布完整 schema / 许可，勿把 HiPHI 规模当作 Plus 规模
 - [GenRobot DAS 2.0](../wiki/entities/genrobot-das-2-0.md) — 按任务选择头戴视觉、腕部近景和手部触觉；先核对设备代际与实际输出字段，不把新硬件规格套到旧版 [Gen-HumanEgo](../wiki/entities/gen-human-ego-dataset.md) 公开 MCAP 数据
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
 - [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
+- [HumanCOIN：注视/肌电/脑电分层采集](../wiki/entities/paper-humancoin-human-intent-egocentric-manipulation.md) — L1 10,000 h 估计注视、L2 2,000 h 实测肌电、L3 500 h 实测脑电；按真实模态覆盖选择采集与建模方案。
 - [EgoScale](../wiki/methods/egoscale.md) · [EgoMimic](../wiki/entities/paper-ego-03-egomimic.md) — 第一视角人视频作为可缩放监督源
 - [VBot Exo2Ego Policy](../wiki/entities/paper-vbot-exo2ego-policy.md) — 双 iPhone EGO/EXO 配对 RGB-D + 单视角众包采集，区分真实视角与生成视角；尚非带机器人动作真值的示教数据
 
@@ -198,13 +203,16 @@ flowchart LR
 
 ### 推荐读什么
 - [TouchTwin：真实触觉约束的数据增广](../wiki/entities/paper-touchtwin-2611-17619.md)：同步真实触觉与 MuJoCo 物理回放，扩充有力标签的示范。
+- [RoboTryOn：人类视频合成带动作标签的灵巧机器人示范](../wiki/entities/paper-robotryon.md) — Stage 4 人视频→机器人数据的生成式路线；重点验收视频真实性、IDM 动作回放、腕部 IK 与数据成本（训练仍需本体机器人数据）。
 - [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) — 长尾与罕见物理交互的低成本合成
 - [VBot Exo2Ego Policy](../wiki/entities/paper-vbot-exo2ego-policy.md) — 第三人称操作视频经 MiniMax-H3/LoRA 生成第一视角 RGB；训练期几何退火与手–物监督，推理无需目标相机标定；使用前须验证合成接触/动作的真实性
 - [ARSTAG](../wiki/entities/paper-arstag.md) — 单图与任务指令经场景重建、专家生成和扩增产出仿真示范，归合成数据支路，不当作实机采集装置
 - [Perceptron Isaac 0.5](../wiki/entities/perceptron-isaac-05.md) — 通用视频置换 teleop 的开源等高线，本阶段最可操作的量化锚点
 - [EgoScale](../wiki/methods/egoscale.md) — 人视频预训练 + 小规模视点对齐 mid-training 的两段式配方
 - [Real2Sim 纵深](depth-real2sim.md) 与 [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 仿真侧资产供给的姊妹路线
+- [Movens-Zero / Movens-5M](../wiki/entities/paper-movens-zero.md) — Stage 4 视频→机器人动作的规模化数据实例：15M 人类序列经修复、G1 重定向、闭环跟踪筛选为论文报告的 5M 可执行轨迹；分清 HF 预览与全量 tar shards 及 `other` 许可
 - [PHUMA](../wiki/entities/dataset-bfm-phuma.md) 与 [动作重定向纵深](depth-motion-retargeting.md) — 人 → 本体折算的物理可靠性侧
+- [BeyondRetarget Plus（单目人体视频 → 多机运动数据）](../wiki/entities/paper-beyondretarget-monocular-humanoid.md#beyondretarget-plus2026-11-22-扩展) — Stage 4 海量离线人视频折算：移动相机/世界轨迹 + C-RC1，须量化失败片段与许可证
 - [SoftMimicGen](../wiki/entities/paper-softmimicgen.md) — 少量遥操作示范 + 子任务标注 + 自动轨迹生成，批量合成毛巾 / 绳索 / 毛绒玩具等可变形物体操作数据（ICRA 2026）
 
 ### 学完输出什么

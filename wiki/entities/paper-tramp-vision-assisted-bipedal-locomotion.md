@@ -2,7 +2,9 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, depth, amp, motion-prior, mixture-of-experts, single-stage-rl, sim2real, sjtu, ieee-ral]
 status: complete
-updated: 2026-09-18
+updated: 2026-11-22
+original:
+  - ../../sources/papers/tramp_vision_assisted_bipedal_locomotion_ieee_lra_2026.md
 doi: "10.1109/LRA.2026.3707326"
 venue: "IEEE RA-L 2026"
 related:
@@ -183,7 +185,20 @@ flowchart TB
 - **截至入库日未开源**；选型时按 IEEE RA-L + ResearchGate 全文评估，勿假设有官方复现仓。
 - 与 [T-GMP](./paper-motion-cerebellum-t-gmp.md) 并列阅读可看清「生成式地形流形」vs「判别式双示范先验」两条路。
 
-## 与其他页面的关系
+## 与其他工作对比
+
+> 说明：因 IEEE RA-L / ResearchGate 原文 PDF 受付费墙与 Cloudflare 验证限制尚未通读，下表仅依据已核查的论文摘要、Crossref 引用脉络及知识库已有实体的结构定位差异进行对比，**不含**未核实的定量实验数值。
+
+| 对照方法 | 训练阶段与感知管线 | 地形调度与风格先验机制 | 与 TRAMP 的定位差异 |
+|------|------|------|------|
+| **TRAMP（本文）** | 单阶段 RL；机载本体 + 低成本深度 → 层次特征提取 | **MoE actor** + 平地/楼梯双示范 **地形相关 AMP** | 把深度感知、地形行为分工与风格先验压进单条 RL 链，不显式重建高程图 |
+| [MoRE](./paper-amp-survey-08-more.md) | 两阶段（先深度 base，再叠 AMP + MoE） | Gait command + 多判别器 AMP + 残差专家 MoE | 多阶段与多判别器提供显式步态切换能力，但训练与管线维护复杂度高于 TRAMP 单阶段方案 |
+| [DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) | 多阶段：深度→高程重建模块 + 多教师蒸馏 | 显式高程图中间表示 | TRAMP 跳过显式高程重建与多教师蒸馏，直接由层次特征提取器输出动力学与地形潜表示 |
+| [T-GMP](./paper-motion-cerebellum-t-gmp.md) | 生成式先验驱动多地形控制 | CVAE 生成式多地形运动流形 | 与 TRAMP 的判别式「平地/楼梯示范 + 地形相关 AMP」形成生成式 vs 判别式两条先验路线 |
+| [CReF](./paper-cref.md) | 单阶段视觉感知 locomotion | 深度交叉注意力机制 | 同为单阶段深度路线，TRAMP 额外结合层次潜特征、MoE 门控调制与 AMP 风格约束 |
+| [CMoE](./paper-cmoe.md) / [ParkourFormer](./paper-parkourformer.md) | 地形感知 MoE / 未来步先验控制 | 对比学习防 MoE 塌缩 / 未来步 AMP 监督 | CMoE 侧重对比学习防专家塌缩与 gait/terrain 分支；ParkourFormer 侧重未来步 AMP 监督；TRAMP 主打层次特征 → MoE + 双地形 AMP 联合训练 |
+
+## 关联页面
 
 - 任务索引：[楼梯/障碍感知 locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)、[Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - 方法：[AMP 奖励](../methods/amp-reward.md)、[强化学习](../methods/reinforcement-learning.md)

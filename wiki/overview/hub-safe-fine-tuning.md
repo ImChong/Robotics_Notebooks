@@ -2,7 +2,11 @@
 type: overview
 tags: [hub, hub-safe-fine-tuning, safe-rl, cbf, lora, deployment]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
+original: ../../sources/papers/slowrl_arxiv_2603_17092.md
+sources:
+  - ../../sources/papers/slowrl_arxiv_2603_17092.md
+  - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
 summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适配，低秩残差（SLowRL）、CBF/CLF 安全壳与生成式兜底，避免训练期硬件损伤。"
 ---
 
@@ -30,7 +34,7 @@ summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适
 - **V23 知识链主线**：SLowRL、Heracles 等给出可复现工程谱系。
 - **与 WBC/CBF 交叉**：安全壳可在策略外或策略内实现。
 
-## 本知识链覆盖什么
+## 核心原理与知识链覆盖
 
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
@@ -46,6 +50,14 @@ summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适
 - **[WBC](./hub-wbc.md)**：CBF/CLF 常作为执行层安全壳。
 - **[IL/RL](./hub-learning.md)**：在线 RL 与离线 IL 的边界。
 
+## 工程实践
+
+- **真机在线微调选型准则**：已有良好基线策略做精细化标定时优先采用 SLowRL 类低秩残差以压低参数空间风险；面对突发外扰与动态障碍时耦合 CBF/ISSf-CBF 过滤层；无法改动底层权重时用外置停机/护摔策略隔离危险。
+
+## 局限与风险
+
+- 在线微调若未配合安全状态机与硬件功率封顶，局部异常数据仍可能将策略拉偏。
+
 ## 关联页面
 
 - [Safety Filter](../concepts/safety-filter.md)
@@ -58,3 +70,8 @@ summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适
 - 本库归纳自 [Safe Real-World RL Fine-Tuning](../concepts/safe-real-world-rl-fine-tuning.md) 及 CBF/SLowRL 系列页
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`safe-fine-tuning` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[SLowRL：运动控制的安全低秩自适应 RL（arXiv:2603.17092）](../../sources/papers/slowrl_arxiv_2603_17092.md)、[PAC-MAN：感知感知 CBF-RL 全身安全（arXiv:2607.28623）](../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md)、[最优控制理论](../../sources/papers/optimal_control_theory.md)
+
+## 推荐继续阅读
+
+- [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — 低秩安全自适应实机微调
+- [SafeWBC](../entities/paper-motion-cerebellum-safewbc.md) — 面向有界扰动的 ISSf-CBF 全身安全控制

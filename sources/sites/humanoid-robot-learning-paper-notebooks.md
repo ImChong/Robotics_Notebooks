@@ -8,6 +8,8 @@
 - **关联仓库：** https://github.com/ImChong/Robot_Learning_Paper_Notebooks（公开，BSD-3-Clause）
 - **阅读进度：** https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json
 - **入库日期：** 2026-08-03
+- **通读：** 已完成
+- **核对范围：** 已获取并通读上游 `ImChong/Robot_Learning_Paper_Notebooks` `index.html` 全量目录及第 11 类 Simulation Benchmark 最新 32 篇论文条目
 - **更名日期：** 2026-08-28（GitHub / Pages：`Humanoid_Robot_Learning_Paper_Notebooks` → `Robot_Learning_Paper_Notebooks`）
 - **一句话说明：** 姊妹站点，把人形机器人学习方向的论文按 14 个分类整理成逐篇深读笔记（Jekyll 静态站），是本库 `wiki/overview/paper-notebook-category-*` 分类页与 `wiki/entities/paper-notebook-*` 实体页的上游原始资料。
 

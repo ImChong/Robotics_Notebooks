@@ -2,7 +2,7 @@
 type: comparison
 tags: [path-planning, navigation, local-planning, motion-planning, mobile-robot, comparison, engineering-selection]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-22
 related:
   - ./robot-path-planning-five-paradigms-taxonomy.md
   - ../methods/a-star.md
@@ -97,6 +97,6 @@ summary: "移动机器人分层导航规划选型：全局 A* 搜折线、局部
 - [Navigation2](../entities/navigation2.md) — 三层落地的默认工程框架（planner_server + DWB + 平滑插件）
 - [PythonRobotics](../entities/python-robotics.md) — 三层算法的教学级动画实现入口
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — A\* + DWA 分层导航所属的课程主线
-- [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL；相对 DWA 的学习型局部社交对照（代码待发布）
+- [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL；相对 DWA 的学习型局部社交对照（MIT 源码已开源；USD 场景与权重未随仓）
 - [路径规划五大范式](./robot-path-planning-five-paradigms-taxonomy.md) — 图搜索/采样/APF/MPC/AI 五条路线总览；本页三层栈是其工程子集
 - [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 越野学习 costmap + A\* LRP；局部 MPPI，不替代本页三层分工

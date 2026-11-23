@@ -11,6 +11,8 @@
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；正文约 1.58 万字 / 30 图；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始落盘：** [wechat_shenlan_robot_control_eight_paradigms_2026-07-18.md](../raw/wechat_shenlan_robot_control_eight_paradigms_2026-07-18.md)
 - **一句话说明：** 从分层闭环架构出发，将控制算法层划分为经典线性反馈、非线性动力学、鲁棒、自适应、位置/力混合、滚动优化/ILC、机器学习驱动与强化学习八类，并逐类给出代表算法原理、术语与工程融合示例。
+- **通读：** 已完成
+- **核对范围：** 已通读原始落盘长文 sources/raw/wechat_shenlan_robot_control_eight_paradigms_2026-07-18.md 全文共 519 行（PID/LQR/CTC/SMC/H∞/MRAC/阻抗导纳/MPC/ILC/GP/RL 八大控制范式对比）
 
 ## 核心摘录（归纳，非全文）
 

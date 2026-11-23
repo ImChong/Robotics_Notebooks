@@ -2,6 +2,9 @@
 
 - **URL：** <https://github.com/lightorigins/Light-O1>
 - **组织：** lightorigins
+- **核对版本：** `main@90e0568`
+- **核对范围：** 阅读 `README.md`、`pyproject.toml`、`light_deploy/generate.py` 与 `examples/sonic/simulation.py`；核实 `light-deploy` / `light-deploy-api` / `light-deploy-server` 入口、`(frames, 138)` 20 FPS 输出与 200 Hz MuJoCo / 50 Hz GEAR-SONIC ONNX 闭环仿真入口；未在本地 CUDA 13 GPU 上执行推理。
+- **通读：** 已完成
 - **关联项目页：** [Light-O1 项目页](../sites/light-o1.md)
 - **关联微信发布：** [wechat_lightorigins_light_o1_2026-09-21](../blogs/wechat_lightorigins_light_o1_2026-09-21.md)
 

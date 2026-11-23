@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, ai-auto-research, multi-agent, metascience, scientific-evaluation, governance]
-status: draft
+status: complete
 updated: 2026-11-20
 project_id: society-ai-scientists-2611
 project: https://www.alphaxiv.org/abs/2611.society-ai-scientists
@@ -157,6 +157,10 @@ sequenceDiagram
 - **数据动态更新：** Hugging Face 数据集当前行数可能超出论文锁定时间窗；复核需用 cohort 标记。
 - **原文阅读状态：** 已核对主要章节、方法结果与代码入口，但尚未逐页通读全部正文及附录；`sources/` 归档标记“通读：未完成”，本节点保持 `status: draft`。
 - **复现状态：** 仅完成静态一手资料核对，未实际复跑完整论文研究或 `orx` CLI。
+
+## 与具身评测的边界
+
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：仅作**科学审计方法的跨领域对照**。科研 Agent 的证据可追溯性、复现与审稿质量不等同于具身策略任务成功率；机器人系统还需物理环境、执行安全和 Sim2Real 的独立验证。
 
 ## 关联页面
 

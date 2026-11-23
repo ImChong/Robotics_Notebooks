@@ -16,9 +16,14 @@ tags:
   - archon-robotics
   - perception
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2606.11092"
 code: https://github.com/OpenDriveLab/RoboNaldo
+original:
+  - ../../sources/papers/robonaldo_arxiv_2606_11092.md
+  - ../../sources/sites/opendrivelab-robonaldo.md
+  - ../../sources/repos/robonaldo.md
+  - ../../sources/repos/robonaldo-deploy.md
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/humanoid-soccer.md

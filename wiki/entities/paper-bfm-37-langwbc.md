@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2504.21738"
 venue: "2025 · arXiv"
 summary: "语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。"
@@ -16,6 +16,8 @@ sources:
   - ../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+original:
+  - ../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md
 ---
 
 # LangWBC
@@ -90,16 +92,31 @@ flowchart TD
 - 最常见的归因错误也在这里：语言调用身体不顺时，瓶颈往往在 **底层跟踪鲁棒性**，而不只是上层 token 设计——先看 WBC，再调 prompt。
 - 本页保留 survey 坐标（#37/41，2025 · arXiv）与交叉引用，方法背景见通用方法页 [vla](../methods/vla.md)；本文机制与实验以原文为准，量化指标不在本页。
 
-## 常见误区
+## 工程实践
+
+- **冻结低频 CLIP 文本特征，高频控制循环复用嵌入：** 部署时以低频运行 CLIP 文本编码器生成 512 维特征并跨控制步缓存，CVAE 学生策略在 10 Hz / 2 s 本体历史窗口下直接推理输出。
+- **教师训练先用对称损失 + 由易到难动作课程：** 在教师 RL 阶段启用关节位置/角速度对称正则与 Table IV 物理随机化，避免 CVAE 蒸馏阶段出现非对称步态或抗扰崩塌。
+
+## 常见误区或局限
 
 1. 语言/VLA 调用身体时，瓶颈往往在 **底层跟踪鲁棒性**，而非上层 token 设计 alone。
+2. **缺少视觉感知与词表覆盖规模有限（原文 §V）：** 原版仅验证数十条语言条件全身行走与上肢动作，受限于缺视觉闭环及 VAE 表达力（难覆盖大型复杂接触域随机化）。
 
 ## 实验与评测
 
-- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
-- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+- 原文通过 Table III 验证完整 CLIP+CVAE+相对跟踪目标显著优于 No-Rel 及 MLP 基线（CLIP+CVAE 隐空间插值可生成平滑过渡步态，单纯 CLIP+MLP 出现抖动），并在 G1 真机完成抗踹击及 LLM 长任务拆解演示（如先快走 4 s 再挥手 5 s）；另见后续 [ADAPT](./paper-adapt-text-driven-humanoid.md) 对照。
 
-## 与其他页面的关系
+## 与其他工作对比
+
+| 对比维度 / 工作 | LangWBC（本文） | No-Rel / CLIP+MLP（原文消融） | [ADAPT](./paper-adapt-text-driven-humanoid.md) | [LeVerb](./paper-bfm-36-leverb.md)（#36/41） |
+|---|---|---|---|---|
+| 语义到身体接口 | **CLIP 文本 + 128 维 CVAE** 直接条件端到端 WBC（10 Hz / 2s 本体历史） | 无相对跟踪目标（No-Rel）或直接 CLIP+MLP（插值易抖动） | 帧级扩散先验 + 残差动作控制 | 双系统：10 Hz 视觉-语言潜变量 + 50 Hz DAgger 底层策略 |
+| 视觉感知与任务拆解 | **无视觉闭环**；长程任务依赖外部 LLM 拆分为「文本指令:秒数」序列 | 同无视觉接口 | 文本驱动端到端人形全身控制 | 接入第一/第三人称视觉（SigLIP）与 GRL 跨模态对齐 |
+| 性能与边界对照 | Table III 显著优于 No-Rel 与 CLIP+MLP；后续 ADAPT 论文表中记其 Success 0.923 / R@1 40.9% | 隐空间平滑度与跟踪表现均弱于完整 CVAE 方案 | 同表作为后续文本控制迭代对照 | 面向视觉-语言导航与交互，G1 零样本词表泛化 |
+
+> **核对边界**：据 [bfm_awesome_langwbc_arxiv_2504_21738.md](../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md) 与本页参考文献说明，已通读 `arXiv:2504.21738v1` §III–§IV-G（实验部分以略读为主）；Success 0.923 / R@1 40.9% 口径引自站内后续页 [ADAPT](./paper-adapt-text-driven-humanoid.md) 的同表对照，且 LangWBC 无公开代码可供独立复现。
+
+## 关联页面
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

@@ -39,7 +39,9 @@ conda install pytorch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 pytorch-cuda=
 pip install numpy onnx onnxruntime mujoco pyyaml scipy pygame
 ```
 
-策略默认路径：`policy/omnicontact/model/policy.onnx`。
+模型目录为 `policy/omnicontact/model/`；官方 README 给出默认 `omnicontact_transformer.onnx`（Transformer）和 `omnicontact_mlp.onnx`（MLP）两个可选模型。`--policy` 传模型文件名；请勿将示例中的旧 `policy.onnx` 当作现行默认文件。
+
+CF-Track 的 **Isaac Lab 训练代码**已另外发布在 <https://github.com/Ingrid789/OmniContact>，与本 MuJoCo 部署仓库分开维护；核对日期：2026-11-21。
 
 ---
 
@@ -50,7 +52,7 @@ pip install numpy onnx onnxruntime mujoco pyyaml scipy pygame
 ```bash
 python deploy_omnicontact/run_skill_omnicontact.py \
   --reference-source CFgen \
-  --policy policy.onnx \
+  --policy omnicontact_transformer.onnx \
   --task carrybox \
   --init-pos 1.0 0.0 \
   --goal-pos 2.5 0.5
@@ -63,7 +65,7 @@ python deploy_omnicontact/run_skill_omnicontact.py \
 ```bash
 python deploy_omnicontact/run_skill_omnicontact.py \
   --reference-source CFgen \
-  --policy policy.onnx \
+  --policy omnicontact_transformer.onnx \
   --task-chaining carry-push \
   --init-pos 1.0 0.0 \
   --goal-pos 2.5 0.5
@@ -76,7 +78,7 @@ python deploy_omnicontact/run_skill_omnicontact.py \
 ```bash
 python deploy_omnicontact/run_skill_omnicontact.py \
   --reference-source NPZmotion \
-  --policy policy.onnx \
+  --policy omnicontact_transformer.onnx \
   --npz-dir data/relocateball/relocateball_motion_3_with_contact.npz
 ```
 
@@ -104,4 +106,5 @@ python deploy_omnicontact/run_skill_omnicontact.py \
 
 - 实体页：[OmniContact（论文）](../../wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md)
 - 数据集：[omnicontact-dataset.md](../datasets/omnicontact-dataset.md)
+- 训练：[omnicontact-training.md](./omnicontact-training.md) — CF-Track Isaac Lab 训练、回放与 ONNX 导出
 - [Sim2Real](../../wiki/concepts/sim2real.md) — sim2sim 作为迁移前验门

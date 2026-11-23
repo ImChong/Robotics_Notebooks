@@ -11,7 +11,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 summary: MimicGen：物体相对运动片段从少量示范切出并在新布局重组；论文覆盖 18 任务、50K+ 轨迹，公开数据集覆盖 12 任务、48K+ 轨迹。它提供了一条可测量的数据扩增基线，能直接比较新增轨迹是否真正提高模仿策略成功率。
 related:
 - ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md

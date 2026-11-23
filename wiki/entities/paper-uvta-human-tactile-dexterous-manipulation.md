@@ -4,7 +4,11 @@ project_id: uvta-dexterous-manipulation
 title: "UVTA：跨本体视触觉动作建模"
 tags: [paper, manipulation, dexterous-manipulation, tactile-sensing, visuo-tactile, imitation-learning, diffusion-policy, world-model, sjtu, bigai, sharpa, bit]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
+original:
+  - ../../sources/papers/uvta_arxiv_2609_34182.md
+  - ../../sources/sites/uvta.md
+  - ../../sources/repos/uni-vta-uvta.md
 arxiv: "2609.34182"
 project: "https://uni-vta.github.io/"
 code: "https://github.com/uni-vta/UVTA"
@@ -27,7 +31,9 @@ summary: "UVTA 将人类可穿戴触觉动捕与机器人遥操作轨迹映射�
 
 # UVTA：跨本体视触觉动作建模
 
-**一句话定义：** UVTA 用可穿戴人类触觉示范学习跨本体接触表征，并与机器人遥操作数据联合预测未来动作和触觉轨迹；部署时仅执行机器人动作。
+## 一句话定义
+
+UVTA 用可穿戴人类触觉示范学习跨本体接触表征，并与机器人遥操作数据联合预测未来动作和触觉轨迹；部署时仅执行机器人动作。
 
 ## 英文缩写速查
 
@@ -89,7 +95,9 @@ $$
 
 人类与机器人样本通过等概率、有放回抽样参与同一次训练，而非先人类预训练、再机器人微调。推理使用 16 个 DDIM 反向步骤得到 16-step 动作块；真机每次执行前 8 个腕/手 waypoint，再用新观测滚动更新。未来触觉预测支路仅作训练监督，不直接进入控制命令。
 
-## 数据与实现
+## 工程实践
+
+### 数据与实现
 
 | 项目 | 公开实现与复现注意 |
 |------|-------------------|
@@ -123,6 +131,8 @@ sequenceDiagram
 ```
 
 源码模块名与官方仓库 README 入口对应。部署入口可复用策略 rollout，但须适配目标机器人的接口、运动学和厂商 SDK。
+
+图依据：`uni-vta/UVTA@74f4270`，核对 `README.md` 与 `scripts/train.py`、`scripts/eval_action_quality.py`、`cet/relative_policy_rollout.py`、`cet/robot_env.py` 目录入口（未下载 482 GB 数据或实机运行）。
 
 ## 实验结果
 

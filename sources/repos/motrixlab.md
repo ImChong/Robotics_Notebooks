@@ -11,7 +11,9 @@
 - **许可：** Apache-2.0（仓库 LICENSE）
 - **语言：** Python 3.10.x + Rust（MotrixSim 后端）
 - **Stars / Forks：** ~145 / —（2026-09-13，GitHub 首页）
-- **入库日期：** 2026-09-13
+- **入库日期：** 2026-09-13（2026-11-21 `@7701fca` 复核）
+- **核对范围：** 已通读 `Motphys/MotrixLab@7701fca` `README.md`、`motrixlab/src/motrixlab/cli.py`、`motrix_rl/README.md`、`motrix_rl/src/motrix_rl/{runner.py,commands/train.py,commands/play.py}`；说明文档与统一 CLI `mxlab` 核对，未独立运行 GPU 训练或下载 Git LFS 权重
+- **通读：** 已完成
 - **一句话说明：** 基于 MotrixSim 的通用机器人 RL 训练平台：环境一次定义，SKRL / RSL-RL / 自研 FastSAC 多算法训练，支持 Sim2Sim（MuJoCo）与真机部署 CLI。
 - **开源状态：** **已开源** — `install.sh` + `uv` 工作区；`scripts/train.py` / `play.py` / `view.py` / `export_onnx.py` 可运行；内置 50+ 环境与 7 款机器人模型。
 - **平台归档：** [motphys-motrix.md](./motphys-motrix.md)

@@ -180,6 +180,7 @@ flowchart LR
 - 算一笔账：上下文长度 × 每步推理耗时 vs 控制频率要求，先确定预算再挑方法
 
 ### 推荐读什么
+- [RoboICL（GPT-6 Astra）](../wiki/entities/paper-roboicl.md) — 冻结 VLM 的一示范 TRAIN 与有界 LIVE 记忆；核对执行回执、RoboDojo 30 任务进度和每步 API/上下文预算，区别于快权重 TTT。
 - [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM 四路线对比](../wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 快权重 vs 零梯度的定性坐标系（不做性能排序）
 - [WICL / RoboScript](../wiki/entities/paper-world-in-context-learning-roboscript.md) — 仿真试演写入 Task Memory；50 项 RoboTwin 2.0 任务单示范平均 83.4%（作者报告），另有 10 任务配对消融和真机 PiPER 有限验证
 - [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md) — fast weights 把上下文扩到 8K 步，长程双臂装配报告约 +87%

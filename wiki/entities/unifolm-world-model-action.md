@@ -2,7 +2,10 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, world-model, foundation-model, imitation-learning, wam]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/unifolm-world-model-action.md
+  - ../../sources/sites/unifolm-world-model-action-github-io.md
 related:
   - ./unitree.md
   - ./unifolm-vla.md
@@ -109,6 +112,8 @@ sequenceDiagram
   T-->>C: action_horizon / exe_steps
   C->>R: 以 control_freq 下发控制
 ```
+
+图依据：`unitreerobotics/unifolm-world-model-action@3e198de`，读过 `README.md`、`scripts/run_real_eval_server.sh` 与 `unitree_deploy/scripts/robot_client.py`（`LongConnectionClient`、`ACTTemporalEnsembler`、`make_real_env`），未实际运行服务端或真机部署。
 
 **交互仿真模式**：客户端侧仅准备 `examples/world_model_interaction_prompts/`（图像 + transition + CSV），由 `run_world_model_interaction.sh` 驱动世界模型 rollout，无真机 IO。
 

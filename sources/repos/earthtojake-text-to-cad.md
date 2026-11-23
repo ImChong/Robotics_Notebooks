@@ -12,6 +12,8 @@
 - **入库日期：** 2026-06-15
 - **一句话说明：** 面向 **CAD / 机器人 / 硬件设计代理** 的 **Agent Skills** 技能库：以 **STEP 优先** 的 **build123d** 参数化建模为核心，串联 **URDF / SRDF / SDF**、本地 **CAD Viewer**、**DXF**、**G-code 切片**、**SendCutSend / Bambu Labs 打印** 与 **step.parts** 标准件检索；提供 **10 项机械基准** 与 **Codex / Claude Code / Skills CLI** 安装路径。
 - **沉淀到 wiki：** 是 → [`wiki/entities/cad-skills.md`](../../wiki/entities/cad-skills.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `earthtojake/text-to-cad` 官方 `README.md`（6,745 字节）。
 
 ## 核心摘录（据 README 与 `skills/cad/SKILL.md`）
 

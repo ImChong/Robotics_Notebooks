@@ -35,6 +35,9 @@ sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
+original:
+  - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
+  - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「为什么说 Sim2Real 不是训完之后才考虑的事？工程上如何从系统辨识做到在线适应与安全部署？」

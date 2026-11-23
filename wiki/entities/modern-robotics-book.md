@@ -3,7 +3,7 @@
 type: entity
 tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational, northwestern]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 related:
   - ../overview/modern-robotics-wechat-principles-series.md
   - ./python-robotics.md

@@ -3,7 +3,7 @@ type: entity
 tags: [evaluation, physical-ai, humanoid, infrastructure, benchmarking, foundation-model, whole-body-control, xpeng]
 status: complete
 arxiv: "2606.17574"
-updated: 2026-11-18
+updated: 2026-11-22
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-athena-wbc-humanoid-longtail.md
@@ -192,7 +192,7 @@ flowchart TB
 - [loco-manipulation](../tasks/loco-manipulation.md) — 本库内 System 2/1/0 端到端任务语境
 - [VLA](../methods/vla.md) — System 1 策略形态
 - [Whole-Body Control](../concepts/whole-body-control.md) — System 0 控制层
-- [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md) — 同机构 System 0 训练集长尾与能力对齐专家蒸馏（arXiv:2607.04837）
+- [Athena-WBC](./paper-athena-wbc-humanoid-longtail.md) — 同机构 System 0 训练集长尾与能力对齐专家蒸馏（arXiv:2607.04837；**v3 已于 2026-08-24 因实验数据集授权与治理争议被作者撤稿，定量数字勿作已定论基准**）
 - [数据飞轮](../concepts/data-flywheel.md) — 评测驱动采集闭环
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 全栈统一评测基础设施，横跨其 ① 认知 / ② 世界模型 / ③ 策略成功率各层的跨层回归定位
 

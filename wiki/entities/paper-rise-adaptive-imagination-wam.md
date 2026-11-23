@@ -11,7 +11,7 @@ tags:
   - sjtu
   - hohai
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2608.20430"
 code: https://github.com/COOWAI/RISE
 related:

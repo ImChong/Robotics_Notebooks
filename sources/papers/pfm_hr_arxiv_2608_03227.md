@@ -11,6 +11,8 @@
 - **作者：** Yukang Gao\*、Yi Gu\*、Yangchen Zhou\*、Xingyu Chen\*、Zhaorui Wang、Fanghai Zhang、Hanyang Cao、Zhengyang Shen、Ji Ma、Runhan Zhang、Lei Han、Renjing Xu†（\* equal contribution；† corresponding）
 - **机构：** 香港科技大学广州校区（HKUST-GZ）；诺亦腾机器人（Noitom Robotics）；清华大学深圳国际研究生院（SIGS, Tsinghua）；谷歌（Google）
 - **入库日期：** 2026-08-08
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `arXiv:2608.03227v4` 全文 PDF（摘要、§I–§VI、Table I–IX 与 Appendix A–D），并核查 `gaoyukang33/PFM-HR` 仓库（仍仅 `LICENSE` 与 `README.md` Coming Soon）。
 - **一句话说明：** 在大规模**无序姿态**上预训练可复用 Flow Matching 姿态先验，用 **Pose Geometry Score（PGS）** 衡量 rollout 关节变化是否对齐先验局部几何，并以此调制跟踪奖励；冻结先验可挂到 ADD / BeyondMimic，提升高动态单轨迹与通用运动跟踪样本效率。
 
 ## 开源状态（步骤 2.5）

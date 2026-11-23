@@ -13,7 +13,8 @@
   - mbed + DRV8323（Mini Cheetah 向）：https://os.mbed.com/users/benkatz/code/HKC_MiniCheetah/
   - 非 mbed / STM32CubeIDE：https://github.com/bgkatz/motorcontrol（见 [bgkatz_motorcontrol](./bgkatz_motorcontrol.md)）
 - **使用文档：** https://docs.google.com/document/d/1dzNVzblz6mqB3eZVEMyi2MtSngALHdgpTaDJIW_BpS4/edit
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 克隆核对目录结构、`LICENSE` 与 V2/V4 Eagle/Gerber PCB 产出边界）
+- **通读：** 已完成
 - **一句话说明：** Katz 模块化执行器的集成三相驱动 PCB（含磁编），对应 MIT 2018 硕士论文附录 A 的电机控制器硬件入口。
 - **开源状态：** **已开源**（硬件设计；固件分仓）
 - **关联论文：** [low_cost_modular_actuator_katz_mit_2018](../papers/low_cost_modular_actuator_katz_mit_2018.md)

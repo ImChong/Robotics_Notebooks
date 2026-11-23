@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: wam-design-empirical-study
 tags:
   - paper
   - wam
@@ -15,8 +16,10 @@ tags:
   - whu
   - zhongguancun-academy
 status: complete
-updated: 2026-09-22
+updated: 2026-11-22
 arxiv: "2609.24048"
+original:
+  - ../../sources/papers/wam_design_empirical_arxiv_2609_24048.md
 venue: arXiv 2026
 related:
   - ../concepts/world-action-models.md
@@ -202,7 +205,19 @@ flowchart TB
 6. **真机信号一致：** DROID 离线四项指标支持因果/framewise/VG 三条 simulation 结论的方向性。
 7. **选型动作：** 读系统论文时先问三轴——**动作是否读未来 route、latent 是否 inter-frame、辅助目标在第几阶段**。
 
-## 与其他页面的关系
+## 与其他工作对比
+
+| 对比维度 / 对象 | 本文受控实证发现（Fast-WAM / LDA-1B 骨干） | 相关基线配置与知识库关联研究对照 |
+|------|------|------|
+| **视频–动作因果结构（6 种）** | Route-enabled 结构在 OOD LIBERO-Plus 显著占优（Joint vs Uncond `+16.14%`，Bidirectional vs A2V `+14.93%`）；Video-Causal Global 达 `79.84%`；DROID 上 Causally Interleaved 优于 Uncond（MSE `0.0666 vs 0.0730`） | 强因果连接在 ID RoboCasa-GR1 上反而小幅下降（`-2.33% / -4.00%`）；另时间反转干预导致 OOD 骤降 `24.24–32.37%`，证明收益来自时间组织而非像素细节 |
+| **潜空间表征（8 种 / 4 族）** | **Framewise**（DINOv3、SAM3、Image-VAE）在 OOD LIBERO-Plus 与 DROID（DINOv3 vs DA3 MSE `0.0684 vs 0.0702`）上更稳健 | **Inter-frame**（DA3、VGGT-Ω、V-JEPA 2.1、Qwen3-VL(video)、Video-VAE）在 ID RoboCasa-GR1 与线性 probe 可解码性上更优，但预编码跨帧关系在视角/噪声扰动下更脆 |
+| **训练目标与日程（BC / IDM / FDM / VG）** | 分阶段 **80% BC+VG + 20% dynamics** 在 LIBERO-Plus 取得最高 **`83.15%`**；DROID 上 BC+VG 优于 BC-only（MSE `0.0697 vs 0.0769`） | ID 任务上 **BC-only** 仍是最高基线（所有辅助目标均略降）；**naive joint** 全目标在 OOD 相比 BC+VG 反而下降 `-4.04%` |
+| **[EffVLA](./paper-effvla.md) / [GlanceWAM](./paper-glancewam.md) / [DreamWAM](./paper-dreamwam.md)** | 固定骨干下做 WAM 因果 / 表征 / 目标三轴受控消融（未发布独立部署系统） | EffVLA 同样采用固定骨干受控研究，但聚焦 VLA **action-head**（decoder / loss / VLM-init / passes）与延迟权衡；GlanceWAM 解决 Fast-WAM 族推理期异步前瞻延迟；DreamWAM 探索 beyond-RGB 结构化未来预测 |
+
+## 关联页面
+
+- [RoboICL 具身上下文学习](./paper-roboicl.md) — 冻结多模态策略在执行期利用上下文，不等同训练期 WAM 世界辅助监督。
+- [VLA 纵深](../../roadmap/depth-vla.md) 与 [WAM 纵深](../../roadmap/depth-wam.md) — 对照动作预测、未来世界建模与部署架构的不同边界。
 
 - [World Action Models](../concepts/world-action-models.md) — WAM 范式总览；本文补 **受控设计原则**
 - [VLA](../methods/vla.md) — BC-only 在 ID 上相对 WAM 辅助目标的定位
@@ -212,6 +227,8 @@ flowchart TB
 - [LIBERO benchmark](./libero-benchmark.md) — LIBERO-Plus OOD 协议背景
 
 ## 参考来源
+
+- [arXiv v1 HTML（含消融与附录）](https://arxiv.org/html/2609.24048v1)
 
 - [wam_design_empirical_arxiv_2609_24048](../../sources/papers/wam_design_empirical_arxiv_2609_24048.md)
 - 论文：<https://arxiv.org/abs/2609.24048>

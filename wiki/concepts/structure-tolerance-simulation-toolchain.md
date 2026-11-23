@@ -2,10 +2,11 @@
 type: concept
 tags: [tolerance-analysis, gd-t, monte-carlo, structure-design, dimension-chain, robot-accuracy, wechat]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 related:
   - ../comparisons/pdf-engineering-drawing-pmi-ocr-vlm.md
   - ./humanoid-mechanical-layout-design.md
+  - ./robot-structural-static-stiffness-deformation-check.md
   - ./humanoid-mass-production-engineering.md
   - ./humanoid-topology-optimization-toolchain.md
   - ./joint-module-self-development-workflow.md
@@ -163,6 +164,7 @@ summary: "依据 Zane Hub 公众号随笔，把机器人结构件公差仿真梳
 - [螺纹基础](./screw-thread-basics.md) · [Mechtool 在线机械设计工具](../entities/mechtool.md)
 
 - [人形整机机械布局设计](./humanoid-mechanical-layout-design.md)：构型与基准选择的上游
+- [机器人结构静刚度与末端变形预算](./robot-structural-static-stiffness-deformation-check.md)：公差链之外还要验算受载静弹性偏差，明确 TCP 静变形预算与载荷-位移实测判据；附空心梁算例勘误。
 - [人形量产工程](./humanoid-mass-production-engineering.md)：过程能力、SPC 与量产一致性
 - [拓扑优化工具链](./humanoid-topology-optimization-toolchain.md)：同为结构岗仿真/优化工具链
 - [关节模组自研流程](./joint-module-self-development-workflow.md)：减速器、轴承、编码器集成与精度预算

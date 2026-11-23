@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-22
 related:
   - ../entities/paper-libero-dynamic.md
   - ../entities/rax-scaling-online-exploration.md
@@ -140,7 +140,7 @@ flowchart TB
 | Shape-Aware Neural Time Fields | [paper-shape-aware-neural-time-fields](../entities/paper-shape-aware-neural-time-fields.md) | 已开源 |
 | SpaRV | [paper-sparv](../entities/paper-sparv.md) | 已开源 |
 | Fourier Transmission Error Compensation | [paper-fourier-transmission-error-compensation](../entities/paper-fourier-transmission-error-compensation.md) | 项目页未列 GitHub |
-| Gearbox Lubricant Temperature Observer | [paper-gearbox-lubricant-temperature-observer](../entities/paper-gearbox-lubricant-temperature-observer.md) | 项目页未列 GitHub |
+| Gearbox Lubricant Temperature Observer | [paper-gearbox-lubricant-temperature-observer](../entities/paper-gearbox-lubricant-temperature-observer.md) | 仅数据集开源（DOI `10.18419/DARUS-5015`；观测器代码未发布） |
 | Multi-Robot Authoring | [paper-multi-robot-authoring](../entities/paper-multi-robot-authoring.md) | 项目页未列 GitHub |
 
 ### 人形与腿足控制（5 篇）
@@ -164,7 +164,7 @@ flowchart TB
 
 ## 局限
 
-- 本页除 LIBERO-Dynamic 外的数字均为公众号转述，未核验原文表格（见上文「为什么单独做这张地图」）。
+- 本页除 LIBERO-Dynamic 与后续已补全文精读的 Gearbox（`arXiv:2610.23881v1`：Nabtesco RH380-N 台架、Luenberger/Kalman 观测器 MAE ~1.3 K）外，其余数字均为公众号转述，未核验原文表格（见上文「为什么单独做这张地图」）。
 - LIBERO-Dynamic 自述局限：轨迹为规定轨迹、延迟为固定标定，未覆盖延迟抖动与复杂随机运动；训练与评测共享任务、路径与速度，衡量的是条件匹配适配而非泛化；最佳时域来自有限扫描；真机仅有限任务、单平台。
 - 56 篇是单期公众号的选择，不代表领域完整覆盖。
 

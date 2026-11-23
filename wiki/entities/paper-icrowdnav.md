@@ -18,9 +18,10 @@ tags:
   - peng-cheng-lab
   - reconova
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2606.26047"
 doi: "10.1109/LRA.2026.3677748"
+code: https://github.com/BRoln7/icrowdnav
 related:
   - ../methods/dwa.md
   - ../methods/ppo.md
@@ -35,11 +36,13 @@ related:
   - ./paper-humembr.md
   - ./paper-commnav.md
   - ../../roadmap/depth-navigation.md
+original:
+  - ../../sources/papers/icrowdnav_arxiv_2606_26047.md
 sources:
   - ../../sources/papers/icrowdnav_arxiv_2606_26047.md
   - ../../sources/repos/icrowdnav.md
   - ../../sources/sites/broln7-socialbev-io.md
-summary: "iCrowdNav（arXiv:2606.26047，RA-L 2026）：从 RGB-D 学 intention-aware 场景表征——时空 BEV 占据 + I²Former 姿态意图，PPO 训人群导航；SocNav-Gym 优于 DRL-VO/SARL*/ViNT/DWA，真机零样本；代码仓待发布。"
+summary: "iCrowdNav（arXiv:2606.26047，RA-L 2026）：从 RGB-D 学 intention-aware 场景表征——时空 BEV 占据 + I²Former 姿态意图，PPO 训人群导航；SocNav-Gym 优于 DRL-VO/SARL*/ViNT/DWA，真机零样本；官方 ROS Noetic + SB3 源码（MIT）已开源（不含 Nucleus USD 与权重）。"
 ---
 
 # iCrowdNav（意图感知场景表征的视觉人群导航）
@@ -69,7 +72,7 @@ summary: "iCrowdNav（arXiv:2606.26047，RA-L 2026）：从 RGB-D 学 intention-
 - **表征优先于手调社交奖励：** 奖励只保留到达、碰撞、近距惩罚、进度与角速度平滑；作者主张意图已由 I²Former 隐式编码，避免复杂 proxemics 奖励调参。
 - **狭窄 + 高密度更有区分度：** 仓库 2.5 m、密度 0.2 ped/m² 等设定下，相对 ViNT / DWA 的 SR 与 TPZ 差距拉开；长程拓扑导航（>20 m）同样保持领先。
 - **真机零样本证据链：** 商场单次 **109.49 m**、均速 **0.76 m/s**，板载 RTX 2060 **~15 Hz**——对 [Sim2Real](../concepts/sim2real.md) 视觉导航选型有参考价值。
-- **开源边界需清醒：** 官方仓截至入库日仍是 **Release codes TODO**；可读方法与附录，不可当可跑栈。
+- **代码已于 2026-09 开源（MIT）：** 可直接研读与运行训练/推理脚本（`policy_train.py` / `policy_inference.py`），但原始 Nucleus USD 场景与预训练权重未随仓分发。
 
 ## 核心信息
 
@@ -79,7 +82,7 @@ summary: "iCrowdNav（arXiv:2606.26047，RA-L 2026）：从 RGB-D 学 intention-
 | 发表 | IEEE RA-L 2026，11(5):6186–6193；doi:[10.1109/LRA.2026.3677748](https://doi.org/10.1109/LRA.2026.3677748) |
 | arXiv | [2606.26047](https://arxiv.org/abs/2606.26047) |
 | 项目页 | <https://broln7.github.io/socialbev.io/> |
-| 代码 | <https://github.com/BRoln7/icrowdnav> — **待发布**（README TODO，截至 2026-07-28） |
+| 代码 | <https://github.com/BRoln7/icrowdnav> — **已开源（MIT，322 files）**；Nucleus USD 场景与预训练权重未包含 |
 | 平台 | Clearpath Dingo；双 Intel RealSense D435；仿真 Isaac Sim + SocNav-Gym |
 | 训练 | PPO；ResNet-18 / 时序 BEV 骨干 nuScenes 预训练后 **冻结**；其余端到端 |
 | 主要基线 | DRL-VO、SARL\*-OM、ViNT、DWA；消融 w/o I²、w/o BEV |
@@ -129,18 +132,42 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**：截至 **2026-07-28**，官方仓 [BRoln7/icrowdnav](https://github.com/BRoln7/icrowdnav) 仅含 README、演示 GIF 与 `icrowdnav_appendix.pdf`；README 明确 **TODO: Release codes of iCrowdNav**，无可对齐的 `train` / `eval` / 部署入口。项目页与徽章宣称的 Isaac Sim 4.0 / stable-baselines3 / ROS 1 栈 **待代码发布后** 再补本图与复现路径。
+训练入口：`rosrun drl_policy policy_train.py`（或经 `launch/drl_training.launch` 启动）；推理入口：`rosrun drl_policy policy_inference.py --checkpoint ...`。两者通过 `gymnasium` 注册的 `"social-bev-v0"` 环境（`SocBevEnv`）与 `ROS` 话题桥接 `Isaac Sim / Pegasus` 或真机传感器。
+
+```mermaid
+sequenceDiagram
+    participant Launch as drl_training/eval.launch
+    participant Script as policy_train.py / policy_inference.py
+    participant Env as SocBevEnv ("social-bev-v0")
+    participant Ext as BEVPerception (features_extractor)
+    participant SB3 as stable_baselines3.PPO
+    participant Sim as Isaac Sim + ROS (warehouse_ros / Astar)
+
+    Launch->>Script: 启动参数与 default.yaml / warehouse.yaml
+    Script->>Env: gym.make("social-bev-v0", social_mode)
+    Env->>Sim: 订阅双视角 RGB-D、人体 3D 姿态与机器人状态
+    Script->>SB3: PPO("MultiInputPolicy", env, features_extractor_class=BEVPerception)
+    loop 训练 / 推理步进
+        Env-->>Ext: 观测字典 (双路图像/深度 + 姿态 + 状态)
+        Ext-->>SB3: BEV + I²Former 融合特征 (features_dim=256)
+        SB3->>Env: step(action) -> 速度指令 (v, w)
+        Env->>Sim: 发布控制并计算 reward.py (碰撞/进度/角速度惩罚)
+    end
+    SB3-->>Script: 保存 checkpoint 至 ~/drl_logdir/policy_training/
+```
+
+图依据：`BRoln7/icrowdnav`（`MIT`，`pushed_at: 2026-09-17`）`icrowdnav/src/drl_policy/policy_train.py`、`policy_inference.py`、`socbev_gym/envs/soc_bev_env.py`、`bev_perception/bev_perception.py`。
 
 ## 工程实践
 
-| 项 | 建议 / 论文设定 |
-|----|----------------|
-| 仿真入口 | SocNav-Gym（大厅 / 转角 / 杂乱区 / 开放密集人群）；行人 SFM + Isaac 动画 |
+| 项 | 建议 / 论文与源码设定 |
+|----|----------------------|
+| 仿真与环境入口 | `gym.make("social-bev-v0")` → `SocBevEnv`；仓内含 Pegasus + 仓库 ROS 配置（Nucleus 商业 USD 场景需自备替换） |
 | 感知链路 | 双 RealSense D435；深度范围 [0.3, 10] m；姿态用 Ultralytics YOLO |
-| 训练技巧 | RGB 骨干与时序编码器 **冻结**；仅训 BEV 下游、I²Former、融合与策略 |
-| 长程部署 | 局部 DRL 策略 + **广义 Voronoi 拓扑图** 路点，勿指望单策略跨楼层全局规划 |
+| 训练技巧 | RGB 骨干与时序编码器 **冻结**；`BEVPerception` 作为 `features_extractor_class` 接入 `PPO("MultiInputPolicy")` |
+| 长程部署 | 局部 DRL 策略 + **广义 Voronoi / `scene/Astar/`** 全局路点，勿指望单策略跨楼层全局规划 |
 | 真机算力 | 板载 RTX 2060 → **~15 Hz**；商场长程约 **0.76 m/s** |
-| 复现现状 | **代码未发布**；仅能作方法选型与对照，见 [仓库归档](../../sources/repos/icrowdnav.md) |
+| 复现现状 | **源码已开源（MIT）**，但仓内明确声明预训练权重与原始 Nucleus USD 场景未包含，复现需自训 `policy_train.py` |
 | 与经典栈关系 | 不替代 Nav2 全局层；更接近「学习型局部社交控制器」，对照 [DWA](../methods/dwa.md) / [分层规划选型](../comparisons/mobile-robot-navigation-planning-methods.md) |
 
 ## 实验与评测
@@ -163,11 +190,11 @@ flowchart TB
 3. **奖励可以简单** — 若表征已含意图，不必先卷复杂 proxemics 手调项；调参精力应放在姿态质量与 FoV。
 4. **长程靠拓扑外挂** — 局部策略 + Voronoi 路点，不是端到端跨楼导航；与 Nav2 全局层可分层共存。
 5. **真机零样本有条件** — 依赖可靠深度与姿态；作者自述超密遮挡与有限 FoV 仍是瓶颈。
-6. **选型边界** — 相对 [SRU](./paper-sru-spatially-enhanced-recurrent-memory.md)（长程空间记忆）与 [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md)（image-goal WAM），本文专攻 **社交意图 + 拥挤通道**；代码未开源前只作对照。
+6. **选型边界** — 相对 [SRU](./paper-sru-spatially-enhanced-recurrent-memory.md)（长程空间记忆）与 [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md)（image-goal WAM），本文专攻 **社交意图 + 拥挤通道**；官方 MIT 源码已开放 `SocBevEnv` 与 PPO 训练流，可直接对照审阅。
 
 ## 局限与风险
 
-- **代码待发布：** 无法复现训练曲线或核对超参；徽章栈仅作意向声明。
+- **场景资产与权重缺口：** 官方仓（MIT）虽已开放代码，但因 Omniverse 分发调整不含论文原始 Nucleus USD 场景，且未附预训练 `.zip` 权重，复现需自备替代场景与重训。
 - **姿态依赖：** YOLO + 深度抬升在遮挡、逆光、远距下会退化；零填充不能凭空恢复被挡行人。
 - **FoV 与盲区：** egocentric 相机无法覆盖侧后；商场盲角突发需快速反应，仍有碰撞风险。
 - **仿真行人模型：** SFM + 动画 ≠ 真实非合作人群多样性；真机已展示但未给大规模统计表。
@@ -183,10 +210,10 @@ flowchart TB
 | **正负示范社交导航** | 见 [笔记实体](./paper-notebook-learning-social-navigation-from-positive-and-neg.md) | 密度奖励 + 规则 | 另路线 |
 | **SRU** | 单前向深度 | 长程空间记忆，非姿态意图 | 已开源 / [SRU-Odin](./sru-odin.md) |
 | **NavWAM** | image-goal + 视频 WM | 未来观测–动作联合，非人群社交 | 代码 Coming soon |
-| **iCrowdNav（本文）** | RGB-D + 3D 姿态 | **BEV + I²Former** | **仓占位，代码待发布** |
+| **iCrowdNav（本文）** | RGB-D + 3D 姿态 | **BEV + I²Former** | **MIT 源码已开源（缺权重/Nucleus 场景）** |
 | **SPLC** | 关节状态（机器人中心） | **自动社交偏好准则 → Offline RL 奖励** | 仓占位 coming soon；见 [SPLC](./paper-splc.md) |
 | **HUMEMBR** | 字幕记忆 + 脸/ReID 身份库 | **多日例行预测找人**（非拥挤绕行） | 代码已开源；见 [HUMEMBR](./paper-humembr.md) |
-| **CommNav** | 深度 + 人体检测 + 路人线索 | **主动问路 → COMM 目标估计** | 仓占位待发布；见 [CommNav](./paper-commnav.md) |
+| **CommNav** | 深度 + 人体检测 + 路人线索 | **主动问路 → COMM 目标估计** | **MIT 源码与权重已开源**；见 [CommNav](./paper-commnav.md) |
 
 ## 关联页面
 
@@ -215,6 +242,6 @@ flowchart TB
 
 - Bao et al., *Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations* — [arXiv:2606.26047](https://arxiv.org/abs/2606.26047)
 - [项目页与演示](https://broln7.github.io/socialbev.io/)
-- [GitHub 占位仓（跟进代码发布）](https://github.com/BRoln7/icrowdnav)
+- [BRoln7/icrowdnav（官方 MIT 源码仓）](https://github.com/BRoln7/icrowdnav)
 - Xie & Dames, *DRL-VO* — IEEE T-RO 2023（文中主对比 DRL 基线）
 - Shah et al., *ViNT* — CoRL 2023（视觉导航基础模型基线）

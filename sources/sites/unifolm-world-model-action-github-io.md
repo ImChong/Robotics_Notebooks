@@ -8,6 +8,8 @@
 - **数据集：** <https://huggingface.co/unitreerobotics/datasets>
 - **机构：** 宇树科技（Unitree）
 - **入库日期：** 2026-09-10
+- **核对范围：** 2026-11-21 抓取并通读项目页 `<https://unigen-x.github.io/unifolm-world-model-action.github.io/>` 英文与中文全文（摘要说明、Open-X 视频生成微调、Decision-Making / Simulation 双模式架构、动作可控生成与长程交互生成说明）。
+- **通读：** 已完成
 
 ## 一句话摘要
 

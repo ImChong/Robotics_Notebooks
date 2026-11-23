@@ -8,6 +8,8 @@
 - **论文：** KungfuBot（NeurIPS 2025，arXiv:[2506.12851](https://arxiv.org/abs/2506.12851)）；KungfuBot 2 / VMS（ICRA 2026，arXiv:[2509.16638](https://arxiv.org/abs/2509.16638)）
 - **机构：** 中国电信人工智能（TeleAI）、上海交通大学（SJTU）、华东理工大学（ECUST）、哈尔滨工业大学（HIT）、上海科技大学（ShanghaiTech）
 - **收录日期：** 2026-07-09
+- **通读：** 已完成
+- **核对范围：** 通读 `TeleHuman/PBHC` 官方 `README.md`（8,521 字节）。
 
 ## 一句话摘要
 

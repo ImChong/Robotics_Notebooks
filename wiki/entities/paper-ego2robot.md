@@ -5,7 +5,7 @@ project: https://www-ye.github.io/ego2robot_blog/
 code: https://github.com/www-Ye/ego2robot_blog
 tags: [paper, robot-data, egocentric, vla, synthesis, ruc, alibaba, shanghaitech, bigai, buaa]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-23
 arxiv: "2608.02580"
 related:
   - ../methods/vla.md
@@ -142,6 +142,8 @@ sequenceDiagram
 
 ## 与其他工作对比
 
+与 [E2S2H](./paper-ego2sim2humanoid.md) 不同，Ego2Robot 的强项是多本体大规模预训练合成；E2S2H 针对 G1 重建碰撞与物体接触，并筛选可执行的全身物理轨迹。论文数据规模和真机任务口径不同，不能以单一成功率横比。
+
 相对 [EgoScale](../methods/egoscale.md)：EgoScale 在人视频上预训练再 mid-train 对齐；Ego2Robot 先把人视频 **渲染成机器人像素+动作** 再共训。相对 RoviAug / Mirage：那些补的是机–机外观，这里跨的是人–机。相对 [RoboEdit](./paper-roboedit.md)：RoboEdit 输出 **full robot interaction video + 3D hand states**（RoboEdit-14M），Ego2Robot 输出 **相机系相对 EEF 轨迹** 供 VLA 预训练。相对 [RoboTwin](./robotwin.md)：本文扩展其评测轴，不是替代数据生成器。
 
 ## 结论
@@ -168,6 +170,7 @@ sequenceDiagram
 
 - [VLA](../methods/vla.md)
 - [EgoScale](../methods/egoscale.md) — 人视频规模化的另一条对齐路径
+- [E2S2H：人类第一视角 → 物理验证的人形 VLA 数据](./paper-ego2sim2humanoid.md) — 逐条场景重建 + 接触带/站姿优化 + RL 物理筛选，与本页相机系 EEF 合成预训练不同。
 - [KODA](./paper-koda-egocentric-vla.md) — 跨控制器对齐人类第一视角示范的人形 VLA 数据
 - [WiLoR](../methods/wilor.md) — Path B 手估计
 - [RoboTwin 2.0](./robotwin.md) — 解耦评测宿主

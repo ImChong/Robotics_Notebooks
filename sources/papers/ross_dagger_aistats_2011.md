@@ -9,6 +9,9 @@
 - **链接：** <https://proceedings.mlr.press/v15/ross11a.html>
 - **PDF：** <http://proceedings.mlr.press/v15/ross11a/ross11a.pdf>
 - **入库日期：** 2026-09-21
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `arXiv:1011.0686`（AISTATS 2011 PMLR v15，pdftotext 1008 行）全文：Abstract、§1–§5（BC covariate shift、DAgger 算法与在线 no-regret reduction 证明、$\mathcal{O}(\epsilon H)$ vs $\mathcal{O}(\epsilon H^2)$ 误差界分析、Super Tux Kart / 3D Doom / 序列标注实验）与 Appendix 证明。
+- **通读：** 已完成
 - **一句话说明：** 提出 **DAgger（Dataset Aggregation）**：把模仿学习与结构化预测归约到 **no-regret 在线学习**，训练 **平稳确定性策略**，在策略诱导分布上聚合专家标注，系统性缓解 BC 的 covariate shift 与 compounding error。
 
 ---

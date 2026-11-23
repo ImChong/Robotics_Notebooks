@@ -1,16 +1,21 @@
 ---
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+status: complete
+updated: 2026-11-21
+code: https://github.com/sharinka0715/X-WAM
+project: https://sharinka0715.github.io/X-WAM/
+original:
+  - ../../sources/repos/x-wam.md
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md
+  - ./paper-rcl-2604-26694-unified-4d-world-action-modeling-from-video-prio.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/x-wam.md
-summary: "小米集团 开源项目 X-WAM（世界模型）：模型联合学习视频世界变化与机器人动作，在共享表征中支持跨本体操作和未来预测；项目用于检查世界模型输出怎样与动作头连接。…"
+summary: "小米集团开源项目 X-WAM（sharinka0715/X-WAM）：基于 Wan2.2-TI2V-5B 的统一 4D 世界-动作模型，通过轻量深度适配分支与异步噪声采样联合生成未来 RGB-D 视频与关节动作。"
 institutions:
   - xiaomi-robotics
 ---
@@ -38,22 +43,32 @@ institutions:
 
 ## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 小米集团 |
-| 类别 | 世界模型 |
-| 官方组织 | https://github.com/XiaomiRobotics、https://github.com/sharinka0715 |
+`X-WAM`（Unified 4D World-Action Modeling，`arXiv:2604.26694`，仓库 `sharinka0715/X-WAM`）在预训练视频扩散主干 `Wan2.2-TI2V-5B` 上以**单阶段端到端联合去噪**同时建模未来 RGB 视频、未来深度图（4D 几何表征）与机器人关节动作轨迹。
+
+```mermaid
+flowchart TB
+  Obs["当前视角观测 I_0 + 深度 D_0 + 文本指令 + 机器人状态"] --> Tok["Wan2.2 VAE / UMT5-XXL 编码"]
+  Tok --> RGB["RGB Latent Branch (Wan2.2-TI2V-5B)"]
+  Tok --> Dep["Depth Branch (LDA 轻量深度适配 + 交错自注意力)"]
+  RGB <--> Dep
+  RGB --> Async["Asynchronous Noise Sampling (视频 K_v=50 步 vs 动作 K_a=10 步)"]
+  Async --> Act["Action Branch (DiT Action Expert / MLP Head)"]
+  Act --> Out["预测 4D 未来帧 (RGB+Depth) + 连续动作块"]
+```
+
+- **轻量深度适配（LDA, Lightweight Depth Adaptation）**：保留预训练 RGB 分支权重的跨通道对齐，在相邻层之间插入交错式自注意力与轻量深度通路，避免从头训练破坏先验视频生成质量。
+- **异步噪声采样（Asynchronous Noise Sampling）**：为动作序列单独分配独立且更密/更快的扩散时间步调度（默认视频 50 步、动作 10 步），在单主干联合优化下兼顾视频预测质量与高频动作控制延迟。
 
 ## 工程实践
 
-1. 从官方 GitHub/Gitee 组织检索 `X-WAM` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+- **训练入口**：`scripts/train_sft.py` 通过 PyTorch Lightning + DeepSpeed 调度 `UnifiedWorldModel`（默认 `Wan2.2-TI2V-5B`，`bf16-mixed` 精度），支持 `robotwin` 与 `robocasa` 两套配置文件（`configs/`）。
+- **推理与异步评估**：`evaluation/` 采用 `policy_server.py`（模型加载与推理）+ `policy_broker.py`（请求分发）+ `robocasa_client.py` / RoboTwin 客户端架构，隔离仿真环境依赖与 GPU 推理节点。
+- **预训练权重与评测基准**：官方 Hugging Face `sharinka0715/X-WAM-checkpoints` 提供微调权重；论文报告 RoboCasaGR1Tabletop 24 任务平均成功率 **79.2%**，RoboTwin 2.0 清洁/随机化设定分别为 **89.8% / 90.7%**。
 
 ## 局限与风险
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+- **长时程物理一致性依赖视频先验**：闭环高频干扰下若视频分支预测偏移，跨模态注意力仍可能将伪影传导至动作预测；此外全量 5B DiT 训练与推理依赖多卡 A100/H100 级显存。
+- **真机与仓库范围边界**：当前仓内主要提供 RoboTwin 2.0 / RoboCasa 仿真训练与评测脚本及对应 checkpoints，跨本体真机硬件控制驱动需按本体适配，并应结合 [X-WAM 论文页](./paper-rcl-2604-26694-unified-4d-world-action-modeling-from-video-prio.md) 核对最新消融数据。
 
 ## 源码运行时序图
 
@@ -96,13 +111,19 @@ sequenceDiagram
 
 ## 关联页面
 
+- [X-WAM 论文页（Unified 4D World-Action Modeling）](./paper-rcl-2604-26694-unified-4d-world-action-modeling-from-video-prio.md)
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
 ## 参考来源
 
-- [X-WAM 源码归档](../../sources/repos/x-wam.md)（<https://github.com/sharinka0715/X-WAM>）
+- [X-WAM 源码归档](../../sources/repos/x-wam.md)（`sharinka0715/X-WAM@72cfb86`，<https://github.com/sharinka0715/X-WAM>）
+
+## 推荐继续阅读
+
+- <https://github.com/sharinka0715/X-WAM>
+- <https://sharinka0715.github.io/X-WAM/>
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 - 源码核对（2026-11-02）：sharinka0715/X-WAM@72cfb86，读过 README.md、evaluation/README.md（前 80 行）、evaluation/policy_broker.py、evaluation/policy_server.py、evaluation/robocasa_client.py；时序图依据以上文件，未运行代码。

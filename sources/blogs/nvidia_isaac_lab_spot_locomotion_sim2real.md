@@ -9,6 +9,9 @@
 - **入库日期：** 2026-08-30
 - **一句话说明：** **Spot RL Researcher Kit**（关节级 API + Jetson AGX Orin 载荷）配合 Isaac Lab **`Isaac-Velocity-Flat-Spot-v0`**，用 **RSL-rl PPO** 训平地速度跟踪，经 **ONNX + Spot Python SDK** 在真机 **零样本** 部署，PS4 手柄发速度指令。
 
+- **通读：** 已完成
+- **核对范围：** 已通读 NVIDIA Developer 官方博文全文（68,974 字符）及 `boston-dynamics/spot-rl-example` README。
+
 ## 开源与项目页核查（步骤 2.5）
 
 | 组件 | 开放程度 | 说明 |

@@ -13,6 +13,8 @@
 - **配套综述：** [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487)（IEEE TPAMI 2025）
 - **关联姊妹篇：** [42 篇 humanoid RL 运动控制「身体系统栈」](wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)、[19 篇 AMP 运动先验专题](wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - **一句话说明：** 按 **五个问题**（forward-backward 表征、goal-conditioned 覆盖面、intrinsic reward 预训练、adaptation、层次化控制）串读 awesome-bfm-papers 所列 **41 篇** BFM 相关论文；核心判断：BFM 把人形运控从「单技能训练」推向 **可复用、可适配、可调用的身体接口**；智元公开 **BFM-2 运控基座** 叙事与众擎年度 demo 的多动作/抗扰/起身能力，分别体现「明牌押注」与「需求侧验证」。
+- **通读：** 已完成
+- **核对范围：** 核对微信公众号长文《41篇论文看懂BFM》（22,589 字符）与配套 `awesome-bfm-papers` README。
 
 ## 核心摘录（归纳，非全文）
 

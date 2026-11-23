@@ -13,6 +13,8 @@
 - **作者 / 主导机构：** XPolicyLab Community；MMLab@HKU & THU；项目牵头 Tianxing Chen；通讯 Wenbo Ding、Ping Luo
 - **机构：** 香港大学（HKU）MMLab；清华大学（Tsinghua）
 - **入库日期：** 2026-08-12
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.09892v3 PDF 全文 1,224 行及 `XPolicyLab/XPolicyLab` `XPolicyLab.py` / `policy/` 结构
 - **一句话说明：** 把「N 策略 × M 评测环境」的 \(O(NM)\) 集成降为 \(O(N{+}M)\)：统一观测/动作/轨迹 schema + 最小 adapter 契约 + 依赖隔离的 client/server；截至 2026-08 集成 **42** 策略，同一 adapter 服务 RoboTwin、RoboDojo-sim 与 RoboDojo-real。
 
 ## 核心论文摘录（MVP）

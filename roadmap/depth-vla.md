@@ -120,6 +120,7 @@ flowchart LR
 - 用 LoRA 把一个小 VLA 微调到自己的数据上，记录数据量–成功率曲线
 
 ### 推荐读什么
+- [WALL-OSS-1.0：原生 VLA 预训练与多分支动作生成](../wiki/entities/wall-oss-1-0.md) — 自变量 Qwen3.5 原生语言/视觉/动作预训练，Action Expert + RTC、Lite/Nano/Gen/AR 家族；区分 312 项零样本真机 55.1% 与 X2Real 仿真 67.55 分，API 可申请但 1.0 代码/权重未核实。
 - [BiCAT：双臂协调动作分词](../wiki/entities/paper-bicat.md) — 共享 token 原语、跨臂注意力与两块动作预测，补齐离散动作接口。
 - [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md) — 主线索引页
 - [VLA / 世界模型 14 篇阅读路线](../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — CLIP→RT→OpenVLA→π₀ + 四篇 WM，每篇独立 `paper-*`
@@ -169,6 +170,8 @@ flowchart LR
 - 对比"有 / 无人类视频预训练"的下游微调差距（读论文实验即可）
 
 ### 推荐读什么
+- [PI 人视频到机器人迁移 / π₀.₅ + ego](../wiki/entities/paper-pi-human-to-robot.md) — 50:50 人机共微调；预训练多样性决定人类示范能否迁移，四任务细分评测指标；本文实验未开源。
+- [Awaken-HI：全身人类经验扩展人形 VLA](../wiki/entities/paper-awaken-hi.md) — 50K h 人体视觉与全身运动共同监督共享动作专家；在固定 T800 后训练后验证 Scaling 与移动操作，注意 HF 只公开样例、代码/权重待发布。
 - [ScaleVLA：552B 视觉语言骨干的动作化](../wiki/entities/paper-scalevla-2611-21607.md) — 对照十条演示 LIBERO-Goal 87.8%、LIBERO-PRO 45.1% 与单动作块 216 ms，分别核查规模、少样本与推理硬件。
 - [SALA](../wiki/entities/paper-sala-latent-actions.md) — 人类视频潜在动作的无配对语义对齐，连接机器人控制锚点与预/后训练扩展
 - [VLA 开源复现全景 2025](../wiki/overview/vla-open-source-repro-landscape-2025.md)
@@ -207,6 +210,9 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+- [PGX：人形长程任务的物理接地执行](../wiki/entities/paper-pgx-2611-26596.md) — 对照「单个 VLA 承担全任务」：谓词 FSM 负责阶段与恢复，WCL 负责位置精度，同权重 GR00T 咖啡任务 C0 35%→80%；源码暂无公开入口。
+- [H-VLA（关键动作→规划）](../wiki/entities/paper-h-vla.md) — 统一双臂相机坐标、关键末端目标与连续规划接口；关注相机标定和阶段间失效。
+- [Co-VLA（双臂协同 SAE/LAC）](../wiki/entities/paper-co-vla.md) — 共享/残差双臂结构加执行期修正，逐项对照 Handover 与 OOD 任务的正负增益。
 - [VLA 动作到关节力矩的执行链路](../wiki/concepts/vla-action-to-joint-torque.md) — 从模型动作反归一化、IK 与阻抗控制贯通到关节力矩与伺服电流环，核对模式、频率和安全约束。
 - [Agentic-Teacher：失败驱动 VLA 后训练](../wiki/entities/paper-agentic-teacher-2611-17394.md)：定向生成纠错演示并通过流匹配损失过滤。
 - [PEAR：仿真强化学习训练机器人原生推理模型](../wiki/entities/paper-pear-robot-use-rl.md)：记录大模型动作接口与分布式 rollout 部署前验收。
@@ -216,6 +222,7 @@ flowchart LR
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor
 - [ACE-CaP-0](../wiki/entities/paper-ace-cap-0.md) — 开发期按需示范/仿真，冻结代码策略在执行期脱离编码 Agent
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
+- [Uni-Robot-Agent / OpenRUA](../wiki/entities/paper-uni-robot-agent.md) — Stage 4 统一 Tool/环境适配器、带回执的执行与资源调度；同一 Qwen 在 RoboDojo 的 1.90→31.39 是跨 harness 比较而非新权重训练。工程侧可对照已发布 ARX ONE 与仅源码可用的 Piper-X；复现实验应区分 Score/SR、相机标定、深度输入和真机安全条件。
 - [STVLA](../wiki/entities/paper-stvla-spatial-temporal-memory.md) — 用空间几何与有界历史记忆改善长任务中遮挡与状态歧义
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
 - [ARP：异步机器人策略](../wiki/entities/paper-asynchronous-robot-policies.md) — 将 VLM 低频语义缓存与自带实时视觉的高频动作专家分进程运行，训练显式建模缓存陈旧和执行延迟；动态扰动更稳，但通用 RoboLab 仍落后 π0.5（官方源码/权重待发布）
@@ -237,6 +244,10 @@ flowchart LR
 - [Legato](../wiki/entities/paper-legato.md)（RSS 2026 · 上交/千寻/清华等）— 训练期以动作–噪声混合与重塑速度场目标学会三段调度动作延续，异步部署时无需推理期 VJP 反向传播、真机 $\pi_{0.5}$ / GR00T N1.6 抑制块间模态切换并缩短执行时间（MIT 仅开源 `Legato-kinetix` 2D 仿真实现）
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)
 
+### 加速方法与闭环延迟选型
+
+- [VLA 加速 25 法：模型内部、异步执行、动作头与云边协同](../wiki/comparisons/vla-acceleration-25-methods-2026.md) — 按耗时位置选择优化层，保留硬件、动作可用延迟、任务完成时间与成功率的可比口径（Turing Post 2026-11-22 原文策展）。
+
 ### 学完输出什么
 - 一份目标平台上的 VLA 部署延迟分解与优化清单
 - 能为"单臂桌面任务 / 移动操作 / 人形全身"三类场景分别给出 VLA 的接入方案
@@ -252,6 +263,7 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：RL 微调与自改进**
+- [π*₀.₆ / RECAP：VLA 从自主经验中学习](../wiki/entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) — 离线 RL 预训练 + 真机 rollout/人工纠正 + 分布式价值函数与优势条件；用成功率及每小时成功次数同时衡量专精效果（官方完整训练代码未开放）。
 - [TidyBot](../wiki/entities/paper-tidybot-2305-05658.md)、[OLAF](../wiki/entities/paper-olaf-verbal-correction.md)、[LMPC](../wiki/entities/paper-lmpc-2402-11450.md) — 对照规则总结、动作重标注和语言模型微调三种适应对象。
 - [PAFF](../wiki/entities/paper-paff-2212-07398.md) — 用基础模型反馈重标注目标域交互，再监督微调策略；对照 RL 与重标注驱动的适应。
 - 用 RL / 真机数据闭环继续改进预训练策略
@@ -259,6 +271,7 @@ flowchart LR
 - 关键词：[ENPIRE](../wiki/methods/enpire.md)、[安全真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)、[STEAM](../wiki/entities/paper-steam-advantage-modeling.md)（自监督时序 advantage 离线提纯 π₀，已集成于官方 `RLinf`）、[WCM](../wiki/entities/paper-wcm-world-critic-model.md)（世界模型 critic 修正 VLA RL 单帧价值估计错配，4 基准 149 任务提升显著；`sylvestf/WCM` 已 MIT 开源 critic，RL 策略代码待发）、[TEMPO](../wiki/entities/paper-tempo.md)（语义 projection 低频 / action expert 高频双 TD3；CALVIN SR5 81.7%，匿名页 404 且未开源）、[AutoIntervene](../wiki/entities/paper-autointervene.md)（chunk 策略视觉–动作支持校准接管，选择性 DAgger；算法未开源，同名仓为静态页镜像）、[Prism-GRPO](../wiki/entities/paper-prism-grpo.md)（success+quality 打破 Binary GRPO 同结果组退化，RoboTwin rollout 最多 −56%；独立补丁未开源）
 
 **方向 B：世界模型融合**
+- [WEVO：视频世界模型驱动全身 VLA 后训练](../wiki/entities/paper-wevo-world-model-enabled-vla-loco-manipulation.md) — LEGS 合成演示初始化 + 每任务 20 条留存自主真机轨迹对齐 DreamDojo，SARM 密集奖励和 DICE-RL 在 WM 中迭代优化；G1 三任务平均真机成功率 23.3%→75.0%，与 VLAW 的成功想象轨迹 BC 对比。
 - [HyWorldVLA：自动驾驶 VLA 的像素–潜变量混合世界建模](../wiki/entities/paper-hyworldvla.md) — 预训练时联合未来像素 token 与 latent 监督，规划时仅预测未来 latent；NAVSIM v1 PDMS 90.59、v2 EPDMS 89.71。**驾驶域**案例，非桌面操作策略。
 - 把"预测未来"并入策略训练或推理时预演——完整 Stage 路径见 [WAM 纵深路线](depth-wam.md)
 - [VLAW：VLA 与世界模型迭代协同后训练](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 少量真机成功/失败 rollout 校准 Ctrl-World；Qwen3-VL 奖励筛选合成成功轨迹后微调 π₀.₅，属于训练期世界模型辅助而非 Joint WAM。

@@ -10,8 +10,11 @@ related:
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/whole_body_control.md
+original:
+  - ../../sources/papers/policy_optimization.md
+status: complete
 summary: "决策树：何时使用 WBC vs RL？"
-updated: 2026-10-23
+updated: 2026-11-21
 ---
 
 # 决策树：何时使用 WBC vs RL？

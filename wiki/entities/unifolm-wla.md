@@ -2,7 +2,10 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, vla, foundation-model, imitation-learning, humanoid, whole-body]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
+original:
+  - ../../sources/repos/unifolm-wla.md
+  - ../../sources/sites/unifolm-wla-github-io.md
 related:
   - ./unitree.md
   - ./unifolm-vla.md
@@ -113,6 +116,8 @@ sequenceDiagram
 ```
 
 入口对齐 [官方训练/评估文档](https://github.com/unitreerobotics/unifolm-wla/blob/main/docs/train_action_expert_en.md)。图中为离线评估与模型服务调用，不推定已有完整真机控制客户端；训练/微调另按官方脚本与数据配置执行。
+
+图依据：`unitreerobotics/unifolm-wla@0a1aa87`，读过 `README.md`、`docs/train_action_expert_en.md`、`docs/robot_action_state_processing_en.md`、`examples/unifolm_wla/eval_files/unitree/eval_local_episode.py` 与 `model_server/action_server_wbc_msgpack_unitree.py`，未实际运行训练或服务。
 
 ## 工程实践
 

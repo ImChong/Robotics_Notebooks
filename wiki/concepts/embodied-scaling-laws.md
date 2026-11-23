@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-23
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -15,6 +15,7 @@ related:
   - ../entities/light-o1.md
   - ../entities/naturewill-natura-1.md
   - ../entities/paper-scaling-laws-neural-language-models.md
+  - ../entities/openai-perplexity-and-intelligence.md
   - ../entities/paper-nymeria.md
   - ../entities/perceptron-isaac-05.md
   - ../methods/vla.md
@@ -83,7 +84,9 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 
 ## 宏观算力背景（与具身 scaling 的层级差）
 
-DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)（arXiv:2606.12683）在 **后 AGI** 情景下讨论 **有效算力 ~10×/年** 的历史复合增长，并强调 **并行实例、测试时算力与多智能体集体** 可能在单模型平台期后仍推高系统级能力。该叙事针对 **通用认知栈**，不替代本页的 **轨迹/参数/任务** 幂律；二者可对照阅读：宏观算力决定 **仿真集群、数据工厂与多机 fleet** 的上限，微观 embodied scaling 决定 **单位算力能换多少泛化**。
+DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)（arXiv:2606.12683v3）在 **后 AGI** 情景下讨论 **有效算力 ~10×/年** 的历史复合增长，并强调 **并行实例、测试时算力与多智能体集体** 可能在单模型平台期后仍推高系统级能力，同时指出包含 **Evaluation Problem**（第 7 类）在内的七类阻力可能制约规模化红利。该叙事针对 **通用认知栈**，不替代本页的 **轨迹/参数/任务** 幂律；二者可对照阅读：宏观算力决定 **仿真集群、数据工厂与多机 fleet** 的上限，微观 embodied scaling 决定 **单位算力能换多少泛化**。
+
+**通用模型 loss 与能力的关系（新材料）：** OpenAI 首席科学家 Jakub Pachocki 的 [Perplexity and Intelligence（2026）](../entities/openai-perplexity-and-intelligence.md) 把固定内部代码留出集 log-PPL 作为长期预训练能力跟踪信号，并建议与安全评估绑定。文中 GPT-3.5、GPT-4 等内部损失数字**不是**具身 VLA / WAM 的 action loss 标尺，也不能直接预测真机成功率；本页仅借鉴「预训练指标与下游能力分开记录」的测量逻辑。
 
 ## 机器人领域的特殊挑战
 
@@ -120,6 +123,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [Dyna-2（百万小时 WAM 跨具身缩放）](../entities/dyna-2.md) — 闭源 1M h 人→机缩放主张
 - [Light-O1](../entities/light-o1.md) — 人类动作 pretraining Transfer Scaling Law（Nymeria / HIW-500 / LightBot）
 - [Kaplan Scaling Laws](../entities/paper-scaling-laws-neural-language-models.md) — LM 幂律方法论原典
+- [Perplexity and Intelligence（OpenAI 2026）](../entities/openai-perplexity-and-intelligence.md) — 内部 log-PPL 趋势与能力/安全边界；不跨域套用阈值
 - [Nymeria Dataset](../entities/paper-nymeria.md) — egocentric 人类 motion scaling 探针
 - [HumanNet](../entities/humannet.md) — 固定 LingBot-VLA 与下游后训练，仅换持续预训练数据：约 1000 h egocentric 人视频在验证损失上逼近或部分优于约 100 h 真机数据（arXiv:2605.06747）
 - [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 开源 1M h 通用视频置换 teleop（210×；权重入库日未齐）

@@ -12,6 +12,9 @@
 - **入库日期：** 2026-08-17
 - **一句话说明：** 冻结公开发布的 GEAR-SONIC（G1）全身跟踪控制器，用闭式关节 codec + 动力学解码器 LoRA（约 0.25% 参数、约 2% 平台 cited 算力）迁到 AgiBot X2 Ultra；OOD PHUMA 成功率 **69.0% vs 原生 incumbent 59.0%**，in-dist 无法区分。
 
+- **通读：** 已完成
+- **核对范围：** 已通读项目官网 `paper.pdf` 全文（49,414 字符）及 `meetsitaram/sonic-x2` README，核对闭式关节空间 codec 与单解码器 LoRA 适配及 AgiBot X2 Ultra 18 分钟户外地形实测。
+
 ## 开源状态（步骤 2.5）
 
 - **核查日：** 2026-08-17。打开项目页 pill 与站点仓 `sonic-agibot-x2/sonic-agibot-x2.github.io`。

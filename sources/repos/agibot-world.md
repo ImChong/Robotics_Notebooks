@@ -29,4 +29,6 @@
 - **发布事件：** 2025-03-10 论文/研究博客；2025-09-19 GO-1 模型开源。
 - **入口：** `scripts/visualize_dataset.py`、`go1/shell/train.sh`、`go1/configs/go1_sft_libero.py`、`evaluate/deploy.py`。
 - **许可：** README 声明代码和数据为 CC BY-NC-SA 4.0，不能视作宽松商用授权。
+- **核对范围：** 通读 `OpenDriveLab/AgiBot-World@98f136e` 的 `README.md` 及入口脚本 `go1/shell/train.sh`、`go1/configs/go1_sft_libero.py`、`evaluate/deploy.py`、`scripts/visualize_dataset.py` 源码结构；未运行 GPU 训练或真机服务。
+- **通读：** 已完成
 - **映射：** [Colosseo / GO-1](../../wiki/entities/paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md)。

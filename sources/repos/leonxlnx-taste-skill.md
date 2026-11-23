@@ -9,6 +9,9 @@
 - **官方站：** https://tasteskill.dev
 - **分发：** `npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"`（及 `--skill` 选其它子 skill）
 - **入库日期：** 2026-09-30
+- **复核日期：** 2026-11-22
+- **核对范围：** 官方 README、当前 `skills/taste-skill/SKILL.md` 的 2.5.1 核心工作流和脚本入口、门禁与旧版拆仓说明；未运行浏览器检查。
+- **通读：** 已完成
 - **协议：** MIT
 - **一句话说明：** 开源 **反 AI 模板** 前端 Agent Skill 库：默认 **taste-skill v2** 在生成前做 brief 推断与设计系统选型，用 **DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY** 三旋钮与 **硬禁令 + §14 pre-flight** 约束输出；含 brutalist / minimalist / GPT 变体与 image 参考板 skill。
 - **为什么值得保留：** 高 star 社区默认「去 slop」技能之一；与本站 [docs/ 展示层](../../docs/checklists/frontend-optimization-v1.md) 及 [Impeccable](../../wiki/entities/impeccable.md) 选型直接相关。
@@ -33,3 +36,8 @@
 
 - 项目页：[`sources/sites/tasteskill-dev.md`](../sites/tasteskill-dev.md)
 - 对照：[`wiki/comparisons/skillry-taste-skill-impeccable.md`](../../wiki/comparisons/skillry-taste-skill-impeccable.md)
+
+## 2026-11-22 版本修订
+
+- 当前主仓为 `tasteskill 2.5.1`：按 `software/gaming/tech/product/service/place` 分类，从 `scripts/start.mjs` 发牌设计 tokens 与布局，再由 `scripts/consistency.mjs` 浏览器检查、`scripts/gate.mjs` 作 finish gate；依赖 Node 22+ 与 Chromium 类浏览器。
+- 先前归档的三旋钮及 `gpt-taste`、`minimalist-ui`、`industrial-brutalist-ui` 等旧版内容已经拆至 [Taste Skill Classics](leonxlnx-taste-skill-classics.md)。早期「v2 experimental」描述保留为历史快照，不再代表主仓现状。

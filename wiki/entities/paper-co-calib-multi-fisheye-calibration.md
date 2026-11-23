@@ -10,7 +10,7 @@ tags:
   - computer-vision
   - hkust
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2607.05777"
 venue: "arXiv 2026"
 related:
@@ -26,12 +26,14 @@ related:
 sources:
   - ../../sources/papers/co_calib_observation_quality_fisheye_arxiv_2607_05777.md
   - ../../sources/repos/co_calib.md
+original:
+  - ../../sources/papers/co_calib_observation_quality_fisheye_arxiv_2607_05777.md
 summary: "CO-Calib（arXiv:2607.05777，港科大）：failure-oriented 分析表明多鱼眼标定失败主因是内参初始化病态（焦距–投影形状耦合），而非检测召回或平面分布；plug-in 学习型检测 + 可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，Hex-Fisheye 实机 10/10。"
 ---
 
 # CO-Calib（多鱼眼标定 · 观测质量）
 
-**CO-Calib**（*Observation Quality Matters: Robust Multi-Fisheye Calibration via Failure-Oriented Analysis*，Liu et al.，arXiv:[2607.05777](https://arxiv.org/abs/2607.05777)，[代码即将开源](https://github.com/HKUST-Aerial-Robotics/CO-Calib)）由 **Peize Liu、Zhe Tong、Chen Feng（通讯）、Shaojie Shen**（香港科技大学电子与计算机工程系）提出。论文用 **failure-oriented 分析** 系统回答：多鱼眼标定何时 **well-conditioned**、何时在初始化阶段崩溃；并给出 **不改 BA 后端** 的 **plug-in 标定数据构造框架**，显著提升宽 FoV 与多相机配置下的成功率与外参精度。
+**CO-Calib**（*Observation Quality Matters: Robust Multi-Fisheye Calibration via Failure-Oriented Analysis*，Liu et al.，arXiv:[2607.05777](https://arxiv.org/abs/2607.05777)，[已开源代码](https://github.com/HKUST-Aerial-Robotics/CO-Calib)）由 **Peize Liu、Zhe Tong、Chen Feng（通讯）、Shaojie Shen**（香港科技大学电子与计算机工程系）提出。论文用 **failure-oriented 分析** 系统回答：多鱼眼标定何时 **well-conditioned**、何时在初始化阶段崩溃；并给出 **不改 BA 后端** 的 **plug-in 标定数据构造框架**（开源包 `omnicalib` + `hkustswarm/co-calib:v1.0` Kalibr 镜像），显著提升宽 FoV 与多相机配置下的成功率与外参精度。
 
 ## 一句话定义
 
@@ -65,33 +67,59 @@ summary: "CO-Calib（arXiv:2607.05777，港科大）：failure-oriented 分析�
 | 代码 | <https://github.com/HKUST-Aerial-Robotics/CO-Calib>（即将开源） |
 | 对比基线 | Kalibr、Basalt；相关 TartanCalib、MC-Calib |
 
-## 失败机制与 CO-Calib 结构
+## 核心原理与失败机制
 
 | 模块 | 作用 |
 |------|------|
 | **Failure-oriented 分析** | 16 组合成配置（4 FoV × 4 双目 yaw）；定位失败于 **内参初始化**；排除 recall / 平面分布主因；揭示 **focal–projection coupling** |
-| **学习型标定板检测** | 在线物理 grounded 训练；畸变边缘区 **recall 与定位** 优于几何检测（240°：**0.926 vs 0.684** recall） |
+| **学习型标定板检测** | 在线物理 grounded 训练（Task13 权重 + `cornerSubPix` 亚像素精化）；畸变边缘区 recall 优于几何检测（240°：**0.926 vs 0.684**） |
 | **Projective isotropy $s_{\mathrm{iso}}$** | 单应 Jacobian 奇异值比；筛除位姿初始化退化帧 |
 | **Directed radial span $s_{\mathrm{drs}}$** | 径向覆盖直径归一化分数；分离焦距与投影形状参数 |
 | **三阶段选帧** | **Anchor**（初始化 anchor）→ **Co-visible**（多相机共视外参）→ **Mono-fill**（补弱约束区域） |
-
-### 流程总览
 
 ```mermaid
 flowchart TB
   subgraph capture [ 原始标定序列 ]
     raw[ 多鱼眼同步帧 + 标定板 ]
   end
-  det[ 学习型标定板检测\n高 recall · 边缘稳定 ]
+  det[ 学习型标定板检测<br/>高 recall · 边缘稳定 ]
   sel[ 可观测性引导帧选择 ]
-  anchor[ Anchor：宽径向覆盖\n解耦内参 ]
-  covis[ Co-visible：双相机共视\n外参约束 ]
+  anchor[ Anchor：宽径向覆盖<br/>解耦内参 ]
+  covis[ Co-visible：双相机共视<br/>外参约束 ]
   mono[ Mono-fill：补覆盖 ]
-  ba[ 现有 BA 管线\nKalibr 类三阶段 ]
+  ba[ 现有 BA 管线<br/>Kalibr 类三阶段 ]
   out[ 内参 + 外参 + 位姿 ]
   raw --> det --> sel
   sel --> anchor --> covis --> mono --> ba --> out
 ```
+
+## 源码运行时序图
+
+入口：`omnicalib run --input <dir|bag> --rig rig.yaml --datawash datawash.yaml --target target.yaml`（`src/omnicalib_open/cli.py`）。
+
+```mermaid
+sequenceDiagram
+    participant CLI as omnicalib_open/cli.py
+    participant ORCH as orchestrator.py run_full_pipeline
+    participant PIPE as pipeline.py detect_groups / _build_masks
+    participant NN as nn_detector.py + subpixel.py
+    participant QUAL as quality.py evaluate_observation
+    participant SEL as selection.py select_groups
+    participant BAG as bag_writer.py write_clean_ros1_bag
+    participant DK as Docker hkustswarm/co-calib:v1.0
+
+    CLI->>ORCH: 解析参数与 YAML 配置（默认 NN-Detector, device auto）
+    ORCH->>PIPE: detect_groups（图像序列 / ROS1 / ROS2 bag 统一载入）
+    loop 每帧多相机图像
+        PIPE->>NN: GPU/CPU ONNX 推理 + remap_points_to_original + cornerSubPix
+    end
+    PIPE->>QUAL: _build_masks 统计可用掩码 + evaluate_observation 计算 s_iso / s_drs
+    QUAL->>SEL: Anchor -> Co-visible -> Mono-fill 三阶段筛选
+    SEL->>BAG: 写出筛选后观测 bag
+    ORCH->>DK: 拉起预编译 Kalibr 容器执行分阶段 BA 标定
+```
+
+图依据：`HKUST-Aerial-Robotics/CO-Calib`（2026-11 实查），读过 `README.md`、`src/omnicalib_open/cli.py` 与 `src/omnicalib_open/pipeline.py`；`selection.py`、`bag_writer.py`、`orchestrator.py` 内部实现未逐行阅读。未运行代码。
 
 ## 实验要点（论文报告摘要）
 
@@ -138,7 +166,7 @@ flowchart TB
 - **误区：「边缘检测不到所以标定失败」。** 论文用 GT 观测反证；问题是 **参数不可分**，不是 **点数不够**。
 - **误区：「多拍几帧 / 更均匀覆盖图像就行」。** 随机同规模子集 SR 仅 **30.9%**；需要 **可观测性对齐** 的帧序，而非数量或均匀性 alone。
 - **误区：「换更强 BA 求解器可跳过初始化」。** BA-only 两阶段 SR **13.5%**；宽 FoV 下 **分阶段线性化初始化** 仍是关键路径。
-- **局限：** 代码 **即将开源**（ ingest 时尚未验证 API）；论文聚焦 **标定板 + 分阶段 fisheye BA**，未覆盖 IMU–相机 **时空标定**（参见 [Ultra-Fusion 类 OSC](../entities/paper-ultra-fusion-multi-sensor-slam.md) 语境）；对非鱼眼 pinhole 多相机系统的直接迁移需另验证。
+- **局限：** 代码已以 `omnicalib` CLI + Docker（`hkustswarm/co-calib:v1.0`）形式公开；论文聚焦 **标定板 + 分阶段 fisheye BA**，未覆盖 IMU–相机 **时空标定**（参见 [Ultra-Fusion 类 OSC](../entities/paper-ultra-fusion-multi-sensor-slam.md) 语境）；对非鱼眼 pinhole 多相机系统的直接迁移需另验证。
 
 ## 关联页面
 

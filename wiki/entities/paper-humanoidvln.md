@@ -17,7 +17,8 @@ tags:
   - vinmotion
   - usc
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+project_id: humanoidvln-benchmark
 arxiv: "2608.12860"
 related:
   - ../tasks/vision-language-navigation.md
@@ -38,6 +39,7 @@ sources:
   - ../../sources/papers/crosstracer_arxiv_2608_06688.md
   - ../../sources/sites/humanoid-vln-github-io.md
   - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
+original: ../../sources/papers/humanoidvln_arxiv_2608_12860.md
 summary: "HumanoidVLN（VinMotion/USC，arXiv:2608.12860）：Isaac Sim 人形物理 VLN 平台与基准。四本体 RL+PD/MPC、87 场景≥100 m²、933 episode MAA 指令；JanusVLN 平均 SR 43.55%；G1 DualVLN 20 条 sim–real r=0.935。截至入库日宣称录用后开源，项目页无代码。"
 ---
 
@@ -79,9 +81,9 @@ summary: "HumanoidVLN（VinMotion/USC，arXiv:2608.12860）：Isaac Sim 人形�
 | 本体 | G1 12 DoF / 1.32 m；H1 10 DoF / 1.80 m；Internal-A 12 DoF / 1.61 m；Internal-B 12 DoF / 1.17 m |
 | 数据 | 87 场景、933 episode；每条 1 细 + 3 粗风格；**评测集，不微调被评模型** |
 | 被评模型 | NaVILA、StreamVLN、JanusVLN（离散 + PD）；DualVLN（连续速度 + MPC） |
-| 开源（截至 2026-08-14） | **宣称将开源 / 待发布**：录用后放代码与数据；项目页未列仓库 |
+| **开源（2026-11-21 复核）** | **宣称将开源 / 待发布**：论文与项目页称录用后放代码与数据；截至 2026-11-21 仍无公开 GitHub 仓库 |
 
-## 方法与核心结构
+## 核心机制与流程总览
 
 分层控制保证「计划」必须被该本体真正走出来：
 

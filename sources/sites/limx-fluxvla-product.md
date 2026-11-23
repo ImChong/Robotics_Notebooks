@@ -4,7 +4,9 @@
 - **类型：** site / product-page
 - **URL：** <https://www.limxdynamics.com/zh/products/fluxvla>（英文路径同域 `/en/products/fluxvla`）
 - **入库日期：** 2026-09-28
-- **复核日期：** 2026-09-28
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 抓取并通读 `<https://www.limxdynamics.com/zh/products/fluxvla>` 全文（统一配置/模块解耦/支持模型与仿真器/Oli·TRON 2·UR·ALOHA 硬件适配、A100 与 RTX 5090 上的 GR00T-N1.5 与 Pi0.5 推理加速分解图及开源入口）。
+- **通读：** 已完成
 - **配套论文：** [FluxVLA Engine（arXiv:2609.17210）](https://arxiv.org/abs/2609.17210) — 归档见 [`sources/papers/fluxvla_arxiv_2609_17210.md`](../papers/fluxvla_arxiv_2609_17210.md)
 - **代码：** <https://github.com/FluxVLA/FluxVLA>（与文档站、README 一致；归档 [`sources/repos/fluxvla.md`](../repos/fluxvla.md)）
 - **文档：** <https://fluxvla.limxdynamics.com/zh/>

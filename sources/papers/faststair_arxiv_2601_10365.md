@@ -9,6 +9,9 @@
 - **机构：** 哈尔滨工业大学、逐际动力（LimX Dynamics）、ZJUI、USTC、HKUST、NUS 等（论文标注主要工作在 LimX Dynamics）
 - **项目页：** <https://npcliu.github.io/FastStair>
 - **入库日期：** 2026-05-17
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `arXiv:2601.10365v1`（pdftotext 985 行）全文：Abstract、§I–§V（VHIP `a≈1` 近似、`0.6 m×0.6 m` ROI 离散 DCM 落脚点搜索、4096 envs 下约 4 ms/step 约 25× 于 CusADi、LoRA $\alpha=16, \gamma=8$ 与 `v_x^d > 0.8 m/s` 规则切换、Table I & §IV 仿真消融与 25 cm OOD 台阶对比、LimX Oli 55 kg / 1.65 m / 31 DoF 实机 `1.8 m×1.2 m` @ 5 cm @ 100 Hz 感知建图与广州塔 33 级 × 17 cm 12 s 上楼）、Limitations 与参考文献；项目页 `npcliu.github.io/FastStair` 无官方代码公开。
+- **通读：** 已完成
 - **一句话说明：** 用 **GPU 并行离散搜索的 DCM 落脚点规划** 在 Isaac Lab 大规模 RL 中提供 **显式可行落脚点监督**，先训出 **偏安全/保守的基策略**，再通过 **高速/低速专家分化 + LoRA 融合** 缓解规划器保守性与全速域动作分布差异，在 **LimX Oli** 上实现 **指令速度至约 1.65 m/s** 的稳定上楼梯与长螺旋梯实机演示。
 
 ## 核心论文摘录

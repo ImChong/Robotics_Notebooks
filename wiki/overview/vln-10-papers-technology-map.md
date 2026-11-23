@@ -2,7 +2,7 @@
 type: overview
 tags: [vln, navigation, survey, embodied-ai, datasets, vlm]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-21
 related:
   - ./vln-category-01-datasets-platforms.md
   - ./vln-category-02-algorithm-frameworks.md
@@ -16,15 +16,19 @@ sources:
   - ../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md
   - ../../sources/raw/wechat_vln_10_papers_2026-06-20.md
   - ../../sources/papers/vln_10_papers_catalog.md
+  - ../../sources/papers/vln_task_reading_arxiv_1711_07280_reading_vlntask.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
-summary: "依据深蓝具身智能 2026-06 VLN 盘点，把 10 篇论文整理为「数据集/平台 → 算法框架」两组入口地图；核心判断：VLN 正沿减负线逐步剥离导航图、深度与里程计，走向 RGB 视频流端到端决策。"
+original:
+  - ../../sources/papers/vln_task_reading_arxiv_1711_07280_reading_vlntask.md
+  - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
+summary: "依据深蓝具身智能 2026-06 VLN 盘点并结合 R2R/HumanoidVLN 原文核对，把 10 篇论文整理为「数据集/平台 → 算法框架」两组入口地图；核心判断：VLN 正沿减负线逐步剥离导航图、深度与里程计，走向 RGB 视频流端到端决策。"
 ---
 
 # VLN 10 篇论文技术地图
 
 > **本页定位**：为 [深蓝具身智能 · VLN 10 项代表性研究](https://mp.weixin.qq.com/s/2_dYaN6IeWn_vvS_jmGqRQ) 提供 **按两组入口组织的阅读坐标**；不复述每篇论文细节，只保留 **问题重框、两组论文地图、与四范式复现/任务页的挂接**。姊妹篇 [VLN 四范式开源复现路径](./vln-open-source-repro-paradigms.md)、[视觉–语言导航任务页](../tasks/vision-language-navigation.md)。
 
-## 一句话观点
+## 一句话定义
 
 VLN 七年演进的核心脉络是 **减负**：从 R2R 离散导航图 + 逐步指令，到 VLN-CE 连续动作与 REVERIE 高层目标定位，再到 PREVALENT 预训练、拓扑建图、大规模数据生成，最终由 NaVid 仅凭 RGB 视频流完成端到端导航——显式辅助信号被逐步剥离。
 
@@ -38,7 +42,7 @@ VLN 七年演进的核心脉络是 **减负**：从 R2R 离散导航图 + 逐步
 | VLM | Vision-Language Model | 视觉-语言多模态大模型，NaVid 等路线的骨干 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态策略 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) 任务页已覆盖大量 **单篇方法与复现栈**；本页聚焦 **2026-06 盘点** 提出的横切面：**基础设施如何定义任务、算法如何减负演进**。
 - 与 [四范式复现路径](./vln-open-source-repro-paradigms.md) 分工：复现页回答 **能跑通哪条开源栈**；本页回答 **领域代表性工作如何按历史脉络串读**。
@@ -127,11 +131,25 @@ flowchart TB
 - [SceneVerse++](../entities/sceneverse-pp.md) — 互联网视频→R2R 风格数据扩展
 - [Agent Reach](../entities/agent-reach.md) — 本文微信抓取工具链
 
+## 工程实践
+
+- **按问题选仿真协议：** 先分清研究目标是离散视点决策（[01 R2R](../entities/paper-vln-01-r2r.md)）、连续运动学步进（[02 VLN-CE](../entities/paper-vln-02-vln-ce.md)）还是含碰撞/步态约束的物理执行（[HumanoidVLN](../entities/paper-humanoidvln.md)），切勿跨协议混比 SR/SPL。
+- **按可运行性选代码起点：** 本地图聚焦 2018–2024 演进主线；落地微调与实机验证应直接跳转 [VLN 四范式开源复现路径](./vln-open-source-repro-paradigms.md) 核查依赖版本与权限边界。
+- **区分同名近义项目：** **NaVid**（RSS 2024 单目视频 VLM）与 **Uni-NaVid**（RSS 2025 开源复现框架）分属不同实体，复用权重或数据格式前须先核对对应 `sources/repos/`。
+
+## 局限
+
+- **时间与范围截断：** 盘点主线截至 2024 年 NaVid，未完整囊括 2025–2026 物理人形 VLN、室内–户外连通评测及长程 Agent 记忆工作（可由下文「按目标选入口」或 [导航纵深路线](../../roadmap/depth-navigation.md) 续读）。
+- **离散/运动学抽象偏差：** 地图中早期 R2R / PREVALENT / DUET 等基于预计算全景导航图与运动学步进，忽略本体几何尺寸、步态抖动与物理碰撞，结论不能直接外推至真机足式部署。
+- **导读来源边界：** 原始梳理源自微信公众号盘点；具体公式、超参与榜单复现数字须以各论文实体页及对应 `sources/papers/` 全文通读归档为准。
+
 ## 参考来源
 
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - [wechat_vln_10_papers_2026-06-20.md](../../sources/raw/wechat_vln_10_papers_2026-06-20.md)
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
+- [R2R / Matterport3D Simulator 论文通读](../../sources/papers/vln_task_reading_arxiv_1711_07280_reading_vlntask.md)
+- [HumanoidVLN 原文通读归档](../../sources/papers/humanoidvln_arxiv_2608_12860.md)
 
 ## 推荐继续阅读
 

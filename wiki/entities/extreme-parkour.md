@@ -11,7 +11,7 @@ tags:
   - parkour
   - unitree
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 arxiv: "2309.14341"
 venue: "ICRA 2024"
 related:

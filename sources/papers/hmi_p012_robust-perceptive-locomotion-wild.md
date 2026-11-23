@@ -7,10 +7,12 @@
 - **类型：** paper / hmi-papers / Locomotion与运动先验
 - **HMI ID：** P012
 - **年份：** 2022
-- **原文：** https://arxiv.org/abs/2201.08117
-- **代码：** 无 / 见正文开源状态
+- **原文：** <https://arxiv.org/abs/2201.08117>（*Science Robotics* Vol. 7, Issue 62, eabk2822, 2022）
+- **代码：** 官方未发布 RL 训练/策略代码仓（同作者后续另开源 GPU 高程建图组件 [`leggedrobotics/elevation_mapping_cupy`](https://github.com/leggedrobotics/elevation_mapping_cupy)）
 - **项目页：** 无
-- **入库日期：** 2026-07-31
+- **入库日期：** 2026-07-31（2026-11-22 补齐原文全文通读）
+- **核对范围：** 通过 `arXiv:2201.08117v1` PDF 抽取全文（2,340 行，通读摘要、§1 引言、§2 野外与阿尔卑斯 Etzel 2.2 km 徒步及障碍对照实验、§3 讨论与局限、§4 Materials & Methods 含两阶段特权训练、3 类高度采样噪声模型 60%/30%/10% 抽样、`Belief State Encoder` 门控公式与 50 Hz 部署架构）；未读取补充材料 S1–S9 独立参数附表，未运行代码。
+- **通读：** 已完成
 - **一句话说明：** 用循环 Belief Encoder 融合带噪高程图与本体历史，使四足在外感知失效时仍能退回身体反馈、在野外稳健行走。
 - **策展入口：** [HMI 论文与项目](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE) · [逐篇解读 P012](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P012.md)
 

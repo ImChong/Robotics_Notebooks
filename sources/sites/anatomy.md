@@ -8,6 +8,8 @@
 - **核验日期：** 2026-10-11
 - **一句话说明：** 项目展示页解释 Anatomy 如何把一句技术需求变成可交互的等轴测机械插图，并提供示例、安装方式与能力边界。
 - **知识节点：** [Anatomy](../../wiki/entities/anatomy-skill.md)
+- **通读：** 已完成
+- **核对范围：** 核对 `skills.wheresryan.sh/anatomy` 与 `wheresryan22/anatomy` 官方 `README.md`。
 
 ## 项目页要点
 

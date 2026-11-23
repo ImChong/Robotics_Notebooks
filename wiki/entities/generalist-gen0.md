@@ -3,7 +3,10 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, scaling, scaling-laws, pretraining, cross-embodiment, foundation-policy, data-flywheel, generalist-ai]
 status: complete
 title: GEN-0：随物理交互规模化的具身基础模型
-updated: 2026-10-09
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/generalist_gen0.md
+  - ../../sources/blogs/generalist_gtc_demo_2026.md
 institutions: [generalist-ai]
 related:
   - ./generalist-ai-robotics.md

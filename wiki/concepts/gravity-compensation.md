@@ -2,7 +2,7 @@
 type: concept
 tags: [control, dynamics, feedforward, gravity, rnea, manipulation]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 original:
   - ../../sources/books/modern_robotics_ch11_robot_control_reading.md
   - ../../sources/papers/de_luca_panzieri_gravity_compensation_1993_reading.md

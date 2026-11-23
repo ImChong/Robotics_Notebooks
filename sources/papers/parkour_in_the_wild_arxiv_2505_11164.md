@@ -12,6 +12,8 @@
 - **作者：** Nikita Rudin、Junzhe He、Joshua Aurand、Marco Hutter
 - **机构：** Robotic Systems Lab, ETH Zurich；Nikita Rudin 亦隶属 NVIDIA Switzerland
 - **发表：** IJRR（DOI 2026）；arXiv 2025-05
+- **通读：** 已完成
+- **核对范围：** 2026-11-20 用 curl 下载 arXiv:2505.11164v1 PDF（14 页），pdftotext 通读全文（§1–§5、Algorithm 1、Table 1–4、Fig. 2–8、Discussion、参考文献），核实 9 专家与 Table 4（蒸馏平均降 10.4%、Walk 99.3 vs 专家 94.6、Stepping stones 73.0→98.8、Parkour line 5.8→98.5、Scanned test 14.9→94.9、Gap-climb 10.2→82.0、Down-stones 11.3→54.4→92.4）、4 深度（前2后2）CNN+2层LSTM+3层ELU MLP、深度噪声（clip 2 m、<0.15 m 置空、边缘/Perlin 孔洞/左 1–5 列盲区/高斯模糊、48×32）、50 Hz 机载推理与 15 Hz 深度；论文无官方代码，故无源码阅读。
 - **入库日期：** 2026-09-22
 - **一句话说明：** 三阶段管线：9 个地形 **RL 专家**（高程图）→ **DAgger 式多专家蒸馏** 为 **四深度相机 + LSTM** 统策 → **RL 微调**（含搜救训练场 3D 扫描网格）；ANYmal D 真机室内外泛化。
 
@@ -33,7 +35,7 @@
 2. **Multi-expert distillation：** 并行仿真中按地形分配专家；学生 $\pi_{\text{student}}$ rollout，收集 $(o_{\text{student}}, a_{\text{expert}})$，监督最小化 $\|\pi_{\text{student}}(o_{\text{student}})-a_{\text{expert}}\|^2$（**DAgger 式在线聚合**）；学生改用 **4 路 RealSense D435i 深度** + **LSTM** 替代专家高程图。
 3. **RL fine-tuning：** 蒸馏策略作 **foundation model**，在 **9 旧地形 + Parkour line + 15 个搜救设施 3D 扫描** 上 PPO 微调；支持 **重复 fine-tune** 增量加地形而不遗忘旧技能。
 
-论文对比 **分层技能选择**（Hoeller SciRob 2023）、**VAE 技能编码** 与 **多专家蒸馏**：前两者在 **无专家的新复杂地形** 上易局部最优；纯蒸馏 **多模态平均** 导致单地形性能低于专家且泛化有限，但 **可作 foundation 再 RLFT**。
+论文对比 **分层技能选择**（Hoeller SciRob 2023）、**VAE 技能编码** 与 **多专家蒸馏**（§3.3 核正：分层方法最差且无法组合技能，VAE 与蒸馏+RLFT 均较好、新地形上后者略优）；纯蒸馏 **多模态平均** 导致单地形性能低于专家且泛化有限，但 **可作 foundation 再 RLFT**。
 
 **对 wiki 的映射：** 升格 [`wiki/entities/paper-parkour-in-the-wild.md`](../../wiki/entities/paper-parkour-in-the-wild.md)；方法总览 [`wiki/methods/multi-expert-distillation.md`](../../wiki/methods/multi-expert-distillation.md)。
 

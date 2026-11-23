@@ -13,6 +13,9 @@
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26
 - **复核日期：** 2026-07-22
+- **核对日期：** 2026-11-22
+- **核对范围：** `arXiv:2509.16757` 全文 §1–§6（含 14 仿真任务 / 6 真机任务 / 67 次连续开门评估、co-tracking 奖励与交互表征）及 `LeCAR-Lab/HDMI`
+- **通读：** 已完成
 - **一句话说明：** HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
 
 ## 核心摘录（策展，非全文）

@@ -2,25 +2,32 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, imitation-learning, sim2real, unitree-g1, agibot, booster, caltech, georgia-tech]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 project_id: morphmimic-cross-humanoid-tracking-2026
 project: https://lzyang2000.github.io/morphmimic/
 code: https://github.com/lzyang2000/morphmimic
+sources:
+  - ../../sources/papers/morphmimic_technical_report_2026.md
+  - ../../sources/sites/morphmimic-project.md
+  - ../../sources/repos/morphmimic.md
+original:
+  - ../../sources/papers/morphmimic_technical_report_2026.md
+  - ../../sources/repos/morphmimic.md
 summary: "MorphMimic 在 SuperMimic 的可微动力学学习动作跟踪路线之上，加入规范化人形接口、形态条件化和跨机器人动作隐变量对齐，让 G1、X2 Ultra、T2 共用一个世界模型与一套跟踪策略。"
 related:
   - ./paper-supermimic.md
   - ./nvidia-sonic.md
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
-sources:
-  - ../../sources/papers/morphmimic_technical_report_2026.md
-  - ../../sources/sites/morphmimic-project.md
-  - ../../sources/repos/morphmimic.md
 ---
 
 # MorphMimic：跨人形机器人共享可微世界模型与跟踪策略
 
 **MorphMimic**（*Morphology-Conditioned World Model and Policy Sharing Across Humanoids*，2026 技术报告）由加州理工学院与佐治亚理工学院研究者提出，目标是在不同人形机器人上共同训练一个可微世界模型和一套全身动作跟踪策略。它沿用 SuperMimic 的“学习动力学模型，再通过短时想象 rollout 反向传播策略梯度”路线，并扩展到跨本体共享；官方仓库注明其 SuperMimic 基础算法是作者根据论文独立实现，并非 SuperMimic 作者的代码或经其认可的扩展。
+
+## 一句话定义
+
+**通过 29 关节 14 刚体槽位规范化表示、125 维形态描述符条件（FiLM）与跨本体参考 latent 对齐损失，让 Unitree G1、AgiBot X2 Ultra 与 Booster T2 在单一 50 Hz 共享可微世界模型和同一 ONNX 策略上同时完成全身与五点稀疏追踪。**
 
 ## 英文缩写速查
 
@@ -89,6 +96,16 @@ sequenceDiagram
 ```
 
 仓库 README 将训练、ONNX 导出、Sim2Sim 与 G1 硬件入口分别列出。多机器人联合训练默认每台机器人占一个 GPU rank，实际运行需三张 GPU；仿真/硬件流程共享导出的策略，但机器人配置文件各自保存。
+
+## 工程实践
+
+| 项 | 官方仓库与实操经验（`lzyang2000/morphmimic`） |
+|----|----------------------------------------------|
+| 数据准备流 | 依赖 BONES-SEED：先用 `morphmimic.scripts.convert_seed` / `build_subsets` 构建 G1 `.npz` 子集，并用 `convert_human` 生成 SOMA 24 关节 sidecars（X2/T2 经 `tools/soma_retargeter` 批处理转换） |
+| 执行器延迟鲁棒 | 训练默认每次重置抽取 0–20 ms 固定保持的 actuator delay（`--actuator-delay-max-ms`），避免早期每步随机延迟引发真机踩踏震荡 |
+| 弱腰电机变体 (`g1_amber`) | 作者自持 G1 的 waist roll/pitch 阻尼从 1.81 调高至 3.0，训练与部署传 `--robot g1_amber`；且停在 60,000 iter（继续训至 78,000+ 反而出现站立摇晃） |
+| 无状态估计器部署 | 策略仅吃 IMU + 关节编码器，**不依赖** 里程计或全局位置；导出单个共享 `policy.onnx` 配每台机器人的 `<robot>.json` 归一化/形态描述 |
+| VR 遥操作 | PICO 4 耳机经 `deploy.vr_teleop.streamer --target human` 以 50 Hz 直推人体骨架或五点接口，无需 GMR 在线重定向 |
 
 ## 与其他工作对比
 

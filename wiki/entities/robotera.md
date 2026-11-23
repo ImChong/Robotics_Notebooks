@@ -4,7 +4,12 @@ project_id: robotera-company
 project: https://www.robotera.com/
 tags: [robotera, humanoid, vla, world-models, sim2real, whole-body-control]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-21
+original:
+  - ../../sources/sites/robotera.md
+  - ../../sources/repos/robotera_vla.md
+  - ../../sources/repos/xbot_sdk_api.md
+  - ../../sources/repos/teleop_client.md
 summary: "星动纪元（ROBOTERA）：成立于 2023 年 8 月，结合视频预测策略、人形运控、灵巧手、整机与数采接口；按项目区分研究开源和产品闭环。"
 related:
   - ./humanoid-gym.md
@@ -58,15 +63,27 @@ sources:
 
 ERA-42 与 L7 的日期分别取公开发布记录正文，资料页发布日期晚两天/一天。当前官网列有更新的产品家族，本页不把硬件演示、训练代码开放和模型资产发布合成同一个事件。
 
-## 三层技术结构
+## 核心原理
+
+星动纪元围绕“**数据—大脑—运控—灵巧手—整机**”五层构建软硬一体化路线，但公开学术研究与商业产品闭环分层维护：
+
+```mermaid
+flowchart LR
+  DATA["数采与遥操作<br/>teleop_client (开源入口) / 机载 recorder (仓外)"] --> BRAIN["具身大脑与世界模型<br/>VPP (arXiv:2412.14803, 开源) / ERA-42 (商业产品, 未开源)"]
+  DATA --> VLA["M7 操作基线<br/>robotera_vla (pi0.5/openpi, 开源示例)"]
+  LOCO["运动控制与 Sim2Real<br/>Humanoid-Gym / DWL (XBot-S/L)"] --> HW["本体与灵巧手<br/>L7 (55 DoF) · M7 (43 DoF) · Q5 · XHAND"]
+  BRAIN --> HW
+  VLA --> SDK["xbot_sdk_api / ROS 2 控制接口"]
+  SDK --> HW
+```
 
 | 层 | 公开入口 | 可回答的问题 |
 | --- | --- | --- |
-| 世界与动作 | VPP；ERA-42 产品材料 | 前者可读预测表征与动作头；后者显示产品定位，不能仅凭宣传还原训练配方 |
-| 整机与数据接口 | L7 / M7 / Q5、XHAND、teleop_client、robotera_vla | 本体适配、示范采集和 VLA 部署怎样连接 |
-| 运动技能与执行 | Humanoid-Gym、xbot_sdk_api | 仿真策略如何校验；应用如何初始化、读取状态和发送控制目标 |
+| 世界与动作 | [VPP](./paper-shenlan-wm-02-vpp.md)；ERA-42 产品材料 | 前者可读视频扩散预测表征与隐式逆动力学；后者显示商业多模态端到端定位，不能仅凭宣传还原训练配方 |
+| 整机与数据接口 | L7 / M7 / Q5、XHAND、[teleop_client](./cn-os-teleop-client.md)、[robotera_vla](./cn-os-robotera-vla.md) | 本体适配、示范采集和 VLA 部署怎样连接 |
+| 运动技能与执行 | [Humanoid-Gym](./humanoid-gym.md)、[DWL](./paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md)、[xbot_sdk_api](./cn-os-xbot-sdk-api.md) | 仿真策略如何校验；应用如何初始化、读取状态和发送控制目标 |
 
-## 开放范围与工程实践
+## 工程实践与开放范围
 
 截至 2026-10-08，Humanoid-Gym 有公开训练/仿真代码；VPP 有训练、评测、真机适配脚本与部分模型/潜数据。`robotera_vla` 是 M7 / π₀.₅ 示例链路，根 README 明确机器人侧 recorder / 遥操作服务不在仓内。SDK 与遥操作文档依赖厂商环境或授权文件。
 

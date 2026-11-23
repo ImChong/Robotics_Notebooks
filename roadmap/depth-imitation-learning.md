@@ -234,6 +234,8 @@ flowchart LR
 - 用 RGB 视频而非 MoCap 做动作迁移
 - 关键词：Pose estimation、Video imitation、[Mimic-Video](../wiki/methods/mimic-video.md)、[WiLoR](../wiki/methods/wilor.md)
 
+- [RoboTryOn：人类第一视角视频 → 目标机器人合成视频与 IDM 动作标签](../wiki/entities/paper-robotryon.md) — 将关键帧换形、骨架流视频合成和逆动力学动作标注串成可训练示范；适合比较纯重定向与视觉/动作双域对齐，注意仍需要每个本体的机器人训练数据。
+
 **方向 B：Multi-modal IL**
 - 结合视觉、触觉、力传感器做多模态技能学习
 - 关键词：multimodal、haptic、[视触融合](../wiki/concepts/visuo-tactile-fusion.md)

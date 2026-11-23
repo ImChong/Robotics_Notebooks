@@ -4,6 +4,8 @@ type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx, disney, open-duck]
 status: complete
 updated: 2026-11-02
+original:
+  - ../../sources/repos/open_duck_mini.md
 related:
   - ./open-duck-playground.md
   - ./open-duck-reference-motion-generator.md
@@ -27,6 +29,8 @@ summary: "Open Duck Mini 是 Disney BDX 双足角色的开源迷你复刻（v2 �
 ---
 
 # Open Duck Mini
+
+## 一句话定义
 
 **Open Duck Mini** 是社区驱动的 **BDX 风格迷你双足机器人**：在娱乐角色外形下，把 **低成本舵机硬件** 与 **MuJoCo Playground RL + Disney 式模仿奖励** 串成可复现的 sim2real 闭环。v2 为当前主线（`Open_Duck_Mini` 的 `v2` 分支）。
 
@@ -130,6 +134,10 @@ flowchart TD
 - [apirrone/Open_Duck_Mini](https://github.com/apirrone/Open_Duck_Mini)（v2 分支）
 - Disney Research：[Design and Control of a Bipedal Robotic Character (BDX)](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/)
 - [Disney Research LA Research 总览归档](../../sources/sites/disney-research-la.md)
+
+## 工程实践
+
+- **低成本舵机下的 Sim2Real 要点：** Feetech 舵机存在明显通信延迟与齿隙；在 `Playground` RL 训练时需显式加入动作延时缓冲（1–2 步）及参考步态平滑激励，并在实机 Raspberry Pi Zero 2W 控制环保持稳定 50 Hz 推理。
 
 ## 关联页面
 

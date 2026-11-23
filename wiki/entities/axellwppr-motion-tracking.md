@@ -1,9 +1,12 @@
 ---
 type: entity
+project_id: axellwppr-motion-tracking
 tags: [repo, humanoid, motion-tracking, teleoperation, mjlab, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 code: https://github.com/Axellwppr/motion_tracking
+code_scope: "main 分支训练与导出源码（train.sh、scripts/{train,eval}.py、active_adaptation/、cfg/）"
+project_distinction: "Axellwppr/motion_tracking 开源仓库工程实现节点（聚焦 mjlab 三阶段训练脚本、WPC 配置与 ONNX 导出）；对应 HEFT 论文方法与 24 kg 真机实验见 paper-heft（arXiv:2607.02332）。"
 summary: "Axellwppr/motion_tracking：HEFT 官方 mjlab 训练栈，支持 G1/L7 全身跟踪、PMG 配对数据、WPC 负载课程与 ONNX 检查点导出。"
 related:
   - ./paper-heft.md

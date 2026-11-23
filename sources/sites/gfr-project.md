@@ -4,6 +4,9 @@
 - **主链接：** <https://jiashunwang.github.io/GfR/>
 - **论文 PDF（镜像）：** <https://jiashunwang.github.io/GfR/static/mat/gfr_paper.pdf>
 - **收录日期：** 2026-06-19
+- **核对日期：** 2026-11-22
+- **核对范围：** 项目主页 `https://jiashunwang.github.io/GfR/`（RSS 2026 标牌、摘要、Long-Horizon Skill Composition / Generalization / MuJoCo / Method Extension 与 BibTeX）
+- **通读：** 已完成
 - **关联论文：** [mtrg_reference_goal_driven_rl_arxiv_2602_20375.md](../papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md)（arXiv:2602.20375；官方项目简称 **GfR**）
 
 ## 一句话

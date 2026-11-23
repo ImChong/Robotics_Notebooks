@@ -5,10 +5,13 @@
 - **标题：** Towards Professional Tennis Styles for Humanoid Robots with Adaptive Motion Planning and Tracking（**AdaPT**）
 - **类型：** paper / humanoid / motion-imitation / ball-sports
 - **arXiv：** <https://arxiv.org/abs/2608.20087>
+- **核对原文：** <https://arxiv.org/html/2608.20087v1>（2026-08-20 提交的 v1）
 - **项目页：** <https://humanoidtennis.github.io/AdaPT/>
 - **代码：** <https://github.com/noitom-robotics/AdaPT>（Apache-2.0）
 - **机构：** 诺亦腾机器人（Noitom Robotics）；上海人工智能实验室；上海交通大学；越疆机器人（Dobot Robotics）
 - **入库日期：** 2026-08-22
+- **核对范围：** arXiv HTML v1 全文：摘要、§1–2 动机与相关工作、§3 数据/速度自适应跟踪/规划/部署、§4 仿真与真机评测、消融及 Sim2Real 问题、§5 结论与局限、附录 A–D（实现、奖励、随机化、真机感知、更多限制与实验）；对照官方项目页及 GitHub README、Stage1 配置和训练/推理入口核查开源范围（2026-11-21）。
+- **通读：** 已完成
 - **索引来源：** [具身智能小站 10 篇盘点](../blogs/wechat_embodied_station_video_contact_control_10_papers_2026-08-22.md)（<https://mp.weixin.qq.com/s/EmC4gNgcQdPX34vxy-qSVQ>）
 - **一句话说明：** 人形网球 **自适应规划–跟踪** 框架：从转播视频/MoCap 提取职业球员风格，分层 MVAE 规划 + 速度自适应跟踪；G1 与 Atom P3 真机对拉/发球，野外发球验证。
 

@@ -12,7 +12,7 @@ tags:
   - max-planck
   - epfl
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2510.18518"
 related:
   - ../methods/model-based-rl.md

@@ -2,8 +2,8 @@
 
 type: entity
 tags: [humanoid, robocup, ros2, booster-robotics, perception, rl, booster]
-status: draft
-updated: 2026-07-26
+status: complete
+updated: 2026-11-22
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./robot-lab.md
@@ -15,11 +15,16 @@ sources:
   - ../../sources/repos/booster-robocup-demo.md
   - ../../sources/repos/ultralytics.md
 summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人设计的足球比赛自主决策框架，集成了 YOLOv8 感知与基于强化学习的视觉踢球算法。"
+original: ../../sources/repos/booster-robocup-demo.md
 ---
 
 # Booster Robotics RoboCup Demo
 
 **Booster Robotics RoboCup Demo** 是由 [Booster Robotics](https://github.com/BoosterRobotics) 官方维护的开源项目，旨在为其人形机器人（尤其是 **Booster K1**）提供参加 RoboCup 足球比赛的完整自主软件方案。
+
+## 一句话定义
+
+**Booster Robotics RoboCup Demo**：Booster Robotics 官方开源的 ROS 2 Humble 人形足球竞赛软件栈，将 YOLOv8 视觉感知（TensorRT/ONNX）、裁判机 GameController UDP 通信、`BehaviorTree.CPP` 决策行为树与强化学习 `RLVisionKick` 踢球技能集成在 Booster K1/T1 平台。
 
 ## 英文缩写速查
 
@@ -29,6 +34,11 @@ summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人�
 | ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
 | SDK | Software Development Kit | 软件开发工具包 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
+## 为什么重要
+
+- **少见的工业级开源真机竞赛整包**：不同于只发布仿真 RL 训练代码的科研论文，该项目直接提供了可上真实赛场（NVIDIA Jetson Jetpack 6.2 + Booster SDK）的 `vision` / `brain` / `game_controller` 三节点 C++/Python 工程架构。
+- **清晰展示了 2026 新规则与单播限制痛点**：仓库 README 显式警示当前主分支多机通信代码尚需对齐 RoboCup 2026 禁止单播与压缩封包体积的最新规则要求，为战队二次开发提供直接切入点。
 
 ## 系统架构
 
@@ -48,6 +58,10 @@ summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人�
 
 - 负责将裁判机的网络广播包转换为 ROS 2 话题，实现比赛状态的自动化流转。
 
+## 核心原理
+
+系统以 `brain` 为 100 Hz 决策中枢，通过 ROS 2 话题汇集 `vision`（YOLOv8 球/柱/机器人检测及地面外参投影）和 `game_controller`（裁判机 UDP 广播包校验），按比赛状态在 `BehaviorTree.CPP` 行为树（`game.xml`）中切换搜球、追球、站位与 `RLVisionKick`（基于 `htwk-gym` 训练的闭环视觉强化学习踢球策略），再通过 `RobotClient` RPC 下发给机器人底层运控接口。
+
 ## 硬件与软件需求
 
 - **硬件**: 
@@ -56,6 +70,12 @@ summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人�
 - **软件**: 
     - 操作系统：Ubuntu 22.04 + ROS 2 Humble。
     - 核心依赖：Booster Robotics SDK。
+
+## 工程实践
+
+- **机型差异化配置**：默认适配 Booster K1（固件 v1.5.2+ 方可开启 `RLVisionKick.enableAutoVisualKick`）；若在 Booster T1 上运行，须按 README 修改 `robot_height=1.12`、`odom_factor=1.2` 并关闭自动视觉踢球，同时依据 Jetpack 6.2 机器替换 `.engine` TensorRT 检测与分割权重。
+- **真机/仿真双入口排查**：仿真调试运行 `scripts/sim_start.sh` 与 `start_vision.sh sim:=true`；若跨 Windows 克隆并在 Booster Studio 运行遇解释器 `
+` 报错，需执行 CRLF 转 LF 清理后再编译无 CUDA ONNXRuntime 版本。
 
 ## 技术特色：RLVisionKick
 
@@ -69,6 +89,11 @@ summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人�
 - 验证视觉算法的有效性。
 - 调试状态机逻辑与协作策略。
 - 模拟不同的比赛地形与光照条件。
+
+## 局限与风险
+
+- **规则合规滞后风险**：README NOTICE 明确指出主干的 `brain_communication.cpp` 尚未完全适配最新 RoboCup 禁单播及带宽限额新规，参赛团队需参考 `sandbox/support_2026_game_controller` 分支改造多机通讯。
+- **版本与固件锁定严苛**：视觉模型加速文件与 Jetpack 6.2 及 TensorRT 10.3 紧耦合，跨设备部署需自行重新导出引擎。
 
 ## 源码运行时序图
 
@@ -120,3 +145,8 @@ sequenceDiagram
 - [BoosterRobotics/robocup_demo 源码仓库](../../sources/repos/booster-robocup-demo.md)
 - Booster Robotics 官方文档
 - 源码核对（2026-11-02）：BoosterRobotics/robocup_demo@fa4f31c，读过 README.md、scripts/start.sh、scripts/sim_start.sh、scripts/start_vision.sh、src/brain/src/main.cpp、brain.cpp、brain_tree.cpp、robot_client.cpp、behavior_trees/game.xml、src/vision/src/vision_node.cpp、src/game_controller/src/game_controller_node.cpp；时序图依据以上文件，未运行代码。
+
+## 推荐继续阅读
+
+- 官方开源仓库：<https://github.com/BoosterRobotics/robocup_demo>
+- 上游技能训练框架：[htwk-gym](../methods/htwk-gym.md)

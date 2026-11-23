@@ -232,6 +232,7 @@ sources:
 - [TacO（触觉传感器操作基准）](../entities/paper-taco-tactile-sensor-benchmark.md) — 接触丰富任务上的跨模态触觉选型证据
 - [SoftVTBench（可变形视触觉安全基准）](../entities/paper-softvtbench.md) — 过程级物理安全 vs 终端 Goal
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 可规模化人侧接触–运动–视觉数据（压阻手套；首批约 100 h 已公开）
+- [Nimo Robotics：N1 Glove / D1 Hand / Nimo Core](../entities/nimo-robotics-contact-intelligence.md) — 厂商首发的匹配运动学示教与视觉/触觉/声音接触操作方案，尚无公开可复现评测或源码。
 - [NeoteAI 𝒩₀-Foundation / TWAM](../entities/neoteai.md) — NeoReal/NeoSim 接触套件 + 触觉原生 WAM
 - [EgoPHI](../entities/paper-egophi.md) — **ego 视觉** 预测双手–物体 mesh **per-vertex 接触与 3D 力**；SOFA 仿真监督 + 透光真机 sim-to-real（arXiv:2608.13014；ETH SIPLAB）
 - [FM-VLA](../entities/paper-fm-vla.md) — 力觉长程记忆 VLA：接触事件计数与非马尔可夫接触操作（arXiv:2607.18231）

@@ -6,15 +6,17 @@
 - **缩写：** **Perceptive BFM** / **PMT**（Perceptive Motion Tracking）
 - **类型：** paper / humanoid / behavior-foundation-model / perceptive-locomotion / motion-tracking
 - **项目页：** <https://acodedog.github.io/perceptive-bfm/>
-- **arXiv：** <https://arxiv.org/abs/2606.08059>
+- **arXiv：** <https://arxiv.org/abs/2606.08059>（[v3](https://arxiv.org/abs/2606.08059v3)，2026-10-16 修订）
 - **PDF：** <https://arxiv.org/pdf/2606.08059>；项目页亦提供 submission PDF
-- **代码：** <https://github.com/Mondo-Robotics/PMT>（**已开源**，2026-07-22 项目页核查）
+- **代码：** <https://github.com/Mondo-Robotics/PMT>（**已开源**，636 文件，2026-11-21 复核）
 - **资产：** Hugging Face dataset `aCodeDog/PMT-assets`
 - **作者：** Wang, Zifan; Li, Yizhao; Ma, Teli; Zhang, Qiang; Fan, Yudong; Xu, Hao; Yang, Shuo; Liang, Junwei
 - **机构：** 妙动科技；香港科技大学（广州）；香港科技大学；中国科学技术大学人工智能研究院；摩多机器人（代码发布方）
 - **会议：** CoRL 2026（submission，under review）
 - **入库日期：** 2026-06-11
-- **再核日期：** 2026-07-22
+- **再核日期：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `arXiv:2606.08059v3` 全文 PDF（全 1375 行抽取文本：§1–§6、Table 1–10、Algorithm 1–2 与附录 A.1–A.13，含 v3 对 Table 2 pipeline-matched 基线的更正与 Map-corruption 探针）及 `Mondo-Robotics/PMT` README。
 - **一句话说明：** 在 **保留原始人体运动参考为部署命令** 的前提下，用 **机器人中心地形感知** 把人类运动先验落地到楼梯、坡、稀疏支撑与户外真机；**TCRS** 离线合成地形一致监督，**PMT** 经盲 teacher、视觉 student、目标帧对齐蒸馏与 identity-gated 残差微调，在 **Unitree G1** 上单策略覆盖跟踪、风格动作、杂技与 mocap 遥操作。
 
 ## 核心论文摘录（MVP）
