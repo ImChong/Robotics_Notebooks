@@ -163,4 +163,4 @@ flowchart TD
 ## 推荐继续阅读
 
 - [原文 supplementary：步态定义、参数与对照实验](https://arxiv.org/html/2611.25958v1)
-- [经典 CPG-RL（作者 2022，见本文引用）](https://doi.org/10.1109/LRA.2022.3196208)
+- [经典 CPG-RL（作者 2022，见本文引用）](https://doi.org/10.1109/LRA.2022.3218167)
