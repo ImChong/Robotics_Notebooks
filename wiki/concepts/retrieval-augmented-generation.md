@@ -2,7 +2,7 @@
 type: concept
 tags: [rag, retrieval, llm, grounding, knowledge-base, agent, vlm, nlp]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-23
 summary: "RAG（Retrieval-Augmented Generation）在生成前从外部知识库检索相关片段再条件生成，用可更新、可溯源的非参数记忆补足 LLM 参数化知识，是 agent grounding、VLM 约束与 LLM Wiki 对照范式的共同基座。"
 related:
   - ../concepts/llm-wiki-karpathy.md
@@ -15,6 +15,7 @@ related:
   - ../entities/easy-vibe.md
   - ../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md
   - ../entities/paper-scanford-robot-powered-data-flywheel.md
+  - ../entities/paper-hallucination-computational-boundary.md
   - ../concepts/data-flywheel.md
   - ../../schema/ingest-workflow.md
 sources:
@@ -126,6 +127,7 @@ flowchart LR
 ## 关联页面
 
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 预编译知识 vs 查询时 RAG
+- [幻觉作为计算边界（AAAI 2026）](../entities/paper-hallucination-computational-boundary.md) — 理想 Oracle 只证明特定形式化构造的零误差；实际 RAG 仍须验证检索质量、事实正确性与生成忠实度
 - [AI Auto-Research（学术研究自动化）](./ai-auto-research.md) — RAG 在 S2 文献综合中的位置
 - [Transformer](./transformer.md) — 现代 RAG 生成器骨干
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 多模态策略与 catalog/技能检索
