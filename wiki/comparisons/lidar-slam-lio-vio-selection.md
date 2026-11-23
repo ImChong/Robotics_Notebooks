@@ -2,7 +2,7 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-23
 related:
   - ../concepts/lidar-slam-survey-2026.md
   - ../queries/slam-second-spring-embodied.md
@@ -12,6 +12,7 @@ related:
   - ../entities/navigation2.md
   - ../entities/fast-lio.md
   - ../entities/lio-sam.md
+  - ../entities/visloc-rs.md
   - ../entities/orb-slam3.md
   - ../entities/vins-fusion.md
   - ../entities/open-vins.md
@@ -94,6 +95,7 @@ summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM
 | **OpenVSLAM** | 单/双目/RGB-D | 特征 SLAM | 有 | 模块化 | 主线迁移 stella_vslam |
 | **Kimera** | 立体 + IMU | VIO + RPGO + 语义 | ROS | 语义度量地图 | 组件多、学习曲线陡 |
 | **RTAB-Map** | RGB-D/立体/激光 | 记忆管理 | ROS/ROS2 | 一套 GUI 走通 | 高动态需额外处理 |
+| **[visloc-rs](../entities/visloc-rs.md)** | 照片/单目/双目 + 可选 IMU | Rust SfM / Basalt-port VI-SLAM、地图定位及 3DGS | RustDDS 节点，需实机兼容验证 | Rust/wgpu 单仓多模块、COLMAP/3DGS 输出、地图再定位与 Nav2 仿真实例 | 部分链路实验性；Nav2 结果尚在仿真、ROS 2 安装互通未实测 |
 | **voxgraph** | 深度/TSDF | 位姿图 + Voxblox | ROS | 多会话子图 | 生态小于 LIO 系 |
 | **[cuVSLAM](../entities/paper-cuvslam.md)** | 1–32 相机 / RGB-D / VI | CUDA 特征+BA | PyCuVSLAM + Isaac ROS | Jetson 实时、免调参默认 | 绑定 NVIDIA 栈；Multisensor 实验 |
 | **Ultra-Fusion** | CIL + 轮速/GNSS 可选 | 统一滑窗 BA + FRS | 待发布 | **可配置 WIO/VIO/LIO/LVIO**、退化调度、在线时空标定 | 复杂度高；ITS 多平台评测导向 |
