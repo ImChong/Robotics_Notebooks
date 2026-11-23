@@ -14,6 +14,8 @@ related:
   - ./paper-driveteach-vla.md
   - ../overview/autonomous-driving-core-algorithms-series.md
   - ../methods/vla.md
+  - ../methods/imitation-learning.md
+  - ../methods/diffusion-policy.md
 sources:
   - ../../sources/papers/drivesta_arxiv_2611_27515.md
   - ../../sources/sites/drivesta.md
@@ -174,6 +176,8 @@ sequenceDiagram
 - [DriveTeach-VLA](./paper-driveteach-vla.md)
 - [自动驾驶核心算法技术地图](../overview/autonomous-driving-core-algorithms-series.md)
 - [视觉语言动作模型 VLA](../methods/vla.md)
+- [模仿学习](../methods/imitation-learning.md) — 单示范监督与多模态监督扩展的共同基础
+- [Diffusion Policy](../methods/diffusion-policy.md) — 多峰轨迹生成和去噪解码的跨领域方法对照
 - [导航纵深路线（Stage 3 学习型导航）](../../roadmap/depth-navigation.md)
 
 ## 参考来源
