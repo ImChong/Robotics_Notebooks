@@ -7694,6 +7694,198 @@ a.kb-chat-citation-passage:hover {
   color: var(--on-accent);
 }
 
+/* ── 8. 纵深与主路线正文折叠框、时间线徽标及内嵌阶段知识树 ──────────────── */
+:root:not([data-ui="classic"]) .roadmap-major-section {
+  margin: 0 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-btn);
+  background: var(--bg);
+  transition: border-color var(--m-in) var(--ease);
+}
+:root:not([data-ui="classic"]) .roadmap-major-section[open] {
+  border-color: var(--line-strong);
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-summary {
+  padding: 13px 16px;
+  gap: 10px;
+  background: var(--bg-alt);
+  transition: background-color var(--m-in) var(--ease);
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-summary:hover {
+  background: var(--surface-hover);
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-summary::before {
+  border-right-color: var(--ink-muted);
+  border-bottom-color: var(--ink-muted);
+  opacity: 0.9;
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-summary:hover::before,
+:root:not([data-ui="classic"]) .roadmap-major-section[open] > .roadmap-major-section-summary::before {
+  border-right-color: var(--accent);
+  border-bottom-color: var(--accent);
+  opacity: 1;
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-summary > h2.detail-heading {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-body {
+  padding: 4px 18px 18px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-foot {
+  margin-top: 18px;
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-collapse {
+  width: 100%;
+  min-height: 36px;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-btn);
+  background: var(--bg-alt);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition:
+    background-color var(--m-in) var(--ease),
+    border-color var(--m-in) var(--ease),
+    color var(--m-in) var(--ease);
+}
+:root:not([data-ui="classic"]) .roadmap-major-section-collapse:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+:root:not([data-ui="classic"]) .roadmap-timeline::before {
+  width: 1px;
+  background: var(--line-strong);
+  border-radius: 0;
+}
+:root:not([data-ui="classic"]) .roadmap-timeline-node {
+  box-shadow: 0 0 0 3px var(--surface);
+}
+:root:not([data-ui="classic"]) .roadmap-timeline-node-stage {
+  top: 14px;
+  border-radius: var(--r-btn);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--on-accent);
+  letter-spacing: 0.02em;
+}
+:root:not([data-ui="classic"]) .roadmap-timeline-node-dot {
+  top: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  background: var(--surface);
+  border: 1.5px solid var(--accent);
+}
+@media (max-width: 640px) {
+  :root:not([data-ui="classic"]) .roadmap-timeline-node-stage {
+    top: 14px;
+  }
+  :root:not([data-ui="classic"]) .roadmap-major-section-summary {
+    padding: 11px 13px;
+  }
+}
+
+:root:not([data-ui="classic"]) .roadmap-vtree-stage {
+  border-radius: var(--r-btn);
+  border-color: var(--line);
+  background: var(--bg-alt);
+}
+:root:not([data-ui="classic"]) .roadmap-vtree-summary {
+  padding: 10px 14px;
+  transition: background-color var(--m-in) var(--ease);
+}
+:root:not([data-ui="classic"]) .roadmap-vtree-summary:hover {
+  background: var(--surface-hover);
+}
+:root:not([data-ui="classic"]) .roadmap-vtree-step {
+  border-radius: var(--r-btn);
+  font-family: var(--font-mono);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+:root:not([data-ui="classic"]) .roadmap-vtree-count {
+  font-family: var(--font-mono);
+}
+:root:not([data-ui="classic"]) .roadmap-vtree-links {
+  border-top-color: var(--line);
+  background: var(--bg);
+}
+:root:not([data-ui="classic"]) .roadmap-vtree-link-row {
+  border-bottom: 1px solid var(--line);
+}
+
+:root:not([data-ui="classic"]) .selftest-answers {
+  padding: 10px 16px 12px;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--r-btn);
+  background: var(--bg-alt);
+}
+:root:not([data-ui="classic"]) .selftest-answers > summary {
+  margin: -10px -16px -12px;
+  padding: 10px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color var(--m-in) var(--ease);
+}
+:root:not([data-ui="classic"]) .selftest-answers > summary:hover {
+  background: var(--surface-hover);
+}
+:root:not([data-ui="classic"]) .selftest-answers[open] > summary {
+  margin: -10px -16px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+:root:not([data-ui="classic"]) .roadmap-flow-details,
+:root:not([data-ui="classic"]) .roadmap-stage-flow-details {
+  border-radius: var(--r-btn);
+  border-color: var(--line);
+  background: var(--bg-alt);
+}
+
+:root:not([data-ui="classic"]) .roadmap-kmap {
+  border-radius: var(--r-btn);
+  border: 1px solid var(--line);
+}
+:root:not([data-ui="classic"]) .roadmap-ltree-node {
+  border-radius: var(--r-btn);
+  border-width: 1px;
+  border-color: var(--line-strong);
+  background: var(--surface);
+}
+:root:not([data-ui="classic"]) .roadmap-ltree-node:hover,
+:root:not([data-ui="classic"]) .roadmap-ltree-node:focus-visible {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  transform: none;
+  box-shadow: none;
+}
+:root:not([data-ui="classic"]) .roadmap-ltree-mark {
+  border-radius: var(--r-btn);
+  border-width: 1px;
+  font-family: var(--font-mono);
+}
+:root:not([data-ui="classic"]) .roadmap-ltree-tab[aria-pressed="true"] > .roadmap-ltree-mark {
+  color: var(--on-accent);
+}
+:root:not([data-ui="classic"]) .roadmap-ltree-gate {
+  border-radius: var(--r-btn);
+  border-color: var(--line);
+  font-family: var(--font-mono);
+}
+
 /* 页脚（保留原版权文本，采用等宽工程样式） */
 :root:not([data-ui="classic"]) .footer {
   border-top: 1px solid var(--line);
