@@ -139,3 +139,22 @@ test('self-hosted Geist and Geist Mono woff2 assets exist and are registered in 
     assert.ok(styleCss.includes(`url('${rel}')`), `style.css declares @font-face for ${rel}`);
   }
 });
+
+test('latest and hub rows keep .node-health inline-flex on mobile and reset negative margin on desktop', () => {
+  const styleCss = readDoc('style.css');
+  const bandStart = styleCss.indexOf('/* ── 6. Band 03 & 04：密集工程台账（Latest & Hubs）');
+  const bandEnd = styleCss.indexOf('/* ── 7. 全站子页与共享组件对齐', bandStart);
+  assert.ok(bandStart >= 0 && bandEnd > bandStart, 'Band 03 & 04 CSS block exists');
+  const bandCss = styleCss.slice(bandStart, bandEnd);
+
+  assert.equal(
+    /display\s*:\s*initial/.test(bandCss),
+    false,
+    'Band 03 & 04 must not reset .home-latest-row > * / .home-hub-row > * to display: initial on mobile',
+  );
+  assert.match(
+    bandCss,
+    /:root:not\(\[data-ui="classic"\]\)\s+\.home-latest-row\s*>\s*\.node-health[\s\S]*?:root:not\(\[data-ui="classic"\]\)\s+\.home-hub-row\s*>\s*\.node-health[\s\S]*?margin:\s*0\s*;/,
+    'Desktop .home-latest-row/.home-hub-row > .node-health resets negative margin to 0',
+  );
+});
