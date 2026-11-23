@@ -88,6 +88,8 @@ flowchart LR
 - 把同一个抓取任务分别用 leader 臂与 VR 手柄采一遍，对比末端精度与操作员疲劳
 
 ### 推荐读什么
+
+- [SO-ARM102 开源领从机械臂](../wiki/entities/so-arm102-robonine.md) — LeRobot、平行夹爪及硬件配电的低成本示教硬件实例。
 - [数据手套 vs 视觉遥操作（对比）](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集通道选型主入口
 - [诺亦腾机器人 · Adam-U](../wiki/entities/noitom-robotics.md) — 查看动捕输入如何经 ROS 2 重定向到机器人关节状态，并区分头显双目回传与录制数据。
 - [XRoboToolkit](../wiki/entities/paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（PICO/Quest）
@@ -238,6 +240,8 @@ flowchart LR
 - 对"有/无失败示范过滤"两组数据各训一版策略，验证数据质量对收敛的影响
 
 ### 推荐读什么
+
+- [Hebbian RUA：语言到机器人工具执行](../wiki/entities/hebbian-rua.md) — 将观测、模型工具调用、运行时与电机控制分层。
 - [Imitation Learning](../wiki/methods/imitation-learning.md) 与 [Diffusion Policy](../wiki/methods/diffusion-policy.md) — 遥操作数据的主要消费者
 - [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) 与 [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — 无机器人示范 → 人形全身 visuomotor
 - [HALO：人机对齐的全身移动操作示教](../wiki/entities/paper-halo-2611-16439.md) — Stage 5 采集到部署案例：末端牵引 + 被动差速平台、去手与底盘延迟对齐、π₀.₅/RTC 训练；与无机器人采集区分

@@ -229,6 +229,9 @@ flowchart LR
 - 为自己的场景选一类部署接口，写清输入输出与是否冻结基础 VLA
 
 ### 推荐读什么
+
+- [AFFECT：动作响应忠实度训练](../wiki/entities/paper-affect-action-effect-matching.md) — 区分生成逼真与真实动作后果，适合作为执行前模型评估。
+- [WAM-Policy：四足生成策略适配与加速](../wiki/entities/paper-wam-policy.md) — OPSD/M-OPD 让生成式策略进入四足全身控制，注意仿真与 Go2 真机落差。
 - [ThinkWAM：提议—再思考—精炼](../wiki/entities/paper-thinkwam-2611-21258.md) — 执行前以预测未来与动作残差重新生成动作；两遍推理的真机 101.2 ms 与 LIBERO 153.48 ms 不同口径。
 - [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
