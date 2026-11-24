@@ -219,6 +219,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [RoboUniverse-10K](./paper-robouniverse-10k.md) — 大规模 Real2Sim 环境与独立留出评测，对比复杂场景 robot-use 基准。
+
 - [RoboDojo](./robodojo.md)
 - [Embodied First Exam](./embodied-first-exam.md)
 - [VLA 方法](../methods/vla.md)
