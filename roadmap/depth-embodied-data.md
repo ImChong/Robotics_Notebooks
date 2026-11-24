@@ -205,6 +205,7 @@ flowchart LR
 - [TouchTwin：真实触觉约束的数据增广](../wiki/entities/paper-touchtwin-2611-17619.md)：同步真实触觉与 MuJoCo 物理回放，扩充有力标签的示范。
 - [RoboTryOn：人类视频合成带动作标签的灵巧机器人示范](../wiki/entities/paper-robotryon.md) — Stage 4 人视频→机器人数据的生成式路线；重点验收视频真实性、IDM 动作回放、腕部 IK 与数据成本（训练仍需本体机器人数据）。
 - [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) — 长尾与罕见物理交互的低成本合成
+- [Spatial Foundry：空间智能多模态数据集](../wiki/entities/paper-spatial-foundry.md) — 以可编辑住宅场景控制相机路径和对象状态，提供对齐的 RGB-D、几何与视频监督；完整数据须核实访问许可，不当作机器人动作演示。
 - [VBot Exo2Ego Policy](../wiki/entities/paper-vbot-exo2ego-policy.md) — 第三人称操作视频经 MiniMax-H3/LoRA 生成第一视角 RGB；训练期几何退火与手–物监督，推理无需目标相机标定；使用前须验证合成接触/动作的真实性
 - [ARSTAG](../wiki/entities/paper-arstag.md) — 单图与任务指令经场景重建、专家生成和扩增产出仿真示范，归合成数据支路，不当作实机采集装置
 - [Perceptron Isaac 0.5](../wiki/entities/perceptron-isaac-05.md) — 通用视频置换 teleop 的开源等高线，本阶段最可操作的量化锚点

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, real2sim, sim2real, scene-generation, digital-twin, digital-cousin, policy-evaluation, nvidia, gear, droid, isaac-lab, omnigibson, 3dgs, vla]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-24
 arxiv: "2606.28276"
 code: https://github.com/NVlabs/SimFoundry
 related:
@@ -240,6 +240,8 @@ sequenceDiagram
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 校准层：real-to-sim 策略评测（均值 Pearson 0.911）
 
 ## 关联页面
+
+- [Spatial Foundry](./paper-spatial-foundry.md) — 以合成住宅场景生成跨视角、几何及状态对齐监督，区别于实拍视频到可交互数字孪生的 Real2Sim 闭环。
 
 - 上游路线：[Sim2Real](../concepts/sim2real.md)、[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)；运行层 [BEHAVIOR-1K / OmniGibson](./behavior-1k.md)。
 - 同类 Real2Sim 对照：[Agentic Real2Sim](./paper-agentic-real2sim.md)、[Lucida](./paper-lucida-r2s.md)、[SceneAgent](./paper-sceneagent-real2sim-capture-physics.md)、[CRISP](../methods/crisp-real2sim.md)。
