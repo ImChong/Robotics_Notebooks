@@ -15,6 +15,7 @@ sources:
   - ../../sources/repos/fastrovervla.md
 related:
   - ../methods/vla.md
+  - ../methods/action-chunking.md
   - ../concepts/control-inference-frequency-decoupling.md
   - ../comparisons/vla-acceleration-25-methods-2026.md
   - ./paper-driveteach-vla.md
@@ -153,6 +154,17 @@ Qwen3-VL-2B，3 s 开放环，ORAD-3D 636 窗口/11 序列，RELLIS-3D 650 窗�
 - 复用预算与动作视野分别选型，不能把 K 当作轨迹点数。
 - 部署前必须独立验证环境变化、状态估计误差与闭环控制安全。
 
+## 与其他工作对比
+
+| 对照 | 机制差异与证据边界 |
+|---|---|
+| 逐步刷新 / 固定周期刷新（本文基线） | 自适应方法减少模型请求；冻结预测协议下两数据集 FDE 分别为 0.593 / 0.526 m，固定周期为 0.599 / 0.584 m。等预算均匀刷新与自适应差距很小，不宜把主要收益归于调度评分。 |
+| [Action Chunking](../methods/action-chunking.md) | 通用动作块部署可直接消费序列或在重规划时替换尾部；本文每步利用实测速度和曲率修正活动计划，将修正后尾部持续写回。 |
+| [Real-Time Chunking](./paper-real-time-chunking.md) | RTC 在执行期间异步生成下一动作块，以已提交前缀约束生成；FastRoverVLA 在刷新间复用已解码计划，做运动学状态修正，官方回放为串行回调。 |
+| [DriveTeach-VLA](./paper-driveteach-vla.md) | 前者侧重视觉与轨迹条件，本文侧重冻结预测后的执行适配。 |
+
+以上为机制对照；不同数据、任务、硬件和评测协议的结果不能直接排序，尤其不能用开放环轨迹误差推断真机任务成功率。
+
 ## 工程实践
 
 已公开 MIT 执行核心、配置与 1286 窗口数值重放，未打包原始数据集、骨干权重和原始多骨干 GPU 推理运行时。Python 3.10+ CPU 路径：
@@ -177,6 +189,7 @@ python scripts/reproduce.py --verify
 ## 关联页面
 
 - [VLA](../methods/vla.md)
+- [Action Chunking](../methods/action-chunking.md)：动作预测视野、消费步数与刷新策略的分离。
 - [控制与推理频率解耦](../concepts/control-inference-frequency-decoupling.md)
 - [VLA 加速方法比较](../comparisons/vla-acceleration-25-methods-2026.md)
 - [DriveTeach-VLA](./paper-driveteach-vla.md)：改善视觉与轨迹条件，FastRoverVLA 则维护解码动作。
