@@ -128,6 +128,7 @@ flowchart LR
 - [HiPHI](../wiki/entities/paper-hiphi.md) — 90 Hz / 55 关节 BVH 与同步物体 CSV/OBJ；先统一厘米/米、Y-up 与时间，再做人体–物体联合重定向；数据门控，Viewer 已开放
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 选型主入口
 - [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md) — 视频/低成本采集
+- [FAB](../wiki/entities/paper-fab.md) — Stage 2 单目视频稠密点与接触估计，进一步对齐静态场景并生成G1参考；人体帧率与整段优化耗时分开评估。
 - [HumanCalib](../wiki/entities/humancalib.md) — Stage 2 多相机采集的**外参前处理**：同步视频 + 已知内参 + 身高，由走路人体估计相机几何/尺度/竖直方向，导出 Pose2Sim；不是最终人体动作或重定向结果
 - [EgoMo3R](../wiki/entities/paper-egomo3r.md) — 第一视角视频→统一场景与 SMPL-X 全身运动，可作为重定向前的参考动作数据源；本身不执行机器人重定向
 - [MacroHands](../wiki/entities/macrohands.md) — Ego 单/双目 3D 手部 + 相机位姿上游数据质量；读 Cam-MPJPE、Action MPJPE 与误认率，**不是**机器人重定向器（官方暂未开放代码）
