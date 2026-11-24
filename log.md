@@ -527,6 +527,10 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-24] ingest | sources/blogs/wechat_zane_hub_lidar_depth_camera_2026-11-24.md — 激光雷达与深度相机选型及融合
+
+通读用户提供原文，核对两款官方规格与误差算例；沉淀传感器分工、共同失效、时空同步、带宽和降级验收，挂载导航、感知越障及整机硬件路线。
+
 ## [2026-11-24] ingest | sources/papers/roboeval_solution_arxiv_2611_11464.md — 收录 RoboEval 冠军方案
 
 核对作者技术报告、项目页、公开源码与主办方最终榜单；整理评分驱动的 VLA 离策略后训练、推理参数调优及失败恢复数据闭环，挂载 VLA 与具身测评路线。代码及权重已开放，未执行复现。
