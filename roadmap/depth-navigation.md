@@ -95,6 +95,7 @@ flowchart LR
 - [visloc-rs：Rust SfM / 双目惯性 SLAM / 3DGS / 地图定位](../wiki/entities/visloc-rs.md) — Stage 1 的 Rust/wgpu 一体化工程案例：Basalt 移植的 VIO、跨会话地图定位与 Nav2 仿真集成；照片 3DGS 不自动成为碰撞物理场景。
 - [RigVis：双目 SLAM + 松耦合 ESKF + 稠密地图](../wiki/entities/rigvis.md) — Stage 1 C++17 实现：ORB/PnP、Ceres BA/回环、SGBM；独立 VIO 输出、可选（默认关闭）ICP；KITTI 00 作者报告 1.20% / 2.81 m，未独立复现。
 - [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md) — memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
+- [SE(3)-LIVOM](../wiki/entities/paper-se3-livom.md) — 双 LiDAR / IMU / 相机，内点反馈降采样与异步子图 BA；GrandTour 测试平均 ATE 1.40 cm，GPL-2.0 源码已开放。
 - [KILVO](../wiki/entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；已开源（ROS Noetic C++ GPL-2.0 + 15 段 rosbag）
 - [ABot-Recon](../wiki/entities/paper-abot-recon.md) — 阿里 AMap CV Lab，固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建，状态不随序列长度增长；Oxford Spires ATE 4.35 m（约 −40%），与 SLAMFormer-∞ 同属单目稠密流式 SLAM 前沿；已开源（GitHub + HF 权重）
 
