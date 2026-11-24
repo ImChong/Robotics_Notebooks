@@ -230,6 +230,7 @@ flowchart LR
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
 - [Uni-Robot-Agent / OpenRUA](../wiki/entities/paper-uni-robot-agent.md) — Stage 4 统一 Tool/环境适配器、带回执的执行与资源调度；同一 Qwen 在 RoboDojo 的 1.90→31.39 是跨 harness 比较而非新权重训练。工程侧可对照已发布 ARX ONE 与仅源码可用的 Piper-X；复现实验应区分 Score/SR、相机标定、深度输入和真机安全条件。
 - [STVLA](../wiki/entities/paper-stvla-spatial-temporal-memory.md) — 用空间几何与有界历史记忆改善长任务中遮挡与状态歧义
+- [HeLM](../wiki/entities/paper-helm-2611-02660.md) — 事件触发的语言状态更新与跨指令记忆，适合对照视觉记忆和分层执行的任务边界。
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
 - [ARP：异步机器人策略](../wiki/entities/paper-asynchronous-robot-policies.md) — 将 VLM 低频语义缓存与自带实时视觉的高频动作专家分进程运行，训练显式建模缓存陈旧和执行延迟；动态扰动更稳，但通用 RoboLab 仍落后 π0.5（官方源码/权重待发布）
 - [2026 年 VLA 开源生态三转变](../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md) — 按策略模型、实验框架、统一评测与后训练系统选择复现入口；从同协议基线再到部署/后训练，不把工具框架当成新的 VLA 模型
