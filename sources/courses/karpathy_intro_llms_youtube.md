@@ -51,7 +51,18 @@
 - 工具调用：模型发出 `|BROWSER|` 等特殊 token，外层 runtime 执行工具并把结果塞回上下文；靠微调样本与 system message 教会。
 - 与 2015 博文 [Unreasonable Effectiveness of RNNs](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) 对照：今日 base model 管线 **RNN → Transformer**，高层逻辑相似。
 
+## LLM OS 专题核对（2026-11-24）
+
+- **核对范围：** 作者官方 YouTube 视频章节索引及用户提供的演讲 LLM OS 幻灯片截图；另对照 [42:15–45:43 的英文自动转录](https://youtube2text.diguardia.org/v/1hr-talk-intro-to-large-language-models-zjkBMFhNj_g)（第三方转录载体，仅作讲者原话辅助定位）。未逐段观看全片；官方 PDF 入口可见但正文未取得。
+- **通读：** 未完成
+- **专题定位：** [42:15 LLM OS](https://www.youtube.com/watch?v=zjkBMFhNj_g&t=2535s)，截至 45:43 切换至安全主题。
+- **图中模块：** LLM 对应 CPU，context window 对应 RAM；文件系统与 embeddings 对应 disk；计算器、Python interpreter、terminal 对应传统软件工具；video/audio 对应外设 I/O；browser 与 other LLMs 为外部连接对象。
+- **原文边界：** 这是 2023 年演讲对未来计算架构的类比，不是可安装的 OS 或具体代码项目。讲者把可评估奖励的狭窄领域自我改进作为可能性，不能读成通用自我改进已实现。图中的双向连线表示资源交互，未规定协议、调度器或执行顺序。
+- **源码：** 本节为架构示意，未给出该 LLM OS 的独立运行入口；不将演讲中其他示例代码当作这一架构的实现。
+
 ## 对 wiki 的映射
+
+- [LLM OS 架构概念](../../wiki/concepts/llm-os-karpathy.md) — 专题笔记与架构图
 
 - [`wiki/entities/andrej-karpathy.md`](../../wiki/entities/andrej-karpathy.md)
 - [`wiki/concepts/deep-learning-foundations.md`](../../wiki/concepts/deep-learning-foundations.md)
