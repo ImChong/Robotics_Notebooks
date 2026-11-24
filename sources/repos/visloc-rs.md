@@ -66,3 +66,7 @@ cargo run --release --example basalt_euroc_online_slam_demo \
 - [导航集成与实验边界](https://github.com/rsasaki0109/visloc-rs/blob/main/docs/navigation.md)
 - [VI-SLAM 评测](https://github.com/rsasaki0109/visloc-rs/blob/main/docs/vi_slam_benchmarks.md)
 - [SfM 评测](https://github.com/rsasaki0109/visloc-rs/blob/main/docs/sfm_benchmarks.md)
+
+## 2026-11-24 增量核查
+
+官方 [README](https://github.com/rsasaki0109/visloc-rs/blob/main/README.md) 已列出 `pip install visloc`；只核查此安装入口，未运行 Python 包。原 2026-11-23 固定版本通读记录仍保留。

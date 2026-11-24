@@ -120,6 +120,8 @@ flowchart LR
 - 用 LoRA 把一个小 VLA 微调到自己的数据上，记录数据量–成功率曲线
 
 ### 推荐读什么
+
+- [stereovlm](../wiki/entities/paper-stereovlm.md) — 标定双目几何与视觉语言骨干的空间推理。
 - [WALL-OSS-1.0：原生 VLA 预训练与多分支动作生成](../wiki/entities/wall-oss-1-0.md) — 自变量 Qwen3.5 原生语言/视觉/动作预训练，Action Expert + RTC、Lite/Nano/Gen/AR 家族；区分 312 项零样本真机 55.1% 与 X2Real 仿真 67.55 分，API 可申请但 1.0 代码/权重未核实。
 - [BiCAT：双臂协调动作分词](../wiki/entities/paper-bicat.md) — 共享 token 原语、跨臂注意力与两块动作预测，补齐离散动作接口。
 - [VLA](../wiki/methods/vla.md) 与 [VLA 知识链汇总](../wiki/overview/hub-vla.md) — 主线索引页
@@ -210,6 +212,8 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+
+- [intrinsic-core](../wiki/entities/intrinsic-core.md) — 本地运行时、硬件抽象和工业部署接口的工程参考。
 - [PGX：人形长程任务的物理接地执行](../wiki/entities/paper-pgx-2611-26596.md) — 对照「单个 VLA 承担全任务」：谓词 FSM 负责阶段与恢复，WCL 负责位置精度，同权重 GR00T 咖啡任务 C0 35%→80%；源码暂无公开入口。
 - [H-VLA（关键动作→规划）](../wiki/entities/paper-h-vla.md) — 统一双臂相机坐标、关键末端目标与连续规划接口；关注相机标定和阶段间失效。
 - [Co-VLA（双臂协同 SAE/LAC）](../wiki/entities/paper-co-vla.md) — 共享/残差双臂结构加执行期修正，逐项对照 Handover 与 OOD 任务的正负增益。

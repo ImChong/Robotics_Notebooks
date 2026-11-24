@@ -11,6 +11,9 @@
 - **Leaderboard：** https://robocasa.ai/leaderboard.html
 - **Stars：** ~1.7k+（2026-09）
 - **入库日期：** 2026-09-06
+- **原文：** https://github.com/robocasa/robocasa/blob/main/README.md
+- **核对范围：** 2026-11-24 通读官方 README（安装、用法、版本更新、许可和引用），历史榜单与论文分别见各自来源。
+- **通读：** 已完成
 - **一句话说明：** 大规模厨房日常任务仿真框架（MuJoCo / robosuite 后端）；RoboCasa365 提供 365 任务、2500+ 场景、2200+ 小时演示与公开 leaderboard。
 - **代码：** https://github.com/robocasa/robocasa（**已开源**，代码 MIT；资产与数据集 CC BY 4.0）
 - **沉淀到 wiki：** 是 → [`wiki/entities/robocasa.md`](../../wiki/entities/robocasa.md)
@@ -39,6 +42,8 @@
 2026-07-07：复合任务数据集增加 **逐帧 subtask 标注**（subtask index、原子技能名、stage、自然语言指令）。
 
 ---
+
+2026-10-14：发布覆盖 300 个复合任务的逐帧 subtask 标注流程。2026-10-28：排行榜新增 agentic submissions，允许新模型或基于原策略的 agentic harness。
 
 ## 安装要点（README）
 

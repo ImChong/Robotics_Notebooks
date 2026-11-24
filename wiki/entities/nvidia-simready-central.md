@@ -5,7 +5,7 @@ project: https://huggingface.co/spaces/nvidia/simready-central
 code: https://github.com/NVIDIA-Omniverse/simready-central
 original: ../../sources/sites/nvidia-simready-central.md
 status: complete
-updated: 2026-11-21
+updated: 2026-11-24
 tags:
   - entity
   - nvidia
@@ -171,6 +171,10 @@ sequenceDiagram
 - [EmbodiChain](./embodichain.md) — 另一套使用 SimReady/生成式资产准备仿真环境的机器人软件栈。
 - [Sim2Real](../concepts/sim2real.md) — 仿真场景与真实部署之间的差距和验证问题。
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md) — Stage 2 中的物性、关节化与可仿真资产验收。
+
+## 相关研究与项目补充
+
+- [chemlab-assets](./chemlab-assets.md) — 零件级关节、行为契约与可操作仿真资产。
 
 ## 参考来源
 
