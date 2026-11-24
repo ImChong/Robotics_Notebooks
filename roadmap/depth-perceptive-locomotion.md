@@ -78,6 +78,7 @@ flowchart LR
 - [Attention 落足点优化](../wiki/methods/attention-foot-placement.md) — 在感知地形表示上用注意力机制选择可行走区域的方法主题页，AME 为其代表实现
 - [Sensor Fusion](../wiki/concepts/sensor-fusion.md)
 - [State Estimation](../wiki/concepts/state-estimation.md)
+- [LiDAR 与深度相机选型及融合](../wiki/comparisons/lidar-depth-camera-selection.md) — 脚前地形的近距覆盖、细障碍与传感器同步。
 - [LiDAR SLAM / LIO / VIO 选型](../wiki/comparisons/lidar-slam-lio-vio-selection.md)
 - [Query：感知 backbone 选型](../wiki/queries/perception-backbone-selection.md)
 

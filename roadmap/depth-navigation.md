@@ -86,6 +86,7 @@ flowchart LR
 ### 推荐读什么
 - [LiDAR / LIO / VIO 开源选型对比](../wiki/comparisons/lidar-slam-lio-vio-selection.md) — 选型主入口
 - [SLAM Toolbox](../wiki/entities/slam-toolbox.md)、[Cartographer](../wiki/entities/cartographer.md)、[FAST-LIO](../wiki/entities/fast-lio.md)、[ORB-SLAM3](../wiki/entities/orb-slam3.md)
+- [LiDAR 与深度相机选型及融合](../wiki/comparisons/lidar-depth-camera-selection.md) — 从失效覆盖、量程和同步误差确定感知配置。
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Sensor Fusion](../wiki/concepts/sensor-fusion.md)
 - [GN10 PointCloud Localization](../wiki/entities/gn10-pointcloud-localization.md) — 已有静态地图上的 ESDF + CUDA 3D 纹理扫描匹配；从无手动初始位姿到丢失后的全局重定位，区别于 FAST-LIO 的连续里程计 / 建图。
 - [lidar_localization_ros2](../wiki/entities/lidar-localization-ros2.md) — 预建 PCD/PLY 地图中的 BBS 全局初始化 + NDT/GICP scan-to-map，支持无 GPS / 无手动首位姿的 ROS 2 定位，另需警惕对称地图误匹配；与上条 GN10 的 ESDF/CUDA 实现互补。
@@ -94,6 +95,7 @@ flowchart LR
 - [visloc-rs：Rust SfM / 双目惯性 SLAM / 3DGS / 地图定位](../wiki/entities/visloc-rs.md) — Stage 1 的 Rust/wgpu 一体化工程案例：Basalt 移植的 VIO、跨会话地图定位与 Nav2 仿真集成；照片 3DGS 不自动成为碰撞物理场景。
 - [RigVis：双目 SLAM + 松耦合 ESKF + 稠密地图](../wiki/entities/rigvis.md) — Stage 1 C++17 实现：ORB/PnP、Ceres BA/回环、SGBM；独立 VIO 输出、可选（默认关闭）ICP；KITTI 00 作者报告 1.20% / 2.81 m，未独立复现。
 - [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md) — memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
+- [SE(3)-LIVOM](../wiki/entities/paper-se3-livom.md) — 双 LiDAR / IMU / 相机，内点反馈降采样与异步子图 BA；GrandTour 测试平均 ATE 1.40 cm，GPL-2.0 源码已开放。
 - [KILVO](../wiki/entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计，异步–顺序混合 ESIKF + 无额外传感器接触估计 + 模态失效自适应；真机端到端均值 0.0145 m、输出 1 kHz；已开源（ROS Noetic C++ GPL-2.0 + 15 段 rosbag）
 - [ABot-Recon](../wiki/entities/paper-abot-recon.md) — 阿里 AMap CV Lab，固定 12 帧局部上下文的单目 RGB 长视频流式 3D 重建，状态不随序列长度增长；Oxford Spires ATE 4.35 m（约 −40%），与 SLAMFormer-∞ 同属单目稠密流式 SLAM 前沿；已开源（GitHub + HF 权重）
 
@@ -206,6 +208,7 @@ flowchart LR
 - [Embodied-Navigator / TAMP-Nav](../wiki/entities/paper-embodied-navigator-tamp-nav.md) — 像素到三维 waypoint + 选择性 CoT / 锚点记忆 + 双层 GRPO 的 VLN 策略
 - [SuperNav](../wiki/entities/paper-supernav-agentic-navigation.md) — 给预训练 MLLM 配 agent harness（Tools / Skills / 任务进度 / 上下文管理），以视觉点目标连接高层决策与可替换运动后端
 - [NavMCP](../wiki/entities/paper-navmcp-long-horizon-navigation.md) — 视觉语言推理 agent + 导航基础模型执行器 + 跨调用证据记忆，支持长时程具身探索与问答
+- [MCP 空间与语义推理导航](../wiki/entities/paper-mcp-spatial-semantic-navigation.md) — Stage 4 模块化 LLM 目标推理：米制栅格图像 + YAML 语义路点，复用 Cartographer/Nav2；仿真建图覆盖率 97.83%/99.78%，专用源码未发现公开入口。
 - [Compass 1](../wiki/entities/paper-compass-1-navigation.md) — 单目 RGB + 稀疏关键帧 / HRM + 三类 VQA，持续历史回溯与 Cosmos3-Edge 视频-动作生成（Go2 真机 254/320，代码待开放）
 - [EvolvingNav](../wiki/entities/paper-evolvingnav.md) — 带时间戳 3D 历史转为「到达时刻」世界的预测式 4D 信念，行动→证据→信念修正→记忆更新闭环（云深处 + 浙大）
 

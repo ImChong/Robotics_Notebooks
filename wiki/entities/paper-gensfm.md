@@ -193,6 +193,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [DecomVoxel](./paper-decomvoxel.md)：以多视角场景重建为基础，在原场景坐标中对独立对象做遮挡补全；与 GenSfM 的少视图物体结构与相机联合恢复互补。
+
 - [Axolotl3D](./paper-axolotl3d.md)：以相机和部分点云为条件的形状补全。
 - [Global 3R](./paper-glob3r.md)：相关多视角 3D 重建。
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md)：Stage 1 的稀疏视图物体几何重建入口；与 Stage 2 物性、碰撞补全分工。

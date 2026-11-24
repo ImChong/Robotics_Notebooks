@@ -5,7 +5,7 @@ project: https://rsasaki0109.github.io/visloc-rs/
 code: https://github.com/rsasaki0109/visloc-rs
 tags: [repo, rust, slam, visual-inertial, sfm, 3dgs, gaussian-splatting, mapping, navigation, independent-maintainer]
 status: complete
-updated: 2026-11-23
+updated: 2026-11-24
 related:
   - ./rigvis.md
   - ./orb-slam3.md
@@ -152,6 +152,8 @@ cargo run --release -p visloc-gsplat-train --features gpu,euroc --example gsplat
 - **关键文件**：`out/sparse/0`（COLMAP 稀疏模型）、`scene.ply`（高斯）、`mesh.ply`（mesh）。
 - **ROS 2 导航路径**：`ros2/visloc-ros2` 供定位与 `map -> odom`；`visual_map_to_occupancy` 供地图，Nav2 负责规划。上游 README 明确指出 RustDDS 内测不等于已验证所有 ROS 2 实际分布的 DDS 互通。
 - **Web 演示**：[照片 SfM](https://rsasaki0109.github.io/visloc-rs/sfm/) · [手机 VIO](https://rsasaki0109.github.io/visloc-rs/slam/) · [高斯浏览器](https://rsasaki0109.github.io/visloc-rs/splat/)；手机内参、传感器权限、WebGPU 可用性影响实测。
+
+- **Python 安装入口补充（2026-11-24 README 复核）**：官方 README 给出 `pip install visloc`；本次未实际安装，使用前核对 Python 版本、wheel 平台及所需功能是否已绑定。
 
 ## 局限与风险
 

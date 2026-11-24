@@ -12,7 +12,7 @@ tags:
   - unitree-g1
   - hit
 status: complete
-updated: 2026-11-21
+updated: 2026-11-24
 arxiv: "2608.05647"
 code: https://github.com/JixinGao/KILVO
 related:
@@ -183,6 +183,8 @@ sequenceDiagram
 - **非回环 SLAM：** 主叙事是里程计式估计；长时全局一致仍可能需上层回环。
 
 ## 关联页面
+
+- [SE(3)-LIVOM](./paper-se3-livom.md) — 双 LiDAR、惯性与视觉融合及异步平面 BA；对照人形关节运动学融合与野外腿式全局建图的任务边界。
 
 - [里程计–激光融合定位](../methods/lidar-odometry-fusion.md) — 课程级融合母页
 - [LiDAR SLAM / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 开源实现选型
