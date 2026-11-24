@@ -86,6 +86,7 @@ flowchart LR
 ### 推荐读什么
 - [LiDAR / LIO / VIO 开源选型对比](../wiki/comparisons/lidar-slam-lio-vio-selection.md) — 选型主入口
 - [SLAM Toolbox](../wiki/entities/slam-toolbox.md)、[Cartographer](../wiki/entities/cartographer.md)、[FAST-LIO](../wiki/entities/fast-lio.md)、[ORB-SLAM3](../wiki/entities/orb-slam3.md)
+- [LiDAR 与深度相机选型及融合](../wiki/comparisons/lidar-depth-camera-selection.md) — 从失效覆盖、量程和同步误差确定感知配置。
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Sensor Fusion](../wiki/concepts/sensor-fusion.md)
 - [GN10 PointCloud Localization](../wiki/entities/gn10-pointcloud-localization.md) — 已有静态地图上的 ESDF + CUDA 3D 纹理扫描匹配；从无手动初始位姿到丢失后的全局重定位，区别于 FAST-LIO 的连续里程计 / 建图。
 - [lidar_localization_ros2](../wiki/entities/lidar-localization-ros2.md) — 预建 PCD/PLY 地图中的 BBS 全局初始化 + NDT/GICP scan-to-map，支持无 GPS / 无手动首位姿的 ROS 2 定位，另需警惕对称地图误匹配；与上条 GN10 的 ESDF/CUDA 实现互补。

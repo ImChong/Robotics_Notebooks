@@ -197,6 +197,8 @@ flowchart LR
 - 通信异常怎么降级：连续丢帧 N 次之后关节保持、受控下蹲还是 STO
 
 ### 推荐读什么
+
+- [LiDAR 与深度相机选型及融合](../wiki/comparisons/lidar-depth-camera-selection.md) — 传感器带宽、硬件时钟与整机失效验收预算。
 - [机器人整机通信架构](../wiki/concepts/robot-onboard-communication-architecture.md) — 本阶段主线知识页
 - [CyberBeast 关节软件栈](../wiki/overview/cyberbeast-joint-software-stack.md) — SDK、ROS 2、SLCAN 与 CAN Bootloader 分层及时间预算边界
 - [JointSDK（纯 C99 协议栈）](../wiki/entities/cyberbeast-jointsdk.md) · [JointROS（lifecycle + ros2_control）](../wiki/entities/cyberbeast-jointros.md) · [USB2CAN SLCAN 固件](../wiki/entities/cyberbeast-canable2-n32.md)
