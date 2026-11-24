@@ -2,7 +2,7 @@
 type: entity
 project_id: tipdex-vtla
 tags: [paper, vla, vtla, tactile-sensing, dexterous-manipulation, contact-rich, flow-matching, wuhan-university]
-status: draft
+status: complete
 updated: 2026-11-24
 arxiv: "2611.25683"
 project: https://tiplab.github.io/TipDex-VTLA/
@@ -40,6 +40,11 @@ original:
 | VLM | Vision-Language Model | 慢端视觉语言上下文 |
 | MAE | Mean Absolute Error | 已归一化触觉预测误差 |
 | SDK | Software Development Kit | 实机命令写入确认的接口 |
+| BCE | Binary Cross-Entropy | VASE 可靠性监督损失 |
+| MSE | Mean Squared Error | 配对归一化动作差 |
+| RMSE | Root Mean Squared Error | 轨迹预测误差 |
+| EV | Exposure Value | 相对曝光偏移 |
+| GRU | Gated Recurrent Unit | 发布版触觉预测解码器 |
 
 ## 为什么重要
 
@@ -68,6 +73,13 @@ original:
 | 低 | 一致 | 视觉补偿 |
 | 高 | 偏离 | 接触修正 |
 | 低 | 偏离 | 联合修正 |
+
+### 公开推理实现与论文约定
+
+- 论文配对照明的五种条件各占 20%，第二阶段用相同冻结预测得到可靠性目标和有符号动作差；执行分数停止梯度，修正损失只更新 TACE。
+- 官方 METHOD.md 与 config.py 区分 paper 和 tipdex 两个预设：分别为视觉分数 qv / 0.6+0.4qv、预测 30/5 帧、特征残差上界 0.1/0.01，二者使用同一模型参数。不要把部署预设参数当成论文定义。
+- 发布版预测器共享动作策略的真实触觉编码器，GRU 结合视觉上下文、历史触觉/状态/命令和未来命令时间表，输出归一化触觉。验证器只核验最新合格当前帧：过去签发、匹配目标时刻、实际 SDK 命令历史与所有中间转换一致；缺失证据明确回退，不将未知误差显示为预测正确。
+- TACE 在末端动作 Transformer 特征投影之前使用共享 64 维 GELU 网络；每一快流积分步恢复受保护位置，接受计划时再次检查 mask。具体层位、宽度和分数扣分函数属于发布实现选择，不等同论文对所有实现的约束。
 
 ### 流程总览
 
@@ -106,7 +118,7 @@ flowchart TD
 | N₀-VTLA | 68.8 | 31.3 |
 | TipDex-VTLA | 87.5 | 73.8 |
 
-未见光照下四任务分别为鸡蛋 70%、葡萄 90%、纸巾 60%、绿豆 75%。表 3 消融：去 VASE 42.5%，去触觉核验 62.5%，去 Gate Head 40.0%；完整模型 73.8%。UniVTAC 八任务正常仿真光照各 100 次，均值 84.9%，不应解读为仿真未知光照泛化指标。
+未见光照下四任务分别为鸡蛋 70%、葡萄 90%、纸巾 60%、绿豆 75%。表 3 消融：去 VASE 42.5%，去触觉核验 62.5%，去 Gate Head 40.0%；完整模型 73.8%。UniVTAC 八任务正常仿真光照各 100 次，均值 84.9%，不应解读为仿真未知光照泛化指标。图 5 的 −3/+3 EV 轨迹 RMSE 相对关闭特征修正分别降低 24.2%/13.0%。标准光消融完整 87.5%、去 VASE 85.0%、去触觉核验与去 Gate Head 均 78.8%。
 
 ## 结论
 
@@ -166,7 +178,7 @@ sequenceDiagram
 - 论文可靠性是参考策略在光照扰动下的代理量，不是准确性、安全性或成功概率；其他视觉扰动和任务泛化待验证。
 - 仿真使用光学触觉，真机使用压阻触觉，不能直接比较硬件可迁移性。
 - 快端特征残差有界不保证物理力、速度或碰撞安全。
-- 正文已核对，独立 supplementary material 未获取，未复现训练与真实权重回放；暂为草稿，待补核和健康度实测。
+- 已通读 arXiv v2 公开全文，并用作者 METHOD、DEPLOYMENT 及核心实现补核执行机制。独立 supplementary material 未获取，不能声称已核实额外训练数据构建或实验配置；本站未复现训练与真实权重回放。作者 VALIDATION.md 的 49 项测试和两次闭环更新是官方发布验证，不是本站测试。
 
 ## 关联页面
 
@@ -188,4 +200,5 @@ sequenceDiagram
 - [论文 v2](https://arxiv.org/abs/2611.25683v2)
 - [官方项目页](https://tiplab.github.io/TipDex-VTLA/)
 - [官方源码](https://github.com/tiplab/TipDex-VTLA)
+- [方法与推理配置](https://github.com/tiplab/TipDex-VTLA/blob/main/docs/METHOD.md) · [作者发布验证](https://github.com/tiplab/TipDex-VTLA/blob/main/docs/VALIDATION.md)
 - [模型](https://huggingface.co/TipDex-VTLA/TipDex-VTLA) · [数据集](https://huggingface.co/datasets/TipDex-VTLA/TipDex-Data)
