@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, company]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-24
 summary: "Alphabet-backed software platform focused on scalable industrial robotics development."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -77,6 +77,10 @@ Alphabet-backed software platform focused on scalable industrial robotics develo
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+
+## 相关研究与项目补充
+
+- [intrinsic-core](./intrinsic-core.md) — 本地运行时、硬件抽象和工业部署接口的工程参考。
 
 ## 参考来源
 

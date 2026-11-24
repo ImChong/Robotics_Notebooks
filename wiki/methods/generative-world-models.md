@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-11-23
+updated: 2026-11-24
 related:
   - ../entities/paper-worldtrace-addressable-memory-video-world-models.md
   - ../entities/paper-lejepa.md
@@ -641,6 +641,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ### 术语对照
 
 - [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md) — 状态空间神经动力学 + 想象 rollout（与像素生成式 WBM 对照）。
+
+## 相关研究与项目补充
+
+- [nopeworld](../entities/paper-nopeworld.md) — 冻结视频生成器的物理约束与动作筛选边界。
 
 ## 参考来源
 

@@ -124,6 +124,8 @@ flowchart LR
 - 复现一次接触引导补全（如坐姿推断椅面），对比补全前后"能否坐稳/站起"
 
 ### 推荐读什么
+
+- [chemlab-assets](../wiki/entities/chemlab-assets.md) — 零件级关节、行为契约与可操作仿真资产。
 - [SimFoundry（模块化 Real2Sim 场景生成）](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — Extraction/Generation/Augmentation 三阶段，物性与关节化的完整工程参考
 - [CRISP（Contact-guided Real2Sim）](../wiki/methods/crisp-real2sim.md) — 接触引导遮挡补全 + RL 物理一致性闭环
 - [PhysX-Omni](../wiki/entities/physx-omni.md) · [Articraft](../wiki/entities/articraft.md) — sim-ready 资产的生成式与 agentic 程序化两条路线

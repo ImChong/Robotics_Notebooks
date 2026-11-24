@@ -12,7 +12,7 @@ tags:
   - ut-austin
   - open-source
 status: complete
-updated: 2026-11-18
+updated: 2026-11-24
 related:
   - ./dexbench.md
   - ./isaac-lab-arena.md
@@ -192,6 +192,11 @@ sequenceDiagram
 - [RoboCasa365 论文实体](./paper-notebook-robocasa365-a-large-scale-simulation-framework-f.md)
 - [Manipulation](../tasks/manipulation.md)
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
+
+## 相关研究与项目补充
+
+- [stereovlm](./paper-stereovlm.md) — 标定双目几何与视觉语言骨干的空间推理。
+- [agentrobocritic](./paper-agentrobocritic.md) — 从回合成功率深入局部意图、动作失败和恢复诊断。
 
 ## 参考来源
 
