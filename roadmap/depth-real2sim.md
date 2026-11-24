@@ -158,6 +158,8 @@ flowchart LR
 - 用 object/scene/task cousins 对一个基础场景做一次可控扩增，验证 held-out 物体/布局上的泛化
 
 ### 推荐读什么
+
+- [FAB](../wiki/entities/paper-fab.md) — 单目视频的人体与静态场景联合尺度对齐、接触及G1轨迹生成；仅仿真跟踪验证。
 - [RoboSkills：机器人 Agent / Real2Sim 工作流](../wiki/entities/roboskills.md) — 官方视频重建→物理仿真工具链，按工具阶段核查 SAM/MoGe/HaWoR/CoACD/MuJoCo；与单篇 Real2Sim 算法论文分工不同。
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](../wiki/entities/paper-agentic-real2sim.md) — episode 孪生 + 可换 VLM 后端 + 确定性工具解耦
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 场景孪生 + 三类数字表亲的完整增扩管线
