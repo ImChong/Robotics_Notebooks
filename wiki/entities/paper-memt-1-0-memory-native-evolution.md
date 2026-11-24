@@ -127,6 +127,13 @@ sequenceDiagram
 - **拆分许可：** 仓库推理软件使用 PolyForm Noncommercial License 1.0.0，论文材料使用 CC BY-NC-SA 4.0；Hugging Face Flash 模型卡标注权重为 MIT。Pro 的 Hugging Face 模型卡为 OpenMDW 1.1，ModelScope 入口由官方 README 列出但本次未能直接核查。第三方 backbone、组件及其他权重版本还需遵守其各自条款。
 - **做任务级对照：** 与完整上下文、RAG 或外置摘要比较时，分别记录长程任务成功率、事实检索准确性、持久状态大小、端到端延迟和显存；特别检查需要引用早期细节的任务，因为报告承认强文本记忆在此类任务上仍具优势。
 
+## 局限与风险
+
+- **有限容量与证据检索：** 固定大小的动态状态不能保证无损保留历史细节。v4 表 3 的记忆基准平均分为 Pro 53.08、Flash 50.60、Nano 46.97，而文本记忆系统 MemOS NV 为 72.08；精确证据回溯仍需对照检索方案。
+- **容量扩展不等于发行模型实测：** §5 的多专家实验展示 MoS 扩展趋势，但附录 B 表 7 的三个主评测模型均采用单专家；不能将多专家消融成绩直接归于发布模型。
+- **效率边界：** §6 的 128K 对比属于 Nano，较短历史下未必比完整上下文更快；逻辑记忆状态的容量不包含模型权重和当前 KV cache，不能等同于部署总显存。
+- **持续学习边界：** §7 的程序性经验实验依赖外部收集与写入的经验轨迹；§8 仍讨论有限状态与长期记忆演化的限制，未证明自主将局部记忆整合到可训练超记忆的闭环。机器人任务成功率、安全性及实时性需要独立验证。
+
 ## 与其他工作对比
 
 | 路线 | 记忆所在位置 | 与 MemT-1.0 的差异 |
@@ -163,7 +170,7 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [Hugging Face Pro](https://huggingface.co/MemTensor/MemT-1.0-Pro) · [ModelScope Pro](https://www.modelscope.cn/models/MemTensor/MemT-1.0-Pro) — Pro 权重发布入口。
-- [技术报告 v4 HTML](https://arxiv.org/html/2610.26825v4) · [PDF](https://arxiv.org/pdf/2610.26825v4) — 本次 Pro 增量核对版本，全文通读尚未完成。
+- [技术报告 v4 HTML](https://arxiv.org/html/2610.26825v4) · [PDF](https://arxiv.org/pdf/2610.26825v4) — 本次全文及技术附录核对版本。
 
 - [MemT-1.0 technical report (arXiv:2610.26825)](https://arxiv.org/abs/2610.26825) — 模型结构、训练、基准与资源效率实验。
 - [Official inference repository](https://github.com/MemTensor/MemT-1.0) — 推理代码、SGLang 集成与部署说明。
