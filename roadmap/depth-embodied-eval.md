@@ -165,6 +165,8 @@ flowchart LR
 - 把失败 rollout 按模式聚类（抓取失败 / 子任务切换失败 / 超时 / 过压），而不是只报一个均值
 
 ### 推荐读什么
+
+- [RoboEval 冠军方案](../wiki/entities/paper-roboeval-solution.md) — 从阶段成功、过程质量到 RDS 奖励，区分作者独立测试、公布种子和主办方复评。
 - [Mind2Act World：认知、物理执行与组合能力诊断](../wiki/entities/paper-mind2act-world.md) — Stage 3 分层诊断：30 项操作任务的 Mind／Act／Mind2Act 三视角、物理谓词成功判据、事件阶段失败卡；核对 Agent 与端到端策略不同预算，并避免把仿真暂停推理误读成真机实时能力。
 - [GM-100（The Great March 100）](../wiki/entities/paper-gm-100.md) — RHOS AI 100 项真实双臂长尾细粒度任务；用 SR/PSR 拆解完整成功与子目标进度，注意 Cobot Magic 100 项与 Xtrainer 前 10 项的本体/协议差别。
 - [首届蚂蚁灵波具身大模型挑战赛（2026）](../wiki/entities/robbyant-embodied-ai-challenge-2026.md) — Stage 3 的标准化 50 任务赛事案例：统一 LingBot-VLA 2.0，仅 clean 训练、clean/randomized 双设置测试；线下真机决赛与仿真成绩分开记账。
