@@ -626,7 +626,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 ## 关联页面
 
-- [Robot Policies：从模仿学习到 Token VLA](../overview/robot-policies-il-to-token-vla.md) — 课程笔记入口，连接学习信号、动作表示、控制器与 VLA 调度；原讲座出处待核实。
+- [Robot Policies：从模仿学习到 Token VLA](../overview/robot-policies-il-to-token-vla.md) — 课程笔记入口，连接学习信号、动作表示、控制器与 VLA 调度；原讲座出处已确认，课件全文待核读。
 - [VLA 演进简史：从 SayCan / RT-1 到 MolmoAct 2（Khushi 长文阅读坐标）](../overview/vla-history-rt1-to-molmoact-technology-map.md) — 十个模型的时间线与动作表示三条路线
 
 - [VLA-Rolling](../entities/paper-vla-rolling.md) — 冻结 flow-matching VLA 的动作尾部复用，降低去噪步数与推理延迟
