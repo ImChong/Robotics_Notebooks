@@ -2,9 +2,10 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-11-22
+updated: 2026-11-24
 status: complete
 related:
+  - ../entities/paper-mcp-spatial-semantic-navigation.md
   - ../entities/paper-mosu2.md
   - ../entities/paper-vtinstructor.md
   - ../entities/paper-abot-n1.md
@@ -319,6 +320,8 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 - [Project Quiver](../entities/project-quiver.md) — 25 kg 开源户外机架；无官方 VLN 绑定，只作重载真机想象
 - [NavMCP](../entities/paper-navmcp-long-horizon-navigation.md) — 视觉语言推理 agent + 导航基础模型执行器 + 跨调用证据记忆的长时程探索与具身问答系统
 - [LHNav](../entities/paper-lhnav.md) — 人形长时程导航：Brain 规划 → GR00T N1.7 Cerebellum 出航点/运动 latent → 冻结 SONIC 类解码器 50 Hz；仿真 522 held-out episodes SR@0.5m 52.3%（OmniNav 36.0%），G1 真机三站点 4/5；官方仓仅网站文件（arXiv:2611.12136）
+
+- [MCP 空间与语义推理导航](../entities/paper-mcp-spatial-semantic-navigation.md) — 在既有 ROS 2 SLAM/Nav2 之上用米制地图图像和语义观察路点选择目标；与仅依赖第一视角的 VLN 基准不同，采用显式地图与先行建图。
 
 ## 推荐继续阅读
 
