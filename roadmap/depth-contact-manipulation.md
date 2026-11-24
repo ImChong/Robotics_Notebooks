@@ -138,6 +138,7 @@ flowchart LR
 - [ContactMimic](../wiki/entities/paper-contactmimic.md) — 在 keypoint tracking 外显式跟踪 per-body 接触指令，G1 真机验证 contact controllability，无需任务专用奖励即可搬箱
 - [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 规范球几何形变动作表示 + 级联 IK，单一 PPO 策略跨 Allegro / LEAP / Shadow 零样本迁移
 - [FastGrasp](../wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — CVAE 点云抓取引导 + 全身 RL + 二值触觉反馈的移动高速灵巧抓取 sim2real
+- [TipDex-VTLA](../wiki/entities/paper-tipdex-vtla.md) — 以光照敏感性估计视觉可靠性，联合时间与命令一致的触觉核验，修正尚未执行动作。
 - [TouchWorld](../wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉基础模型：触觉世界模型预测接触子目标 + TRT 高频残差，人形长程六任务真机成功率 65.0%（干净）/ 53.7%（人为扰动）
 - [VTAM v2](../wiki/entities/paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md) — 单触觉流融入预训练视频世界模型，以 flow-force proxy 强化接触敏感性；xArm6/GelSight 与 Flexiv/Xense 实机对照。
 - [DexTacWAM](../wiki/entities/paper-dextacwam.md) — 十指触觉压缩与预测式接触建模，对比「只有当前触觉输入」与「预测未来接触」的受控消融。
