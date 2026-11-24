@@ -10,6 +10,8 @@ original:
 sources:
   - ../../sources/sites/human-frontier-mission.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/enpire.md
   - ../concepts/ai-auto-research.md
   - ./karpathy-autoresearch.md
   - ./paper-society-of-ai-scientists.md
@@ -97,6 +99,9 @@ flowchart TD
 - 机器人迁移仍需要可重复 reset、受控执行权限及独立真机安全验证。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 为自主实验提供可执行测试、独立评审与失败证据的工程参考，不代表 HFM 采用该实现。
+- [ENPIRE](../methods/enpire.md) — 对照机器人真机自主实验所需的自动复位、评测与策略迭代；属于机器人侧独立实现。
 
 - [AI Auto-Research](../concepts/ai-auto-research.md)
 - [Karpathy autoresearch](./karpathy-autoresearch.md)
