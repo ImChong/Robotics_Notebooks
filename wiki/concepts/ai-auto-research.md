@@ -2,9 +2,10 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-24
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
+  - ../entities/human-frontier-mission.md
   - ../entities/paper-society-of-ai-scientists.md
   - ../entities/openai-research-acceleration-jagged-frontier.md
   - ../entities/stanford-hai-discovery-loop-2026.md
@@ -208,6 +209,8 @@ flowchart LR
 
 ## 参考来源
 
+- [HFM 官方计划书归档](../../sources/sites/human-frontier-mission.md)
+
 - [Science Prediction Universe（SPU） 原文与边界复核](../../sources/papers/science_prediction_universe_arxiv_2611_15049.md)
 
 - [HAI Discovery Loop 官方演讲与闭幕对谈](../../sources/videos/stanford-hai-discovery-loop-2026.md)
@@ -222,6 +225,8 @@ flowchart LR
 - [openJiuwen 官网归档](../../sources/sites/openjiuwen-com.md)
 
 ## 关联页面
+
+- [Human Frontier Mission（人类拓界计划）](../entities/human-frontier-mission.md) — 专家定义挑战、Agent 自主实验、具名审阅者复核与公开证据记录的组织模式；活动规模不能替代独立复现。
 
 - [Marin 开放式 LLM 预训练](../entities/marin-open-llm-pretraining.md) — Belay 将社区研究提案交由代理实现、短实验评估，再以 scaling ladder 扩大验证；与可审计实验和失败记录相结合。
 
