@@ -527,6 +527,10 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-24] ingest | NoPeWorld / StereoVLM / AgentRoboCritic / Intrinsic Core / ChemLab-Assets / visloc-rs
+
+- 五个独立实体草稿与分类来源归档；复用 visloc-rs 既有实体补 Python 安装入口，挂载相关纵深路线。原文及源码仍待完整核对，健康度未实测。
+
 ## [2026-11-24] ingest | sources/blogs/wechat_zane_hub_lidar_depth_camera_2026-11-24.md — 激光雷达与深度相机选型及融合
 
 通读用户提供原文，核对两款官方规格与误差算例；沉淀传感器分工、共同失效、时空同步、带宽和降级验收，挂载导航、感知越障及整机硬件路线。
