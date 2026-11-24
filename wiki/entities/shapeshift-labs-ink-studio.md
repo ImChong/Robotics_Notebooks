@@ -2,10 +2,12 @@
 type: entity
 project_id: shapeshift-labs-ink-studio
 code: https://github.com/siliconjungle/shapeshift-labs-ink-studio
-tags: [repo, sdf, 3dgs, gaussian-splatting, rendering, webgl2, webgpu, open-source]
+tags: [siliconjungle, repo, sdf, 3dgs, gaussian-splatting, rendering, webgl2, webgpu, open-source]
 status: draft
 updated: 2026-11-24
 related:
+  - ../methods/crisp-real2sim.md
+  - ../methods/generative-world-models.md
   - ./spark-3dgs-renderer.md
   - ./paper-4d-gaussian-splatting-wu.md
   - ./paper-splatsim-gaussian-splatting-sim2real.md
@@ -99,6 +101,8 @@ sequenceDiagram
 
 ## 工程实践
 
+- 所属维护者：GitHub 账号 [siliconjungle](https://github.com/siliconjungle)（官方仓库 owner，未核实公司或研究机构身份）。
+
 | 项目 | 入口或参数 |
 |---|---|
 | 运行环境 | Node >= 18；package.json 未声明运行时依赖 |
@@ -119,6 +123,9 @@ sequenceDiagram
 - README 尚未全文通读，未运行测试或渲染性能基准，不填写推测的速度或健康度。
 
 ## 关联页面
+
+- [CRISP Real2Sim](../methods/crisp-real2sim.md) — 对照真实场景转为可仿真资产的工作流；Ink Studio 仅作为可视化参考，不代替物性与碰撞校验。
+- [生成式世界模型](../methods/generative-world-models.md) — 对照学习式场景生成与显式程序化建模；Ink Studio 不属于学习式世界模型。
 
 - [Spark：Web 3DGS 渲染器](./spark-3dgs-renderer.md) — 偏大规模重建资产浏览；Ink Studio 偏程序化创作与风格化渲染。
 - [4D Gaussian Splatting](./paper-4d-gaussian-splatting-wu.md) — 学习式动态场景表示，与手工定义动画不同。
