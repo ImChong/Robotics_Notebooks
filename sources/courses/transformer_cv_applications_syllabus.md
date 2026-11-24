@@ -117,3 +117,9 @@
 - [x] 大纲章节与作业清单
 - [x] wiki 独立节点全覆盖映射（见策展 hub）
 - [ ] 各作业数据集（VisDrone / BraTS / COD10K）单独深读（可选后续）
+
+## 一手资料补录（2026-11-24）
+
+- 深蓝学院《视觉Transformer理论与实践》：[官方课程入口](https://www.shenlanxueyuan.com/course/922)（具体期次待核实）。
+- [按八章整理的原始论文、作者代码及数据集索引](./vision_transformer_primary_sources.md)，含 RS-Mamba、ChangeMamba 文献身份纠错记录，以及独立 SegMamba 来源。
+- 本轮来源登记尚非全文通读和复现验收，不修改既有 wiki 健康度。
