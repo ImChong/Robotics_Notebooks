@@ -2,7 +2,7 @@
 type: entity
 project_id: fab
 tags: [paper, motion-capture, human-mesh-recovery, motion-retargeting, humanoid, real2sim, perception, contact-estimation]
-status: draft
+status: complete
 updated: 2026-11-24
 arxiv: "2611.25801"
 project: https://www.jinkuncao.com/FAB/
@@ -20,6 +20,7 @@ related:
   - ../methods/gauss-newton.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../concepts/whole-body-tracking-pipeline.md
+  - ../queries/robot-perception-stack-selection-loop.md
 summary: "FAB 以直接预测人体稠密表面点为中心，拟合SMPL、推断接触、联合对齐人体与静态场景，并生成Unitree G1参考动作；FAB-L单人39.2 FPS仅指检测到人体拟合的路径。"
 ---
 
@@ -61,7 +62,11 @@ summary: "FAB 以直接预测人体稠密表面点为中心，拟合SMPL、推�
 1. **Points-first。** FAB-H轻量微调SAM 3D Body；FAB-L/S使用DINOv3 ViT-L/16或ViT-S+/16学生，以骨干特征、教师输出和人工标签监督。预测70个图像关键点、14个评测关节及468个SMPL表面点；从热图和深度反投影得到3D点。学习式拟合后两步Gauss–Newton，再细化足踝。MHR头与稠密点是不同输出。
 2. **接触。** 对双侧脚跟、脚趾、手、膝分类静止接触及任意接触，区分固定地面与滑板等移动支撑；因果GRU结合世界坐标修正预测。输出是接触标签，不是力或触觉测量。
 3. **世界与场景。** ViPE/UniDepth恢复相机和深度，GeoCalib提供重力；多视角深度融合及人体可见性雕刻生成TSDF网格、高度场。人体深度锚定尺度，联合优化接触距离、穿透、深度一致性、根加速度及脚滑；全视频共享场景/相机尺度。
-4. **G1重定向。** 逐帧G1头由方向优先IK生成29关节监督。FAB-Retarget则整段联合优化，可用skeleton、mesh或points模式，代价包括骨方向、骨盆、足接触、地形、碰撞和时序约束；points模式另加稠密表面对应，最后固定支撑足。手膝在重定向目标中主要用于避免穿透。
+4. **G1重定向。** 逐帧G1头由方向优先IK生成29关节监督。FAB-Retarget则整段联合优化，可用skeleton、mesh或points模式，代价包括骨方向、骨盆、足接触、地形、碰撞和时序约束；points模式另加稠密表面对应，最后固定支撑足。手膝在重定向目标中主要用于避免穿透。默认 mesh/points 模式按足底高度和速度确定支撑，视觉接触用于世界对齐及可选 ground-aware 路径；表29消融不支持将视觉接触直接视为必然改善 G1 参考。
+
+### 训练、对应与优化复现（附录 A、F）
+
+学生训练 40k 步，512×512 裁剪，结合特征蒸馏与教师输出监督；FAB-H 先微调教师再冻结主体训练稠密头。G1 表面对应在匹配 T-pose 中按部位圆柱坐标建立，逐帧 Kabsch 恢复部位目标旋转。重定向从 sequence IK 初始化，Adam 1600 步，关节学习率 0.02、根位移步长 2 mm，最后固定支撑足；默认支撑判断为足底距地形 4 cm 内且速度低于 0.15 m/s。静态相机缺视差时保留 ViPE 深度。
 
 ## 流程总览
 
@@ -131,6 +136,23 @@ sequenceDiagram
 
 表1比较速度时SAM 3D Body 8.5 FPS为eager PyTorch body-only路径，FAB 39.2 FPS含检测和拟合，但不包含整段世界重建与G1优化。表2不同检测框、内参及相机输入影响公平性。场景方面，SLOPER4D长轨迹完整性低于VideoMimic；VideoMimic自身地形上的跟踪通过片段更多。
 
+## 对比与消融
+
+同一 25 段平地测试、SONIC-G1 MuJoCo 跟踪（表8、28、29）：
+
+| 方法 | 参考骨方向误差（°） | 足滑（m/s） | 跌倒数 | 跟踪骨方向误差（°） |
+|---|---:|---:|---:|---:|
+| GMR | 14.7 | 0.26 | 5 | 19.6 |
+| FAB-L 逐帧 G1 头 | 14.5 | 0.38 | 5 | 20.4 |
+| FAB-Retarget skeleton | 11.7 | 0.12 | 5 | 19.2 |
+| FAB-Retarget mesh | 11.6 | 0.11 | 6 | 20.0 |
+| FAB-Retarget points | 11.8 | 0.13 | 4 | 18.3 |
+
+- points 相比 mesh 的部位旋转误差由 33.6° 降至 24.7°，但足滑略增；表29加入视觉接触后部分指标退化。25 段并非重定向器设计的独立留出集。
+- 表12：FAB-L TensorRT 单人 39.2、双人 25.7 FPS，单人 PyTorch 32.6 FPS。
+- 表23：RICH-191 中检测跟丢目标的 23 段，FAB-L WA-MPJPE 为 212.0 mm；其余 168 段为 47.3 mm。
+- 表34：118 段共同注册片段、同 VideoMimic 地形及策略、无观测噪声、各自首帧初始化下，VideoMimic 和 FAB 参考分别有 73.7% 和 61.0% 通过跟踪。场景几何精度与动力学可跟踪性应分开验收。
+
 ## 结论
 
 FAB的工程价值在于统一视觉人体几何、接触与机器人参考生成，而非将整条管线变成实时真机控制器。
@@ -150,7 +172,7 @@ FAB的工程价值在于统一视觉人体几何、接触与机器人参考生�
 - 论文未在真实机器人上测试；复杂瑜伽、体操、遮挡、移动支撑及长序列漂移仍可失败。
 - FAB-H默认mesh路径缺少FAB-L/S的接触、部位与G1头。
 - 代码开放，但权重限制非商业研究使用，SMPL等依赖许可单独审阅；未再分发数据集。
-- 附录尚未全部核对，当前为草稿；未实际运行上游代码。
+- 附录 E：支撑足相对人体偏向脚尖下俯；points 模式约 13°。手支撑俯卧撑不能由现有 SONIC 跟踪器稳定执行。已核对附录 A–F，未实际运行上游代码。
 
 ## 关联页面
 
@@ -162,6 +184,8 @@ FAB的工程价值在于统一视觉人体几何、接触与机器人参考生�
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 下游
 - [动作重定向纵深](../../roadmap/depth-motion-retargeting.md)
 - [Real2Sim纵深](../../roadmap/depth-real2sim.md)
+
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 分离检测、重建、策略消费的误差与延迟预算。
 
 ## 推荐继续阅读
 
