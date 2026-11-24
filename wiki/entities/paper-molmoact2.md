@@ -8,7 +8,7 @@ tags:
   - ai2
   - open-source
 status: complete
-updated: 2026-11-14
+updated: 2026-11-24
 arxiv: "2605.02881"
 code: https://github.com/allenai/molmoact2
 related:
@@ -218,6 +218,8 @@ sequenceDiagram
 - 清单所述的 MolmoSpace「第一 VLA」不是论文里的表述（论文 Table 4/5 的比较对象是 LAP-VLA、StereoVLA、π0-DROID、π0.5-DROID、X-VLA），来源是项目 README，未核实。
 
 ## 关联页面
+
+- [RoboEval 冠军方案](./paper-roboeval-solution.md)：独立比赛协议下的离策略强化学习、过程评分和推理搜索案例。
 
 - [MolmoER](./molmo-er.md)
 - [Molmo2 VLM](./molmo2-vlm.md)
