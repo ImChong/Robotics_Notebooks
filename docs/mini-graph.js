@@ -253,6 +253,7 @@
           health_score: n.health_score,
           health_gaps: n.health_gaps,
           has_repo: n.has_repo,
+          added: n.added || '',
           _degree: n._degree || 0
         };
       });
@@ -316,6 +317,7 @@
           health_score: n.health_score,
           health_gaps: n.health_gaps,
           has_repo: n.has_repo,
+          added: n.added || '',
           _degree: degreeMap[n.id] || 0
         };
       });
@@ -326,6 +328,10 @@
     }
     var nodeById = Object.create(null);
     nodes.forEach(function(n){ nodeById[n.id] = n; });
+    var latestMiniAddedTs = nodes.reduce(function (mx, n) {
+      var ts = n && n.added ? Date.parse(String(n.added)) : 0;
+      return isFinite(ts) && ts > mx ? ts : mx;
+    }, 0);
 
     function edgeEndId(end) {
       return (end && typeof end === 'object') ? end.id : end;
@@ -857,7 +863,7 @@
           persist: false,
           usePreviewTerrainHeight: true,
           allowTouchOrbit: true,
-          defaultDistance: 1.76,
+          defaultDistance: 1.92,
           defaultParamsByTier: {
             full: { contours: 14, pitch: 34, yaw: -16 },
             lite: { contours: 12, pitch: 32, yaw: -12 },
@@ -868,6 +874,12 @@
               width: miniWrap.clientWidth || W || 500,
               height: miniWrap.clientHeight || H || 420,
             };
+          },
+          getSearchMatchIds: function () { return miniHighlightSet; },
+          isNodeNew: function (d) {
+            if (!latestMiniAddedTs || !d || !d.added) return false;
+            var ts = Date.parse(String(d.added));
+            return isFinite(ts) && (latestMiniAddedTs - ts) <= 14 * 86400000;
           },
           getGraphData: function () {
             var terrainNodes = entranceActive

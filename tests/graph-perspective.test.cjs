@@ -504,8 +504,9 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-stage-bg:'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
-  assert.ok(styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric reflection layer styled');
-  assert.ok(styleCss.includes('--persp-horizon-glow'), 'horizon glow fades out cleanly in top-down pitch');
+  assert.ok(!styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric blue glow layer removed for clean flat background');
+  assert.ok(!styleCss.includes('--persp-horizon-glow'), 'horizon glow CSS custom property removed');
+  assert.ok(!styleCss.includes('color-mix(in srgb, var(--accent) 8%, transparent)'), 'stage radial blue haze removed from background tokens');
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
   assert.ok(styleCss.includes('#mini-graph-svg line.mini-edge-hover'), 'homepage preview 2D hover edge highlight styled');
   assert.ok(styleCss.includes('.mini-graph-node.mini-node-hover-dim'), 'homepage preview 2D hover dim style present');
@@ -517,6 +518,7 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(perspectiveSrc.includes('uPointScale') && perspectiveSrc.includes('if (pn.hovered) radius *= 1.10;'), 'point sprites share unified world radius with subtle 1.10x hover swell');
   assert.ok(perspectiveSrc.includes('uForceSettle') && perspectiveSrc.includes('applyForceMotion'), '3D terrain entry includes GPU force-simulation bloom motion');
   assert.ok(perspectiveSrc.includes('vMeshRadial') && perspectiveSrc.includes('riseVis'), 'top-down entry fades terrain edge by unscaled mesh radial with zero bounded square grid floor');
+  assert.ok(!perspectiveSrc.includes('horizonSheen'), 'far-side atmospheric blue haze removed from terrain fragment shader');
   assert.ok(perspectiveSrc.includes('stepReboundAnim') && perspectiveSrc.includes('rebounding: !!reboundAnim'), '3D node drag includes spring-force rebound simulation');
   assert.ok(graphHtml.includes('perspectiveSimActive') && graphHtml.includes('reseed: true'), '3D terrain layout refresh randomizes nodes and restarts force simulation');
   assert.ok(graphHtml.includes('getRouteBadges:') && perspectiveSrc.includes('function focusNode('), '3D terrain supports route step-by-step focus and numbered route badges');
@@ -1137,4 +1139,175 @@ test('homepage 3D node drag resolves 2D circle overlaps upon switching back to 2
   removeRaf();
   assert.equal(w.RNMiniGraph.getMode(), '2d');
   assertNo2DOverlapAndSyncedLines('post-rebound-switch-to-2d');
+});
+
+test('multi-peak L4 heightfield separates distinct clusters with an authentic lower saddle valley', () => {
+  const nodes = [];
+  const edges = [];
+  for (let i = 0; i < 6; i++) {
+    nodes.push({ id: `a${i}`, x: -300 + (i % 3) * 14, y: -15 + Math.floor(i / 3) * 18 });
+    nodes.push({ id: `b${i}`, x: 300 + (i % 3) * 14, y: 15 - Math.floor(i / 3) * 18 });
+  }
+  for (let i = 1; i < 6; i++) {
+    edges.push({ source: 'a0', target: `a${i}` });
+    edges.push({ source: 'b0', target: `b${i}` });
+  }
+  const degInfo = perspectiveApi.computeNodeDegrees(nodes, edges);
+  const field = perspectiveApi.computeTerrainField(nodes, degInfo, { gridSize: 120, isReduced: true });
+  const peakA = perspectiveApi.sampleTerrainHeight(field, field.nodeMeta.a0.wx, field.nodeMeta.a0.wz);
+  const peakB = perspectiveApi.sampleTerrainHeight(field, field.nodeMeta.b0.wx, field.nodeMeta.b0.wz);
+  const midX = (field.nodeMeta.a0.wx + field.nodeMeta.b0.wx) * 0.5;
+  const midZ = (field.nodeMeta.a0.wz + field.nodeMeta.b0.wz) * 0.5;
+  const saddle = perspectiveApi.sampleTerrainHeight(field, midX, midZ);
+  assert.ok(peakA > 0.6 && peakB > 0.6, 'separated cluster hubs rise into strong peaks');
+  assert.ok(saddle < Math.min(peakA, peakB) * 0.55, `valley between clusters stays significantly lower than peaks (${saddle.toFixed(3)} vs ${peakA.toFixed(3)} / ${peakB.toFixed(3)})`);
+});
+
+test('mega-hub highlight ribbons are Top-K capped and overlapping 1-hop neighbor labels obey AABB culling', () => {
+  const dom = new JSDOM('<!doctype html><html><body><div id="wrap"><div id="stage"></div></div></body></html>', {
+    pretendToBeVisual: true,
+    url: 'https://example.test/graph.html',
+  });
+  global.window = dom.window;
+  global.document = dom.window.document;
+  global.navigator = { hardwareConcurrency: 8, deviceMemory: 8 };
+  global.localStorage = dom.window.localStorage;
+  global.window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const mock = makeMockCanvasEnv();
+  const drawnTexts = [];
+  const origFillText = mock.ctx2d.fillText.bind(mock.ctx2d);
+  const spyCtx2d = new Proxy(mock.ctx2d, {
+    get(target, prop) {
+      if (prop === 'fillText') {
+        return (txt, x, y) => {
+          drawnTexts.push({ txt: String(txt), x, y });
+          origFillText(txt, x, y);
+        };
+      }
+      return target[prop];
+    },
+  });
+
+  dom.window.HTMLCanvasElement.prototype.getContext = function getContext(kind) {
+    if (kind === 'webgl2') return mock.gl;
+    if (kind === '2d') return spyCtx2d;
+    return null;
+  };
+  const wrap = dom.window.document.getElementById('wrap');
+  const stage = dom.window.document.getElementById('stage');
+  Object.defineProperty(wrap, 'clientWidth', { value: 1200, configurable: true });
+  Object.defineProperty(wrap, 'clientHeight', { value: 800, configurable: true });
+
+  const nodes = [{ id: 'hub', label: 'MegaHubNode', x: 0, y: 0, community: 'c1' }];
+  const edges = [];
+  const focusIds = new Set(['hub']);
+  for (let i = 0; i < 180; i++) {
+    const id = `n${i}`;
+    // First 8 neighbors deliberately cluster very tightly near hub screen coords to test collision culling
+    const x = i < 8 ? 6 + (i % 2) * 2 : Math.cos(i * 0.37) * (120 + (i % 5) * 30);
+    const y = i < 8 ? 4 + Math.floor(i / 2) * 2 : Math.sin(i * 0.37) * (120 + (i % 5) * 30);
+    nodes.push({ id, label: `NeighborLabel_${i}`, x, y, community: i < 90 ? 'c1' : 'c2' });
+    edges.push({ source: 'hub', target: id });
+    focusIds.add(id);
+  }
+
+  let clickedCommunity = null;
+  const ctrl = perspectiveApi.createController({
+    wrapEl: wrap,
+    stageEl: stage,
+    nodeCount: nodes.length,
+    persist: false,
+    getViewportSize: () => ({ width: 1200, height: 800 }),
+    getGraphData: () => ({
+      nodes,
+      edges,
+      focusIds,
+      sidebarNode: nodes[0],
+      getNodeColor: (d) => (d.community === 'c1' ? '#5b9cf6' : '#e87954'),
+      getNodeAlpha: () => 1,
+    }),
+    getCommunityLabels: () => [
+      { id: 'c1', label: 'Control', count: 61, x: -40, y: -40, bgColor: '#5b9cf6', textColor: '#ffffff', fontSize: 12 },
+      { id: 'c2', label: 'Learning', count: 60, x: 140, y: 120, bgColor: '#e87954', textColor: '#ffffff', fontSize: 12 },
+    ],
+    onCommunityClick: (cid) => { clickedCommunity = cid; },
+    isDark: () => true,
+    isEdgesVisible: () => true,
+  });
+
+  assert.equal(ctrl.setEnabled(true, { silent: true, instant: true }), true);
+  const dbg = ctrl.getDebugState();
+  assert.ok(dbg.fieldStats.hiEdgeCount > 0 && dbg.fieldStats.hiEdgeCount <= 64, `hiEdgeCount capped at <= 64 (got ${dbg.fieldStats.hiEdgeCount})`);
+  assert.ok(drawnTexts.some((t) => t.txt === 'MegaHubNode'), 'primary selected node label is drawn');
+  const tightClusterDrawn = drawnTexts.filter((t) => /^NeighborLabel_[0-7]$/.test(t.txt));
+  assert.ok(tightClusterDrawn.length <= 2, `tightly stacked 1-hop neighbor labels are culled via AABB (${tightClusterDrawn.length} drawn)`);
+
+  // Verify community hulls & clickable community capsule hitboxes
+  const hullCheck = perspectiveApi.buildCommunityHullSegments(
+    nodes.map((n) => ({
+      visible: true,
+      node: n,
+      wx: n.x / 350,
+      wz: n.y / 350,
+      rgb: [0.35, 0.6, 0.96],
+    })),
+    [
+      { id: 'c1', label: 'Control', bgColor: '#5b9cf6' },
+      { id: 'c2', label: 'Learning', bgColor: '#e87954' },
+    ],
+    {
+      gridSize: 16,
+      extent: 1.35,
+      heights: new Float32Array(256),
+    },
+    0.46,
+    null,
+    null
+  );
+  assert.equal(hullCheck.hullCount, 2, 'buildCommunityHullSegments builds draped hulls for distinct communities');
+  assert.equal(hullCheck.positions.length / 3, hullCheck.colors.length / 4, 'hull position/color buffer counts match');
+
+  const hitboxes = ctrl.getCommunityHitboxes();
+  assert.ok(hitboxes.length >= 1, 'community capsules expose clickable screen hitboxes');
+  const hb = hitboxes[0];
+  const cx = (hb.x0 + hb.x1) * 0.5;
+  const cy = (hb.y0 + hb.y1) * 0.5;
+  stage.dispatchEvent(new dom.window.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: cx, clientY: cy }));
+  stage.dispatchEvent(new dom.window.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: cx, clientY: cy }));
+  assert.equal(clickedCommunity, hb.id, 'clicking community capsule hitbox triggers onCommunityClick');
+
+  // Camera off-center projection/unprojection round-trip & sidebar offset / frameNodes / morph APIs
+  const cam = perspectiveApi.buildCameraMatrices(
+    { pitch: 36, yaw: -18 },
+    { distance: 1.92, targetX: 0.1, targetY: 0.08, targetZ: -0.05, offsetPx: 150 },
+    1440 / 900,
+    1440
+  );
+  const samplePt = [0.18, 0.14, -0.06];
+  const projected = perspectiveApi.projectWorldToScreen(samplePt[0], samplePt[1], samplePt[2], cam.viewProj, 1440, 900);
+  assert.ok(projected, 'projects world point under off-center frustum');
+  const unproj = perspectiveApi.unprojectScreenToPlaneY(projected[0], projected[1], samplePt[1], cam, 1440, 900);
+  assert.ok(unproj && Math.hypot(unproj[0] - samplePt[0], unproj[2] - samplePt[2]) < 1e-4, 'unprojectScreenToPlaneY inverts off-center frustum projection accurately');
+
+  ctrl.setSidebarOffset(150);
+  ctrl.frameNodes(['hub', 'n1', 'n2']);
+  ctrl.syncData(true, { morph: true });
+  const nextDbg = ctrl.getDebugState();
+  assert.equal(nextDbg.camera.offsetPx, 150, 'setSidebarOffset updates camera frustum offset');
+
+  ctrl.destroy();
+  delete global.window;
+  delete global.document;
+  delete global.navigator;
+  delete global.localStorage;
+});
+
+test('graph.html ships direct top-bar 3-mode switcher, terrain legend strip, sidebar metrics bar, and URL deep-link sync', () => {
+  assert.ok(graphHtml.includes('id="toolbar-view-mode"'), 'top toolbar includes 3-mode view switcher');
+  assert.ok(graphHtml.includes('id="toolbar-view-perspective"'), 'top toolbar includes 3D terrain direct trigger button');
+  assert.ok(graphHtml.includes('id="graph-terrain-legend"'), 'graph.html includes compact terrain legend strip');
+  assert.ok(graphHtml.includes('id="sb-metrics"'), 'sidebar includes node degree/date metrics bar');
+  assert.ok(graphHtml.includes('function syncGraphUrlParams('), 'graph.html syncs view/focus/community params to URL');
+  assert.ok(graphHtml.includes('#graph-wrap.is-perspective-mode.sidebar-open'), '3D terrain keeps full-bleed canvas width behind open sidebar');
 });

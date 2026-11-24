@@ -92,10 +92,8 @@
   /* Classic 模式 dot-grid 尺寸保留，Tech 默认透明纯平背景 */
   --grid-size: 22px;
   --grid-dot: transparent;
-  /* 3D 地形透视视图派生 token（严格从暗/亮主题基础色板推导，graph.html 与首页预览共用） */
-  --persp-stage-bg:
-    radial-gradient(ellipse 84% 58% at 50% 44%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 66%),
-    var(--bg);
+  /* 3D 地形透视视图派生 token（纯平背景，无额外蓝光渐变，与 2D / 3D 立体保持统一） */
+  --persp-stage-bg: var(--bg);
   --persp-horizon-edge: var(--bg);
 }
 
@@ -127,9 +125,7 @@
   --shadow-sm: none;
   --shadow-md: none;
   --grid-dot: transparent;
-  --persp-stage-bg:
-    radial-gradient(ellipse 84% 58% at 50% 44%, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 66%),
-    var(--bg-alt);
+  --persp-stage-bg: var(--bg-alt);
   --persp-horizon-edge: var(--bg-alt);
 }
 
@@ -903,21 +899,6 @@ a.hero-stat-num:focus-visible {
   z-index: 3;
   pointer-events: none;
 }
-/* 远景地平线大气反光辉光（仅在斜视角下随 --persp-horizon-glow 渐显，俯视自动隐去避免横条光带） */
-.graph-perspective-stage::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: var(--persp-horizon-glow, 0);
-  background:
-    radial-gradient(ellipse 62% 24% at 50% 34%, color-mix(in srgb, var(--accent) 16%, rgba(251, 170, 86, 0.12)) 0%, transparent 72%);
-}
-[data-theme="light"] .graph-perspective-stage::before {
-  background:
-    radial-gradient(ellipse 62% 24% at 50% 34%, color-mix(in srgb, var(--accent) 11%, rgba(255, 255, 255, 0.30)) 0%, transparent 72%);
-}
 /* 边界径向雾化虚化遮罩：无矩形框线，边缘平滑溶入当前主题背景 */
 .graph-perspective-stage::after {
   content: "";
@@ -932,18 +913,14 @@ a.hero-stat-num:focus-visible {
 /* 首页 3D 预览保留与 2D 一致的 100%×480px 圆角视野边框，框内山体仍沿边界柔和雾化 */
 #mini-graph-wrap.is-perspective-mode {
   --persp-horizon-edge: var(--bg);
-  --persp-stage-bg:
-    radial-gradient(ellipse 84% 58% at 50% 44%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 66%),
-    var(--bg);
+  --persp-stage-bg: var(--bg);
   background: var(--persp-stage-bg);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
 [data-theme="light"] #mini-graph-wrap.is-perspective-mode {
   --persp-horizon-edge: var(--bg-alt);
-  --persp-stage-bg:
-    radial-gradient(ellipse 84% 58% at 50% 44%, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 66%),
-    var(--bg-alt);
+  --persp-stage-bg: var(--bg-alt);
   border-color: color-mix(in srgb, var(--border-strong) 26%, var(--border));
 }
 #mini-graph-wrap {
