@@ -90,6 +90,8 @@ flowchart LR
 - 同一任务上对比 ACT 与 Diffusion Policy 的成功率与推理延迟
 
 ### 推荐读什么
+
+- [Robot Policies：从模仿学习到 Token VLA](../wiki/overview/robot-policies-il-to-token-vla.md) — 从观测闭环、BC/ACT/PPO 到动作 token 与连续动作头的前置串讲（原讲座待核实）。
 - [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)
 - [Diffusion Policy](../wiki/methods/diffusion-policy.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
