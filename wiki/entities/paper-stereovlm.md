@@ -10,6 +10,7 @@ related:
   - ../methods/vla.md
   - ./robocasa.md
   - ../../roadmap/depth-vla.md
+  - ../methods/stereo-matching-foundation-models.md
 sources:
   - ../../sources/papers/stereovlm_arxiv_2611_27915.md
   - ../../sources/sites/stereovlm.md
@@ -97,6 +98,8 @@ flowchart TD
 - [vla](../methods/vla.md)
 - [robocasa](./robocasa.md)
 - [相关纵深路线](../../roadmap/depth-vla.md)
+
+- [双目匹配基础模型](../methods/stereo-matching-foundation-models.md) — 跨视图对应与视差估计的几何基础。
 
 ## 参考来源
 

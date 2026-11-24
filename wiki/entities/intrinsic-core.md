@@ -3,13 +3,14 @@ type: entity
 project_id: intrinsic-core
 project: https://developer.intrinsic.ai/
 code: https://github.com/intrinsic-ai/intrinsic-core
-tags: [repo, industrial-robotics, ros2, real-time, motion-planning, hardware-abstraction]
+tags: [repo, intrinsic, industrial-robotics, ros2, real-time, motion-planning, hardware-abstraction]
 status: draft
 updated: 2026-11-24
 related:
   - ./painode-046-intrinsic.md
   - ../methods/vla.md
   - ../../roadmap/depth-vla.md
+  - ../tasks/manipulation.md
 sources:
   - ../../sources/sites/intrinsic-core.md
   - ../../sources/repos/intrinsic-core.md
@@ -41,7 +42,7 @@ summary: "以本地 k3s 运行时、ICON 实时控制、硬件抽象和感知规
 
 | 字段 | 内容 |
 |---|---|
-| 机构 | Intrinsic |
+| 机构 | 工业机器人软件公司（Intrinsic） |
 | 开放状态 | Apache-2.0；官方 README 明确为本地开放运行时及 SDK。外部依赖及设备驱动支持需逐项确认。 |
 
 ## 核心原理与流程总览
@@ -111,6 +112,8 @@ Apache-2.0；官方 README 明确为本地开放运行时及 SDK。外部依赖�
 - [vla](../methods/vla.md)
 - [相关纵深路线](../../roadmap/depth-vla.md)
 
+- [机器人操作任务](../tasks/manipulation.md) — 工业操作应用的任务层与执行层接口。
+
 ## 参考来源
 
 - [sites：intrinsic-core](../../sources/sites/intrinsic-core.md)
@@ -121,4 +124,4 @@ Apache-2.0；官方 README 明确为本地开放运行时及 SDK。外部依赖�
 - [官方项目页](https://developer.intrinsic.ai/)
 - [官方源码](https://github.com/intrinsic-ai/intrinsic-core)
 - [OMTS 机床上下料参考方案](https://github.com/intrinsic-ai/intrinsic-omts)
-- [Getting Started](https://github.com/intrinsic-ai/intrinsic-core/blob/main/developer_resources/learn/tutorials/getting_started.md)
+- [Getting Started 安装教程（见官方源码归档）](../../sources/repos/intrinsic-core.md)

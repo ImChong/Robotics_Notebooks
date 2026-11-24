@@ -10,6 +10,8 @@ related:
   - ./nvidia-simready-central.md
   - ./visloc-rs.md
   - ../../roadmap/depth-real2sim.md
+  - ../tasks/manipulation.md
+  - ../methods/crisp-real2sim.md
 sources:
   - ../../sources/sites/chemlab-assets.md
   - ../../sources/repos/chemlab-assets.md
@@ -110,6 +112,9 @@ sequenceDiagram
 - [nvidia-simready-central](./nvidia-simready-central.md)
 - [visloc-rs](./visloc-rs.md)
 - [相关纵深路线](../../roadmap/depth-real2sim.md)
+
+- [机器人操作任务](../tasks/manipulation.md) — 设备面板和可动部件提供操作对象。
+- [CRISP Real2Sim](../methods/crisp-real2sim.md) — 对照实景重建和已有可操作资产两条路线。
 
 ## 参考来源
 

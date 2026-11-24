@@ -11,6 +11,7 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
   - ../../roadmap/depth-wam.md
+  - ../methods/smooth-navigation-path-generation.md
 sources:
   - ../../sources/papers/nopeworld_arxiv_2611_27963.md
   - ../../sources/sites/nopeworld.md
@@ -111,6 +112,8 @@ NoPeBench Task 1 在真实历史上测试决策，Task 2 在已知几何的闭�
 - [generative-world-models](../methods/generative-world-models.md)
 - [world-action-models](../concepts/world-action-models.md)
 - [相关纵深路线](../../roadmap/depth-wam.md)
+
+- [平滑导航路径生成](../methods/smooth-navigation-path-generation.md) — 对照真实几何约束下的路径生成；视频动作筛选不是实际规划器。
 
 ## 参考来源
 

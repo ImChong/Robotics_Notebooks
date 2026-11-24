@@ -11,6 +11,8 @@ related:
   - ./robocasa.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../../roadmap/depth-embodied-eval.md
+  - ../methods/agentic-manipulation-policies.md
+  - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/agentrobocritic_arxiv_2611_26613.md
   - ../../sources/sites/agentrobocritic.md
@@ -116,6 +118,9 @@ critic 的标签误差、模型自偏好与局部意图的真实性会影响结�
 - [robocasa](./robocasa.md)
 - [hub-embodied-eval-benchmark](../overview/hub-embodied-eval-benchmark.md)
 - [相关纵深路线](../../roadmap/depth-embodied-eval.md)
+
+- [智能体操作策略](../methods/agentic-manipulation-policies.md) — 动作及局部意图的生成端。
+- [机器人操作任务](../tasks/manipulation.md) — 按任务阶段统计失败与恢复。
 
 ## 参考来源
 
