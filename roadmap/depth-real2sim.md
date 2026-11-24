@@ -92,6 +92,7 @@ flowchart LR
 - [Instant NuRec](../wiki/entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS（~1.5 s），作逐场景 NuRec 种子；办公室扫描不要套这条 CLI
 - [π⁴（Pi4）：4D 场景几何与运动基础模型](../wiki/entities/paper-pi4-4d-scene-geometry-motion.md) — 未标定单图/图集/视频的场景点图、相机尺度、轨迹与动态掩码；作为 Stage 1 感知上游，**不包含**可直接物理仿真的碰撞/物性资产。
 - [GenSfM：生成式结构与相机联合恢复](../wiki/entities/paper-gensfm.md) — 2–4 张未标定物体前景视图联合生成 mesh / 3DGS 与相机；论文量化评测采用四视图，适合物体级稀疏重建，不负责碰撞、摩擦和关节化。
+- [DecomVoxel：三维原生先验引导的原位去噪重建](../wiki/entities/paper-decomvoxel.md) — 遮挡条件下用显式占据/空域锚点补全物体几何及纹理，输出对象与背景网格；物性、碰撞及关节仍属 Stage 2。
 - [DepthGS：深度引导高质量表面重建](../wiki/entities/paper-depthgs.md) — 在 PGSR 基础上通过深度差自适应法线约束与跨视角双深度一致性改进静态 mesh 几何；DTU CD 0.51 mm，**不包含**物性 / 碰撞建模，归 Stage 1 而非 Stage 2。
 - [visloc-rs：SfM → 3DGS → mesh 的 Rust 重建链](../wiki/entities/visloc-rs.md) — Stage 1 视觉几何/外观上游：照片注册、可重用 COLMAP 模型、wgpu 3DGS 和 mesh；不自动附带接触物性或关节化。
 - [i3dGS](../wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — 乱序 RGB 照片流 **即时** 3DGS 重建 + 全局回环（SIGGRAPH 2026；GraphDeco 官方代码已开源）；漫游捕获 / 补拍混采的上游，不含碰撞 mesh
