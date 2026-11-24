@@ -14,6 +14,10 @@
 
 核对上游 main 提交 `342247fb71dd0ee15386b6eab80543c50593d3c1` 的 README、课程目录和 `code/lecture01/simulation/minimal_reach.py`。第一讲示例由 `main` 调用 `run_reach` 迭代更新二维位置，写出 JSON 并调用 `plot_trajectory` 保存轨迹图；仅静态阅读，未运行。全部 21 讲正文及其他示例尚未在本次重新通读或验证，以下 2026-10-12 的记录保留原核查时间。
 
+## 2026-11-24 第10讲增量核查
+
+- [课程原文与源码归档](../courses/xbotics-handbook-lecture-10.md)：本次精读 ACT、Diffusion Policy、Flow Matching 章节及 ACT 训练/推理脚本；版本固定为上游 342247fb71dd0ee15386b6eab80543c50593d3c1，LeRobot v0.5.1。仅对第10讲记录通读，不将此标记扩展到整套课程。
+
 ## 定位
 
 README 自述：**不是论文综述，也不是纯科普**，而是围绕真实机器人任务、可跑通 Demo、可复盘失败的工程路径；"Guide 帮你看全局，本教程带你动手跑完整闭环"。由原"十八讲"扩展为 21 讲，分六个部分、五个阶段项目。
