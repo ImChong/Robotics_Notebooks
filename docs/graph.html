@@ -2428,11 +2428,13 @@
     :root:not([data-ui="classic"]) #graph-search:focus,
     :root:not([data-ui="classic"]) .chip:hover,
     :root:not([data-ui="classic"]) #graph-back:hover,
-    :root:not([data-ui="classic"]) .filter-depth-chip:hover {
+    :root:not([data-ui="classic"]) .filter-depth-chip:hover,
+    :root:not([data-ui="classic"]) .view-mode-btn:hover:not(:disabled) {
       border-color: var(--line-strong);
       color: var(--ink);
       background: var(--surface-hover);
     }
+    :root:not([data-ui="classic"]) .chip.active,
     :root:not([data-ui="classic"]) .chip.is-running,
     :root:not([data-ui="classic"]) .filter-depth-chip.is-active,
     :root:not([data-ui="classic"]) .view-mode-btn.is-active,
@@ -2440,6 +2442,13 @@
       background: var(--accent-soft);
       border-color: var(--accent);
       color: var(--accent);
+      font-weight: 600;
+    }
+    :root:not([data-ui="classic"]) .filter-count {
+      border-radius: 2px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-family: var(--font-mono);
     }
     :root:not([data-ui="classic"]) #graph-node-count,
     :root:not([data-ui="classic"]) #graph-back,
@@ -2466,9 +2475,259 @@
     :root:not([data-ui="classic"]) .graph-hint {
       color: var(--ink-muted);
     }
+    :root:not([data-ui="classic"]) #graph-legend-fab:hover,
+    :root:not([data-ui="classic"]) #graph-legend-fab:focus-visible {
+      border-color: var(--accent);
+      background: var(--surface-hover);
+      color: var(--ink);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) #graph-legend-fab[aria-expanded="true"] {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .physics-header,
+    :root:not([data-ui="classic"]) .filter-header {
+      border-bottom-color: var(--line);
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .physics-close,
+    :root:not([data-ui="classic"]) .filter-close,
+    :root:not([data-ui="classic"]) .sb-close {
+      border-radius: 2px;
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .physics-close:hover,
+    :root:not([data-ui="classic"]) .filter-close:hover,
+    :root:not([data-ui="classic"]) .sb-close:hover {
+      color: var(--ink);
+      background: var(--surface-hover);
+    }
+    :root:not([data-ui="classic"]) .slider-divider {
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .physics-section-title,
+    :root:not([data-ui="classic"]) .filter-section-title,
+    :root:not([data-ui="classic"]) .legend-title,
+    :root:not([data-ui="classic"]) .sb-section-title {
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .slider-label,
+    :root:not([data-ui="classic"]) .physics-toggle,
+    :root:not([data-ui="classic"]) .timeline-scrub-label {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .slider-val {
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .timeline-scrub-label {
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .physics-toggle input[type=checkbox],
+    :root:not([data-ui="classic"]) .filter-item input[type=checkbox] {
+      accent-color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) input[type=range] {
+      border-radius: 0;
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .timeline-progress {
+      background: linear-gradient(to right,
+        var(--accent) 0%, var(--accent) var(--tl-pct, 0%),
+        var(--line) var(--tl-pct, 0%), var(--line) 100%);
+    }
+    :root:not([data-ui="classic"]) input[type=range]::-webkit-slider-thumb {
+      border-radius: 2px;
+      background: var(--accent);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) input[type=range]::-webkit-slider-thumb:hover {
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) input[type=range]::-moz-range-thumb {
+      border-radius: 2px;
+      background: var(--accent);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .perspective-tier-badge {
+      border-radius: 2px;
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn:hover:not(:disabled) {
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn.is-running,
+    :root:not([data-ui="classic"]) .physics-action-btn.is-timeline-active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn:disabled {
+      opacity: 0.4;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .timeline-ctrl-btn {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .timeline-ctrl-btn:hover:not(:disabled) {
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .filter-mode-tabs,
+    :root:not([data-ui="classic"]) .filter-degree-section {
+      border-bottom-color: var(--line);
+    }
+    :root:not([data-ui="classic"]) .filter-subtitle,
+    :root:not([data-ui="classic"]) .filter-degree-hint,
+    :root:not([data-ui="classic"]) .filter-empty {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-depth-summary:hover {
+      background: var(--surface-hover);
+    }
+    :root:not([data-ui="classic"]) .filter-depth-summary::after,
+    :root:not([data-ui="classic"]) .filter-depth-summary-label {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-depth-summary-current {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-recency-mode-btn {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-recency-mode-btn:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-recency-mode-btn.is-active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .filter-item {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-item:hover {
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-footer {
+      border-top-color: var(--line);
+      background: var(--surface);
+    }
+    :root:not([data-ui="classic"]) .filter-clear {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-clear:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-scroll-chrome {
+      border-radius: 0;
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .filter-scroll-thumb {
+      border-radius: 0;
+      background: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-resize-e:hover,
+    :root:not([data-ui="classic"]) .filter-resize-e:active,
+    :root:not([data-ui="classic"]) .filter-resize-s:hover,
+    :root:not([data-ui="classic"]) .filter-resize-s:active {
+      background-color: var(--accent-soft);
+    }
+    :root:not([data-ui="classic"]) .filter-resize-se::before {
+      border-bottom-right-radius: 0;
+      border-color: var(--accent-line);
+    }
+    :root:not([data-ui="classic"]) .filter-resize-se:hover::before,
+    :root:not([data-ui="classic"]) .filter-resize-se:active::before {
+      border-color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-hub-tag {
+      border-radius: 2px;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-text,
+    :root:not([data-ui="classic"]) .depth-intro-steps {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-step-label b {
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-step-btn {
+      border-radius: 2px;
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-step-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+    :root:not([data-ui="classic"]) .tt-type,
+    :root:not([data-ui="classic"]) #graph-sidebar .tt-type,
+    :root:not([data-ui="classic"]) .tt-community {
+      border-radius: 2px;
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .tt-community {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) #graph-tooltip.tt-pinned {
+      border-color: var(--accent-line);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .legend-row {
+      border-radius: 2px;
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .legend-row:hover {
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .legend-row.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) #graph-legend::-webkit-scrollbar-thumb {
+      border-radius: 0;
+      background: var(--line-strong);
+    }
     :root:not([data-ui="classic"]) #graph-sidebar {
       background: var(--bg);
       border-left: 1px solid var(--line);
+    }
+    :root:not([data-ui="classic"]) #graph-sidebar .sb-header {
+      border-bottom-color: var(--line);
     }
     :root:not([data-ui="classic"]) .sb-title,
     :root:not([data-ui="classic"]) .tt-title,
@@ -2486,10 +2745,31 @@
     :root:not([data-ui="classic"]) .depth-intro-link {
       color: var(--accent);
     }
+    :root:not([data-ui="classic"]) .sb-related-list li a {
+      border-radius: 2px;
+    }
+    :root:not([data-ui="classic"]) .sb-related-list li a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .sb-open-link {
+      border-color: var(--accent-line);
+    }
+    :root:not([data-ui="classic"]) .sb-open-link:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
     :root:not([data-ui="classic"]) .sb-open-link,
     :root:not([data-ui="classic"]) .tt-link,
     :root:not([data-ui="classic"]) .sb-tag {
       border-radius: 2px;
+    }
+    :root:not([data-ui="classic"]) .sb-tag {
+      border: 1px solid var(--line);
+      background: var(--bg-alt);
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
     }
     :root:not([data-ui="classic"]) .graph-loading-bar {
       border-radius: 0;
@@ -2517,7 +2797,8 @@
       color: var(--ink);
       box-shadow: none;
     }
-    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle[aria-expanded="true"] {
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle[aria-expanded="true"],
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle[aria-expanded="true"]:hover {
       background: var(--accent-soft);
       border-color: var(--accent);
       color: var(--accent);

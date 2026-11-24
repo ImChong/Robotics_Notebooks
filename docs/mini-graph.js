@@ -3,6 +3,8 @@
   var miniSvg  = document.getElementById('mini-graph-svg');
   var statsEl  = document.getElementById('mini-graph-stats');
   var expandEl = document.getElementById('mini-graph-expand');
+  var openBtnEl = document.getElementById('mini-graph-open-btn');
+  var telemetryLinkEl = document.getElementById('mini-graph-telemetry-link');
   var tooltip  = document.getElementById('mini-graph-tooltip');
   if (!miniWrap || !miniSvg) return;
 
@@ -846,8 +848,15 @@
         btn3d.classList.toggle('is-active', in3d);
         btn3d.setAttribute('aria-pressed', in3d ? 'true' : 'false');
       }
+      var targetHref = in3d ? 'graph.html?view=perspective' : 'graph.html';
       if (expandEl) {
-        expandEl.setAttribute('href', in3d ? 'graph.html?view=perspective' : 'graph.html');
+        expandEl.setAttribute('href', targetHref);
+      }
+      if (openBtnEl) {
+        openBtnEl.setAttribute('href', targetHref);
+      }
+      if (telemetryLinkEl) {
+        telemetryLinkEl.setAttribute('href', targetHref);
       }
       if (telemetryModeEl) {
         telemetryModeEl.textContent = in3d ? '3D 地形' : '2D 力导图';

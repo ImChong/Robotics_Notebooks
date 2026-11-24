@@ -6910,6 +6910,23 @@ a.kb-chat-citation-passage:hover {
   color: var(--accent);
   opacity: 1;
 }
+:root:not([data-ui="classic"]) .kin-icon-btn.is-pulse-hint {
+  animation: kin-icon-btn-pulse 0.85s ease 2;
+}
+@keyframes kin-icon-btn-pulse {
+  0%, 100% {
+    border-color: var(--line);
+    background-color: var(--bg);
+    color: var(--ink);
+    box-shadow: none;
+  }
+  35%, 65% {
+    border-color: var(--accent);
+    background-color: var(--accent);
+    color: var(--on-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 32%, transparent);
+  }
+}
 
 :root:not([data-ui="classic"]) #mini-graph-section.hero-viewport #mini-graph-wrap {
   margin-top: 0;
@@ -7000,6 +7017,21 @@ a.kb-chat-citation-passage:hover {
 }
 :root:not([data-ui="classic"]) .kin-metric-link {
   color: var(--accent);
+}
+:root:not([data-ui="classic"]) .kin-metric-link.is-pulse-hint {
+  animation: home-route-toggle-hint 0.85s ease 2;
+  overflow: visible;
+}
+:root:not([data-ui="classic"]) .kin-metric:has(.kin-metric-link.is-pulse-hint) {
+  animation: kin-metric-cell-pulse 0.85s ease 2;
+}
+@keyframes kin-metric-cell-pulse {
+  0%, 100% {
+    background-color: var(--surface);
+  }
+  35%, 65% {
+    background-color: color-mix(in srgb, var(--accent) 18%, var(--surface));
+  }
 }
 
 @media (max-width: 1023px) {
@@ -7491,11 +7523,13 @@ a.kb-chat-citation-passage:hover {
   text-align: left;
   margin-top: 20px;
 }
-:root:not([data-ui="classic"]) #home-hub-section .home-hub-more a,
-:root:not([data-ui="classic"]) .home-latest-more a {
+:root:not([data-ui="classic"]) #home-hub-section .home-hub-more a {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 500;
+}
+:root:not([data-ui="classic"]) .home-latest-more {
+  display: none;
 }
 
 /* ── 7. 全站子页与共享组件对齐（2px 直角 · 1px 细线 · 无软阴影） ───────── */
@@ -7670,14 +7704,66 @@ a.kb-chat-citation-passage:hover {
   color: var(--accent);
   border-color: var(--accent);
 }
+:root:not([data-ui="classic"]) .kb-chat-icon-btn,
+:root:not([data-ui="classic"]) .kb-chat-starter-btn,
+:root:not([data-ui="classic"]) .kb-chat-citations__toggle,
+:root:not([data-ui="classic"]) .kb-chat-mode-badge,
+:root:not([data-ui="classic"]) .kb-chat-welcome,
+:root:not([data-ui="classic"]) .kb-chat-msg--user,
+:root:not([data-ui="classic"]) .kb-chat-msg--assistant,
+:root:not([data-ui="classic"]) .kb-chat-md-code,
+:root:not([data-ui="classic"]) .kb-chat-md-pre,
+:root:not([data-ui="classic"]) .kb-chat-md-body .mermaid,
+:root:not([data-ui="classic"]) .kb-chat-md-body .mermaid.mermaid-zoomable::after,
+:root:not([data-ui="classic"]) .kb-chat-status-note,
+:root:not([data-ui="classic"]) .kb-chat-cite-pill,
 :root:not([data-ui="classic"]) .kb-chat-input,
 :root:not([data-ui="classic"]) .kb-chat-send,
 :root:not([data-ui="classic"]) .kb-chat-citation-group,
-:root:not([data-ui="classic"]) .kb-chat-citation-passage {
+:root:not([data-ui="classic"]) .kb-chat-citation-passage,
+:root:not([data-ui="classic"]) .sponsor-qr {
   border-radius: var(--r-btn);
+}
+:root:not([data-ui="classic"]) .kb-chat-md-quote {
+  border-radius: 0;
+  border-left-width: 2px;
+}
+:root:not([data-ui="classic"]) .kb-chat-msg--user {
+  color: var(--on-accent);
+}
+:root:not([data-ui="classic"]) .kb-chat-mode-badge,
+:root:not([data-ui="classic"]) .kb-chat-citations__toggle,
+:root:not([data-ui="classic"]) .kb-chat-cite-pill {
+  font-family: var(--font-mono);
+}
+:root:not([data-ui="classic"]) .kb-chat-starter-btn {
+  border-color: var(--line);
+  background: var(--bg);
+}
+:root:not([data-ui="classic"]) .kb-chat-starter-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+:root:not([data-ui="classic"]) .kb-chat-icon-btn {
+  border-color: var(--line);
+}
+:root:not([data-ui="classic"]) .kb-chat-icon-btn:hover:not(:disabled) {
+  border-color: var(--line-strong);
+  background: var(--surface-hover);
+  color: var(--ink);
 }
 :root:not([data-ui="classic"]) .kb-chat-send {
   color: var(--on-accent);
+}
+:root:not([data-ui="classic"]) .graph-hover-tooltip .tt-type,
+:root:not([data-ui="classic"]) .graph-hover-tooltip .tt-community {
+  border-radius: var(--r-btn);
+  font-family: var(--font-mono);
+}
+:root:not([data-ui="classic"]) .graph-hover-tooltip.tt-pinned {
+  border-color: var(--accent-line);
+  box-shadow: none;
 }
 
 /* ── 8. 纵深与主路线正文折叠框、时间线徽标及内嵌阶段知识树 ──────────────── */
@@ -7891,5 +7977,19 @@ a.kb-chat-citation-passage:hover {
   :root:not([data-ui="classic"]) .home-language-toggle:active,
   :root:not([data-ui="classic"]) .mobile-menu-toggle:active {
     transform: none;
+  }
+  :root:not([data-ui="classic"]) .kin-icon-btn.is-pulse-hint {
+    animation: none;
+    border-color: var(--accent);
+    background-color: var(--accent);
+    color: var(--on-accent);
+  }
+  :root:not([data-ui="classic"]) .kin-metric-link.is-pulse-hint {
+    animation: none;
+    color: var(--accent-hover);
+  }
+  :root:not([data-ui="classic"]) .kin-metric:has(.kin-metric-link.is-pulse-hint) {
+    animation: none;
+    background-color: var(--accent-soft);
   }
 }
