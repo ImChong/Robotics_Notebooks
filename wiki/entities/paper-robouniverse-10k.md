@@ -16,12 +16,15 @@ tags:
   - hku
   - ucl
   - unc-chapel-hill
-status: draft
+status: complete
 updated: 2026-11-24
 related:
   - ./paper-robowild.md
   - ./paper-agentic-real2sim.md
   - ../concepts/simulation-evaluation-infrastructure.md
+  - ../methods/vla.md
+  - ../tasks/manipulation.md
+  - ../overview/hub-embodied-eval-benchmark.md
 sources:
   - ../../sources/papers/robouniverse_10k_arxiv_2611_31002.md
   - ../../sources/sites/robouniverse-10k.md
@@ -145,22 +148,36 @@ Table 2 与 3 的口径为 500 个留出任务。弱模型在需要抓取时尤�
 - 以单臂与双臂分项观察 SFT 收益，避免总体指标掩盖双臂瓶颈。
 - 外部 LIBERO-MAX、RoboCasa、RoboTwin 2.0 及真实 Franka 绘图为迁移案例，不是普遍部署成功率证明。
 
+## 对比
+
+| 路线 | 侧重点 | 边界 |
+|---|---|---|
+| RoboUniverse-10K | 从视频批量生成可验证环境，训练和独立留出评测 | 主要为短原子技能；不能替代真机长期部署验收 |
+| [Agentic Real2Sim](./paper-agentic-real2sim.md) | 用真实观测构建物理仿真场景 | 对照环境构造与物性建模问题 |
+| [RoboWild](./paper-robowild.md) | 复杂真实场景中的机器人使用评测 | 不直接以不同基准成功率排名 |
+| [VLA](../methods/vla.md) | 视觉、语言条件到动作的策略映射 | 编程代理则通过程序调用公开控制接口；不能将两种执行方式视作同一模型架构 |
+
 ## 工程实践
 
 先按官方 README 安装 Python 3.12、Harbor、Docker 与 Isaac Sim 镜像，准备数据包和模型服务；用 `python evaluate.py list --data "$DATA" --split heldout500` 检查任务选择，再选择单任务运行。评测异常与任务失败应分开计数；不要把 oracle 参考解成绩当作代理成绩。
+
+附录 C.1–C.3（PDF pp. 26–29）补充了实现约束：执行代理应先读取动作规格，分块控制须检查反馈，重复请求需去重，结束不会额外推进物理；构建代理必须依赖真实接触与关节驱动；独立 QA 必须检查判定分支，构造失败与有效替代解的回归案例，并在修复后重跑参考轨迹及复位回放。
 
 ## 局限与风险
 
 - 论文 §6 明确复杂关节物体的闩锁、摩擦及接触动力学难从视频恢复，场景仍简化。
 - 当前主要为短原子操作，长程任务覆盖有限。RL-ready 不等于已经证明在线 RL 收益。
 - 已发布评测源码、环境数据及模型入口；完整自动生成和训练流水线尚未核实公开。
-- PDF 已获取，正文及接口与 QA 附录重点已核对，但 §9 完整提示词未逐页核查；保留草稿，不宣称原文通读或满分。
+- 已补读 PDF 附录 C 的全部已公开提示词摘录（第 26–29 页）；论文仅披露摘录，完整内部构建配置与 GPU 复现仍未验证。
 
 ## 关联页面
 
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — 物理环境构造方法对照
 - [RoboWild](./paper-robowild.md) — 复杂场景机器人代理评测对照
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [机器人操作任务](../tasks/manipulation.md) — 抓放、装配、柔性操作及双臂协调的任务能力
+- [VLA 方法](../methods/vla.md) — 对比端到端动作策略与基于程序的控制代理
+- [具身大模型评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md)
 
 ## 参考来源
