@@ -3,7 +3,7 @@ type: entity
 project_id: flashsac-2604-04539
 tags: [paper, rl, sac, off-policy, humanoid, sim2real, rss-2026, kaist]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-24
 arxiv: "2604.04539"
 venue: "RSS 2026"
 project: https://holiday-robot.github.io/FlashSAC/
@@ -121,6 +121,8 @@ sequenceDiagram
 性能增益依赖大量并行仿真和适当稳定化；不同 GPU、仿真器、batch 与 UTD 不能简单照搬；真机效果仍受状态估计、接触建模和随机化范围制约。
 
 ## 关联页面
+
+- [2026 顶会论文：通用能力五条技术路径](../comparisons/robotics-2026-awards-five-capability-paths.md) — 从训练吞吐延伸到现场执行与持续验收。
 
 - [FlashSAC 方法页](../methods/flashsac.md)
 - [Camera Conditioning](./paper-know-your-camera.md)
