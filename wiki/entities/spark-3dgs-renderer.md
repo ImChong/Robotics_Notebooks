@@ -83,6 +83,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Ink Studio：SDF 雕刻与像素风高斯渲染](./shapeshift-labs-ink-studio.md) — 程序化场景创作与离屏渲染，区别于大场景流式浏览。
 - [World Labs](./world-labs.md)
 - [Marble](./marble-world-model.md) — 官方推荐把 SPZ 送进 Spark
 - [Aholo Viewer](./aholo-viewer.md)
