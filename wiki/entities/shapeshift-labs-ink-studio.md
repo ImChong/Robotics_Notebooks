@@ -3,7 +3,7 @@ type: entity
 project_id: shapeshift-labs-ink-studio
 code: https://github.com/siliconjungle/shapeshift-labs-ink-studio
 tags: [siliconjungle, repo, sdf, 3dgs, gaussian-splatting, rendering, webgl2, webgpu, open-source]
-status: draft
+status: complete
 updated: 2026-11-24
 related:
   - ../methods/crisp-real2sim.md
@@ -51,6 +51,13 @@ Ink Studio 将程序化带符号距离场几何采样并烘焙为高斯 splat，
 5. 动画系统由 stage 顺序更新，可用固定前向步长复现；状态型世界需要经历中间时间步。
 6. CPU 渲染输出图像；浏览器默认 WebGL 2 renderer，由宿主负责编辑界面和推进场景。构建模式区分完整创作、轻量烘焙、Node 与已烘焙帧回放。
 
+### SDF 采样与数据布局（源码核对）
+
+- `src/sculpt.js` 的 `S.bake()` 先构建空间网格，遍历正/负固体并进入 `bakeBand`；利用复合 SDF 的数值梯度把候选点迭代投影到表面，超过半个采样间距的残差被丢弃，再按表面归属选材质、法向和光照。独立移动部件使用自身 SDF，保留接触区域完整性。
+- `src/sculpt-sampling.js` 使用相对切平面的距离偏离量估计弯曲程度。默认均匀采样；启用自适应后，宽平面间距为 `res × 1.8`、细节间距为 `res × 0.7`，曲率阈值默认 0.15，过渡区域粗细重叠并收缩粗 splat。透明、发光或毛发等材质不适用该分支。额外候选扫描增加烘焙开销。
+- `src/builder.js` 的 `finish()` 输出 `data.subarray(0, n * 16)`。每个 splat 的主体占 16 × 4 = 64 字节，不含附加材质数据、索引或 GPU 缓冲；因此评估内存不能只按主体大小估计总占用。
+- `cli/render.js` 将三维协方差投影为屏幕椭圆，排序并从远到近合成覆盖，再执行像素风 resolve；`raw` 跳过 palette styling。浏览器由 `webgl.mjs` 导出 `createRenderer`，可按 512-splat 纹理行更新数据，初次上传及数量变化仍需全量更新。
+
 ### 流程总览
 
 ```mermaid
@@ -78,7 +85,8 @@ sequenceDiagram
     participant CLI as cli/ink-studio.js
     participant Lib as index.js load()
     participant Ex as examples/sculpt.js
-    participant Kit as makeBuilder / KIT.sculpt
+    participant Kit as src/builder.js + src/sculpt.js
+    participant Pose as cli/diarama-pose.js
     participant R as cli/render.js
     participant P as cli/png.js
     CLI->>CLI: render() → buildPreview() → build()
@@ -86,12 +94,15 @@ sequenceDiagram
     CLI->>Ex: scene() require(file)(lib())
     CLI->>Ex: descriptor.build(seed, options)
     Ex->>Kit: makeBuilder / makeSculpt / K.sculpt
-    Ex->>Kit: ground / box / ball / bake
+    Ex->>Kit: ground / box / ball / S.bake()
+    Kit->>Kit: buildGrid → bakeBand → shadeOwned
     Ex->>Kit: B.finish(camera, detail)
     Kit-->>Ex: world
     Ex-->>CLI: world
-    CLI->>CLI: pose(world, t)
+    CLI->>Pose: pose(world, t)
+    Pose-->>CLI: 静态场景直接返回
     CLI->>R: render(world, view(options))
+    R->>R: 协方差投影 / 深度排序 / 混合与像素 resolve
     R-->>CLI: image
     CLI->>R: upscale(image)
     CLI->>P: save() → PNG.write(path, w, h, rgb)
@@ -115,12 +126,25 @@ sequenceDiagram
 
 初次集成建议从单个 SDF 球或盒开始，固定 seed、相机和 palette，改变 res 后记录 splat 数量、耗时和输出尺寸；再评估浏览器与 CPU 渲染差异。若用于机器人教学，可将已知关节位姿或外部传感器记录映射为可视化输入，但需要另外实现数据适配和坐标转换（本页建议，非官方机器人集成能力）。
 
+### 回归与工程选型
+
+| 验证目标 | 官方命令 / 对照方法 |
+|---|---|
+| 采样间距的影响 | `render examples/adaptive-lantern.js --w 48 --h 48 --px 1 --raw --adaptive-sampling off` 与启用自适应对照；同时 `stats` 记录数量与构建成本 |
+| 动态场景复现 | 固定 seed 和从零开始的前向时间步；`clip` 与 `perf` 分别观察画面、更新工作量 |
+| 图像回归 | `snap watcher --t 0,2` 后 `check watcher`；同一渲染后端、相机与时间 |
+| 调试通道 | `passes` 输出覆盖、深度、法线、对象 ID、发光等诊断预览 |
+| 跨后端 | `environment-parity` 输出对应 CPU/WebGL 帧、差异图及 JSON；共享契约不代表逐像素等价 |
+
+物理扩展包括 `K.mpm`（材料点）、`K.xpbd`（约束点、布料、绳索）、`K.sandbox`（材料网格）和 `K.voxels`（持久单元属性）；这些是可创作与回放的场景系统，不构成机器人物理精度验证。
+
 ## 局限与风险
 
 - 代码公开且声明 MIT，版本号 0.1.0；npm package 的 private 标记意味着安装以 GitHub/本地 checkout 为准。
 - 风格化采样、调色板和像素效果并不等于真实传感器成像；没有核实机器人策略训练、接触动力学和 sim2real 精度。
 - GLB 导出不自动生成 URDF/MJCF 或可验证的碰撞、惯量与关节参数；应在目标仿真器独立验收。
-- README 尚未全文通读，未运行测试或渲染性能基准，不填写推测的速度或健康度。
+- CPU 与 WebGL 共享相机、时间和部分外观契约，但渲染特性与像素精度不同。WebGL 的场景调色板 resolve 使用最多 64 个色槽，超限普通模式警告并截取，strictContract 可拒绝不兼容输入。精确回归应使用同一后端。
+- 已通读固定版本 README 和核心采样、构建、浏览器文档，核对核心运行路径；未执行上游测试或性能基准，不将官方功能说明冒充实测。
 
 ## 关联页面
 
@@ -136,6 +160,11 @@ sequenceDiagram
 - [官方源码归档与核对记录](../../sources/repos/shapeshift_labs_ink_studio.md)
 - [官方仓库](https://github.com/siliconjungle/shapeshift-labs-ink-studio)
 - [构建模式](https://github.com/siliconjungle/shapeshift-labs-ink-studio/blob/b2e76c70618f2616cdbed048ccc180094dd76969/docs/build-profiles.md)
+
+- [自适应采样说明](https://github.com/siliconjungle/shapeshift-labs-ink-studio/blob/b2e76c70618f2616cdbed048ccc180094dd76969/docs/adaptive-sculpt-sampling.md)
+- [浏览器渲染契约](https://github.com/siliconjungle/shapeshift-labs-ink-studio/blob/b2e76c70618f2616cdbed048ccc180094dd76969/docs/browser-renderer.md)
+- [SDF 采样实现](https://github.com/siliconjungle/shapeshift-labs-ink-studio/blob/b2e76c70618f2616cdbed048ccc180094dd76969/src/sculpt.js)
+- [CPU 渲染实现](https://github.com/siliconjungle/shapeshift-labs-ink-studio/blob/b2e76c70618f2616cdbed048ccc180094dd76969/cli/render.js)
 
 ## 推荐继续阅读
 
