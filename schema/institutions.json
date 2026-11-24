@@ -4500,6 +4500,18 @@
         "intrinsic",
         "intrinsic-ai"
       ]
+    },
+    "autosar": {
+      "label": "汽车开放系统架构组织（AUTOSAR）",
+      "aliases": [
+        "autosar"
+      ]
+    },
+    "isoft": {
+      "label": "普华基础软件（iSOFT）",
+      "aliases": [
+        "isoft"
+      ]
     }
   }
 }
