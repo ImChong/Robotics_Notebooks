@@ -10,6 +10,7 @@ code: https://github.com/tiplab/TipDex-VTLA
 summary: "TipDex-VTLA 以 VASE 估计光照变化下动作一致性，以 TACE 核验时间与命令一致的触觉预测并门控未执行动作的有界特征修正；真机正常光 87.5%、未见光照 73.8%，UniVTAC 正常仿真光照 84.9%。"
 related:
   - ../methods/vla.md
+  - ../tasks/manipulation.md
   - ../concepts/visuo-tactile-fusion.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./paper-touchworld-tactile-foundation-dexterous-manipulation.md
@@ -56,9 +57,9 @@ original:
 
 ### 视觉可靠性与触觉修正
 
-- VASE：对同一观测的正常与扰动图像保持其他输入及随机噪声固定，使用冻结策略预测的归一化动作差，构造监督 $q_v'=\\exp(-\\mathrm{MSE}(a_a,a_b)/\\lambda)$。运行时只用当前前缀估计 $q_v$。
+- VASE：对同一观测的正常与扰动图像保持其他输入及随机噪声固定，使用冻结策略预测的归一化动作差，构造监督 $q_v'=\exp(-\mathrm{MSE}(a_a,a_b)/\lambda)$。运行时只用当前前缀估计 $q_v$。
 - TACE：寻找早于当前时刻签发、目标时间匹配且与中间已执行指令一致的预测；归一化触觉 MAE 为 $e$。无合格预测取 $e=0$ 回退至视觉分数，并非接触正确。
-- 执行分数 $q=G(q_v,e)$ 随视觉可靠性单调不减、随误差单调不增，且 $G(q_v,0)=q_v$。门控 $g=\\sigma(S-\\kappa\\operatorname{logit}(q))$，特征修正 $\\tilde U=U+gb\\tanh(R)$；$b=0.1$ 是特征级界限，不是关节安全限幅。
+- 执行分数 $q=G(q_v,e)$ 随视觉可靠性单调不减、随误差单调不增，且 $G(q_v,0)=q_v$。门控 $g=\sigma(S-\kappa\operatorname{logit}(q))$，特征修正 $\tilde U=U+gb\tanh(R)$；$b=0.1$ 是特征级界限，不是关节安全限幅。
 - 第一阶段联合流匹配与未来触觉 Huber 损失；第二阶段冻结骨干，以配对动作差监督修正、以 BCE 监督视觉可靠性，修正损失只作用于可替换位置。
 
 | 视觉可靠性 | 触觉预测 | 典型修正倾向 |
@@ -170,6 +171,7 @@ sequenceDiagram
 ## 关联页面
 
 - [VLA](../methods/vla.md)
+- [操作任务](../tasks/manipulation.md) — 对应抓取、柔性物体处理与接触反馈下的动作修正。
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md)
 - [接触丰富操作纵深](../../roadmap/depth-contact-manipulation.md)
