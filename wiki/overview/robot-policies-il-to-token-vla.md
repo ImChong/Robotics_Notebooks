@@ -3,7 +3,7 @@ type: overview
 tags: [overview, robot-learning, imitation-learning, reinforcement-learning, vla, action-chunking, control]
 status: draft
 updated: 2026-11-24
-summary: "以机器人闭环、动作控制接口、模仿学习、强化学习与 Token VLA 五部分连接从示范到真机部署的学习路线，区分学习信号、动作生成和执行调度。原讲座出处待核实。"
+summary: "以机器人闭环、动作控制接口、模仿学习、强化学习与 Token VLA 五部分连接从示范到真机部署的学习路线，区分学习信号、动作生成和执行调度。原讲座出处已确认，课件全文待核读。"
 related:
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
@@ -19,7 +19,7 @@ sources:
 
 # Robot Policies: From Imitation Learning to Token VLA / 机器人策略：从模仿学习到 Token VLA
 
-> 本页根据 human five 2026-11-24 课程整理文本编译，并以已定位的各研究官方资料交叉核对。原始讲座的讲者、课件及视频未确认；不冒称课程原文已核读。
+> 本页根据 human five 2026-11-24 课程整理文本编译，并以已定位的各研究官方资料交叉核对。原始讲座为 Xinyuan Liu 在 Arizona State University CSE 598（Fall 2026）的 Physical AI 客座讲座，已由讲者官网及封面核实；[官方课件](https://drive.google.com/file/d/19M1BsdvSGGHaS0SpdblaL1DRg_5AfxSt/view?usp=sharing) 与 [视频](https://youtu.be/p1KjuI2z8uM) 已定位，PDF 正文未成功取得，仍不能声称课程原文已核读。
 
 ## 一句话定义
 
@@ -159,7 +159,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- 原始讲座和演示未确认，故不记录 GPT 模型具体版本、推理秒数等无可核验口径。
+- 原始讲座身份已确认，但课件正文和演示尚未核读，故不记录 GPT 模型具体版本、推理秒数等无可核验口径。
 - 原文部分公式在用户文本中丢失，本页明确为标准公式补充。
 - 该笔记不包含统一官方可运行项目；源码运行时序图不适用。各论文/模型入口应在唯一实体页中独立核对。
 - 未对全部列出的原始论文逐篇通读或复现实验，不将本页当作完成论文深读。
