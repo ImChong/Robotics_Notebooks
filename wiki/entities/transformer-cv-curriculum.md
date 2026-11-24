@@ -12,7 +12,7 @@ tags:
   - detection
   - segmentation
 status: complete
-updated: 2026-08-12
+updated: 2026-11-24
 summary: "《Transformer 架构及其在计算机视觉中的应用》八章策展：CNN/注意力基础 → 分类/检测/分割 → 多模态 VLM → Mamba → SAM/SEEM 与基础模型趋势；每节都能点进对应的站内页。"
 related:
   - ../overview/hub-vision-backbone.md
@@ -105,7 +105,7 @@ flowchart LR
 | 3.1.2 | 检测评价指标 | [目标检测评价指标](../concepts/object-detection-metrics.md) |
 | 3.2.1 | R-CNN 族 | [R-CNN 族](../methods/rcnn-family.md) |
 | 3.2.2 | YOLO / RetinaNet | [YOLO](./paper-yolo-unified-realtime-detection.md)、[RetinaNet](./retinanet.md) |
-| 3.3 | DETR / Deformable DETR | [DETR](./detr.md)、[Deformable DETR](./deformable-detr.md) |
+| 3.3 | DETR / Deformable DETR | [DETR](./detr.md)、[Deformable DETR](./paper-2010-04159-deformable-detr.md) |
 | — | 方法总览 | [Object Detection](../methods/object-detection.md) |
 | 作业 3 | VisDrone + DETR | [DETR](./detr.md) |
 
@@ -139,7 +139,7 @@ flowchart LR
 | 7.1.2 | 状态空间模型 | [SSM](../concepts/state-space-model-ssm.md) |
 | 7.2 | Vim / VMamba | [Vision Mamba](./vision-mamba-vim.md)、[VMamba](./vmamba.md) |
 | 7.3 | MambaIR / RS-Mamba / ChangeMamba / VideoMamba / U-Mamba | [MambaIR](./mambair.md)、[RS-Mamba](./rs-mamba.md)、[ChangeMamba](./changemamba.md)、[VideoMamba](./videomamba.md)、[U-Mamba](./u-mamba.md) |
-| 作业 6 | SegMamba / BraTS | [U-Mamba](./u-mamba.md)（医学分割近邻） |
+| 作业 6 | SegMamba / BraTS | [SegMamba](./paper-segmamba.md)（独立论文）；[U-Mamba](./u-mamba.md)（对照） |
 
 ### 第 8 章 视觉基础模型与趋势
 
@@ -187,6 +187,8 @@ flowchart LR
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 课程第 3–4 章的检测/分割选型，在感知栈里落到②层
 
 ## 参考来源
+
+- [八章一手资料索引](../../sources/courses/vision_transformer_primary_sources.md) — 逐篇通读和身份校验尚未全部完成。
 
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
 - [ViT 论文通读归档（arXiv:2010.11929）](../../sources/papers/vit_reading_arxiv_2010_11929_tcvc.md) — 第 2 章 Transformer 分类的共同起点
