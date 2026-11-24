@@ -134,6 +134,7 @@ flowchart LR
 ### 推荐读什么
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) — Clarke/Park 变换到电流环设计
 - [控制环路延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) — 采样、PWM 更新与指令延迟的预算方法
+- [数字控制采样周期与伺服带宽](../wiki/concepts/digital-control-sampling-period.md) — Stage 3 区分采样率、交越频率与带宽，按 ZOH 相位预算和离散 PID 系数验证底层回路；电液案例仅作经验对照。
 - [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) — 原型级驱动栈，代码可读性最好的教学实现
 - [ODrive Firmware 0.5.6 模块架构](../wiki/concepts/odrive-firmware-module-architecture.md) — Stage 3 进阶：从 Axis 状态机与 Controller→Motor→FOC 端口连接读懂驱动器实时控制流水线
 - [CyberBeast N32H473 关节软件栈](../wiki/overview/cyberbeast-joint-software-stack.md) — 从裸机 40 kHz FOC 到 CAN Bootloader、JointSDK 与 ROS 2 tick 的真实开源分层实例
