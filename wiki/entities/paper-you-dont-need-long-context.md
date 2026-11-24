@@ -9,6 +9,8 @@ venue: "arXiv v1 (2026-11-03)"
 original:
   - ../../sources/papers/you_dont_need_long_context_arxiv_2611_05306.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/aspire.md
   - ../concepts/agent-memory-and-dreaming.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/ai-agent-evaluation.md
@@ -98,6 +100,17 @@ flowchart TD
 - 反例（附录 D 表 9）：量化 Qwen 3 Coder Next 在 SWE-bench Verified 的 16K/12K 设置准确率 53.0→3.6%。
 - 成本（附录 B）：以三种开权重模型的相对解码成本平均近似值 0.20，构造闭权重模型的估计优化价格；实际 API 标价、缓存命中和重算开销可能不同。
 
+## 对比：活动上下文管理与机器人 Agent 工程
+
+| 方案 | 保留的信息 | 适用边界 |
+|---|---|---|
+| FHA | 同一会话的完整历史 | 保留细节，但上下文随交互增长 |
+| EoCC | 达阈值后的任务交接简报 | 限制峰值上下文；压缩可能丢失证据 |
+| SAC | 每次动作后的语义状态 | 更短的会话；每步都有状态更新成本 |
+| ASPIRE | 经过验证的技能库与逐原语执行 trace | 跨机器人操作任务复用经验；不是本文的上下文压缩实验 |
+
+[ASPIRE](../methods/aspire.md) 的选择性 trace 检查与技能检索提供机器人领域的独立工程对照；[Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) 则强调交接状态中的测试结论须由实际运行证据支持。两者均非本论文实验基线，不直接比较跨论文成功率。
+
 ## 结论
 
 论文支持针对任务维护短活动上下文，而不是完全否定长上下文的价值。
@@ -127,6 +140,9 @@ flowchart TD
 - 未发现论文专属可运行代码；复现实验仍缺具体修改和环境配置。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 压缩前后保留可追溯验证证据。
+- [ASPIRE](../methods/aspire.md) — 机器人操作的选择性 trace 检查与技能库；独立的跨任务经验复用机制。
 
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 区分同一任务的状态交接与跨任务持久记忆。
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — harness、环境与验收条件。
