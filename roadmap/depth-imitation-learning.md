@@ -89,6 +89,8 @@ flowchart LR
 - 对比 BC 和 DAgger 在长时程任务上的效果差异
 
 ### 推荐读什么
+
+- [Robot Policies：从模仿学习到 Token VLA](../wiki/overview/robot-policies-il-to-token-vla.md) — 用 BC、GMM、ACT、DAgger 连接示范数据、动作多模态与执行反馈（课件全文待核读）。
 - "A Reduction of Imitation Learning and Stochastic Gradient Descent to Online Learning" (Ross & Bagnell, 2010)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
 - [Behavior Cloning](../wiki/methods/behavior-cloning.md) 与 [DAgger](../wiki/methods/dagger.md)
