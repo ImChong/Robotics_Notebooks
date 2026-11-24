@@ -2,7 +2,7 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-24
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
@@ -151,6 +151,8 @@ flowchart TB
 - **评测缺失**：综述指出缺少统一评测机制；风险层面还包括数据偏见、隐私与对抗扰动等安全问题。
 
 ## 关联页面
+
+- [S-BFM：稀疏时空目标控制](../entities/paper-s-bfm.md) — 以空间约束 FB 表征与时间条件闭环蒸馏，把过渡动作和节奏交给低层控制器。
 
 - [BFM 综述（TPAMI 2025）](../entities/paper-bfm-survey-tpami-2025.md) — taxonomy 与活索引权威来源
 - [Foundation Policy](./foundation-policy.md) — 操作向基础策略母概念
