@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-24] ingest | sources/papers/mcp_spatial_semantic_navigation_arxiv_2609_27340.md — MCP 视觉地图与语义路点导航；核对全文、表 3 和附录，挂载导航 Stage 4；专用实现未发现公开入口。
+
 ## [2026-11-24] ingest | NoPeWorld / StereoVLM / AgentRoboCritic / Intrinsic Core / ChemLab-Assets / visloc-rs
 
 - 五个独立实体草稿与分类来源归档；复用 visloc-rs 既有实体补 Python 安装入口，挂载相关纵深路线。原文及源码仍待完整核对，健康度未实测。
