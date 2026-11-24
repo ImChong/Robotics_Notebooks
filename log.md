@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-24] ingest | sources/papers/ace_brain_0_7_arxiv_2611_26519.md — 收录基于执行状态的具身推理，关联任务规划、空间锚定与认知评测；0.7 代码、权重及完整训练数据入口待核实
+
 ## [2026-11-24] ingest | sources/blogs/wechat_lumina_robotics_awards_five_paths_2026_11_23.md — 四大顶会五条能力路径
 
 - 复用十二篇已有论文实体和已通读的一手归档，不新建重复论文节点。
