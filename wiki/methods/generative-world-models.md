@@ -697,6 +697,10 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - **工程位置**：属于视频世界模型的**推理期缓存寻址与压缩**分支；与 [X-Cache](../entities/paper-x-cache.md) 的跨 chunk 计算复用不同，主要改善长期回访。
 - [原文归档](../../sources/papers/worldtrace_addressable_memory_arxiv_2608_07408.md) · [NVIDIA 项目页](https://research.nvidia.com/labs/sil/projects/WorldTrace/)
 
+## 三维交互轨迹世界模型
+
+- [μ₀](../entities/paper-mu0-wm.md)：将稠密未来外观替换为语义查询点的三维样条轨迹；视频预训练与目标本体动作适配分离，适合比较几何运动先验和像素预测的边界。
+
 ## 交互式视听生成案例
 
 - [Murea-InWorld](../entities/paper-murea-inworld.md)：显式世界状态 Agent 规划用户动作，再调用视听生成服务产出并回看视频片段；其代码开放范围与机器人适用边界见实体页。
