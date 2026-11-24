@@ -13,6 +13,7 @@ sources:
   - ../../sources/repos/se3_livom_comfort.md
 related:
   - ../methods/lidar-odometry-fusion.md
+  - ../tasks/autonomous-exploration.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ./paper-kilvo.md
   - ./fast-lio.md
@@ -148,9 +149,16 @@ sequenceDiagram
 - 1.40 cm 是给定基准上的轨迹位置误差，而非逐时刻定位保证。未独立复现；GPL-2.0 商业集成需审查许可。
 - 本文未报告关节运动学融合或高频运控闭环评测，不能与 [KILVO](./paper-kilvo.md) 的 1 kHz 输出直接等价比较。
 
+## 与其他工作对比
+
+- FAST-LIVO2 是论文使用的基线及视觉光度更新的技术来源；SE(3)-LIVOM 增加双雷达互补几何、自适应降采样及异步后端。表 I 的完整系统与前端对照用于衡量后端贡献。
+- [FAST-LIO](./fast-lio.md) 侧重激光–惯性紧耦合里程计；本篇额外利用视觉约束和子图平面优化。不同数据集结果不直接横比。
+- [KILVO](./paper-kilvo.md) 面向人形关节运动学与多模态融合；本篇面向多雷达腿式平台定位及建图，两者传感器配置、输出频率和评测任务不同。
+
 ## 关联页面
 
 - [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 位姿和地图可作为探索规划的上游输入；本文未验证探索规划或安全通行闭环。
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [FAST-LIO](./fast-lio.md)
 - [KILVO](./paper-kilvo.md)
