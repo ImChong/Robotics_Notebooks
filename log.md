@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-24] ingest | sources/blogs/wechat_servo_sampling_period_2026-11-24.md — 数字伺服采样周期与 PID 离散化
+
+- 通读用户提供的电液伺服文章文字，归档作者实测与证据限制，校正频率单位、ZOH 相位、离散增益和分辨率算例。
+- 新建采样周期概念页，关联 PID、Bode 图和延迟建模，挂载力矩控制电机设计 Stage 3。原文未给可运行代码。
+
 ## [2026-11-23] ingest | sources/papers/icub_wrist_mechanisms_robotics_2019.md — 归档 iCub 六种腕关节机构比较
 
 - 一手来源：Shah 等，*A Comparison of Robot Wrist Implementations for the iCub Humanoid*，Robotics 2019；DOI 10.3390/robotics8010011；全文第 1–8 节与图表已核对。
