@@ -10,6 +10,8 @@ code: https://github.com/DecomVoxel/DecomVoxel
 original:
   - ../../sources/papers/decomvoxel_arxiv_2610_01914.md
 related:
+  - ../methods/crisp-real2sim.md
+  - ../methods/lingbot-map.md
   - ./paper-gensfm.md
   - ./paper-depthgs.md
   - ./paper-simfoundry-real2sim-scene-generation.md
@@ -168,6 +170,8 @@ Appendix D 明确指出差掩码、低质量初始几何、严重遮挡及先验
 
 ## 关联页面
 
+- [CRISP（Contact-guided Real2Sim）](../methods/crisp-real2sim.md)：同样处理遮挡几何，但借助人–场景接触约束物理可行性；与 DecomVoxel 的视觉几何补全形成对照。
+- [LingBot-Map](../methods/lingbot-map.md)：面向流式视觉的前馈三维重建方法，与 DecomVoxel 的逐场景、逐对象优化在输入组织和计算代价上不同。
 - [GenSfM](./paper-gensfm.md)：少视图生成式结构恢复
 - [DepthGS](./paper-depthgs.md)：深度引导表面重建
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md)：下游可仿真场景构建
