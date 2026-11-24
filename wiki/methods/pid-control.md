@@ -2,10 +2,11 @@
 type: method
 tags: [control, pid, classical-control, joint-control, quadruped]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-24
 original:
   - ../../sources/books/modern_robotics_ch11_robot_control_reading.md
 related:
+  - ../concepts/digital-control-sampling-period.md
   - ../concepts/bode-plots.md
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-classical-linear-feedback.md
@@ -18,6 +19,7 @@ related:
   - ../concepts/micromouse.md
   - ../entities/ukmarsbot.md
 sources:
+  - ../../sources/blogs/wechat_servo_sampling_period_2026-11-24.md
   - ../../sources/books/modern_robotics_ch11_robot_control_reading.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
@@ -102,6 +104,10 @@ $$
 - 把已知前馈（重力、摩擦、计划加速度）并联进来，PID 只管残差；完整做法见 [Computed Torque Control](./computed-torque-control.md)
 
 
+## 采样周期与离散增益
+
+数字 PID 需要区分连续增益与离散系数：矩形积分和后向差分中，样本和的系数为 $K_iT$，样本差的系数为 $K_d/T$。若实现已显式使用周期 $T$，不可因周期缩短而机械地同时缩小连续 $K_i,K_d$。理想零阶保持在交越角频率处引入约 $-\\omega_{gc}T/2$ 相位；另需预算采集、运算、通信和滤波延迟。详见[数字控制采样周期与伺服带宽](../concepts/digital-control-sampling-period.md)，包含 1 kHz 与 100 Hz 对比、原文数据边界及安全验收流程。
+
 ## 频域整定：Bode 图
 
 对线性化关节或电机回路，可用 Bode 图观察目标频段的增益、相位、共振和时延，再评估调整 PID/PD 增益后的跟踪与稳定裕度。裕度应针对实际开环环路传递函数计算；最终还要通过阶跃、扰动和安全的实机负载测试验证。详见[Bode 图概念页](../concepts/bode-plots.md)。
@@ -138,6 +144,8 @@ RL 输出目标位置/力矩，**PD 仍作底层伺服**；复杂地形 loco 由
 
 ## 关联页面
 
+- [数字控制采样周期与伺服带宽](../concepts/digital-control-sampling-period.md)
+
 - [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
 - [经典线性反馈控制（体系①）](../overview/robot-control-paradigm-classical-linear-feedback.md)
 - [Model Predictive Control](./model-predictive-control.md)
@@ -156,6 +164,8 @@ RL 输出目标位置/力矩，**PD 仍作底层伺服**；复杂地形 loco 由
 - [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md) — PD 增益与部署
 
 ## 参考来源
+
+- [采样周期怎么选：1 kHz 和 100 Hz 差在哪儿](../../sources/blogs/wechat_servo_sampling_period_2026-11-24.md) — 现场经验及勘误归档。
 
 - **原文通读归档：** [Modern Robotics 第 11 章](../../sources/books/modern_robotics_ch11_robot_control_reading.md)（2026-11-07）
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：经典线性反馈代表算法
