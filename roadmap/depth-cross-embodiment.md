@@ -237,6 +237,7 @@ flowchart LR
 - [统一惯性编码器 / Unified Inertial Encoder](../wiki/entities/paper-unified-inertial-encoder.md) — 通过重定向和 12 部位共享 IMU 接口做**传感/状态估计层**的人→G1 迁移；不是控制策略迁移，真机权重训练与 checkpoint 选模的边界见详情
 - [重定向物体而非人手](../wiki/entities/paper-human-demos-object-retargeting.md) — 对每个 URDF 做仿真可执行性判定；约 31% 通过
 - [EgoJEPA](../wiki/entities/paper-egojepa-egocentric-latent-action.md) — 第一视角人类视频 → 本体无关潜在动作
+- [DreamX：视频扩散潜动作](../wiki/entities/paper-dreamx.md) — Stage 4 从预训练视频骨干读取人机共享运动，目标本体状态解码动作；对照显式重定向，并区分开环迁移和闭环策略。
 - [LaST-HD](../wiki/entities/paper-last-hd-latent-physical-reasoning.md) — 非配对人手与机器人轨迹对齐到共享潜式物理推理空间
 - [强 pair data](../wiki/concepts/strong-pair-data.md) — 人–机配对数据的强弱分级
 - [H2R-Bench](../wiki/entities/paper-h2r-bench.md) — 人类视频→指定机器人本体视频的跨本体诊断基准
