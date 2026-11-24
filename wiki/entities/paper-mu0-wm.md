@@ -38,6 +38,8 @@ summary: "μ₀（arXiv:2606.13769，RoboWoMo WS 最佳）：3D 交互轨迹世�
 | WM | World Model | 世界/动力学预测模型 |
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
 | HOI | Hand–Object Interaction | 手–物交互区域 |
+| ADE / FDE | Average / Final Displacement Error | 平均 / 终点位移误差 |
+| DTW | Dynamic Time Warping | 动态时间规整，用于轨迹形状比较 |
 | WS | Workshop | RoboWoMo 研讨会 |
 
 ## 为什么重要
@@ -58,7 +60,7 @@ summary: "μ₀（arXiv:2606.13769，RoboWoMo WS 最佳）：3D 交互轨迹世�
 ## 核心机制
 
 - **数据（§2、附录 A）：** 以 DINOv2 的实体簇分配关键点，兼顾小物体；全局稀疏锚点与局部密集重建对齐后进行 3D 跟踪，转换到参考相机系，按弧长重参数化；按加速度峰谷切分运动事件，生成细粒度与合并后的语言描述。
-- **模型（§3、附录 B）：** SmolVLM2-2.2B 提供语义上下文，可选深度通道使用独立 patch stem；Trace Expert 对可变、无序查询点共享处理，融合局部 DINO 特征、位置及历史。以 10 个三次 B 样条控制点表达 32 步未来，预测相对当前锚点的位移。
+- **模型（§3、附录 B）：** 冻结的 SmolVLM2-2.2B 提供语义上下文，可选深度通道使用独立 patch stem；Trace Expert 对可变、无序查询点共享处理，融合局部 DINO 特征、位置及历史。以 10 个三次 B 样条控制点表达 32 步未来，预测相对当前锚点的位移。
 - **训练：** 条件流匹配速度场损失 + 轨迹有效性预测损失 + 同簇局部几何刚性损失；完整轨迹推理用四步 Euler 去噪后解码样条。
 - **动作适配：** 冻结 VLM 与 Trace Expert，只训练动作专家。一次部分去噪的隐藏特征通过可学习门控交叉注意力注入 VLM，动作去噪器结合腕部图像、本体状态及语言输出动作 chunk；不必先解码完整轨迹或通过 IK 重放。
 
@@ -107,13 +109,27 @@ sequenceDiagram
 
 最小复现使用 dataset keypoints、无深度、无历史；完整图像模式可合成深度和关键点，但无对应真值时不报告轨迹指标。RoboCasa 另有 `train_policy_mu0_atomic8.sh` 与 `eval_policy_mu0_atomic8.sh`，后者调用 `lerobot_eval_policy_mu0.py` 并在仿真环境执行 `env.step(action)`。详见[官方入口归档](../../sources/repos/mu0.md)。
 
+## 工程实践
+
+| 阶段 | 复现建议 |
+|---|---|
+| 数据准备 | 从 [TraceExtract](../../sources/repos/traceextract-mu0.md) 开始，小批量检查语义关键点、参考相机坐标、可见性掩码和事件字幕；避免相机运动污染监督。 |
+| 模型评测 | 按 [官方评测指南](https://github.com/Yoonkyo/mu0/blob/main/docs/release/EVALUATION.md) 准备 final_ckpt、normalizer_stats.json 与 test_set；先使用数据集查询点、关闭深度与历史，再逐项切换到合成输入。 |
+| 策略训练 | 官方 [RoboCasa 策略指南](https://github.com/Yoonkyo/mu0/blob/main/docs/release/TRAINING_POLICY.md) 提供 atomic8 与 atomic65 脚本；先验证小任务子集、固定随机种子和 rollout 数量，再比较迁移收益。 |
+| 部署验收 | 分别测量轨迹推理与观察到动作 chunk 的端到端延迟；评估目标本体动作维度、执行窗口、闭环反馈与失败恢复。论文并未证明可直接换本体零样本执行。 |
+
+论文附录 A–C 的工程口径：数据共 203.6K episodes / 13.0M 帧；全量抽取约 1.2K 单 GPU 小时。世界模型预训练 200k steps，随机省略深度的概率为 0.7；历史整体丢弃概率 0.5、逐点丢弃概率 0.3（附录 C）。公开权重与复现入口已核查，不等于实际运行或重训成功。
+
 ## 实验与评测
 
 | 实验 | 结果与协议 |
 |---|---|
 | 轨迹预测（§4.1、D.2） | 129 个未见来源样本，每个 16 查询点；只对移动点计算 ADE、FDE、DTW，另报 Fréchet 距离。 |
 | RoboCasa365（表 2、D.5） | 8 任务各 100 条示范；平均成功率：Diffusion Policy 22.75%、π₀ 25.25%、π₀.₅ 42%、TraceGen 23%、μ₀ 30.25%。预训练数据不等量。 |
-| 真实机器人（D.7） | UR3 双指夹爪，抓放、倾倒、展毛巾；7 维动作，预测 50 步、执行 25 步。不能外推至任意机器人零样本控制。 |
+| 真实机器人（§4.2、D.7） | UR3 三任务平均成功率 91.7%，每任务 20 rollouts；对应示范数 90/80/50；7 维动作，预测 50 步、执行 25 步。 |
+| 轨迹误差与耗时（表 1） | 32 步 3D top5-DTW：μ₀ 0.223、TraceGen 0.299；A6000 单样本轨迹预测 0.29 s。误差采用混合 UV 与深度坐标，不能直接理解为米。 |
+| 部署开销（D.4） | 3.04B 总参数，动作 chunk 端到端平均 200.8 ms；π₀.₅ 为 173.0 ms。 |
+| 长程与鲁棒性（D.6、E.4） | 三个多阶段任务中，Organize Condiments 的最后子任务三种模型均为 0%；注入轨迹噪声后 RoboCasa 平均成功率从 30.25% 降至 27.5%。 |
 | 样条消融（表 9） | T=32 的 top5-DTW：完整 0.223；直接预测原始轨迹 0.258。 |
 | 动作融合消融（表 10） | 部分去噪特征 30.25%；完整解码轨迹 29.5%；固定门控 0.5 / 0.25 分别 26% / 25%。 |
 | 动作头缩放（表 12） | 200M 动作头：无 Trace 10.625%、有 Trace 25.625%；400M：28.25% / 30.25%。 |
