@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, tactile-sensing, dexterous-manipulation, world-model, hierarchical-policy, contact-rich, imitation-learning, flow-matching, humanoid, hit, phanes-ai]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-24
 original:
   - ../../sources/papers/touchworld_arxiv_2607_07287.md
 arxiv: "2607.07287"
@@ -192,6 +192,8 @@ Water Flower、Tabletop Clearing、Cup Insertion、Power Plug Insertion、Pot Wi
 - [TouchWorld 项目页](../../sources/sites/touchworld-phanes-lab.md)
 
 ## 关联页面
+
+- [TipDex-VTLA](./paper-tipdex-vtla.md) — 以视觉动作敏感性和时间对齐的触觉预测误差共同门控特征残差，侧重光照变化下未执行动作修正。
 
 - [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — 本批 ingest 中 TouchWorld 位于 Foundation/WM 层
 - [VLA（Vision-Language-Action）](../methods/vla.md)
