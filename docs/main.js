@@ -1626,7 +1626,7 @@
       }
       mount.innerHTML =
         '<ul class="home-latest-list">' + compactRows + '</ul>' +
-        '<p class="home-latest-more"><a href="change-log.html">查看全部更新 →</a></p>';
+        '<p class="home-latest-more classic-only"><a href="change-log.html">查看全部更新 →</a></p>';
       return;
     }
 
@@ -8694,11 +8694,16 @@
   /** 描边结束后对 CTA 文案闪两下（纵深「展开…」/ 图谱「打开完整图谱」共用） */
   function pulseHintElement(el) {
     if (!el) return;
+    if (el._pulseHintTimer) {
+      window.clearTimeout(el._pulseHintTimer);
+      el._pulseHintTimer = 0;
+    }
     el.classList.remove('is-pulse-hint');
     void el.offsetWidth;
     el.classList.add('is-pulse-hint');
-    window.setTimeout(function () {
+    el._pulseHintTimer = window.setTimeout(function () {
       el.classList.remove('is-pulse-hint');
+      el._pulseHintTimer = 0;
     }, TOGGLE_HINT_MS);
   }
 
@@ -8712,6 +8717,8 @@
 
   function pulseMiniGraphExpandHint() {
     pulseHintElement(document.getElementById('mini-graph-expand'));
+    pulseHintElement(document.getElementById('mini-graph-open-btn'));
+    pulseHintElement(document.getElementById('mini-graph-telemetry-link'));
   }
 
   function getScrollPaddingTopPx() {
@@ -9199,8 +9206,19 @@
         scrollEntryCardIntoView(scrollTarget, hashId ? hash : null, function () {
           var onTraceDone = null;
           if (pulseHintId) {
-            var hintEl = document.getElementById(pulseHintId);
-            if (hintEl) onTraceDone = function () { pulseHintElement(hintEl); };
+            var hintIds = pulseHintId.trim().split(/[\s,]+/).filter(Boolean);
+            var hintEls = [];
+            for (var hi = 0; hi < hintIds.length; hi++) {
+              var hintEl = document.getElementById(hintIds[hi]);
+              if (hintEl) hintEls.push(hintEl);
+            }
+            if (hintEls.length) {
+              onTraceDone = function () {
+                for (var pi = 0; pi < hintEls.length; pi++) {
+                  pulseHintElement(hintEls[pi]);
+                }
+              };
+            }
           }
           playCardBorderTrace(target, onTraceDone);
         }, 'start');

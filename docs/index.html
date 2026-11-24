@@ -158,7 +158,7 @@
               <div class="kin-header tech-only">
                 <span class="kin-title" data-home-copy>知识图谱预览 · TOP-50 枢纽</span>
                 <div class="kin-controls">
-                  <a class="kin-icon-btn" href="graph.html" aria-label="打开完整图谱" title="打开完整图谱" data-home-copy>↗</a>
+                  <a class="kin-icon-btn" id="mini-graph-open-btn" href="graph.html" aria-label="打开完整图谱" title="打开完整图谱" data-home-copy>↗</a>
                 </div>
               </div>
               <div id="mini-graph-wrap">
@@ -186,7 +186,7 @@
                 </div>
                 <div class="kin-metric">
                   <span class="kin-metric-key">GRAPH</span>
-                  <a class="kin-metric-val kin-metric-link" href="graph.html" data-home-copy>完整图谱 ↗</a>
+                  <a class="kin-metric-val kin-metric-link" id="mini-graph-telemetry-link" href="graph.html" data-home-copy>完整图谱 ↗</a>
                 </div>
               </div>
               <div id="mini-graph-tooltip" class="graph-hover-tooltip hidden" role="tooltip" aria-hidden="true"></div>
@@ -218,7 +218,7 @@
             <h3 data-home-copy>查找框架、论文与机器人平台</h3>
             <span class="home-entry-link" data-home-copy>搜索知识库 →</span>
           </a>
-          <a class="card home-entry-card" href="#mini-graph-section" data-trace-target="mini-graph-wrap" data-pulse-hint="mini-graph-expand">
+          <a class="card home-entry-card" href="#mini-graph-section" data-trace-target="mini-graph-wrap" data-pulse-hint="mini-graph-expand mini-graph-open-btn mini-graph-telemetry-link">
             <span class="home-entry-label" data-home-copy>知识图谱</span>
             <h3 data-home-copy>俯瞰节点与连接全貌</h3>
             <span class="home-entry-link" data-home-copy>查看图谱预览 →</span>

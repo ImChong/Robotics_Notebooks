@@ -1311,3 +1311,168 @@ test('graph.html ships direct top-bar 3-mode switcher, terrain legend strip, sid
   assert.ok(graphHtml.includes('function syncGraphUrlParams('), 'graph.html syncs view/focus/community params to URL');
   assert.ok(graphHtml.includes('#graph-wrap.is-perspective-mode.sidebar-open'), '3D terrain keeps full-bleed canvas width behind open sidebar');
 });
+
+function makePostFxSpyEnv() {
+  const base = makeMockCanvasEnv();
+  const shaderSources = [];
+  const uniformValues = {};
+  const overrides = {
+    FRAMEBUFFER: 0x8d40,
+    RENDERBUFFER: 0x8d41,
+    COLOR_ATTACHMENT0: 0x8ce0,
+    DEPTH_ATTACHMENT: 0x8d00,
+    DEPTH_COMPONENT16: 0x81a5,
+    FRAMEBUFFER_COMPLETE: 0x8cd5,
+    TEXTURE_2D: 0x0de1,
+    TEXTURE_MIN_FILTER: 0x2801,
+    TEXTURE_MAG_FILTER: 0x2800,
+    TEXTURE_WRAP_S: 0x2802,
+    TEXTURE_WRAP_T: 0x2803,
+    LINEAR: 0x2601,
+    CLAMP_TO_EDGE: 0x812f,
+    RGBA: 0x1908,
+    UNSIGNED_BYTE: 0x1401,
+    createFramebuffer: () => ({}),
+    createTexture: () => ({}),
+    createRenderbuffer: () => ({}),
+    checkFramebufferStatus: () => 0x8cd5,
+    shaderSource(_s, src) { shaderSources.push(String(src)); },
+    getUniformLocation(_p, name) { return name; },
+    uniform1f(loc, val) {
+      if (typeof loc === 'string') uniformValues[loc] = val;
+    },
+  };
+  const gl = new Proxy(base.gl, {
+    get(target, prop) {
+      if (Object.prototype.hasOwnProperty.call(overrides, prop)) return overrides[prop];
+      return target[prop];
+    },
+  });
+  return { gl, ctx2d: base.ctx2d, shaderSources, uniformValues };
+}
+
+test('homepage 3D preview enables Y1 softPeakHighlight without altering light mode or default graph.html terrain', async () => {
+  assert.match(miniGraphJs, /softPeakHighlight:\s*true/, 'mini-graph.js configures softPeakHighlight: true');
+
+  const prevGlobals = {
+    window: global.window,
+    document: global.document,
+    navigator: global.navigator,
+    localStorage: global.localStorage,
+  };
+
+  // 1) Verify homepage mini-graph 3D preview uses Y1 dark peak ramp, FBO compression, and restrained Bloom
+  const homeDom = new JSDOM(indexHtml, { url: 'https://example.test/', runScripts: 'outside-only' });
+  const hw = homeDom.window;
+  const homeSpy = makePostFxSpyEnv();
+  hw.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2' || type === 'webgl' || type === 'experimental-webgl') return homeSpy.gl;
+    if (type === '2d') return homeSpy.ctx2d;
+    return null;
+  };
+  Object.defineProperty(hw.navigator, 'hardwareConcurrency', { value: 8, configurable: true });
+  Object.defineProperty(hw.navigator, 'deviceMemory', { value: 8, configurable: true });
+  hw.devicePixelRatio = 2;
+  hw.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const syntheticGraph = {
+    communities: [{ id: 'c-rl', label: '强化学习' }, { id: 'c-ctrl', label: '运动控制' }],
+    nodes: [
+      { id: 'n1', label: 'PPO', type: 'method', community: 'c-rl', summary: 'Policy gradient' },
+      { id: 'n2', label: 'MPC', type: 'method', community: 'c-ctrl', summary: 'Model predictive control' },
+    ],
+    edges: [{ source: 'n1', target: 'n2' }],
+  };
+  hw.RNLinkGraph = { ensure: () => Promise.resolve(syntheticGraph) };
+  hw.RNGraphTooltip = {
+    getCommunityColors: () => ['#5b9cf6', '#34d399'],
+    buildCommunityColorMap: () => ({ 'c-rl': '#5b9cf6', 'c-ctrl': '#34d399' }),
+    formatTooltipSummary: s => s || '',
+    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>',
+    bindBlankDismiss() {},
+    bindOutsideDismiss() {},
+  };
+
+  hw.eval(readFileSync(resolve(__dirname, '../docs/vendor/d3.min.js'), 'utf8'));
+  hw.eval(readFileSync(resolve(__dirname, '../docs/graph-node-size.js'), 'utf8'));
+  hw.eval(readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8'));
+  hw.eval(miniGraphJs);
+  await new Promise((r) => setTimeout(r, 80));
+
+  hw.document.getElementById('miniGraphMode3d').click();
+  await new Promise((r) => setTimeout(r, 50));
+
+  const homeState = hw.RNMiniGraph.getPerspectiveState();
+  assert.equal(homeState.tier, 'full', 'homepage 3D test runs in full tier so post-processing runs');
+  const homeTerrainFs = homeSpy.shaderSources.find((s) => s.includes('terrainRampDark'));
+  const homePostFs = homeSpy.shaderSources.find((s) => s.includes('uBloomAmp'));
+  assert.ok(homeTerrainFs && homeTerrainFs.includes('vec3(0.950, 0.780, 0.300)'), 'homepage 3D compiles Y1 bright gold c3 ramp');
+  assert.ok(homeTerrainFs.includes('peakMax > 0.86'), 'homepage 3D compresses peak saturation before 8-bit FBO write');
+  assert.ok(homePostFs && homePostFs.includes('mx > 0.86'), 'homepage postFS uses Y1 soft ceiling');
+  assert.equal(homeSpy.uniformValues.uThreshold, 0.88, 'dark homepage 3D raises Bloom threshold to 0.88');
+  assert.equal(homeSpy.uniformValues.uBloomAmp, 0.06, 'dark homepage 3D lowers Bloom amp to 0.06');
+
+  // Switch to light mode -> light Bloom parameters remain unchanged
+  hw.document.documentElement.setAttribute('data-theme', 'light');
+  await new Promise((r) => setTimeout(r, 60));
+  assert.equal(homeSpy.uniformValues.uThreshold, 0.88, 'light homepage 3D preserves Bloom threshold 0.88');
+  assert.equal(homeSpy.uniformValues.uBloomAmp, 0.10, 'light homepage 3D preserves Bloom amp 0.10');
+  homeDom.window.close();
+
+  // 2) Verify default createController (used by graph.html) retains baseline shaders and Bloom
+  const fullDom = new JSDOM('<!doctype html><html><body><div id="wrap"><div id="stage"></div></div></body></html>', {
+    pretendToBeVisual: true,
+    url: 'https://example.test/graph.html',
+  });
+  global.window = fullDom.window;
+  global.document = fullDom.window.document;
+  global.navigator = { hardwareConcurrency: 8, deviceMemory: 8 };
+  global.localStorage = fullDom.window.localStorage;
+  global.window.devicePixelRatio = 2;
+  global.window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const fullSpy = makePostFxSpyEnv();
+  fullDom.window.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2') return fullSpy.gl;
+    if (type === '2d') return fullSpy.ctx2d;
+    return null;
+  };
+  const wrap = fullDom.window.document.getElementById('wrap');
+  const stage = fullDom.window.document.getElementById('stage');
+  Object.defineProperty(wrap, 'clientWidth', { value: 1200, configurable: true });
+  Object.defineProperty(wrap, 'clientHeight', { value: 800, configurable: true });
+
+  const ctrl = perspectiveApi.createController({
+    wrapEl: wrap,
+    stageEl: stage,
+    persist: false,
+    getGraphData: () => ({
+      nodes: [
+        { id: 'a', label: 'A', x: 0, y: 0, community: 'c1' },
+        { id: 'b', label: 'B', x: 60, y: 40, community: 'c1' },
+      ],
+      edges: [{ source: 'a', target: 'b' }],
+      getNodeColor: () => '#5b9cf6',
+      getNodeAlpha: () => 1,
+    }),
+    isDark: () => true,
+  });
+
+  try {
+    assert.equal(ctrl.setEnabled(true, { silent: true, instant: true }), true);
+    const fullTerrainFs = fullSpy.shaderSources.find((s) => s.includes('terrainRampDark'));
+    const fullPostFs = fullSpy.shaderSources.find((s) => s.includes('uBloomAmp'));
+    assert.ok(fullTerrainFs && fullTerrainFs.includes('vec3(0.915, 0.615, 0.275)'), 'default terrain keeps baseline ramp without softPeakHighlight');
+    assert.ok(!fullTerrainFs.includes('peakMax > 0.86'), 'default terrain omits preview-only peak compression');
+    assert.ok(fullPostFs && fullPostFs.includes('mx > 0.84'), 'default postFS preserves 0.84 knee');
+    assert.equal(fullSpy.uniformValues.uThreshold, 0.62, 'default dark terrain preserves Bloom threshold 0.62');
+    assert.equal(fullSpy.uniformValues.uBloomAmp, 0.32, 'default dark terrain preserves Bloom amp 0.32');
+  } finally {
+    ctrl.destroy();
+    fullDom.window.close();
+    for (const key of Object.keys(prevGlobals)) {
+      if (prevGlobals[key] === undefined) delete global[key];
+      else global[key] = prevGlobals[key];
+    }
+  }
+});

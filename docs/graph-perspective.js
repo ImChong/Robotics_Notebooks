@@ -1252,7 +1252,8 @@
     return prog;
   }
 
-  function buildShaders(isWebGL2, hasDerivatives) {
+  function buildShaders(isWebGL2, hasDerivatives, shaderOpts) {
+    var softPeak = !!(shaderOpts && shaderOpts.softPeakHighlight);
     var headV = isWebGL2 ? '#version 300 es\nprecision highp float;\n' : 'precision highp float;\n';
     var headF = isWebGL2
       ? '#version 300 es\nprecision highp float;\n'
@@ -1369,8 +1370,8 @@
       '  vec3 c0 = vec3(0.095, 0.112, 0.138);\n' +
       '  vec3 c1 = vec3(0.115, 0.220, 0.340);\n' +
       '  vec3 c2 = vec3(0.245, 0.495, 0.820);\n' +
-      '  vec3 c3 = vec3(0.915, 0.615, 0.275);\n' +
-      '  vec3 c4 = vec3(0.990, 0.455, 0.245);\n' +
+      '  vec3 c3 = ' + (softPeak ? 'vec3(0.950, 0.780, 0.300)' : 'vec3(0.915, 0.615, 0.275)') + ';\n' +
+      '  vec3 c4 = ' + (softPeak ? 'vec3(0.980, 0.740, 0.260)' : 'vec3(0.990, 0.455, 0.245)') + ';\n' +
       '  if (h < 0.28) return mix(c0, c1, smoothstep(0.0, 0.28, h));\n' +
       '  if (h < 0.60) return mix(c1, c2, smoothstep(0.28, 0.60, h));\n' +
       '  if (h < 0.84) return mix(c2, c3, smoothstep(0.60, 0.84, h));\n' +
@@ -1399,7 +1400,7 @@
       '  float specKey = pow(max(dot(N, H1), 0.0), 26.0);\n' +
       '  float specHorizon = pow(max(dot(N, H2), 0.0), 10.0) * pow(1.0 - max(dot(N, V), 0.0), 1.45);\n' +
       '  vec3 ramp = (uIsDark > 0.5) ? terrainRampDark(vH) : terrainRampLight(vH);\n' +
-      '  vec3 lit = ramp * mix(0.64, 1.12, diff) + ramp * rim * (uIsDark > 0.5 ? 0.34 : 0.14);\n' +
+      '  vec3 lit = ramp * mix(0.64, ' + (softPeak ? '1.06' : '1.12') + ', diff) + ramp * rim * (uIsDark > 0.5 ? ' + (softPeak ? '0.24' : '0.34') + ' : 0.14);\n' +
       '\n' +
       '  // 接触阴影 / 溢光（让浮空节点球在山体坡面留下软投影或高亮峰底暖晕）\n' +
       '  vec2 cUv = clamp(vWorld.xz / (2.0 * uExtent) + 0.5, 0.0, 1.0);\n' +
@@ -1407,8 +1408,8 @@
       '  float cShadow = clamp(-cSigned, 0.0, 1.0);\n' +
       '  float cSpill = clamp(cSigned, 0.0, 1.4);\n' +
       '  lit *= 1.0 - cShadow * 0.28 * (1.0 - smoothstep(0.68, 0.95, vH));\n' +
-      '  vec3 spillTint = (uIsDark > 0.5) ? vec3(0.95, 0.62, 0.30) : vec3(0.24, 0.52, 0.95);\n' +
-      '  lit += spillTint * cSpill * (uIsDark > 0.5 ? 0.26 : 0.14);\n' +
+      '  vec3 spillTint = (uIsDark > 0.5) ? ' + (softPeak ? 'vec3(0.96, 0.78, 0.32)' : 'vec3(0.95, 0.62, 0.30)') + ' : vec3(0.24, 0.52, 0.95);\n' +
+      '  lit += spillTint * cSpill * (uIsDark > 0.5 ? ' + (softPeak ? '0.06' : '0.26') + ' : 0.14);\n' +
       '\n' +
       '  // fwidth 抗锯齿等高线（陡坡自动淡出防摩尔纹，主/次等高线分层）\n' +
       '  float lvl = vH * uContours;\n' +
@@ -1420,7 +1421,7 @@
       '  float probeGlow = exp(-dmProbe * dmProbe / (2.0 * 0.085 * 0.085)) * uProbe.z;\n' +
       '  float microLine = aaLine(lvl * 3.0, 0.9) * probeGlow * 0.52;\n' +
       '  float rSweep = (uRadarR >= 0.0) ? exp(-pow((length(vWorld.xz) - uRadarR) / 0.095, 2.0)) : 0.0;\n' +
-      '  vec3 contourDark = mix(vec3(0.42, 0.65, 0.92), vec3(1.0, 0.72, 0.42), smoothstep(0.48, 0.92, vH));\n' +
+      '  vec3 contourDark = mix(vec3(0.42, 0.65, 0.92), ' + (softPeak ? 'vec3(1.0, 0.94, 0.74)' : 'vec3(1.0, 0.72, 0.42)') + ', smoothstep(0.48, 0.92, vH));\n' +
       '  vec3 contourLight = mix(vec3(0.24, 0.45, 0.74), vec3(0.84, 0.42, 0.12), smoothstep(0.55, 0.95, vH));\n' +
       '  vec3 contourCol = (uIsDark > 0.5) ? contourDark : contourLight;\n' +
       '  float lineAlpha = max(cLine * mix(0.32, 0.92, smoothstep(0.05, 0.85, vH)) * (1.0 + rSweep * 0.9), microLine);\n' +
@@ -1443,8 +1444,8 @@
       '  float contourReflect = cLine * (0.34 * rim + 0.92 * specKey + 1.25 * specHorizon) * mix(0.75, 1.48, isMajor);\n' +
       '  float sweepWave = (uGlintPhase >= -0.25 && uGlintPhase <= 1.25)\n' +
       '    ? exp(-pow((vH - uGlintPhase) * 6.0, 2.0)) : 0.0;\n' +
-      '  lit += glintTint * (contourReflect * (uIsDark > 0.5 ? 0.78 : 0.48)\n' +
-      '    + specHorizon * smoothstep(0.06, 0.85, vH) * (uIsDark > 0.5 ? 0.40 : 0.20)\n' +
+      '  lit += glintTint * (contourReflect * (uIsDark > 0.5 ? ' + (softPeak ? '0.30' : '0.78') + ' : 0.48)\n' +
+      '    + specHorizon * smoothstep(0.06, 0.85, vH) * (uIsDark > 0.5 ? ' + (softPeak ? '0.14' : '0.40') + ' : 0.20)\n' +
       '    + sweepWave * (0.20 + cLine * 1.15) * (uIsDark > 0.5 ? 0.92 : 0.54));\n' +
       '\n' +
       '  // 贴地高亮圆环（悬停 / 选中 / 搜索命中节点下方）与鼠标地表探针圈\n' +
@@ -1460,8 +1461,18 @@
       '  float ringMix = clamp(max(hlRing, probeRing), 0.0, 1.0);\n' +
       '  lit = mix(lit, ringTint * (uIsDark > 0.5 ? 1.18 : 1.0), ringMix);\n' +
       '\n' +
-      '  float peakGlow = smoothstep(0.76, 1.0, vH);\n' +
-      '  if (uIsDark > 0.5) lit += vec3(0.28, 0.13, 0.04) * peakGlow;\n' +
+      (softPeak
+        ? '  float peakGlow = smoothstep(0.82, 1.0, vH);\n' +
+          '  if (uIsDark > 0.5) {\n' +
+          '    lit += vec3(0.06, 0.04, 0.01) * peakGlow;\n' +
+          '    float peakMax = max(lit.r, max(lit.g, lit.b));\n' +
+          '    if (peakMax > 0.86) {\n' +
+          '      float compressed = 0.86 + 0.12 * (1.0 - exp(-(peakMax - 0.86) / 0.35));\n' +
+          '      lit *= compressed / peakMax;\n' +
+          '    }\n' +
+          '  }\n'
+        : '  float peakGlow = smoothstep(0.76, 1.0, vH);\n' +
+          '  if (uIsDark > 0.5) lit += vec3(0.28, 0.13, 0.04) * peakGlow;\n') +
       '\n' +
       '  float radialFade = 1.0 - smoothstep(0.52, 0.94, radial);\n' +
       '  float viewDist = length(uEye - vWorld);\n' +
@@ -1702,10 +1713,15 @@
       '  vec3 rgb = col.rgb + blm.rgb * uBloomAmp;\n' +
       '  float a = clamp(max(col.a, max(blm.r, max(blm.g, blm.b)) * uBloomAmp * 0.85), 0.0, 1.0);\n' +
       '  float mx = max(rgb.r, max(rgb.g, rgb.b));\n' +
-      '  if (uIsDark > 0.5 && mx > 0.84) {\n' +
-      '    float nm = 0.84 + 0.16 * (1.0 - exp(-(mx - 0.84) / 0.85));\n' +
-      '    rgb = rgb * (nm / mx);\n' +
-      '  }\n' +
+      (softPeak
+        ? '  if (uIsDark > 0.5 && mx > 0.86) {\n' +
+          '    float nm = 0.86 + 0.10 * (1.0 - exp(-(mx - 0.86) / 0.65));\n' +
+          '    rgb = rgb * (nm / mx);\n' +
+          '  }\n'
+        : '  if (uIsDark > 0.5 && mx > 0.84) {\n' +
+          '    float nm = 0.84 + 0.16 * (1.0 - exp(-(mx - 0.84) / 0.85));\n' +
+          '    rgb = rgb * (nm / mx);\n' +
+          '  }\n') +
       '  float grain = (hash12(vUv * uRes + fract(uTime) * 73.0) - 0.5) * uGrainAmp * a;\n' +
       '  rgb = clamp(rgb + grain, 0.0, 1.0);\n' +
       '  ' + outAssign + ' = vec4(rgb, a);\n' +
@@ -1744,8 +1760,9 @@
     }
     if (!gl) return null;
 
+    var softPeakHighlight = !!(opts && opts.softPeakHighlight);
     var labelCtx = labelCanvas ? labelCanvas.getContext('2d') : null;
-    var shaders = buildShaders(isWebGL2, hasDerivatives);
+    var shaders = buildShaders(isWebGL2, hasDerivatives, { softPeakHighlight: softPeakHighlight });
     var terrainProg = createProgram(gl, shaders.terrainVS, shaders.terrainFS);
     var lineProg = createProgram(gl, shaders.lineVS, shaders.lineFS);
     var solidProg = createProgram(gl, shaders.solidVS, shaders.solidFS);
@@ -3198,7 +3215,7 @@
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, postState.sceneTex);
         gl.uniform1i(brLoc.u.tScene, 0);
-        gl.uniform1f(brLoc.u.uThreshold, isDarkTheme ? 0.62 : 0.88);
+        gl.uniform1f(brLoc.u.uThreshold, isDarkTheme ? (softPeakHighlight ? 0.88 : 0.62) : 0.88);
         drawFullscreenPostQuad(brLoc.a.aQuadPos);
 
         // Horizontal blur -> bloomFboB
@@ -3229,7 +3246,7 @@
         gl.uniform1f(poLoc.u.uTime, timeSec);
         gl.uniform1f(poLoc.u.uIsDark, isDarkTheme ? 1 : 0);
         gl.uniform1f(poLoc.u.uBlurAmp, 2.2 * dpr);
-        gl.uniform1f(poLoc.u.uBloomAmp, isDarkTheme ? 0.32 : 0.10);
+        gl.uniform1f(poLoc.u.uBloomAmp, isDarkTheme ? (softPeakHighlight ? 0.06 : 0.32) : 0.10);
         gl.uniform1f(poLoc.u.uGrainAmp, isDarkTheme ? 0.008 : 0.012);
         drawFullscreenPostQuad(poLoc.a.aQuadPos);
         gl.activeTexture(gl.TEXTURE0);
@@ -3595,6 +3612,7 @@
         try {
           renderer = createWebGLTerrainRenderer(glCanvas, labelCanvas, {
             dprCap: (tier === 'lite' || degradedPerf) ? 1.5 : 2,
+            softPeakHighlight: !!opts.softPeakHighlight,
           });
         } catch (_e) {
           renderer = null;
