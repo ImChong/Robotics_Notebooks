@@ -165,6 +165,7 @@ flowchart LR
 - [FAB](../wiki/entities/paper-fab.md) — 单目视频的人体与静态场景联合尺度对齐、接触及G1轨迹生成；仅仿真跟踪验证。
 - [RoboSkills：机器人 Agent / Real2Sim 工作流](../wiki/entities/roboskills.md) — 官方视频重建→物理仿真工具链，按工具阶段核查 SAM/MoGe/HaWoR/CoACD/MuJoCo；与单篇 Real2Sim 算法论文分工不同。
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](../wiki/entities/paper-agentic-real2sim.md) — episode 孪生 + 可换 VLM 后端 + 确定性工具解耦
+- [RoboUniverse-10K](../wiki/entities/paper-robouniverse-10k.md) — 将真实视频扩展成可复位、独立 QA 验证的 10,807 个物理任务，支持留出评测和后训练。
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 场景孪生 + 三类数字表亲的完整增扩管线
 - [SceneAgent](../wiki/entities/paper-sceneagent-real2sim-capture-physics.md) — 3DGS/摄影测量/LiDAR → 预测物理 USD + **digital sisters** + demonstration factory（Harvard；代码待发布）
 - [COINS](../wiki/entities/paper-coins-compositional-human-scene-interaction.md) · [DIMOS](../wiki/entities/paper-dimos-human-scene-motion-synthesis.md) — 人–场景交互的正向合成对照
