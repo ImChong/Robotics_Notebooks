@@ -2,7 +2,7 @@
 type: comparison
 tags: [vla, robot-learning, inference-acceleration, latency, action-chunking, async-execution, edge-cloud, deployment]
 status: complete
-updated: 2026-11-23
+updated: 2026-11-24
 summary: "沿观测编码、异步执行、动作生成与云边服务四条链路梳理 Turing Post 25 种 VLA 加速方法，对齐论文入口、数据口径和真实机器人部署验收；避免把 FLOPs、模型吞吐和端到端任务速度混为一谈。"
 related:
   - ../methods/vla.md
@@ -140,6 +140,8 @@ flowchart TD
 - **额外两篇评测工作**：[VLALagBench](https://arxiv.org/abs/2611.03103) 用延迟敏感性测试任务影响；[VLA-Triage](https://arxiv.org/abs/2611.06710) 分析硬件瓶颈和优化交互，它们是**辅助评测工具论文**，不计入上述 25 种方法。
 
 ## 关联页面
+
+- [FastRoverVLA](../entities/paper-fastrovervla.md) — 独立后续论文：解码动作缓冲区循环状态修正与稀疏视觉刷新，区别于异步生成；不计入原博客的 25 法。
 
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 先区分模型家族与 I/O 边界，再在 VLA 执行链内定位延迟瓶颈
 
