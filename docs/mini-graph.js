@@ -871,6 +871,7 @@
           nodeCount: nodes.length,
           persist: false,
           usePreviewTerrainHeight: true,
+          softPeakHighlight: true,
           allowTouchOrbit: true,
           defaultDistance: 1.92,
           defaultParamsByTier: {
