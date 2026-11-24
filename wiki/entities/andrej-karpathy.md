@@ -3,7 +3,7 @@
 type: entity
 tags: [deep-learning, education, tesla, openai, llm, methodology, computer-vision, reinforcement-learning, stanford]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-24
 related:
   - ../concepts/llm-wiki-karpathy.md
   - ./karpathy-autoresearch.md
@@ -154,6 +154,8 @@ Andrej Karpathy 的公开教学与开源工具链构成了机器人/VLA 读者�
 - **机器人引用需分清领域**：早期 UBC 仿真四足与 Tesla Autopilot 视觉闭环具有直接启发，但 Optimus 与当代人形策略并不归因于其个人主页细节，应以具体论文为准。
 
 ## 关联页面
+
+- [LLM OS（大语言模型操作系统）](../concepts/llm-os-karpathy.md) — 2023 年演讲的资源协调、记忆与工具架构类比
 
 - [LLM Wiki 方法论（Karpathy）](../concepts/llm-wiki-karpathy.md)
 - [autoresearch（karpathy/autoresearch）](./karpathy-autoresearch.md)
