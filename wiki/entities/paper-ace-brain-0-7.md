@@ -14,7 +14,8 @@ related:
   - ../tasks/manipulation.md
   - ./paper-ace-brain-0-5.md
   - ./paper-x-planner-event-structured-task-planning.md
-  - ../overview/embodied-station-34-papers-spatial-grounding-technology-map.md
+  - ./paper-vesta-generalist-embodied-reasoning.md
+  - ./paper-vge-2611-22625.md
 summary: "ACE-Brain-0.7 用执行记录构造约 370 万组问答，在 Qwen3.5-9B 上联合训练任务推理、空间锚定与进度估计。"
 ---
 
@@ -115,7 +116,8 @@ RoboBench Q1 任务分解得分 67.7，Q2 下一子任务得分 52.1。GPT-6 Ast
 - [机器人操作](../tasks/manipulation.md) — 为抓取、放置等技能定义可验证的完成条件。
 - [ACE-Brain-0.5](./paper-ace-brain-0-5.md) — 对照该系列前作的感知、规划和动作建模。
 - [X-Planner](./paper-x-planner-event-structured-task-planning.md) — 对照事件驱动规划的任务与状态表示。
-- [空间锚定技术地图](../overview/embodied-station-34-papers-spatial-grounding-technology-map.md) — 对照视觉指代、空间关系与交互区域输出。
+- [VESTA](./paper-vesta-generalist-embodied-reasoning.md) — 对照通用具身推理与基于执行状态的能力划分。
+- [VGE](./paper-vge-2611-22625.md) — 对照视觉指代与多目标空间定位。
 - [具身测评纵深路线](../../roadmap/depth-embodied-eval.md) — 在认知评测阶段比较状态敏感性与任务规划。
 
 ## 参考来源

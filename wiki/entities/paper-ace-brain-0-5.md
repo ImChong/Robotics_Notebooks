@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ace-robotics, embodied-foundation-model, vla, qwen, spatial-grounding, navigation, manipulation, progress-estimation, ssr, foundation-policy, flow-matching]
 status: complete
-updated: 2026-11-24
+updated: 2026-11-14
 project_id: ace-brain
 arxiv: "2607.04426"
 code: https://github.com/ACE-BRAIN-Team/ACE-Brain-0.5
@@ -207,7 +207,6 @@ sequenceDiagram
 
 ## 关联页面
 
-- [ACE-Brain-0.7](./paper-ace-brain-0-7.md) — 系列后续论文，侧重由执行记录监督进度、失败和下一子任务判断。
 - [Foundation Policy](../concepts/foundation-policy.md) — 具身基础策略与统一脑选型语境
 - [VLA](../methods/vla.md) — flow-matching 动作头与通才 VLA 族谱
 - [过程奖励建模](../concepts/progress-reward-modeling.md) — 进度估计 / 过程奖励接口读法
