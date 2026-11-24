@@ -3,7 +3,7 @@ type: entity
 project_id: mosaic-clutter-2611-15937
 tags: [paper, vla, spatial-reasoning, manipulation]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-24
 arxiv: "2611.15937"
 project: https://mmahdavian.github.io/MOSAIC/
 original:
@@ -76,7 +76,7 @@ flowchart LR
 
 ## 实验与评测
 
-主要定量结果来自 RoboPRO 杂乱操作仿真，真机部分以定性展示为主；不能当作大样本真机成功率提升。
+主要定量结果来自 [RoboPRO](./paper-robopro-2611-26971.md) 杂乱操作仿真，真机部分以定性展示为主；不能当作大样本真机成功率提升。
 
 ## 结论
 
@@ -96,6 +96,8 @@ flowchart LR
 对深度置信度、语义 mask 和障碍物检测敏感，真实几何误差与动作控制延迟仍需验证；项目网页抓取未成功。
 
 ## 关联页面
+
+- [RoboPRO 抗扰动与危险碰撞评测](./paper-robopro-2611-26971.md)
 
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
