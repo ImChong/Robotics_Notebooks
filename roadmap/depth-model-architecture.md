@@ -98,6 +98,7 @@ flowchart LR
 - [位置编码：绝对、RoPE、NoPE 与相对偏置](../wiki/concepts/positional-encoding.md) — 对照 GPT-2、正弦编码、RoPE 旋转与现代混合层，理解长序列顺序建模、实现细节及外推边界
 - [卷积神经网络](../wiki/concepts/convolutional-neural-network.md) · [通道与空间注意力](../wiki/methods/channel-spatial-attention.md) — 卷积路线与 Transformer 之前的注意力增强
 - [状态空间模型（SSM）](../wiki/concepts/state-space-model-ssm.md) — 选择性 SSM 如何在近线性复杂度下拿到长程能力
+- [SegMamba](../wiki/entities/paper-segmamba.md) — 三维密集感知的多尺度状态空间建模案例，比较论文与公开代码；不是机器人闭环验证。
 - [U-Net](../wiki/methods/unet.md) — 编码器–解码器 + 跳跃连接，后来成为扩散策略的常用去噪骨干
 - [深度学习优化器对比](../wiki/comparisons/deep-learning-optimizers.md) — 换骨干往往要连带换优化器与学习率策略
 
