@@ -1437,24 +1437,15 @@
       '  lit = mix(lit, gridCol, gridLine * (uIsDark > 0.5 ? 0.18 : 0.15));\n' +
       '\n' +
       '  float radial = max(vMeshRadial, length(vWorld.xz) / uExtent);\n' +
-      '  vec2 toFrag = normalize(vWorld.xz + vec2(0.0001));\n' +
-      '  vec2 camDir = normalize(-uEye.xz + vec2(0.0001));\n' +
-      '  float farSide = smoothstep(-0.15, 0.86, dot(toFrag, camDir));\n' +
       '  vec3 glintTint = (uIsDark > 0.5)\n' +
       '    ? mix(vec3(0.74, 0.90, 1.0), vec3(1.0, 0.88, 0.66), smoothstep(0.38, 0.88, vH))\n' +
       '    : mix(vec3(0.38, 0.68, 1.0), vec3(1.0, 0.72, 0.34), smoothstep(0.42, 0.90, vH));\n' +
       '  float contourReflect = cLine * (0.34 * rim + 0.92 * specKey + 1.25 * specHorizon) * mix(0.75, 1.48, isMajor);\n' +
-      '  float horizonSheen = farSide * smoothstep(0.26, 0.76, radial) * (1.0 - smoothstep(0.78, 0.92, radial))\n' +
-      '    * (0.35 + 0.65 * (1.0 - smoothstep(0.0, 0.40, vH))) * riseVis;\n' +
-      '  vec3 horizonTint = (uIsDark > 0.5)\n' +
-      '    ? mix(vec3(0.42, 0.70, 1.0), vec3(1.0, 0.72, 0.40), smoothstep(0.25, 0.85, vH))\n' +
-      '    : vec3(0.32, 0.58, 0.96);\n' +
       '  float sweepWave = (uGlintPhase >= -0.25 && uGlintPhase <= 1.25)\n' +
       '    ? exp(-pow((vH - uGlintPhase) * 6.0, 2.0)) : 0.0;\n' +
       '  lit += glintTint * (contourReflect * (uIsDark > 0.5 ? 0.78 : 0.48)\n' +
       '    + specHorizon * smoothstep(0.06, 0.85, vH) * (uIsDark > 0.5 ? 0.40 : 0.20)\n' +
       '    + sweepWave * (0.20 + cLine * 1.15) * (uIsDark > 0.5 ? 0.92 : 0.54));\n' +
-      '  lit += horizonTint * horizonSheen * (uIsDark > 0.5 ? 0.58 : 0.30);\n' +
       '\n' +
       '  // 贴地高亮圆环（悬停 / 选中 / 搜索命中节点下方）与鼠标地表探针圈\n' +
       '  vec3 ringTint = (uIsDark > 0.5) ? vec3(0.64, 0.86, 1.0) : vec3(0.18, 0.44, 0.88);\n' +
@@ -1476,7 +1467,7 @@
       '  float viewDist = length(uEye - vWorld);\n' +
       '  float viewFog = exp(-max(0.0, viewDist - 4.0) * 0.22);\n' +
       '  float vis = clamp(radialFade * viewFog, 0.0, 1.0);\n' +
-      '  float valleySoft = clamp(smoothstep(0.008, 0.09, vH) + gridLine * 0.55 + cLine * 0.75 + horizonSheen * 0.45 + ringMix * 0.8 + microLine * 0.6, 0.0, 1.0);\n' +
+      '  float valleySoft = clamp(smoothstep(0.008, 0.09, vH) + gridLine * 0.55 + cLine * 0.75 + ringMix * 0.8 + microLine * 0.6, 0.0, 1.0);\n' +
       '  ' + outAssign + ' = vec4(mix(uBg, lit, 0.92), vis * valleySoft);\n' +
       '}\n';
 
@@ -3982,16 +3973,6 @@
         offsetPx: smoothCam.offsetPx,
       };
 
-      if (stageEl && stageEl.style && typeof stageEl.style.setProperty === 'function') {
-        var pitchForGlow = renderParams.pitch != null ? renderParams.pitch : 36;
-        var glowVis = (1 - smoothstep(40, 62, pitchForGlow)) * smoothstep(0.25, 0.85, heightScale);
-        var glowStr = glowVis.toFixed(3);
-        if (glowStr !== lastGlowVal) {
-          lastGlowVal = glowStr;
-          stageEl.style.setProperty('--persp-horizon-glow', glowStr);
-        }
-      }
-
       var ambientEnabled = tier === 'full' && !degradedPerf && !draggingSlider && !switchingTheme;
       var postFxEnabled = tier === 'full' && !degradedPerf && !draggingSlider && r.isPostAvailable();
       var timeSec = (now - startEpochMs) / 1000;
@@ -4055,7 +4036,6 @@
     var pinchState = null;
     var gestureSuppressedTap = false;
     var cachedStageRect = null;
-    var lastGlowVal = null;
     var hoverRaf = 0;
     var pendingHoverEv = null;
     var saveParamsTimer = 0;

@@ -504,8 +504,9 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-stage-bg:'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
-  assert.ok(styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric reflection layer styled');
-  assert.ok(styleCss.includes('--persp-horizon-glow'), 'horizon glow fades out cleanly in top-down pitch');
+  assert.ok(!styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric blue glow layer removed for clean flat background');
+  assert.ok(!styleCss.includes('--persp-horizon-glow'), 'horizon glow CSS custom property removed');
+  assert.ok(!styleCss.includes('color-mix(in srgb, var(--accent) 8%, transparent)'), 'stage radial blue haze removed from background tokens');
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
   assert.ok(styleCss.includes('#mini-graph-svg line.mini-edge-hover'), 'homepage preview 2D hover edge highlight styled');
   assert.ok(styleCss.includes('.mini-graph-node.mini-node-hover-dim'), 'homepage preview 2D hover dim style present');
@@ -517,6 +518,7 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(perspectiveSrc.includes('uPointScale') && perspectiveSrc.includes('if (pn.hovered) radius *= 1.10;'), 'point sprites share unified world radius with subtle 1.10x hover swell');
   assert.ok(perspectiveSrc.includes('uForceSettle') && perspectiveSrc.includes('applyForceMotion'), '3D terrain entry includes GPU force-simulation bloom motion');
   assert.ok(perspectiveSrc.includes('vMeshRadial') && perspectiveSrc.includes('riseVis'), 'top-down entry fades terrain edge by unscaled mesh radial with zero bounded square grid floor');
+  assert.ok(!perspectiveSrc.includes('horizonSheen'), 'far-side atmospheric blue haze removed from terrain fragment shader');
   assert.ok(perspectiveSrc.includes('stepReboundAnim') && perspectiveSrc.includes('rebounding: !!reboundAnim'), '3D node drag includes spring-force rebound simulation');
   assert.ok(graphHtml.includes('perspectiveSimActive') && graphHtml.includes('reseed: true'), '3D terrain layout refresh randomizes nodes and restarts force simulation');
   assert.ok(graphHtml.includes('getRouteBadges:') && perspectiveSrc.includes('function focusNode('), '3D terrain supports route step-by-step focus and numbered route badges');
