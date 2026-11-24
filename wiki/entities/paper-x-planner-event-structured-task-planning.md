@@ -9,7 +9,7 @@ tags:
   - long-horizon
   - x-square-robot
 status: complete
-updated: 2026-11-14
+updated: 2026-11-24
 arxiv: "2609.25187"
 project: https://x-square-robot.github.io/Xplanner/
 code: https://github.com/X-Square-Robot/Xplanner
@@ -160,6 +160,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [ACE-Brain-0.7](./paper-ace-brain-0-7.md) — 用带时间标注的执行观测监督下一子任务选择，可对照事件驱动的规划接口。
 - [VLA](../methods/vla.md) — 高层视觉语言规划与动作生成衔接
 - [Manipulation](../tasks/manipulation.md) — 双臂长程推理操作任务入口
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 长程移动与多阶段任务控制场景

@@ -97,6 +97,7 @@ flowchart LR
 - 拿一组 QA 失败样本做归因：是感知没看见、是规划不可行、还是能说对但下发不出可执行动作
 
 ### 推荐读什么
+- [ACE-Brain-0.7](../wiki/entities/paper-ace-brain-0-7.md) — 用时序配对和帧输入对照验证预测是否随执行状态变化，分开读任务分解、下一子任务与失败定位指标。
 - [Envisioning Agentic Robotics（智能体机器人架构与路线）](../wiki/entities/paper-envisioning-agentic-robotics.md) — 把 S2 模型能力与 harness/技能/实时执行分开测；衔接后续 Stage 3 的物理结果验收。
 - [RoboBench](../wiki/entities/robo-bench.md) — 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，用8骨干迁移实验审计认知与下游控制的关系：CALVIN感知相关显著，LIBERO-Long affordance 仅呈非显著正趋势
 - [ESI-Bench](../wiki/entities/esi-bench.md) — OmniGibson 上 10 类 29 子类 3081 题，要求主动闭合感知–行动环，暴露 MLLM 的行动盲与元认知缺口

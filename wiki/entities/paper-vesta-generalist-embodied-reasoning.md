@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, planner, embodied-reasoning, vln, spatial-intelligence, memory, long-horizon, qwen3-vl, nvidia, bimanual, hierarchical-control]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-24
 arxiv: "2606.20905"
 related:
   - ../methods/vla.md
@@ -216,6 +216,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [ACE-Brain-0.7](./paper-ace-brain-0-7.md) — 对照通用具身推理与执行状态监督，重点看时序问答、进度估计和失败诊断。
 - [VLA](../methods/vla.md)
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md)
 - [SayCan](./paper-saycan.md)
