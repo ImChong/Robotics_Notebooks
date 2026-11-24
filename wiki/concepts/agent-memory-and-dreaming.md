@@ -2,10 +2,11 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-23
+updated: 2026-11-24
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
+  - ../entities/paper-you-dont-need-long-context.md
   - ../entities/claude-cookbook-dreaming-dynamic-workflow.md
   - ../concepts/llm-wiki-karpathy.md
   - ../concepts/robot-in-context-learning.md
@@ -140,6 +141,8 @@ flowchart LR
 - [MAPE：通过程序进化发现有效的智能体记忆设计（arXiv:2611.17068）](../entities/paper-mape-agent-memory-program-evolution.md)：与本文的在线写笔记 / dreaming 事后校验不同，MAPE 将 Build、Retrieve、Compose 组成可执行程序，在离线进化循环里同时评价答案准确率与 token 服务成本。论文消融显示保留原始轮次有助于弥补笔记抽取遗漏，RQS 对检索到的证据执行日期、计数与偏好相关编排；结论仅来自 LoCoMo / LongMemEval 文本问答，不能外推为机器人真机记忆收益。详见[论文原文归档](../../sources/papers/mape_agent_memory_program_evolution_arxiv_2611_17068.md)。
 
 ## 关联页面
+
+- [You don't need long context：短上下文与语义状态](../entities/paper-you-dont-need-long-context.md) — 同一任务内以有损交接状态控制活动上下文；与跨任务记忆、后台 dreaming 不同，必要时仍需回查原始历史。
 
 - [Self-Improvement Memory（SIM / CRSI）](../entities/paper-self-improvement-memory-crsi.md) — 面向 harness 优化器（proposer/selector）的过程改进记忆，与本页任务执行记忆互补
 
