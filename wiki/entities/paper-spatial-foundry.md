@@ -10,6 +10,8 @@ related:
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ./paper-holi-world.md
   - ../methods/generative-data-augmentation.md
+  - ../methods/generative-world-models.md
+  - ../queries/robot-perception-stack-selection-loop.md
 original:
   - ../../sources/papers/spatial-foundry.md
 sources:
@@ -43,6 +45,9 @@ Spatial Foundry 是 Ranolabs 提出的合成住宅多模态数据资源，以可
 | 机构 | Ranolabs |
 | 规模 | 5,280 个有家具的住宅场景配置（含同户型变体） |
 | 开放状态 | 演示公开；评估样本需申请；完整数据与项目代码公开下载未确认 |
+| 模态 | RGB-D、全景、点云、网格、实例 3D 框、视频与相机轨迹 |
+| 许可证 | 数据许可证未确认；论文许可不等同于数据许可 |
+| 重定向就绪度 | 不适用：空间场景监督而非人体或机器人动作轨迹；未提供经验证的关节映射、接触与控制标签 |
 
 ## 为什么重要
 
@@ -124,11 +129,23 @@ Spatial Foundry 的价值在于可控场景和一致的空间标注，而不是�
 - 官方公开了视频及交互预览；评估样本需联系团队，完整数据、可运行源码和数据许可证尚未找到公开下载入口。
 - 论文的扫描扰动是模拟近似，不能直接替代真实设备噪声标定。
 
+## 与其他工作对比
+
+| 工作 | 数据来源与主要输出 | 适用边界 |
+|---|---|---|
+| Spatial Foundry | 可编辑合成住宅；共享坐标的几何、图像和状态变化 | 空间监督与受控视频；尚无闭环策略评测 |
+| [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) | 真机视频重建数字孪生，并生成 cousins | 面向仿真策略训练和 real-to-sim 评测 |
+| [Holi-World](./paper-holi-world.md) | 第一视角观测提取静态与动态世界记录 | 面向时空问答和真实交互记录的理解 |
+
+三者分别侧重合成标注、可交互仿真和真实观测理解，不宜直接按单一数据规模排序。
+
 ## 关联页面
 
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 从实拍视频构建可仿真场景与策略评测，和本项目的合成住宅空间监督互补。
 - [Holi-World](./paper-holi-world.md) — 从第一视角记录提取世界表示，本项目则从可编辑场景生成对齐观测。
 - [生成式数据增强](../methods/generative-data-augmentation.md) — 独立改变视角及场景状态的合成监督。
+- [生成式世界模型](../methods/generative-world-models.md) — 相机条件视频及场景状态监督可服务世界模型训练，数据集本身并非预测模型。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 用标定与 3D 几何检验跨视角空间感知，不能代替下游控制评测。
 - [具身数据纵深路线](../../roadmap/depth-embodied-data.md) — Stage 4 扩增与合成。
 
 ## 参考来源
