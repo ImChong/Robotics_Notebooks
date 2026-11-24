@@ -5,7 +5,7 @@ arxiv: "2611.26613"
 project: https://adu2021.github.io/blog/AgentRoboCritic/
 code: https://github.com/cxcscmu/AgentRoboCritic
 tags: [paper, robot-evaluation, manipulation, failure-diagnosis, cmu, uiuc, bosch]
-status: draft
+status: complete
 updated: 2026-11-24
 related:
   - ./robocasa.md
@@ -53,7 +53,12 @@ summary: "在直接数值动作控制中加入局部意图，用动作执行前�
 
 actor 在提交 action chunk 时同时声明局部意图；评判器接收意图、命令和执行证据，输出意图是否成功、失败机制、抓取子类及原因。将动作级标签汇总成各失败类型与恢复统计。评测 Parquet 包含 id、messages、images、human_label；推理不读取人工标签。
 
-以下为已查阅官方资料支持的概念流程，完整原文核对待补。
+### 方法与训练
+
+- 直接控制指令是末端位姿、关节配置等数值目标，局部意图与动作在同一工具调用内提交。评判器读取全局任务、局部意图、动作前后观察和执行反馈，不读取最终回合结果；区分实现、失败、部分或未确认、无法核实及不适用。七类失败为抓取、对齐、干涉、任务效果、未完成运动、机制未决和错误局部选择；Choice 是相对局部意图，而非全局规划错误。
+- 训练集 12844 条动作，400 条人工评测动作来自训练外的回合。评分中失败机制分母为 264 个真实失败动作；联合指标要求意图与机制同时匹配，不把解释和抓取子类纳入主分数。
+
+以下为根据原文整理的概念流程。
 
 ```mermaid
 flowchart TD
@@ -72,7 +77,7 @@ flowchart TD
 
 ## 源码运行时序图
 
-`src/agentrobocritic/cli.py` 及 README 的 `arc verify`、`arc evaluate`、`arc score`；已核对 CLI import 与分支入口，runner/provider 深层调用待复核。
+`src/agentrobocritic/cli.py` 及 README 的 `arc verify`、`arc evaluate`、`arc score`；已核对 CLI、runner.run 与 scoring.score 的评测链。
 
 ```mermaid
 sequenceDiagram
@@ -85,9 +90,12 @@ sequenceDiagram
     U->>C: arc evaluate --profile muse --out runs/muse
     C->>D: 读取指定数据与 revision
     C->>R: 执行评判请求
+    R->>D: rows / unpack
+    R->>R: provider request / HTTP / SQLite 缓存
     R-->>U: predictions.jsonl
     U->>C: arc score --predictions runs/muse/predictions.jsonl
-    C->>S: 对齐人工标签并评分
+    C->>S: 对齐人工标签及预测 ID
+    S->>S: 校验标签 / outcome / failure_mode / overall
     S-->>U: metrics.json
 ```
 
@@ -98,6 +106,11 @@ MIT；公开评测 harness、EFE 数据采集转换、训练数据与微调 chec
 ## 实验与评测
 
 作者在 12 个操作基准分析动作，约半数成功回合仍出现失败动作。400 条人工标注动作中有 264 个失败；微调模型失败模式准确率由 32.58%→74.24%（196/264），意图成功判断 76.25%（305/400），联合正确率 67.75%（271/400）。训练数据 12,844 条标注动作。
+
+### 对照、消融与边界
+
+- 12 个任务套件中，49.8% 成功回合仍包含失败动作；1989 回合共 12163 个失败动作，10 动作以内恢复 38.9%，回合结束前恢复 57.7%。RoboDojo 占 9923 个失败动作，因此不能将样本加权统计误作套件均值。对齐恢复率 35.7%，低于抓取 63.7%。
+- 400 条人工标注中 Astra 意图/机制/联合准确率 79.25%/80.68%/71.25%；去除局部意图后为 25.25%/25%/24.5%。微调 Muse 的对应值为 76.25%/74.24%/67.75%；400 条评测成本约 0.79 美元，对照 Astra 26.06 美元。附录 H：74 个匹配任务的决策延迟中位数 31.9 s 对 π0.5 的 0.11 s，直接控制尚不适合等同高频闭环。
 
 ## 结论
 
@@ -111,7 +124,7 @@ MIT；公开评测 harness、EFE 数据采集转换、训练数据与微调 chec
 
 critic 的标签误差、模型自偏好与局部意图的真实性会影响结论；动作级诊断并不自动修复策略或保证安全。抓取子类和解释不计入仓库所述主评分。
 
-**核对状态：** 草稿；完整原文及必要源码尚未通读，不宣称健康度满分。
+**核对状态：** 已完成所列原文核对（论文正文与附录、批评器 codebook；CLI、runner.py 与 scoring.py 评测调用链。）；未执行训练或实机复现。
 
 ## 关联页面
 

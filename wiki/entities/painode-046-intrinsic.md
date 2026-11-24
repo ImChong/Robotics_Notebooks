@@ -9,6 +9,8 @@ related:
   - ../overview/awesome-physical-ai-technology-map.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+original:
+  - ../../sources/repos/pai_awesome_company_046_intrinsic.md
 sources:
   - ../../sources/repos/pai_awesome_company_046_intrinsic.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -18,7 +20,7 @@ sources:
 
 # Intrinsic
 
-**Intrinsic** 收录于 awesome-physical-ai（natnew）**第 046/384** 条，分组 **Companies**。本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
+**Intrinsic** 收录于 awesome-physical-ai（natnew）**第 046/384** 条，分组 **Companies**。本条目的原始清单条目已完整核对；本页是 **清单索引**：给出它在清单中的位置与官方入口，细节以官方文档 / 原文为准。
 
 ## 一句话定义
 

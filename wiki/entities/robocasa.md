@@ -30,6 +30,8 @@ sources:
   - ../../sources/repos/robocasa.md
   - ../../sources/sites/robocasa-ai.md
   - ../../sources/sites/robocasa-leaderboard.md
+original:
+  - ../../sources/repos/robocasa.md
 summary: "RoboCasa365 是 UT Austin 的厨房日常任务大规模 MuJoCo 仿真 benchmark：365 任务、2500+ 场景、2200+ 小时演示与 50 任务公开 leaderboard，是通才 VLA / 扩散策略的厨房 SR 对标栈。"
 ---
 
@@ -66,7 +68,7 @@ summary: "RoboCasa365 是 UT Austin 的厨房日常任务大规模 MuJoCo 仿真
 - **跨具身：** 单臂移动平台、人形、带臂四足共用厨房任务语法。
 - **生态枢纽：** [Isaac Lab-Arena](./isaac-lab-arena.md) 博客以 RoboCasa 类任务展示 GPU 并行加速；[Lightwheel LW-BenchHub](./lw-benchhub-tour.md) 将 RoboCasa/LIBERO 厨房迁到 Arena EnvHub。
 
-## 核心架构
+## 核心原理与架构
 
 ### RoboCasa365 四支柱
 
@@ -152,6 +154,8 @@ sequenceDiagram
 完整表见 [Leaderboard 归档](../../sources/sites/robocasa-leaderboard.md)。训练配置展示仅供透明，**不可跨架构直接比**。
 
 ## 工程实践
+
+2026-10-14 官方发布覆盖 300 个复合任务的逐帧子任务标注生成流程；2026-10-28 榜单新增 agentic submissions。README 全文已核对，以下历史榜单仍为 2026-09-01 快照；未执行仿真复现。
 
 | 步骤 | 做法 |
 |------|------|

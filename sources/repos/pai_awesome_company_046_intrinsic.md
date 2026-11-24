@@ -6,6 +6,9 @@
 - **分组：** Companies
 - **编号：** 046/384
 - **入库日期：** 2026-09-20
+- **原文：** https://github.com/natnew/awesome-physical-ai/blob/main/README.md
+- **核对范围：** 2026-11-24 核对 Companies 分组的 Intrinsic 条目全文（名称、链接、单句说明）；不是对整个公司官网的通读。
+- **通读：** 已完成
 - **arXiv：** （无 / 非 arXiv）
 - **主链接：** <https://www.intrinsic.ai/>
 - **代码：** 未在清单中标注

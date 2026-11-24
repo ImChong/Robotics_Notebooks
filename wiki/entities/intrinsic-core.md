@@ -4,7 +4,7 @@ project_id: intrinsic-core
 project: https://developer.intrinsic.ai/
 code: https://github.com/intrinsic-ai/intrinsic-core
 tags: [repo, intrinsic, industrial-robotics, ros2, real-time, motion-planning, hardware-abstraction]
-status: draft
+status: complete
 updated: 2026-11-24
 related:
   - ./painode-046-intrinsic.md
@@ -49,7 +49,12 @@ summary: "以本地 k3s 运行时、ICON 实时控制、硬件抽象和感知规
 
 intrinsic_runtime 负责进程生命周期和应用状态；intrinsic_sdk / intrinsic_apis 为技能与资源定义接口；intrinsic_perception 与 intrinsic_inference 提供传感、6-DoF 位姿和边缘推理；intrinsic_motion_planning 负责约束路径与轨迹生成；ICON 执行实时控制并经 HAL 连接驱动器。各能力可组合，不表示每个技能都必须经过所有模块。
 
-以下为已查阅官方资料支持的概念流程，完整原文核对待补。
+### 本地部署与模块边界
+
+- README 列出 runtime、ICON、motion planning、perception、inference、SDK、API、hardware 与 kinematics 九类模块。ICON 结合轨迹插值、运动学及确定性控制循环，HAL 负责设备适配；感知模块支持 FoundationPose 6-DoF 估计，规划模块负责约束、限位与轨迹衔接。
+- 官方 Getting Started 以 k3s 本地集群部署参考 OMTS 为主线：安装工具及依赖、部署运行时、用 Bazel 构建与部署参考方案、通过可视化/调试接口检查。README 标注 Ubuntu 24.04/26.04（亦支持 22.04）和 ROS 2 Lyrical Luth；实际兼容性须按发布版本确认。
+
+以下为根据原文整理的概念流程。
 
 ```mermaid
 flowchart TD
@@ -68,7 +73,7 @@ flowchart TD
 
 ## 源码运行时序图
 
-`intrinsic/skills/examples/adder_skill.cc::AdderSkill::Execute` 是已核对的 SDK 技能调用示例，不是 ICON 实时控制循环；部署入口及构建教程待通读。
+`intrinsic/skills/examples/adder_skill.cc::AdderSkill::Execute` 是已核对的 SDK 技能调用示例，不是 ICON 实时控制循环；部署入口及构建教程已核对。
 
 ```mermaid
 sequenceDiagram
@@ -92,6 +97,10 @@ Apache-2.0；官方 README 明确为本地开放运行时及 SDK。外部依赖�
 
 官方 README 给出开源机床上下料 OMTS 参考解决方案，并声明可通过统一 HAL 更换机械臂与夹爪。未见本次读取资料给出统一可复现的周期抖动、负载下延迟或跨硬件性能数字，不编造指标。
 
+### 工程核验与限制
+
+- OMTS 是机床上下料参考方案，不能由参考方案推导所有设备均可免驱动适配；需要按机器人型号验证 HAL、现场总线、控制周期、故障及急停。SDK AdderSkill 例程只验证技能接口调用关系，不是实时运动循环。未进行实机或部署验证。
+
 ## 结论
 
 以本地 k3s 运行时、ICON 实时控制、硬件抽象和感知规划服务组合工业机器人应用。 工程选型时应同时验证指标口径及使用边界。
@@ -102,9 +111,9 @@ Apache-2.0；官方 README 明确为本地开放运行时及 SDK。外部依赖�
 
 ## 局限与风险
 
-硬件无关接口不代表任意设备无需适配；实际现场仍要验证实时性、驱动兼容、急停和安全认证。开发者社区页面未能提取正文，完整部署教程及 ICON 控制实现仍待复核。
+硬件无关接口不代表任意设备无需适配；实际现场仍要验证实时性、驱动兼容、急停和安全认证。开发者社区页面未能提取正文，ICON 底层控制实现未逐行审计。
 
-**核对状态：** 草稿；完整原文及必要源码尚未通读，不宣称健康度满分。
+**核对状态：** 已完成所列原文核对（官方 README 全文、Getting Started 部署教程、教程索引、AdderSkill::Execute 示例源码；不是对全部 ICON 实现的逐行审计。）；未执行训练或实机复现。
 
 ## 关联页面
 
