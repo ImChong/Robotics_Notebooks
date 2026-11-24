@@ -174,6 +174,7 @@ flowchart LR
 - [Mind2Act World：认知、物理执行与组合能力诊断](../wiki/entities/paper-mind2act-world.md) — Stage 3 分层诊断：30 项操作任务的 Mind／Act／Mind2Act 三视角、物理谓词成功判据、事件阶段失败卡；核对 Agent 与端到端策略不同预算，并避免把仿真暂停推理误读成真机实时能力。
 - [GM-100（The Great March 100）](../wiki/entities/paper-gm-100.md) — RHOS AI 100 项真实双臂长尾细粒度任务；用 SR/PSR 拆解完整成功与子目标进度，注意 Cobot Magic 100 项与 Xtrainer 前 10 项的本体/协议差别。
 - [首届蚂蚁灵波具身大模型挑战赛（2026）](../wiki/entities/robbyant-embodied-ai-challenge-2026.md) — Stage 3 的标准化 50 任务赛事案例：统一 LingBot-VLA 2.0，仅 clean 训练、clean/randomized 双设置测试；线下真机决赛与仿真成绩分开记账。
+- [RoboPRO](../wiki/entities/paper-robopro-2611-26971.md) — 80 项双臂任务，按危险接触区分 SR、CR 与 HSR，系统检查障碍密度及视觉、语言、物体扰动。
 - [ManiLadder](../wiki/entities/paper-maniladder-manipulation-benchmark.md) — Stage 3 将 112 项操作任务按四难度级及任务族校准，用 AL@50 暴露平均成功率无法体现的能力短板（官方项目代码待核实）
 - [RoboLab-120（NVIDIA）](../wiki/entities/robolab.md) — 120 项桌面通用操作任务，聚焦真机训练策略零样本仿真评测、成功率/子任务得分/执行事件与语言、视觉扰动；与 RoboDojo 的 sim+real 协议互补。
 - [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
