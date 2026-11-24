@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, world-model, manipulation, benchmark, technology-map]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-24
 related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
@@ -78,6 +78,7 @@ flowchart LR
 
 ## 关联页面
 
+- [ACE-Brain-0.7](../entities/paper-ace-brain-0-7.md) — 联合训练空间锚定、进度估计与任务推理，视空间关系为验证子目标完成的观测证据。
 - [Manipulation 任务页](../tasks/manipulation.md)
 - [VLA 方法页](../methods/vla.md)
 - [生成式世界模型](../methods/generative-world-models.md)
