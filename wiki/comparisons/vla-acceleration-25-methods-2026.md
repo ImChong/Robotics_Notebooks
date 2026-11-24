@@ -141,6 +141,8 @@ flowchart TD
 
 ## 关联页面
 
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 先区分模型家族与 I/O 边界，再在 VLA 执行链内定位延迟瓶颈
+
 - [VLA 方法总览](../methods/vla.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [控制与推理频率解耦](../concepts/control-inference-frequency-decoupling.md)
