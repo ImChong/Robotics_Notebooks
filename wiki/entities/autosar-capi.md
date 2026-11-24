@@ -3,7 +3,7 @@ type: entity
 project_id: autosar-capi
 project: https://www.autosar.org/capi
 code: https://github.com/AUTOSAR/capi
-tags: [repo, middleware, software, architecture, deployment, automotive, security]
+tags: [repo, middleware, software, architecture, deployment, automotive, security, autosar, isoft]
 status: complete
 updated: 2026-11-24
 related:
@@ -11,6 +11,8 @@ related:
   - ../concepts/ros2-basics.md
   - ../concepts/remote-procedure-call.md
   - ../concepts/model-versioning-ota.md
+  - ../tasks/locomotion.md
+  - ../tasks/balance-recovery.md
 sources:
   - ../../sources/sites/autosar-capi.md
   - ../../sources/repos/autosar-capi.md
@@ -49,7 +51,7 @@ CAPI 是 AUTOSAR Adaptive Platform 的共同软件实现：让行业在统一接
 
 | 核心信息 | 内容 |
 |---|---|
-| 机构 | AUTOSAR；初版基线由普华基础软件（iSOFT）贡献 |
+| 机构 | 汽车开放系统架构组织（AUTOSAR）；初版基线由普华基础软件（iSOFT）贡献 |
 | 发布版本 | CAPI 1.0，2026-08-20 |
 | 规范锚点 | AP R20-11；部分 R23-11 接口兼容 |
 | 实现范围 | 官方称覆盖 15 个核心功能集群，包含通信、执行管理、日志、诊断 |
@@ -115,7 +117,7 @@ sequenceDiagram
 4. Compose 构建第二个容器；分别通过 `run.sh -R` 启动机器，再以 `run.sh -c HelloWorldGroup.Driving` 切换功能组；用日志检查回显，结束时 `run.sh -s`。
 5. **建议验收指标（工程建议，非官方实测）**：记录发现耗时、请求往返延迟分布、丢包/断链恢复、状态切换与进程退出行为。
 
-与 [ROS 2](../concepts/ros2-basics.md) 对照，可学习接口生成、服务通信和进程生命周期，但二者协议、生态、目标领域不同，不应等同。机器人高频运控仍需按截止时间预算设计。
+与 [ROS 2](../concepts/ros2-basics.md) 对照，可学习接口生成、服务通信和进程生命周期，但二者协议、生态、目标领域不同，不应等同。机器人高频运控仍需按截止时间预算设计。以 [足式运动](../tasks/locomotion.md) 为例，可借鉴上层服务生命周期和诊断接口，但步态闭环不能依赖示例的服务请求节奏；[平衡恢复](../tasks/balance-recovery.md) 则须由独立的物理状态估计和控制策略完成，不能把应用功能组切换当作稳定性保证。这两项仅为跨领域工程对照，不是 CAPI 已验证的机器人应用。
 
 ## 局限与风险
 
@@ -130,6 +132,8 @@ sequenceDiagram
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [远程过程调用](../concepts/remote-procedure-call.md)
 - [模型版本管理与 OTA](../concepts/model-versioning-ota.md)
+- [足式运动任务](../tasks/locomotion.md) — 应用服务管理与实时运动控制的分层边界
+- [平衡恢复任务](../tasks/balance-recovery.md) — 进程状态管理与物理安全恢复的区别
 
 ## 参考来源
 
