@@ -250,6 +250,8 @@ flowchart LR
 - [Legato](../wiki/entities/paper-legato.md)（RSS 2026 · 上交/千寻/清华等）— 训练期以动作–噪声混合与重塑速度场目标学会三段调度动作延续，异步部署时无需推理期 VJP 反向传播、真机 $\pi_{0.5}$ / GR00T N1.6 抑制块间模态切换并缩短执行时间（MIT 仅开源 `Legato-kinetix` 2D 仿真实现）
 - [Query：操作 VLA 架构选型](../wiki/queries/manipulation-vla-architecture-selection.md)
 
+- [TipDex-VTLA](../wiki/entities/paper-tipdex-vtla.md) — 2 Hz 慢端上下文与 30 Hz 快触觉细化，按执行时间保护已提交动作；适合接触丰富操作的可靠性闭环。
+
 ### 加速方法与闭环延迟选型
 
 - [FastRoverVLA](../wiki/entities/paper-fastrovervla.md) — 免训练动作缓存、每步速度–曲率对齐与写回；对照冻结预测重放和串行实际请求，尚无闭环驾驶验证。
