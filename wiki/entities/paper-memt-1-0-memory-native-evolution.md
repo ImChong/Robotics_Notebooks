@@ -8,8 +8,9 @@ tags:
   - long-context
   - embodied-agent
   - agentic-coding
+  - nvidia
 status: complete
-updated: 2026-10-20
+updated: 2026-11-24
 arxiv: "2610.26825"
 project: https://github.com/MemTensor/MemT-1.0
 code: https://github.com/MemTensor/MemT-1.0
@@ -17,14 +18,16 @@ related:
   - ./paper-memcompiler-state-conditioned-memory.md
   - ./paper-spatial-memory-agent.md
   - ../concepts/agentic-coding-software-fundamentals.md
+original:
+  - ../../sources/papers/memt_1_0_arxiv_2610_26825.md
 sources:
   - ../../sources/papers/memt_1_0_arxiv_2610_26825.md
   - ../../sources/sites/memt-1-0.md
   - ../../sources/repos/memtensor-memt-1-0.md
-summary: "MemT-1.0 将持续演化的局部记忆与可训练超记忆纳入模型计算；Nano/Flash 在论文所比较的参数化记忆方法中表现领先，但文本记忆系统在部分长历史证据检索任务上仍有优势，机器人应用需单独验证。"
+summary: "MemT-1.0 将持续演化的局部记忆与可训练超记忆纳入模型计算；Pro/Flash/Nano 在论文所比较的参数化记忆方法中表现领先，但文本记忆系统在部分长历史证据检索任务上仍有优势，机器人应用需单独验证。"
 ---
 
-# MemT-1.0：面向原生记忆演化的记忆基础模型
+# MemT-1.0: Towards Memory-Native Evolution（面向原生记忆演化的记忆基础模型）
 
 ## 一句话定义
 
@@ -79,36 +82,49 @@ flowchart LR
 |------|----------|--------|----------|----------------|--------------|
 | MemT-1.0-Nano | Qwen3.6-35B-A3B | 36B | 3B | 451M | 10M |
 | MemT-1.0-Flash | DeepSeek-V4-Flash | 288B | 17B | 3.61B | 336M |
+| MemT-1.0-Pro | NVIDIA-Nemotron-3-Ultra-550B-A55B | 554B | 59B | 4.23B | 13M |
 
-报告评估 11 项记忆基准。作者报告 Nano 与 Flash 在被比较的**参数化记忆方法**中排名第一、第二；强文本记忆系统整体仍领先，尤其是长历史中需要细粒度证据检索的任务。论文还报告 Nano 在 128K 历史长度下相对完整上下文 KV cache 约 1.86×端到端推理加速、持久存储减少约 66×。这些数字应连同其任务、硬件和基线设置阅读。
+报告评估 11 项记忆基准。作者报告 Pro、Flash、Nano 在被比较的**参数化记忆方法**中依次排名前三；强文本记忆系统整体仍领先，尤其是长历史中需要细粒度证据检索的任务。论文还报告 Nano 在 128K 历史长度下相对完整上下文 KV cache 约 1.86×端到端推理加速、持久存储减少约 66×。这些数字应连同其任务、硬件和基线设置阅读。
+
+### Pro 训练与通用能力
+
+v4（2026-11-20）§3.6：Pro 冻结 Nemotron 骨干，只训练记忆模块；CPT 使用 CE，后训练以全上下文骨干教师的 Top-64 目标计算 KL 损失。§6.3 表 4 的噪声记忆设置下，Pro 相对同设置骨干在六项通用基准上平均降低 0.11 个百分点，LongBench v2 降低 5.17 个百分点。不可把平均接近无损理解为各任务无损，也不可将 Nano 的 128K 效率与 SWE-bench 结果转归 Pro。
 
 ## 源码运行时序图
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant Client as Python client
-  participant Server as SGLang server
-  participant Model as MemT model
-  participant Memory as Native Memory Block
-  Client->>Server: 发送当前轮输入
-  Server->>Model: 提交生成请求
-  Model->>Memory: 读取当前记忆状态
-  Memory-->>Model: 返回门控记忆读出
-  Model-->>Server: 返回生成 token
-  Server-->>Client: 返回本轮响应
-  opt 轮次或片段结束
-    Model->>Memory: GDN-2 逐 token 更新状态
+  participant App as Caller
+  participant Session as MemTSession.chat
+  participant Client as NativeClient
+  participant Server as SGLang service
+  participant State as Session memory
+  App->>Session: chat with enable_memory
+  Session->>Client: lease and query
+  Client->>Server: acquire and POST /generate query
+  Server->>State: Read committed state
+  State-->>Server: Memory readout
+  Server-->>Client: Generated token IDs
+  Client-->>Session: Generation result
+  opt Complete turn and automatic memory write
+    Session->>Client: Replay unsaved turns via commit_turns
+    Client->>Server: begin and POST /generate commit per turn
+    Server->>State: Update candidate memory
+    Client->>Server: publish
+    Session->>Session: Clear committed local turns
   end
+  Client->>Server: release lease
+  Session-->>App: Answer
 ```
 
-官方仓库公开推理集成及 Nano 服务端 / Python 客户端示例；完整步骤和 Flash 配置见 [官方仓库](../../sources/repos/memtensor-memt-1-0.md)。
+时序依据 `inference/memt_sglang/client/session.py` 的 `chat`、`_generate`、`_commit_turns` 和官方 inference guide 的 HTTP 请求表；工具调用未结束或生成截断时不自动提交。Pro 服务入口为 `inference/start_memt_pro.sh` → `python -m memt_sglang.launch`。快照保存使用 `save_state` 提交历史后 export/publish，恢复使用 `load_state` import/publish。完整步骤见 [官方仓库](../../sources/repos/memtensor-memt-1-0.md)。
 
 ## 工程实践
 
 - **先区分应用层级：** MemT-1.0 的论文应用是长程 coding agent。迁移到机器人时，可把它视为任务级历史 / 程序性记忆候选；不要把它当作 100–1000 Hz 的运动控制器或实时安全模块。
-- **核对部署资源：** 官方 Nano 示例以两张 GPU 启动 SGLang 服务；Flash 参数量更大。实际显存、吞吐、并发和量化效果应在目标硬件与模型发行版本上测量。
-- **拆分许可：** 仓库推理软件使用 PolyForm Noncommercial License 1.0.0，论文材料使用 CC BY-NC-SA 4.0；Hugging Face Flash 模型卡标注权重为 MIT。第三方 backbone、组件及其他权重版本还需遵守其各自条款。
+- **核对部署资源：** 官方 Nano 示例以两张 GPU 启动 SGLang 服务；Pro 官方启动示例为 8 GPU、TP8/EP8/DP1、BF16、16384 上下文；实际设备需容纳完整权重、运行态及缓存。Flash 和 Pro 的参数量远大于 Nano。实际显存、吞吐、并发和量化效果应在目标硬件与模型发行版本上测量。
+- **拆分许可：** 仓库推理软件使用 PolyForm Noncommercial License 1.0.0，论文材料使用 CC BY-NC-SA 4.0；Hugging Face Flash 模型卡标注权重为 MIT。Pro 的 Hugging Face 模型卡为 OpenMDW 1.1，ModelScope 入口由官方 README 列出但本次未能直接核查。第三方 backbone、组件及其他权重版本还需遵守其各自条款。
 - **做任务级对照：** 与完整上下文、RAG 或外置摘要比较时，分别记录长程任务成功率、事实检索准确性、持久状态大小、端到端延迟和显存；特别检查需要引用早期细节的任务，因为报告承认强文本记忆在此类任务上仍具优势。
 
 ## 与其他工作对比
@@ -117,7 +133,7 @@ sequenceDiagram
 |------|--------------|--------------------|
 | 完整上下文（KV cache） | 推理时保留全部历史 token | 论文在 128K 历史下报告 Nano 持久存储约减少 66×、端到端约 1.86× 加速；代价是历史被压缩进固定状态 |
 | RAG / 外置摘要（文本记忆系统） | 模型外部的可检索文本 | 生成前检索拼接；论文承认强文本记忆在需细粒度证据检索的长历史任务上整体仍领先 |
-| 其他参数化记忆方法 | 模型内可训练参数 / 状态 | 同类对照；作者报告 Nano 与 Flash 在被比较方法中排名第一、第二 |
+| 其他参数化记忆方法 | 模型内可训练参数 / 状态 | 同类对照；作者报告 Pro、Flash、Nano 在被比较方法中依次排名前三 |
 | [MemCompiler](./paper-memcompiler-state-conditioned-memory.md) | 按状态条件编译的外部经验 | 面向具身智能体逐步编译经验；MemT-1.0 则把记忆写进模型内部状态 |
 
 ## 结论
@@ -132,6 +148,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md) — 原生记忆作为注意力并行支路的骨干架构案例；非机器人策略验证。
+
 - [MemCompiler：具身智能体的状态条件记忆编译](./paper-memcompiler-state-conditioned-memory.md) — 对照逐步编译外部经验与模型内部原生记忆。
 - [Spatial Memory Agent](./paper-spatial-memory-agent.md) — 比较具身任务中的空间/程序性经验组织方式。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 将长程 coding agent 应用放进 agent 工程背景理解。
@@ -143,6 +161,9 @@ sequenceDiagram
 - [官方实现仓库](../../sources/repos/memtensor-memt-1-0.md)
 
 ## 推荐继续阅读
+
+- [Hugging Face Pro](https://huggingface.co/MemTensor/MemT-1.0-Pro) · [ModelScope Pro](https://www.modelscope.cn/models/MemTensor/MemT-1.0-Pro) — Pro 权重发布入口。
+- [技术报告 v4 HTML](https://arxiv.org/html/2610.26825v4) · [PDF](https://arxiv.org/pdf/2610.26825v4) — 本次 Pro 增量核对版本，全文通读尚未完成。
 
 - [MemT-1.0 technical report (arXiv:2610.26825)](https://arxiv.org/abs/2610.26825) — 模型结构、训练、基准与资源效率实验。
 - [Official inference repository](https://github.com/MemTensor/MemT-1.0) — 推理代码、SGLang 集成与部署说明。
