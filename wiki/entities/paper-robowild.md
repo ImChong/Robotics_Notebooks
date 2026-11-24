@@ -235,5 +235,5 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [RoboWild 原始论文 PDF](https://huggingface.co/datasets/xlangai/RoboWild/resolve/main/RoboWild.pdf)
-- [XLANG Lab 官方项目主页及最新结果](https://robowild.xlang.ai/)
+- [XLANG Lab 官方项目主页及动态榜单](https://robowild.xlang.ai/)
 - [RoboWild-Harness 源码、工具配置与 CLI](https://github.com/xlang-ai/RoboWild-Harness)

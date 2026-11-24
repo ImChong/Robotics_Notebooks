@@ -201,6 +201,8 @@ uv run python -m evolution.orchestrator --config configs/evolution/locomo_accura
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 跨域对照：文本记忆 QA 只覆盖上层认知，不能替代策略成功率、真机闭环与 sim↔real 校准
+
 - [遗传编程（Genetic Programming）](../methods/genetic-programming.md) — 对比可执行程序结构搜索：传统 GP 常用受限语法和交叉变异，MAPE 由 LLM 提案与诊断驱动程序重写，二者不可等同
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 对照候选代码的 sanity check、隔离评测和独立诊断，区别于真实软件 E2E 交付验收
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — 在线/后台整理与离线程序搜索的互补关系

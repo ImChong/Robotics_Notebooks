@@ -140,6 +140,8 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本文对应离线 2D 检测数据构建，部署仍需标定、空间提升及下游策略验证
+
 - [目标检测](../methods/object-detection.md) — 定位+分类的视觉感知方法，本论文聚焦降低目标域人工标注需求
 - [目标检测评价指标](../concepts/object-detection-metrics.md) — 对齐 AP50、AP@[.50:.95]、IoU 与类别名口径
 - [COCO 数据集](./dataset-coco.md) — 核对 val2017 与 COCO OVD 类别划分
