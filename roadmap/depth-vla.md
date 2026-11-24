@@ -250,6 +250,8 @@ flowchart LR
 
 ### 加速方法与闭环延迟选型
 
+- [FastRoverVLA](../wiki/entities/paper-fastrovervla.md) — 免训练动作缓存、每步速度–曲率对齐与写回；对照冻结预测重放和串行实际请求，尚无闭环驾驶验证。
+
 - [VLA 加速 25 法：模型内部、异步执行、动作头与云边协同](../wiki/comparisons/vla-acceleration-25-methods-2026.md) — 按耗时位置选择优化层，保留硬件、动作可用延迟、任务完成时间与成功率的可比口径（Turing Post 2026-11-22 原文策展）。
 
 ### 学完输出什么
