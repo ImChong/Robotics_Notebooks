@@ -51,7 +51,25 @@
 - 工具调用：模型发出 `|BROWSER|` 等特殊 token，外层 runtime 执行工具并把结果塞回上下文；靠微调样本与 system message 教会。
 - 与 2015 博文 [Unreasonable Effectiveness of RNNs](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) 对照：今日 base model 管线 **RNN → Transformer**，高层逻辑相似。
 
+## LLM OS 专题核对（2026-11-24）
+
+- **核对范围：** 已通读作者 2023-11-22 原始视频完整英文讲话转录（[全文转录镜像](https://lawwu.github.io/transcripts/transcript_zjkBMFhNj_g.html)，从开场至结束，正文第 27–220 行），按[官方视频章节](https://www.youtube.com/watch?v=zjkBMFhNj_g)核对三部分内容：模型训练与推理、未来能力与 LLM OS、安全。42:15–45:43 专题另与用户提供的原演讲幻灯片截图交叉核对。转录为第三方载体、内容为讲者原话；存在自动识别误差，未据其采录不确定数字。完整 PDF 仍未取得，未声称观看视频或核对所有幻灯片。
+- **通读：** 已完成
+- **专题定位：** [42:15 LLM OS](https://www.youtube.com/watch?v=zjkBMFhNj_g&t=2535s)，截至 45:43 切换至安全主题。
+- **图中模块：** LLM 对应 CPU，context window 对应 RAM；文件系统与 embeddings 对应 disk；计算器、Python interpreter、terminal 对应传统软件工具；video/audio 对应外设 I/O；browser 与 other LLMs 为外部连接对象。
+- **原文边界：** 这是 2023 年演讲对未来计算架构的类比，不是可安装的 OS 或具体代码项目。讲者把可评估奖励的狭窄领域自我改进作为可能性，不能读成通用自我改进已实现。图中的双向连线表示资源交互，未规定协议、调度器或执行顺序。
+- **源码：** 本节为架构示意，未给出该 LLM OS 的独立运行入口；不将演讲中其他示例代码当作这一架构的实现。
+
+## 全篇原始讲话复核（2026-11-24）
+
+- 00:00–25:43：推理与训练的区别、预测目标与知识压缩、幻觉及可解释性、助手微调、比较反馈与评价；这些是理解 LLM OS 中核心模型的基础。
+- 25:43–45:43：规模化、工具演示、多模态、推理时间、自我改进和定制化，最终归纳出资源协调核心与有限工作记忆的架构类比。工具演示中的估值外推只是展示软件协作，不当作事实预测。
+- 45:43–结束：越狱、提示注入和数据投毒的风险类别，以及攻防持续演进的结语；演讲案例是 2023 年历史示例，不代表今日产品仍有相同漏洞。
+- 完整讲话文本是本次主要原文；幻灯片为补充材料，仅核验 LLM OS 专题截图。转录载体并非作者独立发表的文章，不作为第二个研究成果收录。
+
 ## 对 wiki 的映射
+
+- [LLM OS 架构概念](../../wiki/concepts/llm-os-karpathy.md) — 专题笔记与架构图
 
 - [`wiki/entities/andrej-karpathy.md`](../../wiki/entities/andrej-karpathy.md)
 - [`wiki/concepts/deep-learning-foundations.md`](../../wiki/concepts/deep-learning-foundations.md)
