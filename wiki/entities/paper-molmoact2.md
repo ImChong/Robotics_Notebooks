@@ -211,7 +211,7 @@ sequenceDiagram
 
 - 真机 YAM 8 任务平均在正文为 50.1%，附录 Table 19 为 50.6；Table 19 的任务名与正文任务名并不对应，列头写的是 MolmoAct 而非 MolmoAct2（§6.3，附录 Table 19）。
 - Table 8 中 Think 在 LIBERO-Object 为 99.8%，低于 MolmoAct2 的 100.0%，正文说「持平」（§6.4）。LIBERO 上 MolmoAct2 97.2% 对 GR00T N1.7 的 97.0%、π0.5 的 96.9%，差距很小，论文未给出多随机种子或置信区间。
-- 摘要强调 Think 的低延迟，但 §6.8 只比较了 Think 与基础模型（12.71 对 55.79 Hz），没有与前作 MolmoAct 或其他带推理的策略比延迟；Think 比基础模型慢约 4.4 倍（推测：由两个数字相除得出）。
+- 摘要强调 Think 的低延迟，但 §6.8 只比较了 Think 与基础模型（12.71 对 55.79 Hz），没有与前作 MolmoAct 或其他带推理的策略比延迟。就该实验的摊销吞吐而言，Think 为基础模型的约 22.8%（12.71 / 55.79），并非对强化学习策略推理速度的一般性结论。
 - 消融集中在 LIBERO（Table 10–14），部分差异在 1 个百分点以内（如 K=4 的 95.15% 对 K=2 的 95.05%），论文未报方差；去掉 knowledge insulation 与加上它的差别（97.20% 对 97.05%）同样很小。
 - 零样本仿真基线 StereoVLA、LAP-VLA、X-VLA 等在 Table 4/5 里的绝对成功率很低，MolmoAct2 的优势部分来自基线在该协议下近乎失效；真机 DROID 每个任务只有 15 次试验（Table 6）。
 - OOD 鲁棒性（§6.5，Table 9）每种扰动每任务 20 次试验，且只选了 8 个真机任务中的 4 个；表中最后一行标 MolmoAct2-Think，正文称 MolmoAct2。

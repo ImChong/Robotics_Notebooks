@@ -154,6 +154,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对应策略成功率与过程质量评测，以及评测反馈后训练；本案结果仅限双臂仿真协议。
+
 - [VLA](../methods/vla.md)
 - [动作分块](../methods/action-chunking.md)
 - [VLA 纵深路线](../../roadmap/depth-vla.md)
