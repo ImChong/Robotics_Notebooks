@@ -5,7 +5,7 @@
 - **项目：** https://decomvoxel.github.io/DecomVoxel-Webpage/
 - **数据：** https://huggingface.co/datasets/JunfengNi/DecomVoxel
 - **核对日期：** 2026-11-24
-- **核对范围：** 官方 README、run_replica_demo.sh、train_demo.py 的导入、入口及 run_full_pipeline 后半段；内部 SDS 模块尚待逐行核对，未执行 GPU demo。
+- **核对范围：** README、run_replica_demo.sh、train_demo.py 入口及并行调用，configs/replica_config.yaml，几何 SDS 的 run_sds_completion_ss / SparseStructureCompleter.complete 与外观 SDS 的 encode_object_slat / slat_sds / decode_slat_to_mesh 相关核心路径；未审计全部辅助代码，未执行 GPU demo。
 - **通读：** 未完成
 
 ## 复现入口
@@ -24,9 +24,15 @@ bash run_replica_demo.sh
 - generate_cond_img_avo_para：按对象生成条件图，排除背景 object_000。
 - run_scene_sds_para：接收 semantic_result/object_voxels 与条件图，输出 scene_sds。
 - run_scene_appearance_sds_para：按对象执行外观优化。
-- 已确认导入 score_distillation_sampling_ss.run_sds_completion_ss 和 score_distillation_sampling_appearance 的 encode_object_slat、slat_sds、decode_slat_to_mesh；具体内部调用尚待核查。
+- 已确认导入 score_distillation_sampling_ss.run_sds_completion_ss 和 score_distillation_sampling_appearance 的 encode_object_slat、slat_sds、decode_slat_to_mesh；核心调用已核对，见下节。
 
 背景补全另有 bg_inpaint_replica.sh，不能假定由 full_pipeline 自动执行。
+
+## 核心实现核对
+
+- `decomvoxel/pipeline/score_distillation_sampling_ss.py`：`run_sds_completion_ss` 调用 `complete`；classic 分支以停止梯度的目标构造 MSE，周期性 redistribute 在 `ss_param.data` 的 logit 空间写入均匀随机值，而非直接清零。
+- `decomvoxel/pipeline/score_distillation_sampling_appearance.py`：`encode_object_slat` 聚合 DINO 特征并编码；`slat_sds` 固定稀疏坐标、冻结 flow 模型，仅优化特征，使用 certainty 加权保真项；最终由 `decode_slat_to_mesh` 输出 mesh。
+- `configs/replica_config.yaml`：几何 classic/uniform、5000 次；外观 snr、3000 次。配置的 `prune_end_iter: 2110` 与论文附录 B 的 2500 次不同，且实现以 logit -7 为目标；复现应记录配置版本，勿将论文数值视作运行实测。
 
 ## 对 wiki 的映射
 

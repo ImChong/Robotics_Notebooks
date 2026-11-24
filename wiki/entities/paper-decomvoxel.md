@@ -2,7 +2,7 @@
 type: entity
 project_id: decomvoxel
 tags: [paper, real2sim, 3d-reconstruction, voxel, flow-matching, tsinghua, pku, bigai]
-status: draft
+status: complete
 updated: 2026-11-24
 arxiv: "2610.01914"
 project: https://decomvoxel.github.io/DecomVoxel-Webpage/
@@ -58,7 +58,7 @@ DecomVoxel 从带位姿的多视角图像及实例掩码出发，在同一场景
 | 输出 | 对象级带纹理网格及背景网格 |
 | 代码 | [官方实现](https://github.com/DecomVoxel/DecomVoxel) |
 | 数据 | [Hugging Face](https://huggingface.co/datasets/JunfengNi/DecomVoxel) |
-| 核查 | 已核对方法、实验表、附录关键内容与 CLI 入口；全文逐行核查和内部源码、实际复现尚未完成 |
+| 核查 | 已通读论文正文与附录，核对核心 SDS 源码和 Replica 配置；未运行 GPU demo |
 
 ## 核心原理与方法栈
 
@@ -103,7 +103,7 @@ flowchart TD
 | 退火迭代 | 4000 | 2000 |
 | CFG strength | 3.0 | 3.0 |
 
-几何栅格 64³，场景可见性栅格 256³；每 300 次迭代重分布空域，强度在前 2500 次迭代退火到零。实际代码参数应以配置为准。
+几何栅格 64³，场景可见性栅格 256³；每 300 次迭代重分布空域，强度在前 2500 次迭代退火到零。论文附录 B 给出 2500 次剪枝退火；公开 Replica 配置为 `prune_end_iter: 2110`，实现直接在 occupancy logit 上重分布，目标 logit 为 -7。复现时应记录所用配置，不将论文参数等同于代码运行结果。
 
 官方 README 提供环境安装及 Replica scan1 快速测试：`source env.sh`、`bash run_replica_demo.sh`。默认调用 Seedream 条件图服务，需外部权重及 API 密钥。公开代码及数据入口不等于已独立复现；详情见[源码归档](../../sources/repos/decomvoxel.md)。
 
@@ -119,6 +119,8 @@ sequenceDiagram
   participant C as generate_cond_img_avo_para
   participant S as run_scene_sds_para
   participant A as run_scene_appearance_sds_para
+  participant SS as SparseStructureCompleter.complete
+  participant SL as encode_object_slat / slat_sds / decode_slat_to_mesh
   U->>SH: bash run_replica_demo.sh
   SH->>CLI: --mode full_pipeline + replica_config.yaml
   CLI->>P: 解析参数并进入主流程
@@ -127,13 +129,17 @@ sequenceDiagram
   P->>C: 对象条件图生成
   C-->>P: 条件图路径映射
   P->>S: object_voxels + cond_images
+  S->>SS: run_sds_completion_ss
+  SS-->>S: 优化后的结构与历史
   S-->>P: scene_sds 输出
   P->>A: model_dir + cond_images
+  A->>SL: DINO 聚合、编码、固定坐标优化及网格解码
+  SL-->>A: 对象 mesh
   A-->>P: 外观阶段完成
   P-->>CLI: logger.finalize
 ```
 
-上图仅描述已静态核对的入口级调用；背景补全另见 bg_inpaint_replica.sh；尚未核查所有内部子模块或运行 demo。
+上图依据入口与几何、外观 SDS 核心代码静态核对；背景补全另见 bg_inpaint_replica.sh。未运行 GPU demo，也未审计全部辅助模块。
 
 ## 实验与评测
 
@@ -145,6 +151,8 @@ sequenceDiagram
 | ScanNet++ | 4.34 | 77.93 | 76.39 | 21.71 | 0.893 | 0.133 |
 
 Table 3 中仅加几何先验的 CD 为 6.52，增加几何空间指导后为 3.91；完整模型 CD 3.95 但渲染 PSNR 更高（24.21）。不能声称完整模型每个单项消融指标都最优。Table 4 Replica 耗时 1.35 h、峰值 GPU 显存 20.965 GB、平均 7.450 GB。
+
+Table 2 的 44 位专家采用匿名随机呈现、五级评分；本方法几何、外观、布局平均分分别为 3.81、3.78、4.08。作者评估的是视觉重建而非物理接触性能。附录 C 对点云输入基线使用共享位姿及掩码，ReconViaGen/CUPID 通过 FoundationPose 对齐；ShapeR 仅评估几何。
 
 ## 结论
 

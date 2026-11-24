@@ -9,8 +9,8 @@
 - **PDF：** https://arxiv.org/pdf/2610.01914
 - **作者：** Junfeng Ni、Zirui Zhou、Yixin Chen、Yu Liu、Nan Jiang、Zhifei Yang、Song-Chun Zhu、Siyuan Huang
 - **机构：** 清华大学、北京通用人工智能研究院（通用人工智能国家重点实验室）、北京大学
-- **核对范围：** arXiv HTML v1 的引言、相关工作、§3 方法及 Algorithm 1、§4 Tables 1–4、结论、附录 A–D 的关键推导、参数、评估协议及局限；尚未逐行核完全文及图像细节。
-- **通读：** 未完成
+- **核对范围：** arXiv HTML v1 正文 §1–5、Algorithm 1、Figures 1–7 图注及正文分析、Tables 1–5、附录 A–D（梯度推导、锚点及调度、指标定义、基线协议、用户研究及局限）；未独立复现实验。
+- **通读：** 已完成
 - **入库日期：** 2026-11-24
 
 ## 核心摘录与理解
@@ -21,6 +21,8 @@
 4. §3.4：先优化几何占据，再将 DINOv2 多视图特征反投影初始化外观潜变量，解码得到每对象带纹理网格。
 5. Table 1：Replica / ScanNet++ 的 CD 分别为 3.95 / 4.34 cm；F-score（5 cm）77.87 / 77.93，PSNR 24.21 / 21.71 dB。Table 4 Replica 耗时 1.35 h，峰值显存 20.965 GB；均为作者实验，不是本次复现。
 6. Appendix D：对初始重建、掩码及先验分布敏感；主评测为室内可实例分割环境；逐物体优化计算代价较高。输出是视觉网格而非带物性仿真资产。
+
+7. §3.4：物体条件图经过遮挡补全与重新居中；§4.1/C.4 对需点云的基线使用 Depth-Anything 3 和共享相机位姿，ReconViaGen/CUPID 再以 FoundationPose 对齐。Table 2 的 44 位专家盲评包含几何、外观及布局三个维度，不能当作物理仿真验证。
 
 ## 对 wiki 的映射
 
