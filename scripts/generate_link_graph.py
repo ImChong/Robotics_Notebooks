@@ -58,6 +58,7 @@ from typing import Any
 from urllib.parse import unquote, urlsplit
 
 from export_minimal import (
+    collect_paths,
     extract_summary,
     page_has_repo_source,
     parse_frontmatter,
@@ -84,8 +85,24 @@ from utils.wiki_cache import wiki_stem_to_path
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 ROADMAP_DIR = REPO_ROOT / "roadmap"
+REFERENCES_DIR = REPO_ROOT / "references"
+TECH_MAP_DIR = REPO_ROOT / "tech-map"
 SOURCES_DIR = REPO_ROOT / "sources"
-GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
+GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR, REFERENCES_DIR, TECH_MAP_DIR)
+_DEFAULT_GRAPH_CONTENT_DIRS = GRAPH_CONTENT_DIRS
+
+
+def _active_graph_dirs() -> tuple[Path, ...]:
+    if GRAPH_CONTENT_DIRS != _DEFAULT_GRAPH_CONTENT_DIRS:
+        return GRAPH_CONTENT_DIRS
+    return (
+        REPO_ROOT / "wiki",
+        REPO_ROOT / "roadmap",
+        REPO_ROOT / "references",
+        REPO_ROOT / "tech-map",
+    )
+
+
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 # 节点摘要单独下发（按 nodes 顺序的字符串数组）：占 link-graph gzip 的 53%，图谱首屏构图用不到
 SUMMARIES_PATH = REPO_ROOT / "exports" / "link-graph-summaries.json"
@@ -270,14 +287,12 @@ def _normalize_wiki_rel_from_log_match(raw: str) -> str:
 
 
 def _is_latest_node_path(rel: str) -> bool:
-    """首页「最新知识节点」可收录的仓库相对路径：wiki/ 或 roadmap/（不含 README）。"""
-    if "*" in rel:
+    """首页「最新知识节点」与活动时间线可收录的仓库相对路径（不含 README 与模块模板）。"""
+    if "*" in rel or rel == "tech-map/modules/module-template.md":
         return False
-    if rel.startswith("wiki/"):
-        return True
-    if rel.startswith("roadmap/") and not rel.endswith("/README.md") and rel != "roadmap/README.md":
-        return True
-    return False
+    if rel == "README.md" or rel.endswith("/README.md"):
+        return False
+    return rel.startswith(("wiki/", "roadmap/", "references/", "tech-map/"))
 
 
 def _expand_wiki_glob(pattern: str) -> list[str]:
@@ -514,15 +529,7 @@ _WIKI_GIT_HISTORY_CACHE: WikiGitHistory | None = None
 
 
 def _iter_wiki_md_paths() -> list[str]:
-    paths: list[str] = []
-    for root in GRAPH_CONTENT_DIRS:
-        if not root.is_dir():
-            continue
-        for p in root.rglob("*.md"):
-            if not p.is_file() or p.name == "README.md":
-                continue
-            paths.append(str(p.relative_to(REPO_ROOT)).replace("\\", "/"))
-    return sorted(paths)
+    return sorted(str(p.relative_to(REPO_ROOT)).replace("\\", "/") for p in _iter_graph_pages())
 
 
 def _git_is_shallow() -> bool:
@@ -650,6 +657,8 @@ def collect_wiki_git_history(*, force_refresh: bool = False) -> WikiGitHistory:
                 "--",
                 "wiki",
                 "roadmap",
+                "references",
+                "tech-map",
             ],
             capture_output=True,
             text=True,
@@ -1077,6 +1086,7 @@ HEALTH_STATUS_CAPS = {"stub": 1, "draft": 2}
 # 位 8 = status 为 stub/draft（与 report_health.py 的「status 未 complete」同口径）。
 # wiki 页三项：元数据 / 阅读骨架 / 原文通读；roadmap 页三项：首屏导读 / 站内链接 / 阶段化结构。
 # references/ 索引页三项：摘要与来源 / 选读导航 / 分类覆盖与交叉链接（不假定单篇原文通读）。
+# tech-map/ 技术地图节点三项：摘要与来源 / 结构图谱与导航 / 站内入口 ≥3。
 HEALTH_GAP_STATUS = 8
 
 
@@ -1145,6 +1155,41 @@ def compute_health_score(content: str, page: Path) -> int:
 
 # roadmap/ 路线页站内链接达到该阈值视为「已接入交叉引用网络」
 ROADMAP_HEALTH_MIN_INTERNAL_LINKS = 5
+# tech-map/ 技术地图节点站内链接达到该阈值视为「已接入站内知识入口」
+TECH_MAP_HEALTH_MIN_INTERNAL_LINKS = 3
+
+
+def compute_tech_map_health(content: str, internal_link_count: int) -> tuple[int, int]:
+    """技术地图节点健康度（0–3）：不套用论文精读「原文通读」规则。
+
+    +1: frontmatter 摘要 + 实际来源（sources 或「参考来源」节）
+    +1: 结构图谱与导航（至少 3 个二级小节且含 Mermaid 图）
+    +1: 站内知识入口（至少 3 条站内链接）
+
+    位掩码与其他页面保持一致；stub/draft 按 status 封顶。
+    """
+    fm, body = parse_raw_frontmatter(content)
+    if not fm:
+        return 0, 7
+    has_sources = bool(
+        parse_frontmatter_list(content, "sources")
+        or re.search(r"^##\s+参考来源", body, re.MULTILINE)
+    )
+    has_structure = "```mermaid" in body and len(re.findall(r"^##\s+\S", body, re.MULTILINE)) >= 3
+    checks = (
+        bool(re.search(r"^summary\s*:\s*\S", fm, re.MULTILINE) and has_sources),
+        has_structure,
+        internal_link_count >= TECH_MAP_HEALTH_MIN_INTERNAL_LINKS,
+    )
+    score = sum(checks)
+    gaps = sum(1 << i for i, ok in enumerate(checks) if not ok)
+    status_match = re.search(r"^status\s*:\s*(\S+)", fm, re.MULTILINE)
+    if status_match:
+        cap = HEALTH_STATUS_CAPS.get(status_match.group(1).strip("'\"").lower())
+        if cap is not None:
+            score = min(score, cap)
+            gaps |= HEALTH_GAP_STATUS
+    return score, gaps
 
 
 def compute_reference_health(content: str, internal_link_count: int) -> tuple[int, int]:
@@ -1296,10 +1341,12 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
     """
     targets = []
 
+    graph_dirs = _active_graph_dirs()
+
     def is_graph_path(p: Path) -> bool:
         if not p.exists():
             return False
-        for root in GRAPH_CONTENT_DIRS:
+        for root in graph_dirs:
             try:
                 p.relative_to(root)
                 return True
@@ -1358,7 +1405,7 @@ def extract_route_order(content: str, source_path: Path) -> list[str]:
         target = (source_path.parent / unquote(url.path)).resolve()
         if not target.is_file() or target.suffix != ".md":
             continue
-        if not any(target.is_relative_to(root) for root in GRAPH_CONTENT_DIRS):
+        if not any(target.is_relative_to(root) for root in _active_graph_dirs()):
             continue
         target_id = str(target.relative_to(REPO_ROOT))
         if target_id not in seen:
@@ -1497,25 +1544,32 @@ def assign_communities(
 
 
 def _iter_graph_pages() -> list[Path]:
-    pages: list[Path] = []
-    for root in GRAPH_CONTENT_DIRS:
-        if not root.is_dir():
-            continue
-        for page in sorted(root.rglob("*.md")):
-            if page.name != "README.md":
-                pages.append(page)
-    return pages
+    if GRAPH_CONTENT_DIRS != _DEFAULT_GRAPH_CONTENT_DIRS:
+        pages: list[Path] = []
+        for root in GRAPH_CONTENT_DIRS:
+            if not root.is_dir():
+                continue
+            for page in sorted(root.rglob("*.md")):
+                if page.name != "README.md":
+                    pages.append(page)
+        return pages
+    # 单一数据源：与 export_minimal.collect_paths 保持完全一致，确保所有详情页必入图谱
+    return collect_paths(REPO_ROOT)
 
 
 def _node_type_for_page(page: Path, content: str) -> str:
     rel_parts = page.relative_to(REPO_ROOT).parts
     if rel_parts[0] == "roadmap":
         return "roadmap_page"
+    if rel_parts[0] == "references":
+        return parse_frontmatter_type(content) or "reference_page"
+    if rel_parts[0] == "tech-map":
+        return parse_frontmatter_type(content) or "tech_map_node"
     return parse_frontmatter_type(content)
 
 
 def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
-    """扫描 wiki/ 与 roadmap/ 页面，构建节点和边列表。"""
+    """扫描所有可访问详情页（wiki / roadmap / references / tech-map），构建节点和边列表。"""
     nodes: list[dict[str, Any]] = []
     edges: list[dict[str, str]] = []
     seen_edges: set[tuple[str, str]] = set()
@@ -1526,9 +1580,14 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         node_type = _node_type_for_page(page, content)
         node_tags = [str(t).strip().lower() for t in parse_frontmatter_list(content, "tags")]
         internal_links = extract_internal_links(content, page)
-        # roadmap/ 路线页无 frontmatter，健康度走正文信号规则
-        if page.relative_to(REPO_ROOT).parts[0] == "roadmap":
+        section = page.relative_to(REPO_ROOT).parts[0]
+        # 不同页面类型走各自的健康度规则，避免套用单篇论文原文通读口径
+        if section == "roadmap":
             health_score, health_gaps = compute_roadmap_health(content, len(internal_links))
+        elif section == "references":
+            health_score, health_gaps = compute_reference_health(content, len(internal_links))
+        elif section == "tech-map":
+            health_score, health_gaps = compute_tech_map_health(content, len(internal_links))
         else:
             health_score, health_gaps = compute_health(content, page)
         node: dict[str, Any] = {

@@ -1,3 +1,15 @@
+---
+type: tech_map_node
+status: complete
+topic: [systems]
+summary: "ROS 2 系统集成层模块：作为多传感器与多进程编排中间件，承担 10–100 Hz 感知/规划/ros2_control 集成，并与 LCM/共享内存协同服务 500–1000 Hz 运控闭环。"
+sources:
+  - ../../../sources/sites/ros2-official-documentation.md
+  - ../../../sources/sites/omg-dds-spec.md
+  - ../../../sources/repos/ros2.md
+updated: 2026-11-24
+---
+
 # ROS 2（系统集成层）
 
 **ROS 2**（Robot Operating System 2）是机器人全栈里**系统集成与多进程编排**的事实标准中间件：它把感知、规划、控制、标定与调试工具接到同一套通信与工具链上，是 [Sim2Real](../../../wiki/concepts/sim2real.md) 与真机部署阶段的常见「胶水层」。
@@ -14,18 +26,15 @@
 
 ## 在全栈中的位置
 
-```text
-控制 / 学习策略（MPC、WBC、RL policy）
-  ↓
-状态估计 · 系统辨识 · Sim2Real
-  ↓
-ROS 2 系统集成层  ← 本模块
-  ├─ 感知节点（相机、LiDAR、IMU 驱动）
-  ├─ 规划与决策（Nav2、行为树、VLA 接口）
-  ├─ 硬件抽象（ros2_control、底盘/机械臂驱动）
-  └─ 调试与可视化（RViz、Foxglove、rosbag2）
-  ↓
-真机驱动 · 安全监控 · OTA 部署
+```mermaid
+flowchart TD
+    CTRL["控制 / 学习策略（MPC、WBC、RL policy）"] --> EST["状态估计 · 系统辨识 · Sim2Real"]
+    EST --> ROS["ROS 2 系统集成层（本模块）"]
+    ROS --> PER["感知节点（相机 / LiDAR / IMU 驱动）"]
+    ROS --> PLN["规划与决策（Nav2 / 行为树 / VLA 接口）"]
+    ROS --> HAL["硬件抽象（ros2_control / 底盘与机械臂驱动）"]
+    ROS --> DBG["调试与可视化（RViz / Foxglove / rosbag2）"]
+    HAL --> REAL["真机驱动 · 安全监控 · OTA 部署"]
 ```
 
 与相邻模块的关系：
@@ -99,7 +108,7 @@ ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现�
 3. 阅读一个本仓库案例 launch 图（如 [Booster RoboCup Demo](../../../wiki/entities/booster-robocup-demo.md) 或 [Navigation2](../../../wiki/entities/navigation2.md) 数据流），标出感知→规划→控制的节点边界。
 4. （可选）在同一机器上对比 ROS 2 topic 与 LCM channel 的 1 kHz 往返延迟，验证「分层」必要性。
 
-## 推荐一手资料
+## 参考来源与推荐一手资料
 
 - [ROS 2 官方文档（Humble）](https://docs.ros.org/en/humble/) — 概念、安装、工具链（本仓库归档：[sources/sites/ros2-official-documentation.md](../../../sources/sites/ros2-official-documentation.md)）
 - [ROS 2 GitHub 组织](https://github.com/ros2) — 上游仓索引（归档：[sources/sites/ros2-github-org.md](../../../sources/sites/ros2-github-org.md)）
@@ -111,6 +120,7 @@ ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现�
 
 ## 关联页面
 
+- [全栈技术域总览](../../overview.md)
 - [ROS 2 基础](../../../wiki/concepts/ros2-basics.md)
 - [ROS 2 vs LCM](../../../wiki/comparisons/ros2-vs-lcm.md)
 - [实时运控中间件配置指南](../../../wiki/queries/real-time-control-middleware-guide.md)

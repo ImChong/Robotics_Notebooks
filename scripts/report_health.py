@@ -3,6 +3,7 @@
 
 用法：python3 scripts/report_health.py wiki/entities/paper-x.md [...]
       python3 scripts/report_health.py references/papers/survey-papers.md
+      python3 scripts/report_health.py tech-map/overview.md
       python3 scripts/report_health.py --changed   # 相对 origin/main 新增/改动/重命名的 wiki 页
       python3 scripts/report_health.py --check-pr-body   # CI：比对环境变量 PR_BODY 里的汇报表
 判据见 generate_link_graph.compute_health_score；缺项给出原因。
@@ -85,6 +86,20 @@ def health_rows(pages: list[str]) -> list[HealthRow]:
                 content, len(g.extract_internal_links(content, path))
             )
             names = ("摘要与来源", "选读导航", "分类覆盖与交叉链接")
+            miss = [name for i, name in enumerate(names) if gaps & (1 << i)]
+            if gaps & g.HEALTH_GAP_STATUS:
+                miss.append("status 未 complete")
+            rows.append((p, score, miss))
+            continue
+        if p.startswith("tech-map/"):
+            score, gaps = g.compute_tech_map_health(
+                content, len(g.extract_internal_links(content, path))
+            )
+            names = (
+                "摘要与来源",
+                "结构图谱与导航",
+                f"站内入口 ≥{g.TECH_MAP_HEALTH_MIN_INTERNAL_LINKS}",
+            )
             miss = [name for i, name in enumerate(names) if gaps & (1 << i)]
             if gaps & g.HEALTH_GAP_STATUS:
                 miss.append("status 未 complete")

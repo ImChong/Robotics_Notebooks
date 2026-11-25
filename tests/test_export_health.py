@@ -1,4 +1,4 @@
-"""export_minimal：wiki / 路线 / 参考索引页条目写出健康度，与 link-graph 同口径（详情页、路线页的健康度小条）。"""
+"""export_minimal：wiki / 路线 / 参考索引 / 技术地图节点条目写出健康度，与 link-graph 同口径（详情页、路线页的健康度小条）。"""
 
 from __future__ import annotations
 
@@ -44,8 +44,23 @@ def test_reference_page_health_uses_index_rubric() -> None:
     ]
 
 
-def test_other_non_graph_pages_have_no_health() -> None:
-    """非 wiki / roadmap / references 的技术地图页仍不写健康度。"""
-    tech_pages = sorted((ROOT / "tech-map").rglob("*.md"))
-    if tech_pages:
-        assert "health_score" not in build_item(tech_pages[0])
+def test_tech_map_node_health_uses_tech_map_rubric() -> None:
+    """技术地图节点使用独立健康度口径，且输出 health_score / health_gaps。"""
+    for rel in ("tech-map/overview.md", "tech-map/modules/control/mpc.md"):
+        path = ROOT / rel
+        item = build_item(path)
+        text = path.read_text(encoding="utf-8")
+        links = glg.extract_internal_links(text, path)
+        assert (item["health_score"], item["health_gaps"]) == glg.compute_tech_map_health(
+            text, len(links)
+        )
+        assert (item["health_score"], item["health_gaps"]) == (3, 0)
+        assert "```mermaid" in text
+        assert health_rows([rel]) == [(rel, 3, [])]
+
+
+def test_non_detail_pages_not_exported_with_health() -> None:
+    """非详情页面（如 README）不属于可访问详情页导出范围。"""
+    readme = ROOT / "tech-map" / "README.md"
+    assert readme.is_file()
+    assert "health_score" not in build_item(ROOT / "README.md")

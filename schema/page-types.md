@@ -145,6 +145,16 @@ python3 scripts/scaffold_wiki_page.py entity "论文短名" --slug paper-xxx --p
 
 每项 1 分；`status: stub/draft` 仍限制上限；未达到条件即扣分。页面仅增加可验证的内容，不允许直接写死 `health_score: 3`。对于具体论文的「全文已读」，仍只由其独立 wiki 实体页 `original` 归档判定。
 
+### Tech Map Node（tech-map/）
+
+技术地图节点（`type: tech_map_node`）聚焦某技术模块或总览在机器人全栈中的定位、上下游依赖与站内学习入口，同样不应套用单篇论文精读页面的「原文通读」口径。静态站点对 `tech-map/` 页单独计算健康度（见 `scripts/generate_link_graph.py` 的 `compute_tech_map_health`）：
+
+1. **摘要与来源**：提供 frontmatter `summary`，且有 `sources` 或正文「参考来源」。
+2. **结构图谱与导航**：包含至少 3 个二级小节（`## `）与可渲染的 Mermaid 图（` ```mermaid `）。
+3. **站内知识入口**：包含至少 3 条站内有效链接（`wiki/`、`roadmap/`、`references/` 或 `tech-map/`）。
+
+每项 1 分；`status: stub/draft` 仍限制上限；未达到条件即扣分。与 `wiki/`、`roadmap/`、`references/` 相同，所有可访问详情页都会由 `scripts/generate_link_graph.py` 自动收录进全局知识图谱（1:1 唯一节点）。
+
 ## 7. Source Summary Page
 回答：某篇论文/博客/课程讲了什么。
 

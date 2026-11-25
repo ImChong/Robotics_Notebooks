@@ -1,6 +1,41 @@
-# Whole-Body Control
+---
+type: reference_page
+status: complete
+topic: [model-based-control, locomotion]
+summary: "全身控制（WBC）论文与开源框架导航：覆盖 Sentis–Khatib 经典操作空间理论、TSID/HQP 接触约束求解、Crocoddyl 多接触优化、Capturability 与工程仓库。"
+sources:
+  - https://arxiv.org/abs/1506.01075
+  - ../../sources/papers/khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md
+  - ../../sources/papers/sentis_khatib_icra_2006_whole_body_control_framework.md
+  - ../../sources/papers/crocoddyl_icra2020_and_repo_reading.md
+updated: 2026-11-24
+---
 
-聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。
+# Whole-Body Control（全身控制论文导航）
+
+**首屏导读**：本页整理人形与腿足**全身控制（WBC）**的经典理论线、优先级约束求解（TSID / HQP）、平衡可捕获性（Capturability）与代表性开源实现；帮助读者从「操作空间动力学」一路打通到「MPC + WBC / RL 真机关节力矩输出」。
+
+## 按问题找论文
+
+| 想回答的问题 | 先读 |
+|---|---|
+| 操作空间运动/力统一与全身层级控制从何而来？ | [OSF 实体](../../wiki/entities/paper-operational-space-formulation.md) · [IJHR 2004 实体](../../wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md) |
+| 如何把等式/不等式优先级、接触力与摩擦锥写进 QP？ | [TSID (Concept)](../../wiki/concepts/tsid.md) · [HQP (Concept)](../../wiki/concepts/hqp.md) |
+| 多接触轨迹优化与求解器工程怎么做？ | [Crocoddyl (Entity)](../../wiki/entities/crocoddyl.md) · [Legbot MPC-WBC](../../wiki/entities/legbot-mpc-wbc.md) |
+| 双足什么时候走得住、踩哪里才能稳住？ | Koolen et al. (2012) · [Capture Point / DCM](../../wiki/concepts/capture-point-dcm.md) |
+
+## 选读路径 / Reading Path
+
+```mermaid
+flowchart TD
+    OSF["Khatib 1987 操作空间运动/力统一"] --> HIER["Sentis & Khatib 2004–2006 层级动力学控制"]
+    HIER --> QP{"接触约束与优先级求解"}
+    QP -->|加速度 + 接触力统一 QP| TSID["TSID（Del Prete et al.）"]
+    QP -->|严格层级不等式投影| HQP["HQP（Escande et al., 2014）"]
+    STAB["Capturability / DCM 平衡边界（Koolen 2012）"] --> TSID
+    TSID --> ENG["Crocoddyl / legbot-MPC-WBC / 真机 1kHz 闭环"]
+    HQP --> ENG
+```
 
 ## 关注问题
 
@@ -34,11 +69,22 @@
 
 - **Koolen et al. (2012)** — *Capturability-based Analysis and Control of Legged Locomotion*. 提出了 N-step Capturable 概念，为平衡恢复提供可行性判定。
 
+## 参考来源与收录边界
+
+- [Khatib & Sentis IJHR 2004 归档](../../sources/papers/khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md)
+- [Sentis & Khatib ICRA 2006 归档](../../sources/papers/sentis_khatib_icra_2006_whole_body_control_framework.md)
+- [ControlIt!（arXiv:1506.01075）](https://arxiv.org/abs/1506.01075)
+- [Crocoddyl 论文与源码归档](../../sources/papers/crocoddyl_icra2020_and_repo_reading.md)
+- 具体公式推导与工程调参入口见上方对应 `wiki/` 概念、实体与对比页。
+
 ## 关联页面
 
 - [Whole-Body Control (WBC) (Concept)](../../wiki/concepts/whole-body-control.md)
+- [WBC 技术栈模块](../../tech-map/modules/control/whole-body-control.md)
 - [TSID (Concept)](../../wiki/concepts/tsid.md)
 - [HQP (Concept)](../../wiki/concepts/hqp.md)
 - [Capture Point / DCM (Concept)](../../wiki/concepts/capture-point-dcm.md)
 - [Crocoddyl (Entity)](../../wiki/entities/crocoddyl.md)
 - [MPC 与 WBC 集成 (Concept)](../../wiki/concepts/mpc-wbc-integration.md)
+- [MPC 论文导航](mpc.md)
+- [Optimal Control 论文导航](optimal-control.md)

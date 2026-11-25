@@ -121,7 +121,9 @@
   var GRAPH_NODE_TYPE_COLOR = {
     concept: '#60a5fa', method: '#34d399', task: '#f472b6',
     entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
-    formalization: '#fb923c', overview: '#64748b', reference: '#64748b',
+    formalization: '#fb923c', overview: '#64748b',
+    reference: '#818cf8', reference_page: '#818cf8',
+    tech_map_node: '#a3e635',
     roadmap: '#22d3ee', roadmap_page: '#22d3ee',
     '': '#64748b'
   };

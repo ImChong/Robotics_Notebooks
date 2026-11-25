@@ -1,6 +1,7 @@
 ---
 type: reference_page
 status: complete
+topic: [locomotion, vla]
 summary: "按研究问题与方向选读机器人控制、强化学习、Sim2Real、VLA、世界模型与具身感知综述；提供分类导航与 Mermaid 选读路径。"
 sources:
   - https://arxiv.org/abs/2102.02915

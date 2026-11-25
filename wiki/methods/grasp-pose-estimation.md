@@ -178,6 +178,7 @@ flowchart LR
 - [F2G-Pose](../entities/paper-f2g-pose.md) — 无实例 CAD 的单帧 RGB-D 物体 6D 位姿、尺寸与补全点云，可作为抓取规划上游输入；不直接输出夹爪抓取候选。
 
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取位姿估计在操作闭环中的位置
+- [操作 / 抓取感知工具索引（Reference）](../../references/repos/manipulation-perception.md) — AnyGrasp SDK / GraspNet-1Billion / SAM 2 开源工具入口
 - [TransGraspNet（论文实体）](../entities/paper-transgraspnet.md) — 透明含液器皿：边界/深度一致 + GraspNet 候选物理重打分（arXiv:2607.29567）
 - [AnyGrasp（抓取感知 SDK）](../entities/anygrasp.md) — GraspNet 系第三代代表，工程化 SDK
 - [ContactNet](./contact-net.md) — 与 Contact-GraspNet 在「接触面预测」思路上同源
