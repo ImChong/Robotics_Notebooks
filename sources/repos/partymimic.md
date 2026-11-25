@@ -7,8 +7,9 @@
 - **官方代码：** https://github.com/Roboparty/PartyMimic
 - **项目主页：** https://roboparty.github.io/PartyMimic/
 - **许可证：** 仓库代码 MIT；数据集与其衍生 checkpoint、视频等遵守各自来源许可，**不可当作全部 MIT**。
-- **核对日期：** 2026-11-11
-- **核对范围：** 通读官方 README 全文（概述、对比表、权重、安装、四个数据集与重定向、训练、稀疏输入、导出/评测、速度、配方及许可证）；按运行入口阅读 `scripts/train.sh`、`scripts/eval.sh`、`src/partymimic/train.py` 关键初始化/收集/世界模型更新/策略与 critic 更新/主循环、`src/partymimic/env.py`、`networks.py`、`motion.py`、`objective.py`、`optim.py`、`tools/export_deploy_onnx.py` 的相关入口与函数；不声称逐行通读仓库全部源码。
+- **核对日期：** 2026-11-25
+- **源码提交：** [`0c17a63`](https://github.com/Roboparty/PartyMimic/tree/0c17a6335af7d4c72cb8a46f1462e857d8b6505f)
+- **核对范围：** 通读官方 README 全文（概述、对比表、权重、安装、数据来源与重定向、训练、稀疏输入、导出/评测、速度、配方、命令滞后、地形分支及许可证）；按运行入口阅读 `scripts/train.sh`、`scripts/eval.sh`、`src/partymimic/train.py` 关键初始化/收集/世界模型更新/策略与 critic 更新/主循环、`src/partymimic/env.py::TrackingSim.set_act_lag/step_core`、`src/partymimic/terrain_infer.py::build`、`networks.py`、`motion.py`、`objective.py`、`optim.py`、`tools/export_deploy_onnx.py` 的相关入口与函数；不声称逐行通读仓库全部源码。
 - **通读：** 已完成
 - **开源状态：** 训练、数据管线、评测、导出及两份 MLP checkpoint 已公开；BONES-SEED 下载有门槛。
 - **沉淀到 wiki：** [PartyMimic](../../wiki/entities/partymimic.md)
@@ -34,13 +35,15 @@
 - `--pipeline` 使用两卡：cuda:0 收集并拟合世界模型，cuda:1 用上一轮模型/数据更新 policy 和 critic；为选项而非默认。
 - 默认训练是 MLP/`joint`；`--ref_enc xattn` 及 `--interface sparse5` 是独立可选分支，后者附加 keypoint-to-joint 与辅助关节角损失。
 - 测试使用 MotionDecode（非商用条款）和 KungfuAthlete Extreme；LAFAN1 数据 CC BY-NC-ND 4.0，BONES-SEED 另有授权限制，不能将权重/动作集的再分发自动视为 MIT。
+- 当前 CLI 默认 `--act_lag 1,4 --obs_err none`；`step_core` 在每个控制步按环境抽取 1–4 次物理子步，首步豁免。不要把无延迟的项目页配方（`--act_lag 0,0` + clip allocation + `--obs_err kp`）或 seed-0 权重当成 CLI 默认训练结果。
+- 地形如无 manifest，由 `terrain_infer.build` 在载入 MotionLib 前推断、检查并筛除失败片段；大库使用 lazy FK。部署导出保持本体观测接口，`sparse5` `ref_kp` 为 6×7 每帧（位置与 wxyz 四元数），不要和内部误差特征混用。
 - 本轮仅做静态源码核查，没有在本环境使用 4090 复测训练或运行 sim2sim。
 
 ## 一手链接
 
-- [README](https://github.com/Roboparty/PartyMimic/blob/main/README.md)
-- [训练主程序](https://github.com/Roboparty/PartyMimic/blob/main/src/partymimic/train.py)
-- [世界模型与策略网络](https://github.com/Roboparty/PartyMimic/blob/main/src/partymimic/networks.py)
-- [目标函数](https://github.com/Roboparty/PartyMimic/blob/main/src/partymimic/objective.py)
-- [ONNX 导出](https://github.com/Roboparty/PartyMimic/blob/main/tools/export_deploy_onnx.py)
+- [README](https://github.com/Roboparty/PartyMimic/blob/0c17a6335af7d4c72cb8a46f1462e857d8b6505f/README.md)
+- [训练主程序](https://github.com/Roboparty/PartyMimic/blob/0c17a6335af7d4c72cb8a46f1462e857d8b6505f/src/partymimic/train.py)
+- [世界模型与策略网络](https://github.com/Roboparty/PartyMimic/blob/0c17a6335af7d4c72cb8a46f1462e857d8b6505f/src/partymimic/networks.py)
+- [目标函数](https://github.com/Roboparty/PartyMimic/blob/0c17a6335af7d4c72cb8a46f1462e857d8b6505f/src/partymimic/objective.py)
+- [ONNX 导出](https://github.com/Roboparty/PartyMimic/blob/0c17a6335af7d4c72cb8a46f1462e857d8b6505f/tools/export_deploy_onnx.py)
 
