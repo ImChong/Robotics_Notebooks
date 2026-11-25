@@ -114,6 +114,7 @@ flowchart LR
 
 ### 推荐读什么
 - [XMimic & XSoma（arXiv:2611.20452）](../wiki/entities/paper-xmimic-xsoma-2611-20452.md) — 用可微世界模型和 JAX 多卡缩短 G1 参考跟踪 / 地形速度跟踪达标时间；与原 [XMimic 独立工作](../wiki/entities/paper-xmimic-jax.md) 区分论文版本与训练目标。
+- [MacMimic](../wiki/entities/macmimic.md) — Apple Silicon 上的本地跟踪训练；区分 LAFAN1 同集阈值、独立动作泛化与真机闭环。
 - 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)
 - [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 工程可用的跟踪基座
 - [2026 人形 WBC 12 项开源路线对照](../wiki/comparisons/humanoid-wbc-open-source-12-2026.md) — 按 tracking、跨模态生成、无监督技能和任务级 VLA/移动操作分层，帮助确定 Stage 2 低层控制与后续 Stage 3–4 的接口边界。
