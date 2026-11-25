@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-25] ingest | 收录 Variable-Width Transformers；区分等参数实测与等损失拟合，核对官方训练路径与架构纵深路线
+
 ## [2026-11-25] ingest | sources/sites/xbotics-embodied-ai-handbook-site.md — 复用主节点，逐讲收录 21 个独立知识节点及真实运行入口，挂载对应纵深路线
 
 ## [2026-11-25] ingest | CHAMP 2611.30449 | 身体与手先验、动作接地和跨层专家
