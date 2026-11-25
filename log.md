@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-25] ingest | π0.7 官方 PDF 与异步推理核对
+
+- 将 Physical Intelligence 官方 PDF 映射回已有 arXiv:2604.15483 节点，不重复建页。
+- 用 §VII 与 Algorithm 1 细化 Mermaid：可选子目标线程和动作块 RTC 是两条不同的异步链路。
+
 ## [2026-11-24] ingest | sources/papers/robopro-2611-26971.md — 收录 RoboPRO 双臂操作抗扰与安全评测
 
 - 原文、项目、代码、数据入口核对；区分 SR、CR、HSR 与物体和家具危险事件。
