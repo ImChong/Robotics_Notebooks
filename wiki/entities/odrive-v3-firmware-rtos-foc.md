@@ -174,6 +174,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [YHorizon-JM](./yhorizon-jm.md)：同样区分电流快速路径和参考更新，使用 GD32 裸机中断与 Classic CAN 组同步，不沿用 ODrive RTOS 结构。
+
 - [磁场定向控制 FOC](../concepts/field-oriented-control.md) — 电流环与 dq 变换
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) — deadline、采样与 PWM 更新预算
 - [PID Control](../methods/pid-control.md) — 位置/速度/电流控制器调节
