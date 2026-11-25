@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-25] ingest | 全文通读 ASU CSE 598 课件与华科大人形下肢衍生式设计论文 PDF 升级两项节点至 complete 3/3，核实 3D-IC 受 OpenReview Turnstile 阻断；补齐 wiki/tasks(7)、comparisons(23)、methods(101) 共 131 页 Mermaid 流程图至缺失 0
+
 ## [2026-11-25] ingest | NavBot-EN01：桌面双轮足硬件、平衡闭环与网页遥操作
 
 ## [2026-11-25] lint | 推进 #3997 批量治理：补齐 20 篇 paper-* 与其他工作对比段、2 篇评测基准回链、5 篇超 180 天页面复核、3 项缺页概念消歧与 34 篇来源鲜度同步
