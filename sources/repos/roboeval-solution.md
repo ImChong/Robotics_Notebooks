@@ -1,12 +1,13 @@
 # IliaLarchenko/RoboEvalSolution 官方源码
 
 - **地址：** https://github.com/IliaLarchenko/RoboEvalSolution
+- **核对提交：** `05b530d8c6e9686002136f94241d428d90ef78ca`；子模块 RoboEval `c8b79598c9fb9021652128020517d1847abe4c95`、openpi `c23745b5ad24e98f66967ea795a07b2588ed6c79`。
 - **论文：** https://arxiv.org/abs/2611.11464
 - **项目：** https://ilialarchenko.com/projects/roboeval2026/
 - **权重：** https://huggingface.co/IliaLarchenko/RoboEvalSolution
 - **许可：** Apache-2.0（子模块各自许可）
-- **核对日期：** 2026-11-24
-- **核对范围：** README、scripts/rl_loop.py 的 trainer/collector 入口与调用、scripts/serve_policy.py 的 BatchedPolicy 调度和选择、scripts/rollout.py 的 Slot 请求/响应/环境步进/官方评分；静态阅读，不是执行 trace。
+- **核对日期：** 2026-11-25
+- **核对范围：** README、scripts/rl_loop.py 的 trainer/collector 入口与调用、scripts/serve_policy.py 的 BatchedPolicy 调度和选择、scripts/rollout.py 的 Slot 请求/响应/环境步进/官方评分、ParamTuner 以及 configs/settings.json；静态阅读，不是执行 trace。
 - **通读：** 已完成
 
 ## 运行入口和模块
@@ -20,6 +21,10 @@
 | src/roboeval_solution/data/score_reward.py | README 指定的 RDS 奖励转换 |
 | src/roboeval_solution/training/flywheel.py | README 与 rl_loop 引用的数据更新与优势计算 |
 | configs/settings.json | 最终逐任务推理配置 |
+
+## 训练采集与固定评测的运行分岔
+
+`rl_loop.py` 将 `--param-search` 传给 `rollout.py`；协调器构造 `ParamTuner`，用 `top_up` 为各任务补样本；worker 在回合开始领取，并在回合结束后回传 `score_ep`，由 `update` 排除错误回合并消费分数（不会从回合中途的单帧更新后验）。换新 run 或搜索空间时，按策略步数对已有记录加新近权重重拟合。固定评测的 `--best` 只由任务读取配置，分发服务端采样覆盖项和客户端执行参数；仅在另传 `--param-search` 时才构造协调器搜索器。
 
 ## 官方评测入口
 

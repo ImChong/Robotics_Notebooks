@@ -3,7 +3,7 @@ type: entity
 project_id: roboeval-solution
 tags: [paper, vla, reinforcement-learning, off-policy-rl, imitation-learning, bimanual-manipulation, benchmark, pi0]
 status: complete
-updated: 2026-11-24
+updated: 2026-11-25
 arxiv: "2611.11464"
 project: https://ilialarchenko.com/projects/roboeval2026/
 code: https://github.com/IliaLarchenko/RoboEvalSolution
@@ -21,7 +21,7 @@ sources:
 summary: "RoboEval CoRL 2026 冠军方案：π₀.₅ 共享策略与价值预测、按 RDS 优势后训练、Thompson 推理调参、脚本示范和失败恢复；主办方最终 0.988 RDS，作者独立测试 0.990。"
 ---
 
-# RoboEval 冠军方案：离策略强化学习与在线推理调优 / Off-Policy RL with Online Inference Tuning: My Solution to the CoRL 2026 RoboEval Challenge
+# RoboEval 冠军方案：离策略强化学习与在线推理调优 / Off-Policy RL with Online Inference Tuning: 1st Place Solution to the CoRL 2026 RoboEval Challenge
 
 ## 一句话定义
 
@@ -53,10 +53,10 @@ summary: "RoboEval CoRL 2026 冠军方案：π₀.₅ 共享策略与价值预�
 |---|---|
 | 作者 | Ilia Larchenko |
 | 机构 | 独立研究者 |
-| 论文 | [arXiv:2611.11464v1](https://arxiv.org/abs/2611.11464)，2026-11-08 技术报告 |
+| 论文 | [arXiv:2611.11464v2](https://arxiv.org/abs/2611.11464v2)，2026-11-24 修订，新增 §9 最终比赛结果 |
 | 环境 | MuJoCo，两台 7-DoF Franka Panda |
 | 观测 | 最多五路 256×256 RGB、本体状态、任务 ID |
-| 动作 | 30×14 末端位姿增量表示，环境 20 Hz，块长 1.5 秒 |
+| 动作 | 30×14 动作块：相对块起点的双臂末端位姿与夹爪，由执行端转换为逐步增量；环境 20 Hz，块长 1.5 秒 |
 | 开源 | [官方代码](https://github.com/IliaLarchenko/RoboEvalSolution) 与 [权重](https://huggingface.co/IliaLarchenko/RoboEvalSolution)，Apache-2.0 |
 
 ## 核心原理与方法栈
@@ -66,6 +66,15 @@ summary: "RoboEval CoRL 2026 冠军方案：π₀.₅ 共享策略与价值预�
 3. **优势后训练。** 在当前策略均值附近将 RDS 线性化，逐步奖励 r_t=∇RDS·Δm_t+Φ_(t+1)−Φ_t，Φ=0.3×completion 预测；δ_t=r_t+α(V_(t+1)−V_t)，α 每任务按回报与预测的协方差/预测方差拟合。GAE λ=0.95 后归一化，AWR 按 exp(clip(A,−2,2)) 采样，正优势条件用于 CFG。
 4. **推理搜索。** 每次 rollout 以 Thompson sampling 探索约 20 个参数；连续参数用共享和逐任务平滑基函数的贝叶斯线性回归，二值开关用 Beta arms；换 checkpoint 后按数据新近程度重拟合。候选共享 prefix，批量 CFG/flow 5–19 步，最多 6 个候选，按成功残差或全指标加权残差选择。
 5. **数据与连续执行。** 每 250 训练步输出新策略，20 worker 每轮收集 2000 episode；失败分支从失败点、前 2 秒或最后价值峰回放并恢复，仅保留全奖励后续。脚本读取特权物体状态生成多样示范，评测策略不读该状态。跨块保留未执行动作的一部分并重采样，夹爪阈值按任务选择。
+
+## 在线调参不等于在线更新权重
+
+| 阶段 | 每回合做什么 | 更新什么 |
+|---|---|---|
+| 训练采集 | 按任务抽取推理参数，记录动作、价值预测和该回合官方评分 | 采集协调器用回合分数更新调参后验；训练机另用不同批次的 rollout、示范和恢复轨迹更新策略权重 |
+| 固定策略评测 | `--best configs/settings.json` 加载逐任务固定参数；同一步仍会采样多个动作块并按 Q 排序 | 不启动 Thompson 搜索，不更新权重。卡顿触发的加热/重采样属于提交策略自身的条件规则 |
+
+采集入口 `rl_loop.py` 以 `--param-search` 启动评估进程。协调器先过滤出策略服务支持的请求级参数，再向每个任务的队列放 Thompson 样本；进程存活且成功返回的非错误回合提交证据。训练奖励基于任务级 RDS 局部线性化，而后验吃的是单回合官方分数，不能把二者混成同一目标或同一聚合方式。
 
 ## 流程总览
 
@@ -124,9 +133,9 @@ sequenceDiagram
 | 作者独立随机种子 | 500 | 0.990 | 99.6% |
 | 主办方未公开种子复评 | 1000 | 0.988 | 99.3% |
 
-主办方最终榜单确认第一（第二 0.982、第三 0.978，配对 bootstrap 区间排除零）。作者独立评测各任务 RDS：LiftPot 0.999、LiftTray 0.998、StackTwoBlocks 0.979、StackSingleBookShelf 0.998、CubeHandover 0.998、PackBox 0.974、PickSingleBookFromTable 0.988、RotateValve 0.989。
+v2 §9 表 6 将主办方复评纳入论文：最终第一 0.988，第二 0.982、第三 0.978。公开种子前三差距至多 0.002；最终评估让三队原样提交的策略跑同一套预先确定的未公开种子，再对种子做配对 bootstrap，95% 区间排除零。作者独立评测各任务 RDS：LiftPot 0.999、LiftTray 0.998、StackTwoBlocks 0.979、StackSingleBookShelf 0.998、CubeHandover 0.998、PackBox 0.974、PickSingleBookFromTable 0.988、RotateValve 0.989。
 
-仅通用循环约两天到 0.85；补脚本数据后约 0.98；最终采用两 checkpoint 加权和逐任务搜索达到 0.990。并非严格控制变量的消融，不能据此把所有增益归给单一模块。
+仅通用循环约两天到 0.85（论文 §7 将它描述为采集曲线，采集时仍在探索推理参数）；50k 步附近采集约 0.97、调参后的作者留出评测约 0.98。最终为两份 checkpoint 加权和逐任务参数搜索，在新的留出评测达到 0.990。并非严格控制变量的消融，不能据此把所有增益归给单一模块。
 
 ## 结论
 
