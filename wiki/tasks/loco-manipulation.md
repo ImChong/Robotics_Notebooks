@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-11-22
+updated: 2026-11-25
 original:
   - ../../sources/papers/humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md
 sources:
@@ -382,6 +382,8 @@ flowchart TD
 | **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |
 
 ## 关联页面
+
+- [Learning Functional Compliance｜全身操作中的功能性柔顺学习（草稿）](../entities/paper-learning-functional-compliance.md) — 按任务方向和阶段调节柔顺性的相关研究，待全文核验。
 
 分组与上文 **技术路线演进** 对应，便于从某一组的问题直接跳到对应详情页。
 
