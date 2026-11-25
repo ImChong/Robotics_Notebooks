@@ -128,7 +128,7 @@ flowchart LR
 - [XHAND 1 Pro-U：DexUMI 兼容灵巧手](../wiki/entities/xhand-1-pro-u.md)：对齐外骨骼示教关节与五指手动作映射。
 - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
 - [Diffusion-Based Impedance Learning｜扩散式阻抗学习](../wiki/entities/paper-diffusion-based-impedance-learning-2509-19696.md) — 由外力条件扩散模型重建 sZFT，再按能量与任务方向在线调刚度，比较圆柱/方/星形 peg-in-hole 的接触泛化。
-- [Learning Functional Compliance｜全身操作中的功能性柔顺学习（待全文核验）](../wiki/entities/paper-learning-functional-compliance.md) — 任务方向与执行阶段相关的柔顺控制；待核对力估计和真机评测。
+- [Functionally Compliant Humanoid Whole-Body Manipulation｜功能性柔顺的人形机器人全身操作](../wiki/entities/paper-learning-functional-compliance.md) — WBC² 与力反馈标量刚度函数；比较 G1 接触任务及刚度范围。
 - [Demo Data Collection Guide](../wiki/queries/demo-data-collection-guide.md)
 - [Tactile Sensing](../wiki/concepts/tactile-sensing.md) 与 [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
 - [触觉 Scaling：跨硬件接触经验如何复用](../wiki/comparisons/tactile-scaling-data-infrastructure-2026.md) — 先检查六类传感器的物理可观测性、标定/时序/安装与数据事件覆盖，再选择 FTP-1、LingBot-Touch 等表征及 T-Rex 高频反馈路线。
