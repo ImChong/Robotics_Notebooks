@@ -519,6 +519,8 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ## 关联页面
 
+- [X-World 1.6](../entities/paper-xworld-1-6.md) — 动作条件七视角视频作为独立驾驶策略的闭环环境；区分时空一致性与失败行为复现。
+
 - [EdenLive](../entities/edenlive.md) — 将上游状态演化与实时生成式视觉渲染分离，并提供具身视角转换用途。
 
 按同一套分类归组，便于顺着某一类继续读。
