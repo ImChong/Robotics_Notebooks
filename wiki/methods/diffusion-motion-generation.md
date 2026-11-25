@@ -189,6 +189,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - 操作域对照：[Diffusion Policy](./diffusion-policy.md)
 
 ## 关联页面
+- [T2M Mamba](../entities/paper-t2m-mamba.md) — 周期与关键帧显著性耦合的 Mamba 动作扩散，侧重人体文本生成稳定性。
 - [扩散模型（概念）](../concepts/diffusion-model.md) — 通用扩散机制、调度/采样器与机器人迁移要点
 - [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) — 地形条件扩散规划 + RL 全身跟踪，真机验证
 - [OMG](../entities/paper-omg-omni-modal-humanoid-control.md) — omni-modal 生成器 + HoloMotion tracker，G1 真机多模态切换
