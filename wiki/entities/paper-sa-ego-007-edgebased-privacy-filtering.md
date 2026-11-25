@@ -58,6 +58,15 @@ Proposes an ultra‑lightweight AI‑based privacy‑preserving framework for re
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    A["穿戴式相机采集图像 (STM32L4 MCU / 640 KB RAM)"] --> B["st_yolo_lc_v1 轻量化人脸检测"]
+    B --> C["敏感细节模糊脱敏处理"]
+    C --> D["本地存储或发送图像"]
+```
+
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。

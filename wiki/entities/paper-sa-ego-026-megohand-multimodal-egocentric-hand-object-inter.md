@@ -59,6 +59,14 @@ Proposes a two-layer architecture framework, using VLM to infer motion priors at
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    A["多模态第一人称输入"] --> B["高层：VLM 推理运动先验"]
+    B --> C["底层：DiT Flow Matching 生成细粒度 HOI 轨迹"]
+```
+
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。

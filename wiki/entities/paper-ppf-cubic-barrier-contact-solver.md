@@ -69,6 +69,19 @@ summary: "TOG 论文：三次障碍接触势 + 弹性包容动态刚度，使 FE
 
 见上文 **核心结构** 表与流程描述；模块级实现以原文 PDF 为准。
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+  MESH["Shell / Solid / Rod FEM 网格输入"] --> DET["GPU 单精度管线: 接触检测"]
+  DET --> BAR["Cubic Barrier 接触势 + 应变限制 (如 ~5% 拉伸上限)"]
+  MESH --> FEM["FEM 弹性内力 + 符号 Jacobian"]
+  BAR --> STIFF["Elasticity-Inclusive Dynamic Stiffness 刚度组装"]
+  FEM --> STIFF
+  STIFF --> SOL["同一隐式牛顿步求解 (PCG + 联合线搜索)"]
+  SOL --> OUT["无穿透且应变可控的步进状态"]
+```
+
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。

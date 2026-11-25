@@ -73,6 +73,15 @@ MobileWAM surpasses prior state-of-the-art mobile manipulation policies on ManiS
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+  OBS["移动操作观测与任务输入"] --> COF["MobileWAM 世界动作模型 (Chain-of-Foresight)"]
+  COF --> SIM["ManiSkill-HAB 仿真策略评测"]
+  COF -->|"真机微调"| REAL["ARX Lift2 移动操作真机部署"]
+```
+
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。

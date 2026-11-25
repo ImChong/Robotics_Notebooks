@@ -80,6 +80,15 @@ VideoWorld predicts compact multi-step dynamics codes alongside video frames, th
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+  IN["无标注视频 / 语言条件与任务输入"] --> PRED["前向预测: 视频帧 + 紧凑多步动力学编码 (Dynamics Codes)"]
+  PRED --> CONV["动作转换 / 逆动力学映射 (IDM)"]
+  CONV --> OP["任务操作输出 (9x9 Go / 仿真机器人任务)"]
+```
+
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
