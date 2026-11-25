@@ -10,6 +10,7 @@
 
 from __future__ import annotations
 
+import argparse
 import os
 import re
 import subprocess
@@ -27,9 +28,9 @@ SCORE_CELL_RE = re.compile(r"\**\s*([0-3])\s*/\s*3\s*\**")
 PAGE_IN_CELL_RE = re.compile(r"wiki/[^\s`)\]|]+\.md")
 
 
-def changed_pages(*, include_worktree: bool = False) -> list[str]:
+def changed_pages(*, base: str = "origin/main", include_worktree: bool = False) -> list[str]:
     out = subprocess.run(
-        ["git", "diff", "--name-only", "--diff-filter=AMR", "origin/main...HEAD", "--", "wiki"],
+        ["git", "diff", "--name-only", "--diff-filter=AMR", f"{base}...HEAD", "--", "wiki"],
         capture_output=True,
         text=True,
         check=True,
@@ -150,8 +151,8 @@ def check_pr_body(body: str, rows: list[HealthRow]) -> list[str]:
     return problems
 
 
-def check_pr_body_main() -> int:
-    rows = health_rows(changed_pages())
+def check_pr_body_main(*, base: str = "origin/main") -> int:
+    rows = health_rows(changed_pages(base=base))
     if not rows:
         print("本 PR 未新增/改动 wiki 页，无需汇报节点健康度")
         return 0
@@ -173,9 +174,18 @@ def check_pr_body_main() -> int:
 
 
 def main(argv: list[str]) -> int:
-    if argv == ["--check-pr-body"]:
-        return check_pr_body_main()
-    pages = changed_pages(include_worktree=True) if argv == ["--changed"] else argv
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check-pr-body", action="store_true")
+    mode.add_argument("--changed", action="store_true")
+    parser.add_argument("--base", default="origin/main", help="Base ref for change-based checks")
+    parser.add_argument("pages", nargs="*")
+    args = parser.parse_args(argv)
+    if args.pages and (args.check_pr_body or args.changed):
+        parser.error("Explicit page paths cannot be combined with a change-based check")
+    if args.check_pr_body:
+        return check_pr_body_main(base=args.base)
+    pages = changed_pages(base=args.base, include_worktree=True) if args.changed else args.pages
     if not pages:
         print("无页面")
         return 0

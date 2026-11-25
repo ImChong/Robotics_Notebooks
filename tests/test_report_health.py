@@ -37,3 +37,57 @@ def test_backticks_links_and_bold_scores_are_accepted() -> None:
         " | **3/3** | — |"
     )
     assert check_pr_body(body, [FULL]) == []
+
+
+def test_pr_snapshot_base_excludes_unrelated_main_changes(tmp_path, monkeypatch) -> None:
+    import subprocess
+
+    import ci_change_scope
+    import pr_derived_guard
+    import report_health
+
+    def git(*args):
+        return subprocess.check_output(["git", "-C", str(tmp_path), *args], text=True).strip()
+
+    def write(path, content):
+        file = tmp_path / path
+        file.parent.mkdir(parents=True, exist_ok=True)
+        file.write_text(content, encoding="utf-8")
+
+    def commit(message):
+        git("add", ".")
+        git("commit", "-qm", message)
+
+    git("init", "-q", "-b", "main")
+    git("config", "user.name", "CI Test")
+    git("config", "user.email", "ci@example.invalid")
+    write("log.md", "root\n")
+    commit("root")
+    git("branch", "pr")
+    write("log.md", "updated by main\n")
+    write("wiki/unrelated.md", "only from main\n")
+    commit("unrelated main update")
+    git("checkout", "-q", "pr")
+    write(FULL[0], "PR change\n")
+    commit("ingest")
+    git("checkout", "-q", "--detach", "main")
+    git("merge", "--no-ff", "-qm", "GitHub PR merge snapshot", "pr")
+    snapshot = git("rev-parse", "HEAD")
+    git("checkout", "-qb", "advanced-main", "pr^")
+    write("other.md", "main independently advanced from the old base\n")
+    commit("independent update")
+    git("update-ref", "refs/remotes/origin/main", "HEAD")
+    git("checkout", "-q", "--detach", snapshot)
+
+    monkeypatch.setattr(ci_change_scope, "ROOT", tmp_path)
+    monkeypatch.setattr(report_health.g, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(pr_derived_guard, "REPO_ROOT", tmp_path)
+    base = git("rev-parse", "HEAD^1")
+
+    assert "log.md" in ci_change_scope.detect("origin/main")["paths"]
+    assert pr_derived_guard.changed_guarded_paths("origin/main") == ["log.md"]
+    assert report_health.changed_pages() == [FULL[0], "wiki/unrelated.md"]
+
+    assert ci_change_scope.detect(base)["paths"] == [FULL[0]]
+    assert pr_derived_guard.changed_guarded_paths(base) == []
+    assert report_health.changed_pages(base=base) == [FULL[0]]
