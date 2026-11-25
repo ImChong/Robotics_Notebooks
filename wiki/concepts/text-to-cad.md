@@ -253,6 +253,7 @@ flowchart LR
 - **误区**：用对话 CAD **替代**设计评审。早期工具更应嵌入 **PR 式审图 + 测量 + 试制** 而不是替代 sign-off。
 
 ## 关联页面
+- [print3d v0.1.0](../entities/print3d.md) — 以 Blender 脚本或现有网格为输入，做打印检查、Bambu Studio 切片与人工复核。
 
 - [NVIDIA USD BRep / SMLib](../entities/nvidia-usd-brep-smlib.md) — 可嵌入的 NURBS B-rep 内核与 OpenUSD/网格互操作实现。
 
