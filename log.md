@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-25] structural | Issue #3997 第 4 批修复：6 个子 agent 并行补齐 wiki/overview/ 全部 174 页的架构与路线 Mermaid 流程图，实现 wiki/ 全部七大非实体目录（comparisons/concepts/formalizations/methods/overview/queries/tasks）100% Mermaid 覆盖
+
 ## [2026-11-25] ingest | YHorizon-JM：关节机械、电控、FOC 与 Classic CAN 组同步
 
 ## [2026-11-25] structural | Issue #3997 第 3 批修复：优化 wiki/methods/reinforcement-learning.md summary 使 BM25 搜索回归通过率升至 40/40 (100%)；并行补齐 wiki/formalizations/ (31 页)、wiki/queries/ (50 内容页 + README) 与 wiki/concepts/ (94 页) 的基于原文机制 Mermaid 流程图，实现 concepts/formalizations/queries 三类目录零缺失
