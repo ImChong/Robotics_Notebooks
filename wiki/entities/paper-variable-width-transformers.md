@@ -132,6 +132,8 @@ sequenceDiagram
 - [Transformer](../concepts/transformer.md)
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [Inner Thinking Transformer](./paper-inner-thinking-transformer.md)
+- [Transformer 行为克隆](../methods/bc-with-transformer.md)：若试验同预算层宽调度，先固定观测窗口、动作参数化和训练数据。
+- [视觉语言动作模型（VLA）](../methods/vla.md)：仅把变宽作为语义骨干候选，动作头与闭环指标须单独验证。
 - [网络架构纵深路线：Stage 5](../../roadmap/depth-model-architecture.md)
 
 ## 参考来源
