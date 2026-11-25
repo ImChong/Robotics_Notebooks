@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-25] lint | 推进 #3997 批量治理：补齐 20 篇 paper-* 与其他工作对比段、2 篇评测基准回链、5 篇超 180 天页面复核、3 项缺页概念消歧与 34 篇来源鲜度同步
+
 ## [2026-11-25] ingest | Loop Behind：收录循环语言模型的后置循环解码与 vLLM 插件
 
 ## [2026-11-25] ingest | 轮式机器人坡道、台阶和横沟通过性全文与公式核查
