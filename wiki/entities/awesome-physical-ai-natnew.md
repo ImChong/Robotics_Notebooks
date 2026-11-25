@@ -78,6 +78,18 @@ summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical �
 3. 做评测 / 部署前交叉读 Evaluation Methodology、Safety & Robustness、Governance & Policy 三类，再到 Production Patterns 选 ROS 2 / MCAP 等运行栈。
 4. 与 [aichr 清单](./awesome-physical-ai-aichr.md) 并读以补盲，见 [对比页](../comparisons/awesome-physical-ai-curated-lists.md)。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Readme["GitHub README 真源（14 canonical 类别 + tags 与 CI 检查）"] --> Docs["docs 在线导航站（Learn / Build / Deploy / Measure / Track / Practice）"]
+  Docs --> Routes["五条学习路由（Foundations / Robot Learning / Foundation Models / Evaluation & Safety / Hardware）"]
+  Readme --> Stack1["底座与评测（Simulators -> Datasets -> Benchmarks -> Evaluation）"]
+  Stack1 --> Stack2["模型与任务（RFM VLA / World Models -> Manipulation / Locomotion）"]
+  Stack2 --> Stack3["迁移与落地（Sim-to-Real -> Safety / Governance / Production：ROS 2 / MCAP）"]
+  QS["Quick start 路径（Gymnasium CartPole -> MuJoCo -> LeRobot -> OpenVLA）"] --> Stack2
+```
+
 ## 局限与使用注意
 
 - **README-first：** 完整条目仍在 GitHub README；docs 不重复全量列表。

@@ -71,6 +71,18 @@ Core legal framework governing safety requirements for machinery and many roboti
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 132/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["EU Machinery Regulation (EU 2023/1230)"]
+    ENT --> LAW["欧盟机械安全核心法律框架"]
+    LAW --> TARGET["机械与各类机器人系统安全要求"]
+    TARGET --> ALIGN["合规与标准衔接 (ISO / RMF / Sim2Real)"]
+    ENT -.->|"核对法规正文"| DOC["官方入口 (EUR-Lex 2023/1230)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

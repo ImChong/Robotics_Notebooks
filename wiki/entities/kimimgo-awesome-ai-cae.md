@@ -38,6 +38,15 @@ Awesome AI CAE（kimimgo/awesome-ai-cae）是收集 110 多个可供 AI 调用�
 
 **工作流：** 先按求解域筛选工具，再核对它是否有 MCP、Python API 或 CLI；随后才评估具体工程能力。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Catalog["awesome-ai-cae 策展目录 (110+ CAE 工具)"] --> Filter["按求解域筛选 (CFD / FEA / SPH / DEM / 网格 / CAD / 可视化)"]
+    Filter --> Rank["核对代理可调用接口 (MCP / Python API / CLI)"]
+    Rank --> Eval["逐项评估工程能力、版本与许可证"]
+```
+
 ## 工程实践
 
 1. 从目标问题识别所需的 Skill、MCP、CLI 或软件接口，不把指导文件当成求解器。

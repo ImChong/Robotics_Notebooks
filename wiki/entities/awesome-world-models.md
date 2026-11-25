@@ -88,6 +88,16 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 - **每条只给一句话亮点**：选型后须回到论文 / 项目页核对结论与开源状态（推断：清单本身不做复现或质量筛查）。
 - **跟踪热点**：带 🆕 标记的条目为近期新增，适合追新；与站内 [技术地图](../overview/sun-awesome-wm-technology-map.md) 对照可看已深读的部分。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Intro["§1-§3 Surveys / Tutorials / Foundation（定义、评测阶梯与 minWM / StableWM 起步）"] --> Rep["§4 表示层（语言 / 视频 / 3D-4D / 潜空间 JEPA·DINO-WM / 物体中心 / 神经符号 / Cosmos·Genie）"]
+  Rep --> Inter["§5 交互层（动作交互与长程记忆）"]
+  Inter --> Dec["§6-§7 决策接口层（WAM / VLA 级联与联合；MBRL：Dreamer / TD-MPC2）"]
+  Dec --> App["§8-§12 应用与支撑层（机器人操作/导航/足式、驾驶、GUI + 数据集基准与物理/可微仿真）"]
+```
+
 ## 局限与使用注意
 
 - **清单滞后**：awesome 依赖 PR 维护；关键论文以 arXiv / 官方仓为准。

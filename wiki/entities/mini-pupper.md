@@ -49,6 +49,15 @@ sources:
 - 适合学习 ROS 与物理 AI：先跑 BSP 与 ROS2 示例，再接 MuJoCo/Isaac 训练 RL 步态。
 - 以上规格与许可证均出自文章叙述，**未逐项核对官方仓库**；动手前请以官方 README/BOM 为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    HW["Mini Pupper 硬件 (自研 3-DoF coreless 舵机 + Raspberry Pi + OAK-D)"]
+    SW["软件与中间件 (完整 BSP + ROS / ROS 2 + OpenCV)"] --> HW
+    RL["RL 仿真训练 (MuJoCo / NVIDIA Isaac)"] -->|"Sim-to-Real 步态迁移"| HW
+```
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

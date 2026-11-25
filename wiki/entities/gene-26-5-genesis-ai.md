@@ -39,6 +39,16 @@ summary: "GENE-26.5 是 Genesis AI（公司）公开的机器人操作基础模�
 - **仿真基础设施（2026-05 博客）：** 同公司 [Genesis World 1.0](genesis-world-10.md) 将仿真定位为 **机器人基础模型的闭环评测与迭代引擎**（预训练仍主要来自真机；仿真侧强调 real-to-sim 相关性而非当前阶段的仿真预训练数据）。详见 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)。
 - **证据等级**：适合作为 **产业动向与竞品扫描**；算法细节、数据规模、评估协议需以未来技术报告或论文为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Data["数据手套 / 人类演示与遥操作真机数据"] --> Model["GENE-26.5 操作基础模型"]
+    Hand["专有人形尺度灵巧手硬件"] --> Model
+    Model --> Tasks["长时域与双手精细操作 (装配 / 魔方等)"]
+    Model <--> World["Genesis World 1.0 (real-to-sim 闭环评测与迭代引擎)"]
+```
+
 ## 公开演示视频
 
 以下为公司/相关频道在 YouTube 上发布的演示片段，便于对照上文「能力叙事」逐项观看；**并非**标准化基准评测，不能替代论文级协议与可复现实验。

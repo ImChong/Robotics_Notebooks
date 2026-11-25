@@ -54,6 +54,17 @@ summary: "awesome-wheeled-legged 是轮足机器人资源清单：开源项目�
 - **README / 核查：** README 目录为：Open Source Projects、Research Papers、OverView PPT、Hardware Platforms、License。
 - **差异与保留：** 这是资源索引而非可运行项目。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Repo["XinLang2019/awesome-wheeled-legged（轮足机器人资源索引，非可运行项目）"] --> P1["Open Source Projects（开源项目）"]
+  Repo --> P2["Research Papers（学术论文）"]
+  Repo --> P3["OverView PPT（概览演示）"]
+  Repo --> P4["Hardware Platforms（硬件平台）"]
+  Repo --> P5["License（许可说明）"]
+```
+
 ## 关联页面
 
 - [locomotion](../tasks/locomotion.md)

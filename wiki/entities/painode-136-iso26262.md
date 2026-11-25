@@ -71,6 +71,20 @@ Functional safety standard for electrical and software systems in road vehicles.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 136/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["ISO 26262"]
+    ENT --> FS["道路车辆功能安全标准 (Functional Safety)"]
+    FS --> EE["电气与电子系统 (Electrical Systems)"]
+    FS --> SW["车载软件系统 (Software Systems)"]
+    EE --> ALIGN["物理智能系统安全治理对照 (RMF / ISO)"]
+    SW --> ALIGN
+    ENT -.->|"核对标准版本"| DOC["官方入口 (iso.org/standard/43464)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

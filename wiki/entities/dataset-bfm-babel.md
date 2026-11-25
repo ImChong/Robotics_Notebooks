@@ -51,6 +51,21 @@ original:
 | **配套基准任务** | 提出序列/帧级 **Action Recognition（BABEL-60 / BABEL-120）** 及文本/动作序列合成评估协议 |
 | **官方入口** | <https://babel.is.tue.mpg.de/> · [arXiv:2106.09696](https://arxiv.org/abs/2106.09696) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    AMASS["AMASS 动捕库 (约 43.5 小时 SMPL-H)"] --> Crowd["众包英文动词短语标注"]
+    Crowd --> Cluster["聚类归纳 250+ 动作类别"]
+    Cluster --> Seq["28k+ 序列级语义标注"]
+    Cluster --> Frame["63k+ 帧级时序切分与并发标签"]
+    Seq --> Bench["BABEL-60 / BABEL-120 动作识别"]
+    Frame --> Gen["跨动作串联与时序条件生成 (如 TEACH)"]
+    AMASS --> Retarget["脚部接地清理与 GMR 重定向"]
+    Frame --> Retarget
+    Retarget --> Sim["人形物理仿真器 (Isaac Gym / Isaac Lab / MuJoCo)"]
+```
+
 ## 工程实践
 
 - **长尾类别分布处理**：BABEL 动作类别呈典型长尾（行走、站立频次远高于稀有动作），训练识别或技能检索模型时需按频率加权采样或区分常见核心类与长尾子集。

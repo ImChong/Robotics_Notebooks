@@ -41,6 +41,16 @@ sources:
 - 基于 Raspberry Pi，支持 ROS，有完整的仿真环境（gym-duckietown）和真实道路系统。
 - 代码高度模块化，组织下有数百个仓库；适合学习感知、规划和多智能体。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Core["dt-core (感知 / 规划 / 多智能体 MARL 模块)"] --> Sim["gym-duckietown 仿真环境调试"]
+    Sim -->|"Sim2Real 迁移"| Interface["dt-duckiebot-interface (ROS 中间件接口)"]
+    Interface --> HW["Raspberry Pi 机载计算"]
+    HW --> Real["Duckiebot 真车与真实道路系统"]
+```
+
 ## 工程实践
 
 - 先从 dt-duckiebot-interface 与 dt-core 入手，在 gym-duckietown 里调通再上真车。

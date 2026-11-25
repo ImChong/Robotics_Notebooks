@@ -48,6 +48,16 @@ sources:
 - 文章信息：先用 Isaac 仿真训练，再通过 ONNX 部署框架上真机；具体命令以仓库 README 为准。
 - 以上规格与许可证均出自文章叙述，**未逐项核对官方仓库**；动手前请以官方 README/BOM 为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    OpenHW["开源硬件设计 (约 55cm 22 DoF 机身 + 头部 OLED + BOM)"] --> Robot["MiniLoong 实机 (上下位机软件)"]
+    Isaac["Isaac 仿真同步环境"] --> Train["端到端学习 (RL / 模仿学习 / VLA 任务)"]
+    Train --> ONNX["ONNX 模型部署框架"]
+    ONNX --> Robot
+```
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

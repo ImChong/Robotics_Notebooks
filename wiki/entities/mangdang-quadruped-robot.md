@@ -57,6 +57,15 @@ summary: "mangdangroboticsclub/QuadrupedRobot 是 MangDang 的 Mini Pupper 系�
 - **README / 核查：** README 称支持在仿真中训练神经网络策略并部署到实机（Sim2Real）、与 BAM（Better Actuator Models）兼容以刻画关节摩擦，并提供 ROS 2 Jazzy 与 micro-ROS 模板。
 - **差异与保留：** 与库内 `mini-pupper`（mini_pupper 仓库）是同一厂商的不同仓库，故分开建节点。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Sim["仿真环境训练 (神经网络策略 + BAM 关节摩擦建模)"] -->|"Sim2Real 部署"| HW["Mini Pupper 4 硬件 (3-DoF coreless 智能舵机)"]
+    ROS["ROS 2 Jazzy + micro-ROS 模板"] --> Nav["上层感知与导航 (SLAM / Nav2)"]
+    Nav --> HW
+```
+
 ## 关联页面
 
 - [quadruped-robot](../entities/quadruped-robot.md)

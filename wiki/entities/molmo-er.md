@@ -51,6 +51,15 @@ summary: "Molmo2-ER：Ai2 具身推理 VLM 骨干；MolmoAct2 的动作 reasonin
 | **下游** | [MolmoAct2](./paper-molmoact2.md) action expert |
 | **开源** | **已开源** ER 数据集；权重随 MolmoAct2 HF collections |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    VLM["通用 VLM 视觉-语言能力底座 (Molmo2)"] --> Mid["ER Mid-training (空间 / 指代 / ER benchmark + 开源 Molmo2-ER 数据集)"]
+    Mid --> Backbone["Molmo2-ER 具身推理骨干"]
+    Backbone --> Expert["MolmoAct2 Flow-Matching 动作专家 (动作 SFT / post-training)"]
+```
+
 ## 结论
 
 **读 MolmoAct2 应把 Molmo2-ER 当作独立 ER 层——不是普通 Molmo2 微调别名。**

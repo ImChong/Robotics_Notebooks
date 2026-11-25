@@ -66,6 +66,18 @@ Action recognition dataset frequently used to pretrain manipulation perception.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["人手-物交互动作识别视频"] --> B["Something-Something V2 数据集 (natnew 096/384)"]
+    B --> C["操作感知预训练 (可直接用于表征与动作识别)"]
+    B --> D["机器人动作监督 (无机器人关节标签)"]
+    D --> E["需先执行手姿与接触人机重定向"]
+    C --> F["关联方向: VLA 与机器人操作"]
+    E --> F
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

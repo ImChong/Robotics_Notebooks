@@ -71,6 +71,18 @@ Conformable robotic skin.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (aichr 148/384)"] --> GRP["Hardware & Actuation (hardware)"]
+    GRP --> ENT["DexSkin"]
+    ENT --> SKIN["柔性共形机器人电子皮肤 (Conformable Robotic Skin)"]
+    SKIN --> INT["机器人本体与中间件集成 (DoF / ROS)"]
+    INT --> APP["具身操作与迁移研究 (VLA / Sim2Real)"]
+    ENT -.->|"核对论文与项目官方页"| DOC["官方入口 (corl2025.org)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

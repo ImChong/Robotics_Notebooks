@@ -71,6 +71,18 @@ Gel-based tactile sensors.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (aichr 151/384)"] --> GRP["Hardware & Actuation (hardware)"]
+    GRP --> ENT["GelSight"]
+    ENT --> TAC["凝胶基触觉传感器 (Gel-based Tactile Sensors)"]
+    TAC --> ROS["驱动与中间件接入 (ROS)"]
+    ROS --> APP["灵巧操作与真机策略研究 (VLA / Sim2Real)"]
+    ENT -.->|"核对传感器规格与 SDK"| DOC["官方入口 (gelsight.com/gelsightmini)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

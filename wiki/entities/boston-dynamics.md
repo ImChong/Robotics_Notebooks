@@ -72,6 +72,20 @@ LeoInAI Substack（2026-09）将 Boston Dynamics 列为 **VR 遥操作采数** �
 2. **高功率密度执行器 (High Power Density Actuators)**：无论是早期的液压驱动器，还是现在的定制全电伺服电机，波士顿动力在执行器硬件和传动机制上的积累始终处于行业第一梯队。
 3. **感知与规划集成 (Perception-Action Integration)**：其机器人具备极强的实时环境感知能力，能够通过深度相机和激光雷达动态识别地形（Terrain Adaptation），并在线生成安全的足迹规划（Footstep Planning）与质心轨迹。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Pillars["核心工程哲学"] --> P1["高功率密度执行器（液压 -> 定制全电伺服）"]
+  Pillars --> P2["基于优化的控制（1000Hz MPC + WBC QP 求解）"]
+  Pillars --> P3["感知与规划集成（深度相机 / LiDAR + 足迹与质心规划）"]
+  P1 --> Atlas["Atlas（液压 -> 全电人形 + 13-DoF 灵巧手；ZEST RL 对照）"]
+  P2 --> Atlas
+  P3 --> Spot["Spot（AutoWalk 巡检 + NeBula / Spot RL 研究生态）"]
+  P2 --> Stretch["Stretch（全向移动底座 + 机械臂吸盘仓储搬运）"]
+  Teleop["VR 遥操作采数（头显 + 胸/脚追踪器 onboard 落盘）"] --> Atlas
+```
+
 ## 行业地位与未来挑战
 
 如果说 Unitree 等公司通过供应链优势推动了足式机器人的“平民化”和“普及化”，那么 Boston Dynamics 则始终在探索“**机器人动态性能的物理极限**”。

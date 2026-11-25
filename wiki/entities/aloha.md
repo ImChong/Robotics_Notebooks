@@ -58,6 +58,19 @@ ALOHA 是 Zhao 等提出的低成本开源双臂遥操作硬件（主从臂 + �
 - 示范数据直接对接 [action-chunking](../methods/action-chunking.md)（ACT）训练；迁移到其他本体需重定向或重新采集。
 - 要仿真数据增强可使用 [robotwin](robotwin.md) 提供的 ALOHA 仿真版本。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Op["操作员"] --> Master["Master 机械臂（输入指令）"]
+  Master -->|"直接关节映射（无需逆运动学）"| Follower["Follower 机械臂（ViperX 300 6DOF）"]
+  Follower --> Task["双臂精细操作任务"]
+  Cam["相机阵列（约 4 路高清 RGB）"] --> Data["同步示范记录（多视角 RGB + 双臂关节位置）"]
+  Follower --> Data
+  Data --> ACT["ACT（Action Chunking Transformer）策略训练"]
+  Sim["RoboTwin 2.0（ALOHA 仿真版本）"] -->|"仿真数据增强"| ACT
+```
+
 ## 局限与风险
 
 - 硬件参数与成本以 [原文通读归档](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md) 为准；ALOHA 2 与 Mobile ALOHA 未纳入该次通读。

@@ -65,6 +65,17 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew / aichr)"] --> B["第 060/384 条: IROS (Conferences / Community)"]
+    B --> C["IEEE/RSJ IROS 官方入口 (ieee-ras.org)"]
+    C --> D["打开官方页核对原文与官方文档"]
+    B --> E["Physical AI 技术地图与清单对比"]
+    E --> F["关联方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

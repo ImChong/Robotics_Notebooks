@@ -56,6 +56,13 @@ Vision-language benchmark for household instruction following and embodied task 
 
 这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
+```mermaid
+flowchart LR
+    List["awesome-physical-ai 清单 (natnew 009/384 / Benchmarks)"] --> Index["本页角色: ALFRED 清单索引 (家务指令跟随与具身任务评测)"]
+    Index --> Site["官方基准入口 (askforalfred.com)"]
+    Site --> Eval["对应具身评测闭环: 指令理解 (第 1 层) 与任务成功率评测 (第 3 层)"]
+```
+
 ## 工程实践
 
 | 字段 | 内容 |

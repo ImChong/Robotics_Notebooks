@@ -42,6 +42,15 @@ summary: "傲意科技从假肢与康复场景切入灵巧手，OHand 系列整�
 - 整手负载 30 kg、单指负载 10 kg；产品形态更偏「有力、可靠」而非「灵巧、通用」。
 - 库内已有 ROHand / OYMotion 相关仓库节点（cn-os-rohand-*）。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Exp["假肢与康复场景经验 (重量 / 噪音 / 续航 / 安全性)"] --> OHand["傲意科技 OHand 系列 (整手负载 30kg / 单指 10kg / 快速响应)"]
+    OHand --> Repo["配套软件与描述文件 (ROHand URDF / ROS 2 功能包)"]
+    Repo --> Robot["人形机器人高负载抓取集成"]
+```
+
 ## 优势与边界（作者表述）
 
 精细操作与自由度偏弱。

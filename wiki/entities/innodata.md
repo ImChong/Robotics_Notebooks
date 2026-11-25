@@ -39,6 +39,17 @@ sources:
 | **财务快照** | 约 **$92.1M** 季度收入（+58% YoY，Substack 引用）；**~$250M** 现金（同上） |
 | **投资属性** | 非「纯物理 AI」标的；是 **数据层供应商** |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Demand["AI 实验室与企业级多模态采集 / 高校研究协议"] --> Data["Innodata 数据层服务 (标注 / 评测 / 对齐 / QA)"]
+    Demand --> Mocap["新建亚毫米级动捕实验室"]
+    Data --> Output["物理 AI 多模态与 RL 评测数据"]
+    Mocap --> Output
+    Output --> Models["机器人与物理 AI 基础模型训练与后训练"]
+```
+
 ## 关联页面
 
 - [Appen](./appen.md)

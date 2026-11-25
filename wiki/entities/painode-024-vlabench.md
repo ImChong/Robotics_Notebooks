@@ -66,6 +66,17 @@ Language-conditioned manipulation benchmark for VLAs.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (aichr 024/384)"] --> INDEX["VLABench 清单索引页"]
+    INDEX --> SITE["官方基准入口 (vlabench.github.io)"]
+    SITE --> TASK["面向 VLA 的语言条件操作评测"]
+    TASK --> EVAL["具身评测闭环第 ③ 层 (VLA 策略成功率入口)"]
+    TASK --> PAPER["关联方法实证 (A3-VLA 注意力对齐微调)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

@@ -65,6 +65,16 @@ Community for robot learning researchers.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 037/384)"] --> INDEX["Robot Learning Discord 清单索引页"]
+    INDEX --> MAP["Physical AI 技术地图 (Community 分组)"]
+    INDEX --> SITE["官方社区入口 (discord.gg/robotlearning)"]
+    SITE --> TOPIC["机器人学习研究者交流社区"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

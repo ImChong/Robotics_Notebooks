@@ -65,6 +65,17 @@ NVIDIA's edge inference optimization.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (aichr 102/384)"] --> B["TensorRT-LLM for Edge (Edge AI & Inference)"]
+    B --> C["NVIDIA 官方技术入口 (developer.nvidia.com)"]
+    B --> D["边缘端 LLM / VLM 推理优化"]
+    D --> E["面向汽车与机器人端侧部署"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

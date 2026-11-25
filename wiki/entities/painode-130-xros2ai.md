@@ -74,6 +74,18 @@ AI integration for ROS 2.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (aichr 130/384)"] --> GRP["Frameworks & Libraries (resource)"]
+    GRP --> ENT["ROS 2 AI"]
+    ENT --> INT["AI 能力集成层 (AI Integration)"]
+    INT --> ROS2["ROS 2 机器人中间件"]
+    ROS2 --> APP["Physical AI 部署对照 (VLA / Sim2Real)"]
+    ENT -.->|"核对官方仓与版本"| REPO["GitHub 官方仓 (ros2/ros2_ai)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

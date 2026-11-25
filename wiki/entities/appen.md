@@ -39,6 +39,15 @@ sources:
 | **仿真** | 让人在仿真环境描述机器人应完成任务 |
 | **对照** | [Figure 发布的数据集](./figure-ai.md) 亦依赖大规模 egocentric |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Cap["1. 采集（人体佩戴相机采集 egocentric 操作数据）"] --> QA["2. 人类质检与过滤（LLM 预筛 + 人工核验指令与画面一致性）"]
+  QA --> Sim["3. 仿真任务描述（在仿真环境描述机器人应完成任务）"]
+  Sim --> IL["下游模仿学习（IL）训练数据"]
+```
+
 ## 关联页面
 
 - [Innodata](./innodata.md)

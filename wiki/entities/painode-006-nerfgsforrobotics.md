@@ -55,6 +55,13 @@ ICCV 2025 paper.
 
 这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
+```mermaid
+flowchart LR
+    List["awesome-physical-ai 清单 (aichr 006/384 / 3D Computer Vision)"] --> Index["本页角色: NeRF + GS for Robotics 清单索引 (ICCV 2025 论文)"]
+    Index --> Paper["官方论文 PDF 入口 (thecvf ICCV 2025)"]
+    Paper --> Verify["核对机制细节、实验设置与引用信息"]
+```
+
 ## 工程实践
 
 | 字段 | 内容 |

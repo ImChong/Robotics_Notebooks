@@ -39,6 +39,17 @@ summary: "Kimera 是 MIT SPARK 语义 SLAM 套件：Kimera-VIO、Kimera-RPGO、K
 | **Kimera-RPGO** | 回环与鲁棒优化 |
 | **Kimera-Semantics** | 3D 语义重建 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Sens["同步立体相机 + IMU 输入"] --> VIO["Kimera-VIO (视觉-惯性里程计前端)"]
+    VIO --> RPGO["Kimera-RPGO (回环检测与鲁棒位姿图优化)"]
+    VIO --> Sem["Kimera-Semantics (3D 语义重建)"]
+    RPGO --> Sem
+    Sem --> Map["度量-语义三维网格地图"]
+```
+
 ## 常见误区或局限
 
 - **复杂度高**：集成与调参成本高于单一 VIO 库。

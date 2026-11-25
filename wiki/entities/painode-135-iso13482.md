@@ -71,6 +71,18 @@ Safety standard for personal care robots operating near people.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 135/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["ISO 13482"]
+    ENT --> SAFE["个人护理机器人安全标准"]
+    SAFE --> HRI["近人运行安全要求 (Operating Near People)"]
+    HRI --> ALIGN["风险管理与标准体系对照 (RMF / ISO)"]
+    ENT -.->|"核对标准正文"| DOC["官方入口 (iso.org/standard/53820)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

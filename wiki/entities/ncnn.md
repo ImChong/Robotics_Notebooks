@@ -43,6 +43,16 @@ updated: 2026-06-25
 3. **后端**：CPU（多线程、big.LITTLE）、Vulkan GPU。
 4. **能力**：fp16/int8、自定义层、多输入多分支图。
 
+```mermaid
+flowchart LR
+    Upstream["上游训练模型 (PyTorch / ONNX)"] --> Convert["pnnx 模型转换"]
+    Convert --> Format["ncnn 模型文件 (.param 结构 + .bin 权重)"]
+    Format --> Engine["零依赖纯 C++ 推理引擎 (fp16 / int8 量化)"]
+    Engine --> CPU["ARM NEON CPU 后端"]
+    Engine --> GPU["Vulkan GPU 后端"]
+    CPU & GPU --> Edge["机器人机载视觉感知 (检测 / 分割等 CNN 任务)"]
+```
+
 ## 与机器人研究与工程的关系
 
 - **感知 vs 控制**：机载 **球体/障碍/人检测** 可在 ARM 视觉协处理器上跑 ncnn；**50 Hz WBC** 仍建议 ORT/TRT。

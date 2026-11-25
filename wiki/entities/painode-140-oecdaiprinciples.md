@@ -71,6 +71,18 @@ Intergovernmental principles guiding trustworthy AI deployment, including embodi
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 140/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["OECD AI Principles"]
+    ENT --> GOV["政府间可信 AI 原则 (Trustworthy AI)"]
+    GOV --> EMB["涵盖具身智能系统部署 (Embodied Systems)"]
+    EMB --> ALIGN["治理与标准体系对照 (RMF / ISO / PAI)"]
+    ENT -.->|"核对官方原则文档"| DOC["官方入口 (oecd.ai/en/ai-principles)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

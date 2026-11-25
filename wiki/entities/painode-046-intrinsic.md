@@ -67,6 +67,16 @@ Alphabet-backed software platform focused on scalable industrial robotics develo
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 046/384)"] --> INDEX["Intrinsic 清单索引页"]
+    INDEX --> SITE["官方入口 (intrinsic.ai)"]
+    SITE --> PROD["Alphabet 支持的可扩展工业机器人软件平台"]
+    INDEX --> CORE["intrinsic-core (本地运行时 / 硬件抽象 / 工业部署接口)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

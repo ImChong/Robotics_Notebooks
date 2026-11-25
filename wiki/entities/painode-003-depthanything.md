@@ -57,6 +57,13 @@ Foundation model for depth estimation.
 
 这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
+```mermaid
+flowchart LR
+    List["awesome-physical-ai 清单 (aichr 003/384 / 3D Computer Vision)"] --> Index["本页角色: Depth Anything 清单索引 (深度估计基础模型)"]
+    Index --> Repo["官方仓库入口 (LiheYoung/Depth-Anything)"]
+    Repo --> Verify["核对模型细节、API 与官方文档"]
+```
+
 ## 工程实践
 
 | 字段 | 内容 |

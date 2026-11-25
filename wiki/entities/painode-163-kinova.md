@@ -71,6 +71,18 @@ Lightweight assistive and research robot arms.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 163/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["Kinova"]
+    ENT --> ARM["轻量化辅助与科研机械臂 (Assistive & Research Robot Arms)"]
+    ARM --> SYS["自由度配置与驱动接入 (DoF / ROS)"]
+    SYS --> APP["操作策略与迁移实验 (VLA / Sim2Real)"]
+    ENT -.->|"核对型号与官方驱动"| DOC["官方入口 (kinovarobotics.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

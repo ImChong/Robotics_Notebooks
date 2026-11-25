@@ -70,6 +70,17 @@ summary: "乐聚机器人：KUAVO（夸父）全尺寸人形与轮臂双形态�
 
 > **开源边界：** OpenLET 侧 **数据与教程已开源**；KUAVO 整机为 **商业产品**，不等同于 [灵犀 X1](./agibot-lingxi-x1.md) 类「硬件图纸全开放」路线。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    HW["KUAVO 整机硬件 (4 Pro / 5 / 5-W 轮臂双形态)"] --> Cap["多模态数据采集 (VR 遥操 RGB / 全身动捕 / 力触觉灵巧手)"]
+    Cap --> OpenLET["OpenLET 开源社区 (LET 系列数据集 / AtomGit / REAL-I 赛事)"]
+    OpenLET --> LeToolsL["LeTools-Learning (rosbag -> LeRobot v3 -> ACT / pi / GR00T / LingbotVLA)"]
+    LeToolsL --> LeToolsS["LeTools Skills (SkillBase 行为树原子技能编排)"]
+    LeToolsS --> Deploy["场景落地 (科研开箱 / 商服导览 / 工业分拣 / 训练场)"]
+```
+
 ## 常见误区或局限
 
 - **误区：乐聚 = 只有整机没有数据。** 运营方身份包含 **OpenLET 数据枢纽**；研究选型应同时看 [OpenLET](./openlet.md) 子集与采集协议。

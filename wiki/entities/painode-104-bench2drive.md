@@ -89,6 +89,16 @@ Closed-loop evaluation protocol for end-to-end driving policies.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["端到端驾驶策略 / 通才策略 (VLA)"] --> B["Bench2Drive 闭环评测协议 (NeurIPS 2024 / 104/384)"]
+    B --> C["官方仓库 (github.com/Thinklab-SJTU/Bench2Drive)"]
+    B --> D["闭环驾驶评测与能力统计"]
+    D --> E["关联生态: Sim2Real / RCL World Action Models"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

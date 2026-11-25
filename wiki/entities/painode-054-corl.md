@@ -69,6 +69,17 @@ original:
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew / aichr 054/384)"] --> INDEX["CoRL 清单索引页"]
+    INDEX --> SITE["官方会议入口 (corl.org / 2026.corl.org)"]
+    SITE --> PROG["官方议程 (主会 11/9-11 + Workshop 11/12)"]
+    SITE --> PAPERS["Accepted Papers 入口 (原文与源码核验)"]
+    INDEX --> LIST["关联阅读清单 (Glen Berseth 101 篇个人筛选)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

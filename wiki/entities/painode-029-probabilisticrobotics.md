@@ -73,6 +73,17 @@ Thrun, Burgard, Fox. Essential text on probabilistic methods for robotics.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT1["awesome-physical-ai (natnew 029/384)"] --> INDEX["Probabilistic Robotics 清单索引页"]
+    CAT2["Awesome-World-Action-Models (RCL)"] --> INDEX
+    INDEX --> SITE["MIT Press 官方页面 (9780262201629)"]
+    SITE --> TOPIC["概率机器人方法基石 (Thrun / Burgard / Fox)"]
+    INDEX --> WAM["关联技术线 (世界动作模型 / 操作 / 移动)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

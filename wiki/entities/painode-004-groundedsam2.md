@@ -57,6 +57,13 @@ For robotics.
 
 这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
+```mermaid
+flowchart LR
+    List["awesome-physical-ai 清单 (aichr 004/384 / 3D Computer Vision)"] --> Index["本页角色: Grounded SAM 2 清单索引 (面向机器人)"]
+    Index --> Repo["官方仓库入口 (IDEA-Research/Grounded-SAM-2)"]
+    Repo --> Verify["核对机制细节、API 与版本"]
+```
+
 ## 工程实践
 
 | 字段 | 内容 |

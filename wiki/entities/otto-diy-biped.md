@@ -47,6 +47,15 @@ sources:
 - 适合第一次做机器人的人：打印 → Arduino 接线 → Blockly 调动作 → 再换 OttoDIYLib 写代码。
 - 以上规格与许可证均出自文章叙述，**未逐项核对官方仓库**；动手前请以官方 README/BOM 为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Res["开源资源 (3D 打印 STL / 纸模 / OttoDIYLib / Blockly)"] --> Build["Arduino 兼容主控 + 4 舵机腿部基本版"]
+    Ext["可选扩展 (传感器 / 表情模块 / Otto Ninja 衍生版)"] --> Build
+    Flow["入门路径: 打印 -> 接线 -> Blockly 调动作 -> OttoDIYLib 编程"] --> Build
+```
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

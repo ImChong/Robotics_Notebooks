@@ -69,6 +69,17 @@ Maker of Digit, a bipedal logistics robot deployed in commercial warehouses.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 041/384)"] --> INDEX["Agility Robotics 清单索引页"]
+    INDEX --> SITE["官方入口 (agilityrobotics.com)"]
+    SITE --> PROD["Digit 双足物流机器人 (商业仓储部署)"]
+    INDEX --> REL1["Physical AI x 机械硬件 (SciRob 2026)"]
+    INDEX --> REL2["Digit 人形 RL 行走论文节点"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

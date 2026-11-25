@@ -71,6 +71,18 @@ Mobile manipulator for service robotics.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 167/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["PAL Robotics TIAGo"]
+    ENT --> MM["服务机器人移动操作平台 (Mobile Manipulator)"]
+    MM --> SRV["服务机器人应用研究 (Service Robotics)"]
+    SRV --> APP["中间件集成与策略迁移 (DoF / ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对平台文档与软件栈"| DOC["官方入口 (pal-robotics.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -67,6 +67,16 @@ High-quality motion-forecasting and 3D tracking datasets for real-world embodied
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["多传感器与地图输入: 环视与立体相机 RGB / 激光雷达点云 / 高精地图"] --> B["Argoverse 2 数据集 (natnew 083/384)"]
+    B --> C["3D 跟踪与运动预测子集 (目标轨迹 + 矢量地图)"]
+    C --> D["具身预测感知与轨迹预测预训练"]
+    C --> E["重定向限制: 无机器人关节或手姿字段 (不适用本体动作重定向)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

@@ -59,6 +59,18 @@ summary: "FindAnything 项目页：对象级开放词汇体素子地图，强调
 | 语义 | 像素级视觉语言特征按 eSAM 段聚合到 **对象** |
 | 查询 | 自然语言 ↔ 三维几何映射，偏探索/搜救类下游 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Sensor["机载传感输入 (如 Jetson Orin NX / MAV)"] --> Geom["稠密 TSDF 体素子地图 + 回环漂移修正"]
+    Sensor --> Seg["SAM / eSAM 二维区域分割"]
+    Seg --> Feat["像素级视觉语言特征按段聚合到对象"]
+    Geom --> Map["对象级开放词汇体素子地图"]
+    Feat --> Map
+    Map --> Query["自然语言查询与三维几何映射 (探索 / 搜救)"]
+```
+
 ## 工程实践
 
 1. **现阶段：** 读项目页与 arXiv，对照本库 [GO2 语义 Query](../queries/go2-3d-semantic-mapping-sam-pipeline.md) 选型；**不要**假设已有可 clone 训练/部署仓。

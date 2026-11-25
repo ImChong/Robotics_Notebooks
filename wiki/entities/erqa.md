@@ -50,7 +50,15 @@ summary: "ERQA：LightNav-ER 八项评测之一；VQA 式具身推理。"
 | **出处** | LightNav-ER 评测套件 |
 | **开源** | **待核实** |
 
+## 机制与架构图
 
+```mermaid
+flowchart LR
+    Stage1["LightNav 第一阶段 ER 中期训练"] --> Bench["ERQA (VQA 式具身推理问答基准)"]
+    Stage2["LightNav 第二阶段 VQA 保留 (22.4%)"] --> Bench
+    Bench -->|"归属评测闭环 ① 认知评测层"| Eval["评估空间与具身推理能力"]
+    Eval -.->|"必要不充分条件"| Downstream["下游 VLN / 闭环策略成功率测试"]
+```
 
 ## 结论
 

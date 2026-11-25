@@ -46,6 +46,17 @@ summary: "Google Cloud GPU VM 与 Vertex AI 提供 L4/A100/H100 及 TPU v5e/v5p/
 | **Vertex AI** | Custom Training、Endpoints、Pipelines |
 | **计费** | 按秒；Preemptible VM 大幅降价 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Colab["Colab 轻量实验升级"] --> GCS["GCS 对象存储数据集"]
+    GCS --> Compute["Compute Engine GPU VM (a2 A100 / a3 H100 / G2 L4)"]
+    GCS --> TPU["Cloud TPU Pods (v5e / v5p / v6e + JAX/TF)"]
+    Compute --> Vertex["Vertex AI 托管训练 / Endpoints / Pipelines"]
+    TPU --> Vertex
+```
+
 ## 常见误区或局限
 
 - **H100 按需价仍高**：8×H100 a3 公开报价比 AWS p5 更贵的情形存在（需实时比价）。

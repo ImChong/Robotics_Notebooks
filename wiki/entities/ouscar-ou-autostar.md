@@ -38,6 +38,14 @@ AutoStar（Ouscar-ou/AutoStar）是针对 STAR-CCM+ 螺旋桨敞水 CFD。
 
 **工作流：** 执行几何预检、方向确认、粗网格试算、pilot 稳定性筛查，通过后才继续计算，并保存 preflight 与运行报告。
 
+```mermaid
+flowchart LR
+    Geo["几何预检 (STEP/STP 单位与包围盒)"] --> Dir["方向确认 (桨轴 / 来流 / 进出口 / 旋转方向)"]
+    Dir --> Coarse["粗网格试算 (quick / coarse 验证流程)"]
+    Coarse --> Pilot["400 步 Pilot 稳定性筛查 (残差 / 推力 / 扭矩 / y+)"]
+    Pilot -->|"筛查通过"| Run["STAR-CCM+ 敞水 CFD 计算与保存 Preflight/运行报告"]
+```
+
 ## 工程实践
 
 1. 从目标问题识别所需的 Skill、MCP、CLI 或软件接口，不把指导文件当成求解器。

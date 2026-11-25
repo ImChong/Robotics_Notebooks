@@ -71,6 +71,18 @@ Affordable mobile manipulator for home assistance research.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 162/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["Hello Robot Stretch"]
+    ENT --> MM["低成本移动操作平台 (Affordable Mobile Manipulator)"]
+    MM --> HOME["家庭辅助研究场景 (Home Assistance Research)"]
+    HOME --> APP["软件集成与策略验证 (ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对硬件与官方 SDK"| DOC["官方入口 (hello-robot.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -65,6 +65,16 @@ Community for Reachy and open-source robotics.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 033/384)"] --> INDEX["Pollen Robotics Discord 清单索引页"]
+    INDEX --> MAP["Physical AI 技术地图 (Community 分组)"]
+    INDEX --> SITE["官方社区入口 (discord.gg/pollen-robotics)"]
+    SITE --> TOPIC["Reachy 与开源机器人社区交流"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

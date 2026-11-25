@@ -52,6 +52,14 @@ summary: "全身人体肌骨 MuJoCo 模型，含 90 个身体节段、206 个关
 
 这些配置不能互换：若研究全身肌肉协同应使用 700 肌肉主模型；腿部与操作变体减少了执行器规模并改变了模型细节。
 
+```mermaid
+flowchart LR
+    Assets["MJCF 肌骨模型资产 (全身 700 肌腱 / Locomotion 100 / Manipulation 81)"] --> Env["msgym 仿真任务环境 (MuJoCo / Gymnasium)"]
+    Ref["真实人体参考运动数据"] --> Env
+    Env --> Policy["层级强化学习与低维动作表示 (如 DynSyn-SAC)"]
+    Policy -->|"高维肌肉激励控制"| Assets
+```
+
 ## 工程实践与开源状态
 
 - **模型查看：** 用 MuJoCo simulate 打开仓库中的 MS-Human-700 XML 文件。

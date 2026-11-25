@@ -61,6 +61,19 @@ summary: "Artificial Analysis 的 AA-Robotics v0.1：用 coding-agent Harness �
 
 模型整体平均每个任务约半小时，人工平均约 20 秒，相差约 100 倍。Astra 平均每项成本为 16.36 美元。该基线让能力与效率差距同时可见：分数已显示若干简单任务可完成，但运行时延和成本还远离生产使用。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Cam["桌面三相机与腕部相机画面"] --> Container["隔离容器（coding-agent Harness）"]
+  Spec["机械臂型号、HTTP API 与提交说明"] --> Container
+  Container --> LLM["通用语言模型（Codex / Claude Code / Antigravity，high effort）"]
+  LLM -->|"编写并运行控制代码"| Container
+  Container -->|"HTTP 控制 API"| Arm["Hiwonder NexArm（6 轴：5 关节与夹爪）"]
+  Arm -->|"8 项桌面物理任务执行与环境变化"| Cam
+  Container -->|"提交任务完成"| Score["评测计分（完成 100 分 / 部分进度得分 -> 跨任务平均分）"]
+```
+
 ## 如何解读
 
 - **速度不是独立于能力的维度。** 长时间观察和推理、反复试探与恢复都会拉长任务耗时；效率优化不能只缩短模型思考，也需减少无效动作。

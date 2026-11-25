@@ -71,6 +71,17 @@ summary: "CMU MSCV Semantic 3D Mapping（F23 Team 17）项目页：DETR→SAM→
    - 补开源边界、依赖与最小复现路径
 3. **接到 GO2：** 几何位姿仍用 [point_lio_unilidar](./point-lio-unilidar.md)；本流水线思路可迁到离线着色 PCD，再考虑在线关键帧。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Input["1. 同步采集（RGB 序列 + 360 度 LiDAR 稀疏点云）"] --> DETR["2. DETR（单帧 2D 目标检测框）"]
+  DETR -->|"检测框作为 query"| SAM["3. SAM（生成 2D 实例 mask）"]
+  SAM --> Proj["4. 外参与位姿投影（2D 标签映射到 3D 点）"]
+  Pose["相机外参与机器人位姿（可接 point_lio_unilidar）"] --> Proj
+  Proj --> Out["3D 点云语义伪标注"]
+```
+
 ## 局限与风险
 
 - **课程项目**：完整度与维护周期不及 DualMap / OVO 等正式开源系统。

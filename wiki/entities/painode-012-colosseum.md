@@ -66,6 +66,16 @@ Generalisation benchmark perturbing 14 axes of variation for manipulation.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 012/384)"] --> INDEX["Colosseum 清单索引页"]
+    INDEX --> SITE["官方基准入口 (robot-colosseum.github.io)"]
+    SITE --> TASK["操作任务 14 轴变化扰动与泛化评测"]
+    TASK --> EVAL["具身评测闭环第 ③ 层泛化与第 ④ 层外推之间的受控中间层"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

@@ -65,6 +65,16 @@ Reproducible benchmark and submission platform for shared evaluation protocols.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["共享评测协议与可复现基准定义"] --> B["CodaLab Competitions (natnew 106/384)"]
+    B --> C["官方平台入口 (codalab.org)"]
+    B --> D["参赛结果提交与标准化评测"]
+    D --> E["关联方向: RL 与 VLA 策略对比"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

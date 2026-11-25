@@ -47,6 +47,15 @@ summary: "Lambda Cloud 面向 AI 生产级 GPU 云：Lambda Stack 预装环境�
 | **Reservations** | 长期容量预订，缓解旺季缺卡 |
 | **计费** | 按分钟/小时；宣称无 egress 费 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Mode["实例获取方式 (On-Demand / 1-Click Clusters / Reservations)"] --> Stack["Lambda Stack 预装环境 (CUDA / cuDNN / PyTorch / TensorFlow)"]
+    Stack --> Net["单机 NVLink + 多机 InfiniBand 高速互联 (16–2000+ GPU)"]
+    Net --> Workload["Headless 大规模 RL 并行仿真与 VLA 分布式预训练"]
+```
+
 ## 常见误区或局限
 
 - **即时 H100 常缺货**：会议季可能连续数日无 8×SXM；需预订或改 RunPod。

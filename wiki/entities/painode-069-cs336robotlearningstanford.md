@@ -65,6 +65,19 @@ Modern robot learning, covering imitation and reinforcement learning.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 069/384)"] --> B["Stanford CS 336 课程索引 (Courses)"]
+    B --> C["官方课程入口 (cs336.stanford.edu)"]
+    B --> D["现代机器人学习主题"]
+    D --> E["模仿学习 (IL)"]
+    D --> F["强化学习 (RL)"]
+    E --> G["关联技术方向: VLA 与 Sim2Real"]
+    F --> G
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

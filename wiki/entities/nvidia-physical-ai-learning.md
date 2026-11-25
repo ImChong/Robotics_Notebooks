@@ -73,6 +73,17 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 
 无本地 GPU 时，官方推荐通过 **[Isaac Launchable](./isaac-launchable.md)**（Brev 上预配置 Isaac Lab + Isaac Sim 浏览器环境）或 **[NVIDIA Brev](./nvidia-brev.md)** 自建实例。
 
+```mermaid
+flowchart LR
+    Funnel["视频导流 (Robotics Fundamentals / GTC On-Demand)"] --> Portal["NVIDIA Physical AI Learning 门户"]
+    Portal --> TrackRL["Isaac Lab 入门 (manager-based RL)"]
+    Portal --> TrackSO["SO-101 Sim2Real (操作臂 VLA)"]
+    Portal --> TrackG1["GR00T G1 E2E (人形操控 + Arena/Thor)"]
+    Portal --> TrackOther["Isaac Sim (SIL) / Isaac ROS / OpenUSD"]
+    Compute["算力环境 (本地 GPU 或 Brev / Isaac Launchable)"] --> TrackRL & TrackSO & TrackG1 & TrackOther
+    TrackRL & TrackSO & TrackG1 & TrackOther --> Real["真机系统部署与验证"]
+```
+
 ## Robotics Fundamentals 播放列表（营销漏斗）
 
 NVIDIA [Robotics Fundamentals Learning page](https://resources.nvidia.com/en-us-playlist-for-robotics/robotics-1?xs=954362) 是 **resources.nvidia.com** 上的视频/演讲索引（仿真、ROS、机器人学习、Cosmos、Physical AI 愿景等），主 CTA 指向本门户。完整 **GTC On-Demand 播放列表与场次索引** 见 [NVIDIA GTC](./nvidia-gtc.md) 实体。它与 **docs.nvidia.com 可跟做课程** 分工明确：播放列表负责种草，动手课仍在本页下列路径（Isaac Sim/Lab/ROS、SO-101 等）。归档见 [`sources/sites/nvidia-robotics-fundamentals-playlist.md`](../../sources/sites/nvidia-robotics-fundamentals-playlist.md)。

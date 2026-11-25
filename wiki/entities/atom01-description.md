@@ -37,6 +37,19 @@ summary: "Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是�
 - **网格资源**：可视化与碰撞几何。
 - **模型配置**：供训练与部署管线读取。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  HW["atom01_hardware（CAD / PCB / BOM 物理资产）"] --> Desc["atom01_description（统一机器人模型基线）"]
+  Desc --> URDF["URDF 模型（关节拓扑、链接参数、惯性与约束）"]
+  Desc --> Mesh["网格资源（可视化与碰撞几何）"]
+  Desc --> Cfg["模型配置"]
+  URDF --> Downstream["下游共享：仿真训练（atom01_train）/ 重定向与动力学验证 / 真机部署（atom01_deploy）"]
+  Mesh --> Downstream
+  Cfg --> Downstream
+```
+
 ## 常见误区或局限
 
 - 误区：URDF 正确就等于真机可控。实际上还受摩擦、延迟、驱动器参数误差影响。

@@ -53,6 +53,19 @@ BONES-SEED 组合了动作捕捉、自然语言描述、时间分段和机器人
 - Hugging Face 要求申请者提交姓名、机构和用途等信息并确认许可资格。使用前阅读[许可全文](https://bones.studio/info/seed-license)并核对当前数据卡。
 - 数据许可不自动决定模型、衍生动作及商业使用的许可边界。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  MoCap["动捕采集（522 人，142,220 条片段，约 288 小时 @ 120 fps）"] --> Ann["多维标注（最多 6 条自然语言描述 / 时间分段 / 骨架元数据）"]
+  Ann --> Rep1["SOMA Uniform / Proportional"]
+  Ann --> Rep2["Unitree G1 MuJoCo 兼容 CSV"]
+  Meta["Parquet / CSV 元数据筛选（按类别、描述与属性）"] --> Access["Hugging Face 申请与许可核对"]
+  Rep1 --> Access
+  Rep2 --> Access
+  Access --> Use["动作检索 / 语言条件生成 / 模仿学习（训练前核查动力学与接触）"]
+```
+
 ## 局限与风险
 
 - 高质量动捕不自动等于物理可执行的机器人轨迹，仍需验证重定向、接触、平衡和执行器能力。

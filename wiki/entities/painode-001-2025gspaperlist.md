@@ -57,6 +57,13 @@ Updated daily.
 
 这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
+```mermaid
+flowchart LR
+    List["awesome-physical-ai 清单 (aichr 001/384 / 3D Computer Vision)"] --> Index["本页角色: 2025 GS Paper List 清单索引"]
+    Index --> Repo["官方仓库入口 (Lee-JaeWon/2025-Arxiv-Paper-List-Gaussian-Splatting)"]
+    Repo --> Verify["核对论文条目、版本与开源状态"]
+```
+
 ## 工程实践
 
 | 字段 | 内容 |

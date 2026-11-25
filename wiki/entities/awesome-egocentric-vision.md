@@ -75,6 +75,17 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 - **选型锚点**：通用预训练用 Ego4D / EPIC-KITCHENS-100 / Ego-Exo4D；灵巧手与触觉看 EgoDex、EgoTouch；README 数据集表给出规模，使用前以官方页核验许可。
 - **落地到站内**：先看[技术地图](../overview/sun-awesome-ego-technology-map.md)定位分组，再点进具体论文页。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Surveys["Surveys（任务四象限、程序化助手、Ego-Exo 协同）"] --> Core1["感知任务 §2.1-2.6（动作识别预测、HOI、Ego-VLM、长视频、注视、3D/4D）"]
+  Data["Datasets & Simulators（Ego4D / EPIC-KITCHENS / EgoDex / EgoTouch）"] --> Core1
+  Core1 --> Core2["具身与世界模型 §2.7-2.8（Ego-VLA 策略、Ego World Models）"]
+  Core2 --> Core3["应用与安全 §2.9-2.10（助手与隐私安全）"]
+  Glasses["Smart Glasses（可穿戴专用基准与部署技术）"] --> Core3
+```
+
 ## 局限与使用注意
 
 - **非机器人控制论文库主体**：大量条目偏 CV 语境；落到真机策略需额外看重定向、接触与执行器约束。

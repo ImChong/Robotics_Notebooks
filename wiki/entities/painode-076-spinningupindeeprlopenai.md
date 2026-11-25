@@ -65,6 +65,19 @@ Educational resource covering deep RL fundamentals with reference implementation
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 076/384)"] --> B["Spinning Up in Deep RL (Courses)"]
+    B --> C["官方入口 (spinningup.openai.com)"]
+    B --> D["课程结构"]
+    D --> E["深度强化学习基础理论 (RL)"]
+    D --> F["参考代码实现"]
+    E --> G["关联技术方向: VLA 与 Sim2Real"]
+    F --> G
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

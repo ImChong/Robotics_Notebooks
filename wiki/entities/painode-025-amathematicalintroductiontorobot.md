@@ -65,6 +65,16 @@ Murray, Li, Sastry. Free online textbook on manipulation.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 025/384)"] --> INDEX["教材清单索引页"]
+    INDEX --> MAP["Physical AI 技术地图 (Books 分组)"]
+    INDEX --> SITE["官方在线教材入口 (Caltech mlswiki)"]
+    SITE --> TOPIC["机器人操作数学基础 (Murray / Li / Sastry)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

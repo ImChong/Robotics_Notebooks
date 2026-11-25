@@ -59,6 +59,17 @@ Swing Choreo 是 Cartwheel 面向复杂表演的商用闭源人体动作生成�
 - **动画制作工作流**：先以 Swing Sketch 快速迭代镜头 blocking 与时机，确定长序列后切换 Choreo 细化手势、表情、多角色关系与世界/镜头空间方向。
 - **DCC 导入检查**：导入 FBX / GLTF / USD / BVH 后核对骨架映射、根位移与帧率连续性；如需接入机器人仿真，须先经过 [Motion Retargeting](../concepts/motion-retargeting.md) 并在物理引擎中验算接触、关节限位与力矩约束。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Prompt["分步复合文本提示（顺序动作、多角色互动与空间方向）"] --> API["Performance Generation Web/API（或开源 Cartwheel MCP 客户端）"]
+  API --> Cloud["Swing Choreo 云端闭源生成（数分钟级；可先由 Swing Sketch 预演）"]
+  Cloud --> Out["同步输出资产（身体 + 手指 + 表情 + 平移：FBX / GLTF / USD / BVH，24-120 fps）"]
+  Out --> DCC["DCC 工具链（Maya / Blender / Cinema 4D / Unity / Unreal）"]
+  Out -->|"机器人使用需额外映射"| Robot["Motion Retargeting 与物理引擎约束验算"]
+```
+
 ## 局限与风险
 
 - **商业闭源且权重/源码未公开**：官方模型页、发布文章与产品规格均未开放训练权重、推理源码或训练集（官方称内部自建数万小时动捕+时序标注）；外部 [Cartwheel MCP](../../sources/repos/cartwheel-mcp.md) 仅为 API 调用客户端而非模型实现。

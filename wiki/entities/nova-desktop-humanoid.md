@@ -52,6 +52,14 @@ summary: "Nova Desktop Humanoid 在文中被描述为 Hayden Woodger（United Ro
 - **README / 核查：** 文章未给 GitHub 仓库；本次未访问官网或 Printables / Creality Cloud，**无法核对任何细节**。
 - **差异与保留：** 本节点只有文章表述，价格、功能与「开源」程度均未核实；STL 是否带开源许可不明。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Files["据文章描述的设计来源 (Printables / Creality Cloud / novarobot.co.uk)"] --> HW["桌面陪伴硬件 (3D 打印结构 + 少量 ST3215 舵机)"]
+    HW --> Func["交互能力 (人脸追踪 / 语音对话 / 表情动画 / 记忆)"]
+```
+
 ## 关联页面
 
 - [humanoid-robot](../entities/humanoid-robot.md)

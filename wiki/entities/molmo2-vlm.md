@@ -53,6 +53,15 @@ summary: "Molmo2：LightNav 数据引擎用 Molmo2 在无标注 Gaussian Splatti
 | **arXiv** | [2601.03225](https://arxiv.org/abs/2601.03225) |
 
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    GS["无标注 Gaussian Splatting 场景"] --> Molmo2["Molmo2 VLM (开放词汇目标定位与视频理解)"]
+    Molmo2 --> Engine["LightNav 数据引擎 (Real2Sim2Real 目标库构建)"]
+    Engine --> Nav["下游零样本通用导航策略 (LightNav-0)"]
+```
+
 ## 结论
 
 **Molmo2 是 LightNav / LightParkour 管线中的关键组件——读博客数字前先对齐本页定义与开源边界。**

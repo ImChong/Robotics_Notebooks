@@ -66,6 +66,17 @@ Interactive benchmark for embodied dialog and task execution in household enviro
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 023/384)"] --> INDEX["TEACh 清单索引页"]
+    INDEX --> SITE["官方基准入口 (teach.cs.washington.edu)"]
+    SITE --> TASK["家居环境中的交互式具身对话与任务执行"]
+    TASK --> EVAL1["具身评测闭环第 ① 层 (多轮对话理解)"]
+    TASK --> EVAL3["具身评测闭环第 ③ 层 (任务完成成功率)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

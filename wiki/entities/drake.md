@@ -50,6 +50,18 @@ summary: "Drake 是由丰田研究院（TRI）主导开发的开源 C++ 机器�
 3. **系统架构 (Systems Framework)**：
    它受到 Simulink 的启发，提供了一套积木式的 System API。你可以将控制器、传感器、环境动力学封装为一个个独立的 System 模块，连线闭环后再统一进行仿真或优化。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    Sys["Systems Framework (控制器 / 传感器 / 环境动力学连线闭环)"] --> Dyn["多体动力学与几何碰撞 (解析雅可比 / 稀疏梯度)"]
+    Dyn --> MP["MathematicalProgram (C++ 与 pydrake 统一优化接口)"]
+    MP --> OpenSolvers["开源求解器 (OSQP / Clarabel / IPOPT)"]
+    MP --> CommSolvers["商业求解器 (SNOPT / MOSEK / Gurobi)"]
+    OpenSolvers --> Tasks["直接配点法 / 接触隐式优化 / SOS Lyapunov 验证"]
+    CommSolvers --> Tasks
+```
+
 ## 工程实践
 
 - **C++ 文档查签名 + `pydrake` 快速原型**：MIT *Underactuated Robotics* App. A（`drake.html`）指出 `pydrake` 自动生成文档较 C++ 滞后，建议先看 C++ API 文档定位接口与约束签名，再回到 Python 核对绑定名称。

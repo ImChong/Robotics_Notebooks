@@ -71,6 +71,22 @@ AI management-system standard for governance, controls, and continuous improveme
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 137/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["ISO/IEC 42001"]
+    ENT --> AIMS["AI 管理体系标准 (AI Management System)"]
+    AIMS --> GOV["治理架构 (Governance)"]
+    AIMS --> CTRL["控制措施 (Controls)"]
+    AIMS --> IMP["持续改进 (Continuous Improvement)"]
+    GOV --> ALIGN["Physical AI 风险治理对齐 (RMF / ISO)"]
+    CTRL --> ALIGN
+    IMP --> ALIGN
+    ENT -.->|"核对标准原文"| DOC["官方入口 (iso.org/standard/81230)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

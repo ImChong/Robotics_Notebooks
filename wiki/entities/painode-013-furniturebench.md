@@ -66,6 +66,16 @@ Real-world long-horizon furniture assembly benchmark.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 013/384)"] --> INDEX["FurnitureBench 清单索引页"]
+    INDEX --> SITE["官方基准入口 (clvrai.github.io/furniture-bench)"]
+    SITE --> TASK["真机长时程家具装配评测"]
+    TASK --> EVAL["具身评测闭环第 ④ 层 (sim-real gap 校准真机端)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

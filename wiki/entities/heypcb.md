@@ -45,6 +45,18 @@ summary: "HeyPCB 是 AI 辅助 PCB 设计服务，可从自然语言需求生成
 
 Circuit World 是另一项相关能力：它将开放硬件板按所用器件、平台和标签组织，便于从已有设计开始。其目录页面展示的板卡各自带有许可证标记；目录收录本身不代表这些设计使用相同许可证。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Req["自然语言硬件需求 (电源 / 接口 / 电压电流 / 尺寸)"] --> AI["HeyPCB AI 辅助 EDA 服务"]
+    CW["Circuit World 开放硬件板目录参考"] -.-> AI
+    AI --> Gen["生成原理图、PCB 布局与器件/规则检查"]
+    Gen --> KiCad["交付可编辑 KiCad 工程与制造文件"]
+    KiCad --> Review["硬件工程师在 KiCad 复核 (网络表 / ERC / DRC / Gerber)"]
+    Review --> Fab["PCB 制造与装配交接"]
+```
+
 ## 工程实践
 
 | 阶段 | 使用方式 | 工程师复核重点 |

@@ -65,6 +65,17 @@ OpenCourseWare.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (aichr 080/384)"] --> B["MIT Foundation Models & AI (Courses & Tutorials)"]
+    B --> C["MIT OpenCourseWare 官方入口 (6.S087)"]
+    C --> D["核对课程材料与原文"]
+    B --> E["Physical AI 技术地图"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

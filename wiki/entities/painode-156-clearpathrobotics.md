@@ -71,6 +71,20 @@ Research-grade mobile platforms including Husky and Jackal.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 156/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["Clearpath Robotics"]
+    ENT --> MOB["研究级移动机器人平台 (Research-grade Mobile Platforms)"]
+    MOB --> HUSKY["Husky"]
+    MOB --> JACKAL["Jackal"]
+    HUSKY --> ROS["ROS 集成与真机研究 (ROS / VLA / Sim2Real)"]
+    JACKAL --> ROS
+    ENT -.->|"核对平台规格与文档"| DOC["官方入口 (clearpathrobotics.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

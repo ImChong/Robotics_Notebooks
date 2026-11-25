@@ -38,6 +38,15 @@ Scientific Agents（K-Dense-AI/scientific-agents）是以 AGENTS.md 配置集合
 
 **工作流：** 将角色规则放入代理上下文，约束研究问题分解、证据阅读和科学表达。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Profiles["AGENTS.md 专家人设与工作规则配置集"] --> Ctx["注入 AI 代理上下文"]
+    Ctx --> Workflow["约束研究问题分解、证据阅读与科学表达"]
+    Workflow --> Check["人工对照独立求解器接口与实验证据验证"]
+```
+
 ## 工程实践
 
 1. 从目标问题识别所需的 Skill、MCP、CLI 或软件接口，不把指导文件当成求解器。

@@ -46,6 +46,17 @@ summary: "斯坦福等 2020 年推出的 iGibson：在 PyBullet 上融合大规�
 - **交互物体库**：日常物体带 articulation 与语义标签。
 - **多模态传感**：RGB、深度、语义分割等（随版本）。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Scene["Gibson 真实扫描室内布局场景"] --> Env["iGibson 交互式仿真环境"]
+    Assets["带关节与语义标签的交互物体库 (门 / 抽屉 / 水龙头)"] --> Env
+    Physics["PyBullet 刚体动力学与接触引擎"] --> Env
+    Env --> Sensors["多模态传感输出 (RGB / 深度 / 语义分割)"]
+    Sensors --> Task["长视距移动与操作复合任务 / VLA 仿真评测"]
+```
+
 ## 常见误区或局限
 
 - **误区：iGibson = Gibson 数据集** — Gibson 是 **场景资产**；iGibson 是 **可交互仿真环境**。

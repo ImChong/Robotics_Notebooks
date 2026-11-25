@@ -66,6 +66,16 @@ Navigation benchmark focused on sim-to-real transfer and unseen-scene generaliza
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 021/384)"] --> INDEX["RoboTHOR 清单索引页"]
+    INDEX --> SITE["官方基准入口 (ai2thor.allenai.org/robothor)"]
+    SITE --> TASK["Sim-to-Real 迁移与未见场景泛化导航评测"]
+    TASK --> EVAL["具身评测闭环第 ④ 层 (sim-real 同构场景 gap 校准)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

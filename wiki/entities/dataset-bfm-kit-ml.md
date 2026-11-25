@@ -51,6 +51,20 @@ original:
 | **标注采集（MMMS）** | 搭建 Web 端众包系统（Motion Annotation Web Interface）让标注员观看 3D 渲染骨架动画撰写完整自然语言句子（非单一词标签） |
 | **论文链接** | <https://arxiv.org/abs/1607.03827> · [数据集官网](https://motion-annotation.humanoids.kit.edu/dataset/) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    MoCap["Vicon 光学动捕标记点"] --> MMM["MMM 统一参考人体骨架与根位姿归一化"]
+    MMM --> Motions["3,911 条运动轨迹 (11.2 小时)"]
+    Motions --> MMMS["MMMS Web 端众包系统 (观看 3D 骨架动画)"]
+    MMMS --> Text["6,278 条英德双语自然语言描述"]
+    Motions --> T2M["Text-to-Motion 基准 (21 关节 / 12.5 fps)"]
+    Text --> T2M
+    Motions --> Retarget["GMR 运动重定向"]
+    Retarget --> Sim["物理仿真微调平衡"]
+```
+
 ## 工程实践
 
 - **骨架与帧率对齐**：KIT-ML 原生采用 **MMM 骨架**（常见 21 关节衍生子集在 T2M 评测下按 `12.5 fps` 采样，区别于 HumanML3D 的 22 关节 `20 fps`），复用时须注意骨骼关节序、根高度与速度规范化一致。

@@ -36,6 +36,17 @@ summary: "Middlebury Stereo V3：经典立体匹配评测；S²M²、FoundationS
 | **官网** | <https://vision.middlebury.edu/stereo/> |
 | **V3 评测** | <https://vision.middlebury.edu/stereo/eval3/> |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Scene["受控实验场景与精细真值 (GT)"] --> Eval["Middlebury Stereo V3 评测"]
+    Eval --> Track1["Two-View Stereo 评测轨"]
+    Eval --> Track2["Multi-View Stereo (MVS) 评测轨"]
+    Track1 & Track2 --> Metrics["定量指标 (bad 误匹配像素占比 / RMSE)"]
+    Metrics --> Algos["亚像素视差算法对照 (S2M2 / FoundationStereo / Selective-Stereo)"]
+```
+
 ## 关联页面
 
 - [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md) — 受控双目视差可作视觉反馈的深度模块对照，闭环控制仍需核对尺度、标定和在线延迟。

@@ -41,6 +41,15 @@ summary: "MATLOWAI 发布的 MiniMax-H3 Ref2VA rank-32 适配器：step 1500 生
 
 CardSpin 在轨道权重上追加卡片式旋转训练。模型卡的同条件对比显示，追加训练后的图像细节指标明显下降；若目标是多视角查看，作者推荐使用 step 1500 纯轨道权重。
 
+```mermaid
+flowchart LR
+    Ref["1-4 张参考图像 (含时间与角度标注)"] --> Base["MiniMax-H3 Ref2VA 基座"]
+    Blender["Blender Cycles 轨道渲染 (23 物体 / 345 轨道)"] --> LoRA1["ORB360 step 1500 (Rank 32 轨道权重)"]
+    Base --> Infer1["360° 相机环绕生成 (主体保持静止)"]
+    LoRA1 --> Infer1
+    LoRA1 -->|"追加卡片旋转训练"| CardSpin["CardSpin v1 / v2 (主体卡片式旋转 / 细节指标下降)"]
+```
+
 ## 核心信息
 
 | 项目 | 信息 |
