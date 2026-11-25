@@ -259,6 +259,7 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：人–机数据与世界监督目标**
+- [小鹏 WorldGPT：跨六类本体的世界动作模型](../wiki/entities/project-xpeng-worldgpt.md) — 以像素作为多本体共训接口；将教师榜单、跨本体增益、学生闭环验收分开。项目技术报告待发布。
 - [FloMo：3D Scene Flow 桥接视频先验与动作](../wiki/entities/paper-flomo.md) — **Stage 5 监督目标对照**：冻结 Wan VAE 把 3D 累计位移映射到视频 latent，联合预测 motion + action；对照 MA/VA/VMA 与去人类视频消融，区分视频预训练与视频预测目标。
 
 - 野外 egocentric 人数据如何与机器人遥操作共训；世界预测目标（Pixel / DINO / 3D flow）如何改变具身差距下的增益；纯人预训练是否足以建立跨具身缩放律

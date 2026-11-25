@@ -474,6 +474,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
+- [小鹏 WorldGPT](../entities/project-xpeng-worldgpt.md) — 跨六类本体共享教师及端侧蒸馏设计；区分公开的多种输出、受控迁移证据与学生闭环部署。
 - [WAM 纵深路线](../../roadmap/depth-wam.md) — Stage 0–5 学习路径（边界族谱 → Cascaded / Joint → 部署职责三分）
 - [VLA](../methods/vla.md) — 语言条件视觉策略的主线；WAM 可视为在目标分布与训练接口上的延伸讨论。
 - [Generative World Models](../methods/generative-world-models.md) — 像素/潜空间动态预测工具箱；WAM 强调 **与控制头的耦合位置**。
