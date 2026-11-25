@@ -53,7 +53,7 @@ Agent Reach 是面向 AI Agent 的开源互联网只读工具链：用统一 CLI
 - **与「代理工程规约」相邻**：和 [Superpowers（obra）](superpowers-obra.md) 这类 **软件交付流程技能库** 不同，Agent Reach 解决的是 **外网只读/检索型工具链**；和 [CLI-Anything](cli-anything.md)（为 Blender/FreeCAD 等 **专业软件生成 CLI harness**）以及 [Articraft](articraft.md)（**3D 资产生成 SDK**）也不同，但同属 **把代理能力边界写进可版本化外围** 的实践谱系。
 - **安全与运维意识**：1.6.1 的官方会话文档强调专用浏览器与日常浏览器分离、按站点复用登录的前提、用户亲自登录及账户风险；自动化不代表取得额外访问授权。
 
-## 核心结构与机制
+## 核心机制与组件结构
 
 | 层次 | 内容 |
 |---|---|
