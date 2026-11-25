@@ -37,6 +37,16 @@ sources:
 | 08 | EgoExoMem | [paper-ego-08-egoexomem.md](../entities/paper-ego-08-egoexomem.md) | [source](../../sources/papers/ego_survey_08_egoexomem.md) |
 | 09 | E³C | [paper-ego-09-e3c.md](../entities/paper-ego-09-e3c.md) | [source](../../sources/papers/ego_survey_09_e3c.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Ego["第一视角 (Ego): 临场执行细节 (存在遮挡与空间盲区)"] --> Fusion["Ego + Exo + 3D 环境记忆融合 (抑制空间漂移)"]
+    Exo["第三视角 (Exo): 补全人与物体的整体关系"] --> Fusion
+    Fusion --> Gen["理解、长期记忆与生成形态: EgoExoMem / E3C"]
+    Fusion --> Recon["动捕重建互补: EgoExoMoCap (ECCV 2026)"]
+```
+
 ## 关联页面
 
 - [视频作为仿真](../concepts/video-as-simulation.md)

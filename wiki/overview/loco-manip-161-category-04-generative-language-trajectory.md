@@ -50,6 +50,24 @@ sources:
 | 107 | 使用潜在扩散模型进行物理一致的人形移动操作 | [paper-loco-manip-161-107-n107](../entities/paper-loco-manip-161-107-n107.md) |
 | 108 | 揭示数据和模型扩展对人形机器人高级控制的影响 | [paper-loco-manip-161-108-n108](../entities/paper-loco-manip-161-108-n108.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    IN["输入条件 (语言指令 / 任务目标 / 多模态条件)"]
+    L["语言到运动与全身控制 (LangWBC / TextOp / Harmon / 从语言到运动)"]
+    D["扩散与流匹配轨迹生成 (Robot Motion Diffusion Model / SafeFlow / MotionDisco / 潜在扩散物理一致移动操作)"]
+    W["通用运动跟踪、WAM 与条件控制 (SONIC / MotionWAM / OMG / DreamControl / EgoPriMo / EMOTION / FRoM-W1 / 扩展规律研究)"]
+    OUT["生成全身动作与轨迹 (接入 WBC / 执行层)"]
+
+    IN --> L
+    IN --> D
+    IN --> W
+    L --> OUT
+    D --> OUT
+    W --> OUT
+```
+
 ## 关联页面
 
 - [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)

@@ -88,6 +88,20 @@ summary: "新机器视觉转载综述的阅读坐标：2026 具身智能四层�
 - 2026 年上半年国内具身智能融资额 934 亿元、为 2025 年同期的五倍；中国具身智能市场规模预计 2026 年达 1.09 万亿元
 - 全球人形机器人出货结构中娱乐表演、科研仍占 60% 以上，智能制造和仓储物流分别仅 13% 和 5%
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Stack["2026 具身智能四层算法栈"] --> L1["VLA 基座: OpenVLA / Octo / SmolVLA / pi0 系列 / HiFOR / S2-VLA / FlowVLA"]
+    Stack --> L2["扩散策略与模仿学习: Diffusion Policy / ACT / Two-Steps DP / REFINE-DP"]
+    Stack --> L3["强化学习: PPO / SuperMimic / ELEVATE"]
+    Stack --> L4["世界模型: WMPO"]
+    L1 --> Scene["按场景组合: 工业分拣 / 双臂装配 / 腿足巡检 / 家庭长程 / 灵巧手"]
+    L2 --> Scene
+    L3 --> Scene
+    L4 --> Scene
+```
+
 ## 关联页面
 
 - [VLA 方法总览](../methods/vla.md)

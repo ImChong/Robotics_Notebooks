@@ -62,6 +62,19 @@ summary: "飞书「深度强化学习运动控制方法（Learning Base）」父
 - **仿真依赖**：奖励与域随机设计决定上限。
 - **与 Model-based 分工**：高保证任务（力控、安全）常需 WBC/MPC 托底。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    BASE["RL 理论基础 + Teacher-Student / DAgger 特权蒸馏"] --> LOCO["感知行走与落足线"]
+    BASE --> IMIT["动作重定向与模仿跟踪线"]
+    BASE --> BFM["BFM 运控大模型三线"]
+    LOCO --> L1["DreamWaQ 盲走 / PIE 感知一阶段 / P³ (VAE-PPO) / Attention 落足"]
+    IMIT --> I1["Motion Retargeting (GMR) → DeepMimic 精确跟踪 / AMP 风格先验"]
+    BFM --> B1["BFM 总览 → BFM-Zero / SONIC / TS 多技能 BFM"]
+    MB["Model-based 栈 (WBC / MPC · 高保证力控安全托底)"] -.->|"并行互补"| BFM
+```
+
 ## 关联页面
 
 - [Know-How 技术地图](./humanoid-motion-control-know-how-technology-map.md)

@@ -135,6 +135,19 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 - 任务侧的统一控制讨论见 [ULTRA Survey](../tasks/ultra-survey.md)（统一多模态全身 loco-manipulation 控制器）。
 - 单篇论文页：[DoorMan](../entities/paper-doorman-opening-sim2real-door.md)、[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md)、[Reflex](../entities/paper-reflex-visually-grounded-reactive-humanoid-control.md)（RGB-D 时序恢复接球动力学状态）、[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    L1["1. 数据与重定向 (GMR · NMR · OmniRetarget · TWIST)"] --> L2["2. 参考 / 跟踪控制 (DeepMimic · BeyondMimic · Heracles)"]
+    L2 --> L3["3. 通用控制 / 身体基础模型 (SONIC · Any2Track · AMS · Extreme-RGMT · OmniXtreme)"]
+    L3 --> L4["4. 感知视觉闭环 (VIRAL · DoorMan · Reflex · Parkour)"]
+    L4 --> L5["5. 接触与柔顺 (GentleHumanoid · CHIP · HAIC)"]
+    L5 --> L6["6. 安全与失败恢复 (SafeFall · balance-recovery)"]
+    L6 --> L7["7. 任务接口 / VLA 调用 (GR00T-WBC · ULTRA · WholeBodyVLA)"]
+    L7 --> L8["8. 世界模型上线前试运行 (DreamDojo · Ego-Vision WM)"]
+```
+
 ## 关联页面
 
 - [DreamDojo](../entities/paper-hrl-stack-35-dreamdojo.md) — #35 世界模型节点；2026-09-02 补 arXiv:2602.06949 与 NVIDIA/DreamDojo

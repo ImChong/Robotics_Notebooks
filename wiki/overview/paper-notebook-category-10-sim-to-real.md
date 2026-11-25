@@ -33,6 +33,18 @@ summary: "Paper Notebooks 分类 10：仿真到现实（10 篇深读笔记索引
 - [Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection](../entities/paper-notebook-sim-to-real-of-humanoid-locomotion-policies-via.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html)
 - [Simulator Adaptation for Sim-to-Real Learning of Legged Locomotion via Proprioceptive Distribution Matching](../entities/paper-notebook-simulator-adaptation-via-proprioceptive-distribu.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching/Simulator_Adaptation_via_Proprioceptive_Distribution_Matching.html)
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["10 Sim-to-Real (10 篇)"] --> SysID["系统辨识与仿真对齐"]
+    Root --> Rep["表征学习与扰动注入"]
+    Root --> Adapt["真机自适应与可微协同"]
+    SysID --> SysIDN["SPI-Active (采样式 SysID) / Simulator Adaptation (分布匹配) / PolySim"]
+    Rep --> RepN["对比表征学习 / 关节力矩空间扰动注入 / HALO"]
+    Adapt --> AdaptN["DiffCoTune (可微协同调参) / Robot Trains Robot / LIFT / 敏捷运动操作迁移"]
+```
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

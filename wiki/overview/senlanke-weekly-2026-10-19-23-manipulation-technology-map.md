@@ -134,6 +134,27 @@ senlanke 具身运控lab 10-19–10-23 一周 Manipulation 论文周报（37 篇
 | 2 | [LocoManiLab：人形移动操作全栈测试床](../entities/paper-locomanilab.md) | [2610.30876](https://arxiv.org/abs/2610.30876) | 复用 |
 | 3 | [OpenTac：可定制、可扩展、可迁移的三维触觉感知开放生态](../entities/paper-opentac-open-3d-tactile-sensing-ecosystem.md) | [2610.31661](https://arxiv.org/abs/2610.31661) | 新建 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["senlanke 10-19–10-23 Manipulation 周报 (37 篇)"]
+    Hub --> G1["VLA / 通用操作策略 (7 篇): PhysWord, FocusVLA, T-WLA, PACT-VLA"]
+    Hub --> G2["WAM / World Model (9 篇): AW-0, Ropedia W0, UniFlowWAM, CW-WAM"]
+    Hub --> G3["RL 与后训练 (3 篇): AtomicRL, SimPT, AWLS"]
+    Hub --> G4["模仿与生成式策略 (3 篇): Residual Flow, One-Step Euler FM"]
+    Hub --> G5["双臂与灵巧操作 (4 篇): DONIC, AdaDex, Tactile-Aware Hand Rep"]
+    Hub --> G6["可变形体与人形操作 (5 篇): Garment WM, COWBOY, WholeBodyMem"]
+    Hub --> G7["长程规划与基础平台 (6 篇): Self-Evolving Harness, LocoManiLab, OpenTac"]
+    G1 --> Sink["唯一 arXiv 详情节点 (新建 26 / 复用 11)"]
+    G2 --> Sink
+    G3 --> Sink
+    G4 --> Sink
+    G5 --> Sink
+    G6 --> Sink
+    G7 --> Sink
+```
+
 ## 关联页面
 
 - [manipulation](../tasks/manipulation.md)

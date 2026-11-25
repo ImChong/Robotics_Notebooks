@@ -50,6 +50,23 @@ VLA/WM 若只输出目标点或粗动作，**接触问题仍被丢回底层**。
 - **MotionWAM / ABot-M0.5 / HAIC / WOLF-VLA：** 把问题推向 **世界模型、动力学感知与最优控制数据工厂**；HAIC 已优先沉淀到 [paper-haic](../entities/paper-haic.md)。
 - **共同结论：** VLA/WM 负责理解、预测与调度，但最终须落到 **带接触结构的身体接口**。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    DATA["接管去噪与最优控制数据供给 (ROVE 人工接管去噪 / WOLF-VLA 全身最优控制数据)"]
+    VLA["全身原生协同 VLA (OpenHLM / WholeBodyVLA 移动-操作统一潜变量)"]
+    WAM["世界动作模型与接触可供性 (MotionWAM / ABot-M0.5 / HAIC 动态占据与接触可供性)"]
+    IFACE["带接触结构的全身动作接口 (避免只输出粗动作)"]
+    EXEC["底层 WBC 与真机执行"]
+
+    DATA --> VLA
+    DATA --> WAM
+    VLA --> IFACE
+    WAM --> IFACE
+    IFACE --> EXEC
+```
+
 ## 关联页面
 
 - [HAIC 方法页](../entities/paper-haic.md)

@@ -27,6 +27,24 @@ summary: "Paper Notebooks 分类 02：运动重定向（4 篇深读笔记索引�
 - [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html)
 - [Retargeting Matters](../entities/paper-hrl-stack-01-retargeting-matters.md) — 见 wiki 实体页
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    HUM["人类动作数据"]
+    ENG["工程选型与基线 (Retargeting Matters)"]
+    LEARN["神经与物理感知重定向 (Make Tracking Easy / ReActor)"]
+    CON["场景与交互约束重定向 (OmniRetarget)"]
+    POL["人形全身跟踪与控制策略训练 (决定下游策略质量)"]
+
+    HUM --> ENG
+    HUM --> LEARN
+    HUM --> CON
+    ENG --> POL
+    LEARN --> POL
+    CON --> POL
+```
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

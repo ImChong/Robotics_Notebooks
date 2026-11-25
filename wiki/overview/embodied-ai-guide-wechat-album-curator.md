@@ -109,6 +109,22 @@ summary: "Lumina「机器人技术指南」微信专辑 5 篇的策展索引：L
 - **误区：LLM 直接输出关节力矩。** 专辑与 [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) 均强调分层：规划/代码/3D map 在上，VLA 或技能库在下。
 - **误区：VLA = 更大的 VLM。** 动作表示与数据配方往往比换 backbone 更决定成败（见 [VLA 方法页](../methods/vla.md)）。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Guide["Embodied-AI-Guide 微信专辑 (5 篇入门/综述)"] --> P1["篇 1: LLM 任务规划器 (SayCan / PaLM-E / EmbodiedGPT / LLM+P / AutoTAMP)"]
+    Guide --> P2["篇 2: 代码即策略 (Code as Policy / Instruction2Act / VoxPoser / OmniManip)"]
+    Guide --> P3["篇 3: VLA 经典 (RT-1 / RT-2 / OpenVLA / Octo / pi0 / SpatialVLA / RDT-1B)"]
+    Guide --> P4["篇 4: 分层 VLA 与系统级 (Helix / Isaac GR00T / Gemini Robotics / openpi)"]
+    Guide --> P5["篇 5: Diffusion Policy 三基线 (ACT / Diffusion Policy / DP3)"]
+    P1 --> Layer["共同分层原则: 规划 / 代码 / 3D Map 在上, VLA 或技能库在下"]
+    P2 --> Layer
+    P3 --> Layer
+    P4 --> Layer
+    P5 --> Layer
+```
+
 ## 关联页面
 
 - [Lumina 社区](../entities/lumina-embodied.md)

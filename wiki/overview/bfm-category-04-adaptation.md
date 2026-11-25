@@ -80,6 +80,21 @@ original:
 - **学术适应条目开源度偏低：** 上表 Task Tokens、Unseen Dynamics、Fast Adaptation 与 Any2Any 在上游 `awesome-bfm-papers` 列表中截至刷新日均标记为 `Code: N/A`，工程验证多依赖论文自复现。
 - **把动力学外推当作无限安全保障：** 在严重执行器饱和或超出预训练包络的极限姿态下，仅微调潜变量无法弥补底层支撑力学失稳。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Base["预训练 BFM 身体先验"] --> T1["未见奖励任务"]
+    Base --> T2["未知环境动力学偏移"]
+    Base --> T3["异构硬件构型 (跨自由度)"]
+    T1 --> M1["Task Tokens: 潜任务空间更新"]
+    T2 --> M2["Unseen Dynamics / Fast Adaptation: 在线潜信念向量 z 推断"]
+    T3 --> M3["Any2Any: 形态适配器 + 低成本 PEFT 迁移"]
+    M1 --> Out["低样本与低工程摩擦泛化"]
+    M2 --> Out
+    M3 --> Out
+```
+
 ## 关联页面
 
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)

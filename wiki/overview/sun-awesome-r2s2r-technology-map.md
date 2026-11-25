@@ -183,6 +183,24 @@ sources:
 - 清单里混有非 arXiv 链接（OpenReview / IEEE），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
 - 上游清单仍在更新，本页是 2026-09-15 的快照；最新条目以上游仓库为准。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Real["真实物理世界与真机数据"] -->|"Real-to-Sim (31-32)"| R2S["Real2Sim 重建与对齐"]
+    R2S --> R2Sa["31 视频重建: CRISP, Re3Sim, Vid2Sim"]
+    R2S --> R2Sb["32 操作与交互重建: 杂乱场景物理推理, VLM 行为树"]
+    R2Sa --> Sim["仿真环境与支撑平台"]
+    R2Sb --> Sim
+    Sim -->|"Sim-to-Real (21-24)"| S2R["Sim2Real 策略迁移"]
+    S2R --> S2Ra["21 RL Sim2Real 与 22 零样本迁移"]
+    S2R --> S2Rb["23 域随机化 DR 与适配 / 24 基础模型增强"]
+    S2Ra --> Real
+    S2Rb --> Real
+    Sim <-->|"Real2Sim2Real 闭环 (41-42)"| Loop["闭环管线: 41 3DGS 框架 & 42 仿真流水线"]
+    Bench["Benchmarks, Simulators & Surveys (54-63)"] -.-> Sim
+```
+
 ## 关联页面
 
 - [Awesome-Real2Sim2Real（列表实体）](../entities/awesome-real2sim2real.md)

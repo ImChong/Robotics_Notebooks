@@ -52,6 +52,24 @@ sources:
 
 - [Cartwheel Comic](../entities/cartwheel-comic.md) — 单目视频人体动捕与足部接触估计；可将人类动作导出后接入动画或机器人重定向流程。官方开放的是 API/MCP 接入方式，模型本身为云端服务。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    SRC["人类动作数据源 (动捕 / 人类视频 / 单目视频)"]
+    TOOL["工程动捕工具 (Cartwheel Comic API 与 MCP 导出人体动捕及足部接触估计)"]
+    RET["重定向与交互动作先验 (OmniRetarget / HDMI / HumanX / ResMimic / FALCON / WoCoCo)"]
+    DYN["全身动态交互与体育技能 (HITTER / 守门员 / 全身羽毛球 / 全身动态投掷 / 预测增强乒乓球)"]
+    OUT["机器人可用的运动与交互先验"]
+
+    SRC --> TOOL
+    TOOL --> RET
+    SRC --> RET
+    SRC --> DYN
+    RET --> OUT
+    DYN --> OUT
+```
+
 ## 关联页面
 
 - [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)

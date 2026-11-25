@@ -77,6 +77,20 @@ original:
 - **闭源产业系统复现受限：** WorldEcho / WorldSync 与 CurrentWorld-0 均已确认未开源，且部分技术报告未给出完整超参、算力开销或跨本体泛化界限。
 - **评估偏差与自圆其说风险：** 若后训练策略直接优化同一世界模型打分而缺乏真机定期校准，策略可能利用模型幻觉捷径（reward hacking）而非提升真实操作物理成功率。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Backbone["高动作忠实度预测主干 (视频 WM / Next-Scale AR WM)"]
+    Backbone --> Eval["闭环评估器 (Eval: 虚实相关性排序)"]
+    Backbone --> Post["想象后训练沙盒 (Post-train: 失败态回滚与纠错合成)"]
+    Eval --> E1["GigaWorld-1 (7 类 WM / 32 万轨迹对齐)"]
+    Eval --> E2["SC3-Eval (闭环 r=0.929) & WALL-SS (600 对校准 r=0.93)"]
+    Post --> P1["WorldEcho / WorldSync (off-expert 评测 + AFE/IE 对齐)"]
+    Post --> P2["CurrentWorld-0 (评测 + 失败态回滚分支后训练)"]
+    Cross["第四节交叉: DreamSteer (筛选) / TACO (纠错) / EmbodiedGen V2 (数据扩展)"] -.-> Backbone
+```
+
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)

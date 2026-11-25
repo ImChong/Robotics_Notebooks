@@ -108,6 +108,21 @@ sources:
 | 概念对照 | [Behavior Foundation Model](../concepts/behavior-foundation-model.md) |
 | 姊妹分类 | 见 [BFM 技术地图 · 五类问题](./bfm-41-papers-technology-map.md#流程总览五类问题--身体-api) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    NoExt["无外在任务奖励阶段"] --> C1["预测误差 / 新奇度: RND (固定随机目标 + 双价值头)"]
+    NoExt --> C2["状态熵探索: RE3 (固定随机编码器 k-NN) / Proto-RL (原型聚类 + 熵探索)"]
+    NoExt --> C3["技能互信息 I(S; Z): DIAYN (状态区分技能) / APS (后继特征 + 粒子熵)"]
+    C1 --> Pre1["可迁移探索数据与局部探索"]
+    C2 --> Pre2["可复用状态表征空间"]
+    C3 --> Pre3["可条件化技能库与任务向量接口"]
+    Pre1 --> Fine["下游少量任务奖励微调 / 线性回归推断 w"]
+    Pre2 --> Fine
+    Pre3 --> Fine
+```
+
 ## 关联页面
 
 - 同一分类体系：[01 前向-后向表征](./bfm-category-01-forward-backward-representation.md)、[02 目标条件学习](./bfm-category-02-goal-conditioned-learning.md)、[04 适应](./bfm-category-04-adaptation.md)、[05 分层控制](./bfm-category-05-hierarchical-control.md)

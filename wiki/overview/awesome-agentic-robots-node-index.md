@@ -367,6 +367,20 @@ sources:
 
 没有 arXiv 编号的条目保留 DOI、出版方、报告或项目原始地址；未找到独立项目入口的条目标为待核实，不能将论文地址冒充项目页。清单题名和后续 arXiv 标题可能存在差异，stub 阶段未完成对应性审计。方法、实验及源码后续逐项核读。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Repo["Awesome-Agentic-Robots 快照 (56f7732)"] --> P1["papers.yaml (307 条)"]
+    Repo --> P2["additional_papers.yaml (23 条)"]
+    P1 --> Merge["合并去重映射 (共 330 条独立节点)"]
+    P2 --> Merge
+    Merge --> Reuse["复用已有详情节点 (保持原状态)"]
+    Merge --> Stub["新建 stub 节点 (标明 arXiv / DOI 与项目入口)"]
+    Reuse --> Audit["后续逐项通读方法、实验与源码"]
+    Stub --> Audit
+```
+
 ## 关联页面
 
 - [Agentic Robots 综述](../entities/paper-towards-agentic-robots-survey.md)

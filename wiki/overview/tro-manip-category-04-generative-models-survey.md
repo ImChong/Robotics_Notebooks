@@ -38,6 +38,19 @@ sources:
 |---|------|-----------|--------|
 | 05 | DGM Robot Learning Survey | [paper-tro-manip-05-dgm-robot-learning-survey.md](../entities/paper-tro-manip-05-dgm-robot-learning-survey.md) | [source](../../sources/papers/tro_manip_survey_05_dgm_survey.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["DGM Robot Learning Survey (LfD 生成模型选型)"]
+    Root --> F["模型族: EBM / 扩散 / GAN / 流匹配"]
+    Root --> T["任务形态: 抓取 / 轨迹 / 代价"]
+    Root --> O["OOD 泛化设计"]
+    F --> Sel["多模态机器人演示学习选型"]
+    T --> Sel
+    O --> Sel
+```
+
 ## 关联页面
 
 - [T-RO 5 篇技术地图](./tro-manip-5-papers-technology-map.md)

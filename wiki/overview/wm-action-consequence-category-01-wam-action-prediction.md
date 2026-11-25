@@ -92,6 +92,22 @@ sources:
 
 这三类是职责坐标而非互斥架构。DynaWM 的原文主要是 Isaac Sim 动态拦截，DSWAM 是真机折叠与双臂仿真，DreamSteer 是单臂 OOD 筛选；成功率不可跨协议排名。候选覆盖、视觉误排与观测到执行延迟分别构成不同瓶颈。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["世界模型在控制环中的三类职责"]
+    Root --> R1["1. 直接执行 (观测 -> 动作块)"]
+    Root --> R2["2. 在线重生成 / 修正基础 VLA (base chunk + 历史 -> 新 chunk)"]
+    Root --> R3["3. 部署前筛选候选动作 (VLA 样本 -> WM 预演 -> 价值排序)"]
+    R1 --> R1a["专题核心: DSWAM, Worldscape-MoE, WorldScape Policy 2.0"]
+    R1 --> R1b["邻近坐标: DreamWAM, Flex-π, Motubrain, Rift, LAWA"]
+    R2 --> R2a["专题核心: DynaWM (条件流匹配可训修正)"]
+    R2 --> R2b["邻近坐标: RTCF (免训练记忆纠偏) / WAM 异步部署"]
+    R3 --> R3a["专题核心: DreamSteer, DR-WM"]
+    R3 --> R3b["邻近坐标: FACT (失败感知因果 WAM + 可选 value 筛选)"]
+```
+
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)

@@ -38,6 +38,24 @@ summary: "Paper Notebooks 分类 01：基础强化学习（15 篇深读笔记索
 - [Proximal Policy Optimization Algorithms](../methods/reinforcement-learning.md) — 见 wiki 实体页
 - [Understanding Domain Randomization for Sim-to-real Transfer](../entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    PRE["Foundational RL 前置基础 (15 篇深读索引)"]
+    ALG["基础 RL 与模仿策略 (PPO / AWR / DeepMimic / Diffusion Policy)"]
+    PRIOR["物理角色运动先验与隐空间 (AMP / ASE / CALM / PHC / PULSE / ADD / MimicKit / BeyondMimic)"]
+    SIM["Sim2Real 与动作平滑工程 (Domain Randomization / Understanding DR / LCP Action Smoothing)"]
+    NEXT["支撑后续人形控制与机器人学习研究"]
+
+    PRE --> ALG
+    PRE --> PRIOR
+    PRE --> SIM
+    ALG --> NEXT
+    PRIOR --> NEXT
+    SIM --> NEXT
+```
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

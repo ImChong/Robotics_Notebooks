@@ -66,6 +66,24 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 - [PHUMA](../entities/dataset-bfm-phuma.md) — 见 wiki 实体页
 - [Reference-Free Sampling-Based Model Predictive Control](../entities/paper-notebook-reference-free-sampling-based-model-predictive-c.md) — 待深读
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["03 高影响力精选 (26 篇)"] --> WBC["全身控制核心"]
+    Root --> Teleop["遥操作与模仿学习"]
+    Root --> Loco["行走经典"]
+    Root --> S2R["仿真到现实与基座模型"]
+    Root --> Plat["仿真平台与工具"]
+    Root --> Other["感知地形与策略扩展"]
+    WBC --> WBCN["ExBody2 / HOVER / SONIC / UH-1"]
+    Teleop --> TeleopN["OmniH2O / iDP3"]
+    Loco --> LocoN["ECO / Next Token Prediction / Parkour / 15分钟行走"]
+    S2R --> S2RN["ASAP / BFM / GR00T N1 / Agile Motor Skills"]
+    Plat --> PlatN["BEHAVIOR Robot Suite / Humanoid-Gym / Isaac Lab / ProtoMotions3"]
+    Other --> OtherN["AME-2 / 地形适应 / Distillation-PPO / PHUMA / 无参考 MPC"]
+```
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

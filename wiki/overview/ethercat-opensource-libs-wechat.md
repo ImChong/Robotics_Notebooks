@@ -78,6 +78,28 @@ summary: "微信公众号「Qt历险记」EtherCAT 开源库清单：主站/从�
 - soem-qt、ROS2-ethercat、虚拟从站仿真、CherryECAT、libethercat、pysoem 文中无仓库地址，节点仅编译文章线索（我推测其中几项是泛称，未核查）。
 - 文章为转载式清单，性能「微秒级」之类说法无实测数据。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["EtherCAT 开源库栈 (14 项)"]
+    Master["主站层 (6 项)"]
+    Slave["从站层 (2 项)"]
+    Bind["上层语言与框架绑定 (3 项)"]
+    Servo["伺服与仿真 (3 项)"]
+
+    Root --> Master
+    Root --> Slave
+    Root --> Bind
+    Root --> Servo
+
+    Master --> M1["SOEM (C 用户态) · IgH (C 内核模块) · KickCAT (C++)"]
+    Master --> M2["EtherCrab (Rust) · CherryECAT (MCU RTOS) · libethercat DLR (C)"]
+    Slave --> S1["SOES (C) · Beckhoff SSC (官方栈/ETG 申请)"]
+    Bind --> B1["pysoem (Python) · soem-qt (Qt C++) · ROS2-ethercat (ROS 2)"]
+    Servo --> V1["ecat_servo (CiA402) · OpenSML (SoftMotion) · 虚拟从站仿真"]
+```
+
 ## 关联页面
 
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)

@@ -94,6 +94,28 @@ sources:
 | VLA（VLM 语义 + 状态与动作头） | 3 | EgoHumanoid、TrajBooster、WholeBodyVLA |
 | 世界模型 / 视频先验、示范 + 动作 chunk、策略与控制同链路等 | 4 | SIMPLE、DemoHLM、OmniDP、PhysHSI |
 
+```mermaid
+flowchart LR
+    IN["多模态感知与数据输入 (相机/多视角/深度点云/本体状态/遥操作/触觉)"]
+    R1["扩散与流匹配条件生成 (Cybo-Waiter / GRAIL / HALOMI / 3D 扩散策略)"]
+    R2["分层技能与专家路由 (AGILE / Being-0 / HMC / HiWET)"]
+    R3["特权教师向部署学生蒸馏 (VIRAL / VisualMimic / SynAgent / DoorMan)"]
+    R4["VLA 语义与动作头 (EgoHumanoid / TrajBooster / WholeBodyVLA)"]
+    R5["世界模型 / 视频先验与示范 chunk (SIMPLE / DemoHLM / OmniDP / PhysHSI)"]
+    OUT["视觉定位、场景理解与 WBC 全身操作闭环"]
+
+    IN --> R1
+    IN --> R2
+    IN --> R3
+    IN --> R4
+    IN --> R5
+    R1 --> OUT
+    R2 --> OUT
+    R3 --> OUT
+    R4 --> OUT
+    R5 --> OUT
+```
+
 ## 工程实践
 
 - **数据侧**：多条工作先解决数据闭环（遥操作 / 外骨骼 / 机器人无关示范 / 仿真生成），如 HumanoidExo、HumanoidMimicGen、OASIS、EgoHumanoid；选型时先看数据能否采到。

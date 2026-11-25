@@ -72,6 +72,24 @@ summary: "GitHubStore 清单《19 款能自己造的开源人形机器人》的�
 | PLEN2 / Halley / RoboPrime / Zowi | 文章呈现为现成项目 | 仓库最近提交分别为 2018 / 2015 / 2017 / 2026（zowi 为个人源文件仓库，官方 zowiLibs 为 2016） | 标注停更时间 |
 | Nova / Rapiro（官方）/ InMoov 官网 | 文章给官网或第三方站点 | 无 GitHub 官方仓库，未访问官网 | 只记文章表述，标未核实 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    LIST["GitHubStore 19 款可自制开源机器人清单 (按文章标价约 50 至 900 美元)"]
+    LOW["低成本入门与桌面级 (Otto DIY / RoboPrime / Zowi / Nova / Qmini / Kayra / Open Duck Mini / MicroDuck / Rapiro)"]
+    HIGH["中高端套件与全身人形 (PLEN2 / ROBOTIS MINI / Halley / Microban / Endeavor II / InMoov 上半身)"]
+    DIFF["按 README 归类非人形存疑 (Bambot / Valera / Reachy Mini / XLeRobot)"]
+    AUDIT["项目核查口径 (价格区间 / 仓库停更时间 / 官网未核实标注)"]
+
+    LIST --> LOW
+    LIST --> HIGH
+    LIST --> DIFF
+    LOW --> AUDIT
+    HIGH --> AUDIT
+    DIFF --> AUDIT
+```
+
 ## 关联页面
 
 - [人形机器人总览](../entities/humanoid-robot.md)

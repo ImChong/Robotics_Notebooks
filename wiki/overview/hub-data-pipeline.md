@@ -45,6 +45,18 @@ original:
 | 概念 | 动作重定向 | [Motion Retargeting](../concepts/motion-retargeting.md) |
 | 对比 | 参考运动数据集选型 | [Humanoid Reference Motion Datasets](../comparisons/humanoid-reference-motion-datasets.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    D1["1. 原始动作捕捉 / 人体视频 (AMASS / LaFAN1 / OMOMO / Humanoid Everyday / HIW-500)"]
+    D2["2. 运动数据质量评估 (可行性 / 接触一致性 / 形态差距四轴)"]
+    D3["3. 动作重定向与物理校验 (关节限位 / 足端滑移 / 如 PHUMA)"]
+    D4["4. 策略训练输入 (WBT / RL / IL)"]
+
+    D1 --> D2 --> D3 --> D4
+```
+
 ## 与其他知识链的关系
 
 - **[动作重定向](./hub-motion-retargeting.md)**：重定向是数据管线的第③段，把参考动作映射到机器人骨架。

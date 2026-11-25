@@ -69,6 +69,20 @@ summary: "Paper Notebooks 分类 11：仿真与基准（涵盖站内既有 22 �
 - **静态快照滞后于上游新增条目：** 本站静态分类表最初基于 22 篇快照整理，而上游 `11_Simulation_Benchmark` 仍在持续追加新笔记（如 2026-11 已见 32 篇），引用具体总数时需说明核对日期。
 - **高 FPS 不自动等价于高质量接触物理：** 并行物理引擎的吞吐优势往往依赖简化的碰撞代理，跨接触操控与全身平衡迁移仍须回到实机或高保真模型校验。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["11 仿真与基准"] --> Sim["GPU 并行物理仿真底座"]
+    Root --> Data["自动化数据生成流水线"]
+    Root --> Bench["任务基准与类人度评测"]
+    Root --> WM["世界模型与数据集"]
+    Sim --> SimN["ManiSkill3 / MuJoCo Playground / Genesis / ComFree-Sim"]
+    Data --> DataN["RoboCasa / RoboCasa365 / DexMimicGen / HumanoidGen"]
+    Bench --> BenchN["BiGym / DualTHOR / ManiSkill-HAB / Mimicking-Bench / Motion Difficulty / Motion Turing Test"]
+    WM --> WMN["Humanoid World Models / Generative World Modelling / GRAIL / SIMPLE"]
+```
+
 ## 关联页面
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

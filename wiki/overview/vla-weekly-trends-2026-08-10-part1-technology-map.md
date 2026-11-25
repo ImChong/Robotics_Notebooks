@@ -92,6 +92,19 @@ summary: "多模空间 2026-09-17 策展：2026.08.10–08.16 一周 21 篇 VLA/
 - [ActiveFly-Bench](../entities/paper-activefly-bench.md) — arXiv:2607.10180
 - [CMU-Drive / V2V-VLA](../entities/paper-cmu-drive-v2v-vla.md) — arXiv:2608.07621
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["一周 VLA 研究趋势 08.10–08.16 · 第一篇 (21 篇)"]
+    Hub --> A1["架构模块 (5): Mamba SmolVLA, VANE, TDHD, Hermite Curves, Cross-View"]
+    Hub --> A2["分析诊断·记忆·异常 (4): Depth Decodability, HyMeS, OnEvoMemory, WA-SpecDec"]
+    Hub --> A3["性能·训练范式 (3): Depth-Wise Probing, TEMPO, RecoverFly"]
+    Hub --> A4["空间感知 (2): WNM-3D, AnyCamVLA"]
+    Hub --> A5["世界模型 (5): WAM-Diff2, SLIM-0.5B, World Tokens, ω-0, JEPA-WAM"]
+    Hub --> A6["评测·多智能体 (2): ActiveFly-Bench, CMU-Drive / V2V-VLA"]
+```
+
 ## 关联页面
 
 - [VLA（Vision-Language-Action）](../methods/vla.md)

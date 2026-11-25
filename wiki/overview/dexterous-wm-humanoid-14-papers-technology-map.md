@@ -53,6 +53,16 @@ summary: "具身智能小站 2026-09-11 十四篇盘点：VLM 语义动作接口
 - [Expressive Robotic Pianist](../entities/paper-expressive-robotic-pianist.md) — arXiv:2609.10844（**已开源**）
 - [HuRo](../entities/paper-huro.md) — arXiv:2609.10706（**已开源**）
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Root["14 篇横切面主线 (2026-09-11)"] --> L1["接口层 VLM/VLA 加速: Show-Harness / IMLE-VLA / FARM / Differentiable Charts IK"]
+    Root --> L2["世界模型与记忆规划: MaP-WAM / UniMPA / DLSRL"]
+    Root --> L3["灵巧手数据与操作: SEED-UMI / Rapid Dexterous Pen Writing / Expressive Robotic Pianist"]
+    Root --> L4["人形感知退化与物理接地评测: CAP / ReactHuman / EVPeriscope / HuRo"]
+```
+
 ## 关联页面
 
 - [VLA（Vision-Language-Action）](../methods/vla.md)

@@ -59,6 +59,18 @@ Jetson 模块的内存、带宽、功率模式和推理数值应连同精度/稀
 
 PCB 交付以[已通读的 KiCad 10.0 官方入门](../../sources/courses/kicad_docs_10_zh.md)为依据：保留工程、规则、原理图和布局的一致性，填铜与 DRC 完成后导出 Gerber/钻孔/BOM；工具过检不等于电流、热与 EMC 已通过实板测试。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    DUTY["任务占空比估算 (平均能耗 + 峰值功率 + 热质量预算)"] --> PDU["整机配电架构 (电源树 · 母线 · DC-DC · 上电顺序 · 安全回路)"]
+    PDU --> BAT["电池系统: 电芯体系 + 封装集成 + 认证 BMS (如 TI BQ76952 监测均衡)"]
+    PDU --> COMP["边缘计算单元 (如 Jetson Thor T5000 + 载板/存储/传感器功耗)"]
+    PDU --> DRV["关节驱动与控制接口板"]
+    BAT & COMP & DRV --> PCB["PCB 设计与制造交付 (KiCad / Altium: 原理图 → layout → DRC → Gerber/BOM)"]
+    PCB --> TEST["实板联合验收 (带载母线跌落 · 温升 · 复位 · EMC 测试)"]
+```
+
 ## 关联页面
 
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)

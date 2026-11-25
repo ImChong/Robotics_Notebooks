@@ -34,6 +34,16 @@ original:
 
 上游 README 与站点分类 05 所呈现的主线：特权教师向学生蒸馏、动作平滑约束（LCP）、历史 / 注意力编码、感知高度图或像素输入、能耗与落脚点约束；多数论文以 RL 在大规模并行仿真中训练后零样本迁移。
 
+```mermaid
+flowchart TD
+    Sim["大规模并行仿真 RL 训练"] --> Teacher["特权信息教师策略"]
+    Teacher --> Distill["教师-学生蒸馏"]
+    Obs["观测输入 (历史 / 注意力 / 高度图 / 视觉像素)"] --> Student["部署学生策略"]
+    Distill --> Student
+    Cons["约束与正则 (LCP 平滑 / 能耗 / 落脚点 / 安全滤波)"] --> Student
+    Student --> Real["真机零样本迁移 (Sim2Real)"]
+```
+
 ## 本类论文索引
 
 - [A Gait Driven RL Framework for Humanoid Robots](../entities/paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots.md) — 待深读

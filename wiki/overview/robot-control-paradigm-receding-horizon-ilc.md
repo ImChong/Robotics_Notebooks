@@ -47,6 +47,19 @@ MPC 每步求解有限时域 OCP 仅执行首控制量；ILC 将上批次全程�
 
 **与 IL 策略滚动执行区分：** 模仿学习里的 [滚动预测执行](../concepts/receding-horizon-policy-execution.md)（如 [Diffusion Policy](../entities/paper-diffusion-policy.md) 的 receding horizon、[ACT](../entities/paper-act.md) 的 temporal ensemble）共享「有限视界 + 前缀执行 + 重规划」骨架，但 **无显式动力学 OCP**，且 ACT 默认 **重叠融合** 与 DP 式 **丢弃后缀** 不等价。
 
+```mermaid
+flowchart TD
+    Root["滚动与迭代优化控制家族"] --> MPC["MPC (Model Predictive Control)"]
+    Root --> ILC["ILC (Iterative Learning Control)"]
+    Root --> ILRH["IL 策略滚动执行 (同名异构对比)"]
+    MPC --> MPC1["每步求解有限时域显式动力学 OCP (acados / Crocoddyl)"]
+    MPC1 --> MPC2["仅执行首控制量并下一拍重规划"]
+    ILC --> ILC1["重复周期轨迹批次误差统计"]
+    ILC1 --> ILC2["前馈更新 u_next = u_k + L * e_k"]
+    ILRH --> DP["Diffusion Policy (无显式 OCP, 前缀执行并丢弃后缀)"]
+    ILRH --> ACT["ACT Temporal Ensemble (无显式 OCP, 多步预测重叠融合)"]
+```
+
 ## 代表性算法
 
 | 算法 | 节点 |

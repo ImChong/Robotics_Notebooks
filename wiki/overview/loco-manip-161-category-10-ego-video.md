@@ -35,6 +35,20 @@ sources:
 |---|------|-----------|
 | 161 | EgoVLA | [paper-loco-manip-161-161-egovla](../entities/paper-loco-manip-161-161-egovla.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    EGO["人类第一视角视频 (Egocentric Video)"]
+    PRIOR["操作经验与行为先验提取"]
+    POLICY["EgoVLA (第一视角 VLA 策略)"]
+    EXEC["人形 Loco-Manip 任务执行"]
+
+    EGO --> PRIOR
+    PRIOR --> POLICY
+    POLICY --> EXEC
+```
+
 ## 关联页面
 
 - [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)

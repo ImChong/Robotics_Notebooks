@@ -44,6 +44,15 @@ sources:
 | **G3M** | IEEE T-RO 2026（期刊扩展） | [paper-tro-manip-04-g3m](../entities/paper-tro-manip-04-g3m.md) |
 | GraphMimic | CVPR 2025 | 在 G3M 实体页交叉引用，不单独建重复节点 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Vid["无动作标签人类操作视频"] --> GraphRep["结构化图表示 (物体状态与手-物空间关系)"]
+    GraphRep --> G3M["G3M: 图到图生成建模 (GraphMimic 期刊扩展)"]
+    G3M --> Policy["跨本体可迁移操作策略"]
+```
+
 ## 关联页面
 
 - [T-RO 5 篇技术地图](./tro-manip-5-papers-technology-map.md)

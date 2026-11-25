@@ -82,6 +82,22 @@ VLA 知识链贯穿的核心共性是**把预训练视觉–语言表征接入�
 - **高频接触任务对推理延迟极其敏感**：大型 7B+ 自回归 VLA 难以直接进入高频力控内环，盲目追求更大骨干反而恶化动态抓握与干扰恢复。
 - **基准分数不可横向直比**：SIMPLER、LIBERO、CALVIN 与自建真机协议在重置、随机化与视角上差异极大，跨工作对照需回看原始实验设置。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    IN["多模态输入 (视觉观测 + 自然语言指令)"] --> VLM["预训练视觉-语言骨干 (VLM)"]
+    OXE["跨具身数据与微调 (Open X-Embodiment / IL + RLHF)"] --> VLM
+    VLM --> R1["离散动作分词路线 (RT-1 / RT-2 / OpenVLA / FAST)"]
+    VLM --> R2["连续生成动作专家 (pi0 / Flow Matching / Diffusion)"]
+    VLM --> R3["跨层解耦路线 (VLA + BFM / 行为树)"]
+    R1 -->|"自回归离散 token / 频域系数"| OUT["动作输出与归一化校对 (norm_stats)"]
+    R2 -->|"20-50 Hz 多步动作块 (action chunk)"| OUT
+    R3 -->|"任务语义 / 关键点 / 子目标"| BFM["行为基础模型 (BFM) / 行为树编排"]
+    BFM --> CTRL["底层全身控制 / 伺服安全限幅 (WBC / WBT)"]
+    OUT --> CTRL
+```
+
 ## 关联页面
 
 - [VLA / 世界模型 14 篇阅读路线](./vla-wm-reading-roadmap-14-papers-technology-map.md)

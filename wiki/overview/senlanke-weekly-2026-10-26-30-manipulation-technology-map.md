@@ -165,6 +165,25 @@ summary: "senlanke 具身运控lab 10-26–10-30 Manipulation周报：57 条论�
 - 主题页：[manipulation](../tasks/manipulation.md)、[vla](../methods/vla.md)、[world-action-models](../concepts/world-action-models.md)。
 - 原文通读归档：[wechat_senlanke_weekly_manipulation_2026-10-26_30_reading_slk57.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30_reading_slk57.md)
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["senlanke 10-26–10-30 Manipulation 周报 (57 篇)"]
+    Hub --> T1["VLA 与 WAM 预测"]
+    Hub --> T2["RL 与生成式策略"]
+    Hub --> T3["本体与特定场景"]
+    Hub --> T4["长程规划与基础设施"]
+    T1 --> T1a["VLA 通用策略 (7 篇): HiFOR, PDRVLA, QbD-VLA, SaiVLA-JEPA"]
+    T1 --> T1b["WAM 世界动作模型 (10 篇): E0.5, RynnWorld-Latent, Tapestry, OSWAM"]
+    T2 --> T2a["RL 与后训练 (4 篇): Echo, Event2Reward, 钩子拆卸 RL"]
+    T2 --> T2b["模仿与流策略 (6 篇): TOPS, 高斯蒸馏, JEDI, 安全 Flow Matching"]
+    T3 --> T3a["双臂与灵巧操作 (8 篇): cuArms, AcrossDEX, DexSafe, TouchBridge"]
+    T3 --> T3b["可变形体与人形上半身 (6 篇): DLO 力估计, Zero-HLM, METATRON, FLoRe"]
+    T4 --> T4a["长程推理与恢复 (7 篇): LOGIV, RoboAuto, ProLoop, ELEVATE"]
+    T4 --> T4b["数据与评测平台 (9 篇): RoboAtom, EgoContact, UMI-Live, VLA-HWBench"]
+```
+
 ## 关联页面
 
 - [manipulation](../tasks/manipulation.md)

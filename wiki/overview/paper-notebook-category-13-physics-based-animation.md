@@ -50,6 +50,20 @@ summary: "Paper Notebooks 分类 13：物理动画（27 篇深读笔记索引）
 - [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 见 wiki 实体页（CVPR 2025 Highlight；统一 HOI 模仿 + HLC）
 - [Spatial Relationship Preserving Character Motion Adaptation](../entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html)
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["13 物理动画 (27 篇)"] --> Prior["运动先验与生成建模"]
+    Root --> Adapt["物理反馈与运动追踪"]
+    Root --> Multi["多任务与策略组合"]
+    Root --> HOI["人-物交互与场景接触"]
+    Prior --> PriorN["MotionVAE / Mimic2DM / PARC / 闭环运动合成"]
+    Adapt --> AdaptN["AdaptNet / RL from Physical Feedback / RobotDancing / PhysHMR"]
+    Multi --> MultiN["AMOR / Composite Motion Learning / Learning to Ball / MaskedManipulator"]
+    HOI --> HOIN["SkillMimic / InterPrior / SimGenHOI / CRISP / Box Loco-Manipulation"]
+```
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

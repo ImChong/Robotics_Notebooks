@@ -604,6 +604,15 @@ sources:
 - **合并去重**：两清单共同主线是仿真器、数据集、基准与 VLA；本页把并集逐条拆页，分组沿用各自上游的分类，「来源」列标明出自哪份。
 - **条目性质**：上游条目只有标题、外链与一行描述，因此本页的"清单摘要页"是入口而非深读（推断：深度判断需进入各条目的论文/工具页）。
 
+```mermaid
+flowchart TD
+    L1["natnew/awesome-physical-ai (14 个 canonical 类别 + 5 步入门路径)"] --> Union["合并去重 (384 条站内可点开节点)"]
+    L2["aichr/awesome-physical-ai (12 组技术栈分类 + 条目图例)"] --> Union
+    Union --> Deep["已有深读页直接跳转"]
+    Union --> Stub["清单摘要页 (标题 / 原文链接 / 来源清单)"]
+    L1 --> Path["入门顺序: Gymnasium CartPole -> MuJoCo -> LeRobot -> OpenVLA -> IL/Sim2Real/硬件/评测"]
+```
+
 ## 工程实践
 
 - **找一个方向**：先在「分组索引」按分组定位，再点条目；有深读页的直接跳转，其余看摘要页并去原文链接。

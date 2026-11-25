@@ -68,6 +68,16 @@ summary: "多模空间 2026-09-27 策展：2026.08.10–08.16 一周 VLA 第四�
 - [EvoScene-VLA](../entities/paper-evoscene-vla.md) — arXiv:2605.21862
 
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["一周 VLA 研究趋势 08.10–08.16 · 第四篇 (14 篇)"]
+    Hub --> D1["架构·恢复·模态 (6): GigaBrain-0.7, Robo-Dopamine 2.0, CoRe, ReflexVLA, ForceU-VLA, ViTaR"]
+    Hub --> D2["部署·安全 (3): EcoVLA, SpecVLA, VLA Bit-Flip Attacks"]
+    Hub --> D3["训练·长程 (5): StructRL, PhaseLoRA, PACE, Remember Smarter, EvoScene-VLA"]
+```
+
 ## 与同系列的关系
 
 - [第一篇技术地图](./vla-weekly-trends-2026-08-10-part1-technology-map.md)（21 篇）、[第三篇](./vla-weekly-trends-2026-08-10-part3-technology-map.md)（12 篇）与本篇 **arXiv 不重叠**（除复用的 GigaBrain / Reflex / ViTaR / StructRL 已在其他 ingest 出现）。

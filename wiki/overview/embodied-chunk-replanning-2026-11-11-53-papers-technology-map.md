@@ -50,6 +50,17 @@ summary: "具身智能小站 2026-11-11 的 53 篇论文速览的阅读坐标：
 - **工具链与仿真：** Kinora、ROS2MR、ExoStack（复用）、编队控制教程、股静脉压缩仿真、LawKAN、ASPIRE。
 - **证据强度：** 新建节点里带真机数字的多为每任务 10–30 次；不少结果全在仿真或离线评测，且若干论文的代码 / 数据仍标「coming soon」。
 
+```mermaid
+flowchart TD
+    Root["2026-11-11 53 篇论文归类 (43 新建 / 10 复用)"] --> C1["动作块与执行频率: ExRL (深读) / 异步 ACT / MoE-DAgger / Look Ahead / AIC"]
+    Root --> C2["VLA 适配与蒸馏: weightsmith / RAGu / VLA-MOPD / Thermo-VLA / ForeAct"]
+    Root --> C3["世界模型: ObjectWorld / Sigma-LeWM / Nearest-of-m / SWAM / DreamVLA"]
+    Root --> C4["触觉与数据集: LingBot-Touch (跟进) / PCTac / RoboMoCap / SurgTAP-3D"]
+    Root --> C5["人形与导航: Kimodo-Policy / LHNav / Compass-1 / SAM-VTP / FLAVOR / PLS-GS"]
+    Root --> C6["评测与安全: Embodied First Exam (跟进) / HARP-Bench / KALLAX / CREG-Bench / ArmedAgent"]
+    Root --> C7["工具链与仿真: Kinora / ROS2MR / ExoStack / LawKAN / ASPIRE"]
+```
+
 ## 工程实践
 
 - 查证某篇论文的细节时，以详情节点和其引用的 arXiv 原文为准，不以文章一句话判断为准。

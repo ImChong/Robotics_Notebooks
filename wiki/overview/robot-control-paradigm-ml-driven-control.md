@@ -44,6 +44,21 @@ sources:
 
 监督学习拟合 $(q,\dot{q},\ddot{q})\mapsto \tau_{res}$；GP 给出均值与不确定度；模糊逻辑编码专家规则；无监督聚类识别工况切换补偿表。
 
+```mermaid
+flowchart LR
+    State["关节状态与工况数据 (q, dq, ddq)"] --> Base["解析基础控制器 (PID / CTC)"]
+    State --> ML["数据驱动补偿模块"]
+    ML --> NN["NN 补偿 (拟合残差力矩)"]
+    ML --> GP["GP (概率回归与不确定度)"]
+    ML --> Fuzzy["模糊逻辑 (编码专家规则)"]
+    ML --> Cluster["无监督聚类 (识别工况切换补偿表)"]
+    Base --> Sum["并联叠加控制输出"]
+    NN --> Sum
+    GP --> Sum
+    Fuzzy --> Sum
+    Cluster --> Sum
+```
+
 ## 代表性算法
 
 | 算法 | 节点 |

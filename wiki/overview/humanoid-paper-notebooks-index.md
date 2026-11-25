@@ -75,6 +75,21 @@ summary: "Robot Learning Paper Notebooks 论文笔记的站内总入口：14 个
 - **分清读到哪一步：** 已有深读笔记的论文，站内页给出笔记摘要；标「待深读」的只有分类位置与原文入口，要深读建议直接读原文。
 - **看笔记全文：** 全文在 [笔记站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)，站内页是摘要与交叉链接。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    IDX["Robot Learning Paper Notebooks 总入口 (14 个分类 · 518 条索引)"] --> PIPE["上游学习路线图"]
+    PIPE --> L1["基础 RL (01) + 动作重定向 (02)"]
+    L1 --> L2["精确模仿与风格 (03 精选 / 13 物理动画 / 14 人体动作)"]
+    L2 --> L3["全身控制与行走 (04 Loco-Manip & WBC / 05 Locomotion)"]
+    L3 --> L4["灵巧操作 (06) · 遥操作 (07) · 导航 (08) → 世界模型 / VLA / BFM"]
+    CROSS["横跨全线的工程支撑层"] --> C1["09 状态估计 (14 篇)"]
+    CROSS --> C2["10 Sim-to-Real (10 篇)"]
+    CROSS --> C3["11 仿真基准 (22 篇)"]
+    CROSS --> C4["12 硬件设计 (39 篇)"]
+```
+
 ## 与其他页面的关系
 
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)

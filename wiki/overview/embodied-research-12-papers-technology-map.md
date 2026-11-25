@@ -59,6 +59,20 @@ summary: "具身智能小站 2026-09-26 十二篇清单阅读坐标：接触多�
 | 11 | [CrossSafe](../entities/paper-crosssafe.md) | 2609.28984 | **待发布** |
 | 12 | [Echo in the Steps](../entities/paper-echo-in-the-steps.md) | 2609.28960 | **待发布** |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    S1["1. 采集与动作入口"] --> S2["2. 表征与闭环部署"] --> S3["3. 长程系统与编排"] --> S4["4. 规划与安全"]
+
+    S1 --> P1["01 PolyUMI (已开源)"]
+    S1 --> P2["02 BeyondRetarget (已开源)"]
+    S2 --> P3["03 Rolling-WAM (已开源)"]
+    S2 --> P4["05 Self-Adaptive VLA · 06 PROPRA"]
+    S3 --> P5["04 RAPID · 08 AdaHVLA (已开源) · 09 HarnessPAI (已开源)"]
+    S4 --> P6["07 Wrap · 10 CAMP · 11 CrossSafe · 12 Echo in the Steps"]
+```
+
 ## 关联页面
 
 - [VLA](../methods/vla.md) · [World Action Models](../concepts/world-action-models.md)

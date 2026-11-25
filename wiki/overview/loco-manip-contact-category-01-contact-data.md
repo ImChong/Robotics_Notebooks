@@ -51,6 +51,22 @@ sources:
 - **HumanoidMimicGen / VLK：** 偏 **数据制造**——规划或重建场景批量产出可训练轨迹。
 - **HumanX 开源更新（2026-11-18 核对）：** 官方仓库 `wyhuai/humanx` 已公开 XGen 编辑器、HOI 数据转换与 XMimic Isaac Gym 仿真训练/评测入口（许可为 `Apache-2.0 WITH Commons-Clause`，开源范围以仿真侧为主，不含完整 ROS/Unitree 真机控制与 Sim2Real 标定链）；arXiv v2 统计为 9 项技能（NEP 5 / MoCap 4），官网摘要口径为 10 项。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    REQ["接触数据关键要素 (物体状态 / 场景约束 / 接触时序 / 本体可执行性)"]
+    VID["人类视频与重定向路线 (OmniRetarget / HumanX / HDMI / SUGAR / Human-as-Humanoid)"]
+    UMI["轻量跨本体示范路线 (HumanoidUMI)"]
+    SYN["规划与场景合成路线 (HumanoidMimicGen / VLK)"]
+    OUT["带真实接触结构的可训练交互数据"]
+
+    VID --> OUT
+    UMI --> OUT
+    SYN --> OUT
+    OUT -.->|"校验对齐"| REQ
+```
+
 ## 关联页面
 
 - [接触表示](./loco-manip-contact-category-02-contact-representation.md)

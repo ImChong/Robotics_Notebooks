@@ -63,6 +63,20 @@ summary: "硬件通信与协议知识链汇总：从电机驱动固件、现场�
 | 整机架构 | 分域/拓扑/延迟预算 | [机器人整机通信架构](../concepts/robot-onboard-communication-architecture.md) |
 | 系统工程 | OS/边云/OTA/安全 FSM | [系统工程知识链](./hub-systems-engineering.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    L1["1. 物理层与现场总线 (RS-485 / UART / CAN / CAN-FD / EtherCAT)"]
+    L2["2. 应用协议与时间同步 (CANopen / POSIX IPC / 时钟同步)"]
+    L3["3. 软件中间件与服务面 (ROS 2 DDS / LCM / RPC gRPC / MQTT / ZeroMQ)"]
+    Sys["整机通信架构与系统工程 (控制环 1 kHz vs 上层规划/遥测)"]
+
+    L1 -->|"确定性低抖动关节数据"| L2
+    L2 -->|"类型安全与跨节点时间对齐"| L3
+    L3 -->|"策略推理 · 状态监控 · 调试流"| Sys
+```
+
 ## 与其他知识链的关系
 
 - **[触觉](./hub-tactile.md)**：力控环对总线延迟敏感。

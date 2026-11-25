@@ -72,6 +72,23 @@ sources:
 - **分层：** 关节单轴力矩传感参与实时控制环；**末端六维 F/T** 测交互力螺旋 — 协作臂常两者兼有，人形以关节级为主。
 - **深度选型：** [关节力矩传感器选型](../concepts/joint-torque-sensor-selection.md)（Zane Hub，2026-09-24）；双编细节见 [关节编码器选型](../concepts/joint-encoder-selection.md)。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    CHAIN["关节传动与感知链 (转什么 · 减多少 · 知在哪 · 测多大力)"] --> MOT["电机层: 外转子永磁无刷伺服 (有感换相) / 灵巧手空心杯"]
+    CHAIN --> GEAR["减速与支承层 (交叉滚子轴承承三向载荷)"]
+    CHAIN --> ENC["编码器层: 电机轴 + 输出端双绝对磁编 (缓 Sim2Real 差距)"]
+    CHAIN --> TRQ["力矩反馈四路线"]
+    GEAR --> G1["谐波: 紧凑零背隙 (肩肘腕)"]
+    GEAR --> G2["摆线/RV: 抗冲击 (腰髋膝备选)"]
+    GEAR --> G3["行星 QDD: 可反驱 · 扭矩透明 (利 RL 接触学习)"]
+    TRQ --> T1["电流环估力"]
+    TRQ --> T2["双编码器差值估力"]
+    TRQ --> T3["应变片物理传感 (~30% 执行器成本)"]
+    TRQ --> T4["SAW / 磁弹性 (台架与特殊场景)"]
+```
+
 ## 关联页面
 
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)

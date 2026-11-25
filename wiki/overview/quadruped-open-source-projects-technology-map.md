@@ -116,6 +116,16 @@ original: ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026
 
 本图谱沿“计算需求、动力学保真度与硬件耦合度递进”主轴，将开源四足项目组织为六条互斥又可组合的技术流派：极简运动学/状态机（MCU 级 IK）、ROS 教学与工程生态、数值优化控制（凸 MPC / WBC / 轨迹优化）、GPU 并行强化学习（Isaac Gym/Lab）、轮足混合结构，以及开放执行器与机载固件级研究平台；同时对每条工程宣称用仓库 README 与代码入口做实证复核。
 
+```mermaid
+flowchart LR
+    S1["1. 极简运动学与状态机 (Stanford Pupper / Doggo / OpenCat)"] --> S2["2. ROS 教学与工程生态 (Mini Pupper / SpotMicro / MangDang)"]
+    S2 --> S3["3. 数值优化控制 MPC/WBC (legged_control / CHAMP / Quadruped-PyMPC / TOWR / DIAL-MPC)"]
+    S2 --> S4["4. GPU 并行强化学习 (Isaac Lab / Legged Gym / rl-mpc-locomotion / ABS / rl_sar)"]
+    S3 --> S5["5. 轮足混合结构 (Wheel-Legged-Gym / FOC 双轮腿 / Wheel Legged Genesis)"]
+    S4 --> S5
+    S5 --> S6["6. 研究级硬件与驱动 (ODRI Solo / OpenQuadruped / moteus)"]
+```
+
 ## 文章说法与 README 核对
 
 | 项目 | 文章说法 | README / 核查 | 处理 |

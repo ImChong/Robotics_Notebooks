@@ -47,6 +47,23 @@ summary: "抓取与操作感知知识链汇总：从接触建模、灵巧手运�
 | 末段精修 | 纯触觉目标条件 regrasp | [TacRefineNet](../entities/paper-tacrefinenet-tactile-grasp-refinement.md)（板/盘/杆 · Siamese · arXiv:2509.25746） |
 | 方法 | 视触觉物理属性条件化抓取 | [ViTacPhys](../entities/paper-vitacphys.md)（人体示范 → 质量/刚度/摩擦 · ACT · arXiv:2608.21355） |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Perc["感知抓取与数据 (AnyGrasp vs GraspNet / TransGraspNet / HRDexDB)"]
+    Kin["末端硬件与灵巧手运动学 (EN02-OP / Yale OpenHand / Dexterous Kinematics)"]
+    Method["抓取生成与末段精修 (FastGrasp / TacRefineNet / ViTacPhys)"]
+    Ctrl["接触力位控制闭环 (Hybrid F/P / Impedance / Contact Dynamics)"]
+    Task["任务落地 (Manipulation / Loco-Manipulation)"]
+
+    Perc --> Method
+    Kin --> Method
+    Method --> Ctrl
+    Ctrl --> Task
+    Ctrl -->|"滑移/触觉反馈"| Method
+```
+
 ## 与其他知识链的关系
 
 - **[触觉](./hub-tactile.md)**：抓取稳定常依赖力/触觉反馈。

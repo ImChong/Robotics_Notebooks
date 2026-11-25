@@ -43,6 +43,19 @@ sources:
 | 异步双系统 | 低频规划 + 高频视觉对齐执行 |
 | Benchmark | LIBERO、LIBERO-Plus、VLABench、Genie Sim 3.0 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    In["语义指令与视觉观测"] --> GO2["GO-2 (语义执行基座)"]
+    GO2 --> Low["低频规划 + 动作思维链 (结构化动作序列)"]
+    GO2 --> High["高频视觉对齐执行"]
+    Low --> Bridge["异步双系统跨越语义–运动鸿沟"]
+    High --> Bridge
+    Bridge --> Eval["评测: LIBERO / LIBERO-Plus / VLABench / Genie Sim 3.0"]
+    Bridge --> Body["衔接身体能力底座 (BFM-2 / AGILE)"]
+```
+
 ## 关联页面
 
 - [VLA](../methods/vla.md)

@@ -88,6 +88,18 @@ summary: "飞书 Know-How「技术框架路线展望」：传统 Navigation–Pl
 - 作者明确「不能得出明确结论」；五条思考含未验证判断（如 blind 大数据优于 perception end2end）。
 - 与具体产品路线（Boston Dynamics、Figure、Unitree 生态）需交叉验证。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    TRAD["传统经典分层栈: Navigation → Planning (TO) → Controller (WBC) ← Estimator"] --> EVOL["强化学习演进: Blind → Perceptive → Navigation"]
+    OUT["五条未来架构路线思考"] --> R1["1. 端到端 + 全身遥操作采集 (MPC / TWIST / SONIC) → VLA"]
+    OUT --> R2["2. 上下肢分离 (下肢鲁棒行走 + 上肢机械臂 VLA · 面临全身动力学耦合)"]
+    OUT --> R3["3. 解耦 N+P+C: Navigation (VLN) + Planning (VLM SMPL→retarget) + Controller (通用 RL)"]
+    OUT --> R4["4. 轮足人形 (速度与越野 vs 仿人工程性价比平衡)"]
+    OUT --> R5["5. 具身 Physics-first (仿真更物理 · 算法框架更物理)"]
+```
+
 ## 关联页面
 
 - [Know-How 技术地图](./humanoid-motion-control-know-how-technology-map.md)

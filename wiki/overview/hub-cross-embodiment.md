@@ -68,6 +68,27 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 | 概念 | 角色动画 vs 机器人 | [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) |
 | 数据 | 跨具身数据集 | [Open X-Embodiment](../concepts/open-x-embodiment.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["跨具身迁移路径"]
+    R1["同形态跨配置 / 末端扩展"]
+    R2["任务空间 / 相机 / FK 几何接口对齐"]
+    R3["人->机示范 / 视频迁移与重定向"]
+    R4["跨平台全身控制与快速微调"]
+
+    Root --> R1
+    Root --> R2
+    Root --> R3
+    Root --> R4
+
+    R1 --> R1a["Emergent Transfer (跨配置共训) · GEN-1 千手 (跨末端)"]
+    R2 --> R2a["UCAG-P (相机锚点) · Zero-Shot Compositional Gen (共享 TCP+IK) · CrossTracer (导航残差)"]
+    R3 --> R3a["LaST-HD · HOST · GEN-1.5 · Reward AI OM-1 · X-Morph · Motion Retargeting"]
+    R4 --> R4a["Any2Any WBT · Gemini Robotics 2 On-Device · Open X-Embodiment"]
+```
+
 ## 与其他知识链的关系
 
 - **[动作重定向](./hub-motion-retargeting.md)**：跨骨架动作对齐。

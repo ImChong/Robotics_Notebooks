@@ -41,6 +41,22 @@ sources:
 | 50 | VAIC | [paper-loco-manip-05-vaic.md](../entities/paper-loco-manip-05-vaic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 51 | 主动空间大脑与泛化动作小脑 | [paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md](../entities/paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md) | [catalog](../../sources/papers/motion_cerebellum_survey_51_active_spatial_brain_generalized_cerebellum.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    CMD["上层输入 (根部运动目标 / 末端执行器目标 / 柔顺控制参数)"]
+    IFACE["EE-Root 层级解耦接口 (根部控制与柔顺末端解耦)"]
+    WORK["代表工作 (CEER / HANDOFF / MPC-RL / VAIC / 主动空间大脑与泛化动作小脑)"]
+    WBC["协调全身控制 (降低手、脚、腰强耦合)"]
+    OUT["便于 VLA 与上层策略调用的身体 API"]
+
+    CMD --> IFACE
+    IFACE --> WORK
+    WORK --> WBC
+    WBC --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

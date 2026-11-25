@@ -34,6 +34,27 @@ sources:
 | Genie | [paper-sa-2402-15391-genie-generative-interactive-environments](../entities/paper-sa-2402-15391-genie-generative-interactive-environments.md) | 从无动作标签视频发现可交互潜在控制的可探索环境。 |
 | Matrix-Game 3.5 | [paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact](../entities/paper-sa-2604-08995-matrix-game-3-0-real-time-and-streaming-interact.md) | 720p 实时流式交互世界与分钟级场景记忆；策展口径对应 Matrix-Game 3.x 线。 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Core["模型构建型 WM (预测器精度、物理一致性与 rollout)"]
+    Dyn["接触与物理动力学建模"]
+    CondGen["动作 / 语言条件时空生成"]
+    LatentStream["无动作发现与实时流式交互"]
+
+    Core --> Dyn
+    Core --> CondGen
+    Core --> LatentStream
+
+    Dyn --> D1["ContactNets: 结构化状态空间接触几何与约束"]
+    CondGen --> C1["GAIA-1: 视频+文本+自车动作生成"]
+    CondGen --> C2["Cosmos Predict: 大规模 Physical AI 时空先验"]
+    CondGen --> C3["Qwen-RobotWorld: 自然语言统一动作接口"]
+    LatentStream --> L1["Genie: 无动作标签发现可交互潜在控制"]
+    LatentStream --> L2["Matrix-Game 3.5: 720p 流式交互与分钟级记忆"]
+```
+
 ## 关联页面
 
 - [六路线技术地图](./embodied-wm-six-routes-technology-map.md)

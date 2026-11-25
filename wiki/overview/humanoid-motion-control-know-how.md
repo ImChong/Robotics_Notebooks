@@ -98,6 +98,20 @@ summary: "人形机器人运动控制工程实践经验汇总：涵盖了从传�
 - 一手论文覆盖的平台（Mini-Cheetah、ANYmal、Digit、Go1）与读者的人形平台不同，量级可迁移但数值不可照搬。
 - 本页不覆盖电池 / 热管理的论文证据，相关内容请转 [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md)。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    SENS["1. 传感器与状态估计"] --> S1["IMU 减震与滤波 (姿态2自由度 + 运动学/卡尔曼 0.5 kHz)"]
+    SENS --> S2["接触估计 (关节状态历史 / 足底开关 + 高度图融合)"]
+    S1 & S2 --> CTRL["2. 动力学与控制层"]
+    CTRL --> MB["Model-based: MPC (30-40 Hz) → WBIC (0.5 kHz · 四棱锥摩擦锥) + 奇异点保护"]
+    CTRL --> RL["Learning-based: RL 策略 (50 Hz · 异步延迟随机化)"]
+    MB & RL --> HW["3. 硬件与电气执行层"]
+    HW --> H1["关节 PD 内环 (1-40 kHz) + 执行器带宽/截断建模 (Actuator Net)"]
+    HW --> H2["IPC 独立稳压供电 (防跳跃压降重启) + WBC 能效项热管理"]
+```
+
 ## 关联页面
 - [人形机器人 RL 运动控制：身体系统栈视角](./humanoid-rl-motion-control-body-system-stack.md) — 把 42 篇 RL 运动控制论文按 8 层系统栈组织的总框架视图
 - [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md)

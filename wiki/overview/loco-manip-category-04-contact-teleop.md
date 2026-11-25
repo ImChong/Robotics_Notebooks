@@ -39,6 +39,22 @@ sources:
 | 07 | WT-UMI | [paper-loco-manip-07-wt-umi.md](../entities/paper-loco-manip-07-wt-umi.md) | [source](../../sources/papers/loco_manip_survey_07_wt_umi.md) |
 | 08 | X-OP | [paper-loco-manip-08-x-op.md](../entities/paper-loco-manip-08-x-op.md) | [source](../../sources/papers/loco_manip_survey_08_x_op.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    GAP1["视觉盲区 (难判压住 / 滑动 / 偏心载荷)"]
+    GAP2["单机体限制 (teleop 难跨平台复用)"]
+    WT["WT-UMI (便携 UMI 接口扩展触觉与力感知)"]
+    XOP["X-OP (MPC 动作重定向构建跨机器人数据入口)"]
+    ASSET["补齐接触感知的跨平台 Loco-Manip 数据资产"]
+
+    GAP1 --> WT
+    GAP2 --> XOP
+    WT --> ASSET
+    XOP --> ASSET
+```
+
 ## 关联页面
 
 - [Teleoperation](../tasks/teleoperation.md)

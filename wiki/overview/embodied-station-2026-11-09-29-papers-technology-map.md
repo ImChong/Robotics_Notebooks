@@ -91,6 +91,28 @@ summary: "具身智能小站 2026-11-09 的 29 篇论文阅读坐标：空间表
 | 28 | 扫读 | [康复机器人：从目标肌肉激活反推轨迹](../entities/paper-transformer-trajectory-prescription-semg-rehab.md) | [2611.08295](https://arxiv.org/abs/2611.08295) | 新建 |
 | 29 | 扫读 | [TurtleBot3：把仿真控制器带进课堂真机](../entities/paper-turtlebot3-webots-noros-library.md) | [2611.08142](https://arxiv.org/abs/2611.08142) | 新建 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["11-09 29 篇论文阅读坐标"]
+    C1["空间表征与 VLA 泛化"]
+    C2["自我改进与评测"]
+    C3["接触操作与触觉"]
+    C4["人形协作、导航与工具"]
+
+    Root --> C1
+    Root --> C2
+    Root --> C3
+    Root --> C4
+
+    C1 --> C1a["深读: SLA · VFlash · 形状教师 · VLA 目标表示"]
+    C2 --> C2a["跟进: Flex-RSI · 美团 MR0"]
+    C2 --> C2b["RSIJudge · RoboARCade · RoboImagine · OopsieRecover · 静默故障检测"]
+    C3 --> C3a["TactileLab · S2C · 统一 FIC 框架 · Lodos · ForPC · HOC2R · Q-OIL · GPWM · MOMASPLAT"]
+    C4 --> C4a["PAVE · TangramBench · H-TRIP · SCALE · Social Humanoid · HITCH · dynamicalnodes · 康复处方 · TurtleBot3"]
+```
+
 ## 关联页面
 
 - [上一期（11-06）20 篇阅读坐标](./embodied-station-2026-11-06-20-papers-technology-map.md)

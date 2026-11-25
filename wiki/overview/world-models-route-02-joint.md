@@ -61,6 +61,19 @@ sources:
 | 概念对照 | [World Action Models](../concepts/world-action-models.md) — Joint 族文献坐标 |
 | 姊妹路线 | [01 级联架构](./world-models-route-01-cascade.md)、[03 虚拟沙盒](./world-models-route-03-virtual-sandbox.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    In["多模态输入: 观测 + 语言指令 + 状态"] --> Spine["共享 Transformer / 扩散骨干 (同一次前向联合建模)"]
+    Spine --> OutObs["未来观测 / 视频预测"]
+    Spine --> OutAct["连续 / 离散动作输出"]
+    Spine --> M1["GPT 联合 Token: GR-1"]
+    Spine --> M2["模态特定扩散时间步: UWM / 实时化工程: UVA"]
+    Spine --> M3["VLA+WM 双向增强: WorldVLA (RynnVLA-002)"]
+    Spine --> M4["视频基座微调与 MoE: Cosmos Policy, F1-VLA"]
+```
+
 ## 关联页面
 
 - [世界模型 15 项目技术地图](./world-models-15-open-source-technology-map.md)

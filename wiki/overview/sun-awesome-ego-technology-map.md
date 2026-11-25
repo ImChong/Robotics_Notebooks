@@ -475,6 +475,29 @@ sources:
 - 清单里混有非 arXiv 链接（OpenReview / IEEE），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
 - 上游清单仍在更新，本页是 2026-09-15 的快照；最新条目以上游仓库为准。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["Awesome Egocentric Vision 技术地图 (249 篇)"]
+    Root --> P1["感知与交互基础"]
+    Root --> P2["长时程理解与推理"]
+    Root --> P3["具身智能与世界模型"]
+    Root --> P4["隐私、硬件与基准生态"]
+    P1 --> P1a["动作识别与预期"]
+    P1 --> P1b["手-物交互 HOI (22)"]
+    P1 --> P1c["注视与意图预测 (25)"]
+    P1 --> P1d["3D/4D 姿态与场景重建 / SLAM"]
+    P2 --> P2a["长视频理解与结构化推理 (24)"]
+    P2 --> P2b["程序化任务学习/纠错/QA (291-293)"]
+    P2 --> P2c["实时流式与主动交互 (294)"]
+    P3 --> P3a["Embodied AI 与 Ego-VLA (27)"]
+    P3 --> P3b["Egocentric World Models (28)"]
+    P4 --> P4a["隐私风险与去标识化 (2101-2104)"]
+    P4 --> P4b["低功耗端侧、事件相机与可穿戴 HCI"]
+    P4 --> P4c["基础模型、数据集与综述 (EgoDex, EgoBench)"]
+```
+
 ## 关联页面
 
 - [Awesome Egocentric Vision（列表实体）](../entities/awesome-egocentric-vision.md)

@@ -44,6 +44,16 @@ sources:
 | 现场案例 | 半导体 Tray 上下料、汽车安全带卷收器上料等 |
 | 运维 | 异常恢复、集群监管 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Mods["模块化工具链 (视觉 / 运控 / 导航 / VLA / RL)"] --> Agent["Genie Studio Agent (零/低代码编排)"]
+    Agent --> Sim["仿真验证 (部署前预演)"]
+    Sim --> Deploy["现场交付案例 (半导体 Tray 上下料 / 汽车安全带卷收器上料)"]
+    Deploy --> Ops["运维闭环 (上线监控 / 异常恢复 / 集群监管)"]
+```
+
 ## 关联页面
 
 - [身体能力底座](./agibot-release-category-05-body-foundations.md)

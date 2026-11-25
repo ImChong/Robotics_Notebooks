@@ -60,6 +60,22 @@ summary: "飞书「传统运动控制方法（Model Base）」父节点：OCP→
 - **不是唯一正解**：平坦慢走可停在 LIP/SRBD；高动态需 CD-NMPC。
 - **开源少于 RL**：飞书指出传统栈理论门槛高，需啃教材与四足参考实现。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    S1["1. OCP (最优控制理论起点)"] --> S2["2. LIP + ZMP (线性倒立摆步行平衡)"]
+    S2 --> S3["3. SLIP + VMC (弹簧腿与虚拟阻抗)"]
+    S3 --> S4["4. WBD + WBC / TSID (全刚体 QP 执行)"]
+    S4 --> S5["5. SRBD + 凸 MPC + WBC (质心单刚体滚动规划)"]
+    S5 --> S6["6. CD + NMPC + WBC (高保真质心非线性规划)"]
+    S7["7. 状态估计 (State Estimation 闭环反馈)"] --> S4
+    S7 --> S5
+    S7 --> S6
+    TOOLS["建模与仿真工具链 (Pinocchio · MuJoCo · QP 求解器)"] -.-> S4
+    TOOLS -.-> S6
+```
+
 ## 关联页面
 
 - [Know-How 技术地图](./humanoid-motion-control-know-how-technology-map.md)

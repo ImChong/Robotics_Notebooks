@@ -161,6 +161,22 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - **代理指标 ≠ 下游收益**：世界模型视频质量高 ≠ 下游策略收益高、MLLM 认知评分高 ≠ 可执行动作能力强，跨层用代理指标要警惕。
 - **单任务过拟合 vs 跨任务泛化**：基准饱和 ≠ 真实场景就绪，评测集泄漏与分布漂移会致虚高。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    L1["1. 认知评测 (MLLM 大脑: RoboBench / ESI-Bench / Daily-Omni / MMHU)"]
+    L2["2. 预测保真度评测 (EWM: EWMBench / WorldArena / WorldOlympiad / GigaWorld-1 / WorldScore)"]
+    L3["3. 策略成功率评测 (RoboDojo / RoboLab / LIBERO / RoboCasa / RoboTwin / BEHAVIOR / GM-100 / Inspect Robots)"]
+    L4["4. sim-real gap 校准 (RealEval / Robocurve / Bet4Sim2Real)"]
+    Cross["横切评测: 运控指标 (HumanTracker/HumanoidBench) · agentic 工程 (RLE-Bench) · 手型运动学 (KaRMA)"]
+
+    L1 -->|"相关性不等同动作可执行"| L2
+    L2 -->|"视频质量不等同策略收益"| L3
+    L3 -->|"仿真易复现 vs 真机代表性"| L4
+    L3 --- Cross
+```
+
 ## 与其他知识链的关系
 
 - **[具身大模型分类学选型闭环](./hub-embodied-foundation-model.md)**：模型选型的家族谱系，本知识链为其验收环节。

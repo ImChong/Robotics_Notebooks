@@ -44,6 +44,18 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 | 数据 | 参考运动数据集与重定向就绪度 | [人形参考运动数据集选型](../comparisons/humanoid-reference-motion-datasets.md) |
 | 下游 | 重定向后如何进入 WBT / AMP | [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    In["1. 参考动作输入 (人体 MoCap / 视频 / 参考运动数据集)"]
+    Kin["2. 运动学映射 (GMR / NMR / Reactor / UMR 表面对应)"]
+    Dyn["3. 动力学与接触精炼 (SBTO / DSMS / KDMR / SPARK / CoRe)"]
+    Out["4. 下游策略消费 (WBT 全身跟踪 / AMP 先验 / X-Morph / IL-RL)"]
+
+    In --> Kin --> Dyn --> Out
+```
+
 ## 与其他知识链的关系
 
 ### Day 1：数据与重定向逐篇入口

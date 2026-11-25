@@ -44,6 +44,24 @@ sources:
 | 58 | OASIS | [paper-loco-manip-04-oasis.md](../entities/paper-loco-manip-04-oasis.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 59 | LadderMan | [paper-ladderman-humanoid-perceptive-ladder-climbing.md](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    SIM["仿真训练、视觉随机化与真实部署适配"]
+    VIS["像素到真机任务闭环 (DoorMan 开门 / LadderMan 梯子攀爬)"]
+    LOAD["负载与重物稳定控制 (HOIST 悬吊负载 / SplitAdapter / HALO)"]
+    DATA["仿真轨迹与资产生成任务 (HumanoidMimicGen / GRAIL / OASIS)"]
+    OUT["视觉、接触、移动与平衡全链路真机任务落地"]
+
+    SIM --> VIS
+    SIM --> LOAD
+    SIM --> DATA
+    VIS --> OUT
+    LOAD --> OUT
+    DATA --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

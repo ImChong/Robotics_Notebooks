@@ -54,6 +54,18 @@ summary: "依据具身智能小站 2026-09-09 十篇盘点：视觉局部读出�
 | 09 | ReMoMask-2 | 已开源 | [paper-remomask-2](../entities/paper-remomask-2.md) |
 | 10 | 3DWay | 已开源 | [paper-3dway](../entities/paper-3dway.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Core["视觉聚焦与数据效率核心接口 (10 篇)"]
+    Core --> V["视觉局部读出与 3D Waypoint: FocusPool, 3DWay"]
+    Core --> M["MBRL 价值目标与规划经验: CAST"]
+    Core --> Mem["智能体记忆与对话接口: MemForest, HiBRIDGE"]
+    Core --> Rel["关系操作与交互中间表示: Motion-based messaging, FOCI Policy, AURORA"]
+    Core --> Dyn["4D 预测与动作生成: Coherent4D / HIGFlow, ReMoMask-2"]
+```
+
 ## 关联页面
 
 - [模仿学习](../methods/imitation-learning.md)

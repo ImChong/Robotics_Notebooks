@@ -39,6 +39,24 @@ sources:
 | GigaWorld-0 | [gigaworld-0](../entities/gigaworld-0.md) | 视频外观/动作建模连接 3DGS 与规划，服务 VLA 数据生成。 |
 | GR00T-Dreams | [paper-gr00t-dreams-synthetic-trajectories](../entities/paper-gr00t-dreams-synthetic-trajectories.md) | 世界模型扩展机器人轨迹作合成数据。 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Core["学习主导型 WM (在想象经验中优化外部策略)"]
+    LatentRL["潜在想象 RL 与真机学习"]
+    GenEnv["生成式神经环境与合成轨迹"]
+    PolicyRef["面向 VLA / 操作 / 腿足的策略更新"]
+
+    Core --> LatentRL
+    Core --> GenEnv
+    Core --> PolicyRef
+
+    LatentRL --> L1["World Models (VAE+MDN-RNN) · Dreamer · DreamerV3 · DayDreamer (真机直训)"]
+    GenEnv --> G1["UniSim (交互神经环境) · DreamGen · GR00T-Dreams (合成轨迹) · GigaWorld-0"]
+    PolicyRef --> P1["RISE (VLA 想象自改进) · World4RL (扩散操作后训练) · Robotic World Model (腿足/人形)"]
+```
+
 ## 关联页面
 
 - [六路线技术地图](./embodied-wm-six-routes-technology-map.md)

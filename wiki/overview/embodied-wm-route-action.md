@@ -36,6 +36,28 @@ sources:
 | MobileWAM | [paper-mobilewam-mobile-manipulation-wam](../entities/paper-rcl-2608-04657-mobilewam-bridging-world-action-models-to-mobile.md) | 从机械臂扩展到移动操作的 WAM。 |
 | MotionWAM | [paper-motionwam-humanoid-loco-manipulation-wam](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) | 实时人形 loco-manipulation：Video DiT 隐状态条件 Motion DiT。 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Core["行动主导型 WAM (未来建模与动作生成显式耦合)"]
+    Joint["统一模型 / 联合生成与排序"]
+    Causal["全因果与推理分支裁剪"]
+    Scale["移动操作与人形全身扩展"]
+
+    Core --> Joint
+    Core --> Causal
+    Core --> Scale
+
+    Joint --> J1["Unified World Models (UWM): 观测与动作同 Transformer 扩散"]
+    Joint --> J2["Cosmos Policy: 同潜在空间多未来排序"]
+    Joint --> J3["DreamZero: 同过程输出视频与动作 + 真实观测修正"]
+    Joint --> J4["FLEX-pi: RGB / 点图 / 语义多流 Joint WAM"]
+    Causal --> C1["Riemann-1.0: 全因果动作优先 (先出动作再条件化后果)"]
+    Causal --> C2["World Tokens: 训练期世界监督 + 推理期裁剪生成分支"]
+    Scale --> S1["MobileWAM (移动操作) · MotionWAM (Video DiT 条件 Motion DiT)"]
+```
+
 ## 关联页面
 
 - [六路线技术地图](./embodied-wm-six-routes-technology-map.md)

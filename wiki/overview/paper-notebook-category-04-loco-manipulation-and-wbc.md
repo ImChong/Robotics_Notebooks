@@ -34,6 +34,14 @@ original:
 
 上游路线图给出的主线（均据 README）：模仿 / 跟踪（DeepMimic、HDMI）→ 全身控制统一命令空间（HOVER、SONIC）→ 末端受力与柔顺（FALCON、CHIP）→ 多模态 / 视觉 / 语言接口（ULTRA、VIRAL、Ψ₀）。
 
+```mermaid
+flowchart LR
+    M["模仿与运动跟踪 (DeepMimic / HDMI)"] --> W["WBC 统一命令空间 (HOVER / SONIC / HOMIE)"]
+    W --> C["末端受力与柔顺控制 (FALCON / CHIP / GentleHumanoid)"]
+    W --> I["多模态视觉语言接口 (ULTRA / VIRAL / Ψ₀)"]
+    W --> S["跌倒安全与体育技能 (SafeFall / LATENT / Standing-up)"]
+```
+
 ## 工程实践
 
 读法建议（推断）：先读 README 路线图中的移动操作支线，再按主题（力自适应、跌倒安全、人类视频数据、体育技能）查下方索引；条目标「待深读」者尚无上游笔记，需回到论文原文。

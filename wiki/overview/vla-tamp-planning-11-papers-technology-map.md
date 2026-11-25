@@ -54,6 +54,17 @@ summary: "具身智能小站 2026-09-14 十一篇盘点：统一扩散 VLA、LIT
 - [Pelican-Sim 1.0](../entities/paper-pelican-sim.md) — arXiv:2609.12036（**部分开源**：占位仓 [ZouShilong1024/Pelican-Sim1.0](https://github.com/ZouShilong1024/Pelican-Sim1.0)，训练栈待发布）
 - [EVPeriscope](../entities/paper-evperiscope.md) — arXiv:2609.11920（**已开源**，复用）
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["VLA 微调与规划对齐 (11 篇)"]
+    Hub --> G1["扩散 VLA 与规划微调: Dynin-Robotics, DATAFARM, SCQ"]
+    Hub --> G2["抗视觉捷径与多模态传感: LIT, STAR (VTLA)"]
+    Hub --> G3["物体部件与灵巧/柔性操作: UniPart, Gripper MagBot, ArtManip, FoldNet++"]
+    Hub --> G4["仿真器与评测平台: Pelican-Sim 1.0, EVPeriscope"]
+```
+
 ## 关联页面
 
 - [VLA（Vision-Language-Action）](../methods/vla.md)

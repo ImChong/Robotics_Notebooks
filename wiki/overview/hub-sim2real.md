@@ -51,6 +51,29 @@ summary: "Sim2Real 知识链汇总：图谱知识链锚点；详细知识见 con
 | 文献索引 | RL Sim2Real（MDP 四要素 + 综述 2502.13187） | [AwesomeSim2Real](../entities/awesome-sim2real.md)（LongchaoDa） |
 | 文献索引 | Sim2Real / Real2Sim / R2S2R 闭环策展 | [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md)（sun254667；2024–2026） |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Sim["仿真策略训练 (动力学 / 感知 / 延迟 / 接触建模)"]
+    R1["SysID 系统辨识"]
+    R2["DR 域随机化"]
+    R3["在线适应 (如 RMA / 特权训练)"]
+    R4["残差与 Real2Sim2Real 闭环"]
+    Ver["在环验证 (HIL / PITL / 闭环误差分层)"]
+    Real["真机部署与在线安全微调"]
+
+    Sim --> R1
+    Sim --> R2
+    Sim --> R3
+    Sim --> R4
+    R1 --> Ver
+    R2 --> Ver
+    R3 --> Ver
+    R4 --> Ver
+    Ver --> Real
+```
+
 ## 与其他知识链的关系
 
 - **[安全微调](./hub-safe-fine-tuning.md)**：Sim2Real 链路的最后一段在线适配。

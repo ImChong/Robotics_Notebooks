@@ -37,6 +37,20 @@ summary: "Paper Notebooks 分类 09：状态估计（14 篇深读笔记索引）
 - [The Invariant Extended Kalman Filter as a Stable Observer](../entities/paper-notebook-the-invariant-extended-kalman-filter-as-a-stable.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer.html)
 - [VINS-Fusion](../entities/vins-fusion.md) — 见 wiki 实体页
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["09 状态估计 (14 篇)"] --> InEKF["不变扩展卡尔曼滤波 (InEKF)"]
+    Root --> Factor["因子图与视觉惯性 SLAM/VIO"]
+    Root --> Prop["腿足本体感知与接触表征"]
+    Root --> Hybrid["混合学习与力矩估计"]
+    InEKF --> InEKFN["稳定观测器理论 / Contact-Aided InEKF / Adaptive InEKF"]
+    Factor --> FactorN["GTSAM / ORB-SLAM3 / VINS-Fusion / Kimera / 专有 VIO 评测"]
+    Prop --> PropN["AutoOdom / GAIT / 接触表征学习 / 正运动学与接触因子"]
+    Hybrid --> HybridN["InEKFormer (混合状态估计) / PINN + UKF (无传感器力矩估计)"]
+```
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

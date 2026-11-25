@@ -78,6 +78,17 @@ summary: "微信公众号「机器人研发工程师」16 项开源算法/框架
 - **误区：TienKung-Lab = 天工 URDF 页。** 训练框架见 [TienKung-Lab](../entities/tienkung-lab.md)；本体见 [天工开源](../entities/tienkung-humanoid-open-source.md)。
 - **误区：MuJoCo Menagerie = MuJoCo 引擎。** 引擎见 [mujoco](../entities/mujoco.md)；Menagerie 仅为 **MJCF 资产库**。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    S1["1. 足式 RL 闭环 (RSL-RL / unitree_rl_gym / TienKung-Lab / AMP + unitree_mujoco)"] --> S2["2. 模仿学习流水线 (LeRobot + ALOHA / ACT / Diffusion Policy)"]
+    S2 --> S3["3. 动力学与优化底座 (Pinocchio / acados)"]
+    S3 --> S4["4. VLA 与世界模型 (Octo / OpenVLA / LingBot-World)"]
+    Assets["MuJoCo Menagerie 资产与 Awesome 导航"] --> S1
+    Assets --> S2
+```
+
 ## 关联页面
 
 - [Locomotion](../tasks/locomotion.md)

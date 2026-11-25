@@ -186,6 +186,26 @@ original:
 - 清单里混有非 arXiv 链接（OpenReview / IEEE），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
 - 上游清单仍在更新，本页是 2026-09-15 的快照；最新条目以上游仓库为准。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["Awesome Touch 技术地图 (65 篇)"]
+    Root --> Infra["基础设施: 传感器硬件 / 触觉仿真与 Sim2Real"]
+    Root --> Policy["触觉策略学习"]
+    Root --> VTLA["Tactile VLA 融合框架"]
+    Root --> WM["视触觉世界模型与 WAM"]
+    Infra --> I1["硬件与采集: ArrayTac, FreeTacMan, OSMO, TwinTac"]
+    Infra --> I2["GPU 仿真与 Sim2Real: TacSL, Taccel, Tac2Real, UniVTAC"]
+    Policy --> P1["51 触觉模仿学习 (IL)"]
+    Policy --> P2["52 触觉强化学习 (RL)"]
+    Policy --> P3["53 触觉扩散策略 (Diffusion)"]
+    VTLA --> V1["21 统一 VTLA 框架: AT-VLA, OmniVTLA, TaF-VLA, TacMamba"]
+    VTLA --> V2["22 基础模型增强触觉 VLA: Octopi-1.5, DreamTacVLA, VLH"]
+    WM --> W1["Visuo-Tactile World Models: ContactWorld, OmniVTA, ViTacWorld"]
+    WM --> W2["Tactile WAM: Dream-Tac, VT-WAM, VTAM, N0-TWAM"]
+```
+
 ## 关联页面
 
 - [Awesome Touch（列表实体）](../entities/awesome-touch.md)

@@ -44,6 +44,23 @@ summary: "Locomotion 步态知识链汇总：双足/人形/四足在不同地形
 
 - [《具身智能从入门到精通 Day 2：运动控制与运动先验》独立文章节点](./humanoid-motion-intelligence-day2-locomotion-motion-priors.md)：按本体估计、感知行走、运动先验与技能调用，提供 34 篇论文的逐篇详情入口。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["Locomotion 步态控制谱系"]
+    Classic["经典动力学与规划 (LIP / ZMP / Capture Point DCM / MPC)"]
+    RL["端到端 RL / 混合 MPC+WBC"]
+    Plan["步态与地形适应 (Gait Generation · Footstep Planning · 楼梯/跑酷越障)"]
+    Deps["支撑链路 (状态估计 · Contact Dynamics · WBC · Sim2Real)"]
+
+    Root --> Classic
+    Root --> RL
+    Classic --> Plan
+    RL --> Plan
+    Plan --> Deps
+```
+
 ## 与其他知识链的关系
 
 - **[WBC](./hub-wbc.md)**：执行层协调全身满足行走约束。

@@ -71,6 +71,18 @@ summary: "具身智能小站 2026-09-24 十三篇盘点：生成式控制适配�
 | 12 | Remote Surfaces | [remote-surfaces-electrovibration](../entities/paper-remote-surfaces-electrovibration.md) | 电振动触觉把远程刚性接触映射到触摸屏，改善遥操作响应时间与临场感（N=21 用户研究）。… |
 | 13 | Robot Group Joining | [robot-group-joining](../entities/paper-robot-group-joining.md) | 语言引导预测「社会上合适的加入站位」，而非仅几何路径到固定目标点。… |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["具身智能 13 篇 (2026-09-24 盘点)"] --> Deep["深读: NowWAM (沿去噪轨迹适配当前观测)"]
+    Root --> Follow["跟进: TANDEM (TAMP+按需遥操作) / ForgetMimic (动作级选择性遗忘)"]
+    Root --> Skim["扫读其余 10 篇"]
+    Skim --> V["视角与后训练诊断: InfiNoVA / DissectVLA / PLANTORV"]
+    Skim --> O["优化与双臂装配: Amplify / BrickCraft-Duo / Stein-ADMM"]
+    Skim --> S["人形、触觉与多机安全: DAVIS / MRSVLMRA / Remote Surfaces / Robot Group Joining"]
+```
+
 ## 关联页面
 
 - [VLA 方法页](../methods/vla.md)

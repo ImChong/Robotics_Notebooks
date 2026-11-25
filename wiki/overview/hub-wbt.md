@@ -69,6 +69,19 @@ WBT 流水线可概括为：参考动作采集 → [重定向](../concepts/motio
 - [BeyondMimic](../methods/beyondmimic.md)
 - [Humanoid RL Motion Control Body System Stack](./humanoid-rl-motion-control-body-system-stack.md)
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    A["参考动作采集 (人体动捕 / 视频)"] --> B["动作重定向 (Motion Retargeting)"]
+    B --> C["参考清洗与训练数据管线"]
+    C --> D["RL + 模仿奖励训练 (DeepMimic / AMP)"]
+    D --> E["主流 WBT 跟踪路线 (SONIC / BeyondMimic / SD-AMP / Heracles)"]
+    E --> F["跨具身迁移 (Any2Any) 与统一恢复策略"]
+    F --> G["域随机化与 Sim2Real 验证"]
+    G --> H["人形真机全身部署 (走 / 跑 / 恢复 / 动作跟踪)"]
+```
+
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
