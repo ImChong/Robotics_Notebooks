@@ -239,6 +239,7 @@ flowchart LR
 - [AFFECT：动作响应忠实度训练](../wiki/entities/paper-affect-action-effect-matching.md) — 区分生成逼真与真实动作后果，适合作为执行前模型评估。
 - [WAM-Policy：四足生成策略适配与加速](../wiki/entities/paper-wam-policy.md) — OPSD/M-OPD 让生成式策略进入四足全身控制，注意仿真与 Go2 真机落差。
 - [ThinkWAM：提议—再思考—精炼](../wiki/entities/paper-thinkwam-2611-21258.md) — 执行前以预测未来与动作残差重新生成动作；两遍推理的真机 101.2 ms 与 LIBERO 153.48 ms 不同口径。
+- [SANA-Robot：混合记忆与异步执行](../wiki/entities/paper-sana-robot-2611-28943.md) — 对照有状态策略如何按相位缓冲历史；区分 115 ms/块、30 Hz 真机执行和低位量化折中。
 - [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
 - **训练期蒸馏的低延迟对照：** [W2A](../wiki/entities/paper-w2a-world-priors-action-models.md) — 用 Cosmos-Predict2 中间层世界先验监督 action DiT，推理时不再运行视频模型；LIBERO 95.9%、A100 预测 55 ms（论文报告）。它不属于部署时执行/修正/筛选三种显式 WAM 接口，适合用来比较「世界知识内化在权重中」与「上线保留世界模型」的延迟及泛化边界；官方算法代码尚未公开（2026-11-16 核查）。
