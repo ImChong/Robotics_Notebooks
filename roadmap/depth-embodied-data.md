@@ -207,6 +207,7 @@ flowchart LR
 
 ### 推荐读什么
 - [TouchTwin：真实触觉约束的数据增广](../wiki/entities/paper-touchtwin-2611-17619.md)：同步真实触觉与 MuJoCo 物理回放，扩充有力标签的示范。
+- [Dex-X Force：力标签仿真抓举轨迹](../wiki/entities/dataset-dexx-force.md) — 仿真策略生成五指三维接触力；区分目标物体与桌面接触，并按父参考和物体划分数据。
 - [RoboTryOn：人类视频合成带动作标签的灵巧机器人示范](../wiki/entities/paper-robotryon.md) — Stage 4 人视频→机器人数据的生成式路线；重点验收视频真实性、IDM 动作回放、腕部 IK 与数据成本（训练仍需本体机器人数据）。
 - [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) — 长尾与罕见物理交互的低成本合成
 - [Spatial Foundry：空间智能多模态数据集](../wiki/entities/paper-spatial-foundry.md) — 以可编辑住宅场景控制相机路径和对象状态，提供对齐的 RGB-D、几何与视频监督；完整数据须核实访问许可，不当作机器人动作演示。

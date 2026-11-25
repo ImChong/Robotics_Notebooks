@@ -1,7 +1,7 @@
 ---
 type: entity
 status: complete
-updated: 2026-11-12
+updated: 2026-11-25
 project_id: dex-x
 arxiv: "2609.07747"
 venue: "CoRL 2026（项目页标注 Accepted；arXiv 摘要页未注明）"
@@ -35,6 +35,7 @@ original:
 sources:
   - ../../sources/papers/dex-x_arxiv_2609_07747.md
   - ../../sources/blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md
+  - ../../sources/datasets/dexx-force.md
 summary: "Dex-X（arXiv:2609.07747，清华 IIIS / Sharpa 等）从单目 RGB 人类视频重建手-物轨迹，在 Isaac Lab 中用 RL 教师借物理接触补全触觉，再 DAgger 蒸馏为点云 + 本体 + 指尖触觉学生，零样本部署 Franka FR3 + Sharpa Wave：六类仿真教师平均 65.9%、真机方块拾取 93%（均为论文自报）；教程版代码已开源。"
 ---
 
@@ -67,7 +68,7 @@ summary: "Dex-X（arXiv:2609.07747，清华 IIIS / Sharpa 等）从单目 RGB �
 | **arXiv** | [2609.07747](https://arxiv.org/abs/2609.07747)，v1 2026-09-07，当前 v3 2026-10-01 |
 | **平台** | Franka Research 3 臂 + Sharpa Wave 手（单臂 29 DoF，双臂 58 DoF）、固定 RealSense 深度相机、指尖触觉传感器；Isaac Lab 训练，30 Hz 部署 |
 | **发表** | CoRL 2026（项目页标注 Accepted） |
-| **开源** | **已开源（教程版）**：[gcfy63821/dexx_lab](https://github.com/gcfy63821/dexx_lab)；完整训练数据集未见（见复现边界） |
+| **代码与数据** | [教程版代码](https://github.com/gcfy63821/dexx_lab)；另公开 [Dex-X Force](./dataset-dexx-force.md) 仿真抓举 rollout，不等于论文原始及完整训练数据 |
 
 ## 为什么重要
 
@@ -242,15 +243,17 @@ sequenceDiagram
 
 ## 复现边界
 
-| 项 | 状态（2026-10-16 核查项目页与 GitHub README） |
+| 项 | 状态（仓库旧核查保留；2026-11-25 补数据发布） |
 |----|----------------------------------------------|
 | 项目页 | [dexx-code.github.io/dexx-code](https://dexx-code.github.io/dexx-code/)，列 arXiv 与 GitHub 链接，无“coming soon” |
 | 代码 | **已开源**：[gcfy63821/dexx_lab](https://github.com/gcfy63821/dexx_lab)，覆盖 retarget、教师、DAgger 学生、评测、真机部署；代码 MIT，随附 FR3 / Sharpa Wave 资产为 Apache-2.0；README 自称教程版 |
 | 权重 | `checkpoints/` 目录列有 `teacher_poseobs.pth`、`teacher_poseobs_T0.pth`、`student_lean_v6_L1.pth`；本次未核对文件大小与内容 |
-| 数据 | 仅 4 条样例示范；项目页未列数据集 / Hugging Face；论文所用完整视频与重定向数据未见发布 |
+| 数据 | 教程仓样例与后续 [Dex-X Force](./dataset-dexx-force.md) 分开。后者发布 10,343 条带五指 3D 接触力的单臂 FR3–Sharpa 仿真抓举执行；不等同论文的完整人类视频、训练数据、双手任务或真机记录 |
 | 真机 | 需 Franka FR3 + Sharpa Wave + RealSense D455 与三机布局；ROS2 后端为实验性 |
 
 ## 关联页面
+
+- [Dex-X Force](./dataset-dexx-force.md)：数据发布保留逐指三维接触力；论文部署学生使用标量力幅值，字段口径不同。
 
 - [Sharpa Robotics（夏帕机器人）](./sharpa-robotics.md) — 本文所属的公司学术线与 System 0/1/2 叙事
 - [TacBPM](./paper-tacbpm.md) — 同一叙事里的“隐空间接口”，对照点云接口
