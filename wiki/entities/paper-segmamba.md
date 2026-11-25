@@ -118,6 +118,8 @@ v4 Table 2：BraTS2023 的平均 Dice 为 91.32%，HD95 为 3.56；AIIB2023 的 
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 作为三维分割架构的跨域参考；医学体数据实验不构成机器人在线感知性能证据。
+
 - [U-Mamba](./u-mamba.md)：独立的医学分割方法。
 - [U-Net](../methods/unet.md)：编码器解码器与跳跃连接。
 - [FCN](../methods/fcn-semantic-segmentation.md)：密集分割输出。
