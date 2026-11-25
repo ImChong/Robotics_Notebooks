@@ -96,6 +96,7 @@ flowchart LR
 - [Motion Retargeting Objective](../wiki/formalizations/motion-retargeting-objective.md) — 优化目标形式化
 - [Gauss–Newton](../wiki/methods/gauss-newton.md)、[Levenberg–Marquardt](../wiki/methods/levenberg-marquardt.md)、[L-BFGS](../wiki/methods/l-bfgs.md) — 求解器族
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md) 的"主要方法"分节
+- [RoboKit（arXiv:2611.20185）](../wiki/entities/robokit-openrobokit.md) — Warp GPU 并行多初值 IK、GN/LM 与混合碰撞代价；适合复现实时手部/人形重定向的求解器选型，须区分批量总时间与单帧延迟。
 
 ### 学完输出什么
 - 一个能跑的末端约束 IK 重定向脚本
@@ -127,6 +128,8 @@ flowchart LR
 - [HiPHI](../wiki/entities/paper-hiphi.md) — 90 Hz / 55 关节 BVH 与同步物体 CSV/OBJ；先统一厘米/米、Y-up 与时间，再做人体–物体联合重定向；数据门控，Viewer 已开放
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 选型主入口
 - [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md) — 视频/低成本采集
+- [FAB](../wiki/entities/paper-fab.md) — Stage 2 单目视频稠密点与接触估计，进一步对齐静态场景并生成G1参考；人体帧率与整段优化耗时分开评估。
+- [HumanCalib](../wiki/entities/humancalib.md) — Stage 2 多相机采集的**外参前处理**：同步视频 + 已知内参 + 身高，由走路人体估计相机几何/尺度/竖直方向，导出 Pose2Sim；不是最终人体动作或重定向结果
 - [EgoMo3R](../wiki/entities/paper-egomo3r.md) — 第一视角视频→统一场景与 SMPL-X 全身运动，可作为重定向前的参考动作数据源；本身不执行机器人重定向
 - [MacroHands](../wiki/entities/macrohands.md) — Ego 单/双目 3D 手部 + 相机位姿上游数据质量；读 Cam-MPJPE、Action MPJPE 与误认率，**不是**机器人重定向器（官方暂未开放代码）
 - [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md) — 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
@@ -176,6 +179,7 @@ flowchart LR
 - [WARP](../wiki/entities/paper-warp-whole-body-retargeting.md)（Georgia Tech）— 闭式 c-SEW + lazy mobile-base，把 Meta Quest 离线人类全身演示转为精确、一致、可开环回放的动作，支撑 RB-Y1 零样本全身移动操作 BC；代码未列
 - [UMR](../wiki/entities/paper-umr-unified-motion-retargeting.md)（HKUST-GZ / 诺亦腾 / 汉阳大学）— 把人–机对应从"手写关键点表"改成规范 T-pose 上学到的稠密点云索引对应，同一套点对同时传表面位姿与接触向量，换源换机主要复用对应而非重画映射；LAFAN1 全局体段误差低于 GMR，接触任务关节误差相对 OmniRetarget 约 −40–56%，G1 真机旋踢/捡球/爬楼；代码待发布
 - [STMR 四足时空重定向](../wiki/entities/stmr-quadruped-retargeting.md) — 四足支线主入口，见下节
+- [DTMR｜面向腿式机器人的稠密时间动作重定向](../wiki/entities/paper-dense-temporal-motion-retargeting.md) — SoMa-RT 动作参考后接 GPU 并行 MPPI，在每个控制步联合优化关节控制与参考相位；对照 STMR 的分段时序优化，适合高动态跳跃和时间局部伸缩。
 - [STR](../wiki/entities/paper-str-spatiotemporal-retargeting.md) — 时空重定向：把重定向精度集中分配给任务关键帧、关键身体部位与物体接触，再训练接触感知人形控制
 
 ### 四足支线：动物 / 视频关键点 → 四足参考
@@ -317,6 +321,7 @@ flowchart LR
 **方向 D：重定向即数据引擎**
 - 大规模重定向管线为 BFM / 全身跟踪基座批量生产训练数据
 - 关键词：[OmniRetarget 数据集](../wiki/entities/omniretarget-dataset.md)、[Query：人形训练数据管线](../wiki/queries/humanoid-training-data-pipeline.md)、[BFM 纵深路线](depth-bfm.md)
+- [BeyondRetarget Plus：互联网视频到人形参考动作](../wiki/entities/paper-beyondretarget-monocular-humanoid.md#beyondretarget-plus2026-11-22-扩展) — Stage 6 离线数据引擎案例：移动相机/全局轨迹、冻结 TRAM/VIMO 与 C-RC1 后处理；与 base 实时遥操作能力分开验证。
 
 ---
 

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, manipulation]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-21
 summary: "SAC 是连续控制中最主流的 off-policy 最大熵算法：用 Replay Buffer 反复利用经验、双 Q 抑制高估、自动调温度平衡探索与利用，样本效率远高于 PPO，是真机 RL 与精细操作的首选。"
 related:
   - ./td3.md
@@ -30,6 +30,9 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
   - ../../sources/papers/v_simba_arxiv_2608_07870.md
+  - ../../sources/papers/sac_reading_arxiv_1801_01290.md
+original:
+  - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/sac_reading_arxiv_1801_01290.md
 ---
 
@@ -61,6 +64,8 @@ sources:
 - **[FlashSAC](./flashsac.md)**（2026）在 SAC 上引入 scaling 式少更新 + 大网络 + 范数约束，面向高维机器人 sim-to-real，在 G1 盲行走等任务上墙钟可较 PPO 缩短约一个数量级。
 
 ## 主要技术路线
+
+## 核心机制
 
 ### 1. 最大熵目标
 
@@ -121,6 +126,16 @@ $$
 - **安全验证侧用法**：Adaptive Stress Testing 可用 SAC 作对抗策略，在商业 AV 黑盒上搜索致撞感知噪声轨迹（见 [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md)）。
 - **视觉架构**：像素连续控制上，[V-Simba](../entities/paper-v-simba.md) 把 Simba 归一化与 pointwise conv 接到带增强的 SAC，样本效率对齐或超过 DrQ-v2，且更省算力（Apache-2.0 已开源）。
 
+## 工程实践
+
+- **开启自动温度与重参数化边界检查：** 目标熵常设为 $-\dim(\mathcal{A})$ 并配合 `tanh` 挤压与 Jacobians 对数概率修正，避免动作饱和导致熵估计失真。
+- **控制 UTD 比例防止 Q 过拟合：** 真机高 UTD（Update-To-Data）训练需配合 LayerNorm/weight norm 或参考 FlashSAC 范数约束，防止早期少量经验拉爆 Critic 梯度。
+
+## 常见误区或局限
+
+- **万环境 GPU 并行反而吃亏：** 在 Isaac Gym/Lab 等超大规模并行环境下，Replay Buffer 吞吐与高频梯度步开销易成瓶颈，墙钟通常不如 PPO（除非改用 FlashSAC 等批化少更新变体）。
+- **Replay Buffer 非平稳漂移：** 硬件老化或安全重置频发时，旧经验可能误导当前 Critic，需要滑窗容量控制或重启热身。
+
 ## 关联页面
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
@@ -144,3 +159,9 @@ $$
 - Haarnoja, T., et al. (2018). *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor*. <https://arxiv.org/abs/1801.01290>
 - Haarnoja, T., et al. (2018). *Soft Actor-Critic Algorithms and Applications*. <https://arxiv.org/abs/1812.05905>
 - Fujimoto, S., et al. (2018). *Addressing Function Approximation Error in Actor-Critic Methods (TD3)*. <https://arxiv.org/abs/1802.09477>
+
+## 推荐继续阅读
+
+- [PPO vs SAC：机器人 RL 实践对比](../queries/ppo-vs-sac-for-robots.md)
+- [FlashSAC（快速稳定 SAC）](./flashsac.md)
+- [V-Simba：视觉连续控制 SAC](../entities/paper-v-simba.md)

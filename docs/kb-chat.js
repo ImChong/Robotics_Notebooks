@@ -6,12 +6,19 @@
     endpoint: 'https://robotics-notebooks-kb-chat.chongliu.workers.dev/chat',
     turnstileSiteKey: '0x4AAAAAAGIWdfoeyhjsNN-h',
     maxQuestionLength: 300,
-    requestTimeoutMs: 10000,
+    requestTimeoutMs: 22000,
   };
 
   var CONTENT_URL_RE = /^exports\/page-content\/([a-f0-9]{64})\.json$/;
   var SAFE_NODE_URL_RE =
     /^(?:detail|roadmap)\.html\?id=[A-Za-z0-9%._~!*()-]+(?:&(?:cite|cite_h)=[A-Za-z0-9%._~!*()'-]+)*(?:#[A-Za-z0-9%._~!*()'-]+)?$/;
+  var SAFE_STATIC_PAGE_URL_RE =
+    /^(?:star-history|change-log|graph|hubs|index|company|lab)\.html(?:\?[A-Za-z0-9%=&._~!*()-]+)?(?:#[A-Za-z0-9%._~!*()'-]+)?$/;
+  var AUTHOR_WEBSITE_URL = 'https://imchong.github.io/index.html';
+  var ALLOWED_EXTERNAL_URLS = new Set([
+    'https://imchong.github.io/index.html',
+    'https://imchong.github.io/',
+  ]);
   var WORD_OR_CJK_RE = /[A-Za-z0-9_+\-.\u0370-\u03ff]+|[\u4e00-\u9fff]+/g;
   var CODE_FENCE_RE = /```[\s\S]*?```/g;
   var HTML_TAG_RE = /<[^>]+>/g;
@@ -79,8 +86,13 @@
       sending: '查找中…',
       readonlyNotice: '基于站内文档回答 · 公开问答匿名记录用于改进知识库',
       sourcesLabel: '参考来源',
+      showExcerpts: '显示摘录 ▾',
+      hideExcerpts: '收起摘录 ▴',
+      defaultPassageLabel: '正文摘录',
       ungrounded: '暂未在站内找到直接相关内容，可换个短词、英文术语，或逛逛知识图谱。',
       greetingReply: '你好！我是机器人知识库只读问答助手。请直接提问站内技术概念、方法或论文（如「什么是全身控制 WBC？」），或点击上方示例问题。',
+      authorReply: '本知识库作者为刘冲（Chong Liu），个人网站：[' + AUTHOR_WEBSITE_URL + '](' + AUTHOR_WEBSITE_URL + ')',
+      trendFallbackUnavailable: '暂未获取到最新节点趋势统计，可前往 [交互式节点趋势图](star-history.html#nodes-daily) 或 [更新记录](change-log.html) 查看。',
       localAnswerIntro: '找到以下站内相关内容：',
       fallbackRateLimited: '提问太频繁，已为你切为站内检索结果。',
       fallbackQuota: 'AI 助手当前繁忙，已为你切为站内检索结果。',
@@ -89,7 +101,12 @@
       cachedTag: '来自常见问答缓存',
       emptyError: '请输入至少 2 个字的问题。',
       tooLongError: '问题请控制在 {max} 字以内。',
-      starters: ['什么是全身控制 WBC？', 'Sim2Real 如何缩小仿真到真机差距？', 'VLA 模型与传统控制怎么配合？'],
+      starters: [
+        '什么是全身控制 WBC？',
+        'Sim2Real 如何缩小仿真到真机差距？',
+        'VLA 模型与传统控制怎么配合？',
+        '最近本知识库有哪些节点趋势？',
+      ],
       fallbackLinksText: '浏览知识图谱',
       metaCommunity: '社区',
       metaRoadmap: '路线',
@@ -117,8 +134,13 @@
       sending: 'Searching…',
       readonlyNotice: 'Grounded in the wiki · Public Q&A logged anonymously',
       sourcesLabel: 'Sources',
+      showExcerpts: 'Show excerpts ▾',
+      hideExcerpts: 'Hide excerpts ▴',
+      defaultPassageLabel: 'Excerpt',
       ungrounded: 'No direct match found in the wiki. Try shorter keywords or explore the Knowledge Graph.',
       greetingReply: 'Hello! I am the read-only Robotics_Notebooks Q&A assistant. Please ask about robotics concepts, methods, or papers (e.g., "What is Whole-Body Control (WBC)?"), or tap a starter prompt above.',
+      authorReply: 'The author of Robotics Notebooks is Chong Liu. Personal website: [' + AUTHOR_WEBSITE_URL + '](' + AUTHOR_WEBSITE_URL + ')',
+      trendFallbackUnavailable: 'Trend statistics could not be loaded right now. Open the [interactive node trends chart](star-history.html#nodes-daily) or [change log](change-log.html).',
       localAnswerIntro: 'Relevant sections from the wiki:',
       fallbackRateLimited: 'Too many requests — showing wiki search results instead.',
       fallbackQuota: 'AI assistant is busy right now — showing wiki search results instead.',
@@ -131,6 +153,7 @@
         'What is Whole-Body Control (WBC)?',
         'How does Sim2Real bridge domain gaps?',
         'How do VLA models connect with low-level control?',
+        'What are the recent node trends in this wiki?',
       ],
       fallbackLinksText: 'Browse Knowledge Graph',
       metaCommunity: 'Community',
@@ -218,7 +241,7 @@
 
   function safeInternalNodeUrl(rawUrl, fallbackId) {
     var candidate = String(rawUrl || '').trim();
-    if (SAFE_NODE_URL_RE.test(candidate)) {
+    if (SAFE_NODE_URL_RE.test(candidate) || SAFE_STATIC_PAGE_URL_RE.test(candidate)) {
       return candidate;
     }
     var id = String(fallbackId || '').trim();
@@ -226,6 +249,19 @@
       return '';
     }
     return (id.indexOf('roadmap-') === 0 ? 'roadmap.html?id=' : 'detail.html?id=') + encodeURIComponent(id);
+  }
+
+  function safeChatMarkdownUrl(rawUrl) {
+    var trimmed = String(rawUrl || '').trim();
+    if (!trimmed) return null;
+    if (ALLOWED_EXTERNAL_URLS.has(trimmed)) {
+      return { href: trimmed, external: true };
+    }
+    var internal = safeInternalNodeUrl(trimmed, '');
+    if (internal) {
+      return { href: internal, external: false };
+    }
+    return null;
   }
 
   function detectInitialLang() {
@@ -328,6 +364,10 @@
   var _liteIndex = null;
   var _litePromise = null;
   var _catalogPromise = null;
+  var _graphStatsData = null;
+  var _graphStatsPromise = null;
+  var _wikiActivityData = null;
+  var _wikiActivityPromise = null;
   var _bodyCache = new Map();
   var _turnstileScriptPromise = null;
 
@@ -349,7 +389,11 @@
   function ensureLiteIndex() {
     if (_liteIndex) return Promise.resolve(_liteIndex);
     if (_litePromise) return _litePromise;
-    _litePromise = fetchJsonWithTimeout('search-index-lite.json', 20000)
+    var sharedPromise = (typeof window !== 'undefined' && window.RNSearchIndexLite &&
+        typeof window.RNSearchIndexLite.ensure === 'function')
+      ? window.RNSearchIndexLite.ensure()
+      : fetchJsonWithTimeout('search-index-lite.json', 20000);
+    _litePromise = Promise.resolve(sharedPromise)
       .then(function (data) {
         if (!data || !Array.isArray(data.docs)) throw new Error('Invalid lite search index');
         _liteIndex = data;
@@ -385,6 +429,340 @@
       }
       return catalog;
     });
+  }
+
+  function ensureGraphStats() {
+    if (_graphStatsData) return Promise.resolve(_graphStatsData);
+    if (_graphStatsPromise) return _graphStatsPromise;
+    _graphStatsPromise = fetchJsonWithTimeout('exports/graph-stats.json', 15000)
+      .then(function (data) {
+        if (!data || typeof data !== 'object') throw new Error('Invalid graph-stats');
+        _graphStatsData = data;
+        return data;
+      })
+      .catch(function (err) {
+        _graphStatsPromise = null;
+        throw err;
+      });
+    return _graphStatsPromise;
+  }
+
+  function expandWikiActivityClient(data) {
+    if (!data) return data;
+    if (typeof window !== 'undefined' && window.RNExportFormats && typeof window.RNExportFormats.expandWikiActivity === 'function') {
+      return window.RNExportFormats.expandWikiActivity(data);
+    }
+    if (!data.node_index || !Array.isArray(data.days)) return data;
+    var index = data.node_index;
+    var days = data.days;
+    var expandedDays = [];
+    for (var di = 0; di < days.length; di += 1) {
+      var day = days[di];
+      if (!day) continue;
+      var refs = day.nodes;
+      if (!Array.isArray(refs) || !refs.length || !Array.isArray(refs[0])) {
+        expandedDays.push(day);
+        continue;
+      }
+      var nodes = [];
+      for (var ri = 0; ri < refs.length; ri += 1) {
+        var ref = refs[ri];
+        var meta = index[ref[0]] || {};
+        var node = { detail_id: ref[0] };
+        var keys = Object.keys(meta);
+        for (var ki = 0; ki < keys.length; ki += 1) {
+          node[keys[ki]] = meta[keys[ki]];
+        }
+        if (ref[1]) node.action = ref[1];
+        nodes.push(node);
+      }
+      expandedDays.push({
+        date: day.date,
+        count: day.count,
+        added_count: day.added_count,
+        maintained_count: day.maintained_count,
+        nodes: nodes,
+      });
+    }
+    return {
+      generated_at: data.generated_at,
+      source: data.source,
+      format: data.format,
+      days: expandedDays,
+    };
+  }
+
+  function ensureWikiActivity() {
+    if (_wikiActivityData) return Promise.resolve(_wikiActivityData);
+    if (_wikiActivityPromise) return _wikiActivityPromise;
+    _wikiActivityPromise = fetchJsonWithTimeout('exports/wiki-activity.json', 20000)
+      .then(function (data) {
+        var expanded = expandWikiActivityClient(data);
+        if (!expanded || !Array.isArray(expanded.days)) throw new Error('Invalid wiki-activity');
+        _wikiActivityData = expanded;
+        return expanded;
+      })
+      .catch(function (err) {
+        _wikiActivityPromise = null;
+        throw err;
+      });
+    return _wikiActivityPromise;
+  }
+
+  var DAY_MS = 86400000;
+  function parseIsoDateMs(raw) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(raw || '').trim());
+    if (!m) return NaN;
+    return Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  }
+
+  function formatUtcDateIso(ms) {
+    return new Date(ms).toISOString().slice(0, 10);
+  }
+
+  function computeClientNodeTrends(activityData, graphStats) {
+    var expanded = expandWikiActivityClient(activityData);
+    var daysRaw = expanded && Array.isArray(expanded.days) ? expanded.days : [];
+    var parsed = [];
+    for (var i = 0; i < daysRaw.length; i += 1) {
+      var d = daysRaw[i];
+      if (!d) continue;
+      var ms = parseIsoDateMs(d.date);
+      if (Number.isNaN(ms)) continue;
+      parsed.push({ ms: ms, date: String(d.date), day: d });
+    }
+    var stats = graphStats && typeof graphStats === 'object' ? graphStats : {};
+    var baseResult = {
+      as_of: String(stats.generated_at || (expanded && expanded.generated_at) || ''),
+      latest_activity_date: '',
+      total_nodes: Number(stats.node_count || 0),
+      total_edges: Number(stats.edge_count || 0),
+      total_communities: Number(stats.community_count || 0),
+      windows: {},
+      daily_recent: [],
+      monthly_recent: [],
+      recent_added_nodes: [],
+    };
+    if (parsed.length === 0) return baseResult;
+
+    parsed.sort(function (a, b) {
+      return a.ms - b.ms;
+    });
+
+    var seenAdded = new Set();
+    var dailyRecords = [];
+    for (var di = 0; di < parsed.length; di += 1) {
+      var rec = parsed[di];
+      var rawNodes = Array.isArray(rec.day.nodes) ? rec.day.nodes : [];
+      var addedDay = [];
+      var inferredMaintained = 0;
+      for (var ni = 0; ni < rawNodes.length; ni += 1) {
+        var node = rawNodes[ni];
+        if (!node || typeof node !== 'object') continue;
+        if (node.action === 'added') {
+          var key = node.path ? String(node.path) : (node.detail_id ? 'detail:' + String(node.detail_id) : '');
+          if (key) {
+            if (seenAdded.has(key)) continue;
+            seenAdded.add(key);
+          }
+          addedDay.push(node);
+        } else if (node.action) {
+          inferredMaintained += 1;
+        }
+      }
+      var maintained = typeof rec.day.maintained_count === 'number'
+        ? rec.day.maintained_count
+        : inferredMaintained;
+      dailyRecords.push({
+        ms: rec.ms,
+        date: rec.date,
+        addedNodes: addedDay,
+        maintained: maintained,
+      });
+    }
+
+    var latestMs = dailyRecords[dailyRecords.length - 1].ms;
+    var latestDateStr = dailyRecords[dailyRecords.length - 1].date;
+    baseResult.latest_activity_date = latestDateStr;
+
+    var windowSpecs = [
+      ['7d', 7],
+      ['14d', 14],
+      ['30d', 30],
+      ['90d', 90],
+    ];
+    for (var wi = 0; wi < windowSpecs.length; wi += 1) {
+      var wKey = windowSpecs[wi][0];
+      var wDays = windowSpecs[wi][1];
+      var startMs = latestMs - (wDays - 1) * DAY_MS;
+      var prevEndMs = startMs - DAY_MS;
+      var prevStartMs = startMs - wDays * DAY_MS;
+      var added = 0;
+      var maintainedSum = 0;
+      var prevAdded = 0;
+      var prevMaintained = 0;
+      var activeDays = 0;
+      var openSourceAdded = 0;
+      var commCounts = Object.create(null);
+      var typeCounts = Object.create(null);
+
+      for (var ri = 0; ri < dailyRecords.length; ri += 1) {
+        var dr = dailyRecords[ri];
+        if (dr.ms >= startMs && dr.ms <= latestMs) {
+          var dAdded = dr.addedNodes.length;
+          added += dAdded;
+          maintainedSum += dr.maintained;
+          if (dAdded + dr.maintained > 0) activeDays += 1;
+          for (var ai = 0; ai < dr.addedNodes.length; ai += 1) {
+            var an = dr.addedNodes[ai];
+            if (an.has_repo) openSourceAdded += 1;
+            var shortComm = shortenCommunityLabel(an.community_label || '');
+            if (shortComm && shortComm !== '其他') {
+              commCounts[shortComm] = (commCounts[shortComm] || 0) + 1;
+            }
+            var nType = String(an.type || 'unknown');
+            typeCounts[nType] = (typeCounts[nType] || 0) + 1;
+          }
+        } else if (dr.ms >= prevStartMs && dr.ms <= prevEndMs) {
+          prevAdded += dr.addedNodes.length;
+          prevMaintained += dr.maintained;
+        }
+      }
+
+      var topCommunities = Object.keys(commCounts)
+        .sort(function (a, b) {
+          return commCounts[b] - commCounts[a] || a.localeCompare(b);
+        })
+        .slice(0, 6)
+        .map(function (label) {
+          return { label: label, added: commCounts[label] };
+        });
+
+      var sortedTypes = {};
+      Object.keys(typeCounts)
+        .sort(function (a, b) {
+          return typeCounts[b] - typeCounts[a] || a.localeCompare(b);
+        })
+        .forEach(function (k) {
+          sortedTypes[k] = typeCounts[k];
+        });
+
+      baseResult.windows[wKey] = {
+        days: wDays,
+        start_date: formatUtcDateIso(startMs),
+        end_date: latestDateStr,
+        added: added,
+        prev_added: prevAdded,
+        maintained: maintainedSum,
+        prev_maintained: prevMaintained,
+        active_days: activeDays,
+        open_source_added: openSourceAdded,
+        top_communities: topCommunities,
+        type_breakdown: sortedTypes,
+      };
+    }
+
+    var activeDaily = [];
+    var monthlyAgg = Object.create(null);
+    for (var fi = 0; fi < dailyRecords.length; fi += 1) {
+      var item = dailyRecords[fi];
+      var aLen = item.addedNodes.length;
+      if (aLen + item.maintained > 0) {
+        activeDaily.push({ date: item.date, added: aLen, maintained: item.maintained });
+      }
+      var month = item.date.slice(0, 7);
+      if (!monthlyAgg[month]) monthlyAgg[month] = { added: 0, maintained: 0 };
+      monthlyAgg[month].added += aLen;
+      monthlyAgg[month].maintained += item.maintained;
+    }
+    baseResult.daily_recent = activeDaily.slice(-14);
+    baseResult.monthly_recent = Object.keys(monthlyAgg)
+      .sort()
+      .slice(-6)
+      .map(function (m) {
+        return { month: m, added: monthlyAgg[m].added, maintained: monthlyAgg[m].maintained };
+      });
+
+    var recentNodes = [];
+    var seenRecent = new Set();
+    for (var bi = dailyRecords.length - 1; bi >= 0 && recentNodes.length < 12; bi -= 1) {
+      var dayRec = dailyRecords[bi];
+      for (var nj = 0; nj < dayRec.addedNodes.length && recentNodes.length < 12; nj += 1) {
+        var rNode = dayRec.addedNodes[nj];
+        var did = String(rNode.detail_id || '');
+        if (did) {
+          if (seenRecent.has(did)) continue;
+          seenRecent.add(did);
+        }
+        var rEntry = {
+          detail_id: did,
+          label: String(rNode.label || did),
+          date: dayRec.date,
+          type: String(rNode.type || ''),
+        };
+        var sComm = shortenCommunityLabel(rNode.community_label || '');
+        if (sComm && sComm !== '其他') rEntry.community_label = sComm;
+        if (rNode.has_repo) rEntry.has_repo = true;
+        recentNodes.push(rEntry);
+      }
+    }
+    baseResult.recent_added_nodes = recentNodes;
+    return baseResult;
+  }
+
+  function resolveNodeTrends() {
+    return ensureGraphStats()
+      .catch(function () {
+        return null;
+      })
+      .then(function (graphStats) {
+        if (
+          graphStats &&
+          graphStats.node_trends &&
+          graphStats.node_trends.windows &&
+          Object.keys(graphStats.node_trends.windows).length > 0
+        ) {
+          return { trends: graphStats.node_trends, graphStats: graphStats };
+        }
+        return ensureWikiActivity()
+          .catch(function () {
+            return null;
+          })
+          .then(function (activityData) {
+            if (activityData && Array.isArray(activityData.days) && activityData.days.length > 0) {
+              return { trends: computeClientNodeTrends(activityData, graphStats), graphStats: graphStats };
+            }
+            if (graphStats && typeof graphStats === 'object') {
+              var latestNodes = Array.isArray(graphStats.latest_wiki_nodes)
+                ? graphStats.latest_wiki_nodes.slice(0, 12).map(function (n) {
+                    return {
+                      detail_id: String(n.detail_id || ''),
+                      label: String(n.label || n.detail_id || ''),
+                      date: String(n.recency || ''),
+                      type: String(n.type || ''),
+                      community_label: shortenCommunityLabel(n.community_label || ''),
+                      has_repo: Boolean(n.has_repo),
+                    };
+                  })
+                : [];
+              return {
+                trends: {
+                  as_of: String(graphStats.generated_at || ''),
+                  latest_activity_date: latestNodes[0] ? latestNodes[0].date : '',
+                  total_nodes: Number(graphStats.node_count || 0),
+                  total_edges: Number(graphStats.edge_count || 0),
+                  total_communities: Number(graphStats.community_count || 0),
+                  windows: {},
+                  daily_recent: [],
+                  monthly_recent: [],
+                  recent_added_nodes: latestNodes,
+                },
+                graphStats: graphStats,
+              };
+            }
+            return null;
+          });
+      });
   }
 
   function shortenCommunityLabel(label) {
@@ -559,40 +937,67 @@
     var tokens = tokenizeQuery(question);
     if (!tokens.length) return [];
 
-    var scored = [];
+    var TOP_K = 6;
+    var top = [];
     for (var i = 0; i < docs.length; i += 1) {
       var doc = docs[i];
       if (!doc || !doc.id) continue;
-      var title = String(doc.title || '').toLowerCase();
-      var summary = String(doc.summary || '').toLowerCase();
-      var tags = Array.isArray(doc.tags) ? doc.tags.join(' ').toLowerCase() : '';
-      var aliases = Array.isArray(doc.search_aliases) ? doc.search_aliases.join(' ').toLowerCase() : '';
-      var path = String(doc.path || '').toLowerCase();
+      var all = doc._kbAll;
+      if (all === undefined) {
+        var title = String(doc.title || '').toLowerCase();
+        var summary = String(doc.summary || '').toLowerCase();
+        var tags = Array.isArray(doc.tags) ? doc.tags.join(' ').toLowerCase() : '';
+        var aliases = Array.isArray(doc.search_aliases) ? doc.search_aliases.join(' ').toLowerCase() : '';
+        var path = String(doc.path || '').toLowerCase();
+        doc._kbTitle = title;
+        doc._kbSummary = summary;
+        doc._kbTags = tags;
+        doc._kbAliases = aliases;
+        doc._kbPath = path;
+        all = doc._kbAll = aliases + '\n' + title + '\n' + tags + '\n' + summary + '\n' + path;
+      }
 
+      var anyHit = false;
+      for (var t0 = 0; t0 < tokens.length; t0 += 1) {
+        if (all.indexOf(tokens[t0]) >= 0) {
+          anyHit = true;
+          break;
+        }
+      }
+      if (!anyHit) continue;
+
+      var dAliases = doc._kbAliases;
+      var dTitle = doc._kbTitle;
+      var dTags = doc._kbTags;
+      var dSummary = doc._kbSummary;
+      var dPath = doc._kbPath;
       var score = 0;
       for (var t = 0; t < tokens.length; t += 1) {
         var tok = tokens[t];
         var w = tok.length >= 2 ? (tok.length >= 4 ? 3 : 2) : 0.4;
-        if (aliases.indexOf(tok) >= 0) score += w * 4.5;
-        if (title.indexOf(tok) >= 0) score += w * 4;
-        if (tags.indexOf(tok) >= 0) score += w * 2.5;
-        if (summary.indexOf(tok) >= 0) score += w * 2;
-        if (path.indexOf(tok) >= 0) score += w * 1.5;
+        if (dAliases.indexOf(tok) >= 0) score += w * 4.5;
+        if (dTitle.indexOf(tok) >= 0) score += w * 4;
+        if (dTags.indexOf(tok) >= 0) score += w * 2.5;
+        if (dSummary.indexOf(tok) >= 0) score += w * 2;
+        if (dPath.indexOf(tok) >= 0) score += w * 1.5;
       }
       if (currentId && doc.id === currentId && score > 0) {
         score += 3;
       }
       if (score >= 1.5) {
-        scored.push({ doc: doc, score: score });
+        if (top.length === TOP_K && score <= top[TOP_K - 1].score) continue;
+        var pos = top.length;
+        while (pos > 0 && top[pos - 1].score < score) pos -= 1;
+        if (pos < TOP_K) {
+          top.splice(pos, 0, { doc: doc, score: score });
+          if (top.length > TOP_K) top.pop();
+        }
       }
     }
 
-    scored.sort(function (a, b) {
-      return b.score - a.score;
-    });
-    return scored.slice(0, 6).map(function (entry) {
-      return entry.doc;
-    });
+    var out = new Array(top.length);
+    for (var k = 0; k < top.length; k += 1) out[k] = top[k].doc;
+    return out;
   }
 
   function selectLocalExcerpts(bodies, docMetaById, question) {
@@ -1045,16 +1450,33 @@
   var MERMAID_HEADER_RE =
     /^(?:flowchart|graph|sequenceDiagram|classDiagram|stateDiagram(?:-v2)?|erDiagram|gantt|pie|gitGraph|mindmap|timeline|xychart-beta|quadrantChart|journey|sankey-beta|block-beta)\b/;
 
+  function sanitizeMermaidSource(rawText) {
+    var src = String(rawText || '');
+    var lines = src.replace(/\r\n?/g, '\n').split('\n');
+    var firstNonEmpty = '';
+    for (var i = 0; i < lines.length; i += 1) {
+      var trimmed = lines[i].trim();
+      if (trimmed) {
+        firstNonEmpty = trimmed;
+        break;
+      }
+    }
+    if (/^(?:flowchart|graph)\b/i.test(firstNonEmpty)) {
+      src = src.replace(/((?:--|-\.-|==)?>|---)\s*\|([^|\n]+)\|>/g, '$1|$2|');
+    }
+    return src;
+  }
+
   function extractMermaidBlockSource(fenceInfo, codeLines) {
     var info = String(fenceInfo || '').trim();
     var infoLower = info.toLowerCase();
     var rawText = codeLines.join('\n');
     if (infoLower === 'mermaid' || infoLower === 'mmd' || infoLower === 'mermaidjs') {
-      return rawText;
+      return sanitizeMermaidSource(rawText);
     }
     if (/^mermaid\s+/i.test(info)) {
       var rest = info.replace(/^mermaid\s+/i, '').trim();
-      return rest ? rest + '\n' + rawText : rawText;
+      return sanitizeMermaidSource(rest ? rest + '\n' + rawText : rawText);
     }
     if (!infoLower || infoLower === 'text' || infoLower === 'plaintext' || infoLower === 'diagram') {
       var firstNonEmpty = '';
@@ -1066,7 +1488,7 @@
         }
       }
       if (MERMAID_HEADER_RE.test(firstNonEmpty)) {
-        return rawText;
+        return sanitizeMermaidSource(rawText);
       }
     }
     return null;
@@ -1176,6 +1598,9 @@
   function buildCitationHref(item) {
     var baseHref = safeInternalNodeUrl(item && item.url, item && item.id);
     if (!baseHref) return '';
+    if (SAFE_STATIC_PAGE_URL_RE.test(baseHref)) {
+      return baseHref;
+    }
     var params = extractCiteParams(item);
     var suffix = '';
     if (params.citeText) {
@@ -1280,14 +1705,18 @@
       });
     });
 
-    // 3. Protect Markdown links [label](url): allow internal detail/roadmap links only
+    // 3. Protect Markdown links [label](url): allow safe internal links & strictly allowlisted author URLs
     text = text.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (_m, label, url) {
-      var safeHref = safeInternalNodeUrl(url, '');
+      var safeLink = safeChatMarkdownUrl(url);
       return stash(function () {
-        if (safeHref) {
+        if (safeLink) {
           var a = document.createElement('a');
           a.className = 'kb-chat-md-link';
-          a.href = safeHref;
+          a.href = safeLink.href;
+          if (safeLink.external) {
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+          }
           a.textContent = label;
           return a;
         }
@@ -1525,6 +1954,232 @@
     container.appendChild(body);
   }
 
+  function formatSourcesSummary(docCount, refCount) {
+    if (state.lang === 'en') {
+      return (
+        t('sourcesLabel') +
+        ' · ' +
+        docCount +
+        (docCount === 1 ? ' doc · ' : ' docs · ') +
+        refCount +
+        (refCount === 1 ? ' ref' : ' refs')
+      );
+    }
+    return t('sourcesLabel') + ' · ' + docCount + ' 篇文档 ' + refCount + ' 处引用';
+  }
+
+  function renderCitationsSection(citations, enrichedCitations) {
+    var citeWrap = document.createElement('div');
+    citeWrap.className = 'kb-chat-citations';
+    citeWrap.setAttribute('data-lang', state.lang);
+
+    var groups = [];
+    var groupsByKey = new Map();
+    var hasSnippets = false;
+
+    for (var j = 0; j < citations.length; j += 1) {
+      var item = citations[j];
+      if (!item) continue;
+      var meta = resolveCitationMeta(item);
+      var savedCite = {
+        index: item.index || j + 1,
+        id: item.id || '',
+        title: meta.title || item.title || item.id || '',
+        heading: item.heading || '',
+        snippet: item.snippet || '',
+        url: item.url || '',
+        path: meta.path || '',
+        community_label: meta.community || item.community_label || '',
+        roadmaps: meta.roadmaps || [],
+        updated: meta.updated || '',
+        health_score: typeof meta.healthScore === 'number' ? meta.healthScore : undefined,
+      };
+      enrichedCitations.push(savedCite);
+      if (item.snippet && String(item.snippet).trim()) {
+        hasSnippets = true;
+      }
+
+      var href = buildCitationHref(item);
+      var fallbackHref = safeInternalNodeUrl(item.url, item.id);
+      var groupKey = item.id ? 'id:' + item.id : fallbackHref || 'idx:' + savedCite.index;
+      var group = groupsByKey.get(groupKey);
+      if (!group) {
+        group = {
+          key: groupKey,
+          meta: meta,
+          firstItem: item,
+          entries: [],
+        };
+        groupsByKey.set(groupKey, group);
+        groups.push(group);
+      }
+      group.entries.push({ item: item, savedCite: savedCite, href: href });
+    }
+
+    if (groups.length === 0) return null;
+
+    var headRow = document.createElement('div');
+    headRow.className = 'kb-chat-citations__head';
+
+    var label = document.createElement('div');
+    label.className = 'kb-chat-citations__label';
+    label.textContent = formatSourcesSummary(groups.length, enrichedCitations.length);
+    headRow.appendChild(label);
+
+    if (hasSnippets) {
+      var toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'kb-chat-citations__toggle';
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.textContent = t('showExcerpts');
+      toggleBtn.addEventListener('click', function () {
+        var nextOpen = citeWrap.classList.toggle('is-snippets-open');
+        toggleBtn.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
+        toggleBtn.textContent = nextOpen ? t('hideExcerpts') : t('showExcerpts');
+      });
+      headRow.appendChild(toggleBtn);
+    }
+    citeWrap.appendChild(headRow);
+
+    var listEl = document.createElement('div');
+    listEl.className = 'kb-chat-citation-list';
+    var pendingCommunitySlots = [];
+
+    for (var g = 0; g < groups.length; g += 1) {
+      var grp = groups[g];
+      var grpMeta = grp.meta;
+      var groupEl = document.createElement('div');
+      groupEl.className = 'kb-chat-citation-group';
+
+      var groupHead = document.createElement('div');
+      groupHead.className = 'kb-chat-citation-group__head';
+
+      var firstHref = grp.entries[0] ? grp.entries[0].href : '';
+      var titleEl = document.createElement(firstHref ? 'a' : 'span');
+      titleEl.className = 'kb-chat-citation-title';
+      titleEl.textContent = grpMeta.title || String(grp.firstItem.id || '');
+      if (firstHref) {
+        titleEl.href = firstHref;
+        bindSamePageCitationJump(titleEl, firstHref, grp.firstItem);
+      }
+      groupHead.appendChild(titleEl);
+
+      var metaRow = document.createElement('div');
+      metaRow.className = 'kb-chat-citation-meta';
+      var hasPendingForGroup = false;
+
+      if (grpMeta.community) {
+        var commChip = document.createElement('span');
+        commChip.className = 'kb-chat-citation-meta-item kb-chat-citation-community';
+        commChip.textContent = grpMeta.community;
+        commChip.title = t('metaCommunity') + ' · ' + grpMeta.community;
+        metaRow.appendChild(commChip);
+      } else if (grpMeta.path) {
+        hasPendingForGroup = true;
+        var savedCites = grp.entries.map(function (entry) {
+          return entry.savedCite;
+        });
+        pendingCommunitySlots.push({ metaRow: metaRow, path: grpMeta.path, savedCites: savedCites });
+      }
+
+      if (grpMeta.roadmaps && grpMeta.roadmaps.length > 0) {
+        var rmChip = document.createElement('span');
+        rmChip.className = 'kb-chat-citation-meta-item kb-chat-citation-roadmap';
+        var rmText = grpMeta.roadmaps[0] + (grpMeta.roadmaps.length > 1 ? ' +' + (grpMeta.roadmaps.length - 1) : '');
+        rmChip.textContent = rmText;
+        rmChip.title = t('metaRoadmap') + ' · ' + grpMeta.roadmaps.join(' / ');
+        metaRow.appendChild(rmChip);
+      }
+
+      if (grpMeta.updated) {
+        var updChip = document.createElement('span');
+        updChip.className = 'kb-chat-citation-meta-item kb-chat-citation-updated';
+        updChip.textContent = grpMeta.updated;
+        updChip.title = t('metaUpdated') + ' ' + grpMeta.updated;
+        metaRow.appendChild(updChip);
+      }
+
+      if (typeof grpMeta.healthScore === 'number') {
+        metaRow.appendChild(createHealthBarEl(grpMeta.healthScore));
+      }
+
+      if (metaRow.childNodes.length > 0 || hasPendingForGroup) {
+        groupHead.appendChild(metaRow);
+      }
+      groupEl.appendChild(groupHead);
+
+      var passagesWrap = document.createElement('div');
+      passagesWrap.className = 'kb-chat-citation-passages';
+      for (var pIdx = 0; pIdx < grp.entries.length; pIdx += 1) {
+        var entry = grp.entries[pIdx];
+        var passageEl = document.createElement(entry.href ? 'a' : 'div');
+        passageEl.className = 'kb-chat-citation-passage';
+        if (entry.href) {
+          passageEl.href = entry.href;
+          bindSamePageCitationJump(passageEl, entry.href, entry.item);
+        }
+
+        var passageHead = document.createElement('span');
+        passageHead.className = 'kb-chat-citation-passage-head';
+
+        var idxSpan = document.createElement('span');
+        idxSpan.className = 'kb-chat-citation-idx';
+        idxSpan.textContent = '[' + entry.savedCite.index + ']';
+        passageHead.appendChild(idxSpan);
+
+        var headingText =
+          entry.item.heading && String(entry.item.heading).trim()
+            ? String(entry.item.heading).trim()
+            : t('defaultPassageLabel');
+        var headingSpan = document.createElement('span');
+        headingSpan.className = 'kb-chat-citation-heading';
+        headingSpan.textContent = headingText;
+        passageHead.appendChild(headingSpan);
+        passageEl.appendChild(passageHead);
+
+        if (entry.item.snippet) {
+          var snippetEl = document.createElement('span');
+          snippetEl.className = 'kb-chat-citation-snippet';
+          snippetEl.textContent = normalizeMathText(String(entry.item.snippet));
+          passageEl.appendChild(snippetEl);
+        }
+        passagesWrap.appendChild(passageEl);
+      }
+      groupEl.appendChild(passagesWrap);
+      listEl.appendChild(groupEl);
+    }
+
+    citeWrap.appendChild(listEl);
+
+    if (pendingCommunitySlots.length > 0) {
+      ensureCommunityIndex().then(function (commIdx) {
+        if (!commIdx || !commIdx.pathToCommunity) return;
+        var updatedAny = false;
+        for (var p = 0; p < pendingCommunitySlots.length; p += 1) {
+          var slotInfo = pendingCommunitySlots[p];
+          var cid = commIdx.pathToCommunity.get(slotInfo.path);
+          var rawLabel = cid && commIdx.communityLabel ? commIdx.communityLabel[cid] : '';
+          var shortLabel = shortenCommunityLabel(rawLabel);
+          if (!shortLabel) continue;
+          for (var sc = 0; sc < slotInfo.savedCites.length; sc += 1) {
+            slotInfo.savedCites[sc].community_label = shortLabel;
+          }
+          updatedAny = true;
+          var commEl = document.createElement('span');
+          commEl.className = 'kb-chat-citation-meta-item kb-chat-citation-community';
+          commEl.textContent = shortLabel;
+          commEl.title = t('metaCommunity') + ' · ' + shortLabel;
+          slotInfo.metaRow.insertBefore(commEl, slotInfo.metaRow.firstChild);
+        }
+        if (updatedAny) {
+          saveChatHistory(state.history);
+        }
+      });
+    }
+
+    return citeWrap;
+  }
+
   function appendAssistantMessage(options) {
     var msg = document.createElement('div');
     msg.className = 'kb-chat-msg kb-chat-msg--assistant';
@@ -1549,121 +2204,10 @@
     appendCitedText(msg, options.text || '', citationsByIndex);
 
     if (citations.length > 0) {
-      var citeWrap = document.createElement('div');
-      citeWrap.className = 'kb-chat-citations';
-
-      var label = document.createElement('div');
-      label.className = 'kb-chat-citations__label';
-      label.textContent = t('sourcesLabel');
-      citeWrap.appendChild(label);
-
-      var pendingCommunitySlots = [];
-
-      for (var j = 0; j < citations.length; j += 1) {
-        var item = citations[j];
-        if (!item) continue;
-        var meta = resolveCitationMeta(item);
-        var savedCite = {
-          index: item.index || j + 1,
-          id: item.id || '',
-          title: meta.title || item.title || item.id || '',
-          heading: item.heading || '',
-          snippet: item.snippet || '',
-          url: item.url || '',
-          path: meta.path || '',
-          community_label: meta.community || item.community_label || '',
-          roadmaps: meta.roadmaps || [],
-          updated: meta.updated || '',
-          health_score: typeof meta.healthScore === 'number' ? meta.healthScore : undefined,
-        };
-        enrichedCitations.push(savedCite);
-        var href = buildCitationHref(item);
-        var card = document.createElement(href ? 'a' : 'div');
-        card.className = 'kb-chat-citation-card';
-        if (href) {
-          card.href = href;
-          bindSamePageCitationJump(card, href, item);
-        }
-
-        var titleEl = document.createElement('span');
-        titleEl.className = 'kb-chat-citation-title';
-        titleEl.textContent = '[' + savedCite.index + '] ' + (meta.title || String(item.id || ''));
-        card.appendChild(titleEl);
-
-        if (item.heading && String(item.heading).trim() !== meta.title) {
-          var headingEl = document.createElement('span');
-          headingEl.className = 'kb-chat-citation-heading';
-          headingEl.textContent = String(item.heading);
-          card.appendChild(headingEl);
-        }
-
-        var metaRow = document.createElement('div');
-        metaRow.className = 'kb-chat-citation-meta';
-        if (meta.community) {
-          var commChip = document.createElement('span');
-          commChip.className = 'kb-chat-citation-chip kb-chat-citation-community';
-          commChip.textContent = t('metaCommunity') + ' · ' + meta.community;
-          metaRow.appendChild(commChip);
-        } else if (meta.path) {
-          pendingCommunitySlots.push({ metaRow: metaRow, path: meta.path, savedCite: savedCite });
-        }
-
-        if (meta.roadmaps && meta.roadmaps.length > 0) {
-          var rmChip = document.createElement('span');
-          rmChip.className = 'kb-chat-citation-chip kb-chat-citation-roadmap';
-          var rmText = meta.roadmaps[0] + (meta.roadmaps.length > 1 ? ' +' + (meta.roadmaps.length - 1) : '');
-          rmChip.textContent = t('metaRoadmap') + ' · ' + rmText;
-          rmChip.title = meta.roadmaps.join(' / ');
-          metaRow.appendChild(rmChip);
-        }
-
-        if (meta.updated) {
-          var updChip = document.createElement('span');
-          updChip.className = 'kb-chat-citation-chip kb-chat-citation-updated';
-          updChip.textContent = t('metaUpdated') + ' ' + meta.updated;
-          metaRow.appendChild(updChip);
-        }
-
-        if (typeof meta.healthScore === 'number') {
-          metaRow.appendChild(createHealthBarEl(meta.healthScore));
-        }
-
-        if (metaRow.childNodes.length > 0 || pendingCommunitySlots.length > 0) {
-          card.appendChild(metaRow);
-        }
-
-        if (item.snippet) {
-          var snippetEl = document.createElement('span');
-          snippetEl.className = 'kb-chat-citation-snippet';
-          snippetEl.textContent = normalizeMathText(String(item.snippet));
-          card.appendChild(snippetEl);
-        }
-        citeWrap.appendChild(card);
+      var citeWrap = renderCitationsSection(citations, enrichedCitations);
+      if (citeWrap) {
+        msg.appendChild(citeWrap);
       }
-
-      if (pendingCommunitySlots.length > 0) {
-        ensureCommunityIndex().then(function (commIdx) {
-          if (!commIdx || !commIdx.pathToCommunity) return;
-          var updatedAny = false;
-          for (var p = 0; p < pendingCommunitySlots.length; p += 1) {
-            var slotInfo = pendingCommunitySlots[p];
-            var cid = commIdx.pathToCommunity.get(slotInfo.path);
-            var rawLabel = cid && commIdx.communityLabel ? commIdx.communityLabel[cid] : '';
-            var shortLabel = shortenCommunityLabel(rawLabel);
-            if (!shortLabel) continue;
-            slotInfo.savedCite.community_label = shortLabel;
-            updatedAny = true;
-            var commEl = document.createElement('span');
-            commEl.className = 'kb-chat-citation-chip kb-chat-citation-community';
-            commEl.textContent = t('metaCommunity') + ' · ' + shortLabel;
-            slotInfo.metaRow.insertBefore(commEl, slotInfo.metaRow.firstChild);
-          }
-          if (updatedAny) {
-            saveChatHistory(state.history);
-          }
-        });
-      }
-      msg.appendChild(citeWrap);
     } else if (options.showGraphLink) {
       var graphLink = document.createElement('a');
       graphLink.className = 'kb-chat-cite-pill';
@@ -1940,6 +2484,396 @@
 
   var GREETING_RE = /^(?:在吗|你好|您好|哈喽|嗨|有人吗|你是谁|介绍一下你|hi|hello|hey|yo|good\s+(?:morning|afternoon|evening))[!！?？。.,，\s]*$/i;
 
+  var HAS_PAPER_SCOPE_RE =
+    /(?:论文|文章|文献|算法|模型|方法|框架|系统|综述|基准|数据集|\bpaper\b|\barticle\b|\bwork\b|\bstudy\b|\bmethod\b|\bmodel\b|\balgorithm\b|\bframework\b|\bsurvey\b|\bbenchmark\b|\bdataset\b)/i;
+  var AUTHOR_IDENTITY_RE = /(?:刘冲|\bchong\s+liu\b|\bimchong\b)/i;
+  var SITE_OWNER_WORD_RE = /(?:站长|博主|建站者|网站主人|知识库主人)/i;
+  var EXPLICIT_NODE_TREND_RE = /(?:节点趋势|新增.*节点|node\s+trends?)/i;
+  var SITE_SCOPE_RE =
+    /(?:(?:本|这个|该|此)?(?:知识库|网站|站点|网页|机器人笔记|知识图谱)|(?:本|这个|该|此)(?:项目|仓库|repo)|wiki|robotics[_ ]?notebooks|(?:this|the)\s+(?:site|website|wiki|kb|knowledge\s+base|repo|repository|project|bot|assistant)|你的(?:作者|主人|维护者|开发者)|你是谁(?:做|写|开发|创建|建|维护)|ai\s*助手)/i;
+  var SITE_AUTHOR_ATTR_RE =
+    /(?:作者|维护者|开发者|创建者|制作者|谁做的|谁写的|谁建的|谁维护|个人网站|个人主页|主页|博客|联系方式|怎么联系|\bauthor\b|\bcreator\b|\bmaintainer\b|\bdeveloper\b|\bowner\b|\bpersonal\s+(?:website|site|homepage|page|blog)\b|\bhomepage\b|\bcontact\b|\bwho\s+(?:created|made|built|wrote|maintains)\b)/i;
+  var STANDALONE_ZH_AUTHOR_RE =
+    /^(?:请问|想问下|问一下|能告诉我|告诉我|查一下)?(?:一下)?(?:知识库|本知识库|本站|网站|站点)?(?:的)?(?:作者(?:是谁|信息|简介|资料|联系方式)|介绍一下作者|关于作者|作者(?:的)?(?:个人)?(?:网站|主页|博客|网址|链接)|怎么联系作者|联系作者|维护者是谁|你是谁做的|谁开发的|谁创建的|谁维护的)[？?！!。.\s]*$/i;
+  var PHRASE_ZH_AUTHOR_RE =
+    /(?:作者的?(?:个人)?(?:网站|主页|博客|网址|链接)|(?:联系|找到)作者|作者(?:信息|联系方式)|个人网站(?:链接|地址|是什么)?)/i;
+  var STANDALONE_EN_AUTHOR_RE =
+    /^(?:please\s+)?(?:who\s+is\s+(?:the\s+)?author(?:\s+of\s+(?:this|the)\s+(?:site|website|wiki|kb|knowledge\s+base|repo|project))?|author\s+info(?:rmation)?|about\s+(?:the\s+)?author|(?:what\s+is\s+(?:the\s+)?)?author(?:'s)?\s+(?:personal\s+)?(?:website|site|homepage|page|blog|link|url|contact|info)|contact\s+(?:the\s+)?author|who\s+(?:created|made|built|wrote|maintains)\s+(?:this|it|the\s+(?:site|website|wiki|kb|knowledge\s+base|repo|project)))\s*[?!.]*$/i;
+  var PHRASE_EN_AUTHOR_RE =
+    /(?:\bauthor(?:'s)?\s+(?:personal\s+)?(?:website|site|homepage|page|blog|contact|info(?:rmation)?)\b|\babout\s+(?:the\s+)?author\b|\bpersonal\s+(?:website|homepage)\b)/i;
+
+  var NON_KB_NODE_RE =
+    /(?:\bros\s*2?\b|rclpy|rclcpp|behavior\s*tree|行为树|\bgnn\b|图神经网络|运动学树|kinematic)/i;
+  var EXPLICIT_KB_WORD_RE =
+    /(?:知识库|wiki|站内|本站|知识节点|robotics[_ ]?notebooks|\bkb\b|knowledge\s+base)/i;
+  var HOW_TO_ADD_PAGE_RE =
+    /(?:如何|怎么|怎样|\bhow\s+to\b).*(?:向|在|给)?(?:知识库|wiki).*(?:新增|添加|创建|贡献|ingest|add)/i;
+  var KB_TREND_SCOPE_RE =
+    /(?:知识库|wiki|站内|本站|知识图谱|知识节点|robotics[_ ]?notebooks|(?:本|这个|该|此)(?:站点|网站|仓库|图谱)|\bknowledge\s+base\b|\bkb\b|(?:this|the)\s+(?:wiki|kb|knowledge\s+base|site|repo|graph))/i;
+  var KB_TREND_SIGNAL_RE =
+    /(?:趋势|近期|最近|最新|新增|增长|增速|统计|活跃|更新|收录|入库|变化|动态|节点数|社区分布|\btrends?\b|\brecent(?:ly)?\b|\blatest\b|\bnew(?:ly)?\b|\badded\b|\bgrowth\b|\bgrowing\b|\bactivity\b|\bstats?\b|\bstatistics\b|\bupdates?\b|\bvelocity\b)/i;
+  var EXPLICIT_KB_TREND_PHRASE_RE =
+    /(?:节点(?:增长|变化|新增|更新|数量)?趋势|近期(?:新增|更新|活跃)(?:了)?(?:哪些|多少)?节点|最近(?:新增|更新|入库|收录)(?:了)?(?:哪些|多少)?(?:节点|内容|页面|论文)?|近\s*(?:7|14|30|90|几|一[周月])?\s*[天日周月]内?(?:新增|更新|活跃|趋势|节点)|(?:哪个|哪些)社区(?:最近|近期)?增长最快|^(?:请问|想问下|问一下)?(?:最近|近期)有什么(?:新)?(?:更新|动态|变化)[？?！!。.\s]*$|(?:recent|latest)\s+(?:wiki\s+|kb\s+)?node\s+trends?|(?:recent|latest)\s+(?:wiki|kb|knowledge\s+base)\s+(?:nodes?|updates?|additions?)|^(?:what(?:'s|\s+are)\s+(?:the\s+)?)?(?:recent|latest)\s+(?:nodes?|updates?|additions?)\s*[?!.]*$|\bnode\s+trends?\b|how\s+many\s+nodes\s+(?:were\s+|have\s+been\s+)?added|which\s+(?:communities|topics)\s+(?:are\s+)?growing)/i;
+
+  var TREND_STOP_TOKENS = new Set([
+    '知识', '知识库', '节点', '知识节点', '趋势', '近期', '最近', '最新', '新增', '增长',
+    '增速', '统计', '活跃', '更新', '收录', '入库', '变化', '动态', '社区', '分布', '多少',
+    '哪些', '哪个', '最快', '什么', '一下', '查看', '网站', '站点', '图谱', '仓库',
+    '7d', '14d', '30d', '90d', '7天', '14天', '30天', '90天', '一周', '一月',
+    'wiki', 'kb', 'knowledge', 'base', 'node', 'nodes', 'trend', 'trends', 'recent',
+    'recently', 'latest', 'new', 'newly', 'added', 'growth', 'growing', 'activity',
+    'stats', 'statistics', 'updates', 'update', 'community', 'communities', 'fastest',
+    'last', 'past', 'days', 'day', 'week', 'weeks', 'month', 'months', 'site', 'graph', 'repo',
+  ]);
+
+  function isAuthorInfoQuery(rawQuestion) {
+    var q = String(rawQuestion || '').trim();
+    if (!q) return false;
+    if (AUTHOR_IDENTITY_RE.test(q) && !EXPLICIT_NODE_TREND_RE.test(q)) {
+      return true;
+    }
+    if (SITE_OWNER_WORD_RE.test(q)) {
+      return true;
+    }
+    if (HAS_PAPER_SCOPE_RE.test(q)) {
+      return false;
+    }
+    if (SITE_SCOPE_RE.test(q) && SITE_AUTHOR_ATTR_RE.test(q)) {
+      return true;
+    }
+    if (STANDALONE_ZH_AUTHOR_RE.test(q) || PHRASE_ZH_AUTHOR_RE.test(q)) {
+      return true;
+    }
+    if (STANDALONE_EN_AUTHOR_RE.test(q) || PHRASE_EN_AUTHOR_RE.test(q)) {
+      return true;
+    }
+    return false;
+  }
+
+  function isKbTrendQuery(rawQuestion) {
+    var q = String(rawQuestion || '').trim();
+    if (!q) return false;
+    if (NON_KB_NODE_RE.test(q) && !EXPLICIT_KB_WORD_RE.test(q)) {
+      return false;
+    }
+    if (HOW_TO_ADD_PAGE_RE.test(q) && !/(?:趋势|统计|多少|哪些|最近|近期|\btrends?\b|\bstats?\b|\brecent\b)/i.test(q)) {
+      return false;
+    }
+    if (KB_TREND_SCOPE_RE.test(q) && KB_TREND_SIGNAL_RE.test(q)) {
+      return true;
+    }
+    if (EXPLICIT_KB_TREND_PHRASE_RE.test(q)) {
+      return true;
+    }
+    return false;
+  }
+
+  function detectTrendWindow(rawQuestion) {
+    var q = String(rawQuestion || '').trim();
+    if (/(?:7\s*(?:天|日)|\b7d\b|最近一?周|近一?周|\b(?:last|past)\s*(?:7\s*days?|week)\b)/i.test(q)) return '7d';
+    if (/(?:14\s*(?:天|日)|\b14d\b|最近两周|近两周|\b(?:last|past)\s*(?:14\s*days?|2\s*weeks?|two\s*weeks?)\b)/i.test(q)) return '14d';
+    if (/(?:30\s*(?:天|日)|\b30d\b|最近一?个?月|近一?个?月|\b(?:last|past)\s*(?:30\s*days?|month)\b)/i.test(q)) return '30d';
+    if (/(?:90\s*(?:天|日)|\b90d\b|最近三?个?月|近一?季度|\b(?:last|past)\s*(?:90\s*days?|3\s*months?|quarter)\b)/i.test(q)) return '90d';
+    return '';
+  }
+
+  function formatDeltaSign(current, prev) {
+    var diff = Number(current || 0) - Number(prev || 0);
+    return diff > 0 ? '+' + diff : String(diff);
+  }
+
+  function extractTrendTopicHashes(question, liteIndex, catalog) {
+    if (!liteIndex || !Array.isArray(liteIndex.docs) || !catalog || !catalog.pages || !catalog.pages.detail_pages) {
+      return [];
+    }
+    var tokens = tokenizeQuery(question).filter(function (tok) {
+      return tok.length >= 2 && !TREND_STOP_TOKENS.has(tok);
+    });
+    if (tokens.length === 0) return [];
+    var currentId = currentPageContextId(catalog);
+    var candidates = rankCandidateDocs(liteIndex.docs, tokens.join(' '), currentId);
+    var detailPages = catalog.pages.detail_pages;
+    var hashes = [];
+    var seen = new Set();
+    for (var i = 0; i < candidates.length && hashes.length < 2; i += 1) {
+      var meta = Object.prototype.hasOwnProperty.call(detailPages, candidates[i].id)
+        ? detailPages[candidates[i].id]
+        : null;
+      var match = meta && meta.content_url ? CONTENT_URL_RE.exec(meta.content_url) : null;
+      if (match && !seen.has(match[1])) {
+        seen.add(match[1]);
+        hashes.push(match[1]);
+      }
+    }
+    return hashes;
+  }
+
+  function buildLocalTrendReply(trends, graphStats, question, lang) {
+    var activeLang = lang === 'en' ? 'en' : 'zh';
+    var nt = trends && typeof trends === 'object' ? trends : null;
+    var stats = graphStats && typeof graphStats === 'object' ? graphStats : {};
+    var starCite = {
+      index: 1,
+      id: 'page-star-history',
+      title: activeLang === 'en' ? 'Knowledge Base Node Trends' : '知识库节点趋势统计（Trend Analytics）',
+      heading: activeLang === 'en' ? 'Interactive Node Trends Chart' : '交互式节点趋势图',
+      snippet: activeLang === 'en'
+        ? 'Daily and cumulative knowledge node growth curves by community, type, open-source status, and health.'
+        : '按社区、类型、开源状态与健康度查看知识库每日及累计节点增长曲线。',
+      url: 'star-history.html#nodes-daily',
+      updated: String((nt && nt.as_of) || stats.generated_at || ''),
+    };
+    var logCite = {
+      index: 2,
+      id: 'page-change-log',
+      title: activeLang === 'en' ? 'Change Log & Activity' : '更新记录（Change Log）',
+      heading: activeLang === 'en' ? 'Daily Node Additions & Maintenance' : '每日新增与维护记录',
+      snippet: activeLang === 'en'
+        ? 'Chronological record of newly added and maintained wiki and roadmap nodes.'
+        : '按日汇总知识库新增（added）与维护（maintained）的知识节点与路线页。',
+      url: 'change-log.html',
+      updated: String((nt && nt.latest_activity_date) || (nt && nt.as_of) || stats.generated_at || ''),
+    };
+
+    if (!nt) {
+      return {
+        text: activeLang === 'en'
+          ? 'Trend statistics could not be loaded right now. Open the [interactive node trends chart](star-history.html#nodes-daily) or [change log](change-log.html).'
+          : '暂未获取到最新节点趋势统计，可前往 [交互式节点趋势图](star-history.html#nodes-daily) 或 [更新记录](change-log.html) 查看。',
+        citations: [starCite, logCite],
+      };
+    }
+
+    var totalNodes = Number(nt.total_nodes != null ? nt.total_nodes : stats.node_count || 0);
+    var totalEdges = Number(nt.total_edges != null ? nt.total_edges : stats.edge_count || 0);
+    var totalCommunities = Number(nt.total_communities != null ? nt.total_communities : stats.community_count || 0);
+    var asOf = String(nt.as_of || stats.generated_at || '');
+    var latestDate = String(nt.latest_activity_date || '');
+    var windows = nt.windows && typeof nt.windows === 'object' ? nt.windows : {};
+
+    var lines = [];
+    if (activeLang === 'en') {
+      lines.push(
+        '**Knowledge Base Scale**: **' + totalNodes + '** nodes, **' + totalEdges + '** edges, **' + totalCommunities + '** communities' +
+        (latestDate || asOf ? ' (latest activity: `' + (latestDate || asOf) + '`' + (asOf && asOf !== latestDate ? ', generated: `' + asOf + '`' : '') + ')' : '') + ' [1].',
+      );
+    } else {
+      lines.push(
+        '**全站规模概览**：共 **' + totalNodes + '** 个知识节点、**' + totalEdges + '** 条互链、**' + totalCommunities + '** 个技术社区' +
+        (latestDate || asOf ? '（最新活动日 `' + (latestDate || asOf) + '`' + (asOf && asOf !== latestDate ? '，统计生成于 `' + asOf + '`' : '') + '）' : '') + ' [1]。',
+      );
+    }
+
+    var preferredKey = detectTrendWindow(question);
+    var winKeys = [];
+    if (preferredKey && windows[preferredKey]) {
+      winKeys.push(preferredKey);
+      if (preferredKey !== '30d' && windows['30d']) winKeys.push('30d');
+      else if (preferredKey !== '7d' && windows['7d']) winKeys.push('7d');
+    } else {
+      ['7d', '30d', '14d', '90d'].forEach(function (k) {
+        if (windows[k] && winKeys.length < 2) winKeys.push(k);
+      });
+    }
+
+    if (winKeys.length > 0) {
+      lines.push(activeLang === 'en' ? '**Recent Growth Windows**' : '**近期增长窗口**');
+      for (var wi = 0; wi < winKeys.length; wi += 1) {
+        var wk = winKeys[wi];
+        var w = windows[wk];
+        var commTop = Array.isArray(w.top_communities) && w.top_communities.length > 0
+          ? w.top_communities.slice(0, 3).map(function (c) {
+              return c.label + ' (+' + c.added + ')';
+            }).join(activeLang === 'en' ? ', ' : '、')
+          : '';
+        var deltaStr = formatDeltaSign(w.added, w.prev_added);
+        if (activeLang === 'en') {
+          lines.push(
+            '- **Last ' + w.days + ' days** (`' + w.start_date + '` – `' + w.end_date + '`): **+' + w.added + '** added ' +
+            '(vs prev ' + w.days + 'd: ' + w.prev_added + ', delta ' + deltaStr + '), **' + w.maintained + '** maintained, ' +
+            'active **' + w.active_days + '/' + w.days + '** days, open-source **+' + w.open_source_added + '**' +
+            (commTop ? '; top growing communities: ' + commTop : '') + ' [1].',
+          );
+        } else {
+          lines.push(
+            '- **近 ' + w.days + ' 天**（`' + w.start_date + '` ~ `' + w.end_date + '`）：新增 **' + w.added + '** 个节点' +
+            '（前 ' + w.days + ' 天为 ' + w.prev_added + '，环比 ' + deltaStr + '），维护 **' + w.maintained + '** 次，' +
+            '活跃 **' + w.active_days + '/' + w.days + '** 天，其中含开源项目 **' + w.open_source_added + '** 个' +
+            (commTop ? '；增长最快社区：' + commTop : '') + ' [1]。',
+          );
+        }
+      }
+    } else if (stats.community_distribution && typeof stats.community_distribution === 'object') {
+      var topSizeComms = Object.keys(stats.community_distribution)
+        .filter(function (k) {
+          return k.indexOf('其他') !== 0;
+        })
+        .slice(0, 4)
+        .map(function (k) {
+          return shortenCommunityLabel(k) + ' (' + stats.community_distribution[k] + ')';
+        })
+        .join(activeLang === 'en' ? ', ' : '、');
+      if (topSizeComms) {
+        lines.push(
+          activeLang === 'en'
+            ? '- **Top communities by size**: ' + topSizeComms + ' [1].'
+            : '- **主要社区规模**：' + topSizeComms + ' [1]。',
+        );
+      }
+    }
+
+    var dailyRecent = Array.isArray(nt.daily_recent) ? nt.daily_recent.slice(-5) : [];
+    if (dailyRecent.length > 0) {
+      var tableLines = activeLang === 'en'
+        ? ['| Date | Added | Maintained |', '| --- | --- | --- |']
+        : ['| 日期 | 新增节点 | 维护节点 |', '| --- | --- | --- |'];
+      for (var di = dailyRecent.length - 1; di >= 0; di -= 1) {
+        var dRow = dailyRecent[di];
+        tableLines.push('| ' + dRow.date + ' | +' + dRow.added + ' | ' + dRow.maintained + ' |');
+      }
+      lines.push(tableLines.join('\n'));
+    }
+
+    var citations = [starCite, logCite];
+    var recentNodes = Array.isArray(nt.recent_added_nodes) ? nt.recent_added_nodes : [];
+    if (recentNodes.length > 0) {
+      var qTokens = tokenizeQuery(question).filter(function (tok) {
+        return tok.length >= 2 && !TREND_STOP_TOKENS.has(tok);
+      });
+      var picked = recentNodes.slice();
+      if (qTokens.length > 0) {
+        picked.sort(function (a, b) {
+          var aHay = (String(a.label || '') + ' ' + String(a.community_label || '')).toLowerCase();
+          var bHay = (String(b.label || '') + ' ' + String(b.community_label || '')).toLowerCase();
+          var aHit = 0;
+          var bHit = 0;
+          for (var ti = 0; ti < qTokens.length; ti += 1) {
+            if (aHay.indexOf(qTokens[ti]) >= 0) aHit += 1;
+            if (bHay.indexOf(qTokens[ti]) >= 0) bHit += 1;
+          }
+          return bHit - aHit;
+        });
+      }
+      var topNodes = picked.slice(0, 3);
+      var nodeBullets = [];
+      for (var ni = 0; ni < topNodes.length; ni += 1) {
+        var node = topNodes[ni];
+        if (!node || !node.detail_id) continue;
+        var cIdx = citations.length + 1;
+        var nodeUrl = safeInternalNodeUrl('', node.detail_id);
+        var commNote = node.community_label ? (activeLang === 'en' ? ' · ' : ' · ') + node.community_label : '';
+        var repoNote = node.has_repo ? (activeLang === 'en' ? ' · Open Source' : ' · 开源') : '';
+        citations.push({
+          index: cIdx,
+          id: node.detail_id,
+          title: String(node.label || node.detail_id),
+          heading: String(node.date || '') + (activeLang === 'en' ? ' Added' : ' 新增'),
+          snippet: String(node.label || node.detail_id) + (commNote || '') + (repoNote || ''),
+          url: nodeUrl,
+          updated: String(node.date || ''),
+          community_label: String(node.community_label || ''),
+        });
+        nodeBullets.push(
+          '- `' + (node.date || '') + '` [' + (node.label || node.detail_id) + '](' + nodeUrl + ')' + commNote + repoNote + ' [' + cIdx + ']',
+        );
+      }
+      if (nodeBullets.length > 0) {
+        lines.push((activeLang === 'en' ? '**Recent Added Nodes** [2]\n' : '**近期新增代表节点** [2]\n') + nodeBullets.join('\n'));
+      }
+    }
+
+    if (activeLang === 'en') {
+      lines.push('Explore more in [Interactive Node Trends](star-history.html#nodes-daily) [1] or [Full Change Log](change-log.html) [2].');
+    } else {
+      lines.push('继续查看：[交互式节点趋势图](star-history.html#nodes-daily) [1] · [完整更新记录](change-log.html) [2]。');
+    }
+
+    return {
+      text: lines.join('\n\n'),
+      citations: citations,
+    };
+  }
+
+  function handleTrendQuestion(cfg, question) {
+    return Promise.all([
+      resolveNodeTrends(),
+      ensureCatalog().catch(function () {
+        return null;
+      }),
+      ensureLiteIndex().catch(function () {
+        return null;
+      }),
+    ]).then(function (results) {
+      var trendBundle = results[0];
+      var catalog = results[1];
+      var liteIndex = results[2];
+      var trends = trendBundle ? trendBundle.trends : null;
+      var graphStats = trendBundle ? trendBundle.graphStats : null;
+      var contentHashes = extractTrendTopicHashes(question, liteIndex, catalog);
+
+      if (!isCloudConfigured(cfg)) {
+        state.mode = 'local';
+        updatePanelCopy();
+        var localOnly = buildLocalTrendReply(trends, graphStats, question, state.lang);
+        appendAssistantMessage({
+          text: localOnly.text,
+          citations: localOnly.citations,
+        });
+        return null;
+      }
+
+      return runCloudRequest(cfg, question, contentHashes)
+        .catch(function () {
+          return null;
+        })
+        .then(function (res) {
+          if (
+            res &&
+            res.ok &&
+            res.data &&
+            res.data.ok &&
+            res.data.trendGrounded === true &&
+            typeof res.data.answer === 'string'
+          ) {
+            state.mode = 'ai';
+            updatePanelCopy();
+            appendAssistantMessage({
+              statusNote: res.data.cached ? t('cachedTag') : '',
+              text: res.data.answer,
+              citations: Array.isArray(res.data.citations) ? res.data.citations : [],
+              showGraphLink: res.data.grounded === false,
+            });
+            return null;
+          }
+
+          var isLegacyWorkerIncompatible = Boolean(
+            (res && res.status === 400 && res.data && res.data.code === 'INVALID_PAYLOAD') ||
+            (res && res.ok && res.data && res.data.ok && res.data.trendGrounded !== true),
+          );
+          if (isLegacyWorkerIncompatible) {
+            state.mode = 'local';
+            updatePanelCopy();
+            var compatReply = buildLocalTrendReply(trends, graphStats, question, state.lang);
+            appendAssistantMessage({
+              text: compatReply.text,
+              citations: compatReply.citations,
+            });
+            return null;
+          }
+
+          state.mode = 'fallback';
+          updatePanelCopy();
+          var fallbackReply = buildLocalTrendReply(trends, graphStats, question, state.lang);
+          appendAssistantMessage({
+            statusNote: classifyFallbackNote(res),
+            text: fallbackReply.text,
+            citations: fallbackReply.citations,
+          });
+          return null;
+        });
+    });
+  }
+
   function submitQuestion(rawText) {
     ensureMounted();
     var cfg = getConfig();
@@ -1965,7 +2899,28 @@
       appendAssistantMessage({ text: t('greetingReply'), citations: [] });
       return Promise.resolve();
     }
+    if (isAuthorInfoQuery(question)) {
+      appendAssistantMessage({ text: t('authorReply'), citations: [] });
+      return Promise.resolve();
+    }
     setBusy(true);
+
+    if (isKbTrendQuery(question)) {
+      return handleTrendQuestion(cfg, question)
+        .catch(function () {
+          appendAssistantMessage({
+            text: t('trendFallbackUnavailable'),
+            citations: [],
+            showGraphLink: true,
+          });
+        })
+        .finally(function () {
+          setBusy(false);
+          if (state.open && state.inputEl) {
+            state.inputEl.focus();
+          }
+        });
+    }
 
     return Promise.all([ensureLiteIndex(), ensureCatalog()])
       .then(function (results) {
@@ -2281,8 +3236,13 @@
       rankCandidateDocs: rankCandidateDocs,
       selectLocalExcerpts: selectLocalExcerpts,
       safeInternalNodeUrl: safeInternalNodeUrl,
+      safeChatMarkdownUrl: safeChatMarkdownUrl,
       sanitizeEndpoint: sanitizeEndpoint,
       splitSections: splitSections,
+      isAuthorInfoQuery: isAuthorInfoQuery,
+      isKbTrendQuery: isKbTrendQuery,
+      buildLocalTrendReply: buildLocalTrendReply,
+      computeClientNodeTrends: computeClientNodeTrends,
     },
   };
 

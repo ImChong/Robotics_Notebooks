@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, manipulation, teleoperation, medical-robotics, impedance-control, ucsd, unitree]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-22
 arxiv: "2503.12725"
 related:
   - ./paper-humanoid-surgeon-in-vivo-laparoscopy.md

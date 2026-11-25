@@ -10,7 +10,7 @@ tags:
   - flow-matching
   - georgia-tech
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 arxiv: "2611.05062"
 project: https://flomo-wam.github.io/
 code: https://github.com/pairlab/flomo
@@ -196,6 +196,12 @@ sequenceDiagram
 3. **数据工程：** 人类无 action label 视频可提供 motion-only supervision，但需预先完成可靠的 3D tracking。
 4. **真机评价：** 分开统计已见任务、未见原语/任务/物体与不同视角遮挡的成功率；小样本波动需要额外复核。
 5. **落地代价：** 关注 3D tracks 计算预算、5B 主干推理需求及动作–运动一致性，而非只看模拟成功率。
+
+## 与其他工作对比
+
+- **对比像素视频 WAM（VA / VMA / DreamZero）：** 在同骨干、同数据受控评测中，FloMo（MA）已见真机成功率达 **91%**（VMA **51%**、VA **40%**）；在三项 OOD 条件（Table I）下，FloMo 取得 **18/30（60% SR / 68% TP）**，显著优于 VMA（2/30）、VA（2/30）以及联合预测视频与动作的 [DreamZero](./paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md)（**6/30 = 20% SR / 30% TP**），表明去除像素外观预测目标可减少纹理与背景过拟合。
+- **对比 2D 点轨迹中间表示（AMPLIFY）：** 在同一 OOD 真机测试集上，预测图像空间 2D 稀疏点轨迹的 [AMPLIFY](./paper-rcl-2506-14198-amplify-actionless-motion-priors-for-robot-learn.md) 在已包含的 Close Cabinet 上拿到 6/10，但在未见任务 Pull String 与未见物体 Highlighter 上均为 0/10（总计 **6/30 = 20% SR / 23% TP**），落后于采用首帧相机系 3D Scene Flow 的 FloMo（7/10 与 5/10）。
+- **对比 VLA 与仿真 WAM（RoboTwin 2.0 Easy）：** 在 5 个单任务固定 50 示范协议下，FloMo 平均 **63.6%** 高于微调 VLA [π₀.₅](./paper-pi05-open-world-vla.md)（**44.8%**）、同 Wan LoRA 配置的 [FAST-WAM](./paper-fast-wam.md)（**41.0%**）与无视频预训练的 Diffusion Policy BC（**19.2%**）；代价是训练前需付出 SpatialTrackerV2 离线追踪开销（L40S 约 2.4 s / 16 帧）。
 
 ## 关联页面
 

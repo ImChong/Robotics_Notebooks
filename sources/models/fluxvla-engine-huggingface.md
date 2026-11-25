@@ -6,6 +6,8 @@
 - **模型卡和文件：** <https://huggingface.co/limxdynamics/FluxVLAEngine>
 - **论文：** <https://arxiv.org/abs/2609.17210v2>
 - **代码：** <https://github.com/FluxVLA/FluxVLA>
+- **核对范围：** 2026-11-21 抓取并通读 `<https://huggingface.co/limxdynamics/FluxVLAEngine/raw/main/README.md>` 全文（Model Zoo、预训练与微调 checkpoint 列表、LIBERO 与推理速度对比表、安装与训练/推理命令示例）。
+- **通读：** 已完成
 - **定位：** 官方模型卡提供上游预训练模型和 FluxVLA 训练 checkpoint 的链接，以及 LIBERO 结果和推理速度表。具体权重的许可与使用条件应分别查看对应页面。
 
 ## 模型卡记录

@@ -2,8 +2,10 @@
 type: entity
 tags: [egocentric, egocentric-video, data-collection, human-data, hand-pose, mcap, lerobot, lightwheel, physical-ai, data-service]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-21
 date: 2025-12-04
+original:
+  - ../../sources/blogs/lightwheel_egosuite.md
 related:
   - ./lightwheel.md
   - ./egosuite-open100k.md
@@ -143,6 +145,7 @@ flowchart LR
 | [LW-Egosuite-DevKit](./cn-os-lw-egosuite-devkit.md) | **已开源**，Apache-2.0，PyPI 1.0.2 |
 | 采集硬件、手姿恢复等标注算法 | **未开源**（博客称 in-house） |
 | HDCP 采集平台 | 新闻稿称「open platform」，截至 2026-10-10 **未见公开实现** |
+| 源码运行时序图 | **不适用**（商业数据产品线，采集与标注算法未开源；开源 MCAP 工具链时序见 [LW-Egosuite-DevKit](./cn-os-lw-egosuite-devkit.md)） |
 
 ## 局限与风险
 

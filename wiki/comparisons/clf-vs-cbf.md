@@ -1,7 +1,7 @@
 ---
 type: comparison
 tags: [control, safety, clf, cbf, qp, stability, optimization, humanoid]
-status: stub
+status: complete
 summary: "CLF 负责稳定性（驱动系统到达目标），CBF 负责安全性（阻止系统进入危险区域），两者互补，联合构成 CLF-CBF-QP 实时安全控制框架。"
 updated: 2026-10-01
 related:
@@ -11,6 +11,7 @@ related:
   - ../formalizations/lqr.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ../entities/paper-rom-nav.md
+original: ../../sources/papers/ames_cbf_ecc2019_arxiv_1903_11199.md
 sources:
   - ../../sources/papers/optimal_control_theory.md
   - ../../sources/papers/rom_nav_arxiv_2609_19272.md
@@ -27,12 +28,28 @@ sources:
 
 两者均将各自的条件转化为对控制输入的线性约束，嵌入 QP 实时求解——但解决的是完全不同的问题。
 
-## 一句话定义对比
+## 一句话定义
 
 - **CLF**：找一个"能量函数" $V(x)$，要求控制输入使其持续下降，直到系统到达目标
 - **CBF**：找一个"边界函数" $h(x)$，要求控制输入使其保持非负，从而系统永不越过安全边界
 
-## 核心差异
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+
+## 为什么重要
+
+- **安全性与活性对偶统一（Ames et al., ECC 2019）**：CLF 刻画系统收敛到目标状态的渐近稳定性（liveness），CBF 通过超水平集前向不变性刻画安全红线不可逾越（safety）；在实时 QP 中并行求解可让系统按需减速让步而不失安全保障。
+
+## 核心原理与差异
 
 ### 数学条件对比
 
@@ -136,7 +153,7 @@ $$\qquad\quad u \in \mathcal{U}, \quad \delta \geq 0$$
 └── 既要到达目标，又要保证安全？ → 用 CLF-CBF-QP
 ```
 
-## 常见误判
+## 常见误区或局限
 
 ### 误判1：CLF 能保证安全
 
@@ -157,6 +174,11 @@ CBF 保证系统**留在安全集内**，但安全集内的行为完全取决于
 
 连续时间 CLF/CBF 理论不能直接应用于离散时间系统。离散时间需要专门的 DCLF/DCBF，约束形式是差分而非微分。
 
+## 工程实践
+
+- **优先级与松弛选择**：实际 CLF-CBF-QP 务必对 CLF 施加可松弛变量 $\delta$（代价项 $p\delta^2$）并将 CBF 作为硬约束，防止安全性与收敛目标冲突导致 QP 无解。
+- **相对阶检查**：位置安全约束用于力矩输入机器人通常呈高相对阶（relative degree 2），须改用 HOCBF 或以速度安全过滤器桥接。
+
 ## 结论
 
 | 问题类型 | 推荐工具 |
@@ -169,20 +191,9 @@ CBF 保证系统**留在安全集内**，但安全集内的行为完全取决于
 
 在人形机器人实际工程中，最常见的模式是：**WBC/MPC 提供名义控制律，CBF-QP 作为安全过滤器**，而 CLF 则被"内化"到 WBC 的任务空间跟踪误差代价函数中（隐式 CLF）。
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
-| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
-
 ## 参考来源
 
+- [ames_cbf_ecc2019_arxiv_1903_11199.md](../../sources/papers/ames_cbf_ecc2019_arxiv_1903_11199.md) — Ames et al., *Control Barrier Functions: Theory and Applications* (ECC 2019, arXiv:1903.11199v1)
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CLF-CBF-QP 奠基论文
 - Sontag, *A universal construction of Artstein's theorem on nonlinear stabilization* (1989) — CLF 理论基础
 - [sources/papers/optimal_control_theory.md](../../sources/papers/optimal_control_theory.md) — 最优控制与 Lyapunov 方法背景

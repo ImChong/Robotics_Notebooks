@@ -12,7 +12,10 @@
 - **创始人推文：** <https://x.com/huang_biwei/status/2099664633095401659>（Biwei Huang；按推文 ID 推算约 2026-09-15 01:00 UTC；仅取得页面 meta 摘要，正文被截断）
 - **发表日期：** 博客页署名 **2026-09-15**；arXiv v1 **2026-09-14 10:46 UTC** 提交，v2 **2026-09-18**；README 称 2026-09-15 进入 Hugging Face Daily Papers 第 6 位（2026-09-16 核对，自报）
 - **入库日期：** 2026-10-10
-- **抓取方式：** `curl` 抓取官方博客、项目页静态 HTML、arXiv abs 页、`raw.githubusercontent.com` 上的 `README.md` 与 `docs/PAPER.md`、项目页 `data/benchmark-results.csv` 与 `data/ablation.csv`；GitHub API 在本会话不可用，未取得 star / release 数据；论文 PDF 全文未读
+- **再核日期：** 2026-11-21
+- **抓取方式：** `curl` 抓取官方博客、项目页静态 HTML、arXiv abs/HTML 全文、`AetherLabsAI/RSIAgent@4d7ef43770dda341fccd9a5743db92407687c615`（`README.md`、`run_osworld.py`、`run_ale.py`、`core/`、`explore/`）、项目页 `benchmark-results.csv` 与 `ablation.csv`
+- **核对范围：** 通读官方博客原文、`arXiv:2609.15364` 正文（§1–§7，另归档于 `sources/papers/rsiagent_arxiv_2609_15364.md`）及 `RSIAgent@4d7ef43` `run_osworld.py` / `README.md`；未在 KVM/Docker 环境下实跑 OSWorld/ALE VM
+- **通读：** 已完成
 - **一句话说明：** Aether AI 提出 **不更新参数** 的数字智能体自改进框架：curriculum / actor / verifier 三角色围绕可演化记忆循环，先 **并行广度探索（BRS）** 再 **串行深度探索（DRS）**，把「动作–条件–结果」因果经验固化为冻结记忆后复用；以 Kimi-K3 + GLM-5.3 为底座，在 **OSWorld 2.0（0808 offline，82 题）partial 78.98%**、**Agents' Last Exam Near-term（67 题）partial 84.82%**，高于 GPT-6 Astra 的 72.60% / 82.26%（均为自报，非对齐预算对比）。评测全部是 **软件 / 计算机使用** 环境，**无机器人实验**。
 
 ## 开源 / 项目页核查（步骤 2.5）

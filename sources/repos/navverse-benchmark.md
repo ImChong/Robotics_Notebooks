@@ -3,32 +3,32 @@
 > 来源归档
 
 - **标题：** NavVerse-Benchmark — A Physically Grounded Indoor-to-Outdoor Embodied Navigation Benchmark
-- **类型：** repo（当前以项目站托管为主）
+- **类型：** repo
 - **机构：** 密歇根大学（UMich）；CURLY 实验室（UMich-CURLY）
 - **链接：** <https://github.com/UMich-CURLY/NavVerse-Benchmark>
 - **项目页：** <https://umich-curly.github.io/NavVerse-Benchmark/>
+- **数据集：** <https://huggingface.co/datasets/tccoin/navverse-benchmark>
 - **论文：** <https://arxiv.org/abs/2607.19695>
-- **默认分支：** `website`（GitHub Pages 静态站）
 - **入库日期：** 2026-09-13
-- **许可证：** 仓内未声明 LICENSE 文件（截至核查日）
-- **代码 / 开源状态：** **待发布** — 仓已公开但 **仅含项目站静态资源**；Isaac Sim 仿真与评测入口标注 Coming soon
-- **一句话说明：** NavVerse 官方 GitHub：当前托管项目页资产；benchmark 代码与数据待官方发布。
+- **最近核对：** 2026-11-21
+- **代码 / 开源状态：** **已开源** — 2026-09-30 正式发布代码、基线包装器、Isaac Sim Docker 与 Hugging Face v1 场景及 episode 数据。
+- **一句话说明：** NavVerse 官方仓库，提供统一命令行启动器 `navverse-run`、Isaac Sim/Lab 仿真封装、安全/过渡指标统计器与多种零样本基线适配器。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-navverse.md`](../../wiki/entities/paper-navverse.md)
 - **交叉归档：** [navverse-benchmark-github-io.md](../sites/navverse-benchmark-github-io.md)、[navverse_arxiv_2607_19695.md](../papers/navverse_arxiv_2607_19695.md)
 
 ---
 
-## 仓内结构（2026-09-13 快照，`website` 分支）
+## 仓内结构（2026-11-21 核查，默认主分支）
 
-| 路径 | 作用 |
-|------|------|
-| `index.html` | 项目站入口 |
-| `bundle.js` / `bundle.css` | 前端 bundle |
-| `corl_figs/` | 论文/榜单配图 |
-| `web-media/` | rollout 视频与示意图 |
-| `tools/` | 站点构建/媒体工具（非 benchmark runner） |
+| 路径 / 入口 | 作用 |
+|-------------|------|
+| `navverse-run` (`python -m navverse.launcher.cli`) | 统一 CLI 入口（支持 `setup` / `download` / `build` / `benchmark`，含 `--list-tasks`、`--list-presets`、`--dry-run`） |
+| `navverse/` | 核心仿真与任务环境：`sim.py`、`vln_env_wrapper.py`、`episode.py`、`task_generator.py`、`path_following.py`、`measures.py`、`navmesh.py`、`robots/` |
+| `baselines/` | 基线测评调度与适配器：`eval_navverse.py`、`evaluation_worker.py`、`uninavid`、`streamvln`、`poliformer`、`longnav_r1`、`internvla_n1`、`gpt`、`oracle`、`dummy` |
+| `scripts/` | 安装与构建辅助脚本：`setup_navverse.sh`、`download_navverse_data.py`、`navverse_evaluation.py`、`navverse_task_generation.py`、`navverse_rebuild_navmeshes_isaac.py` |
+| `configs/` / `docker/` / `episodes/` / `tests/` | 实验预设配置、Isaac Sim 兼容性 Docker 构建上下文、episode 配置及单元测试 |
 
-**注意：** `main` 分支不存在；`git clone` 后默认检出 `website`，**无** Python 评测脚本或 Isaac Sim 环境注册。
+**数据下载：** `navverse-run download` 从 Hugging Face `tccoin/navverse-benchmark` 拉取 `navverse_v1_july23.tar.gz` 与 `episodes/` 并校验 SHA-256，解压生成 `vc_plus/`、`grscenes_commercial/`、`navmesh/` 与 `episodes/` 并写入 `.env`（`SCENE_FOLDER` / `EPISODE_FOLDER`）。
 
 ---
 

@@ -3,6 +3,9 @@ type: query
 tags: [rl, manipulation, tactile-sensing, sim2real, multimodal]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/omnitactune_arxiv_2607_03723.md
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/contact-rich-manipulation.md

@@ -1,10 +1,14 @@
 ---
 type: entity
+project_id: wbic-mpc-mini-cheetah
 tags: [paper, quadruped, mpc, wbc, locomotion, mit, control]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: "1909.06586"
 code: https://github.com/mit-biomimetics/Cheetah-Software
+code_scope: "user/MIT_Controller/Controllers/convexMPC/ 与 WBIC/（凸 MPC 与全身冲量控制核心算法模块）"
+project_distinction: "arXiv:1909.06586（Highly Dynamic Quadruped Locomotion via WBIC and MPC）独立论文实体；与 Mini Cheetah 整机平台及多论文学习栈节点 mit-mini-cheetah 区分。"
+original: ../../sources/papers/wbic_mpc_mini_cheetah_arxiv_1909_06586.md
 related:
   - ./mit-mini-cheetah.md
   - ./paper-mini-cheetah-platform.md

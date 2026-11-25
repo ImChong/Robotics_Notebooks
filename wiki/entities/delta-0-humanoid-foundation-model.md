@@ -9,7 +9,10 @@ tags:
   - delta-intelligence
   - behavior-foundation-model
 status: complete
-updated: 2026-09-28
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/deltai_delta_0_blog_2026-09.md
+  - ../../sources/sites/deltai-com.md
 related:
   - ../concepts/world-action-models.md
   - ../concepts/whole-body-control.md
@@ -120,6 +123,7 @@ flowchart TB
 | **仿真重建** | 视频→可编辑仿真资产（光照/摩擦/物体位姿）；文称 agent 管线含 **GPT-6 Astra** 等 LLM 命名 |
 | **部署速度** | 强调 **near-human speed** 的单通才策略（无公开 Hz 表） |
 | **复现入口** | **无**；仅第三方 leaderboard 代码用于 **控制器基线**，不是 Δ₀ 发布物 |
+| **源码运行时序图** | **不适用**（确认未开源，2026-11-21 复核官网与博客仍无公开仓库或模型权重） |
 
 ## 局限与风险
 
@@ -130,7 +134,8 @@ flowchart TB
 
 ## 关联页面
 
-- [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [Loco-Manipulation](../tasks/loco-manipulation.md) / [Manipulation](../tasks/manipulation.md)
+- [Reinforcement Learning](../methods/reinforcement-learning.md) — 真机 RL 后训练与 delta-action 闭环背景
 - [World Action Models](../concepts/world-action-models.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Being-M0.7（潜空间 WAM 对照）](./paper-being-m07-humanoid-latent-wam.md)

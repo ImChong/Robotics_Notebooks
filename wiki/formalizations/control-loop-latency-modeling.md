@@ -2,7 +2,7 @@
 type: formalization
 tags: [real-time, control, hardware, latency, middleware, math]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ../concepts/ethercat-protocol.md
   - ../concepts/can-bus-protocol.md

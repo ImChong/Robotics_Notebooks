@@ -2,7 +2,11 @@
 type: concept
 tags: [humanoid, hardware, actuator, leg, linear-actuator, tesla]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
+  - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
 related:
   - ../entities/humanoid-robot.md
   - ../tasks/locomotion.md
@@ -80,13 +84,19 @@ flowchart LR
 | 动态带宽 | 传动链长，极限跑跳通常不占优 | 更适合高速变向与爆发动作 |
 | 建模与标定 | 闭链几何 + 丝杠非线性需仔细进仿真 | 串联链相对直观，但摩擦与柔性仍难 |
 
+## 工程实践
+
+- **机构–连杆死点规避与力臂线性化**：膝/踝采用四连杆把非线性关节扭矩需求映射为直线执行器近似线性推力行程，设计时须校核全活动域传动角与奇异点，并将闭链正逆解一致写入仿真 URDF/MJCF（见 [并联关节解算](./humanoid-parallel-joint-kinematics.md)）。
+- **反向自锁与制动策略协调**：自锁仅能作为静态/慢走节电的物理机制之一，必须核对螺距角在润滑老化、高频振动下的自锁边界及反向驱动阻尼，决定是否仍需机械抱闸或碰撞卸荷策略。
+- **G 级导程磨削与装调公差**：反转式 PRS 的多线内螺纹螺母、滚柱外径分选与热处理（HRC 58–62）一致性是量产良率核心瓶颈，台架需实测正反向空程、丝杠效率与端面拉力传感器温漂。
+
 ## 常见误区或局限
 
 - **把媒体解读当官方规格**：公开活动与第三方文章不等于冻结的 BOM；量产迭代可能更换丝杠副、连杆参数或混合方案。
 - **把「示意能耗表」当普适结论**：站立/慢走占比一旦改变，系统级能耗排序可能完全改写。
 - **忽略闭链控制复杂度**：四连杆引入耦合与奇异性管理，WBC 与仿真资产必须与机构一致（参见 [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) 的分层讨论）。
 
-## 与其他页面的关系
+## 关联页面
 
 - [人形机器人](../entities/humanoid-robot.md)：平台级硬件与任务语境。
 - [Locomotion](../tasks/locomotion.md)：行走闭环中「关节接口」与 Sim2Real 约束。

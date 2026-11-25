@@ -3,7 +3,10 @@ type: entity
 project_id: mode-vla
 tags: [paper, vla, dexterous-manipulation, bimanual-manipulation, teleoperation, reinforcement-learning, tactile-sensing, sjtu, shanghai-ai-lab, shanghai-innovation-institute, nus, zhongguancun-academy, sharpa-robotics]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
+original:
+  - ../../sources/papers/mode-vla-2603-08122.md
+  - ../../sources/sites/mode-vla.md
 arxiv: "2603.08122"
 project: https://sites.google.com/view/mode-vla/home
 venue: "arXiv 2026"

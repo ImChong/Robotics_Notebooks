@@ -27,9 +27,12 @@ tags:
   - simple-ai
   - physical-intelligence
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2607.04234"
 code: https://github.com/TuojingAI/SoftVTBench
+original:
+  - ../../sources/papers/softvtbench_arxiv_2607_04234.md
+  - ../../sources/repos/softvtbench.md
 related:
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/tactile-sensing.md

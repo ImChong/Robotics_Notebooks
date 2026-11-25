@@ -14,9 +14,38 @@ sources:
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 summary: "Sim2Real 方法横向对比"
 updated: 2026-11-14
+original:
+  - ../../sources/papers/sim2real.md
+  - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
 ---
 
 # Sim2Real 方法横向对比
+
+## 一句话定义
+
+**Sim2Real 方法横向对比** 将迁移策略划分为 **域随机化（DR）**、**领域自适应（DA / SysID）** 与 **真实环境微调** 三大范式，并按真机数据预算、建模完备度与策略可更新性给出组合选型规则。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DR | Domain Randomization | 在仿真中大范围随机物理/视觉参数覆盖真机分布 |
+| DA | Domain Adaptation | 用少量真机数据对齐仿真与真实状态/视觉分布 |
+| SysID | System Identification | 从激励轨迹逆向辨识质量/摩擦/PD 等物理参数 |
+| RMA | Rapid Motor Adaptation | 在线潜变量适应模块实时估计环境外在向量 |
+
+## 为什么重要
+
+单纯堆叠宽范围 DR 往往导致策略极度保守甚至在边缘配置上不可解，而直接真机微调又成本高昂；厘清三大路线的边界，有助于在低真机样本下用最小工程成本跨越现实鸿沟。
+
+## 核心原理
+
+```mermaid
+flowchart LR
+  GAP["Sim2Real Gap: 动力学 + 观测 + 执行器"] --> R1["DR: 仿真随机化换鲁棒性 (零真机样本)"]
+  GAP --> R2["SysID / DA: 校准模型缩减结构性误差"]
+  GAP --> R3["真实微调 / 在线适应: 修正残差漂移"]
+```
 
 Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fine-tuning（真实环境微调）**。三者可单独使用也可组合，选择取决于 gap 大小、真实数据成本和任务类型。
 
@@ -149,26 +178,24 @@ Real: student π(a|o) → 用观测历史近似特权信息 → 微调
 | 部署前 | 系统辨识修正 1-3 个最关键参数 |
 | 真实部署后 | Online fine-tuning（保守，safety constraint） |
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| GAN | Generative Adversarial Network | 生成对抗网络，AMP 对抗训练的范式来源 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-
 ## 参考来源
 
+- [Sim2Real 核心论文精读](../../sources/papers/sim2real.md)
+- [从域随机化到残差学习：Sim2Real 四条技术路线](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - Tobin et al., *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* (2017) — DR 开创性工作
 - Peng et al., *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* (2018)
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 特权训练 + 真实微调
 - Tan et al., *Sim-to-Real: Learning Agile Locomotion For Quadruped Robots* (2018)
+
+## 工程实践
+
+1. **优先辨识执行器与通信延迟：** 在施加大幅质量/摩擦 DR 前，先标定关节 PD、齿轮间隙与传感器延迟，收益通常大于盲目扩大随机化方差。
+2. **「SysID + 窄 DR」组合：** 先用少量实机轨迹对齐核心物理参数，再围绕辨识均值施加轻量 DR 覆盖温度与负载波动，避免策略保守。
+
+## 常见误区或局限
+
+- **把 DR 当作全能兜底：** 若仿真根本缺少关键物理机制（如缆线柔顺、执行器电压饱和），再宽的 DR 也难以迁移。
+- **忽略离线/真机指标脱钩：** 仿真内速度追踪误差下降并不自动等价于真机不滑倒或长期免跌倒。
 
 ## 关联页面
 
@@ -178,3 +205,8 @@ Real: student π(a|o) → 用观测历史近似特权信息 → 微调
 - [Online vs Offline RL](./online-vs-offline-rl.md) — Real fine-tuning 涉及 online/offline RL 的选择
 - [Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接微调](./sim2real-vs-real2sim-fine-tuning.md) — 「最后一公里」三策略的成本/安全/数据效率细分
 - [四条路线：可辨识性视角](./sim2real-four-routes-identifiability.md) — SysID / DR / 适应 / 残差立场与组合顺序
+
+## 推荐继续阅读
+
+- [Sim2Real Gap 缩减实战指南](../queries/sim2real-gap-reduction.md)
+- [Sim2Real 闭环误差分层工程](../queries/sim2real-closed-loop-engineering.md)

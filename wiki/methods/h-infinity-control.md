@@ -12,6 +12,7 @@ related:
   - ../overview/robot-control-paradigm-robust-control.md
   - ./mu-synthesis-control.md
   - ../concepts/optimal-control.md
+original: ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
 ---

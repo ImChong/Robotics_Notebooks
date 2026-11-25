@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, character-animation, parkour, heading-control, amp, motion-tracking, human-scene-interaction, tog, cmu, nvidia, sfu]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-22
 related:
   - ../entities/paper-hil-hybrid-imitation-learning.md
   - ./deepmimic.md

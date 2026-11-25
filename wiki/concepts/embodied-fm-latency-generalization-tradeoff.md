@@ -2,7 +2,7 @@
 type: concept
 tags: [vla, vlm, world-model, embodied-ai, foundation-model, real-time-control, generalization, taxonomy]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 original:
   - ../../sources/papers/mint_rss_2026.md
   - ../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md

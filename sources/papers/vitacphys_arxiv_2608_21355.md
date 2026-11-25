@@ -9,6 +9,8 @@
 - **机构：** 小米机器人实验室（Xiaomi Robotics）— Yiwen Liu、Yujun Zhu、Kui Jia、Zhao Liao、Yangwei You、Shuaijun Wang（通讯）
 - **状态：** 2026-08 arXiv 预印本，同行评审前
 - **入库日期：** 2026-08-24
+- **核对范围：** 通读 `arXiv:2608.21355v1` HTML 全文（§I–VII、Table I–VI、Fig. 1–7）及项目页 <https://vitacphys.github.io/ViTacPhys/>，核对指标、迁移消融与 Coming Soon 开源状态。未运行真机/模型实验。
+- **通读：** 已完成
 - **一句话说明：** 从人体视触觉抓取示范在线估计质量/刚度/摩擦，经人→机迁移条件化 ACT 灵巧手策略，实现属性自适应抓取。
 
 ## 开源状态（步骤 2.5，2026-08-24）

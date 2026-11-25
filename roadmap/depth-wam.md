@@ -149,6 +149,7 @@ flowchart LR
 - [Rhoda DVA / Mobile DVA](../wiki/entities/rhoda-direct-video-action.md) — 因果未来视频经 IDM 转动作的闭源 Cascaded 产业样本；Mobile 扩展为机械臂 + 底盘统一闭环，读实验时区分公司自报与开源复现。
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节
 - [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，三阶段训练与门控视觉预测上下文；新版 SIMPLE 合计最高，G1 真机与 GR00T-N1.6 并列
+- [μ₀：三维交互轨迹世界模型](../wiki/entities/paper-mu0-wm.md) — Stage 2 的级联运动先验对照：冻结视频预训练的 Trace Expert，下游动作专家使用一次部分去噪特征；并非动作与未来联合预测，目标本体仍需动作监督。
 - [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md) — VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码已公开，检查点及部分数据仍缺
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md) — 与 Joint / 部署横切对照
 
@@ -176,9 +177,11 @@ flowchart LR
 - 对照 ABot-M0.5 的 Dream Forcing：解释自生成视频 latent 上训逆动力学在对齐什么
 
 ### 推荐读什么
+- [AR-WAM：视觉框 + 原子动作的 Agent-Ready WAM](../wiki/entities/paper-ar-wam.md) — **Stage 3 轻量 Joint WAM / Agent 接口**：冻结 DINOv3 + 共享专家，动作与视觉/语义前瞻联合去噪；目标框替代文字、长程记忆和重试留给外部 Agent。RoboTwin clean/random 87.2/84.2%，真机 71.7%，仅模型 chunk 推理 14.09 ms。
 - [CloudRobo-WM（WM-1.0 / WM1.2 版本核验）](../wiki/entities/cloudrobo-wm.md) — 华为云世界动作模型家族：公开 RoboTwin 适配器与 WM-1.0 checkpoint、官方 WM1.2 DualAct/PPA 宣传和版本归属边界，禁止跨版本误引用。
 - [ResWAM：冻结 DINOv3 上的未来视觉残差](../wiki/entities/paper-reswam-2611-19559.md) — 用特征变化代替整帧未来监督，0.5B 双流 DiT 同训动作与未来残差；区分 2.3B 总参数与 92.7 ms 真机延迟。
 - [WATO：可微优化训练联合 WAM](../wiki/entities/paper-wato-2611-17626.md)：通过世界模型动力学约束优化回传任务目标，区分训练求解与推理采样。
+- [MAWAM：多智能体联合世界–动作模型](../wiki/entities/paper-mawam-coordinated-manipulation.md) — **Stage 3 多机器人扩展**：共享跨智能体注意力联合生成各机器人私有未来视图与动作；分开核对角色归属、团队未来监督、四臂交接消融和推理时延。
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
 - [InternW0-Δ（Causal Imprint / 20K+ h 异构数据）](../wiki/entities/paper-internw0-delta.md) — Joint MoT（视频专家 + 动作专家），训练期 future-feature + Track4World 监督、部署期 action-only 去噪；代码与四类权重已公开，跨本体仍需 adapter 和 post-training。
@@ -208,6 +211,8 @@ flowchart LR
 ---
 
 ## Stage 4 部署职责三分：执行 · 修正 · 筛选（+ 接触 / 几何）
+> **SONIC × GR00T 2 Turbo 实例：** [从 Motion Tracking 到 WAM 的人形双层闭环](../wiki/queries/sonic-gr00t2-wam-humanoid-dual-brain.md) — 在本 Stage 对照 Joint WAM 的高层异频预测、motion token 中间接口、50 Hz 全身跟踪与 1000 Hz 关节伺服，及 state-to-action 延迟口径。
+
 
 **把"动作发出去以前，世界会怎样变"落到可插拔接口：直接执行、在线修正基础 VLA、或部署前筛选。**
 
@@ -225,6 +230,11 @@ flowchart LR
 - 为自己的场景选一类部署接口，写清输入输出与是否冻结基础 VLA
 
 ### 推荐读什么
+
+- [nopeworld](../wiki/entities/paper-nopeworld.md) — 冻结视频生成器的物理约束与动作筛选边界。
+
+- [AFFECT：动作响应忠实度训练](../wiki/entities/paper-affect-action-effect-matching.md) — 区分生成逼真与真实动作后果，适合作为执行前模型评估。
+- [WAM-Policy：四足生成策略适配与加速](../wiki/entities/paper-wam-policy.md) — OPSD/M-OPD 让生成式策略进入四足全身控制，注意仿真与 Go2 真机落差。
 - [ThinkWAM：提议—再思考—精炼](../wiki/entities/paper-thinkwam-2611-21258.md) — 执行前以预测未来与动作残差重新生成动作；两遍推理的真机 101.2 ms 与 LIBERO 153.48 ms 不同口径。
 - [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
@@ -256,6 +266,7 @@ flowchart LR
 - 关键词：[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[导航纵深](depth-navigation.md)
 
 **方向 C：评测与安全一致性**
+- [WAM 设计要素受控实证](../wiki/entities/paper-wam-design-empirical-study.md) — 六种因果、八种潜表征、四类目标的 ID/OOD 对照；用时序反转和 DROID 离线验证区分辅助世界监督与真实闭环价值。
 - [HINT-WAM：未来视频自蒸馏后训练](../wiki/entities/paper-hint-wam.md) — 无 reward 的学生自采样分布监督，比较新任务收益与原任务遗忘。
 - 同时看世界侧（保真、物理常识、动作可推断性）与策略侧（成功率、长程、sim2real）；避免单侧代理
 - [VLAW：真实失败校准与想象策略改进](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 对照接触物理误判、Qwen3-VL 奖励 FP/FN 和真机策略成功率，强调视觉逼真与物理可信不同；为 WM 辅助策略后训练的边界案例。

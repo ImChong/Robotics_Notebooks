@@ -9,7 +9,9 @@
 - **官方站：** https://impeccable.style
 - **分发：** `npx impeccable install`；`npx skills add pbakaus/impeccable`；Claude Code marketplace `pbakaus/impeccable`
 - **入库日期：** 2026-09-30
-- **复核日期：** 2026-10-27（官方 README）
+- **复核日期：** 2026-11-22
+- **核对范围：** 官方 README 的安装、24 命令、detector 与 live 行为，以及 `package.json`、`cli/bin/cli.js` 的 CLI/二进制分发逻辑；未运行 live 或 detector。
+- **通读：** 已完成
 - **协议：** Apache-2.0
 - **一句话说明：** 面向 coding agent 的 **设计词汇表**：单 skill 暴露 **24 条 `/impeccable` 命令**，用 **PRODUCT.md / DESIGN.md** 持久化产品与视觉系统，并以 **62 条确定性 detector**（CLI hook、PR、Chrome 扩展）在编辑循环中移除 AI 默认 tell；支持 **live** 浏览器迭代。
 - **为什么值得保留：** 把 Anthropic frontend-design 的审美意图 **操作化 + 可测**；适合与本站静态站 PR 评审、agent 改 UI 的工作流对照。
@@ -33,3 +35,9 @@
 
 - 项目页：[`sources/sites/impeccable-style.md`](../sites/impeccable-style.md)
 - Anthropic 基线：[`wiki/entities/anthropic-frontend-design-skill.md`](../../wiki/entities/anthropic-frontend-design-skill.md)
+
+## 2026-11-22 核对补充
+
+- `package.json` 的 bin 指向 `cli/bin/cli.js`；launcher 在平台二进制、缓存与下载间选择并校验 checksum。
+- `npx impeccable detect src/` 检测源码，URL 扫描可覆盖更多渲染规则；实际输出必须在目标项目中运行才可断言。
+- README 对本地 live Apply 另行提示可能启用跳过审批/沙箱的 CLI 模式；仅应在可信本地项目中使用并审查安全配置。

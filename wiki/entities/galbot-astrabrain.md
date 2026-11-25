@@ -9,6 +9,9 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/whole-body-control.md
   - ../comparisons/robot-foundation-model-company-paths-2026.md
+original:
+  - ../../sources/sites/galbot-astrabrain.md
+  - ../../sources/repos/humanoid_gpt_galaxy_general_robotics.md
 sources:
   - ../../sources/sites/galbot-astrabrain.md
   - ../../sources/repos/humanoid_gpt_galaxy_general_robotics.md
@@ -37,6 +40,15 @@ summary: "AstraBrain 是银河通用的具身模型系列；WAM 侧聚焦异构�
 - 早期 [GraspVLA](cn-os-graspvla.md) 的合成抓取预训练是另一条有公开资产的操作路线，不能用其开放状态替代 WAM 的核查。
 
 ## 核心原理
+
+```mermaid
+flowchart LR
+    Data["异构数据池 (人类视频 / 仿真 / 真机)"] --> WAM["AstraBrain WAM (官网自述: LDA 跨本体隐式世界-动作基座, 未开源)"]
+    WAM -->|"任务/高层语义目标 (接口细节未公开)"| WBC["AstraBrain-WBC 0.5 = Humanoid-GPT (已部分开源 @9f9e7b7)"]
+    TTT["WAM-TTT (无动作标签人视频后训练, 未开源)"] -.->|"部署阶段自适应"| WAM
+    Ref["29-DoF 参考运动 + 本体状态"] --> WBC
+    WBC -->|"ONNX / TensorRT 因果 Transformer"| G1["Unitree G1 真机控制 (play_track.py)"]
+```
 
 | 模块 | 输入与机制 | 输出 / 证据 |
 | --- | --- | --- |

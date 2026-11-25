@@ -3,7 +3,9 @@
 - **类型：** 官网、展商介绍与政府发布记录
 - **官网：** https://www.robotera.com/
 - **展商自述：** https://wrc.cie.org.cn/expo/company/438.html
-- **核查日期：** 2026-10-08
+- **核查日期：** 2026-10-08（2026-11-21 复核）
+- **核对范围：** 读取 2026 世界机器人大会展商介绍页（<https://wrc.cie.org.cn/expo/company/438.html>）及中关村科学城两条公开产品发布记录（ERA-42 2024-12-25、星动 L7 2025-07-23），交叉核对 `roboterax` 下官方公开仓库（`humanoid-gym`、`video-prediction-policy`、`robotera_vla`、`xbot_sdk_api`、`teleop_client`）；`https://www.robotera.com/` 为客户端渲染站点，非浏览器静态抓取仅返回空壳 HTML，以既有核查记录与公开官方发布页为准。
+- **通读：** 已完成
 - **沉淀到 wiki：** [星动纪元](../../wiki/entities/robotera.md)
 
 ## 事件日期与来源

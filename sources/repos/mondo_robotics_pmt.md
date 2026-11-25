@@ -10,6 +10,8 @@
 - **资产镜像：** Hugging Face dataset `aCodeDog/PMT-assets`；Google Drive 备份见 README
 - **机构：** 摩多机器人（Mondo Robotics）；香港科技大学（广州）；香港科技大学；妙动科技等（以论文作者为准）
 - **入库日期：** 2026-07-22
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `Mondo-Robotics/PMT` 完整 `README.md`（349 行）与 636 文件目录树，核对 `scripts/train.py`、`scripts/play.py`、`TCRS/`、mjlab 支持与 `checkpoints/pretrained/` 表。
 - **一句话说明：** Perceptive BFM 官方实现：Isaac Lab 上 Unitree G1 的 config-driven 运动跟踪 RL（`scripts/train.py` / `play.py`），含 **TCRS** 地形运动优化器、teacher→distill→finetune 管线、预训练 checkpoint 与样例 `raw`/`optimized` 地形片段。
 
 ## 开源状态（2026-07-22 项目页 + README 核查）

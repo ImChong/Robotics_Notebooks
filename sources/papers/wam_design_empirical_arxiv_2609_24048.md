@@ -10,7 +10,9 @@
 - **作者：** Chao Tang *、Haoqing Wang *、Zilang Cen、Weishi Mi、Wei Xia、Fangcheng Liu、Anda Cheng、Yeqing Shen、Xiaohui Cui、Xiaoyuan Zhang、Yehui Tang、Tingguang Li（* 同等贡献）
 - **机构：** 三星机器人体验（Samsung Robotics eXperience）；三星北京研发中心（Samsung R&D Institute China–Beijing）；北京大学（PKU）；武汉大学（WHU）；北京中关村学院（Zhongguancun Academy）
 - **项目页：** **无**（截至 2026-09-22：arXiv / HTML 版均未列独立项目页或 Code 链接）
-- **入库日期：** 2026-09-22
+- **核对范围：** arXiv:2609.24048v1 HTML 的实验框架、六种因果结构、八种潜表征、四项训练目标、数据集设置、受控消融、干预实验、DROID 离线动作预测结果与局限/附录；核查无官方仓库入口。
+- **通读：** 已完成
+- **入库日期：** 2026-09-22（本次复核 2026-11-21）
 - **一句话说明：** 在 **固定骨干与训练管线** 下，对 WAM 的 **视频–动作因果结构（6 种）**、**潜空间世界表征（8 种 / 4 族）** 与 **世界–动作训练目标（4 种）** 做受控消融；RoboCasa-GR1（ID）、LIBERO / LIBERO-Plus（OOD）与 DROID 离线动作预测交叉验证。
 
 ## 开源状态（步骤 2.5，2026-09-22）

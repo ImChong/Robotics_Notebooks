@@ -54,6 +54,7 @@ flowchart LR
 
 ### 推荐读什么
 - [电机转矩-转速曲线（TN 曲线）](../wiki/concepts/motor-torque-speed-curve.md)
+- [关节模组工程师的电机设计学习边界](../wiki/queries/joint-module-engineer-motor-design-literacy.md) — 先确定学习目标：规格/热/气隙/寿命/供应商评审，而不是一上来做全套电机研发
 - [电机转矩-电流曲线（TI 曲线）](../wiki/concepts/motor-torque-current-curve.md)
 - [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) — 先只读"为什么要在 dq 轴看电机"的部分
 - [Humanoid 执行器 102：八章技术地图](../wiki/overview/humanoid-actuator-102-technology-map.md) — 全景扫一遍，知道后面每一站在哪
@@ -102,6 +103,7 @@ flowchart LR
 
 ### 推荐读什么
 - [电机设计流程](../wiki/overview/motor-design-workflow.md) 步骤 2–5（拓扑槽极 → FEA → 热与 CFD → 机械集成）
+- [机械设计师如何自学电机设计并评审供应商](../wiki/queries/joint-module-engineer-motor-design-literacy.md) — FEMM、安装态热与台架验收的最小能力闭环；附谐波寿命口径辨析
 - [电机电磁与多物理场仿真软件选型](../wiki/comparisons/motor-em-simulation-software.md)
 - [开源力矩电机电磁设计完整度对比](../wiki/comparisons/open-source-torque-motor-em-design.md) — Ironless（样机+FEMM）→ FEMM-FOC → PYLEECAN/axfluxmdo 重设计
 - [FEMM](../wiki/entities/femm.md) — 官方文档/示例与开源 2D FEA 底座
@@ -132,8 +134,11 @@ flowchart LR
 ### 推荐读什么
 - [磁场定向控制（FOC）逐步推导](../wiki/formalizations/field-oriented-control-derivation.md) — Clarke/Park 变换到电流环设计
 - [控制环路延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) — 采样、PWM 更新与指令延迟的预算方法
+- [数字控制采样周期与伺服带宽](../wiki/concepts/digital-control-sampling-period.md) — Stage 3 区分采样率、交越频率与带宽，按 ZOH 相位预算和离散 PID 系数验证底层回路；电液案例仅作经验对照。
 - [SimpleFOC（Arduino-FOC 生态）](../wiki/entities/simplefoc.md) — 原型级驱动栈，代码可读性最好的教学实现
 - [ODrive Firmware 0.5.6 模块架构](../wiki/concepts/odrive-firmware-module-architecture.md) — Stage 3 进阶：从 Axis 状态机与 Controller→Motor→FOC 端口连接读懂驱动器实时控制流水线
+- [CyberBeast N32H473 关节软件栈](../wiki/overview/cyberbeast-joint-software-stack.md) — 从裸机 40 kHz FOC 到 CAN Bootloader、JointSDK 与 ROS 2 tick 的真实开源分层实例
+- [CyberBeast robot_mc 裸机 FOC 固件](../wiki/entities/cyberbeast-robot-mc.md) — N32H473 电流采样、FOC 和参数持久化实现
 - [ODrive v3 Firmware 0.5.6：RTOS 与双轴 FOC](../wiki/entities/odrive-v3-firmware-rtos-foc.md) — 从 TIM8/ADC 控制中断、125 μs 双轴 deadline 到 FreeRTOS 状态机的完整源码时序
 - [moteus](../wiki/entities/moteus.md) · [Tinymovr](../wiki/entities/tinymovr.md) — 关节向开源驱动（PCB + FOC + CAN/CAN-FD）
 - [开源 QDD 执行器项目对比](../wiki/comparisons/open-source-qdd-actuator-projects.md) — SimpleFOC → moteus/Tinymovr → OpenTorque → ODRI 的开源学习阶梯

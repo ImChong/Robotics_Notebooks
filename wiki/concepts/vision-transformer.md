@@ -2,7 +2,7 @@
 type: concept
 tags: [vit, vision-transformer, computer-vision, deep-learning, perception, backbone]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 code: https://github.com/google-research/vision_transformer
 related:
   - ../entities/transformer-cv-curriculum.md

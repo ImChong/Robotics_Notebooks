@@ -2,7 +2,10 @@
 type: entity
 tags: [paper, world-model, interactive-world-model, video-generation, real-time, robbyant, wan, causal-inference, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
+original:
+  - ../../sources/papers/lingbot_world_v2_arxiv_2607_07534.md
+  - ../../sources/repos/lingbot-world-v2.md
 arxiv: "2607.07534"
 venue: "arXiv 2026"
 code: https://github.com/robbyant/lingbot-world-v2
@@ -104,30 +107,41 @@ flowchart TB
   V --> SIM
 ```
 
+图依据：[arXiv:2607.07534v1](https://arxiv.org/html/2607.07534) §3–§4（因果预训练、few-step 蒸馏与 Director-Pilot 双 Agent 交互框架）。
+
+## 核心原理
+
+- **因果预训练与 MoBA 掩码（§3.2）：** 基于 rectified-flow，将 Plücker 相机控制嵌入经 AdaLN 注入 DiT，并以 chunk-wise 文本 prompt 控制语义；针对长序列下纯 teacher forcing 易过拟合历史导致画质退化，提出 **MoBA（Mixture of Bidirectional and Autoregressive）** 自/交叉注意力掩码，在 teacher forcing 后拼接全双向正则块并做下三角交叉注意力防未来泄漏。
+- **少步蒸馏与抗漂移（§3.3）：** 结合 **Consistency Distillation**（压缩至 4 步/chunk）与长程 **self-rollout DMD（Distribution Matching Distillation）**，在学生自身 rollout 状态分布上对齐真实得分，抑制小时级生成中的误差累积。
+- **Agentic Harness 与系统栈（§4）：** VLM **Director** 负责因果推理与事件提案（支持直接语义交互与 SAM 跟踪辅助交互），视频 **Pilot** 执行底层动态渲染；配合异步 VAE 解码流水线、时空 refiner（TensorRT）与动态 KV cache 调度支撑 720p@60fps 实时流。
+
 ## 源码运行时序图
 
-`generate.py`（基于 Wan2.2 `i2v-A14B`）的典型 **causal_fast** 多卡推理路径：
+`generate.py`（基于 Wan2.2 `i2v-A14B` / `i2v-1.3B`）的典型 **causal_fast** 推理路径：
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant U as 用户 / torchrun
-  participant G as generate.py
-  participant WAN as wan 包 · i2v-A14B
-  participant CKPT as HF 权重目录
+  participant U as 用户 / torchrun (run_fast.sh)
+  participant G as generate.py (run_causal)
+  participant WAN as wan.image2video.WanI2VCausal
+  participant CKPT as HF 权重目录 (T5/VAE/DiT)
   participant OUT as save_video
-
-  U->>G: --task i2v-A14B --infer_mode causal_fast<br/>--ckpt_dir --image --action_path --prompt
-  G->>CKPT: 加载 14B causal-fast（+ T5/DiT FSDP）
-  G->>WAN: 初始化分布式组 · 解析 frame_num / local_attn_size
-  loop 按 chunk 因果生成
-    WAN->>WAN: 读取 action_path 控制 + KV cache 续写
-    WAN->>WAN: causal_fast 少步采样（无 CFG）
+  U->>G: "--task i2v-A14B --infer_mode causal_fast"
+  G->>WAN: "WanI2VCausal(local_attn_size, sink_size, assets_dir)"
+  WAN->>CKPT: "加载 T5 / Wan2_1_VAE / WanModelFast (+ FSDP/序列并行)"
+  G->>WAN: "generate(prompt, img, action_path, chunk_size, frame_num)"
+  WAN->>WAN: "interpolate_camera_poses -> Plucker 嵌入，VAE encode 首帧"
+  loop "按 chunk 因果生成 (_generate_causal_fast)"
+    WAN->>WAN: "4 步流匹配采样 (无 CFG) + FlowUniPC 调度"
+    WAN->>WAN: "t=0 前向更新 KV cache (local_attn_size / sink_size)"
   end
+  WAN->>CKPT: Wan2_1_VAE decode 拼接潜变量
   WAN-->>G: 视频 tensor
-  G->>OUT: save_video
-  OUT-->>U: 输出 mp4
+  G->>OUT: save_video 输出 mp4
 ```
+
+图依据：`robbyant/lingbot-world-v2@1895d30`，核对过 `README.md`、`run_fast.sh`、`generate.py`、`wan/__init__.py` 与 `wan/image2video.py`（`WanI2VCausal.__init__` 与 `_generate_causal_fast`）；未实际运行多卡推理。
 
 **复现路径：** `git clone` → `pip install -r requirements.txt` + `flash-attn` → `huggingface-cli download robbyant/lingbot-world-v2-14b-causal-fast` → `torchrun ... generate.py` 或 `run_fast.sh`。
 

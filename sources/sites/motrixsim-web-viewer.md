@@ -7,7 +7,9 @@
 - **URL：**
   - 在线 Viewer：<https://motrix.motphys.com/>
   - 用户指南：<https://motrixsim.readthedocs.io/en/latest/user_guide/getting_started/motrixsim_web.html>
-- **入库日期：** 2026-06-18
+- **入库日期：** 2026-06-18（2026-11-21 复核）
+- **核对范围：** 已通读用户指南结构、`Motphys/motrixsim-docs@3f1dca5` 入口链接及浏览器 Web Viewer 操作边界（Online / Customize、文件夹拖拽、快捷键与交互模式）；未在本地浏览器单独运行 wasm 仿真
+- **通读：** 已完成
 - **一句话说明：** 基于 **WebAssembly** 的 MotrixSim 浏览器端物理仿真 Viewer：拖入完整模型文件夹即可加载 MJCF / URDF / JSON 场景，内置 Online 示例与 Customize 本地会话资源，支持播放/步进/重置/重载与物理拖拽交互。
 - **沉淀到 wiki：** [Motrix](../../wiki/entities/motrix.md)
 

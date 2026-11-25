@@ -9,6 +9,8 @@
 - **原始链接：** <https://huggingface.co/blog/LightwheelAI/egosuite-open100k>
 - **发布日期：** 2026-08-26
 - **入库日期：** 2026-09-14
+- **核对范围：** 2026-11-22 抓取并通读 Hugging Face 官方发布博文 `https://huggingface.co/blog/LightwheelAI/egosuite-open100k` 全文，并经 `https://huggingface.co/api/collections/LightwheelAI/egosuite-open100k` 核对三个数据集条目状态（均显示 `gated: auto`）；受 HF gated 权限限制，未下载数据集样本文件本体。
+- **通读：** 已完成
 - **一句话说明：** 光轮智能与 HF 联合发布 **10 万小时** 开放 egocentric 人类活动数据；首批 **1 万小时** 上线，含手/身姿态与事件语义标注，LeRobot v3 + MCAP 双格式，面向 VLA / 世界模型 / 人→机迁移预训练。
 
 ## 核心摘录

@@ -2,9 +2,10 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-11-20
+updated: 2026-11-24
 status: complete
 related:
+  - ../entities/paper-mcp-spatial-semantic-navigation.md
   - ../entities/paper-mosu2.md
   - ../entities/paper-vtinstructor.md
   - ../entities/paper-abot-n1.md
@@ -19,6 +20,7 @@ related:
   - ../entities/esi-bench.md
   - ../entities/insight-bench.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
+  - ../entities/paper-vln-ar-aerial-navigation.md
   - ../entities/paper-uni-lavira.md
   - ../entities/paper-humembr.md
   - ../entities/paper-mind-palace-laeqa.md
@@ -63,6 +65,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/repos/sceneverse-pp.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
+  - ../../sources/papers/vln_ar_arxiv_2611_23930.md
   - ../../sources/papers/uni_lavira_arxiv_2605_27582.md
   - ../../sources/papers/humembr_arxiv_2606_30404.md
   - ../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md
@@ -105,6 +108,8 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 | Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 为什么重要？
+
+- **机载空中 VLN 的异步分层：** [VLN-AR（arXiv:2611.23930）](../entities/paper-vln-ar-aerial-navigation.md) 以 2 Hz 多模态语义决策给 >200 Hz 免训练轨迹专家提供 3D 目标，结合 3DGS 数据、GRPO 与任务记忆；真实 UAV 91/101 次成功。对比 [WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 的自回归世界–动作方案，注意论文的 7.1–9.4 倍指机载 token 解码加速，并非整机导航速度；官方源码未开放。
 
 - **户外交通情境导航对照：** [MOSU2](../entities/paper-mosu2.md) 保留 GPS 全局子目标与 LiDAR + SAM3 可通行轨迹筛选，复杂交互时再查询车辆/行人位置、速度来决定礼让、停走。它不是以自然语言指令为目标的 VLN benchmark，而是 VLM 场景理解与几何运动闭环的工程对照。
 
@@ -253,7 +258,7 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 - **多楼层动态 ObjectNav**：[ZONDA](../entities/paper-zonda.md) — 启发式跨楼层 + 多视角核验 + 行人避障；HM3D-DYNA / TITA（arXiv:2607.21025）。
 - **冻结 VLA 可通行 overlay**：[Green for Go](../entities/paper-green-for-go-vla-nav-grounding.md) — SegFormer 绿/红接地 OmniVLA；开环航点误差 vs 长度正则（arXiv:2607.05122）。
 - **跨本体像素轨迹残差**：[CrossTracer](../entities/paper-crosstracer.md) — VL-Tracer + CE-Adapter；NaviTrace 45.68（arXiv:2608.06688；待核实开源）。
-- **人形物理 VLN 平台**：[HumanoidVLN](../entities/paper-humanoidvln.md) — Isaac Sim 四本体 + FR；933 episode 零样本（arXiv:2608.12860；待开源）。
+- **人形物理 VLN 平台**：[HumanoidVLN](../entities/paper-humanoidvln.md) — Isaac Sim 5.1 四本体 + FR；87 场景 / 933 指令零样本（arXiv:2608.12860；截至 2026-11 无公开代码仓）。
 - **终身学习闭环**：[Arcadia](../entities/paper-arcadia.md) — 自采 + 生成式 USD + 共享 VLN/VLA 骨干 + Sim-from-Real；G1 46/100（arXiv:2512.00076；部分开源）。
 - **慢–快像素接口 VLN 基础模型**：[ABot-N1](../entities/paper-abot-n1.md) — CoT + 像素目标统一五任务；ABotN-Bench 城市 Point/POI 闭环；基准开源、权重待发布（arXiv:2607.10383）。
 - **动态社会 token streaming VLN**：[SPARK-VLN](../entities/paper-spark-vln.md) — 隐状态流 + flow 快规划器；Idealized/Realistic 人中心基准；未开源（arXiv:2607.16806）。
@@ -301,7 +306,7 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 - [ZONDA（多楼层动态零样本 ObjectNav）](../entities/paper-zonda.md) — 跨楼层启发式规划 + 多视角核验 + 行人预测
 - [Green for Go（VLA 导航可通行性视觉接地）](../entities/paper-green-for-go-vla-nav-grounding.md) — 冻结 OmniVLA 的绿/红 overlay；未开源
 - [CrossTracer](../entities/paper-crosstracer.md) — 像素轨迹残差做跨本体导航；NaviTrace；待核实开源
-- [HumanoidVLN](../entities/paper-humanoidvln.md) — 跨人形本体的 Isaac 物理 VLN 基准；待开源
+- [HumanoidVLN](../entities/paper-humanoidvln.md) — 跨人形本体的 Isaac 物理 VLN 基准；截至 2026-11 无公开代码仓
 - [RoamFlow](../entities/paper-roamflow.md) — MeanFlow 一步 image-goal 导航（对照；未开源）
 - [WILD-Nav / WILD-LongTail](../entities/paper-wild-nav-longtail.md) — 从野外视频训练城市 point-goal VLA，并将稀有度和模型失败分开诊断；截至 2026-10-12 未找到官方代码或数据入口
 - [CondVLN](../entities/paper-condvln-conditional-branching.md) — 条件分支 VLN 诊断基准；以 BSA / CSR 区分分支选择与执行，项目页提供匿名代码/数据入口（内容待核验）
@@ -311,10 +316,12 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 - [ACE-Brain-0.5](../entities/paper-ace-brain-0-5.md) — 统一具身脑内嵌 VLN-CE（R2R/RxR）与操作/进度接口
 - [ABot-N1](../entities/paper-abot-n1.md) — 慢–快 CoT+像素接口 VLN 基础模型；ABotN-PointBench / POIBench 城市闭环基准
 - [SPARK-VLN](../entities/paper-spark-vln.md) — 逐 token 隐状态流 + flow 快规划器；Idealized/Realistic 动态社会基准；未开源（arXiv:2607.16806）
-- [NavVerse](../entities/paper-navverse.md) — Isaac Sim 室内–户外连通基准；ObjNav/PlaceNav/VLN + 安全与 transition 诊断；代码待发布（arXiv:2607.19695）
+- [NavVerse](../entities/paper-navverse.md) — Isaac Sim 5.1 室内–户外连通基准；ObjNav/PlaceNav/VLN + 安全与 transition 诊断；代码/Docker 与 HF 数据已开源（arXiv:2607.19695）
 - [Project Quiver](../entities/project-quiver.md) — 25 kg 开源户外机架；无官方 VLN 绑定，只作重载真机想象
 - [NavMCP](../entities/paper-navmcp-long-horizon-navigation.md) — 视觉语言推理 agent + 导航基础模型执行器 + 跨调用证据记忆的长时程探索与具身问答系统
 - [LHNav](../entities/paper-lhnav.md) — 人形长时程导航：Brain 规划 → GR00T N1.7 Cerebellum 出航点/运动 latent → 冻结 SONIC 类解码器 50 Hz；仿真 522 held-out episodes SR@0.5m 52.3%（OmniNav 36.0%），G1 真机三站点 4/5；官方仓仅网站文件（arXiv:2611.12136）
+
+- [MCP 空间与语义推理导航](../entities/paper-mcp-spatial-semantic-navigation.md) — 在既有 ROS 2 SLAM/Nav2 之上用米制地图图像和语义观察路点选择目标；与仅依赖第一视角的 VLN 基准不同，采用显式地图与先行建图。
 
 ## 推荐继续阅读
 

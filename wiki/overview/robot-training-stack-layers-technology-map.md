@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, training-stack, isaac-lab, mujoco, mjlab, unilab, newton, genesis, reinforcement-learning, survey]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-22
 related:
   - ../concepts/robot-simulation-three-layers.md
   - ../entities/isaac-lab.md
@@ -23,6 +23,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
+  - ../../sources/papers/deepinsight_arxiv_2606_17574.md
 summary: "依据具身智能研究室 2026-06 长文，把 Isaac Lab、MuJoCo 生态、mjlab、UniLab、Newton、Genesis World 整理为六层训练–评估基础设施地图；主判断：框架未洗牌，但最贵成本正从峰值仿真速度转向整条闭环返工。"
 ---
 
@@ -114,7 +115,7 @@ flowchart TB
 1. **返工成本 > 峰值 FPS：** 环境搭建、奖励迭代、部署接口、失败回放与跨本体迁移，往往比单次仿真吞吐更拖慢进展。
 2. **环境定义即基础设施：** manager-based 模块化（mjlab 线）说明「环境容器」正升级为可长期维护的研究资产。
 3. **系统瓶颈在缝里：** UniLab 强调采样器–学习器时序与 CPU/GPU 数据搬运——仅比较物理峰值会误导。
-4. **评估层正在长高：** Genesis 线把仿真推向 **可信闭环评测**；与 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) 概念对齐。
+4. **评估层正在长高：** Genesis 线把仿真推向 **可信闭环评测**；与 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) 概念对齐。在 [DeepInsight](../../sources/papers/deepinsight_arxiv_2606_17574.md) 全文复核（2026-11-18）中，System 0 聚合 SR 达 97.90% 时轨迹级诊断仍可能判 Fail，跨层 96 次评测通过率 60.4%（38 次失败主要落在 System 1 与跨层交接），提示聚合榜单不可替代轨迹与交接诊断；同时 DeepInsight 目前尚未见可确认的官方可运行源码或启动入口。
 5. **与人形/VLA 的关系：** 身体系统栈成熟后，VLA/世界模型才稳定调用底层能力——训练栈厚度决定「能否持续返工、验证、接近真实任务」。
 
 ## 常见误区
@@ -136,6 +137,7 @@ flowchart TB
 ## 参考来源
 
 - [具身智能研究室：训练栈分层长文](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
+- [DeepInsight 原论文全文核对（arXiv:2606.17574v1）](../../sources/papers/deepinsight_arxiv_2606_17574.md) — 跨层 trace 诊断口径与官方代码未公开核验（2026-11-18）
 
 ## 推荐继续阅读
 

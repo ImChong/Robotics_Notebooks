@@ -2,10 +2,11 @@
 type: entity
 project_id: agnes-sys1-1-0-decision-model-technical-report
 project: https://github.com/AgnesAI-Labs/Agnes-Sys1-1.0-Technical-Report
+venue: "AgnesAI-Labs Technical Report 2026"
 project_distinction: "独立模型技术报告，并非 AGH 主系统或 AGH RSI 技术报告"
 tags: [paper, decision-model, qwen, llm-agents, model-architecture, test-time-training]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-21
 related:
   - ./agnes-harness.md
   - ./paper-agnes-harness-rsi-technical-report.md

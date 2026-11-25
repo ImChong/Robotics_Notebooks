@@ -5,7 +5,7 @@ arxiv: "2604.24479"
 project: https://huggingface.co/ADSKAILab/Zero-To-CAD-Qwen3-VL-2B
 tags: [autodesk, cad, generative-ai, synthetic-data, vision-language-model]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-22
 related:
   - ../concepts/text-to-cad.md
   - ./gencad-3d.md

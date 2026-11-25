@@ -72,17 +72,23 @@
       esc(c.name) + '<span class="co-tab-count">' + (c.nodes || []).length + '</span></a>';
   }
 
-  function renderNode(node) {
+  function buildNodeMetadataHtml(nodeId) {
+    if (!nodeId) return '';
     var api = window.RNGraphTooltip;
-    var knowledgeNode = api && api.resolveMetadataNode({ id: node.id });
-    var metadata = api && knowledgeNode
+    var knowledgeNode = api && api.resolveMetadataNode({ id: nodeId });
+    return (api && knowledgeNode)
       ? api.buildTooltipHealthHtml(knowledgeNode) + api.buildNodeCommunityBadgesHtml(knowledgeNode) +
-        api.buildUpdatedBadgeHtml(knowledgeNode) + api.buildTooltipRoutesHtml(knowledgeNode) : '';
+        api.buildUpdatedBadgeHtml(knowledgeNode) + api.buildTooltipRoutesHtml(knowledgeNode)
+      : '';
+  }
+
+  function renderNode(node) {
+    var metadata = buildNodeMetadataHtml(node.id);
     var links = '';
     if (node.id) links += '<a class="co-node-link" href="' + esc(detailHref(node.id)) + '">本库笔记 →</a>';
     if (node.url) links += extLink(node.url, '原文 ↗', 'co-node-link');
     if (node.date_source) links += extLink(node.date_source, '日期依据 ↗', 'co-node-link');
-    return '<li class="co-node">' +
+    return '<li class="co-node"' + (node.id ? ' data-node-id="' + esc(node.id) + '"' : '') + '>' +
       '<span class="co-node-date' + (node.date ? '' : ' is-empty') + '">' + esc(node.date || '时间未注明') + '</span>' +
       '<span class="co-node-dot" aria-hidden="true"></span>' +
       '<div class="co-node-card">' +
@@ -93,6 +99,21 @@
       (metadata ? '<div class="co-node-metadata">' + metadata + '</div>' : '') +
       '<div class="co-node-links">' + links + '</div>' +
       '</div></li>';
+  }
+
+  function hydrateNodeMetadata() {
+    var nodeEls = mount.querySelectorAll('.co-node[data-node-id]');
+    for (var i = 0; i < nodeEls.length; i++) {
+      var el = nodeEls[i];
+      if (el.querySelector('.co-node-metadata')) continue;
+      var nodeId = el.getAttribute('data-node-id');
+      var metadata = buildNodeMetadataHtml(nodeId);
+      if (!metadata) continue;
+      var linksEl = el.querySelector('.co-node-links');
+      if (linksEl) {
+        linksEl.insertAdjacentHTML('beforebegin', '<div class="co-node-metadata">' + metadata + '</div>');
+      }
+    }
   }
 
   // 有日期的节点在跨年处插入年份分隔；未注明时间的节点保持数据里的相对顺序
@@ -185,15 +206,19 @@
     }
   }
 
+  // 元数据与路线数据并行请求：先秒出时间线正文，link-graph 到达后再渐进补全节点徽标，避免整页被 700 KB 图谱阻塞。
+  var metadataPromise = window.RNLinkGraph
+    ? window.RNLinkGraph.ensure().catch(function () { return null; })
+    : Promise.resolve(null);
+
   fetch(KIND.data)
     .then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
     })
     .then(function (data) {
-      // 元数据失败时仍保留时间线与原文入口。
-      var metadata = window.RNLinkGraph ? window.RNLinkGraph.ensure() : Promise.resolve();
-      return metadata.catch(function () { return null; }).then(function () { render(data); });
+      render(data);
+      return metadataPromise.then(function () { hydrateNodeMetadata(); });
     })
     .catch(function (err) {
       console.warn('[company-roadmap] 加载失败', err);

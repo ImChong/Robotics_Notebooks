@@ -11,6 +11,8 @@
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0 安装的 `wechat-article-for-ai`（Camoufox）；正文约 2.1 万字 / 19 图；Jina Reader 对该链接触发微信 CAPTCHA，未采用
 - **关联姊妹篇：** [两万字长文，读懂人形机器人强化学习运动控制：42 篇论文搭起的算法圣经](wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（`https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA`）
 - **一句话说明：** 沿「从能跑到像有身体经验地跑、走、恢复、交互」组织 19 篇 AMP / 运动先验相关论文；核心主张：AMP 不是替代 mimic 的「好看分」，而是把**人类运动分布**嵌入 RL，补足「任务完成之后仍不像一个身体」的缺口；未来形态是**可复用、条件化、可被 VLA / 世界模型调用的身体先验模块**，而非每任务重训的全局判别器。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md` 788 行全文及 AMP 19 篇综述目录。
 
 ## 核心摘录（归纳，非全文）
 

@@ -9,6 +9,9 @@
 - **项目页：** <https://tactile-reactive-dexterous.github.io/>
 - **论文：** <https://arxiv.org/abs/2606.17055>
 - **入库日期：** 2026-07-01
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读 `ZhuoyangLiu2005/T-Rex`（commit `ba4047c`，MIT）`README.md` 全部章节（post-training / slow-fast ZMQ 推理协议、JSON 与 LeRobot v3.0 数据路径、VQ-VAE 嵌入兼容与分布式启动），并核对 `scripts/train.sh`、`scripts/test.sh`、`scripts/train.py`、`scripts/test.py` 目录入口；未下载权重或运行训练。
+- **通读：** 已完成
 - **一句话说明：** T-Rex 官方实现入口：触觉反应式灵巧操作策略、**T-Rex Dataset** 相关工具与 **12 任务** 评测/部署代码（以仓库 README 为准）。
 - **沉淀到 wiki：** [T-Rex（论文实体）](../../wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md)
 

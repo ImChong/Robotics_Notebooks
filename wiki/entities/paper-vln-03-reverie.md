@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, adelaide, georgia-tech]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "1904.10151"
 summary: "高层指令（目标物体 + 大致位置）下的远程导航与目标定位；结合路径标注与物体边界框。"
 related:
@@ -102,7 +102,7 @@ flowchart TD
 - 技术地图：[vln-10-papers-technology-map.md](../overview/vln-10-papers-technology-map.md)
 - 分类 hub：[vln-category-01-datasets-platforms.md](../overview/vln-category-01-datasets-platforms.md)
 - 任务页：[vision-language-navigation.md](../tasks/vision-language-navigation.md)
-- **末段接地延伸：** [REALM · Last-3-Meter VLN 实例接地](../entities/paper-realm-last-3-meter-vln-grounding.md) — REVERIE-AIM 与 ONS/GS/OracleGS 指标（arXiv:2607.03792）
+- **末段接地延伸：** [REALM · Last-3-Meter VLN 实例接地](../entities/paper-realm-last-3-meter-vln-grounding.md) — REVERIE-AIM 与 ONS/GS/OracleGS 指标（CoRL 2026，arXiv:2607.03792；基准与评测套件 `sxyxs/REVERIE-AIM` MIT 已开源）
 - 原始 source：[vln_survey_03_reverie.md](../../sources/papers/vln_survey_03_reverie.md)
 
 ## 参考来源

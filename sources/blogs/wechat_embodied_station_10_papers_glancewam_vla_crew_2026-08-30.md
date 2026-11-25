@@ -8,6 +8,8 @@
 - **原始链接：** https://mp.weixin.qq.com/s/MdCtmijSM_VfYp19f-nZQw
 - **发表日期：** 2026-08-30
 - **入库日期：** 2026-08-30
+- **通读：** 已完成
+- **核对范围：** 已通读本地存档全文 `sources/raw/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md` 共 204 行
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + `wechat-article-for-ai`（Camoufox）；`--no-images`；Jina Reader 对该链接触发微信 CAPTCHA，未采用
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md`](../raw/wechat_embodied_station_10_papers_glancewam_vla_crew_2026-08-30.md)
 - **一句话说明：** 汇总 10 篇近期具身/机器人论文（文内均给项目页或代码链），主线是把关键结构从隐式学习改成显式接口：异步想象、行为意图、多机编排、双臂模态遮蔽、意图级模仿评测、导航–操作衔接、规划约束、仿真证书与模块化人形系统；**10/10 均有独立 `paper-*` 详情节点**（本 ingest **新建 8**、**既有 complete 2**；同一 arXiv **不重复造页**）。

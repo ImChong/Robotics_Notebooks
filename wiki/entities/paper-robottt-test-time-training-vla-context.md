@@ -3,7 +3,7 @@ type: entity
 tags: [paper, vla, test-time-training, long-horizon, manipulation, nvidia, stanford, ut-austin]
 status: complete
 project_id: robottt
-updated: 2026-11-12
+updated: 2026-11-22
 arxiv: "2607.15275"
 venue: "arXiv 2026 / NVIDIA GEAR"
 related:

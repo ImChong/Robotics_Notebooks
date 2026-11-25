@@ -11,6 +11,8 @@ const styleCss = readFileSync(resolve(__dirname, '../docs/style.css'), 'utf8');
 const indexHtml = readFileSync(resolve(__dirname, '../docs/index.html'), 'utf8');
 const miniGraphJs = readFileSync(resolve(__dirname, '../docs/mini-graph.js'), 'utf8');
 const swSource = readFileSync(resolve(__dirname, '../docs/sw.js'), 'utf8');
+const readDoc = file => readFileSync(resolve(__dirname, '../docs', file), 'utf8');
+const previewHeightByTier = { full: 32, lite: 29, reduced: 28 };
 
 function button() {
   return {
@@ -502,8 +504,9 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(styleCss.includes('--persp-stage-bg:'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg);'));
   assert.ok(styleCss.includes('--persp-horizon-edge: var(--bg-alt);'));
-  assert.ok(styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric reflection layer styled');
-  assert.ok(styleCss.includes('--persp-horizon-glow'), 'horizon glow fades out cleanly in top-down pitch');
+  assert.ok(!styleCss.includes('.graph-perspective-stage::before'), 'horizon atmospheric blue glow layer removed for clean flat background');
+  assert.ok(!styleCss.includes('--persp-horizon-glow'), 'horizon glow CSS custom property removed');
+  assert.ok(!styleCss.includes('color-mix(in srgb, var(--accent) 8%, transparent)'), 'stage radial blue haze removed from background tokens');
   assert.ok(styleCss.includes('.graph-perspective-stage::after'));
   assert.ok(styleCss.includes('#mini-graph-svg line.mini-edge-hover'), 'homepage preview 2D hover edge highlight styled');
   assert.ok(styleCss.includes('.mini-graph-node.mini-node-hover-dim'), 'homepage preview 2D hover dim style present');
@@ -515,6 +518,7 @@ test('graph.html and style.css define borderless WebGL terrain stage, light/dark
   assert.ok(perspectiveSrc.includes('uPointScale') && perspectiveSrc.includes('if (pn.hovered) radius *= 1.10;'), 'point sprites share unified world radius with subtle 1.10x hover swell');
   assert.ok(perspectiveSrc.includes('uForceSettle') && perspectiveSrc.includes('applyForceMotion'), '3D terrain entry includes GPU force-simulation bloom motion');
   assert.ok(perspectiveSrc.includes('vMeshRadial') && perspectiveSrc.includes('riseVis'), 'top-down entry fades terrain edge by unscaled mesh radial with zero bounded square grid floor');
+  assert.ok(!perspectiveSrc.includes('horizonSheen'), 'far-side atmospheric blue haze removed from terrain fragment shader');
   assert.ok(perspectiveSrc.includes('stepReboundAnim') && perspectiveSrc.includes('rebounding: !!reboundAnim'), '3D node drag includes spring-force rebound simulation');
   assert.ok(graphHtml.includes('perspectiveSimActive') && graphHtml.includes('reseed: true'), '3D terrain layout refresh randomizes nodes and restarts force simulation');
   assert.ok(graphHtml.includes('getRouteBadges:') && perspectiveSrc.includes('function focusNode('), '3D terrain supports route step-by-step focus and numbered route badges');
@@ -556,6 +560,81 @@ test('createController isolates persist:false defaults and accepts degree-terrai
   } finally {
     global.localStorage = prevStorage;
   }
+});
+
+test('detail mini-graph loads 3D on demand, retries a failed load and separates nodes on return to 2D', async (t) => {
+  const { window: w } = new JSDOM(readDoc('detail.html'), {
+    url: 'https://example.test/detail.html?id=demo', runScripts: 'outside-only',
+  });
+  t.after(() => w.close());
+  const mock = makeMockCanvasEnv();
+  w.HTMLCanvasElement.prototype.getContext = type => type === '2d' ? mock.ctx2d : mock.gl;
+  w.matchMedia = () => ({ matches: false });
+
+  const current = 'wiki/concepts/current.md';
+  const paths = [current, 'wiki/concepts/a.md', 'wiki/concepts/b.md'];
+  const graph = {
+    nodes: paths.map(id => ({ id, label: id, type: 'concept' })),
+    edges: paths.slice(1).map(target => ({ source: current, target })),
+    communities: [],
+  };
+  let loads = 0;
+  let controller;
+  Object.assign(w, {
+    ensureLinkGraphData: async () => graph,
+    buildPathToDetailIdIndex: () => ({}),
+    setupGraphHoverTooltip: () => ({ bindBlankDismiss() {}, bindOutsideDismiss() {}, hide() {} }),
+    detailLinkBridge: {},
+    detailBridgeHighlightBody() {},
+    loadExternalAsset: async ({ url }) => {
+      loads++;
+      if (loads === 1) throw new Error('network offline');
+      w.eval(readDoc(url));
+      const createController = w.RNGraphPerspective.createController;
+      w.RNGraphPerspective.createController = options => {
+        controller = createController(options);
+        return controller;
+      };
+    },
+  });
+  for (const file of ['vendor/d3.min.js', 'graph-node-size.js']) w.eval(readDoc(file));
+  const main = readDoc('main.js');
+  w.eval(main.slice(main.indexOf('  function renderDetailMiniMap('), main.indexOf('  function renderDetailPage(')));
+  w.renderDetailMiniMap({ path: current }, {});
+  await new Promise(setImmediate);
+
+  const dom = w.document;
+  const flat = dom.getElementById('detailMiniMapMode2d');
+  const perspective = dom.getElementById('detailMiniMapMode3d');
+  const stage = dom.getElementById('detailMiniMapPerspective');
+  const neighbors = [...dom.querySelectorAll('#detailMiniMapSvg g.mini-node')];
+  assert.equal(neighbors.length, 2);
+  assert.equal(loads, 0);
+  assert.equal(stage.hidden, true);
+
+  perspective.click();
+  await new Promise(setImmediate);
+  assert.match(dom.getElementById('detailMiniMapMeta').textContent, /3D 加载失败/);
+  assert.equal(perspective.disabled, false);
+  assert.equal(flat.getAttribute('aria-pressed'), 'true');
+  assert.equal(stage.hidden, true);
+
+  perspective.click();
+  await new Promise(setImmediate);
+  assert.equal(loads, 2);
+  assert.equal(stage.hidden, false);
+  assert.equal(perspective.getAttribute('aria-pressed'), 'true');
+  assert.ok(mock.stats.drawCalls > 0);
+  assert.equal(controller.getParams().height, previewHeightByTier[controller.getTier()]);
+
+  const [a, b] = neighbors.map(el => el.__data__);
+  b.x = a.x;
+  b.y = a.y;
+  flat.click();
+  assert.equal(flat.getAttribute('aria-pressed'), 'true');
+  assert.equal(stage.hidden, true);
+  const radiusSum = neighbors.reduce((sum, el) => sum + Number(el.querySelector('circle').getAttribute('r')), 0);
+  assert.ok(Math.hypot(a.x - b.x, a.y - b.y) >= radiusSum);
 });
 
 test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with search highlight linkage', async () => {
@@ -643,6 +722,8 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   btn3d.click();
   await new Promise((r) => setTimeout(r, 40));
   assert.equal(w.RNMiniGraph.getMode(), '3d');
+  const previewState = w.RNMiniGraph.getPerspectiveState();
+  assert.equal(previewState.params.height, previewHeightByTier[previewState.tier]);
   assert.equal(wrap.classList.contains('is-perspective-mode'), true);
   assert.equal(stage.hidden, false);
   assert.ok(mock.stats.programsCreated >= 4, 'compiled WebGL terrain/edge/poly/point programs');
@@ -677,18 +758,36 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const transformBefore = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
   const yawBefore = leftState3d.params.yaw;
   const pitchBefore = leftState3d.params.pitch;
+  const dragOffsetX = t0.x > 350 ? -85 : 85;
+  const dragOffsetY = t0.y > 240 ? -42 : 42;
   stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: t0.x, clientY: t0.y }));
-  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: t0.x + 85, clientY: t0.y + 42 }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: t0.x + dragOffsetX, clientY: t0.y + dragOffsetY }));
   await new Promise((r) => setTimeout(r, 30));
   const midDragState = w.RNMiniGraph.getPerspectiveState();
   assert.equal(midDragState.draggingNodeId, t0.id, 'dragging a 3D node enters node-drag mode');
   assert.equal(midDragState.params.yaw, yawBefore, 'dragging a node must not orbit camera yaw');
   assert.equal(midDragState.params.pitch, pitchBefore, 'dragging a node must not orbit camera pitch');
-  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: t0.x + 85, clientY: t0.y + 42 }));
+  const dropTarget = w.RNMiniGraph.getPerspectiveTargets(5).find((item) => item.id === t0.id);
+  assert.ok(dropTarget, 'dragged 3D node stays visible before release');
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: t0.x + dragOffsetX, clientY: t0.y + dragOffsetY }));
   const rightAfterDrop = w.RNMiniGraph.getPerspectiveState();
   assert.equal(rightAfterDrop.draggingNodeId, null);
-  assert.equal(rightAfterDrop.rebounding, true, 'releasing dragged 3D node triggers elastic force rebound');
-  await new Promise((r) => setTimeout(r, 40));
+  assert.equal(rightAfterDrop.rebounding, true, 'releasing dragged 3D node triggers viscous rebound settling');
+  await new Promise((r) => setTimeout(r, 140));
+  const earlyRebound = w.RNMiniGraph.getPerspectiveTargets(5).find((item) => item.id === t0.id);
+  await new Promise((r) => setTimeout(r, 200));
+  const midRebound = w.RNMiniGraph.getPerspectiveTargets(5).find((item) => item.id === t0.id);
+  const dxDrop = dropTarget.x - t0.x;
+  const dyDrop = dropTarget.y - t0.y;
+  const dropSpanSq = dxDrop * dxDrop + dyDrop * dyDrop;
+  assert.ok(dropSpanSq > 4, 'drag produces measurable screen displacement');
+  assert.ok(earlyRebound && midRebound, 'rebounding node stays projected cleanly inside viewport');
+  const fracEarly = ((earlyRebound.x - t0.x) * dxDrop + (earlyRebound.y - t0.y) * dyDrop) / dropSpanSq;
+  const fracMid = ((midRebound.x - t0.x) * dxDrop + (midRebound.y - t0.y) * dyDrop) / dropSpanSq;
+  assert.ok(
+    fracEarly > 0 && fracEarly < 0.99 && fracMid > 0 && fracMid < fracEarly,
+    `overdamped rebound settles monotonically toward equilibrium without slingshotting past origin (${fracEarly.toFixed(3)} -> ${fracMid.toFixed(3)})`
+  );
   const transformAfter = draggedNodeEl ? draggedNodeEl.getAttribute('transform') : '';
   assert.notEqual(transformAfter, transformBefore, 'dragging node in 3D updates its underlying (x, y) synced to 2D');
   delete w.requestAnimationFrame;
@@ -755,7 +854,6 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   const ttLink2d = tooltipEl.querySelector('.tt-link');
   assert.ok(ttLink2d && ttLink2d.getAttribute('href').includes('detail.html?id='), '2D floating card contains clickable detail link');
   assert.ok(miniGraphJs.includes('allowTouchOrbit: true'), 'homepage 3D preview enables touch orbit/drag/pinch');
-  assert.ok(miniGraphJs.includes('full: { height: 32,'), 'homepage 3D preview uses lower default peak height (32)');
 
   // Verify sphere clearance above terrain peaks & slopes across both low preview height (32) and Graph View (20..100)
   assert.ok(
@@ -792,4 +890,589 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
     graphHtml.includes('<span class="hint-desktop">') && graphHtml.includes('<span class="hint-touch">'),
     'graph.html provides device-appropriate desktop and touch hint copy'
   );
+});
+
+test('3D terrain spheres match 3D force-graph MeshLambertMaterial shading and opaque depth pass', () => {
+  const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
+  assert.ok(
+    perspectiveSrc.includes('vec3 shadeLambertSphere(vec3 baseSrgb, vec3 nView, vec3 lightDirView)') &&
+      perspectiveSrc.includes('0.60382734 + 0.6 * dotNL') &&
+      perspectiveSrc.includes('srgbToLinear') &&
+      perspectiveSrc.includes('linearToSrgb') &&
+      perspectiveSrc.includes('0.000001'),
+    'shared Lambert sphere shader implements Three.js Ambient/Directional lighting and sRGB conversion with zero-pow guard'
+  );
+  const solidStart = perspectiveSrc.indexOf('var solidFS =');
+  const pointVSStart = perspectiveSrc.indexOf('var pointVS =');
+  const pointFSStart = perspectiveSrc.indexOf('var pointFS =');
+  const shaderReturnStart = perspectiveSrc.indexOf('return {\n      terrainVS:');
+  assert.ok(solidStart >= 0 && pointVSStart > solidStart && pointFSStart > pointVSStart && shaderReturnStart > pointFSStart);
+
+  const solidFSSrc = perspectiveSrc.slice(solidStart, pointVSStart);
+  const pointFSSrc = perspectiveSrc.slice(pointFSStart, shaderReturnStart);
+
+  assert.ok(
+    solidFSSrc.includes('uniform vec3 uLightDirView;') && solidFSSrc.includes('shadeLambertSphere(vColor.rgb, N, uLightDirView)'),
+    'solidFS uses shared Lambert sphere shading aligned to world +Y light'
+  );
+  assert.ok(
+    !solidFSSrc.includes('float spec =') && !solidFSSrc.includes('float rim =') && !solidFSSrc.includes('float ring ='),
+    'solidFS removes glossy specular, Fresnel rim, and outer bright ring'
+  );
+  assert.ok(
+    pointFSSrc.includes('uniform vec3 uLightDirView;') && pointFSSrc.includes('shadeLambertSphere(vColor.rgb, N, uLightDirView)'),
+    'pointFS uses identical shared Lambert sphere shading'
+  );
+  assert.ok(
+    !pointFSSrc.includes('pow(max(0.0, diff), 8.0)') && !pointFSSrc.includes('smoothstep(0.76, 1.0, r2)'),
+    'pointFS removes white specular highlight and fuzzy rim falloff'
+  );
+  assert.ok(
+    perspectiveSrc.includes('var lightDirView = [cam.view[4], cam.view[5], cam.view[6]];'),
+    'render passes view-space world +Y light direction to sphere shaders'
+  );
+  assert.ok(
+    perspectiveSrc.includes('ptOpaqueCount') &&
+      perspectiveSrc.includes('ptDimCount') &&
+      !perspectiveSrc.includes('bn.alpha * 0.88'),
+    'background point orbs split into opaque depth-writing and dimmed translucent passes without 0.88 alpha fade'
+  );
+});
+
+test('3D terrain drag rebound uses overdamped viscous settling aligned with 2D and 3D force simulation', () => {
+  const gp = require('../docs/graph-perspective.js');
+  const rp = gp.REBOUND_PARAMS;
+  assert.ok(rp && typeof gp.computeReboundPullBack === 'function', 'exports REBOUND_PARAMS and computeReboundPullBack');
+
+  assert.equal(gp.computeReboundPullBack(0), 0.10, 'isolated nodes stay mostly where dropped');
+  const pb1 = gp.computeReboundPullBack(1);
+  assert.ok(pb1 > 0.30 && pb1 < 0.42, `leaf node pullBack (${pb1}) sits gently between 0.30 and 0.42`);
+  const pb30 = gp.computeReboundPullBack(30);
+  assert.ok(pb30 <= 0.58 && pb30 > pb1, `hub node pullBack (${pb30}) stays bounded <= 0.58`);
+
+  const mainDamp = 1 - rp.velocityDecay;
+  const mainZeta = -Math.log(mainDamp) / (2 * Math.sqrt(rp.kSpring));
+  assert.ok(mainZeta >= 1.0, `primary rebound must be overdamped (zeta=${mainZeta.toFixed(3)} >= 1.0)`);
+
+  const nbDamp = 1 - rp.nbVelocityDecay;
+  const nbZeta = -Math.log(nbDamp) / (2 * Math.sqrt(rp.nbSpring));
+  assert.ok(nbZeta >= 1.0, `neighbor rebound must be overdamped (zeta=${nbZeta.toFixed(3)} >= 1.0)`);
+
+  // Simulate 100-unit drag release over 120 frames (dtSteps = 1)
+  for (const nbCount of [0, 1, 25]) {
+    const pullBack = gp.computeReboundPullBack(nbCount);
+    const eqX = 100 * (1 - pullBack);
+    let x = 100;
+    let vx = 0;
+    let maxSpeed = 0;
+    let overshoot = 0;
+    for (let f = 0; f < 120; f++) {
+      const fx = (eqX - x) * rp.kSpring;
+      vx = (vx + fx) * mainDamp;
+      x += vx;
+      maxSpeed = Math.max(maxSpeed, Math.abs(vx));
+      if (x < eqX) overshoot = Math.max(overshoot, eqX - x);
+    }
+    assert.equal(overshoot, 0, `nbCount=${nbCount}: zero slingshot overshoot past eqX`);
+    assert.ok(maxSpeed < 4, `nbCount=${nbCount}: gentle peak speed (${maxSpeed.toFixed(2)} < 4)`);
+    assert.ok(Math.abs(eqX - x) < 0.5, `nbCount=${nbCount}: settles within 0.5 units of eqX`);
+  }
+
+  // Verify fixed-timestep substepping keeps low-FPS (10fps = 6 substeps/frame) convergent with 60fps
+  const perspectiveSrc = readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8');
+  assert.ok(
+    perspectiveSrc.includes('Math.ceil(totalTicks)') && perspectiveSrc.includes('var subDt = totalTicks / subSteps;'),
+    'stepReboundAnim uses wall-clock-synchronized fixed substeps across slow frames'
+  );
+  const pbHub = gp.computeReboundPullBack(25);
+  const eqHub = 100 * (1 - pbHub);
+  let x10fps = 100;
+  let v10fps = 0;
+  let overshoot10fps = 0;
+  const subDamp10 = Math.pow(mainDamp, 1.0);
+  for (let frame = 0; frame < 20; frame++) {
+    for (let s = 0; s < 6; s++) {
+      const fx = (eqHub - x10fps) * rp.kSpring;
+      v10fps = (v10fps + fx) * subDamp10;
+      x10fps += v10fps;
+      if (x10fps < eqHub) overshoot10fps = Math.max(overshoot10fps, eqHub - x10fps);
+    }
+  }
+  assert.equal(overshoot10fps, 0, '10fps substepped rebound produces zero overshoot past eqHub');
+  assert.ok(Math.abs(eqHub - x10fps) < 0.5, '10fps substepped rebound converges within 0.5 units in 2s');
+});
+
+test('homepage 3D node drag resolves 2D circle overlaps upon switching back to 2D', async () => {
+  const dom = new JSDOM(indexHtml, { url: 'https://example.test/', runScripts: 'outside-only' });
+  const w = dom.window;
+  const mock = makeMockCanvasEnv();
+  const origGetContext = w.HTMLCanvasElement.prototype.getContext;
+  w.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2' || type === 'webgl' || type === 'experimental-webgl') return mock.gl;
+    if (type === '2d') return mock.ctx2d;
+    return origGetContext ? origGetContext.call(this, type) : null;
+  };
+  w.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const denseGraph = {
+    communities: [
+      { id: 'c-rl', label: '强化学习' },
+      { id: 'c-ctrl', label: '运动控制' },
+    ],
+    nodes: [
+      { id: 'n1', label: 'PPO', type: 'method', community: 'c-rl' },
+      { id: 'n2', label: 'MPC', type: 'method', community: 'c-ctrl' },
+      { id: 'n3', label: 'Sim2Real', type: 'concept', community: 'c-rl' },
+      { id: 'n4', label: 'WBC', type: 'method', community: 'c-ctrl' },
+      { id: 'n5', label: 'VLA', type: 'method', community: 'c-rl' },
+    ],
+    edges: [
+      { source: 'n1', target: 'n2' },
+      { source: 'n1', target: 'n3' },
+      { source: 'n1', target: 'n4' },
+      { source: 'n2', target: 'n4' },
+      { source: 'n3', target: 'n5' },
+      { source: 'n2', target: 'n5' },
+    ],
+  };
+  w.RNLinkGraph = { ensure: () => Promise.resolve(denseGraph) };
+  w.RNGraphTooltip = {
+    getCommunityColors: () => ['#5b9cf6', '#34d399'],
+    buildCommunityColorMap: () => ({ 'c-rl': '#5b9cf6', 'c-ctrl': '#34d399' }),
+    formatTooltipSummary: s => s || '',
+    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>' + (o.linkHtml || ''),
+    bindBlankDismiss() {},
+    bindOutsideDismiss() {},
+  };
+
+  w.eval(readFileSync(resolve(__dirname, '../docs/vendor/d3.min.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-node-size.js'), 'utf8'));
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8'));
+  w.eval(miniGraphJs);
+  await new Promise((r) => setTimeout(r, 90));
+
+  const stage = w.document.getElementById('mini-graph-perspective-stage');
+  const btn2d = w.document.getElementById('miniGraphMode2d');
+  const btn3d = w.document.getElementById('miniGraphMode3d');
+  stage.getBoundingClientRect = () => ({ left: 0, top: 0, width: 700, height: 480 });
+  const installRaf = () => {
+    w.requestAnimationFrame = (cb) => w.setTimeout(() => cb(w.performance.now()), 16);
+    w.cancelAnimationFrame = (id) => w.clearTimeout(id);
+  };
+  const removeRaf = () => {
+    delete w.requestAnimationFrame;
+    delete w.cancelAnimationFrame;
+  };
+
+  function assertNo2DOverlapAndSyncedLines(label) {
+    const circleNodes = Array.from(w.document.querySelectorAll('#mini-graph-svg .mini-graph-node')).map((el) => {
+      const tr = el.getAttribute('transform') || '';
+      const m = /translate\(\s*([^,\s]+)\s*,\s*([^)\s]+)\s*\)/.exec(tr);
+      const circle = el.querySelector('circle');
+      const r = circle ? parseFloat(circle.getAttribute('r')) : 0;
+      const text = (el.textContent || '').trim();
+      assert.ok(m && Number.isFinite(parseFloat(m[1])) && Number.isFinite(parseFloat(m[2])), `${label}: valid node transform (${text})`);
+      return { text, x: parseFloat(m[1]), y: parseFloat(m[2]), r };
+    });
+    assert.equal(circleNodes.length, denseGraph.nodes.length, `${label}: all 2D nodes rendered`);
+    let minGap = Infinity;
+    for (let i = 0; i < circleNodes.length; i++) {
+      for (let j = i + 1; j < circleNodes.length; j++) {
+        const a = circleNodes[i];
+        const b = circleNodes[j];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        const gap = dist - (a.r + b.r);
+        if (gap < minGap) minGap = gap;
+        assert.ok(
+          gap >= 4.5,
+          `${label}: 2D circles "${a.text}" & "${b.text}" must not overlap (dist=${dist.toFixed(2)}, rSum=${(a.r + b.r).toFixed(2)}, gap=${gap.toFixed(2)})`
+        );
+      }
+    }
+    const lines = Array.from(w.document.querySelectorAll('#mini-graph-svg line'));
+    assert.equal(lines.length, denseGraph.edges.length, `${label}: all 2D edges rendered`);
+    for (const ln of lines) {
+      const x1 = parseFloat(ln.getAttribute('x1'));
+      const y1 = parseFloat(ln.getAttribute('y1'));
+      const x2 = parseFloat(ln.getAttribute('x2'));
+      const y2 = parseFloat(ln.getAttribute('y2'));
+      const hasStart = circleNodes.some((n) => Math.hypot(n.x - x1, n.y - y1) < 0.2);
+      const hasEnd = circleNodes.some((n) => Math.hypot(n.x - x2, n.y - y2) < 0.2);
+      assert.ok(hasStart && hasEnd, `${label}: line endpoints (${x1},${y1})->(${x2},${y2}) align with resolved node centers`);
+    }
+    return minGap;
+  }
+
+  // Case 1: Enter 3D, drag a node onto another visible node, release and immediately switch back to 2D
+  btn3d.click();
+  await new Promise((r) => setTimeout(r, 40));
+  installRaf();
+  const tList1 = w.RNMiniGraph.getPerspectiveTargets(10);
+  assert.ok(tList1.length >= 2, 'at least 2 targets visible in 3D preview');
+  const src1 = tList1[0];
+  const dst1 = tList1.find((item) => item.id !== src1.id && Math.hypot(item.x - src1.x, item.y - src1.y) > 10) || tList1[1];
+  stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: src1.x, clientY: src1.y }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: dst1.x, clientY: dst1.y }));
+  await new Promise((r) => setTimeout(r, 30));
+  assert.equal(w.RNMiniGraph.getPerspectiveState().draggingNodeId, src1.id, 'dragged source node in 3D onto sibling');
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: dst1.x, clientY: dst1.y }));
+  btn2d.click();
+  removeRaf();
+  assert.equal(w.RNMiniGraph.getMode(), '2d');
+  assertNo2DOverlapAndSyncedLines('immediate-switch-to-2d');
+
+  // Case 2: Re-enter 3D, drag another node onto a neighbor, let rebound progress/settle, then switch to 2D
+  btn3d.click();
+  await new Promise((r) => setTimeout(r, 40));
+  installRaf();
+  const tList2 = w.RNMiniGraph.getPerspectiveTargets(10);
+  assert.ok(tList2.length >= 2, 'at least 2 targets visible on re-entry');
+  const src2 = tList2[tList2.length - 1];
+  const dst2 = tList2.find((item) => item.id !== src2.id && Math.hypot(item.x - src2.x, item.y - src2.y) > 10) || tList2[0];
+  stage.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: src2.x, clientY: src2.y }));
+  stage.dispatchEvent(new w.MouseEvent('pointermove', { bubbles: true, button: 0, clientX: dst2.x, clientY: dst2.y }));
+  await new Promise((r) => setTimeout(r, 30));
+  assert.equal(w.RNMiniGraph.getPerspectiveState().draggingNodeId, src2.id, 'dragged second source node in 3D onto neighbor');
+  stage.dispatchEvent(new w.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: dst2.x, clientY: dst2.y }));
+  await new Promise((r) => setTimeout(r, 380));
+  btn2d.click();
+  removeRaf();
+  assert.equal(w.RNMiniGraph.getMode(), '2d');
+  assertNo2DOverlapAndSyncedLines('post-rebound-switch-to-2d');
+});
+
+test('multi-peak L4 heightfield separates distinct clusters with an authentic lower saddle valley', () => {
+  const nodes = [];
+  const edges = [];
+  for (let i = 0; i < 6; i++) {
+    nodes.push({ id: `a${i}`, x: -300 + (i % 3) * 14, y: -15 + Math.floor(i / 3) * 18 });
+    nodes.push({ id: `b${i}`, x: 300 + (i % 3) * 14, y: 15 - Math.floor(i / 3) * 18 });
+  }
+  for (let i = 1; i < 6; i++) {
+    edges.push({ source: 'a0', target: `a${i}` });
+    edges.push({ source: 'b0', target: `b${i}` });
+  }
+  const degInfo = perspectiveApi.computeNodeDegrees(nodes, edges);
+  const field = perspectiveApi.computeTerrainField(nodes, degInfo, { gridSize: 120, isReduced: true });
+  const peakA = perspectiveApi.sampleTerrainHeight(field, field.nodeMeta.a0.wx, field.nodeMeta.a0.wz);
+  const peakB = perspectiveApi.sampleTerrainHeight(field, field.nodeMeta.b0.wx, field.nodeMeta.b0.wz);
+  const midX = (field.nodeMeta.a0.wx + field.nodeMeta.b0.wx) * 0.5;
+  const midZ = (field.nodeMeta.a0.wz + field.nodeMeta.b0.wz) * 0.5;
+  const saddle = perspectiveApi.sampleTerrainHeight(field, midX, midZ);
+  assert.ok(peakA > 0.6 && peakB > 0.6, 'separated cluster hubs rise into strong peaks');
+  assert.ok(saddle < Math.min(peakA, peakB) * 0.55, `valley between clusters stays significantly lower than peaks (${saddle.toFixed(3)} vs ${peakA.toFixed(3)} / ${peakB.toFixed(3)})`);
+});
+
+test('mega-hub highlight ribbons are Top-K capped and overlapping 1-hop neighbor labels obey AABB culling', () => {
+  const dom = new JSDOM('<!doctype html><html><body><div id="wrap"><div id="stage"></div></div></body></html>', {
+    pretendToBeVisual: true,
+    url: 'https://example.test/graph.html',
+  });
+  global.window = dom.window;
+  global.document = dom.window.document;
+  global.navigator = { hardwareConcurrency: 8, deviceMemory: 8 };
+  global.localStorage = dom.window.localStorage;
+  global.window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const mock = makeMockCanvasEnv();
+  const drawnTexts = [];
+  const origFillText = mock.ctx2d.fillText.bind(mock.ctx2d);
+  const spyCtx2d = new Proxy(mock.ctx2d, {
+    get(target, prop) {
+      if (prop === 'fillText') {
+        return (txt, x, y) => {
+          drawnTexts.push({ txt: String(txt), x, y });
+          origFillText(txt, x, y);
+        };
+      }
+      return target[prop];
+    },
+  });
+
+  dom.window.HTMLCanvasElement.prototype.getContext = function getContext(kind) {
+    if (kind === 'webgl2') return mock.gl;
+    if (kind === '2d') return spyCtx2d;
+    return null;
+  };
+  const wrap = dom.window.document.getElementById('wrap');
+  const stage = dom.window.document.getElementById('stage');
+  Object.defineProperty(wrap, 'clientWidth', { value: 1200, configurable: true });
+  Object.defineProperty(wrap, 'clientHeight', { value: 800, configurable: true });
+
+  const nodes = [{ id: 'hub', label: 'MegaHubNode', x: 0, y: 0, community: 'c1' }];
+  const edges = [];
+  const focusIds = new Set(['hub']);
+  for (let i = 0; i < 180; i++) {
+    const id = `n${i}`;
+    // First 8 neighbors deliberately cluster very tightly near hub screen coords to test collision culling
+    const x = i < 8 ? 6 + (i % 2) * 2 : Math.cos(i * 0.37) * (120 + (i % 5) * 30);
+    const y = i < 8 ? 4 + Math.floor(i / 2) * 2 : Math.sin(i * 0.37) * (120 + (i % 5) * 30);
+    nodes.push({ id, label: `NeighborLabel_${i}`, x, y, community: i < 90 ? 'c1' : 'c2' });
+    edges.push({ source: 'hub', target: id });
+    focusIds.add(id);
+  }
+
+  let clickedCommunity = null;
+  const ctrl = perspectiveApi.createController({
+    wrapEl: wrap,
+    stageEl: stage,
+    nodeCount: nodes.length,
+    persist: false,
+    getViewportSize: () => ({ width: 1200, height: 800 }),
+    getGraphData: () => ({
+      nodes,
+      edges,
+      focusIds,
+      sidebarNode: nodes[0],
+      getNodeColor: (d) => (d.community === 'c1' ? '#5b9cf6' : '#e87954'),
+      getNodeAlpha: () => 1,
+    }),
+    getCommunityLabels: () => [
+      { id: 'c1', label: 'Control', count: 61, x: -40, y: -40, bgColor: '#5b9cf6', textColor: '#ffffff', fontSize: 12 },
+      { id: 'c2', label: 'Learning', count: 60, x: 140, y: 120, bgColor: '#e87954', textColor: '#ffffff', fontSize: 12 },
+    ],
+    onCommunityClick: (cid) => { clickedCommunity = cid; },
+    isDark: () => true,
+    isEdgesVisible: () => true,
+  });
+
+  assert.equal(ctrl.setEnabled(true, { silent: true, instant: true }), true);
+  const dbg = ctrl.getDebugState();
+  assert.ok(dbg.fieldStats.hiEdgeCount > 0 && dbg.fieldStats.hiEdgeCount <= 64, `hiEdgeCount capped at <= 64 (got ${dbg.fieldStats.hiEdgeCount})`);
+  assert.ok(drawnTexts.some((t) => t.txt === 'MegaHubNode'), 'primary selected node label is drawn');
+  const tightClusterDrawn = drawnTexts.filter((t) => /^NeighborLabel_[0-7]$/.test(t.txt));
+  assert.ok(tightClusterDrawn.length <= 2, `tightly stacked 1-hop neighbor labels are culled via AABB (${tightClusterDrawn.length} drawn)`);
+
+  // Verify community hulls & clickable community capsule hitboxes
+  const hullCheck = perspectiveApi.buildCommunityHullSegments(
+    nodes.map((n) => ({
+      visible: true,
+      node: n,
+      wx: n.x / 350,
+      wz: n.y / 350,
+      rgb: [0.35, 0.6, 0.96],
+    })),
+    [
+      { id: 'c1', label: 'Control', bgColor: '#5b9cf6' },
+      { id: 'c2', label: 'Learning', bgColor: '#e87954' },
+    ],
+    {
+      gridSize: 16,
+      extent: 1.35,
+      heights: new Float32Array(256),
+    },
+    0.46,
+    null,
+    null
+  );
+  assert.equal(hullCheck.hullCount, 2, 'buildCommunityHullSegments builds draped hulls for distinct communities');
+  assert.equal(hullCheck.positions.length / 3, hullCheck.colors.length / 4, 'hull position/color buffer counts match');
+
+  const hitboxes = ctrl.getCommunityHitboxes();
+  assert.ok(hitboxes.length >= 1, 'community capsules expose clickable screen hitboxes');
+  const hb = hitboxes[0];
+  const cx = (hb.x0 + hb.x1) * 0.5;
+  const cy = (hb.y0 + hb.y1) * 0.5;
+  stage.dispatchEvent(new dom.window.MouseEvent('pointerdown', { bubbles: true, button: 0, clientX: cx, clientY: cy }));
+  stage.dispatchEvent(new dom.window.MouseEvent('pointerup', { bubbles: true, button: 0, clientX: cx, clientY: cy }));
+  assert.equal(clickedCommunity, hb.id, 'clicking community capsule hitbox triggers onCommunityClick');
+
+  // Camera off-center projection/unprojection round-trip & sidebar offset / frameNodes / morph APIs
+  const cam = perspectiveApi.buildCameraMatrices(
+    { pitch: 36, yaw: -18 },
+    { distance: 1.92, targetX: 0.1, targetY: 0.08, targetZ: -0.05, offsetPx: 150 },
+    1440 / 900,
+    1440
+  );
+  const samplePt = [0.18, 0.14, -0.06];
+  const projected = perspectiveApi.projectWorldToScreen(samplePt[0], samplePt[1], samplePt[2], cam.viewProj, 1440, 900);
+  assert.ok(projected, 'projects world point under off-center frustum');
+  const unproj = perspectiveApi.unprojectScreenToPlaneY(projected[0], projected[1], samplePt[1], cam, 1440, 900);
+  assert.ok(unproj && Math.hypot(unproj[0] - samplePt[0], unproj[2] - samplePt[2]) < 1e-4, 'unprojectScreenToPlaneY inverts off-center frustum projection accurately');
+
+  ctrl.setSidebarOffset(150);
+  ctrl.frameNodes(['hub', 'n1', 'n2']);
+  ctrl.syncData(true, { morph: true });
+  const nextDbg = ctrl.getDebugState();
+  assert.equal(nextDbg.camera.offsetPx, 150, 'setSidebarOffset updates camera frustum offset');
+
+  ctrl.destroy();
+  delete global.window;
+  delete global.document;
+  delete global.navigator;
+  delete global.localStorage;
+});
+
+test('graph.html ships direct top-bar 3-mode switcher, terrain legend strip, sidebar metrics bar, and URL deep-link sync', () => {
+  assert.ok(graphHtml.includes('id="toolbar-view-mode"'), 'top toolbar includes 3-mode view switcher');
+  assert.ok(graphHtml.includes('id="toolbar-view-perspective"'), 'top toolbar includes 3D terrain direct trigger button');
+  assert.ok(graphHtml.includes('id="graph-terrain-legend"'), 'graph.html includes compact terrain legend strip');
+  assert.ok(graphHtml.includes('id="sb-metrics"'), 'sidebar includes node degree/date metrics bar');
+  assert.ok(graphHtml.includes('function syncGraphUrlParams('), 'graph.html syncs view/focus/community params to URL');
+  assert.ok(graphHtml.includes('#graph-wrap.is-perspective-mode.sidebar-open'), '3D terrain keeps full-bleed canvas width behind open sidebar');
+});
+
+function makePostFxSpyEnv() {
+  const base = makeMockCanvasEnv();
+  const shaderSources = [];
+  const uniformValues = {};
+  const overrides = {
+    FRAMEBUFFER: 0x8d40,
+    RENDERBUFFER: 0x8d41,
+    COLOR_ATTACHMENT0: 0x8ce0,
+    DEPTH_ATTACHMENT: 0x8d00,
+    DEPTH_COMPONENT16: 0x81a5,
+    FRAMEBUFFER_COMPLETE: 0x8cd5,
+    TEXTURE_2D: 0x0de1,
+    TEXTURE_MIN_FILTER: 0x2801,
+    TEXTURE_MAG_FILTER: 0x2800,
+    TEXTURE_WRAP_S: 0x2802,
+    TEXTURE_WRAP_T: 0x2803,
+    LINEAR: 0x2601,
+    CLAMP_TO_EDGE: 0x812f,
+    RGBA: 0x1908,
+    UNSIGNED_BYTE: 0x1401,
+    createFramebuffer: () => ({}),
+    createTexture: () => ({}),
+    createRenderbuffer: () => ({}),
+    checkFramebufferStatus: () => 0x8cd5,
+    shaderSource(_s, src) { shaderSources.push(String(src)); },
+    getUniformLocation(_p, name) { return name; },
+    uniform1f(loc, val) {
+      if (typeof loc === 'string') uniformValues[loc] = val;
+    },
+  };
+  const gl = new Proxy(base.gl, {
+    get(target, prop) {
+      if (Object.prototype.hasOwnProperty.call(overrides, prop)) return overrides[prop];
+      return target[prop];
+    },
+  });
+  return { gl, ctx2d: base.ctx2d, shaderSources, uniformValues };
+}
+
+test('homepage 3D preview enables Y1 softPeakHighlight without altering light mode or default graph.html terrain', async () => {
+  assert.match(miniGraphJs, /softPeakHighlight:\s*true/, 'mini-graph.js configures softPeakHighlight: true');
+
+  const prevGlobals = {
+    window: global.window,
+    document: global.document,
+    navigator: global.navigator,
+    localStorage: global.localStorage,
+  };
+
+  // 1) Verify homepage mini-graph 3D preview uses Y1 dark peak ramp, FBO compression, and restrained Bloom
+  const homeDom = new JSDOM(indexHtml, { url: 'https://example.test/', runScripts: 'outside-only' });
+  const hw = homeDom.window;
+  const homeSpy = makePostFxSpyEnv();
+  hw.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2' || type === 'webgl' || type === 'experimental-webgl') return homeSpy.gl;
+    if (type === '2d') return homeSpy.ctx2d;
+    return null;
+  };
+  Object.defineProperty(hw.navigator, 'hardwareConcurrency', { value: 8, configurable: true });
+  Object.defineProperty(hw.navigator, 'deviceMemory', { value: 8, configurable: true });
+  hw.devicePixelRatio = 2;
+  hw.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const syntheticGraph = {
+    communities: [{ id: 'c-rl', label: '强化学习' }, { id: 'c-ctrl', label: '运动控制' }],
+    nodes: [
+      { id: 'n1', label: 'PPO', type: 'method', community: 'c-rl', summary: 'Policy gradient' },
+      { id: 'n2', label: 'MPC', type: 'method', community: 'c-ctrl', summary: 'Model predictive control' },
+    ],
+    edges: [{ source: 'n1', target: 'n2' }],
+  };
+  hw.RNLinkGraph = { ensure: () => Promise.resolve(syntheticGraph) };
+  hw.RNGraphTooltip = {
+    getCommunityColors: () => ['#5b9cf6', '#34d399'],
+    buildCommunityColorMap: () => ({ 'c-rl': '#5b9cf6', 'c-ctrl': '#34d399' }),
+    formatTooltipSummary: s => s || '',
+    buildNodeTooltipHtml: o => '<div>' + o.title + '</div>',
+    bindBlankDismiss() {},
+    bindOutsideDismiss() {},
+  };
+
+  hw.eval(readFileSync(resolve(__dirname, '../docs/vendor/d3.min.js'), 'utf8'));
+  hw.eval(readFileSync(resolve(__dirname, '../docs/graph-node-size.js'), 'utf8'));
+  hw.eval(readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8'));
+  hw.eval(miniGraphJs);
+  await new Promise((r) => setTimeout(r, 80));
+
+  hw.document.getElementById('miniGraphMode3d').click();
+  await new Promise((r) => setTimeout(r, 50));
+
+  const homeState = hw.RNMiniGraph.getPerspectiveState();
+  assert.equal(homeState.tier, 'full', 'homepage 3D test runs in full tier so post-processing runs');
+  const homeTerrainFs = homeSpy.shaderSources.find((s) => s.includes('terrainRampDark'));
+  const homePostFs = homeSpy.shaderSources.find((s) => s.includes('uBloomAmp'));
+  assert.ok(homeTerrainFs && homeTerrainFs.includes('vec3(0.950, 0.780, 0.300)'), 'homepage 3D compiles Y1 bright gold c3 ramp');
+  assert.ok(homeTerrainFs.includes('peakMax > 0.86'), 'homepage 3D compresses peak saturation before 8-bit FBO write');
+  assert.ok(homePostFs && homePostFs.includes('mx > 0.86'), 'homepage postFS uses Y1 soft ceiling');
+  assert.equal(homeSpy.uniformValues.uThreshold, 0.88, 'dark homepage 3D raises Bloom threshold to 0.88');
+  assert.equal(homeSpy.uniformValues.uBloomAmp, 0.06, 'dark homepage 3D lowers Bloom amp to 0.06');
+
+  // Switch to light mode -> light Bloom parameters remain unchanged
+  hw.document.documentElement.setAttribute('data-theme', 'light');
+  await new Promise((r) => setTimeout(r, 60));
+  assert.equal(homeSpy.uniformValues.uThreshold, 0.88, 'light homepage 3D preserves Bloom threshold 0.88');
+  assert.equal(homeSpy.uniformValues.uBloomAmp, 0.10, 'light homepage 3D preserves Bloom amp 0.10');
+  homeDom.window.close();
+
+  // 2) Verify default createController (used by graph.html) retains baseline shaders and Bloom
+  const fullDom = new JSDOM('<!doctype html><html><body><div id="wrap"><div id="stage"></div></div></body></html>', {
+    pretendToBeVisual: true,
+    url: 'https://example.test/graph.html',
+  });
+  global.window = fullDom.window;
+  global.document = fullDom.window.document;
+  global.navigator = { hardwareConcurrency: 8, deviceMemory: 8 };
+  global.localStorage = fullDom.window.localStorage;
+  global.window.devicePixelRatio = 2;
+  global.window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+
+  const fullSpy = makePostFxSpyEnv();
+  fullDom.window.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2') return fullSpy.gl;
+    if (type === '2d') return fullSpy.ctx2d;
+    return null;
+  };
+  const wrap = fullDom.window.document.getElementById('wrap');
+  const stage = fullDom.window.document.getElementById('stage');
+  Object.defineProperty(wrap, 'clientWidth', { value: 1200, configurable: true });
+  Object.defineProperty(wrap, 'clientHeight', { value: 800, configurable: true });
+
+  const ctrl = perspectiveApi.createController({
+    wrapEl: wrap,
+    stageEl: stage,
+    persist: false,
+    getGraphData: () => ({
+      nodes: [
+        { id: 'a', label: 'A', x: 0, y: 0, community: 'c1' },
+        { id: 'b', label: 'B', x: 60, y: 40, community: 'c1' },
+      ],
+      edges: [{ source: 'a', target: 'b' }],
+      getNodeColor: () => '#5b9cf6',
+      getNodeAlpha: () => 1,
+    }),
+    isDark: () => true,
+  });
+
+  try {
+    assert.equal(ctrl.setEnabled(true, { silent: true, instant: true }), true);
+    const fullTerrainFs = fullSpy.shaderSources.find((s) => s.includes('terrainRampDark'));
+    const fullPostFs = fullSpy.shaderSources.find((s) => s.includes('uBloomAmp'));
+    assert.ok(fullTerrainFs && fullTerrainFs.includes('vec3(0.915, 0.615, 0.275)'), 'default terrain keeps baseline ramp without softPeakHighlight');
+    assert.ok(!fullTerrainFs.includes('peakMax > 0.86'), 'default terrain omits preview-only peak compression');
+    assert.ok(fullPostFs && fullPostFs.includes('mx > 0.84'), 'default postFS preserves 0.84 knee');
+    assert.equal(fullSpy.uniformValues.uThreshold, 0.62, 'default dark terrain preserves Bloom threshold 0.62');
+    assert.equal(fullSpy.uniformValues.uBloomAmp, 0.32, 'default dark terrain preserves Bloom amp 0.32');
+  } finally {
+    ctrl.destroy();
+    fullDom.window.close();
+    for (const key of Object.keys(prevGlobals)) {
+      if (prevGlobals[key] === undefined) delete global[key];
+      else global[key] = prevGlobals[key];
+    }
+  }
 });

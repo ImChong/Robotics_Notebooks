@@ -3,8 +3,9 @@ type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
 arxiv: "2602.15989"
-updated: 2026-11-15
+updated: 2026-11-24
 related:
+  - ./paper-fab.md
   - ./instanthmr.md
   - ./paper-biomechanical-3d-body.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -104,6 +105,8 @@ flowchart LR
 - **与 SMPL 生态**：MHR 关节命名与 SMPL→机器人工具链（如 [GMR](../methods/motion-retargeting-gmr.md)）之间可能需要 **显式转换** 或 BVH 中间格式。
 
 ## 关联页面
+
+- [FAB](./paper-fab.md) — SAM 3D Body蒸馏、稠密表面点、接触估计与G1动作参考生成。
 
 - [InstantHMR](./instanthmr.md) — SAM 3D Body GT 训练的轻量 ONNX 学生
 - [SAM3DBody-cpp](./sam3dbody-cpp.md) — ONNX 实时推理、BVH 导出、Blender 插件

@@ -6,7 +6,7 @@ tags:
   - locomotion
   - zmp
 status: complete
-updated: 2026-10-10
+updated: 2026-11-22
 arxiv: "2609.20570"
 related:
   - ../formalizations/zmp-lip.md

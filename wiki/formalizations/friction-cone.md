@@ -2,7 +2,8 @@
 type: formalization
 tags: [dynamics, contact, physics, control, math]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-21
+original: ../../sources/papers/contact_dynamics.md
 related:
   - ../concepts/contact-dynamics.md
   - ../concepts/centroidal-dynamics.md
@@ -11,12 +12,18 @@ related:
   - ../queries/wbc-tuning-guide.md
 sources:
   - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/boyd_cvxbook_qp_socp.md
+  - ../../sources/papers/wensing_opt_control_tro_arxiv_2211_11644.md
 summary: "摩擦锥（Friction Cone）描述了接触力在接触面上不发生相对滑动的物理约束条件，是 WBC 和轨迹优化中最重要的不等式约束。"
 ---
 
 # 摩擦锥 (Friction Cone)
 
 **摩擦锥** 是机器人学中描述接触力物理约束的核心数学模型。它规定了接触力 $\mathbf{f}$ 必须满足的范围，以确保机器人脚部或手部与支撑环境之间不发生滑动。
+
+## 一句话定义
+
+**摩擦锥（Friction Cone）** 用 $f_n \ge 0$ 与 $\|f_t\|_2 \le \mu f_n$ 刻画刚体单边法向接触力在切向不发生相对滑动的物理可行域，是从接触力学通往 WBC / MPC 凸优化约束的核心桥梁。
 
 ## 英文缩写速查
 
@@ -29,7 +36,12 @@ summary: "摩擦锥（Friction Cone）描述了接触力在接触面上不发生
 | ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
 | LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
 
-## 库仑摩擦模型 (Coulomb Friction)
+## 为什么重要
+
+- **真机打滑的硬边界**：足端或手端一旦越出摩擦锥边界即触发滑移甚至倾覆，因此在 MPC 与瞬时全身 QP 中必须将其显式写为单侧与切向不等式约束（Wensing et al., T-RO 2024 § VI）。
+- **决定优化问题求解器类别**：精确三维库仑摩擦锥属于二阶锥（SOCP）约束；内接四棱锥/八棱锥近似则将其线性化为 $C \lambda \le 0$，使瞬时控制降维成微秒级 QP。
+
+## 核心原理（库仑摩擦模型 (Coulomb Friction)）
 
 根据库仑摩擦定律，静态摩擦力 $f_t$（切向）与正向压力 $f_n$（法向）的关系如下：
 
@@ -81,6 +93,16 @@ $$
 2. **质心动力学优化**：在规划 CoM 轨迹时，外部合力必须由摩擦锥内的力合成。
 3. **抓取规划**：在操纵物体时，指尖力必须位于接触面的摩擦锥内以防止物体滑脱。
 
+## 工程实践
+
+- **多面体线性化 vs 二阶锥折中**：实时 Convex MPC 与 WBIC 常取正四棱锥内接线性近似（$|f_x|\le\frac{\mu}{\sqrt{2}}f_z, |f_y|\le\frac{\mu}{\sqrt{2}}f_z$）以适配 OSQP/qpOASES；MIT *Underactuated Robotics* Ch. 17 引用 Grandia 等提出以扰动二阶锥与光滑障碍罚解决锥顶（$f_n=0$）病态条件数问题。
+- **有效摩擦系数保守下修**：工程中通常对标称 $\mu$ 乘以 $0.7\text{--}0.85$ 的安全系数并约束最大垂向反力 $f_z \le f_{\max}$，预留地面局部油污、石子与倾斜角估计误差余量。
+
+## 常见误区或局限
+
+- **刚体静/动摩擦切换简化**：标准凸/线性摩擦锥假定最大静摩擦系数等于动摩擦系数且忽略轮胎或足底橡胶形变阻尼。
+- **面接触单点等效失真**：大脚掌（flat foot）着地时仅限制合力处于摩擦锥内不足以防止滚转翻倒，必须叠加力矩极限形成完整的 Contact Wrench Cone（CWC）。
+
 ## 关联页面
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Contact Dynamics](../concepts/contact-dynamics.md)
@@ -91,5 +113,13 @@ $$
 - [WBC 调参指南](../queries/wbc-tuning-guide.md)
 
 ## 参考来源
-- [contact_dynamics.md](../../sources/papers/contact_dynamics.md)
+- [contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触动力学与 MIT Underactuated Ch. 17 核对档案
+- [boyd_cvxbook_qp_socp.md](../../sources/papers/boyd_cvxbook_qp_socp.md) — Boyd & Vandenberghe § 4.4.2 二阶锥规划（SOCP）标准形式
+- [wensing_opt_control_tro_arxiv_2211_11644.md](../../sources/papers/wensing_opt_control_tro_arxiv_2211_11644.md) — Wensing et al. T-RO 2024 摩擦锥与 WBC/TO 公式
 - Siciliano, B., et al. (2009). *Robotics: Modelling, Planning and Control*.
+
+## 推荐继续阅读
+
+- [Contact Wrench Cone（接触力旋量锥）](./contact-wrench-cone.md) — 扩展到足底面接触与倾斜地面旋量约束
+- [Quadratic Programming](./quadratic-programming.md) — 线性化摩擦锥如何在 QP 中求解
+- [Contact Dynamics](../concepts/contact-dynamics.md) — 互补问题（LCP/NCP）与柔性接触仿真对比

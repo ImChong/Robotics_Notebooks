@@ -7,6 +7,8 @@
 - **摘要**: LingBot-Map 是面向**流式 3D 重建**（从连续视频在线估计位姿与稠密几何）的**前馈式 3D 基础模型**（**ECCV 2026 oral**，README 标注）。核心为 **Geometric Context Transformer（GCT）**：在单一流式框架内用 **anchor context、pose-reference window、trajectory memory** 统一坐标接地、稠密几何线索与长程漂移校正；推理侧推荐 **FlashInfer** 的 **Paged KV cache**，官方 README 报告在 **518×378** 分辨率约 **20 FPS**，并给出 **>10,000 帧** 长序列与 **窗口化（windowed）**、**keyframe 间隔** 等工程策略。
 - **项目页**: [technology.robbyant.com/lingbot-map](https://technology.robbyant.com/lingbot-map)（主站）；用户给定 [robbyant.github.io/lingbot-map](https://robbyant.github.io/lingbot-map/) 截至 2026-09-11 返回 404
 - **权重**: [robbyant/lingbot-map](https://huggingface.co/robbyant/lingbot-map)（HF）；[Robbyant/lingbot-map](https://www.modelscope.cn/models/Robbyant/lingbot-map)（ModelScope）
+- **核对范围**: 2026-11-21 核对 `Robbyant/lingbot-map@b9dd1b1` 官方 `README.md`、`demo.py`（`load_images`、`load_model`、`inference_streaming` / `inference_windowed`、`postprocess`、`PointCloudViewer`）及 `lingbot_map/models/gct_stream.py`（`GCTStream` 参数、FlashInfer/SDPA 与 KV cache 选项）；未运行 GPU 推理。
+- **通读：** 已完成
 
 ## URL 勘误（常见误链）
 

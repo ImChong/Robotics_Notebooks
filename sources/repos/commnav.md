@@ -3,47 +3,54 @@
 > 来源归档（repo）
 
 - **标题：** CommNav — Communication-Enabled Social Navigation
-- **类型：** repo / social-navigation / embodied-ai（占位）
+- **类型：** repo / social-navigation / embodied-ai
 - **来源：** S4b3（GitHub）
 - **链接：** <https://github.com/S4b3/CommNav>
 - **论文：** [arXiv:2607.01044](https://arxiv.org/abs/2607.01044) · IROS 2026（仓内 bibtex）
-- **Stars：** ~3（2026-08-09）
+- **Stars：** 见 GitHub 实时状态（`pushed_at: 2026-09-26`，758 files，含 `v1.0.0` release）
 - **入库日期：** 2026-08-09
-- **一句话说明：** CommNav 官方仓；README 声明 **currently under preparation**——截至入库日根目录仅 `README.md`，**无可运行训练 / Habitat 3.0c / COMM 实现**。
+- **复核日期：** 2026-11-21
+- **一句话说明：** CommNav 官方开源仓（MIT，758 files）：包含 Habitat 3.0c 多智能体扩展（`multi_agent_sensors.py` 等）、COMM（numeric/text）训练代码、全套 `habitat-baselines/scripts/release/` 训练评测脚本及 `v1.0.0` 预训练权重。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-commnav.md`](../../wiki/entities/paper-commnav.md)
 - **论文归档：** [`sources/papers/commnav_arxiv_2607_01044.md`](../papers/commnav_arxiv_2607_01044.md)
 
 ---
 
-## 开源状态（步骤 2.5）
+## 开源状态（步骤 2.5，2026-11-21 复核）
 
-| 项 | 状态（2026-08-09） |
-|----|-------------------|
-| 训练 / 评测代码 | **未发布**（README: will be released soon） |
-| Habitat 3.0c 任务配置 | **未发布** |
-| COMM 实现 / checkpoint | **未发布** |
-| 生成通信数据 | **未发布** |
-| 许可证 | 仓库未声明（`license: null`） |
-| 根目录快照 | 仅 `README.md`（`size: 2` KB 量级） |
+| 项 | 状态 |
+|----|------|
+| 训练 / 评测代码 | **已开源**（`habitat-baselines/scripts/release/{train_baseline,train_commnav,eval_commnav}.sh` 等） |
+| Habitat 3.0c 任务与传感器 | **已开源**（`habitat-lab/habitat/tasks/rearrange/multi_agent_sensors.py`、`config/benchmark/multi_agent/*.yaml`） |
+| COMM 实现与权重 | **已开源**（`scripts/release/train_comm_module_{numeric,text}.sh` + `v1.0.0` release 权重） |
+| 人类口语研究原始包 | human-study 原始数据未随仓分发 |
+| 许可证 | **MIT License** |
 
-**结论：** **宣称将开源 / 占位仓**。论文与 README 均指向本仓，但截至入库日无可辨识 `train` / `eval` 入口。wiki「源码运行时序图」标 **不适用**，待正式 release 后补。
-
----
-
-## README 宣称即将释放
-
-- training and evaluation code
-- Habitat 3.0c task configuration
-- COMM model implementation
-- generated communication data
-- pretrained/checkpoint instructions
-- scripts for reproducing main paper results
+**结论：** **已完整开源（MIT + `v1.0.0` checkpoint + 官方发布启动脚本面）**；wiki 已补基于源码和 `EXPERIMENTS.md` 的「源码运行时序图」。
 
 ---
 
-## 目录快照（API，2026-08-09）
+## 官方入口与启动脚本（`habitat-baselines/scripts/release/`）
+
+| 阶段 | 官方脚本 / 入口 | 产出 |
+|------|------------------|------|
+| Baseline 导航策略 | `scripts/release/train_baseline.sh` | `checkpoints/baseline/` |
+| 结构化 COMM 模块 | `scripts/release/train_comm_module_numeric.sh`（或 `communication_module_train.py`） | `comm_checkpoints/numeric/` |
+| 文本 COMM 模块 | `scripts/release/train_comm_module_text.sh`（或 `communication_module_text_train.py`） | `comm_checkpoints/text/` |
+| CommNav 联合微调 | `scripts/release/train_commnav.sh` | `checkpoints/training/comm_nav/` |
+| 评测 | `scripts/release/eval_commnav.sh` | `checkpoints/evaluation/`（指标与视频） |
+
+---
+
+## 目录快照（2026-11-21 复核，758 files）
 
 ```
 CommNav/
-  README.md    # 论文摘要 + Coming soon 清单 + bibtex
+  README.md / LICENSE
+  habitat-lab/habitat/
+    tasks/rearrange/multi_agent_sensors.py
+    config/benchmark/multi_agent/hssd_spot_human*.yaml
+  habitat-baselines/
+    EXPERIMENTS.md
+    scripts/release/{common,train_baseline,train_comm_module_numeric,train_comm_module_text,train_commnav,eval_commnav}.sh
 ```

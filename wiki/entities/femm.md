@@ -2,7 +2,9 @@
 type: entity
 tags: [software, motor, fem, femm, open-source, simulation, magnetics, electrostatics, heat-flow, meeker]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-21
+original:
+  - ../../sources/sites/femm_info.md
 related:
   - ./femm-foc-simulation.md
   - ./pyleecan.md
@@ -63,8 +65,9 @@ flowchart LR
 | 问题类 | Magnetics、Electrostatics、Heat Flow、Current Flow |
 | 几何 | **平面 2D** 或 **轴对称**；**无官方 3D 版** |
 | 材料 | 非线性 B–H、永磁、电导率等；饱和可计入 |
-| AC | 复振幅约定为 **Peak（非 RMS）**；永磁 DC 贡献在非零频率谐波解中不可见 |
-| 力/矩 | 推荐加权应力张量体积分；转矩默认绕原点 (0,0) |
+| AC | 复振幅严格按 **Peak（非 RMS）**（$A(t)=\mathrm{Re}[a e^{j\omega t}]$）；永磁 DC 场在非零频谐波解中不可见；有铁芯高饱和谐波基波可达 $B\approx 2\times 4/\pi=2.55\,\text{T}$ |
+| 永磁建模 | 默认等效低磁导率导体表面电流片 $H_c(\mathbf{m}\times\mathbf{n})$；可在 Magnetics Output 切换 `Demag. H in PMs` 看第二象限工作点（FAQ Q6） |
+| 力/矩 | 仅推荐 **Weighted Stress Tensor** 体积分（比麦克斯韦应力张量线积分稳健）；转矩默认绕原点 `(0,0)`；Triangle 网格切角奇异时可在 Problem Definition 把 Min Angle 从 30° 降至 20°（FAQ Q16–22） |
 | 运动涡流 | FAQ：**不**模拟运动感应涡流 |
 | 驱动 | 线圈以电流（circuit）施加；后处理可报电压 |
 

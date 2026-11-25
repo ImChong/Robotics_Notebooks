@@ -6,6 +6,9 @@
 - **收录日期**：2026-09-15
 - **Tags**：#recursive-self-improvement #llm-agents #agent-harness #self-evolution #benchmarks #literature-review
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `Prism-Shadow/awesome-rsi` 官方仓库 README（61 KB）与 `awesome-rsi.github.io` 页面及 ZitongBo/awesome-embodied-self-improvement README（46 KB）。
+
 ## 一句话
 
 围绕 **Recursive Self-Improvement（RSI）** 维护的 **方法、基准与系统** 策展清单：按 **RSI artifact**（改什么）与 **RSI mode**（在线/离线评测协议）组织 50+ 方法论文、29 基准与 2 个系统，配套双语静态站与引用图谱。

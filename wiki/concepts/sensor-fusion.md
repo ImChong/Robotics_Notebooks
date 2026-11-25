@@ -2,8 +2,9 @@
 type: concept
 status: complete
 tags: [sensor-fusion, perception, localization, vio, ekf, state-estimation]
-updated: 2026-09-22
+updated: 2026-11-24
 related:
+  - ../comparisons/lidar-depth-camera-selection.md
   - ./imu-principles-algorithms-camera-sync.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ./state-estimation.md
@@ -17,6 +18,9 @@ related:
 sources:
   - ../../sources/papers/perception_localization.md
   - ../../sources/papers/state_estimation.md
+  - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
+  - ../../sources/papers/msfp_survey_arxiv_2506_19769.md
+original:
   - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
   - ../../sources/papers/msfp_survey_arxiv_2506_19769.md
 summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提升状态估计鲁棒性。"
@@ -48,7 +52,18 @@ summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提�
 
 ---
 
-## 主流方法
+## 核心原理与主流方法
+
+多传感器融合的两条主干赛道如下表与架构图所示：**状态估计侧**（InEKF / VIO / 滑窗因子图）专注高频位姿、速度与接触，要求低延迟与李群几何一致性；**语义几何感知侧**（[MSFP Survey](../entities/paper-msfp-embodied-ai-survey.md) 按多模态 / 多智能体 / 时序 / MM-LLM 四轴总结）侧重检测、占用与跨模态表征，二者共享外参标定与时间同步底座，但目标函数与实时预算不同。
+
+```mermaid
+flowchart LR
+    raw["IMU + 相机 + LiDAR + 轮速/脚触"] --> sync["硬件同步 + 外参/时延标定"]
+    sync --> est["状态估计主干<br/>InEKF / VIO / FRS滑窗图优化"]
+    sync --> perc["感知主干 MSFP<br/>BEV融合 / 多机协作 / MM-LLM"]
+    est --> ctrl["MPC / WBC（100-500 Hz 闭环）"]
+    perc --> plan["语义导航 / 局部避障规划"]
+```
 
 ### 视觉惯性里程计（VIO）
 
@@ -112,7 +127,13 @@ summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提�
 
 ---
 
-## 常见问题
+## 工程实践
+
+- **硬件级时间同步先行：** 图像帧与 IMU 采样时钟错位超过几毫秒即可毁掉高频 VIO/InEKF 预积分；部署优先使用硬件触发同步或引入类似 [Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md) OSC 的在线时间偏移估计。
+- **频率分层：** IMU/关节编码器走 ≥200–1000 Hz 滤波主环直供 [MPC](../methods/model-predictive-control.md)/[WBC](../concepts/whole-body-control.md)，视觉/LiDAR 回环走 10–30 Hz 异步修正，避免慢传感器阻塞控制线程。
+- **退化门控必需：** 强曝光、长廊、打滑时必须在因子/观测更新层降权或门控不可靠模态，严禁盲目固定协方差权重。
+
+## 常见误区与局限
 
 | 问题 | 原因 | 解决方案 |
 |------|------|---------|
@@ -120,10 +141,12 @@ summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提�
 | 空中腿干扰估计 | 非接触腿运动学噪声 | 接触检测 + 加权融合 |
 | 光线不足失效 | 视觉特征丢失 | 激光雷达补偿 / 热成像 |
 | 地形突变跳变 | 接触冲击产生高频噪声 | 低通滤波 + 异常检测 |
+| 固定权重崩盘 | 未建模几何退化与标定温漂 | 引入因子级可靠性调度（FRS）与在线标定 |
 
 ---
 
 ## 关联页面
+- [LiDAR 与深度相机选型及融合](../comparisons/lidar-depth-camera-selection.md) — 远场/近场的失效边界、融合层次与时空误差预算。
 - [IMU：原理、算法与摄像头驱动协同](./imu-principles-algorithms-camera-sync.md) — 六轴测量、标定、Mahony/Madgwick/EKF 与 V4L2/IIO 同步
 - [MSFP Survey（具身 AI 多传感器融合感知）](../entities/paper-msfp-embodied-ai-survey.md) — 感知任务侧四条技术轴 taxonomy
 - [Ultra-Fusion（多传感器 SLAM 论文实体）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 退化感知紧耦合 LVIO/LVWIO 与大规模基准
@@ -138,3 +161,11 @@ summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提�
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 经典论文与教材索引
 - [perception_localization.md](../../sources/papers/perception_localization.md)
 - [state_estimation.md](../../sources/papers/state_estimation.md)
+- [ultra_fusion_arxiv_2606_21223.md](../../sources/papers/ultra_fusion_arxiv_2606_21223.md)
+- [msfp_survey_arxiv_2506_19769.md](../../sources/papers/msfp_survey_arxiv_2506_19769.md)
+
+## 推荐继续阅读
+
+- [状态估计（State Estimation）](./state-estimation.md) — 上下游状态接口与李群 InEKF 基础
+- [Ultra-Fusion（韧性多传感器融合 SLAM）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 退化感知滑窗因子图与在线时空标定实证
+- [MSFP Survey（具身 AI 多传感器融合感知）](../entities/paper-msfp-embodied-ai-survey.md) — 感知任务侧四条技术轴系统综述

@@ -10,7 +10,7 @@ tags:
   - isaac-gym
   - aliengo
 status: complete
-updated: 2026-11-01
+updated: 2026-11-22
 code: https://github.com/silvery107/rl-mpc-locomotion
 related:
   - ../methods/reinforcement-learning.md
@@ -22,6 +22,7 @@ sources:
   - ../../sources/repos/rl_mpc_locomotion.md
   - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "rl-mpc-locomotion 提供快速仿真与 RL 训练框架：高层策略网络动态预测 MPC 控制器的权重参数，低层是参考 MIT Cheetah Software、用 Python 重写的 MPC。"
+original: ../../sources/repos/rl_mpc_locomotion.md
 ---
 
 # rl-mpc-locomotion
@@ -52,6 +53,10 @@ summary: "rl-mpc-locomotion 提供快速仿真与 RL 训练框架：高层策略
 | **最近提交** | 2026-04-26 |
 | **可达性** | `git ls-remote` 可达（2026-11-01） |
 | **文章归类** | 强化学习 |
+
+## 核心原理
+
+采用分层控制框架：高层神经网络策略（RL）在 Isaac Gym 并行仿真中以本体感知与目标速度指令为输入，动态预测 12 维摆动/站立凸 MPC 权重参数；低层采用参照 MIT Cheetah Software 用 Python + C++ OSQP pybind 重写的凸模型预测控制器与 FSM 状态机求解地面反作用力并转换为关节力矩控制。
 
 ## 文章说法核对
 
@@ -115,6 +120,16 @@ sequenceDiagram
 
 图依据：silvery107/rl-mpc-locomotion@df944ef，实际读过 `README.md`、`RL_MPC_Locomotion.py`（参数与主循环）、`MPC_Controller/robot_runner/RobotRunnerFSM.py`（`run`）、`MPC_Controller/robot_runner/RobotRunnerPolicy.py`（`run`）、`MPC_Controller/FSM_states/ControlFSM.py`（`runFSM` 的状态切换结构）、`MPC_Controller/FSM_states/FSM_State_Locomotion.py`（`LocomotionControlStep`）、`MPC_Controller/convex_MPC/ConvexMPCLocomotion.py`（`solveDenseMPC`、`run` 中 `updateMPCIfNeeded` 调用）、`MPC_Controller/common/DesiredStateCommand.py`（`updateCommand`）、`RL_Environment/WeightPolicy.py`（构造与加载）、`setup.py`（`mpc_osqp` 扩展源文件）、`MPC_Controller/convex_MPC/mpc_osqp.cc`（求解器相关函数，未核对 pybind 导出列表）；未读 `RobotRunnerMin.py`（图中 Min 仅按 `RL_MPC_Locomotion.py` 的分派示意）；`FSM_State_Locomotion.run` 到 `LocomotionControlStep` 的完整调用链、`sim_utils.py` 与 `train.py` 训练流程未逐行核对；未运行代码。
 
+## 工程实践
+
+- **运行模式切换**：`python RL_MPC_Locomotion.py --robot=Aliengo` 支持默认 `--mode=Fsm`、`--mode=Min`（最小无状态机 MPC）以及 `--mode=Policy --checkpoint=...`（接入 PPO 权重预测策略）；`ConvexMPCLocomotion` 与 OSQP C++ 绑定分离便于切换硬件与仿真器。
+- **环境与硬件耦合边界**：仓库训练与验证依赖 Python 3.8、PyTorch 1.10 与 Isaac Gym Preview 4 仿真中的 Unitree Aliengo 模型；作者在 README 中明确真机 Aliengo 部署（sim2real）代码未包含在该仓内。
+
+## 局限与风险
+
+- **Sim2Real 代码缺失**：仅开源仿真 RL 与 MPC 控制器代码，从仿真权重策略迁移到真机 Aliengo 需自行对接底层总线 SDK 与状态估计器。
+- **文章描述与仓库口径核对**：综述提及的完整 WBC 与配套教学 PPT 细节并未在 README 主体出现，实际实现重心在 Python+OSQP 凸 MPC 与高层 RL 权重调度。
+
 ## 关联页面
 
 - [reinforcement-learning](../methods/reinforcement-learning.md)
@@ -129,3 +144,8 @@ sequenceDiagram
 - [wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)
 - 源码核对（2026-11-02）：silvery107/rl-mpc-locomotion@df944ef，读过 README.md、RL_MPC_Locomotion.py、MPC_Controller/robot_runner/RobotRunnerFSM.py、MPC_Controller/robot_runner/RobotRunnerPolicy.py、MPC_Controller/FSM_states/ControlFSM.py、MPC_Controller/FSM_states/FSM_State_Locomotion.py、MPC_Controller/convex_MPC/ConvexMPCLocomotion.py、MPC_Controller/common/DesiredStateCommand.py、RL_Environment/WeightPolicy.py、setup.py、MPC_Controller/convex_MPC/mpc_osqp.cc；时序图依据以上文件，未运行代码。
+
+## 推荐继续阅读
+
+- 代码仓库：<https://github.com/silvery107/rl-mpc-locomotion>
+- 对比基准：[Model Predictive Control](../methods/model-predictive-control.md) 与 [Whole-Body Control](../concepts/whole-body-control.md)

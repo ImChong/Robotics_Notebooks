@@ -116,6 +116,7 @@ flowchart LR
 - [XMimic & XSoma（arXiv:2611.20452）](../wiki/entities/paper-xmimic-xsoma-2611-20452.md) — 用可微世界模型和 JAX 多卡缩短 G1 参考跟踪 / 地形速度跟踪达标时间；与原 [XMimic 独立工作](../wiki/entities/paper-xmimic-jax.md) 区分论文版本与训练目标。
 - 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)
 - [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 工程可用的跟踪基座
+- [2026 人形 WBC 12 项开源路线对照](../wiki/comparisons/humanoid-wbc-open-source-12-2026.md) — 按 tracking、跨模态生成、无监督技能和任务级 VLA/移动操作分层，帮助确定 Stage 2 低层控制与后续 Stage 3–4 的接口边界。
 - [MoViC（arXiv:2611.19998）](../wiki/entities/paper-movic-monocular-video-whole-body-control.md) — 局部重建 DFM 形成 320-D θ 时间上下文 + 下一步显式参考，PPO Transformer 跟踪 PM01；仿真消融 SR 99%，视觉参考 10→50 Hz 异步外推
 - [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md) — BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
 - [PFM-HR](../wiki/entities/paper-pfm-hr.md) — 无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励，冻结挂载 ADD/BeyondMimic 不改部署栈；高动态技能（Backflip、Double Kong 等）样本效率相对 PDF-HR 提升 14–29%，LaFAN1 通用跟踪位置误差相对 ADD/PDF-HR 均降约 8–10%；代码仓占位待开放
@@ -164,6 +165,8 @@ flowchart LR
 ---
 
 ## Stage 4 适应与整合：微调、层次化与双栈
+> **跨栈案例：** [SONIC × GR00T 2 Turbo 从运动跟踪到 WAM](../wiki/queries/sonic-gr00t2-wam-humanoid-dual-brain.md) — 对照通用低层 tracking、共享运动 token、合成/遥操作数据和高层 WAM，明确 System 0 与语义策略的职责分工。
+
 
 **预训练出的行为先验怎么用：微调、层次化，以及当前人形系统的主流工程形态——高层 VLA + 低层 BFM。**
 
@@ -187,7 +190,10 @@ flowchart LR
 - [LangWBC](../wiki/entities/paper-bfm-37-langwbc.md) 与 [LeVERB](../wiki/entities/paper-bfm-36-leverb.md)
 - [GR00T-WholeBodyControl](../wiki/entities/gr00t-wholebodycontrol.md) 与 [Humanoid-VLA](../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md)
 - [ReactiveBFM](../wiki/entities/paper-reactivebfm.md)
+- [S-BFM（arXiv:2611.27552）](../wiki/entities/paper-s-bfm.md) — Stage 4 稀疏时空目标接口：指定姿态、世界位置、朝向和到达时间，由低层生成过渡；高层 VLA/WAM 集成尚待验证。
 - [ILA：接口级柔顺适配器](../wiki/entities/paper-ila-interface-level-adapter.md) — 在已有冻结 WBT 策略前修正上肢参考运动；与微调/内部特征适配形成接口层对照（MT、MimicLite、Sonic 三种 tracker 验证）。
+- [ECHO：上下文行为基础模型（arXiv:2611.25778）](../wiki/entities/paper-echo-bfm.md) — 冻结通用 ECHO-PRE，用状态—动作历史编码物性，再用残差策略适配负载与动力学；无需推理时梯度更新。
+- [ALERT：通用 Motion Tracker 的轻量主动避人适配](../wiki/entities/paper-alert-human-avoidance.md) — Stage 4 轻量适配案例：冻结 SONIC/TWIST2/BFM-Zero 的原生参考编码与动作主干，在动作层用 LiDAR 人体势场和条件 LoRA 学局部避让；并区分习得避障与形式化安全约束。
 
 ### 学完输出什么
 - 能为"人形 + 语言任务"设计一套分层方案，并说清接口选型的取舍
@@ -216,6 +222,7 @@ flowchart LR
 **方向 D：评测、选型与工业级案例**
 - 建立自己的评测基线，跟踪工业界的整机方案
 - 关键词：[Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)、[AgiBot BFM-2](../wiki/entities/agibot-bfm-2.md)
+- [RoboParty / sim2real Motion Tracking Leaderboard](../wiki/entities/egalahad-sim2real.md) — Stage 5 跨代码库跟踪对照：冻结 MotionDecode + G1 MuJoCo + 50 Hz ONNX 统一评测；同时读 Body Pos、Progress、未来参考窗口，勿当真机综合排名。
 
 ---
 

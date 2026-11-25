@@ -4,7 +4,7 @@ tags: [paper, humanoid, locomotion, human-motion, imitation-learning, reinforcem
 project_id: humble
 arxiv: "2610.10489"
 status: complete
-updated: 2026-10-10
+updated: 2026-11-22
 related:
   - ../tasks/humanoid-locomotion.md
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -16,6 +16,7 @@ sources:
   - ../../sources/papers/humble_arxiv_2610_10489.md
   - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 summary: "HuMBLE 先将人体步态蒸馏成本体感知 + SE(2) 速度指令策略，再用参考跟踪与目标指令双任务 RL 扩展全向可控性；已在 Atlas R1/D1 和 Unitree G1 验证。"
+original: ../../sources/papers/humble_arxiv_2610_10489.md
 ---
 
 # HuMBLE：人类动作驱动的具身 locomotion
@@ -23,7 +24,6 @@ summary: "HuMBLE 先将人体步态蒸馏成本体感知 + SE(2) 速度指令策
 ## 一句话定义
 
 **HuMBLE**（*Human Motion-Driven Behavior Learning for Embodied Locomotion*）是一套将人体运动风格与速度指令跟踪结合的人形 locomotion 学习配方：先从 retarget 后的全身人体步态学习紧凑运动先验，再在保持风格的同时扩展指令覆盖，最终以单个轻量策略在真机上执行。
-
 
 ## 英文缩写速查
 
@@ -48,7 +48,7 @@ summary: "HuMBLE 先将人体步态蒸馏成本体感知 + SE(2) 速度指令策
 
 纯命令跟踪 RL 可以学会走稳、响应快，但常出现僵硬或缺少全身协调的步态；直接模仿人体动作则容易被数据集覆盖范围限制，遇到未出现过的侧移、转向或高速组合指令时泛化不足。HuMBLE 将**风格获取**和**命令空间扩展**拆为两阶段处理。
 
-## 方法流程
+## 流程总览
 
 ```mermaid
 flowchart TD
@@ -90,6 +90,11 @@ HuMBLE 用并行的两类环境继续训练先验策略：
 Atlas R1 的大部分命令区域中，跟踪误差与不使用人体先验的 Tabula Rasa RL 基线相当；多数代表性命令的 sim-to-real 误差差值在 **0.05 m/s**（线速度）和 **0.10 rad/s**（角速度）范围内。论文另报告 Atlas R1 推扰测试在主要方向上可承受最高 **1400 N**。这些结果分别是指定平台和论文测试协议下的量化结果，不代表对任意地形或任意推力方向的保证。
 
 高速度下，Tabula Rasa 基线通常能更快达到大指令目标；HuMBLE 加速更平滑、更符合参考数据。快速斜向行走等在动捕中欠覆盖的指令区域也仍是主要误差来源。演示还把策略作为 joystick 命令执行器，以及自主导航和箱体跑酷层级控制中的底层 locomotion 模块。
+
+## 工程实践
+
+- **数据–先验–微调解耦**：先以 BVH 与两阶段 retargeting 清洗约 3 小时动捕数据并用特权 teacher 蒸馏本体先验，再通过 50:50 短时域参考模仿与长时域 SE(2) 目标跟踪微调，防止直接目的强化退化为非自然步态。
+- **部署算力边界**：策略以单一轻量 MLP 跑在 50 Hz 关节位置目标接口，Unitree G1 上 Jetson AGX Orin CPU + ONNX Runtime 实测单步推理均值 1.1 ms；官方未发布代码与 Atlas 专有数据，工程复现需自备 retargeting 与状态估计栈。
 
 ## 结果读法与边界
 

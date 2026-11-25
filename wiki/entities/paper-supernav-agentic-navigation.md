@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, navigation, vln, objectnav, pointnav, agentic, embodied-ai, mobile-robot, unitree-go2, zju, szu]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-21
 arxiv: "2610.12126"
 project_id: supernav-agentic-navigation-any-task-any-scene
 project: https://zju3dv.github.io/SuperNav/
+code: https://github.com/zju3dv/SuperNav
 related:
   - ../tasks/vision-language-navigation.md
   - ./qwen-robot-nav.md
@@ -16,6 +17,7 @@ sources:
   - ../../sources/papers/supernav_arxiv_2610_12126.md
   - ../../sources/sites/zju3dv-supernav.md
   - ../../sources/repos/zju3dv-supernav-code.md
+original: ../../sources/papers/supernav_arxiv_2610_12126.md
 summary: "SuperNav（arXiv:2610.12126）给预训练 MLLM 配置 agent harness，以视觉点目标连接高层决策和可替换运动后端；用 Tools、Skills、任务进度与上下文管理支持多任务导航，不做导航专用微调。"
 ---
 
@@ -51,28 +53,30 @@ summary: "SuperNav（arXiv:2610.12126）给预训练 MLLM 配置 agent harness�
 | Learned Executor | 根据目标点和近期 RGB 历史预测局部位移增量与停止信号 |
 | SR / SPL | 成功率 / 按路径长度加权的成功率 |
 
-## 方法：系统结构
+## 为什么重要
 
-### 1. Agent loop：维持长程任务状态
+- **证明不改权重仅靠 Agent Harness 就能横跨五类导航基准：** 实验主力采用冻结预训练 MLLM（GPT-5.6 Terra / GPT-6 Astra）经 Codex CLI + MCP 工具编排，在 Habitat-GS 单物体达 **78.00% SR**（显著高于 UniNaVid 的 34.00%）、AI2-THOR 需求驱动达 **59.50% SR**、HM3D-OVON `@1m` 达 **73.33% SR**（Astra **79.17%**）。
+- **视觉点目标解耦通用推理与运动后端：** 四向 `PointNav(view, [u, v])` 既可对接深度+NavMesh 几何规划，也可对接 NoMaD 风格的 DINOv2 ViT-S/14 + 4 步 Flow Matching 学习执行器，更换机器人平台时不必重训高层决策模型。
+- **上下文裁剪 + 按需 Skills 支撑长程任务：** 通过 Search/Recheck/Recover/Complete Markdown 指南与仅媒体保留的上下文裁剪机制，避免纯文本与旧观测撑爆长程导航窗口。
 
-Agent 接收用户请求与四向 RGB 图像后，MLLM 反复选择观测、转向、点目标导航、更新任务进度或终止会话。工具返回的新图像和执行诊断回到上下文，供下一轮推理使用。结构化目标记录帮助模型区分已完成与待办项目；文本历史保留已搜索区域、候选线索和失败尝试。
+## 核心机制与方法栈
 
-终止工具只表示模型已报告任务结果并关闭会话，benchmark 会独立判定任务是否成功。因此，长时程任务的状态跟踪和“完成”判断属于评测链路中的独立风险点。
+### 1. Agent loop：Codex CLI + MCP 长程状态管理
+
+Agent 通过 Codex CLI + MCP 工具（`hab_init_scene`、`hab_panorama`、`hab_turn`、`hab_visual_point_navigate` / `hab_local_navigate`、`hab_close_session`）与环境持续交互，辅以仅保留关键媒体观测的上下文裁剪策略（media-only context pruning）维持长程记忆。结构化目标记录区分已完成与待办项目，但高层结束声明由评测器独立核验。
 
 ### 2. 视觉点导航：把语言决策接到运动
 
-一次观测包含相对当前朝向的前、右、后、左四幅 RGB 图。模型选择一个视图及归一化坐标 `(u,v)∈[0,1]^2`，执行器尝试到达该像素点对应的可通行位置，并返回新图像、执行状态和简短诊断。模型可重新观察、选择别的目标点并恢复，因此高层导航循环与底层执行后端保持松耦合。
+一次观测包含相对当前朝向的前、右、后、左四幅 RGB 图。模型选择一个视图及归一化坐标 `(u,v)∈[0,1]^2`，执行器尝试到达该像素点对应的可通行位置，并返回新图像、执行状态和简短诊断。
 
 ### 3. 互换式运动后端
 
-- **几何执行器**：用深度与相机标定把像素目标投到环境几何，再依据定位和可导航结构规划路径。
-- **学习执行器**：基于目标标记和近期 RGB 观测预测局部位移增量与停止信号，在短动作段之间反复重规划。
+- **Geo-based Executor（几何执行器）**：仿真中用深度与 NavMesh 把像素目标投到环境几何规划路径；Go2 真机使用 4 路 RGB + Hesai LiDAR 构筑体素地图与 `ReplanningAStar`。
+- **Learned Executor（Flow 学习执行器）**：借鉴 NoMaD 设计，由 DINOv2 ViT-S/14 编码器 + 年龄感知（age-aware）≤12 帧历史 Transformer + 4 步 1D UNet Flow Matching 输出短时动作块与停止头。
 
-两类后端沿用同一视觉点交互模式；运动方式不同，但反馈都回到相同的 MLLM 决策循环。
+### 4. Navigation Skills
 
-### 4. Tools 与 Skills
-
-工具覆盖启动、观察、转向、视觉点导航、目标进度维护与结束。Skills 以 Markdown 说明何时搜索、怎样复核目标、怎样从阻塞中恢复。Skills 进入模型上下文后影响选择，但不强制工具顺序，也不提供新的物理执行能力。
+Search / Recheck / Recover / Complete 等 Skills 以按需读取的 Markdown 指南形式进入上下文，指导模型在遮挡或受阻时如何复核与脱困，但不强制硬编码工具顺序。
 
 ## 评测结果
 
@@ -117,15 +121,53 @@ Agent 接收用户请求与四向 RGB 图像后，MLLM 反复选择观测、转�
 - 几何执行器与学习执行器依赖的输入和权重不同，复现时要分别准备深度/定位或 Learned Executor 权重。
 - 截至 2026-10-26，仿真运行与 Habitat-GS 测试任务可从公开仓库/数据集获取；Go2 部署指南已发布，但部署仍依赖指定硬件、相机与机器人环境。
 
-## Mermaid：从任务请求到闭环导航
+## 源码运行时序图
+
+[zju3dv/SuperNav](https://github.com/zju3dv/SuperNav) 提供统一 `supernav` CLI（`src/supernav/cli.py`）与可视化服务，按任务准备 → Harness 闭环调度 → 运动执行后端 → 评测输出运行：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as 研究者
+  participant CLI as supernav CLI (prepare/run/web)
+  participant RT as supernav/runtime (Harness & MCP Tools)
+  participant MLLM as 冻结 MLLM (Terra/Astra + Skills)
+  participant BE as supernav/backends (Geo / Flow Learned)
+  participant EV as supernav/evaluation
+
+  U->>CLI: supernav prepare objectnav && supernav run --config ...
+  CLI->>RT: 初始化场景配置 (configs/experiments/*.json)
+  loop 每个任务步
+    RT->>MLLM: 传入四向 RGB + 进度表 + 按需 Markdown Skills
+    MLLM-->>RT: PointNav(view, [u, v]) / turn / close_session
+    RT->>BE: 下发局部视觉目标或控制动作
+    BE-->>RT: 返回执行诊断与更新观测
+  end
+  RT->>EV: 记录轨迹并独立结算 SR / SPL
+  CLI-->>U: supernav web --live-dir 实时回放
+```
+
+## 工程实践
+
+- **快速跑通仿真：** 要求 Python 3.12；先通过 `supernav prepare objectnav` 生成任务与实验配置，再执行 `supernav run --config ... --dry-run` 校验配置后实跑，并可用 `supernav web --live-dir "$SUPERNAV_LIVE_DIR"` 同步观察工具调用与观测流。
+- **数据与权重准备：** 几何/学习执行器权重（`the0xka1/SuperNav-Learned-Executor`）与 Habitat-GS 测试集（`yyh929/HabitatGS-Benchmark`）分别托管于 Hugging Face；AI2-THOR 设定当前评测模式为 `withheld`（仅记轨迹与动作）。
+- **Unitree Go2 部署与许可注意：** `docs/release/en/go2.md` 覆盖 Jetson aarch64 + 4 路 GoPro HERO8 USB + LiDAR 体素建图部署（基于固定 DimOS 子模块与补丁）。源码采用 PRL v1.0 许可，学术研究免注册，**机构/组织项目使用前需先登记**。
+
+## 常见误区或局限
+
+- **误区：Agent 调用 `close_session` 就代表导航成功** — MLLM 的结束声明仅代表模型自我判停，最终 SR/SPL 由环境评测器独立按成功半径与目标顺序核算。
+- **长程多目标仍是明显瓶颈：** 有序多物体任务（Habitat-GS）SR 从单物体的 78.00% 降至 **34.00%**，长程进度追踪与错误判停仍是主要失分项。
+- **闭源推理依赖与成本：** 实验主力依赖 GPT-5.6 Terra / GPT-6 Astra 等云端强 MLLM，API 延迟、调用成本与可重复性受外部模型版本演进影响。
+
+## 流程总览
 
 ```mermaid
 flowchart TD
   request["自然语言任务"] --> mllm["预训练 MLLM：理解与选点"]
   obs["四向 RGB 观测"] --> mllm
-  mllm --> harness["Agent loop：上下文与任务进度"]
-  harness --> tools["导航 Tools：观察、转向、PointNav"]
-  tools --> backend["几何执行器 / 学习执行器"]
+  mllm --> harness["Agent loop：上下文裁剪与进度"]
+  harness --> tools["MCP 导航 Tools：观察、转向、PointNav"]
+  tools --> backend["Geo / Flow Learned 执行器"]
   backend --> feedback["执行反馈与新观测"]
   feedback --> mllm
   skills["Navigation Skills：搜索、核验、恢复指南"] --> mllm
@@ -136,7 +178,7 @@ flowchart TD
 - [arXiv v1 原文](https://arxiv.org/html/2610.12126v1)
 - [SuperNav 官方项目页](https://zju3dv.github.io/SuperNav/)
 - [官方实现](https://github.com/zju3dv/SuperNav)
-- [SuperNav 论文摘录](../../sources/papers/supernav_arxiv_2610_12126.md)
+- [SuperNav 论文摘录（原文通读）](../../sources/papers/supernav_arxiv_2610_12126.md)
 - [项目页归档](../../sources/sites/zju3dv-supernav.md)
 - [仓库归档](../../sources/repos/zju3dv-supernav-code.md)
 
@@ -147,3 +189,9 @@ flowchart TD
 - [Uni-LaViRA](./paper-uni-lavira.md) — 零样本统一导航的分层翻译与多本体方案。
 - [NavVerse](./paper-navverse.md) — 场景与跨区域具身导航基准。
 - [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md) — 目标图像条件的导航世界动作模型。
+
+## 推荐继续阅读
+
+- [SuperNav GitHub 官方仓库与 Go2 部署指南](https://github.com/zju3dv/SuperNav/blob/main/docs/release/en/go2.md)
+- [SuperNav-Learned-Executor 权重](https://huggingface.co/the0xka1/SuperNav-Learned-Executor)
+- [HabitatGS-Benchmark 数据集](https://huggingface.co/datasets/yyh929/HabitatGS-Benchmark)

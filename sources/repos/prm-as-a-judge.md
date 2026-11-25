@@ -5,11 +5,13 @@
 - **标题：** PRM-as-a-Judge
 - **类型：** repo
 - **来源：** PRM-as-a-Judge Team（BAAI / CASIA）
-- **链接：** <https://github.com/Yuheng2000/PRM-as-a-Judge>
+- **链接：** <https://github.com/YuyangLiu2003/PRM-as-a-Judge>（原 `Yuheng2000/PRM-as-a-Judge` 截至 2026-11-21 返回 404）
 - **论文：** <https://arxiv.org/abs/2608.14284>（1.5）；README 主引用 1.0 <https://arxiv.org/abs/2603.21669>
 - **项目页：** <https://prm-as-a-judge.github.io/>
 - **许可：** Apache-2.0
 - **入库日期：** 2026-08-17
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 克隆 `YuyangLiu2003/PRM-as-a-Judge` 并核对 `README.md`、`eval/run_judge.py`、`eval/prm_judge/cli.py`、`eval/prm_judge/` 模块
 - **一句话说明：** 用 PRM 把 JSONL manifest 中的 rollout 视频打成进度曲线，再算 OPD 指标并生成交互报告。
 - **沉淀到 wiki：** [`wiki/entities/paper-prm-as-a-judge.md`](../../wiki/entities/paper-prm-as-a-judge.md)
 

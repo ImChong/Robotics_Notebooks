@@ -2,8 +2,12 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, long-tail, distillation, teacher-student, reinforcement-learning, xpeng, sonic]
 status: complete
-updated: 2026-09-22
+updated: 2026-11-22
 arxiv: "2607.04837"
+institutions:
+  - xpeng
+original:
+  - ../../sources/papers/athena_wbc_arxiv_2607_04837.md
 summary: "Athena-WBC（arXiv:2607.04837，小鹏机器人）针对大规模人形 tracking 的训练集长尾残余失败，用能力对齐的 dynamic/balance privileged expert（改奖励与重力课程）+ 按动作路由 DAgger 蒸馏 + RL 微调，在 80 kg 自研人形上相对 SONIC-Base 配方改善长尾恢复与 held-out 跟踪，并提出 STC/TIS/MPJPE-W 评测。"
 related:
   - ./nvidia-sonic.md
@@ -20,7 +24,9 @@ sources:
 
 # Athena-WBC：面向人形全身控制长尾的能力对齐策略专家
 
-**Athena-WBC**（*Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control*，arXiv:2607.04837，2026-07-06，**XPENG Robotics**）研究 **高覆盖率人形 motion tracking** 中常被忽视的 **训练集长尾残余失败**：在强基线（SONIC 配方）已覆盖绝大多数动作后，仍有少量 **高动态过渡** 与 **平衡关键** 片段学不会——且部分片段 **仅对失败子集加训仍无法过拟合**，说明瓶颈在 **策略能力（capability）** 而非单纯数据曝光。
+**Athena-WBC**（*Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control*，arXiv:2607.04837，v1 2026-07-06 / v2 2026-07-07，**XPENG Robotics**）研究 **高覆盖率人形 motion tracking** 中常被忽视的 **训练集长尾残余失败**：在强基线（SONIC 配方）已覆盖绝大多数动作后，仍有少量 **高动态过渡** 与 **平衡关键** 片段学不会——且部分片段 **仅对失败子集加训仍无法过拟合**，说明瓶颈在 **策略能力（capability）** 而非单纯数据曝光。
+
+> **撤稿与证据边界提示（2026-08-24）：** 该论文 v3 已由作者在 arXiv 撤稿（*Withdrawn by the authors due to unresolved authorization and data-governance concerns affecting the dataset used in the experiments and, consequently, the reported results*）。当前 `arxiv.org/pdf/2607.04837` 默认路径返回 404，历史版本 [v2 PDF](https://arxiv.org/pdf/2607.04837v2) 仍可查阅方法结构；阅读与选型时应将下述实验指标视为「已撤稿预印本的待核查报告」，勿作为已定论基准引用。
 
 ## 一句话定义
 
@@ -129,15 +135,35 @@ flowchart TB
 - 适用边界绑得很紧：结论依附于 **80 kg 行星滚柱丝杠闭链小鹏人形** 与 **同平台重实现的 SONIC-Base**，绝对数值不可与 SONIC 原文或 G1 发布 checkpoint 对齐；与 OmniTrack「参考物理修正即可单策略覆盖难动作」的结论互补且部分对立。
 - 落地状态需保守：本文聚焦 System 0 WBC 长尾，尚无公开项目页与系统性真机定量，可复用的更多是 **评测工具与配方思路** 而非现成权重。
 
-## 常见误区
+## 与其他工作对比
 
-1. **「长尾 = 再加难样本采样」：** 论文显示部分 clip **targeted retrain 仍失败**；需改 **奖励/课程/辅助正则** 等 capability 配方。
-2. **「去掉平滑奖励就够用」：** No-smoothness 跟踪最好但 **不可部署**；最终策略靠 **Grad-CAPS + 蒸馏 + RLFT** 折中。
-3. **「RL 微调解决一切长尾」：** 训练集长尾恢复主要来自 **能力专家 + 多 teacher 蒸馏**；RLFT 更偏 **held-out 与部署质量**。
-4. **「可与 SONIC 论文数字直接比」：** 本文在 **不同硬件与重实现配方** 上对比；绝对 SR 不与 G1 发布 checkpoint 对齐。
-5. **「与 OmniTrack 结论矛盾」：** OmniTrack 靠 **参考物理修正** 可单策略覆盖许多难动作；本文在 **80 kg 闭链平台** 上仍有残余，需 **能力专家**——二者 **互补且部分对立**。
+| 对比维度 / 工作 | Athena-WBC（本文，v2） | [SONIC-Base（同平台重实现）](./nvidia-sonic.md) | BumbleBee / [Parkour in the Wild](./paper-parkour-in-the-wild.md) | [EGM](../methods/egm-efficient-general-mimic.md) / GMT（MoE） / OmniTrack |
+|---|---|---|---|---|
+| 解决长尾的核心思路 | **改能力配方**：在同一残余集 $\mathcal{R}_{\mathrm{gen}}$ 上并行训去保守奖励+Grad-CAPS 动态专家与重力课程平衡专家，按 rollout SR 路由蒸馏 | 单一通用配方 + 自适应采样；受 effort/temp 保守奖励与初始重力条件制约 | 按语义/运动聚类或地形分专家，再蒸馏 + RLFT | 偏重数据分配（难样本过采样 / bin 课程）、MoE 容量路由或参考轨迹物理修正 |
+| 平滑性与动态权衡 | 去掉 $r^{\mathrm{effort}}/r^{\mathrm{temp}}$ 后用 Grad-CAPS 抑制高频抖动（8–25 Hz 能量 0.007），RLFT 后 Action Rate 1.03 | 保守平滑奖励使 Action Rate 维持 0.54，但高动态/平衡长尾易失败（No-smoothness 基线虽提跟踪但 Action Rate 升至 1.46） | 多阶段蒸馏与 RLFT 保持部署平滑 | OmniTrack 报告参考物理修正后单策略即可覆盖高难动作（与本文 80 kg 闭链观察互补） |
+| 评测与平台口径 | 提出 STC/TIS/MPJPE-W；80 kg 闭链小鹏人形（AMASS-eval SR 99.26%、Omni-eval 94.89%） | 同平台对照（AMASS-eval SR 98.18%、Omni-eval 91.81%），非 NVIDIA G1 发布权重 | 多地形跑酷等特定场景 | 各自平台与协议，不可跨机器人直接对齐绝对 SR |
 
-## 与其他页面的关系
+> **核对边界**：据 [athena_wbc_arxiv_2607_04837.md](../../sources/papers/athena_wbc_arxiv_2607_04837.md) 核查，论文 v3 已于 2026-08-24 因实验数据集授权与治理问题撤稿，上表指标均摘自历史 v2 版本与同平台重实现基线，尚无系统真机定量验证，不可直接视为已定论基准。
+
+## 工程实践
+
+| 环节 | 原文设定与工程要点（arXiv:2607.04837v2） |
+|------|----------------------------------------|
+| 观测接口 | Teacher 1837 维（含 OmniH2O 特权自/任务状态）；Student 2081 维可部署观测（10 帧本体历史 + 参考目标） |
+| 残余挖掘与路由 | 通用 teacher 每 clip 测 $K_{\mathrm{eval}}=10$ 次 rollout，$\widehat{\mathrm{SR}} < 0.8$ 入 $\mathcal{R}_{\mathrm{gen}}$；路由按三专家实测 $\widehat{\mathrm{SR}}$ 自动选优 |
+| 训练算力与采样 | 8×GPU（2048 env/GPU = 16,384 并行），主 checkpoint 40k iter；全程开启 adaptive motion sampling |
+| 诊断指标 | 高覆盖率下用 **STC / TIS / MPJPE-W** 取代单阈值 SR，配合 Action Rate 与 8–25 Hz 频谱高频占比排查抖动 |
+| 开源状态与源码运行时序图 | **不适用**（无公开项目页与代码仓库，且论文 v3 已因数据集授权/治理问题撤稿） |
+
+## 局限与风险
+
+1. **论文 v3 已撤稿（核心风险）：** 2026-08-24 作者因实验数据集授权与数据治理未决问题撤回 v3，明确声明实验结果受影响、审核期间不应依赖该文结论。
+2. **「长尾 = 再加难样本采样」的误区：** 论文显示部分 clip **targeted retrain 仍失败**；需改 **奖励/课程/辅助正则** 等 capability 配方。
+3. **「去掉平滑奖励就够用」的误区：** No-smoothness 跟踪最好但 Action Rate 达 1.4634（高频 8–25 Hz 能量占比 0.063 vs 0.009），**不可部署**；最终策略靠 **Grad-CAPS + 蒸馏 + RLFT** 折中，但仍残留低频晃动（low-frequency sway，增加 Grad-CAPS 权重亦难消除）。
+4. **多阶段工程成本与覆盖权衡：** 需两轮 teacher、DAgger 与 RLFT 多阶段超参；RLFT 有时会以略降训练集平衡子集覆盖为代价换取 held-out 指标提升。
+5. **与 OmniTrack 及真机证据边界：** OmniTrack 靠参考物理修正单策略覆盖难动作，本文在 80 kg 闭链平台上仍有残余；且本文尚无系统真机定量验证，绝对 SR 亦不可与 G1 上的 SONIC 发布权重直接对标。
+
+## 关联页面
 
 - **Scaling 对照：** [SONIC](./nvidia-sonic.md)（亿级帧 + 统一 token）、[Humanoid-GPT](./paper-humanoid-gpt.md)（2B 帧 + Transformer 专家蒸馏）、[EGM](../methods/egm-efficient-general-mimic.md)（bin 课程 + CDMoE，偏数据效率）
 - **专家蒸馏先例：** BumbleBee（语义/运动聚类专家）、[Parkour in the Wild](./paper-parkour-in-the-wild.md)（地形专家 → DAgger → RLFT）

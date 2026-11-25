@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, robotics, robot-learning, benchmark, simulation, manipulation, sim2real, x-square-robot]
 status: complete
-updated: 2026-10-09
+updated: 2026-11-22
 institutions: [x-square-robot]
 related:
   - ./paper-x2real.md
@@ -77,19 +77,19 @@ sequenceDiagram
 
 > 图示是依据论文摘要整理的概念流程，不代表项目仓库中已经核实的具体 API、控制频率或部署命令。
 
-## 论文报告的结果应如何理解
+## 论文报告的结果应如何理解（v2 全文核对）
 
-论文摘要报告仿真与真机评测结果的 **0.84 线性相关**。这是相关系数，不是“84% 成功率”。它描述论文实验中策略评测结果的关联程度，不应外推为任意任务、机器人、策略都能达到同样的 sim-to-real 预测效果。评测范围和实验口径以论文全文为准。
+论文（[arXiv:2609.27449v2](https://arxiv.org/html/2609.27449v2)）报告仿真与真机评测的 **0.84 线性相关**（针对全部 8 项 ManipArena 数字孪生任务的 Progress 相关系数；按 SR 口径为 **0.74**，其中 5 项一般操作任务达 **0.96 SR / 0.99 Progress**，另外 3 项精细任务如放眼镜在仿真因镜腿折叠 OOD 跌至 0%）。这是相关系数，不是“84% 成功率”。
+
+- **桌面主榜（Table 1，ID / OOD）：** `wall-oss-preview`（SR **53.90% / 34.26%**，Score 67.25 / 56.63）> $\pi_{0.5}$（SR 26.12% / 16.13%）> `DreamZero`（4.85% / 3.45%）> `Wall-OSS-0.5`（4.08% / 3.20%）；所有模型在 OOD 下均显著掉点，精细接触与长程保持仍是共同瓶颈。
+- **移动操作与局限（Table 2–3, §6）：** 3 项移动任务上 `wall-oss-preview` ID/OOD SR 为 **58.33% / 5.00%**（vs $\pi_{0.5}$ 29.17% / 0.83%）；当前仅支持刚体与铰接刚体（不含柔性体/流体），无触觉传感且评测偏静态。
 
 ## 可获取资源与复现边界
 
 - **项目页：** [x2robot.com/en/pages/x2real](https://x2robot.com/en/pages/x2real)
-- **论文：** [arXiv:2609.27449](https://arxiv.org/abs/2609.27449)，提交日期 2026-09-23。
-- **仿真静态资产：** [Hugging Face：x-square-robot/x2real-assets](https://huggingface.co/datasets/x-square-robot/x2real-assets)。页面列有 74,423 个文件、107 个分片、约 44.2 GB，覆盖 5 个板 / 设置和 73 个 ID case。完整资源解压还需额外磁盘空间。
-- **代码状态：** Hugging Face 数据集卡列出了 GitHub 仓库 X-Square-Robot/x2real，但本次 GitHub API 查询返回 404；不能据此声称基准代码已经可访问。数据集卡中的许可字段也标为 TODO。
-- **静态资产≠轨迹数据：** HF 仓库 README 明确表示它只包含静态仿真资产，不包含 LeRobot episodes、观测、动作、视频或轨迹；论文所述近 300 小时轨迹不应与该资产包混为一谈。
-
-项目页本次未能被抓取工具读取，故链接作为官方入口保留；详细技术描述以上述 arXiv 摘要和公开资产卡片可核实的信息为界。
+- **论文：** [arXiv:2609.27449](https://arxiv.org/abs/2609.27449)（v1 2026-09-23；v2 2026-10-13）。
+- **代码状态：** 官方已于 2026-10-10 发布 [X-Square-Robot/x2real](https://github.com/X-Square-Robot/x2real)（`v0.9.0`，开源 ID 评测运行时、Policy Space 跨进程接口与手动采数）。
+- **仿真静态资产与数据集：** [Hugging Face：x-square-robot/x2real-assets](https://huggingface.co/datasets/x-square-robot/x2real-assets)（74,423 个文件、约 44.2 GB 静态资产）与 [Hugging Face：x-square-robot/X2Real-Dataset](https://huggingface.co/datasets/x-square-robot/X2Real-Dataset)（v2 公开轨迹数据集入口）；静态资产包本身仍不含轨迹。
 
 ## 与论文节点的分工
 

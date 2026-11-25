@@ -9,10 +9,12 @@
 - **Stars：** 138 | **Forks：** 23
 - **入库日期：** 2026-05-01
 - **沉淀到 wiki：** 是 → [`wiki/entities/wbc-fsm.md`](../../wiki/entities/wbc-fsm.md)
+- **核对范围：** 完整阅读官方 `README.md` / `README_zh.md`；核查 2026-10-23 版本 `src/main.cpp`、`src/FSM/FSM.cpp`、`State_WBC.cpp` 观测/动作/状态切换、`State_Passive.cpp`、`State_FixedStand.cpp`、`State_Loco.cpp` / `State_Amp.cpp` / `State_MJAmp.cpp` 的转移条件、`src/interface/IOSDK.cpp`、`src/control/ControlFrame.cpp` 与 `config/wbc.json` / `config/loco.json`。
+- **通读：** 已完成
 
 ## 一句话说明
 
-针对 **Unitree G1 人形机器人** 的 C++ 全身控制部署框架，以有限状态机（FSM）管理 Passive / Loco / WBC 三种运行模式，内嵌基于 LAFAN1 动捕数据训练的 ONNX 策略，支持仿真（Unitree Mujoco）与真机（G1 PC2 / aarch64）部署。
+针对 **Unitree G1 人形机器人** 的 C++ 全身控制部署框架，以有限状态机（FSM）组织 Passive / FixedStand / Loco / AMP / MJAMP / WBC 六个运行状态，内嵌基于 LAFAN1 动捕数据训练的 ONNX 策略，支持仿真（Unitree Mujoco）与真机（G1 PC2 / aarch64）部署。
 
 ## 为什么值得保留
 
@@ -23,20 +25,14 @@
 
 ## 核心技术摘录
 
-### FSM 状态机结构
+### FSM 状态机结构（以 4b9afa27 源码为准）
 
-| 状态 | 描述 | 进入条件 |
-|------|------|---------|
-| Passive | 阻尼保护，默认启动状态 | 上电 |
-| Loco | 行走 / 移动模式 | START → R2+A |
-| WBC | 全身运动跟踪（RL 策略） | R1+Up |
-
-推荐操作顺序：**阻尼 → 站立 → 行走 → WBC**
+`FSM.cpp` 注册六态：**Passive / FixedStand / Loco / AMP / MJAMP / WBC**。主路径为 `Passive --START--> FixedStand --R2+A--> MJAMP --R1+Up--> WBC`；运动状态之间还可按手柄指令互切，`L2+B` 可回退 Passive，WBC 姿态偏差超阈值也触发回退。此前“三态”仅是 README 对主要功能的概括，并非源码注册状态总数。
 
 ### 运动模型
 
-- **策略**：`model/wbc/lafan1_0128_1.onnx`（预训练，ONNX Runtime 1.22.0）
-- **运动参考**：`motion_data/lafan1/dance12/`（LAFAN1 MoCap → G1 重定向）
+- **策略**：`model/wbc/dance12_0207_1.onnx`（当前 `config/wbc.json`，ONNX Runtime 1.22.0）
+- **运动参考**：`motion_data/lafan1/dance12`（当前 `config/wbc.json` 的 `motion_path`）
 - **推理引擎**：ONNX Runtime，x64（仿真）/ aarch64（真机 G1 PC2）
 
 ### 目录结构
@@ -75,21 +71,23 @@ mkdir -p build && cd build && cmake .. && make -j4
 # 真机：复制到 G1 PC2 /home/unitree，接口设为 eth0
 ```
 
-### 手柄操作
+### 手柄操作（源码 `checkChange`）
 
-| 按键 | 动作 |
-|------|------|
-| START | 位置控制（离开阻尼模式） |
-| R2 + A | 切换到行走模式 |
-| R1 + Up | 切换到 WBC 模式 |
-| R2 | 暂停执行 |
-| R1 | 恢复 WBC |
-| L2 | 当前帧定帧 |
+| 按键 | 源码行为 |
+|------|----------|
+| START | Passive → FixedStand |
+| R2 + A | FixedStand / Loco → MJAMP（WBC → AMP） |
+| R2 + B | AMP / MJAMP → Loco |
+| R1 + Up | Loco / AMP / MJAMP → WBC |
+| L2 + B | 运动状态 → Passive |
+| WBC 内 R2 / L2 | 暂停到预设帧 / 当前帧 |
+| WBC 内 R1 | 恢复动作 |
+| SELECT | 抛异常以请求程序退出 |
 
 ## 与其他 ccrpRepo 项目的关系
 
 ```
-AMP_mjlab (Python / mjlab)    →    训练出 ONNX 策略
+AMP_mjlab (Python / mjlab)    →    独立训练侧示例
                                          ↓
               wbc_fsm (C++ / Unitree SDK2)  →  部署上机（G1 PC2）
 ```
@@ -102,3 +100,10 @@ wbc_fsm 是 AMP_mjlab 系列的**部署侧对应物**：AMP_mjlab 负责策略�
 - [x] ONNX 部署链路（训练 → ONNX → C++ 推理）
 - [x] 与 AMP_mjlab / WBC 体系的关联关系
 - [ ] 后续可深挖：config JSON 参数解读、FSM 转移条件形式化、与 unitree_rl_mjlab 部署模式对比
+
+## 2026-11-21 官方原文复核与差异
+
+- **版本**：[ccrpRepo/wbc_fsm@4b9afa27](https://github.com/ccrpRepo/wbc_fsm/commit/4b9afa27ad4eeab8e95584c67c91275b9831fc4d)（2026-10-23）。官方 README 已完整阅读，关键源码路径按上方「核对范围」检查。
+- **文档与配置不一致**：README 的示例仍为 `lafan1_0128_1.onnx`、`folder_path` / `enter_idx`；仓库实际 `config/wbc.json` 为 `dance12_0207_1.onnx`、`motion_path` / `start_idx` / `end_idx`，且 `State_WBC.cpp` 正按后者读取。
+- **真实控制链路**：`main.cpp` 设 `dt=0.02`，`ControlFrame` 驱动 `FSM::run`，WBC 经参考数据与本体历史构造观测、ONNX 推理、动作缩放，再走 Unitree DDS LowCmd 输出；`IOSDK` 对 LowState/LowCmd 使用 CRC。
+- **复现边界**：只完成官方文档通读与上述核心源码静态核对；未编译、未跑 MuJoCo、未进行 G1 真机测试。无法从部署仓独立核实内置模型的训练配置。

@@ -3,7 +3,9 @@
 - **类型：** 官方技术博客
 - **Helix：** <https://www.figure.ai/news/helix>（2025-02-20）
 - **Helix 02：** <https://www.figure.ai/news/helix-02>（2026-01-27）
-- **核查日期：** 2026-10-05
+- **核查日期：** 2026-10-05（2026-11-21 全文复核）
+- **核对范围：** 抓取并通读 Figure 官方技术发布完整正文：<https://www.figure.ai/news/helix>（2025-02-20，Introducing Helix 至 Conclusion，含 7B S2 @ 7–9 Hz、80M S1 @ 200 Hz 35-DoF、~500 小时遥操数据、双嵌入式 GPU 流式推理）与 <https://www.figure.ai/news/helix-02>（2026-01-27，System 0 10M 参数 1 kHz 与 1,000+ 小时 / 200,000+ 并行环境、System 1 200 Hz 掌部相机与 3 g 触觉、System 2 语义规划、4 分钟 61 动作洗碗机任务与四项灵巧任务）；两篇均未提供模型权重、训练数据或可运行源码下载入口。
+- **通读：** 已完成
 - **一句话说明：** 对照两代视觉语言动作系统的输入、层级接口与全身控制边界。
 
 ## 技术摘录

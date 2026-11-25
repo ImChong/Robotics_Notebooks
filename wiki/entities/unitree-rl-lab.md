@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-lab, locomotion, sim2real]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/unitree_rl_lab.md
 related:
   - ./unitree.md
   - ./unitree-rl-gym.md
@@ -50,6 +52,14 @@ summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展�
 - 与 gym / mjlab 形成清晰三选一，便于在 [`unitree`](./unitree.md) 枢纽做选型。
 
 ## 核心原理
+
+```mermaid
+flowchart LR
+  AST["机器人资产<br/>HF unitree_model USD / unitree_ros URDF"] --> LAB["Isaac Lab 2.3 ManagerBasedRLEnv<br/>./unitree_rl_lab.sh -t / train.py"]
+  LAB --> PPO["rsl_rl OnPolicyRunner<br/>checkpoint + deploy cfg 导出"]
+  PPO --> SIM["Sim2Sim 验证<br/>unitree_mujoco + C++ g1_ctrl"]
+  SIM --> REAL["Sim2Real 真机部署<br/>unitree_sdk2 + --network eth0"]
+```
 
 | 步骤 | 说明 |
 |------|------|

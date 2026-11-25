@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, planning, swarm, esdf, uav, ros, zju-fast-lab, zju]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
@@ -16,11 +16,16 @@ related:
 sources:
   - ../../sources/repos/ego_planner_swarm.md
 summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器：ESDF 地图 + B-spline 优化，输出可对接 PX4 Offboard 的位置/速度设定点。"
+original: ../../sources/repos/ego_planner_swarm.md
 ---
 
 # EGO-Planner Swarm
 
 **EGO-Planner Swarm**（[ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-swarm)）实现 **未知/半已知环境** 下的快速 **局部重规划**，并扩展 **多机 swarm 避碰**。
+
+## 一句话定义
+
+**EGO-Planner Swarm**：ZJU FAST Lab 开源的去中心化多四旋翼自主集群规划栈，利用基于局部占据与 ESDF（或无显式 ESDF 距离梯度）的均匀 B-spline 优化与反弹式重规划，仅靠机载资源实现稠密障碍环境避障飞行与集群轨线互避。
 
 ## 英文缩写速查
 
@@ -36,7 +41,7 @@ summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器�
 - **ESDF + B-spline** 是近年多旋翼自主导航文献与工程中的常见组合，便于与 SLAM/深度相机管线对接。
 - 与 [Flightmare](./flightmare.md)、[AirSim](./airsim.md) 等仿真器组合做 **感知—规划—控制** 闭环验证。
 
-## 核心结构/机制
+## 核心机制
 
 1. **感知/建图**（常外接）：深度或 LiDAR → 占据/ESDF 更新  
 2. **前端**：路径搜索或引导路径  
@@ -46,7 +51,7 @@ summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器�
 
 **Rebound replanning**：当前轨迹不可行时局部反弹式重优化，适合动态障碍。
 
-## 常见误区或局限
+## 局限与风险
 
 - **误区：有 planner 即可无定位** — 仍需可靠位姿（VIO、动捕、GPS 等）。
 - **局限：算力与传感器标定** — 深度噪声会直接反映在 ESDF 与轨迹可行性上。
@@ -117,3 +122,7 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [EGO-Planner 原版仓库](https://github.com/ZJU-FAST-Lab/ego-planner) — 单机算法与论文入口
+
+## 工程实践
+
+- **ROS 1 / ROS 2 分支选择与启动验证**：主干 `simple_run.launch` 验证 ROS 1 仿真多机协同；实际对接新版中间件时须切换至仓库 `ros2_version` 分支，安装 `libarmadillo-dev` 并重点标定相机–IMU 外参及深度传感器建图噪声，避免虚假障碍栅格诱发频繁无效重规划。

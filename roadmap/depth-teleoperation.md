@@ -88,7 +88,10 @@ flowchart LR
 - 把同一个抓取任务分别用 leader 臂与 VR 手柄采一遍，对比末端精度与操作员疲劳
 
 ### 推荐读什么
+
+- [SO-ARM102 开源领从机械臂](../wiki/entities/so-arm102-robonine.md) — LeRobot、平行夹爪及硬件配电的低成本示教硬件实例。
 - [数据手套 vs 视觉遥操作（对比）](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集通道选型主入口
+- [诺亦腾机器人 · Adam-U](../wiki/entities/noitom-robotics.md) — 查看动捕输入如何经 ROS 2 重定向到机器人关节状态，并区分头显双目回传与录制数据。
 - [XRoboToolkit](../wiki/entities/paper-xrobotoolkit.md) — OpenXR 跨平台 XR 遥操作中间层（PICO/Quest）
 - [ACE 跨平台视觉外骨骼系统（论文笔记）](../wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md) 与 [NuExo 上肢外骨骼（论文笔记）](../wiki/entities/paper-notebook-nuexo-a-wearable-exoskeleton-covering-all-upper.md) — 外骨骼 cockpit
 - [UME-EXO](../wiki/entities/paper-ume-exo.md) — 外骨骼实时力矩反馈 + 全身臂形采集
@@ -202,6 +205,7 @@ flowchart LR
 - [Dexterous Kinematics（灵巧手运动学）](../wiki/concepts/dexterous-kinematics.md) 与 [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 手部映射抽象
 - [TopoRetarget](../wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md)、[SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) 与 [DynaRetarget vs TopoRetarget（对比）](../wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 接触保持灵巧手重定向
 - [Bunny-VisionPro 实时双手灵巧遥操作（论文笔记）](../wiki/entities/paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)、[DexUMI（论文笔记）](../wiki/entities/paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)、[DexterCap（论文笔记）](../wiki/entities/paper-notebook-dextercap.md) — 视觉/手持手指采集
+- [ManuPrax ARC-0 Preview](../wiki/entities/manuprax-arc0.md) — TeleDexter 后续的 S2→S0 分层接口与同类别新物体泛化（演示/采访级证据，尚无开放训练代码）。
 - [TeleDexter](../wiki/entities/paper-teledexter.md) — **hand–object co-tracking** 低层控制器：MoCap 指尖+物体目标 → 仿真 RL 零样本真机；七任务平均 **75.2% SR**，并作灵巧采数引擎（**未开源**）
 - [NestDex](../wiki/entities/paper-nestdex.md) — **copilot 嵌套采数**：人控臂 + 1-DoF clutch，内层本体感觉手技能生成手指；部署时外层 visuomotor **卸掉内层**（arXiv:2608.13362，**未开源**）
 - [GLIDE](../wiki/entities/paper-glide-beyond-human-demonstration.md) — 从任务描述和遥操作代码推断失败模式，把规则护栏插入采集与部署过程，帮助完成难以直接示范的动作。
@@ -236,6 +240,8 @@ flowchart LR
 - 对"有/无失败示范过滤"两组数据各训一版策略，验证数据质量对收敛的影响
 
 ### 推荐读什么
+
+- [Hebbian RUA：语言到机器人工具执行](../wiki/entities/hebbian-rua.md) — 将观测、模型工具调用、运行时与电机控制分层。
 - [Imitation Learning](../wiki/methods/imitation-learning.md) 与 [Diffusion Policy](../wiki/methods/diffusion-policy.md) — 遥操作数据的主要消费者
 - [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) 与 [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — 无机器人示范 → 人形全身 visuomotor
 - [HALO：人机对齐的全身移动操作示教](../wiki/entities/paper-halo-2611-16439.md) — Stage 5 采集到部署案例：末端牵引 + 被动差速平台、去手与底盘延迟对齐、π₀.₅/RTC 训练；与无机器人采集区分

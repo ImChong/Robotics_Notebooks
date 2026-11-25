@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, bfm, behavior-foundation-model, motion-tracking, perceptive-locomotion, terrain-adaptation, privileged-training, distillation, transformer, unitree-g1, mocap, teleoperation, parkour, miaodong, mondo-robotics, hkust, hkust-gz, ustc]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-21
 arxiv: "2606.08059"
 venue: "CoRL 2026 · submission"
 code: https://github.com/Mondo-Robotics/PMT
@@ -31,12 +31,19 @@ sources:
   - ../../sources/repos/mondo_robotics_pmt.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
-summary: "Perceptive BFM（arXiv:2606.08059，CoRL 2026）：保留原始人体运动参考为部署命令，用机器人中心高程感知在线补落脚/间隙/接触时序；TCRS 离线合成地形监督，PMT 四阶段在 Unitree G1 上单策略覆盖跟踪、风格动作、杂技与 mocap 遥操作；官方代码 Mondo-Robotics/PMT 已开源。"
+original:
+  - ../../sources/papers/perceptive_bfm_corl_2026.md
+  - ../../sources/repos/mondo_robotics_pmt.md
+summary: "Perceptive BFM（arXiv:2606.08059v3，CoRL 2026）：保留原始人体运动参考为部署命令，用机器人中心高程感知在线补落脚/间隙/接触时序；TCRS 离线合成地形监督，PMT 在 1,650 地形试验达 94.0% 完成率（vs 盲/无TCRS/无地图基线 19.5–23.4%），官方代码 Mondo-Robotics/PMT 已开源。"
 ---
 
 # Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain
 
-**Perceptive BFM**（*Perceptive Behavior Foundation Model: Adapting Human Motion Priors to Robot-Centric Terrain*，[项目页](https://acodedog.github.io/perceptive-bfm/)，[代码](https://github.com/Mondo-Robotics/PMT)，arXiv:2606.08059，CoRL 2026 submission）提出 **地形感知的人形行为基础模型**：部署期仍接受 **任意平地人体运动参考**（动捕、遥操作或库内片段）作为行为接口，由 **机器人中心局部高程扫描** 在线决定落脚、摆动间隙、身体高度与接触时序——把「人类先验说什么」与「机器人在哪踩」解耦。
+**Perceptive BFM**（*Perceptive Behavior Foundation Model: Adapting Human Motion Priors to Robot-Centric Terrain*，[项目页](https://acodedog.github.io/perceptive-bfm/)，[代码](https://github.com/Mondo-Robotics/PMT)，[arXiv:2606.08059v3](https://arxiv.org/abs/2606.08059)，CoRL 2026 submission）提出 **地形感知的人形行为基础模型**：在 **16,813 段（43.3 h）** 动作语料上预训练单一策略，部署期仍接受 **任意平地人体运动参考**（动捕、遥操作或库内片段）作为行为接口，由 **机器人中心 17×11 高程扫描（1.6 m × 1.0 m，0.1 m 分辨率）** 在线决定落脚、摆动间隙、支撑高度与接触时序——把「人类先验说什么」与「机器人在哪踩」解耦。
+
+## 一句话定义
+
+**通过离线 TCRS 将平地动捕适配为地形一致监督给盲教师学习，再用 Target-Frame 动作对齐蒸馏与零初始化 Identity-Gated 视觉残差迁移给只接收原始平地参考和高程图的部署学生，使单个 G1 策略无需在线参考重规划即可自适应斜坡、箱体与台阶地形。**
 
 ## 英文缩写速查
 
@@ -164,29 +171,33 @@ sequenceDiagram
 | 预训练 / 样例 | HF `aCodeDog/PMT-assets` |
 | 浏览器 demo | 项目页 MuJoCo WASM + ONNX |
 
+## 工程实践
+
+| 项 | 原文配置与仓库实操建议（`arXiv:2606.08059v3` & `Mondo-Robotics/PMT`） |
+|----|------------------------------------------------------------------------|
+| 高程图契约 | 机载采用 LiDAR 惯性里程计与高程建图以 **50 Hz** 查询 **17×11**（1.6 m × 1.0 m，0.1 m 栅格 + validity mask）；不消费 RGB/深度图；注意依赖里程计累积，且延迟接近 200 ms 会明显降完成率（83.1% vs 94.0%） |
+| 门控与微调策略 | 插入感知分支时仅初始化 $\alpha_u=\alpha_a=0$、残差 MLP 保留标准初始化以保有非零门控梯度；PPO 微调阶段须给骨干设置更低学习率比例（**0.3×**），防止破坏前置蒸馏得到的跟踪先验 |
+| 阶段对齐包络 | TCRS 与 PMT 不改变全局相位；台阶后空翻等相位敏感杂技仅在起点偏移 $\Delta x\in[-0.1,+0.1]\text{ m}$ 且 $\Delta t\in[-0.1,+0.1]\text{ s}$ 时维持 ≥80% 成功率 |
+| 仓库运行 | 平地任务家族可走 [mjlab](https://github.com/mujocolab/mjlab)（MuJoCo-Warp）；地形/视觉/蒸馏任务须在 Isaac Lab 中运行 `scripts/train.py`，HF `aCodeDog/PMT-assets` 提供 `walk_dance` 99 对样例及预训练 ONNX/`.pt` |
+
 ## 实验与评测
 
-> 以下为项目页已公布的 **训练消融** 与 **定性真机** 口径；正式同行评审表以 arXiv / CoRL 版本为准。
+> **v3 版本勘误说明：** 初稿曾报道去视觉训练日志 reward 跌至 `3.6 vs 54.6`，因对比混淆了从零训练与蒸馏热启动；v3（2026-10-16）以 **同一已部署检查点（Table 1–2）** 及三随机种子对照基线重写了主定量评测（IsaacLab，1,650 地形试验 + 150 平地试验）。
 
-### 仿真训练消融（项目页）
+### 仿真核心对比（Table 1–2，11 组坡/箱/金字塔台阶 × 5 行为）
 
-| 项 | 数值 / 结论 |
-|----|-------------|
-| Full PMT vs 无视觉 | **54.6 vs 3.6**（末 1k iter 均值 reward） |
-| Transformer vs MLP/GRU/CNN 骨干 | **+5–8** reward（同 48×A800 预算） |
-| 有 vs 无 target-frame distillation | **54.6 vs 50.1** |
-| TCRS vs Z-offset 足-地形穿透 | **5.48 → 2.38 cm**（−56.6%）；间隙违规 −48.3% |
+| 策略 | 平地完成率 ↑ | 地形完成率 ↑ | 地形跌倒率 ↓ | 平地/上身 MPJPE (mm) ↓ | 小腿碰撞率 ↓ | 足滑 (cm) ↓ | 归一化 Jerk ↓ |
+|------|-------------|-------------|-------------|-----------------------|-------------|------------|--------------|
+| **Blind**（无地图从零训） | 100% | 19.5% | 64.2% | 49 / 68 | 23.7% | 3.5 | 1.21 |
+| **No-TCRS**（给地图但用 raw 监督） | 100% | 23.4% | 58.7% | 46 / 72 | 34.2% | 2.6 | 1.33 |
+| **No-map**（TCRS 教师无视觉蒸馏） | 100% | 21.8% | 67.3% | 47 / 88 | 33.7% | 2.2 | 1.08 |
+| **PMT（本文 deployed ckpt）** | **100%** | **94.0%**（1551/1650） | **2.4%** | **42 / 55** | **12.4%** | **1.6** | **1.00** |
 
-- 各变体共享任务、奖励、观测契约；去视觉伤害最大，说明增益主要来自 **感知与架构** 而非单纯网络容量。
-
-### 真机与开放评测状态
-
-| 项 | 状态 |
-|----|------|
-| 平台 | **Unitree G1** |
-| 地形 | 楼梯、坡、稀疏块、凹障、草地、室内外不规则面 |
-| 行为 | locomotion、风格舞蹈、台阶后空翻链、mocap 遥操作、侧向/后退 |
-| 定量部署指标 | 项目页以视频画廊与浏览器 WASM demo 为主；训练消融见上表 |
+- **逐行为短板（Table 1）：** Walk / Dance 在 11 地形全维持 **97–100%**；Backflip 在最陡坡 S45/S60 降至 77%/83%；Run 在 20 cm 箱（**60%**）和 15 cm 台阶（**30%**）明显下滑；Cartwheel 在 15 cm 台阶降至 **43%**；迁到 **MuJoCo** sim-to-sim 总地形完成率下降 **4.9 pp**。
+- **地图腐蚀探针（§4.4）：** 对冻结已部署模型做地图置零 → **69.2%**；空间随机打乱 → **58.1%**（比置零更差，证明策略真实读取地形空间结构而非当作正则噪声）；延迟 200 ms → **83.1%**；训练噪声范围内（$\sigma\le 0.04\text{ m}$、30% 丢格、$\le 100\text{ ms}$ 延迟）仅掉 ≤5 pp。
+- **同观测对齐 SONIC 教师对照（Table 9）：** 在 24×GPU TCRS 教师设定下，anchor 位置误差 **0.065 vs 0.212 m**（降 3.3×），但 SONIC 在 walk/dance/cartwheel 旋转与关节精度上更优。
+- **数据/源泛化（§4.6）：** 留出 100STYLE 全数据源测试完成率 **90.2%**（vs 全量 97.6%）；1/4→3/4→全量数据呈 **78.9% → 87.0% → 91.2% → 94.0%** 单调未饱和增长。
+- **真机覆盖（§4.7）：** 同一 Unitree G1 checkpoint 在室内外箱体、台阶、坡地、草地与 mocap 人机环境失配下实机演示 **35 类动作**（无单动作重复试验成功统计，以行为覆盖定性证据呈现）。
 
 ## 结论
 

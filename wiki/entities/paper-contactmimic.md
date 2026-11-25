@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, motion-tracking, contact-rich, loco-manipulation, hoi, reinforcement-learning, unitree-g1, uiuc, sim2real]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/contactmimic_arxiv_2607_08742.md
 arxiv: "2607.08742"
 venue: "2026 · arXiv"
 summary: "ContactMimic（arXiv:2607.08742）在 keypoint tracking 外显式跟踪 per-body 二值接触指令；以 contact-following 奖励与三种轨迹增广打破关键点–接触相关性，使同一参考下可开启或抑制任务相关物理接触；HUMOTO 10 条仿真与 G1 真机 5 条验证 contact controllability，显著优于 BeyondMimic 且无需任务专用奖励即可完成搬箱等操作。"
@@ -26,6 +28,8 @@ sources:
 ---
 
 # ContactMimic（Humanoid Object Interaction via Contact Control）
+
+## 一句话定义
 
 **ContactMimic**（arXiv:2607.08742，2026-07-09，UIUC / Saurabh Gupta 组）提出 **接触条件化 keypoint tracker**：在参考关键点轨迹之外，策略额外接收 **per-body 二值接触指令** $\bar{\mathbf{c}}_t$，并用 **contact-following 奖励** 与 **轨迹增广** 打破原始 HOI 数据中 keypoint 与 contact 的强相关，使部署时可在 **同一运动几何** 下 **刻意建立或抑制** 任务相关物理接触（如擦白板留痕 vs 手悬停、坐椅承重 vs 悬空蹲姿、搬起箱子 vs 手路过箱子）。
 
@@ -179,6 +183,11 @@ flowchart TB
 
 - [contactmimic_arxiv_2607_08742.md](../../sources/papers/contactmimic_arxiv_2607_08742.md) — arXiv 策展摘录
 - [lixinyao11-contactmimic-github-io.md](../../sources/sites/lixinyao11-contactmimic-github-io.md) — 项目页视频与真机成功率表
+
+## 工程实践
+
+- **解除关键点–接触共线偏差：** 训练期必须混入随机开启/关闭二值接触指令 $\bar{\mathbf{c}}_t$ 的增广轨迹，否则策略会直接忽略 $\bar{\mathbf{c}}_t$ 而单凭手臂轨迹默认触碰。
+- **接触信号对齐真机：** 部署时需确保真机腕/躯干参考姿态与接触命令时间窗一致，防止误触发单侧高冲击力矩。
 
 ## 关联页面
 

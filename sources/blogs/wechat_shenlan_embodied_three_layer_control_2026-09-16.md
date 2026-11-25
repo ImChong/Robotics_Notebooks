@@ -12,6 +12,9 @@
 - **一句话说明：** 按生物神经组织类比，把具身控制栈拆成 **大脑层（做什么）→ 小脑层（怎么做）→ 脊髓反射层（保命）**，逐层给出 VLM/VLA、MPC/WBC、阈值/阻抗安全回路的职责、时延预算、算力平台与故障降级；以 **NeuroVLA** 为跨层实例。
 - **步骤 2.5（开源核查）：** [NeuroVLA](https://arxiv.org/abs/2601.14628) 官方实现维护于 [AlphaBrainGroup/AlphaBrain](https://github.com/AlphaBrainGroup/AlphaBrain)（MIT；含 NeuroVLA 训练/评测脚本与 HF 权重）；论文作者仓 [guoweiyu/NeuroVLA](https://github.com/guoweiyu/NeuroVLA) 为引用入口，复现以 AlphaBrain 为准。
 
+- **通读：** 已完成
+- **核对范围：** 已通读深蓝具身智能原文（5,857 字符，416 行），核对大脑/小脑/脊髓三层到 VLM/策略/WBC-MPC/安全反射映射。
+
 ## 核心摘录（归纳，非全文）
 
 ### 分层主线

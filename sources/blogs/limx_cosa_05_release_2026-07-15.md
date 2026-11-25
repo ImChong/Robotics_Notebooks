@@ -8,8 +8,10 @@
 - **原始链接：** https://www.limxdynamics.com/en/news/BK000067
 - **发表日期：** 2026-07-15
 - **入库日期：** 2026-07-16
-- **抓取方式：** 官方页为 Next.js CSR，正文以同期媒体报道（[新浪财经 / 新智元](https://finance.sina.com.cn/wm/2026-07-15/doc-inihwvww7925399.shtml)、[网易 / DeepTech](https://c.m.163.com/news/a/L1T779C305119734.html)）与 [FluxVLA 文档站](https://fluxvla.limxdynamics.com/) 交叉核对；官方页元数据（标题、日期、分类「产品」）与 curl 一致
-- **一句话说明：** 逐际动力发布 **LimX COSA 0.5** 人形大脑系统：以 **S2 认知 / S1 技能 / S0 运控** 三层架构调度 **V³-0 人形 VLA** 与 **LimX WBT** 全身基础模型，在 **31-DoF Oli** 上完成 **无遥操、一镜到底** 的长程家庭 loco-manipulation Demo；同步开源 **Humanoid FluxVLA Engine**（训练–推理–端侧部署，支持 π0/π0.5/GR00T/OpenVLA 等）。
+- **核对范围：** 2026-11-21 抓取并通读官方技术报告全文 `<https://limxdynamics.com/cosa05v3/>`（中英文 §1–§7 全部章节，含异步双 GPU 快慢 VLA V³-0、43-DoF Oli、Training-Time RTC、LimX-WBT vs SONIC 定量对比表、人类在环接管与真机 RL 实验结果及长程整理实录）以及官方新闻页 `<https://www.limxdynamics.com/zh/news/BK000067>` / `<https://www.limxdynamics.com/en/news/BK000067>`；COSA OS 本体与 V³-0 / LimX-WBT 未开源，无法核对内部代码实现。
+- **通读：** 已完成
+- **抓取方式：** 直接请求官方技术报告页 `https://limxdynamics.com/cosa05v3/` 与新闻页 `BK000067`（均返回完整静态/SSR HTML 文本），并与同期媒体报道及 [FluxVLA 文档站](https://fluxvla.limxdynamics.com/) 交叉核对
+- **一句话说明：** 逐际动力发布 **LimX COSA 0.5** 技术报告与产品更新：在 **43-DoF LimX Oli** 上部署快慢异步 VLA **V³-0**（慢系统 `< 5 Hz` VLM + 快系统 `50 Hz` flow-matching + Training-Time RTC）与 **LimX-WBT**（S0 运控基础模型），并结合人类在环全身接管与真机 RL 闭环；同步开源 **Humanoid FluxVLA Engine**。
 
 ## 核心摘录（归纳，非全文）
 

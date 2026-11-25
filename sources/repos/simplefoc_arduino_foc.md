@@ -11,7 +11,8 @@
   - 主库：<https://github.com/simplefoc/Arduino-FOC>
   - 社区：<https://community.simplefoc.com/>
 - **Stars / Forks（主库，2026-05）：** ~2.8k / 活跃贡献者 50+
-- **入库日期：** 2026-05-26
+- **入库日期：** 2026-05-26（2026-11-21 克隆主仓核对 `src/BLDCMotor.cpp` 1–270、`src/common/FOCMotor.cpp` 1–100 及 `src/common/foc_utils.cpp` 全文，确认 Clarke/Park、SinePWM/SVPWM 中点钳位与电角度对齐实现；未运行嵌入式硬件编译）
+- **通读：** 已完成
 - **一句话说明：** 面向爱好者与嵌入式开发者的跨平台开源 FOC（磁场定向控制）栈，用 Arduino/PlatformIO 抽象 BLDC/步进 + 传感器 + 驱动 + MCU，降低低功率关节/云台电机闭环门槛。
 - **沉淀到 wiki：** [wiki/entities/simplefoc.md](../../wiki/entities/simplefoc.md)、[wiki/concepts/field-oriented-control.md](../../wiki/concepts/field-oriented-control.md)
 

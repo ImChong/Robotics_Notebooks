@@ -8,6 +8,8 @@
 - **链接：** https://github.com/Robbyant/lingbot-vision
 - **分类：** 评测
 - **入库日期：** 2026-09-06
+- **核对范围：** 2026-11-21 核对 `robbyant/lingbot-vision@151e463` 官方 `README.md`、`scripts/run_pca_demo.sh`、`lingbot_vision/__init__.py`、`loader.py`、`pca_demo.py`，并通读主论文 [arXiv:2607.05247v1](https://arxiv.org/html/2607.05247) HTML（摘要、§1–§3 边界强制掩码建模与分类边界场、§6 LingBot-Depth 2.0 升级与表 7–8、§7 结论与 Appendix A–B）；未运行 GPU 推理。
+- **通读：** 已完成
 - **一句话说明：** 蚂蚁灵波 开源项目 LingBot-Vision（评测），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
 - **沉淀到 wiki：** [`wiki/entities/cn-os-lingbot-vision.md`](../../wiki/entities/cn-os-lingbot-vision.md)
 

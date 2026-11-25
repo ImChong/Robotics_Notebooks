@@ -8,6 +8,9 @@
 - **原始链接：** 英文 <https://www.archon.tech/blog/whole-body-intelligence>；中文 <https://www.archon.tech/blog/whole-body-intelligence-cn>
 - **发表日期：** 页面标注 **2026-07-13**（Published July 13, 2026；阅读时长 12 min）。同日为 RSS 2026 开幕日（悉尼），公司联合 OpenDriveLab 在会上做了三场演讲（见 [官网核查](../sites/archon-tech.md)）
 - **入库日期：** 2026-10-10
+- **核对日期：** 2026-11-21
+- **核对范围：** 通读英文版 `<https://www.archon.tech/blog/whole-body-intelligence>`（§01–§10、参考文献 1–11、BibTeX）与中文版 `<https://www.archon.tech/blog/whole-body-intelligence-cn>`（§01–§10、参考文献 1–12）完整服务端直出文本；确认该博文为公司愿景/技术路线文章，无论文、无代码、无实验数字。
+- **通读：** 已完成
 - **抓取方式：** `curl` 读取服务端直出 HTML 并去标签；4 段演示视频懒加载，只取得 MP4 / 海报地址并查看海报
 - **覆盖 wiki：** [Archon 全身智能（WBI）](../../wiki/entities/archon-whole-body-intelligence.md)、[源策未来（Archon Robotics）](../../wiki/entities/archon-robotics.md)
 

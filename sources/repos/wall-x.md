@@ -12,7 +12,9 @@
 - **项目页：** <https://x2robot.com/en/research/68bc2cde8497d7f238dde690>（WALL-OSS）；<https://x2robot.com/oss>（Wall-OSS-0.5）
 - **分类：** VLA / 具身基础模型
 - **首次入库：** 2026-09-06（[国内具身开源全景](../blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)）
-- **复核日期：** 2026-10-09（来源：raw README、`workspace/README.md`、`scripts/README.md`、`setup.py`、`LICENSE`；github.com 的 HTML 页面与 API 在本环境返回 403，因此 release/commit 列表未核对）
+- **复核日期：** 2026-10-09（2026-11-21 复核 `HEAD` 提交 `ce2a1ae31d9ee1028b97ca40e3f66034cf8c0e5f`）
+- **核对范围：** 检出 `X-Square-Robot/wall-x@ce2a1ae`（main 分支），核对根目录 `README.md`、`workspace/README.md`、`scripts/README.md`、`setup.py`、`LICENSE`、`scripts/` 全部入口及 `wall_x/trainer/fsdp_trainer/train_fsdp.py`；未运行 GPU 训练/推理
+- **通读：** 已完成
 
 ## README 要点（2026-10-09）
 

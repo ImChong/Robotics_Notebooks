@@ -10,10 +10,16 @@ tags:
   - contact-rich
   - goal-conditioned
   - xiaomi-robotics
+institutions:
+  - xiaomi-robotics
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2509.25746"
 code: https://github.com/NoneJou072/tacrefinenet
+original:
+  - ../../sources/papers/tacrefinenet_arxiv_2509_25746.md
+  - ../../sources/repos/tacrefinenet.md
+  - ../../sources/sites/tacrefinenet-google-sites.md
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/contact-rich-manipulation.md
@@ -63,7 +69,7 @@ summary: "TacRefineNet（arXiv:2509.25746，小米机器人实验室）：Siames
 | 数据 | **156,007** 仿真样本；15 物体（板/盘/杆各 5）；真机评测每物体 10 trial |
 | 训练 | **仅仿真**（MuJoCo 物理触觉模型）；真机 **零样本**，无微调 |
 | 部署延迟 | Jetson Orin：触觉预处理 ~90 ms + 推理 ~10 ms ≈ **10 Hz** |
-| 开源 | 项目页挂 [GitHub](https://github.com/NoneJou072/tacrefinenet)，截至 **2026-07-23** 仓库为空；Dataset 按钮未指向独立发布 |
+| 开源 | **已开源（2026-11-22 核查）**：[NoneJou072/tacrefinenet](https://github.com/NoneJou072/tacrefinenet)（`@8cabb33`，MIT/CC BY 4.0）发布完整 MuJoCo 仿真、训练/评测脚本，并在 README 提供 Google Drive `assets/`（checkpoint 与部分物体模型） |
 
 ## 为什么重要
 
@@ -136,8 +142,41 @@ flowchart TB
 | 仿真 | MuJoCo 弹性球接触点模拟橡胶表面；闭合后无有效接触则拒样重采 |
 | 目标指定 | 示教一次：记录目标触觉图、关节配置与参考腕部位姿 |
 | 评测协议 | 物体固定；最多 **5** 步精修；准则 \(10^\circ/10\,\mathrm{mm}\)、\(5^\circ/10\,\mathrm{mm}\)、\(5^\circ/5\,\mathrm{mm}\) |
-| 开源状态 | **待发布**：GitHub 空仓；数据集无独立链接（见 [repos 归档](../../sources/repos/tacrefinenet.md)） |
-| 源码运行时序图 | **不适用**（截至 2026-07-23 无可运行训练/推理入口） |
+| 开源状态 | **已开源**（`@8cabb33`，MIT/CC BY 4.0）：代码全量开放，Google Drive `assets/` 含预训练 checkpoint 与部分物体模型（见 [repos 归档](../../sources/repos/tacrefinenet.md)） |
+
+## 源码运行时序图
+
+以下时序图依据官方仓库 `NoneJou072/tacrefinenet@8cabb33`（`mivt/scripts/train.py`、`mivt/scripts/deploy_sim.py` 与 `mivt/util/deployer.py`）绘制：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as deploy_sim.py / Runner
+  participant Env as MuJoCo SimEnv
+  participant Dep as Deployer (deployer.py)
+  participant Net as VTANet (Siamese)
+
+  Note over CLI,Net: 训练期：torchrun mivt/scripts/train.py -> Trainer + VTCDatasetCustom + VTANet (DDP MSE)
+  CLI->>Env: Runner.__init__ 初始化仿真场景与物体模型
+  CLI->>Dep: Deployer(checkpoint, train_cfg) 加载 normalizer 与权重
+  loop ep = 1..max_episodes
+    CLI->>Env: set_goal_from_teaching() 闭合示教目标抓握
+    Env-->>CLI: goal_tac, goal_qpos
+    CLI->>Dep: set_goal(tac_goal, prop_goal) 归一化并缓存目标特征
+    CLI->>Env: sample_init_pose() 施加初始位姿扰动
+    loop step = 1..max_step
+      Env-->>CLI: get_observation() 返回当前触觉与 hand_joints
+      CLI->>Dep: inference(tacs, hand_joints)
+      Dep->>Net: model(tac_cur, tac_goal, q_cur, q_goal)
+      Net-->>Dep: 6D 相对位姿增量 pred_delta (SVD 正交化)
+      Dep-->>CLI: apply_se3 + contact2sensor_pose 计算目标腕部位姿
+      CLI->>Env: move_next_pose() 张开—腕部插值移动—再抓闭合
+      Env-->>CLI: _check_oracle_converged() 判定收敛与记录日志
+    end
+  end
+```
+
+图依据：`NoneJou072/tacrefinenet@8cabb33` 中的 `mivt/scripts/train.py`、`mivt/scripts/deploy_sim.py`（`Runner.run` / `set_goal_from_teaching` / `pred_next_pose` / `move_next_pose`）与 `mivt/util/deployer.py`（`Deployer.set_goal` / `Deployer.inference`）。
 
 ## 实验要点
 
@@ -187,7 +226,7 @@ flowchart TB
 - **弱判别接触：** 对称圆盘、平坦弱纹理边缘 → 触觉伺服病态。  
 - **局部范围：** 只在数据集覆盖的可观 DoF 内精修，不是全局抓取规划。  
 - **Sim2Real 与泛化：** 零样本可用，但严格阈值与未见边缘几何仍掉点；项目页旧文仍写「真机微调」，与 v2 论文不一致——以论文为准。  
-- **复现：** 代码/数据尚未实质开放，工程落地需自建仿真与传感器标定。
+- **复现：** 官方代码（`NoneJou072/tacrefinenet@8cabb33`）与 Google Drive `assets/` 已释放仿真训练/评测与预训练权重；真机部署仍需自备 XHand / 触觉阵列表征与标定流程。
 
 ## 关联页面
 
@@ -205,7 +244,7 @@ flowchart TB
 
 - [TacRefineNet 论文归档](../../sources/papers/tacrefinenet_arxiv_2509_25746.md) — arXiv:2509.25746v2
 - [项目页归档](../../sources/sites/tacrefinenet-google-sites.md)
-- [代码仓归档（空占位）](../../sources/repos/tacrefinenet.md)
+- [代码仓归档](../../sources/repos/tacrefinenet.md) — `NoneJou072/tacrefinenet@8cabb33`
 
 ## 推荐继续阅读
 

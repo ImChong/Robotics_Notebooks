@@ -18,7 +18,7 @@ sources:
   - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/papers/adaptive_whole_body_mpc_2610_12972.md
 summary: "Centroidal Dynamics 以质心动量为核心描述全身运动，是 MPC、WBC 和多接触规划的重要中间层。"
-updated: 2026-11-07
+updated: 2026-11-22
 ---
 
 # Centroidal Dynamics

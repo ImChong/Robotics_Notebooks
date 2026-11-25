@@ -9,6 +9,8 @@
 - **机构：** 小米机器人实验室（Xiaomi Robotics）
 - **通讯作者：** Shuaijun Wang
 - **入库日期：** 2026-08-24
+- **核对范围：** 读取项目页 <https://vitacphys.github.io/ViTacPhys/> HTML 内容、结构与资源按钮状态（2026-11-22 复核确认 Code 与 Dataset 按钮仍为 `Coming Soon`，无公开 GitHub/HF 链接）。
+- **通读：** 已完成
 - **一句话说明：** 官方项目页：人体视触觉采集与标注、ViTacPhys 预测器、人→机迁移与 ACT 式自适应抓取真机对比；含数据集规模、预测/抓取表与失败案例。
 
 ## 开源状态（项目页核查，2026-08-24）

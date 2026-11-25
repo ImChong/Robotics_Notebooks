@@ -11,7 +11,7 @@ tags:
   - stanford
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2508.14466"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -23,6 +23,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_lookout.md
   - ../../sources/sites/lookout.md
+original:
+  - ../../sources/papers/humanoid_pnb_lookout.md
 summary: "LookOut（ICCV 2025，arXiv:2508.14466）从 posed egocentric video 回归未来 6-DoF 头部轨迹；DINO 2D 特征无参数反投影并时序聚合 3D latent，同时学习避障平移与主动转头。AND 数据集含 4 h / 274k frames / 18 地点；项目页开放 Data 申请，未发布代码。"
 ---
 
@@ -148,7 +150,7 @@ Aria 同时记录 RGB、双目 SLAM、eye tracking、IMU、barometer 与 GPS；�
 - 论文定量评测是离线 forecasting，不等价于 collision-free robot execution。
 - AND 涉及公共空间视频，实际复用需核查申请、隐私与许可边界。
 
-## 与其他页面的关系
+## 关联页面
 
 - [导航纵深路线 Stage 3 / 5](../../roadmap/depth-navigation.md) — 人形第一视角导航与主动感知节点
 - [主动感知（FLAP）](./paper-flap-fov-active-perception-3d-navigation.md) — 头部旋转是“为看见而行动”的监督形式

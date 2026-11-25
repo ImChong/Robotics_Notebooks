@@ -5,19 +5,21 @@
 - **标题：** XPACE — Joint World and Action Modeling from Heterogeneous Experience
 - **类型：** site / project-page
 - **URL：** <https://xpeng-robotics.github.io/xpace/>
-- **关联论文：** <https://arxiv.org/abs/2609.17372>
+- **关联论文：** <https://arxiv.org/abs/2609.17372>（[`sources/papers/xpace_arxiv_2609_17372.md`](../papers/xpace_arxiv_2609_17372.md)）
 - **PDF：** <https://xpeng-robotics.github.io/xpace/assets/papers/xpace.pdf>
-- **代码：** 项目页导航链至组织 <https://github.com/xpeng-robotics>；**截至 2026-09-20 无 XPACE 专用仓库或权重链接**
+- **代码：** 项目页导航链至组织 <https://github.com/xpeng-robotics>；**截至 2026-11-22 仍无 XPACE 专用仓库或权重链接**
 - **机构：** XPENG Robotics（小鹏机器人）
 - **入库日期：** 2026-09-20
+- **核对范围：** 读取项目页 <https://xpeng-robotics.github.io/xpace/> HTML 全文结构、定量表格、BibTeX 与导航外链，并复核 `xpeng-robotics` GitHub 组织仓库列表。
+- **通读：** 已完成
 - **一句话说明：** XPACE 统一 **WAM + world simulator**：共享 video backbone 联合预测动作与未来视频，或按骨架控制预测视觉；5000h 异构经验 + 粗到细课程 + SGF 仿真自改进；IRON 人形真机验证。
 
-## 步骤 2.5 开源核查（2026-09-20）
+## 步骤 2.5 开源核查（2026-09-20 / 2026-11-22 复核）
 
 | 项 | 结论 |
 |----|------|
 | 项目页 Code / GitHub | 页眉链至 **xpeng-robotics** 组织，无 `xpace` 仓库入口 |
-| 组织公开仓库 | DIAL、UniT、AnyWorld、xpeng-robotics.github.io 等；**不含 XPACE** |
+| 组织公开仓库 | DIAL、UniT、AnyWorld、VIGIL、xpeng-robotics.github.io；**不含 XPACE** |
 | 权重 / 数据 | 页内未列 Hugging Face / ModelScope / Zenodo |
 | **判定** | **未开源** — 技术报告与演示可公开访问，训练/推理/部署代码与 checkpoint **未发布** |
 
@@ -31,10 +33,10 @@
    - **Training：** Stage I 无动作视频适配；Stage II 视频–动作 / 仿真等概率 + flow matching，三阶段 human→bridge→robot 粗到细；Stage III 分 simulator（SGF）与 policy（8% 合成 recovery + 92% 原配方）两支。
 4. **Results：**
    - 仿真：token addition skeleton 条件优于 AdaLN；SGF 长程 PSNR/latency 显著改善。
-   - 真机（IRON-R01-1.11，20 trials/task）：平均成功率 XPACE **68.3%** vs DreamZero **40.0%** vs GR00T **6.7%**；叠碗任务 **不在机器人示范中** 但人/bridge 有覆盖。
+   - 真机（IRON，20 trials/task）：平均成功率 XPACE **68.3%** vs DreamZero **40.0%** vs GR00T **6.7%**；叠碗任务 **不在机器人示范中** 但人/bridge 有覆盖。
    - 消融：Stage I 视频预训练 −12.5% action loss；human–robot co-training −14.0% vs robot-only；8% recovery DAgger 后成功率 **61.7%→86.7%**。
 
 ## 对 wiki 的映射
 
-- 与 [`sources/papers/xpace_arxiv_2609_17372.md`](../papers/xpace_arxiv_2609_17372.md) 互为补充：论文/arXiv 偏摘要，本页偏 **数据金字塔、训练阶段、定量表与 demo 索引**。
+- 与 [`sources/papers/xpace_arxiv_2609_17372.md`](../papers/xpace_arxiv_2609_17372.md) 互为补充。
 - 沉淀：[`wiki/entities/paper-xpace.md`](../../wiki/entities/paper-xpace.md)

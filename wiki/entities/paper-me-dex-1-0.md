@@ -10,9 +10,12 @@ tags:
   - li-auto
   - open-source
 status: complete
-updated: 2026-09-25
+updated: 2026-11-22
 arxiv: "2609.21449"
 code: https://github.com/MachEmbodied/ME-Dex-1.0
+original:
+  - ../../sources/papers/me_dex_1_0_arxiv_2609_21449.md
+  - ../../sources/repos/machembodied-me-dex-1-0.md
 related:
   - ../concepts/world-action-models.md
   - ../methods/vla.md
@@ -57,7 +60,7 @@ summary: "ME-Dex 1.0（arXiv:2609.21449，理想汽车 Foundation Model）：三
 - **范式推进：** 相对「VLA/WAM + 当前触觉条件」（Figure 1a–b），ME-Dex 1.0 把 **future tactile** 与 **future video** 并列作为预测目标（Figure 1c），动作生成可读取两种未来动力学表示。
 - **跨具身触觉：** Canonical Hand Model + Unified Tactile AE 解决 **Representation Gap**——多手型/夹爪/传感布局映射到共享空间后再联合训练。
 - **数据引擎：** Agentic Tactile Data Engine 在 RoboTwin / DexJoCo 轨迹回放时从仿真力传感器录触觉，缓解 **Data Gap**（原生 benchmark 无触觉）。
-- **工程触点：** RoboTwin Clean→Random **78.9% avg** 超过公开榜 OLA-Sem 等；**推理 runtime + HF 权重已开源**，训练侧待发布。
+- **工程触点：** RoboTwin Clean→Random **78.9% avg**（论文 Table 1 口径），2026-10 开源 VAE 变体（`main@a2db63b`）更达 **82.5% avg**；**推理 runtime、Clean50 触觉训练脚本与 HF 数据集/权重现均已开源**。
 
 ## 核心信息
 
@@ -66,9 +69,13 @@ summary: "ME-Dex 1.0（arXiv:2609.21449，理想汽车 Foundation Model）：三
 | **机构** | 理想汽车（Li Auto）Foundation Model |
 | **骨干初始化** | Video / Action Expert 自 [Motus](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) 预训练权重；Tactile Expert 随机初始化 |
 | **训练目标** | flow matching 联合去噪：future video + future tactile latents + action chunks |
-| **触觉对齐** | Canonical Hand Model（人手启发模板）+ Unified Tactile AE（跨源预训练后 **冻结**） |
+| **触觉对齐** | Canonical Hand Model（人手启发模板）+ Unified Tactile AE/VAE（跨源预训练后 **冻结**） |
 | **数据** | RoboTwin 50 任务 27500 轨迹（Clean+Random）；DexJoCo 11 任务 1100 demo；ManiFeel 4 任务各 50 demo |
-| **开源** | **部分开源**：推理 + RoboTwin leaderboard 评测 [MachEmbodied/ME-Dex-1.0](https://github.com/MachEmbodied/ME-Dex-1.0)；HF 权重已发布；**训练代码/数据 Coming soon** |
+| **开源** | **已开源（Clean50 训练 + 推理）**：[MachEmbodied/ME-Dex-1.0](https://github.com/MachEmbodied/ME-Dex-1.0)（`runtime/` + `training/`）；HF 权重（AE 80.4% / VAE 82.5%）与 [Clean50 触觉数据集](https://huggingface.co/datasets/liuxuetao/MachEmbodied-Dex1.0-RoboTwin-Clean50-Tactile) 均已发布 |
+
+## 核心原理
+
+ME-Dex 1.0 围绕三个核心缺口展开统一建模：通过 **Canonical Hand Model** 与 **Unified Tactile AE/VAE** 对齐异构传感器与多手型空间表示（Representation Gap）；以三专家 **MoT + H-Bridge 共享注意力** 将未来触觉与未来视频并列作为 flow matching 联合去噪目标（Model Gap）；并以 **Agentic Tactile Data Engine** 在仿真回放中录制力传感器信号补齐触觉监督（Data Gap）。
 
 ### 流程总览
 
@@ -122,7 +129,7 @@ flowchart TB
 
 - **「预测触觉」比「读触觉」多要求什么：** 联合去噪要求触觉信号 **可预测且与动作因果相关**；传感器噪声大或标定漂移时，这一支会变成噪声源而不是信息源——这也是 Unified Tactile AE 需要跨源预训练后 **冻结** 的原因。
 - **数值可比性：** RoboTwin avg **78.9%（Clean→Random）** 是仿真基准口径，属 [评测闭环](../queries/embodied-eval-benchmark-selection-loop.md) 的 ③ 层；与 DexJoCo / ManiFeel 上的数不是同一评测面，也不蕴含真机成功率。
-- **复现边界：** 仓库目前是 **推理 + RoboTwin 评测**，训练代码与数据 coming soon；因此第三方暂时只能复现 **评测**，不能复现 **训练配方**，对比时应注明这一不对称。
+- **复现边界：** 仓库当前已同步开放 **RoboTwin Clean50 分布式训练（`training/`）+ Clean50 触觉数据集 + XPolicyLab 推理评测（`runtime/`）**；但 DexJoCo / ManiFeel / 真机数据与完整 Agentic Data Engine 自动化编排尚未全部释放，对比时仍需注明范围。
 
 ## 结论
 
@@ -131,50 +138,53 @@ flowchart TB
 - future tactile 与 future video 并列预测，是比纯条件输入更完整的 contact-rich 世界建模
 - H-Bridge 共享注意力在 Random 上带来约 +1.3 pt，三专家信息交换有实证增益
 - Unified Tactile AE 跨 RoboTwin/DexJoCo/ManiFeel contact F1 90%+，支撑跨布局联合训练
-- RoboTwin Clean→Random **78.9%** 与 DexJoCo **65.3%** 在公开/自建基线上有竞争力
+- RoboTwin Clean→Random **78.9%**（论文）与开源 VAE 版 **82.5% avg**（88.7% Clean / 76.2% Random）验证了泛化优势
 - 双手任务（Assembly/Microwave 等）相对 DECO 系有明显优势，但并非全任务 uniform SOTA
-- **开源边界清晰：** 可复现 RoboTwin leaderboard 推理；训练代码与 Agentic Data Engine **待发布**
-- Leaderboard 评测 **无触觉观测** 时靠零输入 + 预测 future tactile——部署读法与有触觉训练设定不同
+- **开源边界清晰：** 仓库现已包含 Clean50 训练脚本、`tactile_force_field.py` 回放及 XPolicyLab 评测入口；Leaderboard 评测仍采用当前触觉置零 + 预测 future tactile 协议
 
 ## 源码运行时序图
+
+图依据：基于 `MachEmbodied/ME-Dex-1.0@a2db63b` 的 `README.md`、`runtime/policy.py`、`training/train.py`、`training/build_t5_cache.py` 与 `training/configs/clean50_uni.yaml` 源码核实。
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor Dev as 开发者
-    participant HF as HF ME-Dex-1.0<br/>+ Wan2.2 资产
-    participant RT as runtime/requirements.txt
-    participant XPL as XPolicyLib<br/>RoboTwin 接口
-    participant Pol as ME-Dex-1.0 policy
-    Dev->>HF: 下载策略与 tactile AE 权重
-    Dev->>RT: pip install 依赖
-    Dev->>XPL: 启动标准化 leaderboard 评测
+    participant HF as HF 权重/Clean50 数据 + Wan2.2
+    participant Train as training.train (torchrun 2x16)
+    participant XPL as XPolicyLab (policy/ME_Dex_1_0)
+    participant Pol as MEDexPolicy (runtime/policy.py)
+    Dev->>HF: 下载策略权重、Wan2.2 VAE/T5 与 Clean50 数据集
+    opt Clean50 训练路径
+        Dev->>Train: build_t5_cache.py 生成 t5_prompt_table.pt
+        Dev->>Train: clean50_uni.yaml (full_joint/h_bridge) 或 clean50_vae.yaml
+        Train-->>Dev: 输出联合视频-触觉-动作 checkpoint
+    end
+    Dev->>XPL: 复制 runtime/ 并通过 eval.sh 启动 RoboTwin 评测
     loop episodes
-        XPL->>Pol: RGB（BGR 顺序，无归一化）
-        Note over Pol: 当前触觉置零 + mask；预测 future tactile
+        XPL->>Pol: head/left/right RGB -> camera_mosaic(BGR, 无归一化)
+        Note over Pol: 当前触觉置零 + support_mask；联合去噪预测未来触觉与动作
         Pol-->>XPL: action chunk
     end
     XPL-->>Dev: Clean / Random SR
 ```
 
-**不适用完整训练复现：** README 声明 training code & data **Coming soon**；上图覆盖 **已发布** 的 leaderboard 推理路径。
-
 ## 工程实践
 
 | 主题 | 说明 |
 |------|------|
-| 视觉契约 | 单 RGB→BGR；**不做** mean/std 归一化（与 checkpoint 对齐） |
-| 无触觉评测 | Leaderboard 无 force 观测：current tactile=0，靠模型预测 future tactile |
-| 权重依赖 | 除策略包外需 Wan2.2-TI2V-5B 的 VAE/T5/tokenizer |
-| 数据引擎 | 仿真回放录力传感器——复现训练侧需等官方 release |
+| 视觉契约 | `camera_mosaic` 拼接头+双腕后按 `input_color_order: bgr` 转换，不做 mean/std 归一化（与 checkpoint 对齐） |
+| 无触觉评测 | Leaderboard 无 force 观测：`MEDexPolicy` 将当前触觉置零并保留 `support_mask`，靠模型预测 future tactile |
+| 权重与缓存 | 推理需 `Wan2.2-TI2V-5B` 的 VAE/T5/tokenizer；训练前须先运行 `python -m training.build_t5_cache` 生成 `t5_prompt_table.pt` |
+| 训练配置 | `clean50_uni.yaml`（AE，2 观测帧 + 16 未来帧）与 `clean50_vae.yaml`（VAE，1 观测帧 + 16 未来帧），支持 `topology: full_joint` / `h_bridge` |
 | 对照基线 | Fast-WAM / π₀.₅ / Motus；+Tac 变体用同一 Unified Tactile AE 编码 |
 
 ## 局限与风险
 
-- **训练不可复现（截至入库日）：** 仅有 inference runtime，Agentic Tactile Data Engine 与联合训练脚本未公开。
-- **项目页不可达：** 入库日 `machembodied.com` SSL 失败，演示视频与补充材料需后续核实。
-- **触觉缺失评测：** Clean→Random leaderboard 协议故意无触觉输入，数字不能等同于「全程力传感闭环」。
-- **任务方差：** ManiFeel Gear Assembly 略低于 baseline；DexJoCo 部分单臂任务 DECO 仍更强。
+- **统一触觉编码器规模与传感器覆盖受限（论文 §5）：** 当前预训练受限于触觉数据规模与传感布局多样性，跨全新未见传感布局的系统性泛化仍待扩大验证。
+- **chunk 间开环与高频局部力控缺口（论文 §5）：** 当前策略主要在 action chunk 间通过观测更新与重规划利用触觉，尚未结合块内高频触觉局部反馈控制来实时微调精细接触。
+- **数据引擎开源范围边界：** 仓库已开源 Clean50 训练与 `robotwin_tactile` 回放代码，但完整 DexJoCo / ManiFeel 与真机数据集未随本仓发布。
+- **项目页不可达与任务方差：** `machembodied.com` SSL 握手不稳定；ManiFeel Gear Assembly 略低于 baseline，DexJoCo 部分单臂任务 DECO 仍更强。
 
 ## 关联页面
 

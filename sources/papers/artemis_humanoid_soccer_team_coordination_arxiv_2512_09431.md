@@ -11,6 +11,8 @@
 - **开源：** [artemis_open_source](https://github.com/)（论文引用平台仓库）
 - **入库日期：** 2026-06-12
 - **一句话说明：** 与去中心化 swarm 路线对照的 **集中式行为管理器** 范例：立体视觉+CLAP 定位球/队友/对手 → DAVG+cf-MPC 碰撞规避导航 → **centralized behavior planner** 维护比赛记忆、短视界运动预测、**角色与射门决策**，经 kick/neck manager 下发至 1 kHz 全身控制。
+- **通读：** 已完成
+- **核对范围：** 通读 `arXiv:2512.09431` PDF 全文（含分层模型规划、角色分配与 RoboCup 实验）。
 
 ## 核心论文摘录（MVP · 侧重多机协调）
 

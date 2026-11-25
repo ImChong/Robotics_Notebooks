@@ -17,7 +17,9 @@
 - **项目负责人（按贡献倒序）：** Alfred Rizzi、Jessica Hodgins、Sylvain Bertrand、Yeuhi Abe、Scott Kuindersma、Farbod Farshidian（通讯）
 - **机构：** 机器人与人工智能研究所（RAI Institute）；波士顿动力（Boston Dynamics）。Atlas / Spot 实验为全作者；Unitree G1 由 RAI 完成。
 - **入库日期：** 2026-08-15
-- **最后更新：** 2026-08-15
+- **最后更新：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `arXiv:2602.00401v1` 全文 PDF（全 1807 行抽取文本：正文与 Supplement Material Table S1–S7），核对无公开 GitHub 仓库。
 - **一句话说明：** 单阶段、极简 MDP 的运动模仿：MoCap / 单目视频 / 关键帧动画三类异构参考，不靠接触标签、历史窗、状态估计器或重奖励塑形，Isaac Lab PPO 训完后零样本上 Atlas、G1、Spot。
 
 ## 摘要级要点

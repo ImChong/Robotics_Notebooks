@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, isaac-lab, teleoperation, simulation, imitation-learning]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
+original:
+  - ../../sources/repos/unitree_sim_isaaclab.md
 related:
   - ./unitree.md
   - ./xr-teleoperate.md
@@ -48,19 +50,31 @@ summary: "unitree_sim_isaaclab 在 Isaac Lab 上仿真 G1/H1-2 多执行器任�
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  UP["xr_teleoperate / unitree_lerobot / 文件回放"] -->|"DDS domain 1 (rt/lowcmd + 手部 DDS)"| AP["action_provider<br/>(dds / file / trajectory / policy / replay)"]
+  AP --> RC["RobotController (layeredcontrol)"]
+  RC --> ENV["Isaac Lab 3.0 ManagerBasedRLEnv<br/>(g129 / h1_2 / g1d / r1a7d / r17a)"]
+  ENV -->|"关节/相机观测"| DDS["G1RobotDDS / Hand DDS<br/>(rt/lowstate)"]
+  ENV -->|"相机渲染"| IMG["teleimager (sim 分支)<br/>ZMQ 55555-55557 / WebRTC 60001-60003"]
+  DDS --> UP
+  IMG --> UP
+```
+
 | 要点 | 说明 |
 |------|------|
-| 通信 | 启动后收发与真机相同 DDS 主题 |
-| 机型×末端 | G1-29dof × Dex1/Dex3/Inspire；H1-2 × Inspire 等 |
-| 任务示例 | `Isaac-PickPlace-Cylinder-G129-*-Joint`、`Isaac-PickPlace-RedBlock-...` |
+| 通信 | 启动后收发与真机相同 DDS 主题（domain 1） |
+| 机型×末端 | `g129`（Dex1/Dex3/Wholebody）、`h1_2`、`g1d`（Dex1/Dex3）、`r1a7d`（Dex1/Dex2-5）、`r17a`（Dex1/Dex2-5/LinkerHand O6） |
+| 任务示例 | `Isaac-PickPlace-Cylinder-G129-*-Joint`、`Isaac-Move-Cylinder-G129-Dex1-Wholebody`、`Isaac-Stack-RgyBlock-R17A-O6-Joint` |
+| 数据增强 | `--replay_data` + `--generate_data` + `--modify_light` / `--modify_camera` 重采集多样视觉数据 |
 | 权重 | 仓库提供的权重**仅供仿真测试** |
 
 ## 工程实践
 
-1. 硬件按 Isaac Lab 官方推荐；已测 GPU：RTX 3080/3090/4090；50 系需 Isaac Sim 5.0.0（上游说明）。
-2. 与 [`xr_teleoperate`](./xr-teleoperate.md) 联用采数；DDS 用法对照 SDK2 Python G1 示例与 Dex3 示例。
-3. 同网有真机时必须隔离，防止仿真节点误控实机。
-4. 首启加载慢属预期；主视角需在 Isaac 中切到 PerspectiveCamera。
+1. 默认主分支已升级至 **Isaac Sim 6.2.0 / Isaac Lab 3.0.0**（Python 3.12、PyTorch 2.11.0 `cu130`，可用 `bash auto_setup_env.sh` 一键装配）；若用 Isaac Sim 4.5 / 5.0 / 5.1 需切到 `IsaacSim5.1.0` 分支。
+2. 与 [`xr_teleoperate`](./xr-teleoperate.md) 联用采数；图像经 `teleimager`（`sim` 分支）ZMQ/WebRTC 发布，DDS 用法对照 SDK2 Python G1 与 Dex3 示例。
+3. 同网有真机时必须隔离（DDS domain 1），防止仿真节点误控实机。
+4. 首启加载慢属预期（URDF 自动转 USD 并缓存到 `assets/robots/.urdf_cache/`）；Docker/无头模式使用 `--no_render` 启 WebRTC livestream。
 
 ## 局限与风险
 
@@ -110,7 +124,7 @@ sequenceDiagram
     U->>DDS: 发布 rt/lowcmd（与真机相同的话题）
 ```
 
-图依据：unitree_sim_isaaclab@e30c25b，读过 `README.md`（运行命令与参数）、`sim_main.py`（`main` 主流程与主循环，部分）、`layeredcontrol/robot_control_system.py`（`start`、`step`，部分）、`action_provider/action_provider_dds.py`（`get_action`，部分）、`dds/dds_create.py`（部分）、`dds/g1_robot_dds.py`（订阅与发布话题，部分）、`tasks/common_observations/g1_29dof_state.py`（`write_robot_state` 调用位置，部分）。未运行代码；Isaac Lab 的 `env.step` 与观测管理器内部未读，图中"观测计算触发发布"为依据调用位置的推断。`action_source` 的其它取值（file / trajectory / policy / replay）未画。
+图依据：unitree_sim_isaaclab@e30c25b 及 @84a15e5（2026-11-21 复核），读过 README.md（Isaac Lab 3.0 / Sim 6.2、机型参数与 DDS 主题表）、sim_main.py（`main` 主流程与 CLI 参数）、layeredcontrol/robot_control_system.py（部分）、action_provider/action_provider_dds.py（部分）、dds/dds_create.py（部分）、dds/g1_robot_dds.py（部分）、tasks/common_observations/g1_29dof_state.py（部分）。未运行代码；Isaac Lab 的 `env.step` 与观测管理器内部未读，`action_source` 的其它取值（file / trajectory / policy / replay / dds_wholebody）未画。
 
 ## 关联页面
 

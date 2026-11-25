@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, swarm, crazyflie, ros2, motion-capture, multirotor, bitcraze]
 status: complete
-updated: 2026-09-16
+updated: 2026-11-22
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./crazyflie-firmware.md
@@ -13,11 +13,16 @@ related:
 sources:
   - ../../sources/repos/crazyswarm2.md
 summary: "Crazyswarm2 是 IMRCLab 的 ROS2 大规模 Crazyflie 群体框架：动捕/UWB 定位、轨迹上传与碰撞避免，用于室内多机编队与灯光秀实验。"
+original: ../../sources/repos/crazyswarm2.md
 ---
 
 # Crazyswarm2
 
 **Crazyswarm2**（[IMRCLab/crazyswarm2](https://github.com/IMRCLab/crazyswarm2)）在 **[Crazyflie 固件](./crazyflie-firmware.md)** 之上提供 **数十至上百架微四轴** 的同步起飞、轨迹执行与编队能力（ROS2 重写版 Crazyswarm）。
+
+## 一句话定义
+
+**Crazyswarm2**：IMRCLab 基于 ROS 2 构建的大规模 Crazyflie 微四轴飞行器集群开源控制栈，支持动捕 / Lighthouse / UWB 室内定位注入、多种通讯后端（`cflib` Python / `cpp` / 仿真）及协同轨迹上传执行。
 
 ## 英文缩写速查
 
@@ -31,14 +36,14 @@ summary: "Crazyswarm2 是 IMRCLab 的 ROS2 大规模 Crazyflie 群体框架：�
 - 依赖 **动作捕捉 / Lighthouse / UWB** 等 **室内全局定位**，是理解「swarm 先解决定位再谈编队」的典型案例。
 - 仿真侧可先用 [gym-pybullet-drones](./gym-pybullet-drones.md) 或 [quad-swarm-rl](./quad-swarm-rl.md)，再迁移到本框架。
 
-## 核心结构/机制
+## 核心机制
 
 - **ROS2** 节点：广播、轨迹服务、状态监控  
 - **Python 脚本**：编队几何、起飞序列、灯光模式  
 - **机载**：Crazyflie + 定位甲板（Lighthouse 等）  
 - **安全**：简化碰撞模型 + 操作规范（仍以现场规程为准）  
 
-## 常见误区或局限
+## 局限与风险
 
 - **误区：可户外 GPS 大编队** — 设计目标是 **室内定位** 场景。
 - **局限：载荷与续航** — 微四轴不适合重载任务。
@@ -95,3 +100,8 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [Crazyswarm 文档](https://crazyswarm.readthedocs.io/) — 概念与硬件清单（v2 见仓库 README）
+
+## 工程实践
+
+- **双端分离与定位先决条件**：通过 `ros2 launch crazyflie launch.py backend:=cflib` 统一加载 `crazyflies.yaml`、`motion_capture.yaml` 并把 `/poses` 广播至机载 `extpos` 滤波器，另一终端用 `crazyflie_py` 编写集中编队脚本；真机起飞前务必先校验每机 URI 信道带宽分布及 CRTP 通信丢包率。
+- **仿真到实机迁移**：先跑 `backend:=sim` 验证碰撞几何与轨迹时间同步，再切换实机与动捕系校准。

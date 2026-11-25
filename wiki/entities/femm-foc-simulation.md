@@ -2,7 +2,9 @@
 type: entity
 tags: [software, motor, femm, foc, simulation, open-source, education, bldc, femm-foc-simulation]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-21
+original:
+  - ../../sources/repos/femm_foc_simulation.md
 related:
   - ./femm.md
   - ../comparisons/open-source-torque-motor-em-design.md
@@ -43,25 +45,30 @@ summary: "FEMM-FOC-Simulation：开源教学仓，用定/转子 DXF + 已配置 
 - 成本接近零，比直接上 Maxwell/Motor-CAD 更适合 [力矩电机纵深 Stage 2](../../roadmap/depth-torque-motor-design.md) 入门。
 - 与 [Ironless](./ironless-qdd-actuator.md) 的静态 FEMM 对照互补：本仓强调 **随转子角变化的 FOC 转矩**。
 
-## 核心原理
+## 核心原理与源码运行时序图
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant User
-  participant FEMM
-  participant Lua as FOC_sim.lua
-  User->>FEMM: 打开 FOC_sim.FEM（含定转子/绕组/材料）
-  User->>FEMM: File → Open lua script → FOC_sim.lua
-  loop 每个转子角
-    Lua->>FEMM: 按 FOC 写三相电流
-    Lua->>FEMM: 求解并读转子转矩
-    Lua->>FEMM: 旋转转子一小步
+  participant User as 用户 / FEMM GUI
+  participant Lua as resources/FOC_sim.lua
+  participant FEMM as FEMM 4.2 求解器
+
+  User->>FEMM: 打开 resources/FOC_sim.fem
+  User->>Lua: File -> Open lua script -> FOC_sim.lua
+  Lua->>FEMM: mi_saveas("temp.fem") + mi_seteditmode("group")
+  Lua->>FEMM: 初始旋转 360/14/2 - 360/12/2 对齐 d 轴与 A 相
+  loop n = 0..90 (每步 0.2857° 机械角 = 2° 电角, 共 180° 电角)
+    Lua->>Lua: Inverse Park (Id=0, Iq=20) -> Inverse Clarke (ia, ib, ic)
+    Lua->>FEMM: mi_modifycircprop("A"/"B"/"C", 1, ia/ib/ic)
+    Lua->>FEMM: mi_analyze(1) -> mi_loadsolution()
+    Lua->>FEMM: mo_groupselectblock(1) -> mo_blockintegral(22)
+    FEMM-->>Lua: 输出转矩并 mi_moverotate(0, 0, 0.2857)
   end
-  FEMM-->>User: 控制台输出角度-转矩序列
+  Lua-->>User: 控制台打印 (rotor_angle, torque) 序列
 ```
 
-README 设定玩具电机叠长约 **10 mm**；初始转子 d 轴与 A 相对齐。
+源码核对（`resources/FOC_sim.lua`）：模型为 **14 极 12 槽**电机（1 机械度 = 7 电度），叠长约 **10 mm**，固定设 `I_d = 0`、`I_q = 20 A`，每步调用 `mo_blockintegral(22)`（Weighted Stress Tensor 转矩积分）输出离散角度—转矩表。
 
 ## 工程实践
 

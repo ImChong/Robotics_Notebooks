@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, isaac-sim, ros2, software-in-the-loop, validation, nvidia, physical-ai]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-22
 related:
   - ../entities/isaac-sim.md
   - ../entities/nvidia-physical-ai-learning.md

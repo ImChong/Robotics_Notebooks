@@ -3,7 +3,7 @@ type: entity
 project_id: mosaic-clutter-2611-15937
 tags: [paper, vla, spatial-reasoning, manipulation]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-24
 arxiv: "2611.15937"
 project: https://mmahdavian.github.io/MOSAIC/
 original:
@@ -76,7 +76,7 @@ flowchart LR
 
 ## 实验与评测
 
-主要定量结果来自 RoboPRO 杂乱操作仿真，真机部分以定性展示为主；不能当作大样本真机成功率提升。
+主要定量结果来自 [RoboPRO](./paper-robopro-2611-26971.md) 杂乱操作仿真，真机部分以定性展示为主；不能当作大样本真机成功率提升。
 
 ## 结论
 
@@ -86,11 +86,18 @@ flowchart LR
 2. 将作者验证的模块和尚未发布/未复现的模块分开记录。
 3. 把误差、失败模式与传感器/真实场景分布偏移作为后续验收依据。
 
+## 与其他工作对比
+
+- **对比 RoboPRO 微调基座 [π₀.₅](./paper-pi05-open-world-vla.md) 与模块化消融（Table I）：** 在 RoboPRO 杂乱场景（Cluttered）上，完整 MOSAIC（`Masks+Attn+Depth`）相对直接微调的 π₀.₅ 基线在多房间取得更高成功率（Kitchen-L SR **57.8% vs 52.7%**、Office SR **63.8% vs 59.6%**、Study SR **46.1% vs 36.2%**、Kitchen-S SR **58.0% vs 57.0%**），且无碰撞硬成功率 HSR 同步提升；不过部分场景碰撞率 CR 并未单调下降（例如 Kitchen-S Cluttered CR 为 64.5% vs 基线 55.2%），需结合具体任务布局解读。
+- **对比视觉外观扰动鲁棒性（Table II，12 项清洁场景任务，光照/高斯模糊/像素偏移）：** 完整 MOSAIC 将总体成功率从 π₀.₅ 基线的 **65.2% 提升至 74.9%（+9.7 pp）**、HSR 从 **63.4% 升至 72.7%（+9.3 pp）** 且整体碰撞率基本持平，其中 Office 场景增益最大（SR **51.7% → 76.7%**，+25.0 pp），验证角色区分掩码与三维几何 token 提升了对纹理和光照变化的抗干扰能力。
+
 ## 局限与风险
 
 对深度置信度、语义 mask 和障碍物检测敏感，真实几何误差与动作控制延迟仍需验证；项目网页抓取未成功。
 
 ## 关联页面
+
+- [RoboPRO 抗扰动与危险碰撞评测](./paper-robopro-2611-26971.md)
 
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)

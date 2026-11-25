@@ -11,9 +11,13 @@ tags:
   - ppo
   - domain-randomization
   - nvidia
+  - robotera
 status: complete
-updated: 2026-10-06
+updated: 2026-11-21
 arxiv: "2404.05695"
+original:
+  - ../../sources/papers/humanoid_gym_arxiv_2404_05695.md
+  - ../../sources/repos/humanoid-gym.md
 related:
   - ../concepts/sim2real.md
   - ../concepts/domain-randomization.md
@@ -83,37 +87,64 @@ flowchart TB
   train --> JIT
 ```
 
-## 核心结构
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
-| **环境基类** | 基于 legged_gym `LeggedRobot`；`humanoid_ppo` 为默认速度跟踪任务。 |
-| **观测** | 单帧 47 维：时钟 $\sin/\cos$、速度指令、$q,\dot{q}$、基座角速度/欧拉角、$a_{t-1}$；堆叠 15 帧。 |
-| **特权（训练）** | 单帧 73 维：摩擦、质量、基座线速度、推力/力矩、跟踪差、$I_p$、足端接触等；堆叠 3 帧。 |
-| **动作** | 目标关节位置 → PD；策略 100 Hz。 |
-| **步态** | 周期 $C_T$、正弦参考、$I_p(t)\in\{[0,1],[1,1],\ldots\}$ 与实测接触 $I_d$ 对齐奖励。 |
+| **环境基类** | 基于 legged_gym `LeggedRobot`（`XBotLFreeEnv`）；`humanoid_ppo` 为默认速度跟踪任务。 |
+| **观测** | 单帧 47 维：时钟 $\sin/\cos$、速度指令、$q,\dot{q}$、基座角速度/欧拉角、$a_{t-1}$；堆叠 15 帧（705 维）。 |
+| **特权（训练）** | 单帧 73 维：摩擦、质量、基座线速度、推力/力矩、跟踪差、$I_p$、足端接触等；堆叠 3 帧（219 维）。 |
+| **动作** | 12 维目标关节位置 → PD（`action_scale=0.25`，策略 100 Hz / 仿真 1000 Hz `decimation=10`）。 |
+| **步态** | 周期 $C_T$、正弦参考 `compute_ref_state()`、周期性支撑掩码 $I_p(t)\in\{[0,1],[1,0],[1,1]\}$ 与实测接触 $I_d$ 对齐奖励。 |
 | **奖励** | 速度/姿态/高度跟踪 + 接触模式 + 关节/能量/平滑正则；$z,\gamma,\beta$ 指令刻意为零。 |
-| **Sim2Sim** | `sim2sim.py` 加载 JIT，在 MuJoCo 平地/崎岖地形回放。 |
+| **Sim2Sim** | `sim2sim.py` 加载 JIT，在 MuJoCo 平地/崎岖地形回放校验。 |
 
 ### 训练超参（论文 Table II 摘要）
 
 | 项 | 值 |
 |----|-----|
-| 并行环境 | 8192 |
-| Episode 长度 | 2400 steps |
+| 并行环境 | 8192（`XBotLCfg` 默认 4096） |
+| Episode 长度 | 2400 steps（24 s） |
 | Batch | $8192 \times 24$ |
 | $\gamma$ / GAE $\lambda$ | 0.994 / 0.95 |
 | 学习率 | $10^{-5}$ |
 
-## 社区 fork：humanoid-gym-modified
+## 源码运行时序图
 
-[roboman-ly/humanoid-gym-modified](https://github.com/roboman-ly/humanoid-gym-modified) 在上游基础上：
+入口：`python humanoid/scripts/train.py --task=humanoid_ppo` → `python humanoid/scripts/play.py --task=humanoid_ppo` → `python humanoid/scripts/sim2sim.py --load_model <jit_pt>`。
 
-- 接入开源 **Pandaman** 人形模型（`pandaman_ppo` 任务）；
-- 增加 **Gazebo + ROS Noetic** sim2sim（`humanoid_ros`），适合已习惯 ROS 控制栈的团队；
-- 方法论仍遵循 Humanoid-Gym 论文；**新功能（如 DWL）以官方仓库为准**。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant TR as "train.py / task_registry"
+    participant ENV as "XBotLFreeEnv (Isaac Gym 1kHz)"
+    participant PPO as "OnPolicyRunner (100Hz)"
+    participant PL as "play.py (导出 JIT)"
+    participant MJ as "sim2sim.py (MuJoCo 1kHz)"
 
-见归档：[humanoid-gym-modified](../../sources/repos/humanoid-gym-modified.md)。
+    TR->>ENV: "make_env('humanoid_ppo') 初始化地形与 4096/8192 并行环境"
+    TR->>PPO: "make_alg_runner() 创建 ActorCritic 与 PPO 存储"
+    loop "PPO 迭代 (24 steps/env)"
+        PPO->>ENV: "step(actions) 执行 10 步 1kHz PD 并采样 DR"
+        ENV-->>PPO: "obs(15x47), privileged_obs(3x73), rewards, dones"
+        PPO->>PPO: "GAE 优势估计并更新 Actor-Critic"
+    end
+    PL->>PPO: "加载 checkpoint 构造 inference policy"
+    PL->>PL: "export_policy_as_jit() 导出 policy_*.pt"
+    MJ->>PL: "torch.jit.load() 加载 JIT 策略"
+    loop "MuJoCo 仿真 (dt=0.001s, decimation=10)"
+        MJ->>MJ: "每 10 步组装 15x47 历史观测并推理 action"
+        MJ->>MJ: "pd_control() 计算力矩并 mj_step()"
+    end
+```
+
+图依据：`roboterax/humanoid-gym@ae46e20`，核对 `humanoid/scripts/train.py`、`play.py`、`sim2sim.py`、`humanoid/envs/custom/humanoid_env.py`、`humanoid_config.py`、`humanoid/utils/task_registry.py` 与 `humanoid/algo/ppo/on_policy_runner.py`；未启动 Isaac Gym / MuJoCo 实际运行。
+
+## 工程实践
+
+- **环境与运行路径**：官方依赖 **Python 3.8 + PyTorch 1.13.1 + CUDA 11.7 + Isaac Gym Preview 4**；按 `train.py` → `play.py`（自动导出 `logs/<exp>/exported/policies/policy_1.pt`）→ `sim2sim.py` 顺序验证，先通过平地与崎岖地形 MuJoCo 校验再迁移真机。
+- **扩展新本体**：在 `humanoid/envs/` 新建配置继承 `XBotLCfg`，替换 `resources/` 下的 URDF/MJCF、默认关节角与 PD 增益（`stiffness` / `damping`），并在 `humanoid/envs/__init__.py` 注册 `task_registry.register(...)`；`sim2sim.py` 需核对 MJCF 与 URDF 的关节顺序映射。
+- **社区 fork（`humanoid-gym-modified`）**：[roboman-ly/humanoid-gym-modified](https://github.com/roboman-ly/humanoid-gym-modified) 接入开源 **Pandaman** 模型（`pandaman_ppo`）并增加 **Gazebo + ROS Noetic**（`humanoid_ros`），适合 ROS 控制栈团队；但 `humanoid_dwl` 等上游新特性仍以官方仓库为准（见 [humanoid-gym-modified 归档](../../sources/repos/humanoid-gym-modified.md)）。
 
 ## 与 legged_gym / Isaac Lab 的关系
 
@@ -123,7 +154,7 @@ flowchart TB
 | [Isaac Gym](./isaac-gym.md) | 物理仿真底座（Preview 4）。 |
 | [Isaac Lab](./isaac-lab.md) / [robot_lab](./robot-lab.md) | **长期新主线**；学 Humanoid-Gym 的人形 reward/DR 经验，新项目优先 Isaac Lab 生态。 |
 
-## 常见误区或局限
+## 局限与风险
 
 - **误区：** 把 Humanoid-Gym 当成独立物理引擎——它是 **训练框架**，仿真仍是 Isaac Gym。
 - **误区：** 认为四足 legged_gym 经验可原样复制——人形需 **步态相位、更高维耦合、更大 sim2real 差距**（论文动机）。

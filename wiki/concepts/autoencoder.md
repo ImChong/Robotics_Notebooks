@@ -2,7 +2,7 @@
 type: concept
 tags: [autoencoder, vae, generative-model, latent, architecture]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-22
 summary: "自编码器学习压缩–重建；VAE 在潜空间上加先验与重参数化，得到可采样的连续表征，是世界模型与运动流形的经典生成底座。"
 related:
   - ../formalizations/generative-foundations.md

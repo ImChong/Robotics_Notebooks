@@ -2,7 +2,7 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: complete
-updated: 2026-09-24
+updated: 2026-11-22
 related:
   - ../entities/paper-lingbot-map.md
   - ../entities/paper-sure-map.md

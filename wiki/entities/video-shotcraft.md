@@ -153,6 +153,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Stickman Video Director｜火柴人视频导演](./stickman-video-director.md) — 双引擎的火柴人故事化视频 Agent Skill；对照本页的产品镜头/Remotion 工艺
+
 - [ffmpeg-skill](./ffmpeg-skill.md) — 对现有视频素材做结构化 FFmpeg 后期剪辑、导出与交付验证（与本页分镜/Remotion 创作互补）。
 
 - [GSAP AI Skills](./gsap-skills.md) — **Web UI / Scroll** 动效 Agent Skills（交互层；本页是 **离线成片** 层）

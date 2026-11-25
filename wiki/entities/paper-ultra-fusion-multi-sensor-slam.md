@@ -16,7 +16,7 @@ tags:
   - cqu
   - scu
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: "2606.21223"
 venue: "arXiv 2026"
 related:
@@ -30,6 +30,8 @@ sources:
   - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
   - ../../sources/repos/ultra_fusion.md
   - ../../sources/repos/m3dgr.md
+original:
+  - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
 summary: "Ultra-Fusion（arXiv:2606.21223）：统一滑窗估计器内融合 WIO/VIO/LIO/LVIO 与可选轮速/GNSS；可观测性感知初始化、因子级可靠性调度与在线时空标定，在 M3DGR 等基准上对 60+ SLAM 系统做退化与标定扰动评测。"
 ---
 
@@ -75,7 +77,7 @@ summary: "Ultra-Fusion（arXiv:2606.21223）：统一滑窗估计器内融合 WI
 | 代码 | <https://github.com/sjtuyinjie/Ultra-Fusion> |
 | 基准数据 | [M3DGR](https://github.com/sjtuyinjie/M3DGR)（IROS 2025） |
 
-## 方法与核心结构
+## 核心机制与方法结构
 
 | 模块 | 作用 |
 |------|------|
@@ -84,8 +86,6 @@ summary: "Ultra-Fusion（arXiv:2606.21223）：统一滑窗估计器内融合 WI
 | **因子级可靠性调度（FRS）** | 对各模态残差做退化检测、门控与降权，抑制低置信测量进入优化 |
 | **在线时空标定（OSC）** | 在激励充分且传感器可靠时估计 **IMU–LiDAR 时间偏移** 与 **旋转外参** |
 | **建图扩展** | 优化位姿支撑 **彩色点云** 与 **LiDAR 引导 3D Gaussian Splatting** 稠密重建 |
-
-### 流程总览
 
 ```mermaid
 flowchart TB
@@ -96,14 +96,20 @@ flowchart TB
     whl[ 轮速 可选 ]
     gps[ GNSS 可选 ]
   end
-  order[ 时间戳排序\n统一测量队列 ]
+  order[ 时间戳排序<br/>统一测量队列 ]
   obs[ 可观测性感知初始化 ]
-  osc[ 在线时空标定 OSC\n时间偏移 + 外参 ]
-  frs[ 因子级可靠性调度 FRS\n门控 / 降权 ]
-  win[ 统一滑窗因子图\nWIO / VIO / LIO / LVIO ]
-  map[ 定位 + 建图\n点云 / 3DGS ]
+  osc[ 在线时空标定 OSC<br/>时间偏移 + 外参 ]
+  frs[ 因子级可靠性调度 FRS<br/>门控 / 降权 ]
+  win[ 统一滑窗因子图<br/>WIO / VIO / LIO / LVIO ]
+  map[ 定位 + 建图<br/>点云 / 3DGS ]
   sensors --> order --> obs --> osc --> frs --> win --> map
 ```
+
+## 工程实践
+
+- **官方发布形态（2026-11 实查）：** [`sjtuyinjie/Ultra-Fusion`](https://github.com/sjtuyinjie/Ultra-Fusion) 以 **预编译 Debian 包与 Docker** 形式分发——提供 **ROS1 Noetic（v0.1.3，含 Ultra-Fusion-Omni UFO 360° 相机 + LiDAR）** 与 **ROS2 Humble（v0.2.2）** 镜像（`ultrafusion_0.1.3_amd64.deb` / `ultrafusion-ros2_0.2.2_amd64.deb`），统一通过 `uf_node` + YAML 切换 WIO / VIO / LIO / LVIO 与轮速/GNSS 开关。
+- **源码运行时序图说明（不适用）：** 仓库公开 `Dockerfile`、`Dockerfile.ros2` 与 `scripts/`，估计器核心 C++ 源码当前未在仓库内公布，故未绘制 C++ 内部函数级时序图。
+- **实机部署核查点：** 在启动自定义硬件前，先核实 YAML 内相机内参/外参、GNSS 开关与时间偏移初始边界，并按需开启 PCD 地图导出标志。
 
 ## 实验与评测（论文报告摘要）
 
@@ -120,15 +126,15 @@ flowchart TB
 
 **消融：** FRS 对 LiDAR / 视觉 / 轮速分别带来显著 ATE 下降；**自适应初始化** 将平均启动延迟从 **4.642 s** 降至 **0.153 s**。
 
-## 与代表性系统的对照
+## 与其他工作对比
 
-| 维度 | FAST-LIVO2 | Ground-Fusion++ | Ultra-Fusion |
-|------|------------|-----------------|--------------|
-| 传感器 | 固定 CIL | CIDWGL，GNSS 可选 | **CIDWGL，WIO/VIO/LIO/LVIO 可配置** |
-| 耦合方式 | 紧耦合，固定栈 | 子系统级可靠性 | **统一滑窗，图内 FRS** |
-| 在线标定 | 有限 | 主要空间 | **时空 OSC + 可靠性门控** |
-| 退化处理 | 部分场景脆弱 | 模态受限 | **LiDAR/视觉/轮速/GNSS 因子级调度** |
-| 评测规模 | 常规基准 | M3DGR 等 | **60+ 系统 + 仿真扰动 + 跨平台** |
+| 维度 | [FAST-LIO](./fast-lio.md) | FAST-LIVO2 | Ground-Fusion++ | Ultra-Fusion（本文） |
+|------|------|------------|-----------------|--------------|
+| 传感器栈 | 3D LiDAR + IMU（轻量 LIO） | 固定 CIL（相机-IMU-LiDAR） | CIDWGL，GNSS 可选，子系统模式绑定 | **CIDWGL，同一滑窗可配置 WIO/VIO/LIO/LVIO + 轮速/GNSS** |
+| 耦合方式 | 紧耦合 IEKF | 紧耦合，固定栈 | 子系统级可靠性 | **统一滑窗因子图，图内因子级可靠性调度（FRS）** |
+| 在线标定 | 无在线时空联调 | 有限 | 主要空间外参 | **在线时空标定（OSC：时间偏移 + 旋转外参）+ 可靠性门控** |
+| 退化与扰动实测 | 几何退化场景易飘移 | M2DGR-Plus 平均漂移 `2.32% / 1.48 m`；10° 外参扰动下误差 `940 m` | M2DGR-Plus 多序列失败 | M2DGR-Plus LVWIO 平均漂移 **`0.59% / 0.24 m`**；±300 ms 延迟 `~4 cm` 级；10° 外参扰动保持稳定 |
+| 评测规模与适用边界 | 经典 3D LIO 轻量基线 | 常规多传感器基准 | M3DGR 等地面序列 | **60+ 系统 + Isaac Sim 隧道退化 + 跨平台（轮/腿/UAV）**；极简 3D LIO 场景下全栈复杂度不划算 |
 
 ## 结论
 
@@ -147,7 +153,7 @@ flowchart TB
 - **局限：** 真机部署仍需 **传感器标定、时间同步与算力预算** 验证；ROS 2 工程集成与 Nav2 衔接需自行评估。
 - **局限：** 与 [FAST-LIO](./fast-lio.md) 等 **轻量 LIO** 相比，全模态 LVWIO + 在线标定 **复杂度更高**，适合 **多模态 ITS 平台** 而非极简 3D LIO 场景。
 
-## 与其他页面的关系
+## 关联页面
 
 - [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 统一窗口按可靠性调度不同模态约束，需分别检查退化检测、初始化与时空标定。
 - [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 联合非线性残差的求解需结合可观测性理解，收敛不等于所有外参都被可靠辨识。

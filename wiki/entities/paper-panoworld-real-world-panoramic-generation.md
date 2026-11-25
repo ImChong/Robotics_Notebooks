@@ -2,9 +2,11 @@
 type: entity
 tags: [paper, world-models, panoramic, video-generation, diffusion, uav, dataset, tsinghua, whu, insta360]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
+project_id: panoworld-real-world-panoramic-generation
 arxiv: "2607.09661"
 project: https://lihaoy-ux.github.io/panoworld-page/
+code: https://github.com/Insta360-Research-Team/PanoWorld
 summary: "PanoWorld（arXiv:2607.09661，Insta360 Research 等）利用 ERP 旋转等变将相机运动简化为固定朝向平移，以 DPRC 射线条件动作建模与 GMA 几何记忆实现可控全景视频生成；配套 World360（12 万 clip）与 Wan2.2-5B 三阶段 LoRA 训练，显著优于 Matrix-3D / OmniRoam，并可 Causal Forcing 蒸馏实时生成。"
 related:
   - ../methods/generative-world-models.md
@@ -16,6 +18,7 @@ related:
   - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/papers/panoworld_arxiv_2607_09661.md
+original: ../../sources/papers/panoworld_arxiv_2607_09661.md
 ---
 
 # PanoWorld：真实世界全景可控生成
@@ -139,16 +142,59 @@ flowchart TB
 - 差距集中在别人假设不成立的地方：Matrix-3D 的显式重建高延迟、高度变化易 void，OmniRoam 固定高度训练、竖向指令 ghosting——PanoWorld 在 multi-altitude 户外全面领先（480p $\mathrm{PSNR}_{75\text{-}80}$ **20.92 vs 18.02/17.02**，FID **27.64**）。
 - 适用边界由数据决定：World360 以 UAV 环视航拍为主，地面人形 egocentric 与手眼操纵覆盖有限；高 PSNR/FID 也**不保证**可用于 closed-loop 控制或 Sim2Real，仍需 [Video-as-Simulation](../concepts/video-as-simulation.md) 类交互/接触校验。
 - 明确不做的事同样重要：不做全局 mesh/GS 重建，持久 editable 3D 资产非目标，本工作是视频级 world rollout；重建侧对照见 [PanoLOG / G²PS](./paper-panolog-ggps.md)。
-- 工程与开源：Causal Forcing 蒸馏把 161 帧从 **~4 min 48 s** 压到 **~8 s**（单 H20），交互式全景探索才成立；模型/代码/World360 承诺公开，但以项目页与仓库实际上线为准。
+- 工程与开源进展（2026-11-21 复核）：[Insta360-Research-Team/PanoWorld](https://github.com/Insta360-Research-Team/PanoWorld) 与 HF 模型 `Insta360-Research/PanoWorld` 已部分开源（含 480p/720p `lora`/`action`/`casual` 权重、推理与 Stage 1/2/4 训练评测脚本）；**Stage 3 GMA Memory 训练代码与完整 World360 数据集仍标记 coming soon**。
+
+## 与其他工作对比
+
+| 对比维度 / 对象 | PanoWorld 方案与表现 | 基线及相邻全景 / 世界模型对照 |
+|------|------|------|
+| **视觉保真与轨迹控制（480p）** | FID **27.64**、$\mathrm{FID}_{\mathrm{pole}}$ **47.21**、$\mathrm{QA}_{\mathrm{qual.}}$ **4.0202**、$\mathrm{PSNR}_{75\text{-}80}$ **20.92** | 优于 **Imagine360**（FID `81.18`）、**Matrix-3D**（$\mathrm{PSNR}_{75\text{-}80}$ `18.02`，显式 3D 重建 + inpainting 在高度变化时易产生 void）、**OmniRoam**（$\mathrm{PSNR}_{75\text{-}80}$ `17.02`，固定高度训练导致竖向指令出现 ghosting） |
+| **生成延迟与实时交互** | 完整模型 ~**4 min 48 s**/clip；Causal Forcing + DMD 蒸馏后 **~8 s / 161 帧**（单 H20） | 相比 **Matrix-3D**（~`16.5 min`）与 **OmniRoam**（~`31 min`）实现数量级推理加速 |
+| **全景数据集基准** | **World360**（120k：70k 真实 UAV + 50k AirSim360，多高度 3D 轨迹 + pose + 仿真深度） | 相对 **360-1M**（1076k 平面街景，无深度）、**PanoWan**（13k 平面，无 pose/depth）与 **Matrix-Pano**（116k 纯仿真 3D），补齐真实+仿真多高度户外物理变化基准 |
+| **知识库相邻世界模型与重建路线** | 视频级可控 ERP rollout（不做全局 mesh/3DGS 重建） | 对比同机构全景户外 3DGS 重建 [PanoLOG / G²PS](./paper-panolog-ggps.md)（重建持久资产 vs 生成预测）、[GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md)（策略评测世界模型）与 [WEM](./paper-wem-world-ego-modeling.md)（world/ego 长程记忆分解） |
+
+## 源码运行时序图
+
+[Insta360-Research-Team/PanoWorld](https://github.com/Insta360-Research-Team/PanoWorld) 基于 Wan2.2-TI2V-5B 提供分阶段训练与双模式推理入口：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as 开发者
+  participant Setup as scripts/download_{wan2.2,panoworld_models}.py
+  participant Train as scripts/train/{01_video_lora,02_action}.sh
+  participant Infer as inference_action.sh (Action-Model/infer_action.py)
+  participant Causal as Casual-forcing/inference_causal.sh
+  participant Eval as utils/run_metrics.sh
+
+  U->>Setup: 配置 PanoWorld Conda 并拉取 Wan2.2-5B + 480p/720p 权重
+  opt 本地训练前两阶段（Stage 3 GMA 待发布）
+    U->>Train: Stage 1 LoRA 全景适配 -> Stage 2 冻结 LoRA 训 DPRC
+  end
+  alt 高保真离线控制生成
+    U->>Infer: 传入 2:1 ERP 首帧 + prompt + pose.txt (--resolution 480/720)
+    Infer-->>Eval: 输出 gen_video.mp4 (81 帧)
+  else 交互实时长序列预览
+    U->>Causal: 启动 Chunk-wise DMD + Rolling Forcing (~8s / 161 帧)
+    Causal-->>Eval: 输出 causal_video.mp4
+  end
+  Eval-->>U: 计算 PSNR / FID / FID_pole / FID_equ / FAED / QAlign
+```
+
+## 工程实践
+
+- **硬件与环境要求：** 官方实测 Ubuntu 22.04 + Python 3.10 + CUDA `>=12.8` + `>=20GB` VRAM；须分别下载 `Wan-AI/Wan2.2-TI2V-5B` 与 `Insta360-Research/PanoWorld` 至 `models/`；Causal Forcing 实时模式使用独立的 `causal_forcing` 环境。
+- **自定义轨迹步长约定：** 传入 `pose.txt` 时，世界坐标系约定为 **`-x` 前向、`+y` 左向**，相邻帧水平位移建议保持约 **0.05**（`sqrt(action_dx^2 + action_dy^2) ≈ 0.05`），与 World360 等弧长重采样间隔对齐；480p 输出 `960×480`，720p 原生生成 `1408×704` 后上采样至 `1440×720`。
+- **开源覆盖边界：** 推理全链（含 `Action-Model` 与 `Casual-forcing`）及评测脚本 `utils/run_metrics.sh` 均可直接运行，但 Stage 3 GMA 记忆模块训练及全量 12 万条 World360 数据集尚待后续释放。
 
 ## 局限与风险
 
 - **模态与平台：** 数据以 **UAV 环视航拍** 为主，**地面人形 egocentric / 操纵手眼** 覆盖有限；与 [HumanoidPano](./paper-notebook-humanoidpano-hybrid-spherical-panoramic-lidar-cr.md) 等 **机器人环视感知** 需额外 domain 适配。
 - **物理可执行性：** 高 PSNR/FID **不保证** 可用于 closed-loop 控制或 Sim2Real；部署前仍需 [Video-as-Simulation](../concepts/video-as-simulation.md) 类 **交互/接触** 校验。
 - **显式 3D：** 不做 Matrix-3D 式全局 mesh/GS 重建，**持久 editable 3D 资产** 非目标；偏 **视频级 world rollout**。同机构重建线见 [PanoLOG / G²PS](./paper-panolog-ggps.md)。
-- **开源状态：** 论文承诺公开模型/代码/World360；以项目页与仓库实际上线为准。
+- **开源进展边界：** 虽然推理、480p/720p 权重与 Stage 1/2/4 脚本已发布，但 **Stage 3 GMA 训练与 World360 数据全集仍未完全释出**。
 
-## 关联页面与对比
+## 关联页面
 
 - [Generative World Models](../methods/generative-world-models.md) — 生成式 WM 总览；PanoWorld 为 **轨迹可控全景** 实例
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频 rollout 作仿真代理的适用边界

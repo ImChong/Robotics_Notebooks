@@ -2,7 +2,7 @@
 type: concept
 tags: [systems-engineering, control, inference, realtime, deployment, vla]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-23
 related:
   - ./rtos-realtime-scheduling.md
   - ./llm-robotics-control-interfaces.md
@@ -17,6 +17,7 @@ related:
   - ../overview/hub-systems-engineering.md
   - ../entities/paper-real-time-chunking.md
   - ../methods/action-chunking.md
+  - ../comparisons/vla-acceleration-25-methods-2026.md
   - ./flow-matching-embodied-policy.md
   - ./vla-action-to-joint-torque.md
 original:
@@ -101,6 +102,8 @@ flowchart LR
 - 两边状态不同步（观测时刻 vs 执行时刻）会造成分布偏移。
 
 ## 关联页面
+
+- [VLA 加速 25 法工程对照](../comparisons/vla-acceleration-25-methods-2026.md) — 逐层定位视觉计算、动作头、chunk 交接与云端服务的延迟瓶颈，避免混淆模型延迟与闭环响应。
 
 - [VLA 动作到关节力矩的执行链路](./vla-action-to-joint-torque.md) — 动作解码/IK/阻抗/驱动器电流环的完整物理落地路径。
 

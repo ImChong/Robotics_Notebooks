@@ -7,6 +7,8 @@
 - **技术路线分组：** 工程与实机部署
 - **链接：** https://github.com/mees/calvin
 - **入库日期：** 2026-07-30
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2112.03227v4 PDF 全文及 `mees/calvin@fa03f01` `README.md`、`calvin_agent/training.py`、`mcil.py`
 - **一句话说明：** 把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。
 - **开源状态（据主表）：** 已开源（以官方仓库 README 为准）
 - **策展入口：** [开源项目主表](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)

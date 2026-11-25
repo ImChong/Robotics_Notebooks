@@ -1,8 +1,10 @@
 ---
 type: entity
 tags: [paper, humanoid, VLA, object-memory, loco-manipulation, keyframe-memory, mbzuai]
-status: draft
+status: complete
 updated: 2026-10-29
+original:
+  - ../../sources/papers/wholebodymem_arxiv_2610_31166.md
 project_id: wholebodymem-prehistory-memory-humanoid-loco-manipulation
 arxiv: "2610.31166"
 project: https://memory-before-goal.github.io/
@@ -21,7 +23,25 @@ summary: "WholeBodyMem equips humanoid VLA policies with object-guided keyframe 
 
 # WholeBodyMem：人形移动操作的目标前历史记忆
 
-**一句话定义：** WholeBodyMem 让人形 VLA 保留执行目标前观察到的物体事件，减少遮挡、物体变化和视角转动造成的历史线索丢失。
+## 一句话定义
+
+WholeBodyMem 让人形 VLA 保留执行目标前观察到的物体事件，减少遮挡、物体变化和视角转动造成的历史线索丢失。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 被增强记忆的人形策略类型 |
+| SAM3 | Segment Anything Model 3 | 跟踪任务物体并触发事件 |
+| HuMeGo | 论文基准名 | 六项仿真 + 六项真机 G1 任务的记忆依赖基准 |
+| G1 | Unitree G1 humanoid robot | 真机平台 |
+| RA-L | IEEE Robotics and Automation Letters | 论文投稿期刊 |
+
+| 机构 | 穆罕默德·本·扎耶德人工智能大学（MBZUAI；[arXiv HTML v1](https://arxiv.org/html/2610.31166v1) 列出的作者单位） |
+
+## 为什么重要
+
+在人形移动操作场景中，机器人转身行进或手部遮挡会使目标物移出当前视野，标准仅看单帧的 VLA 策略无法回忆先前看到的物体位置或状态变化；WholeBodyMem 用目标物体事件触发的关键帧与物体记忆 token，在保持轻量化记忆长度的前提下显著提升非马尔可夫长视界任务成功率。
 
 ## 流程总览
 
@@ -47,19 +67,7 @@ flowchart TD
 
 图依据：论文 §IV-A/B/C（Fig. 3、Algorithm 1、式 1–3）；决策头仅用于 HuMeGo 记忆任务，其与动作专家的连接按 §IV-C 叙述归纳。
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 被增强记忆的人形策略类型 |
-| SAM3 | Segment Anything Model 3 | 跟踪任务物体并触发事件 |
-| HuMeGo | 论文基准名 | 六项仿真 + 六项真机 G1 任务的记忆依赖基准 |
-| G1 | Unitree G1 humanoid robot | 真机平台 |
-| RA-L | IEEE Robotics and Automation Letters | 论文投稿期刊 |
-
-| 机构 | 穆罕默德·本·扎耶德人工智能大学（MBZUAI；[arXiv HTML v1](https://arxiv.org/html/2610.31166v1) 列出的作者单位） |
-
-## 核心方法
+## 核心原理
 
 SAM3 跟踪任务物体，并由物体事件从历史观察中自适应选择关键帧。动作专家通过交叉注意力读取关键帧和物体 token；token 编码目标物体的外观、几何与时间信息。论文称其目标是记住与当前任务有关的关键历史，而不是简单堆叠更多帧。
 
@@ -77,8 +85,7 @@ HuMeGo 包含六项仿真和六项真实 Unitree G1 任务。论文摘要报告�
 - **相对 [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md)：** 两者都用事件触发的关键帧记忆并经交叉注意力注入；KEMO 由运动学减速峰与视觉去重选帧、面向双臂操作，WholeBodyMem 由 SAM3 物体事件选帧、额外编码物体 token，面向人形全身移动操作。
 - **相对 [MemER](./paper-memer.md)：** MemER 由高层 VLM 检索关键帧并生成子任务，WholeBodyMem 把记忆直接接入动作专家，不经语言子任务中转。
 
-## 工程启示
-
+## 工程实践
 - 记忆检索可由目标物体事件触发，保留的帧数不必与历史长度成正比。
 - 物体 token 同时带入外观、几何和时间信息，帮助策略区分“看到过什么”与“何时发生”。
 - 应分别评估物体跟踪、关键帧选择、记忆读取与最终任务成功率，定位记忆模块的失败来源。
@@ -99,9 +106,26 @@ HuMeGo 包含六项仿真和六项真实 Unitree G1 任务。论文摘要报告�
 - [官方项目页](https://memory-before-goal.github.io/)
 - [arXiv PDF](https://arxiv.org/pdf/2610.31166)：已通读方法部分（实验与附录以略读为准）：§I–III 略读、§IV（A–C，Algorithm 1）、§V-A 实验设定
 
+## 常见误区或局限
+
+- **上游 SAM3 追踪依赖：** 物体记忆高度依赖冻结 SAM3 的目标跟踪准确度，一旦出现遮挡重识别错误或提示词歧义，关键帧筛选与物体 token 将引入累积偏差。
+- **开源代码尚未独立释放：** 当前仅能通过项目页与论文 §IV 算法描述核对设计细节，直接复现 HuMeGo 评测协议需补齐上游硬件和跟踪器管线。
+
+## 关联页面
+
+- [VLA](../methods/vla.md)
+- [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [具身智能小站 58 篇技术地图](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)
+
 ## 关联页面
 
 - [VLA](../methods/vla.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md) — 事件驱动关键帧记忆 VLA
 - [MemER](./paper-memer.md) — 高层关键帧检索 + 低层 VLA
+
+
+## 推荐继续阅读
+
+- [arXiv:2610.31166](https://arxiv.org/abs/2610.31166)
+- [WholeBodyMem 项目主页](https://memory-before-goal.github.io/)

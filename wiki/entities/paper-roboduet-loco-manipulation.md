@@ -9,11 +9,15 @@ status: complete
 topic: [locomotion, model-based-control]
 summary: "RoboDuet 用 locomotion 与 arm 两个互相协作的策略控制带机械臂四足机器人，使其在移动中追踪末端 6D 位姿，并验证跨相近四足平台的零样本迁移。"
 updated: 2026-10-11
+original:
+  - ../../sources/papers/roboduet_arxiv_2403_17367.md
 ---
 
 # RoboDuet：四足机器人协作式全身移动操作
 
-**一句话定义：** RoboDuet 是面向“腿式移动底盘 + 机械臂”的双策略强化学习框架，让 locomotion policy 与 arm policy 协作完成边走边操作，而不是把两者作为互不沟通的独立控制器。
+## 一句话定义
+
+RoboDuet 是面向“腿式移动底盘 + 机械臂”的双策略强化学习框架，让 locomotion policy 与 arm policy 协作完成边走边操作，而不是把两者作为互不沟通的独立控制器。
 
 ## 英文缩写速查
 
@@ -31,8 +35,7 @@ updated: 2026-10-11
 
 该工作适用于研究带机械臂腿式机器人的全身移动操作，不应直接等同于人形机器人控制方法：其公开实验平台是 Unitree Go1/Go2 四足底盘搭配 ARX5 臂。
 
-## 核心方法
-
+## 核心原理
 项目页把控制器拆为两个策略：
 
 - **locomotion policy（\(\pi_{loco}\)）**：跟踪目标移动命令 \(\mathbf{c}_t\)，并根据 arm policy 给出的指引调整动作，以配合末端操作。

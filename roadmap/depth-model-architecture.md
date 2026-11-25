@@ -59,11 +59,13 @@ flowchart LR
 
 ### 推荐读什么
 - [人形与腿式策略的网络架构](../wiki/concepts/humanoid-policy-network-architecture.md) — 本路线的总纲：从浅层 MLP、AMP 判别器、MoE 到 Transformer/Diffusion chunk 与 VLA/WAM 的代际对照表
+- [CNN→Transformer→VLA/WAM：技术演进证据与营销叙事](../wiki/comparisons/ai-paradigm-evolution-evidence-vs-narrative.md) — Stage 0 先审查同预算基线、消融、OOD 外推及部署成本，避免把跨维度术语排成必然进化链
 - [人形运控策略的观测输入](../wiki/concepts/humanoid-policy-observation-inputs.md) — 五类输入按"部署是否可得"分类，决定架构的输入端设计
 - [具身三层控制架构](../wiki/concepts/embodied-three-layer-control-architecture.md) — 大脑 / 小脑 / 脊髓的时延预算与故障降级
 - [控制频率与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md) — 低频策略与高频执行环之间的三类接口
 - [神经反馈控制器](../wiki/concepts/neural-feedback-controller.md) — 把 policy 读成状态反馈律 $\pi(x)$，建立推理算力直觉
 - [深度学习基础](../wiki/concepts/deep-learning-foundations.md) · [反向传播](../wiki/concepts/backpropagation.md) — 函数逼近与可微计算图底座
+- [AccumulateMore/CV 深度学习 Notebook 合集](../wiki/entities/accumulatemore-cv.md) — Stage 0 先修练习：Dataset/DataLoader、CNN、反向传播与优化器；再进入 Stage 1 骨干选型（非机器人专用训练框架）
 
 ### 学完输出什么
 - 一张自己场景的分层频率表（层 × 周期 × 输入 × 时延上限 × 降级）
@@ -96,8 +98,11 @@ flowchart LR
 - [位置编码：绝对、RoPE、NoPE 与相对偏置](../wiki/concepts/positional-encoding.md) — 对照 GPT-2、正弦编码、RoPE 旋转与现代混合层，理解长序列顺序建模、实现细节及外推边界
 - [卷积神经网络](../wiki/concepts/convolutional-neural-network.md) · [通道与空间注意力](../wiki/methods/channel-spatial-attention.md) — 卷积路线与 Transformer 之前的注意力增强
 - [状态空间模型（SSM）](../wiki/concepts/state-space-model-ssm.md) — 选择性 SSM 如何在近线性复杂度下拿到长程能力
+- [SegMamba](../wiki/entities/paper-segmamba.md) — 三维密集感知的多尺度状态空间建模案例，比较论文与公开代码；不是机器人闭环验证。
 - [U-Net](../wiki/methods/unet.md) — 编码器–解码器 + 跳跃连接，后来成为扩散策略的常用去噪骨干
 - [深度学习优化器对比](../wiki/comparisons/deep-learning-optimizers.md) — 换骨干往往要连带换优化器与学习率策略
+
+- [MemT-1.0](../wiki/entities/paper-memt-1-0-memory-native-evolution.md) — 对照 Transformer 骨干旁的原生记忆支路、动态状态与稳定写入；属于语言模型架构案例，非机器人控制验证。
 
 ### 学完输出什么
 - 一张"归纳偏置 × 长程 × 并行度 × 推理复杂度"四维选型表，能对新骨干直接填格
@@ -238,10 +243,17 @@ flowchart LR
 - 选一条压缩路径（蒸馏或量化）做一次 A/B：记录成功率、动作平滑度与最坏时延三项，而不是只看平均时延
 
 ### 推荐读什么
+- [WePM：统一多模态模型的层级冲突协调](../wiki/entities/paper-wepm-hierarchical-conflict-reconciliation.md) — 2B/4B 同一视觉语言骨干统一表征、生成与类型化决策；区分 BF16 驻留权重节省、训练峰值显存与实际机器人闭环时延。
+- [ITT：Inner Thinking Transformer](../wiki/entities/paper-inner-thinking-transformer.md) — ACL 2025 的 token 级动态深度与残差思考：相同参数可多用计算提升语言准确率，但无机器人闭环验证；同时核算 FLOPs、训练显存和 P95 延迟。
+
+- [YOLO26 边缘部署与模型压缩](../wiki/methods/yolo26-edge-model-optimization.md) — 用官方导出/量化矩阵选择 ONNX、TensorRT、NCNN，区分 PTQ/QAT、结构化剪枝与蒸馏；按实际设备 mAP 与 P95/P99 延迟验收，而非套用转载加速比。
 - [NVIDIA Deepu Talla：机器人的 ChatGPT 时刻](../wiki/entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md) — 从三类计算平台、分层频率、蒸馏到可部署门槛的系统访谈；将“十秒大关”当成熟度比喻而不是任务时限。
+- [Inkling 2 Mini：循环式多模态 Transformer](../wiki/entities/inkling-2-mini.md) — 开放权重的 26.4B MoE 以共享中间 12 层三次循环 + NVFP4/MXFP8 取舍模型体积、内部计算与本地 Agent 延迟；不属于已验证的机器人动作策略。
 - [MACaQ：模型无关的 MXFP4 W4A4 校准量化](../wiki/entities/paper-macaq.md) — 逐线性层缩放、旋转、指数筛选与 Flip-Refinement；用于研究低比特模型部署，但需另测机器人闭环质量与实际时延。
 - [AIInfraGuide：AI Infra 全栈学习指南](../wiki/entities/aiinfraguide.md) — 单卡 Kernel、显存与多卡通信到推理调度的分层 Profiling 路线，用于给架构选型补性能证据
 - [Zero to SGLang｜从零手搓推理服务](../wiki/entities/zero-to-sglang.md) — 为 VLA 语义层补上 KV Cache、Continuous Batching、请求生命周期和 Profiling 的推理服务基础；不替代机载低层控制环时延测试
+- [Kaplan Scaling Laws（2020）](../wiki/entities/paper-scaling-laws-neural-language-models.md) — 先学原始 LM 交叉熵的 N/D/C 幂律与 compute-efficient 约束；防过拟合数据需求不等于最优 token 配比，具身任务须重新验证。
+- [Perplexity and Intelligence（OpenAI 2026）](../wiki/entities/openai-perplexity-and-intelligence.md) — Stage 5 的测评边界补充：预训练 log-PPL 能跟踪部分潜在能力进展，但既非闭环机器人成功率，也不等于安全认证；内部代码评测阈值不可迁移到 VLA。
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) — 数据 / 参数 / 泛化的幂律关系与边界
 - [实时性与泛化取舍](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) — 规模与推演步长如何压住控制带宽
 - [ONNX Runtime vs MNN vs TensorRT](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 机载推理栈选型

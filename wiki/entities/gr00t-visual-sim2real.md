@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, sim2real, visual-rl, humanoid, unitree-g1, isaac-lab, teacher-student, dagger, loco-manipulation, nvidia, cvpr2026]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-21
 related:
   - ./paper-doorman-opening-sim2real-door.md
   - ./paper-viral-humanoid-visual-sim2real.md
@@ -21,12 +21,19 @@ sources:
   - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
   - ../../sources/sites/doorman-humanoid-github-io.md
   - ../../sources/papers/viral-humanoid-visual-sim2real.md
+original:
+  - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
+  - ../../sources/papers/viral-humanoid-visual-sim2real.md
 summary: "GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架，包含 VIRAL 和 DoorMan 两项 CVPR 2026 研究，用 PPO Teacher + DAgger Student 蒸馏范式将仅靠 RGB 的策略零样本迁移到 Unitree G1 真机。"
 ---
 
 # GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)
 
 **GR00T-VisualSim2Real** 是 NVIDIA NVlabs 发布的开源框架，囊括两项 CVPR 2026 研究：**VIRAL**（人形 Loco-Manipulation 的规模化视觉 Sim2Real）和 **DoorMan**（像素到动作的策略迁移）。核心方法是 **PPO Teacher（特权状态）→ DAgger Student（RGB 蒸馏）** 的两阶段 pipeline，最终以 ONNX 格式部署到 Unitree G1 真机。
+
+## 一句话定义
+
+**GR00T-VisualSim2Real 把高采样吞吐的特权状态 PPO Teacher 与分块并行渲染的 RGB+本体 DAgger Student 蒸馏（及 DoorMan 的 GRPO 后微调）接在预训练全身 WBC 之上，实现 Unitree G1 纯 RGB 零样本 loco-manipulation。**
 
 ## 英文缩写速查
 
@@ -175,12 +182,17 @@ Teacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间
 | VIRAL 真机成功率 | **91.5%**（59 次连续真机试验，54/59） |
 | DoorMan | 零样本泛化到多种真实门型；任务完成时间优于人类遥操作 **31.7%** |
 
-## 工程要点
+## 工程实践
 
 - **ONNX 导出**：在 `eval_agent_trl.py` 中使用 `--num_envs 1` 时自动触发导出，便于真机集成
 - **域随机化**：通过 Isaac Lab 的 Hydra YAML 配置，可方便地调整 DR 参数（光照、纹理、动力学参数）
 - **并行训练**：Isaac Lab 并行环境，大规模采样提升 Teacher 的策略质量
 - **模块化配置**：Hydra 支持命令行覆盖，方便调整任务、DR 强度和超参
+
+## 常见误区或局限
+
+- **强依赖预训练底层 WBC 与视觉域随机化标定：** 若未对齐相机外参、灵巧手 SysID 或光影随机分布，仅靠纯 RGB Student 难以区分轻碰与重载接触。
+- **并行视觉渲染显存开销高：** 大规模 DAgger 蒸馏依赖分块并行渲染与多卡资源，硬件门槛显著高于纯本体状态 RL。
 
 ## 关联页面
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, llm-agents, agent-skills, corpus, retrieval, openclaw, safety, evermind, shanda, pku]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2607.15557"
 related:
   - ./paper-harnessbank.md

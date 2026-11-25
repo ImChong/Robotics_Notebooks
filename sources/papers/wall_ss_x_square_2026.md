@@ -4,13 +4,17 @@
 
 - **标题：** WALL-SS: Scaling Long-horizon World Models via Next-Scale Autoregression
 - **类型：** paper / next-scale autoregressive world model / policy evaluation / long-horizon video
-- **PDF：** <https://github.com/X-Square-Robot/wall-ss/blob/main/wall-ss-paper.pdf>（仓库内 `wall-ss-paper.pdf`；页眉 `arXiv:submit/7998075 [cs.RO] 26 Aug 2026`，截至 **2026-08-28** 尚无公开 `arxiv.org/abs` 编号）
-- **项目页：** <http://x2robot.com/pages/ss>（英文：<https://x2robot.com/en/pages/ss>）
+- **arXiv：** <https://arxiv.org/abs/2608.26239>（2026-11-21 复核官方仓 `README.md` 已公布 arXiv 编号 `2608.26239`；原提交页眉为 `arXiv:submit/7998075 [cs.RO] 26 Aug 2026`）
+- **PDF：** <https://arxiv.org/pdf/2608.26239>（仓库镜像：<https://github.com/X-Square-Robot/wall-ss/blob/main/wall-ss-paper.pdf>）
+- **项目页：** <https://wall-ss.ws-robotics.workers.dev/>（原官网入口：<http://x2robot.com/pages/ss>）
 - **代码：** <https://github.com/X-Square-Robot/wall-ss>
 - **机构：** 自变量机器人（X Square Robot）
 - **作者：** Maeve Zhang\*、Rain Sun\*、Xiang Wang\*、Cyril Zhang\*、Shalfun Li\*\*†、Meng Cao、Howard Lu、Ethan Chen 等；Hao Wang‡、Qian Wang（\* 核心贡献；† 项目负责人；‡ 通讯）
 - **日期：** 2026-08-26（论文）；GitHub 2026-08-27
 - **入库日期：** 2026-08-28
+- **再核日期：** 2026-11-21
+- **核对范围：** 通读 `wall-ss-paper.pdf`（6.4 MB）提取文本全文（§§1–7 全部章节、Table 1–3、Fig. 1–14 图注，含 WorldArena 200 ID + 100 OOD、600 对虚实闭环校准与真机 Task Progress 评测）；未运行模型（官方尚未发布训练/推理代码与权重）
+- **通读：** 已完成
 - **一句话说明：** 从 InfinityStar 初始化的 **下一尺度自回归** 具身世界模型：把观察–动作写成因果序列，用尺度对齐动作条件、有界时间–尺度记忆与 on-policy 视觉对齐，做动作可控、最长约 **60 s** 的流式推演，并用 **600** 组虚实配对验证策略评估校准。
 
 ## 开源状态（项目页 + 仓库核查，2026-08-28）

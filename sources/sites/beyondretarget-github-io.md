@@ -10,7 +10,7 @@
 
 ## 一句话摘要
 
-南京大学等提出的 **端到端单目视频→多机人形可执行 motion** 官方页：对比两阶段 GVHMR/WHAM→GMR/NMR 的 **collapse 与延迟**，展示 **八款人形**、仿真 SR 与 **~192 ms 流式推理**；声明当前开源与 demo 均为 **base 版**（固定相机、无大尺度全局轨迹），**performance 版** 计划后续发布。
+南京大学等提出的 **端到端单目视频→多机人形可执行 motion** 官方页：对比两阶段 GVHMR/WHAM→GMR/NMR 的 **collapse 与延迟**，展示 **八款人形**、仿真 SR 与 **~192 ms 流式推理**；声明当前开源与 demo 均为 **base 版**（固定相机、无大尺度全局轨迹），**Plus 独立版本已于 2026-11-22 核实开放**：[Plus 项目页](beyondretarget-plus.md) / [Plus 代码](../repos/beyondretarget-plus.md)；本页视频与原论文性能仍对应 base。
 
 ## 公开信息要点（截至入库日）
 
@@ -18,7 +18,7 @@
 - **卖点：** End-to-end · Multi-robot · Contact-aware · Streaming-ready · Real-time visual teleoperation（单目 1080p@30Hz，背景 mocap **未启用**）。
 - **Method 区块：** 两阶段 vs 端到端对比图；HMR2 特征 + TCAM + robot decoder + contact refine。
 - **表格：** 与 GVHMR/WHAM→NMR/GMR、GT→NMR/GMR 的 RAMPJPE / SR / foot slide；八机 RAMPJPE；流式 latency/VRAM/throughput。
-- **Notice：** base 版不支持 moving camera 与大范围 global human trajectory。
+- **Notice：** base 版不支持 moving camera 与大范围 global human trajectory；Plus 版另有独立开源实现（不改变本页 base 测评口径）。
 
 ## 为何值得保留
 

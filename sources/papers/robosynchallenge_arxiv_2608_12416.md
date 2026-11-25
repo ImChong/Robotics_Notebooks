@@ -9,7 +9,9 @@
 - **代码：** <https://github.com/EDEM-AI/RoboSynChallenge>（归档见 [`sources/repos/robosynchallenge.md`](../repos/robosynchallenge.md)）
 - **数据/权重：** [HuggingFace RoboSynChallenge](https://huggingface.co/RoboSynChallenge)
 - **入库日期：** 2026-08-19
-- **一句话说明：** 合成 state-action 训练通用操作策略，**最终只在未见真实环境**评测；基线覆盖 Transformer / Diffusion / VLA / WAM。
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.12416v1 PDF 全文 1,354 行及 `EDEM-AI/RoboSynChallenge@45d9b9c` `scripts/eval_policy.py`、`evaluation_results/README.md`
+- **一句话说明：** 基于双 AgileX Piper 6-DoF 机械臂的 10 任务灵巧操作基准：EmbodiChain 每任务合成 1,000 条训练轨迹 + 每任务 60 条真机评测轨迹（CC BY-NC-SA 4.0），π0.5 在 sim/real 分别达 38.50% / 33.00%。
 
 ## 开源状态（步骤 2.5）
 

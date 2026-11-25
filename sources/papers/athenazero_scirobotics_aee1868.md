@@ -5,14 +5,17 @@
 - **标题：** AthenaZero: A low-inertia, bimanual robot for dynamic manipulation
 - **类型：** paper / hardware-platform / dynamic-manipulation / bimanual / quasi-direct-drive
 - **期刊：** Science Robotics, Vol. 11, Issue 118（2026-09-16）
+- **arXiv 预印本：** <https://arxiv.org/abs/2609.19194>（`arXiv:2609.19194v1`，2026-09-15；作者公开接受版全文）
 - **DOI：** <https://doi.org/10.1126/scirobotics.aee1868>
-- **PDF：** <https://www.science.org/doi/pdf/10.1126/scirobotics.aee1868>
+- **PDF：** <https://arxiv.org/pdf/2609.19194>（期刊页 PDF <https://www.science.org/doi/pdf/10.1126/scirobotics.aee1868>）
 - **作者（首作者组）：** Andrew S. Morgan、Gregory Xie、Capprin Bass 等（RAI Institute 大团队；末位含 Alfred A. Rizzi、Annan Mozeika、Nicolas Rojas、Lael Odhner）
 - **机构：** 机器人与人工智能研究所（RAI Institute）；现代汽车集团（Hyundai Motor Group）资助
 - **项目页 / 博客：** <https://rai-inst.com/resources/blog/bimanual-robot-for-dynamic-manipulation/>
 - **代码：** [effective_mass_analysis](../repos/effective_mass_analysis.md) — MIT；有效质量椭圆复现
 - **数据：** [Zenodo 21939225](https://doi.org/10.5281/zenodo.21939225) · [Zenodo 22002793](https://doi.org/10.5281/zenodo.22002793) — 冲击测试、刚度评测、Fig.5–6 复现数据
-- **入库日期：** 2026-09-17（SciRob 原文）；**2026-09-22** 补链深蓝具身智能公众号导读
+- **入库日期：** 2026-09-17（SciRob 原文）；**2026-09-22** 补链深蓝具身智能公众号导读；**2026-11-22** 补通读公开预印本 `arXiv:2609.19194v1` 全文
+- **核对范围：** 通过 `arXiv:2609.19194v1` PDF 抽取全文（2,392 行，完整通读 Abstract、Introduction、Preliminaries/Design Methodology、Results 含 Table 1–3 与 Fig. 4–8 有效质量/摆锤冲击/刚度/棒球三项评测、Discussion Limitations 与 Materials & Methods 含 Allied Motion Megaflux / TQ 电机、1 kHz Copley Nano NES / EtherCAT、2-SS[RRRP]+1RR 腕部 3 μs LUT、TEPU 30A 气压触觉手掌与 Eq. 1–5）及官方博客与 `effective_mass_analysis` README；AAAS `science.org` PDF 遇 403、Zenodo API 遇 Cloudflare 403，改以作者公开 arXiv 预印本全文核对，未运行分析仓。
+- **通读：** 已完成
 - **中文导读：** [`sources/blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md`](../blogs/wechat_shenlan_athenazero_scirob_cover_2026-09-22.md)（<https://mp.weixin.qq.com/s/aAaWJZaMO8goQLkIs1U5QA>）
 - **一句话说明：** RAI 首款 **低惯量准直驱双臂** 原型 **AthenaZero**：通过 **传动远端化** 与 **5:1 级低减速比** 把腕部 **有效质量** 压到人臂量级（约 **3.97 kg** vs FR3 **29 kg**），无腕部力矩传感器；以 **棒球式投/接/打** 与人机对传验证 **人类节奏** 动态操作，并开源 **有效质量分析** 工具与评测数据。
 

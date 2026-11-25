@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, parkour, locomotion, transformer, sequence-modeling, future-prediction, amp, rgb-d, perceptive-locomotion, unitree-g1, hkust-gz, scau, gdut, clai-lab]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-20
 arxiv: "2605.25782"
 venue: arXiv
 related:
@@ -19,15 +19,17 @@ related:
   - ../methods/amp-reward.md
   - ../methods/reinforcement-learning.md
   - ../concepts/terrain-adaptation.md
+original:
+  - ../../sources/papers/parkourformer_arxiv_2605_25782.md
 sources:
   - ../../sources/papers/parkourformer_arxiv_2605_25782.md
   - ../../sources/sites/parkourformer-github-io.md
-summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用当前状态 cross-attention 查询历史，监督未来两步 AMP 状态并条件化动作与判别器；G1 九类地形单策略平均穿越 93.85%；代码 Coming Soon。"
+summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用当前状态 cross-attention 查询历史，监督未来两步 AMP 状态并条件化动作与判别器；G1 九类地形单策略平均穿越 93.96%（v4）；代码 Coming Soon。"
 ---
 
 # ParkourFormer（预测监督 + 序列建模人形跑酷）
 
-**ParkourFormer**（*Integrating Predictive Supervision and Sequence Modeling into Parkour Locomotion*，[arXiv:2605.25782](https://arxiv.org/abs/2605.25782)；[项目页](https://mronaldo-gif.github.io/parkourformer.github.io/)）由 **香港科技大学广州校区（HKUST-GZ）**、**CLAI-LAB / CL-TECH**、**华南农业大学（SCAU）**、**广东工业大学（GDUT）** 提出：把人形跑酷从「观测→动作」的 reactive RL 改写成 **future-conditioned Seq2Seq**——当前状态查询历史，预测头监督未来两步本体，再把预测未来喂给动作头与 AMP 判别器。在 **Unitree G1（29 DoF）** 上用**单一策略**覆盖九类地形，仿真平均穿越成功率 **93.85%**。
+**ParkourFormer**（*Integrating Predictive Supervision and Sequence Modeling into Parkour Locomotion*，[arXiv:2605.25782](https://arxiv.org/abs/2605.25782)；[项目页](https://mronaldo-gif.github.io/parkourformer.github.io/)）由 **香港科技大学广州校区（HKUST-GZ）**、**CLAI-LAB / CL-TECH**、**华南农业大学（SCAU）**、**广东工业大学（GDUT）** 提出：把人形跑酷从「观测→动作」的 reactive RL 改写成 **future-conditioned Seq2Seq**——当前状态查询历史，预测头监督未来两步本体，再把预测未来喂给动作头与 AMP 判别器。在 **Unitree G1（29 DoF）** 上用**单一策略**覆盖九类地形，仿真平均穿越成功率 **93.96%**（arXiv v4；v3 为 93.85%）。
 
 ## 一句话定义
 
@@ -50,7 +52,7 @@ summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用�
 ## 为什么重要
 
 - **把 foresight 从隐状态里拎出来：** [Next Token Prediction](./paper-notebook-humanoid-locomotion-as-next-token-prediction.md) 用因果 Transformer 拟合下一 token；ParkourFormer 额外加 **显式未来头 + 监督**，让当前动作直接吃 \(\hat{\mathbf{s}}_{t+1:t+2}\)。
-- **消融可操作：** 去 MSE 监督时下楼从 **95.42% → 9.50%**；去 RGB-D 时缺口从 **96.20% → 24.24%**。容量（vanilla Transformer 已 90.49%）不是主因。
+- **消融可操作：** 去 MSE 监督（v4 Table VII）均值 **93.96% → 91.83%**、下楼 **95.42% → 89.96%**；去 RGB-D 时缺口从 **96.20% → 24.24%**、均值 **80.08%**；预测步长 8 帧则崩到 **74.76%**。容量（vanilla Transformer 已 90.49%）不是主因。
 - **单策略、不拆技能：** 相对 [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 的 motion matching 技能链、[LightLP](./paper-light-loco-parkour.md) 的种子扩张 + 转移组，本稿押 **短时域预测 + 条件 FFN**。
 - **仿真栈可对照：** 训练走 [Hiking in the Wild](./paper-hiking-in-the-wild.md) 同族的 **Project Instinct MuJoCo**，便于和 Hiking 的 MoE + AMP 单阶段路线并读。
 
@@ -60,7 +62,7 @@ summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用�
 |----|------|
 | **机构** | 香港科技大学广州校区（HKUST-GZ）；创联人工智能实验室（CLAI-LAB / CL-TECH）；华南农业大学（SCAU）；广东工业大学（GDUT） |
 | **平台** | Unitree G1，29 DoF；真机 + 仿真 |
-| **仿真** | Project Instinct MuJoCo；4096 并行；200 Hz 仿真 / 50 Hz 控制；≤30k iter；RTX 4090D |
+| **仿真** | Project Instinct MuJoCo；4096 并行；50 Hz 控制（v3 归档称 200 Hz 仿真，v4 正文未见）；≤30k iter；RTX 4090D |
 | **输入（策略）** | 8 帧本体 \(o_t\in\mathbb{R}^{96}=[\boldsymbol{\omega}_a,\mathbf{g}_p,\mathbf{v}_c,\mathbf{q}_p,\mathbf{q}_v,\mathbf{a}_{t-1}]\) + 当前 RGB-D token \(\mathbf{z}_t\in\mathbb{R}^{128}\) |
 | **Query / 记忆** | \(\mathbf{Q}_t^{(0)}\in\mathbb{R}^{2\times 128}\)（当前观测 ⊕ 深度）；记忆 \(\mathbf{M}_t\in\mathbb{R}^{8\times 128}\) |
 | **AMP 状态** | \(s_t\in\mathbb{R}^{67}\)（含特权线速度 \(\mathbf{v}_l\)）；判别序列 \(\tilde{\mathbf{s}}_t\in\mathbb{R}^{10\times 67}\)（8 真实 + 2 预测） |
@@ -80,7 +82,7 @@ summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用�
 | 未来条件动作头 | \(\hat{\mathbf{a}}_t\sim\pi'(\mathbf{a}_t\mid\mathbf{Q}_t^{(L)},\hat{\mathbf{s}}_{t+1:t+2})\) |
 | AMP 判别器 | 输入改为 \([\mathbf{s}_{t-7:t};\hat{\mathbf{s}}_{t+1:t+2}]\)，把预期运动钉在参考流形上 |
 | 非对称 critic | 特权 \(\mathbf{v}_l\) 改善 value |
-| 联合 PPO | \(\mathcal{L}_{\mathrm{ppo}}+c_1\mathcal{L}_V+c_2\mathcal{L}_{\mathrm{pred}}-c_3\mathcal{H}-c_4\mathcal{L}_{\mathrm{AMP}}\)；\(c_2\) 对负 advantage 加大 |
+| 联合 PPO | \(\mathcal{L}_{\mathrm{ppo}}+c_1\mathcal{L}_V+c_2\mathcal{L}_{\mathrm{pred}}-c_3\mathcal{H}\)（策略侧，Eq. 12）；判别器另用 MSE 目标 \(\mathcal{L}_D\)（Eq. 13，不回传策略）；\(c_2\) 对负 advantage 加大 |
 
 ### 流程总览
 
@@ -136,31 +138,36 @@ Conditional SwiGLU（论文 Eq. 5）：\(\mathrm{FFN}(x,c_t)=\mathbf{W}_5\bigl(\
 
 ## 实验与评测
 
-九类程序地形 × L1–L9。主对照：1-MLP、4-MLP（MoE）、vanilla Transformer。
+九类程序地形（Table IV 给训练参数范围；评测分 ID / 外推 OOD=1.1× 训练上界 / 真机组合 OOD 三档），三随机种子报均值±标准差。主对照：1-MLP、4-MLP（MoE）、vanilla Transformer。
 
 | 模型 | Mean 成功率 | Target Near | Tracking Vel |
 |------|------------:|------------:|-------------:|
 | 1-MLP（无 MoE） | 46.73% | 0.199 | 0.554 |
 | 4-MLP（MoE） | 87.16% | 0.437 | 0.793 |
 | Vanilla Transformer | 90.49% | 0.462 | 0.812 |
-| **ParkourFormer** | **93.85%** | **0.489** | **0.837** |
+| **ParkourFormer** | **93.96%** | **0.489** | **0.837** |
+
+v4 另报 OOD 成功率：1-MLP 21.38%、1-MLP 逐地形训练 + FSM 切换 58.57%（ID 均值 88.36%）、4-MLP 61.43%、vanilla Transformer 84.19%、ParkourFormer **93.08%**。模型规模（Table III：Params/FLOPs/训练时/推理）：1-MLP 1.93M/2.25M/22h/0.16ms，ParkourFormer 3.74M/7.94M/89h/0.53ms。
 
 单地形极值：ParkourFormer 缺口 **96.20%**、下楼 **95.42%**、上坡 **95.32%**；1-MLP 在上/下楼与缺口接近失败（4.58% / 0.14% / 0.54%）。
 
 | 消融 | Mean | 关键塌点 |
 |------|-----:|----------|
-| 全文 | 93.85% | — |
-| w/o MSE 监督 | 82.87% | 下楼 **9.50%** |
+| 全文 | 93.96% | — |
+| w/o MSE 监督（保留预测通路） | 91.83% | 下楼 89.96% |
 | w/o RGB-D query | 80.08% | 缺口 **24.24%**、Climb Up **75.84%** |
 | w/o 未来预测头 | 92.79% | 全面小幅掉，无单地形崩盘 |
+| Action Without Prediction（有监督但不喂动作头） | 91.16% | — |
+| AMP Without Prediction | 87.19% | — |
+| 1 / 4 / 8 帧预测 | 91.31% / 88.51% / 74.76% | 8 帧下楼 0.20%；2 帧最优 |
 
-真机：项目页展示楼梯、平台、缺口与不规则障碍；统一策略、无按地形切换网络。
+真机（G1 + RealSense D435i，50 Hz，Table VIII，每项 20 次）：混合地形 Mix-L1/L2/L3 为 100% / 95% / 80%；上楼 0.32 m 95%、下楼 0.32 m 95%、缺口 0.50 m 90%；室外 OOD：室外楼梯 95%、长楼梯 80%、野外草地 100%（正文称四类室外 OOD，表仅三行有值）。统一策略、无按地形切换网络。
 
 ## 结论
 
 **一句话总判：人形多地形跑酷的增量不在「再换一个更大的 backbone」，而在把短时域接触/动量写成可监督的未来状态，并让当前动作与 AMP 判别器同时看见它。**
 
-1. **先看消融再看 93.85%** — vanilla Transformer 已 90.49%；真正救命的是下楼的 MSE 与缺口的 RGB-D。
+1. **先看消融再看 93.96%** — vanilla Transformer 已 90.49%；RGB-D 保住缺口/攀升（去掉后均值 80.08%）；MSE 监督去掉后均值 −2.13 pt，且预测步长过长（8 帧）会崩到 74.76%。
 2. **预测头 ≠ 世界模型** — 只预报两步本体/AMP 状态，不是像素或高程 rollout；别和 [SSR](./paper-ssr-humanoid-open-world-traversal.md) 的想象落脚或 WAM 未来图像混谈。
 3. **AMP 要吃预测未来** — 只加 \(\mathcal{L}_{\mathrm{pred}}\) 不够，判别序列必须接上 \(\hat{\mathbf{s}}_{t+1:t+2}\)。
 4. **单策略换技能链** — 适合「九类程序地形课」；不覆盖 PHP 式 1.25 m 攀墙技能库或 LightLP 的 0.83H 承重攀爬。
@@ -180,12 +187,13 @@ Conditional SwiGLU（论文 Eq. 5）：\(\mathrm{FFN}(x,c_t)=\mathbf{W}_5\bigl(\
 
 ## 局限与风险
 
-- **代码待发布：** 无法核对网络宽度、\(c_{1\ldots4}\) 或地形生成器；数字以 arXiv v3 / 项目页为准。`Pixel-114514/parkourformer.github.io` 亦为早期主页拷贝，不是训练仓。
+- **代码待发布：** 无法核对网络宽度、\(c_{1\ldots4}\) 或地形生成器；数字以 arXiv v4（2026-10-12）为准，v3 数字（如 93.85%）已过时。`Pixel-114514/parkourformer.github.io` 亦为早期主页拷贝，不是训练仓。
 - **AMP reset 无地形：** 作者自承参考被随机切段，动态跑酷缺地形条件化运动检索。
 - **RGB-D 单点故障：** 深度损坏则策略整体失效，没有盲走回退。
 - **奖励稀疏：** 大缺口/不规则障碍上优化仍弱。
 - **平台与课绑定：** 结果在 G1 + Instinct 九类课；迁 IsaacLab / 其他本体需重做。
-- **「47.12%」读法：** 是相对 **1-MLP** 的均值百分点，不是相对 vanilla Transformer。
+- **「47.12%」读法：** v3 摘要的该数是相对 **1-MLP** 的均值百分点（93.85−46.73）；v4 摘要改为对比 vanilla Transformer 90.49% 与 MoE-MLP 87.16%。
+- **论文自身不一致：** Table VIII 正文称四类室外 OOD 而表仅三行；v4 称机构为 HKUST-GZ 与 CLAI-LAB/CL-TECH（v3 另列 SCAU/GDUT）。
 
 ## 关联页面
 
@@ -207,7 +215,7 @@ Conditional SwiGLU（论文 Eq. 5）：\(\mathrm{FFN}(x,c_t)=\mathbf{W}_5\bigl(\
 
 - [ParkourFormer 论文归档](../../sources/papers/parkourformer_arxiv_2605_25782.md)
 - [parkourformer.github.io 项目页归档](../../sources/sites/parkourformer-github-io.md)
-- [arXiv:2605.25782](https://arxiv.org/abs/2605.25782)
+- [arXiv:2605.25782](https://arxiv.org/abs/2605.25782)（v4，2026-10-12，已通读 PDF 全文）
 
 ## 推荐继续阅读
 

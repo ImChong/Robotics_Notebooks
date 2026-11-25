@@ -8,6 +8,8 @@
 - **一句话说明：** 汇总把 URDF 连杆惯量与真机对齐所需的**规范字段、符号约定、书桌物理一致性检查、称重/静力学/动力学对照**一手来源；服务「怎么查 URDF 惯量对不对」而不是再讲一遍连杆 vs 转子分工。
 - **沉淀到 wiki：** 是 → [`wiki/queries/urdf-link-inertia-real-robot-check.md`](../../wiki/queries/urdf-link-inertia-real-robot-check.md)
 - **姊妹索引：** [`robot_link_rotor_inertia_primary_refs.md`](./robot_link_rotor_inertia_primary_refs.md)（连杆 vs `armature` 分工）
+- **通读：** 已完成
+- **核对范围：** 通读 ROS Wiki `urdf/XML/link`、MuJoCo `XMLreference.rst` `inertiafromgeom`、Traversaro (`arXiv:1610.08703`) 与 Wensing (`arXiv:1701.04395`) 全文。
 
 ## 为什么值得保留
 

@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - sim2real
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2605.09944"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -28,6 +28,8 @@ related:
   - ./paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ./paper-amp-survey-08-more.md
 sources:
+  - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
+original:
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
 summary: "显式楼梯几何条件化（arXiv:2605.09944）：BEV 点云预测踢面高度/踏面深度/航向与楼梯状态，直接条件化 PPO 人形策略；Isaac Lab 训练、G1 零样本实机，户外连续 33 级上楼，OOD 踢面高度泛化优于视觉 MoRE。"
 ---
@@ -66,7 +68,7 @@ summary: "显式楼梯几何条件化（arXiv:2605.09944）：BEV 点云预测�
 - **训练分布外踢面高度：** 在 **0.18–0.22 m 未见踢面** 上相对 **MoRE** 视觉基线保持更高成功率（0.22 m：**82.7% vs 69.4%**），支持「物理参数条件化」而非「记视觉模式」的叙事。
 - **可部署的 teacher–student 管线：** 仿真特权教师监督感知学生，部署 **仅机载传感 + 学生编码器 + 策略**；几何估计真机 MAE 约 **1 cm 级**、状态分类 **>97%**。
 
-## 方法
+## 核心机制（方法栈）
 
 | 模块 | 作用 |
 |------|------|
@@ -76,7 +78,7 @@ summary: "显式楼梯几何条件化（arXiv:2605.09944）：BEV 点云预测�
 | **PPO actor–critic** | 观测 $o_t=\{o_t^{\text{prop}}, z_t\}$，输出关节目标 → **全身 PD**；奖励沿用 Isaac Lab rough-locomotion 默认项。 |
 | **三阶段训练** | (1) 真值几何预训练 locomotion；(2) 教师监督训感知；(3) $\mathcal{L}_{\text{PPO}}+\mathcal{L}_{\text{terrain}}$ 联合微调。 |
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -118,7 +120,17 @@ flowchart TB
   train --> policy
 ```
 
-## 常见误区或局限
+## 工程实践
+
+- **感知编码输入尺寸：** 机载点云转为以机器人为中心的 **3 m × 3 m @ 5 cm** 6 通道 BEV 栅格（max / min / mean $z$、高度跨度、标准差与点密度），由轻量 CNN 压成 `128×8×8` 后回归 4 维几何条件。
+- **三阶段联合微调重点：** 阶段 1 用仿真真值 $z_t^{\text{gt}}$ 预训练 PPO 策略、阶段 2 用教师几何监督训练 BEV CNN（分类交叉熵 + 回归损失 $\mathcal{L}_{\text{cls}}+\mathcal{L}_h+\mathcal{L}_d$）、阶段 3 联调 $\mathcal{L}_{\text{PPO}}+\mathcal{L}_{\text{terrain}}$，避免视觉学生估计噪声导致的分布漂移。
+- **实机感知误差预算：** Table II 报告真机几何估计踢面/踏面 MAE 约 **1 cm 级**、状态分类准确度 **>97%**，直接支撑 Unitree G1 零样本户外 33 级连登及 MuJoCo 跨引擎无微调迁移。
+
+## 源码运行时序图
+
+**不适用（官方尚未公开代码仓库）。** `arXiv:2605.09944v1` 全文及摘要页均未附 GitHub/权重链接。
+
+## 常见误区与局限
 
 - **误区：「显式 = 不需要学习感知」。** 几何量仍由 **深度/点云 + CNN** 估计，真机有 **~1 cm 级误差**；鲁棒性来自 **低维、物理对齐的接口**，而非免感知。
 - **误区：「与 FastStair 同一条路」。** [FastStair](./paper-faststair-humanoid-stair-ascent.md) 用 **DCM 落脚点规划** 在训练中提供 **离散落点监督** 并追求 **高速上楼梯**（LimX Oli）；本文用 **连续几何参数条件化**、平台为 **G1**，未强调规划器在环。

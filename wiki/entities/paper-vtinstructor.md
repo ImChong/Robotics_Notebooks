@@ -3,12 +3,12 @@ type: entity
 tags: [vln, navigation, embodied-ai, egocentric-video, instruction-generation, pku]
 topic: [navigation]
 status: complete
-updated: 2026-10-11
+updated: 2026-11-21
 project_id: vtinstructor-navigation-instruction-generation
 arxiv: 2608.15284
 project: https://tidalharley.github.io/VTInstructor/
 code: https://github.com/TidalHarley/VTInstructor
-summary: "VTInstructor 把连续第一人称 RGB 轨迹压缩为导航关键帧，并将路径、转向、终点提示注入视觉编码器，生成指令后再以冻结导航 follower 验证下游效用。"
+summary: "VTInstructor（ACM MM 2026）基于 Qwen3-VL-8B ViT 第7层近零门控注入 VTP 3通道轨迹掩码，经 SFT 与 VT-GRPO 微调，R2R-CE CIDEr 0.560、冻结 follower SR 63.3%。"
 related:
   - ../tasks/vision-language-navigation.md
   - ./habitat-sim.md
@@ -18,11 +18,14 @@ sources:
   - ../../sources/papers/vtinstructor_arxiv_2608_15284.md
   - ../../sources/sites/vtinstructor.md
   - ../../sources/repos/vtinstructor.md
+original: ../../sources/papers/vtinstructor_arxiv_2608_15284.md
 ---
 
 # VTInstructor: Visual Trajectory Prompting for Navigation Instruction Generation in Continuous Environments
 
-**一句话定义：** VTInstructor 是面向连续环境视觉–语言导航（VLN）的指令生成框架；它将路线几何显式绘制回第一人称关键帧，让视觉语言模型据此生成自然语言指路。
+## 一句话定义
+
+**VTInstructor** 是面向连续环境视觉–语言导航（VLN-CE）的指令生成（Speaker）框架：先用事件驱动关键帧压缩提炼路线节点，再将路径带、转向弧与终点提示绘成三通道二值掩码并在 Qwen3-VL 视觉编码器第 7 层近零门控注入，生成无需导航图即可驱动下游 follower 的自然语言指路。
 
 ## 英文缩写速查
 
@@ -72,7 +75,7 @@ flowchart TB
 对关键帧绘制路径带、旋转箭头和终点标记，并编码为 3 通道二值掩码。它不是替代图像理解，而是把动作轨迹中的空间线索显式映射回视觉观察，减轻模型从长视频中自行重建路线的负担。项目页还描述了对指令–关键帧配对进行质量过滤。
 
 ### VTMod 与两阶段训练
-VTMod 将掩码编码为与视觉 patch 对齐的特征，在 Qwen3-VL 视觉编码器第 7 层进行逐 token 调制。接近零初始化的门控使模型逐步学习何时使用路线提示，降低训练初期扰动预训练表征的风险。训练采用 SFT → VT-GRPO：SFT 学习轨迹到语言的映射；GRPO 阶段用多候选回答的加权 NLG 奖励优化语言解码器与空间注入门控，并辅以门控对比损失。
+VTMod 将掩码经过卷积与自适应池化编码为与视觉 patch 对齐的特征，在 Qwen3-VL-8B 视觉编码器 **第 7 层**进行逐 token 调制。接近零初始化的可学习门控 \(g\) 使模型逐步学习何时使用路线提示，降低训练初期扰动预训练表征的风险。训练在 **8×H200** 上采用 SFT → VT-GRPO：SFT 学习轨迹到语言的映射；VT-GRPO 以组大小 \(G=8\) 采样候选回答，结合加权 B1/B4/METEOR/ROUGE-L/CIDEr 奖励与门控对比损失同步优化语言解码器与空间注入门控。
 
 ## 源码运行时序图
 
@@ -101,7 +104,7 @@ sequenceDiagram
 
 | 评测问题 | 论文报告 | 工程读法 |
 |---|---|---|
-| 指令文本质量 | R2R-CE、RxR-CE Val Unseen 标准 NLG 指标报告新高；相对最强 baseline，CIDEr 分别 +0.357、+0.109 | 文本指标衡量与参考指令相似度，不等于路径可执行 |
+| 指令文本质量 | R2R-CE Val Unseen **CIDEr 0.560**（相对最强基线 Gemini-3.1-Pro +0.357），RxR-CE **CIDEr 0.142**（相对最强基线 +0.109） | 文本指标衡量与参考指令相似度，不等于路径可执行 |
 | 下游 follower 效用 | 冻结 CorrectNav 在 R2R-CE Val Unseen 上 SR 为 63.3%，高于最强竞争指令来源 14.7 个百分点；项目页列人工指令 SR 61.6% | 比单纯文本分数更接近导航效用，但仍是基准结果 |
 | 指令数据增强 | 增加生成指令后，R2R-CE 与 RxR-CE 下游 SR 均约 +3 个百分点 | 需结合数据配比和相同训练/评测协议理解 |
 

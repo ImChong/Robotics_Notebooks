@@ -3,7 +3,7 @@ type: entity
 tags: [company, tactile, world-action-model, video-policy, sensor, manipulation, rhoda-ai]
 title: Rhoda：触觉传感器 + 多模态 DVA
 status: complete
-updated: 2026-10-16
+updated: 2026-11-21
 summary: "Rhoda AI 博客（2026-10-13）发布薄型触觉传感器（法向 + 剪切力，羽毛轻触响应几毫牛、量程到 40 N 以上、振动采样约 500 Hz），并把触觉测量接入多模态 DVA：以历史触觉视频预测未来触觉视频，再经逆动力学模型出动作；在遮挡腕部与头部相机的盲操作中取回纹理球；无成功率与试验次数，闭源。"
 related:
   - ./rhoda-ai.md
@@ -15,6 +15,9 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/sites/rhoda-ai.md
+  - ../../sources/sites/rhoda-dva-tactile-sensing-2026.md
+original:
+  - ../../sources/sites/rhoda-dva-tactile-sensing-2026.md
 ---
 
 # Rhoda：触觉传感器 + 多模态 DVA
@@ -46,7 +49,14 @@ Rhoda 自研一款可装在机器人夹爪上的**薄型触觉传感器**，并�
 - **沿用同一管线：** 不为触觉另造策略头，而是把触觉视频放进已有「预测—逆动力学」闭环；视触觉融合的一般做法见 [视触觉融合](../concepts/visuo-tactile-fusion.md)。
 - **传感器指标公开较具体：** 给出灵敏度、量程与采样率的数量级，可对照 [触觉感知](../concepts/tactile-sensing.md) 的选型维度。
 
-## 传感器（博客自报）
+## 核心原理
+
+Rhoda 的方案将**软硬件协同触觉传感**与**触觉视频化预测控制**结合：
+
+1. **薄型协同传感与标定：** 传感器针对夹爪指尖封装（高度 8 mm），将标定与信号处理算法与硬件协同设计，以抑制传统电阻/电容方案的漂移与迟滞，并在单一封装内同时输出空间分布的**法向力、剪切力、高频振动（~500 Hz）与温度**，避免视触觉相机体积过大或磁性传感器易受铁磁/邻近磁体干扰的问题。
+2. **触觉作为视频模态接入 DVA：** 模型不为触觉另设独立力控分支，而是把触觉传感器输出编码成**触觉视频（tactile video）**序列，与相机视频共同输入因果视频预测模型；预测出的**未来触觉视频**再由 **IDM** 解码为夹爪动作，在视觉完全遮挡时仅凭“历史触觉 → 未来触觉 → 动作”即可闭环搜索并抓稳目标。
+
+### 传感器（博客自报）
 
 | 项 | 内容 |
 |----|------|
@@ -61,7 +71,7 @@ Rhoda 自研一款可装在机器人夹爪上的**薄型触觉传感器**，并�
 
 Table 1 对光学、电容、磁性、电阻类传感器的评级引用综述文献，「在所有指标上表现一致」是作者自评。
 
-## 接入 DVA
+### 接入 DVA
 
 ```mermaid
 flowchart LR
@@ -120,6 +130,7 @@ flowchart LR
 
 ## 参考来源
 
+- [Rhoda AI 触觉传感器与多模态 DVA 官方原文核对（2026-11-21）](../../sources/sites/rhoda-dva-tactile-sensing-2026.md)
 - [Rhoda AI 官网研究页、新闻稿与团队页核查（2026-10-16）](../../sources/sites/rhoda-ai.md)
 - 原文：<https://www.rhoda.ai/research/giving-robots-a-sense-of-touch>
 

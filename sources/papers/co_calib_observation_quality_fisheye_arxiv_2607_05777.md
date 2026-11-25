@@ -6,11 +6,12 @@
 - **类型：** paper / multi-fisheye calibration / camera calibration / bundle adjustment / perception
 - **arXiv abs：** <https://arxiv.org/abs/2607.05777>
 - **PDF：** <https://arxiv.org/pdf/2607.05777>
-- **代码（即将开源）：** <https://github.com/HKUST-Aerial-Robotics/CO-Calib>
+- **代码（已开源）：** <https://github.com/HKUST-Aerial-Robotics/CO-Calib>
 - **发表日期：** 2026-07（arXiv）
 - **机构：** 香港科技大学（HKUST）电子与计算机工程系
 - **作者：** Peize Liu, Zhe Tong, Chen Feng（通讯作者）, Shaojie Shen
 - **入库日期：** 2026-07-16
+- **通读：** 已完成
 - **一句话说明：** 通过 **failure-oriented 分析** 揭示多鱼眼标定失败的主因是 **内参初始化病态**（焦距–投影形状参数耦合、径向覆盖不足），而非检测召回或图像平面分布失衡；提出 **plug-in** 框架 **CO-Calib**（学习型标定板检测 + 误差分析引导帧选择），在不改 BA 后端的前提下将合成基准成功率 **68.1%→99.3%**，并在 Hex-Fisheye 实机全成功。
 
 ## 摘要级要点

@@ -13,6 +13,8 @@
 - **机构：** Carnegie Mellon University, The AI Institute, Seoul National University
 - **入库日期：** 2026-06-12
 - **一句话说明：** **分层控制**：技能层用 **5 路 ASE 模仿 + ball-control + mixer 混合** 缓解 mode collapse；策略层用 **迭代行为克隆（CVAE）** 在 agent–agent 与 **VR 人–机** 环境中学习技能选择与落点，支持竞争/合作两种策略。
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2407.16210v1 全文 PDF（1206 行），核对策略层 CVAE + 技能层五专家/Mixer 三阶段流程与讨论局限（未建 Magnus 效应等）及结论
 
 ## 核心摘录
 

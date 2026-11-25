@@ -7,6 +7,8 @@ source: "https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ"
 
 # (4万字）Humanoid Hardware入门 101
 
+- **通读：** 已完成
+
 ## 引言与研究目标
 
 本文档是一份人形机器人硬件的核心部件拆解分析报告，旨在解答三个核心问题：

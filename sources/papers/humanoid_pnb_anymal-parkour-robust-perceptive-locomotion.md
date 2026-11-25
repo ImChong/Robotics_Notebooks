@@ -10,7 +10,10 @@
 - **项目页：** <https://sites.google.com/leggedrobotics.com/agile-navigation>（[本地归档](../sites/anymal-parkour.md)）
 - **代码 / 数据：** [Zenodo 图表数据与绘图脚本](../repos/anymal-parkour-plotting-artifact.md)；完整策略实现未公开
 - **入库日期：** 2026-06-07
-- **一句话说明：** 宇树（ETH Zurich）团队通过分层分层的强化学习，让 ANYmal 机器人不仅掌握了攀爬、跳跃、钻洞等多种单一跑酷技能，还能根据地形环境感知自主选择最优的技能路径。
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `arXiv:2306.14874`（Science Robotics 2024，pdftotext 1489 行）全文：Abstract、Introduction、Results（感知重建、5 类低层技能 RL、高层能力感知导航与实机 parkour）、Discussion/Limitations、Materials and Methods 与 Table/Supplementary 参数；完整策略与训练代码未公开（仅 Zenodo 公开图表数据与绘图脚本）。
+- **通读：** 已完成
+- **一句话说明：** ETH Zurich 与 NVIDIA 团队通过感知重建、五技能低层强化学习库与能力感知高层导航，使 ANYmal D 不仅掌握攀爬、跳台、跨沟、钻洞等多种敏捷跑酷技能，还能根据环境几何自主规划最优路径（最高约 2 m/s）。
 
 ## 核心摘录（策展，非全文）
 

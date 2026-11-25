@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, foundation-policy, manipulation, skild-ai, cmu]
 title: Skild AI
 status: complete
-updated: 2026-11-15
+updated: 2026-11-21
 related:
   - ./skild-s1.md
   - ./skild-physical-self-play.md
@@ -13,6 +13,11 @@ related:
   - ../overview/overseas-embodied-ai-labs-landscape-2026.md
   - ../overview/notable-commercial-robot-platforms.md
   - ./paper-locoformer.md
+original:
+  - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
+  - ../../sources/sites/skild-ai.md
+  - ../../sources/blogs/skild_s1_in_context_learning.md
+  - ../../sources/blogs/skild_physical_self_play_2026-09-23.md
 sources:
   - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
   - ../../sources/sites/skild-ai.md
@@ -70,7 +75,9 @@ summary: "Skild AI 是 CMU 体系衍生的具身基础模型公司，主张 omni
 
 S1 正文回顾的 **2026-02 域内 ICL / 2026-05 首次翻煎饼**是内部研发里程碑，不能作为两个独立项目发布。2026-09-10 部署跟进博文提到 S1 “两周前”发布；本路线采用官方列表显示日期，不倒算出另一个首发日。详见[日期与身份依据](../../sources/sites/skild-ai-timeline-audit-2026-10-07.md)。
 
-## 框架关系
+## 核心原理（技术路线与框架关系）
+
+Skild AI 对外呈现的路线以单一统一具身大脑（Skild Brain）与多阶段适应为主轴：早期工作 [LocoFormer](./paper-locoformer.md) 通过大规模仿真 PPO + 程序生成形态 + Transformer-XL 实现跨本体长上下文适应；旗舰操作模型 [S1](./skild-s1.md) 主打视频上下文 In-Context Learning（ICL）免微调快速泛化；后续 [Physical Self-Play](./skild-physical-self-play.md) 则在仿真中通过单一 score 目标与近期自博弈后训练涌现对抗技能并 Sim2Real 部署。下方 Mermaid 图梳理公开信息中各模块与阶段的位置及未确认边界：
 
 ```mermaid
 flowchart TB
@@ -117,6 +124,7 @@ flowchart TB
 
 - [Skild AI 公司站点归档](../../sources/sites/skild-ai.md)
 - [S1 博客归档](../../sources/blogs/skild_s1_in_context_learning.md)
+- [Physical Self-Play 博客归档](../../sources/blogs/skild_physical_self_play_2026-09-23.md)
 
 ## 推荐继续阅读
 

@@ -15,6 +15,8 @@
 - **机构：** 斯坦福大学（Stanford University）
 - **venue / 状态：** **ICCV 2025**（仓库 README）；arXiv:2504.00983
 - **入库日期：** 2026-07-27
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2504.00983v2 PDF 全文 2,561 行及官方仓 `haoyi-duan/WorldScore` 核心评测入口
 - **一句话说明：** 首个面向 **world generation** 的统一评测：把世界生成拆成带显式相机轨迹的 **next-scene** 序列，用 3000 例覆盖静/动、室内外、写实/风格化，以 **可控性 / 质量 / 动态** 十项指标汇总为 WorldScore-Static / Dynamic，统一评测 3D、4D、I2V、T2V。
 
 ## 开源核查（2026-07-27）

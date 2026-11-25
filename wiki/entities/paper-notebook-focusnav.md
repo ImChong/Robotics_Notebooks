@@ -13,7 +13,7 @@ tags:
   - shanghai-innovation-institute
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2601.12790"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
@@ -23,6 +23,8 @@ related:
   - ./paper-notebook-egonav.md
   - ./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md
 sources:
+  - ../../sources/papers/humanoid_pnb_focusnav.md
+original:
   - ../../sources/papers/humanoid_pnb_focusnav.md
 summary: "FocusNav（arXiv:2601.12790）在 Unitree G1 上以 LiDAR+深度构建 BEV，反向预测无碰撞 waypoint；WGSCA 沿路径聚焦，SASG 在失稳时截断远端信息并优先脚下地形。最难动态非结构化仿真 SR 87.02%；截至 2026-07-28 未开源。"
 ---
@@ -151,7 +153,7 @@ waypoint token 查询 BEV patch，二者都投影到同一坐标系并加正弦�
 - Gumbel 二值门控会突然丢弃远端动态障碍信息；真实密集人群中的安全边界需额外验证。
 - 论文没有公开代码，真机结果主要是受控 arena，不等价于长时间开放世界自主导航。
 
-## 与其他页面的关系
+## 关联页面
 
 - [导航纵深路线 Stage 3](../../roadmap/depth-navigation.md) — 学习型人形局部导航节点
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md) — FocusNav 将传统局部规划与低层执行进一步耦合

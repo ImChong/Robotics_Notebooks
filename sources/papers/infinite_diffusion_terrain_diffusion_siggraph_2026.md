@@ -12,6 +12,9 @@
   - 代码：<https://github.com/xandergos/terrain-diffusion>
 - **作者：** Alexander Goslin（Independent Researcher）
 - **入库日期：** 2026-07-14
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `arXiv:2512.08309v4`（SIGGRAPH 2026，pdftotext 2190 行）全文：Abstract、§1–§6（InfiniteDiffusion 无界采样、Laplacian 编码 $\operatorname{sign}(x)\sqrt{|x|}$、分层高程与气候模型、World/Texture Synthesis 与 9× 轨道速度、Table 1–5 消融与对比、Limitations）、Appendix；同步核对官方源码 `xandergos/terrain-diffusion`（`__main__.py`、`inference/api.py`、`inference/world_pipeline.py`、`README.md`）。
+- **通读：** 已完成
 - **一句话说明：** 提出 **InfiniteDiffusion**——无需再训练的算法，把任意扩散采样改造成 **无限、惰性、O(1) 随机访问、种子确定** 的无界张量；并以 **Terrain Diffusion** 演示 **学习式程序化地形**：分层扩散堆栈 + Laplacian 编码覆盖地球尺度高程动态范围，在消费级 GPU 上以约 **9× 轨道速度** 实时流式生成，并开源 **Minecraft Fabric** 与 Unity 集成。
 
 ## 相关资料（策展）

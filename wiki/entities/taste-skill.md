@@ -1,5 +1,7 @@
 ---
 type: entity
+project_id: leonxlnx-taste-skill
+code: https://github.com/Leonxlnx/taste-skill
 tags:
   - llm-agents
   - coding-agents
@@ -9,9 +11,15 @@ tags:
   - open-source
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-11-22
+original:
+  - ../../sources/repos/leonxlnx-taste-skill.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./impeccable.md
+  - ./taste-skill-classics.md
+  - ./claude-code-frontend-skills.md
   - ./skillry.md
   - ./anthropic-frontend-design-skill.md
   - ./gsap-skills.md
@@ -22,7 +30,7 @@ related:
 sources:
   - ../../sources/repos/leonxlnx-taste-skill.md
   - ../../sources/sites/tasteskill-dev.md
-summary: "Taste Skill 是 MIT 开源的反 AI 模板前端 Agent Skill：brief 推断、DESIGN_VARIANCE/MOTION_INTENSITY/VISUAL_DENSITY 三旋钮、硬禁令与 pre-flight，安装名 design-taste-frontend（v2 默认）。"
+summary: "Taste Skill 2.5.1 以业务类型、真实素材、布局发牌与 Node 脚本浏览器门禁组织网站设计；早期三旋钮和极简/粗野主义风格已拆出 Classics。"
 ---
 
 # Taste Skill
@@ -31,7 +39,7 @@ summary: "Taste Skill 是 MIT 开源的反 AI 模板前端 Agent Skill：brief �
 
 ## 一句话定义
 
-在 **SKILL.md 层** 用 **方差 / 动效 / 密度** 三个可调 dial + **禁令清单 + 起飞前检查**，把 agent 从默认 SaaS 审美拉向 **brief 对齐的、非对称也可的高完成度 UI**。
+当前 `tasteskill 2.5.1` 根据业务类型选择配色、字体和 Hero，要求真实照片与产品 UI，再用实际浏览器一致性检查和 finish gate 验收；三旋钮是已分拆旧版规则。
 
 ## 英文缩写速查
 
@@ -49,42 +57,73 @@ summary: "Taste Skill 是 MIT 开源的反 AI 模板前端 Agent Skill：brief �
 - **与 GSAP skill：** [GSAP AI Skills](gsap-skills.md) 教 **API**；Taste Skill 管 **动多少、何时 scroll/magnetic**（`MOTION_INTENSITY`）。
 - **与 Impeccable：** Taste 偏 **生成前/生成中 SKILL 规约**；Impeccable 偏 **命令动词 + 61 条 detector 闭环** — 可叠加（见 [对比](../comparisons/skillry-taste-skill-impeccable.md)）。
 
-## 核心结构
+## 核心原理
 
-| 层次 | 内容 |
-|------|------|
-| **默认安装** | `npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"` |
-| **v2（默认）** | experimental；安装名稳定，规则迭代 toward v2.0.0 stable |
-| **三旋钮** | `DESIGN_VARIANCE` · `MOTION_INTENSITY` · `VISUAL_DENSITY` |
-| **协议块** | brief inference；design-system map；dark mode；redesign protocol；block library schema；§14 pre-flight |
-| **硬禁令示例** | em-dash ban；反 boilerplate 布局/字体默认值 |
-| **变体 skill** | v1 兼容、`gpt-taste`、minimalist、brutalist、`output-skill`（防半成品） |
-| **协议** | MIT |
+| 模块 | 最新官方 README / SKILL 证据 |
+|---|---|
+| 业务分类 | `software`、`gaming`、`tech`、`product`、`service`、`place` |
+| Design deal | `scripts/start.mjs` 生成颜色、字体、Hero 布局方案 |
+| 页面素材 | 真实照片、品牌 icon、实产品 UI 和明确素材来源 |
+| Motion 分层 | 仅 tech/software/gaming 可用 shader 与 scroll scene；非技术场所偏摄影 |
+| 验收 | `scripts/consistency.mjs` 在多视口检查；`scripts/gate.mjs` 作 finish gate |
 
-### 三旋钮（治理「AI 味」的主控）
+## 流程总览
 
 ```mermaid
-flowchart TB
-  B[Brief 推断] --> V[DESIGN_VARIANCE]
-  B --> M[MOTION_INTENSITY]
-  B --> D[VISUAL_DENSITY]
-  V --> R[布局家族 / 对称性]
-  M --> A[hover vs scroll / magnetic]
-  D --> I[留白 vs 高密度仪表盘]
-  R --> P[Pre-flight §14]
-  A --> P
-  I --> P
-  P --> OUT[交付前端代码]
+flowchart LR
+  A["真实业务简报"] --> B["start.mjs 选型和 Tokens"]
+  B --> C["真实素材与产品 UI"]
+  C --> D["实现页面"]
+  D --> E["consistency.mjs 多视口检查"]
+  E --> F{"gate 是否通过？"}
+  F -->|否| D
+  F -->|是| G["交付"]
 ```
+
+## 源码运行时序图
+
+README 已公布以下命令及对应脚本职责，未假定存在单独后端服务。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as Maintainer
+  participant S as start.mjs
+  participant L as DesignAssets
+  participant C as consistency.mjs
+  participant B as HeadlessChrome
+  participant G as gate.mjs
+  U->>S: node scripts/start.mjs deal --page tech
+  S->>L: 读取 Palette、Type、Layout
+  L-->>U: 返回 Tokens 和 Hero
+  U->>C: node scripts/consistency.mjs URL --page tech
+  C->>B: 多视口打开页面
+  B-->>C: 渲染与布局结果
+  C-->>U: PASS/WARN/FAIL
+  U->>G: node scripts/gate.mjs
+  G-->>U: 门禁结果
+```
+
+## 工程实践
+
+- 安装：`npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"`；Node 22+、Chrome/Edge/Chromium 必需，ffmpeg 可选。
+- 对机器人硬件技术官网选 `tech`，Web 应用选 `software`，并使用可信实物图与产品 UI，而不是虚构实证。
+- `DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY` 与 `industrial-brutalist-ui`、`minimalist-ui` 等已在 [Taste Skill Classics](taste-skill-classics.md) 作为旧版单独维护。
 
 ## 常见误区或局限
 
-- **误区：装一次就永久去 slop。** v2 仍 **experimental**；规则措辞可能变，重大改版应 pin v1（`design-taste-frontend-v1`）。
-- **误区：替代设计系统仓库。** 它约束 **生成**；长期产品仍需要 token 与组件库文档（可与 Impeccable `DESIGN.md` 并用）。
+- **误区：当前主仓仍是三旋钮 experimental。** 2.5.1 采用脚本发牌与浏览器门禁；旧版 dial-driven Skills 在 Classics。
+- **误区：自动门禁替代真实验收。** 功能、品牌与访问性仍需项目级评审。
 - **局限：** 技能正文偏 **Web 前端**；机器人栈 UI（RViz、自定义 teleop）需自行改写 brief 与 design-system map。
 - **局限：** 高 star 不等于安全审计 — 仍应读 SKILL 变更日志再升级。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 浏览器一致性门禁与独立用户路径测试互补
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 先定品牌和页面类型，再编排实现、测试阶段
+
+- [Taste Skill Classics](taste-skill-classics.md) — 历史版三旋钮、极简与工业风格
+- [Claude Code Frontend Skills](claude-code-frontend-skills.md) — 多 Skill 冲突裁决
 
 - [Impeccable](impeccable.md) — 命令 + detector
 - [Skillry](skillry.md) — 商业交付物市场

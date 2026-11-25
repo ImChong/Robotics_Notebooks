@@ -3,7 +3,9 @@
 - **URL：** <https://github.com/zengweishuai/ScaleBFM>
 - **Maintainer：** Weishuai Zeng（上海人工智能实验室等，与 arXiv:2607.15163 作者团队一致）
 - **入库日期：** 2026-07-18
-- **最近核查：** 2026-10-25
+- **最近核查：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `zengweishuai/ScaleBFM` 主 README（100 行）、`ScaleTrack/README.md`（420 行）、1263 文件目录树，以及实际入口 `ScaleTrack/scripts/pretrain/rsl_rl/train.py` 与 `ScaleBridge/scalebridge/run.py`。
 - **关联论文：** [Scaling Behavior Foundation Model for Humanoid Robots](https://arxiv.org/abs/2607.15163)（arXiv:2607.15163）
 - **项目页：** <https://scalebfm.github.io/>
 - **开源状态（截至 2026-10-25）：** **已开源** — 上游仓库现包含 ScaleRetarget、ScaleTrack 与 ScaleBridge 的代码及使用说明。官方项目页的 Code 链接指向本上游仓库。另有 fork [Hxxxz0/ScaleBFM_Plus](./scalebfm-plus.md) 增加 SuperMimic-style 训练、checkpoint 与 ONNX 导出记录。

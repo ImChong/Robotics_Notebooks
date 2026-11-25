@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, reinforcement-learning, unitree-g1, sim2real, teleai, sjtu, omoe, icra-2026]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2509.16638"
 venue: "ICRA 2026"
 related:
@@ -22,6 +22,9 @@ sources:
   - ../../sources/repos/pbhc.md
   - ../../sources/papers/humanoid_pnb_kungfubot-2.md
 summary: "KungfuBot2 / VMS（TeleAI/SJTU，ICRA 2026）以混合局部-全局跟踪、正交混合专家 OMoE 与段级奖励，在单策略内掌握多样动态技能并保持分钟级长序列稳定；PBHC 仓库 2025-10 起支持 general motion tracking，可作 text-to-motion 低层控制器。"
+original:
+  - ../../sources/papers/kungfubot2_vms_icra2026.md
+  - ../../sources/repos/pbhc.md
 ---
 
 # KungfuBot 2（VMS — Versatile Motion Skills）
@@ -112,6 +115,17 @@ flowchart TB
 - **真机：** 风格化 locomotion、羽毛球/抛球/挥拍、多样踢腿、武术、Charleston/自由舞/长武术套路等（见 [项目页](https://kungfubot2-humanoid.github.io/)）。
 - **下游：** 自然语言 text-to-motion；极限 OOD 技能少量微调。
 
+## 与其他工作对比
+
+- **vs 通用全身跟踪基线（ExBody2、GMT）：** VMS 在局部姿态保真与全局轨迹一致性两类误差上均优于 ExBody2 与 GMT，并有效控制根位置漂移；按动作时长分桶评测显示，基线随序列变长明显退化，而 VMS 在分钟级长序列上保持低误差与稳定。
+- **架构消融（OMoE vs 标准 MoE / MLP）：** 相比标准 MoE 与 MLP，正交混合专家（OMoE）带来更低跟踪误差与更好泛化；专家路由随动作复杂度自适应组合（重复步态激活少数专家，多变舞蹈激活更多专家）。
+- **vs 前作 [KungfuBot v1](./paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md)：** v1 侧重物理约束 motion 清洗 + 双层自适应容差课程下的高动态单技能学习；KungfuBot 2（VMS）则面向单策略覆盖多技能与分钟级长序列（混合局部-全局跟踪目标 + OMoE + 段级未来窗口奖励），对应 PBHC 仓库 2025-10 起的 `general motion tracking` 分支。
+- **vs 姊妹工作 [KungFuAthleteBot](./paper-kungfuathlete-humanoid-martial-arts-tracking.md)：** KungFuAthleteBot 侧重运动员级武术数据集统计与 tracking + 跌倒 recovery 整合；KungfuBot 2 侧重多技能统一控制、长序列防漂移以及作为 text-to-motion 高层规划器的低层执行底座。
+
+## 工程实践
+
+- **基于 PBHC 2025-10 主干部署长序列通用跟踪**：调用 `TeleHuman/PBHC` 新版 `general motion tracking` 分支时，保持局部轮廓保真 + 全局轨迹一致混合目标与正交混合专家（OMoE）路由结构，确保分钟级武术与舞蹈多动作切换不积累全局漂移，并通过少量 OOD 微调解锁空翻等新技能或接入高层 text-to-motion 接口。
+
 ## 结论
 
 **单策略覆盖多样动态技能并稳住分钟级长序列，靠的是混合跟踪目标 + OMoE + 段级未来窗口奖励，而不是把 KungfuBot v1 的高动态课程直接加宽。**
@@ -122,13 +136,13 @@ flowchart TB
 4. **可当高层规划的低层底座** — 支持 text-to-motion 指令跟踪；空翻等 OOD 用少量微调扩展，不必为每技能重训整网。
 5. **读代码对齐 PBHC general motion tracking** — 2025-10 后对应 v2；勿与 v1 高动态单技能+自适应容差课程混为同一设定。
 
-## 常见误区
+## 局限与风险
 
 1. **VMS ≠ KungfuBot v1 小改：** v1 侧重 **高动态单技能 + 自适应容差课程**；v2 是 **多技能架构（OMoE + 混合目标 + 段奖励）** 问题设定不同。
 2. **仓库分支：** 读 PBHC 时注意 2025-10 后 **general motion tracking** 对应 v2；v1 方法与 checkpoint 仍在同库但配置不同。
 3. **与 loco-manip 161 综述条目一致：** 教师-学生/特权信息训练脉络与 [loco_manip_161 摘录](../../sources/papers/loco_manip_161_survey_013_kungfubot2.md) 相符，但实体页以项目页/论文为准。
 
-## 与其他页面的关系
+## 关联页面
 
 - **前作：** [KungfuBot v1](./paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 高动态武术 + 自适应课程
 - **姊妹：** [KungFuAthleteBot](./paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 数据集 + recovery

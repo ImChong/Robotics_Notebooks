@@ -14,6 +14,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_motion_control_know_how.md
   - ../../sources/papers/mpc.md
+original:
+  - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
 # Centroidal NMPC + WBC 栈

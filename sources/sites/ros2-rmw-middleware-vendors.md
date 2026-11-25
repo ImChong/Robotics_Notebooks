@@ -14,6 +14,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** 官方定义 **RMW 包如何把 DDS/RTPS vendor 接到 ROS 2**、发行版支持矩阵，以及用 `RMW_IMPLEMENTATION` **运行时切换**与排错要点。
 - **沉淀到 wiki：** 是 → [`wiki/concepts/rmw-interface.md`](../../wiki/concepts/rmw-interface.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `ros2/ros2_documentation` 官方 `About-Different-Middleware-Vendors.rst`（98 行）。
 
 ## 为什么值得保留
 

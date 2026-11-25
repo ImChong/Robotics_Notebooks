@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import generate_link_graph as glg
 import graph_exports_sync as ges
 import pytest
 from graph_exports_sync import GRAPH_EXPORT_FILES, repo_root
@@ -14,6 +15,29 @@ def test_graph_export_filenames_include_core_graph_json() -> None:
     assert "link-graph.json" in GRAPH_EXPORT_FILES
     assert "home-stats.json" in GRAPH_EXPORT_FILES
     assert "hub-rankings.json" in GRAPH_EXPORT_FILES
+    assert "mini-graph.json" in GRAPH_EXPORT_FILES
+
+
+def test_build_mini_graph_keeps_connected_top_nodes_and_max_degree() -> None:
+    nodes = [
+        {"id": "wiki/a.md", "label": "A", "type": "concept", "community": "c1", "detail_id": "a"},
+        {"id": "wiki/b.md", "label": "B", "type": "method", "community": "c1", "detail_id": "b"},
+        {"id": "wiki/iso.md", "label": "Iso", "type": "entity", "community": "c2"},
+    ]
+    edges = [
+        {"source": "wiki/a.md", "target": "wiki/b.md"},
+        {"source": "wiki/b.md", "target": "wiki/a.md"},
+    ]
+    summaries = ["sum-a", "sum-b", "sum-iso"]
+    communities = [{"id": "c1", "label": "C1", "size": 2}]
+    mini = glg.build_mini_graph(nodes, edges, summaries, communities, top_n=2)
+    assert mini["max_degree"] == 2
+    assert mini["communities"] == communities
+    ids = [n["id"] for n in mini["nodes"]]
+    assert ids == ["wiki/a.md", "wiki/b.md"]
+    assert mini["nodes"][0]["summary"] == "sum-a"
+    assert mini["nodes"][0]["_degree"] == 2
+    assert len(mini["edges"]) == 2
 
 
 def test_repo_root_points_at_workspace() -> None:

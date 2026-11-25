@@ -13,7 +13,7 @@ tags:
   - monash
   - berkeley
 status: complete
-updated: 2026-09-18
+updated: 2026-11-22
 arxiv: "2606.29301"
 code: https://github.com/Snitro/Pointer-CAD-v2
 summary: "Pointer-CAD v2（arXiv:2606.29301，ECCV 2026）：Plan-Then-Construct 范式——先产出带公制单位的结构化设计计划，再用指针从参数字典检索连续数值构造命令序列，消除量化误差；OmniCAD-Plan 数据集 + 顶点/边/面精度指标显著优于 Pointer-CAD 与 CADmium。官方仓待发布代码。"

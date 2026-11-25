@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, parkour, perceptive-locomotion, hierarchical-rl, navigation, sim2real, anymal, eth, humanoid-paper-notebooks]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2306.14874"
 venue: "Science Robotics 2024"
 related:
@@ -19,6 +19,8 @@ sources:
   - ../../sources/papers/humanoid_pnb_anymal-parkour-robust-perceptive-locomotion.md
   - ../../sources/sites/anymal-parkour.md
   - ../../sources/repos/anymal-parkour-plotting-artifact.md
+original:
+  - ../../sources/papers/humanoid_pnb_anymal-parkour-robust-perceptive-locomotion.md
 summary: "ANYmal Parkour（Science Robotics 2024）以学习式 3D 感知、五技能低层库和能力感知高层导航，在 ANYmal D 上连续完成爬升、下台、跨沟、钻洞和粗糙地形，最高约 2 m/s；仅图表数据/绘图脚本部分开放。"
 ---
 
@@ -134,7 +136,7 @@ flowchart LR
 - 多相机 + LiDAR + Jetson Orin 的硬件成本和标定复杂度高于单目端到端方案。
 - 论文没有公开完整代码、权重与机器人配置；复现实作只能依论文重建。
 
-## 与其他页面的关系
+## 关联页面
 
 - [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 高层按技能能力选择低层及位置–时间命令，需分别评估技能可达域、切换和整段导航效果。
 

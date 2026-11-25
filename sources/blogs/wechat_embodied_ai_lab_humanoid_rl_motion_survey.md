@@ -11,6 +11,8 @@
 - **关联姊妹篇：** [万字长文，读懂人形机器人 AMP：20 篇论文搭起的运动先验圣经](wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)（`https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w`）
 - **GitHub 结构化总仓：** [RealXiaoze/humanoid-motion-intelligence](https://github.com/RealXiaoze/humanoid-motion-intelligence) → 归档 [`../repos/humanoid-motion-intelligence.md`](../repos/humanoid-motion-intelligence.md) / 实体 [`../../wiki/entities/humanoid-motion-intelligence.md`](../../wiki/entities/humanoid-motion-intelligence.md)（2026-07-28 首次 ingest；**2026-09-10** 复核：191 篇 / 586 项 / 515 ★）
 - **一句话说明：** 把 42 篇 humanoid RL 运动控制 / 移动操作论文按「身体系统栈」组织（数据 → 参考 / 跟踪 → 控制 → 感知 → 接触 → 安全 → 任务接口 → 世界模型），并给出 6 个研究判断；核心主张：动作不是能力，**动作在真实世界精细交互闭环里**才是能力，VLA / 世界模型对身体的稳定调用是这层成熟后的结果，不是起点。
+- **通读：** 已完成
+- **核对范围：** 核对 `sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md` 1,336 行全文与 42 篇目录。
 
 ## 核心摘录（归纳，非全文）
 

@@ -1,11 +1,15 @@
 ---
 type: entity
+project_id: rmr
 tags: [paper, humanoid, motion-retargeting, rig-unification, korea-university, uiuc, naver-labs, rainbow-robotics]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 doi: "10.1109/IROS60139.2025.11246607"
 venue: "IROS 2025"
+project: https://tmjeong1103.github.io/RMR/
 code: https://github.com/tmjeong1103/CoRe
+code_scope: "stages/ DMR 阶段（2_dmr.npz，对应 RMR 论文中的方向向量缩放与 canonical rig 重定向实现）"
+project_distinction: "RMR 论文实体（IROS 2025，DOI:10.1109/IROS60139.2025.11246607）；无独立代码仓库，其核心 DMR 算法作为第 2 阶段并入 CoRe 仓库（paper-core）。"
 related:
   - ./paper-core.md
   - ../concepts/motion-retargeting.md

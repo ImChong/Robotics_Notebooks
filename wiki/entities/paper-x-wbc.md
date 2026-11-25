@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, whole-body-control, cross-embodiment]
 status: complete
 updated: 2026-10-28
+original:
+  - ../../sources/papers/x_wbc_arxiv_2609_15213.md
 arxiv: "2609.15213"
 code: https://github.com/LogosRoboticsGroup/x-wbc
 related:

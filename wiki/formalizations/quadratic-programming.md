@@ -2,15 +2,17 @@
 type: formalization
 tags: [optimization, qp, wbc, mpc, control]
 status: complete
-updated: 2026-06-23
+updated: 2026-11-21
+original: ../../sources/papers/boyd_cvxbook_qp_socp.md
 related:
   - ./kkt-conditions.md
   - ./convex-functions.md
   - ../concepts/hqp.md
   - ../methods/model-predictive-control.md
 sources:
-  - ../../sources/courses/numerical_optimization_foundations_robotics.md
+  - ../../sources/papers/boyd_cvxbook_qp_socp.md
   - ../../sources/papers/whole_body_control.md
+  - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "二次规划 QP：机器人 WBC、凸 MPC、控制分配与严格凸子问题的标准凸优化形式。"
 ---
 
@@ -38,7 +40,7 @@ summary: "二次规划 QP：机器人 WBC、凸 MPC、控制分配与严格凸�
 - **可预测性**：凸 QP 全局最优唯一（严格凸时），适合安全关键控制。
 - **组合性**：HQP 通过 null-space 投影串多个 QP。
 
-## 标准形式
+## 核心原理（标准形式与求解思路）
 
 $$\min_x \frac12 x^T P x + q^T x \quad \text{s.t.} \quad l \le Ax \le u,\ Cx = d$$
 
@@ -63,13 +65,18 @@ $$\min_x \frac12 x^T P x + q^T x \quad \text{s.t.} \quad l \le Ax \le u,\ Cx = d
 | 控制分配 | 各执行器力/力矩 | $B\tau = w$，饱和 |
 | CLF-CBF-QP | 控制修正 $\delta u$ | 线性 CLF/CBF 不等式 |
 
-## 常见误区
+## 工程实践
+
+- **Hessian 正半定性与正则化**：Boyd & Vandenberghe § 4.4（Eq. 4.34）要求 QP 目标 Hessian $P \in \mathbb{S}_+^n$；当足式 WBC 任务矩阵 $J$ 奇异或松弛变量缺惩罚时，需加微小对角阻尼 $\epsilon I$（确保正定与严格凸唯一解）。
+- **ADMM 缓存分解与热启动**：Stellato et al.（OSQP，arXiv:1711.08013v4）在固定 $P, A$ 结构下只做一次准定矩阵因式分解即可在控制周期内热启动迭代，且能直接检测原始/对偶不可行。
+
+## 常见误区或局限
 
 - **把 NMPC 当 QP**：非线性动力学 + 非二次代价一般不是 QP，需 SQP 或 iLQR 子问题。
 - **Hessian 不定仍用凸 QP 求解器**：需修正为 Gauss-Newton 近似或 Levenberg-Marquardt。
 - **忽略热启动**：MPC/WBC 相邻帧结构相似，warm start 可 10× 加速。
 
-## 与其他页面的关系
+## 关联页面
 
 - [KKT Conditions](./kkt-conditions.md)
 - [HQP](../concepts/hqp.md)、[TSID](../concepts/tsid.md)
@@ -84,5 +91,6 @@ $$\min_x \frac12 x^T P x + q^T x \quad \text{s.t.} \quad l \le Ax \le u,\ Cx = d
 
 ## 参考来源
 
+- [boyd_cvxbook_qp_socp.md](../../sources/papers/boyd_cvxbook_qp_socp.md) — Boyd & Vandenberghe《Convex Optimization》§ 4.4 QP/SOCP 原文（Eq. 4.34–4.36）
+- [whole_body_control.md](../../sources/papers/whole_body_control.md) — OSQP（arXiv:1711.08013v4）/ Wensing T-RO 2024（arXiv:2211.11644）/ Kim WBIC（arXiv:1909.06586）
 - [sources/courses/numerical_optimization_foundations_robotics.md](../../sources/courses/numerical_optimization_foundations_robotics.md) — 第 3 章 3.3 严格凸 QP
-- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID/HQP ingest 摘要

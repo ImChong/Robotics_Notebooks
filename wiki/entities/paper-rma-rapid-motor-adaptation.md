@@ -12,6 +12,8 @@ tags:
   - cmu
 status: complete
 updated: 2026-11-18
+original:
+  - ../../sources/papers/rma_arxiv_2107_04034.md
 arxiv: "2107.04034"
 venue: "RSS 2021"
 related:
@@ -62,8 +64,7 @@ summary: "RMA（RSS 2021）：特权环境 extrinsics 训练 base policy，历�
 - **工程可部署：** **异步双频**（10/100 Hz）适配 A1 级 onboard 算力；**无参考轨迹 / 足端生成器**，仅靠生物力学奖励 + 分形地形即可 sim2real。
 - **后续工作母题：** Extreme Parkour 的 ROA、privileged scandots 蒸馏、CMS 视觉扩展等均明确继承 RMA 结构。
 
-## 核心结构
-
+## 核心原理
 | 模块 | 输入 | 输出 | 训练 |
 |------|------|------|------|
 | **Encoder $\mu$** | 特权 $e_t$（摩擦、质量、电机强度等） | Extrinsics $z_t\in\mathbb{R}^8$ | 与 $\pi$ **联合 PPO** |
@@ -158,6 +159,16 @@ flowchart TB
 - [RMA 项目页归档](../../sources/sites/rma-legged-robots-github-io.md)
 - [antonilo/rl_locomotion 代码归档](../../sources/repos/antonilo_rl_locomotion.md)
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots*, RSS 2021 — [arXiv:2107.04034](https://arxiv.org/abs/2107.04034)
+
+## 工程实践
+
+- **异步双频部署接口：** 底层基础策略运行在 **100 Hz** 以响应快变接地冲击，1D-CNN 适应模块在异步 **10 Hz** 滑窗推断 8 维环境外在隐向量 $z_t$，兼顾计算延迟与在线辨识稳定性。
+- **课程式动作噪音与地形：** Phase 1 使用特权物理参数先建立可行步态，Phase 2 用线性回归或平滑监督损失蒸馏至纯本体历史，需确保监督数据包含跌倒恢复边缘状态。
+
+## 常见误区或局限
+
+- **误将 $z_t$ 等价为可解释物理参数：** 适应向量是面向控制性能的紧凑潜表示，未必一一对应真实地面摩擦或质量。
+- **极快突变冲击的滞后：** 10 Hz 滑动窗口适应需要约数步接触后才能收敛到新工况，对突如其来的空中绊倒仍依赖底层策略的默认鲁棒性。
 
 ## 关联页面
 

@@ -9,7 +9,8 @@
 - **代码：** [OpenEtherCATsociety/SOEM](https://github.com/OpenEtherCATsociety/SOEM)（主站）；姊妹仓 [SOES](https://github.com/OpenEtherCATsociety/SOES)（从站）
 - **文档：** README 指向 <https://docs.rt-labs.com/soem>（需 RT-Labs 账号登录）；项目页另有 Reference manuals 入口
 - **维护方：** [RT-Labs](http://www.rt-labs.com)（组织 blog 同址）
-- **入库日期：** 2026-08-12
+- **入库日期：** 2026-08-12（2026-11-21 抓取官网首页并对照 SOEM v2.0.0 `README.md` 与 `ec_sample.c` 完成核对；`docs.rt-labs.com/soem` 需登录未读）
+- **通读：** 已完成
 - **一句话说明：** SOEM（Simple Open EtherCAT Master）与 SOES（Slave）的官方介绍页：嵌入式友好的轻量 EtherCAT 栈、支持 CoE/VoE/DC/SoE，并列出 RT-Labs 参考设计平台。
 - **沉淀到 wiki：** [wiki/entities/soem.md](../../wiki/entities/soem.md)
 

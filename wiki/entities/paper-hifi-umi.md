@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, umi, teleoperation, bimanual, manipulation, vla, wam, robot-free, simple-ai, imitation-learning]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 arxiv: "2607.25895"
 original: ../../sources/papers/hifi_umi_arxiv_2607_25895.md
 related:

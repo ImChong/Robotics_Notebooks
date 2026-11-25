@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, teleoperation, imitation-learning, diffusion-policy, motion-retargeting, whole-body-control, umi, robot-free, data-collection, unitree-g1, vr-tracking, visuomotor, baai-aether]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 arxiv: "2605.03452"
 venue: "arXiv 预印本（2026）"
 original: ../../sources/papers/bifrost_umi_arxiv_2605_03452.md

@@ -7,7 +7,8 @@
 - **作者：** Zane Hub（公众号署名；第三方工程解读，非厂商官方）
 - **原始链接：** https://mp.weixin.qq.com/s/CARW0vvd4doO1htt0Q1bHg
 - **发布日期：** 2026-08-19（抓取 frontmatter）
-- **入库日期：** 2026-08-19
+- **入库日期：** 2026-08-19（2026-11-21 抓取并逐行通读正文 448 行，核对 DFM/良率曲线/CPK/PPAP 与测试矩阵）
+- **通读：** 已完成
 - **抓取工具：** Agent Reach + wechat-article-for-ai（Camoufox；`--no-images`）
 - **一句话说明：** 从 DFM 与三大核心件工艺定型、良率爬坡与 CPK、供应链一致性、可靠性测试体系，到跨行业 PPAP/3C/医疗/航天经验迁移与主流厂商量产路径，系统解释「量产经验 = 技术可行性 → 制造可行性」的工程能力栈。
 - **沉淀到 wiki：** [`wiki/concepts/humanoid-mass-production-engineering.md`](../../wiki/concepts/humanoid-mass-production-engineering.md)

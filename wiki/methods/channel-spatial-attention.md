@@ -9,6 +9,8 @@ tags:
   - squeeze-excitation
 status: complete
 updated: 2026-08-12
+original:
+  - ../../sources/papers/senet_danet_attention_classics.md
 summary: "SENet/SE-ResNet 用通道挤压激励重标定特征，DANet 引入位置与通道双注意力；代表 Transformer 前广泛使用的 CNN 注意力增强路线。"
 related:
   - ../concepts/multi-head-attention.md

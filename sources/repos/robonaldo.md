@@ -12,6 +12,9 @@
 - **论文：** <https://arxiv.org/abs/2606.11092>
 - **许可：** MIT（根目录 `LICENCE`；GitHub SPDX：MIT）
 - **入库日期：** 2026-07-28
+- **核对日期：** 2026-11-21
+- **核对范围：** 拉取 `OpenDriveLab/RoboNaldo` @ `9377c4f`（2026-09-30），通读根目录 `README.md`（10,686 字节）、`scripts/rsl_rl/train.py`（Task YAML 注入、RSL-RL 训练与 `--noise_std` 覆盖）、`scripts/rsl_rl/play.py`（策略回放与 ONNX 导出）及 `scripts/rsl_rl/eval.py` / `docs/` 目录结构。边界：未安装 Isaac Lab / PhysX 跑通训练。
+- **通读：** 已完成
 - **一句话说明：** RoboNaldo **仿真训练**官方仓：BeyondMimic 风格 Isaac Lab 扩展 `whole_body_tracking` + RSL-RL PPO；右脚踢球 NPZ 与 Stage 1–3 YAML 预设；`train` / `play` / `eval` 与 ONNX 导出对接部署仓。
 - **开源状态：** **已开源**（2026-06 News：Training and deployment code release）— 训练代码 + 默认 `motions/right_kick.npz`；G1 URDF 需另下；预训练权重走 W&B / 自训 checkpoint。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md`](../../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md)

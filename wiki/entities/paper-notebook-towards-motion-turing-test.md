@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, benchmark, dataset, motion-evaluation, human-likeness, smpl-x, xmu, oppo, shanghaitech, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2603.06181"
+original: ../../sources/papers/humanoid_pnb_towards-motion-turing-test.md
 venue: "CVPR 2026"
 related:
   - ./paper-notebook-robostriker.md
@@ -56,7 +57,7 @@ summary: "Motion Turing Test（CVPR 2026）用 1,000 个统一 SMPL-X 的人/机
 | **标注** | 30 人、每人 1,000 段、累计 500+ 小时；IAC 后保留 25 人 |
 | **开源** | **待发布**（截至 2026-07-28）：[项目页](http://www.lidarhumanmotion.net/mtt/)未列代码、数据或 benchmark 下载链接 |
 
-## 数据与评测流程
+## 流程总览（数据与评测）
 
 ```mermaid
 flowchart LR
@@ -131,7 +132,7 @@ flowchart LR
 - 网络视频和赛事视频可能带来选择偏差；同一机器人不同控制器未必能被公平归因。
 - 作为 RL reward 时可能奖励“骗过回归器”而非真正自然、安全的运动。
 
-## 与其他页面的关系
+## 关联页面
 
 - 应用锚点：[RoboStriker](./paper-notebook-robostriker.md) — 拳击是人机类人度差距最大的动作之一
 - 表示前置：[Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md)

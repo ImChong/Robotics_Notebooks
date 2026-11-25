@@ -11,7 +11,9 @@
 - **关联基准：** [RoboDojo](https://robodojo-benchmark.com/)、[RoboTwin](https://github.com/RoboTwin-Platform/RoboTwin)
 - **Stars：** ~145（2026-08-12）
 - **License：** **Apache-2.0**
-- **入库日期：** 2026-07-27；**刷新：** 2026-08-12（对齐论文 42 策略与技术报告）
+- **入库日期：** 2026-07-27；**刷新：** 2026-11-21（克隆 `XPolicyLab/XPolicyLab` 核对 `XPolicyLab.py`、`.agents/skills/`、`policy/`）
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.09892v3 与官方仓架构
 - **一句话说明：** 策略与评测环境之间的共享层：每个模型保留自有依赖/权重/训练配方于 `policy/<POLICY>/`，XPolicyLab 统一 **serving、观测/动作契约、eval 接线**；官方 RoboDojo / RoboTwin 上榜要求经本仓 PR 接入并可复现 checkpoint。
 
 ## 开源核查（2026-08-12）

@@ -15,7 +15,8 @@ tags:
   - queens-university
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+project_id: pioneer-social-navigation
 arxiv: "2510.12215"
 related:
   - ../overview/paper-notebook-category-08-navigation.md
@@ -29,6 +30,7 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_learning-social-navigation-from-positive-and-neg.md
   - ../../sources/sites/pioneer-social-navigation.md
+original: ../../sources/papers/humanoid_pnb_learning-social-navigation-from-positive-and-neg.md
 summary: "PioneeR（arXiv:2510.12215，ICRA 2026）从正/负示范学习密度奖励，再叠加避障与目标规则；3 s sampling lookahead teacher 蒸馏为 10 Hz MDN 学生并输出不确定性。电梯仿真 teacher SR>99%、MDN SR 98–100%；有项目页演示但截至 2026-07-28 无代码。"
 ---
 
@@ -65,9 +67,9 @@ summary: "PioneeR（arXiv:2510.12215，ICRA 2026）从正/负示范学习密度�
 | 机构 | 高丽大学（Korea University）；延世大学（Yonsei University）；卡内基梅隆大学（Carnegie Mellon University）；Mobinn；加拿大女王大学（Queen's University） |
 | 发表 | ICRA 2026 |
 | 机器人模型 | 平面 unicycle；动作 \(u=[v,\omega]\) |
-| 观测 | 3D LiDAR 转 2D scan + 最近障碍几何描述 |
-| 控制频率 | 10 Hz；lookahead \(T=3\) s、\(\Delta t=0.3\) s |
-| 项目页 / 代码 | [PioneeR 项目页](https://chanwookim971024.github.io/PioneeR/) 有视频与方法说明；截至 **2026-07-28 未列 GitHub、权重或数据下载** |
+| 观测 | 72 束 LiDAR 按 `g=3` 分组最小距离（24 维）+ 最近 `b=2` 障碍距离/角度 + 目标方位角，`o ∈ R^29` |
+| 控制频率 | 10 Hz；lookahead `T=3 s`、`Δt=0.3 s`；线速度 `{0.1..0.8}` m/s × 15 角速度 |
+| 项目页 / 代码 | [PioneeR 项目页](https://chanwookim971024.github.io/PioneeR/) 有视频与方法说明；2026-11-21 复核 GitHub 仓仅托管静态项目页，**未开源代码、权重或数据** |
 
 ## 流程总览
 
@@ -134,7 +136,7 @@ DAgger 从 50 expert episodes 起步，再执行 10 rounds × 50 episodes。两�
 - **电梯仿真 teacher：** HR-RL 场景 SR **99.4%**、TT 12.24 s、PL 3.74 m；HL-RR 为 **99.6%**、12.94 s、3.88 m，明显高于 CVaR-BF（71–73%）与 CrowdNav++（65–79%）。
 - **消融：** 去 density reward 的成功率降幅最大；去 obstacle prior 会更快但更易失败，去 goal prior 则耗时增加。
 - **蒸馏：** MDN 在 HR-RL / HL-RR 的 SR 为 **98.0% / 100.0%**，MLP 为 95.8% / 98.8%；MDN 路径也更短。
-- **不确定性：** 两场景 risky frames 的 epistemic 与 aleatoric 均高于 safe frames。
+- **不确定性：** 人机距 `<0.8 m` 的危险帧上，HR-RL/HL-RR 平均 epistemic 从 0.290/0.342 升至 **0.382/0.523**，aleatoric 从 0.310/0.270 升至 **0.407/0.426**。
 - **真机：** 四轮移动机器人以 10 Hz 在真人电梯共乘中展示单策略多场景与多人交互，但论文未提供真机 SR / 样本量统计。
 
 ## 结论
@@ -155,7 +157,7 @@ DAgger 从 50 expert episodes 起步，再执行 10 rounds × 50 episodes。两�
 - MDN 不确定性是统计信号，不是 formal guarantee；需与 [控制屏障函数](../concepts/control-barrier-function.md) 等独立安全层结合。
 - 无代码 / 数据；仿真超 99% SR 与少量真机 demo 之间存在明显证据跨度。
 
-## 与其他页面的关系
+## 关联页面
 
 - [导航纵深路线 Stage 5](../../roadmap/depth-navigation.md) — 社会导航进阶节点
 - [iCrowdNav](./paper-icrowdnav.md) — 感知人体姿态与意图的 RL 对照

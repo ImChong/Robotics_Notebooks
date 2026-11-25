@@ -4,6 +4,8 @@ type: entity
 tags: [paper, wheel-legged, quadruped, multi-skill, blind-locomotion, constrained-rl, p3o, sim2real, unitree-go2w, isaac-lab, unitree]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/mujica_arxiv_2605_13058.md
 arxiv: "2605.13058"
 venue: ICRA 2026
 project: https://hyzenthlayer.github.io/mujica/
@@ -24,6 +26,8 @@ summary: "MUJICA（arXiv:2605.13058，ICRA 2026）在 Unitree Go2-W 上用单一
 ---
 
 # MUJICA：轮足多技能统一本体控制架构
+
+## 一句话定义
 
 **MUJICA**（*Multi-skill Unified Joint Integration of Control Architecture*，arXiv:2605.13058，**ICRA 2026**）面向 **轮足四足** 的 **纯本体感知** 控制：在 **单一低层策略** 内联合学习 **全向移动、高台攀爬、摔倒恢复** 三类差异巨大的技能，并以 **速度相关 DC 电机硬约束**（P3O）保障真机安全，再用 **高层技能选择器** 仅依本体反馈自动切换技能。在 **Unitree Go2-W** 上实现零样本 sim2real，报告 **1 m 室内高台** 与无人工干预的连续多技能任务链。
 
@@ -118,8 +122,7 @@ flowchart TB
 4. **真机读点对齐极限场景** — Go2-W 零样本：30° 楼梯恢复、不规则 20 cm 楼梯、80 cm 户外 / 100 cm 室内高台；电机保护全程未触发。
 5. **别和 AWARE / MoE 混读** — AWARE 是外源障碍反射避障；本文是攀爬/恢复统一盲走。多技能用离散 ζ，避免 MoE 加权平均冲突动作。
 
-## 常见误区
-
+## 常见误区或局限
 1. **「轮足高台靠更大扭矩就行」：** 忽略 **速度–扭矩包络** 会在顶限关节产生危险脉冲；MUJICA 用约束换 **可部署的极限性能**。
 2. **「多技能 = MoE 加权混合」：** 本文强调 **单 Actor + 离散 $\zeta$**，避免左右转等冲突动作的加权平均。
 3. **「盲走做不了高台」：** 通过 **轮–地距离 + 碰撞估计** 推断台沿与接触，无需外感知传感器。
@@ -142,6 +145,11 @@ flowchart TB
 - [MUJICA（arXiv:2605.13058）](../../sources/papers/mujica_arxiv_2605_13058.md)
 - Li et al., *MUJICA: Multi-skill Unified Joint Integration of Control Architecture for Wheeled-Legged Robots* (ICRA 2026)
 - [项目页](https://hyzenthlayer.github.io/mujica/)
+
+## 工程实践
+
+- **速度–力矩安全界限（DC 电机特性包络）：** 通过 P3O 约束将高频轮腿速度下的电机最大输出扭矩嵌入约束代价，直接避免高平台跃上时刻电流瞬态饱和或过压停机。
+- **全本体自动技能切换：** 高层切换器仅依据本体接触与倾角信号判定何时由平地轮行切入爬坡或摔倒恢复，不引入易受粉尘光照干扰的外部相机。
 
 ## 关联页面
 

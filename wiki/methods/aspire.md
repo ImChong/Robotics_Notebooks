@@ -3,6 +3,8 @@ type: method
 tags: [coding-agents, skill-library, continual-learning, code-as-policy, nvidia-gear, manipulation, sim2real, evolutionary-search, nvidia]
 status: complete
 updated: 2026-10-18
+original:
+  - ../../sources/papers/aspire_nvidia_gear_2026.md
 date: 2026-06-30
 summary: "ASPIRE 是 NVIDIA GEAR 等的持续学习 code-as-policy 系统：闭环执行引擎暴露逐原语多模态 trace 供 coding agent 诊断修补，进化搜索探索多样控制程序，并把验证修复蒸馏进可扩展技能库——让后续任务以 in-context 技能加速适应，并在 LIBERO-Pro / Robosuite / BEHAVIOR-1K 上大幅超越 CaP-Agent0 与 VLA 基线，初步证明仿真技能可降低真机跨具身编程 token 成本。"
 related:
@@ -201,6 +203,10 @@ flowchart TB
 - [sources/papers/aspire_nvidia_gear_2026.md](../../sources/papers/aspire_nvidia_gear_2026.md)
 - [sources/sites/nvidia-research-aspire.md](../../sources/sites/nvidia-research-aspire.md)
 - Lu et al., *ASPIRE: Agentic /Skills Discovery for Robotics*, NVIDIA GEAR 等, 2026. <https://research.nvidia.com/labs/gear/aspire/>
+
+## 工程实践
+
+- **Verifier 门控与可复用技能库沉淀：** Actor agent 发现失败轨迹并合成程序修补后，必须经过独立 Verifier agent 复现验证并用 `lint_skills.py` 校验格式，才能由协调器合入 `.claude/skills/iterative-debugging/skills/` 复利给后续新任务。
 
 ## 关联页面
 

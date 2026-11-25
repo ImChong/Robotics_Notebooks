@@ -26,6 +26,9 @@ related:
   - ../entities/paper-grid-general-robot-intelligence-development.md
   - ../concepts/agentic-coding-software-fundamentals.md
 updated: 2026-11-10
+original:
+  - ../../sources/papers/aspire_nvidia_gear_2026.md
+  - ../../sources/papers/enpire_nvidia_gear_2026.md
 ---
 
 # 真机策略 autoresearch 闭环搭建指南

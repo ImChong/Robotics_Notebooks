@@ -2,7 +2,7 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-23
 related:
   - ../concepts/lidar-slam-survey-2026.md
   - ../queries/slam-second-spring-embodied.md
@@ -12,6 +12,7 @@ related:
   - ../entities/navigation2.md
   - ../entities/fast-lio.md
   - ../entities/lio-sam.md
+  - ../entities/visloc-rs.md
   - ../entities/orb-slam3.md
   - ../entities/vins-fusion.md
   - ../entities/open-vins.md
@@ -94,14 +95,15 @@ summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM
 | **OpenVSLAM** | 单/双目/RGB-D | 特征 SLAM | 有 | 模块化 | 主线迁移 stella_vslam |
 | **Kimera** | 立体 + IMU | VIO + RPGO + 语义 | ROS | 语义度量地图 | 组件多、学习曲线陡 |
 | **RTAB-Map** | RGB-D/立体/激光 | 记忆管理 | ROS/ROS2 | 一套 GUI 走通 | 高动态需额外处理 |
+| **[visloc-rs](../entities/visloc-rs.md)** | 照片/单目/双目 + 可选 IMU | Rust SfM / Basalt-port VI-SLAM、地图定位及 3DGS | RustDDS 节点，需实机兼容验证 | Rust/wgpu 单仓多模块、COLMAP/3DGS 输出、地图再定位与 Nav2 仿真实例 | 部分链路实验性；Nav2 结果尚在仿真、ROS 2 安装互通未实测 |
 | **voxgraph** | 深度/TSDF | 位姿图 + Voxblox | ROS | 多会话子图 | 生态小于 LIO 系 |
 | **[cuVSLAM](../entities/paper-cuvslam.md)** | 1–32 相机 / RGB-D / VI | CUDA 特征+BA | PyCuVSLAM + Isaac ROS | Jetson 实时、免调参默认 | 绑定 NVIDIA 栈；Multisensor 实验 |
 | **Ultra-Fusion** | CIL + 轮速/GNSS 可选 | 统一滑窗 BA + FRS | 待发布 | **可配置 WIO/VIO/LIO/LVIO**、退化调度、在线时空标定 | 复杂度高；ITS 多平台评测导向 |
-| **KILVO** | 关节编码 + IMU + LiDAR + 相机 | 异步–顺序混合 ESIKF | 待开放 | **人形**接触估计、模态失效自适应、**1 kHz** 输出 | 仓仍占位；非通用轮式栈 |
+| **KILVO** | 关节编码 + IMU + LiDAR + 相机 | 异步–顺序混合 ESIKF | ROS1（Noetic） | **人形**接触估计、模态失效自适应、**1 kHz** 输出 | 非通用轮式栈；`JixinGao/KILVO`（GPL-2.0）与 15 段 G1 rosbag 已开源 |
 | **PUMA** | 3D LiDAR | Poisson **mesh** + ray cast P2L | 无（研究仓） | **显式三角 mesh 地图**、KITTI 定性对比 surfel/TSDF | 非 ROS 实时；重建+射线较重；见 [PUMA](../entities/paper-puma-lidar-mesh-odometry.md) |
 | **DCReg** | 3D LiDAR（配准模块） | Schur 退化检测 + 物理轴 + 预条件 **PCG** P2L | 无（Eigen+PCL 模块） | **几何退化** scan-to-map：可解释弱轴、+20–50% 长时定位、最高 **116×** 求解加速 | 非完整 LIO/ROS；定位系统整管线待发布；见 [DCReg](../entities/paper-dcreg-degenerate-lidar-registration.md) |
 
-> **退化与标定扰动维度：** [Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md) 在 M3DGR 等基准上对 60+ 系统做 **传感器退化**（弱光、长廊、GNSS 拒止、打滑）与 **时空标定注入** Stress test，适合在固定传感器栈选型之外评估 **鲁棒融合架构**。人形冲击 / 掉传感器场景另见 [KILVO](../entities/paper-kilvo.md)（TMECH；代码待开放）。
+> **退化与标定扰动维度：** [Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md) 在 M3DGR 等基准上对 60+ 系统做 **传感器退化**（弱光、长廊、GNSS 拒止、打滑）与 **时空标定注入** Stress test，适合在固定传感器栈选型之外评估 **鲁棒融合架构**。人形冲击 / 掉传感器场景另见 [KILVO](../entities/paper-kilvo.md)（TMECH；GPL-2.0 源码与 15 段 G1 rosbag 已开源）。
 
 ## 决策流（简图）
 
@@ -165,7 +167,7 @@ flowchart TD
 - [Navigation2](../entities/navigation2.md)
 - [LingBot-Map](../methods/lingbot-map.md) — 学习型流式建图对照
 - [里程计–激光融合定位](../methods/lidar-odometry-fusion.md) — 课程级 odom↔LiDAR 融合概念，本页是其开源实现（FAST-LIO/LIO-SAM 等）选型落地
-- [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计（代码待开放）
+- [KILVO](../entities/paper-kilvo.md) — 人形运动学–惯性–激光–视觉里程计（GPL-2.0 源码与 15 段 G1 rosbag 已开源）
 - [SUPER ODOMETRY 2.0](../entities/paper-super-odometry-2.md) — 退化可切换的层级融合；slim 仓 ≠ 论文全文系统
 - [Query：具身时代 SLAM 精华与糟粕](../queries/slam-second-spring-embodied.md) — 选型之外：地图可以是 token，不必是人读 Occupancy
 - [PUMA](../entities/paper-puma-lidar-mesh-odometry.md) — mesh 地图 LiDAR 里程计研究基线（与 CVPR 2019 Scan2Mesh 学习式生成不同）

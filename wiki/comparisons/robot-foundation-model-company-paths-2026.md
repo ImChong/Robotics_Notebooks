@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-21
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -22,6 +22,7 @@ related:
   - ../entities/beingbeyond.md
   - ../entities/rhoda-ai.md
   - ../entities/motphys.md
+  - ../entities/noitom-robotics.md
   - ../entities/gamma-robotics.md
   - ../entities/spirit-ai.md
   - ../entities/agility-robotics.md
@@ -34,6 +35,7 @@ sources:
   - ../../sources/sites/spirit-ai.md
   - ../../sources/blogs/spirit_ai_spirit_v1_5_blog_2026-01-11.md
   - ../../sources/sites/motphys.md
+  - ../../sources/sites/noitom-robotics.md
   - ../../sources/sites/gamma-robotics.md
   - ../../sources/sites/rhoda-ai.md
   - ../../sources/sites/amazon-far.md
@@ -149,6 +151,7 @@ flowchart TB
 | [Simate 硅基伙伴](../entities/simate.md) | ● |  |  | [Simate-beta](../entities/simate-beta.md)、Sinfra / Sipai / AutoResearch / RoboScientist |
 | [Aether AI](../entities/aether-ai.md) | ● | ● |  | [CausalWM](../entities/paper-causalwm.md)、[CD-LAM](../entities/paper-cd-lam.md)、[RSIAgent](../entities/aether-rsiagent.md)、[CRIS-0](../entities/aether-cris-0.md) |
 | [Motphys 谋先飞](../entities/motphys.md) |  |  | ○ | [MotrixSim / MotrixLab](../entities/motrix.md)、[GS-Playground](../entities/gs-playground.md)、[UniLab](../entities/unilab.md) |
+| [诺亦腾机器人（Noitom Robotics）](../entities/noitom-robotics.md) |  | ○ | ○ | Adam-U 联合遥操作平台、ModalityNet、[HiPHI](../entities/paper-hiphi.md)、[UMR](../entities/paper-umr-unified-motion-retargeting.md) |
 | [光轮智能 Lightwheel](../entities/lightwheel.md) |  | ○ | ● | [SimReady](../entities/lightwheel-simready.md) / [SimReadyGen](../entities/lightwheel-simreadygen.md)、[RoboFinals](../entities/lightwheel-robofinals.md)、[LW-BenchHub](../entities/cn-os-lw-benchhub.md)、[EgoSuite](../entities/lightwheel-egosuite.md) |
 | [西湖机器人 Westlake Robotics](../entities/westlake-robotics.md) | ○ | ● | ● | [GAE](../entities/paper-gae-general-action-expert.md)、[TITAN O1](../entities/westlake-titan-o1.md)、[傲天 U1](../entities/westlake-aotian-u1.md)、LM-VLM |
 | [源策未来 Archon Robotics](../entities/archon-robotics.md) | ○ | ● | ● | [Whole-Body Intelligence](../entities/archon-whole-body-intelligence.md)、[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)、[EgoHumanoid-V2](../entities/paper-egohumanoid-v2.md) |
@@ -226,6 +229,7 @@ Agility Robotics 以 ②（Digit 1–5 被动动力学、摆线分级柔顺与 I
 | Simate | ❌ | ❌ | ❌ | [Simate-beta](../entities/simate-beta.md) 无技术报告、代码与权重；Sinfra / AutoResearch 为申请制内测，公司称将分阶段开源 |
 | Aether AI | 🟡 | 🟡 | ❌ | [CausalWM](../entities/paper-causalwm.md) 推理代码与门控权重、[CD-LAM](../entities/paper-cd-lam.md) 代码与 2B 权重、[RSIAgent](../entities/aether-rsiagent.md) 代码公开；训练代码、数据与 [CRIS-0](../entities/aether-cris-0.md) 未公开 |
 | Motphys | ❌ | ❌ | ❓ | 官网只给 [GitHub 组织](https://github.com/Motphys)链接，未说明开源项目与许可证；MotrixLab 仓库已归档，MotrixSim 核心引擎开放状态未确认；GS-Playground / UniLab 为多机构联合论文（[核查](../../sources/sites/motphys.md)） |
+| 诺亦腾机器人 | 🟡 | 🟡 | 🟡 | PNDbotics 仓提供部分 Adam-U 动捕与重定向实现；HiPHI Viewer 源码公开，数据门控；AdaPT、OmniContact 提供部分联合研究实现与策略权重。访问与许可按项目核对。[官方资料归档](../../sources/sites/noitom-robotics.md) |
 | 光轮智能 | 🟡 | ❌ | 🟡 | [LW-BenchHub](../entities/cn-os-lw-benchhub.md)、LeIsaac、AutoDataGen、EgoSuite DevKit 开源（Apache-2.0）；部分 SimReady / YCB 资产 CC BY-NC；[EgoSuite-Open100K](../entities/egosuite-open100k.md) 部分数据门控开放；完整资产库、RoboFinals 平台为商业产品 |
 | 西湖机器人 | ❌ | ❌ | ❌ | [GAE](../entities/paper-gae-general-action-expert.md) 为付费闭源软件（V1.2.0，加密狗授权，仅宇树本体包），论文无代码；GitHub 仅有客户端 API 文档仓 |
 | 源策未来 | 🟡 | ❌ | ❌ | 公司 GitHub / HF 组织尚无公开仓库；[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) 代码在 OpenDriveLab 组织下开源，EgoHumanoid-V2 代码待发布 |
@@ -294,9 +298,12 @@ flowchart LR
 - [人形运控小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 按模型族选路线的知识链入口
 - [千寻智能（Spirit.AI）](../entities/spirit-ai.md) — 跨平台可穿戴数采 uDAS、Spirit-v1.5 / 闭源 Spirit v1.6 与轮式人形路线
+- [诺亦腾机器人（Noitom Robotics）](../entities/noitom-robotics.md) — 联合采集平台与人体数据如何衔接整机接口、动作重定向和全身技能训练
 - [敏捷机器人（Agility Robotics）](../entities/agility-robotics.md) 与 [Agility WBC Foundation Model](../entities/agility-wbc-foundation-model.md) — 机械动力学第一性、Isaac Lab 闭链 Sim2Real、`<1M` LSTM Motor Cortex、IGX Thor + Halos 协作安全与 CAP/RaaS 商用闭环
 
 ## 参考来源
+
+- [诺亦腾机器人官网、技术文章和日期归档](../../sources/sites/noitom-robotics.md)
 
 - [Agility Robotics 官网、Research + Analysis、技术文章与开源核查（2026-11-20）](../../sources/sites/agility-robotics.md)
 

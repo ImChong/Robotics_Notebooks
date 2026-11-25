@@ -2,6 +2,8 @@
 
 > 来源归档（primary sources）
 
+- **通读：** 已完成
+- **核对范围：** 通读 Koza (1994) *Statistics and Computing* 作者公开长版 PDF（`scjournallong.pdf`, 161,023 字符）及 Koza (1992) 原著官网完整目录。
 ## 书目与一手入口
 
 - **John R. Koza**, *Genetic Programming: On the Programming of Computers by Means of Natural Selection*. MIT Press / Bradford Books, 1992：[出版社页](https://mitpress.mit.edu/9780262111706/genetic-programming/)，ISBN 9780262111706。

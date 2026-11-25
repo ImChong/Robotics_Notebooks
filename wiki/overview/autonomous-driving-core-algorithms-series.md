@@ -2,8 +2,9 @@
 type: overview
 tags: [autonomous-driving, perception, planning, control, slam, hd-map, tracking, trajectory-prediction, shenlan]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-23
 related:
+  - ../entities/paper-diffusion-planner-autonomous-driving.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ./e2e-autonomous-driving-top10-algorithms.md
   - ../methods/object-detection.md
@@ -23,6 +24,7 @@ related:
   - ../methods/vla.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-mmhu.md
+  - ../entities/paper-drivesta.md
 original:
   - ../../sources/papers/apollo_em_planner_reading_arxiv_1807_08048_adcore.md
 sources:
@@ -123,6 +125,10 @@ flowchart TB
 | 控制 | LQR | 横向最优反馈（Riccati） |
 | 控制 | MPC | 约束滚动优化，极限工况上限高 |
 
+**端到端多候选规划：** [DriveSTA](../entities/paper-drivesta.md) 将单条人类驾驶日志扩展为可评分的多条候选轨迹，以 Proposal 生成/评分和 JEPA 条件精修组合规划；作者报告 NAVSIM v1 NAVTEST 95.55 PDMS（论文原文已核对、未独立复现、非车端认证）。
+
+**学习型规控补充：** [Diffusion Planner（ICLR 2025）](../entities/paper-diffusion-planner-autonomous-driving.md) 将自车未来规划与邻车未来预测做联合 DiT 扩散；nuPlan Test14 Reactive 纯输出 82.93、Test14-hard Reactive 69.22（无规则后处理），但仍依赖结构化地图及下游车辆轨迹跟踪控制器，而非传感器到执行器的端到端整车部署。
+
 ### 04 — SLAM 与高精地图
 
 | 层 | 算法/主题 | 一句话 |
@@ -176,6 +182,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Diffusion Planner（ICLR 2025）](../entities/paper-diffusion-planner-autonomous-driving.md) — 自车与邻车联合扩散轨迹规划、可微偏好引导及闭环评测。
 - [端到端自动驾驶：十大前沿算法技术地图](./e2e-autonomous-driving-top10-algorithms.md) — 深蓝AI E2E 续篇（十篇独立实体）
 - [导航·SLAM·自动驾驶开源栈总览](./navigation-slam-autonomy-stack.md)
 - [目标检测](../methods/object-detection.md)
@@ -193,6 +200,7 @@ flowchart TB
 
 ## 参考来源
 
+- [Diffusion Planner 官方论文归档](../../sources/papers/diffusion_planner_arxiv_2501_15564.md) — 对照学习型轨迹规划与经典规控。
 - [wechat_shenlan_ai_ad_2d_detection.md](../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md)
 - [wechat_shenlan_ai_ad_3d_detection.md](../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md)
 - [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md)

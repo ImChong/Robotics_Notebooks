@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, foundation-policy, cvae, generative-policy, masked-control, dagger, privileged-training, ppo, unitree-g1, isaac-gym, amass, shanghai-ai-lab, pku, motion-tracking, teleoperation, locomotion]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-21
 arxiv: "2509.13780"
 venue: "TPAMI 2025"
 related:
@@ -33,12 +33,18 @@ sources:
   - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/sites/bfm4humanoid-github-io.md
+original:
+  - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
 summary: "BFM（arXiv:2509.13780）把人形全身控制重新表述为「掩码条件下的行为生成」：CVAE 生成器 + 位级二值掩码统一根/关节/关键点等控制接口，掩码在线蒸馏从特权 proxy agent 学习，潜空间插值与 classifier-free 调制支持行为组合，残差解码器实现少样本新技能（Side Salto）。Unitree G1 上 motion tracking / VR 遥操作 / locomotion 单策略多接口表现与专家持平或更好。"
 ---
 
 # BFM（Behavior Foundation Model for Humanoid Robots）
 
 **BFM** 是北大、港中大（深圳）、上交、复旦与 **上海人工智能实验室** 合作的人形 **whole-body control（WBC）基础模型** 论文（arXiv:2509.13780，[项目页](https://bfm4humanoid.github.io/)）：作者把 motion tracking、VR 遥操作、locomotion 等不同 WBC 任务统一抽象为「**生成把机器人引向目标状态的合适行为**」，因此用一个 **CVAE 生成式策略 + 位级掩码控制接口 + 掩码在线蒸馏** 训练单一策略覆盖多种控制接口。
+
+## 一句话定义
+
+**通过特权 Proxy PPO 教师配位级二值掩码在线蒸馏出条件变分自编码器（CVAE）低层控制器，在不重训奖励的前提下，仅靠切换掩码即可统一 Motion Tracking、VR 遥操作与手柄 Locomotion，并借潜空间插值、CFG 调制及残差解码器适配新行为。**
 
 ## 英文缩写速查
 
@@ -204,13 +210,26 @@ $$
 - 与 [ReactiveBFM](./paper-reactivebfm.md) 对照：本文 BFM 提供 **多接口低层生成/跟踪先验**；ReactiveBFM 在其上叠加 **闭环 AR 运动规划**（scheduled prefix sampling + 异步重规划），解决开环级联的 **exposure bias**，在 G1 真机实现文本条件 reactive WBC 与零样本移动目标到达。
 - 与 [ScaleBFM](./paper-scaling-bfm-humanoid.md) 对照：同作者团队后续 **scaling 技术报告**（arXiv:2607.15163）；走 **PPO + Humanoid Transformer + 全局 integrated tracking** 并系统实证 on-policy 数量与参考多样性协同，而非本文 **CVAE + 掩码在线蒸馏** 生成式路线。
 
+## 源码运行时序图
+
+**不适用** — 截至 2026-11-21 复核，官方项目页（<https://bfm4humanoid.github.io/>）仍标注 *Code (In Coming)*，未释放训练代码或权重文件（同名仓库 `bfm4humanoid/bfm4humanoid.github.io` 仅承载静态展示页，无可执行策略实现）。
+
+## 工程实践
+
+| 项 | 原文配置与实操建议 |
+|----|------------------|
+| 仿真与本体自由度 | Isaac Gym **8,192** 并行环境；Unitree G1 原 29 DoF 冻结腕部 **6 DoF → 23 DoF** 参与全身控制 |
+| Proxy 教师训练（Table I–II） | 非对称 PPO + 跟踪奖励 + 硬件正则 + 存活奖励；引入域随机化（电机刚度/阻尼、负载、摩擦、外推扰动等）、硬负例挖掘与动捕过滤 |
+| Mask Curriculum | 冷启动期 Bernoulli 采样概率由 `1.0 → 0.5` 退火，避免初期因大量信息被屏蔽而无法蒸馏出稳定步态基线 |
+| 部署调参旋钮 | 行为平衡困难（如 Butterfly Kick）可试 classifier-free 调制 $\lambda \in [0.5, 2.0]$；未见稀有动作（如 Side Salto）冻结主干加轻量残差解码器 $\pi(\Delta a_t \mid s_t^p, z_t)$ 比从头 RL 更快更准 |
+
 ## 常见误区或局限
 
 - **不是 VLA**：BFM 没有语言 / 视觉条件输入；它是 **低层全身控制基础模型**，需上层提供 mode 与目标状态（VR、规划器、VLA 等）。
 - **proxy agent 仍要逐技能 RL**：BFM 的「免重写 reward」体现在 **下游 mode 切换**，不是说 motion tracking 教师本身没成本；论文 proxy 仍用 PPO + reward 工程。
-- **代码未开源**：项目页仍标 *Code (In Coming)*（**2026-07-20** 再核）；复现需等待官方发布或自行实现 CVAE + 掩码蒸馏管线。
+- **代码未开源**：项目页仍标 *Code (In Coming)*（**2026-11-21** 再核）；复现需等待官方发布或参考同团队已开源的 [ScaleBFM](./paper-scaling-bfm-humanoid.md)（PPO+Transformer 配方）。
 
-## 开源状态（项目页核查，2026-07-20）
+## 开源状态（项目页核查，2026-11-21）
 
 | 资源 | 状态 |
 |------|------|

@@ -3,6 +3,9 @@
 - **类型**：学者个人站点 / 履历与论文列表（原始资料归档）
 - **收录日期**：2026-05-14（初收）；**2026-06-25 复核更新**
 - **主链接**：<https://tairanhe.com/>
+- **本次核对日期：** 2026-11-22
+- **核对范围：** 已完整浏览官方个人主页的个人简介、News、Publications（可见项目条目、站内摘要和 BibTeX）、Projects、Podcast 和 Reviewer Service；本项只确认官网 HTML 正文，不代表已精读各项目论文 PDF、代码或视频。
+- **通读：** 已完成
 
 ## 一句话
 
@@ -56,6 +59,12 @@
 | 顺序接触全身 RL | WoCoCo | CoRL 2024 Oral；arXiv:2406.x；<https://lecar-lab.github.io/wococo/> |
 
 （主页上尚有更多条目与合著工作；本表只覆盖 ingest 时用于映射知识库主线的子集。）
+
+## 本次复核摘要（2026-11-22）
+
+- 本人主页仍自述 OpenAI Member of Technical Staff、CMU RI 博士，并在 News 标注 2026-05 加入 OpenAI 和 2026-04 博士答辩。
+- 官方主页的 VIRAL 条目描述 privileged RL teacher、RGB student 与 DAgger/行为克隆；ASAP 条目描述仿真预训练、真机残差动作建模与回到仿真对齐；OmniH2O 条目描述运动学姿态接口、动作重定向与全身遥操作。它们不是单个统一实现。
+- 本次完整阅读对象为**个人官网**；不据此宣称站内各论文全文、附录与开源仓库已通读。
 
 ## 对 wiki 的映射
 

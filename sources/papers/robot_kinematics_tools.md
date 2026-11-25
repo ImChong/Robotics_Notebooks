@@ -8,6 +8,9 @@
 - **入库日期：** 2026-04-14
 - **最后更新：** 2026-04-14
 - **一句话说明：** 覆盖 Pinocchio、RBDL、Crocoddyl 等运动学/动力学计算库的原始论文
+- **Pinocchio 开放论文：** https://hal.science/hal-01866228 （Carpentier et al., ICRA 2019）
+- **通读：** 已完成
+- **核对范围：** 已通读 Pinocchio ICRA 2019 HAL 开放 PDF（793 行），核对 RNEA/ABA/CRBA 力学计算基准（机械臂 ~1 µs、足式 ~3 µs，CppADCodeGen 提速 3–8×）、解析导数与 VII. Conclusions
 
 ## 核心论文摘录
 

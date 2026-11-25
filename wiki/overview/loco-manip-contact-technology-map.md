@@ -3,6 +3,8 @@ type: overview
 tags: [loco-manipulation, humanoid, contact-rich, survey, embodied-ai, force-control, vla]
 status: complete
 updated: 2026-07-22
+original:
+  - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
 related:
   - ./loco-manip-contact-category-01-contact-data.md
   - ./loco-manip-contact-category-02-contact-representation.md
@@ -26,8 +28,7 @@ summary: "依据具身智能研究室 2026-07 接触专题，把 loco-manip 工�
 
 > **本页定位**：为 [具身智能研究室 · Loco-Manip 接触专题](https://mp.weixin.qq.com/s/UjShbwl8p1h9ukymfiRNaw) 提供 **父节点阅读坐标**；不复述逐篇细节，只保留 **问题重框、五段链路、与 161 篇/8 篇/运动小脑姊妹篇的挂接**。姊妹篇 [161 篇十类地图](./humanoid-loco-manip-161-papers-technology-map.md)、[8 篇数据入口](./loco-manip-8-papers-technology-map.md)、[运动小脑 64 篇](./humanoid-motion-cerebellum-technology-map.md)。
 
-## 一句话观点
-
+## 一句话定义
 人形 loco-manip 的接触不只是一只手碰到物体——**脚底支撑、重心、物体受力、负载摆动、触觉与上层调度** 须在同一链路里对齐；策展文把约 36 篇工作按 **数据 → 表示 → 生成补数 → 接触后稳定 → VLA/WM** 五段读，判断瓶颈正从「会不会动」转向 **接触结构能否贯穿全栈**。
 
 ## 英文缩写速查
@@ -41,8 +42,7 @@ summary: "依据具身智能研究室 2026-07 接触专题，把 loco-manip 工�
 | HOI | Human-Object Interaction | 人-物交互，含接触与物体运动 |
 | CF | Contact Flow | OmniContact 提出的接触时序接口（稀疏关键体 + 接触信号） |
 
-## 为什么单独做这张地图
-
+## 为什么重要
 - [Loco-Manipulation](../tasks/loco-manipulation.md) 与 [接触丰富操作](../concepts/contact-rich-manipulation.md) 已覆盖概念；[161 篇地图](./humanoid-loco-manip-161-papers-technology-map.md) 按 **能力形成十类** 组织；本页聚焦 **2026-07 接触专题** 的横切面：**接触如何贯穿数据、策略、力控与上层模型**。
 - **节点复用、避免重复：** 文中 **36 篇** 工作均在 `wiki/entities/paper-*` 有 **独立节点**；与 161 篇/8 篇/运动小脑重叠者使用既有 canonical 页（如 SceneBot、OmniContact、GR00T 合并后的 WholeBodyVLA 等），由五组分类 hub **双向挂接**。
 
@@ -101,6 +101,14 @@ flowchart TB
 3. **触觉力规模化**：WT-UMI、FALCON、HMC、GentleHumanoid、CHIP 均强调力，但跨硬件复用难。
 4. **VLA 接触因果**：上层全身模型若底层无力接口，难上真机。
 5. **接口互通**：数据、表示、力反馈、控制、任务模型须互相接上。
+
+## 工程实践
+
+- **按五段链路诊断接触失败：** 先定位是感知缺力/触觉标签（①数据/②表示）、合成数据力学失配（③生成），还是底层欠柔顺/抗扰（④接触后稳定）或高层 VLA 调度无力口接口（⑤大模型）。
+
+## 常见误区或局限
+
+- 技术地图基于 2026-07 综述梳理 36 篇代表文献的横切分类，并非闭源行业方案的全景统计；实际部署仍须结合平台控制器与传感硬件实测验证。
 
 ## 关联页面
 

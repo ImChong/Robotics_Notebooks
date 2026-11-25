@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, chassis, materials, category-hub]
 status: complete
-updated: 2026-09-26
+updated: 2026-11-21
 summary: "Humanoid Hardware 101 · 01 机身与材料 — 按载荷路径选材：铝合金承力骨架、钢耐磨、镁/钛减重、复材肢段、高分子外壳。"
 related:
   - ./humanoid-hardware-101-technology-map.md
@@ -15,11 +15,17 @@ sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_topo_opt_toolchain_2026-09-26.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
   - ../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md
+original:
+  - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
 ---
 
 # Humanoid Hardware 101 · 01：机身与材料
 
 > **分类页**：对应 [human five · Hardware 101](https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ) **机身骨架** 章；总地图见 [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)。
+
+## 一句话定义
+
+**机身骨架与材料选型的核心不是寻找单一「最轻最强」材质，而是沿整机载荷传递路径为不同部位分别匹配铝合金、高强钢、镁/钛合金、碳纤维复材与工程塑料。**
 
 ## 英文缩写速查
 
@@ -27,8 +33,14 @@ sources:
 |------|----------|----------|
 | GF | Glass Fiber | 玻璃纤维增强材料 |
 | POM | Polyoxymethylene | 聚甲醛工程塑料（俗称赛钢/Delrin） |
+| TO | Topology Optimization | 按工况载荷分布做结构减重的拓扑优化 |
 
-## 核心问题
+## 为什么重要
+
+- **结构质量与刚度直接决定腿足运动性能与热耗：** 肢段过重会放大远端转动惯量，模态刚度不足则会压缩控制带宽并带来长期紧固疲劳。
+- **多材料混合决定可制造性与 BOM 成本：** 铝合金、镁触变成型、钢衬套与复材胶接的工艺差异极大，错选材料常导致量产良率与装配维护失控。
+
+## 核心原理与按载荷分功能选材
 
 承重结构应按 **载荷路径** 分功能选材，而非把机身当作单一整体。
 
@@ -47,6 +59,16 @@ sources:
 - 复材与金属连接是 **薄弱节点**；多用于对轻量化极敏感的长肢段。
 - **拓扑优化/生成式设计** 在铝合金/钛/增材支架上系统减重时，须走完整 **工况谱→TO→重建→疲劳验证** 链，见 [人形结构拓扑优化工具链](../concepts/humanoid-topology-optimization-toolchain.md)（Zane Hub，2026-09-26）。
 
+## 工程实践
+
+- **按载荷路径分级加固：** 铝合金螺纹孔配钢丝螺套与退刀圆角防疲劳裂纹；高微动接触区（轴承室、电机座）优先镶钢件。
+- **拓扑优化绑定真实工况谱：** 减重结构件需按行走/跳跃冲击载荷与模态频率约束走完整 TO→几何重建→疲劳验算，避免只按静载削肉。
+
+## 常见误区或局限
+
+- **忽视碳纤维与铝合金的电偶腐蚀与异向性：** 碳纤–金属连接节点易受层间剪切与腐蚀失效，不适合反复拆装的高频紧固区。
+- **只看比强度忽略镁合金阻燃与工艺约束：** 镁合金虽比铝轻约 35%，但加工与铸造消防要求及供应链集中度限制了其随意替代范围。
+
 ## 关联页面
 
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
@@ -61,3 +83,8 @@ sources:
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
 - [人形下肢衍生式设计论文归档](../../sources/papers/humanoid_leg_generative_design_hust_j_260645.md)
+
+## 推荐继续阅读
+
+- [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
+- [人形结构拓扑优化工具链](../concepts/humanoid-topology-optimization-toolchain.md)

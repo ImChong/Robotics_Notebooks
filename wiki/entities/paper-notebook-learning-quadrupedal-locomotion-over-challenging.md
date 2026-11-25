@@ -2,10 +2,12 @@
 type: entity
 tags: [paper, quadruped, locomotion, privileged-learning, anymal, eth, science-robotics, hmi-papers]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2010.11251"
 venue: "Science Robotics 2020"
 doi: "https://doi.org/10.1126/scirobotics.abc5986"
+original:
+  - ../../sources/papers/learning_quadrupedal_locomotion_challenging_terrain_reading_arxiv_2010_11251.md
 related:
   - ../concepts/privileged-training.md
   - ../concepts/terrain-latent-representation.md
@@ -15,6 +17,7 @@ related:
   - ../overview/paper-notebook-category-03-high-impact-selection.md
   - ../overview/freedof-sim2real-44-papers-technology-map.md
 sources:
+  - ../../sources/papers/learning_quadrupedal_locomotion_challenging_terrain_reading_arxiv_2010_11251.md
   - ../../sources/papers/freedof_sim2real_44_catalog.md
   - ../../sources/papers/humanoid_pnb_learning-quadrupedal-locomotion-over-challenging.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -85,7 +88,26 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（经典系统论文；本库不以单一官方训练仓作为复现入口）。机制细节见深读笔记。
+官方在 [leggedrobotics/learning_quadrupedal_locomotion_over_challenging_terrain_supplementary](https://github.com/leggedrobotics/learning_quadrupedal_locomotion_over_challenging_terrain_supplementary) 发布了预训练 TensorFlow 图权重（ANYmal `c010` / `c100`）与 RaiSim C++ 推理环境（MIT 许可，未含 TRPO/DAgger 训练脚本）；推理入口 `applications/test_c100.cpp` 运行时序如下：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Main as applications/test_c100.cpp
+  participant Sim as Env::blind_locomotion (RaiSim)
+  participant Pol as graph::Policy (tensorflow-cpp)
+  participant Act as SEA 执行器模型 + PD
+  Main->>Sim: 加载 anymal_minimal.urdf 与 seaModel_2500.txt
+  Main->>Pol: load(graph.pb, param.txt, history_len=100)
+  Main->>Sim: updateTask(terrain_params) & init()
+  loop 1500 步控制仿真
+    Main->>Sim: integrate() 步进物理与 SEA
+    Sim-->>Main: getState(state) & getHistory(history, 100)
+    Main->>Pol: updateStateBuffer / updateStateBuffer2
+    Pol-->>Main: getAction(action) (频率偏移 + 足端残差)
+    Main->>Act: updateAction(action) -> 解析 IK -> 关节 PD
+  end
+```
 
 ## 实验与评测读法
 

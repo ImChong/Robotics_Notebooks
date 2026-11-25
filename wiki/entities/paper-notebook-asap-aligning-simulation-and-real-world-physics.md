@@ -15,7 +15,7 @@ tags:
 - motion-control
 - body-system-stack
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: '2502.01143'
 venue: RSS 2025
 related:
@@ -36,6 +36,9 @@ summary: ASAP（RSS 2025，arXiv:2502.01143）：真机 rollout 训 delta action
 project_id: notebook-asap-aligning-simulation-and-real-world-physics
 code: https://github.com/LeCAR-Lab/ASAP
 project: https://agile.human2humanoid.com
+original:
+  - ../../sources/papers/humanoid_pnb_asap-aligning-simulation-and-real-world-physics.md
+  - ../../sources/repos/asap.md
 ---
 
 # ASAP：Aligning Simulation and Real-World Physics for Agile Humanoid Skills

@@ -7,11 +7,27 @@
 - **venue：** ICML 2026 Poster（[ICML 虚拟页 #809](https://icml.cc/virtual/2026/poster/61610)）
 - **原始链接：**
   - ICML：<https://icml.cc/virtual/2026/poster/61610>
-  - 代码：<https://github.com/kekeZ66/3D-IC>
+  - OpenReview PDF：<https://openreview.net/pdf?id=oVB2xYWvpv>（2026-11-21 复核返回 HTTP 403 / 浏览器通道受阻）
+  - ICML 官方 Poster 图：<https://icml.cc/media/PosterPDFs/ICML%202026/61610.png>（已获取并完整阅读）
+  - 代码：<https://github.com/kekeZ66/3D-IC>（归档见 [`sources/repos/3d-ic.md`](../repos/3d-ic.md)）
 - **作者：** Keming Zhang, Sixian Zhang†, Xinhang Song, Hongyu Wang, Yiyao Wang, Yingjie Wang, Shuqiang Jiang
 - **机构：** 中国科学院计算技术研究所 人工智能安全全国重点实验室；中国科学院大学；中国科学院计算技术研究所
 - **入库日期：** 2026-07-10
-- **一句话说明：** **3D Interaction Chains（3D-IC）** 面向 **开放词汇移动操作（OVMM）**，用 **共享 3D 特征图** 统一导航与操作规划，生成 **阶段对齐的交互路点** 并串联为 **多阶段交互链**；**分层策略** 联合 **VLM 可行性推理** 与 **转移代价** 选链，闭环执行并在 Stretch 3 真机验证任务成功率与轨迹效率双提升。
+- **原文核对日：** 2026-11-21
+- **通读：** 未完成
+- **阻塞说明：** 论文全文 PDF（OpenReview `oVB2xYWvpv`）于 2026-11-21 直接请求返回 HTTP 403 且本地无可用 DevTools 浏览器会话，未能获取全文阅读；当前已核对 ICML 2026 Poster `#809` 完整图表数据（`61610.png`）与官方代码仓 `kekeZ66/3D-IC` 源码（`ovmm_3dic_agent.py`、`mapping/clip3d/`、`eval_baselines_agent.py`），故按实保留 `通读：未完成` 直到获取全文 PDF。
+- **一句话说明：** **3D Interaction Chains（3D-IC）** 面向 **开放词汇移动操作（OVMM）**，用 **共享 3D 特征图** 统一导航与操作规划，生成 **阶段对齐的交互路点** 并串联为 **多阶段交互链**；**分层策略** 联合 **VLM 可行性推理** 与 **转移代价** 选链，闭环执行并在仿真（Avg SR **52.7%**, Step **844.1**）与 Stretch 3 真机验证任务成功率与轨迹效率双提升。
+
+## Poster #809 核心实验数值（2026-11-21 核对 `61610.png`）
+
+- **OVMM Benchmark（Table 1）：**
+  - OVMM (RL)：FindObj 66.6/23.9，Pick 61.1/20.9，FindRec 50.9/7.0，Place 14.8/1.4，Avg SR 48.4，Step 989.7
+  - UniTeam：FindObj 66.1，Pick 62.7，FindRec 54.7，Place 18.0，Avg SR 50.4，Step 1027.7
+  - MoManipVLA：Avg SR 49.4，Step 1240.5；MoTo：Avg SR 49.6，Step 1195.1
+  - **3D-IC (Ours)**：FindObj **69.1 / 26.7**，Pick **64.0 / 26.5**，FindRec **55.6 / 13.2**，Place **21.9 / 4.9**，Avg SR **52.7**，Step **844.1**
+- **Stretch 3 真机评测（Table 2，Intra / Cross）：**
+  - Heuristic 基线：`33.0` / `25.0`
+  - **3D-IC**：`44.0`（FindObj 64 / Pick 44 / FindRec 40 / Place 28）/ `40.0`（70 / 40 / 30 / 20）
 
 ## 摘要级要点
 

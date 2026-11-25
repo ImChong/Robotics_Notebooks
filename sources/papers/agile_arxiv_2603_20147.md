@@ -13,6 +13,9 @@
 - **入库日期：** 2026-08-07
 - **一句话说明：** NVIDIA 开源的 Isaac Lab + RSL-RL 人形 RL **全生命周期工作流**：Prepare → Train → Evaluate → Deploy；用配置描述符统一 Sim2Sim / 真机 I/O，并在 Unitree G1 与 Booster T1 上验证 locomotion / stand-up / imitation / loco-manipulation。
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `arXiv:2603.20147v1` 全文（49,972 字符）及 `nvidia-isaac/WBC-AGILE` 官方 README（5.6 KB）。
+
 ## 开源状态（步骤 2.5）
 
 - **项目站核查（2026-08-07）：** [nvidia-isaac.github.io/WBC-AGILE](https://nvidia-isaac.github.io/WBC-AGILE/) 明确指向 GitHub 仓库，列出任务 ID（`Velocity-*` / `StandUp-*` / `G1-PickPlace-*` / `Tracking-Flat-G1-v0` 等）、`scripts/train.py` / `scripts/eval.py` Quick Start，以及 Sim-to-MuJoCo / OSMO 远程训练能力。

@@ -8,6 +8,8 @@
 - **入库日期：** 2026-07-28
 - **一句话说明：** 汉堡 Bit-Bots / 汉堡大学 SoccerDiffusion 配套站点：论文、数据集、预训练与代码入口。
 - **开源状态（2026-07-28 核查）：** **已开源** — [bit-bots/SoccerDiffusion](https://github.com/bit-bots/SoccerDiffusion)（MIT）；论文摘要写明 release dataset / pretrained / code。
+- **通读：** 已完成
+- **核对范围：** 核对 `bit-bots.github.io/SoccerDiffusion` 官方项目页（9,490 字节 HTML）与 `arXiv:2504.20808`。
 
 ## 页面公开信息
 

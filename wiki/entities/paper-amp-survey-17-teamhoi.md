@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, multi-agent, hoi, transformer, sea-ai-lab, nus]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-22
 arxiv: "2603.07988"
 venue: "CVPR 2026"
 code: https://github.com/sail-sg/TeamHOI
@@ -20,6 +20,9 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_17_teamhoi_learning_a_unified_policy_for_cooperativ.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+original:
+  - ../../sources/papers/teamhoi_arxiv_2603_07988.md
+  - ../../sources/papers/humanoid_amp_survey_17_teamhoi_learning_a_unified_policy_for_cooperativ.md
 ---
 
 # TeamHOI：任意队形的协作人–物交互统一策略
@@ -97,6 +100,10 @@ flowchart TB
 - $r_{\text{ang}}$：相邻队友角间隔趋近 $2\pi/m$。
 - $r_{\text{cov}}$：支撑凸包相对桌 CoM **主轴覆盖**；$r_{\text{form}}=0.25 r_{\text{ang}}+0.75 r_{\text{cov}}$。
 
+## 工程实践
+
+- **复用 Masked AMP 与按队形归一化策略优势**：训练跨队形（2–8 人）多体协作搬运时，应将交互阶段遮蔽手部/前臂特征的判别器 $D_{\text{mask}}$ 与非交互全身判别器 $D_{\text{full}}$ 平滑混合，同时对不同人数环境的 PPO advantage 分队形独立归一化，确保小队与大队梯度互不淹没；官方实现见 `sail-sg/TeamHOI`。
+
 ## 结论
 
 **TeamHOI 用「遮蔽先验 + 队友 token」绕开多人协作 MoCap 的缺口：不是去补数据，而是把单人参考只用在它仍然成立的那部分身体上。**
@@ -107,7 +114,7 @@ flowchart TB
 - 边界：仍是**去中心化执行的仿真工作**，勿当作硬件多机部署已解决；真机侧的单人 HSI 由 [PhysHSI #15](./paper-amp-survey-15-physhsi.md) 承担。
 - 与 CooHOI 对照：后者每队形一策略、无显式队友状态；TeamHOI 接受统一参数化带来的混合训练复杂度，换来的是**任意 N**。
 
-## 常见误区
+## 局限与风险
 
 1. **不是 centralized critic 指挥：** 每 agent **独立执行同一参数策略**，仅通过 **局部可观测量 + 队友 token** 协调。
 2. **masked AMP ≠ 无 AMP：** 去掉先验肢体僵硬；全身 AMP  alone 又限制协作手部位多样性——必须 **分部位混合**。
@@ -120,7 +127,18 @@ flowchart TB
 - **对照：** CooHOI-*2/4/8 三独立策略；TeamHOI 单策略跨配置更稳（项目页视频）。
 - **消融：** Transformer vs MLP 固定维；无 masked AMP 时协作多样性下降。
 
-## 与其他页面的关系
+## 与其他工作对比
+
+| 对比维度 / 工作 | TeamHOI（本文） | CooHOI | [PhysHSI（AMP #15）](./paper-amp-survey-15-physhsi.md) | [MoRE（#08）](./paper-amp-survey-08-more.md) / [Goalkeeper（#13）](./paper-amp-survey-13-humanoid-goalkeeper.md) |
+|---|---|---|---|---|
+| 队形与可扩展性 | **单策略任意 $N$**（2–8 人训练，OOD 队形零重训泛化） | 每队形（2/4/8）独立策略，无显式队友状态 | 单人 HSI | 单人全身控制 |
+| 协作通信机制 | 队友 token $\mathcal{T}_t^i$ + Cross-Attention + 分队形归一化 PPO advantage | 依赖共享物体动力学作隐式耦合 | 不适用 | 不适用 |
+| AMP 先验构造 | **$D_{\text{full}}$ + 遮蔽手/前臂的 $D_{\text{mask}}$**，按交互指示 $\sigma(\alpha_t)$ 连续混合 | 单人全身 AMP | 单人–物体 MoCap 先验 | 按步态（MoRE）或身体区域（Goalkeeper）分判别器 |
+| 任务与部署边界 | 仿真多智能体协作搬桌（方/矩/圆桌，64 边缘候选接触点） | 仿真协作搬运 | 含真机单人搬箱/坐躺站 | 仿真多样化步态 / 守门动作 |
+
+> **核对边界**：据已读归档（[teamhoi_arxiv_2603_07988.md](../../sources/papers/teamhoi_arxiv_2603_07988.md)），本文定量与视频对照集中在 CooHOI-*2/4/8 独立策略及内部消融（Transformer vs MLP 固定维、去 masked AMP），尚未包含真机多机实测对比。
+
+## 关联页面
 
 - [多智能体强化学习（MARL） ／ Multi-Agent Reinforcement Learning](../methods/marl.md) — 去中心化策略利用队友 token 协作搬运，需核对人数、归一化与队形变化的评测条件。
 

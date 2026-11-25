@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - state-estimation
 status: complete
-updated: 2026-09-22
+updated: 2026-11-21
 arxiv: "2608.03429"
 venue: "arXiv 2026"
 related:
@@ -27,6 +27,8 @@ sources:
   - ../../sources/papers/slamformer_infinity_arxiv_2608_03429.md
   - ../../sources/sites/tsinghua-mars-lab-slamformer-infinity.md
   - ../../sources/repos/slamformer_infinity.md
+original:
+  - ../../sources/papers/slamformer_infinity_arxiv_2608_03429.md
 summary: "SLAMFormer-∞（清华 IIIS/MARS，arXiv:2608.03429）：memory-conditioned 几何 Transformer 支撑无界前端与后端；PGGO 联合精炼长程位姿与 dense pointmap；KITTI/Waymo 优于 VGGT-Long，演示 >17 km；官方仓占位，推理代码待发布。"
 ---
 
@@ -69,7 +71,7 @@ summary: "SLAMFormer-∞（清华 IIIS/MARS，arXiv:2608.03429）：memory-condi
 | 训练 | 自 SLAM-Former 初始化；室内 12 帧·518 / 户外 36 帧·224；48×A100 · 10 epochs |
 | 开源（截至 2026-08-08） | **部分开源（占位仓）**：[`SLAMFormer-Infinity`](https://github.com/Tsinghua-MARS-Lab/SLAMFormer-Infinity) 仅 README + gh-pages 站点；**无可运行训练/推理**。前作 [SLAM-Former](https://github.com/Tsinghua-MARS-Lab/SLAM-Former) 已开源，勿混 |
 
-## 方法与核心结构
+## 核心机制与结构
 
 | 模块 | 作用 |
 |------|------|
@@ -79,16 +81,14 @@ summary: "SLAMFormer-∞（清华 IIIS/MARS，arXiv:2608.03429）：memory-condi
 | **PGGO（Global Backend）** | 回环或序列末：节点=位姿∪几何；迭代 transformer 精炼 + 阻尼位姿更新 |
 | **四模式训练** | 共享权重，仅注意力掩码/条件模式不同，对齐测试时 frontend / backend / fine |
 
-### 流程总览
-
 ```mermaid
 flowchart TB
   rgb[ 流式单目 RGB ]
-  fe[ Conditional Frontend\n关键帧 + 局部 KV ]
-  mem[ Memory / 条件块\n坐标系与尺度 ]
-  lb[ Local Backend\n周期窗口精炼 ]
-  pgGraph[ Pose-Geometry Graph\n前端 + 回环边 ]
-  pggo[ Global PGGO\n联合位姿 + pointmap ]
+  fe[ Conditional Frontend<br/>关键帧 + 局部 KV ]
+  mem[ Memory / 条件块<br/>坐标系与尺度 ]
+  lb[ Local Backend<br/>周期窗口精炼 ]
+  pgGraph[ Pose-Geometry Graph<br/>前端 + 回环边 ]
+  pggo[ Global PGGO<br/>联合位姿 + pointmap ]
   out[ 全局一致轨迹与稠密地图 ]
   rgb --> fe --> mem
   mem --> fe

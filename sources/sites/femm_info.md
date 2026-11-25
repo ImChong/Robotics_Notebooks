@@ -12,7 +12,8 @@
 - **许可：** Aladdin Free Public License（程序本体）；内嵌 Triangle 网格与 Lua 4.0 各有独立许可
 - **代码：** 稳定版源码 zip（随 Download 页发布，非 GitHub 主仓）  
   https://www.femm.info/doku/lib/exe/fetch.php?media=upload:files:femm42src_21apr2019.zip
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 完成 `start` / `documentation` / `examples` / `faq` Q1–Q30 官方文档全文通读核对）
+- **通读：** 已完成
 - **一句话说明：** 开源 2D/轴对称有限元求解器门户：磁、静电、热流、电流场；含用户手册、脚本接口文档与大量电机/磁轴承/涡流示例。
 - **开源状态：** **已开源**（Windows 二进制 + 源码 zip；无原生 Linux，官方推荐 Wine；商业使用分析结果免费，再分发程序或嵌入源码需另议许可）
 - **沉淀到 wiki：** [femm](../../wiki/entities/femm.md)

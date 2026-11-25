@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, newton, newton-raphson, root-finding, inverse-kinematics, second-order, numerical-methods, trajectory-optimization]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 summary: "牛顿–拉夫森法用一阶 Taylor 线性化迭代求根；标量式为 NR，向量式即 Jacobian 伪逆 IK；在优化语境等价于 Hessian 牛顿步。"
 related:
   - ./gauss-newton.md

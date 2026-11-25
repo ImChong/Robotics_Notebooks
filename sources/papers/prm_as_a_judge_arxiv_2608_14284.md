@@ -8,17 +8,19 @@
 - **arXiv：** <https://arxiv.org/abs/2608.14284>（PDF：<https://arxiv.org/pdf/2608.14284>）
 - **1.0 论文：** <https://arxiv.org/abs/2603.21669>（仓库 README 主引用；1.5 为指标与评测套件升级）
 - **项目页：** <https://prm-as-a-judge.github.io/> — 归档见 [`sources/sites/prm-as-a-judge-github-io.md`](../sites/prm-as-a-judge-github-io.md)
-- **代码：** <https://github.com/Yuheng2000/PRM-as-a-Judge> — 归档见 [`sources/repos/prm-as-a-judge.md`](../repos/prm-as-a-judge.md)
+- **代码：** <https://github.com/YuyangLiu2003/PRM-as-a-Judge>（原 `Yuheng2000/PRM-as-a-Judge` 截至 2026-11-21 返回 404）— 归档见 [`sources/repos/prm-as-a-judge.md`](../repos/prm-as-a-judge.md)
 - **作者：** Yuyang Liu\*、Yanqing Shen\* 等；Project Lead Yuheng Ji；通讯 Pengwei Wang（BAAI）、Xiaolong Zheng（CASIA）
 - **机构：** 北京智源人工智能研究院（BAAI）；中国科学院自动化研究所（CASIA）
 - **入库日期：** 2026-08-17
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.14284v1 PDF 全文 2,948 行及 `YuyangLiu2003/PRM-as-a-Judge` `README.md` 与 `eval/prm_judge/` CLI
 - **一句话说明：** 把 rollout 视频经 PRM 变成进度曲线，再用 OPD 指标（含 FNS / DRR / SQS）做过程级评测，并配套 RoboPulse++ 检验评测器本身。
 
-## 开源状态（步骤 2.5）
+## 开源状态（步骤 2.5，2026-11-21 复核）
 
-- **项目页核查（2026-08-17）：** 首页链 Paper / Blog / Leaderboard / User Guide；GitHub 工具仓已上线；默认 judge 权重 [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview)；[RoboPulse](https://huggingface.co/datasets/yuheng2000/RoboPulse) 已上线；**RoboPulse++ 徽章仍为 Coming Soon**。
-- **仓库核查：** Apache-2.0；可运行入口 `eval/run_eval.sh`、`eval/run_judge.py serve`、`getting_started/PRM_as_a_Judge_quickstart.ipynb`。
-- **结论：** **已开源（评测套件 + 可视化）**；RoboPulse++ 数据发布仍待齐。
+- **项目页核查：** 首页链 Paper / Blog / Leaderboard / User Guide；GitHub 仓现托管于 [YuyangLiu2003/PRM-as-a-Judge](https://github.com/YuyangLiu2003/PRM-as-a-Judge)；默认 judge 权重 [Robo-Dopamine-GRM-2.0-8B-Preview](https://huggingface.co/tanhuajie2001/Robo-Dopamine-GRM-2.0-8B-Preview)；[RoboPulse](https://huggingface.co/datasets/yuheng2000/RoboPulse) 与 [RoboPulse++ (`lyy0715/RoboPulsePlusPlus`)](https://huggingface.co/datasets/lyy0715/RoboPulsePlusPlus)（2026-08-31 发布）均已上线 HF。
+- **仓库核查：** Apache-2.0；可运行入口 `eval/run_eval.sh`、`eval/run_judge.py`（封装 `prm_judge.cli.main`，支持 `eval` / `visualize` / `serve` 与 `--prm dopamine|recorded|robometer`）、`getting_started/PRM_as_a_Judge_quickstart.ipynb`。
+- **结论：** **已开源（评测套件 + 可视化 + RoboPulse++ 数据集）**。
 
 ## 摘录 1：问题与主张（§1）
 

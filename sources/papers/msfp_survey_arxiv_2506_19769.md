@@ -13,6 +13,7 @@
 - **代码：** 无（综述）
 - **项目页：** 无
 - **入库日期：** 2026-09-22
+- **通读：** 已完成
 - **中文导读：** [wechat_embodied_heart_msfp_survey_tsinghua_2026-09-22.md](../blogs/wechat_embodied_heart_msfp_survey_tsinghua_2026-09-22.md)
 - **一句话说明：** 任务无关地梳理具身 AI 中 **多传感器融合感知（MSFP）** 的四条技术轴——多模态、多智能体、时间序列与 MM-LLM——并讨论数据/模型/应用层开放挑战。
 

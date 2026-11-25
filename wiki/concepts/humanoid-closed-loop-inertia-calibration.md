@@ -27,6 +27,8 @@ sources:
   - ../../sources/blogs/wechat_humanoid_zhiyan_inertia_closedloop_calib_2026-08-26.md
   - ../../sources/papers/prime_arxiv_2605_17681.md
   - ../../sources/papers/kilvo_arxiv_2608_05647.md
+original:
+  - ../../sources/papers/kilvo_arxiv_2608_05647.md
 summary: "人形整机闭环惯量标定：量产「出厂体检」要把运动学、惯量、IMU 零偏、足底力四张单子做成可随负载更新、可绑机身序列号的闭环辨识；单关节台架测空关节救不了分布式质量。"
 ---
 

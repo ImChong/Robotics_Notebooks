@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-19
+updated: 2026-11-22
 project_id: diffusion-policy
 project: https://diffusion-policy.cs.columbia.edu/
 arxiv: '2303.04137'
@@ -35,6 +35,7 @@ related:
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
 - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
+- ./paper-diffusion-planner-autonomous-driving.md
 sources:
 - ../../sources/papers/diffusion_policy_arxiv_2303_04137.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -44,6 +45,7 @@ sources:
 - ../../sources/repos/awesome-world-action-models-rcl.md
 - ../../sources/repos/lerobot.md
 - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
+- ../../sources/papers/diffusion_planner_arxiv_2501_15564.md
 original:
 - ../../sources/papers/diffusion_policy_arxiv_2303_04137.md
 - ../../sources/repos/real-stanford-diffusion-policy.md
@@ -134,6 +136,7 @@ flowchart LR
 | [DiT-Block Policy](./paper-robotic-dit-ingredients-dit-block-policy.md) | DDPM / DDIM | 分相机 ResNet + FiLM + **adaLN-Zero** | 针对本页 Transformer 版难训问题给出稳定收敛的 DiT 配方 |
 | [RDT-1B](./paper-rdt-1b.md) | DDPM / DPM-Solver++ | 1.2B RDT（QKNorm + RMSNorm + ACI） | 扩展为跨 46 数据集、128D 统一动作空间的双臂扩散基础模型 |
 | [π₀](./paper-pi0.md) | Conditional Flow Matching | PaliGemma VLM + 动作专家 | 将多步扩散迭代升级为少量步数流匹配，并接入预训练 VLM 语言理解 |
+| [Diffusion Planner](./paper-diffusion-planner-autonomous-driving.md) | DiT 联合轨迹去噪 + 可微能量引导 | MLP-Mixer + Transformer 融合 + MHCA/AdaLN | 将轨迹去噪延展至自动驾驶闭环多车交互规划（输出航迹供控制器跟踪），无需重训分类器即可在采样期注入能量引导 |
 
 ## 结论
 
@@ -255,6 +258,7 @@ sequenceDiagram
 - [DiT-Block Policy](./paper-robotic-dit-ingredients-dit-block-policy.md) — 系统改进本页 Transformer 去噪器训练稳定性的直接续作
 - [LeRobot](./lerobot.md) — 开源社区复现 U-Net Diffusion Policy 的标准代码底座
 - [扩散与流匹配纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md) — 本页在路线中的入门与奠基位置
+- [Diffusion Planner（arXiv:2501.15564v2）](./paper-diffusion-planner-autonomous-driving.md) — 面向自动驾驶的 DiT 联合轨迹去噪与无分类器推理期能量引导对照
 
 ## 参考来源
 
@@ -266,6 +270,7 @@ sequenceDiagram
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md`](../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md)
+- [Diffusion Planner 原文归档（arXiv:2501.15564v2）](../../sources/papers/diffusion_planner_arxiv_2501_15564.md) — 闭环自动驾驶轨迹去噪对照
 
 ## 推荐继续阅读
 

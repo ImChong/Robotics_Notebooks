@@ -9,9 +9,11 @@ tags:
   - legged-robot
   - deepmind
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2305.14654"
-venue: "RSS 2018"
+venue: "arXiv 2023 (Google DeepMind)"
+original:
+  - ../../sources/papers/barkour_arxiv_2305_14654.md
 code: https://github.com/google-deepmind/barkour_robot
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -136,17 +138,55 @@ flowchart TB
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的四足敏捷代表基准，双向回链
 - [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 专长策略基线采用 PPO；与 Transformer 蒸馏基线比较时应分清训练阶段和数据来源。
 
-## 方法栈
+## 方法栈（核心机制）
 
-见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+完整模块拆解见前文 **核心结构** 与 **流程总览**；工程实践、定量表现与代码追踪时序如下。
+
+## 工程实践
+
+- **硬件与资产代际核对**：`google-deepmind/barkour_robot` 开源机械/电子/固件（`actuator/firmware` 基于 Pigweed，`actuator/ethercat_host` 负责主机通信），而 `mujoco_menagerie` 同时存在早期 `google_barkour_v0` 与后续 `google_barkour_vb`；复现论文 11.5 kg 四足基准前须对齐模型与阻尼/摩擦参数。
+- **双线评测接口**：专长路线依赖 LeggedGym/Isaac Gym 中的特权高度场、地形课程与上层路点状态机；Brax 侧 `brax/experimental/barkour/score_barkour.py` 提供基于日志轨迹 CSV 的标准化敏捷计分脚本，用于复算赛道得分与罚分。
+- **商业使用边界**：硬件设计资料采用 **CC BY-NC** 许可，工程复用或二次改装前需先核对授权边界。
 
 ## 实验与评测
 
-- 论文报告 **benchmark 任务集** 上的成功率、速度与鲁棒性指标；具体数值与消融见原文表格（[参考来源](#参考来源)）。
+- **敏捷课程规格（Table I）**：5 m × 5 m 场地，名义路径约 18 m，规定时间 \(t_{\text{allotted}} \approx 10.64\text{ s}\)（目标均值 1.69 m/s）；满分 1.00，超时每秒扣 0.01，跳过/失败障碍每次扣 0.1。
+- **真机对比结果（Table III）**：在 11.5 kg 自研四足实机上，三专长+状态机取得 **`0.77 ± 0.064`**（用时 **`24.6 ± 1.1 s`**），专长蒸馏的 Locomotion-Transformer 通才取得 **`0.73 ± 0.062`**（用时 **`25.8 ± 1.6 s`**）；分项障碍成功率报告为绕杆 **100%**、A 字坡 **100%**、宽跳 **38%**，同期小型犬基准为 **`1.00`**（用时 **`9.02 ± 0.65 s`**）。
+- **蒸馏数据与训练吞吐**：三专长在随机台阶/楼梯/间隙/斜坡共采集 **17,636 episodes**（约 **57.58 robot hrs**），以因果 Transformer（窗口 \(W=15\) 即 0.3 s）经 L2 回归蒸馏；Brax 侧亦验证可在 TPU 上约 **200 s** 内完成 **200M** 步仿真训练。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    participant Gym as LeggedGym / Brax Env
+    participant Spec as Specialist PPO Policies (OWP / SCP / JP)
+    participant FSM as Waypoint Nav FSM
+    participant LT as Locomotion-Transformer (W=15)
+    participant Scorer as brax score_barkour.py
+
+    Spec->>Gym: 在随机地形 rollout 17,636 episodes (57.58h)
+    Gym-->>LT: 本体序列 + 动作历史 + 融合高度场 token
+    LT->>LT: 因果 Transformer L2 蒸馏动作回归
+    FSM->>Spec: 赛道实机/仿真按路点切换专长 (或由 LT 统一跟踪速度指令)
+    Gym-->>Scorer: 导出位置/时间/障碍事件轨迹 CSV
+    Scorer-->>Scorer: 按名义路径 18m 与 t_allotted 扣分输出 R_agility
+```
+
+> **源码边界**：`google-deepmind/barkour_robot` 公开硬件 CAD/PCBA、Pigweed 固件（`actuator/firmware`）与 EtherCAT 主机接口（`actuator/ethercat_host`），Brax 公开 `brax/experimental/barkour/score_barkour.py` 轨迹评分器及 Menagerie 公开 `google_barkour_v0` / `google_barkour_vb`；论文中三专长 PPO 与 Locomotion-Transformer 蒸馏训练脚本未随 `barkour_robot` 主仓一并开源。
 
 ## 与其他工作对比
 
-- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+- 与 [RSS 2018 敏捷四足 sim2real](./paper-tan-quadruped-agile-locomotion-sim2real.md) 相比，Barkour 从单地形快跑推进到含绕杆、A 字坡（5°–33° 课程）与宽跳的多技能串联课程，并加入机身惯量、电机模型与关节静摩擦的增强域随机化。
+- 与 [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md) 的显式步态参数条件化控制不同，Barkour 侧重用标准敏捷赛道分数 \(R_{\text{agility}}\) 统一评测专长切换与单策略蒸馏通才（`0.77` vs `0.73`）的整场敏捷表现。
+
+## 结论
+
+Barkour 用统一的时间—失误敏捷分 \(R_{\text{agility}}\) 将四足机器人的多种高速障碍动作纳入可复测赛道基准，真机上专长状态机（`0.77`）与蒸馏通才（`0.73`）均已显著跨越平地行走边界，但跳过率仍受限于宽跳稳定性（38%）及特权高度场/全状态导航假设。
+
+- **评测不要只看单任务速度**：串联障碍课会直接暴露技能切换（绕杆/爬坡 100% vs 宽跳 38%）与加减速过渡损耗。
+- **专长状态机 vs 蒸馏通才存在轻微折中**：实机总分 `0.77` 对 `0.73`，蒸馏用统一接口换取免显式技能切换，代价是高动态窄余量动作略微保守。
+- **>1 m/s 敏捷动作的 Sim2Real 门槛在于物理随机化细节**：仅用常规平地 DR 不足以过宽跳与陡坡，需补充躯干惯量、电机非线性与静摩擦随机化。
+- **核对代码与资产版本**：使用 `score_barkour.py` 对齐指标定义，并区分 `barkour_robot` 硬件仓与 Menagerie `v0`/`vB` 模型差异。
 
 ## 参考来源
 

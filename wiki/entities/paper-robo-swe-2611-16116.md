@@ -3,7 +3,7 @@ type: entity
 project_id: robo-swe-2611-16116
 tags: [paper, robot-software, benchmark, coding-agent]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-21
 arxiv: "2611.16116"
 project: https://evalium.ai/robo-swe
 original:
@@ -85,6 +85,11 @@ flowchart LR
 1. 保留相同模型与数据预算下的可比口径，不跨基准简单求平均。
 2. 优先复核最可能出现数据泄漏、接触失败或部署延迟的环节。
 3. 对论文未检验的部署条件单列验证计划。
+
+## 与其他工作对比
+
+- **对比通用软件工程与机器人编码基准（§VI Related Work）：** 不同于面向通用 Python/多语言软件的 `SWE-bench` / `Multi-SWE-bench`，也不同于仅汇集静态 ROS 缺陷的 `ROBUST`（221 bugs）、只测单一 ROS 2 导航栈仿真行为预言的 `RoboBugBench`（33 repairs），以及侧重从零写控制脚本的 `Code as Policies` / `EmbodiedSWE` / `ROSDevEval`，Robo-SWE 覆盖 28 个真实机器人仓库（ROS 2、仿真、算法、学习四域）的 **236 个容器化可执行 F2P/P2P 真实 Issue 修复任务**。
+- **对比不同模型–Agent 组合在 Robo-SWE 上的表现（Table II，Nov 2026）：** 7 组主流模型–harness 配置的总解决率分布在 **43.9%–56.5%**（`Opus 5.5` 56.5%、`Sol max` 54.1%、`Sol medium` 52.5%、`Astra` 51.4%、`GLM-5.3` 46.2%、`Sonnet 5.5` 45.8%、`Kimi K3.1 Pro` 43.9%；单次 API 等价成本均值 \$0.10–\$1.24）。论文明确指出各主模型 95% 自举区间高度重叠，且评测对象是「模型 + harness」联合体，不能抽离 harness 作纯模型排名。
 
 ## 局限与风险
 

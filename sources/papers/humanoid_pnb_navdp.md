@@ -10,6 +10,7 @@
 - **项目页：** <https://wzcai99.github.io/navigation-diffusion-policy.github.io/>
 - **代码：** <https://github.com/InternRobotics/NavDP>（**已开源**；README 标注 CC BY-NC-SA 4.0，checkpoint 需表单）
 - **入库日期：** 2026-07-10
+- **通读：** 已完成
 - **一句话说明：** 在动态复杂开放世界中导航是自主机器人的关键且困难的能力。已有方法多依赖级联模块化框架（需大量调参）或有限真实演示学习。NavDP（Navigation Diffusion Policy）是一个端到端网络，仅在仿真训练就能实现零样本 sim-to-real，跨多样环境与机器人本体迁移。它用统一的 Transformer 架构同时做轨迹生成与评估：以局部 RGB-D 观测为条件，为对比轨迹样本预测评论值（critic values），并借助特权仿真信息提升空间理解。训练数据大规模——跨 3000 个场景、累计超百万米导航。结果：在仿真与真机评测中均显著超越此前 SOTA。
 
 ## 核心摘录（策展，非全文）

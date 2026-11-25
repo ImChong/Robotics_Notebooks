@@ -226,6 +226,7 @@ flowchart LR
 - 选型参考：[Query：跨形态迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 ### 推荐读什么
+- [ReLoco：统一行走、跌倒起身与继续任务](../wiki/entities/paper-reloco-unified-locomotion-fall-recovery.md) — Stage 5 恢复闭环：仿真精炼人体动作 + 姿态条件双头 AMP，以单策略在天工 3.0 恢复行走；明确区分硬件保护事件与有效恢复。
 - [BlinkMimic：可微世界模型 + CUDA Graph 的分钟级训练](../wiki/entities/blinkmimic.md) — 对照 SuperMimic/InstantTrack 的仿真训练时间与失败片段清除机制。
 - [坍塌地形反应式撤退](../wiki/entities/paper-collapse-retreat-hybrid-terrain.md) — 轮足 Go2W 的混合地形并行 RL 与失支撑恢复。
 - 这四个方向各有独立纵深页：见主路线的[可选纵深索引](motion-control.md#depth-optional-index)

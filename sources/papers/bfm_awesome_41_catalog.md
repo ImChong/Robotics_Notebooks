@@ -8,6 +8,8 @@
 - **入库日期：** 2026-05-26
 - **最近刷新：** 2026-07-11（awesome 列表增至 **42 篇**；#42 Any2Any 归入 04 Adaptation）
 - **一句话说明：** 将 awesome-bfm-papers 所列 BFM 论文与 **10 个数据集** 分别落成独立 `sources/papers/bfm_awesome_*` 归档，便于 ingest 溯源与 lint 入链统计。
+- **通读：** 已完成
+- **核对范围：** 核对 `friedrichyuan/awesome-bfm-papers` 仓库 `README.md`（17,158 字节）与 42 篇目录索引。
 
 ## 论文（42）
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, urdf, kinematics, dynamics, modeling, ros]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 related:
   - ../entities/freecad.md
   - ../entities/pinocchio.md

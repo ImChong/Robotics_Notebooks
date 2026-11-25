@@ -2,7 +2,7 @@
 type: concept
 tags: [terrain, simulation, domain-randomization, reinforcement-learning, curriculum-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 related:
   - ./domain-randomization.md
   - ./curriculum-learning.md
@@ -16,6 +16,10 @@ related:
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
   - ../../sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
+original:
+  - ../../sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
 summary: "Procedural Terrain Generation 在仿真中程序化生成坡、碎石、台阶与随机凸起，配合 DR 与课程学习训练四足越障泛化策略。"
 ---
 
@@ -47,7 +51,7 @@ summary: "Procedural Terrain Generation 在仿真中程序化生成坡、碎石�
 - 对比 **有/无 DR** 策略泛化
 - 与 **五阶段课程学习** 联用：先平地 Trot，再逐步加难度
 
-## 常见生成方式
+## 核心原理与常见生成方式
 
 | 类型 | 参数示例 | 训练目的 |
 |------|---------|---------|
@@ -74,10 +78,17 @@ DR 采样物理参数（摩擦、质量…）
 PPO 并行训练
 ```
 
-## 常见误区
+## 工程实践
+
+- **网格分辨率与物理碰撞对齐：** 高度场（heightfield）步长通常取 `0.05–0.10 m`，三角网格简化后若与视觉网格不一致会诱发脚趾/脚跟穿模卡死；[legged_gym](../entities/legged-gym.md)（Rudin et al., 2022）通过按难度分块的 `10×20` 子地形矩阵实现高效向量化碰撞查询。
+- **噪声基线与学习式地形衔接：** 经典 Perlin 高度场无边界且 $\mathcal{O}(1)$ 随机访问，但统计保真度有限（[InfiniteDiffusion](../entities/paper-infinite-diffusion-terrain-diffusion.md) Table 2 测得 Perlin blending FID 高达 `186.70`，而 Terrain Diffusion 降到 `14.78`）；若将扩散生成的真实高程导回机器人仿真，仍需补齐粗糙度/摩擦系数标注及重置出生点校验。
+- **边界与卡死防护：** 在生成深坑、高台或连续离散踏石时，需对机器人初始落位区施加平地安全垫，并结合地形边界传送或难易度重抽机制防止早衰探索停滞。
+
+## 局限与风险（及常见误区）
 
 - **地形无限难 + 无课程**：策略学不到基础步态，样本浪费。
 - **只视觉难、物理简单**：Sim2Real 仍失败；碰撞体须与视觉对齐（MATRiX 强调 UE–MuJoCo 一致）。
+- **过拟合程序化家族分布**：高度场（2.5D）无法表达悬空横梁、低矮涵洞或可变形松软砾石；若策略只见过网格对齐台阶，真机面对斜向非结构化台阶仍可能步幅失配。
 
 ## 关联页面
 
@@ -100,3 +111,4 @@ PPO 并行训练
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch5 与 Project 2
 - [InfiniteDiffusion / Terrain Diffusion 论文摘录（SIGGRAPH 2026）](../../sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md) — 学习式程序化地形与 Minecraft 集成
+- [Learning to Walk in Minutes（arXiv:2109.11978）](../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md) — legged_gym 程序化子地形矩阵与游戏式课程实现

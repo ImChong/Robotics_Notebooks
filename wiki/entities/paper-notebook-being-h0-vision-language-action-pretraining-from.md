@@ -2,8 +2,12 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, manipulation, dexterous-manipulation, vla, human-video, motion-tokenization, pku, beingbeyond]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-21
 arxiv: "2507.15597"
+institutions: [beingbeyond]
+original:
+  - ../../sources/papers/being-h0_arxiv_2507_15597.md
+  - ../../sources/repos/being-h0.md
 venue: "ICML 2026"
 code: https://github.com/BeingBeyond/Being-H0
 related:
@@ -54,6 +58,16 @@ Being-H0 要：把**人手**当基础操作器，从**网络规模人类视频**
 
 ## 核心机制
 
+```mermaid
+flowchart TD
+  UH["UniHand 大规模人手视频 (11 数据集, 166.5M 样本 / 1155h, UniHand-2.5M)"] --> PSA["Physical Space Alignment (弱透视内参-尺度对齐 + 平面内旋转增强)"]
+  PSA --> MANO["MANO-D162 参数化 (腕部平动+6D旋转 + 手指局部旋转 + 21x3D 关键点)"]
+  MANO --> GRQ["Part-level GRQ 运动分词器 (Wrist 4096 + Finger 4096, 15 FPS -> 128 tok/s)"]
+  RGB["动态切片 RGB 观测 + 语言指令"] --> VLA["InternVL3 (1B / 8B / 14B) 统一词表自回归预训练 (词汇级+分位数损失掩码)"]
+  GRQ --> VLA
+  VLA -->|"下游真机对齐微调 (Franka FR3 + Inspire Hand)"| POST["可学习 Action Query + 双向注意力 + 连续 MLP L1 动作块头"]
+```
+
 1. **人手作基础操作器**：从网络规模人类视频学灵巧 VLA；
 2. **物理指令微调**：VLA 预训练 + 物理空间对齐 + 机器人适配；
 3. **部件级运动 token 化**：毫米级精度建模手轨迹；
@@ -72,6 +86,12 @@ Being-H0 要：把**人手**当基础操作器，从**网络规模人类视频**
 | 作者 | Hao Luo、Yicheng Feng、Wanpeng Zhang、Sipeng Zheng、Haoqi Yuan、Qin Jin、Zongqing Lu 等（北大 / BAAI 等） |
 | 发表 | 2025 年 7 月 |
 | 笔记阅读日期 | 2026-06-21 |
+
+## 工程实践
+
+- **模型规模与权重开放**：Hugging Face `BeingBeyond` 合集已开放 `Being-H0-GRVQ-8K` 运动分词器与 `Being-H0-{1B,8B,14B}-2508` 预训练模型，以及 `Being-H0-8B-Align-2508` 真机对齐微调权重与 `h0_post_train_db_2508` 数据集。
+- **推理与部署依赖**：运行手部运动渲染与策略服务端前需独立从 MPG 官网授权下载 `mano_v*_*` 参数包放置于 `beingvla/models/motion/mano/`；实机部署通过 `run_server.py`（`PolicyWrapper` 注入 `<IMG_CONTEXT>` / `<PROP_CONTEXT>` / `<ACTION_CHUNK_i>`）经 `InternVLInferenceServer` 与 Franka FR3 + Inspire Hand 客户端（`eval_policy.py`）低延迟异步通信。
+- **训练策略与局限边界**：仓库 `BeingBeyond/Being-H0 @ ae92e46` 完整开放了推理及真机 aligner 通信服务端，但预训练/后训练主训练脚本仍标为 TODO（已整合演进至 [BeingBeyond/Being-H](https://github.com/BeingBeyond/Being-H) 跨本体仓库）。
 
 ## 源码运行时序图
 
@@ -138,7 +158,7 @@ sequenceDiagram
 - **规模化的权衡**：数据量增大时语义对齐指标继续上升，但手指细节精度（PA-MPJPE）略降。
 - **开源边界**：可跑推理与评测；训练代码、真机开发与仿真基准在 README TODO 中未完成，无法端到端复现预训练。
 
-## 与其他页面的关系
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
@@ -149,6 +169,10 @@ sequenceDiagram
 - 同为人手视频预训练的扩散路线：[paper-notebook-h-rdt-human-manipulation-enhanced-bimanual-robot](./paper-notebook-h-rdt-human-manipulation-enhanced-bimanual-robot.md)
 
 ## 参考来源
+
+- 一手论文：`arXiv:2507.15597v1`（ICML 2026）全文归档（[being-h0_arxiv_2507_15597.md](../../sources/papers/being-h0_arxiv_2507_15597.md)）
+- 代码仓库核查：[being-h0.md](../../sources/repos/being-h0.md)（`BeingBeyond/Being-H0 @ ae92e46`）
+- 论文精读笔记摘要：[humanoid_pnb_being-h0.md](../../sources/papers/humanoid_pnb_being-h0.md)
 
 - [Being-H0 源码归档](../../sources/repos/being-h0.md)（<https://github.com/BeingBeyond/Being-H0>）
 

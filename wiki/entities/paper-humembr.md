@@ -15,7 +15,7 @@ tags:
   - kiel
   - george-mason
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2606.30404"
 venue: "IROS 2026"
 related:
@@ -29,6 +29,8 @@ related:
   - ./paper-icrowdnav.md
   - ./paper-sru-spatially-enhanced-recurrent-memory.md
   - ../../roadmap/depth-navigation.md
+original:
+  - ../../sources/papers/humembr_arxiv_2606_30404.md
 sources:
   - ../../sources/papers/humembr_arxiv_2606_30404.md
   - ../../sources/repos/humembr.md

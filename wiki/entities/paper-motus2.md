@@ -16,7 +16,9 @@ tags:
   - buaa
   - bit
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
+original:
+  - ../../sources/papers/motus2_arxiv_2608_30237.md
 arxiv: "2608.30237"
 related:
   - ./paper-gwm-first-principles.md
@@ -80,8 +82,7 @@ summary: "Motus2（arXiv:2608.30237v2）：单一共享 video–action 模型暴
 | 机端数据 | mid-training **>100 h** 机器人轨迹 + 人对齐 |
 | 开源状态（2026-10-05） | **官方仓已公开，代码/权重未核实发布** — 仓库 README 显示路线图，所有发布项未勾选；HF 为团队模型主页 |
 
-## 方法与核心结构
-
+## 核心原理
 | 模块 | 作用 |
 |------|------|
 | **Policy（WAM）** | 从语言、本体感觉与视觉工作记忆提出 **action chunk** |
@@ -197,6 +198,13 @@ sequenceDiagram
 | w/o Tactile | 60.0% |
 | w/ Tactile | **72.5%** |
 
+## 与其他工作对比
+
+- **同协议五任务真机基线（20 rollouts/任务）：** **Motus2 Midtrain-SFT** 宏平均达 **84%**，显著高于 **Pretrain-SFT**（**51%**）；同协议下 **WAN-SFT** 与 **$\pi_{0.5}$** 在五任务上均为 **0%**。
+- **vs 前作 [Motus](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) 与同族 [Motubrain](./paper-motubrain.md)：** Motus 验证了 UniDiffuser 式共享参数的「Policy + Simulator」双接口 WAM；Motubrain 偏产品工程与 RoboTwin 榜单；Motus2 在同一共享骨干上补全 **Evaluator（价值模型）** 与 **DiffusionNFT + Best-of-N** 自进化闭环（Put Phone / Multi-Finger 宏平均 `65.0% → 75.0%`），将失败/次优交互转化为动力学与价值监督。
+- **vs [FACT](./paper-fact.md)（失败轨迹利用对照）：** FACT 通过失败感知因果训练直接改善世界模型且仓库已开源；Motus2 用价值模型打分配合冻结 video/value 支路的 DiffusionNFT 更新动作通路，目前官方 GitHub 仅含路线图 README，代码与权重尚未核实发布。
+- **vs [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md)（触觉引入方式）：** Motus2 在共享主干去噪至中间态后接入轻量 tactile expert 对子块精修（Pull Out Paper Cup / Tear Paper `60.0% → 72.5%`），与原生视触觉联合建模的 WAM 路线互补。
+
 ## 局限与风险
 
 - **代码状态：** 官方 GitHub 仓已建立，但截至 2026-10-05 路线图所列训练代码、MBRL、memory、tactile 与 checkpoints 未勾选；尚不能据此称其为可复现基线。实验数字以论文 / 项目页为准。
@@ -214,8 +222,7 @@ sequenceDiagram
 4. **触觉 +12.5 pt** — 接触丰富任务上轻量 expert 值得跟；与 [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md) 的「原生触觉 WAM」路线互补。
 5. **工程边界：未开源** — 可引方法与 demo，不可当可复现基线；与 [FACT](./paper-fact.md)（失败感知因果训练 + 已开源）作失败数据利用对照。
 
-## 与其他页面的关系
-
+## 关联页面
 | 关系 | 页面 |
 |------|------|
 | 范式前作 | [Motus（索引）](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) |

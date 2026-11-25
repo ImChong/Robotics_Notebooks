@@ -17,7 +17,7 @@ tags:
   - turtlebot
   - wust
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2607.01925"
 related:
   - ../comparisons/online-vs-offline-rl.md
@@ -30,6 +30,8 @@ related:
   - ./paper-commnav.md
   - ./paper-notebook-preference-conditioned-multi-objective-rl-for-in.md
   - ../../roadmap/depth-navigation.md
+original:
+  - ../../sources/papers/splc_arxiv_2607_01925.md
 sources:
   - ../../sources/papers/splc_arxiv_2607_01925.md
   - ../../sources/repos/splc.md
@@ -125,7 +127,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**：截至 **2026-08-10**，官方仓 [sklus949/SPLC](https://github.com/sklus949/SPLC) 仅含 `README.md` 与 `Graphical Abstract.png`；README 写明 **The source code is coming soon**，无可对齐的训练 / 推理入口。注释中拟议的 `mechanism.py` → `train_reward_model.py` → `offline/iql.py` **不能当作已发布实现**；代码正式开放后再补本图。
+**不适用**：截至 **2026-11-21** 复核，官方仓 [sklus949/SPLC](https://github.com/sklus949/SPLC) 仍仅含 `README.md` 与 `Graphical Abstract.png`（`pushed_at: 2026-06-08`）；README 写明 **The source code is coming soon**，无可对齐的训练 / 推理入口。注释中拟议的 `mechanism.py` → `train_reward_model.py` → `offline/iql.py` **不能当作已发布实现**；代码正式开放后再补本图。
 
 ## 工程实践
 
@@ -175,11 +177,11 @@ flowchart TB
 | 路线 | 监督信号 | 学习范式 | 开源/复现 |
 |------|----------|----------|-----------|
 | **手调社交奖励 DRL** | 到达/碰撞/距离 shaping | 多为 Online DRL | 依赖场景手调 |
-| **iCrowdNav** | 简单奖励 + 姿态意图表征 | Online PPO | 代码待发布；见 [iCrowdNav](./paper-icrowdnav.md) |
+| **iCrowdNav** | 简单奖励 + 姿态意图表征 | Online PPO | MIT 源码已开源（缺权重/场景）；见 [iCrowdNav](./paper-icrowdnav.md) |
 | **PioneeR** | 正负示范密度 + 规则 | Teacher 蒸馏 MDN | 项目页有演示、无代码；见 [笔记实体](./paper-notebook-learning-social-navigation-from-positive-and-neg.md) |
 | **人工偏好 PbRL（HPR）** | 人标轨迹偏好 | Offline 奖励 + RL | 标注贵、主观 |
 | **SPLC（本文）** | **自动准则偏好** | Preference Transformer + Offline RL | **仓占位，代码 coming soon** |
-| **CommNav** | 路人口语线索 | 主动信息寻求找人 | 任务不同；见 [CommNav](./paper-commnav.md) |
+| **CommNav** | 路人口语线索 | 主动信息寻求找人 | MIT 源码与权重已开源；见 [CommNav](./paper-commnav.md) |
 
 ## 关联页面
 

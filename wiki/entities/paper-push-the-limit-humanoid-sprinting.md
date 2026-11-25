@@ -3,7 +3,7 @@ type: entity
 project_id: push-the-limit-humanoid-sprinting
 tags: [paper, humanoid, locomotion, sprint, cornering, attention, amp, ppo, sim2real, noetix, tsinghua]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-22
 arxiv: "2610.14840"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -15,11 +15,16 @@ related:
 sources:
   - ../../sources/papers/push-the-limit-humanoid-sprinting-arxiv-2610-14840.md
 summary: "Push the Limit（arXiv:2610.14840，松延动力 / 清华大学，CoRL 2026）用因果多头注意力、航向方向奖励和技能条件 Multi-AMP 解决人形高速跑步的时序估计、转弯奖励与技能塌缩问题；论文报告仿真 6.5 m/s 跟踪和减重真机 100 m 平均 7.14 m/s。"
+original: ../../sources/papers/push-the-limit-humanoid-sprinting-arxiv-2610-14840.md
 ---
 
 # Push the Limit：全尺寸人形高速冲刺与激进转弯
 
 **Push the Limit**（*Learning High-Speed Sprinting and Aggressive Cornering on a Full-Scale Humanoid*，松延动力 / 清华大学，CoRL 2026，arXiv:2610.14840）研究如何让一台全尺寸双足人形在高速跑步时仍能稳定跟踪转向命令并保持动作先验约束。其三项设计分别处理本体感觉高频振荡、传统偏航奖励失效和多技能风格判别塌缩。
+
+## 一句话定义
+
+**Push the Limit（松延动力 / 清华大学，CoRL 2026）**：用因果多头注意力编码本体历史、以速度航向方向替代瞬时偏航率奖励，并按技能分配独立 AMP 判别器（Multi-AMP），使全尺寸双足人形实现仿真 6.5 m/s 跟踪、激进压弯与减重真机 100 m 平均 7.14 m/s 冲刺。
 
 ## 英文缩写速查
 

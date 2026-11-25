@@ -3,7 +3,7 @@ type: entity
 project_id: flashsac-2604-04539
 tags: [paper, rl, sac, off-policy, humanoid, sim2real, rss-2026, kaist]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-24
 arxiv: "2604.04539"
 venue: "RSS 2026"
 project: https://holiday-robot.github.io/FlashSAC/
@@ -15,6 +15,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_four_robotics_conferences_12_awards_2026_11_17.md
 summary: "以少更新、大网络、高吞吐的 SAC 扩展配方配合权重、特征和梯度范数约束，缓解高维机器人离策略训练的 bootstrap 不稳定。"
 related:
+  - ../comparisons/robotics-2026-awards-five-capability-paths.md
   - ../methods/flashsac.md
   - ./paper-know-your-camera.md
   - ./paper-symskill.md
@@ -122,6 +123,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [2026 顶会论文：通用能力五条技术路径](../comparisons/robotics-2026-awards-five-capability-paths.md) — 从训练吞吐延伸到现场执行与持续验收。
 - [FlashSAC 方法页](../methods/flashsac.md)
 - [Camera Conditioning](./paper-know-your-camera.md)
 - [SymSkill](./paper-symskill.md)

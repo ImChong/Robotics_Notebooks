@@ -9,6 +9,9 @@
 - **会议：** CVPR 2016（Best Paper）
 - **官方实现（Caffe）：** <https://github.com/KaimingHe/deep-residual-networks>
 - **入库日期：** 2026-06-06
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `arXiv:1512.03385`（CVPR 2016，pdftotext 1860 行）全文：Abstract、§1–§4（退化问题、残差映射 $\mathcal{F}(\mathbf{x})+\mathbf{x}$、恒等/投影捷径对比、18/34/50/101/152 层及 bottleneck 结构、ImageNet / CIFAR-10 / PASCAL VOC / COCO 实验、深度 1000+ 层探索）与参考文献。
+- **通读：** 已完成
 - **一句话说明：** 用 **残差映射 + 恒等捷径连接** 缓解极深 CNN 的 **退化（degradation）** 问题，使 **152 层** 网络在 ImageNet 上可训练并取得 SOTA，成为后续视觉骨干与机器人感知栈的默认底座之一。
 
 ## 核心摘录（面向 wiki 编译）

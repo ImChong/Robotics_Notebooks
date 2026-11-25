@@ -6,7 +6,9 @@ tags:
 - video-generation
 - world-models
 status: complete
-updated: '2026-10-05'
+updated: '2026-11-21'
+original:
+- ../../sources/repos/lingbot-video.md
 related:
 - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
 - ../entities/humanoid-motion-intelligence.md
@@ -44,9 +46,20 @@ LingBot-Video 是面向具身场景的视频生成基座，用 MoE、具身视�
 
 ## 核心原理
 
-官方包含 Dense **1.3B**、MoE **30B-A3B** 与 refiner 等资产；训练结合网络视频和超过 **7 万小时具身数据**，多奖励关注视觉质量、物理合理性和任务完成。
+```mermaid
+flowchart LR
+    TXT["自然语言提示 (+ 首帧图像 TI2V)"] --> RW["Qwen3.6-27B Rewriter + Auto Negative -> prompt.json"]
+    RW --> COND["Qwen3-VL-4B 条件编码 + Wan2.1-VAE 潜变量"]
+    COND --> DIT["单流 Sparse MoE DiT (3D MM-RoPE + QK-Norm + AdaLN-Single)"]
+    DIT -->|"常规 40 步 / 8 步 DMD 学生"| DEC["Wan2.1-VAE 解码"]
+    DEC -->|"可选级联精修"| REF["Refiner (1088x1920, 8 步) -> MP4"]
+```
 
-2026-09-18 发布 **8 步 DMD student**。普通 MoE 与 DMD 使用不同 scheduler 和指导配置，不能只替换 checkpoint 而保留旧采样参数。
+图依据：[arXiv:2607.07675v1](https://arxiv.org/html/2607.07675) §2（单流 DiT、Sparse MoE 与级联 Refiner）与 `Robbyant/lingbot-video@dd5c231` `README.md`。
+
+采用**任务统一单流扩散 Transformer（Single-Stream DiT）**：将 T2I / T2V / TI2V 条件（Qwen3-VL-4B）与 Wan2.1-VAE 视觉潜变量沿序列维拼接，以 **3D MM-RoPE** 分配不重叠时空坐标并共享全层自注意力；FFN 替换为细粒度共享专家 + 路由专家的 **Sparse MoE** 实现容量与单步计算解耦。官方包含 Dense **1.3B**、MoE **30B-A3B** 与级联 refiner 等资产；训练结合网络视频和超过 **7 万小时具身数据**，多奖励（RL/对齐）关注美学质量、物理合理性和任务完成。
+
+2026-09-18 发布 **8 步 DMD student**。普通 MoE 与 DMD 使用不同 scheduler（`dmd_student`）和指导配置（`guidance_scale=1`），不能只替换 checkpoint 而保留旧采样参数。
 
 ## 工程实践
 

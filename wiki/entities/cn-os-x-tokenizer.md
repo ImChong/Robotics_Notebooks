@@ -11,7 +11,7 @@ tags:
   - china-embodied-opensource
   - open-source
 status: complete
-updated: 2026-10-09
+updated: 2026-11-21
 arxiv: "2606.14752"
 code: https://github.com/X-Square-Robot/X-Tokenizer
 project: https://x2robot.com/pages/x-tokenizer
@@ -36,7 +36,12 @@ related:
   - ./paper-host-one-shot-human-video.md
   - ../overview/hub-cross-embodiment.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/x_tokenizer_arxiv_2606_14752.md
+  - ../../sources/repos/x-tokenizer.md
+  - ../../sources/sites/x2robot-x-tokenizer.md
 sources:
+  - ../../sources/papers/x_tokenizer_arxiv_2606_14752.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/x-tokenizer.md
   - ../../sources/sites/x2robot-x-tokenizer.md
@@ -287,7 +292,8 @@ Full 模型的重建 ℓ1 比 FAST 高 17%，论文把它当作有意的取舍�
 
 ## 参考来源
 
-- [X-Tokenizer 项目页归档](../../sources/sites/x2robot-x-tokenizer.md)（官网页、博客日期、开源核查 2026-10-09）
+- [X-Tokenizer 论文原文归档（arXiv:2606.14752v2）](../../sources/papers/x_tokenizer_arxiv_2606_14752.md)（v2 全文 §§1–5、Table 1–2 与 RoboTwin/真机核查）
+- [X-Tokenizer 项目页归档](../../sources/sites/x2robot-x-tokenizer.md)（官网页、博客日期、开源核查 2026-10-09 / 2026-11-21）
 - [X-Tokenizer 源码归档](../../sources/repos/x-tokenizer.md)（<https://github.com/X-Square-Robot/X-Tokenizer>）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 - 论文 [arXiv:2606.14752](https://arxiv.org/abs/2606.14752)（v2 PDF 正文与附录 A–D）

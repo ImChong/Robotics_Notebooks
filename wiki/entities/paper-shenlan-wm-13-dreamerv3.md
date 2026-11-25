@@ -11,7 +11,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: '2301.04104'
 venue: Nature
 related:

@@ -3,7 +3,7 @@ type: entity
 project_id: dexremo-2611-15981
 tags: [paper, dexterous-manipulation, tactile, force-control]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2611.15981"
 project: https://dexremo.github.io/
 original:
@@ -85,6 +85,11 @@ flowchart LR
 1. 保留相同模型与数据预算下的可比口径，不跨基准简单求平均。
 2. 优先复核最可能出现数据泄漏、接触失败或部署延迟的环节。
 3. 对论文未检验的部署条件单列验证计划。
+
+## 与其他工作对比
+
+- **对比六组多模态输入配置（6 核心任务 × 3 种子 × 30 次真机 rollout，Fig. 8）：** 在共享多视角 RGB 与关节本体输入基础上，跨任务汇总成功率依次为：无力无指尖位姿 `∅` **24%**、指尖局部系力 `R` **38%**、指尖位姿 `P` **44%**、`R+P` **55%**、腕坐标系力 `W` **58%**、腕系力+指尖位姿 `P+W` **83%**。全部六项任务中均有 `W > R` 且 `P+W > R+P`（双侧符号检验 `p = 0.031`），说明通过正运动学把指尖力统一到公共腕系，能消除随手指姿态变化的坐标变换负担（尤其在遮挡的埋藏挖掘 C1 任务中最明显）。
+- **对比策略骨干 ACT vs Diffusion Policy（Table VIII，完整 `P+W` 输入）：** 在 A2、A3、B1 三项真机任务（各 30 次试验）中，ACT 分别取得 **28/30、25/30、21/30**，大幅高于同输入条件下的 Diffusion Policy（**6/30、9/30、7/30**）。此外 Table I–II 亦将本平台 62.5 N 峰值拔出力与功率密度同代表性多指灵巧手（Allegro、LEAP、Shadow 等）做了结构规格对照。
 
 ## 局限与风险
 

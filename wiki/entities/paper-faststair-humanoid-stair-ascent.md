@@ -14,7 +14,7 @@ tags:
   - stairs
   - limx
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2601.10365"
 related:
   - ../../roadmap/depth-perceptive-locomotion.md
@@ -31,6 +31,8 @@ related:
 sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/sites/npcliu-faststair-github-io.md
+original:
+  - ../../sources/papers/faststair_arxiv_2601_10365.md
 summary: "FastStair（arXiv:2601.10365）把 GPU 并行离散搜索的 DCM 落脚点规划嵌进 Isaac Lab 大规模 RL：先用 foothold-tracking 强监督得到偏安全的基策略，再分训高速/低速专家并用 LoRA 合成单网络，在 LimX Oli 上报告约 1.65 m/s 指令速度下的稳定上楼与长螺旋梯实机结果。"
 ---
 
@@ -131,13 +133,28 @@ flowchart TB
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 高程图与崎岖地形策略
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 训练框架参照
 
+## 工程实践
+
+- **GPU 并行 DCM 规划预算：** 采用 VHIP `a ≈ 1`（`k ∈ [-1, 1]`、`a ∈ [0.84, 1.16]`）近似并限制足底 **0.6 m × 0.6 m** ROI 内按高程网格离散评估；在 NVIDIA RTX 4090 上 **4096 并行环境每步规划仅耗时约 4 ms**，相对 CusADi 等并行 MPC 求解器提速约 **25×**。
+- **专家分化与 LoRA 合并：** 按指令前向速度阈值 **`v_x^d > 0.8 m/s`** 切分高速/低速专家，LoRA 阶段固定超参 **`α = 16, γ = 8`**，将双专家平滑整合为单网络并根据速度指令切换分支。
+- **机载部署与平台指标：** 在 **LimX Oli**（身高 1.65 m、体重 55 kg、31 DoF）上使用双卡机载计算（Jetson Orin NX + RK3588），深度视觉实时重建 **1.8 m × 1.2 m @ 5 cm** 局部高程图，感知建图链路运行于 **100 Hz**。
+
+## 源码运行时序图
+
+**不适用（官方训练与实机部署代码尚未开源）。** 项目页 [`npcliu.github.io/FastStair`](../../sources/sites/npcliu-faststair-github-io.md) 仅包含学术项目页模板与论文链接，GitHub 与 arXiv 原文均未提供可运行仓库。
+
 ## 方法栈
 
-见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文 `arXiv:2601.10365v1` 为准。
 
 ## 实验与评测
 
-- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+- **规划吞吐（§IV-C）：** RTX 4090 上 4096 envs 约 **4 ms/step**（相对并行 MPC CusADi 约 **25×** 加速），可直接嵌进 Isaac Lab PPO rollout 环。
+- **MuJoCo 跨仿真验证（§IV-D）：** 15 cm 台阶下楼测试中，单一融合策略在 **0 m/s 至 1.6 m/s** 全速域持续稳定跟踪无跌倒。
+- **25 cm 台阶消融与速度扩展（§IV-E，500 envs）：**
+  - **成功率（Fig. 8，0.5 / 1.0 / 1.5 / 2.0 m/s）：** FastStair 在所有速度档均显著优于 Pre-trained-only（缺 LoRA 分化）、AMP（>1.0 m/s 时在梯脚停滞、成功率骤降）与纯 RL Baseline；即使扩展到训练上限（1.6 m/s）之外的 **2.0 m/s（OOD）**，FastStair 仍保持 **>70%** 穿越成功率。
+  - **速度跟踪精度：** 25 cm 台阶上速度跟踪 MAE 维持约 **~0.5 m/s** 量级并显著低于无落点引导基线。
+- **LimX Oli 实机挑战（§IV-F）：** 完成 20 cm 室内高速上楼与 **广州塔（Canton Tower）33 级 × 17 cm 螺旋楼梯** 挑战——**12 秒** 登顶，峰值速度达 **1.65 m/s**。
 
 ## 结论
 

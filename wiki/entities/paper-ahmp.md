@@ -12,6 +12,7 @@ related:
   - ../formalizations/se3-representation.md
   - ./crocoddyl.md
   - ./pinocchio.md
+original: ../../sources/papers/ahmp_humanoids_2025.md
 sources:
   - ../../sources/papers/ahmp_humanoids_2025.md
   - ../../sources/repos/ahmp.md

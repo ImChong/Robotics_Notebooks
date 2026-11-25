@@ -15,6 +15,8 @@
 - **入库日期：** 2026-07-26（YOLO26 论文/HF 交叉：2026-09-30）
 - **一句话说明：** YOLO 系列工程主仓：统一 CLI/Python API 覆盖检测、实例/语义分割、分类、姿态、OBB、深度、跟踪与导出（ONNX/TensorRT/OpenVINO 等）。
 - **沉淀到 wiki：** [`wiki/entities/ultralytics.md`](../../wiki/entities/ultralytics.md)
+- **通读：** 已完成
+- **核对范围：** 通读 `ultralytics/ultralytics` 官方 `README.md`（39,265 字节）与 YOLO26 技术报告 `arXiv:2606.03748`。
 
 ---
 

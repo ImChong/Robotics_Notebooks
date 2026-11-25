@@ -2,7 +2,7 @@
 type: entity
 tags: [neoteai, fudan, tactile, visuo-tactile, vtla, world-action-models, contact-rich, foundation-model, sensor, dataset]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 related:
   - ./paper-n0-foundation.md
   - ./paper-n0-vtla.md
@@ -20,7 +20,7 @@ sources:
   - ../../sources/papers/n0_foundation.md
   - ../../sources/papers/n0_vtla.md
   - ../../sources/papers/n0_twam.md
-summary: "新智具身（NeoteAI）：复旦 TEAI 渊源的视触觉公司；InTac 传感器 + 数据平台 + N 系列 VTLA/TWAM；研究站 2026-07-25 发布 𝒩₀ 三件套；OpenNeoData 已开源，模型代码/权重截至入库日仍占位。"
+summary: "新智具身（NeoteAI）：复旦 TEAI 渊源的视触觉公司；InTac 传感器 + 数据平台 + N 系列 VTLA/TWAM；2026-11-19 复核 𝒩₀-Foundation（arXiv:2608.29601v2）：OpenNeoData 与 NeoForce 训练评测代码/权重、NeoSim 仿真代码已公开，VTLA/TWAM 与全量 30k h NeoData 仍未全部开源。"
 ---
 
 # 新智具身智能（NeoteAI）
@@ -120,13 +120,13 @@ flowchart LR
 |----|------|
 | **先摸数据** | 申请 [OpenNeoData](https://huggingface.co/datasets/NeoteAIEmbodied/OpenNeoData)（LeRobot v3.0）；注意 **非商业** 与 **禁止再分发** 门禁条款 |
 | **传感器集成** | 走 GitCode SDK / Studio，而非等模型仓 |
-| **模型复现** | 跟踪三仓 Roadmap（宣称 **2026-07-31**）；入库日 **不要假设可 `pip install` 训练** |
+| **模型复现** | [𝒩₀-Foundation](../../sources/papers/n0_foundation.md)（arXiv:2608.29601v2）已公开 NeoForce 训练/评测代码及权重（`NeoteAI/NeoForce`）与 NeoSim 仿真代码；𝒩₀-VTLA / 𝒩₀-TWAM 仍各自跟踪独立仓库 |
 | **选型对照** | 要「预测接触再动作」→ VTLA；要「联合生成未来视触+动作」→ TWAM；要「力场表征是否优于图像拼接」→ Foundation Table 2 |
 | **重定向就绪度** | OpenNeoData 为 LeRobot v3.0 格式，**策略输入即取即用**；但触觉流是 **InTac 传感器特定** 的三轴力场，跨传感器/跨本体迁移须重标定与**形态适配**；且 𝒩₀-TacUMI 手持轨迹占比高，重定向到真机时须显式补偿手持 vs 机械臂动力学差 |
 
 ## 局限与风险
 
-- **开源边界易误读**：项目页有 Code 按钮，但仓内多为占位 README；**已开放的是数据子集与传感器 SDK**，不是完整训练栈。
+- **开源边界易混淆**：截至 2026-11-19 复核，OpenNeoData 数据子集、传感器 SDK，以及 `N0-Foundation` 仓库的 NeoForce 训练/评测代码与权重、NeoSim 仿真代码已公开（部分开源）；但完整 30k h NeoData、真机 NeoReal 设备及 NeoSim 外置资产并非统一即取即跑交付，𝒩₀-VTLA / 𝒩₀-TWAM 亦须分别核对各自仓库。
 - **全量 NeoData 不公开**：OpenNeoData 是 5k/30k+ 小时子集；论文数字与可复现子集不对齐时需显式标注。
 - **许可**：CC-BY-NC-SA-4.0 → 工业产品化需另谈授权。
 - **机构叙事**：TEAI 合作署名清晰；公司融资/场景数字以官网为准，无独立财务核验。

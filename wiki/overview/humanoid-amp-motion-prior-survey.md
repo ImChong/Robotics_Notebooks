@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, rl]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-22
 related:
   - ./mimic-control-evolution-lineage.md
   - ./humanoid-rl-motion-control-body-system-stack.md

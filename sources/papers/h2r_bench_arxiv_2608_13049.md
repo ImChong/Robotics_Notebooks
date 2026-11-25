@@ -8,13 +8,14 @@
 - **项目页：** <https://rongdingyi.github.io/H2R-Bench/>（归档见 [`sources/sites/h2r-bench.md`](../sites/h2r-bench.md)）
 - **代码：** <https://github.com/Rongdingyi/H2R-Bench>（归档见 [`sources/repos/h2r-bench.md`](../repos/h2r-bench.md)）
 - **入库日期：** 2026-08-19
-- **一句话说明：** 把「人类第一视角操作视频能否变成指定机器人本体的训练素材」做成五维可诊断基准；评测 11 个视频生成模型 × 6 类操作 × 2 种机器人本体。
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 arXiv:2608.13049v1 PDF 全文 3,398 行及官方仓 `Rongdingyi/H2R-Bench@d41cecb` 已开源的 `benchmark/` 与 `evaluation/` 评测脚本
+- **一句话说明：** 120 个 EgoDex 源场景 × 2 种机器人本体（夹爪/灵巧手）= 240 个跨本体转移测试例，用 M1–M5 五维加权 H2RCore（3 MLLM 裁判 + VQA 人类相关性 $r=0.930$ / $\rho=0.883$）横评 11 个生成模型。
 
-## 开源状态（步骤 2.5）
+## 开源状态（步骤 2.5，2026-11-21 复核）
 
-- **项目页核查（2026-08-19）：** 有 Paper / Project 链；GitHub 仓主要为 `docs/` 项目页源码。
-- **仓库：** README 写明 **evaluation code and benchmark annotations 尚未发布**；HuggingFace 仅有 papers 页，无 benchmark 数据。
-- **结论：** **部分开源**（项目页 + 仓骨架；核心评测与标注待发布）。
+- **项目页核查：** 有 Paper / Project / HF Papers / GitHub 链；官方仓 [`Rongdingyi/H2R-Bench@d41cecb`](https://github.com/Rongdingyi/H2R-Bench) 现已发布完整基准与评测管线：`benchmark/scene_ids.txt`、`benchmark/annotations.jsonl`、`prompts/generation.jsonl`、`prompts/judging/` 与 `evaluation/`（`prepare.py`、`run.py`、`goal_action.py`、`contact.py`、`embodiment.py`、`aggregate.py`）。
+- **结论：** **已开源基准标注与 MLLM 评测代码**（注：生成模型与 EgoDex 源视频需按指南本地准备，M1–M4 默认调用 Qwen3.7-Plus / Gemini 3.5 Flash / GPT-5.4 OpenAI 兼容端点）。
 
 ## 摘录：评测维度
 

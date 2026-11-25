@@ -2,11 +2,13 @@
 type: entity
 tags: [paper, world-action-models, WAM, code-as-policies, mixture-of-transformers, manipulation, uc-berkeley, nvidia]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 project_id: aw-0-agentic-world-action-models
 arxiv: "2610.30136"
 project: https://agentic-wam.github.io/
 code: https://github.com/ZhuoyangLiu2005/agentic-wam
+original:
+  - ../../sources/papers/aw0_arxiv_2610_30136.md
 models:
   - https://huggingface.co/miniFranka/agentic-wam-pretrain-yamego3k-soup-e1
 related:
@@ -24,7 +26,9 @@ summary: "AW-0 jointly generates skill code, future video, and robot actions wit
 
 # AW-0：Agentic World Action Models
 
-**一句话定义：** AW-0 把程序化技能规划、未来视频预测和机器人动作生成放进一个联合生成的世界动作模型，让代码结构为预测与控制提供语义条件。
+## 一句话定义
+
+**AW-0：** AW-0 把程序化技能规划、未来视频预测和机器人动作生成放进一个联合生成的世界动作模型，让代码结构为预测与控制提供语义条件。
 
 ## 英文缩写速查
 
@@ -44,7 +48,9 @@ summary: "AW-0 jointly generates skill code, future video, and robot actions wit
 
 MoT 包含三个专家：代码专家生成参数化技能程序与控制逻辑；视频专家生成未来视觉状态；动作专家生成连续动作 chunk。三个生成流协同去噪，代码为视频和动作提供结构化规划条件，动作专家也能利用视频表征。
 
-自动标注流程将机器人及第一人称人类演示对齐到子任务程序，并从中整理可复用技能。默认执行方式可直接使用动作专家输出；混合评测则会在重规划点按程序有效性等检查结果切换到程序技能调用。
+自动标注流程将机器人及第一人称人类演示对齐到子任务程序，并从中整理可复用技能。论文预训练约使用 2,000 小时 YAM 双臂示教与 1,000 小时第一人称操作视频，抽取 **YAM 23 + Ego 27 = 50** 项技能；程序化标签与视频、动作同步监督（[原文 §2.3–2.4](https://arxiv.org/html/2610.30136v1)）。默认执行方式可直接使用动作专家输出；混合评测则会在重规划点按程序有效性等检查结果切换到程序技能调用。
+
+**跨模态约束：** 代码专家基于视觉 ViT 输出结构化程序，视频与动作专家通过 code → video → action 的分块因果注意力接收信息；程序是离散 masked diffusion，视频与动作则用连续 flow matching。每个专家内部为双向注意力，不能将联合去噪误读为先串行生成完整代码、再生成视频。
 
 ## 项目流程图
 
@@ -97,7 +103,9 @@ sequenceDiagram
 
 ## 实验与评测
 
-论文在 RoboTwin 2.0 的 50 个任务上，每任务每设置评测 50 次。默认 AW-0 在 clean / random 设置下成功率为 80.8% / 20.6%；混合模式分别为 63.1% / 29.2%，但混合模式使用单独收集的程序生成示范数据，不能将差异全部归因于执行仲裁。8 项真机任务的平均分为 71.1，对比最强基线 DreamZero 的 46.0；这是分项评分均值，并非任务成功率。
+论文在 RoboTwin 2.0 的 50 个任务上，每任务每设置评测 50 次。默认 AW-0 在 clean / random 设置下成功率为 80.8% / 20.6%；混合模式分别为 63.1% / 29.2%，但混合模式使用单独收集的程序生成示范数据，不能将差异全部归因于执行仲裁。8 项真机任务的平均分为 71.1，对比最强基线 DreamZero 的 46.0；这是分项评分均值，并非任务成功率。真机使用 YAM（双 6-DoF 手臂与并行夹爪）及 Tianji–Sharpa（双 22-DoF 灵巧手）两类本体，每任务用 100 条后训练示范、按 3 个种子 × 16 次 rollout 评分。
+
+**消融与推理代价：** 同一 8 任务口径，联合去噪与自回归程序生成分别为 **71.1 与 54.5**；项目页给出的 RTX 5090 推理延迟分别为 **0.23 s 与 0.55 s**，不代表机器人闭环动作频率。真机 hybrid 仅在 YAM 折叠/堆叠毛巾任务评估（90.6 vs 直接动作 84.4），不是双平台全任务混合执行结论。
 
 ## 与其他工作对比
 
@@ -111,7 +119,8 @@ sequenceDiagram
 
 - 检查技能 API、程序语法、阶段依赖和白名单，避免把生成代码未经验证地直接交给机器人执行。
 - 代码规划适合表达对象、顺序与可复用套路；接触丰富、连续精细的动作仍可能依赖动作专家。
-- 官方代码与预训练权重已发布；预训练数据和起始视频模型权重不随代码仓库提供。
+- 官方代码与预训练权重已发布；**[预训练检查点](https://huggingface.co/miniFranka/agentic-wam-pretrain-yamego3k-soup-e1)** 包含训练后的代码、视频、动作专家及归一化统计，**不包含**需从各发布源另行下载的冻结组件（Wan2.2 VAE、Cosmos-Reason1 文本编码器、SDAR-1.7B、Qwen3-VL 视觉塔）。另有官方 README 列出的 [RoboTwin SFT 权重](https://huggingface.co/miniFranka/agentic-wam-posttrain-robotwin-suit)。
+- **复现入口：** 按 [INSTALL.md](https://github.com/ZhuoyangLiu2005/agentic-wam/blob/main/docs/INSTALL.md) 准备 Python 3.10、CUDA 12.8、PyTorch 2.7.1+cu128、H100 级训练 GPU，并配置 `configs/paths/default.yaml` 的模型路径。用 `DRY_RUN=1 bash scripts/train_real_yam.sh <dataset_dir> <code_cache.pt>` 先检查数据、模型路径和硬件配置，实际训练还依赖数据及程序标签。
 
 ## 结论
 
@@ -124,6 +133,9 @@ sequenceDiagram
 
 ## 局限与风险
 
+- **程序生成质量与代码有效性不同：** 预训练验证集程序的自由生成可解析率为 **87.5%**、实体 F1 为 **0.534**、primitive F1 为 **0.365**；错误参数和断行注释都可能导致技能选择合理但执行失败（附录 F）。
+- **混合执行不保证同轮即时恢复：** 附录 I 中 `Arbitrate` 只返回“是否尝试执行代码”；若代码运行抛异常，本轮 action chunk 也会被丢弃，等待下一轮重新观测与规划。实机应用需额外考虑超时、碰撞预检和安全停机。
+- **混合模式占比小且受场景影响：** RoboTwin 成功回合中代码执行约占 clean/random 的 **14.5% / 35.0%** 的仿真步数；全体回合仅占 **8.5% / 5.6%**（附录 J）。不要将成功率改善直接解释为始终依赖可执行代码。
 - 程序参数或对象 grounding 出错时，结构化代码仍可能选择错误目标或动作。
 - 视觉分布变化会影响未来预测和技能执行；混合仲裁本身也可能偏向无效程序。
 - 复现需准备训练数据、公开权重及论文指定的视觉/语言模型组件，不能只凭仓库源码运行完整训练。
@@ -142,6 +154,7 @@ sequenceDiagram
 - [AW-0 论文归档](../../sources/papers/aw0_arxiv_2610_30136.md)
 - [AW-0 官方项目页](https://agentic-wam.github.io/)
 - [AW-0 官方代码](https://github.com/ZhuoyangLiu2005/agentic-wam)
+- [AW-0 预训练模型权重](https://huggingface.co/miniFranka/agentic-wam-pretrain-yamego3k-soup-e1)
 - [arXiv:2610.30136](https://arxiv.org/abs/2610.30136)
 
 ## 推荐继续阅读

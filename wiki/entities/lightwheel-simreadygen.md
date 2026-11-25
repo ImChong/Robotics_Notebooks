@@ -14,7 +14,10 @@ tags:
 project_id: lightwheel-simreadygen
 project: https://lightwheel.ai/simreadygen/
 status: complete
-updated: 2026-10-10
+updated: 2026-11-21
+original:
+  - ../../sources/blogs/lightwheel_simreadygen.md
+  - ../../sources/blogs/lightwheel_simready.md
 related:
   - ./lightwheel.md
   - ./lightwheel-simready.md
@@ -148,6 +151,7 @@ sequenceDiagram
 | 自建替代 | 需要可审计、可本地部署的流程时，直接基于开源 [USD Content Agents](https://github.com/nvidia-omniverse/content-agents) 搭管线，或对比学术方案 [PhysX-Omni](./physx-omni.md)、[EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) |
 | 场景级 | 全屋/房间布局可对照 [HomeWorld](./paper-homeworld-whole-home-scene-generation.md)；SimReadyGen 的平面图入口目前缺官方说明，暂不作为主路径 |
 | 评测闭环 | 生成资产若用于 [RoboFinals](./lightwheel-robofinals.md) 式评测，记录资产版本与生成参数，避免资产漂移混入策略对比 |
+| 源码运行时序图 | **不适用**（商业闭源 Web 服务，无公开源码；前端界面文案归纳流程见「核心原理」小节） |
 
 ## 局限与风险
 

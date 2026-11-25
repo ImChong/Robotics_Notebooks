@@ -10,6 +10,9 @@
 - **视频：** <https://www.youtube.com/watch?v=GvIBzM7ieaA>；35 min door traversal：<https://www.youtube.com/watch?v=-BDmzuvm778>
 - **机构：** CMU / LeCAR Lab
 - **核查日期：** 2026-07-22
+- **核对日期：** 2026-11-22
+- **核对范围：** `https://hdmi-humanoid.github.io` 项目主页（摘要、视频按钮、14 类仿真与 6 类真机 HOI 任务展示及 arXiv/GitHub 链接）
+- **通读：** 已完成
 - **一句话说明：** HDMI 项目页展示从单目 RGB 人类 HOI 视频到 Unitree G1 全身交互策略的结果：67 次连续开门穿越、6 类真实 loco-manip 任务和 14 类仿真任务，并链接官方代码仓库。
 
 ## 核心摘录（归纳，非全文）

@@ -8,6 +8,8 @@
 - **原始链接：** <https://generalistai.com/blog/the-real-breakthrough-behind-our-gtc-demo>
 - **发表日期：** 2026-03-24（页面标注 March 24, 2026；文中称 GTC 为"上周"）
 - **入库日期：** 2026-10-09
+- **核对范围：** 2026-11-22 抓取并通读 `https://generalistai.com/blog/the-real-breakthrough-behind-our-gtc-demo` 正文全文（含 UR7e + MiR + Vention 平台、波士顿/旧金山/GTC 准备时间线与无展厅数据说明）。
+- **通读：** 已完成
 - **抓取方式：** curl 抓官方页 HTML，去标签后逐段核对（2026-10-09）
 - **一句话说明：** Generalist 在 NVIDIA GTC 2026 的 Universal Robots 展台上首次公开 **现场演示 GEN-0**，运行于一台此前不存在的新移动操作平台（UR7e 臂 + MiR 底盘 + Vention 框架）；作者强调重点不在演示本身，而在 **仅用几天准备** 就在全新机器人上跑通——称 GEN-0 带来了"泛化速度的阶跃"。
 

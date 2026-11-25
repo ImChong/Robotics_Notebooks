@@ -1,10 +1,13 @@
 ---
 type: entity
+project_id: yolo26
 tags: [paper, computer-vision, object-detection, instance-segmentation, real-time, perception, robotics, ultralytics]
 status: complete
-updated: 2026-09-30
+updated: 2026-11-22
 arxiv: "2606.03748"
 code: https://github.com/ultralytics/ultralytics
+code_scope: "YOLO26 模型家族与端到端 NMS-free/DFL-free 检测头、MuSGD/Progressive Loss/STAL 训练配方及 yolo26*.pt 权重"
+project_distinction: "YOLO26 论文实体（arXiv:2606.03748）；聚焦 YOLO26 算法创新与 COCO/LVIS 基准评测，而涵盖 YOLOv8/11/26/RT-DETR/SAM 多代工程工具链的仓库总节点为 ultralytics。"
 related:
   - ./ultralytics.md
   - ./paper-yolo-unified-realtime-detection.md

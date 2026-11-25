@@ -13,6 +13,9 @@
 
 ---
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `isaac-sim2real/sage` 官方仓库 README（16,774 字符），核对 `run_simulation.py`、`run_analysis.py` 与参数解析优先级体系。
+
 ## 依赖与运行面（README 声明）
 
 - Ubuntu 22.04 LTS，Linux x86_64，NVIDIA GPU

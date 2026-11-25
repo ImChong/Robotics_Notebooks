@@ -4,7 +4,11 @@ tags: [humanoid, robot-hardware, westlake-robotics, westlake, teleoperation, mot
 title: TITAN O1（西湖机器人人形）
 status: complete
 summary: "TITAN O1（泰坦 o1 / 西湖 o1）是西湖机器人 2026-03-23 发布的首款全栈自研人形：官网标 1340×377×203 mm、34 kg、29~69 关节自由度、膝关节 165 N·m、单臂末端 3 kg，四款自研关节模组；集成 GAE「通用小脑」做毫秒级全身动作模仿与一对多遥操，GAE 论文中需形态专用微调。"
-updated: 2026-10-10
+updated: 2026-11-21
+original:
+  - ../../sources/sites/wlrobo-com.md
+  - ../../sources/papers/gae_general_action_expert_arxiv_2609_34233.md
+  - ../../sources/sites/gae-general-action-expert.md
 institutions: [westlake-robotics]
 related:
   - ./westlake-robotics.md
@@ -97,6 +101,10 @@ flowchart LR
 3. **O1 需微调：** 论文中 G1 为主实验平台，O1 的迁移为「形态专用微调后」，不是零样本——「一脑多形」意味着同一预训练底座 + 每个本体一次适配。
 4. **群控与远程：** GAE 平台支持单机遥操、远程遥操（媒体报道跨 1300 km）和群控部署；一人控多台时所有机器人执行同一动作流。
 5. **自主模式：** 官网把 LM-VLM 作为大脑；O1 上自主任务（如「拿水」视频）由哪一模型驱动、是否遥操，页面未说明。
+
+## 源码运行时序图
+
+**不适用**：TITAN O1 为商业人形硬件产品，其搭载的 GAE 小脑以闭源商用二进制分发，官网与论文均未开放本体控制固件、训练源码或权重。
 
 ## 工程实践
 

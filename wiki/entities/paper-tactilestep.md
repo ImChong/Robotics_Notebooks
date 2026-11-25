@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, tactile, perceptive-locomotion, reinforcement-learning, ppo, unitree-g1, tsinghua, corl, parkour, soft-landing]
 status: complete
-updated: 2026-10-01
+updated: 2026-11-22
 arxiv: "2609.28959"
 venue: CoRL 2026 Spotlight
 related:

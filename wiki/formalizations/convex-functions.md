@@ -8,6 +8,7 @@ related:
   - ./quadratic-programming.md
   - ../concepts/constrained-optimization.md
   - ../entities/numerical-optimization-curriculum.md
+original: ../../sources/papers/boyd_cvxbook_ch3_convex_functions.md
 sources:
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "凸集与凸函数：机器人 QP/MPC/TrajOpt 中「可解、可证、可热启动」问题的数学基础。"
@@ -37,7 +38,7 @@ summary: "凸集与凸函数：机器人 QP/MPC/TrajOpt 中「可解、可证、
 - **稳定性与唯一性**：严格凸 + 可行域有内点时，最优解唯一，热启动有效。
 - **非凸问题的判据**：TrajOpt、NMPC 非凸时，需要凸松弛（见 [Convex Relaxation](../methods/convex-relaxation-robotics.md)）或好的初值。
 
-## 核心结构
+## 核心原理（核心结构）
 
 ### 凸集
 
@@ -79,13 +80,17 @@ $$f(\alpha x + (1-\alpha) y) \le \alpha f(x) + (1-\alpha) f(y), \quad \alpha \in
 | 控制分配 | $\min \|W(\tau - \tau_d)\|^2$ s.t. $B\tau = w$ |
 | 碰撞距离（SDF 局部） | 线性化后仍为 QP 子问题 |
 
-## 常见误区
+## 工程实践
+
+- **一阶与二阶判别（Boyd & Vandenberghe Ch. 3 § 3.1）**：构建机器人优化代价函数时，核验目标二阶 Hessian $\nabla^2 f(x) \succeq 0$ 即可保证任意局部最优即全局最优；强凸（$\mu I \preceq \nabla^2 f$）进一步保证解唯一且条件数良性。
+
+## 常见误区或局限
 
 - **「二次就是凸」**：只有 $P\succeq 0$ 时才是；不定二次可能非凸。
 - **「摩擦锥直接进 QP」**：精确 SOC 需锥求解器；工程常 polyhedral 线性化（见 [Friction Cone](./friction-cone.md)）。
 - **忽略定义域**：$\log$、$\sqrt{\cdot}$ 等只在特定域凸。
 
-## 与其他页面的关系
+## 关联页面
 
 - 最优性：[KKT Conditions](./kkt-conditions.md)
 - 标准形式：[Quadratic Programming](./quadratic-programming.md)
@@ -99,4 +104,5 @@ $$f(\alpha x + (1-\alpha) y) \le \alpha f(x) + (1-\alpha) f(y), \quad \alpha \in
 
 ## 参考来源
 
+- [boyd_cvxbook_ch3_convex_functions.md](../../sources/papers/boyd_cvxbook_ch3_convex_functions.md) — Boyd & Vandenberghe《Convex Optimization》Ch. 3 原文
 - [sources/courses/numerical_optimization_foundations_robotics.md](../../sources/courses/numerical_optimization_foundations_robotics.md) — 第 1 章 1.2–1.3 凸集与凸函数

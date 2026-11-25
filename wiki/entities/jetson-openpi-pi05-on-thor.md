@@ -1,8 +1,11 @@
 ---
 type: entity
+project_id: jetson-openpi-pi05-on-thor
 tags: [course, nvidia, jetson, vla, openpi, pi0, physical-intelligence, tensorrt, deployment, open-source]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-22
+project: https://www.jetson-ai-lab.com/tutorials/openpi_on_thor/
+original: ../../sources/courses/jetson_openpi_pi05_on_thor.md
 related:
   - ./jetson-ai-lab.md
   - ./nvidia-jetson.md
@@ -18,6 +21,8 @@ sources:
   - ../../sources/sites/jetson-ai-lab.md
 summary: "NVIDIA Jetson AI Lab 官方教程：在 AGX Thor 上将 Physical Intelligence π₀.₅ 走通 JAX→PyTorch→ONNX(ModelOpt FP8/NVFP4)→TensorRT 全链路；pi05_libero 上 TRT 约 49 ms，可选 OpenPI WebSocket serve。"
 code: https://github.com/Physical-Intelligence/openpi
+code_scope: "pin commit 15a9616 + Jetson AI Lab download.sh 注入的 deployment_scripts/（JAX→PyTorch→ONNX ModelOpt FP8/NVFP4→TensorRT 边缘部署层）"
+project_distinction: "NVIDIA Jetson AGX Thor 上部署 π₀.₅ 的官方边缘量化与 TensorRT 教程实体；复用 upstream openpi 固定提交及 serve_policy.py 协议，并非 π₀（arXiv:2410.24164）或 π₀.₅（arXiv:2504.16054）基础模型论文节点。"
 ---
 
 # OpenPi π₀.₅ on Jetson Thor（官方部署教程）

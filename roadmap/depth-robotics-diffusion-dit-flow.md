@@ -31,6 +31,7 @@ flowchart TB
 - **推荐度（用户策展）**：①②④⑤⑥⑧为 ★★★★★；③⑦为 ★★★★☆；③适合理解 **十亿级 Robotics Diffusion Transformer**，⑦与②的 IL 配方互补、偏 **OXE 通才 VLA**。
 - 每篇先抓 **action chunk** 与 **推理时 horizon**（receding horizon / 异步执行），再抓 **条件注入**（CNN/U-Net、adaLN、cross-attn VLM、flow 速度场）。
 - [模仿学习纵深](depth-imitation-learning.md) Stage 3 已覆盖 DP 概念时可 **跳过重复**，从 Stage ② 进入。
+- **机器人实战预习（可选）：** [Xbotics Handbook 第10讲](../wiki/entities/xbotics-embodied-ai-handbook.md) — 从 ACT 到条件去噪与速度场回归，明确 NFE、动作分块、滚动重规划；课程可运行实验以 ACT 为主，不是三者性能对照实验。
 - **课前补基础（可选，不占 8 篇代表作名额）：** [MIT 6.S184：Flow Matching & Diffusion Models（2026）](../wiki/overview/mit-flow-matching-diffusion-2026.md) 配官方 Lab 1–3，从 ODE/SDE、条件概率路径、CFG 到 DiT/VAE。先完成 Lab 1–2 再读 ① Diffusion Policy / ④ π₀，可用源码区分速度场积分与去噪采样；该课本身不研究机器人动作控制。
 - 图中箭头表示建议对比顺序，不表示后作直接继承前作；**扩散/流匹配是训练与采样机制，DiT 是骨干结构**，两条轴可组合。FM 仍需积分，少步/单步效果须由具体模型与实验确认。
 
@@ -75,6 +76,7 @@ flowchart TB
 ### 推荐读什么
 
 - [DiT-Block Policy 实体](../wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md)
+- **跨领域选读（不占本路线 8 篇主线）**：[Diffusion Planner（ICLR 2025）](../wiki/entities/paper-diffusion-planner-autonomous-driving.md) — DiT 联合生成自动驾驶自车/邻车未来轨迹并可微引导，适合对比车辆轨迹规划与机器人动作块扩散的输入、输出和闭环协议。
 - 项目：<https://dit-policy.github.io/> · 代码：<https://github.com/SudeepDasari/dit-policy> · arXiv：<https://arxiv.org/abs/2410.10088>
 
 ### 学完输出什么

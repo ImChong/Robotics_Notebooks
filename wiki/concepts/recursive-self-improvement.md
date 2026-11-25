@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 related:
   - ../entities/openai-research-acceleration-jagged-frontier.md
   - ../../roadmap/depth-rsi.md
@@ -30,6 +30,8 @@ related:
   - ../entities/paper-duplexagent-rsi.md
   - ../entities/researchboost-agent.md
   - ../entities/paper-toward-self-improving-robotic-agents.md
+  - ../entities/paper-aide2-recursive-self-improvement-ai-research-agents.md
+  - ../entities/paper-self-improvement-memory-crsi.md
 sources:
   - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
@@ -43,6 +45,7 @@ sources:
   - ../../sources/papers/harness2_arxiv_2610_14224.md
   - ../../sources/papers/duplexagent_rsi_arxiv_2610_11299.md
   - ../../sources/papers/toward_self_improving_robotic_agents_preprints_202610_3088.md
+  - ../../sources/papers/self_improvement_memory_arxiv_2611_18856.md
 original:
   - ../../sources/sites/openai-research-acceleration-jagged-frontier-2026.md
   - ../../sources/sites/anthropic_rsi_when_ai_builds_itself_reading_rsi7k.md
@@ -149,6 +152,12 @@ flowchart LR
 
 **另一套不可混同的证据分级：** [Toward Self-Improving Robotic Agents（2026）](../entities/paper-toward-self-improving-robotic-agents.md) 从 162 项机器人操作研究的「构造→保留→测得操作增益→独立重复获取」出发，提出 **L1–L5 实证证据等级**（9/18/70/65/0）；其中 L5 额外要求迁移、旧任务保持和人力/物理 reset 成本核算。它衡量**论文已证明什么**，不是上文按**能力增量**划分的 L1–L4，请勿因编号相近而套用。
 
+## SIM：可继承改进原因的持续 Harness 级 RSI
+
+[Self-Improvement Memory（SIM，arXiv:2611.18856）](../entities/paper-self-improvement-memory-crsi.md) 指出：把已演化的 harness **作为单一最终产物**移植到新模型或任务时，修改背后的根因、预期与实测被丢掉，会损害后续的延续优化。SIM 把每个根因的多次修改理由、评测前预测、评测后结果、模型与数据上下文记成可追加的结构化记忆，并同时供优化器的 proposer 与 selector 读取。它改的是**权重冻结的 agent harness**，不是模型权重。
+
+论文的跨模型 Workspace 对照中，源 harness 直接迁移使起点由 73.89 降至 68.41；同一起点再优化 10 轮，完整 SIM 为 **84.75**，仅继承 harness 为 **73.42**。此外十组独立编程配对实验有 9 组更好，平均提升 **2.36** 分。**注意两组实验的重复次数与评测口径不同**；证据仅覆盖 harness 接口兼容的文本/编程/工作台/工程设计任务，尚无机器人真机实验。原始资料见[论文精读归档](../../sources/papers/self_improvement_memory_arxiv_2611_18856.md)与[官方项目页归档](../../sources/sites/self-improvement-memory-sim.md)。
+
 ## Harness²：冻结模型的 Harness 层 RSI
 
 [Harness²](../entities/paper-harness2.md) 把模型权重保持冻结，仅让 agent 修改周围的八类 harness 文件；单任务以 Propose–Probe–Compose 比较参考与候选执行，跨任务再将有证据的经验保存到改进库。它展示的是 **harness 层的持久改进**，不等于模型权重自我训练，也不证明机器人任务迁移。论文在 WorkBuddy-Bench、JobBench 和法律 LAB 上评测；执行轨迹差异并非正确性证明，且模型驱动实验仍有调用成本与 rubric 网络泄漏风险。原始资料见[论文来源归档](../../sources/papers/harness2_arxiv_2610_14224.md)、[项目页](../../sources/sites/harness2.md)和[源码仓库](../../sources/repos/google-research-harness2.md)。
@@ -180,6 +189,8 @@ flowchart LR
 - **加速未覆盖部分更危险。** 代码变多而理解变少（文内员工引言）；真机上这会变成不可复现的危险策略。
 
 ## 关联页面
+
+- [AIDE²：AI 研究智能体的递归自我改进](../entities/paper-aide2-recursive-self-improvement-ai-research-agents.md) — 固定预算、私有 held-out 评分下迭代改写研究 agent 的 harness；七次候选通过门控，但 ignition test 未证实递归加速，不能外推为真机机器人自主进化。
 
 - [Toward Self-Improving Robotic Agents（162 项研究综述）](../entities/paper-toward-self-improving-robotic-agents.md) — 执行/获取双轨、能力谱系与 L1–L5 实证证据审计（不同于能力增量等级）。
 

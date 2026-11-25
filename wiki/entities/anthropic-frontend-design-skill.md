@@ -1,5 +1,7 @@
 ---
 type: entity
+project_id: anthropics-frontend-design-skill
+code: https://github.com/anthropics/skills/tree/main/skills/frontend-design
 tags:
   - llm-agents
   - coding-agents
@@ -9,14 +11,20 @@ tags:
   - ux
   - agent-infrastructure
 status: complete
-updated: 2026-09-30
+updated: 2026-11-22
+original:
+  - ../../sources/repos/anthropics-frontend-design-skill.md
 related:
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/claude-code-dynamic-workflows.md
   - ./anthropic-claude-api-skill.md
   - ./find-skills-skill.md
   - ./gsap-skills.md
   - ./mattpocock-skills.md
   - ./taste-skill.md
   - ./impeccable.md
+  - ./ui-ux-pro-max-skill.md
+  - ./claude-code-frontend-skills.md
   - ./skillry.md
   - ../comparisons/skillry-taste-skill-impeccable.md
   - ../concepts/agentic-coding-software-fundamentals.md
@@ -51,7 +59,7 @@ summary: "frontend-design 是 anthropics/skills 官方 UI 技能：要求先出 
 - **与 GSAP skill：** [GSAP AI Skills](gsap-skills.md) 管 **动效 API**；本 skill 管 **何时动、动多少**（反对每卡片 hover + 段段 fade-up）。
 - **社区延伸：** [Impeccable](impeccable.md) 在本 skill 之上加 **24 命令 + detector**；[Taste Skill](taste-skill.md) 用 **三旋钮 + 禁令** 约束生成；[Skillry](skillry.md) 则是 **闭源交付物市场** — 见 [对比](../comparisons/skillry-taste-skill-impeccable.md)。
 
-## 核心结构
+## 核心原理
 
 | 阶段 | 内容 |
 |------|------|
@@ -91,6 +99,12 @@ flowchart LR
 - **局限：** 英文 skill；中文站需自行在 brief 中约束字体与文案风格。
 
 ## 关联页面
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 设计方案完成后以真实 UI 证据审查
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md) — 将设计计划、实现和独立校验拆分为阶段
+
+- [UI/UX Pro Max](ui-ux-pro-max-skill.md) — 设计规则数据库与 Token 导出
+- [Claude Code Frontend Skills](claude-code-frontend-skills.md) — Skill 组合时的路由和冲突裁决
 
 - [claude-api（Anthropic）](anthropic-claude-api-skill.md) — 同仓官方技能
 - [find-skills](find-skills-skill.md) — 发现安装路径

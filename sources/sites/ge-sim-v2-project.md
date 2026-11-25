@@ -6,6 +6,8 @@
 - **类型：** site
 - **URL：** <https://ge-sim-v2.github.io/>
 - **入库日期：** 2026-05-30
+- **核对范围：** 通读官方项目页（<https://ge-sim-v2.github.io/>，2026-11-21 复核页面链接与 [GitHub 仓](https://github.com/AgibotTech/GE-Sim-V2)，确认已连接官方源码仓库与 Hugging Face 权重）。
+- **通读：** 已完成
 - **一句话说明：** 官方演示页：统一动作控制信号注入、多视角一致生成、分钟级长视频、大规模真机数据泛化、视觉+本体联合未来预测、World Judge 自动任务评测、加速推理演示。
 - **沉淀到 wiki：** [GE-Sim 2.0](../../wiki/entities/ge-sim-2.md)
 

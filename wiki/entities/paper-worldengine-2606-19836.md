@@ -3,7 +3,7 @@ type: entity
 project_id: driving-worldengine
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2606.19836"
 code: https://github.com/OpenDriveLab/WorldEngine
 summary: "WorldEngine：高保真闭环仿真与长尾驾驶强化后训练。真实日志经MTGS三维高斯重建形成SimEngine交互环境，AlgEngine中的VADv2闭环策略产生反馈，失败样本筛选后用于安全约束强化后训练；论文提出Behavior World Model。"
@@ -102,6 +102,11 @@ sequenceDiagram
 1. 先使用官方公开checkpoint与现有评测脚本建立基线。
 2. 明确划分论文提出的完整系统和当前代码实际已开放的部分。
 3. 记录数据、版本、硬件与指标，避免不同评测设定的数字错比。
+
+## 与其他工作对比
+
+- **对比预训练规模扩容与多种后训练范式（nuPlan 稀有安全关键基准，Table 1）：** 在 50k 场景 base 模型（common/rare 开环 PDMS 85.64 / 47.14，rare 闭环 SR 73.66% / PDMS* 60.98）上，仅用常规日志做后训练反而令 rare 闭环 SR 降至 69.63%；用静态稀有日志或固定稀有合成回放虽把 SR 提至 73.35% / 87.20%，但后者的自车进度 EP 跌至 32.49；去掉 Behaviour WM 的反应式闭环 rollout 取得 77.96% SR / 67.33 PDMS*；完整 **World Engine**（3DGS SimEngine + Behaviour WM 交通交互增强 + 安全约束 RL）达到 **88.89% SR / 70.12 PDMS***（同时 common 开环升至 88.95），增益超过将预训练数据从 50k 扩至 103k 的曲线趋势。
+- **对比传统数据引擎、仿真回放与静态 RL 后训练（Appendix A.3）：** 既有数据引擎多停留在开环数据增广或离线压力评测，难以耦合策略自身的演化弱点；World Engine 把三维高斯重建、反应式交通行为世界模型与闭环强化后训练串成统一闭环。但相比纯粹闭环轨迹评测框架（如 [ReCogDrive](./paper-recogdrive-2506-08052.md) 使用的 NAVSIM/CARLA），World Engine 公开仓库的 Behaviour World Model 集成仍标待办，且 3DGS 渲染不自动保证物理接触与力学真实性。
 
 ## 局限与风险
 

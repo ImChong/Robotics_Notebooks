@@ -7,6 +7,7 @@ related:
   - ./lqr.md
   - ../methods/trajectory-optimization.md
   - ../concepts/optimal-control.md
+original: ../../sources/courses/mit_underactuated_robotics.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/optimal_control_theory.md
@@ -52,7 +53,7 @@ $$V^*(x, t) = \min_{u(\cdot)} \left[ \int_t^T \ell(x(\tau), u(\tau))\, d\tau + \
 
 约束：$\dot{x} = f(x, u)$（系统动力学），$V^*(x, T) = \Phi(x)$（终端代价）
 
-## HJB 方程推导
+## 核心原理（HJB 方程推导）
 
 对最优值函数 $V^*(x,t)$，通过 Bellman 最优性原理（最优子结构），在 $[t, t+dt]$ 上展开：
 
@@ -132,7 +133,11 @@ Deep RL (PPO/SAC)
 2. 设计终端代价函数（告诉 MPC "horizon 结束后还要花多少代价"）
 3. 理解为什么 CBF（控制障碍函数）能提供安全保证——CBF 是 HJB 的 barrier 形式
 
-## 求解困难与实际处理
+## 工程实践与求解策略
+
+- **维度边界与局部近似（MIT Underactuated Robotics Ch. 7 & Ch. 10）**：网格化数值求解 HJB PDE 在状态维数 $>4\text{--}5$ 时即受维度灾难阻塞；实际机器人工程转为在平衡点做二次近似（LQR）或沿标称轨迹用 iLQR/DDP 做局部价值展开，或在 4D 以内做安全可达集验证。
+
+## 局限与风险（求解困难）
 
 **维度灾难**：HJB 是 PDE，对 $n$ 维状态空间需要在 $n$ 维空间上求解，计算量随维度指数增长（对人形机器人 30+ DOF 完全不可行）。
 
@@ -143,6 +148,7 @@ Deep RL (PPO/SAC)
 - **Deep RL**：某些方法学习价值函数或策略近似；并非所有 RL 方法都显式近似 $V^*$
 
 ## 参考来源
+- [mit_underactuated_robotics.md](../../sources/courses/mit_underactuated_robotics.md) — MIT *Underactuated Robotics* Ch. 7（HJB 稳态与离散时间动态规划方程）
 
 - Bellman, *Dynamic Programming* (1957) — 离散时间 Bellman 原理
 - Fleming & Rishel, *Deterministic and Stochastic Optimal Control* (1975) — HJB 经典教材
@@ -155,3 +161,8 @@ Deep RL (PPO/SAC)
 - [LQR](./lqr.md) — LQR 是 HJB 在线性二次系统上的解析解
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 轨迹优化（iLQR/DDP）是 HJB 的数值近似方法
 - [Optimal Control](../concepts/optimal-control.md) — HJB 和 Pontryagin PMP 是连续时间最优控制的两大理论工具
+
+## 推荐继续阅读
+
+- [Bellman Equation](./bellman-equation.md) — 离散时间动态规划递推
+- [LQR / iLQR](../methods/lqr-ilqr.md) — 二次型代价下 HJB 的可解与局部近似求解

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, stanford, realab, manipulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2602.22001"
 venue: "综述 · arXiv 2026"
 related:
@@ -41,7 +41,7 @@ VLA 爆发期需要一张「迁移发生在哪一层」的地图，避免把语�
 
 ```mermaid
 flowchart TD
-    F1["Fig. 1：transfer stack（Jaquier et al. 的四个迁移层级）<br/>full-stack transfer = 各层级都能迁移"]
+    F1["Fig. 1：transfer stack（Jaquier et al. 的六个迁移层次：<br/>Mimicry / Imitation / Emulation / Causal / Verbal / Goal）"]
     S2["§2 Transfer in Higher Layers：LLMs and VLMs<br/>linguistic stream"]
     S3["§3 Transfer in Lower Layers：Visuomotor policies<br/>visuomotor stream：diffusion policy / flow matching"]
     S4["§4 Towards Full-stack Transfer：VLAs"]
@@ -65,7 +65,7 @@ flowchart TD
 
 ## 核心原理（方法）
 
-按抽象层级回顾 LLM/VLM/VLA、运动原语与世界模型；对比 OpenVLA、π₀-FAST、π₀ 等架构；讨论数据收集与 transfer benchmark。
+按 Jaquier et al. 六层迁移分类框架回顾 LLM/VLM/VLA、扩散/流匹配策略、知识隔离（Knowledge Insulation，如 $\pi_{0.5}$-KI/$\pi_{0.6}$ 梯度阻断与解耦以防低层动作微调洗掉高层语义）与跨具身机制；讨论遥操作 vs 无机器人便携采数（UMI/iPhUMI）及开放共享真机评测（RoboArena、euROBIN）。
 
 ## 实验与评测
 
@@ -82,7 +82,7 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-08-18：无统一公开可运行代码仓库，或本文为综述/控制器论文以项目页演示为主）。
+**不适用**（DLR + Stanford AI Lab 综述研究论文，无配套代码仓库）。
 
 ## 局限与风险
 
@@ -103,7 +103,7 @@ flowchart TD
 
 - [foundation_models_full_stack_transfer_arxiv_2602_22001.md](../../sources/papers/foundation_models_full_stack_transfer_arxiv_2602_22001.md)
 - [wechat_shenlan_realab_14_papers_2026.md](../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md)
-- [arXiv PDF](https://arxiv.org/pdf/2602.22001)：已通读 §1 Introduction、§2–§4 的章节结构与 §4.1–§4.5 的论述、§5 Collecting Action Data、§6 Benchmarking、§7 Conclusion（图只用到章节标题与各章定位）
+- [arXiv PDF](https://arxiv.org/pdf/2602.22001)：已通读 `arXiv:2602.22001v1` §1–§8 全文（迁移六层次、Knowledge Insulation、跨具身策略、UMI/DROID 与 RoboArena/euROBIN 评测规范）
 
 ## 推荐继续阅读
 

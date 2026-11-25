@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-generation, multi-view, reconstruction, diffusion]
 status: complete
-updated: 2026-11-19
+updated: 2026-11-21
 project_id: gensfm
 arxiv: "2610.35522"
 project: https://dotb1ue.github.io/GenSfm/
@@ -12,6 +12,7 @@ original:
 related:
   - ./paper-axolotl3d.md
   - ./paper-glob3r.md
+  - ./paper-pi4-4d-scene-geometry-motion.md
   - ../../roadmap/depth-real2sim.md
 sources:
   - ../../sources/papers/gensfm_arxiv_2610_35522.md
@@ -158,6 +159,7 @@ sequenceDiagram
 | TRELLIS-M（论文基线） | 多视图物体图像 | 不估计相机 | 物体级 3D 生成；论文按相似 ICP 对齐协议与 GenSfM 比较 |
 | [Axolotl3D](./paper-axolotl3d.md) | 图像 + 可见性 mask + 已知相机 + 部分点云 | 作为条件输入 | 遮挡感知形状补全，不解决相机估计 |
 | [Glob3R](./paper-glob3r.md) | 场景级图像序列 | 稠密匹配 tracks → 运动平均 + BA | 全局 SfM 重建，不对未观测区域做生成补全 |
+| [π⁴（Pi4）](./paper-pi4-4d-scene-geometry-motion.md) | 未标定单图、无序图集或视频 | 联合估计相机与尺度 | 场景稠密点图、2D/3D 轨迹与动态掩码；不生成完整物体 mesh，也不提供碰撞/物性 |
 
 取舍：相机已知且有部分几何时，Axolotl3D 一类补全方法的条件更强；场景级、视图充足时，Glob3R 一类几何 SfM 更可审计；GenSfM 适合物体级、视图稀疏且无标定的情形，代价是遮挡区域依赖生成先验。
 
@@ -190,6 +192,8 @@ sequenceDiagram
 6. **生成补全不等于观测** — 遮挡区域的几何与物理属性应在使用前独立验证。
 
 ## 关联页面
+
+- [DecomVoxel](./paper-decomvoxel.md)：以多视角场景重建为基础，在原场景坐标中对独立对象做遮挡补全；与 GenSfM 的少视图物体结构与相机联合恢复互补。
 
 - [Axolotl3D](./paper-axolotl3d.md)：以相机和部分点云为条件的形状补全。
 - [Global 3R](./paper-glob3r.md)：相关多视角 3D 重建。

@@ -5,6 +5,8 @@ status: complete
 summary: PPO 与 SAC 在机器人 RL 中的实践对比，覆盖 on-policy vs off-policy 核心差异、适用场景与调参要点。
 sources:
   - ../../sources/papers/policy_optimization.md
+original:
+  - ../../sources/papers/policy_optimization.md
 related:
   - ../methods/policy-optimization.md
   - ../methods/reinforcement-learning.md

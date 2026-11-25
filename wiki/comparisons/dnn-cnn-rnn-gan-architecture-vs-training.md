@@ -2,7 +2,7 @@
 type: comparison
 tags: [deep-learning, dnn, mlp, cnn, rnn, gan, architecture, adversarial-training, comparison]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-21
 summary: "DNN 是广义深层网络，MLP/CNN/RNN 指向骨干结构与归纳偏置，GAN 是生成器–判别器对抗训练框架；应按结构、训练目标、数据形态分轴选型。"
 original:
   - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/deep-learning-foundations.md
   - ../overview/ai-architecture-map.md
   - ../../roadmap/depth-model-architecture.md
+  - ./ai-paradigm-evolution-evidence-vs-narrative.md
 sources:
   - ../../sources/blogs/deepblue-ai-dnn-cnn-rnn-gan-2026-11-20.md
   - ../../sources/papers/lecun_gradient_based_learning_1998.md
@@ -137,6 +138,7 @@ flowchart TB
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [AI 架构地图](../overview/ai-architecture-map.md)
 - [模型架构纵深路线 Stage 1](../../roadmap/depth-model-architecture.md)
+- [CNN→Transformer→VLA/WAM：技术演进证据与叙事](./ai-paradigm-evolution-evidence-vs-narrative.md) — 将结构/训练两个轴扩展到多模态、缩放与具身证据审查
 
 ## 参考来源
 

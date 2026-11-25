@@ -3,6 +3,8 @@ type: entity
 tags: [repo, sim2real, isaac-lab, isaac-sim, actuator, system-identification, humanoid, unitree, dataset]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/repos/sage-sim2real-actuator-gap.md
 related:
   - ../concepts/sim2real.md
   - ../concepts/system-identification.md
@@ -93,8 +95,7 @@ flowchart LR
 3. **日志语义对齐**：仿真与真机在 CSV 字段、时间戳单位、类型枚举上存在差异（README 对比表），分析脚本承担规范化与对齐。
 4. **多机器人、多负载数据叙事**：README 描述 Unitree H1-2 上身 + 负载档与 RealMan 四臂结构，用于研究 **跨条件泛化** 或 **载荷引起 gap 变化**。
 
-## 常见误区
-
+## 常见误区或局限
 - **把 gap 全归因于仿真器**：未对齐控制频率与 PD 时，测到的是「接口不一致」而非物理差异。
 - **忽略时间对齐**：真机不规则采样与仿真固定步长混用需要谨慎重采样或事件对齐，否则相关/余弦指标会失真。
 - **跳过 valid_joints 语义**：只评「能动的子集」与评全身自由度，结论不可直接比较。
@@ -119,6 +120,11 @@ flowchart LR
 
 - [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md)
 - [NVIDIA SO-101 Sim2Real 课程](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — Strategy 4：SAGE + GapONet 教学模块
+
+## 工程实践
+
+- **CLI 与配置优先级：** 命令行显式参数 (`--kp` / `--kd` / `--control-freq`) 优先于机器人 `assets.py` 默认配置，便于逐关节快速消融调参而不篡改仓库模板。
+- **标准量化流水线：** 先在实机和 Isaac Sim (`scripts/run_simulation.py`) 同步重放 AMASS 类参考轨迹，再用 `scripts/run_analysis.py` 产出 RMSE、MAPE 与余弦相似度闭环定位失配关节。
 
 ## 关联页面
 

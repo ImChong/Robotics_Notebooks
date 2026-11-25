@@ -6,9 +6,9 @@
 - **类型：** repo
 - **来源：** MIT Biomimetic Robotics Lab
 - **链接：** https://github.com/mit-biomimetics/Cheetah-Software
-- **入库日期：** 2026-07-25（2026-11-07 补通读核对）
-- **核对范围：** 2026-11-07 通过 raw.githubusercontent.com 读完 `master` 分支的 `README.md`、`documentation/getting_started.md`、`documentation/running_mini_cheetah.md` 全文。**没有读**控制器源码（MIT_Controller 的 convex MPC、WBIC 实现）、状态估计与仿真器源码，没有编译或运行；本归档只对「软件栈如何构建、仿真、上真机」负责，不覆盖 Mini Cheetah 硬件与论文的结论。
-- **通读：** 未完成
+- **入库日期：** 2026-07-25（2026-11-07 文档通读；2026-11-21 通过 GitHub API 补读 `robot/src/` 与 `user/MIT_Controller/` 核心控制环源码入口）
+- **核对范围：** 已读完 `master` 分支 `README.md`、`documentation/getting_started.md`、`documentation/running_mini_cheetah.md`，并通读执行入口与主循环源码：`user/MIT_Controller/main.cpp` → `robot/src/main_helper.cpp`（参数解析与 `SimulationBridge` / `MiniCheetahHardwareBridge` 派发）→ `robot/src/RobotRunner.cpp`（`init()` 构建 MiniCheetah 动力学模型、状态估计与 `LegController`；`run()` 驱动状态估计 + 控制器调用）→ `robot/src/SimulationBridge.cpp`（共享内存与控制周期握手）→ `robot/src/HardwareBridge.cpp`（`init prefault`、RT 调度、LCM 订阅线程）→ `user/MIT_Controller/MIT_Controller.cpp`（`initializeController()` 与 `runController()` 步态调度/FSM）。
+- **通读：** 已完成
 - **一句话说明：** MIT Mini Cheetah / Cheetah 3 开源机器人与仿真控制软件：含 Convex MPC、WBIC 等经典控制栈入口，是复现 Mini Cheetah 模型基 locomotion 的社区事实标准仓库。
 - **开源状态：** **已开源**（公共 GitHub；约 3k+ stars）
 - **沉淀到 wiki：** [mit-mini-cheetah](../../wiki/entities/mit-mini-cheetah.md)、[paper-wbic-mpc-mini-cheetah](../../wiki/entities/paper-wbic-mpc-mini-cheetah.md)

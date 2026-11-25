@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, magnetics, halbach, permanent-magnet, lbnl, berkeley, accelerator]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 venue: "Nucl. Instrum. Methods 1980"
 related:
   - ../concepts/halbach-array.md

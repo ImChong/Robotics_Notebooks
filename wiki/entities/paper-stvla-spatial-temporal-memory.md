@@ -3,7 +3,7 @@ type: entity
 project_id: stvla-2611-16589
 tags: [paper, vla, temporal-memory, spatial-reasoning, manipulation]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-24
 arxiv: "2611.16589"
 project: https://stvla.github.io/
 original:
@@ -112,6 +112,8 @@ flowchart TD
 - **工程安全边界：** 真机动作链需另行评估碰撞、限位、通信中断与异常恢复；论文实验成绩不构成部署安全保证。
 
 ## 关联页面
+
+- [HeLM：分层显式语言记忆](./paper-helm-2611-02660.md) — 对照事件驱动的文字状态与几何增强视觉记忆；支持跨指令历史。
 
 - [2026-11-16 具身前沿 29 篇论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 

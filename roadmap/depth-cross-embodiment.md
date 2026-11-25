@@ -228,6 +228,7 @@ flowchart LR
 - 对自己的人类数据做一次可执行性筛查：多少比例在目标本体上物理可行——这个比例决定人类数据的真实"折算率"
 
 ### 推荐读什么
+- [PI 人视频到机器人迁移 / π₀.₅ + ego](../wiki/entities/paper-pi-human-to-robot.md) — 使用 3D 手部相对末端轨迹，把人看作另一种本体；无需额外表征对齐损失，但需要结构化轨迹与多样机器人预训练。
 - [PolyMorphWBC：机械臂形态条件化四足控制](../wiki/entities/paper-polymorphwbc-quadruped.md) — URDF 几何条件与末端统一接口。
 - [MotionSkill：视频公共动作参考与机体特定残差](../wiki/entities/paper-motionskill-cross-embodiment.md) — 非共享策略的跨机体迁移边界。
 - [EgoX](../wiki/entities/paper-egox-mxt-plus.md) — 统一第一人称模态、共享干路和本体专属动作头，训练期未来潜变量 Dreaming
@@ -236,6 +237,7 @@ flowchart LR
 - [统一惯性编码器 / Unified Inertial Encoder](../wiki/entities/paper-unified-inertial-encoder.md) — 通过重定向和 12 部位共享 IMU 接口做**传感/状态估计层**的人→G1 迁移；不是控制策略迁移，真机权重训练与 checkpoint 选模的边界见详情
 - [重定向物体而非人手](../wiki/entities/paper-human-demos-object-retargeting.md) — 对每个 URDF 做仿真可执行性判定；约 31% 通过
 - [EgoJEPA](../wiki/entities/paper-egojepa-egocentric-latent-action.md) — 第一视角人类视频 → 本体无关潜在动作
+- [DreamX：视频扩散潜动作](../wiki/entities/paper-dreamx.md) — Stage 4 从预训练视频骨干读取人机共享运动，目标本体状态解码动作；对照显式重定向，并区分开环迁移和闭环策略。
 - [LaST-HD](../wiki/entities/paper-last-hd-latent-physical-reasoning.md) — 非配对人手与机器人轨迹对齐到共享潜式物理推理空间
 - [强 pair data](../wiki/concepts/strong-pair-data.md) — 人–机配对数据的强弱分级
 - [H2R-Bench](../wiki/entities/paper-h2r-bench.md) — 人类视频→指定机器人本体视频的跨本体诊断基准

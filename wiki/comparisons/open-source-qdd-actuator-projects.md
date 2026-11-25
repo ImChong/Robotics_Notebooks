@@ -4,7 +4,7 @@ tags: [hardware, actuator, qdd, open-source, humanoid, quadruped, foc, motor-con
 status: complete
 original:
   - ../../sources/papers/3d_printed_open_source_actuators_reading_arxiv_2202_12395_qdd1.md
-updated: 2026-11-18
+updated: 2026-11-22
 related:
   - ../entities/odri-solo-and-bolt.md
   - ../entities/berkeley-humanoid-lite.md
@@ -120,7 +120,7 @@ flowchart TB
 | **Internal Cycloidal** | B | 8:1 内嵌双摆线 | ODrive S1 | 最佳电机本体教材之一；**个人原型** | [ICA](../entities/internal-cycloidal-actuator.md) |
 | **OpenTorque** | A | 同步带低减速 | VESC | 快速样机；体积/抗冲击不足人形量产 | [OpenTorque](../entities/opentorque-actuator.md) |
 | **Stanford Doggo** | A | 同步带 QDD | ODrive + Teensy | 高动态跳跃参考；四足非人形 | [Doggo](../entities/stanford-doggo-and-pupper.md) |
-| **Urs et al. 2022** | A（教材型） | 7.5:1 行星 / ~15:1 bilateral | moteus r4.5 | 热/寿命/背隙测全；公开仓链接待核实 | [论文页](../entities/paper-3d-printed-open-source-actuators-legged.md) |
+| **Urs et al. 2022** | A（教材型） | 7.5:1 行星（482 g / 连续 4.4 N·m） / 15.04:1 Wolfrom（536 g / 连续 8.8 N·m） | moteus r4.5（电流环 102 Hz） | 热/寿命/背隙测全；文内发布地址 `www.embirlab.com/3dpactuator`（GitHub 未见统一主仓） | [论文页](../entities/paper-3d-printed-open-source-actuators-legged.md) |
 | **Katz / Mini Cheetah（2018）** | A（历史先例，**部分开源**） | **6:1** 行星 | 自研集成驱动（[`3phase_integrated`](https://github.com/bgkatz/3phase_integrated)） | BOM≈$300、空翻级动态；**机械 CAD 未在 thesis 附录公开** | [Katz thesis](../entities/paper-low-cost-modular-actuator-katz.md) |
 | **Cycloidal QDD (Jeong)** | A+自制电机 | 双摆线 10:1、180° 相位 | moteus-c1 | 与 BHL/ICA 对照；缺背铁限扭矩 | [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) |
 | **Actuator 2.0 (the5439workshop)** | B（自制定子/转子与行星传动） | 定子内部集成行星减速（视频原文确认 6:1） | 自研 PCB + ESP32-S3 / SimpleFOC 电压型力矩接口 | STL/Gerber/BOM/示例程序可用；作者报告接近 20 N·m / 100 W 损耗；齿轮寿命和连续力矩仍需验证 | [Actuator 2.0](../entities/the5439workshop-actuator-2.md) |
@@ -163,7 +163,7 @@ flowchart TB
 
 - 本页是**学习选型图**，不是采购合格证；各项目许可、加工公差与安全等级需自行核验。
 - 「电机本体开源」项目缺工业验证时，只宜作电磁与集成教材，不宜直接拷进重型人形。
-- Urs et al. 论文宣称开源，但截至入库日未在 arXiv HTML 中钉死稳定 GitHub——以论文评测方法为主、复现仓待跟进。
+- Urs et al. 论文（`arXiv:2202.12395v1`）宣称开源（文内发布地址 `www.embirlab.com/3dpactuator`，双离心风冷将热阻从 `7.77` 降至 `2.27 °C/W`），GitHub 未见统一官方主仓，驱动采用开源 `moteus r4.5`。
 - Katz Mini Cheetah thesis **部分开源**：驱动/固件/SPIne 可跟；完整机械需自研或社区件，勿与 ODRI 全栈开源混为一谈。平台级开源边界与控制栈见 [MIT Mini Cheetah](../entities/mit-mini-cheetah.md)。
 
 ## 关联页面

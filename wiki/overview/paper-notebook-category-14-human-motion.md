@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-11-20
+updated: 2026-11-22
 related:
   - ./humanoid-paper-notebooks-index.md
   - ../../roadmap/depth-motion-generation.md

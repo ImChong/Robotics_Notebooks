@@ -13,6 +13,7 @@ related:
   - ./paper-focus-foot-observation-confidence.md
   - ./paper-fail-passive-gap.md
   - ../overview/g1-foothold-safe-stop-focus-technology-map.md
+original: ../../sources/papers/safe_stop_humanoid_arxiv_2609_02358.md
 sources:
   - ../../sources/papers/safe_stop_humanoid_arxiv_2609_02358.md
   - ../../sources/sites/safestop.md
@@ -53,7 +54,7 @@ summary: "Safe-Stop（arXiv:2609.02358，Berkeley/CMU/Stanford）：急停建模
 | **平台** | Unitree G1（仿真+真机） |
 | **开源** | **待发布**（项目页无 GitHub，2026-09-04 再核仍无） |
 
-### 流程总览
+## 核心原理（流程总览）
 
 ```mermaid
 flowchart TB
@@ -84,6 +85,11 @@ flowchart TB
 ## 源码运行时序图
 
 **不适用** — 截至 **2026-09-04** 无可运行官方代码。
+
+## 工程实践
+
+- **双估计器滑窗防误触发（arXiv:2609.02358）**：使用 arm-masked 本体感知观测提高 OOD 判定鲁棒性，只有 Stop-Probability 与 Reach-Avoidance 两个估计器在连续时间窗内一致批准可停时才切入制动策略，否则切换阻尼防摔降级态。
+- **速度门控姿态收敛奖励**：高初速阶段优先产生合理制动脚步并将质心留在支撑域，待速度下降后再以 $\sigma(v)=\exp(-v^2/v_0^2)$ 逐渐激活直立稳态惩罚。
 
 ## 局限与风险
 

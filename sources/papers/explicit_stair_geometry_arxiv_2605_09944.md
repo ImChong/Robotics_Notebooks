@@ -9,6 +9,9 @@
 - **机构：** 深圳市人工智能与机器人研究院（AIRS）、香港中文大学（深圳）、Mohamed bin Zayed University of Artificial Intelligence（MBZUAI）
 - **平台：** Unitree G1（实机）；Isaac Lab（训练）、MuJoCo（跨仿真评测，无微调）
 - **入库日期：** 2026-06-05
+- **复核日期：** 2026-11-21
+- **核对范围：** 2026-11-21 通读 `arXiv:2605.09944v1`（pdftotext 770 行）全文：Abstract、§I–§V（BEV 点云 3 m×3 m @ 5 cm / 6 通道编码、`z_t ∈ R^4` 状态+踢面高度+踏面深度+航向估计、PPO 条件化、Table I–III 与盲走/高程图/视觉 MoRE 对比及 OOD 踢面高度泛化、MuJoCo sim2sim 与 Unitree G1 户外连续 33 级上楼零样本实机、Limitations 与参考文献）；文中未公开官方训练代码仓库。
+- **通读：** 已完成
 - **一句话说明：** 用 **BEV 点云编码器** 预测 **可解释的楼梯几何 token**（地形类别 + 踢面高度 + 踏面深度 + 相对航向），直接 **条件化 PPO 全身策略**，在仿真中相对盲走 / 高程图 / 视觉 MoRE 基线取得更高成功率与 **训练分布外踢面高度泛化**；**Unitree G1** 室内外楼梯零样本部署，户外 **连续 33 级** 上楼无失败。
 
 ## 核心论文摘录

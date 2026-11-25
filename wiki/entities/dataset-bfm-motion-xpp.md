@@ -1,9 +1,13 @@
 ---
 type: entity
+project_id: motion-xpp
+arxiv: "2501.05098"
 tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, tsinghua, idea, jhu, cuhk-sz]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/IDEA-Research/Motion-X
+code_scope: "Motion-X++ 多模态扩展模块（non-mocap-dataset-process/Load_motion_data.md、mesh_recovery/{local,global}_motion、keypoints/ 与 visualization/render_*.py）"
+project_distinction: "Motion-X++ 独立论文与多模态扩展数据集实体（arXiv:2501.05098，120.5K 序列 / 180.9h，新增 RGB/音频/GPT-4V 字幕与 Masked DROID-SLAM）；前代 Motion-X（arXiv:2307.00818）见 dataset-bfm-motion-x。"
 summary: "Motion-X 的多模态升级版：新增多阶段镜头切分、SMPLer-X+HAMER+改进 EMOCA 局部重建与 Masked DROID-SLAM 全局轨迹优化，扩展至 120.5K 序列（19.5M 帧、180.9 小时）并配对 80.8K 视频、45.3K 音频与 GPT-4V 字幕。"
 related:
   - ./dataset-bfm-motion-x.md

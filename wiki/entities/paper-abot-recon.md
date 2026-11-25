@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, 3d-reconstruction, streaming, monocular, slam, computer-vision, alibaba, amap-cvlab, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-16
+updated: 2026-11-21
 arxiv: "2608.27529"
 code: https://github.com/amap-cvlab/ABot-Recon
 related:
@@ -13,6 +13,8 @@ related:
   - ./paper-glob3r.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
+original:
+  - ../../sources/papers/abot_recon_arxiv_2608_27529.md
 sources:
   - ../../sources/papers/abot_recon_arxiv_2608_27529.md
   - ../../sources/repos/abot-recon.md

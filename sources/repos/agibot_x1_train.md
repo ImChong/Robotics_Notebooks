@@ -14,6 +14,8 @@
 ## 开源状态
 
 - **已开源**：公开仓库（以 README 与 release 为准）。
+- **核对范围：** 通读 `AgibotTech/agibot_x1_train@e6651b9` 的 `README.md` 及入口脚本 `humanoid/scripts/train.py`、`humanoid/envs/__init__.py`、`humanoid/algo/ppo/dh_on_policy_runner.py`；未运行 Isaac Gym GPU 训练或 MuJoCo 仿真。
+- **通读：** 已完成
 
 ## 对 wiki 的映射
 

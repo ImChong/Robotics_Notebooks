@@ -1,20 +1,17 @@
-# TTP
+# TTP 仓库核查
 
-> 来源归档（国内具身开源全景）
+> 来源归档（repo / BeingBeyond GitHub）
 
-- **标题：** TTP
-- **类型：** repo
-- **机构：** 智在无界
-- **链接：** https://github.com/BeingBeyond/TTP
-- **分类：** 数据集/Benchmark
-- **入库日期：** 2026-09-06
-- **一句话说明：** 智在无界 开源项目 TTP（数据集/Benchmark），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-ttp.md`](../../wiki/entities/cn-os-ttp.md)
+- **URL：** <https://github.com/BeingBeyond/TTP>
+- **机构 / 个人：** BeingBeyond（智在无界）
+- **仓库核查commit：** `591815c`（84 个文件，含 75 个 `.py`/`.sh`/`.yaml` 源码与配置）
+- **开源结论：** **已开源完整预训练、微调、推理服务、评测源码及 Hugging Face 模型权重与 H-Tac 示例子集**（`BeingBeyond/TTP`、`BeingBeyond/H-Tac_Sample`；完整 H-Tac 数据集标注 coming soon）。
+- **核对范围：** 已通过 `gh api` 核对 `BeingBeyond/TTP @ 591815c` 完整文件树、`README.md` 并直接阅读 `scripts/train/train_human_tactile.sh` 源码脚本；未实际运行 GPU 训练或真机测试。
+- **通读：** 已完成
 
-## 开源状态
+## 核心源码入口与模块
 
-- **已开源**：公开仓库（以 README 与 release 为准）。
-
-## 对 wiki 的映射
-
-- [wiki/entities/cn-os-ttp.md](../../wiki/entities/cn-os-ttp.md)
+- **人类触觉预训练与后训练**：`scripts/train/train_human_tactile.sh`（基于 `InternVL3_5-2B` + `Qwen3-0.6B` / `Being-H05-2B` 恢复权重，`USE_MPG=True`、`ACTION_CHUNK_LENGTH=32`、`HISTORY_SIZE=8`、`HISTORY_STRIDE=4`，调用 `BeingH/train/pretrain.py` 与 `BeingH/train/train.py`）；下游仿真训练 `scripts/train/train_{libero_example,robocasa}.sh`
+- **数据转换与多模态数据集**：`BeingH/dataset/{lerobot_convert_human_tactile.py,datasets/hmg_dataset.py,datasets/vla_dataset.py}` 及 `configs/posttrain/tactile/tactile.yaml`
+- **模型主干与双专家服务**：`BeingH/model/beingvla.py`（理解 + 动作 + 触觉专家与 MPG 门控）、`BeingH/inference/{run_server_TTP.py,real_robot_server.py,real_robot_client.py}`
+- **仿真基准评测**：`scripts/eval/eval-{libero-fast,libero-plus,robocasa-multiprocess}.sh` 调用 `BeingH/benchmark/` 下对应评测器

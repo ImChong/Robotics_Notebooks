@@ -2,8 +2,12 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, data-generation, mimicgen, sim2real, unitree-g1, pku, beingbeyond, loco-manip-161-survey]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-22
 arxiv: "2510.11258"
+institutions: [beingbeyond]
+original:
+  - ../../sources/papers/demohlm_arxiv_2510_11258.md
+  - ../../sources/sites/demohlm.md
 venue: "arXiv preprint; IEEE RA-L 2026-02-19"
 code: https://github.com/BeingBeyond/DemoHLM
 related:
@@ -153,6 +157,17 @@ flowchart TB
 
 论文 §4.4 展示 sim–real **LiftBox** 时序对齐；低层速度跟踪存在 sim2real 差距，但闭环高层策略仍完成任务。
 
+## 与其他工作对比
+
+| 路线 | 示范与数据放大机制 | 控制与动作接口 | 适用与权衡 |
+|---|---|---|---|
+| **MimicGen（固定臂原版）** | 单/少量示范按 object-centric 分段重放 | 固定基座机械臂末端位姿 | 不处理双足移动平衡与全身重心耦合 |
+| **[HumanoidMimicGen](./paper-humanoidmimicgen.md)** | 少量示范 + cuRobo IK + 技能 DAG 合成 | 面向 VLA 与任务分解执行 | 强调技能 DAG 编排与 VLA 对接 |
+| **[Being-0](./paper-loco-manip-161-057-being-0.md)** | 同机构模块化具身 agent 分层框架 | 导航/操作模块化协同 | 偏分层 agent 架构设计而非单示范数据引擎 |
+| **DemoHLM（本文）** | IsaacGym 单条 VR 示范 → locomotion / pre-manip (object-centric) / manip (proprio-centric) 三阶段重放（100–5k/任务） | 10 Hz BC 高层输出命令至 50 Hz AMO RL 低层 WBC | 在 10 项 G1 移动操作任务上验证数据规模单调增益，但真机仍依赖物体 6D 位姿跟踪（FoundationPose++） |
+
+- **高层 BC 架构内部对照（Table 1，5k 合成轨迹）：** **ACT** 与 **Diffusion Policy（DP）** 性能相近；**MLP+chunk** 在 OpenCabinet（`41.6` vs `67.3`）与 ExchangeCube（`15.0` vs `52.9`）等长时序/双手任务上明显落后。
+
 ## 结论
 
 **DemoHLM 的核心贡献是「单示范 + 仿真数据放大 + 层次 WBC/BC」的可扩展 loco-manip 范式，而非新的低层控制结构；合成数据量与 BC 架构选择决定实际上限。**
@@ -171,7 +186,7 @@ flowchart TB
 - **物体 6D 位姿需模型/跟踪器** → 难直接迁移到未知几何物体。
 - **官方代码/权重未发布** → 截至 2026-09-20 无法一键复现（[sources/repos/demohlm.md](../../sources/repos/demohlm.md)）。
 
-## 与其他页面的关系
+## 关联页面
 
 - 任务页：[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 同类数据生成：[HumanoidMimicGen](./paper-humanoidmimicgen.md)、[DexMimicGen](./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md)

@@ -7,6 +7,9 @@
 - **入库日期：** 2026-07-14
 - **一句话说明：** 汇总 Muon 从博客提出到 LLM 规模化训练、谱范数理论与后续变体的主要一手文献，支撑方法页与选型对比。
 
+- **通读：** 已完成
+- **核对范围：** 已通读 `arXiv:2502.16982`（Moonshot AI *Muon is Scalable for LLM Training*, 56,767 字符），核对 weight decay 与 per-parameter scale 缩放机制。
+
 ## 核心文献摘录
 
 ### 1) Muon: An optimizer for hidden layers in neural networks（Keller Jordan et al., 2024-12）

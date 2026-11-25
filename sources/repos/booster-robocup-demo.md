@@ -5,6 +5,8 @@
 - **类型**: repo
 - **作者**: Booster Robotics
 - **摘要**: Booster Robotics 为其人形机器人（Booster K1/T1）提供的 RoboCup 足球比赛官方演示框架。基于 ROS 2 Humble，涵盖了基于 YOLOv8 的感知、基于状态机的决策以及比赛控制模块。
+- **通读：** 已完成
+- **核对范围：** 通读 `BoosterRobotics/robocup_demo` 官方 `README.md`（110 行）。
 
 ## 核心要点
 

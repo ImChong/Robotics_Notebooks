@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, loco-manipulation, trajectory-optimization, humanoid-paper-notebooks]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-22
 arxiv: "2602.06827"
 related:
   - ../methods/dynaretarget-sbto-motion-retargeting.md
@@ -13,11 +13,13 @@ related:
   - ../methods/spider-physics-informed-dexterous-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../tasks/loco-manipulation.md
+  - ./paper-diplo-self-distilled-diffusion-planning.md
 sources:
   - ../../sources/papers/dynaretarget_arxiv_2602_06827.md
   - ../../sources/papers/humanoid_pnb_dynaretarget-dynamically-feasible-retargeting-us.md
   - ../../sources/sites/dynaretarget-github-io.md
   - ../../sources/repos/sbto.md
+  - ../../sources/papers/diplo-self-distilled-diffusion-planning_arxiv_2610_24847.md
 summary: "DynaRetarget：IK + 增量 SBTO 把运动学参考精炼为动力学可行的人形–物体轨迹，PPO 跟踪 + DR 零样本实机 loco-manipulation；OmniRetarget 285 motions 上 refinement 成功率约 77%，下游 RL 约 97%。"
 ---
 
@@ -47,7 +49,7 @@ summary: "DynaRetarget：IK + 增量 SBTO 把运动学参考精炼为动力学�
 - **填补 kinematic → dynamic 缺口：** [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 等 interaction-preserving **运动学** 参考在 loco-manipulation 上仍可能有缺失接触与穿透；DynaRetarget 在同一 tracking objective 下做 **physics-consistent refinement**。
 - **长时域优于 SBMPC：** 相对 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md) 的 SBMPC，SBTO 在 **285** 条 OmniRetarget G1–box motion 上成功率 **76.8% vs 37.9%**，轨迹更平滑。
 - **下游 RL 与真机：** 精炼参考使 PPO tracking 成功率 **97.09%**（vs kinematic **79.41%**），样本效率更高；真机展示踢、搬、推、手递等 **contact-rich** 行为（Fig. 1）。
-- **演示增广：** 单条参考可 refine 到不同 **质量/尺寸/几何**（box、cylinder、chair、shelf），利于 synthetic loco-manipulation 数据集扩展。
+- **演示增广：** 单条参考可 refine 到不同 **质量/尺寸/几何**（box、cylinder、chair、shelf），利于 synthetic loco-manipulation 数据集扩展；后续 [DiPLO](./paper-diplo-self-distilled-diffusion-planning.md)（arXiv:2610.24847v1）直接基于 SBTO 对 29 段 OmniRetarget 示范做动力学精炼与对称增广（扩至 7,184 条可行轨迹），用于预训练与自蒸馏扩散搬运规划。
 
 ## 方法概要
 
@@ -154,7 +156,7 @@ sequenceDiagram
 - Kinematic 上游：[OmniRetarget](./paper-hrl-stack-03-omniretarget.md)、[OmniRetarget 数据集](./omniretarget-dataset.md)
 - 采样 refinement 对照：[SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)
 - 流水线定位：[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
-- 同团队相关：[MotionDisco](./paper-motiondisco-extreme-humanoid-loco-manipulation.md)
+- 同团队相关：[MotionDisco](./paper-motiondisco-extreme-humanoid-loco-manipulation.md)、[DiPLO（SBTO 下游自蒸馏扩散规划）](./paper-diplo-self-distilled-diffusion-planning.md)
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 
 ## 参考来源
@@ -163,6 +165,7 @@ sequenceDiagram
 - [humanoid_pnb_dynaretarget-dynamically-feasible-retargeting-us.md](../../sources/papers/humanoid_pnb_dynaretarget-dynamically-feasible-retargeting-us.md) — Paper Notebooks 进度锚点
 - [dynaretarget-github-io.md](../../sources/sites/dynaretarget-github-io.md) — 项目页
 - [sbto.md](../../sources/repos/sbto.md) — SBTO 官方实现
+- [diplo-self-distilled-diffusion-planning_arxiv_2610_24847.md](../../sources/papers/diplo-self-distilled-diffusion-planning_arxiv_2610_24847.md) — DiPLO 下游应用 SBTO 精炼数据归档（2026-11-18）
 
 ## 推荐继续阅读
 

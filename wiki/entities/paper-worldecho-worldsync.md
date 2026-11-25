@@ -14,8 +14,10 @@ tags:
   - ntu
   - cuhk
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.24885"
+original:
+  - ../../sources/papers/worldecho_worldsync_arxiv_2608_24885.md
 related:
   - ../methods/generative-world-models.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -64,7 +66,7 @@ summary: "WorldEcho / WorldSync（arXiv:2608.24885，北大等）：用视觉门
 | **机构** | 北京大学（Peking University）；北京人形机器人创新中心（X-Humanoid）；纽约大学（NYU）；电子科技大学（UESTC）；南洋理工大学（NTU）；香港中文大学（CUHK） |
 | **评测床** | RoboTwin 50 任务；策略改进另含真机叠杯 |
 | **骨干对照** | Ctrl-World、Cosmos-Predict2.5、Cosmos 3、DreamDojo、Motus、LingBot-VA |
-| **开源** | **确认未开源**（截至 2026-08-27 无项目页、无 GitHub、正文未承诺发布） |
+| **开源** | **确认未开源**（arXiv v2 标注 `github.com/PKU-HMI-Lab/WorldEcho`，2026-11-21 实测返回 HTTP 404） |
 
 ## 核心原理（方法）
 
@@ -94,6 +96,10 @@ flowchart LR
 ```
 
 视频骨干为 flow matching。AFE 不读动作、不写回像素，只通过特征反传；IE 把「换动作后预测该怎么变」写成显式损失。
+
+## 源码运行时序图
+
+**不适用**：arXiv v2 正文给出的代码仓库 `<https://github.com/PKU-HMI-Lab/WorldEcho>` 截至 **2026-11-21** 实测返回 HTTP 404，尚未公开可运行代码、评测脚本或权重；按规范不臆造源码入口。
 
 ## 工程实践
 

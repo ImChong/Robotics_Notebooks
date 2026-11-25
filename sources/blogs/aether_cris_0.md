@@ -8,7 +8,10 @@
 - **原始链接：** <https://aetherlabs.ai/articles/real-world-autonomous-robotic-system-with-causality-driven-agent-and-world-model.html>
 - **发表日期：** 2026-10-08（页面「Published 2026 · 10 · 08」；Blog 索引编号 11）
 - **入库日期：** 2026-10-10
-- **抓取方式：** `curl` 抓官方页静态 HTML（正文服务端渲染）；第 04 节「Experiments」由 `assets/blog/cris0/js/config.js` 动态注入，另行抓取该 JS 读取各实验标题 / 摘要 / 视频说明。视频本身未观看，仅取文字。Business Wire 原站 403，经 Morningstar 转载页（Playwright Chromium）取得全文。
+- **再核日期：** 2026-11-21（复核官方博文 URL 与 `assets/blog/cris0/js/config.js` HTTP 200；仍无 arXiv 论文与开源代码）
+- **抓取方式：** `curl` 抓官方页静态 HTML（正文服务端渲染）及 `assets/blog/cris0/js/config.js`（动态实验视频元数据）；视频本身未观看，仅取文字。Business Wire 原站 403，经 Morningstar 转载页（Playwright Chromium）取得全文。
+- **核对范围：** 通读官方博文全文（01–04 节 + `config.js` 全部实验卡片说明）及 Business Wire / 量子位口径对照；系统闭源无源码与技术报告 PDF，真机硬件细节以官方披露为界
+- **通读：** 已完成
 - **一句话说明：** Aether AI 发布 **CRIS-0**（Causal Robotic Intelligence System）：由 **因果引导机器人智能体（Causality-guided Robot Agent）** 与 **因果世界模型（Causal World Model）** 组成，用 **显式因果状态变量** 表示任务进度，从少量遥操作示范自动分解阶段、生成验证条件与工具，再以「识别阶段 → 选工具 → 验证 → 重试 / 重规划」闭环执行；官方博文 **不含任何定量指标**，2 s 重规划、0.2 s 安全停、90%（18/20）个性化抓放等数字仅见于新闻稿与量子位报道（均为公司口径自报）。
 
 ## 其他来源

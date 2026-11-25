@@ -10,7 +10,9 @@
 - **论文：** <https://arxiv.org/abs/2608.26058>
 - **许可：** 未声明
 - **入库日期：** 2026-08-28
-- **复核日期：** 2026-09-02
+- **复核日期：** 2026-11-22
+- **核对范围：** 通过 GitHub API 与目录检查核对 `Public-BOTs/UCAG-P` 仓库内容（仅 `.github`、`README.md`、`assets`、`web-page`，最后推送 2026-08-27，无训练/推理代码、无权重、无许可证）。
+- **通读：** 已完成
 - **一句话说明：** GitHub 目前托管 UCAG-P **项目页与论文配图**；README 明确 *training, inference, and evaluation code will be released soon*，无许可证、无训练脚本、无权重。
 
 ## 开源状态（步骤 2.5，2026-09-02）

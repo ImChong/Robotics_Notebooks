@@ -14,9 +14,11 @@ A robotics technology-stack knowledge base / robotics research and engineering w
 
 ## Live Demo
 
-[![Site walkthrough: on the home page, click the "Project Lookup / Knowledge Graph" entry card to scroll to and highlight its section with a clockwise border animation, search the knowledge base instantly, and preview the graph; in the graph view, hover over nodes for summaries, scroll to zoom, click to open the details sidebar, and switch to 3D](media/site-demo.gif)](https://imchong.github.io/Robotics_Notebooks/)
+[![Site walkthrough showing instant search, Q&A citations, graph node details, and rotating and zooming the 3D terrain](media/site-demo.gif)](https://imchong.github.io/Robotics_Notebooks/)
 
-↑ How to use the [live site](https://imchong.github.io/Robotics_Notebooks/): on the **home page**, choose an entry point based on your goal (learning paths / search / graph). Clicking the "Project Lookup / Knowledge Graph" entry scrolls to the corresponding section and highlights it with a clockwise border animation. Type keywords into the search box to find knowledge pages instantly. In the [**knowledge graph**](https://imchong.github.io/Robotics_Notebooks/graph.html), each dot represents a knowledge page, node colors indicate technical communities, and edges represent links between pages. Hover to read a summary, scroll to zoom, drag to pan, click a node to open its details sidebar and navigate to its knowledge page, or switch between 2D and 3D views.
+- The **home page** provides entry points for learning paths, search, and the graph. **Find a project** and **Knowledge graph** scroll to and highlight their sections. Enter keywords to find knowledge pages instantly. [Open the live site](https://imchong.github.io/Robotics_Notebooks/)
+- Open **AI Knowledge Q&A** with the chat button in the bottom-right corner. Enter a question or choose a starter prompt, then expand the cited excerpts or open the source pages. The GIF shows excerpts returned by the built-in wiki search mode.
+- In the **knowledge graph**, nodes represent pages, colors identify technical communities, and edges link related pages. Hover over a node for a summary, or click it to see its connection count, related nodes, and a link to its page. Use the top toolbar to switch between **2D**, **3D Terrain (3D 地形)**, and **3D Spatial (3D 立体)**. Drag to pan in 2D or drag an empty area to orbit in 3D Terrain. Scroll to zoom. In 3D Terrain, peak height reflects node connectivity. Use **Parameters (参数)** to adjust peak height and the viewing angle. [Open the knowledge graph](https://imchong.github.io/Robotics_Notebooks/graph.html)
 
 ---
 

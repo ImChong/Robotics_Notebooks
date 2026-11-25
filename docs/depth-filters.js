@@ -770,187 +770,187 @@
   /* label 统一为「中文（English）」（全角括号，与社区命名 schema/naming.md 一致），全站路线 chip / 徽标 / 统计图共用。 */
   var DEPTH_META = {
     'motion-control': {
-      emoji: '🧭',
+      icon: 'compass',
       label: '主路线-运动控制与 Physical AI（Motion Control & Physical AI）',
       wikiPath: DEPTH_HUB_IDS['motion-control'],
       description: '运动控制 → 物理智能全栈成长路线：L−1 全景 → L0–L7 运动控制主干 → L8–L12 Transformer / 动作生成 / VLA / 世界模型 / 部署。'
     },
     'pcb-design': {
-      emoji: '🔌',
+      icon: 'pcb',
       label: 'PCB 设计（PCB Design）',
       wikiPath: DEPTH_HUB_IDS['pcb-design'],
       description: '电路零基础 → 第一块板 → 原理图 → Layout → 调试 → 功率 / 高速 / EMC → 量产。'
     },
     'teleoperation': {
-      emoji: '🎮',
+      icon: 'gamepad',
       label: '遥操作（Teleoperation）',
       wikiPath: DEPTH_HUB_IDS.teleoperation,
       description: '人形全身与手指遥操作，采集高质量示范数据并支持实时接管。'
     },
     'rocket-landing': {
-      emoji: '🚀',
+      icon: 'rocket',
       label: '火箭回收控制（Rocket Landing）',
       wikiPath: DEPTH_HUB_IDS['rocket-landing'],
       description: '动力下降制导 → 无损凸化 → 6-DoF 序列凸化 → 推力矢量姿态 → 导航与机载求解 → 全剖面回收。'
     },
     'torque-motor-design': {
-      emoji: '⚙️',
+      icon: 'motor',
       label: '力矩电机设计（Torque Motor Design）',
       wikiPath: DEPTH_HUB_IDS['torque-motor-design'],
       description: '从任务指标到电磁热、FOC 力矩闭环与可验收关节模组。'
     },
     'classical-control': {
-      emoji: '📐',
+      icon: 'ruler-angle',
       label: '传统控制（Classical Control）',
       wikiPath: DEPTH_HUB_IDS['classical-control'],
       description: 'LIP/ZMP → Centroidal → MPC → TSID/WBC 的 model-based 主干。'
     },
     'humanoid-hardware-design': {
-      emoji: '🛠️',
+      icon: 'wrench',
       label: '整机硬件（Humanoid Hardware）',
       wikiPath: DEPTH_HUB_IDS['humanoid-hardware-design'],
       description: '指标预算 → 机械 → 电气 → 通信 → 整机验收的硬件交付链。'
     },
     'safe-control': {
-      emoji: '🛡️',
+      icon: 'shield',
       label: '安全控制（Safe Control）',
       wikiPath: DEPTH_HUB_IDS['safe-control'],
       description: 'CLF / CBF / Safe RL：把可证明安全约束接进控制与学习环。'
     },
     'rsi': {
-      emoji: '♻️',
+      icon: 'cycle',
       label: '递归自我改进（RSI）',
       wikiPath: DEPTH_HUB_IDS.rsi,
       description: '递归自我改进：记忆 → 权重 → 打分器 → harness → 研究过程的逐层自改进闭环。'
     },
     'contact-manipulation': {
-      emoji: '🤏',
+      icon: 'gripper',
       label: '接触操作（Contact Manipulation）',
       wikiPath: DEPTH_HUB_IDS['contact-manipulation'],
       description: '装配、插拔、双臂协同等接触丰富操作与力控闭环。'
     },
     'navigation': {
-      emoji: '🗺️',
+      icon: 'nav-map',
       label: '导航（Navigation）',
       wikiPath: DEPTH_HUB_IDS.navigation,
       description: 'SLAM → Nav2 → VLN → 导航 VLA：定位、规划与语义导航。'
     },
     'model-architecture': {
-      emoji: '🏗️',
+      icon: 'blocks',
       label: '模型架构（Model Architecture）',
       wikiPath: DEPTH_HUB_IDS['model-architecture'],
       description: '骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署的网络结构选型。'
     },
     'imitation-learning': {
-      emoji: '🎓',
+      icon: 'graduation',
       label: '模仿学习（Imitation Learning）',
       wikiPath: DEPTH_HUB_IDS['imitation-learning'],
       description: '从人类演示学习技能：BC / ACT / Diffusion Policy 与数据管线。'
     },
     'rl-locomotion': {
-      emoji: '🚶',
+      icon: 'walk',
       label: '强化学习运动控制（RL Locomotion）',
       wikiPath: DEPTH_HUB_IDS['rl-locomotion'],
       description: '用强化学习驱动人形 locomotion 与多地形步态。'
     },
     'loco-manipulation': {
-      emoji: '🤖',
+      icon: 'robot-arm',
       label: '移动操作（Loco-Manipulation）',
       wikiPath: DEPTH_HUB_IDS['loco-manipulation'],
       description: '边走边动手的移动操作：全身协调与接触任务。'
     },
     'humanoid-soccer': {
-      emoji: '⚽',
+      icon: 'soccer',
       label: '人形足球（Humanoid Soccer）',
       wikiPath: DEPTH_HUB_IDS['humanoid-soccer'],
       description: '全向行走 → 感知踢球 → 多机战术的整场比赛能力。'
     },
     'motion-retargeting': {
-      emoji: '🤸',
+      icon: 'retarget',
       label: '动作重定向（Motion Retargeting）',
       wikiPath: DEPTH_HUB_IDS['motion-retargeting'],
       description: '把人体/动物参考动作映射到异构机器人可执行轨迹。'
     },
     'humanoid-swarm-performance': {
-      emoji: '🕺',
+      icon: 'swarm',
       label: '人形群控展演（Swarm Performance）',
       wikiPath: DEPTH_HUB_IDS['humanoid-swarm-performance'],
       description: '群舞同步、编队走位与群体特技的多机协同展演。'
     },
     'cross-embodiment': {
-      emoji: '🦾',
+      icon: 'arm-link',
       label: '跨本体迁移（Cross-Embodiment）',
       wikiPath: DEPTH_HUB_IDS['cross-embodiment'],
       description: '一个策略适配不同本体：统一接口 → 形态感知架构 → 多本体混训 → 人→机 → 新本体快速适配。'
     },
     'sim2real': {
-      emoji: '🔁',
+      icon: 'sim2real',
       label: '仿真到真机迁移（Sim2Real）',
       wikiPath: DEPTH_HUB_IDS.sim2real,
       description: '域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署。'
     },
     'humanoid-boxing': {
-      emoji: '🥊',
+      icon: 'boxing',
       label: '人形拳击（Humanoid Boxing）',
       wikiPath: DEPTH_HUB_IDS['humanoid-boxing'],
       description: '动作跟踪 → 潜空间技能 → 对抗自博弈的擂台对打。'
     },
     'icl': {
-      emoji: '🧩',
+      icon: 'puzzle',
       label: '具身上下文学习（ICL）',
       wikiPath: DEPTH_HUB_IDS.icl,
       description: '具身上下文学习：读完一条示范就会做新任务，且不更新权重。'
     },
     'bfm': {
-      emoji: '🧠',
+      icon: 'brain',
       label: '人形行为基础模型（BFM）',
       wikiPath: DEPTH_HUB_IDS.bfm,
       description: '人形行为基础模型：一个 checkpoint 控住全身协调。'
     },
     'embodied-eval': {
-      emoji: '📊',
+      icon: 'bar-chart',
       label: '具身测评（Embodied Evaluation）',
       wikiPath: DEPTH_HUB_IDS['embodied-eval'],
       description: '认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准的分层评测验收。'
     },
     'perceptive-locomotion': {
-      emoji: '👁️',
+      icon: 'eye-step',
       label: '感知越障（Perceptive Locomotion）',
       wikiPath: DEPTH_HUB_IDS['perceptive-locomotion'],
       description: '看着地形上楼梯、跨障碍、跑酷的感知式移动。'
     },
     'motion-generation': {
-      emoji: '✨',
+      icon: 'sparkles',
       label: '动作生成（Motion Generation）',
       wikiPath: DEPTH_HUB_IDS['motion-generation'],
       description: '文本/多模态条件的人体与人形动作生成。'
     },
     'robotics-diffusion-dit-flow': {
-      emoji: '🌀',
+      icon: 'flow',
       label: '扩散与流匹配策略（Diffusion & Flow Matching）',
       wikiPath: DEPTH_HUB_IDS['robotics-diffusion-dit-flow'],
       description: '按动作去噪机制演进：Diffusion Policy → DiT → RDT → Flow Matching VLA。'
     },
     'vla': {
-      emoji: '👀',
+      icon: 'vla-eye',
       label: '视觉-语言-动作模型（VLA）',
       wikiPath: DEPTH_HUB_IDS.vla,
       description: '视觉-语言-动作统一建模：听懂指令并完成操作任务。'
     },
     'real2sim': {
-      emoji: '🌍',
+      icon: 'real2sim',
       label: '真实到仿真（Real2Sim）',
       wikiPath: DEPTH_HUB_IDS.real2sim,
       description: '把真实世界压成可训练/可评测的仿真资产与场景孪生。'
     },
     'embodied-data': {
-      emoji: '🗂️',
+      icon: 'database',
       label: '具身数据（Embodied Data）',
       wikiPath: DEPTH_HUB_IDS['embodied-data'],
       description: '采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与数据飞轮。'
     },
     'wam': {
-      emoji: '🔮',
+      icon: 'world-orb',
       label: '世界-动作模型（WAM）',
       wikiPath: DEPTH_HUB_IDS.wam,
       description: '世界–动作模型：出动作前显式预知世界如何变化。'

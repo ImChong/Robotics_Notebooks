@@ -4,6 +4,8 @@ project_id: worldscape-r2si-manifold-ai
 tags: [entity, embodied-ai, recursive-self-improvement, agent-harness, manipulation, robodojo, world-action-model, manifold]
 status: complete
 updated: 2026-10-17
+original:
+  - ../../sources/blogs/zpotentials-manifold-worldscape-r2si-2026-10-17.md
 related:
   - ./paper-worldscape-policy-2.md
   - ./paper-worldscape-moe-heterogeneous-action.md

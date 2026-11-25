@@ -3,7 +3,7 @@ title: 人形足球技能学习方法选型指南
 type: query
 status: complete
 created: 2026-06-11
-updated: 2026-08-27
+updated: 2026-11-22
 summary: 在人形足球（射门 / 踢球）技能学习中，如何在「感知–动作渐进融合」（PAiD）与「motion scaffold + 课程 RL」（RoboNaldo）之间按任务目标选型与组合。
 sources:
   - ../../sources/repos/humanoid_soccer.md
@@ -12,12 +12,19 @@ sources:
   - ../../sources/repos/robonaldo-deploy.md
   - ../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md
   - ../../sources/blogs/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026.md
+original:
+  - ../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md
+  - ../../sources/papers/robonaldo_arxiv_2606_11092.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形机器人踢球/射门技能学习，工程上该走 PAiD 式感知–动作渐进融合，还是 RoboNaldo 式 motion scaffold + 课程 RL，怎么选、怎么组合？」
 > 综合来源：[PAiD Framework](../methods/paid-framework.md)、[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)、[Humanoid Soccer](../tasks/humanoid-soccer.md)
 
 # 人形足球技能学习方法选型指南
+
+## 一句话定义
+
+**人形足球技能学习选型核心判断**：针对机器人踢球与射门任务，若优先稳健通用摆腿与第一视角感知闭环，应走 **PAiD 感知–动作渐进融合**；若追求亚米级点瞄准精度、13 m/s 级高球速与来球时机掌握，则选 **RoboNaldo motion scaffold + 三阶段课程 RL**。
 
 ## 英文缩写速查
 
@@ -29,6 +36,11 @@ sources:
 | Sim2Real | Simulation to Real | 仿真策略迁移真机的工程主线 |
 | MoCap | Motion Capture | 参考踢球动作的数据来源 |
 | G1 | Unitree G1 Humanoid | 两条路线共同的真机验证平台 |
+
+## 为什么重要
+
+- **防止在奖励冲突中浪费算力**：端到端任务 RL 往往既要顾全身平衡又要探索高冲量踢击，难以收敛出自然协调步态；理解两条公开 G1 三阶段框架的分拆逻辑有助于精准选型。
+- **避免误用不可比的实验指标**：PAiD 主打不同球位与地形的成功率，而 RoboNaldo 主打目标点偏差与击球功率，厘清口径差异才能准确制定团队基准。
 
 ## TL;DR 决策路径
 
@@ -55,6 +67,10 @@ flowchart TD
 
 ---
 
+## 核心原理
+
+两者共享“先建立人类运动先验以规避纯任务 RL 探索瘫痪，再在任务阶段释放或融通感知自由度”的两段式本质：PAiD 沿**能力轴**（MoCap IL → 骨盆系/RNN 感知集成 → 物理接触/时延随机化）层层解耦；RoboNaldo 沿**任务难度轴**（单条参考跟踪 → 偏离参考瞄准任意球 + 瞬间冲量密化奖 → 接近/触发模式融合）逐步放宽全身约束。
+
 ## 分阶段选型说明
 
 ### 1. 起步：用 IL 解决「会不会踢、像不像人」
@@ -77,6 +93,15 @@ flowchart TD
 
 **指标锚点**：PAiD 报告 G1 上 >90% 稳健踢球成功率（成功率导向）；RoboNaldo 报告点级误差与球速（精度/功率导向）——二者指标口径不同，对照时勿直接比成功率。详细对照见 [PAiD 页内 RoboNaldo 对照表](../methods/paid-framework.md)。
 
+## 工程实践
+
+- **原型期与开源基线复现**：二者均已发布开源训练仓库，可优先依据团队真机传感器（纯 RGB 相机 vs 激光雷达+IR 定位）决定复现 PAiD 还是 RoboNaldo，或把 PAiD 的时序视觉融合接入 RoboNaldo Stage 3 上层触发接口。
+- **实机约束校验**：重点验证 G1 3-DoF 腰部解锁状态、脚端撞击机械限位及草地与硬地摩擦变化对冲量传递的敏感度。
+
+## 局限与风险
+
+- **均属单机技能模块，未覆盖群体战术**：不论 PAiD 还是 RoboNaldo 都没有建模队友/对手对抗阻挡与比赛规则状态机，参加全队比赛仍需外接状态规划或群控中层（如 ARTEMIS / Booster RoboCup Demo）。
+
 ## 参考来源
 
 - [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)
@@ -84,6 +109,11 @@ flowchart TD
 - [RoboNaldo 训练仓归档](../../sources/repos/robonaldo.md)
 - [RoboNaldo 部署仓归档](../../sources/repos/robonaldo-deploy.md)
 - [Learning Soccer Skills for Humanoid Robots（Paper Notebooks 摘录）](../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md)
+
+## 推荐继续阅读
+
+- PAiD 深度剖析：[PAiD Framework](../methods/paid-framework.md)
+- RoboNaldo 实体页：[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)
 
 ## 关联页面
 

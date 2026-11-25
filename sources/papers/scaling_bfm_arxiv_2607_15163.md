@@ -8,11 +8,13 @@
 - **arXiv：** <https://arxiv.org/abs/2607.15163>
 - **PDF：** <https://arxiv.org/pdf/2607.15163>
 - **项目页：** <https://scalebfm.github.io/>
-- **代码：** <https://github.com/zengweishuai/ScaleBFM>（截至 2026-07-18 仓库仅 README，作者公告 **2026-07-26 前** 逐步释出重定向/训练/部署代码）
+- **代码：** <https://github.com/zengweishuai/ScaleBFM>（截至 2026-11-21 已正式开源 `ScaleRetarget` / `ScaleTrack` / `ScaleBridge` 共 1263 个文件，见 [`sources/repos/scalebfm.md`](../repos/scalebfm.md)）
 - **发表日期：** 2026-07-16
 - **作者：** Weishuai Zeng, Kangning Yin, Xiaojie Niu, Shunlin Lu, Weixiang Zhong, Jiahe Chen, Feiyu Jia, Xiao Chen, Zirui Wang, Furui Xu, Ming Zhou, Kailin Li, Weinan Zhang, He Wang, Li Yi, Dahua Lin, Jiangmiao Pang, Jingbo Wang（* 前三位共一）
 - **机构：** 香港中文大学、上海交通大学、浙江大学、北京大学、清华大学、Galbot、上海人工智能实验室
 - **入库日期：** 2026-07-18
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `arXiv:2607.15163v1` 全文 PDF（全 1973 行抽取文本：§1–§5、Table 1–8、Appendix A–B）及官方仓库 `zengweishuai/ScaleBFM` 与 fork `Hxxxz0/ScaleBFM_Plus` README/脚本入口。
 - **一句话说明：** 系统研究人形 **BFM 规模化配方**：以 **全局坐标系下整体全身轨迹跟踪** 为统一学习范式，协调 **on-policy rollout 数量（GPU 并行 × rollout horizon）** 与 **参考运动多样性（102M 帧、多开源数据集）**，并用 **Humanoid Transformer**（3M 参数 M 档）替代 MLP 骨干；Unitree G1 真机 50 Hz 推理，whole-body 模式上相对 SONIC / GMT / TWIST 等基线 **G-MPKPE 降幅最高约 82%**（global）、**L-MPKPE 降幅 >10%**（local）。
 
 ## 核心论文摘录（MVP）

@@ -2,7 +2,7 @@
 type: comparison
 tags: [optimization, second-order, newton, bfgs, trajectory-optimization, numerical-methods, comparison]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-22
 summary: "机器人常见二阶与拟牛顿优化器（Newton、Gauss-Newton、LM、BFGS、L-BFGS、Truncated Newton）的机制对比与 TrajOpt/最小二乘选型指南。"
 related:
   - ../methods/line-search-steepest-descent.md

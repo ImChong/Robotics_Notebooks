@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, flow-matching, pose-prior, rl, add, beyondmimic, unitree-g1, hkust-gz, noitom, tsinghua, google]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2608.03227"
 code: https://github.com/gaoyukang33/PFM-HR
 related:
@@ -20,6 +20,8 @@ sources:
   - ../../sources/sites/pfm-hr-web.md
   - ../../sources/repos/pfm-hr.md
   - ../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md
+original:
+  - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
 summary: "PFM-HR（arXiv:2608.03227，HKUST-GZ/诺亦腾/清华 SIGS/Google）：无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励；冻结挂 ADD/BeyondMimic，高动态样本效率↑；代码仓 Coming Soon。"
 ---
 
@@ -56,7 +58,7 @@ summary: "PFM-HR（arXiv:2608.03227，HKUST-GZ/诺亦腾/清华 SIGS/Google）�
 | **平台** | Unitree G1（文中 \(N_J=29\)）；MimicKit 单轨迹 + LaFAN1 通用跟踪；真机经 BeyondMimic 管线 |
 | **先验数据** | BONES-SEED 未镜像姿态；演示规模至 **60M** poses |
 | **训练栈** | 8× RTX 4090，4096 并行环境，默认 MimicKit；先验 residual MLP（10 blocks × 1024）+ adaLN-Zero |
-| **开源** | **宣称开源 / 实现待发布**：项目页有 Code 链；仓库 tip 仅 MIT + README「Coming Soon」（核查日 2026-08-08） |
+| **开源** | **宣称开源 / 实现待发布**：项目页有 Code 链；仓库 tip 仅 MIT + README「Coming Soon」（2026-11-21 复核仍为空壳） |
 
 ## 核心原理
 
@@ -90,7 +92,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（可运行训练 / 推理入口尚未发布）。** 截至 2026-08-08：项目页 Code 指向 [gaoyukang33/PFM-HR](https://github.com/gaoyukang33/PFM-HR)，但 tip 仅有 MIT `LICENSE` 与 README「Coming Soon ！！！」，无 `train` / `eval` / checkpoint。正式 release 后应补：姿态语料准备 → FM 预训练 → 参考 PGS CDF → ADD/BeyondMimic 挂载训练 →（可选）真机部署的 `sequenceDiagram`。
+**不适用（可运行训练 / 推理入口尚未发布）。** 截至 2026-11-21 复核：项目页 Code 指向 [gaoyukang33/PFM-HR](https://github.com/gaoyukang33/PFM-HR)，但仓库仍仅有 MIT `LICENSE` 与 `README.md`（「Coming Soon ！！！」），无 `train` / `eval` / checkpoint。正式 release 后应补：姿态语料准备 → FM 预训练 → 参考 PGS CDF → ADD/BeyondMimic 挂载训练 →（可选）真机部署的 `sequenceDiagram`。
 
 ## 工程实践
 

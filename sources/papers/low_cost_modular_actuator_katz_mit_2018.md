@@ -21,7 +21,8 @@
   - SPIne 固件：https://os.mbed.com/users/benkatz/code/SPIne/
   - 执行器表征数据与分析：https://github.com/bgkatz/actuator
 - **版权注意：** MIT 学位论文受版权保护；可从 DSpace 查看/下载/打印，**未经书面许可不得再分发**。本仓库只存链接与 MD5，不入库 PDF 二进制。
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 经 DSpace 7 API 获取 `1057343368-MIT.pdf` 原文抽取 3,957 行并核对 Abstract、目录、Ch. 2.1–2.5、Ch. 3.3.1 Flipping、Ch. 5/参考文献及 Appendix A–C 离散电流环推导）
+- **通读：** 已完成
 - **一句话说明：** MIT Mini Cheetah 系模块化 QDD 执行器的奠基工程文档：成品航模外转子电机 + **6:1** 单级行星 + 集成 FOC/磁编/CAN，BOM≈$300；装成 9 kg / 12 DoF 四足并完成离线轨迹优化后空翻。
 - **开源状态：** **部分开源** — 附录 A 公开驱动 PCB、固件、SPIne 与表征数据；**未**列出执行器壳体/行星箱机械 CAD 或整机 CAD。后续社区有 `mit-biomimetics/Cheetah-Software` 等控制栈，但不在本 thesis 附录内。
 - **沉淀到 wiki：** [paper-low-cost-modular-actuator-katz](../../wiki/entities/paper-low-cost-modular-actuator-katz.md)

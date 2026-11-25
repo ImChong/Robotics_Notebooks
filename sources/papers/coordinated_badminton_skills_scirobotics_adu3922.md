@@ -14,6 +14,9 @@
 - **作者：** Yuntao Ma, Andrei Cramariuc, Farbod Farshidian, Marco Hutter
 - **机构：** 苏黎世联邦理工学院（ETH Zurich）Robotic Systems Lab；Robotics and AI Institute（RAI）；Intel Labs；Max Planck ETH CLS；NCCR Robotics 等（见项目页致谢）
 - **发表：** 2025-05-28（Crossref / 项目页）
+- **arXiv 预印本：** https://arxiv.org/abs/2505.22974 （arXiv:2505.22974v2，2025-09-23；数据 DOI:10.5281/zenodo.15242151）
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv 开放全文 PDF（arXiv:2505.22974v2，2298 行），核对非对称 actor-critic、感知噪声模型、EKF 球路预测、N-P3O 电流约束与真机/户外 10 连拍结果
 - **入库日期：** 2026-09-26
 - **一句话说明：** **统一 RL 全身 visuomotor 策略** 让 **ANYmal-D + DynaArm** 仅凭 **机载感知** 与人对打羽毛球；**感知噪声模型** 对齐 sim–real 并学出主动感知；含 **羽毛球预测 + 约束 RL**；真机多环境与人对练验证。
 

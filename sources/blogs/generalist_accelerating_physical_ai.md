@@ -8,6 +8,8 @@
 - **原始链接：** <https://generalistai.com/blog/accelerating-the-next-phase-of-physical-ai>
 - **发表日期：** 2026-06-04
 - **入库日期：** 2026-10-09
+- **核对范围：** 2026-11-22 抓取并通读 `https://generalistai.com/blog/accelerating-the-next-phase-of-physical-ai` 正文全文，核对 $400M 新融资、投资方名单与数据飞轮叙事。
+- **通读：** 已完成
 - **抓取方式：** curl 读取官网 HTML（服务端渲染正文）后去标签核对；估值与轮次名称另以媒体报道交叉核对
 - **一句话说明：** 融资公告：宣布 **4 亿美元** 新融资，累计融资 **超过 5 亿美元**；Radical Ventures 领投；回顾 GEN-0（scaling laws）与 GEN-1（商业可用阈值）并称开始形成「数据飞轮」。
 

@@ -11,7 +11,9 @@
 - **机构：** 加州理工学院、佐治亚理工学院
 - **许可证：** Apache-2.0（仓库代码；模型文件和第三方依赖保留各自许可证）
 - **入库日期：** 2026-10-25
-- **再核日期：** 2026-10-25
+- **再核日期：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 通读 `lzyang2000/morphmimic` 完整 `README.md`（566 行）与 219 文件目录树（`src/morphmimic/scripts/{convert_seed,convert_human,build_subsets,train,eval}.py` 与 `deploy/{export_onnx,run}.py`）。
 - **一句话说明：** MorphMimic 的官方代码实现，提供 BONES-SEED 数据转换与筛选、多机器人动作重定向、可微世界模型和策略训练、ONNX 导出、MuJoCo 仿真以及 Unitree G1 部署入口。
 - **沉淀到 wiki：** [MorphMimic 研究实体](../../wiki/entities/paper-morphmimic.md)
 

@@ -4,6 +4,9 @@
 - **机构：** 中国电信人工智能（TeleAI）、上海交通大学（SJTU）、华东理工大学（ECUST）
 - **关联论文：** [textop_arxiv_2602_07439](../papers/textop_arxiv_2602_07439.md)
 - **代码：** <https://github.com/TeleHuman/TextOp>
+- **核对日期：** 2026-11-22
+- **核对范围：** `https://text-op.github.io/` 官方项目主页（摘要、One-Take 与多技能演示区、扰动恢复展示及论文/代码按钮外链）
+- **通读：** 已完成
 
 ## 一句话说明
 

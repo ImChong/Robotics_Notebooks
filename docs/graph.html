@@ -16,10 +16,13 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://imchong.github.io/Robotics_Notebooks/graph.html" />
   <title>知识图谱 | Robotics Notebooks</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-graph.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
-  <script id="sponsor-js" src="sponsor.js?v=2"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
   <link rel="stylesheet" href="style.css" />
   <!-- 首屏关键数据：此前要等 ~750 KB 同步 JS 下载并执行完才发起请求；preload 让它与 HTML 解析同时开始 -->
   <link rel="preload" href="exports/link-graph.json" as="fetch" crossorigin />
@@ -374,6 +377,9 @@
     }
     .node-depth-hub .node-glow { animation: depth-hub-blink 1.2s ease-in-out infinite; }
     .node-depth-hub .node-circle { animation: depth-hub-halo 1.2s ease-in-out infinite; }
+    @media (hover: none), (max-width: 768px) {
+      .node-depth-hub .node-circle { animation: none; filter: none; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .node-depth-hub .node-glow, .node-depth-hub .node-circle { animation: none; }
     }
@@ -432,6 +438,36 @@
     .chip[data-type="comparison"].active { background: #c084fc; }
     .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
     .chip[data-type="formalization"].active { background: #fb923c; }
+    .toolbar-view-mode {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 2px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+    .toolbar-view-btn {
+      height: 24px;
+      padding: 0 9px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: rgba(255,255,255,0.56);
+      font-size: .74rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .toolbar-view-btn:hover { color: rgba(255,255,255,0.9); }
+    .toolbar-view-btn.is-active {
+      background: rgba(91,156,246,0.22);
+      color: #8cc0ff;
+    }
+    .toolbar-view-btn:disabled { opacity: 0.45; cursor: not-allowed; }
     .toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
     .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     #graph-node-count {
@@ -485,7 +521,24 @@
     }
     #graph-edge-canvas { pointer-events: none; }
     #graph-canvas { cursor: grab; touch-action: none; }
-    #graph-canvas:active { cursor: grabbing; }
+    .nodes .node-g { cursor: pointer; }
+    /* O(deg) 悬停与侧栏聚焦淡化：通过父组 class 配合 CSS 选择器批量降不透明度，避免每次 hover/点击重写 8k 个 SVG 节点属性 */
+    .nodes.is-dim-hover .node-circle { fill-opacity: 0.15; }
+    .nodes.is-dim-hover .node-g.is-hi-1 .node-circle { fill-opacity: 1; }
+    .nodes.is-dim-hover .node-g.is-glow .node-glow { fill-opacity: 0.18; }
+    .nodes.is-dim-sidebar .node-circle {
+      fill-opacity: 0.15;
+      stroke-opacity: 0.0525;
+    }
+    .nodes.is-dim-sidebar .node-g.is-hi-2 .node-circle {
+      fill-opacity: 0.42;
+      stroke-opacity: 0.147;
+    }
+    .nodes.is-dim-sidebar .node-g.is-hi-1 .node-circle {
+      fill-opacity: 1;
+      stroke-opacity: 0.35;
+    }
+    .nodes.is-dim-sidebar .node-g.is-glow .node-glow { fill-opacity: 0.2; }
 
     #graph-wrap.is-perspective-mode,
     [data-theme="light"] #graph-wrap.is-perspective-mode {
@@ -497,6 +550,9 @@
     #graph-wrap.is-perspective-mode #graph-canvas,
     #graph-wrap.is-perspective-mode #graph-edge-canvas {
       display: none !important;
+    }
+    #graph-wrap.is-perspective-mode.sidebar-open {
+      right: 0;
     }
     #graph-canvas-3d {
       width: 100%; height: 100%;
@@ -968,6 +1024,14 @@
       .toolbar-right {
         gap: 4px;
       }
+      .toolbar-view-btn {
+        height: 22px;
+        padding: 0 6px;
+        font-size: .68rem;
+      }
+      .toolbar-view-label-extra {
+        display: none;
+      }
     }
 
     /* 触屏设备：节点详情用底部固定浮窗，不展示右侧侧边栏 */
@@ -977,6 +1041,15 @@
       }
       #graph-wrap.sidebar-open {
         right: 0 !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #fit-to-screen span:last-child {
+        display: none;
+      }
+      #fit-to-screen {
+        padding: 0 7px;
       }
     }
 
@@ -1294,6 +1367,49 @@
       color: rgba(15,23,42,0.58);
       box-shadow: 0 4px 14px rgba(15,23,42,0.08);
     }
+    .graph-terrain-legend {
+      position: absolute;
+      left: 20px;
+      bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(13,17,23,0.62);
+      color: rgba(255,255,255,0.58);
+      font-size: .67rem;
+      line-height: 1.3;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .graph-terrain-legend[hidden] { display: none !important; }
+    .graph-terrain-legend span + span::before {
+      content: '·';
+      margin-right: 9px;
+      opacity: .42;
+    }
+    [data-theme="light"] .graph-terrain-legend {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(15,23,42,0.09);
+      color: rgba(15,23,42,0.6);
+    }
+    @media (max-width: 768px) {
+      .graph-terrain-legend { display: none !important; }
+    }
+    [data-theme="light"] .toolbar-view-mode {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+    }
+    [data-theme="light"] .toolbar-view-btn { color: rgba(0,0,0,0.55); }
+    [data-theme="light"] .toolbar-view-btn:hover { color: rgba(0,0,0,0.88); }
+    [data-theme="light"] .toolbar-view-btn.is-active {
+      background: rgba(45,116,218,0.14);
+      color: #2d74da;
+    }
 
     /* ── 筛选面板（白天模式）── */
     [data-theme="light"] .filter-panel {
@@ -1388,6 +1504,13 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
       font-size: .8rem; font-weight: 700; color: rgba(255,255,255,0.65);
       letter-spacing: .03em;
+    }
+    .physics-header > span:first-child,
+    .filter-header > span:first-child,
+    .physics-toggle > span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .physics-body {
       flex: 1 1 auto;
@@ -2046,22 +2169,33 @@
     #graph-sidebar {
       position: fixed;
       top: calc(var(--header-h) + 46px);
-      right: -320px;
+      right: 0;
       width: 300px;
       bottom: 0;
       z-index: 60;
       background: rgba(13, 17, 23, 0.97);
       border-left: 1px solid rgba(255,255,255,0.1);
       overflow-y: auto;
-      transition: right .22s cubic-bezier(.4,0,.2,1);
+      transform: translateX(105%);
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform .22s cubic-bezier(.4,0,.2,1), visibility .22s;
       padding: 0;
     }
-    #graph-sidebar.open { right: 0; }
+    #graph-sidebar.open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
     .sb-header {
       display: flex; align-items: flex-start; justify-content: space-between;
       padding: 14px 16px 10px;
       border-bottom: 1px solid rgba(255,255,255,0.07);
       gap: 10px;
+    }
+    .sb-header > div {
+      flex: 1 1 auto;
+      min-width: 0;
     }
     #graph-sidebar .tt-meta-badges {
       display: flex;
@@ -2082,6 +2216,40 @@
       margin-bottom: 6px;
     }
     .sb-title { font-size: .92rem; font-weight: 700; color: #e8e8e4; line-height: 1.3; }
+    .sb-metrics {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 6px;
+      margin-top: 7px;
+      font-size: .68rem;
+      color: rgba(255,255,255,0.62);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .sb-metrics > span {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .sb-metrics[hidden] { display: none !important; }
+    .sb-metric-bar {
+      flex: 1 1 32px;
+      min-width: 24px;
+      max-width: 72px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      overflow: hidden;
+    }
+    .sb-metric-bar > i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: #5b9cf6;
+    }
+    [data-theme="light"] .sb-metrics { color: rgba(0,0,0,0.58); }
+    [data-theme="light"] .sb-metric-bar { background: rgba(0,0,0,0.1); }
+    [data-theme="light"] .sb-metric-bar > i { background: #2d74da; }
     .sb-close {
       background: none; border: none; color: rgba(255,255,255,0.35);
       font-size: 1rem; cursor: pointer; padding: 2px 4px; border-radius: 4px;
@@ -2126,6 +2294,62 @@
       #graph-sidebar.open ~ .fab-stack-right { right: 320px; }
     }
 
+    /* ── 右下角问答按钮（图谱页专用：与左下角 #graph-legend-fab 保持对称低调样式）── */
+    .fab-stack-right .kb-chat-toggle {
+      background: rgba(13, 17, 23, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+      transition: transform 0.2s var(--ease), background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    }
+    .fab-stack-right .kb-chat-toggle:hover,
+    .fab-stack-right .kb-chat-toggle:focus-visible {
+      background: rgba(22, 28, 38, 0.96);
+      border-color: rgba(91, 156, 246, 0.45);
+      color: #e8e8e4;
+      box-shadow: 0 6px 22px rgba(91, 156, 246, 0.18);
+    }
+    .fab-stack-right .kb-chat-toggle[aria-expanded="true"] {
+      background: rgba(20, 31, 48, 0.95);
+      border-color: rgba(91, 156, 246, 0.55);
+      color: #7ab3ff;
+      box-shadow: 0 6px 22px rgba(91, 156, 246, 0.22);
+    }
+    .fab-stack-right .kb-chat-toggle[aria-expanded="true"]:hover {
+      background: rgba(26, 40, 62, 0.96);
+      border-color: rgba(122, 179, 255, 0.72);
+      color: #9ec5ff;
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.72);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle:hover,
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle:focus-visible {
+      background: #ffffff;
+      border-color: rgba(45, 116, 218, 0.45);
+      color: #2d74da;
+      box-shadow: 0 6px 20px rgba(45, 116, 218, 0.14);
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle[aria-expanded="true"] {
+      background: #eaf1fb;
+      border-color: rgba(45, 116, 218, 0.45);
+      color: #2d74da;
+      box-shadow: 0 6px 20px rgba(45, 116, 218, 0.16);
+    }
+    [data-theme="light"] .fab-stack-right .kb-chat-toggle[aria-expanded="true"]:hover {
+      background: #dce8fa;
+      border-color: rgba(45, 116, 218, 0.62);
+      color: #1a5bb8;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fab-stack-right .kb-chat-toggle {
+        transition: none;
+      }
+    }
+
     /* ── 侧边栏白天模式 ── */
     [data-theme="light"] #graph-sidebar {
       background: rgba(255,255,255,0.98);
@@ -2164,9 +2388,461 @@
     }
     .graph-notice:empty { padding: 0; border: 0; }
     .graph-notice.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ── Taste Skill 瑞士工程风（默认 tech，classic 回退原样式）── */
+    :root:not([data-ui="classic"]) body,
+    :root:not([data-ui="classic"]) #graph-wrap,
+    :root:not([data-ui="classic"]) #graph-canvas-3d,
+    :root:not([data-ui="classic"]) #graph-loading {
+      background: var(--bg);
+    }
+    :root:not([data-ui="classic"]) #graph-wrap::before {
+      display: none;
+    }
+    :root:not([data-ui="classic"]) #graph-wrap.is-perspective-mode,
+    :root:not([data-ui="classic"])[data-theme="light"] #graph-wrap.is-perspective-mode {
+      background: var(--persp-stage-bg);
+    }
+    :root:not([data-ui="classic"]) #graph-toolbar {
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    :root:not([data-ui="classic"]) #graph-search,
+    :root:not([data-ui="classic"]) .chip,
+    :root:not([data-ui="classic"]) #graph-back,
+    :root:not([data-ui="classic"]) .filter-depth-chip,
+    :root:not([data-ui="classic"]) .mode-chip,
+    :root:not([data-ui="classic"]) .filter-mode-chip,
+    :root:not([data-ui="classic"]) .view-mode-btn {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) #graph-search {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) #graph-search::placeholder {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) #graph-search:focus,
+    :root:not([data-ui="classic"]) .chip:hover,
+    :root:not([data-ui="classic"]) #graph-back:hover,
+    :root:not([data-ui="classic"]) .filter-depth-chip:hover,
+    :root:not([data-ui="classic"]) .view-mode-btn:hover:not(:disabled) {
+      border-color: var(--line-strong);
+      color: var(--ink);
+      background: var(--surface-hover);
+    }
+    :root:not([data-ui="classic"]) .chip.active,
+    :root:not([data-ui="classic"]) .chip.is-running,
+    :root:not([data-ui="classic"]) .filter-depth-chip.is-active,
+    :root:not([data-ui="classic"]) .view-mode-btn.is-active,
+    :root:not([data-ui="classic"]) .filter-mode-chip.is-active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    :root:not([data-ui="classic"]) .filter-count {
+      border-radius: 2px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) #graph-node-count,
+    :root:not([data-ui="classic"]) #graph-back,
+    :root:not([data-ui="classic"]) .legend-count,
+    :root:not([data-ui="classic"]) .filter-count-badge,
+    :root:not([data-ui="classic"]) .graph-loading-pct {
+      font-family: var(--font-mono);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-panel,
+    :root:not([data-ui="classic"]) .physics-panel,
+    :root:not([data-ui="classic"]) #graph-tooltip,
+    :root:not([data-ui="classic"]) #graph-legend,
+    :root:not([data-ui="classic"]) #graph-legend-fab,
+    :root:not([data-ui="classic"]) .depth-intro-banner,
+    :root:not([data-ui="classic"]) .graph-notice,
+    :root:not([data-ui="classic"]) .graph-hint {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .graph-hint {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) #graph-legend-fab:hover,
+    :root:not([data-ui="classic"]) #graph-legend-fab:focus-visible {
+      border-color: var(--accent);
+      background: var(--surface-hover);
+      color: var(--ink);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) #graph-legend-fab[aria-expanded="true"] {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .physics-header,
+    :root:not([data-ui="classic"]) .filter-header {
+      border-bottom-color: var(--line);
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .physics-close,
+    :root:not([data-ui="classic"]) .filter-close,
+    :root:not([data-ui="classic"]) .sb-close {
+      border-radius: 2px;
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .physics-close:hover,
+    :root:not([data-ui="classic"]) .filter-close:hover,
+    :root:not([data-ui="classic"]) .sb-close:hover {
+      color: var(--ink);
+      background: var(--surface-hover);
+    }
+    :root:not([data-ui="classic"]) .slider-divider {
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .physics-section-title,
+    :root:not([data-ui="classic"]) .filter-section-title,
+    :root:not([data-ui="classic"]) .legend-title,
+    :root:not([data-ui="classic"]) .sb-section-title {
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .slider-label,
+    :root:not([data-ui="classic"]) .physics-toggle,
+    :root:not([data-ui="classic"]) .timeline-scrub-label {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .slider-val {
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .timeline-scrub-label {
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .physics-toggle input[type=checkbox],
+    :root:not([data-ui="classic"]) .filter-item input[type=checkbox] {
+      accent-color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) input[type=range] {
+      border-radius: 0;
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .timeline-progress {
+      background: linear-gradient(to right,
+        var(--accent) 0%, var(--accent) var(--tl-pct, 0%),
+        var(--line) var(--tl-pct, 0%), var(--line) 100%);
+    }
+    :root:not([data-ui="classic"]) input[type=range]::-webkit-slider-thumb {
+      border-radius: 2px;
+      background: var(--accent);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) input[type=range]::-webkit-slider-thumb:hover {
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) input[type=range]::-moz-range-thumb {
+      border-radius: 2px;
+      background: var(--accent);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .perspective-tier-badge {
+      border-radius: 2px;
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn:hover:not(:disabled) {
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn.is-running,
+    :root:not([data-ui="classic"]) .physics-action-btn.is-timeline-active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .physics-action-btn:disabled {
+      opacity: 0.4;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .timeline-ctrl-btn {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .timeline-ctrl-btn:hover:not(:disabled) {
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .filter-mode-tabs,
+    :root:not([data-ui="classic"]) .filter-degree-section {
+      border-bottom-color: var(--line);
+    }
+    :root:not([data-ui="classic"]) .filter-subtitle,
+    :root:not([data-ui="classic"]) .filter-degree-hint,
+    :root:not([data-ui="classic"]) .filter-empty {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-depth-summary:hover {
+      background: var(--surface-hover);
+    }
+    :root:not([data-ui="classic"]) .filter-depth-summary::after,
+    :root:not([data-ui="classic"]) .filter-depth-summary-label {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-depth-summary-current {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-recency-mode-btn {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-recency-mode-btn:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-recency-mode-btn.is-active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .filter-item {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-item:hover {
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-footer {
+      border-top-color: var(--line);
+      background: var(--surface);
+    }
+    :root:not([data-ui="classic"]) .filter-clear {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--bg);
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-clear:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .filter-scroll-chrome {
+      border-radius: 0;
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .filter-scroll-thumb {
+      border-radius: 0;
+      background: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .filter-resize-e:hover,
+    :root:not([data-ui="classic"]) .filter-resize-e:active,
+    :root:not([data-ui="classic"]) .filter-resize-s:hover,
+    :root:not([data-ui="classic"]) .filter-resize-s:active {
+      background-color: var(--accent-soft);
+    }
+    :root:not([data-ui="classic"]) .filter-resize-se::before {
+      border-bottom-right-radius: 0;
+      border-color: var(--accent-line);
+    }
+    :root:not([data-ui="classic"]) .filter-resize-se:hover::before,
+    :root:not([data-ui="classic"]) .filter-resize-se:active::before {
+      border-color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-hub-tag {
+      border-radius: 2px;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-text,
+    :root:not([data-ui="classic"]) .depth-intro-steps {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-step-label b {
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-step-btn {
+      border-radius: 2px;
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .depth-intro-step-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+    :root:not([data-ui="classic"]) .tt-type,
+    :root:not([data-ui="classic"]) #graph-sidebar .tt-type,
+    :root:not([data-ui="classic"]) .tt-community {
+      border-radius: 2px;
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .tt-community {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) #graph-tooltip.tt-pinned {
+      border-color: var(--accent-line);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .legend-row {
+      border-radius: 2px;
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .legend-row:hover {
+      background: var(--surface-hover);
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .legend-row.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) #graph-legend::-webkit-scrollbar-thumb {
+      border-radius: 0;
+      background: var(--line-strong);
+    }
+    :root:not([data-ui="classic"]) #graph-sidebar {
+      background: var(--bg);
+      border-left: 1px solid var(--line);
+    }
+    :root:not([data-ui="classic"]) #graph-sidebar .sb-header {
+      border-bottom-color: var(--line);
+    }
+    :root:not([data-ui="classic"]) .sb-title,
+    :root:not([data-ui="classic"]) .tt-title,
+    :root:not([data-ui="classic"]) .graph-loading-title {
+      color: var(--ink);
+    }
+    :root:not([data-ui="classic"]) .sb-summary,
+    :root:not([data-ui="classic"]) .tt-summary {
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .sb-related-list li a,
+    :root:not([data-ui="classic"]) .sb-open-link,
+    :root:not([data-ui="classic"]) .tt-link,
+    :root:not([data-ui="classic"]) .depth-intro-badge,
+    :root:not([data-ui="classic"]) .depth-intro-link {
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .sb-related-list li a {
+      border-radius: 2px;
+    }
+    :root:not([data-ui="classic"]) .sb-related-list li a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .sb-open-link {
+      border-color: var(--accent-line);
+    }
+    :root:not([data-ui="classic"]) .sb-open-link:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .sb-open-link,
+    :root:not([data-ui="classic"]) .tt-link,
+    :root:not([data-ui="classic"]) .sb-tag {
+      border-radius: 2px;
+    }
+    :root:not([data-ui="classic"]) .sb-tag {
+      border: 1px solid var(--line);
+      background: var(--bg-alt);
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .graph-loading-bar {
+      border-radius: 0;
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .graph-loading-bar-fill {
+      border-radius: 0;
+      background: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .graph-loading-spinner {
+      border-color: var(--line);
+      border-top-color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle {
+      border-radius: 2px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--ink-muted);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle:hover,
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle:focus-visible {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      color: var(--ink);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle[aria-expanded="true"],
+    :root:not([data-ui="classic"]) .fab-stack-right .kb-chat-toggle[aria-expanded="true"]:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: none;
+    }
+    :root:not([data-ui="classic"]) .toolbar-view-mode {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--surface);
+    }
+    :root:not([data-ui="classic"]) .toolbar-view-btn {
+      border-radius: 2px;
+      color: var(--ink-muted);
+    }
+    :root:not([data-ui="classic"]) .toolbar-view-btn:hover {
+      color: var(--ink);
+      background: var(--surface-hover);
+    }
+    :root:not([data-ui="classic"]) .toolbar-view-btn.is-active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    :root:not([data-ui="classic"]) .graph-terrain-legend {
+      border-radius: 2px;
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .sb-metrics {
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+    }
+    :root:not([data-ui="classic"]) .sb-metric-bar {
+      border-radius: 0;
+      background: var(--line);
+    }
+    :root:not([data-ui="classic"]) .sb-metric-bar > i {
+      border-radius: 0;
+      background: var(--accent);
+    }
   </style>
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#191919" />
+  <meta name="theme-color" content="#0a0b0d" />
   <script>
     if ('serviceWorker' in navigator) {
       // 图谱页首屏要下载 1 MB 以上的数据：SW 安装会并行预缓存十几项离线壳资源，与之抢带宽。
@@ -2186,13 +2862,15 @@
   <!-- ── 共用 Header ── -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ Robotics Notebooks | 机器人技术栈地图</a>
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页"><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg>Robotics Notebooks | 机器人技术栈地图</a>
       <div class="header-spacer"></div>
       <div class="header-right">
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
         <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式">
-          <span class="icon-sun">☀️</span>
-          <span class="icon-moon">🌙</span>
+          <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
+          <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
         </button>
       </div>
     </div>
@@ -2204,13 +2882,18 @@
     <datalist id="graph-search-list"></datalist>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按社区筛选">
-      <span>🔍</span><span id="filter-label">筛选</span>
+      <span><svg class="chip-icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.1" cy="7.1" r="4.3"/><path d="M10.4 10.4 13.7 13.7"/></svg></span><span id="filter-label">筛选</span>
       <span id="filter-count" class="filter-count" hidden></span>
     </button>
+    <div id="toolbar-view-mode" class="toolbar-view-mode" role="group" aria-label="2D / 3D 地形 / 3D 立体视图切换">
+      <button type="button" id="toolbar-view-2d" class="toolbar-view-btn is-active" aria-pressed="true">2D</button>
+      <button type="button" id="toolbar-view-perspective" class="toolbar-view-btn" aria-pressed="false">3D<span class="toolbar-view-label-extra"> 地形</span></button>
+      <button type="button" id="toolbar-view-3d" class="toolbar-view-btn" aria-pressed="false">3D<span class="toolbar-view-label-extra"> 立体</span></button>
+    </div>
     <div class="toolbar-right">
       <span id="graph-node-count">加载中…</span>
       <div class="toolbar-sep"></div>
-      <button id="physics-toggle" class="chip" title="力导向参数、布局刷新与时序动画"><span>⚙</span><span> 参数</span></button>
+      <button id="physics-toggle" class="chip" title="力导向参数、布局刷新与时序动画"><span><svg class="chip-icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5h11M2.5 11h11"/><circle cx="6" cy="5" r="1.6" fill="currentColor"/><circle cx="10.4" cy="11" r="1.6" fill="currentColor"/></svg></span><span> 参数</span></button>
       <div class="toolbar-sep"></div>
       <button id="fit-to-screen" class="chip" title="适配屏幕"><span><svg class="chip-icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></span><span> 适配屏幕</span></button>
       <div class="toolbar-sep"></div>
@@ -2247,13 +2930,13 @@
       </div>
       <a id="depth-intro-link" class="depth-intro-link" href="#">打开路线页 →</a>
     </div>
-    <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例">🎨</button>
+    <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="5.2" cy="5.2" r="1.7"/><circle cx="10.8" cy="5.2" r="1.7"/><circle cx="5.2" cy="10.8" r="1.7"/><circle cx="10.8" cy="10.8" r="1.7"/></svg></button>
     <div id="graph-legend-scrim" hidden aria-hidden="true"></div>
     <div id="graph-legend" role="region" aria-label="图谱图例"></div>
     <!-- ── 物理参数面板 ── -->
     <div id="physics-panel" class="physics-panel" hidden>
       <div class="physics-header">
-        <span>⚙ 图谱参数</span>
+        <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 5h11M2.5 11h11"/><circle cx="6" cy="5" r="1.6" fill="currentColor"/><circle cx="10.4" cy="11" r="1.6" fill="currentColor"/></svg>图谱参数</span>
         <button id="physics-close" class="physics-close" aria-label="关闭面板">✕</button>
       </div>
       <div class="physics-body">
@@ -2271,7 +2954,7 @@
         <div class="slider-row">
           <label class="physics-toggle" for="check-magnetic">
             <input type="checkbox" id="check-magnetic" />
-            <span>🧲 磁吸模式</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.2 3.5v4.6a3.8 3.8 0 0 0 7.6 0V3.5M4.2 6h2.2M9.6 6h2.2"/></svg>磁吸模式</span>
           </label>
         </div>
 
@@ -2281,7 +2964,7 @@
           <label class="physics-toggle" for="check-show-edges"
                  title="关闭后只显示节点，隐藏全部连线（2D / 3D 共享同一开关）">
             <input type="checkbox" id="check-show-edges" />
-            <span>🔗 显示连线</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.7 9.3 9.3 6.7M5.7 11.2l-.9.9a2.4 2.4 0 0 1-3.4-3.4l.9-.9M10.3 4.8l.9-.9a2.4 2.4 0 0 1 3.4 3.4l-.9.9"/></svg>显示连线</span>
           </label>
         </div>
 
@@ -2289,7 +2972,7 @@
           <label class="physics-toggle" for="check-community-labels" id="community-labels-toggle"
                  title="在各社区聚类的中心点漂浮显示社区名称（仅「按社区」筛选/着色时可用；默认开启，可在此关闭）">
             <input type="checkbox" id="check-community-labels" checked />
-            <span>🏘 显示社区标签</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 2.5 13.5 5.6 8 8.7 2.5 5.6 8 2.5ZM2.5 8.6 8 11.7l5.5-3.1M2.5 11.4 8 14.3l5.5-2.9"/></svg>显示社区标签</span>
           </label>
         </div>
 
@@ -2297,7 +2980,7 @@
           <label class="physics-toggle" for="check-recency-dim"
                  title="按节点更新时间指数调整明暗：越新越亮（近期更陡），越旧越暗；无更新日期的节点按最暗显示（均保持可见）">
             <input type="checkbox" id="check-recency-dim" />
-            <span>🕰 更新明度渐变</span>
+            <span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.5"/><path d="M8 4.8V8l2.3 1.4"/></svg>更新明度渐变</span>
           </label>
         </div>
 
@@ -2387,7 +3070,7 @@
     <div id="filter-panel-scrim" hidden aria-hidden="true"></div>
     <div id="filter-panel" class="filter-panel" hidden>
       <div class="filter-header">
-        <span id="filter-panel-title">🔍 图谱筛选</span>
+        <span id="filter-panel-title"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="7.1" cy="7.1" r="4.3"/><path d="M10.4 10.4 13.7 13.7"/></svg>图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
       <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
@@ -2436,25 +3119,25 @@
         <details class="filter-depth-section" id="filter-dimension-section" open>
           <summary class="filter-depth-summary">
             <span class="filter-depth-summary-label" id="filter-dimension-label">按社区</span>
-            <span class="filter-depth-summary-current" id="filter-dimension-current"><span>🧩</span><span>全部</span></span>
+            <span class="filter-depth-summary-current" id="filter-dimension-current"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.2 5.4h2.5a1.3 1.3 0 1 1 2.6 0h2.5v2.5a1.3 1.3 0 1 1 0 2.6V13H8.3a1.3 1.3 0 1 0-2.6 0H3.2v-2.5a1.3 1.3 0 1 0 0-2.6V5.4Z"/></svg></span><span>全部</span></span>
           </summary>
           <div class="filter-dimension-list" id="filter-panel-body"></div>
         </details>
         <details class="filter-depth-section" id="filter-depth-section">
           <summary class="filter-depth-summary">
             <span class="filter-depth-summary-label">路线视图</span>
-            <span class="filter-depth-summary-current" id="filter-depth-current"><span>🌐</span><span>全量</span></span>
+            <span class="filter-depth-summary-current" id="filter-depth-current"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.5"/><ellipse cx="8" cy="8" rx="2.5" ry="5.5"/><path d="M2.7 8h10.6"/></svg></span><span>全量</span></span>
           </summary>
           <!-- 路线 chip 由 depth-filters.js 的 DEPTH_ORDER / DEPTH_META 渲染（见 renderDepthChips），
                静态只留「全量」，避免此处列表与单一事实源脱节 -->
           <div class="filter-depth-chips" id="filter-depth-chips">
-            <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span>🌐</span><span>全量</span></button>
+            <button class="filter-depth-chip is-active" type="button" data-depth="all" title="全量"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.5"/><ellipse cx="8" cy="8" rx="2.5" ry="5.5"/><path d="M2.7 8h10.6"/></svg></span><span>全量</span></button>
           </div>
         </details>
         <details class="filter-depth-section" id="filter-institution-section">
           <summary class="filter-depth-summary">
             <span class="filter-depth-summary-label">研究机构</span>
-            <span class="filter-depth-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
+            <span class="filter-depth-summary-current" id="filter-institution-current"><span><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.6 6.4 8 3.2l5.4 3.2M4.3 6.4v6M8 6.4v6M11.7 6.4v6M2.5 12.6h11"/></svg></span><span>全部</span></span>
           </summary>
           <div class="filter-institution-list" id="filter-institution-list"></div>
         </details>
@@ -2472,12 +3155,19 @@
       <span class="hint-touch">双指缩放<span class="hint-sep" aria-hidden="true">·</span>单指拖拽<br>轻触节点查看详情</span>
     </div>
     <div id="graph-hint-perspective" class="graph-hint" hidden>
-      <span class="hint-desktop">拖节点移动<span class="hint-sep" aria-hidden="true">·</span>拖空白旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>右键平移<span class="hint-sep" aria-hidden="true">·</span>高度即连接数</span>
-      <span class="hint-touch">单指旋转/拖节点<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>高度即连接数<span class="hint-sep" aria-hidden="true">·</span>轻触看详情</span>
+      <span class="hint-desktop">点击节点/社区聚焦<span class="hint-sep" aria-hidden="true">·</span>拖节点移山<span class="hint-sep" aria-hidden="true">·</span>拖空白旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮指向缩放<span class="hint-sep" aria-hidden="true">·</span>右键平移</span>
+      <span class="hint-touch">单指旋转/拖节点<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>高度即连接数<span class="hint-sep" aria-hidden="true">·</span>轻触节点/社区聚焦</span>
     </div>
     <div id="graph-hint-3d" class="graph-hint" hidden>
       <span class="hint-desktop">拖拽旋转<span class="hint-sep" aria-hidden="true">·</span>滚轮缩放<span class="hint-sep" aria-hidden="true">·</span>点击节点查看详情</span>
       <span class="hint-touch">单指旋转<span class="hint-sep" aria-hidden="true">·</span>双指缩放<br>轻触节点查看详情</span>
+    </div>
+    <div id="graph-terrain-legend" class="graph-terrain-legend" hidden aria-label="3D 地形编码图例">
+      <span>▲ 山高 = 连接度</span>
+      <span>〰 等高线 = 海拔层级</span>
+      <span>● 球径 = 枢纽权重</span>
+      <span>◌ 虚线 = 社区疆界</span>
+      <span>◉ = 近期新增</span>
     </div>
   </div>
 
@@ -2489,6 +3179,7 @@
         <div id="sb-community" class="sb-community"></div>
         <div class="sb-title" id="sb-title">选择节点查看详情</div>
         <div id="sb-health" hidden></div>
+        <div id="sb-metrics" class="sb-metrics" hidden></div>
       </div>
       <button id="sb-close" class="sb-close" aria-label="关闭侧边栏">✕</button>
     </div>
@@ -2515,6 +3206,7 @@
 
   <!-- ── D3.js + 3D 图谱 ── -->
   <script src="vendor/d3.min.js"></script>
+  <script src="ui-icons.js"></script>
   <script src="wiki-type-labels.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
@@ -2625,11 +3317,21 @@
     const filterDimensionCurrent = document.getElementById('filter-dimension-current');
     const filterPanelScrim = document.getElementById('filter-panel-scrim');
     const FILTER_DIMENSION_META = {
-      type: { emoji: '🏷️', unit: '项' },
-      community: { emoji: '🧩', unit: '个社区' },
-      opensource: { emoji: '⭐', unit: '项' },
-      health: { emoji: '💚', unit: '项' },
+      type: { icon: 'tag', unit: '项' },
+      community: { icon: 'puzzle', unit: '个社区' },
+      opensource: { icon: 'star', unit: '项' },
+      health: { icon: 'heart-pulse', unit: '项' },
     };
+
+    function graphUiIconHtml(name) {
+      return (window.RNIcons && window.RNIcons.svg) ? window.RNIcons.svg(name) : '';
+    }
+
+    function graphDepthIconHtml(key, meta) {
+      return (window.RNIcons && window.RNIcons.depthSvg)
+        ? window.RNIcons.depthSvg(key, meta && meta.icon)
+        : graphUiIconHtml('tag');
+    }
 
     /* 筛选浮窗三区手风琴：维度 / 路线视图 / 研究机构 同时仅展开一个；默认「按社区」 */
     const FILTER_ACCORDION_DEFAULT_ID = 'filter-dimension-section';
@@ -2666,7 +3368,7 @@
     }
 
     function syncFilterPaneScrollbar(section) {
-      if (!section) return;
+      if (!section || !filterPanel || filterPanel.hidden) return;
       const pane = getFilterAccordionPane(section);
       const chrome = ensureFilterScrollChrome(section);
       const thumb = chrome.querySelector('.filter-scroll-thumb');
@@ -2694,6 +3396,7 @@
     }
 
     function syncOpenFilterPaneScrollbar() {
+      if (!filterPanel || filterPanel.hidden) return;
       getFilterAccordionSections().forEach((section) => {
         if (section.open) syncFilterPaneScrollbar(section);
         else {
@@ -2906,7 +3609,7 @@
       const cur = document.getElementById('filter-institution-current');
       if (!cur) return;
       const n = activeInstitutions.size;
-      cur.innerHTML = '<span>🏛️</span><span>' + (n ? n + ' 个机构' : '全部') + '</span>';
+      cur.innerHTML = '<span>' + graphUiIconHtml('building') + '</span><span>' + (n ? n + ' 个机构' : '全部') + '</span>';
     }
 
     function renderInstitutionFilterSection() {
@@ -3055,7 +3758,7 @@
       }
       topicIntroBanner.hidden = false;
       if (topicIntroBadge) {
-        topicIntroBadge.innerHTML = '<span>' + (meta.emoji || '🏷️') + '</span><span>'
+        topicIntroBadge.innerHTML = '<span>' + graphDepthIconHtml(currentDepth, meta) + '</span><span>'
           + escapeHtml(meta.label || currentDepth) + '</span>';
       }
       if (topicIntroText) topicIntroText.textContent = meta.description || '';
@@ -3209,7 +3912,7 @@
     // 力模拟 'end' 只在首屏与「刷新布局」之后各自动 fit 一次；拖拽 / 滑块 / 切视图引起的
     // 重新加热落稳后不再 fit（此前每次 end 都 fitToScreen，把用户缩放吃掉）。
     let pendingAutoFit2D = false;
-    let label = null;
+    const created2DLabels = [];
     const checkNodeLabelsEl = document.getElementById('check-node-labels');
     const checkShowEdgesEl = document.getElementById('check-show-edges');
     // 社区聚类中心漂浮标签：默认开启；仅「按社区」着色/筛选时可勾选，其余模式下勾选框置灰
@@ -3294,10 +3997,14 @@
     const viewMode2dBtn = document.getElementById('view-mode-2d');
     const viewModePerspectiveBtn = document.getElementById('view-mode-perspective');
     const viewMode3dBtn = document.getElementById('view-mode-3d');
+    const toolbarView2dBtn = document.getElementById('toolbar-view-2d');
+    const toolbarViewPerspBtn = document.getElementById('toolbar-view-perspective');
+    const toolbarView3dBtn = document.getElementById('toolbar-view-3d');
     const perspectiveControlsEl = document.getElementById('perspective-controls');
     const graphHint2dEl = document.getElementById('graph-hint-2d');
     const graphHintPerspectiveEl = document.getElementById('graph-hint-perspective');
     const graphHint3dEl = document.getElementById('graph-hint-3d');
+    const graphTerrainLegendEl = document.getElementById('graph-terrain-legend');
     const graphNoticeEl = document.getElementById('graph-notice');
     let graphNoticeTimer = 0;
 
@@ -3323,25 +4030,34 @@
         graphHintPerspectiveEl.hidden = !inPersp;
       }
       if (graphHint3dEl) graphHint3dEl.hidden = !in3d;
+      if (typeof graphTerrainLegendEl !== 'undefined' && graphTerrainLegendEl) {
+        graphTerrainLegendEl.hidden = !inPersp;
+      }
       if (typeof syncDepthBannerChatOffset === 'function') syncDepthBannerChatOffset();
+    }
+
+    function syncViewBtnPair(btnA, btnB, active) {
+      if (btnA) {
+        btnA.classList.toggle('is-active', active);
+        btnA.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
+      if (typeof btnB !== 'undefined' && btnB) {
+        btnB.classList.toggle('is-active', active);
+        btnB.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
     }
 
     function updateViewModeButtons() {
       const in3d = is3DView();
       const inPersp = isPerspectiveView();
       const in2d = !in3d && !inPersp;
-      if (viewMode2dBtn) {
-        viewMode2dBtn.classList.toggle('is-active', in2d);
-        viewMode2dBtn.setAttribute('aria-pressed', in2d ? 'true' : 'false');
-      }
-      if (typeof viewModePerspectiveBtn !== 'undefined' && viewModePerspectiveBtn) {
-        viewModePerspectiveBtn.classList.toggle('is-active', inPersp);
-        viewModePerspectiveBtn.setAttribute('aria-pressed', inPersp ? 'true' : 'false');
-      }
-      if (viewMode3dBtn) {
-        viewMode3dBtn.classList.toggle('is-active', in3d);
-        viewMode3dBtn.setAttribute('aria-pressed', in3d ? 'true' : 'false');
-      }
+      syncViewBtnPair(viewMode2dBtn, typeof toolbarView2dBtn !== 'undefined' ? toolbarView2dBtn : null, in2d);
+      syncViewBtnPair(
+        typeof viewModePerspectiveBtn !== 'undefined' ? viewModePerspectiveBtn : null,
+        typeof toolbarViewPerspBtn !== 'undefined' ? toolbarViewPerspBtn : null,
+        inPersp
+      );
+      syncViewBtnPair(viewMode3dBtn, typeof toolbarView3dBtn !== 'undefined' ? toolbarView3dBtn : null, in3d);
       if (typeof perspectiveControlsEl !== 'undefined' && perspectiveControlsEl) {
         perspectiveControlsEl.hidden = !inPersp;
       }
@@ -3451,14 +4167,18 @@
           else hideTooltip();
         },
         onPointerMove: (ev) => {
-          if (!is3DView() || timelineAnimating || isMobile) return;
+          if (!is3DView() || timelineAnimating || isTouchInteraction(ev) || pinnedNode) return;
           if (!graph3dHoverNode) return;
           if (sidebarFocusIds) {
-            if (sidebarFocusIds.has(graph3dHoverNode.id)) showTooltip(ev, graph3dHoverNode);
+            if (sidebarFocusIds.has(graph3dHoverNode.id)) {
+              if (tooltipNode === graph3dHoverNode && !tooltip.classList.contains('tt-pinned')) moveTooltip(ev);
+              else showTooltip(ev, graph3dHoverNode);
+            }
             return;
           }
           if (hasActiveGraphFilter() && !visibleNodeIds.has(graph3dHoverNode.id)) return;
-          showTooltip(ev, graph3dHoverNode);
+          if (tooltipNode === graph3dHoverNode && !tooltip.classList.contains('tt-pinned')) moveTooltip(ev);
+          else showTooltip(ev, graph3dHoverNode);
         },
         onBackgroundClick: () => {
           graph3dHoverNode = null;
@@ -3529,17 +4249,19 @@
         setSpatialViewMode('3d', opts);
         return Promise.resolve();
       }
-      if (viewMode3dBtn) {
-        viewMode3dBtn.disabled = true;
-        viewMode3dBtn.setAttribute('aria-busy', 'true');
-      }
+      [viewMode3dBtn, typeof toolbarView3dBtn !== 'undefined' ? toolbarView3dBtn : null].forEach((btn) => {
+        if (!btn) return;
+        btn.disabled = true;
+        btn.setAttribute('aria-busy', 'true');
+      });
       return ensureGraph3DLibrary()
         .catch((err) => { console.warn('3D library unavailable; falling back to 2D:', err); })
         .then(() => {
-          if (viewMode3dBtn) {
-            viewMode3dBtn.disabled = false;
-            viewMode3dBtn.removeAttribute('aria-busy');
-          }
+          [viewMode3dBtn, typeof toolbarView3dBtn !== 'undefined' ? toolbarView3dBtn : null].forEach((btn) => {
+            if (!btn) return;
+            btn.disabled = false;
+            btn.removeAttribute('aria-busy');
+          });
           if (seq !== spatialRequestSeq) return;   // 期间用户已改主意（点了 2D）
           // 库缺失时这里会命中既有失败路径：恢复 2D + 提示，不另写一套降级。
           setSpatialViewMode('3d', opts);
@@ -3638,6 +4360,7 @@
       syncTimeline3DState();
       syncMagneticCheckbox();
       if (mode === '3d' || needsFull2DRestore) updateForces();
+      if (typeof syncGraphUrlParams === 'function') syncGraphUrlParams();
       if (initializationFailed) {
         showGraphNotice('当前无法打开 3D 视图，已恢复 2D。你可以继续浏览，或在支持 WebGL 的浏览器中重试。');
       }
@@ -3690,28 +4413,47 @@
     let labelsAllHidden = false;
     let lastLabelSyncK = null;
     function sync2DNodeLabels() {
-      if (!label) return;
       if (!showNodeLabels || timelineAnimating || !labelsSettled2D) {
-        if (!labelsAllHidden) {
-          label.style('display', 'none').style('opacity', 0);
-          labelsAllHidden = true;
+        if (!labelsAllHidden && created2DLabels.length) {
+          for (let i = 0; i < created2DLabels.length; i++) {
+            const el = created2DLabels[i];
+            if (el.style.display !== 'none') el.style.display = 'none';
+            if (el.__lastOp !== '0') {
+              el.style.opacity = '0';
+              el.__lastOp = '0';
+            }
+          }
         }
+        labelsAllHidden = true;
         lastLabelSyncK = null;
         return;
       }
+      if (typeof nodes === 'undefined' || typeof ensure2DNodeLabel !== 'function') return;
       labelsAllHidden = false;
       const k = d3.zoomTransform(svg.node()).k;
       lastLabelSyncK = k;
-      label.each(function (d) {
+      const fill = labelFill();
+      for (let i = 0; i < nodes.length; i++) {
+        const d = nodes[i];
+        const parts = d.__el && d.__el.__nodeParts;
+        if (!parts) continue;
         const op = computeNodeLabelOpacity(d, k, true, userZoomed2D) * recencyDimOf(d) * sidebarDimFactorOf(d);
         if (op > 0.02) {
-          if (this.style.display === 'none') this.style.display = '';
-          this.style.opacity = String(op);
-        } else if (this.style.display !== 'none') {
-          this.style.display = 'none';
-          this.style.opacity = '0';
+          const el = ensure2DNodeLabel(d, fill);
+          if (!el) continue;
+          if (el.style.display === 'none') el.style.display = '';
+          const opStr = String(op);
+          if (el.__lastOp !== opStr) {
+            el.style.opacity = opStr;
+            el.__lastOp = opStr;
+          }
+        } else if (parts.label && parts.label.style.display !== 'none') {
+          const el = parts.label;
+          el.style.display = 'none';
+          el.style.opacity = '0';
+          el.__lastOp = '0';
         }
-      });
+      }
     }
 
     function setShowNodeLabels(on) {
@@ -4036,7 +4778,7 @@
         .then(list => {
           if (!Array.isArray(list) || list.length !== nodes.length) return false;
           for (let i = 0; i < nodes.length; i++) nodes[i]._info.summary = list[i] || '';
-          if (tooltipNode && !tooltip.classList.contains('hidden')) refreshTooltipContent();
+          if (tooltipNode) refreshTooltipContent();
           if (sidebarNode) renderSidebarSummary(sidebarNode);
           return true;
         })
@@ -4050,6 +4792,7 @@
     let indexItemByKey = new Map();
     // 邻接表：边在页面生命周期内不变，建一次；hover / 侧栏邻居此前每次都全量扫 5 万多条边
     const adjacency2D = new Map();
+    const incidentEdges2D = new Map();
     for (const e of edges) {
       const a = typeof e.source === 'object' ? e.source.id : e.source;
       const b = typeof e.target === 'object' ? e.target.id : e.target;
@@ -4057,6 +4800,14 @@
       if (!adjacency2D.has(b)) adjacency2D.set(b, new Set());
       adjacency2D.get(a).add(b);
       adjacency2D.get(b).add(a);
+      let la = incidentEdges2D.get(a);
+      if (!la) { la = []; incidentEdges2D.set(a, la); }
+      la.push(e);
+      if (b !== a) {
+        let lb = incidentEdges2D.get(b);
+        if (!lb) { lb = []; incidentEdges2D.set(b, lb); }
+        lb.push(e);
+      }
     }
 
     /* ── 更新明度渐变：节点时间口径对齐「更新记录」页（git 最近触达日 activity），
@@ -4064,6 +4815,7 @@
          f(t)=(e^{k t}-1)/(e^k-1)
        映射到 [RECENCY_DIM_MIN, 1]，使越新的节点越明亮、近期对比更陡；
        无更新日期（无 activity）的节点按最暗 RECENCY_DIM_MIN 处理 ── */
+    let latestGraphAddedTs = 0;
     (function assignRecencyDim() {
       let minTs = Infinity;
       let maxTs = -Infinity;
@@ -4076,6 +4828,7 @@
         n._addedTs = Number.isFinite(addedTs) && addedTs > 0 ? addedTs : null;
         n._addedDate = (n.added && /^\d{4}-\d{2}-\d{2}/.test(n.added))
           ? n.added.slice(0, 10) : null;
+        if (n._addedTs && n._addedTs > latestGraphAddedTs) latestGraphAddedTs = n._addedTs;
         n._recencyTs = n._activityTs;
         n._recencyDate = n._activityDate;
         if (n._recencyTs !== null) {
@@ -4646,9 +5399,13 @@
       // 两批各记各的：暗批自己有一份很小的预算，密到什么程度都只是底纹。
       let hiLen = 0;
       let loLen = 0;
-      const total = edges.length;
+      // 非全显边模式下只扫当前焦点节点的邻接边，避免悬停/点击都空转 6.8 万条边
+      const edgeList = (focusEdgesOnly && (mode === 'hover' || mode === 'sidebar') && focusId)
+        ? (incidentEdges2D.get(focusId) || [])
+        : edges;
+      const total = edgeList.length;
       for (let i = 0; i < total; i++) {
-        const e = edges[i];
+        const e = edgeList[i];
         const s = e.source;
         const g = e.target;
         if (typeof s !== 'object' || typeof g !== 'object' || !s || !g) continue;
@@ -4710,29 +5467,43 @@
       scheduleEdgeDraw();
     }
 
+    let cachedHeaderH = null;
     function readHeaderHeightPx() {
+      if (cachedHeaderH != null) return cachedHeaderH;
       const raw = getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim();
       const n = parseFloat(raw);
-      return Number.isFinite(n) ? n : 58;
+      cachedHeaderH = Number.isFinite(n) ? n : 58;
+      return cachedHeaderH;
     }
 
-    /* 将 --app-vh 同步为当前可视高度，使 #graph-wrap 在 Chrome 底栏显隐时跟着伸缩。
-       注意：一旦写入 --app-vh 就会覆盖纯 dvh；因此必须在 resize / 交互时持续刷新，
-       否则底栏收起后会出现下方留白（用户点进 graph view 时最常见）。 */
+    let lastAppVh = -1;
+    let lastShellTop = -1;
+    let lastShellHeight = -1;
+    /* 将 --app-vh 同步为当前可视高度，仅在像素值实际变化时写入，避免 pointerdown/点击
+       重设根元素 CSS 变量从而触发 28k+ SVG 节点的全树样式重算。 */
     function syncGraphShellToViewport() {
       const vv = window.visualViewport;
-      // Chrome 底栏动画期间 visualViewport.height 可能短暂滞后于 innerHeight；
-      // 取较大值避免壳层偏矮留下底缝。
       const vvH = (vv && Number.isFinite(vv.height)) ? vv.height : 0;
       const viewportH = Math.round(Math.max(window.innerHeight || 0, vvH));
       if (viewportH <= 0) return false;
-      document.documentElement.style.setProperty('--app-vh', viewportH + 'px');
+      if (viewportH !== lastAppVh) {
+        lastAppVh = viewportH;
+        document.documentElement.style.setProperty('--app-vh', viewportH + 'px');
+      }
       if (wrap) {
         const shellTop = readHeaderHeightPx() + GRAPH_TOOLBAR_BAND_PX;
         const offsetTop = (vv && Number.isFinite(vv.offsetTop)) ? Math.round(vv.offsetTop) : 0;
-        wrap.style.top = (shellTop + offsetTop) + 'px';
-        wrap.style.height = Math.max(1, viewportH - shellTop) + 'px';
-        wrap.style.bottom = 'auto';
+        const nextTop = shellTop + offsetTop;
+        const nextHeight = Math.max(1, viewportH - shellTop);
+        if (nextTop !== lastShellTop) {
+          lastShellTop = nextTop;
+          wrap.style.top = nextTop + 'px';
+        }
+        if (nextHeight !== lastShellHeight) {
+          lastShellHeight = nextHeight;
+          wrap.style.height = nextHeight + 'px';
+          wrap.style.bottom = 'auto';
+        }
       }
       return true;
     }
@@ -4743,11 +5514,13 @@
       const nextW = wrap.clientWidth;
       const nextH = wrap.clientHeight;
       if (nextW <= 0 || nextH <= 0) return false;
-      W = nextW;
-      H = nextH;
-      svg.attr('width', W).attr('height', H);
-      resizeEdgeCanvas();
-      if (perspectiveController) perspectiveController.syncViewport();
+      if (nextW !== W || nextH !== H) {
+        W = nextW;
+        H = nextH;
+        svg.attr('width', W).attr('height', H);
+        resizeEdgeCanvas();
+        if (perspectiveController) perspectiveController.syncViewport();
+      }
       return true;
     }
 
@@ -4894,25 +5667,37 @@
       }
       const cellSize = Math.max(16, maxR * 2 + pad * 1.5);
       const invCell = 1 / cellSize;
+      let tableSize = 1024;
+      while (tableSize < n * 4) tableSize <<= 1;
+      const mask = tableSize - 1;
+      const head = new Int32Array(tableSize);
+      const next = new Int32Array(n);
+      const cellX = new Int32Array(n);
+      const cellY = new Int32Array(n);
       const accX = new Float32Array(n);
       const accY = new Float32Array(n);
       const accW = new Float32Array(n);
       let totalResolved = 0;
 
       for (let pass = 0; pass < maxPasses; pass++) {
-        const grid = new Map();
+        head.fill(-1);
         for (let i = 0; i < n; i++) {
           accX[i] = 0;
           accY[i] = 0;
           accW[i] = 0;
           const nd = list[i];
-          if (nd.x == null || nd.y == null) continue;
-          const gx = Math.floor(nd.x * invCell);
-          const gy = Math.floor(nd.y * invCell);
-          const key = (gx + 32768) * 65536 + (gy + 32768);
-          const bucket = grid.get(key);
-          if (bucket) bucket.push(i);
-          else grid.set(key, [i]);
+          if (nd.x == null || nd.y == null) {
+            cellX[i] = 0x7fffffff;
+            cellY[i] = 0x7fffffff;
+            continue;
+          }
+          const gx = Math.floor(nd.x * invCell) | 0;
+          const gy = Math.floor(nd.y * invCell) | 0;
+          cellX[i] = gx;
+          cellY[i] = gy;
+          const h = (Math.imul(gx, 73856093) ^ Math.imul(gy, 19349663)) & mask;
+          next[i] = head[h];
+          head[h] = i;
         }
 
         let passOverlaps = 0;
@@ -4920,17 +5705,18 @@
           const a = list[i];
           if (a.x == null || a.y == null) continue;
           const ra = radii[i];
-          const gxa = Math.floor(a.x * invCell);
-          const gya = Math.floor(a.y * invCell);
+          const gxa = cellX[i];
+          const gya = cellY[i];
           const invMa = (a.fx != null && a.fy != null) ? 0 : 1 / Math.max(1, ra * ra);
 
           for (let oy = -1; oy <= 1; oy++) {
+            const qy = (gya + oy) | 0;
+            const hy = Math.imul(qy, 19349663);
             for (let ox = -1; ox <= 1; ox++) {
-              const cell = grid.get((gxa + ox + 32768) * 65536 + (gya + oy + 32768));
-              if (!cell) continue;
-              for (let k = 0; k < cell.length; k++) {
-                const j = cell[k];
-                if (j <= i) continue;
+              const qx = (gxa + ox) | 0;
+              const qh = (Math.imul(qx, 73856093) ^ hy) & mask;
+              for (let j = head[qh]; j !== -1; j = next[j]) {
+                if (j <= i || cellX[j] !== qx || cellY[j] !== qy) continue;
                 const b = list[j];
                 if (b.x == null || b.y == null) continue;
                 const rb = radii[j];
@@ -4985,12 +5771,15 @@
       return totalResolved;
     }
 
+    const precomputedResolved2D = !!(precomputedLayout && graphData.layout_resolved && nodeScale === 1);
     if (precomputedLayout) {
       for (let i = 0; i < nodes.length; i++) {
         nodes[i].x = W / 2 + precomputedLayout[i][0];
         nodes[i].y = H / 2 + precomputedLayout[i][1];
       }
-      resolveNodeOverlaps2D(nodes);
+      if (!precomputedResolved2D) {
+        resolveNodeOverlaps2D(nodes);
+      }
     }
 
     /* ── 力模拟（先 stop；DOM 挂好后再以完整 alpha 开场，一路衰减到落稳）── */
@@ -5078,74 +5867,152 @@
     setLoadingProgress(88);   // 开始挂载节点 DOM
     drawEdges();
 
-    /* ── 渲染节点 ── */
+    /* ── 渲染节点（模板 cloneNode + 事件委托 + 懒挂载 <text> 标签）── */
     const gNodes = gRoot.append('g').attr('class', 'nodes');
-    const node = gNodes.selectAll('g')
-      .data(nodes)
-      .join('g')
-      .attr('class', 'node-g')
-      .style('cursor', 'pointer')
-      .call(d3.drag()
+    const gNodesEl = gNodes.node();
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    const nodeTemplate = document.createElementNS(SVG_NS, 'g');
+    nodeTemplate.setAttribute('class', 'node-g');
+    const tmplGlow = document.createElementNS(SVG_NS, 'circle');
+    tmplGlow.setAttribute('class', 'node-glow');
+    tmplGlow.setAttribute('fill-opacity', '0');
+    tmplGlow.setAttribute('stroke', 'none');
+    const tmplCircle = document.createElementNS(SVG_NS, 'circle');
+    tmplCircle.setAttribute('class', 'node-circle');
+    tmplCircle.setAttribute('fill-opacity', '1');
+    tmplCircle.setAttribute('stroke-width', '1.5');
+    tmplCircle.setAttribute('stroke-opacity', '0.35');
+    nodeTemplate.appendChild(tmplGlow);
+    nodeTemplate.appendChild(tmplCircle);
+
+    const nodeElements = new Array(nodes.length);
+    const nodeFrag = document.createDocumentFragment();
+    for (let i = 0; i < nodes.length; i++) {
+      const d = nodes[i];
+      const r = scaledRadius(d);
+      const col = nodeColor(d);
+      const g = nodeTemplate.cloneNode(true);
+      g.__data__ = d;
+      if (d.x != null && d.y != null) {
+        g.setAttribute('transform', `translate(${d.x},${d.y})`);
+      }
+      const glowEl = g.firstChild;
+      const circleEl = glowEl.nextSibling;
+      glowEl.setAttribute('r', r + 6);
+      glowEl.setAttribute('fill', col);
+      circleEl.setAttribute('r', r);
+      circleEl.setAttribute('fill', col);
+      circleEl.setAttribute('stroke', col);
+      d.__el = g;
+      g.__nodeParts = { glow: glowEl, circle: circleEl, label: null };
+      d._vGlowR = r + 6;
+      d._vGlowOp = 0;
+      d._vCircleR = r;
+      d._vCircleFillOp = 1;
+      d._vCircleStrokeOp = 0.35;
+      d._vCircleStrokeW = 1.5;
+      d._vPe = '';
+      d._searchLower = ((d._info && d._info.title ? d._info.title : (d.label || '')) + '\0' + d.id + '\0' + (d.detail_id || '')).toLowerCase();
+      nodeElements[i] = g;
+      nodeFrag.appendChild(g);
+    }
+    gNodes.node().appendChild(nodeFrag);
+    const node = d3.selectAll(nodeElements);
+
+    let dragTargetDatum = null;
+    gNodes.call(
+      d3.drag()
+        .container(() => gNodes.node())
         // 双指触控交给 d3.zoom 做捏合缩放，单指触控与鼠标左键可拖拽节点
-        .filter(ev => !(ev.touches && ev.touches.length > 1) && !ev.button)
-        // 点击 / 轻触也会先触发 'start'：此前在 start 就 alphaTarget(0.2).restart()，
-        // 一次点击 = 约 55 个全图 tick（手机上 20 s 以上的卡顿）且什么都没拖。
-        // 改为首次真正移动时才加热（与 graph-3d.js 的 nodeDragReheated 同法），
-        // clickDistance 让轻微抖动仍算点击。
+        .filter(ev => {
+          if (is3DView() || (ev.touches && ev.touches.length > 1) || ev.button) return false;
+          const g = ev.target && ev.target.closest ? ev.target.closest('.node-g') : null;
+          dragTargetDatum = g ? g.__data__ : null;
+          return !!dragTargetDatum;
+        })
+        .subject(dragEv => {
+          const src = dragEv && dragEv.sourceEvent;
+          const g = src && src.target && src.target.closest ? src.target.closest('.node-g') : null;
+          return (g && g.__data__) || dragTargetDatum;
+        })
         .clickDistance(6)
-        .on('start', (ev, d) => {
+        .on('start', (ev) => {
           if (is3DView()) return;
+          const d = ev.subject;
+          if (!d) return;
           d.__dragReheated = false;
           d.fx = d.x; d.fy = d.y;
         })
-        .on('drag', (ev, d) => {
+        .on('drag', (ev) => {
           if (is3DView()) return;
+          const d = ev.subject;
+          if (!d) return;
           if (!d.__dragReheated) {
-            // 'drag' 事件里 ev.active 已含当前手势（恒 ≥1），不能再用 !ev.active 判断
             d.__dragReheated = true;
             simulation.alphaTarget(0.2).restart();
           }
           d.fx = ev.x; d.fy = ev.y;
         })
-        .on('end', (ev, d) => {
+        .on('end', (ev) => {
           if (is3DView()) return;
+          const d = ev.subject;
+          if (!d) return;
           if (d.__dragReheated && !ev.active) simulation.alphaTarget(0);
           d.__dragReheated = false;
           d.fx = null; d.fy = null;
         })
-      );
+    );
 
-    node.append('circle')
-      .attr('class', 'node-glow')
-      .attr('r', d => scaledRadius(d) + 6)
-      .attr('fill', d => nodeColor(d))
-      .attr('fill-opacity', 0)
-      .attr('stroke', 'none');
+    function ensure2DNodeLabel(d, fillOverride) {
+      const g = d.__el;
+      const parts = g && g.__nodeParts;
+      if (!parts) return null;
+      if (parts.label) return parts.label;
+      const textEl = document.createElementNS(SVG_NS, 'text');
+      textEl.setAttribute('class', 'node-label');
+      textEl.setAttribute('dy', scaledRadius(d) + 13);
+      textEl.setAttribute('text-anchor', 'middle');
+      textEl.setAttribute('font-size', scaledFontSize(d) + 'px');
+      textEl.setAttribute('fill', fillOverride || labelFill());
+      textEl.setAttribute('pointer-events', 'none');
+      textEl.style.display = 'none';
+      textEl.style.opacity = '0';
+      textEl.__lastOp = '0';
+      if (d.__filterHub) textEl.style.fontWeight = '700';
+      textEl.textContent = d._info.title || d.label;
+      textEl.__data__ = d;
+      g.appendChild(textEl);
+      parts.label = textEl;
+      created2DLabels.push(textEl);
+      return textEl;
+    }
 
-    node.append('circle')
-      .attr('class', 'node-circle')
-      .attr('r', scaledRadius)
-      .attr('fill', d => nodeColor(d))
-      .attr('fill-opacity', 1)
-      .attr('stroke', d => nodeColor(d))
-      .attr('stroke-width', 1.5)
-      .attr('stroke-opacity', 0.35);
+    let fastHi1 = [];
+    let fastHi2 = [];
+    let fastGlowEl = null;
+    let focusAttrDirty = false;
+    function fastFocusAllowed() {
+      return !timelineAnimating && !hasActiveGraphFilter() && !recencyDimEnabled;
+    }
+    function clearFastFocusClasses() {
+      if (!gNodesEl) return;
+      gNodesEl.classList.remove('is-dim-hover', 'is-dim-sidebar');
+      for (let i = 0; i < fastHi1.length; i++) fastHi1[i].classList.remove('is-hi-1');
+      for (let i = 0; i < fastHi2.length; i++) fastHi2[i].classList.remove('is-hi-2');
+      if (fastGlowEl) { fastGlowEl.classList.remove('is-glow'); fastGlowEl = null; }
+      fastHi1.length = 0;
+      fastHi2.length = 0;
+    }
 
-    // 逐 tick 写坐标时按「参与力模拟的子集」遍历数据侧数组，需要 datum → 元素的反查。
-    // 节点选择集是一次性 join（数据不再重绑），因此这里记一次即长期有效；
-    // 边已无 DOM 元素，由边层 canvas 按 edges 数组直接取端点坐标绘制。
-    node.each(function(d) { d.__el = this; });
-
-    label = node.append('text')
-      .attr('class', 'node-label')
-      .text(d => d._info.title || d.label)
-      .attr('dy', d => scaledRadius(d) + 13)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', d => scaledFontSize(d) + 'px')
-      .attr('fill', labelFill())
-      .attr('pointer-events', 'none')
-      .style('display', 'none')
-      .style('opacity', 0);
+    function invalidateNodeVisualCache() {
+      for (let i = 0; i < nodes.length; i++) {
+        const d = nodes[i];
+        d._vGlowOp = undefined;
+        d._vCircleFillOp = undefined;
+        d._vCircleStrokeOp = undefined;
+        d._vPe = undefined;
+      }
+    }
 
     /* ── 社区聚类中心漂浮标签层（2D，置于节点层之上）── */
     const gCommunityLabels = gRoot.append('g')
@@ -5258,7 +6125,8 @@
       sel.select('rect.community-label-bg')
         .attr('fill', d => communityColorMap.get(d.id) || COMMUNITY_COLORS[9])
         .attr('fill-opacity', 0.92);
-      // 字号或文本变化时重测 bbox；内边距随字号相对 13px 基准略缩放
+      // 字号或文本变化时重测 bbox（拆成两趟：先集中读 getBBox，再集中写 rect 属性，避免 20 次交错重排）
+      const pendingBBoxes = [];
       sel.each(function (d) {
         const textEl = this.querySelector('text.community-label-text');
         if (!textEl) return;
@@ -5267,18 +6135,33 @@
         const fontSize = communityLabelFontSize2D(count, sizeRange.min, sizeRange.max);
         const sizedKey = shortCommunityLabel(d.id) + '|' + fontSize.toFixed(2);
         if (this.__labelSizedKey === sizedKey) return;
-        const scale = fontSize / 13;
-        const padX = 9 * scale;
-        const padY = 4.5 * scale;
-        const bb = textEl.getBBox();
-        d3.select(this).select('rect.community-label-bg')
-          .attr('x', bb.x - padX)
-          .attr('y', bb.y - padY)
-          .attr('width', bb.width + padX * 2)
-          .attr('height', bb.height + padY * 2)
-          .attr('rx', (bb.height + padY * 2) / 2);
-        this.__labelSizedKey = sizedKey;
+        pendingBBoxes.push({
+          gEl: this,
+          textEl,
+          rectEl: this.querySelector('rect.community-label-bg'),
+          scale: fontSize / 13,
+          sizedKey,
+        });
       });
+      const measuredBoxes = new Array(pendingBBoxes.length);
+      for (let i = 0; i < pendingBBoxes.length; i++) {
+        measuredBoxes[i] = pendingBBoxes[i].textEl.getBBox();
+      }
+      for (let i = 0; i < pendingBBoxes.length; i++) {
+        const item = pendingBBoxes[i];
+        const bb = measuredBoxes[i];
+        if (item.rectEl && bb) {
+          const padX = 9 * item.scale;
+          const padY = 4.5 * item.scale;
+          const h = bb.height + padY * 2;
+          item.rectEl.setAttribute('x', bb.x - padX);
+          item.rectEl.setAttribute('y', bb.y - padY);
+          item.rectEl.setAttribute('width', bb.width + padX * 2);
+          item.rectEl.setAttribute('height', h);
+          item.rectEl.setAttribute('rx', h / 2);
+        }
+        item.gEl.__labelSizedKey = item.sizedKey;
+      }
       sel.attr('transform', d => `translate(${d.x},${d.y})`);
     }
 
@@ -5306,6 +6189,9 @@
           pauseSimulation2D();
           perspectiveController.syncViewport();
           perspectiveController.syncData(true);
+          if (hasActiveGraphFilter() && visibleNodeIds.size > 0 && visibleNodeIds.size < nodes.length) {
+            perspectiveController.frameNodes(visibleNodeIds);
+          }
         }
       }
     }
@@ -5361,14 +6247,13 @@
       const text = n ? (n + ' ' + meta.unit) : '全部';
       if (filterDimensionLabel) filterDimensionLabel.textContent = getColorModeLabel(colorMode);
       if (filterDimensionCurrent) {
-        filterDimensionCurrent.innerHTML = '<span>' + meta.emoji + '</span><span>' + text + '</span>';
+        filterDimensionCurrent.innerHTML = '<span>' + graphUiIconHtml(meta.icon) + '</span><span>' + text + '</span>';
       }
     }
 
     function renderFilterPanel() {
-      const title = '🔍 图谱筛选';
       if (filterToggle) filterToggle.title = '图谱筛选（当前' + getColorModeLabel(colorMode) + '）';
-      if (filterPanelTitle) filterPanelTitle.textContent = title;
+      if (filterPanelTitle) filterPanelTitle.innerHTML = graphUiIconHtml('search') + '<span>图谱筛选</span>';
       if (filterLabel) filterLabel.textContent = '筛选';
       if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
       if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
@@ -5414,10 +6299,15 @@
     }
 
     function refreshNodeColors() {
-      node.select('.node-glow').attr('fill', d => nodeColor(d));
-      node.select('.node-circle')
-        .attr('fill', d => nodeColor(d))
-        .attr('stroke', d => nodeColor(d));
+      for (let i = 0; i < nodes.length; i++) {
+        const d = nodes[i];
+        const parts = d.__el && d.__el.__nodeParts;
+        if (!parts) continue;
+        const col = nodeColor(d);
+        parts.glow.setAttribute('fill', col);
+        parts.circle.setAttribute('fill', col);
+        parts.circle.setAttribute('stroke', col);
+      }
       if (graph3dView) graph3dView.refreshColors();
       if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(false);
       renderLegend();
@@ -5471,8 +6361,20 @@
       updateCommunityLabels();
     }
 
+    let initialLayoutSettled = false;
+    const initialSettledQueue = [];
+    function onInitialLayoutSettled(fn) {
+      if (initialLayoutSettled) requestAnimationFrame(fn);
+      else initialSettledQueue.push(fn);
+    }
+
     function finishSimulationLoad() {
       labelsSettled2D = true;
+      initialLayoutSettled = true;
+      while (initialSettledQueue.length) {
+        const fn = initialSettledQueue.shift();
+        try { fn(); } catch (_e) { /* ignore */ }
+      }
       sync2DNodeLabels();
       if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(true);
       if (!LOW_END_DEVICE && !(navigator.connection && navigator.connection.saveData)) {
@@ -5500,19 +6402,46 @@
         n.vy = 0;
       }
       // 分片 warmup 期间浏览器能出帧，若此时把「重铺后挤成一团」的状态画出来，
-      // 用户会先看到一坨再跳到展开态。故只有未重铺（首屏叶序种子）时才预先落 DOM，
+      // 用户会先看到一坨再跳到展开态。故只有未重铺（且非预计算初帧）才预先落 DOM，
       // 刷新布局的分片路径保留上一帧画面，等 startVisiblePhase() 再一次性切到展开起点。
-      if (!opts.reseed) syncGraphDomFromSimulation();
+      if (!opts.reseed && !opts.precomputed) syncGraphDomFromSimulation();
 
       const startVisiblePhase = () => {
-        // 只接管计时器，不动 alpha：warmup 已把 alpha 从 1 衰减到约 0.44，
-        // 这里若再抬回 0.9 等于中途重新加热，是可见阶段来回抽动的直接来源。
-        resolveNodeOverlaps2D(simulation.nodes(), { maxPasses: 6 });
-        syncGraphDomFromSimulation();
+        const preSettled = !!(opts.precomputed && !opts.reseed && precomputedResolved2D);
+        // 导出期已完成防重叠的预计算布局无需重复解算与二次预热 tick，首帧直接落稳
+        if (!preSettled) {
+          resolveNodeOverlaps2D(simulation.nodes(), { maxPasses: 6 });
+        }
+        if (opts.precomputed) {
+          // DOM transform 已在创建节点时按 precomputed 坐标写入；此处仅同步视口边画布与社区漂浮标签
+          drawEdges();
+          updateCommunityLabels();
+        } else {
+          syncGraphDomFromSimulation();
+        }
         // 首屏收遮罩 / 进入已保存的 3D 偏好都挂在这里，必须先于 3D 早退执行（?view=3d 直开时
         // is3DView() 已为真，否则遮罩永不消失）
         if (opts.onVisible) opts.onVisible();
-        if (is3DView() || isPerspectiveView()) return;
+        if (is3DView() || isPerspectiveView()) {
+          if (preSettled) {
+            initialLayoutSettled = true;
+            while (initialSettledQueue.length) {
+              const fn = initialSettledQueue.shift();
+              try { fn(); } catch (_e) { /* ignore */ }
+            }
+          }
+          return;
+        }
+        if (preSettled) {
+          simulation.alpha(0);
+          simulation.stop();
+          pendingAutoFit2D = false;
+          if (!hasActiveGraphFilter()) {
+            whenGraphViewportReady(() => fitToScreen({ duration: 0 }));
+          }
+          finishSimulationLoad();
+          return;
+        }
         // 先把展开起点框进视口再开场：此前首屏在 end 之前没有任何 fit，
         // 叶序种子半径随规模增长（6k 节点 ≈ 790px），手机上几十秒内只看到被裁掉的中心。
         whenGraphViewportReady(() => fitToScreen({ duration: 0 }));
@@ -5692,43 +6621,106 @@
     }
 
     let tooltipNode = null;
+    let tooltipW = 0;
+    let tooltipH = 0;
+    let tooltipMoveRaf = 0;
+    let tooltipPendingX = 0;
+    let tooltipPendingY = 0;
+    let tooltipHasCoords = false;
     function refreshTooltipContent() {
+      tooltipW = 0;
+      tooltipH = 0;
       tooltip.innerHTML = tooltipHtml(tooltipNode);
       window.RNGraphTooltip?.renderMath?.(tooltip);
+      if (tooltipNode && !tooltip.classList.contains('hidden') && !tooltip.classList.contains('tt-pinned') && tooltipHasCoords) {
+        applyTooltipPosition(tooltipPendingX, tooltipPendingY);
+      }
+    }
+    function applyTooltipPosition(cx, cy) {
+      if (!tooltipNode || tooltip.classList.contains('tt-pinned')) return;
+      if (!Number.isFinite(cx) || !Number.isFinite(cy)) return;
+      const inPersp = typeof isPerspectiveView === 'function' && isPerspectiveView();
+      const offX = inPersp ? 22 : 14;
+      const offY = inPersp ? -14 : -10;
+      const x = cx + offX;
+      const y = cy + offY;
+      if (!tooltipW || !tooltipH) {
+        tooltipW = tooltip.offsetWidth;
+        tooltipH = tooltip.offsetHeight;
+      }
+      const left = Math.max(12, (x + tooltipW > window.innerWidth - 20 ? x - tooltipW - offX * 2 : x));
+      const top = Math.max(12, (y + tooltipH > window.innerHeight - 20 ? y - tooltipH : y));
+      tooltip.style.right = '';
+      tooltip.style.bottom = '';
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+      tooltip.style.transform = '';
+      tooltip.classList.remove('hidden');
     }
     function showTooltip(ev, d, pinned) {
       if (!d) return;
+      const shouldPin = Boolean(pinned || isTouchInteraction(ev));
+      if (!shouldPin) {
+        const hasEventCoords = Boolean(ev && Number.isFinite(ev.clientX) && Number.isFinite(ev.clientY));
+        if (!hasEventCoords && !tooltipHasCoords) return;
+        // 同一节点持续悬停 / 移动时不重绘并保留坐标，防止 3D 地形/立体每次指针移动都闪回左上角
+        if (tooltipNode === d && !tooltip.classList.contains('tt-pinned')) {
+          if (hasEventCoords) moveTooltip(ev);
+          return;
+        }
+      }
+      const needsPositionBeforeReveal = tooltip.classList.contains('hidden') || tooltip.classList.contains('tt-pinned') || !tooltip.style.left || !tooltip.style.top;
       tooltipNode = d;
       ensureSummaries();
-      refreshTooltipContent();
-      tooltip.classList.remove('hidden');
-      // 清理可能残留的 left/top/width，确保重新计算尺寸
-      tooltip.style.left = '';
-      tooltip.style.top = '';
-      tooltip.style.width = '';
-      tooltip.style.transform = '';
-      if (pinned || isTouchInteraction(ev)) {
+      if (shouldPin) {
+        if (tooltipMoveRaf) { cancelAnimationFrame(tooltipMoveRaf); tooltipMoveRaf = 0; }
+        tooltipHasCoords = false;
+        refreshTooltipContent();
         tooltip.classList.add('tt-pinned');
+        tooltip.style.left = '';
+        tooltip.style.top = '';
+        tooltip.style.width = '';
+        tooltip.style.transform = '';
         tooltip.style.right = '20px';
         tooltip.style.bottom = 'calc(84px + env(safe-area-inset-bottom, 0px))';
         pinnedNode = d;
+        tooltip.classList.remove('hidden');
       } else {
         tooltip.classList.remove('tt-pinned');
-        moveTooltip(ev);
+        tooltip.style.right = '';
+        tooltip.style.bottom = '';
+        tooltip.style.width = '';
+        tooltip.style.transform = '';
+        // 首次显示或刚从固定态切回悬停态时保持 hidden，等 rAF 写入 left/top 后再显示，避免在 (0, 0) 闪现
+        if (needsPositionBeforeReveal) tooltip.classList.add('hidden');
+        refreshTooltipContent();
+        if (ev && Number.isFinite(ev.clientX) && Number.isFinite(ev.clientY)) {
+          moveTooltip(ev);
+        } else if (tooltipHasCoords) {
+          applyTooltipPosition(tooltipPendingX, tooltipPendingY);
+        }
       }
     }
 
     function moveTooltip(ev) {
-      if (!ev || ev.clientX == null || ev.clientY == null) return;
-      const x = ev.clientX + 14, y = ev.clientY - 10;
-      const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
-      tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
-      tooltip.style.top  = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
-      tooltip.style.transform = '';
+      if (!ev || !Number.isFinite(ev.clientX) || !Number.isFinite(ev.clientY)) return;
+      tooltipPendingX = ev.clientX;
+      tooltipPendingY = ev.clientY;
+      tooltipHasCoords = true;
+      if (tooltipMoveRaf) return;
+      // rAF 合并定位，避免 mouseover 刚写完节点 class 后立即同步读 offsetWidth 触发 28k SVG 全树重排
+      tooltipMoveRaf = requestAnimationFrame(() => {
+        tooltipMoveRaf = 0;
+        applyTooltipPosition(tooltipPendingX, tooltipPendingY);
+      });
     }
 
     function hideTooltip() {
       tooltipNode = null;
+      tooltipW = 0;
+      tooltipH = 0;
+      tooltipHasCoords = false;
+      if (tooltipMoveRaf) { cancelAnimationFrame(tooltipMoveRaf); tooltipMoveRaf = 0; }
       tooltip.classList.add('hidden');
       tooltip.classList.remove('tt-pinned');
       tooltip.style.right = '';
@@ -5870,12 +6862,16 @@
     /** 时序动画中悬停已显现节点：邻居点亮 + 当前节点连线高亮（未显现节点 pointer-events 已关） */
     function applyTimelineHoverHighlight(d) {
       buildNeighborSet(d);
-      node.select('.node-circle').attr('fill-opacity', n => {
-        if (!timelineRevealedIds.has(n.id)) return 0;
-        return (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
-      });
-      node.select('.node-glow').attr('fill-opacity', n =>
-        (n.id === d.id) ? 0.18 * recencyDimOf(n) : 0);
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const parts = n.__el && n.__el.__nodeParts;
+        if (!parts) continue;
+        const dim = recencyDimOf(n);
+        const fo = !timelineRevealedIds.has(n.id) ? 0 : (neighborSet.has(n.id) ? 1 : 0.15) * dim;
+        const go = (n.id === d.id) ? 0.18 * dim : 0;
+        if (n._vCircleFillOp !== fo) { n._vCircleFillOp = fo; parts.circle.setAttribute('fill-opacity', fo); }
+        if (n._vGlowOp !== go) { n._vGlowOp = go; parts.glow.setAttribute('fill-opacity', go); }
+      }
       setEdgePaintMode('hover', d.id, nodeColor(d));
     }
 
@@ -5884,73 +6880,115 @@
       updateTimelineLinks();
     }
 
-    node
-      .on('mouseenter', (ev, d) => {
-        // 触屏轻触会先派发兼容鼠标事件：mouseenter 在此把浮窗钉住，随后的 click 看到
-        // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏与已固定卡片均跳过 hover。
-        if (isTouchInteraction(ev) || pinnedNode) return;
-        if (timelineAnimating) {
-          if (!timelineRevealedIds.has(d.id)) return;
-          if (sidebarFocusIds) {
-            if (sidebarFocusIds.has(d.id)) showTooltip(ev, d);
-            return;
-          }
-          applyTimelineHoverHighlight(d);
-          showTooltip(ev, d);
-          return;
-        }
-        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑；
-        // 但选中节点及其直连邻居仍可悬停显示浮窗卡片
+    function handleNodeEnter2D(ev, d) {
+      // 触屏轻触会先派发兼容鼠标事件：mouseenter 在此把浮窗钉住，随后的 click 看到
+      // pinnedNode === d 又把它关掉 → 「先显后隐，第二下才生效」。触屏与已固定卡片均跳过 hover。
+      if (isTouchInteraction(ev) || pinnedNode) return;
+      if (timelineAnimating) {
+        if (!timelineRevealedIds.has(d.id)) return;
         if (sidebarFocusIds) {
           if (sidebarFocusIds.has(d.id)) showTooltip(ev, d);
           return;
         }
-        // 筛选态下灰色节点不响应悬停（pointer-events 已关，此处作兜底）
-        if (hasActiveGraphFilter() && !visibleNodeIds.has(d.id)) return;
+        applyTimelineHoverHighlight(d);
+        showTooltip(ev, d);
+        return;
+      }
+      // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑；
+      // 但选中节点及其直连邻居仍可悬停显示浮窗卡片
+      if (sidebarFocusIds) {
+        if (sidebarFocusIds.has(d.id)) showTooltip(ev, d);
+        return;
+      }
+      // 筛选态下灰色节点不响应悬停（pointer-events 已关，此处作兜底）
+      if (hasActiveGraphFilter() && !visibleNodeIds.has(d.id)) return;
 
-        buildNeighborSet(d);
+      buildNeighborSet(d);
+      if (fastFocusAllowed() && !focusAttrDirty) {
+        clearFastFocusClasses();
+        if (d.__el) {
+          d.__el.classList.add('is-glow');
+          fastGlowEl = d.__el;
+        }
+        neighborSet.forEach(nid => {
+          const n = nodeById2D.get(nid);
+          if (n && n.__el) {
+            n.__el.classList.add('is-hi-1');
+            fastHi1.push(n.__el);
+          }
+        });
+        gNodesEl.classList.add('is-dim-hover');
+      } else {
+        clearFastFocusClasses();
+        focusAttrDirty = true;
         const hasFilter = hasActiveGraphFilter();
-        // 用缓存的子元素直写属性（此前每个节点两次 querySelector + d3 属性访问器）
-        node.each(function (n) {
-          const parts = nodePartsOf(this);
-          // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          const parts = n.__el && n.__el.__nodeParts;
+          if (!parts) continue;
+          const dim = recencyDimOf(n);
           const fo = (hasFilter && !visibleNodeIds.has(n.id))
             ? 0.06
-            : (neighborSet.has(n.id) ? 1 : 0.15) * recencyDimOf(n);
-          parts.circle.setAttribute('fill-opacity', fo);
-          parts.glow.setAttribute('fill-opacity', n.id === d.id ? 0.18 * recencyDimOf(n) : 0);
-        });
-        setEdgePaintMode('hover', d.id, nodeColor(d));
-        showTooltip(ev, d);
-      })
-      .on('mousemove', ev => {
-        if (isTouchInteraction(ev) || pinnedNode) return;
-        moveTooltip(ev);
-      })
-      .on('mouseleave', () => {
-        if (isTouchInteraction() || pinnedNode) return;
-        if (timelineAnimating) {
-          if (sidebarFocusIds) {
-            if (!isMobile || !pinnedNode) hideTooltip();
-            return;
+            : (neighborSet.has(n.id) ? 1 : 0.15) * dim;
+          const go = n.id === d.id ? 0.18 * dim : 0;
+          if (n._vCircleFillOp !== fo) {
+            n._vCircleFillOp = fo;
+            parts.circle.setAttribute('fill-opacity', fo);
           }
-          clearTimelineHoverHighlight();
-          if (!isMobile || !pinnedNode) hideTooltip();
-          return;
+          if (n._vGlowOp !== go) {
+            n._vGlowOp = go;
+            parts.glow.setAttribute('fill-opacity', go);
+          }
         }
-        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），不执行 mouseleave 的样式重置逻辑，
-        // 只收起悬停浮窗
+      }
+      setEdgePaintMode('hover', d.id, nodeColor(d));
+      showTooltip(ev, d);
+    }
+
+    function handleNodeLeave2D() {
+      if (isTouchInteraction() || pinnedNode) return;
+      if (timelineAnimating) {
         if (sidebarFocusIds) {
           if (!isMobile || !pinnedNode) hideTooltip();
           return;
         }
-
+        clearTimelineHoverHighlight();
+        if (!isMobile || !pinnedNode) hideTooltip();
+        return;
+      }
+      if (sidebarFocusIds) {
+        if (!isMobile || !pinnedNode) hideTooltip();
+        return;
+      }
+      if (!focusAttrDirty && gNodesEl.classList.contains('is-dim-hover')) {
+        clearFastFocusClasses();
+        setEdgePaintMode('filter');
+      } else {
         restoreFilterAppearance();
-        // 移动端固定卡片后，mouseleave 不隐藏 tooltip
-        if (!isMobile || !pinnedNode) {
-          hideTooltip();
-        }
-      });
+      }
+      if (!isMobile || !pinnedNode) {
+        hideTooltip();
+      }
+    }
+    let hoveredNodeG = null;
+    gNodesEl.addEventListener('mouseover', ev => {
+      if (isTouchInteraction(ev) || pinnedNode) return;
+      const g = ev.target && ev.target.closest ? ev.target.closest('.node-g') : null;
+      if (!g || g === hoveredNodeG) return;
+      hoveredNodeG = g;
+      if (g.__data__) handleNodeEnter2D(ev, g.__data__);
+    });
+    gNodesEl.addEventListener('mousemove', ev => {
+      if (!hoveredNodeG || isTouchInteraction(ev) || pinnedNode) return;
+      moveTooltip(ev);
+    });
+    gNodesEl.addEventListener('mouseout', ev => {
+      if (!hoveredNodeG) return;
+      const rel = ev.relatedTarget && ev.relatedTarget.closest ? ev.relatedTarget.closest('.node-g') : null;
+      if (rel === hoveredNodeG) return;
+      hoveredNodeG = null;
+      if (!rel) handleNodeLeave2D();
+    });
 
     /* ── 节点计数 ── */
     function updateCount(visible) {
@@ -6180,6 +7218,7 @@
       renderFilterPanel();
       applyFilters();
       updateFilterCount();
+      if (typeof syncGraphUrlParams === 'function') syncGraphUrlParams();
     });
     document.getElementById('filter-close').addEventListener('click', (ev) => {
       ev.stopPropagation();
@@ -6221,11 +7260,36 @@
       countEl.hidden = count === 0;
     }
 
-    /* ── 搜索 ── */
-    document.getElementById('graph-search').addEventListener('input', ev => {
-      searchQuery = ev.target.value.trim().toLowerCase();
-      applyFilters();
-      updateFilterCount();
+    /* ── 搜索（防抖合并连续键入并避开 IME 组字期，输入清空时立即恢复）── */
+    let graphSearchTimer = 0;
+    let graphSearchComposing = false;
+    const graphSearchInputEl = document.getElementById('graph-search');
+    const GRAPH_SEARCH_DEBOUNCE_MS = LOW_END_DEVICE ? 260 : 180;
+    function scheduleGraphSearch() {
+      if (graphSearchComposing) return;
+      const nextQ = graphSearchInputEl.value.trim().toLowerCase();
+      if (graphSearchTimer) {
+        clearTimeout(graphSearchTimer);
+        graphSearchTimer = 0;
+      }
+      const runSearch = () => {
+        graphSearchTimer = 0;
+        if (searchQuery === nextQ) return;
+        searchQuery = nextQ;
+        applyFilters();
+        updateFilterCount();
+      };
+      if (!nextQ) {
+        runSearch();
+        return;
+      }
+      graphSearchTimer = setTimeout(runSearch, GRAPH_SEARCH_DEBOUNCE_MS);
+    }
+    graphSearchInputEl.addEventListener('compositionstart', () => { graphSearchComposing = true; });
+    graphSearchInputEl.addEventListener('compositionend', () => { graphSearchComposing = false; scheduleGraphSearch(); });
+    graphSearchInputEl.addEventListener('input', ev => {
+      if (ev && ev.isComposing) return;
+      scheduleGraphSearch();
     });
 
     /* ── 路线视图切换（已合入筛选面板内 <details> 区块）── */
@@ -6237,8 +7301,11 @@
       topicChipsEl.insertAdjacentHTML('beforeend', window.RNDepthFilters.DEPTH_ORDER.map(key => {
         const meta = DEPTH_META[key] || {};
         const label = escapeHtml(meta.label || key);
+        const iconHtml = (window.RNIcons && window.RNIcons.depthSvg)
+          ? window.RNIcons.depthSvg(key, meta.icon)
+          : '';
         return '<button class="filter-depth-chip" type="button" data-depth="' + escapeHtml(key)
-          + '" title="' + label + '"><span>' + (meta.emoji || '🏷️') + '</span><span>'
+          + '" title="' + label + '"><span>' + iconHtml + '</span><span>'
           + label + '</span></button>';
       }).join(''));
     }
@@ -6292,8 +7359,7 @@
 
     function nodeMatchesSearch(d) {
       if (!searchQuery) return true;
-      return (d._info.title || d.label || '').toLowerCase().includes(searchQuery)
-          || d.id.toLowerCase().includes(searchQuery);
+      return d._searchLower.includes(searchQuery);
     }
 
     function nodePartsOf(el) {
@@ -6308,60 +7374,71 @@
       return parts;
     }
 
-    /** 按 applyFilters 缓存的筛选结果恢复节点外观（hover 离开 / 取消侧栏聚焦）。
-     *  此前这两处都整跑一遍 applyFilters：6 个谓词 × 6k 节点、标签与社区标签同步、
-     *  筛选态下还重建力模拟子图（实测 56–87 ms），扫过密集区每个节点都付一次。 */
     function restoreFilterAppearance() {
-      const hasFilter = hasActiveGraphFilter();
-      node.each(function (d) {
-        const parts = nodePartsOf(this);
+      clearFastFocusClasses();
+      focusAttrDirty = false;
+      for (let i = 0; i < nodes.length; i++) {
+        const d = nodes[i];
+        const el = d.__el;
+        if (!el) continue;
+        const parts = nodePartsOf(el);
         const ok = d.__filterOk !== false;
         const hub = !!d.__filterHub;
         const dim = recencyDimOf(d);
-        this.style.opacity = '';
-        parts.glow.setAttribute('fill-opacity', hub && ok ? 0.28 * dim : 0);
-        parts.circle.setAttribute('fill-opacity', ok ? dim : 0.06);
-        parts.circle.setAttribute('stroke-opacity', ok ? (hub ? 0.85 : 0.35) * dim : 0.05);
-      });
+        if (el.style.opacity !== '') el.style.opacity = '';
+        const go = hub && ok ? 0.28 * dim : 0;
+        const fo = ok ? dim : 0.06;
+        const so = ok ? (hub ? 0.85 : 0.35) * dim : 0.05;
+        if (d._vGlowOp !== go) { d._vGlowOp = go; parts.glow.setAttribute('fill-opacity', go); }
+        if (d._vCircleFillOp !== fo) { d._vCircleFillOp = fo; parts.circle.setAttribute('fill-opacity', fo); }
+        if (d._vCircleStrokeOp !== so) { d._vCircleStrokeOp = so; parts.circle.setAttribute('stroke-opacity', so); }
+      }
       setEdgePaintMode('filter');
     }
 
     function applyFilters() {
       if (timelineAnimating) return;
+      clearFastFocusClasses();
+      focusAttrDirty = false;
       const hasFilter = hasActiveGraphFilter();
       visibleNodeIds.clear();
       let visible = 0;
 
-      // 每节点原先要新建 4 个 d3 selection（g / glow / circle / label），全图约 1.5 万个。
-      // 这里改写原生元素、并把三个子元素缓存在宿主 <g> 上，输出的属性与此前逐字对应。
-      node.each(function(d) {
+      for (let i = 0; i < nodes.length; i++) {
+        const d = nodes[i];
+        const el = d.__el;
         const ok = nodeMatchesDegreeTop(d) && nodeMatchesRecencyTop(d)
           && nodeMatchesCurrentFilter(d)
           && nodeMatchesSearch(d) && nodeMatchesDepth(d) && nodeMatchesInstitutionFilter(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
         const hub = isCurrentTopicHub(d);
-        // 缓存筛选结果：hover 离开 / 取消侧栏聚焦只需按它恢复外观，不必重跑筛选与子图重建
+        const wasHub = !!d.__filterHub;
         d.__filterOk = ok;
         d.__filterHub = hub;
-        this.classList.toggle('node-depth-hub', hub);
-        // 不再用 <g> 组级 opacity 淡化：每个半透明组各成一个合成层，平移时多约两成栅格。
-        // 淡化全交给下面 circle / glow 的 fill-opacity、stroke-opacity；写空值清掉时序模式留下的残留
-        this.style.opacity = '';
-        // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
-        this.style.pointerEvents = hasFilter && !ok ? 'none' : '';
+        if (wasHub !== hub) el.classList.toggle('node-depth-hub', hub);
+        if (el.style.opacity !== '') el.style.opacity = '';
+        const pe = hasFilter && !ok ? 'none' : '';
+        if (d._vPe !== pe) { d._vPe = pe; el.style.pointerEvents = pe; }
 
-        const parts = nodePartsOf(this);
-        const hubR = hub ? scaledRadius(d) * 1.28 : scaledRadius(d);
+        const parts = nodePartsOf(el);
+        const baseR = scaledRadius(d);
+        const hubR = hub ? baseR * 1.28 : baseR;
+        const glowR = hubR + 8;
         const dim = recencyDimOf(d);
-        parts.glow.setAttribute('r', hubR + 8);
-        parts.glow.setAttribute('fill-opacity', hub && ok ? 0.28 * dim : 0);
-        parts.circle.setAttribute('r', hubR);
-        parts.circle.setAttribute('fill-opacity', ok ? dim : 0.06);
-        parts.circle.setAttribute('stroke-opacity', ok ? (hub ? 0.85 : 0.35) * dim : 0.05);
-        parts.circle.setAttribute('stroke-width', hub ? 2.5 : 1.5);
-        parts.label.style.fontWeight = hub ? '700' : '';
-      });
+        const go = hub && ok ? 0.28 * dim : 0;
+        const fo = ok ? dim : 0.06;
+        const so = ok ? (hub ? 0.85 : 0.35) * dim : 0.05;
+        const sw = hub ? 2.5 : 1.5;
+
+        if (d._vGlowR !== glowR) { d._vGlowR = glowR; parts.glow.setAttribute('r', glowR); }
+        if (d._vGlowOp !== go) { d._vGlowOp = go; parts.glow.setAttribute('fill-opacity', go); }
+        if (d._vCircleR !== hubR) { d._vCircleR = hubR; parts.circle.setAttribute('r', hubR); }
+        if (d._vCircleFillOp !== fo) { d._vCircleFillOp = fo; parts.circle.setAttribute('fill-opacity', fo); }
+        if (d._vCircleStrokeOp !== so) { d._vCircleStrokeOp = so; parts.circle.setAttribute('stroke-opacity', so); }
+        if (d._vCircleStrokeW !== sw) { d._vCircleStrokeW = sw; parts.circle.setAttribute('stroke-width', sw); }
+        if (parts.label && wasHub !== hub) parts.label.style.fontWeight = hub ? '700' : '';
+      }
       sync2DNodeLabels();
       updateCommunityLabels();
 
@@ -6371,7 +7448,15 @@
       syncFilterSimulation(hasFilter);
       updateCount(visible);
       if (graph3dView && is3DView()) graph3dView.syncFilters();
-      if (perspectiveController && isPerspectiveView()) perspectiveController.syncData(true);
+      if (perspectiveController && isPerspectiveView()) {
+        perspectiveController.syncData(true, { morph: true });
+        if ((focusedCommunityId || searchQuery || (currentDepth && currentDepth !== 'all'))
+            && visibleNodeIds.size > 0 && visibleNodeIds.size < nodes.length) {
+          perspectiveController.frameNodes(visibleNodeIds);
+        } else if (!hasFilter && !sidebarNode) {
+          perspectiveController.fitToView();
+        }
+      }
       if (searchQuery) flyToVisible();
     }
 
@@ -6521,6 +7606,8 @@
 
     // 按当前 timelineRevealedIds 一次性渲染（无动画，用于拖拽 / 倒退）
     function renderTimelineStatic() {
+      clearFastFocusClasses();
+      focusAttrDirty = false;
       node.each(function (d) {
         const shown = timelineRevealedIds.has(d.id);
         const g = d3.select(this);
@@ -6722,11 +7809,21 @@
       // 隐藏全部，力模拟成员清空（从 0 个节点开始生长）
       // pointer-events: none 确保透明节点不捕获任何鼠标/触控事件（opacity:0 在 SVG 中不足以屏蔽指针事件）
       node.interrupt().style('opacity', 0).style('pointer-events', 'none');
+      clearFastFocusClasses();
+      focusAttrDirty = false;
       node.select('.node-circle')
         .interrupt()
         .attr('fill-opacity', 0)
         .attr('stroke-opacity', 0);
-      node.select('.node-label').style('opacity', 0);
+      if (created2DLabels.length) {
+        for (let i = 0; i < created2DLabels.length; i++) {
+          const el = created2DLabels[i];
+          el.style.display = 'none';
+          el.style.opacity = '0';
+          el.__lastOp = '0';
+        }
+      }
+      invalidateNodeVisualCache();
       updateCommunityLabels();         // 时序模式下隐藏社区漂浮标签（退出时由 applyFilters 恢复）
       setEdgePaintMode('timeline');   // 显现集为空 → 边层此刻不画任何边
       syncTimelineSimulation();
@@ -6760,7 +7857,8 @@
       node.interrupt().style('pointer-events', null);
       node.select('.node-circle').interrupt();
       node.select('.node-glow').interrupt();
-      node.select('.node-label').interrupt();
+      if (created2DLabels.length) d3.selectAll(created2DLabels).interrupt();
+      invalidateNodeVisualCache();
       svg.interrupt('tlfit');
       updateTimelineControls();
 
@@ -6983,6 +8081,10 @@
         graph3dView.fitToVisible();
         return;
       }
+      if (isPerspectiveView() && perspectiveController) {
+        perspectiveController.frameNodes(visibleNodeIds);
+        return;
+      }
       const transform = computeGraphFitTransform(
         nodes.filter(n => visibleNodeIds.has(n.id)),
         {
@@ -7021,6 +8123,10 @@
     function flyToVisible() {
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
       if (visNodes.length === 0 || visNodes.length > 15) return;
+      if (isPerspectiveView() && perspectiveController) {
+        perspectiveController.frameNodes(visibleNodeIds);
+        return;
+      }
       const transform = computeGraphFitTransform(visNodes, {
         minScale: GRAPH_ZOOM_MIN,
         maxScale: GRAPH_ZOOM_MAX,
@@ -7069,7 +8175,10 @@
         });
       });
     }
-    window.addEventListener('resize', onGraphViewportResize);
+    window.addEventListener('resize', () => {
+      cachedHeaderH = null;
+      onGraphViewportResize();
+    });
     // 像素比变化（跨屏拖动 / 系统缩放）不一定触发 resize：用 resolution 媒体查询监听，每次变化后重新挂
     (function watchDevicePixelRatio() {
       if (!window.matchMedia) return;
@@ -7099,15 +8208,20 @@
     // 尽早写入当前可视高度
     syncGraphShellToViewport();
 
-    /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
+    /* ── 主题/UI 切换监听：同步更新 D3 SVG 元素与 3D 背景颜色 ── */
     new MutationObserver(() => {
       scheduleEdgeDraw();   // 边色随主题变，重绘整层即可
-      label.attr('fill', labelFill());
+      if (created2DLabels.length) {
+        const lf = labelFill();
+        for (let i = 0; i < created2DLabels.length; i++) {
+          created2DLabels[i].setAttribute('fill', lf);
+        }
+      }
       if (graph3dView) graph3dView.refreshColors();
       if (perspectiveController && isPerspectiveView()) perspectiveController.refreshTheme();
     }).observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['data-theme'],
+      attributeFilter: ['data-theme', 'data-ui'],
     });
 
     /* ════════════════════════════════════════════
@@ -7241,6 +8355,25 @@
       return dim;
     }
 
+    const newNodeCutoffTs = latestGraphAddedTs > 0 ? (latestGraphAddedTs - 14 * 86400000) : 0;
+    function isRecentNewNode(d) {
+      return !!(newNodeCutoffTs && d && d._addedTs && d._addedTs >= newNodeCutoffTs);
+    }
+
+    function syncGraphUrlParams() {
+      if (typeof history === 'undefined' || typeof history.replaceState !== 'function') return;
+      try {
+        const u = new URL(location.href);
+        if (spatialViewMode === '2d') u.searchParams.delete('view');
+        else u.searchParams.set('view', spatialViewMode);
+        if (sidebarNode && sidebarNode.id) u.searchParams.set('focus', sidebarNode.id);
+        else u.searchParams.delete('focus');
+        if (focusedCommunityId) u.searchParams.set('community', focusedCommunityId);
+        else u.searchParams.delete('community');
+        history.replaceState(null, '', u.pathname + u.search + u.hash);
+      } catch (_e) { /* ignore */ }
+    }
+
     if (window.RNGraphPerspective && typeof window.RNGraphPerspective.createController === 'function') {
       perspectiveController = window.RNGraphPerspective.createController({
         wrapEl: wrap,
@@ -7248,7 +8381,7 @@
         nodeCount: nodes.length,
         persist: true,
         allowTouchOrbit: true,
-        defaultDistance: 1.72,
+        defaultDistance: 1.92,
         getViewportSize: () => ({ width: W, height: H }),
         getGraphData: () => ({
           nodes,
@@ -7262,8 +8395,15 @@
           getNodeAlpha: getPerspectiveNodeAlpha,
         }),
         isDark,
-        getBgColor: () => (isDark() ? '#191919' : '#f7f6f3'),
+        getBgColor: () => {
+          const isClassic = document.documentElement.getAttribute('data-ui') === 'classic';
+          if (isClassic) return isDark() ? '#191919' : '#f7f6f3';
+          return isDark() ? '#0a0b0d' : '#f5f4f0';
+        },
         getLabelText: (d) => d._info?.title || d.label || d.id,
+        getActiveCommunityId: () => focusedCommunityId,
+        getSearchMatchIds: () => (searchQuery ? visibleNodeIds : null),
+        isNodeNew: isRecentNewNode,
         getCommunityLabels: () => {
           if (!communityLabelsVisible()) return [];
           const centroids = computeCommunityCentroids();
@@ -7294,6 +8434,16 @@
         },
         isLabelsVisible: () => !timelineAnimating,
         isEdgesVisible: () => showEdges,
+        onCommunityClick: (cid) => {
+          if (areFiltersLocked() || !cid) return;
+          focusedCommunityId = (focusedCommunityId === cid) ? null : cid;
+          if (colorMode !== 'community') setColorMode('community');
+          renderLegend();
+          renderFilterPanel();
+          applyFilters();
+          updateFilterCount();
+          syncGraphUrlParams();
+        },
         onNodeHover: (d, pointerEv) => {
           if (timelineAnimating || isTouchInteraction(pointerEv) || pinnedNode) return;
           if (sidebarFocusIds) {
@@ -7411,6 +8561,15 @@
     if (viewMode3dBtn) {
       viewMode3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
     }
+    if (toolbarView2dBtn) {
+      toolbarView2dBtn.addEventListener('click', () => requestSpatialViewMode('2d'));
+    }
+    if (toolbarViewPerspBtn) {
+      toolbarViewPerspBtn.addEventListener('click', () => requestSpatialViewMode('perspective'));
+    }
+    if (toolbarView3dBtn) {
+      toolbarView3dBtn.addEventListener('click', () => requestSpatialViewMode('3d'));
+    }
     if (spatialViewMode === 'perspective') {
       if (perspectiveController && !perspectiveController.isSupported()) {
         spatialViewMode = '2d';
@@ -7444,6 +8603,7 @@
     const sbCommunity  = document.getElementById('sb-community');
     const sbTitle      = document.getElementById('sb-title');
     const sbHealth     = document.getElementById('sb-health');
+    const sbMetrics    = document.getElementById('sb-metrics');
     const sbTags       = document.getElementById('sb-tags');
     const sbSummary    = document.getElementById('sb-summary');
     const sbNeighborsSec  = document.getElementById('sb-neighbors-section');
@@ -7491,13 +8651,46 @@
 
       sidebarSecondaryIds = secondary;
 
-      const tlShown = id => !timelineAnimating || timelineRevealedIds.has(id);
-      // 非邻居淡化写在 circle 的 fill / stroke-opacity 上，而不是 <g> 组级 opacity（见 applyFilters）
-      const dimFactor = n => tlShown(n.id) ? sidebarDimFactorOf(n) * recencyDimOf(n) : 0;
-      node.select('.node-glow').attr('fill-opacity', n => (n.id === d.id && tlShown(n.id)) ? 0.2 * recencyDimOf(n) : 0);
-      node.select('.node-circle')
-        .attr('fill-opacity', dimFactor)
-        .attr('stroke-opacity', n => 0.35 * dimFactor(n));
+      if (fastFocusAllowed()) {
+        if (focusAttrDirty) restoreFilterAppearance();
+        else clearFastFocusClasses();
+        if (d.__el) {
+          d.__el.classList.add('is-glow');
+          fastGlowEl = d.__el;
+        }
+        sidebarFocusIds.forEach(nid => {
+          const n = nodeById2D.get(nid);
+          if (n && n.__el) {
+            n.__el.classList.add('is-hi-1');
+            fastHi1.push(n.__el);
+          }
+        });
+        secondary.forEach(nid => {
+          if (sidebarFocusIds.has(nid)) return;
+          const n = nodeById2D.get(nid);
+          if (n && n.__el) {
+            n.__el.classList.add('is-hi-2');
+            fastHi2.push(n.__el);
+          }
+        });
+        gNodesEl.classList.add('is-dim-sidebar');
+      } else {
+        clearFastFocusClasses();
+        focusAttrDirty = true;
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          const parts = n.__el && n.__el.__nodeParts;
+          if (!parts) continue;
+          const shown = !timelineAnimating || timelineRevealedIds.has(n.id);
+          const dim = recencyDimOf(n);
+          const go = (n.id === d.id && shown) ? 0.2 * dim : 0;
+          const fo = shown ? sidebarDimFactorOf(n) * dim : 0;
+          const so = 0.35 * fo;
+          if (n._vGlowOp !== go) { n._vGlowOp = go; parts.glow.setAttribute('fill-opacity', go); }
+          if (n._vCircleFillOp !== fo) { n._vCircleFillOp = fo; parts.circle.setAttribute('fill-opacity', fo); }
+          if (n._vCircleStrokeOp !== so) { n._vCircleStrokeOp = so; parts.circle.setAttribute('stroke-opacity', so); }
+        }
+      }
       sync2DNodeLabels();
       // 时序模式下未显现的边由边层绘制时跳过（判据同 tlShown）
       setEdgePaintMode('sidebar', d.id, nodeColor(d));
@@ -7525,7 +8718,12 @@
         updateTimelineLinks();   // 切回 timeline 上色模式
         return;
       }
-      restoreFilterAppearance();   // 内部切回 filter 上色模式；不重跑筛选、不重建子图
+      if (!focusAttrDirty && gNodesEl.classList.contains('is-dim-sidebar')) {
+        clearFastFocusClasses();
+        setEdgePaintMode('filter');
+      } else {
+        restoreFilterAppearance();   // 内部切回 filter 上色模式；不重跑筛选、不重建子图
+      }
       sync2DNodeLabels();          // 标签淡化系数随聚焦态变
     }
 
@@ -7633,6 +8831,14 @@
         sbHealth.innerHTML = window.RNGraphTooltip?.buildTooltipHealthHtml?.(d) || '';
         sbHealth.hidden = !sbHealth.innerHTML;
       }
+      if (sbMetrics) {
+        const deg = d._degree || 0;
+        const pct = Math.max(4, Math.min(100, Math.round((Math.log(1 + deg) / Math.log(1 + Math.max(2, graphMaxDegree))) * 100)));
+        const dateStr = d._activityDate || d._addedDate || '';
+        sbMetrics.innerHTML = '<span>连接 ' + deg + '</span><span class="sb-metric-bar" title="相对最高连接枢纽比例"><i style="width:' + pct + '%"></i></span>'
+          + (dateStr ? '<span>更新 ' + escapeHtml(dateStr) + '</span>' : '');
+        sbMetrics.hidden = false;
+      }
       renderSidebarSummary(d);
 
       renderSidebarCatalogParts(d);
@@ -7661,6 +8867,15 @@
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
       scheduleSidebarViewportSync();
+      if (isPerspectiveView() && perspectiveController) {
+        if (typeof perspectiveController.setSidebarOffset === 'function') {
+          perspectiveController.setSidebarOffset(isMobile ? 0 : 150);
+        }
+        if (typeof perspectiveController.focusNode === 'function') {
+          perspectiveController.focusNode(d.id);
+        }
+      }
+      syncGraphUrlParams();
       // 目录尚未到达：先按空目录渲染，取回后若侧栏仍停在该节点再补 tags / related
       if (!indexItems.length) {
         ensureCatalog().then(ok => { if (ok && sidebarNodeId === d.id) renderSidebarCatalogParts(d); });
@@ -7685,9 +8900,18 @@
       sidebar.classList.remove('open');
       wrap.classList.remove('sidebar-open');
       if (isMobile) hideTooltip();
+      if (perspectiveController) {
+        if (typeof perspectiveController.setSidebarOffset === 'function') {
+          perspectiveController.setSidebarOffset(0);
+        }
+        if (typeof perspectiveController.focusNode === 'function') {
+          perspectiveController.focusNode(null);
+        }
+      }
       // 侧栏未开时空白点击也会走到这里：此时绘图区宽度没变，无需重新取景。
       if (wasOpen) scheduleSidebarViewportSync({ refit: true });
       clearNodeNeighborHighlight();
+      syncGraphUrlParams();
     }
 
     sbClose.addEventListener('click', closeSidebar);
@@ -7744,8 +8968,11 @@
       );
     }
 
-    // 覆盖节点 click：触屏先显示漂浮卡片，PC 打开侧边栏，均不直接跳转
-    node.on('click', (ev, d) => {
+    // 覆盖节点 click（委托在 gNodesEl，避免 8k 节点各自绑 listener）：触屏先显示漂浮卡片，PC 打开侧边栏，均不直接跳转
+    gNodesEl.addEventListener('click', ev => {
+      const g = ev.target && ev.target.closest ? ev.target.closest('.node-g') : null;
+      const d = g && g.__data__;
+      if (!d) return;
       ev.stopPropagation();
       // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击查看详情
       // （openSidebar 已做时序感知，仅在「已显现子集」内高亮，不会显示背景全局图）
@@ -7791,7 +9018,13 @@
       renderFilterPanel();
       applyFilters();
       updateFilterCount();
-      const fitFocusedCommunity = () => fitToVisibleNodes();
+      let commFitDone = false;
+      const fitFocusedCommunity = () => {
+        if (commFitDone) return;
+        commFitDone = true;
+        fitToVisibleNodes();
+      };
+      onInitialLayoutSettled(fitFocusedCommunity);
       simulation.on('end.community', () => { fitFocusedCommunity(); simulation.on('end.community', null); });
       setTimeout(fitFocusedCommunity, 1400);
     }
@@ -7805,7 +9038,13 @@
       applyFilters();
       updateFilterCount();
       openFilterAccordionSection('filter-institution-section');
-      const fitFocusedInstitution = () => fitToVisibleNodes();
+      let instFitDone = false;
+      const fitFocusedInstitution = () => {
+        if (instFitDone) return;
+        instFitDone = true;
+        fitToVisibleNodes();
+      };
+      onInitialLayoutSettled(fitFocusedInstitution);
       simulation.on('end.institution', () => { fitFocusedInstitution(); simulation.on('end.institution', null); });
       setTimeout(fitFocusedInstitution, 1400);
     }
@@ -7840,6 +9079,7 @@
           );
           presentNodeDetail(focusNode);
         };
+        onInitialLayoutSettled(flyToFocus);
         simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
         setTimeout(flyToFocus, 1400);
       }

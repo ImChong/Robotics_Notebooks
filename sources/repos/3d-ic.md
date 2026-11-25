@@ -5,9 +5,10 @@
 - **标题：** 3D Interaction Chains — Official Code
 - **类型：** repo
 - **代码：** <https://github.com/kekeZ66/3D-IC>
-- **论文：** ICML 2026 Poster — <https://icml.cc/virtual/2026/poster/61610>
+- **论文：** ICML 2026 Poster — <https://icml.cc/virtual/2026/poster/61610>（Poster `#809`：`61610.png`）
 - **入库日期：** 2026-07-10
-- **一句话说明：** **3D-IC** 开放词汇移动操作规划框架官方实现入口（ingest 时仓库为新建公开仓，以 README 更新为准）。
+- **复核日期：** 2026-11-21
+- **一句话说明：** **3D-IC** 开放词汇移动操作规划框架官方代码仓（`kekeZ66/3D-IC`，`MIT`，921 files，`pushed_at: 2026-07-03`），基于 HomeRobot 扩展 `OVMM` 执行流：`projects/habitat_ovmm/eval_baselines_agent.py` → `OpenVocabManipAgent`（`src/home_robot/home_robot/agent/ovmm_agent/ovmm_3dic_agent.py`）+ `mapping/clip3d/{clip_model,spare_token_map,voxel_map}.py`。
 - **沉淀到 wiki：** [3D-IC（论文实体）](../../wiki/entities/paper-3d-ic-joint-navigation-manipulation-planning.md)
 
 ---

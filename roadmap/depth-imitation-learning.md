@@ -89,6 +89,8 @@ flowchart LR
 - 对比 BC 和 DAgger 在长时程任务上的效果差异
 
 ### 推荐读什么
+
+- [Robot Policies：从模仿学习到 Token VLA](../wiki/overview/robot-policies-il-to-token-vla.md) — 用 BC、GMM、ACT、DAgger 连接示范数据、动作多模态与执行反馈（课件全文待核读）。
 - "A Reduction of Imitation Learning and Stochastic Gradient Descent to Online Learning" (Ross & Bagnell, 2010)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
 - [Behavior Cloning](../wiki/methods/behavior-cloning.md) 与 [DAgger](../wiki/methods/dagger.md)
@@ -152,6 +154,7 @@ flowchart LR
 ### 推荐读什么
 - "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion" (Chi et al., 2023)
 - [Diffusion Policy](../wiki/methods/diffusion-policy.md)
+- [Xbotics Handbook 第10讲](../wiki/entities/xbotics-embodied-ai-handbook.md) — ACT 源码、LIBERO 与 SO-101 混合数据实战；对照 CVAE、扩散和连续流，分开理解预测时域与执行时域。
 - [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md) — ACT 一系的核心机制
 - [Why Action Chunking Improves BC](../wiki/entities/paper-why-action-chunking-improves-bc.md)（CoRL 2026）— 消融拆穿"时序一致性/更短 horizon"两个常见假说，chunk 收益主因是延迟观测条件化 + 隐式集成；同一策略用 Randomized Delay Ensemble 部署即可匹配标准 chunk 执行，真机三任务验证
 - [Seeker](../wiki/entities/paper-seeker.md) — 冻结 DINOv3 + 动作监督 ROI，不靠 gaze/affordance/阶段提示逼近特权 Oracle（62.6 vs 64.2），同一 ROI 可跨 RGB/点云模态复用；MimicGen 62.6%，xArm 真机域内 76.7%/OOD 60.0%；MIT 已开源
@@ -233,6 +236,8 @@ flowchart LR
 **方向 A：Video-based IL**
 - 用 RGB 视频而非 MoCap 做动作迁移
 - 关键词：Pose estimation、Video imitation、[Mimic-Video](../wiki/methods/mimic-video.md)、[WiLoR](../wiki/methods/wilor.md)
+
+- [RoboTryOn：人类第一视角视频 → 目标机器人合成视频与 IDM 动作标签](../wiki/entities/paper-robotryon.md) — 将关键帧换形、骨架流视频合成和逆动力学动作标注串成可训练示范；适合比较纯重定向与视觉/动作双域对齐，注意仍需要每个本体的机器人训练数据。
 
 **方向 B：Multi-modal IL**
 - 结合视觉、触觉、力传感器做多模态技能学习

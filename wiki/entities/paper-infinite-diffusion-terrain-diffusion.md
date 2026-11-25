@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, procedural-terrain, diffusion, world-generation, simulation, siggraph, minecraft, open-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 venue: SIGGRAPH 2026
 arxiv: "2512.08309"
 doi: "10.1145/3799902.3811080"
@@ -19,12 +19,17 @@ related:
 sources:
   - ../../sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md
   - ../../sources/repos/terrain-diffusion.md
+original:
+  - ../../sources/papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md
+  - ../../sources/repos/terrain-diffusion.md
 summary: "InfiniteDiffusion（SIGGRAPH 2026）以 training-free 惰性扩散采样实现 O(1) 随机访问、种子确定的无界生成；Terrain Diffusion 将其用于学习式程序化地形（分层扩散 + Laplacian 编码），消费级 GPU 实时流式，并开源 Minecraft Fabric mod 与 Unity 演示。"
 ---
 
 # InfiniteDiffusion / Terrain Diffusion（学习式无限地形生成）
 
-**InfiniteDiffusion**（*Bridging Learned Fidelity and Procedural Utility for Open-World Terrain Generation*，**SIGGRAPH 2026**，Alexander Goslin，[项目页](https://xandergos.github.io/terrain-diffusion/)，[arXiv:2512.08309](https://arxiv.org/abs/2512.08309)）提出 **training-free** 算法：把扩散采样重表述为 **惰性、无界** 计算，仅由 **seed + 坐标** 索引，具备 **O(1) 随机访问**、**顺序不变确定性** 与 **可 embarrassingly parallel** 扩展，内部 LRU 缓存仅为性能优化。**Terrain Diffusion** 是其首个落地：**学习式程序化地形生成器**——接口类似 Perlin 噪声（按坐标查询高程/气候），但保真度来自 **分层扩散堆栈** 与 **Laplacian 编码**（垂直范围约 **-10 km～+9 km**），在消费级 GPU 上可达约 **9× 轨道速度**，并以 **[Minecraft Fabric mod](https://modrinth.com/mod/terrain-diffusion)** 与 Unity 演示证明可嵌入游戏引擎。
+## 一句话定义
+
+**InfiniteDiffusion**（*Bridging Learned Fidelity and Procedural Utility for Open-World Terrain Generation*，**SIGGRAPH 2026**，Alexander Goslin，[项目页](https://xandergos.github.io/terrain-diffusion/)，[arXiv:2512.08309](https://arxiv.org/abs/2512.08309)）提出 **training-free** 算法：把扩散采样重表述为 **惰性、无界** 计算，仅由 **seed + 坐标** 索引，具备 **O(1) 随机访问**、**顺序不变确定性** 与 **可 embarrassingly parallel** 扩展；**Terrain Diffusion** 作为其首个落地实现 **学习式程序化地形生成器**（分层扩散堆栈 + Laplacian 编码，垂直范围约 **-10 km～+9 km**），已在 **[Minecraft Fabric mod](https://modrinth.com/mod/terrain-diffusion)** 与 Unity 演示中实时运行。
 
 ## 英文缩写速查
 
@@ -133,11 +138,47 @@ python -m terrain_diffusion explore xandergos/terrain-diffusion-30m
 - **必要配套：** 碰撞体与视觉对齐、摩擦/接触参数随机化、课程调度——参见 [Procedural Terrain Generation](../concepts/procedural-terrain-generation.md) 与 [Extreme Parkour](./extreme-parkour.md) 的工程教训。
 - **当前缺口：** 官方栈面向 **游戏/地形态势**；无 Isaac Lab / MuJoCo 一键插件，需自行导出高度场并接入仿真器 terrain importer。
 
+## 源码运行时序图
+
+对应官方实现 [`xandergos/terrain-diffusion`](../../sources/repos/terrain-diffusion.md)（CLI 入口 `terrain_diffusion/__main__.py`、`inference/api.py` 与核心管线 `inference/world_pipeline.py`）：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as CLI / 客户端 (__main__.py)
+  participant API as Flask API (api.py)
+  participant WP as WorldPipeline (world_pipeline.py)
+  participant Store as InfiniteTensor / TileStore
+
+  User->>API: python -m terrain_diffusion api / 发起空间查询 (i1,j1,i2,j2,scale)
+  API->>WP: _get_pipeline() -> from_pretrained(...) -> .to(device) -> .bind(hdf5_file)
+  WP->>Store: _init_tile_store() & _build_hierarchy() 初始化条件/粗图/隐空间/解码器层级
+  API->>WP: _get_terrain(...) -> world.get(i1, j1, i2, j2, with_climate=True)
+  WP->>WP: _compute_elev() 查询 residual + latents
+  WP->>Store: 对重叠窗口按 seed 采样高斯噪声并走 DPM-Solver + laplacian_denoise/decode
+  Store-->>WP: 返回窗口局部隐变量与残差块 (LRU / HDF5 缓存复用)
+  WP-->>WP: 反变换 sign(e)*e^2 恢复高程场 (elev)
+  WP->>WP: _compute_climate() 查询 coarse 基准气候 + grid_sample + 海拔递减率
+  WP-->>API: 返回 {elev, climate} 张量 (API 支持 scale>1 双线性上采样与裁剪)
+  API-->>User: 响应二进制高程/气候流或导出 GeoTIFF / Minecraft 区块
+```
+
 ## 实验与评测
 
-- **本页为策展编译；量化基准、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。论文的评测围绕 **生成质量 × 尺度 × 吞吐**，而非机器人任务成功率。
-- **质量（论文叙事）：** InfiniteDiffusion 将 MultiDiffusion 推广到 **无限 / 超内存域**，作者主张相对全图 eager 扩散 **质量几乎不降级**，同时保持 **O(1) 随机访问** 与 **顺序不变确定性**。
-- **尺度与吞吐（论文叙事）：** 单张 1024×1024 relief 约 **100 km** 宽、大陆可达 **百万 km²**；消费级 GPU **~9× 轨道速度** 流式，Unity 演示 **~3× 轨道速度** 舒适飞行；Minecraft mod 峰值 VRAM **~1.5 GB**。
+量化评估围绕 **生成保真度（FID-50k）× 流式延迟（TTFT / TTST）** 展开（原文 §6 Table 1–3，以 `arXiv:2512.08309v4` 为准；**未报告机器人仿真控制或 sim2real 任务成功率**）：
+
+- **InfiniteDiffusion 相对 MultiDiffusion 质量对比（Table 1，Stable Diffusion 基准 8 prompts）：** Base Stable Diffusion FID `1.94`，有界 **MultiDiffusion** `5.75`，**InfiniteDiffusion（$T=2$）** `5.83`（$T=1$ 为 `7.20`），在取消画布上界后几乎无质量退化。
+- **地形生成保真度（Table 2，984×984 验证切片 FID-50k）：**
+
+| 方法 | FID ↓ | 备注 |
+|------|-------|------|
+| Perlin Blending | `186.70` | 经典程序化噪声混合难以逼近真实地形统计分布 |
+| Naive Tiling | `74.44` | 存在明显接缝与块伪影 |
+| Naive InfiniteDiffusion ($T=0$) | `27.61` | 无隐空间混合仅靠分层引导 |
+| InfiniteDiffusion ($T=1$) | `19.78` | 单次跨步混合显著缩小与基模型差距 |
+| **InfiniteDiffusion ($T=2$)** | **`14.78`** | 逼近无切块基模型（Consistency `12.72` / Diffusion `8.11`） |
+
+- **延迟与吞吐（Table 3，1000 次随机位置采样）：** `InfiniteDiffusion (T=2)` 首次瓦片 **TTFT `1.72 ± 0.19 s`**、相邻瓦片复用上下文后 **TTST `0.66 ± 0.18 s`**（`T=1` 分别为 `1.39 ± 0.20 s` / `0.63 ± 0.16 s`；仅需 ≈10 MB 最小窗缓存即可达最佳延迟）。消费级 GPU 上可覆盖 **约 9× 轨道速度**，Unity 演示以 **约 3× 轨道速度** 流畅飞行，Minecraft Fabric mod 峰值 VRAM **~1.5 GB**。
 - **机器人迁移未评测：** 论文 **未报告** 腿式/人形在生成地形上的 sim2real 迁移实验；将其用作 sim 资产源属 **合理假设**，需单独 benchmark（见 [局限与风险](#局限与风险)）。
 
 ## 结论

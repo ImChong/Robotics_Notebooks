@@ -10,7 +10,8 @@
 - **星标（截至 2026-07-25）：** ~306
 - **硬件目标：** https://github.com/bgkatz/3phase_integrated
 - **工具链：** STM32CubeIDE（STM32F446）
-- **入库日期：** 2026-07-25
+- **入库日期：** 2026-07-25（2026-11-21 克隆仓库核对 `README.md`、`Core/Inc/hw_config.h`、`Core/Src/foc.c` 333 行、`Core/Src/main.c`、`Core/Src/can.c` 与 `Core/Src/stm32f4xx_it.c`；未上电刷写硬件）
+- **通读：** 已完成
 - **一句话说明：** 面向 `3phase_integrated` 板的非 mbed 电机控制固件；论文附录原列 mbed 固件，本仓为后续可移植主线。
 - **开源状态：** **已开源**
 - **关联论文：** [low_cost_modular_actuator_katz_mit_2018](../papers/low_cost_modular_actuator_katz_mit_2018.md)

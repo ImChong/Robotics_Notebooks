@@ -11,7 +11,9 @@
 - **GitHub：** <https://github.com/rai-opensource/exploy>
 - **版本线索：** 文档与仓库声明为 0.1.0（2026-10-08 复核）
 - **许可证：** MIT（源码仓库 LICENSE）
-- **入库日期：** 2026-10-08
+- **入库日期：** 2026-10-08（2026-11-22 复核）
+- **核对范围：** 通读官方文档首页、Exporter Tutorial（`exporter_tutorial.html`，36,557 字符）及 Controller Tutorial（`controller_tutorial.html`，31,344 字符），核对 `ExportableEnvironment`、`ExportableActor`、`SessionWrapper`、`OnnxRLController::update()` 与三大纯虚硬件接口。
+- **通读：** 已完成
 - **一句话说明：** Exploy 的安装、Exporter / Controller 教程与 API 参考；覆盖 Isaac Lab、MjLab 的策略导出和 ONNX Runtime C++ 部署。
 - **代码：** <https://github.com/rai-opensource/exploy>（已开源）
 - **沉淀到 wiki：** 是 → [`wiki/entities/exploy.md`](../../wiki/entities/exploy.md)

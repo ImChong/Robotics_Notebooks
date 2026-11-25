@@ -2,7 +2,13 @@
 type: entity
 tags: [paper, hardware, actuator, qdd, proprioceptive, quadruped, mini-cheetah, mit, foc, can, thesis]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-21
+original:
+  - ../../sources/papers/low_cost_modular_actuator_katz_mit_2018.md
+  - ../../sources/sites/robot_daycare_mini_cheetah.md
+  - ../../sources/repos/bgkatz_motorcontrol.md
+  - ../../sources/repos/bgkatz_3phase_integrated.md
+  - ../../sources/repos/bgkatz_spine.md
 venue: "MIT S.M. thesis 2018"
 code: https://github.com/bgkatz/3phase_integrated
 related:

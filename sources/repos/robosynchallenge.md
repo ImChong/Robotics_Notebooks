@@ -6,6 +6,8 @@
 - **配套论文：** [arXiv:2608.12416](https://arxiv.org/abs/2608.12416) — [`sources/papers/robosynchallenge_arxiv_2608_12416.md`](../papers/robosynchallenge_arxiv_2608_12416.md)
 - **数据/权重：** <https://huggingface.co/RoboSynChallenge>
 - **入库日期：** 2026-08-19
+- **通读：** 已完成
+- **核对范围：** 2026-11-21 核对 `EDEM-AI/RoboSynChallenge@45d9b9c`：`scripts/eval_policy.py`、`scripts/eval_openpi0_embodichain.py`、`evaluation_results/README.md`
 
 ## 一句话说明
 

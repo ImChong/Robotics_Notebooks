@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-22
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
@@ -263,7 +263,7 @@ flowchart TD
 - [DexHoldem](../entities/paper-dexholdem.md) — ③ 层真机扑克灵巧：SPSR 47.5% ≠ TCR 61.2%；感知 exact match 最高 34.3%（已开源）
 - [RoboDojo](../entities/robodojo.md) — ③/④ 层：通用操纵官方 sim-and-real 公益榜（重跑 + 开源上榜）
 - [RoboColiseum](../entities/robocoliseum.md) — ③ 层：智元 Genie Sim 四能力榜 + 隧道远程推理挑战赛
-- [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — ③ 层：冻结 PRM 进度曲线 + OPD；工具仓已开源
+- [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — ③ 层：冻结 PRM 进度曲线 + OPD；工具仓 `YuyangLiu2003/PRM-as-a-Judge` 与 `RoboPulse++` 数据集已开源
 - [ReflexVLA](../entities/paper-reflexvla.md) — ③ 层：ReflexBench 延迟感知动态任务；代码待开放
 - [SoftVTBench](../entities/paper-softvtbench.md) — ③ 层：可变形视触觉 Goal/Safety Success
 - [Physics-Consistent HRC Benchmark](../entities/paper-physics-consistent-hrc-benchmark.md) — ③ 层接触安全切面：辅助护理 HRC 名义成功率经区域+力安全筛查后 72.9%→56.4%（`benchmark/` 待发布）

@@ -98,6 +98,7 @@ flowchart LR
 - [Bimanual Manipulation](../wiki/tasks/bimanual-manipulation.md)
 - [Query：操作任务里的模仿学习](../wiki/queries/il-for-manipulation.md)
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 采集方案选型
+- [Nimo Robotics：N1 Glove × D1 Hand 接触感知灵巧操作](../wiki/entities/nimo-robotics-contact-intelligence.md) — 匹配示教端与执行端，以视觉/触觉/声音学习工业接触技能；目前仅厂商首发资料，参数与一天部署目标待验证。
 - [DexVerse](../wiki/entities/paper-dexverse.md) — 100 任务 × 3 臂 × 6 手灵巧操作 benchmark；π₀.₅ / DP3 均值成功率仅 34%，暴露跨技能泛化与亚厘米接触对齐瓶颈
 - [DexBench](../wiki/entities/dexbench.md) — RLWRLD × NVIDIA 工业灵巧操作开放规格：OSC 六轴诊断难度、五种 Dexterity Regime 规定能力包络，18 任务 / 55 用例 + 可采购实物；官方评测仓与 Isaac Lab-Arena 集成待发布
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
@@ -121,6 +122,9 @@ flowchart LR
 - 有哪些专门针对 contact-rich 的学习方法
 
 ### 推荐读什么
+- [mjlab_hand｜六种灵巧手的 RL 操作任务与 ContactExplorer](../wiki/entities/mjlab-hand.md) — 可从抓取与手内旋转开始，进一步对照双手交接、保定球、转盘、三球杂耍；README 提供训练、回放和分类评测入口，注意任务间指标不直接可比。
+- [PSR（预测式接触感觉运动表征）](../wiki/entities/paper-psr-vla.md) — 先预测 F/T、关节 effort 与位移，再跨层注入 π0.5；核对六类真机任务与传感同步。
+- [Co-VLA（双臂协同）](../wiki/entities/paper-co-vla.md) — 用共享/残差动作分解与 LAC 处理交接同步；与接触动力学感知 PSR 互补。
 - [XHAND 1 Pro-U：DexUMI 兼容灵巧手](../wiki/entities/xhand-1-pro-u.md)：对齐外骨骼示教关节与五指手动作映射。
 - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
 - [Diffusion-Based Impedance Learning｜扩散式阻抗学习](../wiki/entities/paper-diffusion-based-impedance-learning-2509-19696.md) — 由外力条件扩散模型重建 sZFT，再按能量与任务方向在线调刚度，比较圆柱/方/星形 peg-in-hole 的接触泛化。
@@ -134,6 +138,7 @@ flowchart LR
 - [ContactMimic](../wiki/entities/paper-contactmimic.md) — 在 keypoint tracking 外显式跟踪 per-body 接触指令，G1 真机验证 contact controllability，无需任务专用奖励即可搬箱
 - [UHAS 统一手部动作空间](../wiki/methods/uhas-unified-hand-action-space.md) — 规范球几何形变动作表示 + 级联 IK，单一 PPO 策略跨 Allegro / LEAP / Shadow 零样本迁移
 - [FastGrasp](../wiki/entities/paper-fastgrasp-mobile-dexterous-grasping.md) — CVAE 点云抓取引导 + 全身 RL + 二值触觉反馈的移动高速灵巧抓取 sim2real
+- [TipDex-VTLA](../wiki/entities/paper-tipdex-vtla.md) — 以光照敏感性估计视觉可靠性，联合时间与命令一致的触觉核验，修正尚未执行动作。
 - [TouchWorld](../wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 预测–反应式触觉基础模型：触觉世界模型预测接触子目标 + TRT 高频残差，人形长程六任务真机成功率 65.0%（干净）/ 53.7%（人为扰动）
 - [VTAM v2](../wiki/entities/paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md) — 单触觉流融入预训练视频世界模型，以 flow-force proxy 强化接触敏感性；xArm6/GelSight 与 Flexiv/Xense 实机对照。
 - [DexTacWAM](../wiki/entities/paper-dextacwam.md) — 十指触觉压缩与预测式接触建模，对比「只有当前触觉输入」与「预测未来接触」的受控消融。

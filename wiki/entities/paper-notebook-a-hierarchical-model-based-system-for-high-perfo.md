@@ -11,7 +11,7 @@ tags:
   - humanoid-paper-notebooks
   - ucla
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2512.09431"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -27,6 +27,7 @@ sources:
   - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
   - ../../sources/papers/humanoid_pnb_a-hierarchical-model-based-system-for-high-perfo.md
 summary: "ARTEMIS（arXiv:2512.09431）：UCLA RoboCup 2024 Adult-Size 人形足球冠军系统——立体视觉+CLAP 定位、DAVG+cf-MPC 避障导航、集中式 behavior planner 协调角色与射门，与 swarm 去中心化群控形成对照。"
+original: ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
 ---
 
 # ARTEMIS：A Hierarchical, Model-Based System for High-Performance Humanoid Soccer
@@ -66,6 +67,10 @@ summary: "ARTEMIS（arXiv:2512.09431）：UCLA RoboCup 2024 Adult-Size 人形足
 | 低层执行 | 1 kHz SHM 全身控制 | in-gait 行走与大力踢球 |
 
 参考 **仅参与训练奖励塑形** 的 RL 技能模块可嵌入 Kick Manager；论文强调近年 deep RL 足球技能多未建模队友/对手，需外包给上述手工栈。
+
+## 核心机制
+
+ARTEMIS 将高压对抗下的全身控制与团队合作拆分为五层模型基流水线：顶层集中式 `Behavior planner` 与 `Kick/Neck Manager` 统管角色分配、跑位、视线扫描和射门授权；中层由动态增强可见图（DAVG）规划绕开队友和对手的全局无碰撞轨迹，交给 `cf-MPC` 跟踪；定位模块 CLAP 融合视觉场地线条标志与惯性里程计；底层 1 kHz 共享内存全身控制器在高速步态中并发执行无停顿踢球（in-gait kicking），并通过 ZED 2 深度点云保证近距避障。
 
 ## 系统架构（群控相关）
 
@@ -112,11 +117,29 @@ flowchart TB
 - **Behavior planner：** 根据 evolving game state 选 **desired pose、角色、kick**；与 kick/neck manager 分工。
 - **通信：** 论文侧重 **机载视觉互见**；非 SPL 式极限 WiFi 拍卖（见 [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) 三线对比）。
 
+## 工程实践
+
+- **在全栈中渐进替换学习模块**：论文指出可将纯 RL 学习出的踢球或抗扰技能模块以技能插槽方式嵌入 Kick Manager，但全局角色抢点、队友避障及裁判机制交互仍保留模型基安全保障与可见图约束。
+- **低层高频率共享内存总线**：对 Adult-Size 级大惯量 QDD 双足平台，底层控制须跑在 ~1 kHz 共享内存环内以吸收高速迈步和强踢冲击。
+
 ## 实验与评测
 
 - **RoboCup 2024 Adult-Size：** 冠军；真机对抗下 in-gait 踢球、避障与战术切换。
 - **受控实验：** 论文另报告定量/定性消融（细节见 arXiv 正文 §IV–VII）。
 - **与 swarm 论文不可直接比数值：** 联赛规则、机体尺寸、对手强度不同；选型应看 **部署形态**（真机联赛 vs 仿真 swarm 基准）。
+
+## 与其他工作对比
+
+| 维度 | ARTEMIS（本文，arXiv:2512.09431） | [Swarm ACO+flocking（Sensors 2025）](./paper-humanoid-soccer-swarm-intelligence.md) | SPL DWM+DTA（arXiv:2401.15026） |
+|---|---|---|---|
+| **决策拓扑** | 单机集中 `Behavior planner`（每机自主，战术逻辑集中设计） | 全去中心化 ACO + flocking | 分布式市场拍卖 + Voronoi |
+| **通信机制** | 队友/对手主要靠机载视觉检测（ZED 2 + CLAP），非重点依赖通信 | 周期性 UDP 状态 | 极低带宽事件通信 |
+| **验证形态** | **RoboCup 2024 Adult-Size 真机国际赛冠军** | Webots 仿真为主 | NAO 真机 RoboCup |
+| **核心强项** | 感知–导航（DAVG+cf-MPC）–1 kHz 全身控制一体化与成人尺寸动态对抗 | 角色重分配快、丢包与故障容忍 | 规则驱动下的极限低通信协调 |
+
+- **vs 纯单机 Deep RL 足球技能（论文 §I 所指如 Booster 2025、Haarnoja 2024）：** 近年单机 RL 技能多聚焦追球射门，策略内部未建模队友、对手避障与团队角色；ARTEMIS 可将这类 RL 技能嵌入 `Kick Manager`，由模型基中层 `DAVG + cf-MPC` 将其他机器人作为移动障碍统一规避。
+- **vs 同实验室导航演进 [RAVEN](./paper-raven-rl-adaptive-visibility-graph-mpc.md)：** RAVEN 在 ARTEMIS 的 DAVG+cf-MPC 导航骨干基础上引入 RL 自适应障碍膨胀，用于吸收感知延迟与跟踪误差。
+- **对比读法：** 三类多机路线见 [人形多机协调](../concepts/humanoid-multi-robot-coordination.md)；因联赛规则、机体尺寸与对手强度不同，不把真机冠军表现与仿真 swarm 数值直接横比。
 
 ## 结论
 
@@ -134,7 +157,7 @@ flowchart TB
 - 与 RL 技能论文的成功率数字 **不可横向硬比**（规则/机体/对手不同）。
 - 集中式行为逻辑在丢视、遮挡与通信失效时的降级策略需读者自行追问工程细节。
 
-## 与其他页面的关系
+## 关联页面
 
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) — 集中 vs 去中心化总览
 - [Swarm Intelligence 人形足球](paper-humanoid-soccer-swarm-intelligence.md) — 去中心化对照

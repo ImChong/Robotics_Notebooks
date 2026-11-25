@@ -7,7 +7,7 @@ code_scope: "QwenOFT 连续回归基线与 alpha 受控实验配置"
 project_distinction: "alpha 独立论文 2604.11757；与 framework 论文 2604.05014 共用基础设施但研究问题不同"
 tags: [paper, vla, foundation-policy, benchmark, qwen, hkust, xjtu, cuhk, tsinghua, alibaba]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-22
 original:
   - ../../sources/papers/star_vla_alpha_arxiv_2604_11757_full_reading_2026_11_15.md
 sources:
@@ -89,7 +89,7 @@ sequenceDiagram
   OFT-->>Client: normalized_actions
 ```
 
-训练路径 `forward` 用同样的动作query预测并计算 `masked_l1_loss`。当前LIBERO启动脚本默认QwenPI/Qwen3.5-0.8B；复现α时应显式选择对应骨干和MLP框架，不能只运行默认脚本后声称复现本文。依据[原文与代码核对](../../sources/papers/star_vla_alpha_arxiv_2604_11757_full_reading_2026_11_15.md)。
+训练路径 `forward` 用同样的动作query预测并计算 `masked_l1_loss`。当前 `starVLA_dev` 开发分支（与 `starVLA` 稳定分支区分）LIBERO 启动脚本默认覆盖为 `QwenPI`/`Qwen3.5-0.8B`（`starvla_cotrain_libero.yaml` 为 `QwenGR00T`）；复现α时应显式选择对应骨干、MLP框架及匹配动作词表的 FAST 预训练骨干，不能只运行默认脚本后声称复现本文。依据[原文与代码核对](../../sources/papers/star_vla_alpha_arxiv_2604_11757_full_reading_2026_11_15.md)与[框架归档（2026-11-19 核对）](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)。
 
 ## 实验与评测
 
@@ -121,7 +121,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-“轻量动作头”不消除VLM推理、数据或硬件成本。各设置算力与训练数据量不同，不能将论文成功率当作任意部署上界；源表的部分基线数字和配置有差异，引用须点名表格。OOD结论限于已测试对象、背景、位姿和平台。
+“轻量动作头”不消除VLM推理、数据或硬件成本。各设置算力与训练数据量不同，不能将论文成功率当作任意部署上界；[框架归档（2026-11-19 复核）](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)亦指出 RoboCasa-GR1 在 Table 5（OFT 48.8%）与 Table 9（Specialist OFT 53.8%）存在跨表口径差异，引用须点名原表，且 Generalist 联合训练见过四基准训练数据，不能称未见域零样本。OOD结论限于已测试对象、背景、位姿和平台。
 
 ## 关联页面
 

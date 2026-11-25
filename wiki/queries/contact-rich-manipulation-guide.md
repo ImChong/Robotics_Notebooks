@@ -3,6 +3,10 @@ type: query
 tags: [manipulation, contact-rich, impedance-control, bimanual, assembly, force-control]
 status: complete
 updated: 2026-10-18
+original:
+  - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/contact_planning.md
+  - ../../sources/papers/imitation_learning.md
 summary: "接触丰富操作实践指南：聚焦装配、插拔、拧紧、擦拭等任务中最关键的接触建模、柔顺执行、数据采集与调试策略。"
 sources:
   - ../../sources/papers/contact_planning.md

@@ -8,6 +8,8 @@
 - **链接：** <https://ocw.mit.edu/courses/2-161-signal-processing-continuous-and-discrete-fall-2008/a9a6fa4c4c56513e2d5df392df6123ee_bode.pdf>
 - **入库日期：** 2026-09-11
 - **一句话说明：** 一阶滞后 $H(s)=K_0/(\tau s+1)$ 与二阶标准形 $H(s)=K_0/(s^2+2\zeta\omega_n s+\omega_n^2)$ 的频域响应、共振峰与 $\zeta$ 参数。
+- **通读：** 已完成
+- **核对范围：** 已通读 MIT 2.161 OCW 公开讲义 PDF（mit_2161_bode.txt 3,307 行），核对正弦稳态频率响应、一阶滞后/二阶系统共振峰及幅相 Bode 图绘制与渐近近似规范
 
 ## 核心定义（原文要点）
 

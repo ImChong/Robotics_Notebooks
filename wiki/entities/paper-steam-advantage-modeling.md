@@ -22,7 +22,7 @@ tags:
   - manipulation
   - behavior-cloning
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 arxiv: "2606.29834"
 venue: arXiv 2026
 project: https://rlinf.github.io/steam/

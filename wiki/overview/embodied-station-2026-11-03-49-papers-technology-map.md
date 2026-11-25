@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-22
 related:
   - ../entities/paper-sacq.md
   - ../entities/paper-sampling-based-reachability-limits.md
@@ -96,7 +96,7 @@ flowchart TB
 | ROOF | [paper-roof](../entities/paper-roof.md) | 项目页未列 GitHub |
 | TouchBridge | [paper-touchbridge-contact-aware-dexterous-human-interaction](../entities/paper-touchbridge-contact-aware-dexterous-human-interaction.md)（复用） | 已开源 |
 | OmniPiano | [paper-omnipiano](../entities/paper-omnipiano.md) | 已开源 |
-| Anchor 1 | [paper-anchor-1](../entities/paper-anchor-1.md) | 待发布 |
+| Anchor 1 | [paper-anchor-1](../entities/paper-anchor-1.md) | 待发布（预计 2026 年末释放模型；`arXiv:2611.00193v1` 已全文通读） |
 | Movens-Zero | [paper-movens-zero](../entities/paper-movens-zero.md) | 已开源 |
 | HandMimicX | [paper-handmimicx](../entities/paper-handmimicx.md) | 项目页未列 GitHub |
 | Contact Imitation Interface | [paper-contact-imitation-interface](../entities/paper-contact-imitation-interface.md) | 已开源 |

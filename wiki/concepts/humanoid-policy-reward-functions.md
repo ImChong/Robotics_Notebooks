@@ -2,7 +2,10 @@
 type: concept
 tags: [humanoid, locomotion, rl, reward, reward-shaping, gait, energy-efficiency, safety, imitation-learning, sim2real]
 status: complete
-updated: 2026-10-01
+original:
+  - ../../sources/papers/reward_design.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
+updated: 2026-11-21
 summary: "人形运控 RL 的奖励项按「替谁说话」分六类：任务与跟踪、姿态与稳定、步态与接触、能效与平滑、安全与硬件、风格与模仿；总奖励为加权和 r=Σwᵢrᵢ，工程关键是权重量级排序与 exp 核跟踪项，且奖励只在训练期存在、可任意使用仿真特权真值（与观测输入互为对偶）。"
 related:
   - ./reward-design.md

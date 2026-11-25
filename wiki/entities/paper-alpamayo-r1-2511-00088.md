@@ -3,7 +3,7 @@ type: entity
 project_id: driving-alpamayo-r1
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 arxiv: "2511.00088"
 code: https://github.com/NVlabs/alpamayo
 summary: "Alpamayo 1：因果链推理与扩散动作专家。多相机和自车历史经 Cosmos-Reason VLM 处理，Chain of Causation（CoC）训练场景解释，扩散轨迹专家预测未来 6.4 秒（64 waypoint）。"
@@ -97,6 +97,12 @@ sequenceDiagram
 1. 先使用官方公开checkpoint与现有评测脚本建立基线。
 2. 明确划分论文提出的完整系统和当前代码实际已开放的部分。
 3. 记录数据、版本、硬件与指标，避免不同评测设定的数字错比。
+
+## 与其他工作对比
+
+- **对比无推理纯轨迹微调基线（AlpaSim 75 个挑战无路线场景，Table 8）：** 相比同 CoC 数据微调但不输出因果链推理的 `trajectory-only` 基线，Alpamayo-R1 将近距离风险率（Close Encounter Rate）从 **17.0% 降至 11.0%**（相对减少约 35%），综合 AlpaSim 得分从 **0.38 提至 0.50**，越界率（Off-Road Rate 4.0% vs 3.0%）接近。
+- **对比自回归离散轨迹解码与流匹配解码（Tables 12 & 14）：** 在带路线信号配置下，Flow Matching 动作专家优于同规模自回归 6-token 离散轨迹基线（`minADE₆@6.4s` 0.6440 vs 0.6811，加速度舒适率 97.38% vs 44.05%，AlpaSim at-fault 得分 1.27 vs 0.59）；在 NVIDIA RTX 6000 Pro Blackwell 上，轨迹解码仅 **8.75 ms**（自回归 222 ms），端到端推理 **99 ms**（自回归 312 ms；trajectory-only flow matching 为 29 ms）。
+- **与通用自动驾驶 VLA / VLM 路线对比：** 相比 [ReCogDrive](./paper-recogdrive-2506-08052.md) 与 [SGDrive](./paper-sgdrive-2601-05640.md) 等以 NAVSIM 评测为主的 VLM+DiT 方案，Alpamayo-R1 主打 CoC 因果解释与推理–动作一致性 RL，但公开 10B 权重未含 RL 后训练且不接受显式导航路线输入。
 
 ## 局限与风险
 

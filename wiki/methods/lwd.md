@@ -3,6 +3,8 @@ type: method
 tags: [vla, fleet-scale-rl, offline-to-online-rl, post-training, data-flywheel, agibot, flow-matching]
 status: complete
 updated: 2026-09-15
+original:
+  - ../../sources/papers/lwd.md
 related:
   - ./vla.md
   - ./pi0-policy.md
@@ -59,8 +61,7 @@ summary: "LWD 是 AGIBOT 提出的车队级 offline-to-online RL 后训练框架
 
 整个闭环的关键是 **offline 与 online 阶段共用同一个 RL 学习器和同一份目标函数**——offline 提供稳定底盘，online 暴露真实部署分布，但两边不切换算法、不切换损失。LWD 称之为"**offline-to-online RL 数据飞轮**"。
 
-## 核心算法组件
-
+## 核心原理
 LWD 在车队级 RL 上面对两个具体困难，并各自给出一个组件作答：
 
 ### 1. DIVL — Distributional Implicit Value Learning
@@ -108,8 +109,7 @@ DIVL 与 QAM 一起实现了**策略评估（value learning）与策略抽取（
 - **车队级基础设施**：需要一套能可靠回传 rollout、记录人为干预、做集中式训练并把 checkpoint 推回去的工程链路；和[数据飞轮](../concepts/data-flywheel.md)的工程要求高度重叠，但学习目标从模仿换成了 RL。
 - **不适合直接替换** 1 kHz 关节控制层；它优化的是 generalist 策略层，底层执行仍然由相应的低级控制器和 [Safety Filter](../concepts/safety-filter.md) 兜底。
 
-## 常见误区
-
+## 常见误区或局限
 - **误区 1：LWD 等于"在线微调"。** 它的 offline 与 online 阶段共用一个 RL 学习器和目标，是一个统一框架，而不是"先 IL 再加点 online RL"的简单拼接。
 - **误区 2：LWD = 数据飞轮的换皮。** 区别是把"部署 → 提取好动作 → 模仿"换成"部署 → 全谱经验 → RL 更新"，并明确把失败和人为干预算进训练信号。
 - **误区 3：随便一个 VLA 都能直接接 LWD。** Flow-based 动作头的策略抽取本身就是难点，LWD 用 QAM 才把这件事做稳；换成其他动作头时，对应的策略抽取方法需要重新对齐。
@@ -119,6 +119,10 @@ DIVL 与 QAM 一起实现了**策略评估（value learning）与策略抽取（
 - [sources/papers/lwd.md](../../sources/papers/lwd.md) — 论文 ingest 档案
 - AGIBOT Research, *Learning while Deploying: Fleet-Scale Reinforcement Learning for Generalist Robot Policies* (2026) — [项目页](https://finch.agibot.com/research/lwd) / [PDF](https://finch-static.agibot.com/LWD/lwd-paper.pdf)
 - 背景延伸：Kostrikov et al., *Implicit Q-Learning* (2021)；Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* (2024)
+
+## 工程实践
+
+- **车队异步闭环数据基建：** 16 台双臂机器人并行上传稀疏奖励成功/失败与人工接管片段至云端存储，`episode-to-learner` 同步后通过 DIVL 隐式价值估计和 QAM 对流匹配动作头执行高稳定性策略抽取，再以原子快照更新 `model-to-actor` 下发全车队。
 
 ## 关联页面
 

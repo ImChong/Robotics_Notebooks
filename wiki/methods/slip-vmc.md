@@ -13,6 +13,9 @@ related:
 sources:
   - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
+original:
+  - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
+  - ../../sources/papers/humanoid_motion_control_know_how.md
 ---
 
 # SLIP + VMC（弹簧负载倒立摆与虚拟模型控制）

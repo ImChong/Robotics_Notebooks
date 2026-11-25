@@ -94,6 +94,7 @@ flowchart LR
 
 ### 推荐读什么
 
+- [ReMe：动态程序性记忆](../wiki/entities/paper-reme-procedural-memory.md) — 成功/失败轨迹提炼经验，按场景检索并按使用成效淘汰；仅外部记忆级改进，论文无机器人真机评测
 - [STRATA：三层结构化经验图](../wiki/entities/paper-strata-experience-graphs.md) — 成功/失败经验归纳、压力式遗忘与反向任务负迁移；只改变外部经验，不改变权重
 - [Kytheros Strata MCP 记忆](../wiki/entities/kytheros-strata-mcp-memory.md) — 质量门控的跨会话技术决策和故障复用
 - [Jeremy Kamber Strata Memory](../wiki/entities/jeremykamber-strata-tiered-memory.md) — 按时间/访问频率将记忆在热/温/冷层间迁移，学习规则式维护与可恢复归档
@@ -131,6 +132,7 @@ flowchart LR
 - [SPIN：Self-Play Fine-Tuning](../wiki/entities/paper-spin-self-play-fine-tuning.md) — ICML 2024 的语言模型有界权重迭代基线：旧模型生成负例、SFT 参考数据作外部锚、SPINTrainer 对比优化；非机器人自博弈实验
 - [Motus2](../wiki/entities/paper-motus2.md) — 真机权重级有界闭环的代表；五任务宏平均 84%，MBRL+Planning 75%；截至入库日未开源
 - [LWD](../wiki/methods/lwd.md) — 车队级 offline-to-online：异构部署经验 → 单一通用策略持续改进
+- [WeightCode：可执行权重程序与留出验证](../wiki/entities/paper-weightcode.md) — 冻结 LLM 生成可迁移参数编辑并进行受限候选筛选；作为**权重改造与验证方法的对照**，论文并未证明递归自我改进或机器人真机能力。
 - [Cortex：把上下文巩固进参数](../wiki/entities/paper-cortex-parametric-memory.md) — FFN 参数记忆、前瞻查询与 CR/RR 测评的对照材料；论文主要研究文本 LLM，**不是**机器人真机自改进或完整 RSI 闭环
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第二次推进— STaR / SPIN 与"目标分布仍人类"的边界
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) · [Bitter Lesson](../wiki/concepts/bitter-lesson.md) — 规模与结构之争的背景读法
@@ -191,6 +193,7 @@ flowchart LR
 - **门控是必需品**：HarnessBank 用语义 Harness Gene Bank + 门控筛选在冻结模型下做可信自进化（七基准 Test Pass@1 +5.1%–15.4%）——没有门控，harness 搜索就是题库过拟合
 - **先省再 scale**：SoL-Pi 经 152 → 4 的 auto-research 环筛出四条效率扩展，EdgeBench 约保留 94% 分数而 token / 成本显著下降——"efficiency for efficiency"是把闭环转得更久的前提
 - **迁移性检查**：进化出来的 harness 换一个任务分布、换一个底座模型还成立吗？不成立就只是局部最优配置
+- **继承可解释的改进经验**：[SIM / CRSI](../wiki/entities/paper-self-improvement-memory-crsi.md) 除演化后的 harness 外保留根因、修改理由、预测与实测、评测上下文；跨模型同起点 Workspace 10 轮 84.75 vs 73.42，编程十组配对平均 +2.36，但不涉及模型权重更新或真机自改进。
 - **正则化搜索轨迹**：[RRSI](../wiki/entities/paper-rrsi-2609-24972.md) 同时约束 proposal 与 selection：编辑预算退火、历史去重探索、泄漏 critic、噪声门槛、token 成本规则与无效组件剪枝；检查收益是否迁移到 held-out 基准
 
 ### 推荐做什么
@@ -205,6 +208,8 @@ flowchart LR
 - [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
 - [Mendel Gödel Machine（MGM）](../wiki/entities/paper-mendel-godel-machine.md) — 在 HGM 上新增同节点多任务与跨谱系同题的比较证据指导自修改；编程 Agent 实验，不是真机自进化
 - [Hyperagents（DGM-H）](../wiki/entities/paper-hyperagents.md) — 将任务 Agent 与元级改进者放入同一可编辑程序；Genesis Go2 奖励设计属于仿真实验，不等于真机策略自修改
+- [SIM：Self-Improvement Memory / 持续递归自改进记忆](../wiki/entities/paper-self-improvement-memory-crsi.md) — 对改进根因、编辑预测和评测结果做跨模型/跨数据集延续；含独立编程配对和单次 Workspace 对照，警惕迁移退化与内存成本。
+- [AIDE²：AI 研究智能体递归自改进](../wiki/entities/paper-aide2-recursive-self-improvement-ai-research-agents.md) — 在固定预算与隐藏评分下迭代改写 harness；独立 benchmark 迁移与 prompt 压缩，不代表底座权重提升。
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
 - [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化
@@ -245,6 +250,7 @@ flowchart LR
 - [OpenAI Research acceleration: The jagged frontier（2026-11）](../wiki/entities/openai-research-acceleration-jagged-frontier.md) — 观察性输入/过程/产出测量：2–4 小时任务零干预成功率 23%→46%，但 79% 训练监控与 25% 推理服务栈编码显示能力边界；活动数据不是完全 RSI 的因果证据。
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — 三情景、Amdahl 瓶颈与"怎么读内部数字"对照表
 - [From AGI to ASI](../wiki/entities/paper-from-agi-to-asi.md) — DeepMind 的四条能力路径与六类瓶颈；与 RSI 机制勿混读
+- [AIDE²（arXiv:2609.26457v1）](../wiki/entities/paper-aide2-recursive-self-improvement-ai-research-agents.md) — 七次被接受的元层 harness 改写、四项 held-out 检验；3×50 步 ignition 对照结果不显著，尚不能声称递归加速。
 - [AI Auto-Research](../wiki/concepts/ai-auto-research.md) — 人机共治、分层验证与跨阶段溯源
 - [Motubrain 2.0 官方公开动态](../wiki/entities/motubrain-2-live.md) — 11-13 失败后调试**代码**再测、11-14 RSI highlights；仅展示过程，不能当权重级持久改进的外部验证
 - [Datawhale RSI 科普综述（2026-09-19）](https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A) — 五次推进叙事与 2026 夏信号

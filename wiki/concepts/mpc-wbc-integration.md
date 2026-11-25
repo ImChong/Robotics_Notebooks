@@ -1,11 +1,13 @@
 ---
 type: concept
 status: complete
+original: ../../sources/papers/mpc.md
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/whole_body_control.md
+  - ../../sources/papers/wensing_opt_control_tro_arxiv_2211_11644.md
 summary: "MPC-WBC integration 说明高层预测规划与低层全身控制如何分层协同完成稳定运动。"
-updated: 2026-11-07
+updated: 2026-11-21
 ---
 
 # MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构
@@ -14,9 +16,23 @@ updated: 2026-11-07
 > 问题：MPC 和 WBC 在人形机器人 locomotion 里是怎么配合工作的？
 > 综合来源：MPC page + WBC page + locomotion page + optimal-control page
 
-## 一句话总结
+## 一句话定义（一句话总结）
 
 **MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的控制架构。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
 
 ## 问题背景
 
@@ -30,7 +46,11 @@ updated: 2026-11-07
 如果只用 MPC 直接控制关节——计算量太大（30+ 自由度），实时不可行。
 如果只用 WBC 不用 MPC——没有前瞻规划，只能被动响应，无法处理复杂地形和扰动。
 
-## 分层控制架构
+## 为什么重要
+
+- **跨时域预测与瞬时全阶动力学的职责分工**：简化模型 MPC（SRBD / Centroidal）可在数十毫秒周期内预见未来 $0.3\text{--}1.0\text{ s}$ 的落脚与接触反力（Kim et al. 2019 步态站立期更新约 4 次）；全阶 WBC-QP 在 $500\text{ Hz}\text{--}1\text{ kHz}$ 瞬时频率下把接触力命令和摆动腿跟踪落地为关节力矩（Wensing et al., T-RO 2024 § VI）。
+
+## 核心机制：分层控制架构
 
 ```
 感知层（IMU、编码器、视觉等）
@@ -146,29 +166,33 @@ QP 优化层：
 - **高层 (Sample-based MPC)**：在线规划器。它在底层策略的“命令空间”内进行并行轨迹采样（如 CEM）。
 - **代表工作**：[sumo](../methods/sumo.md) (RAI Institute, 2026) 证明了这种架构能让机器人（Spot/G1）操纵超重、超大物体，且具备零样本泛化能力。
 
-## 英文缩写速查
+## 工程实践
 
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+- **WBIC 中的浮动基松弛技巧（Kim et al., arXiv:1909.06586 § IV）**：在 Mini-Cheetah 以 `3.7 m/s` 奔跑时，由于空中相与瞬时碰撞下质心状态不可直接稳态控制，WBIC 对浮动基动力学和 MPC 反力命令同时引入松弛变量 $\delta_f, \delta_{f_r}$，防止腾空相强制闭环干扰摆动腿加速度。
+- **双环频率配比**：MPC 典型运行在 `30–100 Hz`（输出 $f_r^{\text{MPC}}$ 与质心参考轨迹），WBC QP 运行在 `500 Hz`（`2 ms`），关节力矩 $\tau_j$ 由全阶动力学式 $\tau_j = (A\ddot{q} + b + g - J_c^T f_r)_{\text{joints}}$ 直接解出。
+
+## 局限与常见误区
+
+- **上下层模型失配与约束矛盾**：上层 SRBD 忽略摆动腿动量或腕/肩惯量时，给出的 $f_r^{\text{MPC}}$ 与参考高度轨迹在下层全阶动力学 QP 中可能无法同时满足，需合理设定松弛权重比（如 $Q_1=1$ 对反力 vs $Q_2=0.1$ 对浮动基加速度）。
+- **固定接触时序瓶颈**：经典凸 MPC 需预定义触地相位与摆动时长；面对剧烈碰撞打滑或大推扰恢复时，切换时序固定会限制步态自适应能力（Sleiman et al. 2021 / Wensing 2024 § VII）。
 
 ## 参考来源
 
+- [mpc.md](../../sources/papers/mpc.md) — Convex MPC / Whole-Body NMPC / WBIC（arXiv:1909.06586、2103.00946）
+- [whole_body_control.md](../../sources/papers/whole_body_control.md) — QP-WBC 与 HQP 档案
+- [wensing_opt_control_tro_arxiv_2211_11644.md](../../sources/papers/wensing_opt_control_tro_arxiv_2211_11644.md) — Wensing et al., T-RO 2024 § V–VI 分层闭环分析
 - [未知载荷下的自适应全身 MPC](../../sources/papers/adaptive_whole_body_mpc_2610_12972.md) — 质心 MPC、模糊平衡补偿与姿态规划
-
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3* (2018) — MPC+WBC 两层架构代表作
 - [MIT Mini Cheetah 平台页](../entities/mit-mini-cheetah.md) — 官方 `Cheetah-Software` 与开源边界
 - Bellicoso et al., *Advances in Real-world Applications for Legged Systems* (2018) — ANYmal MPC-WBC 实践
 - Kim et al., *Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control* (2019) — WBC 全身冲量控制；实体页 [paper-wbic-mpc-mini-cheetah](../entities/paper-wbic-mpc-mini-cheetah.md)
 - [MIT Mini Cheetah](../entities/mit-mini-cheetah.md) — 平台与论文生态
+
+## 推荐继续阅读
+
+- [SRBD + 凸 MPC + WBC](./srbd-convex-mpc-wbc.md) — 从简单模板模型到瞬时力矩执行的完整公式拆解
+- [Quadratic Programming](../formalizations/quadratic-programming.md) — 下层 WBC QP 的凸优化标准型
+- [Contact Estimation](./contact-estimation.md) — 双环闭环依赖的接触与基座速度感知前提
 
 ## 关联页面
 

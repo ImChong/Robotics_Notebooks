@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, bom, actuators, supply-chain, survey]
 status: complete
-updated: 2026-08-19
+updated: 2026-11-21
 related:
   - ./humanoid-structure-engineer-cross-discipline-map.md
   - ./humanoid-actuator-102-technology-map.md
@@ -26,6 +26,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
+original:
+  - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
 summary: "依据 human five 公众号《Humanoid Hardware 入门 101》长文，把人形硬件拆成七类子系统地图：材料机身 → 传动感知链 → 丝杠轴承 → 集成执行器 → 能源计算 → 传感手部 → 产业成本地缘；核心判断：执行器耦合系统难享半导体降本曲线，RL 时代 QDD 与高减速比路线重估。"
 ---
 
@@ -33,7 +35,7 @@ summary: "依据 human five 公众号《Humanoid Hardware 入门 101》长文，
 
 > **本页定位**：为 [human five · Humanoid Hardware 入门 101](https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ) 提供 **按子系统组织的阅读坐标**；不复述全文，只保留 **分析框架、七组 hub 入口、与运控/选型 wiki 的挂接**。整机平台对比见 [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)；运控软件栈见 [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)。
 
-## 一句话观点
+## 一句话定义
 
 人形硬件最难降本的不是「多买几个便宜电机」，而是 **关节级耦合执行器**（电机×减速器×丝杠×轴承×编码器×热与公差）——在 RL 与可消耗件思维下，**扭矩透明、减自由度、简化手部** 比单纯压供应商报价更接近 2 万美元级 BOM 叙事。
 
@@ -46,7 +48,7 @@ summary: "依据 human five 公众号《Humanoid Hardware 入门 101》长文，
 | BOM | Bill of Materials | 物料清单，硬件零部件列表 |
 | PCB | Printed Circuit Board | 印刷电路板 |
 
-## 为何单独做这张地图
+## 为什么重要
 
 - 公众号文长达 **~4 万字**，按 **第一性原理 + BOM** 写部件，而非按厂商软文堆参数。
 - 本站已有 [开源整机对比](../entities/open-source-humanoid-hardware.md)、[硬件选型 Query](../queries/humanoid-hardware-selection.md)，缺 **部件级、供应链级** 横切面。
@@ -105,6 +107,16 @@ flowchart TB
 | **瓶颈部件** | 谐波减速器、行星滚柱丝杠、交叉滚子轴承、高精度手部 |
 | **路线分歧** | QDD（行星、高扭矩透明）vs 高减速比（谐波/RV、高扭矩密度） |
 | **降本杠杆** | 架构（关节数、手部复杂度）> 垂直整合 > 单件压价 |
+
+## 工程实践
+
+- **按「子系统预算 → 关节分配 → BOM 验证」反推整机方案：** 先对照第 04 组执行器与第 05 组配电热预算确定全身耦合上限，再沿 01–03 细化材料与轴承丝杠选型。
+- **在 RL 控制背景下评估机械代价：** 若上层具备强冲击自适应 RL 能力，可适当放宽极端背隙指标或缩减末端自由度以换取 2 万美元级 BOM 可行性。
+
+## 常见误区或局限
+
+- **把消费电子「年均降本率」套用到机电部件：** 丝杠、交叉滚子轴承与精密减速器受加工节拍和材料公差制约，难以复制芯片的摩尔定律式降价。
+- **只看零件单价忽视系统集成公差：** 执行器耦合密度越高，电机偏心、温升和装配应力越容易彼此放大。
 
 ## 关联页面
 

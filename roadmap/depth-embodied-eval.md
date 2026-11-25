@@ -66,10 +66,12 @@ flowchart LR
 - 写一页"我要回答的评测问题"：给谁看（自己迭代 / 对外发版 / 论文投稿）、能承受多少真机 rollout 成本、可接受多大的外推风险
 
 ### 推荐读什么
+- [OpenAI 机器人团队重组：通用模型与专用策略的证据审计](../wiki/entities/openai-robotics-reorganization-aiwang-2026.md) — Stage 0 反例：一次团队调整与 RoboLab 仿真分数不能证明专用 VLA/WAM 必然消失；先核对时延、成本和真机协议。
 - [具身评测基准选型闭环（知识链汇总）](../wiki/overview/hub-embodied-eval-benchmark.md) — 本路线的枢纽页
 - [Query：具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md) — 四层决策树与逐层误判速查
 - [仿真评测可复现性 ↔ 真实代表性取舍](../wiki/concepts/sim-vs-real-eval-gap.md) — 这条 gap 的物理根因
 - [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md) — 姊妹链：先选模型家族，再回本路线做验收
+- [Bloomberg Primer：人形机器人热度与真实落地差距](../wiki/entities/bloomberg-primer-humanoid-hype-reality-2026.md) — 把视频演示、遥操作、数据缺口与 GXO 仓库试点的错误/人工介入拆成可验收证据
 
 ### 学完输出什么
 - 一张"我的评测链停在第几层、还缺哪一层"的自检表
@@ -95,6 +97,7 @@ flowchart LR
 - 拿一组 QA 失败样本做归因：是感知没看见、是规划不可行、还是能说对但下发不出可执行动作
 
 ### 推荐读什么
+- [ACE-Brain-0.7](../wiki/entities/paper-ace-brain-0-7.md) — 用时序配对和帧输入对照验证预测是否随执行状态变化，分开读任务分解、下一子任务与失败定位指标。
 - [Envisioning Agentic Robotics（智能体机器人架构与路线）](../wiki/entities/paper-envisioning-agentic-robotics.md) — 把 S2 模型能力与 harness/技能/实时执行分开测；衔接后续 Stage 3 的物理结果验收。
 - [RoboBench](../wiki/entities/robo-bench.md) — 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，用8骨干迁移实验审计认知与下游控制的关系：CALVIN感知相关显著，LIBERO-Long affordance 仅呈非显著正趋势
 - [ESI-Bench](../wiki/entities/esi-bench.md) — OmniGibson 上 10 类 29 子类 3081 题，要求主动闭合感知–行动环，暴露 MLLM 的行动盲与元认知缺口
@@ -131,6 +134,7 @@ flowchart LR
 - [GigaWorld-1 策略评估](../wiki/entities/paper-gigaworld-1-policy-evaluation.md) — WMBench + 7 类视频 WM、4 种动作编码、32.4 万+ rollout；核心结论是**长时序动作忠实 rollout 比短时视觉逼真更决定评估质量**
 - [WorldEcho / WorldSync](../wiki/entities/paper-worldecho-worldsync.md) — 视觉门控 + \(\mathrm{SE}(3)\) NDTW 专测 off-expert 动作跟随
 - [WorldScore](../wiki/entities/paper-worldscore.md) — 开放域 3D/4D/视频多场景世界生成的 Ctrl/Quality/Dynamics 统一榜（相邻轴，**不要**用来代替操纵保真）
+- [WorldTrace / LoopBench](../wiki/entities/paper-worldtrace-addressable-memory-video-world-models.md) — Stage 2 的**长程场景回访一致性**分支：返回旧位置时测 DINOv2/LPIPS 并单列缓存额外显存与延迟；不把视觉记忆改善视为动作忠实或物理仿真成功。
 - [HarnessEval-W](../wiki/entities/paper-harnesseval-w.md) — 交互式世界模型 agentic 评测：干预/持久证据树，Intentional 排序与人类 ρ=0.93
 - [Uranus](../wiki/entities/paper-uranus.md) — 动作条件多视角视频模拟器：外部策略给 qpos、模型自回归预测视觉后果，用于具身策略闭环评估
 - [SC3-Eval](../wiki/entities/paper-sc3-eval.md) — 反向用法：把自一致视频生成本身当真机 VLA 策略评估器，闭环 Pearson 0.929
@@ -162,11 +166,21 @@ flowchart LR
 - 把失败 rollout 按模式聚类（抓取失败 / 子任务切换失败 / 超时 / 过压），而不是只报一个均值
 
 ### 推荐读什么
+
+- [agentrobocritic](../wiki/entities/paper-agentrobocritic.md) — 从回合成功率深入局部意图、动作失败和恢复诊断。
+
+- [2026 顶会论文：通用能力五条技术路径](../wiki/comparisons/robotics-2026-awards-five-capability-paths.md) — 区分单步成功、完整任务完成、失败恢复与部署节拍，按现场瓶颈选型。
+- [RoboEval 冠军方案](../wiki/entities/paper-roboeval-solution.md) — 从阶段成功、过程质量到 RDS 奖励，区分作者独立测试、公布种子和主办方复评。
+- [Mind2Act World：认知、物理执行与组合能力诊断](../wiki/entities/paper-mind2act-world.md) — Stage 3 分层诊断：30 项操作任务的 Mind／Act／Mind2Act 三视角、物理谓词成功判据、事件阶段失败卡；核对 Agent 与端到端策略不同预算，并避免把仿真暂停推理误读成真机实时能力。
 - [GM-100（The Great March 100）](../wiki/entities/paper-gm-100.md) — RHOS AI 100 项真实双臂长尾细粒度任务；用 SR/PSR 拆解完整成功与子目标进度，注意 Cobot Magic 100 项与 Xtrainer 前 10 项的本体/协议差别。
 - [首届蚂蚁灵波具身大模型挑战赛（2026）](../wiki/entities/robbyant-embodied-ai-challenge-2026.md) — Stage 3 的标准化 50 任务赛事案例：统一 LingBot-VLA 2.0，仅 clean 训练、clean/randomized 双设置测试；线下真机决赛与仿真成绩分开记账。
+- [RoboPRO](../wiki/entities/paper-robopro-2611-26971.md) — 80 项双臂任务，按危险接触区分 SR、CR 与 HSR，系统检查障碍密度及视觉、语言、物体扰动。
 - [ManiLadder](../wiki/entities/paper-maniladder-manipulation-benchmark.md) — Stage 3 将 112 项操作任务按四难度级及任务族校准，用 AL@50 暴露平均成功率无法体现的能力短板（官方项目代码待核实）
 - [RoboLab-120（NVIDIA）](../wiki/entities/robolab.md) — 120 项桌面通用操作任务，聚焦真机训练策略零样本仿真评测、成功率/子任务得分/执行事件与语言、视觉扰动；与 RoboDojo 的 sim+real 协议互补。
 - [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
+- [RoboWild（XLANG Lab）](../wiki/entities/paper-robowild.md) — Stage 3 的 VLM-工具调用长程操作压力测试：38 个复杂仿真场景、341 个任务–本体组合，区分 ReAct 加权成功率与抓取/接触恢复和安全副作用；官方论文 PDF 尚待读，非真机成绩。
+- [RoboColosseum](../wiki/entities/paper-robocolosseum.md) — 跨 124 站点的真实机器人开放配对评测 + 同示范预算微调赛道，按本体报告 DCR / SR / PS 与不确定性，避免把单次真机成功率当通用能力
+- [RoboChallenge Zero](../wiki/entities/paper-robochallenge-zero.md) — 按月增换真机操作任务，严格零样本复测固定系统版本；首发 11 个 Agent、6 任务 330 次执行，需将完整成功率、部分进度和效率分开解释
 - [2026 BEHAVIOR Challenge](../wiki/entities/behavior-challenge-2026.md) — 100 项长程家务任务的赛事协议：主排名 Q-score 是末状态 BDDL 谓词部分完成度，不等于 full-task success；同时核对 RGB-D+proprio 观测限制与公开/隐藏实例划分
 - [机器人操作基准审计](../wiki/entities/paper-manipulation-benchmark-audit.md) — 检查语言捷径、统计显著性、测试条件过拟合与训练数据来源，作为解释 LIBERO/CALVIN 等高分的对照读物
 - [Harness VLA](../wiki/entities/paper-harness-vla.md) · [StarVLA-α](../wiki/entities/paper-starvla-alpha.md) — 分别核对记忆条件、任务覆盖与聚合权重，以及单基准/联合训练、成功率/进度分的区别。
@@ -246,6 +260,7 @@ flowchart LR
 - 真机样本不足时，用下注式方法给出区间而不是点估计
 
 ### 推荐读什么
+- [SIMPLE：人形全身移动操作仿真基准](../wiki/entities/paper-loco-manip-161-075-simple.md) — Stage 5 的人形策略 sim↔real 对照；须区分论文 v2 的 16 项与官网的 60 项口径，并核对有限任务的真机迁移证据。
 - [World Models as Unit Tests：代码世界模型做控制程序回归测试](../wiki/entities/world-models-as-unit-tests.md) — 34 个程序的模型内成功率与原模拟器相关 r=0.974，但绝对成功率偏乐观，**尚无物理真机 sim↔real 校准**；作为 Stage 5 的反例边界读。
 - [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — 可复现性 ↔ 代表性代价表与缩小 gap 的三条工程路线
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) — 把评测当可扩展闭环基建，把迭代速度从墙钟瓶颈换成算力瓶颈的前提条件
@@ -269,6 +284,7 @@ flowchart LR
 **方向 A：评测基建与集成成本**
 - N 个策略 × M 个环境的集成爆炸怎么收敛成 O(N+M)；统一策略–环境契约与依赖隔离 serving 长什么样
 - 关键词：[XPolicyLab](../wiki/entities/xpolicylab.md)（同一 adapter 服务 RoboTwin / RoboDojo-sim / RoboDojo-real）、[仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md)、[AgiBot 仿真训练与评测分类](../wiki/overview/agibot-release-category-02-sim-training-eval.md)
+- [RoboScope Kit：统一 Policy 接口与评测进程池](../wiki/entities/paper-roboscope-kit.md) — 对比 XPolicyLab 的侧重：保持原生 benchmark 规则，针对 K/g 独立调度、动作块边界渲染、并发搜索和总耗时审计；选型时分清同硬件提速与多卡增益
 
 **方向 B：榜单治理与可复现性**
 - verified 上榜要不要强制开源训推与权重、公布评测视频；合成训练 + 仅真实评测的挑战赛协议怎么设计

@@ -3,7 +3,7 @@ type: concept
 status: complete
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-11-18
+updated: 2026-11-22
 related:
   - ../entities/paper-attention-is-all-you-need.md
   - ../entities/transformer-cv-curriculum.md
@@ -127,6 +127,8 @@ $n<d$ 时自注意力层比循环层更省；$n$ 很大时需受限自注意力�
 - **联想记忆视角的适用边界**见上节，不等于训练后模型的事实记忆容量。
 
 ## 关联页面
+- [Inner Thinking Transformer（ITT）](../entities/paper-inner-thinking-transformer.md) — 对高重要性 token 分配重复层内计算与残差融合；为动态深度提供原论文证据，不等于已在机器人策略中验证。
+
 - [AI 架构地图](../overview/ai-architecture-map.md)
 - [Mamba](./mamba.md)
 - [反向传播算法](./backpropagation.md)

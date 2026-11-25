@@ -5,10 +5,13 @@ tags:
   - humanoid
   - nvidia
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 arxiv: "2610.38027"
 project_id: metatron-promptable-whole-body-execution
+project: https://research.nvidia.com/labs/par/projects/metatron/
 code: https://github.com/NVlabs/ProtoMotions
+code_scope: "examples/experiments/metatron/、examples/inference/metatron.py、deployment/{metatron_policy.py,native/}（Metatron G1/SOMA 训练、推理与 C++ TensorRT 真机部署）"
+project_distinction: "METATRON 论文实体（arXiv:2610.38027，可提示 Unitree G1 全身基础执行层与有状态技能程序）；有别于算法母体 MaskedMimic（paper-bfm-17-maskedmimic）与基于 Metatron 构建的浏览器点球演示游戏 g1-football-metatron-goalkeeper。"
 related:
   - ./protomotions.md
   - ./g1-football-metatron-goalkeeper.md

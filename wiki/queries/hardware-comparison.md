@@ -9,7 +9,11 @@ related:
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "主流人形机器人硬件对比"
-updated: 2026-10-23
+updated: 2026-11-21
+original:
+  - ../../sources/sites/unitree_g1_product_page_reading_g1spec.md
+  - ../../sources/sites/agility-robotics.md
+  - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
 ---
 
 # 主流人形机器人硬件对比
@@ -58,8 +62,9 @@ updated: 2026-10-23
 - [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)
 
 ## 参考来源
+- [Unitree G1 官方产品页规格通读](../../sources/sites/unitree_g1_product_page_reading_g1spec.md)（原文：<https://www.unitree.com/g1>）
+- [Agility Robotics 官网与 Digit 5 核查](../../sources/sites/agility-robotics.md)（原文：<https://www.agilityrobotics.com/solutions/digit-5>）
+- [Humanoid Hardware 101 全文落盘](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
 - [Boston Dynamics Atlas](https://bostondynamics.com/products/atlas/)
-- [Unitree G1](https://www.unitree.com/g1)
-- [Agility Robotics: Digit 5 / 65,000 hours](https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale)
 - [Figure: F.02 Decommission](https://www.figure.ai/news/f-02-decommission)
 - [原始硬件对比资料](../../sources/papers/humanoid_hardware.md)

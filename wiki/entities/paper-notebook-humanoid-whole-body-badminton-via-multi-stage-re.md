@@ -10,8 +10,9 @@ tags:
   - loco-manipulation
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-10-05
+updated: 2026-11-21
 arxiv: "2511.11218"
+original: ../../sources/papers/humanoid_whole_body_badminton_annealed_rl_arxiv_2511_11218.md
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -182,6 +183,11 @@ flowchart TB
 5. **读 19.1 m/s / 40 拍时看条件** — 动捕基座与球位；杀球 20+ m/s 口述仍依赖同类外部感知。
 6. **工程与算法并列** — 延迟、控制、硬件迭代与策略同等影响竞技上限（口述 Q&A）。
 
+## 工程实践
+
+- **硬件与控制频率（arXiv:2511.11218v4 § III）**：实验平台为 `1.28 m`、`30 kg`、`21-DoF` 人形（每腿 6 DoF、腰部 1 DoF、每臂 4 DoF），策略运行于 `50 Hz`、关节 PD 运行于 `500 Hz`、动捕系统运行于 `210 Hz`。
+- **EKF vs 免预测选型**：有球路空气动力学 EKF 在触球前 `0.3 s` 将位置预测误差收敛至 `10 mm`；若外部球路模型不准或免标定部署，可选短历史位置观测的 prediction-free 变体。
+
 ## 局限与风险
 
 - **代码未发布**，复现依赖论文超参表；以项目页为准跟进。
@@ -189,7 +195,7 @@ flowchart TB
 - 论文拦截带仍偏窄；口述 40+ 拍与 C2 更大场地覆盖 **需与论文 C1 指标分开读**。
 - **高层联赛 MARL / DQ-Flow** 以口述与演示为主，**缺少** 与 arXiv 同级的公开评测表；引文战术结果请标「仿真/口述」。
 
-## 与其他页面的关系
+## 关联页面
 
 - 羽毛球姊妹：[LHBS](./paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) · [Humanoid Badminton（Dynamic Racket Skills，CoRL 2026）](./paper-humanoid-badminton-dynamic-racket-skills.md) — 有限人类动作扩增 + 潜技能规划，与本文「无动作先验」相对 · [ETH ANYmal 四足（Sci. Rob.）](./paper-coordinated-badminton-skills-anymal.md)
 - 任务：[loco-manipulation](../tasks/loco-manipulation.md)

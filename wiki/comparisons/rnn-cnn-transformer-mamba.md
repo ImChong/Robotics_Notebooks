@@ -10,6 +10,9 @@ tags:
   - comparison
 status: complete
 updated: 2026-09-23
+original:
+  - ../../sources/papers/ai_architecture_foundations.md
+  - ../../sources/papers/gu_mamba_arxiv_2312_00752.md
 summary: "RNN/CNN/Transformer/Mamba 四类序列–视觉骨干对比：归纳偏置、长程依赖、并行度与推理复杂度，服务视觉骨干与时序建模选型。"
 related:
   - ../../roadmap/depth-model-architecture.md

@@ -2,7 +2,7 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-22
 original:
   - ../../sources/papers/wilor_cvpr_2025.md
 related:

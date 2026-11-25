@@ -6,7 +6,7 @@ project: "https://movicproject.github.io/"
 venue: "arXiv 2026 (v1)"
 tags: [paper, humanoid, whole-body-control, motion-tracking, monocular-video, vision-teleoperation, bfm, transformer, ppo, motion-retargeting, hku, nus, bit, engineai]
 status: complete
-updated: 2026-11-18
+updated: 2026-11-21
 related:
   - ../tasks/teleoperation.md
   - ../concepts/whole-body-tracking-pipeline.md
@@ -130,6 +130,12 @@ flowchart LR
 - **关注 OOD 动作：** 演示包含较剧烈舞蹈及非周期性的双臂/单臂搬运；尚需独立验证遮挡、不同相机和未见机体的鲁棒性。
 - **复现依赖仍高：** SAM 3D Body、视觉模型、GMR、频域编码和 PPO tracker 多模块耦合；论文报告使用 4×A100 训练、RTX 5090 部署，不宜把「仅一台 RGB 相机」误读为轻量计算。
 - **物体接触并不闭环可见：** 低层策略不直接感知物体/接触力。真实场景精细对齐仍靠操作员视觉调整；需要引入物体视觉和触觉方能扩展精细操作。
+
+## 与其他工作对比
+
+- **对比实时单目视频重建管线（Table V，EMDB-1 & 本草纲目）：** MoViC 的 `SEG`（SAM 3D Body + FLD 外推）在 EMDB-1 有效帧上将 MPJPE 降至 **117.54 mm**、AUC（0–150 mm）提至 **45.49%**，优于 [SONIC](./nvidia-sonic.md) 所用 `GVHMR + GMR`（123.45 mm / 38.82%）及 [OmniH2O](./paper-hrl-stack-08-omnih2o.md) 所用 `HybrIK + GMR`（189 mm / 27.15%）；在本草纲目动捕真值对比上同样取得最低 MPJPE（123.625 mm）与 PA-MPJPE（96 mm）。同时 Table III 显示 FLD 外推相比线性外推将关节位置/速度 RMSE 由 0.7561 rad / 8.6816 rad/s 降至 **0.0655 rad / 1.2372 rad/s**。
+- **对比视觉驱动全身跟踪基线（§IV-D2 & Fig. 8，MuJoCo PM01）：** 在同一 PM01 模型与参考动作训练集上对比适配后的 [SONIC](./nvidia-sonic.md)、[OmniH2O](./paper-hrl-stack-08-omnih2o.md) 与 [TWIST](./paper-twist.md)，MoViC 在未见舞蹈序列上取得最低 MPJPE、MPJVE 与末端位置跟踪误差（注意跟踪误差是相对视频重建成的机器人参考）；策略输入消融（Table IV）中 `θ + 1 frame`（1,182 维）达 **99% SR / 0.25 rad**，优于 `10 explicit future frames`（1,330 维，95% SR / 0.28 rad）与 `1 future frame`（862 维，90% SR / 0.47 rad）。
+- **与直接视频到机器人重定向路线区分：** 不同于绕过显式 SMPL 中间人体的 [BeyondRetarget](./paper-beyondretarget-monocular-humanoid.md)，MoViC 采用 `SAM 3D Body (MHR) → SMPL → GMR → FLD` 显式中间表示并依赖单卡 RTX 5090 进行 10 Hz 视觉重建。
 
 ## 工程实践
 

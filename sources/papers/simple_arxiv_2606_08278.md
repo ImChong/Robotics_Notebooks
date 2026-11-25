@@ -4,15 +4,30 @@
 
 - **标题：** SIMPLE: Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation
 - **类型：** paper
-- **来源：** arXiv:2606.08278（2026-06）；项目页 <https://psi-lab.ai/SIMPLE>
+- **来源：** arXiv:2606.08278v2（2026-10-12；v1：2026-06-06）；项目页 <https://psi-lab.ai/SIMPLE>
 - **机构：** 南加州大学 Physical Superintelligence (PSI) Lab
 - **作者：** Songlin Wei, Zhenhao Ni, Jie Liu, Zhenyu Zhao, Junjie Ye, Hongyi Jing, Junkai Xia, Xiawei Liu, Michael Leong, Liang Heng, Di Huang, Yue Wang（* equal contribution, † corresponding author）
 - **代码：** <https://github.com/physical-superintelligence-lab/SIMPLE>（已开源）
 - **数据集：** Hugging Face `USC-PSI-Lab/psi-data`（含 `simple-eval` 评测环境）
 - **入库日期：** 2026-07-16
-- **一句话说明：** USC PSI Lab 提出的 **人形全身 loco-manipulation 统一仿真 testbed**：MuJoCo 接触物理 + Isaac Sim 光追渲染双引擎，60 任务 / 50 室内场景 / 1000+ 物体，内置运动规划与 VR 遥操作数据采集，并大规模 benchmark VLA/WAM/IL 策略；仿真排序与真机强相关，支持纯仿真数据 **零样本 sim-to-real**。
+- **复核日期：** 2026-11-21（v2 全文 + 官方项目页 + GitHub 主分支源码）
+- **核对范围：** arXiv:2606.08278v2 HTML 全文 Abstract、§1–5（架构、数据管线、基线评测、迁移、Limitations）、附录 A.1–A.5（类与运行时、资产、实验配置、AMO/SONIC、16 任务多任务评测）；GitHub README 与评测 CLI 入口。
+- **通读：** 已完成
+- **一句话说明：** USC PSI Lab 提出的 **人形全身 loco-manipulation 统一仿真 testbed**：MuJoCo 接触物理 + Isaac Sim 光追渲染双引擎，论文 v2 基准 16 任务（官网与 v2 §3.2 仍称 60）/ 50 室内场景 / 1000+ 物体，内置运动规划与 VR 遥操作数据采集，并大规模 benchmark VLA/WAM/IL 策略；仿真排序与真机强相关，支持纯仿真数据 **零样本 sim-to-real**。
 
-## 核心论文摘录（MVP）
+## 论文 v2 版本核对（2026-11-21）
+
+- **一手资料：** [arXiv:2606.08278v2 全文](https://arxiv.org/html/2606.08278v2)（2026-10-12 修订）与 [官方项目页](https://psi-lab.ai/SIMPLE/)。下方早期 v1/官网摘录保留溯源价值，遇到不一致以本节注明的版本为准。
+- **任务计数矛盾须标注：** v2 Abstract、Introduction、Conclusion 与 Appendix A.5 报 **16 项评测任务**；v2 §3.2 却仍写 **60**，官网亦显示 **60**。附录 Table 7 枚举 16 项代表任务；不能直接写成“v2 测完 60 项”。
+- **评测组不同：** v2 Table 1 是 **7 个模型（Ψ₀、π₀.₅、GR00T N1.6、DreamZero、Cosmos3、Diffusion Policy、ACT）× 6 个单任务**，各 level 每项 **10 次**；Appendix Table 8 是 **5 个 foundation models × 16 项多任务**，通常各 level **20 次**，DreamZero **10 次**；官网还展示旧版 **9 模型**（含 InternVLA/H-RDT/EgoVLA）的结果，不能合并排名。
+- **政策 I/O：** v2 §3.5 定义 **32D 本体状态**（手 14 + 臂 14 + 腰 3 + 底盘高度 1）及 **36D 动作**（32D 上身关节目标 + 底盘 4D `vx, vy, vyaw, qyaw`）。VR 采集为 **50Hz** 并转为 LeRobot 格式。
+- **域随机化：** 正式表格以 **Level 0/1/2** 统计；Level 0 视觉/干扰物，Level 1 进一步改变材质与光照，Level 2 进一步变化物体/机器人空间位姿。v2 §3.5 行文用 1/2/3 编号，与表格存在标号不一致。
+- **新增 sim-to-real 实例：** v2 Table 5 的 XMoveBendCarryBox **7/10 仿真 → 5/10 真机**；另有 Pick & Place **9/10→8/10**、Handover **10/10→8/10**，均为相似场景下、无真机 fine-tune 的有限示例，不表示开放域普适迁移。
+- **多任务结果：** v2 Table 8 的 L0/L1/L2 平均成功率（%）：Ψ₀ **64.4/59.7/48.8**；DreamZero **64.4/58.1/46.9**。精细接触任务（OpenFaucet）成功率仍低。
+- **局限：** 论文 §4.6 与 §5 明确同步 Isaac Sim 光追约 **4fps/GPU**（可在离线生成中通过并行缓解），只对刚体建模，布料、绳索等形变对象不适用。
+- **代码与数据新发布：** 官方 README 2026-11-11：main 是 **Isaac Sim 4.5 / MuJoCo 3.3**，另有 `isaacsim-6.2-mujoco-3.12` 分支；发布 **12 Teleop + 5 MP** decoupled-WBC 数据集及 Ψ₀ checkpoints。17 是公开数据集任务数，与论文 16 任务多任务评测分开统计。
+
+## 核心论文摘录（v1/官网历史摘录，以 v2 核对节为准）
 
 ### 1) 问题设定与系统定位（Abstract / Introduction）
 

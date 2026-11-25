@@ -8,6 +8,8 @@
 - **链接：** https://github.com/LightwheelAI/LW-Egosuite-DevKit
 - **分类：** 数据集/Benchmark
 - **入库日期：** 2026-09-06
+- **核对范围：** 2026-11-22 浅克隆 `LightwheelAI/LW-Egosuite-DevKit`（HEAD `ef23daa`），通读 `README.md`、`pyproject.toml`、`lw_egosuite_backend/tyro_cli.py`、`std_pipeline.py`、`export_mcap_video.py` 与 `mcap_reader.py`，核对 CLI 子命令、MCAP 读写与转换流程；未下载真实 `.mcap` 样例做端到端运行测试。
+- **通读：** 已完成
 - **一句话说明：** 光轮智能 开源 MCAP 转换与可视化工具链，服务 [EgoSuite-Open100K](../sites/egosuite-open100k-lightwheel.md) 数据质检与管线接入。
 - **关联数据：** [EgoSuite-Open100K](../sites/egosuite-open100k-lightwheel.md) · [EgoStandard](../datasets/lightwheel-egostandard.md) · [EgoPro](../datasets/lightwheel-egopro.md)
 - **沉淀到 wiki：** [`wiki/entities/cn-os-lw-egosuite-devkit.md`](../../wiki/entities/cn-os-lw-egosuite-devkit.md) · [`wiki/entities/egosuite-open100k.md`](../../wiki/entities/egosuite-open100k.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, multi-behavior, distillation, amp, teleai, unitree-g1, aaai]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 arxiv: "2511.06371"
 venue: AAAI 2026 Oral
 summary: "AHC（AAAI 2026 Oral）三阶段：起身/行走专精策略（含 AMP）→ MoE 蒸馏统一 π^d → PCGrad 多任务微调得地形自适应 G1 控制器。"
@@ -24,6 +24,8 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+original:
+  - ../../sources/papers/adaptive_humanoid_control_ahc_arxiv_2511_06371.md
 ---
 
 # AHC：多行为蒸馏与强化微调的自适应人形控制
@@ -112,12 +114,26 @@ flowchart TB
 - 蒸馏后策略只吃 **69 维本体**、无特权输入，这是它能直接落到 G1（50 Hz 策略 / 500 Hz PD）的前提；真机验证范围限于跌倒起身续走与楼梯/坡地/障碍。
 - 与 [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md) 对照：后者是训练期门控的**单策略端到端**，AHC 多出的「专精→蒸馏→微调」两段，换来的是坡地/障碍等**地形覆盖**。
 
-## 常见误区
+## 源码运行时序图
+
+**不适用：** 截至 2026-11-22 官方项目主页 [ahc-humanoid.github.io](https://ahc-humanoid.github.io) 仍标注 `Code (coming soon...)`，尚未发布可运行代码仓，故不绘制源码级时序图。
+
+## 工程实践
+
+| 训练阶段 / 配置 | 原文规格 |
+|-----------------|----------|
+| 仿真规模与控制频率 | Isaac Gym **4096** 并行环境；Unitree G1 **20 DoF**（不含腰部），**50 Hz** 策略 + **500 Hz** PD |
+| Stage 1 专精策略 | $\pi^b_r$（俯/仰卧起身 + 多 critic + 起身 MoCap AMP）与 $\pi^b_w$（平地走 + LAFAN1 AMP）各 **10,000 iter** |
+| DAgger 蒸馏 | MoE 结构仅输入 **69 维本体** $\bm{s}^{\mathrm{prop}}_t$，**4,000 iter**；按 $\mathcal{S}_r / \mathcal{S}_w$ 切换监督源 |
+| Stage 2 双 GPU PCGrad 微调 | 在 **2×RTX 4090** 上各跑 walk / recovery 任务 **10,000 iter**，梯度回传主进程做 PCGrad 投影并广播更新共享 actor；保留分行为 critic 与 AMP；斜坡最高 `16.6°`、栅栏高 `0.1 m` |
+
+## 常见误区或局限
 
 1. **蒸馏一次即终点：** Table 1 显示 $\pi^d$ 在 hurdle/discrete **显著弱于** $\pi^{\mathrm{AHC}}$——第二阶段不可省。
 2. **AMP 只在 Stage 1：** Stage 2 **继续 AMP** 保人形性；不是「微调时扔掉先验」。
 3. **与 SD-AMP 重复：** SD-AMP **单策略端到端** 门控双判别器；AHC **专精→蒸馏→微调** 三阶段，覆盖 **坡地/障碍** 等地形自适应。
 4. **独立走策略够强：** $\pi^b_w$ 在坡地成功率 **0.000**——专精策略 **不具地形泛化**，需 AHC 微调。
+5. **纯本体盲走与行为数边界（§Future Work）：** 当前 69 维观测不含相机/雷达外感知，未来需接入外部感知并扩展至更多技能；且官方代码尚未开放。
 
 ## 实验与评测
 
@@ -125,12 +141,19 @@ flowchart TB
 |------|-----|-----|----------------|
 | hurdle 成功率 | **0.922** | 0.756 | — |
 | discrete 成功率 | **0.969** | 0.702 | — |
-| 坡地 | 通过 | 弱 | **0.000** |
-| recovery discrete | **0.969** | — | HoST **0.843** |
+| 坡地 | 通过（**0.975**） | 0.160 | **0.000** |
+| recovery discrete | **0.969** | 0.947 | HoST **0.843** |
 
-- **真机：** 跌倒后续走、复杂地形；平滑度 vs HoST。
+- **PCGrad 与分行为 Critic 消融（Table 2）：** `AHC (ours)` 任务梯度余弦相似度 **0.535** vs 单共享 critic 无 PCGrad `0.247`，同时避免共享 critic 因奖励尺度差异忽略 locomotion。
+- **真机：** 跌倒后起身续走（含斜坡与前后外力推搡）、复杂地形；关节加速度波动显著低于 HoST。
 
-## 与其他页面的关系
+## 与其他工作对比
+
+- [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)：训练期门控的单策略多行为控制；AHC 采用专精策略、MoE 蒸馏、再强化微调的阶段化路线，不能把两者视为同一训练方法。
+- [HoST](./paper-host-humanoid-standingup.md)：侧重人形起身；AHC 进一步将起身恢复与持续行走、地形自适应联合训练。两者的对比应限定在论文实际报告的起身与恢复指标。
+- [HAML](./paper-amp-survey-12-haml.md)：条件 AMP teacher 的多技能路线；AHC 的多行为融合核心是蒸馏后结合双 critic 与 PCGrad 微调。
+
+## 关联页面
 
 - 多技能姊妹：[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)、[HAML #12](./paper-amp-survey-12-haml.md)、[MoRE #08](./paper-amp-survey-08-more.md)
 - 起身对照：[HoST](./paper-host-humanoid-standingup.md)

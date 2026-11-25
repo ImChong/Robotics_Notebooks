@@ -90,8 +90,11 @@ flowchart LR
 - [Flexion × Niantic × NVIDIA RGB Sim2Real 管线](../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) — 360° 扫描 → 3DGS+碰撞 mesh 的 NuRec 数字孪生 → Isaac Lab RGB 导航零样本真机
 - [NVIDIA Omniverse NuRec](../wiki/entities/nvidia-nurec.md) — 官方 USDZ 体积与 Isaac / AV 两条重建入口
 - [Instant NuRec](../wiki/entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS（~1.5 s），作逐场景 NuRec 种子；办公室扫描不要套这条 CLI
+- [π⁴（Pi4）：4D 场景几何与运动基础模型](../wiki/entities/paper-pi4-4d-scene-geometry-motion.md) — 未标定单图/图集/视频的场景点图、相机尺度、轨迹与动态掩码；作为 Stage 1 感知上游，**不包含**可直接物理仿真的碰撞/物性资产。
 - [GenSfM：生成式结构与相机联合恢复](../wiki/entities/paper-gensfm.md) — 2–4 张未标定物体前景视图联合生成 mesh / 3DGS 与相机；论文量化评测采用四视图，适合物体级稀疏重建，不负责碰撞、摩擦和关节化。
+- [DecomVoxel：三维原生先验引导的原位去噪重建](../wiki/entities/paper-decomvoxel.md) — 遮挡条件下用显式占据/空域锚点补全物体几何及纹理，输出对象与背景网格；物性、碰撞及关节仍属 Stage 2。
 - [DepthGS：深度引导高质量表面重建](../wiki/entities/paper-depthgs.md) — 在 PGSR 基础上通过深度差自适应法线约束与跨视角双深度一致性改进静态 mesh 几何；DTU CD 0.51 mm，**不包含**物性 / 碰撞建模，归 Stage 1 而非 Stage 2。
+- [visloc-rs：SfM → 3DGS → mesh 的 Rust 重建链](../wiki/entities/visloc-rs.md) — Stage 1 视觉几何/外观上游：照片注册、可重用 COLMAP 模型、wgpu 3DGS 和 mesh；不自动附带接触物性或关节化。
 - [i3dGS](../wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — 乱序 RGB 照片流 **即时** 3DGS 重建 + 全局回环（SIGGRAPH 2026；GraphDeco 官方代码已开源）；漫游捕获 / 补拍混采的上游，不含碰撞 mesh
 - [Skyfall-GS](../wiki/entities/paper-skyfall-gs.md) — **卫星影像** → city-block 可漫游 3DGS（ECCV 2026；Stage 1 伪深度 + Stage 2 IDU/FlowEdit；Apache 2.0 已开源）；远程城市几何锚定，非街景 COLMAP
 - [Spark vs Aholo：Web 大场景 3DGS 渲染选型](../wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md) — 重建资产的浏览器可视化栈
@@ -122,10 +125,13 @@ flowchart LR
 - 复现一次接触引导补全（如坐姿推断椅面），对比补全前后"能否坐稳/站起"
 
 ### 推荐读什么
+
+- [chemlab-assets](../wiki/entities/chemlab-assets.md) — 零件级关节、行为契约与可操作仿真资产。
 - [SimFoundry（模块化 Real2Sim 场景生成）](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — Extraction/Generation/Augmentation 三阶段，物性与关节化的完整工程参考
 - [CRISP（Contact-guided Real2Sim）](../wiki/methods/crisp-real2sim.md) — 接触引导遮挡补全 + RL 物理一致性闭环
 - [PhysX-Omni](../wiki/entities/physx-omni.md) · [Articraft](../wiki/entities/articraft.md) — sim-ready 资产的生成式与 agentic 程序化两条路线
 - [光轮 SimReady](../wiki/entities/lightwheel-simready.md) — OpenUSD 物理准确仿真资产体系与资产库（自报 2,000+ 件，部分 CC BY-NC 开源）
+- [NVIDIA SimReady Central](../wiki/entities/nvidia-simready-central.md) — Stage 2 可复用 OpenUSD 资产发现、profile 验证和 Isaac Sim/PhysX benchmark 的工程入口；与光轮资产体系区分
 - [NeuIDO（视觉到连续材料本构算子）](../wiki/entities/paper-neuido-neural-intrinsic-dynamics-operator.md) — Stage 2 软体/颗粒物性辨识：视频对齐共享弹塑性函数并接入可微 MPM；**不解决**刚体关节化或完整接触资产生成，代码发布尚不完整。
 - [接触操作纵深](depth-contact-manipulation.md) — "接触可信"判据的任务侧邻接路线
 
@@ -155,8 +161,11 @@ flowchart LR
 - 用 object/scene/task cousins 对一个基础场景做一次可控扩增，验证 held-out 物体/布局上的泛化
 
 ### 推荐读什么
+
+- [FAB](../wiki/entities/paper-fab.md) — 单目视频的人体与静态场景联合尺度对齐、接触及G1轨迹生成；仅仿真跟踪验证。
 - [RoboSkills：机器人 Agent / Real2Sim 工作流](../wiki/entities/roboskills.md) — 官方视频重建→物理仿真工具链，按工具阶段核查 SAM/MoGe/HaWoR/CoACD/MuJoCo；与单篇 Real2Sim 算法论文分工不同。
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](../wiki/entities/paper-agentic-real2sim.md) — episode 孪生 + 可换 VLM 后端 + 确定性工具解耦
+- [RoboUniverse-10K](../wiki/entities/paper-robouniverse-10k.md) — 将真实视频扩展成可复位、独立 QA 验证的 10,807 个物理任务，支持留出评测和后训练。
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 场景孪生 + 三类数字表亲的完整增扩管线
 - [SceneAgent](../wiki/entities/paper-sceneagent-real2sim-capture-physics.md) — 3DGS/摄影测量/LiDAR → 预测物理 USD + **digital sisters** + demonstration factory（Harvard；代码待发布）
 - [COINS](../wiki/entities/paper-coins-compositional-human-scene-interaction.md) · [DIMOS](../wiki/entities/paper-dimos-human-scene-motion-synthesis.md) — 人–场景交互的正向合成对照
@@ -190,6 +199,7 @@ flowchart LR
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) · [Sim vs Real 评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — real-to-sim 评测的方法与口径
 - [SIMPLER / SimplerEnv](../wiki/entities/paper-simplerenv-real2sim-eval.md) — 确立 real-to-sim 评测范式：对齐控制与视觉 gap 后免建 digital twin，仿真成功率与 Google Robot / Bridge WidowX 真机强相关
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 同一套资产既评测又训练的闭环样本
+- [E2S2H：第一视角到物理验证的人形 VLA 示范](../wiki/entities/paper-ego2sim2humanoid.md) — 逐 episode 真实场景重建 + 戴帽接触带抓取/全身重定向 + 物理 rollout 筛选，沿接受轨迹渲染机器人视图与 78-D 动作；G1 举瓶 9/20、戴帽 5/20（作者报告）。
 - [Flexion RGB Sim2Real 管线](../wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) · [VIRAL](../wiki/entities/paper-viral-humanoid-visual-sim2real.md) — 重建/渲染场景训练的视觉策略零样本落地
 - [具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md) — real-to-sim 评测在整套基准栈中的位置
 

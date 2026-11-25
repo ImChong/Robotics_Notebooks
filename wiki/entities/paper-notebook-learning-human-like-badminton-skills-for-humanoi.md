@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, humanoid-paper-notebooks, amp, motion-prior, badminton, sim2real, dagger, goal-conditioned-rl, hku]
 status: complete
-updated: 2026-09-27
+updated: 2026-11-22
 arxiv: "2602.08370"
+original: ../../sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -125,7 +126,12 @@ flowchart TB
 4. **仿真主结果** — Isaac Lab 物理 200 Hz/策略 50 Hz，SR 0.9516/0.9153、MSE 0.0062/0.0108（easy/hard），优于 E2E-AMP（SR 0.86/0.74）等基线。
 5. **真机** — EngineAI PM01 零样本正手挑球 90%、反手挑球 70% SR（各 10 trials），作者称首个拟人羽毛球零样本 sim2real。
 
-## 常见误区
+## 工程实践
+
+- **自由度补偿与全身协同（EngineAI PM01，arXiv:2602.08370v2 § IV.C）**：PM01 每臂仅 5 DoF、缺乏人类手腕灵巧自由度，策略通过耦合腰部 yaw 旋转、箭步压低重心与收尾缓冲脚步补偿臂端姿态覆盖。
+- **阶段边界检查**：切入 Stage 4（羽毛球交互）前须确认 Stage 2 DAgger 蒸馏与 Stage 3 AMP 风格稳定均已收敛，否则空间落点精度易明显恶化。
+
+## 常见误区或局限
 
 1. **≠ 纯 MoCap 跟踪：** 四阶段终点是 **物理击球交互**；停在 Stage 1–2 只是「像人挥拍」，未必触球成功。
 2. **AMP 不是全程唯一监督：** Stage 1 是模仿跟踪，Stage 3 才引入 AMP；与 **E2E-AMP** 基线（SR 0.86/0.74 easy/hard）相比，分阶段管线更稳。
@@ -139,7 +145,29 @@ flowchart TB
 - **主结果（Ours）：** SR 0.9516/0.9153，MSE 0.0062/0.0108（easy/hard）；全面优于 w/o Stab.、E2E-AMP、w/o Interact.、ASE/VQ 基线。
 - **真机（PM01）：** 正手挑球 **90%**、反手挑球 **70%** SR（各 10 trials）；项目页与论文 Fig. 1 展示触球瞬间。
 
-## 与其他页面的关系
+## 与其他工作对比
+
+### 仿真定量基线与消融对比（Isaac Lab Lift 任务，Table II easy / hard）
+
+| 方法 | SR↑ (easy / hard) | MSE↓ (easy / hard) | IBR↑ (easy / hard) | 关键读法 |
+|---|---|---|---|---|
+| **LHBS（本文）** | **0.9516 / 0.9153** | **0.0062 / 0.0108** | 0.1999 / **0.1575** | 四阶段完整管线兼顾触球成功率与空间跟踪精度 |
+| **w/o Stab.** | 0.9501 / 0.9147 | 0.0094 / 0.0162 | 0.1363 / 0.1148 | 去掉 Stage 3 AMP 稳定后 SR 相近但空间精度 MSE 与 IBR 明显恶化 |
+| **E2E-AMP** | 0.8586 / 0.7391 | 0.2109 / 0.6004 | **0.2383** / 0.0990 | easy 档 IBR 偏高系仅击中易回界球的幸存者偏差，MSE 显著劣化 |
+| **w/o Interact.** | 0.3787 / 0.3583 | 0.3419 / 0.3569 | -0.0210 / -0.0230 | 证明仅靠运动模仿无法覆盖动态来球拦截流形 |
+| **ASE-Based** | 0.0037 / 0.0034 | 4.27 / 4.34 | -0.27 / -0.27 | 无监督技能先验难以完成高精度瞬时击球拦截 |
+| **VQ-Based** | 0.0042 / 0.0041 | 3.31 / 3.38 | -0.28 / -0.28 | 离散隐编码基线在瞬时击球任务上几乎失效 |
+
+### 与相邻球类技能路线对照
+
+| 维度 | LHBS（本文） | [LATENT](./paper-notebook-latent.md)（网球） | [Whole-Body Badminton（Annealed RL）](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) | [Humanoid Badminton（Dynamic Racket Skills）](./paper-humanoid-badminton-dynamic-racket-skills.md) |
+|---|---|---|---|---|
+| **平台** | EngineAI **PM01** | Unitree **G1** | Phybot **C1** | 人形平台（真机依赖动捕） |
+| **核心难点** | 模仿 → **物理击球交互** | 不完美 MoCap → **latent 修正** | **无先验** 退火课程 + 统一 WBC | 稀疏动作扩增 + 来球状态潜技能规划 |
+| **先验机制** | AMP + DAgger 蒸馏 | Latent action + **LAB** 屏障 | **无** MoCap/专家示范 | 任务随机化扩增连续潜技能 |
+| **泛化与实证** | **流形扩展**稠密击球点；PM01 零样本正/反手挑球 90%/70% | 连续多拍真人对打（正手 90.90% / 反手 77.78%） | 仿真双机 21 连拍；人机对打 + 出球 19.1 m/s | 按来球状态规划连续潜技能 |
+
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 球类姊妹：[LATENT](./paper-notebook-latent.md)（网球）、[Whole-Body Badminton（Annealed RL）](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)、[ETH ANYmal 四足 Sci. Rob.](./paper-coordinated-badminton-skills-anymal.md)

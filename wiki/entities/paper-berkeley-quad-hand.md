@@ -9,6 +9,8 @@ tags:
   - quasi-direct-drive
 status: complete
 updated: 2026-11-18
+original:
+  - ../../sources/papers/berkeley_quad_hand_arxiv_2609_27240.md
 arxiv: "2609.27240"
 project: https://benudavis.github.io/berkeley-quadhand/
 related:
@@ -88,6 +90,16 @@ flowchart TD
 1. 开源边界：**项目页未列 GitHub** — 项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
 2. 核心机制：准直驱 + 欠驱动 + 非对称手指分工 + 柔顺耦合。
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
+
+## 工程实践
+
+- **非对称自由度与驱动分配：** 食指、拇指与中指分配高灵巧 QDD 关节驱动（全手 11 DoF / 8 DoA），无名指类辅助指通过机械耦合分担包络抓持，减轻掌内电机热负荷。
+- **热限与长期抓持保护：** 准直驱低减速比在持续高捏紧力下电流发热显著，实机作业建议加入单指绕组温度估计或占空比限流。
+
+## 常见误区或局限
+
+- 四指欠驱动架构覆及 29/33 Feix 抓型，对极小直径对称五指内旋任务仍有构型缺口。
+- 项目页未公布 CAD 源文件或控制 firmware 仓。
 
 ## 关联页面
 

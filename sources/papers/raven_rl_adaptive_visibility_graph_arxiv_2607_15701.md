@@ -12,7 +12,10 @@
   - <https://arxiv.org/pdf/2607.15701>
 - **项目页 / 代码：** 截至 **2026-07-28** **确认未开源**（arXiv abs / HTML /「Code, Data, Media」均未列官方 GitHub 或项目页；正文未承诺 code release URL）
 - **发布日期：** 2026-07（arXiv）
-- **入库日期：** 2026-07-21（初入库）；**2026-07-28** 复核升格（补结论、索引与导航路线交叉）
+- **入库日期：** 2026-07-21（初入库）；**2026-07-28** 复核升格；**2026-11-21** 全文通读复核
+- **原文下载/核对日：** 2026-11-21
+- **通读：** 已完成
+- **核对范围：** 全文 929 行（Abstract、§I–§V RL 自适应可见性图、可碰撞无约束 MPC 轨迹优化、Booster T1 仿真与真机楼梯/窄门/障碍场景实验及局限）
 - **一句话说明：** UCLA RoMeLa 提出 **RAVEN**：用 **RL meta-policy** 在线调节 **可见图（visibility graph）障碍膨胀半径**，再由既有 **DAVG + collision-free MPC** 跟踪，并接 **Booster Gym** 底层 locomotion；在控制延迟与观测噪声下，比固定膨胀 MPC 更抗超调、比端到端 RL 更短路径且更易 sim2real；真机 **Booster T1** 半场 RoboCup 场地 mocap 验证。
 
 ## 核心论文摘录（MVP）

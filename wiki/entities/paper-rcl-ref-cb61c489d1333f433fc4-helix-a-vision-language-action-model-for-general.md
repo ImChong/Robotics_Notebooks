@@ -6,8 +6,11 @@ tags:
 - vla
 - hierarchical-control
 status: complete
-updated: 2026-10-06
+updated: 2026-11-22
 venue: '2025'
+original:
+- ../../sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md
+- ../../sources/sites/figure-helix-models.md
 summary: Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享权重在 Figure 人形上完成语言指令驱动的上半身操作。
 related:
 - paper-rcl-wam-robot-learning-control-survey.md
@@ -47,9 +50,18 @@ Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享�
 
 ## 核心原理
 
-**System 2** 理解场景和语言并产生语义 latent；**System 1** 受该 latent 条件化，结合视觉与本体状态生成连续上半身动作。输出覆盖手臂、手指、头与躯干；官网强调同一组权重支持多个行为，推理在机载 GPU 运行。
+**System 2**（7B 开源 VLM 骨干，7–9 Hz）接收单目图像、腕部/手指状态与自然语言指令，蒸馏出连续语义 latent；**System 1**（80M 交叉注意力 Transformer + 仿真预训练多尺度全卷积视觉骨干，200 Hz）受该 latent 条件化，结合当前实时视觉与本体状态直接回归 35-DoF 连续上半身动作（双腕位姿、手指屈伸/外展、头与躯干朝向）及合成“任务完成百分比”终止信号。全模型端到端以回归损失联合优化（训练时在 S1/S2 输入间加入与部署时延匹配的时间偏移），并部署在双机载嵌入式 GPU 上异步流式运行。
 
-初代的主要展示是上半身取放与协作；[Helix 02](helix-02.md) 增加全身 System 0、掌部视觉和触觉，两代硬件/接口不能混用。
+```mermaid
+flowchart LR
+  OBS["机载相机图像 + 本体状态 (腕/指)"] --> S2["System 2: 7B VLM (7-9 Hz, GPU 1)"]
+  LANG["自然语言指令"] --> S2
+  S2 -- "连续语义 Latent (共享内存异步更新)" --> S1["System 1: 80M 视觉运动 Transformer (200 Hz, GPU 2)"]
+  OBS --> S1
+  S1 --> ACT["35-DoF 连续上半身目标 + 任务完成百分比"]
+```
+
+初代的主要展示是约 500 小时遥操数据（VLM 后验指令标注）训练出的上半身取放与双机器人协作；[Helix 02](helix-02.md) 增加全身 System 0、掌部视觉和触觉，两代硬件/接口不能混用。
 
 ## 源码运行时序图
 
@@ -92,6 +104,7 @@ Helix 用慢速语义 System 2 条件化高速视觉运动 System 1，以共享�
 
 ## 参考来源
 
+- [Helix 官方技术说明全文核对](../../sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md)
 - [Helix 官方两代发布归档](../../sources/sites/figure-helix-models.md)
 
 ## 推荐继续阅读

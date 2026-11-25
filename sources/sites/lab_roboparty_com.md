@@ -8,6 +8,9 @@
 - **类型：** site（实验室门户）
 - **入库日期：** 2026-07-14
 - **最后更新：** 2026-07-30
+- **再次核对：** 2026-11-21
+- **核对范围：** 通读 `https://lab.roboparty.com` 官方首页全部板块（Lab 定位、Party OS 四方向、MimicLite / UFO / hhtools / INTACT / TeCH 展示与荣誉列表）；未将外链子仓库全部代码当作本站点已通读。
+- **通读：** 已完成
 - **一句话说明：** RoboParty 面向全球开发者的人形机器人开放实验室站点：Party OS 四方向路线图、MimicLite/UFO/hhtools 三项开源项目入口、TeCH / INTACT 等成果展示与荣誉列表。
 
 ## 为什么值得保留

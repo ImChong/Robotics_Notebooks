@@ -7,6 +7,9 @@ tags:
   - sim2real
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/freedof_sim2real_23_up-osi-universal-policy-online-sysid.md
+  - ../../sources/papers/freedof_sim2real_44_catalog.md
 arxiv: "1702.02453"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
@@ -33,6 +36,7 @@ summary: "通用策略 + 在线辨识器：从历史估计动力学参数并调�
 |------|----------|----------|
 | UP-OSI | Universal Policy with Online System Identification | 本文方法 |
 | SysID | System Identification | 系统辨识 |
+| TRPO | Trust Region Policy Optimization | 论文用于训练 Universal Policy 的置信域策略优化算法 |
 | RSS | Robotics: Science and Systems | 机器人科学系统会议 |
 
 ## 为什么重要
@@ -94,6 +98,14 @@ flowchart TD
 1. 文内角色：在线适应 路线上的参考节点，非重复 arXiv 页面。
 2. 机制要点：辨识器输出 extrinsics/参数 → 条件策略；部署期在线运行。…
 3. 部署/复现前请对照原文与项目页，勿直接外推公众号数字。
+
+## 工程实践
+
+- **最小运动历史长度选取：** 论文实证采用至少 3 帧最近状态–动作历史窗口，以覆盖二阶动力学方程估计物理参数 $\mu$，并将 OSI 在真机部署时前馈注入通用策略，从而零微调应对质量或地面摩擦阶跃变化。
+
+## 常见误区或局限
+
+- **持续激励条件：** 若系统处于完全静止或稳态滑行状态且缺少姿态/力矩激励，历史轨迹不包含参数可辨识度，OSI 输出可能漂移至训练均值或饱和。
 
 ## 关联页面
 

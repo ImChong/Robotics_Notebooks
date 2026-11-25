@@ -11,6 +11,9 @@
 - **项目页：** <https://opendrivelab.com/RoboNaldo/>
 - **许可：** 仓库根目录 **未声明 LICENSE**（GitHub API `license: null`）；以训练仓 MIT 与 README 使用说明为准，复用前自行确认
 - **入库日期：** 2026-07-28
+- **核对日期：** 2026-11-21
+- **核对范围：** 拉取 `OpenDriveLab/RoboNaldo_Deploy` @ `f60f244`（2026-06-22），通读根目录 `README.md`（12,017 字节）、`deploy_mujoco/deploy_mujoco.py`（MuJoCo 场景与 PD 控制）、`policy/robonaldo/FreeKick.py`（MuJoCo/Isaac Lab 29 关节 BFS↔DFS 映射及 5 帧历史观测接口）及 `FSM/` / `onboard/` 目录入口。边界：未在 MuJoCo 或 Unitree G1 真机运行。
+- **通读：** 已完成
 - **一句话说明：** RoboNaldo **真机与 MuJoCo 部署**官方仓：FSM 多策略切换（FreeKick / Loco / AMP 等）、机载 LiDAR/相机感知、Xbox 手柄触发；消费训练仓导出的 ONNX。
 - **开源状态：** **已开源**（代码公开；README 指向 2026-06 训练+部署发布）。项目页 Code 主链指向训练仓；部署仓由训练仓 README / submodule 引用。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md`](../../wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md)

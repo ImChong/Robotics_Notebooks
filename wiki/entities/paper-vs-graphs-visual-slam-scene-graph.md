@@ -11,9 +11,11 @@ tags:
   - uni-luxembourg
   - unizar
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
+project_id: vs-graphs-visual-slam-scene-graph
 arxiv: "2503.01783"
 venue: "IEEE RA-L 2026"
+code: https://github.com/snt-arg/visual_sgraphs
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/orb-slam3.md
@@ -24,6 +26,7 @@ related:
 sources:
   - ../../sources/papers/vsgraphs_arxiv_2503_01783.md
   - ../../sources/repos/visual_sgraphs.md
+original: ../../sources/papers/vsgraphs_arxiv_2503_01783.md
 summary: "vS-Graphs（arXiv:2503.01783，RA-L 2026）：在 ORB-SLAM3 上紧耦合在线 3D 场景图，从 RGB-D 检测墙/地面并推断房间/楼层，联合 BA 优化位姿与语义实体，平均 ATE 改善 15.22%。"
 ---
 
@@ -67,7 +70,7 @@ summary: "vS-Graphs（arXiv:2503.01783，RA-L 2026）：在 ORB-SLAM3 上紧耦�
 | 项目 | <https://snt-arg.github.io/vsgraphs-results/> |
 | 代码 | <https://github.com/snt-arg/visual_sgraphs> |
 
-## 方法与核心结构
+## 核心机制与流程总览
 
 | 模块 | 作用 |
 |------|------|
@@ -104,15 +107,14 @@ flowchart TB
 | **场景理解** | AutoSense MR01–03；对比 S-Graphs、Hydra | 墙/房间 **精度 0.86–0.96**、**召回 0.92–1.00**，接近 LiDAR S-Graphs |
 | **实时性** | i9-11950H + T600 | **22±3 FPS**（基线 **29±3 FPS**） |
 
-## 与代表性路线的对照
+## 与其他工作对比
 
-| 维度 | ORB-SLAM3 | Hydra / HOV-SG | LiDAR S-Graphs | vS-Graphs |
+| 维度 | [ORB-SLAM3](./orb-slam3.md) / ElasticFusion / BAD SLAM | Hydra / HOV-SG | LiDAR S-Graphs | vS-Graphs（本文） |
 |------|-----------|----------------|----------------|-----------|
-| 在线 SLAM | 是 | 多离线/需全图 | 是（激光） | **是（RGB-D）** |
-| 场景图 | 无 | 有（常离线） | 可优化分层图 | **可优化分层图** |
-| 传感器 | 单/双/ RGB-D + IMU | 多模态 | LiDAR | **RGB-D** |
-| 布局实体 | 无 | 房间等 | 墙/房间/楼层 | **墙/地面/房间/楼层** |
-| 标记依赖 | 无 | 无 | 无 | **无（ArUco 可选）** |
+| 在线 SLAM 与联合优化 | 是（仅几何特征/稠密地图，不含建筑布局实体） | 多离线/需全图构建 | 是（激光，可优化分层图） | **是（RGB-D，在 Local/Global BA 中联合优化位姿与场景图）** |
+| 场景图与布局实体 | 无 | 物体/房间等分层图（常离线） | 墙 / 房间 / 楼层 | **墙 / 地面 / 房间 / 楼层** |
+| 传感器与标记依赖 | 视觉 / RGB-D / IMU，无标记 | 多模态，常依赖真值/离线语义 | LiDAR，无标记 | **RGB-D，无 fiducial 依赖（ArUco 仅作可选语义命名）** |
+| 精度与实时性实测 | ORB-SLAM3 基线帧率 `29±3 FPS` | — | AutoSense 基准对照 | 全库平均 ATE 相对基线 **改善 15.22%**（MR 序列 `9.39–16.47%`），AutoSense 墙/房间检测精度 `0.86–0.96` / 召回 `0.92–1.00` 接近 LiDAR S-Graphs；帧率 **`22±3 FPS`** |
 
 ## 结论
 
@@ -123,17 +125,48 @@ flowchart TB
 - 适用边界是 **平面化室内布局**：曲面墙、复杂凹房间超出当前建模；低纹理走廊、快速运动与噪声深度会先破坏分割与 RANSAC 平面拟合，再传导到房间/楼层推断。
 - 代价与依赖要说清：帧率 **22±3 FPS**（基线 29±3），ArUco 仅用于房间/走廊命名，**不是定位必需**，不应被当成部署前提。
 - 与 Hydra / HOV-SG 对照，本页的差别在「在线且可优化」而非「构图更强」；与 **LiDAR S-Graphs** 对照，RGB-D 已能把墙/房间检测做到精度 0.86–0.96、召回 0.92–1.00 的接近水平。
-- 工程侧开源且基于成熟 [ORB-SLAM3](./orb-slam3.md)，但 ROS 2 / Nav2 对接与坐标系对齐需自行完成（见 [导航栈总览](../overview/navigation-slam-autonomy-stack.md)）。
+- 工程侧开源且基于成熟 [ORB-SLAM3](./orb-slam3.md)：官方仓已提供 **ROS2 Jazzy**（Ubuntu 24.04.2 LTS）节点、`rgbd.launch.py` / `rgbd-imu.launch.py` 与 Docker 镜像，但楼层跨层、非平面墙体及下游 Nav2 语义规划对齐仍需工程扩展（见 [导航栈总览](../overview/navigation-slam-autonomy-stack.md)）。
+
+## 源码运行时序图
+
+[snt-arg/visual_sgraphs](https://github.com/snt-arg/visual_sgraphs) 基于 ORB-SLAM3 多线程与 ROS2 Jazzy 接口运行：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Launch as launch/rgbd*.launch.py
+  participant Node as src/ros_rgbd.cc & ros_rgbd_inertial.cc
+  participant Track as core/ Tracking & Local Mapping
+  participant BC as Building Component Thread (pFCN/YOSO+RANSAC)
+  participant SE as Structural Element Thread (2s Voxblox)
+  participant Atlas as Atlas & Local/Global BA
+
+  Launch->>Node: 读取 config/system_params.yaml 并启动语义识别节点
+  Node->>Track: 输入 RGB-D (+ IMU) 提取 ORB 特征并筛选 KeyFrame
+  Track->>BC: 关键帧图像与点云提取墙体/地面平面
+  BC->>Atlas: 注册校验后的建筑构件并参与滑窗联合优化
+  loop 每 2 秒定时执行
+    SE->>Atlas: 读取建筑构件 + Voxblox 自由空间簇推断房间/楼层
+    SE->>Atlas: 写入平行/垂直墙体与质心几何约束
+  end
+  Track->>Atlas: 回环检测触发全局 BA 并合并冗余实体
+```
+
+## 工程实践
+
+- **系统与启动入口：** 当前主分支支持 **ROS2 Jazzy**（实测 Ubuntu 24.04.2 LTS）并提供 `docker/` 镜像；RGB-D 运行 `ros2 launch vs_graphs rgbd.launch.py`，带 IMU 运行 `rgbd-imu.launch.py`，核心参数位于 `config/system_params.yaml`。
+- **可选组件按需开启：** 仅做墙/地面建筑构件识别无需额外建图器；若要推断房间/走廊/楼层结构元素，需按 `doc/INSTALLATION.md` 开启 **Voxblox** 自由空间聚类；需要房间语义标签命名时再挂接 `aruco_ros`。
+- **基准对齐：** 仓库内含 `evaluation/` 评测脚本与 RealSense D400 系列实机文档（`doc/RealSense/README.md`），评测多组 ATE 时应控制回环阈值与 Voxblox 体素尺度一致。
 
 ## 常见误区或局限
 
 - **误区：「语义 VSLAM = 过滤动态物体特征点」。** 本文关注 **建筑布局级实体** 与 **可优化场景图**，而非仅物体级语义滤点。
 - **误区：「场景图只能后处理」。** vS-Graphs 在 **Local/Global BA** 内优化语义节点，约束可反馈到位姿。
-- **局限：** 当前以 **平面墙/地面** 为主，曲面墙、复杂凹房间仍需未来 GNN 等扩展。
+- **局限：** 当前以 **平面墙/地面** 为主，曲面墙、复杂凹房间及跨楼层（现为单层假定）仍需未来 GNN 等扩展。
 - **局限：** **低纹理走廊**、快速运动与噪声深度仍会影响分割与平面拟合，并传导至结构识别。
-- **局限：** 基于 ORB-SLAM3，**ROS 2 对接、Nav2 坐标系对齐** 需自行工程化（见 [导航栈总览](../overview/navigation-slam-autonomy-stack.md)）。
+- **局限：** 与 Nav2 局部规划或全局语义导航查询衔接时，仍需将 Atlas 场景图输出转换为标准代价图或目标点格式。
 
-## 与其他页面的关系
+## 关联页面
 
 - [ORB-SLAM3](./orb-slam3.md) — 本文直接扩展的 VSLAM 基线
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md) — RGB-D / 视觉 SLAM 在移动机器人栈中的位置

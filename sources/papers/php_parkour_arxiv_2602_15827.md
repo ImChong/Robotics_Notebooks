@@ -14,6 +14,8 @@
 - **机构：** Amazon FAR、UC Berkeley、CMU、Stanford University
 - **入库日期：** 2026-05-31
 - **开放状态更新：** 2026-10-10；代码、动作数据库、五组训练示例和学生 ONNX 已发布。论文完整实验与发布示例不可混作同一复现范围；教师 checkpoint 需自行训练。
+- **核对范围：** 通读 `arXiv:2602.15827v1` HTML 全文（Abstract、§I–§V 及 Appendix A–C：Motion Matching 特征检索与 `Locomotion → Skill → Locomotion` 合成、OmniRetarget 原子技能库、BeyondMimic 专家训练与 adaptive sampling、WARP 深度渲染与 `DAgger + PPO` 混合蒸馏课程、Unitree G1 1.25 m 墙攀与 60 s 多障碍实机验证）；未在本地运行 IsaacSim 训练。
+- **通读：** 已完成
 - **一句话说明：** 用 **motion matching** 把稀缺的人类跑酷原子技能与 locomotion 合成为长程运动学参考，再训练多技能 **motion-tracking 专家** 并 **DAgger + PPO** 蒸馏为单一 **深度图学生策略**，在 **Unitree G1** 上仅凭机载深度与离散 2D 速度指令自主完成越障、攀爬、翻越与滚落等长程跑酷。
 
 ## 摘要级要点

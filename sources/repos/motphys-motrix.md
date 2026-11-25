@@ -8,6 +8,8 @@
   - https://motrixsim.readthedocs.io/en/latest/user_guide/getting_started/motrixsim_web.html
 - **类型**: repo / simulation-engine / rl-platform
 - **作者**: Motphys
+- **核对范围：** 已通读 `Motphys/motrixsim-docs@3f1dca5` `README.md` 与 `Motphys/MotrixLab@7701fca` `motrixlab/src/motrixlab/cli.py`、`motrix_rl/README.md`、`motrix_rl/src/motrix_rl/{runner.py,commands/train.py,commands/play.py}`；说明文档与源码入口核对，未独立执行编译/仿真或下载 LFS 模型资产
+- **通读：** 已完成
 - **核心关注点**: 高性能多体动力学仿真、Rust 后端、MJCF 兼容性、强化学习集成
 
 ## 核心内容摘要

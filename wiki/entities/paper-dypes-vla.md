@@ -14,7 +14,7 @@ tags:
   - unitree-g1
   - franka
 status: complete
-updated: 2026-09-15
+updated: 2026-11-22
 arxiv: "2608.06374"
 related:
   - ../methods/vla.md

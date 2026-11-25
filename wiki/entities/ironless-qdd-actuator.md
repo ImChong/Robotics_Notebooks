@@ -2,7 +2,9 @@
 type: entity
 tags: [hardware, actuator, qdd, open-source, cycloidal, bldc, 3d-print, femm, halbach]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
+original:
+  - ../../sources/repos/ironless_qdd_actuator.md
 related:
   - ../comparisons/open-source-torque-motor-em-design.md
   - ../comparisons/open-source-qdd-actuator-projects.md
@@ -67,7 +69,7 @@ summary: "Caden Kraft Ironless QDD：采购 10010 定子自绕 36N42P + Halbach 
 | 绕组 | **36N42P**；约 6 匝/槽 × 6 股 0.4 mm 并联（项目页） |
 | 转子 | **Ironless + Halbach**；主极约 42×(12×5×3 mm) N52 + 辅助小磁钢；气隙约 **0.7 mm** |
 | 减速 | 3D 打印 **摆线—行星** 约 **7:1**（[pygeartrain](./pygeartrain.md) 导出）；作者称零背隙叙事 |
-| 驱动 | **MKS XDrive Mini**（ODrive 3.6 系）；仓库含配置 JSON |
+| 驱动 | **MKS XDrive Mini**（ODrive 3.6 系）；`MKS XDrive Config.json` 实测设定 `pole_pairs=21`、`phase_resistance=0.0899 Ω`、`phase_inductance=26.2 µH`、`torque_constant=0.1809 N·m/A`、`current_lim=50 A`、`current_control_bandwidth=1000 Hz` |
 | 传感 | 集成霍尔磁编 |
 | 质量 | 约 **728 g** |
 | \(K_v\) | 反拖测约 **79** |
@@ -94,6 +96,24 @@ flowchart LR
 - **为何无铁芯：** 转子全打印时避免铁背板；Halbach 把磁通压向气隙侧。作者 FEMM 四象限：Halbach 无铁约达有铁 Halbach 的 **91%**；常规无铁仅约 **72%**；Halbach+铁背相对仅 Halbach 或仅铁背约再 **+9%**（以项目页叙述为准）。
 - **为何摆线齿行星：** FDM 渐开线易圆角与齿根剪切；摆线叶瓣连续轮廓更易打印，且近零背隙接触。
 - **材料：** 样机用 **PA6-GF**；作者事后建议齿轮改用**无玻璃纤维尼龙**以防磨损；**PLA 转子会因磁力蠕变**；转子需 **100% 填充**。
+
+## 源码运行时序图
+
+**仓库为硬件 CAD / FEMM 资产 + 商用 ODrive 兼容 JSON 配置，无自研控制固件仓库；** 工程复现链路如下：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as 开发者 / 研究者
+  participant FEMM as FEMM/ (.FEM + xlsx)
+  participant CAD as CAD/ (.STEP + Print_Files)
+  participant XDrive as MKS XDrive (ODrive FW)
+
+  User->>FEMM: 打开 Actautor_Ironless_Hall.FEM 对照有/无铁背转矩
+  User->>CAD: 打印转子 (PA6-CF/GF 100% infill) 与摆线-行星件
+  User->>XDrive: 下发 MKS XDrive Config.json (pp=21, Kt=0.1809, BW=1000 Hz)
+  XDrive->>XDrive: 启动编码器偏移校准并切入闭环电流/力矩控制
+```
 
 ## 工程实践
 

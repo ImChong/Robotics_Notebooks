@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, quadruped, open-source, locomotion, technology-map, wechat]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-22
 related:
   - ../entities/spotmicro-ros-mike4192.md
   - ../entities/mangdang-quadruped-robot.md
@@ -12,13 +12,14 @@ related:
 sources:
   - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 summary: "古月居转载的四足机器人开源项目综述的阅读坐标：36 个 GitHub 项目按极简运动学、ROS、优化控制、强化学习、轮足、研究级硬件六条流派排列，新建 24 / 复用 12 个独立节点，并列出文章与 README 不一致之处。"
+original: ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 ---
 
 # 四足机器人开源项目技术地图：从极简运动学到研究级硬件（36 个 GitHub 项目）
 
 > **本页定位**：为 [四足机器人开源项目深度解析](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)（2026-11-01，古月居转载敢敢AUTOHUB）提供按流派组织的阅读坐标；文中 36 个项目均有唯一详情节点。
 
-## 一句话观点
+## 一句话定义
 
 **文章的主线是「从极简运动学到研究级硬件」：越往右越贵、越依赖算力与硬件，开源项目的价值在于看清不同流派的工程权衡。**（文章结论的概括；其具体项目描述有若干与 README 不符，见下表）
 
@@ -32,7 +33,7 @@ summary: "古月居转载的四足机器人开源项目综述的阅读坐标：3
 | IK | Inverse Kinematics | 逆运动学 |
 | QDD | Quasi-Direct Drive | 准直驱 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - 综述一次点名 36 个仓库，库内已有 12 个节点散落在各处，需要一个统一入口；
 - 文章对若干项目的描述与仓库 README 不一致（如 CHAMP 并非凸 MPC、legged_control 已停止维护），需要显式标注，避免把转述当事实。
@@ -111,6 +112,10 @@ summary: "古月居转载的四足机器人开源项目综述的阅读坐标：3
 | Sesame Robot | [sesame-robot](../entities/sesame-robot.md) | 1309 |
 | 菠萝狗 Py-Apple Dog | [py-apple-quadruped](../entities/py-apple-quadruped.md) | 1224 |
 
+## 核心机制
+
+本图谱沿“计算需求、动力学保真度与硬件耦合度递进”主轴，将开源四足项目组织为六条互斥又可组合的技术流派：极简运动学/状态机（MCU 级 IK）、ROS 教学与工程生态、数值优化控制（凸 MPC / WBC / 轨迹优化）、GPU 并行强化学习（Isaac Gym/Lab）、轮足混合结构，以及开放执行器与机载固件级研究平台；同时对每条工程宣称用仓库 README 与代码入口做实证复核。
+
 ## 文章说法与 README 核对
 
 | 项目 | 文章说法 | README / 核查 | 处理 |
@@ -125,6 +130,16 @@ summary: "古月居转载的四足机器人开源项目综述的阅读坐标：3
 
 > 星标数与「已开源」类表述为入库日（2026-11-01）读取的 README 与 `git ls-remote` 结果；星标数为文章表述。
 
+## 工程实践
+
+- **按研发阶段选型**：教学与结构验证先从极简运动学或 ROS 生态入手，快速打通步态与通信；研究动力学、力控或高速/非结构化地形时再切入 MPC/WBC 或 `legged_gym` / `Isaac Lab` 强化学习栈，轮足分支单独考虑闭链 VMC 或复合轮腿动力学。
+- **复核仓库活跃度与依赖版本**：多项目绑定较老的 Isaac Gym Preview 4、ROS 1 Noetic 或特定上游 fork，落地前应核对 `git` 维护状态及是否包含真实 sim2real 部署代码。
+
+## 局限与风险
+
+- **综述信息漂移风险**：原始公众号汇总存在与上游 README 不一致的表述（如将部分运动学控制器归类为凸 MPC、未标注已停更状态或缺失实机部署模块），必须以上游源码与许可条款为准。
+- **星标与榜单偏差**：高 Star 仓库不等于可零配置真机运行，部分研究项目仅包含仿真训练脚本而不含底层硬件驱动与标定工具链。
+
 ## 关联页面
 
 - [四足机器人总览](../entities/quadruped-robot.md)
@@ -134,3 +149,8 @@ summary: "古月居转载的四足机器人开源项目综述的阅读坐标：3
 ## 参考来源
 
 - [wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
+
+## 推荐继续阅读
+
+- 来源归档：[四足机器人开源项目深度解析](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
+- 纵深主线：[RL Locomotion 纵深路线](../../roadmap/depth-rl-locomotion.md)

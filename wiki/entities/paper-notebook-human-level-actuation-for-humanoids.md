@@ -2,8 +2,10 @@
 type: entity
 tags: [paper, humanoid, actuator, benchmark, biomechanics, torque-control, thermal, qdd, sea, teragon-research, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-21
 arxiv: "2511.06796"
+original:
+  - ../../sources/papers/humanoid_pnb_human-level-actuation-for-humanoids.md
 related:
   - ./paper-notebook-quasi-direct-drive-for-low-cost-compliant-roboti.md
   - ../concepts/motor-torque-speed-curve.md
@@ -111,29 +113,28 @@ flowchart LR
 
 ## 实验与评测
 
-- 论文汇总 75 kg 人体任务包络：平地走踝推蹬约 **90–143 N·m、190–260 W**；上楼踝推进约 **105–135 N·m、225–260 W**。
-- 跑步踝/髋正功可达约 **300–525 W**；手/腕快速开合约 **4–6 Hz**，投掷肩内旋约 **113–134 rad/s**，说明“人级”跨越完全不同的速率域。
-- 论文给出 synthetic multi-joint robot 的完整 HLAS 计算示例，用来展示 gearing 对 HEE、带宽与效率的冲突。
-- 这不是多台商用人形的实测排行榜；worked example 验证计算链条，不验证该协议的跨实验室重复性。
+- 论文基于 **75 kg / 1.75 m**（de Leva 人体段参数缩放）汇总任务包络（Table 3–4）：平地走（1.2–1.4 m/s）踝 push-off 占正功 45–50%，需 **90–143 N·m、190–260 W @ 8–12 rad/s**；上楼踝推进 **105–135 N·m、225–260 W**、膝维持 **~75 N·m @ 0.5–2 rad/s**；跑步（2.5–3.0 m/s）踝/髋正功 **300–525 W**；重复举升膝伸力矩 **225–255 N·m**；手/腕快速开合 **4–6 Hz**，投掷肩内旋极限 **113–134 rad/s**。
+- 在 **§7 Worked Example**（12-DoF 假想人形，Walk $w=0.4$、Stairs $w=0.3$、Reach $w=0.3$，默认 $\alpha_{\text{HEE}}=0.50$、其余五项各 $0.10$）中，总分 **HLAS = 0.636**（任务分 $s_{\text{Walk}}=0.671$、$s_{\text{Stairs}}=0.539$、$s_{\text{Reach}}=0.687$），暴露 Stairs 膝/髋低速持续扭矩不足（$h^{(w)}\approx 0.087 / 0.085$）；若施加 **$\delta=0.10$ 安全余量门槛**，分数跌至 **0.515**（暴露约 19% 基线得分贴边通过）。
+- 这不是多台商用人形的实测排行榜；worked example 与 Benchmark 1–9 验证计算和台架协议自洽性，跨实验室可重复性仍有待后续大规模公开数据集验证。
 
 ## 结论
 
 **HLAS 最重要的贡献是规定“何时、何姿态、何转速、持续多久”才算人级，而不是再发明一个脱离测量条件的总分。**
 
 1. **规格从任务反推** — 先选 operating bands，再定关节目标。
-2. **连续安全图优于峰值点** — 冷机 burst 不能代表持续工作。
-3. **高减速比不能只靠静态力矩获胜** — 带宽、效率与背驱会在分项中暴露。
-4. **总分必须伴随分解** — 不同任务权重下，机器人排名可能反转。
+2. **连续安全图优于峰值点** — 冷机 burst 不能代表持续工作，所有测功必须在 3–5 min 热浸泡且温升率 `< 0.5 °C/s` 下测得。
+3. **高减速比不能只靠静态力矩获胜** — 带宽、效率与背驱会在分项与 HEE 同时性测试中暴露。
+4. **总分必须伴随分解与安全余量检查** — 不同任务权重与 $(1+\delta)$ 余量下，边缘达标机器人排名可能明显下滑。
 5. **当前证据是协议级** — 缺公开工具与跨平台实测，不应把 HLAS 当既成行业标准。
 
-## 局限与风险
+## 常见误区或局限
 
-- 人体基准由不同研究、样本和测量协议编译，跨来源误差会进入 HEE。
+- 人体基准由不同研究、样本和测量协议编译，跨来源 10–20% 误差会进入 HEE。
 - 任务/关节权重仍包含价值判断；必须预注册并发布敏感性分析。
-- 接触冲击、传动寿命、噪声、成本和维护性未完全进入单一分数。
+- 接触冲击、传动寿命、噪声、成本和维护性未完全进入单一分数，负功回馈（regeneration）目前亦未直接加权进 HEE。
 - 论文无代码与机器可读 atlas，独立实现容易在坐标、插值和归一化上分叉。
 
-## 与其他页面的关系
+## 关联页面
 
 - 路线入口：[力矩控制电机设计纵深](../../roadmap/depth-torque-motor-design.md)
 - 物理曲线：[Motor Torque-Speed](../concepts/motor-torque-speed-curve.md)、[Motor Torque-Current](../concepts/motor-torque-current-curve.md)

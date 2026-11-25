@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, lie-group, so3, se3, quaternion, embodied-ai, optimization]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-21
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ../overview/modern-robotics-wechat-principles-series.md
@@ -29,12 +29,17 @@ sources:
   - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
   - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
   - ../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md
+original:
+  - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
 summary: "SO(3)/SE(3) 李群描述合法刚体姿态与位姿，so(3)/se(3) 李代数在切空间提供无约束可微增量；单位四元数是 SO(3) 的工程存储格式。具身智能把旋转优化暴露到网络反传时，典型链路为「流形上表示 → 李代数上优化 → 指数映射回群」。"
 ---
 
 # 李群、李代数与刚体旋转（SO(3) / SE(3)）
 
-**一句话：** 三维刚体运动生活在 **李群** SO(3)（旋转）与 SE(3)（旋转+平移）上；**李代数** so(3)/se(3) 是群在单位元处的切空间，把非线性姿态变化变成可求导的向量；**单位四元数** 则是 SO(3) 在工程里最常用的紧凑存储，三者通过指数/对数映射协同，而不是互相替代。
+## 一句话定义
+
+三维刚体运动生活在 **李群** SO(3)（旋转）与 SE(3)（旋转+平移）上；**李代数** so(3)/se(3) 是群在单位元处的切空间，把非线性姿态变化变成可求导的向量；**单位四元数** 则是 SO(3) 在工程里最常用的紧凑存储，三者通过指数/对数映射协同，而不是互相替代。
 
 ## 英文缩写速查
 
@@ -46,7 +51,7 @@ summary: "SO(3)/SE(3) 李群描述合法刚体姿态与位姿，so(3)/se(3) 李�
 | QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 
-## 为什么具身智能必须直面流形
+## 为什么重要：具身智能必须直面流形
 
 在传统 SLAM、轨迹优化与运动控制中，旋转多在优化器内部处理：欧拉角、旋转矩阵，或对四元数做「小扰动」。当 **神经网络直接输出动作** 或在大范围姿态上反传梯度时，在 $\mathbb{R}^3$ / $\mathbb{R}^4$ 里无约束回归旋转，容易出现：
 
@@ -149,7 +154,12 @@ flowchart LR
 
 [Modern Robotics 教材](../entities/modern-robotics-book.md) 以 twist/wrench 与 PoE 贯穿上述语言；[InEKF](../formalizations/ekf.md) 等估计方法则利用李群结构改善误差传播（见 [Sensor Fusion](../concepts/sensor-fusion.md)）。
 
-## 常见误区
+## 工程实践
+
+- **状态存储用四元数/变换矩阵，微分更新回李代数切空间：** 参考高频链路 `$q \to R \xrightarrow{\log} \omega \to \text{update} \xrightarrow{\exp} R \to q$`，避免直接在网络回归层对无约束 3 维/4 维数组加减更新。
+- **区分神经网络回归接口与优化器增量接口：** 策略网络输出离散姿态时可用 6D 连续表示保证姿态空间平滑回归、规避奇异跳变；WBC/MPC/SLAM 内部则统一在 $so(3)/se(3)$ 切空间线性化并求雅可比。
+
+## 常见误区或局限
 
 1. **「有四元数就不需要李代数」** — 四元数是存储格式；大规模优化仍要在 so(3)/se(3) 上定义增量与雅可比。
 2. **「李群 = 深度学习新发明」** — 经典力学与控制早已使用；变化是 **梯度进入网络** 后不能只在后处理里修补。

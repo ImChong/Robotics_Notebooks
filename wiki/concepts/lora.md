@@ -2,7 +2,7 @@
 type: concept
 tags: [fine-tuning, parameter-efficient, adaptation, peft]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-22
 code: https://github.com/microsoft/LoRA
 related:
   - ../methods/vla.md
