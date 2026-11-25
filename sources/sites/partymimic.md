@@ -7,8 +7,8 @@
 - **作者 / 团队：** RoboParty Lab
 - **项目：** https://roboparty.github.io/PartyMimic/
 - **代码：** https://github.com/Roboparty/PartyMimic
-- **日期：** 2026-11-11（资料核查日；不推断首次发布日期）
-- **核对范围：** 官方项目页全文（Overview、Results、Training data、MLP or attention、Sparse keypoints、Sim2sim、LAFAN speed、Recipe、SuperMimic ablation、Use it）；逐项核对评测表、实验条件、消融与局限。
+- **日期：** 2026-11-25（资料复核；旧快照为 2026-11-11）
+- **核对范围：** 官方项目页全文（Overview、Results、Training data、MLP or attention、Sparse keypoints、Sim2sim、LAFAN speed、数据选择与采样、Terrain、Recipe、SuperMimic 消融及长训、命令延迟、实机与 Agent 演示）；逐项核对评测表、实验条件、消融与局限。
 - **通读：** 已完成
 - **开源结论：** 已开源；仓库含训练、数据处理/重定向、评测、ONNX 导出代码与 G1/RP1 两份默认策略 checkpoint；原始数据需遵守各自许可。
 - **沉淀到 wiki：** [PartyMimic](../../wiki/entities/partymimic.md)
@@ -16,13 +16,12 @@
 
 ## 项目页提供的一手证据
 
-- 训练：同一 10,731 clip / 41 h 多源动作库，单卡 RTX 4090 默认 MLP 12,000 iter 约 26 min，G1/RP1 的峰值显存分别约 22.6/23.4 GB；attention 约 41/42 min，默认需超过 24 GB。
-- 数据：LAFAN1、BONES-SEED 多样性采样、跪爬动作、KungfuAthlete；训练与测试按来源区分，Extreme 按源视频隔离；五组未见动作测试在 MuJoCo sim2sim 中进行。
-- G1 held-out：MLP 五组平均身体位置误差 45.1 mm，Mani 20.5 mm；attention 平均 43.5 mm；RP1 MLP 47.8 mm，Mani 16.5 mm（attention Mani 16.1 mm）。
-- 稀疏输入：`sparse5` 是骨盆参考加五个关键身体部位（头、双手腕、双脚踝）的姿态，**并非只有五个姿态**；共有六个姿态，按项目页说明的原始输入编码包含 51 个数。
-- 复现条件：同卡重训的对照与官方已有 checkpoint 混合列示，不能把所有基线的训练 GPU-hours 当作同条件对比；上述准确度是项目方报告，未独立复测。
-- 限制：快动作的单目参考存在滑脚，且高速摆动有执行器极限；最快 Extreme 组平均误差更高。LAFAN-40 的 3–5 分钟针对训练集内回报/零失败阈值，不等同于 41 小时泛化训练。
-- SuperMimic 消融：多步闭环梯度与在线重拟合世界模型关键；单步模型梯度、过早冻结世界模型分别导致接近零的回报；实用配方包含 Muon、32 步展开、EMA、参考动作 skip 等。
+- 训练库扩充为 10,745 条（约 41 小时），旧库加 14 条 XtremeMotion。项目方的 G1/RP1 MLP 主表分别用 28/29 分钟，五组平均 38.4/39.3 mm；attention 均约 43 分钟，平均 37.4/38.7 mm。主表与随仓 seed-0 权重不是同一统计。
+- 测试五组中，前四组来自 MotionDecode，Extreme 由 KungfuAthlete 源视频整段留出。误差在相对航向对齐、已跟踪区间上计算，不能替代完成率；SONIC/Mimic Lite 的现成权重和同卡重训基线分开。
+- RP1 的 `sparse5` MLP 五组均值 42.3 mm；名称指五个关键身体部位外加骨盆。LAFAN-40 速度实验在训练同集，不等于 41 小时泛化训练。
+- 项目页新增地形、训练尖峰保护、腕部跟踪与部署时延的独立实验。G1 地形实验全库和地形子集的 3,000-iter 成功率分别为 99.05% 和 89.1%；这是过滤后的训练库回放。
+- 部署默认加 5–20 ms 命令滞后，去掉排行榜配方的 clip allocation 和 `--obs_err kp`；RP1 慢主机 Mani 仿真中，脚滑 3.75 → 1.42 → 1.03 cm/s 分别对应主表配方、单加滞后、完整部署默认。
+- 官方另附 G1/RP1 真机示例，以及 INTACT、VLM 的 RP1 仿真展示。最新低箱抓取画面是仿真中的接触抓取，作者说明没有焊接约束；不是新增实机成功率，不把展示层当作仓库训练或部署入口。
 
 ## 核查范围边界
 

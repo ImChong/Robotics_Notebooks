@@ -5,7 +5,7 @@ project: https://roboparty.github.io/PartyMimic/
 code: https://github.com/Roboparty/PartyMimic
 tags: [humanoid, motion-tracking, model-based-rl, imitation-learning, sim2real, roboparty, open-source]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-25
 related:
   - ./mimiclite.md
   - ./blinkmimic.md
@@ -13,6 +13,9 @@ related:
   - ./party-os.md
   - ../concepts/motion-retargeting.md
   - ../concepts/sim2real.md
+  - ../methods/model-based-rl.md
+  - ../methods/beyondmimic.md
+  - ../../roadmap/depth-bfm.md
 sources:
   - ../../sources/sites/partymimic.md
   - ../../sources/repos/partymimic.md
@@ -26,7 +29,7 @@ summary: "PartyMimic（RoboParty Lab）是基于在线可微世界模型与32步
 
 ## 一句话定义
 
-**PartyMimic** 是 RoboParty Lab 在 SuperMimic / BlinkMimic 技术线上发展的可微世界模型全身动作跟踪方法：从多来源动作库训练一份人形策略，通过 32 步想象展开的梯度反传优化跟踪表现，并开放完整训练、数据处理、导出及评测入口。官方报告 **1× RTX 4090 约 26 分钟训练 41 小时动作库**（默认 MLP，12k iterations），这是项目方测量而非独立复现。
+**PartyMimic** 是 RoboParty Lab 在 SuperMimic / BlinkMimic 技术线上发展的可微世界模型全身动作跟踪方法：从多来源动作库训练一份人形策略，通过 32 步想象展开的梯度反传优化跟踪表现，并开放完整训练、数据处理、导出及评测入口。项目方报告在 **单张 RTX 4090** 上，以 MLP 对约 **41 小时**参考动作训练 12,000 次更新，G1 **28 分钟**、RP1 **29 分钟**。这是项目页实验配方，不等于当前部署默认参数或随仓权重的单次测量。
 
 ## 英文缩写速查
 
@@ -41,7 +44,7 @@ summary: "PartyMimic（RoboParty Lab）是基于在线可微世界模型与32步
 
 ## 为什么重要
 
-- **算力门槛：** 官方在相同的 10,731 clips / 41 h 多来源库上，默认 MLP 用单张 4090 训练 12,000 iter 约 26 分钟，G1/RP1 测得峰值显存分别 22.6/23.4 GB；attention 约 41/42 分钟且通常超出 24 GB。
+- **算力门槛：** 官方在相同的 10,745 条 / 41 小时动作库上，MLP 的 G1/RP1 峰值显存分别为 22.6/23.4 GB；完整 cross-attention 配置均约 43 分钟，通常超出 24 GB。
 - **明确的泛化设置：** 在 Loco（80）、Mani（48）、Dance（40）、Ground（60）和 Extreme（308）五个未见动作集评测；Extreme 按源视频划分，降低同源片段泄漏。
 - **接口可复用：** `joint` 使用根部运动与关节参考；`sparse5` 使用骨盆及头、两腕、两踝共六组参考姿态，不依赖特定机器人关节编号，方便跨人体/机器人输入。
 - **配方与负结果公开：** 既公布有效优化，也展示 SuperMimic 多因素消融的无明显作用和失败设置。
@@ -52,7 +55,7 @@ summary: "PartyMimic（RoboParty Lab）是基于在线可微世界模型与32步
 
 ```mermaid
 flowchart TD
-  A["公开参考动作: LAFAN1 / BONES-SEED / KungfuAthlete"] --> B["筛选多样性与动作质量"]
+  A["多源动作库: LAFAN1 / BONES-SEED / KungfuAthlete 等"] --> B["筛选多样性与动作质量"]
   B --> C["50 Hz 运动库: G1 与 RP1 IK 重定向"]
   C --> D["mjlab / MuJoCo Warp 批量仿真"]
   D --> E["ReplayBuffer 采集真实仿真转移"]
@@ -85,28 +88,30 @@ flowchart TD
 | 值梯度一致性 | `--v_gcons 0.5` | +1.0 mm |
 | 多样性均衡重置 | `--div_k 24` | Ground +6–19 mm |
 
-> 消融数字来自项目页较早的 **9,173 clips** 版本（G1 Loc/Man 口径）；不能与最终 10,731 clips 测试表直接视作同一次实验。
+> 消融数字来自项目页较早的 **9,173 clips** 版本（G1 Loc/Man 口径）；不能与最终 10,745 条 held-out 配方的结果表直接视作同一次实验。
 
 ### 3. MLP、Attention 与稀疏姿态
 
-- **MLP（默认）：** 编码多帧参考目标，训练时间/显存开销低；G1 五类平均误差 45.1 mm。
-- **Cross-attention：** 由观测历史查询未来目标，G1 五类平均误差下降到 43.5 mm；G1 训练约 41 分钟，24 GB 需 `--pi_batch 1024` 等折中设置。
-- **`sparse5`：** 参考包含 pelvis + head + 两个 wrist + 两个 ankle **六组身体姿态**；使用当前机器人正向运动学得到关键点误差，预拟合并冻结 `kp2q` 用于参考动作 skip，辅助头预测参考关节角。RP1 MLP 五类平均误差 48.7 mm（完整关节参考 47.8 mm）。
+- **MLP（默认）：** 编码多帧参考目标，训练时间/显存开销低；G1 五组平均误差 38.4 mm。
+- **Cross-attention：** 由观测历史查询未来目标，G1 五组平均误差 37.4 mm，完整配置约 43 分钟；24 GB 可减小 `--pi_batch`，但不宜套用完整配置的表格结果。
+- **`sparse5`：** 参考包含 pelvis + head + 两个 wrist + 两个 ankle **六组身体姿态**；使用当前机器人正向运动学得到关键点误差，预拟合并冻结 `kp2q` 用于参考动作 skip，辅助头预测参考关节角。RP1 MLP 五组平均误差 42.3 mm（完整关节参考 39.3 mm）；ONNX 原始 `ref_kp` 是每帧六组 `xyz + wxyz` 姿态，和网络内部特征维度分开记。
 - 命名里的 “5” 表示骨盆之外的五个部位，不是仅五个输入位置，也不等价于仅 5 个关节角。
 
 ## 实验与评测
 
-评测：官方在 2 seeds、12k iterations 条件下使用 EGalahad sim2real leaderboard 的 MuJoCo sim2sim 评测（ONNX 导出后，从每个 clip 起始帧播放）。误差为局部身体位置误差（mm，越低越好）；完成率另计。SONIC 和 MimicLite 使用各自发布权重，**并非本轮同卡重训**。
+项目方在 2 个种子、通常 12,000 次更新下，使用 EGalahad 的 MuJoCo sim2sim 评测器跑导出后的 ONNX。下表是按相对骨盆航向对齐、**已跟踪片段**的身体位置误差；五组先各自求均值，再等权汇总。Extreme 严格成功率另算，要求从头到尾跟完，且骨盆姿态误差超 57° 不持续 0.2 秒。SONIC 和 Mimic Lite v1.1 采用已有权重，并非同卡重训；NablaMimic 保留两小时预算。
 
-| 机器人 / 方法 | G1 或 RP1 Mani 误差 | 五组平均误差 | 训练时间 |
+| 机器人 / 方法 | Mani 误差 | 五组平均误差 | 训练时间 |
 |---|---:|---:|---:|
-| G1 PartyMimic MLP | **20.5 mm** | 45.1 mm | 26 min |
-| G1 PartyMimic Attention | 21.1 mm | **43.5 mm** | 41 min |
-| G1 BlinkMimic | 30.9 mm | 59.9 mm | 59 min |
-| G1 SuperMimic（按论文超参重训） | 34.3 mm | 67.9 mm | 52 min |
-| RP1 PartyMimic MLP | **16.5 mm** | 47.8 mm | 26 min |
-| RP1 PartyMimic Attention | **16.1 mm** | **44.6 mm** | 42 min |
-| RP1 PartyMimic sparse5 MLP | 19.1 mm | 48.7 mm | 29 min |
+| G1 PartyMimic MLP | 21.4 mm | 38.4 mm | 28 min |
+| G1 PartyMimic attention | 21.7 mm | 37.4 mm | 43 min |
+| G1 BlinkMimic | 30.6 mm | 53.5 mm | 59 min |
+| G1 SuperMimic（官方源码重接 mjlab） | 37.2 mm | 57.5 mm | 99 min |
+| RP1 PartyMimic MLP | 16.3 mm | 39.3 mm | 29 min |
+| RP1 PartyMimic attention | 16.5 mm | 38.7 mm | 43 min |
+| RP1 PartyMimic sparse5 MLP | 19.2 mm | 42.3 mm | 31 min |
+
+这组已更新的 10,745 条训练参考包含旧 10,731 条配方加 14 条 XtremeMotion。旧页的 26 分钟、G1 Mani 20.5 mm 与该表不是同一快照，不能直接算成版本净增益。随仓 G1/RP1 MLP 权重为 seed 0，README 单独报告五组均值 **39.0 / 39.6 mm**，不是表中双种子均值。
 
 **LAFAN-40 单独指标：** 3–5 分钟是同一批 40 条 LAFAN1 **训练兼评测**样本的 return/零失败学习速度测试；单卡返回 ≥0.82 首次用 2.45 分钟，连续三次评测无失败需 5.17 分钟（加 warm start 5.57 分钟）。不能直接解释成 41 小时多类别 zero-shot 泛化仅用 3–5 分钟。
 
@@ -117,6 +122,11 @@ flowchart TD
 - 取消后续观测对状态的反馈梯度得分约 0.517；对闭环控制尤其不利。
 - 关闭自碰撞在部分训练评估上更好，但切换 leaderboard 碰撞模型后 40 条 LAFAN1 里有 33 条跌倒：必须匹配部署评测的碰撞条件。
 - 单项消融包含噪声和多个单 seed 变体，不应把“趋势”当作显著性结论。
+
+## 与其他工作对比
+
+- **SuperMimic / BlinkMimic / XMimic：** 主表中 PartyMimic 重训在同一多源库上的五组均值更低，但早停标准不同会反转排序。LAFAN-40 同集条件下，单卡 PartyMimic 达到 0.82 return 用 2.45 分钟，连续三次零失败需 5.17 分钟；XMimic 对应为 2.32 / 3.71 分钟（均不含启动）。这组数据不回答未见动作泛化问题。
+- **与实机证据分开：** 官方有 G1/RP1 真机片段；延迟抖动表、批量过场统计，以及 VLM 把箱子搬到放置区的 14/20，是各自的仿真实验，不能把它们当成真机成功率。项目页另报 RP1 低箱抓取：关键帧直接追踪始终未提起箱子；加逐帧全身 IK 后，MuJoCo 的 216 次试验中约 59% 提起、3% 跌倒。箱体靠摩擦接触而非焊接；这是规划/控制接口对照，不是随仓权重在实机上的承载指标。
 
 ## 工程实践
 
@@ -135,6 +145,8 @@ uv run python tools/export_deploy_onnx.py checkpoints/g1_mlp.pt deploy/g1_mlp.on
 ```
 
 - **软件 / 资源：** 官方说明 Linux x86_64、CUDA 12.8、`uv`；完整 41 h 动作库依赖 BONES-SEED（需接受 gated 数据授权）。`--num_envs 4096`、`--hist 10`、`--goal_frames 10`、`--horizon 32` 为训练入口默认值。
+- **训练配方不是一个名字：** CLI 默认在物理步长 5 ms 下随机保留上个关节目标 1–4 个子步，首个控制步不延迟；不开项目页的 clip allocation 或联合口径 `--obs_err kp`。项目页主表及发布 MLP 权重没有这项命令滞后。RP1 Mani 在动作晚 10–20 ms、观测旧 5–10 ms 的仿真下，主表配方 → 单加滞后 → 完整部署默认，脚滑为 3.75 → 1.42 → 1.03 cm/s；末次变更还删了两项配置，不能全归因于滞后。
+- **地形分支：** `--terrain` 首次可从参考动作推断并检查支撑盒，失败片段排除，仿真重置放置地形；高度扫描给世界模型和 Critic，不进 Actor。G1 过滤后的 BONES-SEED 为 129,205 条，3,000 次更新时全库成功 99.05%、有地形子集 89.1%；这些是训练库回放。该大库地形配方需约 26.3 GB 显存，不能套用 24 GB 的综述宣传。
 - **RP1：** 运行 `tools/data/build_library.sh rp1` 需 human-humanoid-tools（官方固定提交），用机器人间 IK 转成 RP1 28 DoF 运动库。
 - **模型导出：** `tools/export_deploy_onnx.py` 构建不同接口的 ONNX 与部署 YAML，稀疏输入的 ONNX 参数包含 `ref_kp`；随后通过外部 `EGalahad/sim2real` 测试。
 - **两卡流水线：** `--pipeline` 使 cuda:0 收集与拟合 WM，cuda:1 处理上一轮数据/模型的策略和 critic 更新，通过 pinned-memory 异步传送；不同于默认单卡训练。
@@ -154,9 +166,13 @@ sequenceDiagram
   participant Obj as actor_objective
   participant V as Critic
   Shell->>Main: python -m partymimic.train
-  Main->>Main: load MotionLib + robot + networks
+  opt --terrain 且无 terrain.json
+    Main->>Main: terrain_infer.build 推断并过滤支撑几何
+  end
+  Main->>Main: MotionLib.from_dir + robot + networks
+  Main->>Sim: set_act_lag 绑定训练命令时延
   loop training iterations
-    Main->>Sim: collect(n) with Policy commands
+    Main->>Sim: collect 经 CUDA Graph 采集，step_core 保留旧目标直至滞后结束
     Sim-->>Buf: add_device(transition)
     Main->>Buf: sample world-model windows
     Buf-->>WM: fit transition dynamics via wm_update
@@ -172,6 +188,7 @@ sequenceDiagram
     Main->>V: critic_fit on imagined GAE targets
   end
   Main->>Main: write checkpoint
+  Note over Shell,Main: 训练结束后独立运行 export_deploy_onnx.py 输出 ONNX/YAML
 ```
 
 ## 结论
@@ -187,7 +204,7 @@ sequenceDiagram
 ## 局限与风险
 
 - **数据授权：** 仓库代码 MIT 不代表数据或衍生 checkpoint 全部 MIT：LAFAN1 CC BY-NC-ND，MotionDecode 非商业条款，BONES-SEED 另需授权。
-- **非独立复现：** 本次静态核查项目页、README 和关键源代码；未执行 4090 训练、ONNX 推理或真机实验，所有性能指标均明确为官方结果。
+- **非独立复现：** 本次静态核查项目页、README 与固定提交的关键训练/导出源码；未执行 4090 训练、ONNX 推理或真机实验，所有性能指标均明确为官方结果。
 - **真实运动极限：** Extreme 最快 1/3 动作的 G1 身体误差约 77 mm（最慢组 22 mm），单目参考脚底滑动可达约 0.98 m/s，快速摆动可能超出执行器能力。
 - **sim2real 边界：** 仓库给出 G1/RP1 仿真与外部部署导出路径；不能从 sim2sim 数值单独证明实机鲁棒性。
 - **结果比较：** SONIC/MimicLite 官方权重与本仓重训基线训练资源/数据不相同；Project 页对 “best” 的说法仅在列出的对比方法与协议内成立。
@@ -200,6 +217,9 @@ sequenceDiagram
 - [Party OS / RoboParty Lab](./party-os.md)
 - [动作重定向 / Motion Retargeting](../concepts/motion-retargeting.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Model-Based RL](../methods/model-based-rl.md)：区分在线拟合动力学与在模型中更新策略。
+- [BeyondMimic](../methods/beyondmimic.md)：对照参考跟踪与部署评测的控制接口。
+- [BFM 纵深路线](../../roadmap/depth-bfm.md)：Stage 2 全库动作跟踪。
 
 ## 参考来源
 
