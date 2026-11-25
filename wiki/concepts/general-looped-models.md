@@ -67,6 +67,7 @@ flowchart TD
 ## 关联页面
 
 - [Looped World Models（循环世界模型）](../entities/paper-sa-2606-18208-looped-world-models.md)
+- [Loop Behind：循环语言模型的后置循环解码](../entities/paper-loop-behind.md)：对 Huginn 式架构分别干预当前读出深度和历史 KV 深度；用于对比文本解码与世界模型内循环，不是同一个项目。
 - [生成式世界模型](../methods/generative-world-models.md)
 - [世界动作模型纵深路线](../../roadmap/depth-wam.md)
 

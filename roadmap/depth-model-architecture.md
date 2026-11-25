@@ -246,6 +246,7 @@ flowchart LR
 - [WePM：统一多模态模型的层级冲突协调](../wiki/entities/paper-wepm-hierarchical-conflict-reconciliation.md) — 2B/4B 同一视觉语言骨干统一表征、生成与类型化决策；区分 BF16 驻留权重节省、训练峰值显存与实际机器人闭环时延。
 - [ITT：Inner Thinking Transformer](../wiki/entities/paper-inner-thinking-transformer.md) — ACL 2025 的 token 级动态深度与残差思考：相同参数可多用计算提升语言准确率，但无机器人闭环验证；同时核算 FLOPs、训练显存和 P95 延迟。
 - [Variable-Width Transformers｜可变宽度 Transformer](../wiki/entities/paper-variable-width-transformers.md) — 在固定深度和近似参数预算下重分配层宽；把平均 KV 缓存容量与目标设备上的实际时延分开测。
+- [Loop Behind：循环语言模型的后置循环解码](../wiki/entities/paper-loop-behind.md) — 跨 token 并行共享深度，区分解码关键路径、预填充、KV 容量和 FLOPs；先验证跨轮缓存兼容性。
 
 - [YOLO26 边缘部署与模型压缩](../wiki/methods/yolo26-edge-model-optimization.md) — 用官方导出/量化矩阵选择 ONNX、TensorRT、NCNN，区分 PTQ/QAT、结构化剪枝与蒸馏；按实际设备 mAP 与 P95/P99 延迟验收，而非套用转载加速比。
 - [NVIDIA Deepu Talla：机器人的 ChatGPT 时刻](../wiki/entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md) — 从三类计算平台、分层频率、蒸馏到可部署门槛的系统访谈；将“十秒大关”当成熟度比喻而不是任务时限。
