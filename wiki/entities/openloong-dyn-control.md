@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, mpc, wbc, mujoco, openloong]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-25
 related:
   - ./openloong.md
   - ../concepts/mpc-wbc-integration.md
@@ -108,6 +108,7 @@ sequenceDiagram
 - [sources/repos/openloong_dyn_control.md](../../sources/repos/openloong_dyn_control.md)
 - [loongOpen/OpenLoong-Dyn-Control](https://github.com/loongOpen/OpenLoong-Dyn-Control)
 - 源码核对（2026-11-02）：loongOpen/OpenLoong-Dyn-Control@4dd7a7e，读过 README.md、demo/walk_mpc_wbc.cpp；时序图依据以上文件，未运行代码。
+- 上游复核（2026-11-25）：主仓默认分支最新提交仍为 `4dd7a7e`（2025-05-27），无新 release。
 
 ## 关联页面
 

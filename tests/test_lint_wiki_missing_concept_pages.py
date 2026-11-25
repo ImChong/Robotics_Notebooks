@@ -328,6 +328,7 @@ def test_atlas_entity_homonyms_do_not_mask_missing_mechanism(tmp_path, monkeypat
         "调小关节 `stiffness` 与阻尼增益。",
         "在 **BEHAVIOR-1K** 长程家务基准上评测。",
         "接入 `starVLA` 统一代码框架基线。",
+        "在 Unitree **H1** 与 `hand` 相机键上评测 **SR**。",
     ],
 )
 def test_existing_names_and_runtime_tokens_preserve_new_concept_signal(

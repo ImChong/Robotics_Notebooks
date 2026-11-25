@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mamba, ssm, computer-vision, segmentation]
 status: complete
-updated: 2026-11-24
+updated: 2026-11-25
 project_id: segmamba
 arxiv: "2401.13560"
 code: https://github.com/ge-xing/SegMamba
@@ -99,6 +99,11 @@ sequenceDiagram
 ## 实验与评测
 
 v4 Table 2：BraTS2023 的平均 Dice 为 91.32%，HD95 为 3.56；AIIB2023 的 IoU 为 88.59%。CRC-500 的 Dice 为 48.46%。作者采用随机 70/10/20 划分，不等同挑战赛官方榜单。Table 9 的自注意力对照发生 OOM，TSMamba 则完成计算；该结果不代表所有硬件和高效注意力实现。
+
+## 与其他工作对比
+
+- **对比 3D 卷积与自注意力分割基线（v4 Table 2 / Table 9）：** 在作者随机 70/10/20 划分的 BraTS2023 设置下，SegMamba 取得平均 Dice **91.32%**、HD95 **3.56**，优于同设置的 UX-Net（89.69% / 4.81）；在 Table 9 的高分辨率 3D 体积测试中，自注意力配置发生显存溢出（OOM），而 TSMamba 三向扫描可完成计算（仍须注意不同注意力核优化的影响）。
+- **对比 [U-Mamba](./u-mamba.md) 与经典 [U-Net](../methods/unet.md)：** 相比直接沿单向展平或嵌入 2D/3D 混合块的 U-Mamba，SegMamba 在多尺度编码器中使用门控空间卷积（GSC）与正/反/跨切片三向 Mamba（ToM），并在跳跃连接引入 FUE 重加权；但实际阅读公开代码可见 `GSC.forward` 采用相加而非论文乘法门控、`SegMamba.forward` 未显式调用 FUE，工程对比应以核对后版本为准。
 
 ## 结论
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid, text-driven-control, diffusion-policy, unitree-g1, teleai, sjtu]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-25
 arxiv: "2602.07439"
 venue: "arXiv 2026"
 code: https://github.com/TeleHuman/TextOp
@@ -170,6 +170,11 @@ flowchart TB
 | TWIST2 | 0.922 | 58.5 mm |
 | GMT | 0.834 | 103.1 mm |
 | Any2Track | 0.714 | 139.2 mm |
+
+## 与其他工作对比
+
+- **对比离线生成表征与生成–跟踪基线（表 III–IV）：** BABEL val 离线生成上，TextOp 的 DoF 局部增量表征（FID **3.072** / R@1 **0.300** / 过渡 FID **3.238**）优于 DART+Retarget（4.837 / 0.230 / 5.249）、HumanML3D 表征（6.599 / 0.197 / 9.310）与 RobotMDM 表征（5.134 / 0.262 / 6.514）；在生成器参考的 Sim2Sim 跟踪上，经合成轨迹增广的 TextOp-M+G（Succ **0.993**、\(E_{\mathrm{mpjpe}}\) **34.7 mm**）高于 TWIST2（0.922 / 58.5 mm）、GMT（0.834 / 103.1 mm）与 Any2Track（0.714 / 139.2 mm）。
+- **对比同赛道文本驱动与安全闭环工作：** 如上「与相邻范式」表所示，[ADAPT](./paper-adapt-text-driven-humanoid.md) 采用端到端扩散先验 + 残差；[SafeFlow](./paper-loco-manip-161-104-safeflow.md) 在生成期加入物理引导与运行时安全门，并指出 TextOp 在物理安全边界上存在关节越界风险（JV 43.14%）；[ReactiveBFM](./paper-reactivebfm.md) 则指出 TextOp+SONIC 类开环级联在扰动下存在 exposure bias（64.5%），需要在快速改令与扰动场景补闭环重规划。
 
 ## 结论
 

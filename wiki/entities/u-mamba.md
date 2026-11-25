@@ -7,7 +7,7 @@ tags:
   - deep-learning
   - backbone
 status: complete
-updated: 2026-08-12
+updated: 2026-11-25
 summary: "U-Mamba 在 U-Net 式编解码中嵌入 Mamba 块，增强医学图像分割的长程上下文，对应课程作业相关的医学分割线。"
 related:
   - ../concepts/state-space-model-ssm.md
@@ -53,7 +53,7 @@ flowchart LR
 |----|------|
 | 复现 | 跟随官方仓库与扫描核版本 |
 | 对照 | 同 FLOPs 对比 DeiT/Swín/SegFormer |
-| 作业 | 医学线关注 U-Mamba/SegMamba 与 BraTS 协议 |
+| 作业 | 医学线关注 U-Mamba / [SegMamba](./paper-segmamba.md) 与 BraTS 协议 |
 
 ## 局限与风险
 

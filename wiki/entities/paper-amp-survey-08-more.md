@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, locomotion, mixture-of-experts, terrain-adaptation, unitree-g1, sim2real, teleai, heu, shanghaitech, ustc]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-25
 arxiv: "2506.08840"
 venue: arXiv
 code: https://github.com/TeleHuman/MoRE
@@ -203,6 +203,11 @@ sequenceDiagram
 - **消融：** 论文讨论 expert 数量（取 3）、latent vs action residual、MoE 对梯度冲突的缓解；细节见 [arXiv HTML](https://arxiv.org/html/2506.08840v1)。
 - **真机：** 项目页展示平地与组合地形上 **Walk-Run / High-Knees / Squat** 切换与复杂地形穿越视频。
 - **姊妹工作引用：** [显式楼梯几何](./paper-explicit-stair-geometry-humanoid-locomotion.md) 在楼梯 OOD 踢面高度上报告相对 MoRE 视觉基线的成功率优势——阅读 MoRE 时宜同时看 **「隐式视觉特征 vs 显式几何 token」** 两条感知接口。
+
+## 与其他工作对比
+
+- **对比 Blind / 单阶段 Base 与多判别器 AMP 同类工作：** 在 8 m×14 m 组合地形（gap / stair / step）上，MoRE 相比 Blind（无外感知）显著提高成功率与穿越距离，相比仅保留 Stage 1 的 Base（纯可穿越性）在不牺牲通过性的前提下引入可命令的 Walk-Run / High-Knees / Squat 步态风格；相比仅在跌倒与行走间切换的 [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)，MoRE 用用户 gait command 门控三个步态判别器并叠加深度感知。
+- **对比同专题分体对抗与显式地形方法：** [ALMI #07](./paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) 通过上下半身双策略对抗兼顾平地走跑与上肢模仿；[CMoE](./paper-cmoe.md) 引入对比学习防止 MoE 专家塌缩；而 [显式楼梯几何](./paper-explicit-stair-geometry-humanoid-locomotion.md) 在楼梯 OOD 踢面高度对比中显示出比隐式视觉特征更强的几何外推。
 
 ## 结论
 

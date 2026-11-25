@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, loco-manipulation, adversarial-rl, teleai, shanghaitech, neurips]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-25
 arxiv: "2504.14305"
 venue: NeurIPS 2025
 code: https://github.com/TeleHuman/ALMI-Open
@@ -156,6 +156,11 @@ sequenceDiagram
 - **CMU MoCap Hard：** 存活率、上肢 JPE vs Exbody / Exbody2 / OmniH2O / 全身一体 ALMI。
 - **G1 迁移（Table 5）：** 存活率 **0.9484**（上肢 JPE **0.2367 m**），显著高于 OmniH2O（`0.3882` / `1.0826 m`）与 ExBody2（`0.8848` / `0.3821 m`）。
 - **三轮迭代 ~17 h**（单卡量级，见论文）；Table 6 验证去掉 arm curriculum 或停在 `lower-1` 时 Hard 存活率由 `0.9723` 跌至 `0.8480 / 0.8743`。
+
+## 与其他工作对比
+
+- **对比全身一体策略与单阶段基线：** 在 CMU MoCap Hard 设定下，分体对抗训练的 ALMI 存活率为 **0.9723**、上肢 JPE **0.2116 m**，明显优于 Exbody（`0.8778`）及全身一体训练的 ALMI(whole)（上肢 JPE `0.7022 m`）；在 G1 迁移评测（Table 5）中存活率 `0.9484` / 上肢 JPE `0.2367 m` 亦显著优于 [OmniH2O](./paper-hrl-stack-08-omnih2o.md)（`0.3882` / `1.0826 m`）与 ExBody2（`0.8848` / `0.3821 m`）。
+- **对比同专题多判别器与感知步态路线：** [MoRE #08](./paper-amp-survey-08-more.md) 采用「深度base + latent residual MoE + 多判别器 AMP」实现可切换复杂地形步态；[GMP #06](./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md) 侧重无对抗的生成式运动流形先验；ALMI 则将上下半身分别作为 locomotion 与 mimic 策略并以双方对抗课程交替优化，重点解决速度追踪与上肢模仿的冲突。
 
 ## 关联页面
 

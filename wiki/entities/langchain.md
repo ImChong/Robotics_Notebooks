@@ -12,7 +12,7 @@ tags:
 - awesome-physical-ai
 - resource
 status: complete
-updated: 2026-10-06
+updated: 2026-11-25
 code: https://github.com/langchain-ai/langchain
 summary: LangChain（langchain-ai/langchain）是 MIT 开源的 agent 工程框架：统一模型/embedding/向量库/工具/检索器组件；复杂编排见 LangGraph，开箱 harness 见 Deep Agents，生产观测见 LangSmith。
 related:

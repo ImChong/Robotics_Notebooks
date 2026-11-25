@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, motion-retargeting, imitation-learning, reinforcement-learning, sim2real, unitree-g1]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-25
 arxiv: "2603.22201"
 code: https://github.com/3DV-HumanoidGroup/MakeTrackingEasy
 related:

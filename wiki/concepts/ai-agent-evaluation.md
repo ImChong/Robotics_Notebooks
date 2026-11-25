@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-11-20
+updated: 2026-11-25
 related:
   - ../entities/paper-so-arena.md
   - ../entities/paper-science-prediction-universe.md

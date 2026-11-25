@@ -3,7 +3,7 @@ type: comparison
 tags: [3dgs, web, rendering, tooling, selection]
 status: complete
 original: ../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md
-updated: 2026-05-28
+updated: 2026-11-25
 related:
   - ../entities/spark-3dgs-renderer.md
   - ../entities/aholo-viewer.md
@@ -46,12 +46,12 @@ summary: "Spark（World Labs）与 Aholo Viewer（manycoretech）均为浏览器
 | 维度 | [Spark](../entities/spark-3dgs-renderer.md) | [Aholo Viewer](../entities/aholo-viewer.md) |
 |------|---------------------------------------------|---------------------------------------------|
 | 维护方 | World Labs | manycoretech |
-| 3D 框架 | THREE.js | 自研 TS 渲染包（见 `packages/renderer`） |
-| GPU API | WebGL2 | Web（README 未强调 WebGPU 必选） |
-| 大场景策略 | **LoD splat 树** + **.RAD** 渐进流式 + GPU splat 分页 | **Chunked Streaming LoD** |
-| 几何类型 | 3DGS 为主（多对象全局排序） | **3DGS + Mesh** |
+| 3D 框架 | THREE.js | 自研 TS 渲染包（`@manycore/aholo-viewer`） |
+| GPU API | WebGL2 | WebGL2 / WebGPU（`1.15.0` 起流式数据可上传至 WebGL2 或 WebGPU） |
+| 大场景策略 | **LoD splat 树** + **.RAD** 渐进流式 + GPU splat 分页（`v2.4.0` 支持 SOG 分块解码） | **Chunked Streaming LoD**（支持 ESZ chunk LOD / SPZ / SOG） |
+| 几何类型 | 3DGS 为主（多对象全局排序） | **3DGS + Mesh**（含体素碰撞体 voxel colliders 支持） |
 | 动态效果 | 可编程 splat 管线、4DGS、重光照（shader graph） | 以文档/架构为准；Playground 侧重示例集成 |
-| 资产工具 | `build-lod` → .RAD；Tiny-LoD / Bhatt-LoD | 依赖 `external/splat-transform`（**专有**） |
+| 资产工具 | `build-lod` → .RAD；Tiny-LoD / Bhatt-LoD | `@manycore/aholo-splat-transform` CLI + `splat-transform-native`（依赖专有 `external/splat-transform`） |
 | 文档/体验 | sparkjs.dev；与 Marble 产品同研 | aholojs.dev；Astro 手册 + URL 压缩 Playground |
 | 典型规模（公开案例） | 博客/demo：6M–100M+ splat（.rad） | README 强调「huge 3DGS」；具体上限需实测 |
 

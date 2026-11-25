@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, computer-vision, object-detection, open-world, pseudo-labeling, sam, clip, yolo-world, jhu]
 status: complete
-updated: 2026-11-23
+updated: 2026-11-25
 project_id: annotator-free-object-detection-foundation-model-collaboration
 arxiv: "2611.06195"
 venue: "arXiv v1 (2026-11-04)"
@@ -107,6 +107,11 @@ flowchart TB
 - **COCO OVD（Table 3）**：48 base + 17 novel，YOLO 的 Novel / Known / All = **55.9 / 64.6 / 59.1 AP50**。*重要口径*：Table 3 基础类检测器使用了 **ground-truth 基础类标注**来对齐比较；论文另报告完全不采用基础类真值训练的版本，Base **48.9 AP50**、Novel **55.9 AP50**。不能将 Table 3 当成完全无人标注的直接证据。
 - **域迁移（补充 Table 4）**：Applied Intuition 模拟数据 Novel / Known / Overall = **43.7 / 32.8 / 38.8 AP50**；该合成场景并非机器人真机部署。
 - **耗时（§3.4 与附录）**：原文称 CLIP 预过滤削减高成本标注约 **60×**，landmark 聚类使完整图像标注约从 **15–20 分钟降至 45 秒/图**；附录另提单次 LVLM 平均 **1–2 秒/图**（离线调用），计时对象不同，不可拿 1–2 秒当完整训练或在线推理时延。
+
+## 与其他工作对比
+
+- **对比开放词汇/提示检测器（Table 1–2，AP@[0.50:0.95]）：** 在目标集无人工标注、离线伪标注后训练 YOLO World 的设置下，COCO val2017 取得 **60.8 AP**（对比 T-Rex2 Text 52.2、GDINO-L 48.4），ODinW-35 为 **32.5 AP**（对比 T-Rex2 Visual 27.8、GDINO-L 22.3），Roboflow-100 为 **23.7 AP**（对比 T-Rex2 Visual 18.5、GDINO-L 8.3）。但在 LVIS minival 上本文 **47.4 AP** 仍低于 DetCLIPv3 Swin-L（**48.8 AP**），说明在长尾细粒度类别上基础模型协作伪标签仍有天花板。
+- **对比有监督基线与轻量化部署路线：** 相比 [YOLO v1](./paper-yolo-unified-realtime-detection.md) 等需目标集人工 bbox 标注的传统检测器，本文把代价前置到 SAM/CLIP/LVLM 离线聚类与重提示；相比直接用大模型在线推理，最终仍输出 YOLO 轻量检测器，但 COCO OVD（Table 3）对比基线时仍使用了基础类真值标注，阅读时需与无基础类真值版本（Base 48.9 / Novel 55.9 AP50）分开比较。
 
 ## 结论
 

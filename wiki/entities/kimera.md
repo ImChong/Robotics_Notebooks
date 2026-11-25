@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, semantic-slam, vio, mit, spark]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-25
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../entities/orb-slam3.md
@@ -43,6 +43,7 @@ summary: "Kimera 是 MIT SPARK 语义 SLAM 套件：Kimera-VIO、Kimera-RPGO、K
 
 - **复杂度高**：集成与调参成本高于单一 VIO 库。
 - **硬件**：立体+IMU 同步要求高。
+- **上游维护状态（2026-11-25 复核）**：`MIT-SPARK/Kimera` 索引仓自 2021 年起冻结，仅 `Kimera-VIO`（2026-08）与 `Kimera-RPGO`（2026-10）仍有少量维护更新，`Kimera-Semantics` 自 2023-12 后无新提交。
 
 ## 参考来源
 

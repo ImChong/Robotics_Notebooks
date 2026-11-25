@@ -14,7 +14,7 @@ tags:
   - mit
   - scale-ai
 status: complete
-updated: 2026-11-19
+updated: 2026-11-25
 arxiv: "2608.15917"
 venue: "CoRL 2026 / arXiv:2608.15917"
 project: https://spd.bot/

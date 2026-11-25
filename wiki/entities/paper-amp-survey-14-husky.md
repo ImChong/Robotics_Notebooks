@@ -150,6 +150,11 @@ sequenceDiagram
 - **真机与多板型：** 完整推地–转向–切换；室内外及软/硬两块滑板（配合对应辨识 $k,d$）与抗外力扰动稳定滑行。
 - **对照维度：** Table I 量化人形 vs 四足滑板在 DoF、接触点数、CoM 高度、侧向转向、腿重定向等差异。
 
+## 与其他工作对比
+
+- **对比轨迹跟踪、纯步态与消融基线（Table III）：** HUSKY 在 5 seeds × 1000 episodes 下取得 **100.00±0.00%** 任务成功率（$E_{\text{vel}}=0.056\text{ m/s}$，$E_{\text{yaw}}=0.208\text{ rad}$），明显高于直接 Tracking-Based（`11.12%`）、Gait-Based（`82.38%`）、AMP Transition（`85.12%`）、Mixed Initialization（`86.03%`）以及去掉倾角转向引导的 w/o Tilt Guidance（`96.72%`），验证了显式物理耦合 $\tan\sigma=\tan\lambda\sin\gamma$ 与分相位 AMP 的必要性。
+- **对比四足滑板与同专题人–物交互：** 论文 Table I 对照四足滑板指出人形面临更高的质心、更少支撑接触点与复杂侧向转向约束；相较于 [PhysHSI #15](./paper-amp-survey-15-physhsi.md) 处理静态环境交互与 [Goalkeeper #13](./paper-amp-survey-13-humanoid-goalkeeper.md) 的离散扑救，HUSKY 针对随人移动的欠驱动非完整滚动支撑面进行长时相滑行控制。
+
 ## 关联页面
 
 - [Locomotion](../tasks/locomotion.md) — 推地、倾身转向与滑行构成接触模式切换，需结合轨迹引导和真实地面条件评价运动能力。

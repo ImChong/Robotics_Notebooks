@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-25
 related:
   - ../entities/paper-cl1-biological-neural-platform-kagan-2025.md
   - ../entities/paper-kamino.md
@@ -319,7 +319,7 @@ flowchart LR
 - [Flow-GRPO（论文实体）](../entities/paper-flow-grpo.md) — 把流匹配 ODE 采样转为 SDE 后做在线 GRPO（NeurIPS 2025；实验仅限文本生图，非机器人策略）
 - [MiniMind](../entities/minimind.md) — 小 LLM 教程仓内 **PyTorch 原生 GRPO/CISPO** 与 Agentic RL（非 VLA）
 - [Q-Planning（论文实体）](../entities/paper-qplanning.md) — 冻结 BC + 离策略 Q 吸收失败 rollout 自改进（arXiv:2608.21204；已开源）
-- [SRL-MPC（论文实体）](../entities/paper-srl-mpc.md) — RL 调 MPC 参数而非端到端策略（arXiv:2608.21175）
+- [SRL-MPC（论文实体）](../entities/paper-srl-mpc.md) — PPO 读取 GSF 在线调软罚 HOCBF-MPC 参数而非直接输出动作（arXiv:2608.21175；算法源码未发布）
 - [TOSS Framework（论文实体）](../entities/paper-toss-framework.md) — 人类教学四维过程模型 + OSF 数据（arXiv:2608.21083）
 - [HIL-HARC（论文实体）](../entities/paper-hil-harc.md) — 真机在线 RL：CTDE 混合动作 + HRA 分解 critic（arXiv:2608.09762）
 - [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 执行环内 value-gradient 在线微调冻结 VLA（arXiv:2608.29768；未开源）

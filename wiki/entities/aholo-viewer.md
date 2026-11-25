@@ -4,7 +4,7 @@ type: entity
 tags: [repo, 3dgs, gaussian-splatting, web, mesh, streaming, lod, typescript, linux-foundation]
 status: complete
 original: ../../sources/repos/aholo-viewer.md
-updated: 2026-05-28
+updated: 2026-11-25
 related:
   - ./spark-3dgs-renderer.md
   - ./gs-playground.md
@@ -72,6 +72,7 @@ flowchart TB
 
 - **子模块与构建前置**：克隆须带 `--recurse-submodules` 拉取 `external/egs-core`，开发环境要求 `Node >= 22.22.1` 与 `pnpm`。
 - **离线分块预览**：大场景先经 `splat-transform-native` 的 `auto_chunk_lod` 生成 `lod-meta.json`，再用 `splat-dev-server` 本地流式联调。
+- **2026-11-25 上游复核（`aholo-viewer@1.15.0` / `98b556b`）**：上游持续活跃维护，已通过 npm 发布 `@manycore/aholo-viewer` 与 `@manycore/aholo-splat-transform`（配套 `packages/splat-transform/` CLI 与 `packages/splat-transform-native/` C++ 引擎），支持 ESZ chunk LOD、SPZ/SOG、体素碰撞体（voxel colliders）及 WebGL2/WebGPU 流式上传。
 
 ## 常见误区或局限
 
