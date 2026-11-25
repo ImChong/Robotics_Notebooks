@@ -175,6 +175,7 @@ flowchart LR
 - [机器人操作数据集与基准选型](../wiki/comparisons/robot-manipulation-data-benchmark-selection.md) — 分开比较训练数据与评测套件，并核对观测、动作接口和许可，补足下列人体参考动作数据的另一类用途
 - [人形参考运动与操作数据集选型](../wiki/comparisons/humanoid-reference-motion-datasets.md) — AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday 的对照
 - [HiPHI](../wiki/entities/paper-hiphi.md) — Frame–LU 设计采集覆盖；617.5 h 发布量含镜像增强；研究同步 HOI 与数据扩展时关注原始时长、单位、split 和许可
+- [HiPHI-Hand](../wiki/entities/dataset-hiphi-hand.md) — 双鱼眼视频与逐帧双手 3D 真值；适合手姿态重建与标定质检，不是可直接执行的机器人示教。
 - [OpenLET LET-HumanMotion-Roban2](../wiki/entities/openlet-humanmotion-roban2.md) — 乐聚 Roban 2.2 小脑全身动作集：五类动作重定向到鲁班、120 fps 重采样，申请制；用于运控模仿训练
 - [AgiBot World 2026](../wiki/entities/agibot-world-2026.md) · [NVIDIA Physical AI 数据集](../wiki/entities/nvidia-physical-ai-datasets.md) — 真机操作与官方合集两类公开数据源，注意门控与许可
 - [das-datakit](../wiki/entities/cn-os-das-datakit.md) · [DataEval](../wiki/entities/cn-os-dataeval.md) — MCAP 解析/转换与数据集评测的开源工具侧
