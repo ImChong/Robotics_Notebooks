@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, parkour, perceptive-locomotion, hierarchical-rl, navigation, sim2real, anymal, eth, humanoid-paper-notebooks]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-25
 arxiv: "2306.14874"
 venue: "Science Robotics 2024"
 related:

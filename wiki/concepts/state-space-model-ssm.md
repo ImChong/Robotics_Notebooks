@@ -7,7 +7,7 @@ tags:
   - sequence-modeling
   - deep-learning
 status: complete
-updated: 2026-09-21
+updated: 2026-11-25
 original:
   - ../../sources/papers/gu_mamba_arxiv_2312_00752.md
   - ../../sources/papers/gu_s4_arxiv_2111_00396.md

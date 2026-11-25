@@ -17,6 +17,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agent-memory-and-dreaming.md
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
+  - ../overview/hub-embodied-eval-benchmark.md
 ---
 
 # Agent 工程小书 / The Little Book of Agent Engineering
@@ -83,6 +84,7 @@ flowchart TD
 - [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md)：何时用任务专用编排和委派。
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)：如何设计终态判分、重复试验与回归。
 - [Agent 记忆与 Dreaming](../concepts/agent-memory-and-dreaming.md)：检索之外的长期写入策略。
+- [具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md)：边界对照——本书聚焦软件与编码 Agent 终态验证，机器人闭环评测还需补齐物理执行与 sim↔real 校准。
 
 ## 参考来源
 

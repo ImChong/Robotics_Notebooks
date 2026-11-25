@@ -16,6 +16,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../methods/coding-agent-verification-loops.md
   - ../methods/claude-code-dynamic-workflows.md
+  - ../overview/hub-embodied-eval-benchmark.md
 ---
 
 # Uber 的 Agent 技能分发与评测 / Evaluating Agent Skills at Uber Scale
@@ -79,6 +80,7 @@ flowchart LR
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：将线上故障转成能阻止回归的测试。
 - [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md)：具体任务的运行编排，与技能目录治理分层。
 - [Agent-first 软件工厂](../concepts/agentic-software-factory-harness.md)：将技能质量纳入交付门禁。
+- [具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md)：边界对照——本页评估软件 Agent 技能回放与遥测，具身策略评测还需纳入仿真/真机物理闭环与安全边界。
 
 ## 参考来源
 

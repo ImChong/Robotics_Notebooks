@@ -15,7 +15,7 @@ tags:
   - tum
   - eth
 status: complete
-updated: 2026-11-12
+updated: 2026-11-25
 arxiv: "2608.12063"
 original: ../../sources/papers/smpc2rl_arxiv_2608_12063.md
 related:

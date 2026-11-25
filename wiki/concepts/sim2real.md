@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-25
 related:
   - ../entities/paper-gamma-art-smart.md
   - ../entities/egalahad-sim2real.md
@@ -260,7 +260,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **补充参照（室内人形 VLN · 3DGS 重建场景）：** [HumanoidVLN](../entities/paper-humanoidvln.md) 用 DualVLN + G1 在两场景 20 条配对 episode 上报告仿真 vs 真机 NE **r=0.935**、nDTW 0.782；这是 **重建场景保难度** 的试点，不是策略零样本泛化证明（待开源）。
 - **轮腿双足低层 RL 栈：** [tita_rl](../entities/tita-rl.md) 走 Isaac Gym → ONNX → TensorRT → Webots/真机；[lab.flamingo](../entities/isaac-rl-two-wheel-legged-bot.md) 宣称 Isaac Lab 零样本；[wheel_legged_genesis](../entities/wheel-legged-genesis.md) 停在 MuJoCo sim2sim。形态见 [轮腿双足](./wheel-legged-biped.md)。
 - **补充参照（室内 ObjectNav · Habitat→轮腿双足）：** [ZONDA](../entities/paper-zonda.md)（arXiv:2607.21025）在 [Habitat-Sim](../entities/habitat-sim.md) 离散动作空间评测后，真机用 **同一非平台参数 + MPPI 连续跟踪** 部署 Direct Drive Tech TITA；迁移重点在 \(H_{\text{agent}}\) / 膨胀半径与离板 VLM，而非重训低层 RL（截至入库日方法未开源）。低层运控复现另见 [tita_rl](../entities/tita-rl.md)。
-- **补充参照（人形 · Planner–IDM 少样本适应）：** [FADA](../entities/paper-fada-humanoid.md)（arXiv:2606.28476，CMU）把策略分解为 **规划器 + 逆动力学模型（IDM）**：源域 oracle+DAgger 训练后，部署 **冻结 planner**、仅用约 **2 分钟** 目标域 rollout 的观测–动作对 **LoRA 微调 IDM** 对齐动力学；G1/T1 真机高精度全身任务成功率 **20%→90%**，无需目标 reward 或仿真重标定——适合讨论「**只改执行映射、不改任务意图**」的 few-shot sim2real。
+- **补充参照（人形 · Planner–IDM 少样本适应）：** [FADA](../entities/paper-fada-humanoid.md)（arXiv:2606.28476v2 / CoRL 2026，CMU，已开源 [LeCAR-Lab/FADA](https://github.com/LeCAR-Lab/FADA)）把策略分解为 **规划器 + 逆动力学模型（IDM）**：源域 oracle+DAgger 训练后，部署 **冻结 planner**、仅用约 **2 分钟** 目标域 rollout 的观测–动作对 **LoRA 微调 IDM** 对齐动力学；G1/T1 真机高精度全身任务成功率 **20%→90%**（T1 载重 20 kg 存活率 0.94，30 kg 极短跌倒片段下仍受限），无需目标 reward 或仿真重标定——适合讨论「**只改执行映射、不改任务意图**」的 few-shot sim2real。
 - **补充参照（人形 loco-manip · 冻结策略适配）：** [SplitAdapter](../entities/paper-splitadapter-load-aware-loco-manipulation.md)（arXiv:2606.03297）在 **冻结 AMP 搬箱策略** 上学习 **物体/负载** 与 **动力学** 双分支历史适配（分裂世界模型 + GRL + 分层 FiLM），针对 **载荷与搬放高度变化** 与 **sim–real 动力学差** 的耦合；MuJoCo sim-to-sim 与 **Unitree G1 零样本** 重载（6 kg）全流程成功率显著提升，可与 RMA 式「单 latent 外参估计」对照阅读。
 - **补充参照（竞技乒乓球 · 非对称 SAC）：** [Sony AI Ace](../entities/paper-sony-ai-ace-table-tennis.md)（Nature 2026）在仿真 **单拍 SAC** 训多技能回球：critic 见真值球态、actor 仅见 **噪声传感历史**，经 **FAOC/MPC** 安全层 **零样本** 上真机并在 ITTF 规则下 **3/5 胜 elite**；开源仅 **match CSV + 伪代码**（部分开源）。
 

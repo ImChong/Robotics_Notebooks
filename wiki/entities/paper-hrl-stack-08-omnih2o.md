@@ -127,6 +127,11 @@ sequenceDiagram
   - 任务涵盖 Catch-Release、Squat、Rock-Paper-Scissors（正文拼作 Rope-Paper-Scissors）、Hammer-Catch、Boxing、Basket-Pick-Place。
   - **DP-DDPM：** 100% 数据成功率 **8/10**（`Se-O-Se-A` 序列输入输出达 **8.75/10**），远胜 **DP-DDIM**（`7.75/10`）与 **ResNet BC**（`1/10`）；数据量从 25%→50%→100%，成功率依次为 `4/10 -> 6.5/10 -> 8/10`。
 
+## 与其他工作对比
+
+- **对比 H2O 与历史/速度估计变体（Table 1–2）：** 在过滤后 AMASS 仿真数据集 $\hat{Q}$ 上，OmniH2O（3 点稀疏目标 + 25 步历史）成功率达 **94.10%**，显著高于 H2O 的 **87.52%** 以及不用 DAgger 直接 RL 的 **47.11%**，也高于 LSTM（91.03%）和 GRU（92.85%）；真机 20 段动作追踪中，`E_g-mpjpe` 为 **47.94 mm**，几乎较 H2O（**87.33 mm**）减半，同时规避了接入 ZED VIO 线速度导致的真机跌倒问题。
+- **对比全身交互与后续遥操作栈：** 相比仅处理自由空间模仿的早期全身策略，OmniH2O 经高层 Diffusion Policy（DP-DDPM `Se-O-Se-A` 8.75/10，胜过 ResNet BC 1/10）将稀疏 3 点姿态变为通用控制接口；后续在复杂物–人接触力跟踪与高自由度搬运上，可进一步对照 [HDMI](./paper-hrl-stack-06-hdmi.md) 等接触感知框架。
+
 ## 结论
 
 **OmniH2O 证明以「头部+双手 3 点稀疏运动学姿态 + 25 步历史 DAgger 策略」作为人形统一身体接口，不仅真机跟踪误差近乎较 H2O 减半（47.94 vs 87.33 mm），还能无缝对接 VR、RGB、文本、GPT-4o 与 Diffusion Policy。**

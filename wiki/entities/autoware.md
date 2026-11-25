@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, autonomous-driving, ros2, perception, planning, open-source, linux-foundation]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-25
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -44,6 +44,8 @@ summary: "Autoware 是领先的开源自动驾驶软件栈（ROS 2），覆盖�
 | **控制** | 横向/纵向车辆控制接口 |
 
 部署常依赖 **高精地图、标定多传感器、合规安全流程**，复杂度显著高于室内 AMR。
+
+- **2026-11-25 上游复核（`2.1.0`）**：2026-11-10 发布 Autoware `2.1.0`，将 CUDA 基础包从 Autoware Universe 迁入 Autoware Core（独立仓 `autowarefoundation/autoware_cuda` `1.0.0`）并提供 Core CUDA 层 Docker 镜像，持续推进 Agnocast 零拷贝 IPC 集成。
 
 ## 常见误区或局限
 

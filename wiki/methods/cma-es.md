@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, black-box-optimization, evolution-strategy, sim2real, system-identification, actuator]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-25
 related:
   - ./particle-swarm-optimization.md
   - ../concepts/sim2real.md

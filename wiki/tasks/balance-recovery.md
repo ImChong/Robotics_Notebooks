@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, balance, stability, humanoid, bipedal, control]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-25
 original: ../../sources/papers/reloco_arxiv_2611_23916.md
 related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md

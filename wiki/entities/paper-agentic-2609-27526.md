@@ -146,6 +146,11 @@ R2R-CE 同 GPT-5.5 的 Uni-LaViRA 重跑基线为 61.7% SR、45.0% SPL。RxR-CE 
 
 46.71% 的导航决策触发检索（排除首次决策后 53.79%）；触发时平均 1.82 轮。图 2 展示误判电视后重开搜索，以及重新核验路线后进入餐厅。图 3 在 Galaxea R1Pro 上用 ZED2 RGB-D、MID-360 LiDAR、Voxel-SLAM 和 Nav2 完成定性多阶段导航演示。
 
+## 与其他工作对比
+
+- **对比 Uni-LaViRA 与内部消融基线（Table I–III）：** 在同 GPT-5.5 评测配置下（每基准 100 个抽样 episode 子集），NavProbe 在 R2R-CE 上取得 **71.7% SR / 55.8% SPL**，高于重跑 Uni-LaViRA 基线（61.7% SR / 45.0% SPL）；在 HM3D-v2 ObjectNav 上取得 **79.3% SR**，但 SPL（**43.8%**）低于 Uni-LaViRA 的 **46.1%**，反映多轮主动取证可能增加路径折返代价。Table III 消融进一步表明，保留任务状态与选择性检索（71.7% SR）优于 Full Graph（全图塞入上下文，62.0% SR）及去掉任务状态或 EKM 的变体（63.3% / 65.0% SR）。
+- **对比同类主动记忆/代理导航框架：** 相较于 [NavMCP](paper-navmcp-long-horizon-navigation.md) 通过 MCP 工具跨长程导航累积结构化证据、以及 [SuperNav](paper-supernav-agentic-navigation.md) 侧重可替换执行后端与 agent harness，NavProbe 的差异在于将可修订任务 agenda 与「压缩实体索引 → 按字段按需回查原始图记录 → EKM 巩固覆写」绑定，从而在单次决策内显式纠错。
+
 ## 结论
 
 NavProbe 的重点是可修订、可追溯的任务进度，而非单纯增加历史上下文。

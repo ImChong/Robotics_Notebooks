@@ -566,6 +566,12 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # paper-me-vlm / paper-partialbigrasp / paper-seen2scene 的 **TODO**）；与 draft /
     # complete 同类成熟度标记 token，非机器人概念。
     "todo",
+    # hand：多义代码/表格 token，互不相干——相机键名（carm-lerobot 的 `hand`）、ROS 启动参数
+    # （cn-os-wuji-description 的 `hand:=left`）、SDK 类名（cn-os-wujihandpy 的 `Hand`）、
+    # 数据集文件名或子表行标签（dataset-hiphi-hand / paper-coordex / paper-hand-erc）。
+    # 灵巧手指标与统一动作空间已由 concepts/dexterous-hand-payload-core-metrics.md 与
+    # methods/uhas-unified-hand-action-space.md 承载，不按裸 token 单建概念页。
+    "hand",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -1110,6 +1116,14 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # methods/star-vla.md、entities/paper-starvla-framework.md 与
     # entities/paper-starvla-alpha.md 覆盖。
     "starvla",
+    # h1：Unitree H1 全尺寸人形机器人型号与多形态仿真配置名（humanoid-bench 的 `h1` /
+    # `h1hand`、paper-core / paper-immersive-social-vr-llm-humanoids / unitree-unistore），
+    # 与已豁免的 g1 对称；硬件白皮书索引见 entities/paper-notebook-unitree-h1-whitepaper.md。
+    "h1",
+    # sr：Success Rate（任务成功率）评测指标缩写，语义与和轨迹/对齐指标的联报口径已由
+    # concepts/motion-control-policy-evaluation-metrics.md、concepts/ai-agent-evaluation.md
+    # 与 queries/embodied-eval-benchmark-selection-loop.md 覆盖，与 eval / benchmark 同类。
+    "sr",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
