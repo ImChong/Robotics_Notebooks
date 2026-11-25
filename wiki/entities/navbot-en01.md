@@ -3,7 +3,7 @@ type: entity
 project_id: navbot-en01
 project: https://navbot.com/products/navbot-en01-educational-wheel-legged-robot-kit
 code: https://github.com/fuwei007/Navbot-EN01
-tags: [repo, wheel-legged, esp32, foc, education, hardware]
+tags: [platform, wheel-legged, esp32, foc, education, hardware]
 status: complete
 updated: 2026-11-25
 summary: "NavBot-EN01 是 ESP32 桌面双轮足教育样机：SimpleFOC 驱动两只无刷轮，IMU 与编码器闭环平衡，两只串行总线舵机调腿姿，浏览器在本地 Wi-Fi 发送指令。图纸与源码公开可查，整机授权及复刻配电仍需核对。"
@@ -109,6 +109,7 @@ sequenceDiagram
 
 - [轮腿双足机器人](../concepts/wheel-legged-biped.md)
 - [SimpleFOC](./simplefoc.md) · [磁场定向控制](../concepts/field-oriented-control.md)
+- [执行器驱动链选型](../queries/actuator-drive-chain-selection-loop.md)：分清电压模式下发、轮端实际力矩与板级验收。
 - [PID 控制](../methods/pid-control.md) · [混合运动](../tasks/hybrid-locomotion.md)
 - [Micro-Wheeled Leg Robot](./paper-notebook-micro-wheeled-leg-robot.md)：EN01 README 致谢的上游，不是同一个项目节点。
 - [人形硬件设计纵深：Stage 6](../../roadmap/depth-humanoid-hardware-design.md)：仅作为小型轮足的上电与验收对照。
