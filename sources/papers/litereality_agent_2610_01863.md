@@ -7,16 +7,19 @@
 - **来源：** arXiv:2610.01863v1（cs.CV，2026-10-01）
 - **作者：** Zhening Huang、Yueyan Li、Johnathan Chiu、Xiaoyang Lyu、Matt Zhou、Yuxin Yao、Joan Lasenby、Shangzhe Wu
 - **机构：** 剑桥大学、帝国理工学院、独立研究者
-- **论文：** <https://arxiv.org/abs/2610.01863> · <https://arxiv.org/html/2610.01863v1>
+- **论文：** <https://arxiv.org/abs/2610.01863v1> · <https://arxiv.org/html/2610.01863v1> · <https://arxiv.org/pdf/2610.01863v1>
 - **项目页与演示：** <https://litereality.github.io/agent/>
 - **交互式 3D 查看器：** <https://litereality.github.io/agent/vr/index.html>
 - **代码：** <https://github.com/LiteReality/LiteReality-Agent>（Apache-2.0）
 - **配套扫描 App：** <https://apps.apple.com/gb/app/litereality/id6774158260>（App Store 免费）
 - **入库日期：** 2026-10-15
-- **最后更新：** 2026-10-15
+- **最后更新：** 2026-11-25
 - **一句话说明：** 将 iOS RGB-D 房间扫描编译为可编辑的 Room.py 场景程序，由 coding agent 通过 observe-edit-verify 闭环完成布局修复、物体重建和质量检查，并导出 MuJoCo / URDF / MJCF 环境。
 
-## 核心论文摘录（MVP）
+- **核对范围：** v1 PDF 全文、图表说明与附录；重点核对 §3–4 的对象重建、物性、渲染与几何评测口径，并与官方项目页和固定源码核查互校。
+- **通读：** 已完成
+
+## 核心论文摘录
 
 ### 1) 把室内重建组织为可执行场景程序
 
@@ -32,7 +35,7 @@ Agent 每轮根据扫描观察修改场景程序。重建后重新编译并进�
 
 ### 3) 结果较强，但指标不等于物理真实性证明
 
-论文在 10 个室内场景、620 个采集视角上评估。LiteReality-Agent 的 SSIM / PSNR / RMSE / LPIPS 均值均优于所列基线；几何表中深度 MAE 为 10.50 cm、86 个家具对象均满足底部近接触条件，且未检测到家具表面相交对。人工感知评分的布局、物体、整体相似度均值为 4.60、4.58、4.54 / 5。
+图像指标覆盖 10 个室内场景的 620 个采集视角，每帧等权；深度误差仅覆盖共有有效深度的 611 帧。LiteReality-Agent 的 SSIM / PSNR / RMSE / LPIPS 均值均优于所列基线；几何表中深度 MAE 为 10.50 cm、86 个家具对象均满足底部近接触条件，且未检测到家具表面相交对。人工感知评分的布局、物体、整体相似度均值为 4.60、4.58、4.54 / 5。
 
 这些结果覆盖视图一致性、局部几何与感知质量，不代表真实动力学验证。作者指出物理属性缺少 ground-truth 验证，部分几何指标不构成完整物理有效性证明；视觉评测也基于采集视角而非 held-out novel views。
 
@@ -43,7 +46,7 @@ Agent 每轮根据扫描观察修改场景程序。重建后重新编译并进�
 - 项目页链接至公开 GitHub 仓库；仓库声明 Apache-2.0，README 提供 uv 安装、litereality run、stage author、stage simulate 和 view 入口。
 - LiteReality Scanner 在 App Store 免费提供；example-scans 可用于没有自有扫描数据时试跑。
 - 模型部署可走 Modal，也可使用 Linux 本地 GPU；官方 README 当前列出 Blender 5.x、图像生成 API、Agent CLI 等依赖。
-- 仿真输出可用 MuJoCo，并提供 URDF / MJCF 导出；读者仍需按自己的机器人仿真任务校验坐标、碰撞体和估计物理参数。
+- 仿真输出可用 MuJoCo，输出房间级 MJCF；URDF 是单物体的关节资产描述之一；读者仍需按自己的机器人仿真任务校验坐标、碰撞体和估计物理参数。
 
 ## 当前提炼状态
 
