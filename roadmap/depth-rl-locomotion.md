@@ -57,6 +57,9 @@ flowchart LR
 - 对比 on-policy（PPO）和 off-policy（SAC）的训练曲线
 
 ### 推荐读什么
+
+- [Xbotics 第14讲：强化学习入门](../wiki/entities/xbotics-handbook-lecture-14.md) — 以 G1 仿真行走串起策略梯度和 PPO。
+
 - [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文：MDP → PPO/SAC 章节 + [hrl.boyuai.com](https://hrl.boyuai.com/chapter) 在线 notebook；配套 [伯禹免费视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)
 - Spinning Up (OpenAI) — Part 1: Key Concepts
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)

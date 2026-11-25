@@ -11,6 +11,8 @@
 - **核对范围：** 用户提供的第10讲完整正文（§1–6、参考文献）及官方 Markdown 章节；静态读取四个 ACT 实验脚本、LeRobot v0.5.1 的 configuration_act.py、modeling_act.py、processor_act.py。通读标记仅针对第10讲，不代表其余20讲或第三方论文全文已读；未实际训练、评测或上真机。
 - **通读：** 已完成
 
+- **官方在线书稿：** https://xbotics-embodied-ai-club.github.io/Xbotics-Embodied-AI-Handbook/part3-end-to-end/10-%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98.html
+
 ## 核心摘录（归纳）
 
 - §1–2：BC 的点回归在多峰条件分布下可能落在无效模式之间；动作分块与分布建模是正交设计。ACT 训练时用真实动作块和本体状态推断 CVAE latent，推理跳过 VAE encoder、固定 z=0。
@@ -40,5 +42,6 @@
 
 ## 对 wiki 的映射
 
-- [Xbotics Handbook 课程实体](../../wiki/entities/xbotics-embodied-ai-handbook.md)
-- [Handbook 仓库归档](../repos/xbotics-embodied-ai-handbook.md)
+
+- [第10讲独立知识节点](../../wiki/entities/xbotics-handbook-lecture-10.md)
+- [课程主节点](../../wiki/entities/xbotics-embodied-ai-handbook.md)

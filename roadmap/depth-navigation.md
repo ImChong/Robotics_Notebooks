@@ -195,6 +195,9 @@ flowchart LR
 - 按四范式路径挑一条复现（推荐从模块化 VLFM 一系入手），记录每步的工程坑
 
 ### 推荐读什么
+
+- [Xbotics 第17讲：VLN 理论](../wiki/entities/xbotics-handbook-lecture-17.md)、[第18讲：VLN 实操与评测](../wiki/entities/xbotics-handbook-lecture-18.md) — 对照任务协议、导航执行与评测指标。
+
 - [Racing the Clock：动作预算条件下目标搜索](../wiki/entities/paper-budget-vln-2611-17442.md)：部分可观测房间级 Bellman 教师与 VLN 学生对齐。
 - [视觉–语言导航（VLN）任务页](../wiki/tasks/vision-language-navigation.md) — 主线索引页
 - [七类 VLN 基准、开源框架及评测方法](../wiki/comparisons/vln-seven-benchmarks-frameworks-evaluation.md) — R2R / R4R / VLN-CE / CVDN / HANNA / SOON / REVERIE 的官方入口和可比性边界。
