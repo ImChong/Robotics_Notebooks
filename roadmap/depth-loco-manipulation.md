@@ -201,6 +201,7 @@ flowchart LR
 - [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
 - [Rhoda Mobile DVA](../wiki/entities/rhoda-direct-video-action.md#mobile-dva2026-11-03-统一移动与操作扩展) — 非人形移动底盘 + 机械臂共享因果视觉未来并统一解码动作的产业样本；公司自报短数据迁移与目标桌混淆失效，未提供代码/权重。
 - [ω-0](../wiki/entities/paper-omega-0.md) — 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%；代码、数据与预训练检查点入口已公开，运行仍依赖外部模型资产（[官方 README](https://github.com/gentlefress/Omega-0/tree/2ca35a3ff9363c54c9c206ca101cdf58028824cb)）
+- [CHAMP：全身运动先验与跨层动作专家](../wiki/entities/paper-champ-2611-30449.md) — 异构身体/手部运动预训练，SONIC 闭环回放接地后微调 CAE；读 §4.4 区分运动先验、控制接口与特征选层的作用。
 - [Kimodo-Policy](../wiki/entities/paper-kimodo-policy.md) — 运动学生成骨干接视觉条件与实测历史，再由 SONIC 执行的 VLA 路线；与 WAM 对比时先检查是否显式预测世界后果，参见 [动作生成 Stage 4](depth-motion-generation.md)
 - [HITCH：主动感知 + 分身体部位命令 + 学习型全身跟踪](../wiki/entities/paper-hitch.md) — 本 Stage 的**分层 Agent 基线**，不是端到端 VLA 或显式预测未来的 WAM；用仿真教师的五类基础任务轨迹训练 VLM 调用接口，真机 G1 搬箱 13/20、导航 6/10。比较时须对齐作者调整过的相机、任务指令与时限。
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [VLA](../wiki/methods/vla.md)
