@@ -482,6 +482,7 @@ flowchart TB
 - [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 把 WAM 写成跨架构功能范式，不新开第四列
 - [Model-Based RL](../methods/model-based-rl.md) — 经典 **模型 + 规划/策略** 分解；对照理解 Cascaded WAM 的历史渊源。
 - [World Action Planner](../entities/paper-world-action-planner.md) — pose-image WM + VLM 规划；相对 E2E WAM/VLA 的模型基对照。
+- [SANA-Robot](../entities/paper-sana-robot-2611-28943.md) — 有状态 WAM：短窗 KV 与全局递推混合，Memory RTC 负责异步执行相位。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 高 DoF 任务上 **长程协调** 与 **sim2real** 压力最集中，是 WAM 论文重点引用的评测语境之一。
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 语言条件空间决策；[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 提供 **UAV / 自回归 WAM** 实例。
 - [AI Auto-Research（学术研究自动化）](./ai-auto-research.md) — 另一篇 **领域综述 + Awesome 列表** 维护范式（学术全生命周期 vs 具身 WAM）。
