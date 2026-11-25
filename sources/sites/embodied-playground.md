@@ -1,16 +1,15 @@
-# Embodied Playground 项目页
+# Embodied Playground | Official project page
 
-> 来源归档（site）
-
-- **标题：** Embodied Playground
 - **类型：** site
-- **链接：** https://winniechen2002.github.io/Agent-bench-website/
-- **arXiv：** <https://arxiv.org/abs/2610.27039>
+- **项目页：** <https://winniechen2002.github.io/Agent-bench-website/>
+- **论文：** <https://arxiv.org/abs/2610.27039v2>
 - **代码：** <https://github.com/Winniechen2002/Embodied-Playground>
-- **入库日期：** 2026-10-31
-- **一句话说明：** Embodied Playground以统一工具权限和预算评测多阶段操作、谜题与家庭任务，分别检查目标、规则及物理有效性；规则披露不足也会影响失败归因。
-- **沉淀到 wiki：** [`wiki/entities/paper-embodied-playground.md`](../../wiki/entities/paper-embodied-playground.md)
+- **结果：** [机器可读结果与口径](https://winniechen2002.github.io/Agent-bench-website/data/results.json)
+- **核对范围：** 项目页的任务规模、结果、权限、示例回放说明、代码和结果 JSON 入口。
+- **通读：** 已完成
+- **最初入库 / 本次核对：** 2026-10-31 / 2026-11-25
+- **对应节点：** [Embodied Playground](../../wiki/entities/paper-embodied-playground.md)
 
-## 开源状态
+网页演示以参考运行及复现为主；不要把展示回放视为模型计分成绩。与 arXiv v2 表 5 核对时保留套件等权、预装起始和有效重试口径。
 
-- **已开源**（步骤 2.5 核查，2026-10-31）：仓库可达（git ls-remote）。项目页 HTTP 200。
+[论文归档](../papers/embodied_playground_arxiv_2610_27039.md) · [源码归档](../repos/embodied_playground.md)
