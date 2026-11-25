@@ -125,6 +125,10 @@ test('graph.html supports reference_page and tech_map_node colors, legend order,
 
 test('main.js handles typed health labels and kmap node types for references and tech-map', () => {
   const mainSrc = fs.readFileSync(path.join(ROOT, 'docs/main.js'), 'utf8');
+  // Test the rendered row metadata rather than binding the test to a private helper name.
+  const compactRowMeta = extractBlock(mainSrc, 'function buildCompactPageRowMeta(page, detailId, communityIndex)');
+  const rowTypeResolver = compactRowMeta.match(/\btype:\s*([\w$]+)\(safePage, detailId, communityIndex\)/)?.[1];
+  assert.ok(rowTypeResolver, 'Expected the compact row type to come from the display-type resolver');
   const snippet = [
     'var COMMUNITY_COLORS = [];',
     'var COMMUNITY_META = {};',
@@ -139,8 +143,10 @@ test('main.js handles typed health labels and kmap node types for references and
     extractBlock(mainSrc, 'var ROADMAP_KMAP_TYPE_COLOR ='),
     extractStatement(mainSrc, 'var ROADMAP_KMAP_PATH_TYPE ='),
     extractBlock(mainSrc, 'function roadmapKmapNodeType(page, id)'),
-    extractBlock(mainSrc, 'function resolveCompactRowDisplayType(page, detailId, communityIndex)'),
-    'this.__exports = { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, resolveCompactRowDisplayType };',
+    extractBlock(mainSrc, `function ${rowTypeResolver}(page, detailId, communityIndex)`),
+    'function buildInternalLinkTitle(id) { return id; }',
+    compactRowMeta,
+    'this.__exports = { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, buildCompactPageRowMeta };',
   ].join('\n');
 
   const ctx = {
@@ -154,7 +160,7 @@ test('main.js handles typed health labels and kmap node types for references and
   vm.createContext(ctx);
   vm.runInContext(snippet, ctx);
 
-  const { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, resolveCompactRowDisplayType } = ctx.__exports;
+  const { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, buildCompactPageRowMeta } = ctx.__exports;
 
   assert.equal(ROADMAP_KMAP_TYPE_COLOR.reference_page, '#818cf8');
   assert.equal(ROADMAP_KMAP_TYPE_COLOR.tech_map_node, '#a3e635');
@@ -171,11 +177,11 @@ test('main.js handles typed health labels and kmap node types for references and
   assert.equal(roadmapKmapNodeType({ path: 'references/papers/mpc.md' }, 'reference-papers-mpc'), 'reference_page');
   assert.equal(roadmapKmapNodeType({ path: 'tech-map/overview.md' }, 'tech-node-overview'), 'tech_map_node');
   assert.equal(
-    resolveCompactRowDisplayType({ path: 'tech-map/modules/control/mpc.md' }, 'tech-node-control-mpc', { 'tech-node-control-mpc': 0 }),
+    buildCompactPageRowMeta({ path: 'tech-map/modules/control/mpc.md' }, 'tech-node-control-mpc').type,
     'tech_map_node',
   );
   assert.equal(
-    resolveCompactRowDisplayType({ path: 'references/repos/simulation.md' }, 'reference-repos-simulation', { 'reference-repos-simulation': 0 }),
+    buildCompactPageRowMeta({ path: 'references/repos/simulation.md' }, 'reference-repos-simulation').type,
     'reference_page',
   );
 });
