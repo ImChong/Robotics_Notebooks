@@ -33,6 +33,7 @@ sources:
 | ACT | Adaptive Computation Time | 学习每个输入或位置的停机深度 |
 | DEQ | Deep Equilibrium Model | 以满足固定点条件的状态定义网络输出 |
 | RNN | Recurrent Neural Network | 沿输入序列时间递推隐藏状态 |
+| LSTM | Long Short-Term Memory | 用门控管理跨步记忆的循环网络 |
 | LoopWM | Looped World Models | FaceMind Research Asia 公开的循环世界模型论文 |
 | KV | Key–Value | 注意力机制复用的键和值缓存 |
 | GLM-5.4 | Z.ai GLM-5.4 | 智谱的模型名称，本文的独立语言模型对照 |
@@ -87,7 +88,7 @@ flowchart LR
 
 同是循环深度，[Ouro（2025）](https://arxiv.org/abs/2510.25741) 从 token 嵌入开始循环整栈，[Huginn（2025）](https://arxiv.org/abs/2502.05171) 只循环中段并每轮再注入前置编码。固定轮数可估算执行预算；[ACT](https://arxiv.org/abs/1603.08983) 学习停止决策并以计算代价约束使用的轮数；DEQ 则以迭代残差、求解容差和预算判断是否已近似找到固定点。输入每轮注入与提前停止是独立设计，均不自动保证第 N 轮比第 N−1 轮好。
 
-[Loop Behind](../entities/paper-loop-behind.md) 对应一个相关但不同的解码调度问题：把位置较早的 token 的额外循环移到读出后，更新后续位置读取的 KV；不是把上一位置顶层状态当作下一位置的输入嵌入。该论文也报告把方法直接用于 Ouro 不成立，不能以「共享循环」一个标签概括两类骨干。
+[Loop Behind](../entities/paper-loop-behind.md) 对应一个相关但不同的解码调度问题：把位置较早的 token 的额外循环移到读出后，更新后续位置读取的 KV；不是把上一位置顶层状态当作下一位置的输入嵌入。论文在 Ouro 的缓存干预中发现跨轮键不易兼容，未直接部署后置循环，不能以「共享循环」一个标签概括两类骨干。
 
 针对具身系统，先确认是在固定观测下细化一次动作预测，还是把动作送向外部并得到新观测，或仅在模型中展开多步虚拟状态。三者的时间与安全语义不同。
 
