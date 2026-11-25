@@ -44,6 +44,14 @@ summary: "无损凸化（LCvx）：用松弛变量把火箭着陆中'推力不�
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  NC["非凸着陆 OCP<br/>(推力下界 rho_1 <= ||T_c|| <= rho_2)"] --> R["1. 引入松弛变量 Gamma<br/>将空心壳松弛为 ||T_c|| <= Gamma 实心锥"]
+  R --> S["2. 质量归一化与变量替换<br/>sigma=Gamma/m, u=T_c/m, z=ln(m)"]
+  S --> SOCP["3. 离散为有限维 SOCP + 黄金分割搜索 t_f<br/>(内点法多项式时间全局求解)"]
+  SOCP --> PMP["4. PMP 证明最优解必取 ||T_c|| = Gamma (无损)"]
+```
+
 ### 1. 非凸来源
 
 3-DoF 着陆问题里，推力约束 \(0<\rho_1\le\|T_c\|\le\rho_2\) 的下界是非凸的——"once started, the thrusters cannot be throttled below a certain level"。

@@ -53,6 +53,14 @@ original:
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  V["海量遥操作 / 探索视频与传感器流"] --> P["几何/状态预处理<br/>(关键帧 / 夹爪开合 / 3D 重建)"]
+  P --> T["VLM Teacher + Prompt<br/>生成结构化任务指令与成败判定"]
+  T --> A["物理对齐校验与人工抽检"]
+  A --> D["语义增强具身数据集<br/>(供 VLA / IL / RL 训练)"]
+```
+
 现代流水线通常采用 **Teacher-Student 架构**：
 
 - **VLM Teacher**：使用顶尖的多模态大模型（如 GPT-4V, Gemini 1.5 Pro），输入轨迹视频。

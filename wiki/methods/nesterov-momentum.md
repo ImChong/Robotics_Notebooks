@@ -36,6 +36,14 @@ sources:
 
 ### 1. 更新规则（常见等价写法）
 
+```mermaid
+flowchart LR
+  T["当前权重 theta_t & 速度 v_t"] --> LA["1. 沿动量先做前瞻<br/>theta_look = theta_t - mu * v_t"]
+  LA --> G["2. 在前瞻点求梯度<br/>g_t = grad f(theta_look)"]
+  G --> V["3. 更新速度 v_{t+1} = mu * v_t + g_t"]
+  V --> P["4. 更新参数 theta_{t+1} = theta_t - eta * v_{t+1}"]
+```
+
 先计算前瞻梯度 $g_t = \nabla f(\theta_t - \mu v_t)$，再更新：
 
 $$

@@ -41,6 +41,17 @@ summary: "统一多模态 Token 用兼容的序列接口融合不同模态表征
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  V["图像 Patch (视觉编码器)"] --> SEQ["统一序列接口<br/>(位置编码 RoPE + 模态标志 + Attention Mask)"]
+  L["文本词元 (Tokenizer)"] --> SEQ
+  S["本体状态 / 动作查询投影"] --> SEQ
+  SEQ --> B["跨模态交互骨干"]
+  B -->|"FAST"| D["离散动作 token 解码"]
+  B -->|"QwenOFT / StarVLA-alpha"| C["MLP 连续动作块回归"]
+  B -->|"V-JEPA 2-AC"| J["动作条件 latent 预测 -> CEM 规划"]
+```
+
 视觉编码器生成 patch 表征，文本 tokenizer 生成词元嵌入；机器人状态可经投影形成条件。位置与模态信息使模型区分 token 的空间、时间及用途。动作输出可以是离散词元，也可以从查询隐藏状态回归连续动作块；新增传感器仍需标定、对齐数据、训练与输入分布验证。
 
 ## 主要技术路线

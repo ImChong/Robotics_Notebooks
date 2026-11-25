@@ -39,6 +39,13 @@ sources:
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  SRC["异构参考 (MoCap / ViCap / Animation)"] --> RET["运动学重定向 (无接触标签)"]
+  RET --> RL["物理正则化 RL + 失败率自适应 RSI<br/>+ 虚拟辅助扳手课程 (beta -> 0)"]
+  RL --> DEP["极简部署: 本体 + 下一步参考 + PD<br/>(零样本迁移 Atlas / G1 / Spot)"]
+```
+
 ```text
 异构运动数据 (MoCap / ViCap / Animation)
           ↓

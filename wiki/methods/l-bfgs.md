@@ -47,6 +47,14 @@ original: ../../sources/papers/second_order_optimizers.md
 
 ### 1. Two-loop recursion
 
+```mermaid
+flowchart LR
+  G["当前梯度 g_k & 最近 m 对 (s_i, y_i)"] --> BW["1. 后向循环 (i = k-1 .. k-m)<br/>计算 alpha_i 并更新 q"]
+  BW --> H0["2. 乘以对角初始缩放矩阵 H_0"]
+  H0 --> FW["3. 前向循环 (i = k-m .. k-1)<br/>用 y_i 与 s_i 对称修正输出方向 r"]
+  FW --> LS["Armijo / Wolfe 线搜索更新 x_{k+1}"]
+```
+
 不显式存 $H_k$，由 $\{s_i, y_i\}_{i=k-m}^{k-1}$ 递归计算 $q = H_k g_k$：
 
 1. **后向循环**：用 $s_i, y_i$ 修正 $q$

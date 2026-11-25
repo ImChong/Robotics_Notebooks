@@ -4,7 +4,7 @@ title: 人形机器人硬件选型指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-11-21
+updated: 2026-11-25
 original:
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
   - ../../sources/sites/unitree_g1_product_page_reading_g1spec.md

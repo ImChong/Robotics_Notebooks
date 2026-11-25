@@ -40,6 +40,15 @@ sources:
 
 将不确定性块 $\Delta$ 嵌入闭环；最小化 $\mu_\Delta(M(j\omega))<1$；D-K 迭代求缩放 $D$ 与控制器 $K$。
 
+```mermaid
+flowchart LR
+  D["结构化参数不确定块 Delta"] --> M["广义对象互连结构 M(s)"]
+  M --> DK{"D-K 迭代闭环"}
+  DK -->|"固定尺度矩阵 D"| KS["综合 H_inf 控制器 K"]
+  DK -->|"固定 K"| DS["频率点拟合并更新缩放 D(jw)"]
+  KS & DS -->|"校验 mu_Delta(M) < 1"| RES["多关节鲁棒稳定控制器 K"]
+```
+
 ## 工程实践
 
 MATLAB `musyn`；与多体标定数据结合界定 $\Delta$ 范围。

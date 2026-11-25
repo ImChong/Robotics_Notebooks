@@ -41,6 +41,15 @@ sources:
 
 寻找微分同胚 $z=\phi(x)$ 与反馈 $u=\alpha(x)+\beta(x)v$ 使 $\dot{z}=Az+Bv$；奇异点处不可线性化。
 
+```mermaid
+flowchart LR
+  X["系统状态 x"] --> PHI["微分同胚变换 z = phi(x)"]
+  PHI --> LIN["外环线性控制器 (LQR / PID)<br/>计算虚拟输入 v"]
+  LIN --> INV["内环非线性消除律<br/>u = alpha(x) + beta(x) v"]
+  X --> INV
+  INV --> SYS["真实非线性系统 -> 状态 x"]
+```
+
 ## 工程实践
 
 验证相对阶与可控性；奇异构型附近增益调度或避障。

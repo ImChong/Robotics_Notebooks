@@ -49,6 +49,14 @@ summary: "基于 Transformer 的行为克隆（BC with Transformer）利用自�
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  O["多帧视觉 + 本体状态 + 指令"] --> TOK["特征提取与 Token 化<br/>(ResNet/FiLM + TokenLearner)"]
+  TOK --> TR["Transformer 注意力骨干"]
+  TR -->|"ACT 分支"| CV["CVAE 潜变量 z + 连续动作块 + 时间集成"]
+  TR -->|"RT-1 分支"| AR["因果解码 256-bin 离散动作 token"]
+```
+
 - **多模态 Token 化与压缩**：视觉主干（如 ResNet / EfficientNet + FiLM）与压缩器（如 TokenLearner 将每帧 81 token 压至 8 token）把图像、本体状态和指令压入可控序列长度。
 - **双分支序列解码范式**：
   - **CVAE + DETR 式 Action Chunking 解码（ACT）**：训练期引入编码器抽取隐风格变量 $z$ 对齐动作多峰性，测试期置 $z=0$ 并一次性输出未来 $k$ 步目标关节位置配合 Temporal Ensembling 平滑误差累积。

@@ -31,6 +31,13 @@ summary: "CLAW (Composable Language-Annotated Whole-Body Motion Data Generation)
 
 CLAW 的工作流程可以概括为以下三个核心阶段：
 
+```mermaid
+flowchart LR
+  P["1. 预定义物理约束原子动作基元<br/>(适配 Unitree G1 关节极限)"] --> S["2. 网页交互式组合调度<br/>MuJoCo 物理仿真合成全身轨迹"]
+  S --> A["3. 确定性自动标注引擎<br/>生成对齐语言指令与图像动作对"]
+  A --> D["VLA / 全身模仿学习训练数据"]
+```
+
 1. **动作基元定义（Atomic Motion Primitives）**：通过分析机器人（如 G1）的物理极限，预定义一组基础运动单元。
 2. **交互式合成（Interactive Synthesis）**：用户通过网页界面实时调度基元，并在 MuJoCo 仿真中生成符合物理规律的全身轨迹。
 3. **自动标注引擎（Auto-annotation Engine）**：基于动作状态的确定性，自动生成与轨迹对齐的语言描述，产出高质量的 (Instruction, Image, Action) 数据对。

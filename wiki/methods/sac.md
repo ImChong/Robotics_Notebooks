@@ -67,6 +67,14 @@ original:
 
 ## 核心机制
 
+```mermaid
+flowchart LR
+  E["环境 / 离线样本 -> Replay Buffer"] -->|"采样 batch"| Q["更新双 Q 网络 Q1, Q2<br/>(软 Bellman 目标含 -alpha log pi)"]
+  Q -->|"固定最小值 min(Q1,Q2)"| A["重参数化更新 Actor pi<br/>最大化 Q - alpha log pi"]
+  A --> T["自动对偶优化温度 alpha<br/>保持策略熵 >= H_bar"]
+  A --> E
+```
+
 ### 1. 最大熵目标
 
 SAC 把标准 RL 的累积奖励目标改写为带熵正则的形式：

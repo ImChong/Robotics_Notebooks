@@ -42,6 +42,13 @@ sources:
 
 对状态空间 $(A,B)$ 若 $(A,B)$ 可控，选期望极点 $\{p_i\}$，求反馈 $K$ 使 $\text{eig}(A-BK)=\{p_i\}$；左半平面极点保证稳定。
 
+```mermaid
+flowchart LR
+  S["线性化状态空间模型 (A, B)<br/>+ 期望闭环极点 {p_i} (阻尼/频率)"] --> ACK["Ackermann / place() 计算增益 K<br/>使 eig(A - B*K) = {p_i}"]
+  ACK --> FB["状态反馈律 u = -K*x + r"]
+  FB --> SYS["闭环系统与阶跃响应验证"]
+```
+
 ## 工程实践
 
 单关节伺服用二阶近似选 $\zeta,\omega_n$ 映射极点；多变量用 Ackermann 公式或 place()；阶跃响应验证。

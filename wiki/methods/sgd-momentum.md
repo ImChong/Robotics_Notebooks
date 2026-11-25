@@ -40,6 +40,12 @@ sources:
 
 ### 1. 更新规则（PyTorch 常用形式）
 
+```mermaid
+flowchart LR
+  G["当前 mini-batch 梯度 g_t"] --> V["累积速度向量 v_{t+1} = mu * v_t + g_t<br/>(一致方向加速 · 振荡方向抵消)"]
+  V --> T["更新权重 theta_{t+1} = theta_t - eta * v_{t+1}"]
+```
+
 $$
 v_{t+1} = \mu v_t + g_t, \qquad \theta_{t+1} = \theta_t - \eta v_{t+1}
 $$

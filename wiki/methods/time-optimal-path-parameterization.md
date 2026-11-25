@@ -32,6 +32,13 @@ summary: "时间最优路径参数化 TOPP：几何路径固定，优化沿路�
 
 ## 核心结构
 
+```mermaid
+flowchart LR
+  P["固定几何路径 q(s)<br/>+ 关节速度/加速度/力矩限幅"] --> TR["路径导数参数化<br/>dq = q'(s) ds/dt, ddq = q''(ds/dt)^2 + q' dds/dt"]
+  TR --> CVX["构造凸 LP / SOCP 子问题<br/>(min 总时间 T)"]
+  CVX --> OUT["输出时间最优速度剖面 s(t) -> 下发运动控制器"]
+```
+
 路径参数化：$q(t) = q(s(t))$，则 $\dot{q} = q'(s)\dot{s}$，$\ddot{q} = q''(s)\dot{s}^2 + q'(s)\ddot{s}$。
 
 约束 $\|\dot{q}\|_\infty \le v_{\max}$、$\|\ddot{q}\|_\infty \le a_{\max}$ 可转为 **$\dot{s}$、$\ddot{s}$ 的线性或锥约束**。

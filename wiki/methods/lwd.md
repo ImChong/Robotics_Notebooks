@@ -47,6 +47,15 @@ summary: "LWD 是 AGIBOT 提出的车队级 offline-to-online RL 后训练框架
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  V["预训练 VLA 策略"] --> INIT["Offline RL 初始化策略 + Critic (DIVL)"]
+  INIT --> FLT["部署到真机机器人车队<br/>收集成功 / 失败 / 干预轨迹"]
+  FLT --> BUF["共享 Online + Offline Replay Buffer"]
+  BUF --> LRN["集中式学习器 (DIVL 分布价值 + QAM 策略抽取)"]
+  LRN -->|"周期推送更新 checkpoint"| FLT
+```
+
 ```
 预训练 VLA 策略
         ↓ offline RL 初始化

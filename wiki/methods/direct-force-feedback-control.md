@@ -41,6 +41,15 @@ sources:
 
 $e_f = f_d - f_{meas}$；$u = K_p e_f + K_i \int e_f$；输出为速度/力矩指令。
 
+```mermaid
+flowchart LR
+  FD["目标接触力 f_d"] --> E["力误差 e_f = f_d - f_meas"]
+  FM["F/T 传感器实测力 f_meas<br/>(滤波与抗饱和)"] --> E
+  E --> PI["PI 调节律<br/>u = Kp*e_f + Ki*int(e_f)"]
+  PI -->|"速度 / 力矩指令"| ACT["机器人执行器与接触环境"]
+  ACT --> FM
+```
+
 ## 工程实践
 
 Z 轴力控打磨；滤波与饱和防冲击；与位置环分时切换。

@@ -51,6 +51,14 @@ related:
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  O["观测历史 s (图像 + 本体位姿)"] --> N["迭代逆扩散去噪<br/>(UNet / DiT + DDPM/DDIM)"]
+  Z["高斯白噪声 x_K ~ N(0, I)"] --> N
+  N -->|"输出未来 T_p 步动作块"| R["Receding-Horizon 滚动执行<br/>(仅执行前 T_e 步并重规划)"]
+  R -->|"新观测状态"| O
+```
+
 ### 扩散过程（Diffusion Process）
 
 扩散模型分两个过程：

@@ -45,6 +45,15 @@ HRL：上层策略拆分子任务/选项，下层策略执行具体运动，缓�
 
 上层 $\pi_{high}(o|s)$ 选 option $o$，下层 $\pi_{low}(a|s,o)$ 执行；Option-Critic 端到端训选项。
 
+```mermaid
+flowchart TD
+  S["当前状态 s"] --> H["上层管理器 pi_high(o | s)<br/>(低频挑选时间抽象 option / 子目标)"]
+  H -->|"目标 / 模态 o"| L["下层子策略 pi_low(a | s, o)<br/>(高频输出控制动作 a)"]
+  S --> L
+  L --> E["物理环境与子目标进度奖励"]
+  E --> S
+```
+
 ## 工程实践
 
 人形 loco-manip 分「行走/操作」层；分层 PPO；子目标奖励塑形。

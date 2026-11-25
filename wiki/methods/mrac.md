@@ -40,6 +40,17 @@ MRAC：指定理想参考模型动态，用自适应律在线调节控制器，�
 
 参考模型 $\dot{x}_m = A_m x_m + B_m r$；实际系统 $\dot{x}=Ax+Bu$；自适应律 $\dot{\theta} = -\Gamma e P b$ 使 $e=x-x_m\to 0$。
 
+```mermaid
+flowchart LR
+  R["参考输入 r(t)"] --> RM["理想参考模型 -> 期望状态 x_m"]
+  R --> C["可调参数控制器 (theta) -> 控制量 u"]
+  C --> P["实际受控对象 -> 状态 x"]
+  RM --> ERR["跟踪误差 e = x - x_m"]
+  P --> ERR
+  ERR -->|"Lyapunov 自适应律"| AD["更新控制器参数 theta_dot = -Gamma e P b"]
+  AD --> C
+```
+
 ## 工程实践
 
 选参考模型反映期望超调/带宽；监控参数漂移；与鲁棒项并联防未建模动态。

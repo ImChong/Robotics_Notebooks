@@ -24,6 +24,14 @@ summary: "ContactNet 是一种基于点云的深度学习模型，专门用于�
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  PC["原始杂乱场景点云"] --> FE["点云骨干特征提取<br/>(PointNet++ / Transformer)"]
+  FE --> CF["逐点预测 6D 接触框架<br/>与接触成功概率图"]
+  CF --> GF["几何碰撞与力矩平衡过滤"]
+  GF --> GP["输出可行抓取接触面候选"]
+```
+
 1. **点云表征**：使用 PointNet++ 或 Transformer 提取空间特征。
 2. **接触平面预测**：为每个点预测一个局部的 6D 接触框架（Contact Frame）。
 3. **抓取过滤**：利用几何约束剔除会导致碰撞或力矩不平衡的备选点。

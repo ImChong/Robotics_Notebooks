@@ -48,6 +48,13 @@ PAiD 的成功关键在于其结构化的训练方案：
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  MC["人类踢球 MoCap + GMR 重定向"] --> S1["Stage I: 模仿学习动作先验<br/>(收敛类人摆腿基础策略)"]
+  S1 -->|"继承检查点 + 加入球/球门位置"| S2["Stage II: RNN/LSTM 感知-动作融合<br/>PPO 闭环追球与动态调整"]
+  S2 --> S3["Stage III: Sim2Real 强化迁移<br/>接触 CMA-ES 对齐 + 延迟/噪声随机化 -> Unitree G1"]
+```
+
 采用**阶段化策略延续与状态空间渐进扩展**：Stage I 基于 GMR 重定向的 13 条踢球参考以自适应跟踪收敛稳定动作底座；Stage II 从 Stage I 检查点恢复，将骨盆系球位置及门位置引入状态并通过 RNN/LSTM 聚合滚动球时序运动信息；Stage III 叠加球接触 CMA-ES 动力学对齐与控制延迟模拟实现 G1 真机室内外鲁棒执行。
 
 ## 主要技术路线

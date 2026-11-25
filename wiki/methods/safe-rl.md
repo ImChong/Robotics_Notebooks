@@ -61,6 +61,14 @@ $$ \max_{\pi} J_R(\pi) \quad \text{s.t.} \quad J_{C_i}(\pi) \leq \hat{c}_i \quad
 
 为了求解 CMDP 并实现实机部署，学术界和工业界沉淀了以下四条核心技术路线：
 
+```mermaid
+flowchart LR
+  S["CMDP 问题 max J_R(pi) s.t. J_C(pi) <= c_hat"] --> R{"约束执行层次"}
+  R -->|"训练期对偶 / 信赖域"| LAG["Lagrangian 对偶或 CPO 投影<br/>(保证期望或更新步安全)"]
+  R -->|"执行期安全屏蔽"| SH["Safety Filter (CBF / MPC)<br/>将动作投影至安全可行集"]
+  R -->|"临界接管恢复"| REC["Recovery RL<br/>鉴别边界并切换至救场策略"]
+```
+
 ### 1. 拉格朗日对偶法 (Lagrangian Methods / Reward Penalty)
 最广泛使用的入门级方法。它将带约束的优化问题通过拉格朗日乘子 $\lambda$ 转化为无约束的 Min-Max 博弈问题。
 - **机制**：当策略违反安全约束时，自动调大 $\lambda$（相当于加重惩罚权重）；当策略非常安全时，自动调小 $\lambda$ 以鼓励任务探索。

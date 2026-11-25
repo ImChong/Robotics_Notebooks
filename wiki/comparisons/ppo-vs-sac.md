@@ -73,6 +73,15 @@ related:
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  S["环境交互样本来源"] --> B{"算法范式"}
+  B -->|"GPU 大并行当前策略 rollout<br/>丢弃旧样本"| P["On-Policy (PPO / BRRL-BPO)<br/>GAE + 概率比裁剪/有界比率"]
+  B -->|"经验回放池复用历史转移<br/>高样本效率"| A["Off-Policy (SAC / FlashSAC)<br/>最大熵正则 + 双 Q 值 + 自动温度"]
+  P --> L["高吞吐仿真 -> Sim2Real 主力"]
+  A --> M["真实样本次数受限 / 灵巧微调"]
+```
+
 ### PPO：近端策略优化
 
 PPO（Schulman 等，2017）的核心是 **clip 机制**，防止每次梯度更新步子过大导致策略崩溃：

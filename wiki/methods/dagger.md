@@ -59,6 +59,14 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  D["数据集 D_i (初始专家演示 + 聚合样本)"] --> T["训练/更新策略 pi_i"]
+  T --> R["在环境中 rollout pi_i<br/>收集实际访问状态 s"]
+  R --> E["专家在线标注 / HG-DAgger 接管<br/>补充动作 pi*(s)"]
+  E -->|"D_i = D_{i-1} U {(s, pi*(s))}"| D
+```
+
 设专家策略为 $\pi^*$，学习策略为 $\pi_\theta$：
 
 1. 用少量专家轨迹初始化训练集 $D_0$

@@ -74,6 +74,15 @@ $$
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  D["专家示范 D = {(o_i, a_i)}"] --> S["监督回归 / NLL 最小化<br/>L(pi_theta(o), a)"]
+  S --> P["闭环部署产生诱导分布 d_pi"]
+  P -->|"偏离专家状态空间<br/>O(T^2 * eps) 复合误差"| F{"纠偏机制"}
+  F -->|"离线增强"| C["Action Chunking / 扰动恢复示范"]
+  F -->|"在线交互"| DA["DAgger / HG-DAgger / RL 后训练"]
+```
+
 以下依据 Ross, Gordon & Bagnell（AISTATS 2011，已通读，归档见 [dagger_reading_arxiv_1011_0686](../../sources/papers/dagger_reading_arxiv_1011_0686.md)）对「纯监督式模仿」的分析：
 
 - **目标是在自身分布上低损失**：模仿学习真正要最小化的是 $\mathbb{E}_{s\sim d_\pi}[\ell(s,\pi)]$（$d_\pi$ 为策略自己诱导的状态分布），而 BC 只在专家分布 $d_{\pi^*}$ 上训练（原文式 2）。因动态未知，$d_\pi$ 只能靠执行采样，故这是非 i.i.d. 问题。

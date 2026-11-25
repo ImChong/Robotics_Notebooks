@@ -63,6 +63,15 @@ summary: "手内重定向（In-hand Reorientation）是指机器人灵巧手在�
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  O["掌内感知与状态估计<br/>(本体历史 / 腕深 / 指尖触觉)"] --> R{"控制与表征路线"}
+  R -->|"Deep RL + 域随机化"| P["连续指尖步态与抗遮挡旋转<br/>(PPO / UHAS 跨手空间)"]
+  R -->|"接触隐式轨迹优化"| TO["带接触力约束的最优控制"]
+  R -->|"触觉闭环微调"| TC["接触漂移伺服 / 外在腕部重抓"]
+  P & TO & TC --> A["多指高频交替支撑-滑移-重抓"]
+```
+
 ### 1. 强化学习 (Deep RL)
 目前最成功的手内重定向成果多来自于无模型强化学习（Model-free RL）。
 - **代表作**：OpenAI 的 *Learning Dexterous In-Hand Manipulation*。

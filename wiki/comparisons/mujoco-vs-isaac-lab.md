@@ -32,6 +32,14 @@ related:
 
 ## 核心维度对比
 
+```mermaid
+flowchart LR
+  P["仿真需求评估"] --> D{"瓶颈落在哪一侧"}
+  D -->|"接触物理严谨性 / 轻量化原型<br/>无重型 GPU 依赖"| M["MuJoCo / MJX<br/>(MJCF + 高精度接触求解)"]
+  D -->|"百万级 GPU tensor 并行<br/>Sim2Real 大规模域随机化"| I["Isaac Lab (PhysX GPU)<br/>(4096-16384 并行环境)"]
+  M -.->|"典型 Sim2Sim 交叉验证"| I
+```
+
 | 维度 | MuJoCo | Isaac Lab | 说明 |
 |------|--------|-----------|------|
 | **物理引擎精度** | 高（刚体动力学精确，接触稳定） | 中高（PhysX，工程精度够用，极端接触略逊） | MuJoCo 在精细接触仿真上口碑更好 |

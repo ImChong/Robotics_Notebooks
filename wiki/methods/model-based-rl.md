@@ -77,6 +77,15 @@ MBRL 的价值：
 
 ## 主要分类
 
+```mermaid
+flowchart LR
+  E["真实交互样本"] --> M["学习动力学/世界模型 f_hat(s,a)"]
+  M -->|"范式 1: Dyna / MBPO"| V["短 rollout 虚拟经验 -> 更新价值与策略"]
+  M -->|"范式 2: 在线规划"| P["MPC / MPPI / CEM 前瞻搜索动作"]
+  M -->|"范式 3: 潜空间想象梯度"| D["Dreamer / BPTT 穿模优化 Actor"]
+  V & P & D --> E
+```
+
 ### 范式 1：Dyna 架构（经典）
 
 $$\text{真实经验} \rightarrow \text{学习模型} \rightarrow \text{模型生成虚拟经验} \rightarrow \text{更新策略}$$

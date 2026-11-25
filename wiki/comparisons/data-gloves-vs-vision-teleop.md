@@ -73,6 +73,14 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 
 ## 融合趋势：视触觉混合采集
 
+```mermaid
+flowchart LR
+  T["灵巧手遥操作采集需求"] --> C{"瓶颈所在"}
+  C -->|"严苛遮挡 / 接触力敏感<br/>预算充足"| G["穿戴式数据手套 / 1:1 外骨骼<br/>(接触无漂移 + 可选力反馈)"]
+  C -->|"低预算 / 裸手自然度"| V["视觉遥操作 + IK 重定向<br/>(Quest / RGB-D 追踪)"]
+  C -->|"平衡成本与微观接触<br/>或降低多指负荷"| H["混合方案: 视觉位姿 + 指尖触觉<br/>或 1-DoF clutch copilot (NestDex)"]
+```
+
 目前顶尖的实验室（如斯坦福 ALOHA 团队）开始探索将两者结合：使用 Quest 进行宏观位姿追踪，而在指尖安装 GelSight 传感器采集微观接触特征，从而兼顾成本、灵巧度与数据精度。规模化人侧全掌压阻路线见 [HumanTouch](../entities/humantouch.md)（MANUS EMF 手姿 + 头/腕 RGB + 手套质控；ModelScope 已发布首批约 100 h 数据）；人机共用开源磁触觉见 [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md)。
 
 第三条通道是 **copilot / 共享自治采数**：操作员不再直接编全部手指关节。[NestDex](../entities/paper-nestdex.md) 用 1-DoF clutch 调节学到的内层手技能，人只管臂与进度；完整示范再训独立外层策略。它不替代手套或视觉重定向（内层技能仍靠多视重定向冷启动），但把「整任务手指协调」从操作员认知负荷里卸掉。

@@ -14,7 +14,7 @@ tags:
   - ict
   - ucas
 status: complete
-updated: 2026-11-21
+updated: 2026-11-25
 original:
   - ../../sources/papers/3d_ic_icml_2026.md
 venue: "2026 · ICML"
@@ -112,7 +112,7 @@ flowchart TB
 |----------|--------------|
 | **OVMM 仿真基准（Table 1）** | **3D-IC (Ours)**：FindObj **69.1 / 26.7**，Pick **64.0 / 26.5**，FindRec **55.6 / 13.2**，Place **21.9 / 4.9**，Avg SR **52.7%**，Step **844.1**（对比 OVMM (RL) 48.4% / 989.7 步、MoManipVLA 49.4% / 1240.5 步、MoTo 49.6% / 1195.1 步、UniTeam 50.4% / 1027.7 步） |
 | **Stretch 3 真机（Table 2，Intra / Cross）** | **3D-IC**：Intra **44.0%**（FindObj 64 / Pick 44 / FindRec 40 / Place 28）、Cross **40.0%**（70 / 40 / 30 / 20）；对比 Heuristic 基线 Intra 33.0% / Cross 25.0% |
-| **来源完整性说明** | 上表数字于 2026-11-21 核对自 ICML 官方 Poster `#809`（`61610.png`）；OpenReview 论文全文 PDF（`oVB2xYWvpv`）因 HTTP 403 访问受阻暂未通读，故 `original` 仍保留待补状态 |
+| **来源完整性说明** | 上表数字于 2026-11-21 核对自 ICML 官方 Poster `#809`（`61610.png`）；OpenReview 论文全文 PDF（`oVB2xYWvpv`）于 2026-11-25 浏览器核查受 Cloudflare Turnstile 验证页拦截暂未通读，故 `original` 仍保留待补状态 |
 
 ## 源码运行时序图
 
@@ -147,7 +147,7 @@ sequenceDiagram
 - 适用边界是 **轮式/全向底座 + 操作臂** 的长视界、多阶段、开放词汇家务任务；证据集中在仿真与 Stretch 3，迁移到双足 loco-manipulation 或高动态全身时，路点定义与转移代价都要重标定。
 - 主要失败模式沿链传播：遮挡、深度噪声、开放词汇接地错误与 VLM 幻觉会产出「看似可行实则不可达」的路点；候选链枚举加 VLM 推理还把 replan 频率与执行流畅度变成一对需要调的取舍。
 - 路线定位是 **显式规划 + VLM 推理**，不直接输出连续动作：与 [VLA](../methods/vla.md) 是分层组合而非替代关系；与同平台的 [REALM](./paper-realm-last-3-meter-vln-grounding.md) 互补——后者管 VLN 末段实例接地，本页管全链导航–操作联合。
-- 工程与阅读现状：`kekeZ66/3D-IC`（MIT）已公开 HomeRobot 扩展源码，`61610.png` Poster 已核对关键实验表；但 OpenReview 全文 PDF（`oVB2xYWvpv`）于 2026-11-21 返回 HTTP 403 且本地无可用浏览器调试会话，因此本页按实保持 `2/3`（待获取全文 PDF 后再升 `3/3`）。
+- 工程与阅读现状：`kekeZ66/3D-IC`（MIT）已公开 HomeRobot 扩展源码，`61610.png` Poster 已核对关键实验表；但 OpenReview 全文 PDF（`oVB2xYWvpv`）于 2026-11-21 返回 HTTP 403，并于 2026-11-25 无绕过浏览器核查确认受 Cloudflare Turnstile 人机验证门禁拦截，因此本页按实保持 `2/3`（待人工验证获取全文 PDF 后再升 `3/3`）。
 
 ## 局限与风险
 
@@ -155,7 +155,7 @@ sequenceDiagram
 - **计算与延迟：** 候选链枚举 + VLM 推理在长视界任务上可能带来 **规划时延**；真机闭环需关注 **replan 频率 vs 执行流畅度**。
 - **平台特异性：** 当前证据集中在 **Stretch 3** 与仿真；向 **双足 loco-manipulation** 或 **高动态全身** 迁移时，路点定义与转移代价需重新标定。
 - **与端到端 VLA 的边界：** 3D-IC 是 **显式规划 + VLM 推理** 路线，不直接输出连续动作；与 [VLA](../methods/vla.md) **分层组合** 或 **对比** 时需明确各层接口。
-- **预印本与代码核对状态：** [kekeZ66/3D-IC](https://github.com/kekeZ66/3D-IC)（MIT）已公开 HomeRobot OVMM 扩展源码，且 ICML 2026 Poster `#809` 已核对主要评测表；但 OpenReview 全文 PDF（`oVB2xYWvpv`）返回 HTTP 403 且 arXiv 暂未检索到，部分超参/消融细节仍待原文 PDF 解锁后复核。
+- **预印本与代码核对状态：** [kekeZ66/3D-IC](https://github.com/kekeZ66/3D-IC)（MIT）已公开 HomeRobot OVMM 扩展源码，且 ICML 2026 Poster `#809` 已核对主要评测表；但 OpenReview 全文 PDF（`oVB2xYWvpv`）2026-11-25 核查仍受 Cloudflare Turnstile 门禁拦截且 arXiv 暂未检索到，部分超参/消融细节仍待原文 PDF 解锁后复核。
 
 ## 与其他工作对比
 

@@ -41,6 +41,15 @@ RLS：递推最小化预测误差，在线更新动力学参数估计，为自�
 
 $\hat{\theta}_{k+1}=\hat{\theta}_k + K_k (y_k - \phi_k^T \hat{\theta}_k)$；$K_k$ 由协方差递推得。
 
+```mermaid
+flowchart LR
+  S["实时观测回归向量 phi_k 与输出 y_k"] --> ERR["预测误差 e_k = y_k - phi_k^T theta_hat_k"]
+  COV["协方差矩阵 P_k (可选遗忘因子)"] --> K["计算卡尔曼式增益 K_k"]
+  K --> UPD["递推更新参数 theta_hat_{k+1} & 协方差 P_{k+1}"]
+  ERR --> UPD
+  UPD -->|"喂入 A-CTC 前馈补偿"| CTRL["自适应运动控制器"]
+```
+
 ## 工程实践
 
 选回归向量 $\phi$ 含 $H(q),\dot{q}$ 等基函数；遗忘因子应对慢时变；辨识结果喂 A-CTC。

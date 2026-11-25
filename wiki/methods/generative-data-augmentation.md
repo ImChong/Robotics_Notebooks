@@ -37,6 +37,16 @@ original:
 
 ### 主要技术路线
 
+```mermaid
+flowchart LR
+  R["少量真机遥操作轨迹 / 场景图像"] --> T{"生成式扩增轴"}
+  T -->|"场景/背景改写"| E["语义编辑 (Diffusion / ComfyUI)<br/>不变动作下替换背景纹理"]
+  T -->|"失败恢复反事实"| CF["长尾 / 滑脱 / 重对齐样本合成"]
+  T -->|"物体外观替换"| OB["几何/材质变幻 (ControlNet 约束)"]
+  E & CF & OB --> Q["几何与物理清洗校验<br/>过滤动力学矛盾伪影"]
+  Q --> D["低成本高多样性增强训练集"]
+```
+
 1. **场景编辑 (Semantic Editing)**：
    利用视频/图像编辑模型（如 Stable Video Diffusion、[Qwen-Image-2.1](../entities/qwen-image-2-1.md)），将原始背景中的“实验室”替换为“厨房”、“办公室”或“户外草地”，或在机器人工作区 **插物体 / 换背景 / 生成 RGBA 主体层**。这极大地提升了策略的视觉泛化能力。
 2. **长尾合成 (Counterfactual Synthesis)**：

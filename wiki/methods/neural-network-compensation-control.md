@@ -41,6 +41,16 @@ NN 补偿：离线训练网络拟合动力学残差，运行时并联输出补�
 
 学习 $\Delta\tau = f_\theta(q,\dot{q},\ddot{q})$；$\tau = \tau_{CTC} + f_\theta$；可用 LSTM/Transformer 捕时序。
 
+```mermaid
+flowchart LR
+  S["期望/实测关节状态 (q, dq, ddq)"] --> CTC["经典解析控制器 (CTC / PID)<br/>输出标称力矩 tau_CTC"]
+  S --> NN["离线训练的残差神经网络 f_theta<br/>拟合摩擦 / 柔性残差 delta_tau"]
+  CTC --> SUM["并联叠加 tau = tau_CTC + f_theta"]
+  NN --> SUM
+  SUM --> R["真机机械臂执行与反馈"]
+  R --> S
+```
+
 ## 工程实践
 
 采集多工况轨迹监督训练；注意外推安全；定期再训练。

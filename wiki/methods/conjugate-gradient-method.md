@@ -32,6 +32,14 @@ summary: "共轭梯度法：求解大型稀疏 SPD 线性系统与严格凸 QP �
 
 ## 核心思想
 
+```mermaid
+flowchart LR
+  R["残差 r_k = b - A x_k<br/>(可选预条件 M^-1 r_k)"] --> P["构造 A-共轭方向 p_k<br/>(p_i^T A p_j = 0)"]
+  P --> A["闭式最优步长<br/>alpha_k = (r_k^T r_k) / (p_k^T A p_k)"]
+  A --> X["更新解 x_{k+1} = x_k + alpha_k p_k<br/>与新残差 r_{k+1}"]
+  X -->|"至多 n 步或截断 early stop"| R
+```
+
 对 SPD 的 $A$，选搜索方向 $p_k$ 满足 $p_i^T A p_j = 0$（$i\ne j$），一维最优步长有闭式：
 
 $$\alpha_k = \frac{r_k^T r_k}{p_k^T A p_k}, \quad r_k = b - A x_k$$

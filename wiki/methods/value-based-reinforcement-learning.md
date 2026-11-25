@@ -43,6 +43,14 @@ sources:
 
 $Q(s,a)\leftarrow Q + \alpha [r + \gamma \max_{a'} Q(s',a') - Q]$；DQN 用 NN 近似 Q，经验回放与目标网络稳训练。
 
+```mermaid
+flowchart LR
+  S["当前观测状态 s"] --> Q["Q 表 / DQN 网络估计 Q(s, a)<br/>(经验回放 + 目标网络)"]
+  Q -->|"epsilon-贪心 / argmax 选离散动作"| A["执行离散动作 a -> 得 r, s'"]
+  A --> TD["TD 目标 r + gamma * max Q_target(s', a')"]
+  TD -->|"最小化 TD 误差更新 Q"| Q
+```
+
 ## 工程实践
 
 离散化动作用于机械臂格点；Double DQN 减过估计；Dueling 分解 $V,A$。

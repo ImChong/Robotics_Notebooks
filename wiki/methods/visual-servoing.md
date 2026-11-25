@@ -48,6 +48,15 @@ summary: "视觉伺服（Visual Servoing）将相机图像特征的误差直接�
 
 根据误差是在 2D 图像平面计算，还是在 3D 三维空间计算，视觉伺服分为两类：
 
+```mermaid
+flowchart LR
+  C["实时相机图像特征 s (角点/边缘/触觉图)"] --> T{"误差计算空间"}
+  T -->|"IBVS (2D 像素空间)"| IB["像素误差 s - s*<br/>经图像雅可比伪逆 L_s+ 求速度 v_c"]
+  T -->|"PBVS (3D 位姿空间)"| PB["估计相对位姿 c_T_o<br/>在 SE(3) 中求位姿误差并控末端"]
+  IB & PB --> R["高频闭环 (30-60 Hz) 驱动机械臂消除视觉误差"]
+  R --> C
+```
+
 ### 1. 基于图像的视觉伺服 (Image-Based Visual Servoing, IBVS)
 - **原理**：直接在 2D 图像平面上计算特征点（如角点、边缘、孔洞中心）的像素坐标 $(u, v)$ 与期望像素坐标 $(u^*, v^*)$ 的误差。
 - **数学核心**：需要计算**图像雅可比矩阵 (Image Jacobian / Interaction Matrix)** $\mathbf{L_s}$，它描述了相机的 3D 空间速度 $\mathbf{v_c}$ 如何引起图像特征点像素速度 $\mathbf{\dot{s}}$ 的变化：$\mathbf{\dot{s}} = \mathbf{L_s} \mathbf{v_c}$。控制律通常基于求伪逆来反推相机速度：$\mathbf{v_c} = -\lambda \mathbf{L_s}^+ (\mathbf{s} - \mathbf{s}^*)$。

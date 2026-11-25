@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, actuator, leg, linear-actuator, tesla]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-25
 original:
   - ../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md
   - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md

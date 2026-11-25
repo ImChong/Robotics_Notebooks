@@ -83,6 +83,17 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 
 ## 主流技术路线
 
+```mermaid
+flowchart LR
+  S["本体 + 历史观测 / 高程或深度图"] --> A["路线 1: Model-Based<br/>(LIP / CoM MPC + WBC)"]
+  S --> B["路线 2: 分层 / 端到端 RL<br/>(Teacher-Student + DR / AMP)"]
+  S --> C["路线 3: 生成式先验<br/>(Diffusion / Flow + RL 跟踪)"]
+  A --> P["高频率关节力矩或 PD 目标"]
+  B --> P
+  C --> P
+  P --> R["全尺寸真机闭环与复杂地形自适应"]
+```
+
 ### 1. 基于模型的控制 (Model-based Control)
 - **核心**：利用简化模型（如 单质点模型 CoM, 线性倒立摆 LIP）进行轨迹规划，配合全身控制（WBC）进行任务分解。
 - **代表作**：MIT Cheetah 系列的变体，IHMC 的双足控制。

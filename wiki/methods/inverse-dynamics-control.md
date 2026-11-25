@@ -41,6 +41,17 @@ IDC：由期望轨迹 $(q_d,\dot{q}_d,\ddot{q}_d)$ 经动力学逆解直接得�
 
 $\tau_{ff} = M(q)\ddot{q}_d + C(q,\dot{q})\dot{q} + g(q)$；$\tau = \tau_{ff} + K_p e + K_d \dot{e}$。
 
+```mermaid
+flowchart LR
+  QD["期望轨迹 (q_d, dq_d, ddq_d)"] --> RNEA["RNEA 逆动力学前馈<br/>tau_ff = M(q)ddq_d + C(q,dq)dq + g(q)"]
+  QD --> ERR["误差 e = q_d - q"]
+  ERR --> PD["轻量 PD 反馈修正 Kp*e + Kd*de"]
+  RNEA --> SUM["tau = tau_ff + tau_fb"]
+  PD --> SUM
+  SUM --> R["机械臂执行与关节传感器"]
+  R --> ERR
+```
+
 ## 工程实践
 
 离线轨迹规划 + 在线 IDC 前馈；反馈增益宜小，依赖模型精度；重力项见 [Gravity Compensation](../concepts/gravity-compensation.md)，摩擦补偿见 [Friction Compensation](../concepts/friction-compensation.md)。

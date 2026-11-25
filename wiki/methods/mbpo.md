@@ -41,6 +41,16 @@ sources:
 
 ### 流程
 
+```mermaid
+flowchart LR
+  ENV["真实环境交互"] -->|"真实转移"| RB["Replay Buffer"]
+  RB -->|"训练动力学集成模型"| MOD["学习动力学模型 f_hat(s,a)"]
+  RB -->|"采样真实起点状态 s_t"| RO["生成短期虚拟轨迹<br/>(限制 rollout 步数防累积误差)"]
+  MOD --> RO
+  RO -->|"混入虚拟转移"| SAC["SAC 更新 Actor & Critic<br/>(不穿模反传梯度)"]
+  SAC --> ENV
+```
+
 按 [senlanke 复习文章](../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md) §3.3：
 
 1. 收集真实轨迹，存入 Replay Buffer；

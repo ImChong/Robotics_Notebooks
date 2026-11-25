@@ -88,6 +88,14 @@ MBRL 的最大风险：**模型误差在 rollout 中累积**（compound error）
 
 ## 机器人场景选型建议
 
+```mermaid
+flowchart TD
+  D["是否已有高速精确动力学模型/仿真?"] -->|"是 (如 MuJoCo/并行刚体仿真)"| MF["Model-Free RL (PPO/SAC) + 域随机化<br/>大规模采样后 Sim2Real"]
+  D -->|"否 (真机样本受限/复杂接触)"| B{"主要需求"}
+  B -->|"极低样本预算 (<10K 步)"| MB["Model-Based RL (PETS / MBPO)<br/>短 rollout 复用经验"]
+  B -->|"需要显式前瞻规划"| TD["TD-MPC / Dreamer 潜空间规划"]
+```
+
 ```
 是否有精确的动力学模型？
 ├── 是（MuJoCo/刚体模拟） → Model-Free（PPO/SAC）在仿真中大量训练

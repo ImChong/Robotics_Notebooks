@@ -81,6 +81,15 @@ GitHub 上有两个都叫 **awesome-physical-ai** 的独立仓库，阅读与引
 
 ## 怎么选
 
+```mermaid
+flowchart LR
+  S["查找 Physical AI 条目"] --> N{"检索目标"}
+  N -->|"系统学习 / Safety 与 Governance<br/>Pages 分类浏览"| A["natnew/awesome-physical-ai<br/>(14 canonical 类 + 文档站)"]
+  N -->|"VLA / 3D / Jetson 边缘推理<br/>与硬件速查"| B["aichr/awesome-physical-ai<br/>(扁平技术栈 README)"]
+  A --> U["合并去重 384 条站内实体页<br/>+ 各自官方源核对"]
+  B --> U
+```
+
 - **系统学习 / 长期跟踪 / 生产视角** → **natnew**：taxonomy 与 docs 站适合按 Sim2Real、Safety、Benchmark 系统浏览。
 - **快速扫 VLA + 边缘部署 + 硬件** → **aichr**：工业模型与 Jetson/TensorRT 条目集中。
 - **不互斥：** 两清单 URL 不同，可 bookmark 两个 org；站内链接务必写全 `natnew` / `aichr` 实体页。
