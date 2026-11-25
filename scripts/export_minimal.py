@@ -780,6 +780,8 @@ def page_health(path: Path, text: str) -> tuple[int, int]:
         return glg.compute_roadmap_health(text, len(glg.extract_internal_links(text, path)))
     if section == "references":
         return glg.compute_reference_health(text, len(glg.extract_internal_links(text, path)))
+    if section == "tech-map":
+        return glg.compute_tech_map_health(text, len(glg.extract_internal_links(text, path)))
     return glg.compute_health(text, path)
 
 
@@ -804,8 +806,8 @@ def build_item(path: Path) -> dict[str, Any]:
         item["has_repo"] = True
 
     parts = path.relative_to(ROOT).parts
-    # 详情页「页面信息」/ 关联项 / 相关推荐、路线页元信息与知识地图节点的健康度小条
-    if parts[0] in ("wiki", "roadmap", "references"):
+    # 详情页「页面信息」/ 关联项 / 相关推荐、路线页元信息、参考索引与技术地图节点的健康度小条
+    if parts[0] in ("wiki", "roadmap", "references", "tech-map"):
         item["health_score"], item["health_gaps"] = page_health(path, text)
     if parts[0] == "wiki":
         if parts[1] == "entities":
@@ -846,7 +848,8 @@ def build_item(path: Path) -> dict[str, Any]:
     return item
 
 
-def collect_paths() -> List[Path]:
+def collect_paths(root: Path | None = None) -> List[Path]:
+    base = root if root is not None else ROOT
     patterns = [
         "wiki/concepts/*.md",
         "wiki/methods/*.md",
@@ -865,9 +868,13 @@ def collect_paths() -> List[Path]:
         "tech-map/research-directions/*.md",
     ]
     paths: List[Path] = []
+    seen: set[Path] = set()
     for pattern in patterns:
-        paths.extend(sorted(ROOT.glob(pattern)))
-    return [p for p in paths if p.name != "README.md"]
+        for p in sorted(base.glob(pattern)):
+            if p.name != "README.md" and p not in seen:
+                seen.add(p)
+                paths.append(p)
+    return paths
 
 
 def sort_items(items: List[Dict]) -> List[Dict]:
@@ -1185,7 +1192,11 @@ def generate_sitemap(items: List[Dict], base_url: str = BASE_URL) -> str:
         {"loc": base_url + "/hubs.html", "priority": "0.7", "changefreq": "weekly"},
     ]
 
-    detail_pages = [item for item in items if item.get("type") in ("wiki_page", "entity_page")]
+    detail_pages = [
+        item
+        for item in items
+        if item.get("type") in ("wiki_page", "entity_page", "reference_page", "tech_map_node")
+    ]
     for item in detail_pages:
         item_id = item.get("id", "")
         priority = "0.7"

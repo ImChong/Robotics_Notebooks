@@ -84,6 +84,103 @@ def validate_page_exports(
     return len(details)
 
 
+def validate_detail_graph_parity(exports_dir: Path) -> tuple[int, int]:
+    """Verify 1:1 parity and ID uniqueness between site-catalog detail_pages and link-graph nodes."""
+    catalog_path = exports_dir / "site-catalog-v1.json"
+    graph_path = exports_dir / "link-graph.json"
+    if not catalog_path.is_file():
+        raise ValueError(f"缺少 {catalog_path.name}")
+    if not graph_path.is_file():
+        raise ValueError(f"缺少 {graph_path.name}")
+
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    detail_pages = (catalog.get("pages") or {}).get("detail_pages")
+    if not isinstance(detail_pages, dict):
+        raise ValueError("site-catalog-v1.json 缺少 pages.detail_pages")
+
+    graph = json.loads(graph_path.read_text(encoding="utf-8"))
+    nodes = graph.get("nodes")
+    edges = graph.get("edges")
+    if not isinstance(nodes, list) or not isinstance(edges, list):
+        raise ValueError("link-graph.json 缺少 nodes 或 edges 列表")
+
+    seen_node_ids: set[str] = set()
+    seen_detail_ids: set[str] = set()
+    dup_node_ids: list[str] = []
+    dup_detail_ids: list[str] = []
+    missing_detail_ids: list[str] = []
+    mismatched_paths: list[str] = []
+
+    for idx, node in enumerate(nodes):
+        if not isinstance(node, dict):
+            raise ValueError(f"link-graph.json nodes[{idx}] 不是对象")
+        nid = str(node.get("id") or "").strip()
+        did = str(node.get("detail_id") or "").strip()
+        if not nid:
+            raise ValueError(f"link-graph.json nodes[{idx}] 缺少 id")
+        if not did:
+            missing_detail_ids.append(nid)
+            continue
+        if nid in seen_node_ids:
+            dup_node_ids.append(nid)
+        seen_node_ids.add(nid)
+        if did in seen_detail_ids:
+            dup_detail_ids.append(did)
+        seen_detail_ids.add(did)
+        detail_entry = detail_pages.get(did)
+        if (
+            isinstance(detail_entry, dict)
+            and detail_entry.get("path")
+            and detail_entry["path"] != nid
+        ):
+            mismatched_paths.append(f"{did}: graph={nid} vs detail={detail_entry['path']}")
+
+    if missing_detail_ids:
+        raise ValueError(f"图谱节点缺少 detail_id（示例：{missing_detail_ids[:5]}）")
+    if dup_node_ids:
+        raise ValueError(f"图谱节点存在重复 id（示例：{dup_node_ids[:5]}）")
+    if dup_detail_ids:
+        raise ValueError(f"图谱节点存在重复 detail_id（示例：{dup_detail_ids[:5]}）")
+    if mismatched_paths:
+        raise ValueError(f"图谱节点路径与详情页不一致（示例：{mismatched_paths[:5]}）")
+
+    catalog_ids = set(detail_pages.keys())
+    missing_from_graph = sorted(catalog_ids - seen_detail_ids)
+    extra_in_graph = sorted(seen_detail_ids - catalog_ids)
+    if missing_from_graph or extra_in_graph:
+        raise ValueError(
+            f"详情页与图谱节点集合不一致："
+            f"未入图={len(missing_from_graph)}（{missing_from_graph[:5]}），"
+            f"孤立图谱节点={len(extra_in_graph)}（{extra_in_graph[:5]}）"
+        )
+
+    edge_format = graph.get("edge_format")
+    node_count = len(nodes)
+    for eidx, edge in enumerate(edges):
+        if edge_format == "index" or isinstance(edge, list):
+            if (
+                not isinstance(edge, list)
+                or len(edge) != 2
+                or not all(isinstance(v, int) and 0 <= v < node_count for v in edge)
+            ):
+                raise ValueError(f"link-graph.json edges[{eidx}] 下标越界或格式非法：{edge!r}")
+        elif isinstance(edge, dict):
+            if edge.get("source") not in seen_node_ids or edge.get("target") not in seen_node_ids:
+                raise ValueError(f"link-graph.json edges[{eidx}] 端点不存在：{edge!r}")
+        else:
+            raise ValueError(f"link-graph.json edges[{eidx}] 格式非法：{edge!r}")
+
+    stats_path = exports_dir / "graph-stats.json"
+    if stats_path.is_file():
+        stats = json.loads(stats_path.read_text(encoding="utf-8"))
+        if stats.get("node_count") != node_count:
+            raise ValueError(
+                f"graph-stats.json node_count={stats.get('node_count')} 与 link-graph {node_count} 不一致"
+            )
+
+    return len(detail_pages), len(edges)
+
+
 def main() -> None:
     print("=" * 55)
     print("导出质量检查")
@@ -180,25 +277,41 @@ def main() -> None:
             check(f"docs/exports/{fname} 同步", in_sync, f"src={src_size}B dst={dst_size}B")
         )
 
-    # 5. graph-stats.json 节点数与 wiki 页面数大体一致
+    # 5. graph-stats.json 节点数与全部可访问详情页严格 1:1 一致
     gs = EXPORTS / "graph-stats.json"
     gs_data: dict | None = None
-    wiki_pages = list((REPO_ROOT / "wiki").rglob("*.md"))
-    wiki_count = len([p for p in wiki_pages if p.name != "README.md"])
     if gs.exists():
         gs_data = json.loads(gs.read_text(encoding="utf-8"))
         node_count = gs_data.get("node_count", 0)
-        ratio = node_count / max(wiki_count, 1)
-        reasonable = 0.5 <= ratio <= 1.1
+        matched = sc_data is not None and node_count == sc_count
         results.append(
             check(
-                "graph 节点数与 wiki 页面数合理",
-                reasonable,
-                f"nodes={node_count} wiki_pages={wiki_count} ratio={ratio:.2f}",
+                "graph 节点数与 detail_pages 数量一致",
+                matched,
+                f"nodes={node_count} detail_pages={sc_count}",
             )
         )
     else:
         results.append(check("graph-stats.json 存在", False, "文件缺失"))
+
+    # 5b. 全站详情页 ID 集合与图谱节点 detail_id 集合严格一致、无重复、无悬空边
+    try:
+        parity_nodes, parity_edges = validate_detail_graph_parity(EXPORTS)
+        results.append(
+            check(
+                "detail_pages 与 link-graph 节点 1:1 一致且无重复/悬空边",
+                True,
+                f"{parity_nodes} 节点 / {parity_edges} 边",
+            )
+        )
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        results.append(
+            check(
+                "detail_pages 与 link-graph 节点 1:1 一致且无重复/悬空边",
+                False,
+                str(error),
+            )
+        )
 
     # 6. graph-stats.json 中孤儿节点应为空
     if gs_data is not None:

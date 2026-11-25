@@ -677,16 +677,18 @@
   var HEALTH_ITEM_LABELS = ['摘要与来源', '阅读骨架', '原文通读'];
   var ROADMAP_HEALTH_ITEM_LABELS = ['首屏导读', '站内链接 ≥5', '阶段化结构'];
   var REFERENCE_HEALTH_ITEM_LABELS = ['摘要与来源', '选读导航', '分类覆盖与交叉链接'];
+  var TECH_MAP_HEALTH_ITEM_LABELS = ['摘要与来源', '结构图谱与导航', '站内入口 ≥3'];
   var HEALTH_GAP_STATUS = 8; // wiki 页 status 为 stub / draft：得分按 1 / 2 封顶
   // 信息框各行：「健康度 2/3」「摘要与来源（1/1）」「阅读骨架（1/1）」「原文通读（0/1）」[封顶说明]
   function healthTipLines(meta) {
     var score = Math.max(0, Math.min(3, meta.health_score));
     var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
     var isReference = meta.type === 'reference_page';
-    var lines = [(isRoadmap ? '路线健康度 ' : isReference ? '参考页健康度 ' : '健康度 ') + score + '/3'];
+    var isTechMap = meta.type === 'tech_map_node';
+    var lines = [(isRoadmap ? '路线健康度 ' : isReference ? '参考页健康度 ' : isTechMap ? '技术地图健康度 ' : '健康度 ') + score + '/3'];
     // 旧缓存数据只有得分没有缺项位：只报分数，不误报各项达标
     if (typeof meta.health_gaps !== 'number') return lines;
-    var labels = isRoadmap ? ROADMAP_HEALTH_ITEM_LABELS : isReference ? REFERENCE_HEALTH_ITEM_LABELS : HEALTH_ITEM_LABELS;
+    var labels = isRoadmap ? ROADMAP_HEALTH_ITEM_LABELS : isReference ? REFERENCE_HEALTH_ITEM_LABELS : isTechMap ? TECH_MAP_HEALTH_ITEM_LABELS : HEALTH_ITEM_LABELS;
     for (var gi = 0; gi < labels.length; gi++) {
       lines.push(labels[gi] + '（' + (meta.health_gaps & (1 << gi) ? 0 : 1) + '/1）');
     }
@@ -3771,7 +3773,9 @@
   var ROADMAP_KMAP_TYPE_COLOR = {
     concept: '#60a5fa', method: '#34d399', task: '#f472b6',
     entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
-    formalization: '#fb923c', overview: '#64748b', reference: '#64748b',
+    formalization: '#fb923c', overview: '#64748b',
+    reference: '#818cf8', reference_page: '#818cf8',
+    tech_map_node: '#a3e635',
     roadmap: '#22d3ee', roadmap_page: '#22d3ee', '': '#64748b'
   };
 
@@ -3796,11 +3800,14 @@
       if (path.indexOf(ROADMAP_KMAP_PATH_TYPE[i][0]) !== -1) return ROADMAP_KMAP_PATH_TYPE[i][1];
     }
     var sid = String(id || '');
-    if (path.indexOf('references/') !== -1 || sid.indexOf('reference-') === 0) return 'reference';
+    if (path.indexOf('references/') !== -1 || sid.indexOf('reference-') === 0) return 'reference_page';
+    if (path.indexOf('tech-map/') !== -1 || sid.indexOf('tech-node-') === 0) return 'tech_map_node';
     if (sid.indexOf('entity-') === 0) return 'entity';
     var coarse = (page && page.type) || '';
     if (coarse === 'entity_page') return 'entity';
     if (coarse === 'roadmap_page') return 'roadmap';
+    if (coarse === 'reference_page') return 'reference_page';
+    if (coarse === 'tech_map_node') return 'tech_map_node';
     return '';
   }
 
@@ -5562,9 +5569,8 @@
   }
 
   // V22 P3：详情页「关联项按社区分布」小条形图。
-  // 社区来自 exports/link-graph.json（Girvan-Newman + Louvain 二级拆分），
-  // 节点 id 即 wiki/entity 页面相对路径；roadmap/reference/tech_map 不在图谱内，
-  // 在本图中统一桶为「未分类」。
+  // 社区来自 exports/link-graph.json（按 schema/topics.json 主题派生 + 邻居投票），
+  // 节点 id 即各详情页相对路径；暂无社区划分的关联项统一桶为「未分类」。
   var _detailCommunityIndex = null;
   var _detailCommunityIndexPromise = null;
 
@@ -5736,7 +5742,8 @@
     var coarse = (page && page.type) || '';
     if (coarse === 'entity_page') return 'entity';
     if (coarse === 'roadmap_page') return 'roadmap_page';
-    if (coarse === 'reference_page') return 'reference';
+    if (coarse === 'reference_page') return 'reference_page';
+    if (coarse === 'tech_map_node') return 'tech_map_node';
     if (coarse === 'wiki_page') return 'wiki_page';
     return coarse;
   }

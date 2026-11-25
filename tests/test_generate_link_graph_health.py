@@ -70,6 +70,56 @@ def test_reference_health_does_not_count_unfinished_metadata_as_full() -> None:
     assert glg.compute_reference_health(content, 0) == (0, 15)
 
 
+def test_tech_map_health_full_signals_score_three() -> None:
+    """技术地图节点使用摘要来源 / 结构图谱 / 站内入口 ≥3 口径，不套用论文原文通读。"""
+    content = (
+        "---\ntype: tech_map_node\nstatus: complete\n"
+        "summary: MPC 模块\nsources:\n  - ../../sources/papers/mpc.md\n"
+        "---\n\n# MPC\n\n## 在全栈中的位置\n\n```mermaid\nflowchart LR\n  A-->B\n```\n\n"
+        "## 核心内容\n\n## 参考来源\n"
+    )
+    assert glg.compute_tech_map_health(content, 3) == (3, 0)
+    assert glg.compute_tech_map_health(content, 2) == (2, 4)
+    assert glg.compute_tech_map_health(content.replace("```mermaid", "```text"), 3) == (2, 2)
+    assert glg.compute_tech_map_health("# 无 frontmatter\n", 5) == (0, 7)
+
+
+def test_tech_map_health_caps_draft_and_stub() -> None:
+    base = (
+        "---\ntype: tech_map_node\nstatus: draft\n"
+        "summary: MPC 模块\nsources:\n  - ../../sources/papers/mpc.md\n"
+        "---\n\n# MPC\n\n## 在全栈中的位置\n\n```mermaid\nflowchart LR\n  A-->B\n```\n\n"
+        "## 核心内容\n\n## 参考来源\n"
+    )
+    assert glg.compute_tech_map_health(base, 3) == (2, glg.HEALTH_GAP_STATUS)
+    assert glg.compute_tech_map_health(base.replace("status: draft", "status: stub"), 3) == (
+        1,
+        glg.HEALTH_GAP_STATUS,
+    )
+
+
+def test_all_repo_reference_and_tech_map_pages_score_full() -> None:
+    """全部 references/ 与 tech-map/ 非 README 详情页均须拿满 3/3 健康度。"""
+    from export_minimal import collect_paths
+
+    targets = [
+        p
+        for p in collect_paths()
+        if p.relative_to(glg.REPO_ROOT).parts[0] in ("references", "tech-map")
+    ]
+    assert targets
+    for page in targets:
+        content = page.read_text(encoding="utf-8")
+        links = glg.extract_internal_links(content, page)
+        section = page.relative_to(glg.REPO_ROOT).parts[0]
+        if section == "references":
+            score, gaps = glg.compute_reference_health(content, len(links))
+        else:
+            score, gaps = glg.compute_tech_map_health(content, len(links))
+        rel = page.relative_to(glg.REPO_ROOT)
+        assert (score, gaps) == (3, 0), f"{rel} 健康度 {(score, gaps)} != (3, 0)"
+
+
 def _skeleton(status: str = "complete", original: str | None = None) -> str:
     """scaffold 生成的标准骨架（覆盖全部阅读骨架小节），可替换 status、追加 original。"""
     content = build_skeleton("concept", "示例").replace("status: draft", f"status: {status}")
