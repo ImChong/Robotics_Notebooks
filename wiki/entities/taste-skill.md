@@ -59,7 +59,7 @@ summary: "Taste Skill 2.5.1 以业务类型、真实素材、布局发牌与 Nod
 
 ## 核心原理
 
-| 模块 | 最新官方 README / SKILL 证据 |
+| 模块 | 截至 2026-11-22 的官方 README / SKILL 证据 |
 |---|---|
 | 业务分类 | `software`、`gaming`、`tech`、`product`、`service`、`place` |
 | Design deal | `scripts/start.mjs` 生成颜色、字体、Hero 布局方案 |
