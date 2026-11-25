@@ -164,6 +164,8 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 
 ## 关联页面
 
+- [人形机器人电气开关遥操作](../entities/paper-humanoid-electrical-switching-runtime-filter.md) — 断电实验台的目标条件 CBF-QP，呈现测量间距与名义间距及故障保持的差别。
+
 - [Whole-Body Control](./whole-body-control.md) — CBF 作为安全过滤器叠加在 WBC 之上
 - [Contact Dynamics](./contact-dynamics.md) — 接触力锥约束是 CBF 在机器人中的主要应用场景
 - [Safety Filter](./safety-filter.md) — CBF-QP 是最常见的安全过滤器实现方式

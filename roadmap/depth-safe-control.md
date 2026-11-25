@@ -147,6 +147,7 @@ flowchart LR
 - [Fail-Passive Gap](../wiki/entities/paper-fail-passive-gap.md) — ISO 13849 断电即安全 vs 双足主动平衡；外部链可评 PL，机侧反应链评不了
 - [Safe-Stop](../wiki/entities/paper-safe-stop-humanoid.md) — 急停建模为 reach-avoid，双 stoppability 估计一致才停，否则 damping fallback
 - [ResSafe](../wiki/entities/paper-ressafe.md) / [SafeWBC](../wiki/entities/paper-motion-cerebellum-safewbc.md) — 学习型 / CBF 型安全层接在策略或 WBC 输出之后
+- [人形机器人电气开关遥操作](../wiki/entities/paper-humanoid-electrical-switching-runtime-filter.md) — 感知提供场景约束、CBF-QP 检查遥操作指令；用断电台架对照截止时间和保持恢复，不能外推到带电现场。
 - [SafeFall](../wiki/entities/paper-hrl-stack-41-safefall.md) 与 [Balance Recovery](../wiki/tasks/balance-recovery.md) — 摔倒预测 + 减损策略，平时 dormant
 - [Hardware-in-the-Loop](../wiki/concepts/hardware-in-the-loop.md) / [人形测试流程 L0–L5](../wiki/concepts/humanoid-testing-workflow.md) — 上机前的逐级验证
 - **车载分层安全工程对照案例**：[panda](../wiki/entities/commaai-panda.md)（MCU 发送限制）＋ [opendbc](../wiki/entities/commaai-opendbc.md)（车型 CAN 信号与安全规则）＋ [openpilot](../wiki/entities/commaai-openpilot.md)（驾驶模型／控制进程）＋ [msgq](../wiki/entities/commaai-msgq.md)（进程消息总线）。案例仅用于借鉴架构，不等于人形硬件或安全认证
