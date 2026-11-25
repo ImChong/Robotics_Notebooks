@@ -38,6 +38,14 @@ FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）是与 reyk �
 
 **工作流：** 通过 WorkBuddy 技能把建模、脚本或插件开发任务指向 FreeCAD API 与 PySide6 工具链。
 
+```mermaid
+flowchart LR
+    Task["CAD 建模 / 脚本 / 插件开发任务"] --> Skill["WorkBuddy Skill (shanputaoye/freecad-ai-skill)"]
+    Skill --> FreeCAD["FreeCAD API (Python 脚本与几何建模)"]
+    Skill --> PySide["PySide6 Copilot 工具链"]
+    FreeCAD --> Check["小规模运行与核对 (几何 / 网格 / 边界 / 物理量)"]
+    PySide --> Check
+```
 
 **仓库映射说明：** 文章未给出该项目完整的 owner/repository URL；此处按文章中的项目名/描述与公开 GitHub 仓库匹配。引用时请以本页链接的仓库 README 为准。
 

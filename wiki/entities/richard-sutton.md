@@ -74,6 +74,16 @@ summary: "Richard Sutton：RL 奠基人、2019 图灵奖得主；incompleteideas
 - **2019 ACM Turing Award**（与 Andrew Barto）
 - UAlberta Computing Science 教授；Amii CIFAR AI Chair；Oak Lab / Openmind Research Institute 创始人
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    F["理论基石 (MDP / TD 学习 / Eligibility Traces / Tile Coding)"] --> T["时序抽象 (Options / Horde-GVF / Reward-respecting Subtasks)"]
+    F --> B["教材与课程 (Sutton & Barto / Alberta RL MOOC)"]
+    T --> M["MBRL 批判与方向 (One-Step Trap -> 时序抽象规划)"]
+    F --> S["方法论哲学 (The Bitter Lesson: Search + Learning 随算力扩展)"]
+```
+
 ## 常见误区或局限
 
 - **Bitter Lesson ≠ 否定一切领域知识**：短文强调的是 **长期可扩展的通用方法** 与 **短期人类先验** 的资源权衡，不是「仿真物理引擎无用」。

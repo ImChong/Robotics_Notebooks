@@ -42,6 +42,19 @@ summary: "Source Robotics PAROL6：开源桌面六轴机械臂；官网产品页
 | 文档站 | [source-robotics.github.io/PAROL-docs](https://source-robotics.github.io/PAROL-docs/) |
 | 作者 GitHub | [github.com/PCrnjak](https://github.com/PCrnjak) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CORE["PAROL6 (Source Robotics 开源桌面六轴机械臂)"] --> DOC["PAROL-docs 文档站 (组装 / 校准 / ROS)"]
+    CORE --> GIT["PCrnjak GitHub (源码与硬件设计)"]
+    CORE --> WEB["官网产品页 (source-robotics.com)"]
+    DOC --> ROS["ROS / ROS 2 控制与集成"]
+    GIT --> DIY["低成本社区 DIY 复现"]
+    ROS --> TASK["Manipulation 抓取与操作任务"]
+    DIY --> TASK
+```
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)

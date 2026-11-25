@@ -68,6 +68,17 @@ Falsification and formal-analysis toolkit for autonomy and cyber-physical system
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #325/384)"] --> GRP["分组: Safety & Robustness (resource)"]
+    GRP --> ENT["VerifAI (证伪与形式化分析工具包)"]
+    ENT --> SCOPE["适用对象 (自主系统与信息物理系统)"]
+    ENT --> REPO["官方仓库 (BerkeleyLearnVerify/VerifAI)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / Sim2Real / VLA)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

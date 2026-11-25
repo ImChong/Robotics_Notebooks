@@ -74,6 +74,19 @@ Standard ROS 2 recording and replay pipeline for debugging and incident analysis
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  SRC["awesome-physical-ai (natnew 269/384)"] --> GRP["Production Patterns / Reference Architectures"]
+  GRP --> ENT["rosbag2 (Standard ROS 2 Pipeline)"]
+  ENT --> REC["Recording Pipeline"]
+  REC --> REP["Replay Pipeline"]
+  REP --> DBG["Debugging & Incident Analysis"]
+  DBG --> WIKI["VLA / Sim2Real 部署对照"]
+  ENT --> LINK["官方仓库 (github.com/ros2/rosbag2)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

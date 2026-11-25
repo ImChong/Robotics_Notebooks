@@ -39,6 +39,14 @@ sim-plugin-starccm（svd-ai-lab/sim-plugin-starccm）是sim-cli 的 STAR-CCM+ �
 
 **工作流：** 代理/CLI 生成或调用宏脚本，驱动以批处理运行 STAR-CCM+，再把场景与结果检查信息汇回工作流。
 
+```mermaid
+flowchart LR
+    Agent["代理 / CLI 生成或调用 Java StarMacro"] --> SimCLI["sim-cli 主工具"]
+    Plugin["sim-plugin-starccm (外置驱动 + 技能目录 + 兼容性矩阵)"] -->|"注册驱动与技能"| SimCLI
+    SimCLI -->|"执行 starccm+ -batch"| StarCCM["主机 STAR-CCM+ (需自备软件与许可证)"]
+    StarCCM -->|"输出场景与结果检查信息"| Verify["逐项核对几何 / 网格 / 边界 / 物理量"]
+    Verify --> Agent
+```
 
 **仓库映射说明：** 文章未给出该项目完整的 owner/repository URL；此处按文章中的项目名/描述与公开 GitHub 仓库匹配。引用时请以本页链接的仓库 README 为准。
 

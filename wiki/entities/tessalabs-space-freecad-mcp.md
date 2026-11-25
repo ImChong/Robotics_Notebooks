@@ -38,6 +38,13 @@ FreeCAD MCP（Tessalabs）（tessalabs-space/freecad-mcp）是提供 FreeCAD 工
 
 **工作流：** 在 FreeCAD 中构建/扫描参数，再按需整理模型和边界条件并转交 CAE 后端。
 
+```mermaid
+flowchart LR
+    Agent["代理 / 用户需求"] --> MCP["tessalabs-space/freecad-mcp"]
+    MCP --> FreeCAD["FreeCAD 建模 / 参数扫描 / 绘图与渲染"]
+    FreeCAD --> Prep["可选前处理 (Defeaturing / 材料与边界标签)"]
+    Prep -->|"可选 CAE 交接"| Solvers["CAE 后端 (Elmer / CalculiX / OpenFOAM / DEM)"]
+```
 
 **仓库映射说明：** 文章未给出该项目完整的 owner/repository URL；此处按文章中的项目名/描述与公开 GitHub 仓库匹配。引用时请以本页链接的仓库 README 为准。
 

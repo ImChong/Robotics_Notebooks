@@ -71,6 +71,18 @@ Affordable 6/7-DOF robot arms for research and development.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 174/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["xArm"]
+    ENT --> ARM["高性价比 6/7-DOF 机械臂 (Affordable 6/7-DOF Robot Arms)"]
+    ARM --> USE["科研与原型开发 (Research & Development)"]
+    USE --> SYS["驱动集成与策略迁移 (DoF / ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["官网文档 (ufactory.cc)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

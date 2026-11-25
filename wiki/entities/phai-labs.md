@@ -36,6 +36,17 @@ PhAI Labs 是以模型和数据基础设施推动科学发现为公开定位的�
 - [JEPA-Anything](./paper-jepa-anything.md) 提出跨世界潜在预测的 OPF 结构。
 - [RSI-Anything](./paper-rsi-anything.md) 将预测模型用于候选筛选、学习和受控迭代改进，并把 JEPA-Anything 作为模型基础。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    P["PhAI Labs (DFM 科学基础模型范式)"] --> J["JEPA-Anything (跨世界潜在预测 OPF)"]
+    P --> R["RSI-Anything (候选筛选与受控迭代改进)"]
+    P --> B["ScienceBuddy (独立研究项目)"]
+    P --> I["ScienceIDE (独立研究项目)"]
+    J -.->|"作为模型基础"| R
+```
+
 ## 局限与风险
 
 - 官网项目叙述和论文的任务级实验应分开读；机构愿景不能替代系统能力评估。

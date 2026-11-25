@@ -68,6 +68,17 @@ Benchmark suite for safe learning-based control with constraints and disturbance
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #320/384)"] --> GRP["分组: Safety & Robustness (resource)"]
+    GRP --> ENT["Safe Control Gym (基准测试套件)"]
+    ENT --> BENCH["测试维度 (带约束与扰动的安全学习控制)"]
+    ENT --> REPO["官方仓库 (utiasDSL/safe-control-gym)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / Sim2Real / VLA)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

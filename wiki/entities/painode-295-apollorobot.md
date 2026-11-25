@@ -65,6 +65,16 @@ Apollo humanoid.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (aichr #295/384)"] --> GRP["分组: Robot Platforms (hardware)"]
+    GRP --> ENT["Apollo Robot (Apollo humanoid)"]
+    ENT --> DOC["官方开发入口 (apollo.auto/developer)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / VLA / Sim2Real)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

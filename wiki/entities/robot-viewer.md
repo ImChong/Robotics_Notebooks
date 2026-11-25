@@ -57,6 +57,18 @@ related:
 - **核心引擎**：Three.js (渲染), MuJoCo WASM (物理)。
 - **工具链**：Vite, JavaScript, `xacro-parser`。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    I["多格式模型输入 (URDF / Xacro / MJCF / USD)"] --> P["前端解析与宏展开 (xacro-parser)"]
+    E["CodeMirror 实时代码编辑"] --> P
+    P --> R["Three.js 3D 渲染"]
+    P --> W["MuJoCo WASM 物理仿真"]
+    R --> T["测距与碰撞/惯性参数检查"]
+    W --> T
+```
+
 ## 局限
 
 - 受限于浏览器 WASM 内存与单线程性能，不适合大规模并行仿真或高复杂度多机接触场景。

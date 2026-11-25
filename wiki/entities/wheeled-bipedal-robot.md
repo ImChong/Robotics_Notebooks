@@ -53,6 +53,15 @@ summary: "Wheeled Biped（Derek-TH-Wang/wheeled_bipedal_robot）在文中被描�
 - **README / 核查：** 入库日 `git ls-remote` 访问该仓库失败（仓库可能已更名、迁移或私有），**未能核对 README**。
 - **差异与保留：** 本节点只有文章一句话；所有细节均未核实，勿作为开源状态依据。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Review["古月居四足开源综述 (轮足机器人分组)"] --> Repo["Derek-TH-Wang/wheeled_bipedal_robot"]
+    Repo --> Concept["文章描述: 双足轮式机器人 (轮腿结合形态)"]
+    Repo --> Status["2026-11-01 核查: git ls-remote 失败, README 与细节待核实"]
+```
+
 ## 关联页面
 
 - [quadruped-robot](../entities/quadruped-robot.md)

@@ -52,6 +52,17 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 4. **动作空间与 locomotion 前导**：[DeepRL 动作空间对比（SCA 2017）](./paper-deeprl-locomotion-action-space-sca2017.md) 在平面角色上系统比较 **扭矩 / PD 目标角** 等接口，为后续 Cassie 与 sim2real 中的 **「低维目标 + 内环」** 选型提供早期实证。
 5. **开源整合**：MimicKit 将多种算法置于统一训练循环，降低复现与对照实验门槛。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Action["前导基础 (SCA 2017 动作空间对比: 扭矩 / PD 目标角)"] --> Imit["显式模仿跟踪 (DeepMimic: 参考运动 + 物理 RL)"]
+    Action --> Prior["对抗式先验与技能潜空间 (AMP / ADD / ASE)"]
+    Imit --> Sim2Real["动力学随机化 Sim2Real (ICRA 2018 -> Cassie / 四足真机)"]
+    Prior --> Sim2Real
+    Sim2Real --> Code["开源收敛与扩展 (MimicKit / ProtoMotions / PARC 合成运动迭代)"]
+```
+
 ## 常见误区或局限
 
 - **主页年份表 ≠ 引用格式**：会议全名、页码与 arXiv 版本应以 **最终 PDF** 或 DBLP 为准。

@@ -71,6 +71,18 @@ Silicon Valley Robotics. Robot ecosystem and startups.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 240/384)"] --> GRP["People to Follow (person)"]
+    GRP --> ENT["Andra Keay"]
+    ENT --> ORG["所属机构: Silicon Valley Robotics"]
+    ORG --> FOCUS["关注方向: Robot Ecosystem & Startups"]
+    FOCUS --> SYS["站内关联主题 (PAI / VLA / RL / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["公开账号 (x.com/robohub)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -71,6 +71,19 @@ Stanford HAI, World Labs. Computer vision and spatial intelligence pioneer.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  SRC["awesome-physical-ai (natnew 247/384)"] --> ROLE["People to Follow: Fei-Fei Li"]
+  ROLE --> ORG1["Stanford HAI"]
+  ROLE --> ORG2["World Labs"]
+  ORG1 --> FOCUS["Computer Vision & Spatial Intelligence"]
+  ORG2 --> FOCUS
+  FOCUS --> MAP["Physical AI 技术地图 (VLA / RL / Sim2Real)"]
+  ROLE --> LINK["官方入口 (x.com/drfeifei)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

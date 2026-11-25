@@ -68,6 +68,17 @@ Modern safe-RL benchmark suite extending Safety Gym with richer constraints and 
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #323/384)"] --> GRP["分组: Safety & Robustness (resource)"]
+    GRP --> ENT["Safety-Gymnasium (现代 Safe-RL 基准套件)"]
+    ENT --> EXT["扩展能力 (基于 Safety Gym 扩展更丰富的约束与任务)"]
+    ENT --> REPO["官方仓库 (PKU-Alignment/safety-gymnasium)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / Sim2Real / VLA)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

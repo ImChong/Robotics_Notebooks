@@ -60,6 +60,16 @@ sources:
 3. 需要 GPU 并行 RL / Mimic 时转 [cyclo_lab](./cyclo-lab.md)（Isaac Lab），本仓不替代 Lab 任务定义。
 4. 真机部署仍走 [ai_worker](./robotis-ai-worker.md) 等 ROS 2 包，勿把 MuJoCo 执行器增益直接当真机增益。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["robotis_mujoco_menagerie (FFW / OMY / OMX / OP3 / TB3 MJCF)"] --> M["MuJoCo 轻量仿真与演示"]
+    M --> L["模仿学习与 LeRobot 教程 (数据收集)"]
+    A -.->|"GPU 并行 RL / Mimic 转向"| C["cyclo_lab (Isaac Lab)"]
+    A -.->|"真机控制仍走"| R["ai_worker 等 ROS 2 真机栈"]
+```
+
 ## 局限与风险
 
 - **开源状态：已开源**（资产公开；注意逐模型许可证）。

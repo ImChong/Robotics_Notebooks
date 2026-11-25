@@ -94,6 +94,18 @@ RoboTwin 2.0 = **MLLM 写代码 + 仿真闭环纠错的双臂专家数据生成�
 - **RoboTwin-OD 资产：** 731 物体 / 147 类，标注抓取点、功能点、放置点、抓取轴及 15 条语言描述。
 - **本体感知抓取适配：** 每物体多候选操作位姿 + 偏向可达性的扰动，覆盖 Franka、Piper、UR5、ARX-X5、Aloha-AgileX；平均自动采集成功率 52.2% → 60.5%，低自由度 Piper 提升最大（2.4% → 25.1%）。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    T["任务描述与 RoboTwin-OD 资产 (731 物体 / 147 类)"] --> A["代码 Agent 生成任务与本体感知抓取代码"]
+    A --> S["SAPIEN 仿真执行与评测"]
+    S -->|"失败帧"| V["VLM 观察 Agent 定位失败 (最多 5 轮闭环修复)"]
+    V --> A
+    S -->|"成功 + 五轴域随机化"| D["大规模双臂专家轨迹与 50 任务基准"]
+    D --> P["VLA / WAM / ACT / RDT 训练与 Sim2Real 验证"]
+```
+
 ## 工程实践
 
 - **赛事协议示例：** [蚂蚁灵波具身大模型挑战赛（2026）](./robbyant-embodied-ai-challenge-2026.md)使用 Aloha-AgileX 50 任务的每任务 50 条 **clean** 数据训练 LingBot-VLA 2.0，**禁止 randomized 训练**；clean 和 randomized **各评测每任务 100 次**。该限制来自赛事规则，不等同于 RoboTwin 原论文的一般研究建议。

@@ -71,6 +71,18 @@ sources:
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 221/384)"] --> GRP["Manipulation (method)"]
+    GRP --> ENT["PerAct"]
+    ENT --> VOX["三维体素-动作 Transformer (3D Voxel-Action Transformer)"]
+    VOX --> TASK["语言条件长程操作 (Language-conditioned, Long-horizon Manipulation)"]
+    TASK --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    ENT -.->|"核对官方入口"| DOC["项目主页 (peract.github.io)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

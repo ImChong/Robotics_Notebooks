@@ -59,6 +59,18 @@ summary: "Robotics Library（RL）是自包含的 C++ 库，覆盖刚体运动�
 - 「Windows + Linux 实时内核都支持」：README 只说明可在 Linux / macOS / Windows 上运行，**未提及实时内核**；该点来自文章，未核实。
 - 仓库最近提交 2025-04-15，相对其他项目更新较慢。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    RL["Robotics Library (自包含 C++ 库, CMake)"] --> M1["运动学与动力学 (空间向量代数 / 多体系统)"]
+    RL --> M2["规划与检测 (路径规划 / 碰撞检测)"]
+    RL --> M3["系统支持 (硬件抽象 / 可视化)"]
+    M1 --> App["机械臂离线/在线规划与整机控制 (Linux / macOS / Windows)"]
+    M2 --> App
+    M3 --> App
+```
+
 ## 关联页面
 
 - [pinocchio](../entities/pinocchio.md)

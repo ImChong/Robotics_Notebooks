@@ -42,6 +42,15 @@ summary: "ROBOTIS OP3：小型人形开源平台，文档与三维模型在 eMan
 | 硬件 / 三维模型 | [OP3 hardware](https://emanual.robotis.com/docs/en/platform/op3/hardware/) |
 | 手册源码树 | [ROBOTIS-GIT/emanual/docs/en/platform/op3](https://github.com/ROBOTIS-GIT/emanual/tree/master/docs/en/platform/op3) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    D["OP3 eManual 与手册源码 (硬件 / 3D 模型 / 电气接口)"] --> P["ROBOTIS OP3 小型人形平台"]
+    P --> R["ROS / ROS 2 集成与全身关节编程"]
+    R --> E["教育课程与小型机器人比赛"]
+```
+
 ## 关联页面
 
 - [ROBOTIS 组织 hub](./robotis.md)

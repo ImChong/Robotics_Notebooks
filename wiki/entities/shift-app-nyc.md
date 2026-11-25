@@ -46,6 +46,18 @@ sources:
 | **扩展** | 媒体报道计划进入 SF/London 等；品类含 plumbing/cooking |
 | **开源** | 商业平台；数据 **不公开** |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    User["纽约住户 (预约免费保洁并授权录制)"] --> Cleaner["专业保洁员 + 统一头戴相机 (POV 录像)"]
+    Cleaner -->|"采集真实杂物环境清洁视频"| Platform["Shift 平台 (MicroAGI)"]
+    Platform -->|"自动模糊人脸/证件等 PII 匿名化"| Data["匿名化第一人称操作数据 (不公开)"]
+    Data -->|"数据授权 (用于 IL 训练)"| Labs["机器人公司与 AI 实验室"]
+    Labs -->|"数据授权收入"| Subsidy["补贴免费保洁服务成本"]
+    Subsidy --> User
+```
+
 ## 关联页面
 
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)

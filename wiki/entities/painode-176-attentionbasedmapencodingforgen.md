@@ -88,6 +88,18 @@ He et al. Attention-based exteroceptive encoder generalising perceptive locomoti
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单 DOI `10.1126/scirobotics.adv5733` 与站内 [AME-1](./paper-ame-attention-based-map-encoding.md)（*Science Robotics* eadv3604 / arXiv:2506.09588）**标题相近但 DOI 不同**，本页暂不合并，待 curator 核对是否为同一篇或 AME-2。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 176/384)"] --> GRP["Key Papers (paper)"]
+    GRP --> ENT["Attention-Based Map Encoding (Science Robotics 2025)"]
+    ENT --> ENC["基于注意力的外感受地图编码器 (Attention-based Exteroceptive Encoder)"]
+    ENC --> LOCO["跨足式平台感知运动泛化 (Generalized Perceptive Legged Locomotion)"]
+    LOCO --> REF["站内关联对照 (AME-1 / VLA / Sim2Real)"]
+    ENT -.->|"核对原文 DOI"| DOC["Science Robotics (10.1126/scirobotics.adv5733)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

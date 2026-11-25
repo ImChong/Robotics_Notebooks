@@ -43,6 +43,16 @@ summary: "Pollen Robotics Reachy2：面向具身 AI 的开源模块化移动人�
 | GitHub 组织 | [pollen-robotics（筛选 reachy2）](https://github.com/pollen-robotics?q=reachy2&type=all&language=&sort=) |
 | Hugging Face | [huggingface.co/pollen-robotics](https://huggingface.co/pollen-robotics) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    H["Reachy2 硬件平台 (仿人双臂 + 全向底盘)"] --> T["VR 遥操作与真机 SDK (GitHub pollen-robotics)"]
+    D["官方文档与仿真 (docs.pollen-robotics.com)"] --> T
+    T --> HF["模型与数据集 (Hugging Face pollen-robotics)"]
+    HF --> R["具身 AI 研究 (VLA / 模仿学习 / Loco-Manipulation)"]
+```
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)

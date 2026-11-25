@@ -57,6 +57,17 @@ summary: "RTmotion 是 Intel 创建的开源 C++ 库，实现 PLCopen 运动控�
 - **未能定位公开 GitHub 仓库**：我尝试了常见仓库路径与搜索，没有找到可访问的 RTmotion 源码仓库；一手资料只有 Intel ECI 官方文档，因此**许可与最近提交均未核实**，本页不编造仓库地址。
 - 文档显示 ECI 另有 `plcopen-ruckig-dev` 包，即 RTmotion 体系可与 Ruckig 配合；该关系来自官方文档的包列表。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    E["Intel ECI 分发包 (plcopen-motion / servo / ruckig / databus)"] --> R["RTmotion C++ 库 (PLCopen Part 1 & 2)"]
+    R --> I["集成 IgH EtherCAT Master 与 SoftPLC"]
+    R --> X["机器视觉与 ROS 2 扩展"]
+    I --> A["离散自动化设备 / AMR / 机械臂"]
+    X --> A
+```
+
 ## 关联页面
 
 - [igh-ethercat-master](../entities/igh-ethercat-master.md)

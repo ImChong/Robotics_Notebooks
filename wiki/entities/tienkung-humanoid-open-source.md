@@ -65,6 +65,17 @@ summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、
 
 官网开源页并列发布：Lite/Pro **URDF**、**STEP 结构图纸**、用户手册、SDK 与基于 ROS 的软件系统（`body_control`、`robot_description`、`usb_sbus` 等）。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    Hub["分发入口 (官网开源页 / 云端文档中心 / TienKung_Docs)"] --> Assets["Lite (约 20 DoF) / Pro (约 42 DoF) 资料 (URDF / STEP / 手册)"]
+    Assets --> Sim["仿真与 ROS 控制 (TienKung_URDF + TienKung_ROS)"]
+    Assets --> RL["RL 运控训练 (TienKung-Lab: Isaac Sim 4.5 / Lab 2.1)"]
+    Sim --> Deploy["真机部署 (SDK + Deploy_Tienkung / 天工 3.0 xhumanoid_sdk)"]
+    RL --> Deploy
+```
+
 ## 工程实践
 
 1. 先读 [文档中心](https://opensource.x-humanoid-cloud.com/plugin.php?id=zhanmishu_doc:index) 或 `TienKung_Docs` 对应 Lite/Pro PDF，再下载 URDF/STEP。

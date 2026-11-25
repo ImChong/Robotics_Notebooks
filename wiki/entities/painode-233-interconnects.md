@@ -71,6 +71,18 @@ Nathan Lambert. Technical deep dives on AI from an actual model trainer.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 233/384)"] --> GRP["Newsletters & Blogs (community)"]
+    GRP --> ENT["Interconnects"]
+    ENT --> AUTH["作者: Nathan Lambert"]
+    AUTH --> COV["一线模型训练者视角的 AI 技术深析 (Technical Deep Dives from a Model Trainer)"]
+    COV --> SYS["站内关联主题 (ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["官网 (interconnects.ai)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

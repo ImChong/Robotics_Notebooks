@@ -74,6 +74,18 @@ LLM/VLM applications in robotics.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  SRC["awesome-physical-ai (natnew 278/384)"] --> GRP["Related Awesome Lists"]
+  GRP --> ENT["Awesome LLM Robotics"]
+  LLM["LLM / VLM"] --> ROB["Robotics Applications"]
+  ENT --> ROB
+  ROB --> MAP["Physical AI 技术地图 (VLA / WM / Sim2Real)"]
+  ENT --> LINK["官方仓库 (GT-RIPL/Awesome-LLM-Robotics)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

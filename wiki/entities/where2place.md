@@ -50,7 +50,14 @@ summary: "Where2Place：LightNav-ER 八项评测之一；与可通行点 / 落�
 | **出处** | LightNav-ER 评测套件 |
 | **开源** | **待核实** |
 
+## 机制与架构图
 
+```mermaid
+flowchart LR
+    Bench["Where2Place 基准 (可放置 / 可通行空间推理)"] --> Suite["LightNav-ER 八项认知评测"]
+    Suite --> CoT["连接 ER 中期训练与 LightNav Point CoT 可通行点监督"]
+    CoT --> Scope["评测边界: 认知 affordance 推理分不等同最终放置成功率"]
+```
 
 ## 结论
 

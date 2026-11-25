@@ -44,6 +44,15 @@ summary: "TurtleBot3：ROBOTIS 与社区推动的 ROS 教育轮式移动平台�
 | eManual | [TurtleBot3 overview](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/) |
 | GitHub | [ROBOTIS-GIT/turtlebot3](https://github.com/ROBOTIS-GIT/turtlebot3) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Docs["官方入口 (TurtleBot3 eManual + ROBOTIS-GIT/turtlebot3)"] --> HW["硬件变体 (Burger / Waffle / Waffle Pi)"]
+    HW --> Stack["底层与中间件 (Dynamixel SDK + ROS 2)"]
+    Stack --> Tasks["典型任务与仿真 (SLAM 建图导航 / 移动操作 / MuJoCo Menagerie)"]
+```
+
 ## 关联页面
 
 - [ROBOTIS 组织 hub](./robotis.md)

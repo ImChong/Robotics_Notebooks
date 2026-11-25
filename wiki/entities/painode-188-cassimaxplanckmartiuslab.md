@@ -89,6 +89,19 @@ Self-supervised adversarial imitation of unlabeled mixed motions for versatile q
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 188/384)"] --> GRP["Locomotion (paper)"]
+    GRP --> ENT["CASSI (Max Planck / Martius Lab, ICRA 2023)"]
+    DATA["无标注混合运动数据 (Unlabeled Mixed Motions)"] --> IMIT["自监督对抗模仿学习 (Self-supervised Adversarial Imitation)"]
+    ENT --> IMIT
+    IMIT --> CTRL["通用四足技能控制 (Versatile Quadruped Skill Control)"]
+    CTRL --> SYS["站内关联主题 (Locomotion / Sim2Real)"]
+    ENT -.->|"核对官方仓库"| REPO["GitHub (martius-lab/cassi)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

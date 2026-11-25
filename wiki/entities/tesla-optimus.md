@@ -49,6 +49,16 @@ sources:
 | **开源** | **未开源** 整机栈与数据集 |
 | **演示** | 工厂/活动演示频繁；量产能力仍行业争议 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Teleop["VR + 外骨骼遥操作员 (报道约 $50/h)"] -->|"人类动作示范"| Train["策略训练 (IL 模仿学习 / 长期 VLA 目标)"]
+    Fleet["特斯拉车队多相机 (FSD 视觉数据)"] -->|"附带行人行为统计"| Train
+    Factory["工厂与演示场景反馈"] --> Train
+    Train --> Optimus["Tesla Optimus 通用人形机器人 (整机栈与数据集未开源)"]
+```
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)

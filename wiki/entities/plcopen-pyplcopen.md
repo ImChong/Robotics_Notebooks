@@ -60,6 +60,19 @@ summary: "plcopen（PyPI 名 pyplcopen）是现代 C++17 header-only 的 PLCopen
 - **EtherCAT 尚未完成**：README 状态表写 EtherCAT「🔴 未开工」、是最大剩余软件块；文章把它列为「EtherCAT 上位机」适用场景，目前只能与外部 EtherCAT 主站搭配。
 - 截至 2026-11-02 核查，README 标明正式版为 v0.21.0（PyPI 页面显示 0.21.0）；项目尚处 0.x 阶段，文章未提成熟度。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    ST["IEC 61131-3 ST 编译器"] --> VM["确定性字节码 VM"]
+    PY["Python 仿真门面 (pyplcopen)"] --> K["C++17 Header-Only 运动控制内核"]
+    VM --> K
+    K --> K1["时间最优 OTG 与前瞻规划"]
+    K --> K2["轴与组状态机 / PLCopen 功能块"]
+    K1 --> BUS["搭配外部 EtherCAT 主站 (仓内 EtherCAT 未开工)"]
+    K2 --> BUS
+```
+
 ## 关联页面
 
 - [ethercat-protocol](../concepts/ethercat-protocol.md)

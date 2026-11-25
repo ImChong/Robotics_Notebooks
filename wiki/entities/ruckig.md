@@ -57,6 +57,17 @@ summary: "Ruckig 实时生成从任意初始状态到目标状态（位置、速
 - **中间路径点不是实时的**：README 称社区版带中间路点时会切换到**云 API（非实时）**；要在自己硬件上实时计算需联系作者购买 Ruckig Pro。文章「支持中间路径点 + 硬实时友好」对社区版并不成立。
 - README 提到 Pro 版有 `interrupt_calculation_duration`（微秒）等实时保证接口；「微秒级计算」的具体数字本次未复现。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    In["初始与目标状态 (位置/速度/加速度) + 速度/加速度/Jerk 约束"] --> Core["Ruckig 在线轨迹生成核心 (C++ / Python)"]
+    Core -->|"State-to-State (MIT 社区版)"| RT["本地实时时间最优轨迹与在线重规划"]
+    Core -->|"含中间路径点"| WP["社区版走云 API (非实时) / Pro 版本地实时"]
+    RT --> Out["对接 ros2_control / MoveIt 2 执行"]
+    WP --> Out
+```
+
 ## 关联页面
 
 - [trajectory-optimization](../methods/trajectory-optimization.md)

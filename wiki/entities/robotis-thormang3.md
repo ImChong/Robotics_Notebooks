@@ -37,6 +37,15 @@ summary: "ROBOTIS THORMANG3：全尺寸人形开源平台，文档与资源在 e
 | eManual | [THORMANG3 introduction](https://emanual.robotis.com/docs/en/platform/thormang3/introduction/) |
 | 手册源码树 | [ROBOTIS-GIT/emanual/docs/en/platform/thormang3](https://github.com/ROBOTIS-GIT/emanual/tree/master/docs/en/platform/thormang3) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    D["THORMANG3 eManual 与手册源码 (硬件/电气/运动调试)"] --> P["ROBOTIS THORMANG3 全尺寸人形平台"]
+    P --> R["ROS 接口与对齐发行版环境"]
+    R --> S["全尺寸人形仿真与真机部署"]
+```
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)

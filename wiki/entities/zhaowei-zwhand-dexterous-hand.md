@@ -51,6 +51,16 @@ summary: "兆威机电从微型传动系统（小模数齿轮、微型减速器�
 
 - 未访问企业官网或其他来源，文中数字均为作者表述，未核实。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Base["兆威机电微型传动底座 (小模数齿轮 / 微型减速器 / 精密注塑)"] --> Route["ZWHAND 短传动链路线 (驱动单元放进指关节: LM06 / DM17 / DM20)"]
+    Tujian["途见科技投资合作 (可拉伸多模态电子皮肤)"] -->|"补足触觉感知"| Hand["整手集成 (微型电机 + 减速器 + 力觉传感器 + 控制模块)"]
+    Route --> Hand
+    Hand --> Tradeoff["工程取舍: 响应快/损失小/紧凑 vs 手指体积/散热/维修挑战"]
+```
+
 ## 关联页面
 
 - [humanoid-hardware-101-linear-transmission-bearings](../overview/humanoid-hardware-101-linear-transmission-bearings.md)

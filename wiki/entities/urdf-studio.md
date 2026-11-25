@@ -54,6 +54,18 @@ related:
 - **3D 渲染**：**React Three Fiber** (R3F)。
 - **状态管理**：Zustand, Tailwind CSS。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Inputs["上游输入 (自然语言 AI 建模 / step2urdf / BotWorld 广场)"] --> Studio["URDF-Studio Web 工作站 (React 19 + R3F + Zustand)"]
+    Studio --> Skel["Skeleton 模式 (运动树与关节层级)"]
+    Skel --> Detail["Detail 模式 (碰撞体 / 视觉 / 惯性张量 / 网格)"]
+    Detail --> HW["Hardware 模式 (执行器电机元数据 + 桥接多机组装)"]
+    HW --> SimOut["仿真描述导出 (URDF / MJCF / USD / SDF / Xacro)"]
+    HW --> BomOut["硬件采购 BOM 导出 (CSV / PDF)"]
+```
+
 ## 关联页面
 
 - [robot-viewer](robot-viewer.md) (模型快速预览)

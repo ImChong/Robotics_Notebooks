@@ -45,6 +45,14 @@ summary: "Vast.ai 是 P2P GPU 租赁市场：主机出租闲置算力，用户�
 - **模板**：数百 Docker 模板（市场资料）
 - **最佳实践**：定期 `torch.save` / `rsl_rl` checkpoint；避开无 reliability 过滤的极低价主机
 
+```mermaid
+flowchart LR
+    Filter["筛选主机 ($/hr / VRAM / DLPerf / reliability / 上传带宽)"] --> Market["Vast.ai P2P 竞价市场租卡 (按秒/小时计费)"]
+    Market --> Docker["Docker 模板运行 (RL 训练 / 渲染 / 超参 sweep / PPF 求解)"]
+    Docker --> Ckpt["定期保存 Checkpoint (torch.save / rsl_rl)"]
+    Ckpt -->|"应对无 SLA 中断"| Docker
+```
+
 ## 常见误区或局限
 
 - **生产 API 不推荐**：延迟与可用性不可控。

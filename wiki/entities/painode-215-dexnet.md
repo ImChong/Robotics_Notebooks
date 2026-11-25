@@ -71,6 +71,18 @@ Datasets and models for analytic and learned robust grasping.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 215/384)"] --> GRP["Manipulation (method)"]
+    GRP --> ENT["Dex-Net"]
+    ENT --> DS["抓取数据集与模型体系 (Datasets & Models)"]
+    DS --> GRASP["解析与学习鲁棒抓取 (Analytic & Learned Robust Grasping)"]
+    GRASP --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    ENT -.->|"核对官方入口"| DOC["项目主页 (berkeleyautomation.github.io/dex-net)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

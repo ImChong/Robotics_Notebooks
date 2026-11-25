@@ -38,6 +38,15 @@ Agentic CAE（wogokoro/Agentic-CAE）是Agentic Mechanical Engineering 集合中
 
 **工作流：** 由代理推进几何/网格准备、物理设置、求解器调用与结果摘要；可作为多步骤工程助手架构参考。
 
+```mermaid
+flowchart LR
+    Input["CAE 工程任务"] --> Mesh["1. 几何与网格准备"]
+    Mesh --> Setup["2. FEA / CFD 物理与边界设置"]
+    Setup --> Solve["3. 求解器调用与运行"]
+    Solve --> Interp["4. 结果摘要与解释"]
+    Interp --> Check["人工工程核对 (几何 / 网格 / 边界 / 求解状态 / 物理量, 非自动签核)"]
+```
+
 ## 工程实践
 
 1. 从目标问题识别所需的 Skill、MCP、CLI 或软件接口，不把指导文件当成求解器。

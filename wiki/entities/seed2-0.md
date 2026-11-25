@@ -49,7 +49,15 @@ summary: "Seed2.0：LightNav 引擎用 Seed2.0 生成并验证导航指令（模
 | **出处** | ByteDance Seed 2026 |
 | **开源** | **闭源/API** |
 
+## 机制与架构图
 
+```mermaid
+flowchart LR
+    Input["模板 / 视频输入"] --> Seed["Seed2.0 VLM (ByteDance Seed 闭源 API)"]
+    Seed -->|"生成候选导航指令"| Filter["语义筛选"]
+    Filter --> Verify["终点画面验证"]
+    Verify -->|"输出已验证 VLN / ER 指令"| Pipeline["LightNav / LightParkour (Real2Sim2Real 管线)"]
+```
 
 ## 结论
 

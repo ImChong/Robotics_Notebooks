@@ -71,6 +71,18 @@ Keypoint-based pick-and-place architecture for data-efficient tabletop manipulat
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 225/384)"] --> GRP["Manipulation (method)"]
+    GRP --> ENT["Transporter Networks"]
+    ENT --> KP["基于关键点的拾取-放置架构 (Keypoint-based Pick-and-Place Architecture)"]
+    KP --> EFF["高样本效率桌面操作 (Data-efficient Tabletop Manipulation)"]
+    EFF --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    ENT -.->|"核对官方入口"| DOC["项目主页 (transporternets.github.io)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
