@@ -97,6 +97,17 @@ original:
 - **把图形学虚拟角色成果等同于可直接真机部署：** 本组早年顶会工作（如 ASE、PHC、MoConVQ、TeamPlay）针对 MuJoCo/IsaacGym 仿真角色设计，缺足端摩擦与电机执行器延迟适配。
 - **算力与数据瓶颈高度分化：** 如 SONIC 级大规模通用跟踪需数十至百卡级别 GPU 训练预算，且在不连续姿态恢复上往往弱于无监督探索基座。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Mocap["人类动捕 / 视频语料 (SMPL / AMASS)"] --> Filter["物理可行重定向与滤波清洗"]
+    Filter --> Cond["多模态目标条件 (参考帧 / 关键点 / 掩码状态 / 遥操作流 / HOI)"]
+    Cond --> Train["监督式 RL + 特权教师蒸馏 (DAgger / Masked Inpainting / VQ 技能词表)"]
+    Train --> Sim["物理仿真里程碑: ASE / CALM / CASE / PHC / MoConVQ / InterMimic / MaskedMimic"]
+    Train --> Real["真机全身跟踪与遥操作: SONIC / OpenTrack / AMS / TWIST / TWIST2 / CLONE / HOVER"]
+```
+
 ## 关联页面
 
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)

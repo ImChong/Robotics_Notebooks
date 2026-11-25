@@ -33,6 +33,24 @@ sources:
 | SayPlan | [paper-sayplan-llm-scene-graph-planning](../entities/paper-sayplan-llm-scene-graph-planning.md) | 从大型场景图检索任务子图并用符号约束检查计划。 |
 | RoboMemory | [paper-robomemory-multi-type-embodied-memory](../entities/paper-robomemory-multi-type-embodied-memory.md) | 并行维护时间/空间/语义/任务经历供规划与执行调用。 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Core["上下文主导型 WM (维护可查询 World Proxy)"]
+    SceneGraph["三维场景图构建与语义查询"]
+    MemoryPlan["任务子图检索与多类型记忆"]
+
+    Core --> SceneGraph
+    Core --> MemoryPlan
+
+    SceneGraph --> SG1["Hydra: 实时分层三维场景图 (对象 / 房间 / 建筑)"]
+    SceneGraph --> SG2["ConceptGraphs: VLM 语义融入三维对象图 + 开放词汇查询"]
+    MemoryPlan --> MP1["SayPlan: 检索任务子图 + 符号约束检查计划"]
+    MemoryPlan --> MP2["HoloAgent-0: 时空记忆连接技能系统与失败恢复"]
+    MemoryPlan --> MP3["RoboMemory: 并行时间 / 空间 / 语义 / 任务经历"]
+```
+
 ## 关联页面
 
 - [六路线技术地图](./embodied-wm-six-routes-technology-map.md)

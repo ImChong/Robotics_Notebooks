@@ -108,6 +108,35 @@ related:
 | 国内行业四足 | DEEP Robotics **绝影** 系列 | 电力、应急、测绘等场景常见 |
 | 开发者生态 | 小米 **CyberDog** 等 | 偏品牌与开发者社区，迭代快 |
 
+```mermaid
+flowchart TD
+    ROOT["市面知名商业机器人平台与产业生态纵览"]
+    HUM["人形整机平台"]
+    QUAD["四足与腿足平台"]
+    UP["非整机上游资产与核心部件"]
+
+    NA["北美与全球化 (Atlas / Digit / Figure 02 / 1X / Optimus / Apollo / Phoenix)"]
+    CN["中国及亚太 (Unitree H1-G1 / Fourier GR-1 / UBTECH Walker / LimX / Booster)"]
+    Q1["工业与科研四足 (Spot / ANYmal / Go2-B2 / DEEP 绝影 / CyberDog)"]
+    DATA["运动数据与光学动捕 (MotionCode / 青瞳视觉 CHINGMU)"]
+    ACT["关节动力与灵巧手 OEM (舞肌科技 Wuji Hand / Kyber Labs / RLWRLD All Hands Up)"]
+    CHK["选型与复现核查 (可采购性 / SDK 开放度 / 产学研谱系 / 硬件对比)"]
+
+    ROOT --> HUM
+    ROOT --> QUAD
+    ROOT --> UP
+    HUM --> NA
+    HUM --> CN
+    QUAD --> Q1
+    UP --> DATA
+    UP --> ACT
+    NA --> CHK
+    CN --> CHK
+    Q1 --> CHK
+    DATA --> CHK
+    ACT --> CHK
+```
+
 ## 工程实践：选型与复现核查口径
 
 1. **先分「可采购平台 / 公开 SDK / 闭源服务」**：例如 Agility Robotics（Digit）聚焦 B2B 客户驻场 CAP/RaaS 与工业安全工作站验收，现役商业栈全闭源；科研团队若需开放硬件或可复现 RL 入口，应转向 [Unitree G1](../entities/unitree-g1.md) 或 [开源人形硬件](../entities/open-source-humanoid-hardware.md)。

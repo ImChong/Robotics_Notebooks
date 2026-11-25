@@ -316,6 +316,21 @@ sources:
 - 清单里混有非 arXiv 链接（IEEE / ResearchGate），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
 - 上游清单仍在更新，本页是 2026-09-18 的快照；最新条目以上游仓库为准。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    ROOT["AwesomeSim2Real (139 篇 Sim2Real RL 清单)"] --> MDP["MDP 四要素技法分组"]
+    ROOT --> ENV["综述 · 仿真环境与基准"]
+    MDP --> OBS["Observation (域适配 · 域随机化 · 基础模型 · 传感器融合)"]
+    MDP --> ACT["Action (动作延迟 · 尺度 · 不确定性 · 基础模型)"]
+    MDP --> TRN["Transition (域适配 · 域随机化 · Grounding · LLM 增强)"]
+    MDP --> RWD["Reward (LLM 奖励设计 · 奖励塑形)"]
+    ENV --> SUR["Survey Papers (7 篇综述)"]
+    ENV --> ROB["Robotics Environments & Benchmarks (Humanoid-Gym · Isaac/MuJoCo 等)"]
+    ENV --> OTH["Transportation · Recommender · Other Simulators"]
+```
+
 ## 关联页面
 
 - [AwesomeSim2Real（列表实体）](../entities/awesome-sim2real.md)

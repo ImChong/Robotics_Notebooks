@@ -36,6 +36,16 @@ sources:
 | EmbodiedGen V2 | [../entities/paper-embodiedgen-v2-sim-ready-world-engine](../entities/paper-embodiedgen-v2-sim-ready-world-engine.md) | 任务驱动可仿真 3D 世界引擎 |
 | 4D-WAM | [../entities/paper-4d-wam](../entities/paper-4d-wam.md) | 轨迹场 motion/destination alignment；推理图不改 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Core["RGB 之外引入 3D/4D 几何与可仿真世界"]
+    Core --> L1["推理期联合预测多模态几何: RynnWorld-4D (同步预测 RGB / 深度 / 光流 + Policy 头)"]
+    Core --> L2["训练期 4D 监督 + 推理轻量: MECo-WAM (训练 4D 专家/推理移除), 4D-WAM (轨迹场对齐)"]
+    Core --> L3["可仿真 3D 世界引擎: EmbodiedGen V2 (任务驱动生成 sim-ready 环境)"]
+```
+
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)

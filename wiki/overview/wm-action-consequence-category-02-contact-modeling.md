@@ -34,6 +34,16 @@ sources:
 | Current as Touch | [../entities/paper-current-as-touch-proprioceptive-contact](../entities/paper-current-as-touch-proprioceptive-contact.md) | 电机电流/关节状态预测柔顺参考位置 |
 | Deform360 | [../entities/paper-deform360-deformable-visuotactile-dataset](../entities/paper-deform360-deformable-visuotactile-dataset.md) | 198 类可变形物体大规模视触觉数据集 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Data["数据底座: Deform360 (198 类可变形物体视触觉数据)"] --> Policy["接触状态进入状态转移与策略"]
+    Policy --> M1["VT-WAM: 视触觉形变与动作联合流匹配 + 接触门控"]
+    Policy --> M2["TACO: 识别-想象-标注闭环 -> 失败片段转 VLA 后训练"]
+    Policy --> M3["Current as Touch: 电机电流/关节状态预测柔顺参考位置"]
+```
+
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)

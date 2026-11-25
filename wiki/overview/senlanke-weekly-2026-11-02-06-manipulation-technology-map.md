@@ -136,6 +136,21 @@ senlanke 具身运控lab 11-02–11-06 一周 Manipulation论文周报（23 篇�
 |---|----------|-------|------|
 | 01 | [VREgo：使用消费级 VR 头显采集第一视角示范并学习机器人操作](../entities/paper-vrego.md) | [2611.07272](https://arxiv.org/abs/2611.07272) | 新建 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["senlanke 11-02–11-06 Manipulation 周报 (23 篇: 新建 11 / 复用 12)"]
+    Hub --> C1["VLA 与效率优化 (4 篇): SLA, OopsieRecover, 失败探针, T3R"]
+    Hub --> C2["WAM 与世界模型 (5 篇): GPWM, Spatial-UMI-Dream, La-JEPA, RoboImagine, WISE"]
+    Hub --> C3["RL 与后训练 (4 篇): GSBR, 潜在噪声桥接, 潜在 RL 先验, D&A"]
+    Hub --> C4["模仿与数据增强 (2 篇): GUILD, MOMASPLAT"]
+    Hub --> C5["特定场景与规划 (3 篇): 双臂桌面重排, TactileLab, DLO 关键点 RL"]
+    Hub --> C6["人形上半身交叉 (3 篇): HITCH, CRISP, Pixel-UMI"]
+    Hub --> C7["长程系统与 VR 采集 (2 篇): Pixel, VREgo"]
+    C6 -.->|"同 arXiv 复用节点"| Cross["人形/四足周报交叉 (HITCH, CRISP)"]
+```
+
 ## 关联页面
 
 - [人形 / 四足 周报索引（同一周）](./senlanke-weekly-2026-11-02-06-humanoid-quadruped-technology-map.md)

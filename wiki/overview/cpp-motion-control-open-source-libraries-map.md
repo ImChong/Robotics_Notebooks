@@ -70,6 +70,17 @@ summary: "Qt历险记 C/C++ 运动控制开源库清单的阅读坐标：14 个�
 | ROS2 机械臂项目 | MoveIt2 + ros2_control + Ruckig | 一致；ros2_control 为 Apache-2.0 |
 | 步进电机单片机 | FastAccelStepper | S 型加减速、无浮点两点未核对 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["C/C++ 运动控制开源库 (14 项一手核对)"] --> Traj["轨迹规划库: Ruckig (MIT) / pyplcopen (Apache-2.0) / FastAccelStepper (MIT)"]
+    Root --> Dyn["动力学与整机控制: Pinocchio (BSD-2) / Crocoddyl (BSD-3) / Robotics Library (BSD-2) / Control Toolbox (BSD-2)"]
+    Root --> Bus["工业总线与控制栈: SOEM (GPLv3+商业双许可) / IgH EtherCAT (GPL v2) / SimpleFOC (MIT) / RTmotion (待核实)"]
+    Root --> ROS["ROS / ROS 2 运动控制栈: ros2_control (Apache-2.0) / MoveIt 2 (BSD-3) / OMPL (BSD)"]
+    Traj -.-> Note1["注意: Ruckig 带中间路点实时需 Pro; pyplcopen EtherCAT 未开工"]
+```
+
 ## 关联页面
 
 - [全身控制](../concepts/whole-body-control.md)

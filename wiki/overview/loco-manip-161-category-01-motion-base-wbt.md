@@ -93,6 +93,18 @@ sources:
 - 论文间设定（机型、数据、评测）不统一，条目之间不宜直接比较数值。
 - BeyondMimic 自述局限：状态估计误差会传入生成轨迹，预测视野仅 0.64 s，不足以长程规划。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    SRC["上游参考动作与重定向 (Retargeting · OmniRetarget · Make Tracking Easy)"] --> TRN["跟踪策略训练与扩散代表 (以 BeyondMimic 为例)"]
+    TRN --> MDP["锚点相对紧凑跟踪 MDP (共享 PPO + armature 建模 + 自适应采样)"]
+    MDP --> DIFF["蒸馏潜空间扩散模型 + 测试时 guidance (摇杆/航点)"]
+    SRC --> UNI["通用 / 统一全身跟踪与遥操作家族"]
+    UNI --> EX["SONIC · HOVER · GMT · BFM-Zero · Any2Any · Any2Track · TWIST/TWIST2 · OmniH2O"]
+    DIFF & EX --> BASE["共同身体底座 → 支撑上层 Loco-Manip (VLA / WM / 任务规划)"]
+```
+
 ## 关联页面
 
 - [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)

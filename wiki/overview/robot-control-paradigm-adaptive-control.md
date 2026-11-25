@@ -43,6 +43,19 @@ sources:
 
 MRAC 用自适应律调节控制器使输出逼近参考模型；A-CTC 在线更新 $M,C,g$ 等参数；RLS 递推最小化预测误差更新参数向量。
 
+```mermaid
+flowchart LR
+    PE["持续激励轨迹与传感器误差"] --> ID["在线参数辨识与自适应律"]
+    ID --> MRAC["MRAC (跟踪参考模型动态)"]
+    ID --> ACTC["A-CTC (在线更新 M/C/g 参数)"]
+    ID --> RLS["RLS (递推最小二乘更新参数向量)"]
+    MRAC --> Ctrl["修正控制律与前馈通道"]
+    ACTC --> Ctrl
+    RLS --> Ctrl
+    Ctrl --> Plant["变负载 / 时变摩擦被控对象"]
+    Plant --> PE
+```
+
 ## 代表性算法
 
 | 算法 | 节点 |

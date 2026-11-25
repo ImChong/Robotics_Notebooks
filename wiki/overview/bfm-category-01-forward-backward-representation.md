@@ -85,6 +85,20 @@ original:
 - **线性 MDP 假设在强非线性多接触下存在近似瓶颈：** FB 分解假定转移占用率可用双网络低秩内积准确近似，碰撞与脚滑频繁的场景下跟踪精度常略逊专用监督跟踪器。
 - **早期 FB 算法偏理想化仿真环境：** 本组早年基础理论（05/06）无现成人形真机迁移方案，选型落地应直接对照 BFM-Zero、MetaMotivo 与 UFO 框架。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Data["无外在奖励转移元组 (s, a, s')"] --> F["前向嵌入 F (FEN: 期望折扣占用)"]
+    Data --> B["后向编码 B (BEN: 状态/奖励投影)"]
+    Task["新任务奖励 / 参考轨迹 / 单点姿态"] --> B
+    B --> Z["内积推断潜任务向量 z"]
+    F --> Policy["条件策略 pi(a | s, z) 零样本执行"]
+    Z --> Policy
+    AMP["风格判别器 (AMP) + 非对称特权 Critic"] --> Policy
+    Policy --> Works["代表工作: BFM-Zero / MetaMotivo / FB-AW / Fast Imitation / Learning One Rep / Successor States"]
+```
+
 ## 关联页面
 
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)

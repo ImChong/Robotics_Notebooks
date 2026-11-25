@@ -49,6 +49,17 @@ sources:
 | 感控底座 | AGILE | 眼–身接口、视觉驱动控制调整 |
 | 学术脉络 | [BFM 41 篇](./bfm-41-papers-technology-map.md) | awesome-bfm-papers 问题分类 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    GO2["语义–动作层: GO-2 (规划到可执行动作序列)"] --> BFM2["运控底座: BFM-2 (运动小脑 / 动作插值与肌肉记忆闭环)"]
+    GO2 --> AGILE["感控底座: AGILE (眼–身接口 / 视觉驱动控制调整)"]
+    Acad["学术脉络: BFM 41 篇 (awesome-bfm-papers 问题分类)"] --> BFM2
+    BFM2 --> Exec["身体层稳定动作过渡与闭环执行"]
+    AGILE --> Exec
+```
+
 ## 关联页面
 
 - [运动小脑 64 篇地图](./humanoid-motion-cerebellum-technology-map.md)

@@ -45,6 +45,20 @@ sources:
 | 144 | 学习人对人的实时全身远程操作。 | [paper-loco-manip-161-144-n144](../entities/paper-loco-manip-161-144-n144.md) |
 | 145 | 手眼自主配送 | [paper-loco-manip-161-145-n145](../entities/paper-loco-manip-161-126-n126.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    BASE["本体平台与全身控制框架 (ToddlerBot / AMO / TWIST2 / Gallant)"]
+    SENS["感知配置与部署适配 (主动立体相机 ACT / 实时地形重建步态感知 / 手眼自主配送)"]
+    TELE["遥操作与示范采集系统 (Open-TeleVision / Mobile-TeleVision / DemoHLM / 人对人全身遥操作)"]
+    OUT["人形 Loco-Manip 真实部署系统"]
+
+    BASE --> OUT
+    SENS --> OUT
+    TELE --> OUT
+```
+
 ## 关联页面
 
 - [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)

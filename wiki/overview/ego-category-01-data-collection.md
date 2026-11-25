@@ -87,6 +87,16 @@ original:
 
 - **手–爪形态差异与无动作真值**：人手自由度远高于二指夹爪，且纯视频缺乏关节力矩与本体状态，通常需配合少量真机遥操作做 mid-training 对齐。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Cap["分布式人类第一视角采集 (头戴/胸挂相机 + 传感)"] --> Papers["代表工作与采集方案: AoE / EgoLive / Ego-OSCAR / Pico 4 Ultra"]
+    Papers --> Meta["保留视点内参、头戴高度与手部 3D 关键点"]
+    Meta --> Anno["后处理几何与 4D 标注 (ViDiHand / Macrodata / Ego-Exo4D-HM)"]
+    Anno --> Align["对齐机器人腕部视角 + 少量真机遥操作 mid-training"]
+```
+
 ## 关联页面
 
 - [HumanCOIN：注视/肌电/脑电的分层第一视角数据](../entities/paper-humancoin-human-intent-egocentric-manipulation.md) — L1 估计注视、L2 实测肌电、L3 实测脑电，不能把 12,500 h 全部当实测三模态示教。

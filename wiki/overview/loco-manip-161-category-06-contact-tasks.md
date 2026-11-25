@@ -42,6 +42,24 @@ sources:
 | 126 | 手眼自主配送 | [paper-loco-manip-161-126-n126](../entities/paper-loco-manip-161-126-n126.md) |
 | 127 | 用于人形接触规划的自我视觉世界模型 | [paper-loco-manip-161-127-n127](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    TASK["具体接触任务场景 (开门 / 推物 / 搬运 / 触碰 / 配送 / 足球)"]
+    COMP["柔顺接触与全身控制 (GentleHumanoid)"]
+    PLAN["视觉闭环、VLA 与世界模型接触规划 (Humanoid-VLA / LeVERB / 自我视觉世界模型 / 手眼自主配送)"]
+    AGILE["敏捷感知-行动足球技能 (敏捷前锋 / 渐进式框架 / 视觉反应式技能)"]
+    OUT["Loco-Manip 视觉闭环与稳定接触执行"]
+
+    TASK --> COMP
+    TASK --> PLAN
+    TASK --> AGILE
+    COMP --> OUT
+    PLAN --> OUT
+    AGILE --> OUT
+```
+
 ## 关联页面
 
 - [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)

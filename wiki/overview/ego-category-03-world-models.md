@@ -42,6 +42,17 @@ sources:
 | 06 | Ego-Vision World Model | [paper-hrl-stack-33](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) | [source](../../sources/papers/ego_survey_06_ego_vision_world_model.md) |
 | 07 | WEM | [paper-wem](../entities/paper-wem-world-ego-modeling.md) | [source](../../sources/papers/ego_survey_07_wem.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Prob["痛点: 相机运动、身体运动与物体变化混在同一预测流导致长时程漂移"] --> Split["区分自我运动 (Ego) 与世界变化 (World)"]
+    Split --> P1["Ego-Vision World Model: 服务人形接触规划"]
+    Split --> P2["WEM: 解耦 world / ego 视频演化"]
+    P1 --> Goal["抑制长时程 rollout 漂移"]
+    P2 --> Goal
+```
+
 ## 关联页面
 
 - [机器人世界模型训练闭环](./robot-world-models-training-loop-taxonomy.md)

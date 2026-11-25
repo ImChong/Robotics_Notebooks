@@ -41,6 +41,27 @@ sources:
 | τ₀-VLA | [paper-tau0-vla](../entities/paper-tau0-vla.md) | 高层不确定时 VLM 提子任务，WM 预测分支后果并由价值模型 beam search。 |
 | CheckVLA | [paper-checkvla-execution-time-verification](../entities/paper-checkvla-execution-time-verification.md) | 执行时用动作条件 WM 比较预测与真实观测，风险越界则改写后续动作。 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Core["规划主导型 WM (执行期模型试走 + 外部搜索裁决)"]
+    MPC["视觉与概率动力学 MPC"]
+    Latent["潜空间与预训练视觉特征规划"]
+    Particle["粒子图与 3D 点流世界模型"]
+    VLAPlan["VLA 分支搜索与执行期校验"]
+
+    Core --> MPC
+    Core --> Latent
+    Core --> Particle
+    Core --> VLAPlan
+
+    MPC --> M1["Visual Foresight · PETS · Resilient Machines"]
+    Latent --> L1["PlaNet · MuZero · TD-MPC2 · V-JEPA 2 · DINO-WM"]
+    Particle --> P1["RoboCraft · ParticleFormer · PointWorld"]
+    VLAPlan --> V1["tau0-VLA (分支 beam search) · CheckVLA (风险越界改写)"]
+```
+
 ## 关联页面
 
 - [六路线技术地图](./embodied-wm-six-routes-technology-map.md)

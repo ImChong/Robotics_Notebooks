@@ -47,6 +47,15 @@ sources:
 | 04 | EMMA | [paper-ego-04-emma.md](../entities/paper-ego-04-emma.md) | [source](../../sources/papers/ego_survey_04_emma.md) |
 | 05 | Gaze2Act | [paper-ego-05-gaze2act.md](../entities/paper-ego-05-gaze2act.md) | [source](../../sources/papers/ego_survey_05_gaze2act.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Raw["人类第一视角视频 (手/身体/视角不一致)"] --> Prep["显式处理准备动作、视线与度量手轨迹 (Gaze2Act / Macrodata)"]
+    Prep --> Align["域对齐与人–机共训 (EgoMimic / EMMA / EgoVerse / JoyAI-RA 0.5)"]
+    Align --> Policy["机器人策略: IL 缩放与 VLA 空间意图增强"]
+```
+
 ## 关联页面
 
 - [模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md)

@@ -36,6 +36,19 @@ sources:
 |---|------|-----------|--------|
 | 01 | Is Diversity All You Need | [paper-tro-manip-01-diversity-scaling.md](../entities/paper-tro-manip-01-diversity-scaling.md) | [source](../../sources/papers/tro_manip_survey_01_diversity_scaling.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Q["操作数据 Scaling 核心问题: 多样性拆解"] --> D1["任务维度 (做什么)"]
+    Q --> D2["本体维度 (哪款机器人)"]
+    Q --> D3["演示者维度 (谁示教)"]
+    D1 --> P["Is Diversity All You Need (IL / LfD)"]
+    D2 --> P
+    D3 --> P
+    P --> G["OOD 泛化与鲁棒性评估"]
+```
+
 ## 关联页面
 
 - [T-RO 5 篇技术地图](./tro-manip-5-papers-technology-map.md)

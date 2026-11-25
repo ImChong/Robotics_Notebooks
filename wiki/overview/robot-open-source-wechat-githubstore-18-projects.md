@@ -77,6 +77,20 @@ summary: "微信公众号 GitHubStore《想进入机器人领域吗？学习这1
 - 四足：Mini Pupper（ROS/RL）、OpenQuadruped（经典控制）、Puguette（高扭矩执行器）；Bittle 硬件非开源。
 - 机械臂/移动操作：SO-ARM100 → LeKiwi；OpenMANIPULATOR-X 偏 ROS/MoveIt 教学。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["18 个开源机器人项目 (GitHubStore)"] --> Hum["人形平台 (1-5)"]
+    Root --> Quad["四足平台 (6-11)"]
+    Root --> Arm["机械臂 (12-14)"]
+    Root --> Mob["移动与移动操作 (15-18)"]
+    Hum --> HumN["Microban / MiniLoong / Poppy Humanoid / Otto DIY / pib"]
+    Quad --> QuadN["Mini Pupper / Petoi Bittle / Stanford Doggo / SpotMicro / OpenQuadruped / Puguette"]
+    Arm --> ArmN["SO-ARM100(101) / RoArm-M2 / OpenMANIPULATOR-X"]
+    Mob --> MobN["LeKiwi / TurtleBot3 Burger / OpenBot / Duckiebot"]
+```
+
 ## 关联页面
 - [能自己造的开源人形机器人 19 款（同账号后续一篇）](./open-source-buildable-humanoids-19-technology-map.md)
 

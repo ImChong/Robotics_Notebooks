@@ -60,6 +60,17 @@ summary: "具身智能小站 2026-09-18 十篇盘点：触觉 WAM、主动视角
 | 09 | Learning Safe Humanoid Navigation from Reduced Order Models | **待发布** | [paper-rom-nav](../entities/paper-rom-nav.md) |
 | 10 | ULOHA | **待发布** | [paper-uloha](../entities/paper-uloha.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["接触–世界模型–系统闭环 (10 篇)"] --> Deep["深读: Agile-WAM (触觉世界–动作模型)"]
+    Root --> Follow["跟进: INSPECT (主动视角) / CoRef-GS (多智能体 GS)"]
+    Root --> Skim["扫读其余 7 篇"]
+    Skim --> WAM["仿真与 WAM 量化: ParticleSplat / Predict Before You Deploy / Visual Sim-to-Real Insertion"]
+    Skim --> Sys["运动与系统部署: OmniMimic / ViLoMan / RoM 安全人形导航 / ULOHA 水下双臂"]
+```
+
 ## 关联页面
 
 - [world-action-models](../concepts/world-action-models.md)

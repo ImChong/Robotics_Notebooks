@@ -117,6 +117,24 @@ summary: "具身运控lab（森兰克周报）2026-10-12 至 10-16 Manipulation 
 | ForceBench | 机器人操作中的力信息融合评测 | [paper-forcebench](../entities/paper-forcebench.md)（复用） |
 | CQDC-Warp | GPU 可微准动态仿真用于接触 MPC | [paper-cqdc-warp-differentiable-quasi-dynamic](../entities/paper-cqdc-warp-differentiable-quasi-dynamic.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["Manipulation 33 篇 (10 个方向)"] --> Core["策略与世界模型核心"]
+    Root --> Learn["学习与后训练机制"]
+    Root --> Body["形态与接触操作专题"]
+    Root --> Infra["规划与仿真评测底座"]
+    Core --> C1["一、VLA / 通用操作策略 (FastVLA / Multi-Teacher OPD / ObjDream / VeriVLA / ListenVLA)"]
+    Core --> C2["二、WAM / 世界模型预测 (T2-Z / P³-WAM / UniW(A)M / LoopWAM / WAVE-0 / Box-WAM)"]
+    Learn --> L1["三、在线离线 RL 与后训练 (VaM / MERL / HiRE-MoMa)"]
+    Learn --> L2["四、模仿与生成动作策略 (EgoJEPA / ILA / CFG-Policy)"]
+    Body --> B1["五、双臂与六、灵巧操作 (Coordi-π / Bimanual RMA / DSP / HiFun / DexStitch / DexNinja)"]
+    Body --> B2["七、可变形体与八、人形上半身 (ContinuousCloth / 接触自适应网格 / KinoGen / FACT)"]
+    Infra --> I1["九、长程记忆与恢复 (Mem4Act / ForkCast / PILOT)"]
+    Infra --> I2["十、基准与可微仿真 (LIBERO-PeRM / ForceBench / CQDC-Warp)"]
+```
+
 ## 与其他期的关系
 
 - 本期 VLA 与 WAM 方向与 [具身智能小站 10-18 期](embodied-station-2026-10-18-26-papers-technology-map.md) 有主题重叠，但论文不同，不合并节点。

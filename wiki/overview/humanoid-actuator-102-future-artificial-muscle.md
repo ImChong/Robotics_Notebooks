@@ -48,6 +48,20 @@ sources:
 - SEA（Pratt 1995）
 - Raibert、Alexander、Hwangbo RL 等
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    CUR["现有商用平台 (刚性电磁电机 + 减速器/丝杠)"] --> LIM["铜满槽与磁体等级趋近磁通上限"]
+    LIM --> NEXT["下一代生物机理执行器 (人工肌肉)"]
+    NEXT --> T1["技术路线: EAP / HASEL / 气动与液压人工肌肉"]
+    NEXT --> V1["1. 固有柔顺 (冲击吸收与人机安全)"]
+    NEXT --> V2["2. 直线驱动 (无齿轮 · 低反射惯量)"]
+    NEXT --> V3["3. 可变刚度 (肌肉协同收缩)"]
+    NEXT --> V4["4. 分布式 (贴近关节布局)"]
+    NEXT --> V5["5. 静音运行 (面向家庭与医疗场景)"]
+```
+
 ## 关联页面
 
 - [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md)

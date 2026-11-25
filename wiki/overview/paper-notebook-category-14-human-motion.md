@@ -44,6 +44,15 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成索引页（关
 
 本分类索引按专题可拆为三条核心支线（均与上游 `papers/14_Human_Motion/` 目录和本库实体对应）：① **百万级数据与零样本文本生成**（HumanML3D、Go to Zero、Scaling LMM、TRACE）；② **时空可控与物理约束生成**（GMD、OmniControl、CondMDI、PhysDiff、ARDY、Kimodo）；③ **全身/自我中心重建与人–物交互**（GENMO、MANIKIN、WHOLE、PICO、HUMOTO、EmbodMocap）。
 
+```mermaid
+flowchart LR
+    B1["1. 百万级数据与零样本文本生成 (HumanML3D / Go to Zero / Scaling LMM)"] --> Out["人形动作先验 (SMPL / SMPL-H 空间)"]
+    B2["2. 时空可控与物理约束生成 (GMD / OmniControl / PhysDiff / Kimodo)"] --> Out
+    B3["3. 全身与自我中心重建及 HOI (GENMO / MANIKIN / WHOLE / PICO / HUMOTO)"] --> Out
+    Out --> Retarget["重定向与物理策略滤波"]
+    Retarget --> WBC["人形全身控制跟踪 (DeepMimic / SONIC / GMT)"]
+```
+
 ### 本类论文索引（44 篇）
 
 - [AvatarPoser](../entities/paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing.html)

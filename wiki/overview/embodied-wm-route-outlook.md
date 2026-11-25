@@ -37,6 +37,27 @@ sources:
 | PIN-WM | [paper-sa-2504-16693-pin-wm-learning-physics-informed-world-models-fo](../entities/paper-sa-2504-16693-pin-wm-learning-physics-informed-world-models-fo.md) | 真实数据识别参数并补充视觉与未建模残差。 |
 | Foresight (PI) | [paper-foresight-action-conditioned-failure-monitoring](../entities/paper-foresight-action-conditioned-failure-monitoring.md) | 动作条件表征监测失败风险，服务端侧安全闭环。 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Core["具身世界模型 · 趋势与判断"]
+    T1["统一全模态世界基础模型"]
+    T2["评测从画质转向效用与动作忠实性"]
+    T3["人类视频与长尾失败数据扩展"]
+    T4["解析物理引擎融合与在线安全监测"]
+
+    Core --> T1
+    Core --> T2
+    Core --> T3
+    Core --> T4
+
+    T1 --> W1["Cosmos 3 (全模态骨干) · NVIDIA Cosmos (1.0->2.5->3.0)"]
+    T2 --> W2["WorldArena (质量 vs 效用) · RoboWM-Bench (动作还原真机评测)"]
+    T3 --> W3["DreamDojo (人视频+少量机数据) · PlayWorld (自主玩耍失败长尾)"]
+    T4 --> W4["Newton (解析仿真) · PIN-WM (真实参数+残差) · Foresight (失败风险闭环)"]
+```
+
 ## 关联页面
 
 - [六路线技术地图](./embodied-wm-six-routes-technology-map.md)

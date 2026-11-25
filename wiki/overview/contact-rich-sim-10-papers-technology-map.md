@@ -61,6 +61,17 @@ summary: "具身智能小站 2026-09-21 十篇盘点：并行 VLM 奖励、跨�
 | 09 | Compositional CL WM Benchmark | **待发布** | [paper-wm-compositional-cl-benchmark](../entities/paper-wm-compositional-cl-benchmark.md) |
 | 10 | Sim2Real Chunk VLA Pipeline | **已开源** | [paper-sim2real-chunk-vla-pipeline](../entities/paper-sim2real-chunk-vla-pipeline.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Core["接触丰富仿真核心命题 (2026-09-21 十篇盘点)"] --> Deep["深读: RAPID (并行 VLM 奖励标注吞吐)"]
+    Core --> Follow["跟进: GALA / CRISP"]
+    Core --> Skim["扫读其余 7 篇: 跨形态 VLA / 接触求解 / 世界模型 / Sim2Real 闭环"]
+    Skim --> Sub1["世界模型与表征: SeeQ / SkelWAM / PARTS / CARF / Compositional CL WM Benchmark"]
+    Skim --> Sub2["VLA 与真机迁移: PSR-VLA / Sim2Real Chunk VLA Pipeline"]
+```
+
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)

@@ -43,6 +43,19 @@ sources:
 
 闭环反馈采集传感器输出与目标对比修正；LQR 在状态空间同时权衡跟踪误差与控制能耗；极点配置直接指定收敛动态。
 
+```mermaid
+flowchart LR
+    Ref["期望参考轨迹"] --> Err["误差与状态对比"]
+    Err --> PID["PID (P/PI/PID 单关节伺服调节)"]
+    Err --> LQR["LQR (状态空间权衡误差与能耗)"]
+    Err --> Pole["极点配置 (指定闭环收敛动态)"]
+    PID --> Servo["底层电流/速度/力矩执行"]
+    LQR --> Servo
+    Pole --> Servo
+    Servo --> Sensor["传感器反馈"]
+    Sensor --> Err
+```
+
 ## 代表性算法
 
 | 算法 | 节点 |

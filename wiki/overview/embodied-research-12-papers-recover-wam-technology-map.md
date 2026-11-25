@@ -57,6 +57,32 @@ summary: "具身智能小站 2026-09-27 十二篇清单：失败恢复评测、�
 | 11 | [Robot Group Joining](../entities/paper-robot-group-joining.md) | 2609.28467 | 待发布 |
 | 12 | [S2C](../entities/paper-s2c-safety-filtered-rl.md) | 2609.27312 | 待发布 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Theme["恢复 / WAM / 安全 12 篇主线"]
+    Eval["失败恢复评测起点"]
+    WAM["WAM 节拍与规划"]
+    Sense["本体 / 触觉 / 注视感知"]
+    Cond["条件化与社交交互"]
+    Train["持续与安全训练"]
+
+    Theme --> Eval
+    Theme --> WAM
+    Theme --> Sense
+    Theme --> Cond
+    Theme --> Train
+
+    Eval --> E1["01 RoboRecover (已开源)"]
+    WAM --> W1["02 Streaming-WAM (已开源)"]
+    WAM --> W2["08 DeltaWAM (已开源)"]
+    WAM --> W3["06 BK-MBD (Koopman 扩散规划)"]
+    Sense --> S1["03 CoPRE · 04 TactileStep · 05 ActGaze"]
+    Cond --> C1["07 KeyGen · 10 KnowBody (已开源) · 11 Robot Group Joining"]
+    Train --> T1["09 Streaming RL 分析 (已开源) · 12 S2C 安全滤波 RL"]
+```
+
 ## 关联页面
 
 - [VLA](../methods/vla.md) · [Generative World Models](../methods/generative-world-models.md)

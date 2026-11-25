@@ -83,6 +83,34 @@ summary: "2026-10-15 具身智能小站汇总的 31 篇新论文索引：按主�
 - [管路中心线精修](../entities/paper-pipe-centerline-refinement.md)（2610.19403）— 拓扑保持的几何优化
 - [Towards Agentic Robots](../entities/paper-towards-agentic-robots-survey.md)（2610.20442）— 机器人智能体综述
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["2026-10-15 具身论文 31 篇索引"]
+    G1["VLA 适配、恢复与加速 (10 篇)"]
+    G2["人形、移动操作与乒乓 (5 篇)"]
+    G3["灵巧操作、接触与力觉 (6 篇)"]
+    G4["数据、仿真与世界生成 (3 篇)"]
+    G5["导航、空间与认知 (4 篇)"]
+    G6["硬件、几何与综述 (3 篇)"]
+
+    Root --> G1
+    Root --> G2
+    Root --> G3
+    Root --> G4
+    Root --> G5
+    Root --> G6
+
+    G1 --> G1a["深读/跟进: MorphAct · ACRO"]
+    G1 --> G1b["WAM/精修/表征: Atomic-WAM · CapPro · ObjDream · PICES · RAIN · GR-BC · 离散动作 · Robota-Embed"]
+    G2 --> G2a["PingpongDuo · KinoGen · HiRe-MoMa · Cracking Mobile Manipulation · 人形策略权重扩散"]
+    G3 --> G3a["HiFun · ForceBench · FOMI · TacClaw-Infinity · 物体级重定向 · 触觉综述"]
+    G4 --> G4a["MetaGenSim · PhySGA · 地牢与可见性世界生成器"]
+    G5 --> G5a["C-Slerp · HM3D-M3 · 目标泛化失效 · Eye, Robot"]
+    G6 --> G6a["统一连续体驱动平台 · 管路中心线精修 · Towards Agentic Robots"]
+```
+
 ## 读法提醒
 
 - 文章的「深读 / 跟进 / 扫读」分档是公众号编辑的判断，不是本库的评级。

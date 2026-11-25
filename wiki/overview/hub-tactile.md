@@ -77,6 +77,22 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 - [Tactile-Based Robotic Manipulation 综述](../entities/paper-tactile-based-robotic-manipulation-survey.md)、[Tactile-Guided Robot Learning 综述](../entities/paper-tactile-guided-robot-learning-survey.md)、[TF-ART](../entities/paper-tf-art-tactile-force-survey.md)
 - [Tactile Sensing](../concepts/tactile-sensing.md)、[Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    S["触觉与力感知硬件 (GelSight 视触觉 / 压阻手套 / 六维 F/T)"] --> P1["力学驱动路径 (感知→显式描述符)"]
+    S --> P2["数据驱动路径 (表征学习与策略)"]
+    P1 --> D1["接触力/力矩 · 接触位置 · 物体位姿 · 滑移 · 外在接触"]
+    D1 --> C1["闭环伺服 / 状态切换 / 阻抗与导纳控制"]
+    P2 --> D2["自监督表征 / 视触觉融合 (VTLA / TWAM / ACT)"]
+    D2 --> F1["分层控制 (慢速视觉策略 + 高频低维触觉策略)"]
+    F1 --> C1
+    S2R["仿真基准与迁移 (TacO 跨模态对比 / SoftVTBench FEM)"] --> P2
+    DATA["大规模数据采集 (OpenNeoData 5k h / HumanTouch 100 h)"] --> P2
+    C1 --> APP["抓取精修 · 可变形安全操作 · 全身 Loco-Manip"]
+```
+
 ## 与其他知识链的关系
 
 - **[抓取](./hub-grasp.md)**：稳定抓取依赖力闭环。

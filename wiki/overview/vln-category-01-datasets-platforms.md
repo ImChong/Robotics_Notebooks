@@ -53,6 +53,15 @@ sources:
 | 回答 | **测什么、在哪测、动作空间如何定义** | **模型如何对齐、记忆、规划、扩数据、接 VLM** |
 | 代表 | Matterport3D / Habitat / 高层 referring | PREVALENT → NaVid |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    S1["R2R (Matterport3D): 离散导航图 + 逐步指令"] --> S2["VLN-CE (Habitat): 连续底层动作空间"]
+    S2 --> S3["REVERIE: 高层目标描述 + 物体定位"]
+    S3 --> S4["后续物理平台 (Isaac 刚体动力学): HumanoidVLN 双足专属评测"]
+```
+
 ## 关联页面
 
 - [VLN 10 篇技术地图](./vln-10-papers-technology-map.md)

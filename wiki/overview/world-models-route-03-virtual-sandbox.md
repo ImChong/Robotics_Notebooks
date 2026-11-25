@@ -85,6 +85,19 @@ sources:
 | 学术对照 | [robot-world-models-training-loop-taxonomy](./robot-world-models-training-loop-taxonomy.md) 中「学习型模拟器」主线 |
 | 姊妹路线 | [01 级联架构](./world-models-route-01-cascade.md)、[02 联合架构](./world-models-route-02-joint.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Sandbox["世界模型作为可交互虚拟沙盒 (rollout 替代真机试错)"]
+    Sandbox --> RL["用途 1: RL 想象训练与策略后训练"]
+    Sandbox --> Eval["用途 2: 策略评估靶场与推理时搜索"]
+    RL --> RL1["策展核心: DreamerV3 (通用想象 RL), RLVR-World (RLVR 对齐指标)"]
+    RL --> RL2["路线外延: Open Dreamer (Dreamer 4 复现), Ctrl-World (合成 SFT), CurrentWorld-0 (失败分支后训练)"]
+    Eval --> Ev1["策展核心: WorldGym (VLM 奖励策略评估靶场)"]
+    Eval --> Ev2["路线外延: OSCAR, DriftWorld (GPC-RANK), Masked Visual Actions, CLAP, WALL-SS, SC3-Eval"]
+```
+
 ## 关联页面
 
 - [世界模型 15 项目技术地图](./world-models-15-open-source-technology-map.md)

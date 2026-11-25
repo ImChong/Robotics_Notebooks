@@ -106,6 +106,22 @@ senlanke 具身运控lab 11-02–11-06 一周 人形 / 四足论文周报（30 �
 | 01 | ★ [通过屏障认证安全架构约束腿式机器人视觉—语言导航](../entities/paper-legged-vln-barrier-caging.md) | [2611.04972](https://arxiv.org/abs/2611.04972) | 新建 |
 | 02 | [基于共享腰部双链模型的轮式人形机器人全身弹性—几何标定](../entities/paper-shared-waist-dual-chain-wheeled-humanoid-calibration.md) | [2611.07560](https://arxiv.org/abs/2611.07560) | 新建 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["senlanke 11-02–11-06 人形/四足周报 (30 篇: 新建 18 / 复用 12)"]
+    Root --> ByPlatform["按周报平台分栏"]
+    Root --> ByMethod["按本库核对的方法性质"]
+    ByPlatform --> P1["人形机器人 (25 篇)"]
+    ByPlatform --> P2["四足机器人 (3 篇): SCRUB, Dogger, 四杆腿运动学"]
+    ByPlatform --> P3["轮足与通用腿式 (2 篇): Caging VLN, 腰部弹性标定"]
+    ByMethod --> M1["学习类 RL/模仿/蒸馏: ReGATE, H2MARL, PhySA, STEP, 地形索引跑酷"]
+    ByMethod --> M2["模型驱动与规划: iLQR-MPC, CRISP, 接触隐式 TO, Sequential Recovery"]
+    ByMethod --> M3["学习加优化协同: Dogger 协同设计"]
+    ByMethod --> M4["VLM/VLA 接口: HITCH, AffectiveVLA, ActOR"]
+```
+
 ## 关联页面
 
 - [Manipulation 周报索引（同一周）](./senlanke-weekly-2026-11-02-06-manipulation-technology-map.md)

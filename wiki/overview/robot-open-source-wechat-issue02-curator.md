@@ -56,6 +56,19 @@ summary: "微信公众号「机械Robot」第02期《10个全开源网址》：R
 
 每个入口分别核对**本体/BOM、驱动与API、算法或策略、运行资产**四层。例如Kinova的ROS驱动开放不等于机械CAD开放，Poppy的硬件与软件许可也不同。以下表格保留原清单编号，工程判断以[官方资料复核](../../sources/sites/robot-open-source-issue02-primary-entry-reading-2026-11-15.md)和实体页为准。
 
+```mermaid
+flowchart TD
+    Root["第02期 11-20 开源入口"] --> Hum["人形与教育装配 (Pollen Reachy2 / Poppy / InMoov)"]
+    Root --> Quad["四足路径 (Stanford Doggo / Pupper)"]
+    Root --> Arm["桌面与科研协作臂 (myCobot 320 / Kinova Gen3 / Franka Research 3 / PAROL6)"]
+    Root --> Mob["移动底盘与移动操作 (myAGV / TidyBot2)"]
+    Hum --> L1["四层核对: 1. 本体与 BOM/CAD"]
+    Quad --> L1
+    Arm --> L1
+    Mob --> L1
+    L1 --> L2["2. 驱动固件与 API"] --> L3["3. 算法或策略"] --> L4["4. 运行资产与许可边界"]
+```
+
 ## 11–20 实体页一览
 
 | # | 实体页 | 一句话 |

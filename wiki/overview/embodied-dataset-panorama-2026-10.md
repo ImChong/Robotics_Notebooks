@@ -61,6 +61,18 @@ original:
 
 本页第 01 项 OXE 的一手原文（arXiv 2310.08864）已通读，可用来校准“真实机器人”组的口径：OXE 把 60 个已有数据集、34 个实验室的数据统一为 RLDS 格式，覆盖 22 种本体、100 万+ 真机轨迹；其 RT-X 实验仅用其中 9 种本体，且动作只做粗对齐（7 维末端动作、不统一坐标系）。因此“合并数据集”不等于“动作空间已统一”，选用多源真机数据时仍需自行处理本体差异。其余 84 项仍以公众号综述为准，未逐项核对（见上节局限）。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["85 项具身数据集全景 (41 复用 + 44 新建)"] --> G1["真实机器人 (22 项: OXE / DROID / BridgeData V2 / AgiBot World / RoboMIND)"]
+    Root --> G2["仿真与合成 (17 项: robomimic / LIBERO / CALVIN / ManiSkill / RoboCasa365 / RoboTwin 2.0)"]
+    Root --> G3["人类示范与第一视角 (7 项: Ego4D / Ego-Exo4D / EPIC-KITCHENS-100 / AMASS / EgoScale)"]
+    Root --> G4["导航与三维场景 (16 项: R2R / RxR / ALFRED / Matterport3D / HM3D / ScanNet / ProcTHOR-10K)"]
+    Root --> G5["灵巧手与抓取 (12 项: GraspNet-1B / DexGraspNet / EgoDex / DexYCB / OakInk / HOT3D)"]
+    Root --> G6["触觉与多模态 (11 项: Touch and Go / ObjectFolder 2.0 / Touch100k / OpenTouch / TacQuad)"]
+```
+
 ## 关联页面
 
 - [开放 X 具身数据（OXE）](../concepts/open-x-embodiment.md)：跨机构真机数据的合并范式

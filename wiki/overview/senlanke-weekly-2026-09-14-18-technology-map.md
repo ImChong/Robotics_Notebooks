@@ -86,6 +86,19 @@ summary: "senlanke 具身运控lab 2026-09-14–18 双周更索引：腿式 28 �
 | Bench2Dex | [paper-bench2dex](../entities/paper-bench2dex.md) |
 | FluxVLA Engine | [fluxvla-engine](../entities/fluxvla-engine.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["senlanke 09-14–18 双周更 (42 篇)"] --> Leg["腿式 / 人形 / 四足 / 轮足 (28 篇)"]
+    Root --> Manip["操作 / VLA / 灵巧 (14 篇)"]
+    Leg --> Leg1["Teacher-Student 与全身跟踪 (ViLoMan / RECAL / X-WBC / OmniMimic)"]
+    Leg --> Leg2["感知导航与主动探索 (ROM-Nav / PASSAGE / LEAP / POSE)"]
+    Leg --> Leg3["轮足力控、MPC 与状态估计 (力感知轮足 / DR-MPC / Adaptive-MHE / OmniCalib)"]
+    Manip --> Manip1["等变 VLA 与世界动作自改进 (SAVLA / SWIM / FluxVLA Engine)"]
+    Manip --> Manip2["灵巧操作、力触与基准 (ProxiDex / DeformSmith / Bench2Dex / Real-Time EXPO-FT)"]
+```
+
 ## 关联页面
 
 - [Locomotion](../tasks/locomotion.md)

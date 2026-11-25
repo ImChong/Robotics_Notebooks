@@ -62,6 +62,20 @@ summary: "对微信公众号「机械Robot」第01期《10个全开源网址》�
 - **误区：「微信里给的网盘 = 官方唯一源」。** 网盘路径与提取码可能变更；STEP/BOM 应以 **GitHub Release 或官网下载页** 交叉验证。
 - **误区：「10 个都是人形」。** 清单含 **四足、轮式、机械臂/手**；选型时请回到任务定义（locomotion / manipulation / research）。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["微信策展第01期 (01-10 开源入口)"] --> Hum["人形整机 (傅利叶 GRX N1 / 智元灵犀 X1 / 天工 Lite&Pro / Berkeley Humanoid Lite / ROBOTIS OP3 & THORMANG3)"]
+    Root --> Leg["扭矩腿足平台 (ODRI Solo / Bolt)"]
+    Root --> Wheel["教育轮式平台 (TurtleBot3)"]
+    Root --> Hand["机械臂与灵巧手 (Orca Hand / ROBOTIS 机械臂产品线)"]
+    Hum --> Verify["交叉验证入口: 官方文档站与组织级 GitHub Release (替代网盘短链)"]
+    Leg --> Verify
+    Wheel --> Verify
+    Hand --> Verify
+```
+
 ## 关联页面
 
 - [开源人形硬件方案对比](../entities/open-source-humanoid-hardware.md)

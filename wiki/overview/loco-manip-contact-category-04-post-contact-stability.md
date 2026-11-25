@@ -50,6 +50,27 @@ sources:
 - **GentleHumanoid / CHIP：** 过硬位置跟踪易把接触变成 **冲击**。
 - **HOIST / Thor：** 补 **接触建立后继续与世界交换力** 的能力。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    CH["接触后真机挑战 (手部力变 / 脚下支撑变 / 物体位姿变)"]
+    M1["力自适应与异构模式切换 (FALCON 3D 力课程 / HMC 位置-阻抗-力位混合)"]
+    M2["顺序接触分阶段切换 (WoCoCo)"]
+    M3["自适应柔顺防冲击 (GentleHumanoid 上肢柔顺 / CHIP 事后扰动学习)"]
+    M4["负载摆动与强接触全身反应 (HOIST 欠驱动间接控制 / Thor 受力后全身反应)"]
+    OUT["接触建立后持续稳住与力交换能力"]
+
+    CH --> M1
+    CH --> M2
+    CH --> M3
+    CH --> M4
+    M1 --> OUT
+    M2 --> OUT
+    M3 --> OUT
+    M4 --> OUT
+```
+
 ## 关联页面
 
 - [GentleHumanoid 方法页](../entities/paper-gentlehumanoid.md)

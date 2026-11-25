@@ -41,6 +41,20 @@ sources:
 | 14 | PHC | [phc.md](../entities/phc.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 15 | MaskedMimic | [paper-bfm-17-maskedmimic.md](../entities/paper-bfm-17-maskedmimic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    IN["输入 (参考动作片段 + 物理角色状态)"]
+    CORE["RL 模仿机制 (最大化姿态/速度/末端/根部跟踪奖励 + early termination)"]
+    LINEAGE["源流演进 (DeepMimic -> AMP -> SMP -> PHC -> MaskedMimic)"]
+    OUT["物理角色模仿学习基础范式"]
+
+    IN --> CORE
+    CORE --> LINEAGE
+    LINEAGE --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

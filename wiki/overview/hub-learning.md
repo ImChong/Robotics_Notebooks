@@ -42,6 +42,26 @@ summary: "IL/RL 学习范式知识链汇总：强化学习、模仿学习、行�
 | 概念 | 特权训练 / 想象 | [Privileged Training](../concepts/privileged-training.md) |
 | 概念 | 训练循环编排 | [RL Runner](../concepts/rl-runner.md) — On-policy / Off-policy / 蒸馏 / 评测 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["IL / RL 学习范式总览 (Robot Learning Overview · AI 架构地图)"]
+    P1["强化学习 RL (PPO / SAC · Model-Based vs Model-Free · Online vs Offline)"]
+    P2["模仿学习 IL / 行为克隆 BC"]
+    P3["逆强化学习 IRL"]
+    Mech["核心机制与编排 (Reward Design · Curriculum · Privileged Training · RL Runner)"]
+    Out["下游迁移 (WBT · Sim2Real · 真机安全微调)"]
+
+    Root --> P1
+    Root --> P2
+    Root --> P3
+    P1 --> Mech
+    P2 --> Mech
+    P3 --> Mech
+    Mech --> Out
+```
+
 ## 与其他知识链的关系
 
 - **[Sim2Real](./hub-sim2real.md)**：学习策略如何上真机。

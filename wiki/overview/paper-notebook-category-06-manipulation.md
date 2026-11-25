@@ -36,6 +36,15 @@ summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）
 - 上游路线图把操作支线写作 iDP3 → EgoMimic → HumDex（3D 扩散策略、自我中心视频、灵巧手），并指出 ACT / ALOHA 是动作块与 EgoMimic 策略骨干的来源。
 - 本类索引条目大体可分为：人类示教与数据采集系统、人类视频预训练 / 世界模型、触觉与安全控制三类（推断，依据条目标题归纳，非上游官方分类）。
 
+```mermaid
+flowchart LR
+    Base["基础框架与控制 (WBC / ACT / ALOHA)"] --> Line["操作演化主线 (iDP3 → EgoMimic → HumDex)"]
+    Data["人类示教与采集 (动捕 / AR / UMI)"] --> Line
+    WM["人类视频预训练与世界模型 (EgoDex / DreamGen / DreamZero)"] --> Target["VLA / BFM 基础模型"]
+    Tactile["触觉感知与安全控制 (视触觉 / 阻抗 / 安全滤波)"] --> Target
+    Line --> Target
+```
+
 ## 工程实践
 
 - 查某篇论文：先点本库实体页获得摘要与关联，再按需跳转上游深读笔记；标「待深读」者上游尚无 HTML 笔记。

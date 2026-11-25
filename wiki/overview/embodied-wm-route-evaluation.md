@@ -57,6 +57,21 @@ original:
 - **长视域误差累积与幻觉偏置：** 视频或潜空间世界模型在多轮自回归后易产生物体凭空出现或接触穿模，高画质不等于物理动力学保真。
 - **分布内校准不等同 OOD 泛化：** 若世界模型训练集缺乏失败模式或新物体组合，策略进入长尾姿态时可能给出乐观失真分数。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Policy["外部待测策略 pi"] --> Action["输出动作块 a_t"]
+    Action --> WM["动作条件世界模型 (闭环推演)"]
+    WM --> Obs["下一帧视觉观测与本体反馈"]
+    Obs --> Policy
+    Obs --> Judge["裁判 / VLM 判分器 / 虚实相关系数 r"]
+    Judge --> Select["候选策略筛选、排序与红队测试"]
+
+    WM -.-> W1["WorldGym · WorldEval · GE-Sim 2.0"]
+    WM -.-> W2["Veo World Simulator (OOD 与红队) · GigaWorld-1 (长时忠实性)"]
+```
+
 ## 推荐继续阅读
 
 - [具身世界模型六路线技术地图](./embodied-wm-six-routes-technology-map.md)

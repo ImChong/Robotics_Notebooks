@@ -46,6 +46,20 @@ sources:
 
 MDP 上智能体选动作获奖励；值函数法估计 $Q(s,a)$；策略梯度直接优化 $\pi_\theta$；MBRL 先学模型再想象 rollout；HRL 分层子任务；BC/GAIL 用示教初始化。
 
+```mermaid
+flowchart TD
+    MDP["MDP 环境交互与奖励驱动"] --> Value["值函数法 (估计 Q 值)"]
+    MDP --> PG["策略梯度 (PPO 直接优化策略)"]
+    MDP --> MBRL["MBRL (学习环境模型并想象 rollout)"]
+    MDP --> HRL["HRL (分层子任务决策)"]
+    Demo["专家示教 (BC / GAIL 初始化)"] --> PG
+    Value --> Sim["大规模仿真训练 + 域随机化 (DR)"]
+    PG --> Sim
+    MBRL --> Sim
+    HRL --> Sim
+    Sim --> Real["Sim2Real 部署 + 底层 PD 执行层"]
+```
+
 ## 代表性算法
 
 | 分支 | 节点 |

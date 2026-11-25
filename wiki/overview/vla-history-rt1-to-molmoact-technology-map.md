@@ -63,6 +63,18 @@ summary: "Khushi 长文《From RT1 to MolMoAct2》的阅读坐标：按时间线
 | 扩散连续动作 chunk | Octo | 可表达多模态可行动作，避免均值化；Transformer 只跑一次、迭代去噪在小动作头内 |
 | VLM + flow-matching 动作专家 | π0、SmolVLA、MolmoAct 2 | 兼得 VLM 语义与连续高频动作；每个 chunk 仍需多步精炼，chunk 内动作不一定用到新观测 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Base["早期基石: SayCan -> Open X-Embodiment / RT-X"]
+    Base --> R1["路线 1: 离散动作 Token (RT-1 -> RT-2 -> OpenVLA)"]
+    Base --> R2["路线 2: 扩散连续动作 Chunk (Octo)"]
+    R2 --> R3["路线 3: VLM + Flow-Matching 动作专家 (π0 -> SmolVLA -> MolmoAct / MolmoAct 2)"]
+    R3 --> Open1["开放方向: VLA + RL (从自身错误中学习)"]
+    R3 --> Open2["开放方向: VLA + 世界模型 (预测后果比较候选)"]
+```
+
 ## 关联页面
 
 - [VLA 方法总览](../methods/vla.md)

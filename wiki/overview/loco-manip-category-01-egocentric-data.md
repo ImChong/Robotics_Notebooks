@@ -45,6 +45,25 @@ sources:
 | 范围 | 采集 → 人→机 → WM → Ego+Exo 全链路 | 聚焦 **loco-manip 训练入口** |
 | 代表 | AoE、EgoMimic、WEM 等 | Ego-Pi（VLA 共微调）、EgoPriMo（全身 SMPL 生成） |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    EGO["人类第一视角视频 (Ego 数据入口)"]
+    SEM["任务语义提取 (顺序 / 物体 / 阶段)"]
+    ACT["身体动作先验 (走近 / 转身 / 全身协调)"]
+    EGOPI["Ego-Pi (VLA 共微调)"]
+    EGOPRIMO["EgoPriMo (全身 SMPL 生成)"]
+    TRAIN["人形 Loco-Manip 训练链 (避免人类关节硬拷贝)"]
+
+    EGO --> SEM
+    EGO --> ACT
+    SEM --> EGOPI
+    ACT --> EGOPRIMO
+    EGOPI --> TRAIN
+    EGOPRIMO --> TRAIN
+```
+
 ## 关联页面
 
 - [Loco-Manip 8 篇技术地图](./loco-manip-8-papers-technology-map.md)

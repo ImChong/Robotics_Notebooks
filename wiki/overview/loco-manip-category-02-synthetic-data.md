@@ -46,6 +46,24 @@ sources:
 - **「仿真一定不如真机」**：OASIS 叙事强调 **覆盖度** 可补真实性不足（任务与资产质量依赖）。
 - **「生成视频路线只有零样本一种」**：周报本组以 GenHOI（接触先验、不训 task policy）与 OASIS（仿真 teleop）为主；另有 [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md)（arXiv:2607.21648）走 **Veo→GMR→RL 跟踪训练**，证据在仿真、**未开源**，勿与 GenHOI 合并。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    GAP["真机 Teleop 覆盖不足"]
+    VID["生成视频路线: GenHOI (接触与物体运动交互线索 / 不训 task policy)"]
+    SIM["仿真生成路线: OASIS (仿真 teleop / 批量轨迹 / DR -> 零样本 Sim2Real)"]
+    COMP["组外对照路线 (NCKU Veo->GMR->RL 跟踪 / LEGS 3DGS VLA 数据工厂)"]
+    OUT["可执行 Loco-Manip 训练数据供给"]
+
+    GAP --> VID
+    GAP --> SIM
+    GAP -.-> COMP
+    VID --> OUT
+    SIM --> OUT
+    COMP -.-> OUT
+```
+
 ## 关联页面
 
 - [LEGS（3DGS VLA 数据工厂）](../entities/paper-legs-embodied-gaussian-splatting-vla.md)

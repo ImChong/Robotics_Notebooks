@@ -41,6 +41,20 @@ original:
 - **腿 / 踝与肌骨**：DecARt Leg、最优踝设计、肌骨人形。
 - **协同设计**：Brain-Body Co-design、Embracing Evolution、Chin-Up 协同设计（RL 与形态联合优化）。
 
+```mermaid
+flowchart TD
+    Root["12 硬件设计 (39 篇)"] --> Plat["整机平台 (Berkeley Humanoid / ToddlerBot / Fauna Sprout / iRonCub 3)"]
+    Root --> Act["执行器 (Proprioceptive / QDD / Human-Level / Bowden 腱驱)"]
+    Root --> Hand["灵巧手与腕 (ORCA / RAPID / RUKA / ByteWrist / DexWrist / Aero Hand Open)"]
+    Root --> Leg["腿踝与肌骨 (DecARt Leg / 最优踝设计 / 肌骨人形)"]
+    Root --> CoDesign["形态-控制协同设计 (Brain-Body / Embracing Evolution / Chin-Up)"]
+    Act --> Plat
+    Hand --> Plat
+    Leg --> Plat
+    CoDesign --> Plat
+    Plat --> Deploy["Sim2Real 与学习控制真机落地"]
+```
+
 ## 工程实践
 
 - 读单篇笔记时先看其硬件指标（自由度、扭矩 / 速度、成本、是否开源），再看是否配套仿真模型与训练代码。

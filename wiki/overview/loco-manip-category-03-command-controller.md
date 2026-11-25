@@ -39,6 +39,25 @@ sources:
 | 05 | VAIC | [paper-loco-manip-05-vaic.md](../entities/paper-loco-manip-05-vaic.md) | [source](../../sources/papers/loco_manip_survey_05_vaic.md) |
 | 06 | M3imic | [paper-loco-manip-06-m3imic.md](../entities/paper-loco-manip-06-m3imic.md) | [source](../../sources/papers/loco_manip_survey_06_m3imic.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    DATA["多源数据入口 (遥操作 / 人类视频 / 仿真数据)"]
+    BOT["接口瓶颈 (过密绑死策略 vs 过粗丢失交互阶段)"]
+    VAIC["VAIC (解耦命令设计)"]
+    M3["M3imic (多模态 latent 命令空间)"]
+    WBC["统一 WBC 全身控制层"]
+    EXEC["人形 Loco-Manip 执行"]
+
+    DATA --> BOT
+    BOT --> VAIC
+    BOT --> M3
+    VAIC --> WBC
+    M3 --> WBC
+    WBC --> EXEC
+```
+
 ## 关联页面
 
 - [Whole-Body Control](../concepts/whole-body-control.md)

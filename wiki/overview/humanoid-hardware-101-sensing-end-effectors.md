@@ -47,6 +47,18 @@ sources:
 - 全驱动多指 **成本高、装配难、耐久挑战大**；多数商业场景 **两指/三指/任务夹爪** 单位经济性更优。
 - 文内：工业取放、家务（[Sunday 三指](../entities/sunday-robotics-act2.md) 等）证明 **不必人手形态** 才能干活；韩国 [DEUX](../entities/xyz-deux.md)（XYZ，2026）同样押注 **三指专有手 + Glove X 1:1 采数**；自变量 [TwinDEX](../entities/twindex.md)（2026-09）把三指定为「灵巧最小可行解」并用 **7 主动 / 2 被动** 外骨骼–机械手共设计做无本体采数。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    TOP["传感与末端执行器权衡"] --> GEN["通用传感器 (MEMS IMU + 相机模组 · 汽车/消费电子规模)"]
+    GEN --> EST["间接力感知 (电机电流 · 关节扭矩估计 · 足部接触) → 算法成熟可减冗余降 BOM"]
+    TOP --> TAC["触觉传感 (指尖/掌心阵列 · 高精度灵巧手可占单手 BOM ~40%)"]
+    TOP --> EE["末端执行器构型分化"]
+    EE --> DEX["全驱动多指手 (24 DoF · 成本高 · 装配与耐久挑战大)"]
+    EE --> PRAG["务实商业形态 (两指/三指/任务夹爪: Sunday · DEUX + Glove X · TwinDEX 7主2被)"]
+```
+
 ## 关联页面
 - [灵巧手负载与核心指标](../concepts/dexterous-hand-payload-core-metrics.md)
 

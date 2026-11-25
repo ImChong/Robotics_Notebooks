@@ -88,6 +88,33 @@ summary: "2026-10-17 具身智能小站汇总的 36 篇新论文索引：按主�
 - [CALM](../entities/paper-calm-decentralized-aerial-manipulation.md)（2610.18425）— 多机协同空中搬运
 - [Cepheid](../entities/paper-cepheid.md)（2610.18871）— 跨形态运动补全
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["2026-10-17 具身论文 36 篇索引"]
+    G1["纠错、长程执行与策略改进 (6 篇)"]
+    G2["世界动作模型、世界模型与评测 (6 篇)"]
+    G3["接触、力觉与灵巧操作 (6 篇)"]
+    G4["人类视频、人形迁移与仿真 (5 篇)"]
+    G5["导航、感知与数据 (6 篇)"]
+    G6["智能体、规划与多机 (7 篇)"]
+
+    Root --> G1
+    Root --> G2
+    Root --> G3
+    Root --> G4
+    Root --> G5
+    Root --> G6
+
+    G1 --> G1a["深读: PACER · 闭环/长程: LoopWAM · ReEnvision · Orchestra · LADDER · TD-Aug"]
+    G2 --> G2a["R2-WAM · ForceWAM · WoVR+ · D3WM · RoboFQE · SonoWorld"]
+    G3 --> G3a["跟进: CTP · 力触觉/灵巧: FACT · ILA · ForeTac · DexMimic · PACT"]
+    G4 --> G4a["lambda0 · EgoMatrix · Steertuning · TRACE · RoboSimStudio"]
+    G5 --> G5a["跟进: CoSMO · 导航/建图: NavAble · GLST · MIND · I2O2I-Nav · RTISSLAM"]
+    G6 --> G6a["EmbodiedEvo · SEAR · Physical RSI · APTree · MEND · CALM · Cepheid"]
+```
+
 ## 读法提醒
 
 - 「深读 / 跟进 / 扫读」分档是公众号编辑的判断，不是本库评级。

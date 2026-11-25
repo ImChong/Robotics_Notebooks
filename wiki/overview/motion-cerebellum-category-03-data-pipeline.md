@@ -45,6 +45,20 @@ sources:
 | 23 | SUGAR | [paper-notebook-sugar-a-scalable-human-video-driven-generalizabl.md](../entities/paper-loco-manip-161-076-sugar.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 24 | GenMimic | [paper-hrl-stack-04-from-generated-human-videos-to-physi.md](../entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    VID["输入 (视频中的人体运动)"]
+    GRAV["重力对齐世界系轨迹恢复 (GVHMR / TRAM: 减少相机视角漂移)"]
+    RET["运动重定向与交互先验转换 (GMR / NMR / OmniRetarget / HumanX / HDMI / SUGAR / GenMimic)"]
+    OUT["世界系人体动作与机器人可执行训练轨迹"]
+
+    VID --> GRAV
+    GRAV --> RET
+    RET --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

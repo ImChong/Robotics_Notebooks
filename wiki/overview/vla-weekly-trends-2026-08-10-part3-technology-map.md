@@ -66,6 +66,17 @@ summary: "多模空间 2026-09-26 策展：2026.08.10–08.16 一周 VLA 第三�
 - [DreamFly](../entities/paper-dreamfly-aerial-vln.md) — arXiv:2608.12308
 - [SSP](../entities/paper-ssp-syn2sim2phy-vla-eval.md) — arXiv:2608.14024
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["一周 VLA 研究趋势 08.10–08.16 · 第三篇 (12 篇)"]
+    Hub --> B1["架构·异步切换 (3): AtomBridge, BICPO-VLA, SONIC"]
+    Hub --> B2["分析·安全 (2): VLA Task Progress, UniTexture"]
+    Hub --> B3["智驾·性能与训练 (3): FlashDrive, Temporal GRPO, FIRE-VLA"]
+    Hub --> B4["Agent·空域·评测 (4): ARIES-Mission2, ART, DreamFly, SSP"]
+```
+
 ## 与同系列第一篇的关系
 
 - [第一篇技术地图](./vla-weekly-trends-2026-08-10-part1-technology-map.md) 覆盖 **21 篇**（架构模块、世界模型、记忆等）；**第三篇 12 篇与之 arXiv 不重叠**，可并列阅读。

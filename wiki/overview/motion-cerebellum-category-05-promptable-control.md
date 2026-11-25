@@ -40,6 +40,25 @@ sources:
 | 40 | OMG | [paper-omg-omni-modal-humanoid-control.md](../entities/paper-omg-omni-modal-humanoid-control.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 41 | MotionWAM | [paper-motionwam-humanoid-loco-manipulation-wam.md](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    IN["多模态输入 (机器人状态 + 目标姿态/奖励函数/动作片段)"]
+    FB["Forward-Backward 表征学习 (未来状态访问分布压入潜空间)"]
+    PROMPT["推理编码 Latent Prompt"]
+    ACTOR["Actor 策略 (在给定状态与 Prompt 下最大化可达性)"]
+    WORK["代表工作 (BFM-Zero / MuGen / OMG / MotionWAM)"]
+    OUT["可提示调用多种全身行为"]
+
+    IN --> FB
+    IN --> PROMPT
+    FB --> ACTOR
+    PROMPT --> ACTOR
+    ACTOR --> WORK
+    WORK --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

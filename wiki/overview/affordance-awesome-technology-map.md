@@ -41,6 +41,17 @@ sources:
 
 清单沿综述的三问组织（据上游 README）：**感知**（哪个区域 affords 交互）→ **推理**（当前任务/环境/约束下哪个 affordance 相关）→ **引导动作**（如何转成可执行动作），另设数据集/基准与相关综述两组。跨角色论文交叉列出；本页每篇只保留一个节点，分组以首次出现为准。
 
+```mermaid
+flowchart LR
+    Src["Awesome-Affordance-Learning (206 篇去重节点)"] --> Q1["Perception: 哪个区域 affords 交互"]
+    Q1 --> Q2["Reasoning: 任务/环境/约束下哪个 affordance 相关"]
+    Q2 --> Q3["Action: 如何转成可执行动作"]
+    Src --> DS["Datasets / Benchmarks: EPIC-KITCHENS / GraspNet-1B / Ego4D"]
+    Src --> SV["Related Surveys: 综述与可复现性梳理"]
+    DS --> Q1
+    SV --> Q2
+```
+
 ## 工程实践
 
 - 查某方向的论文：先按上方三问定位分组，再点进条目页；已有深读页的条目直接跳转。

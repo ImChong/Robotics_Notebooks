@@ -41,6 +41,22 @@ sources:
 | 45 | X-OP | [paper-loco-manip-08-x-op.md](../entities/paper-loco-manip-08-x-op.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 46 | CLOT | [paper-amp-survey-16-clot.md](../entities/paper-amp-survey-16-clot.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    IN["输入 (源机器人或人体动作 + 目标机器人形态)"]
+    TRANS["跨本体运动迁移 (动作意图 / 接触 / 根部运动映射)"]
+    WBT["预训练 Whole-Body Tracker 迁至新身体"]
+    WORK["代表工作 (Any2Any / TWIST / TWIST2 / X-OP / CLOT)"]
+    OUT["目标机器人可跟踪轨迹与低成本跨机遥操作"]
+
+    IN --> TRANS
+    TRANS --> WBT
+    WBT --> WORK
+    WORK --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

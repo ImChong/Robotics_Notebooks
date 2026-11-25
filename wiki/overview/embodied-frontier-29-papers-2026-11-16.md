@@ -87,6 +87,17 @@ summary: "2026-11-16 具身智能导览 29 篇论文的独立详情索引，按�
 - 有些项目只公开局部源码、数据或模型；源节点健康度 **3/3 只反映结构化来源、阅读骨架与原文标记**，不等于论文推理/真机实验已复现。
 - 论文版本可能更新，项目权限和资源公开状态也可能变化。阅读时应以官方原始材料核对当前版本。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["2026-11-16 具身智能 29 篇导览"] --> P1["策略输出与接口: ActionCodec2 / JustRUA / STVLA / Reins / Physical Action Model Training"]
+    Root --> P2["可比性与困难评测: ManiLadder (四级难度校准)"]
+    Root --> P3["运动控制与仿真生成: BlinkMimic / Elastra / Alloy / BWM-Forge / GenGenIK / VOKE"]
+    Root --> P4["示教采集与人机接力: HALO / VIM / CrowdMAPS / FLUX-mimic / DexRemo"]
+    Root --> P5["导航、规划与系统集成: ARTS / SPARC / Hibikino-Musashi@Home / NSDL / BAMOS / VINE / PreNav / MOSAIC / Robo-SWE"]
+```
+
 ## 关联页面
 
 - [ActionCodec2：低延迟动作编码](../entities/paper-actioncodec2-streaming-action-tokenizer.md)

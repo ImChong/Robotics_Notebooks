@@ -53,6 +53,33 @@ sources:
 5. **WT-UMI**：接触质量、受力与分布 **直接改变** 后续动作。
 6. **CEER / Pro-HOI / CWI**：接触属于 **全身控制接口**，不能只压在手部局部。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Q["核心问题 (接触如何写成策略输入或控制信号)"]
+    R1["接触标签与场景图 (SceneBot)"]
+    R2["接触流时序 CF (OmniContact)"]
+    R3["身体-手协同残差 (CoorDex)"]
+    R4["头手目标与主动感知 (HALOMI)"]
+    R5["全身触觉图像与力监督 (WT-UMI)"]
+    R6["全身控制接口 (CEER EE-根部 / Pro-HOI 根节点 / CWI 复合模仿)"]
+    OUT["Loco-Manip 策略与全身控制闭环"]
+
+    Q --> R1
+    Q --> R2
+    Q --> R3
+    Q --> R4
+    Q --> R5
+    Q --> R6
+    R1 --> OUT
+    R2 --> OUT
+    R3 --> OUT
+    R4 --> OUT
+    R5 --> OUT
+    R6 --> OUT
+```
+
 ## 关联页面
 
 - [SceneBot](../entities/paper-scenebot.md)

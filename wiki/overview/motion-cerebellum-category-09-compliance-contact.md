@@ -41,6 +41,22 @@ sources:
 | 63 | Thor | [paper-hrl-stack-42-thor.md](../entities/paper-hrl-stack-42-thor.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 64 | WT-UMI | [paper-loco-manip-07-wt-umi.md](../entities/paper-loco-manip-07-wt-umi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    IN["输入 (示例动作 + 本体状态 + 期望柔顺程度)"]
+    REF["离线优化或扰动生成带外力与刚度条件的柔顺参考"]
+    POL["训练带刚度条件的全身跟踪策略"]
+    DEP["部署调节刚度命令 (软/硬身体响应切换)"]
+    WORK["代表工作 (SoftMimic / CHIP / GentleHumanoid / Thor / WT-UMI)"]
+
+    IN --> REF
+    REF --> POL
+    POL --> DEP
+    DEP --> WORK
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

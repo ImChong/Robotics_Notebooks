@@ -49,6 +49,23 @@ sources:
 | 36 | SafeWBC（`arXiv:2605.25546`；`dyroshumanoid/safeWBC`） | [paper-motion-cerebellum-safewbc.md](../entities/paper-motion-cerebellum-safewbc.md) | [catalog](../../sources/papers/motion_cerebellum_survey_36_safewbc.md) |
 | 37 | SafeFall | [paper-hrl-stack-41-safefall.md](../entities/paper-hrl-stack-41-safefall.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    REF["参考运动 + 物理一致性约束"]
+    FIX["修正参考轨迹 (对齐动力学接触 / 速度 / 根部运动)"]
+    TRK["通用全身跟踪基座 (OmniTrack / BeyondMimic / SONIC / HoloMotion-1 / HumanoidGPT / M3imic / RGMT / Any2Track)"]
+    SAFE["数据筛选与约束安全机制 (LIMMT / Stubborn / ConstrainedMimic / SafeWBC / SafeFall)"]
+    OUT["物理可执行的全身跟踪策略"]
+
+    REF --> FIX
+    FIX --> TRK
+    FIX --> SAFE
+    TRK --> OUT
+    SAFE --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

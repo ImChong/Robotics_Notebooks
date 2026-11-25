@@ -52,6 +52,19 @@ sources:
 | Genie Sim 3.0 | **刚体/场景级** 仿真训练与 benchmark |
 | GE-Sim 2.0 | **视频世界模型** 闭环 rollout 与内置 critic |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["智元仿真与世界模型分工"] --> GS["Genie Sim 3.0: 刚体/场景级仿真训练与 benchmark"]
+    Root --> GE["GE-Sim 2.0: 视频世界模型闭环 rollout"]
+    GE --> Act["动作条件建模 (动作后环境随之变化)"]
+    Act --> Loop["世界模拟器训练场 (Eval / RL / Teleop in WM)"]
+    Loop --> Critic["内置通用奖励模型 (文本评估生成状态)"]
+    Critic --> Loop
+    Loop --> Verify["真机交互替代能力仍待迁移验证"]
+```
+
 ## 关联页面
 
 - [世界模型训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md)

@@ -71,6 +71,16 @@ sources:
 - **[NaVid](../entities/paper-vln-10-navid.md)**（RSS 2024）：本文盘点第 10 篇，Vicuna-7B 视频流导航。
 - **Uni-NaVid**（RSS 2025）：[四范式复现路径](./vln-open-source-repro-paradigms.md) 中的导航 VLA 开源栈，**不同论文、不同仓库**。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    P1["1. 预训练范式: PREVALENT (三元组 Masked LM + 动作预测)"] --> P2["2. 历史建模: VLN-BERT (状态压缩) -> HAMT (完整历史 ViT)"]
+    P2 --> P3["3. 拓扑规划: DUET (离散双尺度图) -> ETPNav (连续三模块串联)"]
+    P3 --> P4["4. 数据扩展: ScaleVLN (HM3D/Gibson 490 万对)"]
+    P4 --> P5["5. VLM 融合: NaVid (视频流 + Vicuna-7B 端到端)"]
+```
+
 ## 关联页面
 
 - [VLN 10 篇技术地图](./vln-10-papers-technology-map.md)

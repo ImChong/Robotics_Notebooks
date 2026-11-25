@@ -43,6 +43,16 @@ sources:
 | 角色 | **新一轮真实 IL 数据入口** | 基于 Agibot-World 的 **世界模型生成评测** |
 | 采集 | 精灵 G2 + 多模态传感 + 力控/遥操作 | 评测子集与协议 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Cap["精灵 G2 + 多模态传感 (RGB-D / IMU / LiDAR) + 力控/遥操作"] --> Scene["真实采集覆盖: 杂乱场景 / 遮挡 / 动态干扰 / 失败与修正"]
+    Scene --> Entry["AGIBOT WORLD 2026 (真实 IL 数据入口)"]
+    Entry --> IL["模仿学习策略训练"]
+    Entry --> Eval["EWMBench (世界模型生成评测子集与协议)"]
+```
+
 ## 关联页面
 
 - [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md)

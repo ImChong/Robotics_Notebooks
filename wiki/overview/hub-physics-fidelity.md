@@ -47,6 +47,22 @@ summary: "仿真物理保真度知识链汇总：从几何/URDF 精度 → 刚�
 
 需要结构、热或流体分析时，转到 [CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md)，可从 [FEMIS Skill](../entities/test1card-femis-skill.md) 查看验证证据流程、从 [ParaView MCP](../entities/llnl-paraview-mcp.md) 查看后处理反馈。CAE/CFD 的网格、材料和边界验证与本页的模型保真度问题相接；这些工具不替代用于策略训练的刚体接触仿真器。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    L1["1. 几何与 URDF 精度 (几何 / 连杆惯量)"]
+    L2["2. 刚体动力学算法 (ABA / RNEA / 浮动基与质心动力学)"]
+    L3["3. 接触与摩擦模型 (Contact Dynamics / 关节摩擦模型)"]
+    L4["4. 执行器与可微补偿 (可微仿真 / 摩擦补偿 / BAM / SAGE)"]
+    SimReal["与 DR (域随机化) & SysID (系统辨识) 互补缩小 Sim2Real Gap"]
+
+    L1 -->|"几何/惯量误差放大"| L2
+    L2 -->|"长视界稳定性"| L3
+    L3 -->|"打滑/抖动"| L4
+    L4 -->|"力矩跟踪精度"| SimReal
+```
+
 ## 与其他知识链的关系
 
 - **[Sim2Real](./hub-sim2real.md)**：物理保真度是缩小 sim2real gap 的「建准」一侧，与域随机化/系统辨识互补。

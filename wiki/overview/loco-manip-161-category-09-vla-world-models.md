@@ -70,6 +70,23 @@ sources:
 - **System 2 + System 1 快慢解耦**：如 GR00T N1（arXiv:2503.14734）将预训练 VLM（低频语义/状态表征）与 flow-matching / diffusion 动作头（高频动作块生成）耦合成双系统闭环。
 - **世界模型与执行耦合**：如 Genie Envisioner、PhysiFlow 等引入视频/潜空间未来状态预测或隐式动力学先验，提升复杂交互与长程规划鲁棒性。
 
+```mermaid
+flowchart TD
+    DATA["跨本体真机与合成数据供给 (AgiBot World Colosseo / DIAL / MetaWorld-X / LEGS)"]
+    SYS2["高层语义推理与世界建模 (VLM System 2 / Gemini Robotics / Genie Envisioner / PhysiFlow / 世界行动模型)"]
+    SYS1["高频动作块与通用策略头 (System 1 DiT / GR00T N1 / LingBot-VLA / OpenHLM / Psi0 / REFINE-DP / ROVE)"]
+    IFACE["高层轨迹接口 (5-30 Hz 末端位姿或子目标轨迹)"]
+    WBC["底层 WBC 与通用动作小脑 (50-500 Hz 关节指令重采样与安全约束)"]
+    EXEC["人形双臂与全身物理执行"]
+
+    DATA --> SYS2
+    DATA --> SYS1
+    SYS2 --> SYS1
+    SYS1 --> IFACE
+    IFACE --> WBC
+    WBC --> EXEC
+```
+
 ## 工程实践
 
 - **带宽与接口匹配**：高层 VLA / WM 输出典型为 5–30 Hz 的末端位姿或子目标轨迹，必须经底层全身控制（WBC）或高频运动小脑重采样至 50–500 Hz 关节指令，才能避免人形失稳。

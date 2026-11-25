@@ -85,6 +85,20 @@ summary: "senlanke 具身运控lab 10-19–10-23 人形/四足周报：39 条论
 | 4 | [Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助空地双足小跑](../entities/paper-thrust-assisted-trotting-legged-aerial-qp-mpc.md) | [2610.26810](https://arxiv.org/abs/2610.26810) | 新建 |
 | 5 | [A2I-Calib++：面向腿式机器人全身多 IMU 的运动学驱动抗噪主动标定](../entities/paper-a2i-calib-plus-multi-imu-legged-calibration.md) | [2610.29438](https://arxiv.org/abs/2610.29438) | 新建 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["senlanke 10-19–10-23 人形/四足周报 (39 篇)"] --> Hum["人形机器人 (30 篇)"]
+    Root --> Quad["四足机器人 (4 篇)"]
+    Root --> Wheel["轮足与通用腿式 (5 篇)"]
+    Hum --> H1["全身控制与避障/起身 (SWAP / SuperMimic / SP-HLM / RISE / ACP)"]
+    Hum --> H2["动作重定向与遥操作 (Fast Retargeting / SMR / HuMiT / G1Exo)"]
+    Hum --> H3["世界模型、移动操作与手部硬件 (Ropedia W0 / WholeBodyMem / LocoManiLab / PHD-Hand)"]
+    Quad --> Q1["空地协同 SCCM / Spot 自主砌砖 / LocoPilot 遥操作 / 月球重力跳跃 RL"]
+    Wheel --> W1["SkateNav 滑行导航 / Wheel Uncertainty LIO / RoboMMT / 推力辅助小跑 / A2I-Calib++"]
+```
+
 ## 关联页面
 
 - [locomotion](../tasks/locomotion.md)

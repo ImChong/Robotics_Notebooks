@@ -41,6 +41,23 @@ summary: "接触力控知识链汇总：从接触感知/估计 → 力旋量表�
 | ③ 力位控制 | 力控基础与力位混合 | [Force Control Basics](../concepts/force-control-basics.md) · [Impedance Control](../concepts/impedance-control.md) · [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md) |
 | ④ 操作策略 | 接触丰富操作与视触觉 | [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) · [Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    S1["1. 接触感知与估计 (Contact Estimation / 视触觉融合)"]
+    S2["2. 力旋量表示 (Contact Wrench Cone / 六维力矩)"]
+    S3["3. 力位控制 (Impedance / Admittance / Hybrid F/P)"]
+    S4["4. 接触丰富操作策略 (Contact-Rich Manipulation)"]
+    Env["物理接触交互 (受闭环带宽/刚度/时延约束)"]
+
+    S1 -->|"接触位置与状态"| S2
+    S2 -->|"作用力与约束锥"| S3
+    S3 -->|"柔顺指令与力跟踪"| S4
+    S4 -->|"环境交互"| Env
+    Env -->|"反作用力与感知反馈"| S1
+```
+
 ## 与其他知识链的关系
 
 - **[触觉 (Tactile)](./hub-tactile.md)**：触觉侧重「摸得着」的感知模态，本知识链侧重「稳得住」的控制闭环，二者在感知层交叠、在控制层互补。

@@ -44,6 +44,27 @@ summary: "真机安全微调知识链汇总：Sim2Real 部署后的在线 RL 适
 | 形式化 | 安全 LoRA 投影 | [Safe LoRA Update Projection](../formalizations/safe-lora-update-projection.md) |
 | 实例 | SLowRL | [SLowRL Paper Entity](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Base["Sim2Real 已有基线策略"]
+    Opt1["参数低秩微调: SLowRL (Safe LoRA 投影) / 残差微调"]
+    Opt2["执行层安全壳: CBF / CLF / ISSf-CBF Safety Filter (SafeWBC)"]
+    Opt3["闭权重托管 API: CLIFT (闭环 SFT 微调)"]
+    Guard["硬件功率封顶 + 停机 / 护摔 Recovery 兜底"]
+    Real["真机在线安全优化闭环"]
+
+    Base --> Opt1
+    Base --> Opt2
+    Base --> Opt3
+    Opt1 --> Guard
+    Opt2 --> Guard
+    Opt3 --> Guard
+    Guard --> Real
+    Real -->|"在线反馈"| Base
+```
+
 ## 与其他知识链的关系
 
 - **[Sim2Real](./hub-sim2real.md)**：安全微调是部署链延伸。

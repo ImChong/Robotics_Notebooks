@@ -43,6 +43,14 @@ original:
 - **验证与证据层：** 网格独立性、契约、残差/守恒量检查和可复现输出，用来判断自动化步骤是否有据可查。
 - **专用工作流：** 设计优化、CAD 建模、科研写作等特定任务闭环。
 
+```mermaid
+flowchart LR
+    Cat["资源目录与技能集合 (Awesome AI CAE / HPC-Skills / CAE Agent Hub)"] --> Skill["专用工作流与 Skill 流程指导 (CFD OpenFOAM / 结构 FEA / CAD 建模)"]
+    Skill --> Exec["执行连接层: MCP / CLI / 插件 (COMSOL / Ansys / FreeCAD / ParaView)"]
+    Exec --> Verify["验证与证据层 (网格独立性 / 契约 / 残差与守恒量 / 可复现日志)"]
+    Vendor["厂商内置智能体: Ansys 2026 R1 (Mesh / Validation Agent, 独立于 53 个社区仓)"] -.-> Verify
+```
+
 ## 在机器人知识主线中的位置
 
 | 读者的问题 | 主干入口 | 本页工具的角色 |

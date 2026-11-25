@@ -50,6 +50,26 @@ sources:
 - **GRAIL / Humanoid-DART：** 数字资产或扩散 **扩大可训练目标空间**。
 - **LEGS / OASIS / SIMPLE：** **基础设施侧**——场景外观、仿真闭环与接触动力学采集。
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    NEED["长尾接触场景数据缺口"]
+    V["视频生成先验驱动 HOI (GenHOI / Imagine2Real / 对照: NCKU 合成视频 RL 跟踪)"]
+    D["3D 资产与扩散扩展目标空间 (GRAIL / Humanoid-DART)"]
+    I["场景渲染与仿真闭环基建 (LEGS 高斯场景 / OASIS 仿真 DR / SIMPLE 动力学渲染一体化)"]
+    CHECK["物理一致性验证 (脚底打滑 / 物体支撑 / 重心边界)"]
+    OUT["可恢复、可跟踪、可训练的接触轨迹"]
+
+    NEED --> V
+    NEED --> D
+    NEED --> I
+    V --> CHECK
+    D --> CHECK
+    I --> CHECK
+    CHECK --> OUT
+```
+
 ## 关联页面
 
 - [Loco-Manip 8 篇 · 生成与仿真](./loco-manip-category-02-synthetic-data.md)

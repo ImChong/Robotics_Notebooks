@@ -144,6 +144,18 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 | VLN-CE | 2026-09 | [entities/paper-vln-02-vln-ce.md](../entities/paper-vln-02-vln-ce.md) |
 | DAgger | 2026-08 | [methods/dagger.md](../methods/dagger.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    CORE["亮源三博客共性方法论: 用仿真与蒸馏放大少量真实经验"] --> B1["LightNav-0 (导航线 · 已开源代码/权重)"]
+    CORE --> B2["LightParkour (跑酷线 · 全身感知运动蒸馏)"]
+    CORE --> B3["Light REACT (韧性控制线 · 受损恢复与 ICL)"]
+    B1 --> B1D["Light-O1 预训练 → R2S2R (2000+ 场景) → ER + SFT (Point CoT + RVQ) → GRPO → 单目 RGB 部署"]
+    B2 --> B2D["初始动作 → 物理修正接触 → 升高障碍 (45-75 cm) → 多专家 DAgger → 深度视觉学生 (50 Hz)"]
+    B3 --> B3D["韧性金字塔 → 6x PPO+AMP 教师 (21 维受损标记) → 多教师 DAgger (64 帧 Transformer) → 偏好对齐 RL"]
+```
+
 ## 关联页面
 
 - [亮源新创（Light Origins）](../entities/light-origins.md)

@@ -38,6 +38,18 @@ sources:
 | 02 | Canonical Policy | [paper-tro-manip-02-canonical-policy.md](../entities/paper-tro-manip-02-canonical-policy.md) | [source](../../sources/papers/tro_manip_survey_02_canonical_policy.md) |
 | 03 | DexRepNet++ | [paper-tro-manip-03-dexrepnet-plus-plus.md](../entities/paper-tro-manip-03-dexrepnet-plus-plus.md) | [source](../../sources/papers/tro_manip_survey_03_dexrepnet_plus_plus.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Q["几何对称与手物空间表征"] --> Grip["平行夹爪场景: SE(3) 等变点云策略"]
+    Q --> Dex["灵巧手场景: 指节-物体表面相对几何 (HOI)"]
+    Grip --> C["Canonical Policy"]
+    Dex --> D["DexRepNet++"]
+    C --> Out["提升操作 OOD 泛化能力"]
+    D --> Out
+```
+
 ## 关联页面
 
 - [T-RO 5 篇技术地图](./tro-manip-5-papers-technology-map.md)

@@ -78,6 +78,26 @@ summary: "senlanke 具身运控lab 10-26–10-30 人形/四足周报：33 条论
 | 6 | [Echo（离策略视觉 RL）：Echo：利用离策略经验扩展视觉强化学习](../entities/paper-echo-visual-rl-off-policy-experience.md) ★ | [2610.37865](https://arxiv.org/abs/2610.37865) | 新建 |
 | 7 | [OmniQuad：采用全向轮的轮腿混合机器人](../entities/paper-omniquad-wheeled-legged-omnidirectional.md) ★ | [2610.38502](https://arxiv.org/abs/2610.38502) | 新建 |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["senlanke 10-26–10-30 人形/四足周报 (33 篇)"]
+    Hub --> H["人形机器人 (17 篇)"]
+    Hub --> Q["四足机器人 (9 篇)"]
+    Hub --> WL["轮足与通用腿式机器人 (7 篇)"]
+    H --> H1["全身控制与跟踪: MAPO/FLoRe, GRAFT, FORGE, METATRON, SONIC-K1"]
+    H --> H2["移动操作与交互: Zero-HLM, HumiMimic, ActiveAlign, DEX-PHD"]
+    H --> H3["高动态与灵巧手: REACH, HC2Robot, Humanoid Dodgeball, 连杆灵巧手"]
+    Q --> Q1["运动与安全控制: 连续时间安全规划, 可训练 CPG, RAIBO-Wagon"]
+    Q --> Q2["感知诊断与环境设计: 位姿估计, 传感器修复, UED 基准, MUSBRIC"]
+    WL --> WL1["接触建模与协同设计: Differentiable Contact, 月球单足, OmniQuad"]
+    WL --> WL2["记忆与视觉 RL: RememberWhereYouWalk, TACOS, Echo"]
+    H1 --> Sink["唯一 arXiv 详情节点 (新建 23 / 复用 10)"]
+    Q1 --> Sink
+    WL1 --> Sink
+```
+
 ## 关联页面
 
 - [locomotion](../tasks/locomotion.md)

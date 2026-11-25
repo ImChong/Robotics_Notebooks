@@ -89,6 +89,34 @@ summary: "具身智能小站 2026-11-10 的 22 篇论文阅读坐标：失败诊
 | 21 | 扫读 | [世界模型上机运行，先看数据搬运的代价](../entities/paper-wmpa-world-model-planning-accelerator.md) | [2611.10316](https://arxiv.org/abs/2611.10316) | 新建 |
 | 22 | 扫读 | [让社交机器人按情境说好第一句话](../entities/paper-proactive-conversation-opener-cco.md) | [2611.09906](https://arxiv.org/abs/2611.09906) | 新建 |
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["11-10 22 篇论文阅读坐标"]
+    F1["失败诊断与纠错"]
+    F2["导航规划与安全控制"]
+    F3["跨形态与人形"]
+    F4["触觉、工具与抓取"]
+    F5["世界模型与硬件"]
+    F6["数据集与人机交互"]
+
+    Root --> F1
+    Root --> F2
+    Root --> F3
+    Root --> F4
+    Root --> F5
+    Root --> F6
+
+    F1 --> F1a["深读: A2-MEAS (监督残差纠错)"]
+    F2 --> F2a["跟进: TPS-A* · 被动折叠四旋翼"]
+    F2 --> F2b["CPNAV · LACART · DexDICE · EmbodiedIntentBench · DobotTrack"]
+    F3 --> F3a["BATCH · SUGARv2 · 统一惯性编码器 · SimDuoReal · DKWBC"]
+    F4 --> F4a["TouchAnnotator · DexWriting · Grasp-TAGS · ToolDex"]
+    F5 --> F5a["Tiresias · WMPA"]
+    F6 --> F6a["柔性条带四视角数据集 · 投入度评测 · 主动开场白数据集"]
+```
+
 ## 关联页面
 
 - [具身运控lab：11.09–11.13 人形／四足 29 篇阅读坐标](./humanoid-quadruped-2026-11-09-13-29-papers.md)

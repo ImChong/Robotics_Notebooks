@@ -66,6 +66,20 @@ sources:
 | 学术对照 | [robot-world-models-training-loop-taxonomy](./robot-world-models-training-loop-taxonomy.md) 中「策略内预测」与「可控视频生成」的部分实例落在此组 |
 | 姊妹路线 | [02 联合架构](./world-models-route-02-joint.md)、[03 虚拟沙盒](./world-models-route-03-virtual-sandbox.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Obs["当前观测与指令"] --> WM["阶段 1: 世界预测模块 (视频 / 4D / 潜特征)"]
+    WM --> Dec["阶段 2: 逆动力学 IDM 或轻量动作头"]
+    Dec --> Act["机器人控制动作输出"]
+    WM --> Rep1["4D 场景重建: TesserAct"]
+    WM --> Rep2["视频扩散表征 + IDM: VPP, mimic-video"]
+    WM --> Rep3["无标签视频潜在动作: LaPA, villa-X"]
+    WM --> Rep4["模块化视频+动作扩散: Video Generators are Robot Policies"]
+    WM -.-> Ext["路线外延: Masked Visual Actions (逆设定+IDM) / ODEWorld (物理时间 ODE 子目标)"]
+```
+
 ## 关联页面
 
 - [世界模型 15 项目技术地图](./world-models-15-open-source-technology-map.md)

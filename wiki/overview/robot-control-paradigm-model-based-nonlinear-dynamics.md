@@ -43,6 +43,18 @@ sources:
 
 动力学方程 $\tau = M(q)\ddot{q} + C(q,\dot{q})\dot{q} + g(q)$；CTC 用模型计算前馈力矩并叠加 PD 消除残差；反馈线性化通过微分同胚消非线性。
 
+```mermaid
+flowchart LR
+    Ref["期望轨迹 (q_d, dq_d, ddq_d)"] --> Model["逆动力学模型计算 (RNEA / Pinocchio: M, C, g)"]
+    Ref --> Err["跟踪误差"]
+    State["当前状态 (q, dq)"] --> Model
+    State --> Err
+    Model --> FF["非线性前馈力矩抵消 (CTC / IDC / 反馈线性化)"]
+    Err --> PD["PD 反馈消除残差"]
+    FF --> Sum["合成关节控制力矩"]
+    PD --> Sum
+```
+
 ## 代表性算法
 
 | 算法 | 节点 |

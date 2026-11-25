@@ -51,6 +51,18 @@ related:
 | 对比 | LiDAR SLAM 选型 | [LiDAR SLAM / LIO / VIO Selection](../comparisons/lidar-slam-lio-vio-selection.md) |
 | 导航栈 | SLAM 与自主导航 | [Navigation SLAM Autonomy Stack](./navigation-slam-autonomy-stack.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Sens["多传感器输入 (IMU / 编码器 / 相机 / LiDAR / 相控阵雷达 AERIS-10)"]
+    Calib["时空标定与融合 (OmniCalib · EKF/UKF vs 优化估计 · Ultra-Fusion · X-IONet · FOCUS)"]
+    Geom["里程计与几何建图 (VIO / LIO / SLAM · StreamRig · SLAMFormer-∞ · LingBot-Map · VGGT 综述)"]
+    Out["状态输出 (位姿 / 速度 / 接触估计 / 地形隐表征 -> Locomotion 与导航)"]
+
+    Sens --> Calib --> Geom --> Out
+```
+
 ## 与其他知识链的关系
 
 - **[Locomotion](./hub-locomotion.md)**：感知式越障依赖状态估计。

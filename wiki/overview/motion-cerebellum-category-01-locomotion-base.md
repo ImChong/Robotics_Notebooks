@@ -46,6 +46,22 @@ sources:
 | 09 | TAGA | [paper-motion-cerebellum-taga.md](../entities/paper-motion-cerebellum-taga.md) | [catalog](../../sources/papers/motion_cerebellum_survey_09_taga.md) |
 | 10 | SSR | [paper-ssr-humanoid-open-world-traversal.md](../entities/paper-ssr-humanoid-open-world-traversal.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    IN["输入 (导航速度或路径参考 / 地形几何 / 机器人状态)"]
+    PROJ["参考轨迹投影至可落脚地形"]
+    RL["低层 RL 步态策略训练 (跟踪 SE(2) 速度接口)"]
+    WORK["代表工作 (GuideWalk / T-GMP / PerceptiveBFM / MARCH / AMS / OmniXtreme / PHP / Deep Whole-body Parkour / TAGA / SSR)"]
+    OUT["标准导航栈可调用的人形地形自适应步态底座"]
+
+    IN --> PROJ
+    PROJ --> RL
+    RL --> WORK
+    WORK --> OUT
+```
+
 ## 关联页面
 
 - [运动小脑技术地图](./humanoid-motion-cerebellum-technology-map.md)

@@ -831,6 +831,26 @@ sources:
 - 清单里混有非 arXiv 链接（OpenReview / IEEE），这类条目按标题收录，可能与同一工作的 arXiv 版分列两处。
 - 上游清单仍在更新，本页是 2026-09-15 的快照；最新条目以上游仓库为准。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["Awesome World Models 技术地图 (571 篇)"]
+    Root --> Paradigm["按建模范式 (41-47)"]
+    Root --> Usage["按用途与领域 (51-85)"]
+    Root --> Support["配套机制、平台与理论 (101-117 & Surveys)"]
+    Paradigm --> Pa1["41 语言 & 46 符号神经符号"]
+    Paradigm --> Pa2["42 视觉/视频 & 43 3D/4D"]
+    Paradigm --> Pa3["44 潜空间 (JEPA/DINO) & 45 物体中心"]
+    Paradigm --> Pa4["47 通用基础世界模型 (Cosmos, Genie, UniSim)"]
+    Usage --> U1["51-52 交互框架与游戏/开放世界"]
+    Usage --> U2["61-63 级联/联合 WAM 与 VLA 训练评估"]
+    Usage --> U3["71-73 经典 Dreamer/TD-MPC2 与 MBRL"]
+    Usage --> U4["81-85 机器人、自动驾驶、GUI、科学与社会仿真"]
+    Support --> S1["101-103 记忆机制、后训练与实时推理"]
+    Support --> S2["111-117 仿真平台、可微物理、基准与综述"]
+```
+
 ## 关联页面
 
 - [Awesome World Models（列表实体）](../entities/awesome-world-models.md)

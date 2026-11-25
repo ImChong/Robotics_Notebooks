@@ -88,6 +88,17 @@ original:
 - **错把语言泛化瓶颈全怪上层大模型：** 若底层跟踪器本身缺乏跨接触恢复与抗扰鲁棒性，语义或规划输出再准也无法落地真机。
 - **开环规划级联触发累积曝光偏差：** 仅靠一次性运动生成而不闭合本体感知反馈（如未用 scheduled prefix rollout），微小误差会在长程执行中迅速滚雪球跌倒。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    High["上层低频推理与规划: LLM / VLA / 引导扩散 (异步 GPU)"] --> Iface["层次接口: 技能 Token / Latent Verbs / Action Chunk / 引导参考帧 (采样同步与缓冲)"]
+    Iface --> Low["下层高频物理执行: 50 Hz WBC 跟踪器 / 技能执行器 (机载实时 CPU/ONNX)"]
+    Low --> Prop["本体感知反馈闭合 (防曝光偏差)"]
+    Prop --> High
+    Low --> Works["代表工作: SENTINEL / BeyondMimic / LeVerb / LangWBC / TokenHSI / CloSD / UniPhys / UniHSI"]
+```
+
 ## 关联页面
 
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)

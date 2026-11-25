@@ -58,6 +58,19 @@ summary: "飞书 Know-How 开篇趋势判断：三年从 MPC 传统栈到 BFM �
 - **飞书正文为作者观点 + 参考文献插图**，非系统综述；需与 arXiv/会议论文交叉验证。
 - **趋势快变**：2026 中的判断需按季度回看 [log.md](../../log.md) 与新技术地图。
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    EVO["运控范式演进 (约三年视角)"] --> P1["传统主干: MPC + WBC"]
+    P1 --> P2["腿足催化剂: RL 数据驱动与 Sim2Real"]
+    P2 --> P3["扩展前瞻: BFM 运控大模型 (上层接 VLA · 真机闭环仍是主战场)"]
+    CHAL["四重制约与产业挑战"] --> C1["1. 硬件未定论 (仿人 DoF / 非仿人 / 科研平台 G1)"]
+    CHAL --> C2["2. 数据 scale 与质量矛盾 (人工采集 vs 特权学习)"]
+    CHAL --> C3["3. 算法范式待演化 (监督 vs 无监督 BFM · 不同于 LLM)"]
+    CHAL --> C4["4. Benchmark 缺失 (模仿质量与有用指标尚无统一标准)"]
+```
+
 ## 关联页面
 
 - [Know-How 技术地图](./humanoid-motion-control-know-how-technology-map.md)

@@ -47,6 +47,20 @@ summary: "Paper Notebooks 分类 07：遥操作（24 篇深读笔记索引）。
 - [Whole-Body Bilateral Teleoperation with Multi-Stage Object Parameter Estimation for Wheeled Humanoid Locomanipulation](../entities/paper-notebook-whole-body-bilateral-teleoperation-with-multi-st.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation/Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation.html)
 - [iCub3 Avatar System](../entities/paper-notebook-icub3-avatar-system-enabling-remote-fully-immers.md) — 待深读
 
+## 架构与路线图
+
+```mermaid
+flowchart TD
+    Root["07 遥操作 (24 篇)"] --> Input["穿戴与视觉采集端"]
+    Root --> Retarget["重定向与全身跟踪"]
+    Root --> Haptic["双边与力触觉反馈"]
+    Root --> App["场景应用与评测基准"]
+    Input --> InputN["ACE / NuExo / Bunny-VisionPro / 视觉与 IMU"]
+    Retarget --> RetargetN["稳定性感知重定向 / CLONE / CLOT / TWIST / TWIST2 / CHILD"]
+    Haptic --> HapticN["重载双边遥操作 / 触觉遥操作 / 冲击恢复"]
+    App --> AppN["Mobile-TeleVision / TeleGate / LapSurgie / TeleOpBench"]
+```
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)

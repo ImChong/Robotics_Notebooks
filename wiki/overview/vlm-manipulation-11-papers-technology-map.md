@@ -54,6 +54,17 @@ summary: "具身智能小站 2026-09-10 十一篇盘点阅读坐标：低延迟�
 - [No Free Checker](../entities/paper-no-free-checker.md) — arXiv:2609.09250（**部分开源**）
 - [水下四足姿态控制](../entities/paper-underwater-quadruped-attitude-control.md) — arXiv:2609.09217（**部分开源**）
 
+## 架构与路线图
+
+```mermaid
+flowchart LR
+    Hub["VLM 控制与灵巧操作 (11 篇: 更快更稳)"]
+    Hub --> P1["低延迟模仿与跨视角 Latent 规划: JEPA Policy, DUET-DINO, InstantMimic"]
+    Hub --> P2["VLM 微动作接口与技能合成: Show-Harness, GTA-2"]
+    Hub --> P3["物理接地 WM 与特种控制: Semigroup-JEPA, SwingBot, 单手双件装配, PccDiffuser, 水下四足"]
+    Hub --> P4["Verifier 与可复现评测: No Free Checker"]
+```
+
 ## 关联页面
 
 - [JEPA Policy](../entities/paper-jepa-policy.md) · [Show-Harness](../entities/paper-show-harness.md)
