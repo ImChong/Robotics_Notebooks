@@ -206,6 +206,8 @@ sources:
 
 ## 关联页面
 
+- [轮式机器人地形通过性](wheeled-robot-terrain-traversability.md) — 作为轮式对照，分开验证坡道附着、台阶接触和横沟支撑。
+
 - [Locomotion](../tasks/locomotion.md)
 - [Footstep Planning](./footstep-planning.md)
 - [野外机器人排障指南](../queries/field-robotics-troubleshooting.md) — 应对非结构化地形下的感知与平衡失效
