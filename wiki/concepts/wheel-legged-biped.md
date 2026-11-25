@@ -2,7 +2,7 @@
 type: concept
 tags: [wheel-legged, biped, locomotion, hybrid, two-wheel, tita, flamingo]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-25
 related:
   - ./wheel-legged-quadruped.md
   - ../tasks/hybrid-locomotion.md
@@ -13,7 +13,10 @@ related:
   - ../entities/isaac-rl-two-wheel-legged-bot.md
   - ../entities/stackforce.md
   - ../concepts/sim2real.md
+original:
+  - ../../sources/repos/fuwei007-navbot-en01.md
 sources:
+  - ../../sources/repos/fuwei007-navbot-en01.md
   - ../../sources/repos/tita_rl.md
   - ../../sources/repos/wheel_legged_genesis.md
   - ../../sources/repos/isaac_rl_two_wheel_legged_bot.md
@@ -70,6 +73,8 @@ flowchart LR
 
 桌面级教育向轮足（非本页工业/研究机）见 [StackForce 小轮足](../entities/stackforce.md)。
 
+作为低成本经典反馈对照，NavBot-EN01 在主控上处理轮编码器与俯仰反馈，由双舵机另行改变高度和侧倾；其轮驱动的 SimpleFOC 电压模式与研究平台上的力矩接口不是一回事。此例的机械、配电与控制证据见[原文核查](../../sources/repos/fuwei007-navbot-en01.md)。
+
 ## 局限与风险
 
 - **形态名易混**：中文「轮足」常同时指四轮足与双轮足；本库用 **轮腿双足 / 双轮足** 专指两轮构型。
@@ -81,6 +86,7 @@ flowchart LR
 
 - [轮足四足机器人（四轮足）](./wheel-legged-quadruped.md) — 四条腿 + 足端轮，不要与本页混淆
 - [Hybrid Locomotion](../tasks/hybrid-locomotion.md)
+- [NavBot-EN01 桌面双轮足](../entities/navbot-en01.md)：以 ESP32、SimpleFOC 和双舵机展示本机自平衡及网页遥操作，适合作为经典反馈的小型样机对照。
 - [Locomotion](../tasks/locomotion.md)
 - [tita_rl](../entities/tita-rl.md)
 - [DDT_Lab](../entities/ddt-lab.md)
