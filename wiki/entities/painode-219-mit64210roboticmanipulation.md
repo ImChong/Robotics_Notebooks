@@ -71,6 +71,22 @@ Russ Tedrake's reference text covering perception, planning, and control for man
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 219/384)"] --> GRP["Manipulation / Courses (method)"]
+    GRP --> ENT["MIT 6.4210 — Robotic Manipulation"]
+    ENT --> TXT["Russ Tedrake 操作参考教材 (Reference Text)"]
+    TXT --> PERC["感知 (Perception)"]
+    TXT --> PLAN["规划 (Planning)"]
+    TXT --> CTRL["控制 (Control)"]
+    PERC --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    PLAN --> SYS
+    CTRL --> SYS
+    ENT -.->|"核对官方入口"| DOC["课程主页 (manipulation.csail.mit.edu)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

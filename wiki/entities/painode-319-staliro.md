@@ -65,6 +65,17 @@ Temporal-logic falsification framework for stress-testing control-system require
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #319/384)"] --> GRP["分组: Safety & Robustness (resource)"]
+    GRP --> ENT["S-TaLiRo (时序逻辑证伪框架)"]
+    ENT --> TEST["核心用途 (控制系统需求的压力测试与证伪)"]
+    ENT --> OFF["官方入口 (ASU S-TaLiRo 项目页)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / Sim2Real / VLA)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

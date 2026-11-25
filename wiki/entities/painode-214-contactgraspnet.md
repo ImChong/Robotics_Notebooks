@@ -74,6 +74,18 @@ Grasp pose generation directly from partial point clouds.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 214/384)"] --> GRP["Manipulation (method)"]
+    GRP --> ENT["Contact-GraspNet"]
+    PC["局部点云输入 (Partial Point Clouds)"] --> GEN["直接抓取位姿生成 (Grasp Pose Generation)"]
+    ENT --> GEN
+    GEN --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    ENT -.->|"核对官方仓库"| REPO["GitHub (NVlabs/contact_graspnet)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

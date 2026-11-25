@@ -43,6 +43,15 @@ sources:
 | **新定位** | 人形/机器人训练数据采集（Substack 2026-09 产业观察） |
 | **开源** | 商业产品；非开放权重/数据集 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    S["Rokoko 惯性/光学动捕套装与云服务"] --> E["SDK 采集与人体运动导出"]
+    E --> R["Motion Retargeting (处理骨架比例与关节限位)"]
+    R --> I["模仿学习 (IL) 人形/机器人示范训练数据"]
+```
+
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)

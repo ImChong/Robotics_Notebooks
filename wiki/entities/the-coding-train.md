@@ -43,6 +43,14 @@ summary: "The Coding Train 是 Daniel Shiffman 发起的创意编程学习社区
 3. 用 [ml5.js](./ml5js.md) 体验浏览器端姿态、手部、面部或音频模型。
 4. 将网页原型与机器人端分开：通过明确的网络接口传输经过校验的数据，再由有安全约束的机器人控制栈消费。
 
+```mermaid
+flowchart LR
+    Entry["官方入口 (Tracks / Coding Challenges / 直播)"] --> JS["1. JavaScript 基础 (变量 / 函数 / 事件循环)"]
+    JS --> P5["2. p5.js (画布交互与 2D/3D 可视化)"]
+    P5 --> ML5["3. ml5.js (浏览器端姿态 / 手部 / 音频模型)"]
+    ML5 -->|"网络接口 + 数据校验"| Robot["4. 机器人侧控制栈 (独立处理标定 / 延迟 / 急停)"]
+```
+
 ## 工程实践
 
 | 需求 | 合适起点 | 接入机器人前还需补足 |

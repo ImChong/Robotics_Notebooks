@@ -54,6 +54,15 @@ summary: "ROBOTIS MINI 在文中被描述为基于 DYNAMIXEL XL-320 的紧凑人
 - **README / 核查：** ROBOTIS-GIT/emanual 与 japonophile/darwin 经 git ls-remote 均可达；darwin 仓库 README 为「Darwin Mini」的 CoppeliaSim（V-REP）场景搭建说明，MIT 许可，最近提交 2020-06-20。emanual 为大型文档仓库，本次未克隆、未核对 mini 页面内容。
 - **差异与保留：** 官方设计文件的开放范围与许可未核实；darwin 仓库是 Darwin Mini 仿真示例，是否等同于 ROBOTIS MINI 的社区示例以文章为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    E["官方设计文件与文档 (ROBOTIS-GIT/emanual mini, STL/STP)"] --> H["ROBOTIS MINI 硬件套件 (DYNAMIXEL XL-320 舵机)"]
+    H --> P["编程工具与 ROS 二次开发"]
+    E --> S["社区仿真示例 (japonophile/darwin CoppeliaSim)"]
+```
+
 ## 关联页面
 
 - [humanoid-robot](../entities/humanoid-robot.md)

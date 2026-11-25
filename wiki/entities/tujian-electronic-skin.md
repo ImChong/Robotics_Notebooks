@@ -48,6 +48,16 @@ summary: "途见科技做可拉伸、多模态的电子皮肤：文章给出 0.0
 
 - 未访问企业官网或其他来源，文中数字均为作者表述，未核实。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Tujian["途见科技 (感知专精派)"] --> ESkin["可拉伸多模态电子皮肤 (0.01 N/cm2 灵敏度, >100 Hz, 含温度感知)"]
+    Zhaowei["兆威机电 (微型传动投资方)"] -->|"传动与感知整合"| Hand["灵巧手整手系统"]
+    ESkin --> Hand
+    Hand --> Challenge["工程约束 (阵列一致性 / 温漂与反复受力稳定性)"]
+```
+
 ## 关联页面
 
 - [tactile-sensing](../concepts/tactile-sensing.md)

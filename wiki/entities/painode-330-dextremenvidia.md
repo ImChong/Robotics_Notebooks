@@ -81,6 +81,18 @@ Sim-to-real dexterous in-hand manipulation on the Allegro hand using massively p
 
 **不适用**（本页未逐仓核对 README 里的训练 / 推理入口；清单标注的仓库链接可能滞后，复现前请先打开项目页核对）。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #330/384)"] --> GRP["分组: Sim-to-Real (paper)"]
+    GRP --> ENT["DeXtreme (NVIDIA)"]
+    ENT --> PIPE["核心路线 (大规模并行 GPU 仿真 + Allegro 手掌内灵巧操作)"]
+    PIPE --> SIM["Sim-to-Real 迁移"]
+    ENT --> OFF["项目入口 (dextreme.org)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / Sim2Real / Locomotion)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

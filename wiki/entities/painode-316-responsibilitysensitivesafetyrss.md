@@ -65,6 +65,17 @@ Formal safety model for decision-making in autonomous systems.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #316/384)"] --> GRP["分组: Safety & Robustness (resource)"]
+    GRP --> ENT["Responsibility-Sensitive Safety (RSS)"]
+    ENT --> MOD["核心定位 (自主系统决策的形式化安全模型)"]
+    ENT --> OFF["官方入口 (Mobileye RSS 技术页)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / Sim2Real / VLA)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

@@ -79,6 +79,21 @@ summary: "Sutton & Barto《Reinforcement Learning: An Introduction》是 RL 领�
 | Ch.9 on-policy 预测与控制 | PPO/Actor-Critic 理论背景；实验谱系见 [Cartpole](../concepts/cartpole.md) |
 | Ch.17 规划与学习 | [Model-Based RL](../methods/model-based-rl.md) |
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    Hist["Ch.1 §1.6 RL 历史 (三线汇合)"] --> MDP["Ch.3 有限 MDP 框架"]
+    MDP --> DP["Ch.4 动态规划 (Bellman 备份)"]
+    MDP --> MC["Ch.5 Monte Carlo (完整 Episode)"]
+    MDP --> TD["Ch.6-7 TD Learning 与 Eligibility Traces (衔接 GAE)"]
+    DP --> Approx["Ch.8-9 函数逼近与 On-policy 控制 (策略梯度 / Actor-Critic / Cartpole)"]
+    MC --> Approx
+    TD --> Approx
+    Approx --> Plan["Ch.17 规划与学习 (Model-Based RL)"]
+    Plan --> Comp["理论参照系 + 工程补完 (蘑菇书 / Spinning Up)"]
+```
+
 ## 常见误区或局限
 
 - **不是工程手册**：不含 Isaac Lab / MuJoCo 部署细节；需搭配 [蘑菇书](./hands-on-rl-book.md) 或 Spinning Up。

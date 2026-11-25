@@ -71,6 +71,19 @@ Austin Lyons. Semiconductors, AI, and robotics strategy. Excellent "Robots That 
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 228/384)"] --> GRP["Newsletters & Blogs (community)"]
+    GRP --> ENT["Chipstrat"]
+    ENT --> AUTH["作者: Austin Lyons"]
+    AUTH --> COV["半导体、AI 与机器人战略 (Semiconductors, AI & Robotics Strategy)"]
+    COV --> SER["机器人计算机视觉专栏 (Robots That See Series)"]
+    SER --> SYS["站内关联主题 (ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["官网 (chipstrat.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

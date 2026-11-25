@@ -51,6 +51,19 @@ sources:
 | **部署** | 2 周、10 天 × 4 h；**2103** 书架；**26** 次人工干预（<5 min/次） |
 | **开源** | **未开源**（[项目页](https://scanford-robot.github.io/) 无代码仓） |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Platform["Franka FR3 + TidyBot++ 移动底座 (宽约 21 in)"] --> Control["预定义货架高度序列 + 每停前进 0.3 m"]
+    Lidar["底座 Unitree L2 LiDAR"] -->|"平面拟合校正漂移"| Control
+    WristCam["腕部 RealSense D435 (RGB-D)"] --> VLM["VLM 识别中/日/韩书脊标题与索书号"]
+    Catalog["图书馆目录 (Sectional Catalog RAG)"] -->|"约束候选书目"| VLM
+    VLM -->|"自动标注脏/破损/多语言图像"| Dataset["RPDF 策展训练数据"]
+    Human["人工干预 (26 次, <5 min/次)"] -->|"异常兜底"| Dataset
+    Dataset -->|"持续微调感知模型"| VLM
+```
+
 ## 与其他页面的关系
 
 - [RPDF 论文页](./paper-scanford-robot-powered-data-flywheel.md) — 框架、实验与 OCR 外溢

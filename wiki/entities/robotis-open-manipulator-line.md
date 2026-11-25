@@ -52,6 +52,16 @@ summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulat
 | RH-P12-RN | [overview](https://emanual.robotis.com/docs/en/platform/rh_p12_rn/) |
 | 组织 GitHub | [ROBOTIS-GIT](https://github.com/ROBOTIS-GIT) |
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    E["eManual 分系列文档 (X / P / H / RH-P12-RN)"] --> C["ROBOTIS-GIT 源码与 Dynamixel SDK"]
+    C --> H["OpenMANIPULATOR 机械臂与夹爪"]
+    H -->|"与 TurtleBot3 / OpenCR 互通"| M["ROS 2 操作与移动底座实验"]
+    H -->|"Physical AI 延展 (OMY)"| P["MuJoCo Menagerie 与 cyclo_lab"]
+```
+
 ## 关联页面
 
 - [ROBOTIS 组织 hub](./robotis.md)

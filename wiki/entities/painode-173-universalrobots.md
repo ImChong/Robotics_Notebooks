@@ -71,6 +71,18 @@ Collaborative robot arms widely used in research and industry.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 173/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["Universal Robots"]
+    ENT --> ARM["协作机械臂平台 (Collaborative Robot Arms)"]
+    ARM --> USE["科研与工业通用部署 (Research & Industry)"]
+    USE --> SYS["自由度接入与策略迁移 (DoF / ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["官网文档 (universal-robots.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

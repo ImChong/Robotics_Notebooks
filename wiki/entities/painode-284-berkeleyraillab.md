@@ -71,6 +71,19 @@ Robot Autonomy and Interactive Learning.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  SRC["awesome-physical-ai (aichr 284/384)"] --> GRP["Research Labs"]
+  GRP --> LAB["Berkeley RAIL Lab"]
+  LAB --> F1["Robot Autonomy"]
+  LAB --> F2["Interactive Learning"]
+  F1 --> MAP["Physical AI 技术地图 (VLA / RL / Sim2Real)"]
+  F2 --> MAP
+  LAB --> LINK["官方入口 (rail-berkeley.github.io)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

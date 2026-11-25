@@ -89,6 +89,18 @@ Periodic motion latent representation for learning agile, natural-looking legged
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 192/384)"] --> GRP["Locomotion (paper)"]
+    GRP --> ENT["FLD (MIT Biomimetics, ICLR 2024)"]
+    ENT --> LAT["周期运动潜空间表征 (Periodic Motion Latent Representation)"]
+    LAT --> LOCO["敏捷自然足式运动学习 (Agile, Natural-looking Legged Locomotion)"]
+    LOCO --> SYS["站内关联主题 (Locomotion / Sim2Real)"]
+    ENT -.->|"核对官方仓库"| REPO["GitHub (mit-biomimetics/fld)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -58,6 +58,15 @@ summary: "Qmini 是宇树相关的小型开源四足平台：BOM、STEP、URDF �
 
 > 注：`unitree_actuator_sdk` 等电机调试工具见 sources 归档；不另建重复 wiki 页，需要时从 [unitree_sdk2](./unitree-sdk2.md) 周边说明进入。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["开源硬件与机械 (BOM / STEP / 3D 打印)"] --> B["Qmini 整机 (11x Unitree 8010 + Pi 4B)"]
+    B --> C["URDF 描述 (urdf/Qmini.urdf)"]
+    C --> D["外部控制与 RL 栈 (RoboTamer4Qmini)"]
+```
+
 ## 局限与风险
 
 - 本仓偏硬件与入门软件入口，**不等于**官方 Go2 RL 部署栈。

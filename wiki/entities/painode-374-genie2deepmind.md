@@ -81,6 +81,17 @@ Foundation world model that generates interactive, controllable 3D environments.
 
 **不适用**（本页未逐仓核对 README 里的训练 / 推理入口；清单标注的仓库链接可能滞后，复现前请先打开项目页核对）。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #374/384)"] --> GRP["分组: World Models (paper)"]
+    GRP --> ENT["Genie 2 (DeepMind)"]
+    ENT --> WM["核心能力 (生成交互式可控 3D 环境的基础世界模型)"]
+    ENT --> OFF["官方博客入口 (DeepMind Genie 2)"]
+    ENT --> MAP["站内关联 (技术地图 / Generative World Models / VLA)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

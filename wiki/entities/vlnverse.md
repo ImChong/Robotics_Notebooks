@@ -50,7 +50,15 @@ summary: "VLNVerse：INSIGHT-Bench 训练 8.0% 片段来源；丰富视觉外观
 | **开源** | **待核实** |
 | **重定向就绪度** | 场景资产而非动作数据，**不涉及动作重定向**；作为策略输入前需按目标形态适配（相机高度/视场、碰撞体与可通行性、导航图分辨率），具体适配口径 **待核实** |
 
+## 机制与架构图
 
+```mermaid
+flowchart LR
+    Source["VLNVerse 场景数据源 (视觉外观与空间结构)"] -->|"贡献 8.0% 训练片段"| Bench["INSIGHT-Bench 训练集"]
+    Source --> Adapt["目标本体形态适配 (相机高度/视场 / 碰撞体与可通行性 / 导航图分辨率)"]
+    Bench --> Engine["LightNav Real2Sim2Real 数据引擎"]
+    Adapt --> Engine
+```
 
 ## 结论
 

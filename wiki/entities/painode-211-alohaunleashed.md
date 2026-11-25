@@ -71,6 +71,18 @@ Recipe for scaling robot dexterity via large-scale imitation learning.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 211/384)"] --> GRP["Manipulation / Key Papers (method)"]
+    GRP --> ENT["ALOHA Unleashed"]
+    ENT --> REC["大规模模仿学习方案 (Large-scale Imitation Learning Recipe)"]
+    REC --> DEX["机器人灵巧度规模化提升 (Scaling Robot Dexterity)"]
+    DEX --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    ENT -.->|"核对官方入口"| DOC["项目主页 (aloha-unleashed.github.io)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

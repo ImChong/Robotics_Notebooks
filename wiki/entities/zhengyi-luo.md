@@ -57,6 +57,13 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 3. **从控制到部署（HOVER / ASAP / SONIC）**：研究全身策略的技能覆盖、仿真-真机动力学对齐与规模化运动追踪，工程实现分别以对应官方论文和代码为准。
 4. **从单纯动作到视觉交互（VIRAL / GRAIL）**：进一步将视觉感知、物体交互和世界模型生成的数据用于人形 loco-manipulation。
 
+```mermaid
+flowchart LR
+    S1["1. 动作表示与物理控制 (PHC / PULSE)"] --> S2["2. 人到人形示范桥接 (OmniH2O / Human2Humanoid)"]
+    S2 --> S3["3. 全身控制与真机部署 (HOVER / ASAP / SONIC)"]
+    S3 --> S4["4. 视觉交互与合成数据 (VIRAL / GRAIL -> 衔接 GR00T 2 Turbo WAM)"]
+```
+
 ## 工程实践：如何定位一手复现入口
 
 | 需求 | 官方入口 | 核验边界 |

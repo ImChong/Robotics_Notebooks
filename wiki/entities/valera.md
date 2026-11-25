@@ -52,6 +52,17 @@ summary: "Valera 是 GoodLancer 团队维护的开源软硬件社交机器人，
 - **README / 核查：** README 标语「Open source hardware and software social robot」，项目由 GoodLancer 团队管理，文档在 readthedocs，LICENSE 为 MIT。
 - **差异与保留：** **文章归入人形机器人清单，README 称其为社交机器人**，未称人形；价格与 STL 细节来自文章，未核实。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Project["Valera (GoodLancer 团队, MIT 许可)"] --> HW["开源硬件与结构 (文章称含 3D 源文件与 STL, 约 $400)"]
+    Project --> SW["开源软件与文档 (GitHub goodlancer-org/valera + readthedocs)"]
+    HW --> Target["产品定位: 低成本易搭建 AI 社交机器人"]
+    SW --> Target
+    Target --> Note["口径差异: 公众号归入人形清单 vs README 称为社交机器人"]
+```
+
 ## 关联页面
 
 - [humanoid-robot](../entities/humanoid-robot.md)

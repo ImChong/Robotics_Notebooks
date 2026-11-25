@@ -39,6 +39,17 @@ updated: 2026-10-29
 - **URDF 解析**：使用 `urdf-loader` 加载模型。
 - **公式渲染**：集成 KaTeX 提供高质量数学符号展示。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    M["robot-explorer-models (81+ URDF)"] --> P["urdf-loader 解析与前端加载 (Three.js / Vite)"]
+    P --> K["交互式 FK 与多末端零空间 IK"]
+    P --> A["可操纵性椭球 / 可达性点云 / 力多胞体 / 质心"]
+    K --> E["KaTeX 数学面板与 STL 凸包导出"]
+    A --> E
+```
+
 ## 关联页面
 
 - [urdf-studio](urdf-studio.md) (专业设计工作站)

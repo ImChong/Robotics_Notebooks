@@ -46,6 +46,18 @@ AeroDesign Skill（Pan-Chenliang/AeroDesign_skill）是将 Raymer《Aircraft Des
 
 文章所述的项目特征：将 Raymer《Aircraft Design: A Conceptual Approach》第六版知识组织为可路由技能文件，覆盖气动、总体布局、结构、稳定操纵、性能、推进、重量和成本。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    Q["飞机初步设计问题"] --> ROUTE["识别所属工程领域"]
+    ROUTE --> MOD["加载可路由技能模块 (气动 / 总体布局 / 结构 / 稳定操纵 / 性能 / 推进 / 重量 / 成本)"]
+    MOD --> UNIT["固定英制与 SI 单位换算纪律"]
+    UNIT --> BOUND["核对 README 前提、许可证与软件/求解器边界"]
+    BOUND --> RUN["小规模运行并逐项核对 (几何 / 网格 / 边界 / 求解状态 / 物理量)"]
+    RUN --> EXPAND["确认证据可审查后再扩大任务"]
+```
+
 ## 局限与风险
 
 知识库辅助概念设计，不替代适航认证或高保真分析；教材内容及经验公式适用范围需要显式核对。

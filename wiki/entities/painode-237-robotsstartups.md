@@ -71,6 +71,18 @@ Andra Keay (Silicon Valley Robotics). Robot startups and industry trends from th
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 237/384)"] --> GRP["Newsletters & Blogs (community)"]
+    GRP --> ENT["Robots & Startups"]
+    ENT --> AUTH["作者: Andra Keay (Silicon Valley Robotics)"]
+    AUTH --> COV["机器人初创生态与产业趋势 (Robot Startups & Industry Trends)"]
+    COV --> SYS["站内关联主题 (ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["专栏主页 (robotsandstartups.substack.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

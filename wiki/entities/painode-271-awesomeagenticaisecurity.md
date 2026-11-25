@@ -74,6 +74,21 @@ Security research, threat models, defenses, and governance for agentic AI system
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  SRC["awesome-physical-ai (natnew 271/384)"] --> GRP["Related Awesome Lists"]
+  GRP --> ENT["Awesome Agentic AI Security"]
+  ENT --> T1["Security Research"]
+  ENT --> T2["Threat Models"]
+  ENT --> T3["Defenses & Governance"]
+  T1 --> SYS["Agentic AI Systems"]
+  T2 --> SYS
+  T3 --> SYS
+  ENT --> LINK["官方仓库 (natnew/Awesome-Agentic-AI-Security)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -71,6 +71,21 @@ Chief AI Scientist at Meta. V-JEPA, world models, and self-supervised learning.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  SRC["awesome-physical-ai (natnew 254/384)"] --> ROLE["People to Follow: Yann LeCun"]
+  ROLE --> ORG["Meta (Chief AI Scientist)"]
+  ORG --> F1["V-JEPA"]
+  ORG --> F2["World Models"]
+  ORG --> F3["Self-supervised Learning"]
+  F1 --> MAP["Physical AI 技术地图 (VLA / RL / Sim2Real)"]
+  F2 --> MAP
+  F3 --> MAP
+  ROLE --> LINK["官方入口 (x.com/ylecun)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

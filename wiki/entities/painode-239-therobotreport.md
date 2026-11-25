@@ -71,6 +71,17 @@ News and analysis on robotics industry.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew / aichr 239/384)"] --> GRP["Newsletters & Blogs / Community"]
+    GRP --> ENT["The Robot Report"]
+    ENT --> COV["机器人产业新闻与分析 (News & Analysis on Robotics Industry)"]
+    COV --> SYS["站内关联主题 (ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["官网 (therobotreport.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

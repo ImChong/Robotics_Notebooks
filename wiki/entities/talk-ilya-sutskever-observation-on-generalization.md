@@ -47,6 +47,16 @@ summary: "Ilya Sutskever（OpenAI，2023-08-14 Simons）：LLM scaling 下泛化
 | **读法** | **经验性** 观察，非形式化定理；外推到机器人需独立验证 |
 | **资产** | Simons 活动页；**无**统一官方代码/论文 |
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    Scale["Transformer LM Scaling (更大模型 + 更多数据)"] --> Threshold["规模跨越阈值"]
+    Threshold --> Obs["经验性观察: 非仅 loss 下降, 出现推理与指令跟随等新能力"]
+    Obs --> Narrative["OpenAI Scaling 叙事 (Kaplan Scaling Laws / GPT-4 / Bitter Lesson)"]
+    Obs -->|"类比启发 (需独立实测)"| Embodied["Light-O1 具身假设 (human action pretraining scaling 跨本体迁移)"]
+```
+
 ## 局限与风险
 
 - **非 peer-reviewed 论文** — 细节以录像/slides 为准，易随时间难检索。

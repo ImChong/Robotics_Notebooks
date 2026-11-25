@@ -71,6 +71,19 @@ MIT Media Lab, BD AI Institute. Robotics ethics and human-robot interaction.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  SRC["awesome-physical-ai (natnew 248/384)"] --> ROLE["People to Follow: Kate Darling"]
+  ROLE --> ORG1["MIT Media Lab"]
+  ROLE --> ORG2["BD AI Institute"]
+  ORG1 --> FOCUS["Robotics Ethics & Human-Robot Interaction"]
+  ORG2 --> FOCUS
+  FOCUS --> MAP["Physical AI 技术地图 (VLA / RL / Sim2Real)"]
+  ROLE --> LINK["官方入口 (x.com/grok_)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

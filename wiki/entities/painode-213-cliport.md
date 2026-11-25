@@ -71,6 +71,19 @@ Language-conditioned manipulation with CLIP-based perception and transport-based
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 213/384)"] --> GRP["Manipulation (method)"]
+    GRP --> ENT["CLIPort"]
+    ENT --> PERC["CLIP 感知模块 (CLIP-based Perception)"]
+    PERC --> HEAD["Transporter 动作头 (Transport-based Action Heads)"]
+    HEAD --> TASK["语言条件桌面操作 (Language-conditioned Manipulation)"]
+    TASK --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    ENT -.->|"核对官方入口"| DOC["项目主页 (cliport.github.io)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

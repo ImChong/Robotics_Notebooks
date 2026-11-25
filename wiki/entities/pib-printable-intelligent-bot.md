@@ -46,6 +46,16 @@ sources:
 - 按官网 STL/BOM 打印采购，装好 Pi 5 后用 Cerebra 或 Blockly 做第一批动作，再接 ROS 2。
 - 以上规格与许可证均出自文章叙述，**未逐项核对官方仓库**；动手前请以官方 README/BOM 为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["官网下载 STL 与 BOM"] --> B["3D 打印机械结构 (PETG)"]
+    B --> C["装配与机载计算 (Raspberry Pi 5)"]
+    C --> D["入门编程 (Cerebra / Blockly / Python)"]
+    D --> E["ROS 2 Humble 集成与扩展"]
+```
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

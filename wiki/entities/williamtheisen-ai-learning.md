@@ -69,6 +69,15 @@ summary: "William Theisen AI 学习枢纽：Notre Dame 交互式 AI 可视化站
 | CSE 30124 | [30124.williamtheisen.com](https://30124.williamtheisen.com/) | Introduction to Artificial Intelligence |
 | CSE 10124 | [10124.williamtheisen.com](https://10124.williamtheisen.com/) | Building ChatGPT |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Portal["主站 ai.williamtheisen.com (静态交互 HTML 教具)"] --> Topics["30+ 可视化专题 (搜索博弈 / 经典 ML / 神经网络 / Transformer 与 Diffusion / 信息论 / RL 与 RLHF)"]
+    Topics --> Courses["挂接课程与开源仓库 (CSE 30124 AI 导论 + CSE 10124 Building ChatGPT)"]
+    Courses --> Goal["零安装浏览器直觉补课 (衔接到 VLA 与 Foundation Policy 前置基础)"]
+```
+
 ## 局限与风险
 
 - **非机器人专用：** 不含操纵仿真、VLA 训练或真机部署内容；与 [RoboLab](./robolab.md) 等基准无直接关系。

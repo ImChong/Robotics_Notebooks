@@ -47,6 +47,16 @@ summary: "他山科技在文中被描述为做电容式触觉芯片与阵列的�
 
 - 未访问企业官网或其他来源，文中数字均为作者表述，未核实。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Industry["灵巧手行业分工 (Zane Hub 综述)"] --> Track["感知专精派 (触觉器件)"]
+    Track --> Tashan["他山科技"]
+    Tashan --> Tech["电容式触觉芯片与阵列"]
+    Tech --> Role["为灵巧手末端提供触觉感知 (具体指标与价格待核实)"]
+```
+
 ## 关联页面
 
 - [tactile-sensing](../concepts/tactile-sensing.md)

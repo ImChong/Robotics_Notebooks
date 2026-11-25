@@ -49,6 +49,16 @@ summary: "RefSpatial-Bench：RoboRefer 空间指代 benchmark；LightNav-ER 八�
 | **canonical 论文** | [RoboRefer arXiv:2506.04308](./paper-roborefer.md) |
 | **开源** | **已发布** Bench + Expand-Bench on HuggingFace |
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    R["RoboRefer (arXiv:2506.04308)"] --> D["RefSpatial 训练数据与权重"]
+    R --> B["RefSpatial-Bench (3D 空间指代与推理评测)"]
+    B --> E["Expand-Bench (扩展室内工厂/商店与室外场景)"]
+    B --> M["LightNav-ER 评测套件与 VLM 横评 (Qwen3-VL / Gemini Robotics 1.5)"]
+```
+
 ## 结论
 
 **读 LightNav-ER 的 RefSpatial 子项时，应指向 RoboRefer 官方 RefSpatial-Bench 协议与 Expand 版本。**

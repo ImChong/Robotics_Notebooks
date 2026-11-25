@@ -65,6 +65,19 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - **Lie 群几何**：球关节、浮动基座等配置空间非向量空间，库内实现对应的 exp / log 积分与差分。
 - **代码生成与自动微分**：全标量模板化，可接 CppAD / CasADi / ADOL-C，并经 CppADCodeGen 生成机器人专用代码；论文称生成代码可把耗时降到约 1/3 至 1/8，自动微分一般慢于解析导数。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    U["URDF / 机器人描述 (URDD / robot_descriptions.py)"] --> M["Model (只读几何与惯量)"]
+    M --> D["每线程独立 Data (预分配中间量)"]
+    M --> A["核心计算 (RNEA / CRBA / ABA / Lie 群 / 解析导数)"]
+    D --> A
+    A --> C["标量模板与代码生成 (CppAD / CasADi / CppADCodeGen)"]
+    A --> W["WBC 底座 (Pinocchio + OSQP / qpOASES)"]
+    A --> O["轨迹优化 (Pinocchio + Crocoddyl DDP / MPC)"]
+```
+
 ## 核心特性
 
 1. **极致的性能**：

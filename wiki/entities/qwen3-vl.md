@@ -51,6 +51,14 @@ summary: "Qwen3-VL：LightNav-ER 自 Qwen3-VL 初始化；博客报告 ER 中期
 
 
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Q["Qwen3-VL (视觉-语言基座)"] -->|"初始化权重"| ER["LightNav-ER (具身推理中期训练)"]
+    ER --> LN["LightNav-0 / LightParkour (Real2Sim2Real 管线)"]
+```
+
 ## 结论
 
 **Qwen3-VL 是 LightNav / LightParkour 管线中的关键组件——读博客数字前先对齐本页定义与开源边界。**

@@ -48,6 +48,17 @@ summary: "RunPod 是面向 AI/ML 的 GPU 云：Pods 交互容器、Serverless GP
 | **Secure Cloud** | 数据中心级、带 SLA |
 | **Community Cloud** | 低价、可能中断 |
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    U["浏览器或 REST/GraphQL API + 200+ Docker 模板"] --> P["GPU Pods (交互开发 / RL Headless 训练, SSH + Jupyter)"]
+    U --> S["Serverless GPU (按请求扩缩推理 Worker)"]
+    P --> T1["Secure Cloud (数据中心级, 带 SLA)"]
+    P --> T2["Community Cloud (低价, 可能被抢占)"]
+    V["Network Volume 持久存储"] --> P
+```
+
 ## 常见误区或局限
 
 - **Community 不适合生产推理**：无 SLA，可能抢占。

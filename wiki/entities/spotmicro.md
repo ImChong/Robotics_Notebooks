@@ -41,6 +41,17 @@ sources:
 - 主开发仓库已迁移至 GitLab；GitHub 保留旧仓库 [FlorianWilk/SpotMicroAI](https://github.com/FlorianWilk/SpotMicroAI) 和大量个人实现（如 [SpotMicroESP32-Leika](https://github.com/runeharlyk/SpotMicroESP32-Leika)，ROS/ESP32/Teensy 等版本）。
 - 有仿真、Bezier 步态和强化学习相关工作。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    Design["KDY0523 原始 STL (3D 打印结构) + 12 个舵机"] --> MainRepo["GitLab 主仓库 (custom_robots/spotmicroai)"]
+    Design --> Forks["GitHub 旧仓与个人分支 (FlorianWilk / SpotMicroESP32-Leika)"]
+    MainRepo --> Ctrl["控制器选型 (Raspberry Pi / ESP32 / Teensy)"]
+    Forks --> Ctrl
+    Ctrl --> Software["控制与算法 (ROS / 仿真 / Bezier 步态 / RL)"]
+```
+
 ## 工程实践
 
 - 选实现时先确认维护状态：版本分散，建议从 GitLab 主仓库入手再挑个人分支。

@@ -71,6 +71,19 @@ Point-cloud-conditioned diffusion policy that improves data efficiency and robus
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 209/384)"] --> GRP["Manipulation (method)"]
+    GRP --> ENT["3D Diffusion Policy (DP3)"]
+    PC["三维点云观测 (Point Cloud)"] --> POL["点云条件扩散策略 (Point-cloud-conditioned Diffusion Policy)"]
+    ENT --> POL
+    POL --> GAIN["数据效率与鲁棒性提升 (vs Image-based Variants)"]
+    GAIN --> SYS["站内关联主题 (IL / VLA / Manipulation)"]
+    ENT -.->|"核对官方入口"| DOC["项目主页 (3d-diffusion-policy.github.io)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

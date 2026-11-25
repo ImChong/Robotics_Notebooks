@@ -43,6 +43,15 @@ related:
 - **并行仿真**：支持在大规模 GPU 集群上并行运行，加速强化学习训练。
 - **灵活的 API**：提供 Python 和 C++ 接口，易于扩展。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["PartNet-Mobility / URDF 关节体资产 (含 PhysX-Omni / PhysForge)"] --> S["SAPIEN 物理引擎与多机渲染 (接触力学 / GPU 并行)"]
+    S --> I["Python / C++ API 与 ROS 集成"]
+    I --> U["上层平台与任务 (ManiSkill2 / RoboTwin 2.0 / 细粒度操作)"]
+```
+
 ## 与其他系统的关系
 
 - **上层应用**：[robotwin](robotwin.md) 2.0 建立在 SAPIEN 之上，用于自动化数据生成。

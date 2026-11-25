@@ -63,6 +63,17 @@ summary: "World Labs 是公开以「空间智能」与三维世界模型为主�
 
 公开 **About** 页列出的联合创始人包括 **Fei-Fei Li、Justin Johnson、Christoph Lassner、Ben Mildenhall**（姓名与顺序以官网为准）。融资与商业条款以官方新闻稿与监管披露为准，本页不作摘录。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Input["多模态输入 (文 / 图 / 多图 / 视频 / Chisel)"] --> Marble["Marble (浏览器产品 + World API + Marble Labs)"]
+    Input --> Atlas["Atlas (omni 多模态自回归扩散 Transformer, 早期访问)"]
+    Marble -->|"导出 SPZ / PLY / collider / HQ mesh"| Render["Spark (开源 Web 3DGS 渲染器: THREE.js + WebGL2 + LoD + .RAD 流式)"]
+    Atlas -->|"相机可控生成 / 稀疏 3D 重建 / Real-to-Sim rollout"| Render
+    Render --> Media["可编辑、可组合、可导出的 3D 空间媒介"]
+```
+
 ## 常见误区或局限
 
 - **不是具身控制基准线**：Marble 的公开材料面向 **空间内容与交互编辑**；若要讨论 **机器人操作 rollout 的物理一致性**，仍应回到解析仿真或 [生成式世界模型](../methods/generative-world-models.md) 论文语境。

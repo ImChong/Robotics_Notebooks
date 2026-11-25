@@ -49,6 +49,14 @@ GitHub 仓库 **unitree_model** 曾提供多仿真环境的 Unitree 3D 模型；
 
 上游仍给出 Isaac Sim **Direct Import** URDF 建议（Movable Base、Stiffness、Force、Allow Self-Collision），因部分版本 Python 导入脚本有 bug。
 
+```mermaid
+flowchart LR
+    OldGH["GitHub unitree_model (已 deprecated)"] -.->|"官方迁移指针"| HF["Hugging Face unitreerobotics/unitree_model (USD)"]
+    URDF["unitree_ros (URDF / xacro)"] -->|"Direct Import (避开脚本 bug)"| Isaac["Isaac Sim / unitree_rl_lab (UNITREE_MODEL_DIR)"]
+    HF --> Isaac
+    MJ["unitree_mujoco (unitree_robots/ MJCF)"] --> MuJoCo["MuJoCo 仿真 (需人工对齐坐标与关节命名)"]
+```
+
 ## 工程实践
 
 1. `git clone https://huggingface.co/datasets/unitreerobotics/unitree_model`（或按 HF 网页指引）。

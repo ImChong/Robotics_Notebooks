@@ -68,6 +68,17 @@ Environments for benchmarking constrained and safe-exploration RL.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew #322/384)"] --> GRP["分组: Safety & Robustness (resource)"]
+    GRP --> ENT["Safety Gym (OpenAI 基准环境)"]
+    ENT --> ENV["核心用途 (受约束强化学习与安全探索评测)"]
+    ENT --> REPO["官方仓库 (openai/safety-gym)"]
+    ENT --> MAP["站内关联 (Physical AI 技术地图 / Sim2Real / VLA)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

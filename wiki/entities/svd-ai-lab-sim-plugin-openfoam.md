@@ -39,6 +39,14 @@ sim-plugin-openfoam（svd-ai-lab/sim-plugin-openfoam）是sim-cli 的 OpenFOAM �
 
 **工作流：** sim-cli 发现插件后将 OpenFOAM 驱动注册为可用求解器；代理通过 CLI 发起运行并读取产物。
 
+```mermaid
+flowchart LR
+    Agent["代理 / 用户通过 CLI 发起任务"] --> SimCLI["sim-cli 主工具"]
+    Plugin["sim-plugin-openfoam (外置驱动插件)"] -->|"发现并注册为可用求解器"| SimCLI
+    SimCLI -->|"运行算例"| OpenFOAM["本地 OpenFOAM 求解器"]
+    OpenFOAM -->|"输出可回放 CFD 产物"| Inspect["结果检查 (几何 / 网格 / 边界 / 求解状态 / 物理量)"]
+    Inspect --> Agent
+```
 
 **仓库映射说明：** 文章未给出该项目完整的 owner/repository URL；此处按文章中的项目名/描述与公开 GitHub 仓库匹配。引用时请以本页链接的仓库 README 为准。
 

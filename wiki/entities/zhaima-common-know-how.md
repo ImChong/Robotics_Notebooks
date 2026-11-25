@@ -54,6 +54,16 @@ summary: "宅码《Common Know-How》（飞书文档转载）：汇集 VLA 数�
 6. **视频世界模型：** Cosmos 的扩散与离散两条路线。
 7. **推理与训练方法：** RTC、SmolVLA、Wall-OSS、PLD，以及 π0.6 的记忆与 RECAP。
 
+```mermaid
+flowchart LR
+    Note["宅码 Common Know-How (飞书二手汇编)"] --> Basics["1-2. 数据集 (OXE/DROID/LIBERO) 与运动学控制 (FK/IK)"]
+    Note --> Learning["3-4. 强化学习 (HIL-SERL) 与生成模型 (流匹配/DiT/Diffusion Policy)"]
+    Note --> VLA["5-7. VLA 动作表示 (RT-2/OpenVLA/π0) + Cosmos 世界模型 + 推理训练 (RTC/RECAP)"]
+    Basics --> Audit["使用边界: 仅作术语索引 -> 查 Wiki 对应页 -> 回一手原论文核对"]
+    Learning --> Audit
+    VLA --> Audit
+```
+
 ## 与其他页面的关系
 
 - [VLA 方法](../methods/vla.md)、[Diffusion Policy](../methods/diffusion-policy.md)、[Action Chunking](../methods/action-chunking.md)：文档相关主题的 wiki 对应页。

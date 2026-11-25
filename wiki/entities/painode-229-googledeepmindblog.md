@@ -71,6 +71,17 @@ Gemini Robotics, RT-2, and embodied AI updates.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 229/384)"] --> GRP["Newsletters & Blogs (community)"]
+    GRP --> ENT["Google DeepMind Blog"]
+    ENT --> UPD["具身智能与机器人模型动态 (Gemini Robotics / RT-2 / Embodied AI)"]
+    UPD --> SYS["站内关联主题 (ROS / VLA / Sim2Real)"]
+    ENT -.->|"核对官方入口"| DOC["官方博客 (deepmind.google/blog)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

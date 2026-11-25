@@ -98,6 +98,16 @@ RoboParty 产品页目前列出 1.35 m 高、24 DoF 的 RP1 与 30 DoF 的 RP1 P
 
 官方产品页标注 24/30 DoF；GitHub 总览另外列出部分支持配置。购买、组装或移植策略前，应以目标 Release 的 BOM、模型与驱动配置为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    H["硬件与描述 (rp1_hardware / ROMOMO / RP1_description URDF-MJCF)"] --> T["训练工作区 (roboparty_train / Isaac Lab)"]
+    T -->|"导出策略 (ONNX)"| S["MuJoCo 仿真检查 (Sim2Sim)"]
+    S --> D["部署与固件 (roboparty_deploy / RP1_firmware USB-CAN)"]
+    D --> R["RP1 真机验证 (24 DoF / 保护架与急停)"]
+```
+
 ## 局限与风险
 
 - **与 RPO 区分**：[Roboto Origin](./roboto-origin.md) 是 RoboParty 的另一套开源本体项目。不能把 RPO 参数、模型或策略训练结果直接当作 RP1 的属性。
