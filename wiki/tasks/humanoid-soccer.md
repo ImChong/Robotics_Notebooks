@@ -167,6 +167,8 @@ original:
 
 ## 关联页面
 
+- [404 Possession Not Found](../entities/project-404-possession-not-found.md)：人类比赛的离线控球标注；对照缺球观测与时序解码，不是机器人足球策略。
+
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch6–7 感知定位与 RoboCup 实践地图
 - [足球场仿真环境](../concepts/soccer-field-simulation.md) / [场地线检测](../methods/soccer-field-line-detection.md) / [线匹配](../methods/visual-line-matching-localization.md) / [线特征 EKF](../methods/visual-line-ekf-fusion.md)
 - [Roboflow Sports](../entities/roboflow-sports.md) — 第三人称体育 CV 与俯视雷达 demo
