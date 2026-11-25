@@ -383,7 +383,7 @@ flowchart TD
 
 ## 关联页面
 
-- [Learning Functional Compliance｜全身操作中的功能性柔顺学习（草稿）](../entities/paper-learning-functional-compliance.md) — 按任务方向和阶段调节柔顺性的相关研究，待全文核验。
+- [Functionally Compliant Humanoid Whole-Body Manipulation｜功能性柔顺的人形机器人全身操作](../entities/paper-learning-functional-compliance.md) — WBC² 通过 IK 柔顺参考、力和平衡估计，实现全身协调与任务级标量刚度调节。
 
 分组与上文 **技术路线演进** 对应，便于从某一组的问题直接跳到对应详情页。
 
