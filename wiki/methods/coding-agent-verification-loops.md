@@ -142,6 +142,8 @@ flowchart TD
 
 ## 关联页面
 
+- [Agent 工程小书](../entities/little-book-agent-engineering.md)：从工具拒绝、停止条件到终态评分的最小教学例子。
+
 - [oh-my-pi（OMP）](../entities/oh-my-pi.md) — 终端 Coding Agent 将 LSP/DAP、子代理与开发工具合入执行运行时；生成代码后的测试与独立验收仍按本页执行。
 
 - [Coding Agent 验证与代码评审分工](../comparisons/coding-agent-verification-vs-code-review.md) — 对照行为证据与审查、审批、发布门禁。
