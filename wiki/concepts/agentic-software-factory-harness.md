@@ -122,6 +122,8 @@ flowchart TD
 
 ## 关联页面
 
+- [Uber 的 Agent 技能分发与评测](../entities/uber-agent-skills-platform.md)：用调用遥测、隔离评测和故障回流治理共享技能。
+
 - [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md) — 工程师必须保留的系统设计与可靠性取舍
 - [多 Agent 编码管理与认知把关](./coding-agent-orchestration-and-cognitive-oversight.md) — 工作分解、认知风险与角色划分
 - [Coding Agent 验证与代码评审分工](../comparisons/coding-agent-verification-vs-code-review.md) — 测试证据与审批职责不混淆
