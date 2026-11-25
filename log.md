@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] structural | Issue #3997 第 7 批修复：4 个子 agent 并行补齐全部 138 篇无外部仓库依赖（has_repo=False）complete 论文实体的基于原文 Mermaid 方法流程图
+
 ## [2026-11-26] structural | Issue #3997 第 6 批修复：6 个子 agent 并行清零 wiki/entities/ 剩余 207 个 complete 非论文实体的基于原文 Mermaid 机制与架构图
 
 ## [2026-11-25] structural | Issue #3997 第 5 批修复：6 个子 agent 并行补齐 wiki/entities/ 首批 216 个 complete 非论文实体的基于原文 Mermaid 机制与架构图
