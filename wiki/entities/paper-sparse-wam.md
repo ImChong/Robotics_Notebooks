@@ -2,18 +2,25 @@
 type: entity
 tags: [paper, wam, world-action-models, inference, token-pruning, nju, hkust, hit, epfl]
 status: complete
-updated: 2026-10-02
+updated: 2026-11-25
+project_id: sparse-wam
+project: https://rockylix.github.io/Sparse-WAM.github.io/
+code: https://github.com/Rockylix/Sparse-WAM
 arxiv: "2609.38984"
 related:
   - ../concepts/world-action-models.md
   - ./paper-glancewam.md
   - ./paper-locowm.md
+original:
+  - ../../sources/papers/sparse_wam_arxiv_2609_38984.md
 sources:
   - ../../sources/papers/sparse_wam_arxiv_2609_38984.md
-summary: "Sparse-WAM：无需额外训练的动作引导未来 token 稀疏化，Pilot 复用筛选与打包；LIBERO 1.98×，Cosmos 3 Edge 同后端 1.56×，代码发布入口尚未核实。"
+  - ../../sources/sites/sparse-wam.md
+  - ../../sources/repos/sparse-wam.md
+summary: "Sparse-WAM：无需额外训练的动作引导未来 token 稀疏化，Pilot 复用筛选与打包；LIBERO 1.98×，Cosmos 3 Edge 同后端 1.56×，首发公开 Cosmos3 Edge 推理与配对验证。"
 ---
 
-# Sparse-WAM：无需额外训练的 WAM 稀疏加速
+# Sparse-WAM：动作引导的稀疏想象加速 | Sparse-WAM: Accelerating World Action Models via Action-Guided Sparse Imagination
 
 ## 一句话定义
 
@@ -40,7 +47,7 @@ WAM 每次生成 action chunk 时可能反复处理大量未来视觉 token。�
 |---|---|
 | 机构 | 南京大学、香港科技大学、哈尔滨工业大学、洛桑联邦理工学院 |
 | 输入 / 输出 | 当前观测、指令、本体状态 → 联合去噪 → action chunk 与未来视觉预测 |
-| 开放状态 | 截至 2026-10-02，所给论文摘要页/v1 全文未列官方发布入口；实现开放尚未核实 |
+| 开放状态 | 2026-11-25 首发公开 Cosmos3 Edge 的 RTX 4090 推理路径；Nano 有适配代码但未列为已验证支持，FastWAM-Joint 未列为已支持 |
 | training-free | 加速机制不新增训练；基座 WAM 的训练和真机任务微调仍有成本 |
 
 ## 核心原理与流程总览
@@ -63,11 +70,37 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：尚未核实官方可运行实现。上图依据论文展示机制，不虚构 `train.py` / `infer.py` 等源码入口。
+固定提交 [eef61f5](https://github.com/Rockylix/Sparse-WAM/tree/eef61f5afadcfd159ff80350c442a4f17bc1c940) 的离线 Edge 路径。准备脚本取得 DROID checkpoint、VAE 和录制观测；示例自身不连接真机。
+
+```mermaid
+sequenceDiagram
+    participant CLI as examples/infer_edge.py
+    participant S as create_service and native RoboLab service
+    participant R as SparseWAMRunner
+    participant P as SparseWAMController
+    participant U as VelocityCacheSampler and UniPC
+    CLI->>S: 读取 NPZ 和原生配置并创建 Edge 服务
+    CLI->>S: service.infer(observation)
+    S->>R: 原生预处理后调用生成入口
+    alt sparse
+        R->>U: 包装原生 UniPC 并保持四步调度
+        U->>P: 首步完整条件前向，打分并选核心 token 与锚点
+        P-->>U: 稀疏位置与打包布局，建立首步预测缓存
+        loop 余下三次去噪
+            U->>P: 复用布局，更新保留区域与全部动作
+            P-->>U: 缓存补省略区，随后执行原生采样更新
+        end
+    else dense
+        R->>R: 调用原生 dense 生成，不挂稀疏控制器
+    end
+    R-->>S: 返回有限值 action 和 vision
+    S-->>CLI: 返回动作
+    CLI->>CLI: 核验形状并写 action NPZ 与运行摘要 JSON
+```
 
 ## 工程实践
 
-复现前先定位可访问的联合视频–动作骨干及注意力接口，再记录 token 保留预算、刷新次数、后端和 chunk 长度。实现后要同时量测成功率、完整 chunk 延迟与筛选开销，保留 dense 对照；筛选成本可能吃掉理论 FLOPs 收益。
+首发复现入口见[固定版 RTX 4090 指南](https://github.com/Rockylix/Sparse-WAM/blob/eef61f5afadcfd159ff80350c442a4f17bc1c940/docs/rtx4090.md)：Linux x86_64、CUDA 13 兼容驱动和锁定的 Edge 依赖。模型需另行获取访问权；示例输出默认 `[32, 8]` 动作和 JSON。配对评测固定 checkpoint、观测、seed、同步与预热，先比较 dense eager / sparse eager，再做同后端比较。此处静态核对源码，未运行 GPU 权重。
 
 Appendix B.4 的计时包含编码、打分、选择、打包、恢复、缓存与采样，不含视频解码、CPU 输出拷贝、RPC 或仿真。464.95 ms 是生成一个 chunk 的测量值；不能直接当作电机控制周期或整个系统实时频率。
 
@@ -85,6 +118,8 @@ Appendix B.4 的计时包含编码、打分、选择、打包、恢复、缓存�
 |---|---|---|
 | 双方 eager | 859.31 → 555.55 ms | 1.55× |
 | 双方启用 CUDA Graphs 与 torch.compile | 727.44 → 464.95 ms | 1.56× |
+
+不同来源的 LIBERO-Plus 数字不要混用：arXiv v1 Appendix C.1 报 **63.04%、207.2 ms / chunk（2.08×）**；[2026-11-25 项目页](https://rockylix.github.io/Sparse-WAM.github.io/)与发布 README 报 **70.00%、220.97 ms / chunk（1.95×）**，dense 均为 70.89%。未核实差异原因，不将新版网页表格当作 v1 结果。论文另在 AgileX Cobot Magic 三项真机任务上报告 501 → 242 ms / chunk（2.08×）、平均成功率 77.78% → 75.00%；其中电池插入从 83.33% 降至 66.67%，不是逐任务无损。真机结果使用微调过的 FastWAM-Joint，并非公开 Edge 例程的成绩。
 
 ## 结论
 
@@ -106,17 +141,21 @@ Appendix B.4 的计时包含编码、打分、选择、打包、恢复、缓存�
 
 ## 局限与风险
 
-注意力是相关性代理，未必覆盖突发接触与稀有关键事件；缓存会引入过时预测。结果依赖骨干、剪枝预算和后端，不能直接外推到 Jetson 或人形运控频率。当前未核实官方代码、权重或数据入口，工程步骤属于论文导出的复现建议。
+注意力是相关性代理，未必覆盖突发接触与稀有关键事件；缓存会引入过时预测。结果依赖骨干、剪枝预算和后端，不能直接外推到 Jetson 或人形运控频率。公开仓库采用 OpenMDW-1.1，不随仓库打包权重；依赖的官方 DROID checkpoint、VAE 和样本各有访问与许可条件。未核实论文真机微调权重及其采集数据公开，不把发布 Edge 推理视为完整论文复现。
 
 ## 关联页面
 
 - [世界–动作模型](../concepts/world-action-models.md)
+- [动作分块](../methods/action-chunking.md)
+- [Diffusion Policy](../methods/diffusion-policy.md)
 - [GlanceWAM](./paper-glancewam.md)
 - [LocoWM](./paper-locowm.md)
 
 ## 参考来源
 
 - [Sparse-WAM 论文摘录与开放核查](../../sources/papers/sparse_wam_arxiv_2609_38984.md)
+- [作者项目页归档](../../sources/sites/sparse-wam.md)
+- [官方代码归档](../../sources/repos/sparse-wam.md)
 
 ## 推荐继续阅读
 
