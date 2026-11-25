@@ -167,6 +167,8 @@ flowchart LR
 
 ### 推荐读什么
 
+- [Benchmarking Physical Agency (WorldLeague)](../wiki/entities/paper-worldleague.md) — 以轨迹目标项与完整物理条件评测，区分问答、动作完成及最终目标。
+
 - [agentrobocritic](../wiki/entities/paper-agentrobocritic.md) — 从回合成功率深入局部意图、动作失败和恢复诊断。
 
 - [2026 顶会论文：通用能力五条技术路径](../wiki/comparisons/robotics-2026-awards-five-capability-paths.md) — 区分单步成功、完整任务完成、失败恢复与部署节拍，按现场瓶颈选型。

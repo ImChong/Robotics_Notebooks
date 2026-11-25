@@ -216,6 +216,8 @@ flowchart LR
 
 ### 推荐读什么
 
+- [Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](../wiki/entities/paper-embo-harness.md) — 模型直接作为策略时，比较视觉输入、动作接口和辅助 VLA 的贡献。
+
 - [intrinsic-core](../wiki/entities/intrinsic-core.md) — 本地运行时、硬件抽象和工业部署接口的工程参考。
 - [PGX：人形长程任务的物理接地执行](../wiki/entities/paper-pgx-2611-26596.md) — 对照「单个 VLA 承担全任务」：谓词 FSM 负责阶段与恢复，WCL 负责位置精度，同权重 GR00T 咖啡任务 C0 35%→80%；源码暂无公开入口。
 - [H-VLA（关键动作→规划）](../wiki/entities/paper-h-vla.md) — 统一双臂相机坐标、关键末端目标与连续规划接口；关注相机标定和阶段间失效。
