@@ -224,6 +224,10 @@ sources:
 
 ## 核心结构：与相邻概念的分界
 
+### 动态操作中的角色感知预测
+
+[FoveaWAM](../entities/paper-foveawam.md)对目标预测精细 SE(3)，对周围预测稀疏三维流，静态部分读取当前 RGB-D。OnTimeBench Native 在推理期间推进场景，避免用暂停世界的分数高估低速策略。
+
 ### 联合去噪内部的稀疏加速
 
 [Sparse-WAM](../entities/paper-sparse-wam.md)按动作对未来帧的注意力保留逐帧核心区域和共享空间锚点，Pilot 复用选择与打包，保留所有观测/动作 token。**无需额外训练**指加速机制，无须删掉整个未来分支，也不代表基座训练免费。RTX 4090 上 LIBERO 为 1.98×（dense eager 参照）；Cosmos 3 Edge 同后端对照为 **1.56×**。成功率、筛选开销和后端必须同步比较，chunk 推理延迟不可当作电机控制周期。
