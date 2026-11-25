@@ -6,9 +6,10 @@
 - **作者：** Physical Intelligence（Bo Ai、Ali Amin、Raichelle Aniceto 等，Sergey Levine、Chelsea Finn、Karol Hausman 等在列，附录 A 贡献者名单）
 - **类型：** paper
 - **来源：** arXiv:2604.15483v2（cs.LG，2026-04-24）；项目页 <https://pi.website/pi07>
-- **PDF：** <https://arxiv.org/pdf/2604.15483v2>
+- **PDF：** [Physical Intelligence 官方 PDF（25 页）](https://www.pi.website/download/pi07.pdf)；[arXiv v2 PDF](https://arxiv.org/pdf/2604.15483v2)
 - **入库日期：** 2026-11-12
 - **核对范围：** 2026-11-12 下载 arXiv:2604.15483v2 PDF，pdftotext 后通读正文：摘要与引言、§II 相关工作、§III 流匹配 VLA、§IV 概览、§V 提示多样化（子任务指令 / 子目标图像 / 元数据 / 控制模式 / 完整提示与 dropout）、§VI 模型与训练（数据集、架构、子目标图像训练）、§VII 运行时提示（含 CFG、Algorithm 1）、§VIII 机器人系统、§IX-A 至 §IX-E 全部实验、§X 讨论与局限；附录 B 注意力模式、C 世界模型训练、D 推理速度、E 动作空间对比、F 人类受试者研究、G 任务描述与评分细则。图表柱状值只能看图判读，未逐柱读数，故下文不引用图中未在正文给出的精确数值；参考文献表仅浏览。未运行任何代码，论文未给出代码或权重链接。
+- **官方 PDF 复核（2026-11-25）：** 原版首页标题与作者机构、Fig. 2–3、§V–VII 与 Algorithm 1、§IX-C、§X 及附录 D/F/G 与现有归档的技术口径一致；官网 PDF 不用 arXiv 版本号标记，未作逐字或文件哈希等同判断。未运行模型；官方论文和博客未给出该模型的代码或权重入口。
 - **通读：** 已完成
 - **一句话说明：** π0.7 是 Physical Intelligence 的约 5B 参数 VLA，核心思想是训练时给每个样本配「多样化上下文」（子任务指令、子目标图像、片段元数据、控制模式），随机 dropout 各分量，使一个模型能吃下次优自主数据、失败数据、人视频与网页数据，测试时再用提示选择策略与质量。
 

@@ -3,7 +3,7 @@ type: entity
 project_id: pi07-steerable-generalist
 tags: [paper, vla, physical-intelligence, foundation-policy, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-25
 arxiv: "2604.15483"
 venue: "2026"
 summary: "π0.7（Physical Intelligence，arXiv:2604.15483）：约 5B 参数 VLA，训练时给每个样本配子任务指令、子目标图像、片段元数据与控制模式并随机 dropout，使单个模型能吸收次优 / 失败 / 人视频数据，测试时靠提示选择策略与质量；报告开箱灵巧任务、跨本体折衣与 coaching 组合泛化。"
@@ -32,7 +32,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# π0.7：可 steer 的通才机器人基础模型（arXiv:2604.15483）
+# π0.7：具有涌现能力的可引导通才机器人基础模型 / A Steerable Generalist Robotic Foundation Model with Emergent Capabilities
 
 **π0.7: a Steerable Generalist Robotic Foundation Model with Emergent Capabilities**（Physical Intelligence，[arXiv:2604.15483](https://arxiv.org/abs/2604.15483)，v2）收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) 第 563/564 篇，分组 WAMs。本页依据论文全文通读（见 [来源归档](../../sources/papers/pi07-steerable-generalist_arxiv_2604_15483.md)）。方法系列页见 [π0.7 方法页](../methods/pi07-policy.md)。
 
@@ -66,17 +66,21 @@ sources:
 flowchart TD
     TASK["任务指令 ℓ（如 clean the kitchen）"] --> HLP["高层语义策略（同架构）或人类口头指导：产生子任务指令 ℓ̂"]
     OBS["当前观测 o_t：最多 4 路相机 + 历史帧 + 本体状态 q_t"] --> HLP
-    HLP -->|"子任务指令 ℓ̂"| WM["轻量世界模型（BAGEL 初始化）：生成多视角子目标图像"]
+    HLP -->|"语义变化，或距上次生成 4 秒"| TICK["启用视觉子目标时：异步触发"]
+    TICK --> WM["BAGEL 初始化的世界模型：按当前图像、子任务与元数据生成多视角子目标"]
     OBS --> WM
-    META["Episode metadata：速度 / 质量 / 是否出错，另有 control mode"] --> WM
-    HLP -->|"ℓ̂"| CTX
-    WM -->|"子目标图像 g（语义变化或 4 秒刷新）"| CTX["上下文 C = ℓ, ℓ̂, g, m, c（训练时各组件随机 dropout）"]
+    META["片段元数据：速度 / 质量 / 是否出错"] --> WM
+    HLP -->|"最新可用的子任务"| CTX
+    WM -->|"最新可用的子目标图像（可选）"| CTX["测试时上下文：任务、子任务、可选子目标、元数据、控制模式"]
+    TASK --> CTX
     META --> CTX
+    MODE["控制模式：关节或末端空间"] --> CTX
     OBS --> ENC["MEM 式视频历史编码器（压缩历史帧为固定 token 数）"]
     CTX --> VLM["4B VLM 骨干（含 400M 视觉编码器）"]
     ENC --> VLM
     VLM -->|"注意 VLM 激活"| AE["860M Action Expert：flow matching，50 步动作块"]
-    AE --> ACT["执行动作块的前 Ĥ 步（异步推理 + RTC）"]
+    AE --> ACT["执行当前动作块，并异步准备下一块（RTC）"]
+    ACT -->|"到下一次块推理时，利用队列中剩余动作"| AE
     ACT -->|"新观测"| OBS
 ```
 
@@ -87,7 +91,7 @@ flowchart TD
 1. **上下文四类信息**（§V）：子任务指令 ℓ̂（沿用 π0.5）；多视角子目标图像 g（基座视角利于环境 / 物体结果，腕部视角利于臂 / 夹爪结果）；元数据 m = 速度（episode 步数，500 步分箱）+ 质量（1 到 5 分）+ 错误标记；控制模式 c ∈ {joint, ee}。
 2. **世界模型**（§V-B、附录 C）：由 14B 的 BAGEL 初始化，目标是预测子任务片段末帧，训练混入机器人数据、第一视角人视频与开源图像编辑 / 视频数据；作者称网页预训练使其能把语义与物理概念经子目标图像传给策略。
 3. **dropout 配方**（§V-E）：子目标只加到 25% 的样本，其中 30% 同时丢子任务指令；元数据整体 15% 丢弃，速度 / 质量 / 错误各 5% 单独丢弃；控制模式不丢。
-4. **运行时提示**（§VII）：速度取任务 episode 长度第 15 百分位，质量恒 5，错误恒 false；子目标在 ℓ̂ 变化或 4 秒后异步刷新；对元数据可做 CFG。
+4. **运行时提示**（§VII）：控制模式与元数据始终提供；速度提示取该任务 episode 长度第 15 百分位，质量恒 5，错误恒 false。仅在启用视觉子目标的配置中，子任务变化或距上一张生成完成 4 秒（先到者）触发异步刷新；低层策略不等新图，使用最新已完成的上下文。元数据 CFG 是可选引导，不是执行成功保证。
 5. **动作生成**（§VI-B、§VII）：动作专家固定 50 个动作 token，5 步去噪，每次执行 Ĥ ∈ {15, 25} 步，训练期 RTC 覆盖最长 240ms（50Hz）延迟。
 
 ## 工程实践
@@ -150,6 +154,6 @@ flowchart TD
 
 ## 继续阅读
 
-- [arXiv PDF](https://arxiv.org/pdf/2604.15483)
+- [Physical Intelligence 官方 PDF](https://www.pi.website/download/pi07.pdf) · [arXiv v2 PDF](https://arxiv.org/pdf/2604.15483v2)
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [π0.7 方法页](../methods/pi07-policy.md)
