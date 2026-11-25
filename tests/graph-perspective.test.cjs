@@ -1476,3 +1476,139 @@ test('homepage 3D preview enables Y1 softPeakHighlight without altering light mo
     }
   }
 });
+
+test('3D terrain panning moves projected scene along pointer direction for desktop drag and two-finger touch across yaw/pitch', () => {
+  const dom = new JSDOM('<!doctype html><div id="wrap"><div id="stage"></div></div>', {
+    url: 'https://example.test/',
+    runScripts: 'outside-only',
+  });
+  const w = dom.window;
+  const mock = makeMockCanvasEnv();
+  const origGetContext = w.HTMLCanvasElement.prototype.getContext;
+  w.HTMLCanvasElement.prototype.getContext = function (type) {
+    if (type === 'webgl2' || type === 'webgl' || type === 'experimental-webgl') return mock.gl;
+    if (type === '2d') return mock.ctx2d;
+    return origGetContext ? origGetContext.call(this, type) : null;
+  };
+  w.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
+  w.eval(readFileSync(resolve(__dirname, '../docs/graph-perspective.js'), 'utf8'));
+
+  const wrapEl = w.document.getElementById('wrap');
+  const stageEl = w.document.getElementById('stage');
+  stageEl.getBoundingClientRect = () => ({ left: 0, top: 0, width: 1280, height: 720 });
+
+  const nodes = [
+    { id: 'n1', label: 'A', x: -100, y: -60 },
+    { id: 'n2', label: 'B', x: 0, y: 0 },
+    { id: 'n3', label: 'C', x: 100, y: 60 },
+  ];
+  const edges = [
+    { source: 'n1', target: 'n2' },
+    { source: 'n2', target: 'n3' },
+  ];
+
+  const ctrl = w.RNGraphPerspective.createController({
+    wrapEl,
+    stageEl,
+    nodeCount: nodes.length,
+    persist: false,
+    allowTouchOrbit: true,
+    allowNodeDrag: false,
+    defaultDistance: 1.72,
+    getViewportSize: () => ({ width: 1280, height: 720 }),
+    getGraphData: () => ({ nodes, edges }),
+  });
+
+  try {
+    assert.equal(ctrl.setEnabled(true, { instant: true }), true);
+
+    const projectOrigin = () => {
+      const st = ctrl.getDebugState();
+      const cam = w.RNGraphPerspective.buildCameraMatrices(st.params, st.camera, 1280 / 720, 1280);
+      return w.RNGraphPerspective.projectWorldToScreen(0, 0.08, 0, cam.viewProj, 1280, 720);
+    };
+
+    const makePointer = (type, { id = 1, pointerType = 'mouse', isPrimary = true, button = 0, shiftKey = false, x = 0, y = 0 }) => {
+      const ev = new w.MouseEvent(type, { bubbles: true, button, shiftKey, clientX: x, clientY: y });
+      Object.defineProperty(ev, 'pointerId', { value: id });
+      Object.defineProperty(ev, 'pointerType', { value: pointerType });
+      Object.defineProperty(ev, 'isPrimary', { value: isPrimary });
+      return ev;
+    };
+
+    const dragMousePan = (opts, x0, y0, x1, y1) => {
+      stageEl.dispatchEvent(makePointer('pointerdown', { ...opts, x: x0, y: y0 }));
+      stageEl.dispatchEvent(makePointer('pointermove', { ...opts, x: x1, y: y1 }));
+      stageEl.dispatchEvent(makePointer('pointerup', { ...opts, x: x1, y: y1 }));
+    };
+
+    const angles = [
+      { pitch: 36, yaw: 0 },
+      { pitch: 36, yaw: -18 },
+      { pitch: 36, yaw: 90 },
+      { pitch: 36, yaw: 135 },
+      { pitch: 76, yaw: 0 },
+    ];
+
+    for (const { pitch, yaw } of angles) {
+      ctrl.resetDefaults();
+      ctrl.setParam('pitch', pitch);
+      ctrl.setParam('yaw', yaw);
+
+      const beforeRight = projectOrigin();
+      dragMousePan({ button: 2 }, 600, 360, 660, 360);
+      const afterRight = projectOrigin();
+      assert.ok(afterRight[0] > beforeRight[0] + 10, `right-drag right pan moves scene right at pitch=${pitch}, yaw=${yaw}`);
+      assert.ok(Math.abs(afterRight[1] - beforeRight[1]) < 1, `right-drag right pan keeps screen Y steady at pitch=${pitch}, yaw=${yaw}`);
+
+      ctrl.resetDefaults();
+      ctrl.setParam('pitch', pitch);
+      ctrl.setParam('yaw', yaw);
+
+      const beforeDown = projectOrigin();
+      dragMousePan({ button: 2 }, 600, 360, 600, 420);
+      const afterDown = projectOrigin();
+      assert.ok(afterDown[1] > beforeDown[1] + 10, `right-drag down pan moves scene down at pitch=${pitch}, yaw=${yaw}`);
+      assert.ok(Math.abs(afterDown[0] - beforeDown[0]) < 1, `right-drag down pan keeps screen X steady at pitch=${pitch}, yaw=${yaw}`);
+
+      ctrl.resetDefaults();
+      ctrl.setParam('pitch', pitch);
+      ctrl.setParam('yaw', yaw);
+
+      const beforeUp = projectOrigin();
+      dragMousePan({ button: 2 }, 600, 360, 600, 300);
+      const afterUp = projectOrigin();
+      assert.ok(afterUp[1] < beforeUp[1] - 10, `right-drag up pan moves scene up at pitch=${pitch}, yaw=${yaw}`);
+      assert.ok(Math.abs(afterUp[0] - beforeUp[0]) < 1, `right-drag up pan keeps screen X steady at pitch=${pitch}, yaw=${yaw}`);
+    }
+
+    // Shift + left-drag pan downward
+    ctrl.resetDefaults();
+    ctrl.setParam('pitch', 36);
+    ctrl.setParam('yaw', -18);
+    const beforeShift = projectOrigin();
+    dragMousePan({ button: 0, shiftKey: true }, 600, 360, 600, 420);
+    const afterShift = projectOrigin();
+    assert.ok(afterShift[1] > beforeShift[1] + 10, 'Shift+left-drag down moves scene down');
+
+    // Two-finger touch pan downward (distance unchanged)
+    ctrl.resetDefaults();
+    ctrl.setParam('pitch', 36);
+    ctrl.setParam('yaw', -18);
+    const distBefore = ctrl.getDebugState().camera.distance;
+    const beforeTouch = projectOrigin();
+    stageEl.dispatchEvent(makePointer('pointerdown', { id: 1, pointerType: 'touch', isPrimary: true, x: 200, y: 200 }));
+    stageEl.dispatchEvent(makePointer('pointerdown', { id: 2, pointerType: 'touch', isPrimary: false, x: 320, y: 200 }));
+    stageEl.dispatchEvent(makePointer('pointermove', { id: 1, pointerType: 'touch', isPrimary: true, x: 200, y: 260 }));
+    stageEl.dispatchEvent(makePointer('pointermove', { id: 2, pointerType: 'touch', isPrimary: false, x: 320, y: 260 }));
+    stageEl.dispatchEvent(makePointer('pointerup', { id: 1, pointerType: 'touch', isPrimary: true, x: 200, y: 260 }));
+    stageEl.dispatchEvent(makePointer('pointerup', { id: 2, pointerType: 'touch', isPrimary: false, x: 320, y: 260 }));
+    const afterTouch = projectOrigin();
+    const distAfter = ctrl.getDebugState().camera.distance;
+    assert.ok(afterTouch[1] > beforeTouch[1] + 10, 'two-finger touch down pan moves scene down');
+    assert.ok(Math.abs(distAfter - distBefore) < 0.01, 'two-finger parallel pan preserves camera distance');
+  } finally {
+    ctrl.destroy();
+    dom.window.close();
+  }
+});

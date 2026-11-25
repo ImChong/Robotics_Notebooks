@@ -4173,8 +4173,8 @@
       var speed = targetCam.distance * 0.0022;
       var rx = Math.cos(yawRad);
       var rz = -Math.sin(yawRad);
-      var fx = Math.sin(yawRad);
-      var fz = Math.cos(yawRad);
+      var fx = -Math.sin(yawRad);
+      var fz = -Math.cos(yawRad);
       var panMax = Math.max(1.8, (terrainField ? terrainField.extent : 1.45) * 1.25);
       targetCam.targetX = Math.max(-panMax, Math.min(panMax, targetCam.targetX - dx * rx * speed + dy * fx * speed));
       targetCam.targetZ = Math.max(-panMax, Math.min(panMax, targetCam.targetZ - dx * rz * speed + dy * fz * speed));
