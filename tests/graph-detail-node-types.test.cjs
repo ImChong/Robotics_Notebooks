@@ -139,8 +139,8 @@ test('main.js handles typed health labels and kmap node types for references and
     extractBlock(mainSrc, 'var ROADMAP_KMAP_TYPE_COLOR ='),
     extractStatement(mainSrc, 'var ROADMAP_KMAP_PATH_TYPE ='),
     extractBlock(mainSrc, 'function roadmapKmapNodeType(page, id)'),
-    extractBlock(mainSrc, 'function resolveCompactRowDisplayType(page, detailId, communityIndex)'),
-    'this.__exports = { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, resolveCompactRowDisplayType };',
+    extractBlock(mainSrc, 'function resolvePageDisplayType(page, detailId, communityIndex)'),
+    'this.__exports = { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, resolvePageDisplayType };',
   ].join('\n');
 
   const ctx = {
@@ -154,7 +154,7 @@ test('main.js handles typed health labels and kmap node types for references and
   vm.createContext(ctx);
   vm.runInContext(snippet, ctx);
 
-  const { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, resolveCompactRowDisplayType } = ctx.__exports;
+  const { healthTipLines, ROADMAP_KMAP_TYPE_COLOR, roadmapKmapNodeType, resolvePageDisplayType } = ctx.__exports;
 
   assert.equal(ROADMAP_KMAP_TYPE_COLOR.reference_page, '#818cf8');
   assert.equal(ROADMAP_KMAP_TYPE_COLOR.tech_map_node, '#a3e635');
@@ -171,11 +171,11 @@ test('main.js handles typed health labels and kmap node types for references and
   assert.equal(roadmapKmapNodeType({ path: 'references/papers/mpc.md' }, 'reference-papers-mpc'), 'reference_page');
   assert.equal(roadmapKmapNodeType({ path: 'tech-map/overview.md' }, 'tech-node-overview'), 'tech_map_node');
   assert.equal(
-    resolveCompactRowDisplayType({ path: 'tech-map/modules/control/mpc.md' }, 'tech-node-control-mpc', { 'tech-node-control-mpc': 0 }),
+    resolvePageDisplayType({ path: 'tech-map/modules/control/mpc.md' }, 'tech-node-control-mpc', { detailIdToNodeType: new Map([['tech-node-control-mpc', 'tech_map_node']]) }),
     'tech_map_node',
   );
   assert.equal(
-    resolveCompactRowDisplayType({ path: 'references/repos/simulation.md' }, 'reference-repos-simulation', { 'reference-repos-simulation': 0 }),
+    resolvePageDisplayType({ path: 'references/repos/simulation.md' }, 'reference-repos-simulation', { detailIdToNodeType: new Map([['reference-repos-simulation', 'reference_page']]) }),
     'reference_page',
   );
 });
