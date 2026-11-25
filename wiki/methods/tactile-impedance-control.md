@@ -62,6 +62,16 @@ $$
 
 ## 核心机制
 
+```mermaid
+flowchart LR
+  S["指尖触觉观测 s_tac = (f_n, tau_t, c, dc, A)"] --> M{"变阻抗参数映射"}
+  M -->|"规则化 / QP 约束"| R["按法向力误差与滑移阈值<br/>调节 delta_K (并按 CWC 约束)"]
+  M -->|"学习式 (RL/IL/TS 蒸馏)"| L["策略输出 delta_K, delta_B, delta_x_d"]
+  R & L --> I["实时更新 K_d(t), B_d(t) 与平衡点 x_d<br/>代入标准阻抗律生成控制力矩"]
+  I --> E["自适应力度抓取 / 灵巧装配"]
+  E --> S
+```
+
 1. **规则化变阻抗**：用人写的映射 $K_d = f(s_{\text{tac}})$，可解释、参数少。
 2. **学习式变阻抗**：策略网络输出 $\Delta K, \Delta B, \Delta x_d$，与 RL/IL 联合训练。
 3. **优化型变阻抗**：把刚度调度写成 QP 子问题，受 [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) 等约束保护。

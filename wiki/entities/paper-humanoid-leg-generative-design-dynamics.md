@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware-design, generative-design, electro-hydraulic, eha, lightweight, dynamics-simulation, zju, avic-facri]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-25
 doi: "10.13245/j.hust.260645"
 venue: "华中科技大学学报（自然科学版） 2026, 54(6)"
 related:
@@ -124,7 +124,7 @@ flowchart TB
 
 ## 局限与风险
 
-- **开源与复现：** 截至 2026-08-03 **无官方代码/CAD**；Simscape / Fusion / WEBOTS 工程不可直接下载。
+- **开源与复现：** 截至 2026-11-25 全文复核仍**无官方代码/CAD**；Simscape / Fusion / WEBOTS 工程不可直接下载。
 - **验证层级：** 动态性能提升来自**仿真重跑**；文内未给减重后的整机真机跳跃统计。
 - **衍生式静载近似：** 时变载荷被抽成四类静力工况，异常冲击/失衡为估算项，覆盖不全真实跌倒谱。
 - **平台专用：** EHA 与云深处电机规格、连杆几何与增材方向强绑定；换纯电旋转腿需重做工况与保留体。

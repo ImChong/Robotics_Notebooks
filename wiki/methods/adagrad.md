@@ -37,6 +37,14 @@ sources:
 
 ### 1. 更新规则
 
+```mermaid
+flowchart LR
+  G["当前梯度 g_t"] --> A["逐维累加平方和 G_t = G_{t-1} + g_t^2"]
+  A --> S["per-parameter 缩放 eta / (sqrt(G_t) + eps)"]
+  G --> S
+  S --> P["更新参数 theta_{t+1} (活跃维度步长只减不增)"]
+```
+
 $$
 G_t = G_{t-1} + g_t \odot g_t, \qquad
 \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{G_t} + \epsilon} \odot g_t

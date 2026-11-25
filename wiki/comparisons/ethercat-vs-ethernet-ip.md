@@ -80,6 +80,14 @@ summary: "工业以太网双雄选型：EtherCAT 用 on-the-fly 主站帧实现 
 
 ## 决策要点
 
+```mermaid
+flowchart TD
+  R["工业以太网选型问题"] --> B{"核心瓶颈"}
+  B -->|"关节级硬实时<br/><=1 ms 周期 · 抖动 <1 us"| E["EtherCAT<br/>(DC 硬件同步 + 菊花链 on-the-fly)"]
+  B -->|"工厂 PLC / MES 互操作<br/>标准网卡最小工程依赖"| P["EtherNet/IP (CIP)<br/>(TCP/UDP + 可选 CIP Sync / TSN)"]
+  B -->|"既做底层运控又接产线"| M["双层混合架构<br/>机内 EtherCAT + 对外 EtherNet/IP"]
+```
+
 ```
 你的瓶颈是什么？
 │

@@ -57,6 +57,15 @@ RoboParty 飞书 Know-How 将 **Teacher-Student 模型** 与 **DAgger（Dataset 
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  P["仿真特权观测 s_priv<br/>(地形高度 / 摩擦 / 接触真值)"] --> T["Stage 1: RL / LBC 训练强教师 pi_teacher"]
+  S["真机可部署观测 s_deploy<br/>(IMU / 关节历史 / 相机)"] --> ST["Stage 2: 学生策略 pi_student"]
+  ST -->|"用自身 rollout 覆盖错误状态"| DA["DAgger 状态聚合 D"]
+  T -->|"任意状态白盒标注专家动作 a*"| DA
+  DA -->|"监督 / 表征蒸馏损失"| ST
+```
+
 **Teacher-Student（蒸馏）：**
 1. 训练 $\pi_{\mathrm{teacher}}(a \mid s_{\mathrm{priv}})$
 2. 收集 $(s_{\mathrm{deploy}}, a^*)$ 其中 $a^* \sim \pi_{\mathrm{teacher}}(\cdot \mid s_{\mathrm{priv}}(s_{\mathrm{deploy}}))$

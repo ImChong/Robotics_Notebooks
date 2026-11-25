@@ -68,6 +68,14 @@ summary: "LQR / iLQR 是机器人最优控制与轨迹优化的基石，通过 R
 
 iLQR 专门处理非线性动力学 $x_{k+1} = f(x_k, u_k)$。它通过在当前参考轨迹附近进行**二阶展开（代价函数）**和**一阶展开（动力学）**，反复调用 LQR 逻辑来逼近非线性最优解。
 
+```mermaid
+flowchart LR
+  T["标称轨迹 (x_k, u_k)"] --> LIN["动力学一阶雅可比 f_x, f_u<br/>& 代价二阶展开"]
+  LIN --> BW["Backward Pass (k = T-1 -> 0)<br/>Riccati 递归求前馈 k_k 与反馈 K_k"]
+  BW --> FW["Forward Pass (含步长 alpha 线搜索)<br/>滚出新轨迹 x_new, u_new"]
+  FW -->|"未收敛则继续迭代"| T
+```
+
 ### 算法闭环：Backward & Forward Pass
 
 #### Step 1: Backward Pass (寻找改进方向)

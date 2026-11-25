@@ -59,6 +59,15 @@ $$
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  H["长时序本体历史"] --> HE["历史编码器 (Causal Transformer)"]
+  HE -->|"阶段 2 训练期"| WM["辅助世界模型<br/>(预测未来 N 步，部署时丢弃)"]
+  HE -->|"扰动隐特征"| AD["残差适配器 (Adapter)<br/>alpha * tanh(action)"]
+  R["冻结基础策略 / 参考 q_ref"] --> SUM["q_target = q_ref + residual"]
+  AD --> SUM
+```
+
 | 模块 | 关键技术 | 优势 |
 |------|---------|------|
 | **时序特征提取** | 历史编码器 (History Encoder) | 从长历史序列中识别隐式物理参数与扰动 |

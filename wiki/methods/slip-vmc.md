@@ -45,6 +45,15 @@ original:
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  S["质心与支撑腿状态 (CoM, x, dx)"] --> SLIP["SLIP 弹簧腿简化动力学<br/>生成周期步态/着地高度基准 x*"]
+  SLIP --> VMC["VMC 任务空间虚拟弹簧-阻尼<br/>f_vm = Kp(x*-x) + Kd(dx*-dx)"]
+  VMC --> J["雅可比转置映射到关节<br/>tau = J^T f_vm (需限幅或接 WBC)"]
+  J --> R["腿足物理执行与接触反馈"]
+  R --> S
+```
+
 **SLIP 状态（示意）：** 质心位置、速度，足端位置；腿长成弹簧 $l$，刚度 $k$，支撑相约束 $f_n \ge 0$。
 
 **VMC：** 在任务空间定义期望力

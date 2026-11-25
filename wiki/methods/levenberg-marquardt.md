@@ -44,6 +44,17 @@ original: ../../sources/papers/second_order_optimizers.md
 
 ### 1. 阻尼 GN 更新
 
+```mermaid
+flowchart LR
+  X["当前解 x_k"] --> R["计算残差 r(x_k) 与 Jacobian J"]
+  R --> L["解阻尼线性方程<br/>(J^T J + lambda_k I) p_k = -J^T r"]
+  L --> C{"试探步 x_k + p_k<br/>代价是否下降?"}
+  C -->|"是"| A["接受步进并减小 lambda (偏向 Gauss-Newton)"]
+  C -->|"否"| B["拒绝并增大 lambda (偏向梯度下降)"]
+  A --> X
+  B --> L
+```
+
 $$
 p_k = -(J^T J + \lambda_k I)^{-1} J^T r
 $$

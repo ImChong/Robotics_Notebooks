@@ -55,6 +55,16 @@ summary: "Residual Policy Learning（残差策略学习）：最终动作 = 基�
 
 ### 统一形式
 
+```mermaid
+flowchart LR
+  S["状态 s_t (+ 上下文)"] --> B["已有 Base 策略 / 控制器<br/>(MPC / WBC / GMT / 人类输入)"]
+  S --> R["学习残差策略 pi_theta<br/>(零初始化 + 幅值正则)"]
+  B -->|"a_t^base"| SUM["a_t = a_t^base + delta_a_t"]
+  R -->|"delta_a_t"| SUM
+  SUM --> ENV["真机或仿真环境与接触反馈"]
+  ENV --> S
+```
+
 $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \mid s_t, \text{可选上下文})$$
 
 - **Residual MDP 视角**（Silver et al.）：固定 base 策略 $\pi$ 与环境 MDP 诱导出残差 MDP $M^{(\pi)}$，其转移 $T^{(\pi)}(s,a,s')=T(s,\pi(s)+a,s')$；残差策略就是该 MDP 中的普通策略，任何连续动作 RL 算法均可训练。

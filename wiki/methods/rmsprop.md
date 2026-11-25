@@ -37,6 +37,14 @@ sources:
 
 ### 1. 更新规则
 
+```mermaid
+flowchart LR
+  G["当前梯度 g_t"] --> V["二阶矩 EMA 滑动平均<br/>v_t = beta * v_{t-1} + (1 - beta) * g_t^2"]
+  V --> N["自适应步长缩放<br/>eta / (sqrt(v_t) + eps) * g_t"]
+  G --> N
+  N --> U["参数更新 theta_{t+1} (学习率随梯度可增可减)"]
+```
+
 $$
 v_t = \beta v_{t-1} + (1-\beta) g_t^2, \qquad
 \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{v_t} + \epsilon} \odot g_t

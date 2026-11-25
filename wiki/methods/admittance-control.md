@@ -42,6 +42,16 @@ sources:
 
 $M_d \ddot{x}_c + B_d \dot{x}_c + K_d x_c = f_{ext}$；解出修正轨迹 $x_c$ 送位置控制器。
 
+```mermaid
+flowchart LR
+  F["F/T 传感器外力 f_ext (低通滤波)"] --> A["导纳外环动力学方程<br/>M_d ddx_c + B_d dx_c + K_d x_c = f_ext"]
+  R["期望位置 x_d"] --> SUM["叠加修正量 x_d + x_c"]
+  A -->|"运动修正 x_c"| SUM
+  SUM --> P["高带宽位置内环控制器"]
+  P --> ENV["机器人与接触环境"]
+  ENV --> F
+```
+
 ## 工程实践
 
 低通滤波力信号；调 $M_d,B_d,K_d$ 模拟弹簧阻尼；内环高带宽位置跟踪。

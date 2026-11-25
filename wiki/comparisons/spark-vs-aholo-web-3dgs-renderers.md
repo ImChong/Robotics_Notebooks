@@ -41,6 +41,14 @@ summary: "Spark（World Labs）与 Aholo Viewer（manycoretech）均为浏览器
 - **Spark**：基于 LoD splat 树与 `.RAD` 流式格式，深度集成 THREE.js 生态。
 - **Aholo Viewer**：采用 Chunked Streaming LoD 与 pnpm monorepo 架构，原生支持 3DGS 与三角网格同屏混渲。
 
+```mermaid
+flowchart LR
+  S["Web 端大场景 3DGS 渲染需求"] --> C{"技术栈与资产约束"}
+  C -->|"THREE.js / World Labs Marble<br/>纯 Splat 与 4DGS 排序"| SP["Spark (.RAD + LoD splat 树)<br/>WebGL2 虚拟分页"]
+  C -->|"Splat + Mesh/CAD 碰撞体混渲<br/>TS monorepo 二次开发"| AH["Aholo Viewer (Chunked LoD)<br/>WebGL2 / WebGPU"]
+  S -.->|"需要物理仿真吞吐"| GS["改用 GS-Playground (非本对比)"]
+```
+
 ## 对比表
 
 | 维度 | [Spark](../entities/spark-3dgs-renderer.md) | [Aholo Viewer](../entities/aholo-viewer.md) |

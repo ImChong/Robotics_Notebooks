@@ -73,6 +73,15 @@ HTD 的路线不是“更大的端到端网络”，而是把稳定执行、遥�
 
 Touch Dreaming 是训练期辅助目标，部署时不参与控制。
 
+```mermaid
+flowchart LR
+  M["多模态观测<br/>(RGB + 本体 + 手部力 + 触觉)"] --> T["共享 Transformer Encoder-Decoder"]
+  T --> ACT["Action Experts (推理保留)<br/>输出上身/手/底盘动作块"]
+  T --> FD["Force Dream Expert (仅训练)<br/>预测未来手部关节力"]
+  T --> TD["Tactile Latent Dream Expert (仅训练)<br/>对齐 EMA Tactile Tokenizer 潜特征"]
+  ACT --> LBC["解耦 LBC 下肢 RL 控制器 -> 全身执行"]
+```
+
 | 分支 | 预测目标 | 监督方式 | 作用 |
 |------|----------|----------|------|
 | Action experts | 短 horizon action chunks | 行为克隆 loss | 输出实际控制目标 |

@@ -97,6 +97,18 @@ N-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再�
 
 ## 恢复策略分类
 
+```mermaid
+flowchart TD
+  D["外部推扰 / 地形突变"] --> E["状态与 CP 估计<br/>(IMU + CoM 速度)"]
+  E --> C{"Capture Point<br/>是否在支撑多边形内?"}
+  C -->|"是"| A["小扰动: 踝/髋关节策略<br/>调节 CoP 与上身质心"]
+  C -->|"否（单步可达）"| S["大扰动: Stepping 迈步策略<br/>LIPM/MPC 或 RL 落脚点"]
+  C -->|"极端失稳 / 接近倒地"| M["Multi-Contact 多接触减损<br/>或倒地后自主起身续行"]
+  A --> W["WBC / 底层 PD 执行"]
+  S --> W
+  M --> W
+```
+
 ### 1. Ankle Strategy（踝关节策略）
 
 **适用**：小扰动，重心轻微偏移。

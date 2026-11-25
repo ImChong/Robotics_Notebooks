@@ -117,6 +117,17 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 
 ## 常见方法路线
 
+```mermaid
+flowchart LR
+  O["双臂关节状态 + 多视角图像 / 点云"] --> A["路线 A: 模仿学习 IL<br/>(ACT / Diffusion Policy)"]
+  O --> B["路线 B: 任务空间协同规划<br/>(闭链几何与虚拟物体坐标)"]
+  A --> J["14+ 维双臂协同动作块"]
+  B --> W["TSID / WBC 内力最小化"]
+  W --> F["底层混合力-位与阻抗控制"]
+  J --> F
+  F --> E["双手闭链协同执行与反馈"]
+```
+
 ### 路线 A：模仿学习（IL）
 
 **ACT（Action Chunked Transformers）**（Zhao et al., 2023）是目前双臂操作的主流基线：

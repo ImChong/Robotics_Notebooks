@@ -43,6 +43,15 @@ sources:
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  B["Replay Buffer 采样转移"] --> S["Target Policy Smoothing<br/>目标动作加截断高斯噪声"]
+  S --> C["Clipped Double Q<br/>取两目标 Critic 较小值更新 Q1, Q2"]
+  C -->|"Delayed Policy Update (每 d 步一次)"| A["确定性策略梯度最大化 Q1(s, mu(s))"]
+  A --> ENV["环境加探索噪声采样 -> 回放池"]
+  ENV --> B
+```
+
 ### 核心机制（Fujimoto et al., 2018）
 
 | 修正 | 做法 | 解决的问题 |

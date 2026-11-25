@@ -38,6 +38,14 @@ summary: "机器人凸松弛：QCQP 松弛、Riemannian Staircase、分布式松
 
 ## 核心原理（核心方法）
 
+```mermaid
+flowchart LR
+  NC["非凸机器人问题<br/>(SO(3) 旋转 / 接触开关 / 离群点)"] --> CR["构造凸松弛或近似族<br/>(QCQP->SDP / Riemannian Staircase / GNC)"]
+  CR --> SOL["全局/下界求解或逐步收紧"]
+  SOL --> PR["SVD 投影 / 局部 NLP 舍入"]
+  PR --> FE["物理可行姿态 / 接触序列执行"]
+```
+
 ### 6.2 QCQP 凸松弛
 
 - 旋转矩阵 $R\in SO(3)$：替换 $R^TR=I$ 为 $XX^T=I$ 的 SDP 松弛

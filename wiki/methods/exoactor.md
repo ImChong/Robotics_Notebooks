@@ -49,6 +49,13 @@ summary: "ExoActor 是 BAAI 提出的视频生成驱动的人形控制框架：�
 
 ## 三阶段流水线
 
+```mermaid
+flowchart TD
+  I["任务指令 + 第三人称初始观测"] --> S1["1. Video Generation<br/>Embodiment Transfer -> 动作链Prompt -> Kling 3 视频"]
+  S1 --> S2["2. Motion Estimation<br/>GENMO (SMPL全身) + WiLoR (双手三态)"]
+  S2 --> S3["3. Tracking Deployment<br/>SONIC 全身跟踪 + Dex3-1 手部映射 -> Unitree G1"]
+```
+
 ```
 任务指令 + 第三人称初始观测
         │

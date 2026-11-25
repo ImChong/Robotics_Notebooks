@@ -38,6 +38,14 @@ sources:
 
 ### 1. 更新规则
 
+```mermaid
+flowchart LR
+  D["训练集采样 Mini-Batch B_t"] --> F["前向推理与损失计算 L(theta)"]
+  F --> B["反向传播求噪声梯度 g_hat_t"]
+  B --> S["按学习率调度 eta_t 迭代更新<br/>theta_{t+1} = theta_t - eta_t * g_hat_t"]
+  S --> D
+```
+
 给定损失 $L(\theta)$，从 batch $\mathcal{B}_t$ 采样后：
 
 $$

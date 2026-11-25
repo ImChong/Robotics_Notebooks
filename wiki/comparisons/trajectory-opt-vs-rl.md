@@ -74,6 +74,14 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 ## 融合趋势：Learning to Optimize
 
 现代前沿研究（如 ANYmal, Atlas 的最新版本）正在将两者融合：
+
+```mermaid
+flowchart LR
+  TO["Trajectory Optimization (TO)<br/>解析动力学 + 硬约束"] -->|"生成最优参考轨迹 / 专家数据"| RL["Reinforcement Learning (RL)<br/>域随机化并行闭环"]
+  RL -->|"提供价值函数 / 良好初猜热启动"| TO
+  RL -->|"上层任务目标"| WBC["底层 WBC (QP 硬约束执行)"]
+```
+
 1. **RL 辅助 TO**：用 RL 学习一个良好的初始轨迹值或价值函数，作为 TO 的热启动。
 2. **TO 引导 RL**：利用 TO 产生的最优轨迹作为模仿学习的专家数据，加速 RL 训练。[SE(3) 切空间 TO](../entities/paper-se3-tangent-to.md) 的社区仓 `go2_flip_TO` 把 Go2 空翻写成 50 Hz AMP txt，就是这条落地。
 3. **WBC + RL**：上层用 RL 产生任务目标，下层用 WBC (基于 QP 的 TO) 保证物理安全性。

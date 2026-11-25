@@ -53,6 +53,13 @@ GAE 由 Schulman 等人在 *High-Dimensional Continuous Control Using Generalize
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  R["rollout 序列 (r_t) & 旧价值网络 V(s_t)"] --> D["计算单步 TD 残差<br/>delta_t = r_t + gamma*V(s_{t+1}) - V(s_t)"]
+  D --> REC["逆序递推加权<br/>A_hat_t = delta_t + gamma*lambda*A_hat_{t+1}"]
+  REC -->|"lambda: 偏差-方差权衡"| POL["PPO 先更新策略，再回归更新 V"]
+```
+
 GAE 通过对不同时间跨度的 TD 误差进行加权平均来计算优势：
 
 $$ \hat{A}_t^{GAE(\gamma, \lambda)} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \delta_{t+l}^V $$

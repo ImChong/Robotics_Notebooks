@@ -1,25 +1,29 @@
 ---
 type: overview
-tags: [overview, robot-learning, imitation-learning, reinforcement-learning, vla, action-chunking, control]
-status: draft
-updated: 2026-11-24
-summary: "以机器人闭环、动作控制接口、模仿学习、强化学习与 Token VLA 五部分连接从示范到真机部署的学习路线，区分学习信号、动作生成和执行调度。原讲座出处已确认，课件全文待核读。"
+tags: [overview, robot-learning, imitation-learning, reinforcement-learning, vla, action-chunking, control, flow-matching, world-models]
+status: complete
+updated: 2026-11-25
+original: ../../sources/courses/asu_cse598_fall2026_physical_ai_robot_policies.md
+summary: "对照 ASU CSE 598（Fall 2026）71 页官方课件全文核读编译：以统一加权对数似然框架串联控制契约、模仿学习、深度强化学习、Token VLA、Diffusion/Flow 策略与 World Models，并给出四层控制频率栈与真机排查方法。"
 related:
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
   - ../methods/vla.md
   - ../methods/action-chunking.md
+  - ../methods/diffusion-policy.md
+  - ../methods/generative-world-models.md
   - ../concepts/sim2real.md
   - ../comparisons/robot-learning-five-paradigms-taxonomy.md
   - ../../roadmap/depth-vla.md
   - ../../roadmap/depth-imitation-learning.md
 sources:
+  - ../../sources/courses/asu_cse598_fall2026_physical_ai_robot_policies.md
   - ../../sources/blogs/wechat_human_five_robot_policies_2026-11-24.md
 ---
 
-# Robot Policies: From Imitation Learning to Token VLA / 机器人策略：从模仿学习到 Token VLA
+# Robot Policies: From Imitation Learning to Token VLA / 机器人策略与 Physical AI 全栈总览
 
-> 本页根据 human five 2026-11-24 课程整理文本编译，并以已定位的各研究官方资料交叉核对。原始讲座为 Xinyuan Liu 在 Arizona State University CSE 598（Fall 2026）的 Physical AI 客座讲座，已由讲者官网及封面核实；[官方课件](https://drive.google.com/file/d/19M1BsdvSGGHaS0SpdblaL1DRg_5AfxSt/view?usp=sharing) 与 [视频](https://youtu.be/p1KjuI2z8uM) 已定位，PDF 正文未成功取得，仍不能声称课程原文已核读。
+> 本页基于 Xinyuan Liu 在 Arizona State University CSE 598（Fall 2026）的 Physical AI 客座讲座 [官方 71 页课件](../../sources/courses/asu_cse598_fall2026_physical_ai_robot_policies.md) 全文核读编译，并结合 [human five 课程笔记](../../sources/blogs/wechat_human_five_robot_policies_2026-11-24.md) 与已归档单篇论文原文交叉整理。课程以“pick up the red cup”（UMI RSS 2024 示例）贯穿 7 个板块，补充了二手中文笔记缺失的 Diffusion/Flow、World Models 与真机系统集成部分，并更正了个别模型出处。
 
 ## 一句话定义
 
@@ -73,7 +77,7 @@ flowchart TD
 - 策略：$a_t\sim\pi_\theta(\cdot\mid o_{0:t},g)$。
 - 折扣回报：$G_t=\sum_{k=0}^{T-t-1}\gamma^k r_{t+k}$；期望回报 $J(\theta)=\mathbb E[G_0]$。
 - 完全可观测的固定目标 MDP：$p_\theta(\tau)=\rho_0(s_0)\prod_{t=0}^{T-1}\pi_\theta(a_t\mid s_t)P(s_{t+1}\mid s_t,a_t)$。
-- 策展视角：数据分布、学习权重、策略参数化是三个设计轴，不宣称所有 RL 均可化成同一个固定加权 BC 目标。
+- **统一训练视角（Slide 7）：** $\max_\theta \mathbb{E}_{(o,a)\sim q}[w(o,a)\log \pi_\theta(a\mid o)]$，用数据分布 $q$ 与样本权重 $w$ 统一对比多种范式：BC/ACT/DP/VLA（专家示范，$w=1$）、DAgger（策略访问状态 + 专家标注，$w=1$）、Filtered BC（自身 rollout，成功为 $1$ 否则 $0$）、PPO（自身 rollout，$w$ 为优势函数 $A$）及 $\pi^*_{0.6}$ Recap（示范 + 自身数据，以优势信号作为条件）。
 
 ### 2. 动作表示与控制契约
 
@@ -103,20 +107,20 @@ ACT 的训练后验编码动作序列与状态；其经典部署设置使用零�
 
 ### 4. 强化学习
 
-Rollout 收集状态、动作和奖励；actor 生成动作，critic 估计价值，优势函数 $A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$ 比较动作相对基线的收益。PPO-Clip 优化裁剪代理目标；裁剪限制目标中的更新激励，并不是对新旧策略 KL 或所有概率比的硬约束。
+Rollout 收集状态、动作和奖励；actor 生成动作，critic 估计价值，优势函数 $A^\pi(s,a)=Q^\pi(s,a)-V^\pi(s)$ 比较动作相对基线的收益。PPO-Clip（课件以 Unitree Go2 `MimicKit` 与 $\epsilon=0.2$ 为例）优化裁剪代理目标 $L(\theta)=\mathbb{E}_t[\min(r_t A_t,\operatorname{clip}(r_t,1-\epsilon,1+\epsilon)A_t)]$；裁剪限制目标中的更新激励，并不是对新旧策略 KL 或所有概率比的硬约束。
 
-AMP 使用判别器学习运动风格奖励，并与任务奖励组合。语言模型生成奖励代码、VLM 给视频评分与 Agent 迭代实验属于奖励设计/评价的不同环节；需核对真实任务成功、奖励投机、接触安全与重复试验，不能只优化 VLM 分数。
+AMP（SIGGRAPH 2021 + MimicKit G1 侧手翻示例）使用判别器学习运动风格奖励，并与任务奖励组合。LLM/VLM 自动奖励方面，课件对比了 Eureka（GPT-4 生成可微/可运行奖励代码）与 **ROOT**（LENS Lab 工作，以 VLM 审视 rollout 视频优化奖励函数：$\max_\psi F(\pi^*_\psi)$ s.t. $\pi^*_\psi=\arg\max_\pi J(\pi; r_\psi)$）；工程上仍需核对真实任务成功、奖励投机、接触安全与重复试验，不能只优化 VLM 评分。
 
-### 5. Token VLA 和连续动作头
+### 5. Token VLA、高层规划与连续动作头
 
 | 工作 | 动作/数据路径 | 边界 |
 |---|---|---|
-| [RT-2](../entities/paper-rt-2.md) | VLM 生成离散动作 token | 数值量化、解码延迟 |
-| [Open X-Embodiment](../entities/paper-open-x-embodiment.md) | 多本体数据与 RT-X 实验 | 数据项目不等于单一模型 |
-| [OpenVLA](../entities/paper-openvla.md) | DINOv2 + SigLIP 特征与语言模型、离散动作 | 归一化、模型计算、逐 token 解码 |
-| FAST | DCT、量化、BPE，压缩动作序列 | 压缩误差与高频接触细节 |
+| [RT-2](../entities/paper-rt-2.md) | VLM 生成 256 离散动作 token（基于 RT-1 ~130k 轨迹后续路线） | 数值量化、解码延迟 |
+| [Open X-Embodiment](../entities/paper-open-x-embodiment.md) | 1M+ 轨迹、60 数据集、22 本体的跨本体数据集合 | 数据项目不等于单一模型 |
+| [OpenVLA](../entities/paper-openvla.md) | 7B Llama 2 + DINOv2/SigLIP，970k 轨迹、7-D 离散动作 + LoRA | 归一化、模型计算、逐 token 解码 |
+| FAST | DCT + 取整 + BPE 压缩高频动作块 | 压缩误差与高频接触细节 |
 | OpenVLA-OFT | 并行解码、动作块、连续动作头、L1 回归 | 微调配方与特定任务协议 |
-| [MolmoAct](../entities/paper-molmoact.md) | depth tokens、2D spatial plan、动作 tokens | 推理延迟与中间表征误差 |
+| [MolmoAct](../entities/paper-molmoact.md) / MolmoAct2 | depth tokens → 2D spatial trace → 动作 tokens（MolmoAct2 改用连续动作头） | 推理延迟与中间表征误差 |
 
 ```mermaid
 flowchart LR
@@ -131,7 +135,29 @@ flowchart LR
   U --> S
 ```
 
-图为多种独立模型的输出路径对照，不代表同一模型同时运行所有分支。高层 Agent 可选择技能或任务顺序，低层策略执行；直接调用大模型输出关节目标仍需校验动作、时限和安全接口。
+图为多种独立模型的输出路径对照，不代表同一模型同时运行所有分支。高层规划方面，官方课件以 **Gemini Robotics 2（`ER 2`）** 为例展示由大模型拆解任务并调用低层 VLA 技能（而非二手笔记笼统提及的 GPT 系列）；直接调用大模型输出关节目标仍需校验动作、时限和安全接口。
+
+### 6. Diffusion & Flow Policies 与 $\pi$ / GR00T 家族
+
+连续动作生成主线通过多步去噪或速度场回归表达多模态连续分布（[Diffusion Policy](../methods/diffusion-policy.md)）：
+
+- **Diffusion Policy（RSS 2023）：** 最小化噪声预测损失 $\mathcal{L}(\theta)=\mathbb{E}_{k,\epsilon}\|\epsilon-\epsilon_\theta(a_0+\sigma_k\epsilon,k,o)\|^2$；经典参数为预测地平线 $H=16$、执行步数 $E=8$、测试期 DDIM/Consistency 去噪步数 $K=10\text{–}100$。
+- **Flow Matching：** 通过线性插值 $X_\tau=(1-\tau)\epsilon+\tau A$ 回归速度场 $\mathcal{L}=\mathbb{E}\|v_\theta(X_\tau,\tau,o)-(A-\epsilon)\|^2$，部署通常仅需约 $10$ 步。
+- **代表架构对照：** **Octo**（RSS 2024，非 VLM，800k 轨迹/25 数据集，27M/93M）；**$\pi_0$**（PaliGemma 3B VLM + ~300M flow action expert，50 步动作块，`openpi`）；**$\pi$ 家族演进**为 $\pi_0 \to \pi_{0.5}$（子任务分解与新家庭泛化）$\to \pi_{0.6}$（更大 VLM，FAST+flow）$\to \pi^*_{0.6}$（Recap 从纠错与真机经验做 RL 微调）$\to \pi_{0.7}$（可调控技能组合）；**GR00T N1 / N1.6（开源 3B）** 将 System 2 VLM 与独立 System 1 DiT flow head 分离，区别于 $\pi_0$ 的共享注意力机制。
+
+### 7. World Models 与系统集成选型（四角色与四层频率栈）
+
+课件第 6–7 节（[World Models](../methods/generative-world-models.md)）把世界模型划分为四类角色：Learned simulator（如 Dreamer V3）、Planner（如 V-JEPA 2-AC：1M+ 小时视频 + 62 小时机器人视频，$a^*=\arg\min_a\|P(z_t,a)-z_{\text{goal}}\|$）、Data maker（Cosmos 1–2.5 到 2026-05 的 Cosmos 3 Reasoner+Generator 双塔，Super 32B & Nano 8B；Genie 3）与 **World Action Model（WAM）**（联合建模 $p(\text{video},\text{actions})=p(\text{video})\cdot p(\text{actions}\mid\text{video})$，如 DreamZero 与 GR00T N2）。
+
+```mermaid
+flowchart TB
+  H["高层规划器 Planner<br/>秒级 · §4"] -->|"子任务目标"| M["VLA / WAM 策略<br/>~5-50 Hz · §4-6"]
+  M -->|"动作块 / 末端或关节参考"| L["全身 RL 控制器<br/>~50 Hz · §3"]
+  L -->|"高频目标位置/速度/前馈"| P["底层 PD 闭环<br/>~1 kHz · §1"]
+```
+
+- **按“缺失原料”选型（Slide 68）：** 仿真器+奖励 → PPO+DR；仿真器+动作片段 → AMP / Eureka / ROOT；单本体示范 → ACT / Diffusion Policy；跨本体多示范 → 微调 VLA（OpenVLA / $\pi_0$ / GR00T）；已部署策略+成功信号 → RL 微调（Recap）；海量视频+少量标签 → World Models / WAM。
+- **抓红杯打滑五问排查表（Slide 70）：** 若怀疑增益/夹持力不足（§1）测接触力矩；怀疑示范无打滑样本（§2）查人工干预率；怀疑奖励忽略夹持（§3）对照奖励与失败轨迹；怀疑离散精度或延迟（§4–5）测分桶/chunk/延迟；怀疑想象物理摩擦失真（§6）对比预测视频与真机视频。
 
 ## 工程实践：动作块与反馈调度
 
@@ -159,10 +185,10 @@ sequenceDiagram
 
 ## 局限与风险
 
-- 原始讲座身份已确认，但课件正文和演示尚未核读，故不记录 GPT 模型具体版本、推理秒数等无可核验口径。
-- 原文部分公式在用户文本中丢失，本页明确为标准公式补充。
-- 该笔记不包含统一官方可运行项目；源码运行时序图不适用。各论文/模型入口应在唯一实体页中独立核对。
-- 未对全部列出的原始论文逐篇通读或复现实验，不将本页当作完成论文深读。
+- 本页已完整对照 [ASU CSE 598（Fall 2026）71 页官方课件](../../sources/courses/asu_cse598_fall2026_physical_ai_robot_policies.md) 通读核对，但课件第 71 页注明“Sources for every slide are in the speaker notes”，PDF 正文提取未涵盖讲者备注及 YouTube 录像原声。
+- 原先中文二手笔记关于“GPT 系列作为 planner”的表述与官方课件第 46 页展示的 Gemini Robotics 2（`ER 2`）不一致，本页已按课件原文更正。
+- 该课程总览包含多个独立方法族，不包含单一统一官方可运行项目；源码运行时序图不适用，各论文/模型入口应在对应实体页中独立核对。
+- 未对全部列出的原始论文逐篇复现实验，不将本页当作代替单篇论文深读。
 
 ## 关联页面
 
@@ -170,6 +196,8 @@ sequenceDiagram
 - [强化学习](../methods/reinforcement-learning.md)
 - [VLA](../methods/vla.md)
 - [Action Chunking](../methods/action-chunking.md)
+- [Diffusion Policy](../methods/diffusion-policy.md)
+- [生成式世界模型](../methods/generative-world-models.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [五大机器人学习范式](../comparisons/robot-learning-five-paradigms-taxonomy.md)
 - [VLA 纵深路线](../../roadmap/depth-vla.md)
@@ -181,9 +209,11 @@ sequenceDiagram
 - [PPO 官方算法文档](https://spinningup.openai.com/en/latest/algorithms/ppo.html)
 - [FAST 官方 tokenizer](https://huggingface.co/physical-intelligence/fast)
 - [OpenVLA-OFT 原始项目](https://openvla-oft.github.io/)
+- [Awesome-Frontier-Model-Robotics（课件引用）](https://github.com/LENS-Lab-AI/Awesome-Frontier-Model-Robotics)
 
 ## 参考来源
 
+- [ASU CSE 598（Fall 2026）Physical AI 官方课件归档](../../sources/courses/asu_cse598_fall2026_physical_ai_robot_policies.md)
 - [human five 课程笔记归档及相关一手资料核对清单](../../sources/blogs/wechat_human_five_robot_policies_2026-11-24.md)
 - [ACT 原始论文归档](../../sources/papers/act_arxiv_2304_13705.md)
 - [RT-2 原始论文归档](../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md)

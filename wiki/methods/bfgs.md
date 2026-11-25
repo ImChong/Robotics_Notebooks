@@ -38,6 +38,15 @@ sources:
 
 ### 1. BFGS 更新公式
 
+```mermaid
+flowchart LR
+  G["当前梯度 grad f_k & 近似逆 H_k"] --> D["搜索方向 p_k = -H_k * grad f_k"]
+  D --> LS["线搜索求步长 alpha_k -> x_{k+1}"]
+  LS --> DIFF["状态差 s_k = x_{k+1} - x_k<br/>梯度差 y_k = grad f_{k+1} - grad f_k"]
+  DIFF --> UPD["秩-2 更新 H_{k+1} (满足割线方程)"]
+  UPD --> G
+```
+
 令 $s_k = x_{k+1}-x_k$，$y_k = \nabla f_{k+1}-\nabla f_k$，$\rho_k = 1/(y_k^T s_k)$：
 
 $$

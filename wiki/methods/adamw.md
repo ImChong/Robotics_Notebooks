@@ -40,6 +40,14 @@ sources:
 
 ### 1. 解耦更新的含义
 
+```mermaid
+flowchart LR
+  G["梯度 g_t"] --> AD["Adam 动量与二阶矩归一化步<br/>eta * m_hat / (sqrt(v_hat) + eps)"]
+  T["当前权重 theta_t"] --> WD["独立权重衰减步<br/>eta * lambda * theta_t (不被分母缩放)"]
+  AD --> U["汇总更新 theta_{t+1}"]
+  WD --> U
+```
+
 **错误做法（Adam + L2）**：令 $\tilde{g}_t = g_t + \lambda \theta_t$，再喂入 Adam；自适应分母 $\sqrt{\hat{v}_t}$ 会 **按参数尺度缩放正则强度**。
 
 **AdamW 做法**：

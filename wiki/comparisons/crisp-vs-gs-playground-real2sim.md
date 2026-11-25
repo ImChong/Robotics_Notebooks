@@ -73,6 +73,14 @@ summary: "CRISP 与 GS-Playground 是两条互补的 Real2Sim 路线：前者从
 
 两条路线天然可以**串联**成一条 Real2Sim 资产链：
 
+```mermaid
+flowchart LR
+  V["真实世界观测<br/>(单目视频 / 多视角采集)"] --> C["CRISP 路线<br/>凸平面原语 + 人-物接触闭环"]
+  V --> G["GS-Playground 路线<br/>3DGS 批量光真实感渲染"]
+  C -->|"可碰撞物理场景 + 参考运动"| S["物理引擎仿真器<br/>(Sim2Real 策略训练)"]
+  G -->|"高吞吐 RGB / 深度观测"| S
+```
+
 - **CRISP 管几何与接触，GS-Playground 管外观**：用 CRISP 得到接触可信的场景原语与参考运动，再叠加 3DGS 外观做光真实感视觉观测，既「跑得动」又「看得真」。
 - 都服务 [Sim2Real](../concepts/sim2real.md) 上游：先把真实世界变成**动力学/外观双重一致**的仿真，再在同一物理里训练策略。
 - 项目页常把 CRISP 与 VideoMimic 并排做交互对比，把 GS-Playground 与 [Spark](../entities/spark-3dgs-renderer.md) / [Aholo Viewer](../entities/aholo-viewer.md) 等 Web 3DGS 栈对照——评估口径不同，数字只能在各自设定内解读。

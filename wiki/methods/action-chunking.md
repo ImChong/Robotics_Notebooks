@@ -107,6 +107,14 @@ original:
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  O["多视角观测 + 本体历史"] --> P["策略头<br/>(ACT / Diffusion / Flow VLA)"]
+  P -->|"预测未来 K 步 chunk"| B["执行调度与前缀选择<br/>(Receding Horizon / Temporal Ensemble / RTC)"]
+  B -->|"执行前 T_e 步或异步拼接"| L["底层高频控制器<br/>(100-1000 Hz)"]
+  L -->|"执行状态反馈"| O
+```
+
 与标准行为克隆只预测当前动作 $a_t$ 不同，动作块方法预测：
 
 $$

@@ -7,15 +7,15 @@
 - **venue：** ICML 2026 Poster（[ICML 虚拟页 #809](https://icml.cc/virtual/2026/poster/61610)）
 - **原始链接：**
   - ICML：<https://icml.cc/virtual/2026/poster/61610>
-  - OpenReview PDF：<https://openreview.net/pdf?id=oVB2xYWvpv>（2026-11-21 复核返回 HTTP 403 / 浏览器通道受阻）
+  - OpenReview PDF：<https://openreview.net/pdf?id=oVB2xYWvpv>（2026-11-21 curl 返回 HTTP 403；2026-11-25 浏览器核查 `forum?id=oVB2xYWvpv` 与 `pdf?id=oVB2xYWvpv` 均重定向至 `openreview.net/challenge` Cloudflare Turnstile 人机验证页，按规范不绕过）
   - ICML 官方 Poster 图：<https://icml.cc/media/PosterPDFs/ICML%202026/61610.png>（已获取并完整阅读）
   - 代码：<https://github.com/kekeZ66/3D-IC>（归档见 [`sources/repos/3d-ic.md`](../repos/3d-ic.md)）
 - **作者：** Keming Zhang, Sixian Zhang†, Xinhang Song, Hongyu Wang, Yiyao Wang, Yingjie Wang, Shuqiang Jiang
 - **机构：** 中国科学院计算技术研究所 人工智能安全全国重点实验室；中国科学院大学；中国科学院计算技术研究所
 - **入库日期：** 2026-07-10
-- **原文核对日：** 2026-11-21
+- **原文核对日：** 2026-11-25
 - **通读：** 未完成
-- **阻塞说明：** 论文全文 PDF（OpenReview `oVB2xYWvpv`）于 2026-11-21 直接请求返回 HTTP 403 且本地无可用 DevTools 浏览器会话，未能获取全文阅读；当前已核对 ICML 2026 Poster `#809` 完整图表数据（`61610.png`）与官方代码仓 `kekeZ66/3D-IC` 源码（`ovmm_3dic_agent.py`、`mapping/clip3d/`、`eval_baselines_agent.py`），故按实保留 `通读：未完成` 直到获取全文 PDF。
+- **阻塞说明：** 论文全文 PDF（OpenReview `oVB2xYWvpv`）于 2026-11-21 返回 HTTP 403，于 2026-11-25 用无绕过浏览器重新核查确认 `forum` 与 `pdf` 链接均受 OpenReview Cloudflare Turnstile 人机验证与登录门禁拦截，未能获取全文阅读；当前已核对 ICML 2026 Poster `#809` 完整图表数据（`61610.png`）与官方代码仓 `kekeZ66/3D-IC` 源码（`ovmm_3dic_agent.py`、`mapping/clip3d/`、`eval_baselines_agent.py`），故按实保留 `通读：未完成` 直到获取全文 PDF。
 - **一句话说明：** **3D Interaction Chains（3D-IC）** 面向 **开放词汇移动操作（OVMM）**，用 **共享 3D 特征图** 统一导航与操作规划，生成 **阶段对齐的交互路点** 并串联为 **多阶段交互链**；**分层策略** 联合 **VLM 可行性推理** 与 **转移代价** 选链，闭环执行并在仿真（Avg SR **52.7%**, Step **844.1**）与 Stretch 3 真机验证任务成功率与轨迹效率双提升。
 
 ## Poster #809 核心实验数值（2026-11-21 核对 `61610.png`）

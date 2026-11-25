@@ -23,6 +23,15 @@ summary: "动态运动基元（DMP）通过二阶微分方程描述运动轨迹�
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  CS["正则相位系统 s (控制时间尺度 tau)"] --> FF["非线性驱动项 f(s)<br/>(高斯核线性组合编码轨迹形状)"]
+  G["目标位置 g (可在线缩放平移)"] --> ATT["二阶弹簧阻尼吸引子<br/>alpha_y(beta_y(g-y) - dy)"]
+  FF --> ODE["加速度 ddy 积分 -> y, dy"]
+  ATT --> ODE
+  ODE -->|"状态反馈"| ATT
+```
+
 DMP 将轨迹建模为如下二阶微分方程：
 $$ \tau^2 \ddot{y} = \alpha_y (\beta_y (g - y) - \dot{y}) + f(s) $$
 其中：

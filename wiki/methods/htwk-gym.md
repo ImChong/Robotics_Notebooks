@@ -36,6 +36,14 @@ htwk-gym 并不训练单一的行走策略，而是训练一个**参数化控制
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  C["任务配置 YAML<br/>(BaseWalk / ParameterWalk / Kicking)"] --> IG["Isaac Gym 并行仿真<br/>(10 维命令参数化 + 域随机化)"]
+  IG -->|"Streamlit obs_editor 调参"| MJ["MuJoCo 跨仿真 Sim2Sim 校验"]
+  MJ --> E["导出 JIT / ONNX / TFLite 量化权重"]
+  E --> B["Booster T1/K1 机载 ARM / Orin<br/>(配合 ROS 2 比赛决策树)"]
+```
+
 采用 NVIDIA Isaac Gym 大规模 GPU 并行仿真，围绕 Booster T1/K1 建立涵盖基础速度跟踪（`BaseWalk`）、10 维命令参数化步行（`ParameterWalk`）及带特权状态（20 维特权 + 44 维观测）的目标感知踢球（`Kicking`）任务空间；配合课程与领域随机化压实平衡与摩擦边界，最后在 MuJoCo 物理引擎做独立交叉检验并导出 JIT/TFLite 推理权重。
 
 ## 主要技术路线

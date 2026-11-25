@@ -26,6 +26,13 @@ summary: "CycleGAN 一类无配对图像翻译可把仿真渲染转成接近真�
 
 ## 主要技术路线
 
+```mermaid
+flowchart LR
+  S["仿真渲染图像 x_sim"] -->|"生成器 G"| R["真实风格域图像 G(x_sim)"]
+  R -->|"生成器 F 循环重建"| S2["F(G(x_sim)) ~ x_sim<br/>(+ 可选 RL-scene Q 值一致性)"]
+  R --> P["训练或评估视觉策略 / QT-Opt<br/>(动力学保持不变)"]
+```
+
 - **无配对图像翻译**：学习仿真渲染图与真实风格图像之间的映射，不改动力学或控制器。
 - **服务视觉闭环 RL**：与 [QT-Opt](./qt-opt.md) 等像素策略并列讨论时常用于减小观测域差；总体归类见 [Sim2Real](../concepts/sim2real.md)。
 - **RL 感知的翻译（RL-CycleGAN）**：普通 CycleGAN 的翻译不感知任务，可能改掉对控制重要的细节。[RL-CycleGAN](../entities/paper-as-2011-03148-rl-cyclegan-reinforcement-learning-aware-simulat.md)（Rao et al., CVPR 2020）加入 RL-scene consistency loss，要求图像翻译前后对应的 Q 值不变，在两项视觉抓取任务上优于多种既有 sim-to-real 方法，且只需适量真实观测。

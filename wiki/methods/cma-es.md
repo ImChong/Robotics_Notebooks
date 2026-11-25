@@ -50,6 +50,16 @@ summary: "CMA-ES（Covariance Matrix Adaptation Evolution Strategy）是一种�
 
 ## 算法骨架
 
+```mermaid
+flowchart LR
+  D["多元高斯分布 N(m_t, sigma_t^2 C_t)"] --> S["1. 采样 lambda 个候选解 x_i"]
+  S --> E["2. 黑箱仿真评估与排序<br/>(如轨迹 MAE / MMD 适应度)"]
+  E --> U["3. 精英加权更新均值 m_{t+1}"]
+  E --> P["4. 进化路径更新步长 sigma_{t+1}<br/>& 秩-1/秩-mu 更新协方差 C_{t+1}"]
+  U --> D
+  P --> D
+```
+
 给定当前分布 $\mathcal{N}(\mathbf{m}_t, \sigma_t^2 \mathbf{C}_t)$，第 $t$ 代：
 
 1. **采样：** 抽取 $\lambda$ 个候选 $\mathbf{x}_i = \mathbf{m}_t + \sigma_t\, \mathbf{y}_i,\ \mathbf{y}_i \sim \mathcal{N}(\mathbf{0}, \mathbf{C}_t)$。

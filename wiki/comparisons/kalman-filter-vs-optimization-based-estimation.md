@@ -58,6 +58,15 @@ summary: "状态估计方法对比：探讨了经典的卡尔曼滤波（EKF/UKF
 1. **脊髓级 (Fast Path)**：使用 **InEKF** 以 1000Hz 融合 IMU 与关节数据，输出用于平衡控制的极低延迟速度估计。
 2. **大脑级 (Slow Path)**：使用 **滑窗优化** 以 30Hz 融合视觉、点云和 IMU，输出用于导航的长程漂移修正量。
 
+```mermaid
+flowchart LR
+  IMU["高频 IMU + 关节编码器<br/>(~1 kHz)"] --> EKF["脊髓级 Fast Path<br/>(EKF / InEKF 递归滤波)"]
+  VO["视觉 / LiDAR 异步观测<br/>(10-30 Hz)"] --> FG["大脑级 Slow Path<br/>(因子图滑窗优化 + 闭环)"]
+  EKF -->|"低延迟 Base 姿态/速度"| WBC["底层 WBC / 平衡控制"]
+  FG -->|"长程漂移修正与里程计约束"| EKF
+  FG --> NAV["高层建图与导航规划"]
+```
+
 ## 关联页面
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)

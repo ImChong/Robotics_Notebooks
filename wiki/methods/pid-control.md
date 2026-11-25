@@ -53,6 +53,18 @@ PID 控制：根据误差 $e$ 及其积分、微分，输出控制量 $u$ 的经
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  QD["期望轨迹 q_d, dq_d"] --> ERR["位置误差 e = q_d - q"]
+  ERR --> P["P: Kp * e"]
+  ERR --> I["I: Ki * int(e) (常含抗饱和或置 0)"]
+  ERR --> D["D: Kd * de"]
+  FF["可选重力/摩擦前馈 tau_ff"] --> SUM["输出 tau = P + I + D + tau_ff"]
+  P & I & D --> SUM
+  SUM --> JNT["关节驱动与编码器反馈 q, dq"]
+  JNT --> ERR
+```
+
 **控制律（Modern Robotics §11.4.1）：** $\tau=K_p\theta_e+K_i\!\int\!\theta_e\,dt+K_d\dot\theta_e$，$\theta_e=\theta_d-\theta$。$K_p$ 像虚拟弹簧，$K_d$ 像虚拟阻尼，$K_i$ 消稳态误差。
 
 **水平面单关节 PD 的误差动力学：** 设 $M\ddot\theta+b\dot\theta=\tau$，设定点控制下 $M\ddot\theta_e+(b+K_d)\dot\theta_e+K_p\theta_e=0$，即标准二阶形 $\ddot\theta_e+2\zeta\omega_n\dot\theta_e+\omega_n^2\theta_e=0$：

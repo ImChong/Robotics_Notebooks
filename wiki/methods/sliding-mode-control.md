@@ -41,6 +41,17 @@ SMC：设计滑模面 $s(x)=0$，用不连续/饱和切换律强制状态沿面�
 
 $s = \dot{e} + \lambda e$；$\tau = \tau_{eq} - K\,\text{sign}(s)$；高阶/终端滑模改良收敛与抖振。
 
+```mermaid
+flowchart LR
+  E["状态误差 (e, de)"] --> SM["构造滑模面 s = de + lambda*e"]
+  SM --> SW["不连续/饱和切换律<br/>-K * sat(s / Phi) 抑制抖振"]
+  E --> EQ["等效标称控制 tau_eq"]
+  EQ --> SUM["tau = tau_eq + tau_switch"]
+  SW --> SUM
+  SUM --> P["存在匹配扰动/突变负载的被控系统"]
+  P --> E
+```
+
 ## 工程实践
 
 边界层 $\text{sat}(s/\Phi)$ 减抖振；与观测器估计扰动；MATLAB/Simulink 滑模实例验证。

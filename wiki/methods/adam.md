@@ -41,6 +41,16 @@ sources:
 
 ### 1. 更新规则
 
+```mermaid
+flowchart LR
+  G["mini-batch 梯度 g_t"] --> M["一阶矩 EMA m_t (动量)"]
+  G --> V["二阶矩 EMA v_t (梯度平方)"]
+  M --> BM["偏差校正 m_hat_t = m_t / (1 - beta1^t)"]
+  V --> BV["偏差校正 v_hat_t = v_t / (1 - beta2^t)"]
+  BM --> U["参数更新 theta - eta * m_hat_t / (sqrt(v_hat_t) + eps)"]
+  BV --> U
+```
+
 $$
 m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t, \quad
 v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2

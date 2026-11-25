@@ -39,6 +39,16 @@ sources:
 
 ## 如何读论文里的三档 Embodied Use？
 
+```mermaid
+flowchart LR
+  V["人类视频语料"] --> T{"Embodied Use 分档"}
+  T -->|"Limited"| L["语义/行为相关<br/>(如 EPIC-KITCHENS-100 · 需大量桥接)"]
+  T -->|"Indirect"| I["适合视觉/VLM 表征预训练<br/>(如 Ego4D / HowTo100M)"]
+  T -->|"Direct"| D["贴近手体轨迹或成对示教<br/>(如 EgoDex / EgoVerse / HumanNet)"]
+  I --> P["策略蒸馏 / 对齐层 / 动作模型"]
+  D --> P
+```
+
 下列解释与 [原始资料](../../sources/papers/humannet_table1_benchmark_corpora.md) 中的表格转录一致，用于读论文时的直觉对齐（**非**对各数据集能力的客观排名）：
 
 | 档位 | 直觉含义（结合 Table 1 语境） | 典型例子（论文表中） |

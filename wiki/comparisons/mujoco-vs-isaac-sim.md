@@ -40,6 +40,14 @@ summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理
 
 ## 核心特性对比
 
+```mermaid
+flowchart LR
+  T["仿真任务类型"] --> K{"首选引擎"}
+  K -->|"MPC / iLQR / 精细接触<br/>单机快速策略调试"| M["MuJoCo<br/>(凸优化接触 · 简洁 Python/C++ API)"]
+  K -->|"大规模 Model-Free RL<br/>Vision-based RL / RTX 渲染"| I["Isaac Sim / Isaac Gym<br/>(PhysX GPU 并行 + 高保真感知)"]
+  M -.->|"跨引擎对齐 (Sim2Sim)"| I
+```
+
 | 维度 | MuJoCo | NVIDIA Isaac Sim / Gym |
 |------|--------|------------------------|
 | **主打优势** | 物理严谨性、接触稳定性、算法原型开发 | 极高吞吐量的大规模 GPU 并行、高保真渲染 |

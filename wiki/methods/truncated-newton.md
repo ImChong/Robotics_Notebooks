@@ -37,6 +37,15 @@ sources:
 
 ### 1. 内外层结构
 
+```mermaid
+flowchart LR
+  X["外层迭代点 x_k & 梯度 g_k"] --> CG["内层共轭梯度 CG<br/>通过 AD 的 HVP 近似解 H p = -g_k"]
+  CG --> STOP{"残差 ||r_i|| <= eta_k ||g_k||?"}
+  STOP -->|"否"| CG
+  STOP -->|"是 · early stop 得步向 p_k"| LS["外层线搜索更新 x_{k+1} = x_k + alpha_k p_k"]
+  LS --> X
+```
+
 **外层**：牛顿迭代 $x_{k+1} = x_k + \alpha_k p_k$
 
 **内层**：用 CG 解 $(\nabla^2 f(x_k)) p = -\nabla f(x_k)$，在 $i$ 步后停止当 $\|r_i\| \le \eta_k \|\nabla f\|$。

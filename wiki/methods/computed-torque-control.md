@@ -45,6 +45,16 @@ CTC：用动力学模型计算前馈力矩抵消非线性耦合，再叠加反�
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  Q["期望轨迹 q_d, dq_d, ddq_d"] --> ERR["跟踪误差 e = q_d - q"]
+  Q --> AC["指令加速度<br/>ddq_cmd = ddq_d + Kp*e + Kd*de"]
+  ERR --> AC
+  AC -->|"乘估计惯量 M_hat(q)"| FF["前馈非线性补偿<br/>+ h_hat(q, dq)"]
+  FF -->|"关节力矩 tau"| R["机器人动力学 -> 传感器反馈 q, dq"]
+  R --> ERR
+```
+
 $\tau = M(q)(\ddot{q}_d + K_p e + K_d \dot{e}) + C(q,\dot{q})\dot{q} + g(q)$；前馈抵消 $C,g$，反馈处理模型误差。
 
 **推导（Modern Robotics §11.4.1.3、§11.4.2）：** 机器人动力学 $\tau=M(\theta)\ddot\theta+h(\theta,\dot\theta)$，$h$ 含 Coriolis、重力、摩擦等只依赖状态的项。若希望误差 $\theta_e=\theta_d-\theta$ 满足线性误差动力学 $\ddot\theta_e+K_d\dot\theta_e+K_p\theta_e+K_i\!\int\!\theta_e\,dt=0$，则令指令加速度 $\ddot\theta=\ddot\theta_d+K_d\dot\theta_e+K_p\theta_e+K_i\!\int\!\theta_e$，代入**模型** $\{\tilde M,\tilde h\}$：

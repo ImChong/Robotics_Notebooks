@@ -35,6 +35,18 @@ Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优�
 
 ## 核心对比
 
+```mermaid
+flowchart LR
+  subgraph ON["Online RL (PPO / SAC / TD3)"]
+    P1["当前策略 pi"] -->|"主动探索生成 rollout"| E1["环境/仿真器"]
+    E1 -->|"新转移 + 无分布偏移"| P1
+  end
+  subgraph OFF["Offline RL (CQL / IQL / ReFORM)"]
+    D["固定离线数据集 D<br/>(演示或历史策略)"] -->|"加保守/支撑约束抑 OOD"| P2["离线更新策略"]
+    P2 -->|"零真实交互代价部署"| R2["真实环境"]
+  end
+```
+
 | 维度 | Online RL | Offline RL |
 |------|----------|-----------|
 | **数据来源** | 策略与环境实时交互生成 | 固定数据集（人类演示 / 旧策略轨迹） |

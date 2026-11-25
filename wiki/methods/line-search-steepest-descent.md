@@ -33,6 +33,16 @@ summary: "线搜索最速下降与阻尼牛顿法：非凸无约束 NLP 的基�
 
 ## 核心算法
 
+```mermaid
+flowchart LR
+  X["当前点 x_k & 梯度 g_k"] --> P{"选择下降方向 p_k"}
+  P -->|"一阶最速下降"| GD["p_k = -g_k"]
+  P -->|"二阶修正阻尼牛顿"| NT["解 (H + lambda I) p_k = -g_k"]
+  GD & NT --> LS["1D 线搜索求步长 alpha_k<br/>(满足 Armijo / Wolfe 条件)"]
+  LS --> U["更新 x_{k+1} = x_k + alpha_k p_k"]
+  U --> X
+```
+
 ### 最速下降
 
 1. 计算 $g = \nabla f(x)$

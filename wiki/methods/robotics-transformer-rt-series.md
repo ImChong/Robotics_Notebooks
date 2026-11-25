@@ -42,6 +42,14 @@ summary: "RT-1 将语言条件图像操控建模为序列预测；RT-2 将大规
 
 ## 核心原理
 
+```mermaid
+flowchart LR
+  I["多视角图像 + 语言指令"] --> ENC{"架构分支"}
+  ENC -->|"RT-1"| F1["EfficientNet-B3 + FiLM 调制 + TokenLearner<br/>-> Decoder-only Transformer"]
+  ENC -->|"RT-2"| F2["互联网预训练 VLM (PaLI-X / PaLM-E)<br/>+ 图文与机器人 Co-fine-tuning"]
+  F1 & F2 --> TOK["输出 256-bin 离散动作 token<br/>(6-DoF 末端增量 + 夹爪 + 终止)"]
+```
+
 - **FiLM + TokenLearner（RT-1）**：将语言向量通过 FiLM 调制 EfficientNet-B3 多帧特征图，再用 TokenLearner 将每帧 81 个空间 token 压缩至 8 个，使 6 帧历史序列适配 Decoder-only Transformer，预测 256-bin 离散动作（6-DoF 末端增量、夹爪、底盘与终止信号）。
 - **动作文本化 + Co-fine-tuning（RT-2）**：沿用 RT-1 的 256-bin 整数表示并写成 VQA 格式文本（或占用最少用词表 token 的 symbol tuning），与互联网视觉–语言数据联合微调 PaLI-X（5B/55B）与 PaLM-E（12B），防止机器人微调阶段灾难性遗忘。
 

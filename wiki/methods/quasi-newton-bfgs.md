@@ -38,6 +38,14 @@ summary: "拟牛顿 BFGS / L-BFGS 总览：分别见独立节点 bfgs.md 与 l-b
 
 ## 核心更新（详见独立节点）
 
+```mermaid
+flowchart LR
+  G["前后步位置差 s_k 与梯度差 y_k"] --> M{"存储与规模选择"}
+  M -->|"中低维 NLP · 存完整矩阵"| BF["BFGS: 秩-2 维护近似逆 H_k · O(n^2)"]
+  M -->|"高维 TrajOpt (如 cuRobo)"| LBF["L-BFGS: 保留最近 m 对 · Two-Loop O(mn)"]
+  BF & LBF --> LS["结合 Armijo/Wolfe 线搜索更新解"]
+```
+
 - **[BFGS](./bfgs.md)**：满内存秩-2 更新，$O(n^2)$ 存储，中低维 NLP。
 - **[L-BFGS](./l-bfgs.md)**：two-loop recursion，$O(mn)$ 内存，高维 TrajOpt 工业默认。
 

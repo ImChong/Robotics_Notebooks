@@ -37,6 +37,15 @@ sources:
 
 ### 1. 更新规则（概念形式）
 
+```mermaid
+flowchart LR
+  G["当前梯度 g_t"] --> EG["梯度平方 EMA: E[g^2]_t"]
+  U["历史更新 RMS: E[dtheta^2]_{t-1}"] --> R["步长比 = sqrt(E[dtheta^2]_{t-1} + eps) / sqrt(E[g^2]_t + eps)"]
+  EG --> R
+  G --> R
+  R --> D["更新量 dtheta_t -> 参数 theta_{t+1} & 更新 E[dtheta^2]_t"]
+```
+
 维护 $E[g^2]_t$（梯度平方 EMA）与 $E[\Delta\theta^2]_t$（更新量平方 EMA）：
 
 $$

@@ -40,6 +40,15 @@ summary: "罚函数、障碍法与 PHR 增广拉格朗日：将约束优化转�
 
 ### PHR 等式约束示意
 
+```mermaid
+flowchart LR
+  P["当前解与乘子 (x_k, lambda_k, rho_k)"] --> SUB["求解无约束增广子问题<br/>min f(x) + lambda^T h(x) + rho/2 ||h(x)||^2"]
+  SUB -->|"最优点 x*"| CHK{"约束 ||h(x*)|| 满足精度?"}
+  CHK -->|"是"| DONE["收敛至 KKT 解"]
+  CHK -->|"否"| UPD["更新对偶乘子 lambda <- lambda + rho*h(x*)<br/>按需放大 rho -> 下一轮"]
+  UPD --> P
+```
+
 $$\mathcal{L}_\rho(x,\lambda) = f(x) + \lambda^T h(x) + \frac{\rho}{2}\|h(x)\|^2$$
 
 交替：固定 $(\lambda,\rho)$ 最小化 $\mathcal{L}_\rho$；更新 $\lambda \leftarrow \lambda + \rho h(x^*)$。

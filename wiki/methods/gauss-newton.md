@@ -45,6 +45,15 @@ original: ../../sources/papers/second_order_optimizers.md
 
 ### 1. 问题形式与近似
 
+```mermaid
+flowchart LR
+  X["当前估计 x_k"] --> RJ["计算残差 r(x_k) 与 Jacobian J(x_k)"]
+  RJ --> H["近似 Hessian H_GN = J^T J<br/>(忽略二阶残差项)"]
+  H --> S["求解线性最小二乘步<br/>(J^T J) p = -J^T r"]
+  S --> U["更新 x_{k+1} = x_k + alpha * p"]
+  U --> X
+```
+
 目标 $f(x) = \frac{1}{2}\|r(x)\|^2$，梯度 $\nabla f = J^T r$。精确 Hessian：
 
 $$
