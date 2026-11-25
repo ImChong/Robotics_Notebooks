@@ -127,6 +127,7 @@ $n<d$ 时自注意力层比循环层更省；$n$ 很大时需受限自注意力�
 - **联想记忆视角的适用边界**见上节，不等于训练后模型的事实记忆容量。
 
 ## 关联页面
+- [Variable-Width Transformers｜可变宽度 Transformer](../entities/paper-variable-width-transformers.md) — 按层静态调整隐藏宽度，对比等参数下的 loss 与 KV 缓存预算。
 - [Inner Thinking Transformer（ITT）](../entities/paper-inner-thinking-transformer.md) — 对高重要性 token 分配重复层内计算与残差融合；为动态深度提供原论文证据，不等于已在机器人策略中验证。
 
 - [AI 架构地图](../overview/ai-architecture-map.md)
