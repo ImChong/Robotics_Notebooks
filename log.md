@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-25] ingest | 轮式机器人坡道、台阶和横沟通过性全文与公式核查
+
 ## [2026-11-25] ingest | 收录 X-World 1.6 可控虚拟城市与闭环评测
 
 ## [2026-11-25] ingest | 收录人形机器人电气开关遥操作约束滤波与断电评测
