@@ -5,7 +5,7 @@ arxiv: "2611.31201"
 project: https://dravenalg.github.io/projects/Embo-Harness/
 code: https://github.com/DravenALG/Embo-Harness
 tags: [llm-agents, robot-manipulation, vla, benchmark, ntu]
-status: draft
+status: complete
 updated: 2026-11-25
 summary: "研究视觉输入、规划、动作执行和工具接口如何影响前沿多模态模型直接闭环控制机器人的表现。"
 related:
@@ -33,6 +33,10 @@ original:
 | EEF | End Effector | 末端执行器 |
 | IK | Inverse Kinematics | 逆运动学 |
 | VLA | Vision-Language-Action | 视觉语言动作模型 |
+
+## 为什么重要
+
+同一个前沿模型换用不同的相机输入、动作表示和低层执行接口，闭环表现也会显著变化。应把模型选型与执行框架消融分开，不能把端到端成绩全部归因于模型权重。
 
 ## 核心信息
 
@@ -84,6 +88,14 @@ sequenceDiagram
 
 论文 Table 2：RoboLab-120 SR 83.3%、Score 89.2；SenseNova-RoboRSI 为 57.1%、69.9。Table 3 真机四任务依次 5/5、5/5、2/5、3/5，共 15/20。开发子集与完整基准不可混用。
 
+## 工程实践
+
+复测时单独记录任务成功率、子任务得分、定位误差和执行时间。§3 用 20 个任务、每任务三次的开发子集逐步选项，完整 RoboLab-120 是另一组结果。双视角和较高分辨率优先检验；固定 8 步动作块只是在该设置胜出，不是通用默认。若评估 VLA 接入，分别测试模型选择委派与模型修正 VLA 提案：论文中前者更快但表现下滑，后者最佳。
+
+## 对比
+
+Table 1 的开发子集中，单视角 30.0% 对比双视角 65.0%；Table 4 在其对照条件下直接关节生成 20.0%，IK 辅助 43.3%。结果支持让模型给出空间目标并把数值执行交给控制接口，不是低层动作无需学习的证明。与 [Motion Mamba 2.0](./paper-motion-mamba-2.md) 对比，前者闭环选择操作目标，后者合成身体运动参考，由跟踪控制器执行；两者不在同一控制层。
+
 ## 结论
 
 当前证据支持将此工作作为相应方法的工程参考，而非通用真机性能保证。
@@ -96,10 +108,11 @@ sequenceDiagram
 
 真机任务仅 20 次；精细定位和对齐仍易失败。模型调用时间、成本与闭环控制频率须另评。官方代码采用 NTU S-Lab License 1.0，用户提供的非商业条款仍待 LICENSE 全文核验。
 
-> 草稿：原文与必要源码未全部通读，尚未运行仓库健康度脚本或 preflight。
-
 ## 关联页面
 
+- [视觉语言动作模型](../methods/vla.md)：论文把 VLA 提案修正与把动作选择交给 VLA 分别消融。
+- [移动操作任务](../tasks/loco-manipulation.md)：本文主要验证桌面抓手操作，不能据此外推到全身移动操作。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：按评测任务和接口区分仿真与真机证据。
 - [paper-uni-robot-agent](./paper-uni-robot-agent.md)
 - [paper-worldleague](./paper-worldleague.md)
 - [纵深路线](../../roadmap/depth-vla.md)

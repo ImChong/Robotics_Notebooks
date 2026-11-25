@@ -5,7 +5,7 @@ arxiv: "2611.30989"
 project: https://xyangzhou.github.io/WorldLeague/
 code: https://github.com/xyangzhou/WorldLeague
 tags: [benchmark, embodied-ai, vla, nus]
-status: draft
+status: complete
 updated: 2026-11-25
 summary: "通过轨迹上的物理目标条件，在共享任务上比较使用不同动作接口的 VLM、VLA 与 WAM。"
 related:
@@ -35,6 +35,10 @@ original:
 | VLA | Vision-Language-Action | 视觉语言动作模型 |
 | WAM | World Action Model | 世界动作模型 |
 | QA | Question Answering | 问答 |
+
+## 为什么重要
+
+会描述场景、完成一条控制命令以及满足最终物理目标是三种不同能力。本基准从轨迹验收任务条件，能定位感知、选择、执行或恢复未闭环的环节。
 
 ## 核心信息
 
@@ -87,6 +91,14 @@ sequenceDiagram
 
 13 个系统中最高平均 Interactive Score 28.58/100，完成 13/60；347 个终端 QA 全对的 VLM 回合中 249 个物理分数为零（71.8%）。连续控制评估覆盖 59 项，跨系统比较要同时注明接口、任务覆盖和预算。
 
+## 工程实践
+
+为每回合保留目标分项、约束和动作反馈，不用 QA 或动作完成率替代物理成功。例如 T38 扫描并到达延后请求时只完成四项中的两项，Interactive Score 为 50 而物理失败。跨模型复测应固定共同 59 项，记录控制接口、机器人、种子、预算和模型推理期间仿真是否继续运行。
+
+## 对比
+
+与论文所用 ESI-Bench 场景的问答任务相比，此处还要求把对象按条件实际摆放、验证关系并稳定释放。与 [Embodied First Exam](./embodied-first-exam.md) 的系统整理互补，本论文强调相同物理目标与不同接口的对照；不能把它当成同一套机器人上、同预算逐控制步的严格排名。
+
 ## 结论
 
 当前证据支持将此工作作为相应方法的工程参考，而非通用真机性能保证。
@@ -99,10 +111,11 @@ sequenceDiagram
 
 仅仿真，不代表真机成功率。推理期间物理环境继续运行，推理时间和接口抽象影响比较。官方代码和基准数据已列出；场景生成公开入口在 README 中仍为 TODO。
 
-> 草稿：原文与必要源码未全部通读，尚未运行仓库健康度脚本或 preflight。
-
 ## 关联页面
 
+- [视觉语言导航](../tasks/vision-language-navigation.md)：WorldSeek 把视觉语言理解与真实到达、访问顺序分开验收。
+- [视觉语言动作模型](../methods/vla.md)：连续策略使用原生动作接口，与 VLM 的参数化动作接口保留区别。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：区分阶段进展、物理成功与辅助问答。
 - [embodied-first-exam](./embodied-first-exam.md)
 - [paper-embo-harness](./paper-embo-harness.md)
 - [paper-uni-robot-agent](./paper-uni-robot-agent.md)
