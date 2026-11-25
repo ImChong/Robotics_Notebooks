@@ -159,6 +159,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [HiPHI-Hand：双鱼眼第一视角手部动捕数据](./dataset-hiphi-hand.md) — 独立的手部采集发布，不沿用本页的全身数据规模和格式。
+
 - [人形参考运动与操作数据集选型](../comparisons/humanoid-reference-motion-datasets.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Motion Data Quality](../concepts/motion-data-quality.md)
