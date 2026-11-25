@@ -3,7 +3,7 @@ type: entity
 project_id: kimodo-policy
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-25
 arxiv: "2611.11554"
 project: https://kimodo-policy.github.io/
 code: https://github.com/kimodo-policy/kimodo-policy
@@ -177,6 +177,8 @@ sequenceDiagram
 **核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
+
+- [CHAMP](./paper-champ-2611-30449.md)：同样使用 SONIC，但改用异构身体及手部运动预训练与 VLM 跨层路由，对照高层动作生成的选型。
 
 - [从动作生成到人形闭环：方法与证据对比](../comparisons/generative-motion-to-humanoid-closed-loop.md)
 - [扩散式动作生成](../methods/diffusion-motion-generation.md)
