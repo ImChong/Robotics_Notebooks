@@ -13,4 +13,4 @@ v0.1.0 面向 Bambu Lab X2D 及 0.4 mm 喷嘴。描述、参考照片、商品�
 
 `cli.py::cmd_make` 和 MCP `make` 共用 `pipeline.py::run_job`。单件路径先运行建模脚本或读现有 STL，再做网格可制造性、可选轮廓对照，然后由 `studio.py::run_slice` 调用本地 Bambu Studio，读回已切片 3MF、检查指标、生成报告与预览。严重的初步网格错误可中断，其他问题也可能在切片后归入报告；没有“所有检查先过才切片”的单一总门禁。Hermes 插件声明服务为不受信任，写文件或运行脚本的调用应受审批。
 
-标签固定配置来自 Bambu Studio 02.08.02.61、X2D 0.4 mm、0.20 mm Standard、PLA Basic 与纹理 PEI；不会替用户下发给打印机。CLI 已对标签自带样件验证 `check` 和 `inspect` 的读入与报告路径；未运行真实切片或打印。
+标签固定配置来自 Bambu Studio 02.08.02.61、X2D 0.4 mm、0.20 mm Standard、PLA Basic 与纹理 PEI；不会替用户下发给打印机。CLI 用 Blender 4.3.2 运行标签的名牌脚本，实测导出 40 × 16 × 3 mm STL；另对标签自带样件验证 `check` 和 `inspect` 的读入与报告路径；未运行真实切片或打印。

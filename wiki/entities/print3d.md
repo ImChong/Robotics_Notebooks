@@ -3,6 +3,7 @@ type: entity
 project_id: mfranzon-print3d
 project: https://github.com/mfranzon/print3d
 code: https://github.com/mfranzon/print3d/tree/v0.1.0
+institutions: [independent-maintainer]
 tags: [cad, mcp, software, hardware, manufacturing, open-source]
 status: complete
 updated: 2026-11-25
