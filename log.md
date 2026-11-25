@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-25] ingest | 更新 EASG 官方代码发布、零样本与 LoRA 运行边界
+
 ## [2026-11-25] ingest | 复核 PartyMimic 项目页和源码，区分主表、预训练权重与部署默认配方
 
 ## [2026-11-24] structural | 全站详情页与知识图谱 1:1 统一入图（#3974）：补齐 33 个 references/ 与 tech-map/ 节点并接入独立健康度与导出一致性校验
