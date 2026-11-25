@@ -12,6 +12,8 @@ sources:
   - ../../sources/sites/xpeng-worldgpt.md
 related:
   - ../concepts/world-action-models.md
+  - ../methods/generative-world-models.md
+  - ../methods/vla.md
   - ./paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md
   - ./dyna-2.md
   - ../../roadmap/depth-wam.md
@@ -98,6 +100,8 @@ flowchart LR
 ## 关联页面
 
 - [世界动作模型](../concepts/world-action-models.md)：区分外显输出与计算图分类。
+- [生成式世界模型](../methods/generative-world-models.md)：理解多视角未来视频预测，区分视觉可用性和控制可用性。
+- [视觉–语言–动作模型（VLA）](../methods/vla.md)：对照从相机观测与语言到动作的策略接口，以及 WAM 额外输出的未来观测。
 - [Dyna-2](./dyna-2.md)：人类第一视角预训练和人到机缩放证据。
 - [WAM 纵深路线](../../roadmap/depth-wam.md)：Stage 5 的共训与评测入口。
 
