@@ -231,6 +231,7 @@ flowchart LR
 ### 推荐读什么
 - [电机测功机](../wiki/concepts/motor-dynamometer.md) 与 [力矩电机设计纵深 Stage 6](depth-torque-motor-design.md) — 关节级验收如何汇总到整机
 - [Query：现场机器人排障](../wiki/queries/field-robotics-troubleshooting.md) — 真机故障的分布决定验收项优先级
+- [NavBot-EN01 桌面双轮足](../wiki/entities/navbot-en01.md) — 用一个小样机梳理板卡与供电核查、传感器和舵机标定、平衡与遥操作分层；不作为人形量产验收方案。
 - [系统辨识](../wiki/concepts/system-identification.md) 与 [执行器网络](../wiki/methods/actuator-network.md)、[Implicit/Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) — 把整机实测变成可仿真模型
 - [机器人系统工程纵深](../wiki/overview/hub-systems-engineering.md) — 部署、可观测性与 OTA 的整机侧接口
 - GB/T 43200（机器人一体化关节性能与试验方法）— 一手资料索引
