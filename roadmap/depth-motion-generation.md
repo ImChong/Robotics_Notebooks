@@ -178,6 +178,8 @@ flowchart LR
 - 对比"固定参考跟踪"与"在线生成参考"在 OOD 场景的成功率报告，理解在线生成换来什么
 
 ### 推荐读什么
+
+- [Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control](../wiki/entities/paper-motion-mamba-2.md) — 流式扩散窗口、跨窗状态提交及生成与跟踪的延迟拆分。
 - [Diffusion-based Motion Generation](../wiki/methods/diffusion-motion-generation.md) — 控制环内生成器总览
 - [Learning Whole-Body Humanoid Locomotion](../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) 与 [Heracles](../wiki/entities/paper-heracles-humanoid-diffusion.md) — 扩散规划与恢复中间件
 - [OMG](../wiki/entities/paper-omg-omni-modal-humanoid-control.md) 与 [MotionBricks](../wiki/methods/motionbricks.md) — 多模态接口与实时基元
