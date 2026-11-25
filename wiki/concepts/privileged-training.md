@@ -145,6 +145,18 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 和两阶段 Teacher-Student 的差别：非对称 AC 的 Actor 从第一天起就只看可部署观测，用更准的优势信号学；Teacher-Student 则先让 **Actor 也能看特权** 把行为上限抬高，再蒸馏。前者几乎是「免费」的训练期脚手架，后者换的是更高的行为模板、但多一阶段蒸馏误差。运控 PPO 栈里两者经常叠用，不要把 critic 特权当成已经做了蒸馏。人形深度行走里，[CReF](../entities/paper-cref.md) 是典型 **只把高程/真值速度给 critic、Actor 直吃 raw 深度** 的单阶段例子，并以此对照 HPL 式 scandots teacher 蒸馏。
 
+```mermaid
+flowchart TD
+    Sim["仿真环境 (特权状态 s_priv + 机载可观测状态 s_obs)"] --> Branch1["路线 A: 两阶段 Teacher-Student 蒸馏"]
+    Sim --> Branch2["路线 B: 单阶段 Asymmetric Actor-Critic"]
+    Branch1 --> Teacher["阶段1: Teacher 策略 (输入 s_priv + s_obs 经 RL 训练)"]
+    Teacher -->|"生成动作或隐式特征 z_t 监督信号"| Student["阶段2: Student 策略 (仅输入 s_obs 经 BC / DAgger 蒸馏)"]
+    Branch2 --> Critic["Critic (输入 s_priv 估计更准优势 A)"]
+    Critic -->|"优势信号指导更新"| Actor["Actor (仅输入 s_obs 直接优化)"]
+    Student --> Deploy["真机部署 (仅使用可观测传感器通道)"]
+    Actor --> Deploy
+```
+
 ---
 
 ## 特权信息的类型

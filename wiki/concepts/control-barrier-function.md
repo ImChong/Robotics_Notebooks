@@ -144,6 +144,17 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 
 - **扩展类-$\mathcal{K}$ 增益 $\alpha$ 调参**：过大 $\alpha$ 允许高速冲向安全边界后急刹、易触及力矩饱和；过小则过于保守阻碍任务。建议配合动力学执行器边界联合验证可行域（Ames et al., ECC 2019 § III）。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    Nom["上层名义控制律 u_nom (WBC / MPC / RL 策略)"] --> QP["CBF-QP 实时安全滤波器: min 1/2 ||u - u_nom||^2 + λξ"]
+    State["系统状态 x 与仿射动力学 x_dot = f(x) + g(x)u"] --> Safe["安全集 C = {x | h(x) >= 0} (摩擦锥 / 关节限位 / 碰撞距离)"]
+    Safe -->|"线性化约束 h_dot(x,u) >= -α(h(x)) - ξ (高阶用 HOCBF)"| QP
+    QP -->|"最小修正安全控制 u*"| Plant["机器人执行器与环境交互"]
+    Plant -->|"维持安全集前向不变性"| State
+```
+
 ## 常见误区或局限
 
 1. **CBF 不等于稳定性**：CBF 只保证安全集的不变性，不保证系统收敛到目标状态——这是 CLF 的工作。两者需要联合使用（CLF-CBF-QP）。

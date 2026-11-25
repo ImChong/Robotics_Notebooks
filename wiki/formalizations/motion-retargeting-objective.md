@@ -246,6 +246,21 @@ $$
 - **物理**：地面 / 自穿透（时间占比 + 深度）、脚滑速度、脚悬空高度（OmniRetarget / ReActor 的口径）；关节跳变（单步 >0.5 rad）、自碰帧占比、关节极限帧占比（NMR 的口径）；根残差力均值、仿真 PD 跟踪成功率。
 - **下游**：以这批参考训练出的 [模仿学习](../methods/imitation-learning.md) / RL tracking 策略的真机/仿真成功率与样本效率（最终指标）。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["源人体动作序列 x^h_{1:T} 与体型缩放目标 p_hat^h"] --> B["统一加权目标: L_pose + L_ee + L_bal + L_lim + L_smooth 与运动学硬约束"]
+    B --> C1["逐帧微分 IK: GMR 两阶段 Mink QP"]
+    B --> C2["Interaction Mesh Laplacian: OmniRetarget (SQP) / TopoRetarget"]
+    B --> C3["硬阈值过滤 + 配对监督: NMR CEPR (L1 序列回归)"]
+    B --> C4["仿真内双层 / 采样优化: ReActor (RFC) / DeepMimic / SPIDER"]
+    C1 --> D["输出机器人参考轨迹 q^r_{1:T} -> 接入下游 TSID WBC 或 RL Tracker"]
+    C2 --> D
+    C3 --> D
+    C4 --> D
+```
+
 ## 局限与风险
 
 - **目标函数是"拼装图"而非单一标准**：各方法的权重、阈值（0.05、0.10 m、$\delta_{pos}=0.5$ 等）是各自论文的取值，不能跨方法直接套用。

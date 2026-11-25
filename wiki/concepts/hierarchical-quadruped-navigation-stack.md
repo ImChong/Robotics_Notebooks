@@ -84,6 +84,18 @@ summary: "四足自主系统常采用 VLN→导航→RL loco→PD→硬件 分�
 
 [ROAM（Science Robotics 2026）](../entities/paper-roam-open-world-legged-navigation.md) 则给出野外真机系统：VLM 低频判定语义风险、SAN 投影为像素与高程图、局部导航和落足分别由 RL 策略高频执行。它补充了本分层栈的开放词汇风险与偏好接口，且官方仓库仅部分开源。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    L1["L1 VLN (自然语言指令 -> 语义目标与航点)"] --> L2["L2 Navigation (SLAM + 全局规划, 如 RoamerX)"]
+    L2 -->|"cmd_vel (vx, vy, omega) 与体姿态指令"| L3["L3 RL Locomotion (PPO 高频步态与姿态跟踪)"]
+    L3 -->|"期望关节位置或目标"| L4["L4 PD (底层关节伺服)"]
+    L4 -->|"力矩控制指令"| L5["L5 Hardware / SDK (电机驱动执行)"]
+    L5 -->|"本体与感知状态反馈"| L2
+    L5 -->|"高频本体状态"| L3
+```
+
 ## 局限与风险
 
 - **导航 cmd_vel 频率过低**：足式跟踪需 RL 层 **高频** 适应局部地形。

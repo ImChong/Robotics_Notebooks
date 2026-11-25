@@ -193,6 +193,17 @@ $$
 
 **工程现实**：`stack-of-tasks/tsid` 库的 `addMotionTask(task, weight, priorityLevel)` 里，优先级 0 是硬约束层（基座动力学、接触、限位），其后各层是**带权重的最小二乘**；默认的 eiquadprog 求解器只接受**至多 2 层**（读源码 `solver-HQP-eiquadprog.cpp`：超过 2 层直接报错）。所以"多层严格 HQP"在该库里实际常被"硬约束层 + 一层加权任务"取代。严格多层 HQP 求解器见 [HQP](./hqp.md)。
 
+```mermaid
+flowchart TD
+    Ref["上层参考与状态 (CoM / 躯干 / 摆动脚目标与支撑接触状态)"] --> Task["任务空间期望加速度 x_dd* = J q_dd + J_dot q_dot"]
+    Constr["物理硬约束 (刚体动力学 M q_dd + h = S^T tau + J_c^T f / 静接触 / 摩擦锥 / 限位)"] --> Solver{"两代求解路径"}
+    Task --> Solver
+    Solver -->|"Del Prete 2014 全驱动无不等式"| Analyt["伪逆 + 递归零空间投影 + RNEA O(n) 解 tau*"]
+    Solver -->|"Saab 2013 与 tsid 库浮动基座"| QP["单层加权 QP 或 分层 HQP 联合求解 q_dd 与接触力 f"]
+    QP -->|"由驱动行动力学反解"| Torque["输出关节加速度 q_dd、力矩 tau 与接触力 f"]
+    Analyt --> Torque
+```
+
 ## TSID 和 WBC 的关系
 
 TSID 不是和 WBC 并列的东西，它基本可以看作 **WBC 的代表性实现方法之一**。

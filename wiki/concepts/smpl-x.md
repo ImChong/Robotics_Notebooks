@@ -60,6 +60,23 @@ summary: "SMPL-X（SMPL eXpressive）是马普所提出的参数化全身人体�
 
 顶点由 **LBS**（线性混合蒙皮）从模板 mesh、形状/姿态相关的形变（blend shapes）与关节旋转共同生成，因此给定参数即可确定一张全身 mesh。
 
+```mermaid
+flowchart LR
+    Up["上游重建与生成 (视频 / markerless 动捕 / 人-场景交互生成)"] --> Params["低维 SMPL-X 参数"]
+    Params --> Shape["形状参数 beta"]
+    Params --> Body["身体姿态 theta_b"]
+    Params --> Hand["双手 MANO 姿态 theta_h"]
+    Params --> Face["表情与下颌 FLAME 参数"]
+    Params --> Global["全局位姿 R 和 t"]
+    Shape --> LBS["LBS 线性混合蒙皮"]
+    Body --> LBS
+    Hand --> LBS
+    Face --> LBS
+    Global --> LBS
+    LBS --> Mesh["约 10475 顶点可微全身网格"]
+    Params -->|"作为统一中间人体表征"| Retarget["运动重定向前端 (如 GMR)"] --> Robot["人形机器人关节轨迹"]
+```
+
 ## 在本库中的典型用法
 
 | 场景 | SMPL-X 的角色 | 代表页面 |

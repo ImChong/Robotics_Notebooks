@@ -68,6 +68,19 @@ $$
 
 基座姿态在 $SO(3)$ 上，数值积分需 **指数映射** 而非欧拉角累加（见 [Lie Group Rigid Body Motions](./lie-group-rigid-body-motions.md)）。Pinocchio 内部处理流形积分；手写仿真器易在此处出错。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["树状刚体模型与状态 (q, q_dot)"] --> B["FK 前向运动学沿运动学树递归"]
+    B --> C["已知目标加速度 q_ddot: RNEA 逆动力学 O(n)"]
+    B --> D["已知关节力矩 tau: ABA 正动力学 O(n)"]
+    B --> E["仅给定构型 q: CRBA 组装质量矩阵 M(q)"]
+    C --> F["输出关节力矩 tau = ID(q, q_dot, q_ddot) / 重力项 g(q)"]
+    D --> G["输出广义加速度 q_ddot = FD(q, q_dot, tau)"]
+    G --> H["SO(3) 指数映射流形积分推进下一时刻状态"]
+```
+
 ## 常见误区
 
 - **混淆 $n_q$ 与 $n_v$**：四元数姿态导致 $n_q = n_v + 1$，算法实现须用 **流形速度** 维数。

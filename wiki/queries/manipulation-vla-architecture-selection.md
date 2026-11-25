@@ -89,6 +89,20 @@ related:
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Data{"是否拥有大规模带动作标签机器人数据?"} -->|缺动作标签但有人视频| DeFI["DeFI: GFDM+GIDM 解耦前/逆动力学预训练再微调"]
+    Data -->|有带动作标签数据| Need{"核心任务约束与能力需求?"}
+    Need -->|常规桌面操作与多任务| VLA["静态 VLM + 动作头: VLA / pi0 / pi0.7 / G0.5 / STAR-VLA / Pelican / Isaac 0.5"]
+    Need -->|强调语义-动力学一体潜计划| MV["mimic-video: 视频潜计划 + 轻量动作解码"]
+    Need -->|长程记忆推理与子任务规划| Vesta["Vesta (System-2) + Gr00t-N1.6 (actor) 分层"]
+    Need -->|需模型内显式交互物理想象| DWM["DWM 像素世界模型 (常与 MPC/IL 组合并需 sim 验证)"]
+    Need -->|语言 + 接触 + 全身协调| CLAW["CLAW: 接触感知 transformer 路线"]
+    Need -->|双手灵巧 + 高频触觉反应| TRex["T-Rex: 慢 VLA 规划 + 快触觉残差 + mid-training"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

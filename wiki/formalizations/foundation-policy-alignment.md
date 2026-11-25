@@ -53,6 +53,19 @@ $$ \mathcal{L}_{MLE} = -\sum_{(o,l,a) \in \mathcal{D}} \log P(a | o, l) $$
 - **动作幅值对齐**：不同机器人电机的扭矩范围完全不同，通常需要归一化到 $[-1, 1]$。
 - **参考系对齐**：必须统一坐标系（如以机器人本体为中心的相对坐标），否则空间语义会发生混乱。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["异构形态 M_i 观测 o in O_i"] --> B["E_obs(o) 编码"]
+    C["语言指令 l"] --> D["E_lang(l) 编码"]
+    B --> E["Attention 融合至共享隐空间 z in Z"]
+    D --> E
+    E --> F1["InfoNCE 跨模态对比损失 L_align"]
+    E --> F2["动作 Token 统一交叉熵损失 L_MLE"]
+    E --> G["条件解码 a_i = P_act(z, ID_i) (需本体参考系对齐与 [-1, 1] 归一化)"]
+```
+
 ## 关联页面
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [具身规模法则 (Scaling Laws)](../concepts/embodied-scaling-laws.md)

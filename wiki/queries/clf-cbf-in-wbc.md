@@ -230,6 +230,23 @@ $$h(x_{k+1}) \geq (1 - \gamma \Delta t) h(x_k)$$
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    H["高层规划: MPC 或步态生成输出 x_ref 与 u_ref"] --> QP["构建 CLF-CBF-QP 安全过滤层"]
+    QP --> C1["CLF 软约束: 保证稳定性与收敛"]
+    QP --> C2["CBF 硬约束: 关节限位 / 摩擦锥 / CoM 高度 / 避碰"]
+    C1 & C2 --> D{"约束是否冲突或无可行解?"}
+    D -->|无冲突| Sol["求解 QP 得到安全加速度 a_des"]
+    D -->|CLF 与 CBF 冲突| Relax["通过松弛变量 delta 与权重 p 放宽 CLF, 优先满足 CBF"]
+    D -->|多 CBF 交叉无解| Hard["软化 CBF / 调小 gamma / 构造 HQP 分层排序"]
+    Relax --> Sol
+    Hard --> Sol
+    Sol --> WBC["TSID / HQP 全身力矩分配"]
+    WBC --> Act["输出关节力矩 tau 至电机驱动器"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

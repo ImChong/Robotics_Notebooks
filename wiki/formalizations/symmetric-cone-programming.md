@@ -61,6 +61,19 @@ $$\mathcal{L}_\rho(x,\lambda) = f(x) + \langle \lambda, c(x) \rangle + \frac{\rh
 - 工程 WBC 常用 **QP 近似 SOC** 以换 OSQP 速度
 - 离线规划 / TOPP 更倾向保留 SOC 结构
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["机器人锥约束问题: min f(x) s.t. c(x) in K"] --> B1["非负正交锥 x >= 0 (LP / 接触力非负)"]
+    A --> B2["二阶锥 SOC ||x_{1..n-1}||_2 <= x_n (精确摩擦锥 / TOPP)"]
+    A --> B3["半正定锥 SDP X >= 0 (旋转 / 协方差松弛)"]
+    B1 --> C["PHR 增广拉格朗日 L_rho(x, lambda): 嵌入闭式锥投影 Pi_K(c(x) + lambda/rho)"]
+    B2 --> C
+    B3 --> C
+    C --> D["实时 WBC 可将 SOC 线性化为 QP (OSQP); 离线规划/TOPP 保留精确锥结构"]
+```
+
 ## 常见误区
 
 - **所有锥问题都有实时解**：SDP 规模一大就难实时；SOCP 中等规模可行。

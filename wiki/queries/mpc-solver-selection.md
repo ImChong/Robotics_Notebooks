@@ -184,6 +184,23 @@ solver = AcadosOcpSolver(ocp, json_file="ocp.json")
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Q{"MPC 问题形式与可微性?"} -->|代价或动力学不可微| MPPI["免梯度采样式 MPPI (GPU 并行 rollout)"]
+    Q -->|线性或凸 QP| QP{"问题结构与规模?"}
+    QP -->|多阶段 OCP 结构| HPIPM["结构化内点法 HPIPM (部分凝聚稳定小于 1ms)"]
+    QP -->|一般稀疏参数化 QP| OSQP["OSQP (ADMM + 分解缓存 + warm start)"]
+    QP -->|小规模稠密 QP 且有效集变化小| QPO["qpOASES (Active Set 热启动)"]
+    QP -->|长时域 GPU 并行 LTV MPC| Pi["pi MPC (ADMM, 省去 QP 矩阵构造)"]
+    QP -->|学术原型不计较速度| CVX["CVXPY / scipy.optimize"]
+    Q -->|非线性 MPC 或全身 TO| NLP{"场景与授权约束?"}
+    NLP -->|开源嵌入式实时 RTI| Aca["acados (SQP-RTI, 默认 QP 层 HPIPM)"]
+    NLP -->|全身动力学 + 预定接触序列| Cro["Crocoddyl (DDP/FDDP)"]
+    NLP -->|商业支持与定制代码生成| For["FORCES Pro"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

@@ -64,6 +64,14 @@ summary: "Solve（Sunday Robotics, 2026）将机器人能力进展解构为 Perf
 3. **分桶样本量透明**：避免 n 过小分项过度解读。
 4. **独立或双审标注**（ACT-2：双轮 annotator + review lead）。
 
+```mermaid
+flowchart LR
+    Perf["Performance (成功率 / 质量 / 速度)"] --> Solve["可信 Solve 声明"]
+    Scope["Scope (适用分布与分桶报告)"] --> Solve
+    Adapt["Adaptation cost (部署所需数据或微调成本)"] --> Solve
+    Solve --> Audit["四项最低工程审计: 评测前锁定 rubric / 适配边界可审计 / 分桶样本量透明 / 双审标注"]
+```
+
 ## 常见误区或局限
 
 - **Sunday 专有术语：** 尚未成为社区通用标准；跨论文对比仍需映射到 Scope/Adaptation 等价描述。

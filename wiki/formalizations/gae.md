@@ -126,6 +126,16 @@ $$\hat{A}_{T-1} = \delta_{T-1} + \gamma \lambda V(s_T)$$
 
 人形机器人早期训练时 critic（$V$ 网络）不准，$\lambda$ 不宜过小（否则偏差大训练慢）。实践中 $\lambda = 0.95 \sim 0.99$。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["采样截断 Rollout (s_t, a_t, R_t), t=0..T-1"] --> B["用当前旧 V 计算 TD 残差: delta_t = R_t + gamma*V(s_{t+1}) - V(s_t)"]
+    B --> C["反向递推累积 GAE (末端加 V(s_T) bootstrap): A_hat_t = delta_t + gamma*lambda*A_hat_{t+1}"]
+    C --> D["偏差-方差权衡: lambda=0 为单步 TD, lambda=1 为 MC, 常用 lambda=0.95"]
+    D --> E["输出 A_hat_t 驱动 PPO 策略梯度更新, returns = A_hat + V 再更新 Critic"]
+```
+
 ## 参考来源
 
 - [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — $\gamma$ vs $\lambda$、截断 rollout 与 bootstrap

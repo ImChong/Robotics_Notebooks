@@ -110,6 +110,22 @@ J^T · f = τ_gravity_compensation - τ_actuator
 - 在仿真中加入接触噪声（随机接触延迟、力传感器噪声）
 - 使用历史观测（观测窗口）增强对抗噪声能力
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    Meas["多源可测量: 关节角 q / 电机电流力矩 τ / IMU / 可选 F/T 传感"] --> Branch["接触估计方法分支"]
+    Branch --> M1["六维 F/T 或 SEA 弹性形变直接测力"]
+    Branch --> M2["力矩残差 τ_contact 经雅可比 (J^T)^+ 反推与 EKF"]
+    Branch --> M3["运动学零速 + IMU Leg Odometry / 接触辅助 InEKF"]
+    Branch --> M4["二值分类器 (阈值 / HMM) 或 RL 隐式历史推断"]
+    M1 --> Out["输出: 接触状态集合 (0/1) 与估计接触力 f_contact"]
+    M2 --> Out
+    M3 --> Out
+    M4 --> Out
+    Out --> Down["下游闭环: WBC/TSID 约束矩阵, 质心动力学, MPC 相位切换"]
+```
+
 ---
 
 ## 常见误区或局限

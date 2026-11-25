@@ -142,6 +142,20 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为跨传感器共享表征**：[AnyTouch](../entities/paper-anytouch.md) 将静态图像与动态视频、文本语义和跨传感器配对结合；[AnyTouch 2](../entities/paper-anytouch2.md) 再以 ToucHD 动态数据和显式力变化目标扩展到动态触觉理解。两者是预训练表示工作，不应与可执行策略混为一谈；对应软件与数据入口分别见 [AnyTouch 项目](../entities/paper-anytouch.md) 和 [AnyTouch 2 项目](../entities/paper-anytouch2.md)。
 - **作为双足 locomotion 闭环状态（plantar）**：[TactileStep](../entities/paper-tactilestep.md) 将 **足底压力鞋垫** 汇总为法向力、接触面积与 CoP，与 Isaac 仿真 **特征对齐** 后并入 **深度跑酷** actor，用四相位奖励调节 **触地冲击与支撑**（相对仅视觉几何的 Hiking 系基线）。
 
+```mermaid
+flowchart LR
+    Phys["物理接触交互 (法向压力 / 切向剪切 / 滑移 / 纹理)"] --> Sensors["四类传感路线"]
+    Sensors --> S1["视觉类触觉 (GelSight / DIGIT)"]
+    Sensors --> S2["压阻与电容柔性阵列 (FlexiTac / OpenTac)"]
+    Sensors --> S3["多轴 F/T 传感器"]
+    Sensors --> S4["磁性微结构 (eFlesh)"]
+    S1 --> Dim["感知输出 (3D 接触力 / 接触几何 / 滑移检测 / 材质纹理)"]
+    S2 --> Dim
+    S3 --> Dim
+    S4 --> Dim
+    Dim --> App["学习与控制闭环 (视触融合 / RL 摩擦锥奖励 / 预测辅助目标 / 抓取与足底伺服)"]
+```
+
 ## 关联页面
 
 - [TipSim（MuJoCo 触觉仿真）](../entities/tipsim.md) — Loong/Universa 阵列触点力读取、参数化传感器误差与 UR5e 分指受力阈值抓取演示；核心插件为闭源二进制。

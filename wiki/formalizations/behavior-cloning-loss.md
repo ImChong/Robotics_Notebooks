@@ -85,6 +85,21 @@ $$
 
 为了解决这个数学缺陷，衍生出了 **[DAgger](../methods/dagger.md)**（通过在线收集新状态的专家标签）和 **[逆强化学习 (IRL)](../methods/inverse-reinforcement-learning.md)** 等更高级的算法体系。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["专家演示数据集 D = {(s_i, a_i)}, s_i ~ rho_{pi_E}"] --> B["监督学习 MLE: 最小化 L_BC = -1/N sum log pi_theta(a_i | s_i)"]
+    B --> C1["离散动作: Cross-Entropy Loss"]
+    B --> C2["连续确定性动作: MSE / L2 Loss"]
+    B --> C3["连续多模态动作: GMM NLL / Diffusion Loss"]
+    C1 --> D["闭环部署学生策略 pi_theta(a|s)"]
+    C2 --> D
+    C3 --> D
+    D --> E["微小误差引发状态偏离 rho_{pi_E} -> 协变量偏移 (Covariate Shift)"]
+    E --> F["级联累积误差 -> 转向 DAgger 在线纠偏或 IRL 奖励学习"]
+```
+
 ## 关联页面
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)

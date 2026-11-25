@@ -78,6 +78,20 @@ summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux �
 2. **状态机卡在 Pre-Op**：检查 ESI (XML) 文件中的 PDO 映射是否与从站固件版本一致。
 3. **延迟累计**：检查是否在 EtherCAT 循环中进行了 `printf` 或文件 I/O。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Sel{"选型: 科研原型还是量产?"} -->|科研原型| SOEM["SOEM 用户态主站"]
+    Sel -->|工业级稳定性| IgH["IgH 内核模块 + native 网卡驱动"]
+    SOEM & IgH --> Opt["PREEMPT_RT 内核 + 网卡 IRQ 隔离 + 开启 DC-Synchron"]
+    Opt --> Tun["设置 1ms 或 500us 周期, FMMU/PDO 单帧打包, 禁止循环内 printf/IO"]
+    Tun --> Mon{"周期检查 WKC 是否匹配?"}
+    Mon -->|匹配| Run["Sync0 触发电机电流环, 稳定伺服闭环"]
+    Mon -->|不匹配| Safe["立即触发安全回退并排查"]
+    Safe --> Dbg["排障: 卡 Pre-Op 查 ESI/PDO 映射; 偶尔丢包查屏蔽网线与接头; 延迟累计查 I/O"]
+```
+
 ## 关联页面
 - [执行器驱动链选型闭环知识链](./actuator-drive-chain-selection-loop.md) — 本页是其④「实时总线闭环集成」层的深度调优
 - [SOEM](../entities/soem.md) — 用户态开源主站实体（构建 / samples / 许可）

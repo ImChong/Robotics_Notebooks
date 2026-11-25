@@ -149,6 +149,19 @@ $$\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \leq -\lambda_{
 
 - **快速指数稳定与力矩受限折中（Ames et al., arXiv:1903.11199v1）**：结合控制输入边界与 CBF 安全约束构成 CLF-CBF-QP 时，CLF 衰减项须附带松弛变量 $\delta$，保证可行性永远优先让渡给安全约束与执行器限幅。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["仿射系统 dx/dt = f(x) + g(x)u 与名义控制 u_nom"] --> B["构建 CLF 软约束: V_dot(x, u) <= -c*V(x) + delta"]
+    A --> C["构建 CBF 硬约束: h_dot(x, u) >= -gamma*h(x)"]
+    A --> D["执行器边界约束: u in U, delta >= 0"]
+    B --> E["CLF-CBF-QP 在线求解: min 0.5||u - u_nom||^2 + p*delta^2"]
+    C --> E
+    D --> E
+    E --> F["输出兼顾安全优先与渐近稳定的控制输入 u (可接 WBC 逆动力学)"]
+```
+
 ## 常见误区或局限
 
 1. **CLF 不保证安全性**：CLF 只驱动系统到达目标，不阻止系统经过危险区域。需要 CBF 共同工作才能同时保证稳定性和安全性。

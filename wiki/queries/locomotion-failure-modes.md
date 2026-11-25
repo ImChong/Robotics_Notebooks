@@ -85,6 +85,18 @@ summary: "RL 训练失败模式分析：原地踏步、关节抖动（高频振�
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Chk["诊断起点: 慢速可视化观察 + TensorBoard 分项奖励对比 + 检查动作是否饱和"] --> Sym{"识别典型失败模式"}
+    Sym -->|原地踏步| F1["前进奖励太低或 action_rate/energy 惩罚过重 -> 提高 lin_vel_xy 权重或加速度 Curriculum"]
+    Sym -->|双脚起跳| F2["Air Time 奖励滥用或缺少交替约束 -> 限制 feet_air_time 最大值或加对角步态引导"]
+    Sym -->|关节高频抖动| F3["缺少平滑惩罚或 PD 增益与频率不匹配 -> 加大 action_rate 惩罚并减小 PD 增益"]
+    Sym -->|躯干下蹲或内八字| F4["钻漏洞保平衡且缺基准姿态约束 -> 加入 base_height 奖励与 joint_regularization"]
+    Sym -->|Reward 断崖式崩溃| F5["学习率过大或初期 DR 过广 -> 降低学习率/用衰减并逐步开启 DR"]
+```
+
 ## 关联页面
 - [机器人策略排障手册](./robot-policy-debug-playbook.md)
 - [奖励函数设计指南](./reward-shaping-guide.md)

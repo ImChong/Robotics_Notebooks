@@ -157,6 +157,20 @@ GraspNet AP / AP_novel 高，主要意味着「数据分布内匹配好」，但
 
 > 默认起点是 **检测式 6-DoF grasp pose**；已知物体往左走「6D + 离线 grasp set」，技能链复杂往右走 **IL/VLA**；但「显式碰撞检查 + 触觉/视觉兜底」三件套永远不能省。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Known{"是否已知具体物体 CAD/Mesh?"} -->|已知物体| Pose["6D 位姿估计 + 离线 grasp set (视角多变用类别级 6D + 模板)"]
+    Known -->|未知物体或开放场景| Scn{"场景与任务特征?"}
+    Scn -->|静态桌面或框内| Det["深度点云 -> 检测式 grasp (GraspNet / Contact-GraspNet / AnyGrasp)"]
+    Scn -->|动态或移动物体| Track["检测式 grasp + AnyGrasp 跨帧时序关联与一致性检查"]
+    Scn -->|语言指令可分解| Seg["开放词汇分割 -> 检测式 grasp -> 下游技能"]
+    Scn -->|含用法或连续接触序列| E2E["VLA / IL 端到端策略 (外层补安全校验)"]
+    Pose & Det & Track & Seg --> Plan["显式碰撞检查与可达性筛选 -> IK / cuRobo 规划 -> 阻抗闭合"]
+    Plan --> Fine["末端接近阶段接视觉伺服或触觉精修 (如 TacRefineNet); 滑移则 scripted regrasp"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

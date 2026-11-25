@@ -77,6 +77,19 @@ Blackmore 等 2010 的写法（[原文归档](../../sources/papers/blackmore_201
 
 公开资料里的 Falcon 9 / Super Heavy 回收顺序是：分离 → 返场点火（boostback）→ 大气内用栅格舵调姿（Falcon 9 栅格舵 "orient the rocket during reentry by moving the center of pressure"）→ 着陆点火 → 落到着陆腿上或被发射塔"筷子"臂接住（Starship 第五次试飞，2024-10-13）。动力下降制导负责最后的着陆点火；前几段压缩误差，留给着陆点火的改道量越小越好（[Blackmore 2016](../../sources/papers/blackmore_autonomous_precision_landing_space_rockets.md)、[SpaceX 官方页面](../../sources/sites/spacex_reusable_booster_pages.md)）。
 
+```mermaid
+flowchart TD
+    Nav["导航状态估计 (IMU / TRN / 激光雷达)"] --> State["当前状态 (位置 / 速度 / 质量)"]
+    Constraints["硬约束 (推力上下界 / 滑翔坡 / 姿态 / 剩余燃料)"] --> Solver["在线凸优化制导求解"]
+    State --> Solver
+    Solver -->|"3-DoF"| LCvx["无损凸化 LCvx (SOCP 松弛)"]
+    Solver -->|"6-DoF"| SCvx["序列凸化 SCvx (迭代线性化 SOCP)"]
+    LCvx --> Fallback["两步法退路 (先最小着陆误差 再最省燃料)"]
+    SCvx --> Fallback
+    Fallback -->|"推力与姿态指令"| Inner["内环控制与执行 (发动机推力 / 万向节)"]
+    Inner -->|"动力学演化"| Nav
+```
+
 ## 工程实践
 
 - **制导—控制分层。** 3-DoF 制导假设姿态由更快的内环控制器跟上；Malyuta 等明确写出该模型 "accurate as long as attitude can be controlled in an inner loop faster than the outer translation control loop"。6-DoF 制导则把姿态、万向节角和角速度约束直接放进优化。

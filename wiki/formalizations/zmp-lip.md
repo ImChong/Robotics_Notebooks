@@ -107,6 +107,17 @@ $$
 3. **线性 MPC**：将上述方程作为预测模型，在 QP 求解器中施加 ZMP 边界约束，实现鲁棒步行。Herdt 等 2010 把落脚点也作为决策变量，在 HRP-2 仿真中只给参考速度即可自动决定步位；预测时域 $NT=1.6$ s（约两步），ZMP 约束留 3 cm 安全余量。
 4. **步位 / 步时 QP（Khadiv 等 2016）：** 用 $\tau=e^{\omega T}$ 换元，把步时纳入线性等式约束，只看下一步即可得到小规模 QP；对点足 / 被动踝机器人，调步位比调 CoP 更有效。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["三项简化假设: CoM 高度恒定 z_c / 忽略角动量 L_dot_G / 共面支撑"] --> B["解耦线性 LIP 方程: x_ddot = omega^2 * (x - x_zmp), omega = sqrt(g/z_c)"]
+    B --> C1["离散状态空间预测: 状态 [x, x_dot, x_ddot]^T, jerk 输入 -> 输出 z_k"]
+    B --> C2["DCM / Capture Point 分解: xi = x + x_dot / omega"]
+    C1 --> D1["预览控制 / 线性 MPC QP: 施加 p_zmp in S_support_polygon 与自动步位规划"]
+    C2 --> D2["稳定分量追随 x_dot = omega*(xi - x) + 发散分量 xi_dot = omega*(xi - x_zmp) 调节落脚点"]
+```
+
 ## 局限与风险
 
 - 假设来自模型：质心高度恒定、角动量可忽略、共面接触；高度变化、手臂摆动、跑跳、非共面支撑下偏差会变大。

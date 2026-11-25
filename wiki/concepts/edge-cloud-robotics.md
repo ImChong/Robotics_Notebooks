@@ -53,6 +53,18 @@ summary: "边缘计算与云端协同：机载/边缘闭环保实时，云端负
 3. **退化模式**：云/边断连 → 本地保守策略或 Passive 安全态。
 4. **频率**：云推理结果经 [频率解耦](./control-inference-frequency-decoupling.md) 接到高频执行。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    Cloud["云端层: K8s 仿真/训练 farm, 队级分析, 签名模型 Registry (OTA 源)"] -->|"晋升后签名模型与配置下行"| Edge["边缘网关 (NUC/Jetson): 容器服务, 协议转换, 本地推理与清单缓存"]
+    Edge -->|"事件触发与降采样遥测上行"| Cloud
+    Edge -->|"经频率解耦接口下发子目标"| RT["机载实时层 (RTOS + CAN/EtherCAT): 1 kHz 传感-控制-安全 FSM"]
+    RT -->|"状态反馈"| Edge
+    Edge -.->|"断网或弱网触发退化模式"| Safe["本地保守策略或 Passive 安全停机态"]
+    Safe -.-> RT
+```
+
 ## 局限与风险
 
 - 「全云控制」在 RTT 与抖动下不适合动态平衡任务。

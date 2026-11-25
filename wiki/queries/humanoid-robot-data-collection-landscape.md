@@ -59,6 +59,18 @@ original:
 4. **「回购机器人」可能是飞轮** — Substack 用 [RPDF](../entities/paper-scanford-robot-powered-data-flywheel.md) 解释：买回机器人为 **采真实环境数据**，不等同于无需求。
 5. **学术可引用锚点** — 飞轮机制以 [arXiv:2511.19647](https://arxiv.org/abs/2511.19647) 为准；产业案例以各实体页与原始链接为准。
 
+## 流程与架构图
+
+```mermaid
+flowchart LR
+    P1["1. 野外机器人飞轮: RPDF / Scanford"] --> QA["6. 标注与质检基建: 人类 QA (Innodata/Appen/Micro1) + 物业场景 (Paxini/Brookfield)"]
+    P2["2. VR/外骨骼遥操作: BD / Tesla / 1X"] --> QA
+    P3["3. 可穿戴无机器人: EgoExplorer / Eidon / Mimic U1 / Rokoko"] --> QA
+    P4["4. 服务换数据: Shift / Figure Index"] --> QA
+    P5["5. 消费品侧传感: Dyson CameraJet"] --> QA
+    QA --> Model["对齐 VLA / FM 动作接口微调与飞轮闭环 (参照 7. Cosmos 3 世界模型平台)"]
+```
+
 ## 参考来源
 
 - [LeoInAI Substack 归档](../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md)

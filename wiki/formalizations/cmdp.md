@@ -90,6 +90,19 @@ $$
 
 - **期望约束 ≠ 每步硬安全**：标准 CMDP 限制的是期望累积代价 $\mathbb{E}[\sum \gamma^t c_t] \le d_i$，对单步致命碰撞需额外配合约束即终止（CaT）或外层安全过滤器（Safety Filter）。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["七元组建模: (S, A, P, R, C, c_hat, gamma)"] --> B["拆分为双目标优化: 最大化主回报 J_R(pi) 且约束 J_{c_i}(pi) <= c_hat_i"]
+    B --> C1["拉格朗日乘子对偶法 (如 PPO-Lagrangian)"]
+    B --> C2["信任域 + 线性化约束 QP (如 CPO)"]
+    C1 --> D1["Min-Max 博弈: 违约时自动推高乘子 lambda_i >= 0"]
+    C2 --> D2["在 KL 信任域内求解单调安全更新方向"]
+    D1 --> E["期望累积代价满足阈值, 单步硬安全需外接 CaT 或 Safety Filter"]
+    D2 --> E
+```
+
 ## 常见误区或局限
 
 - 原生对偶拉格朗日训练初期常伴随安全约束违例（先试错后收敛），不适合直接在真机无保护探索（Brunke et al., arXiv:2108.06266v2 § 3.2）。

@@ -137,6 +137,18 @@ Deep RL (PPO/SAC)
 
 - **维度边界与局部近似（MIT Underactuated Robotics Ch. 7 & Ch. 10）**：网格化数值求解 HJB PDE 在状态维数 $>4\text{--}5$ 时即受维度灾难阻塞；实际机器人工程转为在平衡点做二次近似（LQR）或沿标称轨迹用 iLQR/DDP 做局部价值展开，或在 4D 以内做安全可达集验证。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["连续时间最优控制: min int l(x,u) dt + Phi(x(T)), dx/dt = f(x,u)"] --> B["Bellman 最优性原理取 dt -> 0"]
+    B --> C["HJB 偏微分方程: -dV*/dt = min_u [l(x,u) + nabla_x V*^T f(x,u)]"]
+    C --> D{"高维状态 (>4-5D) 存在维度灾难, 选择实用求解分支"}
+    D -->|"线性系统 + 二次代价"| E1["代数 Riccati 方程 (ARE) -> 解析最优反馈 LQR"]
+    D -->|"非线性轨迹局部展开"| E2["iLQR / DDP 与短时域滚动 MPC (带终端代价)"]
+    D -->|"离散化 MDP + 采样"| E3["函数近似求解价值或策略 -> Deep RL (PPO / SAC)"]
+```
+
 ## 局限与风险（求解困难）
 
 **维度灾难**：HJB 是 PDE，对 $n$ 维状态空间需要在 $n$ 维空间上求解，计算量随维度指数增长（对人形机器人 30+ DOF 完全不可行）。

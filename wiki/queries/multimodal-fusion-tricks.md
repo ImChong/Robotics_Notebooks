@@ -58,6 +58,25 @@ summary: "多模态融合技巧：探讨了在具身智能模型中如何高效�
 
 本体感受（Proprioception）数据非常稠密且变化极快，通常建议通过一个小型 1D-CNN 或 LSTM 提取时序特征后，再与视觉 Patch 一起输入 Transformer。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    V["视觉图像 (30Hz)"] --> A["时序与频率对齐 (TCN / Zero-order Hold)"]
+    T["触觉信号"] --> A
+    I["IMU / 本体感受 (1000Hz)"] --> P["1D-CNN / LSTM 时序特征提取"]
+    P --> A
+    A --> N["特征归一化 / LayerNorm"]
+    N --> D["训练期 Modality Dropout (10%-20%)"]
+    D --> F{"融合策略选择"}
+    F -->|"计算轻量 / 低维特征"| E["早期融合: 特征拼接 -> MLP / Transformer"]
+    F -->|"独立编码 / 不对称预训练"| L["晚期融合: 独立编码器 -> 决策层汇合"]
+    F -->|"VLA 动态权重 / 抗遮挡"| M["中期对齐: Cross-modal Attention (Q/K/V)"]
+    E --> O["策略动作输出"]
+    L --> O
+    M --> O
+```
+
 ## 关联页面
 - [Cross-modal Attention 形式化](../formalizations/cross-modal-attention.md)
 - [触觉感知 (Tactile Sensing)](../concepts/tactile-sensing.md)

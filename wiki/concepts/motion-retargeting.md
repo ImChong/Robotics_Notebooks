@@ -263,6 +263,19 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - 关键 body 映射、静止姿态朝向偏移与各 body 缩放因子需按机器人手工设定；默认权重通常够用，个别动作需调权重（论文自述）。
 - 上述 GMR 数值均为 LAFAN1 + Unitree G1 + BeyondMimic 下的结果，迁移到其它数据源 / 机器人需自行验证（推断）。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    SRC["源动作输入 (MoCap / 单目视频 / 人演示)"] --> ROUTE{"是否机械同构共设计?"}
+    ROUTE -->|"是 (如 TwinDEX / mimic U1)"| DIRECT["直接进关节空间 (省略软件重定向)"]
+    ROUTE -->|"否 (异构骨架)"| KIN["运动学重定向层 (关节映射 / 两阶段差分 IK / 表面对应)"]
+    KIN --> CHK["运动学伪影检查 (FK 高度修正 / 地面与自穿透 / 关节突跳)"]
+    CHK --> DYN["动力学一致化层 (QP 接触约束 / SBTO / DSMS / RL Fine-tuning / WBC)"]
+    DYN --> USE["下游三段流水线消费 (WBT 训练 / AMP 风格先验 / 跨具身迁移)"]
+    DIRECT --> USE
+```
+
 ## 局限
 
 - 论文证据仅来自 LAFAN1 的 21 段、单一机型 G1，未覆盖 AMASS / 视频恢复动作，也不含与物体、环境、他机交互的重定向。

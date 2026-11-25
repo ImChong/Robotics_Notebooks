@@ -126,6 +126,22 @@ $$V(s) \leftarrow V(s) + \alpha \left[ R + \gamma V(s') - V(s) \right]$$
 | 求解 | 用 PPO/SAC 等算法近似解 Bellman 最优方程 |
 | 提取策略 | 收敛后 $\pi(a|s)$ 即为控制策略 |
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["Bellman 递归分解: V(s_t) = E[R + gamma * V(s_{t+1})]"] --> B{"环境模型 P 与 R 是否已知"}
+    B -->|"已知模型 (DP)"| C1["Value Iteration: 直接迭代 Bellman 最优方程"]
+    B -->|"已知模型 (DP)"| C2["Policy Iteration: 策略评估与贪心改进交替"]
+    B -->|"无模型采样交互"| D1["TD Learning: 用一步 TD 目标 R + gamma*V(s') 更新"]
+    B -->|"无模型采样交互"| D2["Q-Learning: 离线策略 max_{a'} Q(s', a') 逼近 Q*"]
+    D1 --> E["高维连续状态引入神经网络近似: Deep RL (PPO / SAC)"]
+    D2 --> E
+    C1 --> F["提取控制策略 pi(a|s)"]
+    C2 --> F
+    E --> F
+```
+
 ## 常见坑
 
 ### 折扣因子 $\gamma$ 的影响

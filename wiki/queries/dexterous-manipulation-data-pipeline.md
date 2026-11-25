@@ -113,6 +113,17 @@ NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 
   → 部署前 Actuator Network / DR 收窄扭矩 gap
 ```
 
+```mermaid
+flowchart TD
+    In["人类演示 / egocentric 视频 / VR 遥操作 (如 DexVerse)"] --> Hand["手部感知: WiLoR 检测或 HaWoR + VGGT-Omega 度量轨迹"]
+    Hand --> HVD["可选 HVD 逐关节可见性门控与三角化加权"]
+    HVD --> Label["Auto-labeling: 时间戳对齐 + 失败过滤 + 接触与子任务标签"]
+    Label --> Branch{"策略训练路线?"}
+    Branch -->|模仿学习与 VLA| IL["BC / VLA 微调 (可用 DexVerse 作评测)"]
+    Branch -->|仿真强化学习| RL["PPO + GAE 优势估计 (或 CHORD CWS-RL / 特权蒸馏)"]
+    IL & RL --> Sim2Real["部署校准: 先 SysID + DR, 仍有扭矩 gap 再加 Actuator Network"]
+```
+
 ---
 
 ## 常见误区

@@ -163,6 +163,17 @@ def rectangular_foot_cwc(mu, X, Y, fz_min=0.0):
     return A, b
 ```
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["支撑面顶点 p_i 与线性化摩擦锥基向量 s_{i,k}"] --> B["V-representation: 基 wrench 非负张成有限凸锥 W"]
+    B -->|"Double Description / 矩形闭式解"| C["H-representation: 线性不等式 A w <= 0"]
+    C --> C1["单边 f_z > 0 / 切向 |f_x|,|f_y| <= mu f_z / ZMP 边界 / yaw 力矩耦合界"]
+    C1 --> D1["足式多接触: 伴随变换 Ad_{T_i}^T 求 Minkowski 和 (CWS) -> 约束质心动量并进 QP / TOPP"]
+    C1 --> D2["灵巧抓取: 多指 wrench 锥 Minkowski 和 -> GWS 判断扰动可行性与 Force Closure"]
+```
+
 ## 方法局限性
 
 - **线性化误差**：把真正的二阶锥（SOC）换成多面体，会高估或低估可行集，取决于内切/外接选择（见上文线性化方向）。

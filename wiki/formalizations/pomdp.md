@@ -86,6 +86,18 @@ $$ b'(s') = \frac{O(s',a,o)\sum_{s\in S} T(s,a,s')\,b(s)}{\Pr(o\mid a,b)} $$
 3. **深度 RL 里的近似做法：** 把最近若干步的观测与动作拼成输入（SAC 续作 arXiv:1812.05905 的 Minitaur 真机实验就用当前和过去 5 步观测与动作，原因是延迟与接触使动力学非马尔可夫，见 [SAC 论文归档](../../sources/papers/sac_reading_arxiv_1801_01290.md)），或用 RNN / Transformer 编码历史；特权信息教师–学生蒸馏（见 [Teacher-Student DAgger](../methods/teacher-student-dagger-training.md)）则是让学生从可观测历史里重建教师看到的特权量。这些在 Kaelbling 原文之外，属于本页对工程做法的概括（推测性映射，非原文内容）。
 4. **最小闭环：** 见 [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) 对 MDP 与 POMDP 的衔接。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["上一时刻 belief b(s) + 刚执行动作 a"] --> B["环境状态转移 T(s, a, s') 与观测生成 O(s', a, o)"]
+    B --> C["状态估计器 SE: 贝叶斯递推更新 b'(s') = O(s',a,o) sum_s T(s,a,s')b(s) / Pr(o|a,b)"]
+    C --> D["等价转化为连续空间 Belief MDP (状态 b' 为历史充分统计量)"]
+    D --> E["策略 pi(b') 输出下一步动作 a (兼顾目标回报与主动感知)"]
+    E --> A
+    C -.->|"高维连续工程近似"| F["EKF 高斯 belief / 历史帧堆叠 / RNN-Transformer / 教师-学生蒸馏"]
+```
+
 ## 局限与风险
 
 - **精确求解只适用于小问题：** 原文承认即使 witness 算法，在 $|S|>15$ 且 $|\Omega|>15$ 的中等规模问题上就变得不实用；单次价值迭代所需策略树数量可以指数级增大。

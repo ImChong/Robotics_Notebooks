@@ -34,6 +34,16 @@ sources:
 | DQN | Mnih et al., *Playing Atari with Deep Reinforcement Learning*, https://arxiv.org/abs/1312.5602 |
 | AlphaGo（2016） | [AlphaGo 实体页](../entities/paper-alphago.md)：策略/价值网络 + MCTS；[Nature 原文](https://doi.org/10.1038/nature16961) |
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    G1["Atari DQN: 像素输入 -> 离散手柄按键"] --> Proof["证明端到端深度 RL 在离散/结构化动作空间的有效性"]
+    G2["AlphaGo: 策略/价值网络 + MCTS -> 棋盘落子"] --> Proof
+    Proof -->|"迁移提问: 能否搬到真实物理机器人?"| Gap["物理控制新挑战: 连续关节扭矩空间 + 高样本复杂度"]
+    Gap --> Next["推动具身控制后续演进: QT-Opt / Robotics Transformer + 物理仿真与系统栈"]
+```
+
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

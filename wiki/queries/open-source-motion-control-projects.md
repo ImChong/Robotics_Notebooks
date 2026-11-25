@@ -231,6 +231,23 @@ sources:
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Ref["人体 / 视频参考动作"] --> Retarget["动作重定向 (如 GMR: 运动学 IK 对齐)"]
+    Retarget --> Dyn["动力学一致化层 (接触约束 / 力矩功率安全 / 碰撞修正)"]
+    Dyn --> Base["基座模仿与训练优化 (残差动作 + 精确 armature/PD + 失败率自适应采样)"]
+    Dyn --> HighDyn["高动态 Parkour / 越障 (地形泛化 + 落地冲击 + 功率安全奖励)"]
+    Base --> Adapt["适应与时序观测 (历史编码器 / 世界模型 / 适配器)"]
+    Base --> Inter["物体交互 (接触图 / 交互向量奖励 + 特权教师-学生蒸馏)"]
+    HighDyn --> Deploy["真机部署控制策略"]
+    Adapt --> Deploy
+    Inter --> Deploy
+```
+
+---
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

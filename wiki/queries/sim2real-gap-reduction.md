@@ -129,6 +129,19 @@ contact_noise:  0.05            # 接触检测误报率
 
 完整五阶段工程清单（建模 → DR → 仿真验证 → SysID → 上机 → Gap 闭环）见 **[Sim2Real 工程 Checklist](./sim2real-checklist.md)**；上机前 3 分钟快速版见该页 **[快速部署检查](./sim2real-checklist.md#快速部署检查)**。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["Sim2Real 迁移失败"] --> Align["先用同轨迹仿真重放对齐真机日志 (如 SAGE 画像)"]
+    Align --> Root{"定位主导 Gap 根因"}
+    Root -->|"Gap 1: 模型动力学误差 (漂移/惯量不准)"| G1["系统辨识 (SPI-Active) + 物理参数 DR + Push 随机化"]
+    Root -->|"Gap 2: 执行器动力学误差 (延迟/力矩失真)"| G2["ActuatorNet / BAM 扩展摩擦 / 延迟建模 / PD + 低通滤波"]
+    Root -->|"Gap 3: 感知误差 (IMU/接触/视觉)"| G3["传感器噪声 DR + Teacher-Student 特权信息蒸馏"]
+    Root -->|"Gap 4: 控制频率与时序不匹配"| G4["对齐 50-200Hz 频率 + 推理延迟 <1 周期 + 通信延迟建模"]
+    Root -->|"Gap 5: 策略过拟合仿真"| G5["历史观测输入 + RMA 在线适应 + 仿真强 DR 后真机微调"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

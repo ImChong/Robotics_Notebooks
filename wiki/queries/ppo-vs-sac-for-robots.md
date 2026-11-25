@@ -122,6 +122,23 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t)\sim\rho_\pi}\left[r(s_t, a_t) + \alpha\
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["机器人 RL 算法选型: PPO vs SAC"] --> Sim{"仿真大规模并行 (>1000 envs)?"}
+    Sim -->|"是 (legged_gym / Isaac Lab)"| Style{"需要 MoCap 运动风格?"}
+    Style -->|"是"| AMP["PPO + AMP (底层 PPO + 判别器 reward)"]
+    Style -->|"否"| PPO["PPO (On-policy, Clip 约束稳定更新)"]
+    Sim -->|"否"| Real{"真实机器人直接训练 / 微调?"}
+    Real -->|"是 (样本成本高)"| SAC["SAC (Off-policy 经验回放 + 自动温度 α)"]
+    Real -->|"否"| Debug{"不确定 reward 是否合理?"}
+    Debug -->|"是 (首次实验)"| PPOD["先用 PPO 快速验证 (曲线平滑、超参少)"]
+    Debug -->|"否 (操作 / 精细连续控制)"| SACE["SAC (最大熵充分探索, target_entropy=-dim(A))"]
+```
+
+---
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

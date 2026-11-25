@@ -101,6 +101,19 @@ sources:
   MPC / RL / WBC 执行调整
 ```
 
+```mermaid
+flowchart TD
+    Sens["多源感知输入 (高度图 / 点云与原始深度 / 足端 ToF / 接触反馈)"] --> Routes["接触决策路线"]
+    Routes --> R1["传统规划 (可行落脚区域 + 步位规划 + MPC/WBC)"]
+    Routes --> R2["特权蒸馏 (Teacher 用高度图与接触特权 -> Student 用本体或深度)"]
+    Routes --> R3["端到端与单阶段感知 RL (高程图 / 点云 / ToF / 几何 token + 地形课程)"]
+    R1 --> Act["可执行接触决策 (步位 / 身体姿态 / 接触时序 / 步态调整)"]
+    R2 --> Act
+    R3 --> Act
+    Act --> Env["环境交互与真机闭环"]
+    Env -->|"接触与状态更新"| Sens
+```
+
 ## 常见信息来源
 
 ### 1. 高度图（Height Map）

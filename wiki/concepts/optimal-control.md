@@ -143,6 +143,18 @@ $$u_k^* = \arg\min_u [g(x_k, u) + V_{k+1}(f(x_k, u))]$$
 
 关系：RL 可以看成"model-free 的最优控制"，DP 是 RL 的理论基础。
 
+```mermaid
+flowchart TD
+    OCP["最优控制问题 OCP (动力学 + 代价 J + 约束)"] --> PMP["变分法 / Pontryagin 极大值原理 (一阶必要条件)"]
+    OCP --> DP["动态规划 DP (Bellman 原理 / Riccati / HJB)"]
+    OCP --> Num["数值优化方法"]
+    DP -->|"维度灾难与函数逼近"| RL["强化学习 RL (Model-Free 近似求解)"]
+    Num --> Direct["直接法 / 配点 / 多打靶 (离散化为 NLP)"]
+    Num --> DDP["DDP / iLQR (沿轨迹二阶展开前馈+反馈)"]
+    Num --> MPC["凸 MPC (线性动力学 + 凸约束在线滚动 QP)"]
+    MPC -->|"给定质心与接触参考"| WBC["下层 WBC 瞬时 QP (单步力矩分配)"]
+```
+
 ## 最小代码骨架
 
 下面这段代码不是通用求解器，而是把 OCP 的最小结构写清楚：**状态、控制、动力学、代价、滚动优化**。

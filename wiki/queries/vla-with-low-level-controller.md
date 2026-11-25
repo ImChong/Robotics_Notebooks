@@ -280,6 +280,23 @@ VLA 是黑盒模型，直接驱动执行器存在输出异常的风险：
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    VLA["VLA 中高层策略 (5-20 Hz, 含延迟与抖动)"] --> Arch{"低层控制架构选型"}
+    Arch -->|"快速原型 / 关节轨迹数据 (ACT/BC)"| A1["架构一: 输出 q_des / delta q -> PD 位置控制 (500-1000 Hz)"]
+    Arch -->|"桌面操作 / 需接触柔顺性"| A2["架构二: 输出 EE 位姿与刚度 -> 阻抗/导纳控制 (200-500 Hz)"]
+    Arch -->|"人形全身 / 移动操作 (高安全与平衡约束)"| A3["架构三: 输出 EE 目标/技能 token -> Action Buffer 缓冲与 Fallback"]
+    A3 --> WBC["WBC + MPC (200-1000 Hz): TSID/HQP + CBF 安全过滤"]
+    A1 --> Act["关节力矩输出到执行器"]
+    A2 --> Act
+    WBC --> Act
+    Note["对照命题 (DPC Direct-joint): 不经冻结 System 0, 关节空间联合训练 + DriftDistill"] -.-> A1
+```
+
+---
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

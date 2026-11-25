@@ -196,6 +196,17 @@ LIP 太简化，忽略了：
 - NMPC
 - Whole-Body Control
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    GAIT["期望步态 / 步位规划"] --> POLY["支撑多边形约束 (ZMP 需落在支撑面内)"]
+    POLY --> LIP["LIP 简化动力学 (质量集中 CoM, 高度 z_c 恒定)"]
+    LIP -->|"ddot_x = omega^2 * (x - x_zmp)"| SOL["轨迹生成与规划 (Preview Control / 线性 MPC / DCM 分解)"]
+    SOL --> WBC["下层执行器 (WBC / 逆动力学 -> 关节力矩)"]
+    LIP -.->|"高动态或质心高度变化 / 角动量显著时升级"| CD["Centroidal Dynamics / NMPC"]
+```
+
 ## 局限与常见风险：常见局限
 
 ### 1. 质心高度固定是假设，不是真实世界

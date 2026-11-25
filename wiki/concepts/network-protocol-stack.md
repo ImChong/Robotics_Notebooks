@@ -60,6 +60,21 @@ summary: "网络协议栈基础（TCP、UDP、HTTP、DNS、TLS、负载均衡）
 3. **超时**：所有云调用设硬超时；失败走本地退化策略，而非无限重试堵死线程。
 4. **LB**：仅放在非实时服务前；健康检查不要误杀正在做长训练的 Job。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    subgraph RT["机载实时数据面 (VLAN / 物理隔离)"]
+        UDP["UDP 数据报 / 组播"] --> LCM["LCM / DDS RTPS (非阻塞最新值)"]
+        LCM --> CTRL["高频传感流与控制话题 (避开 TCP 重传队头阻塞)"]
+    end
+    subgraph SRV["可靠服务与云边控制面"]
+        DNS["DNS 解析 + TLS 加密"] --> TCP["TCP 可靠字节流"]
+        TCP --> HTTP["HTTP(S) / HTTP2 + gRPC / LB"]
+        HTTP --> APP["模型下载 / OTA / 边云推理 API (配硬超时与本地退化)"]
+    end
+```
+
 ## 局限与风险
 
 - 「有线就等于低延迟」——交换机缓冲、巨型帧、错误的 NIC 中断合并仍会抖。

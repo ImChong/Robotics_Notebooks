@@ -861,6 +861,20 @@ sources:
 | isaac_sim_ws | 仿真环境 | [isaac_sim_ws](../entities/isaac-sim.md) |
 
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Q["明确查询需求: 目标项目或同方向方案"] --> L["按五层格局定位所属机构"]
+    L --> L1["第一层: 整机厂商与各地创新中心"]
+    L --> L2["第二层: 具身模型 / VLA / 世界模型 / 数据公司"]
+    L --> L3["第三层: 灵巧手与触觉传感公司"]
+    L --> L4["第四层: 大厂与底层平台"]
+    L --> L5["第五层: 产业链与移动平台公司"]
+    L1 & L2 & L3 & L4 & L5 --> C["对照 19 个项目方向类别筛选"]
+    C --> D["进入对应站内详情页与全景技术地图"]
+```
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)

@@ -49,6 +49,17 @@ $$\min_\tau \ \|W(\tau - \tau_{\text{pref}})\|^2 \quad \text{s.t.} \quad B\tau =
 | 冗余机械臂 | 末端 6D wrench | 关节力矩 |
 | 推力矢量飞行器 | 体轴力/力矩 | 各发动机推力+偏转 |
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    High["上层控制器期望广义力 w ∈ R^m"] --> Map["冗余映射等式 B τ = w (dim(τ) > m)"]
+    Map --> QP["凸 QP 优化: min ||W(τ - τ_pref)||^2, s.t. τ_min <= τ <= τ_max"]
+    QP -->|"存在可行解"| Out["输出各执行器指令 τ (旋翼转速 / 接触力 / 关节力矩)"]
+    QP -->|"约束过紧无可行解"| Slack["回退机制: 引入 slack 或层级 QP 先保 ||Bτ - w|| 最小"]
+    Slack --> Out
+```
+
 ## 常见误区
 
 - **与 WBC 混淆**：WBC 含全身动力学与任务堆叠；控制分配常指 **actuator 层** 的 $B\tau=w$。

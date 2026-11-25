@@ -262,6 +262,18 @@ Herzog et al. 称它为 centroidal momentum matrix $H_G$，引自 Orin & Goswami
 
 这些约束比 LIP / ZMP 框架更自然。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    FB["浮动基全关节动力学: M q_ddot + N = S^T τ + J_c^T λ"] -->|"提取 6 个未驱动基座行"| CD["质心动量动力学: l_dot = Σf_i + mg, k_dot = Σ(p_i - c)×f_i + Στ_i"]
+    Q["关节状态 (q, q_dot)"] -->|"CMM 映射 h = A_g(q) q_dot"| CD
+    Cons["接触与物理约束 (f_n >= 0, 摩擦锥, 支撑区域, 接触时序)"] --> MPC["上层 Centroidal Planner / Convex MPC"]
+    CD --> MPC
+    MPC -->|"CoM / 动量参考与期望接触力"| WBC["下层 WBC / TSID 逆动力学"]
+    WBC -->|"关节加速度与力矩 τ"| FB
+```
+
 ## 常见局限
 
 ### 0. 来自原文的实测限制

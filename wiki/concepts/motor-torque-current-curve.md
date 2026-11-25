@@ -95,6 +95,18 @@ T_{\mathrm{cont}} \approx K_t \cdot I_{\mathrm{cont}}, \quad T_{\mathrm{peak}} \
 - **开环估算的 $R(T)$ 与 $K_v$ 校核**：仅靠电阻+反电势估算电流（无实测电流闭环）时，铜阻按 $R(T) = R_{20}[1 + 0.004(T-20^\circ\mathrm{C})]$ 随温度漂移，SimpleFOC 文档建议实配置 $K_v$ 可在手册值基础上留 10%–20% 修正系数，高精度动态场景仍须使用实测相电流的 FOC 闭环。
 - **以 $I_{\mathrm{rms}}$ 校核连续发热**：依据完整负载谱计算 $I_{\mathrm{rms}} = \sqrt{\sum I_i^2 t_i / \sum t_i}$，密封关节按自由空气额定电流的 0.65–0.75 打折，防止高电流区铜损平方放大与磁钢高温不可逆退磁。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    IQ["FOC q 轴电流 I_q"] --> LIN["理想线性区: T = K_t * I_q"]
+    LIN --> CONT["连续与峰值能力边界 (I_cont / I_peak)"]
+    IQ -->|"高电流段"| SAT["偏离线性: 磁饱和 / 驱动器限流 / 弱磁分配"]
+    IQ -->|"P_loss = I^2 * R(T)"| HEAT["铜损发热与温升"]
+    HEAT -->|"剩磁温漂 -0.11%/C 与降额"| LIN
+    BENCH["测功机静态力臂标定 K_t + I_rms 负载谱校核"] -.->|"修正参数与打折边界"| CONT
+```
+
 ## 常见误区或局限
 
 | 误区 | 实际情况 |

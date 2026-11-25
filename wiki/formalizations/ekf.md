@@ -110,6 +110,17 @@ EKF 在旋转相关状态上有一致性问题（observability 不一致）。**
 - **雅可比一致性与迭代改进（Barfoot 2ed § 4.2.3–4.2.6）**：每步围绕最新名义状态 $\hat{x}_{k-1}, \check{x}_k$ 求一阶解析雅可比 $F_{k-1}, G_k$；当强非线性观测导致线性化误差过大时，采用迭代 EKF（IEKF）即可等价收敛到批处理 Gauss-Newton MAP 解。
 - **双足本体融合（Hartley IJRR 2020）**：在李群上使用接触辅助 Invariant EKF（$SE_k(3)$）使误差动力学脱离估计状态本身，消除传统四元数 EKF 的虚假可观性与发散倾向。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["上一时刻后验 (x_hat_{k-1|k-1}, P_{k-1|k-1}) + IMU 输入 u_k"] --> B["一阶 Taylor 线性化: F_k = df/dx"]
+    B --> C["EKF 预测步: x_hat_{k|k-1} = f(...), P_{k|k-1} = F_k P F_k^T + Q"]
+    C --> D["编码器 / 接触 / VIO 观测 z_k 与雅可比 H_k = dh/dx"]
+    D --> E["计算卡尔曼增益 K_k 与观测残差 z_k - h(x_hat_{k|k-1})"]
+    E --> F["EKF 更新步: 输出 (x_hat_{k|k}, P_{k|k}) (强非线性可用 IEKF, 旋转可用 InEKF)"]
+```
+
 ## 局限与误区（EKF 的局限）
 
 | 问题 | 描述 |

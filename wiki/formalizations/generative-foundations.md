@@ -53,6 +53,18 @@ $$p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\t
 - **环境建模 (World Models)**: 利用 VAE 或 GANs 学习环境的潜空间表征，在潜空间内进行规划（如 Dreamer）。
 - **触觉模拟 (Tactile Simulation)**: 生成逼真触觉传感器数据。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["目标: 学习真实数据分布 p_data(x) 生成新样本"] --> B1["VAE: 编码器 q_phi(z|x) 与解码器 p_theta(x|z) 最大化 ELBO (重建 - KL)"]
+    A --> B2["GAN: 生成器与判别器进行极小极大 (Minimax) 对抗博弈"]
+    A --> B3["Diffusion Models: 前向加噪 + 逆向迭代去噪 p_theta(x_{t-1}|x_t)"]
+    B1 --> C["机器人潜空间世界模型 (如 Dreamer) 与表征学习"]
+    B2 --> D["Sim2Real 视觉迁移与触觉数据模拟"]
+    B3 --> E["机器人多模态动作与轨迹生成 (如 Diffusion Policy)"]
+```
+
 ## 关联页面
 - [AI 架构地图](../overview/ai-architecture-map.md)
 - [Autoencoder / VAE](../concepts/autoencoder.md)

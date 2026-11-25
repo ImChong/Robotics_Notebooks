@@ -291,6 +291,19 @@ original:
 
 - [Continual Humanoid Motion Learning](../entities/paper-continual-humanoid-motion-learning.md) — arXiv:2610.04231，持续人形动作学习、相似度引导 LoRA-PNN。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    In["确定研究主题或上游论文编号 P001-P191"] --> Grp["定位所属分组: 动作重定向 / Locomotion / 动作跟踪与WBC / LocoManip / 世界模型与VLA / 工程部署"]
+    Grp --> Cov{"站内是否已覆盖详情 (184 vs 7)?"}
+    Cov -->|已覆盖 184 条| Multi{"是否多 Pxxx 共用一页?"}
+    Multi -->|共用一页| Read1["先读页面开头分支说明再精读"]
+    Multi -->|独立详情页| Read2["直接阅读机制 / 评测 / 开源边界"]
+    Cov -->|待补 7 条或 P191 之后新增| Up["先读上游 HMI 逐篇解读与新增论文列表"]
+    Read1 & Read2 & Up --> Code["需要源码仓库入口时跳转 HMI 开源项目主表导读"]
+```
+
 ## 局限与风险
 
 - **导读是快照，不是镜像。** 上游会继续加 `Pxxx`；本页以 2026-09-10 的 191 条为准，新增条目先读上游总索引。

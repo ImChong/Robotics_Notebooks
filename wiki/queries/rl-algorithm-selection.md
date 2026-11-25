@@ -195,6 +195,24 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["足式/人形机器人 RL 算法选型"] --> Env{"训练环境与数据条件"}
+    Env -->|"仿真大规模并行 (8192+ envs)"| SimNeed{"核心诉求"}
+    SimNeed -->|"默认稳定收敛 / 快速调试"| PPO["PPO (legged_gym / Isaac Lab 标准选择)"]
+    SimNeed -->|"单调改进保证 / 高稳定性"| BPO["BRRL / BPO"]
+    SimNeed -->|"自然步态 / MoCap 风格"| AMP["PPO + AMP 判别器 reward"]
+    SimNeed -->|"JAX 栈大 batch + 高 UTD 特例"| SACJ["SAC (如 MuJoCo Playground)"]
+
+    Env -->|"真机少样本学习 / 在线微调"| SAC["SAC (经验回放 + 自动温度调节)"]
+    Env -->|"确定性连续控制 / 低噪声精细操作"| TD3["TD3 (双 Critic + 延迟更新)"]
+    Env -->|"含人类演示 / 离线回放 + 极简调参"| AWR["AWR (优势加权监督回归)"]
+```
+
+---
+
 ## 关联页面
 
 - [Policy Optimization](../methods/policy-optimization.md) — PPO/SAC/TD3 算法详细说明

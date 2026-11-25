@@ -120,6 +120,20 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - **相位同步**：BT 节点应轮询 `inference_status`，等策略到达目标相位再 tick 下一节点，避免半加载状态开跑。
 - **开源参考**：[Cyclo Intelligence](../entities/cyclo-intelligence.md) 的 `SendCommand` BT 动作 + [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Prep["0. 显存与延迟预算: 留 10-15% VRAM 余量 + 1000 轮静态 P99 Profiling"] --> Accel["1. 推理加速: BF16->ONNX->TensorRT FP8/NVFP4 + CUDA Graph (或 APXInf)"]
+    Accel --> Async["2. 异步双线程架构 (不阻塞控制线程)"]
+    Async --> Infer["推理线程 (InferenceLoop): 多视角图像预处理 -> 模型推理新 Action Chunk"]
+    Infer -->|"RTC 软掩码 inpainting (冻结前 d 步) 写入"| Buf["动作缓冲区 (Action Buffer)"]
+    Buf -->|"高频读取 (GetAction, 如 50Hz)"| Check{"缓冲区可用且无超时/OOM?"}
+    Check -->|"是"| Ctrl["底层控制器执行轨迹插值与阻抗/PID 控制"]
+    Check -->|"否 (推理迟到 / 异常)"| Safe["安全回退: 减速锁定 / 重力补偿 / Safety Filter 限幅"]
+    BT["长程任务外层编排: 行为树 BT (LOAD -> PAUSED 复位 -> RESUME 同步相位)"] -.->|"调度生命周期"| Infer
+```
+
 ## 关联页面
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)

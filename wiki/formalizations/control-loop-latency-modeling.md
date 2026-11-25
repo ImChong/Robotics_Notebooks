@@ -178,6 +178,18 @@ $$
 3. 用 `cyclictest --priority=98 --duration=1h` 测 $T_{\text{sched}}$ 长尾；
 4. 把上面三组分布做卷积或直接把对应时间戳相加，得到 $T_{\text{loop}}$ 的经验分布并和 $T_{\text{ctrl}}$ 对比。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["传感采样 T_sense"] --> B["总线上行 T_bus,up"]
+    B --> C["策略 / WBC 计算 T_compute + 内核调度抖动 T_sched"]
+    C --> D["总线下行 T_bus,dn"]
+    D --> E["五段分布卷积 -> 端到端时延分布 T_loop 与高分位数 T_loop^(p)"]
+    E --> F["频域相位滞后约束: omega_c * T_loop <= pi/6 与周期检验 T_loop^(p) < T_ctrl"]
+    F --> G["工程与学习对策: PREEMPT_RT 核隔离 / 历史动作缓冲 K 恢复 Markov 性"]
+```
+
 ## 方法局限性
 
 - **独立性假设过强**：真实系统中计算延迟与调度延迟会强相关（高负载同时拖累两者），卷积只是一阶近似。

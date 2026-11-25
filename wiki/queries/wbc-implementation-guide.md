@@ -227,6 +227,19 @@ WBC 输出: τ_wbc [关节力矩, Nm]
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    S1["Step 1: URDF/MJCF 模型准备 (Pinocchio, 浮动基加 JointModelFreeFlyer)"] --> S2["Step 2: 动力学计算 (computeAllTerms -> M 对称化, data.nle, J, 经典加速度)"]
+    S2 --> S3["Step 3: 任务与约束定义 (CoM/躯干/摆动脚 + 最低优先级姿态任务 + 摩擦锥/法向力非负/限位)"]
+    S3 --> S4["Step 4: QP 构建与求解 (OSQP / qpOASES / eiquadprog 求解加速度、力矩与接触力)"]
+    S4 --> S5["Step 5: 力矩映射与输出 (摩擦补偿 + 调试期可选弱 PD + 力矩限幅 -> CAN/EtherCAT)"]
+    S5 --> S6["Step 6: 三阶段实机调试: 静止重力补偿 -> 支撑站立 -> 动态行走"]
+```
+
+---
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

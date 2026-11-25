@@ -47,6 +47,18 @@ summary: "操作系统基础（进程、线程、内存、文件系统、调度�
 | **文件系统** | 缓存、日志、`fsync` | rosbag/日志同步写可造成毫秒级尖刺 |
 | **调度** | 时间片与优先级 | 运控用 `SCHED_FIFO`；普通用 CFS |
 
+```mermaid
+flowchart TD
+    OS["主控 Linux 操作系统"] --> Proc["进程边界 (感知 / 控制 / 日志隔离)"]
+    OS --> Sched["CPU 调度 (运控 SCHED_FIFO vs 普通 CFS)"]
+    OS --> Mem["虚拟内存 (预分配与 mlock 避免缺页与 TLB 抖动)"]
+    OS --> FS["文件系统 (异步缓冲隔离 fsync 写盘延迟)"]
+    Proc --> Ctrl["1 kHz 实时控制线程"]
+    Sched --> Ctrl
+    Mem --> Ctrl
+    FS -->|"独立核与异步队列"| Log["日志与 rosbag 持久化"]
+```
+
 ## 工程实践
 
 1. **控制线程**：固定 CPU、提高优先级、关闭交换；细节见 [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)。
