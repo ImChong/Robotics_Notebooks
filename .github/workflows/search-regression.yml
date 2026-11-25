@@ -50,7 +50,10 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            python3 scripts/ci_change_scope.py --base "origin/${{ github.base_ref }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+            # actions/checkout 检出 PR 合并快照；其第一父提交就是对应的基线。
+            # 远端目标分支可能已前进，不能用移动的 origin/<base> 比较这份快照。
+            pr_base=$(git rev-parse --verify 'HEAD^1')
+            python3 scripts/ci_change_scope.py --base "$pr_base" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           else
             python3 scripts/ci_change_scope.py --full --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           fi

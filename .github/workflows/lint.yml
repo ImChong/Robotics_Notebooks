@@ -35,7 +35,11 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            python3 scripts/ci_change_scope.py --base "origin/${{ github.base_ref }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+            # actions/checkout 检出 PR 合并快照；其第一父提交就是对应的基线。
+            # 远端目标分支可能已前进，不能用移动的 origin/<base> 比较这份快照。
+            pr_base=$(git rev-parse --verify 'HEAD^1')
+            echo "pr_base=$pr_base" >> "$GITHUB_OUTPUT"
+            python3 scripts/ci_change_scope.py --base "$pr_base" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           elif [[ "${{ github.event_name }}" == "push" ]]; then
             python3 scripts/ci_change_scope.py --push-before "${{ github.event.before }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           else
@@ -50,12 +54,14 @@ jobs:
       # 修复：make sync-main（见 scripts/pr_derived_guard.py）
       - name: Guard bot-owned / deploy-generated files
         if: github.event_name == 'pull_request'
-        run: python3 scripts/pr_derived_guard.py check --base "origin/${{ github.base_ref }}"
+        env:
+          PR_BASE: ${{ steps.scope.outputs.pr_base }}
+        run: python3 scripts/pr_derived_guard.py check --base "${PR_BASE:?Missing PR base}"
 
       - name: Guard unique project nodes and new entity identities
         if: steps.scope.outputs.mode != 'media'
         env:
-          PROJECT_NODE_BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || 'HEAD' }}
+          PROJECT_NODE_BASE: ${{ github.event_name == 'pull_request' && steps.scope.outputs.pr_base || github.event.before || 'HEAD' }}
         run: |
           # 新分支的 before 为全零；force-push 后旧 before 提交不可达，均回退到 main
           if [[ "$PROJECT_NODE_BASE" =~ ^0+$ ]] || ! git cat-file -e "${PROJECT_NODE_BASE}^{commit}" 2>/dev/null; then
@@ -79,7 +85,8 @@ jobs:
       # 新增/改动 wiki 页的 PR 须在正文贴 report_health.py 表格（schema/ingest-workflow.md 步骤 8.5）。
       # 前面步骤失败也照跑，一次运行就能看到全部问题；正文经环境变量传入，不拼进脚本。
       - name: Check node health report in PR body
-        if: ${{ !cancelled() && github.event_name == 'pull_request' && steps.scope.outputs.mode != 'media' }}
+        if: ${{ !cancelled() && github.event_name == 'pull_request' && steps.scope.outputs.pr_base != '' && steps.scope.outputs.mode != 'media' }}
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
-        run: python3 scripts/report_health.py --check-pr-body
+          PR_BASE: ${{ steps.scope.outputs.pr_base }}
+        run: python3 scripts/report_health.py --check-pr-body --base "${PR_BASE:?Missing PR base}"
