@@ -64,6 +64,7 @@ flowchart LR
 - [Motion Retargeting](../wiki/concepts/motion-retargeting.md) — 概念主入口
 - [动作重定向知识链汇总](../wiki/overview/hub-motion-retargeting.md)
 - [Character Animation vs Robotics](../wiki/concepts/character-animation-vs-robotics.md) — 两界评价标准差异
+- [UniRig：静态网格的自动绑定](../wiki/entities/paper-unirig-2504-12451.md) — 识别上游 rig 生成、动作输入与机器人运动重定向之间的边界。
 - [运动学可行与动力学可行](../wiki/concepts/kinematic-vs-dynamic-feasibility.md) — 「能摆出这个姿势」≠「站得住、跟得上」，与本页动画/机器人评价线差异同源
 - [Motion Retargeting Pipeline](../wiki/concepts/motion-retargeting-pipeline.md) — 管线定位
 - [四足机器人](../wiki/entities/quadruped-robot.md) — 四足支线的目标平台特征：支撑域、步态、控制频率

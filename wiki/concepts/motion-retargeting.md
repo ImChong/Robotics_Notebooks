@@ -49,37 +49,13 @@ Motion Retargeting 是把人 / 动物的参考动作经骨架对齐、尺度缩�
 
 ---
 
+对于无骨架的静态资产，可先用 [UniRig](../entities/paper-unirig-2504-12451.md) 得到骨架和蒙皮；这一步不产出供重定向的动作。
+
 ## 主要方法
 
 ### 推理时具身感知反应选择
 
-[Embodiment-Aware Inference-Time Search](../entities/paper-embodiment-aware-reaction-selection.md) 将冻结的人体反应生成器作为候选提议器：采样多个反应，经目标人形重定向后，以交互语义门限和机器人侧运动学可行性共同排序。Inter-X + G1 主设置中可行性提升 1.61%，但完整 K=16 路径约 9.2 Hz，论文未实机驱动；因此它补充的是**源反应选择层**，不是新的底层控制器。
-
-### 工程工具：frax
-
-[frax](../entities/frax.md) 的差分 IK 示例将 LAFAN1 动作重定向到 G1，提供关节与地面约束及可选自碰撞处理。
-
-### 1. 基于关节角度映射（Joint-Space Retargeting）
-最简单的方法：对每个关节直接建立角度映射（scale + offset）：
-```python
-θ_robot[i] = scale[i] * θ_human[i] + offset[i]
-```
-**优点**：实时，无优化；**缺点**：不考虑运动学差异，可能末端位置偏差大
-
-### 2. 基于任务空间的优化（Task-Space IK）
-以末端执行器（手、脚）的目标位置为约束，求解机器人的关节角：
-```
-minimize  ‖θ - θ_ref‖²
-subject to: FK(θ) = p_target (末端位置约束)
-            θ_min ≤ θ ≤ θ_max
-            接触约束
-```
-工具：Pinocchio + TSID / Crocoddyl；模块化 JAX 栈见 [PyRoki](../entities/paper-notebook-pyroki.md)（手/人形 retarget 示例 + [ProtoMotions](../entities/protomotions.md) v3 默认后端）
-
-### 3. 基于物理的重定向（Physics-Based Retargeting）
-用物理仿真器验证重定向后的动作是否可执行（不摔倒）：
-- 先在仿真中播放参考动作，用 PD 控制器追踪
-- 收集可行段，过滤摔倒片段
+[Embodiment-Aware Inference-Time Search](../entities/paper-embodiment-aware-reaction-selection.md) 将冻结的人体反应生成器作…382 tokens truncated…- 收集可行段，过滤摔倒片段
 - 可结合 RL 做后续精修（AMP 风格）
 - **双层 RL 式（ReActor）**：上层优化**参数化运动学参考**（稀疏语义刚体对应 + 有界偏移），下层用 **RL 跟踪**并在仿真里回传误差；把「造参考」与「跟参考」联立，减少脚滑与自碰等运动学伪影，详见 [ReActor](../methods/reactor-physics-aware-motion-retargeting.md)。
 - **采样式物理重定向（SPIDER）**：在**并行物理仿真**中对控制序列做**采样优化**（退火噪声核），把人体+物体的**运动学参考** refinement 成**动力学可行**轨迹；用**课程式虚拟接触力**稳定接触丰富任务中的序列歧义，详见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)。
