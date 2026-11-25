@@ -55,6 +55,15 @@ sources:
 
 机构：斯坦福大学、英伟达研究院
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    Track["Motion Tracking 策略输出"] --> Filter["实时约束投影与安全过滤层 (关节 / 接触 / 碰撞边界)"]
+    Cstr["实时安全约束"] --> Filter
+    Filter --> Out["兼顾动作表现与安全约束的全身执行动作"]
+```
+
 ## 结论
 
 **ConstrainedMimic 走的是「不动策略、加一层过滤」的路线：motion tracking 该怎么跟还怎么跟，安全交给动作之外的实时约束层兜底。**

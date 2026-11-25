@@ -61,6 +61,23 @@ $$
 
 **平台与仿真。** 全尺寸人形 Adam Lite：约 1.6 m、约 60 kg，25 DOF 中实际控制 23 个（腕部 yaw 不控制），腿部为 QDD 力控执行器（单关节峰值约 340 N·m）。训练在 Isaac Gym 中进行，4096 个并行环境，PPO 训练 10k 次迭代，单张 RTX 4090 约 9 小时。另在 MuJoCo 中做 sim-to-sim 验证。
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+    A["机载本体观测 o_t"] --> B["Actor RNN (256 维隐状态)"]
+    C["仿真特权地形与状态信息"] --> D["Critic RNN 与地形 CNN"]
+    B -->|"中间表征 m_a_t"| E["Source Encoder (MLP_S)"]
+    D -->|"特权嵌入 (停止梯度)"| F["Target Encoder (MLP_T)"]
+    E --> G["同一步 InfoNCE 对比蒸馏"]
+    F --> G
+    B --> H["关节增量 a_j_t"]
+    B --> I["时钟调节量 a_delta_t"]
+    I --> J["自适应步态时钟 (频率与左右脚相位)"]
+    J -->|"步态相位反馈"| A
+    H --> K["PD 控制器 (400 Hz) 输出关节力矩"]
+```
+
 ## 工程实践
 
 **复现要点（论文给出的参数）**

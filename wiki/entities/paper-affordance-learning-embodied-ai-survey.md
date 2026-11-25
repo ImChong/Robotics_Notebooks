@@ -59,6 +59,16 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 
 本文按 affordance perception、affordance reasoning 与 affordance-guided action 三个角色组织方法：先接地可行动作及位置，再依据任务和本体筛选相关机会，最后把表征转为动作原语、规划或策略。
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    A["环境与场景观测"] --> B["Affordance 感知 (what/where: 区域/关键点/3D接地)"]
+    B --> C["Affordance 推理 (结合任务意图与本体状态筛选)"]
+    C --> D["Affordance 引导动作 (how: 动作原语/规划/策略)"]
+    D --> E["物理环境交互执行"]
+```
+
 ## 评测
 
 综述整理代表性方法、数据集与评测协议，但未提出新的统一基准或控制实验。比较结果应结合任务、模态、监督信号和评测设置阅读。

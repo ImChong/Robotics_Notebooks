@@ -66,6 +66,18 @@ RGMT 是 robust and generalized humanoid motion tracking。它的核心是 dynam
 
 我的判断**通用运动控制的下一步不是更强 tracking loss，而是更聪明地处理参考质量。**
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    A["近期本体状态历史"] --> B["Causal Temporal Encoder"]
+    C["多源参考动作命令"] --> D["Multi-Head Command Encoder"]
+    B --> E["Dynamics-Conditioned Aggregation 动态加权参考"]
+    D --> E
+    F["Recovery Curriculum 与退火辅助力"] --> E
+    E --> G["输出鲁棒人形全身控制动作"]
+```
+
 ## 结论
 
 **RGMT 用 dynamics-conditioned aggregation 让人形控制器按当前身体状态动态判断参考片段的重要性，把「更聪明地处理参考质量」而非「更强 tracking loss」作为通用运动控制的方向。**

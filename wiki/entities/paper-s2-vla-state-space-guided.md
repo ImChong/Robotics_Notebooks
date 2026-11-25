@@ -56,6 +56,23 @@ summary: "S²-VLA（状态空间引导的长程操作）（arXiv:2606.27872）�
 - **信念门控**：由 b_t 经 MLP + Softmax 生成三路权重 g_vis / g_ite / g_act，对三路输出加权求和，再经前馈网络作为下一层查询（式 7–8）；最后一层经 LayerNorm + 线性投影并行输出整段动作（式 9）。
 - **训练与部署**：以 Qwen3-VL（2B）为主干，与信念模块、SSGAA 一起端到端训练，损失只有动作 L2（式 10）；训练用 4 张 H100，推理显存约 7 GB（§3.3、§4.1）。动作头为 24 层 SSGAA，消融后只在第 12 层启用门控（§4.3）。
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+    A["过去 K 步动作与本体感知 P_t"] --> B["轻量 GRU 递推信念状态 b_t"]
+    B --> C["MLP + Softmax 生成动态门控 (g_vis/g_ite/g_act)"]
+    D["Qwen3-VL (2B) 视觉与意图特征"] --> E["低层视觉交叉注意力"]
+    D --> F["高层意图交叉注意力"]
+    G["K 步动作查询序列"] --> H["动作序列自注意力"]
+    E --> I["第 12 层 SSGAA 信念门控加权融合"]
+    F --> I
+    H --> I
+    C --> I
+    I --> J["前馈网络与剩余 SSGAA 层 (共 24 层)"]
+    J --> K["LayerNorm + 线性投影并行输出动作 (L2 损失训练)"]
+```
+
 ## 评测（§4）
 
 - **设置**：LIBERO 四子集（Spatial / Object / Goal / Long，按官方协议）、SimplerEnv-Bridge 的 WidowX 四任务，以及 ALOHA 双臂真机（30 Hz 控制）四任务（§4.1）。

@@ -51,6 +51,17 @@ summary: "系统研究仿真评测指标能否预测真机表现，为 benchmark
 | **要点** | 跨 sim/real 任务对比相关性；提出 predictivity 概念。 |
 | **开源** | **待核实** |
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    Pol["同一批待测策略"] --> SimEval["仿真环境评测 (获取仿真指标)"]
+    Pol --> RealEval["真机平台评测 (获取实机指标)"]
+    SimEval --> Corr["跨 Sim/Real 相关性统计分析 (Predictivity)"]
+    RealEval --> Corr
+    Corr --> Cal["校准 Benchmark 设计与真机外推预期"]
+```
+
 
 ## 源码运行时序图
 
