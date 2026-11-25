@@ -160,6 +160,7 @@ flowchart LR
 - [RAIBO-Wagon：四足牵引拖车窄道导航](../wiki/entities/paper-raibo-wagon-legged-towing-navigation.md) — Stage 3「学习先验 + 预测控制」实例：CFM 热启动 FDM-MPPI，联合预测本体与拖车扫掠碰撞；15 m 真机 34/40，代码暂未开放。
 - [EgoNav](../wiki/entities/paper-notebook-egonav.md)、[LookOut](../wiki/entities/paper-notebook-lookout.md)、[FocusNav](../wiki/entities/paper-notebook-focusnav.md) — 人形导航深读锚点
 - [RAVEN](../wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md) — RL 只改可见图障碍膨胀，cf-MPC 保约束的人形混合导航（Booster T1；未开源）
+- [SRL-MPC](../wiki/entities/paper-srl-mpc.md) — 学习只调有界 MPC 参数，局部优化用真实底盘轮廓避碰；对照 iCrowdNav 的直接策略，注意软安全约束与仿真评测边界。
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — 给 RNN 补空间配准能力的循环单元，端到端 RL 无地图导航，Unitree B2W 真机零样本 50–120 m 长程目标导航
 - [iCrowdNav](../wiki/entities/paper-icrowdnav.md) — RGB-D **BEV + I²Former 姿态意图** 的人群导航 PPO；相对 DWA/DRL-VO 提升私人空间合规，真机零样本（MIT 源码已开源，缺权重与 Nucleus USD 场景）
 - [SPLC](../wiki/entities/paper-splc.md) — **自动社交偏好准则** 学 Offline RL 奖励并挂 IQL/CQL/TD3BC；仿真相对手调/人工偏好基线提升成功率，TurtleBot4 真机验证（代码 coming soon）
