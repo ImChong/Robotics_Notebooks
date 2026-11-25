@@ -19,7 +19,7 @@
 | 轨迹 codebook | **已开源** `codebook/build_codebook_from_gt.py`；Brohan、KMeans、KDisks 及已有 codebook 文件 |
 | NAVSIM 数据引擎 | **已开源** `data_engine/main.py` 与 `src/pipelines/runner.py`；三类 tokenizer × 两阶段配置 |
 | SFT 训练 | **已开源配置/词表扩展** `sft/extend_action_vocab.py`、`sft/configs/*.yaml`；依赖外部 LLaMA-Factory 和 DeepSpeed |
-| CoT 标注与训练数据 | README 链接 [Google Drive](https://drive.google.com/drive/folders/1oOz6EVfsrxGvOXvYkwxNhcgqjYP-LqSa?usp=drive_link)，实际下载权限和文件版本需自行验证 |
+| CoT 标注与训练数据 | README 链接 [Google Drive](https://drive.google.com/drive/folders/1T5kgpoeLcoKxoguCWJprfR3JP3WVrEt6?usp=sharing)，实际下载权限和文件版本需自行验证 |
 | GRPO / RFT | **主仓没有独立完整训练实现**；README 指向 [Curious-VLA](https://github.com/Mashiroln/curious_vla) 的 GRPO workflow，需修改 rollout 和轨迹 parser |
 | 权重和车端部署 | README 未公开可直接使用的 AutoVLA-D checkpoint，也未展示实车推理 / 上车测评入口 |
 
@@ -37,3 +37,11 @@
 
 - 需要独立准备 NAVSIM v2、本地路径、图片、CoT annotation、GT trajectory、训练好的基础模型和 LLaMA-Factory 环境；`--check-config` 不能代替数据完整性验证。
 - 主仓已发布训练工程入口，但本次只做源码静态核验，**没有运行训练、车载推理或基准复现**。
+
+## 2026-11-25 官方发布与配置复核
+
+- [README](https://github.com/ShivaTeam/AutoVLA-D/blob/master/README.md) 的标注及数据入口已更新为上表地址；未验证实际文件下载权限。README 的 arXiv 徽章文字仍显示 `2607.01658`，但链接目标为正确的 `2611.12382`，引用以论文 URL 为准。
+- [Codebook 文档](https://github.com/ShivaTeam/AutoVLA-D/blob/master/codebook/README.md) 与根 README 确认默认 `trajectory.pkl` 为 BON 优化轨迹；如需原始轨迹，作者指示使用 `trajectory-gt.pkl` 替换。实验复现需记录使用哪一份轨迹与码本，避免混用数据版本。
+- [Stage 1 数据配置](https://github.com/ShivaTeam/AutoVLA-D/blob/master/data_engine/configs/pipelines/navsim_brohan_stage1.yaml) 和 [Stage 2 数据配置](https://github.com/ShivaTeam/AutoVLA-D/blob/master/data_engine/configs/pipelines/navsim_brohan_stage2.yaml) 均设置每轴候选数 4、beam size 1、重建误差过滤比例 0.01；第二阶段额外有 `merge_gt_trajectories`（读取 `codebook/trajectory.pkl` 的 `gt` 字段）与 `normalize_trajectory`（处理 8 个时刻的 `target_trajectory`）。
+- [Stage 1 SFT](https://github.com/ShivaTeam/AutoVLA-D/blob/master/sft/configs/navsim_brohan_stage1.yaml) 与 [Stage 2 SFT](https://github.com/ShivaTeam/AutoVLA-D/blob/master/sft/configs/navsim_brohan_stage2.yaml) 均使用全参数微调、BF16、3 epochs、学习率 4e-5、每卡 batch 2、梯度累积 1、DeepSpeed ZeRO-2；Stage 2 从 `./models/brohan_stage1` 加载。按 README 的 16 卡启动方式，全局 batch 为 32。
+- 本次仅复核官方 README、codebook 文档和上述四份配置，未重新运行源码、下载数据或复现论文实验；不改变原有论文实体及其流程图、运行时序图和路线挂载。
