@@ -233,6 +233,25 @@ related:
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["机器人仿真器选型"] --> Domain{"任务类型与核心诉求"}
+    Domain -->|"非 RL 工业整机 K&C / 耐久 / NVH"| ADAMS["ADAMS (商业 CAE, 勿当 RL backend)"]
+    Domain -->|"Locomotion / Manipulation RL 主线"| RL{"首要约束?"}
+    RL -->|"最大训练速度 / 大规模 GPU 并行 (8192+ envs)"| Isaac["Isaac Lab (或 mjlab + MuJoCo Warp)"]
+    RL -->|"高接触物理精度 / 算法验证 / 无高端 GPU"| Mujoco["MuJoCo (CPU 稳 / MJX JAX GPU)"]
+    RL -->|"快速原型 / 软体流体多物理场 / 简洁 API"| Genesis["Genesis"]
+    RL -->|"强 CPU 物理 + GPU 学习异构栈"| UniLab["UniLab"]
+    Domain -->|"逼真视觉传感器 / GT 合成数据"| Render{"渲染生态"}
+    Render -->|"大规模 GPU 并行 RL 渲染"| Isaac
+    Render -->|"已有 UE5 项目 / 反射 API / 协同仿真"| SPEAR["SPEAR (UE5 后端)"]
+    Domain -->|"编码代理 HTTP/MCP 对话式仿真"| Omni["OmniSim (Newton 后端)"]
+```
+
+---
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

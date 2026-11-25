@@ -84,6 +84,19 @@ $$f(\alpha x + (1-\alpha) y) \le \alpha f(x) + (1-\alpha) f(y), \quad \alpha \in
 
 - **一阶与二阶判别（Boyd & Vandenberghe Ch. 3 § 3.1）**：构建机器人优化代价函数时，核验目标二阶 Hessian $\nabla^2 f(x) \succeq 0$ 即可保证任意局部最优即全局最优；强凸（$\mu I \preceq \nabla^2 f$）进一步保证解唯一且条件数良性。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["机器人优化问题建模: 目标函数 f(x) 与约束集合 C"] --> B["凸集检验: 线性不等式 Ax<=b / 仿射 Ax=b / 二阶锥 SOC"]
+    A --> C["凸函数判别: Jensen 不等式 或 二阶 Hessian >= 0"]
+    B --> D{"目标与可行域是否均为凸"}
+    C --> D
+    D -->|"是 (全局最优即局部最优)"| E["多项式时间求解与热启动: WBC QP / 凸 MPC / 控制分配"]
+    D -->|"强凸 (Hessian > 0)"| F["解唯一且条件数良性"]
+    D -->|"否 (非凸: TrajOpt / NMPC)"| G["局部二阶近似 (Newton / Gauss-Newton) 或凸松弛"]
+```
+
 ## 常见误区或局限
 
 - **「二次就是凸」**：只有 $P\succeq 0$ 时才是；不定二次可能非凸。

@@ -68,7 +68,7 @@ sources:
   - ../../sources/repos/boyu_ai_hands_on_rl.md
   - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
   - ../overview/deep-rl-off-on-policy-evolution.md
-summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
+summary: "Reinforcement Learning（强化学习）通过与环境交互优化长期回报，以策略梯度（policy gradient / PPO）与 Actor-Critic 等算法为代表，擅长探索复杂控制策略和鲁棒行为。"
 ---
 
 # Reinforcement Learning (RL, 强化学习)

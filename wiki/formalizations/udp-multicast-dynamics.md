@@ -166,6 +166,21 @@ $$
 - **按实测突发长度与 P99 延迟配置缓冲区与退化门限**：调整 Linux 内核 `net.core.rmem_max` 防止 `recvmsg` 队列被视觉大数据包挤爆；根据 $3\mathbb{E}[B]$ 预设编码器与 IMU 丢失外推窗口上限，超时即安全降级或切换静态保持。
 - **多订阅者同构时间戳校验**：发送端在结构体封装单调发送序列号与 PTP 硬件同步时钟戳，下游融合节点显式校验相邻通道时钟一致性偏差而非无条件混用。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["发送端以周期 f_ctrl 发出 UDP 组播报文 (RFC 1112 / LCM 无重传)"] --> B["四类互斥事件: 按时送达 S / 丢包 L / 迟到 T>D / 乱序 R"]
+    B --> C1["Gilbert-Elliott 两态 Markov 链 (G/B): 稳态丢包 p_bar 与突发长度 E[B]=1/p_BG"]
+    B --> C2["四段右偏时延卷积 (send+switch+recv+stack): 迟到概率 p_late(D)"]
+    C1 --> D["总缺失概率 p_miss(D) = p_bar + (1-p_bar)*p_late(D)"]
+    C2 --> D
+    C2 --> E["多订阅者一致性偏差 Delta_max ~ 2*sigma*sqrt(2 ln N)"]
+    D --> F["锯齿数据年龄 AoI A(tau) 与可用观测窗口 Pr(A(tau) > A_max) <= delta"]
+    F --> G["工程与控制约束: 独立实时组播组 / 3*E[B] 外推窗口 / 带宽 omega_c*(T_loop + A_max) <= pi/6"]
+    E --> G
+```
+
 ## 局限与风险
 
 - **Gilbert-Elliott 是二阶近似**：实际交换机拥塞往往涉及多状态 / 自相似，长尾比两态模型重；

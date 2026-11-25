@@ -47,6 +47,14 @@ original:
 3. **可调度性**：利用率界（如 RMS 经典界）+ 实测 WCET。
 4. **分层**：驱动器 MCU（μs–100μs）→ 主控 RT 线程（0.5–2 ms）→ 非 RT 感知/规划。
 
+```mermaid
+flowchart TD
+    Plan["非实时感知与规划层 (普通线程或异核运行 / 软实时可丢帧)"] -->|"高频参考或目标"| RT["主控硬实时控制层 (PREEMPT_RT Linux + SCHED_FIFO + 核隔离 + mlockall / 0.5-2 ms)"]
+    RT -->|"总线周期指令"| MCU["底层驱动器 MCU (FreeRTOS 或 RT-Thread 或裸机 / us-100us 级 FOC 与看门狗)"]
+    MCU -->|"状态与传感器反馈"| RT
+    WCET["WCET 实测与优先级继承防反转"] -->|"保障截止时间不逾期"| RT
+```
+
 ## 工程实践
 
 - MCU：FreeRTOS 任务拆分 FOC、通信、看门狗；中断极短。

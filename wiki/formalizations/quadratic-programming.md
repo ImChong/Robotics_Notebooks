@@ -70,6 +70,21 @@ $$\min_x \frac12 x^T P x + q^T x \quad \text{s.t.} \quad l \le Ax \le u,\ Cx = d
 - **Hessian 正半定性与正则化**：Boyd & Vandenberghe § 4.4（Eq. 4.34）要求 QP 目标 Hessian $P \in \mathbb{S}_+^n$；当足式 WBC 任务矩阵 $J$ 奇异或松弛变量缺惩罚时，需加微小对角阻尼 $\epsilon I$（确保正定与严格凸唯一解）。
 - **ADMM 缓存分解与热启动**：Stellato et al.（OSQP，arXiv:1711.08013v4）在固定 $P, A$ 结构下只做一次准定矩阵因式分解即可在控制周期内热启动迭代，且能直接检测原始/对偶不可行。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["机器人控制建模: WBC / 凸 MPC / 控制分配 / CLF-CBF-QP"] --> B["标准化凸 QP: min 0.5 x^T P x + q^T x s.t. l <= Ax <= u, Cx = d"]
+    B --> C["Hessian 检查与正则化: 确保 P >= 0 (奇异时加 eps*I 保证严格凸唯一解)"]
+    C --> D{"求解器选择"}
+    D -->|"中小规模 / 热启动"| E1["Active-set (qpOASES)"]
+    D -->|"稀疏结构 / 嵌入式 MPC"| E2["ADMM (OSQP: 缓存因式分解 + 热启动 + 不可行检测)"]
+    D -->|"大规模稠密或稀疏"| E3["Interior-point 内点法"]
+    E1 --> F["毫秒级输出全局最优控制量 (多优先级可串接为 HQP)"]
+    E2 --> F
+    E3 --> F
+```
+
 ## 常见误区或局限
 
 - **把 NMPC 当 QP**：非线性动力学 + 非二次代价一般不是 QP，需 SQP 或 iLQR 子问题。

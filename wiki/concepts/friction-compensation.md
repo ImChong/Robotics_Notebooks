@@ -91,6 +91,20 @@ $$
 - 补偿只缩小系统性偏差，残余误差仍需 DR 等手段兜底（见上文）。
 - 以上定量结论来自两类舵机/谐波执行器的台架实验，是否外推到其他关节模组需自行验证。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    SYS["台架辨识 / SysID (如 CMA-ES 拟合)"] --> MOD["摩擦模型 (Coulomb-Viscous 或 BAM M2-M6)"]
+    QDOT["关节速度 dq 与负载估计"] --> FF["前馈摩擦估计 tau_f(dq)"]
+    MOD --> FF
+    RL["策略输出 tau_RL + 反馈 tau_PD"] --> SUM["前馈叠加与安全限幅"]
+    G["重力补偿 tau_gravity (RNEA)"] --> SUM
+    FF --> SUM
+    SUM --> OUT["净关节力矩 (缩小系统性 Sim2Real 偏差)"]
+    DR["DR 与 Teacher-Student 蒸馏"] -->|"覆盖残余参数误差"| RL
+```
+
 ## 常见误区
 
 - **补偿模型错符号**：换向瞬间力矩加倍振荡。

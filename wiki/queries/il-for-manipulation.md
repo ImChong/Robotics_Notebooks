@@ -108,6 +108,22 @@ original:
 
 > 做机器人操作，默认先 IL；当你发现“会做，但不会救、不会泛化、不会恢复”时，再引入 DAgger 或 RL。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start{"能否稳定获取专家演示?"} -->|不能| Rew{"Reward 易定义且仿真可信?"}
+    Rew -->|是| RL["RL 或 RL + curriculum"]
+    Rew -->|否| Tele["先用 teleop / scripted demo 采数回到 IL"]
+    Start -->|能| Few{"是否极少演示的简单点到点轨迹?"}
+    Few -->|是| DMP["DMP 基线"]
+    Few -->|否| BC["Step 1: 收集 20-100 条高质量演示跑通 BC baseline"]
+    BC --> Gen["Step 2: 长时序或多模态任务升级到 ACT / Diffusion / Flow"]
+    Gen --> Cov{"闭环是否偏离演示分布或缺恢复动作?"}
+    Cov -->|否| Done["IL 可直接作为主路线部署"]
+    Cov -->|是| Rec["Step 3-4: 补 DAgger / hard-negative demo 或 IL 初始化 + RL 微调恢复能力"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

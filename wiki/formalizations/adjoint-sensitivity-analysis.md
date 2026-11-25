@@ -58,6 +58,17 @@ $$\frac{\partial J}{\partial u} = \frac{\partial H}{\partial u}, \quad \frac{\pa
 
 非光滑项（如 $\|x\|_1$、max、碰撞惩罚）常用 Huber、log-barrier、softplus 光滑化后再做伴随，否则次梯度方法或 smoothing 技巧并用。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["非光滑项处理: Huber / log-barrier / softplus 光滑化"] --> B["前向 rollout: 积分 dx/dt = f(x, u) 并存轨迹 x(t)"]
+    B --> C["终端边界条件: lambda(T) = dPhi/dx(T)"]
+    C --> D["反向积分伴随 ODE: -dlambda/dt = dH/dx, H = L + lambda^T f"]
+    D --> E["提取梯度: dJ/du = dH/du, dJ/dx0 = lambda(0)"]
+    E --> F["NLP 优化 / 参数辨识: L-BFGS / SQP 更新控制或参数"]
+```
+
 ## 常见误区
 
 - **伴随 = 反向传播**：结构类似，但伴随针对连续/物理约束 OCP，实现细节不同。

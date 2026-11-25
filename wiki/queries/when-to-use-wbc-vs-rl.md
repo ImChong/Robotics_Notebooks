@@ -127,6 +127,23 @@ updated: 2026-11-21
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["机器人控制范式选型: WBC vs RL"] --> Force{"任务是否需要精确接触力控制?"}
+    Force -->|"是"| Model{"是否高度重复且有精确数学模型?"}
+    Model -->|"是 (已知地形/工业装配)"| PureWBC["纯 WBC (TSID / HQP 显式约束与力控)"]
+    Model -->|"否 (loco-manipulation / 未知地形)"| Hybrid["WBC + RL 分层 (RL 给高层目标/接触时序, WBC 做底层力控与平衡)"]
+    Force -->|"否"| Rew{"仿真中是否容易设计 reward?"}
+    Rew -->|"是 (locomotion / 跑跳 / 扰动鲁棒)"| PureRL["优先 RL (配合 Domain Randomization)"]
+    Rew -->|"否"| Demo{"是否有演示数据?"}
+    Demo -->|"是"| IL["模仿学习 IL (BC / Diffusion Policy)"]
+    Demo -->|"否"| Decomp["重新分解任务目标与接口"]
+```
+
+---
+
 ## 关联页面
 - [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)
 - [全身运动控制](../concepts/whole-body-control.md)

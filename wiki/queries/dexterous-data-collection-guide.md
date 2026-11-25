@@ -96,6 +96,19 @@ original:
 - [ ] **动作多样性**：同一个任务（如拿杯子）必须采集不同起始位置、不同朝向的数据，以防止模型过拟合。
 - [ ] **多模态覆盖**：必须同时采集 RGB 图像、深度图和触觉力反馈，为后续的[多模态融合](./multimodal-fusion-tricks.md)做准备。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["选择灵巧手数据采集路线"] --> R{"采集模式与约束?"}
+    R -->|低成本无穿戴约束| V["视觉动捕遥操作: AnyTeleop / DexCap / RUKA-v2 / MIDAS"]
+    R -->|抗遮挡与稳定力反馈| G["穿戴式数据手套: Manus / SenseGlove / HumanTouch / OSMO"]
+    R -->|零软件重定向| E["固定运动学外骨骼: mimic wearable U1 / TwinDEX"]
+    R -->|真机太慢或高接触难度| S["仿真示教与合成: VR / RL 专家 / TeleDexter / NestDex / SPD"]
+    V --> HVD["遮挡时可叠加 Hand Visibility Detector 逐关节降权"]
+    HVD & G & E & S --> Check["质量核查: 毫秒级时间戳对齐 -> 重定向接触防虚空抓取 -> 初始位姿多样性 -> RGB/深度/触觉多模态覆盖"]
+```
+
 ## 关联页面
 - [Allegro Hand 实体](../entities/allegro-hand.md)
 - [RUKA-v2 Hand 实体](../entities/ruka-v2-hand.md) — 全栈开源腱驱动 + VR 遥操作范例

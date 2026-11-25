@@ -89,6 +89,23 @@ summary: "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多
 
 与 [视触觉融合](../concepts/visuo-tactile-fusion.md) 中「残差适应」范式、[T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)「100 h 触觉 mid-training 端到端 VLA」形成 **部署预算二维选型**。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["RL 中引入触觉反馈"] --> Path{"现有基础与数据条件"}
+    Path -->|"从零仿真训练视触觉 RL"| Sensor{"触觉传感器形态"}
+    Sensor -->|"力/矩或电流 (低维)"| FT["历史窗口拼接本体感受 -> MLP"]
+    Sensor -->|"视触觉图像 (GelSight/DIGIT)"| VisTac["CNN/ViT 提取特征 -> 晚期融合"]
+    FT --> Rew["密集奖励塑形: 接触探索激励 + 摩擦锥约束 + 防滑惩罚"]
+    VisTac --> Rew
+    Rew --> Gap["跨越触觉 Sim2Real Gap: 非对称 Teacher-Student / 物理 DR / 自监督隐式对齐"]
+
+    Path -->|"已有视觉基策略 + 无大量触觉演示"| Res["真机残差 RL (OmniTacTune 两阶段)"]
+    Res --> Warm["阶段 1 Warm-start: 冻结基策略 rollout 填 buffer, 微调触觉编码器与 critic"]
+    Warm --> Online["阶段 2 在线残差 RL: 策略无关接口 + 多感官稠密奖励修正动作"]
+```
+
 ## 关联页面
 - [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)
 - [Contact-Rich Manipulation (接触丰富操作)](../concepts/contact-rich-manipulation.md)

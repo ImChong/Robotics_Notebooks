@@ -171,6 +171,22 @@ QP 优化层：
 - **WBIC 中的浮动基松弛技巧（Kim et al., arXiv:1909.06586 § IV）**：在 Mini-Cheetah 以 `3.7 m/s` 奔跑时，由于空中相与瞬时碰撞下质心状态不可直接稳态控制，WBIC 对浮动基动力学和 MPC 反力命令同时引入松弛变量 $\delta_f, \delta_{f_r}$，防止腾空相强制闭环干扰摆动腿加速度。
 - **双环频率配比**：MPC 典型运行在 `30–100 Hz`（输出 $f_r^{\text{MPC}}$ 与质心参考轨迹），WBC QP 运行在 `500 Hz`（`2 ms`），关节力矩 $\tau_j$ 由全阶动力学式 $\tau_j = (A\ddot{q} + b + g - J_c^T f_r)_{\text{joints}}$ 直接解出。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    SENS["感知与状态估计 (IMU / 编码器 / 接触估计)"] -->|"双环闭环状态"| MPC
+    SENS --> WBC
+    subgraph STD["经典分层 MPC + WBC"]
+        MPC["高层 MPC (30-100 Hz, SRBD / Centroidal / LIP)"] -->|"质心参考轨迹 + 落脚点 + 期望反力 f_r^MPC"| WBC["低层 WBC-QP (500 Hz-1 kHz, 全阶动力学 + 摩擦锥 + 浮动基松弛)"]
+        WBC -->|"关节力矩 tau_j"| ACT["电机执行器"]
+    end
+    subgraph REV["新兴反向层级 MPC-over-RL"]
+        SMPC["高层采样式 MPC (如 CEM)"] -->|"命令空间指令"| RLP["底层通用 RL-WBC 策略"]
+        RLP --> ACT2["高频稳定与接触执行"]
+    end
+```
+
 ## 局限与常见误区
 
 - **上下层模型失配与约束矛盾**：上层 SRBD 忽略摆动腿动量或腕/肩惯量时，给出的 $f_r^{\text{MPC}}$ 与参考高度轨迹在下层全阶动力学 QP 中可能无法同时满足，需合理设定松弛权重比（如 $Q_1=1$ 对反力 vs $Q_2=0.1$ 对浮动基加速度）。

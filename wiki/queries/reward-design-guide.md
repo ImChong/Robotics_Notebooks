@@ -114,6 +114,24 @@ $$r_{AMP} = \log D_\phi(s, a, s')$$
 3. **速度课程**：低速（0.5 m/s）→ 中速（1.0 m/s）→ 高速（2.0+）
 4. **避免太难的初始条件**：初始难度过高 = 零梯度 = 策略不收敛
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["设计 Locomotion RL Reward"] --> Clear{"任务有清晰成功标准?"}
+    Clear -->|"是"| Sparse["稀疏 reward (+1/0) + 按成功率晋级的 Curriculum"]
+    Clear -->|"否"| Dense["密集 reward 分解: 主目标跟踪 + 稳定性 + 能耗/平滑惩罚"]
+    Dense --> Decomp{"子目标可独立度量且易手工描述?"}
+    Decomp -->|"是"| Norm["各分项归一化至 [-1, 1] 后加权求和 (或参数化步态目标)"]
+    Decomp -->|"否 (需自然步态)"| AMP["AMP 对抗模仿 (MoCap + 判别器 reward) 或层级 reward"]
+    Sparse --> Check{"出现 Reward Hacking / 不动 / 终止泄露?"}
+    Norm --> Check
+    AMP --> Check
+    Check -->|"是"| Fix["用 Potential-based Shaping, 平衡惩罚权重, 消除终止奖励泄露"]
+    Fix --> Check
+    Check -->|"否"| Train["保持简洁并按地形/速度课程渐进训练"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

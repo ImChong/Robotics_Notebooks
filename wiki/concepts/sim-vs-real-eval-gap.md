@@ -85,6 +85,20 @@ related:
 2. **落到真实低层控制**：把「魔法抓取」等抽象化实现替换为真实接触/力控（如 [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) 的低层控制），减少「简化换来的虚高」。
 3. **分布外 + 长尾分层评测**：加入 OOD 测试集与按失败模式/物体分层的成功率，避免用均值成功率和饱和榜单掩盖长尾崩溃与分布漂移。
 
+```mermaid
+flowchart TD
+    Sim["仿真与世界模型评测 (可复现 / 高吞吐 / 可控)"] --> Gap["评测 Gap 三来源"]
+    Gap --> G1["未覆盖真实因素 (随机接触 / 感知时延 / 噪声)"]
+    Gap --> G2["聚合指标掩盖局部失真 (主体动作 vs 物体交互)"]
+    Gap --> G3["基准饱和或信息泄漏"]
+    G1 --> Fix["缩小评测 Gap 三条路线"]
+    G2 --> Fix
+    G3 --> Fix
+    Fix --> F1["real-to-sim 排名相关性锚定 (Spearman rho + 样本量)"]
+    Fix --> F2["落到真实低层接触与力控"]
+    Fix --> F3["OOD 与长尾失败模式分层评测"]
+```
+
 ## RoboLab 更新带来的校准与统计约束
 
 [RoboLab v4 原文与 v0.3.3 核对归档](../../sources/papers/robolab_arxiv_2604_09860.md) 补充了高保真仿真作为评测器的具体边界：

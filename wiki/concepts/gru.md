@@ -79,6 +79,22 @@ $$
 | **机器人用法** | 堆在视觉编码器后融 $H$ 帧 proprio/深度；MBRL 世界模型用 GRU 预测 $h_t$（见 [model-based RL](../methods/model-based-rl.md)） |
 | **导出** | 部署时常 **截断 unroll** 或转 ONNX/TorchScript；注意 hidden $h_0$ 热启动 |
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    X["当前输入 x_t (本体感知 / 视觉特征)"] --> R["Reset 门 r_t = sigmoid(...)"]
+    X --> Z["Update 门 z_t = sigmoid(...)"]
+    X --> N["候选状态 n_t = tanh(...)"]
+    HPREV["上一隐状态 h_(t-1)"] --> R
+    HPREV --> Z
+    R -->|"选择性忽略历史"| N
+    HPREV -->|"与 1-z_t 及 z_t 混合"| HNEW["当前隐状态 h_t"]
+    Z --> HNEW
+    N --> HNEW
+    HNEW --> OUT["策略时序编码 / 世界模型状态预测"]
+```
+
 ## 局限与风险
 
 - **训练并行差：** 与所有 RNN 一样时间维递推，难像 Transformer 整序列并行；长序列梯度仍可能衰减（门控仅缓解）。

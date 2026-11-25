@@ -140,6 +140,23 @@ Foundation Policy 的泛化能力仍受训练数据分布约束：
 2. 实时世界模型（5ms 内的物理预测）
 3. 跨形态泛化（一个模型适配多种机器人）
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Task{"目标任务类型?"} -->|桌面或固定底盘操作| Data{"是否有 30 条以上高质量演示?"}
+    Data -->|是| FP["ACT / pi0 / RT-2 微调 (频率不超过 30Hz, 精度大于 5mm)"]
+    Data -->|否| Col["先用 ALOHA 遥操作收集演示数据"]
+    Task -->|人形全身行走| Nav{"是否需要语言指令导航?"}
+    Nav -->|纯走路| RL["直接选用 RL (PPO / SAC)"]
+    Nav -->|需语言导航| Hyb["VLA 高层规划 + 底层 RL 控制器"]
+    Task -->|Loco-Manipulation| Sync{"操作为主还是同步行走操作?"}
+    Sync -->|固定位置后操作| FP
+    Sync -->|同步行走与操作| Mix["采用 WBC / RL 混合控制"]
+    Task -->|精细力控操作| Force["专用策略 + 力控 (Foundation Policy 精度不足)"]
+    FP & Hyb & Mix --> Arch["推荐分层: VLA/Foundation Policy 语义目标 -> 中层运动规划 -> 底层 WBC/RL 力矩执行"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

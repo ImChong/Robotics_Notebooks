@@ -88,6 +88,18 @@ Grandia 2019 的核心实验：在 10% 质量模型误差的仿真里，前馈 M
 3. **开启动态跟踪**：引入速度指令，调优速度跟踪项的权重。
 4. **最后核对更新率与反馈层**：若 MPC 更新 ≤ 20 Hz，优先考虑反馈策略或外挂高频跟踪器，而不是继续堆权重。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    S1["1. 调静态平衡: 期望速度设为 0 -> 调高姿态权重 Q -> 抗推力站稳"] --> S2["2. 增加控制平滑度: 增大动作权重 R 或加高通频率整形代价 -> 消除接地力跳变"]
+    S2 --> S3["3. 开启动态跟踪与约束: 引入速度指令调优权重 -> 加摩擦锥约束 (松弛障碍或金字塔近似) 防负接触力"]
+    S3 --> S4["4. 核对时域 T、离散步长 dt 与更新率"]
+    S4 --> Check{"MPC 更新率是否低于或等于 20Hz 并出现跳变?"}
+    Check -->|是| Fb["改用 SLQ Riccati 反馈策略或外挂高频跟踪器 (如 500Hz WBIC)"]
+    Check -->|否| Done["保持闭环验证与真机负载测试"]
+```
+
 ## 关联页面
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 - [Trajectory Optimization (轨迹优化)](../methods/trajectory-optimization.md)

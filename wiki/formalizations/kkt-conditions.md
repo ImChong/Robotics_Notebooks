@@ -70,6 +70,17 @@ KKT 为线性系统 + 互补条件；active-set 方法通过猜测活跃约束�
 | 控制分配 | 等式 $B\tau=w$ 的 $\nu$；框约束 $\tau_{\min}\le\tau\le\tau_{\max}$ 的 $\lambda$ |
 | NMPC | 动力学等式约束的协态变量（见 [Adjoint](../formalizations/adjoint-sensitivity-analysis.md)） |
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["约束优化问题: min f(x) s.t. g_i(x) <= 0, h_j(x) = 0"] --> B["构造 Lagrangian: L(x, lambda, nu) = f(x) + sum lambda_i g_i + sum nu_j h_j"]
+    B --> C["四组 KKT 一阶条件: 平稳性 / 原始可行 / 对偶可行 / 互补松弛 lambda_i g_i(x) = 0"]
+    C --> D{"问题结构分类"}
+    D -->|"凸 QP (P >= 0)"| E1["退化为线性系统 + 互补条件 -> Active-set / ADMM (OSQP, qpOASES) 求解"]
+    D -->|"一般 NLP / NMPC"| E2["内点法 / SQP / 增广拉格朗日 (ALM) 迭代逼近 KKT 点"]
+```
+
 ## 常见误区
 
 - **KKT 点不一定是全局最优**（非凸 NLP）。

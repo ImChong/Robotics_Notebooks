@@ -84,6 +84,19 @@ $$
 - 2026 年开源架构中还可见 **Partial RoPE**（只旋转部分 head 维度）、**RoPE/NoPE 混合层**及**可学习相对位置偏置**；具体长上下文效果需要模型级实验验证。
 - 独立知识页：[位置编码：绝对位置、RoPE、NoPE 与相对偏置](./positional-encoding.md)；一手教程：[Sebastian Raschka 原文归档](../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md)。
 
+```mermaid
+flowchart TD
+    In["输入序列嵌入 + 位置信息 (绝对位置编码或各层 Q/K RoPE 旋转)"] --> QKV["线性投影生成多头 Q / K / V"]
+    QKV --> Attn["缩放点积注意力 softmax(QK^T / sqrt(d_k))V (解码器含因果掩码)"]
+    Attn --> Concat["多头 Concat 与 W^O 投影"]
+    Concat --> Add1["残差连接 + LayerNorm"]
+    In --> Add1
+    Add1 --> FFN["逐位置前馈网络 FFN"]
+    FFN --> Add2["残差连接 + LayerNorm"]
+    Add1 --> Add2
+    Add2 --> Out["序列表示输出 (接入策略网络 / ACT 动作块 / VLA)"]
+```
+
 ### 5. 为什么用自注意力（原文 Table 1）
 
 | 层类型 | 每层复杂度 | 顺序操作 | 最大路径长度 |

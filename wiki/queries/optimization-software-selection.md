@@ -78,6 +78,26 @@ summary: "机器人优化软件怎么选：QP / NLP / 锥规划求解器与建�
 - **不生成导数**：NMPC 有限差分太慢，用 CasADi/Drake AD。
 - **忽视代码生成**：Acados 相对 CasADi 纯解释执行快一个数量级。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    P["机器人优化问题类型"] --> QP{"凸 QP (WBC / 凸 MPC)?"}
+    QP -->|"嵌入式 + 热启动"| QPO["qpOASES / HPIPM"]
+    QP -->|"稀疏 + Python"| OSQP["OSQP"]
+
+    P -->|"非线性 OCP / NMPC"| NMPC{"部署约束"}
+    NMPC -->|"实时 SQP-RTI + 代码生成"| ACA["Acados / OCS2"]
+    NMPC -->|"原型 / 离线验证"| CAS["CasADi (AD) + IPOPT"]
+
+    P -->|"离线 TrajOpt (DDP/iLQR)"| CRO["Crocoddyl / Drake TrajOpt"]
+    P -->|"GPU 碰撞 + 运动生成"| CUR["cuRobo (GPU SDF + L-BFGS)"]
+    P -->|"锥规划 / SDP"| CONE["Mosek / Clarabel / CVXPY"]
+
+    QPO --> Lin["线性子问题求解器: 稠密 LU/Cholesky | 稀疏 LDL/SuperLU | 迭代 CG/MINRES"]
+    OSQP --> Lin
+```
+
 ## 与其他页面的关系
 
 - [MPC Solver Selection](./mpc-solver-selection.md)

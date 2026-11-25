@@ -88,6 +88,25 @@ summary: "Locomotion RL 奖励函数设计指南：通过将任务目标拆分�
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["Locomotion 奖励函数设计"] --> Split["拆解三类核心奖励项"]
+    Split --> Goal["1. 任务目标项 (Goal): 速度 / 角速度指数核跟踪"]
+    Split --> Style["2. 运动质量项 (Style): 机械功率 / Action Rate / 接触冲击 / Air Time"]
+    Split --> Safe["3. 安全性项 (Boundary): 跌倒惩罚 / 关节限位 / 力矩限位"]
+    Goal --> Scale["记录原始值与加权贡献做 Scaling (核对控制周期 dt)"]
+    Style --> Scale
+    Safe --> Scale
+    Scale --> Abuse{"出现正奖励薅羊毛 / 策略投机?"}
+    Abuse -->|"是"| Tune["检查终止条件、站立策略与指令门控"]
+    Tune --> Scale
+    Abuse -->|"否"| Curr["高难度任务采用三阶段 Curriculum: 不跌倒 -> 速度跟踪 -> 姿态平滑"]
+```
+
+---
+
 ## 关联页面
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Reward Design 概念](../concepts/reward-design.md)

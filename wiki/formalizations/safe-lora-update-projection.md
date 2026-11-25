@@ -141,6 +141,21 @@ $$
 - 令 $\Delta W=0$（完全不训练策略），只保留 $\Pi_{\mathcal{S}}$，退化为纯 [安全壳](../concepts/safety-filter.md)。
 - 把硬切换 $\Pi_{\mathcal{S}}$ 换成连续 QP 投影，则得到「低秩残差 + 可证明安全壳」的叠加形态——三条路径并非互斥，实践中常叠加（见 [真机安全 RL 微调](../concepts/safe-real-world-rl-fine-tuning.md) 的三路径对比）。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["冻结仿真预训练权重 W_0 (Actor 与 Critic)"] --> B["注入低秩 LoRA 残差 (alpha/r)*B*A (B=0 初始化, rank <= r)"]
+    B --> C["策略采样候选动作 a_tilde ~ pi_{Delta theta}(.|s_t)"]
+    C --> D{"动作侧安全投影 Pi_S(s_t, a_tilde)"}
+    D -->|"硬切换 (SLowRL)"| E1["安全集 S 内透传 a_tilde; 超限切换至 Recovery 策略 pi_r(s_t)"]
+    D -->|"连续 QP 投影 (CBF)"| E2["求解 min 0.5||a - a_tilde||^2 s.t. h_dot(s,a) >= -gamma_h * h(s)"]
+    E1 --> F["安全动作 a_t 下发真机执行并收集轨迹"]
+    E2 --> F
+    F --> G["PPO 仅对 Actor 与 Critic 的低秩因子 {A, B} 求梯度更新"]
+    G --> B
+```
+
 ## 评测口径
 
 - **安全：** 训练期摔倒次数 / seed（SLowRL trot→0、jump→2，对照全参+安全 17.5）；触发 $\Pi_{\mathcal{S}}$ 覆盖的步数占比。

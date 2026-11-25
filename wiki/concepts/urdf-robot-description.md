@@ -82,6 +82,14 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 
 **轮式双臂人形的从零建模**：按 CAD 零位冻结、单树拓扑、xacro、惯量、mesh、校验和控制/跨仿真器转换七步推进，见[轮式双臂人形 URDF 建模与工具链](../queries/wheeled-dual-arm-humanoid-urdf-workflow.md)。特别注意惯性坐标系支持 rpy、CAD 惯量单位换算和 ROS 2 mimic 接口的发行版差异。
 
+```mermaid
+flowchart LR
+    CAD["CAD 模型与厂商参数 (质量 / 质心 / 惯量 / 几何)"] --> XML["URDF XML 单父节点运动学树 (link + joint + inertial)"]
+    XML --> Engine["导入仿真与动力学内核 (Pinocchio / Dynibo / MuJoCo / Isaac)"]
+    Engine --> Check["核对 n_q 与 n_v 维数、关节轴向与惯量一致性"]
+    Check --> SysID["SysID 实机辨识修正 (补齐摩擦、转子惯量等 URDF 缺失项)"]
+```
+
 ## 局限与常见误区
 
 - **误区：「URDF 够准就能 Sim2Zero」。** 执行器动力学、间隙、柔性不在 URDF 标准字段里。

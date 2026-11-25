@@ -47,6 +47,19 @@ $$ \mathcal{L}(\theta, \phi) = \sum_{t=1}^T \left( \underbrace{\mathbb{E}_{q_\ph
 
 变分目标函数本质上是在执行 **信息瓶颈 (Information Bottleneck)** 原则：压缩掉与预测未来无关的背景干扰（如环境光影、墙壁颜色），只保留对任务有用的物理规律。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["历史状态 s_{t-1} + 动作 a_{t-1}"] --> B["先验预测 Prior: p_theta(s_t | s_{t-1}, a_{t-1})"]
+    C["当前真实观测 o_t"] --> D["后验推断 Posterior: q_phi(s_t | s_{t-1}, a_{t-1}, o_t)"]
+    B --> E["KL 正则项: 最小化 D_KL(Posterior || Prior) 使梦境逼近现实"]
+    D --> E
+    D --> F["重建与预测头: 最大化观测重建 log p_theta(o_t|s_hat_t) 与奖励预测 log p_theta(r_t|s_hat_t)"]
+    E --> G["ELBO / RSSM 联合优化 -> 信息瓶颈压缩冗余特征, 支撑潜空间想象规划 (Dreamer)"]
+    F --> G
+```
+
 ## 关联页面
 - [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)
 - [Model-Based RL](../methods/model-based-rl.md)

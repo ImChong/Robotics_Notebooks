@@ -95,6 +95,23 @@ related:
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart LR
+    E1["轴线 I: 存在性证明 (端到端连续控制能否落地)"] --> E1A["游戏先例 (DQN / AlphaGo) -> 真实臂规模 RL (QT-Opt) + CycleGAN"]
+    E1A --> E1B["并行探索 (BC-Z / MT-Opt / Play) + 重标记 (HER / DIAL)"]
+    E1B --> E2["轴线 II: 基础模型 (外部多模态智能接入策略)"]
+    E2 --> E2A["规划 + affordance (SayCan) -> Transformer/VLA (RT-1 / RT-2)"]
+    E2A --> E2B["跨本体数据轴 (Open X-Embodiment -> Foundation Policy)"]
+    E2B --> E3["轴线 III: Scaling (评测、数据形态与产业闭链)"]
+    E3 --> E3A["开源/闭源 generalist (Octo / Gemini Robotics) + 世界模型"]
+    E3A --> E3B["分布式真实评测 (RoboArena) + Embodied Scaling Laws"]
+    E3B --> Audit["核验准则: 口述叙事仅作线索, 事实与规模以论文/官方报告为准"]
+```
+
+---
+
 ## 关联页面
 
 - [Foundation Policy](../concepts/foundation-policy.md)

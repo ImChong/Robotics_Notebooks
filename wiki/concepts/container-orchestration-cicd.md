@@ -54,6 +54,17 @@ summary: "容器与部署（Docker、Kubernetes、CI/CD）：训练/仿真 farm 
 - **不要** 假设普通 Linux 容器能提供 `SCHED_FIFO` 硬实时。
 - **AppSec 扫描容器化：** Codex Security 官方 Compose 支持钉死 Git revision 的 bulk-scan；结果与 state 目录需 `chmod 700` 且在被扫仓库外——见 [Codex Security](../entities/codex-security.md)。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    Code["代码 / 环境依赖 (CUDA, Python)"] --> OCI["Docker / OCI 分层镜像构建 (锁定 digest)"]
+    OCI --> CI["CI/CD 流水线: 单测 / Sim2Sim 冒烟 / AppSec 扫描与签名"]
+    CI -->|"调度训练与大规模仿真"| K8s["Kubernetes 集群 (Pod / Job + GPU Device Plugin)"]
+    CI -->|"策略权重晋升"| Reg["模型 Registry -> 云边推理部署"]
+    CI -->|"机载固件独立发布"| OTA["OTA 通道 (与 1 kHz 硬实时力矩环隔离)"]
+```
+
 ## 局限与风险
 
 - 特权容器与挂载宿主机 Docker socket 是供应链风险。

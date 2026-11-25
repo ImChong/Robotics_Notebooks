@@ -108,6 +108,19 @@ CiA 的经验法则是**平均总线负载不超过 50%**（短时更高可接�
 
 NVIDIA Jetson Linux 开发指南（r39.2）说明，Jetson Thor、AGX Orin、Orin NX、Orin Nano 均带 Time-Triggered CAN 控制器（`mttcan`）：支持标准与扩展帧，位速率可配置 10 kbps–1 Mbps，数据段 Thor 最高 8 Mbps、其余平台最高 15 Mbps；Orin NX/Nano 1 路、AGX Orin 与 Thor 各 2 路；除 Thor 开发套件自带收发器外，其余平台需外接 ≥3.3 V 的收发器。Linux 下加载 `can`、`can_raw`、`mttcan` 模块后用 `ip link set can0 up type can bitrate 500000 dbitrate 1000000 fd on` 之类命令启用（SocketCAN 接口）。详见 [NVIDIA Jetson](../entities/nvidia-jetson.md)。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    App["应用层协议: CANopen (PDO/SDO/对象字典) / DroneCAN / 私有帧"] --> Frame["帧封装: 11/29位 ID + DLC (0-8 B) + 15位 CRC"]
+    Frame --> Arb["多主硬件按位仲裁 (wired-AND 显性覆盖隐性)"]
+    Arb -->|"ID 数值最小者胜出"| Bus["差分物理层 CAN_H / CAN_L (≤1 Mbit/s, 120Ω端接)"]
+    Arb -->|"输掉仲裁退避"| Wait["转入接收态并在总线空闲后重发"]
+    Bus --> Err["五种错误检测 (CRC/格式/ACK/位监测/位填充)"]
+    Err -->|"持续故障"| Off["错误帧中止 -> bus-off 隔离故障节点"]
+    Err -->|"正常确认 (ACK)"| Load["负载约束: 建议 ≤50% 负载, 超限拆多总线或转 CAN FD / EtherCAT"]
+```
+
 ## 局限与常见误区
 
 - **「CAN 就是 1 Mbps 随便接」**：拓扑、终端、接地与采样点不一致都会让「理论上 1 M」在真机上变成间歇 NACK；CiA 明确指出速度与长度、采样点、收发器都相互制约。

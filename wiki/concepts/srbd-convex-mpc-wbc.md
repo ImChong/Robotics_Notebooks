@@ -52,6 +52,16 @@ original:
 - **凸化：** 摩擦锥线性化、固定步态时序、质心高度缓变假设。
 - **分层：** MPC 输出 $F_c^*, \dot p^*$ → WBC 跟踪并满足全刚体动力学。
 
+```mermaid
+flowchart TD
+    Ref["高层步态调度与目标指令 (接触时序 + 期望速度)"] --> MPC["凸 MPC (百 Hz 级 / 基于 SRBD 单刚体模型 + 线性摩擦锥)"]
+    State["状态估计 (质心位置速度 / 姿态角速度 / 接触状态)"] --> MPC
+    State --> WBC["下层 WBC (kHz 级 / 全刚体动力学 QP 力矩分配)"]
+    MPC -->|"未来接触力 F_c* 与质心参考"| WBC
+    WBC -->|"关节力矩指令"| Robot["机器人执行器"]
+    Robot -->|"传感器测量"| State
+```
+
 ## 工程实践
 
 - 阅读 cheetah software / humanoid 开源 MPC+WBC 模块对照飞书伪代码。

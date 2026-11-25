@@ -53,6 +53,25 @@ summary: "可观测性（日志、Metrics、Tracing）：云边服务用 OpenTel
 5. **队级/地理大屏（可选前端层）：** Metrics 聚合后可在浏览器用 Three.js + 图表库做运营视图；参考样板 [sc-datav](../entities/sc-datav.md)（静态 demo，需自接 API/OTel 查询，非内置后端）。
 6. **历史遥测压缩：** 若需长期归档，可在非实时的存储副本上使用 [Swinging Door Trending](./swinging-door-trending-compression.md) 这类有误差界的有损压缩；保留原始控制、安全和故障诊断数据，避免在硬实时环中同步压缩或写盘。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    subgraph RT["硬实时运控环 (SCHED_FIFO)"]
+        LOOP["1 kHz 控制周期"] -->|"非阻塞轻量输出 (禁同步写盘/打 span)"| HIST["周期时间直方图 / miss 计数 / 环形崩溃缓冲"]
+    end
+    subgraph OTel["云边服务 OpenTelemetry 三支柱"]
+        LOG["Logs (限速采样, 异步落盘)"]
+        MET["Metrics (RED / USE 时间序列)"]
+        TRC["Tracing (跨服务 RPC 因果链)"]
+    end
+    HIST --> SLO["SLO 告警与运营视图 (如 sc-datav)"]
+    LOG --> SLO
+    MET --> SLO
+    TRC --> SLO
+    MET -->|"非实时存储副本"| SDT["Swinging Door Trending 历史压缩"]
+```
+
 ## 局限与风险
 
 - 在 `SCHED_FIFO` 线程里同步打 span/写磁盘 → 自我制造抖动。

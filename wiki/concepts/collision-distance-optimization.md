@@ -54,6 +54,22 @@ summary: "碰撞距离计算：将几何碰撞检测表述为优化或距离场�
 - **Safety Filter / CBF**：距离或其 Lie 导数构造 barrier（见 [Safety Filter](./safety-filter.md)）
 - **课程 5.5 实践**：复杂障碍环境安全导航 = 距离约束 + 路径优化
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    Input["机器人构型 q 与环境几何障碍"] --> Query["距离查询方式"]
+    Query --> Prim["Primitive 闭式距离 (球/胶囊/OBB)"]
+    Query --> SDF["Mesh / GPU 体素 SDF 或点云距离化"]
+    Query --> CCD["轨迹段连续碰撞检测 (CCD)"]
+    Prim --> Dist["最小距离 d(q) 与距离梯度"]
+    SDF --> Dist
+    CCD --> Dist
+    Dist --> Opt1["硬不等式 d(q_k) >= d_min (NMPC / 约束 TrajOpt)"]
+    Dist --> Opt2["软惩罚 Σ max(0, d_min - d)^2 (cuRobo L-BFGS)"]
+    Dist --> Opt3["构造安全集 h(x) = d(x) - d_safe (CBF / Safety Filter)"]
+```
+
 ## 常见误区
 
 - **距离可微 everywhere**：非光滑处需 smoothing 或 subgradient。

@@ -377,6 +377,16 @@ MPC / Centroidal Planner / TSID / WBC / Policy
 
 所以它不是一个边角模块，而是全控制链的入口。
 
+```mermaid
+flowchart TD
+    Fast["高频本体感知 (IMU / 关节编码器 / 足端接触或力传感)"] --> Pred["1. 过程模型预测 (IMU 积分 / 质心与接触模型)"]
+    Pred --> Corr["2. 观测校正更新 (InEKF / EKF / 滑窗优化)"]
+    Fast -->|"前向运动学与稳定支撑门控"| Corr
+    Slow["外部量测 (VIO / LiDAR / 视觉几何)"] -->|"抑制全局位置与偏航漂移"| Corr
+    Corr --> State["估计状态 (基座位姿与速度 / 接触状态 / CoM / IMU 偏置)"]
+    State --> Ctrl["下游控制与规划 (MPC / TSID / WBC / RL 策略)"]
+```
+
 ## 和已有页面的关系
 
 - [人形机器人运控策略的观测输入](./humanoid-policy-observation-inputs.md)（本页回答 A 类本体感知中「不可直测量」（基座线速度、接触）如何获得；该页给出五类观测输入的全景分类）

@@ -201,6 +201,18 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 - 论文的取向：奖励与动作空间不含步态先验，策略自由收敛到小跑；伪影靠调权重消除，而不是堆更多规则。
 - 终止与超时要区分：失败终止可被 critic 预测，超时终止需用 critic 预测做 bootstrap（原文报告总奖励约提升 10%–20%）。
 
+```mermaid
+flowchart TD
+    Intent["任务意图与物理约束"] --> Terms["拆解奖励项 (跟踪正奖励 + 力矩与平滑与安全惩罚 + 势函数塑形)"]
+    Terms --> Auto["可选自动化信号 (AMP 判别器 / LLM 代码生成 / VLM 偏好校准)"]
+    Auto --> Sum["加权求和与尺度对齐 R = Sum(w_i * r_i)"]
+    Terms --> Sum
+    Sum --> Train["RL 策略优化 + 地形课程 + 超时 Critic Bootstrap"]
+    Train --> Audit{"检查反模式 (Reward Hacking / 梯度冲突)"}
+    Audit -->|"发现钻空子或停滞"| Terms
+    Audit -->|"行为符合预期"| Done["策略输出"]
+```
+
 ## 工程实践
 
 - 先让"跟踪项"成立，再逐项加惩罚项抑制伪影；权重常按量级差异很大（如力矩项 2e-5 对跟踪项 1）。

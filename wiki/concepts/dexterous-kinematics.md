@@ -87,6 +87,17 @@ $$ J \dot{q} = G^T \mathcal{V}_o $$
 - 综述引 Mason 与 Salisbury：刚性手至少 3 指、每指 3 关节才可对物体获得可控性。
 - 仿真（MuJoCo、Isaac Gym）里接触力不够可靠，有工作只用二值触觉信号以便 sim-to-real；域随机化是常见手段。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    Joint["手指关节空间 q_dot"] -->|"手指雅可比 u = J q_dot"| Contact["接触点速度 u (受接触模型约束: 点接触 / PCWF 摩擦锥 / 软接触)"]
+    Obj["物体运动空间 V_o"] -->|"抓取矩阵 u = G^T V_o"| Contact
+    Contact --> Closed["闭链一致性方程: J q_dot = G^T V_o"]
+    Closed --> Prop["决定手内可操作性与抗扰动抓取稳定性"]
+    Prop --> Challenge["受限于工作空间、内部奇异位姿与滚动接触时变性"]
+```
+
 ## 局限
 
 - 上文公式假设接触点已知且保持，滚动 / 滑动接触使 $G$、$J$ 时变（见「关键挑战」）。

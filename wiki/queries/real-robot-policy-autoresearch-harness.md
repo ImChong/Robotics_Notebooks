@@ -109,6 +109,27 @@ ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Ki
 - **「成功率数字可脱离 harness 泛化」**：高成功率建立在特定 verification、复位策略与预算上；换传感器布局需重新标定。
 - **「更多机器人/agent 一定更快」**：并行能加速，但 MRU/MTU 揭示 GPU 利用率与 token 消耗的同步上升，物理与 token scaling 要分开读。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["真机策略 autoresearch 闭环搭建"] --> CheckEN{"EN 环境工程就位? (自动 reset + 自动 verification)"}
+    CheckEN -->|"否"| BuildEN["优先补建 reset 动作/判据, 标定二值 reward 与 env.py 接口"]
+    BuildEN --> CheckEN
+    CheckEN -->|"是"| Route{"优化对象选择"}
+
+    Route -->|"ENPIRE: 策略训练搜索"| PI["PI 范式递进: 启发式 baseline -> BC 起点 -> Offline/Online RL"]
+    PI --> Roll["R: 多机并行 rollout + 留存 state/action/video/trace"]
+    Roll --> Evo["E: 分析日志失败模式, 跨分支演化 recipe 并剪枝失败假设"]
+    Evo --> Scale["权衡 MRU (机器人利用率) 与 MTU (token 吞吐)"]
+    Scale --> PI
+
+    Route -->|"ASPIRE: 原语级 Python 控制程序"| Prog["生成/修改原语组合控制程序"]
+    Prog --> Trace["收集逐原语 multimodal trace (返回码 / 关键帧)"]
+    Trace --> Skill["进化搜索并沉淀跨任务共享技能库"]
+    Skill --> Prog
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

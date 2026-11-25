@@ -178,6 +178,26 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["加载 URDF 模型"] --> Base{"基座类型?"}
+    Base -->|"固定基"| Fix["buildModelFromUrdf('robot.urdf')"]
+    Base -->|"浮动基 (Legged)"| Float["buildModelFromUrdf(..., JointModelFreeFlyer())"]
+    Fix --> Init["model.createData() 并初始化 q (nq), v (nv)"]
+    Float --> InitF["注意 nq=7+n (含 xyzw 四元数), nv=6+n"]
+    Init --> FK["pin.forwardKinematics(model, data, q) + updateFramePlacements"]
+    InitF --> FK
+    FK --> Task{"调用核心算法"}
+    Task -->|"末端位姿与 IK"| IK["读取 data.oMf + computeFrameJacobian -> 阻尼伪逆 -> pin.integrate"]
+    Task -->|"逆动力学与惯性参数"| ID["pin.rnea / crba / computeJointTorqueRegressor"]
+    Task -->|"正动力学"| FD["pin.aba(model, data, q, v, tau)"]
+    Task -->|"WBC 接触约束"| WBC["LOCAL_WORLD_ALIGNED 计算 Jc -> 构造 QP 动力学与接触约束"]
+```
+
+---
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

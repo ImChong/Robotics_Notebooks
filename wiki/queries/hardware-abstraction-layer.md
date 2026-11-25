@@ -101,6 +101,19 @@ HAL 运行在高频控制环（1kHz+）中。
 
 - **抽象泄露与时延隐性开销**：虚函数调用、跨接口深拷贝或各品牌驱动器的差异化控制模式（位置/速度/MIT 混合）若未显式对齐带宽和底层超时语义，可能掩盖总线真实丢包或引起极点偏移。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Algo["高层控制算法: PPO / WBC / MPC"] --> Logic["逻辑接口层: 统一 RobotState 与 RobotCommand (零拷贝 + 缓存对齐 + 力矩限幅)"]
+    Logic --> Drv["驱动抽象层: JointInterface 虚基类 read() / write()"]
+    Drv --> Cfg{"config.yaml 运行模式切换"}
+    Cfg -->|simulation| Sim["SimulationJoint: 读写物理引擎共享内存"]
+    Cfg -->|hardware| HW["EtherCATJoint / CAN: IgH 或 SOEM 总线驱动"]
+    Sim & HW --> Map["硬件映射层: 节点 ID + 零点校准偏移 + 减速比与符号约定"]
+    Map --> Plant["物理电机执行器或仿真关节"]
+```
+
 ## 关联页面
 - [EtherCAT 主站优化](./ethercat-master-optimization.md)
 - [运动控制主路线](../../roadmap/motion-control.md)

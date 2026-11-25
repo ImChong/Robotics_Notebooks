@@ -96,6 +96,20 @@ $$
 | 模型依赖 | 低（本体感知 + 状态滤波） | 中（需离线训练轨迹生成器与 tracker） | 高（需动力学模型与状态估计） |
 | 典型场景 | 真机在线抠性能的收尾微调 | 大扰动/跌倒下的类人恢复鲁棒性 | 已有控制栈加实时硬件底线保护 |
 
+```mermaid
+flowchart TD
+    Pre["仿真预训练策略 (已掌握主要运动结构)"] --> Routes["真机在线安全微调三条路径"]
+    Routes --> R1["SLowRL 低秩残差"]
+    Routes --> R2["Heracles 生成式兜底"]
+    Routes --> R3["CBF / CLF 安全壳"]
+    R1 --> M1["冻结主权重 W0 + Actor/Critic 全层 LoRA + 姿态超限硬切恢复策略"]
+    R2 --> M2["冻结底层 tracker + 条件流匹配中间件在参考轨迹层重规划 (25Hz->50Hz->200Hz)"]
+    R3 --> M3["CBF-QP 将名义动作最小二乘投影进前向不变安全集"]
+    M1 --> Real["真机闭环安全执行与残差适配"]
+    M2 --> Real
+    M3 --> Real
+```
+
 ## 工程实践
 
 1. **先 Sim-to-Sim 验证再上真机：** 参照 SLowRL 的 IsaacLab → MuJoCo 与 Heracles 的 IsaacLab → MuJoCo 协议，先用跨物理引擎的实时仿真验证微调超参（如 LoRA rank $\rho=1$、学习率 $10^{-2}$ vs FFT $10^{-3}$）与触发阈值，避免直接真机试错。

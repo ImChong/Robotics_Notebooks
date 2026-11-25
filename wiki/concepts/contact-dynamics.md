@@ -287,6 +287,23 @@ locomotion 本质上可以看成是：
 ### 4. 全身操作
 身体、手、脚同时接触环境时，接触动力学复杂度会明显上升。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    FB["浮动基整机动力学: M(q)q_ddot + h = S^T τ + J_c^T f"] --> Cons["接触物理与互补约束"]
+    Cons --> C1["固定接触 (sticking): J_c q_ddot + J_c_dot q_dot = 0"]
+    Cons --> C2["法向非负 f_n >= 0 与摩擦锥 ||f_t|| <= μ f_n"]
+    Cons --> C3["支撑多边形与接触时序 (impact / lift-off)"]
+    C1 --> Sim["仿真求解两条路线"]
+    C2 --> Sim
+    Sim --> S1["硬接触 LCP/NCP (离散时间速度步进)"]
+    Sim --> S2["MuJoCo 凸软接触 (QP/锥规划 + solref/solimp)"]
+    C1 --> Ctrl["控制与估计闭环: WBC/TSID 力分配, Centroidal MPC, 状态估计"]
+    C2 --> Ctrl
+    C3 --> Ctrl
+```
+
 ## 局限与常见误区
 
 - 本页的方程为刚体 + 库仑摩擦 + 固定接触形式；冲击（碰撞瞬间的速度跳变）与柔性接触需要额外模型，页内未展开。

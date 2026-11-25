@@ -126,6 +126,23 @@ locomotion RL 的超参数调节与标准游戏 RL 有显著差异：仿真并�
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    P1["1. 数据吞吐: 设 num_envs x num_steps (或 SAC buffer_size)"] --> P2["2. Reward 传播: 按控制频率设 gamma 有效视野 + GAE lambda"]
+    P2 --> P3["3. 更新稳定性: clip_range + update_epochs + max_grad_norm"]
+    P3 --> P4["4. 探索与正则: 先调任务奖励, 再从小加入能量/速度惩罚与 entropy_coef"]
+    P4 --> Diag{"训练与真机现象诊断"}
+    Diag -->|"策略不动 (reward 接近 0)"| F1["提高 entropy_coef / 补进度奖励或课程"]
+    Diag -->|"训练剧烈振荡"| F2["降低 lr / clip_range 降至 0.1 / 增大 max_grad_norm"]
+    Diag -->|"真机抖动"| F3["提高关节速度与扭矩惩罚权重"]
+    Diag -->|"clip fraction 异常或 value loss 降但 return 不动"| F4["排查 reward hacking / 探索塌缩 / 调 lr 与 KL early stop"]
+    Diag -->|"收敛且稳定"| Done["导出策略验证"]
+```
+
+---
+
 ## 关联页面
 - [策略优化方法](../methods/policy-optimization.md)
 - [Reward 设计](../concepts/reward-design.md)

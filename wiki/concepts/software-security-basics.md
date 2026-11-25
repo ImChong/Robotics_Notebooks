@@ -51,6 +51,16 @@ summary: "软件安全基础（身份认证、授权、密钥管理、供应链�
 3. **密钥管理**：密钥进 KMS/HSM 或密封；短期凭证；轮换。
 4. **供应链**：锁定依赖、生成 SBOM、镜像/模型签名（Sigstore 等）、最小权限 CI。
 
+```mermaid
+flowchart LR
+    KMS["密钥管理 (KMS / HSM / 短期凭证轮换)"] -->|"私钥留在签名服务"| Supply["供应链安全 (锁定依赖 / SBOM / SLSA / 制品与模型签名)"]
+    Supply -->|"CI 扫描与策略门禁"| Cloud["云边服务与 OTA 仓库"]
+    Cloud -->|"AuthN 身份认证 (OIDC / mTLS)"| AuthZ["AuthZ 授权控制 (RBAC / ABAC)"]
+    AuthZ -->|"TLS/鉴权通道下发"| Robot["机载端 (仅存验证公钥)"]
+    Robot -->|"验签通过才允许更新与遥操作"| Exec["执行部署或控制"]
+    Robot -->|"验签失败"| Reject["拒绝更新并告警"]
+```
+
 ## 工程实践
 
 - 机载只存验证公钥；私钥留在签名服务。

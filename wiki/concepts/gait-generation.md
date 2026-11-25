@@ -114,6 +114,23 @@ RL 策略通常不显式区分步态生成和策略执行——步态由奖励�
 | MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
 | Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    CMD["速度命令 (高层导航)"] --> GG
+    TER["地形高度与状态反馈"] --> GG
+    subgraph GG["Gait Generation (步态生成四类路线)"]
+        CPG["CPG 耦合振荡器 (相位耦合约束)"]
+        CLK["参数化时钟调度 (步频 / duty factor)"]
+        MPCG["MPC 接触序列优化"]
+        RLG["RL 涌现步态 / BGS 多步态切换"]
+    end
+    GG -->|"输出支撑与摆动相时序"| FS["步位规划 (Contact Sequence)"]
+    FS --> COM["质心轨迹规划 (DCM / MPC)"]
+    COM --> WBC["全身运动控制 (WBC)"]
+```
+
 ## 参考来源
 
 - [sources/papers/mpc.md](../../sources/papers/mpc.md) — ingest 档案（MPC 接触序列优化）

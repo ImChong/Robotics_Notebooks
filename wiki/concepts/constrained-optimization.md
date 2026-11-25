@@ -55,6 +55,22 @@ summary: "约束优化：机器人动力学、接触、碰撞与安全集必须�
 - 碰撞距离 → [Collision Distance Optimization](./collision-distance-optimization.md)
 - NMPC → [Nonlinear MPC](../methods/nonlinear-model-predictive-control.md)
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    Prob["机器人优化建模: min f(x), s.t. 动力学等式 h(x)=0, 摩擦/碰撞/饱和 g(x)<=0"] --> Type["按数学结构分类"]
+    Type --> T1["LP / QP (线性/二次凸, 如 WBC 与凸 MPC)"]
+    Type --> T2["SOCP (锥约束, 如摩擦锥与 TOPP)"]
+    Type --> T3["NLP / MINLP (非线性/混合整数, 如 NMPC 与接触切换)"]
+    T1 --> Sol["约束处理思路"]
+    T2 --> Sol
+    T3 --> Sol
+    Sol --> M1["直接法: SQP / 内点法求解 KKT 凸子问题"]
+    Sol --> M2["序列无约束化: 罚函数 / 障碍法 / ALM"]
+    Sol --> M3["松弛与投影: 凸松弛 / CBF 安全滤波"]
+```
+
 ## 常见误区
 
 - **约束越多越好**：过紧导致 infeasible，WBC 常见。

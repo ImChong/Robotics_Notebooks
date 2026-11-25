@@ -86,6 +86,19 @@ $$ \mathcal{L}_{\mathrm{FM}}(\theta) = \mathbb{E}_{t, x_0, x_1} \left[ \| v_\the
 - **步数预算与求解器**：机器人闭环场景常选 1–10 步 Euler/Heun 配合蒸馏或一致性策略；离线高保真人体生成（如 HY-Motion、MSFlow）多采用 20–50 步 Heun/ODE 积分及 Classifier-Free Guidance（CFG）。
 - **物理后验衔接**：确定性 ODE 保证采样均值平滑，但不编码接触动力学或关节扭矩限制；用于真机时仍需下游跟踪控制器（如 [SONIC](../entities/nvidia-sonic.md)、[Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) 中的闭环方案）或 RL tracker 滤波修正。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["简单先验噪声分布 x_0 ~ p_0"] --> B1["Diffusion PF-ODE: v = f - 0.5*g^2 * nabla log p_t"]
+    A --> B2["条件流匹配 CFM: 线性插值 x_t = t*x_1 + (1-t)*x_0 回归速度 (x_1 - x_0) 或终点 x_hat_1"]
+    B1 --> C["确定性速度场 ODE: dx_t = v_theta(x_t, t) dt"]
+    B2 --> C
+    C --> D["数值求解器积分 (Euler / Heun / RK45, 闭环 1-10 步或离线 20-50 步)"]
+    D --> E["生成连续平滑动作样本 x_1 ~ p_1"]
+    E --> F["下游物理后验衔接: RL Tracker / 底层控制器修正接触与力矩约束"]
+```
+
 ## 局限与风险
 
 - **支撑集外推与均值坍缩**：线性插值轨迹在少步推理下容易在多模态歧义动作（如左转 vs 右转）间发生平均化（mode averaging），导致生成姿态穿透或失去锐度。

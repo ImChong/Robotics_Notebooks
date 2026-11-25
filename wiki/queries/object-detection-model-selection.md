@@ -150,6 +150,31 @@ original:
 
 > 先按 **延迟预算** 分机载/服务器：机载走 **单阶段 + 量化**，服务器侧走 **两阶段 / RetinaNet**；但 **2D 框只是起点**，抓取永远要在后面级联位姿与碰撞检查。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["机器人目标检测选型"] --> Loc{"部署位置与延迟预算"}
+    Loc -->|"机载 / 边缘 (>10-30 FPS 闭环)"| Edge{"目标类别是否固定?"}
+    Edge -->|"类别固定、场景受控"| Single["单阶段 YOLO 系 / 无 NMS 实时 DETR (RF-DETR)"]
+    Single --> TRT["TensorRT / FP16 / INT8 量化"]
+    TRT --> Track["NMS / 跟踪滤波 (SORT/ByteTrack) -> 控制层"]
+
+    Edge -->|"类别开放 / 语言指令"| Open["轻量开放词汇检测 (OWL-ViT / Grounding-DINO 蒸馏版) 或 PBD"]
+
+    Loc -->|"服务器侧 / 离线 (精度优先)"| Server{"任务输出诉求"}
+    Server -->|"小目标密集 / 高定位精度"| Two["两阶段 Faster R-CNN (ResNet-FPN) 或 RetinaNet"]
+    Two --> Tiling["高分辨率切图 (Tiling) + 置信度筛选"]
+    Server -->|"需要逐像素掩码"| Seg["检测 + 实例分割头 / SAM 接力"]
+
+    TRT --> Grasp{"下游需要 6DoF 抓取?"}
+    Two --> Grasp
+    Open --> Grasp
+    Grasp -->|"是"| Pose["ROI 裁剪深度/点云 -> 6D 位姿估计 -> 碰撞检查 -> IK"]
+    Pose --> Servo["近距阶段切 Visual Servoing / 触觉对齐"]
+    Grasp -->|"否 (仅需 2D 框/避障触发)"| Out["直接输出 2D 框或跟踪 ID"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

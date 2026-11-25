@@ -111,6 +111,34 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 - **纯外点罚函数硬调权重**：病态且难收敛，改用 [增广拉格朗日](../methods/penalty-barrier-augmented-lagrangian.md) 的乘子更新。
 - **把凸松弛当最终解**：松弛通常给的是下界/近似，需 GNC 或局部细化恢复非凸可行解。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["机器人数值优化问题"] --> Grad{"有可靠梯度或解析结构?"}
+    Grad -->|"否 (黑箱仿真打分)"| BB{"决策变量类型"}
+    BB -->|"低维连续向量"| PSO["PSO (粒子 + 历史最优)"]
+    BB -->|"连续且变量强相关"| CMA["CMA-ES (高斯协方差分布)"]
+    BB -->|"离散 / 组合编码"| GA["GA (显式编码演化)"]
+    BB -->|"程序树 / 表达式"| GP["GP (符号控制律搜索)"]
+
+    Grad -->|"是"| OCP{"有沿时间的动力学约束 (OCP)?"}
+    OCP -->|"是"| OCPType{"动力学与约束结构"}
+    OCPType -->|"近线性 + 二次代价"| LQR["LQR (一步 Riccati 解析反馈)"]
+    OCPType -->|"非线性动力学要轨迹"| ILQR["iLQR / DDP (可外套 ALM/障碍法处理硬约束)"]
+    OCPType -->|"非凸几何 / 锥约束要凸子问题"| CVX{"松弛是否无损?"}
+    CVX -->|"是 (如 3-DoF 推力下界)"| LCVX["LCvx (一次 SOCP 全局最优)"]
+    CVX -->|"否 (如 6-DoF 姿态)"| SCVX["SCvx (线性化 -> SOCP 迭代)"]
+    OCPType -->|"固定几何路径时间标定"| TOPP["TOPP (沿路径 LP/SOCP 速度剖面)"]
+
+    OCP -->|"否 (一般 NLP)"| NLPType{"约束与凸性特征"}
+    NLPType -->|"无约束 / 高维 TrajOpt"| LBFGS["拟牛顿 L-BFGS / BFGS (最小二乘用 GN/LM)"]
+    NLPType -->|"等式/不等式约束"| Con{"约束处理方式"}
+    Con -->|"需要内点可行"| IPM["障碍法 / IPM"]
+    Con -->|"避免每步解硬 KKT"| ALM["增广拉格朗日 ALM (PHR 乘子更新)"]
+    NLPType -->|"本质非凸需全局下界"| Relax["凸松弛 (SDP/SOCP) -> GNC / 局部细化"]
+```
+
 ## 关联页面
 
 - [LQR / iLQR](../methods/lqr-ilqr.md) — 结构利用型最优控制内核（Riccati / DDP）

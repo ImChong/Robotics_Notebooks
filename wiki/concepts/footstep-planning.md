@@ -133,6 +133,30 @@ related:
 - **上游**：地形估计（高度图）、导航路点、步态模式选择（Gait Generation）、[Terrain Adaptation](./terrain-adaptation.md)
 - **下游**：质心轨迹优化（LIP / VHIP）、WBC 接触约束设置
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    T["地形估计 (高度图 / 点云)"] --> FP
+    G["导航目标与步态模式 (Gait Generation)"] --> FP
+    subgraph FP["Footstep Planning (步位规划三要素)"]
+        SL["Step location (落脚 3D 坐标与朝向)"]
+        ST["Step timing (抬脚与支撑时长)"]
+        CS["Contact sequence (步序与支撑模式)"]
+        SL <--> ST
+        ST <--> CS
+        SL <--> CS
+    end
+    FP --> M1["反应式规划 (DCM / Capture Point)"]
+    FP --> M2["优化规划 (MPC / 图搜索 / GCS 凸松弛)"]
+    FP --> M3["学习融合 (FastStair DCM 监督 / CReF 可支撑奖励)"]
+    M1 --> COM["质心轨迹规划 (LIP / DCM / MPC)"]
+    M2 --> COM
+    M3 --> COM
+    COM --> WBC["全身运动控制 (WBC 接触约束)"]
+    WBC --> TAU["关节力矩输出"]
+```
+
 ---
 
 ## 工程实践

@@ -49,6 +49,18 @@ summary: "消息系统可靠性（队列、重复消费、顺序、幂等）：�
 - 死信队列承接毒消息；告警而不是无限重试。
 - **禁止** 用 MQ 传 500 Hz 关节指令。
 
+## 机制与关系图
+
+```mermaid
+flowchart LR
+    PROD["云边任务 / 遥测生产者 (含 robot_id, command_id, schema_version)"] --> MQ["消息队列 MQ (持久化 + 分区有序)"]
+    MQ -->|"至少一次投递 (超时重投/重启可能重复)"| CONS["消费者幂等校验 (查重表 / DB 唯一约束)"]
+    CONS -->|"首次处理"| EXEC["执行副作用并 ACK"]
+    CONS -->|"重复 message_id"| NOOP["跳过 (no-op) 并 ACK"]
+    CONS -->|"连续失败毒消息"| DLQ["死信队列 DLQ -> 告警排查"]
+    RT["500 Hz 关节实时状态/指令"] -.->|"禁止走 MQ, 走实时总线"| BUS["DDS / LCM"]
+```
+
 ## 局限与风险
 
 - 「开启 exactly-once」仍可能在应用层重复——端到端幂等不可省。

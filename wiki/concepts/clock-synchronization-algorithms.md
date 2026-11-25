@@ -148,6 +148,20 @@ EtherCAT 走另一条路：既然总线是确定性环网，不如让所有从�
 - **PTP/Linux (`linuxptp`) 部署检查**：务必启用网卡 PHY 硬件时间戳与 Linux PHC（`ethtool -T` 确认），并在多跳网络中使用支持 Transparent Clock / Boundary Clock 的交换机以抑制上下行非对称与排队抖动。
 - **EtherCAT 整机对时与监控**：由主站周期读取参考从站 `0x0910` 系统时间并执行 `ARMW/FRMW` 漂移补偿；上机验收时必须采样同步偏置尾分布（P99 / Max）而非仅看均值。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    S1["阶段 1: 主时钟选举 (PTP BMCA / EtherCAT 参考从站)"] --> PTP["以太网路径: IEEE 1588 PTP / 802.1AS gPTP"]
+    S1 --> EC["总线物理层路径: EtherCAT DC"]
+    PTP -->|"硬件时间戳 t1-t4 + BC/TC 交换机"| Est1["阶段 2: 估算单向延迟 d 与偏置 θ"]
+    EC -->|"BWR 锁存收发端口差 + 同帧消非对称"| Est2["阶段 2: 计算从站偏置 θ_i 与漂移"]
+    Est1 --> Disc1["阶段 3: PI 伺服平滑调频 (100 ns - 1 μs)"]
+    Est2 --> Disc2["阶段 3: 写 0x920 偏置 + 周期 ARMW/FRMW (< 100 ns)"]
+    Disc1 --> Bridge["phc2sys 跨域桥接与 1 kHz 运控环路去偏"]
+    Disc2 --> Bridge
+```
+
 ## 局限与风险
 
 - **误把 NTP 当作"够用"**：在 1 ms 控制周期下，NTP 的 100 µs 精度已等价于一次完整环路抖动，会污染所有 deadline 统计。

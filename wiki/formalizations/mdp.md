@@ -154,6 +154,20 @@ MDP（数学框架）
 - **奖励要能表达目标：** 教材练习 3.7 的迷宫例子说明，只在逃出迷宫时给 $+1$、且不折扣、也不加时间惩罚，会让智能体无法区分「快」和「慢」。奖励设计见 [Reward Design](../concepts/reward-design.md)。
 - **最小闭环：** 把 $S,A,P,R,\gamma$ 逐项落成可运行的 reset/step 接口，见 [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md)。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart LR
+    A["智能体状态 s_t in S"] --> B["策略 pi(a | s_t) 选择动作 a_t in A"]
+    B --> C["环境转移概率 P(s_{t+1} | s_t, a_t) 与奖励 R_{t+1}"]
+    C --> D["累积折扣回报 G_t = sum gamma^k R_{t+k+1} (有效视野 ~ 1/(1-gamma) 步)"]
+    D --> E{"动力学模型 P 与 R 是否已知"}
+    E -->|"已知模型"| F1["动态规划 DP: 解 Bellman 最优方程 -> Value / Policy Iteration"]
+    E -->|"模型未知"| F2["强化学习 RL: 采样交互 -> Q-learning / Policy Gradient / Actor-Critic"]
+    F1 --> G["得到最优值函数 V*, Q* 与最优策略 pi*"]
+    F2 --> G
+```
+
 ## 局限与风险
 
 - **直接解 Bellman 最优方程很少可行：** 教材指出它依赖三条假设——环境动力学精确已知、算力足以完成求解、状态具有马尔可夫性；实际中往往至少一条不成立（教材以约 $10^{20}$ 个状态的西洋双陆棋为例说明算力不足），所以 RL 只能近似求解。

@@ -116,6 +116,16 @@ Safety Filter
 执行器
 ```
 
+```mermaid
+flowchart TD
+    Policy["高层策略 (RL / IL / VLA / MPC)"] -->|"输出名义动作 u_nom"| Sem["语义层过滤 (检查任务与工作区合法性)"]
+    Sem --> Exec["执行层 Safety Filter (CBF-QP 最小二乘投影 / 几何与速率限幅)"]
+    Exec -->|"满足约束或可投影"| Safe["安全动作 u"]
+    Exec -->|"不可行或超限"| Fallback["触发降级 (hold / retract / 硬件急停兜底)"]
+    Safe --> Low["低层控制器 (PD / Impedance / WBC)"]
+    Low --> Act["执行器"]
+```
+
 [FAITH](../entities/paper-faith-safety-filtered-rl.md) 以学习的安全价值训练前馈过滤器，并让任务策略适应过滤后的动力学；学习近似不构成安全证明。
 
 ## 典型应用

@@ -142,6 +142,20 @@ TSID（Task Space Inverse Dynamics）与 HQP 是两条相关但不同的线：
 | [Crocoddyl](https://github.com/loco-3d/crocoddyl) | 多接触**最优控制**（FDDP，DDP 型）求解器；不是 HQP 型优先级求解器（Mastalli 2020） |
 | mc_rtc | 本页旧版称其"内置 HQP"，本次未核对官方文档（推测，勿当结论引用） |
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    P1["Priority 1: 动力学约束 + 接触约束"] -->|"严格满足, 输出最优解 z1* 与零空间"| P2["Priority 2: CoM 跟踪 + 躯干姿态稳定"]
+    P2 -->|"在层 1 零空间内求解"| P3["Priority 3: 摆动腿末端轨迹跟踪"]
+    P3 -->|"逐级零空间投影"| P4["Priority 4: 手臂 / 上身动作"]
+    P4 --> P5["Priority 5: 关节正则化 / 限位保护"]
+    P5 --> SOL["求解路径选择"]
+    SOL --> K["Kanoun 2011 (QP 级联序列 + 松弛变量)"]
+    SOL --> E["Escande 2014 (HCOD 单一有效集 + 热启动)"]
+    SOL --> T["TSID / WBIC (硬约束层 + 加权任务层)"]
+```
+
 ## 局限与风险
 
 - **源头是速度级**：Kanoun / Escande 的实验是逆运动学；用在力矩层需要 Saab 式扩展，并且接触力非负那一层可能不可行（强接触不稳定），需要切换接触模式。

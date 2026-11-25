@@ -137,6 +137,19 @@ tags: [unitree]
     └── 仿真先行 → IsaacLab G1 模型
 ```
 
+```mermaid
+flowchart TD
+    Start{"是否先做仿真验证, 暂不采购硬件?"} -->|是| Sim["仿真先行: MuJoCo (G1/H1) / Isaac Lab / Genesis / Drake"]
+    Start -->|否| Goal{"核心研究目标是否为纯 locomotion?"}
+    Goal -->|是| Manip{"是否需要双手操作能力?"}
+    Manip -->|需要操作| G1["Unitree G1 (43 DoF, 约 90K CNY)"]
+    Manip -->|只需移动与大力矩| H1["Unitree H1 (19 DoF, 1.8m)"]
+    Goal -->|否: 操作或 loco-manip| Bud{"预算与工程定位?"}
+    Bud -->|学术预算低于 150K CNY| G1
+    Bud -->|预算充足需工业可靠性| GR1["Fourier GR1 (44 DoF, 约 150K CNY)"]
+    Bud -->|仓储物流商业合作| Com["Agility Digit / Figure 02"]
+```
+
 ---
 
 ## 英文缩写速查

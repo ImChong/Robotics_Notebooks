@@ -368,6 +368,19 @@ floating base 系统还有一个麻烦点：
 ### 4. 高动态动作
 跳跃、跑动、翻越等动作里，floating base dynamics 的影响会更强。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    State["广义坐标与速度: 未驱动基座 6-DoF (q_b) + 驱动关节 n-DoF (q_j)"] --> Alg["递推动力学算法: RNEA / CRBA / ABA 计算 M(q), N(q, q_dot), J_c"]
+    Est["状态估计 (IMU + 编码器 + 接触信息)"] --> State
+    Alg --> EOM["浮动基运动方程: M q_ddot + N = S^T τ + J_c^T λ"]
+    EOM -->|"未驱动基座 6 行 (不含 τ)"| Cent["质心动量与牛顿-欧拉演化 (Centroidal Dynamics)"]
+    EOM -->|"驱动关节 n 行 + 接触约束 J_c q_ddot + J_c_dot q_dot = 0"| WBC["WBC / TSID 层级 QP 联合求解 q_ddot, λ 与关节力矩 τ"]
+    Cent --> MPC["上层 MPC 规划质心与接触力参考"]
+    MPC --> WBC
+```
+
 ## 局限与常见误区
 
 - **本页方程假设刚体、固定接触（$J_c\ddot q+\dot J_c\dot q=0$）：** 接触建立 / 断开、冲击、滑移不在方程内（见 [Contact Dynamics](./contact-dynamics.md)）；刚体假设忽略柔性与关节摩擦细节。

@@ -86,6 +86,20 @@ $$ \min_{\mathcal{X}} \sum w_k \| J_k \ddot{q} + \dot{J}_k \dot{q} - \ddot{x}_{d
 - **开源实现**：[TSID](../concepts/tsid.md) 页给出 `stack-of-tasks/tsid` 的用法（硬约束层 + 加权任务层，默认求解器至多 2 层）。
 - **数值**：原文用阻尼伪逆 $\lambda=0.02$ 防奇异；仿真增益 $K_p=10\,s^{-2}$、$K_d=5\,s^{-1}$（仅论文仿真取值）。
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["任务期望轨迹 (x_r, x_dot_r, x_ddot_r)"] --> B["计算闭环期望任务加速度: x_ddot* = x_ddot_r + K_d(x_dot_r - x_dot) + K_p(x_r - x)"]
+    B --> C{"系统模型与约束形式"}
+    C -->|"全驱动无不等式 (Del Prete 2014)"| D1["伪逆 + 零空间投影逐级求 q_ddot*, 再由 RNEA O(n) 解算 tau*"]
+    C -->|"浮动基 + 接触 + 不等式 (Saab 2013 / tsid)"| D2["构建决策变量 X = [q_ddot, f_ext, tau] 的 QP / HQP"]
+    D2 --> E["硬约束: 浮动基动力学 M*q_ddot + h = S^T tau + sum J_i^T f_ext,i / 接触不滑移 / 法向力非负与摩擦锥"]
+    D2 --> F["目标函数: 加权最小化任务加速度误差与力矩正则"]
+    E --> G["求解器输出关节力矩 tau 与接触力 f_ext"]
+    F --> G
+```
+
 ## 局限
 
 - 原论文限定全驱动、无不等式、只保证瞬时最优（需要 MPC 把时域考虑进去）。

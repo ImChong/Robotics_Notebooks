@@ -122,6 +122,19 @@ $$
 
 ---
 
+## 机制/计算流程图
+
+```mermaid
+flowchart TD
+    A["接触物理约束: Signorini 法向互补 0 <= phi_i _|_ f_i^n >= 0 与 Coulomb 摩擦锥"] --> B["仿真器接触求解"]
+    A --> C["最优控制 / MPC 绕路方案"]
+    B --> B1["硬接触 LCP: w = Mz + q (Lemke / PGS: Bullet, ODE, RBDL, Drake)"]
+    B --> B2["软接触凸优化 QP / SAP: 连续弹性力绕开 LCP (MuJoCo, IsaacGym, Drake SAP)"]
+    C --> C1["预设接触序列: 固定时序只优化连续变量"]
+    C --> C2["互补松弛: phi * f <= epsilon 嵌入 NLP (Contact-Implicit TO / IPOPT)"]
+    C --> C3["可微分仿真: 近似互补条件以反传梯度"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

@@ -77,6 +77,18 @@ sources:
 
 ---
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Goal{"控制目标与应用场景?"} -->|已有 MoCap/遥操作参考且需柔顺力控| GH["GentleHumanoid: 柔顺运动跟踪 (推/扶/携带)"]
+    Goal -->|触觉+视觉+本体同步示范学接触策略| HTD["HTD: 训练期 Touch Dreaming 辅助预测 -> 推理期动作头 + 独立下肢控制"]
+    Goal -->|需要语言标注全身运动数据生成| CLAW["CLAW: MuJoCo 轨迹数据生成与标注管线 (非在线力控)"]
+    Goal -->|角色化与娱乐表演平台| Char["Being-H07 / Disney OLAF: 表演轨迹库 + 安全监控"]
+    Goal -->|特定论文机制验证| Spec["HiPAN / Zest / EFGCL: 按论文假设选型"]
+    GH & HTD --> Safe["上线前核查: 触觉控制环对齐 + 接触标签同步 + 阻抗/WBC 力矩上限兜底"]
+```
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |

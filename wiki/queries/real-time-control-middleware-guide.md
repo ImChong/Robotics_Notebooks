@@ -98,6 +98,19 @@ ROS 2 底层使用的是 [DDS](../concepts/dds-communication.md) 协议（常见
 2. **文件 I/O 与终端打印**：禁止在控制循环里 `printf` 或写入 Log 文件。I/O 阻塞是实时的最大杀手。如果要打印，把数据丢进无锁队列，让另一个非实时进程去负责落盘。
 3. **加锁互斥量**：避免使用 `std::mutex`，这可能导致优先级反转（Priority Inversion）。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Start["500-1000Hz 硬实时运控部署"] --> OS["1. OS 层: 安装 PREEMPT_RT 内核补丁 + SCHED_FIFO 高优先级"]
+    OS --> CPU["2. CPU 隔离: GRUB 配置 isolcpus/nohz_full/rcu_nocbs + taskset 独占核心"]
+    CPU --> Code["3. 代码约束: 预分配内存 + mlockall (禁动态分配/阻塞 I/O/mutex)"]
+    Code --> IPC{"4. 进程间通信路径"}
+    IPC -->|"同机 1kHz 高频控制"| SHM["共享内存 / 无锁环形队列"]
+    IPC -->|"跨板低延迟状态传输"| LCM["LCM (UDP 组播, 最新帧优先)"]
+    IPC -->|"低频服务面 / 标定 / 切换"| SVC["ROS 2 DDS / gRPC (切勿跑 1kHz 控制环)"]
+```
+
 ## 关联页面
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)

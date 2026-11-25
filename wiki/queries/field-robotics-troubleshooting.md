@@ -83,6 +83,20 @@ summary: "野外机器人排障指南：总结了机器人在非结构化地形�
   - 在 WBC 或 RL 中降低足端 PD 的 $K_p$。
   - 在 [Domain Randomization](./domain-randomization-guide.md) 中加入地面刚度随机化。
 
+## 流程与架构图
+
+```mermaid
+flowchart TD
+    Sym{"户外失效症状分诊"} -->|点云杂乱或图像过曝| Per["感知层排查"]
+    Sym -->|机身渐进倾斜摔倒| Est1["IMU 累积漂移排查"]
+    Sym -->|踩深草或软泥误判触地| Est2["接触估计误报排查"]
+    Sym -->|实验室稳但草地像陷泥潭| Dyn["动力学层地面硬度排查"]
+    Per --> P1["LiDAR: 强度过滤 + RANSAC; 雷达: MTI/CFAR + 杆臂标定; 相机: 自动曝光 + 亮度增强"]
+    Est1 --> E1["双 IMU 冗余校验 + 振动时动态调高卡尔曼滤波 R 矩阵"]
+    Est2 --> E2["结合关节电流扭矩多源融合 + 概率接触估计"]
+    Dyn --> D1["降低足端 PD Kp + 在 DR 中加入地面刚度随机化"]
+```
+
 ## 关联页面
 - [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)
 - [机器人策略排障手册](./robot-policy-debug-playbook.md)

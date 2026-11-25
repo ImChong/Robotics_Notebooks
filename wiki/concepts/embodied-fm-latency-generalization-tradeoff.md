@@ -90,6 +90,16 @@ sources:
 - **优先压缩输出冗余与序列长度：** 相比硬砍主干容量，采用离散意图/频域动作分词（如 [MINT](../../sources/papers/mint_rss_2026.md) 的 SDAT 或 FAST）与轻量异步推理（如 [SmolVLA](../../sources/papers/smolvla_arxiv_2506_01844.md) 的队列式动作预测）能更直接缓解自回归/多步采样卡顿。
 - **高带宽任务严格隔离低层回路：** 力控插拔与双足/人形全身平衡务必把高速观测反馈（$\ge 200$ Hz）留在轻量 WBC，高层 VLM/WAM 只以低频（$2\text{--}20$ Hz）下发子目标或参考轨迹。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    Knobs["泛化三旋钮: 模型参数规模 / 多模态跨度 / 世界模型推演步长 H"] -->|"同步推高推理耗时"| Lat["端到端时延预算: τ_total = τ_model + τ_comm + τ_actuate <= 1/f_ctrl"]
+    Lat -->|"低 f_ctrl 任务 (导航/慢速抓取)"| E2E["端到端 VLA 直接闭环"]
+    Lat -->|"高 f_ctrl 任务 (力控/双足平衡)"| Hier["分层频段解耦: 低频 VLM/WM 规划 + 高频轻量 WBC"]
+    Opt["破边界压缩路线: Action Chunking / 频域意图分词 MINT / 异步双频"] -->|"在固定带宽下压低等效 τ_model"| Lat
+```
+
 ## 局限与风险
 
 ### 常见误判速查

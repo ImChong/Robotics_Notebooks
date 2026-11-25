@@ -249,6 +249,21 @@ Capture Point 可以直接影响：
 
 [FastStair（arXiv:2601.10365）](../entities/paper-faststair-humanoid-stair-ascent.md) 把 **变高倒立摆（VHIP）** 上的 DCM 演化改写为 **离散候选集上的并行代价评估 + argmin**，用张量化 GPU 运算嵌入 Isaac Lab 大规模 RL——在保留 **接触可行性与平衡结构** 的同时，避免纯 model-free RL 在楼梯上的不安全行为。这与 [Footstep Planning](./footstep-planning.md) 中「DCM 触发步位更新」的经典路线不同：FastStair 让 DCM 规划器 **直接成为训练期特权监督**，而非仅作在线 MPC 模块。
 
+## 机制与关系图
+
+```mermaid
+flowchart TD
+    State["质心状态 (位置 x, 速度 x_dot) 与频率 ω = sqrt(g/z_c)"] --> Decomp["LIP 模态拆解"]
+    Decomp --> Stable["稳定模态: x_dot = ω(ξ - x) 追随 DCM"]
+    Decomp --> Div["发散模态 (DCM / Capture Point): ξ = x + x_dot/ω"]
+    Plan["轨迹优化层: 给定落脚点与步时反向递推参考 ξ"] --> Ctrl["简化模型控制层: 瞬时律或预测 QP"]
+    Div --> Ctrl
+    Ctrl -->|"支撑内可行"| ZMP["调整 x_zmp / VRP 拉回发散趋势"]
+    Ctrl -->|"超出支撑多边形"| Step["联合调整步位与步时实现捕获"]
+    ZMP --> WBC["全身 QP / WBC 跟踪质心加速度与接触力"]
+    Step --> WBC
+```
+
 ## 局限与常见误区
 
 ### 0. 以为 DCM 控制不需要模型假设
