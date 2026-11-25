@@ -51,7 +51,16 @@ summary: "HabitatGS：INSIGHT-Bench 训练片段 10.9% 来自 HabitatGS；无标
 | **开源** | **待核实** |
 | **重定向就绪度** | 场景资产而非动作数据，**不涉及动作重定向**；作为策略输入前需按目标形态适配（相机高度/视场、碰撞体与可通行性、导航图分辨率），具体适配口径 **待核实** |
 
+## 机制与架构图
 
+```mermaid
+flowchart LR
+    Raw["无标注室内场景"] --> GS["HabitatGS 高斯泼溅场景重建"]
+    GS --> Det["Molmo2 多视角目标检测"]
+    Det --> Lib["统一目标库 + INSIGHT-Bench (占比 10.9%)"]
+    Lib --> Adapt["按目标本体适配 (相机高度-视场 / 碰撞体 / 导航图)"]
+    Adapt --> VLN["LightNav R2S2R 导航策略训练"]
+```
 
 ## 结论
 

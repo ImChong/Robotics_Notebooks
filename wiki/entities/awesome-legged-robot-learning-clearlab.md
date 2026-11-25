@@ -47,6 +47,17 @@ summary: "SUSTech ClearLab 维护的腿足机器人学习 arXiv 精选：Locomot
 | Loco-Manipulation & WBC | GR00T N1、ASAP、LangWBC、KungfuBot |
 | Physics-Based Character Animation | AMP、MaskedMimic、TokenHSI、BFM |
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Root["Awesome-Legged-Robot-Learning（ClearLab 2024-2025 arXiv 精选）"] --> T1["Locomotion（DreamWaQ、Parkour、Multi-Loco、LocoFormer）"]
+  Root --> T2["Loco-Manipulation & WBC（HOMIE、TWIST、HOVER、GR00T N1、ASAP、LangWBC、KungfuBot）"]
+  Root --> T3["Physics-Based Character Animation（DeepMimic、AMP、MaskedMimic、TokenHSI、BFM）"]
+  T3 -->|"图形学 motion prior 桥接"| T2
+  Ref["awesome-humanoid-robot-learning（Acknowledgements 引用对照）"] --> Root
+```
+
 ## 局限与使用注意
 
 - **体量较小（~27 stars）：** 依赖 ClearLab 手动维护；遗漏项可对照 [gaiyi7788 腿足清单](./awesome-legged-locomotion-learning.md) 与 [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md)。

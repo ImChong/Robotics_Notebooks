@@ -65,6 +65,17 @@ Deep reinforcement learning for real-world robots.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew / aichr 065/384)"] --> B["Stanford CS 224R 课程索引 (Courses)"]
+    B --> C["官方课程入口 (cs224r.stanford.edu)"]
+    B --> D["课程聚焦: 面向真机机器人的深度强化学习 (RL / IL)"]
+    D --> E["Physical AI 技术地图"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

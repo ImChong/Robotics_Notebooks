@@ -90,6 +90,18 @@ Diverse manipulation behaviours designed to support broad generalisation.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["WidowX 机械臂真机遥操作采集"] --> B["多视角 RGB (部分含深度) + 自然语言指令 + 末端执行器动作"]
+    B --> C["BridgeData V2 数据集 (CoRL 2023 / 085/384)"]
+    C --> D["同构机型: 可直接用于模仿学习与 VLA 训练"]
+    C --> E["跨本体使用: 需核对末端位姿/关节空间与夹爪定义并重定向"]
+    D --> F["关联方向: 机器人操作 / 世界模型 (WAM)"]
+    E --> F
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

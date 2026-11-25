@@ -41,6 +41,16 @@ summary: "InMoov：Gael Langevin 发起的开源 3D 打印真人比例人形，A
 
 > 转载文内 **谷歌云盘** 链接易失效；请以官网与社区论坛置顶资源为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Portal["官网 (inmoov.fr) 与分步组装指南 (build-yours)"] --> Files["3D 模型文件与 BOM 物料清单"]
+    Files --> Print["3D 打印真人比例人形壳体与机械件"]
+    Print --> Ctrl["Arduino 控制器 + MyRobotLab 驱动"]
+    Ctrl --> Platform["低成本开源人形平台 (感知–控制–外观耦合研究)"]
+```
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)

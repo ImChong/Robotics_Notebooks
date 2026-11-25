@@ -65,6 +65,21 @@ Planning, learning, and control for robotics.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 068/384)"] --> B["Berkeley CS 287 课程索引 (Courses)"]
+    B --> C["官方课程入口 (people.eecs.berkeley.edu/~pabbeel/cs287-fa19)"]
+    B --> D["面向机器人的核心主题"]
+    D --> E["规划 (Planning)"]
+    D --> F["学习 (Learning / RL / IL)"]
+    D --> G["控制 (Control)"]
+    E --> H["关联技术方向: VLA 与 Sim2Real"]
+    F --> H
+    G --> H
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

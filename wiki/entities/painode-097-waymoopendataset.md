@@ -67,6 +67,16 @@ Large-scale real-world driving dataset used for perception, motion forecasting, 
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["车载传感输入: 多路激光雷达点云 + 多路相机 RGB"] --> B["Waymo Open Dataset (natnew 097/384)"]
+    M["3D/2D 标注与运动预测子集 (目标轨迹 + 地图)"] --> B
+    B --> C["驾驶感知 / 运动预测 / 闭环自主研究"]
+    B --> D["重定向限制: 无机器人关节或手姿字段 (不适用本体动作重定向)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

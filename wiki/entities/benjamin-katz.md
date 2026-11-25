@@ -68,6 +68,17 @@ summary: "Benjamin Katz（Ben）：MIT Mini Cheetah 主设计者；后入 Boston
 | 对照开源 QDD | [open-source-qdd-actuator-projects](../comparisons/open-source-qdd-actuator-projects.md) |
 | 电机设计路线 | [depth-torque-motor-design](../../roadmap/depth-torque-motor-design.md) |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  MIT["MIT Biomimetic Robotics Lab（本科与硕士：hobby BLDC + QDD 执行器）"] --> Tech["开源硬件栈（bgkatz：三相驱动、FOC 固件、CAN 脊柱与电源）"]
+  Tech --> Cheetah["MIT Mini Cheetah（ICRA 2019，可背驱模块化平台）"]
+  Cheetah --> Ctrl["支撑学界 MPC / WBIC / 视觉 / RL 算法实验床"]
+  MIT --> BD["Boston Dynamics（2019-2025：全电 Atlas 电机、执行器、夹爪与结构）"]
+  BD --> PI["Physical Intelligence（2025-：通用机器人硬件）"]
+```
+
 ## 局限与风险
 
 - 个人博客是**工程叙事**，不是完整 BOM/供应链文档；商业敏感细节不会公开。

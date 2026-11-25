@@ -69,6 +69,16 @@ sources:
 3. NAO 等条目对 meshes 标「需另下」，列表里的 ✔️ 只描述「格式里声明了 visual」，不保证仓内自带 mesh 二进制。
 4. 提交新机型走仓库 `CONTRIBUTING.md`，保持与 Python 包分类一致，减少发现层与加载层分叉。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Cat["机型分类目录（Arms / Bipeds / Humanoids / Quadrupeds / End Effectors 等）"] --> Fmt["格式筛选（URDF / Xacro / MJCF 匹配 MuJoCo 或 Pinocchio）"]
+  Fmt --> Checks["三项几何勾选核查（visual / inertia / collision）"]
+  Checks --> Lic["上游许可证核对（列表 CC0-1.0 不涵盖模型文件）"]
+  Lic --> Loader["需要可运行加载时改用 pip install robot_descriptions"]
+```
+
 ## 局限与风险
 
 - **不是镜像：** 链接会 404；国内部分新机（EngineAI、多数轮式人形）覆盖弱于 fiveages-sim。

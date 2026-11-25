@@ -71,6 +71,20 @@ Government body publishing evaluations and guidance on frontier AI risks.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 141/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["UK AI Safety Institute"]
+    ENT --> BODY["政府级 AI 安全研究机构"]
+    BODY --> EVAL["前沿 AI 风险评测 (Evaluations)"]
+    BODY --> GUIDE["安全治理指南发布 (Guidance)"]
+    EVAL --> ALIGN["Physical AI 风险治理参考 (RMF / PAI)"]
+    GUIDE --> ALIGN
+    ENT -.->|"核对官方发布页"| DOC["官方入口 (aisi.gov.uk)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -44,6 +44,16 @@ summary: "ETH3D Two-View Stereo：高分辨率室内外两视图立体 benchmark
 - **与 KITTI 互补：** ETH3D 强调 **高分辨率精细几何**；KITTI 强调 **驾驶场景**。
 - **NBS / S²M² / FoundationStereo** 等新方法主战场之一。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Pairs["ETH3D 高分辨率室内外校正双目对"] --> Model["立体匹配模型 (如 NBS / FoundationStereo)"]
+    Model --> Disp["稠密视差估计与遮挡处理"]
+    Disp --> Metrics["模块级视差评测 (EPE / bad@1 / bad@4)"]
+    Metrics -.->|"不直接等同下游任务表现"| ClosedLoop["视觉伺服与策略闭环成功率测试"]
+```
+
 ## 关联页面
 
 - [NBS](./paper-nbs-no-bias-stereo.md) — ETH3D 榜锚论文

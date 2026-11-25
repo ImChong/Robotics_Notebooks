@@ -48,6 +48,16 @@ sources:
 - 入门路径（文章建议）：先按 BOM 打印并组装，再用 Makefile + 手柄调通，最后用 mjlab_microban 训练速度跟踪策略做 sim-to-real。
 - 以上规格与许可证均出自文章叙述，**未逐项核对官方仓库**；动手前请以官方 README/BOM 为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Design["Onshape 装配模型 + BOM 与组装指南"] --> HW["30cm PLA 3D 打印机身 (19 个 XL330 舵机 + Pi Zero 2W)"]
+    Ctrl["基础控制 (Makefile 经 SSH + 键盘或蓝牙手柄)"] --> HW
+    Sim["MuJoCo RL 环境 (mjlab_microban)"] --> Policy["速度跟踪行走策略"]
+    Policy -->|"Sim-to-Real 迁移"| HW
+```
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

@@ -43,6 +43,16 @@ sources:
 | **公开细节** | Substack **未列具体合同**；作产业趋势节点入库 |
 | **风险** | 租户隐私、拍摄授权与数据权属需个案法律审查 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Sites["Brookfield 既有物业网络（商场 / 办公 / 物流等真实建筑）"] --> Legal["合规前置（租户隐私、拍摄授权与数据权属审查）"]
+  Legal --> Cap["真实环境数据采集（egocentric / POV 与运维任务）"]
+  Cap --> Train["下游模型训练（模仿学习 IL / 基础模型 FM / 世界模型）"]
+  Note["对照轴：复用既有物业网络 vs Paxini 自建工厂"] -.-> Sites
+```
+
 ## 关联页面
 
 - [Paxini](./paxini.md)

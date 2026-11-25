@@ -57,6 +57,13 @@ Monocular depth estimation.
 
 这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
+```mermaid
+flowchart LR
+    List["awesome-physical-ai 清单 (aichr 005/384 / 3D Computer Vision)"] --> Index["本页角色: MiDaS 清单索引 (单目深度估计)"]
+    Index --> Repo["官方仓库入口 (isl-org/MiDaS)"]
+    Repo --> Verify["核对机制细节、API 与官方文档"]
+```
+
 ## 工程实践
 
 | 字段 | 内容 |

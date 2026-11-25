@@ -71,6 +71,18 @@ Cybersecurity requirements for connected and automated road vehicles.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 143/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["UNECE R155"]
+    ENT --> CS["网络安全合规要求 (Cybersecurity Requirements)"]
+    CS --> VEH["网联与自动驾驶道路车辆 (Connected & Automated Vehicles)"]
+    VEH --> ALIGN["法规与安全标准对齐 (ISO / RMF / PAI)"]
+    ENT -.->|"核对 UNECE 法规原文"| DOC["官方入口 (unece.org R155)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

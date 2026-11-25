@@ -48,6 +48,16 @@ summary: "Google Colab 是浏览器内 Jupyter GPU 环境：免费档可用有�
 | **存储** | Google Drive 挂载；大文件走 Drive/GCS |
 | **限制** | 通常单卡；无多机分布式 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Browser["浏览器零运维入口"] --> Runtime["选择单卡 Runtime (免费 GPU / Pro V100-A100 / TPU)"]
+    Runtime --> NB["Jupyter Notebook (pip install + 算法验证 / MJX-Brax 教程)"]
+    NB <-->|"定期保存防断连"| Storage["Google Drive / GCS 存储"]
+    NB -.->|"长跑或多机训练迁移"| Cloud["GCP / RunPod / Lambda Cloud"]
+```
+
 ## 常见误区或局限
 
 - **不是裸机**：无法任意改内核/驱动；复杂 Isaac Sim 安装常失败。

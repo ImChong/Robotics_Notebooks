@@ -71,6 +71,18 @@ Robot actuators.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (aichr 149/384)"] --> GRP["Hardware & Actuation (hardware)"]
+    GRP --> ENT["Dynamixel"]
+    ENT --> ACT["机器人执行器产品线 (Robot Actuators)"]
+    ACT --> SYS["多自由度关节驱动与中间件接入 (DoF / ROS)"]
+    SYS --> APP["策略部署与真机迁移 (VLA / Sim2Real)"]
+    ENT -.->|"核对产品规格与 SDK"| DOC["官方入口 (robotis.us/dynamixel)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -58,6 +58,16 @@ summary: "OMPL 是开源的采样式运动规划库：提供 40 多种规划算�
 - 许可：LICENSE 写 3-clause BSD，与文章一致。
 - 「不做平滑插补」是文章对 OMPL 与 Ruckig / pyplcopen 的分工说法（路径规划 vs 轨迹插补）；README 描述的是规划，未讨论插补，该分工按文章保留。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Space["状态空间定义 (20+ 状态空间: SE(3) / 欧氏空间等)"] --> Core["OMPL 采样式运动规划核心 (C++ / Python 可扩展)"]
+    Algo["40+ 规划算法 (RRT-Connect / PRM / KPIECE / RRT* / VAMP SIMD)"] --> Core
+    Core --> Path["无碰撞几何路径规划结果"]
+    Path --> Downstream["下游执行栈 (如 MoveIt 2 集成或 Ruckig 轨迹平滑插补)"]
+```
+
 ## 关联页面
 - [RRT](../methods/rrt.md) / [RRT*](../methods/rrt-star.md) / [RRT-Connect](../methods/rrt-connect.md) / [Informed RRT*](../methods/informed-rrt-star.md) — OMPL 中常见采样规划算法的方法页
 

@@ -65,6 +65,17 @@ Control and RL foundations for robotics deployment.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 063/384)"] --> B["CMU 16-745 课程索引 (Courses)"]
+    B --> C["官方课程入口 (optimalcontrol.ri.cmu.edu)"]
+    B --> D["课程主干: 最优控制与强化学习 (RL)"]
+    D --> E["面向机器人部署的基础能力"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

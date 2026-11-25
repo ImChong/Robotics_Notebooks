@@ -49,6 +49,14 @@ summary: "主流开源人形机器人“大脑”（主控电脑）选型：对�
 - **大脑 (Vision/Language)**：跑在 NVIDIA Orin AGX 上，负责处理深度相机数据和 VLA 策略推理。
 - **小脑 (Control/WBC)**：跑在高性能 X86 IPC 上，通过 [LCM/共享内存](../comparisons/ros2-vs-lcm.md) 接收大脑下发的 Action Chunk。
 
+```mermaid
+flowchart LR
+    Cam["感知相机与传感器"] -->|"千兆网口隔离"| Brain["大脑: NVIDIA Jetson Orin (TensorRT VLA 推理 5-30Hz)"]
+    Brain -->|"LCM / 共享内存 Action Chunk"| Cerebellum["小脑: 高性能 X86 IPC + PREEMPT_RT (WBC / MPC 1kHz+)"]
+    Cerebellum -->|"独立 EtherCAT 主站网口"| Act["关节电机与执行器"]
+    Edge["国产边缘平台备选 (地平线旭日 / RK3588)"] -.->|"低成本紧凑型简单 Locomotion"| Act
+```
+
 ## 3. 选型 Checklist
 
 - [ ] **物理接口**：是否具备双千兆网口（用于 EtherCAT 主站与感知相机分离）。

@@ -65,6 +65,17 @@ Advanced RL lecture track from leading research practitioners.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 071/384)"] --> B["DeepMind x UCL RL Lecture Series (Courses)"]
+    B --> C["官方视频列表入口 (YouTube Playlist)"]
+    B --> D["一线研究者主讲的进阶 RL 讲座路径"]
+    D --> E["Physical AI 技术地图"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

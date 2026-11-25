@@ -78,6 +78,18 @@ summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集�
 - **仿真起步**：Sim2Real 区有 TacSL、Taccel、UniVTAC 等触觉仿真平台，可先在仿真中验证触觉表征（推断：真机迁移效果需看各论文原文）。
 - **许可**：README 末尾声明 CC0 1.0；引用论文仍以各自许可为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Base["基础支撑（Data：OmniViTac / ObjTac + Hardware 传感器 + Sim2Real：TacSL / Taccel + Policy）"] --> VLA["Tactile VLA（直接/自适应融合，如 TacFiLM / AT-VLA / TacMamba）"]
+  Base --> WM["Visuo-Tactile WM（先预测后决策，如 OmniVTA / ViTacWorld / TouchWorld）"]
+  VLA --> WAM["Tactile WAM（接触丰富场景世界预测与动作联合建模）"]
+  WM --> WAM
+  FastSlow["快慢分工模式（高频触觉编码/反射控制 System 1 + 按需 VLA 查询 System 2）"] --> VLA
+  FastSlow --> WM
+```
+
 ## 局限与使用注意
 
 - **时间窗窄**：刻意聚焦 2025–2026；经典 GelSight 系硬件综述需另查站内概念页与更早文献。

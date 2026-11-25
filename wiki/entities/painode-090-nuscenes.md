@@ -87,6 +87,17 @@ Multisensor autonomous-driving dataset with rich annotations for perception and 
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["车载多传感器: 6 路相机 RGB / 激光雷达 / 毫米波雷达 / GPS-IMU"] --> B["nuScenes 数据集 (CVPR 2020 / 090/384)"]
+    M["3D 框标注与地图"] --> B
+    B --> C["自动驾驶感知与规划研究语料"]
+    B --> D["重定向限制: 无机器人关节或手姿字段 (不适用本体动作重定向)"]
+    C --> E["关联生态: Physical AI 与 RCL World Action Models"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

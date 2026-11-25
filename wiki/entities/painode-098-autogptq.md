@@ -68,6 +68,17 @@ GPTQ quantization.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (aichr 098/384)"] --> B["AutoGPTQ (Edge AI & Inference)"]
+    B --> C["官方仓库 (github.com/AutoGPTQ/AutoGPTQ)"]
+    B --> D["GPTQ 模型量化工具"]
+    D --> E["面向边缘推理与端侧部署"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

@@ -68,6 +68,16 @@ Scenario-based closed-loop evaluation harness for safety-critical driving behavi
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["安全关键驾驶行为场景定义"] --> B["CARLA ScenarioRunner (natnew 105/384)"]
+    B --> C["官方仓库 (github.com/carla-simulator/scenario_runner)"]
+    B --> D["基于场景的闭环仿真评测"]
+    D --> E["关联方向: RL / VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

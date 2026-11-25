@@ -65,6 +65,21 @@ Self-paced courses on Isaac Sim, ROS, and robot learning.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 075/384)"] --> B["NVIDIA DLI Robotics (Courses)"]
+    B --> C["官方课程入口 (nvidia.com/en-us/training)"]
+    B --> D["自定进度课程模块"]
+    D --> E["Isaac Sim 仿真"]
+    D --> F["ROS 系统框架"]
+    D --> G["机器人学习 (RL / IL)"]
+    E --> H["关联技术方向: Sim2Real 与 VLA"]
+    F --> H
+    G --> H
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

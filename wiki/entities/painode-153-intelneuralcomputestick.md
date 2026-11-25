@@ -71,6 +71,18 @@ NPU for edge.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (aichr 153/384)"] --> GRP["Hardware & Actuation (hardware)"]
+    GRP --> ENT["Intel Neural Compute Stick"]
+    ENT --> NPU["边缘神经网络处理器 (NPU for Edge)"]
+    NPU --> ROS["端侧推理与机器人中间件接入 (ROS)"]
+    ROS --> APP["物理智能部署与迁移 (VLA / Sim2Real)"]
+    ENT -.->|"核对硬件与 SDK 状态"| DOC["官方入口 (intel.com)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

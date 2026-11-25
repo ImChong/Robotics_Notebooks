@@ -76,6 +76,18 @@ Open-source anthropomorphic robot arm.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 170/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["SO-ARM100"]
+    ENT --> ARM["开源仿人机械臂 (Open-source Anthropomorphic Robot Arm)"]
+    ARM --> SYS["自由度硬件与中间件接入 (DoF / ROS)"]
+    SYS --> APP["策略训练与真机迁移 (VLA / Sim2Real)"]
+    ENT -.->|"核对官方开源仓库"| REPO["GitHub 官方仓 (TheRobotStudio/SO-ARM100)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

@@ -71,6 +71,18 @@ Open-source modular robot for legged locomotion research.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 165/384)"] --> GRP["Hardware Platforms (hardware)"]
+    GRP --> ENT["Open Dynamic Robot Initiative"]
+    ENT --> MOD["开源模块化机器人平台 (Open-source Modular Robot)"]
+    MOD --> LEG["足式运动控制研究 (Legged Locomotion Research)"]
+    LEG --> APP["驱动集成与策略迁移 (DoF / ROS / Sim2Real)"]
+    ENT -.->|"核对开源硬件与文档"| DOC["官方入口 (open-dynamic-robot-initiative.github.io)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

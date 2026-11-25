@@ -38,6 +38,15 @@ SCI Mech Fluid Polishing（FlyingAkai/sci-mech-fluid-polishing）是面向机械
 
 **工作流：** 对已有稿件执行术语、论证和语言编辑；使用者提供学科语境并确认技术表述与引用。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Draft["机械/流体/传热/增材制造论文稿件 + 学科语境"] --> Skill["Codex sci-mech-fluid-polishing 技能"]
+    Skill --> Edit["执行术语、论证与语言润色编辑"]
+    Edit --> Review["作者人工核对技术表述、引用与数据真实性"]
+```
+
 ## 工程实践
 
 1. 从目标问题识别所需的 Skill、MCP、CLI 或软件接口，不把指导文件当成求解器。

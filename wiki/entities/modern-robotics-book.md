@@ -88,6 +88,15 @@ Lynch-Park 将下面这些贯穿全书：
 
 > 原文核对注记（对照官方 PDF）：附录 C 的 DH 约定为 $\mathrm{Rot}(\hat x,\alpha_{i-1})\mathrm{Trans}(\hat x,a_{i-1})\mathrm{Trans}(\hat z,d_i)\mathrm{Rot}(\hat z,\phi_i)$；教材中**没有**阻尼最小二乘（DLS）；单位四元数在附录 B.3。
 
+```mermaid
+flowchart TD
+    Math["Ch 2-3 数学底座 (C-space / SO(3) & SE(3) 李群与螺旋理论)"] --> Kin["Ch 4-6 运动学 (PoE 正运动学 / 空间与物体雅可比 / 数值 IK)"]
+    Kin --> Dyn["Ch 8 动力学 (固定基座开链 / 牛顿-欧拉递推)"]
+    Dyn --> Plan["Ch 9-10 规划 (轨迹生成 / 采样运动规划)"]
+    Plan --> Ctrl["Ch 11 控制 (WBC / TSID / 阻抗控制)"]
+    Ctrl --> App["Ch 12-13 应用专题 (抓取力学摩擦锥 / 轮式移动机器人)"]
+```
+
 ## 局限
 
 - **不覆盖 RL / IL**：本书是 2017 年传统机器人学视角，不涉及深度强化学习、模仿学习、VLA

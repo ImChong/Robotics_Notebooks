@@ -54,6 +54,14 @@ summary: "MotionCode 是宣称专注人体运动数字化的公司，公开分�
 
 > **2026-11-04 复核官网：** Move / Media / Mind 三线定位、Isaac / MuJoCo 与 Blender / Maya / Unreal 兼容表述均未变；用例栏列 Robotics、Multimedia、Healthcare 三类。仍未见公开数据字典、许可条款或技术文档，下方「营销页 ≠ 技术规格书」判断维持。
 
+```mermaid
+flowchart LR
+    Move["Move 线 (人体运动采集 / 数字化 / 标注)"] --> Media["Media 线 (Blender / Maya / Unreal 内容制作)"]
+    Move --> Mind["Mind 线 (人形与具身 AI 运动学习)"]
+    Mind --> Prep["骨架重定向与接触/动力学处理 (Motion Retargeting)"]
+    Prep --> Sim["仿真训练兼容目标 (Isaac / MuJoCo 策略学习)"]
+```
+
 ## 常见误区或局限
 
 - **营销页 ≠ 技术规格书**：当前公开页面以定位与案例叙述为主，**缺乏可复现的论文、数据字典或开放基准**；写综述或做选型时应单独核实接口、许可与交付形态。

@@ -74,6 +74,20 @@ Benchmarking suite with standardized tasks and scoring across manipulation and l
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 114/384)"] --> GRP["Evaluation Methodology (eval)"]
+    GRP --> ENT["RoboHive 基准套件"]
+    ENT --> TASK["标准化任务 (Standardized Tasks)"]
+    ENT --> SCORE["统一评分机制 (Scoring)"]
+    TASK --> DOM1["操作任务 (Manipulation)"]
+    TASK --> DOM2["运动任务 (Locomotion)"]
+    SCORE --> EVAL["策略评测 (RL / VLA / Sim2Real)"]
+    ENT -.->|"核对文档与版本"| REPO["GitHub 官方仓 (vikashplus/robohive)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

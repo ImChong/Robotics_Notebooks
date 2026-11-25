@@ -69,6 +69,18 @@ GelSlim 不是一种新的触觉物理原理，而是 GelSight 思路的**几何
 
 GelSlim 把"高分辨率"这一格放到了指节级硬件上，是目前**唯一能在不显著增大手部体积的前提下提供接触图像**的主流方案，参见 [Tactile Sensing](../concepts/tactile-sensing.md) 中的传感器路线对比。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Contact["物体接触"] --> Gel["硅胶弹性垫形变 + 标记点阵"]
+    Light["侧向多色照明与折反射光路"] --> Cam["单目 RGB/Mono 微型相机 (30–90 Hz)"]
+    Gel --> Cam
+    Cam --> Recon["形变光度立体 / 学习模型"]
+    Recon --> Out["形变深度图 / 接触面积 / 压力分布 / 剪切场"]
+    Out --> Policy["下游用法 (RL 状态 / 视触觉融合 / 阻抗控制 / 安全监控)"]
+```
+
 ## 仿真建模思路
 
 GelSlim 在策略学习里最大的难题是**仿真**——硅胶的非线性弹性 + 光学成像几乎不可能在 MuJoCo / Isaac 里 1:1 复现。常见的工程折中包括：

@@ -47,6 +47,21 @@ summary: "Autoware 是领先的开源自动驾驶软件栈（ROS 2），覆盖�
 
 - **2026-11-25 上游复核（`2.1.0`）**：2026-11-10 发布 Autoware `2.1.0`，将 CUDA 基础包从 Autoware Universe 迁入 Autoware Core（独立仓 `autowarefoundation/autoware_cuda` `1.0.0`）并提供 Core CUDA 层 Docker 镜像，持续推进 Agnocast 零拷贝 IPC 集成。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Sensors["多传感器与高精地图（LiDAR / 相机 / GNSS / INS）"] --> Perc["感知（点云检测、跟踪、交通灯标志）"]
+  Sensors --> Loc["定位（NDT / GNSS / INS 融合、地图匹配）"]
+  Perc --> Pred["预测（障碍物轨迹预测）"]
+  Loc --> Pred
+  Pred --> Plan["规划（行为规划、速度规划、避障）"]
+  Plan --> Ctrl["控制（横向 / 纵向车辆控制接口）"]
+  ROS2["ROS 2 底座（Autoware Core / Universe、autoware_cuda、Agnocast 零拷贝 IPC）"] --> Perc
+  ROS2 --> Plan
+  Sim["AWSIM 仿真与车队级标定"] --> Ctrl
+```
+
 ## 常见误区或局限
 
 - **误区：Autoware = Nav2 升级版** — 架构目标、地图表示、法规流程不同，不可简单替换。

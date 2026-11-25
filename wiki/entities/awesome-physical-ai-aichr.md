@@ -66,6 +66,17 @@ summary: "aichr 组织维护的 Physical AI 策展清单：VLA、3D 视觉、仿
 
 Foundation Models (VLA) · 3D Computer Vision · Datasets · Benchmarks · Simulators · Edge AI · Hardware · Frameworks · Robot Platforms · Research Labs · Courses · Community
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Data["数据与基准（Datasets / Benchmarks / Courses / Labs）"] --> Models["模型与仿真（Foundation Models VLA / 3D Vision / Simulators：Gymnasium / MuJoCo / Isaac Lab）"]
+  Models --> Frame["训练与中间件（Frameworks：LeRobot / ROS 2 / ros2_ai）"]
+  Frame --> Deploy["边缘与硬件（Edge AI：Jetson / TensorRT / llama.cpp + Hardware：EtherCAT / 触觉）"]
+  Legend["图例标注（Paper / Demo Video / Open Source Code / Hardware-Verified）"] --> Models
+  Deploy --> Check["回到上游仓库核验指标与许可证"]
+```
+
 ## 局限与使用注意
 
 - **体量与 stars 较小：** 2026-09-19 约 5 stars；更新频率与覆盖需与 [natnew 版](./awesome-physical-ai-natnew.md) 对照。

@@ -71,6 +71,18 @@ Voluntary framework for managing risks across the AI lifecycle, applicable to ro
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 138/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["NIST AI Risk Management Framework (RMF)"]
+    ENT --> VOL["自愿性 AI 风险管理框架"]
+    VOL --> LIFE["AI 全生命周期风险管控 (AI Lifecycle)"]
+    LIFE --> ROB["机器人与物理智能系统适用 (Robotics / PAI)"]
+    ENT -.->|"核对官方框架文本"| DOC["官方入口 (nist.gov/itl/ai-risk-management-framework)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

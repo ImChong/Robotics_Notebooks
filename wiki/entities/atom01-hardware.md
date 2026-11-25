@@ -40,6 +40,20 @@ summary: "Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，
 - **电子设计层**：PCB 与接口布局。
 - **供应链层**：BOM 与采购映射。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  HW["Atom01_hardware（实体可复现主仓库）"] --> Mech["结构设计层（CAD 与装配结构）"]
+  HW --> Elec["电子设计层（PCB 与接口布局）"]
+  HW --> Supply["供应链层（BOM 与采购映射）"]
+  Mech --> Desc["下游模型：atom01_description（URDF）"]
+  Elec --> FW["下游执行：atom01_firmware（底层固件）"]
+  Mech --> Body["实体装配与关节标定"]
+  Supply --> Body
+  Body --> Loop["与 atom01_deploy 及训练模型形成部署闭环"]
+```
+
 ## 常见误区或局限
 
 - 误区：有了硬件仓库就能直接跑策略。实际上还需要 `atom01_deploy`、`atom01_firmware` 与训练模型闭环。

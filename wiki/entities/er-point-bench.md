@@ -54,7 +54,15 @@ summary: "Point-Bench：LightNav-ER 八项具身推理评测之一；点定位�
 | **出处** | LightNav-ER 评测套件 |
 | **开源** | **待核实** |
 
+## 机制与架构图
 
+```mermaid
+flowchart LR
+    VLM["VLM 视觉-语言模型"] --> ER["LightNav 第一阶段 ER 中期训练 (Pointing 数据占 35.14%)"]
+    ER --> Bench["Point-Bench 图像点定位具身推理基准"]
+    Bench -->|"归属评测闭环 ① 认知评测层"| Afford["Pointing 式 Affordance 定位能力"]
+    Afford -.->|"指点准不等于抓得起/导航成功"| Nav["下游 VLN / R2S2R 闭环动作验证"]
+```
 
 ## 结论
 

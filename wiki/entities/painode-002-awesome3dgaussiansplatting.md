@@ -57,6 +57,13 @@ Curated paper list.
 
 这一页的用处是从清单跳到可核对的官方入口；机制细节、API 与版本以官方文档为准。
 
+```mermaid
+flowchart LR
+    List["awesome-physical-ai 清单 (aichr 002/384 / 3D Computer Vision)"] --> Index["本页角色: Awesome 3D Gaussian Splatting 清单索引"]
+    Index --> Repo["官方仓库入口 (MrNeRF/awesome-3D-gaussian-splatting)"]
+    Repo --> Verify["核对策展论文清单、资源链接与版本"]
+```
+
 ## 工程实践
 
 | 字段 | 内容 |

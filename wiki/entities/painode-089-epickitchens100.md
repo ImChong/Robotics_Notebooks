@@ -66,6 +66,18 @@ Egocentric video corpus useful for action understanding and embodied perception 
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["第一视角人类日常操作视频"] --> B["EPIC-KITCHENS-100 数据集 (natnew 089/384)"]
+    B --> C["动作理解与具身感知预训练 (可直接消费)"]
+    B --> D["机器人动作监督 (无关节 / 夹爪标签)"]
+    D --> E["需先执行手姿与接触人机重定向"]
+    C --> F["关联方向: VLA 与机器人操作"]
+    E --> F
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

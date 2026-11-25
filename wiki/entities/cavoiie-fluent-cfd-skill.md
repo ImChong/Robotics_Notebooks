@@ -46,6 +46,16 @@ Fluent CFD Skill（cavoiie/fluent-cfd-skill）是面向 Ansys Fluent/PyFluent �
 
 文章所述的项目特征：面向 Ansys Fluent/PyFluent 的判断与流程指导，不打包 Fluent 本体；覆盖问题定义、求解器/湍流模型/壁面处理、边界条件、收敛判据，以及残差停滞、回流和发散诊断。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Skill["Fluent CFD Skill（流程与判断指导，不打包 Fluent 本体）"] --> S1["1. 框定物理问题与可观测指标"]
+  S1 --> S2["2. 选择求解器、湍流模型、壁面 y+ 处理与边界条件"]
+  S2 --> S3["3. 调用本机 Ansys Fluent / PyFluent（需有效许可）小规模运行"]
+  S3 --> S4["4. 联合残差、守恒量与流场检查（诊断停滞、回流与发散）"]
+```
+
 ## 局限与风险
 
 残差下降不等于收敛；执行 Fluent、PyFluent 操作需本机软件、有效许可和可用接口。

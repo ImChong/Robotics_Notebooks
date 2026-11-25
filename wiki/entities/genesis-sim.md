@@ -40,6 +40,19 @@ related:
 - **高效率渲染**：内置高性能渲染器，为视觉策略训练提供逼真且高效的合成数据。
 - **现代 API**：采用更符合现代 AI 开发者习惯的 Pythonic 接口，降低了环境搭建的复杂度。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    API["Pythonic 现代 API"] --> Core["Genesis 统一多物理场引擎 (刚体 / 流体 / 布料 / 软体)"]
+    Core --> Par["GPU 大规模并行仿真"]
+    Core --> Diff["自动微分物理优化"]
+    Core --> Render["内置高性能渲染器"]
+    Par --> App["下游训练与评测 (PPO 运动 / 视觉 RL / 柔性操作数据生成)"]
+    Diff --> App
+    Render --> App
+```
+
 ## 与其他系统的关系
 
 - **推荐背景**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 Genesis 推荐为实战路线图中的核心工具之一。

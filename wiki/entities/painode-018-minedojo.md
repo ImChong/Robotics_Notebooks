@@ -66,6 +66,16 @@ Open-ended embodied-agent benchmark for long-horizon decision making in complex 
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 018/384)"] --> INDEX["MineDojo 清单索引页"]
+    INDEX --> SITE["官方基准入口 (minedojo.org)"]
+    SITE --> TASK["复杂 3D 世界中的开放式长时程决策评测"]
+    TASK --> EVAL["具身评测闭环第 ① 层 (具身大脑/MLLM 规划与认知)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

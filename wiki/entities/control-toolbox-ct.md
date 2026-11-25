@@ -59,6 +59,15 @@ summary: "Control Toolbox（ADRL CT）是 ETH ADRL 的 C++ 库，用于机器人
 - 许可：README 写 BSD-2 clause；仓库根目录未找到独立 LICENSE 文件（文章写「BSD」）。
 - 「自动微分」：README 已读片段列出多种 shooting / iLQR 求解器；自动微分细节按文章保留，未逐项核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  CT["Control Toolbox（ETH ADRL C++ 库，BSD-2-Clause，目前极少维护）"] --> Cap["功能模块：建模、控制、估计、运动规划与最优控制"]
+  Cap --> Solvers["求解器族（Classical Single Shooting / iLQR / iLQG / Multiple-shooting iLQR / GNMS / Direct Multiple Shooting）"]
+  Solvers --> App["应用场景：大规模最优控制与 MPC 求解（非线性系统、机器人、飞行器）"]
+```
+
 ## 关联页面
 
 - [model-predictive-control](../methods/model-predictive-control.md)

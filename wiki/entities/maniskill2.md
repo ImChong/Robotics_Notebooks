@@ -48,6 +48,15 @@ summary: "2023 年基于 SAPIEN 的统一机械臂操作基准：跨类别/几�
 - **任务套件**：抓取、放置、工具使用等多类操作 primitive。
 - **数据接口**：标准化 trajectory 与评估脚本。
 
+```mermaid
+flowchart LR
+    SAPIEN["SAPIEN 物理仿真与渲染后端"] --> Tasks["任务套件 (抓取 / 放置 / 工具使用 / 刚体与软体)"]
+    Assets["跨类别与多几何物体模型"] --> Tasks
+    Tasks --> Obs["多模态观测 (RGB-D / 点云)"]
+    Tasks --> Demo["高质量演示数据 (Trajectory)"]
+    Obs & Demo --> Eval["标准化评估脚本与统一 Leaderboard (IL / RL 泛化评测)"]
+```
+
 ## 常见误区或局限
 
 - **误区：ManiSkill2 = SAPIEN** — SAPIEN 是 **引擎**；ManiSkill2 是 **基准与任务层**。

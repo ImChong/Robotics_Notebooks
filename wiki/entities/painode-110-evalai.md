@@ -65,6 +65,16 @@ Open platform for challenge hosting, leaderboard management, and standardized ev
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["挑战赛托管与标准化评测流程"] --> B["EvalAI 开放评测平台 (natnew 110/384)"]
+    B --> C["官方平台入口 (eval.ai)"]
+    B --> D["提交评测与排行榜管理"]
+    D --> E["关联方向: RL / VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

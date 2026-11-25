@@ -65,6 +65,17 @@ CMU's foundations of robot learning.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 064/384)"] --> B["CMU 16-831 课程索引 (Courses)"]
+    B --> C["官方课程入口 (16-831-s24.github.io)"]
+    B --> D["课程主干: 机器人学习基础 (RL / IL)"]
+    D --> E["Physical AI 技术地图"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

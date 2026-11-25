@@ -71,6 +71,20 @@ Public challenge suite with fixed protocols for forecasting and planning evaluat
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 118/384)"] --> GRP["Evaluation Methodology (eval)"]
+    GRP --> ENT["Waymo Open Challenges"]
+    ENT --> PROTO["固定评测协议 (Fixed Protocols)"]
+    PROTO --> FC["预测评测 (Forecasting)"]
+    PROTO --> PL["规划评测 (Planning)"]
+    FC --> APP["公开挑战基准与策略对比 (RL / VLA / Sim2Real)"]
+    PL --> APP
+    ENT -.->|"核对规则与版本"| DOC["官方入口 (waymo.com/open/challenges)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

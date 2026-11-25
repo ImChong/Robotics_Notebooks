@@ -251,6 +251,17 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 - **安装与入口（README）：** `pip install crocoddyl`、`conda install crocoddyl -c conda-forge`，或 apt(robotpkg)、Nix、源码；依赖 Pinocchio、Eigen、eigenpy、Boost；可选 OpenMP、CppADCodeGen、Ipopt。官方推荐从 `notebooks/01_introduction_to_crocoddyl.ipynb` 起读到 `06_scaling_to_robotics`，示例可跑 `python -m crocoddyl.examples.quadrupedal_gaits "display" "plot"`。
 - **求解器：** README 列出 FDDP、OdynSQP、Intro、Ipopt 等；导数可用 Pinocchio 解析导数、数值微分或 CppAD 自动微分（含代码生成）。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Pin["Pinocchio（动力学与解析稀疏导数底座）"] --> OCP["Crocoddyl OCP 构建（流形状态 x=(q,v)、驱动、代价、残差与预给定接触序列）"]
+  Contact["接触 KKT 系统与脉冲冲击动力学"] --> OCP
+  OCP --> Solver["FDDP 求解器（后向 Riccati 允许不可行轨迹 -> 前向 rollout 收缩 gap + Goldstein 步长）"]
+  Solver --> Out["输出：最优轨迹 + 前馈项与反馈增益 K_k"]
+  Out --> Down["下游用途：离线参考规划 / NMPC 求解内核 / 交由 TSID 或 WBC 高频闭环执行"]
+```
+
 ## 局限与常见误区
 
 - 论文评测**刻意忽略摩擦锥与力矩限制**，不等式约束只能用惩罚 / 有效集 / 增广拉格朗日处理（论文将其列为后续工作）；README 的后续论文列表（如 Control-Limited DDP）才处理控制界。

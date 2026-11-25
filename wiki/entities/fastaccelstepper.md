@@ -50,6 +50,16 @@ summary: "FastAccelStepper 是 AccelStepper 的高速替代库：为步进电机
 
 **一手描述：** README：「a high speed alternative for the AccelStepper library」；平台表给出 ESP32 系列（MCPWM/PCNT、RMT、I2S）驱动的最大步频（如 200 kSteps/s）等。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Cmd["点到点运动 / 加减速目标"] --> Lib["FastAccelStepper C++ 库"]
+    Lib --> Pulse["生成带加减速的高速步进脉冲"]
+    Pulse --> MCU["嵌入式硬件驱动 (AVR / SAM / SAMD51 / ESP32 / Pico / Teensy 4.x)"]
+    MCU --> Motor["步进电机与执行机构 (3D 打印机 / 小型传送机构)"]
+```
+
 ## 文章说法核对
 
 - **文章：** 语言 C++（嵌入式）；许可 MIT；步进电机 S 型加减速、脉冲输出，无浮点，适合 AVR/ESP32/Pico；适用单片机步进驱动、3D 打印机、小型传送机构。

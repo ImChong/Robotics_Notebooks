@@ -65,6 +65,19 @@ Lecture series covering core deep-RL concepts and implementation practice.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 070/384)"] --> B["Deep RL Bootcamp 课程索引 (Courses)"]
+    B --> C["官方讲座入口 (sites.google.com/view/deep-rl-bootcamp/lectures)"]
+    B --> D["讲座内容结构"]
+    D --> E["深度强化学习核心概念 (RL)"]
+    D --> F["算法实现与代码实践"]
+    E --> G["关联技术方向: VLA 与 Sim2Real"]
+    F --> G
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

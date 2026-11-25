@@ -65,6 +65,16 @@ International Conference on Learning Representations.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 057/384)"] --> INDEX["ICLR 清单索引页"]
+    INDEX --> MAP["Physical AI 技术地图 (Conferences 分组)"]
+    INDEX --> SITE["官方会议入口 (iclr.cc)"]
+    SITE --> TOPIC["表征学习国际会议 (ICLR)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

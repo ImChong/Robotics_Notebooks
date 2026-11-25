@@ -51,7 +51,16 @@ summary: "InteriorGS：INSIGHT-Bench 训练 16.1% 来自 InteriorGS；可导入�
 | **开源** | **待核实** |
 | **重定向就绪度** | 场景资产而非动作数据，**不涉及动作重定向**；作为策略输入前需按目标形态适配（相机高度/视场、碰撞体与可通行性、导航图分辨率），具体适配口径 **待核实** |
 
+## 机制与架构图
 
+```mermaid
+flowchart LR
+    Scene["InteriorGS 室内高斯泼溅场景 (占训练 16.1%)"] --> PathA["路径 A: 导入官方 3D bbox 标注"]
+    Scene --> PathB["路径 B: 导入 Molmo2 开放词汇标注"]
+    PathA --> Adapt["按目标本体适配 (相机高度-视场 / 碰撞体 / 导航图)"]
+    PathB --> Adapt
+    Adapt --> VLN["INSIGHT-Bench 与 LightNav 导航训练"]
+```
 
 ## 结论
 

@@ -43,6 +43,19 @@ summary: "灵心巧手的 Linker Hand 系列覆盖 11 到 42 个自由度，用�
 - 2026 年的 L20 Lite 采用蜗轮蜗杆与连杆混合传动、10 个主动自由度，强调高自由度、高性能与可负担价格。
 - 文章称其还推开源灵巧手，试图用开源生态换开发者与场景数据。库内已有其 SDK / URDF 相关仓库节点（cn-os-linkerhand-*）。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+    Matrix["Linker Hand 自由度矩阵 (11-42 DoF)"] --> Ind["工业版 (25-30 DoF)"]
+    Matrix --> Res["科研版 (最高 42 DoF / 单指 9 DoF)"]
+    Matrix --> Lite["L20 Lite (蜗轮蜗杆与连杆混合传动 / 10 主动 DoF)"]
+    Matrix --> Consumer["T10 / T20 消费级价格区间"]
+    Open["开源生态 (开源灵巧手 / Python SDK / URDF)"] --> Dev["开发者社区与应用场景"]
+    Ind & Res & Lite & Consumer --> Dev
+    Dev -->|"场景数据与反馈"| Matrix
+```
+
 ## 优势与边界（作者表述）
 
 优势是覆盖广、迭代快、价格激进；风险是 42 自由度科研版只能展示上限，工业客户关心的 25–30 自由度版本的寿命、良率与售后仍待验证。

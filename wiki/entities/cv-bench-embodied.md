@@ -52,6 +52,15 @@ summary: "CV-Bench：LightNav-ER 评测项；占 ER 训练采样 20% 的通用�
 
 
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Train["LightNav-0 第一阶段中期训练（ER 具身推理：20% 通用视觉与抽象推理采样）"] --> Eval["CV-Bench 评测（通用视觉与抽象推理基准）"]
+  Eval --> Role["在选型闭环中的定位：第 1 层具身大脑 / MLLM 认知评测"]
+  Role --> Boundary["能力边界：与导航 SFT 区分，认知分高不蕴含可下发动作"]
+```
+
 ## 结论
 
 **CV-Bench 是 LightNav / LightParkour 管线中的关键组件——读博客数字前先对齐本页定义与开源边界。**

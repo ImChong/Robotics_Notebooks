@@ -71,6 +71,18 @@ US federal directive on safe and trustworthy AI development relevant to robotics
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 145/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["White House Executive Order on AI (14110)"]
+    ENT --> DIR["美国联邦安全可信 AI 行政令"]
+    DIR --> DEP["面向机器人部署方的合规指引 (Robotics Deployers)"]
+    DEP --> ALIGN["政策与风险框架对照 (RMF / ISO / PAI)"]
+    ENT -.->|"核对联邦公报原文"| DOC["官方入口 (federalregister.gov)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

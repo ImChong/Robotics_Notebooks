@@ -61,6 +61,16 @@ summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运�
 - **按结构化元数据批量检索**：克隆仓库后可直接读取 `data/arxiv.csv` 与 `data/without-arxiv.json`，按 `backbone_tags`（如 Diffusion、Transformer、VQ-VAE）和 `approach_tags` 过滤候选方法，比手动翻 README 更高效。
 - **配合本库知识地图跳转**：将仓库中的单人动作先验当作上游素材索引，再结合本库的 [GMR](../methods/motion-retargeting-gmr.md) 与 [Whole-Body Control](../concepts/whole-body-control.md) 评估物理落地成本。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Meta["结构化元数据（data/arxiv.csv + data/without-arxiv.json）"] --> Tags["多维标签索引（Surveys / Datasets / Models + backbone_tags / approach_tags）"]
+  Tags --> Site["GitHub Pages（Plotly 交互图表与统计视图）"]
+  Tags --> Prior["单人、无 HOI 文本到 3D 运动先验（SMPL 等）"]
+  Prior -->|"机器人下游落地"| Retarget["GMR 动作重定向 + WBC 动力学与接触验证"]
+```
+
 ## 局限与风险
 
 - **非机器人控制论文库**：条目主体在 **计算机视觉 / 图形学** 语境下的 3D 人体运动，且明确排除人–物/场景接触交互，落地到人形控制需额外补足动力学约束、平衡与执行器限制。

@@ -46,6 +46,18 @@ sources:
 - 适合同时学习移动与操作：先装 SO-ARM 与底盘，再用 LeRobot 采集数据训练模仿学习策略。
 - 以上规格与许可证均出自文章叙述，**未逐项核对官方仓库**；动手前请以官方 README/BOM 为准。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Docs["开源设计资料 (BOM / 3D 打印文件 / 组装指南)"] --> Chassis["全向三轮 Kiwi 底盘"]
+    Docs --> Arm["SO-ARM 系列机械臂"]
+    Chassis --> Pi["Raspberry Pi 机载计算"]
+    Arm --> Pi
+    Pi --> LeRobot["LeRobot 原生软件栈 (遥操作 / 数据采集)"]
+    LeRobot --> IL["模仿学习策略训练与移动操作部署"]
+```
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

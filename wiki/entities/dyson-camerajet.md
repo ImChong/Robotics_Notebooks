@@ -43,6 +43,17 @@ sources:
 | **连接** | MyDyson App live view；固件/使用统计可上云 |
 | **机器人数据** | **无官方机器人训练计划**；产业评论为推测 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Cam["100k 像素宏距口腔相机 (约 28 fps)"] --> Model["Gap Optical Targeting 本地模型"]
+    Train["开发期约 47 万张牙科图像训练"] -.-> Model
+    Model -->|"100 ms 内识别齿缝"| Jet["漱口水精冲执行"]
+    Cam -->|"Wi-Fi 2.4G + 蓝牙 (不录制/不上传图像)"| App["MyDyson App Live View"]
+    App -->|"固件与使用统计"| Cloud["云端同步"]
+```
+
 ## 关联页面
 
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)

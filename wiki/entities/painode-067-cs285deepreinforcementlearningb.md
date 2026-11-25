@@ -65,6 +65,19 @@ Strong practical RL course with modern policy-gradient and model-based methods.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 067/384)"] --> B["Berkeley CS 285 课程索引 (Courses)"]
+    B --> C["官方课程入口 (rail.eecs.berkeley.edu/deeprlcourse)"]
+    B --> D["实践导向深度强化学习 (RL)"]
+    D --> E["策略梯度方法 (Policy-Gradient)"]
+    D --> F["基于模型方法 (Model-Based)"]
+    E --> G["关联技术方向: VLA 与 Sim2Real"]
+    F --> G
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

@@ -40,6 +40,18 @@ Genie 4 是实时生成交互画面与音频的世界模型；Gemini 可观察�
 
 官方展示 Apollo 人形机器人下跳棋的模拟，说明文本分步引导生成的可能性；文章没有报告机器人策略训练、真机迁移或任务成功率。按[世界模型功能分类](../concepts/functional-taxonomy-world-models.md)理解，已展示的输出主要是生成观测和交互，不能由视觉逼真推断其提供可查询的物理状态。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    User["键盘导航与文本提示"] --> Genie4["Genie 4 世界模型"]
+    Omni["Gemini Omni (现实外观与行为基础)"] --> Genie4
+    Argon["Gemini 4 Argon (机器人任务文本分解)"] --> Genie4
+    Genie4 --> Render["实时交互画面 + 同步音乐/环境声/对话"]
+    Render --> Flash["Gemini 3.8 Flash (观察画面并核查步骤)"]
+    Flash -->|"调整规划与文本引导"| Genie4
+```
+
 ## 工程实践与局限
 
 - 研究预览先向可信测试者开放，后续计划开放给 Project Genie 的 Google AI Ultra 用户与 Gemini API / AI Studio 早期合作伙伴。

@@ -43,6 +43,15 @@ sources:
 | **客户** | 前沿模型实验室、physical AI 构建者 |
 | **公开信息** | 以 CEO 社交媒体与行业报道为主；**无上市财报** |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Raw["海量采集的人类示范数据"] --> Curate["Micro1 第三方数据标注与筛选 (QA 识别有效片段 / 一致性评测)"]
+    Curate --> Deliver["B2B 高质量数据与评测交付"]
+    Deliver --> Clients["前沿 AI 实验室与 Physical AI 构建者 (IL / RL / 基础模型)"]
+```
+
 ## 关联页面
 
 - [Appen](./appen.md)

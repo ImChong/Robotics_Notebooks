@@ -65,6 +65,16 @@ AI robotics company deploying high-throughput manipulation systems for logistics
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 045/384)"] --> INDEX["Dexterity 清单索引页"]
+    INDEX --> MAP["Physical AI 技术地图 (Companies 分组)"]
+    INDEX --> SITE["官方入口 (dexterity.ai)"]
+    SITE --> PROD["面向物流场景的高吞吐机器人操作系统"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

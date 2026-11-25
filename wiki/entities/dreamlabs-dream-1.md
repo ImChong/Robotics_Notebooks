@@ -47,6 +47,19 @@ Dream Labs 的项目页把 DreamZero 研究列为团队的起点：其早期实�
 
 项目页没有公开 Dream-1 的模型结构、训练数据组成、动作表示或服务端推理细节，因此不应仅根据 WAM 标签推断其采用了 DreamZero 的特定骨干或训练配方。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Obs["双臂平行夹爪机器人当前观测"] --> Client["客户端配置 (API Key + dreamlabs/dream-1)"]
+    Client -->|"调用 get_action()"| API["Dream-1 公共服务 API (World Action Model)"]
+    API --> Action["返回预测动作指令"]
+    Action --> IK["本体 IK 求解器与动作映射"]
+    IK --> Robot["受控环境下机器人执行"]
+    Robot -->|"若未达需求: 采集本体数据"| FaaS["FaaS 后训练服务"]
+    FaaS -.-> API
+```
+
 ## 官方零样本评测
 
 官方页面给出 27 种相对 YAM 未见机器人的仿真结果，并以 YAM 表现归一化为 100%。每种机器人 300 次 rollout：150 次用于指令跟随评估，150 次用于未见任务泛化评估。下表是官方相对分数的部分示例，不是任务成功率。

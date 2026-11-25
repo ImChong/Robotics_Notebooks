@@ -66,6 +66,16 @@ Standardized autonomous-driving benchmark emphasizing closed-loop safety and rob
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 011/384)"] --> INDEX["CARLA Leaderboard 清单索引页"]
+    INDEX --> SITE["官方基准入口 (leaderboard.carla.org)"]
+    SITE --> TASK["闭环自动驾驶安全与鲁棒性评测"]
+    TASK --> EVAL["具身评测闭环第 ③ 层 (闭环成功率 vs 开环回放)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

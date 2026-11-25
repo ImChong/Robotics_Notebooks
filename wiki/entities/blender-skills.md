@@ -45,6 +45,17 @@ summary: "Blender Skills 是一套 MIT 开源的代理技能包，含 94 个 Ble
 
 面向机器人资产时，可将仓库用于“需求拆分 → 网格/场景制作 → 碰撞代理与优化 → USD/GLTF 等格式导出”的人工审核工作流。导出后仍应检查单位、坐标系、比例、拓扑与碰撞形状；机器人关节、惯量、URDF/MJCF 语义及仿真可用性需要通过专用工具补齐和验证，不能由通用 DCC 技能默认保证。进入训练或部署前应按 [Sim2Real](../concepts/sim2real.md) 流程核对仿真资产与目标环境。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Agent["Coding Agent（Cursor / Claude Code / Kiro / Codex）"] --> Dir["blender-director（路由 94 个工作流技能与 175 个参考文件）"]
+  Dir --> Skills["专业技能（hard-surface / rigging / physics-sim / collision-proxy / optimization / export）"]
+  Skills -->|"通过 Blender MCP 插件"| Blender["运行中的 Blender（DCC 场景搭建与 QA 检查）"]
+  Blender --> Export["导出 USD / GLTF 等 3D 资产"]
+  Export -->|"人工核对单位、坐标系与惯量并补齐 URDF/MJCF"| Sim["机器人仿真与 Sim2Real 流程"]
+```
+
 ## 局限与风险
 
 - 该仓库主要是代理技能说明和参考文档，不是 Blender 本体、MCP 服务或机器人仿真框架；MCP 集成需要单独配置。

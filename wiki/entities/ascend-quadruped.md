@@ -53,6 +53,16 @@ summary: "Ascend Quadruped 在文中被描述为南加州大学开发的低成�
 - **README / 核查：** 入库日 `git ls-remote` 访问 github.com/DRCL-USC/Ascend_Quadruped 失败（仓库可能已更名、迁移或私有），**未能核对 README**。
 - **差异与保留：** 本节点只有文章一句话；所有细节均未核实，勿作为开源状态依据。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Blog["古月居四足开源综述（轮足机器人组）"] --> Entry["Ascend Quadruped（USC 低成本轮足平台）"]
+  Entry --> Claim["文章表述：完整开源机械与电路设计"]
+  Entry --> Repo["GitHub 仓库：DRCL-USC/Ascend_Quadruped"]
+  Repo --> Check["入库日核查（2026-11-01）：git ls-remote 失败，README 与细节未核实"]
+```
+
 ## 关联页面
 
 - [quadruped-robot](../entities/quadruped-robot.md)

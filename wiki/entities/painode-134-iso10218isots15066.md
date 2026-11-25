@@ -71,6 +71,19 @@ Industrial robot and collaborative-robot safety standards underpinning workplace
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 134/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["ISO 10218 / ISO/TS 15066"]
+    ENT --> IND["工业机器人安全标准 (ISO 10218)"]
+    ENT --> COBOT["协作机器人安全规范 (ISO/TS 15066)"]
+    IND --> WORK["工作场所安全部署 (Workplace Deployment)"]
+    COBOT --> WORK
+    ENT -.->|"核对标准文本与版本"| DOC["官方入口 (iso.org/standard/73934)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

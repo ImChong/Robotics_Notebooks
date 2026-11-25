@@ -71,6 +71,19 @@ sources:
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 117/384)"] --> GRP["Evaluation Methodology (eval)"]
+    GRP --> ENT["Statistical Reliability of RL Evaluations"]
+    ENT --> LIB["rliable 工具库与统计方法"]
+    LIB --> CI["置信区间估计 (Confidence Intervals)"]
+    CI --> BENCH["RL 基准评测统计 (RL / VLA)"]
+    BENCH --> COMP["跨策略对比 (含 Sim2Real 评测)"]
+    ENT -.->|"核对 API 与版本"| DOC["官方入口 (agarwl.github.io/rliable)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

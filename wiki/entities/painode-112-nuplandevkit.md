@@ -68,6 +68,16 @@ End-to-end planning evaluation stack with documented metrics and simulation loop
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["端到端规划策略"] --> B["nuPlan Devkit 规划评测栈 (natnew 112/384)"]
+    B --> C["官方仓库 (github.com/motional/nuplan-devkit)"]
+    B --> D["仿真循环执行与文档化指标评测"]
+    D --> E["关联方向: RL / VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

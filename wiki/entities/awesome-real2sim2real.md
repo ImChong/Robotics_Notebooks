@@ -82,6 +82,18 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 - **对照 README 的分方向挑战表**：如闭环方向的「视觉与动力学双重差距、环路一致性、在线适配」可作为评估一条管线是否真正闭环的检查项（此处为读者用法建议，属推断）。
 - 清单更新快，引用具体条目前回 upstream 核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  S2R["Sim-to-Real（RL 迁移 / 零样本 / DR 与适配 / 基础模型增强）"] --> Real["真机执行与数据采集"]
+  Real --> R2S["Real-to-Sim（视频重建 CRISP / 操作与交互场景）"]
+  R2S --> R2S2R["Real2Sim2Real 闭环（3DGS 框架 / 仿真流水线）"]
+  R2S2R -->|"更新高保真资产与仿真"| S2R
+  Surveys["Surveys（MDP 视角 taxonomy）"] --> S2R
+  Bench["Benchmarks（仿真器、数据集与评测协议）"] --> R2S2R
+```
+
 ## 局限与使用注意
 
 - **新建清单、星标仍低**：结构完整但条目密度会快速变化；阅读时宜对照 upstream 最新版本。

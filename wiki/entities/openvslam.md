@@ -39,6 +39,15 @@ summary: "OpenVSLAM 是模块化视觉 SLAM 框架；社区维护多迁移至 st
 | **Mapping** | 局部地图维护 |
 | **Loop closure** | 词袋回环 |
 
+```mermaid
+flowchart LR
+    Input["多模态相机输入 (单目 / 立体 / RGB-D)"] --> Track["Tracking (帧间位姿估计)"]
+    Track --> Map["Mapping (局部地图维护)"]
+    Map --> Loop["Loop closure (词袋回环与后端优化)"]
+    Loop -->|"可插拔模块接口"| Map
+    Note["社区活跃延续分支: stella_vslam"] -.-> Track
+```
+
 ## 常见误区或局限
 
 - **维护状态**：原仓库 README 提示后续开发重心转移，选型前确认分支活跃度。

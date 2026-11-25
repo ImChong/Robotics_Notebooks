@@ -71,6 +71,18 @@ Practical profile extending AI RMF controls to generative-model deployments.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 139/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["NIST AI RMF Generative AI Profile"]
+    ENT --> BASE["基于 NIST AI RMF 控制体系扩展"]
+    BASE --> GEN["面向生成式模型部署的实务规范 (Generative-Model Deployments)"]
+    GEN --> APP["具身智能与基础模型治理参考 (VLA / PAI)"]
+    ENT -.->|"核对 NIST.AI.600-1 原文"| DOC["官方入口 (NIST.AI.600-1.pdf)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

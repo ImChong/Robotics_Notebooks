@@ -70,6 +70,16 @@ Standardized format and tooling for logged trajectories used across robot-learni
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["多模态原始观测: 图像 / 本体状态 / 动作 / 语言"] --> B["RLDS 格式层 (Episode / Step 结构与工具链)"]
+    B --> C["跨本体机器人学习数据集存储与读取 (如 OXE 等)"]
+    C --> D["模仿学习 (IL) 与 VLA 训练消费"]
+    B --> E["模态与重定向就绪度取决于装入其中的具体数据集"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

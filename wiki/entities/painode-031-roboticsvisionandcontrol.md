@@ -65,6 +65,16 @@ Corke. MATLAB/Python-based introduction to robotics fundamentals.
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    CAT["awesome-physical-ai (natnew 031/384)"] --> INDEX["Robotics, Vision and Control 清单索引页"]
+    INDEX --> MAP["Physical AI 技术地图 (Books 分组)"]
+    INDEX --> SITE["官方教材与配套代码入口 (petercorke.com/rvc)"]
+    SITE --> TOPIC["基于 MATLAB/Python 的机器人、视觉与控制基础 (Corke)"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

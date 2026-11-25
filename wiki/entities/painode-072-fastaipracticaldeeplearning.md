@@ -65,6 +65,17 @@ Applied deep-learning curriculum useful for perception and representation founda
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["awesome-physical-ai 清单 (natnew 072/384)"] --> B["Fast.ai Practical Deep Learning (Courses)"]
+    B --> C["官方课程入口 (course.fast.ai)"]
+    B --> D["应用深度学习课程"]
+    D --> E["感知与表征基础能力"]
+    E --> F["关联技术方向: VLA 与 Sim2Real"]
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

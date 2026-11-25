@@ -50,6 +50,18 @@ summary: "AWS EC2 GPU 实例（g4dn/g5/p4d/p5 等）按秒计费，可与 Spot�
 - **计费**：On-Demand / Spot / Reserved / Savings Plans
 - **运维**：自选 AMI、驱动、集群软件（或用 SageMaker 减负）
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Data["S3 数据集 + IAM 权限 + VPC 同区域流水线"] --> Compute["EC2 GPU 实例或 Amazon SageMaker"]
+  Compute --> F1["g4dn（T4：轻量推理）"]
+  Compute --> F2["g5（A10G：中等训练）"]
+  Compute --> F3["p4d / p4de（A100：多卡训练）"]
+  Compute --> F4["p5 / p5e（H100 / H200 + EFA 高速网络：大模型与大规模 RL）"]
+  Bill["计费与运维（On-Demand / Spot 需 checkpoint / Reserved + Deep Learning AMI）"] --> Compute
+```
+
 ## 常见误区或局限
 
 - **标价远高于 neocloud**：p5 8×H100 按需可达数十美元/小时量级。

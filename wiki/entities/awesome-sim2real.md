@@ -78,6 +78,17 @@ summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分�
 - **选仿真器/基准：** 从 Environments and Benchmarks 分域表挑（如 MuJoCo、PyBullet、robosuite、CARLA、SUMO、RecSim）。
 - **归类需自行判断：** README 归类较宽松（同一论文可多处出现，个别条目与 Sim2Real 关系较远），引用前核对原文。
 
+## 机制与架构图
+
+```mermaid
+flowchart TD
+  Survey["Surveys & Environments/Benchmarks（机器人 / 交通 / 推荐分域，配套 2502.13187 综述）"] --> MDP["按 MDP 四要素拆解 Sim2Real Gap"]
+  MDP --> Obs["Observation（DR / DA / 传感器融合 / Foundation Models）"]
+  MDP --> Act["Action（动作尺度与 shielding / 随机延迟 / 动作鲁棒 RL）"]
+  MDP --> Trans["Transition（DR / DA / GAT Grounding / LLM 增强转移）"]
+  MDP --> Rew["Reward（Reward Shaping / LLM 奖励设计）"]
+```
+
 ## 局限与使用注意
 
 - **多为清单摘要：** 大部分条目只给清单坐标与原文入口；要深读建议直接从原文或已有深读页入手（如 [PACE](./paper-pace-sim2real-legged-robots.md)）。

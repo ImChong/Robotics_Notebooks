@@ -67,6 +67,18 @@ Robot manipulation dataset with paired human demonstrations for one-shot learnin
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    A["真机采集: 多视角 RGB-D / 力-力矩 / 音频 / 本体关节状态"] --> C["RH20T 数据集 (natnew 092/384)"]
+    B["配对人类演示视频与语言描述"] --> C
+    C --> D["同构机型: 可直接用于模仿学习与单样本学习训练"]
+    C --> E["人类演示侧与跨机型复用: 须先进行动作重定向"]
+    D --> F["关联方向: VLA 与机器人操作"]
+    E --> F
+```
+
 ## 局限与风险
 
 - 不要把 Awesome 摘要当成完整方法证明或合规结论。

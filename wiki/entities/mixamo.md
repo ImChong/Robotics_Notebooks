@@ -36,6 +36,16 @@ sources:
 - **与科研数据源的差异**：Mixamo 资产经过 **产品化绑定与美术封装**，与 **[AMASS](./amass.md)** 或 **[LaFAN1](./lafan1-dataset.md)** 这类「研究向原始/半原始运动档案」在 **可追溯性、参数化表示、许可粒度** 上都不等价；写论文或开源发布时应分开声明数据来源。
 - **异构监督讨论中的对照组**：在讨论「动画 / 非物理真实轨迹能否作为 RL 人类先验」时，可与 **[ZEST](../methods/zest.md)** 等对异构人类运动源的论述对照。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    Web["Mixamo Web 服务 (预设角色 / 全身动作库 / 自定义网格 Auto-Rigging)"] --> Export["导出骨骼绑定与动画资产 (影视/游戏管线)"]
+    Export --> Check["合规与物理边界核查 (Adobe 条款 / 非辨识级 MoCap)"]
+    Export --> Retarget["Motion Retargeting (骨骼拓扑与单位重定向)"]
+    Retarget --> Sim["机器人仿真原型或异构 RL 先验 (如 ZEST 对照)"]
+```
+
 ## 常见误区或局限
 
 - **许可≠科研默认可用**：企业项目、数据集论文或开源权重若包含 Mixamo 导出资产，需核对 **Adobe 使用条款** 与是否允许 **再分发**。

@@ -71,6 +71,18 @@ Software update and update-management requirements for vehicles.
 - 同名 GitHub 仓（natnew vs aichr）条目链接可能不同；以本页主链接与技术地图为准。
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+    IDX["awesome-physical-ai (natnew 144/384)"] --> GRP["Governance & Policy (standard)"]
+    GRP --> ENT["UNECE R156"]
+    ENT --> OTA["车辆软件更新与更新管理要求 (Software Update Management)"]
+    OTA --> VEH["道路车辆合规体系"]
+    VEH --> ALIGN["系统演进与安全治理对齐 (ISO / RMF / PAI)"]
+    ENT -.->|"核对 UNECE 法规原文"| DOC["官方入口 (unece.org R156)"]
+```
+
 ## 关联页面
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)

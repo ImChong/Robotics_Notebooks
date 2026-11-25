@@ -50,6 +50,18 @@ summary: "gaiyi7788 维护的腿足 locomotion learning 策展清单：机器人
 | Survey | Sim2Real、RL for robotics、perceptive locomotion |
 | Papers | 按年份/venue；含 vision-guided、imitation 标签 |
 
+## 机制与架构图
+
+```mermaid
+flowchart LR
+  Models["Robot models（双足/人形/四足 URDF/MJCF 表，含 License 与三项几何勾选）"] --> Code["Code（legged_gym、terrain_benchmark、walk-these-ways、GenLoco）"]
+  Survey["Survey（Sim2Real、RL for robotics、perceptive locomotion）"] --> Papers["Papers（按年份/会议分组，含 vision-guided、imitation 标签）"]
+  Blog["Technical blog（Isaac Gym 等中文入门长文）"] --> Code
+  Code --> Path["腿足 locomotion 入门与复现索引"]
+  Papers --> Path
+  Rel["Related awesome-lists（与 ClearLab 清单互补）"] --> Path
+```
+
 ## 局限与使用注意
 
 - **维护节奏个人化：** 维护者自述逐步更新；2023 后 arXiv 需与 [ClearLab 清单](./awesome-legged-robot-learning-clearlab.md) 或 [awesome-humanoid-robot-learning](https://github.com/YanjieZe/awesome-humanoid-robot-learning) 交叉核对。
