@@ -137,6 +137,8 @@ SymSkill 使用显式谓词与算子判断可执行条件；LT-Mem 按对象及�
 
 ## 关联页面
 
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 按任务、协议和失败恢复指标选择评测，不将不同会议论文的成绩直接排名。
+
 - [具身模型测评纵深路线](../../roadmap/depth-embodied-eval.md) — Stage 3 的任务成功与过程指标。
 - [IROS 2026 九篇论文地图](../overview/iros-2026-awards-9-papers-technology-map.md)
 - [动作重定向纵深路线](../../roadmap/depth-motion-retargeting.md)

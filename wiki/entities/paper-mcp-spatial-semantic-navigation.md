@@ -112,6 +112,8 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 将语义地图与导航执行接口纳入感知栈选型；地图表示不替代底层定位与避障。
+
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — 语言目标接地
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md) — 目标搜索任务对照，本文使用已记录路点
 - [Nav2](./navigation2.md) — 经典执行栈
