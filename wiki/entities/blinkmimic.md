@@ -119,6 +119,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [MacMimic](./macmimic.md) — CPU MuJoCo / GPU MLX 移植，与原 CUDA 实现的训练时间口径不同。
+
 - [11.09–11.13 人形／四足 29 篇论文阅读坐标](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)：本次周报中的 BlinkMimic 唯一节点复用入口。
 
 - [本期 29 篇具身智能论文地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
