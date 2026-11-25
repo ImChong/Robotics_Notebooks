@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, vla, action-grounding, zero-shot, manipulation, cross-embodiment, libero, wrist-camera, zju, tsinghua, shanghai-ai-lab]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-25
 original:
   - ../../sources/papers/easg_arxiv_2610_12832.md
 arxiv: "2610.12832"
@@ -21,10 +21,11 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md
   - ../../sources/papers/easg_arxiv_2610_12832.md
   - ../../sources/sites/easg-project.md
-summary: "EASG（arXiv:2610.12832，浙大/上海 AI Lab/清华）：把 TCP 动作坐标系与度量深度投影进腕部图像，让预训练 VLM 以文本直接输出连续增量动作；零样本真机 6 任务平均 79.4%，同接口 LoRA/SFT 可继续提升；官方仓库链接截至 2026-10-12 无法访问。"
+  - ../../sources/repos/easg.md
+summary: "EASG（arXiv:2610.12832，浙大/上海 AI Lab/清华）：把 TCP 动作坐标系与度量深度投影进腕部图像，让预训练 VLM 以文本直接输出连续增量动作；零样本真机 6 任务平均 79.4%，同接口 LoRA/SFT 可继续提升；公开 Isaac Sim 零样本示例，以及 LIBERO 四套任务的 LoRA 训练评估与适配器。"
 ---
 
-# EASG：把动作坐标系画进图像，让 VLM 直接当动作模型
+# VLMs are Native Action Models (EASG) | 显式动作空间接地：让视觉语言模型直接输出动作
 
 **EASG**（*Explicit Action-Space Grounding*；论文 *VLMs are Native Action Models*，[arXiv:2610.12832](https://arxiv.org/abs/2610.12832)，[项目页](https://general-robo.github.io/EASG/)）由浙江大学、上海人工智能实验室、清华大学的作者提出：不给 VLM 加动作头，也不做机器人动作预训练，而是把以 TCP 为原点的动作坐标系和到表面的度量距离直接投影进腕部相机图像，让 VLM 用文本写出下一步的方向、距离、旋转与夹爪状态。
 
@@ -63,10 +64,10 @@ flowchart LR
   robot --> obs
 ```
 
-## 方法
+## 核心机制与方法
 
 - **动作坐标系：** 原点在当前 TCP，轴由标定的腕部相机内外参投影到图像；提示词写明 X 红色横跨手指、+Z 蓝色指向指尖、右手系。
-- **度量尺度：** 对齐深度估计沿 +Z 到最近可见表面的距离 d_t；该深度的估计方法原文未说明。
+- **度量尺度：** 对齐深度估计沿 +Z 到最近可见表面的距离 d_t；该深度的估计方法原文未说明。公开 Isaac Sim 实现另外沿正负两个半轴检索最近表面样本。
 - **文本动作：** `state | vx,vy,vz,d | rx,ry,rz,θ | gripper`，方向为单位向量，距离单位 cm，旋转为单位轴加角度，数字有显式符号与两位小数，生成后向量投影回单位球。
 - **执行：** 动作从 TCP 系旋转到基座系，叠加到当前位姿，再由 IK 转关节；VLM 不负责本体运动学。
 - **GCD：** 把语法编译成有限状态机，非法 token 的 logits 置 -∞；无额外参数。
@@ -75,7 +76,51 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用。** 论文与项目页链到的 [General-Robo/EASG](https://github.com/General-Robo/EASG) 在 2026-10-12 无法访问（GitHub 403、WebFetch 404），无法对齐真实目录或脚本，也不能确认存在可运行实现；待仓库公开后再补。
+依据 [公开源码快照](https://github.com/General-Robo/EASG/tree/1d0196e39db9103aafedd61842883d925b052dd3)，两条运行链不能混成同一模式。
+
+```mermaid
+sequenceDiagram
+    participant CLI as script/run.py
+    participant Sim as Isaac Sim 场景
+    participant V as VisionClient / OpenRouter
+    participant Ctrl as RobotController
+    loop run_loop
+        CLI->>Sim: capture 相机与 TCP 度量线索
+        Sim-->>CLI: 图像与观测
+        CLI->>CLI: render prompt
+        alt observe-only
+            CLI->>CLI: 写入观测和提示词后退出循环
+        else 在线闭环
+            CLI->>V: chat 图像、提示词和可选历史
+            V-->>CLI: 文本动作
+            CLI->>CLI: parse_vlm_motion 并查动作范围
+            CLI->>Ctrl: 未完成则转换目标位姿、移动后设夹爪
+            CLI->>Sim: scene.evaluate 独立检查成功
+        end
+    end
+```
+
+```mermaid
+sequenceDiagram
+    participant D as LIBERO HDF5
+    participant C as convert_libero_hdf5.py
+    participant T as train.sh / finetune.py
+    participant E as evaluate.py 仿真进程
+    participant M as model worker
+    D->>C: 读取示范
+    C->>T: 动作文本与渲染图像
+    T->>T: Qwen3.5-0.8B 文本式 LoRA
+    Note over T,E: 评估也可直接选对应套件的随仓适配器
+    E->>M: 启动子进程并加载基座与适配器
+    loop run_episode
+        E->>M: 发送提示词与图像
+        M-->>E: 约束解码的动作文本
+        E->>E: 解析并转换为 LIBERO 控制器动作
+        E->>E: env.step 更新观测与任务判定
+    end
+```
+
+第一条线程实际是 OpenRouter 返回文本后的解析与执行，并未在远程生成端实现论文的 token 级 GCD。第二条的本地生成器用 `prefix_allowed_tokens_fn` 做前缀约束。
 
 ## 实验与评测
 
@@ -92,7 +137,9 @@ flowchart LR
 
 EASG 零样本为 79.4。30 条示范时仅 π0.5 接近。随机化物体位姿/颜色后，EASG 77.3±5.9，而 50 条示范的 π0.5 降到 40.2±8.7。
 
-**微调与仿真：** 更难真机任务（折 T 恤、开笔记本、套环、挂杯、抽屉等）微调后平均 75.5，π0-FAST 77.8、Octo 69.7、OpenVLA 67.8。LIBERO 0.8B 平均 83.3，对比 π0-FAST 85.5、OpenVLA 76.5、Octo 75.1。
+**微调真机：** 更难的 Group 2 正文表 4 平均 75.5，π0-FAST 77.8、Octo 69.7、OpenVLA 67.8；附录表 A5 对六项子任务、每项 30 次试验另报 67.2±5.1 与 π0-FAST 70.0±3.3，不合并两表口径。
+
+**微调仿真：** 论文 LIBERO 用 Qwen3.5-0.8B、无度量深度；每任务每 seed 16 回合、3 seed，平均 83.3（π0-FAST 85.5、OpenVLA 76.5、Octo 75.1）。公开 Isaac Sim 的零样本 pick-place 则由 README 报约 55%，不是论文 UR3 的 79.4% 或微调 LIBERO 的 83.3%。
 
 **跨本体：** UR3 平均 63.9，Flexiv 62.2。
 
@@ -111,10 +158,10 @@ EASG 零样本为 79.4。30 条示范时仅 π0.5 接近。随机化物体位姿
 
 ## 局限与风险
 
-- **开源状态：待核实。** 项目页（[easg-project.md](../../sources/sites/easg-project.md)）与论文都链到 GitHub 仓库，2026-10-12 实测无法访问；页面未说明数据/检查点发布。项目页零样本视频区仍是占位。
+- **发布范围：** 公开仓库现含 Isaac Sim 零样本例程、LIBERO 转换/LoRA/评估代码及四套件适配器；未见论文真机基座控制软件、真机示范数据或 Qwen-3.8-27B 真机微调权重。仓库根目录未见明确 LICENSE，不把可访问等同于可任意再分发。
 - 依赖腕部 RGB-D；零样本强依赖推理，推理成本与延迟原文未报告。
-- 论文模型命名在正文与图注间不一致（Qwen-3.8-27B / Qwen3.5 / Qwen3.8-next），复现前需核对。
-- 附录中的真机训练超参（学习率、轮数、GPU）与规模前沿图数值未读到。
+- 论文真机按正文记 Qwen-3.8-27B；发布示例明确指定 OpenRouter 模型 `qwen/qwen3.8-27b`。不能假定该 API 模型和论文所有条件完全一致，也不能把它与本地 Qwen3.5-0.8B 混称。
+- 附录 D.3 未给真机 LoRA 的学习率、轮数或训练 GPU；发布的 5e-5、90 epoch 是 LIBERO 配方，不能填到真机设置。
 - 论文未设独立局限节，上述局限为依据实验的推断（推测）。
 
 ## 与其他工作对比
@@ -133,7 +180,8 @@ EASG 零样本为 79.4。30 条示范时仅 π0.5 接近。随机化物体位姿
 | 接口设计 | 动作坐标轴要画在相机里，并给 cm 级尺度 |
 | 解码 | 任何文本动作接口都应加语法约束 |
 | 相机/深度 | 需要标定的腕部相机与对齐深度 |
-| 复现前 | 先确认官方仓库是否公开 |
+| Isaac Sim 零样本 | Linux / RTX / Isaac Sim 5.1.0；先用 `script/run.py --task pick_place --headless --observe-only` 查相机与提示词，在线模式才需要 OpenRouter 密钥并产生费用。 |
+| LIBERO 微调 | 仿真与模型分环境，四个 suite 分别使用适配器；先检查 `summary.json` 的完成任务数和 worker 失败，别只看成功率。 |
 
 ## 关联页面
 
@@ -148,6 +196,8 @@ EASG 零样本为 79.4。30 条示范时仅 π0.5 接近。随机化物体位姿
 - [微信盘点：具身智能小站 34 篇（2026-10-12）](../../sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md)
 - [easg_arxiv_2610_12832.md](../../sources/papers/easg_arxiv_2610_12832.md) — 论文摘录
 - [easg-project.md](../../sources/sites/easg-project.md) — 项目页核查
+- [正式代码归档与固定提交](../../sources/repos/easg.md)
+- [作者项目视频（官方仓库互链）](https://youtu.be/DsHKnz7V4T4)
 - [arXiv:2610.12832](https://arxiv.org/abs/2610.12832)
 
 ## 推荐继续阅读

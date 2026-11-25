@@ -7,16 +7,12 @@
 - **URL：** <https://general-robo.github.io/EASG/>
 - **论文：** <https://arxiv.org/abs/2610.12832>
 - **代码：** <https://github.com/General-Robo/EASG>
-- **核查日期：** 2026-10-12
+- **核查日期：** 2026-11-25（复核）
 - **沉淀到 wiki：** [paper-easg-vlm-native-action-model.md](../../wiki/entities/paper-easg-vlm-native-action-model.md)
 - **论文摘录：** [easg_arxiv_2610_12832.md](../papers/easg_arxiv_2610_12832.md)
 
-## 页面内容
+## 官方入口与演示
 
-页面复述论文主张与关键数字（零样本平均 79.4、LIBERO 83.3、GCD 72.6→83.3、跨本体 UR3→Flexiv），含方法图、随机化示例、模型规模前沿图、坐标系消融可视化。零样本任务视频区仍是占位文字（“Drop the stitched exterior + wrist clip here”），未嵌入视频。
+项目页 source 和官方仓库均互链 [作者视频](https://youtu.be/DsHKnz7V4T4)。复核项目页已有主视频、零样本、随机化、微调与跨本体演示的播放器/资源路径；旧归档的占位或不可访问是 2026-10-12 快照，不代表当前状态。展示片段不是新的统一量化基准。本轮确认视频入口与归属，未把转录内容用于实验指标。
 
-## 开源核查结论：待核实（仓库不可访问）
-
-- 页面头部链到 `github.com/General-Robo/EASG`；2026-10-12 实测：`git clone` 要求认证失败、GitHub 页面 403、WebFetch 404，session 的 add_repo 也报告无权访问（疑似未公开或私有）。
-- 页面未说明数据集、检查点、训练脚本是否发布，也未写 coming soon。
-- 因此本归档不建 `sources/repos/`；wiki 页如实写“官方链接存在但截至 2026-10-12 无法验证内容”。
+[公开源码归档](../repos/easg.md) 区分 Isaac Sim 零样本示例和 LIBERO LoRA 流程；真机数值以论文为准。
