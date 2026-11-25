@@ -1,5 +1,7 @@
 ---
 type: entity
+project_id: agent-reach
+code: https://github.com/Panniantong/Agent-Reach
 tags:
   - llm-agents
   - coding-agents
@@ -23,25 +25,25 @@ related:
   - ./nvidia-openshell.md
 sources:
   - ../../sources/repos/panniantong_agent_reach.md
-summary: "Agent Reach（Panniantong/Agent-Reach）是面向编码代理的「安装 + 环境诊断 + SKILL 注册」脚手架：把网页/社媒/视频/GitHub/RSS/语义搜索等能力拆成可插拔渠道，聚合上游开源 CLI 与 MCP（如 twitter-cli、rdt-cli、yt-dlp、Jina Reader、gh、mcporter+Exa），凭据默认落本地；代理实际读写仍直接调用上游工具而非强制经本仓转发。"
-updated: 2026-09-15
+original:
+  - ../../sources/repos/panniantong_agent_reach.md
+summary: "Agent Reach 1.6.1 是面向 AI Agent 的统一只读互联网 CLI：按渠道和动作调度有序后端、处理限流和失败回退，并返回结构化 JSON；同时管理安装、技能与专用浏览器会话。"
+updated: 2026-11-25
 ---
 
-# Agent Reach（Panniantong）
-
-Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本机。官方仓库见 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)。
-
-README 将自身定位为 **scaffolding（脚手架）而非应用框架**：各渠道背后是可替换的独立工具链，代理在运行期 **直接调用** twitter-cli、rdt-cli、yt-dlp、`gh`、Jina Reader、feedparser、mcporter 等，本仓库代码侧重 **安装、渠道注册与健康检查（`doctor`）**。
+# Agent Reach：统一互联网访问工具链（Unified Internet Access for AI Agents）
 
 ## 一句话定义
 
-用 **`agent-reach` CLI + 渠道检测（`doctor`）+ Agent 侧 SKILL 分发**，把多平台信息接入的 **工程摩擦** 从「每个项目手搓一遍」降到 **可审计的一键安装与可插拔替换**。
+Agent Reach 是面向 AI Agent 的开源互联网只读工具链：用统一 CLI 将平台搜索、网页阅读、仓库与视频信息访问交给按动作配置的后端，并以 JSON 返回结果、错误和尝试轨迹。核对版本为 1.6.1（[8d9ecc1](https://github.com/Panniantong/Agent-Reach/commit/8d9ecc1f5521fe7d223cde782aaa4005695e2671)）。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| SDK | Software Development Kit | 软件开发工具包 |
+| CLI | Command-Line Interface | 命令行接口 |
+| JSON | JavaScript Object Notation | 结构化输出格式 |
+| MCP | Model Context Protocol | Agent 工具接入协议 |
 | API | Application Programming Interface | 应用程序编程接口 |
 | LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
 
@@ -49,78 +51,86 @@ README 将自身定位为 **scaffolding（脚手架）而非应用框架**：各
 
 - **文献与代码调研侧**：机器人论文、开源仓库、教程视频、社区讨论（Reddit / X / 中文社区）常分散在多站；本工具链把 **字幕抽取、公开网页清洗阅读、GitHub 检索、RSS 订阅、微信公众号全文（Camoufox / Exa）** 等接到同一套 CLI/MCP 习惯里，便于代理辅助 **ingest 与交叉验证**（仍须遵守各平台 ToS 与学术引用规范）。本站经 `wechat-article-for-ai`（Camoufox）抓取多篇 `mp.weixin.qq.com` 长文（如 [Humanoid Hardware 101](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)、[Jason Peng 灵活运动技能学习](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md)、[世界模型训练闭环](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)、[训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)、[李群/李代数/四元数基础](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)）时，Jina Reader 常返回 CAPTCHA，与公开 README 一致。
 - **与「代理工程规约」相邻**：和 [Superpowers（obra）](superpowers-obra.md) 这类 **软件交付流程技能库** 不同，Agent Reach 解决的是 **外网只读/检索型工具链**；和 [CLI-Anything](cli-anything.md)（为 Blender/FreeCAD 等 **专业软件生成 CLI harness**）以及 [Articraft](articraft.md)（**3D 资产生成 SDK**）也不同，但同属 **把代理能力边界写进可版本化外围** 的实践谱系。
-- **安全与运维意识对齐公开文档**：README 明确 **Cookie 等凭据本地 `~/.agent-reach`、文件权限 600**、`--safe` / `--dry-run`、以及 **Cookie 平台封号风险** 与 **小号建议**；适合作为代理侧 **凭据与合规** 讨论的参照锚点。
+- **安全与运维意识**：1.6.1 的官方会话文档强调专用浏览器与日常浏览器分离、按站点复用登录的前提、用户亲自登录及账户风险；自动化不代表取得额外访问授权。
 
-## 核心结构
+## 核心结构与机制
 
 | 层次 | 内容 |
-|------|------|
-| **分发形态** | PyPI 包 `agent-reach`；安装/更新可由上游提供的远程 `docs/install.md`、`docs/update.md` 引导（URL 以 README 为准，避免在此固化易变路径）。 |
-| **运行时边界** | 安装后代理 **直接调用** twitter-cli、rdt-cli、yt-dlp、`gh`、Jina Reader、feedparser、mcporter 等；渠道 Python 模块侧重 **可用性检测**（如 `doctor`），而非二次业务 API 包装。 |
-| **渠道模型** | `channels/*.py` 映射「场景 → 当前默认上游」；README 声明 **单文件可替换** 以换 Firecrawl、官方 API、其他 MCP 等。 |
-| **诊断** | `agent-reach doctor` 汇总各渠道连通性与修复提示。 |
-| **卸载** | `agent-reach uninstall` 清理配置目录、技能文件与 mcporter 侧注册（细节以上游文档为准）。 |
+|---|---|
+| 分发 | Python 3.10+；MIT；通过 uv 安装官方 GitHub release ZIP 后执行 `agent-reach setup`，安装默认渠道及技能；同名 PyPI 包不是本项目。 |
+| 统一入口 | `agent-reach <渠道> <动作> [参数]`；`agent-reach read <URL>` 自动选渠道；1.6 起每次调用输出一个 JSON 对象。 |
+| 渠道与动作 | 默认：B 站、V2EX、GitHub、YouTube、网页；可选及实验渠道按 README 矩阵，部分能力需要登录或转录服务 Key。 |
+| 调度 | runtime/dispatch.py 验证参数、管理共享时间预算、检查冷却、按 action.backends 顺序执行；终止型错误停止回退，满足条件的暂时性故障才尝试公开网页路线。 |
+| 结果与诊断 | JSON 信封提供 ok、result、error 及 meta.attempts；channels、check、doctor 用于发现能力与诊断。 |
+| 会话 | 专用浏览器优先 CloakBrowser，必要时回退 Chrome；按站点管理会话，已有登录复用依赖 OpenCLI 扩展连接，用户本人登录。 |
 
-### 流程总览（概念级）
+### 项目流程总览
 
 ```mermaid
 flowchart LR
-  U[用户 / 策展者] -->|复制安装指令| A[编码代理读远程 install.md]
-  A --> B[agent-reach install]
-  B --> C[安装 Py 包与上游 CLI / MCP 依赖]
-  C --> D[注册 SKILL.md 与搜索 MCP 等]
-  D --> E[agent-reach doctor]
-  E --> F{渠道 OK?}
-  F -->|是| G[代理直接调用 yt-dlp / gh / twitter / rdt / ...]
-  F -->|否| H[按 doctor 提示补代理/Cookie/登录]
+  A["用户或 Agent"] --> B["统一 CLI"]
+  B --> C["渠道与动作解析"]
+  C --> D["参数校验与限流检查"]
+  D --> E{"公开网页路线适用？"}
+  E -->|优先尝试| F["公开网页后端"]
+  E -->|否则| G["按顺序调用渠道后端"]
+  F -->|未成功且允许回退| G
+  G -->|暂时性失败且符合条件| F
+  F --> H["JSON 结果信封"]
+  G --> H
+  D -->|校验失败或限流| H
+  H --> A
 ```
 
+### 工程实践：从 1.5 迁移到 1.6
+
+旧版主要作为安装、诊断和技能分发脚手架；1.6.1 已具备统一运行时调度。旧记录中本站独立使用 wechat-article-for-ai 的实践仍属历史环境，不应据此推断新版默认支持微信公众号。安装与升级以[官方安装文档](https://github.com/Panniantong/Agent-Reach/blob/8d9ecc1f5521fe7d223cde782aaa4005695e2671/docs/install.md)为准。
 
 - **与 REA 的分工：** [REA](./rea.md) 把本机程序/二进制调查接入 Agent，侧重证据化逆向；本页的 Agent Reach 则安装外网检索与内容读取渠道，解决的是资料发现和抓取。两者都提供 CLI/MCP 外围能力，但目标和数据来源不同。
 
-## 常见误区或局限
+## 局限与工程实践
 
-- **误区：装了就能无限制爬取。** 各平台反爬、登录态、地域与账号策略仍适用；README 对 Reddit 认证、X/B 站等场景有 **额外配置** 说明。
-- **误区：等价于官方 API 封装。** 当前默认路径大量依赖 **Cookie 或第三方读服务**；稳定性随平台政策波动，需要持续维护（上游自述会跟进平台变化）。
-- **局限：** 本知识库 **不** 在此复述具体 shell 命令行；请以克隆时的 [官方 README](https://github.com/Panniantong/Agent-Reach/blob/main/README.md) 为准。
+- **只读边界：** 官方 README 明确不发帖、不评论、不点赞、不私信；平台的登录、地域、授权和访问规则仍适用。
+- **稳定性：** 可选及实验渠道可能受上游工具与平台变化影响；不要把配置成功等同于实际动作成功。限流时应遵守平台冷却提示，而非持续重试。
+- **开源状态：** 官方 GitHub 已公开 MIT 许可的 Python CLI 与渠道调度源码；本次核对未运行外部服务，不宣称各平台均可用。
+- **凭据：** 用户本人完成登录及 Key 输入，不把 Cookie、密码或 Key 写入聊天、知识库或运行日志。
+- **知识库应用：** 适合作为资料发现与读取层；最终仍应核对原论文、官方文档和源码。没有直接匹配的机器人技术纵深路线，不强行挂载。
 
 ## 源码运行时序图
 
-入口：`agent-reach <渠道> <动作> [参数]`（`pyproject.toml` 的 console script `agent-reach = agent_reach.cli:main`；`agent-reach help` 列出渠道与动作）
+入口由 pyproject.toml 注册为 agent_reach.cli:main；以下以 GitHub 搜索动作举例，后端顺序来自 channels/github.py。
 
 ```mermaid
 sequenceDiagram
     autonumber
     participant U as 用户或 Agent
-    participant C as agent_reach/cli.py main
-    participant RC as runtime/cli.py main
-    participant D as runtime/dispatch.py run_action
-    participant PW as runtime/public_web 公开网页路线
-    participant CH as channels 渠道类 例如 GitHubChannel
-    participant BK as 后端 例如 gh CLI 或 REST API
-
-    U->>C: agent-reach 渠道 动作 参数
-    C->>C: 去掉 -v 参数并配置日志
-    C->>RC: 调用 runtime.cli.main argv
-    RC->>RC: 处理 channels check read login doctor 等管理命令
-    RC->>RC: _channel 查找渠道 再 _cmd_action 解析动作参数
-    RC->>D: run_action channel action params timeout
-    D->>D: validate_action 与 cooldown 限流检查
-    alt 动作支持公开网页且渠道未添加
-        D->>PW: public_web.attempt
-        PW-->>D: 公开结果 或 None
+    participant C as cli.py main
+    participant R as runtime.cli.main
+    participant D as dispatch.run_action
+    participant G as GitHubChannel
+    participant B as gh 或 GitHub API
+    U->>C: agent-reach github search 查询
+    C->>R: 处理日志参数并转交 argv
+    R->>R: _channel 与 _cmd_action 解析参数
+    R->>D: run_action
+    D->>D: validate_action 与 cooldown
+    loop 按 action.backends 顺序
+        D->>D: 检查后端暂停与剩余时间
+        D->>G: _call_with_deadline 调用后端方法
+        G->>B: _gh_search 或 _api_search
+        B-->>G: 返回数据或错误
+        G-->>D: items 或异常
+        alt 成功
+            D->>D: 记录成功并返回 envelope
+        else 失败
+            D->>D: classify 与记录 attempts
+        end
     end
-    loop 按 action.backends 顺序尝试后端
-        D->>CH: _call_with_deadline getattr 渠道 方法名
-        CH->>BK: 调用后端 例如 _gh_search 或 _api_get
-        BK-->>CH: 原始数据
-        CH-->>D: items 或抛出 ReachError
-    end
-    D-->>RC: 成功则返回 envelope 含 backend 与 attempts
-    RC-->>U: _emit 输出 JSON 信封
+    D-->>R: JSON 信封数据
+    R-->>U: _emit
 ```
 
-图依据：Panniantong/Agent-Reach@c62128a（默认分支 HEAD），实际读过 `pyproject.toml`（console script）、`agent_reach/cli.py`（main）、`agent_reach/runtime/cli.py`（main 与 `_cmd_action`）、`agent_reach/runtime/dispatch.py`（`run_action` 主干与后端循环，局部）、`agent_reach/channels/base.py`（局部）、`agent_reach/channels/github.py`（局部）。`public_web` 与 `_call_with_deadline` 细节未逐行读，图中仅示意调用关系。未运行代码。
+图依据：1.6.1、提交 8d9ecc1；核对 pyproject.toml、agent_reach/cli.py、runtime/cli.py 的动作入口及 runtime/dispatch.py 的实际后端循环，并核对 channels/github.py 的 GitHub 后端入口。循环遇成功或终止型错误即退出；此图不展开其他渠道的公开网页回退路径。未运行代码。
 
 ## 关联页面
 
@@ -136,8 +146,8 @@ sequenceDiagram
 
 - [Agent Reach 仓库源归档（本站）](../../sources/repos/panniantong_agent_reach.md)
 - [Panniantong/Agent-Reach（GitHub）](https://github.com/Panniantong/Agent-Reach)
-- 源码核对（2026-11-02）：Panniantong/Agent-Reach@c62128a（默认分支 HEAD），读过 pyproject.toml、agent_reach/cli.py、agent_reach/runtime/cli.py、agent_reach/runtime/dispatch.py（局部）、agent_reach/channels/base.py（局部）、agent_reach/channels/github.py（局部）；时序图依据以上文件，未运行代码。
+- [官方源码（8d9ecc1）](https://github.com/Panniantong/Agent-Reach/tree/8d9ecc1f5521fe7d223cde782aaa4005695e2671) — 版本与核对范围见来源归档；2026-11-25 核对。
 
 ## 推荐继续阅读
 
-- [Agent Reach README（main 分支）](https://github.com/Panniantong/Agent-Reach/blob/main/README.md) — 支持平台矩阵、当前上游选型表与安全说明
+- [Agent Reach README（main 分支）](https://github.com/Panniantong/Agent-Reach/blob/main/README.md) — 支持平台矩阵、统一入口与安全说明
