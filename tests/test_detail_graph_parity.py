@@ -411,3 +411,20 @@ def test_repo_exports_detail_graph_parity_and_33_governed_nodes() -> None:
         assert node["health_gaps"] == 0, p
         assert node.get("community"), p
         assert detail_pages[did]["health_score"] == 3, p
+
+    existing_titles = {
+        detail_pages[eid].get("title", "").strip().lower(): detail_pages[eid]["path"]
+        for eid in detail_pages
+        if not detail_pages[eid]["path"].startswith(("references/", "tech-map/"))
+    }
+    governed_titles: dict[str, str] = {}
+    for p in [*ref_paths, *tech_paths]:
+        did = path_to_id(p, REPO_ROOT)
+        title_key = detail_pages[did].get("title", "").strip().lower()
+        assert title_key not in existing_titles, (
+            f"{detail_pages[did]['path']} duplicates existing title of {existing_titles[title_key]}"
+        )
+        assert title_key not in governed_titles, (
+            f"{detail_pages[did]['path']} duplicates title of {governed_titles[title_key]}"
+        )
+        governed_titles[title_key] = detail_pages[did]["path"]
