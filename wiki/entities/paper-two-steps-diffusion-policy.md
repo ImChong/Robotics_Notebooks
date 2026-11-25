@@ -58,6 +58,18 @@ summary: "Two-Steps Diffusion Policy（arXiv:2510.21991）：Two-Steps Diffusion
 - **遗传去噪（GDP）**：同时采样一个种群，每步去噪前给每个样本算适应度分数，按多项分布选出一半并复制补满，再做一步去噪（算法 1）。分数有两类：基于噪声预测范数的 stein 分数与基于 x̂_0 被截断量的 clip 分数，都用来衡量样本有多「分布外」（式 4）。补充材料图 9–11 称 stein 分数是最好的简单启发式，clip 分数会删掉数值大的模态、扭曲采样分布。算法不含交叉与变异。
 - **两步推理配置**：GDP 加时间步调整（最大步 90、最小步 20），γ=0.2（§4.2「Shortcut Models」）；补充材料的视频说明里两步配置写的是最大步 80，两处不一致，论文未解释。
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+    A["预训练 Diffusion Policy 检查点 (UNet)"] --> B["定制推理时间表 (t < T 起步/减小噪声系数 gamma)"]
+    B --> C["同时采样动作种群"]
+    C --> D["计算适应度分数 (stein/clip 衡量分布外风险)"]
+    D --> E["多项分布重采样选优并复制补满"]
+    E --> F["执行单步去噪 (重复 2 次 NFE)"]
+    F --> G["输出低分布外风险动作序列"]
+```
+
 ## 评测（§4）
 
 - **设置**：Adroit Hand 四任务（Hammer / Relocate / Pen / Door，每配置 100 个种子）与 Robomimic（Lift / Can / Square / Transport / ToolHang，PH / MH 数据，每配置 500 个种子）；所有方法用官方 Diffusion Policy 的 65M UNet，DDPM / GDP / DDIM 共用同一 DDPM 检查点，Shortcut 单独训练（每任务–时域 10 次取最好）；扫描步数 1–100、γ 0–1、动作时域 24–200（§4.1）。

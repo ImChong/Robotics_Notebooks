@@ -70,6 +70,16 @@ HALO 用 differentiable simulation 做两阶段系统辨识。第一阶段校准
 
 我的判断**人形机器人一旦进入搬运和工具使用场景，空载控制器就不够了，负载辨识会成为基础能力。**
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    D["可微仿真环境 (Differentiable Simulation)"] --> S1["第一阶段系统辨识 (校准名义机器人模型)"]
+    S1 --> G1["减少固有 Sim-to-Real 差异"]
+    G1 --> S2["第二阶段系统辨识 (识别 Payload Mass Distribution)"]
+    S2 --> RL["重载 RL 策略训练与零样本真机迁移"]
+```
+
 ## 结论
 
 **HALO 把重载 sim-to-real 当成建模问题而不是随机化问题：不是靠更强的域随机化糊平负载带来的动力学变化，而是用可微仿真把这部分结构化模型误差显式辨识出来。**

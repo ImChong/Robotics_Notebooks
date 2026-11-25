@@ -62,6 +62,16 @@ sources:
 
 在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    A["运动数据 (MoCap / 交互参考)"] --> B["构建可指挥 Latent Skill 技能空间"]
+    C["上层 Goal / Command 条件指令"] --> D["在 Latent 空间调用全身控制策略"]
+    B --> D
+    D --> E["人形全身跟踪与交互执行"]
+```
+
 ## 结论
 
 **CALM 属于 BFM 的前史：它先把「latent skill 空间可以被上层指挥」做实，技能空间这一层因此出现在大基座之前。**

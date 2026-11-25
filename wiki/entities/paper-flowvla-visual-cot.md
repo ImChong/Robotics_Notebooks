@@ -59,6 +59,17 @@ summary: "FlowVLA（Visual CoT）（arXiv:2508.18269）：FlowVLA 提出 Visual 
 - **阶段 2：策略微调**：用阶段 1 权重初始化，序列换成观测与动作交错 {L, v_0, a_0, v_1, a_1, …}；动作按 [FAST](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md) 离散化，损失只算动作 token（§2.4）。
 - **实现**：基于 8.5B 参数的 Emu3 / UniVLA 架构；LIBERO 预训练 5k 步（batch 16）+ 微调 5k 步（batch 96），SimplerEnv 预训练 12k 步（batch 32）+ 微调 20k 步（batch 128）（§3.1）。
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+    A["输入语言 L 与 RGB 帧 v_t (VQ-GAN 离散化)"] --> B["RAFT 预计算光流并转 RGB (共用 VQ-GAN)"]
+    A --> C["阶段 1: 世界模型预训练 (预测 L, v_t, f_t, v_t+1 序列)"]
+    B --> C
+    C --> D["阶段 2: 策略微调 (继承权重, 序列换为 L, v_t, a_t)"]
+    D --> E["FAST 离散化动作输出与执行"]
+```
+
 ## 评测（§3）
 
 - **设置**：仿真为 LIBERO 四套件（Spatial / Object / Goal / Long）与 SimplerEnv-WidowX 四任务；真机为 AgileX Cobot 双臂（Mobile ALOHA 设计，每臂 7 自由度），四个任务各用 50–200 条遥操作示范微调、各评测 25 次（§3.1、§3.2）。

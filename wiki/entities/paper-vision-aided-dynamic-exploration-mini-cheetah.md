@@ -54,6 +54,16 @@ summary: "Kim et al. ICRA 2020：Mini Cheetah 双 RealSense + 轻量落脚/避�
 - 点云/深度经简单过滤 → 落脚点可通行性与障碍评估。
 - 动态步态与跳跃提供「感知分辨率不够时用运动换通过性」的互补。
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    A["双 Intel RealSense 深度与视觉输入"] --> B["轻量点云与深度滤波"]
+    B --> C["落脚点可通行性与障碍评估"]
+    C --> D["动态 Trot 与跳跃步态规划控制"]
+    D --> E["Mini Cheetah 探索非结构化不规则地形"]
+```
+
 ## 源码运行时序图
 
 **不适用**（截至入库日无官方可运行感知+控制一体仓库；底层 loco 可参考 Cheetah-Software）。

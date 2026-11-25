@@ -52,6 +52,19 @@ summary: "MessyNav（arXiv:2611.07417）：空推车可以挪，放着笔记本�
 | **要点** | 空推车可以挪，放着笔记本的推车却该绕开。 |
 | **文内指标** | 公众号转述：15 个真机场景中成功 10 次，只用规划器的基线成功 6 次。 |
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+    Sensors["双 ZED 2 相机 (底盘前向 + 臂侧) / Unitree L2 LiDAR (FAST-LIO 建图)"] --> VLM["VLM 分工: gemini-3-flash-preview (可供性与规划) + gemini-2.5-pro (指点与分割)"]
+    VLM --> Proj["深度反投影至世界系 (沿用 HoMeR)"]
+    Proj --> Decide{"判断障碍物能否安全移动"}
+    Decide -->|"可移动 (如空推车)"| Move["触发抓取或侧扫原语挪开障碍"]
+    Decide -->|"不可移动/易碎 (如放笔记本推车)"| Bypass["触发 Nav2 + LiDAR 避障绕开 (move to)"]
+    Move --> Exec["TidyBot++ 执行 (7DoF Kinova 臂 + 全向底盘)"]
+    Bypass --> Exec
+```
+
 ## 源码运行时序图
 
 **不适用（待发布）** — 项目页 HTTP 200，标注 Video and code coming soon。 不编造运行脚本；代码公开后再补。

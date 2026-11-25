@@ -69,6 +69,15 @@ OmniTrack 的思路是解耦：先由 privileged generalist policy 生成更严�
 
 我的判断**未来通用 motion tracker 的核心能力之一，不是“什么都追”，而是知道什么参考值得追、怎么把参考变成可追。**
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    A["原始重定向参考 (含噪声/脚滑/浮空)"] --> B["特权通用策略 (Privileged Generalist Policy) 物理清洗"]
+    B --> C["生成满足物理约束的一致参考轨迹"]
+    C --> D["训练通用运动跟踪器"]
+```
+
 ## 结论
 
 **OmniTrack 把 motion tracking 的问题中心从控制器挪到参考本身：与其让跟踪器在「像参考」和「保持物理稳定」之间硬扛，不如先把参考清洗成物理一致的。**

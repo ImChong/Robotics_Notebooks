@@ -73,6 +73,18 @@ SafeFall 不是让机器人永远不摔，而是在检测到跌倒不可避免�
 
 我的判断**人形机器人真实部署时，安全不是没有失败，而是失败不应造成灾难性损伤。**
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+    Obs["板载传感输入 (IMU 与关节编码器)"] --> Pred["轻量 GRU 跌倒预测器"]
+    Obs --> Nom["Nominal Controller (正常运动控制)"]
+    Pred -- "未检测到不可避免跌倒" --> Dormant["保护策略保持休眠 (Dormant)"]
+    Dormant --> Nom
+    Pred -- "判定跌倒不可避免" --> Mit["RL 保护策略接管 (Damage Mitigation Policy)"]
+    Mit --> Out["输出 PD 目标关节角 (分散冲击与延长触地缓冲)"]
+```
+
 ## 结论
 
 **SafeFall 把「摔倒」当成双足机器人必然发生的事件来处理：目标不是永不跌倒，而是在跌倒不可避免时把硬件损伤压到可接受范围。**

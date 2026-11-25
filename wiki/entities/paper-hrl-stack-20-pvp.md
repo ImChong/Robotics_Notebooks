@@ -66,6 +66,16 @@ PvP 的全称是 Proprioceptive-Privileged Contrastive Representations。它关�
 
 我的判断**这种 proprioceptive-privileged 表示学习会越来越常见，因为它正好连接了仿真训练和真实部署之间的信息落差。**
 
+### 方法流程图
+
+```mermaid
+flowchart LR
+    P["本体感受观测 (关节角/关节速度/IMU/历史动作)"] --> CL["对比学习对齐 (PvP 表征模块)"]
+    S["仿真特权状态 (身体速度/接触状态/地形信息)"] --> CL
+    CL --> L["紧凑任务相关 Latent 表征"]
+    L --> WBC["全身控制策略 (部署侧仅用本体感受)"]
+```
+
 ## 结论
 
 **PvP 处理的不是「控制器不够强」，而是仿真与真机之间的信息落差：把训练时看得到、部署时看不到的 privileged 状态，压成部署时仍然有用的表征。**
