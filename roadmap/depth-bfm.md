@@ -114,6 +114,7 @@ flowchart LR
 
 ### 推荐读什么
 - [XMimic & XSoma（arXiv:2611.20452）](../wiki/entities/paper-xmimic-xsoma-2611-20452.md) — 用可微世界模型和 JAX 多卡缩短 G1 参考跟踪 / 地形速度跟踪达标时间；与原 [XMimic 独立工作](../wiki/entities/paper-xmimic-jax.md) 区分论文版本与训练目标。
+- [MacMimic](../wiki/entities/macmimic.md) — Apple Silicon 上的本地跟踪训练；区分 LAFAN1 同集阈值、独立动作泛化与真机闭环。
 - 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)
 - [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 工程可用的跟踪基座
 - [2026 人形 WBC 12 项开源路线对照](../wiki/comparisons/humanoid-wbc-open-source-12-2026.md) — 按 tracking、跨模态生成、无监督技能和任务级 VLA/移动操作分层，帮助确定 Stage 2 低层控制与后续 Stage 3–4 的接口边界。
@@ -126,7 +127,6 @@ flowchart LR
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 - [SuperMimic](../wiki/entities/paper-supermimic.md) — 动作跟踪策略与可微世界模型联合训练，短时想象 rollout + 解析梯度降低大规模人形全身控制的训练算力
-- [MacMimic](../wiki/entities/macmimic.md) — Apple Silicon 上的本地跟踪训练；区分 LAFAN1 同集阈值、独立动作泛化与真机闭环。
 - [MorphMimic](../wiki/entities/paper-morphmimic.md) — 在 SuperMimic 路线上加规范化人形接口与形态条件化，G1 / X2 Ultra / T2 共用一个世界模型与一套跟踪策略
 - [ScaleBFM](../wiki/entities/paper-scaling-bfm-humanoid.md) — 人形 BFM 规模化配方：全局坐标系整体跟踪 + on-policy rollout 与参考运动多样性协同 + 3M 参数 Humanoid Transformer
 - [QTOP：分位数 Critic 改善多动作 PPO 跟踪](../wiki/entities/paper-qtop.md) — Qualcomm AI Research；在 Stage 2 跟踪主线中对比 SONIC/ScaleBFM：用条件回报分布的 CDF 生成分位数优势，减少多动作学习干扰；4–24h 参考数据与约 1300 GPUh 内计算通常是主要瓶颈（G1 真机验证）。
