@@ -4,7 +4,11 @@
 - **类型：** paper
 - **论文：** <https://arxiv.org/abs/2609.38984>（2026-09-30，v1）；[PDF](https://arxiv.org/pdf/2609.38984)
 - **机构：** 南京大学、香港科技大学、哈尔滨工业大学、洛桑联邦理工学院。
-- **入库日期 / 最后更新：** 2026-10-02
+- **入库日期 / 最后更新：** 2026-10-02 / 2026-11-25
+- **核对范围：** [arXiv v1 全文](https://arxiv.org/html/2609.38984v1) §1–7 与 Appendix A–C，重点是 token 选择、执行后端、配对评测和扰动结果。
+- **通读：** 已完成
+- **项目页：** https://rockylix.github.io/Sparse-WAM.github.io/
+- **代码：** https://github.com/Rockylix/Sparse-WAM
 - **一句话说明：** 联合视频–动作去噪时，只计算动作相关的未来 token；Pilot 降低打分和打包开销，无需额外训练加速模块。
 
 ## 核心摘录
@@ -29,6 +33,12 @@ RTX 4090：FastWAM-Joint / LIBERO 为 1.98×，成功率 98.75% → 98.45%；Cos
 
 **对 wiki 的映射：** [Sparse-WAM](../../wiki/entities/paper-sparse-wam.md)、[WAM](../../wiki/concepts/world-action-models.md)。
 
+### 4. 真机与扰动边界（Table 3/6）
+
+FastWAM-Joint 三项真机任务为 501 → 242 ms / chunk、77.78% → 75.00%；LIBERO-Plus 子集 v1 为 70.89% → 63.04%、431.7 → 207.2 ms / chunk。项目页及发布 README 后来列出 70.00%、220.97 ms / chunk 的 Sparse-WAM 结果，未核实差异来源，独立记录。
+
+**对 wiki 的映射：** [Sparse-WAM](../../wiki/entities/paper-sparse-wam.md)。
+
 ## 开放状态
 
-截至 2026-10-02，所给论文摘要页与 v1 全文未列官方项目页、GitHub、权重或数据发布入口；检索亦未核实官方仓库。状态记为**未核实实现开放**，不猜测 URL，不把其他 WAM 仓库当成 Sparse-WAM 源码。
+2026-11-25 作者公开 Edge 推理实现；见[项目页归档](../sites/sparse-wam.md)与[固定源码归档](../repos/sparse-wam.md)。论文评测覆盖三个骨干，不等于首发支持三个骨干。
