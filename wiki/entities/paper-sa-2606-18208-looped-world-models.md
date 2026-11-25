@@ -3,11 +3,12 @@ type: entity
 project_id: looped-world-models-2606-18208
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-25
 arxiv: "2606.18208"
 venue: "arXiv 2026"
 summary: "LoopWM（循环世界模型）在每个环境步内反复调用共享参数的 Transformer 细化潜状态，并通过谱约束、可变迭代深度与延迟解码优化多步世界预测；目前主要在文本交互基准评测。"
 related:
+  - ../concepts/general-looped-models.md
   - ../entities/awesome-world-models.md
   - ../overview/sun-awesome-wm-technology-map.md
   - ../methods/generative-world-models.md
@@ -172,6 +173,8 @@ flowchart TD
 4. **把线性矩阵谱收缩当作全部系统无条件稳定**：非线性残差、估计误差和现实控制接口仍需独立验证。
 
 ## 关联页面
+
+- [General Looped Model（通用循环模型）](../concepts/general-looped-models.md)：区分本文证据、报道中的上位称呼与智谱独立的 GLM-5.4。
 
 - 纵深路线：[WAM Stage 1 世界模型基座](../../roadmap/depth-wam.md)
 - 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
