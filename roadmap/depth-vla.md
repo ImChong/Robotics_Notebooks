@@ -124,6 +124,9 @@ flowchart LR
 
 ### 推荐读什么
 
+
+- [Xbotics 第11讲：VLA 模型导览](../wiki/entities/xbotics-handbook-lecture-11.md) — 配合第 8 讲的闭环例子，按动作接口和评测口径比较 OpenVLA 与 π₀ 家族。
+
 - [stereovlm](../wiki/entities/paper-stereovlm.md) — 标定双目几何与视觉语言骨干的空间推理。
 - [WALL-OSS-1.0：原生 VLA 预训练与多分支动作生成](../wiki/entities/wall-oss-1-0.md) — 自变量 Qwen3.5 原生语言/视觉/动作预训练，Action Expert + RTC、Lite/Nano/Gen/AR 家族；区分 312 项零样本真机 55.1% 与 X2Real 仿真 67.55 分，API 可申请但 1.0 代码/权重未核实。
 - [BiCAT：双臂协调动作分词](../wiki/entities/paper-bicat.md) — 共享 token 原语、跨臂注意力与两块动作预测，补齐离散动作接口。
@@ -216,6 +219,8 @@ flowchart LR
 
 ### 推荐读什么
 
+
+- [Xbotics 第12讲：VLA 微调实战](../wiki/entities/xbotics-handbook-lecture-12.md) — 结合仿真与硬件部署检查数据和模型输出，而非只看训练损失。
 - [Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](../wiki/entities/paper-embo-harness.md) — 模型直接作为策略时，比较视觉输入、动作接口和辅助 VLA 的贡献。
 
 - [intrinsic-core](../wiki/entities/intrinsic-core.md) — 本地运行时、硬件抽象和工业部署接口的工程参考。

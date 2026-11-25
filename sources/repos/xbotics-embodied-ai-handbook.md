@@ -8,7 +8,7 @@
 - **入库日期**: 2026-10-12（核查对象：`main` 分支，HEAD `aa0e14f`，提交日 2026-10-04）
 - **姊妹仓库**: [Xbotics-Embodied-Guide](xbotics-embodied-guide.md)（全局路线 / 公司图谱）；本仓是其"动手跑完整闭环"的配套课程
 - **代码：** 同仓 `code/`（见下「开源范围核查」）
-- **项目页：** 未发现独立项目页；仓库另有 `docs/github-pages` 分支（入库日未核实是否已部署站点）
+- **项目页：** https://xbotics-embodied-ai-club.github.io/Xbotics-Embodied-AI-Handbook/（2026-11-25 已核对官方教程站；历史核查见下）
 
 ## 2026-11-02 补充核查
 
@@ -17,6 +17,10 @@
 ## 2026-11-24 第10讲增量核查
 
 - [课程原文与源码归档](../courses/xbotics-handbook-lecture-10.md)：本次精读 ACT、Diffusion Policy、Flow Matching 章节及 ACT 训练/推理脚本；版本固定为上游 342247fb71dd0ee15386b6eab80543c50593d3c1，LeRobot v0.5.1。仅对第10讲记录通读，不将此标记扩展到整套课程。
+
+## 2026-11-25 全书索引核查
+
+以[官方教程站](../sites/xbotics-embodied-ai-handbook-site.md)与固定版本 Markdown 为主，逐讲核查原文。课程主节点连接 21 个独立知识节点，执行入口与复现边界分开记录。历史核查结论仅适用于其记录日期。
 
 ## 定位
 
