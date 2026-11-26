@@ -2,9 +2,10 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-11-24
+updated: 2026-11-26
 status: complete
 related:
+  - ../entities/paper-agentic-2609-27720.md
   - ../entities/paper-mcp-spatial-semantic-navigation.md
   - ../entities/paper-mosu2.md
   - ../entities/paper-vtinstructor.md
@@ -253,6 +254,7 @@ flowchart LR
 
 ## 与其他页面的关系
 
+- **多机关系导航**：[CoRelNav](../entities/paper-agentic-2609-27720.md) 将两车的同实例证据用于核验终点关系；以任务语义和缺失观测联合分配前沿，区分仿真真值感知与双车真机示例。
 - **技术地图**：[VLN 10 篇论文技术地图](../overview/vln-10-papers-technology-map.md) — 2018–2024 代表性工作按「数据集/平台 → 算法框架」两组入口串读，贯穿减负演进线（R2R → NaVid）。
 - **复现路径**：[VLN 四范式开源复现策展](../overview/vln-open-source-repro-paradigms.md) — VLFM / NavGPT / NoMaD / Uni-NaVid 由浅入深（模块化→LLM→扩散 e2e→导航 VLA）。
 - **零样本统一导航**：[Uni-LaViRA](../entities/paper-uni-lavira.md) — training-free 三层翻译 + TDM/SCB；四任务 × 四真机（arXiv:2605.27582）。
