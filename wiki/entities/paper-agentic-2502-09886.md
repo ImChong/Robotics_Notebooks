@@ -42,6 +42,7 @@ summary: 'Video2Policy: Scaling up Manipulation Tasks in Simulation through Inte
 - [VLA 方法背景](../methods/vla.md)
 
 - [Manipulation](../tasks/manipulation.md)：对照相关方法与适用场景。
+- [强化学习](../methods/reinforcement-learning.md)：对照在合成操作场景中用迭代生成的奖励训练任务策略，再采集轨迹的阶段。
 
 ## 参考来源
 

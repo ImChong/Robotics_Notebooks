@@ -43,6 +43,7 @@ summary: 'SpatialVLM: Endowing Vision-Language Models with Spatial Reasoning Cap
 - [VLA 方法背景](../methods/vla.md)
 
 - [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+- [操作任务（Manipulation）](../tasks/manipulation.md)：对照夹爪到目标的距离如何成为抓放轨迹的奖励信号；不把距离估计当成完整策略。
 
 ## 参考来源
 
