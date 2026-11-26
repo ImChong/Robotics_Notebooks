@@ -7,6 +7,8 @@
 
 ## 一、 视觉降噪 (Visual De-cluttering)
 
+- [x] 首页 Hero 行动区补充「增长趋势」入口（2026-11-26）：在 `#hero .hero-actions.tech-only .hero-social-row` 末尾新增「增长趋势」（`star-history.html`，复用已有 `docs/home-i18n.js` 中 `'增长趋势': 'Trends'` 映射），并同步更新 `tests/ui-tech-redesign.test.cjs` 校验 5 个 Hero 按钮顺序与中英切换。
+
 - [x] 首页 Hero 按钮与 01–04 区块序号文案统一（2026-11-26）：将新版首页 `#hero .hero-actions.tech-only` 四个按钮与主体 01–04 区块 `.band-kicker` 文案统一对齐为「探索入口 / 知识检索 / 最新更新 / 核心枢纽」（`03 / 近期变更` 同步改为 `03 / 最新更新`），补充 `docs/home-i18n.js` 中英映射，并更新 `tests/ui-tech-redesign.test.cjs` 校验 Hero 按钮与 01–04 序号文案及中英切换。
 
 - [x] 首页 Hero 行动区按钮重排（2026-11-26）：将新版 `data-ui="tech"` 首页 `#hero .hero-actions.tech-only` 的四个入口按钮按首页 01–04 区块主阅读序调整为「探索入口（蓝色主按钮 `.btn-primary.hero-cta` → `#home-start`）、搜索知识库（`#wiki-search`，保留聚焦与面板描边）、近期变更（`#home-latest-wiki-section`）、核心枢纽（`#home-hub-section`）」，同步补充 `docs/home-i18n.js` 英文翻译并在 `tests/ui-tech-redesign.test.cjs` 增加按钮顺序与中英切换回归测试。
