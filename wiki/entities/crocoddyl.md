@@ -262,6 +262,37 @@ flowchart LR
   Out --> Down["下游用途：离线参考规划 / NMPC 求解内核 / 交由 TSID 或 WBC 高频闭环执行"]
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Ex as 示例脚本 (quadruped_gaits_fwddyn.py)
+  participant Gait as SimpleQuadrupedalGaitProblem
+  participant Prob as ShootingProblem (shooting.hxx)
+  participant Base as SolverAbstractTpl::solve
+  participant FDDP as SolverFDDPTpl (fddp.hxx)
+
+  Ex->>Gait: createWalkingProblem(...) 构建多阶段接触 ShootingProblem
+  Ex->>FDDP: 构造 SolverFDDP(problem) 并分配运行/终端数据
+  Ex->>Base: solve(xs, us, maxiter)
+  loop 每次迭代 iter_ < maxiter
+    Base->>FDDP: computeDirection(recalcdir_)
+    FDDP->>Prob: calcDir() 刷新动力学与代价导数
+    FDDP->>FDDP: backwardPass() (含约束时叠加 linearRollout / batchPass / updateDir)
+    Base->>FDDP: expectedImprovement() & updateMeritFunction()
+    loop 线搜索 alphas_ 步长试探
+      Base->>FDDP: tryStep(steplength_) -> computeCandidate()
+      FDDP->>Prob: forwardPass() -> feasShootForwardPass() 前向积分 (calc)
+      Base->>FDDP: checkAcceptance() 判断 Goldstein / Armijo 接受条件
+    end
+    Base->>FDDP: stoppingCriteria() 与正则化调节 (increase/decreaseRegularization)
+  end
+  Ex->>Ex: 读取 solver.xs / solver.us / solver.K 并可视化
+```
+
+核对源码：`loco-3d/crocoddyl`（`devel` 分支）`examples/quadruped_gaits_fwddyn.py`、`bindings/python/crocoddyl/utils/quadruped.py`、`include/crocoddyl/core/solver-base.hxx`、`include/crocoddyl/core/solvers/fddp.hxx` 与 `include/crocoddyl/core/optctrl/shooting.hxx`。
+
 ## 局限与常见误区
 
 - 论文评测**刻意忽略摩擦锥与力矩限制**，不等式约束只能用惩罚 / 有效集 / 增广拉格朗日处理（论文将其列为后续工作）；README 的后续论文列表（如 Control-Limited DDP）才处理控制界。

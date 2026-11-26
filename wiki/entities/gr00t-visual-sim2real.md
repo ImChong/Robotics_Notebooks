@@ -102,6 +102,43 @@ flowchart TB
   distill --> onnx --> g1
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `NVlabs/GR00T-VisualSim2Real` 仓库 `main` 分支源码核对绘制（`gr00t/rl/train_agent_trl.py`、`gr00t/rl/eval_agent_trl.py`、`gr00t/rl/trl/trainer/{ppo_trainer.py,ppo_trainer_homie_api.py,distill_trainer.py,distill_trainer_obj_pred.py,distill_trainer_obj_pred_homie_api.py}`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant TR as train_agent_trl.py (accelerate + Hydra)
+  participant SIM as Isaac Sim / Isaac Lab (AppLauncher)
+  participant ENV as custom_instantiate(config.env)
+  participant TRN as TRLPPOTrainer / TRLDistillTrainerObjPredHomieAPI
+  participant WBC as HIMActorCritic (homie_walk / homie_stand)
+  participant EV as eval_agent_trl.py
+
+  TR->>SIM: 初始化 Accelerator，AppLauncher 启动 Isaac Sim 5.1
+  TR->>ENV: custom_instantiate(config.env) 构建 Unitree G1 43-DoF 任务环境
+  alt 阶段1 Teacher (use_dagger=False)
+    TR->>TRN: 构建 PPOStateActor + PPOCritic 与 TRL PPO Trainer
+  else 阶段2 Student 蒸馏 (use_dagger=True)
+    TR->>TRN: 构建视觉 PPOVisionStateActor* 与冻结教师 ref_model (PPOStateActorFixSigma)
+  end
+  TR->>TRN: trainer.train()，先执行 env.reset_all()
+  loop 训练批次 (num_total_batches)
+    TRN->>WBC: _rollout_step() -> policy_step() 经 PolicyAndValueWrapper* 调用 Homie walk/stand 输出底层关节动作
+    WBC->>ENV: 执行物理步并收集 obs_dict (含 RGB/特权状态)
+    opt DAgger 蒸馏
+      TRN->>TRN: ref_model.act_inference(teacher_obs) 生成监督动作 gt_actions
+    end
+    TRN->>TRN: _get_rollout_data() 并执行 PPO / DAgger BC (+ obj_pred) 小批次更新
+  end
+  EV->>TRN: eval_agent_trl.py 加载 checkpoint 并初始化 Trainer
+  opt num_envs == 1
+    EV->>EV: 调用 export_policy*_as_onnx() 导出 model_step_*.onnx
+  end
+  EV->>TRN: trainer.eval() 执行评测回放
+```
+
 ## 两个研究项目
 
 ### VIRAL — Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation

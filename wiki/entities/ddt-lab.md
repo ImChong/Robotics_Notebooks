@@ -63,6 +63,38 @@ flowchart LR
   C --> P[play 可视化]
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `DDTRobot/DDT_Lab` 仓库 `main` 分支源码核对绘制（`scripts/np3o/train.py`、`scripts/np3o/play.py`、`source/ddt_lab/ddt_lab/algorithms/np3o/{wrapper.py,runner.py,np3o.py,actor_critic.py}`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as train.py / play.py
+  participant SIM as Isaac Sim (AppLauncher)
+  participant ENV as ManagerBasedRLEnv + IsaacLabNP3OWrapper
+  participant RUN as OnConstraintPolicyRunner (runner.py)
+  participant ALG as NP3O + ActorCriticBarlowTwins
+
+  CLI->>SIM: AppLauncher(args_cli) 启动仿真，解析 gym.spec(task) 的 np3o_cfg_entry_point
+  CLI->>ENV: gym.make(task) 加载 ddt_ros2_control URDF，包装 IsaacLabNP3OWrapper
+  ENV->>ENV: 识别 policy (B,T,D) 与 critic (B,D) 观测，按需构建 CostManager
+  CLI->>RUN: 创建 OnConstraintPolicyRunner，初始化 ActorCriticBarlowTwins 与 RolloutStorageWithCost
+  loop 训练迭代 (train.py -> runner.learn)
+    RUN->>ALG: alg.act(obs, critic_obs, infos) 经 BarlowTwins 历史编码与 Actor 采样动作
+    ALG->>ENV: env.step(actions)
+    ENV-->>RUN: 返回 policy_obs, critic_obs, rewards, costs, dones
+    RUN->>ALG: compute_returns() + compute_cost_returns() + update_k_value() + alg.update()
+    RUN->>RUN: 周期保存 model_<it>.pt 与 TensorBoard 日志
+  end
+  CLI->>RUN: play.py 调用 runner.load(ckpt, load_optimizer=False)
+  RUN->>ALG: actor_critic.save_torch_jit_policy(export_dir)
+  ALG-->>CLI: 经 _InferenceWrapper 导出双输入 (nn_input0, nn_input1) 的 policy.pt 与 policy.onnx
+  opt 未指定 --export_policy 时继续仿真回放
+    CLI->>ENV: policy(obs) -> env.step(actions)
+  end
+```
+
 ## 工程实践
 
 1. 对齐依赖：**Isaac Sim 5.1 · Isaac Lab v2.3.0 · Python 3.11 · CUDA 12.x**。

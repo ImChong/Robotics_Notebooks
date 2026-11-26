@@ -62,6 +62,35 @@ flowchart LR
   Sim["AWSIM 仿真与车队级标定"] --> Ctrl
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Dev as 启动命令 (docker compose / ros2 launch)
+  participant Entry as docker/docker-entrypoint.sh
+  participant Launch as autoware_launch (e2e / planning_simulator)
+  participant Core as autoware.launch.xml
+  participant Comp as 核心组件 (map / sensing / loc / perc / plan / ctrl)
+  participant Sim as 仿真器 (AWSIM / tier4_simulator_component)
+
+  Dev->>Entry: 启动容器并配置 DDS 网络参数与 ROS 环境
+  Entry->>Launch: ros2 launch autoware_launch e2e_simulator / planning_simulator
+  alt 端到端仿真 (e2e_simulator.launch.xml)
+    Launch->>Sim: 对接 AWSIM (直发 autoware_msgs) 或 autoware_carla_interface
+    Launch->>Core: 包含 autoware.launch.xml (启用 sensing/loc/perc/plan/ctrl)
+  else 规划仿真 (planning_simulator.launch.xml)
+    Launch->>Core: 包含 autoware.launch.xml (关闭 sensing/loc/perc)
+    Launch->>Sim: 启动 tier4_simulator_component 与 perception_simulation
+  end
+  Core->>Comp: 加载 global_params、pointcloud_container 与 vehicle/map/plan/ctrl
+  Sim-->>Comp: 发布仿真传感器/车辆状态与模拟感知目标
+  Comp->>Comp: 感知/定位 -> 规划 -> 控制闭环计算
+  Comp-->>Sim: 下发控制指令并刷新 RViz2 可视化
+```
+
+核对源码：`autowarefoundation/autoware` 为元仓库（源码由 `repositories/autoware.repos` 经 `vcs import` 拉取），实际入口核对自 `src/README.md`、`repositories/autoware.repos`、`docker/docker-entrypoint.sh`、`docker/examples/demos/planning-simulator/docker-compose.yaml`、`docker/examples/demos/awsim/docker-compose.yaml` 及 `autowarefoundation/autoware_launch`（`0.53.0`）的 `planning_simulator.launch.xml`、`e2e_simulator.launch.xml` 与 `autoware.launch.xml`。
+
 ## 常见误区或局限
 
 - **误区：Autoware = Nav2 升级版** — 架构目标、地图表示、法规流程不同，不可简单替换。

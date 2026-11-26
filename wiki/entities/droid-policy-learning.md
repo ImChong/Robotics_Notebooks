@@ -63,6 +63,33 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Cfg as droid_runs_language_conditioned_rlds.py
+  participant Train as robomimic/scripts/train.py
+  participant RLDS as octo / rlds_utils.py
+  participant Algo as algo_factory (DiffusionPolicyUNet)
+  participant TrainUtil as TrainUtils.run_epoch (train_utils.py)
+
+  Cfg->>Train: 生成 config 并启动 train(config, device)
+  Train->>RLDS: make_dataset_from_rlds(filter_success, droid_dataset_transform)
+  RLDS->>RLDS: combine_dataset_statistics & make_interleaved_dataset
+  RLDS->>Train: dataset.map(robomimic_transform) -> TorchRLDSDataset / DataLoader
+  Train->>Algo: algo_factory(...) 初始化策略网络 (如 DiffusionPolicyUNet)
+  loop 每个训练 epoch
+    Train->>TrainUtil: TrainUtils.run_epoch(model, train_loader, ...)
+    TrainUtil->>RLDS: next(data_loader_iter) 拉取 RLDS 批次
+    TrainUtil->>Algo: process_batch_for_training() & postprocess_batch_for_training()
+    TrainUtil->>Algo: model.train_on_batch(input_batch, epoch) 执行前向与反向更新
+    TrainUtil->>TrainUtil: model.log_info(info) 记录指标
+  end
+```
+
+核对源码：`droid-dataset/droid_policy_learning`（`master` 分支）`robomimic/scripts/config_gen/droid_runs_language_conditioned_rlds.py`、`robomimic/scripts/train.py`、`robomimic/utils/rlds_utils.py`、`robomimic/utils/train_utils.py` 与 `robomimic/algo/diffusion_policy.py`（注：真机评测由 README 指引在 `droid-dataset/droid` 仓运行 `scripts/evaluation/evaluate_policy.py`）。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

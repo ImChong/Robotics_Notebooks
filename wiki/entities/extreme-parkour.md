@@ -101,6 +101,38 @@ flowchart TB
   STUDENT --> ACT["关节控制 → 实机 A1"]
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Train as train.py / task_registry
+  participant Runner as OnPolicyRunner (on_policy_runner.py)
+  participant PPO as PPO (ppo.py)
+  participant Env as LeggedRobot (legged_robot.py)
+  participant JIT as save_jit.py (HardwareVisionNN)
+
+  Train->>Env: task_registry.make_env() 初始化 Isaac Gym 仿真
+  Train->>Runner: task_registry.make_alg_runner() 创建 OnPolicyRunner
+  rect rgb(235, 245, 255)
+    Note over Runner,Env: Phase 1 — 特权教师训练 (OnPolicyRunner.learn)
+    Runner->>PPO: alg.act(obs, critic_obs, infos, hist_encoding)
+    Runner->>Env: env.step(actions) -> _compute_torques & gym.simulate
+    Runner->>PPO: process_env_step() / compute_returns() / update() & update_dagger()
+  end
+  rect rgb(245, 240, 255)
+    Note over Runner,Env: Phase 2 — 深度视觉蒸馏 (OnPolicyRunner.learn_vision)
+    Runner->>PPO: depth_encoder(infos["depth"], obs_prop_depth) 输出 depth_latent 与 yaw
+    Runner->>PPO: actor_critic.act_inference(obs) 生成 teacher 动作标签
+    Runner->>PPO: depth_actor(obs_student, depth_latent) (delta_yaw_ok 门控 yaw)
+    Runner->>Env: env.step(actions_student)
+    Runner->>PPO: alg.update_depth_actor(...) 监督动作与 yaw 预测头
+  end
+  Train->>JIT: 加载 checkpoint 并导出 traced 权重至 logs/.../traced/
+```
+
+核对源码：`chengxuxin/extreme-parkour`（`main` 分支）`legged_gym/legged_gym/scripts/train.py`、`legged_gym/legged_gym/utils/task_registry.py`、`rsl_rl/rsl_rl/runners/on_policy_runner.py`、`rsl_rl/rsl_rl/algorithms/ppo.py`、`legged_gym/legged_gym/envs/base/legged_robot.py` 与 `legged_gym/legged_gym/scripts/save_jit.py`。
+
 ## 方法栈（提炼）
 
 - **与分模块 classical stack 对比：** 传统跑酷分别精密标定感知 / 执行 / 控制；本文 **单 NN + 仿真 RL** 在 **不改造硬件** 前提下习得多样技能。

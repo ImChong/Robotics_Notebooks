@@ -64,6 +64,36 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序图依据官方仓库 `main` 分支源码核对绘制（`scripts/tracking/train.py`、`scripts/tracking/play.py`、`scripts/amp/train.py`、`scripts/amp/play.py`、`source/engineai_rl_lab/engineai_rl_lab/utils/my_on_policy_runner.py`、`source/engineai_rl_lab/engineai_rl_lab/utils/exporter.py` 及 `README_EN.md`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 训练/回放脚本 (scripts/{tracking,amp}/{train,play}.py)
+  participant SIM as Isaac Sim (AppLauncher)
+  participant ENV as Gym + RslRlVecEnvWrapper
+  participant RUN as MotionOnPolicyRunner / OnPolicyRunner
+  participant EXP as exporter.py + MNN.tools.mnnconvert
+
+  CLI->>SIM: AppLauncher(args_cli) 启动 Isaac Sim 与 Hydra task 配置
+  CLI->>ENV: gym.make(args_cli.task) 并用 RslRlVecEnvWrapper 包装
+  CLI->>RUN: 初始化 Runner (Tracking 用 MotionOnPolicyRunner，AMP 用 OnPolicyRunner)
+  loop 训练阶段 (train.py)
+    RUN->>ENV: learn() 采样并行环境观测与奖励
+    ENV-->>RUN: 返回 obs / rewards / dones
+    RUN->>RUN: 更新 PPO 策略并保存 model_*.pt (Tracking+wandb 时同步导出 ONNX)
+  end
+  CLI->>RUN: play.py 调用 ppo_runner.load(resume_path) 与 get_inference_policy()
+  RUN->>EXP: export_motion_policy_as_onnx() 或 export_policy_to_onnx() 生成 policy.onnx
+  EXP->>EXP: subprocess 调用 python -m MNN.tools.mnnconvert -f ONNX 转为 policy.mnn
+  loop 评测回放 (play.py)
+    CLI->>ENV: actions = policy(obs) -> env.step(actions)
+    ENV-->>CLI: 更新 Isaac Lab 仿真帧
+  end
+```
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。
