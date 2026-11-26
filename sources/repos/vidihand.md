@@ -1,32 +1,16 @@
-# ViDiHand（NTUYWANG103/ViDiHand）
+# ViDiHand 官方共享实现 | ViDiHand and ViDiHand2
 
-> 来源归档（repo）
+- **仓库：** [NTUYWANG103/ViDiHand](https://github.com/NTUYWANG103/ViDiHand) · [核验提交 23cf80c](https://github.com/NTUYWANG103/ViDiHand/tree/23cf80c292f2fb2db20caa1dee96516a63ee30a7)
+- **核验日期：** 2026-11-26；已替换 8 月的占位仓状态。
+- **论文与项目：** [初代论文](../papers/vidihand_arxiv_2606_30308.md) / [初代项目](../sites/vidihand-github-io.md)；[二代论文](../papers/vidihand2_arxiv_2611_30597.md) / [二代项目](../sites/vidihand2-github-io.md)。
+- **核心入口：** `vidihand_v1/inference.py` / `vidihand_v2/inference.py` 的 `load_model()`；根目录 `demo.ipynb`、`demo_gradio/app.py`。
+- **模型文件：** [HF v2 文件目录](https://huggingface.co/WANG-XIXI/ViDiHand/tree/main/vidihand_v2) 显示 `vdm.safetensors`（约 6.07 GB）和 `projector.safetensors`（约 41.3 MB）。MANO 文件通过独立 EgoHandBench 数据仓路径获取；未下载完整权重。
+- **Space：** [HF 源码提交 567da96](https://huggingface.co/spaces/WANG-XIXI/ViDiHand2/tree/567da963c6621176826b823f391194a061aae58c) 的 `app.py` 包装 Gradio，实现 ZeroGPU 调用和 CPU 渲染；未跑托管服务。
+- **开放边界：** 核验到推理实现和公开权重清单；未在共享仓发现训练入口或独立许可文件。第三方组件许可应分别复核。
+- **核对范围：** README、两代推理入口、v2 几何求解、样例 I/O、Space 入口和权重清单；仅静态核验。
+- **通读：** 已完成
 
-- **标题：** ViDiHand — Video Diffusion for Hand Motion Reconstruction
-- **类型：** repo / hand-pose / egocentric / video-diffusion / placeholder
-- **来源：** NTUYWANG103（NTU）
-- **链接：** <https://github.com/NTUYWANG103/ViDiHand>
-- **论文：** [arXiv:2606.30308](https://arxiv.org/abs/2606.30308) — [`sources/papers/vidihand_arxiv_2606_30308.md`](../papers/vidihand_arxiv_2606_30308.md)
-- **项目页：** <https://vidihand.github.io/> — [`sources/sites/vidihand-github-io.md`](../sites/vidihand-github-io.md)
-- **入库 / 复核日期：** 2026-08-13
-- **一句话说明：** 官方代码占位仓；README 写明「Code will be released soon」，尚无可运行训练/推理入口。
-- **沉淀到 wiki：** 是 → [`wiki/entities/paper-vidihand.md`](../../wiki/entities/paper-vidihand.md)
+## 对 Wiki 的映射
 
----
-
-## 开源状态（步骤 2.5）
-
-| 项 | 状态（2026-08-13） |
-|----|-------------------|
-| 训练 / 推理代码 | **待发布**（仅 `README.md`，repo size≈2） |
-| 权重 | 未发布 |
-| 许可证 | 未声明 SPDX |
-| README 承诺 | 「Code will be released soon.」 |
-
-**结论：** **宣称将开源 / 代码待发布**；wiki 勿写「已开源可运行」；源码运行时序图 **不适用**。
-
-## 关联资料
-
-- 论文：[`sources/papers/vidihand_arxiv_2606_30308.md`](../papers/vidihand_arxiv_2606_30308.md)
-- 项目页：[`sources/sites/vidihand-github-io.md`](../sites/vidihand-github-io.md)
-- Wiki：[wiki/entities/paper-vidihand.md](../../wiki/entities/paper-vidihand.md)
+- [初代 ViDiHand](../../wiki/entities/paper-vidihand.md)
+- [ViDiHand2](../../wiki/entities/paper-vidihand2.md)

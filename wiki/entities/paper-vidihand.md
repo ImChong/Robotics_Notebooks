@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, hand-pose, egocentric, video-diffusion, perception, manipulation, embodied-ai, ntu, sjtu]
 status: complete
-summary: "ViDiHand（arXiv:2606.30308，NTU/SJTU）：hand-overlay 微调 Wan2.1-VACE，双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO；ARCTIC/HOT3D/HOI4D SOTA；项目页有 Code 链但仓库仍待发布。"
-updated: 2026-11-15
+summary: "ViDiHand（arXiv:2606.30308，NTU/SJTU）：hand-overlay 微调 Wan2.1-VACE，双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO；ARCTIC/HOT3D/HOI4D SOTA；共享仓已有 v1 推理入口。"
+updated: 2026-11-26
 arxiv: "2606.30308"
 code: "https://github.com/NTUYWANG103/ViDiHand"
 venue: "arXiv 2026"
 related:
+  - ./paper-vidihand2.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../methods/wilor.md
   - ../methods/macrodata-egocentric-hand-action.md
@@ -60,8 +61,8 @@ original: ../../sources/papers/vidihand_arxiv_2606_30308.md
 | 输入 | 全分辨率 **egocentric 视频 clip**（81 帧；特征 21 latent frames） |
 | arXiv | <https://arxiv.org/abs/2606.30308> |
 | 项目页 | <https://vidihand.github.io/> |
-| 代码 | <https://github.com/NTUYWANG103/ViDiHand>（**待发布**） |
-| 开源 | **代码待发布**（截至 2026-08-13：项目页有 Code 链，仓内仅 README「Code will be released soon」） |
+| 代码 | <https://github.com/NTUYWANG103/ViDiHand>（已公开推理入口） |
+| 开源 | **推理已发布**（2026-11-26 复核；未核验完整训练入口） |
 
 ## 流程总览
 
@@ -117,7 +118,19 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-08-13：官方仓 [NTUYWANG103/ViDiHand](https://github.com/NTUYWANG103/ViDiHand) 无可运行训练/推理入口，README 写明代码即将发布）。论文宣称推理路径为：egocentric clip → 单次 VACE 前向取 \(L{=}15,\tau{\approx}0.7\) 特征 → 双分支 decoder → 双手 MANO；待代码落地后按 [`sources/repos/vidihand.md`](../../sources/repos/vidihand.md) 补 `sequenceDiagram`。
+初代入口为 `vidihand_v1.inference.load_model()`，不是后续 [ViDiHand2](./paper-vidihand2.md) 的几何求解模块。官方仓提交 `23cf80c` 静态核对：
+
+```mermaid
+sequenceDiagram
+    participant D as demo.ipynb
+    participant I as utils.io
+    participant V as ViDiHandV1
+    D->>I: load_sample(video, camera_json)
+    D->>V: load_model() and model(sample)
+    V->>I: checkpoint for v1 and resize with intrinsics
+    V->>V: _features in VACE and decode MANO
+    V-->>D: per-frame hand output
+```
 
 ## 工程实践
 
@@ -125,9 +138,9 @@ flowchart TB
 |----|----------|
 | 选型场景 | 需要 **遮挡鲁棒 + 低 jitter** 的 egocentric 双手轨迹标注 / 模仿前置 |
 | 对照基线 | 同输入下先看 [WiLoR](../methods/wilor.md) 是否掉检闪烁；再看 OmniHands 是否仍遮挡崩 |
-| 复现状态 | Watch 官方仓；落地前勿承诺可训练 |
+| 复现状态 | 可按官方入口试推理；未核验训练复现 |
 | 数据协议 | 读 ARCTIC/HOT3D/HOI4D 时用论文 **penalty protocol**（FN 计入占位误差） |
-| 与开源栈分工 | 要立刻跑通 → [Macrodata Hand-Action](../methods/macrodata-egocentric-hand-action.md)；要 SOTA 遮挡叙事 → ViDiHand（待代码） |
+| 与开源栈分工 | 要立刻跑通 → [Macrodata Hand-Action](../methods/macrodata-egocentric-hand-action.md)；要 SOTA 遮挡叙事 → ViDiHand（推理已公开） |
 
 ## 实验与评测
 
@@ -203,6 +216,6 @@ flowchart TB
 ## 推荐继续阅读
 
 - [ViDiHand 项目页](https://vidihand.github.io/)
-- [官方代码仓（待发布）](https://github.com/NTUYWANG103/ViDiHand)
+- [官方代码仓（推理）](https://github.com/NTUYWANG103/ViDiHand)
 - [VACE（Wan2.1 可控视频）](https://arxiv.org/abs/2503.07590) — 本文骨干来源
 - [EgoWAM](./paper-egowam-egocentric-human-wam-co-training.md) — 野外 egocentric 人数据如何进入机器人策略

@@ -135,6 +135,7 @@ flowchart LR
 - [MacroHands](../wiki/entities/macrohands.md) — Ego 单/双目 3D 手部 + 相机位姿上游数据质量；读 Cam-MPJPE、Action MPJPE 与误认率，**不是**机器人重定向器（官方暂未开放代码）
 - [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md) — 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
 - [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md) — 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
+- [ViDiHand2](../wiki/entities/paper-vidihand2.md) — 单目第一视角视频与相机内参 → 公制双手相机系轨迹；是 Stage 2 数据标注源，不是机器人本体重定向或在线控制。
 - [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md) — 质量量化
 - [motion_imitation（四足）](../wiki/entities/motion-imitation-quadruped.md) — `data/motions/` 里的动物片段是四足重定向最容易拿到的起步数据
 - [LaFAN1](../wiki/entities/lafan1-dataset.md) 与 [PAN Motion Retargeting](../wiki/entities/pan-motion-retargeting.md) — 动画侧四足骨架数据（dog set）与人↔狗互映射演示
