@@ -1,8 +1,8 @@
 ---
 type: entity
-tags: [nvidia, research-lab, spatial-intelligence, 3d-perception, world-models, neural-reconstruction, nvidia]
+tags: [nvidia, research-lab, spatial-intelligence, 3d-perception, world-models, neural-reconstruction]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-26
 related:
   - ./paper-axolotl3d.md
   - ./nvidia-gear-lab.md
@@ -18,10 +18,12 @@ related:
 sources:
   - ../../sources/sites/nvidia-spatial-intelligence-lab.md
   - ../../sources/repos/nv_tlabs.md
+original:
+  - ../../sources/sites/nvidia-spatial-intelligence-lab.md
 summary: "NVIDIA Spatial Intelligence Lab（SIL）是 NVIDIA Research 的空间智能研究组：推进 AI 感知、建模并与物理世界交互；公开代码多挂在 GitHub nv-tlabs，代表项目含 Instant NuRec、Kimodo、Gamma-World、ASE 等。"
 ---
 
-# NVIDIA Spatial Intelligence Lab（SIL）
+# NVIDIA 空间智能实验室（NVIDIA Spatial Intelligence Lab, SIL）
 
 **NVIDIA Spatial Intelligence Lab**（门户：<https://research.nvidia.com/labs/sil/>，GitHub：<https://github.com/nv-tlabs>）是 NVIDIA Research 下的 **空间智能** 研究组：目标是把 AI 的 **感知、世界建模与物理交互** 推到可部署的基础技术，而不是只做 2D 识别或纯语言推理。
 
@@ -43,33 +45,26 @@ summary: "NVIDIA Spatial Intelligence Lab（SIL）是 NVIDIA Research 的空间�
 
 ## 为什么重要
 
-- **Real2Sim / 仿真评测上游：** [Instant NuRec](./paper-instant-nurec.md) 把驾驶 clip **秒级** 打成可仿真 3DGS，并证明 AlpaSim **策略排序不变**——直接服务 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) 与 [NuRec](./nvidia-nurec.md) 产品栈。
+- **Real2Sim / 仿真评测上游：** [Instant NuRec](./paper-instant-nurec.md) 把多相机驾驶片段 **秒级** 重建成可仿真 3DGS；在作者评估的五个策略上，AlpaSim 排序与优化版 NuRec 一致，但碰撞率和驶离道路率并不相同——直接服务 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) 与 [NuRec](./nvidia-nurec.md) 产品栈。
 - **机器人数据上游：** [Kimodo](./kimodo.md) 从大规模动捕生成 **G1 / SOMA** 参考轨迹，衔接 [ProtoMotions](./protomotions.md) 与 [SONIC](./nvidia-sonic.md) 跟踪。
 - **生成式世界模型：** [Gamma-World](./paper-gamma-world-multi-agent.md) 等多体可控视频世界模型补 [生成式世界模型](../methods/generative-world-models.md) 的 **空间交互** 维度。
-- **遮挡感知 3D 补全：** [Axolotl3D](./paper-axolotl3d.md) 在 Hunyuan3D-DiT 上统一 **部分点云 + 多视图 + 编辑** 条件，服务 Real2Sim 与场景物体补全（代码待发布）。
+- **遮挡感知 3D 补全：** [Axolotl3D](./paper-axolotl3d.md) 在 Hunyuan3D-DiT 上统一 **部分点云 + 多视图 + 编辑** 条件，服务 Real2Sim 与场景物体补全（核对时官方项目页未公开独立源码入口）。
 - **与 GEAR 互补：** [GEAR Lab](./nvidia-gear-lab.md) 偏通才具身 agent / GR00T / SONIC **系统栈**；SIL 更偏 **几何、重建、4D 与生成式空间先验**。
 
-## 核心结构
+## 核心机制：按输入和产物区分研究方向
+
+官方将研究分为世界仿真、4D 感知、3D/4D 内容创建与编辑，并单列数据 SDK、工具和源码发布。下图按项目的输入与输出组织，不表示这些项目共享模型或必须串联。
 
 ```mermaid
 flowchart TB
-  subgraph sil [Spatial Intelligence Lab]
-    PER[3D/4D 感知\nViPE / GET3D / 3dgrut]
-    REC[神经重建\nInstant NuRec / NuRec]
-    GEN[生成式世界\nGamma-World / Lyra / GEN3C]
-    MOT[人体运动\nKimodo / ASE]
-  end
-  subgraph downstream [本库消费方]
-    SIM[Isaac Sim / NuRec USDZ]
-    POL[策略训练 / 评测]
-    DATA[合成数据 / 演示轨迹]
-  end
-  PER --> REC
-  REC --> SIM
-  GEN --> DATA
-  MOT --> DATA
-  REC --> POL
-  GEN --> POL
+  DRIVE["标定后的多相机驾驶日志"] --> REC["Instant NuRec：前馈神经重建"]
+  REC --> WORLD["静态与动态 3DGS、天空等分层场景"]
+  WORLD --> SIM["AlpaSim：闭环策略评测"]
+  ACTION["每个智能体的动作"] --> GEN["Gamma-World：交互式世界生成"]
+  GEN --> ROLLOUT["同一场景的多视角视频推演"]
+  PROMPT["文本、关键帧或路径约束"] --> MOT["Kimodo：运动学扩散"]
+  MOT --> TRAJ["SOMA / G1 骨架参考轨迹"]
+  TRAJ --> TRACK["ProtoMotions 或 GEAR-SONIC：物理跟踪训练或仿真"]
 ```
 
 ### 代码与项目页怎么找
@@ -77,7 +72,7 @@ flowchart TB
 | 入口 | 用途 |
 |------|------|
 | [research.nvidia.com/labs/sil/](https://research.nvidia.com/labs/sil/) | 实验室门户与 `projects/*` 交互 demo |
-| [github.com/nv-tlabs](https://github.com/nv-tlabs) | 多数开源实现（~121 公开仓） |
+| [github.com/nv-tlabs](https://github.com/nv-tlabs) | 实验室公开实现的入口之一，部分项目也在 NVIDIA 等组织发布 |
 | 各论文 `sources/repos/` | 本库逐步归档的 README 与开源边界 |
 
 ## 本库已索引代表工作
@@ -98,12 +93,12 @@ flowchart TB
 
 | 目标 | 建议 |
 |------|------|
-| 查某 SIL 论文代码 | 项目页 Footer → GitHub；同时搜 `nv-tlabs` 与 `NVIDIA/` |
-| 驾驶 Real2Sim | Instant NuRec CLI → NuRec 容器精修 → Isaac / AlpaSim |
-| 人形运动数据 | Kimodo 生成 → GMR / ProtoMotions |
+| 查某 SIL 论文代码 | 项目页的 Code / GitHub 链接；同时搜 `nv-tlabs` 与 `NVIDIA/` |
+| 驾驶 Real2Sim | 从标定过的驾驶日志重建；需要时做逐场景优化，再在 AlpaSim 单独验证策略绝对风险指标 |
+| 人形运动数据 | 用 Kimodo 生成目标骨架轨迹，再用 ProtoMotions 或 GEAR-SONIC 等验证动态可行性 |
 | 别混淆 SIL | 仿真 **Software-in-the-Loop** 见 [概念页](../concepts/software-in-the-loop.md) |
 
-**开源状态（2026-09-05）：** 实验室 **无单一代码仓**；各项目 **逐仓库** 开源程度不同（见各 `sources/repos/` 步骤 2.5 表）。
+**开源与运行时边界（2026-11-26）：** 门户是研究导航，不是可安装的统一软件，因此本页没有实验室级源码运行时序。模型、数据和许可证逐项目核对，实际运行入口见对应实体页。
 
 ## 局限与风险
 
