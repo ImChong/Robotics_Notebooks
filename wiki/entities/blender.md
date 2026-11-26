@@ -135,6 +135,7 @@ Blender 通过统一的数据块（Mesh/Armature/Action/Scene）与内置 Python
 - [Scenario for Blender](./scenario-blender-plugin.md) — 将 Scenario 云生成与本地 MCP 接入 Blender；生成资产需验证后才能进入仿真。
 - [Blender Skills](./blender-skills.md) — 面向 coding agent 的 Blender 建模、资产检查与导出工作流技能。
 - [3D Gen Studio（ComfyUI 网格生产编排）](./3dgenstudio.md)
+- [Tripo Studio](./tripo-studio.md) — 浏览器生成的网格可用 FBX 导入 Blender，分别检查材质、骨骼蒙皮与尺度；仿真碰撞体要另外验收。
 - [OpenCAL（计算轴向光刻打印机）](./opencal.md)
 - [ComfyUI（节点式生成引擎）](./comfyui.md) — 像素/视频/mesh 生成运行时；常与本页 DCC 精修串联
 - [Manim（程序化数学动画，讲解层互补）](./manim.md)
