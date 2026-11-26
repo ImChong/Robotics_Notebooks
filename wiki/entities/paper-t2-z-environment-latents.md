@@ -1,13 +1,18 @@
 ---
 type: entity
 project_id: t2-z-environment-latents
-tags: [paper, world-model, latent-variable, test-time-training, stanford, cmu, usc]
+tags: [paper, world-model, latent-variable, test-time-training, stanford, cmu, usc, toyota-research]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-26
 arxiv: "2610.22364"
 project: https://t2-z-latent-optimization.github.io/
 code: https://github.com/T2-z-latent-optimization/T2-z
+original:
+  - ../../sources/papers/t2_z_arxiv_2610_22364.md
 related:
+  - ../methods/generative-world-models.md
+  - ../methods/model-based-rl.md
+  - ../concepts/system-identification.md
   - ../methods/vla.md
   - ../concepts/transformer.md
   - ./paper-robot-foundation-model-causal-analysis.md
@@ -20,7 +25,7 @@ sources:
 summary: "T2-z（arXiv:2610.22364）：用测试时交互优化 32 维环境潜变量，让冻结的机器人世界模型适应未观测的物理属性与交互规则。"
 ---
 
-# T2-z：测试时优化环境潜变量以适应机器人世界模型
+# T2-z：测试时优化环境潜变量 / Test-Time Optimization of Environment Latents for Robotic World Models
 
 ## 一句话定义
 
@@ -39,23 +44,33 @@ summary: "T2-z（arXiv:2610.22364）：用测试时交互优化 32 维环境潜�
 
 同一动作的结果会随摩擦、质量、接触规则等隐含条件改变。若世界模型把这些差异都压进单一平均动力学，预测会偏离当前环境。T2-z 用测试时适配吸收环境差异，目标是避免为每个新环境重训整套视频世界模型。
 
+| 字段 | 内容 |
+|---|---|
+| 机构 | 斯坦福大学、卡内基梅隆大学、丰田研究院、南加州大学 |
+| 原文 | [arXiv:2610.22364v1 HTML](https://arxiv.org/html/2610.22364v1) · [PDF](https://arxiv.org/pdf/2610.22364v1)，2026-10-15 |
+| 输出 | 已给定候选动作的未来 RGB；候选选择器是外部环节，不是联合动作生成头 |
+
 ## 核心机制
 
-- **环境潜变量：** 为训练环境学习紧凑的 32 维向量，不需要为每个维度提供“摩擦/质量”等语义标签。
-- **交替训练：** 固定 latent 训练共享动作条件世界模型；冻结世界模型后，再优化每个环境 latent。
-- **测试时适配：** 新环境从新初始化 latent 出发，用一条或多条真实/模拟交互轨迹更新 latent；世界模型保持冻结。
+- **环境潜变量：** 训练时每个环境共享一组 32 维向量；不提供真实摩擦或质量数值。用两套独立的 32→128→3072 投影：一路在视频 DiT 交叉注意力中加入环境 token，另一路加到动作与时间步调制上。初始帧进入视频 VAE 潜空间，动作沿用 BWM 的 14 维输入，关闭文本条件。
+- **交替训练：** 用未来视频 flow matching 损失，先做 300 次模型预热，再以 200/200 步交替更新共享模型与环境表。模型段更新 DiT、动作编码器和两个潜变量投影，视频 VAE 冻结；潜变量段反向冻结共享参数。
+- **测试时适配：** 冻结世界模型，仅用已观察的 support 结果对新环境的 z 求梯度。主实验 40 次更新，学习率按 3.0 / 1.5 / 0.5 / 0.15 各走 10 步；同一 z 才交给未参与适配的 query，避免把候选执行后的结果泄露给选择器。
 - **使用适配结果：** 将 latent 与图像/动作输入联合条件化未来视频预测，供动作选择使用。
 
 ## 流程总览
 
 ```mermaid
-flowchart LR
-  envdata[多环境动作与视频轨迹] --> alternation[交替优化共享世界模型与环境 latent]
-  alternation --> frozen[冻结世界模型]
-  testtraj[新环境测试交互轨迹] --> adapt[测试时优化新环境 latent]
-  frozen --> predict[预测候选动作后果]
-  adapt --> predict
-  predict --> select[下游动作选择]
+flowchart TD
+  Train["按环境分组的视频与动作"] --> Slow["固定环境表，更新共享世界模型"]
+  Slow --> Fast["固定共享模型，拟合各环境 z"]
+  Fast -->|交替训练| Slow
+  Fast --> Model["训练完冻结共享权重"]
+  Support["新环境独立 support：首帧、动作、可见结果"] --> Adapt["只对环境 z 做预测损失反传"]
+  Model --> Adapt
+  Adapt --> Infer["将 z 用于注意力和调制，预测候选动作后果"]
+  Query["独立 query：首帧和候选动作，不给结果"] --> Infer
+  Infer --> Judge["外部评分、选择并实际执行"]
+  Judge --> Outcome["以执行后的实际结果判成功"]
 ```
 
 ## 源码运行时序图
@@ -63,28 +78,38 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  participant Data as Dataset
-  participant Train as t2z/train.py
-  participant WM as World Model
-  participant Latent as Environment Latent
-  participant Infer as t2z/infer.py
-  Data->>Train: 读取环境轨迹与任务配置
-  loop 交替训练
-    Train->>WM: 固定 latent 更新模型
-    Train->>Latent: 冻结模型更新环境编码
+  participant T as t2z/train.py
+  participant L as t2z/training/ours.py
+  participant A as checkpoint 和 context table
+  participant I as t2z/infer.py
+  participant O as t2z/inference/ours.py
+  participant P as BWM/Wan 视频管线
+  T->>L: 预处理环境分组后派发任务配置
+  L->>P: launch_curriculum_grouped_stage1 交替切换可训练参数
+  L->>A: 保存 safetensors 和配套 context table
+  I->>A: 读取匹配的 checkpoint 路径与 context table
+  I->>O: 按环境分组并写 support.jsonl、运行配置及 provenance
+  O->>P: build_pipeline 后冻结共享权重
+  loop 每个未缓存的环境适配组
+    O->>P: _adapt_ttt_state 用 support 预测损失只更新 z
+    O->>O: 缓存适配后的 z
   end
-  Infer->>Latent: 从测试交互优化 latent
-  Infer->>WM: latent 与候选动作条件化预测
-  WM-->>Infer: 返回未来视频预测
+  O->>P: _run_autoregressive 仅用 z 与 query 条件生成预测
+  P-->>O: 输出未来 RGB 视频与评测输入
 ```
 
-训练与推理入口依据官方 README（`t2z/train.py`、`t2z/infer.py`）；数据、Wan2.2-TI2V-5B 基座权重、BWM 初始化 checkpoint 和仿真依赖需要另行准备。
+依据作者仓库 [`c72f051`](https://github.com/T2-z-latent-optimization/T2-z/tree/c72f051f5cffcb1f372a32bc488df273556d39b9) 静态走读。以上是训练和离线视频预测；在线仿真候选筛选另走 [sim_action_selection](https://github.com/T2-z-latent-optimization/T2-z/tree/c72f051f5cffcb1f372a32bc488df273556d39b9/wan_video_action/evaluation/sim_action_selection)，不是同一 CLI。
 
 ## 实验与评测
 
-- 论文覆盖 7 种模拟设置与 4 项真实机器人任务。
-- 摘要报告物体预测误差指标从 15.20 降到 7.00，动作成功率从 33.73% 提升到 72.96%；具体基线、误差定义和成功标准应回到论文主表核对。
-- 消融报告单条测试交互轨迹可用于环境适配；实际所需交互信息量与任务分布有关。
+| 口径 | Standard WM → T2-z | 结果边界 |
+|---|---|---|
+| 仿真 7 项，表 1 | 任务均值动作成功率 37.9% → 74.2%；平均物理误差 12.8575 → 4.7971 | 混合像素、灯分数误差和倾角单位，不称为统一像素误差 |
+| 真机 4 项，表 2 | 任务均值动作成功率 26.47% → 70.80%；平均 ADE 19.30 → 10.85 px | native 主相机的任务跟踪；如 Door Close 22.22% → 55.56%，Stick Balance 20.00% → 83.33% |
+| 交互条数消融，附录 E.1 | Door Close K=1/2/4：22.2% / 55.6% / 55.6%；Light Switch：50.0% / 87.5% / 87.5% | 适配轨迹条数 K 不等于梯度步数；效果取决于交互是否揭示了任务差异 |
+| 计算剖析，附录 E.4 | 单张 H200 中 Friction 的 K=1 加 5 段查询总计 18.09 秒，对比 LoRA TTA 32.73 秒、缓存版 TTT-KQV 37.57 秒 | 25 次生成去噪，排除加载与 MP4 写盘；并非实机端到端控制周期，也非每个候选都重新适配 |
+
+摘要的 33.73% → 72.96% 是从 7 项仿真与 4 项真机结果按任务汇总的口径，不是独立真机结果；摘要误差 15.20 → 7.00 同样是跨任务汇总，指标不能横比。动作成功是**候选集合至少含一个可达标动作**时，选择后真实执行的结果，不等于机器人自行搜索、生成任意控制动作的整体成功率。PCA 只说明特定任务中的环境条件相关结构，不能把 z 的某一维当作经标定的摩擦系数。
 
 ## 与其他工作对比
 
@@ -100,11 +125,16 @@ sequenceDiagram
 - **相对系统辨识：** T2-z 可视为"隐式系统辨识"，省去建模但失去参数的物理可解释性。
 - 各文任务与指标不同，数字不可横比。
 
-## 工程实践与局限
+## 工程实践
+
+- 先以 `t2z/train.py --check-data` 检查任务路径和环境 ID，再安排训练；离线预测需成对提供训练后的 checkpoint 和 context table。摩擦配置默认从表均值开始，40 次适配更新与 25 次视频去噪分别计时。只从候选之前独立的完整轨迹采 support，按 episode 而不只是按行号去重。
+- 先做成对可辨识性试验：固定外观、初始观测和候选动作，只变隐藏物理条件；分开记录 support 采集成本、一次 latent 优化、每个候选推理、和选中动作执行。换工况后重估 z，别把上一环境 cache 当成新环境事实。
+
+## 局限与风险
 
 - 该方法在测试时仍需与新环境交互；它降低模型重训需求，但不意味着零样本知道隐藏物理属性。
 - 潜变量是预测有用的压缩表示，不保证各维对应可解释或可独立控制的物理参数。
-- 官方代码、数据集均已公开；运行还需大体量基座模型与 BWM checkpoint，且 repo 本身不携带它们。
+- 代码 Apache-2.0；公开数据、Wan2.2-TI2V-5B 与 BWM 初始化权重单独获取。未确认 T2-z 成品权重与 context table 的官方下载，也未核实数据授权。发布清单 Light Switch 为 8 环境／80 条 episode，少于论文表 5 的 12 环境／120 条，不能把发布集直接等同于论文全量训练集。已公开的仿真评测不等于提供真机驱动或复现结果。
 - 论文中的多个任务与环境设定需要对照论文表格复现，摘要指标不能单独用于跨论文排名。
 
 ## 结论
@@ -118,6 +148,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) · [模型式强化学习](../methods/model-based-rl.md)：把适配后的模型用于预测和筛选，不要求学习一个直接生成动作的头。
+- [WAM 纵深 Stage 1](../../roadmap/depth-wam.md)：作为可适配的世界侧动力学对照。
 - [VLA](../methods/vla.md)
 - [Transformer](../concepts/transformer.md)
 - [机器人基础模型因果分析](./paper-robot-foundation-model-causal-analysis.md)
