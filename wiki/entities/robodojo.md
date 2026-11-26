@@ -132,6 +132,8 @@ venue: '2026'
 
 ### 与相关基准定位
 
+- [RoboDojo-Mirror](paper-robodojo-mirror.md) 是镜面反事实评测扩展，采用固定策略与相同目标，不应与原套件 verified 榜单合并读数。
+
 | 基准 | 主要对象 | 与 RoboDojo |
 |------|----------|-------------|
 | **RoboDojo** | 通用操纵 **策略闭环成功率**（sim+real） | 本页 |

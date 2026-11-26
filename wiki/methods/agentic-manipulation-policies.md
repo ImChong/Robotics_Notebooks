@@ -122,6 +122,7 @@ Apple 的 RoboLab-120 实验同时变更了模型与 harness，报告 AMP1 + Gem
 
 ## 关联页面
 
+- [ACAP：异步编程智能体团队](../entities/paper-acap.md) — 在同一机器人的多个控制组上调度并行技能，任务依赖与控制权回收同样重要。
 - [HiPhys-RSI：BEHAVIOR 2026 冠军方案](../entities/paper-hiphys-rsi.md)
 - [Apple AMP1 论文与实现](../entities/paper-apple-amp1.md)
 - [VLA 方法](vla.md)

@@ -1,6 +1,7 @@
 ---
 type: entity
 project_id: mit-han-lab-pear-robot-use-rl
+arxiv: "2611.18562"
 project: https://mit-han-lab.github.io/pear-blog/
 code: https://github.com/mit-han-lab/pear
 tags:
@@ -18,7 +19,7 @@ tags:
 status: complete
 original:
   - ../../sources/papers/pear_robot_use_rl_mit_2026.md
-updated: 2026-11-18
+updated: 2026-11-26
 related:
   - ../methods/vla.md
   - ./paper-harness-vla.md
@@ -53,6 +54,7 @@ summary: "MIT HAN Lab PEAR（Post-training Engine for Agentic Robotics）：用 
 
 | 项 | 内容 |
 |---|---|
+| 论文版本 | [arXiv v2 HTML](https://arxiv.org/html/2611.18562v2) / [PDF](https://arxiv.org/pdf/2611.18562v2)；v2 arXiv 修订 2026-11-20，封面日期 2026-11-23 |
 | 机构 | 麻省理工学院（MIT）、加州大学伯克利分校、加州大学圣地亚哥分校、英伟达（NVIDIA）、Inco AI |
 | 模型 | Qwen3.8-27B 推理模型，分三阶段做仿真 RL |
 | 输入 | 任务指令、相机图像、本体状态和之前交互的上下文 |
@@ -133,9 +135,15 @@ sequenceDiagram
 3. **真机路径：** 官方支持 YAM 与 SO-101 的 station；vLLM 服务配置 GB300 或 RTX 5090。单 RTX 5090 的 **NVFP4 推理**不能等同于 BF16 精度评测；不应以此推导该卡具备完整复现训练能力。
 4. **安全前置：** 需配置本体型号、相机、USB-CAN/串口与标定；先执行 `pear-station ... preflight`、静态检查和人工监护下的 smoke test，YAM 文档要求紧急断电装置。不能直接把论文演示当成即插即用的真机控制保障。
 
+## 项目回访：论文 v2 与部署代码更新
+
+- **v2 新增的是 rollout 工程数据，不是新的策略成功率。** 对照 [v1](https://arxiv.org/pdf/2611.18562v1) 与 [v2 附录 A](https://arxiv.org/html/2611.18562v2#A1)，作者报告当前 PEAR 在 8×H100 或 4×GB300 的单节点上约 **11,000 tokens/s**；用冻结的模型内置 MTP（Multi-Token Prediction）层作为 drafter，每步草拟 3 token，平均接受长度 2.4。原模型由未启用 MTP 的训练版本得到，作者报告实际约 **50,000 H100 等效 GPU 小时**；**30,000 是按新版推算，非重训实测**。此吞吐也不是机械臂控制频率。
+- **站点代码独立演进。** 北京时间 11 月 25 日 05:23 的 [`31fd1cf`](https://github.com/mit-han-lab/pear/commit/31fd1cf2052c6fc989579ee77c8046d47fc0a5eb) 调整录制渲染与导出轨迹页；同日 [`7054599`](https://github.com/mit-han-lab/pear/commit/70545994c09c97ff2ba02f8c140bddd2fe64ab90) 让站点的模型客户端在一次会话内重用 HTTP 连接。这两项不是 LIBERO 或 YAM 重跑结果。
+- **权重区分。** [官方模型集合](https://huggingface.co/collections/mit-han-lab/pear) 分列标准版、LIBERO-only、NVFP4 和用于推理的 DFlash2 drafter。DFlash2 不是附录 A 的训练 rollout MTP，量化推理吞吐也不能当成论文 BF16 成功率或闭环延时。代码许可为 [Apache-2.0](https://github.com/mit-han-lab/pear/blob/31fd1cf2052c6fc989579ee77c8046d47fc0a5eb/LICENSE)，不以此替代逐个模型及依赖的许可检查。
+
 ## 实验与评测
 
-下列均为**论文作者报告**，本站未独立执行模型训练、评测或真机实验。
+下列均为**论文作者报告**；v1/v2 的 LIBERO 1.6%→74.4% 和真机 YAM 0/30→18/30 实验数字不变。本站未独立执行模型训练、评测或真机实验。
 
 | 设置 | 结果 | 解读边界 |
 |---|---|---|

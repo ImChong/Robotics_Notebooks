@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-26
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -38,7 +38,7 @@ sources:
   - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 ---
 
-# SuperMimic：用一个可微世界模型扩展人形全身控制
+# SuperMimic：用一个可微世界模型扩展人形全身控制 / Scaling Humanoid Whole-Body Control with One Differentiable World Model
 
 ## 一句话定义
 
@@ -77,7 +77,7 @@ flowchart TB
 
 ## 研究团队开源实现与 CoRL 议程（2026-11-11 核对）
 
-- **代码：** [HybridRobotics/supermimic](../../sources/repos/supermimic-hybridrobotics.md) 已公开 mjlab 基础的世界模型 + 策略训练及回放实现，仓库 README 自称 SuperTrack implementation；本页复用原有论文实体，不另建同名 repo 项目节点。
+- **代码：** [HybridRobotics/supermimic](../../sources/repos/supermimic-hybridrobotics.md) 已公开 mjlab 基础的世界模型 + 策略训练及回放实现，当前 README 明确称其为 SuperMimic 并链接论文，构建在 mjlab 上；本页复用原有论文实体，不另建同名 repo 项目节点。
 - **代码身份边界：** `supermimic.github.io` 论文项目页至本次核对仍未直接链出该仓库，不能断言它包含论文 CoRL 全部训练配置、BONES-SEED 动作资产、checkpoint 和 G1 真机部署代码。以下社区独立实现依然不是研究团队仓库。
 - **训练入口：** `src/supermimic/scripts/train.py` 可选择 `SuperMimic-GenCoord-G1` 或 `SuperMimic-MaxCoord-G1`，从 W&B Registry 或显式 `--motion-file` 获取动作；经 `SuperMimicRunner` 循环采样、缓存、世界模型更新及策略想象更新。
 - **回放入口：** `src/supermimic/scripts/play.py` 从 W&B 取得训练配置与 `actor.pt` / `world_model.pt`，在 native/Viser viewer 中播放；尚未实测。
@@ -118,7 +118,7 @@ flowchart TB
 
 [SuperMimic-Repro-Sim2Real](../../sources/repos/supermimic-repro-sim2real.md) 基于社区复现扩展 mjlab 训练、ONNX 导出、Sim2Sim 和 G1 真机部署，并公开部分模型。作者自报严格论文观测的 LAFAN1 归一化回报为 0.56，增加 anchor 相对位姿后为 0.904；后者不能直接用于该真机部署。仓库还报告 46 秒串联舞蹈与特定动作模型的两次真机成功；这些是社区复现结果，不是原论文实验。数据须另行下载并遵守条款。
 
-下面的时序仅覆盖已检查的入口与关键调用；论文全文、实现细节及完整部署链仍待核实。
+下面的时序仅覆盖社区仓已检查的入口；该复现的完整部署链仍待核实，官方论文 v3 已另行核对。
 
 ```mermaid
 sequenceDiagram
@@ -152,7 +152,7 @@ sequenceDiagram
 
 ## 源码运行时序图
 
-下图逐项对照研究团队代码的入口和调用链：`scripts/train.py`、`runners/supermimic_runner.py`、`learners/wm_learner.py`、`learners/policy_learner.py` 与 `envs/world_model_env.py`。这是**代码静态分析**，不是已运行验证。
+下图逐项对照研究团队代码提交 [`5fb9229`](https://github.com/HybridRobotics/supermimic/commit/5fb92297ab4fe3d86629d9f0c635334791bb0d5f) 的入口和调用链：`scripts/train.py`、`runners/supermimic_runner.py`、`learners/wm_learner.py`、`learners/policy_learner.py` 与 `envs/world_model_env.py`。这是**代码静态分析**，不是已运行验证。
 
 ```mermaid
 sequenceDiagram
@@ -180,10 +180,10 @@ sequenceDiagram
       Buffer-->>Runner: 序列样本
       Runner->>WM: update(data)
       WM->>WM: Dynamics rollout + 状态损失优化
-      Runner->>Policy: update()
-      Policy->>Imagination: sample_initial_states()
-      Imagination->>Buffer: sample cached states
-      Buffer-->>Imagination: 初始状态
+      Runner->>Buffer: sample_start 回放状态与历史
+      Buffer-->>Runner: 想象起点
+      Runner->>Policy: update(starts)
+      Policy->>Imagination: reset(start)
       loop 想象 horizon
         Policy->>Imagination: step(actor(obs))
         Imagination-->>Policy: next obs, reward, termination
@@ -224,6 +224,12 @@ sequenceDiagram
 - **获奖报道：** 2026-11-12，智东西 / 机器人前瞻报道 SuperMimic 获得 CoRL 2026 **Best Conference Paper Award**（最佳会议论文奖）；这是会议奖项新信息，论文方法与指标沿用已有论文精读记录，**不新建重复实体**。
 - **证据边界：** 用户提供的 [Berkeley AI 公告](https://x.com/berkeley_ai/status/2121011370929909886) 本次访问返回 403，尚未直接读到公告正文；[较早的作者成果页](https://abbeel.berkeley.edu/publications.html) 仍写 Best Paper Award Finalist，其更新早于获奖新闻。因此本页以「11 月 12 日获奖报道」表述并保留 [来源核查归档](../../sources/sites/corl-2026-supermimic-award.md)，后续再核对可读的官方奖项名单。
 - **指标口径不变：** 单张 H100 3 小时超过 SONIC 已发布模型回报、GPU-hours 超过千倍差距，以及 129,514 条训练动作库上的失败数，均为作者在所设条件下的实验报告；不等于不同硬件同条件加速比较，也不代表未见动作泛化。
+
+## 2026-11-26 项目回访：论文 v3 与代码更新分开
+
+- **论文版本：** arXiv v3 为 11 月 19 日。与 v2 PDF 对照显示，本次修订主要补充相关工作及引文，未见 3 小时/9.8 小时、训练动作覆盖等主结果变化，不能当作 v3 新增实验。
+- **代码变更：** 默认分支提交 `5fb9229` 在 11 月 21 日北京时间 16:54 修正相对偏航下的速度奖励：对参考线速度和角速度施加与参考姿态相同的偏航旋转，避免把同一个全局航向误差重复罚进局部速度项。见[公开源码归档](../../sources/repos/supermimic-hybridrobotics.md)。不是论文性能提升的证据。
+- **口径：** 129,514 段是训练运动库覆盖；作者与发布版 SONIC 在该库的归一化回报对照不等于同硬件同训练数据。另读 §4.1 的 LAFAN1 受控对照来区分算法收益。
 
 ## 关联页面
 
