@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | GAC：执行前轨迹评审与选择误差
+
+- 新建 arXiv:2611.27804 v1 详情及原始来源归档，接入 WAM 筛选接口对照。
+- 区分候选重选、高质量退化、仿真 2 Hz 与真实墙钟；未发现可核验的 GAC 代码入口。
+
 ## [2026-11-26] ingest | Motubrain 2.0：对齐数据、四流 WAM 与真机 Harness
 
 - 归档官方技术报告、项目页、博客与发布入口。RoboDojo 权重可见，2.0 训练/推理与 Harness 源码待核验。
