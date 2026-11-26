@@ -158,6 +158,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 按行走、步态与稳定性梳理平台的运动控制入口。
 - [人形机器人](./humanoid-robot.md)
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md)
 - [Unitree（宇树科技）](./unitree.md)

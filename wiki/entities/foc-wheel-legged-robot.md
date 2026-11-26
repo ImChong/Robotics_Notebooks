@@ -95,6 +95,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 从轮式驱动和腿部支撑的分工理解整机联调。
 - [simplefoc](../entities/simplefoc.md)
 - [open-source-qdd-actuator-projects](../comparisons/open-source-qdd-actuator-projects.md)
 - [locomotion](../tasks/locomotion.md)

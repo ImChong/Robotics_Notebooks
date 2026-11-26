@@ -152,6 +152,7 @@ flowchart TB
 
 ## 关联页面
 
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) — 结合楼梯、斜坡与外感知失效场景阅读评测。
 - [Privileged Training（特权信息训练）](../concepts/privileged-training.md) — 非对称 AC 与特权 critic 语境
 - [Terrain Adaptation（地形适应）](../concepts/terrain-adaptation.md) — 点云/高度图 → 步态调整的闭环
 - [Locomotion](../tasks/locomotion.md) — 四足 RL 任务地图

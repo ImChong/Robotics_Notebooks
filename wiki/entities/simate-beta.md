@@ -140,6 +140,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从杂乱操作任务理解压缩视觉记忆的用途与评测范围。
 - [Simate](./simate.md) — 公司总览：Sinfra / Sipai / RoboScientist / AutoResearch
 - [RoboDojo](./robodojo.md) — 评测基准与上榜规则
 - [Physical RSI 1.0](./physical-rsi.md) — 同榜后来者，港大 MMLab × Kinetix（不同机构）

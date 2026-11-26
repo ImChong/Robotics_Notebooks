@@ -117,6 +117,7 @@ flowchart LR
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 把仿真参数辨识和实机迁移结果放到四足多步态速度跟踪任务中阅读。
 - [Boston Dynamics](./boston-dynamics.md)
 - [四足机器人](./quadruped-robot.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)

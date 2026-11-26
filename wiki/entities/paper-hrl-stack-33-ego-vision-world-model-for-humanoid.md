@@ -170,6 +170,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模型预测控制](../methods/model-predictive-control.md) — 理解潜空间模型、候选动作采样与滚动时域规划的分工。
 - [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [Ego 世界模型分类](../overview/ego-category-03-world-models.md)

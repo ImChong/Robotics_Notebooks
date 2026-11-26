@@ -160,6 +160,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 理解四阶段 PPO 课程怎样分别训练底座行走与托盘稳定。
 - [Humanoid Loco-Manipulation](../tasks/loco-manipulation.md)
 - [ResMimic](./paper-resmimic.md)
 - [Unitree G1](./unitree-g1.md)

@@ -169,6 +169,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 理解单策略 PPO 如何联合优化全身和物体跟踪。
 - [Loco-Manipulation 任务](../tasks/loco-manipulation.md)
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 - [CoorDex](./paper-coordex-dexterous-humanoid-loco-manipulation.md) — 另一 G1 dexterous loco-manip RL 路线

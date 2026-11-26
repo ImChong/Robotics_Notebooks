@@ -157,6 +157,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 对照真机比赛录像如何作为动作生成的训练示范。
 - 任务：[Humanoid Soccer](../tasks/humanoid-soccer.md)
 - 对照全栈：[ARTEMIS](./paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md)
 - 技能 RL 主线：[PAiD](./paper-notebook-learning-soccer-skills-for-humanoid-robots.md)

@@ -125,6 +125,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 在操作基准中比较缓存刷新频率、推理时间与成功率。
 - [周报汇总：Manipulation 2026-10-05 至 10-09](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)

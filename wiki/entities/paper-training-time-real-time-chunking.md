@@ -133,6 +133,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [π₀ 策略](../methods/pi0-policy.md) — 从策略动作块接口理解训练时动作前缀条件化。
 - [Real-Time Chunking（推理期）](./paper-real-time-chunking.md)
 - [Legato（训练期动力学重塑延续）](./paper-legato.md)
 - [Action Chunking](../methods/action-chunking.md)

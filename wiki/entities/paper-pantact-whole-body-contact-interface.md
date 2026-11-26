@@ -132,6 +132,7 @@ Sweep-and-Stow 评分为扫入物体数量得分与柜门闭合得分之积；�
 
 ## 关联页面
 
+- [扩散策略](../methods/diffusion-policy.md) — 从接触条件生成和执行角度理解扩散策略分支。
 - [34 篇空间落地论文技术地图](../overview/embodied-station-34-papers-spatial-grounding-technology-map.md) — 本文所在盘点
 - [人形 loco-manipulation](../tasks/loco-manipulation.md)
 - [全身控制](../concepts/whole-body-control.md)

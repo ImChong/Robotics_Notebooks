@@ -151,6 +151,8 @@ flowchart TB
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 从状态、动作、转移和奖励的建模视角理解策略迁移。
+- [CRISP Real2Sim](../methods/crisp-real2sim.md) — 用真实到仿真的校准路线对照综述的迁移策略分类。
 - 概念：[Sim2Real](../concepts/sim2real.md)
 - 对比：[Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md)、[四条路线](../comparisons/sim2real-four-routes-identifiability.md)
 - 清单：[Awesome-Real2Sim2Real](./awesome-real2sim2real.md)、[技术地图](../overview/sun-awesome-r2s2r-technology-map.md)

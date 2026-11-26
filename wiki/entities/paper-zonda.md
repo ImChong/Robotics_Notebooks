@@ -175,6 +175,7 @@ flowchart TB
 
 ## 关联页面
 
+- [零样本物体导航](../tasks/zero-shot-object-navigation.md) — 对照零样本物体导航中语义目标核验与路径搜索的分工。
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 任务总览；本页补 **零样本 ObjectNav / 跨楼层 / 动态** 分支
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — 以 VLFM 为地图+语义入口；本文作扩展读法（暂不可跑）
 - [Habitat-Sim](./habitat-sim.md) — HM3D / MP3D ObjectNav 宿主

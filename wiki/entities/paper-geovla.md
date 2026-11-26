@@ -99,6 +99,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 按操控任务的视角与物体尺度变化比较点云几何输入带来的收益。
 - [VLA](../methods/vla.md)
 - [IROS 2026 六趋势地图](../overview/iros-2026-six-trends-technology-map.md)
 - [AnyCamVLA](./paper-anycam-vla.md)

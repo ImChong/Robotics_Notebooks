@@ -108,6 +108,7 @@ flowchart LR
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 从多地形人形行走任务比较未来状态预测的作用。
 - [Denoising World Model Locomotion](./paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [HMI 论文导读](../queries/hmi-papers-coverage.md)

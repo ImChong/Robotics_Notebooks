@@ -104,6 +104,7 @@ flowchart TD
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 理解插入策略的观测、动作和奖励如何服务零样本部署。
 - [Isaac Lab](./isaac-lab.md) — 训练框架总览
 - [Isaac Lab 默认环境](./isaac-lab-default-environments.md) — Factory / FORGE / AutoMate 装配 ID
 - [Sim2Real](../concepts/sim2real.md) — 接触密集 manipulation 迁移

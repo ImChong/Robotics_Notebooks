@@ -96,6 +96,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从障碍物、可达姿态与操作恢复任务理解计划失败后的重规划。
 - [IROS 2026 九篇获奖地图](../overview/iros-2026-awards-9-papers-technology-map.md)
 - [VAP-TAMP](./paper-vap-tamp.md)
 - [轨迹优化 / TAMP 方法页](../methods/trajectory-optimization.md)

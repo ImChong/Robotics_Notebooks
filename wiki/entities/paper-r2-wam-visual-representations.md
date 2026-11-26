@@ -105,6 +105,7 @@ flowchart TD
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 从动作接口对照视觉特征如何影响条件策略。
 - [World Action Models（WAM）](../concepts/world-action-models.md) — WAM 的任务边界与架构族谱
 - [WAM 设计要素受控实证](./paper-wam-design-empirical-study.md) — 视频–动作因果、潜空间与训练目标的消融
 - [ACG-WAM](./paper-acg-wam-geometric-latent-prediction.md) — 训练期加入动作条件几何预测目标

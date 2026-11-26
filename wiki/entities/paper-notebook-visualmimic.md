@@ -157,6 +157,7 @@ flowchart TB
 - **高低层解耦训练与真机零样本迁移：** 先以大规模人类动作经 PPO 训练任务无关的低层关键点跟踪器并冻结，再由特权状态教师经 DAgger 蒸馏至机载 egocentric 深度视觉高层，实机迁移需做深度空洞与延迟随机化。
 
 ## 关联页面
+- [强化学习](../methods/reinforcement-learning.md) — 沿教师到视觉学生的训练链路理解深度输入和全身跟踪。
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 任务语境：[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 运动跟踪同族：[paper-twist.md](./paper-twist.md)

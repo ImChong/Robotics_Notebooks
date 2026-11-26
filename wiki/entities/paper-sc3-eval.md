@@ -184,6 +184,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 在操作任务中对照评估器分数与真机执行成功率。
 - [Generative World Models](../methods/generative-world-models.md) — 生成式 WM 方法谱系
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频即仿真
 - [world-models-route-03-virtual-sandbox](../overview/world-models-route-03-virtual-sandbox.md) — 虚拟评估沙盒路线

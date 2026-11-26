@@ -104,6 +104,8 @@ flowchart LR
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 从任务奖励和观测设计理解视觉跳跃策略。
+- [腿足运动控制](../tasks/locomotion.md) — 在间断地形任务中对照沟壑跨越与落足控制。
 - [Rapid Locomotion RL](./paper-rapid-locomotion-rl.md)
 - [Vision-aided exploration](./paper-vision-aided-dynamic-exploration-mini-cheetah.md)
 - [Sim2Real](../concepts/sim2real.md)

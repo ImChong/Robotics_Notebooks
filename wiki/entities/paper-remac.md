@@ -119,6 +119,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 从 VLA 动作执行接口理解预测块内部及跨块一致性。
 - [Real-Time Chunking](./paper-real-time-chunking.md)
 - [Training-Time RTC](./paper-training-time-real-time-chunking.md)
 - [FutureRTC](./paper-futurertc.md)

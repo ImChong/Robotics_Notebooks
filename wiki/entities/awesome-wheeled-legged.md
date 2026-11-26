@@ -67,6 +67,7 @@ flowchart LR
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 按连续滚动、腿式越障与模式切换梳理清单里的平台。
 - [locomotion](../tasks/locomotion.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)

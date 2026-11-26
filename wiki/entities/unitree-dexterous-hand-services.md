@@ -82,6 +82,7 @@ sudo ./dex1_1_gripper_server --network eth0
 
 ## 关联页面
 
+- [遥操作](../tasks/teleoperation.md) — 从遥操作指令到手部关节反馈理解串口与 DDS 服务的分工。
 - [xr_teleoperate](./xr-teleoperate.md)
 - [unitree_ros2](./unitree-ros2.md) — Dex3 原生 DDS 示例（v0.3.0）
 - [unitree_lerobot](./unitree-lerobot.md)

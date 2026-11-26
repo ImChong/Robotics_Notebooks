@@ -104,6 +104,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [执行器建模](../methods/actuator-network.md) — 从执行器响应角度理解策略迁移时的关节命令一致性。
+- [强化学习](../methods/reinforcement-learning.md) — 区分仿真训练与此项目所处的策略执行环节。
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

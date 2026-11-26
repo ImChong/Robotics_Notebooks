@@ -236,6 +236,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [移动操作](../tasks/loco-manipulation.md) — 从高层运动指令与低层全身控制的分工理解交互。
+- [扩散运动生成](../methods/diffusion-motion-generation.md) — 对照文本条件扩散如何连续更新参考运动。
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 物理安全对照：[SafeFlow](./paper-loco-manip-161-104-safeflow.md)
 - 端到端扩散对照：[ADAPT](./paper-adapt-text-driven-humanoid.md)

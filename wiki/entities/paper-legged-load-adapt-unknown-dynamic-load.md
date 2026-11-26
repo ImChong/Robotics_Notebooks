@@ -186,6 +186,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 对照特权教师到本体学生的训练路径，理解负载估计如何接入策略。
 - [Privileged Training](../concepts/privileged-training.md)
 - [RMA](./paper-rma-rapid-motor-adaptation.md)
 - [Locomotion](../tasks/locomotion.md)

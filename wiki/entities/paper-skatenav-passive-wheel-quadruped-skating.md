@@ -101,6 +101,7 @@ flowchart TD
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 将交替蹬地和滑行与主动轮驱动的混合运动路线对照。
 - [senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md)
 - [locomotion](../tasks/locomotion.md)
 

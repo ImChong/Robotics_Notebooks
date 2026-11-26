@@ -79,6 +79,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [对抗运动先验](../methods/amp-reward.md) — 与已有 DeepMimic 链接一起比较动作先验奖励与参考跟踪。
 - [legged_gym](./legged-gym.md)
 - [AMP_for_hardware](./amp-for-hardware.md)
 - [DeepMimic](../methods/deepmimic.md)

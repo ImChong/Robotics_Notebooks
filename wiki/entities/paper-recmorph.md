@@ -148,6 +148,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 从训练共享策略的角度阅读跨机器人形态的迁移结果。
 - [跨具身策略迁移选型](../queries/cross-embodiment-transfer-strategy.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 - [X-Sim 跨具身](../entities/paper-sa-2505-07096-x-sim-cross-embodiment-learning-via-real-to-sim.md)

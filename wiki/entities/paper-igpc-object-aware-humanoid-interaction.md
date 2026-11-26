@@ -129,6 +129,7 @@ flowchart LR
 
 ## 关联页面
 
+- [教师–学生 DAgger 训练](../methods/teacher-student-dagger-training.md) — 比较交互专家和仅使用部署传感器的学生策略。
 - [人形/四足前沿周报 2026-10-05~10-09](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 - [Loco-manipulation 任务页](../tasks/loco-manipulation.md)
 - [MaskedMimic](./paper-bfm-17-maskedmimic.md)

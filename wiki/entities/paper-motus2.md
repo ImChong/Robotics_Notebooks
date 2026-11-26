@@ -223,6 +223,7 @@ sequenceDiagram
 5. **工程边界：未开源** — 可引方法与 demo，不可当可复现基线；与 [FACT](./paper-fact.md)（失败感知因果训练 + 已开源）作失败数据利用对照。
 
 ## 关联页面
+- [动作分块](../methods/action-chunking.md) — 从动作块生成和执行节拍理解三接口中策略分支的控制输出。
 | 关系 | 页面 |
 |------|------|
 | 范式前作 | [Motus（索引）](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md) |

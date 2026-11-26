@@ -216,6 +216,7 @@ flowchart TB
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 对照视频与动作时序组织如何改变世界模型的预测目标。
 - [RoboICL 具身上下文学习](./paper-roboicl.md) — 冻结多模态策略在执行期利用上下文，不等同训练期 WAM 世界辅助监督。
 - [VLA 纵深](../../roadmap/depth-vla.md) 与 [WAM 纵深](../../roadmap/depth-wam.md) — 对照动作预测、未来世界建模与部署架构的不同边界。
 

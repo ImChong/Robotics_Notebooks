@@ -136,6 +136,7 @@ TouchAnything 同时由 Awesome Egocentric Vision 收录为第 028/249 项，分
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 对照带触觉监督的双手轨迹如何用于操作技能学习。
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)
 - [触觉感知](../concepts/tactile-sensing.md)
 - [Manipulation 任务](../tasks/manipulation.md)

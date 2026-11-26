@@ -68,6 +68,7 @@ flowchart LR
 
 ## 关联页面
 
+- [遥操作](../tasks/teleoperation.md) — 从实时人体输入到机器人全身动作的链路理解该项目。
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Learning Human-to-Humanoid](./paper-hrl-stack-07-learning-human-to-humanoid-real-time.md)
 - [OmniH2O](./paper-hrl-stack-08-omnih2o.md)

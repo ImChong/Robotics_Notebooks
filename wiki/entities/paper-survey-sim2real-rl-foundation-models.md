@@ -154,6 +154,7 @@ flowchart TB
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 结合动力学和观测差异理解 MDP 分类下的强化学习迁移。
 - [AwesomeSim2Real（列表实体）](./awesome-sim2real.md)
 - [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - [Sim2Real（概念）](../concepts/sim2real.md) / [Hub Sim2Real](../overview/hub-sim2real.md)

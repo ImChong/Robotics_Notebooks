@@ -134,6 +134,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 将下肢速度跟踪和稳定行走目标与上身表达分开评估。
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [paper-loco-manip-161-007-exbody2](./paper-loco-manip-161-007-exbody2.md)

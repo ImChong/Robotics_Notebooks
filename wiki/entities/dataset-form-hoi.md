@@ -149,6 +149,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从手物位姿理解操作数据的几何监督。
+- [移动操作](../tasks/loco-manipulation.md) — 从全身姿态与物体位姿的同步标注理解移动操作数据的组织。
 - [CARI4D](./paper-cari4d.md)
 - [HOI-Retarget](./paper-hoi-retarget.md)
 - [CHORD（接触力旋量引导灵巧操作）](./paper-chord-contact-wrench-dexterous-manipulation.md)

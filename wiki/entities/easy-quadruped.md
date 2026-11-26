@@ -168,6 +168,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) — 以模型式 Trot 作为平地对照，了解越障任务为何需要额外的地形反馈。
 - [Stanford Doggo / Pupper](./stanford-doggo-and-pupper.md)
 - [四足机器人](./quadruped-robot.md)
 - [MuJoCo](./mujoco.md)

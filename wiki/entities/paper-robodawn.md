@@ -177,6 +177,7 @@ RoboDojo 路径：`scripts/robodojo/run_vlm_experiment.py` → `evaluation/polic
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从操作任务中的示范条件和可回放轨迹理解评测设定。
 - [VLA](../methods/vla.md)
 - [RoboTwin 2.0](./robotwin.md)
 - [RoboDojo](./robodojo.md)

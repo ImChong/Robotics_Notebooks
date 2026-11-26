@@ -151,6 +151,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从操作基准的长时域表现理解模型剪枝的取舍。
 - [34 篇空间落地技术地图（汇总页）](../overview/embodied-station-34-papers-spatial-grounding-technology-map.md)
 - [世界-动作模型](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)

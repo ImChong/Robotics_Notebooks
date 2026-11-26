@@ -200,6 +200,7 @@ python -m roboscope_kit.runtime.benchmark \
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 对照操作基准中的任务和评分口径，区分仿真吞吐提升与策略能力变化。
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [VLA 方法](../methods/vla.md)
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)

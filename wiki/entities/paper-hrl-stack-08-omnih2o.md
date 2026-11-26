@@ -149,6 +149,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [DAgger](../methods/dagger.md) — 对照特权教师向稀疏输入学生蒸馏时的分布偏移问题。
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 交互与接触扩展：[HDMI](./paper-hrl-stack-06-hdmi.md)

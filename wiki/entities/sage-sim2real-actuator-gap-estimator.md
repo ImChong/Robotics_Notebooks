@@ -128,6 +128,7 @@ flowchart LR
 
 ## 关联页面
 
+- [关节系统辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 对照日志对齐指标与关节辨识所需的激励轨迹和验证数据。
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)

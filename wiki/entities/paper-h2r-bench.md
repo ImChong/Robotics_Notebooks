@@ -144,6 +144,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 对照操作任务中的手物交互，理解跨本体视频评分所测的能力。
 - [世界模型与真实执行 10 篇技术地图](../overview/world-model-exec-10-papers-technology-map.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)

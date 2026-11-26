@@ -155,6 +155,8 @@ flowchart TB
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 对照楼梯和凸台任务所需的足端地形反馈。
+- [强化学习](../methods/reinforcement-learning.md) — 查看盲走到视觉课程如何安排策略训练。
 - 分类：[paper-notebook-category-05-locomotion.md](../overview/paper-notebook-category-05-locomotion.md)
 - 栈地图：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - 对照消融框架：[paper-yahmp.md](./paper-yahmp.md)

@@ -84,6 +84,8 @@ flowchart LR
 
 ## 关联页面
 
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md) — 了解训练前怎样把参考运动映射到 MOS9 的关节结构。
+- [人形足球](../tasks/humanoid-soccer.md) — 从 RoboCup Kid-Size 任务理解本体和控制栈的使用场景。
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)

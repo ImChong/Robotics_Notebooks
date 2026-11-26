@@ -119,6 +119,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从灵巧手任务理解视觉预测怎样服务目标导向规划。
 - [世界动作模型](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [灵巧运动学](../concepts/dexterous-kinematics.md)

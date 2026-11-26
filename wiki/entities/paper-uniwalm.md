@@ -104,6 +104,7 @@ flowchart TD
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 对照联合预测视频和动作时语言记忆的作用。
 - [World Action Models](../concepts/world-action-models.md) — 同时预测视频与动作的模型背景
 - [VLA 方法](../methods/vla.md) — 对照的视觉语言动作模型路线
 

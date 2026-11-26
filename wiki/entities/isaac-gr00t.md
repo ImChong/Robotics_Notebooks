@@ -207,6 +207,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [移动操作](../tasks/loco-manipulation.md) — 从全身移动与物体操作的协调任务理解人形策略开发。
 - 论文 canonical：[paper-hrl-stack-34-gr00t-n1.md](../entities/paper-hrl-stack-34-gr00t-n1.md)  
 - 低层 WBC / SONIC：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)  
 - 数据互操作：[lerobot.md](../entities/lerobot.md)

@@ -164,6 +164,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 对照生成式世界模型内部可并行和复用的计算。
+- [机器人操作](../tasks/manipulation.md) — 在操作基准中联合核对重规划时间与任务成功率。
 - [Manipulation 周报汇总（2026-10-05~10-09）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [Fast-WAM](./paper-fast-wam.md)
 - [OpenWAM（NUS 等）](./paper-openwam.md)

@@ -118,6 +118,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 对照第一视角数据如何提供可用于模仿训练的重建轨迹。
 - [ReViV](./paper-reviv4d.md) — 直接从第一人称 RGB 重建多模态信息
 - [遥操作](../tasks/teleoperation.md) — 第一人称示教采集
 - [Awesome Egocentric Vision](./awesome-egocentric-vision.md) — 原策展索引

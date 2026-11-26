@@ -170,6 +170,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 理解球路预测与全身动作如何进入强化学习闭环。
 - [ANYmal 四足机器人](./anymal.md)
 - [Loco-Manipulation 任务](../tasks/loco-manipulation.md)
 - [人形全身羽毛球 Multi-Stage RL](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md)

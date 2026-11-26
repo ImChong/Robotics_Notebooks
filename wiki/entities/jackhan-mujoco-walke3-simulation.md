@@ -69,6 +69,7 @@ flowchart TD
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 将预训练策略的推理与强化学习训练流程对应起来。
 - [JackHan-Sdu WalkE3 / HumanoidE3 工具链生态](./jackhan-walke3-e3-ecosystem.md)
 - [MuJoCo (物理引擎)](./mujoco.md)
 - [Locomotion](../tasks/locomotion.md)

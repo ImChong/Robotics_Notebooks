@@ -181,6 +181,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 从教师示范到视觉学生的迁移角度理解开门训练。
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md)
 - [VIRAL（论文实体）](./paper-viral-humanoid-visual-sim2real.md)
 - [Sim2Real](../concepts/sim2real.md)

@@ -112,6 +112,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 把候选动作块排序放进操作任务闭环，理解预测进度所对应的行为结果。
 - [VLA 方法总览](../methods/vla.md)
 - [世界动作模型](../concepts/world-action-models.md)
 - [Flow matching 具身策略](../concepts/flow-matching-embodied-policy.md)

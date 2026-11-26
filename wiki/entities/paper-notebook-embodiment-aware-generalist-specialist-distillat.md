@@ -168,6 +168,7 @@ flowchart TB
 | 加新机器人 | 预期流程：新 specialist + 一轮蒸馏；实际成本待代码发布后核实 |
 
 ## 关联页面
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 从跨人形平台的行走控制任务理解统一指令接口。
 - **概念：** [Whole-Body Control](../concepts/whole-body-control.md)
 - **跨具身选型：** [cross-embodiment-transfer-strategy](../queries/cross-embodiment-transfer-strategy.md) — EAGLE 属「多具身联合训练 + 蒸馏压缩」支路
 - **相邻跨本体 WBC：** [XHugWBC](./paper-xhugwbc-cross-humanoid.md)、Paper Notebooks [HugWBC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller.html)

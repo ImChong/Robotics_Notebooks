@@ -104,6 +104,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 了解训练环境中的运动任务与部署目标。
+- [强化学习](../methods/reinforcement-learning.md) — 按观测、动作和奖励理解训练配置。
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

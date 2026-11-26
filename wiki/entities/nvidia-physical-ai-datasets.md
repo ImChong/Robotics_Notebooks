@@ -135,6 +135,8 @@ flowchart TB
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 按策略输入输出定位 GR00T 与遥操作数据在训练中的作用。
+- [机器人操作](../tasks/manipulation.md) — 按操作任务、机器人本体和数据模态筛选集合条目。
 - [Isaac GR00T](./isaac-gr00t.md) — 主要数据消费模型
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — 预重建场景消费
 - [NVIDIA Cosmos](./nvidia-cosmos.md) — 世界模型平台

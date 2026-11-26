@@ -188,6 +188,7 @@ flowchart TB
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 理解单条 VR 示范经仿真重放后如何用于高层行为克隆。
 - 任务页：[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 同类数据生成：[HumanoidMimicGen](./paper-humanoidmimicgen.md)、[DexMimicGen](./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md)
 - 同机构 agent：[Being-0](./paper-loco-manip-161-057-being-0.md)

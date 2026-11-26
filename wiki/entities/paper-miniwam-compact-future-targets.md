@@ -146,6 +146,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 在操作基准中对照紧凑未来表征对任务完成率的影响。
 - [Manipulation 周报汇总（2026-10-05~10-09）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [World Action Models 概念](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)

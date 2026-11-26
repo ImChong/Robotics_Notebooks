@@ -123,6 +123,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 比较异步重规划对操作任务延迟和闭环反馈的影响。
 - [World Action Models](../concepts/world-action-models.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)

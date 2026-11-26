@@ -172,6 +172,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从实际操作闭环理解真实观测更新和异步执行的作用。
 - [Robbyant 家族与 VA 2.0](./robbyant.md)
 - [LingBot-VLA](./lingbot-vla.md)
 - [世界模型](../methods/generative-world-models.md)

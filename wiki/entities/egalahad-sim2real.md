@@ -210,6 +210,8 @@ uv run scripts/tracking_experiment/run_motiondecode_eval.py \
 
 ## 关联页面
 
+- [遥操作](../tasks/teleoperation.md) — 将 Pico/XR 输入放到操作员、指令映射和机器人反馈链路中理解。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 定位 Unitree G1 的动作跟踪与仿真到实机校验。
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [Processor-in-the-loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 该 leaderboard 属于"sim↔real 评测 gap 校准"层：同一 MuJoCo evaluator 统一口径，但不等于真机成功率

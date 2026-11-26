@@ -139,6 +139,7 @@ Student 用 CNN 替换 scandots encoder，并继承 oracle 的 GRU/MLP 权重。
 
 ## 关联页面
 
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) — 按跳台、跨沟和地形变化定位深度视觉学生的适用任务。
 - 路线入口：[感知越障纵深](../../roadmap/depth-perceptive-locomotion.md)
 - 训练范式：[Privileged Training](../concepts/privileged-training.md)、[DAgger](../methods/dagger.md)
 - 四足对照：[Extreme Parkour](./extreme-parkour.md)、[ANYmal Parkour](./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)

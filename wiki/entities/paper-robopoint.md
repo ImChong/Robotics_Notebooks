@@ -97,6 +97,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 将关键点可供性放到操作流水线中，理解它怎样连接指令和末端目标。
 - [PointArena](./pointarena.md)
 - [RoboRefer](./paper-roborefer.md)
 - [VLA](../methods/vla.md)

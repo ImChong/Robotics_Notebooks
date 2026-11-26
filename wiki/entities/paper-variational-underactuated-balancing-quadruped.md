@@ -104,6 +104,7 @@ flowchart LR
 
 ## 关联页面
 
+- [平衡恢复](../tasks/balance-recovery.md) — 从受扰后维持支撑的问题理解两点足约束优化的用途。
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [WBIC+MPC](./paper-wbic-mpc-mini-cheetah.md)

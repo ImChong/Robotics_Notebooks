@@ -140,6 +140,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 从示范数据、训练器和任务评测入口理解训练框架的用途。
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [robot_lab（IsaacLab 扩展框架）](./robot-lab.md) — 命名对照，不同维护方与目标
 - [HoloMotion](./holomotion.md) — 同组织人形运动跟踪栈

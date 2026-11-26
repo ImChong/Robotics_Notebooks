@@ -124,6 +124,7 @@ VLA：π0.5、StarVLA-Qwen3、InternVLA-A1.5、XVLA、Lingbot-VLA-2、Xiaomi-Rob
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 对照操作任务中的配对仿真与真机评测，分析视觉触觉融合的收益。
 - [Manipulation 周报汇总（10.5-10.9）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [触觉感知概念](../concepts/tactile-sensing.md)
 - [视觉触觉融合](../concepts/visuo-tactile-fusion.md)

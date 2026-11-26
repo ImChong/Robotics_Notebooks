@@ -148,6 +148,7 @@ VPP 在[世界动作模型](../concepts/world-action-models.md)谱系中属于�
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 对照未来视觉表征的预测如何经隐式逆动力学变成动作。
 - [星动纪元](./robotera.md)、[M7 VLA 基线](./cn-os-robotera-vla.md)
 - [级联世界模型路线](../overview/world-models-route-01-cascade.md)、[世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md)
 - [VLA](../methods/vla.md)、[WAM](../concepts/world-action-models.md)

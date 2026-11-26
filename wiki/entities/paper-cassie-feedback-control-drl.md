@@ -84,6 +84,7 @@ flowchart LR
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 从步态跟踪、外扰和延迟理解 Cassie 反馈控制评测。
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [DeepRL 动作空间对比 SCA 2017](./paper-deeprl-locomotion-action-space-sca2017.md)
 - [Cassie 迭代式 sim2real](./paper-cassie-iterative-locomotion-sim2real.md)

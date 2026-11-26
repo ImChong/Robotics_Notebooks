@@ -107,6 +107,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 理解轮腿平台的滚动、平衡与跨障任务。
+- [腿足运动控制](../tasks/locomotion.md) — 对照一般腿足系统的机体稳定与地形适应目标。
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

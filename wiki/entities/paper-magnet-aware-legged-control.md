@@ -117,6 +117,7 @@ flowchart LR
 
 ## 关联页面
 
+- [质心 NMPC 与全身控制](../methods/centroidal-nmpc-wbc-stack.md) — 对照常规质心控制栈，查看磁力与磁力矩如何进入动力学和控制约束。
 - [人形与四足周报 2026-10-05 至 10-09](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 - [Locomotion 任务页](../tasks/locomotion.md)
 - [全身控制](../concepts/whole-body-control.md)

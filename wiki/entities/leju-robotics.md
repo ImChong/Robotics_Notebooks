@@ -89,6 +89,7 @@ flowchart LR
 
 ## 关联页面
 
+- [移动操作](../tasks/loco-manipulation.md) — 从轮臂平台的移动与操作分工理解落地场景。
 - [OpenLET](./openlet.md) — LET 数据集与 AtomGit 仓库
 - [LeTools](./letools.md) — 官方 Learning / Skills 软件层
 - [LET-Base-Dataset](./let-base-dataset.md) — HF 真机操作集

@@ -241,6 +241,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 理解高程信息如何进入训练和部署时的落脚适配。
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — BFM 范式与 goal-conditioned 线
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — WBT 六阶段与感知扩展
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) — 感知楼梯/块体任务索引
