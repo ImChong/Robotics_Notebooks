@@ -242,6 +242,7 @@ flowchart LR
 
 - [AFFECT：动作响应忠实度训练](../wiki/entities/paper-affect-action-effect-matching.md) — 区分生成逼真与真实动作后果，适合作为执行前模型评估。
 - [WAM-Policy：四足生成策略适配与加速](../wiki/entities/paper-wam-policy.md) — OPSD/M-OPD 让生成式策略进入四足全身控制，注意仿真与 Go2 真机落差。
+- [GAC：通用动作评审器](../wiki/entities/paper-generalist-action-critic.md) — **Stage 4 部署前筛选边界对照**：仅在拒绝原选时重排固定候选，不生成动作；区分 NAVSIM 恢复、原高分退化和等待评审的 HUGSIM 仿真。
 - [ThinkWAM：提议—再思考—精炼](../wiki/entities/paper-thinkwam-2611-21258.md) — 执行前以预测未来与动作残差重新生成动作；两遍推理的真机 101.2 ms 与 LIBERO 153.48 ms 不同口径。
 - [SANA-Robot：混合记忆与异步执行](../wiki/entities/paper-sana-robot-2611-28943.md) — 对照有状态策略如何按相位缓冲历史；区分 115 ms/块、30 Hz 真机执行和低位量化折中。
 - [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)

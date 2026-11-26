@@ -203,6 +203,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [GAC：通用动作评审器](./paper-generalist-action-critic.md) — 对照训练候选生成与打分，以及冻结规划器后的部署前重选。
 - [AutoVLA-D](./paper-autovla-d.md)
 - [DriveTeach-VLA](./paper-driveteach-vla.md)
 - [自动驾驶核心算法技术地图](../overview/autonomous-driving-core-algorithms-series.md)
