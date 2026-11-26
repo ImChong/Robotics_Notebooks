@@ -91,6 +91,7 @@ flowchart LR
 
 - [Xbotics 第9讲：操作数据闭环](../wiki/entities/xbotics-handbook-lecture-09.md) — 从 SO-101 遥操作到 LeRobot episode 及回放质检。
 
+- [机器人训练数据市场：2027 展望](../wiki/comparisons/robotics-training-data-market-2027.md) — 从访谈价格、设备证据到试采验收，明确有效小时和闭环收益。
 - [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) — 六条范式，提到的项目/论文各有一页；本阶段的全景页
 - [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md) — 硬件选型、质量保障与常见陷阱
 - [Panthera-HT 六轴主从遥操平台](../wiki/entities/cn-os-panthera-ht-main.md) — Stage 1 的硬件与 LeRobot 数据采集实例，可观察关节/相机时间对齐与有效样本率

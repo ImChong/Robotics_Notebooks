@@ -100,6 +100,8 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人训练数据市场：2027 展望](../comparisons/robotics-training-data-market-2027.md) — 由同一位维护者发表的访谈观察，和地图名录口径分开，用于提炼采购试验。
+
 - [awesome-physical-ai（aichr）](./awesome-physical-ai-aichr.md) — 开源资料策展，和企业地图互补
 - [具身产业库](./embodied-industry-db.md) — 一手证据与事件时间线补充
 - [海外具身智能实验室地图](../overview/overseas-embodied-ai-labs-landscape-2026.md) — 科研机构维度
