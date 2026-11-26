@@ -9,6 +9,7 @@ related:
   - ./joint-motor-rated-current-overload.md
   - ./motor-torque-speed-curve.md
   - ../overview/humanoid-actuator-102-thermal-and-control.md
+  - ../overview/hub-actuator-drive-chain.md
   - ../queries/humanoid-battery-thermal-management.md
   - ../methods/joint-actuator-parameter-identification.md
   - ../tasks/locomotion.md
@@ -90,6 +91,7 @@ flowchart TD
 
 ## 关联页面与推荐继续阅读
 
+- [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md)：把任务谱、连续出力和整机热保护回填到模组选型与验收。
 - [关节额定电流与过载](./joint-motor-rated-current-overload.md) 与 [转矩—转速曲线](./motor-torque-speed-curve.md)：从关节热边界判断连续工况。
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) 和 [运动任务](../tasks/locomotion.md)：把负载谱和机电参数放进同一套测试。
 - [执行器热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md) 与 [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md)：分别深挖执行器控制侧和电池侧。
