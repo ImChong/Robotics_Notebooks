@@ -108,5 +108,5 @@ sequenceDiagram
 
 ## 继续阅读
 
-- [官方 worktree 使用说明](https://orca.dev/docs/worktrees)
+- [官方 worktree 使用说明](https://orca.dev/docs/model/worktrees)
 - [编码 Agent 的验证闭环](../methods/coding-agent-verification-loops.md)
