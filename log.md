@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | 机器人训练数据 2027 展望：从市场样本到试采验收
+
+- 通读 Sam Padilla 的文章，记录 X 首发和同 ID 镜像，区分供给样本、访谈估价与预测。
+- 新增采购对比和验收流程，接入具身数据 Stage 1 与已收录的 The Robotics Map；引用 T-Rex 论文核对训练阶段。
+
 ## [2026-11-26] ingest | DriveSTA：补核模型与轨迹库、区分 HUGSIM 演示与全量评分
 
 - 复用 #4120 合入的 `paper-drivesta`，补齐 arXiv HTML 与 alphaXiv 入口，并归档四个 checkpoint 的 Hub/本地文件名映射和轨迹库清单。
