@@ -10,8 +10,9 @@ tags:
   - rsi
   - shengshu
 status: complete
-updated: 2026-11-17
+updated: 2026-11-26
 related:
+  - ./paper-motubrain-2.md
   - ./paper-motubrain.md
   - ../concepts/world-action-models.md
   - ../concepts/recursive-self-improvement.md
@@ -22,12 +23,14 @@ original:
 sources:
   - ../../sources/blogs/motubrain-2-official-live-updates.md
   - ../../sources/sites/motubrain-2-live.md
-summary: "Motubrain 2.0 官方公开训练动态（2026-10-21 至 11-14）：预训练、后训练、Agent 任务与 RSI 探索的阶段展示；仅归纳已通读的官方账号帖子，完整直播/视频/2.0 技术报告与源码尚未核验，不继承第一代 Motubrain 指标。"
+summary: "Motubrain 2.0 官方公开训练动态（2026-10-21 至 11-14）：预训练、后训练、Agent 任务与 RSI 探索的阶段展示；仅归纳已通读的官方账号帖子，完整直播/视频未核验；后续技术报告另见独立详情，不继承第一代 Motubrain 指标。"
 ---
 
 # Motubrain 2.0 公开训练动态 | Official Live-Training Updates
 
 > **范围限定**：这是 **2026-10-21 至 11-14 官方账号公开帖子**的独立知识节点，而非直播全量研究报告。此页 `status: complete` 仅表示所列帖子文本及其证据边界已整理；**不表示直播录像、动态仪表盘、算法细节或 2.0 源码已通读/复现**。官方直播站点归档仍明确标注「通读：未完成」。
+
+> **后续发布**：11 月 24 日官方 [Motubrain 2.0 技术报告](./paper-motubrain-2.md) 已公开，另有可核验的 RoboDojo 权重；下文保留 11 月 17 日直播归档的历史证据范围，不覆盖这次报告发布。
 
 ## 一句话定义
 
@@ -89,7 +92,7 @@ flowchart LR
 ## 局限与风险
 
 - **完整直播未读**：直播页面动态正文、逐日训练曲线、视频原始记录尚无法完整核验，见 [站点来源](../../sources/sites/motubrain-2-live.md) 中保留的「通读：未完成」。
-- **无 2.0 可复现实现**：独立论文、checkpoint、训练/推理入口及许可证尚无本次可核验的一手材料。
+- **直播材料不是可复现实现**：本页归档日期未核验报告、checkpoint 或运行入口。后续官方报告、RoboDojo 权重与仍待公开的源码分别见 [技术报告详情](./paper-motubrain-2.md)。
 - **RSI 证据不足**：改动代码 ≠ 在线训练模型权重；展示 RSI highlights ≠ 通过可重复的持久改进评测。
 - **勿继承第一代指标**：arXiv:2604.27792 的 RoboTwin / WorldArena 数字只属于 [Motubrain 第一代论文](./paper-motubrain.md)。
 
@@ -111,4 +114,4 @@ flowchart LR
 ## 推荐继续阅读
 
 - [Motubrain 2.0 / Physical AI Live Lab](https://www.motubrain.com/motubrain2.0-live/) — 如恢复可读，补齐完整直播记录。
-- [Motubrain 第一代](https://arxiv.org/abs/2604.27792) — 唯一可核验的前代论文，不代表 2.0 实测。
+- [Motubrain 第一代](https://arxiv.org/abs/2604.27792) — 前代论文，不代表 2.0 实测。
