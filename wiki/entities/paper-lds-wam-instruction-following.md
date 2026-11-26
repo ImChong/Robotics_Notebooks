@@ -157,6 +157,9 @@ sequenceDiagram
 ## 关联页面
 
 - [世界动作模型](../concepts/world-action-models.md)：定位损失是一种后训练方法，不是新的模型类别。
+- [生成式世界模型](../methods/generative-world-models.md)：LDS 改首帧语义表征，不改视频生成路径或原生动力学损失。
+- [双臂操作](../tasks/bimanual-manipulation.md)：用 Mixed 50 的抓取与放置分别诊断场景指代和物理执行。
+- [具身大模型评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)：对比相同初态的反事实评测与常规任务成功率。
 - [WAM 纵深路线 Stage 3](../../roadmap/depth-wam.md)：比较保留联合骨干、改变监督的设计。
 
 ## 推荐继续阅读
