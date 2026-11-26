@@ -142,6 +142,8 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，预测环境演化。
 - [World Action Models（世界-动作模型）](../concepts/world-action-models.md) — 区分世界预测与行动决策
 - [Video Prediction Policy 2（VPP2）](./video-prediction-policy-2.md) — 视觉预测与动作专家结合的另一条研究路线
 

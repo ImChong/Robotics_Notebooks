@@ -97,6 +97,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与执行约束。
 - [world-action-models](../concepts/world-action-models.md)
 - [generative-world-models](../methods/generative-world-models.md)
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)

@@ -153,6 +153,7 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身移动与接触操作的任务脉络。
 - [PanTact](./paper-pantact-whole-body-contact-interface.md) — 从人类穿戴接触界面示范全身接触任务，与 WBD 的仿真抓取重定位训练形成对照。
 - [Blind Dexterity](./paper-blind-dexterity.md) — 对比纯本体接触探索与本文受粗命令引导的接触重定位。

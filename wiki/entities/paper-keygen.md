@@ -99,6 +99,7 @@ flowchart TD
 
 ## 关联页面
 
+- [扩散策略](../methods/diffusion-policy.md) — 延伸阅读，生成条件动作。
 - [具身研究 12 篇（恢复/WAM）技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md)
 - [Manipulation](../tasks/manipulation.md)
 

@@ -92,6 +92,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [manipulation](../tasks/manipulation.md)

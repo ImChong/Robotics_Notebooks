@@ -124,6 +124,7 @@ FineEnvs 的价值在于把 LLM RL 环境工程做成可运行、可对照的配
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 方法范式与训练循环背景
 - [RL Runner](../concepts/rl-runner.md) — 采样、训练与评测 loop 的编排层
 - [Gymnasium](./gymnasium.md) — 单智能体环境 API 基准；FineEnvs 中部分实现使用相关抽象

@@ -102,6 +102,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，理解视觉与语言条件化策略。
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

@@ -102,6 +102,7 @@ flowchart TB
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [RoboHarness](./paper-robo-harness.md)
 - [Self-CriTeach](./paper-self-criteach.md)
 - [机器人操作任务](../tasks/manipulation.md)

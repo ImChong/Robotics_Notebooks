@@ -114,6 +114,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Reward Design（奖励设计）](../concepts/reward-design.md)：进度势函数属于势函数奖励塑形，可对照一般奖励设计原则。
 - [Reinforcement Learning（强化学习）](../methods/reinforcement-learning.md)：论文通过 RL 策略优化验证进度信号。
 - [MPBRS（奖励塑形）](./paper-mpbrs-humanoid-reward-shaping.md)：同属 potential-based shaping，但任务和奖励构造不同。

@@ -93,6 +93,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [locomotion](../tasks/locomotion.md)
 - [motion-retargeting](../concepts/motion-retargeting.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)

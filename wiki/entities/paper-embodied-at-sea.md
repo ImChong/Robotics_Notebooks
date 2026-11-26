@@ -100,6 +100,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [embodied-data-collection-four-layers-taxonomy](../concepts/embodied-data-collection-four-layers-taxonomy.md)
 - [imitation-learning](../methods/imitation-learning.md)
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)

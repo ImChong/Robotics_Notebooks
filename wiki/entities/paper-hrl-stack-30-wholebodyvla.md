@@ -120,6 +120,7 @@ WholeBodyVLA 在「为什么重要」里主要针对传统解耦 VLA（固定臂
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [Loco-Manip 接触分类 05：VLA 与世界模型调用](../overview/loco-manip-contact-category-05-vla-world-models.md)
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [VLA](../methods/vla.md)

@@ -203,6 +203,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [FACT（Failure-Aware Causal Training）](./paper-fact.md) — 同缩写、不同论文；以失败轨迹训练世界–动作模型。
 - [VT-WAM（视觉–触觉–动作模型）](./paper-vt-wam-visuotactile-contact-rich.md) — 对照接触信号如何进入动作策略。
 - [T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) — 本文主基线：机器人触觉 play 数据 + 触觉 VQ-VAE 的反应式灵巧策略。

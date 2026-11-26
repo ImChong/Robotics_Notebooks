@@ -119,6 +119,7 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [过程奖励建模](../concepts/progress-reward-modeling.md) — 进度信号的输出形态与效用评测
 - [Reward Design](../concepts/reward-design.md) — 与手工奖励和偏好奖励的关系
 - [TOPReward](./paper-topreward.md) — 基于 VLM token 概率的奖励路线

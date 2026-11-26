@@ -107,6 +107,7 @@ BiHOI 以 32 个校准 RGB 视角采集 1,575 段、覆盖 229 个物体和 14.7
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [灵巧操作中的接触丰富交互](../concepts/contact-rich-manipulation.md)
 - [Manipulation](../tasks/manipulation.md)
 - [DexMimic](./paper-dexmimic.md)

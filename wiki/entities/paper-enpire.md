@@ -139,6 +139,7 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Agentic coding 操作策略（paper-agentic-coding-manipulation）](./paper-agentic-coding-manipulation.md)：本地 coding agent 泛化操作技能，同属 code-as-policy 线
 - [Karpathy autoresearch](./karpathy-autoresearch.md)：论文借用的 autoresearch 范式
 - [RoboCasa365](./paper-notebook-robocasa365-a-large-scale-simulation-framework-f.md)：仿真评测基准

@@ -163,6 +163,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 三模态对齐
 - [触觉传感](../concepts/tactile-sensing.md) — 力阵列数据轴
 - [VLA](../methods/vla.md) — VTLA 骨干

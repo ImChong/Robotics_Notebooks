@@ -162,6 +162,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [world-action-models](../concepts/world-action-models.md)
 - [whole-body-control](../concepts/whole-body-control.md)
 - [loco-manipulation](../tasks/loco-manipulation.md)

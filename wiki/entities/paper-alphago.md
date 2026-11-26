@@ -86,6 +86,7 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)
 - [强化学习](../methods/reinforcement-learning.md)
 - [MuZero：潜在动态模型与规划](./paper-muzero-planning-latent-dynamics.md)

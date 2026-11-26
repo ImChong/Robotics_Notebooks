@@ -125,6 +125,7 @@ flowchart TD
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 延伸阅读，理解轮式与腿式运动。
 - [DR-WM](./paper-dr-wm.md) · [LynxScenes](./paper-lynxscenes.md) — 云深处同批导航与基准研究
 - [云深处 rl_training](./deeprobotics-rl-training.md) — 同公司 RL 训练工程
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 视觉-语言-动作策略基础

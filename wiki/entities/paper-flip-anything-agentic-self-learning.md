@@ -92,6 +92,8 @@ flowchart TD
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，理解双臂协调。
 - [WICL](./paper-world-in-context-learning-roboscript.md)
 - [SWAM](./paper-swam-cross-modal-alignment.md)
 

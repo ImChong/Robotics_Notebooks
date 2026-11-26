@@ -158,6 +158,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [iCrowdNav](./paper-icrowdnav.md)
 - [导航与 SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md)

@@ -84,6 +84,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与执行约束。
 - [paper-ume-exo](./paper-ume-exo.md)
 - [paper-minimalist-compliance-control](./paper-minimalist-compliance-control.md)
 - [teleoperation](../tasks/teleoperation.md)

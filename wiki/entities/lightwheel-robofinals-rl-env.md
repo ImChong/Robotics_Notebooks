@@ -142,6 +142,8 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，基于奖励优化策略。
 - [光轮智能（Lightwheel）](./lightwheel.md)
 - [RoboFinals 工业仿真评测平台](./lightwheel-robofinals.md)
 - [EgoSuite 第一视角人类数据](./lightwheel-egosuite.md)

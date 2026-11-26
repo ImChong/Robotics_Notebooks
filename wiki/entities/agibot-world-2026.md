@@ -105,6 +105,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [数据入口分类 hub](../overview/agibot-release-category-01-data-entry.md)
 - [模仿学习](../methods/imitation-learning.md)
 

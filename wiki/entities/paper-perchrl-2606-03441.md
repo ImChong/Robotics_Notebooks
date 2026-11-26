@@ -164,6 +164,8 @@ PerchRL 把间歇视觉反馈显式纳入策略状态与训练目标：估计器
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，基于奖励优化策略。
 - [多旋翼仿真、规划与控制栈](../overview/multirotor-simulation-planning-control-stack.md) — 视觉栖停在飞行控制栈中的位置
 - [Flightmare](./flightmare.md) — 四旋翼强化学习仿真工具对照
 

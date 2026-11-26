@@ -99,6 +99,7 @@ flowchart LR
 
 ## 关联页面
 
+- [移动操作](../tasks/loco-manipulation.md) — 延伸阅读，协调移动和操作。
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md)
 - [ESI-Bench](./esi-bench.md)

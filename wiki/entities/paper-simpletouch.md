@@ -93,6 +93,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md)：以真机强化学习训练触觉残差，与本文示范训练路线互补。

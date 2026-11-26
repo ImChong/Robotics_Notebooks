@@ -126,6 +126,7 @@ GENMO 从 RGB 视频估计世界坐标人体运动，GMR 再将其映射到 29 �
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md) — 腿式平台行走与操作的耦合任务
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人体动作映射到机器人运动的上游步骤
 - [HDMI](./paper-hrl-stack-06-hdmi.md) — 从人类视频学习全身交互控制

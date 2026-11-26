@@ -148,6 +148,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [Ropedia Xperience 2](./paper-ropedia-xperience-2.md) — 将米制真实场景与第一视角行为对齐的数据基础设施，区别于 W0 的世界模型训练。
 
 - [Holi-World](./paper-holi-world.md) — 用第一视角经验构建时空世界记录。

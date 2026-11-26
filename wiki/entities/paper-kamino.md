@@ -190,6 +190,7 @@ Kamino 把 **闭链约束刚体动力学** 落到 **GPU 批量 RL 可承受** �
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Newton Physics](./newton-physics.md) — 八求解器总览与仿真循环
 - [NVIDIA Warp](./nvidia-warp.md) — JIT/GPU 计算底座
 - [MuJoCo Warp](./mujoco-warp.md) — 开链刚体主后端对照

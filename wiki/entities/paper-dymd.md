@@ -84,6 +84,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与执行约束。
 - [Day 5 导读](../overview/humanoid-motion-intelligence-day5-world-models-decision.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 

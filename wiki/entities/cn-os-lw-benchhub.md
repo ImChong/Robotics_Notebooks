@@ -231,6 +231,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [光轮智能](./lightwheel.md) — 公司主页
 - [Lightwheel RoboFinals](./lightwheel-robofinals.md) — 建在 Arena + BenchHub 上的商业评测平台
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — 下层开源评测框架

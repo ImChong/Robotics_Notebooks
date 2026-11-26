@@ -93,6 +93,7 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [manipulation](../tasks/manipulation.md)
 - [impedance-control](../concepts/impedance-control.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)

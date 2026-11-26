@@ -142,6 +142,8 @@ KIWI 把 **UMI 式无机器人示教** 推到 **room-scale 双臂 + 3DGS**，关
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，理解双臂协调。
 - [演示数据收集指南](../queries/demo-data-collection-guide.md) — IL 采数硬件选型
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md) — 多模态/双手示教
 - [人形训练数据管线](../queries/humanoid-training-data-pipeline.md) — 示教→训练闭环

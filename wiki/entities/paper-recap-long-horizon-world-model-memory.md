@@ -95,6 +95,7 @@ flowchart TD
 
 ## 关联页面
 
+- [动作分块](../methods/action-chunking.md) — 延伸阅读，生成或执行动作序列。
 - [generative-world-models](../methods/generative-world-models.md)
 - [world-action-models](../concepts/world-action-models.md)
 - [functional-taxonomy-world-models](../concepts/functional-taxonomy-world-models.md)

@@ -139,6 +139,8 @@ flowchart LR
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，理解双臂协调。
 - 分类页：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 

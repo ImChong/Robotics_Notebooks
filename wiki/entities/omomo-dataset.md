@@ -84,6 +84,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [OmniRetarget 数据集](./omniretarget-dataset.md)
 - [holosoma](./holosoma.md)

@@ -135,6 +135,7 @@ Atlas R1 的大部分命令区域中，跟踪误差与不使用人体先验的 T
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [人形机器人 locomotion 任务](../tasks/humanoid-locomotion.md)
 - [人形 AMP 与运动先验综述](../overview/humanoid-amp-motion-prior-survey.md)
 - [GaitSpan：从走路到跑步的技能生长](./paper-gaitspan-humanoid-locomotion-walking-running.md)

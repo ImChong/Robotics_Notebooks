@@ -109,6 +109,7 @@ flowchart TD
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
 - [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [落足规划](../concepts/footstep-planning.md)
 - [特权训练](../concepts/privileged-training.md)

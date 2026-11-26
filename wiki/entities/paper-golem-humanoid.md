@@ -120,6 +120,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与执行约束。
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [mjlab](./mjlab.md)

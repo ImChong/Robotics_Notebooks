@@ -100,6 +100,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解人形全身运动任务。
 - [BlinkMimic](./blinkmimic.md)：同机比较及后续社区方法。
 - [SuperMimic](./paper-supermimic.md)：世界模型训练基础及独立复现。
 - [基于模型的强化学习](../methods/model-based-rl.md)：模型内策略优化背景。

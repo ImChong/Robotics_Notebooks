@@ -147,6 +147,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，理解视觉与语言条件化策略。
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [WB-WAM：异构身–手预训练的人形 loco-manipulation WAM](./paper-wb-wam.md)

@@ -115,6 +115,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，理解视觉与语言条件化策略。
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)
 - 同底座跨本体演进：[Being-H](cn-os-being-h.md) 与 [Being-H0.7](../methods/being-h07.md)
 - 同底座触觉扩展：[TTP：可迁移触觉预训练系统](cn-os-ttp.md)

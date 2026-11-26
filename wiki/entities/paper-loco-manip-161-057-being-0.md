@@ -91,6 +91,8 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [移动操作](../tasks/loco-manipulation.md) — 延伸阅读，协调移动和操作。
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)
 - 同路线自动数据扩展后续工作：[DemoHLM：单演示可泛化人形移动操作](paper-loco-manip-161-136-demohlm.md)
 - 同领域人体/全身控制：[BumbleBee：专家到通才人形全身控制](paper-notebook-from-experts-to-a-generalist.md)

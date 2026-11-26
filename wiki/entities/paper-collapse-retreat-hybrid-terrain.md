@@ -91,6 +91,7 @@ flowchart TD
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 延伸阅读，理解轮式与腿式运动。
 - [sim2real](../concepts/sim2real.md)
 - [humanoid locomotion](../tasks/humanoid-locomotion.md)
 - [perceptive locomotion](../../roadmap/depth-perceptive-locomotion.md)

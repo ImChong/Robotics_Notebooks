@@ -98,6 +98,7 @@ flowchart LR
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，基于奖励优化策略。
 - [世界模型与真实执行 10 篇技术地图](../overview/world-model-exec-10-papers-technology-map.md)
 - [接近–安全跟随](./paper-nav-ps-balance.md)
 - [PGIF-MPPI](./paper-pgif-mppi.md)

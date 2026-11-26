@@ -108,6 +108,8 @@ MineDojo-300 含 300 个 Minecraft 目标任务，论文报告每个任务 8 次
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，优化策略。
 - [GameHorizon Suite：游戏理解的多时间尺度数据与评测](paper-gamehorizon-suite.md)
 - [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)

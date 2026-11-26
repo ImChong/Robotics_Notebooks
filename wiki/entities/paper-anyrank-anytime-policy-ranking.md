@@ -96,6 +96,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，预测环境演化。
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [sim-vs-real-eval-gap](../concepts/sim-vs-real-eval-gap.md)
 - [roboarena](../methods/roboarena.md)

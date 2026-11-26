@@ -178,6 +178,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [移动操作](../tasks/loco-manipulation.md) — 延伸阅读，协调移动和操作。
 - [CHAMP](./paper-champ-2611-30449.md)：同样使用 SONIC，但改用异构身体及手部运动预训练与 VLM 跨层路由，对照高层动作生成的选型。
 
 - [从动作生成到人形闭环：方法与证据对比](../comparisons/generative-motion-to-humanoid-closed-loop.md)

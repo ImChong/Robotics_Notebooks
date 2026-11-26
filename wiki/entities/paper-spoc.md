@@ -119,6 +119,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与执行约束。
 - [Sim2Real](../concepts/sim2real.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
 - [RT-1](./paper-rt-1.md)

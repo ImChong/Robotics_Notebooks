@@ -119,6 +119,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [teleoperation](../tasks/teleoperation.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [motion-retargeting](../concepts/motion-retargeting.md)

@@ -93,6 +93,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解全身运动任务。
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)

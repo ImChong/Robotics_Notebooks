@@ -200,6 +200,7 @@ N1.7 无独立论文，以下数字只来自 Isaac-GR00T 主分支 `examples/` �
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，比较策略训练及部署流程。
 - [Isaac-GR00T](./isaac-gr00t.md)
 - [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)
 - [GR00T N1.5](./paper-gr00t-n1-5.md)

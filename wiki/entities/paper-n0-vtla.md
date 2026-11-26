@@ -149,6 +149,7 @@ flowchart TB
 
 ## 关联页面
 
+- [动作分块](../methods/action-chunking.md) — 延伸阅读，生成或执行动作序列。
 - [NeoteAI](./neoteai.md) · [𝒩₀-Foundation](./paper-n0-foundation.md) · [𝒩₀-TWAM](./paper-n0-twam.md)
 - [VLA](../methods/vla.md) · [TACO](./paper-taco-tactile-wm-vla-posttrain.md)
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)

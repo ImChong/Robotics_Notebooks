@@ -87,6 +87,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [CARLA](./carla.md)
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
 - [强化学习](../methods/reinforcement-learning.md)

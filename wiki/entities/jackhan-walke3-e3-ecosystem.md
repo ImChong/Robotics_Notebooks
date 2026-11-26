@@ -110,6 +110,7 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Mujoco WalkerE3 手柄仿真](./jackhan-mujoco-walke3-simulation.md)
 - [WalkE3 数据集工具](./jackhan-walke3-dataset.md)
 - [WalkE3 控制器框架](./jackhan-walke3-controller.md)

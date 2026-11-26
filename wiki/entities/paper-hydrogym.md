@@ -179,6 +179,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Designing physics experiments with AI（Nature 2026 Review）](./paper-designing-physics-experiments-with-ai.md) — 另一 Nature 级 **物理域 benchmark** 叙事：Learn2Design-2026 + 可微 Differometor，走昂贵仿真外层优化而非 Gymnasium RL 环
 - [Reinforcement Learning（强化学习方法）](../methods/reinforcement-learning.md) — PPO/DDPG/TD3 与基准文化
 - [Gymnasium（RL 环境 API）](./gymnasium.md) — `FlowEnv` 对齐的接口契约

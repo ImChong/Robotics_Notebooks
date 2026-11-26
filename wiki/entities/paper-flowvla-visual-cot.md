@@ -104,6 +104,7 @@ flowchart TD
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，预测环境演化。
 - [vla](../methods/vla.md)
 - [world-action-models](../concepts/world-action-models.md)
 - [paper-flowvla-pluggable-3d-flow](../entities/paper-flowvla-pluggable-3d-flow.md)

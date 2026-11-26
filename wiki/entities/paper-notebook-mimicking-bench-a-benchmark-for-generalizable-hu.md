@@ -121,6 +121,8 @@ Mimicking-Bench 要：一个**大规模、统一**的人形-场景交互基准�
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解人形全身运动任务。
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，理解跨本体运动映射。
 - 评测闭环：[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页对应其中的全身人形—场景交互基准节点
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
