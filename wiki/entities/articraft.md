@@ -4,7 +4,7 @@ tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-as
 status: complete
 original: ../../sources/sites/articraft3d-github-io.md
 date: 2026-05-16
-updated: 2026-11-17
+updated: 2026-11-26
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
