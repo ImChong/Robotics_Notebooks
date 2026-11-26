@@ -59,6 +59,44 @@ flowchart TD
 - 官方地址：<https://github.com/leducp/KickCAT>（文章给出，本次未独立打开核查）
 - 协议背景见 [EtherCAT 协议基础](../concepts/ethercat-protocol.md)；主站实时调优见 [主站优化指南](../queries/ethercat-master-optimization.md)。
 
+## 源码运行时序图
+
+以下时序图基于仓库 `examples/master/ds402_drive/ds402_sinus.cc`、`lib/master/src/Bus.cc` 与 `lib/master/src/Link.cc` 源码整理，展示主站初始化、冗余链路检测与 1ms DS402 周期控制流程。
+
+```mermaid
+sequenceDiagram
+  participant App as ds402_sinus.cc main
+  participant Drive as CoE::CiA::DS402::Drive
+  participant Bus as kickcat::Bus (Bus.cc)
+  participant Link as kickcat::Link (Link.cc)
+  participant Sock as AbstractSocket (nominal / redundancy)
+
+  App->>Link: createSockets(nom_if, red_if) 与 make_shared<Link>
+  App->>Link: setTimeout(2ms) 与 checkRedundancyNeeded()
+  Link->>Sock: writeFrame(*socket_redundancy_, BRD) 与 readFrame 检查冗余环路
+
+  App->>Bus: bus.init()
+  Bus->>Bus: detectSlaves() -> resetSlaves() -> setAddresses()
+  Bus->>Bus: fetchESC() -> fetchDL() -> requestState(State::INIT)
+  Bus->>Bus: fetchEeprom() -> configureMailboxes() -> requestState(State::PRE_OP)
+  Bus->>Link: broadcastRead / addDatagram / writeThenRead / processDatagrams()
+
+  App->>Drive: drive.setUnits(...) 与 configure(POSITION_CYCLIC)
+  App->>Bus: createMapping(io_buffer) -> requestState(SAFE_OP) -> waitForState
+  App->>Drive: drive.attach()
+  App->>Bus: requestState(OPERATIONAL) 与 waitForState(..., pump_pdo)
+  App->>Drive: drive.enable()
+
+  loop 1ms 周期循环 (Timer::wait_next_tick)
+    App->>Bus: sendLogicalRead -> sendLogicalWrite -> finalizeDatagrams -> processAwaitingFrames
+    Bus->>Link: addDatagram -> sendFrame -> read -> nextDatagram
+    Link->>Sock: 经 socket_nominal_ 与 socket_redundancy_ 收发以太网帧
+    App->>Drive: drive.update() 与 drive.setTargetPosition(initial_rad + delta)
+  end
+
+  App->>Drive: drive.disable() 并轮询总线直到退出使能
+```
+
 ## 局限与风险
 
 - **开源状态：** 文章声明为公开仓库；**本次会话无法访问该仓库，开源程度/许可证未独立核查**，待后续按 ingest 步骤 2.5 补查。

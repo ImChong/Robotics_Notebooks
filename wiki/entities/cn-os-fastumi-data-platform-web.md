@@ -65,6 +65,43 @@ flowchart LR
 2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
 3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
 
+## 源码运行时序图
+
+以下时序图基于仓库内实际脚本 `deploy.sh` 与 `backend_process_clean.sh` 编写；该仓库前端为 `fastumi_data_platform_frontend/` 预构建静态产物，后端 `fastumi_data_platform_backend` 为外部下载的二进制程序，因此时序仅描述部署与进程清理脚本的真实执行过程：
+
+```mermaid
+sequenceDiagram
+  participant User as 操作者
+  participant Deploy as deploy.sh
+  participant Nginx as Nginx (dataplatform.conf)
+  participant Back as fastumi_data_platform_backend
+  participant Clean as backend_process_clean.sh
+
+  User->>Deploy: bash deploy.sh
+  Deploy->>Deploy: 检查 ./fastumi_data_platform_frontend 目录是否存在
+  Deploy->>Nginx: apt install nginx / systemctl start 与 enable nginx
+  Deploy->>Nginx: 生成 /etc/nginx/conf.d/dataplatform.conf (listen 8000, /data/ -> $HOME/fastumi/preview/)
+  Deploy->>Nginx: nginx -s reload 并复制前端至 /var/www/html/fastumi_data_platform_frontend
+  Deploy-->>User: 输出 http://localhost:8000 (user/user123) 并等待确认后端二进制文件
+  User->>Deploy: 按 Enter 确认 ./fastumi_data_platform_backend 就绪
+  Deploy->>Back: chmod +x 并前台运行 ./fastumi_data_platform_backend
+
+  Note over User,Clean: 端口 8887 占用冲突或需清理后端残留进程时
+  User->>Clean: bash backend_process_clean.sh
+  Clean->>Clean: ss -anpltr | grep -w 8887 提取占用 PIDs
+  alt 找到占用 PID 且用户确认 y/Y
+    loop 遍历每个 PID
+      Clean->>Back: kill PID (SIGTERM) -> sleep 1
+      opt ps -p PID 仍存在
+        Clean->>Back: kill -9 PID (SIGKILL)
+      end
+    end
+    Clean->>Clean: ss -anpltr | grep -w 8887 复检端口
+  else 未找到进程或用户取消
+    Clean-->>User: 输出提示并退出 (exit 0 或 exit 1)
+  end
+```
+
 ## 局限与风险
 
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。

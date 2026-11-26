@@ -69,6 +69,25 @@ flowchart LR
 2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
 3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
 
+## 源码运行时序图
+
+以下时序图基于仓库中 `pyproject.toml` 与 `src/booster_assets/motions.py` 的实际内容编写；本仓库为纯静态资产与关节顺序常量定义包，不包含独立 CLI 或仿真控制循环函数：
+
+```mermaid
+sequenceDiagram
+  participant Caller as 上游仿真或训练脚本
+  participant Pip as pip / setuptools.build_meta (pyproject.toml)
+  participant Mod as src/booster_assets/motions.py
+  participant Assets as robots/ (URDF, XML) 与 motions/ (CSV)
+
+  Caller->>Pip: python3 -m pip install -e .
+  Pip-->>Caller: 按 pyproject.toml 构建元数据安装 booster_assets 可编辑包
+  Caller->>Mod: 导入 K1_JOINT_NAMES, T1_JOINT_NAMES, T2_JOINT_NAMES
+  Mod-->>Caller: 返回 22 / 23 / 31 个关节名称列表 (无运行时函数调用)
+  Caller->>Assets: 按路径读取 robots/K1|T1|T2/*.urdf|.xml 与 motions/K1|T1|T2/*.csv
+  Assets-->>Caller: 返回本体描述文件与 50 Hz 重定向轨迹帧 (前 7 列根位姿 + 关节弧度)
+```
+
 ## 局限与风险
 
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。

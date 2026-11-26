@@ -73,6 +73,30 @@ flowchart TD
 2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
 3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
 
+## 源码运行时序图
+
+以下时序图基于仓库资产校验脚本 `tools/check_assets.py` 的实际实现编写：
+
+```mermaid
+sequenceDiagram
+  participant CLI as 维护者 / CI
+  participant Script as tools/check_assets.py
+  participant Manifest as manifest.json
+  participant FS as astribot_s1/ 与 astribot_t1/
+
+  CLI->>Script: python3 tools/check_assets.py
+  Script->>Script: __main__ 调用 check(Path(__file__).resolve().parents[1])
+  Script->>Manifest: 读取 manifest.json 并校验 schema_version == 1
+  loop 遍历 manifest["files"] 每条 entry
+    Script->>FS: 校验路径位于 astribot_s1 或 astribot_t1 且非符号链接/越界
+    Script->>FS: 分块读取文件并检测是否为未拉取的 Git LFS 指针头
+    Script->>Script: 计算 size 与 SHA-256 并核对 entry["size"] / sha256 / lfs_oid
+  end
+  Script->>FS: rglob("*") 扫描 astribot_s1/ 与 astribot_t1/ 实际文件集合
+  Script->>Script: 计算 actual - expected 检查未登记资产
+  Script-->>CLI: print(json.dumps(result, indent=2)) 并 sys.exit(0 / 1)
+```
+
 ## 局限与风险
 
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
