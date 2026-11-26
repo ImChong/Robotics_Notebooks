@@ -64,6 +64,46 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `HorizonRobotics/HoloAgent`（`main` 分支）中已开放的 AgentOS 编排、后台守护与 HTTP↔ROS 2 桥接代码核读整理：
+- 核对源码路径：`agentic_robot/agentOS/sandbox_test/long_horizon_text_runner.py`、`agentic_robot/services/src/robot_bridge/robot_bridge/robot_bridge_node.py`、`agentic_robot/agentOS/holoagent_skills/skills/sem-nav-skill/scripts/semantic_nav.py`、`agentic_robot/agentOS/run_dameon/run_g1_background_daemon.py`、`scripts/intergation/run_holoagent_pipeline.sh`
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Launcher as "run_holoagent_pipeline.sh / run_g1_background_daemon.py"
+  participant Runner as "LongHorizonTextRunner (long_horizon_text_runner.py)"
+  participant LLM as "AzureOpenAI / OpenAI Client"
+  participant Ctrl as "Control Center (:8080)"
+  participant Bridge as "RobotBridgeNode + FastAPI (robot_bridge_node.py)"
+  participant ROS as "ROS 2 Nodes (nav / arm / relative_goal)"
+
+  Launcher->>ROS: 启动定位、导航、传感器、运控与 relative_goal_node
+  Runner->>Runner: run(instruction)
+  Runner->>LLM: analyze_instruction() 请求 responses.create()
+  LLM-->>Runner: DAG JSON -> 写入 dag_plan.yaml
+  Runner->>Runner: virtual_validate(dag) -> 写入 virtual_validation.yaml
+  Runner->>Runner: execute(dag) via ThreadPoolExecutor
+  loop DAG 就绪节点 (navigation / arm)
+    alt skill == navigation
+      Runner->>Ctrl: POST /reset_reached
+      Runner->>Bridge: HTTP POST 导航指令
+      Bridge->>Bridge: _build_msg() 构造 ROS 消息
+      Bridge->>ROS: publish_to_topic() 发布导航话题
+      loop 轮询导航完成
+        Runner->>Ctrl: GET /robot_reached/{robot_id}
+        ROS-->>Bridge: 订阅 reverse 话题到达事件
+        Bridge-->>Ctrl: requests.post(http_post) 上报状态
+      end
+    else skill == arm
+      Runner->>Bridge: HTTP POST 触发手臂技能
+      Bridge->>ROS: publish_to_topic() 发布运控话题
+      Runner->>Runner: 等待 _ARM_SKILL_WAIT_SEC 并写 monitor.yaml
+    end
+  end
+```
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

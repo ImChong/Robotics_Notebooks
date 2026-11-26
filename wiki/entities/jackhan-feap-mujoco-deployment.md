@@ -50,6 +50,47 @@ flowchart TD
   mj --> mon
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `JackHan-Sdu/Feap_Mujoco_deployment`（`main` 分支）核读的源码与配置梳理：`README.md`、`configs/e3.yaml` 与主部署脚本 `scripts/feap_e3_mujoco_deploy.py`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MAIN as 部署主脚本<br/>scripts/feap_e3_mujoco_deploy.py
+    participant IN as 输入与外力模块<br/>keyboard_utils / gamepad_utils / disturbance_utils
+    participant ENC as ONNX Encoder<br/>HumanEncodernet.onnx
+    participant ACT as ONNX Actor<br/>HumanActornet.onnx
+    participant MJ as MuJoCo 引擎与视图<br/>MjModel / MjData / viewer
+
+    MAIN->>MAIN: 读取 configs/e3.yaml（simulation_dt=0.002, control_decimation=10）
+    MAIN->>MJ: MjModel.from_xml_path(e3/scene_terrain.xml) 与 MjData(m)
+    MAIN->>ENC: ort.InferenceSession("policy/HumanEncodernet.onnx") 并置零 h0/c0 (1,1,256)
+    MAIN->>ACT: ort.InferenceSession("policy/HumanActornet.onnx") 并置零 h0/c0 (1,1,64)
+    MAIN->>IN: 互斥初始化 init_keyboard(config) 或 init_gamepad(config)
+    MAIN->>MJ: mujoco.viewer.launch_passive(m, d)
+
+    loop 主仿真循环（viewer.is_running()）
+        opt viewer_utils.reset_requested
+            MAIN->>MJ: 重置 qpos/qvel/xfrc_applied，清空 phase 与 Encoder/Actor LSTM 隐状态
+        end
+        MAIN->>IN: update_cmd_from_keyboard(cmd) 或 50Hz update_cmd_from_gamepad(cmd)
+        MAIN->>IN: apply_disturbance_force(m, d) 施加躯干外力
+        MAIN->>MJ: pd_control(target_dof_pos, qj, dqj) -> d.ctrl[:] = tau -> mujoco.mj_step(m, d)
+        opt counter % control_decimation == 0 (50 Hz)
+            MAIN->>MAIN: 提取 qj/dqj/quat/omega，计算 get_gravity_orientation() 与 display_all_info()
+            MAIN->>ENC: encoder_session.run(obs, encoder_h0, encoder_c0)
+            ENC-->>MAIN: latent, encoder_h0, encoder_c0
+            MAIN->>ACT: actor_session.run(obs, latent, actor_h0, actor_c0)
+            ACT-->>MAIN: action, actor_h0, actor_c0
+            MAIN->>MAIN: target_dof_pos = action * action_scale + default_angles
+        end
+        MAIN->>MJ: viewer_utils.update_viewer_settings() 与 viewer.sync()
+    end
+```
+
+- **关键复现路径**：从仓库根目录执行 `python scripts/feap_e3_mujoco_deploy.py configs/e3.yaml`；MuJoCo 以 500 Hz（`dt=0.002`）执行 `pd_control` 与 `mj_step`，每 10 步（50 Hz）串联执行 `HumanEncodernet.onnx` 与 `HumanActornet.onnx`（均维护独立 LSTM 隐状态 `h0/c0`）刷新关节目标位置。
+
 ## 常见误区或局限
 
 - **2026-11-13 维护复核：** [官方 README（59035b8）](https://github.com/JackHan-Sdu/Feap_Mujoco_deployment/blob/59035b8d5bd3e4f3ee1c56b3ec95ade1b6d00b01/README.md) 仍明确为部署与验证框架；入口为 `python scripts/feap_e3_mujoco_deploy.py configs/e3.yaml`，模型为 Encoder + Actor 两个 ONNX，键盘和手柄配置互斥。本次核对文档，未运行策略或验证速度/地形性能。

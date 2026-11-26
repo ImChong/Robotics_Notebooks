@@ -63,6 +63,52 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `facebookresearch/hydra`（`main` 分支，仓库 README 注明已迁移至 `hydra-ecosystem/hydra`）核心入口与运行链路核读整理：
+- 核对源码路径：`hydra/main.py`、`hydra/_internal/utils.py`、`hydra/_internal/hydra.py`、`hydra/_internal/core_plugins/basic_sweeper.py`、`hydra/_internal/core_plugins/basic_launcher.py`、`hydra/core/utils.py`
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant App as "用户任务函数 @hydra.main"
+  participant Main as "hydra/main.py"
+  participant Utils as "hydra/_internal/utils.py"
+  participant HydraObj as "Hydra (hydra/_internal/hydra.py)"
+  participant Sweeper as "BasicSweeper / BasicLauncher"
+  participant Job as "run_job (hydra/core/utils.py)"
+
+  App->>Main: 调用 decorated_main(cfg_passthrough=None)
+  Main->>Main: get_args_parser().parse_intermixed_args()
+  Main->>Utils: _run_hydra(args, task_function, config_path, config_name)
+  Utils->>Utils: create_automatic_config_search_path(...)
+  Utils->>HydraObj: Hydra.create_main_hydra2(task_name, search_path)
+  Utils->>HydraObj: config_loader.parse_overrides() & get_mode()
+  Utils->>Utils: _run_app(...) 判断 RunMode
+  alt RunMode.RUN 单次运行
+    Utils->>HydraObj: hydra.run(config_name, task_function, overrides)
+    HydraObj->>HydraObj: compose_config(RunMode.RUN) & Callbacks.on_run_start
+    HydraObj->>Job: run_job(...) / _run_job(...)
+    Job->>Job: 剥离 hydra 键为 task_cfg 并保存 .hydra/*.yaml
+    Job->>App: callbacks.on_job_start -> task_function(task_cfg)
+    App-->>Job: return_value / JobStatus
+    Job-->>HydraObj: callbacks.on_job_end -> JobReturn
+    HydraObj-->>Utils: callbacks.on_run_end
+  else RunMode.MULTIRUN 多运行扫描
+    Utils->>HydraObj: hydra.multirun(config_name, task_function, overrides)
+    HydraObj->>HydraObj: compose_config(RunMode.MULTIRUN) & on_multirun_start
+    HydraObj->>Sweeper: Plugins.instantiate_sweeper() -> BasicSweeper.sweep()
+    Sweeper->>Sweeper: split_arguments() & validate_batch_is_legal()
+    loop 每个扫描批次
+      Sweeper->>Sweeper: BasicLauncher.launch(batch, initial_job_idx)
+      Sweeper->>Job: load_sweep_config() -> run_job(...)
+      Job->>App: task_function(task_cfg)
+      App-->>Job: JobReturn
+    end
+    HydraObj-->>Utils: callbacks.on_multirun_end
+  end
+```
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

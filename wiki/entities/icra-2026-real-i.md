@@ -81,6 +81,45 @@ flowchart LR
   train -.-> real
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方示例仓库 `LejuRobotics/kuavo_data_challenge`（`main` 分支）中数据转换、策略训练与仿真/真机评测入口源码核读整理：
+- 核对源码路径：`kuavo_data/CvtRosbag2Lerobot.py`、`kuavo_train/train_policy.py`、`kuavo_deploy/eval_kuavo.py`、`kuavo_deploy/src/scripts/script.py`、`kuavo_deploy/src/eval/sim_auto_test.py`
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Cvt as "CvtRosbag2Lerobot.py"
+  participant Train as "kuavo_train/train_policy.py"
+  participant EvalCLI as "eval_kuavo.py"
+  participant Runner as "sim_auto_test.py / script.py"
+  participant Policy as "ACT/Diffusion/Lingbot/PolicyClient"
+  participant Env as "KuavoSimEnv / ROSManager"
+
+  Note over Cvt,Train: 阶段一：离线数据转换与策略训练
+  Cvt->>Cvt: @hydra.main -> kuavo.init_parameters(cfg)
+  Cvt->>Cvt: port_kuavo_rosbag_chunked() 分块转 LeRobot 数据集
+  Train->>Train: 构建 LeRobotDataset & build_policy()
+  loop epoch / batch
+    Train->>Train: preprocessor(batch) -> policy.forward(batch) -> optimizer.step()
+  end
+
+  Note over EvalCLI,Env: 阶段二：部署与仿真自动评测
+  EvalCLI->>Runner: 启动子进程 (支持 SIGUSR1 暂停 / SIGUSR2 停止)
+  Runner->>Policy: setup_policy() 加载权重或连接 PolicyClient
+  Runner->>Env: gym.make(env_name) & 注册 /simulator/init,/reset,/success
+  loop episode in range(eval_episodes)
+    Runner->>Env: 等待 /simulator/init -> safe_reset_service(/simulator/reset)
+    Runner->>Policy: policy.reset()
+    Runner->>Env: env.reset() -> /simulator/start(TriggerRequest)
+    loop while not done
+      Runner->>Policy: preprocessor(obs) -> policy.select_action() -> postprocessor()
+      Runner->>Env: env.step(numpy_action)
+      Env-->>Runner: obs, reward, terminated, truncated, /simulator/success
+    end
+  end
+```
+
 ## 工程实践
 
 1. 只拉需要的 `sim/TASK*` 前缀；全量 1.5 TiB 级。

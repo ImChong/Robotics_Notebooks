@@ -56,6 +56,50 @@ flowchart TD
   mj --> cam
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `JackHan-Sdu/FeapVision_Mujoco_deployment`（`main` 分支）核读的源码与配置梳理：`deploy_mujoco/README.md`、`deploy_mujoco/configs/e3_vision.yaml`、`deploy_mujoco/deploy_mujoco_vision.py`、`deploy_mujoco/vision_deploy/vision_depth.py` 与 `deploy_mujoco/vision_deploy/policy_inference.py`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MAIN as 视觉部署入口<br/>deploy_mujoco_vision.py
+    participant PAD as 手柄输入<br/>utils/gamepad_utils.py
+    participant DEPTH as 深度渲染与预处理<br/>vision_depth.py / mujoco.Renderer
+    participant POL as 策略推理器<br/>VisionPolicyRunner (policy_inference.py)
+    participant MJ as MuJoCo 仿真与视图<br/>MjModel / MjData / viewer
+
+    MAIN->>MAIN: _load_config() 展开 {DEPLOY_DIR} 与 {PACKAGE_ROOT}
+    MAIN->>MJ: MjModel.from_xml_path(scene_terrain.xml) 并查找 depth_cam ID
+    MAIN->>DEPTH: 初始化 mujoco.Renderer(m, height, width) 与 depth_image_buffer
+    MAIN->>POL: VisionPolicyRunner(policy_path) -> torch.jit.load(motion_lstm.pt)
+    MAIN->>PAD: init_gamepad(config)
+    MAIN->>MJ: mujoco.viewer.launch_passive(m, d)
+
+    loop 主仿真循环（viewer.is_running()）
+        opt viewer_utils.reset_requested
+            MAIN->>MJ: 重置 qpos/qvel/cmd/action，清空 depth_image_buffer 并调用 policy.reset()
+        end
+        MAIN->>PAD: 50 Hz 更新 update_cmd_from_gamepad(cmd)
+        MAIN->>MJ: pd_control(target_dof_pos, qpos, qvel) -> d.ctrl[:] = tau -> mujoco.mj_step(m, d)
+        opt counter % control_decimation == 0 (50 Hz)
+            MAIN->>MAIN: _build_obs() 构造 72 维本体与指令观测 obs
+            MAIN->>DEPTH: update_depth_cam(depth_renderer, d, depth_cam_id, ...)
+            opt cam_update_counter % depth_decimation == 0
+                DEPTH->>DEPTH: depth_renderer.update_scene/render() -> rot90 -> cv2.resize -> normalize_depth_image()
+                DEPTH-->>MAIN: depth_img [1, 24*32], depth_raw
+                MAIN->>MAIN: 滑动窗口更新 depth_image_buffer (2帧拼接) 与 cv2.imshow("depth (raw)")
+            end
+            MAIN->>POL: policy.infer(obs_t, current_depth_img)
+            POL-->>MAIN: action (21-DoF)
+            MAIN->>MAIN: target_dof_pos = action * action_scale + default_angles
+        end
+        MAIN->>MJ: viewer_utils.update_viewer_settings() 与 viewer.sync()
+    end
+```
+
+- **关键复现路径**：执行 `python deploy_mujoco/deploy_mujoco_vision.py configs/e3_vision.yaml`；内环以 500 Hz 运行 `pd_control` 与 `mj_step`，外环以 50 Hz（`control_decimation=10`）调用 `_build_obs` 与 `VisionPolicyRunner.infer`，其中深度渲染通过 `depth_decimation=5`（10 Hz）经 `update_depth_cam` 更新两帧 `24x32` 深度缓冲。
+
 ## 常见误区或局限
 
 - **2026-11-13 维护复核：** [官方 README（30c788c）](https://github.com/JackHan-Sdu/FeapVision_Mujoco_deployment/blob/30c788c06242480bae9f2f61085a89ee4ab58f89/README.md) 仍采用本体观测 + 深度图 + TorchScript，入口为 `deploy_mujoco_vision.py`，不含训练代码；README 末尾标明仅研究与学术用途。本次只核对文档，未运行部署。

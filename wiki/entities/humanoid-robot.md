@@ -124,6 +124,42 @@ flowchart TD
 
 关键检查点包括：机械限位和热约束是否进入仿真模型、低层力矩/位置接口是否稳定、策略是否先通过 HIL 与保护绳测试、实机日志是否能反哺系统辨识和奖励/数据分布设计。
 
+## 源码运行时序图
+
+以下时序图基于本页参考来源中的官方基线仓库 `UBTECH-Robot/GlobalHumanoidRobotChallenge_2026_Baseline`（`main` 分支）核读整理，展示 `Ubtech_sim`（Isaac Sim 5.1 + Pinocchio 双臂 IK 抓取仿真）与 `src/lerobot/scripts/lerobot_record.py`（遥操作/策略数据录制）两条核心运行入口：
+- 核对源码路径：`Ubtech_sim/main.py`、`Ubtech_sim/source/config_loader.py`、`Ubtech_sim/source/SceneBuilder.py`、`Ubtech_sim/source/RobotArticulation.py`、`Ubtech_sim/source/coordinate_utils.py`、`Ubtech_sim/source/grasp_planner.py`、`Ubtech_sim/source/DataLogger.py`、`src/lerobot/scripts/lerobot_record.py`、`src/lerobot/auto_collect/auto_collect_base.py`
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Entry as "Ubtech_sim/main.py"
+  participant Scene as "SceneBuilder / World"
+  participant Robot as "RobotArticulation (walkerS2)"
+  participant Coord as "CoordinateTransform / DualArmIK"
+  participant Planner as "GraspPlanner"
+  participant Logger as "DataLogger"
+
+  Entry->>Entry: SimulationApp() & load_config(task1.yaml)
+  Entry->>Scene: open_stage() & World(physics_dt=1/60, rendering_dt=1/20)
+  Entry->>Scene: SceneBuilder.build_all() & rep.orchestrator.step()
+  Entry->>Scene: world.play() 物理稳定 -> get_parts_world_poses()
+  Entry->>Scene: world.pause() -> scene.build_robot()
+  Entry->>Robot: RobotArticulation.initialize() & initialize_ik(s2.urdf)
+  Entry->>Coord: CoordinateTransform.from_torso_link(ik_solver)
+  Entry->>Planner: GraspPlanner(grasp_cfg, robot, coord_transform)
+  Entry->>Planner: compute_grasp_target(part_poses)
+  Entry->>Scene: 注册 physics_callback & render_callback
+  loop while kit.is_running() -> world.step()
+    Scene->>Planner: robot_control_callback -> update_active_target()
+    Planner->>Robot: control_dual_arm_ik(left_target, right_target)
+    Scene->>Logger: score_input_record_callback -> 记录位姿 poses.csv
+    Robot->>Logger: camera_images_callback -> log_camera_rgb()
+  end
+  Entry->>Logger: data_logger.close()
+```
+
+此外，在基于 `lerobot` 封装的数据采集入口（`src/lerobot/scripts/lerobot_record.py` 与 `src/lerobot/auto_collect/auto_collect_base.py`）中，`record()` 调用 `record_loop()` 循环执行 `robot.get_observation()` → `teleop.get_action()` / `policy.select_action()` → `robot.send_action()` → `dataset.add_frame()`，并在 episode 结束时 `dataset.save_episode()` 导出 LeRobotDataset。
+
 ## 主流平台速览
 
 | 平台 | 组织 | DOF | 执行器类型 | 当前状态 | 备注 |
