@@ -127,6 +127,62 @@ PyPI 0.7.0 起，`lerobot-record` 只做数据采集，不再做策略推理；�
 
 没有真机时，可以只做 2、3 两步：下载 Hub 上的数据集和权重，在 LIBERO 等仿真基准上训练和评测。
 
+## 源码运行时序图
+
+以下时序图对照 `huggingface/lerobot`（`main` 分支）[`pyproject.toml`](https://github.com/huggingface/lerobot/blob/main/pyproject.toml) 声明的 4 个核心 CLI 入口脚本与基类核对，覆盖「采集 → 训练 → 仿真评测 → 真机部署」主路径：
+
+- [`src/lerobot/scripts/lerobot_record.py`](https://github.com/huggingface/lerobot/blob/main/src/lerobot/scripts/lerobot_record.py)（`lerobot-record`）
+- [`src/lerobot/scripts/lerobot_train.py`](https://github.com/huggingface/lerobot/blob/main/src/lerobot/scripts/lerobot_train.py)（`lerobot-train`）
+- [`src/lerobot/scripts/lerobot_eval.py`](https://github.com/huggingface/lerobot/blob/main/src/lerobot/scripts/lerobot_eval.py)（`lerobot-eval`）
+- [`src/lerobot/scripts/lerobot_rollout.py`](https://github.com/huggingface/lerobot/blob/main/src/lerobot/scripts/lerobot_rollout.py)（`lerobot-rollout`）
+- [`src/lerobot/robots/robot.py`](https://github.com/huggingface/lerobot/blob/main/src/lerobot/robots/robot.py)（`Robot` 硬件抽象）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 开发者/操作员
+    participant Rec as lerobot_record.py<br/>record / record_loop
+    participant Robot as robot.py<br/>Robot + Teleoperator
+    participant DS as LeRobotDataset
+    participant Train as lerobot_train.py<br/>train / update_policy
+    participant Eval as lerobot_eval.py<br/>eval_main / rollout
+    participant Roll as lerobot_rollout.py<br/>rollout / Strategy
+
+    User->>Rec: lerobot-record (--robot / --teleop / --dataset)
+    Rec->>Robot: make_robot_from_config() + robot.connect()
+    loop 每个 episode (record_loop)
+        Rec->>Robot: robot.get_observation() + teleop.get_action()
+        Rec->>Robot: robot.send_action(robot_action_to_send)
+        Rec->>DS: dataset.add_frame(frame)
+    end
+    Rec->>DS: dataset.save_episode() / dataset.finalize()
+
+    User->>Train: lerobot-train (--dataset / --policy)
+    Train->>DS: make_train_eval_datasets() + make_dataloaders()
+    Train->>Train: make_policy() + make_pre_post_processors() + make_optimizer_and_scheduler()
+    loop 训练步 (step < cfg.steps)
+        Train->>DS: next(dl_iter)
+        Train->>Train: update_policy(): policy(batch) -> accelerator.backward(loss) -> optimizer.step()
+        opt 触发评测/存盘
+            Train->>Train: save_checkpoint()
+            Train->>Eval: eval_policy_all(envs, eval_policy_model, ...)
+        end
+    end
+
+    User->>Eval: lerobot-eval (--policy.path / --env.type)
+    Eval->>Eval: make_env() + make_policy() -> eval_policy_all()
+    loop rollout (not all done)
+        Eval->>Eval: env_preprocessor -> preprocessor -> policy.select_action(observation)
+        Eval->>Eval: postprocessor -> env_postprocessor -> env.step(action_numpy)
+    end
+
+    User->>Roll: lerobot-rollout (--strategy.type / --inference.type)
+    Roll->>Roll: build_rollout_context(cfg) + create_strategy(cfg.strategy)
+    Roll->>Robot: strategy.setup(ctx) 连接 Robot/Policy
+    Roll->>Robot: strategy.run(ctx) / InteractiveSession.run() 闭环推理控制
+    Roll->>Robot: strategy.teardown(ctx)
+```
+
 ## Hub 上先看什么
 
 组织页 [huggingface.co/lerobot](https://huggingface.co/lerobot) 规模约 56 个模型、187 个数据集、11 个 Collections、9 个 Spaces（2026-07 数据），另有 `lerobot/robot-urdfs` 机器人 URDF 资产。

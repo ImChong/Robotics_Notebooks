@@ -82,6 +82,43 @@ flowchart LR
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
+## 源码运行时序图
+
+入口：独立周期运行工具 `mc_rtc_ticker`（`utils/mc_rtc_ticker.cpp`），或由外部仿真/真机驱动周期调用 `MCGlobalController::setEncoderValues` 与 `MCGlobalController::run`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Main as utils/mc_rtc_ticker.cpp main
+    participant Tk as src/mc_control/Ticker.cpp Ticker
+    participant GC as mc_global_controller.cpp MCGlobalController
+    participant FSM as fsm/Controller.cpp & Executor.cpp
+    participant MC as MCController.cpp & qpsolver
+    participant Srv as ControllerServer & Logger
+
+    Main->>Tk: 构造 Ticker(config) 并调用 ticker.run()
+    Tk->>GC: 构造 MCGlobalController (加载全局插件与控制器插件)
+    Tk->>Tk: simulate_sensors() 注入初始编码器/基座状态
+    Tk->>GC: gc_.init() 触发 initController() 与 resetObserverPipelines()
+    loop Ticker::run() 步进循环
+        Tk->>Tk: step() 调用 simulate_sensors() 更新传感器输入
+        Tk->>GC: gc_.run()
+        GC->>GC: 检查 next_controller_ 热切换并调用 plugins_before_->before()
+        GC->>MC: controller_->runObserverPipelines()
+        GC->>FSM: controller_->run()
+        alt 控制器为 fsm::Controller
+            FSM->>FSM: executor_.run() 执行 state_->run() 与状态转移检查
+            FSM->>MC: MCController::run(fType)
+        end
+        MC->>MC: updateContacts() 与 qpsolver->run(fType) 求解 QP
+        GC->>GC: converters_ 转换输出机器人并执行 grippers->run()
+        GC->>Srv: server_->handle_requests/publish 与 logger().log()
+        GC->>GC: plugins_after_->after()
+    end
+```
+
+图依据：`jrl-umi3218/mc_rtc`（`master` 分支）实际核读 `README.md`、`utils/mc_rtc_ticker.cpp`、`src/mc_control/Ticker.cpp`、`src/mc_control/mc_global_controller.cpp`、`src/mc_control/fsm/Controller.cpp`、`src/mc_control/fsm/Executor.cpp` 与 `src/mc_control/MCController.cpp`；未进行本地编译运行。
+
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)

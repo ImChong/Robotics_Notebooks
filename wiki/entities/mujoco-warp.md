@@ -78,6 +78,54 @@ flowchart TB
   MJW -.->|JAX 接入经 MJX| PG
 ```
 
+## 源码运行时序图
+
+以下时序图核对自 `google-deepmind/mujoco_warp`（`main` 分支）CLI 入口、数据搬运、CUDA Graph unroll 与核心物理步进管线：
+
+- [`pyproject.toml`](https://github.com/google-deepmind/mujoco_warp/blob/main/pyproject.toml)（CLI 脚本：`mjwarp-testspeed`、`mjwarp-viewer`、`mjwarp-record`）
+- [`mujoco_warp/testspeed.py`](https://github.com/google-deepmind/mujoco_warp/blob/main/mujoco_warp/testspeed.py) & [`mujoco_warp/viewer.py`](https://github.com/google-deepmind/mujoco_warp/blob/main/mujoco_warp/viewer.py)
+- [`mujoco_warp/_src/cli.py`](https://github.com/google-deepmind/mujoco_warp/blob/main/mujoco_warp/_src/cli.py)（`init_structs` / `unroll`）
+- [`mujoco_warp/_src/io.py`](https://github.com/google-deepmind/mujoco_warp/blob/main/mujoco_warp/_src/io.py)（`put_model` / `put_data` / `make_data` / `get_data_into`）
+- [`mujoco_warp/_src/forward.py`](https://github.com/google-deepmind/mujoco_warp/blob/main/mujoco_warp/_src/forward.py)（`step` / `step1` / `step2` / `forward` / `_forward` / `_advance`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 开发者/基准运行器
+    participant CLI as testspeed.py / viewer.py<br/>_main()
+    participant CUtil as _src/cli.py<br/>init_structs / unroll
+    participant IO as _src/io.py<br/>put_model / put_data
+    participant Fwd as _src/forward.py<br/>mjw.step / _forward
+    participant Sub as 子模块<br/>collision_driver / constraint / solver
+    participant WP as NVIDIA Warp<br/>ScopedCapture / CUDA Graph
+
+    User->>CLI: mjwarp-testspeed / mjwarp-viewer (指定 MJCF)
+    CLI->>CUtil: cli.init_structs(mjw.step, mjm)
+    CUtil->>IO: mjw.put_model(mjm) + mjw.put_data(mjm, mjd, nworld=...)
+    IO-->>CUtil: 设备端 Model (m) + 批处理 Data (d)
+    CLI->>CUtil: cli.unroll(mjw.step, m, d, rc, callback, ctrls)
+
+    CUtil->>WP: with wp.ScopedCapture(): mjw.step(m, d)
+    WP->>Fwd: forward(m, d) -> _forward(m, d)
+    Fwd->>Sub: fwd_position(): fwd_kinematics() -> collision_driver.collision() -> constraint.make_constraint()
+    Fwd->>Sub: sensor.sensor_pos() -> fwd_velocity() -> sensor.sensor_vel()
+    opt m.callback.control
+        Fwd->>Fwd: m.callback.control(m, d)
+    end
+    Fwd->>Sub: fwd_actuation() -> fwd_acceleration() -> solver.solve() -> sensor.sensor_acc()
+    Fwd->>Fwd: 积分器 euler / rungekutta4 / implicit / discrete -> _advance(m, d, qacc)
+    WP-->>CUtil: capture.graph
+
+    loop NSTEP 步仿真展开
+        CUtil->>WP: wp.capture_launch(graph) + wp.synchronize()
+        opt viewer 模式回读渲染
+            CLI->>IO: mjw.get_data_into(mjd, mjm, d)
+        end
+    end
+```
+
+> 仓库同时在 `mujoco_warp/_src/forward.py` 提供两阶段步进 `step1(m, d)`（控制回调前位置/速度/传感器）与 `step2(m, d)`（注入控制后驱动/求解/积分），供上层控制器在单步内写入 `d.ctrl`。
+
 ## 工程实践
 
 | 步骤 | 做法 |

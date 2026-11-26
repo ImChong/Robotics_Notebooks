@@ -56,6 +56,10 @@ flowchart LR
 - **硬件**：立体+IMU 同步要求高。
 - **上游维护状态（2026-11-25 复核）**：`MIT-SPARK/Kimera` 索引仓自 2021 年起冻结，仅 `Kimera-VIO`（2026-08）与 `Kimera-RPGO`（2026-10）仍有少量维护更新，`Kimera-Semantics` 自 2023-12 后无新提交。
 
+## 源码运行时序图
+
+**不适用**（`MIT-SPARK/Kimera` 为项目索引仓，仓内无可运行源码）：核查 `MIT-SPARK/Kimera`（`master` 分支）完整目录树后，仓库内仅包含 `README.md`、`LICENSE.BSD` 与 `docs/media/` 下的示意图/动图文件，不包含任何 C++、Python 或 ROS 可执行代码与构建入口。各模块的实际可运行源码均托管在独立子仓库（`README.md` 索引的 [MIT-SPARK/Kimera-VIO](https://github.com/MIT-SPARK/Kimera-VIO)、[MIT-SPARK/Kimera-RPGO](https://github.com/MIT-SPARK/Kimera-RPGO)、[MIT-SPARK/Kimera-Semantics](https://github.com/MIT-SPARK/Kimera-Semantics)），不以本索引仓冒充单仓源码时序。
+
 ## 参考来源
 
 - [sources/repos/kimera.md](../../sources/repos/kimera.md)

@@ -128,6 +128,53 @@ flowchart LR
 
 入口：[LIBERO-Plus](../../sources/repos/libero-plus.md)、[LIBERO-PRO](../../sources/repos/libero-pro.md)。
 
+## 源码运行时序图
+
+以下时序图核对自 `Lifelong-Robot-Learning/LIBERO`（`master` 分支）持续学习训练、评测及环境封装源码：
+
+- [`libero/lifelong/main.py`](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/libero/lifelong/main.py)（Hydra 入口 `main`）
+- [`libero/lifelong/algos/base.py`](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/libero/lifelong/algos/base.py)（`Sequential.learn_one_task` / `observe`）
+- [`libero/lifelong/evaluate.py`](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/libero/lifelong/evaluate.py)（独立评测 CLI `main`）
+- [`libero/lifelong/metric.py`](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/libero/lifelong/metric.py)（`evaluate_one_task_success` / `evaluate_success` / `evaluate_loss`）
+- [`libero/libero/envs/env_wrapper.py`](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/libero/libero/envs/env_wrapper.py)（`ControlEnv` 封装 robosuite 任务）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 研究者
+    participant Main as libero/lifelong/main.py<br/>main(hydra_cfg)
+    participant Bench as libero.libero.benchmark<br/>get_benchmark()
+    participant Algo as lifelong/algos/base.py<br/>Sequential (Algo)
+    participant Metric as lifelong/metric.py<br/>evaluate_one_task_success
+    participant Env as envs/env_wrapper.py<br/>ControlEnv / SubprocVectorEnv
+
+    User->>Main: python libero/lifelong/main.py (benchmark/algo/policy)
+    Main->>Bench: get_benchmark(cfg.benchmark_name)(task_order_index)
+    Main->>Main: get_dataset() + get_task_embs(cfg, descriptions)
+    Main->>Algo: get_algo_class(cfg.lifelong.algo)(n_tasks, cfg)
+    loop 每个持续学习任务 i < n_tasks (非 Multitask)
+        Main->>Algo: algo.learn_one_task(datasets[i], i, benchmark, result_summary)
+        Algo->>Algo: start_task(task_id) + 构建 DataLoader
+        loop epoch 0..n_epochs
+            Algo->>Algo: observe(data) -> policy.compute_loss(data) 反向更新
+            opt epoch % eval_every == 0
+                Algo->>Metric: evaluate_one_task_success(cfg, algo, task, task_emb, ...)
+                Metric->>Env: 构造 OffScreenRenderEnv / SubprocVectorEnv
+                Metric->>Env: env.reset() -> env.set_init_state(init_states_)
+                loop steps < max_steps
+                    Metric->>Algo: raw_obs_to_tensor_obs() -> algo.policy.get_action(data)
+                    Metric->>Env: env.step(actions)
+                end
+                Metric->>Env: env.close()
+                Metric-->>Algo: success_rate (择优保存 task{id}_model.pth)
+            end
+        end
+        Algo->>Algo: load best checkpoint -> end_task()
+        Main->>Metric: evaluate_loss() + evaluate_success(task_ids=0..i) 更新混淆矩阵
+    end
+    Note over User,Metric: 独立评测入口 libero/lifelong/evaluate.py 解析 CLI 并加载 checkpoint 后调用 evaluate_success()
+```
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。
