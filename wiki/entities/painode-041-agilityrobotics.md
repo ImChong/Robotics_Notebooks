@@ -95,6 +95,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解人形行走任务。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_company_041_agility-robotics.md`](../../sources/repos/pai_awesome_company_041_agility-robotics.md) — 本条目策展摘录

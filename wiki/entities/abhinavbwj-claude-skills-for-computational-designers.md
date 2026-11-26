@@ -88,6 +88,9 @@ sequenceDiagram
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [FreeCAD Engineering](./v0v1kkk-freecad-engineering.md)
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)

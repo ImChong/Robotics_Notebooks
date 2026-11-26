@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_hardware_173_universal-robots.md`](../../sources/repos/pai_awesome_hardware_173_universal-robots.md) — 本条目策展摘录

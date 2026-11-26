@@ -124,6 +124,8 @@ flowchart TB
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — 本工作属于可交互仿真类
 - [World Action Models](../concepts/world-action-models.md) — 动作条件世界模型对照
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [sonoworld_arxiv_2610_19327.md](../../sources/papers/sonoworld_arxiv_2610_19327.md) — 论文摘录与开源核查

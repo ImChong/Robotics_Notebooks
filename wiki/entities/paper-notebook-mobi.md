@@ -90,6 +90,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+
 ## 参考来源
 
 - [humanoid_pnb_mobi.md](../../sources/papers/humanoid_pnb_mobi.md)

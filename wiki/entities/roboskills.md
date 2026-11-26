@@ -121,6 +121,9 @@ sequenceDiagram
 - [RetargetingKit：遥操作与重定向](./retargetingkit.md)
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+
 ## 参考来源
 
 - [RoboSkills 源码及原文核对范围](../../sources/repos/roboskills.md)

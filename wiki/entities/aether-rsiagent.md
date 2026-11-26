@@ -245,6 +245,9 @@ RSIAgent 的位置：在 [RSI 四层标准](../queries/rsi-four-tier-five-pushes
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 智能体基准读法
 - [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — RSI 层级定位
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [RSIAgent 论文原文归档（arXiv:2609.15364v2）](../../sources/papers/rsiagent_arxiv_2609_15364.md)

@@ -126,6 +126,8 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2003_01197_realistic-adversarial-driving-wang-e.md`](../../sources/papers/pai_awesome_2003_01197_realistic-adversarial-driving-wang-e.md) — 本条目策展摘录

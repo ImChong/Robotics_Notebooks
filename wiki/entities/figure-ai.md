@@ -95,6 +95,8 @@ flowchart LR
 - [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — Helix 分层与 Index 数据饥渴的产业读法
 - [人形数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md) — Index 与 Shift 等「服务/众包换数据」对照
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [Figure AI 原始资料](../../sources/repos/figure-ai.md)

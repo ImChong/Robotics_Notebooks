@@ -92,6 +92,8 @@ sequenceDiagram
 - [ros2-control](../entities/ros2-control.md)
 - [paper-ressafe](./paper-ressafe.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+
 ## 参考来源
 
 - [robresilience_arxiv_2609_17349.md](../../sources/papers/robresilience_arxiv_2609_17349.md)

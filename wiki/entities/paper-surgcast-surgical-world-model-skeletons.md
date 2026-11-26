@@ -100,6 +100,8 @@ flowchart TD
 - [world-action-models](../concepts/world-action-models.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [surgcast_surgical_world_model_skeletons_arxiv_2610_15645.md](../../sources/papers/surgcast_surgical_world_model_skeletons_arxiv_2610_15645.md)

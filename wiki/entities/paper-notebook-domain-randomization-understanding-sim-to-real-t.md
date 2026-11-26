@@ -148,6 +148,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-01-foundational-rl](../overview/paper-notebook-category-01-foundational-rl.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+- [Sim2Real 域适应](../methods/domain-adaptation-for-sim2real.md)：对照迁移和域差异处理。
+
 ## 参考来源
 
 - [humanoid_pnb_domain-randomization-understanding-sim-to-real-t.md](../../sources/papers/humanoid_pnb_domain-randomization-understanding-sim-to-real-t.md)（本库来源归档）

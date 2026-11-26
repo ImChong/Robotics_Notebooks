@@ -109,6 +109,9 @@ sequenceDiagram
 - [OpenClaw](./openclaw.md) — 个人代理与工具编排项目
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 代理接入外部工具与数据源的开放协议
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [openai/codex 仓库归档](../../sources/repos/openai-codex-cli.md)

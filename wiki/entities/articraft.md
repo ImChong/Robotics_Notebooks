@@ -151,6 +151,9 @@ sequenceDiagram
 - [LiteReality-Agent](./litereality-agent.md) — 房间级 scan→交互场景；init 阶段 **改编 Articraft** 生成 procedural 物体。
 - [DiffGI](./paper-diffgi.md) — 学习式 **薄壳 geometry image** 生成；与 Articraft 的程序化关节资产在「网格从哪来」上互补。
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 推荐继续阅读
 
 - [Articraft 项目主页](https://articraft3d.github.io/)（Demo、Articraft-10K 子集、应用集成展示）

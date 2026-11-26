@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解传感数据、时间和坐标接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照驱动与软件模块接入。
+
 ## 源码运行时序图
 
 入口：`python examples/quick_start.py`（需先 `pip install pyorbbecsdk2 opencv-python numpy` 并连接 Orbbec 相机）。`pyorbbecsdk` 模块由 `src/pyorbbecsdk/*.cpp`（pybind11 绑定）封装 SDK 的 C++ 接口；SDK 核心实现在 `sdk/` 中为头文件与预编译库，内部流程不在本图范围内。

@@ -120,6 +120,8 @@ flowchart LR
 - [ALOHA](./aloha.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ② 检测/分割层的下游用法：首帧 Qwen3-VL-8B 检测 + SAM2 跟踪构建物体中心图做失败检测，遮挡会破坏图且只建质心、缺朝向
 
+- [机器人视觉感知](../methods/robot-visual-perception.md)：对照视觉观测与机器人接口。
+
 ## 参考来源
 
 - [公众号盘点：具身智能小站 34 篇](../../sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md)

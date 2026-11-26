@@ -82,6 +82,8 @@ flowchart LR
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 条件运动生成方法与相关工作
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 将人体动作映射到机器人或目标角色骨架
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [Swing Choreo 官方发布文章归档](../../sources/blogs/cartwheel_swing_choreo.md)

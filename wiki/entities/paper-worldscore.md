@@ -265,6 +265,8 @@ sequenceDiagram
 - [具身大模型评测基准选型闭环（Query）](../queries/embodied-eval-benchmark-selection-loop.md) — 选型决策链
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — WM 作策略评估器的动作忠实轴
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+
 ## 参考来源
 
 - [worldscore_arxiv_2504_00983.md](../../sources/papers/worldscore_arxiv_2504_00983.md)

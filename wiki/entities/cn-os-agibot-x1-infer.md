@@ -105,6 +105,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时的输入、输出与资源。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解策略与执行接口。
+
 ## 参考来源
 
 - [agibot_x1_infer 源码归档](../../sources/repos/agibot_x1_infer.md)（<https://github.com/AgibotTech/agibot_x1_infer>）

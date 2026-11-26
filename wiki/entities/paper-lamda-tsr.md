@@ -118,6 +118,8 @@ flowchart LR
 - [DriveVLM](./paper-drivevlm.md)
 - [SG-WAM（语义引导）](./paper-sg-wam-semantic-guidance.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [LAMDA 论文摘录](../../sources/papers/lamda_tsr_arxiv_2608_08815.md)

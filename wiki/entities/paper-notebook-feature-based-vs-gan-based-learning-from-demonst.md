@@ -77,6 +77,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+
 ## 参考来源
 
 - [humanoid_pnb_feature-based-vs-gan-based-learning-from-demonst.md](../../sources/papers/humanoid_pnb_feature-based-vs-gan-based-learning-from-demonst.md)

@@ -144,6 +144,9 @@ sequenceDiagram
 - [RoboColiseum](./robocoliseum.md) — Genie Sim 在线仿真挑战赛与四榜
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ / ④ 层：Genie Sim Benchmark 五类能力仿真评测与 sim2real 对接
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [Genie Sim 3.0 论文原文归档（arXiv:2601.02078）](../../sources/papers/genie_sim_3_arxiv_2601_02078.md)

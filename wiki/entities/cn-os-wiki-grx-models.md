@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：了解连杆、关节和模型资产。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照模型在软件工具链中的接入。
+
 ## 源码运行时序图
 
 入口：仓库主体是 URDF / MJCF / 网格资产，没有训练或部署主程序；可运行的只有 `scripts/` 下四个独立的 Python 命令行工具（用法见 `scripts/scripts_usage.md`）。下图为其中按文档串联的“装手 → 预览 → 导出参数”流程：`python scripts/add_end_effecor.py <基座 urdf> <手部文件夹>`。

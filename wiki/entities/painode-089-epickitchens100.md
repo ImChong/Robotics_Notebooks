@@ -91,6 +91,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：了解视觉特征及下游任务。
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_dataset_089_epic-kitchens-100.md`](../../sources/repos/pai_awesome_dataset_089_epic-kitchens-100.md) — 本条目策展摘录

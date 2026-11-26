@@ -78,6 +78,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解人形行走任务。
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md)：了解复杂地形中的足式运动。
+
 ## 参考来源
 
 - [humanoid_pnb_polygmap-a-perceptive-locomotion-framework-for-h.md](../../sources/papers/humanoid_pnb_polygmap-a-perceptive-locomotion-framework-for-h.md)

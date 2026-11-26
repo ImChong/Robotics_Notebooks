@@ -114,6 +114,8 @@ sequenceDiagram
 - [agent-memory-and-dreaming](../concepts/agent-memory-and-dreaming.md)
 - [vla](../methods/vla.md)
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [原论文及阅读进度](../../sources/papers/affective_negotiation_arxiv_2611_14247.md)

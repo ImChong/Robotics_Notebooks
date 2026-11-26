@@ -217,6 +217,9 @@ sequenceDiagram
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 编码代理的自主测试与可审计软件交付
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 预算、工具权限、种子隔离与评测口径
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [论文原文通读归档（arXiv v1）](../../sources/papers/agenticgenplan_coding_agents_generalized_tamp_arxiv_2609_30233.md)

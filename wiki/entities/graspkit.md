@@ -101,6 +101,9 @@ sequenceDiagram
 - [RetargetingKit](./retargetingkit.md)
 - [OpenRoboKit 总览](../overview/openrobokit-toolkit.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 参考来源
 
 - [GraspKit 源码归档](../../sources/repos/graspkit.md)

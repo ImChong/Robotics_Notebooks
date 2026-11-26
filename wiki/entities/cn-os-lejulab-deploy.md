@@ -109,6 +109,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照运动策略训练与评估。
+
 ## 参考来源
 
 - [LejuLab-Deploy 源码归档](../../sources/repos/lejulab-deploy.md)（<https://github.com/LejuRobotics/LejuLab-Deploy>）

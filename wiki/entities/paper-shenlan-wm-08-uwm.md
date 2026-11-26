@@ -100,6 +100,11 @@ flowchart TD
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_08_uwm.md](../../sources/papers/shenlan_wm_survey_08_uwm.md)
 
+## 关联页面
+
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [shenlan_wm_survey_08_uwm.md](../../sources/papers/shenlan_wm_survey_08_uwm.md)

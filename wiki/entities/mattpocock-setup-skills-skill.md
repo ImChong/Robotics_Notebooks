@@ -82,6 +82,9 @@ flowchart TD
 - [triage](mattpocock-triage-skill.md)
 - [Ingest Workflow](../../schema/ingest-workflow.md)
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [setup SKILL.md](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills)

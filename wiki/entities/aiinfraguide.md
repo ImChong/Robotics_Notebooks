@@ -125,6 +125,9 @@ sequenceDiagram
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 从大模型推理进入机器人动作控制的时延与工程约束
 - [模型架构纵深路线 Stage 5](../../roadmap/depth-model-architecture.md) — 把 AI Infra 学习路线映射到规模、效率与部署验证
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [官方《AI Infra 学习路线》全文核对与适用边界](../../sources/courses/aiinfraguide-learning-route-20261115.md) — 本页健康度的主原文范围仅限此完整文档

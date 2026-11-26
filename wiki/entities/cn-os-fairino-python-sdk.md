@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照 SDK、通信与驱动接入。
+
 ## 源码运行时序图
 
 入口：`python linux/example/TestBasicCommand.py`（示例脚本 `from fairino import Robot; robot = Robot.RPC('192.168.58.2')`，库入口为 `linux/fairino/Robot.py` 的 `class RPC`）

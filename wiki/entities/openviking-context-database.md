@@ -124,6 +124,9 @@ sequenceDiagram
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 研发 Agent 的工程环境与上下文管理实践。
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 面向人类策展的持久知识编译方式。
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [OpenViking 仓库源归档（本站）](../../sources/repos/volcengine-openviking.md)

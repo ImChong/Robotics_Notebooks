@@ -103,6 +103,8 @@ sequenceDiagram
 - [Transformer](../concepts/transformer.md)
 - [T2-z 环境潜变量](./paper-t2-z-environment-latents.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [论文摘录](../../sources/papers/robot-foundation-model-causal-analysis_arxiv_2610_20750.md)

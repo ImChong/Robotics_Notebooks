@@ -86,6 +86,8 @@ flowchart LR
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频生成或推演作为仿真信息源的边界
 - [Sim2Real](../concepts/sim2real.md) — 从仿真训练和验证迁移到真机
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [Gemini 4 Argon for Robotics（Google Developers Blog）](../../sources/blogs/gemini_4_argon_robotics.md)

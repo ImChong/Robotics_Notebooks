@@ -112,6 +112,11 @@ flowchart TD
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - **活体升格：** 同团队 [Humanoid Surgeon（Nature 2026）](./paper-humanoid-surgeon-in-vivo-laparoscopy.md) 将 LapSurgie 框架推进至 **in vivo 猪模型腹腔镜胆囊切除术** 系统评估
 
+## 关联页面
+
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：了解视觉观测与机器人接口。
+
 ## 参考来源
 
 - [humanoid_pnb_lapsurgie.md](../../sources/papers/humanoid_pnb_lapsurgie.md)

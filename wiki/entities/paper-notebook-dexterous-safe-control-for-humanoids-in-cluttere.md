@@ -135,6 +135,10 @@ flowchart TD
 - 真机验证场景：安全遥操作：[teleoperation](../tasks/teleoperation.md)
 - 人形安全控制的另一路线：[paper-crosssafe](./paper-crosssafe.md)
 
+## 关联页面
+
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [humanoid_pnb_dexterous-safe-control-for-humanoids-in-cluttere.md](../../sources/papers/humanoid_pnb_dexterous-safe-control-for-humanoids-in-cluttere.md)

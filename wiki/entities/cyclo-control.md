@@ -121,6 +121,9 @@ flowchart LR
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [cyclo_control 仓库摘录](../../sources/repos/cyclo_control.md)

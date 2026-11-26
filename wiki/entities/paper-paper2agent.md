@@ -138,6 +138,9 @@ sequenceDiagram
 - [ScienceDiscovery](./sciencediscovery.md) — 文献与专业工具协同的科研工作台，对照论文级工具生成路线。
 - [ScientistTwo](./paper-scientisttwo.md) — 以 benchmark、消融与审稿证据评估完整研究 agent。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [Nature 论文归档](../../sources/papers/paper2agent_nature_2026.md)

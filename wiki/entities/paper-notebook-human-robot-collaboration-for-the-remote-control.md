@@ -115,6 +115,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+
 ## 参考来源
 
 - [humanoid_pnb_human-robot-collaboration-for-remote-control-of.md](../../sources/papers/humanoid_pnb_human-robot-collaboration-for-remote-control-of.md)

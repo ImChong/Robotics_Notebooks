@@ -141,6 +141,9 @@ flowchart TD
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — 通用 skill 蒸馏/进化（与本库 **编码工程** 技能互补）
 - [SkillCorpus](paper-skillcorpus.md) — 社区 `SKILL.md` 生态级策展语料与检索评测（对照精品垂直技能库）
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [mattpocock/skills 仓库源归档（本站）](../../sources/repos/mattpocock-skills.md)

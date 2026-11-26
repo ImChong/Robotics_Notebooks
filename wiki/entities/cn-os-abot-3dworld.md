@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [ABot-3DWorld 源码归档](../../sources/repos/abot-3dworld.md)（<https://github.com/amap-cvlab/ABot-3DWorld>）

@@ -87,6 +87,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：了解连杆、关节和模型资产。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照模型在软件工具链中的接入。
+
 ## 参考来源
 
 - [WalkerS2-Model 源码归档](../../sources/repos/walkers2-model.md)（<https://github.com/UBTECH-Robot/WalkerS2-Model>）

@@ -79,6 +79,9 @@ sequenceDiagram
 - [Agent Autoloop](./agent-autoloop.md)：事件驱动的 Agent 调度。
 - [LangGraph](./langgraph.md)：有状态的 Agent 工作流编排。
 
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：了解测试、复核和证据。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [源码归档与核查范围](../../sources/repos/elephant-goldfish-model.md)

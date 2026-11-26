@@ -98,6 +98,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解传感数据、时间和坐标接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照驱动与软件模块接入。
+
 ## 参考来源
 
 - [HesaiLidar_SDK_2.0 源码归档](../../sources/repos/hesailidar_sdk_2_0.md)（<https://github.com/HesaiTechnology/HesaiLidar_SDK_2.0>）

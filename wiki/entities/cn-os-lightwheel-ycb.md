@@ -77,6 +77,9 @@ flowchart LR
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解模型、控制与仿真接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照仿真与软件模块的接口。
+
 ## 参考来源
 
 - [Lightwheel-YCB 源码归档](../../sources/repos/lightwheel-ycb.md)（<https://github.com/LightwheelAI/Lightwheel-YCB>）

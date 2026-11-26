@@ -113,6 +113,9 @@ sequenceDiagram
 - [Get It. Study Companion](./get-it-study-companion.md) — 面向 PDF/Markdown 学习材料的交互式学习应用。
 - [WikiSkill](./paper-wikiskill.md) — 将持久知识页嵌入 skill 进化流程的研究框架。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 推荐继续阅读
 
 - [book-to-skill 使用说明](https://github.com/virgiliojr94/book-to-skill/blob/master/docs/usage.md)

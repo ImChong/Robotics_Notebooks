@@ -66,6 +66,9 @@ flowchart LR
 - [cn-os-rohand-ros2-pkg](../entities/cn-os-rohand-ros2-pkg.md)
 - [dexterous-hand-industry-core-players](../concepts/dexterous-hand-industry-core-players.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [wechat_zane_hub_dexterous_hand_core_players_2026-11-03.md](../../sources/blogs/wechat_zane_hub_dexterous_hand_core_players_2026-11-03.md)

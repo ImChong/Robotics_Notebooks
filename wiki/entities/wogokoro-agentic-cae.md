@@ -66,6 +66,9 @@ flowchart LR
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [CAE Physics Simulations Agent](./dipanbartaula-cae-physics-simulations-agent.md)
 
+- [工程仿真建模与验证](../methods/engineering-simulation-workflow.md)：了解模型设置、求解与验证。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)

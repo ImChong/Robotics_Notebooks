@@ -93,6 +93,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [轨迹优化](../methods/trajectory-optimization.md)：了解运动约束与轨迹求解。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_course_068_cs-287-advanced-robotics-berkeley.md`](../../sources/repos/pai_awesome_course_068_cs-287-advanced-robotics-berkeley.md) — 本条目策展摘录

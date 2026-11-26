@@ -86,6 +86,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人视觉感知](../methods/robot-visual-perception.md)：对照视觉观测与机器人接口。
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解人形行走任务。
+
 ## 参考来源
 
 - [humanoid_pnb_omni-perception-omnidirectional-collision-avoida.md](../../sources/papers/humanoid_pnb_omni-perception-omnidirectional-collision-avoida.md)

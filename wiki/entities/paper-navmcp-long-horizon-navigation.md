@@ -124,6 +124,8 @@ flowchart TB
 - [SuperNav](./paper-supernav-agentic-navigation.md) — 预训练多模态模型的 agentic 导航框架
 - [Qwen-Robot Suite](./qwen-robot-suite.md) — 专用具身基础模型与 agent 的组合路线
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+
 ## 参考来源
 
 - [NavMCP 论文来源归档](../../sources/papers/navmcp_arxiv_2608_30396.md)

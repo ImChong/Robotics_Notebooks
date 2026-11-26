@@ -104,6 +104,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+
 ## 参考来源
 
 - [XGripper 源码归档](../../sources/repos/xgripper.md)（<https://github.com/XenseRobotics-AI/XGripper>）

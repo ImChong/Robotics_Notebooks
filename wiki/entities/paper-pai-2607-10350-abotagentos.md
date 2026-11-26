@@ -127,6 +127,9 @@ Robotic agent operating layer for scene-conditioned planning, skill execution, v
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2607_10350_abot-agentos.md`](../../sources/papers/pai_awesome_2607_10350_abot-agentos.md) — 本条目策展摘录

@@ -89,6 +89,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：了解视觉特征及下游任务。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：了解运行时接口、资源与性能。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_course_072_fast-ai-practical-deep-learning.md`](../../sources/repos/pai_awesome_course_072_fast-ai-practical-deep-learning.md) — 本条目策展摘录

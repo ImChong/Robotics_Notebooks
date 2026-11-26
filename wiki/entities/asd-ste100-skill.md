@@ -129,6 +129,9 @@ sequenceDiagram
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 代理持续维护知识页的方法
 - [Skills For Real Engineers](./mattpocock-skills.md) — 可组合编码代理技能的对照入口
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [项目来源档案](../../sources/repos/danyuchn-asd-ste100-skill.md)

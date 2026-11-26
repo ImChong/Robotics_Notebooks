@@ -209,6 +209,8 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 - [世界–动作模型](../concepts/world-action-models.md)
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [论文 v2 原文通读与测试表核验](../../sources/papers/longlive2_nvfp4_arxiv_2605_18739.md)

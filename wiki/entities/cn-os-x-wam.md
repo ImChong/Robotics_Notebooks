@@ -116,6 +116,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [X-WAM 源码归档](../../sources/repos/x-wam.md)（`sharinka0715/X-WAM@72cfb86`，<https://github.com/sharinka0715/X-WAM>）

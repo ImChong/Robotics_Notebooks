@@ -96,6 +96,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约与执行反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_list_272_awesome-agentic-engineering.md`](../../sources/repos/pai_awesome_list_272_awesome-agentic-engineering.md) — 本条目策展摘录

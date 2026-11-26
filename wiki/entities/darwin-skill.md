@@ -113,6 +113,8 @@ flowchart LR
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs skill 编译
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 lint / preflight 规范
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+
 ## 参考来源
 
 - [Darwin Skill 仓库源归档（本站）](../../sources/repos/darwin-skill.md)

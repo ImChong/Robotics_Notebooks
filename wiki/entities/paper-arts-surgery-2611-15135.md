@@ -115,6 +115,9 @@ sequenceDiagram
 - [本期 29 篇具身论文选型地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder：任务难度分层评测](./paper-maniladder-manipulation-benchmark.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [原论文核对归档](../../sources/papers/arts-surgery-2611-15135.md)

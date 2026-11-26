@@ -107,6 +107,9 @@ sequenceDiagram
 - [Math To Manim](./math-to-manim.md) — 将自然语言数学主题编排为 Manim 视频的制作管线
 - [Answer with HTML](./answer-me-with-html.md) — 将技术答案排版为可离线阅读的单页 HTML
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [项目仓库归档](../../sources/repos/alchaincyf-huashu-art-motion.md)

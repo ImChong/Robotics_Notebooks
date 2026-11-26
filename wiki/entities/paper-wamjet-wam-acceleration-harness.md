@@ -101,6 +101,9 @@ sequenceDiagram
 - [agentic-coding-software-fundamentals](../concepts/agentic-coding-software-fundamentals.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+
 ## 参考来源
 
 - [wamjet_wam_acceleration_harness_arxiv_2610_03797.md](../../sources/papers/wamjet_wam_acceleration_harness_arxiv_2610_03797.md)

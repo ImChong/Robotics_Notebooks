@@ -125,6 +125,9 @@ flowchart TD
 - [Articraft](./articraft.md) — 另一类 **agent + 规约文件 + harness** 的闭环（面向 3D 资产生成，与编码技能栈问题域不同但可类比）
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) — **蒸馏** 人与方法论为 skill；[Darwin Skill](darwin-skill.md) 可 **优化** 本类流程 skill 的 rubric
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：了解测试、复核和证据。
+
 ## 参考来源
 
 - [Superpowers 仓库源归档（本站）](../../sources/repos/obra-superpowers.md)

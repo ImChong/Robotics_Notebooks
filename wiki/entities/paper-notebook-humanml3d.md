@@ -124,6 +124,11 @@ flowchart LR
 - 近期 HumanML3D SOTA 方法例：[MoLingo](./paper-molingo.md)
 - T2M 文献索引：[Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md)
 
+## 关联页面
+
+- [扩散运动生成](../methods/diffusion-motion-generation.md)：对照动作序列生成方法。
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照跨本体动作映射。
+
 ## 参考来源
 
 - [humanoid_pnb_humanml3d.md](../../sources/papers/humanoid_pnb_humanml3d.md)

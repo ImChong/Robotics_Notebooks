@@ -93,6 +93,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解模型、控制与仿真接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [mycobot_ros2 源码归档](../../sources/repos/mycobot_ros2.md)（<https://github.com/elephantrobotics/mycobot_ros2>）

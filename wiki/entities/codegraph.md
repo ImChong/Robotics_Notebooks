@@ -100,6 +100,9 @@ flowchart TD
 - [Open Code Review](./open-code-review.md) — 对变更 diff 做结构化代码评审；可与代码库结构探索互补。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — coding agent 仍需要工程约束、测试与风险判断。
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [CodeGraph 仓库归档](../../sources/repos/colbymchenry-codegraph.md)

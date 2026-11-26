@@ -184,6 +184,9 @@ GLM-5 + Harness² 的 75.7 高于 Gemini 3.5 Flash + base harness 的 72.4。该
 - [MetaRSI-v1](./paper-metarsi-v1.md) — 从多个 RSI 算子角度讨论 Harness-RSI
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测层级与指标取舍枢纽
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [Harness² 论文来源归档](../../sources/papers/harness2_arxiv_2610_14224.md)

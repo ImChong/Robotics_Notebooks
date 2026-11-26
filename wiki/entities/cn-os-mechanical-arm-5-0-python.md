@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照 SDK、通信与驱动接入。
+
 ## 源码运行时序图
 
 入口（按仓库脚本）：`src/gcc.sh` 生成 `move_sov`，随后 `sudo ./move_sov`。注意：`gcc.sh` 列出的 `communication.cpp`、`mathfunc.cpp`、`Ti5BASIC.cpp`、`Ti5MOVE.cpp`、`Ti5LOGIC.cpp`、`tool.cpp`、`clamping_jaw.cpp`、`example.cpp` 均未入库，仓库内只有头文件与预编译 `.so`，因此按仓库原样无法完成编译。下图只画 `src/main.cpp` 中可见的启动与菜单调度，菜单各 `demo` 函数的实现不在仓库内，未展开。

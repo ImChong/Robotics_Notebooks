@@ -115,6 +115,8 @@ yolo train model=ul://ultralytics/yolo26/yolo26n-seg data=ul://muhammadrizwanmun
 - [FCN 语义分割](../methods/fcn-semantic-segmentation.md) — 像素级语义预测方法背景
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本集位于「2D 检测/分割选型」层；落到人机交互还需 2D→3D 提升与时序跟踪
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [Human Body And Accessories 数据集快照归档](../../sources/datasets/human-body-and-accessories.md)

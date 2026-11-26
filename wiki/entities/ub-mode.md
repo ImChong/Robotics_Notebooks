@@ -62,6 +62,9 @@ README 给出的安装方式是将 `SKILL.md` 复制到代理技能目录下的 
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 对比另一套编码代理技能。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 理解代理编码中的工程取舍。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [ub-mode 仓库归档](../../sources/repos/unclebob-ub-mode.md)

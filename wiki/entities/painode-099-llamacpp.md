@@ -92,6 +92,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [AI 模型压缩与推理优化](../methods/ai-model-compression.md)：对照量化与质量验证。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：了解运行时接口、资源与性能。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_resource_099_llama-cpp.md`](../../sources/repos/pai_awesome_resource_099_llama-cpp.md) — 本条目策展摘录

@@ -118,6 +118,9 @@ flowchart TD
 - [Ingest Workflow](../../schema/ingest-workflow.md) — ingest / query / lint 操作规范
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — skill 蒸馏与进化生态
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [Ponytail 仓库源归档（本站）](../../sources/repos/ponytail.md)

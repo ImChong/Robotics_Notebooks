@@ -164,6 +164,8 @@ MiniMax-H3 生态中已有两种独立的第三方环绕适配器，条件路径
 - [生成式数据增广](../methods/generative-data-augmentation.md) — 合成视觉数据入口
 - [世界模型训练环分类](../overview/robot-world-models-training-loop-taxonomy.md)
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [MiniMax H3 官方博客归档](../../sources/sites/minimax-h3-blog.md)

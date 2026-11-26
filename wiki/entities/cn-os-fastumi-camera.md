@@ -96,6 +96,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解传感数据、时间和坐标接口。
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [FastUMI_Camera 源码归档](../../sources/repos/fastumi_camera.md)（<https://github.com/LumosRobot/FastUMI_Camera>）

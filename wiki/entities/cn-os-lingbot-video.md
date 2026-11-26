@@ -124,6 +124,9 @@ sequenceDiagram
 - [LingBot-World](./lingbot-world.md)
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：了解视觉观测与机器人接口。
+
 ## 参考来源
 
 - [官方 Video 仓库核查](../../sources/repos/lingbot-video.md)

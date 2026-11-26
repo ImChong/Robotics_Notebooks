@@ -94,6 +94,8 @@ sequenceDiagram
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 推荐继续阅读
 
 - Kinova 官方文档门户（以产品页导航为准）

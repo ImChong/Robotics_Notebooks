@@ -122,6 +122,8 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md)
 - [LingBot-World 论文索引](./paper-sa-2601-20540-advancing-open-source-world-models-lingbot-world.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+
 ## 参考来源
 
 - [sources/repos/lingbot-world-v2.md](../../sources/repos/lingbot-world-v2.md)

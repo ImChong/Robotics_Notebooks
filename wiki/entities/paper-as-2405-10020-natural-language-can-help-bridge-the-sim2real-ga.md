@@ -10,7 +10,6 @@ related:
   - ../overview/lc-awesome-sim2real-technology-map.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
-  - ../tasks/locomotion.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/lc_awesome_sim2real_2405_10020_natural-language-can-help-bridge-the-sim.md
@@ -104,7 +103,10 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
-- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)
+
+- [行为克隆](../methods/behavior-cloning.md)：了解示范监督训练。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
 
 ## 参考来源
 

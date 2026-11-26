@@ -104,3 +104,5 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) — 从 Gazebo 关节仿真到真机以太网/SDK 链路的系统摩擦与验证口径。
 - [Locomotion](../tasks/locomotion.md) — 任务层注意：Gazebo 包不承诺高层行走仿真。
 - [ROS 2 基础](../concepts/ros2-basics.md) — 代际对照：本栈为 ROS1，不等同于 ROS2 驱动与 launch 习惯。
+
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。

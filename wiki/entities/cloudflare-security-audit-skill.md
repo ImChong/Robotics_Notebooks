@@ -169,6 +169,9 @@ sequenceDiagram
 - [系统工程 Hub](../overview/hub-systems-engineering.md) — 安全与合规子链入口
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [Security Audit Skill 仓库源归档（本站）](../../sources/repos/cloudflare-security-audit-skill.md)

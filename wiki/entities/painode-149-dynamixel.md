@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与模块接入。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_hardware_149_dynamixel.md`](../../sources/repos/pai_awesome_hardware_149_dynamixel.md) — 本条目策展摘录

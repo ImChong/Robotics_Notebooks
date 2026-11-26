@@ -137,6 +137,8 @@ flowchart TB
 - [先验演化空中抓取](./paper-prior-evolution-aerial-grasping.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ④ 下游策略消费层：载荷限制机载相机视野，View 诊断主动换视角补感知证据，真机失败仍含基篮位置感知误差与腕部相机遮挡
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [微信盘点：具身智能小站 34 篇（2026-10-12）](../../sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md)

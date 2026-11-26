@@ -91,6 +91,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：了解测试任务、协议与指标。
+- [轨迹优化](../methods/trajectory-optimization.md)：了解运动约束与轨迹求解。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_eval_112_nuplan-devkit.md`](../../sources/repos/pai_awesome_eval_112_nuplan-devkit.md) — 本条目策展摘录

@@ -170,6 +170,9 @@ Jetson Linux r39.2 开发指南的 CAN 章节：Thor、AGX Orin、Orin NX、Orin
 - [四足机器人](./quadruped-robot.md)
 - [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [NVIDIA Jetson Embedded Systems 门户归档](../../sources/sites/nvidia-jetson-embedded-systems.md)（原文，已通读）

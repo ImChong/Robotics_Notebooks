@@ -136,6 +136,8 @@ sequenceDiagram
 - [视觉基础模型发展趋势](../concepts/visual-foundation-model-trends.md)
 - [Vision-Language-Action](../methods/vla.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [论文原文归档](../../sources/papers/groundanything_arxiv_2609_39600.md)

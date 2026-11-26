@@ -142,6 +142,8 @@ sequenceDiagram
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准选型知识链；PPTBench 属 coding agent 评测轴的邻接基准
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [pptbench_arxiv_2609_29718](../../sources/papers/pptbench_arxiv_2609_29718.md)

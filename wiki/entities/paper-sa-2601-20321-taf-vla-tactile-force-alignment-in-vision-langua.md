@@ -168,6 +168,8 @@ sequenceDiagram
 - [Sparsh](./paper-sparsh.md) — VBTS SSL 上游 encoder
 - [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — VTLA 层
 
+- [扩散策略](../methods/diffusion-policy.md)：了解条件动作生成。
+
 ## 参考来源
 
 - [TaF-VLA 论文归档（arXiv:2601.20321）](../../sources/papers/taf_vla_arxiv_2601_20321.md)

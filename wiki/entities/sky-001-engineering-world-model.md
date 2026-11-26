@@ -72,6 +72,8 @@ flowchart TB
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — 区分不同输出与用途
 - [Marble（World Labs）](./marble-world-model.md) — 面向可编辑 3D 世界内容的世界模型产品
 
+- [参数化 CAD 建模](../methods/parametric-cad-workflow.md)：了解几何参数、约束与可编辑模型。
+
 ## 参考来源
 
 - [SKY-001 官方产品页归档](../../sources/sites/skyfall-sky-001.md)

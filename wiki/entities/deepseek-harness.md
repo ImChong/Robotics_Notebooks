@@ -222,6 +222,9 @@ sequenceDiagram
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化阶段论
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 可执行 agent 运行时
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [DeepSeek Harness 仓库归档（本站）](../../sources/repos/deepseek-harness.md)

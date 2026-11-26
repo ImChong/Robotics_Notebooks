@@ -299,6 +299,8 @@ LIBERO-100 在基准设置中进一步划分为 **LIBERO-90**（用于预训练�
 - [paper-odeworld](../entities/paper-odeworld.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [LIBERO 来源归档](../../sources/repos/libero-benchmark.md)

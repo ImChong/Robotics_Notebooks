@@ -96,6 +96,9 @@ flowchart TD
 - [斯坦福 CS146S：现代软件开发者](cs146s-modern-software-developer.md) — 偏 AI-native 开发工作流；CS2680 更深入 Agent Harness 和 LLM Serving
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 测试、观测、安全和工程规范，为 A1–A3 提供软件工程上下文
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [哈佛 CS2680：2026 秋季官网和五次作业一手核读](../../sources/courses/harvard-cs2680-modern-ai-systems-2026.md)

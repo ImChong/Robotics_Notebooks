@@ -134,6 +134,9 @@ sequenceDiagram
 - [递归自我改进](../concepts/recursive-self-improvement.md)
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [waytoagi_feishu_top_ai_papers_2026-09-07-09-13.md](../../sources/blogs/waytoagi_feishu_top_ai_papers_2026-09-07-09-13.md) — 周报线索

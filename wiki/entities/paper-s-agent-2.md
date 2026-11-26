@@ -85,6 +85,9 @@ sequenceDiagram
 - [DONIC](./paper-donic.md) — 从人类示范学习双手跟踪控制。
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知栈选型闭环知识链枢纽
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/s-agent-2.md)

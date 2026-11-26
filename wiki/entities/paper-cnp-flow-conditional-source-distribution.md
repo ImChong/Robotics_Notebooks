@@ -94,6 +94,9 @@ flowchart TD
 - [paper-delta-flow-matching-robot-foundation-models](./paper-delta-flow-matching-robot-foundation-models.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [cnp_flow_conditional_source_distribution_arxiv_2610_05349.md](../../sources/papers/cnp_flow_conditional_source_distribution_arxiv_2610_05349.md)

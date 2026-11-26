@@ -100,6 +100,9 @@ flowchart TB
 - [跨本体迁移策略](../queries/cross-embodiment-transfer-strategy.md)
 - [运动重定向](../concepts/motion-retargeting.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [RoboClaw 代码仓](../../sources/repos/roboclaw.md)

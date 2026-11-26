@@ -83,6 +83,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+- [工程仿真建模与验证](../methods/engineering-simulation-workflow.md)：对照模型设置、求解与验证。
+
 ## 参考来源
 
 - [humanoid_pnb_learning-aerodynamics-for-the-control-of-flying.md](../../sources/papers/humanoid_pnb_learning-aerodynamics-for-the-control-of-flying.md)

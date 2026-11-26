@@ -168,6 +168,8 @@ sequenceDiagram
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：Last-3-Meter VLN 细粒度接地评测（ONS/GS/OracleGS）
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 全程可通行 overlay，不是末段实例可见性；评测也不是 REVERIE
 
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+
 ## 参考来源
 
 - [REALM 论文摘录（arXiv:2607.03792）](../../sources/papers/realm_last_3_meter_vln_arxiv_2607_03792.md)

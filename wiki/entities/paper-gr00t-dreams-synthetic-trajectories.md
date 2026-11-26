@@ -118,6 +118,9 @@ flowchart LR
 - [paper-hrl-stack-35-dreamdojo](./paper-hrl-stack-35-dreamdojo.md)
 - [world-action-models](../concepts/world-action-models.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [sources/papers/hmi_p068_gr00t-dreams-synthetic-trajectories.md](../../sources/papers/hmi_p068_gr00t-dreams-synthetic-trajectories.md)

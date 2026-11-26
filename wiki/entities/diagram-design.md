@@ -174,6 +174,9 @@ sequenceDiagram
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
 - [Rethinking Figures（arXiv:2611.08486）](./paper-rethinking-ai-scientific-figures.md) — 对 AI 辅助修订科研图的评估：清晰度提升、美学协调略降，强调科学语义须由研究者把关；与本工具「画清已决定的边界」互补
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [diagram-design 仓库源归档（本站）](../../sources/repos/diagram-design.md)

@@ -99,6 +99,9 @@ SAM 3D Objects 重建单图场景并生成人体交互参考；JMIR 先优化人
 - [real2sim](../../roadmap/depth-real2sim.md)
 - [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体的运动映射。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：了解视觉观测与机器人接口。
+
 ## 参考来源
 
 - [arXiv v1 原文核对归档](../../sources/papers/rgb-scene-contact-retargeting_arxiv_2611_14981.md)

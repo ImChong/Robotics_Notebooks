@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照 SDK、通信与驱动接入。
+
 ## 源码运行时序图
 
 入口：`python3 gui_control.py`（在 `examples/gui_control/` 目录运行；先按 README `pip3 install -r requirements.txt`，并在 `LinkerHand/config/setting.yaml` 中设置 `CAN: "can0"`、`MODBUS: "None"`、`JOINT` 与手型号，再执行 `sudo ip link set can0 up type can bitrate 1000000`）。

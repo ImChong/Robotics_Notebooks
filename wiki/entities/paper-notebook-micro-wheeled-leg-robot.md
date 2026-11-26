@@ -61,6 +61,11 @@ Micro-Wheeled_leg-Robot 的人形机器人学习论文条目，当前处于 Pape
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [混合运动](../tasks/hybrid-locomotion.md)：了解轮腿等复合移动方式。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+
 ## 参考来源
 
 - [humanoid_pnb_micro-wheeled-leg-robot.md](../../sources/papers/humanoid_pnb_micro-wheeled-leg-robot.md)

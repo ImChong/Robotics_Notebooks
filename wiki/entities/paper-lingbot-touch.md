@@ -249,6 +249,8 @@ sequenceDiagram
 - [机器人 Manipulation 任务](../tasks/manipulation.md)：灵巧操作任务背景
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：选型时把冻结触觉 token 作为相机之外的接触观测层，与视觉感知栈一同交给下游策略消费
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [官方技术报告全文通读归档](../../sources/papers/lingbot-touch-technical-report.md)

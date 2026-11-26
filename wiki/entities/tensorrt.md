@@ -142,6 +142,9 @@ flowchart LR
 - [机器人运控开发板选型](../comparisons/robot-policy-deployment-dev-board-selection.md) — 各板推荐的模型格式
 - [NVIDIA CUDA](./nvidia-cuda.md) — TRT 依赖的 GPU 平台与驱动/CTK 对齐
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+- [AI 模型压缩与推理优化](../methods/ai-model-compression.md)：对照量化、资源与质量验证。
+
 ## 参考来源
 
 - [NVIDIA TensorRT 官方站点与文档索引](../../sources/repos/tensorrt-official.md)（原文，已通读）

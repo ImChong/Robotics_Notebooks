@@ -88,6 +88,9 @@ sequenceDiagram
 - [Remotion](./remotion.md) — 可编程视频与渲染框架。
 - [video-shotcraft](./video-shotcraft.md) — 面向产品宣传片的镜头配方与制作流程。
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+
 ## 参考来源
 
 - [Wise Motion 仓库归档](../../sources/repos/wise-motion.md)

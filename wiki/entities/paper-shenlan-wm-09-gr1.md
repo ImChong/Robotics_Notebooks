@@ -112,6 +112,11 @@ Ego4D（>3,500 小时，取 3s 片段）视频生成式预训练，再在机器�
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_09_gr1.md](../../sources/papers/shenlan_wm_survey_09_gr1.md)
 
+## 关联页面
+
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：了解视觉观测与机器人接口。
+
 ## 参考来源
 
 - [GR-1 源码归档](../../sources/repos/paper_shenlan_wm_09_gr1.md)（<https://github.com/ByteDance-Seed/GR-1>）

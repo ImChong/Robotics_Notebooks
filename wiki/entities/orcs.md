@@ -165,6 +165,8 @@ sequenceDiagram
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Unitree G1](./unitree-g1.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [lok_i_orcs.md](../../sources/repos/lok_i_orcs.md)

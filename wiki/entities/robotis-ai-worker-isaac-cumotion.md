@@ -159,6 +159,8 @@ sequenceDiagram
 - [Manipulation 任务页](../tasks/manipulation.md)
 - [NVIDIA Physical AI 工具链地图](../overview/nvidia-physical-ai-toolchain-technology-map.md)
 
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [ROBOTIS Technical Story 归档](../../sources/sites/robotis_aiworker_isaac_cumotion_technical_story.md)

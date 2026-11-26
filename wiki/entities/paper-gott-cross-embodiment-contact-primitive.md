@@ -110,6 +110,8 @@ flowchart TD
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [gott_cross_embodiment_contact_primitive_arxiv_2610_03861.md](../../sources/papers/gott_cross_embodiment_contact_primitive_arxiv_2610_03861.md)

@@ -116,6 +116,11 @@ flowchart TD
 
 - [AdaOcc](./paper-adaocc.md) — 稀疏语义点与可调计算预算的具身占据预测。
 
+## 关联页面
+
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [Humanoid-Occupancy 源码归档](../../sources/repos/humanoid-occupancy.md)（<https://github.com/Open-X-Humanoid/Humanoid-Occupancy>）

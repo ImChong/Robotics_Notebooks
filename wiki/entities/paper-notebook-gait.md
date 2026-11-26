@@ -196,6 +196,9 @@ flowchart TD
 - IEKF 理论背景：[paper-notebook-the-invariant-extended-kalman-filter-as-a-stable](paper-notebook-the-invariant-extended-kalman-filter-as-a-stable.md)
 - 仿真环境：[RaiSim](raisim.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解传感数据、时间和坐标接口。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：对照不同里程计和感知路线。
+
 ## 参考来源
 
 - [gait_arxiv_2606_14160.md](../../sources/papers/gait_arxiv_2606_14160.md)：论文原文归档（arXiv:2606.14160v1）

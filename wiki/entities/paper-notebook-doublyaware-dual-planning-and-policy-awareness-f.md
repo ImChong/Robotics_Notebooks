@@ -84,6 +84,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解人形行走任务。
+- [腿足运动控制](../tasks/locomotion.md)：了解足式移动任务。
+
 ## 参考来源
 
 - [humanoid_pnb_doublyaware-dual-planning-and-policy-awareness-f.md](../../sources/papers/humanoid_pnb_doublyaware-dual-planning-and-policy-awareness-f.md)

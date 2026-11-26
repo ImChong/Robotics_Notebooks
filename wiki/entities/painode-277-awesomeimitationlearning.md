@@ -92,6 +92,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+- [行为克隆](../methods/behavior-cloning.md)：对照示范监督训练。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_list_277_awesome-imitation-learning.md`](../../sources/repos/pai_awesome_list_277_awesome-imitation-learning.md) — 本条目策展摘录

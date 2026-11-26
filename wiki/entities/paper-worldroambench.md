@@ -175,6 +175,10 @@ sequenceDiagram
 - 相邻基准：[paper-harnesseval-w.md](./paper-harnesseval-w.md)、[paper-worldscore.md](./paper-worldscore.md)、[ewmbench.md](./ewmbench.md)
 - 方法背景：[generative-world-models.md](../methods/generative-world-models.md)
 
+## 关联页面
+
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：了解测试任务、协议与指标。
+
 ## 参考来源
 
 - [worldroambench_arxiv_2606_31672.md](../../sources/papers/worldroambench_arxiv_2606_31672.md)

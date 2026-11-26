@@ -202,6 +202,8 @@ flowchart TB
 - [VLA](../methods/vla.md)
 - [π₀.₅ 开放世界 VLA](./paper-pi05-open-world-vla.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [Be My Eye 技术报告核对归档](../../sources/papers/be-my-eye-arxiv-2611-12295.md)

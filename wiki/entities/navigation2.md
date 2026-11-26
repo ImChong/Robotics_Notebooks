@@ -140,6 +140,9 @@ sequenceDiagram
 - [Autoware](./autoware.md)
 - [TPS-A\*（论文实体）](./paper-tps-astar.md) — 以 Nav2 Hybrid-A\* / 圆形与多边形脚印配置为对照的任意形状认证碰撞 A\*；BARN 共享目标位姿下作者报告 Nav2 仅 54.7% 路径通过独立精确检验
 
+- [动态窗口法](../methods/dwa.md)：了解局部路径规划。
+- [A* 全局路径规划](../methods/a-star.md)：了解全局路径搜索。
+
 ## 推荐继续阅读
 
 - [PythonRobotics 在线教材](https://atsushisakai.github.io/PythonRobotics/)（算法预习）

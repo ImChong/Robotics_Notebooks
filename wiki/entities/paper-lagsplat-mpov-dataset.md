@@ -142,6 +142,9 @@ flowchart LR
 - [系统辨识](../concepts/system-identification.md)
 - [状态估计](../concepts/state-estimation.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+
 ## 参考来源
 
 - [sources/papers/lagsplat-mpov-dataset_arxiv_2611_09959.md](../../sources/papers/lagsplat-mpov-dataset_arxiv_2611_09959.md)

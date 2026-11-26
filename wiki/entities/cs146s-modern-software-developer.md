@@ -118,6 +118,9 @@ flowchart TD
 - [Agentic Coding 软件基础](../concepts/agentic-coding-software-fundamentals.md) — 智能体研发的上下文、测试和工程约束
 - [规范驱动开发](../concepts/specification-driven-development.md) — 把需求转为可验证的任务描述
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [本仓库课程与作业一手资料核读](../../sources/courses/cs146s-modern-software-developer.md) — 官网概述、前五周作业及模板的逐项梳理

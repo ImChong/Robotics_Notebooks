@@ -57,6 +57,9 @@ OpenFOAM Agent Skills（twj011/openfoam-agent-skills）是作为小型 OpenFOAM 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [OpenFOAM CFD Codex Skill](./hnuvv-openfoam-cfd-codexskill.md)
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 源码运行时序图
 
 入口：`python3 skills/openfoam-agent/scripts/case_audit.py <case_dir> [--json]`（仓库内唯一被 `main()` 驱动的可运行脚本；`skill_quality_check.py` 未在本图中展开）。该仓库主体是供编码代理读取的 Markdown 技能文档，本图只描述该脚本对算例目录的检查顺序。

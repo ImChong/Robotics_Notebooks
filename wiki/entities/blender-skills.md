@@ -69,6 +69,9 @@ flowchart LR
 - [APOLLO Blender](./paper-apollo-blender.md) — 面向机器人 URDD/URDF 与论文级可视化的专用 Blender 工具链。
 - [Sim2Real](../concepts/sim2real.md) — 检查导出资产进入仿真与真机流程时的差异。
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+
 ## 参考来源
 
 - [Blender Skills 仓库归档](../../sources/repos/blender-skills.md)

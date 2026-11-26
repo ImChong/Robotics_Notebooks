@@ -119,6 +119,9 @@ sequenceDiagram
 - [Open Duck Mini Runtime](./open-duck-mini-runtime.md)
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+- [AI 模型压缩与推理优化](../methods/ai-model-compression.md)：对照量化、资源与质量验证。
+
 ## 参考来源
 
 - [MNN 官方文档与仓库索引](../../sources/repos/mnn-official.md)

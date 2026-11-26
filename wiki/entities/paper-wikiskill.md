@@ -159,6 +159,9 @@ flowchart TD
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 科研 agent 全生命周期与 **人机共治 / 溯源**
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest/query/lint** 即 WikiSkill 式知识编译实例
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [WikiSkill 论文摘录](../../sources/papers/wikiskill_arxiv_2608_27454.md)

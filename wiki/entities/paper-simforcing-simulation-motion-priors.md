@@ -99,6 +99,8 @@ sequenceDiagram
 - [world-action-models](../concepts/world-action-models.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [simforcing_simulation_motion_priors_arxiv_2610_06598.md](../../sources/papers/simforcing_simulation_motion_priors_arxiv_2610_06598.md)

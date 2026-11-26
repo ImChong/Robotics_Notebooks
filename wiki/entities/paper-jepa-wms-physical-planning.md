@@ -128,6 +128,8 @@ sequenceDiagram
 - [DUET-DINO](paper-duet-dino.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/jepa-wms-physical-planning_arxiv_2512_24497.md)

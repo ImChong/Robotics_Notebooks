@@ -78,6 +78,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照模型、控制和仿真接口。
+- [人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：了解参考动作、控制与稳定性。
+
 ## 参考来源
 
 - [humanoid_pnb_simgenhoi-physically-realistic-whole-body-humano.md](../../sources/papers/humanoid_pnb_simgenhoi-physically-realistic-whole-body-humano.md)

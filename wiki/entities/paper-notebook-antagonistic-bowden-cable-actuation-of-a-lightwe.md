@@ -155,6 +155,9 @@ flowchart LR
 - 远端执行器的反射惯量与减速比权衡：[robot-link-and-rotor-inertia](../concepts/robot-link-and-rotor-inertia.md)
 - 灵巧手产业格局：[灵巧手产业核心玩家](../concepts/dexterous-hand-industry-core-players.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md](../../sources/papers/humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md)

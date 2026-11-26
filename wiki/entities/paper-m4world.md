@@ -194,6 +194,8 @@ VLM judge 覆盖：场景天气/时段、视角内物体存在与清晰度、视
 - [自动驾驶核心算法盘点](../overview/autonomous-driving-core-algorithms-series.md) — 感知栈与增广阅读入口
 - [Cosmos 3](./cosmos-3.md) — 更广 Physical AI 世界模型平台对照
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [M⁴World 论文摘录（arXiv:2607.14005）](../../sources/papers/m4world_arxiv_2607_14005.md)

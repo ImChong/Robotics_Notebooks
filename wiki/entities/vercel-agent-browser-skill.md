@@ -98,6 +98,9 @@ sequenceDiagram
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架
 - [frontend-design（Anthropic）](anthropic-frontend-design-skill.md) — UI 改动后的视觉验证可搭配 dogfood
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [agent-browser 仓库归档（本站）](../../sources/repos/vercel-labs-agent-browser.md)

@@ -75,6 +75,9 @@ flowchart LR
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：了解参考动作、控制和稳定性。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照动作策略训练与评估。
+
 ## 参考来源
 
 - [RLPF 源码归档](../../sources/repos/rlpf.md)（<https://github.com/BeingBeyond/RLPF>）

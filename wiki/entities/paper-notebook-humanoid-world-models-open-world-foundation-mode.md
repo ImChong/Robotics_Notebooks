@@ -100,6 +100,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [humanoid_pnb_humanoid-world-models.md](../../sources/papers/humanoid_pnb_humanoid-world-models.md)

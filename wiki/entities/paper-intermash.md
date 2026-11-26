@@ -103,6 +103,8 @@ flowchart LR
 - [RecMorph](./paper-recmorph.md)
 - [9 篇技术地图](../overview/perception-action-transfer-9-papers-technology-map.md)
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [intermash_arxiv_2609_18504.md](../../sources/papers/intermash_arxiv_2609_18504.md)

@@ -86,6 +86,10 @@ flowchart LR
 - [manipulation](../tasks/manipulation.md)
 - [视频–接触–控制 10 篇技术地图](../overview/video-contact-control-10-papers-technology-map.md)
 
+## 关联页面
+
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [goag_arxiv_2608_19759](../../sources/papers/goag_arxiv_2608_19759.md)

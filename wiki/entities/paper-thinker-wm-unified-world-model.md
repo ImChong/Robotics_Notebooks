@@ -117,6 +117,8 @@ flowchart TD
 - [世界-动作模型](../concepts/world-action-models.md)
 - [DepthWorld：机器人操作的 3D 世界模型](./paper-depthworld-3d-world-model.md)
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/thinker_wm_arxiv_2610_18447.md)

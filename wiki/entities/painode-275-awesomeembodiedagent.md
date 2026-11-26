@@ -94,6 +94,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_list_275_awesome-embodied-agent.md`](../../sources/repos/pai_awesome_list_275_awesome-embodied-agent.md) — 本条目策展摘录
