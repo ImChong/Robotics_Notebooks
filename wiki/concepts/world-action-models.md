@@ -684,6 +684,7 @@ flowchart TB
 ## 长上下文因果 WAM：Long-WAM
 
 - [Long-WAM](../entities/paper-long-wam-scaling-context.md)（arXiv:2610.10528）以因果视频专家预测未来 latent，再由动作专家生成动作块；RoboCasa GR-1 报告历史从 0 秒扩至 19.2 秒时 SR 由 63.3% 升至 78.7%。代码位于 NVlabs/LongLive 的 Long-WAM/ 子目录；官方仓库说明完整 benchmark 尚未验证。
+- [星海图 G0.7](../entities/paper-galaxea-g07.md) 同一 checkpoint 支持 Fast 和 IDM，把真实观测滑窗拉长至最多五分钟；同 BF16 eager 下分别 156 与 457 ms，60 ms 是 Fast 的 FP8 部署值。
 - [LongLive 2.0 视频生成基础设施](../entities/paper-longlive-2-nvfp4-long-video-generation.md)（arXiv:2605.18739）以 NVFP4、Balanced SP 支持 5B 长视频生成；Long-WAM 从其 checkpoint 继续适配机器人视觉数据，但两者是同仓不同项目，45.7 FPS 不是机器人动作策略速度。
 
 
