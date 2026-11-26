@@ -103,7 +103,7 @@ flowchart LR
 - [U-Net](../wiki/methods/unet.md) — 编码器–解码器 + 跳跃连接，后来成为扩散策略的常用去噪骨干
 - [深度学习优化器对比](../wiki/comparisons/deep-learning-optimizers.md) — 换骨干往往要连带换优化器与学习率策略
 
-- [MemT-1.0](../wiki/entities/paper-memt-1-0-memory-native-evolution.md) — 对照 Transformer 骨干旁的原生记忆支路、动态状态与稳定写入；属于语言模型架构案例，非机器人控制验证。
+- [MemT-1.0](../wiki/entities/paper-memt-1-0-memory-native-evolution.md) — 对照骨干旁的原生记忆支路；读 v5 表 5 区分逐 token 写入和逐轮提交，并分开衡量召回、查询延迟与持久状态。属于语言模型架构案例，非机器人控制验证。
 
 ### 学完输出什么
 - 一张"归纳偏置 × 长程 × 并行度 × 推理复杂度"四维选型表，能对新骨干直接填格
