@@ -3,7 +3,7 @@ type: query
 tags: [sim2real, domain-randomization, locomotion, deployment, training]
 status: complete
 summary: "Sim2Real Gap 缩减实战指南"
-updated: 2026-11-14
+updated: 2026-11-26
 original:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/privileged_training.md
@@ -15,6 +15,7 @@ sources:
   - ../../sources/papers/system_identification.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
+  - ../../sources/blogs/unidata_sim2real_guide_2026_11.md
 ---
 
 # Sim2Real Gap 缩减实战指南
@@ -125,6 +126,31 @@ contact_noise:  0.05            # 接触检测误报率
    - Phase 1：在仿真（强 DR）训练 base policy
    - Phase 2：在真机（少量数据）fine-tune
 
+## 用留出真机试验定位主导域差 / Diagnosing the Reality Gap on Hardware
+
+[Unidata 的指南](../../sources/blogs/unidata_sim2real_guide_2026_11.md)可作低成本诊断入口。它的四类域差和上面的五项工程根因是两种视角：物理差异可来自接触或执行器，感知又可拆为传感器、渲染和部署分布。先验证故障归因，再决定是否改训练。
+
+| 同一任务下的症状 | 优先看什么 | 合理对照 |
+|---|---|---|
+| 看得到目标但接触后失败 | 力/速度、摩擦、末端顺应、驱动限幅及控制时序 | 同布局先小范围重复接触，检查测量与估计；再有针对性地校准接触和驱动模型或调整随机范围 |
+| 特定灯光、材质或遮挡才失败 | 用目标相机看原始帧、无效深度、外参及时间戳 | 锁定策略，分别改变照明/材质或换观测回放；避免只用训练时同源影像验证 |
+| 仿真和真机成功率接近，但节拍或失败类型不同 | 检查重复试探、超时、干预和保护触发；节拍异常也可能来自通信或观测延时 | 固定终止条件与计时起止，以相同预设工况汇报成功数、节拍和失败分布 |
+| 少量真机微调后成功率回升 | 先排除调参集合与留出集合重叠、不同控制设置或目标传感器校准改善 | 零样本模型和微调模型跑同一组独立工况，不把观察到的提升当成已证明的原因 |
+
+```mermaid
+flowchart LR
+  A["冻结任务、计时与安全终止规则"] --> B["仿真基线与零样本真机"]
+  B --> C["按工况记录 n/N、节拍、失败与干预"]
+  C --> D["定位接触、传感器、渲染或部署分布差异"]
+  D --> E["改一类参数，或用专用数据做适配"]
+  E --> F["在相同独立留出工况复测"]
+  F --> C
+```
+
+**最小记录项：** 每个试次记录场景/物体与重置编号、策略和标定版本、动作频率、成功与否、超时/急停/人工接管、失败类别；同时记录节拍的分母（全部尝试还是仅成功）。另外保留硬件不可用等无效试次计数，勿把任务失败当无效删除。优先在预定义的低风险条件验证，并遵守[真机部署 Checklist](./sim2real-checklist.md)。
+
+**样本量不是安全门槛。** 文章的 30–50 个真机试次只适合做初筛。如果试次近似独立，观察到 10/20 和 25/50 成功时，95% Wilson 区间约为 30%–70% 和 37%–63%。同一物体、场景或操作者反复试验时应考虑成簇；需要按独立场景覆盖、测量不确定度和失败代价配置试验，而不是套用文章的差值或样本阈值。
+
 ## 完整 Sim2Real Pipeline Checklist
 
 完整五阶段工程清单（建模 → DR → 仿真验证 → SysID → 上机 → Gap 闭环）见 **[Sim2Real 工程 Checklist](./sim2real-checklist.md)**；上机前 3 分钟快速版见该页 **[快速部署检查](./sim2real-checklist.md#快速部署检查)**。
@@ -161,6 +187,8 @@ flowchart TD
 | AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 参考来源
+
+- [Unidata Sim2Real 指南与数据、评测口径核对](../../sources/blogs/unidata_sim2real_guide_2026_11.md)
 
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — teacher-student / RMA 适应模块
