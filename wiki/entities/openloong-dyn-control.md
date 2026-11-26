@@ -116,6 +116,9 @@ sequenceDiagram
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 
+- [模型预测控制](../methods/model-predictive-control.md)：了解滚动时域决策。
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动约束与轨迹求解。
+
 ## 推荐继续阅读
 
 - https://www.openloong.org.cn/pages/api/html/index.html

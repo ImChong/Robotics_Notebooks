@@ -246,6 +246,11 @@ OpenLoong 软件以 **`loongOpen` GitHub 组织** 与 **AtomGit `openloong` 组�
 | 仿真迁移 | MuJoCo / 全链 sim SDK | [sim2real](../concepts/sim2real.md)、[mujoco](./mujoco.md) |
 | 国内同类 | 天工、灵犀 X1、傅利叶 N1 | [天工](./tienkung-humanoid-open-source.md)、[灵犀 X1](./agibot-lingxi-x1.md) |
 
+## 关联页面
+
+- [模型预测控制](../methods/model-predictive-control.md)：了解滚动时域决策。
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动约束与轨迹求解。
+
 ## 参考来源
 
 - [OpenLoong-Hardware 源码归档](../../sources/repos/openloong-hardware.md)（<https://github.com/loongOpen/OpenLoong-Hardware>）

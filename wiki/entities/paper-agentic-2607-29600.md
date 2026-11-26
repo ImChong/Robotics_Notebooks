@@ -41,6 +41,8 @@ summary: 'HAM-VLN: Harnessing Hierarchical Agentic Memory for Zero-Shot Vision-a
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [视觉语言导航](../tasks/vision-language-navigation.md)：了解语言条件导航任务。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

@@ -97,6 +97,8 @@ FreqFM 用频率条件 flow matching 提升 VLA 动作质量与真机成功率�
 - [./paper-tfgca-chunked-vla.md](./paper-tfgca-chunked-vla.md)
 - [./paper-wm-craftnet.md](./paper-wm-craftnet.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [freqfm_vla_arxiv_2609_10405.md](../../sources/papers/freqfm_vla_arxiv_2609_10405.md)

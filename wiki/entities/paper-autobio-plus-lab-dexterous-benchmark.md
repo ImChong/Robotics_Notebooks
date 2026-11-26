@@ -128,6 +128,8 @@ flowchart LR
 - [Fast-WAM](./paper-fast-wam.md)
 - [具身评测基准选型回路](../queries/embodied-eval-benchmark-selection-loop.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [公众号盘点：具身智能小站 34 篇](../../sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md)

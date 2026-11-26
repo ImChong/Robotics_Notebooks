@@ -124,6 +124,8 @@ sequenceDiagram
 - [MPC–WBC 集成](../concepts/mpc-wbc-integration.md)
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
 
+- [轨迹优化](../methods/trajectory-optimization.md)：用于理解约束下的轨迹求解。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/mhpc_arxiv_2010_08881.md)

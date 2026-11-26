@@ -97,6 +97,8 @@ RoboDrop 用梯度兼容性策展 VLA 后训练数据，真机成功率近乎翻
 - [./paper-openwam.md](./paper-openwam.md)
 - [./paper-vla-precision.md](./paper-vla-precision.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [robodrop_vla_post_training_arxiv_2609_10021.md](../../sources/papers/robodrop_vla_post_training_arxiv_2609_10021.md)

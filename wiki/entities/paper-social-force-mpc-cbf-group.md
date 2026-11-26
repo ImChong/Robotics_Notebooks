@@ -98,6 +98,9 @@ ESFFM 加入障碍排斥、群心牵引、成员间排斥与速度衰减；MPC �
 - [humanoid swarm performance](../../roadmap/depth-humanoid-swarm-performance.md)
 - [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
+- [模型预测控制](../methods/model-predictive-control.md)：了解滚动时域决策。
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动约束与轨迹求解。
+
 ## 参考来源
 
 - [arXiv v1 原文核对归档](../../sources/papers/social-force-mpc-cbf-group_arxiv_2611_14853.md)

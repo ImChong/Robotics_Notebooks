@@ -206,6 +206,9 @@ sequenceDiagram
 - [EGO-Planner Swarm（ESDF 局部规划）](./ego-planner-swarm.md)
 - [PX4 Autopilot（飞控执行层）](./px4-autopilot.md)
 
+- [模型预测控制](../methods/model-predictive-control.md)：了解滚动时域决策。
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动约束与轨迹求解。
+
 ## 参考来源
 
 - [SwarmNxt 论文归档](../../sources/papers/swarmnxt_arxiv_2609_11382.md)

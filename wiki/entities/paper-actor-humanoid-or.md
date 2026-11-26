@@ -170,6 +170,8 @@ flowchart LR
 - [人形认知可靠性差距](../concepts/humanoid-cognitive-reliability-gap.md)
 - [Loco-manipulation](../tasks/loco-manipulation.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+
 ## 参考来源
 
 - [sources/papers/actor-humanoid-or_arxiv_2611_04255.md](../../sources/papers/actor-humanoid-or_arxiv_2611_04255.md)（含核对范围、周报条目核对）

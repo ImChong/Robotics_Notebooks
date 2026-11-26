@@ -92,6 +92,8 @@ flowchart TD
 - [Elastic-WAM](paper-elastic-wam.md)
 - [VLA](../methods/vla.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：对照世界预测与动作生成。
+
 ## 参考来源
 
 - [arXiv:2611.14048 归档](../../sources/papers/last05_arxiv_2611_14048.md)

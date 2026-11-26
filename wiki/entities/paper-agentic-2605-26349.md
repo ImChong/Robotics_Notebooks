@@ -42,6 +42,8 @@ summary: 'Closing the Loop in Teleoperation: Episode-Level Data Quality Assessme
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

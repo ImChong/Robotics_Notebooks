@@ -181,6 +181,8 @@ flowchart TD
 - [VLA 方法总览](../methods/vla.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 三个公开榜单（RoboTwin 2.0 / RoboColiseum / RoboDojo）都属其 ③ 策略任务成功率层；厂商「三榜第一」须按各榜口径与分榜逐项核对（见上文核对表）
 
+- [生成式世界模型](../methods/generative-world-models.md)：用于理解环境状态预测。
+
 ## 参考来源
 
 - 新闻稿：[PR Newswire APAC，2026-11-03](https://www.prnewswire.com/apac/news-releases/agibot-unveils-go-3-preview-takes-top-spot-on-three-embodied-ai-benchmarks-302927277.html)

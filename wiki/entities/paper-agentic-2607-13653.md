@@ -42,6 +42,8 @@ summary: 'Exploratory, Communicative, and Deployable: Vision-Driven Embodied Age
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作的协同。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

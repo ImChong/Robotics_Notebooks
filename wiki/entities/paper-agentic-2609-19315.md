@@ -41,6 +41,8 @@ summary: 'GAVEL: Graph World Models for Verified and Efficient Long-Horizon LLM 
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

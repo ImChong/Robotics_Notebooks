@@ -82,6 +82,8 @@ flowchart TD
 - [Day 5 导读](../overview/humanoid-motion-intelligence-day5-world-models-decision.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+
 ## 参考来源
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)

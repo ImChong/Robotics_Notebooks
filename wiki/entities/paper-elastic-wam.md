@@ -98,6 +98,8 @@ flowchart TD
 - [LaST0.5](paper-last05.md)
 - [VLA](../methods/vla.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [arXiv:2611.14257 归档](../../sources/papers/elastic-wam_arxiv_2611_14257.md)

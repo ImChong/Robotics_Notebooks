@@ -139,6 +139,8 @@ TidyBot 用语言模型把少量用户摆放示例归纳为类别级规则，再
 - [VLA](../methods/vla.md)
 - [VLA 纵深路线](../../roadmap/depth-vla.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+
 ## 参考来源
 
 - [论文核读归档](../../sources/papers/agentic_2305_05658.md)

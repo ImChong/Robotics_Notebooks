@@ -110,6 +110,9 @@ sequenceDiagram
 - [lingbot-vla](./lingbot-vla.md)
 - [Compression is Routing](./paper-compression-is-routing.md) — 同属长上下文压缩叙事：AE 重建误差作路由信号 vs 本页的记忆压缩
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [memorywam_arxiv_2606_20562.md](../../sources/papers/memorywam_arxiv_2606_20562.md)

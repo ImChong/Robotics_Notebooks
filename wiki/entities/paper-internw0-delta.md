@@ -299,6 +299,8 @@ sequenceDiagram
 - [Long-WAM](./paper-long-wam-scaling-context.md) — WAM 长上下文扩展对照。
 - [4D-WAM](./paper-4d-wam.md) — 时空几何表征与动作模型相关路线。
 
+- [动作分块](../methods/action-chunking.md)：了解动作序列的预测与执行。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/internw0_delta_arxiv_2609_31394.md)

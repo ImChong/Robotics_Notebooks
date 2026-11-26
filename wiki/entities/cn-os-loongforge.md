@@ -169,6 +169,8 @@ sequenceDiagram
 - [VLA](../methods/vla.md) — 视觉–语言–动作方法总览
 - [国内具身开源 424 项覆盖](../queries/china-domestic-opensource-424-coverage.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [LoongForge 源码归档](../../sources/repos/loongforge.md)（GitHub 深度复核，2026-09-21）

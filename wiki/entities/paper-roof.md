@@ -87,6 +87,8 @@ flowchart LR
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
 
+- [平衡恢复](../tasks/balance-recovery.md)：了解失稳后的平衡与恢复。
+
 ## 参考来源
 
 - [roof_arxiv_2610_42097.md](../../sources/papers/roof_arxiv_2610_42097.md)

@@ -144,6 +144,9 @@ sequenceDiagram
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
 - [跨本体迁移纵深路线](../../roadmap/depth-cross-embodiment.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+- [智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：对照智能体、机器人接口与执行反馈。
+
 ## 参考来源
 
 - [论文原文与核对归档](../../sources/papers/justrua-arxiv-2611-16009.md)

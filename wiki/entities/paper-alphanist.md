@@ -123,6 +123,8 @@ flowchart LR
 - [Isaac Lab UR10e 工业装配 sim2real](./nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+
 ## 参考来源
 
 - [34 篇论文盘点（具身智能小站，2026-10-12）](../../sources/blogs/wechat_embodied_station_34_papers_spatial_grounding_2026-10-12.md)

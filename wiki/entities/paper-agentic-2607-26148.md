@@ -42,6 +42,8 @@ summary: 'Embodied Agents Take Control: Minimal-Interface Zero-Shot Agents Rival
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [视觉语言导航](../tasks/vision-language-navigation.md)：了解语言条件导航任务。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)
