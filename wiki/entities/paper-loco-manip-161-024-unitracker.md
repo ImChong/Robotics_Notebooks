@@ -159,6 +159,10 @@ flowchart TB
 3. **通才 tracker ≠ 任务语义** — 本工作解决 reference tracking，不替代上层 loco-manip 规划或操作意图。
 4. **项目页「三阶段」与 arXiv v1** — 以 PDF 两阶段为准；第三 adaptation 待代码/新版论文核实。
 
+## 关联页面
+
+- [教师–学生 DAgger 训练](../methods/teacher-student-dagger-training.md) — 延伸阅读，对照教师示范与学生训练。
+
 ## 与其他页面的关系
 
 - 161 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)

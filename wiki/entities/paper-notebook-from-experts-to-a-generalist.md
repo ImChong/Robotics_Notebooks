@@ -89,6 +89,8 @@ flowchart TD
 
 ## 关联页面
 
+- [教师–学生 DAgger 训练](../methods/teacher-student-dagger-training.md) — 延伸阅读，对照教师示范与学生训练。
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)
 - 同系列演化后续：[FAST：预训练与快速自适应通用人形全身控制](cn-os-fast.md)
 - 协同上层运动生成：[RLPF](paper-notebook-rl-from-physical-feedback-aligning-large-motion.md) 与 [DemoHLM](paper-loco-manip-161-136-demohlm.md)

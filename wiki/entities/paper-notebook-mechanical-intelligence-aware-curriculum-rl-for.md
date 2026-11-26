@@ -73,6 +73,11 @@ flowchart TD
 - 适用边界：可用于分类检索与待读链接，不能作为该工作的技术依据或引用来源。
 - 主要风险是被误读成已完成摘要；深读状态以上游 PROGRESS.md 为准，笔记完成后本页会补上笔记链接并重写。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

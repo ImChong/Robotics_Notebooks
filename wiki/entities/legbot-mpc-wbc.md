@@ -109,6 +109,10 @@ sequenceDiagram
 4. **与人形经典线交叉而非合并** — IJHR 2004/ICRA 2006 讲任务优先级；本仓讲凸 MPC 接触力。
 5. **迁移到人形看** [mpc-wbc-integration](../concepts/mpc-wbc-integration.md) **与** [srbd-convex-mpc-wbc](../concepts/srbd-convex-mpc-wbc.md)。
 
+## 关联页面
+
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - [qm-control.md](./qm-control.md) — 四足**机械臂** OCS2 MPC+WBC（Gazebo）

@@ -173,6 +173,8 @@ $$
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 平台母体：[AI2-THOR](./ai2-thor.md)

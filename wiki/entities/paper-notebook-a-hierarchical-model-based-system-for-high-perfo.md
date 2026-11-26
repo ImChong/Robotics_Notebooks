@@ -159,6 +159,7 @@ flowchart TB
 
 ## 关联页面
 
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) — 集中 vs 去中心化总览
 - [Swarm Intelligence 人形足球](paper-humanoid-soccer-swarm-intelligence.md) — 去中心化对照
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)

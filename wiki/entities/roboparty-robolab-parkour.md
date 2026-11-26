@@ -119,6 +119,8 @@ python scripts/rsl_rl/play.py  --task RPO-Parkour-Play
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照足式移动任务。
+- [对抗运动先验](../methods/amp-reward.md) — 延伸阅读，了解运动先验奖励。
 - [RoboParty RP1（总览）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)
 - [robolab · AMP](./roboparty-robolab-amp.md)

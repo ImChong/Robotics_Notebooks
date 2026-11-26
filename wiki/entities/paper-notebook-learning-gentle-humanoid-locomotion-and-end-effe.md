@@ -75,6 +75,11 @@ flowchart LR
 - 深读笔记尚未撰写，本页因此除「流程总览」外没有机制描述，也没有量化 benchmark 或实机指标；引用时不要把它当作结论来源。
 - 后续动作明确：笔记在计划文件夹落地后，本页应链向笔记站并补成完整摘要。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

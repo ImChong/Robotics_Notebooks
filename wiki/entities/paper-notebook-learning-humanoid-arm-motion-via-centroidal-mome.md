@@ -76,6 +76,11 @@ flowchart TD
 - 分类与标题只能作为线索，不能替代结论：智能体如何划分、质心动量正则项怎么起作用，本页都无法回答。
 - 因此当前唯一正当用途是待读与交叉检索——本页「实验与评测」已声明 benchmark 与实机指标待笔记补充，引用前应回到 arXiv 原文或等 [humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md) 下的深读笔记落地。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

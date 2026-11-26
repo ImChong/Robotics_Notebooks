@@ -60,6 +60,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
 - [视觉语言动作模型](../methods/vla.md)
 - [GPT-6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md)
 

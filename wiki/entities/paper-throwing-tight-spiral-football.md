@@ -152,6 +152,8 @@ flowchart TD
 
 ## 关联页面
 
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
+- [轨迹优化](../methods/trajectory-optimization.md) — 延伸阅读，了解运动约束与轨迹求解。
 - [Whole-Body Control：全身控制](../concepts/whole-body-control.md)
 - [Contact Estimation：接触估计](../concepts/contact-estimation.md)
 - [机器人雅可比矩阵：关节与末端映射](../formalizations/robot-jacobian.md)

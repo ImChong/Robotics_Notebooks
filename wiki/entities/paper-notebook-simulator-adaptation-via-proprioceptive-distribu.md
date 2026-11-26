@@ -111,6 +111,11 @@ flowchart TD
 - 适用边界与推广：本页验证在腿足运动（含双腿站立行走这类高难行为），方法本身不限四足，「少量本体数据 + 分布匹配」的范式可推广到人形 sim-to-real 校准。
 - 落地状态需注意：截至记录日无项目主页、未检索到官方仓库，短期内只能按论文自行复现。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-10-sim-to-real](../overview/paper-notebook-category-10-sim-to-real.md)

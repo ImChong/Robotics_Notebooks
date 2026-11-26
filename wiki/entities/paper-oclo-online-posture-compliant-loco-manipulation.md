@@ -110,6 +110,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 行走与操作耦合任务总览。
 - [Whole-Body Control](../concepts/whole-body-control.md) — 解释多身体部位如何共同满足目标与平衡约束。
 - [SONIC-Transfer](./paper-sonic-transfer.md) — 预训练 SONIC 控制器相关工作。

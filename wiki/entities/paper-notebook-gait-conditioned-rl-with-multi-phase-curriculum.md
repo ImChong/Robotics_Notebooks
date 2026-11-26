@@ -78,6 +78,11 @@ flowchart TD
 - 适用边界：适合经[分类页](../overview/paper-notebook-category-03-high-impact-selection.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)做检索与交叉定位，不适合作为技术选型或方法对比的依据。
 - 主要风险是把待读条目误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 progress.json 跟踪，结论以论文原文为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

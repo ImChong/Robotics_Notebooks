@@ -181,6 +181,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - [Kimi K3](./kimi-k3.md) — 同档开放权重 MoE + 长程 coding agent 对照
 - [DeepSeek Harness](./deepseek-harness.md) — 可挂自定义 OpenAI-compatible 端点的 agent 运行时
 - [OpenClaw](./openclaw.md) — 另一类 coding agent 栈

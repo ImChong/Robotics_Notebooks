@@ -99,6 +99,8 @@ flowchart TD
 
 ## 关联页面
 
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，对照跨本体运动映射问题。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照物体操纵任务。
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 本文对比并替代的事后适配路线
 - [跨本体（Cross-Embodiment）](../overview/hub-cross-embodiment.md) — 同一生成器跨机器人复用的问题背景
 

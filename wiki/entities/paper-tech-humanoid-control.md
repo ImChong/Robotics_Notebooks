@@ -188,6 +188,7 @@ flowchart TB
 
 ## 关联页面
 
+- [平衡恢复](../tasks/balance-recovery.md) — 延伸阅读，了解受扰后维持和恢复平衡的任务。
 - [UFO（Roboparty）](./roboparty-ufo.md) — 工程集成与复现入口
 - [RoboParty Lab / Party OS 技术地图](../overview/roboparty-lab-party-os-technology-map.md)
 - [BFM-Zero](./paper-bfm-zero.md) — FB 表征姊妹线

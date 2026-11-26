@@ -78,6 +78,11 @@ flowchart LR
 - 跳跃是高动态、对 Sim2Real 差异最敏感的技能之一，「鲁棒」与「多样」如何同时达成正是该被追问的地方——本页尚无答案。
 - 当前价值只是可检索；引用任何跳跃距离或成功率数字前请回到论文原文。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

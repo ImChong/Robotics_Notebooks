@@ -104,6 +104,11 @@ Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为�
 - 证据强度需注意：仿真中面对未见的执行器刚度与软地面，DR/ERFI 全军覆没而本法照走；真机 TOCABI 上 3/3 成功步行（DR 2/3、ERFI 0/3）——样本量小，宜当作可行性证明而非统计结论。
 - 主要限制：论文未公开代码，复现需自行实现；随机扰动买到的是覆盖面而非可控保证，无法像参数辨识类方法那样给出参数精度。
 
+## 关联页面
+
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，对照人形行走与全身运动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-10-sim-to-real](../overview/paper-notebook-category-10-sim-to-real.md)

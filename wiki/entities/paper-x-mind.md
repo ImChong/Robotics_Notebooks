@@ -127,6 +127,7 @@ RBD FID **9.59** vs 单步去噪 **67.30**；预测 12 帧未来比重建当前�
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [VLA](../methods/vla.md) — 反应式策略 → 前瞻推理的扩展
 - [World Action Models](../concepts/world-action-models.md) — 联合世界–动作坐标
 - [Latent Imagination](../concepts/latent-imagination.md) — 潜空间想象对照

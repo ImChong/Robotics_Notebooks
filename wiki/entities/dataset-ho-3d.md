@@ -117,6 +117,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
 - [具身数据集全景对比（2026-10）](../overview/embodied-dataset-panorama-2026-10.md)
 - [DexYCB](./dataset-dexycb.md)
 - [H2O](./dataset-h2o.md)

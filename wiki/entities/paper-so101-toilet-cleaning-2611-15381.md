@@ -97,6 +97,8 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
 

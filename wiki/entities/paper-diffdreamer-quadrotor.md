@@ -103,6 +103,7 @@ flowchart TD
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [基于模型的强化学习](../methods/model-based-rl.md)
 - [时间反向传播](../concepts/bptt.md)
 - [Sim2Real](../concepts/sim2real.md)

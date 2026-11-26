@@ -130,6 +130,7 @@ ACT 适合动作 chunk imitation，但如果输出只落在单一控制 profile�
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
 - [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
 - [161 篇 · 02 上半身接口](../overview/loco-manip-161-category-02-upper-body-interface.md)
 - [力位混合控制](../concepts/hybrid-force-position-control.md)

@@ -100,6 +100,11 @@ flowchart LR
 - 下游价值可能大于遥操作本身：高速抗冲击让「动态、接触丰富」的演示采集成为可能，直接服务后续学习类方法的数据侧。
 - 本页为 **笔记摘要**，量化 benchmark 与实机指标以笔记页与论文 PDF 为准（见 [参考来源](#参考来源)）。
 
+## 关联页面
+
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，对照跨本体运动映射问题。
+- [遥操作](../tasks/teleoperation.md) — 延伸阅读，了解操作员与机器人之间的控制接口。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)

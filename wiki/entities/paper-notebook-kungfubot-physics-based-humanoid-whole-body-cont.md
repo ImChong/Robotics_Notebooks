@@ -175,6 +175,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
 - **续作：** [KungfuBot 2 / VMS](./paper-notebook-kungfubot-2.md) — 单策略多技能、OMoE、段级奖励、长序列
 - **姊妹：** [KungFuAthleteBot](./paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 武术数据集 + 跌倒恢复
 - **长时程对照：** [RobotDancing](./paper-notebook-robotdancing-residual-action-rl-enables-robust-l.md) — 选择性残差动作 + 长尾采样；Table V 将 KungfuBot-style 作同协议重实现基线

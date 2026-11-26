@@ -80,6 +80,8 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [应用交付分类 hub](../overview/agibot-release-category-06-application-delivery.md)
 - [Sim2Real](../concepts/sim2real.md)
 

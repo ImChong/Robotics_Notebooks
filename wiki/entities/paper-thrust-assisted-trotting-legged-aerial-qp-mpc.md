@@ -101,6 +101,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
 - [senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md)
 - [locomotion](../tasks/locomotion.md)
 

@@ -76,6 +76,11 @@ flowchart TD
 - 适用边界：可用于分类检索与优先级排序，不可当作方法或指标依据——本页未给出采样策略、代价设计或实机结果。
 - 主要风险是被误当成已消化的笔记：本页「实验与评测」已明确 benchmark、消融与实机指标待补，引用前应回到 PROGRESS.md 与 <https://arxiv.org/abs/2511.19204>。
 
+## 关联页面
+
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

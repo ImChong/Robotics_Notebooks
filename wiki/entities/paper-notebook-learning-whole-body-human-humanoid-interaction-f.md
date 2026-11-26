@@ -101,6 +101,11 @@ flowchart TD
 - 适用边界与风险：本页只报告仿真中显著优于基线，未涉及真机，把结论外推到实机人-人形物理交互需谨慎。
 - 与本页提到的 SUGAR / EgoHumanoid「借人类数据」同源，也与 LessMimic、HumanX 的交互方向呼应；差别在于本页把接触保真当成第一性问题。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，对照跨本体运动映射问题。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

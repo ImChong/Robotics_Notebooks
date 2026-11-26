@@ -74,6 +74,11 @@ flowchart TD
 - 适用边界：本页为清单索引实体，机制描述停留在摘要层；量化 benchmark、消融与实机指标须以深读笔记与论文 PDF 为准（见[参考来源](#参考来源)）。
 - 在本库的位置属于 03_High_Impact_Selection，可经[分类父节点](../overview/paper-notebook-category-03-high-impact-selection.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)与同类工作交叉检索。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

@@ -93,6 +93,7 @@ flowchart TD
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
 - [world-action-models](../concepts/world-action-models.md)
 - [generative-world-models](../methods/generative-world-models.md)
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)

@@ -138,6 +138,10 @@ flowchart LR
 - **只研究模仿学习**：世界模型、强化学习范式下的协同训练未涉及。
 - **开源边界**：未见代码与数据；源码运行时序图 **不适用**。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

@@ -112,6 +112,11 @@ flowchart TD
 5. **复现前提是仿真侧特权信息与域随机化** — 高度图、质心、接触信息只在仿真中可得；蒸馏质量直接依赖域随机化的覆盖范围，参数见上表。
 6. **注意论文自身的数字口径** — 30 cm 台阶出现在 Fig. 1、Fig. 11 与结论中，而真机正文写的是 15 cm；引用时需区分仿真/真机与具体图表。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-10-sim-to-real](../overview/paper-notebook-category-10-sim-to-real.md)

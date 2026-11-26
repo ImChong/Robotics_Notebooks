@@ -104,6 +104,11 @@ flowchart LR
 - 主要风险在感知闭环：真机依赖动捕 + 高程图获取落脚点，野外感知尚未自洽；评测也集中在踏脚石与稀疏落脚，更广义地形的泛化待验证。
 - 开源状态需谨慎：源码目前为匿名仓库，以项目主页后续正式开源为准；本页只是深读笔记编译的笔记摘要，量化 benchmark 与消融以笔记页与论文 PDF 为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照足式移动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -130,6 +130,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - AMP 方法原理总页：[Adversarial Motion Priors（AMP）风格奖励](../methods/amp-reward.md)
 - 众擎同系列开源项目：[engineai_gmr（动捕重定向）](./cn-os-engineai-gmr.md)、[engineai_rl_lab（RL 扩展框架）](./engineai-rl-lab.md)、[engineai_native_sdk（真机通信 SDK）](./engineai-native-sdk.md)
 - 国内具身开源图谱：[国内具身智能开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)、[HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)、[Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)

@@ -174,6 +174,7 @@ flowchart TD
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，对照人形行走与全身运动任务。
 - [GentleHumanoid：上半身柔顺全身运动跟踪](./paper-gentlehumanoid.md) — 在策略训练内部学柔顺，适合与 ILA 的接口级 retrofit 对照。
 - [SONIC：规模化运动跟踪](./nvidia-sonic.md) — 论文验证的可迁移目标 tracker。
 - [Teleoperation](../tasks/teleoperation.md) — 人工引导与跟踪数据采集应用。

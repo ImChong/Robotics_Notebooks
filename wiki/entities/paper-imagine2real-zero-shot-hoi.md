@@ -188,6 +188,7 @@ BFM backbone 主要来自非交互运动，缺少抓/推物体的细节。Stage 
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
 - [Loco-Manip 接触技术地图](../overview/loco-manip-contact-technology-map.md)
 - [03 生成式补数分类 hub](../overview/loco-manip-contact-category-03-generative-data.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)

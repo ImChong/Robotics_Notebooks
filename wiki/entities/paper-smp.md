@@ -191,6 +191,10 @@ r^{\mathrm{smp}} = \exp\left(- w_s \|\hat{\epsilon} - \epsilon\|_2^2 \right)
 - **奖励调参：** \(w^{\mathrm{smp}}\)、\(\mathbb{K}\) 选择仍影响稳定性。
 - **平台差异：** 论文主结果在仿真人形；G1 真机细节在附录，工程复现以 mjlab 栈为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - 方法归纳：[smp.md](../methods/smp.md)

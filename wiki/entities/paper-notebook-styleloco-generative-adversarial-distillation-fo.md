@@ -82,6 +82,11 @@ flowchart TD
 - 「实验与评测」明确留空，因此任何 benchmark、消融或实机指标都应直接查原文，不要引用本页。
 - 深读笔记完成后本页应补成完整摘要，届时再补齐机制与取舍判断。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

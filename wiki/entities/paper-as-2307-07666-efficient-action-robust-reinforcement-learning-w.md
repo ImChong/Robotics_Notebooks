@@ -105,6 +105,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解动作不确定性下的策略优化。
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)

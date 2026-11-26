@@ -91,6 +91,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [MS-Human-700](./ms-human-700.md)：肌骨模型及原始研究。
 - [SuperMimic](./paper-supermimic.md)：可微世界模型训练方法。
 - [具身人体仿真](./embodied-human-simulation.md)：相关仿真背景。

@@ -100,6 +100,11 @@ flowchart TD
 - 奖励与本体解耦意味着跨机器人复用成本低，但落地仍需仿真与真机两侧验证——本文两侧都做了，结论是双足也能做受控的柔和跌倒。
 - 同簇对照：与 SafeFall、自保护跌落、Unified Fall-Safety 同属跌落安全研究群，本文（Disney/ETH 系）的差异化在「风格化 / 可指定终姿」这一维。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

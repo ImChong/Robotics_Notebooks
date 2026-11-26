@@ -80,6 +80,11 @@ flowchart TB
 - 因此本页 **不可作为技术判断依据**：机制与指标应回到论文原文，或等 PROGRESS.md 追踪的深读笔记完成后再引用。
 - 定位是 **待读条目**，方便你按分类找到它；笔记完成后应补成完整摘要，并重写本节为面向内容的结论。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

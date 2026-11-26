@@ -113,6 +113,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [world-action-models](../concepts/world-action-models.md)
 - [vla](../methods/vla.md)
 

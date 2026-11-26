@@ -83,6 +83,11 @@ flowchart TD
 - 定位是旁挂组件而非新控制架构：不改动策略结构，收益也因此偏向姿态可信度与约束满足，而不是任务成功率本身。
 - 本页属 04_Loco-Manipulation_and_WBC 类目下的策展清单索引条目，量化 benchmark 与消融以深读笔记和论文 PDF 为准，不宜直接引本页下指标结论。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

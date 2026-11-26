@@ -58,7 +58,7 @@ LLM 生成一整段回答才获得一个标量奖励，训练时却常逐 token 
 
 ## 核心原理
 
-### 1. 序列级目标与 token 级近似（`2，Eq. 1–4）
+### 1. 序列级目标与 token 级近似（§2，Eq. 1–4）
 
 论文真正优化的目标为：
 
@@ -79,7 +79,7 @@ $$
 
 若 token 级概率比 $\rho_t=1+\delta_t$，其中每个 $\delta_t$ 足够小，则序列比率 $\prod_t(1+\delta_t)\approx 1+\sum_t\delta_t$，忽略 $\delta_i\delta_j$ 等高阶项；因此**两者梯度近似相等是局部结论，不是任意策略距离下的恒等式**。
 
-### 2. 为什么会失效（`2.4，Eq. 5）
+### 2. 为什么会失效（§2.4，Eq. 5）
 
 $$
 \underbrace{\frac{\pi_\theta(y_t\mid h_t)}{\mu_{\theta_{\mathrm{old}}}(y_t\mid h_t)}}_{\text{token IS}}
@@ -92,9 +92,9 @@ $$
 
 - **训练—推理偏差**：不同数值精度、GPU 内核和动态批处理使相同参数产生不同 token 概率；MoE 还可能选中不同专家。
 - **策略陈旧**：rollout 收集数据后，模型连续消费多个 mini-batch 或异步更新，后续数据来自更旧策略。
-- **MoE Routing Replay**：R2 固定训练旧策略专家路由；R3 固定推理 rollout 专家路由。两者能减小不一致，但也会改变「自然重新路由」的目标策略，带来偏差（`3 / Table 1）。
+- **MoE Routing Replay**：R2 固定训练旧策略专家路由；R3 固定推理 rollout 专家路由。两者能减小不一致，但也会改变「自然重新路由」的目标策略，带来偏差（§3 / Table 1）。
 
-### 3. MiniRL（`4.1，Eq. 7）
+### 3. MiniRL（§4.1，Eq. 7）
 
 作者用 **REINFORCE + 组内奖励均值 baseline + 逐 token IS + stop-gradient + 根据优势符号的裁剪掩码**作为统一实验基线。组内优势为 $\hat A(x,y)=R(x,y)-\operatorname{mean}_{y'\sim\mu}[R(x,y')]$。
 
@@ -120,7 +120,7 @@ flowchart TB
   monitor --> rollout
 ```
 
-此图是**原文 `2–4 的算法/实验数据流**，不是一个已公开运行代码库的调用链；R2/R3 与 clipping 的组合随 on-/off-policy 设置不同而变化。
+此图是**原文 §2–4 的算法/实验数据流**，不是一个已公开运行代码库的调用链；R2/R3 与 clipping 的组合随 on-/off-policy 设置不同而变化。
 
 ## 源码运行时序图
 
@@ -139,10 +139,10 @@ flowchart TB
 
 ## 实验与评测
 
-- **主设置（`4.2）：** 30B MoE，4,096 训练题；AIME24 / AIME25 / HMMT25 每组 30 题，32 次采样取平均正确率；每更新 B=64 提示词 × G=16 回答 = **1,024 responses**；总计算为数十万 GPU hours（作者估计每 gradient step 5–6 GPU hours）。
-- **On-policy（`4.3 / Fig. 1，N=1）：** 基础 MiniRL（保留 train–infer IS）表现最稳定；去掉 IS 快速崩溃且 entropy 下降；加入长度归一化虽可稳定却更差；R3 单独加入未提升 benchmark。
-- **Off-policy（`4.4 / Figs. 2–4，N=2/4/8）：** 设全局 batch 为 **2,048 / 4,096 / 8,192**，固定 mini-batch 1,024；缺失 clipping 或 Replay 会提前崩溃；N=2 下 R2 优于 R3，N=4/8 下 R3 更稳，R2 在高度离策略设置下可失稳。
-- **Cold-start（`4.5 / Fig. 5）：** 使用 Qwen3-Max-Thinking-Preview、DeepSeek-R1-0528、gpt-oss-120b (high) 的蒸馏数据构造三个初始化，在**另一小型 Qwen3Next MoE** 上用 MiniRL+R2 训练，长期性能接近。不能把这个结果错误地归于 30B 主实验模型。
+- **主设置（§4.2）：** 30B MoE，4,096 训练题；AIME24 / AIME25 / HMMT25 每组 30 题，32 次采样取平均正确率；每更新 B=64 提示词 × G=16 回答 = **1,024 responses**；总计算为数十万 GPU hours（作者估计每 gradient step 5–6 GPU hours）。
+- **On-policy（§4.3 / Fig. 1，N=1）：** 基础 MiniRL（保留 train–infer IS）表现最稳定；去掉 IS 快速崩溃且 entropy 下降；加入长度归一化虽可稳定却更差；R3 单独加入未提升 benchmark。
+- **Off-policy（§4.4 / Figs. 2–4，N=2/4/8）：** 设全局 batch 为 **2,048 / 4,096 / 8,192**，固定 mini-batch 1,024；缺失 clipping 或 Replay 会提前崩溃；N=2 下 R2 优于 R3，N=4/8 下 R3 更稳，R2 在高度离策略设置下可失稳。
+- **Cold-start（§4.5 / Fig. 5）：** 使用 Qwen3-Max-Thinking-Preview、DeepSeek-R1-0528、gpt-oss-120b (high) 的蒸馏数据构造三个初始化，在**另一小型 Qwen3Next MoE** 上用 MiniRL+R2 训练，长期性能接近。不能把这个结果错误地归于 30B 主实验模型。
 - **附录（A–B）：** 对照 GRPO / CISPO 原始目标，并分别提供 HMMT25、AIME24、AIME25 分项曲线；论文并未提供可直接读取的每步性能精确数值表。
 
 ## 结论
@@ -182,7 +182,7 @@ flowchart TB
 
 ## 参考来源
 
-- [论文通读归档](../../sources/papers/stabilizing_rl_with_llms_arxiv_2512_01374.md) — `1–5、公式、Table 1、Figure 1–10、附录 A–B
+- [论文通读归档](../../sources/papers/stabilizing_rl_with_llms_arxiv_2512_01374.md) — §1–5、公式、Table 1、Figure 1–10、附录 A–B
 - [Qwen Team 原始论文 arXiv:2512.01374v3](https://arxiv.org/abs/2512.01374) — 2025-12-03，13 页
 
 ## 推荐继续阅读

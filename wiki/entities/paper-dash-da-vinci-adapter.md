@@ -134,6 +134,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
 - [人形/四足周报汇总（2026-10-05~10-09）](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 - [遥操作任务页](../tasks/teleoperation.md)
 - [Unitree G1](./unitree-g1.md)

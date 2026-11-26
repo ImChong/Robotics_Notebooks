@@ -130,6 +130,10 @@ sequenceDiagram
 - **规模收益递减**：成功率随编辑视频量上升但增幅变小，不能线性外推。
 - **开源边界**：仓库覆盖数据编辑，策略训练脚本未包含在 README 流程中。
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

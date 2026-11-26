@@ -102,6 +102,11 @@ flowchart TD
 - 框架上限受低层 MPC 约束：高层 RL 选得再好，也只能在 MPC 能稳定执行的子目标集合内起作用。
 - 本页为 **深读笔记编译** 的笔记摘要，量化 benchmark 与消融以笔记页和论文 PDF 为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)

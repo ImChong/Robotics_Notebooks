@@ -176,6 +176,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照物体操纵任务。
 - [具身数据纵深路线](../../roadmap/depth-embodied-data.md) — 采集 → 清洗与接触标注 → 格式与本体筛选
 - [触觉感知](../concepts/tactile-sensing.md) — 数据中的触觉模态背景
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 视觉与触觉表示的对照

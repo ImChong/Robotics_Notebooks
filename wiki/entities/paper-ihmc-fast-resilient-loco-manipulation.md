@@ -105,6 +105,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
 - [loco-manipulation](../tasks/loco-manipulation.md)
 - [whole-body-control](../concepts/whole-body-control.md)
 - [paper-bridge-humanoid.md](./paper-bridge-humanoid.md)

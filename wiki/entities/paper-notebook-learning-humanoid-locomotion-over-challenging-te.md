@@ -71,6 +71,11 @@ flowchart TD
 - 方法流程（预训练 + RL 微调）见 [流程总览](#流程总览)；地形适应的具体表现本页未给出依据，以论文为准。
 - 适用边界：作为 05_Locomotion 分类页下的连边节点存在；量化 benchmark、消融与实机指标以论文原文为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -82,6 +82,11 @@ flowchart TD
 - 柔顺地形（compliant）与不平地形（uneven）本是两类不同扰动，标题把它们并列，但本页没有依据说明论文如何区分处理，引用时不要替它下结论。
 - 当前用途是待读条目与路由：上溯 [05_Locomotion 分类页](../overview/paper-notebook-category-05-locomotion.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)，指标一律以 arXiv 原文为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

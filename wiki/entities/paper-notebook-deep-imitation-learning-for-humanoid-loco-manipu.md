@@ -78,6 +78,11 @@ flowchart TD
 - 适用边界：适合作为检索入口，经[分类页](../overview/paper-notebook-category-07-teleoperation.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)交叉定位同类工作；不足以支撑方案对比或工程选型。
 - 主要风险是把待读条目误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 PROGRESS.md 跟踪，任何结论都应回到论文原文核对。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)

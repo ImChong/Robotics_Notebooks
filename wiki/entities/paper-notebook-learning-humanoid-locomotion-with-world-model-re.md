@@ -73,6 +73,11 @@ flowchart LR
 - 页面自己给出的定位就是「方便你按分类找到它」的待读条目——功能是溯源与检索，不是技术结论。
 - 边界很明确：关于实验结果与 sim2real 表现的判断无本页依据，必须回到 arXiv 原文，或等 PROGRESS.md 上的深读笔记完成后再引用。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

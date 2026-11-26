@@ -104,6 +104,10 @@ sequenceDiagram
 - 数据访问受第三方数据许可限制；代码、模型与数据的开放范围并不相同。
 - 真机部署前应先在仿真验证动作、接口和急停，遵循 RoboJuDo 仓库的安全提示。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 行走与全身动作控制的任务背景

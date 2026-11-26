@@ -180,6 +180,11 @@ HEAD 要：用模块化把感知与动作解耦，**直接从人类数据**学�
 | 开源状态 | **部分未开源（未核实）**：论文称数据集录用后开源；截至入库日 arXiv 摘要页与论文未列代码仓库；项目页未在 arXiv 页面中找到，深读笔记为第三方页面，不是项目页 |
 | 源码运行时序图 | **不适用**（截至入库日未找到官方可运行代码，原因见上行） |
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)

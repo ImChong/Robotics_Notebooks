@@ -169,6 +169,10 @@ sequenceDiagram
 - 无机器人策略学习对照：[DexUMI](./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)。
 - 主任务背景：[Teleoperation](../tasks/teleoperation.md)。
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 参考来源
 
 - [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_dextercap.md)

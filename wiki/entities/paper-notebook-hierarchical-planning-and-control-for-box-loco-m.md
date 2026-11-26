@@ -74,6 +74,11 @@ flowchart TD
 - 页面无核心机制与实验区块：分层结构如何切分规划与控制、箱体搬运如何评测，都待笔记补齐。
 - 现阶段用途限于待读条目，以及从分类页与总索引做交叉检索。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

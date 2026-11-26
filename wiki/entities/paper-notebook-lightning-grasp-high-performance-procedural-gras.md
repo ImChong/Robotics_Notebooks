@@ -130,6 +130,10 @@ sequenceDiagram
 - **需要 NVIDIA GPU + CUDA 12**：发布的是预编译 CUDA 内核，CUDA C++ 源码尚未开放，定制内核受限。
 - **物体网格需米制单位**；新手型需按 README 配置模型。
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

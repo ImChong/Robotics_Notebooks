@@ -88,6 +88,8 @@ MyLLM 示例依赖服务商 API 与本地凭据，不是无网络可复现；书
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [agentic-rl-lab ](./agentic-rl-lab.md) — 同领域的基础、工程或应用对照。
 - [deepagents-in-action ](./deepagents-in-action.md) — 同领域的基础、工程或应用对照。
 - [easy-vibe ](./easy-vibe.md) — 同领域的基础、工程或应用对照。

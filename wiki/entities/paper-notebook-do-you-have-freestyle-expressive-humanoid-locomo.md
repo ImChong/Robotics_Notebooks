@@ -81,6 +81,11 @@ flowchart LR
 - 因此本页 **不可作为技术判断依据**：机制与指标应回到论文原文，或等 PROGRESS.md 追踪的深读笔记完成后再引用。
 - 定位是 **待读条目**，方便你按分类找到它；笔记完成后应补成完整摘要，并重写本节为面向内容的结论。
 
+## 关联页面
+
+- [教师–学生 DAgger 训练](../methods/teacher-student-dagger-training.md) — 延伸阅读，对照教师示范与学生训练。
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

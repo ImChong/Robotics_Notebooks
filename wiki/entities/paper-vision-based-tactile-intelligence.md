@@ -199,6 +199,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
 - [触觉传感](../concepts/tactile-sensing.md) — VBTS 原理与信息层级
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — multimodal fusion 章节
 - [VLA](../methods/vla.md) — VTLA 融合 open challenges

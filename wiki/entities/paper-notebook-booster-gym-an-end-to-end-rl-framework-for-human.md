@@ -97,6 +97,8 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
 - [RAVEN：RL 自适应可见图 + cf-MPC](./paper-raven-rl-adaptive-visibility-graph-mpc.md) — 真机导航栈以 Booster Gym 为底层 locomotion，上层接 DAVG-cfMPC
 
 ## 推荐继续阅读

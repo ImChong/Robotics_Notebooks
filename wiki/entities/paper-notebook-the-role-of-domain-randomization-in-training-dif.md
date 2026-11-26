@@ -77,6 +77,11 @@ flowchart TB
 - 域随机化的具体设置、扩散策略结构与任何量化结果均未涉及，不能据此页判断 DR 在该设定下是否有效、代价几何。
 - 定位是 **待读条目**，作用是让你能从 [分类页](../overview/paper-notebook-category-14-human-motion.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；实质结论待深读笔记完成后回填。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)

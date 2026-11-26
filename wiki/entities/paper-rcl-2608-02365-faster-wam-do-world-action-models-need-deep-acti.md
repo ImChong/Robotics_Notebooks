@@ -131,6 +131,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [Fast-WAM](./paper-fast-wam.md)
 - [另一篇 Faster-WAM](./paper-rcl-2608-04404-faster-wam-efficient-inference-time-future-condi.md)
 - [WAM 概念](../concepts/world-action-models.md)

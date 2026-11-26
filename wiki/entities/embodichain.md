@@ -156,6 +156,11 @@ sequenceDiagram
 - **benchmark 生态：** 尚无 RoboCasa 级公开 leaderboard；跨栈 SR 数字不可直接与 MuJoCo/Isaac 榜混比。
 - **Newton 后端：** 部分任务 YAML 支持 `--physics newton`，与默认 DexSim 路径并存，复现时须钉配置。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
+
 ## 与其他页面的关系
 
 - **[RoboSynChallenge](./paper-robosynchallenge.md)：** 下游挑战赛；合成 state-action 训练 + 真机评测，依赖本栈安装与 HF 数据。

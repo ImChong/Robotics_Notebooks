@@ -108,6 +108,7 @@ flowchart TB
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，了解视觉与语言条件化动作。
 - [EgoX / MXT+](./paper-egox-mxt-plus.md) — 模态共享 Transformer trunk、本体专用动作专家与未来状态 Dreaming；不同于 EXE 的潜在动作显式分解。
 
 

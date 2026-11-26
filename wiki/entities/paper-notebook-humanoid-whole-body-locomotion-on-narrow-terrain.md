@@ -79,6 +79,11 @@ flowchart TD
 - 从标题能读出的定位仅限于「动态平衡 + 强化学习，用于人形在窄地形上的全身运动」，归入 05_Locomotion；平衡判据的定义见「流程总览」（依据论文方法部分），真机验证到什么程度本页无依据。
 - 使用方式：把本页当检索入口——分类页 [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md) 与 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)；要读实质内容请直接走 arXiv 原文。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

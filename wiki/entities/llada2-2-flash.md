@@ -176,6 +176,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - [Diffusion Model](../concepts/diffusion-model.md) — 扩散生成底座；本页为离散文本 dLLM 实例
 - [Kimi K3](./kimi-k3.md) — 开放权重 AR 旗舰 coding/agent 后端对照
 - [真机策略 autoresearch 闭环搭建指南](../queries/real-robot-policy-autoresearch-harness.md) — coding agent 选型与 harness 前提

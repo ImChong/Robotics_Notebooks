@@ -77,6 +77,11 @@ flowchart TD
 - 「不依赖运动参考」是它相对 mimic 系方法的核心区分点：省掉了参考数据这一环，代价与收益都要落在表征设计上。
 - 边界：本页是清单索引实体，消融、成功率与实机指标一律以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)），本页不构成可引用的评测证据。
 
+## 关联页面
+
+- [教师–学生 DAgger 训练](../methods/teacher-student-dagger-training.md) — 延伸阅读，对照教师示范与学生训练。
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

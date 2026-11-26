@@ -110,6 +110,11 @@ flowchart LR
 3. **身体拆分的物理耦合决定成败**：上/下身或双臂/躯干腿拆分可行，但违背动力学平衡的拆分（如左右腿各自模仿走与跳）或超物理极限的叠加（3.5 m/s 狂奔杂耍）必然退化。
 4. **注意仿真假设边界**：实验基于 IsaacGym 虚拟人形（120 Hz + 简化手部捕获判定），在真机部署上不能直接套用，更适合作为动作先验或上游行为合成基座（如 [Learning to Ball](./paper-notebook-learning-to-ball.md)）。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

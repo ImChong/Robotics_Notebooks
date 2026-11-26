@@ -106,6 +106,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Benchmarks。 本页是清�
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照视觉条件的物体操作。
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)

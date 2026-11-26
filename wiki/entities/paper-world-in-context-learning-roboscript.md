@@ -143,6 +143,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解示范数据与策略学习的关系。
 - [SWAM](./paper-swam-cross-modal-alignment.md)
 - [Flip Anything](./paper-flip-anything-agentic-self-learning.md)
 - [具身上下文学习纵深路线 Stage 4](../../roadmap/depth-icl.md#stage-4-机制选型与推理预算零梯度上下文-vs-快权重-ttt-vs-记忆增强)

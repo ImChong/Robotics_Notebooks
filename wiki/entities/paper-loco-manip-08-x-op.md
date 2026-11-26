@@ -89,6 +89,10 @@ MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
+## 关联页面
+
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
+
 ## 与其他页面的关系
 
 - 技术地图：[loco-manip-8-papers-technology-map.md](../overview/loco-manip-8-papers-technology-map.md)

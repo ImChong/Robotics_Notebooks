@@ -98,6 +98,10 @@ flowchart LR
 - 原始 source：[loco_manip_161_survey_040_homie.md](../../sources/papers/loco_manip_161_survey_040_homie.md)
 - 下游复用：[RoboReact](./paper-roboreact.md) 把 HOMIE 当低层全身跟踪器，高层技能从生成 egocentric 视频蒸馏（arXiv:2608.03387）。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 参考来源
 
 - [homie_arxiv_2502_13013.md](../../sources/papers/homie_arxiv_2502_13013.md) — arXiv 原文归档

@@ -141,6 +141,11 @@ sequenceDiagram
 - **部署传感器不一致**：部署用 RealSense 而非 Aria 实时流（FoundationStereo 实时深度尚难），关键点存在轻微偏差。
 - **单臂 + 义肢手**：只验证 Kinova + Ability 手，双手与人形未覆盖；每个新场景 / 高度仍需补 1 条场内演示。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

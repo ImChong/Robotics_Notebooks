@@ -98,6 +98,11 @@ flowchart TD
 - 证据层级是主要局限：本页为深读笔记的笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
 - 定位上，本文与 SafeFall、自保护跌落、Robot Crash Course、VIGOR 同属人形跌落安全研究簇；差异点不在某一段做得更强，而在「统一」——因此比较时应看真实不按剧本的跌倒，而非分段基准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

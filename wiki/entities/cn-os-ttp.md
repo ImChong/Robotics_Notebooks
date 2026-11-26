@@ -120,6 +120,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，了解视觉与语言条件化动作。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照物体操纵任务。
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)
 - 核心触觉空间奠基：[UniTacHand：统一时空触觉表征](cn-os-unitachand.md)
 - 上游跨本体基座与对比：[Being-H](cn-os-being-h.md) 与 [Rethink_VLA](cn-os-rethink-vla.md)

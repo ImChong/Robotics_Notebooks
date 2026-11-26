@@ -80,6 +80,11 @@ flowchart TD
 - 现阶段的可靠用途是检索入口与待读条目；细节请走 arXiv 原文与 PROGRESS.md 待深读清单。
 - 笔记完成后本页应补成完整摘要，届时本节需整体重写。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

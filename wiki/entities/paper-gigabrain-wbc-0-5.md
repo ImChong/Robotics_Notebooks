@@ -193,6 +193,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [平衡恢复](../tasks/balance-recovery.md) — 延伸阅读，了解受扰后维持和恢复平衡的任务。
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [SONIC 全身跟踪](./nvidia-sonic.md) — 最强 flat-ground baseline 与并排真机对照
 - [SceneBot](./paper-scenebot.md) — 另一环境交互 tracking 路线（contact-prompt + 2.5D）
 - [CMP](./paper-cmp.md) — 上下文条件 motion prior（flat-ground OOD 另一思路）

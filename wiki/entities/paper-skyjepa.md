@@ -106,6 +106,7 @@ flowchart TD
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [LpWM](./paper-lpwm.md) — 同为 JEPA 潜空间世界模型，但面向仿真规划
 - [LeWorldModel](./paper-lewm.md) — 端到端像素 JEPA 世界模型的对照
 - [Model-Based RL](../methods/model-based-rl.md) — 基于世界模型的控制通用框架

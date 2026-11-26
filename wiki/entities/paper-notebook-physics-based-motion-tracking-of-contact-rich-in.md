@@ -76,6 +76,11 @@ flowchart TD
 - 当前价值只是 **可检索**：这篇挂在分类页与总索引之下，方便你找到它。
 - 深读笔记完成前，本页不应被当作结论来源；判断请以 PROGRESS.md 与论文原文为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

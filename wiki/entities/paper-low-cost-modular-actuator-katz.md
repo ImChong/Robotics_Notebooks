@@ -190,6 +190,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [轨迹优化](../methods/trajectory-optimization.md) — 延伸阅读，了解运动约束与轨迹求解。
 - [MIT Mini Cheetah（学习栈与开源边界）](./mit-mini-cheetah.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [Proprioceptive actuator design in the MIT Cheetah（计划页）](./paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md)

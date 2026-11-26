@@ -125,6 +125,10 @@ sequenceDiagram
 4. **开源 pd-perry/EXPO** — Conda + D4RL 脚本可跑通 Antmaze 类实验。
 5. **选型** — 研究 **扩散策略 RL 稳定微调** → EXPO；要 **π VLA 真机 post-training** → [EXPO-FT](./paper-expo-ft.md)；要 **RTC 延迟** → [Real-Time EXPO-FT](./paper-real-time-expo-ft.md)。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - 概念：[Universal Post-Training](../concepts/universal-post-training-robotics.md)

@@ -74,6 +74,11 @@ flowchart TD
 - 值得记的是问题定位而非结果：外观/造型约束被显式写进标题，说明它在本工作中属于设计目标的一部分，而不是事后补的评价维度。
 - 边界：本页「实验与评测」已声明量化与实机指标待笔记补充，任何关于稳定性、步态自然度或真机表现的判断都不能引用本页。
 
+## 关联页面
+
+- [逆动力学控制](../methods/inverse-dynamics-control.md) — 延伸阅读，了解动力学与力矩计算。
+- [对抗运动先验](../methods/amp-reward.md) — 延伸阅读，了解运动先验奖励。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

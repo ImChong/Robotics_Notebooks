@@ -104,6 +104,11 @@ flowchart TD
 - 与同模块的 SEW-Mimic 互补：后者给「重定向到哪」的闭式几何解，本文提供「重定向时」的稳定护栏。
 - 落地状态：在 IHMC 液压-电驱人形上完成仿真与真机双验证，但截至记录日未见公开仓库。
 
+## 关联页面
+
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，对照跨本体运动映射问题。
+- [遥操作](../tasks/teleoperation.md) — 延伸阅读，了解操作员与机器人之间的控制接口。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)
