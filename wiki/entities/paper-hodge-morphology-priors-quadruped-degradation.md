@@ -133,6 +133,7 @@ flowchart LR
 
 ## 关联页面
 
+- [PPO](../methods/ppo.md) — 补充 actor 的优化背景，把 PPO 更新规则与 Hodge 消息传递的网络结构分开理解。
 - [人形/四足前沿周报（2026-10-05~10-09）](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 - [运动控制任务页](../tasks/locomotion.md)
 - [图神经网络](../concepts/graph-neural-network.md)

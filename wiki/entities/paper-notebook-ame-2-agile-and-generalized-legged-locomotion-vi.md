@@ -185,6 +185,7 @@ Teacher 输入 **3D** 坐标；Student 输入 **4D** $(x,y,z,u)$（$u$ 为不确
 
 ## 关联页面
 
+- [PIE 感知运动控制](../methods/pie-perceptive-locomotion.md) — 对照 AME-2 的高程图编码与 PIE 从深度输入学习显式和隐式表征的方式。
 - [AME-1→AME-2 技术地图](../overview/ame-1-to-ame-2-technology-map.md) — 两代系统对照阅读坐标
 - [AME（AME-1）](./paper-ame-attention-based-map-encoding.md)
 - [Agile Perceptive Traversal](./paper-agile-perceptive-traversal-sparse-3d.md) — 同一 AME-2 编码器用于 PM-01 原始 E1R 猴架穿越（arXiv:2608.29769）

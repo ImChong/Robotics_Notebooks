@@ -169,6 +169,7 @@ flowchart LR
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 把 PhySA 的运动平滑性指标与速度跟踪、稳定性等人形任务目标一起阅读。
 - [奖励设计](../concepts/reward-design.md)
 - [人形策略奖励函数](../concepts/humanoid-policy-reward-functions.md)
 - [物理保真度与 Sim2Real 差距](../concepts/physics-fidelity-sim2real-gap.md)

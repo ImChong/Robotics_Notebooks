@@ -159,6 +159,7 @@ flowchart TB
 
 ## 关联页面
 
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) — 将显式踢面高度、踏面深度与楼梯航向条件化放到楼梯策略中比较。
 - [Locomotion（运动任务）](../tasks/locomotion.md) — 楼梯与地形适应任务总览
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 高程图、点云与显式几何路线对照
 - [Privileged Training](../concepts/privileged-training.md) — 仿真教师监督感知学生

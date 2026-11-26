@@ -120,6 +120,7 @@ flowchart LR
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 从复杂地形适应任务出发，理解去噪世界模型如何处理观测不确定性。
 - [DreamPolicy / One Policy but Many Worlds](./paper-notebook-one-policy-but-many-worlds-a-scalable-unified-po.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [HMI 论文导读](../queries/hmi-papers-coverage.md)

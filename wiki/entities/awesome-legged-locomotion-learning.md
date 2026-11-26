@@ -70,6 +70,7 @@ flowchart LR
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 按观测、动作、奖励和策略优化理解清单中不同的腿足训练实现。
 - [Locomotion](../tasks/locomotion.md)
 - [Awesome Robot Descriptions](./awesome-robot-descriptions.md)
 - [Awesome-Legged-Robot-Learning（ClearLab）](./awesome-legged-robot-learning-clearlab.md)

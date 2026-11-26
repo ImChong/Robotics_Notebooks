@@ -161,6 +161,7 @@ flowchart TB
 
 ## 关联页面
 
+- [分层强化学习](../methods/hierarchical-reinforcement-learning.md) — 用分层决策框架理解高层步态选择与低层自适应执行的分工。
 - [Gait Generation（步态生成）](../concepts/gait-generation.md) — CPG / 参数化 / RL 涌现 vs **生物力学切换**
 - [Locomotion（移动任务）](../tasks/locomotion.md) — 四足 RL + PD 论文子页索引
 - [Sim2Real](../concepts/sim2real.md) — 训练/部署同构与盲迁移

@@ -169,6 +169,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [PIE 感知运动控制](../methods/pie-perceptive-locomotion.md) — 对照 RoboGauge 论文中学生编码器的 MoE 隐式地形表征与 PIE 的显式、隐式联合估计。
 - [Sim2Real](../concepts/sim2real.md)、[Domain Randomization](../concepts/domain-randomization.md)
 - [Locomotion](../tasks/locomotion.md)、[CMoE](./paper-cmoe.md)
 

@@ -83,6 +83,7 @@ flowchart LR
 
 ## 关联页面
 
+- [PID 控制](../methods/pid-control.md) — 复习比例与微分反馈的作用，再理解把刚度参数纳入策略动作的意义。
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [可变阻抗接触任务 RL](./paper-variable-impedance-contact-rl.md)
 - [Locomotion](../tasks/locomotion.md)

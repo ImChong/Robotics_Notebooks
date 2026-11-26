@@ -65,6 +65,7 @@ flowchart TD
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 将开源轮足平台放到轮式滚动与腿式跨障的任务谱系中理解。
 - [quadruped-robot](../entities/quadruped-robot.md)
 - [locomotion](../tasks/locomotion.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)
