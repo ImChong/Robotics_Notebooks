@@ -173,6 +173,10 @@ sequenceDiagram
 - 稀疏视觉路线：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)。
 - 跨平台外骨骼对照：[ACE](./paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md)。
 
+## 关联页面
+
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 参考来源
 
 - [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_child.md)

@@ -128,6 +128,8 @@ Thor 在「为什么重要」里把自己与柔顺方向的 GentleHumanoid、CHI
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
 - [运动小脑 · I 柔顺接触](../overview/motion-cerebellum-category-09-compliance-contact.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)

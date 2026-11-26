@@ -97,6 +97,8 @@ flowchart LR
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
 - [2026-11-16 具身研究论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ActionCodec2：流式动作编解码](./paper-actioncodec2-streaming-action-tokenizer.md)
 

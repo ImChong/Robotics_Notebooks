@@ -87,6 +87,8 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [Lightwheel SimReady](./lightwheel-simready.md) — 本仓所属的商业资产体系主节点
 - [Lightwheel SimReadyGen](./lightwheel-simreadygen.md) — 文本→SimReady 资产生成服务
 - [Lightwheel-YCB](./cn-os-lightwheel-ycb.md) — 另一个开源资产集（YCB 重建）

@@ -124,6 +124,10 @@ flip 参考并非可直接执行的理想示范；它作为软的轨迹奖励，
 
 **不适用**（论文和 RAI 官方说明页均未链接可运行的 UMV 训练/推理/部署代码；Isaac Lab 是训练环境，不是本文专用源码仓库）。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 推荐继续阅读
 
 - [Science Robotics 论文 DOI](https://doi.org/10.1126/scirobotics.aed3627)

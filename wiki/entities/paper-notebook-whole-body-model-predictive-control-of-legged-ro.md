@@ -75,6 +75,11 @@ flowchart TD
 - 求解器设置、实时性预算、与学习式控制的取舍等均未涉及，不应据此页判断该路线的可行性或成本。
 - 当前职责只是维持与 [分类页](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) / [总索引](../overview/humanoid-paper-notebooks-index.md) 的交叉检索；实质结论待深读笔记完成后回填。
 
+## 关联页面
+
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

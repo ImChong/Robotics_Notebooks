@@ -85,6 +85,11 @@ flowchart TB
 - 「多模态」具体指哪些模态、如何与 WBC 结合，正文完全未展开，属于待深读的空白。
 - 适用边界：仅用于检索，避免在综述或横向对比中把本页当作已消化的证据。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

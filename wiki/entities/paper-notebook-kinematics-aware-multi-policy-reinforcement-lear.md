@@ -104,6 +104,11 @@ flowchart TD
 - 定位上与 HAFO、FALCON、CHIP、HMC 等力/柔顺路线同向，上下身分治则呼应 EGM 的专家分设，本文的差异点在于把运动学先验写进奖励而非留给黑箱探索。
 - 本页为深读笔记的笔记摘要，量化 benchmark 与消融以笔记和论文 PDF 为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

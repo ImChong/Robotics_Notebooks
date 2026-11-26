@@ -74,6 +74,11 @@ flowchart TD
 - 检索时须注意其分类归属在物理动画一侧，而非 05_Locomotion，交叉引用时不要与真机行走工作混为一谈。
 - 适用边界：本页不提供任何机制描述与量化对比，细节须回到论文原文与深读笔记。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

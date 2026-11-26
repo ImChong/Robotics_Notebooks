@@ -105,6 +105,11 @@ DexMimicGen 要：从**极少量人类演示**在仿真里**自动合成大规�
 - 定位：与 HumanoidGen、Mimicking-Bench 同属人形操作数据生态（同出 NVIDIA/UT 系），差异在于本文主攻 **双手灵巧** 这一数据最稀缺、最该自动化的方向。
 - 本页为笔记摘要，量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)

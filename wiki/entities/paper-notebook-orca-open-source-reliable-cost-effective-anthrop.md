@@ -71,6 +71,11 @@ flowchart TD
 - 值得先记住的是定位而非性能：这是硬件设计条目，衡量它的标尺应是可复制性与可靠性，而不是策略层面的任务成功率。
 - 开源状态在本页仅由标题声明，没有仓库、BOM 或复现说明的链接；引用前必须回到 arXiv 原文，或等 PROGRESS.md 上的深读笔记落地。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

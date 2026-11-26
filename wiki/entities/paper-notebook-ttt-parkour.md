@@ -81,6 +81,11 @@ flowchart TD
 - 适用边界：属于 **部署前的地形适配**，需要先对目标地形取景重建，并不是行进途中的在线适应；对无法预先扫描或动态变化的地形不适用。
 - 本页为 **清单索引实体**，成功率、重建质量与微调时长的量化结果以深读笔记与论文 PDF 为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

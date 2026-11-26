@@ -107,6 +107,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 
 ## 关联页面
 
+- [视觉语言导航](../tasks/vision-language-navigation.md) — 延伸阅读，对照语言条件导航任务。
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)

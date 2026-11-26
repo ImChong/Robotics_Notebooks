@@ -153,6 +153,7 @@ flowchart LR
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
 - [机器人本体（Embodiment）](../concepts/embodiment.md) — 将框架中的身体适配器与物理身体、观测动作语义和控制范围对应起来
 - [Robocurve（机构）](./robocurve.md) — 独立 Physical AI 能力评测机构
 - [XPolicyLab](./xpolicylab.md) — 将多种 VLA 服务接入统一策略槽位

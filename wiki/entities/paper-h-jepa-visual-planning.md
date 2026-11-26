@@ -136,6 +136,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 延伸阅读，了解未来状态的建模。
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Hierarchical Planning with Latent World Models（HWM）](./paper-hwm-latent-world-model-planning.md)
 - [LeWorldModel（LeWM）](./paper-lewm.md)

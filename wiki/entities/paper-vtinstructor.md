@@ -147,6 +147,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [GRPO](../methods/grpo.md) — 延伸阅读，了解组内相对策略优化。
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 任务、数据集与路线谱系。
 - [Habitat-Sim](./habitat-sim.md) — VLN-CE 常见连续环境仿真基础。
 - [CrossTracer](./paper-crosstracer.md) — 通过空间航点支持跨本体导航的另一条路线。

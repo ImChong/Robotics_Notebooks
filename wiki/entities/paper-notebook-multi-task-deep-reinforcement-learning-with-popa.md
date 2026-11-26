@@ -78,6 +78,11 @@ flowchart TD
 - 它与本库多数条目的性质不同：这是训练方法层面的工作，而非某个具体的人形控制系统，读它的价值在于方法迁移而不是照搬结论。
 - 本页「实验与评测」已声明量化与实机指标待笔记补充，因此当前只应作为 [humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md) 下的检索入口使用。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

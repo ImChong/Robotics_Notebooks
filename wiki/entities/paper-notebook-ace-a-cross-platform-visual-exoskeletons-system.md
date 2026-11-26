@@ -169,6 +169,10 @@ sequenceDiagram
 - 视觉/触觉对照：[Bunny-VisionPro](./paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md)。
 - 全身同构 leader 对照：[CHILD](./paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md)。
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 参考来源
 
 - [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_ace.md)

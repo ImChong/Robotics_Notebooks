@@ -96,6 +96,11 @@ HumanoidGen 要：**自动**生成双手灵巧任务与高质量演示。
 - 适用边界是 **仿真内的任务创建与演示采集**；本页只支持「生成数据可训练策略」这一结论，不涉及真机迁移。
 - 定位上与 DexMimicGen 等数据生成工作同属「壮大人形操作数据」这条线，本页只给定性定位，未做跨方法定量对照。
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)

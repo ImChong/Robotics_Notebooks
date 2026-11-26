@@ -203,6 +203,10 @@ flowchart TB
 2. **不是纯模仿跟踪** — 先验经对抗蒸馏进 RL，策略可偏离单条参考以满足平衡与穿越。
 3. **运动小脑条目 ≠ 任务规划** — 解决身体层 locomotion，不替代 VLA/导航高层。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)

@@ -82,6 +82,11 @@ flowchart TD
 - 值得追问的正是标题里的两个限定词——**learned dynamics** 与 **in expectation**：保证既建立在学习模型之上，又只在期望意义成立，其边界需要论文原文来界定。
 - 当前价值只是可检索；深读笔记完成前，不宜把本页当作安全性结论的来源。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

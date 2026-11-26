@@ -74,6 +74,11 @@ flowchart TD
 - 适用边界：可用于分类检索，不能作为速度成绩或人机差距的引用来源。
 - 深读状态以上游 PROGRESS.md 为准；笔记完成后本页需补成完整摘要并深化归纳。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

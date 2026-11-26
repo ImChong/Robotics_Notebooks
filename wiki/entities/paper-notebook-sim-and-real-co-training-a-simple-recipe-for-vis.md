@@ -142,6 +142,11 @@ flowchart TD
 - **超参敏感**：协同比例需逐任务调，99% 与 99.9% 之间可差 35 个百分点；仿真数据量需比真实数据高出数量级。
 - **开源边界**：未见代码；源码运行时序图 **不适用**。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

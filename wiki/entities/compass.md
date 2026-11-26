@@ -155,6 +155,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [Isaac Lab](./isaac-lab.md)
 - [Isaac GR00T](./isaac-gr00t.md)
 - [NVIDIA Brev](./nvidia-brev.md)

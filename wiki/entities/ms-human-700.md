@@ -86,6 +86,7 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - [muscle-supermimic](./muscle-supermimic.md)：使用可微世界模型训练肌骨全身跟踪。
 
 - [具身人体仿真](./embodied-human-simulation.md)：MS-Human-700 是数字人体与交互机器人耦合研究的一项肌骨模型基础。

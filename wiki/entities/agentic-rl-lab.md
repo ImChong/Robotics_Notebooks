@@ -105,6 +105,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 ### 同届课程与工程延伸
 
 - [Happy-LLM](happy-llm.md) — LLM 底层模型与训练基础。

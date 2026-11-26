@@ -82,6 +82,11 @@ flowchart TB
 - 适用边界：可用于按分类检索，不能作为该工作的技术依据或引用来源。
 - 同分类下并列着多篇同样处于待深读状态的 locomotion 条目，本页的相对价值取决于笔记撰写顺序，不宜据此判断重要性。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

@@ -131,6 +131,10 @@ flowchart TB
 - **真机：** 2.5 m/s 野外穿越；无外部定位。
 - **双索引：** 42 篇栈 #24 + AMP 专题 #09。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - 姊妹感知跑酷：[MoRE #08](./paper-amp-survey-08-more.md)、[Deep Whole-body Parkour](./paper-deep-whole-body-parkour.md)

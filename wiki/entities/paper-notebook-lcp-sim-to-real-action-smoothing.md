@@ -74,6 +74,11 @@ flowchart LR
 - 定位在 01_Foundational_RL，是 sim-to-real 落地阶段的通用训练手段，而非针对某一任务的方法。
 - 本页为策展清单索引实体，方法流程见 [流程总览](#流程总览)；量化结果待从深读笔记消化，以笔记与论文 PDF 为准。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-01-foundational-rl](../overview/paper-notebook-category-01-foundational-rl.md)

@@ -121,6 +121,11 @@ flowchart LR
 2. **内部适配层介入后插值未必物理连贯**：虽然仅用 LSA 时 $Z^0$ 插值顺滑，但当启用较强 IA 显著改写了动作空间映射时，运行时插值 $\alpha \in (0,1)$ 不总能保证过渡动作完全自然。
 3. **复杂视觉/地形输入仍需数小时训练**：虽然风格与形态只需 10–30 分钟，但引入 CNN 高度图编码器 $G_\phi$ 处理局部避障时仍需约 22 小时。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

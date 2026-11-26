@@ -76,6 +76,11 @@ flowchart TD
 - 适用边界：可用于按分类检索与追踪阅读进度，不可当作 HuMam 的结论来引用。
 - 深读笔记完成后，本页会补上笔记链接与实质要点。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

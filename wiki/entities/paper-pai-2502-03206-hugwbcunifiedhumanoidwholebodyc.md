@@ -113,6 +113,8 @@ Xue et al. General whole-body controller targeting fine-grained humanoid locomot
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，对照人形行走与全身运动任务。
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)

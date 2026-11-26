@@ -80,6 +80,11 @@ flowchart TD
 - 适用边界正是它挑的场景：舞蹈、球类、动物步态这类数据匮乏、物理可信度难保证的复杂动作；对已有高质量 3D 动捕的常规动作，这条路的优势并不明显。
 - 本页仍是清单索引实体，详细机制待从深读笔记消化后补充，量化对比以笔记与论文 PDF 为准。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

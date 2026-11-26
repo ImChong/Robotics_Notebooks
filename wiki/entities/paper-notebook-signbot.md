@@ -86,6 +86,11 @@ flowchart TD
 - 深读笔记尚未撰写、「实验与评测」明确留空，本页不可作为任何量化指标或实机结论的出处。
 - 核心信息表未给 arXiv 行，深读状态与计划文件夹以 progress.json 为准；上溯路径为 [04_Loco-Manipulation_and_WBC 分类页](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

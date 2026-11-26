@@ -54,6 +54,11 @@ Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training 的
 - 因此本页 **不含任何量化结论**：benchmark、消融与实机指标待笔记完成后补充。
 - 检索路径为 [分类页](../overview/paper-notebook-category-03-high-impact-selection.md) 与 [总索引](../overview/humanoid-paper-notebooks-index.md)；本页未登记论文直链，需经 PROGRESS.md 回溯原文。
 
+## 关联页面
+
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，对照人形行走与全身运动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-03-high-impact-selection](../overview/paper-notebook-category-03-high-impact-selection.md)

@@ -144,6 +144,8 @@ flowchart TB
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [Unitree G1](./unitree-g1.md)
 - [LangWBC](./paper-bfm-37-langwbc.md)
 - [TextOp](./paper-loco-manip-161-022-textop.md)

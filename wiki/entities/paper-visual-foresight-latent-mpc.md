@@ -90,6 +90,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
 - [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
 - [规划主导型 分类 hub](../overview/embodied-wm-route-planning.md)
 - [Generative World Models](../methods/generative-world-models.md)

@@ -151,6 +151,10 @@ sequenceDiagram
 - 部署读法：batch retarget / 研究 benchmark 优先 PyRoki；工业无碰撞 MotionGen + 深度感知闭环优先 cuRobo / Isaac 栈。
 - 局限要正视：**无采样规划**、**碰撞性能未宣称全面领先**、**JAX shape 静态化** 影响交互式改参体验。
 
+## 关联页面
+
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，对照跨本体运动映射问题。
+
 ## 与其他页面的关系
 
 - 概念：[motion-retargeting.md](../concepts/motion-retargeting.md)

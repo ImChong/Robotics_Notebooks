@@ -104,6 +104,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，了解视觉与语言条件化动作。
+- [视觉语言导航](../tasks/vision-language-navigation.md) — 延伸阅读，了解语言目标驱动的导航任务。
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)

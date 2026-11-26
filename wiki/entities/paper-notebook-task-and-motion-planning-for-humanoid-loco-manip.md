@@ -72,6 +72,11 @@ flowchart TD
 3. **待读作用** — 在笔记完成前作为待读条目，方便你按分类找到它，便于与总索引及分类页交叉检索。
 4. **待补充** — 量化 benchmark、消融与实机指标待深读笔记撰写后补充；笔记完成后应链向笔记站并补成完整摘要。
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+- [轨迹优化](../methods/trajectory-optimization.md) — 延伸阅读，了解运动约束与轨迹求解。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

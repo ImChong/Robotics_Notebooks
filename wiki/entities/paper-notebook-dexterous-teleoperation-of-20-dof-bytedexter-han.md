@@ -151,6 +151,10 @@ Quest 控制器固定在手套背面，使腕部和手指共享操作员参考�
 - 重定向抽象：[Motion Retargeting](../concepts/motion-retargeting.md)。
 - 无机器人采集对照：[DexUMI](./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md)。
 
+## 关联页面
+
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，对照跨本体运动映射问题。
+
 ## 参考来源
 
 - [Robot Learning Paper Notebooks 来源归档](../../sources/papers/humanoid_pnb_dexterous-teleoperation-of-20-dof-bytedexter-han.md)

@@ -99,6 +99,7 @@ G1 仿真以 31 个连杆的膨胀网格点定义对保护区的最大侵入，�
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - [安全过滤器](../concepts/safety-filter.md)
 - [控制屏障函数](../concepts/control-barrier-function.md)
 - [安全强化学习](../methods/safe-rl.md)

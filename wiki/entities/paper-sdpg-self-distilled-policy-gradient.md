@@ -171,6 +171,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [GRPO](../methods/grpo.md) — 延伸阅读，了解组内相对策略优化。
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Prism-GRPO](./paper-prism-grpo.md)（VLA 侧 GRPO 改进）
 - [SDPG 视觉 RL](./paper-sdpg-visual-rl-stochastic-decoupled.md)（同名消歧）

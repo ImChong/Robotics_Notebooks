@@ -79,6 +79,11 @@ flowchart LR
 - 「实验与评测」明确留空，投掷精度、距离等任何指标都需回到原文。
 - 深读笔记完成后本页应补成完整摘要并链向笔记站。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

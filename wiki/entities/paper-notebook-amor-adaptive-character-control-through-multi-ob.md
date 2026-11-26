@@ -81,6 +81,11 @@ flowchart LR
 - 适用边界：用于按分类检索，**不可**作为该论文结论的引用来源。
 - 深读笔记完成后，本页会补上笔记链接与实质要点。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

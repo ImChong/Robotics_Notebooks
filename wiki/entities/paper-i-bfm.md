@@ -236,6 +236,8 @@ I-BFM 的核心增量不是“再加一套操作策略”，而是让 BFM 的共
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [BFM-Zero](./paper-bfm-zero.md) — 身体优先的 FB 行为基础模型
 - [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) — 接触流条件化交互与技能链
 - [行为基础模型概念](../concepts/behavior-foundation-model.md)

@@ -136,6 +136,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 小米 **机器人 VLA** 谱系（不同团队）
 - [RoboDojo](./robodojo.md) — 通用操纵 sim-and-real 评测（与 Sipai/Agent 叙事对照）
 - [RoboBench](./robo-bench.md) — 含 **MiMo-Embodied** 的 MLLM 认知评测

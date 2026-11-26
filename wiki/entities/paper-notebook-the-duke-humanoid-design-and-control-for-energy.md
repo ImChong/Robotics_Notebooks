@@ -80,6 +80,11 @@ flowchart TD
 - 当前处于 PROGRESS.md **待深读** 阶段，能效数值、样机参数与实机对比均缺失，不能据本页做能效横向比较。
 - 使用方式：把本页当作硬件设计脉络下的入口节点，实质内容请走 arXiv 原文与 [参考来源](#参考来源)。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照足式移动任务。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)

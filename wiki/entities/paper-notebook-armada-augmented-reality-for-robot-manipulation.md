@@ -134,6 +134,10 @@ ARMADA 要：用 **AR + 虚拟机器人反馈**，让用户徒手采到**硬件�
 - **依赖 Apple Vision Pro 与 ARKit 手部追踪**；论文未说明用于回放的具体机器人型号。
 - **开源边界**：未见代码；源码运行时序图 **不适用**。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)

@@ -82,6 +82,7 @@ flowchart LR
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
 - [locomotion](../tasks/locomotion.md)
 - [motion-retargeting](../concepts/motion-retargeting.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)

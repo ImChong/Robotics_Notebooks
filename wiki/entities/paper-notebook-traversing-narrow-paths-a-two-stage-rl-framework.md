@@ -77,6 +77,11 @@ flowchart TD
 - 适用边界很窄：本页只服务于 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页之间的交叉检索，方便你按分类找到它。
 - 深读笔记完成后，本页会补上笔记链接与实质要点。
 
+## 关联页面
+
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，对照腿足移动任务。
+- [PID 控制](../methods/pid-control.md) — 延伸阅读，了解比例与微分反馈。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)

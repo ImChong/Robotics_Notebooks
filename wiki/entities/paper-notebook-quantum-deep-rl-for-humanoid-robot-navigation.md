@@ -73,6 +73,11 @@ flowchart LR
 - 适用边界由基准决定：实际只在 MuJoCo Walker2d-v4（仿真双足）上验证，Humanoid-v4 未训练，本页未涉及真机导航，不能据此推断 Sim2Real 可用性。
 - 本页为 **策展清单索引** 摘要（分类 08_Navigation），量化 benchmark、消融与实机指标以深读笔记与论文 PDF 为准（见 [参考来源](#参考来源)）。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)

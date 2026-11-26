@@ -103,6 +103,7 @@ flowchart LR
 
 ## 关联页面
 
+- [模型预测控制](../methods/model-predictive-control.md) — 延伸阅读，了解滚动时域决策。
 - [MuJoCo](./mujoco.md) — 物理内核与 MJCF 语义
 - [MuJoCo MJX](./mujoco-mjx.md) — JAX 批量与可微路径
 - [MuJoCo Warp](./mujoco-warp.md) — GPU 高吞吐兄弟后端

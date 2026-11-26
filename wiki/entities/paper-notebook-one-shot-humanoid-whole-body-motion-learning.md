@@ -76,6 +76,11 @@ flowchart TD
 - 「one-shot」在本页未作任何界定，因此不宜拿它与其他少样本 / 单示范方法直接比较。
 - 适用边界：仅供检索与分类连边；结论、消融与实机表现待深读笔记补充后再行引用。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，了解策略更新的目标与约束。
+
 ## 与其他页面的关系
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)

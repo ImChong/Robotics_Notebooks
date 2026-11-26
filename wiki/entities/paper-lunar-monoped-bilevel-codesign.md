@@ -104,6 +104,7 @@ flowchart TD
 
 ## 关联页面
 
+- [轨迹优化](../methods/trajectory-optimization.md) — 延伸阅读，了解运动约束与轨迹求解。
 - [senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md)
 - [locomotion](../tasks/locomotion.md)
 

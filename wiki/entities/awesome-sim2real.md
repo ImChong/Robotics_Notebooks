@@ -98,6 +98,8 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，了解基于奖励的策略训练。
 - [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) — 清单论文逐条可点开
 - [Sim2Real RL 综述（2502.13187）](./paper-survey-sim2real-rl-foundation-models.md)
 - [Sim2Real Hub](../overview/hub-sim2real.md) / [Sim2Real 概念](../concepts/sim2real.md)

@@ -140,6 +140,7 @@ COAP 的可迁移性来自可组合的程序库和显式状态操作，不能简
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，对照双臂协调任务。
 - [RoboDojo](./robodojo.md) — COAP 的 42 项双臂仿真评测基准；COAP 策略与基准仓库是不同项目。
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 将 COAP 放在策略成功率评测层解读。
 - [AI Agent 评估](../concepts/ai-agent-evaluation.md) — coding agent 离线改进与在线 agent 执行边界。

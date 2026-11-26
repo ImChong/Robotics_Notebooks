@@ -101,6 +101,11 @@ flowchart LR
 - 适用边界：验证规模是至多 **2.5 kg（机器人质量 21%）** 的杠铃/箱子，平台是可调高度的轮式人形，不宜外推到足式平台或更高负载。
 - 本页只是深读笔记的笔记摘要，量化 benchmark 与消融以深读笔记和论文 PDF 为准。
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，对照机器人操作任务。
+- [移动操作](../tasks/loco-manipulation.md) — 延伸阅读，对照移动与操作协同任务。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)

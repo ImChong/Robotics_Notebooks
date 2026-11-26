@@ -189,6 +189,10 @@ SELECTIVE 相对绝对动作基线（NONE）：$E_{g\text{-}mpbpe}$ / $E_{mpbpe}
 - **基线对比口径**：Table V 的 ASAP/KungfuBot 为重实现，不可直接与原论文表格横比。
 - **开源缺口**：无项目页/GitHub；附录「released config」无 URL，外部复现成本高。
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
+
 ## 与其他页面的关系
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)

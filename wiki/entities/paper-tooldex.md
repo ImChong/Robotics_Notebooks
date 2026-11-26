@@ -116,6 +116,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，了解从示范或参考动作学习。
 - [Steel：跨任务仿真求解器](steel-newton-solver.md)
 - [Apple AMP1：通用模型操作策略](paper-apple-amp1.md)
 - [机器人操作任务](../tasks/manipulation.md)

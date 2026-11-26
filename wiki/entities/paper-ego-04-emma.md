@@ -104,6 +104,11 @@ flowchart TD
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
+## 关联页面
+
+- [移动操作](../tasks/loco-manipulation.md) — 延伸阅读，对照移动与操作协同任务。
+- [遥操作](../tasks/teleoperation.md) — 延伸阅读，了解操作员与机器人之间的控制接口。
+
 ## 与其他页面的关系
 
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)

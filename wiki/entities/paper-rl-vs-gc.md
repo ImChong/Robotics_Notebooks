@@ -193,6 +193,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，了解策略学习的优化目标。
 - [RL vs 几何控制（对比页）](../comparisons/rl-vs-geometric-control.md) — 把三条不对称收成选型清单
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 另一条「模型控制 vs 学习」轴
 - [WBC vs RL](../comparisons/wbc-vs-rl.md) — 人形侧的同类陷阱
