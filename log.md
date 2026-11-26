@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | MemT-1.0：同步技术报告 v5 与原生记忆评测
+
+- 复用既有 MemT-1.0 节点，核对 Nano 消融、查询 TTFT 与端到端口径、Pro 权重卡和官方推理入口。
+- 标明默认读取与可选写入的区别，不将 Nano 的效率数字外推到 Pro。
+
 ## [2026-11-26] structural | Batch 8：补齐其余 16 篇具备实证方法流或经 arXiv 原文核对的 complete paper-* 实体流程图，并将 210+ 篇纯清单索引 stub 标注为待原文通读（Issue #3997）
 
 ## [2026-11-26] structural | Issue #3997 第 7 批修复：4 个子 agent 并行补齐全部 138 篇无外部仓库依赖（has_repo=False）complete 论文实体的基于原文 Mermaid 方法流程图
