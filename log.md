@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | PushMimic：动态参考增强与人形推箱
+
+- 通读原文并核对作者交互 demo，记录 176 条增强参考、观察与奖励分离，以及两项真机跑台试验的不同参数条件。
+- 接入移动操作任务与 Stage 3，保留完整训练/部署源码和资产许可未确认的边界。
+
 ## [2026-11-26] ingest | Orca：并行 Agent 工作区与运行主机边界
 
 - 收录固定源码，区分 Git worktree、远程运行主机、移动端与上游模型订阅。
