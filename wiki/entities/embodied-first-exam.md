@@ -4,6 +4,7 @@ project_id: embodied-first-exam
 arxiv: "2611.12177"
 original:
   - ../../sources/papers/embodied-first-exam-2611-12177.md
+  - ../../sources/blogs/embodied-first-exam-failure-analysis-2026-11-24.md
 tags:
   - benchmark
   - coding-agents
@@ -14,19 +15,20 @@ tags:
   - simulation
   - open-source
 status: complete
-updated: 2026-11-13
+updated: 2026-11-26
 related:
   - ./rle-bench.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../concepts/simulation-evaluation-infrastructure.md
 sources:
   - ../../sources/papers/embodied-first-exam-2611-12177.md
+  - ../../sources/blogs/embodied-first-exam-failure-analysis-2026-11-24.md
   - ../../sources/sites/embodied-first-exam-ai.md
   - ../../sources/repos/embodied-first-exam.md
-summary: "Embodied First Exam 论文评测 35 套件、1156 任务、47 种机器人，论文标准核心 456 任务的最强模型成功率34%；当前仓库已扩充到36套件和1211任务，需区分论文口径。"
+summary: "Embodied First Exam 使用 Harbor 和独立 verifier 评估 coding agent 的具身控制；11 月失败分析覆盖 481 个核心 Standard 测试，区分仿真权限、失败阶段、提示和 harness，保留 arXiv v1 的 456 题口径。"
 ---
 
-# Embodied First Exam（具身第一考：机器人环境中的代码智能体能力测评）
+# 具身第一考：代码智能体的机器人任务评测与失败分析 | Embodied First Exam
 
 **Embodied First Exam**（[项目页](https://www.embodied-first-exam.ai/)，[GitHub](https://github.com/mll-lab-nu/embodied-first-exam)，**MIT**）把机器人任务环境作为 coding agent 的考场：agent 在固定场景里编写程序、运行并查看结果，提交结果后由独立沙箱验证。项目通过 [Harbor](https://github.com/laude-institute/harbor) 运行；它衡量的是 agent 在具身任务中的程序化交互能力，不是单独比较某个机器人策略模型的成功率。
 
@@ -51,7 +53,8 @@ summary: "Embodied First Exam 论文评测 35 套件、1156 任务、47 种机�
 | 运行框架 | Harbor |
 | 论文规模 | 2026-11 arXiv：35 suites、1,156 unique tasks、47 种机器人；标准核心 456 任务 | 
 | 论文核心结果 | 最强模型在 456 个核心 Standard 任务成功率 34%（论文作者报告） |
-| 当前代码 README | 36 benchmark / 1,211 unique tasks / 2,398 task directories；核心配置 498 tasks，较论文口径增加 HumanCLAW 等；**不应改写论文分母** |
+| 11 月失败分析 | 10 个模型-harness 组合；481 个核心 Standard 测试，另有 416 个 Privileged、54 个 Realtime |
+| 当前代码 README | 36 benchmark / 1,211 unique tasks / 2,404 task directories；默认核心 481 任务可生成 951 个按模式划分的目录。仓库含 HumanCLAW，不应改写论文分母 |
 | 任务闭环 | 编写程序 → 运行任务 → 查看结果 → 独立沙箱验证 |
 | 运行环境 | Linux x86_64；Docker / Compose v2 / BuildKit；GPU 依 benchmark 而定 |
 | 代码许可 | MIT；第三方模拟器、资产和基础镜像仍遵循各自许可 |
@@ -86,17 +89,18 @@ summary: "Embodied First Exam 论文评测 35 套件、1156 任务、47 种机�
 
 ```mermaid
 flowchart TD
-  T["冻结任务、场景、目标与资源预算"] --> A["Coding agent 读取机器人接口"]
+  T["冻结任务、场景、目标与资源预算"] --> K{"评测协议预设的模式"}
+  K --> A["Coding agent 读取该模式允许的机器人接口"]
   A --> D["Direct control：逐步输出动作"]
   A --> C["Code to control：生成控制程序"]
   A --> P["Train a policy：仿真训练策略"]
-  D --> K{"选择评测设置"}
-  C --> K
-  P --> K
-  K -->|Privileged| Q["全状态与无限重置，提交轨迹或控制器"]
+  D --> X["按模式执行"]
+  C --> X
+  P --> X
+  X -->|Privileged| Q["全状态与无限重置，提交轨迹或控制器"]
   Q --> R["隔离 verifier 回放验证"]
-  K -->|Standard| S["仅传感器与控制 API，推理时暂停仿真"]
-  K -->|Realtime| U["仅传感器与控制 API，世界持续运行"]
+  X -->|Standard| S["仅传感器与控制 API，推理时暂停仿真"]
+  X -->|Realtime| U["仅传感器与控制 API，世界持续运行"]
   S --> V["服务端对在线 episode 计分"]
   U --> V
   R --> G["按 task-setting 统计 pass 或 fail"]
@@ -117,7 +121,7 @@ flowchart TD
 | 有两种时序设置的 54 个任务 | 最强代理 Standard **23/54**，Realtime **17/54**；所有受测代理都未解出的任务分别为 **50% / 63%** | 对同一批动态任务配对，Realtime 的世界不会等待推理（§3.1） |
 | 同一模型不同 harness（456 Standard） | GPT-6 Astra 在 Codex **34%**，在 Claude Code **22%** | 最高相差 **12 个百分点**，不宜把成绩仅归因于模型（§3.4） |
 
-截至 2026-11-13，官方仓库 README 的**可运行仓库范围**已扩充为 **36 benchmark、1,211 任务、2,398 task directories**，默认核心配置为 **498 任务**；README 明言论文口径不含新增 HumanCLAW。**不要以仓库的新统计覆盖论文报告**。
+2026-11-13 历史 README 记录核心 498 tasks；2026-11-26 核对的 [README 快照](https://github.com/mll-lab-nu/embodied-first-exam/blob/408d08eee19d6e7a428cd3418dc643242dc38cb8/README.md) 列核心 481 tasks、951 个按模式划分的目录。整仓计数为 36 套件、1,211 个任务、2,404 个目录，包含 HumanCLAW。保留各快照口径，不用目录数替代任务数。
 
 ## 失败阶段分析与工程启示
 
@@ -127,14 +131,43 @@ flowchart TD
 - **控制策略依设置变化：** 抽样的 Standard 尝试有 **61%** 每轮看反馈再输出动作块；Realtime 尝试有 **97%** 使用程序化控制。足球案例在提供 GPU 与 RL 库时才有训练策略获胜，但该任务不同版本不构成严格的单变量因果对照（§3.5）。
 - **真机演示不是排行榜：** 附录 I 的 buzz-wire 真机机械臂实验每个 agent 连续 8 次尝试，只说明接口可用于物理机器人；成绩不包含在论文仿真统计内。
 
+## 2026-11-24 官方失败分析：在哪一步失败
+
+[官方博客](https://www.embodied-first-exam.ai/blogs/failure-analysis/)的榜单快照使用 **481** 个核心任务，不是当前可下载 arXiv v1 的 **456** 个任务。每个组合的榜单成绩按每 test 一次尝试计；大多数评测在仿真完成。博客展示的 GPT-6.2 Astra 解出 279/481（58.0%），不能直接用来计算相对旧论文 33.6% 的模型增益。
+
+| 问题 | 博客证据 | 阅读边界 |
+|---|---|---|
+| 是所有模型都不会，还是某个组合失败？ | 481 个 Standard 测试中 112 个无一通过；104 个有 Privileged 版本，其中 90 个至少被一个组合解出 | 不是 90 个真机可解任务，也不是单模型的通过数 |
+| 时序约束改变了什么？ | 同一组 54 个测试，Standard 全员未解 15 个、Realtime 22 个；GPT-6.2 Astra 由 33/54 到 22/54 | Realtime 在推理期间继续推进，模式总体分母不同，不能直接横比全量成功率 |
+| 精确状态还是重试更有用？ | GPT-6 Astra 的旧 391 题复跑：默认 29%、仅真值 45%、仅重置与存档恢复 53%、两者 68%；其中 50 题实际用 Realtime | 博客使用的默认口径不同于 v1 的 28% Standard 基线；恢复中段仿真状态不是部署时可依赖的真机能力 |
+| 多个组合是否在同一阶段卡住？ | Standard 的阶段集中度 57%，高于随机基线 35%；但同阶段失败的配对，现象标签只在 39% 的配对中相同 | 4,866 个失败的阶段分析仅覆盖九个已标注组合，不含 GPT-6.2 Astra；另记阶段和失败现象，不能把“在哪卡住”当“为何卡住” |
+| 提示能改变多少？ | EFE 冻结的 54 个 RoboDojo 布局中，Fable 5.2 用一句话提示 34/54、用完整终态描述 44/54；47/54 个测试要求回初始位姿 | 判据不变，只改提示；这不是 RoboDojo 原榜多布局、多回合、含部分分的分数 |
+| 多想、多花钱是否就能通过？ | GPT-6.1 Sol 在旧 456 题的三次 high effort 标准评测为 32.2%、32.2%、27.9%；十个组合在 Standard / Privileged 的失败尝试成本中位数都更高 | 失败常持续更久，不能用成本相关性推断加预算可提高成功率 |
+
+工程上可用同一任务的多个组合回放来定位难点，同时区分**可见传感信息、动作接口与恢复权限**。记录每阶段是否到达、是否失败、失败现象、耗时和独立验收结果。标准模式的观察绝不能用特权状态替代；几何信息和重试分别做消融。Realtime 还需记录决策耗时、控制频率和动作队列状态，避免把仿真可暂停的动作生成误报为在线控制。
+
+### 失败分析流程（基于官方博客）
+
+```mermaid
+flowchart LR
+  task["冻结任务、场景、时限和判据"] --> protocol["配对观察权限、重试权限与世界时钟"]
+  protocol --> attempts["固定模型和 harness，逐测试执行"]
+  attempts --> verdict["独立 verifier 给出完成判决"]
+  attempts --> evidence["保留回放和动作日志"]
+  evidence --> labels["按带先决条件的阶段图定位失败并标注现象"]
+  verdict --> compare["分别比较成功、到达、阶段失败与成本"]
+  labels --> compare
+  compare --> check["用配对权限、提示或重跑实验检查解释"]
+```
+
 ## 结论
 
 **该工作将“代码代理能不能让机器人完成任务”从文本评测转为可执行且分权限的标准化环境，但目前高难度具身任务成功率仍有限。**
 
 1. 始终在 Standard / Realtime / Privileged 相同协议内比较。
-2. 区分论文 1,156/456 和扩充版仓库 1,211/498 的分母。
+2. 分开 arXiv v1 的 456 题、博客的 481 题与 RoboDojo 提示实验的 54 个冻结布局；同时保留模型、harness 和模式。
 3. 仿真成功率不能直接替代真机性能、能耗和安全评测。
-4. 验证需要 Harbor、对应 benchmark 资产与各自许可。
+4. 在可对照的任务上分别测试状态、重试与时序；先用独立 verifier 记录成败，再用回放诊断故障，不把阶段标注当成功判据。
 
 ## 与其他工作对比
 
@@ -162,7 +195,7 @@ harbor run -d embodied-first-exam@all -a codex -m <model>
 
 ## 源码运行时序图
 
-入口：`efe run -a codex -m <model>`（`efe` = `scripts/efe.py:main`，其余参数交给 Harbor；等价于 `harbor run -d embodied-first-exam -a codex -m <model>`）。下图以 standard 模式的 behavior-1k 任务为例（sim 边车 + agent 容器两段式）。
+入口：`efe run -a codex -m <model>`（`efe` = `scripts/efe.py:main`，其余参数交给 Harbor；等价于 `harbor run -d embodied-first-exam -a codex -m <model>`）。下图以 standard 模式的 behavior-1k 任务为例（sim 边车 + agent 容器两段式）。2026-11-26 复查官方 commit `408d08e` 的 CLI、服务端动作提交和同任务 verifier，未启动仿真。
 
 ```mermaid
 sequenceDiagram
@@ -213,6 +246,8 @@ sequenceDiagram
 ## 关联页面
 
 - [RLE-Bench](./rle-bench.md) — 同样通过 Harbor 评 coding agent，但任务设计与覆盖范围不同
+- [RoboDojo](./robodojo.md) — 区分原榜的多布局试验与 EFE 用于提示消融的冻结场景
+- [具身评测纵深](../../roadmap/depth-embodied-eval.md) — 用阶段结果定位瓶颈，再按模式和复跑协议解释变化
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 本页所在的评测选型知识链
 
 - [Claude Fable 5.2](./claude-fable-5-2.md) — 另一类仿真机器人能力评测
@@ -223,6 +258,8 @@ sequenceDiagram
 
 ## 参考来源
 
+- [11 月官方失败分析与证据边界](../../sources/blogs/embodied-first-exam-failure-analysis-2026-11-24.md)
+
 - [arXiv:2611.12177 论文核验摘录](../../sources/papers/embodied-first-exam-2611-12177.md)
 - [官方项目页](../../sources/sites/embodied-first-exam-ai.md)
 - [官方代码仓与运行说明](../../sources/repos/embodied-first-exam.md)
@@ -231,6 +268,8 @@ sequenceDiagram
 - 源码核对（2026-11-02）：mll-lab-nu/embodied-first-exam@c7b94c7，读过 README.md、pyproject.toml、docs/protocol/README.md、scripts/efe.py、embodied_first_exam/standard/{run.sh,rcb_limited.py,v2_4/rcb_client.py}、embodied_first_exam/benchmarks/behavior-1k/sim/server.py、tasks/behavior-1k/behavior-assembling-gift-baskets-i00-standard/{environment/docker-compose.yaml,tests/test.sh}、embodied_first_exam/benchmarks/behavior-1k/sim/finalize.sh（前若干行）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
+
+- [EFE 按测试查看逐步运行记录](https://www.embodied-first-exam.ai/runs/)
 
 - [Embodied First Exam — arXiv:2611.12177](https://arxiv.org/abs/2611.12177)
 - [官方任务清单与 Quick Start](https://github.com/mll-lab-nu/embodied-first-exam)

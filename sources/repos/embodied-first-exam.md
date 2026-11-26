@@ -10,10 +10,10 @@
 - **License：** MIT（仅代码仓；第三方模拟器、资产、参考解和基础镜像各自保留原许可证）
 - **发布：** 2026-10-19（仓库 README News）
 - **入库日期：** 2026-10-22
-- **复核日期：** 2026-11-13
+- **复核日期：** 2026-11-26
 - **论文：** <https://arxiv.org/abs/2611.12177>
 - **轨迹数据：** <https://huggingface.co/datasets/MLL-Lab/embodied-exam-data>
-- **一句话说明：** 面向 coding agent 的具身任务考核：agent 在冻结的机器人任务场景中编写程序、运行并查看结果，再由独立沙箱验证；2026-11-13 README 列出 36 个 benchmark、1,211 个任务、2,398 个 task directories，默认核心配置 498 个任务；论文版为 35 suites、1,156 任务、2,288 tests（不含后加的 HumanCLAW）。
+- **一句话说明：** 面向 coding agent 的具身任务考核：agent 在冻结的机器人任务场景中编写程序、运行并查看结果，再由独立沙箱验证；复核时 README 列出 36 个 benchmark、1,211 个任务、2,404 个 task directories，默认核心 481 个任务；发布论文 v1 为 35 suites、1,156 任务、2,288 tests（不含后加的 HumanCLAW）。
 
 ## 仓库入口
 
@@ -29,6 +29,7 @@
 
 - 论文 arXiv:2611.12177v1（2026-11-09）：**35 suites、1,156 独立任务、2,288 task-setting tests、47 种机器人**。
 - 仓库 README（复核于 2026-11-13）：**36 benchmarks、1,211 任务、2,398 task directories**，默认核心 **498 tasks**；明确增加 HumanCLAW。仓库版本的任务目录数包含 mode 划分，不等于 unique tasks。
+- 仓库 README（2026-11-26，[`408d08e`](https://github.com/mll-lab-nu/embodied-first-exam/tree/408d08eee19d6e7a428cd3418dc643242dc38cb8)）：整仓 2,404 个任务目录；核心 481 个任务及 951 个模式目录（481 Standard、416 Privileged、54 Realtime）。与 [11 月博客](../blogs/embodied-first-exam-failure-analysis-2026-11-24.md) 的核心分母一致。静态核验 `scripts/efe.py`、`pyproject.toml`、BEHAVIOR-1K 的 `sim/server.py` 与任务 `tests/test.sh`，未运行仿真。
 - **源码覆盖范围：** 发布可执行的 Harbor 数据集封装、任务脚本、机器人/仿真适配接口和评测协议实现；不意味着所有上游基准数据、图像与仿真资产可以无条件重新分发。参见 README 的首次运行资产与许可要求。
 
 ## 环境与边界

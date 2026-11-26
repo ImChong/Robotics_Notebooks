@@ -7,7 +7,8 @@
 - **评测框架：** [Harbor](https://github.com/laude-institute/harbor)
 - **发布：** 2026-10-19（日期见官方 GitHub README）
 - **入库日期：** 2026-10-22
-- **复核日期：** 2026-11-13
+- **复核日期：** 2026-11-26
+- **后续分析：** [2026-11-24 官方失败分析归档](../blogs/embodied-first-exam-failure-analysis-2026-11-24.md)
 - **论文 PDF：** <https://arxiv.org/pdf/2611.12177>
 - **论文 HTML：** <https://arxiv.org/html/2611.12177v1>
 - **开放轨迹：** <https://huggingface.co/datasets/MLL-Lab/embodied-exam-data>
