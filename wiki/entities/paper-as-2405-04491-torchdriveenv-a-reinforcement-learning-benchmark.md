@@ -10,7 +10,6 @@ related:
   - ../overview/lc-awesome-sim2real-technology-map.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
-  - ../tasks/locomotion.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/lc_awesome_sim2real_2405_04491_torchdriveenv-a-reinforcement-learning-b.md
@@ -106,7 +105,10 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
-- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)
+
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略训练与优化。
 
 ## 参考来源
 

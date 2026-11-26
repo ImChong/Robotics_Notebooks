@@ -91,6 +91,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：了解测试任务、协议与指标。
+- [工程仿真建模与验证](../methods/engineering-simulation-workflow.md)：对照模型设置、求解与验证。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_eval_105_carla-scenariorunner.md`](../../sources/repos/pai_awesome_eval_105_carla-scenariorunner.md) — 本条目策展摘录

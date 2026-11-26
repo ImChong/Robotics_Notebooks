@@ -131,6 +131,8 @@ flowchart TB
 - [六种空间表示](../concepts/embodied-perception-six-spatial-representations.md)
 - [操作任务](../tasks/manipulation.md)
 
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [scan2mesh_cvpr_2019_dai.md](../../sources/papers/scan2mesh_cvpr_2019_dai.md)

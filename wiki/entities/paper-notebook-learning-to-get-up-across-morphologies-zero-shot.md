@@ -79,6 +79,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [平衡恢复](../tasks/balance-recovery.md)：了解失稳后的平衡与起身。
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解人形行走任务。
+
 ## 参考来源
 
 - [humanoid_pnb_learning-to-get-up-across-morphologies-zero-shot.md](../../sources/papers/humanoid_pnb_learning-to-get-up-across-morphologies-zero-shot.md)

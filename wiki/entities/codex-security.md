@@ -138,6 +138,9 @@ sequenceDiagram
 - [模型版本管理与 OTA](../concepts/model-versioning-ota.md)
 - [Cloudflare Security Audit Skill](cloudflare-security-audit-skill.md) — 六阶段 agent 审计 + coverage ledger + 对抗验证（与本工具 SARIF/CI 扫描互补）
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：了解测试、复核和证据。
+
 ## 参考来源
 
 - [Codex Security 仓库归档](../../sources/repos/codex-security.md)

@@ -98,6 +98,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时的输入、输出与资源。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [hi_dynamic_control 源码归档](../../sources/repos/mini-hi_dynamic_control.md)（<https://github.com/HighTorque-Robotics/Mini-Hi_Dynamic_Control>）

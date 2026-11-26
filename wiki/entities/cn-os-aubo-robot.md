@@ -100,6 +100,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照相关方法与适用场景。
+- [Manipulation](../tasks/manipulation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [aubo_robot 源码归档](../../sources/repos/aubo_robot.md)（<https://github.com/AuboRobot/aubo_robot>）

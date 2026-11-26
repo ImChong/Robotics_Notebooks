@@ -150,6 +150,8 @@ flowchart TD
 - [安全过滤器](../concepts/safety-filter.md)
 - [机器人安全状态机](../concepts/robot-safety-state-machine.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [来源归档：本文通读记录](../../sources/papers/vla-goal-representation_arxiv_2611_08895.md)

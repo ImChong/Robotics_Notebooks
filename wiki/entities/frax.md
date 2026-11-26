@@ -117,6 +117,8 @@ sequenceDiagram
 - [逆运动学](../formalizations/inverse-kinematics.md)
 - [GMR](../methods/motion-retargeting-gmr.md)
 
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：了解跨本体动作映射。
+
 ## 参考来源
 
 - [论文归档：arXiv v2](../../sources/papers/frax.md)

@@ -106,6 +106,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解策略训练与评估。
+
 ## 参考来源
 
 - [troncamp-mani 源码归档](../../sources/repos/troncamp-mani.md)（<https://github.com/limxdynamics/troncamp-mani>）

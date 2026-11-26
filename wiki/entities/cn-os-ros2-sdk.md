@@ -102,6 +102,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [linkerhand-ros2-sdk 源码归档](../../sources/repos/linkerhand-ros2-sdk.md)（<https://github.com/linker-bot/linkerhand-ros2-sdk>）

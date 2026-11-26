@@ -83,6 +83,9 @@ flowchart LR
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md)
 
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [sources/repos/physical_ai_tools.md](../../sources/repos/physical_ai_tools.md)

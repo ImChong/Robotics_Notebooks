@@ -105,6 +105,9 @@ README 的 skill 数量是快照；并非每一份技能都有可运行示例，
 
 - [Hallmark](./hallmark.md) — 以主题轮换、硬性设计底线和可运行 `sloplint` 改善 Agent 网页设计的专项 Skill。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [MengTo/Skills 官方 README、技能与源码归档](../../sources/repos/mengto-skills.md)

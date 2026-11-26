@@ -66,6 +66,8 @@ flowchart TD
 - [VideoLLM-online](./paper-sa-2406-11816-videollm-online-online-video-large-language-mode.md) — 另一项在线流式视频理解工作。
 - [视觉–语言–动作模型](../methods/vla.md) — 将视觉语言理解与机器人动作连接的相关方向。
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：了解视觉特征与下游任务。
+
 ## 参考来源
 
 - [官方仓库归档](../../sources/repos/vlx-flow.md)

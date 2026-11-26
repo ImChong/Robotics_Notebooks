@@ -109,6 +109,9 @@ sequenceDiagram
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [COMSOL Multiphysics MCP](./wjc9011-comsol-multiphysics-mcp.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [工程仿真建模与验证](../methods/engineering-simulation-workflow.md)：对照模型设置、求解与验证。
+
 ## 参考来源
 
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)

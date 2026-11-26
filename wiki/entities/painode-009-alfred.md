@@ -87,6 +87,9 @@ flowchart LR
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 家务指令跟随 + 具身任务完成度评测，落在该闭环第 ③ 层「策略任务成功率评测」；语言条件的子目标判定同时触及第 ① 层「具身大脑」的指令理解
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_benchmark_009_alfred.md`](../../sources/repos/pai_awesome_benchmark_009_alfred.md) — 本条目策展摘录

@@ -89,6 +89,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照 SDK、通信与驱动接入。
+
 ## 参考来源
 
 - [multiMotorTCPAPI 源码归档](../../sources/repos/multimotortcpapi.md)（<https://github.com/ti5robot/multiMotorTCPAPI>）

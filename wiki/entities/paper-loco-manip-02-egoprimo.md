@@ -103,6 +103,10 @@ ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。
 - 分类 hub：[loco-manip-category-01-egocentric-data.md](../overview/loco-manip-category-01-egocentric-data.md)
 - 原始 source：[loco_manip_survey_02_egoprimo.md](../../sources/papers/loco_manip_survey_02_egoprimo.md)
 
+## 关联页面
+
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照状态、命令与执行接口。
+
 ## 参考来源
 
 - [loco_manip_survey_02_egoprimo.md](../../sources/papers/loco_manip_survey_02_egoprimo.md) — Loco-Manip 8 篇策展摘录

@@ -90,6 +90,9 @@ sequenceDiagram
 - [easy-vibe](./easy-vibe.md) — 相关概念、工具或工程路线。
 - [hello-agents](./hello-agents.md) — 相关概念、工具或工程路线。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [官方 README 原文核对和范围](../../sources/repos/easy-data-x-ai-course-overview-read-20261113.md)

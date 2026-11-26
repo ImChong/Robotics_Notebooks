@@ -93,6 +93,8 @@ sequenceDiagram
 - [LingBot-Depth](./cn-os-lingbot-depth.md)：另一个深度感知相关项目，输入与任务设定不同。
 - [机器人操作](../tasks/manipulation.md)
 
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/defm_arxiv_2601_18923.md)

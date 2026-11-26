@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 源码运行时序图
 
 入口：`ros2 run <fairino_hardware_vX_Y_Z 包名> ros2_cmd_server`（各版本包名不同，如 v4_0_1 的 `project(fairino_hardware_v4_0_1)`；`CMakeLists.txt` 中 `add_executable(ros2_cmd_server ...)`，`src/command_server_node.cpp`）；ros2_control 路径则由 MoveIt/控制器管理器加载插件 `fairino_hardware/FairinoHardwareInterface`（`fairino_hardware.xml`）。下图以 `fairino_hardware_v4_0_1` 为例，各 `fairino_hardware_v*` 目录对应不同机器人软件版本。

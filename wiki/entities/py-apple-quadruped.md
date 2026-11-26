@@ -105,6 +105,8 @@ sequenceDiagram
 - [locomotion](../tasks/locomotion.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [py_apple_quadruped.md](../../sources/repos/py_apple_quadruped.md)

@@ -179,6 +179,9 @@ sequenceDiagram
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md) · [gRPC](./grpc.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [参数化 CAD 建模](../methods/parametric-cad-workflow.md)：了解几何参数、约束与可编辑模型。
+
 ## 参考来源
 
 - [freecad-mcp 仓库源归档](../../sources/repos/freecad-mcp.md)

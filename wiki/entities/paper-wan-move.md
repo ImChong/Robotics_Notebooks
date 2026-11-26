@@ -196,6 +196,8 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md) — 条件注入谱系
 - [MolmoMotion](./molmo-motion.md) — 另一类显式 3D 点轨迹运动先验
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [Wan-Move 论文摘录](../../sources/papers/wan_move_arxiv_2512_08765.md)

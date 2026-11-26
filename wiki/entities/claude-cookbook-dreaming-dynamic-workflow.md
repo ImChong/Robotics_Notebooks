@@ -126,6 +126,9 @@ sequenceDiagram
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 - [Agentic Coding 软件基础](../concepts/agentic-coding-software-fundamentals.md)
 
+- [Claude Code 动态工作流](../methods/claude-code-dynamic-workflows.md)：对照子任务分工与验证。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [Cookbook 页面与 notebook 归档](../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md)

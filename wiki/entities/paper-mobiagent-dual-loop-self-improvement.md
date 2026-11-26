@@ -100,6 +100,8 @@ sequenceDiagram
 - [data-flywheel](../concepts/data-flywheel.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+
 ## 参考来源
 
 - [mobiagent_dual_loop_self_improvement_arxiv_2610_03476.md](../../sources/papers/mobiagent_dual_loop_self_improvement_arxiv_2610_03476.md)

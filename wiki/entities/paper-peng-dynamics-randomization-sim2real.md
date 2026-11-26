@@ -100,6 +100,9 @@ flowchart TD
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照相关方法与适用场景。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [freedof_sim2real_10_peng-dynamics-randomization-sim2real.md](../../sources/papers/freedof_sim2real_10_peng-dynamics-randomization-sim2real.md)

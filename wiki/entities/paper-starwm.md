@@ -86,6 +86,8 @@ flowchart TD
 - [Day 5 导读](../overview/humanoid-motion-intelligence-day5-world-models-decision.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [Day 5 原文归档](../../sources/blogs/humanoid_motion_intelligence_day5_world_models_decision_2026_10_06.md)

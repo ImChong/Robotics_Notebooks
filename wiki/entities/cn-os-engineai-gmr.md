@@ -108,6 +108,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：了解本体映射与可行性检查。
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体的运动映射。
+
 ## 参考来源
 
 - [EngineAI GMR 源码归档](../../sources/repos/cn_os_engineai_gmr.md)（<https://github.com/engineai-robotics/GMR>）

@@ -42,6 +42,8 @@ summary: 'V-Dreamer: Automating Robotic Simulation and Trajectory Synthesis via 
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

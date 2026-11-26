@@ -189,6 +189,8 @@ Python SDK（官方支持接口）：`uv add dreamscale` → `policy = dreamscal
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md)：Sim2Real 性能与限幅验收。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：LIBERO/HUD 仿真评测归其 ③ 策略任务成功率层，外推到 SO-101/YAM 实机前须过 ④ sim↔real 校准层。
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [官方平台与 SDK 文档逐页核查](../../sources/sites/dreamscale-labs.md)

@@ -174,6 +174,8 @@ flowchart TD
 - [奖励设计](../concepts/reward-design.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 落在其 ③ 策略任务成功率层：基准判据与指令不一致会让成功率虚高，RSIJudge 给出判据层面的典型误判案例
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照评测任务、协议与指标。
+
 ## 参考来源
 
 - [sources/papers/rsijudge_arxiv_2611_08318.md](../../sources/papers/rsijudge_arxiv_2611_08318.md) — 论文通读归档

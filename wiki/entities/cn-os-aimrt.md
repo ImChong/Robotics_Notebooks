@@ -128,6 +128,9 @@ sequenceDiagram
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md)
 
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [AimRT 源码归档](../../sources/repos/aimrt.md)（<https://github.com/AimRT/AimRT>）

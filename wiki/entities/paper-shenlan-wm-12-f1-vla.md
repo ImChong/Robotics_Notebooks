@@ -101,6 +101,11 @@ MoE 三模块：感知、视觉预见、控制；下一尺度预测 + 预见引�
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_12_f1-vla.md](../../sources/papers/shenlan_wm_survey_12_f1-vla.md)
 
+## 关联页面
+
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+
 ## 参考来源
 
 - [shenlan_wm_survey_12_f1-vla.md](../../sources/papers/shenlan_wm_survey_12_f1-vla.md)

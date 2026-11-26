@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+
 ## 源码运行时序图
 
 入口：`python examples/ros_node/dexhand_ros.py`（ROS 节点，读取 `config/config.yaml` 中的 `DexHand.ROS_Node` 配置）；硬件自检入口为 `python tools/hardware_test/test_dexhand.py --hands right`。

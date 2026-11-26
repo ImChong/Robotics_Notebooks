@@ -143,6 +143,10 @@ flowchart TD
 - 相关论文：[Domain Randomization 的 Notebook 深读条目](paper-notebook-domain-randomization-understanding-sim-to-real-t.md)、[Peng 等动力学随机化](paper-peng-dynamics-randomization-sim2real.md)
 - 应用方向：[操作任务 (Manipulation)](../tasks/manipulation.md)
 
+## 关联页面
+
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [humanoid_pnb_domain-randomization-for-transferring-deep-neura.md](../../sources/papers/humanoid_pnb_domain-randomization-for-transferring-deep-neura.md)

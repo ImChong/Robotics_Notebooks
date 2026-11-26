@@ -128,6 +128,8 @@ flowchart TB
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[reinforcement-learning.md](../methods/reinforcement-learning.md)、[locomotion.md](../tasks/locomotion.md)、[manipulation.md](../tasks/manipulation.md)
 
+- [策略优化](../methods/policy-optimization.md)：对照策略训练、仿真内验证与真机微调三个环节。
+
 ## 参考来源
 
 - [`sources/papers/lc_awesome_sim2real_noarxiv_106_crossing-the-reality-gap-a-survey-on-sim.md`](../../sources/papers/lc_awesome_sim2real_noarxiv_106_crossing-the-reality-gap-a-survey-on-sim.md) — 本条目策展摘录

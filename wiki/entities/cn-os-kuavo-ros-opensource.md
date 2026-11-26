@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 源码运行时序图
 
 入口：`roslaunch humanoid_controllers load_kuavo_mujoco_sim.launch`（先 `source devel/setup.bash`；轮臂机型用 `load_kuavo_mujoco_sim_wheel.launch`）。该 launch 拉起 `humanoid_sqp_mpc`、`nodelet_manager`、`HumanoidControllerNodelet`，并通过 `mujoco_cpp` 的 `nodelet_with_arm.launch` 加载 `MujocoNodelet`。以下仅画双足（`nodelet_robot_type=2`）分支。

@@ -110,6 +110,8 @@ ThinkWorld 展示了利用视频中的状态变化增强动作推理，并在特
 - [世界动作模型](../concepts/world-action-models.md) — 动作与未来预测的关系。
 - [DIAL](./paper-dial-latent-world-vla.md) — 以潜在世界表征支持 VLA 的另一种设计。
 
+- [Generative World Models](../methods/generative-world-models.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文摘录](../../sources/papers/thinkworld_arxiv_2610_37666.md)

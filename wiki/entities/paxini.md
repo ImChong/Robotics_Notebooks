@@ -63,6 +63,9 @@ flowchart LR
 - [人形数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md)
 - [mimic wearable U1](./mimic-wearable-u1.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [LeoInAI Substack 摘录](../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md)

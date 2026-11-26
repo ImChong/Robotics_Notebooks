@@ -183,6 +183,9 @@ agent_s --provider openai --model gpt-5-2025-08-07 \
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 自动化流程中执行、验证与回归评测的角色
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照：OSWorld 测桌面 GUI 任务成功率，不属于具身四层评测中的任何一层；其 best-of-N 择优口径与 ③ 策略任务成功率层「均值成功率的陷阱」同类，横比时须注明单轨还是择优
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [Agent S3 原始论文全文与评测摘录](../../sources/papers/agent_s3_arxiv_2510_02250.md)

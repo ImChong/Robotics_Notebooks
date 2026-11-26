@@ -124,6 +124,9 @@ flowchart TB
 - [RoboDojo](./robodojo.md) — 评测基准与榜单规则
 - [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — 区分持久改进、有界闭环与 ignition
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+
 ## 参考来源
 
 - [ZPotentials 报道摘录](../../sources/blogs/zpotentials-manifold-worldscape-r2si-2026-10-17.md)

@@ -103,6 +103,8 @@ flowchart TD
 - [Impedance Control（阻抗控制）](../concepts/impedance-control.md) — 柔顺矩阵与力/位移关系
 - [Humanoid Locomotion（人形运动）](../tasks/humanoid-locomotion.md) — 行走与跳跃任务背景
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [论文来源归档](../../sources/papers/rigid_soft_hybrid_link_humanoid_arxiv_2610_15073.md)

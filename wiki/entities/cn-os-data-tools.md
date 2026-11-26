@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与模块接入。
+
 ## 源码运行时序图
 
 入口：`roslaunch data_tools run_data_capture.launch type:=aloha datasetDir:=<路径> episodeIndex:=0`（采集，ROS1 noetic），之后离线执行 `python3 data_sync.py --type aloha --datasetDir <路径>` 与 `python3 data_to_hdf5.py --type aloha --datasetDir <路径>`（命令出自 README）

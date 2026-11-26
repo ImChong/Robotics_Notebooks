@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 源码运行时序图
 
 入口：`./servoj_example --robot-ip=<ip> --use-headless-mode=true`（`example/servoj_example.cpp`，由 `example/CMakeLists.txt` 构建；库本身无独立可执行入口）

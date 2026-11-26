@@ -112,6 +112,8 @@ flowchart LR
 - [Pinocchio](./pinocchio.md)
 - [Numerical Optimization Curriculum](./numerical-optimization-curriculum.md) — L0+ 数值优化（QP / NMPC / TrajOpt 算法）
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [sources/courses/gatech_interactive_linear_algebra.md](../../sources/courses/gatech_interactive_linear_algebra.md)（2026-11-07 未能访问原文，通读：未完成）

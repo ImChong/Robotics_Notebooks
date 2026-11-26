@@ -100,6 +100,9 @@ sequenceDiagram
 - [SGLang｜大规模语言与多模态模型推理服务框架](./sglang.md)
 - [TensorRT-LLM｜NVIDIA 大模型推理运行时与 LLM API](./tensorrt-llm.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：了解运行时接口、资源与性能。
+- [AI 模型压缩与推理优化](../methods/ai-model-compression.md)：对照量化与质量验证。
+
 ## 参考来源
 
 - [既有 Physical AI 清单资源 #103](../../sources/repos/pai_awesome_resource_103_vllm.md) — 保留本仓此前收录的策展来源与原有 URL 身份。

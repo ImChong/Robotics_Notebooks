@@ -112,6 +112,9 @@ HumanLayer 的 [配套文章](../../sources/blogs/humanlayer-show-me-skill.md) �
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [humanlayer/skills 仓库源归档（本站）](../../sources/repos/humanlayer-skills.md)

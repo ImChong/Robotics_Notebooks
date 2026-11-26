@@ -100,6 +100,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：了解视觉特征及下游任务。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：对照视觉观测与机器人接口。
+
 ## 参考来源
 
 - [SpatialLM 源码归档](../../sources/repos/spatiallm.md)（<https://github.com/manycore-research/SpatialLM>）

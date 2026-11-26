@@ -81,6 +81,9 @@ flowchart LR
 - [世界-动作模型](../concepts/world-action-models.md)
 - [Video Prediction Policy 2（VPP2）](./video-prediction-policy-2.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [RoboRender 论文归档](../../sources/papers/roborender_arxiv_2610_09254.md)

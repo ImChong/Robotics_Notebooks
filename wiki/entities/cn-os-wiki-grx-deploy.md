@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解策略与执行接口。
+
 ## 源码运行时序图
 
 入口：`python developer_radian/demo_walk.py`（需先安装 PyPI 包 `fourier-grx`，且 4.0.0 及以上；4.0.0 以下用 `developer/demo_walk.py`）。本仓库只有示例脚本和策略权重，`fourier_grx` SDK 本体不在仓库内。

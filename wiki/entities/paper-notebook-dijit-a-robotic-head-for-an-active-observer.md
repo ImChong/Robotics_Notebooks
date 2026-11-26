@@ -185,6 +185,11 @@ sequenceDiagram
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 会聚深度算法：[Convergent Binocular Stereo（CBS）](./paper-convergent-binocular-stereo.md)，同实验室；DIJIT 提供 vergence/version/cyclotorsion 的硬件基础，CBS 提供会聚几何下的 metric 深度与 CBS-BM 基准。
 
+## 关联页面
+
+- [立体匹配](../methods/stereo-matching-foundation-models.md)：了解双目深度估计方法。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：对照视觉观测与机器人接口。
+
 ## 参考来源
 
 - [humanoid_pnb_dijit-a-robotic-head-for-an-active-observer.md](../../sources/papers/humanoid_pnb_dijit-a-robotic-head-for-an-active-observer.md)

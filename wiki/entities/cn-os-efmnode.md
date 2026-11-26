@@ -123,6 +123,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [EFMNode 源码归档](../../sources/repos/efmnode.md)（<https://github.com/OpenGalaxea/EFMNode>）

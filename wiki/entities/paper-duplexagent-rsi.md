@@ -125,6 +125,9 @@ DuplexAgent 主系统评测还报告语音知识、函数调用和交互时序�
 - [递归自改进](../concepts/recursive-self-improvement.md) — 区分持久改进、有限闭环与完整递归自我加速
 - [Harness²](./paper-harness2.md) — 面向通用 agent harness 的证据化递归修改
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [DuplexAgent-RSI 论文归档](../../sources/papers/duplexagent_rsi_arxiv_2610_11299.md)

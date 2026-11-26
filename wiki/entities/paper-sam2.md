@@ -182,6 +182,9 @@ sequenceDiagram
 - [OVO](./ovo-semantic-mapping.md) / [DualMap](./dualmap.md) / [OV-SAM3D](./ov-sam3d.md)
 - [SAM 3D Body](./sam-3d-body.md) — 相关 Meta 感知栈（3D 人体）
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [sam2_arxiv_2408_00714.md](../../sources/papers/sam2_arxiv_2408_00714.md) — 论文摘录与开源核查

@@ -92,6 +92,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [安全强化学习](../methods/safe-rl.md)：了解策略训练中的约束。
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：了解测试任务、协议与指标。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_resource_320_safe-control-gym.md`](../../sources/repos/pai_awesome_resource_320_safe-control-gym.md) — 本条目策展摘录

@@ -100,6 +100,9 @@ flowchart TD
 - [Archify](archify.md) — **可校验演示/审阅系统图**；本页是探索期查询图，不是对外沟通 HTML
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **人工 ingest** 规范（graphify 不替代）
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+
 ## 参考来源
 
 - [graphify 仓库源归档（本站）](../../sources/repos/graphify-labs_graphify.md)

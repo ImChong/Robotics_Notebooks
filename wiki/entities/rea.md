@@ -91,6 +91,9 @@ flowchart LR
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 代理与外部工具之间的调用协议
 - [Graphify](./graphify.md) — 从代码/资料建立知识图的工具；与 REA 的“追踪程序证据”侧重点不同
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [morluto/rea 仓库归档](../../sources/repos/morluto-rea.md)

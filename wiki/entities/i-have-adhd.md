@@ -84,6 +84,9 @@ flowchart TD
 - [Ponytail](ponytail.md) — 必要性阶梯减代码
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 全 SDLC 技能包对照
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [i-have-adhd 仓库归档](../../sources/repos/i-have-adhd.md)

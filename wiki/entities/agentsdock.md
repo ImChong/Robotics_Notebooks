@@ -146,6 +146,9 @@ sequenceDiagram
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 客户端 `/` 菜单可管理 MCP（以官方 features 为准）
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译范式；AgentsDock 编译的是 **代理会话与产物审阅体验**
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [官方 README 完整复核](../../sources/repos/agentsdock-readme-review.md)

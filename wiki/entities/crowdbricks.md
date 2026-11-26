@@ -98,6 +98,8 @@ sequenceDiagram
 - [motion-bricks.cpp](./motion-bricks-cpp.md) — 另一独立运行时，侧重 G1 与 CPU/Vulkan。
 - [MotionBricks 方法](../methods/motionbricks.md) — 上游方法背景。
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [CrowdBricks 原始资料归档](../../sources/repos/crowdbricks.md)

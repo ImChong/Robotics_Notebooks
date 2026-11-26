@@ -134,6 +134,9 @@ RAI 介绍的实机/平台案例包括 Roadrunner、Spot、UMV、Unitree G1 与 
 - [Sim2Real](../concepts/sim2real.md) — 迁移差距不止来自物理，也来自软件实现
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 人形 RL 策略从训练到部署的整体管线
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [RAI Institute 官方介绍文章](../../sources/blogs/introducing_exploy_rai_2026-10-07.md)

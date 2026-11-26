@@ -119,6 +119,9 @@ sequenceDiagram
 - [LingBot-Vision](./cn-os-lingbot-vision.md)
 - [LingBot-VLA](./lingbot-vla.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [LingBot-Depth 官方仓库核查](../../sources/repos/lingbot-depth.md)

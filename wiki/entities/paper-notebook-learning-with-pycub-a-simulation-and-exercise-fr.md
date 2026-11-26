@@ -112,6 +112,9 @@ pyCub 要：一个**纯 Python、免 YARP、带分级练习**的 iCub 教学仿�
 - [Robot in a crib（mobile paradigm 偶联学习）](./paper-robot-in-crib-sensorimotor-contingency.md) — 同 iCub 平台的早期认知/发展机器人实验。
 - [ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — iCub 系硬件演化对照。
 
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照模型、控制和仿真接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与模块接入。
+
 ## 参考来源
 
 - [humanoid_pnb_learning-with-pycub.md](../../sources/papers/humanoid_pnb_learning-with-pycub.md)

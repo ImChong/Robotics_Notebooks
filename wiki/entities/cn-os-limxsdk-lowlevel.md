@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解命令、状态与执行接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照 SDK、通信与驱动接入。
+
 ## 源码运行时序图
 
 入口：`python3 python3/examples/api/example_humanoid.py [robot_ip]`（先按 README 执行 `pip install python3/amd64/limxsdk-*.whl`；不传参数时连接 `127.0.0.1`，即本机仿真器）。开源仓库只含示例与预编译 SDK（`lib/`、`python3/*.whl`），SDK 源码不在仓库内，因此下图只画示例脚本与 SDK 公开接口之间的调用与数据流，SDK 内部的传输实现未画。

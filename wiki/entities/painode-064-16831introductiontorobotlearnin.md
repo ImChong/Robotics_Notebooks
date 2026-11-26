@@ -89,6 +89,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_course_064_16-831-introduction-to-robot-learnin.md`](../../sources/repos/pai_awesome_course_064_16-831-introduction-to-robot-learnin.md) — 本条目策展摘录

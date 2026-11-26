@@ -113,6 +113,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：对照相关方法与适用场景。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [xense-mcap-viewer 源码归档](../../sources/repos/xense-mcap-viewer.md)（<https://github.com/XenseRobotics-AI/xense-mcap-viewer>）

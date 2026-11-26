@@ -142,6 +142,11 @@ flowchart LR
 - 同组 VLM + RAG 阻抗检索：[paper-notebook-humanoidvlm-vision-language-guided-impedance-con](./paper-notebook-humanoidvlm-vision-language-guided-impedance-con.md)
 - LLM / VLM 与控制器的接口方式：[llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 
+## 关联页面
+
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：对照视觉观测与机器人接口。
+
 ## 参考来源
 
 - [humanoid_pnb_safehumanoid.md](../../sources/papers/humanoid_pnb_safehumanoid.md)

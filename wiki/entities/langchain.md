@@ -155,6 +155,9 @@ sequenceDiagram
 - [llm-wiki-karpathy](../concepts/llm-wiki-karpathy.md)
 - [awesome-physical-ai-aichr](../entities/awesome-physical-ai-aichr.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [`sources/sites/langchain-com-ecosystem.md`](../../sources/sites/langchain-com-ecosystem.md) — 产品页与生态入口

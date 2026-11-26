@@ -157,6 +157,9 @@ sequenceDiagram
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码 Agent Skills 对照
 - [Sim2Real](../concepts/sim2real.md) — CAD/URDF 与仿真/真机几何一致性
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 推荐继续阅读
 
 - [CAD Skills 文档](https://www.cadskills.xyz)

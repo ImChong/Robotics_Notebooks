@@ -145,6 +145,10 @@ sequenceDiagram
 - [Unitree G1](./unitree-g1.md) — 真机平台。
 - [AMP reward](../methods/amp-reward.md) — 对照运动先验在动态任务中的作用。
 
+## 关联页面
+
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [论文摘录与结果](../../sources/papers/reflex_visually_grounded_reactive_humanoid_control.md)

@@ -78,6 +78,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md)：了解抓取与物体操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械结构、末端与控制接口。
+
 ## 参考来源
 
 - [humanoid_pnb_ruka-rethinking-the-design-of-humanoid-hands-wit.md](../../sources/papers/humanoid_pnb_ruka-rethinking-the-design-of-humanoid-hands-wit.md)

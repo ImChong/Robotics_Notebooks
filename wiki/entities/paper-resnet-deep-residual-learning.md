@@ -112,6 +112,8 @@ flowchart LR
 - [目标检测（方法）](../methods/object-detection.md)
 - [YOLO v1（论文实体）](./paper-yolo-unified-realtime-detection.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)

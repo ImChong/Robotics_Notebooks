@@ -88,6 +88,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：对照视觉观测与机器人接口。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_book_031_robotics-vision-and-control.md`](../../sources/repos/pai_awesome_book_031_robotics-vision-and-control.md) — 本条目策展摘录

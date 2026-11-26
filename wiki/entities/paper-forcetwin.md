@@ -131,6 +131,8 @@ flowchart TB
 - [Contact-Guided Exploration](./paper-contact-guided-exploration-locomanipulation.md) — 同机构 loco-manip 探索线
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 交互式感知（探激辨识铰接物性）在感知栈选型中的位置
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [forcetwin_arxiv_2609_21751.md](../../sources/papers/forcetwin_arxiv_2609_21751.md)

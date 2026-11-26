@@ -130,6 +130,10 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [open-source-8-papers-technology-map](../overview/open-source-8-papers-technology-map.md)
 
+## 关联页面
+
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [ghosttac_arxiv_2608_20817](../../sources/papers/ghosttac_arxiv_2608_20817.md)

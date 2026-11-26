@@ -220,6 +220,8 @@ flowchart TD
 - [端到端自动驾驶技术地图](../overview/e2e-autonomous-driving-top10-algorithms.md) — 放回自动驾驶技术路线中理解。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — PlanContext 属于固定观测、切换意图的开环决策基准，选型时需与闭环仿真基准互补使用。
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+
 ## 参考来源
 
 - [arXiv v1 论文全文与附录精读归档](../../sources/papers/plancontext_arxiv_2611_03067.md)

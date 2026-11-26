@@ -139,6 +139,11 @@ sequenceDiagram
 - NVIDIA Technical Blog：[Add Runtime Controls to AI Agents with NVIDIA OpenShell](https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/)
 - 文档：[Quickstart](https://docs.nvidia.com/openshell/get-started/quickstart)、[First network policy 教程](https://docs.nvidia.com/openshell/dev/get-started/tutorials/first-network-policy)
 
+## 关联页面
+
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [NVIDIA Open Agent Safety Platform 博客](../../sources/blogs/nvidia_open_agent_safety_platform_2026-09-28.md)

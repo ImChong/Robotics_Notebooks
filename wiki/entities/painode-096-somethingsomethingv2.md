@@ -91,6 +91,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：了解视觉特征及下游任务。
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_dataset_096_something-something-v2.md`](../../sources/repos/pai_awesome_dataset_096_something-something-v2.md) — 本条目策展摘录

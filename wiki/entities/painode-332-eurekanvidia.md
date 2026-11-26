@@ -107,6 +107,9 @@ flowchart LR
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [Eureka 论文实体](./paper-eureka-llm-reward-design.md) — 本项目对应论文的逐节通读（进化式奖励搜索、29 个 IsaacGym 任务结果与局限）
 
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_paper_332_eureka-nvidia.md`](../../sources/repos/pai_awesome_paper_332_eureka-nvidia.md) — 本条目策展摘录

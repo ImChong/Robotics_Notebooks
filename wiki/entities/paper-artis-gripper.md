@@ -109,6 +109,8 @@ flowchart TB
 - [VTAP Gripper](./paper-vtap-gripper.md)
 - [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
 
+- [参数化 CAD 建模](../methods/parametric-cad-workflow.md)：了解几何参数、约束与可编辑模型。
+
 ## 参考来源
 
 - [artis_gripper_arxiv_2609_03362](../../sources/papers/artis_gripper_arxiv_2609_03362.md)

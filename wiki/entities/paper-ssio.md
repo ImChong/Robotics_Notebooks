@@ -82,6 +82,9 @@ SSIO 将无标注数据转化为惯性速度监督，降低新平台的数据标
 - [X-IONet](./paper-x-ionet-cross-platform-inertial-odometry.md)：使用专家网络和 EKF 的惯性里程计。
 - [状态估计](../concepts/state-estimation.md)：机器人状态估计总体框架。
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/ssio_arxiv_2610_25988.md)

@@ -106,6 +106,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+- [Locomotion](../tasks/locomotion.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [open-dog 源码归档](../../sources/repos/open-dog.md)（<https://github.com/dmBots/open-dog>）

@@ -169,6 +169,8 @@ sequenceDiagram
 - [Octo](./paper-octo.md) — 同期开源通用策略基线
 - [RT-2](./paper-rt-2.md) — 闭源大 VLA 对照
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [ecot_arxiv_2407_08693](../../sources/papers/ecot_arxiv_2407_08693.md)

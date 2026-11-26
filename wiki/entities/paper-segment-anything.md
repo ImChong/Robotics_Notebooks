@@ -190,6 +190,9 @@ sequenceDiagram
 - [LightSplat](./paper-lightsplat.md) — 离线 3DGS：SAM 掩码索引 + 簇级开放词汇语义
 - [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) — DETR+SAM 投影示例
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [LEGO 原文与边界复核](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)

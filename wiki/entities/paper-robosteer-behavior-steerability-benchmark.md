@@ -171,6 +171,8 @@ BG = `1000 × exp(−0.3 × FID − 1.6 × MM-Distance)`。FID 衡量生成/目�
 - [GMR 重定向](../methods/motion-retargeting-gmr.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属③层在行为基础模型上的展开：按条件/约束/组合三层测 BFM 可操控性，区分「被引导」与仅「生成合理动作」
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+
 ## 参考来源
 
 - [robosteer_arxiv_2610_10198.md](../../sources/papers/robosteer_arxiv_2610_10198.md) — 论文来源归档

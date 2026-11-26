@@ -161,6 +161,8 @@ flowchart TB
 - [四足机器人](./quadruped-robot.md)
 - [Locomotion 任务页](../tasks/locomotion.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 推荐继续阅读
 
 - [Science Robotics 论文页](https://doi.org/10.1126/scirobotics.abm6996)

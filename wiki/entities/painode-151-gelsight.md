@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解传感数据、时间和坐标接口。
+- [机器人操作](../tasks/manipulation.md)：了解抓取与物体操作任务。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_hardware_151_gelsight.md`](../../sources/repos/pai_awesome_hardware_151_gelsight.md) — 本条目策展摘录

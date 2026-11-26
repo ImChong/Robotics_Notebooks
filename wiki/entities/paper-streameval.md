@@ -121,6 +121,9 @@ StreamEval 面向生成式视频系统；它不能证明视频可供机器人策
 - [WorldScore](./paper-worldscore.md) — 多场景世界生成的视觉与可控性评测
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 基准测试的工程背景
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [StreamEval 论文来源](../../sources/papers/streameval_arxiv_2610_28402.md)

@@ -186,6 +186,9 @@ sequenceDiagram
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 工具协议层
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 软件 harness 编译的对照
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - 原文通读状态：已重新核对官方项目 README、技术 SOP（`cli-anything-plugin/HARNESS.md`）、命令规范与 CONTRIBUTING；具体范围见[仓库源归档](../../sources/repos/hkuds_cli_anything.md)。**技术报告 arXiv:2606.03854 未作为已全文通读原文登记**；其既有摘要只供定位，不声称验证实验结果。

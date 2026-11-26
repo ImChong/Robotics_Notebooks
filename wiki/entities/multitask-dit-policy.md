@@ -171,6 +171,9 @@ sequenceDiagram
 - [Flow Matching 具身策略](../concepts/flow-matching-embodied-policy.md)
 - [LeRobot](./lerobot.md)
 
+- [行为克隆](../methods/behavior-cloning.md)：了解示范监督训练。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [bryson_jones_multitask_dit_policy_2026-03-30](../../sources/blogs/bryson_jones_multitask_dit_policy_2026-03-30.md)

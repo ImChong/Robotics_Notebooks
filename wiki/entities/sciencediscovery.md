@@ -196,6 +196,9 @@ sequenceDiagram
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 物理实验环；本页不覆盖 reset/verify
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 可执行工作台
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [ScienceDiscovery 仓库归档](../../sources/repos/sciencediscovery.md)

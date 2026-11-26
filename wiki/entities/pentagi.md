@@ -84,6 +84,9 @@ PentAGI 并不负责机器人感知、运动规划或实时控制；它与机器
 - [Codex Security](./codex-security.md) — 面向源代码/AppSec 的相邻 agent 工具，目标面与 PentAGI 不同。
 - [OWASP MAS](./owasp-mas.md) — 机器人 companion app 的移动安全标准与指南。
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [PentAGI 官方仓库归档](../../sources/repos/pentagi.md)

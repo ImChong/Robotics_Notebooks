@@ -117,6 +117,9 @@ flowchart TD
 - [Data Flywheel](../concepts/data-flywheel.md) — 数据回流如何形成迭代闭环。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照阅读：LegoFlow 的 Evaluator 评测的是 coding agent 而非具身策略；其「可验证任务 + 评测反馈回流」思路可类比该链 ③ 策略任务成功率评测层，但指标不可互换。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [LegoFlow 官方博客（2026-09-18）](../../sources/blogs/legoflow_2026-09-18.md)

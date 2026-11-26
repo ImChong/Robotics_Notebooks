@@ -152,6 +152,9 @@ sequenceDiagram
 - [Software-in-the-Loop](../concepts/software-in-the-loop.md) / [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)
 - [NVIDIA Brev](./nvidia-brev.md) / [Isaac Launchable](./isaac-launchable.md) — 单次云环境 vs OSMO 多阶段 workflow
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [NVIDIA/OSMO 仓库归档](../../sources/repos/nvidia_osmo.md)

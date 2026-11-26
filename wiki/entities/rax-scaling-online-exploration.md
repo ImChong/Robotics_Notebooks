@@ -178,6 +178,9 @@ RAX、ASENA 与 EmbodiedEvo 都将经验保留在权重之外，但机器人接�
 - [EmbodiedEvo：coding agent 技能演进](./paper-embodied-evo-coding-agent.md)
 - [Harness VLA](./paper-harness-vla.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 推荐继续阅读
 
 - [RAX 官方项目页](https://robot-agent-exploration.com/)

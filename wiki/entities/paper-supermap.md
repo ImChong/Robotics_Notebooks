@@ -117,6 +117,8 @@ flowchart TD
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md)
 - [Functional-SLAM](./paper-functional-slam.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/supermap_arxiv_2608_22896.md)

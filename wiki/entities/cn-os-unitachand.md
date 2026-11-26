@@ -81,6 +81,9 @@ flowchart LR
 - 大规模 VLA 演进工作：[TTP：以人为中心的可迁移触觉预训练系统](cn-os-ttp.md)
 - 同公司灵巧抓握对比：[DemoGrasp：单演示通用灵巧抓取](cn-os-demograsp.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - 一手论文：`arXiv:2512.21233v3` 全文归档（[unitachand_arxiv_2512_21233.md](../../sources/papers/unitachand_arxiv_2512_21233.md)）

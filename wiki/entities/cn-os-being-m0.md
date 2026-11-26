@@ -65,6 +65,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：了解本体映射与可行性检查。
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体的运动映射。
+
 ## 参考来源
 
 - [Being-M0 源码归档](../../sources/repos/being-m0.md)（<https://github.com/BeingBeyond/Being-M0>）

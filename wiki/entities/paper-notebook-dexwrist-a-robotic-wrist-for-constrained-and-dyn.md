@@ -120,6 +120,11 @@ flowchart LR
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [Manipulation](../tasks/manipulation.md)：对照相关方法与适用场景。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [humanoid_pnb_dexwrist-a-robotic-wrist-for-constrained-and-dyn.md](../../sources/papers/humanoid_pnb_dexwrist-a-robotic-wrist-for-constrained-and-dyn.md)

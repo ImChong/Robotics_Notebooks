@@ -133,6 +133,8 @@ sequenceDiagram
 - [Qwen-Image-2.1](./qwen-image-2-1.md) — 同类开放图像生成模型
 - [生成式数据增强](../methods/generative-data-augmentation.md) — 合成视觉素材用于机器人数据的边界与实践
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [MOSS-Image 官方仓库归档](../../sources/repos/moss-image.md)

@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 在真实扫描场景上做具身问答，是该闭环第 ① 层「具身大脑/MLLM 认知评测」的代表性基准：只测理解不测执行
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_benchmark_019_openeqa.md`](../../sources/repos/pai_awesome_benchmark_019_openeqa.md) — 本条目策展摘录

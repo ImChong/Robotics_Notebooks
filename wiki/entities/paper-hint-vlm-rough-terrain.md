@@ -99,6 +99,8 @@ VLM 提供物体可移动性先验，交互数据训练 Gaussian Process 残差�
 - [navigation](../../roadmap/depth-navigation.md)
 - [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [arXiv v1 原文核对归档](../../sources/papers/hint-vlm-rough-terrain_arxiv_2611_11665.md)

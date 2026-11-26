@@ -157,6 +157,8 @@ $$
 - [生成式世界模型](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [Mundo 项目主页归档](../../sources/sites/mundo-world-model.md)

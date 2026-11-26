@@ -87,6 +87,9 @@ flowchart TD
 - [Cambrian-1 / CV-Bench](./paper-cambrian-1.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：具身场景空间关系 VQA，测的是认知代理而非策略成功率
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+
 ## 参考来源
 
 - [embspatial_bench_arxiv_2406_05756.md](../../sources/papers/embspatial_bench_arxiv_2406_05756.md)

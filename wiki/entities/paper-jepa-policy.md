@@ -165,6 +165,8 @@ sequenceDiagram
 - [VLM 与操作 11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md)
 - [Semigroup-JEPA](./paper-semigroup-jepa.md)
 
+- [动作分块](../methods/action-chunking.md)：了解动作序列预测与执行。
+
 ## 参考来源
 
 - [jepa-policy_arxiv_2609_09630.md](../../sources/papers/jepa-policy_arxiv_2609_09630.md)

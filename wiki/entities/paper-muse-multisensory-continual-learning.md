@@ -98,6 +98,8 @@ flowchart TD
 - [manipulation](../tasks/manipulation.md)
 - [REALab 14 篇技术地图](../overview/realab-14-papers-technology-map-2026.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [muse_arxiv_2606_30988.md](../../sources/papers/muse_arxiv_2606_30988.md)

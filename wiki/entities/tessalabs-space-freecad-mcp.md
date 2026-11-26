@@ -67,6 +67,9 @@ CAE 交接是可选能力且依赖外部软件；边界标签和缺陷简化需�
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [FreeCAD MCP（sandraschi）](./sandraschi-freecad-mcp.md)
 
+- [参数化 CAD 建模](../methods/parametric-cad-workflow.md)：了解几何参数、约束与可编辑模型。
+- [工程仿真建模与验证](../methods/engineering-simulation-workflow.md)：了解模型设置、求解与验证。
+
 ## 参考来源
 
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)

@@ -98,6 +98,8 @@ sequenceDiagram
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [embodied-station-2026-11-01-56-papers-technology-map](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [no_eyes_no_problem_arxiv_2610_23438.md](../../sources/papers/no_eyes_no_problem_arxiv_2610_23438.md)

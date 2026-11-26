@@ -123,6 +123,9 @@ sequenceDiagram
 - [Deep Agents](./deep-agents.md) — 开箱 agent harness，可对照其子代理、工具、技能和运行时组织方式。
 - [Anthropic frontend-design Skill](./anthropic-frontend-design-skill.md) — 同为 Anthropic 插件/skill 生态中的垂直工作流例子。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [Claude for Legal 官方仓库归档](../../sources/repos/anthropics-claude-for-legal.md)

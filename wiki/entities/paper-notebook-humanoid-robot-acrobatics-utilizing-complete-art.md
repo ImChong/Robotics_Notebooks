@@ -83,6 +83,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解人形行走任务。
+- [逆动力学控制](../methods/inverse-dynamics-control.md)：了解动力学与力矩计算。
+
 ## 参考来源
 
 - [humanoid_pnb_humanoid-robot-acrobatics-utilizing-complete-art.md](../../sources/papers/humanoid_pnb_humanoid-robot-acrobatics-utilizing-complete-art.md)

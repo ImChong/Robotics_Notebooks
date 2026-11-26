@@ -100,6 +100,9 @@ flowchart TD
 - [Paperclip](paperclip.md) — 多 Agent 工作编排（偏商业目标）
 - [Hyperframes](hyperframes.md) — 课程视频导出可对照
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [OpenMAIC 仓库归档](../../sources/repos/openmaic.md)

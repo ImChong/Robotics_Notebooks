@@ -81,6 +81,9 @@ Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直�
 - [frontend-design（Anthropic 官方 Skill）](./anthropic-frontend-design-skill.md) — 设计规约与视觉判断的补充工具。
 - [FreeCAD MCP](./freecad-mcp.md) — MCP 驱动专业桌面软件的机器人 CAD 对照案例。
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 流程总览
 
 此图依据官方 README、桌面指南及 Web 开发文档，分开描述 **本地桌面 Agent 工作流** 与 **Web 协作/自托管工作流**，不将二者混成同一必需环境。

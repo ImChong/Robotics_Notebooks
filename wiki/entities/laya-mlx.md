@@ -129,6 +129,8 @@ sequenceDiagram
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [laya-mlx.md](../../sources/repos/laya-mlx.md)

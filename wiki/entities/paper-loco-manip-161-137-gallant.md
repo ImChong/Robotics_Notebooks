@@ -87,6 +87,10 @@ flowchart LR
 - 分类 hub：[loco-manip-161-category-08-hardware-deployment.md](../overview/loco-manip-161-category-08-hardware-deployment.md)
 - 原始 source：[loco_manip_161_survey_137_gallant.md](../../sources/papers/loco_manip_161_survey_137_gallant.md)
 
+## 关联页面
+
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [loco_manip_161_survey_137_gallant.md](../../sources/papers/loco_manip_161_survey_137_gallant.md) — 161 篇策展摘录

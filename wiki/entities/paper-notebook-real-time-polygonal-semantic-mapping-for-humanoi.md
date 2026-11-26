@@ -83,6 +83,11 @@ flowchart TB
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - **勿与 GO2+SAM 流水线混同**：本页仍是「待深读」待读；若问题是 **GO2 运动点云质量 + SAM 2D→3D**，先读 [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。
 
+## 关联页面
+
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md)：了解复杂地形中的足式运动。
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解人形行走任务。
+
 ## 参考来源
 
 - [humanoid_pnb_real-time-polygonal-semantic-mapping-for-humanoi.md](../../sources/papers/humanoid_pnb_real-time-polygonal-semantic-mapping-for-humanoi.md)

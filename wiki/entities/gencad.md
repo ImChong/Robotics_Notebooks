@@ -119,6 +119,9 @@ sequenceDiagram
 - [URDF-Studio](./urdf-studio.md) — CAD/STEP 下游到机器人描述与仿真的常见衔接点。
 - [Sim2Real](../concepts/sim2real.md) — 若用生成 CAD 作仿真碰撞源，仍需 **网格简化与惯性校验**。
 
+- [参数化 CAD 建模](../methods/parametric-cad-workflow.md)：了解几何参数、约束与可编辑模型。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 推荐继续阅读
 
 - [GenCAD 项目页](https://gencad.github.io/)（交互 Demo）

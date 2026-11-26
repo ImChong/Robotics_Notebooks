@@ -204,6 +204,9 @@ GPD 会继承生成与尺度偏差；动态障碍、安全过渡及 fallback 依
 - [Fast-WAM](./paper-fast-wam.md)
 - [导航、SLAM 与自主系统栈](../overview/navigation-slam-autonomy-stack.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [Generative World Models](../methods/generative-world-models.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/diffwam_arxiv_2609_39763.md)

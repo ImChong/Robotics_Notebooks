@@ -145,6 +145,8 @@ flowchart TB
 - [NeuroGPR：脑启发多模态混合神经网络位置识别](./paper-neurogpr-brain-inspired-place-recognition.md)
 - [Locomotion 任务页](../tasks/locomotion.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [Science Robotics 论文页](https://doi.org/10.1126/scirobotics.abk2948)

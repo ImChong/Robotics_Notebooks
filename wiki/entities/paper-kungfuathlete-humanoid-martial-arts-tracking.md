@@ -138,6 +138,8 @@ sequenceDiagram
 - [Sim2Real](../concepts/sim2real.md) — 仿真训练与真机验证边界。
 - [PHUMA](./dataset-bfm-phuma.md) — 人形参考运动数据对照。
 
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+
 ## 参考来源
 
 - [新论文来源](../../sources/papers/kungfuathletebot_arxiv_2610_03388.md)

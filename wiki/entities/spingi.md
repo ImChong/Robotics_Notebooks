@@ -129,6 +129,9 @@ make demo-sim
 - [机器人安全状态机](../concepts/robot-safety-state-machine.md) — 软件运行时安全监控与硬件安全链的边界
 - [LeRobotDataset v3](../concepts/lerobot-dataset-v3.md) — 当前 episode 导出的目标数据格式
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照模型、控制和仿真接口。
+
 ## 参考来源
 
 - [Spingi GitHub 仓库归档](../../sources/repos/spingi.md)

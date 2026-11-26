@@ -94,6 +94,8 @@ flowchart TD
 - [generative-world-models](../methods/generative-world-models.md)
 - [cv-best-papers-2023-2026-technology-map](../overview/cv-best-papers-2023-2026-technology-map.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [generative_image_dynamics_arxiv_2309_07906.md](../../sources/papers/generative_image_dynamics_arxiv_2309_07906.md)

@@ -122,6 +122,9 @@ sequenceDiagram
 - [Isaac ROS Nvblox](./isaac-ros-nvblox.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [Isaac ROS Visual SLAM 文档](https://nvidia-isaac-ros.github.io/repositories/isaac_ros_visual_slam/index.html)

@@ -274,6 +274,8 @@ sequenceDiagram
 - [π0](./paper-pi0.md) — 论文在线 RL 实验的基础策略
 - [LeRobot](./lerobot.md) — 框架总览
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [robometer_arxiv_2603_02115.md](../../sources/papers/robometer_arxiv_2603_02115.md)

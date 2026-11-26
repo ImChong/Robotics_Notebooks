@@ -103,6 +103,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [fast-livo2-deep-robotics 源码归档](../../sources/repos/fast-livo2-deep-robotics.md)（<https://github.com/DeepRoboticsLab/fast-livo2-deep-robotics>）

@@ -70,6 +70,9 @@ map 的 agentplay/v1 schema 将会话拆为 session 元数据、总量统计、r
 - [Open Code Review](./open-code-review.md) — 过程回放与 diff 级审查互补，分别解释过程和检查变更。
 - [Agentic Design Patterns](./agentic-design-patterns.md) — coding agent 在通用 agent 系统设计中的位置。
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 源码运行时序图
 
 入口：`uvx agentplay@latest`（等价 `agentplay view`；`pyproject.toml` 的 `[project.scripts]` 指向 `agentplay.cli:main`，`python -m agentplay` 走 `__main__.py`）

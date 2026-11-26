@@ -201,6 +201,8 @@ Wan 在本库的定位是**上游视觉先验**，而非终端机器人世界模
 - [FixAnything](./paper-fixanything.md) — Wan2.1-I2V-14B LoRA 统一修复四类 3D 渲染伪影（ECCV 2026）
 - [ComfyUI](./comfyui.md) — 开源节点图推理宿主；官方与社区常把 Wan 模板接到此引擎
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [Wan 技术报告摘录](../../sources/papers/wan_video_arxiv_2503_20314.md)

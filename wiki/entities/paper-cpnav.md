@@ -166,6 +166,9 @@ flowchart TD
 - [Sim2Real](../concepts/sim2real.md)：本文硬件校准依赖仿真，对应可交换性假设。
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md)：物体目标导航的语义先验背景。
 
+- [视觉语言导航](../tasks/vision-language-navigation.md)：了解语言条件导航任务。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [sources/papers/cpnav_arxiv_2611_10366.md](../../sources/papers/cpnav_arxiv_2611_10366.md)

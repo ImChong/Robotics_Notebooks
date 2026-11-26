@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解模型、控制与仿真接口。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照仿真与软件模块的接口。
+
 ## 源码运行时序图
 
 入口：`roslaunch rl_sim gazebo_gr1t1.launch`（或 `gazebo_gr1t2.launch`；ROS Noetic + catkin，需 libtorch）

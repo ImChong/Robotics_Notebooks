@@ -72,6 +72,9 @@ stateDiagram-v2
 - [grill-me / grilling](mattpocock-grill-me-skill.md)
 - [HumanLayer Skills](humanlayer-skills.md)
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [triage SKILL.md](https://github.com/mattpocock/skills/tree/main/skills/engineering/triage)

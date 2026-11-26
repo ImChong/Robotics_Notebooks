@@ -185,6 +185,8 @@ flowchart TB
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 空间/行为问答对照
 - [人形训练数据管线](../queries/humanoid-training-data-pipeline.md) — 视频→SMPL 链路
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [MMHU 论文归档](../../sources/papers/mmhu_arxiv_2507_12463.md)

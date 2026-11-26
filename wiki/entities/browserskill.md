@@ -158,6 +158,11 @@ sequenceDiagram
 - [sandboxed-agents.md](https://github.com/Tencent/BrowserSkill/blob/main/docs/sandboxed-agents.md) — 沙箱环境 daemon 持久化
 - [DeepSeek Harness 插件 README](https://github.com/Tencent/BrowserSkill/tree/main/packages/dsh-plugin-browserskill)
 
+## 关联页面
+
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [BrowserSkill 仓库归档](../../sources/repos/browserskill.md)

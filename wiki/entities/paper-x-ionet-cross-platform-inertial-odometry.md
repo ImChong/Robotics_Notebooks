@@ -118,6 +118,10 @@ flowchart TB
 - [Locomotion（任务）](../tasks/locomotion.md) — 腿式运动产生 distinct 惯性签名
 - [FOCUS](./paper-focus-foot-observation-confidence.md) — 人形 FK+IMU 连续可靠度，不是单 IMU IO
 
+## 关联页面
+
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [x_ionet_arxiv_2511_08277.md](../../sources/papers/x_ionet_arxiv_2511_08277.md)

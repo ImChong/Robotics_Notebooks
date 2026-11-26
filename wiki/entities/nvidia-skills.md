@@ -69,6 +69,9 @@ flowchart TB
 - [Isaac Lab](./isaac-lab.md) — 机器人学习环境
 - [CAD Skills](./cad-skills.md) — 面向 CAD 的另一技能库
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 推荐继续阅读
 
 - [官方文档](https://docs.nvidia.com/skills)

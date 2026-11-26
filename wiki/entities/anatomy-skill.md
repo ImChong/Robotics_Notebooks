@@ -145,6 +145,9 @@ sequenceDiagram
 - [3D Gen Studio](./3dgenstudio.md) — 生成/编辑网格资产；Anatomy 的目标是解释图。
 - [CAD Operations Skill](./2836048681-cad-operations-skill.md) — 面向真实 CAD 操作与 DXF/PDF 文件的 Agent Skill。
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [Anatomy 官方仓库归档](../../sources/repos/anatomy.md)

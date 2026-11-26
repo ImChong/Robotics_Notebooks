@@ -81,6 +81,9 @@ flowchart TB
 - [扩散模型](../concepts/diffusion-model.md)
 - [Diffusion Transformer](../concepts/diffusion-transformer.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [文章归档](../../sources/blogs/visual_multimodal_generation_2026-10-29.md)

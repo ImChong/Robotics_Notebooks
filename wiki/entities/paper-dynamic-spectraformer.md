@@ -117,6 +117,8 @@ flowchart LR
 - [Autonomous Exploration](../tasks/autonomous-exploration.md)
 - [Hui360](./paper-hui360.md) — 另一视觉感知增强对照
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [Dynamic SpectraFormer 论文归档](../../sources/papers/dynamic_spectraformer_arxiv_2608_18662.md)

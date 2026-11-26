@@ -165,6 +165,8 @@ flowchart TB
 - [DexBench](./dexbench.md) — 同机构工业任务规格（OSC / Regime / T00–T17）；AHU 是硬件层
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — AHU 落在硬件层，DexBench 落在 ③ 层工业规格，不要和 VLA 仿真成功率榜混读
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)

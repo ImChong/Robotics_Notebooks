@@ -100,6 +100,9 @@ flowchart TB
 - [From Tokens to Thoughts](./paper-from-tokens-to-thoughts.md)
 - [VL-JEPA](./paper-vl-jepa.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+- [视觉表征学习](../methods/visual-representation-learning.md)：了解视觉特征及下游任务。
+
 ## 参考来源
 
 - [VideoDB 原文归档](../../sources/blogs/videodb_jepa_from_language_models_to_world_models_2026-07-07.md)

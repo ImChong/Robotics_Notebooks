@@ -163,6 +163,8 @@ flowchart LR
 - [运动重定向](../concepts/motion-retargeting.md)：另一条人到机器人迁移路线，HOC2R 输出的是接触点而非全身关节动作。
 - [Kinova Gen3](./kinova-gen3.md)、[Intel RealSense](./intel-realsense.md)：硬件页（论文用 Kinova 机械臂与 RealSense 相机，具体型号以论文为准）。
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：了解视觉特征及下游任务。
+
 ## 参考来源
 
 - 论文：<https://arxiv.org/abs/2611.08920>（PDF v1 全文，核对范围见归档）

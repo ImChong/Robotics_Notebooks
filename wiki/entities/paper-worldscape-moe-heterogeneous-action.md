@@ -152,6 +152,10 @@ flowchart TB
 - [GigaWorld-1 论文实体](./paper-gigaworld-1-policy-evaluation.md)
 - [WorldArena benchmark](https://arxiv.org/abs/2607.03964) — EWM 评测协议（见论文）
 
+## 关联页面
+
+- [视频生成与编辑流程](../methods/video-generation-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)

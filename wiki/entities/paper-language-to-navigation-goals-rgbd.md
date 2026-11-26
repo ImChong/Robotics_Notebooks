@@ -145,6 +145,10 @@ flowchart LR
 - [DA-Nav](./paper-da-nav.md) — 另一类语言→导航工程路线（城市户外 VLM）
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ③ 2D→3D 提升层：VLM bbox + 深度邻域最小值 + 针孔反投影 → ④ 下游消费：地图系目标直供 Nav2
 
+## 关联页面
+
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [language_to_navigation_goals_arxiv_2607_13624](../../sources/papers/language_to_navigation_goals_arxiv_2607_13624.md)

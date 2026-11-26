@@ -147,6 +147,9 @@ python scripts/pr-analyzer.py --diff-file changes.diff --stats
 - [HumanLayer Skills](humanlayer-skills.md) — 循环式代理维护
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 审查、质量与架构取舍
 
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解可复用任务指引和资源。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md)：了解测试、复核和证据。
+
 ## 参考来源
 
 - [上游仓库原文及源码核验](../../sources/repos/code-review-skill.md)

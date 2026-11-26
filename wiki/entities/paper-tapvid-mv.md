@@ -101,6 +101,8 @@ flowchart LR
 - [具身资源与可靠性 9 篇地图](../overview/embodied-resources-reliability-9-papers-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ② 预测保真度层的前置感知切面：多视角长时 3D 对应基准，30+ baseline 均未接近解决且瓶颈在几何恢复，双向回链
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [tapvid_mv_arxiv_2609_01899](../../sources/papers/tapvid_mv_arxiv_2609_01899.md)

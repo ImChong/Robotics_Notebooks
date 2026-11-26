@@ -68,6 +68,11 @@ PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 人形后训练对照：[GenTrack](./paper-gentrack.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略训练与优化。
+
 ## 参考来源
 
 - [humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md](../../sources/papers/humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md)

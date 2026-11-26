@@ -119,6 +119,8 @@ SurgAtt-1.16M（H100、10 epoch）：
 - [PGIF-MPPI](./paper-pgif-mppi.md) — 另一条「面向未来的安全/目标成本」
 - [SHRIMP](./paper-shrimp.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [SurgLAT 论文摘录](../../sources/papers/surglat_arxiv_2608_07876.md)

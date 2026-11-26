@@ -67,6 +67,8 @@ flowchart LR
 - [manipulation](../tasks/manipulation.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 推荐继续阅读
 
 - [roarm_m2 仓库](https://github.com/waveshareteam/roarm_m2)

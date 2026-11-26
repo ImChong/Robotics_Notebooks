@@ -177,6 +177,8 @@ sequenceDiagram
 - [Sim2Real](../concepts/sim2real.md) — 外观资产与动力学一致性提醒
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — sim-ready Real2Sim 场景生成对照
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+
 ## 参考来源
 
 - [image-blaster 仓库源归档（本站）](../../sources/repos/image-blaster.md)

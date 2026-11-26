@@ -120,6 +120,9 @@ Tokenizer 训练依赖原子动作文字描述；Scaling 分析每种设置一�
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
 - [跨本体迁移纵深路线](../../roadmap/depth-cross-embodiment.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [论文原文与核对归档](../../sources/papers/sala-arxiv-2611-17110.md)

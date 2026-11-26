@@ -82,6 +82,11 @@ summary: "本文提出一种编辑与重定向运动的新方法，专门针对�
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照跨本体动作映射。
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照一个跨本体映射方法。
+
 ## 参考来源
 
 - [humanoid_pnb_spatial-relationship-preserving-character-motion.md](../../sources/papers/humanoid_pnb_spatial-relationship-preserving-character-motion.md)

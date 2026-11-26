@@ -100,6 +100,10 @@ flowchart LR
 - [mimic-video](../methods/mimic-video.md)
 - [Ego 9 篇技术地图](../overview/ego-9-papers-technology-map.md)
 
+## 关联页面
+
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [tro_manip_survey_04_g3m.md](../../sources/papers/tro_manip_survey_04_g3m.md)

@@ -90,6 +90,9 @@ sequenceDiagram
 - [langchain ](./langchain.md) — 同领域的基础、工程或应用对照。
 - [agnes-harness ](./agnes-harness.md) — 同领域的基础、工程或应用对照。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [2026-11-13 官方入口原文与核对范围](../../sources/repos/deepagents-in-action-course-overview-read-20261113.md)

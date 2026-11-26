@@ -98,6 +98,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体抓取与操作任务。
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：了解机械臂、末端与控制接口。
+
 ## 参考来源
 
 - [Ti5HandROS1SDK 源码归档](../../sources/repos/ti5handros1sdk.md)（<https://github.com/ti5robot/Ti5HandROS1SDK>）

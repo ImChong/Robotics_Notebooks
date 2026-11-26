@@ -102,6 +102,8 @@ flowchart LR
 - [Helix 2.5](./helix-25.md)
 - [VLA](../methods/vla.md)
 
+- [机器人视觉感知](../methods/robot-visual-perception.md)：了解视觉观测与机器人接口。
+
 ## 参考来源
 
 - [Helix 官方技术说明全文核对](../../sources/papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md)

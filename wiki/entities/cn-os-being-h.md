@@ -164,6 +164,9 @@ sequenceDiagram
   - [Being-H0.7（潜空间世界-动作模型）](./paper-rcl-2605-00078-being-h0-7-a-latent-world-action-model-from-egoc.md)
 - 开源全景图谱：[国内具身智能开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)、[HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)、[Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [being-h.md](../../sources/repos/being-h.md)（`BeingBeyond/Being-H@27ec67b` 源码与家族论文核对归档）

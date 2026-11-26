@@ -106,6 +106,8 @@ flowchart TD
 - [physics-fidelity-sim2real-gap](../concepts/physics-fidelity-sim2real-gap.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [sdob_sampling_based_disturbance_observers_arxiv_2610_04896.md](../../sources/papers/sdob_sampling_based_disturbance_observers_arxiv_2610_04896.md)

@@ -255,6 +255,8 @@ sequenceDiagram
 - [Cosmos 3](./cosmos-3.md) — Cosmos3-Super 在同榜 Prompt I2V 族
 - [GigaWorld-1](./paper-gigaworld-1-policy-evaluation.md) — WM 作策略评估器，轴线不同
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [harnesseval_w_arxiv_2608_16859.md](../../sources/papers/harnesseval_w_arxiv_2608_16859.md)

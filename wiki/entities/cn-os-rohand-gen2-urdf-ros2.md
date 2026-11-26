@@ -95,6 +95,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：了解连杆、关节和模型资产。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 参考来源
 
 - [rohand_gen2_urdf_ros2 源码归档](../../sources/repos/rohand_gen2_urdf_ros2.md)（<https://github.com/oymotion/rohand_gen2_urdf_ros2>）

@@ -208,6 +208,8 @@ sequenceDiagram
 - [DimOS](./dimensionalos-dimos.md) — 评测运行时与 Go2/Habitat 导航栈
 - [SO-Arena](./paper-so-arena.md) — System One 能力谱系 C 与决策可靠性 R（S/N）基准，JevAny-27B 可靠性领先
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+
 ## 参考来源
 
 - [Introducing System One Models & Jev（官方博客）](../../sources/blogs/typesafe_ai_introducing_system_one_models_jev.md)

@@ -146,6 +146,8 @@ flowchart TB
 - [WM-LOCO](./paper-wm-loco.md) / [Safe-Stop](./paper-safe-stop-humanoid.md)
 - [三篇阅读坐标](../overview/g1-foothold-safe-stop-focus-technology-map.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [focus_foot_observation_confidence_arxiv_2609_02222](../../sources/papers/focus_foot_observation_confidence_arxiv_2609_02222.md)

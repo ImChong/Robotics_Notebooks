@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：了解视觉观测与机器人接口。
+
 ## 源码运行时序图
 
 入口：`ros2 launch orbbec_camera gemini2.launch.py`（机型对应的 launch 文件见 `orbbec_camera/launch/`）。launch 文件既可起独立 Node（可执行文件 `orbbec_camera_node`），也可起 `ComposableNodeContainer` 加载插件 `orbbec_camera::OBCameraNodeDriver`。

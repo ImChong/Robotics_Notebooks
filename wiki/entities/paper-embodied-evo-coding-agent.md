@@ -184,6 +184,9 @@ sequenceDiagram
 - [RAX](./rax-scaling-online-exploration.md) — 冻结 coding agent 经机器人 API 在线探索，再把成功经验编译成可复用的感知—规划—控制程序。
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 具身 agent 的任务分解与执行编排。
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+
 ## 原文通读与版本
 - **论文：** [arXiv HTML v2](https://arxiv.org/html/2610.18867v2)，2026-10-14；已核对 §1–6、附录 A–F、完整 Agent Trace（附录 F）。原文通读状态与范围记录在[论文来源归档](../../sources/papers/embodied_evo_arxiv_2610_18867.md)。
 - **源码：** 已阅读 CLI、orchestrator、Unix socket 客户端、持久会话与 RoboDojo adapter 关键路径；尚未在真实 RoboDojo/Isaac Sim 环境重放实验。

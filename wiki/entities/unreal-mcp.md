@@ -137,6 +137,9 @@ flowchart LR
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md) — 协议层对照概念
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [Unreal MCP in Unreal Editor（官方文档归档）](../../sources/sites/unreal-mcp-in-unreal-editor.md)

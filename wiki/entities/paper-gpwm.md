@@ -97,6 +97,8 @@ flowchart TD
 - [manipulation ](../tasks/manipulation.md)
 - [paper-vflash ](./paper-vflash.md)
 
+- [Generative World Models](../methods/generative-world-models.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [原始论文资料核验归档](../../sources/papers/gpwm_arxiv_2611_08338.md)

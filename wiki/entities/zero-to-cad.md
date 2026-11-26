@@ -100,6 +100,9 @@ Zero-to-CAD 的可复用价值在于把 CAD 构造历史作为合成与重建目
 - [GenCAD-3D](./gencad-3d.md) — 点云 / 网格到 CAD 程序的几何条件生成路线。
 - [CAD 1000 Hours](./cad-1000-hours-dataset.md) — 真实桌面 CAD 操作语料，与合成构造序列互补。
 
+- [参数化 CAD 建模](../methods/parametric-cad-workflow.md)：了解几何参数、约束与可编辑模型。
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [Zero-to-CAD 论文归档](../../sources/papers/zero_to_cad_arxiv_2604_24479.md)

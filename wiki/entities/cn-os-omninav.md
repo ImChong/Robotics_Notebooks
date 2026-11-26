@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [视觉–语言导航](../tasks/vision-language-navigation.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：`bash eval_ovon_slowfast.sh`（`infer_ovon_slowfast/`，内部 `python ./infer_ovon_slowfast/run_nav_ovon_omni.py --pattern --model_path --name --fast_type`；`fast_type` 取 `A-star` 或 `point-goal`）。README 另列 `infer_ovon/eval_ovon.sh`（`FLOW_MATCH=true/false`，纯视觉快系统）与 R2R/RxR 的 `infer_r2r_rxr/eval_*.sh`、训练 `train_code/`，本图只画慢快协同的 OVON 脚本；其余未读。

@@ -103,6 +103,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照策略输入、训练与评估。
+
 ## 参考来源
 
 - [magicbot-gen1_pi0_demo 源码归档](../../sources/repos/magicbot-gen1_pi0_demo.md)（<https://github.com/MagiclabRobotics/magicbot-gen1_pi0_demo>）

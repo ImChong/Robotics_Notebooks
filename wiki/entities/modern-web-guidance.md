@@ -134,6 +134,9 @@ npx modern-web-guidance@latest legacy-scan .
 - [Code Review Skill](code-review-skill.md) — PR 审查与风险分级；可在审前结合具体 Web 兼容性指南
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 人类对 Agent 编码的约束与验证职责
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [上游 README、SKILL、指南和 CLI 源码核对归档](../../sources/repos/googlechrome-modern-web-guidance.md)

@@ -155,6 +155,8 @@ flowchart LR
 - [ARMADA 增强现实机器人操作](./paper-notebook-armada-augmented-reality-for-robot-manipulation.md)：同属 AR / MR 与机器人交互的相邻工作。
 - [SysML v2 与 ROS 2 库](./paper-sysml-v2-ros-2-library.md)：另一篇 ROS 2 工具链类论文。
 
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与模块接入。
+
 ## 参考来源
 
 - [sources/papers/ros2mr_arxiv_2611_11830.md](../../sources/papers/ros2mr_arxiv_2611_11830.md)

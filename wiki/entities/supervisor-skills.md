@@ -83,6 +83,9 @@ Skill 文件不是可证明有效的导师替代品；独立可复现实验与�
 - [ARIS](aris-auto-research-in-sleep.md)：侧重真实实验运行与独立审稿循环。
 - [AI Auto-Research](../concepts/ai-auto-research.md)：研究自动化全生命周期背景。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [官方源码归档](../../sources/repos/supervisor-skills.md)

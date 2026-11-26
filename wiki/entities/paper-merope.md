@@ -172,6 +172,10 @@ attention 得分含 **未归一化** 项 $h_k(\mathbf{u}^q)^\top\Delta\mathbf{o}
 - [UCPE 对照工作（项目页检索 Unified Camera Positional Encoding）](https://arxiv.org/search/?query=Unified+Camera+Positional+Encoding&searchtype=all)
 - [nuScenes 多模态驾驶数据集](https://www.nuscenes.org/)
 
+## 关联页面
+
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [MeRoPE 论文归档（arXiv:2609.01252）](../../sources/papers/merope_arxiv_2609_01252.md)

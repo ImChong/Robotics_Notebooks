@@ -70,6 +70,9 @@ flowchart LR
 - [ORB-SLAM3](../entities/orb-slam3.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：Kimera](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping/Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping.html)

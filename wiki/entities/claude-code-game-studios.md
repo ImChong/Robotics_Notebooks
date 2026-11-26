@@ -181,6 +181,9 @@ sequenceDiagram
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 本库 **知识 wiki** 维护范式；与 CCGS **交付模板** 目标不同
 - [开源赛车 / 漂移 RL 景观](../overview/racing-drift-rl-open-source-landscape.md) — 游戏栈横向索引；CCGS 不属 RL 训练后端
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [Claude Code Game Studios 仓库源归档（本站）](../../sources/repos/claude_code_game_studios.md)

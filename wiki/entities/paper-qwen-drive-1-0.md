@@ -150,6 +150,8 @@ scripts/demo.py 依次运行 VQA、直接规划、带理由规划；scripts/run_
 - [BIRDriver](./paper-birdriver.md) — BEV 输入与高层规划接口对照
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — Qwen-Drive 的 BEV 感知头对应 ③ 2D→3D 提升层，其输出再由规划专家在 ④ 层消费
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [Qwen-Drive-1.0 arXiv 论文摘录](../../sources/papers/qwen_drive_1_0_arxiv_2609_00111.md)

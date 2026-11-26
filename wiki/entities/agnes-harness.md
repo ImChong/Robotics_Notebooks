@@ -163,6 +163,9 @@ sequenceDiagram
 - [Muse Gadgets](./muse-gadgets.md) — 语言助手经边缘 SDK 访问设备的开源案例
 - [Agent Lightning](./agent-lightning.md) — 真实 agent harness 的轨迹采集与 RL 训练设施
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [AGH 技术报告摘要来源](../../sources/papers/agnes_harness_technical_report_nov_2026.md)

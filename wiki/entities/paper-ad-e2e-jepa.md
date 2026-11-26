@@ -171,6 +171,9 @@ sequenceDiagram
 - [DINO-WM](./paper-sa-2411-04983-dino-wm-world-models-on-pre-trained-visual-featu.md) — 冻结视觉特征的零样本规划基线
 - [世界模型功能分类（Renderer / Simulator / Planner）](../concepts/functional-taxonomy-world-models.md) — 从系统功能定位本文的潜在规划器
 
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+- [生成式世界模型](../methods/generative-world-models.md)：了解世界预测与动作生成。
+
 ## 参考来源
 
 - [AD-E2E-JEPA 论文归档](../../sources/papers/ad_e2e_jepa_arxiv_2609_34085.md)

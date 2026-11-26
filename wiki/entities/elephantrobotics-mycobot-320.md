@@ -98,6 +98,8 @@ sequenceDiagram
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)
 
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照通信、驱动与运行接口。
+
 ## 推荐继续阅读
 
 - myCobot320-docs 仓库内 **API / ROS** 章节（版本以默认分支为准）

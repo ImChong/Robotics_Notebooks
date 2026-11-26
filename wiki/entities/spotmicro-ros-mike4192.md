@@ -118,6 +118,8 @@ sequenceDiagram
 - [spotmicro](../entities/spotmicro.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行器接口。
+
 ## 参考来源
 
 - [spotmicro_ros_mike4192.md](../../sources/repos/spotmicro_ros_mike4192.md)

@@ -132,6 +132,8 @@ sequenceDiagram
 - [Manipulation](../tasks/manipulation.md)
 - [VLA·预测·抓取 9 篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md)
 
+- [目标检测](../methods/object-detection.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [4dof_pen_sorting_arxiv_2608_15968](../../sources/papers/4dof_pen_sorting_arxiv_2608_15968.md)

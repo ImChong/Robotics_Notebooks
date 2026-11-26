@@ -91,6 +91,10 @@ flowchart LR
 - 分类 hub：[loco-manip-161-category-03-visuomotor.md](../overview/loco-manip-161-category-03-visuomotor.md)
 - 原始 source：[loco_manip_161_survey_092_n092.md](../../sources/papers/loco_manip_161_survey_092_n092.md)
 
+## 关联页面
+
+- [行为克隆](../methods/behavior-cloning.md)：了解示范监督训练。
+
 ## 参考来源
 
 - [loco_manip_161_survey_092_n092.md](../../sources/papers/loco_manip_161_survey_092_n092.md) — 161 篇策展摘录

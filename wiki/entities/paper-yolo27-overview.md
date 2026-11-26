@@ -109,6 +109,8 @@ flowchart TB
 - [目标检测](../methods/object-detection.md)
 - [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+
 ## 参考来源
 
 - [论文来源归档](../../sources/papers/yolo27-alphaxiv-overview.md)

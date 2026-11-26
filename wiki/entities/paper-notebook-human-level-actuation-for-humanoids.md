@@ -144,6 +144,9 @@ flowchart LR
 - 驱动链：[执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 用实测曲线验收策略输出侧
 - 评测方法：[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — HLAS 是硬件能力评测分支
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：了解指令、状态与执行接口。
+- [工程仿真建模与验证](../methods/engineering-simulation-workflow.md)：对照模型设置、求解与验证。
+
 ## 参考来源
 
 - [论文与深读笔记归档](../../sources/papers/humanoid_pnb_human-level-actuation-for-humanoids.md)

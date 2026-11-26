@@ -171,6 +171,9 @@ flowchart LR
 - [具身评测选型 hub](../overview/hub-embodied-eval-benchmark.md)
 - [Sim vs Real 评测 gap](../concepts/sim-vs-real-eval-gap.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照数据、评测协议与指标。
+
 ## 参考来源
 
 - [`mandarobotics_state_of_robot_policies_2026-09-17.md`](../../sources/blogs/mandarobotics_state_of_robot_policies_2026-09-17.md)

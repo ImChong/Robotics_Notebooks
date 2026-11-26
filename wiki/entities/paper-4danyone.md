@@ -174,6 +174,8 @@ Table 3 消融（生成一致性）：去掉 RCP+TCR **21.09**；只去其一约
 - [OpenCap Monocular](./paper-opencap-monocular.md)
 - [LUNA](./paper-luna-universal-3d-human-animation.md) — LBS-free 前馈动画；与「生成阵列再抬 4DGS」对照
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：对照生成条件与时间一致性。
+
 ## 参考来源
 
 - [4danyone_arxiv_2608_20335](../../sources/papers/4danyone_arxiv_2608_20335.md)

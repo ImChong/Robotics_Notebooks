@@ -92,6 +92,9 @@ flowchart TD
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 对照附录中的 coding agent 内容，理解工具之外仍需保留的架构、安全与运维判断。
 - [多模态基础](../concepts/multimodality-basics.md) — 阅读书中 GUI 与现实环境 agent 示例的输入模态背景。
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、行动与反馈。
+
 ## 参考来源
 
 - [Springer 图书页与版权信息](../../sources/sites/agentic-design-patterns.md)

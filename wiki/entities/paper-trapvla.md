@@ -112,6 +112,8 @@ flowchart LR
 - [π0.5](./paper-pi05-open-world-vla.md)
 - [CLAP / 跨本体 9 篇技术地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [trapvla_arxiv_2608_26578](../../sources/papers/trapvla_arxiv_2608_26578.md)

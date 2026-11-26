@@ -92,6 +92,8 @@ flowchart TB
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 
+- [触觉阻抗控制](../methods/tactile-impedance-control.md)：对照接触反馈与柔顺控制。
+
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/1907.07500.pdf)

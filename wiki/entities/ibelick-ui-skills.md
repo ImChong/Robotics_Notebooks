@@ -160,6 +160,9 @@ UI Skills 的价值在于把分散的设计工程技能整理成带主题、slug
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 编码工程工作流技能库
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 全生命周期工程技能集合
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解技能被调用时的任务流程与反馈。
+- [智能体技能封装](../methods/agent-skill-packaging.md)：了解任务指引、可复用资源与边界。
+
 ## 参考来源
 
 - [ibelick/ui-skills 仓库归档](../../sources/repos/ibelick-ui-skills.md)

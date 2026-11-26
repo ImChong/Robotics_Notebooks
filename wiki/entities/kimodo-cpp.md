@@ -130,6 +130,8 @@ sequenceDiagram
 - [ProtoMotions](./protomotions.md) / [Unitree G1](./unitree-g1.md) — 生成轨迹下游
 - [ARDY](./ardy.md) — 同生态交互实时档；本页是离线扩散的本地化，不是流式编辑
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照运行时接口、延迟与资源。
+
 ## 参考来源
 
 - [kimodo.cpp 仓库归档](../../sources/repos/kimodo-cpp.md)

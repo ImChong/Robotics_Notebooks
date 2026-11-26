@@ -106,6 +106,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照图像特征与下游视觉任务。
+- [机器人视觉感知](../methods/robot-visual-perception.md)：了解视觉观测与机器人接口。
+
 ## 参考来源
 
 - [humanoid_pnb_intention.md](../../sources/papers/humanoid_pnb_intention.md)

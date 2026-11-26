@@ -84,6 +84,8 @@ flowchart LR
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 行为基础模型对可索引语义运动库的依赖
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) — BFM 数据层全景对比
 
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [bfm_awesome_dataset_babel_cvpr_2021.md](../../sources/papers/bfm_awesome_dataset_babel_cvpr_2021.md)

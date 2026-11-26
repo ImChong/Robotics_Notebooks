@@ -114,6 +114,11 @@ Headless MCP 方式为 `cadcraft-cli mcp`；连接 GUI 的方式是以 `--contro
 - [文字生成 CAD](../concepts/text-to-cad.md) — CAD 与生成式模型 / 代理脚本的概念谱系。
 - [人形整机机械布局设计](../concepts/humanoid-mechanical-layout-design.md) — 机器人结构设计、CAD 模型与惯量 / 公差验证的工程上下游。
 
+## 关联页面
+
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照工具契约、执行与反馈。
+- [参数化 CAD 建模](../methods/parametric-cad-workflow.md)：了解几何参数、约束与可编辑模型。
+
 ## 参考来源
 
 - [CADCraft 官方项目页](../../sources/sites/cadcraft-artcraft.md)
