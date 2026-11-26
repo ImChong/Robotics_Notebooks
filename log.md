@@ -527,6 +527,14 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | SuperGPC：单卡训练 G1 自回归运动先验与适配器
+
+- 核对 Dollhouse 原文、官方训练源码和模型卡，拆分约 30 小时的阶段耗时与真机 CoLA 切换证据。
+
+## [2026-11-26] ingest | lidar_slam：收录 Autoware 地图制作与跨会话地图更新
+
+- 核对一手源码与 NCLT 逐次日志，将首图种子、18 个成功复访与额外导出失败分开。
+
 ## [2026-11-26] ingest | MemT-1.0：同步技术报告 v5 与原生记忆评测
 
 - 复用既有 MemT-1.0 节点，核对 Nano 消融、查询 TTFT 与端到端口径、Pro 权重卡和官方推理入口。
