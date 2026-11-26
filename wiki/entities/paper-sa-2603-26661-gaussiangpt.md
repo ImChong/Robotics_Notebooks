@@ -155,6 +155,8 @@ sequenceDiagram
 - [GaussianDream](../entities/paper-sa-2605-20752-gaussiandream-a-feed-forward-3d-gaussian-world-m.md)
 - [VGGT-World](../entities/paper-sa-2603-12655-vggt-world-transforming-vggt-into-an-autoregress.md)
 
+- [视觉三维重建](../methods/visual-3d-reconstruction.md)：了解观测、几何表示与验证。
+
 ## 参考来源
 
 - [`gaussiangpt_arxiv_2603_26661.md`](../../sources/papers/gaussiangpt_arxiv_2603_26661.md)

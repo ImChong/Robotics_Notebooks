@@ -189,6 +189,9 @@ sequenceDiagram
 - [TAF-VLA：视觉-语言-动作中的触觉力对齐](./paper-sa-2601-20321-taf-vla-tactile-force-alignment-in-vision-langua.md)
 - [触觉智能九篇代表作地图](../overview/tactile-intelligence-nine-papers-map.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解触觉数据采集与接口。
+- [机器人操作](../tasks/manipulation.md)：了解抓取与物体操作任务。
+
 ## 参考来源
 
 - [Sparsh 原文笔记（早期条目归档）](../../sources/papers/sparsh_arxiv_2410_24090.md)

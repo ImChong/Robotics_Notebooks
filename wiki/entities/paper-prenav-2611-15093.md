@@ -97,6 +97,9 @@ flowchart LR
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人自主探索](../tasks/autonomous-exploration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文原文归档](../../sources/papers/prenav-2611-15093.md)

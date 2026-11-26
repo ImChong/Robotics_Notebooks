@@ -78,6 +78,8 @@ flowchart LR
 - [vla](../methods/vla.md)
 - [embodied-scaling-laws](../concepts/embodied-scaling-laws.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [2026-10-19 公众号综述：全球 85 个具身智能数据集全景](../../sources/datasets/wechat-embodied-dataset-panorama-2026-10-19.md)

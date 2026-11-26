@@ -185,6 +185,8 @@ sequenceDiagram
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md) — 硬件选型对照。
 - [WBC vs RL](../comparisons/wbc-vs-rl.md) — 模型控制 vs 学习策略选型。
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照状态、命令与执行接口。
+
 ## 推荐继续阅读
 
 - 论文：[*Nat Mach Intell* 正文](https://www.nature.com/articles/s42256-026-01272-2)（[DOI](https://doi.org/10.1038/s42256-026-01272-2)）

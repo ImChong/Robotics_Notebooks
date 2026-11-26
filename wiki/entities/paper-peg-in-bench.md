@@ -112,6 +112,8 @@ flowchart TB
 - [Query：具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 物理插入台架落在「真机、任务级泛化」一格，与仿真 VLA 榜单分开读
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [arXiv:2609.00906](https://arxiv.org/abs/2609.00906)

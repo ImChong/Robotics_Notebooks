@@ -71,6 +71,8 @@ flowchart TB
 - [视觉语言动作模型](../methods/vla.md)
 - [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文归档及 v1 原文](../../sources/papers/vlalagbench_arxiv_2611_03103.md)

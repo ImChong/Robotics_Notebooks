@@ -112,6 +112,9 @@ flowchart TB
 - [State estimation](../concepts/state-estimation.md)
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/robust_autonomous_navigation_mini_cheetah_vision_iros_2020.md)

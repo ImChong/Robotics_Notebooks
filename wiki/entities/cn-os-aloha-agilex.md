@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [Loco-Manipulation](../tasks/loco-manipulation.md)：对照相关方法与适用场景。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口（训练）：`cd act && python aloha_train.py --dataset_dir <hdf5 数据目录> --ckpt_dir <检查点目录>`；入口（推理，需先启动 piper 机械臂 ROS 节点）：`python aloha_inference-ros2.py --ckpt_dir <检查点目录>`（均出自仓库根 `readme.md`）

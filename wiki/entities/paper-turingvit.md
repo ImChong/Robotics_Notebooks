@@ -131,6 +131,8 @@ flowchart LR
 - [X-World](./paper-x-world.md) — 同机构多摄世界模型底座
 - [X-Foresight](./paper-x-foresight.md) — 同机构驾驶 VLA + 预测式世界建模
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [TuringViT 论文摘录（arXiv:2606.24253）](../../sources/papers/turingvit_arxiv_2606_24253.md)

@@ -41,6 +41,8 @@ summary: Controlling Collectives of AI Agents in Reasoning Space with Spatial Tr
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

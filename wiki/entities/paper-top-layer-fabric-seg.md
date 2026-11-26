@@ -107,6 +107,8 @@ flowchart LR
 - [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 - [真机双臂灵巧抓取](./paper-real-bi-dex-grasp.md)
 
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文摘录](../../sources/papers/top_layer_fabric_seg_arxiv_2608_10648.md)

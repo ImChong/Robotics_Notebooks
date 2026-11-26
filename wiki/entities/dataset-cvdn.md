@@ -78,6 +78,8 @@ flowchart LR
 - [habitat-sim](../entities/habitat-sim.md)
 - [matterport3d-simulator](../entities/matterport3d-simulator.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [2026-10-19 公众号综述：全球 85 个具身智能数据集全景](../../sources/datasets/wechat-embodied-dataset-panorama-2026-10-19.md)

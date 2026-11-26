@@ -97,6 +97,8 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-31-50-papers-technology-map](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [tactile_in_context_learning_agents_arxiv_2610_27613.md](../../sources/papers/tactile_in_context_learning_agents_arxiv_2610_27613.md)

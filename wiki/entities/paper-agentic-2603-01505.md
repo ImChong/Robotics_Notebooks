@@ -41,6 +41,8 @@ summary: 'FATE: Closed-Loop Feasibility-Aware Task Generation with Active Repair
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

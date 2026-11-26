@@ -137,6 +137,8 @@ sequenceDiagram
 - [LIBERO 基准](./libero-benchmark.md)
 - [LeRobot](./lerobot.md)
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [GitHub: smolvla-libero-onnx](https://github.com/rafiqul713/smolvla-libero-onnx)

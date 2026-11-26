@@ -108,6 +108,8 @@ flowchart TD
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [verifine_scaling_verification_self_improvement_arxiv_2610_08761.md](../../sources/papers/verifine_scaling_verification_self_improvement_arxiv_2610_08761.md)

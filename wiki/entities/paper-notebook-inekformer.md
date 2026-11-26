@@ -83,6 +83,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [humanoid_pnb_inekformer.md](../../sources/papers/humanoid_pnb_inekformer.md)

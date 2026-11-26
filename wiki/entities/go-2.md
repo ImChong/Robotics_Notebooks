@@ -126,6 +126,8 @@ sequenceDiagram
 - [Genie Sim 3.0](./genie-sim-3.md)
 - [agibot-go-3-preview](agibot-go-3-preview.md) — AGIBOT GO-3 Preview（新闻稿：WRAM + Genie Evolver / Master；三榜第一的核对结果与开放状态）
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照评测任务、协议与指标。
+
 ## 参考来源
 
 - [ACoT-VLA 论文与官方代码归档（arXiv:2601.11404）](../../sources/papers/acot_vla_arxiv_2601_11404.md)

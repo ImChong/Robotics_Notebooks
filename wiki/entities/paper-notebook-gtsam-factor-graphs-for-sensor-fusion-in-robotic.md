@@ -59,6 +59,11 @@ GTSAM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 - 分类页：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [humanoid_pnb_gtsam-factor-graphs-for-sensor-fusion-in-robotic.md](../../sources/papers/humanoid_pnb_gtsam-factor-graphs-for-sensor-fusion-in-robotic.md)

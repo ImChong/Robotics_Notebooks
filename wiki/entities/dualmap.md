@@ -121,6 +121,9 @@ sequenceDiagram
 - [导航·SLAM 栈](../overview/navigation-slam-autonomy-stack.md)
 - [ORB-SLAM3](./orb-slam3.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [sources/repos/dualmap.md](../../sources/repos/dualmap.md)

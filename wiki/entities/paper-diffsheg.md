@@ -208,6 +208,8 @@ sequenceDiagram
 - [Human Motion 分类索引](../overview/paper-notebook-category-14-human-motion.md) — 人体运动笔记入口
 - [WBT 枢纽](../overview/hub-wbt.md) — 参考运动如何进入物理跟踪
 
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [DiffSHEG 论文摘录](../../sources/papers/diffsheg_arxiv_2401_04747.md)

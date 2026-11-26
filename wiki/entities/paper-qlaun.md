@@ -107,6 +107,8 @@ QLAUN 定位 **科研向低价力矩四足**；开源承诺待落地后更新本
 - [ODRI SOLO/Bolt](./odri-solo-and-bolt.md)
 - [开源 QDD 执行器项目](../comparisons/open-source-qdd-actuator-projects.md) — 已兑现开源的同类对照
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [qlaun_arxiv_2609_03623.md](../../sources/papers/qlaun_arxiv_2609_03623.md)

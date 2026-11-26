@@ -145,6 +145,10 @@ flowchart LR
 - 映射基础：[Motion Retargeting](../concepts/motion-retargeting.md)
 - 路线位置：[遥操作纵深 Stage 1](../../roadmap/depth-teleoperation.md)
 
+## 关联页面
+
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [humanoid_pnb_nuexo.md](../../sources/papers/humanoid_pnb_nuexo.md)

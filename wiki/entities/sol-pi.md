@@ -203,6 +203,8 @@ sequenceDiagram
 - [递归自改进](../concepts/recursive-self-improvement.md)
 - [DeepSeek Harness](./deepseek-harness.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：了解工具契约、执行与反馈。
+
 ## 推荐继续阅读
 
 - [SoL-Pi 项目页](https://nvlabs.github.io/SoL-Pi/) — 方法、四机制动画与 EdgeBench 曲线

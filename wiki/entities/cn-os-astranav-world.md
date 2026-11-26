@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [Generative World Models](../methods/generative-world-models.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：`cd infer_ovon && bash eval_ovon.sh`（内部 `python -u run_infer_ovon.py --exp-config ovon/configs/ovon_pano.yaml --model-path ... --result-path ...`；R2R/RxR 为 `infer_r2r_rxr/` 下的 `eval_r2r.sh`、`eval_rxr.sh`，本图只画 OVON；未读 R2R/RxR 代码）。`PREDICT_FUTURE_FRAMES=true` 时才启用 Wan 未来帧分支，默认关闭。

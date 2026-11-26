@@ -160,6 +160,8 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 生成资产进入仿真/真机数据管线的总语境
 - [Manipulation](../tasks/manipulation.md) — 操作仿真对 **可编辑部件资产** 的需求背景
 
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [SCULPT 论文摘录](../../sources/papers/sculpt_arxiv_2608_13541.md)

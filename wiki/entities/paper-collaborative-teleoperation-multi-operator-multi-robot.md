@@ -97,6 +97,8 @@ sequenceDiagram
 - [humanoid-multi-robot-coordination](../concepts/humanoid-multi-robot-coordination.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [collaborative_teleoperation_multi_operator_multi_robot_arxiv_2610_15001.md](../../sources/papers/collaborative_teleoperation_multi_operator_multi_robot_arxiv_2610_15001.md)

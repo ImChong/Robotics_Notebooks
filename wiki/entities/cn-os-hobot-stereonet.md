@@ -99,6 +99,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md)：对照相关方法与适用场景。
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [hobot_stereonet 源码归档](../../sources/repos/hobot_stereonet.md)（<https://github.com/D-Robotics/hobot_stereonet>）

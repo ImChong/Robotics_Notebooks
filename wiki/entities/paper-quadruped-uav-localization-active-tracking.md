@@ -120,6 +120,8 @@ flowchart LR
 - [Crazyflie Firmware](./crazyflie-firmware.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页对应其 ① 标定与 ④ 消费层：臂端相机检测 AprilTag 得外部位姿喂给只带 IMU 的无人机，静止对齐与主动跟踪决定定位误差
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/quadruped_uav_localization_arxiv_2610_06215.md)

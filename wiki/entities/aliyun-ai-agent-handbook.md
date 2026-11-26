@@ -126,6 +126,9 @@ flowchart TB
 - [Agnes Harness](agnes-harness.md)：可执行 Agent runtime 项目；与本书的文档定位不同。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：把本书的 Agent 评估闭环（golden dataset、回归、Badcase）对接到具身侧基准的选型与结果解读。
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：了解工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [阿里云上游仓库资料归档](../../sources/repos/aliyun-ai-agent-handbook.md)

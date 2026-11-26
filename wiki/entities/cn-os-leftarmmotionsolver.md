@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+- [Manipulation](../tasks/manipulation.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：`sudo ./move_sov`（由 `src/gcc.sh` 编译：`g++ main.cpp -L./include -lmylibti5 -L./include/can -lmylibscan -lcontrolcan -lfmt -ludev -o move_sov`；README 另给出 2004 版 `libmylibti5_2004` 的编译命令）。开源部分只有 `src/main.cpp` 这一示例程序；其调用的 SDK 函数（`pos_to_move`、`joint_to_move`、`Start`、`Exit` 等）仅有头文件声明，实现在 `usrlib/` 与 `include/can/` 下的闭源 `.so` 中，因此下图只画到 SDK 接口边界，库内部的 IK、运动规划与 CAN 通信未画。

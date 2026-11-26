@@ -128,6 +128,8 @@ flowchart LR
 - [VT-WM：视触觉世界模型](./paper-sa-2602-06001-visuo-tactile-world-models-vt-wm.md)
 - [Manipulation](../tasks/manipulation.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解触觉数据采集与接口。
+
 ## 参考来源
 
 - [Rhoda AI 触觉传感器与多模态 DVA 官方原文核对（2026-11-21）](../../sources/sites/rhoda-dva-tactile-sensing-2026.md)

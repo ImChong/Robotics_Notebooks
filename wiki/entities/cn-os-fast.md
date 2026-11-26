@@ -81,6 +81,9 @@ flowchart TD
 - 前代全身控制基线：[BumbleBee：从专家到通才人形控制](paper-notebook-from-experts-to-a-generalist.md)
 - 上游运动大模型结合：[RLPF](paper-notebook-rl-from-physical-feedback-aligning-large-motion.md) 与 [DemoHLM](paper-loco-manip-161-136-demohlm.md)
 
+- [人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对照相关方法与适用场景。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - 一手论文：`arXiv:2602.11929v1`（CoRL 2026）全文归档（[fast_arxiv_2602_11929.md](../../sources/papers/fast_arxiv_2602_11929.md)）

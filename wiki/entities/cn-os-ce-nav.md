@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：`cd isaac-training/training/scripts && python train.py`（第二阶段 RL 精调；配置 `cfg/train.yaml`，hydra 装载）。评测入口为同目录 `python eval.py`（`cfg/eval.yaml` 的 `evaluation.mode`）；第一阶段模仿学习入口为 `cd il_training/fastsys && python train_navrl_il.py`，本图只画 `train.py`。

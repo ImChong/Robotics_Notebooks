@@ -123,6 +123,9 @@ flowchart TB
 - [Unitree](./unitree.md) — Go2 硬件与生态
 - [TensorBoard](./tensorboard.md) — 训练日志可视化
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [SRU-Odin GitHub README](https://github.com/ManifoldTechLtd/SRU-Odin)

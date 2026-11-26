@@ -80,6 +80,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [humanoid_pnb_humanoidpano-hybrid-spherical-panoramic-lidar-cr.md](../../sources/papers/humanoid_pnb_humanoidpano-hybrid-spherical-panoramic-lidar-cr.md)

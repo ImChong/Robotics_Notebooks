@@ -42,6 +42,8 @@ summary: 'Articulate-Anything: Automatic Modeling of Articulated Objects via a V
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

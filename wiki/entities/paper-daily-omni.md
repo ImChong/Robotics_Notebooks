@@ -229,6 +229,8 @@ sequenceDiagram
 - [智元灵犀 X1](./agibot-lingxi-x1.md) — 榜首 WITA-Omni 所属产业栈入口
 - [MOSS Transcribe Diarize](./paper-moss-transcribe-diarize.md) — 同生态音频 MLLM，偏转写分离而非 AV 对齐评测
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文摘录 · Daily-Omni arXiv:2505.17862](../../sources/papers/daily_omni_arxiv_2505_17862.md)

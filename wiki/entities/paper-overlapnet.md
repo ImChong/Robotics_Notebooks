@@ -143,6 +143,9 @@ flowchart TD
 - [Cartographer](../entities/cartographer.md)
 - [KITTI 立体基准](../entities/kitti-stereo-benchmark.md)（KITTI 数据集相关背景，本论文用的是 KITTI 里程计基准）
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [来源归档：OverlapNet（arXiv:2105.11344）](../../sources/papers/overlapnet_arxiv_2105_11344.md)

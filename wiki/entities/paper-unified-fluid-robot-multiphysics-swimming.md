@@ -171,6 +171,8 @@ sequenceDiagram
 - [Sim2Real](../concepts/sim2real.md) — 可微多物理仿真的 sim2real 精度与真机迁移
 - [Differentiable Simulation（可微仿真）](../concepts/differentiable-simulation.md) — Aquarium.jl 是可微仿真在流固耦合领域的典型案例
 
+- [工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [深蓝具身智能：RSS 2026 Final List 八篇盘点](../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md)

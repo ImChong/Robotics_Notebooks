@@ -175,6 +175,9 @@ flowchart TD
 - [状态估计](../concepts/state-estimation.md)、[激光雷达感知](../concepts/lidar-sensing.md)
 - [导航与 SLAM 自主栈](../overview/navigation-slam-autonomy-stack.md)、[Navigation2](./navigation2.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [来源归档：GMapping T-RO 2007 与 ICRA 2005](../../sources/papers/gmapping_tro_2007_icra_2005.md)

@@ -41,6 +41,8 @@ summary: 'Code4Scene: Benchmarking Coding Agents for Constructing and Editing 3D
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

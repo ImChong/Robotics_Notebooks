@@ -87,6 +87,8 @@ README 提供 RynnLAM 与 VLA 训练及 LIBERO 评测入口，代码公开；Ryn
 - [MimicAll](./paper-mimicall.md)
 - [操作任务](../tasks/manipulation.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [来源归档](../../sources/papers/rynnvla-latent.md)

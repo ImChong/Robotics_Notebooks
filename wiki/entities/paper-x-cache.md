@@ -131,6 +131,8 @@ flowchart TB
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 交互仿真概念
 - [X-Foresight](./paper-x-foresight.md) — 下游联合 VLA 世界建模（Renderer 同源）
 
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [X-Cache 论文摘录（arXiv:2604.20289）](../../sources/papers/x_cache_arxiv_2604_20289.md)

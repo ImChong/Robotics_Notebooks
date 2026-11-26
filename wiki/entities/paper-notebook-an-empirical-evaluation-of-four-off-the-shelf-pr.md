@@ -182,6 +182,11 @@ $$
 4. **失效模式具体**：T265 的尺度不一致、ZED 2 的旋转误差累积与正交性破坏，都在论文中有可对照的轨迹图；选型时应关注这些故障形态，而不是只看单一指标。
 5. **适用边界**：结论绑定在这四款闭源产品的 2022 年前后版本上，不能外推到其他 VIO 方法、新版本或人形本体的步态运动。
 
+## 关联页面
+
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [humanoid_pnb_an-empirical-evaluation-of-four-off-the-shelf-pr.md](../../sources/papers/humanoid_pnb_an-empirical-evaluation-of-four-off-the-shelf-pr.md)

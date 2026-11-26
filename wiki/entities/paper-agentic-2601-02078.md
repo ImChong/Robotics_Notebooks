@@ -42,6 +42,8 @@ summary: 'Genie Sim 3.0 : A High-Fidelity Comprehensive Simulation Platform for 
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

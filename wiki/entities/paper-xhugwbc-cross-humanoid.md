@@ -124,6 +124,8 @@ flowchart LR
 - [paper-notebook-h-zero-cross-humanoid-locomotion-pretraining-ena](./paper-notebook-h-zero-cross-humanoid-locomotion-pretraining-ena.md)
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)
 
+- [人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [sources/papers/hmi_p037_xhugwbc-cross-humanoid.md](../../sources/papers/hmi_p037_xhugwbc-cross-humanoid.md)

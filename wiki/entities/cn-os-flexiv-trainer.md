@@ -105,6 +105,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：对照相关方法与适用场景。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [flexiv_trainer 源码归档](../../sources/repos/flexiv_trainer.md)（<https://github.com/flexivrobotics/flexiv_trainer>）

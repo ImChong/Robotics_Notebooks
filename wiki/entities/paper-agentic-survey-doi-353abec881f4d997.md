@@ -46,6 +46,8 @@ summary: 'SCOPE: Real-Time Natural Language Camera Agent at the Edge：Awesome A
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

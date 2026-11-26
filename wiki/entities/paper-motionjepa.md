@@ -205,6 +205,8 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 - [潜空间想象](../concepts/latent-imagination.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [MotionJEPA 论文归档](../../sources/papers/motionjepa_arxiv_2609_23881.md)

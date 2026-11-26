@@ -110,6 +110,8 @@ TU Delft 报道与论文摘要给出的主要实机结果如下：
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 直接控制网络的训练范式
 - [Gym-PyBullet-Drones](./gym-pybullet-drones.md) — 无人机仿真与控制研究环境
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [MonoRace 论文摘录（arXiv:2601.15222）](../../sources/papers/monorace_arxiv_2601_15222.md)

@@ -205,6 +205,8 @@ sequenceDiagram
 - [PanoLOG / G²PS](./paper-panolog-ggps.md) — 户外大场景 3DGS 划分重建
 - [i3dGS](./paper-i3dgs-immediate-3dgs-unordered.md) — 乱序 RGB 即时 3DGS 对照
 
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [Skyfall-GS 论文摘录](../../sources/papers/skyfall_gs_arxiv_2510_15869.md)

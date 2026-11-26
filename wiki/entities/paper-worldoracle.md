@@ -134,6 +134,8 @@ sequenceDiagram
 - [WorldScore](./paper-worldscore.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文摘录](../../sources/papers/worldoracle_arxiv_2610_18826.md)

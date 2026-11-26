@@ -88,6 +88,8 @@ flowchart TD
 - [顺应性欠驱动机器人手](paper-deimel-compliant-underactuated-robotic-hand.md)
 - [HapMorph 气动触觉框架](paper-hapmorph-pneumatic-haptic-render.md)
 
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [Science Advances 论文原文](https://doi.org/10.1126/sciadv.aeh5116)

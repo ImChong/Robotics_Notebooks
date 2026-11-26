@@ -83,6 +83,8 @@ flowchart LR
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) — BFM 语料家族总览
 - [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) — T2M 文献索引入口
 
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [bfm_awesome_dataset_kit_ml_arxiv_2016.md](../../sources/papers/bfm_awesome_dataset_kit_ml_arxiv_2016.md)
