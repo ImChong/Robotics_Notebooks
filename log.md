@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | 人形机器人整机热管理：任务谱、热网络与降额闭环
+
+- 通读 Zane Hub 原文，区分可核对的样机证据与未给出工况的行业经验值；新增整机热管理概念与流程图。
+- 连接执行器热学与人形硬件设计 Stage 3，保留原文和厂商/机构交叉核对入口，不转载全文。
+
 ## [2026-11-26] ingest | SuperGPC：单卡训练 G1 自回归运动先验与适配器
 
 - 核对 Dollhouse 原文、官方训练源码和模型卡，拆分约 30 小时的阶段耗时与真机 CoLA 切换证据。
