@@ -1,43 +1,74 @@
 ---
 type: method
 tags: [agent, skills, workflow]
-status: draft
+status: complete
 updated: 2026-11-26
 summary: "把可复用任务指引、工具约束与可选脚本组织成可按需加载的技能。"
 sources:
+  - ../../sources/sites/method-agent-skill-packaging-primary-20261126.md
   - ../../sources/sites/anthropic_claude_code_best_practices_2026.md
+original:
+  - ../../sources/sites/method-agent-skill-packaging-primary-20261126.md
 related:
+  - ./agent-tool-use-interface.md
+  - ./agent-planning-feedback.md
   - ../concepts/agentic-coding-software-fundamentals.md
 ---
 
-# 智能体技能封装
+# Agent Skill Packaging · 智能体技能封装
 
 ## 一句话定义
 
-把可复用任务指引、工具约束与可选脚本组织成可按需加载的技能。
+把高复用任务的触发描述、主流程和按需资源包装为可安装、可评测的目录。
 
 ## 英文缩写速查
 
-| 缩写 | 英文全称 | 说明 |
+| 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
-| API | Application Programming Interface | 软件组件交互接口 |
+| YAML | YAML Ain’t Markup Language | SKILL.md 的前置信息格式 |
+| CLI | Command-Line Interface | 可选脚本的命令行接口 |
+| API | Application Programming Interface | 技能步骤可能调用的外部接口 |
 
-## 关联概念
+## 为什么重要
 
-[相关概念](../concepts/agentic-coding-software-fundamentals.md) 描述该方法所涉及的背景与边界。
+技能解决重复描述任务操作方式的问题：先暴露简短适用描述，仅在匹配时读取主指引，依赖资料按需打开；既减少上下文占用，也便于独立评测。
 
-## 主要技术路线
+## 主要技术路线（核心机制）
 
-1. **确定边界**：写明适用任务、必要输入、输出及不适用情况，避免把多个互不相关的任务塞入一个技能。
-2. **组织资源**：按需组合指引、示例、脚本和参考资料；保留入口与依赖的可追溯关系，不假定每个技能都含可执行代码。
-3. **验证和维护**：用代表性任务检查触发、执行结果及失败处理；核对版本、权限与引用路径。
+把适用与不适用示例同时放进测试集；入口说明写清输入、输出、失败交代和核对点，细则材料放入 references。可选脚本应声明依赖，不能用元数据字段当成权限控制。
 
-[Agent 工具调用接口](agent-tool-use-interface.md) 关注如何调用工具；技能封装关注何时采用及如何复用一套任务流程。
+```mermaid
+flowchart LR
+  N0["读取技能元数据"]
+  N1["判断任务是否适用"]
+  N2["载入主指引"]
+  N3["按需读取脚本与参考"]
+  N4["在权限内验收结果"]
+  N0 --> N1
+  N1 --> N2
+  N2 --> N3
+  N3 --> N4
+```
 
-## 局限与后续核查
+## 工程实践
 
-本页用于跨项目导航，具体功能、参数、可运行性和授权仍以对应项目或原始资料为准。
+以结构化机器人日志检查技能为例：一个主指引说明数据记录日期和来源为必需输入，再在需要时引用字段字典；在没有原始记录的负例中必须报告缺失，而不是自动生成样本。
+
+## 局限与风险
+
+规范验证关注名称、目录与前置字段，不验证事实准确性、可移植性或脚本安全。产品可能使用不同的发现及权限模型，跨客户端迁移前要重测。
+
+## 关联页面
+
+- [智能体工具调用接口](agent-tool-use-interface.md)
+- [规划与反馈执行](agent-planning-feedback.md)
+- [智能体开发工程基础](../concepts/agentic-coding-software-fundamentals.md)
 
 ## 参考来源
 
-- [相关资料归档](../../sources/sites/anthropic_claude_code_best_practices_2026.md)
+- [Agent Skills：Specification 核读归档](../../sources/sites/method-agent-skill-packaging-primary-20261126.md)
+- [原页面关联资料](../../sources/sites/anthropic_claude_code_best_practices_2026.md)
+
+## 推荐继续阅读
+
+- [Agent Skills：Specification](https://agentskills.io/specification)

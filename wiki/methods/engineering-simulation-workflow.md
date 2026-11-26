@@ -1,16 +1,20 @@
 ---
 type: method
 tags: [simulation, engineering, validation]
-status: draft
+status: complete
 updated: 2026-11-26
 summary: "从几何、材料和边界条件建立可复查的工程仿真，并评估结果可信度。"
 sources:
   - ../../sources/blogs/wechat_zane_hub_structure_tolerance_simulation_toolchain_2026-10-17.md
+  - ../../sources/sites/platform-method-engineering-simulation-workflow.md
+original:
+  - ../../sources/sites/platform-method-engineering-simulation-workflow.md
 related:
+  - parametric-cad-workflow.md
   - ../concepts/structure-tolerance-simulation-toolchain.md
 ---
 
-# 工程仿真建模与验证流程
+# Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程
 
 ## 一句话定义
 
@@ -20,24 +24,45 @@ related:
 
 | 缩写 | 英文全称 | 说明 |
 |---|---|---|
-| API | Application Programming Interface | 软件组件交互接口 |
+| FEM | Finite Element Method | 将连续场离散为有限维问题 |
+| FEA | Finite Element Analysis | 有限元工程分析 |
+| QoI | Quantity of Interest | 用于决策及收敛检查的目标量 |
 
-## 关联概念
+## 为什么重要
 
-[相关概念](../concepts/structure-tolerance-simulation-toolchain.md) 描述该方法所涉及的背景与边界。
+求解器成功只说明它算出了离散模型的解；还要辨别网格误差和边界、材料、载荷设定的偏差。
 
-## 主要技术路线
+## 主要技术路线（核心机制）
 
-1. **建立模型**：选择求解器与物理假设，输入几何、材料、网格、载荷和边界条件，并记录单位及版本。
-2. **运行与诊断**：检查网格质量、收敛性、守恒量、资源使用及失败日志；结果曲线应能追溯到输入配置。
-3. **验证与局限**：通过网格敏感性、解析解、实验或已知基准交叉检查；不同物理问题不能仅凭单次求解成功判定正确。
+NGSolve 的 3D 线弹性案例对固定面与受载面分别命名，生成曲边网格；位移约束进入函数空间，面力进入载荷项。求解位移后，由其梯度计算应变和应力。
 
-[参数化 CAD 建模](parametric-cad-workflow.md) 提供上游几何，实际模型仍须按具体求解器与实验条件复核。
+```mermaid
+flowchart LR
+    N0["零件与工况"]
+    N1["标记固定面及受力面"]
+    N2["网格与本构"]
+    N3["求解位移"]
+    N4["恢复应力并验证"]
+    N0 --> N1 --> N2 --> N3 --> N4
+```
 
-## 局限与后续核查
+## 工程实践
 
-本页用于跨项目导航，具体功能、参数、可运行性和授权仍以对应项目或原始资料为准。
+先指定末端挠度或截面应力等目标量，记录单位、边界和测点。保持建模假设不变比较粗细网格，检查合反力与外载是否平衡，再用独立试验或简化解析结果校核量级。保留网格、参数来源和求解容差。
+
+## 局限与风险
+
+尖角和理想点载荷附近的局部最大应力可能不随网格加密稳定。线弹性计算不能直接判断塑性、接触滑移、疲劳寿命或屈曲。
+
+## 关联页面
+
+- [参数化 CAD](parametric-cad-workflow.md)
+- [结构、公差与仿真工具链](../concepts/structure-tolerance-simulation-toolchain.md)
 
 ## 参考来源
 
-- [相关资料归档](../../sources/blogs/wechat_zane_hub_structure_tolerance_simulation_toolchain_2026-10-17.md)
+- [NGSolve 6.2.2606 3D Solid Mechanics](../../sources/sites/platform-method-engineering-simulation-workflow.md)
+
+## 推荐继续阅读
+
+- [官方算例](https://docu.ngsolve.org/v6.2.2606/i-tutorials/wta/elasticity3D.html)

@@ -1,47 +1,72 @@
 ---
 type: method
 tags: [robotics, simulation, data]
-status: draft
+status: complete
 updated: 2026-11-26
-summary: "为机器人训练或评测构造可运行的场景、物体和任务，并检查几何与物理属性。"
+summary: "将布局、资产、语义和任务约束编译为可重置、可执行、可复核的仿真场景。"
 sources:
-  - ../../sources/repos/awesome-agentic-robots-survey-index.md
+  - ../../sources/papers/robocasa_scene_generation_reading_arxiv_2406_02523.md
+original:
+  - ../../sources/papers/robocasa_scene_generation_reading_arxiv_2406_02523.md
 related:
   - ../concepts/robot-simulation-three-layers.md
+  - generative-data-augmentation.md
+  - ../entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md
+  - sim2real-transfer-workflow.md
 ---
 
-# 机器人仿真场景生成
+# Robot Simulation Scene Generation · 机器人仿真场景生成
 
 ## 一句话定义
 
-为机器人训练或评测构造可运行的场景、物体和任务，并检查几何与物理属性。
+将布局、资产、语义和任务约束编译为可重置、可执行、可复核的仿真场景。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 说明 |
 |---|---|---|
-| API | Application Programming Interface | 组件交互接口 |
-
-## 关联概念
-
-- [相关概念](../concepts/robot-simulation-three-layers.md)：了解本方法涉及的背景与边界。
+| MJCF | MuJoCo XML Configuration Format | MuJoCo 模型和场景描述 |
+| LLM | Large Language Model | 可帮助提出复合任务候选 |
+| BC | Behavior Cloning | 使用仿真示范做行为克隆 |
 
 ## 为什么重要
 
-明确任务边界、数据来源和验证方式，有助于比较不同系统并避免把背景任务误认为已经完成的实验。
+视觉效果只是其中一层。厨房看起来真实，门仍可能缺碰撞体、把手机构或可达的操作位；这样的场景不能成为可靠训练样本。
 
-## 主要技术路线
+## 主要技术路线（核心机制）
 
-1. **场景与资产构造**：从程序化规则、重建或生成模型得到场景和物体；按任务需要赋予材质、碰撞形状、关节及语义标签。
-2. **仿真与任务配置**：把资产导入仿真器，配置机器人、传感器、初始状态及成功判据；生成场景不自动生成可行任务。
-3. **检查与迭代**：验证物体布局、接触稳定性、可达性、数据划分与运行时开销，再用于训练或评测。
+分别管理空间布局、外观风格、可交互设备和对象语义。RoboCasa v1 区分布局与风格，用资产库装配厨房；论文的 120 个初版场景与 100 项任务不是后续 RoboCasa365 的发布数字。其复合任务由语言模型辅助提出，再由人筛选并实现成功条件；示范扩展是再下一层。
 
-[生成式数据增强](generative-data-augmentation.md) 侧重样本扩增；场景生成还需要可执行的几何和物理配置。
+```mermaid
+flowchart LR
+    A["布局、样式和种子"] --> B["实例化家具和对象"]
+    B --> C["挂接碰撞、关节、语义标签"]
+    C --> D["添加任务、初始状态及成功判据"]
+    D --> E["稳定性、可达性和重置检查"]
+    E --> F["轨迹采集／评测快照"]
+```
 
-## 局限与后续核查
+## 工程实践
 
-本页是跨来源的导航与比较框架，具体实现、指标和适用条件应回到相应论文或项目核对；不能据此推断任一条目已实现全部环节。
+1. 给每种资产留下尺度、质量/惯量、碰撞代理、关节限位、语义与许可记录；视觉网格和碰撞网格不必相同。
+2. 对生成布局检查初始穿透、掉落、柜门开闭和机械臂可达性；对固定种子重置，验证任务判据会在正确动作后触发且不会提前触发。
+3. 分开按布局、物体家族和任务切分，防止同一资产变换后的近重复流入训练和测试；日志保存场景配置以及无法生成、不可达或失败的种子。
+
+## 局限与风险
+
+碰撞与接触检查不能证明真机动力学一致；基于语言描述生成任务也不能代替明确定义成功条件。保真与生成速度需按目标任务选型。
+
+## 关联页面
+
+- [机器人仿真三层](../concepts/robot-simulation-three-layers.md)
+- [生成式数据增强](generative-data-augmentation.md)
+- [RoboCasa 论文](../entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md)
+- [Sim2Real 迁移工作流](sim2real-transfer-workflow.md)
 
 ## 参考来源
 
-- [来源归档](../../sources/repos/awesome-agentic-robots-survey-index.md)
+- [RoboCasa v1 一手资料归档](../../sources/papers/robocasa_scene_generation_reading_arxiv_2406_02523.md)
+
+## 推荐继续阅读
+
+- [RoboCasa v1 原文](https://arxiv.org/html/2406.02523v1)
