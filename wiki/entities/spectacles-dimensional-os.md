@@ -4,7 +4,7 @@ tags: [project, ar, teleoperation, inverse-kinematics, robot-manipulation]
 status: complete
 updated: 2026-11-26
 project_id: spectacles-dimensional-os
-code: https://github.com/V4C38/spectacles-dimensional-os
+code: https://github.com/V4C38/dimensional-os-ar
 original:
   - ../../sources/repos/spectacles-dimensional-os.md
   - ../../sources/sites/spectacles-openyam-demo.md
@@ -67,7 +67,7 @@ flowchart LR
 
 ## 工程实践
 
-- 先固定版本：[公开 development 提交](https://github.com/V4C38/spectacles-dimensional-os/tree/9e0e103773cea967536534b528512e3c50e7be86) 与其 `.dimos-revision`。作者演示是 Spectacles Dev Kit；development 也有 Quest 3/3S 的 WebXR 客户端，两端共享协议但输入和渲染实现不同。
+- 先固定版本：[公开 development 提交](https://github.com/V4C38/dimensional-os-ar/tree/9e0e103773cea967536534b528512e3c50e7be86) 与其 `.dimos-revision`。作者演示是 Spectacles Dev Kit；development 也有 Quest 3/3S 的 WebXR 客户端，两端共享协议但输入和渲染实现不同。
 - 上游 OpenYAM 适配器说明 Linux SocketCAN 与 macOS 传输；**该 AR 项目的实臂操作指南明确以 Linux CAN 就绪为前提**，不要把通用主机/UI 支持写成所有实臂配置都获验证。源码提供官方模拟硬件入口，先验证注册、姿态方向、夹爪与运动授权，再做有人值守的台架验收。
 - 建议分别记录头显采样到命令、命令到关节反馈两个延迟，静态对齐与动态跟随误差也分别报告。先验证失去追踪、断连和真正停止时的可见反馈，不用 overlay 动画确认停稳。
 
@@ -123,4 +123,4 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- 从 [AR Manipulation 指南](https://github.com/V4C38/spectacles-dimensional-os/blob/9e0e103773cea967536534b528512e3c50e7be86/dimos-ar/dimos/ar/manipulation/README.md) 核对预览、跟随、松手和 Stop 的不同生命周期。
+- 从 [AR Manipulation 指南](https://github.com/V4C38/dimensional-os-ar/blob/9e0e103773cea967536534b528512e3c50e7be86/dimos-ar/dimos/ar/manipulation/README.md) 核对预览、跟随、松手和 Stop 的不同生命周期。
