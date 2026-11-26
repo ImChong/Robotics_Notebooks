@@ -145,6 +145,7 @@ flowchart LR
 - [机器人整机配电架构](../wiki/concepts/robot-power-distribution-architecture.md) — 本阶段主线知识页
 - [Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md)
 - [Query：人形机器人电池与热管理指南](../wiki/queries/humanoid-battery-thermal-management.md) — 配电损耗与整机热链路
+- [人形机器人整机热管理](../wiki/concepts/humanoid-whole-body-thermal-management.md) — 从任务谱拆解关节、驱动、电池与计算损耗，协调冷却、降额与安全退化
 - [机器人安全状态机](../wiki/concepts/robot-safety-state-machine.md) — 硬件安全回路与软件降级的分工
 - IEC 60204-1（停止类别）、ISO 13849-1（PL）、ISO 13482（服务机器人安全）— [IEC 检索](https://webstore.iec.ch/) · [ISO 检索](https://www.iso.org/search.html?q=13849)
 

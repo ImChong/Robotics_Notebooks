@@ -85,6 +85,7 @@ flowchart TD
 
 ## 关联页面
 
+- [人形机器人整机热管理](../concepts/humanoid-whole-body-thermal-management.md) — 将执行器损耗放回电池、计算、冷却和上层控制的整机预算。
 - [Actuator 102 技术地图](./humanoid-actuator-102-technology-map.md)
 - [关节模组轴的径向热膨胀校核](../concepts/joint-module-shaft-thermal-expansion.md)
 - [Actuator 102 · 05：柔顺与感知反馈](./humanoid-actuator-102-compliance-sensing.md)
