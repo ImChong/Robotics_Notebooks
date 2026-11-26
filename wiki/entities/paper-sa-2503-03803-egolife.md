@@ -60,9 +60,21 @@ venue: CVPR 2025
 
 ### 策展导读要点
 
-策展清单收录条目；细节以原文 PDF / 项目页为准。
+> 注：以下机制基于通读 [arXiv:2503.03803 HTML 原文](https://arxiv.org/abs/2503.03803)（§4 EgoButler）核对补充：EgoButler 由 **System-I（EgoGPT）** 与 **System-II（EgoRAG）** 协同组成。EgoGPT（基于 LLaVA-OneVision 接入 Whisper 音频投影，经 EgoIT-99K 与 Day-1 个性化微调）以 30 秒片段为单位连续生成音视频字幕并支持感知问答；EgoRAG 将连续字幕聚合为日/小时层级记忆库，在长时序问答时先粗定位时间窗再按视觉-文本相关度检索 Top-K 片段线索交由大模型作答。
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+
+### 方法流程图（基于 arXiv:2503.03803 §4 EgoButler）
+
+```mermaid
+flowchart LR
+  CLIP["30s 第一人称音视频流"] --> SYS1["System-I: EgoGPT 连续多模态字幕与片段理解"]
+  SYS1 --> MEM["EgoRAG 记忆库构建 (片段特征 + 小时/天层级摘要)"]
+  Q["用户长时序问题 (EgoLifeQA)"] --> WIN["层级检索: 粗定位天/小时时间窗"]
+  MEM --> WIN
+  WIN --> TOPK["细粒度视觉-文本相关度筛选 Top-K 线索"]
+  TOPK --> ANS["送入 EgoGPT / LLM 生成个性化上下文回答"]
+```
 
 ## 评测与指标
 

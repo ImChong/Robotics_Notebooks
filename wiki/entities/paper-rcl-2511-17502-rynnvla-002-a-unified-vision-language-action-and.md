@@ -80,6 +80,17 @@ RynnVLA-002 finetunes a shared Chameleon backbone for action prediction and acti
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+  OBS["视觉观测与语言指令输入"] --> BB["共享 Chameleon 主干微调"]
+  BB -->|"联合训练目标 1"| IMG["动作条件图像预测 (世界模型分支)"]
+  BB -->|"联合训练目标 2"| ACT_DIS["动作预测分支"]
+  BB --> CONT["并行连续动作头 (Continuous-Action Head)"]
+  CONT -->|"推理时无需想象图像 rollout"| EXEC["策略动作执行"]
+```
+
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。

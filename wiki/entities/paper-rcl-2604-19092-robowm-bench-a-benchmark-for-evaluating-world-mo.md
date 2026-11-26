@@ -73,6 +73,18 @@ RoboWM-Bench evaluates whether generated manipulation videos can be converted in
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
 
+### 方法流程图
+
+```mermaid
+flowchart TD
+  VID["世界模型生成的机器人操作视频"] --> IFACE{"动作还原接口"}
+  IFACE -->|"接口 1"| RET["人手重定向 (Human-Hand Retargeting)"]
+  IFACE -->|"接口 2"| IDM["机器人逆动力学接口 (Robot IDM)"]
+  RET --> ACT["转换后的机器人动作"]
+  IDM --> ACT
+  ACT --> EXEC["仿真 / 真机任务执行评测 (暴露画面逼真但不可执行的失败)"]
+```
+
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。

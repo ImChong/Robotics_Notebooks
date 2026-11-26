@@ -74,7 +74,20 @@ Optimal transport alignment between human visual-action distributions, improving
 
 Optimal transport alignment between human visual-action distributions, improving imitation success rate by 44% over standard baselines
 
+> 注：以下机制基于通读 [arXiv:2509.19626 HTML 原文](https://arxiv.org/abs/2509.19626)（§4 EgoBridge）核对补充：面向 Project Aria 采集的第一人称人类示范与同配型遥操作机器人数据，共享观测编码器分别提取隐特征，先通过动态时间规整（DTW）缓解人机速度/运动学时序错位以度量行为轨迹相似度，再以可微 Sinkhorn 最优传输（OT）对齐联合分布（隐特征, 动作），并与端到端行为克隆损失协同训练策略解码器。
+
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+
+### 方法流程图（基于 arXiv:2509.19626 §4）
+
+```mermaid
+flowchart LR
+  HUM["Project Aria 第一人称人类数据 (观测, 手部动作轨迹)"] --> ENC["共享观测编码器与手-眼坐标系表征"]
+  ROB["遥操作机器人数据 (观测, SE(3) 动作轨迹)"] --> ENC
+  ENC --> DTW["DTW 度量跨本体动作轨迹相似度 (对齐速度/时序差异)"]
+  DTW --> OT["可微 Sinkhorn 最优传输 L_OT (对齐联合隐特征-动作分布)"]
+  OT --> POL["共享多块 Transformer 策略解码器 (L_BC + L_OT 协同训练)"]
+```
 
 ## 评测与指标
 
