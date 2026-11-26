@@ -181,6 +181,8 @@ flowchart TD
 
 ## 关联页面
 
+- [Orca：多 Agent 工作区组织工具](../entities/stablyai-orca.md) — worktree 与会话用于并行拆分，合并及真机验收仍需独立门禁。
+
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 把 E2E / 属性 / 差分测试、独立门禁与故障复盘落实到可执行验证。
 
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 机器人研发还需区分代码验收与策略、仿真和真机评测；编码 Agent 的测试通过不能代替后几层验证。
