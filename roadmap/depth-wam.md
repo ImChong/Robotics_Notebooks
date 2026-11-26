@@ -98,6 +98,7 @@ flowchart LR
 - [JEPA4R：单深度点云 4D 潜空间规划](../wiki/entities/paper-jepa4r-2611-19771.md) — 以公制点云和 action-conditioned JEPA 预测构建空间世界模型；训练/规划使用几何潜状态，不等于视频生成式 Joint WAM。
 - [PixVid：逐帧像素视频生成](../wiki/entities/paper-pixvid-back-to-pixels.md) — 作为视频世界模型的**逐帧渲染架构对照**：像素 patch + 因果 detailer 消除时空 VAE 的块级动作等待；测的是相机控制到屏幕延迟，不是机器人动作头或物理一致性。
 - [X-World 1.6](../wiki/entities/paper-xworld-1-6.md) — 驾驶策略在七相机生成环境中做闭环失败复现；世界模型接收动作、输出观测，不是 Joint WAM。
+- [T2-z：测试时环境潜变量](../wiki/entities/paper-t2-z-environment-latents.md) — 冻结视频世界模型，用独立交互拟合 32 维 z，再评价候选动作；区分仿真与真机结果，以及适配与视频生成开销。
 - [Generative World Models](../wiki/methods/generative-world-models.md)
 - [Model-Based RL](../wiki/methods/model-based-rl.md)
 - [V-JEPA 2 / 2-AC](../wiki/entities/paper-vjepa2.md) — 视频表征预训练、机器人动作条件后训练与图像目标 CEM 规划的分阶段基座；不是仅凭视频预训练即可直接控制机器人。
