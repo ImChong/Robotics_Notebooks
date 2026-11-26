@@ -68,6 +68,54 @@ flowchart LR
   JIT --> ML["PyTorch / JAX / Paddle"]
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `NVIDIA/warp` 仓库 `main` 分支源码核对绘制，核对路径：`warp/examples/core/example_wave.py`、`warp/_src/context.py`（`launch`、`Module.load`、`Module._compile`、`Module._run_codegen`）、`warp/_src/tape.py`（`Tape.record_launch`、`Tape.backward`）。
+
+```mermaid
+sequenceDiagram
+  participant User as "User / example_wave.py"
+  participant Launch as "wp.launch (context.py)"
+  participant Module as "Module (context.py)"
+  participant Build as "Codegen & Build (warp._src.build)"
+  participant Runtime as "LLVM / CUDA Runtime"
+  participant Tape as "wp.Tape (tape.py)"
+
+  User->>Launch: wp.launch(kernel, dim, inputs, outputs)
+  Launch->>Launch: init() + 泛型重载推导 (infer_argument_types)
+  Launch->>Module: kernel.module.load(device, block_dim)
+  alt 缓存未命中 (kernel_cache_dir)
+    Module->>Build: _run_codegen(options, is_cpu)
+    Build-->>Module: C++/CUDA 源码与 .meta
+    alt CPU 设备
+      Module->>Build: build_cpu(output_path, source_code_path)
+    else CUDA 设备
+      Module->>Build: build_cuda(source_code_path, output_arch, output_path)
+    end
+  end
+  alt CPU 设备
+    Module->>Runtime: runtime.llvm.wp_load_obj(binary_path)
+  else CUDA 设备
+    Module->>Runtime: warp._src.build.load_cuda(binary_path, device)
+  end
+  Runtime-->>Module: ModuleExec
+  Module-->>Launch: module_exec
+  Launch->>Launch: get_kernel_hooks(kernel) + pack_arg()
+  alt CPU 设备
+    Launch->>Runtime: 调用 hooks.forward (或 apic_capture)
+  else CUDA 设备
+    Launch->>Runtime: runtime.core.wp_cuda_launch_kernel(hooks.forward, ...)
+  end
+  opt runtime.tape 激活且 record_tape=True
+    Launch->>Tape: runtime.tape.record_launch(kernel, dim, inputs, outputs, ...)
+  end
+  User->>Tape: tape.backward(loss)
+  loop reversed(self.launches)
+    Tape->>Launch: wp.launch(kernel, ..., adj_inputs, adj_outputs, adjoint=True)
+    Launch->>Runtime: 执行 hooks.backward 反向累加梯度
+  end
+```
+
 ## 工程实践
 
 | 步骤 | 做法 |

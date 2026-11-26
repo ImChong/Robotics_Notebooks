@@ -74,6 +74,39 @@ flowchart LR
   pt --> onnx --> conv --> mnn --> backend --> edge
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `alibaba/MNN` 仓库 `master` 分支源码核对绘制（以推荐的 Express `Module` 推理主线为例；Python `MNN.nn.load_module_from_file` 经 `_nn.load_module_from_file` 封装同一 C++ 接口），核对路径：`demo/exec/pictureRecognition_module.cpp`、`pymnn/pip_package/MNN/nn/__init__.py`、`express/module/Module.cpp`、`express/module/StaticModule.cpp`、`source/core/Interpreter.cpp`、`source/core/Session.cpp`。
+
+```mermaid
+sequenceDiagram
+  participant Caller as "推理入口 (pictureRecognition_module.cpp / MNN.nn)"
+  participant RtMgr as "Executor::RuntimeManager"
+  participant Module as "Module / NetModule (Module.cpp)"
+  participant ImgProc as "MNN::CV::ImageProcess"
+  participant Static as "StaticModule (StaticModule.cpp)"
+  participant Session as "Session & Pipeline (Session.cpp)"
+
+  Caller->>RtMgr: createRuntimeManager(ScheduleConfig) + setCache()
+  Caller->>Module: Module::load(inputs, outputs, modelFile, rtmgr)
+  Module->>Module: loadInternal() 读取 .mnn FlatBuffer 并构建 NetModule + StaticModule
+  Module-->>Caller: std::shared_ptr<Module> net
+
+  Caller->>ImgProc: ImageProcess::create(config) + pretreat->convert(...)
+  ImgProc-->>Caller: 填充输入 VARP (如 NC4HW4)
+
+  Caller->>Module: net->onForward({input})
+  Module->>Static: NetModule::onForward -> RuntimeExecuteWrap -> StaticModule::onForward
+  Static->>Static: applyMetaToRuntime() + Variable::compute(inputs) + _resize(inputs)
+  Static->>Session: _execute() -> mSession->run()
+  Note right of Session: 传统 Interpreter/Session API 亦经<br/>Interpreter::createFromFile -> createSession -> runSession 调入此处
+  Session->>Session: 遍历 mPipelines 执行 iter->execute()
+  Session-->>Static: ErrorCode::NO_ERROR
+  Static-->>Module: 输出 VARP 列表
+  Module->>Module: clearCache()
+  Module-->>Caller: outputs
+```
+
 ## 关联页面
 
 - [ONNX](./onnx.md)

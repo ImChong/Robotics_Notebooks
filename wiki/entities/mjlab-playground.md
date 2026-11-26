@@ -73,6 +73,43 @@ flowchart TD
   P -->|"迭代改奖励/网络"| T
 ```
 
+## 源码运行时序图
+
+以下时序基于官方仓库 `mujocolab/mjlab_playground`（`main` 分支）中 `pyproject.toml`、`src/mjlab_playground/__init__.py`、`src/mjlab_playground/getup/config/go1/__init__.py`、`src/mjlab_playground/getup/config/go1/env_cfgs.py`、`src/mjlab_playground/getup/config/go1/rl_cfg.py`、`src/mjlab_playground/getup/getup_env_cfg.py`、`src/mjlab_playground/getup/mdp/`（`actions.py` / `events.py` / `rewards.py` / `terminations.py`）以及上游 `mujocolab/mjlab` 入口 `src/mjlab/scripts/train.py`、`src/mjlab/scripts/play.py`、`src/mjlab/envs/manager_based_rl_env.py` 核对整理：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as uv run train / play (mjlab.scripts)
+  participant Reg as mjlab_playground (__init__.py)
+  participant Cfg as getup/config/go1 (env_cfgs / rl_cfg)
+  participant Env as ManagerBasedRlEnv (mjlab)
+  participant MDP as getup/mdp (actions/events/rewards/terminations)
+  participant Runner as MjlabOnPolicyRunner (RSL-RL)
+
+  CLI->>Reg: 通过 mjlab.tasks entry-point 自动导入 mjlab_playground
+  Reg->>Cfg: register_mjlab_task("Mjlab-Getup-Flat-Unitree-Go1", ...)
+  CLI->>Cfg: load_env_cfg / load_rl_cfg 组装 make_getup_env_cfg() 与 PPO 配置
+  CLI->>Env: 创建 ManagerBasedRlEnv(cfg) 与 RslRlVecEnvWrapper
+  CLI->>Runner: runner.learn(max_iterations=2000)
+  loop 每个 PPO 迭代与环境步
+    Runner->>Env: step(action)
+    loop decimation=4 物理子步
+      Env->>MDP: SettleRelativeJointPositionAction.apply_actions()
+      Note over MDP: 若处于 settle_steps 且 settle_mask 为真则抑制动作
+      Env->>Env: scene.write_data_to_sim() 与 sim.step() (MuJoCo Warp)
+    end
+    Env->>MDP: 计算 orientation/height/gated_posture 奖励与 energy_termination
+    opt 环境终止或超时 (auto_reset)
+      Env->>MDP: reset_fallen_or_standing() 随机跌倒或站立初始化并更新 settle_mask
+    end
+    Env-->>Runner: 返回观测、奖励与 done 信号
+  end
+  Note over CLI,Cfg: 策略回放时 uv run play 调用 load_env_cfg(task_id, play=True) 将 fall_probability 设为 1.0
+```
+
+关键复现入口：`uv run train Mjlab-Getup-Flat-Unitree-Go1 --num_envs 4096` 与 `uv run play Mjlab-Getup-Flat-Unitree-Go1`（脚本由依赖包 `mjlab` 提供，通过 `pyproject.toml` 的 `[project.entry-points."mjlab.tasks"]` 发现本仓注册的任务）。
+
 ## 公开任务摘记
 
 | Task ID | 机器人 | 技能 |

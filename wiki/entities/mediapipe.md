@@ -66,6 +66,45 @@ flowchart LR
   RT --> ROB[灵巧手 / 人形 / 仿真]
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `google/mediapipe` 仓库 `master` 分支源码核对绘制（以机器人遥操作最常用的 `HandLandmarker` 为例），核对路径：`mediapipe/tasks/python/vision/hand_landmarker.py`、`mediapipe/tasks/c/vision/hand_landmarker/hand_landmarker.cc`、`mediapipe/tasks/cc/vision/hand_landmarker/hand_landmarker.cc`、`mediapipe/tasks/cc/vision/core/base_vision_task_api.h`、`mediapipe/tasks/cc/core/task_runner.cc`、`mediapipe/tasks/cc/vision/hand_landmarker/hand_landmarker_graph.cc`。
+
+```mermaid
+sequenceDiagram
+  participant App as "调用方 (Python)"
+  participant PyAPI as "HandLandmarker (hand_landmarker.py)"
+  participant CAPI as "C API (c/.../hand_landmarker.cc)"
+  participant CCAPI as "C++ API (cc/.../hand_landmarker.cc)"
+  participant Runner as "BaseVisionTaskApi / TaskRunner"
+  participant Graph as "HandLandmarkerGraph (CalculatorGraph)"
+
+  App->>PyAPI: create_from_options(options)
+  PyAPI->>CAPI: MpHandLandmarkerCreate(ctypes_options)
+  CAPI->>CCAPI: CppHandLandmarkerCreate -> HandLandmarker::Create
+  CCAPI->>Graph: CreateGraphConfig + VisionTaskApiFactory::Create
+  Note right of Graph: 组装 HandDetectorGraph + HandLandmarksDetectorGraph<br/>LIVE_STREAM 模式下追加 FlowLimiterCalculator
+
+  App->>PyAPI: detect / detect_for_video / detect_async(image)
+  PyAPI->>CAPI: MpHandLandmarkerDetectImage / DetectForVideo / DetectAsync
+  CAPI->>CCAPI: Detect / DetectForVideo / DetectAsync (转 NormalizedRect)
+  alt IMAGE / VIDEO 同步模式
+    CCAPI->>Runner: ProcessImageData / ProcessVideoData -> runner_->Process
+    Runner->>Graph: graph_.AddPacketToInputStream("image_in", "norm_rect_in")
+    Graph->>Graph: 手掌检测 -> ROI 裁剪 -> 21 点关键点与左右手回归
+    Graph-->>Runner: 输出 LANDMARKS / WORLD_LANDMARKS / HANDEDNESS
+    Runner-->>CCAPI: PacketMap
+    CCAPI-->>CAPI: ConvertToHandLandmarkerResult
+    CAPI-->>PyAPI: MpHandLandmarkerResultC
+    PyAPI-->>App: HandLandmarkerResult
+  else LIVE_STREAM 异步模式
+    CCAPI->>Runner: SendLiveStreamData -> runner_->Send
+    Runner->>Graph: 异步投递输入流 Packet
+    Graph-->>CCAPI: packets_callback 触发 result_callback
+    CCAPI-->>PyAPI: AsyncResultDispatcher 回调用户 result_callback
+  end
+```
+
 ## 工程实践
 
 1. **选 API 代际：** 新项目优先 **MediaPipe Tasks**（Python / Web / Android）；维护旧仓库时核对 [Legacy Solutions](https://developers.google.com/mediapipe/solutions/guide#legacy) 是否仍受支持。

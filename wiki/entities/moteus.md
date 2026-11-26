@@ -89,6 +89,41 @@ flowchart LR
 | `lib/` | 主机侧库 |
 | `docs/` | 文档；另有 [mjbots.github.io/moteus](https://mjbots.github.io/moteus/) |
 
+## 源码运行时序图
+
+以下时序基于官方仓库 `mjbots/moteus`（`main` 分支）中 `lib/python/examples/simple.py`、`lib/python/moteus/moteus.py`、`fw/moteus.cc`、`fw/moteus_controller.cc`、`fw/bldc_servo.cc` 与 `fw/bldc_servo_control.h` 核对整理：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Host as 主机脚本 (examples/simple.py / moteus.py)
+  participant Can as CAN-FD 总线 (FDCan / MicroServer)
+  participant Ctrl as MoteusController (moteus_controller.cc)
+  participant Servo as BldcServo (bldc_servo.cc)
+  participant ISR as FOC 控制环 (bldc_servo_control.h)
+
+  Host->>Host: Controller.set_position(...) 经 execute() 生成 Multiplex 帧
+  Host->>Can: Transport.cycle([command]) 发送 5 Mbps CAN-FD 报文
+  loop fw/moteus.cc main() 主循环轮询
+    Can->>Ctrl: multi_transport.Poll() / multiplex_protocol.Poll() 触发 Write()
+    Ctrl->>Ctrl: 解析 Register::kMode 与目标寄存器写入 command_
+    Ctrl->>Servo: Poll() 检测到 command_valid_ 调用 bldc_.Command(command_)
+    Servo->>Servo: 原子更新 current_data_ 供中断读取
+  end
+  loop PWM 定时器中断 (15-30 kHz)
+    Servo->>Servo: GlobalInterrupt() -> ISR_HandleTimer() -> ISR_DoTimer()
+    Servo->>Servo: ISR_DoSenseCritical() 等待硬件 LPTIM1 触发 ADC 采样
+    Servo->>ISR: 触发 PendSV -> GlobalPendSv() -> ISR_DoTimerLowerPriority()
+    ISR->>Servo: ISR_DoSense() 读取三相电流 ADC 与 aux1/aux2 编码器
+    ISR->>ISR: ISR_CalculateDerivedQuantities() 计算电角度与 DQ 变换
+    ISR->>ISR: ISR_DoControl() 按模式分发 (如 kPosition -> ISR_DoPosition) 输出 PWM
+  end
+  Ctrl->>Can: Read() 按查询分辨率打包位置/速度/力矩寄存器应答
+  Can-->>Host: Transport.cycle() 返回 moteus.Result
+```
+
+关键复现入口：主机侧参考 `lib/python/examples/simple.py`（通过 `moteus.Controller.set_position` 与 `Transport.cycle` 收发）；固件侧主循环在 `fw/moteus.cc` `main()`，实时 FOC 环在 `fw/bldc_servo.cc` 与 `fw/bldc_servo_control.h`。
+
 ## 工程实践
 
 - 精读原理图：功率级、栅极驱动、电流采样、保护与 CAN-FD——对应 [力矩电机路线 Stage 4](../../roadmap/depth-torque-motor-design.md)。

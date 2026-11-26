@@ -144,6 +144,48 @@ flowchart LR
 
 典型步进：`ModelBuilder` 构建 → `Model` → 创建 Sensors 与 `CollisionPipeline`，分配 `State` / `Control` / `Contacts` → `collide` → `Solver.step` → 传感器与可视化。
 
+## 源码运行时序图
+
+以下时序基于官方仓库 `newton-physics/newton`（`main` 分支）中 `newton/examples/__main__.py`、`newton/examples/__init__.py`、`newton/examples/robot/example_robot_g1.py`、`newton/_src/sim/collide.py` 与 `newton/_src/solvers/mujoco/solver_mujoco.py` 核对整理：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as newton/examples/__main__.py
+  participant Runner as newton/examples/__init__.py
+  participant Ex as Example (example_robot_g1.py)
+  participant MB as ModelBuilder / Model
+  participant Col as CollisionPipeline
+  participant Sol as SolverMuJoCo (solver_mujoco.py)
+
+  CLI->>Runner: main() 解析示例名并 runpy.run_module
+  Ex->>Runner: newton.examples.init(parser) 创建 viewer 与 args
+  Ex->>MB: add_usd() / replicate() / finalize() 构建 Model
+  Ex->>Sol: SolverMuJoCo(model, ...) 初始化 mjw_model / mjw_data
+  Ex->>MB: model.state() / control() 与 newton.eval_fk()
+  Ex->>Col: CollisionPipeline(model) 分配 contacts
+  Ex->>Ex: capture() 以 wp.ScopedCapture 录制 simulate() CUDA 图
+  loop while viewer.is_running()
+    Runner->>Ex: example.step()
+    alt 已录制 CUDA 图
+      Ex->>Ex: wp.capture_launch(self.graph)
+    else 未录制
+      Ex->>Col: collision_pipeline.collide(state_0, contacts)
+      loop sim_substeps
+        Ex->>Ex: state_0.clear_forces() 与 viewer.apply_forces()
+        Ex->>Sol: step(state_0, state_1, control, contacts, sim_dt)
+        Sol->>Sol: _apply_mjc_control / _convert_contacts_to_mjwarp
+        Sol->>Sol: _mujoco_warp_step()
+        Sol->>Sol: _update_newton_state() 写入 state_1
+        Ex->>Ex: 交换 state_0 与 state_1
+      end
+    end
+    Runner->>Ex: example.render() 提交状态与接触到 viewer
+  end
+```
+
+关键复现入口：`python -m newton.examples robot_g1`（经 `newton/examples/__init__.py` 的 `main()` → `init()` → `run()` 驱动示例循环；若选 `--solver kamino` 则改由 `SolverKamino` 步进）。
+
 ## 工程实践
 
 | 步骤 | 做法 |

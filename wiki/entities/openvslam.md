@@ -48,6 +48,10 @@ flowchart LR
     Note["社区活跃延续分支: stella_vslam"] -.-> Track
 ```
 
+## 源码运行时序图
+
+**不适用**。经核查官方仓库 `xdspacelab/openvslam`（`master` 分支，GitHub 仓库状态为 `archived: true`，最后提交 `0fcb161` 于 `2021-02-24`），当前仓库树仅包含 `README.md` 一份文件，正文仅指向 *Termination of the release* 停更公告，已移除全部 C++/CMake 源码与可运行示例入口，因此无法基于该仓真实源码核对运行时调用链。若需源码级时序分析，应核对社区延续仓库 [stella-cv/stella_vslam](https://github.com/stella-cv/stella_vslam)。
+
 ## 常见误区或局限
 
 - **维护状态**：原仓库 README 提示后续开发重心转移，选型前确认分支活跃度。
