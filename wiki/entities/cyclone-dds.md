@@ -73,6 +73,39 @@ flowchart LR
 
 **上游元数据（2026-07）：** [eclipse-cyclonedds/cyclonedds](https://github.com/eclipse-cyclonedds/cyclonedds) ~1.3k★，EPL-2.0/EDL-1.0，最新发行 **11.0.1**；文档入口 [cyclonedds.io/docs](https://cyclonedds.io/docs/)。
 
+## 源码运行时序图
+
+以下时序图基于仓库 `README.md`、`examples/helloworld/publisher.c`、`examples/helloworld/subscriber.c` 与 `examples/dynsub/dynsub.c` 梳理，呈现 Cyclone DDS C API 的标准 DCPS 发布/订阅匹配流程与基于 XTypes 内置主题的动态订阅发现路径。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Pub as Publisher (publisher.c)
+  participant Sub as Subscriber (subscriber.c)
+  participant DDS as Cyclone DDS C API (dds.h / RTPS)
+  participant Dyn as Dynamic Subscriber (dynsub.c)
+  Pub->>DDS: dds_create_participant / dds_create_topic(HelloWorldData_Msg_desc) / dds_create_writer
+  Sub->>DDS: dds_create_participant / dds_qset_reliability(DDS_RELIABILITY_RELIABLE) / dds_create_reader
+  Pub->>DDS: dds_set_status_mask(writer, DDS_PUBLICATION_MATCHED_STATUS)
+  loop 轮询等待 Reader 发现 (publisher.c)
+    Pub->>DDS: dds_get_status_changes(writer, &status) / dds_sleepfor
+  end
+  Pub->>DDS: dds_write(writer, &msg)
+  loop 轮询读取有效样本 (subscriber.c)
+    Sub->>DDS: dds_read(reader, samples, infos, MAX_SAMPLES, MAX_SAMPLES)
+    DDS-->>Sub: infos[0].valid_data 为真时返回 HelloWorldData_Msg
+  end
+  opt XTypes 动态发现与反序列化 (dynsub.c)
+    Dyn->>DDS: dds_create_waitset + 订阅 DDS_BUILTIN_TOPIC_DCPSPUBLICATION / DCPSSUBSCRIPTION
+    DDS-->>Dyn: dds_waitset_wait_until / dds_take 返回 dds_builtintopic_endpoint_t
+    Dyn->>DDS: dds_builtintopic_get_endpoint_type_info + dds_find_topic (回退 dds_create_topic_descriptor)
+    Dyn->>Dyn: load_type_with_deps + build_typecache_to 构建本地类型缓存
+    Dyn->>DDS: dds_take 或 dds_takecdr + ddsi_serdata_to_sample 输出 JSON/XML
+  end
+  Pub->>DDS: dds_delete(participant)
+  Sub->>DDS: HelloWorldData_Msg_free + dds_delete(participant)
+```
+
 ## 局限与风险
 
 - 发行线混用（0.10 ↔ 11.x）导致与厂商二进制不互通。

@@ -68,6 +68,33 @@ flowchart LR
   Solvers --> App["应用场景：大规模最优控制与 MPC 求解（非线性系统、机器人、飞行器）"]
 ```
 
+## 源码运行时序图
+
+以下时序图基于仓库 `README.md`、`ct_core/examples/include/ct/core/examples/CustomController.h`、`ct_optcon/examples/DMS.cpp` 与 `ct_optcon/examples/KalmanFiltering.cpp` 梳理，展示 Direct Multiple Shooting（IPOPT）轨迹优化与基于 `CustomController` + `ExtendedKalmanFilter` 的闭环仿真估计两条核心运行路径。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Main as main (DMS.cpp / KalmanFiltering.cpp)
+  participant Sys as SecondOrderSystem + CustomController
+  participant Prob as ContinuousOptConProblem
+  participant Dms as DmsSolver (IPOPT)
+  participant Int as Integrator (RK4)
+  participant EKF as ExtendedKalmanFilter
+  Main->>Sys: 构造 SecondOrderSystem(w_n, zeta) 与 CustomController(uff, kp, kd)
+  Main->>Prob: 装配 TermQuadratic(dmsCost.info)、TerminalConstraint 与初始状态 x_0
+  Main->>Dms: 构造 DmsSolver(optConProblem, DmsSettings[RK4, IPOPT])
+  Main->>Dms: setInitialGuess(DmsPolicy) 后调用 solve()
+  Dms-->>Main: getSolution() 返回 DmsPolicy(xSolution_, uSolution_, tSolution_)
+  Main->>Sys: oscillator->setController(controller)
+  loop 闭环仿真与状态估计 (KalmanFiltering.cpp)
+    Main->>Sys: controller->computeControl(x, t, u_temp)
+    Main->>Int: integrate_n_steps(x, t, 1, dt) 推演系统状态
+    Main->>EKF: filter.predict(controls[i], dt, t) 与 filter.update(y, dt, t)
+    EKF-->>Main: 返回估计状态 x_est
+  end
+```
+
 ## 关联页面
 
 - [model-predictive-control](../methods/model-predictive-control.md)

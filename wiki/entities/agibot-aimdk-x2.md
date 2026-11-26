@@ -73,6 +73,42 @@ flowchart LR
 4. **与 AimRT 分工** — 需要改模块通信、插件或跨端部署时查 [AimRT](./cn-os-aimrt.md) 与 `aimrt_mujoco_sim`；需要 X2 真机任务 API 时用 AimDK。
 5. **仿真对照** — 动力学与 URDF 用 [agibot_x2_urdf](./cn-os-agibot-x2-urdf.md)；Sim2Real 策略部署仍需核对 AimDK 控制话题与训练栈关节/观测约定是否一致。
 
+## 源码运行时序图
+
+AimDK X2 上层 SDK 未随仓库全量开源，本节时序限定于已核查的底层开源运行时 `AimRT/AimRT` 仓库文件：`README.md`、`src/examples/cpp/context/install/linux/bin/start_examples_cpp_context_executor.sh`、`src/examples/cpp/agi_header_plugin/app/main.cc` 与 `src/common/ros2_util/rostype_mapping.h`。以下展示 `agi_header_plugin` 独立入口与 `aimrt_main` 启动脚本下的初始化、通道发布与关闭生命周期。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 启动脚本 (start_examples_cpp_context_executor.sh)
+  participant App as 示例入口 (agi_header_plugin/app/main.cc)
+  participant Core as AimRTCore (core/aimrt_core.h)
+  participant ModMgr as ModuleManager / CoreRef
+  participant Pub as PublisherProxy (Protobuf / ROS 2)
+  participant RosMap as TypeMappingCpp (rostype_mapping.h)
+
+  Note over CLI: 通用执行器示例入口 ./aimrt_main --cfg_file_path=./cfg/examples_cpp_context_executor_cfg.yaml
+  App->>Core: AimRTCore core / core.Initialize(options)
+  App->>ModMgr: core.GetModuleManager().CreateModule("AgiHeaderExampleModule")
+  ModMgr-->>App: CoreRef pb_module_handle
+  App->>Pub: GetChannelHandle().GetPublisher("agi_header_topic")
+  App->>Pub: PublisherProxy(AgiHeaderExampleMsg).RegisterPublishType()
+
+  opt AIMRT_BUILD_WITH_ROS2
+    App->>ModMgr: CreateModule("AgiHeaderRos2ExampleModule")
+    ModMgr-->>App: CoreRef ros2_module_handle
+    App->>RosMap: 静态类型映射 TypeMappingCpp(RosTypeId) (rosidl -> CppType)
+    App->>Pub: GetChannelHandle().GetPublisher("agi_header_ros2_topic")
+    App->>Pub: PublisherProxy(ros2_msg::msg::AgiHeaderExampleMsg).RegisterPublishType()
+  end
+
+  App->>Core: fu = core.AsyncStart()
+  App->>Pub: pb_publisher_proxy->Publish(pb_msg)
+  App->>Pub: ros2_publisher_proxy->Publish(ros2_msg)
+  App->>Core: core.Shutdown() / fu.wait()
+  App->>App: 校验 pb_msg.header() 与 ros2_msg.header (seq_num, publisher_name, publish_time)
+```
+
 ## 局限与风险
 
 - **SDK 非 GitHub 全量开源**：开发包通过文档站「获取 SDK」分发，需硬件与官方流程；与 AimRT 的公开仓库模式不同。
