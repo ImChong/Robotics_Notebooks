@@ -61,6 +61,46 @@ flowchart TD
 - 官方地址：<https://github.com/OpenEtherCATsociety/SOES>（文章给出，本次未独立打开核查）
 - 协议背景见 [EtherCAT 协议基础](../concepts/ethercat-protocol.md)；主站实时调优见 [主站优化指南](../queries/ethercat-master-optimization.md)。
 
+## 源码运行时序图
+
+以下时序图基于仓库 `applications/linux_lan9252demo/main.c`、`applications/rtl_slavedemo/main.c` 与 `soes/ecat_slv.c` 源码整理，反映从站协议栈初始化与自由运行轮询周期的实际调用链。
+
+```mermaid
+sequenceDiagram
+  participant App as 应用入口 (linux_lan9252demo / rtl_slavedemo)
+  participant Slv as soes/ecat_slv.c
+  participant ESC as ESC HAL (ESC_init / ESC_read / ESC_write)
+  participant CoE as CoE 与邮箱模块 (esc_coe)
+  participant Hooks as 应用回调 (cb_get_inputs / cb_set_outputs)
+
+  App->>Slv: ecat_slv_init(&config) (rtl_slavedemo 通过 task_spawn 启动)
+  Slv->>ESC: ESC_config(config) 与 ESC_init(config)
+  Slv->>ESC: 循环 ESC_read(ESCREG_DLSTATUS) 等待 DLstatus & 0x0001
+  Slv->>ESC: ESC_ALstatus(ESCinit) / ESC_stopmbx / ESC_stopinput / ESC_stopoutput
+  Slv->>CoE: COE_initDefaultValues()
+
+  loop while (1) 自由运行周期
+    App->>Slv: ecat_slv()
+    Slv->>Slv: ecat_slv_poll()
+    Slv->>ESC: ESC_read(ESCREG_LOCALTIME) 与 ESC_state() / ESC_sm_act_event()
+    opt ESC_mbxprocess() > 0
+      Slv->>CoE: ESC_coeprocess() / ESC_foeprocess() / ESC_eoeprocess() / ESC_xoeprocess()
+    end
+
+    Slv->>Slv: DIG_process(WD_FLAG | OUTPUTS_FLAG | APP_HOOK_FLAG | INPUTS_FLAG)
+    opt App.state & APPSTATE_OUTPUT 且 ALevent & ESCREG_ALEVENT_SM2
+      Slv->>ESC: RXPDO_update() -> ESC_read(ESC_SM2_sma, rxpdo)
+      Slv->>CoE: COE_pdoUnpack(rxpdo, sm2mappings, SMmap2)
+      Slv->>Hooks: cb_set_outputs() 与 application_hook()
+    end
+    opt App.state > 0
+      Slv->>Hooks: cb_get_inputs()
+      Slv->>CoE: TXPDO_update() -> COE_pdoPack(txpdo, sm3mappings, SMmap3)
+      Slv->>ESC: ESC_write(ESC_SM3_sma, txpdo)
+    end
+  end
+```
+
 ## 局限与风险
 
 - **开源状态：** 文章声明为公开仓库；**本次会话无法访问该仓库，开源程度/许可证未独立核查**，待后续按 ingest 步骤 2.5 补查。

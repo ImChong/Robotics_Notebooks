@@ -58,6 +58,34 @@ flowchart TD
 - 官方地址：<https://github.com/feecat/OpenSML>（文章给出，本次未独立打开核查）
 - 协议背景见 [EtherCAT 协议基础](../concepts/ethercat-protocol.md)；主站实时调优见 [主站优化指南](../queries/ethercat-master-optimization.md)。
 
+## 源码运行时序图
+
+以下时序图基于仓库 `src/OpenSML_Control.txt`、`src/OpenSML_Axis.txt`、`src/OpenSML_Power.txt` 与 `src/OpenSML_ProfilePosition.txt` 的 ST 功能块源码整理，展示 PLC 周期内使能状态机与轮廓位置模式 (Mode 1) 的 PDO 交互流程。
+
+```mermaid
+sequenceDiagram
+  participant Ctrl as OpenSML_Control (PLC 周期 1ms)
+  participant Pwr as OpenSML_Power 功能块
+  participant PP as OpenSML_ProfilePosition 功能块
+  participant Axis as OpenSML_Axis (CiA402 PDO 结构体)
+
+  Ctrl->>Pwr: 调用 OpenSML_Power(Axis, xEnable, xEmergencyStop)
+  Pwr->>Axis: ControlWord.2 := xEmergencyStop (QuickStop)
+  opt iState = 0 且 Axis.StatusWord.3 为真 (存在故障)
+    Pwr->>Axis: iState = 10 -> ControlWord.7 := TRUE (FaultReset) 直到 StatusWord.3 清零
+  end
+  Pwr->>Axis: iState = 20 -> ControlWord.1 := TRUE 等待 StatusWord.0 (ReadyToSwitchOn)
+  Pwr->>Axis: iState = 30 -> ControlWord.0 := TRUE 等待 StatusWord.1
+  Pwr->>Axis: iState = 40 -> Target_Position := Position_Actual_Value, ControlWord.3 := TRUE 等待 StatusWord.2
+  Pwr-->>Ctrl: iState = 50 -> xDone := TRUE
+
+  Ctrl->>PP: 调用 OpenSML_ProfilePosition(Axis, xEnable, xExecute, diTargetPosition, udiProfileVelocity)
+  PP->>Axis: ControlWord.5 := xContinueMove, ControlWord.6 := xRelativeMode, ControlWord.4 := xExecute & (iState = 20)
+  PP->>Axis: iState = 10 -> Modes_of_operation := 1 等待 Modes_of_operation_display = 1 与 StatusWord.2
+  PP->>Axis: iState = 20 -> 写入 Profile_Velocity 与 Target_Position
+  Axis-->>PP: 通过 StatusWord.10/12/13/14 反馈 xBusy, xDone, xMoving 或故障跳转 iState = 999
+```
+
 ## 局限与风险
 
 - **开源状态：** 文章声明为公开仓库；**本次会话无法访问该仓库，开源程度/许可证未独立核查**，待后续按 ingest 步骤 2.5 补查。

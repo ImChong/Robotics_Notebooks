@@ -61,6 +61,47 @@ flowchart TD
 - 官方地址：<https://github.com/ethercrab-rs/ethercrab>（文章给出，本次未独立打开核查）
 - 协议背景见 [EtherCAT 协议基础](../concepts/ethercat-protocol.md)；主站实时调优见 [主站优化指南](../queries/ethercat-master-optimization.md)。
 
+## 源码运行时序图
+
+以下时序图基于仓库 `Cargo.toml`、`examples/ek1100.rs`（标准 `smol` 异步初始化与周期 PDI 回路）以及 `examples/dc.rs`（DC 分布式时钟对齐与 `tx_rx_dc` 周期）源码整理。
+
+```mermaid
+sequenceDiagram
+  participant App as 应用入口 ek1100.rs / dc.rs
+  participant Pdu as PduStorage (PDU_STORAGE)
+  participant MD as MainDevice
+  participant TxRx as ethercrab::std::tx_rx_task
+  participant Grp as SubDeviceGroup
+  participant Sub as SubDevice (EK1100 / EL3004 / EL4102)
+
+  App->>Pdu: PDU_STORAGE.try_split() 获取 tx, rx, pdu_loop
+  App->>MD: MainDevice::new(pdu_loop, Timeouts, MainDeviceConfig)
+  App->>TxRx: 启动 tx_rx_task(&interface, tx, rx, TxRxTaskConfig)
+  App->>MD: init_single_group(ethercat_now) 扫描并配置从站
+  MD-->>Grp: 返回处于 PRE-OP 状态的 group
+  App->>Sub: subdevice.sdo_write / sdo_write_array 配置 SM PDO 映射 (0x1c12 / 0x1c13 / 0x1c32)
+
+  opt 分布式时钟路径 (examples/dc.rs)
+    App->>Sub: subdevice.set_dc_sync(DcSync::Sync0 / Sync01)
+    App->>Grp: group.into_pre_op_pdi(&maindevice)
+    loop 直至 max_deviation < 500ns
+      App->>Grp: group.tx_rx_sync_system_time(&maindevice)
+      App->>Sub: register_read(RegisterAddress::DcSystemTimeDifference)
+    end
+    App->>Grp: group.configure_dc_sync(&maindevice, DcConfiguration)
+    App->>Grp: into_safe_op() 后调用 request_into_op() 并轮询 tx_rx_dc 直到 all_op()
+  end
+
+  App->>Grp: group.into_op(&maindevice) 进入 OP (ek1100.rs)
+  loop 5ms 周期任务 (tick_interval.next())
+    App->>Grp: group.tx_rx(&maindevice) 或 tx_rx_dc(&maindevice)
+    Grp->>TxRx: 经 pdu_loop 与 tx / rx 任务收发 EtherCAT 帧
+    App->>Sub: io_raw() / outputs_raw_mut() 读写过程数据
+  end
+
+  App->>Grp: 退出前依次调用 into_safe_op -> into_pre_op -> into_init(&maindevice)
+```
+
 ## 局限与风险
 
 - **开源状态：** 文章声明为公开仓库；**本次会话无法访问该仓库，开源程度/许可证未独立核查**，待后续按 ingest 步骤 2.5 补查。

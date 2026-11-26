@@ -59,6 +59,42 @@ flowchart TD
 - 官方地址：<https://github.com/kubabuda/ecat_servo>（文章给出，本次未独立打开核查）
 - 协议背景见 [EtherCAT 协议基础](../concepts/ethercat-protocol.md)；主站实时调优见 [主站优化指南](../queries/ethercat-master-optimization.md)。
 
+## 源码运行时序图
+
+以下时序图基于仓库 `cia402device/src/main.c`、`cia402device/lib/cia402device/cia402device.c` 与 `examples/EasyCAT_SPL/src/main.c` 源码整理，展示 CiA402 状态机驱动流程及 STM32/EasyCAT 固件主循环入口。
+
+```mermaid
+sequenceDiagram
+  participant EasyCAT as examples/EasyCAT_SPL/src/main.c
+  participant TestMain as cia402device/src/main.c
+  participant SM as cia402device.c 状态机
+  participant Axis as cia402_axis_t / Status_Word
+
+  Note over EasyCAT: STM32 固件入口 SysTick_Config(1ms) -> Delay_init() -> ECAT_AppSetup()
+  loop EasyCAT 主循环 while (1)
+    EasyCAT->>EasyCAT: ECAT_Application() 周期执行从站应用
+  end
+
+  TestMain->>SM: cia402_initialize(&cia402axis, &mockOD_Status_Word, &mockOD_ALstatus)
+  SM->>Axis: state = NOT_READY_TO_SWITCH_ON, transition = NO_TRANSITION, 清零 flags
+  TestMain->>SM: cia402_state_machine(&cia402axis, controlword)
+  SM->>Axis: 重置 *statusword = 0x0000, prevflags = flags
+
+  alt *ALstatus == AL_STATUS_OP 且处于 NOT_READY_TO_SWITCH_ON
+    SM->>Axis: 状态迁移 1 -> SWITCH_ON_DISABLED
+  else SWITCH_ON_DISABLED 收到 SHUTDOWN 或 AL_STATUS_OP
+    SM->>Axis: 状态迁移 2 -> READY_TO_SWITCH_ON
+  else READY_TO_SWITCH_ON 收到 SWITCH_ON / SWITCH_ON_ENABLE
+    SM->>Axis: 状态迁移 3 (-> SWITCHED_ON) 或 3+4 (-> OPERATION_ENABLED)
+  else OPERATION_ENABLED 收到 DISABLE_OPERATION / QUICK_STOP / *ALstatus != AL_STATUS_OP
+    SM->>Axis: 分别迁移至 SWITCHED_ON / QUICK_STOP_ACTIVE / SWITCH_ON_DISABLED
+  else FAULT_REACTION_ACTIVE 或 FAULT 收到 FAULT_RESET
+    SM->>Axis: 自动迁移 14 -> FAULT, 复位迁移 15 -> SWITCH_ON_DISABLED
+  end
+
+  SM->>Axis: 按当前 axis->state 更新 config_allowed, axis_func_enabled, hv_power_applied, brake_applied
+```
+
 ## 局限与风险
 
 - **开源状态：** 文章声明为公开仓库；**本次会话无法访问该仓库，开源程度/许可证未独立核查**，待后续按 ingest 步骤 2.5 补查。

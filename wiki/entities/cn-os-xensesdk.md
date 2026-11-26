@@ -64,6 +64,52 @@ flowchart LR
 2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
 3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
 
+## 源码运行时序图
+
+以下时序图基于对官方示例脚本 `Examples/example_local.py`、`Examples/example_remote.py` 与 `Examples/example_solver.py` 的实际调用链梳理：
+
+```mermaid
+sequenceDiagram
+  participant App as example_local / example_remote / example_solver
+  participant RPC as call_service (xensesdk)
+  participant S as Sensor (xensesdk)
+  participant Sol as Solver (createSolver)
+  participant UI as ExampleView (view2d / Plot)
+
+  alt 远程连接 (Examples/example_remote.py)
+    App->>RPC: call_service("master_...", "scan_sensor_sn", timeout_sec=1)
+    RPC-->>App: 返回设备序列号字典 (serial_number)
+    App->>S: Sensor.create(serial_number, mac_addr=...)
+  else 本地连接 (Examples/example_local.py)
+    App->>S: Sensor.create(cam_id=0)
+  else Solver 分离推理 (Examples/example_solver.py)
+    App->>S: Sensor.create("OG000237")
+    App->>S: sensor.exportRuntimeConfig(save_dir=".")
+    App->>Sol: Sensor.createSolver("./runtime_OG000237")
+    App->>S: sensor.selectSensorInfo(OutputType.Rectify)
+    App->>Sol: solver.calibrateSensor(rectify_image=rectify)
+  end
+
+  App->>UI: ExampleView(..., title=...) / create2d(...) / createPlot("Force", "Torque")
+  App->>UI: view.setCallback(update) -> view.show()
+
+  loop 逐帧回调 update()
+    alt 本地或远程直连
+      UI->>S: sensor.selectSensorInfo(Rectify, Difference, Depth, Force, ForceResultant)
+      S-->>UI: rectify, difference, depth, force, force6d
+      UI->>S: sensor.drawMarkerMove(rectify)
+    else Solver 推理路径
+      UI->>S: sensor.selectSensorInfo(OutputType.Rectify)
+      UI->>Sol: solver.selectSensorInfo(..., rectify_image=rectify)
+      Sol-->>UI: rectify, difference, depth, force, force_resultant
+      UI->>Sol: solver.drawMarkerMove(rectify)
+    end
+    UI->>UI: view2d.setData / setDepth / setForceFlow / force_plot / torque_plot
+  end
+
+  App->>S: finally sensor.release()
+```
+
 ## 局限与风险
 
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。

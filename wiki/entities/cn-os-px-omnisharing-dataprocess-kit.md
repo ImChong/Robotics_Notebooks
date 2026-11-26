@@ -64,6 +64,28 @@ flowchart LR
 2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
 3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
 
+## 源码运行时序图
+
+以下时序图基于仓库唯一可执行入口脚本 `entry/first_run.sh` 编写；该脚本仅负责宿主机工作区校验、清理旧容器并拉起 `px_pipeline:0.1.3` 容器交互式 Shell（实际后处理脚本位于容器镜像 `/home/app/pipeline` 内，未在当前源码仓库展开）：
+
+```mermaid
+sequenceDiagram
+  participant User as 宿主机用户
+  participant Script as entry/first_run.sh
+  participant Docker as Docker Engine
+  participant Cont as px_pipeline 容器 (/home/app)
+
+  User->>Script: bash entry/first_run.sh <WORKDIR>
+  Script-->>User: 打印 ver 0.1.3 横幅并 read 等待 Enter 确认
+  User->>Script: 按 Enter 确认
+  Script->>Script: 3 秒倒计时并解析 WORKDIR 绝对路径 (为空则 exit 1)
+  Script->>Docker: docker rm -f px_pipeline (移除同名旧容器)
+  Script->>Docker: docker run -it --gpus all --network=host -v WORKDIR:/ws -w /home/app --name px_pipeline px_pipeline:0.1.3
+  Docker->>Cont: 启动容器并运行 bash -lc
+  Cont->>Cont: 输出 Initialization finished 并执行 exec bash -i
+  Cont-->>User: 交付容器内交互式 Shell (工作目录 /home/app, 挂载目录 /ws)
+```
+
 ## 局限与风险
 
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
