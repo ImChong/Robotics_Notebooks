@@ -6,7 +6,7 @@
 - **关联论文：** [MemT-1.0 技术报告](../papers/memt_1_0_arxiv_2610_26825.md)
 - **模型发行：** [Hugging Face collection](https://huggingface.co/collections/MemTensor/memt-1) · [ModelScope collection](https://www.modelscope.cn/collections/MemTensor/MemT-10)
 - **Pro 权重：** [Hugging Face Pro](https://huggingface.co/MemTensor/MemT-1.0-Pro) · [ModelScope Pro](https://www.modelscope.cn/models/MemTensor/MemT-1.0-Pro)
-- **更新日期：** 2026-11-24
+- **更新日期：** 2026-11-26
 - **入库日期：** 2026-10-20
 
 ## 一句话说明
@@ -37,6 +37,8 @@
 - 权重入口见上述 Hugging Face 与 ModelScope collections；具体可用模型及条款以发行页为准。
 
 ## 源码核对入口
+
+- 本次复核固定在 `4b08b5d54072b80221f22c912a0d560e02847295`。Pro launcher 从本地配置的 `memt_nemotron_h` 识别家族；读记忆默认开启，自动写入需显式指定，正常结束后才能发布候选状态。这里只核对代码与模型卡，不加载权重或启动服务。
 
 - [Pro 启动脚本](https://github.com/MemTensor/MemT-1.0/blob/4b08b5d54072b80221f22c912a0d560e02847295/inference/start_memt_pro.sh)
 - [MemTSession](https://github.com/MemTensor/MemT-1.0/blob/4b08b5d54072b80221f22c912a0d560e02847295/inference/memt_sglang/client/session.py)：`chat` 取得 lease，`_generate` 组织 prompt 并调用 `client.query`，`_commit_turns` 重放 token 并提交；`save_state` 在事务内提交未保存历史、导出候选状态，发布成功后清除本地轮次。
