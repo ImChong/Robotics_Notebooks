@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | Orca：并行 Agent 工作区与运行主机边界
+
+- 收录固定源码，区分 Git worktree、远程运行主机、移动端与上游模型订阅。
+- 增加并行审查流程、CLI 静态调用时序与编排概念回链。
+
 ## [2026-11-26] ingest | Unidata Sim2Real：补充真机留出与分层归因
 
 - 归档原文，区分采集商指南与论文原证，不将感知样本数或硬件试验量级当作通用验收标准。
