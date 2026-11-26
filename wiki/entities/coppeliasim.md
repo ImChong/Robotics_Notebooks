@@ -63,6 +63,45 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+`CoppeliaRobotics/coppeliaSimLib` 在 `CMakeLists.txt` 中构建为共享库 `coppeliaSim`，由宿主可执行程序通过 `sourceCode/interfaces/sim.cpp` 暴露的 C API 驱动初始化、主循环与仿真步进：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Host as 宿主进程 / 客户端
+    participant API as sim.cpp / simInternal.cpp
+    participant App as App (app.cpp)
+    participant Thr as CSimThread (simThread.cpp)
+    participant SC as CSceneContainer (sceneContainer.cpp)
+    participant Sim as CSimulation (simulation.cpp)
+
+    Host->>API: simInitialize(appDir, options)
+    API->>App: simInitialize_internal() -> App::init()
+    App->>SC: new CSceneContainer() + initialize()
+    App->>SC: 加载插件/Add-On 并触发 sim_syscb_init
+    Host->>API: simStartSimulation()
+    API->>Sim: simStartSimulation_internal() -> startOrResumeSimulation()
+    Sim->>SC: simulationAboutToStart() + setSimulationState(sim_simulation_running)
+    loop 主事件循环
+        Host->>API: simLoop(callback, options)
+        API->>App: simLoop_internal() -> App::loop()
+        App->>SC: instancePass() + dispatchEvents()
+        App->>API: 轮询 simGetSimulatorMessage 处理启停/暂停请求
+        alt 仿真运行中 (sim_simulation_advancing)
+            App->>SC: embeddedScriptContainer->getMainScript()->systemCallMainScript()
+            App->>Sim: advanceSimulationByOneStep()
+            Sim->>SC: simulationAboutToStep() 推进仿真时间步
+        end
+        App->>Thr: appendSimulationThreadCommand / _handleSimulationThreadCommands()
+    end
+    Host->>API: simDeinitialize()
+    API->>App: simDeinitialize_internal() -> App::cleanup()
+```
+
+核对源码路径（`CoppeliaRobotics/coppeliaSimLib` branch `master`）：`CMakeLists.txt`、`sourceCode/interfaces/sim.cpp`、`sourceCode/interfaces/simInternal.cpp`、`sourceCode/various/app.cpp`、`sourceCode/various/simThread.cpp`、`sourceCode/mainContainers/sceneContainer.cpp`、`sourceCode/mainContainers/scene.cpp`、`sourceCode/mainContainers/sceneContainers/simulation.cpp`。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

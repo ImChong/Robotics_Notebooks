@@ -62,6 +62,38 @@ flowchart LR
   MESH --> DOWN[Avatar / 渲染 / 脸驱动 rig]
 ```
 
+## 源码运行时序图
+
+`google/GNM` 的核心可运行实现位于主仓子包 `gnm/shape/`（支持 NumPy / JAX / PyTorch / TensorFlow 后端），典型运行流程包括「远程加载权重资产 + 语义采样器解码参数 + 参数化网格前向蒙皮生成」：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 调用方脚本 / Notebook
+    participant Cls as gnm_numpy.GNM (gnm_base.py / gnm_numpy.py)
+    participant Loader as gnm_data_loader.py
+    participant Sampler as semantic_sampler.py (ExpressionSampler / IdentitySampler)
+    participant Core as gnm_xnp.GNM (gnm_xnp.py)
+
+    User->>Cls: GNM.from_remote(version=V3, variant=HEAD)
+    Cls->>Loader: load_model_from_remote() 下载并缓存 .npz 权重至 ~/.cache/gnm/models/
+    Loader-->>Cls: 返回 model data_dict
+    Cls->>Cls: _from_model_data(data_dict) 初始化基组、蒙皮权重与拓扑
+    opt 使用语义标签采样参数
+        User->>Sampler: ExpressionSampler() / IdentitySampler() 加载 .h5 CVAE 解码器
+        User->>Sampler: sample_expression(Expression.HAPPY) / sample_identity(Gender, Ethnicity)
+        Sampler-->>User: 返回 expression / identity 系数向量
+    end
+    User->>Core: gnm(identity, expression, rotations, translation)
+    Core->>Core: _check_parameter_shapes() 校验并补全缺省零参数
+    Core->>Core: vertex_positions_bind_pose(identity, expression) + joint_positions_bind_pose(identity)
+    Core->>Core: compute_pose_correctives(rotations) 计算姿态修正偏移
+    Core->>Core: vertex_positions_world(vertices, joints, rotations, translation) 执行 LBS 变换
+    Core-->>User: 返回世界坐标密集网格顶点 ([..., V, 3])
+```
+
+核对源码路径（`google/GNM` branch `main`）：`README.md`、`gnm/shape/README.md`、`gnm/shape/gnm_base.py`、`gnm/shape/gnm_numpy.py`、`gnm/shape/gnm_xnp.py`、`gnm/shape/semantic_sampler.py`。
+
 ## 工程实践
 
 1. **环境：** Python **3.13** 虚拟环境；`git clone` 后 `cd gnm/gnm/shape`，按需求 `pip install -e ".[pytorch]"` 等（见 [官方 README](https://github.com/google/GNM/tree/main/gnm/shape)）。

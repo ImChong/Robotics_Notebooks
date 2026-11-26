@@ -80,6 +80,47 @@ flowchart LR
 5. 真机：OMY 用 [open_manipulator](https://github.com/ROBOTIS-GIT/open_manipulator)；AI Worker 用 [ai_worker](./robotis-ai-worker.md)；采集训练界面用 [physical_ai_tools](./robotis-physical-ai-tools.md)。
 6. 社区多厂商速度跟踪对照：[robot_lab](./robot-lab.md)（本仓偏操作，不是四足 loco 替代）。
 
+## 源码运行时序图
+
+以下时序图基于 `ROBOTIS-GIT/cyclo_lab`（`main` 分支）实际源码核对，覆盖两条官方入口：**RSL-RL 仿真训练 + TorchScript 真机推理** 与 **Sim2Real Zenoh ROS 2 仿真桥接**。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Train as rsl_rl/train.py (_run)
+    participant Env as IsaacLab Env + RslRlVecEnvWrapper
+    participant Runner as RSL-RL Runner
+    participant Bringup as sim2real/bringup.py (main)
+    participant Bridge as FFWSG2TopicBridge / FFWSH5TopicBridge
+    participant Policy as OMYReachPolicy (run_omy_reach.py)
+
+    Note over Train,Runner: 1. RL 仿真训练与导出链路
+    Train->>Env: resolve_task_config() + launch_simulation() + create_isaaclab_env()
+    Train->>Runner: create_rsl_rl_runner(env, agent_cfg)
+    Train->>Env: export_sim2real_cfg(env.unwrapped, rank_dir)
+    Train->>Runner: runner.learn(max_iterations)
+
+    Note over Bringup,Bridge: 2. Sim2Real Zenoh ROS 2 仿真桥接 (scripts/sim2real/bringup.py)
+    Bringup->>Env: gym.make(args_cli.task, cfg=env_cfg)
+    Bringup->>Bridge: _make_bridge(env, camera_hz) 订阅关节轨迹与 cmd_vel
+    loop 控制频率 control_hz
+        Bringup->>Bridge: bridge.get_action() 或 bridge.get_hold_action()
+        Bringup->>Env: env.step(action)
+        Bringup->>Bridge: bridge.publish_observations() 发布 /joint_states、/odom、/tf 与相机图像
+    end
+
+    Note over Policy: 3. OMY 真机策略推理 (run_omy_reach.py)
+    Policy->>Policy: PolicyExecutor.load_policy_model() + load_policy_yaml()
+    loop step_size 周期
+        Policy-->>Policy: _on_joint_state() 订阅 JOINT_STATE 更新观测
+        Policy->>Policy: run_policy_step() -> update_action() TorchScript 推理
+        Policy->>Bridge: publish() 发布 JOINT_TRAJECTORY 与 /tf
+    end
+```
+
+- **已核对源码路径：** `scripts/reinforcement_learning/rsl_rl/train.py`、`scripts/sim2real/bringup.py`、`source/cyclo_lab/cyclo_lab/runtime/bridges/sg2/topic_bridge.py`、`source/cyclo_lab/cyclo_lab/runtime/bridges/sh5/bridge.py`、`scripts/sim2real/reinforcement_learning/inference/OMY/reach/run_omy_reach.py`、`source/cyclo_lab/cyclo_lab/runtime/policy_executor.py`、`scripts/sim2real/imitation_learning/inference/inference_demos.py`。
+- **说明：** 当前 `main` 分支（已升级对齐 Isaac Sim 6.2.0 / Isaac Lab 3.0.0）中，Sim2Real 统一桥接入口为 `scripts/sim2real/bringup.py`（通过 `--bridge ffw_sg2|ffw_sh5` 选择 `FFWSG2TopicBridge` 或 `FFWSH5TopicBridge`）；模仿学习推理入口为 `scripts/sim2real/imitation_learning/inference/inference_demos.py`（调用 `OMYSdk` / `FFWSG2Sdk`）。
+
 ## 局限与风险
 
 - **开源状态：已开源**（Apache-2.0）；可运行脚本齐全。
