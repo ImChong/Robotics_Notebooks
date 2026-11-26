@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-model, robot-learning, video-diffusion, flow-matching, cross-embodiment, robot-manipulation, dataset]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-26
 original:
   - ../../sources/papers/internw0_delta_arxiv_2609_31394.md
 project_id: internw0-delta
@@ -252,6 +252,8 @@ sequenceDiagram
 预训练收益的对照在 AC-One 两项任务、每个条件各 20 次试验：烤面包从 **4/20（20%）到 19/20（95%）**；Luminol 反应从 **0/20 到 19/20（95%）**。饮水任务部署时还能适应与示范不同的杯中目标水位，不过论文对这部分是定性展示，不应外推为任意物体/场景鲁棒性。
 
 ## 与其他工作对比
+
+[后续 LDS 研究](paper-lds-wam-instruction-following.md) 在此基座上保留原生轨迹训练，另外用首帧反事实定位提升目标选择；其 LIBERO-CF 结果不属于原论文，也不等同于 LIBERO-Plus。
 
 | 路线 | 主要设计 | 与 InternW0-Δ 的关系 |
 |---|---|---|

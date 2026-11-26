@@ -191,6 +191,7 @@ flowchart LR
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
 - [InternW0-Δ（Causal Imprint / 20K+ h 异构数据）](../wiki/entities/paper-internw0-delta.md) — Joint MoT（视频专家 + 动作专家），训练期 future-feature + Track4World 监督、部署期 action-only 去噪；代码与四类权重已公开，跨本体仍需 adapter 和 post-training。
+- [LDS：增强世界动作模型的指令跟随](../wiki/entities/paper-lds-wam-instruction-following.md) — **Stage 3 表征监督对照**：首帧反事实定位塑形中间 token，保留原生 FM 和部署接口；对照选对目标、物理完成与原任务保留。
 - [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
 - [Dexmal DW05（OpenDW）](../wiki/entities/dexmal-dw05.md) — Wan 骨干 + MoT 三专家头联合视频/动作/价值的开源 Joint WAM，含训练/推理全栈与 RoboTwin 2.0 微调评测包
 - [Lumo-2（Latent World-Action Model）](../wiki/entities/lumo-2.md) — Qwen3.5-4B 潜空间世界–动作模型，三阶段渐进模态预对齐 + BAR 块解码，真机 22 项挑战全面超 π₀.₅/Fast-WAM
