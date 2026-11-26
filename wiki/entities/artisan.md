@@ -131,6 +131,8 @@ README 提供 `./run.sh run`、`./run.sh viewer` 和 benchmark 脚本入口；�
 - [Manipulation](../tasks/manipulation.md) — 机器人操作任务对可交互资产的需求。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Artisan benchmark 以生成资产为评测对象（空间保真、物理合理性、下游任务与整体质量），选型时应与策略成功率评测分层阅读。
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 参考来源
 
 - [Artisan 论文归档（arXiv:2610.13947）](../../sources/papers/artisan_arxiv_2610_13947.md)

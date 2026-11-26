@@ -103,6 +103,8 @@ sequenceDiagram
 - [机器人操作](../tasks/manipulation.md) — 任务领域
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — X2Real 对应其中「策略任务成功率评测」与「sim↔real 评测 gap 校准」层
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [X2Real 项目页来源归档](../../sources/sites/x2real-project.md)

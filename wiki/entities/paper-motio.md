@@ -93,6 +93,8 @@ flowchart TD
 - [MimicAll](./paper-mimicall.md)
 - [操作任务](../tasks/manipulation.md)
 
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作的协同。
+
 ## 参考来源
 
 - [来源归档](../../sources/papers/motio.md)

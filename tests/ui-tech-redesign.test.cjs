@@ -363,7 +363,7 @@ test('homepage Hero tech actions follow ordered anchors and translate in English
   const doc = dom.window.document;
   const links = Array.from(doc.querySelectorAll('#hero .hero-actions.tech-only a'));
 
-  assert.equal(links.length, 4, 'Hero .hero-actions.tech-only renders 4 action links');
+  assert.equal(links.length, 5, 'Hero .hero-actions.tech-only renders 5 action links');
   assert.ok(links[0].classList.contains('btn-primary') && links[0].classList.contains('hero-cta'));
   assert.equal(links[0].getAttribute('href'), '#home-start');
   assert.equal(links[0].querySelector('span[data-home-copy]')?.textContent.trim(), '探索入口');
@@ -381,6 +381,10 @@ test('homepage Hero tech actions follow ordered anchors and translate in English
   assert.ok(links[3].classList.contains('link-draw'));
   assert.equal(links[3].getAttribute('href'), '#home-hub-section');
   assert.equal(links[3].textContent.trim(), '核心枢纽');
+
+  assert.ok(links[4].classList.contains('link-draw'));
+  assert.equal(links[4].getAttribute('href'), 'star-history.html');
+  assert.equal(links[4].textContent.trim(), '增长趋势');
 
   const kickers = [
     doc.querySelector('#home-start .band-kicker'),
@@ -400,6 +404,7 @@ test('homepage Hero tech actions follow ordered anchors and translate in English
   assert.equal(links[1].textContent.trim(), 'Knowledge Search');
   assert.equal(links[2].textContent.trim(), 'Latest Updates');
   assert.equal(links[3].textContent.trim(), 'Core Hubs');
+  assert.equal(links[4].textContent.trim(), 'Trends');
   assert.deepEqual(
     kickers.map((el) => el?.textContent.trim()),
     ['01 / GATEWAYS', '02 / SEARCH', '03 / LATEST', '04 / HUBS'],

@@ -106,6 +106,10 @@ flowchart TD
 - 分类 hub：[loco-manip-category-03-command-controller.md](../overview/loco-manip-category-03-command-controller.md)
 - 原始 source：[loco_manip_survey_05_vaic.md](../../sources/papers/loco_manip_survey_05_vaic.md)
 
+## 关联页面
+
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解策略训练与评估。
+
 ## 参考来源
 
 - [loco_manip_survey_05_vaic.md](../../sources/papers/loco_manip_survey_05_vaic.md) — Loco-Manip 8 篇策展摘录

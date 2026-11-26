@@ -156,6 +156,8 @@ flowchart TB
 - [Dexterous Kinematics（灵巧运动学）](../concepts/dexterous-kinematics.md) — 欠驱动手的运动学分析基础
 - [Contact-Rich Manipulation（接触丰富操作）](../concepts/contact-rich-manipulation.md) — 以接触为核心机制的设计哲学
 
+- [抓取位姿估计](../methods/grasp-pose-estimation.md)：对照抓取几何与位姿选择。
+
 ## 参考来源
 
 - [量子位：RSS 2026 三项最佳论文报道](../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md)

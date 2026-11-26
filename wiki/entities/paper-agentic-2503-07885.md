@@ -154,6 +154,8 @@ flowchart TD
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [Code-as-Monitor 论文节点](paper-agentic-2412-04455.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

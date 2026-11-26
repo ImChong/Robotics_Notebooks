@@ -87,6 +87,10 @@ flowchart LR
 - 分类 hub：[loco-manip-161-category-01-motion-base-wbt.md](../overview/loco-manip-161-category-01-motion-base-wbt.md)
 - 原始 source：[loco_manip_161_survey_028_n028.md](../../sources/papers/loco_manip_161_survey_028_n028.md)
 
+## 关联页面
+
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [loco_manip_161_survey_028_n028.md](../../sources/papers/loco_manip_161_survey_028_n028.md) — 161 篇策展摘录

@@ -190,6 +190,8 @@ flowchart TD
 - [NavVerse](./paper-navverse.md) — 场景与跨区域具身导航基准。
 - [NavWAM](./paper-navwam-goal-conditioned-visual-navigation-wam.md) — 目标图像条件的导航世界动作模型。
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：了解导航工具、技能与任务编排。
+
 ## 推荐继续阅读
 
 - [SuperNav GitHub 官方仓库与 Go2 部署指南](https://github.com/zju3dv/SuperNav/blob/main/docs/release/en/go2.md)

@@ -120,6 +120,9 @@ flowchart TD
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
 - [跨本体迁移纵深路线](../../roadmap/depth-cross-embodiment.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照物体操作任务。
+- [双臂操作](../tasks/bimanual-manipulation.md)：对照双臂协调任务。
+
 ## 参考来源
 
 - [论文原文与核对归档](../../sources/papers/reins-arxiv-2611-16632.md)

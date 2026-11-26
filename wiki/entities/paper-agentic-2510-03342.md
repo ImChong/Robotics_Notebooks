@@ -166,6 +166,8 @@ flowchart TD
 - [SayCan 论文节点](paper-saycan.md)
 - [HAMSTER 分层操作模型](paper-agentic-2502-05485.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

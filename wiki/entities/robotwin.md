@@ -14,7 +14,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 summary: RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。
-updated: 2026-11-22
+updated: 2026-11-26
 project_id: robotwin
 sources:
 - ../../sources/papers/rcl_awesome_wam_2506_18088_robotwin-2-0-a-scalable-data-generator-a.md
@@ -69,6 +69,8 @@ RoboTwin 2.0 = **MLLM 写代码 + 仿真闭环纠错的双臂专家数据生成�
 - **真机对齐**：强调 Sim-to-Real 的一致性，生成的轨迹可以直接用于训练并在真机上验证。
 
 ## 与其他系统的关系
+
+[nanoAstra](paper-nanoastra.md) 用 RoboTwin 2.0 随机化任务检验实机数据预训练的语义步策略，区分暂停仿真的零样本主表与持续仿真时钟的执行对照。
 
 - **底层驱动**：依赖 [SAPIEN (仿真引擎)](./sapien.md) 进行物理模拟。
 - **任务目标**：通常用于生成 [behavior-cloning](../methods/behavior-cloning.md) 或 [action-chunking](../methods/action-chunking.md) (ACT) 所需的训练数据。

@@ -174,6 +174,10 @@ flowchart TB
 - [GigaWorld-1 论文实体](./paper-gigaworld-1-policy-evaluation.md)
 - [WWSimBench（无问 WWBench 仿真资产 HF v0.1）](./wwsimbench.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [EmbodiedGen 官方仓库](../../sources/repos/embodiedgen.md)

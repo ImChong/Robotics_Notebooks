@@ -118,6 +118,9 @@ flowchart TB
 - [LocoFormer（Skild AI 论文）](./paper-locoformer.md)
 - [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot 对照，不是本公司产品
 
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+
 ## 参考来源
 
 - [Skild AI 官方时间线核查（2026-10-07）](../../sources/sites/skild-ai-timeline-audit-2026-10-07.md)

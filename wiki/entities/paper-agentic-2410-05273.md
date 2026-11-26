@@ -154,6 +154,8 @@ HiRT 验证了「低频 VLM 提取视觉-语言融合隐特征 + 异步缓存 + 
 - [机器人操作任务](../tasks/manipulation.md)
 - [RoboDual：协同广义高效的双系统操作框架](paper-agentic-2410-08001.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

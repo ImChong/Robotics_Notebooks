@@ -75,6 +75,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [平衡恢复](../tasks/balance-recovery.md)：了解跌倒及起身恢复任务。
+- [机器人策略学习](../methods/robot-policy-learning.md)：对照视觉条件策略训练。
+
 ## 参考来源
 
 - [humanoid_pnb_vigor-visual-goal-in-context-inference-for-unifi.md](../../sources/papers/humanoid_pnb_vigor-visual-goal-in-context-inference-for-unifi.md)

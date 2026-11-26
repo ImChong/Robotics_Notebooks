@@ -142,6 +142,8 @@ flowchart TB
 - [RoboGene：任务智能体生成](./paper-robogene.md)
 - [RoboDoctor：训练免费机器人策略改进](./paper-robodoctor.md)
 
+- [智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：对照智能体、机器人接口与执行反馈。
+
 ## 参考来源
 
 - [论文 v1 全文通读归档](../../sources/papers/toward_self_improving_robotic_agents_preprints_202610_3088.md)

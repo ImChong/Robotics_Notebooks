@@ -163,6 +163,9 @@ flowchart TD
 - [Awesome RSI](./awesome-rsi.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Flex-RSI 的机器人任务落在其「③ 策略任务成功率层」且全在仿真，外推真机需按「④ sim↔real gap 校准层」另行验证
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [flex-rsi_arxiv_2611_08946.md](../../sources/papers/flex-rsi_arxiv_2611_08946.md)

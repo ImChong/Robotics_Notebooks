@@ -90,6 +90,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略训练与优化。
+
 ## 参考来源
 
 - [humanoid_pnb_emp.md](../../sources/papers/humanoid_pnb_emp.md)

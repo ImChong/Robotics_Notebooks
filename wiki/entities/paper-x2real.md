@@ -183,6 +183,8 @@ sequenceDiagram
 - [LIBERO](./libero-benchmark.md) / [RoboTwin-Phys](./paper-robotwin-phys.md) — 同类操作仿真基准对照
 - [机器人操作](../tasks/manipulation.md)
 
+- [具身智能体评测](../methods/embodied-agent-benchmarking.md)：对照仿真基准与真实评估。
+
 ## 参考来源
 
 - [X2Real 论文原文归档（arXiv:2609.27449v2）](../../sources/papers/x2real_arxiv_2609_27449.md) — v2 HTML 全文精读（§§1–7、Table 1–3）

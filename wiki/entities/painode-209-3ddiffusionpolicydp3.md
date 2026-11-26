@@ -91,6 +91,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [扩散策略](../methods/diffusion-policy.md)：对照视觉或几何条件动作生成。
+- [机器人操作](../tasks/manipulation.md)：对照物体操作任务。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_method_209_3d-diffusion-policy-dp3.md`](../../sources/repos/pai_awesome_method_209_3d-diffusion-policy-dp3.md) — 本条目策展摘录

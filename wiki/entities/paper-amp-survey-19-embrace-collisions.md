@@ -132,6 +132,11 @@ flowchart TB
 - 概念：[whole-body-control.md](../concepts/whole-body-control.md)、[sim2real.md](../concepts/sim2real.md)
 - 平台：[unitree-g1.md](./unitree-g1.md)
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+- [PPO](../methods/ppo.md)：用于理解策略更新的背景。
+
 ## 参考来源
 
 - [embrace_collisions_arxiv_2502_01465.md](../../sources/papers/embrace_collisions_arxiv_2502_01465.md)

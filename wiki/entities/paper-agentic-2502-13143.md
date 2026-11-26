@@ -170,6 +170,8 @@ flowchart TD
 - [ReKep：基于关系关键点约束的时空推理](paper-aff-2409-01652-rekep-spatio-temporal-reasoning-of-relational-keypoint-c.md)
 - [RoboPoint 论文节点](paper-robopoint.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

@@ -217,6 +217,8 @@ sequenceDiagram
 - [Paper Notebooks · Human Motion](../overview/paper-notebook-category-14-human-motion.md) — 人体动作专题索引
 - [EgoExoMoCap](./paper-egoexomocap.md) — 分布式 ego-exo **在线** 动捕（对比设定）
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解跨视角数据与下游验证。
+
 ## 参考来源
 
 - [egoexo4d_hm_arxiv_2609_30187.md](../../sources/papers/egoexo4d_hm_arxiv_2609_30187.md) — 论文策展摘录

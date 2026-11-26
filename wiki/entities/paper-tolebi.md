@@ -121,6 +121,9 @@ flowchart TD
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
 
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+
 ## 参考来源
 
 - [tolebi_arxiv_2602_05596.md](../../sources/papers/tolebi_arxiv_2602_05596.md)

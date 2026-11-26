@@ -111,6 +111,8 @@ flowchart TD
 - [具身大模型分类学选型闭环](../overview/hub-embodied-foundation-model.md) — 具身模型与 VLM 分工的选型背景
 - [VLA 方法](../methods/vla.md) — Spotter 所包裹的具身模型类别
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照执行反馈和错误恢复。
+
 ## 参考来源
 
 - [Spotter 论文归档](../../sources/papers/spotter_arxiv_2609_36808.md)

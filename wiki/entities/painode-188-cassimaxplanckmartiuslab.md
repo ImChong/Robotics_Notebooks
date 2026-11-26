@@ -109,6 +109,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [腿足运动控制](../tasks/locomotion.md)：对照足式移动任务。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_paper_188_cassi-max-planck-martius-lab.md`](../../sources/repos/pai_awesome_paper_188_cassi-max-planck-martius-lab.md) — 本条目策展摘录

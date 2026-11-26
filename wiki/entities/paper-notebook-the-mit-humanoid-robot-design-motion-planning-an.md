@@ -78,6 +78,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [模型预测控制](../methods/model-predictive-control.md)：了解滚动时域决策。
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动约束与轨迹求解。
+
 ## 参考来源
 
 - [humanoid_pnb_the-mit-humanoid-robot-design-motion-planning-an.md](../../sources/papers/humanoid_pnb_the-mit-humanoid-robot-design-motion-planning-an.md)

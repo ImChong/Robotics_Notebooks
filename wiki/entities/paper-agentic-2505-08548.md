@@ -161,6 +161,8 @@ flowchart TD
 - [具身感知的六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)
 - [3D 空间视觉问答（3D Spatial VQA）](../concepts/3d-spatial-vqa.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

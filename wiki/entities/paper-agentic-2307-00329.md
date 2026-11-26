@@ -152,6 +152,8 @@ flowchart TD
 - [Agentic Robots 综述](paper-towards-agentic-robots-survey.md)
 - [全量项目节点清单](../overview/awesome-agentic-robots-node-index.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

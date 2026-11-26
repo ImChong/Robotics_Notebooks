@@ -203,6 +203,11 @@ GigaWorld-1提供面向策略评估的动作条件长程生成设计；其六诊
 - [DreamSteer 论文实体](./paper-dreamsteer-vla-deployment-steering.md)
 - [EmbodiedGen V2 论文实体](./paper-embodiedgen-v2-sim-ready-world-engine.md)
 
+## 关联页面
+
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [论文全文复核](../../sources/papers/gigaworld_1_arxiv_2607_02642.md)

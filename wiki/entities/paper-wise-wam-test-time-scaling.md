@@ -166,6 +166,9 @@ flowchart LR
 - [Cosmos 3](./cosmos-3.md)、[RoboLab](./robolab.md)、[LIBERO 基准](./libero-benchmark.md)
 - [RLinf-VLA](./paper-rlinf-vla.md)（本文 LIBERO checkpoint 来自 RLinf）
 
+- [生成式世界模型](../methods/generative-world-models.md)：对照世界预测与动作生成。
+- [动作分块](../methods/action-chunking.md)：了解动作序列的预测与执行。
+
 ## 参考来源
 
 - [来源归档：WISE（arXiv:2611.03585）](../../sources/papers/wise-wam-test-time-scaling_arxiv_2611_03585.md)

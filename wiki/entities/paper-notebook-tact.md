@@ -91,6 +91,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [humanoid_pnb_tact.md](../../sources/papers/humanoid_pnb_tact.md)

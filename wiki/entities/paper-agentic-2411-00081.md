@@ -167,6 +167,8 @@ flowchart TD
 - [EMOS 论文节点](paper-agentic-2410-22662.md)
 - [分层强化学习](../methods/hierarchical-reinforcement-learning.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

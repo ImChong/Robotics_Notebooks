@@ -123,6 +123,9 @@ flowchart TD
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_teamplay_arxiv_2105_12196.md](../../sources/papers/bfm_awesome_teamplay_arxiv_2105_12196.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：用于理解基于奖励的策略学习。
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [bfm_awesome_teamplay_arxiv_2105_12196.md](../../sources/papers/bfm_awesome_teamplay_arxiv_2105_12196.md) — awesome-bfm 策展摘录

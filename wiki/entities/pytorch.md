@@ -82,6 +82,8 @@ flowchart LR
 - [ONNX](./onnx.md)
 - [ONNX Runtime](./onnxruntime.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)

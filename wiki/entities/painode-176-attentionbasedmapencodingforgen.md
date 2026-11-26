@@ -108,6 +108,9 @@ flowchart LR
 - [AME-1（Attention-Based Map Encoding）](./paper-ame-attention-based-map-encoding.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [足式运动](../tasks/locomotion.md)：了解四足等足式运动场景。
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解足式策略的训练与评估。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_paper_176_attention-based-map-encoding-for-gen.md`](../../sources/repos/pai_awesome_paper_176_attention-based-map-encoding-for-gen.md) — 本条目策展摘录

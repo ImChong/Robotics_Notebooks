@@ -99,6 +99,9 @@ flowchart TD
 - [具身大模型分类学选型闭环](../overview/hub-embodied-foundation-model.md) — 具身 VLM 的模型选型背景
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 同类的执行可靠性评测问题
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [ERR 论文来源归档](../../sources/papers/err_replan_error_recovery_arxiv_2610_27003.md)

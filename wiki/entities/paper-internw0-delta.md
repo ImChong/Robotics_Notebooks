@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-model, robot-learning, video-diffusion, flow-matching, cross-embodiment, robot-manipulation, dataset]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-26
 original:
   - ../../sources/papers/internw0_delta_arxiv_2609_31394.md
 project_id: internw0-delta
@@ -253,6 +253,8 @@ sequenceDiagram
 
 ## 与其他工作对比
 
+[后续 LDS 研究](paper-lds-wam-instruction-following.md) 在此基座上保留原生轨迹训练，另外用首帧反事实定位提升目标选择；其 LIBERO-CF 结果不属于原论文，也不等同于 LIBERO-Plus。
+
 | 路线 | 主要设计 | 与 InternW0-Δ 的关系 |
 |---|---|---|
 | [OpenWAM](./paper-openwam.md) | 开放的 WAM 训练与基准路线 | 同为 WAM 对照；论文在 RoboTwin Clean2Random 报告 71.9%，OpenWAM-α 为 48.7% |
@@ -298,6 +300,8 @@ sequenceDiagram
 - [OpenWAM](./paper-openwam.md) — WAM 训练/评测路线对照。
 - [Long-WAM](./paper-long-wam-scaling-context.md) — WAM 长上下文扩展对照。
 - [4D-WAM](./paper-4d-wam.md) — 时空几何表征与动作模型相关路线。
+
+- [动作分块](../methods/action-chunking.md)：了解动作序列的预测与执行。
 
 ## 参考来源
 

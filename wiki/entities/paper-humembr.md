@@ -233,6 +233,8 @@ sequenceDiagram
 - [SRU](./paper-sru-spatially-enhanced-recurrent-memory.md) — 无地图长程坐标导航对照
 - [导航纵深路线](../../roadmap/depth-navigation.md) — Stage 3/4 学习型与语义导航入口
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [HUMEMBR 论文摘录（arXiv:2606.30404）](../../sources/papers/humembr_arxiv_2606_30404.md)

@@ -130,6 +130,8 @@ MAESTRO 说明编程智能体可组合感知、几何与策略工具处理桌面
 - [DROID 策略学习](./droid-policy-learning.md)
 - [cuRobo](./curobo.md)
 
+- [π₀ 策略](../methods/pi0-policy.md)：对照 π₀ 策略的视觉、语言和动作接口。
+
 ## 参考来源
 
 - [MAESTRO 来源归档](../../sources/papers/maestro_arxiv_2511_00917.md)

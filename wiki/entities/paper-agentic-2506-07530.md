@@ -165,6 +165,8 @@ flowchart TD
 - [SpatialVLA 论文节点](paper-spatialvla.md)
 - [VLA 加速 25 种方法横评](../comparisons/vla-acceleration-25-methods-2026.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

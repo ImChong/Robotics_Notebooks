@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解长程物体操作。
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解语言条件策略训练。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_method_221_peract.md`](../../sources/repos/pai_awesome_method_221_peract.md) — 本条目策展摘录

@@ -237,6 +237,8 @@ sequenceDiagram
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md)
 - [GS-Playground](./gs-playground.md)
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 相关工作
 
 - [Foundation4D](paper-foundation4d.md)：共享多相机特征，同时预测驾驶场景几何、目标、占据和高斯重建。

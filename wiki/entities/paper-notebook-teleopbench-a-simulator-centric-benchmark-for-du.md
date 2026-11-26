@@ -174,6 +174,10 @@ README 给出的最小入口是配置相机/VR 采集端后，在 `teleop/` 运�
 - 映射基础：[Motion Retargeting](../concepts/motion-retargeting.md)
 - 路线位置：[遥操作纵深 Stage 5](../../roadmap/depth-teleoperation.md)
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md)：对照物体操作任务。
+
 ## 参考来源
 
 - [humanoid_pnb_teleopbench.md](../../sources/papers/humanoid_pnb_teleopbench.md)

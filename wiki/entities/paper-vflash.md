@@ -134,6 +134,9 @@ flowchart TD
 - [LocateAnything](paper-locateanything.md)
 - [世界动作模型](../concepts/world-action-models.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作与抓取任务。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 推荐继续阅读
 
 - [VFlash 官方项目页](https://research.nvidia.com/labs/lpr/vflash/)

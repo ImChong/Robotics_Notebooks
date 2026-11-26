@@ -168,6 +168,8 @@ GA 博客把 Marble 写成：把手头模态 **抬成完整 3D 世界**，并随
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 操作场景 sim-ready 孪生
 - [image-blaster](./image-blaster.md) — Claude Code Agent Skills：单图编排 Marble + Hunyuan3D + SFX 资产包
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 参考来源
 
 - [worldlabs_marble_world_model.md](../../sources/blogs/worldlabs_marble_world_model.md)

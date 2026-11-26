@@ -156,6 +156,10 @@ sequenceDiagram
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [humanoid_rl_stack_09_twist_teleoperated_whole_body_imitation_system.md](../../sources/papers/humanoid_rl_stack_09_twist_teleoperated_whole_body_imitation_system.md) — 42 篇栈策展摘录

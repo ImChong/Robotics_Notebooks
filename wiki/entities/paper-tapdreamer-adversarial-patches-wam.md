@@ -107,6 +107,9 @@ flowchart TD
 - [safety-filter](../concepts/safety-filter.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：对照世界预测与动作生成。
+- [动作分块](../methods/action-chunking.md)：了解动作序列的预测与执行。
+
 ## 参考来源
 
 - [tapdreamer_adversarial_patches_wam_arxiv_2610_06814.md](../../sources/papers/tapdreamer_adversarial_patches_wam_arxiv_2610_06814.md)

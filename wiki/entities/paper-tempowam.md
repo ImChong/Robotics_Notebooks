@@ -109,6 +109,8 @@ flowchart TD
 - [paper-fast-wam](./paper-fast-wam.md)
 - [paper-memorywam](./paper-memorywam.md)
 
+- [动作分块](../methods/action-chunking.md)：了解动作序列的预测与执行。
+
 ## 参考来源
 
 - [tempowam_arxiv_2608_09492.md](../../sources/papers/tempowam_arxiv_2608_09492.md)

@@ -193,6 +193,10 @@ Case II 下 CMR 的 Distance 为 7.2，Joint Power 为 1012.3；LCP 的 Joint Po
 - 方法与概念：[PPO](../methods/ppo.md)、[sim2real](../concepts/sim2real.md)、[domain-randomization](../concepts/domain-randomization.md)、[privileged-training](../concepts/privileged-training.md)
 - 仿真与平台：[Isaac Gym](isaac-gym.md)、[MuJoCo](mujoco.md)、[Unitree G1](unitree-g1.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [humanoid_pnb_cmr.md](../../sources/papers/humanoid_pnb_cmr.md)（本文原始来源归档，已含 arXiv 链接，无需另建 raw source）

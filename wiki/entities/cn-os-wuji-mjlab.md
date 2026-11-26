@@ -99,6 +99,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [wuji-mjlab 源码归档](../../sources/repos/wuji-mjlab.md)（<https://github.com/wuji-technology/wuji-mjlab>）

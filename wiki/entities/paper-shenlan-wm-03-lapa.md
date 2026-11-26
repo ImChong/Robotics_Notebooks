@@ -95,6 +95,11 @@ flowchart TD
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_03_lapa.md](../../sources/papers/shenlan_wm_survey_03_lapa.md)
 
+## 关联页面
+
+- [行为克隆](../methods/behavior-cloning.md)：用于理解示范监督训练。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [shenlan_wm_survey_03_lapa.md](../../sources/papers/shenlan_wm_survey_03_lapa.md)

@@ -144,6 +144,9 @@ flowchart TD
 - [AnyTouch](./paper-anytouch.md) — 跨传感器静态与动态表征。
 - [Touch100k](./dataset-touch100k.md) — 触觉视觉语言配对数据。
 
+- [机器人操作](../tasks/manipulation.md)：对照机器人接触与物体操作任务。
+- [触觉阻抗控制](../methods/tactile-impedance-control.md)：对照触觉反馈与接触顺应控制。
+
 ## 参考来源
 
 - [v1 全文归档与阅读范围](../../sources/papers/tactile_multimodal_fusion_2605_17336.md)

@@ -80,6 +80,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md)：了解灵巧手应用任务。
+- [双臂操作](../tasks/bimanual-manipulation.md)：对照多手操作场景。
+
 ## 参考来源
 
 - [humanoid_pnb_a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md](../../sources/papers/humanoid_pnb_a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md)

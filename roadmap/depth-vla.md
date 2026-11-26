@@ -232,6 +232,7 @@ flowchart LR
 - [PEAR：仿真强化学习训练机器人原生推理模型](../wiki/entities/paper-pear-robot-use-rl.md)：记录大模型动作接口与分布式 rollout 部署前验收。
 - [Towards Agentic Robots：模型、数据、环境与 Harness 综述](../wiki/entities/paper-towards-agentic-robots-survey.md) — 固定 arXiv:2610.20442v1 的四域十七类地图；对照 VLA 执行器与工具编排、状态交接、失败恢复及分层实时控制，不是可直接部署的算法。
 - [HITCH：VLM 通过主动三维测量与全身 harness 操作 G1](../wiki/entities/paper-hitch.md) — 作为端到端 VLA 的分层接口对照：VLM 选图像点取深度、下发骨盆/躯干/手/行走/视线命令，规划器与 50 Hz 跟踪器执行；只用五个基础任务的仿真教师轨迹微调后，在**作者修改相机与指令的协议**下实现 SIMPLE 51.1%、HumanoidArena 四任务子集 42.5%，不可直接横比官方榜单。
+- [nanoAstra：原生文本语义步与流式执行](../wiki/entities/paper-nanoastra.md) — **Stage 4 执行接口**：状态/进度 + 双臂原语，前缀续写隐藏部分推理等待；比较 paused、blocking、streaming 的不同成功率口径。
 - [ActionCodec2](../wiki/entities/paper-actioncodec2-streaming-action-tokenizer.md) — Stage 4 动作端低延迟：误差反馈量化 + Set-BPE 逐步解码；流式 token 输出与实际闭环执行需分别验证
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor
 - [ACE-CaP-0](../wiki/entities/paper-ace-cap-0.md) — 开发期按需示范/仿真，冻结代码策略在执行期脱离编码 Agent

@@ -157,6 +157,8 @@ flowchart TD
 - [多智能体强化学习（MARL）](../methods/marl.md)
 - [CTDE vs 去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

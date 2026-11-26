@@ -137,6 +137,9 @@ flowchart TB
 - [LIBERO 基准](libero-benchmark.md) — 主要实验场
 - [CALVIN 基准](calvin-benchmark.md) — 长链任务
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [robofqe_arxiv_2610_18699.md](../../sources/papers/robofqe_arxiv_2610_18699.md) — 论文摘录与开源核查

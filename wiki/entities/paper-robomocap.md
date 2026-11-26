@@ -157,6 +157,8 @@ flowchart LR
 - [第一视角视觉资源汇总](../entities/awesome-egocentric-vision.md)
 - [模仿学习](../methods/imitation-learning.md)
 
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体运动映射。
+
 ## 参考来源
 
 - [robomocap_arxiv_2611_10994.md](../../sources/papers/robomocap_arxiv_2611_10994.md)

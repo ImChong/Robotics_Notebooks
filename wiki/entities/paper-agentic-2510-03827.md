@@ -150,6 +150,8 @@ flowchart TD
 - [OpenVLA 论文节点](paper-openvla.md)
 - [EmbodiedBench 具身评测基准](paper-agentic-2502-09560.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

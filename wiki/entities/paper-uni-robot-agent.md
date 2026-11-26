@@ -211,6 +211,9 @@ sequenceDiagram
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 工具控制与低层控制的边界。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 区分 score、SR、模型输入与评测协议。
 
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 推荐继续阅读
 
 建议依次阅读 [论文 §2：框架机制](https://arxiv.org/html/2611.01560v2)、[论文 §3–6：实验与消融](https://arxiv.org/html/2611.01560v2)、[源码架构文档](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/architecture.md) 和 [ARX ONE 集成说明](https://github.com/Open-RUA/uni-robot-agent/blob/main/uni_robot_agent/integrations/arx_one/README.md)。

@@ -96,6 +96,8 @@ v5 真机无安全绳 3/3 次完成 43 s；v6 完成含结束与自动交接的 
 - [humanoid locomotion](../tasks/humanoid-locomotion.md)
 - [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [arXiv v1 原文核对归档](../../sources/papers/festival-video-stage-dance_arxiv_2611_11127.md)

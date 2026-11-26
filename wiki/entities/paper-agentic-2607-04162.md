@@ -41,6 +41,8 @@ summary: 'ACE: Agentic Control for Embodied Manipulation via Zero-shot Workflow 
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：对照智能体、机器人接口与执行反馈。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

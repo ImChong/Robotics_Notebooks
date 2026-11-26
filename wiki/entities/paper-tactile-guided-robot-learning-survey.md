@@ -137,6 +137,9 @@ flowchart TD
 - [视觉触觉智能综述](./paper-vision-based-tactile-intelligence.md) — 同类综述对照
 - [Foundation Policy](../concepts/foundation-policy.md) — 基础模型方向的背景
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [tactile_guided_survey_arxiv_2610_20134.md](../../sources/papers/tactile_guided_survey_arxiv_2610_20134.md) — 综述摘录与开源核查

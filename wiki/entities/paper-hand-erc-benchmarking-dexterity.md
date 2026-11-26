@@ -165,6 +165,8 @@ flowchart TB
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 精密接触任务难点
 - [All Hands Up](./all-hands-up.md) — 商业/研究手型硬件档案（与 HAND 硬件线相邻）
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [HAND ERC 论文归档](../../sources/papers/hand_erc_benchmarking_arxiv_2609_05585.md)

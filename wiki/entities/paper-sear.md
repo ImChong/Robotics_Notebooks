@@ -145,6 +145,9 @@ flowchart TB
 - [LIBERO 基准](../entities/libero-benchmark.md) — 论文用到的仿真基准之一
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 模型写代码控制机器人的接口层
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [sear_arxiv_2610_18792.md](../../sources/papers/sear_arxiv_2610_18792.md) — 论文摘录与开源核查

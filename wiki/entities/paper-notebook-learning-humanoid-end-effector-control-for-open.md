@@ -83,6 +83,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+- [抓取位姿估计](../methods/grasp-pose-estimation.md)：对照抓取几何与位姿选择。
+
 ## 参考来源
 
 - [humanoid_pnb_learning-humanoid-end-effector-control-for-open.md](../../sources/papers/humanoid_pnb_learning-humanoid-end-effector-control-for-open.md)

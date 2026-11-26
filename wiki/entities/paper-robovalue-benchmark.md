@@ -142,6 +142,8 @@ sequenceDiagram
 - [机器人操作](../tasks/manipulation.md) — 操作任务与机器人案例
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准在选型闭环中的定位与取舍
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [arXiv 论文归档](../../sources/papers/robo_value_benchmark_arxiv_2610_26663.md)

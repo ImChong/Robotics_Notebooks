@@ -103,6 +103,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-07-teleoperation](../overview/paper-notebook-category-07-teleoperation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [遥操作](../tasks/teleoperation.md)：了解操作者与机器人接口。
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解遥操作的人形移动场景。
+
 ## 参考来源
 
 - [humanoid_pnb_intuitive-gui-for-non-expert-teleoperation-of-hu.md](../../sources/papers/humanoid_pnb_intuitive-gui-for-non-expert-teleoperation-of-hu.md)

@@ -108,6 +108,11 @@ flowchart TD
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_mtm_arxiv_2305_02968.md](../../sources/papers/bfm_awesome_mtm_arxiv_2305_02968.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [bfm_awesome_mtm_arxiv_2305_02968.md](../../sources/papers/bfm_awesome_mtm_arxiv_2305_02968.md) — awesome-bfm 策展摘录

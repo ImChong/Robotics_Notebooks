@@ -157,6 +157,8 @@ sequenceDiagram
 - [RMA](./paper-rma-rapid-motor-adaptation.md) — 特权→历史的另一条路
 - [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md)
 
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+
 ## 参考来源
 
 - [论文摘录](../../sources/papers/raft_thruster_fault_arxiv_2608_22976.md)

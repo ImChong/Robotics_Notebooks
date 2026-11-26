@@ -106,6 +106,8 @@ sequenceDiagram
 - [vla](../methods/vla.md)
 - [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [prede_arxiv_2609_19441.md](../../sources/papers/prede_arxiv_2609_19441.md)

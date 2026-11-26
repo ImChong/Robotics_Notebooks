@@ -162,6 +162,8 @@ flowchart TD
 - [视觉语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [PARTNR 论文节点](paper-agentic-2411-00081.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

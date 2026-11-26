@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解抓取任务。
+- [抓取位姿估计](../methods/grasp-pose-estimation.md)：了解六自由度抓取位姿。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_method_218_graspnet-1billion.md`](../../sources/repos/pai_awesome_method_218_graspnet-1billion.md) — 本条目策展摘录

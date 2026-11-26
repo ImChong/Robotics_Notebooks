@@ -99,6 +99,8 @@ flowchart TD
 - [senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md)
 - [locomotion](../tasks/locomotion.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [robommt-modulated-expressive-motion-tracking_arxiv_2610_26414.md](../../sources/papers/robommt-modulated-expressive-motion-tracking_arxiv_2610_26414.md)

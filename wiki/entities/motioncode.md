@@ -76,6 +76,8 @@ flowchart LR
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [MuJoCo](./mujoco.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [MotionCode 原始资料](../../sources/repos/motioncode.md)

@@ -155,6 +155,8 @@ RoboCodeX 在 Pick & Place 上相对 GPT-4V 提升 **+17 个百分点**（0.80 v
 - [操作任务概述](../tasks/manipulation.md)
 - [LLM 与机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 
+- [智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：对照操作场景中的规划、执行与反馈接口。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

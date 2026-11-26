@@ -196,6 +196,8 @@ sequenceDiagram
 - [Thinking in Video](./paper-thinking-in-video.md)
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [KineBench 论文归档（arXiv:2607.19876）](../../sources/papers/kinebench_arxiv_2607_19876.md)

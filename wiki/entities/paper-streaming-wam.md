@@ -100,6 +100,8 @@ flowchart TD
 - [具身研究 12 篇（恢复/WAM）技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md)
 - [Manipulation](../tasks/manipulation.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/streaming_wam_arxiv_2609_28927.md)

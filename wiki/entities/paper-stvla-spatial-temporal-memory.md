@@ -122,6 +122,9 @@ flowchart TD
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
 - [跨本体迁移纵深路线](../../roadmap/depth-cross-embodiment.md)
 
+- [动作分块](../methods/action-chunking.md)：了解动作序列的预测与执行。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [论文原文与核对归档](../../sources/papers/stvla-arxiv-2611-16589.md)

@@ -125,6 +125,9 @@ Survey on world models for autonomous systems.
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境状态预测。
+- [机器人策略学习](../methods/robot-policy-learning.md)：对照模型与策略接口。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2403_02622_world-models-survey.md`](../../sources/papers/pai_awesome_2403_02622_world-models-survey.md) — 本条目策展摘录

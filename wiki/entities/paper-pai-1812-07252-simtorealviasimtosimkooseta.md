@@ -123,6 +123,9 @@ James et al. RCAN (Randomized-to-Canonical Adaptation Networks): a cGAN translat
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+- [抓取位姿估计](../methods/grasp-pose-estimation.md)：对照抓取几何与位姿选择。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_1812_07252_sim-to-real-via-sim-to-sim-koos-et-a.md`](../../sources/papers/pai_awesome_1812_07252_sim-to-real-via-sim-to-sim-koos-et-a.md) — 本条目策展摘录

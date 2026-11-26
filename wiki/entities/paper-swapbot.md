@@ -90,6 +90,8 @@ flowchart LR
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
 
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [swapbot_arxiv_2610_40646.md](../../sources/papers/swapbot_arxiv_2610_40646.md)

@@ -97,6 +97,9 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 本文系统追问「仿真评测指标能否预测真机表现」，是该闭环第 ④ 层「sim↔real 评测 gap 校准：评测结论能否外推真机」的奠基性参考
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [freedof_sim2real_38_kadian-sim2real-predictivity.md](../../sources/papers/freedof_sim2real_38_kadian-sim2real-predictivity.md)

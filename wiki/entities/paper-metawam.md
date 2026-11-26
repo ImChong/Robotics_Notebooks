@@ -176,6 +176,8 @@ sequenceDiagram
 - [Elastic-WAM](paper-elastic-wam.md)
 - [VLA](../methods/vla.md)
 
+- [动作分块](../methods/action-chunking.md)：对照动作序列预测接口。
+
 ## 参考来源
 
 - [arXiv:2611.14365 归档](../../sources/papers/metawam_arxiv_2611_14365.md)

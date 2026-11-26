@@ -41,6 +41,8 @@ summary: Kinematics-Grounded Agentic AI for Robotic Additive Manufacturing Proce
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

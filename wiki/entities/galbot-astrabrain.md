@@ -118,6 +118,9 @@ sequenceDiagram
 - [WAM 概念与分类](../concepts/world-action-models.md)
 - [公司技术路线对照](../comparisons/robot-foundation-model-company-paths-2026.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+- [人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对照参考动作、控制与稳定性。
+
 ## 参考来源
 
 - [银河通用官网与开源核查](../../sources/sites/galbot-astrabrain.md)

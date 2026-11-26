@@ -149,6 +149,9 @@ sequenceDiagram
 - [VPP](./paper-shenlan-wm-02-vpp.md)、[Humanoid-Gym](./humanoid-gym.md)
 - [M7 VLA 基线](./cn-os-robotera-vla.md)、[控制 SDK](./cn-os-xbot-sdk-api.md)、[遥操作接口](./cn-os-teleop-client.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照物体操作任务。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [公司、官网与日期核查](../../sources/sites/robotera.md)

@@ -146,6 +146,9 @@ flowchart TB
 - [力控基础](../concepts/force-control-basics.md) — 力反馈与力调节背景
 - [EgoWAM](paper-egowam-egocentric-human-wam-co-training.md) — 另一条 WAM 数据共训练路线
 
+- [生成式世界模型](../methods/generative-world-models.md)：对照世界预测与动作生成。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略学习。
+
 ## 参考来源
 
 - [forcewam_arxiv_2610_18852.md](../../sources/papers/forcewam_arxiv_2610_18852.md) — 论文摘录与开源核查

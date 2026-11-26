@@ -155,6 +155,10 @@ flowchart LR
 - 接口选型：[数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)
 - 路线位置：[遥操作纵深 Stage 0](../../roadmap/depth-teleoperation.md)
 
+## 关联页面
+
+- [触觉阻抗控制](../methods/tactile-impedance-control.md)：对照遥操作反馈接口。
+
 ## 参考来源
 
 - [humanoid_pnb_teleoperation-of-humanoid-robots-a-survey.md](../../sources/papers/humanoid_pnb_teleoperation-of-humanoid-robots-a-survey.md)

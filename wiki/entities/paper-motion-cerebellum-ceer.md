@@ -139,6 +139,8 @@ CEER 的贡献是 loco-manip 的**接口抽象**，与同样重新定义高层/�
 - [Pro-HOI](./paper-loco-manip-161-074-pro-hoi.md)
 - [WT-UMI](./paper-loco-manip-07-wt-umi.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解末端任务场景。
+
 ## 参考来源
 
 - [motion_cerebellum_survey_47_ceer.md](../../sources/papers/motion_cerebellum_survey_47_ceer.md)

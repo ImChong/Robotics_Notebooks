@@ -86,6 +86,11 @@ flowchart TD
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 人体/数字人侧共语生成对照：[DiffSHEG](./paper-diffsheg.md)（CVPR 2024：语音→3D 表情+手势联合扩散；停在角色资产，无 G1 跟踪）
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [humanoid_pnb_semantic-co-speech-gesture-synthesis-and-real-ti.md](../../sources/papers/humanoid_pnb_semantic-co-speech-gesture-synthesis-and-real-ti.md)

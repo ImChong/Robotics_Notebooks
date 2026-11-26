@@ -211,6 +211,8 @@ sequenceDiagram
 - [VLA 方法概览](../methods/vla.md)
 - [VLA 与基础策略知识链](../overview/hub-vla.md)
 
+- [π₀ 策略](../methods/pi0-policy.md)：对照 π₀ 策略的视觉、语言和动作接口。
+
 ## 参考来源
 
 - [SLA 原始论文通读归档](../../sources/papers/sla_spatial_language_action_arxiv_2611_08373.md)

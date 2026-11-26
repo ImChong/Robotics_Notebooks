@@ -119,6 +119,9 @@ Sim-to-real pipeline for high-speed quadrotor control under real-world disturban
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+- [DAgger](../methods/dagger.md)：用于理解示范聚合。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_1909_11652_learning-agile-flight-in-the-wild.md`](../../sources/papers/pai_awesome_1909_11652_learning-agile-flight-in-the-wild.md) — 本条目策展摘录

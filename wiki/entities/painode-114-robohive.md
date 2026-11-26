@@ -95,6 +95,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解操作基准任务。
+- [具身智能体评测](../methods/embodied-agent-benchmarking.md)：对照任务与评分协议。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_eval_114_robohive.md`](../../sources/repos/pai_awesome_eval_114_robohive.md) — 本条目策展摘录
