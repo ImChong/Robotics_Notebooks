@@ -4,6 +4,7 @@ tags: [project, software, 3d-assets, mesh-generation, digital-content-creation]
 status: complete
 updated: 2026-11-26
 project_id: tripo-studio
+institutions: [vast-ai]
 project: https://studio.tripo3d.ai/
 original:
   - ../../sources/sites/tripo-studio.md
@@ -25,7 +26,7 @@ summary: "Tripo Studio 用文字或图像生成 3D 网格，提供重拓扑、�
 
 ## 一句话定义
 
-Tripo Studio 是 VAST 的浏览器 3D 工作台，可从文字或参考图生成网格，也能对既有网格做重拓扑、贴图和角色绑定；Creator Hub 可浏览作品，不等于可无条件下载或商用的素材库。
+Tripo Studio 是三启万物（VAST）的浏览器 3D 工作台，可从文字或参考图生成网格，也能对既有网格做重拓扑、贴图和角色绑定；Creator Hub 可浏览作品，不等于可无条件下载或商用的素材库。
 
 ## 英文缩写速查
 

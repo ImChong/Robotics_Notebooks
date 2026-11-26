@@ -7,7 +7,7 @@ added: 2026-11-26
 
 # Tripo Studio 官方资料归档
 
-- **产品：** Tripo Studio，由 VAST 团队构建；条款所列服务方为 Holymolly。
+- **产品：** Tripo Studio，由 [三启万物（VAST）](https://www.vastworld.ai/zh/about) 构建；条款所列服务方为 Holymolly。
 - **入口：** [Studio](https://studio.tripo3d.ai/) · [Creator Hub](https://studio.tripo3d.ai/creator-hub)。
 - **版本：** 产品文档标注 2026 年 10 月；H3.5 Preview 发布说明更新于 2026-11-25；用户协议更新于 2026-11-13。查阅于 2026-11-26。
 - **核对范围：** 通读所列核心产品文档、H3.5 Preview 发布说明及用户协议有关条款，覆盖生成输入、H/P 模型、网格编辑、绑定、导出、Canvas 节点和共享、积分及内容许可；不包含登录后生成、实际下载或打印。
