@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | 收录 Spectacles × DimOS OpenYAM AR 遥操作；核对 development、坐标注册与两种执行路径。
+
 ## [2026-11-26] ingest | 收录 nanoAstra 语义动作和流式执行，核对 RoboTwin 多时钟评测与公开代码边界。
 
 ## [2026-11-26] ingest | 复用 Doppel 既有论文节点，核验公开相机表、标定与推理入口以及跨本体评测口径。
