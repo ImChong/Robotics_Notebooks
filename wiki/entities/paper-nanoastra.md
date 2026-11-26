@@ -132,6 +132,7 @@ sequenceDiagram
 - [机器人代理式操作策略](../methods/agentic-manipulation-policies.md)：文本策略、状态检验和执行器的职责边界。
 - [双臂操作](../tasks/bimanual-manipulation.md)：两臂共同执行仍需规划、碰撞检查与同步。
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)：比较已知任务、零样本和真实执行的不同测量口径。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：先验收相机与抓握点对齐，再将定位误差和语义步执行误差分别归因。
 - [VLA 纵深 Stage 4](../../roadmap/depth-vla.md)：区分实际执行时钟、用时、动作粒度和控制频率。
 
 ## 参考来源
