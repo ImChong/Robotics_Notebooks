@@ -172,6 +172,8 @@ flowchart TD
 
 - [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
 
+- [抓取姿态估计（Grasp Pose Estimation）](../methods/grasp-pose-estimation.md)
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

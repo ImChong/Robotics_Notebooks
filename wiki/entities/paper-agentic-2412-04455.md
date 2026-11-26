@@ -163,6 +163,9 @@ flowchart TD
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [Agentic 操作策略](../methods/agentic-manipulation-policies.md)
 
+- [机器人智能体监控与验证框架（Robot Agent Harness）](../methods/robot-agent-harness.md)
+- [机器人操作任务（Manipulation）](../tasks/manipulation.md)
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

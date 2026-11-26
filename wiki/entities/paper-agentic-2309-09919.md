@@ -148,6 +148,9 @@ flowchart TB
 
 - [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、执行接口与反馈机制。
 
+- [机器人操作任务（Manipulation）](../tasks/manipulation.md)
+- [安全强化学习（Safe RL）](../methods/safe-rl.md)
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)
