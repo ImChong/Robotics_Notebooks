@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] structural | Batch 12（A+B双线）：11 个机器人/仿真/控制核心仓库补齐源码运行时序图（另有 Wiki-GRx-Pipeline 全分支仅含文档已实证标不适用），26 篇开放获取与 arXiv 论文全文核读补全定量指标与方法流程图（另识别 3 篇 paper-pai-* 上游 arXiv ID 错配阻塞未臆造）
+
 ## [2026-11-26] ingest | 机器人策略骨干选型：从 MLP 基线到时序模型
 
 - 通读深蓝具身智能原文，复用既有骨干对比页，将视觉、历史、融合和动作头拆成独立对照，并接入模型架构 Stage 1 的闭环与端侧评测练习。
