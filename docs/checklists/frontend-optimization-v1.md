@@ -133,6 +133,7 @@
 - [x] 首页知识图谱预览：Top-N 诱导子图剔除孤立点并按度数回填可连通候选，避免「全局度数高但邻居不在预览集」的孤儿节点漂浮。
 - [x] 详情页 Mermaid：正文 14px / 移动端 12px，增大节点 `padding` 与 `wrappingWidth`，减轻大字贴边与单行裁切；灯箱仍按 1.75× 离屏高清重绘。
 - [x] 详情页 Mermaid 标签裁切：`htmlLabels` 下 `foreignObject` 比 `nodeLabel` 略窄时 post-render 扩框 + CSS `overflow: visible`，修复如 world-models-15 技术地图等长标签贴边裁切。
+- [x] Mermaid 时序图暗色对比度：共享样式降低 `rect` / `box` 背景在暗色主题下的填充不透明度，消息及箭头保持可读。自动编号与激活条边框采用主题配色；详情、路线、问答和已打开的放大预览随主题刷新，共用渲染队列以避免配色或字号串用。
 - [x] 纵深路线「路线一览」Mermaid：节点标签 `**Stage N**` 改为 `<b>Stage N</b>`（与已有 `<br/>`/`<em>` 对齐）；`main.js` 渲染前将残留 Markdown `**…**` 规范为 `<b>`，避免星号原样显示。
 - [x] Markdown 嵌套列表：`renderMarkdownContent` 保留缩进层级，路线页「其它纵深路径 / 关联知识页」等不再被拍平为同级 bullet。
 - [x] 首页「更多路线」六按钮排版：`home-entry-route-links` 最小列宽 132px → 118px，861–940px 窗口宽度下不再出现 5+1 孤行；≤860px 移动端保持 2×3 网格。
