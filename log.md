@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] structural | Batch 9：核查官方 GitHub README 与实证数据集卡片，补齐 74 篇非论文实体（23 篇 cn-os-*、36 篇 dataset-*、9 篇 EtherCAT、6 篇硬件/项目）架构与数据流水线 Mermaid 图，跳过 12 篇无实证细节/空仓条目（Issue #3997）
+
 ## [2026-11-26] ingest | 机器人训练数据 2027 展望：从市场样本到试采验收
 
 - 通读 Sam Padilla 的文章，记录 X 首发和同 ID 镜像，区分供给样本、访谈估价与预测。
