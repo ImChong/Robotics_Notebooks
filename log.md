@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | DriveSTA：补核模型与轨迹库、区分 HUGSIM 演示与全量评分
+
+- 复用 #4120 合入的 `paper-drivesta`，补齐 arXiv HTML 与 alphaXiv 入口，并归档四个 checkpoint 的 Hub/本地文件名映射和轨迹库清单。
+- 公开 308,119 场景不等于固定 Scale 配方的 232,672。公开逐场分数与展示清单核对不等于运行模型或基准。
+
 ## [2026-11-26] ingest | 人形机器人整机热管理：任务谱、热网络与降额闭环
 
 - 通读 Zane Hub 原文，区分可核对的样机证据与未给出工况的行业经验值；新增整机热管理概念与流程图。
