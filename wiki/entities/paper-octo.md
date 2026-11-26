@@ -16,7 +16,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-16
+updated: 2026-11-26
 arxiv: '2405.12213'
 code: https://github.com/octo-models/octo
 project: https://octo-models.github.io/
@@ -58,9 +58,9 @@ project_id: octo
 venue: RSS 2024
 ---
 
-# Octo：灵活输入的开源通才操作策略
+# Octo: An Open-Source Generalist Robot Policy · Octo：开源通用机器人操作策略
 
-**Octo**（*Octo: An Open-Source Generalist Robot Policy*，[arXiv:2405.12213v2](https://arxiv.org/abs/2405.12213)，[项目页](https://octo-models.github.io/)，[代码](https://github.com/octo-models/octo)）由 **UC Berkeley、Stanford、CMU 与 Google DeepMind** 联合提出并发表于 **RSS 2024**：模型将多视角 RGB 观测、语言指令与目标图像条件统一组装为 token 序列，通过块级因果注意力主干与被动 `readout_action` token 驱动轻量扩散动作头，在约 27M–93M 参数量下实现跨本体零样本泛化与新相机/新动作空间的少样本微调。HMI 论文总索引编号 **P056**（世界模型、VLA 与 Agent 分组；参见 [HMI 论文导读](../queries/hmi-papers-coverage.md) 与 [Foundation Policy](../concepts/foundation-policy.md)）。
+**Octo**（*Octo: An Open-Source Generalist Robot Policy*，[arXiv:2405.12213v2](https://arxiv.org/abs/2405.12213)，[项目页](https://octo-models.github.io/)，[代码](https://github.com/octo-models/octo)）由 **UC Berkeley、Stanford、CMU 与 Google DeepMind** 联合提出并发表于 **RSS 2024**：模型将多视角 RGB 观测、语言指令与目标图像条件统一组装为 token 序列，通过块级因果注意力主干与被动 `readout_action` token 驱动轻量扩散动作头，在约 27M–93M 参数量下在匹配预训练接口的多种机器人设定上支持零样本操作，并通过少量目标演示适配新相机或动作空间。HMI 论文总索引编号 **P056**（世界模型、VLA 与 Agent 分组；参见 [HMI 论文导读](../queries/hmi-papers-coverage.md) 与 [Foundation Policy](../concepts/foundation-policy.md)）。
 
 ## 一句话定义
 
@@ -79,11 +79,11 @@ venue: RSS 2024
 
 ## 为什么重要
 
-- **轻量开源基准与接口范式：** 以 `Octo-Small`（27M）和 `Octo-Base`（93M）证明轻量级架构在 **800k OXE 轨迹**上预训练后即可达到与 55B 闭源 RT-2-X 接近的零样本迁移表现，成为社区微调与对照的事实标准基线之一（见 [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)）。
+- **轻量开源基准与接口范式：** 以 `Octo-Small`（27M）和 `Octo-Base`（93M）表明轻量级架构在 **800k OXE 轨迹**上预训练后，在论文比较的 WidowX 与 RT-1 Robot 任务上可达到与 55B RT-2-X 相近的成功率，成为社区微调与对照的事实标准基线之一（见 [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)）。
 - **可插拔观测与动作空间：** 预训练仅依赖主视角（及可选腕部）RGB，微调时只需为新增传感器（如力/力矩传感、关节本体状态 `LowdimObsTokenizer`）与新动作空间（如 14-DoF ALOHA 双臂关节位置）重配 tokenizer 和 `DiffusionActionHead`，无需重训整网。
-- **双条件任务接口：** 同时训练语言指令与目标图像条件（训练时按比例随机掩码），解决自然语言对精细空间目标描述歧义的问题。
+- **双条件任务接口：** 训练时对语言和目标图像做条件丢弃；无语言标注的样本只用目标图像。实际评测按任务选条件，目标图像可补充终点空间约束。
 
-## 核心原理
+## 核心机制
 
 ### 核心信息
 
@@ -93,7 +93,7 @@ venue: RSS 2024
 | **模型规模** | 预训练主干定义 `Octo-Tiny`（10M）、`Octo-Small`（12L/384d/6h，27M）、`Octo-Base`（12L/768d/12h，93M）；外加冻结语言编码器 `t5-base`（111M） |
 | **观测与任务 Token 化** | 语言经冻结 `t5-base` 编为 16 个 token；RGB 经浅层 CNN `SmallStem16`（`16×16` patch）编为 `256`（主视角 `256×256`）或 `64`（腕部 `128×128`）个 token；**原始论文与预训练配置不直接输入点云，且预训练刻意屏蔽本体状态以防因果混淆** |
 | **主干与动作读出** | `OctoTransformer` + `BlockTransformer` 执行分块因果注意力：任务 token 对所有时间步可见，每步末尾附加 `readout_action` 被动汇总当前及历史窗口（`window=2`）状态，再送入 `DiffusionActionHead`（3 层 256 维残差 MLP + LayerNorm，20 步 cosine DDPM，单次前向仅需 1 次 Transformer 计算）生成 `H=4` 动作块 |
-| **预训练数据与算力** | 25 个 OXE 数据集（`oxe_magic_soup` 配方，约 800k 轨迹 / 1.2TB；仅 27% 含腕部相机、56% 含语言标注），动作统一为 7-DoF delta 末端位姿 + 绝对二值夹爪（`+1` 开 / `0` 闭）；AdamW `lr=3e-4`、`batch=2048`、300k steps（TPU v4-128 上 Base 约 14h、Small 约 8h） |
+| **预训练数据与算力** | 25 个 OXE 数据集（`oxe_magic_soup` 配方，约 800k 轨迹 / 1.2TB；仅 27% 含腕部相机、56% 含语言标注），动作统一为 7 维动作（3 维末端平移增量 + 3 维旋转增量 + 1 维绝对夹爪）（`+1` 开 / `0` 闭）；AdamW `lr=3e-4`、`batch=2048`、300k steps（TPU v4-128 上 Base 约 14h、Small 约 8h） |
 | **开源产物** | 代码仓 `octo-models/octo`（JAX/Flax），HuggingFace 权重 `rail-berkeley/octo-small`、`octo-base`、`octo-small-1.5`、`octo-base-1.5` |
 
 ### 流程总览
@@ -106,59 +106,63 @@ flowchart LR
   tok --> bt["OctoTransformer / BlockTransformer (块级因果注意力, window=2)"]
   bt --> emb["readout_action 输出嵌入"]
   emb --> head["DiffusionActionHead (3层残差MLP, 20步 DDPM)"]
-  head --> act["H=4 动作块 (7-DoF 末端增量+绝对夹爪 或 微调新关节空间)"]
+  head --> act["H=4 动作块 (7 维动作：末端平移和旋转增量 + 绝对夹爪 或 微调新关节空间)"]
 ```
 
 ## 源码运行时序图
 
-以下时序基于官方仓库 `octo-models/octo`（commit `241fb351`）中 `scripts/train.py`、`scripts/finetune.py`、`examples/02_finetune_new_observation_action.py`、`octo/model/octo_model.py`、`octo/model/octo_module.py` 与 `octo/model/components/action_heads.py` 源码核对绘制：
+以下是官方 commit `241fb351` 的[离线推理 Notebook](https://github.com/octo-models/octo/blob/241fb3514b7c40957a86d869fecb7c7fc353f540/examples/01_inference_pretrained.ipynb)与 `OctoModel.sample_actions` 的调用链。图中闭环执行是环境侧可选步骤，不属于 Notebook 的离线回放。
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as 开发者 / 机器人客户端
-    participant Data as "oxe / RLDS 数据管线 (make_interleaved_dataset)"
-    participant Model as "OctoModel (octo/model/octo_model.py)"
-    participant Mod as "OctoModule & BlockTransformer (octo_module.py)"
-    participant Head as "DiffusionActionHead (action_heads.py)"
-
-    Dev->>Model: "OctoModel.load_pretrained('hf://rail-berkeley/octo-base-1.5') 或 from_config()"
-    Dev->>Data: "scripts/finetune.py 调用 make_single_dataset() 统计 dataset_statistics"
-    Data-->>Model: "merge_weights() 保留主干权重并初始化新 LowdimObsTokenizer / 新动作头"
-    loop "微调训练步 (约 50k steps, A5000 24GB < 5h)"
-        Data->>Model: "采样 window=2 观测与 action_horizon 动作块"
-        Model->>Mod: "前向编码图像/语言/目标图与 readout_action tokens"
-        Mod-->>Head: "输出 readout_action 嵌入向量"
-        Head-->>Model: "计算 DDPM 去噪损失并更新参数 (AdamW)"
+    actor Client as Notebook / 机器人客户端
+    participant Model as OctoModel
+    participant Mod as OctoModule / BlockTransformer
+    participant Head as DiffusionActionHead
+    participant Env as 机器人环境
+    Client->>Model: load_pretrained 恢复参数、配置、数据统计量
+    Client->>Model: create_tasks 组装语言或目标图像条件
+    loop 每次重规划
+        Client->>Model: sample_actions 传入观测历史、掩码、随机键
+        Model->>Mod: 一次 run_transformer
+        Mod-->>Model: 返回 readout_action 嵌入
+        Model->>Head: predict_action 运行 20 步去噪
+        Head-->>Model: 返回归一化动作块
+        Model-->>Client: 若传入对应统计量，则在模型接口内反归一化
+        opt 连接环境时
+            Client->>Env: 仅执行配置指定的动作步数
+            Env-->>Client: 收集下一轮观测
+        end
     end
-    Dev->>Model: "create_tasks(texts/goals) + sample_actions(obs, task, rng)"
-    Model->>Mod: "单次 Transformer 前向提取条件嵌入"
-    Mod->>Head: "predict_action() 执行 20 步反向扩散采样"
-    Head-->>Dev: "反归一化并输出未来 H 步可执行动作块"
 ```
+
+先用离线回放验证 `image_primary` 的批次／时间维、`timestep_pad_mask` 与动作尺度；论文的重规划设定、`03_eval_finetuned.py` 的仿真和 `04_eval_finetuned_on_robot.py` 的 WidowX 环境封装不是同一个执行配置。
 
 ## 工程实践
 
 - **v1.5 关键工程修复（`scripts/configs/octo_pretrain_config.py` & `README.md`）：** 相对于最初论文版本，`octo-{base,small}-1.5` 开启 `repeat_task_tokens=True` 以增强语言/目标条件对齐、引入 GPT-3.5 生成的 `OXE_paraphrases`（`rephrase_prob=0.5`）做指令复述增强、移除扩散动作头中的 dropout（`dropout_rate=0.0`），并修复 `use_correct_attention` 中的掩码偏移与图像增强随机数种子复用 bug。
 - **跨本体微调配方（`scripts/finetune.py`、`scripts/configs/finetune_config.py`、`examples/02_finetune_new_observation_action.py`）：**
-  - 当接入新传感器（例如腕部相机、低维本体位置、力/力矩读数）或新动作空间（如 14-DoF 关节位置控制）时，删除或替换原 `heads['action']` 与对应 `observation_tokenizers`，再通过 `merge_weights(new_params, pretrained_params)` 复用主干与 `t5-base` 权重。
-  - 原文 6 个真实场景微调默认只需约 **100 条演示**、**50k 步**微调，在单张 **NVIDIA A5000（24GB）上耗时不足 5 小时**；仅 Berkeley Bimanual（ALOHA）将 chunk size 调高至 64、执行前 12 步以匹配高频双臂控制。
-- **推理延迟与条件选择：** RTX 4090 上实测吞吐 `Octo-Base` 约 **13 it/s**、`Octo-Small` 约 **17 it/s**；扩散采样的 20 步仅作用于轻量 3 层 MLP 动作头（Transformer 仅前向 1 次），显著快于自回归离散 VLA 逐步解码。若任务对物体空间终点敏感且容易用图像示教，优先采用目标图像条件（WidowX 零样本实测比纯语言高 +25%）。
+  - 论文 §III-C 的主配方是复用预训练初始化、更新整个策略（扩散目标）；仓库另提供冻结选项。官方 **ALOHA 仿真示例**改用 14 维动作、`H=50` 的 `L1ActionHead` 与低维本体 tokenizer，通过 `merge_weights` 复用可匹配参数。它不是论文双臂拆笔帽实验的 `H=64 / 执行 12 步` 配方。
+  - 原文 6 个真实场景微调默认只需约 **100 条演示**、**50k 步**微调，在单张 **NVIDIA A5000（24GB）上耗时不足 5 小时**；Berkeley Bimanual 真机实验额外报告预测动作块长 64、执行前 12 步后再规划。
+- **推理延迟与条件选择：** 官方 README 在 RTX 4090 上报告的模型推理吞吐 `Octo-Base` 约 **13 it/s**、`Octo-Small` 约 **17 it/s**；扩散采样的 20 步仅作用于轻量 3 层 MLP 动作头（Transformer 仅前向 1 次），所报吞吐不含实际相机、通信和底层控制延迟，不能当作真机闭环频率。若任务对物体空间终点敏感且容易用图像示教，优先采用目标图像条件（论文 §IV-A 对所测 WidowX 任务报告目标图像优于语言条件）。
 
-## 评测
+## 实验与评测
 
 | 评测维度 | 核心设定 | 关键量化结果（原文 §IV–V & Table I–VII） |
 |----------|----------|----------------------------------------|
-| **跨本体 Zero-Shot（Fig. 5）** | WidowX / UR5 / RT-1 Robot 三个未参与微调基准 | Octo-Base 平均成功率比 **RT-1-X（35M）高 +29%**（WidowX `0.50` vs `0.20`；UR5 `0.70` vs `0.35`；RT-1 Robot `0.80` vs `0.60`），整体接近 55B 闭源 **RT-2-X**（WidowX `0.50`、RT-1 Robot `0.85`）；目标图像条件在 WidowX 上比语言条件高 `+25%` |
+| **跨本体 Zero-Shot（§IV-A、PDF Fig. 5）** | WidowX / UR5 / RT-1 Robot，无任务微调；机器人接口与任务类型来自预训练分布 | 作者报告 Octo 平均优于 RT-1-X；与 RT-2-X 只在 WidowX 和 RT-1 Robot 对照，其中 WidowX 的 RT-2-X 数字引用既有论文。不能推成未见机器人或技能的通用零样本结论 |
 | **WidowX 泛化拆解（Table VII）** | 分布内 / 新物体 / 新环境 / 新技能 | 分布内 **85%**、新物体 **80%**、新环境 **40%**、新技能仅 **5%**（说明零样本很难跨出训练动作技能集合） |
-| **新机器人/新模态少样本微调（Table I）** | 6 个全新任务/观测/动作空间（各约 100 条演示，50k 步） | CMU Baking **50%**、Stanford Coffee **75%**、Berkeley Peg Insertion（双相机+FT 力矩）**70%**、Berkeley Pick-Up（关节控制）**60%**、Berkeley Coke（未见 ViperX）**100%**、Berkeley Bimanual（ALOHA 14-DoF）**80%**；平均 **72%**（显著高于从头训练 **20%** 与 VC-1 **15%**） |
+| **新机器人/新模态少样本微调（Table I）** | 6 个全新任务/观测/动作空间（各约 100 条演示，50k 步） | CMU Baking **50%**、Stanford Coffee **75%**、Berkeley Peg Insertion（单侧视相机、末端速度和力/力矩）**70%**、Berkeley Pick-Up（关节控制）**60%**、Berkeley Coke（未见 ViperX）**100%**、Berkeley Bimanual（ALOHA，14 维动作）**80%**；平均 **72%**（显著高于从头训练 **20%** 与 VC-1 **15%**） |
 | **关键设计消融（Table II/VI & App. E）** | 动作头 / 视觉切片 / 语言模型 | `DiffusionActionHead`（**83%**）远超 MSE 头（**35%**）与 256-bin 离散头（**18%**）；`16×16` patch 优于 `32×32`；`t5-small`（30M）、`t5-large`（386M）或微调语言后两层均未超越冻结 `t5-base`（111M） |
+
+Table I 给出汇总成功率；试验口径以任务细节为准，例如附录 F-C 对拆笔帽一项写明为 10 次试验。
 
 ## 结论
 
 **在需要用中等规模算力适配新相机、力传感或新动作空间时，应优先以 Octo（推荐 `octo-base-1.5` / `octo-small-1.5`）的模块化 tokenizer + `DiffusionActionHead` 微调作为基线，而不是直接从头训练或盲目上 7B VLA。**
 
-1. **动作头选型：** 连续多模态操作坚持使用 `DiffusionActionHead`（消融领先 MSE +48%、领先离散化 +65%），避免单峰 MSE 对多解轨迹做平均。
+1. **动作头选型：** 连续多模态操作坚持使用 `DiffusionActionHead`（在 Table II 的单套 WidowX 消融中，分别高 48 和 65 个百分点），避免单峰 MSE 对多解轨迹做平均。
 2. **夹爪表征：** 保持绝对二值夹爪（`+1` 开 / `0` 闭）而非相对增量夹爪，原文消融表明相对夹爪显著损害抓取失败后的重试能力。
 3. **预训练本体感知取舍：** 在开放离线示范上做大范围预训练时慎加本体状态（易诱发只看关节位置不看图像的因果混淆），将其留到下游特定机器人微调阶段再以 `LowdimObsTokenizer` 接入。
 4. **条件接口切换：** 语义组合清晰用语言条件；目标摆放形态精准、语言难描述时优先给目标图像条件（或两者混合）。
@@ -166,7 +170,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **新技能零样本泛化薄弱：** Table VII 显示面对全新动作技能时零样本成功率跌至 **5%**，强依赖下游约 100 条演示微调。
+- **新技能零样本泛化薄弱：** Table VII 显示面对全新动作技能时零样本成功率跌至 **5%**，不能假定开箱适配；约 100 条是论文六组微调的采样量级，不是所有任务的保证。
 - **语言微调对多语言/复杂指令理解有限：** 采用冻结 `t5-base`（111M）而非大型 VLM 骨干，复杂常识推理与长程语义组合能力不及后续基于 VLM 的 VLA（如 [OpenVLA](./paper-openvla.md)）。
 - **OXE 数据长尾与格式对齐成本：** 25 个预训练子集中仅 **27%** 带腕部相机、**56%** 带语言标注，且跨机器人联合训练要求先做 RLDS 格式与动作空间对齐。
 - **层级边界：** 原生面向末端/关节位姿动作块生成，不替代高频全身控制（WBC）或足式 [locomotion](../tasks/locomotion.md)。
@@ -219,7 +223,7 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [Octo 官方项目页](https://octo-models.github.io/)
-- [Octo 论文全文（arXiv:2405.12213）](https://arxiv.org/abs/2405.12213)
+- [Octo 论文全文（arXiv v2 PDF）](https://arxiv.org/pdf/2405.12213v2) · [HTML](https://arxiv.org/html/2405.12213v2)
 - [GitHub: octo-models/octo](https://github.com/octo-models/octo)
 - [RSS 2024 正式收录 PDF](https://www.roboticsproceedings.org/rss20/p090.pdf)
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
