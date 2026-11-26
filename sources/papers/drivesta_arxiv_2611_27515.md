@@ -6,11 +6,13 @@
 - **作者：** Xinyao Rao、Zecheng Tang、Liuxuan Sun、Zheyuan Lai、Minjun Yu、Xun Cao、Wei Li（通讯作者）
 - **机构：** 南京大学、北京大学、EABOT.AI
 - **论文：** https://arxiv.org/abs/2611.27515
+- **HTML（原文）：** https://arxiv.org/html/2611.27515v1
+- **alphaXiv（同一预印本的阅读入口）：** https://www.alphaxiv.org/abs/2611.27515
 - **PDF（原文）：** https://arxiv.org/pdf/2611.27515v1
 - **版本：** arXiv:2611.27515v1，cs.CV，2026-11-20；预印本，非独立同行评审结论
 - **项目主页：** https://rtwotwo.github.io/DriveSTA/
 - **代码：** https://github.com/Rtwotwo/DriveSTA
-- **模型/数据入口：** https://huggingface.co/Rtwotwo/DriveSTA（项目指向，下载与复现未单独验证）
+- **模型/数据入口：** https://huggingface.co/Rtwotwo/DriveSTA（[发布清单与模型卡核对](../models/drivesta-release-assets.md)，未下载权重或复现实验）
 - **入库日期：** 2026-11-23
 - **核对范围：** 已读取用户提供的同篇 21 页 PDF（正文第 1–11 页、Supplementary Material 第 12–21 页），逐节核对 Introduction、Related Work、Method §3.1–3.5、Experiments §4.1–4.4、Discussion/Limitations、Conclusion、Appendix A 数据与指标协议、Appendix B 搜索/训练/JEPA/消融/时延、Appendix C 可视化及 Table 1–8、S1–S4。与既有官方项目页和官方仓库静态审读记录交叉校验；未独立执行训练或 benchmark。
 - **通读：** 已完成

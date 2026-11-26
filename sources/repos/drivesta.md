@@ -5,7 +5,7 @@
 - **项目：** https://rtwotwo.github.io/DriveSTA/
 - **资产入口：** https://huggingface.co/Rtwotwo/DriveSTA
 - **许可：** Apache-2.0（主仓原始代码；third_party 与外部数据需分别查许可）
-- **核对日期：** 2026-11-23
+- **核对日期：** 2026-11-23；2026-11-26 补查 [固定提交 f89bcf9](https://github.com/Rtwotwo/DriveSTA/tree/f89bcf98233e417bb44e515302b712fec80d3c3d) 的资产下载器、兼容映射与发布清单
 - **核对范围：** README、docs/CODE_STRUCTURE.md、INFERENCE.md、MINING.md、MODEL_CONFIGS.md、VALIDATION.md、navsim/planning/script/run_inference.py、navsim/agents/drivesta/drivesta_agent.py、navsim/agents/drivesta/drivesta_model.py；源码为静态阅读，未执行训练或评测。
 - **通读：** 已完成
 
@@ -17,7 +17,7 @@
 | 训练与配置 | **已开源** | `scripts/training/train_drivesta.sh`、Hydra `training/*.yaml` |
 | 轨迹挖掘/筛选 | **已开源** | `feedback/`、`docs/MINING.md` |
 | 四种 profile | README 提供 | `base_proposal`、`base`、`scale_proposal`、`scale` |
-| 模型权重与轨迹归档 | README 列出 | 外部 HF 资产页面未直接核查下载 |
+| 模型权重与轨迹归档 | README 列出 | [已核对公开文件清单与路径映射](../models/drivesta-release-assets.md)，未下载大文件 |
 | HUGSIM 全量复现 | **不包含在单一 NAVSIM v1 脚本里** | `docs/INFERENCE.md` 明确依赖独立 benchmark |
 
 ## 代码职责
@@ -67,6 +67,8 @@ bash scripts/training/train_drivesta.sh base_proposal
 bash scripts/training/train_drivesta.sh base agent.checkpoint_path=/path/to/proposal_checkpoint.ckpt
 GPUS_PER_NODE=1 bash scripts/evaluation/run_drivesta_pdm_score_evaluation.sh base
 ```
+
+**发布文件名：** README 使用本地规范名（如 `base.ckpt`）；固定 Hub 版本使用旧名（如 `base_s2.ckpt`）。下载器利用 `navsim/common/compatibility/hub_files.json` 处理别名，并在写入前对大小和 SHA-256 校验。可加 `--plan` 先预览。
 
 **依赖边界：** 官方 PDMS 还需要匹配的 NAVSIM 地图、metric cache 和日志；全量 NAVTEST 需 12,146 场景齐全。官方 VALIDATION.md 记录 2026-11-18 的发布验证，但**未重新跑整套训练或全基准**。
 
