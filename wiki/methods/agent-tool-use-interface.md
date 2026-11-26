@@ -1,43 +1,74 @@
 ---
 type: method
 tags: [agent, tools, interfaces]
-status: draft
+status: complete
 updated: 2026-11-26
 summary: "为智能体访问外部程序、数据或服务定义可调用接口和结果反馈。"
 sources:
+  - ../../sources/sites/method-agent-tool-use-interface-primary-20261126.md
   - ../../sources/blogs/openai_harness_engineering_2026-02-11.md
+original:
+  - ../../sources/sites/method-agent-tool-use-interface-primary-20261126.md
 related:
+  - ./agent-skill-packaging.md
+  - ./coding-agent-verification-loops.md
   - ../concepts/agentic-software-factory-harness.md
 ---
 
-# 智能体工具调用接口
+# Agent Tool-use Interface · 智能体工具调用接口
 
 ## 一句话定义
 
-为智能体访问外部程序、数据或服务定义可调用接口和结果反馈。
+定义模型与执行器之间可检查的名称、参数、权限、结果和失败契约。
 
 ## 英文缩写速查
 
-| 缩写 | 英文全称 | 说明 |
+| 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
-| API | Application Programming Interface | 软件组件交互接口 |
+| MCP | Model Context Protocol | 定义服务端工具发现与调用 |
+| RPC | Remote Procedure Call | 以请求身份将调用与响应关联 |
+| API | Application Programming Interface | 执行器供调用方使用的功能边界 |
 
-## 关联概念
+## 为什么重要
 
-[相关概念](../concepts/agentic-software-factory-harness.md) 描述该方法所涉及的背景与边界。
+参数合法与获得授权属于不同层；成功响应也未必表示任务所需状态已落地。可校验的返回字段与错误类别让使用方区分请求错误、业务失败和完成。
 
-## 主要技术路线
+## 主要技术路线（核心机制）
 
-1. **定义契约**：为工具提供名称、用途、结构化参数和返回结果；文件系统、命令行、API 或 MCP 可以是不同的接入方式。
-2. **执行与反馈**：记录输入、输出和错误，让上层根据结果继续、重试或请求人工处理；工具调用成功不等同于任务完成。
-3. **边界与验证**：区分只读与写入权限，约束环境和外部副作用，并检查实际产物。
+MCP 的工具列表接口可分页；调用携带工具名和参数。输出同时可能包含供人阅读的内容、供机器校验的结构化结果。将 JSON-RPC 协议错误与结果里标记的执行错误分开统计。
 
-[技能封装](agent-skill-packaging.md) 可描述何时使用这些接口；[验证闭环](coding-agent-verification-loops.md) 关注交付证据。
+```mermaid
+flowchart LR
+  N0["发现工具并读取参数契约"]
+  N1["模型提出调用"]
+  N2["校验参数与实际授权"]
+  N3["执行受控操作"]
+  N4["验证返回和业务状态"]
+  N0 --> N1
+  N1 --> N2
+  N2 --> N3
+  N3 --> N4
+```
 
-## 局限与后续核查
+## 工程实践
 
-本页用于跨项目导航，具体功能、参数、可运行性和授权仍以对应项目或原始资料为准。
+只读机器人运行记录的示例返回 run_id、输出工件与观测时间；无记录应返回可识别的结果；如果接口涉及状态变更，应在执行前确认对象和动作，并核验真实状态，而不是只依赖成功字串。
+
+## 局限与风险
+
+工具注解不是可靠的授权证明；外部返回是数据而非指令。客户端应限制细粒度超时和副作用，写入结果不确定时先查询状态，不盲目重试。
+
+## 关联页面
+
+- [智能体技能封装](agent-skill-packaging.md)
+- [验证闭环](coding-agent-verification-loops.md)
+- [智能体软件工厂 Harness](../concepts/agentic-software-factory-harness.md)
 
 ## 参考来源
 
-- [相关资料归档](../../sources/blogs/openai_harness_engineering_2026-02-11.md)
+- [Model Context Protocol：Tools（2025-06-18） 核读归档](../../sources/sites/method-agent-tool-use-interface-primary-20261126.md)
+- [原页面关联资料](../../sources/blogs/openai_harness_engineering_2026-02-11.md)
+
+## 推荐继续阅读
+
+- [Model Context Protocol：Tools（2025-06-18）](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)

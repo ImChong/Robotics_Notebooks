@@ -1,16 +1,20 @@
 ---
 type: method
 tags: [cad, engineering, geometry]
-status: draft
+status: complete
 updated: 2026-11-26
 summary: "通过几何约束、参数和可编辑操作历史构造并检查工程模型。"
 sources:
   - ../../sources/repos/multi-agent-cad.md
+  - ../../sources/sites/platform-method-parametric-cad-workflow.md
+original:
+  - ../../sources/sites/platform-method-parametric-cad-workflow.md
 related:
+  - engineering-simulation-workflow.md
   - ../concepts/text-to-cad.md
 ---
 
-# 参数化 CAD 建模流程
+# Parametric CAD Workflow · 参数化 CAD 建模流程
 
 ## 一句话定义
 
@@ -20,24 +24,47 @@ related:
 
 | 缩写 | 英文全称 | 说明 |
 |---|---|---|
-| API | Application Programming Interface | 软件组件交互接口 |
+| CAD | Computer-Aided Design | 计算机辅助设计 |
+| B-Rep | Boundary Representation | 以面、边等边界表示实体 |
+| STEP | Standard for the Exchange of Product Model Data | 工程产品数据交换标准 |
+| STL | Stereolithography | 常见三角网格交换格式 |
 
-## 关联概念
+## 为什么重要
 
-[相关概念](../concepts/text-to-cad.md) 描述该方法所涉及的背景与边界。
+能打开 STEP 或 STL 只说明几何可交换，不等于恢复尺寸约束、参数和操作历史。
 
-## 主要技术路线
+## 主要技术路线（核心机制）
 
-1. **定义需求与基准**：明确单位、坐标系、尺寸、装配关系和输出格式。
-2. **参数化构造**：通过草图、约束、特征或脚本建立可编辑模型；修改参数后检查几何是否仍满足设计意图。
-3. **交付与复核**：核查尺寸、公差、装配干涉及导出结果；用于仿真或制造前还需完成网格、材料和工艺验证。
+CadQuery 分别提供 Workplane、Sketch 和 Assembly 接口，底层使用 OCCT 的 B-Rep。以参数化脚本控制尺寸，在工作平面构造或修改特征，随后定位零件组成装配。STEP 导出供几何交换；CadQuery 完整参数化信息留在 Python 源档。
 
-[工程仿真验证流程](engineering-simulation-workflow.md) 处理几何进入求解器后的模型设置与结果可信度。
+```mermaid
+flowchart LR
+    N0["需求与尺寸"]
+    N1["定义基准和参数"]
+    N2["草图与特征"]
+    N3["再生和装配检查"]
+    N4["导出与下游复核"]
+    N0 --> N1 --> N2 --> N3 --> N4
+```
 
-## 局限与后续核查
+## 工程实践
 
-本页用于跨项目导航，具体功能、参数、可运行性和授权仍以对应项目或原始资料为准。
+为孔径、孔距、厚度等使用命名参数，测试名义值和边界值；检查孔是否贯穿、最小壁厚与装配干涉。版本化保留脚本和参数表。导出 STEP 后，在接收端量测一个已知尺寸；下游若需要 STL，另记录网格化公差。
+
+## 局限与风险
+
+拓扑选择可能因上游特征重排而指向另一处；格式和内核版本也会影响重建。参数化不能替代公差分析、工艺审查或结构验证。
+
+## 关联页面
+
+- [工程仿真建模与验证](engineering-simulation-workflow.md)
+- [文本到 CAD](../concepts/text-to-cad.md)
 
 ## 参考来源
 
-- [相关资料归档](../../sources/repos/multi-agent-cad.md)
+- [CadQuery Concepts 与 Importing and Exporting Files](../../sources/sites/platform-method-parametric-cad-workflow.md)
+
+## 推荐继续阅读
+
+- [几何及接口](https://cadquery.readthedocs.io/en/latest/primer.html)
+- [导入导出](https://cadquery.readthedocs.io/en/latest/importexport.html)

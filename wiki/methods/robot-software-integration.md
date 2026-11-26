@@ -1,16 +1,21 @@
 ---
 type: method
 tags: [robotics, software, integration]
-status: draft
+status: complete
 updated: 2026-11-26
 summary: "将传感、通信、控制和应用模块连接为可运行、可诊断的机器人软件系统。"
 sources:
   - ../../sources/repos/awesome-agentic-robots-survey-index.md
+  - ../../sources/sites/platform-method-robot-software-integration.md
+original:
+  - ../../sources/sites/platform-method-robot-software-integration.md
 related:
-  - ../concepts/llm-robotics-control-interfaces.md
+  - ../concepts/ros2-basics.md
+  - robot-control-architecture.md
+  - robot-sensor-integration.md
 ---
 
-# 机器人软件系统集成
+# Robot Software System Integration · 机器人软件系统集成
 
 ## 一句话定义
 
@@ -20,24 +25,47 @@ related:
 
 | 缩写 | 英文全称 | 说明 |
 |---|---|---|
-| API | Application Programming Interface | 组件交互接口 |
+| ROS | Robot Operating System | 机器人组件与通信生态 |
+| DDS | Data Distribution Service | 常见 ROS 2 数据分发中间件规范 |
+| QoS | Quality of Service | 通信可靠性、历史及持久性等策略 |
+| HIL | Hardware-in-the-Loop | 真实设备参与闭环联调 |
 
-## 关联概念
+## 为什么重要
 
-[相关概念](../concepts/llm-robotics-control-interfaces.md) 描述本方法的背景。
+能看到 ROS 图不代表订阅兼容，也不能保证程序在正确坐标或时间域消费数据。先写清接口和故障契约，再拼接节点。
 
-## 主要技术路线
+## 主要技术路线（核心机制）
 
-1. **定义接口**：记录消息格式、坐标系、时钟、通信方式、版本和硬件依赖。
-2. **组合与运行**：接入传感器、驱动与控制节点，检查配置、启动顺序、权限及故障反馈；ROS 是可选的生态而非必要条件。
-3. **测试与交接**：先进行离线或仿真检查，再验证硬件接口、时延和安全停止，并记录未覆盖的环境。
+ROS 2 QoS 设计使用请求/提供模型匹配通信端点。历史深度、可靠性和持久性分别影响缓存、重传及晚加入订阅；偏好新鲜样本的感知流通常不能照搬另一条控制流的配置。
 
-[机器人控制架构](robot-control-architecture.md) 聚焦控制层分工；软件集成还涵盖消息、配置和运维。
+```mermaid
+flowchart LR
+    N0["定义消息时间与坐标契约"]
+    N1["接入驱动和中间件"]
+    N2["核对 QoS 与启动依赖"]
+    N3["离线和仿真回归"]
+    N4["硬件联调与故障验收"]
+    N0 --> N1 --> N2 --> N3 --> N4
+```
 
-## 局限与后续核查
+## 工程实践
 
-本页提供跨项目导航，具体硬件性能、实现、版本和评测以相应资料为准。
+建立话题/服务/动作接口表，记录消息、时间基准、单位、坐标和超期策略。离线回放检查对应时刻的 TF 与 QoS 匹配，随后在仿真测试启动次序、节点重启。接真机后独立测试断连、反馈过期、慢消费者和安全降级。
+
+## 局限与风险
+
+可靠消息不承诺硬实时，也不应让过期命令重新有效。ROS 2 是示例；换用其他中间件仍需要同样的时间和失效契约。
+
+## 关联页面
+
+- [ROS 2 基础](../concepts/ros2-basics.md)
+- [机器人控制架构](robot-control-architecture.md)
+- [机器人传感器集成](robot-sensor-integration.md)
 
 ## 参考来源
 
-- [相关资料归档](../../sources/repos/awesome-agentic-robots-survey-index.md)
+- [ROS 2 Design · Quality of Service Policies](../../sources/sites/platform-method-robot-software-integration.md)
+
+## 推荐继续阅读
+
+- [ROS 2 QoS 官方设计说明](https://design.ros2.org/articles/qos)
