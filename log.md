@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] lint | 核对 NVIDIA 空间智能实验室官方门户、补足阅读骨架与来源通读记录
+
 ## [2026-11-26] ingest | 收录 Tripo Studio：H/P 网格生成、导出授权与仿真资产边界
 
 ## [2026-11-26] structural | Batch 17（4x 扩容，A+B 双线，共 127 篇实体）：Track A 逐一核查 GitHub 源码并为 Pinocchio/Pink/ProxSuite/PPF-Solver/ProtoMotions/PlotJuggler/Rerun/MCAP/Meshroom/MLflow/LZ4/Manim/Open-Beni/BONES-SEED/DeepRobotics/DimOS/Duckiebot/Dynibo/Genesis/IsaacLab/LIFT-humanoid/Lightwheel/FreeCAD-MCP/GenCAD/NVIDIA-SONIC-GR00T-NuRec-SAGE/MimicLite/MOSS/Navbot-EN01/McByte++ 等 66 个项目实体补齐源码运行时序图（含硬件/纯文档/归档仓如实标注不适用）；Track B 通读 PDF 全文升级 55 篇 paper-agentic-*（ProgPrompt/Voyager/RoboCat/REFLECT/DoReMi/KNOWNO/RoCo/Safety-Chip/GenSim/DROC/SpatialVLM/OK-Robot/IntroPlan/RoboCodeX/MOKA/YAY-Robot/NILS/EMOS/PARTNR/CaM/HAMSTER/EmbodiedBench/Video2Policy/SoFar/RoboGuard/RoboFactory/FSD/BitVLA/VLA-OS/ROVER/LYRA/Gemini-Robotics-1.5/LIBERO-PRO/VLASH/RoboNeuron/RoboSafe/Genie-Sim-3.0/EmboTeam/FARE/DextER/DV-VLN/FAEA/MeCo/APEX/A2Eval 等）及 6 篇开放获取非 agentic 论文（SafeDreamer/EgoLifter/EgoSG/SEM2 等），全面补齐英文缩写速查、方法流程图、定量评测对比、局限与结论。
