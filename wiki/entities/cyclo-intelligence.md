@@ -106,6 +106,52 @@ flowchart LR
 
 与 [Action Chunking](../methods/action-chunking.md) 及 [VLA 真机部署](../queries/vla-deployment-guide.md) 叙述一致：**低频推理 + 高频控制环** 在容器内闭合。
 
+## 源码运行时序图
+
+以下时序图基于 `ROBOTIS-GIT/cyclo_intelligence`（`main` 分支）实际源码核对，展示从行为树调度、ROS 2 控制平面到策略容器双进程（`main_runtime` + `engine_process`）的完整运行调用链。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant BT as BehaviorTreeNode (bt_node.py)
+    participant SC as SendCommand (send_command.py)
+    participant Orch as OrchestratorNode (orchestrator_node.py)
+    participant PR as PolicyRuntime (main_runtime/main.py)
+    participant CL as ControlLoop (control_loop.py)
+    participant Req as InferenceRequester (inference_requester.py)
+    participant EW as EngineWorker (engine_process/worker.py)
+    participant Eng as GR00TInference (groot_engine/engine.py)
+    participant Robot as RobotClient / 机械臂话题
+
+    BT->>SC: tick() 执行 LOAD / RESUME / STOP / CLEAR
+    SC->>Orch: 调用 /task/command (SendCommand.srv)
+    Orch->>PR: ContainerServiceClient -> /policy/inference_command (CMD_LOAD)
+    PR->>CL: ServiceHandler.handle() -> ControlLoop.configure()
+    PR->>Req: load_policy(request)
+    Req->>EW: EngineCommand (CMD_LOAD_POLICY, seq_id)
+    EW->>Eng: load_policy(request) 加载模型权重
+    Eng-->>EW: 返回 action_keys 与 execution_contract
+    EW-->>Req: EngineCommandResponse
+    Orch->>PR: /policy/inference_command (CMD_START)
+    SC-->>BT: 轮询 /task/inference_status 等待目标 phase
+
+    loop 控制周期 control_hz (默认 100 Hz)
+        CL->>CL: _tick_once() 从 ActionChunkProcessor 取动作
+        CL->>Robot: RobotClient.publish_action() 发布控制命令
+        opt 缓冲区低于阈值触发异步补帧
+            CL->>Req: _request_and_buffer() -> get_action(task_instruction)
+            Req->>EW: EngineCommand (CMD_GET_ACTION, seq_id)
+            EW->>Eng: get_action_chunk()
+            Eng-->>EW: action_chunk
+            EW-->>Req: EngineCommandResponse (校验 seq_id 防陈旧)
+            Req-->>CL: 入队 ActionChunkProcessor / ExecutionFeedback
+        end
+    end
+```
+
+- **已核对源码路径：** `orchestrator/orchestrator/bt/bt_node.py`、`orchestrator/orchestrator/bt/actions/send_command.py`、`orchestrator/orchestrator/orchestrator_node.py`、`cyclo_brain/policy/common/runtime/main_runtime/main.py`、`cyclo_brain/policy/common/runtime/main_runtime/control_loop.py`、`cyclo_brain/policy/common/runtime/main_runtime/inference_requester.py`、`cyclo_brain/policy/common/runtime/engine_process/worker.py`、`cyclo_brain/policy/groot/groot_engine/engine.py`。
+- **关键入口：** 行为树节点经 `/bt/load_and_run` 或 `/bt/set_running` 激活后由 `BehaviorTreeNode.tick_callback()`（默认 30 Hz）驱动；`LOAD` 在 `SendCommand.COMMAND_STAGES` 中拆分为 `START_INFERENCE` + `STOP_INFERENCE` 两阶段，使模型驻留内存并处于 `PAUSED` 等待 `RESUME`。
+
 ## 快速启动（摘要）
 
 ```bash

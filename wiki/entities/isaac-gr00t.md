@@ -152,6 +152,45 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 
 对 `UNITREE_G1_SONIC` embodiment，VLA 输出 **紧凑 latent action token**，由 [GEAR-SONIC](./nvidia-sonic.md) 全身控制器解码为腿/臂/手关节命令——单策略可端到端协调 **操作 +  locomotion**（详见 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 教程）。
 
+## 源码运行时序图
+
+以下时序图基于 `NVIDIA/Isaac-GR00T`（`main` 分支）实际源码核对，展示模型微调（`launch_finetune.py`）与 ZMQ 推理服务端/客户端闭环（`run_gr00t_server.py` + `Gr00tPolicy` + `PolicyClient`）的核心调用链。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant FT as launch_finetune.py
+    participant Exp as experiment.py (run)
+    participant SrvEntry as run_gr00t_server.py
+    participant Srv as PolicyServer (server_client.py)
+    participant Pol as Gr00tPolicy (gr00t_policy.py)
+    participant Mod as N1.7 Model / TRT DiT
+    participant Cli as PolicyClient / rollout_policy.py
+
+    Note over FT,Exp: 1. 微调训练入口 (gr00t/experiment/launch_finetune.py)
+    FT->>FT: tyro.cli(FinetuneConfig) + load_modality_config()
+    FT->>Exp: run(config) 启动 LeRobot 数据加载与 Trainer 微调
+
+    Note over SrvEntry,Cli: 2. ZMQ 推理服务与客户端闭环
+    SrvEntry->>Pol: 实例化 Gr00tPolicy(embodiment_tag, model_path)
+    Pol->>Mod: AutoModel.from_pretrained() + AutoProcessor.from_pretrained()
+    SrvEntry->>Srv: PolicyServer(policy, host, port) 绑定 ZMQ REP (默认 :5555)
+
+    loop 仿真/真机闭环步 (rollout_policy.py)
+        Cli->>Srv: PolicyClient.get_action(obs) -> ZMQ REQ + MsgSerializer.to_bytes()
+        Srv->>Pol: 分发至 get_action endpoint -> _get_action(observation)
+        Pol->>Pol: check_observation() + VLAStepData -> processor() + collate_fn()
+        Pol->>Mod: model.get_action(**collated_inputs) (可选 TensorRT DiT 替换)
+        Mod-->>Pol: action_pred (归一化动作块)
+        Pol->>Pol: processor.decode_action() + check_action()
+        Pol-->>Srv: (casted_action, info)
+        Srv-->>Cli: MsgSerializer.to_bytes() 返回物理单位动作块
+    end
+```
+
+- **已核对源码路径：** `gr00t/experiment/launch_finetune.py`、`gr00t/eval/run_gr00t_server.py`、`gr00t/policy/gr00t_policy.py`、`gr00t/policy/server_client.py`、`gr00t/eval/rollout_policy.py`、`scripts/deployment/standalone_inference_script.py`。
+- **关键工程细节：** `MsgSerializer`（`server_client.py`）使用 `msgpack` + `msgpack_numpy` 并显式禁止 `allow_pickle=True` 与 `object` dtype 数组；若通过 `setup_tensorrt_engines`（或 `standalone_inference_script.py` 中的 `replace_dit_with_tensorrt`）启用 TensorRT，会将 `policy.model.action_head` 的 DiT `forward` 替换为 `TensorRTDiTWrapper` 执行 `execute_async_v3`。
+
 ## 局限与风险
 
 - **版本漂移：** 仓库 `main` 已是 N1.7，N1/N1.5 的行为只能从 `n1d5`、`n1d6` 分支或论文核对；本页的 N1.7 数值来自 README 与默认配置，**不等于**已复现的评测结论（README 也提示 5–6% 运行间方差）。

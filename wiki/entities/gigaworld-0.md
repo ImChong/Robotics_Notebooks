@@ -87,6 +87,47 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+`open-gigaai/giga-world-0` 将训练入口交由 `scripts/train.py`（基于 `giga_train` 调度 `GigaWorld0Trainer`），推理入口由 `scripts/inference.py` 调用 `GigaWorld0Pipeline` 完成单卡或序列并行（SP）视频生成：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant TR as scripts/train.py
+    participant CFG as configs/giga_world_0_video.py
+    participant Trainer as GigaWorld0Trainer (giga_world_0_trainer.py)
+    participant INF as scripts/inference.py
+    participant Pipe as GigaWorld0Pipeline (giga_models)
+
+    alt 模型训练 / LoRA 微调
+        Dev->>TR: python scripts/train.py --config configs.giga_world_0_video.config
+        TR->>CFG: setup_environment() + launch_from_config(config)
+        CFG->>Trainer: 实例化 runners=['giga_world_0.GigaWorld0Trainer']
+        Trainer->>Trainer: get_models() 加载 AutoencoderKLWan (冻结) 与 GigaWorld0Transformer3DModel (可选 LoRAPeftWrapper)
+        loop 每个训练 batch
+            Trainer->>Trainer: forward_step() -> forward_vae() 编码图像与参考帧
+            Trainer->>Trainer: edm_loss.add_noise() 拼接 ref_masks 并经 transformer() 预测
+            Trainer->>Trainer: edm_loss.denoise() + compute_loss()
+        end
+    end
+    alt 单卡 / 多卡推理生成
+        Dev->>INF: python scripts/inference.py --gpu_ids ...
+        opt len(gpu_ids) > 1
+            INF->>INF: mp.start_processes(_inference_sp) + dist.init_process_group('nccl') + initialize_sequence_parallel_group()
+        end
+        INF->>Pipe: GigaWorld0Pipeline.from_pretrained() 加载 Transformer / Text Encoder / VAE / LoRA
+        loop 遍历数据列表
+            INF->>Pipe: pipe(prompt, negative_prompt, image=input_image, ...)
+            Pipe-->>INF: 返回生成视频帧序列 output_images
+            INF->>INF: process_index == 0 时拼接网格并 imageio.mimsave() 输出 mp4
+        end
+    end
+```
+
+核对源码路径（`open-gigaai/giga-world-0` branch `main`）：`README.md`、`scripts/train.py`、`configs/giga_world_0_video.py`、`giga_world_0/giga_world_0_trainer.py`、`scripts/inference.py`。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

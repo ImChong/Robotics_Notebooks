@@ -92,6 +92,44 @@ flowchart LR
   N --> SEM
 ```
 
+## 源码运行时序图
+
+`AgibotTech/EWMBench` 的运行分为两阶段：先由 `processing.sh` 调用预处理脚本统一分辨率与提取末端轨迹，再由 `evaluate.py` 实例化 `EmbodiedWorldModelBenchmark` 汇总四维评测并导出 CSV：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 用户
+    participant SH as processing.sh
+    participant DT as processing/detection_tracking.py
+    participant EV as evaluate.py
+    participant BM as EmbodiedWorldModelBenchmark (EWMBench/__init__.py)
+    participant Metrics as scene_consistency / trajectory_consistency / semantics / diversity
+
+    User->>SH: bash processing.sh ./config.yaml
+    SH->>SH: video_resize.py 归一化帧分辨率 (640x480)
+    SH->>DT: process_video_with_tracking() 加载 YOLO 权重 (yolo_world_ckpt)
+    DT->>DT: model.track(img, persist=True) 跟踪左右夹爪并保存 traj/traj.npy 与 gripper_detection/video.mp4
+    User->>EV: python evaluate.py --dimension ... --config_path ./config.yaml
+    EV->>EV: dist_init() + load_config() 解析 gt_path / val_base / ckpt
+    EV->>BM: EmbodiedWorldModelBenchmark(device, save_path).evaluate(...)
+    BM->>BM: init_submodules() + build_full_info_json()
+    loop 遍历 dimension_list
+        alt trajectory_consistency
+            BM->>Metrics: compute_trajectory_consistency(gt_path, data_base) 计算 HSD/DYN/nDTW
+        else scene_consistency
+            BM->>Metrics: compute_scene_consistency() 用微调 DINOv2 提取特征比对
+        else semantics
+            BM->>Metrics: caption_reference() (Qwen2.5-VL) + compute_semantics() (BLEUScore / CLIPScore)
+        else diversity
+            BM->>Metrics: compute_diversity() 用 CLIP ViT-B/32 计算特征多样性
+        end
+    end
+    BM->>BM: 保存 {data_name}_results.json 并 merge_all_metrics_to_csv() 导出 ewmbm_final_table.csv
+```
+
+核对源码路径（`AgibotTech/EWMBench` branch `main`）：`README.md`、`config.yaml`、`processing.sh`、`processing/detection_tracking.py`、`evaluate.py`、`EWMBench/__init__.py`、`EWMBench/scene_consistency.py`、`EWMBench/trajectory_consistency.py`、`EWMBench/semantics.py`。
+
 ## 工程实践
 
 - **评测规模与协议**（论文 §4、附录 A）：10 任务 × 10 个真值 episode，每模型每 episode 生成 3 条取最优，7 个模型共 2100 条视频；参考图缩放到 640×480，生成视频统一为 640×480、30 FPS 后再评分。

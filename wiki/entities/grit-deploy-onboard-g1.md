@@ -59,6 +59,55 @@ flowchart LR
 
 VR 输入先经 PC Server 重定向后进入 G1；速度命令和 NPZ 轨迹则提供其他模式的输入。机载桥负责模式协调、策略推理和低层执行。仓库 README 报告 50 Hz C++ 推理 / 控制，并给出命令超时、VR 超时、重复桥进程保护和阻尼退出等机制。
 
+## 源码运行时序图
+
+以下时序图基于 `KurokoWeidong/GRIT_Deploy_Onboard_G1`（`main` 分支）实际源码核对，展示 PC 端 XRoboToolkit 重定向服务与 G1 机载双进程（`g1_udp_bridge` + `g1_npz_policy`）之间的三端运行链。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant XRT as XRoboToolkit SDK (PC Server)
+    participant Teleop as LowLatencyTeleopPoseZMQServer (serve_xrobot_teleop.py)
+    participant Retarget as _retarget_worker_main (xrobot_retarget.py)
+    participant VRCli as VrMotionClient (vr_motion_client.cpp)
+    participant Policy as g1_npz_policy (g1_npz_policy.cpp)
+    participant Bridge as G1UdpBridge (g1_udp_bridge.cpp)
+    participant SDK as Unitree SDK2 DDS (rt/lowstate & rt/lowcmd)
+
+    Note over XRT,Retarget: PC 重定向端 (serve_xrobot_teleop.py)
+    XRT->>Teleop: _on_vr_frame(snapshot)
+    Teleop->>Retarget: SharedLatestVrFrame.publish()
+    Retarget->>Retarget: XRobotRetargetWorkerRuntime.process_packet()
+    Retarget->>Teleop: SharedRetargetFrameRingBuffer.append(qpos)
+
+    Note over Bridge,SDK: G1 机载端 (run_vr_onboard.sh / run_npz_onboard.sh)
+    SDK-->>Bridge: LowState 回调/定时读取 (process_lowstate_sample)
+    Bridge->>Policy: send_state_snapshot() -> UDP 发送 q/dq/IMU/remote
+
+    loop 50 Hz 机载控制与模式状态机 (g1_npz_policy.cpp main)
+        Policy->>Policy: transport.receive(state, 1000)
+        opt VR 模式启用的 ZMQ 通信 (28701/28702/28703)
+            Policy->>VRCli: poll_operator_input() & poll_pose_frames()
+            Teleop-->>VRCli: ZMQ ctrl_sock / rep_sock (qpos 帧)
+            opt 需要预取参考帧
+                Policy->>VRCli: request_pose(vr_start_pending)
+                VRCli->>Teleop: ZMQ req_sock 请求最新插值姿态
+            end
+        end
+        alt Locomotion / LocomotionBlend 模式
+            Policy->>Policy: LocomotionPolicy::step() (AMP ONNX 推理)
+        else WholeBody 模式 (VR Tracking / NPZ Playback)
+            Policy->>Policy: GritPolicy::step() (GRIT ONNX 推理)
+        end
+        Policy->>Bridge: transport.send(target, 0, command_kp, command_kd, enable=1)
+        Bridge->>Bridge: on_udp_command() 校验 DOF/CRC/seq
+        Bridge->>SDK: lowcmd_publisher_->Write(cmd)
+    end
+```
+
+- **已核对源码路径：** `sim2real/teleop/serve_xrobot_teleop.py`、`g1_sim2real/scripts/run_vr_onboard.sh`、`g1_sim2real/scripts/run_npz_onboard.sh`、`g1_sim2real/scripts/run_bridge.sh`、`g1_sim2real/src/g1_udp_bridge.cpp`、`g1_sim2real/src/g1_npz_policy.cpp`、`g1_sim2real/src/vr_motion_client.cpp`。
+- **关键工程细节：** `run_bridge.sh` 使用 `flock` 与 `pgrep -x g1_udp_bridge` 防止双桥进程同时写 DDS；`g1_npz_policy.cpp` 在退出或异常捕获时调用 `send_damping()` 下发零力矩/阻尼命令，在 `vr_timeout_ms` 超时（默认 300 ms）后调用 `grit_policy.stop_vr()` 退回站立姿态。
+
 ## 工程实践
 
 - **硬件与依赖：** 目标是 Unitree G1；机载 C++17/CMake 程序使用 Unitree SDK2 和 ARM64 ONNX Runtime。VR PC Server 需要 Ubuntu 22.04/24.04 x86_64、Python 3.10、`uv` 与 XRoboToolkit 服务。

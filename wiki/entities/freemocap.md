@@ -61,6 +61,41 @@ flowchart TD
   P --> X["下游：BVH/TRC 等<br/>或自写导出脚本"]
 ```
 
+## 源码运行时序图
+
+`freemocap/freemocap` 通过 `freemocap/__main__.py` 启动 FastAPI/Uvicorn 后端（默认 `http://localhost:8005`），由 `FreemocapApplication` 统一调度相机组、实时管线与离线（Posthoc）处理管线：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor UI as Electron / React 前端
+    participant Main as freemocap/__main__.py
+    participant FastAPI as app.py (create_fastapi_app)
+    participant App as FreemocapApplication
+    participant RT as RealtimePipeline (realtime_pipeline.py)
+    participant PH as PosthocPipeline (posthoc_pipeline.py)
+
+    Main->>Main: WorkerRegistry + global_kill_flag 初始化
+    Main->>FastAPI: create_fastapi_app() + uvicorn.Server.serve()
+    FastAPI->>App: create_freemocap_app() 注册路由与 Manager
+    alt 实时采集与预览 (/realtime/apply)
+        UI->>FastAPI: POST /realtime/apply
+        FastAPI->>App: create_or_update_realtime_pipeline()
+        App->>RT: RealtimePipeline.create() 构建 CameraNode / SkeletonInferenceNode / RealtimeAggregatorNode
+        RT->>RT: start() 启动多进程/线程并经 PubSubTopicManager 发布聚合帧
+        App-->>UI: WebSocket 推送 FrontendImagePacket
+    end
+    alt 录制结束与离线重建 (/mocap/recording/stop)
+        UI->>FastAPI: POST /mocap/recording/stop
+        FastAPI->>App: stop_recording_all() + create_posthoc_mocap_pipeline()
+        App->>PH: PosthocPipeline.create() 按 VideoGroupHelper 为每路视频建 VideoNode
+        PH->>PH: start() 启动 VideoNode 检测与 PosthocAggregationNode 标定/三角化任务
+        PH-->>UI: 持续上报 PipelineProgressMessage 状态快照
+    end
+```
+
+核对源码路径（`freemocap/freemocap` branch `main`）：`README.md`、`freemocap/__main__.py`、`freemocap/app/app.py`、`freemocap/app/freemocap_application.py`、`freemocap/api/http/realtime/realtime_router.py`、`freemocap/api/http/mocap/mocap_router.py`、`freemocap/core/pipeline/realtime/realtime_pipeline.py`、`freemocap/core/pipeline/posthoc/posthoc_pipeline.py`。
+
 ## 与机器人学习栈的衔接
 
 | 衔接方向 | 说明 |

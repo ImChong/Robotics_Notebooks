@@ -103,6 +103,41 @@ flowchart TB
 2. 臂运动走 **`arm_sdk`**，勿在未接管平衡时直发 `/lowcmd`。
 3. Nav2 停车精度约 **0.5 m**，臂有效窗口约 **0.2 m** — 任务树含 **base approach** 闭环补距。
 
+## 源码运行时序图
+
+以下时序图基于 `Adyansh04/grove-g1`（`main` 分支）实际源码核对，展示 `bringup.launch.py` 拉起仿真与功能栈后，`g1_bt_executor` 执行 `pick_and_place.xml` 任务树时的权限切换、导航、近距趋近、MoveIt 操作与 `ros2_control` 低层写回流程。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Launch as bringup.launch.py / mission.launch.py
+    participant BT as g1_bt_executor (g1_bt_executor_main.cpp)
+    participant CM as /controller_manager (arm_authority.cpp)
+    participant Nav2 as Nav2 (/navigate_to_pose)
+    participant App as BaseApproachNode (g1_base_approach_node.cpp)
+    participant Manip as G1ManipulationServer (g1_manipulation_server_node.cpp)
+    participant HW as G1LowCmdSystem (g1_lowcmd_system.cpp)
+
+    Launch->>HW: bringup.launch.py 启动 sim + ros2_control + Nav2 + MoveIt + g1_manipulation_server
+    Launch->>BT: mission.launch.py 加载 pick_and_place.xml 并创建 ArmBracket
+    BT->>CM: AcquireArm -> switch_controller 激活 arm_trajectory_controller 与手部控制器
+
+    loop BT 以 tick_rate_hz 周期调用 tree.tickOnce()
+        BT->>Nav2: NavigateToPose 请求 /navigate_to_pose
+        Nav2-->>HW: 输出 /cmd_vel 驱动底盘行走至工作台附近
+        BT->>App: ApproachObject 请求 ~/approach_object
+        App-->>HW: 订阅 /objects 闭环发布 /cmd_vel 补齐近距误差
+        BT->>Manip: Pick / Place 请求 /g1_manipulation_server/pick 或 place
+        Manip->>HW: MoveGroupInterface 规划轨迹并下发至 arm/hand_trajectory_controller
+        HW->>HW: read() 读 rt/lowstate，write() 计算 CRC 后发布 rt/lowcmd
+    end
+
+    BT->>CM: 退出或 ArmBracket 析构触发 releaseUnlessHolding() 交还手臂控制权
+```
+
+- **已核对源码路径：** `workspace/src/g1_bringup/launch/bringup.launch.py`、`workspace/src/g1_orchestration/launch/mission.launch.py`、`workspace/src/g1_orchestration/src/g1_bt_executor_main.cpp`、`workspace/src/g1_orchestration/trees/pick_and_place.xml`、`workspace/src/g1_orchestration/src/arm_authority.cpp`、`workspace/src/g1_orchestration/src/skills/navigate_to_pose.cpp`、`workspace/src/g1_orchestration/src/skills/pick.cpp`、`workspace/src/g1_locomotion/src/g1_base_approach_node.cpp`、`workspace/src/g1_manipulation/src/g1_manipulation_server_node.cpp`、`workspace/src/g1_hardware_interface/src/g1_lowcmd_system.cpp`。
+- **代码实现核注：** 当前 `main` 分支的 `G1LowCmdSystem`（`g1_lowcmd_system.cpp`）直接通过 Unitree SDK2 `rt/lowstate` 与 `rt/lowcmd` 管理全身 29 个关节，并由 `arm_authority.cpp` 通过 `/controller_manager/switch_controller` 在 `arm_freeze_controller` 与 `arm_trajectory_controller` 之间切换手臂控制权，且由 `ArmBracket` 在异常或中断退出时兜底释放权限。
+
 ## 工程实践
 
 ### 快速起步（上游）

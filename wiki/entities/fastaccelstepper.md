@@ -60,6 +60,41 @@ flowchart LR
     MCU --> Motor["步进电机与执行机构 (3D 打印机 / 小型传送机构)"]
 ```
 
+## 源码运行时序图
+
+`gin66/FastAccelStepper` 采用「主循环提交目标位置 + 后台周期性任务规划加减速指令入队 + 硬件外设/ISR 精确发脉冲」的解耦架构（以下以 ESP32 后台 `StepperTask` 与 `StepperQueue` 为例）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Sketch as 用户 Sketch (setup / loop)
+    participant Eng as FastAccelStepperEngine (FastAccelStepperEngine.cpp)
+    participant Stp as FastAccelStepper (FastAccelStepper.cpp)
+    participant RG as RampGenerator (RampGenerator.cpp)
+    participant Task as StepperTask / 定时器周期调度 (esp32_queue.cpp)
+    participant Q as StepperQueue & 硬件驱动 (MCPWM/RMT/I2S/AVR)
+
+    Sketch->>Eng: engine.init()
+    Eng->>Q: fas_init_engine(this) 创建后台 StepperTask (ESP32) 或定时器回调
+    Sketch->>Eng: engine.stepperConnectToPin(step_pin)
+    Eng->>Q: StepperQueue::tryAllocateQueue() 分配硬件队列并初始化 FastAccelStepper
+    Sketch->>Stp: setSpeedInHz() / setAcceleration() / move(1000) 或 moveTo(pos)
+    Stp->>RG: _rg.move() / _rg.moveTo() 更新目标步数与速度配置
+    RG->>RG: _startMove() 激活斜坡生成器 (_rw.startRampIfNotRunning())
+    loop 后台周期唤醒 (StepperTask -> manageSteppers)
+        Task->>Eng: engine->manageSteppers()
+        Eng->>Stp: s->fill_queue()
+        Stp->>RG: _rg.getNextCommand(&q->queue_end, &cmd) 定点数计算下一段步数与 tick 周期
+        Stp->>Q: addQueueEntry(&cmd.command, ...) 写入环形命令队列
+        Stp->>RG: _rg.afterCommandEnqueued(&cmd) 推进斜坡状态
+        opt 队列未运行且已有命令
+            Stp->>Q: startQueue() 触发硬件外设 (MCPWM/PCNT/RMT/I2S/定时器) 输出步进脉冲
+        end
+    end
+```
+
+核对源码路径（`gin66/FastAccelStepper` branch `master`）：`README.md`、`src/FastAccelStepperEngine.cpp`、`src/FastAccelStepper.cpp`、`src/fas_ramp/RampGenerator.cpp`、`src/pd_esp32/esp32_queue.cpp`。
+
 ## 文章说法核对
 
 - **文章：** 语言 C++（嵌入式）；许可 MIT；步进电机 S 型加减速、脉冲输出，无浮点，适合 AVR/ESP32/Pico；适用单片机步进驱动、3D 打印机、小型传送机构。
