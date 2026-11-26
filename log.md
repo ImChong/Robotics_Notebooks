@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | Motubrain 2.0：对齐数据、四流 WAM 与真机 Harness
+
+- 归档官方技术报告、项目页、博客与发布入口。RoboDojo 权重可见，2.0 训练/推理与 Harness 源码待核验。
+- 区分 WAM 模型、冻结权重的参考视频 ICL、Harness 软件迭代三层，以及同一评测协议下的成功率和成本。
+
 ## [2026-11-26] ingest | 星海图 G0.7：长上下文快速世界动作模型
 
 - 通读 arXiv v1/v2 与官方报告，分开记录同精度 Fast/IDM、FP8 部署数据和真机四套评测口径；未发现该版本运行实现或权重发布。
