@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | ViDiHand2：几何提升与第一视角双手轨迹
+
+- 独立归档 v2 论文与官方项目；校正两代共享推理仓状态，补源码时序和 Stage 2 数据源入口。
+- 分列绝对误差、漏检、运行时边界；未运行 GPU 推理。
+
 ## [2026-11-26] ingest | GAC：执行前轨迹评审与选择误差
 
 - 新建 arXiv:2611.27804 v1 详情及原始来源归档，接入 WAM 筛选接口对照。
