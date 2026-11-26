@@ -110,6 +110,8 @@ flowchart TD
 - [VLA](../methods/vla.md)
 - [Knowledge Insulation](./paper-knowledge-insulation.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照记忆与执行接口。
+
 ## 参考来源
 
 - [MEM 原始论文归档（arXiv:2603.03596）](../../sources/papers/mem_arxiv_2603_03596.md)

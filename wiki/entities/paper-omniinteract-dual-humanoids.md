@@ -113,6 +113,8 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身移动与接触任务
 - [去中心化多人形搬运](./paper-decentralized-multi-humanoid-pickup.md) — 以物体为中心的多机运输策略
 
+- [残差策略学习](../methods/residual-policy-learning.md)：对照基础策略上的动作修正。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/omniinteract_arxiv_2610_26043.md)

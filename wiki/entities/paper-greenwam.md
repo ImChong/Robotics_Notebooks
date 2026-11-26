@@ -162,6 +162,8 @@ arXiv 摘要还报告 GreenWAM 在 WorldArena 1.0 的轨迹、深度与 3D 准�
 - [NVIDIA Cosmos](./nvidia-cosmos.md)
 - [UnifoLM-WMA](./unifolm-world-model-action.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [GreenWAM 论文来源](../../sources/papers/greenwam_arxiv_2610_18774.md)

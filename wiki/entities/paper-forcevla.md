@@ -160,6 +160,8 @@ flowchart TB
 - [TouchWorld](./paper-touchworld-tactile-foundation-dexterous-manipulation.md) — 层级触觉基础模型
 - [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — VTLA 层
 
+- [π₀ 策略](../methods/pi0-policy.md)：对照 π₀ 策略的视觉、语言和动作接口。
+
 ## 参考来源
 
 - [ForceVLA 论文归档（arXiv:2505.22159）](../../sources/papers/forcevla_arxiv_2505_22159.md)

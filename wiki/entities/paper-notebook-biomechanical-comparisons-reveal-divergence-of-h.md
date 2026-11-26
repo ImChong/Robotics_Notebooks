@@ -170,6 +170,11 @@ $C_v^{GDAF}$ 随速度下降，作者据此称步态质量随速度单调改善�
 - 奖励设计与步态质量指标的关系：[reward-design](../concepts/reward-design.md)
 - 仿真到真机的差距：[sim2real](../concepts/sim2real.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [humanoid_pnb_biomechanical-comparisons-reveal-divergence-of-h.md](../../sources/papers/humanoid_pnb_biomechanical-comparisons-reveal-divergence-of-h.md)

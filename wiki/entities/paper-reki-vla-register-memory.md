@@ -115,6 +115,8 @@ REKI 与 Fast-VLA 都报告 LIBERO-Plus 与 RoboTwin 结果，但模型规模、
 - [Diffusion Transformer](../concepts/diffusion-transformer.md)
 - [Spark-0：触觉预训练与动作条件](./paper-spark-0-spatial-tactile-pretraining.md)
 
+- [动作分块](../methods/action-chunking.md)：对照动作序列执行接口。
+
 ## 参考来源
 
 - [REKI 论文归档](../../sources/papers/reki_arxiv_2610_22178.md)

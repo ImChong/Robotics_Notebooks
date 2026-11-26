@@ -192,6 +192,8 @@ flowchart TB
 - [WCM](./paper-wcm-world-critic-model.md) — 有梯度时的 RL 后训练对照
 - [ActFovea](./paper-actfovea.md) — 模型不可见约束下的运行时防护
 
+- [π₀ 策略](../methods/pi0-policy.md)：对照 π₀ 策略的视觉、语言和动作接口。
+
 ## 参考来源
 
 - [clift_arxiv_2607_29172.md](../../sources/papers/clift_arxiv_2607_29172.md) — 论文摘录与开源核查

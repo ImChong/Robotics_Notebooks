@@ -147,6 +147,10 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 非对称训练部署范式
 - [Roller skating AMP](./paper-roller-skating-amp-humanoid-passive-wheels.md) — 另一类脚–被动轮耦合移动
 
+## 关联页面
+
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解策略训练与仿真到真机评估。
+
 ## 参考来源
 
 - [stay_seated_arxiv_2608_28090.md](../../sources/papers/stay_seated_arxiv_2608_28090.md)

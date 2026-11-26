@@ -127,6 +127,8 @@ flowchart TD
 - [Agentic Manipulation Policies 方法](../methods/agentic-manipulation-policies.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：本文以 held-out 布局、验证集选择与 27,620 次 rollout 做控制变量评测，可作评测协议设计参考。
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [arXiv 论文阅读与数据核验](../../sources/papers/agentic_robotics_controlled_study_arxiv_2611_09030.md)

@@ -83,6 +83,9 @@ flowchart TD
 - [Day 6 导读](../overview/humanoid-motion-intelligence-day6-engineering-deployment.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略学习。
+
 ## 参考来源
 
 - [Day 6 原文归档](../../sources/blogs/humanoid_motion_intelligence_day6_engineering_deployment_2026_10_07.md)

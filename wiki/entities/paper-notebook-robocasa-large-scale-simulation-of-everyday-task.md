@@ -120,6 +120,11 @@ RoboCasa 要：用**逼真仿真 + 生成式 AI + 自动轨迹生成**，把环�
 - 与相邻 VLA / 仿真 / 数据生成页交叉阅读，避免重复造页。
 - 若仅有笔记摘要，部署前必须回一手 README。
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+
 ## 参考来源
 
 - [humanoid_pnb_robocasa.md](../../sources/papers/humanoid_pnb_robocasa.md)

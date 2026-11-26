@@ -136,6 +136,9 @@ Contact-UAN 对 [执行器网络](../concepts/implicit-explicit-actuator-modelin
 - [Unitree G1](./unitree-g1.md)
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Contact-UAN 属其 ③ 执行器建模与辨识层：用少量真机行走数据学执行器残差模型，替代逐关节摩擦/延迟手工辨识。
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [Contact-UAN 论文来源](../../sources/papers/contact_uan_arxiv_2610_18991.md)

@@ -107,6 +107,9 @@ flowchart TB
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [freedof_sim2real_39_splatsim-gaussian-splatting-sim2real.md](../../sources/papers/freedof_sim2real_39_splatsim-gaussian-splatting-sim2real.md)

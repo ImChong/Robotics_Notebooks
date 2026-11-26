@@ -128,6 +128,9 @@ flowchart TB
 - [Roboto Origin](./roboto-origin.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：用于理解基于奖励的策略学习。
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体运动映射。
+
 ## 参考来源
 
 - [运动控制 Know-How 目录与部分正文核查](../../sources/sites/roboparty_motion_control_knowhow.md)

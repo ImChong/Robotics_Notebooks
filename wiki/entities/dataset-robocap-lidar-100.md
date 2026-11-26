@@ -111,6 +111,8 @@ flowchart TD
 - [第一视角视觉资料](./awesome-egocentric-vision.md)
 - [机器人操作任务](../tasks/manipulation.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [BitRobot RoboCap LiDAR-100 原始数据卡归档与阅读记录](../../sources/datasets/robocap-lidar-100.md)

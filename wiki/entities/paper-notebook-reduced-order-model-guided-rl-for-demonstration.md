@@ -82,6 +82,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [humanoid_pnb_reduced-order-model-guided-rl-for-demonstration.md](../../sources/papers/humanoid_pnb_reduced-order-model-guided-rl-for-demonstration.md)

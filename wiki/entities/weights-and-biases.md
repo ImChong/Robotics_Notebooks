@@ -116,6 +116,10 @@ flowchart LR
 - [W&B PyTorch 快速入门](https://docs.wandb.ai/quickstart)
 - [Holosoma README — Wandb 视频与 checkpoint](https://github.com/amazon-science/holosoma)
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [sources/sites/weights-and-biases.md](../../sources/sites/weights-and-biases.md)

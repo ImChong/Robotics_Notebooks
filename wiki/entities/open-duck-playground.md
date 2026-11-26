@@ -117,6 +117,9 @@ sequenceDiagram
 - [Reward Design](../concepts/reward-design.md)
 - [Microduck RL](./pollen-microduck-rl.md) — Pollen 线 mjlab + BAM，对照本页 MJX / 模仿奖励
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 推荐继续阅读
 
 - [MuJoCo Playground](https://playground.mujoco.org/)

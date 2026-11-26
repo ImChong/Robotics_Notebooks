@@ -93,6 +93,11 @@ flowchart TD
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - [FDDC](./paper-fddc.md) — 可部署动态 CoM 单腿平衡；文中以 HuB 为「特权平衡→蒸馏上真机」对照（arXiv:2608.00500）
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略训练与优化。
+
 ## 参考来源
 
 - [humanoid_pnb_hub.md](../../sources/papers/humanoid_pnb_hub.md)

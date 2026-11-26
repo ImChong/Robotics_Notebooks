@@ -93,6 +93,9 @@ flowchart LR
 - [Light-O1](./light-o1.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [The Dark Matter of Robotics: Physical Commonsense（来源归档）](../../sources/blogs/generalist_physical_commonsense_2026.md)

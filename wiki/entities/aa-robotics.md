@@ -86,6 +86,10 @@ flowchart LR
 
 AA-Robotics 是以语言模型 coding agent 为控制主体的真机桌面操作评测。与 [RoboDojo](./robodojo.md) 的仿真/真机策略基准、[HexaShell](./paper-hexashell.md) 的轻量 Agent Harness 研究有关联，但任务集合、硬件、执行接口和评分口径不同，数值不可直接横向比较。在 [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) 中，它属于 ③ 策略任务成功率评测层的真机桌面操作样本，适合与仿真基准一起做 sim↔real 校准。
 
+## 关联页面
+
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [官方文章归档](../../sources/sites/artificial-analysis-aa-robotics.md)

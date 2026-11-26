@@ -97,6 +97,8 @@ sequenceDiagram
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [embodied-station-2026-11-01-56-papers-technology-map](../overview/embodied-station-2026-11-01-56-papers-technology-map.md)
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 参考来源
 
 - [escape_arxiv_2610_23943.md](../../sources/papers/escape_arxiv_2610_23943.md)

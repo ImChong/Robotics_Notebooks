@@ -121,6 +121,8 @@ flowchart LR
 - [World Action Models](../concepts/world-action-models.md)
 - [Ego2Robot](./paper-ego2robot.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 推荐继续阅读
 
 - [arXiv:2609.26292](https://arxiv.org/abs/2609.26292)

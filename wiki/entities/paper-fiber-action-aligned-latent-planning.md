@@ -112,6 +112,8 @@ FIBER 的主要贡献是把冻结全身控制器的可执行潜变量变成可�
 - [Unitree G1](./unitree-g1.md) — 真机评测平台。
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同在全身移动操作中使用潜空间接口的相关路线。
 
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解动作技能与策略规划。
+
 ## 参考来源
 
 - [FIBER 论文来源归档](../../sources/papers/fiber_arxiv_2610_24675.md)

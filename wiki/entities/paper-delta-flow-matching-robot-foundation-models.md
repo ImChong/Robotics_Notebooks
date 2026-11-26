@@ -187,6 +187,8 @@ flowchart TD
 - [CNP-Flow](./paper-cnp-flow-conditional-source-distribution.md)
 - [具身智能小站 41 篇技术地图](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [Δ-flow 论文 v1：通读归档](../../sources/papers/delta_flow_matching_robot_foundation_models_arxiv_2610_15794.md)

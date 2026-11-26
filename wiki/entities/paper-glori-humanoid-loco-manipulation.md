@@ -98,6 +98,8 @@ GLoRI 用全局-局部参考交互闭环提升人形 loco-manipulation 跟踪精
 - [./unitree-g1.md](././unitree-g1.md)
 - [./paper-halomi-humanoid-loco-manipulation.md](./paper-halomi-humanoid-loco-manipulation.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照机器人接触与物体操作任务。
+
 ## 参考来源
 
 - [glori_humanoid_loco_manip_arxiv_2609_05994.md](../../sources/papers/glori_humanoid_loco_manip_arxiv_2609_05994.md)

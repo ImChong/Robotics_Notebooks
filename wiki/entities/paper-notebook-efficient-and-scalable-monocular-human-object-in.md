@@ -193,6 +193,11 @@ sequenceDiagram
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 相关方法 / 实体：[GVHMR](gvhmr.md)（人体运动重建）、[SAM 3D Body](sam-3d-body.md)（手部重建备选）、[CARI4D 实体页](paper-cari4d.md)（同类野外 HOI 重建对比）、[InterMimic 实体页](paper-bfm-15-intermimic.md)（仿真模仿基座）、[OMOMO 数据集](omomo-dataset.md)（对比数据集）
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [humanoid_pnb_efficient-and-scalable-monocular-human-object-in.md](../../sources/papers/humanoid_pnb_efficient-and-scalable-monocular-human-object-in.md)

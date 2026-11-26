@@ -95,6 +95,9 @@ sequenceDiagram
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [freedof_sim2real_44_awesome-humanoid-robot-learning.md](../../sources/papers/freedof_sim2real_44_awesome-humanoid-robot-learning.md)

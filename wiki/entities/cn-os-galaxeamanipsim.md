@@ -117,6 +117,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [双臂操作](../tasks/bimanual-manipulation.md)：了解双臂协调任务。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [GalaxeaManipSim 源码归档](../../sources/repos/galaxeamanipsim.md)（<https://github.com/OpenGalaxea/GalaxeaManipSim>）

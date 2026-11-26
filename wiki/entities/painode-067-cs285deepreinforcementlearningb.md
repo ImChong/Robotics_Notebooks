@@ -91,6 +91,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_course_067_cs-285-deep-reinforcement-learning-b.md`](../../sources/repos/pai_awesome_course_067_cs-285-deep-reinforcement-learning-b.md) — 本条目策展摘录

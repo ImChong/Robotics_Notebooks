@@ -226,6 +226,8 @@ sequenceDiagram
 - [具身评测枢纽](../overview/hub-embodied-eval-benchmark.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [PAI-Bench 一手摘录](../../sources/papers/physical_ai_bench_arxiv_2512_01989.md)

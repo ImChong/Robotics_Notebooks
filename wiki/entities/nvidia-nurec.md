@@ -146,6 +146,8 @@ NuRec 渲染嵌在 Omniverse Kit。Isaac Sim 加载兼容 USDZ 后，用 **`Omni
 - [立体匹配基础模型](../methods/stereo-matching-foundation-models.md) — 机器人重建栈中 FoundationStereo 等深度前端
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 参考来源
 
 - [nvidia-nurec-docs.md](../../sources/sites/nvidia-nurec-docs.md)

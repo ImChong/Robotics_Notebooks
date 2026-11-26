@@ -96,6 +96,8 @@ flowchart LR
 - [视频即仿真](../concepts/video-as-simulation.md) — 视频 rollout 作为具身推演接口时的限制。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测目标与基准选型。
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+
 ## 参考来源
 
 - [WorldOlympiad 论文摘录](../../sources/papers/worldolympiad_arxiv_2606_11129.md)

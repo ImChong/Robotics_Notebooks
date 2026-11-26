@@ -136,6 +136,8 @@ MDF++ 用跨模态去噪梯度学习视觉触觉表示，为接触任务提供�
 - [VT-WAM 视触觉接触密集论文页](../entities/paper-vt-wam-visuotactile-contact-rich.md)
 - [Tactile-WAM 论文页](../entities/paper-sa-2606-26663-tactile-wam-touch-aware-world-action-model-with.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [来源归档：MDF++ arXiv:2611.09293](../../sources/papers/mdfpp-visuo-tactile-wam_arxiv_2611_09293.md)

@@ -146,6 +146,8 @@ WB-UAN 是全身共享的无监督执行器模型：根据全身关节位置与�
 - [Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)：视觉误差与 AMP 运动先验。
 - [Agile Striker](./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md)：分阶段足球技能训练对照。
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [Joga 论文摘录](../../sources/papers/joga_learning_agile_humanoid_soccer.md)

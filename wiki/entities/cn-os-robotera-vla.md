@@ -126,6 +126,8 @@ sequenceDiagram
 - [控制 SDK](./cn-os-xbot-sdk-api.md)、[遥操作入口](./cn-os-teleop-client.md)
 - [VLA](../methods/vla.md)、[Humanoid-Gym](./humanoid-gym.md)
 
+- [π₀ 策略](../methods/pi0-policy.md)：对照 π₀ 策略的视觉、语言和动作接口。
+
 ## 公司路线日期口径
 
 默认分支唯一根提交 9ff7067：2026-04-17 Initial import，含采集契约与训练/推理基线；不是 ERA-42 或 π₀.₅ 首发。 [日期证据](https://github.com/roboterax/robotera_vla/commit/9ff7067fa262f055875fe8a3e56d445734a7751c)。详见[本轮日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)；版本事件与原始产品首发分别记录。

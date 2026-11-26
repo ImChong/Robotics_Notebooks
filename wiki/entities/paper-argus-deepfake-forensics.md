@@ -212,6 +212,9 @@ sequenceDiagram
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知可信度上游
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — FaceVid-Forensics-100K 属 ① 认知层评测：OOD 协议（20 个训练外生成器）是「可复现性 vs 真实代表性」取舍的样板；判对真伪 ≠ 下游策略安全
 
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+- [GRPO](../methods/grpo.md)：用于理解组内相对策略优化。
+
 ## 参考来源
 
 - [`sources/papers/argus_arxiv_2608_06865.md`](../../sources/papers/argus_arxiv_2608_06865.md)

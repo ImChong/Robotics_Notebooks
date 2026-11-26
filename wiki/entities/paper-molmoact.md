@@ -122,6 +122,8 @@ flowchart TD
 - [paper-openvla](../entities/paper-openvla.md)
 - [vla-history-rt1-to-molmoact-technology-map](../overview/vla-history-rt1-to-molmoact-technology-map.md)
 
+- [动作分块](../methods/action-chunking.md)：对照动作序列接口。
+
 ## 参考来源
 
 - [molmoact_arxiv_2508_07917.md](../../sources/papers/molmoact_arxiv_2508_07917.md)

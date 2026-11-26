@@ -177,6 +177,8 @@ sequenceDiagram
 - [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md) — Finding 5 的概念页
 - [VLA](../methods/vla.md) — 被评策略族
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [prm_as_a_judge_arxiv_2608_14284.md](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md) — 1.5 论文摘录

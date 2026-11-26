@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 真机长时程家具装配评测，直接坐在该闭环第 ④ 层「sim↔real 评测 gap 校准」的真机端：仿真成功率不可平移到此
 
+- [机器人操作](../tasks/manipulation.md)：了解家具装配任务。
+- [具身智能体评测](../methods/embodied-agent-benchmarking.md)：对照长程任务的评测协议。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_benchmark_013_furniturebench.md`](../../sources/repos/pai_awesome_benchmark_013_furniturebench.md) — 本条目策展摘录

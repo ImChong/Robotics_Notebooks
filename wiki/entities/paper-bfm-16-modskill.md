@@ -105,6 +105,11 @@ flowchart TD
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_modskill_arxiv_2502_14140.md](../../sources/papers/bfm_awesome_modskill_arxiv_2502_14140.md)
 
+## 关联页面
+
+- [扩散运动生成](../methods/diffusion-motion-generation.md)：了解动作序列生成。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+
 ## 参考来源
 
 - [bfm_awesome_modskill_arxiv_2502_14140.md](../../sources/papers/bfm_awesome_modskill_arxiv_2502_14140.md) — awesome-bfm 策展摘录

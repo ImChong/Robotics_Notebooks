@@ -166,6 +166,8 @@ sequenceDiagram
 - [Rollback 世界模型](./paper-rollback-world-model.md)
 - [ThinkWorld](./paper-thinkworld.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - [E0.5 论文摘录](../../sources/papers/e05_arxiv_2610_36011.md)（arXiv:2610.36011 全文已于 2026-11-06 通读）

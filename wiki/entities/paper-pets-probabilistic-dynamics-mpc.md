@@ -90,6 +90,8 @@ flowchart TD
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
 
+- [模型预测控制](../methods/model-predictive-control.md)：用于理解滚动时域决策。
+
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)

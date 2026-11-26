@@ -107,6 +107,9 @@ flowchart TD
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_11_cosmos-policy.md](../../sources/papers/shenlan_wm_survey_11_cosmos-policy.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+- [生成式世界模型](../methods/generative-world-models.md)：用于理解环境状态预测。
+
 ## 原文核读：联合动作、未来与价值
 
 [arXiv:2601.16163](https://arxiv.org/html/2601.16163)利用 Cosmos-Predict2-2B，在视频扩散的潜在帧上联合编码 action、future image 与 value；在目标机器人示范上单阶段后训练，测试时可预测多组候选动作并按价值筛选。这与 DreamGen 生成视频再训练 IDM 是不同机制。

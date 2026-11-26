@@ -107,6 +107,11 @@ RoboCasa365 要：一个**大规模、多形态、系统化**的训练与评测�
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [humanoid_pnb_robocasa365.md](../../sources/papers/humanoid_pnb_robocasa365.md)

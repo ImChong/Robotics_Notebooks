@@ -95,6 +95,8 @@ flowchart TD
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-31-50-papers-technology-map](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)
 
+- [抓取位姿估计](../methods/grasp-pose-estimation.md)：对照抓取中的几何与状态估计。
+
 ## 参考来源
 
 - [phantomtac_arxiv_2610_26174.md](../../sources/papers/phantomtac_arxiv_2610_26174.md)

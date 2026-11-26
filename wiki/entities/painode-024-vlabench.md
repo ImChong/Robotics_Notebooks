@@ -92,6 +92,9 @@ flowchart LR
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 面向 VLA 的语言条件操作评测，属该闭环第 ③ 层「策略任务成功率评测」的 VLA 侧入口
 - [paper-a3-vla-attention-alignment](paper-a3-vla-attention-alignment.md) — A³-VLA（VLABench 上的注意力对齐微调）
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_benchmark_024_vlabench.md`](../../sources/repos/pai_awesome_benchmark_024_vlabench.md) — 本条目策展摘录

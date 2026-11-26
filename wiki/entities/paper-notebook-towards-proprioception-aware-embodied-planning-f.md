@@ -153,6 +153,10 @@ MLLM 做双臂人形长时程规划受限： - **仿真平台不足**（缺连�
 - 人形多步操作的层级视觉–语言规划：[paper-notebook-hierarchical-vision-language-planning-for-multi](./paper-notebook-hierarchical-vision-language-planning-for-multi.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — DualTHOR 仿真规划基准在评测选型中的位置
 
+## 关联页面
+
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [humanoid_pnb_towards-proprioception-aware-embodied-planning-f.md](../../sources/papers/humanoid_pnb_towards-proprioception-aware-embodied-planning-f.md)

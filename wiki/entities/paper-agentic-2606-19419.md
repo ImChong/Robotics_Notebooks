@@ -41,6 +41,8 @@ summary: Playful Agentic Robot Learning：Awesome Agentic Robots 的独立入口
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

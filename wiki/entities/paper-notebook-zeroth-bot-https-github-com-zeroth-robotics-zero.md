@@ -119,6 +119,9 @@ flowchart TD
 - 同类低成本开源双足：[ToddlerBot 硬件与控制实体](paper-loco-manip-161-141-toddlerbot.md)
 - 控制与 Sim2Real 基础：[Sim2Real 概念页](../concepts/sim2real.md) · [System Identification](../concepts/system-identification.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [zeroth_bot_reading.md](../../sources/papers/zeroth_bot_reading.md)（官方仓库与文档梳理归档，无学术论文）

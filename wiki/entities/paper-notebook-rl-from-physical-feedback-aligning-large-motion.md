@@ -94,6 +94,9 @@ flowchart TD
 - 上游大运动基座：[Being-M0：百万级人类运动预训练](paper-notebook-scaling-large-motion-models-with-million-level-h.md) 与 [Being-M0.5](paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md)
 - 全身控制平行方向：[BumbleBee：专家到通才全身控制](paper-notebook-from-experts-to-a-generalist.md) 与 [FAST](cn-os-fast.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - 一手论文：`arXiv:2506.12769v1`（ECCV 2026）全文归档（[rlpf_arxiv_2506_12769.md](../../sources/papers/rlpf_arxiv_2506_12769.md)）

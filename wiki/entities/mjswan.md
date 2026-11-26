@@ -105,6 +105,9 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [仿真评估基础设施](../concepts/simulation-evaluation-infrastructure.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 推荐继续阅读
 
 - [mjswan GitHub](https://github.com/ttktjmt/mjswan)

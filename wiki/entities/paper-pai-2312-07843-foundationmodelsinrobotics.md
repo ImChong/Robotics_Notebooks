@@ -124,6 +124,9 @@ Survey on how foundation models are transforming robotics.
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照物体操作任务。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2312_07843_foundation-models-in-robotics.md`](../../sources/papers/pai_awesome_2312_07843_foundation-models-in-robotics.md) — 本条目策展摘录

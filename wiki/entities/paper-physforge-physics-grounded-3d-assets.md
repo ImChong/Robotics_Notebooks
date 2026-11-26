@@ -102,6 +102,8 @@ flowchart LR
 - [RADmesh](./paper-radmesh.md) — **文本引导 remesh-aware 网格形变**；适合给已有 mesh 长部件，再接入 sim-ready 管线。
 - [GATOR](./paper-gator.md) — 从多视图场景图像重建有纹理、保留场景位姿的物体；与 PhysForge 的单视图可关节资产生成目标互补。
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 方法栈
 
 见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。

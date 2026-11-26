@@ -42,6 +42,8 @@ summary: Action Chunk Scheduling for Batched Robot Policy Serving：Awesome Agen
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [动作分块](../methods/action-chunking.md)：了解动作序列预测与执行。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

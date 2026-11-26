@@ -133,6 +133,10 @@ flowchart TB
 - 人形 **HSI 控制**：[PhysHSI](./paper-amp-survey-15-physhsi.md)、[TokenHSI](./paper-bfm-38-tokenhsi.md)
 - 任务：[loco-manipulation](../tasks/loco-manipulation.md)；概念：[Motion Retargeting](../concepts/motion-retargeting.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [hsimul3r_arxiv_2603_15612.md](../../sources/papers/hsimul3r_arxiv_2603_15612.md) — 论文归档与 wiki 映射

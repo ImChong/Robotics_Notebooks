@@ -103,6 +103,8 @@ flowchart TD
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-31-50-papers-technology-map](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [touch_jepa_arxiv_2610_28519.md](../../sources/papers/touch_jepa_arxiv_2610_28519.md)

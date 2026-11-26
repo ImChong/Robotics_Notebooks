@@ -113,6 +113,9 @@ Open vision-language-action model for low-cost adaptation to robot manipulation 
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2311_01378_roboflamingo.md`](../../sources/papers/pai_awesome_2311_01378_roboflamingo.md) — 本条目策展摘录

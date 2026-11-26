@@ -224,6 +224,9 @@ sequenceDiagram
 - [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md)：JitRL 所处的学习范式位置
 - [自进化智能体：具身终身学习对比](../comparisons/self-improving-agents-embodied-lifelong-learning.md)：同主题的具身视角
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [jitrl_arxiv_2601_18510.md](../../sources/papers/jitrl_arxiv_2601_18510.md)：论文归档，已通读（正文、附录 A–P；附录 G 提示词仅抽样）。

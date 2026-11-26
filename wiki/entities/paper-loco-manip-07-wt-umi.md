@@ -142,6 +142,8 @@ planner 输出的不只是位置块，还包括接触力轨迹。项目页报告
 - [HMC](./paper-loco-manip-161-039-hmc.md)
 - [Uni-VLaT](./paper-uni-vlat.md) — 同样用全身触觉做人形 loco-manip；WT-UMI 训练力监督 planner + 触觉 admittance 执行，Uni-VLaT 把触觉 token 注入冻结先验的预训练 VLA 做 post-train 适配（arXiv:2609.35450；代码待发布）
 
+- [机器人操作](../tasks/manipulation.md)：对照机器人接触与物体操作任务。
+
 ## 参考来源
 
 - [loco_manip_survey_07_wt_umi.md](../../sources/papers/loco_manip_survey_07_wt_umi.md)

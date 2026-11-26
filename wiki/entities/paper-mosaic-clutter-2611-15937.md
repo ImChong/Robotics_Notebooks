@@ -102,6 +102,9 @@ flowchart LR
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照物体操作任务。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [论文原文归档](../../sources/papers/mosaic-clutter-2611-15937.md)

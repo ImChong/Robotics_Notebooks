@@ -206,6 +206,10 @@ RoboLab 结果为历史运行对照（`robolab120_*_specific_10ep_20260603`）�
 - [Systematically Exploring the Capabilities of GPT-6 Astra](../../sources/papers/galbot_gpt6_astra_embodied_policies_2609_38537.md) — 六领域评测与推理时延分析（arXiv:2609.38537）
 - [GPT-6 Astra 官方介绍](../../sources/sites/openai-gpt-6-astra.md) — OpenAI 模型介绍页；不作为机器人视触觉能力的证据
 
+## 关联页面
+
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [GPT 6 Astra as an Embodied Policy（技术报告摘录）](../../sources/papers/gpt_6_astra_embodied_policy_2026.md)

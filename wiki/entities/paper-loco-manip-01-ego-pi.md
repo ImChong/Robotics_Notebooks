@@ -96,6 +96,10 @@ flowchart TD
 - 分类 hub：[loco-manip-category-01-egocentric-data.md](../overview/loco-manip-category-01-egocentric-data.md)
 - 原始 source：[loco_manip_survey_01_ego_pi.md](../../sources/papers/loco_manip_survey_01_ego_pi.md)
 
+## 关联页面
+
+- [π₀ 策略](../methods/pi0-policy.md)：对照 π₀ 策略的视觉、语言和动作接口。
+
 ## 参考来源
 
 - [loco_manip_survey_01_ego_pi.md](../../sources/papers/loco_manip_survey_01_ego_pi.md) — Loco-Manip 8 篇策展摘录

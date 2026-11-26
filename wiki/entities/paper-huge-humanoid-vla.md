@@ -86,6 +86,8 @@ README 提供 scripts/train/train_huge.sh 三阶段训练与 scripts/eval/humano
 - [MimicAll](./paper-mimicall.md)
 - [操作任务](../tasks/manipulation.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+
 ## 参考来源
 
 - [来源归档](../../sources/papers/huge-humanoid-vla.md)

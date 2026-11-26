@@ -155,6 +155,8 @@ sequenceDiagram
 - [VLA](../methods/vla.md) — 技能层常见执行器
 - [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [physical_agentic_ai_arxiv_2608_22657](../../sources/papers/physical_agentic_ai_arxiv_2608_22657.md)

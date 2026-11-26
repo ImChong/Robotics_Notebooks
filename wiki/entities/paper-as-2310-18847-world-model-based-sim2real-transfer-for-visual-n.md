@@ -10,7 +10,6 @@ related:
   - ../overview/lc-awesome-sim2real-technology-map.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
-  - ../tasks/locomotion.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/lc_awesome_sim2real_2310_18847_world-model-based-sim2real-transfer-for.md
@@ -107,7 +106,10 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Sensor Fusion。 本页
 
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
-- 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- 方法/任务：[sim2real.md](../concepts/sim2real.md)
+
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
 
 ## 参考来源
 

@@ -137,6 +137,11 @@ sequenceDiagram
 - 对比基线 Octo：[paper-octo](./paper-octo.md)
 - 对比基线 Diffusion Policy：[paper-diffusion-policy](./paper-diffusion-policy.md)
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md)：了解物体操作和抓取任务。
+- [智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：对照智能体、机器人接口与执行反馈。
+
 ## 参考来源
 
 - [humanoid_pnb_rgmp-s.md](../../sources/papers/humanoid_pnb_rgmp-s.md)

@@ -142,6 +142,10 @@ SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它�
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 端到端语言控制对照：[ADAPT（文本驱动人形）](./paper-adapt-text-driven-humanoid.md) — 帧级扩散先验 + 残差，论文将其列为 clip 级 caption 路线的对照（arXiv:2609.00677）
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [humanoid_rl_stack_31_sentinel_a_fully_end_to_end_language_action_mode.md](../../sources/papers/humanoid_rl_stack_31_sentinel_a_fully_end_to_end_language_action_mode.md) — 42 篇栈策展摘录

@@ -169,6 +169,10 @@ flowchart LR
 - 相关概念：[全身控制 Whole-Body Control](../concepts/whole-body-control.md)、[Sim2Real](../concepts/sim2real.md)、[阻抗控制 Impedance Control](../concepts/impedance-control.md)
 - 相关平台与方法：[Isaac Lab](../entities/isaac-lab.md)、[人形机器人 Humanoid Robot](../entities/humanoid-robot.md)、[DAgger](../methods/dagger.md)、[ROS 2 基础](../concepts/ros2-basics.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [humanoid_pnb_fauna-sprout-a-lightweight-approachable-develope.md](../../sources/papers/humanoid_pnb_fauna-sprout-a-lightweight-approachable-develope.md)（arXiv 链接与 Paper Notebooks 策展归档）

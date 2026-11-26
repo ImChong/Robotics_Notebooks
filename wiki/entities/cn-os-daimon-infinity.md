@@ -75,6 +75,9 @@ flowchart TD
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [Daimon-Infinity 源码归档](../../sources/repos/daimon-infinity.md)（<https://github.com/dmrobot-admin/Daimon-Infinity>）

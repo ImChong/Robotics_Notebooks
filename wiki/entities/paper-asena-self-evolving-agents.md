@@ -135,6 +135,8 @@ ASENA-VLN 基于 Qwen3-VL-4B-Instruct，读取最多 8 帧前向 RGB 历史与�
 - [EmbodiedEvo](./paper-embodied-evo-coding-agent.md) — coding agent 将交互经验沉淀为技能。
 - [生成式世界模型](../methods/generative-world-models.md) — 与 ASENA-VLN 所用视觉语言导航模型相关的训练与生成范式。
 
+- [视觉语言导航](../tasks/vision-language-navigation.md)：了解语言条件导航任务。
+
 ## 与 RAX 的关系
 
 - [RAX](./rax-scaling-online-exploration.md) 同样让 coding agent 通过机器人接口将交互经验写入可复用程序；RAX 聚焦扩展在线探索并将成功轨迹编译为程序，ASENA 还覆盖人形任务 harness、MCAP 回放与导航策略组件。两者的评测协议不同，数字不可直接比较。

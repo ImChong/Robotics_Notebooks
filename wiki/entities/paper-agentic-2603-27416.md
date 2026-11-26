@@ -41,6 +41,8 @@ summary: 'Agent-Driven Autonomous Reinforcement Learning Research: Iterative Pol
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

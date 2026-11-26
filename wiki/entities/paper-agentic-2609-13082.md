@@ -41,6 +41,8 @@ summary: 'Embodied-BenchForge: A Closed-Loop Agentic Workflow for Embodied Bench
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

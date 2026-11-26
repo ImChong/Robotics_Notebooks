@@ -156,6 +156,8 @@ flowchart TB
 - [OmniVTLA](./paper-sa-2508-08706-omnivtla-vision-tactile-language-action-model-wi.md) — 语义对齐 VTLA
 - [触觉智能九篇地图](../overview/tactile-intelligence-nine-papers-map.md) — VTLA 层总览
 
+- [π₀ 策略](../methods/pi0-policy.md)：对照 π₀ 策略的视觉、语言和动作接口。
+
 ## 参考来源
 
 - [Tactile-VLA 论文归档（arXiv:2507.09160）](../../sources/papers/tactile_vla_arxiv_2507_09160.md)

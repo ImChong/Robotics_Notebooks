@@ -127,6 +127,8 @@ $$
 - [SONIC 运动跟踪](./nvidia-sonic.md)
 - [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
+- [抓取位姿估计](../methods/grasp-pose-estimation.md)：对照抓取几何与位姿选择。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/hug_arxiv_2611_01659.md)

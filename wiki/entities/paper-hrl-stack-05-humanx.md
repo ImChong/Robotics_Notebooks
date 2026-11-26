@@ -182,6 +182,8 @@ HumanX 在项目页和核心原理里主要与两条同样「从人类视频出�
 - [Loco-Manipulation 数据路线](../../roadmap/depth-loco-manipulation.md)
 - [LIFe：原生物理交互研究演示](./life-native-interaction.md)（作者关联，但属独立项目；其论文与机器人源码截至 2026-11-09 未公开）
 
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解从人类视频学习交互技能。
+
 ## 参考来源
 
 - [humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md](../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md)

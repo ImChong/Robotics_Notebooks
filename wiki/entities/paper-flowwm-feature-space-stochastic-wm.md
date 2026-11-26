@@ -123,6 +123,8 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 - [JEPA-WMs](paper-jepa-wms-physical-planning.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [原文核验归档](../../sources/papers/flowwm-feature-space-stochastic-wm_arxiv_2606_29059.md)

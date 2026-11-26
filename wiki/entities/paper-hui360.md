@@ -128,6 +128,8 @@ sequenceDiagram
 - [Ego 9 篇技术地图](../overview/ego-9-papers-technology-map.md)
 - [视觉语言导航](../tasks/vision-language-navigation.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [HUI360 论文摘录](../../sources/papers/hui360_arxiv_2608_11051.md)

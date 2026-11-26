@@ -121,6 +121,9 @@ flowchart TB
 - [Light REACT](./light-react.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ③ 策略任务成功率层：开放词汇 ObjectNav 的 SR/SPL，均值成功率会掩盖长尾类别失败
 
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+- [PPO](../methods/ppo.md)：用于理解策略更新的背景。
+
 ## 参考来源
 
 - [hm3d_ovon_2024.md](../../sources/papers/hm3d_ovon_2024.md)

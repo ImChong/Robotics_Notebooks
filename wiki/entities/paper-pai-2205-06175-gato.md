@@ -114,6 +114,9 @@ Generalist policy architecture spanning embodied control and non-robotic tasks w
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2205_06175_gato.md`](../../sources/papers/pai_awesome_2205_06175_gato.md) — 本条目策展摘录

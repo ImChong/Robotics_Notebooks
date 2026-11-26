@@ -206,6 +206,9 @@ sequenceDiagram
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [AMASS](./amass.md)
 
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+- [PPO](../methods/ppo.md)：用于理解策略更新的背景。
+
 ## 参考来源
 
 - [sources/papers/scaling_bfm_arxiv_2607_15163.md](../../sources/papers/scaling_bfm_arxiv_2607_15163.md)

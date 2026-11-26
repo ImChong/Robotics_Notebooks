@@ -149,6 +149,8 @@ DreamZero 支持联合视频动作建模改善未见任务进度，但计算成�
 - 骨干与数据：[Wan 视频生成模型](./paper-wan-video.md)、[DROID](./droid-policy-learning.md)
 - 视频生成当作模拟器的另一条路线：[Video as Simulation](../concepts/video-as-simulation.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：了解环境预测与动作生成。
+
 ## 参考来源
 
 - 来源归档（通读）：[dreamzero_arxiv_2602_15922](../../sources/papers/dreamzero_arxiv_2602_15922.md)

@@ -87,6 +87,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [模型预测控制](../methods/model-predictive-control.md)：了解滚动时域决策。
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动约束与轨迹求解。
+
 ## 参考来源
 
 - [humanoid_pnb_whole-body-multi-contact-motion-control-for-huma.md](../../sources/papers/humanoid_pnb_whole-body-multi-contact-motion-control-for-huma.md)

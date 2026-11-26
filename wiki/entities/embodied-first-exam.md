@@ -256,6 +256,9 @@ sequenceDiagram
 - [Compass 1](./paper-compass-1-navigation.md) — 长时导航
 - [Flip Anything](./paper-flip-anything-agentic-self-learning.md) — 自迭代机器人技能
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [11 月官方失败分析与证据边界](../../sources/blogs/embodied-first-exam-failure-analysis-2026-11-24.md)

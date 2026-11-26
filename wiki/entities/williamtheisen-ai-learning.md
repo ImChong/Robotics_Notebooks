@@ -96,6 +96,10 @@ flowchart LR
 - [CSE 30124 课程站](https://30124.williamtheisen.com/)
 - [nd-cse-30124 仓库](https://github.com/wtheisen/nd-cse-30124)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+
 ## 参考来源
 
 - [站点归档 williamtheisen-ai-exploring](../../sources/sites/williamtheisen-ai-exploring.md)

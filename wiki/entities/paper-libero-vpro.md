@@ -145,6 +145,8 @@ sequenceDiagram
 - [embodied-station-2026-10-18-26-papers-technology-map](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：在 LIBERO 闭环执行中扰动视觉证据，检验 VLA 成功率的视觉鲁棒性
 
+- [具身智能体评测](../methods/embodied-agent-benchmarking.md)：对照视觉扰动和闭环评估。
+
 ## 参考来源
 
 - [libero_vpro_arxiv_2609_24350.md](../../sources/papers/libero_vpro_arxiv_2609_24350.md)

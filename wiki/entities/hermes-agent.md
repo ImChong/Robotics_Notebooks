@@ -170,6 +170,9 @@ flowchart TB
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护操作规范
 
+- [强化学习](../methods/reinforcement-learning.md)：了解奖励驱动的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略更新的目标与方法。
+
 ## 参考来源
 
 - [Hermes Agent 仓库源归档（本站）](../../sources/repos/nousresearch_hermes_agent.md)

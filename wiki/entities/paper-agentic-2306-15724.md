@@ -42,6 +42,8 @@ summary: 'REFLECT: Summarizing Robot Experiences for Failure Explanation and Cor
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：对照操作场景中的规划、执行与反馈接口。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)
