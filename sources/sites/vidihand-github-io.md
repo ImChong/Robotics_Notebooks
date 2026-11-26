@@ -4,8 +4,8 @@
 - **类型：** site / project-page
 - **URL：** <https://vidihand.github.io/>
 - **配套论文：** [arXiv:2606.30308](https://arxiv.org/abs/2606.30308) — [`sources/papers/vidihand_arxiv_2606_30308.md`](../papers/vidihand_arxiv_2606_30308.md)
-- **代码：** <https://github.com/NTUYWANG103/ViDiHand> — [`sources/repos/vidihand.md`](../repos/vidihand.md)（待发布）
-- **入库 / 复核日期：** 2026-08-13
+- **代码：** <https://github.com/NTUYWANG103/ViDiHand> — [`sources/repos/vidihand.md`](../repos/vidihand.md)（推理实现已可见）
+- **项目页初次归档：** 2026-08-13；源码发布状态 2026-11-26 复核
 
 ## 一句话摘要
 
@@ -16,7 +16,7 @@ NTU / SJTU 官方站点：展示 video diffusion（Wan2.1-VACE）驱动的 egoce
 - **页首按钮：** Code → GitHub；ArXiv → 2606.30308。
 - **方法三块：** VACE hand-overlay 微调（冻结 base DiT）→ 双分支 decoder → 单次 VACE 推理。
 - **定量：** 三基准检测 / 3D pose / 朝向位置 / jitter 全面领先；ARCTIC Jitter **3.183**、HOT3D **3.741**、HOI4D **4.010**。
-- **开源（步骤 2.5）：** 有 GitHub 链接，但仓内仅 README 写「Code will be released soon」→ **代码待发布**。
+- **发布状态：** 8 月归档时为占位；2026-11-26 核验共享仓已有 `vidihand_v1/` 推理入口与权重链接。训练与许可证见[源码核验](../repos/vidihand.md)。
 
 ## 为何值得保留
 
