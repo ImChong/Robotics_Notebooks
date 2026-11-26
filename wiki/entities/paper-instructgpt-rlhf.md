@@ -80,6 +80,8 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，优化策略。
 - [Light-O1](./light-o1.md) — RLHF post-training 引用方
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [监督微调（SFT）](../concepts/supervised-fine-tuning.md) — 本文三段管线第一段的概念页，含机器人 VLA 中的用法

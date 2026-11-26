@@ -114,6 +114,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 - [domain-randomization](../concepts/domain-randomization.md)
 - [quadruped-robot](../entities/quadruped-robot.md)

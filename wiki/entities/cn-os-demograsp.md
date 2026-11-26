@@ -107,6 +107,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)
 - 同公司人形单演示数据引擎：[DemoHLM：单演示可泛化人形移动操作](paper-loco-manip-161-136-demohlm.md)
 - 同公司触觉与灵巧手控制：[UniTacHand](cn-os-unitachand.md) 与 [TTP](cn-os-ttp.md)

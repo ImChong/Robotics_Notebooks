@@ -153,6 +153,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [SO(3) 旋转表示对比](../comparisons/so3-rotation-representations.md)
 - [刚体运动的李群表述](../formalizations/lie-group-rigid-body-motions.md)
 - [正运动学](../formalizations/forward-kinematics.md)

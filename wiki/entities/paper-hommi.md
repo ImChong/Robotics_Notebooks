@@ -83,6 +83,7 @@ WBC 与机体绑定；极端动力学仍依赖仿真或额外校准。
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [paper-halomi-humanoid-loco-manipulation](./paper-halomi-humanoid-loco-manipulation.md)
 - [paper-modpack](./paper-modpack.md)
 - [loco-manipulation](../tasks/loco-manipulation.md)

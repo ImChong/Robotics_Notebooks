@@ -144,6 +144,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [高擎动力（HighTorque Robotics）](./hightorque-robotics.md)
 - [Panthera-HT SDK](./cn-os-panthera-ht-sdk.md)
 - [Panthera-HT ROS 2](./cn-os-panthera-ht-ros2.md)

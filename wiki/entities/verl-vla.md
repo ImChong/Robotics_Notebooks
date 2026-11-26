@@ -111,6 +111,7 @@ Quick Start 的 teleoperation CLI 能通过控制台启动数据采集界面，*
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [VLA](../methods/vla.md)
 - [Hy-VLA](./paper-hy-embodied-05-vla.md)
 - [统一评测](./vla-evaluation-harness.md)

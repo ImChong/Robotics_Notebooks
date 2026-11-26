@@ -100,6 +100,7 @@ flowchart TD
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，理解视觉与语言条件化策略。
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-06-contact-tasks.md](../overview/loco-manip-161-category-06-contact-tasks.md)
 - 原始 source：[loco_manip_161_survey_121_humanoid-vla.md](../../sources/papers/loco_manip_161_survey_121_humanoid-vla.md)

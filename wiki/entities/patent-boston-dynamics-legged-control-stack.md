@@ -83,6 +83,7 @@ flowchart TB
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
 - [Boston Dynamics](./boston-dynamics.md)
 - [四足机器人](./quadruped-robot.md)
 - [Model Predictive Control](../methods/model-predictive-control.md)

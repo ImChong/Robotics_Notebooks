@@ -194,6 +194,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [人形策略网络架构](../concepts/humanoid-policy-network-architecture.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)

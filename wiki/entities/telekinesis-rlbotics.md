@@ -129,6 +129,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [mjlab](./mjlab.md) · [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md) · [robot_lab](./robot-lab.md)
 - [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)

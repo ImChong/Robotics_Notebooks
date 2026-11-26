@@ -154,6 +154,7 @@ NavDP-PixelGoal 是论文作者基于已发表 PointGoal NavDP 实现的像素�
 
 ## 关联页面
 
+- [轨迹优化](../methods/trajectory-optimization.md) — 延伸阅读，理解轨迹约束与优化。
 - [X-NavDP：跨本体导航扩散策略 RL 后训练](paper-x-navdp.md) — 相关导航扩散工作，不是 OccPlanner 的源码。
 - [视觉-语言导航（VLN）](../tasks/vision-language-navigation.md) — 上层语义目标与图像目标接口背景。
 - [Paper Notebooks · Navigation 分类](../overview/paper-notebook-category-08-navigation.md) — 导航论文索引。

@@ -121,6 +121,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
 - [Benjamin Katz](./benjamin-katz.md)
 - [WBIC + MPC](./paper-wbic-mpc-mini-cheetah.md)

@@ -134,6 +134,7 @@ flowchart TB
 
 ## 关联页面
 
+- [对抗运动先验](../methods/amp-reward.md) — 延伸阅读，用运动数据塑造动作风格。
 - [机器人 In-Context Learning](../concepts/robot-in-context-learning.md) — 全身上下文 vs 操作示范 ICL
 - [亮源新创（Light Origins）](./light-origins.md) — 机构三段范式（部署段代表）
 - [LightNav-0](./paper-lightnav-0.md) — 同机构规模化对齐成果

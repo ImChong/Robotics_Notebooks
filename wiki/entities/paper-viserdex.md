@@ -118,6 +118,7 @@ ViserDex 表明视觉随机化与足够快的位姿反馈可支持多种实例�
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [GoalDex](./paper-goaldex.md)
 - [机器人操作](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)

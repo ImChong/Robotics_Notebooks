@@ -124,6 +124,7 @@ GR00T N1.7 零样本、zero、random 在十二个子任务、各四个布局种�
 
 ## 关联页面
 
+- [遥操作](../tasks/teleoperation.md) — 延伸阅读，理解操作员与机器人之间的控制接口。
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [具身评测基准入口](../overview/hub-embodied-eval-benchmark.md)
 - [HumanoidBench](./humanoid-bench.md)

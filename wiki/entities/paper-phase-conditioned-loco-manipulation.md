@@ -101,6 +101,7 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [移动操作](../tasks/loco-manipulation.md)
 - [SMPC-to-RL](./paper-smpc2rl-loco-manipulation.md) — 同样采用分层控制，但以 SMPC 专家数据启动稀疏离线到在线 RL。
 - [Unitree G1](./unitree-g1.md)

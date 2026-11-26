@@ -93,6 +93,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [World Action Models（WAM）](../concepts/world-action-models.md)：理解 Dream-1 所属模型范式及与 VLA、世界模型的区别。
 - [DreamZero](./paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md)：Dream Labs 在项目页中提及的早期研究背景。
 - [Vision-Language-Action（VLA）](../methods/vla.md)：对照具身策略常见的视觉、语言与动作建模路线。

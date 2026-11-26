@@ -123,6 +123,7 @@ flowchart TB
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [ME-Brain 1.0](./paper-me-brain-1-0.md)
 - [MachEmbodied-U0](./paper-me-u0.md)
 - [VLA](../methods/vla.md)

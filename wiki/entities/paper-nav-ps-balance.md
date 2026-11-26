@@ -126,6 +126,7 @@ ID：SR **78.08%**、总体 CR 16.16%（RL+ACI 71.60% / 20.72%）。OOD 走廊 S
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [PGIF-MPPI](./paper-pgif-mppi.md)
 - [iCrowdNav](./paper-icrowdnav.md)
 - [HUI360](./paper-hui360.md)

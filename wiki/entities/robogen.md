@@ -65,6 +65,7 @@ flowchart LR
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，理解视觉与语言条件化策略。
 - [SAPIEN](./sapien.md)
 - [Genesis](./genesis-sim.md)
 - [模仿学习](../methods/imitation-learning.md)

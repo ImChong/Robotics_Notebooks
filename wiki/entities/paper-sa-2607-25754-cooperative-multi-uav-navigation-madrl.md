@@ -173,6 +173,7 @@ flowchart TB
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [多旋翼仿真—规划—飞控栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [AirSim](./airsim.md) · [quad-swarm-rl](./quad-swarm-rl.md)
 - [强化学习](../methods/reinforcement-learning.md) · [Sim2Real](../concepts/sim2real.md)

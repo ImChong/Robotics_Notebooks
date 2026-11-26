@@ -97,6 +97,7 @@ flowchart TD
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，理解视觉与语言条件化策略。
 - [机器人操作](../tasks/manipulation.md)
 - [视觉语言特征融合](../concepts/vision-language-feature-fusion.md)
 

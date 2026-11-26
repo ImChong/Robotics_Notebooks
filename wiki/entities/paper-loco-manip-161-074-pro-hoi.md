@@ -136,6 +136,8 @@ critic 可访问 privileged 信息，actor 只用真机可得观测；训练时�
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解人形全身运动任务。
 - [Loco-Manip 接触分类 02：接触表示](../overview/loco-manip-contact-category-02-contact-representation.md)
 - [161 篇 · 03 视觉感知驱动](../overview/loco-manip-161-category-03-visuomotor.md)
 - [CEER](./paper-motion-cerebellum-ceer.md)

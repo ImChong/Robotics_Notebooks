@@ -163,6 +163,8 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，优化策略。
 - [Skild AI（论文署名机构）](./skild-ai.md)
 - [S1（操作域视频上下文学习）](./skild-s1.md)
 

@@ -105,6 +105,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
 - [Quadruped Control Curriculum](./quadruped-control-curriculum.md) — 课程主线平台
 - [Differentiable Simulation](../concepts/differentiable-simulation.md)
 - [RoamerX Navigation](./roamerx-navigation.md)

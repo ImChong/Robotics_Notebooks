@@ -229,6 +229,7 @@ G1 向下摆臂击打固定箱体，箱体上的标定触觉贴片测力；240 H
 
 ## 关联页面
 
+- [对抗运动先验](../methods/amp-reward.md) — 延伸阅读，用运动数据塑造动作风格。
 - [触觉感知 Tactile Sensing](../concepts/tactile-sensing.md)
 - [富接触操作 Contact-rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [灵巧运动学 Dexerous Kinematics](../concepts/dexterous-kinematics.md)

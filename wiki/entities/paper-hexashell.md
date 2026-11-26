@@ -123,6 +123,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，理解双臂协调。
 - [EmbodiedLab](./paper-embodiedlab.md) — 同团队面向科学实验的具身智能体基准，评测目标与 RoboDojo 不同。
 
 - [RoboDojo](./robodojo.md) — 42 项仿真任务与官方评测口径。

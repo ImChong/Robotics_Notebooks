@@ -116,6 +116,7 @@ flowchart TB
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [step2urdf](./step2urdf.md) — 浏览器 STEP→URDF，几何关节推断
 - [URDF-Studio](./urdf-studio.md) — Web URDF/MJCF 设计与 BOM
 - [Isaac Lab](./isaac-lab.md) — SimReady 导出目标的官方 RL 框架

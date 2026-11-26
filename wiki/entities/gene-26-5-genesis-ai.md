@@ -69,6 +69,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [Genesis World 1.0](genesis-world-10.md) — 公司全栈仿真与大规模闭环评测
 - [Genesis (仿真器)](genesis-sim.md) — 开源多物理场仿真与数据生成平台
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 评测优先于仿真训练数据的开发范式

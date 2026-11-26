@@ -115,6 +115,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 延伸阅读，比较策略训练及部署流程。
 - [vla](../methods/vla.md)
 - [flow-matching-embodied-policy](../concepts/flow-matching-embodied-policy.md)
 

@@ -140,6 +140,7 @@ CoDance 与从人-人视频学习人-人形协作的方法同属“借用人类�
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations](paper-notebook-learning-whole-body-human-humanoid-interaction-f.md) — 人际示范到全身物理交互的另一条路线。
 - [Loco-Manipulation 与全身控制论文分类](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - [模仿学习](../methods/imitation-learning.md)

@@ -178,6 +178,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，理解双臂协调。
 - [Unitree G1](./unitree-g1.md) — 硬件平台
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — SDK2/DDS 接口面
 - [unitree_ros2](./unitree-ros2.md) — 官方 ROS 2 消息与 G1 示例

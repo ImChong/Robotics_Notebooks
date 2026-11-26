@@ -106,6 +106,7 @@ OLAF 将用户停止机器人时给出的语言纠错转为介入前短窗口的
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，从示范学习策略。
 - [Agentic Robots 综述](paper-towards-agentic-robots-survey.md)
 - [VLA](../methods/vla.md)
 - [VLA 纵深路线](../../roadmap/depth-vla.md)

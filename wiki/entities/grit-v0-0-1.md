@@ -85,5 +85,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解人形全身运动任务。
+- [遥操作](../tasks/teleoperation.md) — 延伸阅读，理解操作员与机器人之间的控制接口。
 - [GRIT Deploy Onboard G1](./grit-deploy-onboard-g1.md) — 另一套部署实现，仓库来源不同。
 - [EGalahad/sim2real leaderboard](./egalahad-sim2real.md) — 该策略的统一动作跟踪评测入口。

@@ -133,6 +133,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，理解跨本体运动映射。
 - **对应方法论文**：[OmniRetarget 论文实体](./paper-hrl-stack-03-omniretarget.md)
 - **官方代码与重定向引擎**：[holosoma](./holosoma.md)
 - **上游动作数据源**：[OMOMO 数据集](./omomo-dataset.md)、[LaFAN1 数据集](./lafan1-dataset.md)

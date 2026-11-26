@@ -82,6 +82,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [diffusion-policy](../methods/diffusion-policy.md)
 - [paper-dice-rl](./paper-dice-rl.md)
 - [realab-14-papers-technology-map-2026](../overview/realab-14-papers-technology-map-2026.md)

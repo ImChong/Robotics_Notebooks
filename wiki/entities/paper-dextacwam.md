@@ -178,6 +178,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，理解双臂协调。
 - [触觉感知](../concepts/tactile-sensing.md) — 指尖接触观测
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 当前输入融合与预测世界状态之别
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 摩擦、滑移、抓取

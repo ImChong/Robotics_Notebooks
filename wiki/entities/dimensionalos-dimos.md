@@ -115,6 +115,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [ROS 2 基础](../concepts/ros2-basics.md) — DimOS 宣称无需 ROS 即可起步；ROS 2 仍可作为传输与导航互操作层
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — skills 暴露为 MCP Tools 的协议层
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md) — DimOS 默认 **LCMTransport** 连模块流

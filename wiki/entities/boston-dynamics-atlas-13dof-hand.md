@@ -87,6 +87,7 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Boston Dynamics](./boston-dynamics.md) — Atlas 所属公司与产品背景。
 - [Allegro Hand](./allegro-hand.md) — 可对照的四指科研灵巧手平台。
 - [机器人操作任务](../tasks/manipulation.md) — 操作任务的能力与挑战。

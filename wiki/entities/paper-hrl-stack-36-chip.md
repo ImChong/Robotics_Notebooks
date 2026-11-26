@@ -116,6 +116,8 @@ CHIP 在「为什么重要」和核心原理里明确对照 SoftMimic 式的 com
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解人形全身运动任务。
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
 - [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
 - [运动小脑 · I 柔顺接触](../overview/motion-cerebellum-category-09-compliance-contact.md)
 - [阻抗控制](../concepts/impedance-control.md)

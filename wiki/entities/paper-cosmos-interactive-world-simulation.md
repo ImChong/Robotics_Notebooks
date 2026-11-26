@@ -303,6 +303,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 延伸阅读，理解双臂协调。
 - [Cosmos 3](./cosmos-3.md) — 本报告的基座模型（arXiv 2606.02800）
 - [NVIDIA Cosmos](./nvidia-cosmos.md) — Cosmos 家族总览
 - [Generative World Models](../methods/generative-world-models.md) — 视频世界模型方法族

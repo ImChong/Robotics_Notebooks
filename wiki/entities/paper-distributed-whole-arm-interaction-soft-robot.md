@@ -114,6 +114,8 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [接触丰富型操作](../concepts/contact-rich-manipulation.md) — 接触既是约束，也是可用于闭环决策的信息来源
 - [触觉感知](../concepts/tactile-sensing.md) — 对比直接接触测量与本文的 IMU 本体感觉
 - [E-SOAM 仿章鱼可传感软臂](./paper-octopus-inspired-esoam-soft-arm.md) — 软臂形态、嵌入式传感与全臂交互的相关研究

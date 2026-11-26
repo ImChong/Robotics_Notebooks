@@ -103,6 +103,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 延伸阅读，理解轮式与腿式运动。
 - [open-source-qdd-actuator-projects](../comparisons/open-source-qdd-actuator-projects.md)
 - [locomotion](../tasks/locomotion.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)

@@ -245,6 +245,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) 与 [03 视觉感知驱动](../overview/loco-manip-161-category-03-visuomotor.md) — GRAIL 是 #061/161。
 - [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 与 [H 真实任务](../overview/motion-cerebellum-category-08-real-tasks.md) — GRAIL 是 #57/64。
 - [Loco-Manip 接触分类 03：生成式补数](../overview/loco-manip-contact-category-03-generative-data.md) — GRAIL 所属接触横切面。

@@ -99,6 +99,7 @@ Kine2Go 的主要价值是提供一条可复现的「跨形态动作重定向 �
 
 ## 关联页面
 
+- [动作重定向](../methods/motion-retargeting-gmr.md) — 延伸阅读，理解跨本体运动映射。
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Go2 Motion Imitation](./go2-motion-imitation.md) — 另一套 Go2 Genesis 运动模仿实现，可对照其重定向格式与训练设置。
 - [Genesis World 1.0](./genesis-world-10.md)

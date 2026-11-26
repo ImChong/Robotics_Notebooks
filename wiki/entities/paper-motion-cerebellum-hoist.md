@@ -131,6 +131,7 @@ HOIST 面向**欠驱动悬挂负载**的间接定位，与同库的强接触/受
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [运动小脑 · H 真实任务](../overview/motion-cerebellum-category-08-real-tasks.md)
 - [Loco-Manip 接触分类 04：接触后如何稳住](../overview/loco-manip-contact-category-04-post-contact-stability.md)
 - [VLA](../methods/vla.md)

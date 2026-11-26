@@ -86,6 +86,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [操作](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)

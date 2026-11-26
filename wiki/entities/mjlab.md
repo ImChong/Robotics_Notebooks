@@ -137,6 +137,7 @@ mjlab 架构
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [mjlab_hand：跨手型灵巧操作任务库](./mjlab-hand.md) — Allegro/LEAP/Shadow/Sharpa/Wuji/XHand 抓取、旋转、双手交接、转盘、保定球与杂耍；提供 ContactExplorer 接触探索奖励及评测 CLI。
 - [Open-BENI](./open-beni.md) — BENI 策略训练与浏览器端 MuJoCo + ONNX 演示
 - [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 [MuJoCo Warp](./mujoco-warp.md)）

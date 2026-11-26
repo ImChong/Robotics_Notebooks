@@ -79,6 +79,7 @@ flowchart TD
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 延伸阅读，理解视觉与语言条件化策略。
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — VIPA-VLA 的 Cut3R 空间编码对应感知栈的 2D→3D 几何表征环节；论文的操作成功率不能代替单独的深度精度、时延及下游控制闭环验收。
 
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)

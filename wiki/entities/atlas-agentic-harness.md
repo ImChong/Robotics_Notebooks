@@ -160,6 +160,7 @@ flowchart TD
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [Loco-Manipulation 任务地图](../tasks/loco-manipulation.md)
 - [ScaleBFM 冻结全身 tracker 基座](./paper-scaling-bfm-humanoid.md)
 - [SuperMimic：可微世界模型与 BPTT 全身动作跟踪](./paper-supermimic.md)

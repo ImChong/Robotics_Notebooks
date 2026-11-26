@@ -185,6 +185,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Genesis 仿真器](./genesis-sim.md) — 同为新一代高吞吐仿真，侧重多物理场
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 主流并行仿真平台，视觉质量较低
 - [MuJoCo](./mujoco.md) — 物理内核参考，GS-Playground 使用自研求解器

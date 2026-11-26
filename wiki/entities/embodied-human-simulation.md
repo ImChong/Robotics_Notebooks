@@ -69,6 +69,7 @@ flowchart LR
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [Loco-Manipulation](../tasks/loco-manipulation.md)：机器人全身运动与操作任务背景。
 - [OpenCap Monocular](./paper-opencap-monocular.md)：从视频估计人体运动学与肌肉骨骼动力学的相关工作。
 - [MS-Human-700](./ms-human-700.md)：该项目所用肌骨数字人的公开模型与控制环境。

@@ -118,6 +118,7 @@ DSP 的独特处在于 play policy 同时承担“采数据”和“给 MPC 提�
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [T2-z：测试时优化环境潜变量](./paper-t2-z-environment-latents.md)
 - [VaM：用价值预测追踪任务进度](./paper-vam-value-as-memory.md)
 - [生成式世界模型](../methods/generative-world-models.md)

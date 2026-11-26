@@ -161,6 +161,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [NVIDIA SONIC](nvidia-sonic.md) — 源控制器
 - [全身控制](../concepts/whole-body-control.md) — 任务背景
 - [LoRA](../concepts/lora.md) — 适配机制

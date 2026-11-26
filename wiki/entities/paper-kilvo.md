@@ -184,6 +184,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
 - [SE(3)-LIVOM](./paper-se3-livom.md) — 双 LiDAR、惯性与视觉融合及异步平面 BA；对照人形关节运动学融合与野外腿式全局建图的任务边界。
 
 - [里程计–激光融合定位](../methods/lidar-odometry-fusion.md) — 课程级融合母页

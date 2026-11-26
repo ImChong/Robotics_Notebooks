@@ -126,6 +126,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [R2S2（真实世界就绪技能空间）](./paper-notebook-unleashing-humanoid-reaching-potential-via-real.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)

@@ -184,6 +184,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解人形全身运动任务。
 - [Party OS](./party-os.md)
 - [PartyMimic：单卡可微世界模型全身跟踪](./partymimic.md) — 相比 MimicLite 的多 codebase 训练部署基础设施定位，PartyMimic 聚焦 SuperMimic 系可微模型训练配方与单卡评测
 - [human-humanoid-tools](./human-humanoid-tools.md)

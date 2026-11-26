@@ -103,6 +103,7 @@ Draft 把可参数化、带初步工程约束的机器人规格连接到可运�
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [MuJoCo（物理引擎）](./mujoco.md) — Draft 的 MJCF 输出与仿真环境。
 - [Shape Your Body](./paper-shape-your-body-value-gradient-design.md) — 与自动形态搜索路线对照。
 - [强化学习](../methods/reinforcement-learning.md) — Draft 论文中的 PPO 评估流程。

@@ -61,6 +61,8 @@ flowchart LR
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
+- [遥操作](../tasks/teleoperation.md) — 延伸阅读，理解操作员与机器人之间的控制接口。
 - [人形机器人](./humanoid-robot.md)
 - [1X Technologies](./1x-technologies.md)
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)

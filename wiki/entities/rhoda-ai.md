@@ -105,6 +105,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 延伸阅读，理解操作任务与工具接口。
 - [DVA：因果视频模型作机器人策略](./rhoda-direct-video-action.md)
 - [网络视频预训练 scaling](./rhoda-scaling-web-video-pretraining.md)
 - [触觉 + DVA](./rhoda-dva-tactile-sensing.md)

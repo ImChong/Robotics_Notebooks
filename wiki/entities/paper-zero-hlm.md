@@ -94,6 +94,7 @@ Zero-HLM 展示了以物理验证和执行反馈扩增仿真示范并迁移到�
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [移动操作](../tasks/loco-manipulation.md)
 - [Isaac GR00T](./isaac-gr00t.md)
 - [SONIC 运动跟踪](./nvidia-sonic.md)

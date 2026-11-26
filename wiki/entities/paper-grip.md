@@ -202,6 +202,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
+- [PPO](../methods/ppo.md) — 延伸阅读，优化策略。
 - [PHC（Perpetual Humanoid Control）](./phc.md) — DynamicsNet 奖励与 humanoid 模仿控制参考
 - [OpenCap Monocular](./paper-opencap-monocular.md) — 互补：单手机视觉 + OpenSim 生物力学 MoCap
 - [GVHMR](./gvhmr.md) — 互补：单目视频 SMPL 世界轨迹上游

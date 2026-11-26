@@ -112,6 +112,8 @@ flowchart TD
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 延伸阅读，理解腿足移动任务。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 延伸阅读，理解全身运动任务。
 - [Loco-Manipulation 与全身控制](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - [EgoHTR](./paper-egohtr.md)
 - [SOLO：感知行走](./paper-solo.md)

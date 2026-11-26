@@ -131,6 +131,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [动作分块](../methods/action-chunking.md) — 延伸阅读，生成或执行动作序列。
 - [HY-Embodied 基础骨干项目](./cn-os-hy-embodied.md)
 - [公开数据集](./dataset-hy-embodied-0-5-vla-data.md)
 - [VLA](../methods/vla.md)

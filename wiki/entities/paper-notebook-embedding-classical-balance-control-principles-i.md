@@ -157,6 +157,7 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 概念：[Capture Point / DCM](../concepts/capture-point-dcm.md)、[Privileged Training](../concepts/privileged-training.md)、[Curriculum Learning](../concepts/curriculum-learning.md)、[Domain Randomization](../concepts/domain-randomization.md)、[Centroidal Dynamics](../concepts/centroidal-dynamics.md)

@@ -156,6 +156,7 @@ VLA 以较低频率解释语言指令和视觉场景，生成一段表达任务�
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [VLA 方法](../methods/vla.md) — 预训练语言视觉动作策略主干
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 视触觉融合范式，含残差适应
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 插入、按压等任务及力控挑战

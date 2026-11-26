@@ -123,6 +123,7 @@ flowchart TD
 
 ## 关联页面
 
+- [策略优化](../methods/policy-optimization.md) — 延伸阅读，理解策略训练的优化目标。
 - [十篇资源技术地图](../overview/embodied-resources-10-papers-technology-map.md)
 
 ## 参考来源

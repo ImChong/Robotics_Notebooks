@@ -96,6 +96,7 @@ flowchart LR
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 延伸阅读，理解示范数据如何用于策略训练。
 - [具身评测基准](../overview/hub-embodied-eval-benchmark.md)
 - [视觉语言动作策略](../methods/vla.md)
 - [Fast-VLA：在 LIBERO 上评测的高效策略](./paper-fast-vla-once-per-episode.md)
