@@ -63,6 +63,34 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as src/cmd/sim_main.cc
+  participant Srv as Server / ServerPrivate
+  participant Runner as SimulationRunner
+  participant SysMgr as SystemManager
+  participant Sys as 各系统插件 (PreUpdate / Update / PostUpdate)
+
+  CLI->>CLI: CLI11_PARSE 解析参数与 SDF，可选启动 gz-sim-gui 线程
+  CLI->>Srv: 构造 sim::Server(serverConfig)
+  Srv->>Srv: LoadSdfRootHelper 解析世界，CreateSimulationRunners & SetupTransport
+  CLI->>Srv: server.Run(true, iterations, paused)
+  Srv->>Runner: ServerPrivate::Run() 调度各世界的 SimulationRunner::Run()
+  loop 每个仿真步 SimulationRunner::Step(UpdateInfo)
+    Runner->>Runner: ProcessNewWorldControlState() & PublishStats()
+    Runner->>SysMgr: ProcessPendingEntitySystems() 激活待加载系统插件
+    Runner->>SysMgr: UpdateSystems() 遍历各优先级系统列表
+    SysMgr->>Sys: system->PreUpdate(currentInfo, entityCompMgr)
+    SysMgr->>Sys: system->Update(currentInfo, entityCompMgr)
+    SysMgr->>Sys: system->PostUpdate(currentInfo, entityCompMgr)
+  end
+```
+
+核对源码：`gazebosim/gz-sim`（`main` 分支）`src/cmd/sim_main.cc`、`src/Server.cc`、`src/ServerPrivate.cc`、`src/SimulationRunner.cc` 与 `src/SystemManager.cc`。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

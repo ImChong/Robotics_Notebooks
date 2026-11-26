@@ -63,6 +63,38 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序图依据官方仓库 `main` 分支源码核对绘制（`run.sh`、`scripts/run_mujoco.sh`、`src/executor/main.cc`、`core/include/app/app.h`、`core/registry/auto_register_runners.cc`、`src/runner/rl_lab/src/rl_lab_runner.cc`、`src/runner/ros2_bridge/src/ros2_bridge_runner.cc`、`src/ros2_node/src/ros2_node_interface.cc`、`simulation/mujoco/main.cc` 及 `assets/config/pm01_edu/{mode.yaml,task_resident/sim.yaml,task_motion/default.yaml,rl_lab/default.yaml}`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant MJ as MuJoCo (simulation/mujoco/main.cc)
+  participant EXE as Executor (src/executor/main.cc)
+  participant APP as App / Scheduler (core/include/app/app.h)
+  participant DS as DataStore (data_store)
+  participant RL as RlLabRunner (rl_lab_runner.cc)
+  participant MNN as MNNModel (.mnn policy)
+  participant ROS as Ros2BridgeRunner / Ros2NodeInterface
+
+  MJ->>MJ: scripts/run_mujoco.sh 启动 LcmSubscriber/LcmPublisher 与 mjcb_control
+  EXE->>APP: ./run.sh 启动 src_executor，调用 RegisterApps() 与 RunMain()
+  APP->>APP: RegisterAllRunners() 并按 mode.yaml 加载 sim/robot 任务配置
+  APP->>RL: 手柄触发 FSM 状态切换 (task_motion/default.yaml) 调用 Enter()
+  RL->>MNN: 加载 rl_lab/default.yaml 中 policy_file (.mnn) 与观测历史缓冲
+  loop 控制周期 (control_dt = 0.01s)
+    MJ-->>DS: LCM 发布 SimState -> sim_subscribe_runner 更新关节/IMU 状态
+    DS-->>RL: Run() 读取 q_real_/qd_real_、imu_info 与 gamepad_info
+    RL->>RL: UpdateRobotBaseOrientation() + UpdateRemoteCommand() + CalculateObservation()
+    RL->>MNN: CalculateMotorCommand() 调用 mlp_net_->Inference(obs)
+    MNN-->>RL: 返回动作增量并计算 PD 目标位置 q_des_
+    RL->>DS: SendMotorCommand() 写入 ControlOutput (q_des_, kp, kd, tau_ff)
+    DS-->>MJ: sim_publish_runner / motor_runner 下发控制指令至 MuJoCo 或硬件
+    DS-->>ROS: Ros2NodeInterface 周期发布 /hardware/joint_state 与 /hardware/imu_info
+  end
+```
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

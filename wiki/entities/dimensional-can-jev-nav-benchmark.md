@@ -80,6 +80,37 @@ flowchart TB
   POSE --> SCORE[SPL / SoftSPL / Arrived]
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `dimensionalOS/dimos` 仓库 `main` 分支（`dimos/evals/cli.py`、`dimos/evals/runner.py`、`dimos/evals/environments/habitat.py`、`dimos/evals/agents/{dimcode.py,pi.py}`、`dimos/agents/typesafe/{agent.py,navigation.py,world_state.py,drive.py}`）及复现分支 `feat/typesafe-world-state`（`dimos/evals/suites/habitat_nav.py`、`dimos/robot/raw_robot_bridge.py`、`dimos/agents/typesafe/agent.py`）源码核对绘制。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as dimos evals run (cli.py)
+  participant ER as EvalRunner.run_case (evals/runner.py)
+  participant HAB as HabitatEnvironment (habitat.py / habitat_nav.py)
+  participant AG as TypeSafeAgent / DimcodeAdapter / PiAdapter
+  participant S1 as System One API / LLM
+  participant GR as grade_nav + score_navigation
+
+  CLI->>ER: 加载 dimos.evals.suites.habitat_nav 与对应 agent (load_agent)
+  ER->>HAB: environment.start() 启动 Habitat-Sim (Zenoh) 与 habitat-nav-gt/demo-objects/nav-skills
+  par TypeSafe Jev 轨 (TypeSafeAgent / TypeSafeNavigationAgent)
+    HAB-->>AG: 推送 PoseStamped/Odometry、Detection3DArray、PointCloud2
+    AG->>AG: build_world_state() 生成 WorldState JSON，drive.questions() 组装问题
+    AG->>S1: POST System One API (2 Hz max_hz)
+    S1-->>AG: 返回 drive.x/y/yaw/stop/target 选择概率
+    AG->>HAB: decode() + _steer() + _publish_loop() 发布 cmd_vel Twist
+  and Dimcode / Pi 轨 (DimcodeAdapter / PiAdapter)
+    ER->>AG: agent.run(inputs, RunningEnvironment)
+    AG->>S1: 调用模型推理或工具循环
+    S1-->>AG: Dimcode 调 nav-skills MCP；Pi 经 RawRobotBridge 读写 Zenoh world_state/cmd_vel/finished
+  end
+  ER->>HAB: settle() 后 environment.stop()，持久化 SqliteStore 录制轨迹
+  ER->>GR: grade_nav() 调用 score_navigation() 计算 SPL/SoftSPL 并输出 nav_metrics.json
+```
+
 ## 实验与评测（摘要）
 
 | Driver | Mean SPL ↑ | Arrived ↑ | 备注 |

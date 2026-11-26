@@ -53,36 +53,66 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 
 ## 核心机制（归纳）
 
-### 策展导读要点
+> 注：以下机制与评测指标基于通读 RSS 2024 原文全文核对补充（[RSS 2024 PDF](https://www.roboticsproceedings.org/rss20/p120.pdf)）。
 
-RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为准。
+**DROID（Distributed Robot Interaction Dataset）** 面向解决既有机器人操作数据集“实验室场景单一、跨环境泛化不足”的瓶颈，构建了一套 **分布式标准化硬件栈 + 野外场景轮换采集协议 + 多维度策略共训管线**：
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
+1. **跨机构标准化便携硬件平台（§III-A）**：
+   - 以 **Franka Emika Panda 7-DoF** 机械臂与 **Robotiq 2F-85** 平行夹爪为核心，安装在带滚轮、单电源线供电的可升降站立桌（standing desk）上，支持在实验室、办公室与真实家庭间快速转场。
+   - 传感器配置为 **3 路同步双目 RGB 相机流**：2 个可调三脚架桌面 **Zed 2** 第三人称双目相机 + 1 个腕部 **Zed Mini** 双目相机；每次切换新场景后均通过棋盘格与 OpenCV 完成外参标定（数据集含相机内外参及深度信息）。
+   - 控制与遥操作栈：NUC 主机运行 **Polymetis** 控制器，以 **15 Hz** 频率同步记录关节空间与末端执行器（EE）空间动作及低层状态；通过 **Meta Quest 2** 手柄实现 6D 末端位姿与连续夹爪控制。全平台在北美、亚洲和欧洲的 **13 家机构**复制了 **18 套**。
+2. **高场景多样性采集协议与标注流程（§III-B）**：
+   - 50 名采集员历时 12 个月，每约 **20 分钟（最多 100 条轨迹）**即转场至新场景，禁止“固定桌面前刷量”。
+   - 采集 GUI 从场景可用任务中**随机采样指令**避免偏置简单目标，并周期性提示**场景增强**（移动底座微调、重新摆放并重标定第三人称相机、改变室温光照、增减桌面物体）。
+   - 采集完成后记录成功/失败标签，并通过 `tasq.ai` 众包平台为每条轨迹独立标注最多 **3 条**自然语言指令；分析阶段用 spaCy 语义解析 + GPT-4 去重动词、GPT-4V 标注 10 类场景。
+3. **50/50 共训扩散策略与推理（§V-A）**：
+   - 基于 Robomimic 实现 **Diffusion Policy**：两路外部相机 RGB 下采样至 **128 × 128**，经 ImageNet 预训练 **ResNet-50** 编码后，与冻结 **DistilBERT** 语言嵌入及本体感知拼接，经 MLP 输入 U-Net 扩散头；输出 **16 步**绝对末端位姿（平移+旋转）与夹爪动作，开环执行 **8 步**后重新推理。
+   - 训练时剔除标注为 `"not successful"` 的轨迹，将目标任务小样本域内示教（50–150 条）与全量 DROID 成功轨迹按 **50/50 批比例**混合共训。
+
+### 方法流程图
+
+```mermaid
+flowchart LR
+  Setup["Portable Platform (Franka 7-DoF + Robotiq 2F-85 + 2x Zed2 + Zed Mini)"] --> Calib["New Scene Setup + OpenCV Checkerboard Extrinsic Calib"]
+  Calib --> Collect["Meta Quest 2 Teleop (15 Hz Polymetis, ~20 min / <=100 ep per scene)"]
+  Collect -->|"Random Task Prompt + Scene Augmentations"| Raw["76k Success + ~16k Fail Episodes (1,417 Viewpoints)"]
+  Raw --> Label["tasq.ai Crowdsourced Language Labels (<=3 per episode)"]
+  Label --> Mix["50/50 Co-Training Batch (In-Domain Demos + DROID Success Pool)"]
+  Mix --> Enc["ResNet-50 (128x128 RGB) + Frozen DistilBERT + Proprio"]
+  Enc --> DP["U-Net Diffusion Policy Head (16-step Action, Execute 8 steps)"]
+```
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://www.roboticsproceedings.org/rss20/p120.pdf) 为准。
-- 横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 同分组条目。
+- **数据集规模与多样性对比（§I, §IV, Table I）**：
+  - **总规模**：**76k** 条成功轨迹（**350 小时**交互数据；另有约 **16k** 条失败轨迹随数据以 **CC-BY 4.0** 协议公开但不计入 76k），涵盖 **564 个**独立场景（10 类场景类型）、**52 栋**建筑、**86 个**去重动作动词、**1,417 个**第三人称相机视角。
+  - **横向对比（Table I）**：显著高于 BridgeData V2（60.1k 轨迹 / 82 动词 / 24 场景 / 无相机标定）、RT-1（130k / 2 动词 / 2 场景）、RH20T（13k 多视角 / 33 动词 / 7 场景）；即便是聚合多数据集的 Open X-Embodiment（OXE，1.4M 轨迹 / 217 动词）总计也仅约 **311 场景**且缺少统一标定。
+- **跨场景共训实机评测（§V, Fig. 7–8）**：
+  - 在 **4 个地点**（实验室、办公室、真实家庭厨房）的 **6 项任务**（Closing Waffle Maker 70 demos、Place Chips on Plate 50 demos、Put Apple in Pot 60 demos、Toasting 150 demos、Clean up Desk 50 demos、Cook Lentils 50 demos，每项设定评测 **10 次 rollout**）上对比 `No Co-training`、`OXE`（50/50 共训，采用 Octo 策划子集并剔除 Language Table）与 `DROID (Ours)`：
+    - 全任务平均相对基于已有大型数据集（OXE）的策略提升约 **20%**；具体在 Fig. 8 汇总中，**DROID 相比次优方法在 In-Distribution 设定绝对成功率高 +22%，在 OOD（干扰物、未见物体、相机偏移）设定绝对成功率高 +17%**。
+- **场景多样性受控消融（§V-C, Fig. 10）**：
+  - 固定共训规模为 **7,362** 条成功轨迹，对比仅选取轨迹最多的 20 个场景（`DROID 7k, 20 Scenes`）与全库均匀采样（`DROID 7k, Diverse Scenes`），高场景多样性子集在 OOD 任务上明显胜出，且全量 DROID 在全部评测任务上匹配或进一步超过 7k 多样化子集。
 
 ## 与其他工作对比
 
 - 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 的 **Datasets** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：清单 Contribution 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 与偏重单臂桌面近距离视角的工具采集集（如 [UMI](paper-rcl-ref-e064f89fc62c8df5da9f-universal-manipulation-interface-in-the-wild-rob.md) 或 Dobb-E）相比，DROID 提供带完整标定的第三人称双目视角与真实 Franka 关节/末端状态，更适合研究多视角表征学习与第三人称视觉伺服策略。
+- 与聚合式异构数据集 OXE 相比，DROID 以统一本体（Franka + Robotiq + Zed）换取 564 个真实建筑场景内的高度一致性与相机外参可用性。
 
 ## 结论
 
-**这一页能给你的是「DROID」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**DROID 以标准化可移动 Franka 硬件栈和分布式“20 分钟一换场景”采集协议，在 564 个真实场景中积累了 76k 条带多视角标定与语言标注的操作轨迹，并将下游策略的分布内与 OOD 成功率分别推高了 22% 和 17%。**
 
-- 可确证的只有清单坐标：分组 **Datasets**，以及 Contribution 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+- **场景多样性是泛化核心杠杆**：受控 7,362 条样本消融证明，564 场景均匀采样在 OOD 鲁棒性上显著优于 20 场景集中采样，工程采数应优先打散物理场景而非单点堆量。
+- **失败轨迹一并开源可供筛选**：除 76k 成功轨迹外，约 16k 条失败轨迹也随 CC-BY 4.0 发布（共训实验中默认剔除失败样本，但可用于失败恢复或离线 RL / 奖励学习研究）。
+- **低门槛硬件与控制栈复现**：基于 Franka Panda + Robotiq 2F-85 + 3×Zed + Quest 2 + Polymetis（15 Hz）的完整软硬件指南已开源，便于跨实验室扩展同一分布数据。
+- **使用边界**：单机器人本体（Franka 7-DoF）及 128×128 下采样策略验证仍依赖 50–150 条目标任务域内示教共训，尚非纯零样本无微调通用策略。
 
-## 常见误区
+## 常见误区或局限
 
-1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+1. **50/50 共训仍需少量域内示教**：文中实验验证的是“50–150 条目标任务域内示教 + DROID 共训”，论文在讨论中也明确将“无域内数据的纯零样本新场景部署”列为待解开放问题。
+2. **单一机械臂本体限制**：全部 76k 轨迹均在 Franka Emika Panda + Robotiq 2F-85 上采集，跨异构本体（如双臂或灵巧手）迁移需借助动作重定向或与其他 OXE 数据集混合。
+3. **16k 失败轨迹勿盲目混入 BC**：默认扩散策略行为克隆过滤了 `"not successful"` 标注轨迹，直接全量混训会拉低策略质量。
 
 ## 关联页面
 

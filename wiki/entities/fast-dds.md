@@ -61,6 +61,34 @@ flowchart LR
   RTPS --> T[UDP / TCP / SHM]
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Main as examples/cpp/hello_world/main.cpp
+  participant Pub as PublisherApp / DataWriter
+  participant DWImpl as DataWriterImpl / DataWriterHistory
+  participant Sub as ListenerSubscriberApp / DataReader
+  participant DRImpl as DataReaderImpl / ReaderHistory
+
+  Main->>Pub: Application::make_app(...) 构造 PublisherApp
+  Pub->>Pub: DomainParticipantFactory -> create_participant / register_type / create_datawriter
+  Main->>Sub: Application::make_app(...) 构造 ListenerSubscriberApp
+  Sub->>Sub: create_participant / register_type / create_datareader(this)
+  Pub-->>Sub: DDS 发现匹配触发 on_publication_matched / on_subscription_matched
+  Main->>Pub: 线程执行 PublisherApp::run() -> publish()
+  Pub->>DWImpl: writer_->write(&hello_) -> create_new_change_with_params()
+  DWImpl->>DWImpl: perform_create_new_change() 调用 type_->serialize_ctx 序列化
+  DWImpl->>DWImpl: history_->create_change() & DataWriterHistory::add_pub_change()
+  DWImpl-->>DRImpl: 经底层 RTPS 发送并写入对端 ReaderHistory
+  DRImpl-->>Sub: 触发 ListenerSubscriberApp::on_data_available(reader)
+  Sub->>DRImpl: reader->take_next_sample(&hello_, &info)
+  DRImpl->>DRImpl: read_or_take_next_sample() -> lookup_available_instance & ReadTakeCommand
+```
+
+核对源码：`eProsima/Fast-DDS`（`master` 分支）`examples/cpp/hello_world/main.cpp`、`PublisherApp.cpp`、`ListenerSubscriberApp.cpp`、`src/cpp/fastdds/publisher/DataWriter.cpp`、`DataWriterImpl.cpp`、`DataWriterHistory.cpp` 与 `src/cpp/fastdds/subscriber/DataReaderImpl.cpp`。
+
 ## 工程实践
 
 1. ROS 2：`export RMW_IMPLEMENTATION=rmw_fastrtps_cpp`（或发行版默认即此）。

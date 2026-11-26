@@ -53,6 +53,10 @@ flowchart LR
   MU --> DEP["4. 真机部署: Wiki-GRx-Deploy (真实 Fourier GRx 机器人)"]
 ```
 
+## 源码运行时序图
+
+**不适用**：经核查官方仓库 `FFTAI/Wiki-GRx-Pipeline`（已核对 `FourierN1`、`FourierGR2` 与 `gr1` 全部分支），仓内仅包含 `README.md`、`README.en.md`、`README.gitee.md`、`LICENSE`、`.gitignore` 与 `pictures/` 配图，属于总览与导航型索引仓库，**不含任何可运行的训练、仿真或部署源码/入口脚本**。实际可执行代码分布在 README 所链接的下游独立仓库（`Wiki-GRx-URDF`、`Wiki-GRx-MJCF`、`Wiki-GRx-Gym` / `Wiki-GRx-Models`、`Wiki-GRx-Mujoco`、`Wiki-GRx-Deploy`）中。
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `Wiki-GRx-Pipeline` 仓库并核对 README 许可与依赖。
