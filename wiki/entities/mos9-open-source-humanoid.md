@@ -63,6 +63,13 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+**不适用**（当前主入口仓库 `THMOS2025/MOS-9-Open-Source-Humanoid-Robot` 为生态聚合 hub，仓内不包含可运行的训练、推理或控制部署源码）。
+
+- **已核查仓库证据（`THMOS2025/MOS-9-Open-Source-Humanoid-Robot` `main` 分支全量文件树）**：仅包含 `README.md`、`repos.yaml`、`scripts/clone_repos.sh`、`assets/images/mos92front.JPG` 及社区治理文档（`LICENSE`、`CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`SECURITY.md`、`.github/`）。其中唯一脚本 `scripts/clone_repos.sh` 仅按 `repos.yaml` 拉取 9 个独立子仓库（`MOS9-hardware`、`mos9-deploy`、`robot-ipc`、`MOS9-AMP`、`botong-joystick`、`imu-n200`、`MOS-GMR`、`encos-driver`、`MOS-MatLab-Simulation`）。
+- **下游可运行代码去向（仅作索引说明）**：核对 `repos.yaml` 中同组织子仓可见，AMP 策略训练与 MuJoCo sim2sim 脚本（`scripts/amp_rsl_rl/train.py`、`scripts/amp_rsl_rl/play.py`、`scripts/mos9_amp_sim2sim_mujoco.py`）位于 `THMOS2025/MOS9-AMP`，而基于 `robot-ipc` 的实机策略控制器（`controller/mos9_policy_ipc_controller.py`、`scripts/mos9_amp_deploy.py`）位于 `THMOS2025/mos9-deploy`；本节点仅对应顶层入口仓。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

@@ -111,6 +111,42 @@ flowchart LR
   WEB --> AUD
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `ManimCommunity/manim` 仓库 `main` 分支源码核对绘制（已检查 `manim/__main__.py`、`manim/cli/render/commands.py`、`manim/scene/scene.py`、`manim/manager.py`、`manim/renderer/cairo/renderer.py`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 用户 / CLI
+  participant Main as manim/__main__.py (DefaultGroup)
+  participant Cmd as cli/render/commands.py (render)
+  participant Scene as Scene (scene/scene.py)
+  participant Mgr as Manager (manager.py)
+  participant Ren as CairoRenderer / OpenGLRenderer
+
+  User->>Main: manim -p -ql example.py SquareToCircle
+  Main->>Cmd: 默认分派至 render 子命令
+  Cmd->>Cmd: config.digest_args(click_args) 解析配置
+  Cmd->>Cmd: scene_classes_from_file(file) 加载 Scene 类
+  loop 遍历选中的 SceneClass
+    Cmd->>Scene: scene = SceneClass()
+    Cmd->>Scene: with scene._get_manager() as manager -> scene.render()
+    Scene->>Mgr: Manager.render(preview)
+    Mgr->>Ren: renderer.open() & _ensure_file_writer()
+    Mgr->>Mgr: _run(_loop, capture_timeline)
+    Mgr->>Scene: setup()
+    Mgr->>Scene: construct()
+    loop construct 内的 self.play(...)
+      Scene->>Mgr: play() 推进动画时钟与插值
+      Mgr->>Ren: 更新帧并向 SceneFileWriter 输出帧数据
+    end
+    Mgr->>Scene: tear_down()
+    Mgr->>Mgr: post_construct() 封装视频（FFmpeg）并按需 open_media_file()
+    Mgr->>Ren: _finish_resource_scope() 关闭渲染器与编码器
+  end
+```
+
 ## 常见误区或局限
 
 - **不是仿真器或 DCC**：不能替代 [MuJoCo](./mujoco.md) / [Isaac Lab](./isaac-gym-isaac-lab.md) / Blender 做 **物理一致** 的机器人场景；宜限 **示意精度**。

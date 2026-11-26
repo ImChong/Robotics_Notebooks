@@ -58,6 +58,10 @@ flowchart LR
   GEN --> REAL["真实人形机器人平台部署"]
 ```
 
+## 源码运行时序图
+
+**不适用。** 经核查 [BeingBeyond/RLPF](https://github.com/BeingBeyond/RLPF)（`main` 分支，共 64 个文件），仓库仅包含 `README.md` 与 `docs/` 下的静态项目主页资源（`docs/index.html`、CSS/JS、配图与动作对比 GIF）；`README.md` 在 `## Code` 节声明“We will release our code soon.”，仓库内尚无文本条件动作生成、物理可行性跟踪评估或对齐验证的可运行源码与脚本入口，无法绘制基于源码的运行时序图。
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `RLPF` 仓库并核对 README 许可与依赖。

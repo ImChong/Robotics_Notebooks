@@ -201,6 +201,10 @@ Menlo 在 [《How we built humanoid legs from the ground up in 100 days》](http
 
 [`asimov-mjlab` 的 `asimov_constants.py`](https://github.com/asimovinc/asimov-mjlab/blob/main/src/mjlab/asset_zoo/robots/asimov/asimov_constants.py) 在注释与 `KNEES_BENT_KEYFRAME` 中写明：**左右膝、左右踝 pitch 的关节轴方向与正负号镜像**（例如左膝 `axis=(0,1,0)` 正行程向后折展、右膝取相反轴与负角等价的运动学），并在弯膝姿态下对 **踝 pitch 赋予与膝弯曲相反的符号** 以作 **几何补偿**。这是 **在已知轴约定下把「想要的空间姿态」映射到关节目标** 的 **运动学校准/解算提示**，**不是** RSU 闭链的力雅可比；与 README 中 **「窄站姿 + 紧踝 pose 奖励」** 一起，构成训练侧对 **踝可操作包络** 的工程约束叙事。
 
+## 源码运行时序图
+
+**不适用**：经核查 `asimovinc/asimov-v1`（`main` 分支），主仓当前仅包含机械制造资产（`mechanical/ASV1/`、`mechanical/FABRICATION_MANIFEST.*`）、电气 KiCad/线束/设备树（`electrical/`，含 `electrical/rpu/motion_control/mcb-io.dts` 与串口调试命令 `electrical/rpu/motion_control/scripts/serial.sh`）、URDF/MJCF 仿真模型（`sim-model/asimov_1_25dof/` 与 `sim-model/asimov_1_27dof/`，文档仅提供 `python3 -m mujoco.viewer --mjcf=...` 预览命令）以及制造清单生成脚本 `scripts/generate_fabrication_manifest.py`；`.gitmodules` 为空，`README.md` Roadmap 中的 `Asimov Edge` 与 `Locomotion policy` 仍标为 `🔜`（待发布），主仓内尚无板载控制或策略训练/推理的可运行代码。可运行的 RL 训练入口分别位于独立仓库 [asimov-mjlab](https://github.com/asimovinc/asimov-mjlab) 与 [isaac_asimov](./isaac-asimov.md)。
+
 ## 常见误区或局限
 
 - **误区：把主仓当成「已内嵌唯一官方训练脚本」**。主仓强调 **制造 + MuJoCo 资产 + 板载软件**；**可复现的并行训练** 当前公开在 **asimov-mjlab** 与 **isaac_asimov** 两仓，与主仓路线图并行存在。

@@ -75,6 +75,52 @@ flowchart LR
 
 私有 opcode **0x80–0xFF** 留给应用扩展。
 
+## 源码运行时序图
+
+以下时序图依据 `foxglove/mcap` 仓库 `main` 分支 Python SDK 源码核对绘制（已检查 `python/mcap/mcap/writer.py`、`python/mcap/mcap/_chunk_builder.py`、`python/mcap/mcap/reader.py`、`python/mcap/mcap/stream_reader.py`、`python/mcap/mcap/summary.py`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Caller as 上游调用方
+  participant W as Writer (writer.py)
+  participant CB as ChunkBuilder (_chunk_builder.py)
+  participant File as MCAP 文件流
+  participant R as SeekingReader (reader.py)
+  participant SR as StreamReader (stream_reader.py)
+
+  Note over Caller,File: 写入路径（mcap.writer.Writer）
+  Caller->>W: Writer(output, chunk_size, compression) & start(profile, library)
+  W->>File: 写入 MCAP0_MAGIC 与 Header 记录
+  Caller->>W: register_schema(...) / register_channel(...)
+  W->>CB: add_schema() / add_channel()（启用分块时入 Chunk）
+  loop 每条消息
+    Caller->>W: add_message(channel_id, log_time, data, publish_time)
+    W->>W: 更新 Statistics 时间窗与计数
+    W->>CB: add_message_fields(...)
+    alt 超过 chunk_size
+      W->>W: __finalize_chunk()（Zstd/LZ4 压缩为 Chunk + MessageIndex）
+      W->>File: 刷写 Chunk 与 MessageIndex，登记 ChunkIndex
+    end
+  end
+  Caller->>W: finish()
+  W->>File: __finalize_chunk() + 写入 DataEnd
+  W->>File: 写入 Summary（Schema/Channel/Statistics/ChunkIndex/SummaryOffset）+ Footer + 尾 Magic
+
+  Note over Caller,SR: 索引随机读取路径（make_reader -> SeekingReader）
+  Caller->>R: make_reader(stream) -> get_summary()
+  R->>File: seek(-(FOOTER_SIZE + MAGIC_SIZE)) 读取 Footer
+  R->>SR: seek(footer.summary_start) 解析 Summary 记录
+  SR-->>R: Summary（schemas / channels / chunk_indexes）
+  Caller->>R: iter_messages(topics, start_time, end_time)
+  R->>R: _chunks_matching_topics() 过滤 ChunkIndex 并入 LogTimeOrderQueue
+  loop 按时间序出队 ChunkIndex
+    R->>File: _read_chunk_messages() seek 并读取 Chunk
+    R->>R: _get_chunk_data() 解压 + _parse_chunk_records() 解析
+    R-->>Caller: yield (Schema, Channel, Message)
+  end
+```
+
 ### 生态（官方 README）
 
 | 语言 | 包 |

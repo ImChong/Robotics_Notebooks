@@ -63,35 +63,39 @@ flowchart LR
     L --> S["同步下发左右腿舵机位置"]
 ```
 
-## 官方固件运行时序
+## 源码运行时序图
 
-依据固定版本的 `wl_pro_robot.ino`、`basic_web.h`、`robot.cpp` 和 `wifi.cpp`。`web_loop()` 和 IMU 更新、控制计算在 Arduino 主循环中顺序执行；另一个核心上的 SPIFFS / OLED 表情任务不是平衡回路。
+依据 `fuwei007/Navbot-EN01`（`main` 分支）中 `Src/wl_pro_robot/wl_pro_robot.ino`、`basic_web.h`、`robot.cpp` 与 `wifi.cpp`：`web_loop()` 与 `mpu6050.update()`、平衡/偏航/腿姿计算及 SimpleFOC 电机更新在 Arduino `loop()` 中顺序执行；`setup()` 通过 `xTaskCreatePinnedToCore` 在 Core 0 启动独立的 `cpu0_task`（SPIFFS / OLED 表情显示），不参与实时平衡内环。
 
 ```mermaid
 sequenceDiagram
-    participant U as 浏览器
-    participant N as ESP32 HTTP 与 WebSocket
-    participant P as RobotProtocol
-    participant C as Arduino 控制主循环
-    participant S as 双腿总线舵机
-    participant F as SimpleFOC 双轮
-    U->>N: 打开设备内嵌操作页
-    N-->>U: 返回网页
-    U->>N: 发送基本控制 JSON
-    loop 主循环迭代
-        C->>N: web_loop 轮询网络
-        opt 收到基本控制帧
-            N->>P: parseBasic
-            P-->>C: 更新摇杆、启停和姿态参考
+    autonumber
+    participant U as 浏览器客户端
+    participant N as WebServer / WebSocketsServer
+    participant P as RobotProtocol (robot.cpp)
+    participant C as wl_pro_robot.ino::loop()
+    participant S as sms_sts (Servo_STS3032)
+    participant F as motor1 / motor2 (SimpleFOC)
+    U->>N: HTTP GET / 打开内嵌操作页
+    N-->>U: 返回 basic_web.h 页面
+    U->>N: 通过 WebSocket 81 发送控制 JSON
+    loop Arduino 主循环迭代
+        C->>N: web_loop() -> handleClient() + websocket.loop()
+        opt 收到 WebSocket 控制帧
+            N->>P: parseBasic 更新 wrobot 状态
+            C->>P: rp.spinOnce() 同步指令参考
         end
-        C->>C: 更新 IMU 并计算平衡、偏航和腿姿
-        opt 舵机位置指令变更
-            C->>S: SyncWritePosEx 同步更新
+        C->>C: mpu6050.update() + lqr_balance_loop() + yaw_loop() + leg_loop()
+        opt 腿部舵机目标位置变化或触发跳跃
+            C->>S: sms_sts.SyncWritePosEx 同步下发 ID1/ID2
         end
-        C->>C: 合成轮目标并应用倾倒或坐下逻辑
-        C->>F: loopFOC 后执行 move
+        C->>C: 合成 motor1/motor2.target，若失控或 go==0 则置零/坐下
+        C->>F: motor1/motor2.loopFOC() 与 move()
     end
 ```
+
+- **关键复现路径**：使用 Arduino IDE（板卡 ESP32 Dev Module、Arduino-ESP32 2.0.3）打开 `Src/wl_pro_robot/wl_pro_robot.ino` 并配合 `Src/libraries/` 中依赖库编译烧录，上电后连接设备 AP/STA Wi-Fi 即可访问内嵌网页控制。
+- **已核查源码文件**：`Src/wl_pro_robot/wl_pro_robot.ino`、`Src/wl_pro_robot/robot.cpp`（及 `Src/wl_pro_robot/` 目录下的 `basic_web.h`、`wifi.cpp`、`Servo_STS3032.cpp`、`cpu0_task.cpp`、`ble.cpp`、`eeprom_util.cpp`、`feedback_util.cpp`）。
 
 ## 工程实践
 

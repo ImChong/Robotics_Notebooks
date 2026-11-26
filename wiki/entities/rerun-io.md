@@ -75,6 +75,38 @@ flowchart LR
 - **URDF 关节运动**：导入器读取静态模型与 frame；要回放动态姿态，还需按对应父子 frame 记录变换或关节状态。
 - **格式区别**：MCAP 是外部日志容器，.rrd 是 Rerun 原生记录格式；按需导入或转换，避免把两者当成同一格式。
 
+## 源码运行时序图
+
+入口：用户程序通过 SDK（`crates/top/re_sdk/src/recording_stream.rs`）记录数据；命令行与 Viewer 入口为 `crates/top/rerun-cli/src/bin/rerun.rs` → `rerun::run`（`crates/top/rerun/src/commands/entrypoint.rs` 的 `run_impl()`，按参数拉起 `start_native_viewer`、`serve_grpc`、`serve_web` 或 `Server`）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant App as 用户代码 / ROS 2 节点
+    participant SDK as RecordingStream (re_sdk)
+    participant Batch as ChunkBatcher & LogSink
+    participant CLI as rerun-cli (rerun::run)
+    participant Rx as LogReceiverSet (rx_log)
+    participant Core as AppCore (re_viewer)
+    participant DB as EntityDb & ChunkStore
+    participant UI as AppBlueprint & egui / re_renderer
+
+    App->>SDK: log() -> log_with_static() -> record_row()
+    SDK->>SDK: 注入 log_time / log_tick 时间轴并生成 PendingRow
+    SDK->>Batch: inner.batcher.push_row() 聚合为 Arrow Chunk
+    Batch->>Rx: 经 GrpcSink / FileSink (.rrd) / 内存通道发送 LogMsg
+    CLI->>Core: run_impl() 启动 Native / Web Viewer 并接入数据源
+    loop 每帧立即模式渲染 (AppCore::logic_impl)
+        Core->>Rx: receive_messages() 调用 rx_log.try_recv()
+        Rx-->>Core: DataSourceMessage (LogMsg)
+        Core->>DB: entity_db.add_log_msg(msg) 写入 ChunkStore
+        DB-->>Core: store_events -> process_store_events_for_db()
+        Core->>UI: 构建 AppBlueprint 并查询 ChunkStore 经 wgpu/re_renderer 绘制
+    end
+```
+
+图依据：`rerun-io/rerun`（`main` 分支）`ARCHITECTURE.md`、`crates/top/rerun-cli/src/bin/rerun.rs`、`crates/top/rerun/src/lib.rs`、`crates/top/rerun/src/commands/entrypoint.rs`、`crates/top/re_sdk/src/recording_stream.rs`、`crates/top/re_viewer/src/app/mod.rs`、`crates/top/re_viewer/src/app/logic.rs`。
+
 ## 工程实践
 
 1. **先定数据入口**：已有 ROS 2 bag 优先评估 MCAP 直接打开；实时运行则用 SDK 或 ROS 2 示例节点转发所需 topic。

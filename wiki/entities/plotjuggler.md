@@ -130,6 +130,42 @@ flowchart LR
   LAYOUT --> POST
 ```
 
+## 源码运行时序图
+
+入口：`PlotJuggler/PlotJuggler` `main` 分支为 PlotJuggler 4 架构，应用主入口为 `pj_app/src/main.cpp`（初始化 `QApplication` 与 `PJ::MainWindow`，处理 `--layout` 及启动文件并调用 `window.loadAtStartup(...)` 进入 `app.exec()`）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Main as pj_app/src/main.cpp
+    participant Win as MainWindow & AppSession
+    participant Src as FileLoader / StreamingSourceManager
+    participant Host as DataSourceRuntimeHost (pj_runtime)
+    participant Plugin as DataSourceHandle & MessageParserHandle
+    participant Store as DataEngine & ObjectStore (pj_datastore)
+    participant Play as PlaybackEngine (~30 Hz)
+    participant View as PlotDocker / SceneViewWidget
+
+    Main->>Win: 创建 MainWindow 与 AppSession（SessionManager / CatalogModel）
+    Main->>Win: loadAtStartup(startup_files, layout_path)
+    Win->>Src: loadFiles() 或启动流式会话（开工作线程）
+    Src->>Host: 绑定 DataSourceRuntimeHost 与 DataSourceHandle 插件
+    Plugin->>Host: cbEnsureParserBinding() 注册 topic 与解析路由
+    loop 每条离线记录或实时消息
+        Plugin->>Host: cbPushMessage(binding, timestamp_ns, fetcher)
+        Host->>Plugin: fetchMessageData() + binding.parser->parse()
+        Plugin->>Store: 写入标量列到 DataEngine（DatastoreParserWriteHost）
+        Host->>Store: 可选 pushLazy / pushLazyWithSeed 写入 2D/3D 对象到 ObjectStore
+    end
+    Win->>Play: setRangeAndCurrentTime() 更新时间轴视口
+    loop 播放或拖动游标 (~30 Hz onTick)
+        Play->>View: 广播当前时间戳与时间范围变更
+        View->>Store: 通过 DataReader / OnDemandService 读取曲线与对象切片渲染
+    end
+```
+
+图依据：`PlotJuggler/PlotJuggler`（`main` 分支）`pj_app/src/main.cpp`、`pj_app/src/MainWindow.h`、`pj_app/src/MainWindow.cpp`、`pj_app/src/FileLoader.cpp`、`pj_app/src/StreamingSourceManager.cpp`、`pj_runtime/src/AppSession.cpp`、`pj_runtime/src/SessionManager.cpp`、`pj_runtime/src/PlaybackEngine.cpp`、`pj_runtime/include/pj_runtime/DataSourceRuntimeHost.h`、`pj_runtime/src/DataSourceRuntimeHost.cpp`。
+
 ## 工程实践
 
 1. **先定版本线**：产线/日常真机 bag 优先 **3.17 + `plotjuggler-ros`**；需要点云/图像同屏或 Marketplace 时再开 **PJ4 beta** 并行评估。

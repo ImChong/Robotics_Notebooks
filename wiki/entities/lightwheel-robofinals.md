@@ -163,6 +163,43 @@ flowchart TB
 | [LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub) | **已开源**（README 声明 Apache 2.0，根目录无独立 LICENSE 文件）；268 任务（LIBERO 130 + RoboCasa 138），详见 [LW-BenchHub](./cn-os-lw-benchhub.md) |
 | [AutoDataGen](https://github.com/LightwheelAI/AutoDataGen) | **已开源** Apache 2.0（2026-03-16 博文直链；此前「无公开仓库」记载有误，已更正） |
 
+## 源码运行时序图
+
+RoboFinals 平台本身的商业任务包（RoboFinals-100 / Newton-native 22 任务）与托管 API 尚未公开源码；其开源评测执行底座为 `isaac-sim/IsaacLab-Arena`（`main` 分支）。在 Arena 实验运行时中，`isaaclab_arena/evaluation/experiment_runner.py` 启动 `SimulationAppContext` 后委托 `run_execution.py` 按运行配置组装 `ArenaEnvBuilder`（涉及 Lightwheel 资产时由 `LightwheelSource.to_local_usd_path` 优先命中本地 `~/.cache/lightwheel_sdk` 或调用 SDK 下载）并构造注册环境，再交由 `rollout.py` 执行多环境并行策略推演与逐回合结果聚合。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 研究者
+  participant Exp as experiment_runner.py
+  participant Exec as run_execution.py
+  participant Reg as EnvironmentRegistry 与 ArenaEnvBuilder
+  participant LW as LightwheelSource
+  participant Roll as rollout.py
+  participant Env as Isaac Lab 并行环境
+  participant Pol as PolicyBase 策略实例
+
+  User->>Exp: 传入 --experiment_config 启动评测
+  Exp->>Exp: 启动 SimulationAppContext 并加载 ArenaExperimentCfg
+  Exp->>Exec: execute_experiment 逐 Run 调度 build_and_run
+  Exec->>Reg: build_arena_builder_from_run_cfg 编译场景与具身
+  opt 场景含 Lightwheel SimReady USD 资产
+    Reg->>LW: to_local_usd_path 读取本地缓存或 SDK 拉取 USD
+  end
+  Reg-->>Exec: make_registered 返回并行 gym.Env
+  Exec->>Roll: rollout_policy 执行策略评测
+  Roll->>Env: env.reset 并读取任务语言指令
+  Roll->>Pol: policy.reset 与 set_task_description
+  loop 达到 num_steps 或 num_episodes
+    Roll->>Pol: policy.get_action
+    Roll->>Env: env.step 并检查 reset_env_ids 重置对应策略状态
+  end
+  Exp->>Exp: 汇总 episode_results jsonl 与计时报告并 export_kpis
+```
+
+- **最短复现路径：** 开源底座单环境冒烟见 `python isaaclab_arena/evaluation/policy_runner.py --policy_type zero_action --num_steps 20 cube_goal_pose`；多任务实验配置入口为 `isaaclab_arena/evaluation/experiment_runner.py`。RoboFinals 商业任务包本身不可通过公开仓库直接拉取运行。
+- **已核查仓库文件（`isaac-sim/IsaacLab-Arena` @ `main`）：** `README.md`、`isaaclab_arena/evaluation/experiment_runner.py`、`isaaclab_arena/evaluation/run_execution.py`、`isaaclab_arena/evaluation/rollout.py`、`isaaclab_arena/evaluation/policy_runner.py`、`isaaclab_arena/assets/sources/lightwheel.py`。
+
 ## 早期采用方（官方文）
 
 | 团队 | 用途 |

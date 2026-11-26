@@ -142,6 +142,14 @@ flowchart LR
 
 追踪侧：**PICO** 经 XRoboToolkit；**Meta Quest** 经 [handumi-quest-app](https://github.com/robonet-ai/handumi-quest-app) Releases APK。
 
+## 源码运行时序图
+
+**不适用**（针对硬件仓库 `robonet-ai/handumi-hw` `main` 分支）— 经核对 `robonet-ai/handumi-hw` 全仓文件树，该仓库仅包含机械硬件设计与制造交付物，不含任何固件、控制脚本或可运行程序入口，因此无法绘制源码运行时序图。具体核查证据如下：
+- 根目录与说明：`README.md`、`CONTRIBUTING.md`、`LICENSE`、`bom/README.md`、`bom/HandUMI_BOM.pdf`、`bom/HandUMI_BOM.docx`、`hardware/README.md`、`hardware/HandUMI_Assembly_Guide.pdf`
+- 标定与切片交付：`hardware/calibration/charuco_5x7_30mm_A4.pdf`、`hardware/handumi_YAM_black.gcode.3mf`、`hardware/handumi_YAM_purple.gcode.3mf`
+- CAD / 网格模型：`hardware/STEP/`（左右手主体与 9 种平行夹爪 tip 的 `.step` 文件）与 `hardware/STL/`（对应可打印 `.stl` 文件）
+- 软件入口说明：`software/README.md` 明确指出 HandUMI 软件栈独立托管于外部 `handumi-sw` 仓库，本硬件仓库内无软件或固件实现。
+
 ## 工程实践
 
 | 步骤 | 建议 |

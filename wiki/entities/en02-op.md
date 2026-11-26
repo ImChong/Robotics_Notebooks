@@ -63,6 +63,12 @@ flowchart LR
   E --> F[Dynamixel SDK<br/>关节控制 / 臂端规划]
 ```
 
+## 源码运行时序图
+
+**不适用**：经核查 [Westwood-Robotics/EN02-OP](https://github.com/Westwood-Robotics/EN02-OP)（`main` 分支），该仓库仅包含机械设计 CAD（`Design/EN02-OP.STEP`、`Design/Parts_to_Print/`、`Design/EN02-OP-BOM.xls`）、EN02-PWR 电源板电子工程文件（`Electronics/EN02OP-PWR-Gerber.zip`、`Electronics/EN02OP-PWR-BOM.xlsx`、`Electronics/EN02OP-PWR.pdf`）以及 `EN02_Assembly_Guide.pdf`，无任何训练、推理或控制代码。仓库 `README.md` 的 *Control Software* 一节亦明确说明暂无专用控制软件，关节控制直接由用户侧调用 Robotis Dynamixel SDK 驱动 7 个 XL/XC-330 舵机，故不绘制虚构的源码运行时序图。
+
+（核对文件：`README.md`、`Design/`、`Electronics/`、`EN02_Assembly_Guide.pdf`。）
+
 ## 与相近硬件对照
 
 | 平台 | DoF / 形态 | 成本量级 | 控制栈 | 适用 |

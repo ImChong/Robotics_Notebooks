@@ -72,6 +72,39 @@ flowchart LR
   DEC --> BREP["几何内核\n→ B-rep / STEP"]
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `ferdous-alam/GenCAD`（`main` 分支）源码核对绘制，核对路径：`readme.md`、`train_gencad.py`、`inference_gencad.py`、`model/autoencoder.py`、`model/ccip_model.py`、`cadlib/visualize.py`（训练入口为三阶段脚本 `train_gencad.py` 的 `csr` / `ccip` / `dp` 子命令，推理入口为 `inference_gencad.py`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as "train_gencad.py / inference_gencad.py"
+  participant ImgEnc as "ResNetImageEncoder + GenCADClipAdapter"
+  participant Diff as "GaussianDiffusion1D (ResNetDiffusion)"
+  participant Dec as "VanillaCADTransformer (CAD Decoder)"
+  participant OCC as "cadlib/visualize.py (vec2CADsolid / Viewer3d)"
+
+  Note over CLI,OCC: 训练前置 (train_gencad.py): 依次训练 csr (自编码器) -> ccip (CLIP 对齐) -> dp (潜扩散先验)
+  CLI->>Diff: 加载 sketch_cond_diffusion_ckpt_epoch1000000.pt
+  CLI->>ImgEnc: 加载 ccip_sketch_ckpt_epoch300.pth 并构建 GenCADClipAdapter
+  CLI->>Dec: 加载 ae_ckpt_epoch1000.pth 并置为 eval()
+
+  loop 遍历 img_dir/*.png
+    CLI->>ImgEnc: process_image(img_path) -> clip_adapter.embed_image(img)
+    ImgEnc-->>CLI: image_embed
+    CLI->>Diff: diffusion.sample(cond=image_embed)
+    Diff-->>CLI: latent (1, 1, 256)
+    CLI->>Dec: cad_decoder(None, None, z=latent, return_tgt=False)
+    Dec-->>CLI: outputs -> logits2vec() 拼接 begin_loop_vec 并截断至 EOS_IDX
+    CLI->>OCC: vec_to_CAD(cad_vec) -> vec2CADsolid(out_vec)
+    OCC-->>CLI: OpenCascade B-rep shape
+    Opt -export_img 或 -export_stl
+      CLI->>OCC: save_view(shape) 导出 PNG / write_stl_file(shape) 导出二进制 STL
+    end
+  end
+```
+
 ## 常见误区或局限
 
 - **误区：** 把 **渲染图条件** 等同于 **任意真实照片** 开箱可用；论文管线以 **数据集渲染** 为条件域，域外照片需额外标定或微调。

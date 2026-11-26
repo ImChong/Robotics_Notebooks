@@ -121,6 +121,41 @@ flowchart TB
 
 官网 Research 页还列出 TextOp、HUSKY、PRTS、Align-Then-stEer、AssemLM、SMART、WNM-3D、GN0 共 8 项工作，代码多在 TeleHuman 组织下，部分早于公司成立。本库把它们算作创始团队在 TeleAI 的成果，不计入公司路线；已收录的有 [TextOp](./paper-loco-manip-161-022-textop.md)、[HUSKY](./paper-amp-survey-14-husky.md)、[WNM-3D](./paper-wnm-3d-vln.md)。官网 NEXUS 卡片标题与 [NEXUS 研究预告页](./nexus-humanoid.md)一致，和 Gamma-Robot/NEXUS 仓库的论文标题不同，两者共用项目页。
 
+## 源码运行时序图
+
+以下以公开的代表性全身控制仓库 [Gamma-Robot/NEXUS](https://github.com/Gamma-Robot/NEXUS)（`main` 分支）为例，梳理数据地形适配、教师 PPO 训练、学生感知蒸馏与回放导出的源码运行时序（注：仓库 `README.md` 标明 sim-to-sim / sim-to-real 部署代码尚未发布）：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Data as 数据准备 (adapt_motions.py / pack_motions.py)
+  participant Train as 训练入口 (perceptive_bfm/scripts/train.py)
+  participant Env as mjlab 环境 (ManagerBasedRlEnv + perceptive_env_cfg)
+  participant Runner as Runner (MotionTrackingOnPolicyRunner / DistillationRunner)
+  participant Play as 回放导出 (perceptive_bfm/scripts/play.py)
+
+  Data->>Data: build_terrain_model() + terrain_adapt_qpos() 离线适配平地 motion.npz 至 PyramidTerrain
+  Data->>Data: pack_perceptive_dataset() / create_motion_dataset_from_files() 打包分组 memmap 数据集
+  rect rgb(235, 245, 255)
+    Note over Train,Runner: Phase 1 — 特权教师 PPO 训练 (Perceptive-PyramidTerrain-Unitree-G1-Teacher[-Symmetry])
+    Train->>Env: load_env_cfg() 构建 ManagerBasedRlEnv，注入 MotionCommand 与高度扫描观测
+    Train->>Runner: wrap RslRlVecEnvWrapper，实例化 MotionTrackingOnPolicyRunner
+    Runner->>Env: runner.learn() 采样与 PPO 更新 (perceptive_bfm_rl/algorithms/ppo.py)
+    Runner->>Runner: MotionTrackingSaveMixin.save() 导出 .pt 与带元数据的 .onnx
+  end
+  rect rgb(245, 240, 255)
+    Note over Train,Runner: Phase 2 — 感知学生蒸馏 (Perceptive-PyramidTerrain-Unitree-G1-BC[-Symmetry])
+    Train->>Runner: MotionTrackingDistillationRunner.load() 加载教师 checkpoint
+    Runner->>Env: 读取平地 MotionCommand、本体历史与深度相机 (GroupedRayCasterCamera / NoisyCamera)
+    Runner->>Runner: runner.learn() 执行 Distillation 更新并保存学生策略与 ONNX
+  end
+  Play->>Env: load_env_cfg(task_id, play=True) 创建评估环境
+  Play->>Runner: runner.load() 加载 actor/student 权重并调用 get_inference_policy()
+  Play->>Play: export_policy_to_onnx() 并启动 NativeMujocoViewer / MyViserPlayViewer 闭环回放
+```
+
+核对源码（`Gamma-Robot/NEXUS` `main` 分支）：`README.md`、`src/perceptive_bfm/scripts/data_process/adapt_motions.py`、`src/perceptive_bfm/scripts/data_process/pack_motions.py`、`src/perceptive_bfm/scripts/train.py`、`src/perceptive_bfm/scripts/play.py`、`src/perceptive_bfm/tasks/perceptive/config/g1/__init__.py`、`src/perceptive_bfm/tasks/perceptive/perceptive_env_cfg.py`、`src/perceptive_bfm/tasks/perceptive/rl/runner.py`、`src/perceptive_bfm_rl/algorithms/ppo.py`、`src/perceptive_bfm_rl/algorithms/distillation.py`。
+
 ## 工程实践
 
 - **先跑哪个仓库：** 想复现全身控制，从 NEXUS（`play.py` 回放 `.pt` checkpoint，可导出 ONNX；仓库另附 G1 ONNX 权重）或 bfm_ttc（MuJoCo Warp，需要 CUDA GPU）开始；想做 VLA 后训练，GR-BC 基于 LeRobot，支持 SmolVLA / X-VLA / π₀.₅。

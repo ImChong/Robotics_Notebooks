@@ -69,6 +69,39 @@ flowchart TB
 - **为何大直径电机：** \(\tau \propto r_g^2\)，增大气隙半径比加长叠厚更划算；定子中空便于内嵌减速器。
 - **为何摆线：** 相对谐波抗冲击更好；相对 3D 打印行星，载荷由多齿瓣分担，齿根应力更友好。
 
+## 源码运行时序图
+
+以下时序图依据仓库 `JeongSeoJin/quasi-direct-drive-actuator`（`main` 分支）中核对到的 ESP32 + DRV8302 + AS5600 SimpleFOC 控制固件源码绘制，核对路径：`README.md`、`esp-and-arduino-control/C-QDD_impedance_control.ino`、`esp-and-arduino-control/C-QDD_angle_control.ino`、`esp-and-arduino-control/C-QDD_open_loop_control.ino`（注：主原型硬件集成的商业 `moteus-c1` 控制器固件位于上游 mjbots 闭源/外部生态，本仓可运行控制代码为 `esp-and-arduino-control/` 下的三套 `.ino` 示例）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Serial as "串口终端 / Commander"
+  participant Sketch as "C-QDD_impedance_control.ino"
+  participant Enc as "MagneticSensorI2C (AS5600)"
+  participant CS as "LowsideCurrentSense (DRV8302)"
+  participant Motor as "BLDCMotor(21) / SimpleFOC"
+  participant Driver as "BLDCDriver3PWM (ESP32 PWM)"
+
+  Sketch->>Enc: setup(): encoder.init() -> motor.linkSensor(&encoder)
+  Sketch->>Driver: 配置 M_OC/M_PWM/OC_ADJ/OC_GAIN 引脚并 driver.init()
+  Sketch->>CS: cs.linkDriver(&driver), cs.init(), gain_a/b/c *= -1
+  Sketch->>Motor: 设 TorqueControlType::foc_current 与 MotionControlType::torque
+  Sketch->>Motor: motor.init() -> motor.initFOC() (d/q 轴对齐)
+  Sketch->>Serial: command.add('R'/'K'/'C', doRefAngle/doKp/doCd)
+
+  loop 控制主循环 loop()
+    Sketch->>Motor: motor.loopFOC()
+    Motor->>Enc: 读取转子机械角度与角速度
+    Motor->>CS: 采样三相低侧相电流并变换至 d/q 轴
+    Motor->>Driver: 内部 i_q/i_d PI 闭环更新 SpaceVector PWM
+    Sketch->>Sketch: 读取 shaft_angle / shaft_velocity 计算 Iq_ref = Kp*(theta_desired - theta) - Cd*dtheta
+    Sketch->>Sketch: 计算输出力矩估计 output_torque = 10 * Kt * motor.current.q
+    Sketch->>Motor: 设置 motor.target = Iq_ref 并调用 motor.move()
+    Sketch->>Serial: motor.monitor() 与 command.run() 解析新指令
+  end
+```
+
 ## 工程实践
 
 | 学习点 | 做法 |

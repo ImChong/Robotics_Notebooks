@@ -65,6 +65,40 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序对照 `stephane-caron/pink`（`main` 分支）中 [examples/arm_ur5.py](https://github.com/stephane-caron/pink/blob/main/examples/arm_ur5.py)、[pink/configuration.py](https://github.com/stephane-caron/pink/blob/main/pink/configuration.py)、[pink/solve_ik.py](https://github.com/stephane-caron/pink/blob/main/pink/solve_ik.py) 与 [pink/tasks/frame_task.py](https://github.com/stephane-caron/pink/blob/main/pink/tasks/frame_task.py)，展示单步微分逆运动学闭环：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CtrlLoop as "控制循环 (如 examples/arm_ur5.py)"
+  participant Config as "pink.Configuration (Pinocchio 封装)"
+  participant Tasks as "Task / Limit / Barrier"
+  participant SolveIK as "pink.solve_ik / build_ik"
+  participant QP as "qpsolvers.solve_problem"
+
+  CtrlLoop->>Config: "Configuration(robot.model, robot.data, q_ref)"
+  Config->>Config: "pin.computeJointJacobians + updateFramePlacements (+ 碰撞距离)"
+  CtrlLoop->>Tasks: "task.set_target_from_configuration(configuration)"
+
+  loop "每个控制周期 dt"
+    CtrlLoop->>Tasks: "更新目标位姿 (如 transform_target_to_world)"
+    CtrlLoop->>SolveIK: "solve_ik(configuration, tasks, dt, solver=solver)"
+    SolveIK->>Config: "check_limits(safety_break)"
+    SolveIK->>Tasks: "__compute_qp_objective: 汇总 task.compute_qp_objective(configuration)"
+    SolveIK->>Tasks: "__compute_qp_inequalities: 汇总 Limit/Barrier (G*dq <= h)"
+    SolveIK->>Tasks: "__compute_qp_equalities: 汇总硬约束 (A*dq = b)"
+    SolveIK->>QP: "qpsolvers.solve_problem(Problem(P, q, G, h, A, b), solver)"
+    QP-->>SolveIK: "result.x (构型增量 Delta_q)"
+    SolveIK-->>CtrlLoop: "返回切空间速度 v = Delta_q / dt"
+    CtrlLoop->>Config: "integrate_inplace(v, dt)"
+    Config->>Config: "pin.integrate(model, q, v * dt) 并 update(q) 刷新 FK/雅可比"
+  end
+```
+
+> **源码映射说明**：`solve_ik` 与 QP 装配函数（`build_ik`、`__compute_qp_objective`、`__compute_qp_inequalities`、`__compute_qp_equalities`）位于 `pink/solve_ik.py`；Pinocchio 正向运动学/雅可比与流形积分封装位于 `pink/configuration.py`；典型实时跟踪示例见 `examples/arm_ur5.py`。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

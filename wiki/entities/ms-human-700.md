@@ -60,6 +60,13 @@ flowchart LR
     Policy -->|"高维肌肉激励控制"| Assets
 ```
 
+## 源码运行时序图
+
+**不适用**（`LNSGroup/MS-Human-700` 主仓库仅发布 MuJoCo MJCF 模型 XML 与几何/肌腱资产，仓内不包含可运行的 Python/C++ 训练、推理或控制脚本）。
+
+- **已核查仓库证据（`LNSGroup/MS-Human-700` `main` 分支根目录与 README）**：顶层仅包含 `MS-Human-700.xml`、`MS-Human-700-Locomotion.xml`、`MS-Human-700-Manipulation.xml`、`README.md`、`LICENSE` 及资产子目录 `Asset/`、`Body_Locomotion/`、`Body_Manipulation/`、`Body_Primary/`、`Contact/`、`Equality/`、`Geometry/`、`Muscle/`、`Pictures/`、`Tendon/`；仓库 `README.md` 明确说明可拖拽 XML 至 MuJoCo `simulate` 查看，并指引将强化学习环境与训练脚本转向配套仓库 `LNSGroup/msgym`。
+- **配套运行入口注记**：另行核查配套仓 `LNSGroup/msgym`（已在本文档 `sources` 归档），其包含环境测试入口 `env_test.py`、Gymnasium 任务定义 `msgym/envs/locomotionFull_v1.py` / `locomotionLegs_v1.py` / `manipulation_v1.py` 以及训练/评估脚本 `DynSyn-SAC/SB3-Scripts/train.py` 与 `eval.py`。
+
 ## 工程实践与开源状态
 
 - **模型查看：** 用 MuJoCo simulate 打开仓库中的 MS-Human-700 XML 文件。

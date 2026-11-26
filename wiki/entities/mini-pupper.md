@@ -58,6 +58,10 @@ flowchart LR
     RL["RL 仿真训练 (MuJoCo / NVIDIA Isaac)"] -->|"Sim-to-Real 步态迁移"| HW
 ```
 
+## 源码运行时序图
+
+**不适用**：核查 `mangdangroboticsclub/mini_pupper`（`main` 分支）全库文件树后，本仓库仅托管项目文档、舵机规格与配图（`README.md`、`docs/actuator/MD-300-150/README.md`、`docs/software/README.md`、`docs/software/servo_sdk/README.md`、`docs/software/servo_studio/README.md`、`docs/images/`），仓库自身不包含可运行源码或构建入口。`README.md` 与 `docs/software/README.md` 指向的实际可运行代码分布于独立子仓库：`minipupper-4-mcu`（含 `main/robot/driver_board.c` 舵机 SPI SDK）、`mini_pupper_ros`（ROS 2 / micro-ROS）、`mini_pupper_4_sim`（MuJoCo / Isaac RL 与 ONNX 导出）及 `mini_pupper_bsp` / `mini_pupper_2_bsp`。
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

@@ -81,6 +81,38 @@ flowchart LR
     LeToolsS --> Deploy["场景落地 (科研开箱 / 商服导览 / 工业分拣 / 训练场)"]
 ```
 
+## 源码运行时序图
+
+乐聚在软件开源层提供的核心训练与部署实现位于 `LejuRobotics/LeTools-Learning`（`main` 分支）。主链路依次经过 `kuavo_data/CvtRosbag2Lerobot.py`（rosbag 转 LeRobot Dataset v3）、`kuavo_model/train.py`（合并 `total/` 与简版 YAML 后调起单卡或 `accelerate` 训练）以及 `kuavo_deploy/eval.py`（按配置分发至通用交互控制器 `kuavo_deploy/src/scripts/script.py` 或 Roban 全身部署 `roban_wholebody_deploy/runner.py`；外部 VLA 策略可通过 ZeroMQ 推理服务 `kuavo_deploy/kuavo_service/server.py` 或 `kuavo_server/serve.py` 接入）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 开发者
+  participant Cvt as kuavo_data/CvtRosbag2Lerobot.py
+  participant Train as kuavo_model/train.py
+  participant Eval as kuavo_deploy/eval.py
+  participant Script as src/scripts/script.py 或 runner.py
+  participant Srv as kuavo_service/server.py
+  participant Env as KuavoSimEnv 或 KuavoRealEnv
+
+  User->>Cvt: 配置 KuavoRosbag2Lerobot.yaml 并执行转换
+  Cvt-->>User: 生成 LeRobot Dataset v3 目录
+  User->>Train: 指定 --policy 与 --launcher python 或 accelerate
+  Train->>Train: 合并 total 与覆盖 YAML 并写入临时 JSON 配置
+  Train-->>User: 输出策略 checkpoint
+  User->>Eval: 传入 configs/deploy/deploy.yaml
+  Eval->>Script: 按 is_roban_config 分发执行子进程并绑定 SIGUSR1/2
+  opt 外部 VLA client 模式
+    User->>Srv: 启动 BaseInferenceServer 监听 ZeroMQ REP
+    Script->>Srv: TorchSerializer 发送观测并取回 action
+  end
+  Script->>Env: 经 ROS 或 CycloneDDS 下发关节与末端指令闭环评测
+```
+
+- **最短复现路径：** `python kuavo_data/CvtRosbag2Lerobot.py` → `python kuavo_model/train.py --policy act` → `python kuavo_deploy/eval.py configs/deploy/deploy.yaml`。
+- **已核查仓库文件（`LejuRobotics/LeTools-Learning` @ `main`）：** `README.md`、`kuavo_data/CvtRosbag2Lerobot.py`、`kuavo_model/train.py`、`kuavo_deploy/eval.py`、`kuavo_deploy/src/scripts/script.py`、`kuavo_deploy/kuavo_service/server.py`、`kuavo_deploy/roban_wholebody_deploy/runner.py`、`kuavo_server/serve.py`。
+
 ## 常见误区或局限
 
 - **误区：乐聚 = 只有整机没有数据。** 运营方身份包含 **OpenLET 数据枢纽**；研究选型应同时看 [OpenLET](./openlet.md) 子集与采集协议。

@@ -78,6 +78,47 @@ flowchart LR
     A --> O["轨迹优化 (Pinocchio + Crocoddyl DDP / MPC)"]
 ```
 
+## 源码运行时序图
+
+以下时序对照 `stack-of-tasks/pinocchio`（`devel` 分支）中 [examples/overview-simple.cpp](https://github.com/stack-of-tasks/pinocchio/blob/devel/examples/overview-simple.cpp)、[examples/inverse-dynamics.py](https://github.com/stack-of-tasks/pinocchio/blob/devel/examples/inverse-dynamics.py)、[include/pinocchio/src/algorithm/rnea.hxx](https://github.com/stack-of-tasks/pinocchio/blob/devel/include/pinocchio/src/algorithm/rnea.hxx) 与带接触约束的 [examples/admm-constraint-solver.py](https://github.com/stack-of-tasks/pinocchio/blob/devel/examples/admm-constraint-solver.py)，展示从模型构建到动力学计算及约束步进的调用顺序：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Caller as "调用方 (C++ / Python 示例)"
+  participant Parser as "URDF / Model 构建器"
+  participant ModelData as "Model + Data (只读模型 / 线程工作区)"
+  participant Alg as "动力学算法 (rnea / crba / aba)"
+  participant Solver as "ConstraintCholesky + ADMMConstraintSolver"
+
+  Caller->>Parser: "buildModelsFromUrdf(urdf_path) 或 buildModel"
+  Parser-->>Caller: "model (运动树、关节与惯量)"
+  Caller->>ModelData: "data = model.createData() 预分配缓存"
+
+  rect rgb(235, 245, 255)
+    Note over Caller,Alg: "单步逆动力学路径 (rnea.hpp / rnea.hxx)"
+    Caller->>Alg: "pinocchio::rnea(model, data, q, v, a)"
+    Alg->>ModelData: "RneaForwardStep: 根到叶递推速度/加速度/空间力"
+    Alg->>ModelData: "RneaBackwardStep: 叶到根回代并累加 data.tau"
+    Alg-->>Caller: "返回关节力矩 data.tau"
+  end
+
+  rect rgb(245, 240, 255)
+    Note over Caller,Solver: "接触约束仿真步路径 (admm-constraint-solver.py)"
+    loop "每个时间步 dt"
+      Caller->>Alg: "pin.crba(model, data, q) 与 pin.aba(..., tau, fext)"
+      Alg-->>Caller: "v_free = v + dt * ddq_free"
+      Caller->>Solver: "cmodel.calc() + chol.compute() 构建 Delassus 矩阵"
+      Caller->>Solver: "Jc = getConstraintsJacobian() 计算 g = Jc @ v_free"
+      Caller->>Solver: "solver.solve(delassus_expr, g, constraint_models, ...)"
+      Solver-->>Caller: "result.retrieveConstraintImpulses()"
+      Caller->>Alg: "pin.aba(..., tau + Jc^T * f_c) & pin.integrate(model, q, v_new * dt)"
+    end
+  end
+```
+
+> **源码映射说明**：主线构建入口见 `examples/overview-urdf.py` / `examples/inverse-dynamics.py`；RNEA 前向/后向 Visitor 实现位于 `include/pinocchio/algorithm/rnea.hpp` 与 `include/pinocchio/src/algorithm/rnea.hxx`；ABA 前向动力学与 ADMM 接触约束求解接口分别位于 `include/pinocchio/algorithm/aba.hpp` 与 `include/pinocchio/algorithm/solvers/admm-solver.hpp`，完整步进例程见 `examples/admm-constraint-solver.py`。
+
 ## 核心特性
 
 1. **极致的性能**：

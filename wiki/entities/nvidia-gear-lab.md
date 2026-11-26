@@ -101,6 +101,33 @@ flowchart TB
 | **SimFoundry** | 真机视频 → 数字孪生 + cousins；real-to-sim 评测与 sim-to-real 操作训练；**部分开源** [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry) | [paper-simfoundry-real2sim-scene-generation.md](./paper-simfoundry-real2sim-scene-generation.md) |
 | **Real-robot autoresearch** | ENPIRE 与机队 scaling 讨论 | [real-robot-policy-autoresearch-harness.md](../queries/real-robot-policy-autoresearch-harness.md) |
 
+## 源码运行时序图
+
+GEAR Lab 为研究组实体，无单一统一源码仓库；其代表性开源工程各自对应独立代码仓与 wiki 专页（如 [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)、[SONIC](./nvidia-sonic.md)、[SimFoundry](./paper-simfoundry-real2sim-scene-generation.md)）。以下以本页所列代表性开源仓库 [NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry)（`main` 分支）为例，给出统一调度器 `scripts/pipeline/run.sh` 驱动的三段可运行流水线时序：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 开发者
+    participant DIS as scripts/pipeline/run.sh
+    participant A as A_reconstruction/run.sh<br/>run_reconstruction.py
+    participant B as B_augmentation/run.sh<br/>run_augmentation.py
+    participant C as C_application/run.sh<br/>run_application.py
+    participant OG as OmniGibson /<br/>simfoundry/envs/
+    U->>DIS: 指定 A_reconstruction|B_augmentation|C_application
+    DIS->>A: --scene-name --video-fpath<br/>[--detect-articulation] [--bg-splat]
+    A->>A: stages 1b–14（深度 / 分割 / Hunyuan3D / 位姿 / USD）
+    A-->>OG: 输出 reconstructed_og_scene.json
+    DIS->>B: --scene-name [--phases ...]
+    B->>B: stages 1–8（object/scene/task cousins）
+    B-->>OG: 输出场景变体与任务提议 YAML
+    DIS->>C: --scene-name --mode smoke-random|eval|demo|full
+    C->>OG: 加载重建场景运行 smoke / 评测 / 遥操作脚本
+```
+
+- **模块边界**：`scripts/pipeline/A_reconstruction/run.sh`、`B_augmentation/run.sh` 与 `C_application/run.sh` 均经 `simfoundry.pipeline.orchestrator.run_pipeline` 调度具体阶段脚本；交互编辑入口另见 `scripts/interactive/run_editor.sh`（`interactive_scene_editor.py`）。
+- **核查源码文件**：`README.md`、`scripts/pipeline/run.sh`、`scripts/pipeline/A_reconstruction/run.sh`、`scripts/pipeline/A_reconstruction/run_reconstruction.py`、`scripts/pipeline/B_augmentation/run.sh`、`scripts/pipeline/B_augmentation/run_augmentation.py`、`scripts/pipeline/C_application/run.sh`、`scripts/pipeline/C_application/run_application.py`。
+
 ## 常见误区或局限
 
 - **GEAR ≠ 全部 NVIDIA 机器人产品：** Isaac Sim/Lab、Omniverse、Physical AI Learning 等属 **更广 NVIDIA 生态**；GEAR 聚焦 **研究组论文与开源模型**（见 [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md) 对照）。

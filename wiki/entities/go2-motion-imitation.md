@@ -52,6 +52,39 @@ flowchart LR
 python retarget_motion/retarget_motion.py --input_file=source_motion.txt --output_file=retargeted_motion.txt
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Export as 姿态提取 (export_pose/export_pose.py)
+  participant Retarget as 重定向 (retarget_motion/retarget_motion.py)
+  participant Convert as 格式转换 (rl_train/convert_motion_for_training.py)
+  participant Train as RL 训练 (rl_train/train.py -> EnhancedMotionImitationEnv)
+  participant Eval as 评估回放 (policy_test/go2_eval.py / go2_mujoco.py)
+
+  opt 从视频提取参考骨架
+    Export->>Export: 提取视频关键点序列并导出参考关节坐标
+  end
+  Retarget->>Retarget: 启动 PyBullet 加载 Go2 URDF，load_ref_data() 读取参考关节位置
+  Retarget->>Retarget: 逐帧执行 retarget_root_pose() 与 retarget_pose() IK，output_motion() 写入 .txt
+  Convert->>Convert: convert_motion_file() 读入 .txt，remap_joint_angles() 对齐到 TRAINING_JOINT_ORDER 并生成含关节速度的 .npy
+  Train->>Train: gs.init() 后构建 EnhancedMotionImitationEnv (继承 Go2Env) 并注入参考轨迹与速度
+  Train->>Train: OnPolicyRunner(env, train_cfg).learn() 迭代采样与 PPO 更新
+  loop 每个 env.step(actions)
+    Train->>Train: robot.control_dofs_position() -> scene.step() 并计算 pose/velocity/end_effector 匹配奖励
+  end
+  alt Genesis 策略评估
+    Eval->>Eval: go2_eval.py 加载 model_*.pt 至 ActorCritic，在 CompatibleEnhancedEnv/Go2Env 中循环 policy.act_inference(obs)
+  else MuJoCo 跨引擎预览
+    Eval->>Eval: go2_mujoco.py (Go2Robot) 加载 policy_test/scene.xml 与 ActorMLP 权重执行关节 PD 仿真
+  end
+```
+
+核心复现路径：先运行 `retarget_motion/retarget_motion.py` 与 `rl_train/convert_motion_for_training.py` 生成训练 `.npy`，再在 `rl_train/` 下运行 `python train.py --file data/canter.npy --envs 256 --iters 1000` 训练策略，最后通过 `policy_test/go2_eval.py`（Genesis）或 `policy_test/go2_mujoco.py`（MuJoCo）加载 checkpoint 回放。
+
+核对源码（`TSUITUENYUE/motion-imitation` `master` 分支）：`README.md`、`export_pose/export_pose.py`、`retarget_motion/retarget_motion.py`、`rl_train/convert_motion_for_training.py`、`rl_train/train.py`、`rl_train/go2_env.py`、`policy_test/go2_eval.py`、`policy_test/go2_mujoco.py`。
+
 ## 工程实践
 
 - **Genesis 并行仿真**：利用 Genesis GPU 并行环境加速四足步态模仿的 PPO 采样与策略收敛。

@@ -66,6 +66,10 @@ flowchart LR
     Nav --> HW
 ```
 
+## 源码运行时序图
+
+**不适用**：经 GitHub API 核查，`mangdangroboticsclub/QuadrupedRobot` 当前已重定向至 `mangdangroboticsclub/mini_pupper`（`main` 分支）。该仓库 `main` 分支仅存放说明文档、执行器手册与图像资源（`README.md`、`docs/actuator/MD-300-150/README.md`、`docs/software/README.md`、`docs/software/servo_sdk/README.md`、`docs/software/servo_studio/README.md`、`docs/images/`），不包含可编译或可执行的控制/仿真源码。`README.md` 与 `docs/software/servo_sdk/README.md` 注明可运行代码位于外部配套仓库：`minipupper-4-mcu`（`main/robot/driver_board.c` 等固件与 Servo SDK）、`mini_pupper_ros`（ROS 2 Jazzy / micro-ROS）、`mini_pupper_4_sim`（MuJoCo / Isaac RL 训练与 ONNX 导出）和 `bam`。
+
 ## 关联页面
 
 - [腿足运动控制](../tasks/locomotion.md) — 定位 Mini Pupper 的足式移动底座。

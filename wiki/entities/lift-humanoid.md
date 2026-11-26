@@ -101,6 +101,37 @@ flowchart TB
   p2 --> p3
 ```
 
+## 源码运行时序图
+
+基于 `bigai-ai/LIFT-humanoid`（`main` 分支）三阶段入口脚本与核心模块：`train_in_mujoco_playground.py` 在 MuJoCo Playground 中并行运行 JAX SAC 预训练并落盘 `policy*.pkl` 与 `buffer_data/`；`train_wm_from_file.py` 读取 `buffer_data/` 在 Brax 动力学下离线训练物理知情世界模型并导出 `wm_state*.pkl`；`finetune.py` 加载两份状态后调用 `world_model/finetune_wm_ac.py` 执行「确定性环境采样进 `env_buffer` → 更新世界模型 → `ModelEnv` 内随机 rollout 进 `sac_buffer` → 混合两 buffer 更新 SAC」的交替微调闭环。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant P1 as train_in_mujoco_playground.py
+  participant SAC as policy_pretrain/train.py
+  participant P2 as train_wm_from_file.py
+  participant WM as world_model/pretrain_wm.py
+  participant P3 as finetune.py
+  participant FT as world_model/finetune_wm_ac.py
+  participant BraxEnv as Brax 目标环境与 ModelEnv
+
+  P1->>SAC: 加载 MuJoCo Playground 环境与 pretrain_sac_config
+  SAC-->>P1: 输出 policies/policy.pkl 与可选 buffer_data
+  P2->>WM: 加载 buffer_data 与 Brax 环境配置
+  WM-->>P2: 离线训练残差世界模型并保存 wm_states/wm_state.pkl
+  P3->>FT: 载入 sac_ts 与 wm_ts 及 dynamics_fn / reward_fn
+  FT->>BraxEnv: prefill_env_buffer 用确定性动作采集真机或目标域轨迹
+  loop 每个微调 epoch
+    FT->>FT: wm_losses 更新物理知情世界模型参数
+    FT->>BraxEnv: 在 ModelEnv 中以随机 SAC actor rollout 填充 sac_buffer
+    FT->>FT: policy_update 按 real_ratio 混合 sac_buffer 与 env_buffer 更新 SAC
+  end
+```
+
+- **最短复现路径：** `python train_in_mujoco_playground.py --env_name=T1LowDimSimFinetuneJoystickFlatTerrain --save_buffer_data` → `python train_wm_from_file.py --data_path=...` → `python finetune.py --ac_training_state_path=... --wm_training_state_path=...`；零样本部署前亦可用 `eval_in_brax.py` 或 `mujoco_env/play_mujoco.py` 转换并验证策略。
+- **已核查仓库文件（`bigai-ai/LIFT-humanoid` @ `main`）：** `README.md`、`train_in_mujoco_playground.py`、`train_wm_from_file.py`、`finetune.py`、`world_model/pretrain_wm.py`、`world_model/finetune_wm_ac.py`、`eval_in_brax.py`、`policy_pretrain/train.py`。
+
 ## 常见误区或局限
 
 - **误区：「SAC 不适合大规模并行仿真」。** LIFT 的论点是：在 **特定并行度、域随机化与调参（含 Optuna）** 前提下，SAC 可以 **稳定收敛** 并承担 **后续 model-based 微调** 的 **同一算法 backbone**；换任务与实现栈仍需重调，不宜外推为普遍结论。

@@ -58,6 +58,43 @@ flowchart LR
     Policy -->|"Sim-to-Real 迁移"| HW
 ```
 
+## 源码运行时序图
+
+入口：真机部署经 `Makefile`（`make run`）在树莓派执行 `src/main.py`；本地仿真经 `make sim` 执行 `src/sim/sim_main.py --hz 50`（加载 `src/model/mjcf/scene.xml` 与 `bam` 执行器模型）。两条路径共用 `Scheduler` 与 `WalkMove`（`src/agents/walk.onnx`）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Entry as main.py / sim_main.py
+    participant Ctrl as RobotController / MuJoCoController
+    participant Sched as Scheduler (scheduler.py)
+    participant Obs as Observer (observer.py)
+    participant In as Keyboard / Gamepad / MuJoCoInput
+    participant Walk as WalkMove (moves/walk.py)
+    participant ORT as onnxruntime (walk.onnx)
+
+    Entry->>Ctrl: 初始化舵机总线 (Xl330PyController + ThreadedIMUReader) 或 MuJoCo
+    Entry->>Entry: ramp_to_neutral() 平滑回零（真机入口）
+    Entry->>Sched: 注册 RotateHeadMove / SquatMove / WalkMove 并调用 move.preload()
+    Walk->>ORT: InferenceSession("src/agents/walk.onnx")
+    Entry->>Sched: scheduler.run() 启动 50 Hz 控制循环
+    loop 每个 20 ms tick
+        Sched->>Obs: read_state(dt)
+        Obs->>Ctrl: sync_read_present_position / velocity + read_acc / gyro / quat
+        Obs-->>Sched: RobotState（含 projected_gravity）
+        Sched->>In: read() 读取速度指令与激活动作
+        In-->>Sched: UserInput
+        Sched->>Walk: step(obs, command)
+        Walk->>Walk: build_observation(obs) 组装观测向量
+        Walk->>ORT: _ort_session.run(None, ort_inputs)
+        ORT-->>Walk: action（叠加 default_pose * action_scale）
+        Walk-->>Sched: 更新 command.target_angles
+        Sched->>Ctrl: 过流保护检查后 sync_write_goal_position(ids, angles)
+    end
+```
+
+图依据：`Rhoban/microban`（`main` 分支）`Makefile`、`src/main.py`、`src/robot_controller.py`、`src/scheduler.py`、`src/observer.py`、`src/moves/walk.py`、`src/sim/sim_main.py`、`src/sim/mujoco_controller.py`。
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

@@ -371,9 +371,9 @@ flowchart LR
 
 发布权重把 encoder / decoder 拆成 ONNX 对；**Default** 与 **Low-latency teleop** 必须 **成套** 使用（含各自的 `observation_config.yaml`），不可混搭。
 
-### 5）源码运行时序图
+## 源码运行时序图
 
-权重与 SMPL 样本经 `download_from_hf.py` 从 [HF `nvidia/GEAR-SONIC`](https://huggingface.co/nvidia/GEAR-SONIC) 拉取；大规模参考动作用 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) G1 CSV 转成 motion lib。一次完整「数据 → 训练 → 评测 → 部署」交互如下：
+对齐 [NVlabs/GR00T-WholeBodyControl](https://github.com/NVlabs/GR00T-WholeBodyControl)（`main` 分支）实际可运行入口：权重与 SMPL 样本经 `download_from_hf.py` 从 [HF `nvidia/GEAR-SONIC`](https://huggingface.co/nvidia/GEAR-SONIC) 拉取；大规模参考动作用 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) G1 CSV 转成 motion lib。一次完整「数据 → 训练 → 评测 → 部署」交互如下：
 
 ```mermaid
 sequenceDiagram
@@ -408,7 +408,8 @@ sequenceDiagram
 ```
 
 - **训练与部署解耦**：Python 训练环境与 C++ 部署栈分离；中间靠 ONNX 交接。
-- **统一 token 接口不变**：换 VR / 视频 / 规划器 / VLA 上游只换 encoder，不重训整条低层 tracking policy——与上文「多上游 → token → 全身执行」及本节数据流图一致。
+- **统一 token 接口不变**：换 VR / 视频 / 规划器 / VLA 上游只换 encoder，不重训整条低层 tracking policy——与上文「多上游 → token → 全身执行」及「统一 token 数据流」图一致。
+- **核查源码文件**：`README.md`、`download_from_hf.py`、`gear_sonic/data_process/convert_soma_csv_to_motion_lib.py`、`gear_sonic/data_process/filter_and_copy_bones_data.py`、`gear_sonic/train_agent_trl.py`、`gear_sonic/eval_agent_trl.py`、`gear_sonic/scripts/run_sim_loop.py`、`gear_sonic_deploy/deploy.sh`。
 
 ## 主要技术路线
 
