@@ -62,6 +62,44 @@ flowchart LR
   rl --> policy["四足策略"]
 ```
 
+## 源码运行时序图
+
+以下时序基于官方仓库 `erwincoumans/motion_imitation`（`master` 分支）中 `motion_imitation/run.py`、`motion_imitation/envs/env_builder.py`、`motion_imitation/envs/env_wrappers/imitation_wrapper_env.py`、`motion_imitation/envs/env_wrappers/imitation_task.py`、`motion_imitation/envs/locomotion_gym_env.py` 与 `motion_imitation/learning/ppo_imitation.py` 核对整理：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Run as motion_imitation/run.py
+  participant Builder as envs/env_builder.py
+  participant Wrap as ImitationWrapperEnv
+  participant Gym as LocomotionGymEnv
+  participant Task as ImitationTask
+  participant PPO as PPOImitation (ppo_imitation.py)
+
+  Run->>Builder: main() 调用 build_imitation_env(motion_files, ...)
+  Builder->>Task: 初始化 ImitationTask(ref_motion_filenames, ...)
+  Builder->>Gym: 创建 LocomotionGymEnv(robot_class, sensors, task)
+  Builder->>Wrap: 包装 ObservationDictionaryToArray / TrajectoryGenerator / ImitationWrapperEnv
+  Run->>PPO: build_model() 创建 PPOImitation(ImitationPolicy, env)
+  Run->>PPO: model.learn(total_timesteps, ...)
+  PPO->>Wrap: traj_segment_generator 触发 env.reset()
+  Wrap->>Gym: reset() 重置 PyBullet 机器人与传感器
+  Gym->>Task: task.reset(self) 加载 MoCap 并同步参考位姿 (RSI)
+  Wrap->>Task: build_target_obs() 拼接未来参考帧观测
+  loop 每个采样步
+    PPO->>Wrap: env.step(action)
+    Wrap->>Gym: step(action) 经 TrajectoryGenerator 叠加步态偏置
+    Gym->>Gym: _robot.Step(action) 驱动 PyBullet 仿真步进
+    Gym->>Task: task.update(self) 推进参考动作时间
+    Gym->>Task: reward() 计算 pose/vel/ee/root 模仿奖励并判 done()
+    Wrap->>Task: _modify_observation() 追加 target_observation
+    Wrap-->>PPO: 返回 (observation, reward, done, info)
+  end
+  PPO->>PPO: MPI 同步梯度 (self.adam.sync) 并更新策略/保存 model.zip
+```
+
+关键复现入口：`python3 motion_imitation/run.py --mode train --motion_file motion_imitation/data/motions/dog_pace.txt`（测试回放使用 `--mode test --model_file ...`）。
+
 ## 关联页面
 
 - [DeepMimic](../methods/deepmimic.md)

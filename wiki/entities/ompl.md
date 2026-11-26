@@ -68,6 +68,45 @@ flowchart LR
     Path --> Downstream["下游执行栈 (如 MoveIt 2 集成或 Ruckig 轨迹平滑插补)"]
 ```
 
+## 源码运行时序图
+
+以下时序基于官方仓库 `ompl/ompl`（`main` 分支）中 `demos/RigidBodyPlanning.cpp`、`src/ompl/geometric/src/SimpleSetup.cpp` 与 `src/ompl/geometric/planners/rrt/src/RRTConnect.cpp` 核对整理：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Demo as demos/RigidBodyPlanning.cpp
+  participant SS as SimpleSetup (SimpleSetup.cpp)
+  participant SI as SpaceInformation / StateSpace
+  participant Pdef as ProblemDefinition
+  participant Plan as RRTConnect (RRTConnect.cpp)
+
+  Demo->>SI: 构建 SE3StateSpace 与 RealVectorBounds
+  Demo->>SS: og::SimpleSetup ss(space)
+  Demo->>SS: setStateValidityChecker(...) 与 setStartAndGoalStates(start, goal)
+  SS->>Pdef: setStartAndGoalStates() 并清空旧解
+  Demo->>SS: ss.solve(1.0)
+  SS->>SS: setup() 初始化 si_->setup() 与默认/指定 Planner
+  SS->>Plan: planner_->setProblemDefinition(pdef_) 与 planner_->setup()
+  SS->>Plan: planner_->solve(ptc)
+  Plan->>SI: allocStateSampler() 与从 pis_ 读取起终点状态
+  loop while !ptc
+    Plan->>SI: sampler_->sampleUniform(rstate)
+    Plan->>Plan: growTree(tree, tgi, rmotion) 找近邻并 interpolate()
+    Plan->>SI: checkMotion() / isValid() 回调 StateValidityChecker
+    opt 树扩展成功 (!= TRAPPED)
+      Plan->>Plan: 向 otherTree 尝试连接直至 REACHED 或 TRAPPED
+      opt gsc == REACHED 且 isStartGoalPairValid
+        Plan->>Pdef: 回溯双树父节点并写入 PathGeometric
+      end
+    end
+  end
+  Demo->>SS: simplifySolution() 调用 PathSimplifier
+  Demo->>SS: getSolutionPath() 获取规划路径
+```
+
+关键复现入口：编译运行 `demos/RigidBodyPlanning.cpp` 中的 `planWithSimpleSetup()`（也可直接调用 `ob::SpaceInformation` + `ob::ProblemDefinition` + `og::RRTConnect` 完成显式组装）。
+
 ## 关联页面
 - [RRT](../methods/rrt.md) / [RRT*](../methods/rrt-star.md) / [RRT-Connect](../methods/rrt-connect.md) / [Informed RRT*](../methods/informed-rrt-star.md) — OMPL 中常见采样规划算法的方法页
 

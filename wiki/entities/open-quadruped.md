@@ -59,6 +59,35 @@ flowchart LR
     ROS["ROS 仿真验证"] -.->|"控制栈对照"| Body
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `adham-elarabawy/open-quadruped` 仓库 `master` 分支源码核对绘制，核对路径：`ros-workspace/src/open_quadruped/launch/real.launch`、`ros-workspace/src/open_quadruped/nodes/interface_process.py`、`control_library/control_library/body_ik.py`、`control_library/control_library/leg_ik.py`、`llc-teensy/src/main.cpp`、`llc-teensy/lib/AdvServo/AdvServo.cpp`。注：`interface_process.py` 中 `gait_mode` 分支当前仅记录日志、尚未接入 `control_library/control_library/gait_planner.py`，实测闭环以 `body_mode` 6 轴姿态控制为主。
+
+```mermaid
+sequenceDiagram
+  participant Joy as "joy_node (ROS)"
+  participant Node as "interface_process.py"
+  participant BodyIK as "BodyIKModel (body_ik.py)"
+  participant LegIK as "LegIKModel (leg_ik.py)"
+  participant Serial as "rosserial_python (serial_node.py)"
+  participant Teensy as "Teensy Firmware (llc-teensy/src/main.cpp)"
+  participant Servo as "AdvServo (AdvServo.cpp)"
+
+  Joy-->>Node: 发布 /joy (sensor_msgs/Joy) -> controller_callback()
+  loop 10 Hz 控制循环 (rospy.Rate(10))
+    Node->>BodyIK: reset_pose() + transform(yaw, pitch, roll)
+    BodyIK-->>Node: get_htf_vectors() 返回四腿 hip-to-foot 向量
+    Node->>LegIK: ja_from_htf_vecs(htf_vecs)
+    LegIK-->>Node: 四腿关节角 [theta_h, theta_s, theta_w]
+    Node-->>Serial: pub.publish(JointAngles) 到 joint_angles 话题
+    Serial-->>Teensy: 500000 baud 串口转发至 nh.spinOnce()
+    Teensy->>Teensy: callback(joint_angles) -> util.angleConversion() 与速度缩放
+    Teensy->>Servo: hips/shoulders/wrists[leg]->setPosition(angle, speed)
+    Teensy->>Servo: loop() 周期调用 update_servos() -> update_clk() 驱动 PWM
+    Teensy->>Teensy: update_sensors() 轮询足端传感器
+  end
+```
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

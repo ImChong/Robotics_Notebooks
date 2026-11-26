@@ -121,6 +121,16 @@ flowchart TB
 
 **读法：** Newton 保证质量 / 动量 / 接触约束；Cosmos 学习「看起来像真世界」的观测与动作条件未来。把 Cosmos 输出当守恒律仿真会误判。
 
+## 源码运行时序图
+
+**不适用（仓库为平台入口与索引仓，不含可运行源码）。**
+
+经核查 `NVIDIA/cosmos`（`main` 分支）目录树，仓内仅包含文档、资产与基准说明文件（`README.md`、`COOKBOOK.md`、`AGENTS.md`、`LICENSE`、`SECURITY.md`、`assets/` 及 `docs/reference/`），**无 Python/C++ 训练、推理或部署源码**。实际可运行代码分布于以下关联仓库与外部运行时：
+
+- **Cosmos 3 训练与后训练基础设施：** 位于 [`NVIDIA/cosmos-framework`](https://github.com/NVIDIA/cosmos-framework)（`cosmos_framework/`，含 SFT、LoRA、蒸馏、RL 与 guardrail 模块）；数据策展与自动评测分别位于 `NVIDIA/cosmos-curator` 与 `NVIDIA/cosmos-evaluator`。
+- **Cosmos 3 推理入口：** `NVIDIA/cosmos` `README.md` Quickstart 直接调用 `diffusers.Cosmos3OmniPipeline`（亦支持 `transformers`、`vLLM-Omni`、`SGLang`、`TensorRT-LLM`、`NIM`）。
+- **1.0 / 2.5 前代独立代码包：** 归档于 `nvidia-cosmos` GitHub 组织下（如 `nvidia-cosmos/cosmos-predict1`、`nvidia-cosmos/cosmos-predict2`、`nvidia-cosmos/cosmos-predict2.5`、`nvidia-cosmos/cosmos-transfer1`、`nvidia-cosmos/cosmos-transfer2.5`、`nvidia-cosmos/cosmos-reason1`、`nvidia-cosmos/cosmos-reason2`、`nvidia-cosmos/cosmos-cookbook`、`nvidia-cosmos/cosmos-rl`、`nvidia-cosmos/cosmos-xenna`）。
+
 ## 工程实践
 
 **最小上手（README Quickstart）：** 先在 HF 申请并接受 [`nvidia/Cosmos-1.0-Guardrail`](https://huggingface.co/nvidia/Cosmos-1.0-Guardrail)（仅登录不等于有权限）；`uv venv --python 3.13`；装 diffusers（git 版）、accelerate、`cosmos_guardrail` 等；用 `Cosmos3OmniPipeline.from_pretrained("nvidia/Cosmos3-Nano", torch_dtype=torch.bfloat16)` 生成视频并 `export_to_video(..., fps=24)`。首次会下载 16B 检查点，扩散步骤很耗算力。

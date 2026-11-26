@@ -120,6 +120,52 @@ flowchart TD
 3. **策略训练：** Playground 中启用 BDX 风格 imitation reward + 域随机化；详见 [Open Duck Playground](./open-duck-playground.md)。
 4. **部署：** 关节偏置标定 + Runtime checklist → ONNX 上机。
 
+## 源码运行时序图
+
+以下时序图依据 `apirrone/Open_Duck_Mini` 仓库 `v2` 分支源码核对绘制，核对路径：`experiments/v2/onnx_AWD_mujoco_motor_control.py`、`experiments/v2/placo_walk_real_robot.py`、`mini_bdx/mini_bdx/placo_walk_engine/placo_walk_engine.py`、`experiments/real_robot/rl_walk.py`。注：仓库中的 `OnnxInfer` 与真机舵机驱动 `HWI` 从配套仓 [`apirrone/Open_Duck_Mini_Runtime`](https://github.com/apirrone/Open_Duck_Mini_Runtime)（`mini_bdx_runtime`）导入。
+
+```mermaid
+sequenceDiagram
+  participant Entry as "运行入口 (experiments/v2/*.py)"
+  participant MuJoCo as "MuJoCo (mj_step)"
+  participant Policy as "OnnxInfer (mini_bdx_runtime)"
+  participant Placo as "PlacoWalkEngine (placo_walk_engine.py)"
+  participant HWI as "HWI 舵机驱动 (mini_bdx_runtime)"
+
+  alt MuJoCo ONNX 策略仿真验证 (onnx_AWD_mujoco_motor_control.py)
+    Entry->>MuJoCo: MjModel.from_xml_path(scene.xml) + 初始化 init_pos
+    Entry->>Policy: OnnxInfer(onnx_model_path, awd=True)
+    loop 仿真主循环 (dt=0.005)
+      Entry->>Entry: pd_control(target_dof_pos, qpos, qvel, kp, kd)
+      Entry->>MuJoCo: 写入 data.ctrl[:] = tau 并执行 mj_step(model, data)
+      opt counter % control_decimation == 0
+        Entry->>Entry: get_obs(data, prev_action, commands)
+        opt --rma 模式
+          Entry->>Policy: adaptation_module.infer(obs_history) -> latent
+        end
+        Entry->>Policy: policy.infer(obs)
+        Policy-->>Entry: action -> 更新 target_dof_pos
+      end
+    end
+  else Placo 参数化步态真机行走 (placo_walk_real_robot.py)
+    Entry->>HWI: HWI().turn_on()
+    Entry->>Placo: PlacoWalkEngine(robot.urdf, placo_defaults.json)
+    loop 控制主循环 (DT=0.01)
+      opt --xbox 手柄控制
+        Entry->>Placo: pwe.set_traj(dx, dy, dtheta)
+      end
+      Entry->>Placo: pwe.tick(DT)
+      Placo->>Placo: REFINE=10 次 update_tasks_from_trajectory + solver.solve(True)
+      opt 到达 replan 周期
+        Placo->>Placo: walk.replan_supports + walk.replan
+      end
+      Entry->>Placo: pwe.get_angles()
+      Placo-->>Entry: 关节目标角字典
+      Entry->>HWI: hwi.set_position_all(angles)
+    end
+  end
+```
+
 ## 常见误区或局限
 
 - **不是研究级人形：** 舵机扭矩与背隙限制动态性能；sim2real 高度依赖 BAM 与奖励调参。
