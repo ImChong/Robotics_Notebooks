@@ -4,17 +4,23 @@
 
 - **标题：** SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model
 - **类型：** paper
-- **arXiv：** <https://arxiv.org/abs/2610.28480>（v1，2026-10-20，cs.RO）
+- **arXiv：** <https://arxiv.org/abs/2610.28480>（初版 2026-10-20，当前 [v3](https://arxiv.org/abs/2610.28480v3) 为 2026-11-19，cs.RO）
 - **会议：** Conference on Robot Learning（CoRL）2026，Oral
 - **作者：** Qiayuan Liao、Yiyang Shao、Junfeng Long、Kevin Zakka、Roberto Horowitz、Pieter Abbeel、Koushil Sreenath
 - **机构：** 加州大学伯克利分校
 - **项目页：** <https://supermimic.github.io/>（[sources/sites/supermimic-project.md](../sites/supermimic-project.md)）
 - **代码状态（2026-11-11 更新）：** [HybridRobotics/supermimic](../repos/supermimic-hybridrobotics.md) 已公开 mjlab 训练、回放实现；论文官网目前未直接链接该仓库，论文全部资产/实验配置是否对应尚需另行核对。旧版归档于 2026-10-22 尚未查见该入口。社区独立复现见 [Uni-SuperMimic](../repos/supermimic-unilab.md) 和 [supermimic_vibed](../repos/supermimic-vibed.md)
 - **入库日期：** 2026-10-22
-- **再核日期：** 2026-11-11
-- **核对范围：** arXiv v1 PDF 正文与附录（共 19 页），重点核对方法图、训练伪代码、实验表、部署评估边界和局限；并对照公开仓库 README 与关键训练/回放源码。未经独立实验复现。
+- **再核日期：** 2026-11-11；2026-11-26 补读 v3 并对照 v2。
+- **核对范围：** arXiv v1/v3 PDF 正文与附录（均 19 页），另比对 v2/v3 PDF 文本、§4 主实验与附录 A.5/A.7/A.8；重点核对方法图、训练伪代码、实验表、部署评估边界和局限；并对照公开仓库 README 与关键训练/回放源码。未经独立实验复现。
 - **通读：** 已完成
 - **一句话说明：** 从 MuJoCo Warp 记录的状态转移中学习可微世界模型，并与人形动作跟踪策略联合训练，以短时想象 rollout 和解析策略梯度降低大规模全身动作跟踪的计算成本。
+
+## v3 与 v2 对照（2026-11-26）
+
+- [v2 PDF](https://arxiv.org/pdf/2610.28480v2) 与 [v3 PDF](https://arxiv.org/pdf/2610.28480v3) 的差异主要在 §2 与参考文献：补入基于学习动力学的四足实机动作模仿、MAAC / PWM 的解析梯度脉络，并补引 SVG、DiffMimic 与 MuJoCo Warp。§3/§4 和附录主要是引文编号调整；未见主实验新结果或训练配置变更。
+- §4.1 的单卡 3 小时、训练动作覆盖，以及附录 A.8 三个 checkpoint 的失败数（179 / 25 / 0）并非 v3 新增。评测在同一 129,514 条筛选后的 BONES-SEED 动作上；SuperMimic 用它训练，不能用来估算未见动作成功率。
+- 受控对照应看 §4.1 的 LAFAN1 PPO-Sim 比较。SONIC 发布模型的 H100/L40、数据规模与训练管线对照不是同硬件、同数据实验；3 小时包含训练循环，不含训练后 checkpoint 评测。
 
 ## 核心摘录（论文摘要与官方项目页）
 

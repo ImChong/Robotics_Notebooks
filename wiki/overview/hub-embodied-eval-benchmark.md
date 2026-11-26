@@ -19,6 +19,8 @@ related:
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/robodojo.md
+  - ../entities/paper-robodojo-mirror.md
+  - ../entities/paper-iclworld.md
   - ../entities/paper-robowild.md
   - ../entities/paper-mind2act-world.md
   - ../entities/paper-gm-100.md
@@ -103,6 +105,9 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 | gap | Sim-to-Real Evaluation Gap | 仿真评测结论外推真机的偏差 |
 
 ## 为什么重要
+
+- **感知反事实：** [RoboDojo-Mirror](../entities/paper-robodojo-mirror.md) 固定任务与策略，加入镜面和几何匹配的不反光挡板，分开测量倒影混淆与实体障碍。
+- **规则理解与实际执行：** [ICLWorld](../entities/paper-iclworld.md) 对照计算机任务和机器人任务，单独测规则问答与物理完成率，避免把认知得分当成闭环成功率。
 
 - **策略成功率层案例：** [COAP](../entities/paper-coap-embodied-turing-machines.md) 在 RoboDojo 42 个双臂仿真任务上报告 70.24% 成功率；它是作者报告的仿真结果，不是官方 verified 榜单成绩，且论文未提供 COAP 可运行代码入口。
 

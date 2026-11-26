@@ -1,17 +1,18 @@
 # Training Reasoning Models in Simulation to Natively Use Real Robots（PEAR / RURL）
 
-> 来源归档：论文全文核对（2026-11-15）
+> 来源归档：论文全文核对（2026-11-15），2026-11-26 回访并逐版核对
 
 - **标题：** Training Reasoning Models in Simulation to Natively Use Real Robots（在仿真中训练推理模型，使其原生操作真实机器人）
 - **类型：** paper（预印本）
-- **论文 PDF：** <https://mit-han-lab.github.io/pear-blog/paper.pdf>
+- **论文 PDF：** [v1](https://arxiv.org/pdf/2611.18562v1) / [v2](https://arxiv.org/pdf/2611.18562v2) / [项目页副本](https://mit-han-lab.github.io/pear-blog/paper.pdf)
+- **论文 HTML：** [v1](https://arxiv.org/html/2611.18562v1) / [v2](https://arxiv.org/html/2611.18562v2)
 - **项目博客：** <https://mit-han-lab.github.io/pear-blog/>
 - **代码：** <https://github.com/mit-han-lab/pear>
 - **模型权重：** <https://huggingface.co/collections/mit-han-lab/pear>
 - **作者：** Jiaming Tang、Zhuoyang Zhang、Junxian Guo、Fangzhou Zhao、Yilong Zhao、Zekai Li、Xingyang Li、Yuyang Zhao、Song Bian、Zhijian Liu、Song Han
 - **机构：** MIT、UC Berkeley、UCSD、NVIDIA、Inco AI
 - **入库日期：** 2026-11-15
-- **核对范围：** 21 页预印本：摘要、引言、相关工作、§3 RURL/PEAR 算法和课程、§4 各项实验、§5 局限、§6 结论、附录 A–H（训练设定、分项结果、扰动、RoboDojo、通用能力、真机逐次试验和提示词模板）；对照官方博客的示意图、代码库 README 与训练/部署入口。
+- **核对范围：** 21 页预印本：摘要、引言、相关工作、§3 RURL/PEAR 算法和课程、§4 各项实验、§5 局限、§6 结论、附录 A–H（训练设定、分项结果、扰动、RoboDojo、通用能力、真机逐次试验和提示词模板）；对照官方博客的示意图、代码库 README 与训练/部署入口；回访比较 v1、v2 两份 arXiv PDF 的正文、参考文献和附录，并对照 v2 HTML。
 - **通读：** 已完成
 - **一句话说明：** 开放 27B 推理模型通过仿真中的多轮机器人操作强化学习，无示范数据、无额外感知/规划 harness，学习观察→推理→末端姿态动作，并迁移到未见过的真实双臂机器人。
 
@@ -51,3 +52,10 @@
 - **真机故障（附录 G）：** 最终模型 12 次失败中，包括步数耗尽、积木未对齐、碰倒对象、网球滚走；气泵与刷子均未成功抓取。
 - **开源核对（2026-11-15）：** 官方项目页链接 Apache-2.0 GitHub 仓库；提供三阶段训练、评测、vLLM server、YAM/SO-101 station 及 HF checkpoint，部分仿真数据/硬件仍需独立配置。
 - **对 wiki 的映射：** [PEAR / RURL](../../wiki/entities/paper-pear-robot-use-rl.md) 的局限、部署安全与原始材料链接。
+
+
+## v1 → v2 原文差异（2026-11-26 核对）
+
+- v1 的 arXiv 稿日期为 2026-11-13、论文封面为 11 月 16 日；v2 分别为 11 月 20 日和 11 月 23 日。§3.2 与附录 A 统一使用 `verl` 拼法，§5 的 SFT 局限部分增加了 Lu 与 Thinking Machines Lab 的 on-policy distillation 引用，并更新参考文献。
+- 附录 A 将 v1 的 2,000–3,000 tokens/s 每节点 rollout 报告更新为约 11,000 tokens/s，分别对应 8×H100 或 4×GB300。新版使用冻结的模型自有 MTP drafter（每步 3 个草拟 token，平均接受长度 2.4）；**论文训练的原模型仍是旧版非 MTP 配方**。作者报告原训练约 50,000 H100 等效 GPU 小时，30,000 GPU 小时是新版估算。
+- v1/v2 的 §4 主要实验与附录 B–H 的数字/配置文本未见变化；LIBERO 与 YAM 原结果不能归因于新版速度优化。本次为论文 PDF 文字及官方源码的静态核查，不是性能复测。

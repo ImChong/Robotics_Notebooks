@@ -55,6 +55,7 @@ flowchart LR
 
 ### 推荐读什么
 
+- [ACAP｜单机异步控制组调度](../wiki/entities/paper-acap.md) — 区分同一机器人内的多组并行与多机器人协作；用真机耗时对照，并核对任务失败口径。
 - [Heave-Ho｜去中心化长程多人形协作](../wiki/entities/paper-heave-ho-2611-22275.md) — Heave-Ho 把多智能体后训练的身体耦合控制与基于语音的领队—跟随者视觉语言技能规划结合，实现不依赖机器人间网络消息的长时程协作。（原文 arXiv:2611.22275；详见开放和实测边界）。
 - [Loco-Manipulation 任务页](../wiki/tasks/loco-manipulation.md) — 本路线的任务地图与技术路线总入口
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md) 与 [Whole-Body Coordination](../wiki/concepts/whole-body-coordination.md)

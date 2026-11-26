@@ -2,7 +2,7 @@
 
 > 来源归档（repo）
 
-- **标题：** SuperMimic / SuperTrack（仓库 README 自称 SuperTrack implementation）
+- **标题：** SuperMimic（此前 README 描述为基于 mjlab 的 SuperTrack 实现）
 - **类型：** repo（研究团队公开的同名实现）
 - **链接：** <https://github.com/HybridRobotics/supermimic>
 - **论文：** <https://arxiv.org/abs/2610.28480>（[论文归档](../papers/supermimic_arxiv_2610_28480.md)）
@@ -16,7 +16,7 @@
 
 ## 仓库身份与开放边界
 
-HybridRobotics 组织发布同名代码，README 明确称其为「A SuperTrack implementation ... built on mjlab」，同时引用 SuperMimic 原论文。训练、回放和基准入口已经公开；但截至 2026-11-11，论文项目页未直接链接此仓库。**不能仅凭仓库名和研究组织关联，声称它逐项复现了 CoRL 论文报告的全部指标或开放了论文所有训练资产及真机部署栈。**
+HybridRobotics 组织发布同名代码，当前 README 明确说明基于 mjlab，并链接论文和项目页。训练、回放和基准入口已经公开；但截至 2026-11-11，论文项目页未直接链接此仓库。**不能仅凭仓库名和研究组织关联，声称它逐项复现了 CoRL 论文报告的全部指标或开放了论文所有训练资产及真机部署栈。**
 
 ## 经源码核对的入口
 
@@ -32,7 +32,7 @@ HybridRobotics 组织发布同名代码，README 明确称其为「A SuperTrack 
 示例训练命令（按 README 入口；需先安装依赖并准备动作资产）：
 
 ```bash
-uv run src/supermimic/scripts/train.py SuperMimic-GenCoord-G1 --runner.run-name example
+uv run src/supermimic/scripts/train.py SuperMimic-GenCoord-G1 --runner.run_name example
 ```
 
 上述命令仅用于展示入口，不表示已执行。默认 `TrainConfig.num_envs=4096`，`WorldModelLearnerCfg.horizon=8`，策略 `ActorCriticPolicyLearnerCfg.horizon=32`；这些是当前源码默认配置，**不能直接等同于论文所有报告实验的最终配置**。
@@ -44,6 +44,13 @@ uv run src/supermimic/scripts/train.py SuperMimic-GenCoord-G1 --runner.run-name 
 - README 的动作数据依赖 W&B Registry 或显式 `--motion-file`；原论文全部数据、官方预训练权重与实机系统并非仓库代码目录即自动具备。
 - 尚未在本次 ingest 中执行环境安装、GPU 训练、定量评测或 Sim2Real；论文指标仍归于论文作者报告。
 - 代码路径核查记录仅覆盖上列核心文件和 README；其它模块未作逐行安全审计。
+
+## 公开实现回访（2026-11-26）
+
+- 默认分支固定提交 [`5fb9229`](https://github.com/HybridRobotics/supermimic/commit/5fb92297ab4fe3d86629d9f0c635334791bb0d5f) 的提交者时间为 2026-11-21 08:54:02 UTC（北京时间 **16:54:02**），作者时间为 2026-11-19 06:12:24 UTC。此处分别记两种 Git 时间，不把页面相对时间当版本证据。
+- `_reanchor_targets` 用预测根与参考根之间的偏航差旋转目标刚体线速度和角速度，并对齐位姿目标；全局水平位置和航向由两个 anchor 奖励项单独计分，原有权重及尺度不变。新增测试覆盖单位旋转与非零偏航；本次仅静态核对。
+- [`337c8b0`](https://github.com/HybridRobotics/supermimic/commit/337c8b043feee7b95cac363be4782c046ed17fa3) 将想象起点采样交由 Runner，再调用 `policy_learner.update(starts)`；环境不再持有回放缓存。[`d88804a`](https://github.com/HybridRobotics/supermimic/commit/d88804a872c94ac50031f98de4434d1684ec0ae4) 在 CUDA 上对 Dynamics MLP 和想象时 actor 局部使用 BF16，返回 FP32；不要将其实现更新等同于论文 H100 耗时测量。README 与 `pyproject.toml` 要求并列的 `../mjlab_research` 源码依赖。
+- Apache-2.0 针对本代码，论文所用动作资产、权重和第三方依赖分别核对。未运行训练或 Unitree G1。
 
 ## 对 wiki 的映射
 

@@ -11,7 +11,8 @@
 - **权重：** <https://huggingface.co/collections/mit-han-lab/pear>
 - **许可：** Apache-2.0（官方 LICENSE / pyproject）
 - **入库日期：** 2026-11-15
-- **核对范围：** 根目录 README、docs/getting_started/quickstart.md、examples/models/qwen3_8_27b_pear/train/{README.md,run_stage1.sh}、deploy/{README.md,run_server.sh,run_station.sh}、scripts/start_ray_node.sh、pear/deploy/station/cli.py 与 pyproject.toml 的入口定义。
+- **回访代码快照：** [`31fd1cf`](https://github.com/mit-han-lab/pear/tree/31fd1cf2052c6fc989579ee77c8046d47fc0a5eb)（北京时间 2026-11-25 05:23:22）。
+- **核对范围：** 根目录 README、docs/getting_started/quickstart.md、examples/models/qwen3_8_27b_pear/train/{README.md,run_stage1.sh}、deploy/{README.md,run_server.sh,run_station.sh}、scripts/start_ray_node.sh、pear/deploy/station/cli.py 与 pyproject.toml 的入口定义；回访另查三项提交的变更、站点客户端、模型集合及训练配置。
 - **通读：** 已完成
 
 ## 实际运行入口（与 wiki 时序图对应）
@@ -33,6 +34,12 @@
 - LIBERO 使用 MuJoCo，RoboDojo 使用 Isaac Sim；场景和依赖需先安装。
 - 模型已提供标准、LIBERO-only、NVFP4 权重；论文精度结果使用 BF16，不能把量化版结果视为等价。
 - 官方 README 明确支持 YAM 与 SO-101 station；需要实体硬件、正确标定和安全互锁。
+
+## 回访核对：训练 rollout 与站点发布分别记录
+
+- [`fd583e9`](https://github.com/mit-han-lab/pear/commit/fd583e9) 在训练 rollout 中引入 MTP speculative decoding；[当前示例训练变量](https://github.com/mit-han-lab/pear/blob/31fd1cf2052c6fc989579ee77c8046d47fc0a5eb/examples/models/qwen3_8_27b_pear/train/README.md#variables) 与论文 v2 附录 A 对应。不能把新的训练吞吐或预计资源降幅当成原模型经过重训。
+- [`7054599`](https://github.com/mit-han-lab/pear/commit/70545994c09c97ff2ba02f8c140bddd2fe64ab90) 让站点在单次会话使用一个客户端；例如 `VLLMClient` 构造一次 `AsyncOpenAI`，各轮请求通过该实例开启流并保留会话历史。[`31fd1cf`](https://github.com/mit-han-lab/pear/commit/31fd1cf2052c6fc989579ee77c8046d47fc0a5eb) 改进基于相机录制生成的视频及任务导出轨迹页；与控制动作接口和论文性能测量区分。
+- 官方模型集合另列 [DFlash2 辅助 drafter](https://huggingface.co/mit-han-lab/Qwen3.8-27B-PEAR-DFlash2)，不是独立策略权重，也不同于附录 A 使用的内置 MTP。未下载权重、启动模型服务器或进行真机测试。
 
 ## 对 wiki 的映射
 
