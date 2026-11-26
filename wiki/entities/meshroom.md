@@ -76,6 +76,47 @@ flowchart LR
   F --> I[质检 / 地理配准 mrGeolocation]
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `alicevision/Meshroom` 仓库 `develop` 分支源码核对绘制（已检查 `bin/meshroom_batch`、`bin/meshroom_compute`、`meshroom/core/graph.py`）。CLI 与无头批处理入口通过 `Graph` 编排节点模板，并在本地调用 `executeGraph()` 按拓扑顺序逐节点、逐分块（Chunk）执行，或通过 `--submit` 走 `submitGraph()` 派发至渲染农场。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 用户 / CLI
+  participant CLI as bin/meshroom_batch
+  participant Core as meshroom.core (initPipelines)
+  participant Graph as Graph (meshroom/core/graph.py)
+  participant Node as Node / Chunk
+  participant Compute as bin/meshroom_compute
+
+  User->>CLI: meshroom_batch -p photogrammetry -i INPUT -o OUTPUT -s project.mg
+  CLI->>Core: setupEnvironment() & initPipelines()
+  CLI->>Graph: 加载模板/工程构建 Graph（loadGraph 或模板初始化）
+  CLI->>Graph: inputNode.nodeDesc.initialize(...) 绑定输入图像
+  CLI->>Graph: configureOutputNodes(args.output) 与参数覆盖
+  CLI->>Graph: graph.save() 保存工程文件
+
+  alt --submit 提交农场
+    CLI->>Graph: submitGraph(graph, submitter, toNodes)
+    Graph->>Node: initStatusOnSubmit() 登记任务并提交 Submitter
+    Note over Compute,Node: 农场节点拉起 bin/meshroom_compute project.mg --node N --iteration I
+    Compute->>Graph: loadGraph(filepath)
+    Compute->>Node: node.preprocess() / chunk.process() / node.postprocess()
+  else 本地直接执行
+    CLI->>Graph: executeGraph(graph, toNodes, forceCompute, forceStatus)
+    Graph->>Graph: dfsToProcess() / dfsOnFinish() 计算待执行拓扑序
+    loop 按拓扑序遍历待执行 Node
+      Graph->>Node: initStatusOnCompute() -> preprocess() -> createChunks()
+      loop 遍历 node.chunks
+        Graph->>Node: chunk.process(forceCompute)
+      end
+      Graph->>Node: postprocess(forceCompute)
+    end
+    Graph->>Node: endSequence()
+  end
+```
+
 ## 工程实践
 
 | 步骤 | 建议 |

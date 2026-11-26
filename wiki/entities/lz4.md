@@ -74,6 +74,46 @@ flowchart LR
 
 同机 lzbench 表中，**LZ4 1.10.0** 约 **2.10×** 体积、**675 MB/s** 压、**3850 MB/s** 解；**zstd -1** 约 **2.90×**、510 / 1550 MB/s（详见 [选型对比](../comparisons/lz4-vs-zstandard.md) 与 [sources/repos/lz4.md](../../sources/repos/lz4.md)）。
 
+## 源码运行时序图
+
+以下时序图依据 `lz4/lz4` 仓库 `dev` 分支源码核对绘制（已检查 `programs/lz4cli.c`、`programs/lz4io.h`、`programs/lz4io.c`）：`lz4` CLI 解析参数并自动判定压缩/解压模式后，经 `LZ4IO` 文件流层调用 `liblz4` 的 `LZ4F_*` Frame 接口（流式多块或单块压缩/解压）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 用户 / 调用方
+  participant CLI as programs/lz4cli.c (main)
+  participant IO as programs/lz4io.c
+  participant Lib as lib/lz4frame & lib/lz4
+
+  User->>CLI: lz4 [options] input [output]
+  CLI->>CLI: 解析选项、init_cLevel() 与 determineOpMode(input_filename)
+
+  alt 压缩模式（om_compress）
+    CLI->>IO: LZ4IO_setNbWorkers() / LZ4IO_setMemoryBudget()
+    CLI->>IO: LZ4IO_compressFilename(src, dst, cLevel, prefs)
+    IO->>Lib: LZ4F_createCompressionContext(&ctx, LZ4F_VERSION)
+    opt 指定字典（--dictionary）
+      IO->>Lib: LZ4F_createCDict(dictBuf, dictSize)
+    end
+    IO->>IO: LZ4IO_compressFrame()
+    IO->>Lib: LZ4F_compressBegin_usingCDict(...) 生成 Frame Header
+    loop 读取输入块
+      IO->>Lib: LZ4F_compressUpdate(ctx, dst, dstCap, chunk, readSize, &cOpts)
+    end
+    IO->>Lib: LZ4F_compressEnd(ctx, dst, dstCap, NULL) 写入结束标记与校验
+    IO->>Lib: LZ4F_freeCompressionContext(ctx)
+  else 解压 / 校验模式（om_decompress / om_test）
+    CLI->>IO: LZ4IO_decompressFilename(input, output, prefs)
+    IO->>Lib: LZ4F_createDecompressionContext(&dCtx, LZ4F_VERSION)
+    loop 多帧流循环 selectDecoder()
+      IO->>Lib: LZ4F_decompress_usingDict(dCtx, dst, &dstSize, src, &srcSize, &dOpt)
+      IO->>IO: 写出解码字节（om_test 时丢弃至 /dev/null）
+    end
+  end
+  IO-->>CLI: LZ4IO_finishFile() 收尾与耗时统计
+```
+
 ## 工程实践
 
 ### 开源状态（2026-09-24）

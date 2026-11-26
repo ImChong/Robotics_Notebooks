@@ -112,6 +112,44 @@ flowchart TD
   E --> L["并行 Env + Agent<br/>训练 / 评估循环"]
 ```
 
+## 源码运行时序图
+
+以下时序对照 `NVlabs/ProtoMotions`（`main` 分支）中 [protomotions/train_agent.py](https://github.com/NVlabs/ProtoMotions/blob/main/protomotions/train_agent.py)、[protomotions/launch/training.py](https://github.com/NVlabs/ProtoMotions/blob/main/protomotions/launch/training.py)、[protomotions/agents/base_agent/agent.py](https://github.com/NVlabs/ProtoMotions/blob/main/protomotions/agents/base_agent/agent.py)、[protomotions/envs/base_env/env.py](https://github.com/NVlabs/ProtoMotions/blob/main/protomotions/envs/base_env/env.py) 与 [deployment/export_to_onnx.py](https://github.com/NVlabs/ProtoMotions/blob/main/deployment/export_to_onnx.py)，展示从训练启动、环境 `STEP_PHASES` 推进到 ONNX 导出的运行时路径：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as "train_agent.py / launch/training.py"
+  participant Agent as "BaseAgent / PPO (agent.py)"
+  participant Env as "BaseEnv (env.py)"
+  participant Sim as "Simulator 后端 (Newton/IsaacLab/IsaacGym/MuJoCo)"
+  participant Export as "deployment/export_to_onnx.py"
+
+  CLI->>CLI: "import_simulator_before_torch() 后调用 training.run()"
+  CLI->>Env: "build_env_from_configs(configs, fabric.device)"
+  CLI->>Agent: "AgentClass(config, env, fabric) -> setup() -> load() -> fit()"
+
+  loop "每个训练 Epoch (BaseAgent.fit)"
+    loop "Rollout 步 step in 0..num_steps"
+      Agent->>Env: "env.reset(done_indices)"
+      Agent->>Agent: "collect_rollout_step: model(obs_td) 写入 experience_buffer"
+      Agent->>Env: "env.step(action)"
+      Env->>Sim: "_action_stage.act() -> simulator.step(processed)"
+      Env->>Sim: "_episode.tick() -> simulator.get_robot_state()"
+      Env->>Env: "sensors.step() -> _state_history.push() -> _advance_owners"
+      Env->>Env: "_publish() 上下文 -> _observations/_rewards/_terminations.compute"
+      Env-->>Agent: "返回 (obs, rew_buf, reset_buf, terminate_buf, extras)"
+      Agent->>Agent: "post_env_step_modifications -> record_rollout_step"
+    end
+    Agent->>Agent: "optimize_model() 更新策略并保存 last.ckpt"
+  end
+
+  Note over Agent,Export: "无仿真器导出阶段"
+  Export->>Export: "读取 checkpoint + BakedAnchorFK -> 导出 unified_pipeline.onnx + .yaml"
+```
+
+> **源码映射说明**：训练入口先由 `protomotions/train_agent.py` 在导入 `torch` 前初始化物理后端，再移交 `protomotions/launch/training.py` 构建 `BaseEnv` 与 `Agent` 并启动 `agent.fit()`；环境每步严格按 `protomotions/envs/base_env/env.py` 中 `BaseEnv.step` 的阶段顺序推进；真机/仿真策略导出见 `deployment/export_to_onnx.py`。
+
 ## 与 MimicKit、Kimodo 的关系
 
 - **[MimicKit](./mimickit.md)**：同一作者线的 **轻量** 研究框架，DeepMimic / AMP / ASE / ADD / SMP 等方法在统一 `run.py` 体系下对照实验更方便。

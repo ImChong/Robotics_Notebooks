@@ -224,6 +224,47 @@ GitHub 组织列表页与 org API 在本环境不可读（403），下表由各�
 3. **人类数据与仿真数据互补：** EgoSuite / HDCP 提供任务结构与先验，仿真合成负责规模和长尾变化；2025-05 案例的 100:1 虚实配比是这一思路的早期实例。
 4. **评测作为部署闸门：** 学术 benchmark 已饱和，需在大规模、带扰动的工业场景中量化鲁棒性（对照 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)）。
 
+## 源码运行时序图
+
+以下时序图依据光轮核心开源仿真与评测平台仓库 `LightwheelAI/LW-BenchHub`（`main` 分支）的解耦服务端-客户端评测链路核对绘制，核对路径：`README.md`、`env_server.sh`、`eval.sh`、`lw_benchhub/scripts/env_server.py`、`lw_benchhub/scripts/policy/eval_policy.py`、`policy/base.py`（同仓还包含本地遥操作 `lw_benchhub/scripts/teleop/teleop_main.py` 与本地 RL 训练/回放 `lw_benchhub/scripts/rl/train.py`、`lw_benchhub/scripts/rl/play.py`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant ServerCLI as "env_server.sh / env_server.py"
+  participant RemoteWrap as "RemoteEnvWrapper (IPC / REST)"
+  participant Env as "make_env() / Isaac Lab ManagerBasedEnv"
+  participant EvalCLI as "lw_benchhub/scripts/policy/eval_policy.py"
+  participant Proxy as "RemoteEnv (proxy.py)"
+  participant Pol as "BasePolicy 子类 (policy/base.py)"
+
+  ServerCLI->>RemoteWrap: 启动 RemoteEnvWrapper(env_initializer=make_env).serve()
+  EvalCLI->>EvalCLI: parse_args_and_config() 加载 YAML 与 --overrides
+  EvalCLI->>Proxy: RemoteEnv.make(address, authkey) 连接环境服务
+  EvalCLI->>Proxy: env.attach(env_cfg)
+  Proxy->>RemoteWrap: 转发 attach 与 env_cfg
+  RemoteWrap->>Env: make_env(): AppLauncher + make_env_cfg() + gym.make() + warmup_rendering()
+  RemoteWrap-->>Proxy: 返回 action_space 与环境元信息
+  EvalCLI->>Pol: importlib.import_module("policy") -> policy_class(usr_args)
+  Note over Pol: initialize() 调用 get_model() 与 get_instruction()
+
+  loop 每个测试回合 (test_num)
+    EvalCLI->>Proxy: env.reset()
+    Proxy->>Env: 重置场景与机械臂状态
+    Env-->>EvalCLI: 初始 obs
+    EvalCLI->>Pol: reset_model()
+    EvalCLI->>Pol: policy.eval(env, obs, usr_args, VideoWriter)
+    loop 回合内每步控制
+      Pol->>Pol: encode_obs(obs) -> get_action()
+      Pol->>Proxy: step_environment(): task_env.step(action)
+      Proxy->>Env: 执行物理步进并采集相机/状态
+      Env-->>Pol: obs, terminated, extras
+      Pol->>Pol: add_video_frame(video_writer, obs, record_camera)
+    end
+  end
+  EvalCLI->>EvalCLI: 写入 ./eval_result/eval_results.json 并 env.close()
+```
+
 ## 工程实践
 
 | 场景 | 建议 |

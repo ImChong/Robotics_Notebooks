@@ -50,6 +50,41 @@ flowchart TD
     F --> G["Hugging Face Space<br/>在线演示"]
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `Mondo-Robotics/open-beni` 仓库 `main` 分支源码核对绘制（已检查 `python/beni_rl/__init__.py`、`python/beni_rl/train.py`、`python/beni_rl/play.py`、`python/beni_rl/headless_export.py`、`web/game/sim.worker.ts`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 开发者 / 玩家
+  participant Reg as beni_rl/__init__.py
+  participant Train as beni_rl/train.py
+  participant Play as beni_rl/play.py
+  participant Exp as beni_rl/headless_export.py
+  participant Web as web/game/sim.worker.ts
+
+  Note over Reg,Train: 任务注册与 mjlab + MuJoCo Warp 并行训练
+  Train->>Reg: import beni_rl 触发 register_mjlab_task(Beni-Velocity-Flat / Beni-Jump-Flat)
+  User->>Train: python -m beni_rl.train Beni-Jump-Flat ...
+  Train->>Train: tyro.cli 解析 task_id 与 TrainConfig.from_task()
+  Train->>Train: 配置 recovery_curriculum / AdaptiveRecoverySampler & resolve_gpu_ids()
+  Train->>Train: launch_training(task_id, args) 生成 model_*.pt 与 params/{env,agent}.yaml
+
+  Note over Play,Exp: Viser 回放与无头策略导出
+  User->>Play: uv run play Beni-Jump-Flat --checkpoint-file ... --viewer viser
+  Play->>Play: restore_checkpoint_jump_config() 读取 params/env.yaml
+  Play->>Play: 注入 BeniViserPlayViewer 并调用 mjlab.scripts.play.run_play()
+
+  User->>Exp: python -m beni_rl.headless_export --checkpoint ...
+  Exp->>Exp: resolve_checkpoint() -> load_actor() 恢复单层 GRU-512 RNNModel
+  Exp->>Exp: export_onnx() 导出 policy.onnx -> convert_to_mnn() 转为 policy.mnn
+
+  Note over User,Web: 浏览器端实时仿真推理
+  User->>Web: 打开网页游戏（Hugging Face Space / Docker）
+  Web->>Web: 加载 @mujoco/mujoco (.mjb.gz) 与 onnxruntime-web/wasm (/policies/beni.onnx)
+```
+
 ## 工程实践
 
 | 环节 | 仓库入口与说明 |

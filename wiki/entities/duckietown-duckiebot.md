@@ -51,6 +51,33 @@ flowchart LR
     HW --> Real["Duckiebot 真车与真实道路系统"]
 ```
 
+## 源码运行时序图
+
+在底层硬件接口仓 [`duckietown/dt-duckiebot-interface`](https://github.com/duckietown/dt-duckiebot-interface)（`ente` 分支）中，容器启动脚本与 `duckiebot_interface` 启动器按机器人硬件型号拉起基于 DTPS（HTTP / 可选共享内存 SHM）的传感器与执行器驱动节点：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Boot as launchers/*.sh<br/>duckiebot_interface/launch/main.py
+    participant Cam as camera_driver_node.*<br/>CameraNodeAbs
+    participant DTPS as DTPS HTTP / SHM<br/>DT_CAMERA_SHM_OUT_PATH
+    participant Whl as wheels_driver_node.main<br/>WheelsDriverNode
+    participant Drv as DaguWheelsDriver<br/>VirtualWheelsDriver
+
+    Boot->>Boot: 读取 ROBOT_TYPE / ROBOT_HARDWARE / ROBOT_CONFIGURATION
+    Boot->>Cam: 启动 camera_driver_node.<robot_hardware>
+    Boot->>Whl: 启动 wheels_driver_node.main（--actuator-name base）
+    Cam->>Cam: 采集图像并经 HardwareJpegEncoder 或 cv2 编码 JPEG
+    Cam->>DTPS: 发布图像 / 相机内参（配置 SHM 失败时回退 HTTP）
+    Whl->>DTPS: dtps_init() 创建 in/pwm、in/estop 与 out/pwm_* 队列
+    DTPS-->>Whl: 投递 DifferentialPWM（cb_wheels_pwm）与 Boolean（cb_estop）
+    Whl->>Drv: 未触发 estop 时调用 set_wheels_speed(left, right)
+    Whl->>DTPS: 发布 out/pwm_filtered 与 out/pwm_executed 状态
+```
+
+- **最短复现路径：** 通过 `README.md` 中的 `duckietown/duckiebot-interface:ente-arm64v8` 容器启动脚本（如 `launchers/sensor-camera.sh`、`launchers/actuator-wheels.sh`）或 `packages/duckiebot_interface/include/duckiebot_interface/launch/main.py` 按硬件配置拉起各驱动节点，经 DTPS 队列完成感知发布与底盘 PWM 闭环。
+- **本次核查源码文件（`duckietown/dt-duckiebot-interface` `ente`）：** `README.md`、`launchers/default.sh`、`launchers/actuator-wheels.sh`、`launchers/sensor-camera.sh`、`packages/duckiebot_interface/include/duckiebot_interface/launch/main.py`、`packages/wheels_driver/include/wheels_driver_node/main.py`、`packages/camera_driver/include/camera_driver/camera_driver_abs.py`、`packages/camera_driver/include/camera_driver_node/raspberry_pi_64.py`。
+
 ## 工程实践
 
 - 先从 dt-duckiebot-interface 与 dt-core 入手，在 gym-duckietown 里调通再上真车。

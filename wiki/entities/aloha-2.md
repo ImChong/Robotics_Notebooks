@@ -70,6 +70,10 @@ flowchart LR
   train --> deploy[真机部署]
 ```
 
+## 源码运行时序图
+
+**不适用**：`google-deepmind/mujoco_menagerie`（`main` 分支）中 `aloha/` 子目录仅包含 MJCF 模型描述、执行器/关键帧配置、MJX 补丁与系统辨识说明文档（`aloha/scene.xml`、`aloha/aloha.xml`、`aloha/joint_position_actuators.xml`、`aloha/filtered_cartesian_actuators.xml`、`aloha/keyframe_ctrl.xml`、`aloha/keyframe_no_act.xml`、`aloha/*.patch`、`aloha/README.md`），不包含双臂遥操作、D405 相机采集或策略训练/控制运行时代码。父仓库仅提供通用模型分发加载器（`python/src/mujoco_menagerie/__init__.py` 的 `load("aloha")`）与无告警编译/0.1 s 随机噪声步进测试（`test/model_test.py`）。
+
 ## 工程实践
 
 | 项 | 建议 |

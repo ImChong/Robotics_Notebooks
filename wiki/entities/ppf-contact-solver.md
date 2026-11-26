@@ -77,6 +77,40 @@ flowchart LR
 
 典型 Jupyter 路径：`App.create` → `asset` + `scene.build` → `session.build` → `start().preview()` → `export.animation()`。
 
+## 源码运行时序图
+
+以下时序对照 `st-tech/ppf-contact-solver`（`main` 分支）中 [frontend/_app_.py](https://github.com/st-tech/ppf-contact-solver/blob/main/frontend/_app_.py)、[frontend/_session_.py](https://github.com/st-tech/ppf-contact-solver/blob/main/frontend/_session_.py)、[crates/ppf-cts-solver/src/main.rs](https://github.com/st-tech/ppf-contact-solver/blob/main/crates/ppf-cts-solver/src/main.rs) 与 [crates/ppf-cts-solver/src/driver/step.rs](https://github.com/st-tech/ppf-contact-solver/blob/main/crates/ppf-cts-solver/src/driver/step.rs)，展示 Python 前端与 Rust/GPU 求解进程之间的完整运行链：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as "Jupyter / 脚本 (frontend.App)"
+  participant PySession as "FixedSession (_session_.py)"
+  participant PyO3 as "ppf-cts-py (_rust)"
+  participant Bin as "ppf-contact-solver (main.rs)"
+  participant Driver as "driver::advance (step.rs) + Compute 后端"
+
+  User->>PySession: "App.create() -> asset/scene.build() -> session.build()"
+  User->>PySession: "session.start(blocking=...)"
+  PySession->>PyO3: "validate_driver_version / solver_subprocess_command"
+  PySession->>Bin: "subprocess.Popen 启动 ppf-contact-solver"
+  Bin->>Bin: "ProgramArgs::parse(), status_writer::init, Scene::new / Backend::new"
+  Bin->>Driver: "initialize() + refusal::scene_refusals 门禁检查"
+
+  loop "每帧仿真推进 (backend.run -> advance)"
+    Driver->>Driver: "STEP A1-A8: 重建 BVH 宽相、设置隐式目标与 Dirichlet 约束"
+    loop "隐式牛顿迭代 (STEP B0-B33)"
+      Driver->>Driver: "STEP B6-B15: 装配动量、杆/壳/体弹性、tmp_fixed 快照、应变限制与接触障碍"
+      Driver->>Driver: "STEP B16-B17: 移除 Dirichlet 自由度并执行 PCG 线性求解"
+      Driver->>Driver: "STEP B29-B31: ACCD 过滤线搜索与步进比例 toi_advanced 更新"
+    end
+    Driver->>Driver: "STEP C1-C5: 终检 check_intersection 并提交位置/时钟"
+    Bin-->>PySession: "写入帧输出、状态文件与 time-per-frame 日志"
+  end
+```
+
+> **源码映射说明**：Python 会话与子进程拉起位于 `frontend/_app_.py` 与 `frontend/_session_.py`；二进制主入口与场景加载/恢复位于 `crates/ppf-cts-solver/src/main.rs`；中性牛顿驱动与 `STEP A/B/C` 阶段顺序位于 `crates/ppf-cts-solver/src/driver/step.rs`（各平台 CUDA/Metal/ROCm/CPU 计算接口由 `crates/ppf-cts-compute/` 提供）。
+
 ## 与相近工具的分工
 
 | 工具 | 关系 |

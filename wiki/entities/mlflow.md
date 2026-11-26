@@ -63,6 +63,45 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序图依据 `mlflow/mlflow` 仓库 `master` 分支源码核对绘制（已检查 `mlflow/cli/__init__.py`、`mlflow/server/__init__.py`、`mlflow/tracking/fluent.py`、`mlflow/tracking/_tracking_service/client.py`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 训练脚本 / 开发者
+  participant CLI as mlflow/cli/__init__.py
+  participant Srv as mlflow/server/__init__.py
+  participant Fluent as mlflow/tracking/fluent.py
+  participant Client as TrackingServiceClient
+  participant Store as Tracking Store (utils._get_store)
+  participant Art as ArtifactRepository
+
+  Note over CLI,Srv: 服务端启动（mlflow server / mlflow ui，AliasedGroup 映射 ui -> server）
+  CLI->>CLI: server() 解析 --backend-store-uri / --default-artifact-root
+  CLI->>Srv: initialize_backend_stores(...) 初始化元数据与工件根路径
+  CLI->>Srv: 启动 Flask app（UI 与 REST API）
+
+  Note over User,Art: 训练进程实验记录（Fluent API -> TrackingServiceClient）
+  User->>Fluent: set_experiment(...) & start_run(run_name=...)
+  Fluent->>Client: MlflowClient() 初始化（解析 tracking_uri -> self.store）
+  Fluent->>Client: create_run(experiment_id, tags=resolved_tags)
+  Client->>Store: store.create_run(...)
+  Store-->>Fluent: ActiveRun (run_id)
+  loop 训练迭代记录
+    User->>Fluent: log_param() / log_metric() / log_metrics()
+    Fluent->>Client: log_param() / log_metric() / log_batch()
+    Client->>Store: 写入参数与时序指标（本地 Store 或 RestStore -> Server）
+  end
+  User->>Fluent: log_artifact(local_path, artifact_path)
+  Fluent->>Client: _get_artifact_repo(run_id)
+  Client->>Art: artifact_repo.log_artifact(local_path, artifact_path)
+  User->>Fluent: end_run(status="FINISHED")
+  Fluent->>Client: set_terminated(run_id, status)
+  Client->>Store: 更新 Run 状态与结束时间
+```
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

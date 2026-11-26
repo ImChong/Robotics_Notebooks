@@ -44,6 +44,10 @@ institutions:
 | 类别 | 世界模型 |
 | 官方组织 | https://github.com/amap-cvlab、https://github.com/alibaba-damo-academy |
 
+## 源码运行时序图
+
+**不适用。** 经核查 [amap-cvlab/ABot-3DWorld](https://github.com/amap-cvlab/ABot-3DWorld)（`main` 分支，共 20 个文件），仓库仅包含 `.gitignore`、`index.html`、`css/style.css`、`js/main.js` 及 `assets/imgs/`、`assets/video/demo.mp4` 等静态项目主页资源（页面提供 Tech Report 与 `https://abot-world.amap.com/plaza` Studio 外部入口）；仓库内不包含 3D 世界模型推理/训练源码、Spatial Generative Primitive (SGP) 实现或可执行脚本入口，无法绘制基于源码的运行时序图。
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `ABot-3DWorld` 仓库并核对 README 许可与依赖。

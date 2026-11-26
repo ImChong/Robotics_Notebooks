@@ -63,6 +63,42 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序对照 `Simple-Robotics/proxsuite`（`devel` 分支）中 [examples/python/overview-simple.py](https://github.com/Simple-Robotics/proxsuite/blob/devel/examples/python/overview-simple.py)、[include/proxsuite/proxqp/dense/wrapper.hpp](https://github.com/Simple-Robotics/proxsuite/blob/devel/include/proxsuite/proxqp/dense/wrapper.hpp) 与 [include/proxsuite/proxqp/dense/solver.hpp](https://github.com/Simple-Robotics/proxsuite/blob/devel/include/proxsuite/proxqp/dense/solver.hpp)，展示 Dense ProxQP 从建模初始化到重复热启动求解的运行路径：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Caller as "调用方 (C++ / Python 绑定)"
+  participant QP as "proxqp::dense::QP<T> (wrapper.hpp)"
+  participant Ruiz as "RuizEquilibration"
+  participant Solver as "qp_solve / LDLT (solver.hpp)"
+
+  Caller->>QP: "QP(dim, n_eq, n_in) 分配 Model/Results/Workspace"
+  Caller->>QP: "qp.init(H, g, A, b, C, l, u)"
+  QP->>Ruiz: "校验维度并执行 Ruiz 对角均衡缩放 (若启用预处理)"
+  Caller->>QP: "qp.solve() 或 qp.solve(x, y, z) 热启动"
+  QP->>Solver: "qp_solve(settings, model, results, work, ...)"
+  Solver->>Ruiz: "按 initial_guess 缩放初值并调用 setup_factorization (PrimalLDLT / PrimalDualLDLT)"
+
+  loop "BCL 外层增广拉格朗日迭代 (iter < max_iter)"
+    Solver->>Solver: "global_primal_residual / global_dual_residual 判定收敛"
+    Solver->>Solver: "内层半光滑牛顿步 + linesearch::active_set_change"
+    Solver->>Solver: "有效集或 rho 变化时调用 refactorize 重分解 KKT"
+    Solver->>Solver: "mu_update 更新对偶近端参数 mu_eq / mu_in"
+  end
+
+  Solver->>Ruiz: "unscale_primal_in_place / unscale_dual_in_place_*"
+  Solver-->>Caller: "写入 qp.results (x, y, z, info)"
+
+  opt "控制周期矩阵变化后重复求解"
+    Caller->>QP: "qp.update(H, g, A, b, C, l, u) 后再次 qp.solve()"
+  end
+```
+
+> **源码映射说明**：外部调用接口 `QP::init`、`QP::update`、`QP::solve` 定义于 `include/proxsuite/proxqp/dense/wrapper.hpp`（Python 最小示例见 `examples/python/overview-simple.py`）；核心 `qp_solve`、`refactorize` 与 `mu_update` 实现位于 `include/proxsuite/proxqp/dense/solver.hpp`。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

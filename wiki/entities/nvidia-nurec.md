@@ -103,6 +103,39 @@ NuRec 渲染嵌在 Omniverse Kit。Isaac Sim 加载兼容 USDZ 后，用 **`Omni
 
 [AV 重建指南](https://docs.nvidia.com/nurec/nurec/reconstruct-av-scene.html) 把 Instant 标成 **Recommended**：本机 `run_inference.py --merge` 出与 NuRec 默认初始化点数对齐的 PLY（2M），再 `initialization=nrm_ply` 进容器。两边吃同一份 NCore，但运行时不同：Instant 是原生 Python 预览；NuRec 是 Docker 精修。
 
+## 源码运行时序图
+
+产品级逐场景精修与 gRPC 渲染由 NGC 镜像 `nvcr.io/nvidia/nre/nre-ga:26.04` 提供（文档公开，源码不在 GitHub 仓发布）；与本页关联的开源 Python 推理入口位于 [NVIDIA/instant-nurec](https://github.com/NVIDIA/instant-nurec)（`main` 分支，另有 `instant_nurec/training/run.py` 对应双阶段训练）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant SH as run.sh /<br/>run_inference.py
+    participant CLI as instant_nurec/cli.py<br/>main()
+    participant RUN as instant_nurec/predict/run.py<br/>run_predict()
+    participant SYS as GaussiansInstantNuRecSystem<br/>(model/system.py)
+    participant EXP as export_ply · export_sky<br/>merge · render
+    participant NRE as NuRec Docker<br/>(nre-ga:26.04)
+    U->>SH: --model pa-front|pa-multiview|pq-front<br/>--ncore-path .json|.lst --output-dir [--merge]
+    SH->>CLI: 解析参数并构造 InstantNuRecConfig
+    CLI->>RUN: run_predict(config)
+    RUN->>SYS: instant_nurec.model.make(config)<br/>加载 HF 权重与 NCore DataModule
+    loop predict_dataloader() 分 chunk 推理
+        RUN->>SYS: predict_step(batch)
+        SYS->>SYS: model.reconstruct(context, cuboid_tracks)
+        opt --merge（默认目标 --n-gaussians 2000000）
+            SYS->>EXP: KelvinPrimitiveMerge.merge_primitives_and_batch()
+        end
+        RUN->>EXP: on_predict_batch_end()
+        EXP-->>U: 输出 .ply + .sky.npz / .sky.png<br/>（可选 .dynamic.npz / .render.png / .render.mp4）
+    end
+    U-. 可选 initialization=nrm_ply .-> NRE: 送入 NuRec 精修导出 USDZ
+```
+
+- **复现抓手**：本地先运行 `./setup.sh` 初始化 `.venv`，再用 `run.sh` 或 `python run_inference.py --model pa-front --ncore-path ... --output-dir ... --merge` 生成合并 PLY；若需 `--render-preview` 或 `--render-video` 需额外执行 `uv sync --extra render`（视频导出还需 `ffmpeg`）。
+- **核查源码文件**：`README.md`、`run.sh`、`run_inference.py`、`instant_nurec/cli.py`、`instant_nurec/predict/run.py`、`instant_nurec/model/system.py`、`instant_nurec/training/run.py`。
+
 ## 工程实践
 
 | 项 | 内容 |

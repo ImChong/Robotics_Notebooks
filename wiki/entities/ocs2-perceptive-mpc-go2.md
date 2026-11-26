@@ -81,11 +81,9 @@ flowchart TD
 
 图的项目入口以仓库 README、launch、工具脚本为准；虚线强调适配仓库默认没有打开所有地形约束，而非推断其全部参与优化。
 
-## 工程实践
+## 源码运行时序图
 
-### 复现顺序与控制时序
-
-项目 README 规定 Ubuntu 24.04 + ROS 2 Jazzy。先 `./scripts/setup.sh ~/ocs2_ws`（下载定版上游源码、施加 `patches/`、复制工具），`colcon build --symlink-install`；再按 **MuJoCo 仿真 → 感知+控制 launch → 站立/小跑驱动** 的顺序启动。具体命令见 [源码归档](../../sources/repos/ocs2-perceptive-mpc-go2.md)。
+对齐 [Khaledsweid1/ocs2-perceptive-mpc-go2](https://github.com/Khaledsweid1/ocs2-perceptive-mpc-go2)（`main` 分支）构建与运行入口：Ubuntu 24.04 + ROS 2 Jazzy 下先执行 `./scripts/setup.sh ~/ocs2_ws` 与 `colcon build --symlink-install`，再按 **MuJoCo 仿真 → 感知+控制 launch → 站立/小跑驱动** 顺序启动。
 
 ```mermaid
 sequenceDiagram
@@ -122,7 +120,9 @@ sequenceDiagram
   end
 ```
 
-源码依据：`scripts/setup.sh`、`tools/launch/perceptive_mujoco.launch.py`、`tools/terrain_elevation_pub.py`、`tools/drive_ocs2.py` 及 README；OCS2/WBC 内部时序以项目文档所述调用层为界，**未声称逐行追踪外部依赖内部实现，也未运行本机控制实验**。
+- **核查源码文件**：`README.md`、`scripts/setup.sh`、`tools/launch/perceptive_mujoco.launch.py`、`tools/terrain_elevation_pub.py`、`tools/drive_ocs2.py`；OCS2/WBC 内部时序以项目文档所述调用层为界，未逐行追踪上游 `quadruped_ros2_control` / `ocs2` 内部实现，也未运行本机控制实验。
+
+## 工程实践
 
 ### 参数与状态分层
 

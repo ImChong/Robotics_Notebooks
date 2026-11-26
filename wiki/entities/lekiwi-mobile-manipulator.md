@@ -58,6 +58,12 @@ flowchart LR
     LeRobot --> IL["模仿学习策略训练与移动操作部署"]
 ```
 
+## 源码运行时序图
+
+**不适用**（纯硬件设计与组装文档仓）：经核查 `SIGRobotics-UIUC/LeKiwi`（`main` 分支）全仓文件树，仓库内仅包含 3D 打印网格（`3DPrintMeshes/` STL/STEP）、仿真模型描述（`URDF/LeKiwi.urdf`、`URDF/JOINT_NAMES.md`）以及物料清单与装机文档（`BOM.md`、`3DPrinting.md`、`Assembly.md`、`DynamixelLeKiwi/`），**不含任何可运行的 Python/C++ 控制、遥操作或训练入口源码**。`README.md` 与 `DynamixelLeKiwi/README.md` 均将软件运行入口外链至 Hugging Face [LeRobot](./lerobot.md) 官方文档（`https://huggingface.co/docs/lerobot/lekiwi`）及派生提交 `SIGRobotics-UIUC/lerobot@cc4adff`。
+
+- **已核查仓库文件（`SIGRobotics-UIUC/LeKiwi` @ `main`）：** `README.md`、`BOM.md`、`3DPrinting.md`、`Assembly.md`、`URDF/LeKiwi.urdf`、`URDF/JOINT_NAMES.md`、`DynamixelLeKiwi/README.md`、`DynamixelLeKiwi/BOM.md`、`DynamixelLeKiwi/3DPrinting.md`、`DynamixelLeKiwi/Assembly.md`（全仓无 `.py` / `.cpp` / `.sh` 可执行软件代码）。
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

@@ -58,6 +58,45 @@ flowchart LR
     D --> E["动作执行 (行走 / 后空翻 / 自平衡)"]
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Host as "上位机 Python (serialMaster/ardSerial.py)"
+    participant Main as "主控固件 (OpenCat.ino)"
+    participant IO as "信号与队列 (src/io.h, src/taskQueue.h)"
+    participant React as "分发与异常 (src/reaction.h)"
+    participant Skill as "技能执行 (src/skill.h, src/motion.h)"
+    participant HW as "外设硬件 (MPU6050 / I2C EEPROM / PCA9685)"
+
+    Main->>HW: "setup(): Serial.begin() + Wire.begin() + initRobot()"
+    opt 上位机串口/二进制技能下发
+        Host->>Main: "serialWriteNumToByte(port, token, var) 发送指令或 'K' 二进制技能帧"
+    end
+
+    loop loop() 主循环
+        Main->>HW: "readEnvironment() 读取 IMU 姿态"
+        Main->>React: "dealWithExceptions() 检测跌倒/异常并触发 'rc' 恢复"
+        alt 任务队列非空 (TASK_QUEUE)
+            Main->>IO: "tQueue->popTask() 弹出待执行任务"
+        else 空闲轮询输入
+            Main->>IO: "readSignal() -> read_infrared() / read_serial()"
+        end
+        Main->>React: "reaction() 按 token 分发"
+        alt T_SKILL / T_SKILL_DATA
+            React->>Skill: "skill.loadFrame(newCmd) 或写入 I2C EEPROM 后 loadFrameByDataBuffer()"
+            Skill->>HW: "从 PROGMEM / I2C EEPROM 读取步态或行为帧"
+            React->>Skill: "skill.perform() 执行姿态/步态/行为"
+            Skill->>Skill: "transform() -> calibratedPWM() 结合 EEPROM 零偏与 IMU adjust()"
+            Skill->>HW: "pwm.writeAngle(i, duty) 驱动 PCA9685 舵机"
+        end
+        Main->>HW: "lowBattery() 采样 VOLTAGE_DETECTION_PIN 电量"
+    end
+```
+
+以上调用链依据 `PetoiCamp/OpenCat-Quadruped-Robot`（`main` 分支，面向 NyBoard/ATmega328P）中的 `OpenCat.ino`、`src/io.h`、`src/reaction.h`、`src/skill.h`、`src/motion.h`、`src/taskQueue.h` 与 `serialMaster/ardSerial.py` 整理；现行 BiBoard/ESP32 平台代码位于 [OpenCatESP32](https://github.com/PetoiCamp/OpenCatEsp32-Quadruped-Robot)。
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

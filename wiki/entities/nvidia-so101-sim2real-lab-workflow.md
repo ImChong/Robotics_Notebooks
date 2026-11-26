@@ -100,6 +100,34 @@ flowchart TD
   evalReal --> s4
 ```
 
+## 源码运行时序图
+
+本课程的 GR00T N1.6 / LeRobot / Isaac Lab 教学代码在课程环境内随课分发；页面外链的开源仓库 [isaac-sim2real/sage](https://github.com/isaac-sim2real/sage)（`main` 分支）对应课程 **Strategy 4（SAGE 执行器 gap 量化）** 的可运行实现（支持 `--robot-name so101`、`h1_2`、`g1`、`realman`）。SAGE 的仿真回放、真机采集与对比分析时序如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 开发者
+    participant SIM as scripts/run_simulation.py<br/>(JointMotionBenchmark)
+    participant REAL as scripts/run_real.py<br/>(so101_collector_main)
+    participant HW as SO-101 硬件<br/>(/dev/ttyACM0)
+    participant OUT as output/{sim,real}/<br/>CSV 数据集
+    participant ANA as scripts/run_analysis.py<br/>(RobotDataComparator)
+    U->>SIM: --robot-name so101 --motion-source custom<br/>--motion-files ... --output-folder output
+    SIM->>SIM: SimulationApp + set_motion() + run_benchmark()
+    SIM-->>OUT: 写 output/sim/.../{joint_list.txt,control.csv,state_motor.csv}
+    U->>REAL: --robot-name so101 --motion-files ...<br/>--robot-port /dev/ttyACM0 --robot-type so101_follower
+    REAL->>HW: So101Collector.collect_motion()
+    HW-->>REAL: 关节状态采样
+    REAL-->>OUT: save_sage_format() 写<br/>output/real/.../{control.csv,event.csv,state_motor.csv}
+    U->>ANA: --robot-name so101 --motion-source custom<br/>--motion-names "*" --output-folder output
+    ANA->>OUT: 读取 sim 与 real 配对轨迹
+    ANA-->>U: visualize_all_comparisons() + analyze_all_data()<br/>输出对比图与 metrics_summary.xlsx
+```
+
+- **复现抓手**：仿真入口需通过 `${ISAACSIM_PATH}/python.sh scripts/run_simulation.py` 启动（依赖 Isaac Sim 5.0.0 / Isaac Lab 2.2.0）；SO-101 真机采集需在装有 `lerobot[feetech]` 的环境中运行 `scripts/run_real.py --robot-name so101`（详见仓内 `docs/LEROBOT_REAL.md`）。
+- **核查源码文件**：`README.md`、`docs/LEROBOT_REAL.md`、`scripts/run_simulation.py`、`scripts/run_real.py`、`scripts/run_analysis.py`、`sage/simulation.py`、`sage/real_so101/so101_lerobot_collector.py`、`sage/analysis.py`。
+
 ## Sim2Real 理论锚点（课程第 03 章）
 
 官方将 gap 归纳为四类，并强调 **「高仿真成功率不会自动迁移」**：

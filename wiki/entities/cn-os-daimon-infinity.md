@@ -58,6 +58,10 @@ flowchart TD
   TRAIN -->|"同构迁移 (零样本 / 少样本)"| TAC["DM-TacClaw 电驱夹爪 (100 mm 行程 / 位置-速度-力矩控制)"]
 ```
 
+## 源码运行时序图
+
+**不适用。** 经核查 [dmrobot-admin/Daimon-Infinity](https://github.com/dmrobot-admin/Daimon-Infinity)（`main` 分支，共 25 个文件），仓库仅包含 `LICENSE`、`README.md`、`README_CN.md` 与 `assets/images/` 下的 22 张说明配图，用于介绍数据集结构（Parquet/MP4/MOV/JSON）、114 维观测与 111 维动作字段及硬件平台；`README.md` 中的 `## 🛠️ Tool Repo` 指向 ModelScope 的 `daimonrobotics/Daimon-Infinity-Lite`（样例数据与可视化资源），本仓库自身未包含可运行的数据加载、策略训练或部署脚本，无法绘制源码运行时序图。
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `Daimon-Infinity` 仓库并核对 README 许可与依赖。

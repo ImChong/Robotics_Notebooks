@@ -58,6 +58,41 @@ flowchart TB
 
 Jev 的任务动作曾在 MuJoCo 中通过 Jev API 生成，但网页只播放录制好的状态与物理轨迹。它不代表 Jev 在浏览器里实时推理，也不证明实体 MOSS 已完成自主拾取。
 
+## 源码运行时序图
+
+核查 `metrox-eth/moss`（`main`）中的实机启动器、dimOS 蓝图与任务编排、底座适配器及固件源码，实际运行时序如下（`simulation/mujoco/runtime.py` 另提供独立 CPU MuJoCo 步进仿真，通过 `step()` / `advance()` / `observe()` 驱动简化平面差速与机械臂模型，不走实机串口）：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 操作者
+  participant Fly as tools/moss-fly.sh
+  participant Pre as tools/moss_preflight.py
+  participant BP as moss_dimos/blueprints.py
+  participant Mission as moss_dimos/mission.py::LitterMission
+  participant Coord as MossControlCoordinator
+  participant Adapter as moss_dimos/moss_adapter.py
+  participant FW as MOSS_CORE_V07 / MOSS_QTPY_MDD3A
+  User->>Fly: 执行 map / explore / litter
+  Fly->>Pre: 只读飞行前自检 (端口/固件/雷达/相机)
+  Pre-->>Fly: 全项 OK (退出码 0)
+  Fly->>BP: 启动 dimos run moss-dimos.moss-litter (或 nav/explore)
+  BP->>Coord: 装配 RPLidarC1 -> LidarOdometry -> MossCostMap 与底座适配器
+  BP->>Mission: 挂接 LitterDetection 与 LitterMission
+  loop 任务与控制闭环
+    Mission->>Coord: EXPLORING -> STOPPING -> APPROACHING -> SERVOING (tele_cmd_vel)
+    Coord->>Adapter: LatestOnly 丢弃旧指令后调用 write_velocities
+    Adapter->>FW: USB CDC 发送 arm / drive L R (超 300 ms 无刷新固件自动停机)
+    FW-->>Adapter: 每 200 ms 回传 JSON 遥测 (ticks / bus_mV / mode)
+    opt 进入 PICKING 状态
+      Mission->>Coord: 子进程调用 tools/moss_arm_play.py (RPC 至 ArmCoordinator)
+    end
+  end
+```
+
+- **关键复现路径**：实机通过 `tools/moss-fly.sh check` 完成 `tools/moss_preflight.py` 检查后，用 `tools/moss-fly.sh map` / `explore` / `EXPLORE=1 tools/moss-fly.sh litter`（可用 `MOCK=1` 启用 `MOSS_MOCK_BUS=1`）启动 `moss_dimos/blueprints.py` 对应蓝图；机械臂单独运行或仿真则通过 `dimos [--simulation mujoco] run moss-dimos.moss-arm` 与 `tools/moss_arm_play.py`。
+- **已核查源码文件**：`tools/moss-fly.sh`、`tools/moss_preflight.py`、`moss_dimos/blueprints.py`、`moss_dimos/mission.py`、`moss_dimos/moss_adapter.py`、`firmware/core-v0.7/src/MOSS_CORE_V07/MOSS_CORE_V07.ino`、`simulation/mujoco/runtime.py`。
+
 ## 工程实践与开放状态
 
 - **代码已公开：** MOSS 主仓库含软件、ESP32-S3 固件及文档；仓库标注软件 Apache-2.0、硬件 CERN-OHL-S-2.0、文档与媒体 CC BY 4.0。

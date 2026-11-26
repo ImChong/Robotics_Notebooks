@@ -105,40 +105,49 @@ flowchart TD
   K --> M["Unitree G1 / PICO 实时参考"]
 ```
 
-### 官方源码运行时序图
+## 源码运行时序图
 
-读过的源码入口为 `EGalahad/mimic-lite/scripts/train.py`、`train_sequential.py`、`play.py`、`eval.py`；运行前需独立克隆 `Agent-3154/active-adaptation` 并将训练仓库放在其 `projects/mimic-lite/` 中。
+核查 `Roboparty/MimicLite`（`main`）及 `.gitmodules` 固定的三个子模块仓（`EGalahad/mimic-lite`、`Agent-3154/active-adaptation`、`EGalahad/sim2real`）：顶层仓为项目落地页（含 `README.md`、`README_cn.md`、`mimic-lite.pdf`），实际可运行训练/导出/评测入口位于 `EGalahad/mimic-lite/scripts/`，部署运行时位于 `EGalahad/sim2real`。
 
 ```mermaid
 sequenceDiagram
-  actor User as 用户
-  participant Launch as active-adaptation 启动脚本
-  participant Seq as train_sequential.py
-  participant Train as train.py
-  participant AA as make_env_policy / PPOBase
-  participant Play as play.py::export_policy
-  participant Sim as sim2real::tracking.py
-  User->>Launch: launch_ddp.sh / train_sequential.py
-  alt PPO-ROA
-    Launch->>Seq: Train / Adapt / Finetune stages
-    loop 三个阶段
-      Seq->>Train: 子进程 + Hydra 配置 + 前阶段 checkpoint
-      Train->>AA: make_env_policy
-      AA-->>Train: 环境和策略
-      Train->>AA: rollout + PPO 更新
-      Train-->>Seq: 保存 checkpoint
+  autonumber
+  actor User as 使用者
+  participant Seq as scripts/train_sequential.py
+  participant Train as scripts/train.py
+  participant AA as active_adaptation.helpers::make_env_policy
+  participant Eval as scripts/eval.py::fixed_step_eval
+  participant Play as scripts/play.py::export_policy
+  participant Track as sim2real/rl_policy/tracking.py
+  participant Backend as integrated_sim2sim / scripts/g1/real_bridge.py
+  User->>Seq: 启动多阶段训练 (Train / Adapt / Finetune)
+  alt 多阶段 PPO-ROA
+    loop 遍历 cfg.stages
+      Seq->>Train: 子进程调用 main(cfg) + load_checkpoint_from_previous
+      Train->>AA: make_env_policy(cfg.task, cfg.algo)
+      AA-->>Train: 返回并行 env 与 PPOBase policy
+      Train->>AA: rollout + PPO 更新并保存 checkpoint
+      Train-->>Seq: 输出阶段 checkpoint
     end
-  else PPO
-    Launch->>Train: 多 GPU PPO 单阶段
+  else 单阶段 PPO
+    User->>Train: 直接运行 scripts/train.py::main(cfg)
     Train->>AA: make_env_policy + rollout + PPO 更新
-    Train-->>User: checkpoint
+    Train-->>User: 保存 checkpoint
   end
-  User->>Play: play.py export_policy=true
-  Play->>Play: export_onnx + write YAML
-  Play-->>User: policy.onnx / policy.yaml
-  User->>Sim: --policy-config + --motion-path
-  Sim-->>User: MuJoCo sim2sim 或机器人 I/O 输出
+  opt 无头定步评测
+    User->>Eval: scripts/eval.py 载入 checkpoint
+    Eval-->>User: 输出 TensorDict 指标
+  end
+  User->>Play: scripts/play.py export_policy=true
+  Play->>Play: export_onnx + 写入部署 YAML
+  Play-->>User: 导出 .pt / .onnx / .yaml
+  User->>Track: 启动 BasePolicy (_apply_runtime_motion_config)
+  Track->>Backend: 按 motion_backend (npz / smpl_zmq) 下发关节目标
+  Backend-->>User: MuJoCo sim2sim 或 Unitree G1 实机执行
 ```
+
+- **关键复现路径**：将 `EGalahad/mimic-lite` 置于 `Agent-3154/active-adaptation` 的 `projects/mimic-lite/` 下运行 `scripts/train.py` 或 `scripts/train_sequential.py`，通过 `scripts/play.py` 导出同批次 `.onnx` 与 `.yaml`，再由 `EGalahad/sim2real` 的 `sim2real/rl_policy/tracking.py` 加载并接入 `sim2real/sim_env/integrated_sim2sim.py` 或 `scripts/g1/real_bridge.py`。
+- **已核查源码文件**：`Roboparty/MimicLite`（`.gitmodules`、`README.md`、`README_cn.md`），`EGalahad/mimic-lite`（`scripts/train.py`、`scripts/train_sequential.py`、`scripts/play.py`、`scripts/eval.py`），`EGalahad/sim2real`（`sim2real/rl_policy/tracking.py`、`sim2real/sim_env/integrated_sim2sim.py`、`scripts/g1/real_bridge.py`、`scripts/g1/real_bridge_cpp.py`）。
 
 ## 工程实践
 

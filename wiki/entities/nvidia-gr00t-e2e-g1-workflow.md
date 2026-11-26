@@ -80,6 +80,38 @@ flowchart TB
   ft --> eval
 ```
 
+## 源码运行时序图
+
+本工作流中的 VLA 后训练、开环评测与 ZMQ 策略服务落在 [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)（`main` 分支，N1.7 GA）；Teleop 采数、Arena 仿真环境与 Thor Isaac ROS LEAPP 部署分别位于 `IsaacTeleop`、`IsaacLab-Arena` 与 `NVIDIA-ISAAC-ROS` 独立仓库，通过 LeRobot 数据格式与 ZMQ `PolicyClient` 衔接。`NVIDIA/Isaac-GR00T` 侧可运行入口如下：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 开发者
+    participant Ext as 外部遥操/仿真<br/>IsaacTeleop / Arena
+    participant FT as launch_finetune.py<br/>(examples/finetune.sh)
+    participant EXP as gr00t/experiment/<br/>experiment.py
+    participant OL as gr00t/eval/<br/>open_loop_eval.py
+    participant SRV as gr00t/eval/<br/>run_gr00t_server.py
+    participant POL as Gr00tPolicy<br/>(PolicyServer ZMQ)
+    participant CLI as PolicyClient /<br/>环境或真机客户端
+    Ext-->>FT: LeRobot v2 数据集<br/>(meta/modality.json)
+    U->>FT: --base-model-path --dataset-path<br/>--embodiment-tag --output-dir
+    FT->>EXP: 构建 Config（Cosmos-Reason2-2B）<br/>调用 run()
+    EXP-->>U: 保存 finetuned checkpoint
+    U->>OL: --dataset-path --model-path<br/>--embodiment-tag --execution-horizon
+    OL-->>U: 轨迹对比图与 MSE 指标
+    U->>SRV: --model-path --embodiment-tag<br/>--device cuda:0 --host --port 5555
+    SRV->>POL: 初始化 Gr00tPolicy + PolicyServer
+    loop 闭环推理（仿真或真机控制环）
+        CLI->>POL: PolicyClient.get_action(obs)
+        POL-->>CLI: action chunk + info
+    end
+```
+
+- **复现抓手**：训练可用 `examples/finetune.sh`（支持 `--embodiment-tag UNITREE_G1_SONIC`）或直接调用 `gr00t/experiment/launch_finetune.py`；服务端启动 `gr00t/eval/run_gr00t_server.py` 后，客户端通过 `gr00t/policy/server_client.py` 中的 `PolicyClient` 获取动作。
+- **核查源码文件**：`README.md`、`examples/GR00TWholeBodyControl/README.md`、`examples/finetune.sh`、`gr00t/experiment/launch_finetune.py`、`gr00t/experiment/experiment.py`、`gr00t/eval/open_loop_eval.py`、`gr00t/eval/run_gr00t_server.py`、`gr00t/policy/server_client.py`、`gr00t/policy/gr00t_policy.py`。
+
 ## 基准任务规格
 
 | 字段 | 内容 |

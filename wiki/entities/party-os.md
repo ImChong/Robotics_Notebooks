@@ -99,6 +99,10 @@ flowchart TB
 | 全身操作 | Humanoid Whole-Body Manipulation | BFM 运控基座 + 可 scale 的 VLA / World Model |
 | 智能体 | Agentic Humanoid | Agent + Skills 低成本高智能 |
 
+## 源码运行时序图
+
+**不适用**：`Roboparty/Party_OS`（`main` 分支）定位为聚合索引与路线图仓库，经核查仅包含 `README.md` / `README_zh.md`、`docs/mimiclite-vs-partymimic*.md`、`assets/` 图表资源以及维护路线图与 Star 徽章的辅助脚本（`scripts/build_roadmap.py`、`scripts/update_stars.py`），不含机器人数据生成、训练、推理或真机控制的可运行代码。实际可运行的训练、重定向与部署入口分别维护在独立子仓库与对应实体页中（如 [human-humanoid-tools](./human-humanoid-tools.md)、[MimicLite](./mimiclite.md)、[PartyMimic](./partymimic.md)、[UFO](./roboparty-ufo.md)、[I-BFM](./paper-i-bfm.md)、[P-BFM](./paper-p-bfm.md)）。
+
 ## 工程实践
 
 **官方 README 复核（2026-11-21）：** 除首批 hhtools / MimicLite / UFO，当前项目表还列有 [PartyMimic](./partymimic.md)（监督运动跟踪）、[I-BFM](./paper-i-bfm.md)、[P-BFM](./paper-p-bfm.md)、[INTACT](./paper-intact.md) 与 [SADL](./paper-sadl-2611-21596.md)；数据生成 `generate` 仍标 Coming soon。它们是分别维护的项目，**不能把聚合索引当作可直接运行的单一软件栈**。完整项目表见[官方 README](https://github.com/Roboparty/Party_OS)；本次通读范围记于[来源归档](../../sources/repos/party_os.md)。

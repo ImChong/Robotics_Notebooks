@@ -55,6 +55,31 @@ flowchart TD
   P -.->|路线图 TODO| PP["后处理 / tracking<br/>尚未实现"]
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 管线入口 (commands/run_pipeline.sh -> scripts/pipeline.py)
+  participant HYM as HY-Motion-1.0 (third_party/HY-Motion-1.0/local_infer.py)
+  participant Cvt as 格式桥接 (g2h/convert_smpl.py)
+  participant GMR as GMR 重定向 (third_party/GMR/scripts/smplx_to_robot_dataset.py)
+  participant Vis as 并排预览 (scripts/visualise.py -> g2h/visualise/motion_player.py)
+
+  CLI->>HYM: run_t2m() 通过 run_subprocess() 调用 local_infer.py 推理文本提示
+  HYM-->>CLI: 输出 SMPL 参数序列 (*.npz)
+  CLI->>Cvt: run_convert() 遍历 *.npz 调用 convert_to_smplx()
+  Cvt-->>CLI: 补全 165 维 SMPL-X/AMASS 字典字段并保存为 .npz
+  CLI->>GMR: run_retarget() 通过 run_subprocess() 传入 --src_folder / --robot / --tgt_folder
+  GMR-->>CLI: 执行几何 IK 重定向并写出 robot_motion.pkl
+  Vis->>Vis: 解析 ROBOT_XML_DICT[robot] 并调用 play() 创建 viser.ViserServer
+  Vis->>Vis: 实例化 SMPLXViserPlayer 与 MJCFViserPlayer，按 1/fps 循环 get_frame() 同步回放
+```
+
+核心复现路径：先执行 `commands/run_pipeline.sh`（内部调用 `scripts/pipeline.py` 串联 `run_t2m`、`run_convert`、`run_retarget`），再用 `commands/run_visualise.sh`（调用 `scripts/visualise.py` → `g2h.visualise.play`）加载人机运动文件做 viser 对比检查。
+
+核对源码（`RavenLeeANU/Gen2Humanoid` `master` 分支）：`commands/run_pipeline.sh`、`scripts/pipeline.py`、`g2h/convert_smpl.py`、`scripts/visualise.py`、`g2h/visualise/motion_player.py`、`g2h/visualise/smplx_viser.py`、`g2h/visualise/robot_viser.py`。
+
 ## 工程实践
 
 | 维度 | 说明 |
