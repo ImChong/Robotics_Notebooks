@@ -161,6 +161,9 @@ sequenceDiagram
 - [ORB-SLAM3](orb-slam3.md) — 视觉 SLAM 对照
 - [激光/惯性视觉 SLAM 选型](../comparisons/lidar-slam-lio-vio-selection.md) — 传感器选型语境
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [rtisslam_arxiv_2610_18479.md](../../sources/papers/rtisslam_arxiv_2610_18479.md) — 论文摘录与开源核查

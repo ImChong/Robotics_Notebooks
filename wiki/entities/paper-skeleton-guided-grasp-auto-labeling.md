@@ -95,6 +95,8 @@ sequenceDiagram
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [embodied-station-2026-10-30-28-papers-technology-map](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)
 
+- [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [skeleton_guided_grasp_auto_labeling_arxiv_2610_38443.md](../../sources/papers/skeleton_guided_grasp_auto_labeling_arxiv_2610_38443.md)

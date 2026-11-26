@@ -169,6 +169,9 @@ sequenceDiagram
 - [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — RGB-D 候选轨迹和仿真到真机导航对照
 - [导航与 SLAM 自主系统栈](../overview/navigation-slam-autonomy-stack.md) — 导航模块的系统级上下游关系
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [DevGRU 论文归档](../../sources/papers/devgru.md)

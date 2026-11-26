@@ -159,6 +159,9 @@ flowchart LR
 - [FocusNav](./paper-notebook-focusnav.md) — 直接联合局部导航与人形关节控制的对照
 - [NavDP](./paper-notebook-navdp-learning-sim-to-real-navigation-diffusion.md) — 仿真 RGB-D + critic 生成选轨的扩散对照
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [Paper Notebooks 原始归档](../../sources/papers/humanoid_pnb_egonav.md)

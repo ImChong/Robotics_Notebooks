@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：编译 `examples/0.basic.quick_start` 后运行其生成的 `quick_start` 可执行文件。本图只覆盖仓库内示例程序对 SDK 的调用；`libOrbbecSDK` 核心实现在仓库中是预编译库（仓库只含头文件与 `.so`），其内部流程不在本图范围内，不臆造。

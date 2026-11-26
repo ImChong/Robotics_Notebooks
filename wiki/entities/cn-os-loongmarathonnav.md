@@ -62,6 +62,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 源码运行时序图
 
 入口：`python3 src/robot_control_panel.py`（ROS Noetic；脚本启动时自动 `source devel/setup.bash` 并在无 roscore 时拉起 `roscore`。面板按钮依次调用 `roslaunch` 与 `python3`，分别对应下图各模块）。

@@ -147,6 +147,8 @@ sequenceDiagram
 - [VLN 开源复现范式](../overview/vln-open-source-repro-paradigms.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — SatNav 是 UAV-VLN 数据/基准，可按其 ③ 任务成功率层与 ④ 卫星→真实观测迁移层理解评测口径
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [arXiv:2609.31507 摘录](../../sources/papers/satnav_arxiv_2609_31507.md)

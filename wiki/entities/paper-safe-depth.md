@@ -119,6 +119,8 @@ sequenceDiagram
 - [zero-shot-object-navigation](../tasks/zero-shot-object-navigation.md)
 - [safety-filter](../concepts/safety-filter.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [原论文及阅读进度](../../sources/papers/safe_depth_arxiv_2611_13769.md)

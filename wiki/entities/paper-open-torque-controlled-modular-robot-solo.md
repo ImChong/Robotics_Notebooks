@@ -192,6 +192,8 @@ sequenceDiagram
 - [阻抗控制](../concepts/impedance-control.md)
 - [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md](../../sources/papers/open_torque_controlled_modular_robot_solo_arxiv_1910_00093.md)

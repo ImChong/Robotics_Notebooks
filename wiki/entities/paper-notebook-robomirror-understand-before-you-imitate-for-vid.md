@@ -82,6 +82,11 @@ flowchart LR
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：对照相关方法与适用场景。
+- [Imitation Learning](../methods/imitation-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [humanoid_pnb_robomirror-understand-before-you-imitate-for-vid.md](../../sources/papers/humanoid_pnb_robomirror-understand-before-you-imitate-for-vid.md)

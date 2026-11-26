@@ -122,6 +122,8 @@ flowchart LR
 - [SHRIMP](./paper-shrimp.md) — 自然语言→机器人任务（不同模态，可组合）
 - [WALL-SS](./paper-wall-ss.md) — 同机构 next-scale 世界模型
 
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [X2Streaming-TTS 论文归档](../../sources/papers/x2streaming_tts_arxiv_2608_18661.md)

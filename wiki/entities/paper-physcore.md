@@ -160,6 +160,8 @@ flowchart LR
 - [KineBench](./paper-kinebench.md) — 可执行性评测（刚体操纵侧）
 - [CoRe（人形重定向，同名消歧）](./paper-core.md) / [CoRe 软件](paper-core.md)
 
+- [工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [PhysCoRe 论文归档（arXiv:2607.20653）](../../sources/papers/physcore_arxiv_2607_20653.md)

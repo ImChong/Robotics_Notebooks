@@ -125,6 +125,8 @@ sequenceDiagram
 - [AnyWorld](./paper-anyworld.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 
+- [视频生成与编辑流程](../methods/video-generation-workflow.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - [项目页](https://dreamdojo-world.github.io/)

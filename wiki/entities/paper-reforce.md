@@ -83,6 +83,10 @@ flowchart LR
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [vla-robustness-9-papers-technology-map](../overview/vla-robustness-9-papers-technology-map.md)
 
+## 关联页面
+
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [reforce_arxiv_2608_15560](../../sources/papers/reforce_arxiv_2608_15560.md)

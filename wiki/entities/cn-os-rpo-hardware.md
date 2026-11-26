@@ -74,6 +74,9 @@ flowchart TD
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照相关方法与适用场景。
+- [参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [rpo_hardware 源码归档](../../sources/repos/rpo_hardware.md)（<https://github.com/Roboparty/rpo_hardware>）

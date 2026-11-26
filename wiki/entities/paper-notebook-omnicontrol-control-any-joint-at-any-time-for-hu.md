@@ -175,6 +175,8 @@ sequenceDiagram
 - 离散生成式控制：[GPC](./paper-gpc-generative-pretrained-controllers.md)
 - 学习路线：[动作生成纵深](../../roadmap/depth-motion-generation.md)
 
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文来源归档](../../sources/papers/humanoid_pnb_omnicontrol-control-any-joint-at-any-time-for-hu.md)

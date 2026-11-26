@@ -172,6 +172,8 @@ flowchart TD
 - [ManiSkill3 GPU 并行仿真平台](paper-notebook-maniskill3-gpu-parallelized-robotics-simulation.md)
 - [Code-as-Monitor 论文节点](paper-agentic-2412-04455.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

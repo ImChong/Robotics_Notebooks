@@ -182,6 +182,11 @@ sequenceDiagram
 - [Ultra-Fusion（实体）](./paper-ultra-fusion-multi-sensor-slam.md) — 另一路线：统一滑窗多传感器 **定位韧性**，亦可扩展 3DGS 建图
 - [FAST-LIO（实体）](./fast-lio.md) — 轻量 3D LIO 基线，无辐射场地图
 
+## 关联页面
+
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [gaussian_lic2_arxiv_2507_04004.md](../../sources/papers/gaussian_lic2_arxiv_2507_04004.md)

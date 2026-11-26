@@ -144,6 +144,8 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [地形适应](../concepts/terrain-adaptation.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [Toward Lunar Legged Robots 论文归档](../../sources/papers/toward_lunar_legged_robots_arxiv_2610_12276.md)

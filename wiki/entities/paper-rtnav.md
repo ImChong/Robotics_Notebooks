@@ -130,6 +130,8 @@ RTNav 说明零样本 ObjectNav 的实际表现取决于计算速度与模块调
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md)
 - [Habitat-Sim](./habitat-sim.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [论文摘录](../../sources/papers/rtnav_arxiv_2608_26496.md)

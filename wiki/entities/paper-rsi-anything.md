@@ -128,6 +128,8 @@ RSI-Anything 的主要贡献是把世界模型预测接入一个具有评估和�
 - [递归自我改进](../concepts/recursive-self-improvement.md) — 强定义与任务闭环案例的边界。
 - [生成式世界模型](../methods/generative-world-models.md) — 预测式世界模型的方法坐标。
 
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [RSI-Anything 技术报告](../../sources/papers/rsi_anything_arxiv_2610_13912.md)

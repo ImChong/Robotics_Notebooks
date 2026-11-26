@@ -98,6 +98,8 @@ flowchart TD
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [embodied-station-2026-10-29-58-papers-technology-map](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [vectile_arxiv_2610_31472.md](../../sources/papers/vectile_arxiv_2610_31472.md)

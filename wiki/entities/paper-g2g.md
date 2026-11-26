@@ -180,6 +180,9 @@ sequenceDiagram
 - [Glob3R](./paper-glob3r.md) — 离线全局 SfM 对照
 - [VGG-T³](./paper-vgg-ttt.md) — VGGT 系几何基础模型对照
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - 论文 PDF：<https://arxiv.org/pdf/2606.08284>

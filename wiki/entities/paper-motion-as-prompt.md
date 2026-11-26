@@ -120,6 +120,8 @@ CLEVRER / Something-Something-v2 运动推理准确率提升；GPT-5.5 分别 **
 - [Hand Visibility Detector](./paper-hand-visibility-detector.md)
 - [机器人感知栈选型](../queries/robot-perception-stack-selection-loop.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [MaP 论文摘录](../../sources/papers/motion_as_prompt_arxiv_2608_11655.md)

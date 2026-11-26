@@ -159,6 +159,8 @@ sequenceDiagram
 - [Fidelity Gap](./paper-fidelity-gap-egocentric-video.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 
+- [视频生成与编辑流程](../methods/video-generation-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [egowm_arxiv_2601_15284.md](../../sources/papers/egowm_arxiv_2601_15284.md)

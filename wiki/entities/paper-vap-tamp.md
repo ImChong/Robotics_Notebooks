@@ -86,6 +86,8 @@ flowchart LR
 - [轨迹优化 / TAMP 方法页](../methods/trajectory-optimization.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [IROS 2026 九篇获奖盘点（公众号）](../../sources/blogs/wechat_iros_2026_awards_9_papers_2026-10-02.md)

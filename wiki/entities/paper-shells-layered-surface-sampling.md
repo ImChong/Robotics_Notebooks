@@ -152,6 +152,8 @@ flowchart TB
 - [人形训练数据管线](../queries/humanoid-training-data-pipeline.md) — 面部视频/注册数据在数据金字塔中的分层
 - [遥操作](../tasks/teleoperation.md) — telepresence / 表情通道对固定拓扑面部几何的需求
 
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [SHELLS 论文摘录（arXiv:2605.31283）](../../sources/papers/shells_arxiv_2605_31283.md)

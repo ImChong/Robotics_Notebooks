@@ -166,6 +166,9 @@ flowchart TD
 - [Video-as-Simulation 概念页](../concepts/video-as-simulation.md)
 - [Sim2Real 迁移基础](../concepts/sim2real.md)
 
+- [Manipulation](../tasks/manipulation.md)：对照相关方法与适用场景。
+- [强化学习](../methods/reinforcement-learning.md)：对照在合成操作场景中用迭代生成的奖励训练任务策略，再采集轨迹的阶段。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

@@ -177,6 +177,8 @@ sequenceDiagram
 - [tactile-intelligence-nine-papers-map.md](../overview/tactile-intelligence-nine-papers-map.md) — 同批九篇触觉论文总览
 - [sun-awesome-touch-technology-map.md](../overview/sun-awesome-touch-technology-map.md) — 触觉技术策展地图
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：了解触觉数据采集与接口。
+
 ## 参考来源
 
 - [anyskin_reading_arxiv_2409_08276.md](../../sources/papers/anyskin_reading_arxiv_2409_08276.md) — `arXiv:2409.08276v3` 全文通读与实验数值核对档案

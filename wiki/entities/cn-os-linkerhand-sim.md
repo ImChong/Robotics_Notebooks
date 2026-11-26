@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [Manipulation](../tasks/manipulation.md)：对照相关方法与适用场景。
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：`roslaunch linker_hand_mujoco_ros linker_hand_mujoco.launch hand_type:=left hand_joint:=L10`（ROS Noetic，对应 `linker_hand_mujoco_ros/scripts/linker_hand.py`；README 另列 Isaac Gym、PyBullet、ROS 2 Jazzy 等变体，本图未画）。节点只订阅 `/cb_<hand_type>_hand_control_cmd`（`sensor_msgs/JointState`），发布者不在本仓库内。`__main__` 中的 `ControlWindow` 滑块 GUI 被注释，未启动。

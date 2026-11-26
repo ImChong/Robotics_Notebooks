@@ -190,6 +190,9 @@ sequenceDiagram
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：了解工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/harnesspro_arxiv_2610_26770.md)

@@ -61,6 +61,9 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人视觉感知流程](../methods/robot-visual-perception.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：`cd inference_code/hm3d-online && python goat-nav.py`（OVON 评测为同目录 `ovon-nav.py`；训练入口为 `train_code/run_train.sh` → `swift/cli/sft.py`）。以下为 `goat-nav.py` 的闭环推理主循环。

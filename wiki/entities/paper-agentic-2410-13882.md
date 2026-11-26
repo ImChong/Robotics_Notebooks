@@ -146,6 +146,8 @@ Articulate-Anything 证明了将三维铰接物体重建重新表述为「高层
 - [机器人操作任务](../tasks/manipulation.md)
 - [Agentic Real2Sim：VLM 编排的物理 Real2Sim](paper-agentic-real2sim.md)
 
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

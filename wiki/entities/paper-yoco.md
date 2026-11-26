@@ -114,6 +114,8 @@ flowchart TD
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 遥操作中人手到机器人的适配环节
 - [AdaDex](./paper-adadex.md) — 同样面向灵巧手与人手轨迹的相近工作
 
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [YOCO 论文来源归档](../../sources/papers/yoco_arxiv_2610_11657.md)

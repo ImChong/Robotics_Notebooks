@@ -142,6 +142,9 @@ flowchart TB
 - [DeepSeek Harness](./deepseek-harness.md) — DeepSeek 官方可组合宿主（Cordis 插件树；实现层对照，非 evolver）
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化中的验证与共治
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：了解工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [harnessbank_arxiv_2607_13683.md](../../sources/papers/harnessbank_arxiv_2607_13683.md) — 论文摘录与开源核查

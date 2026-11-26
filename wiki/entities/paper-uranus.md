@@ -127,6 +127,8 @@ sequenceDiagram
 - [Newton Physics](./newton-physics.md)：机器人/物理仿真工具链。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：Uranus 作为策略闭环评测环境时，对应其中「世界模型预测保真度评测」层，需要用真机或物理仿真抽样复核。
 
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文与开源状态归档](../../sources/papers/uranus_arxiv_2609_24815.md)

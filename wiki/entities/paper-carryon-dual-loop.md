@@ -120,6 +120,8 @@ sequenceDiagram
 - [HDH（动作验证器）](./paper-hdh-action-verifier.md)：都不更新 VLA 主策略，但分别解决执行恢复与动作选择。
 - [ERR（错误恢复与重规划）](./paper-err-replan-error-recovery.md)：关联执行失败检测、恢复与重规划机制。
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [论文归档](../../sources/papers/carryon-dual-loop_arxiv_2610_21453.md)

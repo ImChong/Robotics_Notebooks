@@ -163,6 +163,9 @@ flowchart TB
 - [SpatialVLA](paper-spatialvla.md)
 - [SPA-Bench：VLA 空间接地评测](paper-spa-bench-spatial-grounding-vla.md)
 
+- [视觉表征学习](../methods/visual-representation-learning.md)：对照相关方法与适用场景。
+- [操作任务（Manipulation）](../tasks/manipulation.md)：对照夹爪到目标的距离如何成为抓放轨迹的奖励信号；不把距离估计当成完整策略。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

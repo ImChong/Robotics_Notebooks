@@ -113,6 +113,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [noetix_sdk_bumi 源码归档](../../sources/repos/noetix_sdk_bumi.md)（<https://github.com/Noetix-Robotics/noetix_sdk_bumi>）

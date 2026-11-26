@@ -91,6 +91,9 @@ sequenceDiagram
 - [Micromouse](../concepts/micromouse.md) — 迷宫竞速压缩栈
 - [mpc_python](./mpc-python.md) — 非 ROS 的 CVXPY iMPC + MuJoCo MuSHR 路径跟踪 demo
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [机器人软件系统集成](../methods/robot-software-integration.md)：对照相关方法与适用场景。
+
 ## 推荐继续阅读
 
 - https://mushr.io/

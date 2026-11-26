@@ -41,6 +41,8 @@ summary: 'EvoNav: Evolutionary Reward Function Design for Robot Navigation with 
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

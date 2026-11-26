@@ -163,6 +163,8 @@ flowchart LR
 - [HUMOTO](./paper-notebook-humoto-a-4d-dataset-of-mocap-human-object-intera.md)
 - [模仿学习](../methods/imitation-learning.md)
 
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [HUMAPS-4D 论文摘录](../../sources/papers/humaps4d_cvpr_2026.md)

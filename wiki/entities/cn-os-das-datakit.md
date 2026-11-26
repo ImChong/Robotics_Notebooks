@@ -66,6 +66,9 @@ original:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：对照相关方法与适用场景。
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
+
 ## 源码运行时序图
 
 入口：`python mcap_to_h5.py --mcap-file <x.mcap> --out-path <dir>`，可加 `--stereo-camera`、`--tactile`、`--vio`、`--imu`、`--resume`；也可用 `--task-dir` 读取 `vio_result.json` 中的 `success_mcap_files` 批量处理。

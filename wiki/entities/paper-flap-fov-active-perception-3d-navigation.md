@@ -129,6 +129,9 @@ flowchart LR
 - [MIGHTY](./paper-mighty-hermite-spline-trajectory-planning.md) — 另一联合时空软约束 UAV 规划对照
 - [PX4 Autopilot](./px4-autopilot.md) · [MAVSDK](./mavsdk.md) — 常见执行层
 
+- [机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照导航目标、规划与执行。
+- [Trajectory Optimization](../methods/trajectory-optimization.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [FLAP 论文摘录（arXiv:2606.17630）](../../sources/papers/flap_arxiv_2606_17630.md)

@@ -148,6 +148,8 @@ flowchart TD
 - [具身语义与认知地图](../concepts/embodied-semantic-cognitive-map.md)
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人自主探索](../tasks/autonomous-exploration.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

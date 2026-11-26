@@ -102,6 +102,9 @@ flowchart TD
 - [RLE-Bench](./rle-bench.md) — 同样面向 coding agent 的工程能力评测
 - [AI Agent 评估](../concepts/ai-agent-evaluation.md) — agent 结果评估的背景
 
+- [智能体工具调用接口](../methods/agent-tool-use-interface.md)：了解工具契约、执行与反馈。
+- [智能体规划与反馈执行](../methods/agent-planning-feedback.md)：了解任务分解、行动与反馈。
+
 ## 参考来源
 
 - [Agensh 论文来源归档](../../sources/papers/agensh_arxiv_2609_26781.md)

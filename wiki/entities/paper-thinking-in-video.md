@@ -200,6 +200,8 @@ sequenceDiagram
 - [EWMBench](./ewmbench.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ② 世界模型预测保真度评测层（CGDJ 审计生成器因果一致性）
 
+- [视频生成与编辑](../methods/video-generation-workflow.md)：了解生成条件与时间一致性。
+
 ## 参考来源
 
 - [Thinking in Video 论文归档（arXiv:2607.17523）](../../sources/papers/thinking_in_video_arxiv_2607_17523.md)

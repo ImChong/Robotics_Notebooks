@@ -78,6 +78,7 @@ flowchart TB
 - [操作任务](../tasks/manipulation.md)
 - [TF-ART：触觉和力觉学习综述](./paper-tf-art-tactile-force-survey.md)
 
+- [机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相关方法与适用场景。
 
 ## 参考来源
 

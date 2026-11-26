@@ -103,6 +103,8 @@ flowchart TB
 - [MemCompiler](./paper-memcompiler-state-conditioned-memory.md) — 状态条件记忆编译与 Soft-Mem
 - [具身基础模型分类](../queries/embodied-fm-taxonomy-loop.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [SMA 论文摘录](../../sources/papers/spatial_memory_agent_arxiv_2608_12743.md)

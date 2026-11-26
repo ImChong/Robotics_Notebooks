@@ -42,6 +42,8 @@ summary: Steerable Vision-Language-Action Policies for Embodied Reasoning and Hi
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人控制系统架构](../methods/robot-control-architecture.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

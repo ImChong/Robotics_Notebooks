@@ -136,6 +136,9 @@ MonoGS 与同期高斯 SLAM 的最大区别是**支持单目输入**并采用异
 - [SplaTAM](./paper-splatam.md)
 - [Gaussian-SLAM（Yugay）](./paper-gaussian-slam.md)
 
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+- [视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照相关方法与适用场景。
+
 ## 参考来源
 
 - [MonoGS 原始论文通读档案](../../sources/papers/vision3d_monogs_primary_paper_20261108.md)

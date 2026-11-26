@@ -146,6 +146,9 @@ flowchart LR
 - [LiDAR SLAM / LIO / VIO 选型对比](../comparisons/lidar-slam-lio-vio-selection.md)
 - [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：语义分割输出如何进入建图与下游模块
 
+- [语义分割](../methods/fcn-semantic-segmentation.md)：了解像素级语义分类。
+- [机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：了解传感融合、定位与漂移。
+
 ## 参考来源
 
 - [sa-loam_arxiv_2106_11516.md](../../sources/papers/sa-loam_arxiv_2106_11516.md)
