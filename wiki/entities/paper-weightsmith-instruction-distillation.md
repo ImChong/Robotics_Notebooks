@@ -156,6 +156,8 @@ flowchart TD
 - [RoboLab](./robolab.md)、[Isaac Sim](./isaac-sim.md)：评测环境
 - [π0.5 开放世界 VLA](./paper-pi05-open-world-vla.md)：被编辑的基础策略系列
 
+- [π₀ 策略](../methods/pi0-policy.md)：了解论文使用的策略底座。
+
 ## 参考来源
 
 - [原文归档](../../sources/papers/weightsmith_instruction_distillation_arxiv_2611_11894.md)

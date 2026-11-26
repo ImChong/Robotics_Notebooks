@@ -132,6 +132,8 @@ IRWOZ 2.0 官方数据包以 IEEE Dataport 为准。
 - [Manipulation](../tasks/manipulation.md)
 - [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [irwoz_2_arxiv_2609_04030](../../sources/papers/irwoz_2_arxiv_2609_04030.md)

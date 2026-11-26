@@ -198,6 +198,8 @@ OmniArm 6/7（6 号在重力下持姿已核）、OmniTug 500（**无碰撞体**�
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Agent Reach](./agent-reach.md) — 另一类「给编码代理的 doctor + 脚手架」（信息接入，非物理仿真）
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [OmniSim 仓库归档](../../sources/repos/omnisim.md)

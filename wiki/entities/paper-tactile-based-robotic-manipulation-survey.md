@@ -120,6 +120,9 @@ flowchart TD
 - [Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md) — 视觉和触觉信息融合
 - [TF-ART 综述](./paper-tf-art-tactile-force-survey.md) — 按多阶段策略–控制管线组织的相关综述
 
+- [机器人操作](../tasks/manipulation.md)：对照机器人接触与物体操作任务。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+
 ## 参考来源
 
 - [Tactile-Based Robotic Manipulation: From Mechanics-Driven to Data-Driven Perspectives（arXiv:2610.30438）](../../sources/papers/tactile_based_robotic_manipulation_survey_arxiv_2610_30438.md)

@@ -120,6 +120,11 @@ H2O 的完整名字是 Human-to-Humanoid。它要解决的问题很直接：能�
 - 语音高层 locomotion（非全身动捕）对照：[Immersive Social VR+LLM](./paper-immersive-social-vr-llm-humanoids.md)
 - 原始 source：[humanoid_rl_stack_07_learning_human_to_humanoid_real_time_whole_body.md](../../sources/papers/humanoid_rl_stack_07_learning_human_to_humanoid_real_time_whole_body.md)
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体运动映射。
+
 ## 参考来源
 
 - [humanoid_rl_stack_07_learning_human_to_humanoid_real_time_whole_body.md](../../sources/papers/humanoid_rl_stack_07_learning_human_to_humanoid_real_time_whole_body.md) — 42 篇栈策展摘录

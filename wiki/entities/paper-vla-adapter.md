@@ -108,6 +108,8 @@ sequenceDiagram
 - [openvla](paper-openvla.md)
 - [paper-reflexvla](./paper-reflexvla.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [vla-adapter_arxiv_2509_09372.md](../../sources/papers/vla-adapter_arxiv_2509_09372.md)

@@ -115,6 +115,8 @@ README 的真实快速测试配置使用 `configs/model_servers/db_cogact/libero
 - [MolmoAct2](./paper-molmoact2.md)
 - [2026 开源对比](../comparisons/vla-open-source-ecosystem-2026-three-shifts.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [Ai2 官方 GitHub / README 通读归档](../../sources/repos/vla-evaluation-harness.md)

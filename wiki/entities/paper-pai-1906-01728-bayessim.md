@@ -114,6 +114,9 @@ Bayesian domain randomization approach for data-efficient sim-to-real adaptation
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+- [PPO](../methods/ppo.md)：用于理解策略更新的背景。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_1906_01728_bayessim.md`](../../sources/papers/pai_awesome_1906_01728_bayessim.md) — 本条目策展摘录

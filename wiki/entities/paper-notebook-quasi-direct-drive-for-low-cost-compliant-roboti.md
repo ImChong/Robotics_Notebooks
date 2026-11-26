@@ -165,6 +165,9 @@ sequenceDiagram
 - 项目选型：[Open-source QDD Actuator Projects](../comparisons/open-source-qdd-actuator-projects.md)
 - 系统闭环：[执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — Blue 对应力矩指令到真实关节的硬件/固件链
 
+- [机器人操作](../tasks/manipulation.md)：了解机械臂操作任务。
+- [导纳控制](../methods/admittance-control.md)：对照接触柔顺控制方法。
+
 ## 参考来源
 
 - [论文进度与原始资料归档](../../sources/papers/humanoid_pnb_quasi-direct-drive-for-low-cost-compliant-roboti.md)

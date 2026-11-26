@@ -90,6 +90,11 @@ flowchart LR
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 同名消歧：[SPARK（骨架对齐重定向）](./paper-spark-skeleton-aligned-retargeting.md)
 
+## 关联页面
+
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [humanoid_pnb_spark.md](../../sources/papers/humanoid_pnb_spark.md)

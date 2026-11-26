@@ -109,6 +109,11 @@ flowchart TD
 - 原始 source：[bfm_awesome_case_arxiv_2309_11351.md](../../sources/papers/bfm_awesome_case_arxiv_2309_11351.md)
 - 对照：[CMP](./paper-cmp.md) — 不切数据集、不学条件 skill 子集，在原参考空间按上下文软重权
 
+## 关联页面
+
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [bfm_awesome_case_arxiv_2309_11351.md](../../sources/papers/bfm_awesome_case_arxiv_2309_11351.md) — awesome-bfm 策展摘录

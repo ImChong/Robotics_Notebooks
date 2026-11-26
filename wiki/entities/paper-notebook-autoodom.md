@@ -197,6 +197,9 @@ $$
 - 同类腿式里程计笔记：[paper-notebook-learning-contact-representation-for-leg-odometry](paper-notebook-learning-contact-representation-for-leg-odometry.md)
 - 仿真训练框架：[paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human](paper-notebook-booster-gym-an-end-to-end-rl-framework-for-human.md)
 
+- [足式运动](../tasks/locomotion.md)：了解本体感知应用场景。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：对照其他里程计感知路线。
+
 ## 参考来源
 
 - [humanoid_pnb_autoodom.md](../../sources/papers/humanoid_pnb_autoodom.md)

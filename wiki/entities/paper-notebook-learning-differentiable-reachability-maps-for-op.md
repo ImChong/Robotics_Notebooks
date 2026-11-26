@@ -80,6 +80,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动生成的优化约束。
+- [人形运动控制](../tasks/humanoid-locomotion.md)：了解全身运动应用场景。
+
 ## 参考来源
 
 - [humanoid_pnb_learning-differentiable-reachability-maps-for-op.md](../../sources/papers/humanoid_pnb_learning-differentiable-reachability-maps-for-op.md)

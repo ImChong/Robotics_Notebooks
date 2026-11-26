@@ -120,6 +120,9 @@ flowchart TD
 - [ActionCodec2 流式动作分词](./paper-actioncodec2-streaming-action-tokenizer.md) — 动作表示与推理时延优化的独立方向；在 ManiLadder 上的效果仍需同协议实验验证
 - [具身模型评测基准选型](../overview/hub-embodied-eval-benchmark.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作与抓取任务。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [论文正文核读归档](../../sources/papers/maniladder-arxiv-2611-16374.md)

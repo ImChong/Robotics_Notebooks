@@ -79,6 +79,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+- [PPO](../methods/ppo.md)：用于理解策略更新的背景。
+
 ## 参考来源
 
 - [humanoid_pnb_zerowbc.md](../../sources/papers/humanoid_pnb_zerowbc.md)

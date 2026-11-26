@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 导航基准显式对齐 sim 与真机同构场景，正是该闭环第 ④ 层「sim↔real 评测 gap 校准」要的那种对照装置
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_benchmark_021_robothor.md`](../../sources/repos/pai_awesome_benchmark_021_robothor.md) — 本条目策展摘录

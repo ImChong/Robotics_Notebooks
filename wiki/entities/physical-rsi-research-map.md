@@ -123,6 +123,9 @@ flowchart TD
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 研究地图中的验证与评测、基准与平台主题可按该链的四层评测选型归位
 - [google-grounding-ai-agents-wet-labs](google-grounding-ai-agents-wet-labs.md) — Google Research 博客：湿实验自主化的三条研究线（接地到机器人 / 适配体闭环 / 蛋白结合剂）（湿实验侧的自主化，非机器人本体）
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 推荐继续阅读
 
 - 配套论文 [arXiv:2610.18842](https://arxiv.org/abs/2610.18842)（库内暂无节点）

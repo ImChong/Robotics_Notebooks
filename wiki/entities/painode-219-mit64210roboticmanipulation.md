@@ -94,6 +94,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解操作任务。
+- [轨迹优化](../methods/trajectory-optimization.md)：对照运动规划与优化。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_method_219_mit-6-4210-robotic-manipulation.md`](../../sources/repos/pai_awesome_method_219_mit-6-4210-robotic-manipulation.md) — 本条目策展摘录

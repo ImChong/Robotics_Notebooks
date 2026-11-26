@@ -104,6 +104,11 @@ flowchart TD
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-07-loco-manip-interface.md](../overview/motion-cerebellum-category-07-loco-manip-interface.md)
 
+## 关联页面
+
+- [策略优化](../methods/policy-optimization.md)：了解策略训练目标。
+- [PPO](../methods/ppo.md)：用于理解策略更新的背景。
+
 ## 参考来源
 
 - [motion_cerebellum_survey_48_handoff.md](../../sources/papers/motion_cerebellum_survey_48_handoff.md)

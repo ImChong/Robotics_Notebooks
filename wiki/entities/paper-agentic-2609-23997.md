@@ -42,6 +42,8 @@ summary: 'RoboTalk: Learning Multi-Robot Communication and Coordination from Mul
 
 - [VLA 方法背景](../methods/vla.md)
 
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [官方 Awesome 快照归档](../../sources/repos/awesome-agentic-robots-survey-index.md)

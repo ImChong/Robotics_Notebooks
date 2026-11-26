@@ -127,6 +127,8 @@ sequenceDiagram
 - [VLA](../methods/vla.md)
 - [CLAP / 跨本体 9 篇技术地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [mistypilot_arxiv_2608_15549](../../sources/papers/mistypilot_arxiv_2608_15549.md)

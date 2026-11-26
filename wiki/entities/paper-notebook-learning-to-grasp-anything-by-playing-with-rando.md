@@ -127,6 +127,11 @@ flowchart LR
 - 分类页：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md)：了解抓取与操作任务。
+- [机器人策略学习](../methods/robot-policy-learning.md)：对照策略训练与零样本评估。
+
 ## 参考来源
 
 - [humanoid_pnb_learning-to-grasp-anything-by-playing-with-rando.md](../../sources/papers/humanoid_pnb_learning-to-grasp-anything-by-playing-with-rando.md)

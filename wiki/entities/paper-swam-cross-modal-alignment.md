@@ -122,6 +122,9 @@ sequenceDiagram
 - [WICL / RoboScript](./paper-world-in-context-learning-roboscript.md)
 - [Compass 1 持久导航](./paper-compass-1-navigation.md)
 
+- [生成式世界模型](../methods/generative-world-models.md)：对照世界预测与动作生成。
+- [机器人操作](../tasks/manipulation.md)：对照机器人接触与物体操作任务。
+
 ## 参考来源
 
 - [SWAM 论文摘录](../../sources/papers/swam-2611-12870.md)

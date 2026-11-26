@@ -90,6 +90,8 @@ flowchart TD
 - [模仿学习](../methods/imitation-learning.md)：为何低质量示范会被策略复刻。
 - [HDF5、MCAP 与 LeRobot 格式对比](../comparisons/hdf5-mcap-lerobot-data-formats.md)：区分日志容器和训练数据组织。
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [Argus 官方技术文章归档](../../sources/sites/pantheon-argus.md)

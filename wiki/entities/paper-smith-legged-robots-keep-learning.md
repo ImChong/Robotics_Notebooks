@@ -102,6 +102,9 @@ flowchart TD
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [腿足运动控制](../tasks/locomotion.md)：对照足式移动任务。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+
 ## 参考来源
 
 - [freedof_sim2real_36_smith-legged-robots-keep-learning.md](../../sources/papers/freedof_sim2real_36_smith-legged-robots-keep-learning.md)

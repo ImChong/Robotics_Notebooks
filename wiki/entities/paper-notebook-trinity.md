@@ -86,6 +86,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [机器人操作](../tasks/manipulation.md)：对照抓取与物体操作任务。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+
 ## 参考来源
 
 - [humanoid_pnb_trinity.md](../../sources/papers/humanoid_pnb_trinity.md)

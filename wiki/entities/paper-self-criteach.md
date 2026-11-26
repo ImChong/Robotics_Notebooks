@@ -127,6 +127,8 @@ sequenceDiagram
 - [StageGuard 子任务切换](./paper-stageguard.md)
 - [VLA](../methods/vla.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [论文原文核对](../../sources/papers/self_criteach_arxiv_2509_21543.md)

@@ -140,6 +140,8 @@ flowchart LR
 - 评测选型：[具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本文属于人体判断对齐的动作质量评测层
 - 路线入口：[人形拳击纵深](../../roadmap/depth-humanoid-boxing.md)
 
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [论文与深读笔记归档](../../sources/papers/humanoid_pnb_towards-motion-turing-test.md)

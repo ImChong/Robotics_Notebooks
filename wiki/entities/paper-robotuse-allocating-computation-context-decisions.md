@@ -101,6 +101,8 @@ sequenceDiagram
 - [paper-hardware-aware-llm-vlm-zero-shot-task-planning](./paper-hardware-aware-llm-vlm-zero-shot-task-planning.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [robotuse_allocating_computation_context_decisions_arxiv_2610_04929.md](../../sources/papers/robotuse_allocating_computation_context_decisions_arxiv_2610_04929.md)

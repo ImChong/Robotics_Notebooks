@@ -165,6 +165,8 @@ sequenceDiagram
 - [Latent RL Priors](paper-latent-rl-priors.md)：同样利用潜在表征，但任务是控制先验复用。
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：本方法不另接检测/分割头，而是直接池化 VLA 骨干对 agent/wrist 图像的内部特征做失败预测，可与显式感知栈方案（如 Robot-WATCHDOG 的物体图）对照取舍。
 
+- [π₀ 策略](../methods/pi0-policy.md)：对照 VLA 策略评估。
+
 ## 参考来源
 
 - [论文 v1 全文归档](../../sources/papers/vla-tug.md)

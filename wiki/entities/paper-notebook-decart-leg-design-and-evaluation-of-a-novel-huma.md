@@ -173,6 +173,11 @@ flowchart TD
 - 全身控制概念（QP-WBC）：[whole-body-control](../concepts/whole-body-control.md)
 - 并联 / 闭链关节解算（DecARt 踝为闭链，需 mimic 约束）：[humanoid-parallel-joint-kinematics](../concepts/humanoid-parallel-joint-kinematics.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+- [策略优化](../methods/policy-optimization.md)：了解策略训练与优化。
+
 ## 参考来源
 
 - [humanoid_pnb_decart-leg-novel-humanoid-robot-leg-with-decoupl.md](../../sources/papers/humanoid_pnb_decart-leg-novel-humanoid-robot-leg-with-decoupl.md)

@@ -96,6 +96,9 @@ Overview of robot learning from demonstration.
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [模仿学习](../methods/imitation-learning.md)：了解从示范中学习策略。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2312_08591_robot-learning-survey.md`](../../sources/papers/pai_awesome_2312_08591_robot-learning-survey.md) — 本条目策展摘录

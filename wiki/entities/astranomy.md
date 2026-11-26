@@ -183,6 +183,8 @@ sequenceDiagram
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 将 benchmark 结果放进策略评测与选型流程中解释。
 - [VLA](../methods/vla.md) — 视觉–语言–动作策略的常见结构与接口。
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [Astranomy NVIDIA SRL 项目页与全文核读归档](../../sources/sites/astranomy-nvidia.md)

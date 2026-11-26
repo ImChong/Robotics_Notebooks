@@ -109,6 +109,8 @@ flowchart LR
 - [Manipulation（任务总览）](../tasks/manipulation.md) — 操作学习数据与资产缺口背景。
 - [Sim2Real](../concepts/sim2real.md) — 仿真器质量与资产动力学一致性提醒。
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 参考来源
 
 - [PhysX-Omni 论文摘录（arXiv:2605.21572）](../../sources/papers/physx_omni_arxiv_2605_21572.md)

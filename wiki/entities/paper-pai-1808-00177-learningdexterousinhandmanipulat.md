@@ -117,6 +117,9 @@ Sim-to-real dexterous manipulation via automatic domain randomization.
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作与抓取任务。
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_1808_00177_learning-dexterous-in-hand-manipulat.md`](../../sources/papers/pai_awesome_1808_00177_learning-dexterous-in-hand-manipulat.md) — 本条目策展摘录

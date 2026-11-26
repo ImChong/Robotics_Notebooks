@@ -90,6 +90,9 @@ flowchart LR
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 对操作任务扰动 14 个变化轴，是该闭环第 ③ 层泛化评测与第 ④ 层「评测结论能否外推真机」之间的受控中间层
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作任务。
+- [具身智能体评测](../methods/embodied-agent-benchmarking.md)：对照泛化扰动与评测协议。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_benchmark_012_colosseum.md`](../../sources/repos/pai_awesome_benchmark_012_colosseum.md) — 本条目策展摘录

@@ -163,6 +163,10 @@ flowchart TB
 - [VLK](./paper-vlk-synthetic-loco-manipulation.md) — 语言–视觉–运动学合成与人形部署对照
 - [Unitree](../entities/unitree.md) — Go1 / H1 硬件语境
 
+## 关联页面
+
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解腿足策略与技能检索。
+
 ## 参考来源
 
 - [locovlm_arxiv_2602_10399.md](../../sources/papers/locovlm_arxiv_2602_10399.md)

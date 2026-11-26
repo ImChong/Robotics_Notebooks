@@ -159,6 +159,10 @@ flowchart TB
 - [Generative World Models](../methods/generative-world-models.md) — Wan 系视频先验
 - [RynnBrain 1.1 论文实体](./paper-rynnbrain-1-1.md)
 
+## 关联页面
+
+- [π₀ 策略](../methods/pi0-policy.md)：对照论文报告的策略基线。
+
 ## 参考来源
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)

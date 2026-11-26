@@ -94,6 +94,9 @@ flowchart TD
 - [Day 6 导读](../overview/humanoid-motion-intelligence-day6-engineering-deployment.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+- [机器人操作](../tasks/manipulation.md)：了解物体操作与抓取任务。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [Day 6 原文归档](../../sources/blogs/humanoid_motion_intelligence_day6_engineering_deployment_2026_10_07.md)

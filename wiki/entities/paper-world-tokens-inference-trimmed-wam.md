@@ -95,6 +95,8 @@ flowchart TD
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
 
+- [动作分块](../methods/action-chunking.md)：对照动作预测与执行接口。
+
 ## 参考来源
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)

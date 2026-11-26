@@ -205,6 +205,9 @@ flowchart TB
 - [Newton Physics](./newton-physics.md) — RoboFinals 主工业求解器后端
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 **原文阅读范围（2026-11-14）：** 官网完整通读 2025-12-04 发布页、2026-03-16 Industrial Benchmark、2026-08-18 Newton-native 全栈原文；源码未纳入「原文已读完」的归档范围，平台本身依旧属于商业服务。

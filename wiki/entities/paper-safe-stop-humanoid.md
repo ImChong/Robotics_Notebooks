@@ -116,6 +116,8 @@ flowchart TB
 - [Fail-Passive Gap](./paper-fail-passive-gap.md) — 认证层急停与「站住保持平衡」缺口
 - [三篇阅读坐标](../overview/g1-foothold-safe-stop-focus-technology-map.md)
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [safe_stop_humanoid_arxiv_2609_02358](../../sources/papers/safe_stop_humanoid_arxiv_2609_02358.md)

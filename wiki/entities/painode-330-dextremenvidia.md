@@ -106,6 +106,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [机器人操作](../tasks/manipulation.md)：对照物体操作任务。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_paper_330_dextreme-nvidia.md`](../../sources/repos/pai_awesome_paper_330_dextreme-nvidia.md) — 本条目策展摘录

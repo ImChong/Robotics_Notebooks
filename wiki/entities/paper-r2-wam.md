@@ -129,6 +129,9 @@ flowchart TB
 - [LIBERO 基准](../entities/libero-benchmark.md) — 评测基准
 - [LingBot-VA](../entities/paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) — 基座
 
+- [生成式世界模型](../methods/generative-world-models.md)：对照世界预测与动作生成。
+- [模仿学习](../methods/imitation-learning.md)：对照示范数据与策略训练。
+
 ## 参考来源
 
 - [r2_wam_arxiv_2610_18038.md](../../sources/papers/r2_wam_arxiv_2610_18038.md) — 论文摘录与开源核查

@@ -170,6 +170,9 @@ sequenceDiagram
 - [Thor](./paper-hrl-stack-42-thor.md)
 - [HTD 解耦 WBC](./paper-humanoid-touch-dream.md)
 
+- [移动操作](../tasks/loco-manipulation.md)：了解移动与操作协同。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [loco_manip_161_survey_109_falcon.md](../../sources/papers/loco_manip_161_survey_109_falcon.md) — `arXiv:2505.06776v2` 全文通读与 161 篇映射归档

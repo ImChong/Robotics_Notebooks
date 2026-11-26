@@ -189,6 +189,8 @@ sequenceDiagram
 
 - [MemT-1.0：面向原生记忆演化的记忆基础模型](./paper-memt-1-0-memory-native-evolution.md) — 对照内部记忆状态与逐步编译外部经验。
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [MemCompiler arXiv 摘录](../../sources/papers/memcompiler_arxiv_2605_07594.md)

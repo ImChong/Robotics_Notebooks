@@ -85,6 +85,11 @@ flowchart LR
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 同族硬件演化：[ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — 自 iCub3 优化出的人因协作整机（*Nat Mach Intell* 2026）
 
+## 关联页面
+
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体运动映射。
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+
 ## 参考来源
 
 - [humanoid_pnb_icub3-avatar-system-enabling-remote-fully-immers.md](../../sources/papers/humanoid_pnb_icub3-avatar-system-enabling-remote-fully-immers.md)

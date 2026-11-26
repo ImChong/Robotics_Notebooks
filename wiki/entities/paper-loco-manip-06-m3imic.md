@@ -182,6 +182,8 @@ sequenceDiagram
 - [Motion Cerebellum 分类 04：全身跟踪基座](../overview/motion-cerebellum-category-04-wbt-base.md)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解全身策略训练与评估。
+
 ## 参考来源
 
 - [m3imic_arxiv_2606_04829_reading.md](../../sources/papers/m3imic_arxiv_2606_04829_reading.md) — `arXiv:2606.04829v1` 原文全文通读归档

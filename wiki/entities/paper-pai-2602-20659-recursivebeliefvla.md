@@ -118,6 +118,9 @@ Belief-centric architecture for task tracking.
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [动作分块](../methods/action-chunking.md)：了解动作序列的预测与执行。
+- [视觉–语言–动作模型](../methods/vla.md)：用于理解视觉和语言条件化动作。
+
 ## 参考来源
 
 - [`sources/papers/pai_awesome_2602_20659_recursive-belief-vla.md`](../../sources/papers/pai_awesome_2602_20659_recursive-belief-vla.md) — 本条目策展摘录

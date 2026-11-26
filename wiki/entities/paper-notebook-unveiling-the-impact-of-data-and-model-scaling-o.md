@@ -112,6 +112,11 @@ flowchart TD
 - 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md)：对照跨本体运动映射。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [humanoid_pnb_unveiling-the-impact-of-data-and-model-scaling-o.md](../../sources/papers/humanoid_pnb_unveiling-the-impact-of-data-and-model-scaling-o.md)

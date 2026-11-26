@@ -83,6 +83,11 @@ flowchart TD
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 
+## 关联页面
+
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+- [扩散策略](../methods/diffusion-policy.md)：了解条件动作生成。
+
 ## 参考来源
 
 - [humanoid_pnb_rapid-hand-a-robust-affordable-perception-integr.md](../../sources/papers/humanoid_pnb_rapid-hand-a-robust-affordable-perception-integr.md)

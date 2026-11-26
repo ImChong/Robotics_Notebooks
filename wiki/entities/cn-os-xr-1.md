@@ -101,6 +101,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [视觉–语言–动作模型](../methods/vla.md)：了解视觉、语言与动作接口。
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md)：了解采集、同步与数据质量检查。
+
 ## 参考来源
 
 - [XR-1 源码归档](../../sources/repos/xr-1.md)（<https://github.com/Open-X-Humanoid/XR-1>）

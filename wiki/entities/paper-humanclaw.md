@@ -215,6 +215,10 @@ Progressive **find → navigate → interact**：
 - [VisionClaw](./paper-sa-2604-03486-visionclaw-always-on-ai-agents-through-smart-gla.md) — 同名 Claw、不同问题（可穿戴 always-on agent）
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — HumanCLAW 落在「冻结 VLM + 全身闭环行动」这一档；与 VLA 策略成功率榜不共享协议，选基准时按该页分层读
 
+## 关联页面
+
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 参考来源
 
 - [humanclaw_arxiv_2607_27180.md](../../sources/papers/humanclaw_arxiv_2607_27180.md)

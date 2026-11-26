@@ -171,6 +171,9 @@ sequenceDiagram
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 - [agibot-go-3-preview](agibot-go-3-preview.md) — AGIBOT GO-3 Preview（manip 分榜第一的核对）
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [官方 Challenge Skills README 与任务套件](https://github.com/AgibotTech/genie_sim/tree/main/source/geniesim_benchmark/skills/robocoliseum)

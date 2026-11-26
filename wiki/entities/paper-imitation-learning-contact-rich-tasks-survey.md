@@ -102,6 +102,8 @@ flowchart LR
 - [Tactile Sensing](../concepts/tactile-sensing.md) — 触觉传感与接触状态观测。
 - [具身数据采集四层术语地图](../concepts/embodied-data-collection-four-layers-taxonomy.md) — 示教来源、设备、模态与 episode 的层级关系。
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+
 ## 参考来源
 
 - [SAGE 原文：A survey on imitation learning for contact-rich tasks in robotics](../../sources/papers/contact_rich_imitation_learning_survey_doi_10_1177_02783649261417694.md)

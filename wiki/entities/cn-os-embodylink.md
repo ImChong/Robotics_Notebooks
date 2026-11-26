@@ -102,6 +102,9 @@ sequenceDiagram
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+- [遥操作](../tasks/teleoperation.md)：了解操作员与机器人之间的接口。
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照任务设置、接口与评估指标。
+
 ## 参考来源
 
 - [Embodylink 源码归档](../../sources/repos/embodylink.md)（<https://github.com/Dobot-Arm/Embodylink>）

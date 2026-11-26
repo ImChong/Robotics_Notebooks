@@ -143,6 +143,8 @@ GATOR 将 RGB、目标 mask 和 pointmap 的 patch 对齐特征进行局部混�
 - [Sim2Real](../concepts/sim2real.md) — 理解仿真资产质量如何影响策略迁移。
 - [机器人操作任务](../tasks/manipulation.md) — 仿真场景资产作为操作训练环境组成部分。
 
+- [机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照场景、资产与可运行性检查。
+
 ## 参考来源
 
 - [GATOR 论文摘录（arXiv:2610.11215）](../../sources/papers/gator_arxiv_2610_11215.md)

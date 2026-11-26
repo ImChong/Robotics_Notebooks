@@ -100,6 +100,11 @@ flowchart TD
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_06_video-gen-robot-policies.md](../../sources/papers/shenlan_wm_survey_06_video-gen-robot-policies.md)
 
+## 关联页面
+
+- [扩散运动生成](../methods/diffusion-motion-generation.md)：了解动作序列生成。
+- [行为克隆](../methods/behavior-cloning.md)：用于理解示范监督训练。
+
 ## 参考来源
 
 - [shenlan_wm_survey_06_video-gen-robot-policies.md](../../sources/papers/shenlan_wm_survey_06_video-gen-robot-policies.md)

@@ -149,6 +149,8 @@ flowchart LR
 - [人形机器人数据采集产业地图（Query）](../queries/humanoid-robot-data-collection-landscape.md)
 - [Arcadia](./paper-arcadia.md) — 另一「部署反馈写回模型」闭环
 
+- [机器人智能体执行框架](../methods/robot-agent-harness.md)：对照规划、工具调用与反馈的系统边界。
+
 ## 推荐继续阅读
 
 - [arXiv:2511.19647](https://arxiv.org/abs/2511.19647)

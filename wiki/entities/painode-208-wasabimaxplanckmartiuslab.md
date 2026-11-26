@@ -109,6 +109,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [足式运动](../tasks/locomotion.md)：了解四足运动任务。
+- [机器人策略学习](../methods/robot-policy-learning.md)：了解技能学习与评估。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_paper_208_wasabi-max-planck-martius-lab.md`](../../sources/repos/pai_awesome_paper_208_wasabi-max-planck-martius-lab.md) — 本条目策展摘录

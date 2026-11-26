@@ -93,6 +93,9 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照仿真与真实环境的迁移验证。
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [`sources/repos/pai_awesome_list_283_bipedal-robot-learning-collection.md`](../../sources/repos/pai_awesome_list_283_bipedal-robot-learning-collection.md) — 本条目策展摘录

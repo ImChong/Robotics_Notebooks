@@ -148,6 +148,10 @@ BiBo 要：用现成 VLM 的开放世界泛化 + 轻量桥接，**少数据**地
 - 执行器训练数据 HumanML3D：[dataset-bfm-humanml3d](./dataset-bfm-humanml3d.md)
 - 扩散运动生成：[diffusion-motion-generation](../methods/diffusion-motion-generation.md)
 
+## 关联页面
+
+- [强化学习](../methods/reinforcement-learning.md)：了解基于奖励的策略学习。
+
 ## 参考来源
 
 - [humanoid_pnb_endowing-gpt-4-with-a-humanoid-body.md](../../sources/papers/humanoid_pnb_endowing-gpt-4-with-a-humanoid-body.md)

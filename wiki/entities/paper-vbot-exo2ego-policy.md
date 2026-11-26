@@ -169,6 +169,8 @@ flowchart TD
 - [Generative Data Augmentation](../methods/generative-data-augmentation.md) — 合成/扩增数据的一般方法与质量控制
 - [具身数据纵深路线 Stage 4](../../roadmap/depth-embodied-data.md) — 本文在采集与合成双阶段的定位
 
+- [机器人策略学习流程](../methods/robot-policy-learning.md)：了解任务、训练信号与策略评估。
+
 ## 参考来源
 
 - [VBot Exo2Ego Policy 论文 v1 原文核读归档](../../sources/papers/vbot_exo2ego_arxiv_2611_16417.md) — §§1–7、Table 1–7、Appendix A–C
