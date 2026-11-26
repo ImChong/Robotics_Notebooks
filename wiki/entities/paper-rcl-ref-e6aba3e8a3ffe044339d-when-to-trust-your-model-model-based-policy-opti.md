@@ -53,17 +53,51 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 
 ## 核心机制（归纳）
 
-### 策展导读要点
+> 注：以下机制与评测指标基于通读开放获取原文全文核对补充。
 
-RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项目页为准。
+### 理论分析：何时信赖模型与分支短展开
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
+**MBPO（Model-Based Policy Optimization）**从理论与实证两方面回答了“在存在模型误差与策略分布偏移时，应如何安全使用学到的动力学模型进行策略优化”：
+
+- **全局模型展开的悲观界（Theorem 4.1）**：真实回报 $\eta[\pi]$ 与模型回报 $\hat{\eta}[\pi]$ 的差距受模型泛化误差 $\epsilon_m$ 与策略偏移 $\epsilon_\pi$ 控制：$C(\epsilon_m, \epsilon_\pi) = \frac{2\gamma r_{\max}(\epsilon_m + 2\epsilon_\pi)}{(1-\gamma)^2} + \frac{4r_{\max}\epsilon_\pi}{1-\gamma}$。由于长轨迹误差按 $(1-\gamma)^{-2}$ 二次累积，直接用完整模型轨迹几乎无法从理论上保证使用模型有收益。
+- **分支短展开与实证模型泛化（$k$-branched rollout, Theorem 4.2 & 4.3）**：改为从真实数据采集策略 $\pi_D$ 的状态分布 $d^{\pi_D}(s)$ 出发，仅在模型下按当前策略 $\pi$ 展开 $k$ 步（将**任务视野与模型视野解耦**）。尽管不加泛化假设的 Theorem 4.2 仍给出 $k^* = 0$，但实证测量表明随着真实样本量增大，模型对策略偏移的误差增长率 $\frac{d\epsilon_{m'}}{d\epsilon_\pi}$ 显著下降（模型可泛化至邻近新策略分布）。将线性近似 $\hat{\epsilon}_{m'}(\epsilon_\pi) \approx \epsilon_m + \frac{d\epsilon_{m'}}{d\epsilon_\pi}\epsilon_\pi$ 代入 Theorem 4.3 后，当 $\epsilon_{m'}$ 足够低时最优模型展开长度 $k^* > 0$，从理论上证明了“大量短步分支模型展开”的合理性。
+
+### 实用算法组件与训练管线（Algorithm 2）
+
+- **Bootstrap 概率神经网络集成（Predictive Ensemble）**：由 $B$ 个概率动力学网络 $\{p_\theta^1, \dots, p_\theta^B\}$ 组成，每个成员输出对角高斯分布 $p_\theta^i(s_{t+1}, r \mid s_t, a_t) = \mathcal{N}(\mu_\theta^i(s_t, a_t), \Sigma_\theta^i(s_t, a_t))$ 同时预测下一状态与奖励，分别建模**偶然不确定性（aleatoric）**与**认知不确定性（epistemic）**；模型展开时每步均匀随机抽取一个集成成员以抑制策略对单模型误差的利用（model exploitation）。
+- **分支短 rollout 数据扩增 + SAC 策略优化**：
+  1. 在真实环境数据集 $\mathcal{D}_{\mathrm{env}}$ 上以最大似然训练集成动力学模型 $p_\theta$；
+  2. 每在真实环境交互 $E$ 步收集真实样本存入 $\mathcal{D}_{\mathrm{env}}$，便从 $\mathcal{D}_{\mathrm{env}}$ 均匀采样真实状态 $s_t$，在模型中按当前策略 $\pi_\phi$ 执行 $M$ 次长度为 $k$ 的分支展开，将生成样本存入 $\mathcal{D}_{\mathrm{model}}$；
+  3. 使用 **Soft Actor-Critic (SAC)** 在 $\mathcal{D}_{\mathrm{model}}$ 上执行 $G$ 次梯度更新（每步真实采样可稳定执行 $G \in [20, 40]$ 次梯度更新，大幅高于无模型 SAC 的更新频率）。
+
+### 方法流程图
+
+```mermaid
+flowchart LR
+    REAL["Real Environment Interaction (E steps)"] -->|"Store real transitions"| DENV["Real Replay Buffer D_env"]
+    DENV -->|"Maximum likelihood training"| ENS["Bootstrap Probabilistic Ensemble p_theta(s_next, r | s, a)"]
+    DENV -->|"Sample starting states s_t"| ROLL["M Short k-Step Branched Model Rollouts"]
+    ENS -->|"Uniformly pick ensemble member per step"| ROLL
+    POL["SAC Policy pi_phi and Q-Functions"] -->|"Sample actions a_t during rollout"| ROLL
+    ROLL -->|"Add synthetic transitions"| DMOD["Model Replay Buffer D_model"]
+    DMOD -->|"G gradient updates (20-40 per env step)"| SAC["SAC Actor-Critic Update"]
+    SAC -->|"Updated policy"| POL
+    POL -->|"Collect new trajectories"| REAL
+```
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://proceedings.neurips.cc/paper_files/paper/2019/hash/5faf461eff3099671ad63c6f3f094f7f-Abstract.html) 为准。
-- 横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 同分组条目。
+- **评测基准与基线**：在 **6 个标准全长（1000 步）MuJoCo 连续控制任务**（不截断任务视野、不假设已知解析奖励或特权信息，5 次随机种子报告均值与标准差）上，对比无模型 SOTA（`SAC`、`PPO`）与基于模型方法（`PETS`、`STEVE`、`SLBO`）。
+- **核心量化结果（Fig. 2–4）**：
+  - **样本效率与渐近回报（Fig. 2）**：MBPO 在学习速度上比此前无模型方法快最高约一个数量级，同时达到与 `SAC` 相当的渐近性能：
+    - **Ant**：MBPO 在 **30 万（300k）步**达到的回报与 `SAC` 在 **300 万（3M）步**持平（**10× 样本效率提升**），而纯基于模型规划的 `PETS` 在高维 Ant 上难以有效学习。
+    - **Hopper / Walker2d**：MBPO 达到高效收敛所需的交互步数若按真实实时仿真折算，分别仅等价于 **14 分钟**与 **40 分钟**。
+    - 在全长（1000 步）任务上全面超越从初始分布长展开的 `SLBO` 以及价值扩展方法 `STEVE`。
+  - **关键消融实验（Fig. 3，Hopper）**：
+    - **No model（仅增大 SAC 更新比例 $G$）**：无模型情况下单纯把每步梯度更新次数提升到与 MBPO 相同只能带来边际提速，远逊于 MBPO，证明了模型合成样本的核心作用。
+    - **展开长度 $k$**：Hopper 上最优调度为随训练线性从 $k=1$ 增至 $15$；但即使全程固定单步展开 **$k=1$** 也保留了绝大部分增益，构成极难被超越的强基线；模型本身在 Hopper 上 200 步展开虽仍较准确，但用于策略优化效果明显退化，500 步展开则完全失效。
+    - **对比价值扩展（H-step MVE）**：将 $H$ 步模型价值扩展与 SAC 结合时同样表现为 $H=1$ 最强；初步实验将 MVE 与 MBPO 模型样本扩增叠加未见进一步收益。
+  - **抑制模型利用（Model Exploitation，Fig. 4）**：在 Hopper 上对比同一策略在模型内 rollout 回报与真实环境回报，发现两者高度正相关（模型整体略保守低估真实回报），证实集成动力学 + 短步分支展开有效避免了策略钻模型预测漏洞的现象。
 
 ## 与其他工作对比
 
@@ -73,11 +107,12 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 
 ## 结论
 
-**这一页能给你的是「When to Trust Your Model」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**MBPO 通过“从真实状态出发的短步分支模型展开 + Bootstrap 概率集成 + SAC 高频更新”，在不牺牲渐近最优性的前提下将连续控制的样本效率提升了一个数量级。**
 
-- 可确证的只有清单坐标：分组 **Foundational work**，以及 Contribution 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+- **解耦任务视野与模型视野**：无需令模型准确预测完整 1000 步轨迹，短步（甚至 $k=1$）分支展开即可支撑每步 20–40 次稳定梯度更新并大幅抑制误差累积与模型利用。
+- **理论与实证衔接**：虽然纯最坏情况界过于保守，但引入实证测得的局部模型泛化斜率后，理论与实验共同指向“随模型数据增多逐步采用适度短步 rollout”。
+- **同时兼具效率与高维扩展性**：在 Hopper/Walker2d/Ant 等全长 MuJoCo 任务上超越 `PETS`、`STEVE`、`SLBO` 等早期模型方法并追平 `SAC` 的最终性能。
+- **适用边界**：论文假设低维连续状态空间，直接向高维像素观测扩展需要额外表征或潜空间机制；且最佳 rollout 长度调度（如 $1 \to 15$）随环境复杂程度而异。
 
 ## 常见误区
 

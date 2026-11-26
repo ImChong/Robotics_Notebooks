@@ -65,6 +65,41 @@ flowchart LR
 - **推理开关（面向集成方）**：`dense_grasp` 可输出更稠密候选但 **显存与速度代价大、质量可能下降**；`apply_object_mask`、`collision_detection` 等可在特殊场景关闭，**默认配置仍被官方推荐用于常见场景**。
 - **License**：因 **IP** 限制，**核心库为预编译二进制**，需按说明获取机器特征并填表申请；若需 **白盒网络结构**，可转向 **graspnet-baseline**、**graspness_unofficial** 等公开实现，但与 SDK 性能/权重不一定一致。
 
+## 源码运行时序图
+
+基于 `graspnet/anygrasp_sdk` 仓库已核查的 `README.md`、`grasp_detection/demo.sh`、`grasp_detection/demo.py` 与 `grasp_tracking/demo.py`，抓取检测与跨帧跟踪两条推理入口的源码调用时序如下（`gsnet` 与 `tracker` 核心网络以预编译 `.so` 形式分发）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 启动脚本 (grasp_detection/demo.sh)
+  participant DetDemo as 检测入口 (grasp_detection/demo.py)
+  participant GSNet as create_detector / gsnet (.so)
+  participant TrkDemo as 跟踪入口 (grasp_tracking/demo.py)
+  participant Tracker as create_tracker / tracker (.so)
+  participant O3D as GraspGroup / Open3D
+
+  CLI->>DetDemo: python demo.py --checkpoint_path log/checkpoint_detection.tar --vis
+  DetDemo->>GSNet: create_detector(cfgs) 加载权重与 License 校验
+  DetDemo->>DetDemo: load_point_cloud(data_dir) 融合 color.png, depth.png, seg_mask.png
+  DetDemo->>GSNet: predict_with_configs() -> detector.get_grasp(points, optional_params)
+  GSNet-->>DetDemo: 返回候选抓取 gg (GraspGroup)
+  DetDemo->>O3D: gg.nms() -> gg.sort_by_score() -> render_results()
+
+  TrkDemo->>Tracker: create_tracker(cfgs) (filter=oneeuro/kalman/none)
+  loop grasp_tracking/demo.py 跨帧循环 (i = 0..29)
+    TrkDemo->>TrkDemo: get_data() -> create_point_cloud_from_depth_image(depths, CameraInfo)
+    TrkDemo->>Tracker: tracker.update(points, colors, grasp_ids)
+    Tracker-->>TrkDemo: target_gg, curr_gg, target_grasp_ids, corres_preds
+    alt i == 0 (首帧目标筛选)
+      TrkDemo->>TrkDemo: 按 curr_gg.translations 工作空间掩码选出 grasp_ids
+    else i > 0 (连续跟踪)
+      TrkDemo->>TrkDemo: 更新 grasp_ids = target_grasp_ids
+    end
+    TrkDemo->>O3D: target_gg.to_open3d_geometry_list() 与点云渲染
+  end
+```
+
 ## 常见误区或局限
 
 - **不是全开源权重**：与「GitHub 即模型权重」预期不同，生产常用路径是 **二进制 + License**；论文级结果需以 **官方 SDK + 合规授权** 复现。

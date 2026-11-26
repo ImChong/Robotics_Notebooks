@@ -104,6 +104,37 @@ flowchart TD
 | 开源状态 | **已开源（科研许可）**。代码与文档站公开；ZJU-MoCap 全量数据 **协议申请**；iMocap 多视频特定动作 README 仍标 Coming soon |
 | 调试信号 | `--vis_det` / `--vis_repro` 看 2D 与重投影；`Rh` 跳变常见于轴角 ±π 绕回（2026-03 提交用旋转矩阵空间平滑修复） |
 
+## 源码运行时序图
+
+以下时序图基于仓库 `apps/demo/mocap.py`、`apps/demo/mv1p.py` 与 `apps/demo/auto_track.py` 梳理，展示统一 CLI 调度（`mocap_demo`）、多视角单人三角化与 SMPL 拟合（`mv1pmf_skel` / `mv1pmf_smpl`）以及多人时序跟踪（`Track2D` / `Track3D`）的实际调用链路。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as apps/demo/mocap.py (mocap_demo)
+  participant Pre as 预处理与标定检查
+  participant MV1P as apps/demo/mv1p.py (MV1PMF)
+  participant Trk as apps/demo/auto_track.py
+  participant Fit as apps/fit/ 与 easymocap.pipeline
+  CLI->>Pre: check_image(path) 缺失图像时调用 apps/preprocess/extract_image.py
+  CLI->>Pre: check_camera(path, mode) 校验 intri.yml 与 extri.yml
+  alt 统一调度路径 (mocap.py)
+    CLI->>Fit: run_cmd 调用 apps/fit/triangulate1p.py 输出 keypoints3d
+    CLI->>Fit: run_cmd 调用 apps/fit/fit.py 拟合参数并输出 smpl
+    CLI->>Pre: 调用 easymocap.visualize.ffmpeg_wrapper 合成可视化视频
+  else 多视角单人直跑路径 (mv1p.py)
+    MV1P->>MV1P: mv1pmf_skel() 遍历 MV1PMF 数据集
+    MV1P->>MV1P: check_keypoints + simple_recon_person + check_repro_error
+    MV1P->>Pre: dataset.write_keypoints3d 写出 3D 关键点
+    MV1P->>Fit: mv1pmf_smpl() 调用 load_model 与 smpl_from_keypoints3d2d
+    Fit-->>MV1P: select_nf + dataset.write_smpl / write_vertices / vis_smpl
+  end
+  opt 多人时序跟踪 (auto_track.py)
+    Trk->>Trk: 依 --track3d 实例化 Track3D 或 Track2D
+    Trk->>Fit: tracker.auto_track() 生成带 ID 的跟踪序列
+  end
+```
+
 ## 局限与风险
 
 - **许可不是 MIT/Apache：** LICENSE 仅允许教育 / 研究 / 非营利；衍生修改须开源且禁止商用。产品或闭源管线接入前必须先走 `xwzhou@zju.edu.cn` 商业授权，不要和 [FreeMoCap](./freemocap.md) 的 AGPL 或后续 GVHMR 仓混为一谈。

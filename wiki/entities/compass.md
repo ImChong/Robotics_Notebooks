@@ -109,6 +109,43 @@ flowchart TD
 | 部署 | `compass_inference` 吃 RGB + 目标/路线 + 里程计 → `/cmd_vel`；缺里程计时可选 **cuVSLAM** |
 | 算力 | 无本地 GPU 可用 [NVIDIA Brev](./nvidia-brev.md) 启动实例 |
 
+## 源码运行时序图
+
+基于 `NVlabs/COMPASS` 仓库已核查的 `README.md`、`compass/rl_env/exts/mobility_es/mobility_es/wrapper/env_wrapper.py`、`compass/residual_rl/residual_ppo_trainer.py` 与 `compass/distillation/distillation_trainer.py`，环境封装、残差 PPO 训练器与策略蒸馏模块的核心调用时序如下（`run.py` 顶层脚本主体未包含在本次核查文件中）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 容器与启动入口 (README.md / run.py)
+  participant Env as RLESEnvWrapper (env_wrapper.py)
+  participant Trainer as ResidualPPOTrainer (residual_ppo_trainer.py)
+  participant Base as base_policy / ActorCriticXMobility
+  participant PPO as PPO (ppo.py)
+  participant Distill as ESDistillationTrainer (distillation_trainer.py)
+
+  CLI->>CLI: ./docker/run.sh assets & build -> source ./docker/activate
+  CLI->>Env: python run.py -c configs/train_config.gin -b ./assets/x_mobility.ckpt
+  Env->>Env: OccupancyMapCollisionChecker(cfg.scene) -> super().__init__(cfg, render_mode)
+  CLI->>Trainer: 初始化 ResidualPPOTrainer(env, base_policy, ...)
+  Trainer->>Base: 冻结 base_policy 参数并构建 CriticObservationEncoder 与 ActorCriticXMobility
+  Trainer->>PPO: PPO(actor_critic).init_storage(num_envs, num_steps_per_env, ...)
+  Trainer->>Env: self.env.reset() 与 _install_env_timers() 注入耗时统计
+
+  Trainer->>Trainer: learn(num_learning_iterations) -> self.train_mode()
+  loop 残差 RL 训练迭代
+    Trainer->>Base: base_policy_process(obs_dict) 拼接 goal_heading
+    opt 可选 GR00T 推理服务
+      Trainer->>Trainer: gr00t_policy_process(obs_dict) -> ExternalRobotInferenceClient.get_action()
+    end
+    Trainer->>Trainer: compute_states() -> critic_state_assembler.compute_critic_state()
+    Trainer->>PPO: 采样轨迹并更新 ActorCriticXMobility 残差策略
+  end
+
+  Note over Distill: 阶段 3 蒸馏训练 (compass/distillation/distillation_trainer.py)
+  Distill->>Distill: training_step(batch) -> shared_step() -> model(batch) & loss(output, batch)
+  Distill->>Distill: configure_optimizers() (AdamW + StepLR) 更新通才策略
+```
+
 ## 局限与风险
 
 - **版本钉扎：** Lab **3.0.0-beta1** + Sim **4.5.0**；与社区仍钉 Lab 2.x 的工程并存时需分支对齐。

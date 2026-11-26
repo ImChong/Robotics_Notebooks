@@ -57,6 +57,36 @@ flowchart LR
 
 基本硬件由家用 3D 打印的 TPU 结构、嵌入式永磁体和磁力计板组成。CAD-to-eFlesh 工具从凸形 OBJ/STL 生成传感器结构；仓库还提供微结构生成、标定/数据及滑移与操作实验代码。克隆时需递归获取子模块并检查每个依赖、模型及数据的许可；低成本硬件不代表免标定或跨装置零样本通用。
 
+## 源码运行时序图
+
+以下时序图基于仓库 `README.md` 与 `characterization/train.py` 梳理，展示从微结构生成、磁力计串口采集到空间定位（`SensorSpatialDataset`）及法向/剪切力（`SensorForceDataset`）`MLP` 标定训练的完整源码执行流程。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Micro as microstructure_inflators / Notebooks
+  participant MCU as qtPy (5X_eflesh_stream.ino)
+  participant CLI as characterization/train.py (main)
+  participant DS as SensorSpatialDataset / SensorForceDataset
+  participant Fit as fit() + MLP(hidden=128)
+  Micro->>Micro: build.sh 编译后运行 regular.ipynb / cut-cell.ipynb 生成带磁体腔 STL
+  MCU-->>CLI: 5X_eflesh_stream.ino 采集磁力计数据并整理为 sensor_post_baselines.csv 与 states.csv
+  CLI->>CLI: 解析 --mode (spatial / normal / shear) 与 --folder
+  alt --mode spatial (三维接触位置)
+    CLI->>DS: SensorSpatialDataset(states_csv, sensor_csv, z_thresh)
+    DS-->>CLI: 最近时间戳对齐 sensor_time 与 states_xyz 并按 z_thresh 过滤
+  else --mode normal / shear (单轴力)
+    CLI->>DS: SensorForceDataset(states_csv, sensor_csv, target_col)
+    DS-->>CLI: 过滤 target_col != -1 并按最近时间戳对齐
+  end
+  CLI->>Fit: fit(dataset_full, out_dim, epochs, batch_size, lr)
+  Fit->>DS: 按 80/20 划分 train_idx / val_idx 并仅用训练集均值方差标准化
+  loop epochs 轮训练与验证
+    Fit->>Fit: train_loader 前向 MLP + nn.MSELoss + optim.Adam 更新
+    Fit->>DS: val_loader 推理后调用 unnormalize_y() 计算物理单位 RMSE
+  end
+```
+
 ## 参考来源
 
 - [eFlesh 论文归档](../../sources/papers/eflesh_arxiv_2506_09994.md)
