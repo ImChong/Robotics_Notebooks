@@ -527,6 +527,17 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | Unidata Sim2Real：补充真机留出与分层归因
+
+- 归档原文，区分采集商指南与论文原证，不将感知样本数或硬件试验量级当作通用验收标准。
+- 复用 Sim2Real Gap 缩减指南，加入仿真、零样本真机和适配后留出复测的流程及记录项。
+
+## [2026-11-26] ingest | ACAP、RoboDojo-Mirror、ICLWorld 与 PEAR / SuperMimic 回访
+
+- 新增三篇独立论文节点：单机异步控制组调度、镜面反事实、从规则理解到交互执行的情境学习；保持各论文的任务、试验和资产口径。
+- 更新既有 PEAR v2 与 SuperMimic v3 节点，区分论文修订、代码更新与原实验结果，不重复建节点。
+- 连到具身评测知识链、RoboDojo 基准和移动操作路线；保留禁用跨基准横排及未独立复现的边界。
+
 ## [2026-11-26] structural | Batch 9：核查官方 GitHub README 与实证数据集卡片，补齐 74 篇非论文实体（23 篇 cn-os-*、36 篇 dataset-*、9 篇 EtherCAT、6 篇硬件/项目）架构与数据流水线 Mermaid 图，跳过 12 篇无实证细节/空仓条目（Issue #3997）
 
 ## [2026-11-26] ingest | 机器人训练数据 2027 展望：从市场样本到试采验收
