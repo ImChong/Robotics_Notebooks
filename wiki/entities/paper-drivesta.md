@@ -3,7 +3,7 @@ type: entity
 project_id: drivesta
 tags: [paper, autonomous-driving, end-to-end-driving, imitation-learning, trajectory-planning, navsim, jepa, diffusion, nju, pku]
 status: complete
-updated: 2026-11-23
+updated: 2026-11-26
 arxiv: "2611.27515"
 project: https://rtwotwo.github.io/DriveSTA/
 code: https://github.com/Rtwotwo/DriveSTA
@@ -20,6 +20,7 @@ sources:
   - ../../sources/papers/drivesta_arxiv_2611_27515.md
   - ../../sources/sites/drivesta.md
   - ../../sources/repos/drivesta.md
+  - ../../sources/models/drivesta-release-assets.md
 summary: "DriveSTA：单条驾驶示范经轨迹候选挖掘与仿真评分成为多样监督；Proposal 生成/评分，Refinement 结合共享 JEPA 时序视频特征和残差精修。作者项目页报告 Scale NAVTEST PDMS 95.55，HUGSIM RC 56.09 / HD-Score 46.69；已核对 arXiv v1 全文21页（含附录）。"
 ---
 
@@ -53,11 +54,12 @@ summary: "DriveSTA：单条驾驶示范经轨迹候选挖掘与仿真评分成�
 
 | 属性 | 已核实内容 |
 |---|---|
-| 论文 | [arXiv:2611.27515v1](https://arxiv.org/abs/2611.27515)；2026-11-20，21 页、含 Appendix A–C；论文为预印本 |
+| 论文 | [arXiv:2611.27515v1](https://arxiv.org/abs/2611.27515)（[原文 HTML](https://arxiv.org/html/2611.27515v1)、[alphaXiv 阅读页](https://www.alphaxiv.org/abs/2611.27515)）；2026-11-20，21 页、含 Appendix A–C；论文为预印本 |
 | 作者 | Xinyao Rao、Zecheng Tang、Liuxuan Sun、Zheyuan Lai、Minjun Yu、Xun Cao、Wei Li（通讯） |
 | 机构 | 南京大学、北京大学、EABOT.AI |
 | 官方项目 | [DriveSTA](https://rtwotwo.github.io/DriveSTA/)；已读取项目说明和实验表 |
 | 官方代码 | [Rtwotwo/DriveSTA](https://github.com/Rtwotwo/DriveSTA)；可运行训练、单场景推理和 NAVSIM v1 评测入口 |
+| 发布资产 | [Hugging Face 模型和轨迹库](../../sources/models/drivesta-release-assets.md)：4 个 checkpoint、48 个轨迹分片和 1 个元数据包；全库 308,119 场景，并非训练集大小 |
 | 训练规模 | Base 103,263 真实场景；Scale 232,672 真实+合成场景（仓库 README） |
 | 输出 | 未来 4 s，每 0.5 s 一帧，共 8 个自车系 (x,y,heading) 位姿 |
 | 核查性质 | 官方 arXiv v1 PDF **21 页正文、实验及补充材料已通读**；图像按图注和正文核对；官方源码静态阅读，实验未独立复现 |
@@ -146,6 +148,8 @@ sequenceDiagram
 | DriveSTA-Scale Proposal | 95.09 | 91.32 | 56.13 | 54.05 | 43.97 |
 | DriveSTA-Scale Refinement | **95.55** | — | — | **56.09** | **46.69** |
 
+**演示不等于全量结果：** [官方 HUGSIM 演示](https://rtwotwo.github.io/DriveSTA/#hugsim) 选取 51 个高分闭环片段，11 月 24 日更新为叠加逐帧记录的 8 点预测。它们是 345 个评测场景的子集；按公开逐场分数重算，整体 RC 56.09、HD-Score 46.69，并未重跑仿真。
+
 **比较边界：** 论文 Table 1 将 DriveSTA 的 95.14 PDMS 标为 **约 103k NAVSIM 训练 regime 中第一**，Scale 95.55 的领先结论受可比训练数据规模约束；项目页另列 FPD-Drive-Pro **95.69**（更多训练数据），不能称对所有模型无条件第一。HUGSIM 汇总为 345 个场景。**73% 时延优势已由论文 Table 3 / Appendix B.7 验证为作者报告**，具体量测边界见下表。
 
 ### 原文时间、消融及风险校核
@@ -172,7 +176,8 @@ sequenceDiagram
 
 ## 工程实践与开源状态
 
-- **已开源：** Apache-2.0 主仓含数据挖掘、四种 profile、训练/推理、NAVSIM v1 PDMS 评测脚本；模型权重与数据通过外部资产入口列出，实际下载需自查。
+- **已开源：** Apache-2.0 主仓含数据挖掘、四种 profile、训练/推理、NAVSIM v1 PDMS 评测脚本；[模型与轨迹发布清单](../../sources/models/drivesta-release-assets.md) 已按固定版本与 Hub LFS 元数据比对，未下载大文件。
+- **下载与版本：** 先用 `python scripts/download_assets.py --profiles base --plan` 查看所需文件。Hub 上的 `base_s2.ckpt` 经官方脚本校验后保存为本地 `base.ckpt`；训练用的原始传感器、地图和缓存不随轨迹库发布。
 - **单场景推理：** `python -m navsim.planning.script.run_inference --profile base --token SCENE_TOKEN --split test --device cuda --output outputs/prediction.json`；需要原始传感器日志与对应 checkpoint。
 - **训练入口：** `bash scripts/training/train_drivesta.sh base_proposal`，再用 Proposal checkpoint 初始化 `base` Refinement；Scale 使用 mixed 数据。
 - **评测入口：** `bash scripts/evaluation/run_drivesta_pdm_score_evaluation.sh base`；PDMS 需要官方地图与缓存，HUGSIM 和 EPDMS 需使用各自评测环境。
