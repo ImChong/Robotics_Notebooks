@@ -184,6 +184,35 @@ flowchart LR
 - **论文归属以 arXiv 署名为准：** UniAD、BEVFormer、[AgiBot World](./agibot-world-2026.md)、[AMS](../methods/ams.md)、[EgoHumanoid](./paper-loco-manip-161-060-egohumanoid.md)、[RISE](./paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md) 等是实验室或合作方的学术成果，多数早于公司成立。高榕创投的投资方评论把 UniAD、WorldEngine、Agibot、WholeBodyVLA、Ego-humanoid 都算作「源策团队」成果；WBI 中文博文把 AMS 称为「Archon 方案原型」。这些都是公司 / 投资方叙事，本库只把 arXiv 列出 Archon 单位的论文计为公司成果。
 - **项目页托管：** 两篇署名公司的论文，项目页都在 opendrivelab.com，代码（如有）也在 OpenDriveLab GitHub 组织下。
 
+## 源码运行时序图
+
+源策未来（Archon Robotics）目前开放且含完整可运行训练/部署入口的代表性成果为署名论文 [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md)（训练仓 [`OpenDriveLab/RoboNaldo`](https://github.com/OpenDriveLab/RoboNaldo) `main` 分支，README 配套指向 [`OpenDriveLab/RoboNaldo_Deploy`](https://github.com/OpenDriveLab/RoboNaldo_Deploy)）；WBI 通用人形全栈、PingpongDuo、Anchor 1、Compass 1 与 EgoHumanoid-V2 尚无可运行官方源码（见上节「开源与开放状态」）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Mot as motions/right_kick.npz
+    participant CLI as scripts/rsl_rl/train.py<br/>cli_args.py
+    participant RT as tasks/runtime.py<br/>Tracking-Body-Frame-Flat-G1-v0
+    participant Run as MotionOnPolicyRunner<br/>Isaac Lab + RSL-RL
+    participant Play as scripts/rsl_rl/play.py<br/>eval.py
+    participant ONNX as policy-obs.onnx<br/>+ metadata
+    participant Dep as RoboNaldo_Deploy<br/>deploy_mujoco / deploy_real + FSM
+
+    Dev->>Mot: 准备重定向参考动作 NPZ（或 W&B artifact）
+    Dev->>CLI: 启动训练（--task / --motion_file / --yaml / 可选 --resume + --noise_std）
+    CLI->>RT: 导出 WBT_TASK_PARAMS_YAML · 解析 motion 与 task_params
+    RT->>Run: 构建并行环境并创建 MotionOnPolicyRunner
+    Run-->>CLI: runner.learn() 输出 model_*.pt · env.yaml · task_params.yaml
+    Dev->>Play: 传入 checkpoint + --motion_file + --yaml 回放或评估（eval.py）
+    Play->>ONNX: export_motion_policy_as_onnx + attach_onnx_metadata
+    Dev->>Dep: 加载 policy-obs.onnx 启动 MuJoCo 或真机 FSM 控制循环
+```
+
+- **最短复现路径：** 按 `README.md` 配置 Isaac Sim 5.1.0 + Isaac Lab 2.3.2 + `rsl-rl-lib==3.1.2` 并 `pip install -e source/whole_body_tracking`，下载 G1 URDF 后经 `scripts/rsl_rl/train.py` 按 `--yaml`（`right_kick/tracking_params.yaml` → `task_params_1/2/3.yaml`）分阶段训练，再用 `scripts/rsl_rl/play.py` 导出 `policy-obs.onnx` 交由 `RoboNaldo_Deploy`（`deploy_mujoco/deploy_mujoco.py`、`deploy_real/deploy_real.py`、`FSM/FSM.py`）执行。
+- **本次核查源码文件（`OpenDriveLab/RoboNaldo` `main`）：** `README.md`、`scripts/rsl_rl/train.py`、`scripts/rsl_rl/play.py`、`scripts/rsl_rl/eval.py`、`source/whole_body_tracking/whole_body_tracking/tasks/runtime.py`；配套检查 `OpenDriveLab/RoboNaldo_Deploy`（`main`）目录树。
+
 ## 工程实践
 
 | 场景 | 建议 |

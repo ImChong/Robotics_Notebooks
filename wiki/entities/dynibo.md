@@ -99,6 +99,36 @@ $$
 
 基准脚本位于上游 `benches/`。测试还包含 URDF 生成用例、有限差分、动力学一致性、浮动基、外部载荷、错误输入、分配行为，以及与独立 Pinocchio oracle 的数值对照。比较结果前应查看基准脚本的数据、计时范围和运行环境，并在目标控制器 CPU 上重测。
 
+## 源码运行时序图
+
+在 [`xiaojie-xue/dynibo`](https://github.com/xiaojie-xue/dynibo)（`main` 分支）中，Rust 核心将只读树状模型（`Arc<Model>`）与实例级复用工作区（`Workspace`、`StateCache`）分离，供 Rust 原生及 Python（PyO3）/ C / C++ 绑定在控制环内零堆分配调用：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Caller as 调用方<br/>Rust / Python(PyRobot) / C++(dynibo.hpp)
+    participant Rob as Robot / FloatingRobot<br/>src/robot.rs
+    participant Model as Arc<Model><br/>URDF 拓扑与惯量
+    participant WS as Workspace / StateCache<br/>src/robot/workspace.rs
+    participant Alg as Kinematics & Dynamics<br/>FK / Jacobian / RNEA / ABA
+
+    Caller->>Rob: Robot::from_urdf(path) 或 FloatingRobot::from_urdf(path)
+    Rob->>Model: RobotModel::from_urdf() 解析树状 URDF 与关节序
+    Rob->>WS: 预分配实例级 Workspace 与 StateCache
+    opt 并行线程需要独立实例
+        Caller->>Rob: fork() 共享 Arc<Model> 并创建隔离 Workspace
+    end
+    loop 控制器高频计算周期
+        Caller->>Rob: 传入 q / qd / qdd（浮动基另传 BaseState、可选 IndexedLoad）
+        Rob->>Alg: 调用 forward_kinematics / jacobian / inverse_dynamics / forward_dynamics
+        Alg->>WS: 复用 DynamicsScratch / parent_from_child 等中间缓冲
+        Alg-->>Caller: 直接写入调用方提供的 output slice / 数组（无环内堆分配）
+    end
+```
+
+- **最短复现路径：** 参考 `examples/rust/g1.rs` 或 `examples/python/g1.py`，先以 `FloatingRobot::from_urdf` 加载模型完成 `Workspace` 预分配，再在循环内重复调用 `forward_kinematics`、`jacobian`、`inverse_dynamics`（RNEA）与 `forward_dynamics`（ABA）。
+- **本次核查源码文件（`xiaojie-xue/dynibo` `main`）：** `README.md`、`src/robot.rs`、`src/robot/workspace.rs`、`src/robot/dynamics/inverse_dynamics.rs`、`bindings/python/src/robot.rs`、`bindings/c/include/dynibo/dynibo.hpp`、`examples/rust/g1.rs`、`examples/python/g1.py`。
+
 ## 工程实践与局限
 
 | 使用场景 | 建议 |

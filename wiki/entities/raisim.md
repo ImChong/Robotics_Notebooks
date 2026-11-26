@@ -63,6 +63,14 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+**不适用** — 经核查 `raisimTech/raisimLib`（`master` 分支，仓库状态 `archived: true`），该仓库未开源仿真核心物理引擎源码，无法绘制内核源码运行时序图，具体证据如下：
+
+- **停止维护公告**：[README.md](https://github.com/raisimTech/raisimLib/blob/master/README.md) 首行明确声明 *We no longer support Raisim. Please go to Raisim2 repo: https://github.com/raisimTech/raisim2Lib*。
+- **核心引擎闭源二进制分发**：[CMakeLists.txt](https://github.com/raisimTech/raisimLib/blob/master/CMakeLists.txt) 仅安装 `raisim/<os>/include` 头文件与预编译动态库（如 `raisim/linux/lib/libraisim.so.1.1.8`、`libraisimODE.so.1.1.8`、`raisimpy.cpython-*.so` 及 macOS/Windows 对应二进制）；仓库内不存在 `raisim::World`、接触求解器或关节动力学核心的 C++ 源文件。
+- **授权与激活密钥依赖**：[LICENSE.md](https://github.com/raisimTech/raisimLib/blob/master/LICENSE.md) 与 [examples/src/server/go1.cpp](https://github.com/raisimTech/raisimLib/blob/master/examples/src/server/go1.cpp) 表明仅 `examples/`、`raisimPy/`、`raisimGymTorch/` 等外围封装与示例以 MIT 开源，而运行 `raisim/` 必须从 raisim.com 获取有效授权及激活密钥（`~/.raisim` 或 `raisim::World::setActivationKey()`）。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

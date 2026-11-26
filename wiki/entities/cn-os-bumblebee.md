@@ -57,6 +57,10 @@ flowchart LR
   DIST --> EVAL["仿真器与真机人形机器人验证 (代码待开源)"]
 ```
 
+## 源码运行时序图
+
+**不适用。** 经核查 [BeingBeyond/BumbleBee](https://github.com/BeingBeyond/BumbleBee)（`main` 分支，共 40 个文件），仓库仅包含 `.gitignore`、`README.md` 与 `docs/` 下的静态项目主页资源（`docs/index.html`、CSS/JS、配图、`docs/pdfs/` 及演示视频）；`README.md` 在 `## Code` 节声明“We will release our code soon.”，仓库内尚无动作聚类、Expert RL 训练、Delta Action 建模或蒸馏控制器的可运行源码与脚本入口，无法绘制基于源码的运行时序图。
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `BumbleBee` 仓库并核对 README 许可与依赖。

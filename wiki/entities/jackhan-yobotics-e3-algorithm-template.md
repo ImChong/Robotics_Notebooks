@@ -48,6 +48,41 @@ flowchart TD
   lcm_in -.->|"状态缓存"| obs_th
 ```
 
+## 源码运行时序图
+
+基于 `JackHan-Sdu/Algorithm_Template_For_Developer`（`main` 分支）的 `algorithm_base.py`、`lcm_interface.py` 与示例 `dance_algorithm/run_algorithm.py`、`dance_algorithm/mujoco_simulator.py`：`DanceAlgorithm` 继承 `AlgorithmBase`，初始化期加载 ONNX/PyTorch 模型与 `.npz` 动作数据集并利用真实 LCM 状态做预热；运行期主线程阻塞处理 LCM 状态接收，另起推理线程（配置 `execution.frequency` 如 50Hz）与发令线程（`lcm_send_frequency` 如 500Hz）通过 `latest_command_lock` 解耦。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Sim as MuJoCoDanceSimulator 或宿主控制器
+  participant LCM as LCMInterface
+  participant Main as 主线程 AlgorithmBase.run
+  participant Infer as 推理线程 _execution_loop
+  participant Child as DanceAlgorithm 子类
+  participant Send as 发令线程 _lcm_send_loop
+
+  Main->>LCM: 订阅 state_channel 并加载 ONNX 或 PT 模型
+  Main->>Child: _load_dataset 加载 E3Getup350.npz 并 _warmup_policy
+  par 主线程接收状态
+    Sim->>LCM: 发布 development_state_t 到 E3_development_state
+    Main->>LCM: lcm_interface.handle 触发 _on_state_received
+    LCM-->>Main: auto_start 时激活 _start_development_mode
+  and 策略推理线程
+    Infer->>LCM: get_latest_state 获取最新状态
+    Infer->>Child: compute_observation 组装观测与关节顺序映射
+    Infer->>Infer: _run_inference 前向推理输出 action
+    Infer->>Child: process_action 映射回 XML 顺序并加锁写 latest_command
+  and 高频发令线程
+    Send->>Send: latest_command_lock 读取最新命令
+    Send->>LCM: send_command 发布 development_command_t 到 E3_development_command
+    LCM-->>Sim: _handle_development_command 更新关节目标与模式标志
+  end
+```
+
+- **最短复现路径：** 先启动 `python dance_algorithm/mujoco_simulator.py`，再在另一终端启动 `python dance_algorithm/run_algorithm.py --config config.yaml`（须确保 `config.yaml` 中 `state_channel`、`command_channel`、`robot_id` 与宿主一致）。
+- **已核查仓库文件（`JackHan-Sdu/Algorithm_Template_For_Developer` @ `main`）：** `README.md`、`algorithm_base.py`、`lcm_interface.py`、`dance_algorithm/run_algorithm.py`、`dance_algorithm/mujoco_simulator.py`、`lcm-types/development_state_t.lcm`、`lcm-types/development_command_t.lcm`。
+
 ## 常见误区或局限
 
 - **2026-11-13 维护复核：** [官方 README（6b7243c）](https://github.com/JackHan-Sdu/Algorithm_Template_For_Developer/blob/6b7243c43823718a834dc4b1db79c59366242d8d/README.md) 将接收主线程、可配置策略推理线程（示例 50 Hz）与 500 Hz 发令线程分开；50 Hz 是推荐配置，并非所有算法固定频率。通道、robot_id 与关节顺序须匹配控制器。本次未运行模板。

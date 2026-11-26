@@ -66,6 +66,34 @@ flowchart LR
   Access --> Use["动作检索 / 语言条件生成 / 模仿学习（训练前核查动力学与接触）"]
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant CLI as "可视化/转换入口 (tools/demo_soma_vis.py)"
+    participant IO as "动作读取 (soma/io.py)"
+    participant Layer as "SOMALayer (soma/body/soma.py)"
+    participant Fit as "骨架对齐 (soma/geometry/skeleton_transfer.py)"
+    participant LBS as "蒙皮求解 (soma/geometry/lbs.py / lbs_warp.py)"
+    participant Render as "渲染输出 (tools/vis_pyrender.py)"
+
+    CLI->>Layer: "初始化 SOMALayer(data_root, lod, identity_model_type, mode)"
+    Layer->>IO: "加载 assets/SOMA_template_rig.usda 与 SOMA_neutral.npz"
+    CLI->>Layer: "reference_model.load_motion(motion_file)"
+    Layer->>IO: "load_soma_animation() 解析 pose / root_trans / fps"
+    CLI->>Layer: "prepare_identity(coeffs, scale_params, repose_to_bind_pose)"
+    Layer->>Fit: "identity_model(...) -> skeleton_transfer.fit(rest_shape) 求解绑定变换"
+    loop 按 pose_batch_size 分批前向
+        CLI->>Layer: "model.pose(pose_b, transl_b, apply_correctives)"
+        Layer->>LBS: "前向运动学与 LBS / Warp 蒙皮求解"
+        LBS-->>CLI: "返回 SOMAPoseOutput(vertices, joints, transforms)"
+    end
+    CLI->>Render: "MeshRenderer 逐帧渲染并保存 MP4 / GIF"
+```
+
+以上时序图基于上游格式仓库 `NVlabs/SOMA-X`（`main` 分支）中的 `tools/demo_soma_vis.py`、`soma/body/soma.py`、`soma/io.py`、`soma/geometry/skeleton_transfer.py` 与 `tools/vis_pyrender.py`，展示 SOMA 格式动作的加载与蒙皮前向流程；BONES-SEED 数据集本体托管于受门控的 `bones-studio/seed`，`SOMA-X` 仓库内不含 BONES-SEED 数据下载或 Unitree G1 CSV 重放训练脚本。
+
 ## 局限与风险
 
 - 高质量动捕不自动等于物理可执行的机器人轨迹，仍需验证重定向、接触、平衡和执行器能力。

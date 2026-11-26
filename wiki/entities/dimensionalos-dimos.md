@@ -105,6 +105,36 @@ flowchart LR
   MS --> R
 ```
 
+## 源码运行时序图
+
+以下时序基于本页对应的 [`dimensionalOS/dimos`](https://github.com/dimensionalOS/dimos) 仓库 `main` 分支（而非 ICCV 2023 的 `zkf1997/DIMOS`）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 开发者 / Agent CLI
+    participant CLI as dimos.cli.entry:main<br/>lifecycle.py:run
+    participant BP as Blueprint.autoconnect<br/>unitree_go2 / solidify
+    participant Daemon as dimos.core.daemon<br/>run_coordinator
+    participant Coord as ModuleCoordinator<br/>watchdog + RPC
+    participant Mods as Robot / Nav / Memory<br/>LCM / SHM / ROS2 流
+    participant MCP as McpServer<br/>mcp.py (agent-send / mcp)
+
+    User->>CLI: 执行 dimos run <blueprint>（可选 --simulation / --replay / --daemon）
+    CLI->>CLI: BlueprintConfigParser 解析全局配置与参数
+    CLI->>BP: autoconnect(...).solidify(choices) 装配模块并检查依赖
+    CLI->>Daemon: 调用 run_coordinator(blueprint, parsed_config)
+    Daemon->>Coord: spawn_watchdog + ModuleCoordinator.build()
+    Coord->>Mods: 拉起各 Module worker 并建立 In/Out 传输流
+    Coord->>Coord: health_check() + start_rpc_service()
+    Coord->>Mods: coordinator.loop() 持续调度感知、CostMapper 与 A* 规划
+    User->>MCP: dimos agent-send / dimos mcp（经 McpAdapter）
+    MCP->>Coord: 通过 RPC / capability skills 调用模块动作
+```
+
+- **最短复现路径：** 由 `pyproject.toml` 定义的 `dimos` 入口进入 `dimos/cli/entry.py` → `dimos/cli/dimos.py` → `dimos/cli/commands/lifecycle.py:run`，将所选蓝图（如 `dimos/robot/unitree/go2/blueprints/smart/unitree_go2.py` 中的 `unitree_go2`）固化后交给 `ModuleCoordinator` 管理进程、传输与 MCP skills。
+- **本次核查源码文件（`dimensionalOS/dimos` `main`）：** `pyproject.toml`、`dimos/cli/entry.py`、`dimos/cli/dimos.py`、`dimos/cli/commands/lifecycle.py`、`dimos/cli/commands/mcp.py`、`dimos/core/daemon.py`、`dimos/core/coordination/blueprints.py`、`dimos/agents/mcp/mcp_server.py`、`dimos/robot/unitree/go2/blueprints/smart/unitree_go2.py`。
+
 ## 常见误区或局限
 
 - **≠ ICCV DIMOS：** 图形学 **human-scene interaction 运动合成** 论文实现是另一项目；检索「DIMOS」时需看组织名 **dimensionalOS** vs **zkf1997**。

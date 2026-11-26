@@ -177,6 +177,44 @@ flowchart TB
 | 测量数据 / 标定参数 / SimReady schema 规范文本 | **未公开** |
 | Hugging Face | `LightwheelAI` 组织无 SimReady 资产库镜像 |
 
+## 源码运行时序图
+
+以下时序图依据开源示例仓库 `LightwheelAI/Newton-Lightwheel`（`main` 分支）源码核对绘制，核对路径：`README.md`、`mpm_test.py`、`import_usd_costume.py`（其余商业 SimReady Library、`Lightwheel-simready-asset` 与 `Lightwheel-YCB` 为 USD/MJCF 资产包，不含可执行脚本）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as "uv run mpm_test.py"
+  participant Builder as "newton.ModelBuilder / import_usd_costume.py"
+  participant USD as "scene.usda (USD Stage)"
+  participant MPM as "SolverImplicitMPM (Model & Solver)"
+  participant MuJoCo as "newton.solvers.SolverMuJoCo"
+  participant Policy as "anymal_walking_policy_physx.pt"
+  participant Viewer as "newton.examples Viewer"
+
+  CLI->>Viewer: newton.examples.init(parser) 初始化 GPU 与视图
+  CLI->>Builder: add_urdf("anymal.urdf") 与关节 PD 初值配置
+  CLI->>USD: Usd.Stage.Open("scene.usda")
+  Builder->>USD: parse_usd_particles(builder, "sand"/"mud"/"snow", stage)
+  Builder->>USD: parse_usd_scene(builder, stage, use_static_collider=True)
+  Note over Builder,USD: 解析 _newton__contact_* / _newton__material_* 与 _newton__particle_* 属性
+  CLI->>Builder: builder.finalize() 生成 self.model
+  CLI->>MPM: SolverImplicitMPM.Model(model, mpm_options) + notify_particle_material_changed()
+  CLI->>MPM: setup_collider([Locomotion_Terrain_collision_mesh, robot_collider_mesh])
+  CLI->>MuJoCo: SolverMuJoCo(self.model) + enrich_state / project_outside / eval_fk
+  CLI->>Policy: torch.jit.load(anymal_walking_policy_physx.pt)
+  CLI->>MuJoCo: capture() 录制 CUDA Graph (simulate_robot)
+  CLI->>Viewer: newton.examples.run(example)
+
+  loop 每帧 step() (60 FPS, sim_substeps=4)
+    Viewer-->>CLI: 读取键盘 i/j/k/l/u/o 更新 self.command
+    CLI->>Policy: compute_obs(state_0) -> policy(obs) -> wp.copy(control.joint_target)
+    CLI->>MuJoCo: wp.capture_launch(graph) / simulate_robot() 步进刚体与关节
+    CLI->>MPM: update_collider_mesh + refit() -> mpm_solver.step(state_0, dt=frame_dt)
+    CLI->>Viewer: render(): begin_frame -> log_state(state_0) -> end_frame
+  end
+```
+
 ## 工程实践
 
 | 目标 | 做法 |

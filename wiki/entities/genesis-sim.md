@@ -53,6 +53,45 @@ flowchart LR
     Render --> App
 ```
 
+## 源码运行时序图
+
+以官方仓库 [Genesis-Embodied-AI/Genesis](https://github.com/Genesis-Embodied-AI/Genesis)（`main` 分支）中 `gs.Scene` / `Simulator` 引擎主循环与 `examples/locomotion/go2_train.py`（`Go2Env` + `rsl_rl`）为核对入口：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Caller as 训练/应用入口 (examples/locomotion/go2_train.py & go2_env.py)
+  participant Scene as Scene (genesis/engine/scene.py)
+  participant Sim as Simulator (genesis/engine/simulator.py)
+  participant Solvers as 求解器与耦合器 (Rigid/MPM/FEM/SPH/PBD + Coupler)
+  participant IO as SensorManager 与 Visualizer
+
+  Caller->>Scene: gs.init(backend=gs.gpu) 后创建 gs.Scene(...) 并 add_entity()
+  Caller->>Scene: scene.build(n_envs) 构建并行环境偏移与场景结构
+  Scene->>Sim: _sim.build(n_envs) 统一 dt/substeps 并依次 build 活跃 solvers 与 _coupler
+  Scene->>Sim: _reset() 后预跑一次 _sim.step() 编译仿真内核，再 reset(_init_state)
+  Scene->>IO: _visualizer.build() 与 _recorder_manager.build()
+  Caller->>Caller: OnPolicyRunner(env, train_cfg).learn() 进入 RL 采样与更新循环
+  loop 每个控制步 Go2Env.step(actions)
+    Caller->>Scene: robot.control_dofs_position() 下发目标关节位置并调用 scene.step()
+    Scene->>IO: 执行 _pre_step_callbacks 与 _recorder_manager.step()
+    Scene->>Sim: _sim.step() 检查 errno 后推进仿真步
+    alt 纯刚体且无需梯度 (_rigid_only and not _requires_grad)
+      Sim->>Solvers: 循环 substeps 次调用 rigid_solver.substep() 并 clear_external_force()
+    else 多物理耦合或可微仿真 (_step)
+      Sim->>Solvers: 每 substep 依次执行 _coupler.preprocess() -> substep_pre_coupling() -> _coupler.couple() -> substep_post_coupling() -> changelog.commit()
+    end
+    Sim->>IO: _sensor_manager.step() 在 torch.no_grad() 下更新传感器读数
+    Scene->>IO: _visualizer.update_on_sim_step() 与 camera.update_recording()
+    Caller->>Caller: 读取 robot 状态、计算奖励/终止条件并组装观测返回给 PPO
+  end
+  Note over Scene,Solvers: 若开启 requires_grad=True，Scene.backward(loss) 触发 Simulator._reverse() 回放子步并逆向执行内核
+```
+
+核心复现路径：可直接运行 `python examples/locomotion/go2_train.py` 体验并行刚体 RL 训练，或通过 `genesis/_main.py` CLI 载入 URDF/MJCF/USD 场景进行交互预览。
+
+核对源码（`Genesis-Embodied-AI/Genesis` `main` 分支）：`genesis/_main.py`、`genesis/engine/scene.py`、`genesis/engine/simulator.py`、`examples/locomotion/go2_train.py`、`examples/locomotion/go2_env.py`。
+
 ## 与其他系统的关系
 
 - **推荐背景**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 Genesis 推荐为实战路线图中的核心工具之一。

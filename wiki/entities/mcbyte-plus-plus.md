@@ -70,30 +70,6 @@ flowchart LR
 
 上述图概括模块关系，不表示代码可流式逐帧处理。项目 README 特别说明，当前 EdgeTAM 掩码传播实现会一次性载入所有帧；Re-ID 在线执行不等于整条掩码管线支持实时流输入。
 
-### 运行时序
-
-官方演示入口为 `tools/demo_track__with_reid.py`，跟踪器实现位于 `yolox/tracker/mcbyteplusplus_tracker__with_reid.py`。检测可由默认 YOLOX 检测器生成，也可通过 `--det_path` 输入预先计算的检测结果；启用 Re-ID 时还需加载对应特征提取模型。
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as 使用者
-    participant Demo as with-ReID 演示入口
-    participant Detector as YOLOX 或检测文件
-    participant Tracker as McBytePlusPlusTracker
-    participant Mask as EdgeTAM 掩码管理器
-    participant ReID as 视觉特征匹配
-    participant Out as MOT 文本与可视化
-    User->>Demo: 帧目录 + 模型与跟踪参数
-    Demo->>Detector: 检测目标，或读取预计算检测
-    Demo->>Mask: 传播并提供掩码线索
-    Demo->>Tracker: 每帧检测、掩码与相机补偿信息
-    Tracker->>ReID: 新目标对比当前不可见的历史轨迹
-    ReID-->>Tracker: 相似度匹配或新建身份
-    Tracker-->>Out: 更新轨迹与身份
-    Demo->>Out: 保存可视化帧和 MOT 格式记录
-```
-
 ### 评测结果与读取方式
 
 官方 README 在单张 NVIDIA H100 上报告跟踪 FPS，且明确**排除目标检测耗时**；检测先单独提取，再输入跟踪器。因此 FPS 不能直接当作端到端摄像头实时速度。下表对比原始 McByte 与启用在线 Re-ID 的 McByte++：
@@ -106,6 +82,43 @@ sequenceDiagram
 | DanceTrack test | 67.1 / 68.1 / 2.00 | 64.5 / 67.8 / **20.23** |
 
 结果显示，McByte++ 的速度提升与 Re-ID 的身份收益要分开看：SportsMOT 和 SoccerNet 上在线 Re-ID 改善 HOTA/IDF1；DanceTrack 上 Re-ID 收益有限，HOTA 与 IDF1 均低于 McByte，而速度大幅提高。额外的 GTA-link 离线全局关联结果是后处理对照，不是在线版本的运行依赖。
+
+## 源码运行时序图
+
+核查 `tstanczyk95/McBytePlusPlus`（`main` 分支）源码：带 Re-ID 演示入口为 `tools/demo_track__with_reid.py`（`image_demo`），另提供无 Re-ID 入口 `tools/demo_track__no_reid.py`。`MaskManager`（`mask_propagation/mask_manager__edgetam.py`）在初始化时通过 `build_sam2_video_predictor` 对整个帧目录调用 `init_state(video_path=input_frame_dir)`；主循环中由 `McBytePlusPlusTracker.update`（`yolox/tracker/mcbyteplusplus_tracker__with_reid.py`）串联卡尔曼预测、条件相机运动补偿（`GMC.apply` + `STrack.multi_gmc`）、掩码条件关联（`conditioned_assignment`）以及基于 `reid_identity_bank` 的离线重连（`try_reconnect_new_tracks`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 使用者
+    participant Demo as tools/demo_track__with_reid.py
+    participant Det as Predictor / det_list
+    participant Mask as MaskManager (EdgeTAM)
+    participant Tracker as McBytePlusPlusTracker
+    participant ReID as ReIDManager & IdentityBank
+    participant Out as pending 缓冲与 MOT 输出
+    User->>Demo: 传入 --path 帧目录与可选 --det_path
+    Demo->>Mask: 初始化 EdgeTAM predictor 并预载入视频帧
+    loop 逐帧 frame_id 遍历图像序列
+        alt 指定 --det_path
+            Demo->>Det: get_detections / get_yolox_detections 读取检测框
+        else 使用内置 YOLOX
+            Demo->>Det: Predictor.inference(img_path)
+        end
+        opt frame_id > 1
+            Demo->>Mask: get_updated_masks 更新并传播目标掩码
+        end
+        Demo->>Tracker: update(outputs, prediction_mask, tracklet_mask_dict, frame_img)
+        Tracker->>Tracker: STrack.multi_predict + 可选 GMC.apply/multi_gmc + conditioned_assignment
+        Tracker->>ReID: 提取特征，try_reconnect_new_tracks 匹配 reid_identity_bank
+        ReID-->>Tracker: 复用历史 export_id 或最终确认新身份
+        Tracker-->>Demo: 返回 online_targets (含 export_id / export_id_final)
+        Demo->>Out: 未终结轨迹暂存 pending，终结后 flush_pending 写 MOT 文本与可视化帧
+    end
+```
+
+- **关键复现路径**：按 `INSTALLATION.md` 准备依赖与预训练权重后，运行 `python tools/demo_track__with_reid.py --path <帧目录>`（或加 `--det_path <det.txt>`），无 Re-ID 对照运行 `python tools/demo_track__no_reid.py --path <帧目录>`。
+- **已核查源码文件**：`README.md`、`tools/demo_track__with_reid.py`、`yolox/tracker/mcbyteplusplus_tracker__with_reid.py`、`mask_propagation/mask_manager__edgetam.py`。
 
 ## 工程实践
 

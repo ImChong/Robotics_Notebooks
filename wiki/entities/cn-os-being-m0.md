@@ -44,6 +44,10 @@ institutions:
 | 类别 | 动作重定向 |
 | 官方组织 | https://github.com/BeingBeyond |
 
+## 源码运行时序图
+
+**不适用。** 经核查 [BeingBeyond/Being-M0](https://github.com/BeingBeyond/Being-M0)（`main` 分支，共 103 个文件），仓库仅包含 `README.md` 与 `docs/` 下的静态项目主页资源（`docs/index.html`、CSS/JS、配图与展示 GIF）；`README.md` 在 `## Code` 节声明“We will release our code and part of our dataset soon.”，仓库内尚无动作生成、动作重定向、数据预处理或模型推理的可运行代码与脚本入口，无法绘制基于源码的运行时序图。
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `Being-M0` 仓库并核对 README 许可与依赖。

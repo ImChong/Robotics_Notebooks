@@ -94,6 +94,45 @@ flowchart LR
   STEP --> URDF
 ```
 
+## 源码运行时序图
+
+以下时序图依据 `neka-nat/freecad-mcp`（`main` 分支）源码核对绘制，核对路径：`src/freecad_mcp/server.py`、`src/freecad_mcp/operations/core.py`、`src/freecad_mcp/freecad_client.py`、`addon/FreeCADMCP/rpc_server/rpc_server.py`、`addon/FreeCADMCP/rpc_server/gui_dispatch.py`（另提供 `execute_code_headless` 通过 `src/freecad_mcp/headless.py` 直接调用 `freecadcmd` 子进程，不经 GUI RPC）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Host as "MCP Host (Claude / Cursor)"
+  participant MCP as "FastMCP Server (server.py)"
+  participant Ops as "operations/core.py"
+  participant Client as "FreeCADConnection (freecad_client.py)"
+  participant RPC as "FilteredXMLRPCServer / FreeCADRPC (rpc_server.py)"
+  participant Disp as "dispatch_to_gui (gui_dispatch.py)"
+  participant GUI as "FreeCAD GUI 主线程"
+
+  GUI->>RPC: start_rpc_server(): 监听 127.0.0.1:9875，init_waker() + start_heartbeat()
+  Host->>MCP: 启动 server.py (stdio / streamable-http / sse)
+  MCP->>Client: server_lifespan() -> get_freecad_connection() 探测 get_rpc_status
+
+  Host->>MCP: 调用工具 (create_object / edit_object / execute_code / run_fem_analysis)
+  MCP->>Ops: anyio.to_thread.run_sync 分发至对应 *_operation()
+  Ops->>Client: 调用 create_object() / execute_code() / run_fem_analysis()
+  Client->>RPC: XML-RPC HTTP POST (_TimeoutTransport + Bearer/Basic Auth)
+  RPC->>RPC: validate_allowed_ips 与 auth_token 校验
+  RPC->>Disp: dispatch_to_gui(task, timeout, queue_timeout)
+  Disp->>GUI: 写入 _rpc_request_queue 并触发 Qt _WakeSignal
+  Note over Disp,GUI: process_gui_tasks() 受鼠标拖拽保护(MOUSE_DEFER_MAX_S=5s)与卡死熔断约束
+  GUI->>GUI: 在 FreeCAD.ActiveDocument / CalculiX 上执行并写入 response_queue
+  Disp-->>RPC: 返回执行结果字典
+  RPC-->>Client: XML-RPC 响应
+  Opt include_screenshot=True 且非 --only-text-feedback
+    Ops->>Client: _optional_screenshot() -> get_active_screenshot()
+    Client->>RPC: XML-RPC 请求 view_manager.save_active_screenshot()
+    RPC-->>Ops: Base64 PNG 截图
+  end
+  Ops-->>MCP: TextContent / ImageContent / ErrorResponse
+  MCP-->>Host: CallToolResult
+```
+
 ## 与相近方案的对照
 
 | 方案 | 几何宿主 | 代理接口 | 强项 |

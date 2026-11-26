@@ -63,6 +63,12 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+**不适用。** 经核查索引仓 [`RealXiaoze/humanoid-motion-intelligence`](https://github.com/RealXiaoze/humanoid-motion-intelligence)（`main` 分支）全库文件列表，仓库内仅包含 Markdown 文献综述与论文解读，无 DBHL 可运行代码；官方项目页 `https://whole-body-loco.github.io/` 当前仍标注 `Code (Coming Soon)`，尚无可核实的官方训练、推理或部署源码入口，故暂不绘制源码运行时序图。
+
+- **本次核查文件（`RealXiaoze/humanoid-motion-intelligence` `main`）：** `技术与研究/02_Locomotion与运动先验.md`、`技术与研究/论文逐篇解读/P129.md`（及全库文件树检索）。
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

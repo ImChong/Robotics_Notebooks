@@ -63,6 +63,36 @@ flowchart LR
   E --> F[sdk_deploy 等<br/>Sim2Sim / 真机]
 ```
 
+## 源码运行时序图
+
+官方训练仓 [`DeepRoboticsLab/rl_training`](https://github.com/DeepRoboticsLab/rl_training)（`main` 分支）将 Isaac Lab 环境构建、RSL-RL（含 DR02 AMP 分支）训练与 ONNX 导出拆分为清晰脚本入口：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Train as scripts/reinforcement_learning/rsl_rl/train.py
+    participant Env as Isaac Lab gym.make<br/>AmpLocomotionEnv / ManagerBasedRLEnv
+    participant Wrap as RslRlVecEnvWrapper<br/>AmpRslRlVecEnvWrapper
+    participant Run as OnPolicyRunner / AMPOnPolicyRunner
+    participant Play as scripts/reinforcement_learning/rsl_rl/play.py<br/>export_onnx_fast.py
+    participant Dep as DeepRoboticsLab/sdk_deploy<br/>MuJoCo / 真机
+
+    Dev->>Train: 传入 --task（如 Rough-Deeprobotics-M20-v0 / Amp-Flat-Deeprobotics-DR02-v0）
+    Train->>Train: AppLauncher 启动 · 校验 rsl-rl-lib >= 5.0.1
+    Train->>Env: gym.make(task, cfg=env_cfg) 构建并行仿真环境
+    Train->>Wrap: 按是否 AmpLocomotionEnv 选择 VecEnvWrapper
+    Train->>Run: 解析 runner_class_name 并写入 params/env.yaml、agent.yaml
+    Run-->>Train: runner.learn() 输出 model_*.pt 检查点
+    Dev->>Play: 加载 checkpoint（可选 --keyboard / --video）
+    Play->>Play: export_policy_to_jit / export_policy_to_onnx（或 export_onnx_fast.py）
+    Play->>Env: policy(obs) -> env.step(actions) 推理与足端轨迹可视化
+    Play-->>Dep: 将导出的 policy.onnx 交由同组织 deploy 仓做 Sim2Sim / 真机部署
+```
+
+- **最短复现路径：** 按 `README.md` 配置 Isaac Sim 5.1.0 + Isaac Lab 2.3.2、`pip install -e source/rl_training` 并运行 `scripts/tools/setup_conda_runtime.py`；随后用 `train.py` 训练 Rough/AMP 任务，再通过 `play.py`（或无需 Isaac Sim 的 `scripts/tools/export_onnx_fast.py`）导出 `policy.onnx` 交由同组织 `sdk_deploy` 部署。
+- **本次核查源码文件（`DeepRoboticsLab/rl_training` `main`）：** `README.md`、`scripts/reinforcement_learning/rsl_rl/train.py`、`scripts/reinforcement_learning/rsl_rl/play.py`、`scripts/tools/export_onnx_fast.py`、`source/rl_training/rl_training/envs/amp_locomotion_env.py`、`source/rl_training/rl_training/rsl_rl/runners/amp_on_policy_runner.py`。
+
 ## 工程实践
 
 1. 按官方徽章对齐：**Isaac Sim 5.1 · Isaac Lab 2.3.2 · RSL-RL 5.0.1 · Python 3.11**。

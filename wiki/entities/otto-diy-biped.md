@@ -56,6 +56,41 @@ flowchart LR
     Flow["入门路径: 打印 -> 接线 -> Blockly 调动作 -> OttoDIYLib 编程"] --> Build
 ```
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Sketch as "示例草图 (Otto_avoid.ino / Otto_APP.ino)"
+    participant SCmd as "SerialCommand (src/SerialCommand.cpp)"
+    participant Otto as "Otto (src/Otto.cpp)"
+    participant Osc as "Oscillator[4] (src/Oscillator.cpp)"
+    participant HW as "4 路舵机与外设 (EEPROM / 蜂鸣器 / 点阵)"
+
+    Sketch->>Otto: "setup(): Otto.init(YL, YR, RL, RR, true, Buzzer)"
+    Otto->>Osc: "attachServos() -> servo[0..3].attach(pin)"
+    Otto->>HW: "EEPROM.read(0..3) 读取校准微调 -> SetTrim()"
+    Sketch->>Otto: "Otto.home() 归位到 90° 中位"
+
+    loop loop() 主循环
+        alt 蓝牙串口控制 (Otto_APP.ino)
+            Sketch->>SCmd: "SCmd.readSerial() 解析 M/S/H/K 指令"
+            SCmd-->>Sketch: "receiveMovement() 更新 moveId / T / moveSize"
+        else 超声波避障 (Otto_avoid.ino)
+            Sketch->>HW: "ultrasound() 测距 (<= 15 cm 触发避障)"
+        end
+        Sketch->>Otto: "Otto.walk(steps, T, dir) / turn() / _moveServos()"
+        Otto->>Osc: "_execute() -> oscillateServos() 配置 O/A/T/phase_diff"
+        loop 周期 T 内循环采样
+            Otto->>Osc: "servo[i].refresh()"
+            Osc->>Osc: "next_sample() 到达 _samplingPeriod (默认 30 ms) 后计算 sin 相位与限速"
+            Osc->>HW: "_servo.write(_pos + _trim) 输出 PWM"
+        end
+    end
+```
+
+以上调用链依据 `OttoDIY/OttoDIYLib`（`main` 分支）中的 `src/Otto.cpp`、`src/Oscillator.cpp`、`src/SerialCommand.cpp` 及 `examples/Otto_avoid/Otto_avoid.ino`、`examples/Otto_APP/Otto_APP.ino` 整理。
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

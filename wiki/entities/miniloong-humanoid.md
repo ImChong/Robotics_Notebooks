@@ -58,6 +58,40 @@ flowchart LR
     ONNX --> Robot
 ```
 
+## 源码运行时序图
+
+入口：离线训练在 `训练代码/OmniBotCtrl/train.py`（注册任务并执行 `ppo_runner.learn()`），经 `训练代码/OmniBotCtrl/pt2onnx.py` 导出 ONNX（可用 `训练代码/OmniBotCtrl/sim2sim_tinker.py` 做 MuJoCo 验证）；实机部署运行 `下位机代码/Linux/control_task2/src/main.cpp`（CMake 目标 `control_task_tinker_tvm`）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Main as control_task2/src/main.cpp
+    participant Threads as Thread_Mem_Servo / Thread_UDP_OCU
+    participant T1 as Thread_T1 (控制线程)
+    participant SFM as locomotion_sfm (vmc_src)
+    participant RL as Gait_RL_Update_2 (rl_boy_o.cpp)
+    participant ORT as Onnx::onnxClass (onnx.cpp)
+    participant Force as force_control_and_dis_rl (can.cpp)
+
+    Main->>Threads: pthread_create 创建共享内存与 OCU UDP 线程
+    Main->>T1: pthread_create 创建实时控制线程
+    T1->>T1: CAN_motor_init() 并初始化雅可比矩阵
+    loop 约 1 kHz 控制周期 (usleep 1000)
+        T1->>T1: rc_process() + subscribe_imu_to_webot() + readAllMotorPos()
+        T1->>SFM: locomotion_sfm(leg_dt[1]) 状态机调度
+        alt vmc_all.gait_mode == G_RL
+            SFM->>RL: Gait_RL_Update_2(dt)
+            RL->>RL: 组装 44 维观测 obs_now 并堆叠 21 帧 obs_all_onnx
+            RL->>ORT: onnxPtr[rl_gait_sel]->run() (Ort::Session 推理)
+            ORT-->>RL: action_onnx（低通滤波并写入 leg_motor_all.q_set）
+        end
+        T1->>Force: force_control_and_dis_rl(leg_dt[1])
+        Force->>Force: set_motor_t_rlboy() 经 CAN 下发位力混合控制指令
+    end
+```
+
+图依据：`loongOpen/MiniLoong`（`main` 分支）`README.md`、`训练代码/OmniBotCtrl/train.py`、`训练代码/OmniBotCtrl/pt2onnx.py`、`训练代码/OmniBotCtrl/sim2sim_tinker.py`、`下位机代码/Linux/control_task2/CMakeLists.txt`、`下位机代码/Linux/control_task2/src/main.cpp`、`下位机代码/Linux/control_task2/vmc_src/locomotion_sfm.cpp`、`下位机代码/Linux/control_task2/gait_src/rl_boy_o.cpp`、`下位机代码/Linux/control_task2/vmc_src/force_imp_controller.cpp`、`下位机代码/Linux/control_task2/loong_ctrl/src/rl/onnx.cpp`。
+
 ## 局限与风险
 
 - 本页仅基于一篇第三方公众号文章，规格数字可能随版本变化。

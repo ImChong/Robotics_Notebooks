@@ -86,6 +86,51 @@ flowchart LR
 | [FEAP MuJoCo 部署](./jackhan-feap-mujoco-deployment.md) | FEAP 论文 ONNX 双网在 E3 场景的交互验证 |
 | [FEAP Vision 部署](./jackhan-feapvision-mujoco-deployment.md) | 深度图 + 本体观测 + TorchScript |
 
+## 源码运行时序图
+
+生态中可直接开箱运行的 MuJoCo 手柄仿真入口位于 `JackHan-Sdu/Mujoco-WalkerE3-Simulation`（`main` 分支）。`deploy_mujoco_gamepad.py` 加载 `configs/e3.yaml`、MJCF 场景与 TorchScript 策略，在被动 Viewer 主循环内按 50Hz 采样手柄指令并按 `control_decimation` 降采样推理、以高频 PD 力矩驱动仿真步进。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 操作者
+  participant Main as deploy_mujoco_gamepad.py
+  participant Cfg as configs/e3.yaml
+  participant GP as utils/gamepad_utils.py
+  participant Dist as utils/disturbance_utils.py
+  participant Math as utils/math_utils.py
+  participant MJ as MuJoCo MjModel 与 MjData
+  participant Policy as TorchScript 策略
+
+  User->>Main: 启动 python deploy_mujoco_gamepad.py e3.yaml
+  Main->>Cfg: 读取 xml_path / policy_path / kps / kds / dt
+  Main->>MJ: MjModel.from_xml_path + MjData 初始化
+  Main->>Policy: torch.jit.load 加载 policy_path
+  Main->>GP: init_gamepad 初始化手柄映射
+  Main->>Dist: set_disturbance_body_id 绑定扰动刚体
+  Main->>MJ: mujoco.viewer.launch_passive 启动视图
+
+  loop viewer.is_running 且未超时
+    opt 满 0.02s 手柄采样周期
+      User->>GP: 摇杆速度与按键模式输入
+      GP->>Main: update_cmd_from_gamepad 返回 cmd
+    end
+    Main->>Dist: apply_disturbance_force 施加外力扰动
+    Main->>Math: pd_control 计算关节力矩 tau
+    Main->>MJ: 写入 d.ctrl 并执行 mj_step
+    opt counter 整除 control_decimation
+      MJ-->>Main: 读取 qpos qvel quat omega
+      Main->>Math: get_gravity_orientation 拼接 obs
+      Main->>Policy: policy 前向推理输出 action
+      Main->>Main: 更新 target_dof_pos 并可选触发 plot_data
+    end
+    Main->>MJ: viewer.sync 刷新视图与相机跟踪
+  end
+```
+
+- **最短复现路径：** 手柄若非默认 Logitech / Betop 映射先运行 `python calibrate_gamepad.py`，随后执行 `python deploy_mujoco_gamepad.py e3.yaml`。
+- **已核查仓库文件（`JackHan-Sdu/Mujoco-WalkerE3-Simulation` @ `main`）：** `README.md`、`deploy_mujoco_gamepad.py`、`configs/e3.yaml`、`calibrate_gamepad.py`、`utils/gamepad_utils.py`、`utils/disturbance_utils.py`、`utils/math_utils.py`、`utils/mode_utils.py`、`utils/plot_utils.py`、`utils/viewer_utils.py`。
+
 ## 常见误区或局限
 
 - **2026-11-13 维护复核：** 已核对六仓官方 README：数据工具、控制器、算法模板与两条 FEAP 部署线仍分别承担本页所列职责，具体固定版本见各子页的复核记录；[手柄仿真 README（5439e1e）](https://github.com/JackHan-Sdu/Mujoco-WalkerE3-Simulation/blob/5439e1ec4999d47b5c1b120181a1c2de088c079f/README.md) 仍以 `.pt` 策略和 `deploy_mujoco_gamepad.py e3.yaml` 为入口，并披露台阶首步穿透及长时间站立打滑。此处是接口与职责复核，未验证六仓组合运行。

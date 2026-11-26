@@ -154,6 +154,45 @@ flowchart TB
   IL["内置 IL 配置\nrobomimic BC 17"]
 ```
 
+## 源码运行时序图
+
+以下按 `isaac-sim/IsaacLab` 当前 `main` 分支（统一 RL 入口已将早期分库脚本整合为 `scripts/reinforcement_learning/train.py` 与 `play.py`）核对默认环境的注册发现、训练调度与单步执行时序：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 统一入口 (list_envs.py / train.py / play.py)
+  participant Reg as 任务注册表 (isaaclab_tasks + gymnasium.registry)
+  participant Dispatch as 后端调度 (isaaclab_rl/entrypoints/dispatch.py)
+  participant Backend as RL 后端 (如 train_rsl_rl.py / play_rsl_rl.py)
+  participant Env as 环境实例 (ManagerBasedRLEnv / DirectRLEnv)
+
+  CLI->>Reg: import isaaclab_tasks 触发 import_packages() 批量执行 gym.register
+  opt 查询可用环境与 Preset
+    CLI->>Reg: command_list_envs() 过滤 env_cfg_entry_point 并调用 resolve_task_runs() 输出清单
+  end
+  CLI->>Dispatch: run_train_cli() / run_play_cli() 按 _BACKEND_MODULES 路由至目标 RL 后端
+  Dispatch->>Backend: 移交命令行参数与选定任务 ID
+  Backend->>Reg: resolve_task_config(task, agent) 解析环境与算法配置
+  Backend->>Env: launch_simulation() 后调用 create_isaaclab_env() (gym.make) 实例化环境
+  Backend->>Backend: wrap_rsl_rl_env() 包装为 RslRlVecEnvWrapper 并创建 runner (create_rsl_rl_runner)
+  loop 训练或回放循环 (runner.learn / run_playback)
+    Backend->>Env: env.step(action)
+    alt Manager-Based 工作流 (ManagerBasedRLEnv.step)
+      Env->>Env: action_manager.process_action() -> decimation 循环 (apply_action / sim.step / scene.update)
+      Env->>Env: termination_manager & reward_manager.compute() -> _reset_idx() + sim.forward() -> observation_manager.compute()
+    else Direct 工作流 (DirectRLEnv.step)
+      Env->>Env: _pre_physics_step() -> decimation 循环 (_apply_action / sim.step / scene.update)
+      Env->>Env: _get_dones() & _get_rewards() -> _reset_envs_from_buffer() -> _compute_observations()
+    end
+    Env-->>Backend: 返回 (obs_buf, reward_buf, reset_terminated, reset_time_outs, extras)
+  end
+```
+
+核心复现路径：本地通过 `scripts/environments/list_envs.py`（底层 `isaaclab.cli.commands.list_envs.command_list_envs`）确认任务 ID 与 `--show_presets`，随后经 `scripts/reinforcement_learning/train.py` / `play.py` 走 `isaaclab_rl.entrypoints.dispatch` 启动对应后端执行。
+
+核对源码（`isaac-sim/IsaacLab` `main` 分支）：`scripts/environments/list_envs.py`、`source/isaaclab/isaaclab/cli/commands/list_envs.py`、`source/isaaclab_tasks/isaaclab_tasks/__init__.py`、`scripts/reinforcement_learning/train.py`、`scripts/reinforcement_learning/play.py`、`source/isaaclab_rl/isaaclab_rl/entrypoints/dispatch.py`、`source/isaaclab_rl/isaaclab_rl/entrypoints/backends/train_rsl_rl.py`、`source/isaaclab_rl/isaaclab_rl/entrypoints/backends/play_rsl_rl.py`、`source/isaaclab_rl/isaaclab_rl/entrypoints/backends/runner_rsl_rl.py`、`source/isaaclab/isaaclab/envs/manager_based_rl_env.py`、`source/isaaclab/isaaclab/envs/direct_rl_env.py`。
+
 ## 全量清单（v3.0.0，commit `2e44ddb`）
 
 > 下表由 `source/isaaclab_tasks` 中的 `gym.register` 扫描生成，**Play 变体折叠进第二列**。
