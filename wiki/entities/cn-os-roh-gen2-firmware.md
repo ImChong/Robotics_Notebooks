@@ -44,6 +44,18 @@ institutions:
 | 类别 | 工程与工具 |
 | 官方组织 | https://github.com/oymotion |
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  HW["ROH-AP001 / ROH-AP002 灵巧手硬件"] --> FW["firmware (板载固件)"]
+  FW <--> PROTO["protocol (通信协议文档)"]
+  PROTO <--> APP["OHandSetting (桌面端配置应用)"]
+  PROTO <--> ROS["ROS / ROS2 驱动与 URDF (rohand_gen2_ros/ros2_pkg, urdf_ros1/ros2)"]
+  ROS --> DEMO["应用示例 (roh_gen2_demos / roh_with_rm65 机械臂联调)"]
+  DOCS["UserManual / FAQs (用户手册与常见问题)"] --> APP
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `roh_gen2_firmware` 仓库并核对 README 许可与依赖。

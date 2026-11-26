@@ -44,6 +44,29 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/Astribot-Dev |
 
+### 项目流程图
+
+依据 [Astribot-Dev/astribot_descriptions](https://github.com/Astribot-Dev/astribot_descriptions) 仓库 README 与目录结构：
+
+```mermaid
+flowchart TD
+  LFS["git lfs pull 拉取模型载荷"] --> CHK["python3 tools/check_assets.py 对照 manifest.json (SHA-256) 校验资产与引用"]
+  CHK --> S1["astribot_s1/"]
+  CHK --> T1["astribot_t1/"]
+  S1 --> MESH["mesh/ (DAE / OBJ / STL 与贴图)"]
+  T1 --> MESH
+  S1 --> MJCF["model/mjcf/robot/ (s1.xml / s1_kinematic.xml 与片段)"]
+  T1 --> MJCF2["model/mjcf/robot/ (t1.xml / t1_kinematic.xml 与片段)"]
+  S1 --> URDF["model/urdf/astribot_whole_body.urdf"]
+  T1 --> URDF
+  S1 --> SDF["model/sdf/astribot_whole_body.sdf"]
+  T1 --> SDF
+  MJCF --> TOOL["仿真与 ROS 工具链加载"]
+  MJCF2 --> TOOL
+  URDF --> TOOL
+  SDF --> TOOL
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `astribot_descriptions` 仓库并核对 README 许可与依赖。

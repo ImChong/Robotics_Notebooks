@@ -44,6 +44,30 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab |
 
+### 架构流程图
+
+依据 [AgibotTech/A3-A3U-robot-model](https://github.com/AgibotTech/A3-A3U-robot-model) 仓库 README 与目录结构，本仓仅包含静态模型资源（不含控制器、驱动或启动脚本）：
+
+```mermaid
+flowchart LR
+  REPO["A3-A3U-robot-model 静态资产仓"] --> BASE["基础版: a3_t2d5/ 与 a3_t3d0/"]
+  REPO --> ULTRA["Ultra 版: a3_ultra_t2d5/ 与 a3_ultra_t3d0/ (含灵巧手)"]
+  BASE --> MESH["meshes/ (STL 网格)"]
+  ULTRA --> MESH
+  BASE --> URDF_B["urdf/model.urdf"]
+  BASE --> MJCF_B["mjcf/a3_t2d5.xml 与 a3_t3d0.xml"]
+  BASE --> RVIZ_B["rviz/display.rviz"]
+  ULTRA --> URDF_U["urdf/model.urdf 与 model_planning.urdf"]
+  ULTRA --> SRDF_U["urdf/model_planning.srdf"]
+  ULTRA --> MJCF_U["mjcf/a3_ultra_*.xml"]
+  URDF_B --> ROS["ROS / ROS 2 与 RViz 可视化"]
+  RVIZ_B --> ROS
+  URDF_U --> MOVEIT["MoveIt 运动规划 (仅 A3 Ultra 提供 SRDF)"]
+  SRDF_U --> MOVEIT
+  MJCF_B --> MJ["MuJoCo 仿真加载"]
+  MJCF_U --> MJ
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `A3-A3U-robot-model` 仓库并核对 README 许可与依赖。

@@ -44,6 +44,21 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/linker-bot |
 
+### 项目流程图
+
+依据 [linker-bot/linkerhand-urdf](https://github.com/linker-bot/linkerhand-urdf) 仓库 README 与顶层目录结构：
+
+```mermaid
+flowchart LR
+  REPO["linkerhand-urdf 灵巧手模型仓"] --> SERIES1["L 系列: L6/ 与 L20lite/ (L10) 与 L20/ 与 L25/ 与 L30/"]
+  REPO --> SERIES2["O / T 系列: O6/ 与 O7/ 与 T12/"]
+  REPO --> ARCH["archive/lhg20/ (LHG20 仅 left/)"]
+  SERIES1 --> LR["各型号按 left/ 与 right/ 组织 URDF 与几何资源"]
+  SERIES2 --> LR
+  ARCH --> USE["仿真、运动规划与控制器集成"]
+  LR --> USE
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `linkerhand-urdf` 仓库并核对 README 许可与依赖。

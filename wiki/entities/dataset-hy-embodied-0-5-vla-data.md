@@ -51,6 +51,16 @@ sources:
 
 自研指尖式 UMI 设备采集，光学动捕记录轨迹；完整语料预训练 HyVLA-0.5。
 
+### 数据流水线与使用流程
+
+```mermaid
+flowchart LR
+    UMI["自研指尖式 UMI 设备采集（70 余项双臂操作任务）"] --> CORPUS["完整双臂操作语料（1 万小时以上）"]
+    MOCAP["光学动捕记录运动轨迹"] --> CORPUS
+    CORPUS --> PRE["HyVLA-0.5 VLA 模型预训练"]
+    CORPUS --> OPEN["开源约 20% 子集（2,163 小时 / 25 万+ 片段，LeRobot v3.0 结构）"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

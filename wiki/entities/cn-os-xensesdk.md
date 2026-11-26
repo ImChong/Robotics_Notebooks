@@ -44,6 +44,20 @@ institutions:
 | 类别 | SDK/驱动 |
 | 官方组织 | https://github.com/XenseRobotics-AI、https://github.com/XenseRobotics |
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  SRC["数据源: USB 传感器 (SN/相机ID) / 远程 IP / 离线视频 data.h5"] --> INIT["Sensor.create / scanSerialNumber / calibrateSensor"]
+  INIT --> INFER["onnxruntime_gpu 推理后端 (CUDA/cuDNN)"]
+  INFER --> SEL["selectSensorInfo (同帧同步枚举读取)"]
+  SEL --> OUT1["图像与深度: Rectify / Difference / Depth"]
+  SEL --> OUT2["形变与标记: Marker2D / Mesh3D / Mesh3DInit / Mesh3DFlow"]
+  SEL --> OUT3["三维力场: Force / ForceNorm / ForceResultant (6D)"]
+  INIT --> CFG["exportRuntimeConfig -> createSolver 离线重放"]
+  SEL --> REL["release() 释放资源 / call_service 算力板服务"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `xensesdk` 仓库并核对 README 许可与依赖。

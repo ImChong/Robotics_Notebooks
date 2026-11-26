@@ -44,6 +44,19 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/zsibot |
 
+### 项目流程图
+
+依据 [zsibot/genisom_model](https://github.com/zsibot/genisom_model) 仓库 README 与目录结构：
+
+```mermaid
+flowchart LR
+  REPO["genisom_model (BSD-3-Clause)"] --> ZSL1["zsl-1/"]
+  REPO --> ZSL1W["zsl-1w/"]
+  ZSL1 --> ASSETS["urdf/ (运动学结构描述) + meshes/ (几何文件)"]
+  ZSL1W --> ASSETS
+  ASSETS --> SIM["RViz / Gazebo 仿真与集成项目"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `genisom_model` 仓库并核对 README 许可与依赖。

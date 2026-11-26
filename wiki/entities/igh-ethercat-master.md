@@ -46,6 +46,16 @@ summary: "IgH EtherCAT Master (EtherLab)：以 Linux 内核模块形式实现的
 - 文章称仅支持 Linux（Preempt-RT / Xenomai），移植难度高。
 - 文章选型句：Linux 硬实时、机器人/CNC 高同步 → IgH EtherLab；高同步伺服场景优先 IgH（SOEM 的 DC 精度弱于它）。
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  APP["工业 CNC / 机器人实时应用"] --> USR["用户态库\nLGPL v2.1 接口"]
+  USR --> KMOD["IgH EtherCAT Master 内核模块\nGPL v2 · Linux 内核态（PREEMPT_RT / Xenomai）"]
+  KMOD --> NIC["网卡驱动与物理网口"]
+  NIC --> BUS["EtherCAT 从站链\n微秒级周期同步与高精度 DC 分布式时钟"]
+```
+
 ## 工程实践
 
 - 适用场景：微秒级同步、Linux 实时工控主机；与用户态 [SOEM](./soem.md) 构成主站选型对照。

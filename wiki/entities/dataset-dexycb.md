@@ -51,6 +51,15 @@ sources:
 
 多台标定相机同步记录，并用于 2D/6D/3D 三类估计任务。
 
+### 数据流水线
+
+```mermaid
+flowchart LR
+  CAP["10 名受试者桌面抓取 20 种 YCB 物体"] --> CAM["8 台标定同步 RGB-D 相机采集 (30fps, 640x480, 1,000 段序列 / 58.2 万帧)"]
+  CAM --> ANNO["手部与物体 6D 位姿标注 (CC BY-NC / NVlabs/dex-ycb-toolkit)"]
+  ANNO --> TASK["2D/6D/3D 手物姿态估计与面向机器人的人机交接抓取任务"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

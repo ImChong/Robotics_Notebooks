@@ -44,6 +44,19 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/HorizonRobotics |
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  REPO["RoboOrchardHardware (CERN-OHL-P-2.0)"] --> CAM["相机支架 STEP 资产 (D405 腕部 / D435 高低中位与腕部 / D455 中位 / 底座紧固件)"]
+  REPO --> CAL["可拆卸标定组件 (calibration_board 可与相机支架组合)"]
+  REPO --> GRP["夹爪配件 STEP 资产 (pointed 尖头套 / fold_clothes 尖头夹爪)"]
+  CAM --> PRINT["3D 打印件制造与预览图核对 (3d_print_assets / images)"]
+  CAL --> PRINT
+  GRP --> PRINT
+  PRINT --> USE["机器人标定、仿真训练与真机部署引用"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `RoboOrchardHardware` 仓库并核对 README 许可与依赖。

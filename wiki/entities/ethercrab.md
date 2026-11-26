@@ -43,6 +43,18 @@ summary: "EtherCrab：纯 Rust 实现的 EtherCAT 主站，面向 Rust 嵌入式
 - 文章称适合 Rust 嵌入式开发，项目相对年轻。
 - 文章选型句：Rust 项目 → Ethercrab。
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  APP["Rust 异步应用（std / no_std）\ntokio · smol · Embassy"] --> MD["MainDevice\nPduStorage（tx / rx / pdu_loop）"]
+  MD --> INIT["初始化与配置\ninit_single_group（EEPROM SII · CoE SDO）"]
+  INIT --> DC["DC 分布式时钟\n拓扑延迟检测 · 启动静态漂移补偿"]
+  DC --> OP["into_op（PRE-OP 到 OP）\ngroup.tx_rx 周期交换 io_raw PDI 与 DC 同步"]
+  OP --> TXRX["tx_rx_task 传输层\nraw socket / xdp / io_uring / Windows NPF"]
+  TXRX --> SUB["EtherCAT SubDevices\nEK1100 · EL3004 · CiA402/DS402 驱动器"]
+```
+
 ## 工程实践
 
 - 适用场景：技术栈已是 Rust 的机器人/嵌入式团队；成熟度低于 [SOEM](./soem.md)，上生产前应自行评估。

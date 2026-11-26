@@ -44,6 +44,15 @@ institutions:
 | 类别 | 部署运行时 |
 | 官方组织 | https://github.com/FFTAI |
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  URDF["1. 准备模型: Wiki-GRx-URDF / Wiki-GRx-MJCF (含 FourierN1 分支)"] --> GYM["2. 策略训练: Wiki-GRx-Gym (Isaac Gym 平地行走 RL)"]
+  GYM --> MU["3. 仿真验证: Wiki-GRx-Mujoco (MuJoCo 策略验证)"]
+  MU --> DEP["4. 真机部署: Wiki-GRx-Deploy (真实 Fourier GRx 机器人)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `Wiki-GRx-Pipeline` 仓库并核对 README 许可与依赖。

@@ -44,6 +44,19 @@ institutions:
 | 类别 | 仿真环境 |
 | 官方组织 | https://github.com/Astribot-Dev |
 
+### 架构流程图
+
+依据 [Astribot-Dev/astribot_msgs](https://github.com/Astribot-Dev/astribot_msgs) 仓库 README 与顶层文件结构：
+
+```mermaid
+flowchart LR
+  DEF["接口定义目录: msg/ 与 srv/ 与 action/"] --> ROS1["ROS1 Noetic 构建 (CMakeLists_ros1.txt / package_ros1.xml / catkin_make install)"]
+  DEF --> ROS2["ROS2 构建清单 (CMakeLists_ros2.txt / package_ros2.xml)"]
+  ROS1 --> SUB["作为 Submodule 集成"]
+  SUB --> SIM["astribot_simulation (仿真通信)"]
+  SUB --> SDK["astribot_sdk (ros1 分支: 真机控制通信)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `astribot_msgs` 仓库并核对 README 许可与依赖。

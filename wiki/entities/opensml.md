@@ -42,6 +42,16 @@ summary: "OpenSML：适配 CiA402 的轻量 SoftMotion 运动控制库，提供�
 - 文章称为 SoftMotion 轻量运动控制库，适配 CiA402，支持点位、插补。
 - 仓库地址由文章给出。
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  PLC["PLC 控制程序（ST 语言）\nCODESYS / TwinCAT 3"] --> FB["OpenSML 功能块与 OpenSML_Axis\nPower · Home · Stop · ProfilePosition/Velocity · SyncPosition/Velocity"]
+  FB --> RAMP["轨迹与速度规划（V3.x）\nS7RTT 规划器（支持连续中断无速度抖动）"]
+  RAMP --> PDO["EtherCAT PDO 映射\nTargetPosition（DINT）等过程数据"]
+  PDO --> DRV["CiA402 伺服驱动器\n状态机执行与编码器位置反馈"]
+```
+
 ## 工程实践
 
 - 适用场景：想在 CNC/多轴场景自带轨迹插补而非依赖商用运动控制器时的参考。

@@ -44,6 +44,25 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/BoosterRobotics |
 
+### 项目流程图
+
+依据 [BoosterRobotics/booster_assets](https://github.com/BoosterRobotics/booster_assets) 仓库 README 与目录结构：
+
+```mermaid
+flowchart LR
+  PKG["pip install -e . (pyproject.toml / setup.cfg)"] --> PY["src/booster_assets/motions.py (K1/T1/T2_JOINT_NAMES)"]
+  REPO["Booster Assets 仓库资产"] --> ROB["robots/ 本体模型"]
+  REPO --> MOT["motions/ 50 Hz 重定向 CSV (7 维根位姿 + 关节弧度)"]
+  ROB --> K1["K1/: 22 DoF (URDF/XML) 与 Locomotion (URDF)"]
+  ROB --> T1["T1/: 23 DoF / Locomotion (URDF/XML) 与 29 DoF (URDF)"]
+  ROB --> T2["T2/: T2_31dof (URDF/XML)"]
+  PY --> ALIGN["按关节顺序映射运动轨迹到模型"]
+  MOT --> ALIGN
+  K1 --> ALIGN
+  T1 --> ALIGN
+  T2 --> ALIGN
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `booster_assets` 仓库并核对 README 许可与依赖。

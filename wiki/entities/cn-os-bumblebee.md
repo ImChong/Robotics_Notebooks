@@ -44,6 +44,19 @@ institutions:
 | 类别 | 全身动作跟踪/技能训练 |
 | 官方组织 | https://github.com/BeingBeyond |
 
+### 项目流程图
+
+依据 [BeingBeyond/BumbleBee](https://github.com/BeingBeyond/BumbleBee) 仓库 README 描述的 Expert-Generalist 学习管线（代码尚未释出）：
+
+```mermaid
+flowchart LR
+  MOT["多样化人类动作数据"] --> CLUS["Autoencoder 行为聚类"]
+  CLUS --> EXP["各行为簇分别训练 Expert 策略"]
+  EXP --> S2R["真机数据采集 + 迭代 Delta Action 建模 (Sim2Real 适配)"]
+  S2R --> DIST["多专家蒸馏为统一 Generalist 控制器"]
+  DIST --> EVAL["仿真器与真机人形机器人验证 (代码待开源)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `BumbleBee` 仓库并核对 README 许可与依赖。

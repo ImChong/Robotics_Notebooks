@@ -44,6 +44,22 @@ institutions:
 | 类别 | 仿真环境 |
 | 官方组织 | https://github.com/LightwheelAI |
 
+### 项目流程图
+
+依据 [LightwheelAI/Lightwheel-YCB](https://github.com/LightwheelAI/Lightwheel-YCB) 仓库 README 描述的资产增强与标准化管线：
+
+```mermaid
+flowchart LR
+  IN["YCB Benchmarks (106 物体: OBJ/PLY/STL) + 新增 19 个方块"] --> VIS["视觉增强 (网格修复与 PBR 材质)"]
+  IN --> PHY["物理参数补充 (质量 / 摩擦 / 密度 / 阻尼 / 刚度 / 惯量)"]
+  IN --> COL["碰撞体重建与动态变体 (刚体 / 16 铰接 / 2 柔性)"]
+  VIS --> QA["Isaac Lab 与 MuJoCo 遥操作质量验证"]
+  PHY --> QA
+  COL --> QA
+  QA --> USD["125 个 USD 资产 (Isaac Sim / Isaac Lab)"]
+  QA --> MJCF["123 个 MJCF 资产 (MuJoCo; 2 个柔性仅 USD)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `Lightwheel-YCB` 仓库并核对 README 许可与依赖。

@@ -44,6 +44,19 @@ institutions:
 | 类别 | 硬件开源 |
 | 官方组织 | https://github.com/Roboparty |
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  ROOT["rpo_hardware (RPO / Roboto Origin 开源硬件库)"] --> V1["V1.0 兼容分支 (atom01_mechanic + atom01_pcb 分立电源/CAN 板)"]
+  ROOT --> V2["V2.0 推荐分支 (roboto_origin_mechanic + roboto_origin_pcb)"]
+  V2 --> MECH["机械系统 (加固结构 / 腰部限位开关 / 限位销标定 / 背板主控开关 / STL)"]
+  V2 --> PCB["单板集成 PCB (电源管理与通信接口单板化 / Gerber 与原理图)"]
+  V1 --> OUT["CAD、PCB、BOM、URDF 与制造资产 (CERN-OHL-W-2.0)"]
+  MECH --> OUT
+  PCB --> OUT
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `rpo_hardware` 仓库并核对 README 许可与依赖。

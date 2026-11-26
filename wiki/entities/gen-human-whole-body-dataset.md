@@ -48,6 +48,17 @@ Gen-HumanWholeBody 是简智机器人发布的全身操作数据集，官方门�
 
 重定向就绪度：数据是人体全身轨迹，不是机器人关节指令，迁移时应检查坐标系、身体形态和接触约束，见[运动重定向](../concepts/motion-retargeting.md)。精度数字来自官方对 DFM 的自评，官方文章介绍真值由同步的第一视角设备及多台第三视角相机产生；其测试集细节未在数据卡中说明。
 
+### 数据流水线
+
+```mermaid
+flowchart LR
+  CAP["DAS-Ego 与多视角同步采集\n6 路 RGB（1600x1300 · 30 FPS）+ 第一/第三视角监督真值"] --> TRACK["模态与跟踪信号\nVIO · 手部跟踪 · 全身跟踪"]
+  TRACK --> DFM["专有 DFM 全身重建\n全身 MPJPE 约 3 cm（上身 2 cm / 下身 3.5 cm）"]
+  DFM --> MCAP["mcap 格式封装\nvio · handtracking · body_track · task / sub_task · annotation_v2"]
+  MCAP --> HF["Hugging Face 数据集\n600 小时 · 15,943 episode · 26 领域"]
+  HF --> RET["下游运动重定向\n检查坐标系 · 身体形态与接触约束"]
+```
+
 ## 关联页面
 
 - [Gen-HumanEgo](./gen-human-ego-dataset.md)

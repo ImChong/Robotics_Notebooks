@@ -52,6 +52,18 @@ sources:
 
 在 Touch and Go、VisGel 等数据基础上做多阶段生成与校正，并形成课程式训练。
 
+### 数据流水线
+
+```mermaid
+flowchart LR
+  SRC["已有视触觉数据\nTouch and Go · VisGel 等"] --> GEN["GPT-4V 生成\n多粒度触感描述"]
+  GEN --> VAL["Gemini 校验"]
+  VAL --> HUM["人工校正"]
+  HUM --> DS["Touch100k 数据集\n约 10 万组 触觉-语言-视觉配对"]
+  DS --> TLV["TLV-Link 预训练\n课程式链接训练"]
+  TLV --> TASK["下游任务\n材质属性识别 · 机器人抓取预测"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

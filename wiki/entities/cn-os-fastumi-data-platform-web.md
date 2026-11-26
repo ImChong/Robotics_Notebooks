@@ -44,6 +44,21 @@ institutions:
 | 类别 | 数据集/Benchmark |
 | 官方组织 | https://github.com/LumosRobot |
 
+### 架构流程图
+
+依据 [LumosRobot/FastUMI_Data_Platform_Web](https://github.com/LumosRobot/FastUMI_Data_Platform_Web) 仓库 README 与顶层文件结构：
+
+```mermaid
+flowchart LR
+  DEV["FastUMI Pro 采集设备 (视觉 / 触觉 / 力数据)"] --> SDK["FastUMI_Hardware_SDK (ROS1)"]
+  SDK --> BACK["后端二进制服务 (deploy.sh 部署 / backend_process_clean.sh 清理)"]
+  BACK --> WEB["fastumi_data_platform_frontend Web 平台 (localhost:8000)"]
+  WEB --> COL["data collection (数据采集)"]
+  COL --> REP["data replay (实时回放与复核)"]
+  REP --> QA["内置质量评估筛选"]
+  QA --> OPEN["data open (导出与管理用于模型训练)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `FastUMI_Data_Platform_Web` 仓库并核对 README 许可与依赖。

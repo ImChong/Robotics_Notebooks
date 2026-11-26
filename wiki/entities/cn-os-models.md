@@ -44,6 +44,22 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/roboterax |
 
+### 项目流程图
+
+依据 [roboterax/models](https://github.com/roboterax/models) 仓库 README 与顶层目录结构（STAR1 55 DoF 人形 URDF）：
+
+```mermaid
+flowchart LR
+  REPO["roboterax/models 仓库"] --> STAR["star1/ (STAR1 55 DoF 人形 URDF)"]
+  REPO --> IMG["images/ (zero_position / coordinate / upright 参考图)"]
+  STAR --> HEAD["头部 (2 DoF) 与腰部 (3 DoF)"]
+  STAR --> ARMS["双臂 (7 DoF x 2 = 14 DoF) 与双手 (12 DoF x 2 = 24 DoF)"]
+  STAR --> LEGS["双腿 (6 DoF x 2 = 12 DoF; 直立参考角 hip 30 / knee -60 / ankle 30 度)"]
+  HEAD --> USE["仿真、训练与部署引用"]
+  ARMS --> USE
+  LEGS --> USE
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `models` 仓库并核对 README 许可与依赖。

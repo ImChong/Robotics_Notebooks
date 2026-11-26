@@ -44,6 +44,21 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/GalaxyGeneralRobotics、https://github.com/PKU-EPIC |
 
+### 项目流程图
+
+依据 [GalaxyGeneralRobotics/galbot_s1_description](https://github.com/GalaxyGeneralRobotics/galbot_s1_description) 仓库顶层目录与 README 说明：
+
+```mermaid
+flowchart LR
+  REPO["galbot_s1_description (Apache-2.0)"] --> URDF["urdf/ (URDF 描述文件)"]
+  REPO --> MJCF["mjcf/ (MJCF 模型文件)"]
+  REPO --> USD["usd/ (USD 资产文件)"]
+  REPO --> DOCS["docs/ (文档与示意图)"]
+  URDF --> USE["仿真、训练与部署引用"]
+  MJCF --> USE
+  USD --> USE
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `galbot_s1_description` 仓库并核对 README 许可与依赖。
