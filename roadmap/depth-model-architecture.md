@@ -89,11 +89,11 @@ flowchart LR
 
 ### 推荐做什么
 - 用 [RNN vs CNN vs Transformer vs Mamba](../wiki/comparisons/rnn-cnn-transformer-mamba.md) 的四维表，给自己的两个场景（高频本体控制、带图像的操作）各选一个骨干并写明理由
-- 在同一任务上把"帧堆叠 MLP"与"小 Transformer"各训一版，对比样本效率与单步推理耗时
+- 在同一任务上固定观测字段、动作接口、数据或训练预算，只对照单帧 MLP、帧堆叠 MLP 与小型时序模型。按接触、视觉扰动等失败切片统计闭环结果，在目标机记录观测到动作的 p99 时延和截止时间违约率。
 
 ### 推荐读什么
 - [DNN / CNN / RNN / GAN：结构 vs 训练框架](../wiki/comparisons/dnn-cnn-rnn-gan-architecture-vs-training.md) — Stage 1 分类基础：先分清广义 DNN、结构骨干与对抗目标，再比较延迟、并行度及归纳偏置
-- [RNN vs CNN vs Transformer vs Mamba](../wiki/comparisons/rnn-cnn-transformer-mamba.md) — 四类骨干在长程 / 并行 / 复杂度 / 归纳偏置上的对照
+- [机器人策略骨干选型](../wiki/comparisons/rnn-cnn-transformer-mamba.md) — 从 MLP 基线定位视觉、历史、跨模态或动作分布瓶颈，再对照时序骨干和机载尾延迟
 - [Transformer](../wiki/concepts/transformer.md) · [多头注意力](../wiki/concepts/multi-head-attention.md) — 现代骨干的通用底座与核心交互算子
 - [通用循环模型：循环深度与历史](../wiki/concepts/general-looped-models.md) — 分清 RNN 时间递推、权重共享的深度循环及跨位置潜状态反馈，比较固定深度、早停和固定点求解。
 - [位置编码：绝对、RoPE、NoPE 与相对偏置](../wiki/concepts/positional-encoding.md) — 对照 GPT-2、正弦编码、RoPE 旋转与现代混合层，理解长序列顺序建模、实现细节及外推边界
