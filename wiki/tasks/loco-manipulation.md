@@ -383,6 +383,8 @@ flowchart TD
 
 ## 关联页面
 
+- [PushMimic](../entities/paper-pushmimic.md) — 从一条名义参考生成动力学可行的接触变体，以奖励解耦学习在不同箱重与坡度下调整姿态。
+
 - [Functionally Compliant Humanoid Whole-Body Manipulation｜功能性柔顺的人形机器人全身操作](../entities/paper-learning-functional-compliance.md) — WBC² 通过 IK 柔顺参考、力和平衡估计，实现全身协调与任务级标量刚度调节。
 
 分组与上文 **技术路线演进** 对应，便于从某一组的问题直接跳到对应详情页。

@@ -155,6 +155,7 @@ flowchart LR
 - 逐项消融：去掉预训练先验、去掉残差、去掉物体观测，记录哪个环节掉点最狠
 
 ### 推荐读什么
+- [PushMimic：自适应人形推箱](../wiki/entities/paper-pushmimic.md) — 动态参考增强与单阶段蒸馏；跑台验证仍需动捕与改装平掌。
 - [ResMimic](../wiki/entities/paper-resmimic.md) 与 [VisualMimic](../wiki/entities/paper-notebook-visualmimic.md)
 - [SUGARv2：合成参考 → 特权教师 → 视觉学生](../wiki/entities/paper-sugarv2-humanoid-interaction-reference.md) — 以共同的 reference-based mimic 奖励连接教师训练、蒸馏和 PPO；注意五任务策略分别训练（论文 §3.3、§4.1）
 - [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) 与 [CoorDex](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)
