@@ -155,6 +155,7 @@ flowchart TB
 
 ## 关联页面
 
+- [SuperGPC](./supergpc.md) — 基于原始 GPC 架构的 Dollhouse G1 工程扩展，含 SuperMimic 式 tracker、单卡训练计时和真机 CoLA 切换。
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [ASE（对抗性技能嵌入）](../methods/ase.md)
 - [DeepMimic](../methods/deepmimic.md)

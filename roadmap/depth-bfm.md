@@ -192,6 +192,7 @@ flowchart LR
 - [LangWBC](../wiki/entities/paper-bfm-37-langwbc.md) 与 [LeVERB](../wiki/entities/paper-bfm-36-leverb.md)
 - [GR00T-WholeBodyControl](../wiki/entities/gr00t-wholebodycontrol.md) 与 [Humanoid-VLA](../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md)
 - [ReactiveBFM](../wiki/entities/paper-reactivebfm.md)
+- [SuperGPC](../wiki/entities/supergpc.md) — 同一 G1 先验上的摇杆与躺倒适配器；用此案例区分 tracker、先验和单任务的训练时间。
 - [S-BFM（arXiv:2611.27552）](../wiki/entities/paper-s-bfm.md) — Stage 4 稀疏时空目标接口：指定姿态、世界位置、朝向和到达时间，由低层生成过渡；高层 VLA/WAM 集成尚待验证。
 - [ILA：接口级柔顺适配器](../wiki/entities/paper-ila-interface-level-adapter.md) — 在已有冻结 WBT 策略前修正上肢参考运动；与微调/内部特征适配形成接口层对照（MT、MimicLite、Sonic 三种 tracker 验证）。
 - [ECHO：上下文行为基础模型（arXiv:2611.25778）](../wiki/entities/paper-echo-bfm.md) — 冻结通用 ECHO-PRE，用状态—动作历史编码物性，再用残差策略适配负载与动力学；无需推理时梯度更新。
