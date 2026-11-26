@@ -4,6 +4,7 @@ const { readFileSync } = require('node:fs');
 const { resolve } = require('node:path');
 const { test } = require('node:test');
 const vm = require('node:vm');
+const { JSDOM } = require('jsdom');
 
 const source = readFileSync(resolve(__dirname, '../docs/main.js'), 'utf8');
 const loaderStart = source.indexOf('  // ── 公式与图表组件按内容加载（编号 9）──');
@@ -42,6 +43,7 @@ function harness(options = {}) {
     Promise, Array, console: { warn() {} },
     window: {},
     document: {
+      documentElement: { getAttribute: () => 'dark' },
       createElement: () => ({ onload: null, onerror: null, parentNode: null }),
       head,
       body: { appendChild() {}, removeChild() {} },
@@ -95,6 +97,65 @@ test('diagram content loads mermaid once and then renders the nodes', async () =
   await h.context.renderDetailMermaid(withDiagram(node));
   assert.equal(h.appended.length, 1);
   assert.equal(h.runs.length, 2, 'rendering continues with the loaded component');
+});
+
+test('in-flight diagrams retry with the current theme before the next render starts', async () => {
+  const { context } = harness();
+  const themes = [];
+  let theme = 'light';
+  context.document.documentElement.getAttribute = (name) => name === 'data-theme' ? theme : 'tech';
+  context.initializeMermaidRenderer = (fontSize) => themes.push([theme, fontSize]);
+  let finishFirstRun;
+  const firstRun = new Promise((resolve) => { finishFirstRun = resolve; });
+  const inline = mermaidNode();
+  const preview = mermaidNode();
+  const calls = [];
+  context.window.mermaid = {
+    run({ nodes }) {
+      for (const node of nodes) {
+        calls.push(node.textContent);
+        node.textContent = 'rendered SVG';
+      }
+      return calls.length === 1 ? firstRun : Promise.resolve();
+    },
+  };
+
+  const inlineRender = context.renderDetailMermaid(withDiagram(inline));
+  await flush();
+  const previewRender = context.runThemedMermaid([preview], 25);
+  await flush();
+  assert.deepEqual(themes, [['light', 14]]);
+  theme = 'dark';
+  finishFirstRun();
+  await Promise.all([inlineRender, previewRender]);
+  assert.deepEqual(themes, [['light', 14], ['dark', 14], ['dark', 25]]);
+  assert.deepEqual(calls, Array(3).fill('graph TD; A-->B'));
+});
+
+test('sequence backgrounds are tinted in dark mode, including in the lightbox', () => {
+  const css = readFileSync(resolve(__dirname, '../docs/style.css'), 'utf8');
+  const diagram = (type) => `<svg aria-roledescription="${type}">
+    <rect class="rect" fill="rgb(240, 245, 255)"></rect>
+  </svg>`;
+  const { window } = new JSDOM(`<style>${css}</style>
+    <article class="detail-markdown-body"><div class="mermaid">${diagram('sequence')}</div></article>
+    <div class="mermaid-lightbox-body">${diagram('sequence')}</div>
+    <div class="mermaid">${diagram('flowchart-v2')}</div>`);
+  try {
+    const { document } = window;
+    const rectangles = [...document.querySelectorAll('rect')];
+    const opacity = () => rectangles.map((rect) =>
+      Number(window.getComputedStyle(rect).getPropertyValue('fill-opacity')));
+    document.documentElement.dataset.theme = 'dark';
+    const [inline, preview, flowchart] = opacity();
+    assert.ok(inline > 0 && inline <= 0.2);
+    assert.equal(preview, inline);
+    assert.equal(flowchart, 1);
+    document.documentElement.dataset.theme = 'light';
+    assert.deepEqual(opacity(), [1, 1, 1]);
+  } finally {
+    window.close();
+  }
 });
 
 test('a failed component load degrades quietly and is retried on the next render', async () => {

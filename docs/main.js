@@ -108,6 +108,8 @@
     if (detailContentEl) renderDetailMermaid(detailContentEl);
     const roadmapContentEl = document.getElementById('roadmapContent');
     if (roadmapContentEl) renderDetailMermaid(roadmapContentEl);
+    document.querySelectorAll('.kb-chat-md-body').forEach(renderDetailMermaid);
+    if (mermaidLightboxHost) updateMermaidLightbox(mermaidLightboxHost);
   }
 
   function toggleTheme() {
@@ -2862,10 +2864,14 @@
 
   function initializeMermaidRenderer(fontSizePx) {
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var colors = getMermaidThemeVariables(isDark, fontSizePx);
     window.mermaid.initialize({
       startOnLoad: false,
       theme: 'base',
-      themeVariables: getMermaidThemeVariables(isDark, fontSizePx),
+      themeVariables: Object.assign(colors, {
+        sequenceNumberColor: colors.primaryColor,
+        activationBorderColor: colors.lineColor
+      }),
       securityLevel: 'strict',
       forceLegacyMathML: !isSafariBrowser(),
       flowchart: {
@@ -2996,6 +3002,36 @@
     return loadExternalAsset({ url: MERMAID_CDN_URL });
   }
 
+  // Mermaid's configuration is global. Apply it when the render starts so
+  // lazy diagrams and enlarged previews cannot change one another's settings.
+  var mermaidRenderQueue = Promise.resolve();
+  function runThemedMermaid(nodes, fontSizePx) {
+    var sources = nodes.map(function (node) {
+      var source = node.getAttribute('data-mermaid-source');
+      if (source === null) {
+        source = node.textContent || '';
+        node.setAttribute('data-mermaid-source', source);
+      }
+      return mermaidSourceForCurrentBrowser(source);
+    });
+    function run() {
+      var root = document.documentElement;
+      var theme = root.getAttribute('data-theme');
+      var ui = root.getAttribute('data-ui');
+      nodes.forEach(function (node, index) {
+        node.removeAttribute('data-processed');
+        node.textContent = sources[index];
+      });
+      initializeMermaidRenderer(fontSizePx);
+      return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+        if (theme !== root.getAttribute('data-theme') || ui !== root.getAttribute('data-ui')) return run();
+      });
+    }
+    var render = mermaidRenderQueue.then(run);
+    mermaidRenderQueue = render.catch(function () {});
+    return render;
+  }
+
   /** 正文是否出现 KaTeX 配置的定界符；没有就不加载公式组件。 */
   function containerHasMath(container) {
     if (!container) return false;
@@ -3097,6 +3133,7 @@
 
   /** 实际渲染：加载组件、恢复源码、mermaid.run，再补做标签溢出修正与放大绑定。 */
   function renderMermaidNodes(container, nodes) {
+    nodes = nodes.filter(function (node) { return !mermaidNodeRendering(node); });
     if (!nodes.length) return Promise.resolve();
     for (var ui = 0; ui < nodes.length; ui++) {
       if (_mermaidLazyObserver) _mermaidLazyObserver.unobserve(nodes[ui]);
@@ -3108,18 +3145,7 @@
     }
     return ensureMermaidLoaded().then(function () {
       if (typeof window.mermaid === 'undefined') { markDone(); return; }
-      nodes.forEach(function (node) {
-        var saved = node.getAttribute('data-mermaid-source');
-        if (saved === null) {
-          saved = node.textContent || '';
-          node.setAttribute('data-mermaid-source', saved);
-        } else {
-          node.removeAttribute('data-processed');
-        }
-        node.textContent = mermaidSourceForCurrentBrowser(saved);
-      });
-      initializeMermaidRenderer(getMermaidFontSizePx());
-      return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+      return runThemedMermaid(nodes, getMermaidFontSizePx()).then(function () {
         markDone();
         patchMermaidSvgLabelOverflow(container);
         enhanceMermaidZoomTargets(container);
@@ -3132,6 +3158,8 @@
   }
 
   var mermaidLightboxEl = null;
+  var mermaidLightboxHost = null;
+  var mermaidLightboxRequest = null;
   var mermaidLightboxZoom = 1;
   var mermaidLightboxPanX = 0;
   var mermaidLightboxPanY = 0;
@@ -3417,16 +3445,14 @@
     sandbox.style.cssText = 'position:fixed;left:-10000px;top:0;visibility:hidden;pointer-events:none;width:max-content;max-width:none;';
     var node = document.createElement('div');
     node.className = 'mermaid';
-    node.textContent = mermaidSourceForCurrentBrowser(source);
+    node.setAttribute('data-mermaid-source', source);
     sandbox.appendChild(node);
     document.body.appendChild(sandbox);
     var hiFontPx = Math.round(getMermaidFontSizePx() * MERMAID_LIGHTBOX_FONT_SCALE);
-    initializeMermaidRenderer(hiFontPx);
-    return window.mermaid.run({ nodes: [node] }).catch(function () {}).then(function () {
+    return runThemedMermaid([node], hiFontPx).catch(function () {}).then(function () {
       var hiSvg = node.querySelector('svg');
       if (hiSvg) fixMermaidForeignObjectOverflow(hiSvg);
       if (sandbox.parentNode) document.body.removeChild(sandbox);
-      initializeMermaidRenderer(getMermaidFontSizePx());
       if (hiSvg) return cloneMermaidSvgForLightbox(hiSvg);
       return inlineSvg ? cloneMermaidSvgForLightbox(inlineSvg) : null;
     });
@@ -3464,21 +3490,35 @@
     box.hidden = false;
     box.setAttribute('aria-hidden', 'false');
     document.body.classList.add('mermaid-lightbox-open');
-    renderMermaidSvgForLightbox(host).then(function (svgClone) {
-      if (!box || box.hidden) return;
-      if (!svgClone) {
-        closeMermaidLightbox();
-        return;
-      }
-      var stage = document.createElement('div');
-      mountMermaidLightboxSvg(stage, body, svgClone);
-    });
+    mermaidLightboxHost = host;
+    updateMermaidLightbox(host);
     var closeBtn = box.querySelector('.mermaid-lightbox-close');
     if (closeBtn) closeBtn.focus();
   }
 
+  function updateMermaidLightbox(host) {
+    var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
+    var request = {};
+    mermaidLightboxRequest = request;
+    renderMermaidSvgForLightbox(host).then(function (svgClone) {
+      if (mermaidLightboxRequest !== request) return;
+      if (!svgClone) {
+        closeMermaidLightbox();
+        return;
+      }
+      var stage = body.querySelector('.mermaid-lightbox-stage');
+      if (stage) {
+        stage.replaceChildren(svgClone);
+      } else {
+        mountMermaidLightboxSvg(document.createElement('div'), body, svgClone);
+      }
+    });
+  }
+
   function closeMermaidLightbox() {
     if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
+    mermaidLightboxHost = null;
+    mermaidLightboxRequest = null;
     mermaidLightboxEl.hidden = true;
     mermaidLightboxEl.setAttribute('aria-hidden', 'true');
     mermaidLightboxEl.classList.remove('mermaid-lightbox-loading');

@@ -2561,6 +2561,11 @@ button.home-wiki-heatmap-cell.is-active {
   max-width: 100%;
   height: auto;
 }
+/* Sequence rect and box fills come from the source and bypass Mermaid's
+   theme palette. Tint the dark surface so signals stay readable over them. */
+:root[data-theme="dark"] svg[aria-roledescription="sequence"] rect.rect {
+  fill-opacity: 0.18;
+}
 .detail-markdown-body .mermaid foreignObject,
 .selftest-answers .mermaid foreignObject,
 .roadmap-markdown-body .mermaid foreignObject {
