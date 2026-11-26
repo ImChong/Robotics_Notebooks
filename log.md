@@ -527,6 +527,10 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | 星海图 G0.7：长上下文快速世界动作模型
+
+- 通读 arXiv v1/v2 与官方报告，分开记录同精度 Fast/IDM、FP8 部署数据和真机四套评测口径；未发现该版本运行实现或权重发布。
+
 ## [2026-11-26] ingest | Embodied First Exam：补收具身代码智能体失败分析
 
 - 通读 EFE 官方失败分析，并与 arXiv v1 对照；主节点保留 456 题论文快照、481 题博客快照与不同范围的权限、提示和失败标签分析。
