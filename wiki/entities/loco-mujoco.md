@@ -63,6 +63,60 @@ flowchart LR
 
 具体模块边界以官方文档为准；本页不替代 README。
 
+## 源码运行时序图
+
+以下时序图核对自 `robfiras/loco-mujoco`（`master` 分支）示例入口、任务工厂、JAX 算法驱动及双后端核心环境源码：
+
+- [`examples/training_examples/jax_rl/experiment.py`](https://github.com/robfiras/loco-mujoco/blob/master/examples/training_examples/jax_rl/experiment.py)（Hydra 训练脚本）
+- [`loco_mujoco/task_factories/imitation_factory.py`](https://github.com/robfiras/loco-mujoco/blob/master/loco_mujoco/task_factories/imitation_factory.py)（`ImitationFactory.make`）
+- [`loco_mujoco/algorithms/ppo_jax.py`](https://github.com/robfiras/loco-mujoco/blob/master/loco_mujoco/algorithms/ppo_jax.py)（`PPOJax._train_fn` / `_update_step` / `_env_step`）
+- [`loco_mujoco/core/wrappers/mjx.py`](https://github.com/robfiras/loco-mujoco/blob/master/loco_mujoco/core/wrappers/mjx.py)（`LocoMjxWrapper` / `VecEnv` / `LogWrapper`）
+- [`loco_mujoco/core/mujoco_base.py`](https://github.com/robfiras/loco-mujoco/blob/master/loco_mujoco/core/mujoco_base.py)（CPU `Mujoco.reset` / `step`）
+- [`loco_mujoco/core/mujoco_mjx.py`](https://github.com/robfiras/loco-mujoco/blob/master/loco_mujoco/core/mujoco_mjx.py)（`Mjx.__init__` 含 `use_mjwarp` 分支、`mjx_reset` / `mjx_step`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 开发者
+    participant Exp as jax_rl/experiment.py<br/>experiment(config)
+    participant Fac as imitation_factory.py<br/>ImitationFactory.make
+    participant PPO as algorithms/ppo_jax.py<br/>PPOJax._train_fn
+    participant Wrap as wrappers/mjx.py<br/>VecEnv + LocoMjxWrapper
+    participant Env as core/mujoco_mjx.py<br/>Mjx(Mujoco)
+    participant Phys as mujoco.mjx<br/>(MJX 或 impl='warp')
+
+    User->>Exp: python experiment.py (Hydra 配置)
+    Exp->>Fac: TaskFactory.get_factory_cls().make(...)
+    Fac->>Env: env_cls(...) 构造环境并加载 Trajectory
+    alt use_mjwarp=True
+        Env->>Phys: mjx.put_model(self._model, impl='warp') + mjx.make_data(..., impl='warp')
+    else use_mjwarp=False
+        Env->>Phys: mjx.put_model(self._model) + mjx.put_data(self._model, self._data)
+    end
+    Fac-->>Exp: env, traj
+    Exp->>PPO: PPOJax.init_agent_conf() + init_agent_state() + build_train_fn()
+    Exp->>PPO: jax.jit(train_fn)(_rng, agent_state, traj)
+    PPO->>Wrap: env.reset(reset_rng, traj) -> jax.vmap(mjx_reset)
+    loop _update_step (XLA scan)
+        loop _env_step (num_steps 步)
+            PPO->>PPO: policy.get_action_and_value(last_obs, train_state, _rng)
+            PPO->>Wrap: env.step(env_state, action, traj)
+            Wrap->>Env: jax.vmap(mjx_step)
+            Env->>Env: _mjx_preprocess_action() -> _mjx_simulation_pre_step()
+            loop _inner_loop (_n_intermediate_steps × _n_substeps)
+                Env->>Env: _mjx_compute_action()
+                Env->>Phys: mjx.step(sys, x)
+            end
+            Env->>Env: _mjx_create_observation() -> _mjx_reward() -> _mjx_is_done()
+            opt state.done 且 auto_reset
+                Env->>Env: _mjx_reset_in_step(s, traj)
+            end
+            Env-->>PPO: obsv, reward, absorbing, done, info, env_state
+        end
+        PPO->>PPO: _calculate_gae() -> _update_epoch() / _update_minbatch()
+    end
+```
+
 ## 工程实践
 
 1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。

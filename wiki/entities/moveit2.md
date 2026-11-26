@@ -146,6 +146,49 @@ flowchart TB
 4. **按需换插件**：默认 OMPL / FCL / KDL；追求 IK 速度可换解析 IK（论文称 IKFast 可快至三个数量级），规划器可换 SBPL、CHOMP 等。
 5. **调优靠基准**：用基准框架与参数扫描比较规划器与参数，而不是凭感觉改参。
 
+## 源码运行时序图
+
+入口：`move_group` 节点可执行入口 `moveit_ros/move_group/src/move_group.cpp`（`main` 初始化 `MoveItCpp`、`PlanningSceneMonitor` 与 `MoveGroupExe`），由客户端向 `move_action` 发送 `MGAction` Goal。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Client as MoveGroupInterface / Action Client
+    participant Node as move_group.cpp MoveGroupExe
+    participant Cap as move_action_capability.cpp MoveGroupMoveAction
+    participant PSM as PlanningSceneMonitor
+    participant PE as plan_execution.cpp PlanExecution
+    participant PP as planning_pipeline.cpp PlanningPipeline
+    participant TEM as trajectory_execution_manager.cpp
+
+    Note over Node,Cap: main 启动 MoveItCpp 与 MoveGroupExe，加载 move_group/MoveGroupMoveAction
+    Client->>Cap: 发送 move_action Goal (MotionPlanRequest)
+    Cap->>PSM: waitForCurrentRobotState 与 updateFrameTransforms
+    alt plan_only 为真或禁止执行
+        Cap->>PP: executeMoveCallbackPlanOnly 调用 generatePlan(scene, req, res)
+        PP->>PP: PlanningRequestAdapter::adapt 链
+        PP->>PP: planner->getPlanningContext 与 context->solve(res)
+        PP->>PP: PlanningResponseAdapter::adapt 链 (含时间参数化)
+        PP-->>Cap: MotionPlanResponse
+    else 规划并执行
+        Cap->>PE: executeMoveCallbackPlanAndExecute 调用 planAndExecute(plan, scene_diff, opt)
+        loop 重规划循环 (最多 max_replan_attempts 次)
+            PE->>Cap: opt.plan_callback 触发 planUsingPlanningPipeline
+            Cap->>PP: generatePlan
+            PP-->>PE: ExecutableMotionPlan
+            PE->>PE: executeAndMonitor(plan)
+            PE->>TEM: push(msg, controller_name)
+            PE->>TEM: execute(...) 启动 executeThread
+            TEM->>TEM: executePart 校验控制器并 sendTrajectory
+            PE->>PE: 轮询场景变更并调用 isRemainingPathValid
+        end
+        PE-->>Cap: plan.error_code 与 executed_trajectory
+    end
+    Cap-->>Client: goal->succeed / canceled / abort
+```
+
+图依据：`moveit/moveit2`（`main` 分支）实际核读 `README.md`、`moveit_ros/move_group/src/move_group.cpp`、`moveit_ros/move_group/src/default_capabilities/move_action_capability.cpp`、`moveit_ros/planning/planning_pipeline/src/planning_pipeline.cpp`、`moveit_ros/planning/plan_execution/src/plan_execution.cpp` 与 `moveit_ros/planning/trajectory_execution_manager/src/trajectory_execution_manager.cpp`；未进行本地编译运行。
+
 ## 关联页面
 
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取、放置与移动操作任务语境

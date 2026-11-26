@@ -151,6 +151,59 @@ Starter Guide 在 Isaac Gym 上对人形角色的多段动捕片段（Run、Jog�
 - 为公平比较，实验**关闭了姿态偏差终止**；论文强调开启它能显著改善精度与一致性，所以跟踪类方法的默认配置带该终止；
 - 同一框架还训练了 SMPL 人形、Unitree G1（如 Run、Cartwheel）与 Unitree Go2（Trot、Canter）。
 
+## 源码运行时序图
+
+以下时序图核对自 `xbpeng/MimicKit`（`main` 分支）入口脚本与四层核心组件源码：
+
+- [`mimickit/run.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/run.py)（`main` / `run` / `train` / `test`）
+- [`mimickit/envs/env_builder.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/envs/env_builder.py)（`build_env` / `load_configs`）
+- [`mimickit/learning/agent_builder.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/learning/agent_builder.py)（`build_agent`）
+- [`mimickit/learning/base_agent.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/learning/base_agent.py) & [`mimickit/learning/ppo_agent.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/learning/ppo_agent.py)（`BaseAgent.train_model` / `_train_iter` / `PPOAgent._update_model`）
+- [`mimickit/envs/sim_env.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/envs/sim_env.py) & [`mimickit/envs/char_env.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/envs/char_env.py)（`SimEnv.step` / `CharEnv._compute_obs`）
+- [`mimickit/engines/engine_builder.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/engines/engine_builder.py) & [`mimickit/engines/isaac_gym_engine.py`](https://github.com/xbpeng/MimicKit/blob/main/mimickit/engines/isaac_gym_engine.py)（`build_engine` / `IsaacGymEngine.step`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 研究者
+    participant Run as mimickit/run.py<br/>run()
+    participant EnvB as envs/env_builder.py<br/>build_env()
+    participant Env as envs/sim_env.py<br/>SimEnv / CharEnv
+    participant Eng as engines/engine_builder.py<br/>Engine (IsaacGym/Lab/Newton)
+    participant AgB as learning/agent_builder.py<br/>build_agent()
+    participant Agent as learning/base_agent.py<br/>PPOAgent(BaseAgent)
+
+    User->>Run: python mimickit/run.py --arg_file ... --mode train|test
+    Run->>EnvB: build_env(env_file, engine_file, num_envs, device)
+    EnvB->>Env: 实例化 DeepMimicEnv / AMPEnv / ASEEnv 等
+    Env->>Eng: build_engine(engine_config, ...) 初始化物理世界
+    Run->>AgB: build_agent(agent_file, env, device)
+    AgB-->>Run: PPOAgent / AMPAgent / ASEAgent / ADDAgent / SMPAgent
+
+    alt mode == "train"
+        Run->>Agent: agent.train_model(max_samples, out_dir, ...)
+        Agent->>Env: _reset_envs()
+        loop while _sample_count < max_samples (_train_iter)
+            loop _rollout_train(_steps_per_iter)
+                Agent->>Agent: _decide_action() -> _model.eval_actor(norm_obs)
+                Agent->>Env: _step_env(action) -> env.step(action)
+                Env->>Eng: _apply_action() -> _engine.set_cmd()
+                Env->>Eng: _physics_step() -> _engine.step() (simulate + refresh_sim_tensors)
+                Env->>Env: _post_physics_step() -> _update_observations() / _update_reward() / _update_done()
+                Env-->>Agent: obs_buf, reward_buf, done_buf, info
+                Agent->>Env: _reset_done_envs(done)
+            end
+            Agent->>Agent: _build_train_data() (eval_critic + GAE)
+            Agent->>Agent: _update_model() (_update_critic + _update_actor)
+            opt output_iter
+                Agent->>Agent: test_model(_test_episodes) + _output_train_model()
+            end
+        end
+    else mode == "test"
+        Run->>Agent: agent.test_model(test_episodes) -> _rollout_test()
+    end
+```
+
 ## 工程实践
 
 ### 典型工作流

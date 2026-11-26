@@ -84,6 +84,60 @@ flowchart LR
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
+## 源码运行时序图
+
+入口：C API 典型调用链（见 `docs/examples/setup-and-solve.rst`）：`osqp_setup` → `osqp_solve` →（可选参数更新复用分解）`osqp_update_data_vec` / `osqp_warm_start` → `osqp_solve` → `osqp_cleanup`（Python/Matlab 等绑定最终转发至同一 C API）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Caller as 调用方 (C / Python 绑定)
+    participant API as src/osqp_api.c
+    participant Aux as src/auxil.c ADMM 核心
+    participant Lin as linsys_solver (QDLDL / MKL / CUDA)
+
+    Caller->>API: OSQPCscMatrix_new(P, A) 与 OSQPSettings_new()
+    Caller->>API: osqp_setup(&solver, P, q, A, l, u, m, n, settings)
+    API->>API: validate_data 与 validate_settings
+    API->>API: osqp_algebra_init_libs 并复制 P, q, A, l, u 至 work->data
+    opt settings->scaling 开启
+        API->>API: scale_data(solver)
+    end
+    API->>Lin: osqp_algebra_init_linsys_solver 构造并分解 KKT 系统
+    API->>API: osqp_cold_start(solver)
+    API-->>Caller: exitflag = 0
+
+    Caller->>API: osqp_solve(solver)
+    opt !settings->warm_starting
+        API->>API: osqp_cold_start(solver)
+    end
+    loop iter = 1 .. settings->max_iter
+        API->>Aux: update_xz_tilde(solver, iter)
+        Aux->>Lin: work->linsys_solver->solve 求解 KKT 线性系统
+        API->>Aux: update_x(solver) (松弛参数 alpha)
+        API->>Aux: update_z(solver) (投影至 [l, u])
+        API->>Aux: update_y(solver) (更新对偶变量)
+        opt 检查终止或自适应 rho
+            API->>Aux: update_info 与 check_termination (达标则 break)
+            API->>Aux: adapt_rho (必要时重分解 KKT)
+        end
+    end
+    opt settings->polishing && OSQP_SOLVED
+        API->>API: polish(solver)
+    end
+    API->>Aux: store_solution(solver, solver->solution)
+    API-->>Caller: solver->solution (x, y)
+
+    opt 实时控制复用循环 (向量更新与热启动)
+        Caller->>API: osqp_update_data_vec(solver, q_new, l_new, u_new)
+        Caller->>API: osqp_warm_start(solver, x, y)
+        Caller->>API: osqp_solve(solver)
+    end
+    Caller->>API: osqp_cleanup(solver)
+```
+
+图依据：`osqp/osqp`（`master` 分支）实际核读 `README.md`、`docs/examples/setup-and-solve.rst`、`include/public/osqp_api_functions.h`、`src/osqp_api.c` 与 `src/auxil.c`；未进行本地编译运行。
+
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)

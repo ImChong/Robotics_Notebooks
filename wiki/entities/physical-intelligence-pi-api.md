@@ -76,6 +76,12 @@ flowchart LR
 - API 服务端实现没有公开代码链接。官方 [openpi](https://github.com/Physical-Intelligence/openpi) 仓库可用于自行运行模型，但不等于 Pi API 的 SDK 或服务端源码。
 - 早期案例属于合作方展示，公告没有统一的成功率、延迟或跨本体基准；应将其视为部署可行性示例，而不是可横向比较的性能报告。
 
+## 源码运行时序图
+
+**不适用**（Pi API beta 托管服务端与官方 SDK 源码未公开）：本页描述的 [Pi API beta](https://www.pi.website/blog/api-beta) 为 Physical Intelligence 闭源托管服务，官方公告与申请页均未公开 API reference、endpoint / schema、SDK 或服务端源码，因此无法核读并绘制 Pi API 服务端/客户端的源码运行时序图（不以产品使用流程冒充源码时序）。
+
+> 边界说明：本页 `sources` 关联的 [`Physical-Intelligence/openpi`](https://github.com/Physical-Intelligence/openpi)（核读 `main` 分支 `README.md`、`docs/remote_inference.md`、`scripts/serve_policy.py`、`src/openpi/serving/websocket_policy_server.py`）是用于本地微调和自托管模型推理的开源代码仓（入口为 `scripts/serve_policy.py` → `WebsocketPolicyServer`），**并非** Pi API beta 的托管服务实现；`openpi` 自托管推理的源码运行时序图见 [π₀ 论文实体](./paper-pi0.md#源码运行时序图)。
+
 ## 关联页面
 
 - [The Physical Intelligence Layer](./pi-physical-intelligence-layer.md)

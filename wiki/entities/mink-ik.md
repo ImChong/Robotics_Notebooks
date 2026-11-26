@@ -84,6 +84,42 @@ flowchart LR
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
+## 源码运行时序图
+
+入口：`uv run examples/arm_ur5e.py`（或用户控制循环周期调用 `mink.solve_ik` 与 `configuration.integrate_inplace`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant App as examples/arm_ur5e.py 主循环
+    participant Cfg as src/mink/configuration.py Configuration
+    participant Task as src/mink/tasks/frame_task.py 任务集
+    participant IK as src/mink/solve_ik.py solve_ik
+    participant QP as qpsolvers.solve_problem
+
+    App->>Cfg: Configuration(model) 并 update_from_keyframe("home")
+    Cfg->>Cfg: update() 调用 mujoco.mj_kinematics 与 mj_comPos
+    App->>Task: 初始化 FrameTask / PostureTask 与 limits
+    loop viewer.is_running()
+        App->>Task: end_effector_task.set_target(T_wt)
+        App->>IK: solve_ik(configuration, tasks, dt, solver, limits)
+        IK->>Cfg: check_limits(safety_break)
+        IK->>Task: _compute_qp_objective 调用 compute_qp_residual 组装 H, c
+        IK->>IK: _compute_qp_inequalities 遍历 limit.compute_qp_inequalities 组装 G, h
+        IK->>IK: _compute_qp_equalities 组装硬约束与 Elastic _penalized_rows
+        IK->>QP: solve_problem(problem, solver=solver)
+        opt Elastic 约束乘子超界
+            IK->>QP: _soften(problem, rho) 后二次 solve_problem
+        end
+        QP-->>IK: result.x (delta_q)
+        IK-->>App: vel = delta_q / dt
+        App->>Cfg: integrate_inplace(vel, dt)
+        Cfg->>Cfg: mujoco.mj_integratePos 并 update() 刷新正运动学
+    end
+```
+
+图依据：`kevinzakka/mink`（`main` 分支）实际核读 `README.md`、`examples/arm_ur5e.py`、`src/mink/configuration.py`、`src/mink/solve_ik.py` 与 `src/mink/tasks/frame_task.py`；未运行本地仿真。
+
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)

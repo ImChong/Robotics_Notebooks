@@ -99,6 +99,56 @@ flowchart LR
 
 Rudin 等人（arXiv:2109.11978）报告：4096 台并行机器人、批大小 98304，训练约 1500 次策略更新、不到 20 分钟；平地策略 4 分钟内、不平地形约 20 分钟即可；批大小与并行规模要权衡——机器人太多会让每台的时间视野过短、性能骤降。更多细节见 [论文归档](../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md)。
 
+## 源码运行时序图
+
+以下时序图核对自 `leggedrobotics/legged_gym`（`master` 分支）训练与回放入口及基类实现：
+
+- [`legged_gym/scripts/train.py`](https://github.com/leggedrobotics/legged_gym/blob/master/legged_gym/scripts/train.py)（`train(args)`）
+- [`legged_gym/scripts/play.py`](https://github.com/leggedrobotics/legged_gym/blob/master/legged_gym/scripts/play.py)（`play(args)`）
+- [`legged_gym/utils/task_registry.py`](https://github.com/leggedrobotics/legged_gym/blob/master/legged_gym/utils/task_registry.py)（`TaskRegistry.make_env` / `make_alg_runner`）
+- [`legged_gym/envs/base/base_task.py`](https://github.com/leggedrobotics/legged_gym/blob/master/legged_gym/envs/base/base_task.py)（`BaseTask`）
+- [`legged_gym/envs/base/legged_robot.py`](https://github.com/leggedrobotics/legged_gym/blob/master/legged_gym/envs/base/legged_robot.py)（`LeggedRobot.step` / `post_physics_step`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 开发者
+    participant Train as scripts/train.py<br/>train(args)
+    participant Play as scripts/play.py<br/>play(args)
+    participant Reg as utils/task_registry.py<br/>task_registry
+    participant Env as envs/base/legged_robot.py<br/>LeggedRobot(BaseTask)
+    participant Gym as isaacgym.gymapi<br/>PhysX Sim
+    participant Runner as rsl_rl.runners<br/>OnPolicyRunner
+
+    User->>Train: python legged_gym/scripts/train.py --task=...
+    Train->>Reg: task_registry.make_env(name, args)
+    Reg->>Env: task_class(cfg, sim_params, physics_engine, sim_device, headless)
+    Env->>Gym: create_sim() + gym.prepare_sim(self.sim)
+    Train->>Reg: task_registry.make_alg_runner(env, name, args)
+    Reg->>Runner: OnPolicyRunner(env, train_cfg_dict, log_dir, device)
+    Train->>Runner: ppo_runner.learn(num_learning_iterations, init_at_random_ep_len=True)
+    loop PPO rollout 与更新
+        Runner->>Env: env.step(actions)
+        Env->>Env: render()
+        loop decimation 子步
+            Env->>Env: _compute_torques(self.actions)
+            Env->>Gym: set_dof_actuation_force_tensor() -> simulate() -> refresh_dof_state_tensor()
+        end
+        Env->>Env: post_physics_step()
+        Env->>Gym: refresh_actor_root_state_tensor() + refresh_net_contact_force_tensor()
+        Env->>Env: _post_physics_step_callback() -> check_termination() -> compute_reward()
+        Env->>Env: reset_idx(env_ids) -> compute_observations()
+        Env-->>Runner: obs_buf, privileged_obs_buf, rew_buf, reset_buf, extras
+    end
+
+    User->>Play: python legged_gym/scripts/play.py --task=...
+    Play->>Reg: make_env() + make_alg_runner(train_cfg.runner.resume=True)
+    Play->>Runner: get_inference_policy(device) + export_policy_as_jit()
+    loop 推理回放
+        Play->>Env: policy(obs.detach()) -> env.step(actions.detach())
+    end
+```
+
 ## 它到底是什么
 
 ### 1. 不是物理引擎
