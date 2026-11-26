@@ -84,6 +84,7 @@ flowchart LR
 - 拿一个公开数据集跑 FAST-LIO 与 ORB-SLAM3，各自记录漂移与失效场景
 
 ### 推荐读什么
+- [lidar_slam：点云制作与跨会话地图维护](../wiki/entities/rsasaki-lidar-slam.md) — 对照 rosbag → Autoware 地图包、长时地图冷启动与变化更新的实验边界。
 - [LiDAR / LIO / VIO 开源选型对比](../wiki/comparisons/lidar-slam-lio-vio-selection.md) — 选型主入口
 - [SLAM Toolbox](../wiki/entities/slam-toolbox.md)、[Cartographer](../wiki/entities/cartographer.md)、[FAST-LIO](../wiki/entities/fast-lio.md)、[ORB-SLAM3](../wiki/entities/orb-slam3.md)
 - [LiDAR 与深度相机选型及融合](../wiki/comparisons/lidar-depth-camera-selection.md) — 从失效覆盖、量程和同步误差确定感知配置。
