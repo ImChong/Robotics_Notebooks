@@ -44,6 +44,16 @@ summary: "Sharpa D01：IROS 2026 发布的整机，Sharpa Wave 手 + 7 DoF 臂 +
 
 发布于 IROS 2026（新闻稿 2026-09-29）；未给价格与交付时间，无独立评测。
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  SKIN["全身电子皮肤（E-skin）\n100 Hz 采样 · 0.2 N 力分辨率"] --> BUS["1000 Hz 通信总线"]
+  ARM["7 DoF 机械臂\n负载自重比约 1:1 · 速度大于 10.5 m/s · 精度 0.2 mm"] --> HAND["Sharpa Wave 灵巧手\n末端操作"]
+  BUS --> ARM
+  BUS --> HAND
+```
+
 ## 为什么重要
 
 - 对应 System 0 的高频接触控制：全身触觉让接触不再局限于指尖。

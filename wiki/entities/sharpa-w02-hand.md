@@ -43,6 +43,16 @@ summary: "Sharpa W02：W01（Sharpa Wave）后继，21 主动 DoF、<750 g，指
 
 发布于 IROS 2026（新闻稿 2026-09-29）；未给价格与交付时间，无独立评测。
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  TIP["指尖 Dynamic Tactile Array\n5 mN-30 N · 1 mm 分辨率"] --> FUSE["全手触觉传感汇聚"]
+  PALM["指与掌面电子皮肤\n0.1-20 N · 5 mm 分辨率"] --> FUSE
+  DOF["21 主动 DoF 机械手本体\n重量小于 750 g · IP54 · 零间隙抓取"] --> CTRL["灵巧操作与接触感知输出"]
+  FUSE --> CTRL
+```
+
 ## 为什么重要
 
 - 一代 Wave 为 22 DoF（见公司页），W02 为 21 主动 DoF，二者口径不同，勿直接比较大小。

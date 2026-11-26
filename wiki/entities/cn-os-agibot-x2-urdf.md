@@ -46,6 +46,24 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab |
 
+### 项目流程图
+
+依据 [AgibotTech/agibot_x2_urdf](https://github.com/AgibotTech/agibot_x2_urdf) 仓库 README 与本页工程实践说明：
+
+```mermaid
+flowchart LR
+  PLATE["核对颈部铭牌型号"] -->|"X2 Ultra"| V13["X2_URDF-v1.3.0/"]
+  PLATE -->|"X2 Ultra -N / X2 EDU"| V14["X2_URDF-v1.4.0/"]
+  V13 --> V13F["x2_ultra.urdf / simple_collision / x2_fist / x2_ultra.xml / scene.xml / meshes/ (STL)"]
+  V14 --> V14F["X2-Ultra 与 X2-EDU URDF / omnihand / omnipicker / XML / scene.xml / meshes/ (STL)"]
+  V13F --> MJ["MuJoCo Viewer (--mjcf scene.xml)"]
+  V14F --> MJ
+  V13F --> VSC["VSCode URDF Visualizer"]
+  V14F --> VSC
+  V13F --> REAL["真机部署配合 AimDK X2 SDK 与 AimRT 运行时"]
+  V14F --> REAL
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `agibot_x2_urdf` 仓库并核对 README 许可与依赖。

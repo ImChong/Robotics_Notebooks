@@ -44,6 +44,17 @@ summary: "SOES (Simple Open EtherCAT Slave)：与 SOEM 同组织的轻量开源 
 - 文章称 STM32 + LAN9252 组合非常常用，用于做自定义从站（传感器、IO 板）。
 - 文章选型句：自己做硬件从站（薄膜传感器 IO 板）→ SOES + LAN9252。
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  BUS["EtherCAT 主站总线\n（如 SOEM）"] --> ESC["ESC 从站硬件芯片\nET1100 / LAN9252 / ET1815"]
+  ESC --> HAL["地址偏移 HAL（drivers/）\nESC 寄存器与内存读写接口"]
+  HAL --> STACK["SOES 从站核心栈（soes/）\nMailbox · CoE（对象字典 / SDO）· PDO 映射 · FoE / EoE"]
+  STACK --> SYNC["同步与调度机制\nSM 同步 · DC sync0 · 轮询 / 中断模式"]
+  SYNC --> APP["自定义从站应用（applications/）\n传感器 · IO 板固件"]
+```
+
 ## 工程实践
 
 - 适用场景：自研关节/传感器模块要接入 EtherCAT 总线时的开源从站起点；与商用 [Beckhoff SSC](./beckhoff-ssc.md) 构成「开源 vs 官方」选型。

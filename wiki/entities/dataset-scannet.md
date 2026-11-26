@@ -52,6 +52,15 @@ sources:
 
 RGB-D 视频自动重建，再经众包完成实例语义标注。
 
+### 数据流水线与使用流程
+
+```mermaid
+flowchart LR
+    CAP["自研 RGB-D 采集系统录制室内视频（1,513 次扫描 / 250 万帧视图）"] --> RECON["自动表面重建与三维相机位姿计算"]
+    RECON --> CROWD["众包完成实例级语义分割标注"]
+    CROWD --> DOWN["三维场景理解基准（并支撑 ScanRefer、EmbodiedScan 等衍生数据）"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

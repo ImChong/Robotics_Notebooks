@@ -44,6 +44,17 @@ institutions:
 | 类别 | 运动RL/技能训练 |
 | 官方组织 | https://github.com/DeepRoboticsLab |
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  BASE["Case1-Case2: 基础知识、操作体验与仿真环境部署"] --> DEV["Case3-Case4: 运动开发入门与感知开发入门"]
+  DEV --> CTRL["Case5-Case6: 单关节控制与基于 VMC 的运动控制"]
+  CTRL --> RL["Case7: 基于强化学习的训练及部署"]
+  DEV --> NAV["Case8-Case9: Lite3 激光定位、建图与导航 (上/下)"]
+  NAV --> APP["Case10-Case11_New: 人体自主跟随与 LLM 部署应用 (含旧版 Case11)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `Robot_Training_Cases` 仓库并核对 README 许可与依赖。

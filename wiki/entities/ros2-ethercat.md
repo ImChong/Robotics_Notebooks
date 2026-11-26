@@ -42,6 +42,15 @@ summary: "ROS2-ethercat：文章列出的 ROS 2 封装 EtherCAT 主站（SOEM / 
 - 文章称为 ROS2 封装 SOEM / IgH，用于机器人关节控制。
 - 文章未给仓库地址。
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  ROS["ROS 2 机器人上层控制\n关节指令与状态监控"] --> WRAP["ROS2-ethercat 封装层\n（常经 ros2_control 硬件接口整合，待核查）"]
+  WRAP --> MASTER["EtherCAT 主站\nSOEM（用户态）/ IgH（内核态）"]
+  MASTER --> DRV["EtherCAT 关节驱动器\nCoE / PDO 过程数据交换"]
+```
+
 ## 工程实践
 
 - 适用场景：用 ROS 2 做上层、EtherCAT 驱动器做关节总线时的整合线索；1 kHz 级硬环路是否放在 ROS 2 进程内要谨慎，见 [ROS 2 基础](../concepts/ros2-basics.md)。

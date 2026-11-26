@@ -51,6 +51,16 @@ sources:
 
 多视角 RGB、单色与眼动数据同步，三维位姿由光学动捕标定。
 
+### 数据流水线与使用流程
+
+```mermaid
+flowchart LR
+    DEV["Project Aria 眼镜与 Quest 3 头显双设备同步采集（19 名参与者 / 33 种刚体物体）"] --> STREAM["多视角 RGB、单色与眼动数据（833 分钟 / 370 万+ 图像）"]
+    MOCAP["光学动作捕捉标定三维位姿真值"] --> OUT["手部 UmeTrack 与 MANO 格式 + 带 PBR 材质扫描物体网格"]
+    STREAM --> OUT
+    OUT --> TRACK["第一视角三维手部与物体追踪基准"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

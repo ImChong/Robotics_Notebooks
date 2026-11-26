@@ -42,6 +42,17 @@ summary: "ecat_servo：实现 CiA402 伺服状态机的 EtherCAT 伺服配套库
 - 文章称为 CiA402 伺服状态机实现，归入「伺服 CiA402 运动控制配套库」。
 - 仓库地址由文章给出。
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  BUS["EtherCAT 总线 / CANbus\nPDO 控制字 controlword 与状态字 Status_Word"] --> ESC["ESC 从站硬件芯片\nLAN9252 / AX58100"]
+  ESC --> SOES["SOES 从站协议栈\nCoE 对象字典与 PDO 交换（STM32 F1/F4）"]
+  SOES --> SM["cia402device 状态机\ncia402_axis_t · cia402_state_machine"]
+  SM --> FLAGS["状态标志输出\naxis_func_enabled · hv_power_applied · brake_applied · FAULT_REACTION_ACTIVE"]
+  FLAGS --> DRV["电机控制器应用\nODrive / STMBL 等驱动执行"]
+```
+
 ## 工程实践
 
 - 适用场景：自研 EtherCAT 伺服驱动器时参考 CiA402 状态机的开源实现；搭配 [SOES](./soes.md)。

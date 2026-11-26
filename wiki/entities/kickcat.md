@@ -43,6 +43,16 @@ C++ 面向对象的 EtherCAT 主站库，自带软件模拟从站，适合上位
 - 文章称自带软件模拟从站，便于在无硬件时调试上位机。
 - 文章称项目活跃度一般。
 
+### 架构流程图
+
+```mermaid
+flowchart TD
+  APP["C++ 应用 / py_bindings / tools（GUI 与 CLI）\nLinux（RT-PREEMPT）· Windows · PikeOS · NuttX"] --> STACK["KickCAT 协议栈（lib/）\nMaster 与 Slave 双端实现 · CoE 协议"]
+  STACK --> REAL["真实总线路径\n物理网卡与硬件 ESC（如 LAN9252）"]
+  STACK --> SIM["仿真调试路径（simulation/）\n软件 ESC 与网络模拟器（simulated_bus）"]
+  ESI["厂商 ESI XML 设备描述"] --> SIM
+```
+
 ## 工程实践
 
 - 适用场景：C++ 上位机项目希望用现代 C++ 接口、并想脱离硬件做主站逻辑联调时的备选。

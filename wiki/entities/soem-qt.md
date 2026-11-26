@@ -41,6 +41,15 @@ summary: "soem-qt：文章列出的 Qt C++ 封装 SOEM 的上位机库，便于 
 - 文章称为 Qt C++ 封装 SOEM，上位机 Qt 项目直接调用。
 - 文章未给仓库地址，也未给出维护者。
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  QT["Qt 上位机应用界面\nC++ / Qt 项目"] --> WRAP["soem-qt 封装层\nQt C++ 封装 SOEM（具体仓库待核查）"]
+  WRAP --> SOEM["SOEM EtherCAT 主站\n用户态协议栈"]
+  SOEM --> BUS["EtherCAT 从站网络\nCoE / ESC 节点"]
+```
+
 ## 工程实践
 
 - 适用场景：Qt 上位机界面想直接管理 EtherCAT 网络时的线索；落地前先确认具体仓库与许可。

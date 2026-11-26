@@ -44,6 +44,20 @@ institutions:
 | 类别 | 数据集/Benchmark |
 | 官方组织 | https://github.com/px-DataCollection |
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  IN["Super EID 产线原始数据 DF-1 (HDF5)"] --> POSE["Part 1: PX Pose (多 GPU 估计双手与可选物体 6D 位姿)"]
+  IN --> POST["Part 2: PX Post-Process (CPU/RAM 解析编码器与触觉)"]
+  POSE --> POST
+  POST --> DF2["DF-2 (HDF5: 观测/动作 + 位姿)"]
+  POST --> DF2R["DF-2R (HDF5: 重定向至灵巧手模型)"]
+  POST --> DF3["DF-3 (LeRobot 数据集格式)"]
+  DF2 --> VIS["Omnisharing 采样发布 (Hugging Face / PXCap Viewer)"]
+  DF3 --> TRAIN["大规模预训练与仿真下游应用"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `px_omnisharing_dataprocess_kit` 仓库并核对 README 许可与依赖。

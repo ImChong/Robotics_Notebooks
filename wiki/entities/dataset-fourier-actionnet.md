@@ -52,6 +52,15 @@ sources:
 
 操作者佩戴 Vision Pro，从机器人第一人称视角进行 VR 遥操作，广角 OAK-D W 97 相机记录视觉。
 
+### 数据流水线
+
+```mermaid
+flowchart LR
+  VR["Vision Pro 第一人称 VR 遥操作 (GR1-T1 / GR1-T2 / GR2, 6-DoF 与 12-DoF 灵巧手)"] --> CAP["同步采集 (OAK-D W 97 广角相机视觉 + 双臂与灵巧手遥操作动作, 3 万余条 / 约 140 小时)"]
+  CAP --> TOOL["fourier-lerobot 工具处理 (Apache 2.0) 与数据发布 (CC BY-NC-SA 4.0)"]
+  TOOL --> TASK["6-DoF 与 12-DoF 手型差异下的策略迁移研究"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

@@ -51,6 +51,16 @@ sources:
 
 程序化采样户型与家具布局，生成大规模训练场景。
 
+### 数据流水线与使用流程
+
+```mermaid
+flowchart LR
+    PROC["ProcTHOR 程序化框架"] --> SAMP["按需采样户型与家具布局"]
+    SAMP --> GEN["生成 1 万个可交互虚拟房屋（ProcTHOR-10K）"]
+    GEN --> SIM["接入 AI2-THOR 可交互仿真环境"]
+    SIM --> BENCH["大规模具身训练与 6 项具身基准零样本迁移"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

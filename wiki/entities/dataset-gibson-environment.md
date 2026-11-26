@@ -51,6 +51,15 @@ sources:
 
 真实空间扫描重建后放入仿真，智能体受物理与空间约束运行。
 
+### 数据流水线
+
+```mermaid
+flowchart LR
+  SCAN["真实室内空间三维扫描重建 (572 栋建筑 / 1,447 个楼层 / 21.1 万平方米)"] --> MOD["多模态场景资产 (三维重建 / RGB / 深度 / 表面法线 / 部分语义标注)"]
+  MOD --> SIM["GibsonEnv 仿真运行 (物理与空间约束 + Goggles 合成机制缩小 Sim2Real 视觉差距)"]
+  SIM --> USE["Sim2Real 视觉导航 (后续演进至 iGibson 与 BEHAVIOR)"]
+```
+
 ## 工程实践
 
 | 项 | 说明 |

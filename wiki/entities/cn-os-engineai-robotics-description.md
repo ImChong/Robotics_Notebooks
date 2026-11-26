@@ -44,6 +44,21 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/engineai-robotics |
 
+### 项目流程图
+
+依据 [engineai-robotics/engineai_robotics_description](https://github.com/engineai-robotics/engineai_robotics_description) 仓库 README 与目录结构：
+
+```mermaid
+flowchart LR
+  REPO["engineai_robotics_description 资产仓"] --> PM["PM01: pm01_edu/ (v2) 与 pm01_lidar/ (v1)"]
+  REPO --> T8["T800: t800/ (v1.1)"]
+  REPO --> T8P["T800 Pro: t800pro/t800pro_25dof (URDF + USD) 与 t800pro_43dof (URDF)"]
+  PM --> SUB["型号子目录约定: urdf/ 与 xml/ (MuJoCo) 与 meshes/ 与 texture/ 与 usd/ (Isaac Lab)"]
+  T8 --> SUB
+  T8P --> SUB
+  SUB -->|"部分型号待同步"| DOWN["engineai_rl_lab / engineai_robotics_native_sdk 等下游训练与部署仓"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `engineai_robotics_description` 仓库并核对 README 许可与依赖。

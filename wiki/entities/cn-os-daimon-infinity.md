@@ -44,6 +44,20 @@ institutions:
 | 类别 | 数据集/Benchmark |
 | 官方组织 | https://github.com/dmrobot-admin |
 
+### 架构流程图
+
+依据 [dmrobot-admin/Daimon-Infinity](https://github.com/dmrobot-admin/Daimon-Infinity) 仓库 README 描述的硬件采集平台、多模态标注与部署闭环：
+
+```mermaid
+flowchart TD
+  CLAW["DM-DataClaw (触觉 UMI): 鱼眼 RGB + 指尖高分辨率触觉 + 双目/IMU 位姿 + 夹爪编码器 + 语音"] --> ANNO["子任务分段与多维语义标注 (Object / Skill / Task / Language)"]
+  DEX["DM-DataDex (TacExoGaze 外骨骼): 手部关节编码器 + 指尖触觉 + 腕部/外置相机 Tracker + VR 头显"] --> ANNO
+  ANNO --> DS["Daimon-Infinity VTLA 多模态数据集 (ModelScope 首批 1,000 小时)"]
+  DS --> VIZ["Daimon-Infinity-Lite 与 assets/ URDF 可视化"]
+  DS --> TRAIN["Physical AI 预训练与精细操作策略学习"]
+  TRAIN -->|"同构迁移 (零样本 / 少样本)"| TAC["DM-TacClaw 电驱夹爪 (100 mm 行程 / 位置-速度-力矩控制)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `Daimon-Infinity` 仓库并核对 README 许可与依赖。

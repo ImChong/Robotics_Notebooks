@@ -44,6 +44,20 @@ institutions:
 | 类别 | 全身动作跟踪/技能训练 |
 | 官方组织 | https://github.com/BeingBeyond |
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  TXT["文本指令 (Text Instructions)"] --> GEN["文本条件动作生成器 (Large Motion Model)"]
+  GEN --> TRACK["动作跟踪策略 (Physics Simulator 物理可行性评估)"]
+  TRACK -->|"物理可行性奖励"| OPT["联合优化微调 (Physical Plausibility + Instruction Alignment)"]
+  TXT --> VER["对齐验证模块 (Alignment Verification)"]
+  GEN --> VER
+  VER -->|"语义保真约束"| OPT
+  OPT --> GEN
+  GEN --> REAL["真实人形机器人平台部署"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `RLPF` 仓库并核对 README 许可与依赖。

@@ -41,6 +41,15 @@ SOEM 的 Python 绑定，用于快速脚本化调试 EtherCAT 网络。（分类
 - 文章称为 Python 绑定 SOEM，适合上位机快速验证。
 - 文章未给仓库地址。
 
+### 架构流程图
+
+```mermaid
+flowchart LR
+  PY["Python 上位机脚本\n扫描从站 · 读写 PDO / SDO（非硬实时）"] --> BIND["pysoem\nSOEM Python 绑定层"]
+  BIND --> SOEM["SOEM 用户态 C 主站\nraw socket（需 root / CAP_NET_RAW）"]
+  SOEM --> BUS["EtherCAT 从站网络\nCoE / ESC 节点"]
+```
+
 ## 工程实践
 
 - 适用场景：上位机脚本里扫描从站、读写 PDO/SDO 做联调；不适合硬实时周期环。

@@ -44,6 +44,24 @@ institutions:
 | 类别 | 本体模型资产 |
 | 官方组织 | https://github.com/AgibotTech、https://github.com/AimRT、https://github.com/OpenDriveLab |
 
+### 架构流程图
+
+依据 [AgibotTech/A3_Ultra_usd](https://github.com/AgibotTech/A3_Ultra_usd) 仓库 README（`raise_a3_ultra_t3d0/`，按 Isaac Sim Asset Structure 3.0 组织）：
+
+```mermaid
+flowchart TD
+  ENTRY["interface.usda (Structure 3.0 推荐入口) / raise_a3_ultra_t3d0.usda"] --> BASE["payloads/base.usda (运动学层级与实例)"]
+  ENTRY --> ROBOT["payloads/robot.usda (Sublayer: Isaac Robot Schema)"]
+  ENTRY --> VAR{"Physics Variant Set (默认 physx)"}
+  BASE --> MAT["payloads/materials.usda (材质)"]
+  BASE --> INST["payloads/instances.usda (视觉/碰撞实例)"]
+  BASE --> GEO["payloads/geometries.usd (二进制几何)"]
+  VAR -->|"none"| NONE["不加载物理层"]
+  VAR -->|"physics"| PHY["payloads/Physics/physics.usda (通用 USD Physics)"]
+  VAR -->|"physx"| PHYSX["payloads/Physics/physx.usda (Isaac Sim 6.0.1 PhysX)"]
+  VAR -->|"mujoco"| MJ["payloads/Physics/mujoco.usda (MuJoCo 物理层)"]
+```
+
 ## 工程实践
 
 1. 从官方 GitHub/Gitee 组织检索 `A3_Ultra_usd` 仓库并核对 README 许可与依赖。
