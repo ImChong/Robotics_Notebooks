@@ -351,3 +351,44 @@ test('graph view floating panels and controls use unified 2px/0px Swiss radius u
     assert.ok(styleTechCss.includes(sel), `style.css tech Section 7 styles ${sel}`);
   }
 });
+
+test('homepage Hero tech actions follow ordered anchors and translate in English mode', () => {
+  const indexHtml = readDoc('index.html');
+  const homeI18nJs = readDoc('home-i18n.js');
+
+  const dom = new JSDOM(indexHtml, {
+    url: 'https://imchong.github.io/Robotics_Notebooks/index.html',
+    runScripts: 'outside-only',
+  });
+  const doc = dom.window.document;
+  const links = Array.from(doc.querySelectorAll('#hero .hero-actions.tech-only a'));
+
+  assert.equal(links.length, 4, 'Hero .hero-actions.tech-only renders 4 action links');
+  assert.ok(links[0].classList.contains('btn-primary') && links[0].classList.contains('hero-cta'));
+  assert.equal(links[0].getAttribute('href'), '#home-start');
+  assert.equal(links[0].querySelector('span[data-home-copy]')?.textContent.trim(), '探索入口');
+
+  assert.ok(links[1].classList.contains('link-draw'));
+  assert.equal(links[1].getAttribute('href'), '#wiki-search');
+  assert.equal(links[1].hasAttribute('data-focus-search'), true);
+  assert.equal(links[1].getAttribute('data-trace-target'), 'wiki-search-panel');
+  assert.equal(links[1].textContent.trim(), '搜索知识库');
+
+  assert.ok(links[2].classList.contains('link-draw'));
+  assert.equal(links[2].getAttribute('href'), '#home-latest-wiki-section');
+  assert.equal(links[2].textContent.trim(), '近期变更');
+
+  assert.ok(links[3].classList.contains('link-draw'));
+  assert.equal(links[3].getAttribute('href'), '#home-hub-section');
+  assert.equal(links[3].textContent.trim(), '核心枢纽');
+
+  dom.window.localStorage.setItem('robotics-home-language', 'en');
+  dom.window.eval(homeI18nJs);
+
+  assert.equal(links[0].querySelector('span[data-home-copy]')?.textContent.trim(), 'Explore Gateways');
+  assert.equal(links[1].textContent.trim(), 'Search the knowledge base');
+  assert.equal(links[2].textContent.trim(), 'Latest Updates');
+  assert.equal(links[3].textContent.trim(), 'Core Hubs');
+
+  dom.window.close();
+});
