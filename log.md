@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | 复用 Doppel 既有论文节点，核验公开相机表、标定与推理入口以及跨本体评测口径。
+
 ## [2026-11-26] ingest | 通读 LDS：补全世界动作模型指令跟随、反事实定位训练与 RoboTwin-IF 复现边界，挂载 WAM 纵深 Stage 3。
 
 ## [2026-11-26] structural | Batch 16（A+B双线）：12 个核心仿真/规划/推理/四足双足仓源码核读（10 仓补齐源码运行时序图，archived openvslam 与入口元仓 NVIDIA/cosmos 如实标不适用），11 篇 Factor Graphs/Safety Gym/RLHF/Gym Retro/LSM-World/Aff3DFunc/EgoMemory/EgoPER/EgoHumans/S2DHand/PRISMA 综述全文核读补全指标与流程图
