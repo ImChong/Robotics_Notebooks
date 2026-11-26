@@ -527,6 +527,10 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | 机器人策略骨干选型：从 MLP 基线到时序模型
+
+- 通读深蓝具身智能原文，复用既有骨干对比页，将视觉、历史、融合和动作头拆成独立对照，并接入模型架构 Stage 1 的闭环与端侧评测练习。
+
 ## [2026-11-26] structural | Batch 11（A+B双线）：A线通读 8 个核心代码/固件仓（roh_gen2_firmware、AimRT、AnyGrasp、COMPASS、control-toolbox、CycloneDDS、EasyMocap、eFlesh）补齐源码运行时序图；B线下载并通读 25 篇 CVF/PMLR/NeurIPS/ACL 开放全文（A0、RoboTwin、NWM、RAM、SIMPLER、Habitat、ManiSkill、DIAMOND、TD-MPC、Contrastive RL、MBPO、Prismatic VLMs、Consistency Models、DMD/DMD2、ScaleVLN、RECON、NAVSIM、EgoNormia 等）补齐机制、指标与方法流程图（Issue #3997）
 
 ## [2026-11-26] ingest | CoRelNav：通读并升级既有论文节点，核对多机关系验证、仿真与真机边界并挂载导航 Stage 4
