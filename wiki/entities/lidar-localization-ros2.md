@@ -44,7 +44,7 @@ summary: "lidar_localization_ros2：消费预建 PCD/PLY 地图，以 BBS_2D 全
 ## 为什么重要
 
 - **冷启动不依赖 GPS 或人工位姿**：已有地图、可区分的 LiDAR 几何与满足门控的匹配候选即可启动；候选歧义时明确要求人工 2D Pose Estimate。
-- **分离建图与定位**：可用 lidar_slam_ros2 事先生成 .pcd 地图，运营时只运行定位，便于既定场地和重复巡航。
+- **分离建图与定位**：可用同作者独立项目 [lidar_slam](./rsasaki-lidar-slam.md) 事先生成 .pcd 地图，运营时只运行定位，便于既定场地和重复巡航。
 - **故障可观测**：输出匹配状态、丢定位信号，恢复路径包含候选评分、连续观测验证与重置保护。
 - **适配 ROS 2/Nav2**：支持 Jazzy（主要目标）、Humble；既可独立发布 map→base_link，也可在 Nav2 场景发布 map→odom（仍需 odom→base_link 来源）。
 
