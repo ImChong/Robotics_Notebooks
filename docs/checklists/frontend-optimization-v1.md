@@ -7,6 +7,8 @@
 
 ## 一、 视觉降噪 (Visual De-cluttering)
 
+- [x] 首页 Hero 按钮与 01–04 区块序号文案统一（2026-11-26）：将新版首页 `#hero .hero-actions.tech-only` 四个按钮与主体 01–04 区块 `.band-kicker` 文案统一对齐为「探索入口 / 知识检索 / 最新更新 / 核心枢纽」（`03 / 近期变更` 同步改为 `03 / 最新更新`），补充 `docs/home-i18n.js` 中英映射，并更新 `tests/ui-tech-redesign.test.cjs` 校验 Hero 按钮与 01–04 序号文案及中英切换。
+
 - [x] 首页 Hero 行动区按钮重排（2026-11-26）：将新版 `data-ui="tech"` 首页 `#hero .hero-actions.tech-only` 的四个入口按钮按首页 01–04 区块主阅读序调整为「探索入口（蓝色主按钮 `.btn-primary.hero-cta` → `#home-start`）、搜索知识库（`#wiki-search`，保留聚焦与面板描边）、近期变更（`#home-latest-wiki-section`）、核心枢纽（`#home-hub-section`）」，同步补充 `docs/home-i18n.js` 英文翻译并在 `tests/ui-tech-redesign.test.cjs` 增加按钮顺序与中英切换回归测试。
 
 - [x] 首页与图谱交互/圆角一致性修复（2026-11-24）：（1）去掉首页 `data-ui="tech"` 下「最新知识节点」底部与栏头 `.ledger-link` 重复的「查看全部更新 →」（`renderLatestWikiNode` 为 `.home-latest-more` 标 `.classic-only` 并在新风格中隐藏，仅旧版保留）；（2）首页「俯瞰节点与连接全貌」入口卡描边完成后，除旧版 `#mini-graph-expand` 外同步高亮新版的「打开完整图谱」按钮（`#mini-graph-open-btn` 与 `#mini-graph-telemetry-link`）两次并保持 2D/3D `href` 联动；（3）统一 `graph.html` 各浮窗内按钮/徽章/胶囊控件（参数面板 `.physics-action-btn` / `.perspective-tier-badge` / 关闭钮 / 滑块拇指、筛选面板 `.filter-recency-mode-btn` / `.filter-clear` / `.chip.active` / `.filter-count` / 滚动条与缩放角标、路线导读 `.depth-intro-step-btn` / `.depth-intro-hub-tag`、提示卡与侧栏 `.tt-type` / `.tt-community` / `.sb-related-list li a`、图例行及聊天面板 `.kb-chat-*` 胶囊按钮）为 `2px / 0px` 瑞士工程风直角；（4）首页 3D 预览启用 `softPeakHighlight: true`（方案 Y1：保留明快金黄峰顶，写入 FBO 前保色相软压顶并收敛暗色 Bloom 至 `0.88 / 0.06`，浅色模式与完整图谱页不受影响）。

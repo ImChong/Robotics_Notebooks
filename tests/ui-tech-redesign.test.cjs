@@ -372,23 +372,38 @@ test('homepage Hero tech actions follow ordered anchors and translate in English
   assert.equal(links[1].getAttribute('href'), '#wiki-search');
   assert.equal(links[1].hasAttribute('data-focus-search'), true);
   assert.equal(links[1].getAttribute('data-trace-target'), 'wiki-search-panel');
-  assert.equal(links[1].textContent.trim(), '搜索知识库');
+  assert.equal(links[1].textContent.trim(), '知识检索');
 
   assert.ok(links[2].classList.contains('link-draw'));
   assert.equal(links[2].getAttribute('href'), '#home-latest-wiki-section');
-  assert.equal(links[2].textContent.trim(), '近期变更');
+  assert.equal(links[2].textContent.trim(), '最新更新');
 
   assert.ok(links[3].classList.contains('link-draw'));
   assert.equal(links[3].getAttribute('href'), '#home-hub-section');
   assert.equal(links[3].textContent.trim(), '核心枢纽');
 
+  const kickers = [
+    doc.querySelector('#home-start .band-kicker'),
+    doc.querySelector('#wiki-search .band-kicker'),
+    doc.querySelector('#home-latest-wiki-section .band-kicker'),
+    doc.querySelector('#home-hub-section .band-kicker'),
+  ];
+  assert.deepEqual(
+    kickers.map((el) => el?.textContent.trim()),
+    ['01 / 探索入口', '02 / 知识检索', '03 / 最新更新', '04 / 核心枢纽'],
+  );
+
   dom.window.localStorage.setItem('robotics-home-language', 'en');
   dom.window.eval(homeI18nJs);
 
   assert.equal(links[0].querySelector('span[data-home-copy]')?.textContent.trim(), 'Explore Gateways');
-  assert.equal(links[1].textContent.trim(), 'Search the knowledge base');
+  assert.equal(links[1].textContent.trim(), 'Knowledge Search');
   assert.equal(links[2].textContent.trim(), 'Latest Updates');
   assert.equal(links[3].textContent.trim(), 'Core Hubs');
+  assert.deepEqual(
+    kickers.map((el) => el?.textContent.trim()),
+    ['01 / GATEWAYS', '02 / SEARCH', '03 / LATEST', '04 / HUBS'],
+  );
 
   dom.window.close();
 });
