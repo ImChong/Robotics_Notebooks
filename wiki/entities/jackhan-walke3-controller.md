@@ -54,6 +54,47 @@ flowchart TD
   sim <-->|"状态 / 指令"| ctrl
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `JackHan-Sdu/WalkE3-Controller`（`main` 分支）核读的源码与配置梳理：`README.md`、`config.yaml`、`mujoco_sim/mujoco_simulator.py`、`scripts/run_controller.sh`、`Algorithm_Template_For_Developer/algorithm_base.py`、`Algorithm_Template_For_Developer/lcm_interface.py`、`Algorithm_Template_For_Developer/dance_algorithm_getup/run_algorithm.py` 与 `Algorithm_Template_For_Developer/dance_algorithm_getup/config.yaml`（仓库内 `human_ctrl` 为预编译可执行文件，图中使用其已核实进程边界与 LCM 通道名）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SIM as MuJoCo 仿真进程<br/>mujoco_simulator.py
+    participant SH as 启动脚本<br/>scripts/run_controller.sh
+    participant CTRL as 主控制进程<br/>human_ctrl (FSM / 安全检查 / ONNX)
+    participant DEV as 外部算法模板进程<br/>DanceAlgorithm / AlgorithmBase
+    participant LCM as LCM 接口<br/>LCMInterface
+
+    par 双终端启动
+        SIM->>SIM: 读取 config.yaml 加载 scene_terrain.xml，订阅 HUMANOID_JOINT_COMMAND_01
+    and
+        SH->>SH: 解析 config.yaml，配置 LD_LIBRARY_PATH / conda 环境
+        SH->>CTRL: exec human_ctrl ./config.yaml（RL_HYBRID / RL_WALK / DEVELOPMENT / PASSIVE）
+    end
+
+    loop 仿真-控制实时闭环（simulation_dt=0.002）
+        SIM->>SIM: _apply_control() 计算 PD 力矩并执行 mujoco.mj_step()
+        SIM-->>CTRL: _publish_joint_state() -> HUMANOID_JOINT_STATE_01 (humanoid_joint_state_t)
+        SIM-->>CTRL: _publish_imu_data() -> MICROSTRAIN_IMU_DATA_01 (microstrain_lcmt)
+        CTRL->>CTRL: 状态机调度、安全校验与内置 ONNX 推理（或透传 DEVELOPMENT 指令）
+        CTRL-->>SIM: 发布 HUMANOID_JOINT_COMMAND_01 (humanoid_joint_command_t)
+    end
+
+    opt DEVELOPMENT 模式（外接二次开发算法）
+        DEV->>LCM: 初始化并订阅 E3_development_state_01，_warmup_policy() 真实状态预热
+        DEV->>DEV: run() 启动 _execution_loop (50 Hz) 与 _lcm_send_loop (500 Hz)
+        CTRL-->>LCM: 发布 E3_development_state_01 (development_state_t)
+        LCM->>DEV: _on_state_received() 触发 _start_development_mode()
+        DEV->>DEV: compute_observation() -> _run_inference(HumanActornet.onnx) -> process_action()
+        DEV->>LCM: send_command() -> E3_development_command_01 (development_command_t)
+        LCM-->>CTRL: 回传关节目标 q / qd / tau / kp / kd
+    end
+```
+
+- **关键复现路径**：双终端分别运行 `python mujoco_sim/mujoco_simulator.py` 与 `bash scripts/run_controller.sh ./config.yaml`，两侧通过 `HUMANOID_JOINT_STATE_01`、`MICROSTRAIN_IMU_DATA_01` 与 `HUMANOID_JOINT_COMMAND_01` 三条 LCM 通道实时闭环；切换至 `DEVELOPMENT` 模式后由 `AlgorithmBase` 经 `E3_development_state_01` / `E3_development_command_01` 接管外环 50 Hz 推理与 500 Hz 指令下发。
+
 ## 常见误区或局限
 
 - **2026-11-13 维护复核：** [官方 README（0a4ba89）](https://github.com/JackHan-Sdu/WalkE3-Controller/blob/0a4ba898d5a48205f2a800b50345339fa3d6a173/README.md) 仍要求 Ubuntu 20.04，分终端启动 `mujoco_sim/mujoco_simulator.py` 与 `scripts/run_controller.sh ./config.yaml`；DEVELOPMENT 模式连接外部算法模板。模式序列中的 `OFF` 与模式表的 `PASSIVE` 叫法不同，实际切换须以对应源码和配置验证；本次未运行仿真或硬件。

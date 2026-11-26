@@ -65,6 +65,54 @@ flowchart LR
   CK -.-> M[ONNX → MuJoCo 分支]
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `jaykorea/Isaac-RL-Two-wheel-Legged-Bot`（`main` 分支）核读的源码与入口梳理：`README.md`、`scripts/co_rl/train.py`、`scripts/co_rl/play.py`、`scripts/co_rl/core/wrapper/vecenv_wrapper.py`、`scripts/co_rl/core/runners/on_policy_runner.py`、`scripts/co_rl/core/runners/off_policy_runner.py` 与 `lab/flamingo/isaaclab/isaaclab/envs/manager_based_constraint_rl_env.py`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant TR as 训练入口<br/>scripts/co_rl/train.py
+    participant ENV as 环境与封装<br/>gym.make + CoRlVecEnvWrapper
+    participant MGR as CaT 约束环境<br/>ManagerBasedConstraintRLEnv
+    participant RUN as CoRL Runner<br/>OnPolicyRunner / OffPolicyRunner
+    participant PL as 回放与导出<br/>scripts/co_rl/play.py
+
+    rect rgb(245, 250, 240)
+        Note over TR,RUN: CoRL 训练阶段（train.py）
+        TR->>TR: AppLauncher(args_cli) 与 @hydra_task_config 加载 env_cfg / agent_cfg
+        TR->>ENV: gym.make(args_cli.task, cfg=env_cfg) 并包装 CoRlVecEnvWrapper
+        ENV->>ENV: StateHandler 初始化 stack_policy / none_stack_policy 堆叠缓存
+        TR->>RUN: 按 algo 创建 OnPolicyRunner (PPO/SRM) 或 OffPolicyRunner (SAC/TQC/TACO)
+        TR->>RUN: runner.learn(max_iterations)
+        loop Rollout 与更新（num_steps_per_env）
+            RUN->>RUN: alg.act(obs, critic_obs)
+            RUN->>ENV: env.step(actions)
+            ENV->>MGR: self.env.step(actions)
+            MGR->>MGR: action_manager.process_action -> decimation 内 sim.step()
+            MGR->>MGR: constraint_manager.compute() + reward_manager.compute() + _reset_idx()
+            MGR->>MGR: command_manager.compute() + observation_manager.compute()
+            MGR-->>ENV: obs_dict, rew, terminated, truncated, extras
+            ENV->>ENV: policy_state_handler.update() 拼接堆叠观测
+            ENV-->>RUN: policy_obs, rewards, dones, infos
+            RUN->>RUN: alg.process_env_step() -> compute_returns() / alg.update()
+        end
+    end
+
+    rect rgb(255, 248, 240)
+        Note over PL,ENV: 回放与模型导出阶段（play.py）
+        PL->>ENV: parse_env_cfg + gym.make + CoRlVecEnvWrapper
+        PL->>RUN: runner.load(get_checkpoint_path(...))
+        PL->>PL: export_policy_as_jit("policy.pt") 与 export_policy_as_onnx("policy.onnx")
+        loop simulation_app.is_running()
+            PL->>PL: policy(obs) -> torch.clamp(actions, -1.0, 1.0)
+            PL->>ENV: env.step(clipped_actions)
+        end
+    end
+```
+
+- **关键复现路径**：以 `scripts/co_rl/train.py` 为统一训练入口，经 `CoRlVecEnvWrapper` 与 `StateHandler` 维护观测历史堆叠；约束任务（`*-constraint`）底层进入 `ManagerBasedConstraintRLEnv.step()` 触发 `constraint_manager.compute()`；训练后用 `scripts/co_rl/play.py` 加载 checkpoint 并导出 `policy.pt` / `policy.onnx`（`srmppo` 另导出 `srm.onnx`）。
+
 ## 工程实践
 
 1. 对齐徽章：**Isaac Sim 4.5、Isaac Lab 2.0.0、Python 3.10**（比 [DDT_Lab](./ddt-lab.md) 的 Sim 5.1 / Lab 2.3 旧一截，不要混环境）。

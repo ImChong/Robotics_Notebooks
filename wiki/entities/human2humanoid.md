@@ -56,6 +56,61 @@ flowchart LR
   ret --> train --> real
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `LeCAR-Lab/human2humanoid`（`main` 分支）核读的源码与运行入口梳理：`README.md`、`scripts/data_process/grad_fit_h1_shape.py`、`scripts/data_process/grad_fit_h1.py`、`legged_gym/legged_gym/envs/__init__.py`、`legged_gym/legged_gym/scripts/train_hydra.py`、`legged_gym/legged_gym/scripts/play_hydra.py`、`legged_gym/legged_gym/utils/task_registry.py`、`legged_gym/legged_gym/envs/base/legged_robot.py`、`rsl_rl/rsl_rl/runners/on_policy_runner.py` 与 `rsl_rl/rsl_rl/algorithms/ppo.py`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant DP as 数据重定向脚本<br/>grad_fit_h1_shape.py / grad_fit_h1.py
+    participant TH as 训练入口<br/>train_hydra.py
+    participant TR as 任务注册表<br/>TaskRegistry (task_registry.py)
+    participant ENV as 仿真环境<br/>LeggedRobot (h1:teleop)
+    participant RUN as 训练器<br/>OnPolicyRunner / PPO
+    participant PL as 回放与部署入口<br/>play_hydra.py
+
+    rect rgb(240, 245, 255)
+        Note over DP: 离线动作重定向阶段
+        DP->>DP: Humanoid_Batch + SMPL_Parser 拟合 shape_optimized_v1.pkl
+        DP->>DP: 逆向拟合 AMASS 序列并输出参考 motion .pkl
+    end
+
+    rect rgb(245, 250, 240)
+        Note over TH,RUN: 教师 RL 训练 / DAgger 学生蒸馏（train_hydra.py）
+        TH->>TR: make_env_hydra("h1:teleop", cfg_hydra)
+        TR->>ENV: 实例化 LeggedRobot（若 train.distill=True 则 load_expert()）
+        TH->>TR: make_alg_runner(env, train_cfg)
+        TR->>RUN: 创建 OnPolicyRunner 与 PPO
+        TH->>RUN: learn(max_iterations)
+        loop 每个学习迭代（num_steps_per_env）
+            RUN->>RUN: PPO.act(obs, critic_obs)
+            RUN->>ENV: env.step(actions)
+            opt train.distill=True
+                ENV->>ENV: expert_policy(full_obs) 写入 kin_dict['gt_action']
+            end
+            ENV->>ENV: decimation 内 _compute_torques() -> gym.simulate() -> post_physics_step()
+            ENV-->>RUN: obs, privileged_obs, rewards, dones, infos
+            RUN->>RUN: PPO.process_env_step() / compute_returns() / PPO.update(dagger_only)
+        end
+    end
+
+    rect rgb(255, 248, 240)
+        Note over PL,ENV: 回放、ONNX 导出与实时 VR 遥操（play_hydra.py）
+        PL->>TR: make_env_hydra + make_alg_runner(resume=True)
+        PL->>PL: get_inference_policy() 与 export_policy_as_onnx()
+        loop 仿真回放 / VR 遥操
+            opt env_cfg.motion.realtime_vr_keypoints
+                PL->>ENV: AVPPoseInfo 订阅 avp_pose 并调用 _update_realtime_vr_keypoints()
+            end
+            PL->>PL: policy(obs.detach())
+            PL->>ENV: env.step(actions.detach())
+        end
+    end
+```
+
+- **关键复现路径**：先运行 `scripts/data_process/grad_fit_h1_shape.py` 与 `grad_fit_h1.py` 生成 H1 参考动作；再通过 `legged_gym/scripts/train_hydra.py`（`task=h1:teleop`）训练特权教师或开启 `train.distill=True` / `train.dagger.dagger_only=True` 蒸馏学生策略；最后由 `legged_gym/scripts/play_hydra.py` 导出 ONNX/JIT 或接入 `avp_pose` ROS 话题进行实时遥操回放。
+
 ## 工程实践
 
 - **AMASS 重定向脚本**：使用仓库自带的形状优化与 IK 重定向脚本，将 SMPL 人体序列批量映射到目标人形（如 Unitree H1/G1）的关节轨迹。

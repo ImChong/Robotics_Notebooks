@@ -92,6 +92,46 @@ flowchart TD
 4. **导出**生成 ONNX actor 与 layout.json。布局描述策略观测/动作和关节信息；导出逻辑会检查策略是否依赖硬件当前无法测量的观测。
 5. **部署打包**把多个模式策略、FSM、控制映射和需要的参考轨迹绑定进应用包。运行时按关节名称匹配，再转成 wire joint 顺序，不要把 tensor 下标当稳定语义。
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `KingKongRobotics/jumper`（`main` 分支）中训练、导出打包与板端 Rust 控制循环源码核读整理：
+- 核对源码路径：`scripts/train.py`、`scripts/export.py`、`scripts/deploy.py`、`deploy/fsm/src/bin/controller.rs`、`deploy/fsm/src/device.rs`
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Train as "scripts/train.py"
+  participant Sim as "ManagerBasedRlEnv / MjlabOnPolicyRunner"
+  participant Export as "scripts/export.py"
+  participant Deploy as "scripts/deploy.py"
+  participant Ctrl as "controller.rs (Board Target)"
+  participant Host as "DeviceHost / DdsIo (device.rs)"
+
+  Note over Train,Sim: 阶段一：RL 并行训练
+  Train->>Train: resolve_all() & use_backend(res) 选择 MuJoCo Warp/CPU
+  Train->>Sim: ManagerBasedRlEnv -> RslRlVecEnvWrapper -> runner_cls
+  Train->>Sim: runner.learn(num_learning_iterations)
+
+  Note over Export,Deploy: 阶段二：契约校验、ONNX 导出与多宿主打包
+  Export->>Export: build_contract() & _validate_deployable / _validate_measurable
+  Export->>Export: _export_onnx() -> _validate_onnx() -> 写入 actor.onnx 与 layout.json
+  Deploy->>Deploy: 交叉编译 deploy/fsm、onnx2rknn.py 转 .rknn、生成 .app bundle
+
+  Note over Ctrl,Host: 阶段三：板端 1 kHz 控制闭环 (TICK_US = 1000)
+  Ctrl->>Ctrl: read_machine() -> Bundle::open(Target::Board)
+  Ctrl->>Host: DdsIo::open(motor_domain, robot_domain, qos_xml)
+  loop while !STOP (1 kHz 周期)
+    Ctrl->>Host: host.pump(&mut io, now, wall_ns())
+    Host->>Host: DdsIo::take_state/take_command -> DeviceHost::step -> Controller::tick
+    alt Step::Infer
+      Host->>Host: Engine::infer (RKNN/Stub) -> DdsIo::publish
+    else Step::Hold
+      Host->>Host: 保持当前安全指令 -> DdsIo::publish
+    end
+  end
+  Ctrl->>Host: SIGINT/SIGTERM 触发 SHUTDOWN_TICKS(50) 经 feedback_stale 安全退出
+```
+
 ## 工程实践
 
 - **先单环境回放，再扩展并行度。** 用 scripts/play.py 检查模型姿态、脚接触、动作尺度和 episode 终止，避免错误模型被高并行度放大。

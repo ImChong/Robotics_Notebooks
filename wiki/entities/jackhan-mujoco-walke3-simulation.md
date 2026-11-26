@@ -53,6 +53,46 @@ flowchart TD
   mj --> obs
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `JackHan-Sdu/Mujoco-WalkerE3-Simulation`（`main` 分支）核读的源码与配置梳理：`README_CN.md`、`configs/e3.yaml` 与主脚本 `deploy_mujoco_gamepad.py`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MAIN as 部署主脚本<br/>deploy_mujoco_gamepad.py
+    participant PAD as 手柄与扰动<br/>gamepad_utils / disturbance_utils
+    participant POL as TorchScript 策略<br/>policy/motion_5000.pt
+    participant MJ as MuJoCo 引擎与视图<br/>MjModel / MjData / viewer
+
+    MAIN->>MAIN: 读取 configs/e3.yaml（simulation_dt=0.002, control_decimation=10）
+    MAIN->>MJ: MjModel.from_xml_path("model/e3/scene_terrain.xml") 与 MjData(m)
+    MAIN->>POL: torch.jit.load("policy/motion_5000.pt")
+    MAIN->>PAD: init_gamepad(config) 与 set_disturbance_body_id(m)
+    MAIN->>MJ: mujoco.viewer.launch_passive(m, d)
+
+    loop 主仿真循环（viewer.is_running()）
+        opt viewer_utils.reset_requested
+            MAIN->>MJ: 恢复 initial_qpos/initial_qvel/initial_cmd，清空 xfrc_applied 与 reset_recording()
+        end
+        MAIN->>PAD: 50 Hz 调用 update_cmd_from_gamepad(cmd)
+        MAIN->>PAD: apply_disturbance_force(m, d)（扰动模式下施加躯干外力）
+        MAIN->>MJ: pd_control(target_dof_pos, d.qpos[7:], kps, ..., d.qvel[6:], kds) -> d.ctrl[:] = tau -> mujoco.mj_step(m, d)
+        opt counter % control_decimation == 0 (50 Hz)
+            MAIN->>MAIN: 读取 qpos/qvel 与 get_gravity_orientation(quat)，组装 72 维 obs
+            MAIN->>POL: policy(obs_tensor)
+            POL-->>MAIN: action (21-DoF)
+            MAIN->>MAIN: target_dof_pos = action * action_scale + default_angles
+            opt plot_utils.recording (5s 窗口)
+                MAIN->>MAIN: 记录 tau/dqj 并在结束后调用 plot_data()
+            end
+        end
+        MAIN->>MJ: viewer_utils.update_viewer_settings() 与 viewer.sync()
+    end
+```
+
+- **关键复现路径**：执行 `python deploy_mujoco_gamepad.py e3.yaml`；仿真步进频率 500 Hz（`dt=0.002`），手柄指令采样与策略推理均按 `control_decimation=10`（50 Hz）驱动预训练 TorchScript 模型 `policy/motion_5000.pt` 输出 21 自由度目标关节角，再由底层 PD 控制器转化为执行器力矩。
+
 ## 常见误区或局限
 
 - **README 已知问题**：楼梯首步可能穿模、长时间站立可能打滑——属于仿真接触与摩擦建模边界，不宜直接当作硬件结论。

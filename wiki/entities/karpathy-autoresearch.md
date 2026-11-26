@@ -85,6 +85,44 @@ flowchart LR
   Prep["prepare.py\n数据与 tokenizer"] -.->|一次性| Train
 ```
 
+## 源码运行时序图
+
+以下时序图基于官方仓库 `karpathy/autoresearch`（`master` 分支）全仓源码核读整理：
+- 核对源码路径：`prepare.py`、`train.py`、`program.md`
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Prep as "prepare.py"
+  participant Agent as "编码代理 (依 program.md)"
+  participant Git as "Git 分支 & results.tsv"
+  participant Train as "train.py (uv run train.py)"
+
+  Note over Prep: 一次性数据与分词器准备
+  Prep->>Prep: download_data() 下载训练分片与固定 VAL_SHARD
+  Prep->>Prep: train_tokenizer() 训练 VOCAB_SIZE=8192 BPE tokenizer
+
+  loop program.md LOOP FOREVER 自主实验环
+    Agent->>Git: 检查当前分支/commit 并编辑 train.py
+    Agent->>Git: git commit 提交本轮改动
+    Agent->>Train: uv run train.py > run.log 2>&1
+    Train->>Prep: make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train")
+    Train->>Train: 初始化 GPT(config)、setup_optimizer(Muon+AdamW)、torch.compile()
+    loop while step <= 10 or total_training_time < TIME_BUDGET(300s)
+      Train->>Train: 梯度累积 forward/backward -> optimizer.step()
+    end
+    Train->>Prep: evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE)
+    Prep-->>Train: 返回固定验证集 val_bpb
+    Train-->>Agent: 打印 val_bpb / peak_vram_mb 到 run.log
+    Agent->>Agent: grep val_bpb 并记录到未跟踪的 results.tsv
+    alt val_bpb 降低 (改进)
+      Agent->>Git: 保留 commit 推进分支 (keep)
+    else val_bpb 未降低或超时/崩溃
+      Agent->>Git: git reset 回滚到上一基线 (discard/crash)
+    end
+  end
+```
+
 ## 与相关范式的对照
 
 | 维度 | autoresearch | LLM Wiki（本库） | Superpowers | Darwin Skill |
