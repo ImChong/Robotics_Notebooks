@@ -527,6 +527,11 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] ingest | Embodied First Exam：补收具身代码智能体失败分析
+
+- 通读 EFE 官方失败分析，并与 arXiv v1 对照；主节点保留 456 题论文快照、481 题博客快照与不同范围的权限、提示和失败标签分析。
+- 复核官方 Harbor 入口、动作接口与独立 verifier；补充失败分析流程图和具身评测 Stage 3 导航。
+
 ## [2026-11-26] structural | Batch 15（A+B双线）：12 个核心机器人/仿真/控制/VLA 仓源码核读（10 仓补齐源码运行时序图，Kimera 与闭源 Pi API beta 如实标不适用），25 篇 T5/LoRA/DreamerV2/RLiable/RectifiedFlow/MeanFlow/MonoDream/StateEstimation/Ego 等开放获取原文核读补全指标与流程图，推动全库 Mermaid 图突破 10,000 张里程碑
 
 ## [2026-11-26] structural | Batch 14（A+B双线）：12 个核心人形/MuJoCo/Hydra/HoloAgent 仓库补齐源码运行时序图，27 篇 Dreamer/SpatialForcing/DexWrist/ByteWrist/Drive-OccWorld/NeMo 等开放获取全文核读补全定量指标与方法流程图
