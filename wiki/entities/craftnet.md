@@ -80,6 +80,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 了解分层模型如何把上层指令转成低层操作。
 - [Sharpa Robotics](./sharpa-robotics.md)
 - [WM-CraftNet](./paper-wm-craftnet.md) — 不同项目，名称相近
 - [TacBPM](./paper-tacbpm.md) — System 0 方向的底层行为先验

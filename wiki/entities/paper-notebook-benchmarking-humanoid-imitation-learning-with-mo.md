@@ -186,6 +186,7 @@ $$
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 结合人形动作跟踪目标，区分执行难度和策略跟踪误差。
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 评测指标背景：[motion-control-policy-evaluation-metrics](../concepts/motion-control-policy-evaluation-metrics.md)

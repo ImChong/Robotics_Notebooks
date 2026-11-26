@@ -134,6 +134,8 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 按本体和末端工具理解操作软硬件栈。
+- [遥操作](../tasks/teleoperation.md) — 查看示范采集与机器人执行的接口如何衔接。
 - [Humanoid Skills × NVIDIA 栈（K1 全身 + Worker 操作）](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)
 - [AI Worker](./robotis-ai-worker.md) · [AI Sapiens](./robotis-ai-sapiens.md)
 - [cyclo_lab](./cyclo-lab.md) · [cyclo_mjlab](./robotis-cyclo-mjlab.md) · [cyclo_control](./cyclo-control.md) · [Physical AI Tools](./robotis-physical-ai-tools.md) · [Cyclo Intelligence](./cyclo-intelligence.md)

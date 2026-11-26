@@ -106,6 +106,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从跨本体迁移角度理解潜在动作在实际操作任务中的用途。
 - [模仿学习](../methods/imitation-learning.md)
 - [灵巧运动学](../concepts/dexterous-kinematics.md)
 - [动作重定向](../concepts/motion-retargeting.md)

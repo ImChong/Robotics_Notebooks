@@ -118,6 +118,7 @@ WorldArena 2.0 将评测扩展到三个方向：
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 对照真实机器人操作表现与视觉生成质量的评估口径。
 - [EWMBench](./ewmbench.md) — 聚焦机器人操作视频的场景、运动与语义质量。
 - [WorldOlympiad](./worldolympiad.md) — 对长视频世界模型诊断物理、3D几何与长程交互。
 - [生成式世界模型](../methods/generative-world-models.md) — 视频预测与生成模型的技术背景。

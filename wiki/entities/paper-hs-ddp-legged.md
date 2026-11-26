@@ -116,6 +116,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 从触地冲击和支撑相切换理解混合系统轨迹优化的需求。
 - [MHPC](./paper-mhpc.md)
 - [Optimal Control](../concepts/optimal-control.md)
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)

@@ -92,6 +92,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从双臂抓取和碰撞约束理解机器人操作接口。
 - [ROBOTIS 组织 hub](./robotis.md)
 - [Humanoid Skills × NVIDIA 栈技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)
 - [Physical AI Tools](./robotis-physical-ai-tools.md)

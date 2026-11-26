@@ -137,6 +137,7 @@ flowchart TB
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 从双智能体训练到专家蒸馏，理解搬运策略的优化管线。
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Sim2Real](../concepts/sim2real.md)

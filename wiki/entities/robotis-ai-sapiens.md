@@ -111,6 +111,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 从开源关节控制与动作重定向入口理解平台的运动任务。
 - [ROBOTIS hub](./robotis.md) · [AI Worker](./robotis-ai-worker.md)
 - [Humanoid Skills × NVIDIA 栈技术地图](../overview/robotis-humanoid-skills-nvidia-stack-technology-map.md)
 - [Physical AI Tools](./robotis-physical-ai-tools.md)

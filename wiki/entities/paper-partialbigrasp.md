@@ -122,6 +122,7 @@ flowchart LR
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 从双臂抓取任务的配对和协调要求理解力闭合评估。
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Real Bi-Dex Grasp](./paper-real-bi-dex-grasp.md) — 另一双臂抓取路线
 - [Mango Grasp](./paper-mango-grasp.md) — 抓取规划对照

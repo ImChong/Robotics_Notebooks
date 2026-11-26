@@ -133,6 +133,7 @@ flowchart LR
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 将三阶段规划后的残差跟踪放到闭环策略优化流程中阅读。
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [人形 locomotion](../tasks/humanoid-locomotion.md)
 - [Whole-body tracking pipeline](../concepts/whole-body-tracking-pipeline.md)

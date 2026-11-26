@@ -130,6 +130,8 @@ flowchart LR
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 理解物理可行的参考轨迹怎样影响运动模仿。
+- [PPO](../methods/ppo.md) — 了解双层交替优化中用于更新控制策略的算法。
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 

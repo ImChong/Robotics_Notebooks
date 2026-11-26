@@ -170,6 +170,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从抓取和移动物体的约束理解 Cartesian adapter 的作用。
 - [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [VLA](../methods/vla.md)

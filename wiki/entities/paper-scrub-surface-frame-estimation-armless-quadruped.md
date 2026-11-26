@@ -174,6 +174,7 @@ flowchart LR
 
 ## 关联页面
 
+- [质心 NMPC 与全身控制](../methods/centroidal-nmpc-wbc-stack.md) — 理解擦拭工具反力怎样从接触估计进入质心规划和全身执行。
 - [腿足移动操作任务](../tasks/loco-manipulation.md)
 - [力位混合控制](../concepts/hybrid-force-position-control.md)
 - [力控制基础](../concepts/force-control-basics.md)

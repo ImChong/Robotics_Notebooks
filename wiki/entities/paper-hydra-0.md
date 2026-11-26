@@ -155,6 +155,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从稀疏物体流到动作反演，理解模型在操作任务中的用法。
 - [Generative World Models](../methods/generative-world-models.md)
 - [OSCAR](./paper-oscar.md) — 2D 骨架跨具身 WM + RoboArena 评测
 - [SC3-Eval](./paper-sc3-eval.md) — 自一致闭环 VLA 评估

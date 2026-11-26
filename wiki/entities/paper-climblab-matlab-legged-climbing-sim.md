@@ -139,6 +139,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [逆动力学控制](../methods/inverse-dynamics-control.md) — 从浮动基座动力学和接触力角度阅读攀爬仿真与稳定性指标。
 - [人形/四足前沿周报 2026-10-05~10-09](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md) — 本文所在周报汇总页
 - [运动控制任务页](../tasks/locomotion.md)
 - [全身控制](../concepts/whole-body-control.md)

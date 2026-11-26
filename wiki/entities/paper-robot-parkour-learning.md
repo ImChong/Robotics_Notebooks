@@ -167,6 +167,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) — 从障碍类别和深度观测理解软硬约束课程的应用场景。
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [extreme-parkour](./extreme-parkour.md)

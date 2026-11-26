@@ -161,6 +161,8 @@ flowchart TB
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 对照视频与动作联合预测，定位额外 4D 几何监督。
+- [视觉–语言–动作模型](../methods/vla.md) — 从视觉输入、语言条件与动作输出理解推理路径。
 - [wm-action-consequence-category-03-geometry-4d](../overview/wm-action-consequence-category-03-geometry-4d.md) — 训练期 4D 几何代表
 - [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md) — 「几何/运动信号」族（训练期 4D 端）
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 几何层索引

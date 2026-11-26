@@ -128,6 +128,8 @@ EgoMimic 的判断很大胆：人类戴着 Project Aria 眼镜采到的第一视
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 查看第一视角手部轨迹与机器人示范如何用于共同训练。
+- [视觉–语言–动作模型](../methods/vla.md) — 从视觉及动作接口比较跨本体数据对齐方式。
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-02-human-to-robot.md](../overview/ego-category-02-human-to-robot.md)
 - 原始 source：[ego_survey_03_egomimic.md](../../sources/papers/ego_survey_03_egomimic.md)

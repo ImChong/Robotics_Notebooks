@@ -214,6 +214,7 @@ HDMI 在关联页面里主要与三条 HOI 路线对照：同样从人类视频�
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 理解机器人与物体联动跟踪如何进入奖励和残差动作空间。
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — HDMI 是 #06/42，位于数据、重定向、遥操作入口层。
 - [人形 Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) 与 [05 动捕/人类视频](../overview/loco-manip-161-category-05-mocap-human-video.md) — HDMI 是 #110/161。
 - [Loco-Manip 接触分类 01：接触数据](../overview/loco-manip-contact-category-01-contact-data.md) — 接触横切面中 HDMI 属于「视频数据转接触轨迹」。

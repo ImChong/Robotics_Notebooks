@@ -166,6 +166,7 @@ flowchart TB
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 从人形行走任务理解局部台阶感知与长距离部署的关系。
 - [MeshMimic](./paper-notebook-meshmimic.md) — 借视频场景重建生成运动-地形参考，区别于 SOLO 的在线深度感知行走控制。
 
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) — 感知楼梯 / 踏石索引

@@ -141,6 +141,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 在复杂地形任务中定位仅使用本体感觉的四足控制路线。
+- [模仿学习](../methods/imitation-learning.md) — 理解学生如何从本体历史模仿训练时能访问特权状态的教师。
 - [Privileged Training](../concepts/privileged-training.md)
 - [ANYmal](./anymal.md)
 - [Robust Perceptive Locomotion](./paper-robust-perceptive-locomotion-wild.md)

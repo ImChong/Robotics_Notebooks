@@ -164,6 +164,7 @@ flowchart LR
 
 ## 关联页面
 
+- [模型预测控制](../methods/model-predictive-control.md) — 阅读综述中经典模型与优化阶段的代表方法及其滚动优化机制。
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
 - [Humanoid Locomotion 任务](../tasks/humanoid-locomotion.md)

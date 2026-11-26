@@ -148,6 +148,7 @@ flowchart TB
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 对照全身动作专家怎样接入视觉条件动作策略。
 - [WholeBodyWAM（WBC 接地版）](./paper-wholebodywam.md) — 同名异文（2609.16644）
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 另一人形 loco-manip WAM 路线
 - [World Action Models 概念](../concepts/world-action-models.md)

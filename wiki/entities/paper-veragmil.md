@@ -116,6 +116,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从喂食任务看示范输入方式和操作策略的评测差别。
 - [模仿学习](../methods/imitation-learning.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [SHRIMP](./paper-shrimp.md) — 自然语言任务规划（不同任务域）

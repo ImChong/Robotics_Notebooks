@@ -104,6 +104,7 @@ flowchart TD
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从边缘部署案例理解策略压缩后的响应时间与任务成功率。
 - [VLA](../methods/vla.md)
 - [IROS 2026 六趋势地图](../overview/iros-2026-six-trends-technology-map.md)
 

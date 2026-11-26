@@ -144,6 +144,7 @@ Table 5：各形态上训 [SONIC](./nvidia-sonic.md)，LaFAN1 + `bones_seed` 统
 
 ## 关联页面
 
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md) — 作为方法对照，理解机器人形态改变时如何重新构造人体动作参考。
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)

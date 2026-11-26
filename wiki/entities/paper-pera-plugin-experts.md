@@ -90,6 +90,7 @@ flowchart TD
 
 ## 关联页面
 
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 将新增动作与保留动作的仿真表现放到人形运动跟踪任务中比较。
 - [全身控制](../concepts/whole-body-control.md)
 - [PPO](../methods/ppo.md)
 - [模仿学习纵深路线](../../roadmap/depth-imitation-learning.md)

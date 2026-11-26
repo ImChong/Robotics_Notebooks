@@ -126,6 +126,7 @@ flowchart TD
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 从视觉、本体与动作接口定位时延补偿模块。
 - [Real-Time Chunking](./paper-real-time-chunking.md)
 - [REMAC](./paper-remac.md)
 - [LeRobot](./lerobot.md)

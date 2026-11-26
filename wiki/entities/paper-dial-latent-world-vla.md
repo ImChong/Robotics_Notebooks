@@ -180,6 +180,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 对照 VLA 的感知、语言和动作接口，定位视觉意图与动作解码的分工。
 - [ThinkWorld](./paper-thinkworld.md) — 用未来特征预测强化动作推理，并利用人类视频学习技能组合
 - [Light-O1](./light-o1.md) — 同 benchmark 更强 reported macro success
 - [RoboCasa](./robocasa.md) — 仿真环境与数据协议

@@ -132,6 +132,7 @@ GO-1 与 GO-1 Air 的差别是 Latent Planner，可作为潜动作规划的结�
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 按任务与场景组织真机操作数据、基准和策略评测。
 - [智元数据平台](./agibot-world-2026.md)
 - [GO-2](./go-2.md)
 - [世界模型](../methods/generative-world-models.md)

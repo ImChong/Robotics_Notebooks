@@ -150,6 +150,7 @@ roslaunch legged_controllers one_start_real.launch
 
 ## 关联页面
 
+- [质心 NMPC 与全身控制](../methods/centroidal-nmpc-wbc-stack.md) — 理解 OCS2 规划层与 WeightedWbc 执行层的职责。
 - [传统模型控制纵深路线](../../roadmap/depth-classical-control.md)
 - [OCS2](../entities/ocs2.md)
 - [Model Predictive Control](../methods/model-predictive-control.md)

@@ -108,6 +108,7 @@ flowchart TD
 
 ## 关联页面
 
+- [遥操作](../tasks/teleoperation.md) — 对照遥操作示范的身体锚点、手部接触和相机观测，理解可穿戴采集如何组织这些信号。
 - [人形机器人数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md) — 无机器人可穿戴采集路线
 - [Manipulation 任务](../tasks/manipulation.md) — 人类示范与移动操作
 - [EgoVerse](./paper-egoverse.md) — 联盟级第一视角人类示范数据

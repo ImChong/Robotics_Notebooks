@@ -110,6 +110,7 @@ flowchart TD
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 从 VLA 动作输出对照统一骨干的不同插件接口。
 - [世界动作模型](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [UniWAM（另一篇同名相近工作）](./paper-uniwam-unified-world-action-model.md)

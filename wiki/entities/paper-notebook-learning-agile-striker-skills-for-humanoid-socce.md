@@ -179,6 +179,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 顺着教师策略训练、蒸馏和精修阅读足球技能学习。
 - 任务：[Humanoid Soccer](../tasks/humanoid-soccer.md)
 - 选型：[技能学习方法选型](../queries/humanoid-soccer-skill-learning-method-selection.md)
 - 对照：[PAiD](./paper-notebook-learning-soccer-skills-for-humanoid-robots.md)、[Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)

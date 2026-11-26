@@ -168,6 +168,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 查看动作头延迟与操作成功率应如何一起评估。
 - [LeRobot 实体](./lerobot.md)
 - [VLA 方法](../methods/vla.md)
 - [VLA 部署指南](../queries/vla-deployment-guide.md)

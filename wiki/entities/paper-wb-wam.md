@@ -154,6 +154,7 @@ flowchart TB
 
 ## 关联页面
 
+- [GMR 动作重定向](../methods/motion-retargeting-gmr.md) — 对照身体和手部参考映射到人形本体时的重定向问题。
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [SONIC](./nvidia-sonic.md)

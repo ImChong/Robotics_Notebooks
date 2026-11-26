@@ -122,6 +122,7 @@ flowchart LR
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 对照策略动作生成与动力学可行性投影的分工。
 - [loco-manipulation](../tasks/loco-manipulation.md)
 - [whole-body-control](../concepts/whole-body-control.md)
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)

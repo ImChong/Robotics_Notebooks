@@ -130,6 +130,8 @@ flowchart TB
 
 ## 关联页面
 
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) — 按地形与传感器失效模式比较感知行走策略。
+- [模仿学习](../methods/imitation-learning.md) — 补充阅读特权教师到学生的行为克隆，理解学生如何用部署时可得的观测学习教师动作。
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [privileged-training](../concepts/privileged-training.md)

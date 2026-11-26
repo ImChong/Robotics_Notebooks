@@ -79,6 +79,8 @@ flowchart TB
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 定位直接扭矩输出在四足行走策略中的动作空间选择。
+- [PID 控制](../methods/pid-control.md) — 用其中的 PD 反馈原理理解对照方案如何把关节位置目标转成扭矩。
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [Sim-to-Real 敏捷四足 RSS 2018](./paper-tan-quadruped-agile-locomotion-sim2real.md)
 - [Sim2Real](../concepts/sim2real.md)

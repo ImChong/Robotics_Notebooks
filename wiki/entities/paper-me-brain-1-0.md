@@ -150,6 +150,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 从 VLA 接口理解记忆与认知模块如何传递动作条件。
+- [机器人操作](../tasks/manipulation.md) — 对照部署中遇到的新物体与技能更新任务。
 - [ME-VLM](./paper-me-vlm.md)
 - [MachEmbodied-U0](./paper-me-u0.md)
 - [ME-Dex 1.0](./paper-me-dex-1-0.md)

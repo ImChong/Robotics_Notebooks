@@ -92,6 +92,7 @@ flowchart LR
 
 ## 关联页面
 
+- [移动操作](../tasks/loco-manipulation.md) — 对照全身动作集与移动操作任务对运动参考的要求。
 - [OpenLET 社区](./openlet.md) — LET 系列数据与社区资源总览
 - [LeTools](./letools.md) — 数据转换、VLA 训练与真机推理工具链
 - [乐聚机器人](./leju-robotics.md) — 机型与运营方

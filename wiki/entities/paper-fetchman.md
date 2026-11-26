@@ -138,6 +138,7 @@ Flow-GRPO 相对 BC：sim loco-manip **+16 pp**；真机 **+16.6 pp**。Architec
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 将大规模脚本示范的行为克隆环节与后续策略优化对应起来。
 - [Loco-Manipulation 任务](../tasks/loco-manipulation.md)
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — 同 G1 视觉 sim2real 对照
 - [DoorMan](./paper-doorman-opening-sim2real-door.md) — GRPO 自举的另一 loco-manip 实例

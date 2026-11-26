@@ -207,6 +207,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 将恢复动作和执行反馈放在操作基准的闭环里考察。
 - [VLA](../methods/vla.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Zeva](./paper-zeva.md) · [Harness VLA](./paper-harness-vla.md) · [CorrectVLA](./paper-correctvla.md)

@@ -94,6 +94,7 @@ flowchart TD
 
 ## 关联页面
 
+- [混合运动](../tasks/hybrid-locomotion.md) — 对照麦克纳姆轮端平移与腿式越障两类能力。
 - [senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md)
 - [locomotion](../tasks/locomotion.md)
 

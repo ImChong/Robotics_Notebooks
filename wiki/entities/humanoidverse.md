@@ -180,5 +180,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 按环境、训练任务与优化器三部分阅读多仿真器架构。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 从下游行走和动作跟踪任务理解仿真器切换的用途。
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

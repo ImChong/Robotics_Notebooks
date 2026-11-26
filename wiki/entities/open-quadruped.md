@@ -66,6 +66,8 @@ flowchart LR
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 把 Bezier 足端轨迹放到步态和机身稳定问题中理解。
+- [平衡恢复](../tasks/balance-recovery.md) — 对照外部扰动下的平衡任务，区分按给定姿态调节机身与受扰后恢复支撑。
 - [quadruped-robot](./quadruped-robot.md)
 - [spotmicro](./spotmicro.md)
 - [stanford-doggo-and-pupper](./stanford-doggo-and-pupper.md)

@@ -68,6 +68,8 @@ flowchart LR
 
 ## 关联页面
 
+- [腿足运动控制](../tasks/locomotion.md) — 定位 Mini Pupper 的足式移动底座。
+- [楼梯与障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) — 区分 Nav2 平面路径规划与足端跨障所需的地形感知。
 - [quadruped-robot](../entities/quadruped-robot.md)
 - [mini-pupper](../entities/mini-pupper.md)
 - [sim2real](../concepts/sim2real.md)

@@ -230,6 +230,7 @@ WIYH 是当前少有的 **野外千小时级、3D 动作+触觉+VLM 标注对齐
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 从跨本体示范对齐角度阅读人类操作数据的预训练用途。
 - [Data Pyramid for Embodied Manipulation](./paper-data-pyramid-embodied-manipulation.md) — 人类 Ego/Exo 层定位
 - [ACE-Data-0](./paper-ace-data-0.md) — 家居同步多模态人类演示对照
 - [HumanTouch](./humantouch.md) — 另一大规模人手触觉采集叙事

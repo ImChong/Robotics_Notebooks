@@ -209,6 +209,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 对照共享潜动作如何条件化未来视频生成。
 - [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
 - [VLA](../methods/vla.md)
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)

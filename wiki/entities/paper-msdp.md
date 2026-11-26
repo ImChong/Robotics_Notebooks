@@ -96,6 +96,7 @@ flowchart TD
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 区分冻结多模态表征与训练非对称 actor–critic 的阶段。
 - [IROS 2026 九篇获奖地图](../overview/iros-2026-awards-9-papers-technology-map.md)
 - [触觉阻抗控制](../methods/tactile-impedance-control.md)
 - [HumanEgo](./paper-sa-2605-24934-humanego-zero-shot-robot-learning-from-minutes-o.md)（同盘点 · 人类视频学习）

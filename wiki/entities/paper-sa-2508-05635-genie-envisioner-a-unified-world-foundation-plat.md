@@ -126,6 +126,7 @@ GE-Base 读世界预测与 EWMB；GE-Act 读操作成功率（公开 Calvin 权�
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从操作任务查看动作策略和视觉仿真两种接口的职责。
 - [智元数据平台](./agibot-world-2026.md)
 - [GO-2](./go-2.md)
 - [世界模型](../methods/generative-world-models.md)

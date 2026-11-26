@@ -225,6 +225,7 @@ $$
 
 ## 关联页面
 
+- [残差策略学习](../methods/residual-policy-learning.md) — 对照只适配逆动力学模块与在动作输出端叠加残差两种迁移方式。
 - [Sim2Real](../concepts/sim2real.md)
 - [Privileged Training](../concepts/privileged-training.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)

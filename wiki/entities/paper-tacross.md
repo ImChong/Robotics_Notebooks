@@ -122,6 +122,7 @@ T1 定点点胶、T2 烧杯间液体转移、T3 精确移液、T4 连续水果�
 
 ## 关联页面
 
+- [机器人操作](../tasks/manipulation.md) — 从接触丰富的操作任务理解触觉对齐样本的用途。
 - [Manipulation 周报汇总（10.5-10.9）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [触觉感知概念](../concepts/tactile-sensing.md)
 - [视觉触觉融合](../concepts/visuo-tactile-fusion.md)

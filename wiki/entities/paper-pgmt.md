@@ -130,6 +130,8 @@ flowchart TB
 
 ## 关联页面
 
+- [PIE 感知运动控制](../methods/pie-perceptive-locomotion.md) — 对照两种感知运动方法的地形表征和控制接口。
+- [人形运动控制](../tasks/humanoid-locomotion.md) — 从人形地形适应任务理解平地运动先验如何继续用于障碍场景。
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [SONIC](./nvidia-sonic.md)
 - [Unitree G1](./unitree-g1.md)

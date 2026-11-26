@@ -93,6 +93,7 @@ flowchart LR
 
 ## 关联页面
 
+- [质心 NMPC 与全身控制](../methods/centroidal-nmpc-wbc-stack.md) — 对照实际控制栈如何表示接触约束与接触力，理解论文中接触缺失与力恢复问题的控制背景。
 - [locomotion](../tasks/locomotion.md)
 - [contact-complementarity](../formalizations/contact-complementarity.md)
 - [./paper-ebert-nonlinear-normal-modes.md](./paper-ebert-nonlinear-normal-modes.md)

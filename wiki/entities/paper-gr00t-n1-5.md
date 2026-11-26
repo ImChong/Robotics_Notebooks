@@ -171,6 +171,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [视觉–语言–动作模型](../methods/vla.md) — 理解冻结视觉语言骨干与动作头的分工。
+- [扩散策略](../methods/diffusion-policy.md) — 对照扩散策略与流匹配动作生成的条件输入及输出。
 - [paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t-n1.md)
 - [isaac-gr00t](./isaac-gr00t.md)
 - [depth-robotics-diffusion-dit-flow](../../roadmap/depth-robotics-diffusion-dit-flow.md)

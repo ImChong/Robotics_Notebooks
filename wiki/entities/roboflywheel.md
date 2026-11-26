@@ -110,6 +110,7 @@ flowchart LR
 
 ## 关联页面
 
+- [模仿学习](../methods/imitation-learning.md) — 对照示范数据清洗与统一格式如何支持模仿学习训练。
 - [Data Flywheel（具身数据飞轮）](../concepts/data-flywheel.md)
 - [飞轮最小闭环（避免空转）](../concepts/embodied-data-flywheel-minimal-closed-loop.md)
 - [LeRobot](./lerobot.md)

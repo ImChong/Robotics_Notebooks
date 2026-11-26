@@ -161,6 +161,7 @@ flowchart TB
 
 ## 关联页面
 
+- [生成式世界模型](../methods/generative-world-models.md) — 区分视觉上合理的预测与保留接触动力学的预测。
 - [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md)
 - [运动学可行与动力学可行](../concepts/kinematic-vs-dynamic-feasibility.md)
 - [DreamerV3](./paper-shenlan-wm-13-dreamerv3.md)

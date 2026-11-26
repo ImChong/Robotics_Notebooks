@@ -170,6 +170,7 @@ flowchart TB
 
 ## 关联页面
 
+- [强化学习](../methods/reinforcement-learning.md) — 对照冻结搬箱策略与负载相关的在线适配模块。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 移动操作任务地图与 2025–2026 路线
 - [Sim2Real](../concepts/sim2real.md) — RMA / 世界模型适配 / 冻结策略微调语境
 - [PhysHSI（AMP 交互）](./paper-amp-survey-15-physhsi.md) — 冻结基策略来源族

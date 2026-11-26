@@ -188,6 +188,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [双臂操作](../tasks/bimanual-manipulation.md) — 对照双手协调任务中视觉、触觉与动作接口的要求。
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [RoboTwin](./robotwin.md)
 - [Motus（索引）](./paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md)
