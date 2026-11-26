@@ -1,12 +1,15 @@
 # Doppel｜Render the Robot, Generate the World: One Video World Model Across Embodiments
 
 - **类型：** paper / arXiv:2611.24925
-- **原文：** https://arxiv.org/html/2611.24925
+- **版本：** arXiv:2611.24925v1，2026-11-18
+- **作者：** Yash Jangir、Karan Mirakhor、Renos Zabounidis、Muhammad Zubair Irshad、Sergey Zakharov、Yonatan Bisk、Homanga Bharadhwaj
+- **机构：** 约翰斯·霍普金斯大学、卡内基梅隆大学、丰田研究院
+- **原文：** [HTML](https://arxiv.org/html/2611.24925v1) · [PDF](https://arxiv.org/pdf/2611.24925v1)
 - **摘要：** https://arxiv.org/abs/2611.24925
 - **项目页：** https://doppelwm.github.io/
 - **代码：** https://github.com/DoppelWM/Doppel
-- **核查日期：** 2026-11-20
-- **核对范围：** arXiv:2611.24925 HTML 正文 §1–7、参考文献，以及 Appendix A.1–A.10（校准/渲染、数据分割、adapter、基线公平性、训练配置、评测指标、分区指标及数据采样效率详细表格）并对照官方 README 与 inference.py 入口
+- **核查日期：** 2026-11-26
+- **核对范围：** 45 页 v1 PDF 的 §1–7、参考文献与附录 A.1–A.10；核对不同训练预算下的表 2/10/12/13、相机恢复与发布文件、长时序和部署边界。
 - **通读：** 已完成
 
 ## 原文记录
