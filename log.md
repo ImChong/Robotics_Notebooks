@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-26] structural | Batch 13（A+B双线）：12 个机器人/仿真/遥操作核心仓补齐源码运行时序图，29 篇 Affordance/Sim2Real/RL 开放获取原文核读补全定量指标与方法流程图
+
 ## [2026-11-26] ingest | T2-z：复核环境潜变量与源码入口
 
 - 复用 T2-z 既有节点，核对论文表格、训练/推理调用链及数据发布边界，接入世界动作模型纵深路线 Stage 1。
