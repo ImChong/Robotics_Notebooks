@@ -4,7 +4,7 @@ project_id: agentic-2609-27720
 arxiv: "2609.27720"
 tags: [paper, agentic-robots, bit, navigation, vln, multi-robot, spatial-reasoning]
 status: complete
-updated: 2026-11-26
+updated: 2026-11-27
 summary: "CoRelNav 用任务条件空间语义场引导多机器人探索，把不确定关系变为补观测需求，并按同一实例合并不同视角的证据后验证目标。"
 original:
   - ../../sources/papers/corelnav_arxiv_2609_27720.md
@@ -90,6 +90,12 @@ flowchart TD
 | 类别 + 关系混合任务（表 II） | 对比 VLN-Game (Dual)，整体 SR 39.5% → 51.3%、整体 SPL 0.084 → 0.129，关系子任务 SR 56.3% → 63.1%；189.5k → 91.2k tokens/回合 | 双线独立基线不共享证据；外部基线按顺序发放两子任务，CoRelNav 并发持有任务池，结果不是同调度协议下的单因素对照 |
 | 系统内判定和消融（表 II–III） | 仅用最高相似度的 Embedding 关系 SR 为 28.2%；多支撑物组完整系统 SR 44.7%，无联合分配为 39.5%，无跨结点聚合为 34.2% | 表 II 关系子任务 SR 和表 III 多支撑组结果不是同一统计口径 |
 | 真机（§IV-B、图 6） | 两台轮式机器人在未见环境并行寻找灭火器箱和靠椅的包 | Jetson AGX Orin、Livox MID-360、RealSense D435i、OMNI-4P；Grounding DINO/MobileSAM 做学习感知。是整链路可行性示例，不是实机成功率 |
+
+## 与其他工作对比
+
+- **对比 Co-NavGPT（表 I，双类别目标）：** 在仅含类别目标的设置下，CoRelNav 的同区 SR/SPL 为 71.6%/0.208（Co-NavGPT 为 70.9%/0.202），跨区为 74.6%/0.252（Co-NavGPT 为 70.1%/0.214），主要反映任务条件空间语义场与团队联合分配在跨区搜索上的优势。
+- **对比 VLN-Game (Dual)（表 II，类别 + 关系混合任务）：** CoRelNav 整体 SR/SPL 为 51.3%/0.129（VLN-Game (Dual) 为 39.5%/0.084），关系子任务 SR 为 63.1%（对 56.3%），每回合模型用量为 91.2k 对 189.5k tokens；需注意外部基线双线不共享证据且按顺序发放两子任务，而 CoRelNav 并发持有任务池，属于系统级对比而非单因素对照。
+- **对比同类场景图与主动核验框架：** 相较于 [ConceptGraphs](paper-conceptgraphs-open-vocabulary-3d-scene.md) 侧重按物体组织的开放词汇 3D 场景表示，以及 [NavProbe](paper-agentic-2609-27526.md) 与 [DIV-Nav](https://arxiv.org/abs/2510.16518) 聚焦单机主动取证或单机关系核验，CoRelNav 将未闭合关系子句转化为多机器人共享地图上的补观测效用，并按同一实例 ID 跨结点聚合重渲染后再验证目标。
 
 ## 局限与风险
 
