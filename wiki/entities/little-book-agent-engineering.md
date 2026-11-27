@@ -5,7 +5,7 @@ project: https://www.dropbox.com/scl/fi/gh4pjn4kqhlhi71cst3gv/Agents_intro.pdf?r
 tags: [llm-agents, coding-agents, agent-harness, software-engineering, evaluation]
 status: complete
 date: 2026-11-23
-updated: 2026-11-25
+updated: 2026-11-27
 summary: "以修复滑动平均函数为贯穿案例的 Agent 工程教材：模型提出动作，harness 组织上下文、守住权限和记录状态，独立评测按终态及重复试验判断是否真的完成。"
 original:
   - ../../sources/books/the_little_book_of_agent_engineering_2026-11-23.md
@@ -92,5 +92,5 @@ flowchart TD
 
 ## 推荐继续阅读
 
-- [Stanford CS329Z：Engineering AI Agents](https://cs329z.stanford.edu/)：对照课程中的工程实践与项目。
+- [Stanford CS329Z：Engineering AI Agents](./stanford-cs329z-engineering-ai-agents.md)：对照课程中的构建、评测作业与期末项目。
 - [Anthropic：Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)：从程序化工作流到动态 Agent 的架构选择。

@@ -15,7 +15,7 @@
 - 官方主页及课程表（2026 秋季）：https://cs329z.stanford.edu/
 - 教师：Diyi Yang、Michael Ryan、John Yang。
 - 内容覆盖从 LLM 流水线到复合系统及自主智能体；包含 RAG、工具调用、agent loops、系统优化与评估。
-- 待完成：逐讲核读课程课件、作业及官方代码，核实运行入口与具体调用关系。
+- 后续核对：见 [CS329Z 独立课程归档](./cs329z-engineering-ai-agents.md) 及 [课程节点](../../wiki/entities/stanford-cs329z-engineering-ai-agents.md)。已核对课程大纲、公开作业和 Lecture 5 的实现，尚未逐讲观看录制。
 
 ## MIT：Modeling: MultiModal AI
 
