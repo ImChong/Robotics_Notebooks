@@ -2577,6 +2577,24 @@
         "ant-digital-technologies"
       ]
     },
+    "university-of-trento": {
+      "label": "特伦托大学（University of Trento）",
+      "aliases": [
+        "unitn"
+      ]
+    },
+    "amiad": {
+      "label": "法国国防人工智能机构（AMIAD）",
+      "aliases": [
+        "amiad"
+      ]
+    },
+    "fondazione-bruno-kessler": {
+      "label": "布鲁诺·凯斯勒基金会（Fondazione Bruno Kessler）",
+      "aliases": [
+        "fbk"
+      ]
+    },
     "westlake": {
       "label": "西湖大学（Westlake University）",
       "aliases": [

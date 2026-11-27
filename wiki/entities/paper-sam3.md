@@ -180,6 +180,8 @@ SAM 3 把 Segment Anything 从「提示一个物体」推进到「提示一个�
 
 ## 关联页面
 
+- [TIPO：拆装过程中的物体跟踪](./paper-tipo-physical-transformation-tracking.md) — 用 SAM 3 掩码提出装配与拆卸事件，结构变化时更新实体 ID；不是 SAM 3 原生输出。
+
 - [UNVEIL：SAM 3 的可提示概念图](./paper-unveil-pcm-2611-25747.md) — 用旁路语义图与独立 presence decoder 处理阴影、透明物体、边缘等非对象概念；区别于本页实例分割任务。
 
 - [SAM](./paper-segment-anything.md) · [SAM 2](./paper-sam2.md) · [DART 实时多类检测](./paper-dart-sam3-realtime.md)
