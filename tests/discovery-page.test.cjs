@@ -95,17 +95,66 @@ test('curated picks artifacts and DailyArxiv references are removed from discove
   assert.equal(swJs.includes('discovery-picks.json'), false);
 });
 
-test('homepage navigation, bilingual dictionary, and SW expose Discovery entry', () => {
-  const indexHtml = readDoc('index.html');
-  const homeI18n = readDoc('home-i18n.js');
-  const swJs = readDoc('sw.js');
+test('homepage and discovery share unified 2-char header/mobile nav links, i18n, SW, and narrow-screen header CSS', () => {
+  const indexDom = new JSDOM(readDoc('index.html'));
+  const discoveryDom = new JSDOM(readDoc('discovery.html'));
+  const indexDoc = indexDom.window.document;
+  const discoveryDoc = discoveryDom.window.document;
 
-  assert.match(indexHtml, /<nav class="main-nav"[\s\S]*href="discovery\.html"[^>]*>研究发现<\/a>/);
-  assert.match(indexHtml, /id="mobileNavSheet"[\s\S]*href="discovery\.html"/);
+  const expectedDesktopNav = ['入口', '搜索', '最新', '榜单', '图谱', '趋势', '发现'];
+  const expectedMobileNav = ['顶部', '入口', '搜索', '最新', '榜单', '图谱', '趋势', '发现'];
+
+  assert.deepEqual(
+    Array.from(indexDoc.querySelectorAll('.site-header .main-nav a')).map((a) => a.textContent.trim()),
+    expectedDesktopNav,
+  );
+  assert.deepEqual(
+    Array.from(discoveryDoc.querySelectorAll('.site-header .main-nav a')).map((a) => a.textContent.trim()),
+    expectedDesktopNav,
+  );
+  assert.deepEqual(
+    Array.from(indexDoc.querySelectorAll('#mobileNavSheet a [data-nav-label]')).map((el) => el.textContent.trim()),
+    expectedMobileNav,
+  );
+  assert.deepEqual(
+    Array.from(discoveryDoc.querySelectorAll('#mobileNavSheet a [data-nav-label]')).map((el) => el.textContent.trim()),
+    expectedMobileNav,
+  );
+
+  for (const [label, doc] of [['index.html', indexDoc], ['discovery.html', discoveryDoc]]) {
+    const sheet = doc.getElementById('mobileNavSheet');
+    assert.equal(doc.getElementById('mobileUiStyleToggle'), null, `${label} removes #mobileUiStyleToggle`);
+    assert.equal(sheet.textContent.includes('旧版样式'), false, `${label} mobile drawer omits 旧版样式`);
+    assert.equal(doc.querySelector('.header-right .github-link.classic-only')?.textContent.trim(), '发现');
+  }
+
+  assert.equal(
+    indexDoc.querySelector('#hero .hero-social-row a[href="discovery.html"]')?.textContent.trim(),
+    '研究发现',
+  );
+  assert.equal(discoveryDoc.getElementById('discovery-heading')?.textContent.trim(), '研究发现');
+
+  indexDom.window.close();
+  discoveryDom.window.close();
+
+  const homeI18n = readDoc('home-i18n.js');
   assert.ok(homeI18n.includes("'研究发现': 'Discovery'"));
+  assert.ok(homeI18n.includes("'发现': 'Discovery'"));
+  assert.ok(homeI18n.includes("'趋势': 'Trends'"));
+  assert.ok(homeI18n.includes("'图谱': 'Graph'"));
+
+  const swJs = readDoc('sw.js');
   for (const asset of ['discovery.html', 'discovery.js', 'discovery-sources.json']) {
     assert.ok(swJs.includes(`'${asset}'`), `sw.js includes ${asset}`);
   }
+
+  const styleCss = readDoc('style.css');
+  assert.match(styleCss, /:root:not\(\[data-ui="classic"\]\)\s+\.header-start\s*\+\s*\.header-spacer\s*\{\s*display:\s*none;\s*\}/);
+  assert.equal(
+    /body\.page-home\s+\.header-right\s+\.version-toggle[\s\S]{0,120}display:\s*none/.test(styleCss),
+    false,
+    'style.css keeps #uiStyleToggle visible at <= 480px',
+  );
 });
 
 test('sources load failure displays graceful fallback banner', async () => {
@@ -113,14 +162,14 @@ test('sources load failure displays graceful fallback banner', async () => {
   const app = w.RNDiscovery.initDiscoveryPage(w.document, w);
   await app.ready;
 
-  assert.equal(w.document.querySelectorAll('.discovery-site-card').length, 0);
+  assert.equal(w.document.querySelectorAll('.discovery-row').length, 0);
   const banner = w.document.querySelector('#discoverySourcesMount .discovery-banner--error');
   assert.ok(banner);
   assert.match(banner.textContent, /加载失败/);
   dom.window.close();
 });
 
-test('category filters, telemetry counts, and bilingual toggle work cleanly', async () => {
+test('ledger rows, hover/focus detail popover, inline drawer, category filters, and bilingual toggle work cleanly', async () => {
   const { dom, w, storage } = createDiscoveryDom();
   const app = w.RNDiscovery.initDiscoveryPage(w.document, w);
   await app.ready;
@@ -129,25 +178,73 @@ test('category filters, telemetry counts, and bilingual toggle work cleanly', as
   assert.equal(w.document.getElementById('discoveryStatPapers').textContent, '6');
   assert.equal(w.document.getElementById('discoveryStatProjects').textContent, '4');
   assert.equal(w.document.getElementById('discoveryStatHubs').textContent, '2');
-  assert.equal(w.document.querySelectorAll('.discovery-site-card').length, 12);
+  assert.equal(w.document.querySelectorAll('.discovery-row').length, 12);
+
+  const popover = w.document.getElementById('discoveryDetailPopover');
+  assert.equal(popover.hidden, true);
+  assert.equal(popover.getAttribute('aria-hidden'), 'true');
+
+  const firstAnchor = w.document.querySelector('.discovery-row-anchor[data-site-id="hf-daily-papers"]');
+  assert.ok(firstAnchor);
+  firstAnchor.dispatchEvent(new w.MouseEvent('mouseover', { bubbles: true, clientX: 260 }));
+  assert.equal(popover.hidden, false);
+  assert.equal(popover.getAttribute('aria-hidden'), 'false');
+  assert.equal(popover.classList.contains('is-visible'), true);
+  assert.equal(firstAnchor.getAttribute('aria-describedby'), 'discoveryDetailPopover');
+  assert.equal(firstAnchor.closest('.discovery-row').classList.contains('is-hovered'), true);
+  assert.ok(popover.textContent.includes('Hugging Face 社区每日论文聚集地'));
+  assert.ok(popover.textContent.includes('https://huggingface.co/papers'));
+  assert.ok(popover.textContent.includes('每日精选 · 社区投票'));
+
+  w.document.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  assert.equal(popover.hidden, true);
+  assert.equal(popover.getAttribute('aria-hidden'), 'true');
+  assert.equal(firstAnchor.hasAttribute('aria-describedby'), false);
+
+  firstAnchor.dispatchEvent(new w.FocusEvent('focusin', { bubbles: true }));
+  assert.equal(popover.hidden, false);
+  w.document.getElementById('discoverySourcesMount').dispatchEvent(
+    new w.FocusEvent('focusout', { bubbles: true, relatedTarget: w.document.getElementById('discoveryLanguageToggle') }),
+  );
+  assert.equal(popover.hidden, true);
+
+  firstAnchor.dispatchEvent(new w.MouseEvent('mouseover', { bubbles: true, clientX: 240 }));
+  assert.equal(popover.hidden, false);
+  w.document.getElementById('discoverySourcesMount').dispatchEvent(new w.MouseEvent('mouseleave', { bubbles: false }));
+  assert.equal(popover.hidden, true);
+
+  const firstInfoBtn = w.document.querySelector('.discovery-row-info-btn[data-site-id="hf-daily-papers"]');
+  const firstInlineDrawer = w.document.getElementById('discovery-inline-hf-daily-papers');
+  assert.equal(firstInlineDrawer.hidden, true);
+  assert.equal(firstInfoBtn.getAttribute('aria-expanded'), 'false');
+  firstInfoBtn.click();
+  assert.equal(firstInlineDrawer.hidden, false);
+  assert.equal(firstInfoBtn.getAttribute('aria-expanded'), 'true');
+  firstInfoBtn.click();
+  assert.equal(firstInlineDrawer.hidden, true);
 
   w.document.querySelector('#discoveryCategoryTabs button[data-category="projects"]').click();
-  assert.equal(w.document.querySelectorAll('.discovery-site-card').length, 4);
+  assert.equal(w.document.querySelectorAll('.discovery-row').length, 4);
 
   w.document.querySelector('#discoveryCategoryTabs button[data-category="papers"]').click();
-  assert.equal(w.document.querySelectorAll('.discovery-site-card').length, 6);
+  assert.equal(w.document.querySelectorAll('.discovery-row').length, 6);
 
   w.document.querySelector('#discoveryCategoryTabs button[data-category="models"]').click();
-  assert.equal(w.document.querySelectorAll('.discovery-site-card').length, 1);
+  assert.equal(w.document.querySelectorAll('.discovery-row').length, 1);
 
   w.document.querySelector('#discoveryCategoryTabs button[data-category="all"]').click();
-  assert.equal(w.document.querySelectorAll('.discovery-site-card').length, 12);
+  assert.equal(w.document.querySelectorAll('.discovery-row').length, 12);
 
   const langBtn = w.document.getElementById('discoveryLanguageToggle');
   langBtn.click();
   assert.equal(storage.get('robotics-home-language'), 'en');
   assert.equal(w.document.documentElement.lang, 'en');
   assert.equal(w.document.getElementById('discovery-sources-heading').textContent, 'Recommended Websites');
+  assert.equal(w.document.getElementById('uiStyleToggle').textContent, 'Classic');
+  assert.deepEqual(
+    Array.from(w.document.querySelectorAll('.site-header .main-nav a')).slice(-3).map((a) => a.textContent.trim()),
+    ['Graph', 'Trends', 'Discovery'],
+  );
   assert.match(w.document.querySelector('footer.footer').textContent, /Chong Liu/);
   dom.window.close();
 });

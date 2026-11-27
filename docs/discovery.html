@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self'; worker-src 'self' blob:; frame-src https://challenges.cloudflare.com; connect-src 'self' data: blob: https://cdn.jsdelivr.net https://challenges.cloudflare.com https://*.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="description" content="Robotics Discovery（机器人研究发现）：按论文、开源项目、模型与数据集分类的机器人研究网站导航，直达原站榜单。" />
-  <meta property="og:title" content="Robotics Discovery · 研究发现 | Robotics Notebooks" />
-  <meta property="og:description" content="面向机器人研究与工程的一手网站导航：按论文、开源项目、模型与数据集直达原站榜单。" />
+  <meta name="description" content="Robotics Discovery（研究发现）：按论文、开源项目、模型与数据集分类的机器人研究网站列表，悬停查看详情并直达原站。" />
+  <meta property="og:title" content="研究发现 | Robotics Notebooks" />
+  <meta property="og:description" content="Robotics Discovery（研究发现）：按论文、开源项目、模型与数据集分类的机器人研究网站列表，悬停查看详情并直达原站。" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Robotics Notebooks" />
   <meta property="og:url" content="https://imchong.github.io/Robotics_Notebooks/discovery.html" />
@@ -16,7 +16,7 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://imchong.github.io/Robotics_Notebooks/discovery.html" />
-  <title>Robotics Discovery · 研究发现 | Robotics Notebooks</title>
+  <title>研究发现 | Robotics Notebooks</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-home.svg" />
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
   <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -33,18 +33,20 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="header-start">
-        <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页" data-i18n-title><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg><span class="site-title-text" data-i18n="site_brand">Robotics Notebooks | 机器人技术栈地图</span></a>
+        <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页"><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg><span class="site-title-text" data-i18n="site_brand">Robotics Notebooks | 机器人技术栈地图</span></a>
         <nav class="main-nav" aria-label="主导航">
-          <a href="index.html" data-i18n="nav_home">首页</a>
-          <a href="#discovery-sources" data-i18n="nav_sources">推荐网站</a>
-          <a href="graph.html" data-i18n="nav_graph">完整图谱</a>
-          <a href="star-history.html" data-i18n="nav_trends">增长趋势</a>
-          <a href="discovery.html" aria-current="page" data-i18n="nav_discovery">研究发现</a>
+          <a href="index.html#home-start" data-i18n="nav_start">入口</a>
+          <a href="index.html#wiki-search" data-i18n="nav_search">搜索</a>
+          <a href="index.html#home-latest-wiki-section" data-i18n="nav_latest">最新</a>
+          <a href="index.html#home-hub-section" data-i18n="nav_hubs">榜单</a>
+          <a href="graph.html" data-i18n="nav_graph">图谱</a>
+          <a href="star-history.html" data-i18n="nav_trends">趋势</a>
+          <a href="discovery.html" aria-current="page" data-i18n="nav_discovery">发现</a>
         </nav>
       </div>
       <div class="header-spacer"></div>
       <div class="header-right">
-        <a href="index.html" class="github-link classic-only" data-i18n="nav_home">首页</a>
+        <a href="discovery.html" class="github-link classic-only" aria-current="page" data-i18n="nav_discovery">发现</a>
         <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
         <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
         <button type="button" id="discoveryLanguageToggle" class="home-language-toggle" aria-label="Switch page to English">English</button>
@@ -63,12 +65,14 @@
 
   <nav id="mobileNavSheet" class="mobile-nav-sheet" aria-label="移动端导航" hidden>
     <ul>
-      <li><a href="index.html"><span data-nav-label data-i18n="nav_home">首页</span><span class="mobile-nav-index">↗</span></a></li>
-      <li><a href="#discovery-sources"><span data-nav-label data-i18n="nav_sources">推荐网站</span><span class="mobile-nav-index">01</span></a></li>
-      <li><a href="graph.html"><span data-nav-label data-i18n="nav_graph">完整图谱</span><span class="mobile-nav-index">↗</span></a></li>
-      <li><a href="star-history.html"><span data-nav-label data-i18n="nav_trends">增长趋势</span><span class="mobile-nav-index">↗</span></a></li>
-      <li><a href="discovery.html" aria-current="page"><span data-nav-label data-i18n="nav_discovery">研究发现</span><span class="mobile-nav-index">00</span></a></li>
-      <li><button type="button" id="mobileUiStyleToggle" class="mobile-nav-action" aria-pressed="false"><span data-nav-label data-i18n="mobile_ui_classic">旧版样式</span><span class="mobile-nav-index">UI</span></button></li>
+      <li><a href="index.html#hero"><span data-nav-label data-i18n="nav_top">顶部</span><span class="mobile-nav-index">00</span></a></li>
+      <li><a href="index.html#home-start"><span data-nav-label data-i18n="nav_start">入口</span><span class="mobile-nav-index">01</span></a></li>
+      <li><a href="index.html#wiki-search"><span data-nav-label data-i18n="nav_search">搜索</span><span class="mobile-nav-index">02</span></a></li>
+      <li><a href="index.html#home-latest-wiki-section"><span data-nav-label data-i18n="nav_latest">最新</span><span class="mobile-nav-index">03</span></a></li>
+      <li><a href="index.html#home-hub-section"><span data-nav-label data-i18n="nav_hubs">榜单</span><span class="mobile-nav-index">04</span></a></li>
+      <li><a href="graph.html"><span data-nav-label data-i18n="nav_graph">图谱</span><span class="mobile-nav-index">↗</span></a></li>
+      <li><a href="star-history.html"><span data-nav-label data-i18n="nav_trends">趋势</span><span class="mobile-nav-index">↗</span></a></li>
+      <li><a href="discovery.html" aria-current="page"><span data-nav-label data-i18n="nav_discovery">发现</span><span class="mobile-nav-index">↗</span></a></li>
     </ul>
   </nav>
 
@@ -77,13 +81,10 @@
       <div class="container">
         <div class="discovery-intro-layout">
           <div class="discovery-intro-main">
-            <p class="band-kicker tech-only" data-i18n="hero_kicker">[00] ROBOTICS DISCOVERY · 研究发现与资源导航</p>
+            <p class="band-kicker tech-only" data-i18n="hero_kicker">[00] ROBOTICS DISCOVERY · 研究发现与推荐网站</p>
             <p class="co-breadcrumb classic-only"><a href="index.html" data-i18n="back_home">← 返回首页</a></p>
-            <h1 class="discovery-title" id="discovery-heading" data-i18n="hero_title">Robotics Discovery · 机器人研究发现</h1>
-            <p class="section-subtitle discovery-subtitle" data-i18n="hero_subtitle">面向机器人研究与工程读者的资源导航：帮你快速定位追踪最新论文、开源项目、模型与数据集的权威入口，直接跳转原站浏览，不做全网热度排名或第三方榜单镜像。</p>
-            <div class="discovery-hero-actions">
-              <a class="btn-primary discovery-jump-btn" href="#discovery-sources"><span data-i18n="jump_sources">浏览推荐网站</span><span aria-hidden="true">↓</span></a>
-            </div>
+            <h1 class="discovery-title" id="discovery-heading" data-i18n="hero_title">研究发现</h1>
+            <p class="section-subtitle discovery-subtitle" data-i18n="hero_subtitle">面向机器人研究与工程的一手网站列表：按论文、开源项目、模型与数据集分类，鼠标悬停查看站点详情，点击直达原站浏览。</p>
           </div>
           <dl class="discovery-telemetry" aria-label="研究发现概览">
             <div class="discovery-telemetry-cell">
@@ -115,8 +116,8 @@
       <div class="container">
         <div class="band-head">
           <div>
-            <p class="band-kicker tech-only" data-i18n="sources_kicker">01 / 推荐网站导航</p>
-            <h2 class="section-title" id="discovery-sources-heading" data-i18n="sources_title">推荐网站导航</h2>
+            <p class="band-kicker tech-only" data-i18n="sources_kicker">01 / 推荐网站列表</p>
+            <h2 class="section-title" id="discovery-sources-heading" data-i18n="sources_title">推荐网站列表</h2>
           </div>
           <div class="home-hub-tabs discovery-filter-tabs" id="discoveryCategoryTabs" role="group" aria-label="按类别筛选推荐网站">
             <button type="button" class="home-hub-tab is-active" data-category="all" aria-pressed="true" data-i18n="cat_all">全部</button>
@@ -126,13 +127,15 @@
             <button type="button" class="home-hub-tab" data-category="datasets" aria-pressed="false" data-i18n="cat_datasets">数据集</button>
           </div>
         </div>
-        <p class="section-subtitle" data-i18n="sources_subtitle">按论文、开源项目、模型与数据集分类，无需登录或等待采集任务即可直接跳转原站浏览榜单；外部网站临时不可用时不影响本页正常访问。</p>
+        <p class="section-subtitle" data-i18n="sources_subtitle">鼠标悬停在任一条目上即可查看简介、适用场景与更新节奏，点击直达原站。</p>
         <div id="discoverySourcesMount" class="discovery-sources-mount data-loading" aria-live="polite">
-          <p class="data-meta" data-i18n="loading_sources">正在加载推荐网站导航…</p>
+          <p class="data-meta" data-i18n="loading_sources">正在加载推荐网站列表…</p>
         </div>
       </div>
     </section>
   </main>
+
+  <aside id="discoveryDetailPopover" class="discovery-detail-popover" role="tooltip" aria-hidden="true" hidden></aside>
 
   <footer class="footer">
     <div class="container">

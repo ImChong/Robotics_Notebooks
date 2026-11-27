@@ -1,4 +1,4 @@
-/* Robotics Discovery: static recommended robotics websites directory controller. */
+/* Robotics Discovery: curated robotics websites ledger list + hover detail popover controller. */
 (function (root) {
   'use strict';
 
@@ -6,46 +6,56 @@
 
   var I18N = {
     zh: {
-      page_title: 'Robotics Discovery · 研究发现 | Robotics Notebooks',
+      page_title: '研究发现 | Robotics Notebooks',
       page_desc:
-        'Robotics Discovery（机器人研究发现）：按论文、开源项目、模型与数据集分类的机器人研究网站导航，直达原站榜单。',
+        'Robotics Discovery（研究发现）：按论文、开源项目、模型与数据集分类的机器人研究网站列表，悬停查看详情并直达原站。',
       skip_link: '跳到正文',
       site_brand: 'Robotics Notebooks | 机器人技术栈地图',
       home_aria: '机器人技术栈地图首页',
       main_nav_aria: '主导航',
       mobile_nav_aria: '移动端导航',
-      nav_home: '首页',
-      nav_sources: '推荐网站',
-      nav_graph: '完整图谱',
-      nav_trends: '增长趋势',
-      nav_discovery: '研究发现',
-      mobile_ui_classic: '旧版样式',
-      mobile_ui_modern: '新版样式',
+      nav_top: '顶部',
+      nav_start: '入口',
+      nav_search: '搜索',
+      nav_latest: '最新',
+      nav_hubs: '榜单',
+      nav_graph: '图谱',
+      nav_trends: '趋势',
+      nav_discovery: '发现',
+      ui_classic: '旧版',
+      ui_modern: '新版',
+      ui_to_classic: '切换到旧版样式',
+      ui_to_modern: '切换到新版样式',
+      theme_aria: '切换白天黑夜模式',
+      menu_aria: '打开或关闭导航菜单',
       back_home: '← 返回首页',
-      hero_kicker: '[00] ROBOTICS DISCOVERY · 研究发现与资源导航',
-      hero_title: 'Robotics Discovery · 机器人研究发现',
+      hero_kicker: '[00] ROBOTICS DISCOVERY · 研究发现与推荐网站',
+      hero_title: '研究发现',
       hero_subtitle:
-        '面向机器人研究与工程读者的资源导航：帮你快速定位追踪最新论文、开源项目、模型与数据集的权威入口，直接跳转原站浏览，不做全网热度排名或第三方榜单镜像。',
-      jump_sources: '浏览推荐网站',
+        '面向机器人研究与工程的一手网站列表：按论文、开源项目、模型与数据集分类，鼠标悬停查看站点详情，点击直达原站浏览。',
+      telemetry_aria: '研究发现概览',
       stat_sources_sub: '精选网站入口',
       stat_papers_sub: '论文跟踪榜单',
       stat_projects_sub: '开源项目热榜',
       stat_hubs_sub: '模型与数据集',
-      sources_kicker: '01 / 推荐网站导航',
-      sources_title: '推荐网站导航',
-      sources_subtitle:
-        '按论文、开源项目、模型与数据集分类，无需登录或等待采集任务即可直接跳转原站浏览榜单；外部网站临时不可用时不影响本页正常访问。',
+      sources_kicker: '01 / 推荐网站列表',
+      sources_title: '推荐网站列表',
+      sources_subtitle: '鼠标悬停在任一条目上即可查看简介、适用场景与更新节奏，点击直达原站。',
+      filter_aria: '按类别筛选推荐网站',
       cat_all: '全部',
       cat_papers: '论文',
       cat_projects: '开源项目',
       cat_models: '模型',
       cat_datasets: '数据集',
-      loading_sources: '正在加载推荐网站导航…',
+      loading_sources: '正在加载推荐网站列表…',
       sources_error: '推荐网站配置加载失败，请刷新重试。',
       empty_sources: '该分类下暂无推荐网站。',
       best_for_label: '适合关注',
       cadence_label: '榜单 / 更新',
-      visit_site: '访问原站',
+      popover_hint: '点击直达原站 ↗',
+      row_info_btn: '详情',
+      row_info_close: '收起',
+      row_info_aria: '查看详情',
       footer_author: '刘冲',
       footer_tail: '2026 · 机器人技术栈地图',
       lang_btn_label: 'English',
@@ -54,25 +64,32 @@
     en: {
       page_title: 'Robotics Discovery | Robotics Notebooks',
       page_desc:
-        'Robotics Discovery: curated directory of robotics paper, repository, model, and dataset feeds with direct links to original boards.',
+        'Robotics Discovery: curated list of robotics paper, repository, model, and dataset feeds with hover details and direct links.',
       skip_link: 'Skip to content',
       site_brand: 'Robotics Notebooks | Robotics Knowledge Map',
       home_aria: 'Robotics Knowledge Map Home',
       main_nav_aria: 'Main navigation',
       mobile_nav_aria: 'Mobile navigation',
-      nav_home: 'Home',
-      nav_sources: 'Websites',
-      nav_graph: 'Full Graph',
+      nav_top: 'Top',
+      nav_start: 'Starting points',
+      nav_search: 'Search',
+      nav_latest: 'Latest',
+      nav_hubs: 'Rankings',
+      nav_graph: 'Graph',
       nav_trends: 'Trends',
       nav_discovery: 'Discovery',
-      mobile_ui_classic: 'Classic UI',
-      mobile_ui_modern: 'Modern UI',
+      ui_classic: 'Classic',
+      ui_modern: 'Modern',
+      ui_to_classic: 'Switch to classic UI',
+      ui_to_modern: 'Switch to modern UI',
+      theme_aria: 'Toggle light / dark mode',
+      menu_aria: 'Open or close navigation menu',
       back_home: '← Back to Home',
       hero_kicker: '[00] ROBOTICS DISCOVERY · RESOURCE DIRECTORY',
       hero_title: 'Robotics Discovery',
       hero_subtitle:
-        'A reader-first directory for tracking robotics papers, open-source projects, models, and datasets directly on their original feeds — without building a mirrored global leaderboard.',
-      jump_sources: 'Browse Websites',
+        'A compact directory for tracking robotics papers, open-source projects, models, and datasets directly on their original feeds. Hover any row for full details or click to open.',
+      telemetry_aria: 'Discovery overview',
       stat_sources_sub: 'Curated Feeds',
       stat_papers_sub: 'Paper Boards',
       stat_projects_sub: 'Repo Boards',
@@ -80,18 +97,22 @@
       sources_kicker: '01 / RECOMMENDED WEBSITES',
       sources_title: 'Recommended Websites',
       sources_subtitle:
-        'Organized by papers, open-source projects, models, and datasets. Jump straight to original boards with no sign-in required; external site downtime never blocks this directory.',
+        'Hover or focus any row to inspect its summary, best-for scope, and update cadence; click to open directly.',
+      filter_aria: 'Filter recommended websites by category',
       cat_all: 'All',
       cat_papers: 'Papers',
       cat_projects: 'Open Source',
       cat_models: 'Models',
       cat_datasets: 'Datasets',
       loading_sources: 'Loading recommended websites…',
-      sources_error: 'Could not load website directory configuration. Please refresh.',
+      sources_error: 'Could not load recommended websites configuration. Please refresh.',
       empty_sources: 'No websites under this category.',
       best_for_label: 'Best for',
       cadence_label: 'Feed / Cadence',
-      visit_site: 'Visit Site',
+      popover_hint: 'Click row to open original site ↗',
+      row_info_btn: 'Info',
+      row_info_close: 'Hide',
+      row_info_aria: 'Toggle details',
       footer_author: 'Chong Liu',
       footer_tail: '2026 · Robotics Notebooks',
       lang_btn_label: '中文',
@@ -127,10 +148,9 @@
     return '';
   }
 
-  function gridClassForCount(count) {
-    if (count <= 1) return 'discovery-site-grid discovery-site-grid--single';
-    if (count === 2 || count === 4) return 'discovery-site-grid discovery-site-grid--2col';
-    return 'discovery-site-grid discovery-site-grid--3col';
+  function formatRowIndex(idx) {
+    var num = idx + 1;
+    return num < 10 ? '0' + num : String(num);
   }
 
   function initDiscoveryPage(doc, win) {
@@ -153,13 +173,22 @@
 
     var els = {
       langBtn: doc.getElementById('discoveryLanguageToggle'),
+      uiBtn: doc.getElementById('uiStyleToggle'),
+      themeBtn: doc.getElementById('themeToggle'),
+      menuBtn: doc.getElementById('mobileMenuToggle'),
+      telemetry: doc.querySelector('.discovery-telemetry'),
       sourcesMount: doc.getElementById('discoverySourcesMount'),
       categoryTabs: doc.getElementById('discoveryCategoryTabs'),
       statSources: doc.getElementById('discoveryStatSources'),
       statPapers: doc.getElementById('discoveryStatPapers'),
       statProjects: doc.getElementById('discoveryStatProjects'),
-      statHubs: doc.getElementById('discoveryStatHubs')
+      statHubs: doc.getElementById('discoveryStatHubs'),
+      popover: doc.getElementById('discoveryDetailPopover')
     };
+
+    var siteLookup = Object.create(null);
+    var activeAnchor = null;
+    var lastPointerType = '';
 
     function t(key) {
       return (I18N[state.lang] && I18N[state.lang][key]) || I18N.zh[key] || key;
@@ -167,6 +196,7 @@
 
     function applyStaticI18n() {
       var dict = I18N[state.lang] || I18N.zh;
+      var isClassic = doc.documentElement.getAttribute('data-ui') === 'classic';
       doc.documentElement.lang = state.lang === 'en' ? 'en' : 'zh-CN';
       doc.title = dict.page_title;
       var descMeta = doc.querySelector('meta[name="description"]');
@@ -178,6 +208,22 @@
       if (mainNav) mainNav.setAttribute('aria-label', dict.main_nav_aria);
       var mobileNav = doc.getElementById('mobileNavSheet');
       if (mobileNav) mobileNav.setAttribute('aria-label', dict.mobile_nav_aria);
+      if (els.telemetry) els.telemetry.setAttribute('aria-label', dict.telemetry_aria);
+      if (els.categoryTabs) els.categoryTabs.setAttribute('aria-label', dict.filter_aria);
+
+      if (els.uiBtn) {
+        els.uiBtn.textContent = isClassic ? dict.ui_modern : dict.ui_classic;
+        var uiLabel = isClassic ? dict.ui_to_modern : dict.ui_to_classic;
+        els.uiBtn.setAttribute('aria-label', uiLabel);
+        els.uiBtn.setAttribute('title', uiLabel);
+      }
+      if (els.themeBtn) {
+        els.themeBtn.setAttribute('aria-label', dict.theme_aria);
+        els.themeBtn.setAttribute('title', dict.theme_aria);
+      }
+      if (els.menuBtn) {
+        els.menuBtn.setAttribute('aria-label', dict.menu_aria);
+      }
 
       if (els.langBtn) {
         els.langBtn.textContent = dict.lang_btn_label;
@@ -188,55 +234,144 @@
       doc.querySelectorAll('[data-i18n]').forEach(function (el) {
         var key = el.getAttribute('data-i18n');
         if (!key) return;
-        if (key === 'mobile_ui_classic') {
-          var isClassic = doc.documentElement.getAttribute('data-ui') === 'classic';
-          el.textContent = isClassic ? dict.mobile_ui_modern : dict.mobile_ui_classic;
-          return;
-        }
         if (Object.prototype.hasOwnProperty.call(dict, key)) {
           el.textContent = dict[key];
         }
       });
     }
 
-    function renderSiteCard(site) {
+    function siteFields(site) {
       var isEn = state.lang === 'en';
-      var name = isEn ? (site.name_en || site.name_zh) : (site.name_zh || site.name_en);
-      var summary = isEn ? (site.summary_en || site.summary_zh) : (site.summary_zh || site.summary_en);
-      var bestFor = isEn ? (site.best_for_en || site.best_for_zh) : (site.best_for_zh || site.best_for_en);
-      var cadence = isEn ? (site.cadence_en || site.cadence_zh) : (site.cadence_zh || site.cadence_en);
-      var kindBadge = isEn ? (site.kind_badge_en || site.kind_badge_zh) : (site.kind_badge_zh || site.kind_badge_en);
-      var href = safeUrl(site.url);
+      return {
+        name: isEn ? (site.name_en || site.name_zh) : (site.name_zh || site.name_en),
+        summary: isEn ? (site.summary_en || site.summary_zh) : (site.summary_zh || site.summary_en),
+        bestFor: isEn ? (site.best_for_en || site.best_for_zh) : (site.best_for_zh || site.best_for_en),
+        cadence: isEn ? (site.cadence_en || site.cadence_zh) : (site.cadence_zh || site.cadence_en),
+        kindBadge: isEn ? (site.kind_badge_en || site.kind_badge_zh) : (site.kind_badge_zh || site.kind_badge_en),
+        href: safeUrl(site.url)
+      };
+    }
+
+    function renderSiteRow(site, indexInCat) {
+      var f = siteFields(site);
+      var id = String(site.id || 'site-' + indexInCat);
+      var safeId = escapeHtml(id);
+      var idxLabel = formatRowIndex(indexInCat);
+      var rowContent =
+        '<span class="discovery-row-index">' + escapeHtml(idxLabel) + '</span>' +
+        '<span class="discovery-row-name">' + escapeHtml(f.name) + '</span>' +
+        '<span class="discovery-row-sub">' +
+          '<span class="discovery-row-domain">' + escapeHtml(site.domain || '') + '</span>' +
+          '<span class="discovery-badge">' + escapeHtml(f.kindBadge) + '</span>' +
+        '</span>' +
+        '<span class="discovery-row-arrow" aria-hidden="true">↗</span>';
+
+      var anchorHtml = f.href
+        ? '<a class="discovery-row-anchor" href="' + escapeHtml(f.href) + '" target="_blank" rel="noopener noreferrer" data-site-id="' + safeId + '">' + rowContent + '</a>'
+        : '<span class="discovery-row-anchor discovery-row-anchor--static" tabindex="0" data-site-id="' + safeId + '">' + rowContent + '</span>';
 
       return (
-        '<article class="discovery-site-card">' +
-          '<div class="discovery-site-card-top">' +
-            '<span class="discovery-site-domain">' + escapeHtml(site.domain || '') + '</span>' +
-            '<span class="discovery-badge">' + escapeHtml(kindBadge) + '</span>' +
+        '<li class="discovery-row" data-site-id="' + safeId + '">' +
+          '<div class="discovery-row-main">' +
+            anchorHtml +
+            '<button type="button" class="discovery-row-info-btn" data-site-id="' + safeId + '" aria-expanded="false" aria-controls="discovery-inline-' + safeId + '" aria-label="' + escapeHtml(t('row_info_aria') + ': ' + f.name) + '">' + escapeHtml(t('row_info_btn')) + '</button>' +
           '</div>' +
-          '<h4 class="discovery-site-name">' +
-            (href
-              ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' +
-                  '<span>' + escapeHtml(name) + '</span>' +
-                  iconSvg('external-link', 'discovery-ext-icon') +
-                '</a>'
-              : escapeHtml(name)) +
-          '</h4>' +
-          '<p class="discovery-site-summary">' + escapeHtml(summary) + '</p>' +
-          '<dl class="discovery-site-meta">' +
-            '<div class="discovery-site-meta-row"><dt>' + escapeHtml(t('best_for_label')) + '</dt><dd>' + escapeHtml(bestFor) + '</dd></div>' +
-            '<div class="discovery-site-meta-row"><dt>' + escapeHtml(t('cadence_label')) + '</dt><dd>' + escapeHtml(cadence) + '</dd></div>' +
-          '</dl>' +
-          (href
-            ? '<div class="discovery-site-actions">' +
-                '<a class="discovery-site-cta" href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' +
-                  '<span>' + escapeHtml(t('visit_site')) + '</span>' +
-                  '<span aria-hidden="true">↗</span>' +
-                '</a>' +
-              '</div>'
-            : '') +
-        '</article>'
+          '<div class="discovery-row-inline-detail" id="discovery-inline-' + safeId + '" hidden>' +
+            '<p class="discovery-inline-summary">' + escapeHtml(f.summary) + '</p>' +
+            '<dl class="discovery-popover-meta">' +
+              '<div class="discovery-popover-meta-row"><dt>' + escapeHtml(t('best_for_label')) + '</dt><dd>' + escapeHtml(f.bestFor) + '</dd></div>' +
+              '<div class="discovery-popover-meta-row"><dt>' + escapeHtml(t('cadence_label')) + '</dt><dd>' + escapeHtml(f.cadence) + '</dd></div>' +
+            '</dl>' +
+          '</div>' +
+        '</li>'
       );
+    }
+
+    function renderPopoverHtml(entry) {
+      var cat = entry.category || {};
+      var catLabel = state.lang === 'en' ? (cat.label_en || cat.label_zh || '') : (cat.label_zh || cat.label_en || '');
+      var f = siteFields(entry.site);
+      return (
+        '<div class="discovery-popover-head">' +
+          '<span class="discovery-popover-cat">' + escapeHtml(catLabel) + '</span>' +
+          '<span class="discovery-badge">' + escapeHtml(f.kindBadge) + '</span>' +
+        '</div>' +
+        '<p class="discovery-popover-title">' + escapeHtml(f.name) + '</p>' +
+        (f.href ? '<p class="discovery-popover-url">' + escapeHtml(f.href) + '</p>' : '') +
+        '<p class="discovery-popover-summary">' + escapeHtml(f.summary) + '</p>' +
+        '<dl class="discovery-popover-meta">' +
+          '<div class="discovery-popover-meta-row"><dt>' + escapeHtml(t('best_for_label')) + '</dt><dd>' + escapeHtml(f.bestFor) + '</dd></div>' +
+          '<div class="discovery-popover-meta-row"><dt>' + escapeHtml(t('cadence_label')) + '</dt><dd>' + escapeHtml(f.cadence) + '</dd></div>' +
+        '</dl>' +
+        (f.href ? '<p class="discovery-popover-hint">' + escapeHtml(t('popover_hint')) + '</p>' : '')
+      );
+    }
+
+    function positionPopover(anchor, pointerX) {
+      if (!els.popover || !anchor) return;
+      var rect = anchor.getBoundingClientRect();
+      var popRect = els.popover.getBoundingClientRect();
+      var popW = popRect.width || 400;
+      var popH = popRect.height || 220;
+      var vw = win.innerWidth || 1280;
+      var vh = win.innerHeight || 800;
+      var PAD = 16;
+      var GAP = 8;
+
+      var rawLeft = (typeof pointerX === 'number' && pointerX > 0) ? (pointerX - 48) : (rect.left + 48);
+      var maxLeft = Math.max(PAD, vw - popW - PAD);
+      var left = Math.min(Math.max(PAD, rawLeft), maxLeft);
+
+      var top = rect.bottom + GAP;
+      if (top + popH > vh - PAD && rect.top - GAP - popH >= PAD) {
+        top = rect.top - GAP - popH;
+      } else {
+        var maxTop = Math.max(PAD, vh - popH - PAD);
+        top = Math.min(Math.max(PAD, top), maxTop);
+      }
+
+      els.popover.style.left = Math.round(left) + 'px';
+      els.popover.style.top = Math.round(top) + 'px';
+    }
+
+    function hidePopover() {
+      if (activeAnchor) {
+        activeAnchor.removeAttribute('aria-describedby');
+        var prevRow = activeAnchor.closest('.discovery-row');
+        if (prevRow) prevRow.classList.remove('is-hovered');
+        activeAnchor = null;
+      }
+      if (!els.popover) return;
+      els.popover.classList.remove('is-visible');
+      els.popover.hidden = true;
+      els.popover.setAttribute('aria-hidden', 'true');
+    }
+
+    function showPopover(anchor, pointerX) {
+      if (!els.popover || !anchor) return;
+      var siteId = anchor.getAttribute('data-site-id');
+      var entry = siteId ? siteLookup[siteId] : null;
+      if (!entry) {
+        hidePopover();
+        return;
+      }
+
+      if (activeAnchor && activeAnchor !== anchor) {
+        activeAnchor.removeAttribute('aria-describedby');
+        var oldRow = activeAnchor.closest('.discovery-row');
+        if (oldRow) oldRow.classList.remove('is-hovered');
+      }
+
+      els.popover.innerHTML = renderPopoverHtml(entry);
+      els.popover.hidden = false;
+      els.popover.setAttribute('aria-hidden', 'false');
+      els.popover.classList.add('is-visible');
+      positionPopover(anchor, pointerX);
+
+      anchor.setAttribute('aria-describedby', 'discoveryDetailPopover');
+      var row = anchor.closest('.discovery-row');
+      if (row) row.classList.add('is-hovered');
+      activeAnchor = anchor;
     }
 
     function updateTelemetry(sites) {
@@ -252,6 +387,7 @@
     }
 
     function renderSources() {
+      hidePopover();
       if (!els.sourcesMount) return;
       els.sourcesMount.classList.remove('data-loading');
       if (state.sourcesError) {
@@ -266,6 +402,17 @@
       var categories = Array.isArray(state.sourcesData.categories) ? state.sourcesData.categories : [];
       var sites = Array.isArray(state.sourcesData.sites) ? state.sourcesData.sites : [];
       updateTelemetry(sites);
+
+      siteLookup = Object.create(null);
+      var catById = Object.create(null);
+      categories.forEach(function (cat) {
+        if (cat && cat.id) catById[cat.id] = cat;
+      });
+      sites.forEach(function (site) {
+        if (site && site.id) {
+          siteLookup[site.id] = { site: site, category: catById[site.category] || {} };
+        }
+      });
 
       var visibleCats = state.activeCategory === 'all'
         ? categories
@@ -286,9 +433,9 @@
               '</div>' +
               '<p class="discovery-cat-desc">' + escapeHtml(desc) + '</p>' +
             '</header>' +
-            '<div class="' + gridClassForCount(catSites.length) + '">' +
-              catSites.map(renderSiteCard).join('') +
-            '</div>' +
+            '<ul class="discovery-list" role="list">' +
+              catSites.map(renderSiteRow).join('') +
+            '</ul>' +
           '</section>'
         );
       }).join('');
@@ -317,7 +464,8 @@
 
     if (els.categoryTabs) {
       els.categoryTabs.addEventListener('click', function (ev) {
-        var btn = ev.target.closest('button[data-category]');
+        var target = ev.target && typeof ev.target.closest === 'function' ? ev.target : null;
+        var btn = target ? target.closest('button[data-category]') : null;
         if (!btn) return;
         state.activeCategory = btn.getAttribute('data-category') || 'all';
         els.categoryTabs.querySelectorAll('button[data-category]').forEach(function (tab) {
@@ -328,6 +476,65 @@
         renderSources();
       });
     }
+
+    if (els.sourcesMount) {
+      doc.addEventListener('pointerdown', function (ev) {
+        if (ev && ev.pointerType) lastPointerType = ev.pointerType;
+      }, { passive: true });
+
+      doc.addEventListener('pointermove', function (ev) {
+        if (ev && ev.pointerType) lastPointerType = ev.pointerType;
+      }, { passive: true });
+
+      els.sourcesMount.addEventListener('mouseover', function (ev) {
+        if (lastPointerType === 'touch') return;
+        var target = ev.target && typeof ev.target.closest === 'function' ? ev.target : null;
+        var anchor = target ? target.closest('.discovery-row-anchor') : null;
+        if (!anchor) {
+          hidePopover();
+          return;
+        }
+        if (anchor !== activeAnchor) {
+          showPopover(anchor, ev.clientX);
+        }
+      });
+
+      els.sourcesMount.addEventListener('mouseleave', function () {
+        hidePopover();
+      });
+
+      els.sourcesMount.addEventListener('focusin', function (ev) {
+        var target = ev.target && typeof ev.target.closest === 'function' ? ev.target : null;
+        var anchor = target ? target.closest('.discovery-row-anchor') : null;
+        if (anchor) showPopover(anchor, null);
+      });
+
+      els.sourcesMount.addEventListener('focusout', function (ev) {
+        var next = ev.relatedTarget && typeof ev.relatedTarget.closest === 'function' ? ev.relatedTarget : null;
+        if (!next || !els.sourcesMount.contains(next) || !next.closest('.discovery-row-anchor')) {
+          hidePopover();
+        }
+      });
+
+      els.sourcesMount.addEventListener('click', function (ev) {
+        var target = ev.target && typeof ev.target.closest === 'function' ? ev.target : null;
+        var infoBtn = target ? target.closest('.discovery-row-info-btn') : null;
+        if (!infoBtn) return;
+        var siteId = infoBtn.getAttribute('data-site-id');
+        var drawer = siteId ? doc.getElementById('discovery-inline-' + siteId) : null;
+        if (!drawer) return;
+        var nextOpen = drawer.hidden;
+        drawer.hidden = !nextOpen;
+        infoBtn.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
+        infoBtn.textContent = nextOpen ? t('row_info_close') : t('row_info_btn');
+      });
+    }
+
+    doc.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape') hidePopover();
+    });
+    win.addEventListener('scroll', hidePopover, { passive: true });
+    win.addEventListener('resize', hidePopover, { passive: true });
 
     function loadSources() {
       return win.fetch('discovery-sources.json')
@@ -354,6 +561,8 @@
     return {
       state: state,
       renderAll: renderAll,
+      showPopover: showPopover,
+      hidePopover: hidePopover,
       ready: sourcesPromise
     };
   }
@@ -362,7 +571,7 @@
     I18N: I18N,
     escapeHtml: escapeHtml,
     safeUrl: safeUrl,
-    gridClassForCount: gridClassForCount,
+    formatRowIndex: formatRowIndex,
     initDiscoveryPage: initDiscoveryPage
   };
 
