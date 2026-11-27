@@ -92,7 +92,7 @@ sequenceDiagram
 - `infer.py` 支持自然排序的图像目录或显式 JSON 列表。默认 Uniform320 stride 用全序列长度计算，实时未知长度的相机流应自行选择持久关键帧。非关键帧不推进提交时钟；处理端应保留独立帧号，落盘 `raw_indices` 就是这个用途。
 - `demo.py --predictions` 能从既有预测可视化而不重新加载模型；含原始帧和深度时可投影点云。仓库声明运行模型需支持 BF16 的 CUDA GPU、PyTorch 2.8+ 和 FlashInfer。
 - 在 CPU 用占位模型走官方 CLI 验证 10 帧输入的自然排序、8 帧前缀、持久帧选择、NPZ 原始索引和完整 manifest；这是接口级测试，不验证真实几何或吞吐。
-- 源码、演示及评测套件已发布；Hugging Face 和 ModelScope 是纯因果基座的权重入口，官方标明需授权；未获取权重或运行 GPU 重建。官方代码及基座权重采用 CC BY-NC 4.0，不可直接当成商业友好许可。
+- 源码、演示及评测套件已发布；Hugging Face 和 ModelScope 是纯因果基座的权重入口，截至 2026-11-27，Hugging Face 基座配置与约 4.63 GB 权重直链匿名可达，ModelScope 文件列表列出同规格和校验值；README 的私有提示已与当日访问状态不一致。未下载整份权重或运行 GPU 重建。官方代码及基座权重采用 CC BY-NC 4.0，不可直接当成商业友好许可。
 
 ## 实验与评测
 
