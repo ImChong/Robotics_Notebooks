@@ -240,6 +240,7 @@ flowchart LR
 
 **方向 B：缩放曲线怎么读（也怎么被误读）**
 - **开源可对照**：[EgoScale](../wiki/methods/egoscale.md) 在 1k–20k h egocentric 轨迹上报告验证损失与数据规模近 log-linear，并与真机灵巧后训练表现强相关
+- [SHAPE](../wiki/entities/paper-shape-egocentric-dexterous-manipulation.md) — 2,811 小时人类数据与 228 小时遥操作按 1:1 采样；用匹配消融区分数据配比、动作监督和部署读出。
 - **闭源自报需降权**：[Dyna-2](../wiki/entities/dyna-2.md)（1k–1M h 人→机）、[GEN-1.5](../wiki/entities/generalist-gen15-one-shot.md)、[Skild S1](../wiki/entities/skild-s1.md)（1k→100k h；未见任务 ICL 66% vs 语言 9%）指标域与协议各不相同，**宜对照读而非合并曲线**
 - **参数缩放不能替代具身监督**：[RynnBrain 1.1](../wiki/entities/paper-rynnbrain-1-1.md) 在统一配方下显示推理密集型认知上 matched Qwen3.5 出现负缩放、定位上最大 Qwen 仍低于最小 RynnBrain——显式空间/具身监督与参数缩放是互补关系
 
