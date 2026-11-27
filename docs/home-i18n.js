@@ -16,7 +16,7 @@
     '顶部': 'Top',
     '搜索': 'Search',
     '最新': 'Latest',
-    '榜单': 'Rankings',
+    '枢纽': 'Hubs',
     '完整图谱': 'Full Graph',
     '增长趋势': 'Trends',
     '趋势': 'Trends',
