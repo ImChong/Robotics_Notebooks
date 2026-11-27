@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-27
 related:
   - ./mbpo.md
   - ../concepts/bptt.md
@@ -250,6 +250,12 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 ### WAM 内嵌 MBRL（共享参数 GWM）
 
 [Motus2](../entities/paper-motus2.md) 把 **policy / simulator / evaluator** 做成同一 video–action 模型的三种查询模式：策略提议 action chunk，仿真器想象视觉后果，价值模型评估相对任务进度；**DiffusionNFT** 用 evaluator 信号更新动作通路，**Best-of-N** 在测试时对候选分支排序。失败与次优真机轨迹进入 simulation / evaluation 监督而非动作模仿——与经典「外置动力学 + CEM」MBRL 不同，闭环完全在 **联合 WAM** 内完成（arXiv:2608.30237；截至 2026-10-05 官方 GitHub 仓已建立但仅有路线图 README，代码与权重**尚未发布**）。
+
+---
+
+### NDM Gym（状态动力学的训练与规划评测）
+
+[NDM Gym](../entities/ndm-gym.md) 在同一物理采集管线中比较 SuperTrack 的可微跟踪损失与 SuperMimic 的可微回报目标，并单独计时用模型替代 RoboKit / mbrl-lib 候选步进的收益。它适合做受控系统对照：训练时间、模型步吞吐、端到端规划和误差各有不同口径。
 
 ---
 
