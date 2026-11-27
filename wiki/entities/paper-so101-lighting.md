@@ -4,7 +4,7 @@ project_id: so101-lighting
 arxiv: "2611.13810"
 tags: [paper, so101-lighting, robotics]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-27
 summary: "SO-101 光照对照实验发现环境照度下降 11.5 倍时，自动曝光使模型输入图像变化远小于照度变化。"
 related:
   - ../methods/vla.md
@@ -95,6 +95,8 @@ flowchart LR
 论文使用单个 SO-101 桌面抓放任务、前视与腕视两台相机；ACT、SmolVLA、Diffusion Policy、π0.5 四种策略各用 50 条演示训练，在亮（约 520 lux）/暗（约 45 lux）两个条件分别 10 次试验，共 80 rollout，每种光照共 40 次。亮组 20/40、暗组 19/40，-2.5 个百分点，95% CI 约 [-23,+19] pp，不能判定效果等价。相机自动曝光/自动白平衡启用，前视图像平均亮度只降约 3%、腕视约 19%，显著小于环境照度约 11.5 倍下降。结论应是必须同时记录 lux、相机曝光及模型实际输入图像，而非“机器人策略本质抗低照”。原实验仅单任务与小样本。
 
 ## 关联页面
+
+- [SO-101 持拍平衡](./so101-pingpong-balance.md)：另一项视觉反馈任务，使用颜色阈值、合成相机数据和速度差分；光照扰动的结果不能在两种任务间直接互推。
 
 - [vla](../methods/vla.md)
 - [action-chunking](../methods/action-chunking.md)
