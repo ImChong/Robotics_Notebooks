@@ -94,6 +94,8 @@ flowchart LR
 
 ### 推荐读什么
 
+- [SEEK](../wiki/entities/paper-seek.md) — 固定多模态模型，持久积累执行动作及其效果以改进程序策略。
+
 - [ReMe：动态程序性记忆](../wiki/entities/paper-reme-procedural-memory.md) — 成功/失败轨迹提炼经验，按场景检索并按使用成效淘汰；仅外部记忆级改进，论文无机器人真机评测
 - [STRATA：三层结构化经验图](../wiki/entities/paper-strata-experience-graphs.md) — 成功/失败经验归纳、压力式遗忘与反向任务负迁移；只改变外部经验，不改变权重
 - [Kytheros Strata MCP 记忆](../wiki/entities/kytheros-strata-mcp-memory.md) — 质量门控的跨会话技术决策和故障复用
@@ -202,6 +204,8 @@ flowchart LR
 - 机器人侧：把"改控制程序"当 harness 搜索做一遍，对照 ASPIRE 的进化搜索设定
 
 ### 推荐读什么
+
+- [RoboEvo²](../wiki/entities/paper-roboevo2-2611-34675.md) — 一起演化上层训练与执行 harness 和下层策略，作为只改提示或仅写入记忆的对照。
 - [Agnes Harness 系统与 RSI 技术报告](../wiki/entities/paper-agnes-harness-rsi-technical-report.md) — 账本主权、双系统及仅配置级 Playbook RSI；sealed twin-simulation 和人工门控，不可当真机证据。
 - [Agnes Sys1 1.0 决策模型技术报告](../wiki/entities/paper-agnes-sys1-decision-model-technical-report.md) — 区分结构化决策概率与待验证的 TTT 计划，不把它当权重级 RSI 的已测成果。
 - [Claude Code 动态多 Agent 工作流](../wiki/methods/claude-code-dynamic-workflows.md) — `agent()`、`parallel()`、`pipeline()` 组成面向特定任务的 harness；注意它是**按任务动态构建工作流**，并非自证可持续改进。

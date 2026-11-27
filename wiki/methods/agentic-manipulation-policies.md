@@ -122,6 +122,10 @@ Apple 的 RoboLab-120 实验同时变更了模型与 harness，报告 AMP1 + Gem
 
 ## 关联页面
 
+- [PyRUA-Dex](../entities/paper-pyrua-dex.md) — 把编码 Agent 的任务探索转为可独立执行的双手程序策略；当前 dex 分支仅提供介绍与示意图。
+- [SEEK](../entities/paper-seek.md) — 固定多模态模型，持久积累执行动作及其效果以改进程序策略。
+- [RoboEvo²](../entities/paper-roboevo2-2611-34675.md) — 一起演化上层训练与执行 harness 和下层策略，作为只改提示或仅写入记忆的对照。
+
 - [ACAP：异步编程智能体团队](../entities/paper-acap.md) — 在同一机器人的多个控制组上调度并行技能，任务依赖与控制权回收同样重要。
 - [HiPhys-RSI：BEHAVIOR 2026 冠军方案](../entities/paper-hiphys-rsi.md)
 - [Apple AMP1 论文与实现](../entities/paper-apple-amp1.md)

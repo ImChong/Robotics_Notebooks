@@ -532,6 +532,10 @@ flowchart TB
 
 ## 关联页面
 
+- [HOG-WAM](../entities/paper-hog-wam.md) — 以未来帧方向梯度直方图作为训练期结构监督，部署时保留动作路径。
+- [Entangle](../entities/paper-entangle-2611-28732.md) — 用人类示范视频作为上下文，对照跨任务与跨上下文的世界–动作联合泛化。
+- [WorldReforge](../entities/paper-worldreforge.md) — 用仿真失败轨迹校准动作条件未来预测，区分视频观感、可见点运动与动作响应。
+
 - [UniWALM](../entities/paper-uniwalm.md) — 统一世界、动作与语言的骨干，语言作为记忆回馈
 
 - [Action Influence Maximization](../entities/paper-aim-action-influence-maximization.md) — 动作可控性的数据侧根因与主动采集

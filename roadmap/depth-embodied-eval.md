@@ -97,6 +97,9 @@ flowchart LR
 - 拿一组 QA 失败样本做归因：是感知没看见、是规划不可行、还是能说对但下发不出可执行动作
 
 ### 推荐读什么
+
+- [AIRIS](../wiki/entities/paper-airis.md) — 在第一视角视频流中测社交理解与恰当的主动判断，不等同于机器人执行。
+- [ROAM-Bench](../wiki/entities/paper-roam-bench.md) — 在可交互空间里检验主动找证据和验证答案，不与固定视角知识问答混算。
 - [ACE-Brain-0.7](../wiki/entities/paper-ace-brain-0-7.md) — 用时序配对和帧输入对照验证预测是否随执行状态变化，分开读任务分解、下一子任务与失败定位指标。
 - [Envisioning Agentic Robotics（智能体机器人架构与路线）](../wiki/entities/paper-envisioning-agentic-robotics.md) — 把 S2 模型能力与 harness/技能/实时执行分开测；衔接后续 Stage 3 的物理结果验收。
 - [RoboBench](../wiki/entities/robo-bench.md) — 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，用8骨干迁移实验审计认知与下游控制的关系：CALVIN感知相关显著，LIBERO-Long affordance 仅呈非显著正趋势
