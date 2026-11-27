@@ -214,6 +214,7 @@ flowchart LR
 - [VTInstructor](../wiki/entities/paper-vtinstructor.md) — 第一视角轨迹压缩为导航关键帧并注入路径/转向/终点提示，生成 VLN 指令并以冻结 follower 验证下游效果
 - [Embodied-Navigator / TAMP-Nav](../wiki/entities/paper-embodied-navigator-tamp-nav.md) — 像素到三维 waypoint + 选择性 CoT / 锚点记忆 + 双层 GRPO 的 VLN 策略
 - [SuperNav](../wiki/entities/paper-supernav-agentic-navigation.md) — 给预训练 MLLM 配 agent harness（Tools / Skills / 任务进度 / 上下文管理），以视觉点目标连接高层决策与可替换运动后端
+- [AgentVLN](../wiki/entities/paper-agentvln.md) — 将可行的 3D 路点投影成像素候选交给 3B VLM，连接阶段化技能、遮挡纠偏和 R2R-CE/RxR-CE 的评测。
 - [NavMCP](../wiki/entities/paper-navmcp-long-horizon-navigation.md) — 视觉语言推理 agent + 导航基础模型执行器 + 跨调用证据记忆，支持长时程具身探索与问答
 - [NavProbe](../wiki/entities/paper-agentic-2609-27526.md) — Stage 4 的任务进度核验：动态子目标 + 图结构情景记忆 + 按需视觉/几何取证，允许重开误判已完成的目标；MIT 仿真代码已开放。
 - [CoRelNav](../wiki/entities/paper-agentic-2609-27720.md) — 从单机类别目标到并发多机关系导航：语义前沿联合分配、同实例跨视角补证、到达已验证目标；对照团队 SPL 和双轮式机器人部署边界。
