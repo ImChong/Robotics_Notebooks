@@ -172,6 +172,7 @@ flowchart LR
 ### 推荐读什么
 - [机器人整机配电架构](../wiki/concepts/robot-power-distribution-architecture.md) 的「EMC 与接地」一节
 - [KiCad](../wiki/entities/kicad.md) 与 [Altium Designer](../wiki/entities/altium-designer.md) — 原理图 → layout → 制造输出工具链
+- [OpenPE](../wiki/entities/openpe.md) — 板级原型可在同一个项目中审核 Agent 改动、查看瞬态与 EMC 几何提示，再回到 KiCad 与实测验证。
 - [力矩电机设计纵深 Stage 4](depth-torque-motor-design.md) — 驱动板功率级与采样链路的板级细节（本阶段是它的整机侧对偶）
 - [磁场定向控制（FOC）](../wiki/concepts/field-oriented-control.md) — 理解噪声源的机理
 - [IPC 标准（IPC-2221 / IPC-2152 载流与温升）](https://www.ipc.org/)
