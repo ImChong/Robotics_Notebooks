@@ -3,6 +3,7 @@ type: entity
 project_id: ndm-gym
 project: https://frank-zy-dou.github.io/ndm-gym/
 code: https://github.com/Frank-ZY-Dou/ndm-gym
+institutions: [independent-maintainer]
 tags: [world-model, reinforcement-learning, motion-tracking, simulation, isaac-lab]
 status: complete
 updated: 2026-11-27

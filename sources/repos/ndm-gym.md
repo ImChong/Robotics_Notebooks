@@ -6,6 +6,7 @@
 - **链接：** <https://github.com/Frank-ZY-Dou/ndm-gym>
 - **项目文档：** <https://frank-zy-dou.github.io/ndm-gym/>
 - **作者：** NDM Gym Contributors；仓库维护者 Zhiyang (Frank) Dou
+- **维护归属：** 独立维护者与项目贡献者；官方引用署名 NDM Gym Contributors，未以单一机构名义发布。
 - **核查版本：** [7c5f1fe](https://github.com/Frank-ZY-Dou/ndm-gym/tree/7c5f1fecb6a4b460dfe208c8bee6e994f811a72c)
 - **许可：** 代码 MIT；第三方轨迹、机器人模型及权重另看 [NOTICE](https://github.com/Frank-ZY-Dou/ndm-gym/blob/7c5f1fecb6a4b460dfe208c8bee6e994f811a72c/NOTICE) 和原始发布方许可。
 - **核查日期：** 2026-11-27
