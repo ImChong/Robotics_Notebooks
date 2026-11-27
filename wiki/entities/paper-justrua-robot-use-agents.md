@@ -1,9 +1,10 @@
 ---
 type: entity
 project_id: justrua-2611-16009
-tags: [paper, robot-agent, code-execution, robodojo, depth-estimation]
+institutions: [tsinghua, hust, pku, modelbest, tencent]
+tags: [paper, tsinghua, hust, pku, modelbest, tencent, robot-agent, code-execution, robodojo, depth-estimation]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-27
 arxiv: "2611.16009"
 project: https://zefanw.github.io/JustRUA/
 code: https://github.com/ZefanW/JustRUA
@@ -13,7 +14,10 @@ sources:
   - ../../sources/papers/justrua-arxiv-2611-16009.md
   - ../../sources/sites/justrua-project-20261116.md
   - ../../sources/repos/justrua-official-20261116.md
+  - ../../sources/sites/justrua-robodojo-replay-explorer.md
 related:
+  - ./robodojo.md
+  - ../methods/ai-benchmark-evaluation.md
   - ./paper-reins-robot-harness.md
   - ./paper-ace-cap-0.md
 summary: "固定 RoboDojo 测试集与基础 harness，分别消融模型调用历史、运动动作接口、经验复用与场景几何，构建更高效的 GPT-6 Astra 机械臂使用智能体。"
@@ -47,17 +51,18 @@ summary: "固定 RoboDojo 测试集与基础 harness，分别消融模型调用�
 | 机构 | 清华大学、华中科技大学、北京大学、ModelBest、腾讯等 |
 | 论文作者 | Zefan Wang、Yufan Dang、Xuanwei Shi、Mingqi Gao 等 |
 | 官方项目 | [项目页](https://zefanw.github.io/JustRUA/) |
-| 开源状态（2026-11-16） | [官方源码](https://github.com/ZefanW/JustRUA)；公开了完整的 XPolicyLab policy adapter；依赖 RoboDojo 仿真/资产、Depth Pro checkpoint 与 GPT-6 Astra 服务账户。 |
+| 代码（2026-11-27） | [公开适配器，固定 1de90d5](https://github.com/ZefanW/JustRUA/tree/1de90d565b3e35e36bf602d5ff5ca8f989fa5c23)，Apache-2.0；不是独立仿真或开源模型。 |
+| 回放 | [官方 Replay Explorer](https://huggingface.co/spaces/ZefanW/robodojo-replay-explorer)，按同一任务和场景对比配置。 |
 
 ## 核心原理
 
-沿用 RoboDojo 官方 L3 环境及 ARX X5 双臂；使用单次 episode 内持久的 GPT-6 Astra coding conversation 读取三路 RGB、RGB 估深、相机标定、夹指及腕力实际测量；调用绝对世界系 move_eef 目标，经 XPolicyLab Cartesian planner 转控制量，每轮最多执行前 20 个控制步，丢弃剩余部分并回传实际到达误差和夹持状态供下一次决策。文章另对示范、经验库、不同动作接口等做对照，最终配置不含自改经验库。
+沿用 RoboDojo 官方 L3 环境及 ARX X5 双臂；使用单次 episode 内持久的 GPT-6 Astra coding conversation 读取三路 RGB、由 RGB 预测的彩色深度图、相机标定和仿真机器人读数（夹指、腕力等）；调用绝对世界系 move_eef 目标，经 XPolicyLab Cartesian planner 转控制量，每轮最多执行前 20 个控制步，丢弃剩余部分并回传实际到达误差和夹持状态供下一次决策。运行时不向模型提供原始米制深度数组、物体位姿或评分器状态；最终配置允许本地代码从像素与标定求坐标，不把代码路径当作读取深度数组。文章另对示范、经验库、不同动作接口等做对照，最终配置不含自改经验库。
 
 ### 流程总览
 
 ```mermaid
 flowchart TD
- TASK["RoboDojo 任务与三路 RGB"] --> OBS["真实机器人读数及 Depth Pro 估深"]
+ TASK["RoboDojo 任务与三路 RGB"] --> OBS["仿真机器人读数及 Depth Pro 估深"]
  OBS --> ACTOR["单 episode 持久 GPT-6 Astra + Coding"]
  ACTOR --> TARGET["世界坐标 move_eef 目标"]
  TARGET --> PLANNER["XPolicyLab Cartesian Planner"]
@@ -71,7 +76,26 @@ flowchart TD
 
 ## 实验与评测
 
-在作者定义的 **111-episode** RoboDojo 对照评测子集（涵盖全部 42 任务），官方 L3 harness 29.7 → 最终 JustRUA 50.3；最终配置对应成功率 43.3%，首轮平均调用成本约 12.53 美元/episode。该分数不是未经校正的官方排行榜总分。
+在作者定义的 **111 个仿真 episode**（全部 42 个任务）上，按任务内布局、能力组内任务、五个能力组逐层等权汇总。23 个高波动任务跑四个固定布局，其余跑一个；Generalization 的随机布局权重为 75%，官方全量协议为 50%。官方 L3 在这个子集是 **29.7**，在 2,100 条全量协议为 **29.0**。不能把 50.3 写成排行榜全量结果或成功率；[RoboDojo](robodojo.md) 支持部分完成得分。
+
+| 累加配置 | 得分（满分 100） | 首轮单 episode 模型调用成本下界 |
+|---|---:|---:|
+| 官方 L3（子集） | 29.7 | — |
+| Codex 会话 + 全图像历史 | 34.7 | $3.76 |
+| 每次运动最多 20 个控制步 | 38.0 | $4.94 |
+| 精简机器人读数 | 39.8 | $5.51 |
+| RGB 预测深度 | 42.4 | $7.74 |
+| 坐标求解 + 取消策略决策数上限 | **50.3** | **$12.53** |
+
+- 最后一行的组均成功率为 **43.3%**，不是按回放条数的比例。按公开目录重算得 50.3125 分、43.3333%；59/111 是未经分组权重的成功条数。首轮成本假设所有可缓存输入都命中，不是实付账单或端到端成本。
+- 保留历史与改用 Codex 会话是同一对照项；最终的 42.4→50.3 同时开启坐标计算与移除决策次数上限，不能单独归因。仿真 episode 的控制步预算仍生效；该上限也不同于单次动作的 20 步限制。
+- 首轮 42 条的行为审查里，精简读数配置空抓 41 次，加入预测深度后 16 次；不代表所有误差都消失。仿真真值深度是参考对照，不是合规榜单输入。经验复用对照接触了受评任务，最终未选用。按[评测方法](../methods/ai-benchmark-evaluation.md)把同场景比较、动作行为、宏平均与成本分开看。
+
+## 回放核验
+
+[Replay Explorer](https://huggingface.co/spaces/ZefanW/robodojo-replay-explorer) 固定同一案例切换配置，可选头部与双腕相机，并检查请求目标、动作拒绝、零控制、实执行步数与反馈。目录实测 14 × 111 = 1,554 个回放，其中 228 个有事件时间定位；没有定位时分开看视频和动作序列。公开动作备注不是模型内部推理。
+
+例：`insert_tubes__standard__s0__scene0` 的估深配置为 40 分、65 个事件、500 控制步；最终配置为 100 分、57 个事件、496 控制步。两个动作文件均按清单核对了哈希；这是同布局的作者记录，不能据单例分离两个同时修改的因素。
 
 ## 与其他工作对比
 
@@ -86,8 +110,8 @@ flowchart TD
 **固定 RoboDojo 测试集与基础 harness，分别消融模型调用历史、运动动作接口、经验复用与场景几何，构建更高效的 GPT-6 Astra 机械臂使用智能体。 但必须按论文的实验协议和开源边界解读其效果。**
 
 1. 把评分口径锁定在论文 111 episode 子集，而不是直接与其他排行榜横比。
-2. 额外深度估计和代码坐标求解带来较大收益，但推理调用成本也上升。
-3. 真实夹指位置与命令目标必须区分；动作超过 20 步被截断后的反馈不可丢。
+2. 区分预测深度的行为收益与「坐标求解 + 放开决策上限」的联合结果；按缓存口径标注成本下界。
+3. 仿真夹指测量值与命令目标必须区分；动作超过 20 步被截断后的反馈不可丢。
 
 ## 源码运行时序图
 
@@ -116,7 +140,7 @@ sequenceDiagram
  Policy->>CodeAgent: 下轮保留历史与执行误差
 ```
 
-> 时序依据官方仓库 README 与入口脚本；依赖外部环境/数据未在此声称实机复现。
+> 联调按固定版本的 `deploy.py`、`policy.py`、`actor/client.py` 核对：当规划超过 20 步，`confirm_executed` 用实际执行的前缀恢复夹爪目标，不继承被丢弃后缀的目标。使用上游固定 XPolicyLab 版本，官方离线测试 **6 项通过**（观测、动作前缀和模拟子进程协议）；没有启动 RoboDojo/Isaac、加载 Depth Pro 权重、请求模型服务或运行真机。
 
 ## 工程实践
 
@@ -157,5 +181,6 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [官方项目页](https://zefanw.github.io/JustRUA/)
-- [论文 PDF](https://arxiv.org/pdf/2611.16009)
+- [论文 PDF v1](https://arxiv.org/pdf/2611.16009v1)
+- [回放浏览器与固定目录核查](../../sources/sites/justrua-robodojo-replay-explorer.md)
 - [官方代码](https://github.com/ZefanW/JustRUA)
