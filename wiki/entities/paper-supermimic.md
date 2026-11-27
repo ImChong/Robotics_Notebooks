@@ -233,6 +233,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Trust What Repeats](./paper-trust-what-repeats.md) — 基于同代码重实现诊断并抑制极端动作梯度；29-DoF G1 在 BONES-SEED 留出动作上报告更好的尾部回报。
+
 - [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) — 区分系统验收、推理后训练、VLA、全身跟踪、触觉与 Real2Sim 的接口和评测边界。
 - [Qiayuan Liao](./qiayuan-liao.md) — 第一作者的研究与软件入口。
 - [SuperMimic Parkour](./supermimic-parkour.md) — PHP 跑酷数据上的社区实现。
