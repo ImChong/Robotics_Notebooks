@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self'; worker-src 'self' blob:; frame-src https://challenges.cloudflare.com; connect-src 'self' data: blob: https://cdn.jsdelivr.net https://challenges.cloudflare.com https://*.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Robotics Discovery（机器人研究发现）：机器人论文、开源项目、模型与数据集推荐网站导航，以及每日核验去重的最新研究精选。" />
+  <meta property="og:title" content="Robotics Discovery · 研究发现 | Robotics Notebooks" />
+  <meta property="og:description" content="面向机器人研究与工程的一手网站导航与每日精选：论文、开源项目、模型、数据集直达入口与去重研究清单。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Robotics Notebooks" />
+  <meta property="og:url" content="https://imchong.github.io/Robotics_Notebooks/discovery.html" />
+  <meta property="og:image" content="https://imchong.github.io/Robotics_Notebooks/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://imchong.github.io/Robotics_Notebooks/discovery.html" />
+  <title>Robotics Discovery · 研究发现 | Robotics Notebooks</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-home.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script src="theme-init.js"></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
+  <link rel="preload" href="discovery-sources.json" as="fetch" crossorigin />
+  <link rel="preload" href="discovery-picks.json" as="fetch" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0b0d" />
+</head>
+<body class="page-discovery">
+  <a class="skip-link" href="#main-content" data-i18n="skip_link">跳到正文</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-start">
+        <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页" data-i18n-title><svg class="site-brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 9.5L12 6.5L20 9.5L27.5 6.5V22.5L20 25.5L12 22.5L4.5 25.5V9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5V22.5M20 9.5V25.5" stroke="currentColor" stroke-opacity="0.32" stroke-width="1.5"/><path d="M8.5 19.5L16 14.5L23.5 12" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="19.5" r="2.1" fill="var(--accent)"/><circle cx="16" cy="14.5" r="2.3" fill="var(--accent)"/><circle cx="23.5" cy="12" r="2.3" fill="var(--accent)"/></svg><span class="site-title-text" data-i18n="site_brand">Robotics Notebooks | 机器人技术栈地图</span></a>
+        <nav class="main-nav" aria-label="主导航">
+          <a href="index.html" data-i18n="nav_home">首页</a>
+          <a href="#discovery-sources" data-i18n="nav_sources">推荐网站</a>
+          <a href="#discovery-picks" data-i18n="nav_picks">最新精选</a>
+          <a href="graph.html" data-i18n="nav_graph">完整图谱</a>
+          <a href="star-history.html" data-i18n="nav_trends">增长趋势</a>
+          <a href="discovery.html" aria-current="page" data-i18n="nav_discovery">研究发现</a>
+        </nav>
+      </div>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="index.html" class="github-link classic-only" data-i18n="nav_home">首页</a>
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button type="button" id="uiStyleToggle" class="version-toggle" aria-pressed="false" aria-label="切换到旧版样式" title="切换到旧版样式">旧版</button>
+        <button type="button" id="discoveryLanguageToggle" class="home-language-toggle" aria-label="Switch page to English">English</button>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+          <span class="icon-sun"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.6"/><path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14M3.8 3.8l1.1 1.1M11.1 11.1l1.1 1.1M12.2 3.8l-1.1 1.1M4.9 11.1l-1.1 1.1"/></svg></span>
+          <span class="icon-moon"><svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.8 9.8A5.3 5.3 0 1 1 6.2 3.2a4.3 4.3 0 0 0 6.6 6.6Z"/></svg></span>
+          <kbd class="kbd-hint" aria-hidden="true">^⇧L</kbd>
+        </button>
+        <button type="button" id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobileNavSheet" aria-label="打开或关闭导航菜单">
+          <svg class="ui-icon mobile-menu-icon--open" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2.5 4.2h11M2.5 8h11M2.5 11.8h11"/></svg>
+          <svg class="ui-icon mobile-menu-icon--close" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" aria-hidden="true" focusable="false" hidden><path d="M3.8 3.8l8.4 8.4M12.2 3.8l-8.4 8.4"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobileNavSheet" class="mobile-nav-sheet" aria-label="移动端导航" hidden>
+    <ul>
+      <li><a href="index.html"><span data-nav-label data-i18n="nav_home">首页</span><span class="mobile-nav-index">↗</span></a></li>
+      <li><a href="#discovery-sources"><span data-nav-label data-i18n="nav_sources">推荐网站</span><span class="mobile-nav-index">01</span></a></li>
+      <li><a href="#discovery-picks"><span data-nav-label data-i18n="nav_picks">最新精选</span><span class="mobile-nav-index">02</span></a></li>
+      <li><a href="graph.html"><span data-nav-label data-i18n="nav_graph">完整图谱</span><span class="mobile-nav-index">↗</span></a></li>
+      <li><a href="star-history.html"><span data-nav-label data-i18n="nav_trends">增长趋势</span><span class="mobile-nav-index">↗</span></a></li>
+      <li><a href="discovery.html" aria-current="page"><span data-nav-label data-i18n="nav_discovery">研究发现</span><span class="mobile-nav-index">00</span></a></li>
+      <li><button type="button" id="mobileUiStyleToggle" class="mobile-nav-action" aria-pressed="false"><span data-nav-label data-i18n="mobile_ui_classic">旧版样式</span><span class="mobile-nav-index">UI</span></button></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <section class="section discovery-intro-section" id="discovery-hero" aria-labelledby="discovery-heading">
+      <div class="container">
+        <div class="discovery-intro-layout">
+          <div class="discovery-intro-main">
+            <p class="band-kicker tech-only" data-i18n="hero_kicker">[00] ROBOTICS DISCOVERY · 研究发现与资源导航</p>
+            <p class="co-breadcrumb classic-only"><a href="index.html" data-i18n="back_home">← 返回首页</a></p>
+            <h1 class="discovery-title" id="discovery-heading" data-i18n="hero_title">Robotics Discovery · 机器人研究发现</h1>
+            <p class="section-subtitle discovery-subtitle" data-i18n="hero_subtitle">面向机器人研究与工程读者的资源导航与近期精选：优先引导直达原站榜单追踪论文、开源项目、模型与数据集，不做全网热度排名或第三方榜单镜像。</p>
+            <div class="discovery-hero-actions">
+              <a class="btn-primary discovery-jump-btn" href="#discovery-sources"><span data-i18n="jump_sources">推荐网站导航</span><span aria-hidden="true">↓</span></a>
+              <a class="btn-secondary discovery-jump-btn" href="#discovery-picks"><span data-i18n="jump_picks">最新论文与项目精选</span><span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <dl class="discovery-telemetry" aria-label="研究发现概览">
+            <div class="discovery-telemetry-cell">
+              <dt>SOURCES</dt>
+              <dd id="discoveryStatSources">13</dd>
+              <span class="discovery-telemetry-sub" data-i18n="stat_sources_sub">精选网站入口</span>
+            </div>
+            <div class="discovery-telemetry-cell">
+              <dt>CURATED</dt>
+              <dd id="discoveryStatPicks">—</dd>
+              <span class="discovery-telemetry-sub" data-i18n="stat_picks_sub">近期精选条目</span>
+            </div>
+            <div class="discovery-telemetry-cell">
+              <dt>WINDOW</dt>
+              <dd id="discoveryStatWindow">—</dd>
+              <span class="discovery-telemetry-sub" data-i18n="stat_window_sub">精选时间范围</span>
+            </div>
+            <div class="discovery-telemetry-cell">
+              <dt>UPDATED</dt>
+              <dd id="discoveryStatUpdated">—</dd>
+              <span class="discovery-telemetry-sub" data-i18n="stat_updated_sub">最近核验时间</span>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="discovery-sources" aria-labelledby="discovery-sources-heading">
+      <div class="container">
+        <div class="band-head">
+          <div>
+            <p class="band-kicker tech-only" data-i18n="sources_kicker">01 / 推荐网站导航</p>
+            <h2 class="section-title" id="discovery-sources-heading" data-i18n="sources_title">推荐网站导航</h2>
+          </div>
+          <div class="home-hub-tabs discovery-filter-tabs" id="discoveryCategoryTabs" role="group" aria-label="按类别筛选推荐网站">
+            <button type="button" class="home-hub-tab is-active" data-category="all" aria-pressed="true" data-i18n="cat_all">全部</button>
+            <button type="button" class="home-hub-tab" data-category="papers" aria-pressed="false" data-i18n="cat_papers">论文</button>
+            <button type="button" class="home-hub-tab" data-category="projects" aria-pressed="false" data-i18n="cat_projects">开源项目</button>
+            <button type="button" class="home-hub-tab" data-category="models" aria-pressed="false" data-i18n="cat_models">模型</button>
+            <button type="button" class="home-hub-tab" data-category="datasets" aria-pressed="false" data-i18n="cat_datasets">数据集</button>
+            <button type="button" class="home-hub-tab" data-category="tools" aria-pressed="false" data-i18n="cat_tools">补充工具</button>
+          </div>
+        </div>
+        <p class="section-subtitle" data-i18n="sources_subtitle">按论文、开源项目、模型、数据集与追踪工具分类。无需登录或等待采集任务即可直接访问原站；即使精选任务或某个外部站点暂不可用，此处导航始终独立可用。</p>
+        <div id="discoverySourcesMount" class="discovery-sources-mount data-loading" aria-live="polite">
+          <p class="data-meta" data-i18n="loading_sources">正在加载推荐网站导航…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="discovery-picks" aria-labelledby="discovery-picks-heading">
+      <div class="container">
+        <div class="band-head discovery-picks-head">
+          <div>
+            <p class="band-kicker tech-only" data-i18n="picks_kicker">02 / 最新论文与项目精选</p>
+            <h2 class="section-title" id="discovery-picks-heading" data-i18n="picks_title">最新论文与项目精选</h2>
+          </div>
+          <div class="discovery-picks-controls">
+            <div class="home-hub-tabs discovery-filter-tabs" id="discoveryKindTabs" role="group" aria-label="按类型筛选最新精选">
+              <button type="button" class="home-hub-tab is-active" data-kind="all" aria-pressed="true" data-i18n="kind_all">全部</button>
+              <button type="button" class="home-hub-tab" data-kind="paper" aria-pressed="false" data-i18n="kind_paper">论文</button>
+              <button type="button" class="home-hub-tab" data-kind="project" aria-pressed="false" data-i18n="kind_project">项目</button>
+              <button type="button" class="home-hub-tab" data-kind="model" aria-pressed="false" data-i18n="kind_model">模型</button>
+              <button type="button" class="home-hub-tab" data-kind="dataset" aria-pressed="false" data-i18n="kind_dataset">数据集</button>
+            </div>
+            <button type="button" id="copyDiscoveryListBtn" class="btn-secondary discovery-copy-btn">
+              <svg class="ui-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5.5" y="5.5" width="7.5" height="7.5" rx="1.2"/><path d="M3.5 10.5V3.5a1 1 0 0 1 1-1h7"/></svg>
+              <span data-i18n="copy_list">复制纯文本清单</span>
+            </button>
+          </div>
+        </div>
+        <p class="section-subtitle" data-i18n="picks_subtitle">优先精选最近 24 小时机器人论文与项目（必要时扩展至近 7 天并标注），优先覆盖具身智能、人形机器人、VLA、WAM、RL、IL、WBC、灵巧操作、仿真、遥操作与 SLAM；同源研究已去重聚合，命中知识库节点时直达详情页。</p>
+        <div id="discoveryStatusBar" class="discovery-status-bar" aria-live="polite"></div>
+        <div id="discoveryTopicBar" class="tag-cloud discovery-topic-bar" role="group" aria-label="按研究方向筛选"></div>
+        <p id="copyDiscoveryStatus" class="data-meta discovery-copy-status" aria-live="polite" hidden></p>
+        <div id="discoveryPicksMount" class="discovery-picks-mount data-loading" aria-live="polite">
+          <p class="data-meta" data-i18n="loading_picks">正在加载最新精选…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <a href="https://imchong.github.io/index.html" target="_blank" rel="noopener noreferrer" data-i18n="footer_author">刘冲</a> <span data-i18n="footer_tail">2026 · 机器人技术栈地图</span></p>
+    </div>
+  </footer>
+
+  <script src="ui-icons.js"></script>
+  <script src="main.js"></script>
+  <script src="discovery.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

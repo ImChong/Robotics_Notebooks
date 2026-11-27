@@ -16,6 +16,7 @@ const PAGE_FAVICONS = {
   'lab.html': 'assets/icons/favicon-home.svg',
   'hubs.html': 'assets/icons/favicon-home.svg',
   'star-history.html': 'assets/icons/favicon-home.svg',
+  'discovery.html': 'assets/icons/favicon-home.svg',
   'graph.html': 'assets/icons/favicon-graph.svg',
   'detail.html': 'assets/icons/favicon-detail.svg',
   'roadmap.html': 'assets/icons/favicon-roadmap.svg',
@@ -98,6 +99,9 @@ test('zero legacy UI emoji characters remain in updated docs pages and icon modu
     'sponsor.js',
     'home-i18n.js',
     'ui-icons.js',
+    'discovery.js',
+    'discovery-sources.json',
+    'discovery-picks.json',
     'manifest.json',
   ];
   for (const file of targets) {

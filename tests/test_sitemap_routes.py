@@ -19,8 +19,9 @@ def test_sitemap_routes_resolve_to_deployed_files():
         {"type": "source", "id": "not-a-detail-page"},
     ]
     urls = locations(items, em.BASE_URL + "/")
-    assert len(urls) == 6
+    assert len(urls) == 7
     assert len(set(urls)) == len(urls)
+    assert em.BASE_URL + "/discovery.html" in urls
     queries = {}
     for url in urls:
         parsed = urlsplit(url)
@@ -45,4 +46,4 @@ def test_sitemap_preserves_ids_and_escapes_xml():
 
 
 def test_sitemap_empty_catalog_keeps_static_routes():
-    assert len(locations([])) == 3
+    assert len(locations([])) == 4

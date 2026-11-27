@@ -1,0 +1,415 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-27T16:28:39+08:00",
+  "updated_date_bjt": "2026-11-27",
+  "status": {
+    "state": "ok",
+    "last_attempt_at": "2026-11-27T16:28:39+08:00",
+    "sources_checked": [
+      "hf-daily-papers",
+      "arxiv-cs-ro",
+      "upstar-robotics-day",
+      "upstar-robotics-week",
+      "hf-robotics-models",
+      "hf-robotics-datasets"
+    ],
+    "sources_failed": [],
+    "message_zh": "已从公开 API 与结构化榜单完成核验、去重与知识库节点匹配。",
+    "message_en": "Verified, deduplicated, and matched against knowledge base nodes."
+  },
+  "window": {
+    "primary_hours": 24,
+    "expanded": true,
+    "max_days": 7,
+    "count_24h": 3,
+    "count_7d": 7,
+    "note_zh": "优先展示最近 24 小时精选（3 项），并按近期热度与方向代表性扩展至近 7 天（补充 7 项）",
+    "note_en": "Prioritizes picks from the past 24h (3), expanded to the last 7 days (+7) for topic coverage"
+  },
+  "items": [
+    {
+      "id": "repo-robodeltas-inspect-robots",
+      "kind": "project",
+      "title_zh": "Inspect Robots（robodeltas）：物理 AI 开源评测框架",
+      "title_en": "robodeltas/inspect-robots",
+      "date": "2026-11-26",
+      "date_type": "published",
+      "window_bucket": "24h",
+      "team": "robodeltas",
+      "contribution_zh": "面向物理 AI 的开源评测框架，支持在机械臂或人形机器人上针对仿真与真机基准评测各类 LLM / VLA 策略。",
+      "contribution_en": "Open source evals for physical AI. Run any LLM/VLA on any arm/humanoid against any real/sim benchmark.",
+      "topics": [
+        "Humanoid",
+        "VLA",
+        "Embodied AI",
+        "Eval"
+      ],
+      "links": {
+        "code": "https://github.com/robodeltas/inspect-robots"
+      },
+      "signals": [
+        {
+          "source_id": "upstar-robotics-day",
+          "source_name": "Upstar Robotics 24h Rising",
+          "label_zh": "Upstar 24h 榜 #2 · +26 Stars",
+          "label_en": "Upstar 24h #2 (+26 stars)",
+          "observed_at": "2026-11-27"
+        },
+        {
+          "source_id": "github",
+          "source_name": "GitHub",
+          "label_zh": "GitHub 47 Stars",
+          "label_en": "GitHub 47 Stars",
+          "observed_at": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "id": "repo-robodeltas-worldevals",
+      "kind": "project",
+      "title_zh": "WorldEvals（robodeltas）：VLA 与物理 AI 评测基准集",
+      "title_en": "robodeltas/worldevals",
+      "date": "2026-11-26",
+      "date_type": "published",
+      "window_bucket": "24h",
+      "team": "robodeltas",
+      "contribution_zh": "面向 VLA 与物理 AI 的精选评测基准目录，所有任务均可通过 Inspect Robots 在仿真或真机上运行（机器人版 Inspect Evals）。",
+      "contribution_en": "A curated catalog of VLA / physical-AI benchmarks, each runnable on real robots or sims via Inspect Robots. (The Inspect Evals for robotics.)",
+      "topics": [
+        "VLA",
+        "Eval"
+      ],
+      "links": {
+        "code": "https://github.com/robodeltas/worldevals"
+      },
+      "signals": [
+        {
+          "source_id": "upstar-robotics-day",
+          "source_name": "Upstar Robotics 24h Rising",
+          "label_zh": "Upstar 24h 榜 #1 · +27 Stars",
+          "label_en": "Upstar 24h #1 (+27 stars)",
+          "observed_at": "2026-11-27"
+        },
+        {
+          "source_id": "github",
+          "source_name": "GitHub",
+          "label_zh": "GitHub 38 Stars",
+          "label_en": "GitHub 38 Stars",
+          "observed_at": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "id": "repo-hebbian-robotics-rua",
+      "kind": "project",
+      "title_zh": "Hebbian RUA：基于工具编排的机器人使用智能体",
+      "title_en": "Hebbian-Robotics/rua",
+      "date": "2026-11-27",
+      "date_type": "updated",
+      "window_bucket": "24h",
+      "team": "Hebbian-Robotics",
+      "contribution_zh": "RUA 将相机和机器人状态以工具接口暴露给 LLM，依靠 SDK、Compiler、Runtime 和受控 motor controller 执行单/双臂 SO-101 任务。",
+      "contribution_en": "Hebbian Robot-Use Agents (RUA) exposes camera streams and robot state as tool interfaces for LLM orchestration with compiled runtime checks and motor control on SO-101 arms.",
+      "topics": [
+        "Embodied AI"
+      ],
+      "links": {
+        "code": "https://github.com/Hebbian-Robotics/rua",
+        "project": "https://hebbianrobotics.com/"
+      },
+      "signals": [
+        {
+          "source_id": "upstar-robotics-week",
+          "source_name": "Upstar Robotics Weekly Rising",
+          "label_zh": "Upstar 周榜 #4",
+          "label_en": "Upstar Weekly #4",
+          "observed_at": "2026-11-27"
+        },
+        {
+          "source_id": "github",
+          "source_name": "GitHub",
+          "label_zh": "GitHub 124 Stars",
+          "label_en": "GitHub 124 Stars",
+          "observed_at": "2026-11-27"
+        }
+      ],
+      "kb_node": {
+        "detail_id": "entity-hebbian-rua",
+        "path": "wiki/entities/hebbian-rua.md",
+        "url": "detail.html?id=entity-hebbian-rua",
+        "title": "Hebbian RUA：基于工具编排的机器人使用智能体 / Hebbian Robot-Use Agents"
+      }
+    },
+    {
+      "id": "model-bageldotcom-bagel-robotics-1",
+      "kind": "model",
+      "title_zh": "Bagel-Robotics-1：开源双臂操作世界动作模型",
+      "title_en": "bageldotcom/Bagel-Robotics-1",
+      "date": "2026-11-24",
+      "date_type": "updated",
+      "window_bucket": "7d",
+      "team": "bageldotcom (Bagel Labs)",
+      "contribution_zh": "Bagel Labs 开源的双臂操作世界动作模型（WAM）权重，输入任务指令、三路相机视角与机器人当前状态，预测双臂及夹爪动作轨迹。",
+      "contribution_en": "Open-weight world-action model for bimanual manipulation: takes task instructions, three camera views, and current robot state to predict dual-arm and gripper actions.",
+      "topics": [
+        "WAM",
+        "Dexterous",
+        "Eval"
+      ],
+      "links": {
+        "model": "https://huggingface.co/bageldotcom/Bagel-Robotics-1",
+        "code": "https://github.com/bageldotcom/Bagel-Robotics-1"
+      },
+      "signals": [
+        {
+          "source_id": "hf-robotics-models",
+          "source_name": "Hugging Face Robotics Models",
+          "label_zh": "HF 趋势 #3 · 21 赞",
+          "label_en": "HF Trending #3 · 21 likes",
+          "observed_at": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "id": "dataset-hublabs-hubego-100k",
+      "kind": "dataset",
+      "title_zh": "HubEgo-100K：十万小时第一视角熟练操作视频数据集",
+      "title_en": "HubLabs/HubEgo-100K",
+      "date": "2026-11-25",
+      "date_type": "updated",
+      "window_bucket": "7d",
+      "team": "HubLabs",
+      "contribution_zh": "10 万小时规模的第一视角熟练手部操作视频数据集，覆盖工地、车间、厨房、商铺等真实场景；Release 2 新增 1 万小时（兼容 LeRobot）。",
+      "contribution_en": "A 100,000-hour dataset of first-person video of skilled manual work recorded across workshops, kitchens, building sites, and shops; Release 2 adds 10,000h (LeRobot compatible).",
+      "topics": [
+        "VLA",
+        "Embodied AI",
+        "Dexterous"
+      ],
+      "links": {
+        "dataset": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+        "paper": "https://arxiv.org/abs/2611.21938"
+      },
+      "signals": [
+        {
+          "source_id": "hf-robotics-datasets",
+          "source_name": "Hugging Face Robotics Datasets",
+          "label_zh": "HF 趋势 #3 · 193 赞",
+          "label_en": "HF Trending #3 · 193 likes",
+          "observed_at": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "id": "arxiv-2611.29897",
+      "kind": "paper",
+      "title_zh": "长程人形控制的自回归扩散 Mamba",
+      "title_en": "Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control",
+      "date": "2026-11-22",
+      "date_type": "published",
+      "window_bucket": "7d",
+      "team": "Peking University",
+      "contribution_zh": "以根轨迹和身体动作的双阶段扩散生成配合循环状态及持久内容记忆，支持变化指令下的流式参考运动生成。",
+      "contribution_en": "Mamba-based root-body diffusion combining resumable recurrent states and persistent content memory (PCM) for streaming long-horizon humanoid motion generation, demonstrated on Unitree G1.",
+      "topics": [
+        "Humanoid",
+        "Eval"
+      ],
+      "links": {
+        "paper": "https://arxiv.org/abs/2611.29897",
+        "project": "https://aigeeksgroup.github.io/MotionMamba2.0/",
+        "code": "https://github.com/aigeeksgroup/motionmamba2.0"
+      },
+      "signals": [
+        {
+          "source_id": "hf-daily-papers",
+          "source_name": "Hugging Face Daily Papers",
+          "label_zh": "HF Daily Papers 224 赞",
+          "label_en": "HF Daily Papers 224 upvotes",
+          "observed_at": "2026-11-27"
+        },
+        {
+          "source_id": "github",
+          "source_name": "GitHub",
+          "label_zh": "GitHub 40 Stars",
+          "label_en": "GitHub 40 Stars",
+          "observed_at": "2026-11-27"
+        }
+      ],
+      "kb_node": {
+        "detail_id": "entity-paper-motion-mamba-2",
+        "path": "wiki/entities/paper-motion-mamba-2.md",
+        "url": "detail.html?id=entity-paper-motion-mamba-2",
+        "title": "Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control｜长程人形控制的自回归扩散 Mamba"
+      }
+    },
+    {
+      "id": "arxiv-2611.30989",
+      "kind": "paper",
+      "title_zh": "具身系统物理目标达成能力评测",
+      "title_en": "WorldLeague: Benchmarking Physical Agency",
+      "date": "2026-11-22",
+      "date_type": "published",
+      "window_bucket": "7d",
+      "team": "National University of Singapore",
+      "contribution_zh": "通过轨迹上的物理目标条件，在共享任务上比较使用不同动作接口的 VLM、VLA 与 WAM。",
+      "contribution_en": "WorldLeague benchmarks 13 AI systems on 60 simulated robot tasks spanning exploration, rearrangement, and adaptation, measuring progress and success to compare autonomous physical goal achievement.",
+      "topics": [
+        "VLA",
+        "WAM",
+        "Embodied AI",
+        "Eval"
+      ],
+      "links": {
+        "paper": "https://arxiv.org/abs/2611.30989",
+        "project": "https://xyangzhou.github.io/WorldLeague/",
+        "code": "https://github.com/xyangzhou/worldleague"
+      },
+      "signals": [
+        {
+          "source_id": "hf-daily-papers",
+          "source_name": "Hugging Face Daily Papers",
+          "label_zh": "HF Daily Papers 137 赞",
+          "label_en": "HF Daily Papers 137 upvotes",
+          "observed_at": "2026-11-27"
+        },
+        {
+          "source_id": "github",
+          "source_name": "GitHub",
+          "label_zh": "GitHub 22 Stars",
+          "label_en": "GitHub 22 Stars",
+          "observed_at": "2026-11-27"
+        }
+      ],
+      "kb_node": {
+        "detail_id": "entity-paper-worldleague",
+        "path": "wiki/entities/paper-worldleague.md",
+        "url": "detail.html?id=entity-paper-worldleague",
+        "title": "Benchmarking Physical Agency (WorldLeague)｜具身系统物理目标达成能力评测"
+      }
+    },
+    {
+      "id": "arxiv-2611.33010",
+      "kind": "paper",
+      "title_zh": "镜面反射如何干扰机器人策略",
+      "title_en": "Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies",
+      "date": "2026-11-23",
+      "date_type": "published",
+      "window_bucket": "7d",
+      "team": "intelligence++",
+      "contribution_zh": "RoboDojo-Mirror 在固定任务、检查点及原生成功标准下对比无镜、单镜、双镜和镜面桌面，并用同几何非反射挡板区分反射与直接接触；实验报告五种策略均退化，公开 MIT 场景适配器。",
+      "contribution_en": "A new benchmark shows that many robot manipulation policies perform worse when mirrors are present, often because they confuse reflections with real objects rather than simply colliding with the mirror.",
+      "topics": [
+        "VLA",
+        "WAM",
+        "Embodied AI",
+        "Dexterous",
+        "Eval"
+      ],
+      "links": {
+        "paper": "https://arxiv.org/abs/2611.33010",
+        "project": "https://ipplab.github.io/robodojo-mirror",
+        "code": "https://github.com/ipplab/robodojo-mirror"
+      },
+      "signals": [
+        {
+          "source_id": "hf-daily-papers",
+          "source_name": "Hugging Face Daily Papers",
+          "label_zh": "HF Daily Papers 33 赞",
+          "label_en": "HF Daily Papers 33 upvotes",
+          "observed_at": "2026-11-27"
+        },
+        {
+          "source_id": "github",
+          "source_name": "GitHub",
+          "label_zh": "GitHub 10 Stars",
+          "label_en": "GitHub 10 Stars",
+          "observed_at": "2026-11-27"
+        }
+      ],
+      "kb_node": {
+        "detail_id": "entity-paper-robodojo-mirror",
+        "path": "wiki/entities/paper-robodojo-mirror.md",
+        "url": "detail.html?id=entity-paper-robodojo-mirror",
+        "title": "镜面反射如何干扰机器人策略 / Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies"
+      }
+    },
+    {
+      "id": "arxiv-2611.30637",
+      "kind": "paper",
+      "title_zh": "SWEEP-Bench：具身策略是否依据所见物体速度执行动作？",
+      "title_en": "SWEEP-Bench: Do Embodied Policies Act on the Speed They See?",
+      "date": "2026-11-22",
+      "date_type": "published",
+      "window_bucket": "7d",
+      "team": "Matsuo-Iwasawa-Lab",
+      "contribution_zh": "提出涵盖 80 个传送带操作任务、13 种速度（0.10-0.40 m/s）的仿真评测基准，揭示操作策略在非均值速度下的退化现象并分析历史帧/速度输入的作用。",
+      "contribution_en": "A simulation benchmark of 80 conveyor-belt manipulation tasks across 13 belt speeds showing that policies often fail at non-average speeds unless temporal/speed context is linearly decodable.",
+      "topics": [
+        "VLA",
+        "WAM",
+        "Embodied AI",
+        "Dexterous",
+        "Sim2Real"
+      ],
+      "links": {
+        "paper": "https://arxiv.org/abs/2611.30637",
+        "project": "http://damin3927.github.io/SWEEP-Bench",
+        "code": "https://github.com/damin3927/sweep-bench",
+        "dataset": "https://huggingface.co/datasets/Damin3927/SWEEP-Bench"
+      },
+      "signals": [
+        {
+          "source_id": "hf-daily-papers",
+          "source_name": "Hugging Face Daily Papers",
+          "label_zh": "HF Daily Papers 2 赞",
+          "label_en": "HF Daily Papers 2 upvotes",
+          "observed_at": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "id": "arxiv-2611.31201",
+      "kind": "paper",
+      "title_zh": "前沿多模态模型直接作为机器人策略的执行框架",
+      "title_en": "Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness",
+      "date": "2026-11-22",
+      "date_type": "published",
+      "window_bucket": "7d",
+      "team": "MMLab@NTU",
+      "contribution_zh": "研究视觉输入、规划、动作执行和工具接口如何影响前沿多模态模型直接闭环控制机器人的表现。",
+      "contribution_en": "A systematic framework shows that frontier multimodal models can serve as robot policies when harnessed with interfaces favoring native visual reasoning and tool use, achieving high success in simulated and real manipulation tasks.",
+      "topics": [
+        "VLA",
+        "Dexterous"
+      ],
+      "links": {
+        "paper": "https://arxiv.org/abs/2611.31201",
+        "project": "https://dravenalg.github.io/projects/Embo-Harness/",
+        "code": "https://github.com/dravenalg/embo-harness"
+      },
+      "signals": [
+        {
+          "source_id": "hf-daily-papers",
+          "source_name": "Hugging Face Daily Papers",
+          "label_zh": "HF Daily Papers 106 赞",
+          "label_en": "HF Daily Papers 106 upvotes",
+          "observed_at": "2026-11-27"
+        },
+        {
+          "source_id": "github",
+          "source_name": "GitHub",
+          "label_zh": "GitHub 70 Stars",
+          "label_en": "GitHub 70 Stars",
+          "observed_at": "2026-11-27"
+        }
+      ],
+      "kb_node": {
+        "detail_id": "entity-paper-embo-harness",
+        "path": "wiki/entities/paper-embo-harness.md",
+        "url": "detail.html?id=entity-paper-embo-harness",
+        "title": "Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness｜前沿多模态模型直接作为机器人策略的执行框架"
+      }
+    }
+  ]
+}

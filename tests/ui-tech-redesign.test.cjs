@@ -18,11 +18,12 @@ const HEADER_PAGES = [
   'company.html',
   'lab.html',
   'star-history.html',
+  'discovery.html',
   'graph.html',
   '404.html',
 ];
 
-test('all 10 header pages expose #uiStyleToggle, Geist font preloads, and ^⇧L keyboard hint', () => {
+test('all 11 header pages expose #uiStyleToggle, Geist font preloads, and ^⇧L keyboard hint', () => {
   for (const page of HEADER_PAGES) {
     const html = readDoc(page);
     assert.ok(html.includes('id="uiStyleToggle"'), `${page} includes #uiStyleToggle`);
@@ -363,7 +364,7 @@ test('homepage Hero tech actions follow ordered anchors and translate in English
   const doc = dom.window.document;
   const links = Array.from(doc.querySelectorAll('#hero .hero-actions.tech-only a'));
 
-  assert.equal(links.length, 5, 'Hero .hero-actions.tech-only renders 5 action links');
+  assert.equal(links.length, 6, 'Hero .hero-actions.tech-only renders 6 action links');
   assert.ok(links[0].classList.contains('btn-primary') && links[0].classList.contains('hero-cta'));
   assert.equal(links[0].getAttribute('href'), '#home-start');
   assert.equal(links[0].querySelector('span[data-home-copy]')?.textContent.trim(), '探索入口');
@@ -386,6 +387,10 @@ test('homepage Hero tech actions follow ordered anchors and translate in English
   assert.equal(links[4].getAttribute('href'), 'star-history.html');
   assert.equal(links[4].textContent.trim(), '增长趋势');
 
+  assert.ok(links[5].classList.contains('link-draw'));
+  assert.equal(links[5].getAttribute('href'), 'discovery.html');
+  assert.equal(links[5].textContent.trim(), '研究发现');
+
   const kickers = [
     doc.querySelector('#home-start .band-kicker'),
     doc.querySelector('#wiki-search .band-kicker'),
@@ -405,6 +410,7 @@ test('homepage Hero tech actions follow ordered anchors and translate in English
   assert.equal(links[2].textContent.trim(), 'Latest Updates');
   assert.equal(links[3].textContent.trim(), 'Core Hubs');
   assert.equal(links[4].textContent.trim(), 'Trends');
+  assert.equal(links[5].textContent.trim(), 'Discovery');
   assert.deepEqual(
     kickers.map((el) => el?.textContent.trim()),
     ['01 / GATEWAYS', '02 / SEARCH', '03 / LATEST', '04 / HUBS'],

@@ -40,6 +40,7 @@ test('all docs pages with a site footer default to the Chinese footer', () => {
     'change-log.html',
     'company.html',
     'detail.html',
+    'discovery.html',
     'hubs.html',
     'index.html',
     'lab.html',

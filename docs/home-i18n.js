@@ -19,6 +19,7 @@
     '榜单': 'Rankings',
     '完整图谱': 'Full Graph',
     '增长趋势': 'Trends',
+    '研究发现': 'Discovery',
     '旧版': 'Classic',
     '新版': 'Modern',
     '旧版样式': 'Classic UI',

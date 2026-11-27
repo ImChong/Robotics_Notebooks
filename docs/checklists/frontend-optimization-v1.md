@@ -7,6 +7,8 @@
 
 ## 一、 视觉降噪 (Visual De-cluttering)
 
+- [x] 新增 Robotics Discovery 推荐网站导航与最新精选页（2026-11-27，[#4279](https://github.com/ImChong/Robotics_Notebooks/issues/4279)）：在首页顶栏、移动抽屉与 Hero 行动区补充「研究发现（`discovery.html`）」独立入口；新建解耦的 `docs/discovery-sources.json`（5 类 13 个核验源站，明确标注 DailyArxiv 为关键词追踪工具而非实时榜单）与 `docs/discovery-picks.json`（优先 24 小时、必要时扩至 7 天并标注，覆盖具身智能/人形/VLA/WAM/RL/IL/WBC/灵巧操作/仿真/遥操作/SLAM，去重聚合、匹配知识库详情页、支持纯文本一键复制）；新增 `scripts/generate_discovery_picks.py` 与 `.github/workflows/discovery-daily.yml`（北京时间 09:00 每日定时 + 手动更新，失败保留上次有效快照），页面完整适配全站瑞士工程风（`data-ui="tech"`）、旧版回退、暗/亮主题、中英双语与移动端响应式，并补齐回归测试与双端截图核验。
+
 - [x] 首页 Hero 行动区补充「增长趋势」入口（2026-11-26）：在 `#hero .hero-actions.tech-only .hero-social-row` 末尾新增「增长趋势」（`star-history.html`，复用已有 `docs/home-i18n.js` 中 `'增长趋势': 'Trends'` 映射），并同步更新 `tests/ui-tech-redesign.test.cjs` 校验 5 个 Hero 按钮顺序与中英切换。
 
 - [x] 首页 Hero 按钮与 01–04 区块序号文案统一（2026-11-26）：将新版首页 `#hero .hero-actions.tech-only` 四个按钮与主体 01–04 区块 `.band-kicker` 文案统一对齐为「探索入口 / 知识检索 / 最新更新 / 核心枢纽」（`03 / 近期变更` 同步改为 `03 / 最新更新`），补充 `docs/home-i18n.js` 中英映射，并更新 `tests/ui-tech-redesign.test.cjs` 校验 Hero 按钮与 01–04 序号文案及中英切换。
