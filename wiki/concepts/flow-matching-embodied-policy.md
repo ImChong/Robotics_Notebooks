@@ -142,6 +142,8 @@ flowchart LR
 
 ## 关联页面
 
+- [iMFPO](../entities/paper-imfpo.md) — 以漂移感知的速度对齐优化一步 Mean Flow 策略；区分动作生成时延与整机控制频率。
+
 - [Diffusion Transformer](./diffusion-transformer.md)
 - [Real-Time Chunking](../entities/paper-real-time-chunking.md)
 - [MOSS（Mode-Oriented Source Shaping）](../entities/paper-moss-mode-source-shaping.md) — 通过调整 Flow Matching 源分布，实现多模态动作的指定模式采样

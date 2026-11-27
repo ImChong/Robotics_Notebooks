@@ -112,6 +112,8 @@ flowchart TB
 
 ### 推荐读什么
 
+- [iMFPO](../wiki/entities/paper-imfpo.md) — 以漂移感知的速度对齐优化一步 Mean Flow 策略；区分动作生成时延与整机控制频率。
+
 - [π₀ 实体](../wiki/entities/paper-pi0.md)
 - 博客：<https://www.physicalintelligence.company/blog/pi0> · 代码：<https://github.com/Physical-Intelligence/openpi> · arXiv：<https://arxiv.org/abs/2410.24164>
 

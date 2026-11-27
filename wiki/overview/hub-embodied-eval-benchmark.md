@@ -204,6 +204,11 @@ flowchart TD
 
 ## 关联页面
 
+- [AIRIS](../entities/paper-airis.md) — 在第一视角视频流中测社交理解与恰当的主动判断，不等同于机器人执行。
+- [ROAM-Bench](../entities/paper-roam-bench.md) — 在可交互空间里检验主动找证据和验证答案，不与固定视角知识问答混算。
+- [WorldReforge](../entities/paper-worldreforge.md) — 用仿真失败轨迹校准动作条件未来预测，区分视频观感、可见点运动与动作响应。
+- [Real2SimLab](../entities/paper-real2simlab.md) — 以可执行仿真程序为共通交付物，连接数据重建、冻结重跑和原生评分。
+
 - [具身大模型评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md)
 - [FailBench](../entities/paper-failbench.md) — VLM 失败裁判跨源基准；接触装配 balanced accuracy ≤0.60（③ 层相邻）
 - [LIBERO-Recover](../entities/paper-libero-recover.md) — 从真实执行失败态测 RSR；标准 LIBERO 排名不能预测恢复力（③ 层相邻）

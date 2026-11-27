@@ -198,6 +198,8 @@ flowchart LR
 - 复算一次 real-to-sim 评测：把若干 checkpoint 的仿真成功率与真机成绩做 Pearson/MMRV，判断"先在 sim 里筛 checkpoint"是否可信
 
 ### 推荐读什么
+
+- [Real2SimLab](../wiki/entities/paper-real2simlab.md) — 以可执行仿真程序为共通交付物，连接数据重建、冻结重跑和原生评分。
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) · [Sim vs Real 评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — real-to-sim 评测的方法与口径
 - [SIMPLER / SimplerEnv](../wiki/entities/paper-simplerenv-real2sim-eval.md) — 确立 real-to-sim 评测范式：对齐控制与视觉 gap 后免建 digital twin，仿真成功率与 Google Robot / Bridge WidowX 真机强相关
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 同一套资产既评测又训练的闭环样本

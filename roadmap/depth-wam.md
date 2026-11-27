@@ -90,6 +90,8 @@ flowchart LR
 
 ### 推荐读什么
 
+- [WorldReforge](../wiki/entities/paper-worldreforge.md) — 用仿真失败轨迹校准动作条件未来预测，区分视频观感、可见点运动与动作响应。
+
 - [Xbotics 第20讲：世界模型与数据飞轮](../wiki/entities/xbotics-handbook-lecture-20.md) — 区分观测预测、动作条件模型和 WAM，走读 checkpoint 评测。
 
 - [WorldFlow：联合视频与 3D 运动预测](../wiki/entities/paper-worldflow.md) — **Stage 1 世界侧/几何预测对照**：MoT 联合生成视频和查询点 3D 位移，轨迹可作为下游操作规划参考，但不直接输出 robot action，故不是 Joint WAM；官方训练/推理代码待发布。
@@ -182,6 +184,9 @@ flowchart LR
 - 对照 ABot-M0.5 的 Dream Forcing：解释自生成视频 latent 上训逆动力学在对齐什么
 
 ### 推荐读什么
+
+- [HOG-WAM](../wiki/entities/paper-hog-wam.md) — 以未来帧方向梯度直方图作为训练期结构监督，部署时保留动作路径。
+- [Entangle](../wiki/entities/paper-entangle-2611-28732.md) — 用人类示范视频作为上下文，对照跨任务与跨上下文的世界–动作联合泛化。
 - [AR-WAM：视觉框 + 原子动作的 Agent-Ready WAM](../wiki/entities/paper-ar-wam.md) — **Stage 3 轻量 Joint WAM / Agent 接口**：冻结 DINOv3 + 共享专家，动作与视觉/语义前瞻联合去噪；目标框替代文字、长程记忆和重试留给外部 Agent。RoboTwin clean/random 87.2/84.2%，真机 71.7%，仅模型 chunk 推理 14.09 ms。
 - [CloudRobo-WM（WM-1.0 / WM1.2 版本核验）](../wiki/entities/cloudrobo-wm.md) — 华为云世界动作模型家族：公开 RoboTwin 适配器与 WM-1.0 checkpoint、官方 WM1.2 DualAct/PPA 宣传和版本归属边界，禁止跨版本误引用。
 - [ResWAM：冻结 DINOv3 上的未来视觉残差](../wiki/entities/paper-reswam-2611-19559.md) — 用特征变化代替整帧未来监督，0.5B 双流 DiT 同训动作与未来残差；区分 2.3B 总参数与 92.7 ms 真机延迟。
