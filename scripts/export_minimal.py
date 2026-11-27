@@ -1190,6 +1190,7 @@ def generate_sitemap(items: List[Dict], base_url: str = BASE_URL) -> str:
         {"loc": base_url + "/", "priority": "1.0", "changefreq": "weekly"},
         {"loc": base_url + "/index.html", "priority": "0.9", "changefreq": "weekly"},
         {"loc": base_url + "/hubs.html", "priority": "0.7", "changefreq": "weekly"},
+        {"loc": base_url + "/discovery.html", "priority": "0.8", "changefreq": "daily"},
     ]
 
     detail_pages = [
