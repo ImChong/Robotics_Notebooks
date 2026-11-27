@@ -12,6 +12,7 @@ related:
   - ../entities/wheel-legged-genesis.md
   - ../entities/isaac-rl-two-wheel-legged-bot.md
   - ../entities/stackforce.md
+  - ../entities/rw-02op.md
   - ../concepts/sim2real.md
 original:
   - ../../sources/repos/fuwei007-navbot-en01.md
@@ -71,7 +72,7 @@ flowchart LR
 | [wheel_legged_genesis](../entities/wheel-legged-genesis.md) | Genesis | CJ-003 | `locomotion/wheel_legged_train.py` | MuJoCo `gs2mj` |
 | [lab.flamingo](../entities/isaac-rl-two-wheel-legged-bot.md) | Isaac Lab 2.0 | Flamingo | `scripts/co_rl/train.py --task Isaac-Velocity-Flat-Flamingo-v1-ppo` | 宣称零样本；sim2sim 分支迁移中 |
 
-桌面级教育向轮足（非本页工业/研究机）见 [StackForce 小轮足](../entities/stackforce.md)。
+桌面级教育向轮足（非本页工业/研究机）见 [StackForce 小轮足](../entities/stackforce.md)。 需要对照全尺寸重载与 LQR 资料时，见 CHRIC [RW-02OP](../entities/rw-02op.md) 官方支持页归档；与桌面级平台分开比较。
 
 作为低成本经典反馈对照，NavBot-EN01 在主控上处理轮编码器与俯仰反馈，由双舵机另行改变高度和侧倾；其轮驱动的 SimpleFOC 电压模式与研究平台上的力矩接口不是一回事。此例的机械、配电与控制证据见[原文核查](../../sources/repos/fuwei007-navbot-en01.md)。
 
