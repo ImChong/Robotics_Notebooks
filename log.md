@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-27] ingest | Terrain-Grounded Imagination：归档官方项目，核对 ANYmal-D 三维接触与 G1 高程图训练，区分作者加速声明和可复核指标
+
 ## [2026-11-27] ingest | 收录 Real2SimLab、PyRUA-Dex、HOG-WAM、AIRIS、WorldReforge、ROAM-Bench、SEEK、iMFPO、RoboEvo² 与 Entangle 原文核验
 
 ## [2026-11-26] ingest | 核对 11 月 26 日新增 Wiki 节点：补齐 29 个方法页一手资料、阅读骨架与机制图
