@@ -94,6 +94,7 @@ flowchart LR
 - [Tripo Studio](../wiki/entities/tripo-studio.md) — 将照片变成视觉道具原型，用来对照生成外观与测量几何的差别；实物尺寸、接触及关节仍须另核验。
 - [LingBot-Map 2.0](../wiki/entities/paper-lingbot-map-v2.md) — 连续 RGB 的相机轨迹和深度可作场景扫描上游；未知尺度点云仍需度量校准和碰撞资产制作。
 - [GenSfM：生成式结构与相机联合恢复](../wiki/entities/paper-gensfm.md) — 2–4 张未标定物体前景视图联合生成 mesh / 3DGS 与相机；论文量化评测采用四视图，适合物体级稀疏重建，不负责碰撞、摩擦和关节化。
+- [WorldBridge：从离散参考生成可漫游场景](../wiki/entities/paper-worldbridge-scattered-views.md) — 有位姿的参考可来自目标路径外；输出 RGB 与点图，用作视觉补全对照，不作碰撞几何真值。
 - [DecomVoxel：三维原生先验引导的原位去噪重建](../wiki/entities/paper-decomvoxel.md) — 遮挡条件下用显式占据/空域锚点补全物体几何及纹理，输出对象与背景网格；物性、碰撞及关节仍属 Stage 2。
 - [DepthGS：深度引导高质量表面重建](../wiki/entities/paper-depthgs.md) — 在 PGSR 基础上通过深度差自适应法线约束与跨视角双深度一致性改进静态 mesh 几何；DTU CD 0.51 mm，**不包含**物性 / 碰撞建模，归 Stage 1 而非 Stage 2。
 - [visloc-rs：SfM → 3DGS → mesh 的 Rust 重建链](../wiki/entities/visloc-rs.md) — Stage 1 视觉几何/外观上游：照片注册、可重用 COLMAP 模型、wgpu 3DGS 和 mesh；不自动附带接触物性或关节化。
