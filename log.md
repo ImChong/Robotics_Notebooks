@@ -527,6 +527,12 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-27] ingest | 收录 WorldBridge 从离散参考生成三维世界，区分视觉补全与实测几何
+
+## [2026-11-27] ingest | 收录 AgentVLN 视觉语言导航与几何技能链路
+
+## [2026-11-27] ingest | 收录 LAMR 多模态情感推理与 Agnes 推理框架专用化报告
+
 ## [2026-11-27] ingest | 收录斯坦福 CS 329Z 智能体工程课程、公开作业与可运行示例
 
 ## [2026-11-27] ingest | Loop4D：收录双流循环扩散与 4D 点图世界模型
