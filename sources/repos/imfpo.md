@@ -11,3 +11,5 @@
 训练入口 `scripts/run_ppo_teacher.sh` 与 `scripts/run_imfpo.sh`，策略实现与 runner 在 `source/isaaclab_fpo/`，机器人环境在 `source/unitree_rl_lab/`。核对 `scripts/fpo/eval_imfpo.py`、`scripts/fpo/export_onnx.py` 以及 `ActorCritic.act_inference` / `meanflow_one_step`。环境、部分机器人资产和真机部署栈需另行准备。代码核查为静态阅读，未运行训练或真机。
 
 官方权重快照 [e28f474b](https://huggingface.co/AIGeeksGroup/iMFPO/tree/e28f474b100927d17af8b9409bce42c61fc14cd9) 的 [部署配置](https://huggingface.co/AIGeeksGroup/iMFPO/blob/e28f474b100927d17af8b9409bce42c61fc14cd9/deploy.yaml) 声明 45 维观测、12 关节动作、20 ms 周期。对同快照的 ONNX 使用 ONNX Runtime CPU 跑零值与常量 0.1 的合成观测，得到有限的 float32 [1, 12] 输出；仅验证文件与 I/O，未运行仿真或真机。
+
+静态核对：[`export_onnx.py`](https://github.com/AIGeeksGroup/iMFPO/blob/cad0d8cc80fd247c6c42e1f59c0fbd3a1dedf7c4/scripts/fpo/export_onnx.py#L31-L65) 重建 actor 未选择 MeanFlow；Go2 iMFPO 训练配置使用两个 8 维时间嵌入，故 45 + 12 + 16 = 73；默认 flow 仅一个时间嵌入，45 + 12 + 8 = 65。[`play.py`](https://github.com/AIGeeksGroup/iMFPO/blob/cad0d8cc80fd247c6c42e1f59c0fbd3a1dedf7c4/scripts/fpo/play.py#L91-L109) 使用任务 runner 加载和导出，保留训练时架构；未运行训练检查点导出。

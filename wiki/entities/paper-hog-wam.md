@@ -100,6 +100,10 @@ sequenceDiagram
 - LIBERO Plus 的总体收益不能外推为所有干扰都提升；背景、照明和语言扰动类别没有改善。
 - 主方法部署参数结构与基线相同不等于已证明每种设备上运行时间一致；训练增加额外分支与目标预处理成本。
 
+## 与相关工作对比
+
+对照论文的 FastWAM 基线，HOG-WAM 改动的是训练信号与注意力路径，而不是部署时增加梯度传感器。干净条件与视觉损坏条件应分开汇报，不能用抗像素扰动结果推断接触动力学泛化。
+
 ## 结论
 
 把梯度特征用作未来预测监督，而不是作为 RGB 的替代，能在保留原推理结构的前提下改善部分感知扰动下的控制表现。
@@ -111,6 +115,8 @@ sequenceDiagram
 - [世界动作模型](../concepts/world-action-models.md)：训练目标如何向动作条件传递信息。
 - [分布外泛化](../concepts/out-of-distribution-generalization.md)：区分可控视觉扰动与机器人、任务动力学的变化。
 - [机器人操作](../tasks/manipulation.md)：抓取、堆叠和插入的闭环验证。
+
+- [机器人视觉表征学习](../methods/visual-representation-learning.md)：将辅助结构特征训练与部署输入区分开。
 
 ## 参考来源
 

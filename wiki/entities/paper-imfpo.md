@@ -81,6 +81,10 @@ flowchart TD
 
 表 1–3 的分数是平均回合回报，各平台的奖励定义和刻度不同。作者另在 Isaac Lab 以 50 Hz 回放三条 Go2 指令轨迹，并展示冻结的 Go2 控制器和 NaVILA 组合；这不是单一跨平台共享权重的验证。
 
+## 与相关工作对比
+
+对照论文同环境下的 MFPO，iMFPO 重点是 Mean Flow 训练目标和单步生成的动作分布，而非叠加更多推理积分步。选型时分开比较单步动作采样、闭环任务表现与部署链路的端到端时延。
+
 ## 结论
 
 在作者使用的速度跟踪场景中，一步生成可保留多步方法量级的回报；优势取决于训练时直接约束单步映射，不是少用积分步数本身。
@@ -112,12 +116,13 @@ sequenceDiagram
   end
 ```
 
-按公开代码静态核对：`scripts/fpo/eval_imfpo.py` 按配置归一化并分别计时 actor 与仿真步；`modules/actor_critic.py` 的 MeanFlow 分支在 `act_inference` 中调用 `meanflow_one_step`。出口可由 `scripts/fpo/export_onnx.py` 导出；没有实机或训练复现声明。
+按公开代码静态核对：`scripts/fpo/eval_imfpo.py` 按配置归一化并分别计时 actor 与仿真步；`modules/actor_critic.py` 的 MeanFlow 分支在 `act_inference` 中调用 `meanflow_one_step`。如需从训练检查点导出，优先核对 `scripts/fpo/play.py` 的任务配置与观测归一化；未运行该导出路径、训练或真机。
 
 ## 工程实践
 
 - [源码归档](../../sources/repos/imfpo.md)记录冻结教师训练、iMFPO 训练、评测、回放与 ONNX 导出入口。官方代码为 Apache-2.0，模型权重另见作者 Hugging Face 页面；仓库本身不打包 Isaac Sim/Lab、机器人资产或真机部署栈。
 - 官方 README 给 Go2 的接口为 45 维观测、12 维关节位置动作及 50 Hz。不能只按维数直接上机，仍需对应关节顺序、默认位姿、动作缩放、归一化和 PD 配置。
+- **导出边界：** 当前独立 `export_onnx.py` 未显式选择 MeanFlow，默认单时间嵌入；按标准 Go2 iMFPO 配置计算，首层输入应为 73 而不是默认 flow 的 65。把采样步数改为 1 不会改变 actor 结构。作者发布的 ONNX 可独立做 I/O 冒烟检查；不等同于验证 checkpoint 转换。
 - 复现前保留 `task`、教师检查点、学生检查点、随机种子、推理模式及依赖版本；先对照 Python 和 ONNX 输出，再跑闭环。
 
 ## 局限与风险

@@ -101,6 +101,10 @@ sequenceDiagram
 - 重演技能定义为 1 减去程序误差与静止场景误差之比；0 是与静止基线持平，负值表示更差。该值与其他基准原生分数不作直接排序。
 - 重叠筛查检测到 40 份合成变换片段中的 36 份，以及 PhysCodeGym 复用的全部 27 个 Physics-IQ 片段；极重压缩可漏检，不能把该流程视为没有污染的证明。
 
+## 与相关工作对比
+
+[Video2World](paper-video2world-coding-agents-benchmark.md) 本身规定场景/动作输入和评分；Real2SimLab 将其连同其他基准接入统一工件与重跑流程。统一运行接口不代表各原生分数可以直接跨基准排序。
+
 ## 结论
 
 Real2SimLab 的贡献在于让交付和验证可复用，不在于训练出一种通用 Real2Sim 模型。
@@ -122,6 +126,8 @@ Real2SimLab 的贡献在于让交付和验证可复用，不在于训练出一�
 - [Video2World](paper-video2world-coding-agents-benchmark.md)：具体的场景和动作包协议。
 - [具身评测与基准中心](../overview/hub-embodied-eval-benchmark.md)
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md)
+
+- [Sim2Real 关节系统辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)：用受控实测信号验证参数，补足基准运行接口本身不保证的物理可辨识性。
 
 ## 参考来源
 
