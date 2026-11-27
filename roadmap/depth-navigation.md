@@ -94,6 +94,7 @@ flowchart LR
 - [Ultra-Fusion](../wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — 韧性多传感器融合前沿
 - [CO-Calib](../wiki/entities/paper-co-calib-multi-fisheye-calibration.md) — 多鱼眼标定 failure-oriented 分析：可观测性引导选帧将 Kalibr 类管线成功率 68.1%→99.3%，多相机 VIO/SLAM 外参标定的前置工具
 - [visloc-rs：Rust SfM / 双目惯性 SLAM / 3DGS / 地图定位](../wiki/entities/visloc-rs.md) — Stage 1 的 Rust/wgpu 一体化工程案例：Basalt 移植的 VIO、跨会话地图定位与 Nav2 仿真集成；照片 3DGS 不自动成为碰撞物理场景。
+- [LingBot-Map 2.0](../wiki/entities/paper-lingbot-map-v2.md) — Stage 1 学习型视觉里程计和稠密几何：对比纯在线基座与可修订关键帧的研究版，不等同于具米制尺度的 VIO。
 - [RigVis：双目 SLAM + 松耦合 ESKF + 稠密地图](../wiki/entities/rigvis.md) — Stage 1 C++17 实现：ORB/PnP、Ceres BA/回环、SGBM；独立 VIO 输出、可选（默认关闭）ICP；KITTI 00 作者报告 1.20% / 2.81 m，未独立复现。
 - [SLAMFormer-∞](../wiki/entities/paper-slamformer-infinity.md) — memory-conditioned 几何 Transformer 统一流式前端与 PGGO 联合后端，无界长程单目稠密 SLAM；KITTI/Waymo 上 ATE 与稠密几何相对 VGGT-Long 均改善，演示 >17 km 城市驾驶一致地图；官方仓占位，推理代码待发布
 - [SE(3)-LIVOM](../wiki/entities/paper-se3-livom.md) — 双 LiDAR / IMU / 相机，内点反馈降采样与异步子图 BA；GrandTour 测试平均 ATE 1.40 cm，GPL-2.0 源码已开放。
