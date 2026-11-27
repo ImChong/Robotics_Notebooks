@@ -14,6 +14,7 @@ related:
   - ./paper-supermimic.md
   - ./bones-seed.md
   - ../methods/model-based-rl.md
+  - ../methods/whole-body-motion-tracking.md
   - ../concepts/bptt.md
 ---
 
@@ -115,6 +116,7 @@ BONES-SEED 主试验按动作类别划分留出集：同一动作的不同演员
 - [SuperMimic](./paper-supermimic.md)
 - [BONES-SEED](./bones-seed.md)
 - [基于模型的强化学习](../methods/model-based-rl.md)
+- [全身动作跟踪](../methods/whole-body-motion-tracking.md)：对照参考观测、关节目标和跌倒终止口径。
 - [人形基础模型纵深路线](../../roadmap/depth-bfm.md#stage-2-跟踪主线从-deepmimic-到-hover)
 
 ## 参考来源
