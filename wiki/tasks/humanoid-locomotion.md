@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-27
 related:
   - ../entities/paper-viola-human-data-control.md
   - ./locomotion.md
@@ -137,6 +137,7 @@ flowchart LR
 - [DWMP](../entities/paper-dwmp.md) — Koopman 本体 WM + DepthDreamer 深度 WM 双路表征；MuJoCo 五类越障 SR 0.85–0.95，G1 真机随机布局最高 0.95（arXiv:2609.12347；未开源）
 - [RoboDreamer](../entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — Mamba PSSM 前瞻行走 + 推理动作细化（arXiv:2609.07096；未见代码）
 - [GM-Loco 颗粒介质地形自适应](../entities/paper-gm-loco.md) — 3D RFT 颗粒接触 + VAE Teacher-Student；G1 玄武岩/干沙/海滩沙走跑至 2.5 m/s（arXiv:2609.10286；代码待发布）
+- [RIPPLE 大变形弹性地形](../entities/paper-ripple-elastic-terrain.md) — 预张力床面与接触耦合仿真，本体策略在 MagicBot Z1 上零样本连续起跳。
 - [HumoSlope 极端坡面物理引导步态](../entities/paper-humoslope-physics-guided-slope-locomotion.md) — slope-adaptive ZMP + BSGA；G1 盲穿户外草地坡至 32.1°；代码未开源
 - [G1 屋顶斜坡全身作业 Locomotion](../entities/paper-g1-slope-adaptive-roofing-locomotion.md) — PICO 演示→metric 坡面 mesh 轨迹优化→相位门控 RL；钉枪/锤/推 clearance 0.26–0.53 cm；UF/G1（arXiv:2609.20558；未开源）
 - [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪；超 NIST 孔洞/倾斜楼梯（arXiv:2608.10220；未开源）
