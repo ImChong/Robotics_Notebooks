@@ -110,6 +110,8 @@ flowchart LR
 - [循环神经网络](./recurrent-neural-network.md) · [模型架构纵深：Stage 1](../../roadmap/depth-model-architecture.md)
 - [世界动作模型纵深路线](../../roadmap/depth-wam.md)
 
+- [Loop4D](../entities/paper-loop4d.md)：把循环放到每个扩散去噪步内部，固定噪声时间细化 RGB / XYZ 双流隐藏态；两轮最优的结论限于论文消融。
+
 ## 推荐继续阅读
 
 先读 LoopWM 的 §3.2–3.5，弄清内循环、动作序列和末端解码；再看 Z.ai 博客的 Loop Architecture，比较固定双循环、门控更新与缓存共享三项设计各自解决的问题。
