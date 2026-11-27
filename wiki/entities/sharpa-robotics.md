@@ -129,6 +129,8 @@ flowchart LR
 
 ## 关联页面
 
+- [SHAPE：第一视角人类数据与双流灵巧操作](./paper-shape-egocentric-dexterous-manipulation.md) — 比较人类动作辅助预训练后的末端读出与关节直出。
+
 - 触觉与接触：[接触丰富操作](../concepts/contact-rich-manipulation.md)、[视触觉融合](../concepts/visuo-tactile-fusion.md)
 - 方法与任务：[VLA（视觉–语言–动作模型）](../methods/vla.md)、[灵巧操作任务](../tasks/manipulation.md)
 - 论文节点（本次 ingest）：[SaTA](./paper-sata.md)、[Tacmap](./paper-tacmap.md)、[DexEMG](./paper-dexemg.md)、[FTP-1](./paper-ftp-1.md)、[Do as I Do](./paper-do-as-i-do.md)、[Play2Perfect](./paper-play2perfect.md)、[Dex-X](./paper-dex-x.md)、[TacBPM](./paper-tacbpm.md)、[UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md)
