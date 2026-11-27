@@ -2,7 +2,7 @@
 type: method
 tags: [evaluation, benchmark, ai]
 status: complete
-updated: 2026-11-26
+updated: 2026-11-27
 summary: "使用明确的数据、任务协议和指标比较模型或智能体的行为。"
 sources:
   - ../../sources/sites/method-ai-benchmark-evaluation-primary-20261126.md
@@ -32,6 +32,8 @@ related:
 ## 为什么重要
 
 同一任务可以得到正确文本、错误状态或正确状态但违规路径；只看一个结果或自报成功会掩盖问题。区分能力测试与回归测试，避免把低样本随机波动当成持续进步。
+
+[Gemini 蒸馏服务](../entities/google-gemini-distillation-service.md) 是托管文本调优的例子：用同一留出集比较基座学生、蒸馏学生和教师，并将质量、耗时、成本分别汇报。
 
 ## 主要技术路线（核心机制）
 
