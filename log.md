@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-27] ingest | WeVisOne-VL：复核 arXiv v2、更新 11 月已开放的 SFT/GRPO，并核验结构化输出
+
 ## [2026-11-27] ingest | RW-02OP：归档 CHRIC 官方支持资料与许可入口，区分四项独立轮足学习项目
 
 ## [2026-11-27] ingest | RynnVLA-Latent：复核 v1 全文、官方源码与 Stage-1 两处权重发布，更新既有节点
