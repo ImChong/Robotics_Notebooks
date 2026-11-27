@@ -134,3 +134,4 @@ flowchart TD
 - [ANYmal IROS 2016 原文 DOI](https://doi.org/10.1109/IROS.2016.7758092)
 - [ANYbotics：ANYmal X 防爆认证与应用范围](https://www.anybotics.com/robotics/anymal-x/)
 - [ETH RSL：Learning Locomotion over Challenging Terrain（2020）](https://rsl.ethz.ch/the-lab/news/2020/10/learning-locomotion-over-challenging-terrain.html)
+- [Terrain-Grounded Imagination](terrain-grounded-imagination.md)：ANYmal-D 在显式三维地形查询下预测足端与非足端接触，用短想象轨迹训练到点策略。
