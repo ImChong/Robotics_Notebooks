@@ -10,7 +10,8 @@
 - **项目：** https://zefanw.github.io/JustRUA/
 - **源码：** https://github.com/ZefanW/JustRUA
 - **入库日期：** 2026-11-16
-- **核对范围：** 已核对原始论文 HTML v1 的引言、方法、实验、对比、结论与局限，并参照作者项目页核对核心机制及口径；参考文献不逐篇复读。
+- **复核日期：** 2026-11-27
+- **核对范围：** 原始论文 HTML v1 正文与附录 A–I，重点复核附录 B 控制预算、D 布局加权、E 行为审查及 H 坐标求解；参照作者项目和公开回放核对口径。
 - **通读：** 已完成
 - **一句话说明：** 固定 RoboDojo 测试集与基础 harness，分别消融模型调用历史、运动动作接口、经验复用与场景几何，构建更高效的 GPT-6 Astra 机械臂使用智能体。
 
@@ -24,7 +25,7 @@
 
 ### 实验与数值边界
 
-在作者定义的 **111-episode** RoboDojo 对照评测子集（涵盖全部 42 任务），官方 L3 harness 29.7 → 最终 JustRUA 50.3；最终配置对应成功率 43.3%，首轮平均调用成本约 12.53 美元/episode。该分数不是未经校正的官方排行榜总分。
+在作者定义的 **111-episode** RoboDojo 对照评测子集（涵盖全部 42 任务），官方 L3 harness 29.7 → 最终 JustRUA 50.3；最终配置对应成功率 43.3%，首轮每 episode 模型调用成本下界 12.53 美元（可缓存输入全命中假设）。该分数不是未经校正的官方排行榜总分。
 
 - **对 wiki 的映射：** 主实体 — 实验与评测、结论及误读警示。
 
@@ -39,3 +40,4 @@
 - [arXiv HTML v1](https://arxiv.org/html/2611.16009v1)
 - [作者项目页](https://zefanw.github.io/JustRUA/)
 - [公开代码](https://github.com/ZefanW/JustRUA)
+- [官方回放与目录核验](../sites/justrua-robodojo-replay-explorer.md)

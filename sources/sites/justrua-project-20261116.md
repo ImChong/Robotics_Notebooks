@@ -9,3 +9,5 @@
 - **对应归档：** [论文原文核对](../papers/justrua-arxiv-2611-16009.md)
 - **代码：** https://github.com/ZefanW/JustRUA
 - **源码核验归档：** [查看](../repos/justrua-official-20261116.md)
+
+- **回放（2026-11-27 复核）：** [官方 Replay Explorer 与数据清单](justrua-robodojo-replay-explorer.md)。
