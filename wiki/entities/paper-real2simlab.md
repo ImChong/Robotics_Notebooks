@@ -120,6 +120,8 @@ Real2SimLab 的贡献在于让交付和验证可复用，不在于训练出一�
 
 ## 关联页面
 
+- [Real2Worlds2Real](paper-real2worlds2real.md)：用可复核的孪生交付件连接建景与策略开发，另测数字表亲扩展和技能复用。
+
 - [CRISP Real2Sim](../methods/crisp-real2sim.md)：将接触约束用于物理重建，与平台的通用评测接口分工不同。
 - [系统辨识](../concepts/system-identification.md)：把重演质量与参数可辨识性区分开。
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)：对照任务版本、运行记录与评分口径。

@@ -200,6 +200,7 @@ flowchart LR
 ### 推荐读什么
 
 - [Real2SimLab](../wiki/entities/paper-real2simlab.md) — 以可执行仿真程序为共通交付物，连接数据重建、冻结重跑和原生评分。
+- [Real2Worlds2Real](../wiki/entities/paper-real2worlds2real.md) — 对照数字表亲多样性、有限真实示范与孪生内残差精炼，区分未见仿真场景与真机结果。
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) · [Sim vs Real 评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — real-to-sim 评测的方法与口径
 - [SIMPLER / SimplerEnv](../wiki/entities/paper-simplerenv-real2sim-eval.md) — 确立 real-to-sim 评测范式：对齐控制与视觉 gap 后免建 digital twin，仿真成功率与 Google Robot / Bridge WidowX 真机强相关
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 同一套资产既评测又训练的闭环样本
