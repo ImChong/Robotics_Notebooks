@@ -127,6 +127,7 @@ flowchart LR
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 - [SuperMimic](../wiki/entities/paper-supermimic.md) — 动作跟踪策略与可微世界模型联合训练，短时想象 rollout + 解析梯度降低大规模人形全身控制的训练算力
+- [Trust What Repeats](../wiki/entities/paper-trust-what-repeats.md) — 用同起点复抽与仿真差分检查梯度，区分逐轨迹限幅、起点加权和难例重置；比较 BONES-SEED 留出动作的尾部与达到同一回报的墙钟时间。
 - [PartyMimic](../wiki/entities/partymimic.md) — Stage 2 全库跟踪：G1/RP1 用在线世界模型和 32 步可微想象，分别看 41 小时未见集、LAFAN 同集速度与训练侧命令滞后；区分项目页配方与部署默认。
 - [MorphMimic](../wiki/entities/paper-morphmimic.md) — 在 SuperMimic 路线上加规范化人形接口与形态条件化，G1 / X2 Ultra / T2 共用一个世界模型与一套跟踪策略
 - [ScaleBFM](../wiki/entities/paper-scaling-bfm-humanoid.md) — 人形 BFM 规模化配方：全局坐标系整体跟踪 + on-policy rollout 与参考运动多样性协同 + 3M 参数 Humanoid Transformer
