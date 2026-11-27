@@ -33,7 +33,6 @@ const OPTIONAL_ASSETS = [
   '404.html',
   'discovery.js',
   'discovery-sources.json',
-  'discovery-picks.json',
   'wiki-type-labels.js',
   'graph-tooltip.js',
   'graph-node-size.js',
@@ -119,12 +118,8 @@ self.addEventListener('fetch', (event) => {
   const skipPut = shouldSkipCachePut(url);
   const putTarget = isHtml && url.search ? url.pathname : event.request;
 
-  // 目录与每日精选优先读网络，离线再用缓存；正文哈希 URL 与目录版本配套。
-  if (
-    url.pathname.endsWith('/sponsor.js') ||
-    url.pathname.endsWith('/site-catalog-v1.json') ||
-    url.pathname.endsWith('/discovery-picks.json')
-  ) {
+  // 目录优先读网络，离线再用缓存；正文哈希 URL 与目录版本配套。
+  if (url.pathname.endsWith('/sponsor.js') || url.pathname.endsWith('/site-catalog-v1.json')) {
     event.respondWith(
       fetch(event.request)
         .then((resp) => {

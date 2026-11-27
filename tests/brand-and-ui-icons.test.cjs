@@ -101,7 +101,6 @@ test('zero legacy UI emoji characters remain in updated docs pages and icon modu
     'ui-icons.js',
     'discovery.js',
     'discovery-sources.json',
-    'discovery-picks.json',
     'manifest.json',
   ];
   for (const file of targets) {

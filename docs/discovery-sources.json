@@ -33,14 +33,6 @@
       "desc_zh": "检索机器人遥操作、仿真与多模态具身数据资源",
       "desc_en": "Trending robotics manipulation, simulation, and embodied datasets",
       "icon": "database"
-    },
-    {
-      "id": "tools",
-      "label_zh": "补充工具",
-      "label_en": "Tracking Tools",
-      "desc_zh": "可自部署或订阅的关键词自动追踪辅助工具",
-      "desc_en": "Automated keyword-tracking utilities to complement discovery",
-      "icon": "wrench"
     }
   ],
   "sites": [
@@ -246,24 +238,6 @@
       "kind_badge_en": "Trending Datasets",
       "cadence_zh": "实时趋势 · 官方 Hub",
       "cadence_en": "Live trending · Official Hub",
-      "verified_at": "2026-11-27"
-    },
-    {
-      "id": "daily-arxiv-tool",
-      "category": "tools",
-      "name_zh": "DailyArxiv",
-      "name_en": "DailyArxiv",
-      "domain": "github.com",
-      "url": "https://github.com/Ed1sonChen/DailyArxiv",
-      "summary_zh": "开源自动化论文追踪工具（GitHub 仓库，非统一实时榜单）：按关键词自动抓取 arXiv 最新论文并在 README 保留各关键词最近至多 100 篇，支持 Watch 邮件提醒。",
-      "summary_en": "Open-source automated paper tracking tool (GitHub repo, not a unified real-time ranking): fetches latest arXiv papers by keywords, retaining up to 100 recent entries per keyword with Watch notifications.",
-      "best_for_zh": "按自定义关键词自动化追踪 arXiv 更新或作为自建追踪模板",
-      "best_for_en": "Keyword-based automated arXiv tracking or forkable tracker template",
-      "kind_badge_zh": "自动化追踪工具",
-      "kind_badge_en": "Tracking Tool",
-      "cadence_zh": "自动化工具 · 关键词抓取（非实时榜单）",
-      "cadence_en": "Automated tracker · Keyword fetch (not a live ranking)",
-      "is_supplement_tool": true,
       "verified_at": "2026-11-27"
     }
   ]
