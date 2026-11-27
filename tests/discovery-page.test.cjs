@@ -150,6 +150,9 @@ test('homepage and discovery share unified 2-char header/mobile nav links, i18n,
 
   const styleCss = readDoc('style.css');
   assert.match(styleCss, /:root:not\(\[data-ui="classic"\]\)\s+\.header-start\s*\+\s*\.header-spacer\s*\{\s*display:\s*none;\s*\}/);
+  assert.match(styleCss, /\[data-ui="classic"\]\s+\.header-start\s*\{[\s\S]*?min-width:\s*0;/);
+  assert.match(styleCss, /\[data-ui="classic"\]\s+\.header-start\s*\+\s*\.header-spacer\s*\{\s*display:\s*none;\s*\}/);
+  assert.match(styleCss, /\.discovery-row-anchor\s*\{[\s\S]*?grid-template-columns:\s*34px\s+minmax\(0,\s*1fr\)\s+\d+px\s+\d+px\s+18px;/);
   assert.equal(
     /body\.page-home\s+\.header-right\s+\.version-toggle[\s\S]{0,120}display:\s*none/.test(styleCss),
     false,
