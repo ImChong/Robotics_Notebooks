@@ -3,7 +3,7 @@ type: entity
 project_id: driving-drivewam
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-28
 arxiv: "2605.28544"
 code: https://github.com/chenshi3/DriveWAM
 summary: "We present DriveWAM, a driving world-action model that adapts a pretrained video diffusion transformer into an autoregressive video-action policy. To incorporate high-level scene understanding, we introduce scene-evolvin"
@@ -25,7 +25,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# DriveWAM
+# DriveWAM：视频先验驱动的驾驶世界动作模型（Video-Prior Driving World–Action Model）
 
 **DriveWAM: Video Generative Priors Enable Scalable World-Action Modeling for Autonomous Driving** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 325/564** 篇，分组 **WAMs**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
@@ -124,6 +124,8 @@ We present DriveWAM, a driving world-action model that adapts a pretrained video
 
 ## 参考来源
 
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
+
 - [`sources/papers/rcl_awesome_wam_2605_28544_drivewam-video-generative-priors-enable.md`](../../sources/papers/rcl_awesome_wam_2605_28544_drivewam-video-generative-priors-enable.md) — 本条目策展摘录
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
@@ -181,6 +183,8 @@ sequenceDiagram
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_drivewam.md)和[代码入口](../../sources/repos/ad_top10_2026_drivewam.md)。
 
 ## 工程实践
+
+**官方发布复核（2026-11-28）：** 公开训练与评测分 NAVSIM 和 PhysicalAI-AV 两条链路，模型仓分目录发布相应权重。前者用 navtest metric cache 算 PDM Score，后者有独立评测入口和导航提示。场景演化引导、联合视频–动作生成及选择性 KV 记忆不同于仅在训练期加视觉监督。 对照 [DriveVLA-W0](./paper-sa-2510-12796-drivevla-w0-world-models-amplify-data-scaling-la.md)，不能把这两种机制都简写成“推理先预测一段视频再规划”。
 
 官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
 

@@ -3,7 +3,7 @@ type: entity
 project_id: driving-autovla
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-28
 arxiv: "2506.13757"
 venue: "NeurIPS 2025"
 code: https://github.com/ucla-mobility/AutoVLA
@@ -26,7 +26,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# AutoVLA
+# AutoVLA：自适应推理驾驶模型（Adaptive-Reasoning Driving VLA）
 
 **AutoVLA: A Vision-Language-Action Model for End-to-End Autonomous Driving with Adaptive Reasoning and Reinforcement Fine-Tuning** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 228/564** 篇，分组 **VLA**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
@@ -136,6 +136,8 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 
 ## 参考来源
 
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
+
 - [`sources/papers/rcl_awesome_wam_2506_13757_autovla-a-vision-language-action-model-f.md`](../../sources/papers/rcl_awesome_wam_2506_13757_autovla-a-vision-language-action-model-f.md) — 本条目策展摘录
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
@@ -193,6 +195,8 @@ sequenceDiagram
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_autovla.md)和[代码入口](../../sources/repos/ad_top10_2026_autovla.md)。
 
 ## 工程实践
+
+**官方发布复核（2026-11-28）：** 仓库提供动作码本、SFT、RFT 与 NAVSIM 评测入口。官方发布的合并 LoRA checkpoint 可用 `LORA=false` 评测；快模式直接输出轨迹动作 token，慢模式先生成推理再输出 token。此仓不是 AutoVLA-D。
 
 官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
 

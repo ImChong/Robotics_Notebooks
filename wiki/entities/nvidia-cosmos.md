@@ -3,7 +3,7 @@ type: entity
 project_id: nvidia-cosmos
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-28
 project: https://www.nvidia.com/en-us/ai/cosmos/
 related:
   - ./cosmos-3.md
@@ -133,6 +133,8 @@ flowchart TB
 
 ## 工程实践
 
+**官方发布复核（2026-11-28）：** 根仓/配方入口与 Cosmos Framework、模型卡分开。Cosmos3-Nano-Sim-Auto 面向多视角与 LiDAR 条件的闭环驾驶仿真，Transfer-Auto 面向驾驶数据生成；它们是不同能力的示例检查点，不是可替代驾驶规划策略的同一模型。 运行链与已发布配方详见 [Cosmos 交互式世界仿真](./paper-cosmos-interactive-world-simulation.md)。
+
 **最小上手（README Quickstart）：** 先在 HF 申请并接受 [`nvidia/Cosmos-1.0-Guardrail`](https://huggingface.co/nvidia/Cosmos-1.0-Guardrail)（仅登录不等于有权限）；`uv venv --python 3.13`；装 diffusers（git 版）、accelerate、`cosmos_guardrail` 等；用 `Cosmos3OmniPipeline.from_pretrained("nvidia/Cosmos3-Nano", torch_dtype=torch.bfloat16)` 生成视频并 `export_to_video(..., fps=24)`。首次会下载 16B 检查点，扩散步骤很耗算力。
 
 
@@ -185,6 +187,8 @@ flowchart TB
 - [Deepu Talla 访谈：机器人 ChatGPT 时刻](./nvidia-robotics-chatgpt-moment-deepu-talla-2026.md) — 对世界模型作为物理状态预测和策略评估器的产业解释，技术实现以官方源码为准。
 
 ## 参考来源
+
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
 
 - [NVIDIA Cosmos 产品页](../../sources/sites/nvidia-cosmos.md)
 - [NVIDIA/cosmos 仓库](../../sources/repos/nvidia_cosmos.md)

@@ -3,7 +3,7 @@ type: entity
 project_id: driving-opendrivevla
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-28
 venue: "AAAI 2026"
 summary: "RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。"
 related:
@@ -24,7 +24,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# OpenDriveVLA
+# OpenDriveVLA：驾驶视觉语言动作模型（Vision-Language-Action for Driving）
 
 **OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 247/564** 篇，分组 **VLA**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
@@ -98,6 +98,8 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 
 ## 参考来源
 
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
+
 - [`sources/papers/rcl_awesome_wam_ref_b5386c6f934f87f4cec4_opendrivevla-towards-end-to-end-autonomo.md`](../../sources/papers/rcl_awesome_wam_ref_b5386c6f934f87f4cec4_opendrivevla-towards-end-to-end-autonomo.md) — 本条目策展摘录
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
@@ -149,6 +151,8 @@ sequenceDiagram
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_opendrivevla.md)和[代码入口](../../sources/repos/ad_top10_2026_opendrivevla.md)。
 
 ## 工程实践
+
+**官方发布复核（2026-11-28）：** 仓库提供推理与评测入口及 0.5B 检查点；官方发布清单的训练脚本仍未勾选。论文里的分阶段训练不能当作已经公开的复训流程。
 
 官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
 
