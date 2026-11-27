@@ -116,6 +116,7 @@ sequenceDiagram
 
 - [智能体工具调用接口](../methods/agent-tool-use-interface.md) — 核对参数合法、写入授权、待审状态和实际提交的区别。
 - [工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md) — 用载荷、边界条件、网格与工件身份解释结果，不只看是否出图。
+- [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — OpenPE 属于第一级 EDA 预审工具，不验证后续电流环、辨识或实时总线。
 - [人形机器人硬件设计纵深 · Stage 4](../../roadmap/depth-humanoid-hardware-design.md) — 将电源板设计预审放回板级落地和实测链路。
 
 ## 参考来源
