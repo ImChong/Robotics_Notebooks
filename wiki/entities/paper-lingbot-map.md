@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robbyant, 3d-reconstruction, foundation-model, slam, streaming-perception, pose-estimation, depth-estimation, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-27
 original:
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
   - ../../sources/repos/lingbot-map.md
@@ -10,6 +10,7 @@ arxiv: "2604.14141"
 venue: "ECCV 2026 oral"
 code: https://github.com/Robbyant/lingbot-map
 related:
+  - ./paper-lingbot-map-v2.md
   - ../methods/lingbot-map.md
   - ./paper-sure-map.md
   - ./paper-glob3r.md
@@ -187,6 +188,7 @@ sequenceDiagram
 - **离线 SfM 替代性有限：** 需要最高精度离线位姿 / 神经渲染初值时应并行评估 Glob3R、VGG-T³ 等路线。
 
 ## 关联页面
+- [LingBot-Map 2.0](paper-lingbot-map-v2.md)：后续独立技术报告在因果基座上加入几何上下文重整合；两版源码和权重许可不同。
 
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — 发布方公司页与 LingBot 全栈
 - [LingBot-Map（方法页）](../methods/lingbot-map.md) — 机制与选型展开
