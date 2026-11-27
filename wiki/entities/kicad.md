@@ -134,6 +134,7 @@ flowchart TB
 - [atopile](./atopile.md) — 以声明式代码描述电子设计，并与 KiCad 布局衔接的语言与编译工具链。
 
 - [Qucs-S](./qucs-s.md) — 独立的电路仿真 GUI，可调用 Ngspice、Xyce 等外部后端；补充电路级分析，不替代 PCB 设计。
+- [OpenPE](./openpe.md) — 在限定的 KiCad 10 工程能力上叠加 Agent 审核、瞬态分析与外壳 CAD；制造前仍需独立复核。
 
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（开源 KiCad vs 商用 Altium、自研驱动板 vs 商用一体化关节）
 - [Humanoid Hardware 101 · 05：能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
