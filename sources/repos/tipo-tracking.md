@@ -15,3 +15,5 @@
 - `track_transformations` 每帧分割、抽样和打分。每个对象先判断拆卸；装配选择须避开已被拆卸的 ID。接受的事件替换跟踪对象并写入结构图。公开代码的拆卸组内评分是逐分量对自身和组内其他像素的覆盖率相乘并取均值，不是论文式 (6) 的整体并集面积覆盖；不要把论文公式和发布代码的分数认作逐项相同。
 - Judge 用当前标注帧及约 5/3/1 秒前的历史帧，发布版 Judge 把历史帧作为本机路径交给服务。Labeler 在完整结构跟踪之后可选地补名字和动作，也能产出无语义 JSON 再单独补标。默认论文使用 GPT-5.4；README 示例用 Qwen 3.5 35B 做本地 Labeler，两者的语义指标不能混用。
 - 固定源码中提取 `get_compatible_assembly` 与 `safe_lin_sum_assignment`，用 NumPy/SciPy 在 CPU 完成 4 条合成断言；另核查公开元数据与摩卡壶标注 3 条。未运行 SAM、MLLM、GPU 跟踪或全量 VISTA 指标。
+
+另以合成的 10 个结构匹配事件调用固定源码中的评测函数（替身输入，不调用模型），确认其 HF1 为 1.0，即使仅 1 个语义全对；严格带标签事件的 F1 则为 0.10。详见 [evaluate_sequence](https://github.com/davidegardenal/TIPO/blob/15494a9c2b6d1fd5f9d6d0644896bbcfa67abbce/eval.py#L268-L299)。序列缺预测会被跳过，复现应记录完成清单。这个检验不重算论文原表。
