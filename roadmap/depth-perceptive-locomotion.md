@@ -105,6 +105,7 @@ flowchart LR
 - [InfiniteDiffusion / Terrain Diffusion](../wiki/entities/paper-infinite-diffusion-terrain-diffusion.md) — 学习式程序化地形的生成侧新工具（SIGGRAPH 2026，无界流式生成）
 - [Domain Randomization](../wiki/concepts/domain-randomization.md)
 - [DreamWaQ++](../wiki/entities/dreamwaq-plus.md)
+- [Terrain-Grounded Imagination](../wiki/entities/terrain-grounded-imagination.md) — 在短世界模型轨迹中反传策略梯度，保留显式地形查询；对照 G1 高程图与 ANYmal-D 三维接触。
 - [PIE：感知一阶段鲁棒行走](../wiki/methods/pie-perceptive-locomotion.md) — 单阶段视觉跑酷框架，深度图+本体经多头估计器输出显式高度图与隐式环境表征，与两阶段 teacher-student 路线对照
 - [Teacher-Student 与 DAgger 训练](../wiki/methods/teacher-student-dagger-training.md) — 特权教师蒸馏可部署学生的通用范式，本 Stage teacher-student 感知策略路线的方法页
 - [P³](../wiki/entities/paper-p3.md) — 指出 DreamWaQ/PIE 等主流 VAE-PPO 感知策略训练难收敛的根因是单样本似然误把分量高斯当边缘策略；用多样本边缘化（MM）修正后训练诊断保住率 64.6%→100%，比最强 MC-only 少 20%+ 收敛步，MuJoCo 与 G1 真机均最优；官方仓开源 Isaac Lab + rl_p3 训练/评测脚本
