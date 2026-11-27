@@ -1,112 +1,136 @@
 ---
 type: entity
-tags:
-  - paper
-  - vlm
-  - visual-grounding
-  - segmentation
-  - tencent
-status: complete
-updated: 2026-10-27
 project_id: wevisone-vl
 arxiv: "2610.31329"
+project: https://tencent.github.io/WeVisOne-VL/
 code: https://github.com/Tencent/WeVisOne-VL
-summary: "WeVisOne-VL 以统一视觉语言模型和轻量像素解码器覆盖定位、分割与抠图，并对缺失目标提供拒答。"
+institutions: [tencent]
+tags: [paper, vlm, visual-grounding, segmentation, tencent]
+status: complete
+updated: 2026-11-27
+summary: "WeVisOne-VL 通过结构化点框与轻量像素解码器统一检测、指代、分割和抠图；公开权重、推理评测以及 SFT/GRPO 微调代码。"
 related:
   - ./sa2va.md
   - ./lisa.md
+  - ../methods/object-detection.md
+  - ../methods/robot-visual-perception.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/wevisone_vl_arxiv_2610_31329.md
   - ../../sources/repos/wevisone-vl.md
+  - ../../sources/sites/wevisone-vl.md
+original: ../../sources/papers/wevisone_vl_arxiv_2610_31329.md
 ---
 
 # WeVisOne-VL：从物体到像素的统一视觉感知
 
+英文原题：*WeVisOne-VL: Unified Visual Perception from Objects to Pixels*。
+
 ## 一句话定义
 
-腾讯微信视觉团队提出的视觉语言模型，将目标级定位和像素级分割、抠图统一到同一接口，并支持缺失目标拒答。
+腾讯微信视觉团队在 **Qwen3-VL** 上统一检测、指代定位、计数、指点、OCR、指代分割与抠图。同一模型可以输出点、框、二值掩码、连续 alpha，或者在未匹配到目标时不返回对象。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLM | Vision-Language Model | 视觉语言模型 |
-| OCR | Optical Character Recognition | 文字识别 |
-| SFT | Supervised Fine-Tuning | 监督微调 |
-| RL | Reinforcement Learning | 强化学习 |
+|---|---|---|
+| VLM | Vision-Language Model | 视觉和语言条件的骨干 |
+| OCR | Optical Character Recognition | 文字位置识别及转录 |
+| SFT | Supervised Fine-Tuning | 分阶段监督微调 |
+| GRPO | Group Relative Policy Optimization | 从一组结构化响应的相对奖励优化策略 |
+| IoU | Intersection over Union | 预测与标注的交并比 |
+| MAD | Mean Absolute Difference | alpha 抠图的平均绝对差 |
 
-## 核心信息
+## 为什么重要
 
-| 项 | 内容 |
-|----|------|
-| 机构 | 腾讯（Tencent）微信视觉团队 |
-| 论文 | [arXiv:2610.31329](https://arxiv.org/abs/2610.31329)，预印本 |
-| 模型 | 2B、4B；官方公开权重和推理代码 |
-| 任务 | 检测、指代定位、计数、指点、OCR、分割、抠图 |
+给机器人自然语言指令时，视觉系统不只要识别「这是杯子」，还要区分目标是否存在、是哪个实例、以及边界是否足够精细。点和框适合粗定位，掩码用于区域级后处理，alpha 适合分数透明度和细边界。它们都不是三维位姿、可抓性或控制置信度。
 
-## 核心原理
+## 核心机制
 
-模型以结构化文本表示坐标和缺失目标，输出 `None` 作为拒答；像素任务中，OBJ token 的隐藏状态、预测框和视觉特征输入约 9.6M 参数的像素解码器，得到掩码或连续 alpha matte。训练采用三阶段 SFT 和混合任务 RL。
+1. **统一对象语法。** 语言模型生成标签和归一化坐标，坐标用 `[0,1000]` 的 token 表示；无匹配可输出 `<box>none</box>`。数据引擎用对难负例的整图复核区分真不存在和检测漏报；论文报告逾 1 亿图像、约 36 亿框标注。
+2. **用对象 token 请求像素输出。** 预测框后附 `<OBJ>`。约 9.6M 参数的解码器用 token 隐藏状态、框位置和多层 ViT 特征构造实例查询，并输出全图概率；抠图增加边界精细化，不依赖另行调用 SAM。
+3. **先对齐输出，再加像素监督。** 论文训练依次建立任务语法、提高分辨率和密集目标覆盖、联合 token 与像素训练并细化 alpha，最后做混合任务 GRPO。定位奖励在类别内做 Hungarian 匹配并累加匹配 IoU 的三次方；分割/抠图的 RL 奖励仍基于框和 `<OBJ>`，不是直接像素奖励。
+
+```mermaid
+flowchart LR
+  input["图像 + 自然语言任务"] --> vlm["Qwen3-VL 结构化生成"]
+  vlm --> absent["无匹配：无对象"]
+  vlm --> geom["标签 + 点 / 框"]
+  vlm --> obj["框 + OBJ token"]
+  obj --> pixel["9.6M 像素解码器"]
+  image["多层视觉特征"] --> pixel
+  pixel --> output["掩码 / 连续 alpha"]
+```
 
 ## 源码运行时序图
 
+固定提交 `80ecbdd` 的推理路径。SDK 的 `response` 保留结构化文字；通用检测框需解析响应，不要把仅为像素分支返回的 `result.boxes` 直接当全部检测结果。
+
 ```mermaid
 sequenceDiagram
-    participant U as 用户
-    participant M as WeVisOneVL
-    participant V as 视觉语言模型
-    participant D as 像素解码器
-    U->>M: 图像、任务和查询
-    M->>V: 编码输入并生成结构化结果
-    V-->>M: 目标框、OBJ 或 None
-    opt 像素级任务
-        M->>D: 特征、目标框和 OBJ 状态
-        D-->>M: 掩码或 alpha matte
-    end
-    M-->>U: 预测结果
+  participant U as 调用方
+  participant E as WeVisOneVL.predict
+  participant V as VLM / Processor
+  participant D as Pixel Decoder
+  U->>E: 图像、任务、查询或提示框
+  E->>V: build_prompt 后 generate_text
+  V-->>E: 结构化文本
+  opt 请求解码且包含可解析的框与 OBJ
+    E->>V: decode_masks 以已生成文本做第二次前向
+    V-->>E: OBJ 隐藏状态和多层 ViT 特征
+    E->>D: 分批输入实例特征、框和图像
+    D-->>E: 逐实例像素 logits
+    E->>E: Sigmoid 并恢复输入图尺寸
+  end
+  E-->>U: 原始响应、像素分支框与概率图
 ```
 
-官方 README 使用 `WeVisOneVL(...).predict(...)`；具体安装及任务选项见[仓库归档](../../sources/repos/wevisone-vl.md)。
+## 实验与评测
 
-## 评测
+数值均来自 [论文 v2](https://arxiv.org/pdf/2610.31329v2) 4B 行，非独立复现。§5 使用温度 0 贪心解码，每图最多 1,960 个视觉 token。
 
-官方报告以检测 F1 在 IoU 0.5–0.95 上的均值及缺失目标拒答率为指标，采用 greedy decoding 和每图不超过 1,960 个视觉 token。下表为报告的百分数，非独立复现结果。
+| 基准（论文表） | 4B 结果 | 读法 |
+|---|---:|---|
+| LVIS / Dense200（表 2） | F1 Mean 55.3 / 71.3 | 在 IoU 0.50–0.95 上求均值，不是 AP |
+| WeRef-Bench（表 3） | F1 Mean 78.7；拒答 96.4% | LocateAnything-3B 为 51.7、73.0%；拒答只看缺失目标 |
+| RefCOCOg-Rej（表 3） | 拒答 67.4% | 另一数据集；不可与上行合成通用拒答率 |
+| PixMo-Count test / PointBench（表 4–5） | 89.6% / 71.9% | 分别是计数 exact match 和指点评测 |
+| ReasonSeg val / Ref-ZOM（表 7） | gIoU 71.2；Ref-ZOM cIoU 72.2、拒答 86.0% | 分割重叠和空结果是不同指标 |
+| WeRefMat 指代提示（表 8） | MAD×10³ = 9.8 | 越低越好，和给定真值框的抠图协议不同 |
 
-| 基准与指标 | LocateAnything-3B | WeVisOne-VL-4B |
-|---|---:|---:|
-| WeRef-Bench F1 Mean | 51.7 | 78.7 |
-| WeRef-Bench 拒答率 | 73.0 | 96.4 |
-| RefCOCOg 拒答率 | 0.6 | 67.4 |
+## 与相关工作对比
 
-两组拒答率来自不同基准，不能混为一项。官方表中 Qwen3-VL-8B 的 WeRef F1 为 36.7、拒答率为 18.3；不意味着所有任务或场景都优于该模型。
+- [LISA](lisa.md)也用特殊 token 驱动像素解码，但这里还用预测框约束实例查询，并支持连续 alpha。
+- [Sa2VA](sa2va.md)以 SEG token 结合 SAM 2，覆盖视频指代分割；WeVisOne-VL 侧重单图上统一更多目标和像素任务。
+- LocateAnything 更接近[目标检测](../methods/object-detection.md)和空间定位基线。是否要额外运行像素分支，应由[机器人视觉感知](../methods/robot-visual-perception.md)的延时、边界质量和安全需求决定，不只比较单一 F1。
 
-## 与其他工作对比
+## 工程实践
 
-| 工作 | 像素输出机制 | 与 WeVisOne-VL 的差异 |
-|------|--------------|-----------------------|
-| [LISA](./lisa.md) | 特殊分割 token 调用分割解码器 | 同为 token 驱动解码器；WeVisOne-VL 还把预测框一并送入约 9.6M 参数的轻量解码器，并增加连续 alpha matte 输出 |
-| [Sa2VA](./sa2va.md) | SEG token 驱动 SAM 2 | Sa2VA 覆盖视频指称分割；WeVisOne-VL 以图像为主，但把检测、计数、OCR、指点与分割统一到结构化文本接口 |
-| LocateAnything-3B（官方表基线） | 目标级定位 | 官方表中 WeRef-Bench F1 与拒答率均低于 WeVisOne-VL-4B；比较限于官方报告口径 |
+- **截至 2026-11-26：** [官方代码](https://github.com/Tencent/WeVisOne-VL)已有推理、示例、评测、[2B/4B 权重与模型卡](../../sources/sites/wevisone-vl.md)、独立 Mask2Alpha 分支，以及 11 月 23 日公开的 SFT/GRPO 微调代码。自备数据的微调入口不等于完整论文训练集或原始课程全部可复现。
+- 机器人接入时分开记录「合法拒答」「格式错误」「解析为空」「目标存在但漏报」。源码小测发现，负样本奖励可把部分无对象的畸形文本和显式 `none` 同样计分。不能用一个空数组代替环境中不存在的判定；执行前仍要核对相机时间戳、场景和独立安全条件。
+- 需要像素分支时测额外前向与解码时延。需要空间动作时，核对 2D 坐标与图像尺寸，另做深度、相机外参和安全检查。
 
-主要差异点是显式拒答：目标不存在时输出 `None`，而非强行给框。对机器人而言，这能减少「幻觉目标」直接进入抓取或导航；在[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)中，它属于语言条件的 2D 检测/分割层，延迟与误拒答仍需在任务中实测。
+## 局限与风险
+
+论文主要是单轮单图输出；长程时序、模糊指令和通用推理未由该结果保证。本文没有跑公开权重、GPU 微调或论文评测，也未在机械臂上部署。
 
 ## 结论
 
-统一的目标与像素接口有助于构建语言条件视觉感知，但评测优势需要结合任务和部署条件判断。
-
-- 目标可能不存在时，分别测试定位质量和拒答率。
-- 需要抠图时关注 alpha matte，与二值分割掩码区分。
-- 机器人应用需自行测量延迟、视角变化和误拒答，并在控制回路外进行安全处理。
-- 官方开放推理、评测和 2B/4B 权重；微调代码在 README 中仍列待办，不能据此假定训练全流程可复现。
+WeVisOne-VL 的可复用点是明确的「对象语法 → 可选像素解码」接口。部署价值需要同时验证有效目标定位、缺失目标拒答、格式失败率与端到端延迟。
 
 ## 关联页面
 
-- [Sa2VA](./sa2va.md)：以多模态模型与分割模块结合输出掩码。
-- [LISA](./lisa.md)：语言驱动的分割方法。
-- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：感知栈选型闭环知识链枢纽
+- [Sa2VA](sa2va.md)、[LISA](lisa.md)
+- [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
+- [具身评测枢纽](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源
 
-- [论文归档](../../sources/papers/wevisone_vl_arxiv_2610_31329.md)
-- [官方仓库归档](../../sources/repos/wevisone-vl.md)
-- [官方论文](https://arxiv.org/abs/2610.31329)
+- [arXiv v2 PDF](https://arxiv.org/pdf/2610.31329v2) · [HTML](https://arxiv.org/html/2610.31329v2)
+- [腾讯项目主页](https://tencent.github.io/WeVisOne-VL/) · [GitHub](https://github.com/Tencent/WeVisOne-VL)
+- [论文](../../sources/papers/wevisone_vl_arxiv_2610_31329.md)、[源码](../../sources/repos/wevisone-vl.md)、[模型发布](../../sources/sites/wevisone-vl.md)归档
+
+## 推荐继续阅读
+
+- [目标检测](../methods/object-detection.md)：区分 IoU、F1 与 AP。
+- [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：将语言定位接到可观测的机器人感知链路。
