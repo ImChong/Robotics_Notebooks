@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-27] ingest | 收录 OpenPE v0.1.0 Beta：Agent 协作电力电子工作台与验证边界
+
 ## [2026-11-27] ingest | 收录 SO-101 乒乓球平衡与相机闭环 Sim2Real
 
 ## [2026-11-27] ingest | 收录 Trust What Repeats 与人形跟踪世界模型梯度诊断
