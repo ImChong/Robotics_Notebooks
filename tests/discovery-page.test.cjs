@@ -101,8 +101,8 @@ test('homepage and discovery share unified 2-char header/mobile nav links, i18n,
   const indexDoc = indexDom.window.document;
   const discoveryDoc = discoveryDom.window.document;
 
-  const expectedDesktopNav = ['入口', '搜索', '最新', '榜单', '图谱', '趋势', '发现'];
-  const expectedMobileNav = ['顶部', '入口', '搜索', '最新', '榜单', '图谱', '趋势', '发现'];
+  const expectedDesktopNav = ['入口', '搜索', '最新', '枢纽', '图谱', '趋势', '发现'];
+  const expectedMobileNav = ['顶部', '入口', '搜索', '最新', '枢纽', '图谱', '趋势', '发现'];
 
   assert.deepEqual(
     Array.from(indexDoc.querySelectorAll('.site-header .main-nav a')).map((a) => a.textContent.trim()),
@@ -140,6 +140,7 @@ test('homepage and discovery share unified 2-char header/mobile nav links, i18n,
   const homeI18n = readDoc('home-i18n.js');
   assert.ok(homeI18n.includes("'研究发现': 'Discovery'"));
   assert.ok(homeI18n.includes("'发现': 'Discovery'"));
+  assert.ok(homeI18n.includes("'枢纽': 'Hubs'"));
   assert.ok(homeI18n.includes("'趋势': 'Trends'"));
   assert.ok(homeI18n.includes("'图谱': 'Graph'"));
 
@@ -245,8 +246,8 @@ test('ledger rows, hover/focus detail popover, inline drawer, category filters, 
   assert.equal(w.document.getElementById('discovery-sources-heading').textContent, 'Recommended Websites');
   assert.equal(w.document.getElementById('uiStyleToggle').textContent, 'Classic');
   assert.deepEqual(
-    Array.from(w.document.querySelectorAll('.site-header .main-nav a')).slice(-3).map((a) => a.textContent.trim()),
-    ['Graph', 'Trends', 'Discovery'],
+    Array.from(w.document.querySelectorAll('.site-header .main-nav a')).slice(-4).map((a) => a.textContent.trim()),
+    ['Hubs', 'Graph', 'Trends', 'Discovery'],
   );
   assert.match(w.document.querySelector('footer.footer').textContent, /Chong Liu/);
   dom.window.close();
