@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-27] ingest | 复核 JustRUA 论文、源码和 RoboDojo 回放：补齐指标边界与可复核实例
+
 ## [2026-11-27] ingest | 收录 RIPPLE：耦合弹性地形上的人形本体控制与真机跳跃
 
 ## [2026-11-27] ingest | 收录 Google Cloud Gemini 蒸馏服务：文本数据、作业与评估边界
