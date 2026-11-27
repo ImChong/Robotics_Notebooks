@@ -2,7 +2,7 @@
 type: method
 tags: [ai, inference, serving]
 status: complete
-updated: 2026-11-26
+updated: 2026-11-27
 summary: "将训练好的模型接入推理运行时或服务，并评估延迟、吞吐和资源使用。"
 sources:
   - ../../sources/sites/method-ai-model-serving-inference-primary-20261126.md
@@ -53,6 +53,8 @@ flowchart LR
 ## 工程实践
 
 用单请求建立基线，再用代表性的峰值流量做并发扫描，同时记录吞吐、p95/p99、超时、内存与质量。若视频观测已过期，则由机器人端独立守护拒绝使用该结果，不让远端排队进入高频控制回路。
+
+以 [Agnes 的 SGLang 专用化报告](../entities/paper-agnes-inference-framework-specialization.md) 为例，同样的客户端并发下，服务允许同时执行的请求数从 8 增到 16；吞吐和首 token 改善需要另做固定预算消融才能归因。
 
 ## 局限与风险
 

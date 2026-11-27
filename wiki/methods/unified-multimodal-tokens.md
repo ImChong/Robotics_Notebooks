@@ -82,6 +82,7 @@ flowchart LR
 - [VLA](./vla.md)
 - [StarVLA-α](../entities/paper-starvla-alpha.md)
 - [SenseNova-U1.5](../entities/sensenova-u1-5.md) — 既有多模态输出的相邻实例。
+- [LAMR](../entities/paper-lamr.md)：同一序列可跨模态交互，但模型仍可能过度依赖单一模态；LAMR 通过层角色画像，在推理时区分稳态调节与跨模态传播。
 - [模型架构纵深路线](../../roadmap/depth-model-architecture.md) — Stage 4 的多模态表征接口。
 
 ## 参考来源
