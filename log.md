@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-27] ingest | 收录 LingBot-Map 2.0 技术报告及纯因果流式实现，区分 GCR 边界
+
 ## [2026-11-27] ingest | 收录 NDM Gym：可微状态动力学、策略达标计时与仿真／规划基准
 
 ## [2026-11-27] ingest | 收录 Real2Worlds2Real：数字孪生反馈、场景多样性与策略交付
