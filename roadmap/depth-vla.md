@@ -283,6 +283,7 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：RL 微调与自改进**
+- [CLARE：VLA 适配器持续学习](../wiki/entities/paper-clare-continual-vla.md) — 对照以分阶段示范而非 RL 学习新技能的路线：保留旧参数与按观测切换，分别评估新任务学习、旧任务遗忘和路由额外耗时。
 - [RoboEval 冠军方案：离策略 RL 与在线推理调优](../wiki/entities/paper-roboeval-solution.md) — RDS 评分优势、共享 critic、Thompson 调参及失败恢复；仿真八项双臂任务的后训练实例。
 - [π*₀.₆ / RECAP：VLA 从自主经验中学习](../wiki/entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) — 离线 RL 预训练 + 真机 rollout/人工纠正 + 分布式价值函数与优势条件；用成功率及每小时成功次数同时衡量专精效果（官方完整训练代码未开放）。
 - [TidyBot](../wiki/entities/paper-tidybot-2305-05658.md)、[OLAF](../wiki/entities/paper-olaf-verbal-correction.md)、[LMPC](../wiki/entities/paper-lmpc-2402-11450.md) — 对照规则总结、动作重标注和语言模型微调三种适应对象。
