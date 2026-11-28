@@ -148,6 +148,8 @@ sequenceDiagram
 - [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md)
 - [LIBERO](./libero-benchmark.md)
 - [RoboTwin](./robotwin.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：4D-WAM 将三维轨迹场对齐注入视频世界动作模型（WAM）的中间表征，在不改变推理图的前提下补强三维时空运动感知。
+- [Manipulation](../tasks/manipulation.md)：4D-WAM 面向桌面操作任务，通过时空轨迹场后训练提升策略在 LIBERO-Plus 与 RoboTwin 视角随机化评测中的成功率。
 
 ## 参考来源
 

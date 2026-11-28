@@ -93,6 +93,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：要求建立覆盖 AI 系统全生命周期的治理与持续改进机制，依赖标准化基准评测支撑定期监控。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：强调训练与部署数据的治理、质量审计和可追溯性，与机器人学习数据管线的工程规范相一致。
 
 ## 参考来源
 

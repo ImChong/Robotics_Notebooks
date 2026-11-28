@@ -104,6 +104,8 @@ Gaze2Act 做的事情，是把人的第一视角 gaze 映射到机器人视角�
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-02-human-to-robot.md](../overview/ego-category-02-human-to-robot.md)
 - 原始 source：[ego_survey_05_gaze2act.md](../../sources/papers/ego_survey_05_gaze2act.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：Gaze2Act 将跨视角对齐的人类注视点作为感知提示与动作 token 注入 VLA 模型，以视觉视线补充语言难以精确表达的空间目标意图。
+- [Manipulation](../tasks/manipulation.md)：Gaze2Act 针对多相似物体场景下的精细操作任务，利用第一视角注视线索帮助机械臂明确抓取目标与接近部位。
 
 ## 参考来源
 

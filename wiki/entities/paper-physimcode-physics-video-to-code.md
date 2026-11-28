@@ -101,6 +101,8 @@ sequenceDiagram
 - [paper-video2world-coding-agents-benchmark](./paper-video2world-coding-agents-benchmark.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属 ② 世界模型 / 物理推演保真度一侧：评的是从视频恢复物理规律与可运行仿真代码，而非策略成功率
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：建立从原始物理视频恢复动力学规律并生成可运行代码的基准，从规律、可执行性与参数恢复多维度评测模型能力。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：通过可执行仿真等价性与物理参数恢复检验视频到代码重建的动力学保真度，呼应工程仿真建模的闭环核验要求。
 
 ## 参考来源
 

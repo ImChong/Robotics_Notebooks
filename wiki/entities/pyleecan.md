@@ -116,6 +116,8 @@ sequenceDiagram
 - [axfluxmdo](./axfluxmdo.md) · [ACMOP](./acmop.md) · [FEMM-FOC](./femm-foc-simulation.md)
 - [电机设计流程](../overview/motor-design-workflow.md)
 - [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：PYLEECAN 耦合 FEMM/GMSH 等求解器对电机电磁、损耗与多物理场响应进行自动化建模与校核，体现了工程仿真建模与验证流程。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：支持以参数化方式定义径向磁通电机的定转子几何与槽极拓扑，并在扫描与多目标优化中迭代几何方案。
 
 ## 参考来源
 

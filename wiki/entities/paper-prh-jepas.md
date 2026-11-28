@@ -163,6 +163,8 @@ sequenceDiagram
 - [LeJEPA：自监督目标与 SIGReg](./paper-lejepa.md)
 - [H-JEPA：动作条件分层世界模型](./paper-h-jepa-visual-planning.md)
 - [Sensorimotor Alignment：机器人相关代理指标](./paper-sensorimotor-alignment.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：从 JEPA 自监督视角分析跨模态表征对齐的数学前提，指出同一世界状态的独立正样本观测比单观测裁剪更利于表征一致。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：为机器人多传感器表征预训练如何构造正样本提供理论启示，而策略迁移成效仍需结合动作条件与闭环实验检验。
 
 ## 参考来源
 

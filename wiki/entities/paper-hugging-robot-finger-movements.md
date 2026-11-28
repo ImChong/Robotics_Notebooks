@@ -151,6 +151,8 @@ flowchart TD
 - [人形机器人](../entities/humanoid-robot.md)
 - [触觉感知](../concepts/tactile-sensing.md)
 - [人形手臂构型](../concepts/humanoid-arm-configuration.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：该研究自制带三自由度手臂与五指独立驱动的半人形平台，涉及多自由度手指末端机构的硬件实现与动作编排。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：该研究采用受控被试内对照实验与 Likert 量表统计（t 检验与三因素 ANOVA）评估人机物理交互的心理反馈。
 
 ## 参考来源
 

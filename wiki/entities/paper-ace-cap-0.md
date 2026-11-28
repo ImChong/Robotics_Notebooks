@@ -116,6 +116,8 @@ flowchart TD
 - [JustRUA](./paper-justrua-robot-use-agents.md)
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
 - [跨本体迁移纵深路线](../../roadmap/depth-cross-embodiment.md)
+- [Agentic Manipulation Policies：可编程的智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：ACE-CaP-0 在策略开发期让编码智能体结合真机演示与仿真试验迭代程序并冻结部署，属于可编程的智能体机器人操作策略路线。
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：ACE-CaP-0 通过感知与控制 API 契约、按需演示采样与仿真验证循环规范智能体生成策略的执行边界。
 
 ## 参考来源
 

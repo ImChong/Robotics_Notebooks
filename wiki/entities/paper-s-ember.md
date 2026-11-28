@@ -146,6 +146,8 @@ sequenceDiagram
 - [Ego4D 第一视角数据](./paper-ego4d.md)
 - [具身评测基准选型](../overview/hub-embodied-eval-benchmark.md)
 - [具身模型评测纵深 Stage 1](../../roadmap/depth-embodied-eval.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：S-EMBER 通过限制模型仅访问提问前历史并联合评测问答准确率与时间区间 IoU，规范了流式记忆基准评测协议。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：该基准要求模型从第一视角长视频流中提取并检索时序视觉表征以支撑在线情景记忆定位。
 
 ## 参考来源
 

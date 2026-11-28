@@ -133,6 +133,8 @@ flowchart TB
 - [Darwin Skill](./darwin-skill.md) / [Nuwa Skill](./nuwa-skill.md) / [Matt Pocock Skills](./mattpocock-skills.md)
 - [Hermes Agent](./hermes-agent.md) — 另一技能目录宿主
 - [AI Auto-Research](../concepts/ai-auto-research.md)
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：SkillCorpus 对社区 SKILL.md 技能封装语料进行许可过滤与质量门控，研究可复用技能的策展与注入。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该工作在 SkillsBench、GDPVal 与 QwenClawBench 等基准上端到端评测技能检索与宿主执行边界。
 
 ## 参考来源
 

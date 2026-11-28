@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：RSS 提供的形式化安全边界与约束模型可与安全强化学习结合，用于限制自主决策策略的危险动作。
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：在自主导航与运动规划中可将形式化安全距离与响应约束嵌入 MPC 滚动优化框架。
 
 ## 参考来源
 

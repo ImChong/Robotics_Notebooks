@@ -68,6 +68,8 @@ flowchart LR
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [sim-plugin-starccm](./svd-ai-lab-sim-plugin-starccm.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该插件配合 sim-cli 运行本地 OpenFOAM 算例并检查几何、网格与物理量产物，支撑可回放的工程仿真验证流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：其作为 sim-cli 的外置驱动插件，为智能体注册并提供了标准化调用 OpenFOAM 求解与结果检查的工具接口。
 
 ## 参考来源
 

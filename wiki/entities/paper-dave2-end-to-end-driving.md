@@ -94,6 +94,8 @@ flowchart LR
 - [PilotNet 显著性解释](./paper-pilotnet-saliency.md)
 - [DAgger 论文](./paper-ross-dagger.md)
 - [11 篇历史阅读路线](../overview/robot-learning-foundations-11-papers.md)
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md)：DAVE-2 以人工驾驶前视图像与同步转向角直接训练端到端 CNN 映射并辅以偏移扰动增强，是视觉行为克隆控制的代表性早期工作。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：该研究早期验证了跳过显式车道检测与规划模块、直接从专家示教像素学习连续转向控制的可行性与分布偏移应对思路。
 
 ## 参考来源
 

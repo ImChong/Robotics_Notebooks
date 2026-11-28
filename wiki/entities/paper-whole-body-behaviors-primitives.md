@@ -120,6 +120,8 @@ Whole-Body Behaviors 把 OSF 的单任务动力学推广到多优先级行为合
 - [paper-operational-space-formulation](./paper-operational-space-formulation.md)
 - [paper-hmi-stack-of-tasks](./paper-hmi-stack-of-tasks.md)
 - [hqp](../concepts/hqp.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：论文提出按严格优先级与动态一致零空间投影组织全身行为基元的分层控制架构。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：论文以人形双手操作同时维持质心平衡与躯干姿态为例阐释全身移动操作中的任务优先级分配。
 
 ## 参考来源
 

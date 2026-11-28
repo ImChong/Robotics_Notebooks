@@ -187,6 +187,8 @@ sequenceDiagram
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) · [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [Deform360](./paper-deform360-deformable-visuotactile-dataset.md) — 另一条大规模真实视触觉数据轴
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — NeoReal（真机 10 任务）/ NeoSim（仿真 12 任务）属其 ③ 策略任务成功率评测层：接触丰富操作的力场条件真机 + 仿真套件
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：𝒩₀-Foundation 围绕 TacUMI 与多本体遥操作构建了含质检、L0-L3 分层标注与力场标定的大规模视触觉学习数据管线。
+- [Manipulation](../tasks/manipulation.md)：NeoData、NeoForce 与 NeoReal/NeoSim 评测套件均面向高接触敏感的机器人灵巧与双臂操作任务。
 
 ## 参考来源
 

@@ -166,6 +166,8 @@ flowchart TD
 - [Cartographer](cartographer.md)：另一类基于扫描匹配的回环方案
 - [LiDAR 感知](../concepts/lidar-sensing.md)
 - [状态估计](../concepts/state-estimation.md)
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：Scan Context++ 提供旋转与横向平移不变的激光雷达全局描述子，可作为里程计与激光雷达融合定位系统中的回环检测与重定位模块。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：该方法在关键帧位姿图优化前输出候选回环与偏航/横向初值，帮助状态估计系统在城市道路重访场景中抑制累计漂移。
 
 ## 参考来源
 

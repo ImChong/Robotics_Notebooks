@@ -74,6 +74,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：AGILOped 构建了由 ROS 高层步态规划、RosPi CAN 底层关节阻抗控制与高频 IMU 反馈组成的开源人形控制系统架构。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：AGILOped 作为搭载准直驱电机与双四连杆并联腿的开源双足平台，面向敏捷人形移动研究。
 
 ## 参考来源
 

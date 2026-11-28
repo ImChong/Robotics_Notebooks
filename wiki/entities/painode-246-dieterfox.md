@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md)：Dieter Fox 领导的团队提出了 Contact-GraspNet 等经典 6-DoF 抓取位姿估计方法，推动了基于点云的稳健抓取感知。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：其在 NVIDIA 与华盛顿大学的研究深度结合物理仿真集成与大规模合成数据，加速真机操作策略迁移。
 
 ## 参考来源
 

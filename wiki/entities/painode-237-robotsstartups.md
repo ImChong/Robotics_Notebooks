@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Manipulation](../tasks/manipulation.md)：该通讯持续聚焦商业机器人初创公司在物流抓取、柔性装配等现实操作任务中的产品化探索。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：硅谷机器人生态报道频繁涉及移动操作一体机与通用服务机器人在商业场景的落地趋势。
 
 ## 参考来源
 

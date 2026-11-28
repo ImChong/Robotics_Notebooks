@@ -124,6 +124,8 @@ flowchart LR
 - [LAMDA](./paper-lamda-tsr.md) — 同样把 VLM 当教师、但推理丢掉语言通路
 - [SHRIMP](./paper-shrimp.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — SigLIP2 / Depth Anything 3 两路语义前瞻即感知输出如何被生成式策略消费的一例
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：SG-WAM 将 VLM 预测的语义与几何前瞻引导注入世界–动作模型的视频生成分支，使生成式世界模型预测更严格对齐语言指令。
+- [Manipulation](../tasks/manipulation.md)：该方法在 LIBERO、LIBERO-Plus 及真机四项分心物体桌面操作任务上验证了语义对齐对抓取与操作执行成功率的提升。
 
 ## 参考来源
 

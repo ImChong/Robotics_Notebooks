@@ -202,6 +202,8 @@ harbor run -p tasks/fluorene-dehydration-concentrations -a oracle -e docker \
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 科研自动化从执行到判断的链路
 - [Claude-shaped science](./claude-shaped-science.md) — 专家对科学终点的判断不可替代
 - [ScienceDiscovery](./sciencediscovery.md) — 科学工具执行平台，与 SPU 的实测预测能力是两条轴
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：SPU 通过隐藏真实湿实验测量值并由隔离评分器验收候选排序，为科研智能体建立了可审计的基准评测协议。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：该基准考察智能体在多轮文献检索、脚本计算与实验推断循环中的科学判断能力，而非仅检验代码工具调用。
 
 ## 参考来源
 

@@ -115,6 +115,8 @@ URDF2Ontology 输入 URDF 的 link/joint 图与用户指定的 TBox 类层次，
 
 - [motion-retargeting](../concepts/motion-retargeting.md)
 - [whole-body-control](../concepts/whole-body-control.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：解析 URDF 关节与连杆运动学图并结合符号约束与语义推理映射为结构化本体表示。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：为异构机器人平台向上层规划与知识推理软件系统提供统一的语义能力描述接口。
 
 ## 参考来源
 

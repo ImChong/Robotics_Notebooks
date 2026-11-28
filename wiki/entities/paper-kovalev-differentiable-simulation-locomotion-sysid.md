@@ -101,6 +101,8 @@ flowchart TD
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：该工作利用 MJX 可微仿真梯度直接辨识真实电机在 MuJoCo 中的转子惯量、摩擦与阻尼参数。
+- [Locomotion](../tasks/locomotion.md)：辨识得到的动力学模型用于在 LeggedGym 中训练行走策略并在真机上验证，直接服务于腿式运动控制的高保真迁移。
 
 ## 参考来源
 

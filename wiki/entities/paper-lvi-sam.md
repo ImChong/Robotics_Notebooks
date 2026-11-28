@@ -190,6 +190,8 @@ sequenceDiagram
 - [LIO-SAM](./lio-sam.md)
 - [VINS-Fusion](./vins-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：LVI-SAM 将激光惯性子系统（LIS）与视觉惯性子系统（VIS）双向先验耦合融合，提升视觉或激光退化场景下的定位稳健性。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：该系统结合 IMU 预积分、视觉特征滑窗估计、激光扫描匹配与 iSAM2 因子图优化实现全局一致的机器人状态估计。
 
 ## 参考来源
 

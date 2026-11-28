@@ -102,6 +102,8 @@ sequenceDiagram
 - [原始 3DGS](./paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md) — 逐场景优化和显式高斯渲染。
 - [CompactSplat](./paper-compactsplat.md) — 前馈重建中自适应分配高斯，与本方法的逐场景压缩路径不同。
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md) — 对照 NeRF、3DGS 与机器人地图需求。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：Reduced 3DGS 面向逐场景 3D 高斯溅射三维重建结果，通过原语剪枝与自适应球谐阶数有效削减场景表示冗余。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：结合高斯属性敏感度剪枝、码本量化与半精度存储，在保持新视角渲染质量的同时大幅压缩三维模型体积。
 
 ## 参考来源
 

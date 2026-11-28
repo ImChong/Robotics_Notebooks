@@ -124,6 +124,8 @@ sequenceDiagram
 
 - [视觉骨干网络](../concepts/vision-backbones.md)
 - [Vision Transformer（ViT）](../concepts/vision-transformer.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：将嵌套学习自修改记忆机制引入二维视觉骨干以在单图扫描中协同演化表征与更新规则。
+- [目标检测（Object Detection）](../methods/object-detection.md)：在目标检测与实例分割基准上验证嵌套记忆视觉骨干的空间特征提取与尺度适应能力。
 
 ## 参考来源
 

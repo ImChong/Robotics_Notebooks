@@ -96,6 +96,8 @@ sequenceDiagram
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [Manipulation](../tasks/manipulation.md)：ForceLDM 面向接触丰富型操作任务，并在五类真机接触操作任务上检验了新物体泛化、外力扰动与噪声课程的作用。
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md)：ForceLDM 在训练期利用未来力矩与光流构建特权教师，再将接触动力学表征蒸馏给仅依赖当前观测的可部署学生策略。
 
 ## 参考来源
 

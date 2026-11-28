@@ -92,6 +92,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：为 VLA（视觉-语言-动作）策略所依赖的语言骨干与多模态底座模型提供统一的高效微调工具链。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：在机器人策略学习流程中可用于微调高层指令理解或任务规划模块，提升策略对自然语言指令的泛化能力。
 
 ## 参考来源
 

@@ -89,6 +89,8 @@ sequenceDiagram
 - [Unlimited OCR Works 2](./unlimited-ocr-2.md)
 - [TeleOCR](./paper-teleocr.md)
 - [LLM Wiki](../concepts/llm-wiki-karpathy.md)
+- [YOLO26-Text + PP-OCRv6：场景与文档 OCR](../methods/yolo26-ocr-document-parsing.md)：OXR 同样面向文档解析与版面识别流程，可将 PDF 与文档图像转换为保留版面坐标和阅读顺序的结构化 Markdown 或 JSON。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：OXR 提供 `oxr serve` 服务入口，并结合 vLLM 识别模型与版面分析 API 完成本地推理服务部署。
 
 ## 参考来源
 

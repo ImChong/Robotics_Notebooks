@@ -55,6 +55,8 @@ flowchart LR
 - [urdf-studio](urdf-studio.md) (专业设计工作站)
 - [robot-viewer](robot-viewer.md) (多格式仿真预览)
 - [pinocchio](pinocchio.md) (后端动力学计算库)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：Robot Explorer 直接解析 URDF 中的运动学链、关节限位、惯性参数与力矩限制并可视化质心与工作空间，辅助模型资产检查。
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：提供多末端逆运动学、可操纵性椭球与力多胞体分析功能，可用于评估机械臂及操作系统的工作空间可达性与末端施力能力。
 
 ## 参考来源
 - [Robot Explorer 原始资料](../../sources/repos/robot-explorer.md)

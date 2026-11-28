@@ -138,6 +138,8 @@ sequenceDiagram
 - [Unitree](./unitree.md)
 - [unitree-ros2](./unitree-ros2.md)
 - [地形适应](../concepts/terrain-adaptation.md) — 地形惩罚的相邻概念
+- [机器人自主探索](../tasks/autonomous-exploration.md)：本文在经典前沿探索框架中加入救援相关性等五项效用打分，面向未知室内搜救优化探索目标排序。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：前沿打分层输出的目标接入 ROS 2 局部控制器执行，构成 Unitree Go2 室内搜救的规划–导航闭环。
 
 ## 参考来源
 

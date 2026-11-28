@@ -89,6 +89,8 @@ flowchart LR
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [motion-retargeting](../concepts/motion-retargeting.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：ReContact 从人类操作视频重建以物体为中心的接触计划并重定向至人形控制器，强调保留接触锚点与力向约束。
+- [Manipulation](../tasks/manipulation.md)：通过学习接触锚点、施力方向与滑移模式，提升人形机器人在遮挡条件下完成换抓与支撑转移等操作任务的能力。
 
 ## 参考来源
 

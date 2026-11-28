@@ -202,6 +202,8 @@ sequenceDiagram
 - [LoongForge：基于 Megatron 的大模型训练栈及具身训练](./cn-os-loongforge.md)
 - [Isaac GR00T：机器人基座模型](./isaac-gr00t.md)
 - [LeRobot：机器人学习数据与工具链](./lerobot.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：Megatron-LM 提供的张量、流水线与数据并行训练基础设施可用于扩展大规模 Transformer 视觉-语言-动作（VLA）基座模型。
+- [AdamW（Adam with Decoupled Weight Decay）](../methods/adamw.md)：大规模 Transformer 分布式预训练通常将 Megatron-LM 的模型并行策略与 AdamW 解耦权重衰减优化器配合使用。
 
 ## 参考来源
 

@@ -91,6 +91,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：生成式 AI 技术为物理世界动态建模、视频仿真推演与反事实预测提供基础模型支撑。
+- [Generative Data Augmentation (生成式数据增强)](../methods/generative-data-augmentation.md)：扩散模型与生成式内容合成可用于低成本扩充具身智能训练所需的长尾场景与交互数据。
 
 ## 参考来源
 

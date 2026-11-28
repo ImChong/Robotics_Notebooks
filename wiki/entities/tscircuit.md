@@ -85,6 +85,8 @@ flowchart LR
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — 驱动器 PCB 与固件/CAN 接口协同。
 
 - [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — 代码化电路设计适用于驱动、电源和传感器板。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：以代码组件参数化定义电路与 PCB 布局并生成 3D 预览，在电子设计层呼应参数化 CAD 的可复现建模思路。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：可用于快速原型化与版本化管理电机驱动板、MCU 及传感器接口等机器人底层控制硬件。
 
 ## 参考来源
 

@@ -163,6 +163,8 @@ flowchart LR
 - [Glob3R / Pi3X](./paper-glob3r.md) — 稀疏几何前端
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — Real2Sim 网格生成
 - [Text-to-CAD](../concepts/text-to-cad.md) — 3D 资产 vs 工业 CAD 分工
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：Axolotl3D 联合多视角图像、可见性掩码、相机参数与部分点云完成遮挡感知三维形状补全，可衔接稀疏视图三维重建流程。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：Axolotl3D 可将真实场景中被遮挡的局部观测物体补全为完整三维网格资产，支持 Real2Sim 物理仿真场景生成。
 
 ## 结论
 

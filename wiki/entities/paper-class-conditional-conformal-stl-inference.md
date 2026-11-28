@@ -93,6 +93,8 @@ flowchart TD
 - [safety-filter](../concepts/safety-filter.md)
 - [control-barrier-function](../concepts/control-barrier-function.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该工作针对多类时序逻辑分类中准确率与公式满足度错位的问题，提出紧致性精修与类条件保形校准评测框架。
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：信号时序逻辑推断与保形覆盖保证可用于形式化安全规约校验，为安全强化学习与受约束控制提供可量化的时序满足边界。
 
 ## 参考来源
 

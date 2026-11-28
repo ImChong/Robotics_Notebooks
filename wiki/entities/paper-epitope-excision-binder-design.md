@@ -188,6 +188,8 @@ flowchart TD
 - [google-grounding-ai-agents-wet-labs](./google-grounding-ai-agents-wet-labs.md) — Google Research 博客：湿实验自主化的三条研究线（接地到机器人 / 适配体闭环 / 蛋白结合剂）
 - [paper-verid-semantic-representation-lab-self-play](./paper-verid-semantic-representation-lab-self-play.md) — VERID：自动化实验室的语义表示与智能体自博弈（Google）
 - [paper-agentic-aptamer-sandbox](./paper-agentic-aptamer-sandbox.md) — 适配体作为 lab-in-the-loop 智能体分子发现的沙盒（Google）
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：该工作由 Gemini 智能体在固定 GPU 预算下按每轮命中数与剩余算力自主选择筛选、扩增或调整窗口等动作，构成典型的智能体迭代规划与反馈闭环。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该工作在同一命中门限与 GPU 小时预算下对比人工、人机混合与全自主三种控制臂，为定量评测不同智能体自主度提供可对照基准。
 
 ## 参考来源
 

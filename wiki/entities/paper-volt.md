@@ -175,6 +175,8 @@ sequenceDiagram
 - [DINOv2：2D 自监督表征](./paper-dinov2.md)
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)
 - [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：验证基于非空三维体积分块与三维旋转位置编码的标准全局注意力网络作为三维骨干的可行性。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：提供面向三维点云语义与实例分割的编码骨干以支撑下游场景理解与感知选型。
 
 ## 参考来源
 

@@ -158,6 +158,8 @@ sequenceDiagram
 - [Track4World](./paper-track4world.md) — 前馈全像素世界系 3D 跟踪
 - [State Estimation](../concepts/state-estimation.md) — 几何与相机估计在机器人状态链路中的位置
 - [Visual Representation for Policy](../concepts/visual-representation-for-policy.md) — 视觉表征接入机器人策略的方式
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：ARROW 将无序图像集、单目视频与多视角流编码为共享场景上下文，通过查询实现统一的 4D 场景三维重建。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：ARROW 将跨观测三维重建与动态点跟踪整合为同一前馈推理框架，为机器人动态环境感知提供统一几何与运动表征。
 
 ## 推荐继续阅读
 

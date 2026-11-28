@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：强调前沿模型在发布与部署前的红队测试与标准化安全评估，与 AI 基准评测流程紧密相关。
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：对安全可信 AI 与机器人系统部署的监管导向，呼应安全强化学习对物理安全风险边界的显式约束。
 
 ## 参考来源
 

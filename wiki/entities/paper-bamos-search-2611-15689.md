@@ -116,6 +116,8 @@ Isaac Sim 与 HSSD 场景、多种误检/漏检条件的消融说明未检更新
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 将检测、深度几何与搜索决策串联，分别检查漏检建模、视角选择和停止判据。
 - [2026-11-16 具身研究论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ActionCodec2：流式动作编解码](./paper-actioncodec2-streaming-action-tokenizer.md)
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md)：BAMOS 聚焦不完美检测下的室内目标物体搜索任务，结合检测与漏检的贝叶斯位置后验更新与概率停止判据提升搜索鲁棒性。
+- [机器人自主探索](../tasks/autonomous-exploration.md)：BAMOS 利用深度占据与可见性估计计算候选视角信息增益，在未知环境主动探索中决策观察视角与停止时机。
 
 ## 参考来源
 

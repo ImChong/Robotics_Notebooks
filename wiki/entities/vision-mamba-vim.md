@@ -64,6 +64,8 @@ flowchart LR
 - [SSM](../concepts/state-space-model-ssm.md)
 - [架构对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：采用双向 Mamba 扫描替代传统自注意力，从图像与长视觉序列中提取近线性复杂度的视觉表征。
+- [目标检测（Object Detection）](../methods/object-detection.md)：可作为图像分类与密集预测的通用视觉主干网络，支持目标检测等下游感知任务的特征提取。
 
 ## 参考来源
 

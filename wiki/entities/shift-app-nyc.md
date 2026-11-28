@@ -62,6 +62,8 @@ flowchart LR
 
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)
 - [Micro1](./micro1.md) — 另一数据标注/质检叙事
+- [Manipulation](../tasks/manipulation.md)：Shift 在真实家庭杂物环境中采集的第一人称清洁操作视频，主要服务于家务机器人操作能力的训练。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：其通过免费保洁换取的匿名化 POV 录像，可作为机器人模仿学习策略训练的真实世界演示数据源。
 
 ## 参考来源
 

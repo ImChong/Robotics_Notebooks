@@ -136,6 +136,8 @@ sequenceDiagram
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-03-data-pipeline.md](../overview/motion-cerebellum-category-03-data-pipeline.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：从野外单目视频恢复世界坐标系人体轨迹，为下游人形动作重定向提供上游运动数据。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：第一阶段借助掩码 SLAM 与公制深度对齐恢复动态场景下的相机世界位姿轨迹。
 
 ## 参考来源
 

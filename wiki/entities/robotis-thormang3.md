@@ -52,6 +52,8 @@ flowchart LR
 - [ROBOTIS OP3](./robotis-op3.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第01期）索引](../overview/robot-open-source-wechat-issue01-curator.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：ROBOTIS THORMANG3 为全尺寸人形双足行走与全身运动调试提供了公开的硬件与软件参考平台。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：其官方 eManual 给出了与 ROS 发行版对齐的系统接口与部署规范，便于集成传感、控制与运动调试模块。
 
 ## 推荐继续阅读
 

@@ -150,6 +150,8 @@ AVR/Pico 走浏览器内 CPU 模拟器，不经过 `start_esp32` WebSocket；模
 - [Pico.Lab](./picolab.md) — 仿真前期验证之后的实机测量和 bring-up 工具
 - [UART 串行通信](../concepts/uart-serial-communication.md) — 机器人控制板串行调试
 - [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md) — 更高保真部署闭环及限制
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：可在硬件打样前仿真验证 MCU 传感器节点的 I2C、SPI、UART 与 ADC 接口接线及通信逻辑。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：通过真实工具链编译固件并在指令级仿真器中联合运行，支撑嵌入式控制软件早期系统集成与排查。
 
 ## 参考来源
 

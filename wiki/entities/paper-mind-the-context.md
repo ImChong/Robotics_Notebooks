@@ -126,6 +126,8 @@ sequenceDiagram
 - [Extreme-RGMT](./paper-extreme-rgmt.md)
 - [接近–安全跟随](./paper-nav-ps-balance.md)
 - [接触–预测–适应 10 篇技术地图](../overview/contact-predict-adapt-10-papers-technology-map.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：Mind the Context 利用全景分割将室内视觉观测拆分为环境与社会主体双分支，为社交适当性决策提供结构化感知。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该工作在 MANNERSDB+ 与 OFFICE 等多场景数据集上采用域增量持续学习协议评测抗遗忘性能。
 
 ## 参考来源
 

@@ -145,6 +145,8 @@ flowchart LR
 - [LIBERO 基准](../entities/libero-benchmark.md)
 - [CALVIN 基准](../entities/calvin-benchmark.md)
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：真机分布式基准在评测选型链中的位置
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：本文提出基于标准化随机种子抽样分布与方差分解的真机评测方法，提升跨实验室机器人基准的可比性。
+- [Manipulation](../tasks/manipulation.md)：该工作以 IKEA KALLAX 货架随机化场景为例，在 Stretch 3 与 Spot 上开展了 568 次真机移动操作评测。
 
 ## 参考来源
 

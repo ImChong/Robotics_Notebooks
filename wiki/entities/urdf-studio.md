@@ -82,6 +82,8 @@ flowchart LR
 - [BotWorld](./botworld.md)（机器人资产广场与 URDF Studio 统一 Web 入口）
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md) — 现成开源 URDF/MJCF 从哪下载
 - [robot_descriptions.py](./robot-descriptions-py.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：提供 Web 端可视化编辑运动树、惯性属性及导出 URDF/MJCF/USD/SDF 的完整机器人模型描述工作流。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：将设计并校验后的机器人描述文件与执行器元数据一键适配至 Isaac Lab、MuJoCo 等仿真环境。
 
 ## 参考来源
 - [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)

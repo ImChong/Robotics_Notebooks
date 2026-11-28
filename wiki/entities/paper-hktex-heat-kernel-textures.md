@@ -189,6 +189,8 @@ sequenceDiagram
 - [GS-Playground](./gs-playground.md) — 3DGS 光真实感批量渲染服务 RL
 - [Spark](./spark-3dgs-renderer.md) — Web 端 3DGS 交付，与 HKTex mesh 纹理场景不同
 - [Sim2Real](../concepts/sim2real.md) — 视觉域差距与资产保真上下文
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：HKTex 支持从多视角 RGB 图像出发，在三角网格曲面上利用可微光线追踪优化无 UV 的热核内在纹理与 PBR 材质。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：HKTex 可在约十分之一存储开销下提供可微 PBR 渲染外观，面向 Real2Sim 资产重建以缩小仿真与真机之间的视觉域差距。
 
 ## 参考来源
 

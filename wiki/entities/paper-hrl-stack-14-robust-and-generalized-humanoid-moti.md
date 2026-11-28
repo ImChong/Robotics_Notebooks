@@ -103,6 +103,8 @@ flowchart LR
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 后续扩展：[Extreme-RGMT](./paper-extreme-rgmt.md) — 两阶段 continual learning（PACE + STAR）把高动态技能叠进同一 generalist 策略
 - 原始 source：[humanoid_rl_stack_14_robust_and_generalized_humanoid_motion_tracking.md](../../sources/papers/humanoid_rl_stack_14_robust_and_generalized_humanoid_motion_tracking.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：RGMT 提出动力学条件聚合机制，使人形全身动作跟踪策略能够依据近期本体状态动态权衡多源参考命令的重要性。
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md)：RGMT 设计恢复课程（recovery curriculum）与退火向上辅助力，以提升人形机器人在参考不一致或外力冲击下的平衡恢复能力。
 
 ## 参考来源
 

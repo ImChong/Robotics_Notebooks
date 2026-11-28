@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：策略梯度与价值函数等强化学习理论和算法进展是该机器学习社区的长期核心议题。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：面向图像与视频的多模态表征预训练方法在该社区中被广泛讨论并持续迁移至机器人感知。
 
 ## 参考来源
 

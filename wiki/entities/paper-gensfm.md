@@ -198,6 +198,8 @@ sequenceDiagram
 - [Axolotl3D](./paper-axolotl3d.md)：以相机和部分点云为条件的形状补全。
 - [Global 3R](./paper-glob3r.md)：相关多视角 3D 重建。
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md)：Stage 1 的稀疏视图物体几何重建入口；与 Stage 2 物性、碰撞补全分工。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：GenSfM 将稀疏视角物体三维形状与相机内外参联合纳入原生 3D 扩散推理过程，是面向少视图物体资产的生成式三维重建方法。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：GenSfM 从少量未标定前景图像联合恢复三维几何与相机位姿，可为下游机器人视觉感知及物体资产入库提供空间表征。
 
 ## 推荐继续阅读
 

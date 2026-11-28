@@ -80,6 +80,8 @@ flowchart TD
 - [igh-ethercat-master](../entities/igh-ethercat-master.md)
 - [ruckig](../entities/ruckig.md)
 - [cpp-motion-control-open-source-libraries-map](../overview/cpp-motion-control-open-source-libraries-map.md)
+- [Time-Optimal Path Parameterization（TOPP）](../methods/time-optimal-path-parameterization.md)：plcopen 内核内置时间最优在线轨迹生成（OTG）与前瞻规划模块，面向多轴运动控制中的速度与加速度约束求解。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：plcopen 提供轴与轴组状态机、功能块及零动态分配的周期执行内核，可嵌入实时运动控制系统架构。
 
 ## 参考来源
 

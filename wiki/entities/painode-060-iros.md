@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Locomotion](../tasks/locomotion.md)：足式与移动机器人在非结构化地形下的稳定运动控制是 IROS 的传统重点研究方向。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：集成感知、建图与自主路径规划的移动机器人导航系统在 IROS 中拥有大量工程与学术成果。
 
 ## 参考来源
 

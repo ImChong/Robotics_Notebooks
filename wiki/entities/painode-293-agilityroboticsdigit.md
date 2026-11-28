@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：Digit 作为面向物流场景的双足人形机器人平台，高度依赖复杂工况下的双足平衡与地形移动能力。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：在仓库搬运与料箱转运等典型物流任务中需要完成移动与双臂抓放的全身协调控制。
 
 ## 参考来源
 

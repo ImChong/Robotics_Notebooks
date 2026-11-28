@@ -81,6 +81,8 @@ sequenceDiagram
 - [drive-game](./drive-game.md) — 纽北高保真 Three.js 模拟器
 - [nordschleife-racer](./nordschleife-racer.md) — TS 纽北漂移引擎
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：该项目采用 Three.js 渲染与 crashcat 刚体物理构建零构建浏览器竞速环境，为轻量级交互仿真集成提供了简化对照。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：其配套的 GridMap 网格铺砖与 `editor.html` 赛道编辑器支持参数化生成与导出模块化 3D 赛道场景。
 
 ## 参考来源
 

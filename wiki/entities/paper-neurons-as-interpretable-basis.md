@@ -124,6 +124,8 @@ flowchart TD
 - [机制可解释性](../concepts/mechanistic-interpretability.md)
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [Causal Analysis of Robot Foundation Models（机器人基础模型因果分析）](./paper-robot-foundation-model-causal-analysis.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该研究通过稀疏神经元消融测量语言建模损失与下游基准表现，并以检测、模拟和合成协议评估神经元功能描述的准确性。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：研究中利用自动化 Agent 基于激活反馈迭代生成并验证高激活合成文本，用于检验神经元假设。
 
 ## 参考来源
 

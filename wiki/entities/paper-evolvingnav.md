@@ -136,6 +136,8 @@ sequenceDiagram
 - [云深处 rl_training](./deeprobotics-rl-training.md) — 同公司 RL 训练工程
 - [hierarchical-quadruped-navigation-stack](../concepts/hierarchical-quadruped-navigation-stack.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — EvoWorld-Bench 属于③层任务成功率评测（动态世界导航 / 搜索 / 重规划）
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：EvolvingNav 将因果 4D 记忆、到达时刻状态预测与基于可见性证据的信念重规划串联为闭环，解决了动态演化环境中的长期持久化机器人导航问题。
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md)：EvolvingNav 面向物体位置会随时间变化的家庭与办公场景目标搜寻任务，利用持久–迁移概率信念在未见或动态迁移环境下高效定位目标。
 
 ## 参考来源
 

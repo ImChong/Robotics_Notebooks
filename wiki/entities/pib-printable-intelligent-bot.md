@@ -67,6 +67,8 @@ flowchart LR
 - [open-source-humanoid-hardware](./open-source-humanoid-hardware.md)
 - [ros2-basics](../concepts/ros2-basics.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：pib 在 Raspberry Pi 5 上集成 ROS 2 Humble、Cerebra 界面与 Python 控制接口，构成开源教育人形软件栈。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：pib 全身机械结构基于可免费下载的 STL 模型与 BOM 清单进行 3D 打印制造与装配。
 
 ## 推荐继续阅读
 

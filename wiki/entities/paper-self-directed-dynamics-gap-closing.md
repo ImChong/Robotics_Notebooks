@@ -88,6 +88,8 @@ flowchart LR
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：该研究通过机器人主动物理交互辨识摩擦等未知动力学参数并更新仿真模型，缩小了视觉重建后的仿真预测与真实物理差距。
+- [Manipulation](../tasks/manipulation.md)：论文以物体交互操作为载体，通过主动交互策略获取环境物理属性以提升接触后物体运动预测与操控精度。
 
 ## 参考来源
 

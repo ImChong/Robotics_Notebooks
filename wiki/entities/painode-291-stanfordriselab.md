@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：实时智能系统关注任务规划、状态估计与运动控制层在严格时序边界下的协同运行。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：在实时闭环控制中部署学习模型需要持续优化推理延迟、吞吐与系统资源约束。
 
 ## 参考来源
 

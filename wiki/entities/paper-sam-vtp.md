@@ -157,6 +157,8 @@ flowchart LR
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md)
 - [具身感知的六种空间表示](../concepts/embodied-perception-six-spatial-representations.md)
 - [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：分割与 2D→3D 提升在感知栈中的选型取舍
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：SAM-VTP 微调 SAM2 视频记忆通路并融合深度几何特征，为移动机器人提供时空连续的像素级可通行性分割输出。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：连续可通行性预测可直接作为局部代价地图与路径规划的感知输入，并在 JetAcker 实机上验证边缘闭环导航。
 
 ## 参考来源
 

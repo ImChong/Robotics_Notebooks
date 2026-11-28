@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：涵盖状态估计、运动控制器设计与执行器接口配置等工程问答，是该问答社区的常见技术焦点。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：机器人模型导入、物理仿真器配置与控制接口调试问题在该问答平台上被频繁提问与解答。
 
 ## 参考来源
 

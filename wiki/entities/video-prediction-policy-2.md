@@ -176,6 +176,8 @@ VPP2 的关键设计是把泛化问题放在“预测到什么未来”上处理
 - [Fast-WAM](./paper-fast-wam.md) — 视频/动作预测的高效联合建模对照
 - [WorldScape Policy 2.0](./paper-worldscape-policy-2.md) — 另一条强调长时记忆与规划的 WAM 路线
 - [星动纪元 ROBOTERA](./robotera.md) — 论文作者机构之一
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：采用视频扩散预训练与一致性蒸馏构建单步视觉规划器，以生成式世界模型预测操作任务的未来视觉状态。
+- [Action Chunking（动作块输出）](../methods/action-chunking.md)：MoT 动作专家以预测未来视觉表征为条件生成多步动作 chunk，缓解长时序操作中的短视相关性。
 
 ## 参考来源
 

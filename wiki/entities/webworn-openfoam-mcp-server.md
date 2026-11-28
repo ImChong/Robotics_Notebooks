@@ -98,6 +98,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [OpenFOAM Claude Suite](./swtbkim-openfoam-claude-suite.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：围绕 OpenFOAM 算例配置、网格与边界条件解释及报错排查，辅助建立规范可查的 CFD 工程仿真流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 MCP 接口向大模型代理开放 OpenFOAM 执行层工具与教学式诊断交互。
 
 ## 参考来源
 

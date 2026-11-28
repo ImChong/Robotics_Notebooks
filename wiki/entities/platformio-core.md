@@ -124,6 +124,8 @@ sequenceDiagram
 - [SimpleFOC](./simplefoc.md) — Arduino/ESP32/STM32 上的开源电机控制库
 - [Tinkercad](./tinkercad.md) — 面向入门教学的 Arduino/micro:bit 浏览器电路仿真
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — 机器人驱动板与上层控制之间的协议和接口背景
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：PlatformIO Core 在固件工程层统一管理多板卡 MCU 工具链、库依赖与持续集成构建，支撑机器人软件系统联调。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：PlatformIO Core 常用于开发和调试连接机器人传感器节点的微控制器固件，并配合串口监视器排查数据链路。
 
 ## 参考来源
 

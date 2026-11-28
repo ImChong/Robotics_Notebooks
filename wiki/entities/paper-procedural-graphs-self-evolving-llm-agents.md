@@ -149,6 +149,8 @@ sequenceDiagram
 - [递归自我改进](../concepts/recursive-self-improvement.md)
 - [智能体编码软件基础](../concepts/agentic-coding-software-fundamentals.md)
 - [FrogNano](paper-frognano-4b-coding-agent.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：程序图在运行时按活动节点抽取局部子图偏置引导 ReAct 规划，并借助成败轨迹反馈在验证门控下迭代更新。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：将工具调用建模为程序图节点及条件转移关系，以显式结构化经验约束长时程工具智能体的调用顺序。
 
 ## 参考来源
 

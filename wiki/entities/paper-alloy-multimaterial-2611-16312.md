@@ -118,6 +118,8 @@ sequenceDiagram
 
 - [2026-11-16 具身研究论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ActionCodec2：流式动作编解码](./paper-actioncodec2-streaming-action-tokenizer.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Alloy 将 MJCF 机器人模型、多材料物理求解器与渲染环境集成为统一的并行机器人仿真验证平台。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：Alloy 按材料卡将刚体、柔体、颗粒与液体路由至不同求解器并做步内耦合与健康评分，体现了多物理场仿真核查流程。
 
 ## 参考来源
 

@@ -94,6 +94,8 @@ flowchart LR
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：Khosla 1985 奠定了从关节轨迹与力矩实测数据反推动力学参数的经典范式，是后续执行器参数辨识研究的起点。
+- [Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）](../methods/sim2real-joint-sysid-experiment-design.md)：现代关节动力学辨识实验设计中所处理的基参数秩亏与结构性可辨识性问题均承接自该经典系统辨识脉络。
 
 ## 参考来源
 

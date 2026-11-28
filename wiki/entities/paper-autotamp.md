@@ -81,6 +81,8 @@ AutoTAMP 面向 contact-rich 长程任务。
 
 - [paper-llm-p](./paper-llm-p.md)
 - [paper-text2motion](./paper-text2motion.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：AutoTAMP 在自然语言到 STL 公式翻译、语法检查器、轨迹规划器与 LLM 语义检查之间构建了带反馈重试的规划闭环。
+- [Manipulation](../tasks/manipulation.md)：AutoTAMP 面向接触丰富的长程机器人操作任务，利用大语言模型将自然语言指令转化为 TAMP 规划器的时序逻辑约束。
 
 ## 参考来源
 

@@ -85,6 +85,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：HuBE 结合 9 款人形机器人的骨长缩放增广与 Pinocchio 两步 CLIK 逆运动学，将人类关键点行为映射至异构人形关节空间。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：HuBE 训练融合状态、未来目标与语言情境编码的模仿学习策略，自回归或前馈输出上半身关键点目标位姿。
 
 ## 参考来源
 

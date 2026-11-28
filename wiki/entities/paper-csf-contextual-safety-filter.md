@@ -178,6 +178,8 @@ sequenceDiagram
 - [Control Barrier Function（控制屏障函数）](../concepts/control-barrier-function.md)
 - [PAC-MAN：感知 CBF-RL 全身躲避](./paper-pac-man-perceptive-cbf-rl.md)
 - [Safe-Stop Humanoid](./paper-safe-stop-humanoid.md)
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：CSF 在动作生成采样步与执行期引入语义门控的 CBF-QP 安全滤波，在保持生成动作自然性的同时抑制面向受保护实体的不安全运动。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：论文在 Unitree G1 真机闭环中将过滤后的全身动作参考交由预训练 SONIC 策略跟踪执行，验证语义安全层与低层全身跟踪器的协同。
 
 ## 参考来源
 

@@ -105,6 +105,8 @@ Note over F: 规划与评测代码待后续发布
 - [Causal-JEPA](./paper-causal-jepa.md) — 同属 2026 年 JEPA 世界模型扩展
 - [LpWM](./paper-lpwm.md) — 同为 action-conditioned 潜空间世界模型
 - [视频即仿真](../concepts/video-as-simulation.md) — 从观测学习可用于规划的内部世界
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：Music-JEPA 学习动作条件潜空间世界模型并在潜状态中反向搜索动作序列，与基于模型的强化学习共享世界模型规划思路。
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：与生成式世界模型在像素或波形空间预测不同，Music-JEPA 在潜空间学习动作条件动力学以支持下游推理与规划。
 
 ## 参考来源
 

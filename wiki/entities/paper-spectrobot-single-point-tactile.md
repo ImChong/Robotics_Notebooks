@@ -104,6 +104,8 @@ flowchart TD
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-station-2026-10-18-26-papers-technology-map](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：SpectRobot 将高带宽单点触觉信号转为时频图并复用现成视觉编码器提取接触历史表征。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：该工作打通高带宽单点触觉传感与视觉表征模型的接口转换，用于遮挡环境下物体的触觉感知。
 
 ## 参考来源
 

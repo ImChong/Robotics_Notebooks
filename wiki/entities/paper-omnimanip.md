@@ -84,6 +84,8 @@ OmniManip 延续 VoxPoser 之后 3D+LLM 线。
 
 - [paper-voxposer](./paper-voxposer.md)
 - [paper-pai-2209-07753-codeaspolicies](./paper-pai-2209-07753-codeaspolicies.md)
+- [Manipulation](../tasks/manipulation.md)：OmniManip 通过 VLM 生成几何交互原语与空间约束，驱动机械臂闭环完成多阶段物体操作任务。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：OmniManip 依赖视觉基础模型标注、单视角三维网格重建与 6D 位姿跟踪为下游操作约束提供空间几何表征。
 
 ## 参考来源
 

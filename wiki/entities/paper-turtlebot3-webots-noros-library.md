@@ -137,6 +137,8 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md)：本文是接口层面的最简迁移案例
 - [物理保真度与 sim2real 差距](../concepts/physics-fidelity-sim2real-gap.md)：本文未量化的那一部分
 - [ROS 2 基础](../concepts/ros2-basics.md)：论文要绕开的中间件背景
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：通过镜像仿真器设备 API 使学生编写的控制器代码在 Webots 与 TurtleBot3 真机间直接迁移。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：将 Webots 仿真传感器与执行器接口在真机驱动层对齐以形成统一的开发与教学验证环境。
 
 ## 参考来源
 

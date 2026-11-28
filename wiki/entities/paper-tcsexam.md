@@ -173,6 +173,8 @@ sequenceDiagram
 - [Math 2.0](../concepts/math-2-0.md) — 正确证明与研究理解/新颖性之间的区别。
 - [FlashProve](flashprove.md) — 证明“正确执行”与“结果内容正确”属于不同层级。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 基准设计与 grader 可信度的通用选型框架。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：TCSExam 构建覆盖四类理论计算机科学研究任务的百题基准，通过独立形式核验器与隐藏实例评测大模型与智能体。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：其在线求解器反馈与四赛道独立验收流程考察智能体在复杂推理、工具校验与多轮修正循环中的表现。
 
 ## 参考来源
 

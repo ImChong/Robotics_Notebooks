@@ -86,6 +86,8 @@ Guinness World Records 记载该机器人与人类对手连续完成 **1,452 次
 
 - [Humanoid Whole-Body Badminton：无人类动作先验的退火 RL](./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) — 人形机器人全身羽毛球策略，可作研究型系统对照。
 - [Humanoid Badminton：从有限人类动作学习动态球拍技能](./paper-humanoid-badminton-dynamic-racket-skills.md) — 研究人形机器人多技能回球与人机连续对打。
+- [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md)：该羽毛球陪练机器人依靠高速视觉实时追踪来球轨迹并驱动底盘与球拍机构形成闭环击球响应。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：系统在高速接球任务中将移动底盘的快速跑位与末端球拍击球动作紧密协同，属于典型的动态移动操作场景。
 
 ## 参考来源
 

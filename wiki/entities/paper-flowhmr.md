@@ -81,6 +81,8 @@ Wild-4K 上 PHC+ 仿真跟踪成功率从 base 的 78.79% 提升至 82.47%；这
 
 - [相关方法](../concepts/motion-retargeting.md)
 - [相关概念](../concepts/flow-matching-embodied-policy.md)
+- [GRPO（Group Relative Policy Optimization）](../methods/grpo.md)：FlowHMR 在后训练阶段结合动作保真奖励与冻结 PHC+ 控制器的物理跟踪奖励，采用 GRPO 优化单目动作重建的物理合理性。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：FlowHMR 从单目视频恢复全局人体与手部运动后，其项目演示进一步经由 GMR 重定向至 Unitree G1 并进行仿真物理跟踪。
 
 ## 参考来源
 

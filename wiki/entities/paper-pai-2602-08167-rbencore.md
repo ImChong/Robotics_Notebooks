@@ -112,6 +112,8 @@ Self-supervised method that treats embodied reasoning as a latent variable and d
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：将具身推理视为潜变量并通过先验与后验联合训练及重要性重采样，蒸馏出同时生成推理与动作的 VLA 模型。
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：利用基础模型与自监督重要性加权筛选自动提纯演示轨迹的推理标注，无需额外人工标注或外部奖励信号。
 
 ## 参考来源
 

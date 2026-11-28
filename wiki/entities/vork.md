@@ -157,6 +157,8 @@ vork help programs --all
 - [3D-as-Code、网格与机器人仿真描述选型](../comparisons/3d-as-code-to-robot-simulation.md) — 解释“可编辑 3D 程序、可见网格、可运行物理仿真”三者不同。
 - [前沿模型 × 3D / CAD / 机器人综述](../overview/frontier-models-3d-cad-robotics-survey.md) — 评估 agent harness、可编辑资产和人工验收。
 - [ParaView MCP](./llnl-paraview-mcp.md) — Agent 操控已有视觉软件 vs Vork 原生无 GUI 的编程渲染。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：以无 GUI 的场景 JSON、Python/TypeScript SDK 与 CLI 命令向 AI Agent 暴露可编程渲染与迭代验证接口。
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：通过 Slang 着色程序与硬件光追管道输出图像及 MP4/MOV 视频序列，支持 Agent 驱动的镜头渲染与合成工作流。
 
 ## 参考来源
 

@@ -63,6 +63,8 @@ flowchart LR
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [humanoid-hardware-101-sensing-end-effectors](../overview/humanoid-hardware-101-sensing-end-effectors.md)
 - [dexterous-hand-industry-core-players](../concepts/dexterous-hand-industry-core-players.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：高采样率可拉伸触觉电子皮肤接入灵巧手时，依赖传感器接口集成完成数据同步、校准与一致性标定。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md)：其多模态力与温度触觉反馈可为灵巧手基于触觉的阻抗控制提供接触力感知输入。
 
 ## 参考来源
 

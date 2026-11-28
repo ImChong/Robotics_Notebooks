@@ -122,6 +122,8 @@ flowchart TD
 - [MIIB：多模态信息交互瓶颈](./paper-miib-multimodal-information-bottleneck.md)（arXiv:2611.07718）— 在部分相近的 PID 理论视角下，以模态专属、融合与协同 Transformer 学习目标及实证基准构成另一篇独立研究；不可把本文 GMIL 的统一目标直接视为 MIIB 实现。
 - [多模态基础概念](../concepts/multimodality-basics.md)
 - [视觉–语言特征融合](../concepts/vision-language-feature-fusion.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：该综述使用互信息、信息瓶颈与部分信息分解分析包含视觉在内的多模态表征如何权衡压缩与冗余、独有及协同信息。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：综述第三节专门梳理了信息瓶颈与压缩目标在多传感器强化学习策略表征中的应用。
 
 ## 参考来源
 

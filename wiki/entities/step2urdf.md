@@ -95,6 +95,8 @@ flowchart LR
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — STEP 上游生成路线
 - [BotWorld](./botworld.md) — 插件中心外链入口与资产发布广场
 - [StackForce](./stackforce.md) — 工作台向导 + CAD2URDF，可导出 Isaac RL 工程
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：step2urdf 在浏览器端解析 STEP 装配体并完成几何关节推断与惯量估算，直接服务于机器人 URDF 模型描述与资产接入流程。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：其导出的 ROS/ROS2 URDF 描述包是连接机械 CAD 设计与下游 MoveIt2、MuJoCo 或 Isaac 仿真环境集成的关键中间资产。
 
 ## 推荐继续阅读
 

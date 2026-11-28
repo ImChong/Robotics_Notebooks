@@ -92,6 +92,8 @@ flowchart LR
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-04-ego-exo-fusion.md](../overview/ego-category-04-ego-exo-fusion.md)
 - 原始 source：[ego_survey_09_e3c.md](../../sources/papers/ego_survey_09_e3c.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：E³C 结合 3D 环境记忆与 ego/exo 人体姿态控制生成空间结构一致的第一视角未来视频，服务面向具身推演的生成式世界模型。
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：E³C 以 3D 场景记忆和双视角人体控制作为条件约束第一视角视频生成，保障快速视角变化下的场景与动作时空一致性。
 
 ## 参考来源
 

@@ -120,6 +120,8 @@ sequenceDiagram
 
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：BWM-Forge 通过智能体自动编写并校核可编辑的 Blender 场景与机器人运动程序，为具身视频生成提供结构化仿真场景基底。
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：BWM-Forge 将代理渲染序列与条件视频模型结合生成高质量具身交互视频，服务于机器人世界模型与数据合成。
 
 ## 参考来源
 

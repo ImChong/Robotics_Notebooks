@@ -112,6 +112,8 @@ flowchart TB
 - [物理保真度与 sim2real 差距](../concepts/physics-fidelity-sim2real-gap.md) — 仿真结果外推的边界
 - [SceneAgent：Real2Sim 与物理捕获](./paper-sceneagent-real2sim-capture-physics.md) — 同样利用仿真物理的场景构建工作
 - [SimFoundry：Real2Sim 场景生成](./paper-simfoundry-real2sim-scene-generation.md) — 面向仿真场景生成的相关路线
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：在 Isaac Sim 中通过智能体交互式组合与接触反馈迭代构建包含刚体、铰接与可变形物体的物理稳定三维场景。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：采用 Assembly Agent 规划、Critic Agent 接触反馈修正与自进化技能库组成的闭环执行架构完成三维装配任务。
 
 ## 参考来源
 

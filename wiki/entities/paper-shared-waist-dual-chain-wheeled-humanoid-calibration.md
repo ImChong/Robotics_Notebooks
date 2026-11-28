@@ -171,6 +171,8 @@ BON、NGU 均为作者用本文测量与位姿改编的版本，只能说明模�
 - [全身控制](../concepts/whole-body-control.md)：标定后的运动学模型是上层全身控制与规划的输入之一。
 - [Sim2Real](../concepts/sim2real.md)：运动学与柔顺的偏差是仿真与实机差距的一类来源。
 - [AgiBot World 2026](../entities/agibot-world-2026.md)：同属智元机器人的页面。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md)：本文共享腰部双链弹性几何标定的最大后验非线性最小二乘求解采用 Levenberg–Marquardt 算法。
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md)：该标定统一双臂共享腰部模型并降低留出末端位姿误差，直接支撑轮式人形双臂协同操作精度。
 
 ## 参考来源
 

@@ -80,6 +80,8 @@ World Translation 的方法链可拆成两步互补模块：
 - [Sim2Real](../concepts/sim2real.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [System Identification](../concepts/system-identification.md)
+- [Sim-to-Real Domain Adaptation · Sim2Real 域适应](../methods/domain-adaptation-for-sim2real.md)：论文通过无配对域翻译在保留动力学内容的同时迁移仿真与现实域风格，以缩小 Sim2Real 分布偏差。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：论文提出反向动力学提取与域翻译组合流程并在人形、四足和机械臂平台上验证真机策略迁移。
 
 ## 推荐继续阅读
 

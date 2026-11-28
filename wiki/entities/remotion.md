@@ -133,6 +133,8 @@ sequenceDiagram
 
 - [video-shotcraft](video-shotcraft.md) — Agent Skill 级 Remotion 镜头库  
 - [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) — 知识编译与多媒体导出并列  
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：Remotion 以 React Composition 为时间轴与镜头源码真值，通过 CLI 与浏览器逐帧编码管线实现数据驱动的程序化视频生成与批量编辑。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：官方提供 Agent Skills 文档与 Prompts 规范，使编码智能体能够依据封装好的镜头规约生成、预览并渲染视频工程。
 
 ## 推荐继续阅读
 

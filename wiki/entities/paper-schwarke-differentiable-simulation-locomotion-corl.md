@@ -101,6 +101,8 @@ flowchart TD
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Locomotion](../tasks/locomotion.md)：该论文以足式机器人运动控制为目标任务，展示了完全在可微仿真中训练并零样本迁移到真机的可行性。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：工作结合真机执行器拟合模型、域随机化与平滑接触可微仿真梯度，打通了从可微训练到实机部署的迁移流程。
 
 ## 参考来源
 

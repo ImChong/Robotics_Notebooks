@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：其撰写的机器人视觉专题深入剖析传感器与端侧芯片算力如何支撑高效视觉感知流水线。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：其半导体与 AI 战略分析紧扣端侧模型推理延迟、算力能效与硬件部署选型权衡。
 
 ## 参考来源
 

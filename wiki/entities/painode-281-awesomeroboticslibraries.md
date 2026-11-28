@@ -91,6 +91,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：汇总了用于串联传感、通信、规划与控制模块的各类开源机器人软件库。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：收录的机器人仿真与动力学工具库是搭建可运行仿真验证环境的重要基础组件。
 
 ## 参考来源
 

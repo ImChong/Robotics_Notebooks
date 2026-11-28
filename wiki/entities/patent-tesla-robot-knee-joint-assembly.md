@@ -73,6 +73,8 @@ flowchart LR
 - [BD 足式控制专利栈](./patent-boston-dynamics-legged-control-stack.md)
 - [人形并联关节运动学](../concepts/humanoid-parallel-joint-kinematics.md)
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 膝关节执行器总成专利是①层执行器机械设计的工业参照
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：专利设计的双连杆直线驱动膝关节构型直接服务于人形机器人行走时的力矩密度、冲击承受与腿部惯量配置。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：双连杆与双枢轴膝关节机构需要通过参数化几何约束来校核传动行程、奇异位形和封装边界。
 
 ## 参考来源
 

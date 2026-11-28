@@ -91,6 +91,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Locomotion](../tasks/locomotion.md)：综合机器人资源清单涵盖腿式与人形机器人在不同地形上的稳定移动与运动控制主题。
+- [Manipulation](../tasks/manipulation.md)：清单中汇集了面向物体抓取、灵巧操作与视觉感知的通用机器人研究与工程资料。
 
 ## 参考来源
 

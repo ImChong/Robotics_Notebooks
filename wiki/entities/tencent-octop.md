@@ -86,6 +86,8 @@ sequenceDiagram
 
 - [Agent Autoloop](./agent-autoloop.md)：以事件和回执驱动命令行 Agent。
 - [LangGraph](./langgraph.md)：有状态 Agent 和工作流运行框架。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：Octop 通过 Octop Harness 管理工具连接器与会话状态，并经 ACP 协议接入外部编码智能体，提供统一的工具调用接口。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：平台在单进程中编排多专家智能体、定时触发与记忆检索，支持跨 Web 与即时通讯通道的异步任务反馈执行。
 
 ## 参考来源
 

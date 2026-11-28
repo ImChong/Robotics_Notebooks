@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：博客详述 Isaac Sim 与 Isaac Lab 等仿真集成工作流，支持大规模并行训练与机器人软件栈验证。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：围绕 Cosmos 世界基础模型与域随机化实践，博客提供了从 GPU 仿真到真机部署的 Sim2Real 迁移指南。
 
 ## 参考来源
 

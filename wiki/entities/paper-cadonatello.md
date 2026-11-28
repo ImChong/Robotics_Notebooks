@@ -77,6 +77,8 @@ flowchart TB
 
 - [相关方法](./zero-to-cad.md)
 - [机器人仿真三层结构](../concepts/robot-simulation-three-layers.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：CADonatello 将真实三维扫描分解为部件后通过截面草图参数化与拉伸序列重建可编辑模型，是逆向参数化 CAD 建模的代表方法。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：该方法从真实三维三角网格扫描出发恢复带几何约束的多部件 CAD 结构，连接视觉三维重建与工程可用几何资产生成。
 
 ## 参考来源
 

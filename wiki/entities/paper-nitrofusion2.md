@@ -186,6 +186,8 @@ sequenceDiagram
 - [生成对抗网络（GAN）](../concepts/generative-adversarial-network.md) — hinge 判别损失背景
 - [像素扩散的对抗训练](./paper-adversarial-training-pixel-diffusion.md) — 对照「GAN 后训练但不减步」路线
 - [UltraText Bench](./paper-ultratext-bench.md) — 图片内文字生成质量评测相关工作
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：NitroFusion2 通过文本流对抗蒸馏将 6B 多模态扩散骨干压缩至 1–2 步采样，以大幅降低推理计算开销。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：该项目开放了面向 Diffusers 与 ComfyUI 的推理管线，用于验证少步文生图蒸馏模型的生成延迟与文本保真度。
 
 ## 参考来源
 

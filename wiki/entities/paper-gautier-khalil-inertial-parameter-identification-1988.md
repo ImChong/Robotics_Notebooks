@@ -91,6 +91,8 @@ flowchart LR
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）](../methods/sim2real-joint-sysid-experiment-design.md)：该文提出的惯性基参数与矩阵秩亏分析，是判断关节动力学系统辨识结构可辨识性并设计分级实验的理论根源。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：该文通过 QR 分解确定只能成组辨识的惯性基参数，避免对不可辨识的连杆与关节执行器惯量参数做无意义回归。
 
 ## 参考来源
 

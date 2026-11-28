@@ -88,6 +88,8 @@ flowchart TD
 
 - [ECHO-G](./paper-echo-g-cospeech-humanoid.md)
 - [运动重定向](../concepts/motion-retargeting.md)
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md)：GestAdapt 在采样并按双腕工作空间修正语音手势后，借助 GMR 与关节限位映射将其部署至 Unitree G1 等人形机器人本体。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：GestAdapt 将机器人双腕可达工作空间约束与限位校验融入动作生成与重定向流程，以减少生成手势与桌面或墙面的越界冲突。
 
 ## 参考来源
 

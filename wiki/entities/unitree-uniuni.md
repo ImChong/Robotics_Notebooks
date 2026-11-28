@@ -88,6 +88,8 @@ flowchart LR
 - [Unitree G1](./unitree-g1.md) — UniUni 页面展示的宇树人形机器人之一；具体兼容性仍需核对。
 - [UniStore](./unitree-unistore.md) — 动作内容分发平台；UniUni 页面称动作市场与 UniStore 联动。
 - [导航、SLAM 与自主系统栈](../overview/navigation-slam-autonomy-stack.md) — 点云地图与定位工作流的上层技术背景。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：依赖激光点云地图与定位测试将演出机器人统一至场馆坐标系，与点云融合定位流程直接相关。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：支撑宇树人形及多形态机器人在舞台编队中的同步路径行走与动作时间线执行。
 
 ## 推荐继续阅读
 

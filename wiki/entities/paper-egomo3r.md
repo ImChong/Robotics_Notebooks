@@ -217,6 +217,8 @@ sequenceDiagram
 - [GVHMR](./gvhmr.md) — 另一种视频人体运动重建路线，适合区分第一人称/第三人称可见性。
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 从人体 SMPL-X 动作到机器人可执行轨迹仍需的下一步。
 - [动作重定向纵深 Stage 2](../../roadmap/depth-motion-retargeting.md) — 视频估计类参考动作上游。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：EgoMo3R 将单目视觉几何重建与 SE(3) 不变扩散人体运动先验交替优化，在同一重力对齐的度量世界坐标系下恢复三维场景与相机轨迹。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：EgoMo3R 从普通第一视角视频中恢复度量尺度 SMPL-X 人体动作与环境几何，可作为机器人动作重定向与示范审查的上游数据来源。
 
 ## 参考来源
 

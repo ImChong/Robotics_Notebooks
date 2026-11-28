@@ -153,6 +153,8 @@ sequenceDiagram
 
 - [FeatDepth：单目深度与位姿学习](./paper-featdepth.md)
 - [LVI-SAM：多模态 SLAM](./paper-lvi-sam.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：4D Gaussian Splatting 将静态三维高斯重建扩展至动态时空场，从多视角图像与时间戳恢复可微变形的三维场景表示。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：4D Gaussian Splatting 面向动态场景的新视角合成与时空几何建模，可为机器人动态环境视觉感知提供显式三维表征参考。
 
 ## 参考来源
 

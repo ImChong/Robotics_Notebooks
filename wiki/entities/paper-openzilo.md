@@ -96,6 +96,8 @@ sequenceDiagram
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：OpenZilo 将智能戒指的语音、惯性手势与生理传感数据接入分层机器人接口以实现同步人机交互。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：OpenZilo 通过可穿戴手势与语音意图识别连接人类指令与机器人任务执行，属于以人为中心的交互式控制接口。
 
 ## 参考来源
 

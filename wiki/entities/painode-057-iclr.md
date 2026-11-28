@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：自监督预训练与多模态表征学习是 ICLR 的核心基础议题，并为下游机器人视觉感知提供骨干表示。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：深度强化学习表征、策略优化与具身控制基准研究是 ICLR 每年重点接收的算法方向。
 
 ## 参考来源
 

@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robotics Transformer（RT-1 / RT-2）](../methods/robotics-transformer-rt-series.md)：RT-1 与 RT-2 系列工作将大规模视觉语言模型与序列动作预测结合，奠定了通用操作策略的重要基线。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：在视觉-语言-动作统一策略模型方向持续推进跨任务操作与具身基础模型研究。
 
 ## 参考来源
 

@@ -96,6 +96,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：聚焦贝叶斯滤波、粒子滤波与概率定位估计，直接对应《概率机器人》的核心理论体系。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：结合运动模型预测与激光观测校正位姿漂移，是该教材概率建图与定位方法在工程系统中的典型实现。
 
 ## 参考来源
 

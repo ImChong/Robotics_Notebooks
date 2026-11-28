@@ -205,6 +205,8 @@ sequenceDiagram
 - [Ropedia W0：跨本体世界模型](./paper-ropedia-w0.md) — 下游世界模型如何利用跨本体动作表示
 - [EgoXperience：第一视角联合重建](./paper-egoxperience.md) — 相机、手、物体与场景重建
 - [Holi-World：人类第一视角世界经验](./paper-holi-world.md) — 另一条空间理解与数据组织路线
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：结合手持 LiDAR 扫描、COLMAP、三角网格与 3DGS 重建米制三维场景，并通过多阶段几何配准对齐第一视角轨迹。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：将真实三维场景扫描、同步多传感器录像与分层语义标注纳入统一坐标系，形成可质检复用的机器人训练与评测数据管线。
 
 ## 参考来源
 

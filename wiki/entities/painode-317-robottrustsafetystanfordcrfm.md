@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：聚焦具身基础模型的安全评测、失败模式分析与可复现基准构建，与具身智能体评测方法直接衔接。
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：面向物理世界部署的机器人可信与安全研究与安全强化学习中的显式约束保障相互呼应。
 
 ## 参考来源
 

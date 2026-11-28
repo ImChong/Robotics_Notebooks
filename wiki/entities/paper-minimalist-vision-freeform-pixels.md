@@ -89,6 +89,8 @@ flowchart TD
 
 - [visual-representation-for-policy](../concepts/visual-representation-for-policy.md)
 - [cv-best-papers-2023-2026-technology-map](../overview/cv-best-papers-2023-2026-technology-map.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：Minimalist Vision 将自由形态光学掩膜建模为神经网络第一层，端到端联合学习硬件投影与任务视觉表征。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：该方案通过极少自由形态像素实现低功耗、特定任务的视觉感知与状态判别。
 
 ## 参考来源
 

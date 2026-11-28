@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：针对近人运行的个人护理机器人提出安全规范，指导控制架构中限速、碰撞检测与安全监控层的设计。
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：为人机共融服务机器人在学习型控制策略落地时设定了物理安全边界与风险缓解约束。
 
 ## 参考来源
 

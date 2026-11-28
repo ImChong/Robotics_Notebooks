@@ -135,6 +135,8 @@ RGC 把代码生成后的游戏体验纳入闭环；它不是通用 coding agent
 - [Aether RSIAgent](./aether-rsiagent.md) — 另一种将执行反馈用于 coding agent 改进的研究。
 - [开源游戏源码索引](./open-source-games.md) — 对照开源游戏源码与代理开发 harness 的边界。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照边界：RGC 的 GameCraft-Bench / GameASG-Bench 评测游戏软件，不属该闭环四层中任何一层，分数不能外推为具身能力。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：RGC 通过编码原生玩家试玩轨迹、L1/L2 自动检查与匿名 A/B 版本评审，构建了基于执行证据的代码迭代验证闭环。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：将软件开发拆分为 Designer、Builder、Player 与 Reviewer 四角色协作，依据试玩反馈闭环持续优化目标产物。
 
 ## 参考来源
 

@@ -151,6 +151,8 @@ sequenceDiagram
 - [Sim2Real（仿真到真实迁移概念）](../concepts/sim2real.md)
 
 - [Fast Feature Field (F³)](./paper-fast-feature-field-f3.md) — 复用预测性事件特征的机器人感知表示
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：AMI-EV 将旋转楔形棱镜、角度编码器与事件相机在硬件和标定层集成，通过几何光学补偿输出标准事件流。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：补偿后的稳定事件流可直接接入特征跟踪、目标检测与极端光照下的机器人视觉感知流程。
 
 ## 参考来源
 

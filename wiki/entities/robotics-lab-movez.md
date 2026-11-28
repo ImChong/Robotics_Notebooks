@@ -106,6 +106,8 @@ flowchart TD
 - [Robotics Bench](./robotics-bench.md) — 同一作者另一个网址、不同 3D 创作声明的视觉教学演示。
 - [Tinkercad](./tinkercad.md) — 3D 设计和入门电子电路教学平台。
 - [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md) — 识别可视化、电子仿真与刚体动力学边界。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：该三维交互教学演示通过开发板与 LED、传感器、电机接线任务，帮助初学者在实物实验前认识硬件引脚与连接方式。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：可参照工程仿真验证流程审视其浏览器交互式教学演示与真实电路物理求解之间的边界。
 
 ## 参考来源
 

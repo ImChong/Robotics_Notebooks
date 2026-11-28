@@ -114,6 +114,8 @@ flowchart TD
 - [学术研究自动化](../concepts/ai-auto-research.md)：把该对谈放回探索、执行与验证的完整流程。
 - [递归自改进](../concepts/recursive-self-improvement.md)：对照不同强度的 RSI 定义与证据要求。
 - [autoresearch](./karpathy-autoresearch.md)：固定预算实验循环的公开实现对照。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：该演讲围绕“提出、运行、测量、再决策”的科研实验闭环展开，核心在于构建由评估经验驱动的智能体规划与反馈循环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对谈强调基础模型需借助外部工具接口运行实验并收集测量反馈，以推进复杂科研与工程任务的迭代。
 
 ## 参考来源
 

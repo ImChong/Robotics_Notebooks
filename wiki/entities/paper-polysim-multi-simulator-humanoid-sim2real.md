@@ -124,6 +124,8 @@ flowchart LR
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：通过多物理仿真引擎并行训练将域随机化扩展至动力学结构层面，旨在缩小人形机器人控制的 Sim2Real 迁移差距。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：设计训练与仿真隔离架构及 Simulator Router，以统一观测动作接口并行调度 IsaacSim、IsaacGym 与 Genesis 等仿真器。
 
 ## 参考来源
 

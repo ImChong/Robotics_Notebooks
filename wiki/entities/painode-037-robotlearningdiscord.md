@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：并行仿真训练、奖励设计与策略优化是机器人学习研究者在该社区高频探讨的核心算法方向。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：围绕观测动作契约、示范与强化学习训练选型及闭环验证展开研究交流，契合该社区的科研主题。
 
 ## 参考来源
 

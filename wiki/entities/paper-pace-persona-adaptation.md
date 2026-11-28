@@ -80,7 +80,7 @@ flowchart TD
   BLEND --> ROBOT["Ameca 声音与面部协同表达"]
 ```
 
-*依据：* [arXiv v5](https://arxiv.org/html/2607.15579) `III-A–III-C 与 Fig.1–3。图示为论文的**系统级数据流**，不是从未公开的 Python 源码反推的调用图。
+*依据：* [arXiv v5](https://arxiv.org/html/2607.15579) `III-A–III-C 与 Fig.1–3`。图示为论文的**系统级数据流**，不是从未公开的 Python 源码反推的调用图。
 
 ## 核心原理
 
@@ -174,10 +174,12 @@ flowchart TD
 - [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md) — 语音管线、打断与技能安全边界
 - [MistyPilot](./paper-mistypilot.md) — 社交机器人技能路由，与人格生成互补
 - [RealCompanion](./paper-realcompanion.md) — 长期伴侣人格与记忆评测的对照方向
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：PACE 通过多轮自适应追问与用户回答反馈动态提炼并更新结构化 PersonaSpec 对话策略状态。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：PACE 将语音识别、流式 LLM 推理、TTS 语音合成及面部口型表情控制集成为实时同步的人形交互软件闭环。
 
 ## 参考来源
 
-- [PACE arXiv v5 原文核读归档](../../sources/papers/pace_persona_arxiv_2607_15579.md) — `I–V、Fig.1–5、Table I–III
+- [PACE arXiv v5 原文核读归档](../../sources/papers/pace_persona_arxiv_2607_15579.md) — `I–V、Fig.1–5、Table I–III`
 - [PACE 官方项目页核查](../../sources/sites/pace-persona-adaptation.md) — 视频、架构图及资源入口
 - [PACE GitHub 仓库核查](../../sources/repos/lipzh5-pace.md) — README 占位命令与实际文件清单
 

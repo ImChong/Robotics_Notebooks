@@ -91,6 +91,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：为 ROS 2 等机器人通信总线提供身份认证与数据加密规范，支撑多模块系统集成时的通信安全。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：在机器人分层控制系统的组件间数据总线中界定安全通信与访问控制边界。
 
 ## 参考来源
 

@@ -94,6 +94,8 @@ OWP 在作者测试的两个音视频模型上改善跨模态幻觉基准，代�
 
 - [多模态基础概念](../concepts/multimodality-basics.md)
 - [多模态 LLM 发展路线](../overview/multimodal-llm-development.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：Omni-Woodpecker 在 CMM 与 AVHBench 等音视频幻觉与推理基准上系统评测了推理期干预前后准确率的权衡。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：Omni-Woodpecker 通过四次诊断前向与一次干预前向在推理服务阶段重平衡隐藏表征，需评估其额外推理时延。
 
 ## 参考来源
 

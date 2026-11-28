@@ -68,6 +68,8 @@ flowchart LR
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：ROBOTIS MINI 作为基于 DYNAMIXEL XL-320 的紧凑型人形硬件套件，可用于入门级双足步行与全身姿态控制实践。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：官方提供 STL 与 STP 结构设计文件，社区亦围绕其开展了仿真场景搭建与机器人模型接入。
 
 ## 参考来源
 

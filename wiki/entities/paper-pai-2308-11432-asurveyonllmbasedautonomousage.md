@@ -125,6 +125,8 @@ Comprehensive survey on LLM-based agents.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：系统梳理了大模型自主智能体中的规划与反馈执行机制，为具身智能体长程任务分解提供架构参照。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：归纳了面向自主智能体的主观与客观评测指标、协议及基准体系，可指导智能体能力的系统化评估。
 
 ## 参考来源
 

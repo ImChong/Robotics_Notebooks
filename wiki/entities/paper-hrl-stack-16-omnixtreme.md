@@ -99,6 +99,8 @@ flowchart LR
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 对照：[Extreme-RGMT](./paper-extreme-rgmt.md) — 同台评测 XtremeMotion / AMASS Challenging；强调参考质量变化下的鲁棒性
 - 原始 source：[humanoid_rl_stack_16_omnixtreme_breaking_the_generality_barrier_in_hi.md](../../sources/papers/humanoid_rl_stack_16_omnixtreme_breaking_the_generality_barrier_in_hi.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：OmniXtreme 针对高动态人形动作跟踪中的「通用性壁垒」，提出高容量通用学习与执行器感知精修相解耦的控制架构。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：OmniXtreme 面向人形机器人高动态移动与极端动作控制任务，并重点剖析了冲击着陆阶段电机过流、功率受限与欠压等真机边界。
 
 ## 参考来源
 

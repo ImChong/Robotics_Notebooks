@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：作者从一线模型训练视角深入剖析 RLHF 与策略优化实践，对理解机器人 RL 后训练范式很有启发。
+- [Policy Optimization](../methods/policy-optimization.md)：专栏对策略梯度、优势估计与大规模模型对齐优化细节的讨论与策略优化核心方法紧密呼应。
 
 ## 参考来源
 

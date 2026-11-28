@@ -111,6 +111,8 @@ flowchart TD
 - [robot-safety-state-machine](../concepts/robot-safety-state-machine.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — CUSP 位于 ④ 下游策略消费层：把感知到的危险累积为生存风险告警，评测关注误报率而非检测 mAP
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：CUSP 在越野导航感知出现危险前兆时利用 CUSUM 累积生存风险信号触发预警，补全复杂地形导航中的在线异常监测环节。
+- [机器人自主探索](../tasks/autonomous-exploration.md)：论文面向未知与多变野外越野环境下的自主行进安全，在五个未见场地评测统一误报率下的提前接管报警性能。
 
 ## 参考来源
 

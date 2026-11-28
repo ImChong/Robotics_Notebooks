@@ -68,6 +68,8 @@ flowchart LR
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：项目开放 3D 结构源文件与 STL 模型，体现了低成本开源桌面机器人结构设计与增材制造准备流程。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：作为软硬件一体开源社交机器人项目，需将结构装配、交互软件与 AI 对话模块整合为可运行系统。
 
 ## 参考来源
 

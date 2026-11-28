@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Locomotion](../tasks/locomotion.md)：该产业媒体广泛报道四足、轮腿及双足机器人移动平台在巡检、救援等领域的商业进展。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：其技术分析常涉及商用机器人的系统控制架构、安全边界与现场部署工程实践。
 
 ## 参考来源
 

@@ -157,6 +157,8 @@ MMAU 适合诊断音频感知与推理，结果需带版本、数据划分和有
 - [Daily-Omni](./paper-daily-omni.md)：音视频时序对齐。
 - [EmbSpatial-Bench](./embspatial.md)：静态图像空间关系。
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：MMAU 构建了包含 10,000 道选择题的多任务音频理解与推理评测基准，用于量化评估 LALM 与 ALE 的能力边界。
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：MMAU 对语音、环境声与多步听觉推理的诊断可为具身及人形机器人的语音交互感知模块提供能力参考。
 
 ## 参考来源
 

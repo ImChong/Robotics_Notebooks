@@ -60,6 +60,8 @@ flowchart TB
 
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)
 - [Semantic Tube Prediction](./paper-semantic-tube-prediction.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该文依托人类概念分类与典型性判断基准，对 40 余种大语言模型表征的压缩率与细粒度语义对齐度进行系统评测。
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md)：该文从信息瓶颈视角揭示语言表征压缩可能损失细粒度语义细节，常被跨领域引用以提示多模态与规划表征设计中的压缩权衡。
 
 ## 参考来源
 

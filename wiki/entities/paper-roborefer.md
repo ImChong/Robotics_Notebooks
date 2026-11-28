@@ -107,6 +107,8 @@ sequenceDiagram
 - [PointArena](./pointarena.md)
 - [Gemini Robotics](./gemini-robotics.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：空间指代推理评测，指代准 ≠ 末端执行成功
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：RoboRefer 将机器人视觉语言理解从 2D 点定位推进到具备多步推理能力的 3D 度量空间指代感知。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：其开源的 RefSpatial-Bench 与 Expand-Bench 已被多项主流具身 VLM 采纳，用于标准化评测空间指代与推理能力。
 
 ## 参考来源
 

@@ -139,6 +139,8 @@ sequenceDiagram
 - [Sim2Real](../concepts/sim2real.md)
 - [受微跳视启发的事件相机](./paper-microsaccade-inspired-event-camera.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是感知数据集而非策略基准：为机器人间交互检测/姿态估计提供合成评测数据，只贴近①层感知侧，不测动作执行
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：R2RI 通过双人交互动作重定向、多视角渲染与 ESIM 事件流合成，构建了标准化多机交互数据集与标注管线。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：同步提供外部双目与自我视角 RGB 及事件流数据，支撑弱光与跨视角条件下的机器人检测及 3D 姿态感知评测。
 
 ## 参考来源
 

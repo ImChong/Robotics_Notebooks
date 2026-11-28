@@ -62,6 +62,8 @@ flowchart LR
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [humanoid-hardware-101-sensing-end-effectors](../overview/humanoid-hardware-101-sensing-end-effectors.md)
 - [dexterous-hand-industry-core-players](../concepts/dexterous-hand-industry-core-players.md)
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md)：电容式触觉芯片与阵列采集的接触力觉反馈，是灵巧手执行精细抓取时实现基于触觉的阻抗控制的重要硬件基础。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：作为灵巧手行业分工中的触觉感知器件，其硬件阵列需经传感器接口接入、时间同步与标定才能融入机器人控制系统。
 
 ## 参考来源
 

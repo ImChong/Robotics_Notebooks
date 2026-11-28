@@ -128,6 +128,8 @@ npx shadcn@latest add @react-bits/BlurText-TS-TW
 - [GSAP Skills](./gsap-skills.md) — 代理动画设计与调试规约；React Bits 是可直接选用的组件素材。
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器 3D 运行时与交互作品的制作流程。
 - [Plotly](./plotly.md) — 机器人实验数据的交互式图表。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：在机器人工程项目的 Web 展示层或交互看板开发中，React Bits 提供现成动效界面组件以配合后端遥测、图表与仿真输出完成应用集成。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：在与 WebGL 3D 渲染或浏览器端机器人仿真演示同屏集成时，需将其界面动效负载纳入浏览器帧率与资源预算评估。
 
 ## 参考来源
 

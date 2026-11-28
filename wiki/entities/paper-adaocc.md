@@ -103,6 +103,8 @@ sequenceDiagram
 - [Humanoid Occupancy](./paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md) — 侧重人形多模态与时序占据系统。
 - [OccAnyScene](./paper-occanyscene.md) — 跨场景占据预测对照。
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：AdaOcc 将多视角 RGB 与深度或激光点云融合为稀疏语义点表征，提供可按计算预算自适应调节的局部三维占据感知。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：AdaOcc 输出的局部三维占据预测可直接服务于具身机器人导航中的可通行区域识别与路径规划。
 
 ## 参考来源
 

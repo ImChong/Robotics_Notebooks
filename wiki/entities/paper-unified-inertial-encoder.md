@@ -197,6 +197,8 @@ sequenceDiagram
 - [CLIP](./paper-clip.md)
 - [X-IONet 跨平台惯性里程计](./paper-x-ionet-cross-platform-inertial-odometry.md)
 - [跨本体迁移纵深 Stage 4](../../roadmap/depth-cross-embodiment.md) — 这里迁移的是传感/状态估计表征，不是人形控制策略
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：融合骨盆 IMU 与关节运动学合成连杆惯性信号以在真机人形上实现零样本机体系速度估计。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：将人体穿戴 IMU 与机器人本体关节编码器及骨盆 IMU 统一到对齐的 12 部位惯性接口。
 
 ## 参考来源
 

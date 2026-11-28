@@ -126,6 +126,8 @@ flowchart TD
 - [CAN 总线协议](../concepts/can-bus-protocol.md) — 电机总线与上位机解码的边界。
 - [PlotJuggler](./plotjuggler.md)、[Foxglove](./foxglove-studio.md) — 调试工具分工。
 - [机器人策略调试 Playbook](../queries/robot-policy-debug-playbook.md) — 部署排查路径。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：Serial Studio 可通过串口、蓝牙或网络实时解析并可视化 IMU、温度及编码器等传感器数据流，辅助接口联调与字段标定。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：该工具连接底层嵌入式通信链路与上层遥测图表及 CSV 日志复盘，完善了非 ROS 硬件模块的软件系统诊断能力。
 
 ## 参考来源
 

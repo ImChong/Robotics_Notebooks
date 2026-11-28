@@ -128,6 +128,8 @@ P-BFM 的核心贡献是将 BFM 的共享行为意图与地形感知执行解耦
 - [I-BFM](./paper-i-bfm.md) — 将对象动力学与手–物接触纳入行为 latent
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [BFM 纵深路线](../../roadmap/depth-bfm.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：P-BFM 将无监督行为基础模型与深度视觉感知结合，使人形机器人零样本适应楼梯、斜坡与障碍等复杂移动地形。
+- [楼梯与障碍 Locomotion（感知 / 盲走中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md)：P-BFM 利用滑动深度视觉窗与地形课程实现人形机器人在上下楼梯及箱体障碍上的感知运动自适应。
 
 ## 参考来源
 

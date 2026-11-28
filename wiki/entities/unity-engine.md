@@ -128,6 +128,8 @@ flowchart TB
 - [OpenLoong](./openloong.md) — Unity-RL-Playground
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：常作为高保真视觉渲染与交互宿主，与 MuJoCo 等物理后端结合完成机器人仿真环境集成。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：通过 URP/HDRP 渲染管线生成合成视觉数据与真值标注，支撑视觉感知模型的 Sim2Real 迁移验证。
 
 ## 参考来源
 

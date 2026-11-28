@@ -120,6 +120,8 @@ Segment Anything in 3D scenes.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：将二维基础分割模型的逐帧掩码经深度反投影与多帧合并转化为三维实例感知结果，支撑机器人三维场景理解。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：依托带位姿 RGB-D 序列构建局部三维点云并完成跨帧掩码融合，与视觉三维场景重建及语义建图流程紧密衔接。
 
 ## 参考来源
 

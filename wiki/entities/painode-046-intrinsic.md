@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：该工业机器人软件平台面向机械臂、末端执行器与感知控制接口的统一编排与部署。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：聚焦将传感、规划、控制和工业工作流模块集成到可扩展的机器人软件运行环境中。
 
 ## 相关研究与项目补充
 

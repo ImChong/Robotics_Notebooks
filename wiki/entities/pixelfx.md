@@ -84,6 +84,8 @@ sequenceDiagram
 
 - [frontend-design skill](anthropic-frontend-design-skill.md)：编码代理的视觉设计工作流。
 - [find-skills](find-skills-skill.md)：发现和安装代理技能。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：pixelfx 将像素特效查找、参考起草、渲染预览与视觉迭代流程封装为可按需加载的 Claude Code skill。
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：pixelfx 支持逐帧步长推进特效渲染并导出透明 PNG 精灵图及 GIF/MP4 时序预览。
 
 ## 参考来源
 

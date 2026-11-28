@@ -138,6 +138,8 @@ sequenceDiagram
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 将 OmniCompass 定位于上游视频理解评测
 - [MMHU](./paper-mmhu.md) — 驾驶域多模态视频行为与问答基准
 - [Daily-Omni](./paper-daily-omni.md) — 日常音视频理解对照
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：OmniCompass 构造了覆盖 VL 与 AV 双轨道、配对目标规格与多任务的标准化多模态模型评测基准。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：OmniCompass 可用于评估上游视觉与音视频模型在时序和空间定位上的感知 grounding 能力。
 
 ## 参考来源
 

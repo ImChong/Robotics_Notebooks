@@ -128,6 +128,8 @@ flowchart TB
 - [LoRA](../concepts/lora.md)
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是文本生成式检索基准，不属四层具身评测中任何一层，仅作「领域内检索指标≠具身能力」的对照
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：STAIR 提出 SearchTome 书目检索基准，在多个领域长文档上评测生成式检索相对 DSI、DPR 与 BM25 的 Recall@k。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：基于目录结构与约束解码的检索方案可作为智能体访问长技术文档与操作手册知识库的外部检索工具参考。
 
 ## 参考来源
 

@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：为融合大语言模型与视觉-语言骨干的 VLA 具身策略部署提供生成式 AI 专项风险治理指引。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：指导面向生成式模型幻觉、提示注入与边界失效设计系统化的基准评测与验收流程。
 
 ## 参考来源
 

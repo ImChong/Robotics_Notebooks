@@ -161,6 +161,8 @@ flowchart TD
 - [递归自我改进](../concepts/recursive-self-improvement.md)
 - [Self-Refine：推理期自反馈](./paper-self-refine-2303-17651.md)
 - [RSI 四层标准与边界](../queries/rsi-four-tier-five-pushes.md)
+- [Policy Optimization](../methods/policy-optimization.md)：Self-Rewarding Language Models 通过迭代式直接偏好优化（Iterative DPO）联合更新策略生成与自评判能力，丰富了基于偏好反馈的策略优化范式。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该工作将模型自评判准确率（LLM-as-a-Judge）与 AlpacaEval 指令遵循表现同时纳入多轮迭代评测，用于检验自改进闭环的有效性。
 
 ## 参考来源
 

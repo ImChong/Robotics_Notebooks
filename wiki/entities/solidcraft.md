@@ -119,6 +119,8 @@ sequenceDiagram
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md) — 对照成熟 B-rep、STEP 与工程化工作流。
 - [OpenSCAD（脚本化参数 CAD）](./openscad.md) — 对照代码驱动的参数化几何建模。
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md) — 了解几何资产进入机器人描述/仿真的后续步骤。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：SolidCraft 以草图约束、尺寸驱动与特征时间线支持参数化 CAD 建模，并将操作统一为可脚本化的 JSON 命令。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：作为机器人硬件设计的上游几何建模工具，其建立的零件模型在进入仿真前仍需补充连杆、关节与惯量等机器人描述信息。
 
 ## 参考来源
 

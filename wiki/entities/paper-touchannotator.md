@@ -139,6 +139,8 @@ flowchart LR
 - [HumanTouch（压阻手套数据）](./humantouch.md)
 - [T-Rex（触觉反应式灵巧操作）](./paper-trex-tactile-reactive-dexterous-manipulation.md)
 - [OpenTouch](./dataset-opentouch.md)
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md)：采用看第一视角加腕部视图的特权教师向仅看第一视角视频的学生进行特征与输出蒸馏。
+- [WiLoR（野外 3D 手部定位与重建）](../methods/wilor.md)：评测与推理阶段采用 WiLoR 从第一视角 RGB 视频中估计手部姿态作为学生网络输入。
 
 ## 参考来源
 

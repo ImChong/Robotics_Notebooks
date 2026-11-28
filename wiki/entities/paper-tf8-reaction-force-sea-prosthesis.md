@@ -153,6 +153,8 @@ TF8 把 **reaction-force SEA + gait-clamped 电能耗优化** 落到可穿戴 po
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — co-design 在 ③ 执行器层
 - [IIT 双凸轮 PEA 踝](./paper-dual-cam-parallel-elastic-ankle.md) — 并联弹性对照
 - [Katz 低成本 QDD 执行器](./paper-low-cost-modular-actuator-katz.md) — MIT 另一条传动哲学
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：该仿生膝踝假肢平台在紧凑结构内结合反力传感与高带宽力矩及阻抗控制闭环。
+- [Locomotion](../tasks/locomotion.md)：面向无缆下肢仿生膝踝步态辅助任务开展电机、传动与弹性体协同设计。
 
 ## 参考来源
 

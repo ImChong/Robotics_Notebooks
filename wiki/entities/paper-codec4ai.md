@@ -122,6 +122,8 @@ sequenceDiagram
 
 - [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md)：机器人数据集组织与视频存储。
 - [LeRobot](./lerobot.md)：机器人数据采集和训练框架。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：codec4AI 针对机器人视频训练数据随机采样时参考帧冗余解码瓶颈，设计依赖感知稀疏解码与 DDRA 编码以加速数据管线。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：论文在多相机机器人数据集上优化随机帧访问吞吐与媒体载荷，直接服务于大规模视觉-语言-动作模型训练。
 
 ## 推荐继续阅读
 

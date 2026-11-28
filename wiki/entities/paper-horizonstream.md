@@ -210,6 +210,8 @@ sequenceDiagram
 - [LingBot-Map：几何上下文 Transformer](./paper-lingbot-map.md)
 - [ABot-Recon：固定局部上下文](./paper-abot-recon.md)
 - [R³：相对回归三维重建](./paper-r3-relative-regression.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：HorizonStream 以因果定长状态处理连续单目 RGB 视频流，在每帧输出稠密深度并完成长程流式三维重建。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：HorizonStream 联合局部窗口匹配、几何线性注意力长期状态与尺度读出，在流式视觉推理中持续估计相机六自由度位姿轨迹。
 
 ## 参考来源
 

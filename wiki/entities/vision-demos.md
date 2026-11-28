@@ -98,6 +98,8 @@ sequenceDiagram
 - [FreeMoCap](./freemocap.md) — 多相机动作捕捉平台，适合对照采集与重建流程。
 - [Exercises Dataset](./exercises-dataset.md) — 健身动作目录，与视频分析工具的定位不同。
 - [动作数据质量](../concepts/motion-data-quality.md) — 检查运动数据用于机器人时的可行性。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：从视频中提取人体姿态关键点与物体分割掩码，并将其转换为动作计数、幅度等结构化任务指标。
+- [骨架动作识别（Skeleton-Based Action Recognition）](../methods/skeleton-action-recognition.md)：基于关键点骨骼序列计算动作周期、幅度与姿态评分，体现关节时序信号解析与运动分析思路。
 
 ## 参考来源
 

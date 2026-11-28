@@ -126,6 +126,8 @@ flowchart TD
 - [轮足四足机器人](../concepts/wheel-legged-quadruped.md) — 采集平台 LYNX M20 所属形态
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 「想象」任务对应②层世界模型预测保真度评测，「导航」任务对应③层任务评测
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 环视鱼眼 + 双 LiDAR + BEV 标注对应①层传感与标定、③层 3D 语义建图
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：LynxScenes 基于真实轮足平台采集 100K 多模态片段，以统一 QNS 伪闭环指标覆盖规划、感知、想象与重建四类任务评测。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：该基准面向人车混行的室外人行道与校园等非结构化环境，重点评测轮足机器人的近距密集避障与指令遵循导航表现。
 
 ## 参考来源
 

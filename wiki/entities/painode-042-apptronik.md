@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：工业场景部署的人形机器人需在复杂工作环境中保持双足行走与站立平衡，直接关联人形移动控制任务。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：面向仓储与产线搬运等工业应用时，人形平台需要协同全身移动与双臂物体操作能力。
 
 ## 参考来源
 

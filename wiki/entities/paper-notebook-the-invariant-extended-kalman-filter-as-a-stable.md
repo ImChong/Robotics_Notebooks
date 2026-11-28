@@ -101,6 +101,8 @@ flowchart TD
 
 - 分类父节点：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：不变扩展卡尔曼滤波（InEKF）为李群上的本体状态估计与足式机器人里程计融合提供理论收敛保证。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：InEKF 的李群几何与对数线性误差结构是后续多传感器与激光雷达里程计融合滤波的重要理论基础。
 
 ## 参考来源
 

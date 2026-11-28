@@ -91,6 +91,8 @@ flowchart LR
 
 - [目标感知的 3D Gaussian 语言地图免训练细化](./paper-target-aware-gaussian-langmap.md)
 - [TRACE：具有参考保持约束的对话式人形动作编辑](./paper-trace-conversational-humanoid-motion.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：EM-ViT 将相对视差结构细化与全局有效基线尺度预测解耦，在线把单目基础模型的相对深度校准为机器人可用的米制深度感知。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：EM-ViT 利用稀疏 LiDAR 深度与可选机器人自运动优化历史位姿和绝对尺度，与测距和里程计融合定位共享多传感几何校准思路。
 
 ## 参考来源
 

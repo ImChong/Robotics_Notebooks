@@ -69,6 +69,8 @@ flowchart LR
 - [RPDF 论文页](./paper-scanford-robot-powered-data-flywheel.md) — 框架、实验与 OCR 外溢
 - [Data Flywheel](../concepts/data-flywheel.md) — 概念层飞轮
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md) — 产业对照（遥操作/可穿戴等）
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：Scanford 利用 VLM 结合图书馆目录 RAG 自动标注真实场景下多语言与破损书脊图像，构建持续微调的数据飞轮。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：该系统将 Franka FR3 机械臂与 TidyBot++ 移动底座集成在真实图书馆通道中，完成了长时程移动扫描与采集任务。
 
 ## 参考来源
 

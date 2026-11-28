@@ -86,6 +86,8 @@ flowchart LR
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：提出每个触觉单元同时输出法向与两轴剪切响应的稠密三轴触觉传感器，服务机器人操作中的多轴力觉集成。
+- [Manipulation](../tasks/manipulation.md)：通过试管准备、舀取与倾倒等接触密集型实验检验三轴触觉提供的接触几何与剪切力信息对精细操作的支撑作用。
 
 ## 参考来源
 

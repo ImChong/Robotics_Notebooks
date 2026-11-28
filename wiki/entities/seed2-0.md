@@ -73,6 +73,8 @@ flowchart LR
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：在 LightNav 引擎中，Seed2.0 负责生成并校验面向三维环境的导航语言指令，服务于视觉–语言导航训练。
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：该闭源 VLM 在 Real2Sim2Real 管线中承担模板与视频指令生成、语义筛选及终点画面验证的自动化标注角色。
 
 ## 参考来源
 

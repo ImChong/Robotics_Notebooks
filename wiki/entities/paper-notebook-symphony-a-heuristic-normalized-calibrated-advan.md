@@ -83,6 +83,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Policy Optimization](../methods/policy-optimization.md)：Symphony 提出带启发式归一化校准优势与渐隐回放缓冲的 Actor-Critic 算法，属于强化学习策略优化方法的变体。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：Symphony 面向人形机器人移动任务设计样本高效的连续控制 Actor-Critic 训练流程。
 
 ## 参考来源
 

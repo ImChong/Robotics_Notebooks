@@ -104,6 +104,8 @@ flowchart LR
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_39_closing_sim_to_real_gap_for_heavy_loaded_humanoi.md](../../sources/papers/humanoid_rl_stack_39_closing_sim_to_real_gap_for_heavy_loaded_humanoi.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：HALO 通过两阶段可微仿真系统辨识校准名义模型与负载动力学参数，提升重载人形技能的零样本真机迁移稳定性。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：重载条件下的搬运与工具使用需要机器人在携带未知负载时维持全身移动与操作的动力学稳定。
 
 ## 参考来源
 

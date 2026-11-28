@@ -131,6 +131,8 @@ flowchart TD
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 论文对比基线之一：[GVHMR](gvhmr.md)
 - 动捕到人形重定向的背景：[mocap-retarget](mocap-retarget.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：ClimbingCap 通过分坐标解码融合 RGB 姿态估计与 LiDAR 全局位置恢复，在世界坐标系下连续重建三维攀岩人体动作。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：论文构建的 AscendMotion 数据集同步标定并融合了 RGB 相机、LiDAR 点云与 IMU 多模态传感数据。
 
 ## 核心信息
 

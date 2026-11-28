@@ -196,6 +196,8 @@ sequenceDiagram
 
 - [机器人上下文学习](../concepts/robot-in-context-learning.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文通过孪生提示、激活替换与头消融等因果干预实验协议，在多模型上系统评测并验证了少样本上下文学习电路行为。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：论文在纯文本短句分类上揭示的上下文键值检索与门控诊断思路，可为后续分析具身智能与 VLA 的少样本提示行为提供参照。
 
 ## 参考来源
 

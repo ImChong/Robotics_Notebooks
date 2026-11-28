@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：其主导的空间智能与三维视觉研究致力于从图像或视频恢复可用于交互与仿真的三维场景表示。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：从 ImageNet 到具身视觉感知与 Behavior 基准，其工作持续塑造机器人对三维物体与场景的语义理解。
 
 ## 参考来源
 

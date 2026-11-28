@@ -93,6 +93,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Abaqus Agent Skills](./1348109517-abaqus-agent-skills.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：提供有限元仿真治理、网格无关性检查与 V&V 验证流程所对应的工程建模与可信度评估基准。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：将跨求解器 CAE 治理规则与人工决策边界组织为可移植、可按需加载的智能体技能文件。
 
 ## 参考来源
 

@@ -98,6 +98,8 @@ flowchart TD
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-01-data-collection.md](../overview/ego-category-01-data-collection.md)
 - 原始 source：[ego_survey_01_aoe.md](../../sources/papers/ego_survey_01_aoe.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：AoE 构建了端侧颈挂手机触发采集与云端轨迹标定、动作分割和质量控制的流水线，将日常第一视角视频转为标准化的训练数据。
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：AoE 在云端自动管线中使用 Qwen3-VL 进行原子动作分割并结合 SLAM 与手部重建产出多模态标签，显著降低第一视角数据标注成本。
 
 ## 参考来源
 

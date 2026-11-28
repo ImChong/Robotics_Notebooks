@@ -172,6 +172,8 @@ S4VY 将动态场景的实例关联、提示选择和语言定位放在共享视
 - [SAM-V 多视角实例分割](./paper-sam-v.md)
 - [SAM 2 视频分割](./paper-sam2.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页可归入其 ② 2D 检测/分割选型层（跨观测身份一致的无类别实例掩码，向 ③ 层提升衔接）：典型误判是把 4D-IoU 高当成几何重建准确，或把无类别掩码当成已带语义类别。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：S4VY 通过共享前馈 4D 视觉几何与持续对象查询输出跨视角一致的实例掩码，为机器人感知前端提供多视角分割能力。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：该方法基于前馈视觉几何骨干 VGGT-Ω 联合编码空间与时间观测，将动态场景三维几何线索融入跨帧实例关联。
 
 ## 参考来源
 

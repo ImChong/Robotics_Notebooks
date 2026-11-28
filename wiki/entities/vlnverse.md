@@ -74,6 +74,8 @@ flowchart LR
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：提供视觉外观与空间结构丰富的三维场景片段，支撑具身视觉–语言导航策略训练。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：作为 LightNav Real2Sim2Real 数据引擎的多源场景资产来源之一，为仿真环境生成与任务构建提供结构化室内场景。
 
 ## 参考来源
 

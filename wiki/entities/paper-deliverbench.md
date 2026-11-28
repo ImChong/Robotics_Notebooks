@@ -141,6 +141,8 @@ sequenceDiagram
 - [SelfImprove-Bench](paper-selfimprove-bench.md) — 区分被评对象与评价指标。
 - [AmbiHTMLBench](paper-ambihtmlbench.md) — 区分被评对象与评价指标。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 非具身 Agent 基准，但「过程分 ≠ 最终交付分」与该闭环的过程 vs 结果指标取舍同源，可对照阅读。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：DeliverBench 围绕多阶段专业项目设计状态维护、依赖追踪与整包终验评测基准，用于对比智能体的长程交付能力。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：DeliverBench 评估智能体在持续接收新材料与反馈的循环中分解任务、修订文件并交付完整成果的规划执行能力。
 
 ## 参考来源
 

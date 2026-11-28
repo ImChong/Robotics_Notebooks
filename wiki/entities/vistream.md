@@ -100,6 +100,8 @@ flowchart LR
 - [状态估计](../concepts/state-estimation.md)
 - [RoboParty RP1（总览）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：将视觉-惯性估计器的标定运动增量通过有效性检查融入冻结视觉几何模型，输出带持久度量尺度的相机位姿轨迹。
+- [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](../methods/lingbot-map.md)：直接基于冻结的 LingBot-Map 流式三维重建骨干接入视觉-惯性运动，在不重训上游模型的前提下补齐度量尺度。
 
 ## 参考来源
 

@@ -172,6 +172,8 @@ sequenceDiagram
 - [simple-evrgb-cal](./paper-simple-evrgb-cal.md) — 事件—RGB 跨模态标定
 - [感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 - [Awesome Egocentric 技术地图](../overview/sun-awesome-ego-technology-map.md) — Event Camera 分组上下文
+- [目标检测（Object Detection）](../methods/object-detection.md)：SSLA-Det 面向异步事件相机输入完成低延迟目标检测，在 Gen1 与 N-Caltech101 基准上降低单事件计算开销。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：该工作利用空间稀疏线性注意力仅更新被事件命中的空间子状态，为边缘端高速视觉感知提供低延迟实现思路。
 
 ## 参考来源
 

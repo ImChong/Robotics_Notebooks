@@ -168,6 +168,8 @@ sequenceDiagram
 - [CLI-Anything](./cli-anything.md) — agent-native 软件操控
 - [Hermes Agent](./hermes-agent.md) / [OpenClaw](./openclaw.md) — `install.sh` 支持的宿主
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本库人工 ingest 规范
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：以跨平台技能与插件形式封装代码库及知识库图谱构建指令，支持在多种编码智能体中按需调用。
+- [Claude Code 动态多 Agent 工作流 / Dynamic Workflows and Task-Specific Harnesses in Claude Code](../methods/claude-code-dynamic-workflows.md)：采用多代理分工管线结合 Tree-sitter 确定性解析与 LLM 语义标注，在 Claude Code 等宿主中生成结构化知识图。
 
 ## 参考来源
 

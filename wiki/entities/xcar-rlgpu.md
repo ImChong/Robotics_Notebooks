@@ -76,6 +76,8 @@ sequenceDiagram
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
 - [F1TENTH Gym](./f1tenth-gym.md)
 - [drift_drl](./drift-drl.md) — CARLA 系对照
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md)：通过内置的 rl_games 框架执行大规模并行 PPO 训练，在 GPU 上快速优化四轮独立驱动自主漂移策略。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：在向量化漂移仿真中引入动力学与环境域随机化，并配套部署导向分析工具以支撑策略向真车迁移。
 
 ## 参考来源
 

@@ -83,6 +83,8 @@ sequenceDiagram
 
 - [3D Model Anything](./3d-model-anything.md) — 用实景扫描证据重建可编辑室内场景。
 - [Gitingest](./gitingest.md) — 代码上下文准备工具，可作为代码阅读的辅助。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：3DCodeVerse 通过多智能体生成并迭代修复可执行三维场景与 URDF 资产代码，可直接服务于可编辑仿真场景构建。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：3DCodeVerse 采用 DAG 规划拆解需求，并以代码执行日志、空间几何测量与多视角视觉评估组成闭环修复反馈循环。
 
 ## 参考来源
 

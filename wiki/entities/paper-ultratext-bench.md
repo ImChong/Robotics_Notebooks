@@ -109,6 +109,8 @@ Q-Judger 可能存在读取和 rubric 偏差；人工评测参与者为 10 人�
 - [Kandinsky 6.0 Video](./paper-kandinsky-6-video.md) — 多模态生成模型
 - [扩散模型](../concepts/diffusion-model.md) — 图像生成基础
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 视觉文本生成评测可作①认知层/生成质量的参照，不直接衡量机器人任务成功率
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：构建涵盖双语密集文本与多维度评分标准的结构化评测套件以定量比较生成模型。
+- [YOLO26-Text + PP-OCRv6：场景与文档 OCR](../methods/yolo26-ocr-document-parsing.md)：可与基于 OCR 的文本识别与版面评估思路对照理解图像文字忠实度与空间质量评测。
 
 ## 参考来源
 

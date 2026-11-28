@@ -93,6 +93,8 @@ Text2Motion 与 LLM+P/AutoTAMP 在站内同属 LLM 辅助规划（论文本身�
 
 - [paper-llm-p](./paper-llm-p.md)
 - [paper-autotamp](./paper-autotamp.md)
+- [Manipulation](../tasks/manipulation.md)：Text2Motion 面向自然语言指令驱动的长程桌面操作任务，生成满足几何可达性的多步技能执行序列。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：该框架由 LLM 预测目标并提出技能序列，再结合几何可行性规划器反馈迭代筛选出可执行的混合规划方案。
 
 ## 参考来源
 

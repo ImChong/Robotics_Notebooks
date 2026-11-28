@@ -69,6 +69,8 @@ flowchart LR
 - [soem-qt](./soem-qt.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-opensource-libs-wechat](../overview/ethercat-opensource-libs-wechat.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：pysoem 作为 SOEM 的 Python 封装，在上位机联调阶段用于将 EtherCAT 从站节点与 PDO/SDO 通信接入机器人软件系统。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：在机器人控制系统架构中承担非硬实时上位机侧的现场总线扫描与参数配置角色，与底层硬实时周期控制环路分工。
 
 ## 参考来源
 

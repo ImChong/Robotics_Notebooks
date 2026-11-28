@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：提供真实道路环境下的多传感器与 3D 追踪标注数据，可用于训练和评估机器人视觉感知流程。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：作为大规模运动预测与 3D 追踪语料，可接入机器人学习数据管线以生成时空对齐的训练样本。
 
 ## 参考来源
 

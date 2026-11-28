@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：其人机交互与机器人伦理研究关注人类如何与具备语音及拟人化交互能力的机器人建立信任与边界。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：其对社会影响与人机共处规范的探讨，为具身智能体在真实环境部署的安全与行为评估提供视角。
 
 ## 参考来源
 

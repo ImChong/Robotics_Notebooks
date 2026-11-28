@@ -97,6 +97,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：AI 科学家系统中的假设生成与实验规划流程可视为典型的任务分解、执行与反馈闭环。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：涵盖自动化科研智能体在文献理解、实验设计与任务执行上的评测方法与比较基准。
 
 ## 参考来源
 

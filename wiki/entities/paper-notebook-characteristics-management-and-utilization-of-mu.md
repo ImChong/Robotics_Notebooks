@@ -147,6 +147,8 @@ flowchart TD
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 人形机器人总览：[humanoid-robot.md](./humanoid-robot.md)
 - 同类肌肉执行器（气动路线）：[paper-musbric-pneumatic-muscle-bricks](./paper-musbric-pneumatic-muscle-bricks.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：论文围绕 Kengoro 与 Musashi 总结了 100 Hz 底层反射保护与 10 Hz 高层身体图式学习分层的肌骨人形控制架构。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：针对无关节编码器的 Kengoro 肌骨人形，论文使用 EKF 融合肌长变化与张力测量来递推估计关节角状态。
 
 ## 参考来源
 

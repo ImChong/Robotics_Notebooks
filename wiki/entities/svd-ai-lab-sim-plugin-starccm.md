@@ -68,6 +68,8 @@ STAR-CCM+ 没有可 pip 安装的 SDK；软件和授权必须用户提供，端�
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [AutoStar](./ouscar-ou-autostar.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该插件通过 Java StarMacro 批处理执行 STAR-CCM+ 算例并回传场景检查结果，服务于工程仿真建模与逐项验证流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：它将 `starccm+ -batch` 执行能力与兼容性矩阵封装为 sim-cli 驱动与技能目录，供智能体按标准接口调用。
 
 ## 参考来源
 

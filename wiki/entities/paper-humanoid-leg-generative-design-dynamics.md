@@ -154,6 +154,8 @@ flowchart TB
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md)
 - [人形并联/连杆关节运动学](../concepts/humanoid-parallel-joint-kinematics.md)
 - [人形机器人](./humanoid-robot.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该工作先用 Simscape 动力学与跳跃仿真提取多工况载荷，再在衍生式轻量化后通过有限元与重仿真闭环验证。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：该工作基于保留体、障碍体与增材方向等几何约束开展衍生式结构轻量化设计，衔接工程 CAD 建模规范。
 
 ## 推荐继续阅读
 

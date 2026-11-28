@@ -108,6 +108,8 @@ flowchart TD
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：SRDF 面向视觉–语言导航任务，通过自举数据飞轮持续扩充导航轨迹与语言指令训练数据。
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：该方法利用 VLM 指令生成器自动为无标注导航轨迹生成并筛选指令，是自动化标注流水线在导航中的具体应用。
 
 ## 参考来源
 

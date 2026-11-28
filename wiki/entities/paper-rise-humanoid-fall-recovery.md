@@ -108,6 +108,8 @@ RISE 先从兼容动作片段构建可组合的恢复动作库，再训练动作
 - [Unitree G1](./unitree-g1.md)
 
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — RISE 使用视觉预测为起身动作提供引导。
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md)：RISE 聚焦人形机器人在复杂地形与靠墙等约束下的跌倒起身任务，利用测试时任务代价引导恢复路径与支撑转换。
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md)：通过 PPO 特权教师专家配合 DAgger 模仿学习，将地形高度等特权信息蒸馏到仅用自我视角深度与本体的控制解码器。
 
 ## 参考来源
 

@@ -93,6 +93,8 @@ flowchart LR
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_clone_corl_2025.md](../../sources/papers/bfm_awesome_clone_corl_2025.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：CLONE 围绕目标与指令条件化的全身动作跟踪及交互策略训练，强调人形机器人在长时程任务中的闭环抗扰与恢复。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：CLONE 通过长时程闭环全身遥操作采集移动操作交互数据，以弥补零散片段演示在复杂人形任务级策略学习中的不足。
 
 ## 参考来源
 

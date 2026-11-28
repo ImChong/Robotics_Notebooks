@@ -150,6 +150,8 @@ flowchart LR
 - [分布外泛化](../concepts/out-of-distribution-generalization.md)
 - [多模态基础](../concepts/multimodality-basics.md)
 - [具身评测基准总览](../overview/hub-embodied-eval-benchmark.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：MultiMediate '26 定义了结合 CCC 与 Cohen's kappa 的跨领域、跨年龄与跨文化投入度估计评测挑战协议。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：该挑战在 PInSoRo 儿童-机器人互动子集上评估基于视觉与多模态线索的任务及社交投入度感知。
 
 ## 参考来源
 

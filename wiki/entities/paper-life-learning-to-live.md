@@ -218,6 +218,8 @@ sequenceDiagram
 - [ReSight 原始论文](https://arxiv.org/abs/2610.33487) — EDM 前置研究
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — SSS-Bench 等流式事件评测在具身基准选型中的位置
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — RoboBeats 视觉事件检测在感知栈中的分工
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：LIFE 通过 RoboBeats 事件门控、Plastic Memory 证据回溯与 EDM 能力挂载构建面向长期具身交互的记忆反馈回路。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：论文开源了包含 618 个问题与 171 段视频的 SSS-Bench 流式记忆问答评测流水线，用于量化长时稀疏事件推理能力。
 
 ## 参考来源
 

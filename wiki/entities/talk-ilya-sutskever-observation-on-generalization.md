@@ -68,6 +68,8 @@ flowchart TD
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Light-O1](./light-o1.md)
 - [Scaling Laws for Neural Language Models](./paper-scaling-laws-neural-language-models.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该报告围绕大模型在 scaling 跨越阈值后推理与指令跟随等泛化能力的经验观察展开，常为模型能力评估提供背景语境。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：报告中关于数据与参数规模引发能力质变的观点，常在具身智能与视觉–语言–动作（VLA）策略预训练的跨本体泛化假设中被类比引用。
 
 ## 推荐继续阅读
 

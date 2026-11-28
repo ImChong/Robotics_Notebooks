@@ -58,6 +58,8 @@ Unitree H1 是全球首款能够完成原地后空翻的全尺寸电驱动人形
 
 - 分类父节点：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：Unitree H1 全尺寸电驱人形平台为动态双足行走与后空翻等高爆发全身移动研究提供主流硬件载体。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：Unitree H1 配套 SDK 与机载算力接口定义了底层关节控制与高层策略部署之间的机器人控制系统边界。
 
 ## 参考来源
 

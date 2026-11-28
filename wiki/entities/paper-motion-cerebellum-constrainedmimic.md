@@ -85,6 +85,8 @@ flowchart LR
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-04-wbt-base.md](../overview/motion-cerebellum-category-04-wbt-base.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：ConstrainedMimic 直接面向人形全身运动跟踪基座，在策略动作输出外层叠加实时约束过滤以兼顾动作表现。
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：该工作通过在策略输出端施加实时约束投影与安全过滤层，满足关节、接触与碰撞边界等安全强化学习约束。
 
 ## 参考来源
 

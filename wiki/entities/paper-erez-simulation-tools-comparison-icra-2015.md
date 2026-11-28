@@ -91,6 +91,8 @@ flowchart LR
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：该文在统一机器人任务下横向评测 Bullet、Havok、MuJoCo、ODE 与 PhysX 的接触与积分表现，为搭建仿真环境时的物理引擎选型提供实证参考。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：该文揭示了不同物理引擎在速度与数值精度间的权衡差异，说明底层仿真器特性是影响 Sim2Real 迁移误差的重要来源之一。
 
 ## 参考来源
 

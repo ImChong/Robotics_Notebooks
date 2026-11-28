@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md)：Russ Tedrake 在非欠驱动机器人与 Drake 工具链中系统推进了基于轨迹优化和凸松弛的动力学规划方法。
+- [Diffusion Policy](../methods/diffusion-policy.md)：其领导的 TRI 与 MIT 团队联合推动了 Diffusion Policy 在灵巧、多峰机器人操作中的广泛应用。
 
 ## 参考来源
 

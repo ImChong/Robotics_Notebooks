@@ -95,6 +95,8 @@ C-GMT 提供了把柔顺性加入通用动作跟踪器的模块化思路。
 - [GMT：通用全身动作跟踪](./paper-gmt.md)
 - [OCLO：在线姿态与柔顺移动操作](./paper-oclo-online-posture-compliant-loco-manipulation.md)
 - [全身控制](../concepts/whole-body-control.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：C-GMT 在冻结的通用全身运动跟踪器前叠加参考残差适配器，保留多动作跟踪能力的同时引入外力柔顺响应。
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md)：论文先用真实接触力与柔顺 IK 构造特权教师动作，再蒸馏为仅依赖本体感知历史的学生适配器以支持真机部署。
 
 ## 参考来源
 

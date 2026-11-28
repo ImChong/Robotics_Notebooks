@@ -115,6 +115,8 @@ MSG 多半径局部特征计算较重，ball query 半径需要依据实际采�
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：通过层级最远点采样与多尺度邻域聚合直接从三维点云提取几何特征，是机器人点云视觉感知的基础表征架构。
+- [目标检测（Object Detection）](../methods/object-detection.md)：为 PointRCNN 等点云三维目标检测框架提供逐点前景分割与候选框局部特征提取的核心骨干能力。
 
 ## 参考来源
 

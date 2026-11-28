@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该研究通讯常围绕大模型训练细节与基准评测分析展开，可为具身基础模型的评估提供方法参考。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：其对推理效率、量化与模型架构演进的深度解析，有助于理解大模型在机器人端侧的部署优化思路。
 
 ## 参考来源
 

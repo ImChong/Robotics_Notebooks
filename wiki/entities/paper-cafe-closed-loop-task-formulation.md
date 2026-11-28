@@ -153,6 +153,8 @@ flowchart LR
 - [SayPlan 场景图规划](../entities/paper-sayplan-llm-scene-graph-planning.md)：LLM + 场景图的规划，对照 CAFE 的记忆驱动规划。
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md)：语义记忆的背景概念。
 - [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md)：高层任务构想与低层执行的分层视角。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：CAFE 通过 Trigger-LLM 与 Draft-Complete-Audit 三角色规划器结合在线语义记忆写回，构建无显式实例指令的闭环规划与反馈执行循环。
+- [Manipulation](../tasks/manipulation.md)：CAFE 在家庭仿真与桌面机器人场景中自主发现清洁、安全与收纳目标并调用操作原语闭环完成物体整理任务。
 
 ## 参考来源
 

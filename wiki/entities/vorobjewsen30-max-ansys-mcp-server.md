@@ -90,6 +90,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Ansys MCP Server（多产品版）](./knewnothing-git-ansys-mcp-server.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：借助 PyAnsys 将 CFD、FEA 网格划分、边界求解与后处理封装为可复查的工程仿真操作步骤。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 Model Context Protocol 向智能体暴露约 24 个 Ansys 仿真调用工具及执行结果反馈。
 
 ## 参考来源
 

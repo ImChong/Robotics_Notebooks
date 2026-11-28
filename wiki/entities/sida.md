@@ -197,6 +197,8 @@ sequenceDiagram
 - [ARGUS 深度伪造鉴伪](./paper-argus-deepfake-forensics.md)
 - [Transformer CV 课程策展](./transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 以 `[SEG]` 词元同时输出掩码与文字解释，属②层分割接口的多模态变体
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：SIDA 将检测判别与像素级掩码解码结合在同一多模态主干中，为机器人视觉感知的分割与异常定位接口提供参考。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：其扩展特定词元并结合交叉注意力与 SAM 解码图像特征，展示了视觉表征向分类、像素定位与语言解释联合学习的范式。
 
 ## 参考来源
 

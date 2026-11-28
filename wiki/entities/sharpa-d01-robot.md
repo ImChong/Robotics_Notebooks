@@ -77,6 +77,8 @@ flowchart LR
 - [Sharpa Robotics](./sharpa-robotics.md) — 公司页
 - [Sharpa 学术路线三条主线（阅读坐标）](../overview/sharpa-academic-route-three-lines.md)
 - [触觉感知](../concepts/tactile-sensing.md)
+- [Manipulation](../tasks/manipulation.md)：D01 将 7 自由度机械臂与 Sharpa Wave 灵巧手集成，面向高速响应与精细定位的物体操作任务。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md)：其全身电子皮肤提供 100 Hz 采样与 0.2 N 力分辨率的接触反馈，可用于支持高频接触感知与柔顺控制。
 
 ## 参考来源
 
