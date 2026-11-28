@@ -173,6 +173,8 @@ flowchart LR
 - 第一人称 3D SSG：[EgoSG](./paper-sa-ego-239-egosg-learning-3d-scene-graphs-from-egocentric-r.md)
 - 符号规划消费场景图：[SayPlan](./paper-sayplan-llm-scene-graph-planning.md)
 - 栈位：[导航与 SLAM 自主栈](../overview/navigation-slam-autonomy-stack.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：DeWorldSG 从 RGB-D 视频流增量构建带概率 3D 高斯节点与语义关系的场景图，为机器人提供结构化视觉场景感知。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：DeWorldSG 通过实例 mask 引导深度采样、Dual-Domain 深度去噪与跨帧增量合并，从 RGB-D 观测恢复时空一致的三维语义场景表示。
 
 ## 参考来源
 

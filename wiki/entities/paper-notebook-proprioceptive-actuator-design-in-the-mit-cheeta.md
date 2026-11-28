@@ -62,6 +62,8 @@ Proprioceptive actuator design in the MIT Cheetah 的人形机器人学习论文
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 低成本模块化落地（COTS 电机 + 6:1 行星）：[Katz Mini Cheetah 执行器 thesis](./paper-low-cost-modular-actuator-katz.md)
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：MIT Cheetah 本体感受执行器聚焦高带宽物理交互与传动特性，与关节执行器参数辨识同属执行器建模与硬件工程线。
+- [Locomotion](../tasks/locomotion.md)：本体感受执行器通过冲击缓解与高带宽力控为动态足式移动提供硬件基础。
 
 ## 参考来源
 

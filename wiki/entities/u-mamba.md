@@ -64,6 +64,8 @@ flowchart LR
 - [SSM](../concepts/state-space-model-ssm.md)
 - [架构对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [U-Net](../methods/unet.md)：在 U-Net 对称编码器–解码器与跳跃连接结构中嵌入 Mamba 块，以增强长程空间上下文建模能力。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：结合局部卷积表征与状态空间序列建模，用于医学图像分割及长序列密集视觉特征提取。
 
 ## 参考来源
 

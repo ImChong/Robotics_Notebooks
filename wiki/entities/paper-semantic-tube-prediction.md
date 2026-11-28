@@ -67,6 +67,11 @@ STP 的“预测目标不只看表面 token，还约束内部状态轨迹”的�
 
 STP 把 JEPA 式“约束表征而非只预测表面 token”的思路引入语言模型训练，并在 NL-RX-SYNTH 合成设定中报告约 16 倍数据效率。该结论依赖 Geodesic Hypothesis 与合成数据，对机器人世界模型只具概念参考价值，不能视作 latent dynamics 或规划能力的证据。
 
+## 关联页面
+
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：STP 延续 JEPA 在隐空间预测与约束表征轨迹的思想，为跨模态表征学习与预训练目标设计提供概念参照。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文在合成数据集 NL-RX-SYNTH 上对比了数据效率与收敛表现，同时提示合成基准结论向真实任务迁移时的评测边界。
+
 ## 参考来源
 
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)

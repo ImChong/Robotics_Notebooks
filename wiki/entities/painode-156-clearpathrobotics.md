@@ -91,6 +91,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：Husky 与 Jackal 等移动底盘是科研中验证激光雷达建图、路径规划与自主导航流程的常用实体平台。
+- [机器人自主探索](../tasks/autonomous-exploration.md)：其开源 ROS 接口与强地形通过性常被用于未知环境自主探索与多机路由算法的外场实验。
 
 ## 参考来源
 

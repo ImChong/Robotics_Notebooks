@@ -143,6 +143,8 @@ sequenceDiagram
 - [mjlab](./mjlab.md)
 - [Locomotion RL 仿真器选型](../queries/simulator-selection-guide.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：ppf-contact-solver 基于 GPU 上的有限元弹性与立方障碍接触求解，适用于布料与软体变形物体的离线高保真工程仿真。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：ppf-contact-solver 补足了刚体仿真器在可变形壳体与无穿透接触仿真上的能力边界，并通过容器与 Blender 插件接入数字孪生管线。
 
 ## 参考来源
 

@@ -143,6 +143,8 @@ sequenceDiagram
 - [DeliverBench](paper-deliverbench.md) — 区分被评对象与评价指标。
 - [SelfImprove-Bench](paper-selfimprove-bench.md) — 区分被评对象与评价指标。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 借其「客观指标 vs 偏好代理、可复现性 vs 真实代表性」的取舍框架阅读本基准的双榜单；本基准测文档→HTML，不属于机器人四层评测本身。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：AmbiHTMLBench 结合固定视口渲染的客观结构指标与冻结多裁判偏好代理，对多模态模型的图像到 HTML 重建做双维度基准评测。
+- [YOLO26-Text + PP-OCRv6：场景与文档 OCR](../methods/yolo26-ocr-document-parsing.md)：AmbiHTMLBench 针对复杂版面文档图像中的文字、表格、公式与布局结构还原进行评测，可与文档 OCR 及版面解析流程对照。
 
 ## 参考来源
 

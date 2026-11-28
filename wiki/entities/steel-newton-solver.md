@@ -153,6 +153,8 @@ sequenceDiagram
 - [ToolDex：工具操作示范数据](paper-tooldex.md)
 - [Newton Physics：Steel 所在的物理引擎](newton-physics.md)
 - [Isaac Gym / Isaac Lab：机器人训练框架](isaac-gym-isaac-lab.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Steel 作为 Newton 物理引擎内的 GPU 刚体约束求解器 `SolverSteel`，用于支撑多本体、异构任务的高吞吐并行物理仿真集成。
+- [Manipulation](../tasks/manipulation.md)：官方技术报告将其设计目标与基准测试重点面向接触密集型操作及多机器人并行训练场景。
 
 ## 参考来源
 

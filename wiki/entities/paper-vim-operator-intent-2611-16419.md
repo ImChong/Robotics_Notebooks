@@ -118,6 +118,8 @@ VI AMO 6600 段 episode、13,653 个动作、9702 个 mission，VIM 在行动与
 
 - [2026-11-16 具身研究论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ActionCodec2：流式动作编解码](./paper-actioncodec2-streaming-action-tokenizer.md)
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：从多视角遥操作视觉与动作历史中解码操作员的双层意图以支持人机接力控制。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：将识别并经人工确认的上层任务与原子动作意图交由微调后的 VLA 策略继续执行。
 
 ## 参考来源
 

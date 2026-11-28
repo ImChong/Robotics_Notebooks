@@ -93,6 +93,8 @@ flowchart LR
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：该文在解析物理仿真中叠加 RNN 残差以补偿回差和延迟等不可建模时序误差，是缩小仿真与真机动力学差距的灰盒 Sim2Real 迁移路线。
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md)：该文保留物理先验模型并由神经网络学习残差修正项，与策略层在基础模型上叠加学习残差的思路在灰盒补偿结构上相呼应。
 
 ## 参考来源
 

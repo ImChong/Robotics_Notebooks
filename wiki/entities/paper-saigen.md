@@ -115,6 +115,8 @@ flowchart TD
 ## 关联页面
 
 - [十篇资源技术地图](../overview/embodied-resources-10-papers-technology-map.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：SAIGEN 集成商用机械臂、电动移液器、电子天平与 3D 打印夹具，构成面向材料合成的自动化物理执行系统。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：系统通过上位机通信接口串联 LLM 生成的控制脚本、IoT 传感与视觉监测，实现多设备实验流程集成与日志记录。
 
 ## 参考来源
 

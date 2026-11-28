@@ -92,6 +92,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：面向 ROS 2 生态提供 AI 能力接入方案，连接传感器话题、控制节点与外部推理服务。
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：为在 ROS 2 系统上运行的机器人智能体提供与底层消息通信及技能接口对接的执行框架支撑。
 
 ## 参考来源
 

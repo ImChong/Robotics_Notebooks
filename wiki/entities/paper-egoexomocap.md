@@ -181,6 +181,8 @@ observer 转头时 wearer 可能部分或完全出视野；家具遮挡会使 Vi
 - [AvatarPoser](./paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — 稀疏 HMD 全身估计起点
 - [Human-as-Humanoid](./paper-human-as-humanoid.md) — ego-exo 人类视频 → 机器人可执行标签的下游用法
 - [Ego4D](./paper-ego4d.md) — egocentric 数据基础设施；Nymeria 属同生态后续规模级数据
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：EgoExoMoCap 将佩戴者 HMD 的连续头腕轨迹与他视角间歇观测在局部坐标系中融合，实现户外多人场景下的全身位姿状态估计。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：EgoExoMoCap 通过分布式智能眼镜协同对齐连续第一视角轨迹与外部相机 ROI 视觉特征，体现多节点穿戴传感器的时空配准与融合。
 
 ## 参考来源
 

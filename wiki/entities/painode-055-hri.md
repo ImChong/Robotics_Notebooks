@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：自然语音理解、多轮对话与可打断执行闭环是人机交互会议关注的重要交互模态与工程课题。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：人机协同界面、共享控制与人类操作员交互体验评估也是 HRI 会议研究中的重要应用任务。
 
 ## 参考来源
 

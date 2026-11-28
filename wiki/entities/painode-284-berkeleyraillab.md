@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：围绕机器人自主性与交互式学习开展强化学习算法、离线策略优化与真实环境训练研究。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：持续推进面向通用操作与多任务机器人策略学习的数据管线与闭环训练范式。
 
 ## 参考来源
 

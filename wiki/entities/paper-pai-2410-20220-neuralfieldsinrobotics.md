@@ -111,6 +111,8 @@ Survey on neural implicit representations for robotics applications.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：系统综述占据场、SDF 与辐射场等神经隐式表征在机器人三维环境重建与位姿估计中的技术谱系。
+- [Manipulation](../tasks/manipulation.md)：梳理了神经场与视触觉融合表征在机器人抓取规划、场景理解与灵巧操作任务中的核心应用。
 
 ## 参考来源
 

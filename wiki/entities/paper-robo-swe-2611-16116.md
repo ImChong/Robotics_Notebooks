@@ -100,6 +100,8 @@ flowchart LR
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 将可执行软件修复评测与机器人策略成功率、sim↔real 校准分层；F2P/P2P 通过不能替代真机行为验证。
 - [本期 29 篇具身论文选型地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder：任务难度分层评测](./paper-maniladder-manipulation-benchmark.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：Robo-SWE 从 ROS 2 与仿真器等真实机器人软件仓库的合并 PR 中挖掘工程问题，覆盖机器人软件系统维护场景。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：利用修复前隔离容器与 Fail-to-Pass / Pass-to-Pass 测试集构建可执行门禁，客观检验代码智能体的自动修复能力。
 
 ## 参考来源
 

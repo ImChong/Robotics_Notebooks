@@ -99,6 +99,8 @@ flowchart LR
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_20_pvp_data_efficient_humanoid_robot_learning_with.md](../../sources/papers/humanoid_rl_stack_20_pvp_data_efficient_humanoid_robot_learning_with.md)
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md)：均聚焦解决仿真特权信息与真机本体感受观测之间的信息落差，PvP 以对比表征对齐替代传统的显式教师–学生行为蒸馏。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：PvP 面向人形机器人全身控制强化学习中的样本效率与部分可观测表征学习问题。
 
 ## 参考来源
 

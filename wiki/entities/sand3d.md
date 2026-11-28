@@ -178,6 +178,8 @@ s3d.export(bracket(), "bracket.glb")
 - [URDF-Studio](./urdf-studio.md) — 适合 Sand3D 导出后继续检查/编辑机器人关节与模型属性。
 - [robot_descriptions.py](./robot-descriptions-py.md) — 提供现成机器人模型包与加载；Sand3D 侧重生成/修改物件的 3D geometry。
 - [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) — 关注物理接地的 3D 资产生成，与 Sand3D 的语义零件、重建数据互补。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：Sand3D 用带具名零件、尺寸参数、局部坐标系与关节约束的 Python 程序统一表达三维物体，体现参数化建模与可编辑结构思想。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：该资产库支持在代码中显式声明转动或移动关节限位，并导出 URDF 与 USDA 格式作为仿真资产接入的几何起点。
 
 ## 参考来源
 

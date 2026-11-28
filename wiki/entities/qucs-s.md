@@ -141,6 +141,8 @@ sequenceDiagram
 - [Humanoid Hardware 101 · 05：能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：Qucs-S 通过原理图建模与外部 SPICE 求解器对电机驱动、电源和模拟前端开展直流、交流及瞬态分析，属于硬件打样前的工程仿真验证流程。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：在机器人传感器前端与模拟采样链路的硬件设计阶段，可用于仿真验证信号调理电路的工作点与频率响应后再接入传感系统。
 
 ## 参考来源
 

@@ -96,6 +96,8 @@ sequenceDiagram
 - [robot-simulation-three-layers](../concepts/robot-simulation-three-layers.md)
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：将四旋翼动力学与分段刚体铰链近似的软连续体臂整合进 MuJoCo，搭建空中柔性操作的联合仿真环境。
+- [Manipulation](../tasks/manipulation.md)：支撑空中平台搭载腱驱动连续体机械臂开展轨迹跟踪、工作空间分析与抗扰操作研究。
 
 ## 参考来源
 

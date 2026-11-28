@@ -100,6 +100,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：机器人策略的观测动作设计、强化与模仿学习方法及真机闭环评测是 CoRL 会议的核心研究主题。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：基于人类演示与大规模数据集训练通用操作及控制策略是 CoRL 历年高密度覆盖的方法方向。
 
 ## 参考来源
 

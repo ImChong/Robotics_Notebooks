@@ -92,7 +92,8 @@ flowchart LR
 - [axfluxmdo](./axfluxmdo.md) · [KiCad](./kicad.md) · [Ironless QDD](./ironless-qdd-actuator.md)
 - [Caden Kraft Ironless Axial Flux Motor](./cadenkraft-ironless-axial-flux-motor.md)
 - [Halbach Array](../concepts/halbach-array.md)
-
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：PCB 定子轴向磁通电机的绕组拓扑、气隙磁密与反电势特性需通过电磁工程仿真与样机实测验证。
+- [Manipulation](../tasks/manipulation.md)：该类扁平轻量 PCB 定子微电机面向灵巧手手指、腕关节及微型末端执行器等精细操作驱动场景。
 
 ## 参考来源
 

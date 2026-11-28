@@ -101,6 +101,8 @@ sequenceDiagram
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-data-collection-four-layers-taxonomy](../concepts/embodied-data-collection-four-layers-taxonomy.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [Manipulation](../tasks/manipulation.md)：围绕多物体抓放操作任务开展百小时级研究，探索软夹指可见形变线索、相机视角与中间训练对新物体泛化的作用。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：在手持 UMI 数据采集硬件端匹配机器人同款柔顺斜置夹指，从采集管线源头引入可观测的物理接触形变表征。
 
 ## 参考来源
 

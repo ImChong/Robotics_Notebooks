@@ -74,6 +74,8 @@ flowchart TD
 - [Point-Bench](./er-point-bench.md)
 - [LightNav-ER](./lightnav-er.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：空间指代 benchmark，认知分仍需往 ③ 策略成功率压实
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：RefSpatial-Bench 为 VLM 与具身推理模型提供了标准化的复杂场景空间指代基准评测集与量化对比口径。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：聚焦于评估模型从视觉输入中理解空间指代关系并定位三维位置的能力，是机器人视觉感知与空间推理的重要检验维度。
 
 ## 参考来源
 

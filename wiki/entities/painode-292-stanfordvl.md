@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：视觉与学习实验室围绕三维场景理解与视觉表征展开研究，为机器人操作与导航提供感知基础。
+- [Manipulation](../tasks/manipulation.md)：在真实与仿真环境中长期推进面向家居与通用任务的视觉引导机器人操作研究。
 
 ## 参考来源
 

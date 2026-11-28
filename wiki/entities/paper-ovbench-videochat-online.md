@@ -140,6 +140,8 @@ sequenceDiagram
 - [Ego4D 第一视角视频](./paper-ego4d.md)
 - [具身评测基准选型](../overview/hub-embodied-eval-benchmark.md)
 - [具身模型评测纵深 Stage 1](../../roadmap/depth-embodied-eval.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：OVBench 通过限定提问时刻与在线记忆约束，建立了评测视频流实时理解能力的标准化基准协议。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：VideoChat-Online 利用 ViT 视觉特征与金字塔记忆库（PMB）对长时序视频流进行分层时空表征压缩。
 
 ## 参考来源
 

@@ -131,6 +131,8 @@ sequenceDiagram
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器 Three.js **游戏 + Agent Skills QA** 路线
 - [可观测性（Logs / Metrics / Tracing）](../concepts/observability-logs-metrics-tracing.md) — 大屏指标应对齐的 telemetry 语义
 - [边缘–云端协同](../concepts/edge-cloud-robotics.md) — 云侧队级分析 vs 边缘实时控制分工
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：sc-datav 分离了地图渲染与数据加载层，可作为机器人机队或园区运营监控系统中的 Web 前端展示组件接入后端遥测接口。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：其基于 GeoJSON 的三维地图挤出与轨迹连线可视化模式，可用于展示多机全局区域分布与导航任务执行态势。
 
 ## 参考来源
 

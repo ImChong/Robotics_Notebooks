@@ -130,6 +130,8 @@ flowchart LR
 - [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — 对照本论文五级自治框架
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照 HCI 跨基准归一化：具身侧如何在可复现性、真实代表性与成本之间选评测基准
 - [9.7—9.13｜本周顶级 AI 论文（WaytoAGI · DAIR.AI 转载）](../overview/waytoagi-top-ai-papers-2026-09-07-09-13-technology-map.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：本文提出五级自治框架与 Headroom-Closed Index（HCI），为评估智能系统相对基准前沿的自我改进幅度提供系统化度量。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：论文将自改进闭环拆解为改进执行、策略选择、经验获取、环境适应与递归元改进五个层级以界定智能体自治边界。
 
 ## 参考来源
 

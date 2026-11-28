@@ -139,6 +139,8 @@ SfMLearner 是这一支自监督单目深度/位姿方法的起点，后续工�
 - [Monodepth2](./paper-monodepth2.md)
 - [FeatDepth](./paper-featdepth.md)
 - [LVI-SAM](./paper-lvi-sam.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：SfMLearner 利用可微视角合成光度自监督从单目视频联合学习深度与相机相对位姿，奠定了自监督三维几何学习的重要基线。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：该工作的 PoseCNN 分支演示了从连续单目图像直接估计帧间 6-DoF 自运动轨迹的视觉里程计思路。
 
 ## 参考来源
 

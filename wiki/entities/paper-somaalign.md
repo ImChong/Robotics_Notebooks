@@ -94,6 +94,8 @@ sequenceDiagram
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：SomaAlign 针对软体抓取中的多模态传感器融合，依据重建误差评估各模态可靠性以处理传感冲突。
+- [Manipulation](../tasks/manipulation.md)：该工作在软体机械手抓取多模态数据上评估特征检索与抓取结果预测，服务于灵巧与柔顺操作感知。
 
 ## 参考来源
 

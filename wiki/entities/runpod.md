@@ -70,6 +70,8 @@ flowchart TD
 - [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md)
 - [Vast.ai](./vast-ai.md) — 更低价、更不稳定的市场
 - [Lambda Cloud](./lambda-cloud.md) — 多机 IB 集群
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：RunPod 提供按秒计费的消费级至数据中心级 GPU 容器实例，常用于机器人强化学习的无头并行训练。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：其 Serverless GPU 与预构建 Docker 模板支持按需扩缩，适合开展具身策略或视觉模型的远程推理部署。
 
 ## 推荐继续阅读
 

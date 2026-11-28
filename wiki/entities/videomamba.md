@@ -64,6 +64,8 @@ flowchart LR
 - [SSM](../concepts/state-space-model-ssm.md)
 - [架构对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：以选择性状态空间模型替代自注意力进行时空序列扫描，实现线性复杂度的长视频视觉特征表征学习。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：为机器人视频流、扫描观测等长序列视觉感知提供低算力开销的时序骨干候选。
 
 ## 参考来源
 

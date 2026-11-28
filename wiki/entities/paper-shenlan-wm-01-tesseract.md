@@ -104,6 +104,8 @@ flowchart TD
 - 路线 hub：[world-models-route-01-cascade.md](../overview/world-models-route-01-cascade.md)
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_01_tesseract.md](../../sources/papers/shenlan_wm_survey_01_tesseract.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：TesserAct 属于生成式世界模型路线，通过联合预测 RGB、深度与法线视频并经逆动力学解码 7-DoF 动作。
+- [Manipulation](../tasks/manipulation.md)：该工作在 RLBench、Fractal 与 Bridge 等操作数据上预测 4D 场景演化并生成机械臂操作动作。
 
 ## 参考来源
 

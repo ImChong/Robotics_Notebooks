@@ -142,6 +142,8 @@ flowchart TB
 - [TSID](../concepts/tsid.md)
 - [Cartesian Impedance Controller](./paper-cartesian-impedance-controller.md)
 - [Franka Research 3](./franka-research-3.md)
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md)：冗余力矩控制机器人的动力学一致零空间投影与逆动力学前馈补偿紧密配合以解耦主次任务。
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：7 轴力矩控制机械臂的零空间投影方法用于解决冗余操作系统中主任务跟踪与构型避障的协调问题。
 
 ## 参考来源
 

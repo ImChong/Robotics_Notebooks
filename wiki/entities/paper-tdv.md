@@ -100,6 +100,8 @@ E->>E: 线性探针 光流 立体 分割
 - [LeVJEPA](./paper-levjepa.md) — 同样面向视频自监督，但保留分布正则
 - [LeJEPA](./paper-lejepa.md) — 视觉 JEPA 的分布匹配前序工作
 - [LeWorldModel](./paper-lewm.md) — 视觉世界模型的端到端对照
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：TDV 仅利用相邻帧时序因果与交叉注意力耦合运动信息，在不依赖裁剪或对比损失下自监督学习视频视觉表征。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：其冻结特征在光流、立体深度与分割等稠密空间感知任务中表现突出，为评估视觉感知所需归纳偏置提供对照。
 
 ## 参考来源
 

@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：该边缘 NPU 加速棒常依赖模型量化与图编译优化，以在低功耗机器人端侧满足推理约束。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：面向端侧视觉与感知模型的低延迟推理部署，可与该类边缘 NPU 硬件加速流程配合评估吞吐与功耗。
 
 ## 参考来源
 

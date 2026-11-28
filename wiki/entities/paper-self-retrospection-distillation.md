@@ -80,6 +80,8 @@ flowchart TB
 
 - [RealCompanion](./paper-realcompanion.md) — 长期用户理解的真实对话基准
 - [Cross-Tokenizer OPD](./paper-cross-tokenizer-opd.md) — token 级蒸馏对齐
+- [GRPO（Group Relative Policy Optimization）](../methods/grpo.md)：SRD 与基于组内相对优势的 GRPO/RLVR 训练联合使用，在同组奖励一致或全失败时利用轨迹事后信息补充策略梯度信号。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：该方法让长时程工具交互智能体在交互前预测潜在知识与陷阱，并将执行轨迹的经验蒸馏回策略本身。
 
 ## 参考来源
 

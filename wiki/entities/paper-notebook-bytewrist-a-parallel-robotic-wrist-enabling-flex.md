@@ -118,6 +118,8 @@ flowchart LR
 
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：ByteWrist 作为嵌套三级驱动的紧凑型并联机械腕集成于 ByteMini 双臂系统，显著提升了受限孔洞内的末端调姿能力。
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md)：ByteWrist 在狭小手套箱抓取及 116 小时双臂柔性挂衣遥操作采集中验证了其对复杂双臂协同操作任务的硬件支撑价值。
 
 ## 参考来源
 

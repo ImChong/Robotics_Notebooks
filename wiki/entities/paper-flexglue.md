@@ -245,6 +245,8 @@ colmap exhaustive_matcher \
 
 - [CoReMatch](paper-corematch.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：FlexGlue 作为稀疏到稠密特征匹配与共视性判别前端，为视觉定位和下游感知模块过滤重复结构误匹配并提供高精度图像对应。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：FlexGlue 联合图像对共视判断与亚像素对应点预测，可直接服务于 SfM 等多视图三维重建管线的特征匹配阶段。
 
 ## 参考来源
 

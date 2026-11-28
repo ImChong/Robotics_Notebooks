@@ -163,6 +163,8 @@ flowchart TB
 - [Multi-Agent CAD（MAC）](./multi-agent-cad.md) — LLM + build123d 多智能体编排对照
 - [CAD Skills](./cad-skills.md) — Agent Skills 制造向 STEP 链
 - [Sim2Real](../concepts/sim2real.md) — CAD/STEP 进入仿真的几何一致性
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：采用 Plan-Then-Construct 范式先生成带公制单位的设计计划，再通过指针检索连续数值构造高精度参数化 CAD 模型。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：发布 OmniCAD-Plan 数据集并提出顶点/边/面三级精度与 RMR@3 评测指标，以弥补传统形状指标对尺寸公差不敏感的不足。
 
 ## 推荐继续阅读
 

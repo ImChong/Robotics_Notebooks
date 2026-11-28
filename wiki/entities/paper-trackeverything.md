@@ -146,6 +146,8 @@ TrackEverything 的主要贡献是用跨窗世界系去重，把全帧稠密 3D 
 - [Track4World](./paper-track4world.md) — 前馈世界系稠密 3D 点跟踪对照。
 - [D4RT](./paper-d4rt.md) — 查询式动态 4D 重建与点跟踪对照。
 - [Point Tracking Improves World Action Models](./paper-rcl-2605-23856-point-tracking-improves-world-action-models.md) — 点级运动信号与机器人世界动作模型。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：逐窗将视频投影到持久世界系三维点云并通过体素去重维护长期动态场景几何。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：输出的长时程点级三维运动与动态场景表征可作为上游视觉感知信号服务动态理解。
 
 ## 参考来源
 

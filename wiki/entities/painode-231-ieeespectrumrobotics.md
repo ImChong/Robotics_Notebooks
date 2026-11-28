@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：该权威技术媒体长期追踪双足与人形机器人在复杂地形移动及硬件工程上的前沿突破。
+- [Manipulation](../tasks/manipulation.md)：其专题报道广泛覆盖工业与科研机械臂抓取、灵巧操作及机器人系统落地的最新进展。
 
 ## 参考来源
 

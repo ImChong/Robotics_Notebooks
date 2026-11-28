@@ -136,6 +136,8 @@ flowchart LR
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [文字生成 CAD](../concepts/text-to-cad.md)
 - [Humanoid Hardware 101 · 电源与电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：作为零安装浏览器端 3D 造型入口，可导出 STL/OBJ 草模并衔接下游工程级参数化 CAD 建模流程。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：支持在浏览器中验证 Arduino 与舵机等基础外设控制逻辑，并可导出 C++ 代码迁移至真实硬件软件集成流程。
 
 ## 参考来源
 

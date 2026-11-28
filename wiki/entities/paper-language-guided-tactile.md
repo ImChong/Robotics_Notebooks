@@ -115,6 +115,8 @@ flowchart TD
 ## 关联页面
 
 - [十篇资源技术地图](../overview/embodied-resources-10-papers-technology-map.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：Language-Tactile 利用冻结语言编码器对 ViT 视触觉编码器做特征级蒸馏，学习跨传感器通用的触觉图像表征。
+- [Manipulation](../tasks/manipulation.md)：跨传感器的材质识别与触觉属性表征为机器人精细抓取与物体交互操作提供泛化的触觉感知基础。
 
 ## 参考来源
 

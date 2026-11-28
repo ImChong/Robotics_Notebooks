@@ -105,6 +105,8 @@ flowchart TB
 - [Protocol Buffers](./protocol-buffers.md)
 - [消息队列可靠性](../concepts/message-queue-reliability.md)
 - [系统工程知识链](../overview/hub-systems-engineering.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：凭借高压缩比与快速解压特性，广泛用于 LeRobot、HDF5 等大规模机器人学习数据集与 episode 轨迹归档。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：通过流式帧封装与小消息字典训练，支撑机器人日志采集、遥测数据打包与 OTA 模型传输链路。
 
 ## 参考来源
 

@@ -137,6 +137,8 @@ NeRF 是离线、已知位姿的单场景重建方法；下表说明后续 SLAM 
 - [COLMAP](./colmap.md)
 - [NICE-SLAM](./paper-nice-slam.md)
 - [4D-GS](./paper-4d-gaussian-splatting-wu.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：NeRF 以连续 5D 神经辐射场与可微体渲染从已知位姿的多视图 RGB 图像中重建三维场景外观与几何。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：NeRF 奠定了基于隐式神经辐射场的新视角合成与三维场景表征基础，常被后续机器人视觉感知与神经 SLAM 方法继承。
 
 ## 参考来源
 

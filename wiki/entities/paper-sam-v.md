@@ -177,6 +177,8 @@ ScanNet++ 上，相比 PanSt3R，论文报告 SAM-V 提高 **5.7 个 T-mIoU 点*
 - [SAM 2](./paper-sam2.md) — 视频时序记忆路线，与 SAM-V 的显式多视角几何路线互补
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — SAM-V 属于多视角分割/场景理解前端
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 读 SAM-V 的 Hypersim / IGGT 指标时，用于区分感知前端评测与下游策略任务成功率
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：SAM-V 将多视角几何先验注入可提示二维分割网络，在单次前向推理中输出跨视角一致的物体实例掩码以服务感知前端。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：该方法利用 VGGT 提取的多视角几何与相机表征为分割特征提供跨视角空间锚点，减少对显式稠密三维重建后处理的依赖。
 
 ## 参考来源
 

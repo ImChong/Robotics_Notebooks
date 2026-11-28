@@ -112,6 +112,8 @@ sequenceDiagram
 - [LightNav-ER](./lightnav-er.md)
 - [空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：机器人视角空间推理 QA，可自动打分但离真机执行最远
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：RoboSpatial-Home 成为行业广泛采用的空间理解公共评测基准，用于横向衡量多模态具身模型在真实室内场景中的空间推理精度。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：通过 3D 扫描生成的空间配置与指代问答数据训练和检验模型对物体位置及几何兼容性的视觉空间感知能力。
 
 ## 参考来源
 

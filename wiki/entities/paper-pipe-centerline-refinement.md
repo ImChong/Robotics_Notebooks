@@ -106,6 +106,8 @@ flowchart TD
 - [约束优化](../concepts/constrained-optimization.md)：精修问题的数学框架参照。
 - [碰撞距离优化](../concepts/collision-distance-optimization.md)：几何净空与距离约束的相关思路。
 - [构型空间](../concepts/configuration-space.md)：占据与可行性的基本概念。
+- [Smooth Navigation Path Generation（平滑导航路径生成）](../methods/smooth-navigation-path-generation.md)：在离散粗布局之后利用软几何代价与硬间隙验收精修管路中心线，可与机器人单轨迹平滑方法作多分支约束对照。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：面向增材制造分支管网等工程几何结构，提出主干共享与分支汇合的参数化精修方法以满足净空与曲率约束。
 
 ## 参考来源
 

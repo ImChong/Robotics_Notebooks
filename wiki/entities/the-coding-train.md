@@ -72,6 +72,8 @@ flowchart LR
 - [p5.js](./p5js.md) — 课程中用于网页创意编程和可视化的库。
 - [ml5.js](./ml5js.md) — 课程中的浏览器端机器学习接口。
 - [计算机视觉骨干网络](../concepts/vision-backbones.md) — 区分教育演示模型与机器人策略所需视觉表征。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：其 ml5.js 姿态与手部检测教程可作为视觉感知入门示例，并与机器人端实时视觉感知管线区分边界。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：将网页可视化及交互原型通过校验后的网络接口接入机器人软件系统时，需遵循清晰的系统集成边界。
 
 ## 参考来源
 

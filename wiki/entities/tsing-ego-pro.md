@@ -72,6 +72,8 @@ flowchart LR
 - [Ego 数据采集](../overview/ego-category-01-data-collection.md) — 第一视角采集路线
 - [Ego-OSCAR](./paper-ego-oscar.md) — 开源立体惯性采集方案，可从硬件开放性与传感配置对照
 - [HandUMI](./handumi.md) — 可穿戴操作示范与重定向工具链
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：为工业现场第一视角多视角视觉、空间结构与人体轨迹提供数据采集入口，衔接下游动作标注与训练数据管线。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：采集的人体操作轨迹与手眼协同数据需经动作标注与运动重定向流程，方能映射到目标机器人平台训练。
 
 ## 参考来源
 

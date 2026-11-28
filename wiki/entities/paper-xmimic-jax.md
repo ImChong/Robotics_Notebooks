@@ -146,6 +146,8 @@ python -m xmimic.evaluate runs/awlp
 - [BlinkMimic](./blinkmimic.md)
 - [SuperMimic](./paper-supermimic.md)
 - [北京人形 xMimic](./cn-os-xmimic.md)：同名项目消歧。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：XMimic 以加速宇树 G1 全身动作跟踪训练为核心目标，在 40 段 LAFAN1 参考动作上完成严格跟踪基准测试。
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：XMimic 沿用基于可微世界模型的策略梯度回传架构，并通过 JAX 整段编译与多 GPU 并行缩短墙钟训练时间。
 
 ## 参考来源
 

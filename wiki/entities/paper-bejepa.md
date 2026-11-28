@@ -117,6 +117,8 @@ flowchart TD
 - [BFM-Zero](./paper-bfm-zero.md) — 无监督强化学习的人形行为基础模型对照。
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 行为基础模型的概念与方法谱系。
 - [Whole-Body Control](../concepts/whole-body-control.md) — 人形全身姿态与运动控制问题。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：BeJEPA 将世界系根位置、朝向与身体姿态统一纳入潜在目标，并在长程动作跟踪中结合在线潜空间 MPC 降低时空误差。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：BeJEPA 在 Isaac Sim 并行仿真与 Unitree G1 人形真机上验证了受扰返回原位、地面起身与世界锚定移动控制。
 
 ## 参考来源
 

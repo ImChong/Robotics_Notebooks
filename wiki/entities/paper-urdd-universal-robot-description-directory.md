@@ -130,6 +130,8 @@ flowchart LR
 - [robot_descriptions.py](./robot-descriptions-py.md)
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 - [APOLLO Blender](./paper-apollo-blender.md) — 同实验室把 URDD 送进 Blender 出论文图
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：将 URDF 派生的自由度映射、运动链与碰撞近似固化为统一目录模块以接入下游工具链。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：让不同仿真器与规划控制栈共享同一套预处理模型与碰撞几何资产以减少解析差异。
 
 ## 推荐继续阅读
 

@@ -101,6 +101,8 @@ TimeLens 强调定位指标依赖标注质量，榜单比较应同时核查数�
 - [Daily-Omni](./paper-daily-omni.md)：音视频跨模态时序推理。
 - [EmbSpatial-Bench](./embspatial.md)：静态空间关系评测。
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：TimeLens-Bench 通过人工审校和重标注三套视频时序定位基准以统一评估时序定位能力。
+- [GRPO（Group Relative Policy Optimization）](../methods/grpo.md)：模型采用基于时间交并比可验证奖励的强化学习（含 GRPO 路线）优化时序区间预测。
 
 ## 参考来源
 

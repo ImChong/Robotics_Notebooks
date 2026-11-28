@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：基于扩散与视频生成构建物理世界动态模型是 NeurIPS 近年聚焦的重要前沿方向。
+- [Diffusion Policy](../methods/diffusion-policy.md)：将生成式扩散模型引入连续动作序列生成，代表了 NeurIPS 与机器人学习交叉领域的重要策略方法。
 
 ## 参考来源
 

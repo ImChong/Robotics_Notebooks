@@ -79,6 +79,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [多智能体强化学习（MARL） | Multi-Agent Reinforcement Learning](../methods/marl.md)：MASH 将单个人形机器人的左右腿与左右臂划分为异构合作多智能体，采用集中训练分散执行的 MAPPO 算法协同学习控制策略。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：MASH 在 Isaac Gym 仿真、MuJoCo 验证及 BanXing 实体人形机器人上验证了异构多智能体控制方案在双足行走中的效果。
 
 ## 参考来源
 

@@ -80,6 +80,8 @@ summary: "本工作研究从视频同时估计攀岩者的运动与受力：在�
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：该工作从普通单目攀岩视频联合恢复攀岩者三维全身运动与岩点接触力，将视觉三维重建拓展至接触力学推断。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：非侵入式提取强接触、多支点人类攀岩动作的运动与受力标注，可为人形机器人接触丰富型移动操作提供动力学参考。
 
 ## 参考来源
 

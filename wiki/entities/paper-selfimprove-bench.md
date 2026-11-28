@@ -146,6 +146,8 @@ DeliverBench 关心项目最终多文件交付质量，SelfImprove-Bench 关心*
 - [DeliverBench](paper-deliverbench.md) — 区分被评对象与评价指标。
 - [AmbiHTMLBench](paper-ambihtmlbench.md) — 区分被评对象与评价指标。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 未见任务泛化评测可对照该闭环中「单任务过拟合冒充跨任务泛化」的典型误判。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：SelfImprove-Bench 将智能体自改进后的能力划分为 G0 至 G4 五级泛化阶梯，为评测迁移性与防止过拟合提供了结构化基准框架。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：该基准围绕反馈驱动的经验与 harness 修订闭环进行隔离测试，评估迭代反馈在未见任务上的真实泛化收益。
 
 ## 参考来源
 

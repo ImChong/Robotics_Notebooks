@@ -91,6 +91,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：为道路车辆及轮式自主平台的电子电气与控制软件提供功能安全等级划分和容错架构规范。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：约束车规级自主系统在传感、通信与控制软件集成阶段的安全验证、故障诊断与开发可追溯性。
 
 ## 参考来源
 

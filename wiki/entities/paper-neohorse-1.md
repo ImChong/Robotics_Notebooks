@@ -184,6 +184,8 @@ sequenceDiagram
 - [RSI Survey（2607.07663）](./paper-rsi-survey-2607-07663.md) — RSI taxonomy 与验证层级
 - [Physical Agentic AI](./paper-physical-agentic-ai.md) — 多机器人 harness 门控 vs 文本 routing flywheel
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 规划层 agent 与物理执行分离
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：NeoHorse-1 对多步交互轨迹执行工具因果闭包验证与能力路由，通过 SFT 与在策略蒸馏提升智能体工具调用表现。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：NeoHorse-1 将已部署路由 Harness 中的多步规划结果与评测短板反馈至下一轮数据配比，构建闭环自改进原型。
 
 ## 参考来源
 

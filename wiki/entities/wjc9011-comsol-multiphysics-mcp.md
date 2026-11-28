@@ -94,6 +94,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [COMSOL MCP](./777gegewu-comsol-mcp.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：连接 COMSOL 多物理场仿真内核，辅助代理组织物理场建模、边界设定与结果核查流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：基于 Model Context Protocol 为 AI 代理提供调用 COMSOL 多物理场建模与仿真工具的标准化接口。
 
 ## 参考来源
 

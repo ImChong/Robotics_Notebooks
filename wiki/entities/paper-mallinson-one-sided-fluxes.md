@@ -103,6 +103,8 @@ flowchart TD
 
 - [Halbach Array 概念](../concepts/halbach-array.md)
 - [Halbach 1980](./paper-halbach-permanent-multipole-magnets.md) · [Zhu & Howe 2001](./paper-zhu-howe-halbach-pm-machines-review.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：平面单侧聚磁阵列的磁场分布与边界效应通常借助有限元工程仿真流程进行建模与验证。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：将平面旋转磁化规律工程化为分段永磁执行器时，需通过参数化 CAD 建模定义磁钢几何尺寸与气隙结构。
 
 ## 参考来源
 

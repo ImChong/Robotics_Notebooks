@@ -207,6 +207,8 @@ sequenceDiagram
 - [SMPL-X](../concepts/smpl-x.md) — 参数化人体与评测对齐参照
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 人体运动→机器人参考链
 - [Human Motion 论文索引](../overview/paper-notebook-category-14-human-motion.md)
+- [U-Net](../methods/unet.md)：SOMA 采用级联 U-Net 作为非线性形变场骨干，从体表观测预测规范空间肌肉位移与皮肤残余滑动。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：该工作面向多视角视觉与动捕体表观测，重建具有解剖一致性的三维多层肌肉与皮肤形变几何。
 
 ## 参考来源
 

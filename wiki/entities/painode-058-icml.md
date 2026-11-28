@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Policy Optimization](../methods/policy-optimization.md)：连续控制与序列决策中的策略优化理论及算法改进是 ICML 强化学习专题的核心内容之一。
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：世界模型学习、规划与样本高效强化学习方法在 ICML 上具有持续且系统的研究发表。
 
 ## 参考来源
 

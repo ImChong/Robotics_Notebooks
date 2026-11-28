@@ -67,6 +67,11 @@ flowchart TB
 - 阅读像素控制与潜空间规划实验时，应拆开考察「表示线性恢复」「动力学预测」与「闭环规划成功率」三层指标。
 - 潜变量维度选择、非高斯分布与有限样本优化误差仍会限制模型在复杂机器人控制任务上的迁移上界。
 
+## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：论文分析像素输入下所学世界表征与潜空间动力学模型能否支撑基于模型的强化学习与闭环规划控制。
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：论文将线性可辨识潜状态与动力学预测进一步连接到潜空间滚动优化与 MPC 动作规划实验。
+
 ## 参考来源
 
 - [论文来源归档](../../sources/papers/when_does_lejepa_learn_world_model_arxiv_2605_26379.md)

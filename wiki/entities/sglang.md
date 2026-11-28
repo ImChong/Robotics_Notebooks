@@ -97,6 +97,8 @@ sequenceDiagram
 - [FlashInfer｜跨框架 GPU 推理 Kernel 库](./flashinfer.md)
 - [vLLM｜生产级大模型推理与持续批处理](./painode-103-vllm.md)
 - [TensorRT-LLM｜NVIDIA 大模型推理运行时与 LLM API](./tensorrt-llm.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：SGLang 是面向 LLM、多模态及智能体负载的生产级推理服务框架，通过 TokenizerManager、Scheduler 与 KV 缓存实现高吞吐批处理。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：其回归测试要求固定模型、输入输出长度分布与并发并报告 tokens/s、TTFT 及 TPOT，体现了规范的推理服务基准评测流程。
 
 ## 参考来源
 

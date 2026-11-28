@@ -90,6 +90,8 @@ flowchart TB
 
 - 分类页：[paper-notebook-category-08-navigation](../overview/paper-notebook-category-08-navigation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：ARMOR 在人形双臂部署 40 个 VL53L5CX ToF 传感器，经微控制器与机载计算单元同步采集自我中心深度避障观测。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：ARMOR-Policy 采用基于 Transformer 编码器-解码器的模仿学习架构，利用重定向的人体避障示范训练双臂无碰撞运动策略。
 
 ## 参考来源
 

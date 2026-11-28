@@ -63,6 +63,8 @@ flowchart LR
 
 - [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md)
 - [RunPod](./runpod.md)、[Lambda Cloud](./lambda-cloud.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：常用于大规模仿真强化学习（如 rsl_rl）的低成本弹性算力训练与超参数搜索，需配合定期 checkpoint 机制。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：为机器人策略训练与离线数据处理提供按秒计费的 GPU 算力底座，支持可中断恢复的实验迭代流程。
 
 ## 推荐继续阅读
 

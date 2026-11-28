@@ -86,6 +86,8 @@ flowchart LR
 - [多旋翼仿真—规划—飞控栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [Betaflight](./betaflight.md) — FPV 飞控与 MSP OSD 数据源
 - [PX4 Autopilot](./px4-autopilot.md) — 自主飞控对照（非图传层）
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：通过 opkg 包管理、dinit 服务编排与 modloader 钩子，将社区图传与显示模块集成到数字 FPV 设备系统。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：为第一人称视角（FPV）无人机操控链路提供高清图传与 MSP OSD 遥测叠加显示支持。
 
 ## 推荐继续阅读
 

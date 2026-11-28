@@ -135,6 +135,8 @@ flowchart TB
 - 代表延伸：[paper-sentis-khatib-icra-2006-whole-body-control-framework.md](./paper-sentis-khatib-icra-2006-whole-body-control-framework.md)
 - 概念：[whole-body-control.md](../concepts/whole-body-control.md)、[null-space-control.md](../concepts/null-space-control.md)
 - 知识链入口：[hub-wbc.md](../overview/hub-wbc.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：本文建立的「约束 > 操作任务 > 姿态」三层递归优先级栈与浮基动力学投影是现代人形全身控制架构的理论源头。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：该工作将双足平衡与多接触约束作为最高优先级任务与操作控制统一求解，直接支撑人形移动与全身协调。
 
 ## 参考来源
 

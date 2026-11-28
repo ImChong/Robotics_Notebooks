@@ -120,6 +120,8 @@ Monodepth2 沿用 SfMLearner 的「深度 + 位姿 + 可微重投影」自监督
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：Monodepth2 通过单目视频帧间可微重投影联合恢复场景逆深度与相机相对位姿，为视觉三维重建提供基础深度估计。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：其自监督单目深度估计与静止像素掩码机制常作为机器人视觉感知与自主导航管线的几何感知基线。
 
 ## 参考来源
 

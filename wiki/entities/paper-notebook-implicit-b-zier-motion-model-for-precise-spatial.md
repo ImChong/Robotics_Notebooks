@@ -81,6 +81,8 @@ IBMM 要：**任意时间控制点**、**任意帧约束任意末端**、且可*
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md)：IBMM 通过隐式贝塞尔拟合摆脱均匀时间网格限制，为连续运动轨迹的任意时刻约束与参数化优化提供表达思路。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：IBMM 支持任意帧末端关节约束与全局时间缓入缓出编辑，可用于生成可控的参考人体运动序列以供下游动作跟踪。
 
 ## 参考来源
 

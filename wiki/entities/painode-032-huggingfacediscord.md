@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：开源具身基础模型与视觉-语言-动作策略训练是该社区围绕 LeRobot 生态展开讨论的重要方法主线。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：基于遥操作演示的行为克隆与策略微调是社区开源机器人项目实践中最常交流的学习范式。
 
 ## 参考来源
 

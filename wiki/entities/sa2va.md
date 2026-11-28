@@ -71,6 +71,8 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [BLIP-2](./paper-blip2.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：Sa2VA 将 MLLM 对话与 SAM 2 掩码解码接在同一空间，使机器人视觉感知模块能够依据语言指令输出像素与时序分割。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：该模型将多模态视觉表征与分割提示空间对齐，支持开放场景下的视觉接地与指称对象理解。
 
 ## 参考来源
 

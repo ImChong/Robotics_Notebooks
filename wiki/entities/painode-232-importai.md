@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：该周报长期关注 AI 能力评测与治理趋势，对具身智能体可复现基准与安全评估具有参考价值。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：周报常跟踪强化学习在通用智能体训练、自博弈与机器人控制前沿的突破性论文与政策影响。
 
 ## 参考来源
 

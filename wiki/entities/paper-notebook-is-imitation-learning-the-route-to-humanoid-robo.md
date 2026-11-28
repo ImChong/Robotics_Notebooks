@@ -58,6 +58,8 @@ Is imitation learning the route to humanoid robots? 的人形机器人学习论�
 
 - 分类页：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：本待读条目聚焦探讨模仿学习路线在人形机器人全身能力构建中的适用性与关键挑战。
+- [Manipulation](../tasks/manipulation.md)：该文献在 Paper Notebooks 中归入操作分类，围绕人形机器人操作任务的策略学习路径展开讨论。
 
 ## 参考来源
 

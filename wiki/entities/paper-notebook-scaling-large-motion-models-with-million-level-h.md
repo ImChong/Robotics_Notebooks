@@ -99,6 +99,8 @@ flowchart TD
 - 所属机构实体：[智在无界（BeingBeyond）](beingbeyond.md)
 - 演进后续工作：[Being-M0.5：实时可控视觉-语言-运动模型](paper-notebook-being-m0-5-a-real-time-controllable-vision-langu.md)
 - 物理对齐微调：[RL from Physical Feedback (RLPF)](paper-notebook-rl-from-physical-feedback-aligning-large-motion.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：Being-M0 生成的百万级 SMPL-D135 连续人体运动语料可作为人形动作重定向与全身运动先验的上游数据来源。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：Being-M0 通过筛选、WHAM 世界坐标重建与多级标注构建百万级 MotionLib 数据管线，为规模化运动学习提供数据工程范例。
 
 ## 参考来源
 

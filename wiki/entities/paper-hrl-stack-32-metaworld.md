@@ -106,6 +106,8 @@ MetaWorld 是一个 hierarchical world model。它把系统分成三层：semant
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_32_metaworld_skill_transfer_and_composition_in_a_hi.md](../../sources/papers/humanoid_rl_stack_32_metaworld_skill_transfer_and_composition_in_a_hi.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：MetaWorld 的物理层采用基于潜空间动力学模型与在线规划的 TD-MPC2 完成底层动作优化。
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md)：MetaWorld 通过语义层、技能迁移层与物理层的三层分层结构组织高层指令解析与底层技能组合执行。
 
 ## 参考来源
 

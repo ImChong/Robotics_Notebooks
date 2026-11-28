@@ -162,6 +162,8 @@ flowchart TB
 - [控制/推理频率解耦](../concepts/control-inference-frequency-decoupling.md) — 低频 decode 与高频控制环
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 现有机载推理栈
 - [1XWM / Redwood 世界模型](./paper-1xwm-redwood-world-model.md) — **不同实体**，仅供消歧
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：Redwood 面向 physical AI 单 batch 低功耗低延迟解码需求设计了空间数据流加速器，直接服务机载端侧模型推理。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：其针对低频策略与大模型解码的机载算力优化定位，对应机器人分层控制架构中快执行环与慢推理环的频率解耦。
 
 ## 参考来源
 

@@ -111,6 +111,8 @@ flowchart LR
 - [Robust navigation](./paper-robust-autonomous-navigation-mini-cheetah-vision.md)
 - [Footstep planning](../concepts/footstep-planning.md)
 - [WBIC+MPC](./paper-wbic-mpc-mini-cheetah.md)
+- [机器人自主探索](../tasks/autonomous-exploration.md)：在未知非结构化地形上结合机载双目深度感知与动态步态完成自主探索通行。
+- [楼梯与障碍 Locomotion（感知 / 盲走中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md)：基于轻量点云滤波与落脚点可通行性评估调整步态以跨越不规则障碍与台阶地形。
 
 ## 参考来源
 

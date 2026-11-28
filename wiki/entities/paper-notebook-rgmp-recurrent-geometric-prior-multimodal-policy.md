@@ -78,6 +78,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Manipulation](../tasks/manipulation.md)：RGMP 面向可泛化的人形机器人操作任务，结合多模态语义与几何先验输出操作动作。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：RGMP 基于 120 条人类示教轨迹训练循环几何网络并拟合 GMM 以实现多模态操作模仿学习。
 
 ## 参考来源
 

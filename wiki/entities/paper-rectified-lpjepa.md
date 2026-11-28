@@ -102,6 +102,8 @@ flowchart TD
 - [LeWorldModel](./paper-lewm.md) — 稠密高斯表示的对照
 - [LeVJEPA](./paper-levjepa.md) — 同属防坍缩的 JEPA 正则改进
 - [LeJEPA](./paper-lejepa.md) — 高斯分布匹配的前序工作
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：Rectified LpJEPA 在 JEPA 架构中以 RDMReg 正则将表示分布对齐到修正广义高斯，学习可控稀疏的非负视觉表征。
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：其提出的可控稀疏潜表示方法为后续 LpWM 等世界模型压缩世界状态表征奠定了表示学习基础。
 
 ## 参考来源
 

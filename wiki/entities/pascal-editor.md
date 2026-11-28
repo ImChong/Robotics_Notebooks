@@ -116,6 +116,8 @@ sequenceDiagram
 - [FreeCAD MCP](./freecad-mcp.md) — 桌面机械 CAD 的代理接口，工作对象不同。
 - [Infinigen](./infinigen.md) — 程序化场景生产。
 - [MCP](../concepts/model-context-protocol.md) — 通用代理调用接口。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：Pascal Editor 维护带楼层、墙体和门洞语义的持久化三维建筑场景图，可为室内机器人仿真提供可编辑场景资产。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：Pascal Editor 通过 @pascal-app/mcp 的 SceneBridge 暴露工具和资源接口，支持智能体直接读写三维建筑场景。
 
 ## 参考来源
 

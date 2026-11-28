@@ -175,6 +175,8 @@ ABot-Recon 证明：**长程流式 3D 不必堆更大记忆**——固定 12 帧
 - [SAM 3](./paper-sam3.md) — 开放词汇 2D 前端对照
 - [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页为该清单对应条目的 canonical 详情节点
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：ABot-Recon 采用固定 12 帧局部上下文窗口实现单目 RGB 长视频的在线流式三维点图重建。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：ABot-Recon 在流式重建中逐帧估计相邻相机相对位姿并序贯组合全局轨迹，直接对应单目视觉状态估计与定位问题。
 
 ## 参考来源
 

@@ -140,6 +140,8 @@ flowchart TB
 - [BFM（CVAE 人形 WBC）](../entities/paper-behavior-foundation-model-humanoid.md) — goal-conditioned 真机代表
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [Foundation Policy](../concepts/foundation-policy.md) — 与 VLA 操作向基础策略边界
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：综述将目标条件化全身动作跟踪列为人型行为基础模型三大预训练主线之一并梳理代表工作。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：综述以人形机器人移动与全身控制为核心任务域，系统对比不同行为基础模型在多下游控制与真机适应上的能力边界。
 
 ## 参考来源
 

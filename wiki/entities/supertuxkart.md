@@ -172,6 +172,8 @@ SuperTuxKart 是 **成熟、GPL、双仓架构** 的开源卡丁车游戏：**Gi
 - [starter-kit-racing](./starter-kit-racing.md) — 浏览器 **街机** Three.js 样板
 - [CARLA](./carla.md) — **AD 科研** 仿真基础设施
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md) — 科研训练栈 vs 可玩游戏分栏
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：SuperTuxKart 展示了完整的 C++ 跨平台渲染、输入与游戏物理集成架构，常在选型中用于对照游戏引擎与机器人仿真器边界。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：其基于赛道编辑器与独立 SVN 资产库的组织方式，呈现了一种面向可交互 3D 竞速环境的场景构建与资产管理管线。
 
 ## 参考来源
 

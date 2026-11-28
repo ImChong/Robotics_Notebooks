@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：开源人形与双臂平台 Reachy 常通过遥操作接口采集人类演示数据并开展远程控制实践。
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md)：围绕开源双臂硬件平台开展物体抓取与双臂协同操作是该社区开发者重点探讨的任务方向。
 
 ## 参考来源
 

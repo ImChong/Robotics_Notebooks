@@ -117,6 +117,8 @@ Sim-to-real visual adaptation method for narrowing sensor-domain gaps.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Sim-to-Real Domain Adaptation · Sim2Real 域适应](../methods/domain-adaptation-for-sim2real.md)：SimGAN 是视觉 Sim2Real 域适应的经典工作，通过带自我正则的对抗精炼器缩小合成图像与真实传感器观测之间的域差距。
+- [CycleGAN 与视觉 Sim2Real](../methods/cyclegan-sim2real.md)：SimGAN 与 CycleGAN 同属无配对图像域迁移缩小视觉 Sim2Real 观测差异的代表方法，可互为路线对照。
 
 ## 参考来源
 

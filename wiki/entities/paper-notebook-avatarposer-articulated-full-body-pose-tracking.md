@@ -262,6 +262,8 @@ python main_test_avatarposer.py
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 同团队后续工作（第一视角的头与手位姿估计）：[EgoPoser 实体页](./paper-notebook-egoposer-robust-real-time-egocentric-pose-estima.md)，其官方仓库 README 将其列为 AvatarPoser 的后续工作。
 - 训练与评测数据集：[AMASS](./amass.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：AvatarPoser 从稀疏三点观测重建 SMPL 全身关节姿态并利用 IK 精确对齐末端，可作为人形动作重定向的上游姿态估计模块。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：AvatarPoser 仅依赖头显与双手手柄三点位姿即可实时追踪全身关节，是轻量化 VR 遥操作与化身驱动的重要基础方法。
 
 ## 参考来源
 

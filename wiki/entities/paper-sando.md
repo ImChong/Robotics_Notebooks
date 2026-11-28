@@ -146,6 +146,8 @@ sequenceDiagram
 - [MIGHTY](./paper-mighty-hermite-spline-trajectory-planning.md) — 同属 MIT ACL 的软约束 Hermite 轨迹优化路线
 - [PX4 Autopilot](./px4-autopilot.md) — 常见飞行控制执行层
 - [多旋翼仿真—规划—飞控栈总览](../overview/multirotor-simulation-planning-control-stack.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md)：SANDO 基于时空安全飞行走廊构造硬约束混合整数二次规划问题，求解连续时间安全避障轨迹。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：该系统将动态障碍物自适应状态估计、全局引导与局部轨迹优化串联为无人机在未知动态环境中的闭环导航流程。
 
 ## 参考来源
 

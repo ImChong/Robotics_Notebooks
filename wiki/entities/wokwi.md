@@ -116,6 +116,8 @@ flowchart LR
 - [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
 - [Tinkercad](./tinkercad.md) — Autodesk 浏览器端 3D + Arduino/micro:bit 入门仿真
 - [Robotics Lab（Movez）](./robotics-lab-movez.md) — 侧重浏览器 3D 元件装配和交互教学，电气模型精度未获验证；不同于可运行固件的 Wokwi。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：支持在虚拟 MCU 上仿真 I2C、SPI、UART 与 IMU/传感器外设交互，用于硬件焊板前的接口驱动联调。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：集成 VS Code/CLion 工具链、GDB 调试与 wokwi-cli 自动化测试，支撑嵌入式控制与遥测固件的软件系统集成与 CI 回归。
 
 ## 推荐继续阅读
 

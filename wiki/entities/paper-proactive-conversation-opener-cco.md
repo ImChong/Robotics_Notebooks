@@ -139,6 +139,8 @@ flowchart LR
 - [HiBridge 对话](./paper-hibridge-dialogue.md)：群体对话中「对谁说话 / 说什么」的不确定性建模。
 - [LLM 与机器人控制接口](../concepts/llm-robotics-control-interfaces.md)：语言模型接入机器人系统的常见接口。
 - [具身基础模型的时延与泛化权衡](../concepts/embodied-fm-latency-generalization-tradeoff.md)：本地小模型与时延取舍的背景。
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：定义面向社交机器人的结构化语境与触发事件接口并微调本地小语言模型生成主动开场白，与人形语音交互闭环前端互补。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：构建合成开场白评测集 CCO 并采用多维 LLM-as-a-Judge 与文本指标对比微调小模型与零样本大模型的对话生成质量。
 
 ## 参考来源
 

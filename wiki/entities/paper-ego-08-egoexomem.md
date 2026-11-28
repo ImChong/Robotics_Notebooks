@@ -101,6 +101,8 @@ flowchart TD
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-04-ego-exo-fusion.md](../overview/ego-category-04-ego-exo-fusion.md)
 - 原始 source：[ego_survey_08_egoexomem.md](../../sources/papers/ego_survey_08_egoexomem.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：EgoExoMem 通过 CLIP 相似度打分与 k-DPP 多样性采样从同步 ego-exo 视频流筛选关键表征帧，支撑跨视角记忆推理。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：EgoExoMem 结合第一人称局部交互视野与第三人称全局空间结构进行跨视角理解，为具身视觉感知提供多视角记忆融合范式。
 
 ## 参考来源
 

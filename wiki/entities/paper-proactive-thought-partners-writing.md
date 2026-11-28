@@ -115,6 +115,8 @@ flowchart TB
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
 - [Proactive AI for Superintelligent Agents（主动式智能体综述，不同论文）](./paper-proactive-ai-superintelligent-agents.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：主动思考伙伴依据编辑器事件选择介入时机并等待用户采纳或忽略，可对照智能体规划与反馈闭环中的人机交互设计。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文通过一周日记用户研究与主观可用性评测（UMUX-LITE/SUS）量化主动干预效果，与标准化智能体评测方法形成互补。
 
 ## 参考来源
 

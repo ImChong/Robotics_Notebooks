@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [π₀ 策略（Pi-Zero Policy）](../methods/pi0-policy.md)：Physical Intelligence 提出的 π₀ 通用机器人策略采用条件流匹配架构生成连续动作块，是通才操作策略的代表模型。
+- [π₀.7（Pi-zero 0.7）通才 VLA](../methods/pi07-policy.md)：π₀.7 进一步通过多模态提示对齐异质机器人数据并支持推理时策略引导，拓展了通才 VLA 的开箱操作能力。
 
 ## 参考来源
 

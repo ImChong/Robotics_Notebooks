@@ -140,6 +140,8 @@ flowchart TD
 - [AI Auto-Research](../concepts/ai-auto-research.md) — S4 Figure 与人机共同负责
 - [Diagram Design](./diagram-design.md) — 设计工具和量化评审的边界
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — 可编辑科研示意图与关系保真
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：研究通过六维匿名 MLLM 评分与聚类 bootstrap 统计，系统评估生成式 AI 辅助科研图修订在清晰度与协调性上的表现。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：其受来源约束的修订工作流将图文上下文与不足反馈转化为修订简报，并经独立会话语义核查形成生成与校验闭环。
 
 ## 参考来源
 

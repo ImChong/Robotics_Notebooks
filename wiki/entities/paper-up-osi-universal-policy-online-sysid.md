@@ -112,6 +112,8 @@ flowchart TD
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim-to-Real Domain Adaptation · Sim2Real 域适应](../methods/domain-adaptation-for-sim2real.md)：通过在线系统辨识器从历史观测估计动力学参数并条件化通用策略以实现自适应 Sim2Real 迁移。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：采用策略优化算法在随机化动力学仿真环境中训练参数条件化的通用强化学习策略。
 
 ## 参考来源
 

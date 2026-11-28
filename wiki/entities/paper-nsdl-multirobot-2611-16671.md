@@ -115,6 +115,8 @@ sequenceDiagram
 
 - [2026-11-16 具身研究论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ActionCodec2：流式动作编解码](./paper-actioncodec2-streaming-action-tokenizer.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：NSDL 将 VLM 计划草稿、视觉证据查询工具与确定性调度验证器组织为结构化的智能体规划与校验循环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：NSDL 通过显式的 detect 与 schedule 工具调用接口把符号求解器接入 VLM 推理流程。
 
 ## 参考来源
 

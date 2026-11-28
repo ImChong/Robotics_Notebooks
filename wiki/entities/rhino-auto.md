@@ -76,6 +76,8 @@ flowchart TD
 - [State Estimation](../concepts/state-estimation.md) — 车载/机器人感知融合共性
 - [Navigation / SLAM / Autonomy 技术栈](../overview/navigation-slam-autonomy-stack.md) — 无图城区方案与移动机器人/无人车感知–规划栈对照
 - [人形机器人](./humanoid-robot.md) — 具身整机语境（辉羲非整机方）
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：其无图城区参考方案 RINA 采用端到端感知与规划路线，在工程架构上与未知环境中的移动机器人自主导航流程相通。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：光至 R1 车规级大算力 SoC 为边缘端多相机 BEV 与大模型推理提供了高吞吐、实时性与功能安全并重的部署硬件平台。
 
 ## 推荐继续阅读
 

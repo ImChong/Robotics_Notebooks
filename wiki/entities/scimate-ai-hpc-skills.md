@@ -103,6 +103,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Awesome AI CAE](./kimimgo-awesome-ai-cae.md)
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：HPC-Skills 通过标准化的 SKILL.md 目录与参考文献结构，将二十余种 CAE 求解器与集群工具操作封装为可按需加载的代理技能。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该技能集辅助智能体规范调用 OpenFOAM、LS-DYNA 等求解器并生成作业提交脚本，服务于工程仿真建模与核验流程。
 
 ## 参考来源
 

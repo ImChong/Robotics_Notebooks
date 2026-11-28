@@ -94,6 +94,8 @@ sequenceDiagram
 
 - [visual-representation-for-policy](../concepts/visual-representation-for-policy.md)
 - [cv-best-papers-2023-2026-technology-map](../overview/cv-best-papers-2023-2026-technology-map.md)
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：由大语言模型生成模块化程序并按步调用检测、分割与问答等外部视觉工具接口。
+- [目标检测（Object Detection）](../methods/object-detection.md)：将目标检测与分割等现成视觉模型作为可组合原语嵌入推理程序以完成复杂视觉任务。
 
 ## 参考来源
 

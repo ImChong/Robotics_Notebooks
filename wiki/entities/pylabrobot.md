@@ -216,6 +216,8 @@ sequenceDiagram
 - [Agentic Aptamer Sandbox](paper-agentic-aptamer-sandbox.md)
 - [google-grounding-ai-agents-wet-labs](./google-grounding-ai-agents-wet-labs.md) — Google Research 博客：湿实验自主化的三条研究线（接地到机器人 / 适配体闭环 / 蛋白结合剂）
 - [paper-verid-semantic-representation-lab-self-play](./paper-verid-semantic-representation-lab-self-play.md) — VERID：自动化实验室的语义表示与智能体自博弈（Google）
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：PyLabRobot 通过硬件无关的 LiquidHandler 前端与各机型 Backend 抽象，为多品牌实验室自动化设备的软件系统集成提供统一接口。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：内置的浏览器 Visualizer 与无硬件 Chatterbox 模拟后端支持在不连接真机的条件下完成实验协议的仿真集成与逻辑验证。
 
 ## 参考来源
 

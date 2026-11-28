@@ -95,6 +95,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：围绕智能体访问外部程序与服务时的权限边界、威胁模型与安全防护展开研究索引。
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：智能体安全治理与威胁防御研究可用于规范具身代理调用技能契约时的执行边界。
 
 ## 参考来源
 

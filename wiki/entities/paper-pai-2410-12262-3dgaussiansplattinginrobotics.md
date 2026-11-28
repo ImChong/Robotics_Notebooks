@@ -118,6 +118,8 @@ Survey on gaussian splatting applications in robotics.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：综述三维高斯泼溅在机器人静态与动态三维重建、语义分割及 SLAM 建图中的方法演进与应用实践。
+- [Manipulation](../tasks/manipulation.md)：汇总了三维高斯泼溅在机器人场景交互与物体操作任务中提供显式几何与渲染表征的代表性路线。
 
 ## 参考来源
 

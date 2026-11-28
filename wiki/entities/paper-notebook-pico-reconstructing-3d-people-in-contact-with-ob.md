@@ -105,6 +105,8 @@ PICO 要：泛化到**自然图像 + 新物体类**的 3D HOI 重建。
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 后续对照：[MILO](./paper-milo.md) — 用 LRM 联合网格解释 HOI，**无需 GT 接触**；InterCap / HODome / IMHD 上压过 PICO-fit
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：PICO 借助视觉基础模型检索三维网格并以身-物稠密接触为约束做渲染-比较拟合，从单张自然图像重建人-物交互三维网格。
+- [Manipulation](../tasks/manipulation.md)：PICO-db 与 PICO-fit 构建的真实自然场景人-物稠密三维接触几何对应，可为机器人物体操作与抓取提供交互接触先验。
 
 ## 参考来源
 

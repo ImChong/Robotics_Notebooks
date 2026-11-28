@@ -201,6 +201,8 @@ sequenceDiagram
 - [Behavior Foundation Model 概念](../concepts/behavior-foundation-model.md) — 总体分类与主干知识
 - [BFM 纵深路线](../../roadmap/depth-bfm.md) — 学习路径
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 深度感知输入在感知栈中的选型位置
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：SeeBFM 面向楼梯与箱体等复杂地形下的人形移动任务，使基础行为策略能根据地形几何调整落脚与步态。
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md)：该方法利用仿真地形高度扫描训练感知教师策略，再蒸馏为仅依赖双深度相机的可部署学生网络。
 
 ## 参考来源
 

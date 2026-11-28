@@ -84,6 +84,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：论文基于肌肉雅可比筛选受限拮抗肌，并设计拮抗肌电流抑制与二次规划预伸长两条控制路径以突破关节速度上限。
+- [Manipulation](../tasks/manipulation.md)：该方法在 Musashi 肌骨人形左臂快速挥动任务中验证，直接服务于高动态机械臂操作运动性能的提升。
 
 ## 参考来源
 

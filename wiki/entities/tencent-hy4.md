@@ -89,6 +89,8 @@ README 指出 LoRA 微调最低配置为 8 机 64 卡，每卡至少 96 GB 显�
 
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：Hy4 系列面向长程智能体与深度研究任务，为需要长上下文维持、指令遵循与多步反馈迭代的智能体执行循环提供模型底座。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：其预览版采用 MoE 稀疏激活、Gated DSA 稀疏注意力与 MTP 投机解码层，在长上下文推理服务中面向计算效率与吞吐优化。
 
 ## 参考来源
 

@@ -64,6 +64,8 @@ flowchart LR
 
 - [开源机器人学学习指南（qqfly）](./learn-robotics-qqfly-guide.md) — 机器人基础知识的系统学习路径，可将本演示作为硬件可视化补充。
 - [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md) — 区分可视化教学演示、场景仿真与物理计算。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：该交互演示覆盖 MPU-6050、HC-SR04 等常见传感器与驱动板卡的外观及接口位置，可辅助入门阶段的硬件接口识别。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：可结合工程仿真建模与验证原则区分该类可视化步骤演示与定量电路物理仿真之间的适用边界。
 
 ## 参考来源
 

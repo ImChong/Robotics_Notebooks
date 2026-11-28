@@ -108,6 +108,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：Rapiro 作为 12 自由度桌面级小型人形机器人套件，是入门级双足步行演示与关节协调控制的低成本硬件平台。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：可通过 Arduino 主板串口协议与 Raspberry Pi 或 Cylon.js 等上位机驱动集成视觉、网络和运动指令下发。
 
 ## 参考来源
 

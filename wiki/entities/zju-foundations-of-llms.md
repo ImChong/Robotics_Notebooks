@@ -117,6 +117,8 @@ flowchart TD
 - [Transformer](../concepts/transformer.md)
 - [LLMs-from-scratch（Raschka）](./llms-from-scratch-raschka.md)
 - [MiniMind](./minimind.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：系统梳理语言建模、Transformer 主干、Prompt 工程与参数高效微调，为理解 VLA 模型中的语言与多模态骨干提供理论前置。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：其涵盖的大模型提示、LoRA 适配与检索增强等方法，可作为设计基于语言和推理的机器人策略学习系统的基础知识。
 
 ## 参考来源
 

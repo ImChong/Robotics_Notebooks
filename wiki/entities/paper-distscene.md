@@ -112,6 +112,8 @@ flowchart LR
 - [SimFoundry](paper-simfoundry-real2sim-scene-generation.md)
 - [WonderWorld](paper-sa-2406-09394-wonderworld-interactive-3d-scene-generation-from.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：DistScene 从单张图像联合生成共享坐标系中的显式环境与独立物体资产，支持导出至可重置的机器人仿真环境。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：DistScene 通过 Scene-Frame 与物体中心局部精修从单目图像恢复可分解三维场景几何，属于视觉三维重建与生成管线。
 
 ## 参考来源
 

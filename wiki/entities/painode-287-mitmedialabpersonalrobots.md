@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：社交智能机器人研究关注面向人类用户的自然语言对话、语音交互与可打断闭环。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：人机长期交互需要结合环境与用户反馈不断调整自主智能体的行为选择与任务规划。
 
 ## 参考来源
 

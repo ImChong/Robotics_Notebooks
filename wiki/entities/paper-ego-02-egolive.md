@@ -109,6 +109,8 @@ EgoLive 更像是在回答另一个问题：第一视角数据不能只停留在
 - 分类 hub：[ego-category-01-data-collection.md](../overview/ego-category-01-data-collection.md)
 - 策略侧消费示例：[JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 把 EgoLive **20K+ h** 人视频当主缩放轴的 VLWA 系统（arXiv:2608.05674）
 - 原始 source：[ego_survey_02_egolive.md](../../sources/papers/ego_survey_02_egolive.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：EgoLive 围绕头戴双目与 IMU 采集、时间同步和自动标注流程构建大规模家政与零售第一视角数据集，服务具身策略训练。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：EgoLive 利用 ORB-SLAM3 自运动估计、HaMeR 手部重建与 FoundationStereo 稠密深度，从第一视角立体视频恢复三维场景与交互几何。
 
 ## 参考来源
 

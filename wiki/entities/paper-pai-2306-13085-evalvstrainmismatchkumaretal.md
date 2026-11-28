@@ -95,6 +95,8 @@ Methodology paper on why offline metrics mispredict deployed robot performance.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：剖析离线指标为何难以准确预测真机部署表现，为具身智能体闭环评测协议设计提供方法论参考。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：聚焦训练评估口径与真机部署分布之间的失配问题，对应机器人策略学习中离线筛选与闭环验证的衔接环节。
 
 ## 参考来源
 

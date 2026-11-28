@@ -128,6 +128,8 @@ arXiv 摘要报告学习组件以 Waymo 数据离线训练，并固定权重与�
 - [导航·SLAM·自主栈总览](../overview/navigation-slam-autonomy-stack.md) — 下游定位建图流程。
 
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — LiDAR 强度重建补充感知输入。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：NIDAR 利用相机-LiDAR 标定投影将 RGB 推导的内禀反射率分量映射至仿真三维点云，增强多传感器输入一致性。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：NIDAR 已集成至 UE5、Isaac Sim 与生成式 LiDAR 仿真流程中，用于支持仿真环境下带强度感知的 SLAM 评测。
 
 ## 参考来源
 

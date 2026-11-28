@@ -194,6 +194,8 @@ sequenceDiagram
 - 互补与摩擦锥形式化：[contact-complementarity](../formalizations/contact-complementarity.md)、[friction-cone](../formalizations/friction-cone.md)
 - 对照的 GPU 仿真后端与框架：[mujoco-warp](../entities/mujoco-warp.md)、[mujoco](../entities/mujoco.md)、[nvidia-warp](../entities/nvidia-warp.md)
 - 可微与批量仿真背景：[differentiable-simulation](../concepts/differentiable-simulation.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：ComFree-Sim 基于 NVIDIA Warp 实现兼容 MuJoCo API 的免互补 GPU 接触物理后端，支撑大规模接触密集型仿真验证。
+- [Model Predictive Path Integral (MPPI)](../methods/mppi.md)：ComFree-Sim 的接触对并行闭式求解显著提升了采样轨迹展开吞吐，使基于 MPPI 的接触控制与规划获得成倍加速。
 
 ## 参考来源
 

@@ -75,6 +75,8 @@ flowchart TB
 - [OpenSCAD（脚本化参数 CAD）](./openscad.md) — 以脚本生成参数化几何，再交给切片器准备打印。
 - [FreeCAD](./freecad.md) — 面向机械设计的参数化 CAD，可导出零件几何进入打印链路。
 - [人形结构拓扑优化工具链](../concepts/humanoid-topology-optimization-toolchain.md) — 增材制造端的设计约束与可制造性验证。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：承接参数化 CAD 建模流程导出的 STL 等网格几何，将其规划为逐层打印路径并生成 G-code。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：在进入增材制造切片前，可结合结构与热力学工程仿真验证零件刚度及制造工艺约束。
 
 ## 参考来源
 

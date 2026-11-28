@@ -97,6 +97,8 @@ sequenceDiagram
 
 - [TeleOCR](./paper-teleocr.md)
 - [LLM Wiki](../concepts/llm-wiki-karpathy.md)
+- [YOLO26-Text + PP-OCRv6：场景与文档 OCR](../methods/yolo26-ocr-document-parsing.md)：同属文档 OCR 与版面解析技术路线，可从端到端长文档跨页注意力与检测-识别两阶段方案对照选型。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：官方通过 SGLang 服务端与客户端脚本部署推理流程，体现了长上下文多模态模型的服务化运行架构。
 
 ## 参考来源
 

@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [多智能体强化学习（MARL） | Multi-Agent Reinforcement Learning](../methods/marl.md)：分布式机器人与多机系统研究与多智能体协同决策及共享环境交互问题紧密相关。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：在自主移动与分布式机器人平台中涉及目标规划、环境感知与路径执行等核心导航流程。
 
 ## 参考来源
 

@@ -226,6 +226,8 @@ sequenceDiagram
 - [目标感知 3D Gaussian 语言地图细化](./paper-target-aware-gaussian-langmap.md) — 同为语言高斯地图；本文构建结构层级，对方免训练修正既有地图的目标语义
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 易混名的 3DGS×VLA 数据工厂
 - [HKTex](./paper-hktex-heat-kernel-textures.md) — 同属「高斯」隐喻但做 mesh 内在纹理而非 3DGS 语义场
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：LEGO 在多视角图像上构建带解耦层级身份特征的 3D Gaussian Splatting 场景表示，实现三维结构层级重建。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：该方法结合多视角 SAM 掩码、CLIP 特征与层级语言场景图实现开放词汇三维分割与空间语言定位。
 
 ## 参考来源
 

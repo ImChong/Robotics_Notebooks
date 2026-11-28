@@ -129,6 +129,8 @@ flowchart TB
 - [SAM 3](../entities/paper-sam3.md) — 同系列分割基础模型（管线使用 SAM2.1 与 SAM 3D Objects）
 - [Isaac Sim](../entities/isaac-sim.md) — 合成帧渲染平台
 - [Sim2Real](../concepts/sim2real.md) — 合成到真实的迁移问题
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：NavAble 结合 VLM 过滤、SAM 3D Objects 资产重建与 Isaac Sim 跨环境重放，构建面向盲人导航的合成场景数据生成管线。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：NavAble 针对电梯按钮、扶手等 11 类无障碍关键物体训练语义分割模型，并在辅助设备与 Go2 第一视角上评测视觉感知。
 
 ## 参考来源
 

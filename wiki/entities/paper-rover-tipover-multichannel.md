@@ -163,6 +163,8 @@ flowchart LR
 - [机器人闭环运行时安全检查](./paper-runtime-safety-check-robot-loops.md)：运行时监控对照
 - [动作条件失败监控](./paper-foresight-action-conditioned-failure-monitoring.md)：另一种失败预警思路
 - [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：本文的 IMU 异常检测在感知栈中的位置与选型取舍
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：基于 100 Hz 六维 IMU 序列并行预测倾覆概率与正常动力学残差，解决打滑和松软土条件下行星车稳定状态估计难题。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：在 Orocos RTT 与 Rock 实时框架下将多通道预警仲裁接入车载安全状态机，实现自主应急制动控制。
 
 ## 参考来源
 

@@ -199,6 +199,8 @@ sequenceDiagram
 - [Foxglove](./foxglove-studio.md)、[rerun](./rerun-io.md)、[MCAP](./mcap-log-format.md) — 多模态可视化与日志容器对照。
 - [unitree_ros](./unitree-ros.md)、[Navigation2](./navigation2.md) — 典型 ROS1/2 真机与导航栈 log 场景。
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md) — 中间件选型；PJ 主要服务 ROS 侧，LCM log 需插件或转存。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：PlotJuggler 支持将真机日志与仿真 rollout 的同名曲线叠加对齐，用于定位 Sim2Real 迁移中的尺度、相位与延迟偏差。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：PlotJuggler 可离线回放或实时订阅控制器、状态估计与执行器输出曲线，是验证和调试机器人控制环路的常用工具。
 
 ## 参考来源
 

@@ -69,6 +69,8 @@ flowchart TB
 - [Vision Transformer](../concepts/vision-transformer.md)
 - [CvT](./cvt.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：通过内外双层 Transformer 分别建模像素块内局部结构与全局 patch 关系，丰富视觉特征表征能力。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：作为保留细粒度局部特征的视觉骨干候选，可支撑机器人视觉感知中的分类与密集识别任务。
 
 ## 参考来源
 

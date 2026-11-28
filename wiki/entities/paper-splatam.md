@@ -118,6 +118,8 @@ README：python scripts/splatam.py configs/iphone/splatam.py；scripts/splatam.p
 - [4D-GS（动态新视角合成）](./paper-4d-gaussian-splatting-wu.md)
 - [COLMAP 稀疏/稠密重建](./colmap.md)
 - [LVI-SAM](./paper-lvi-sam.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：SplaTAM 从无位姿标注的 RGB-D 视频流在线构建并增密显式 3D Gaussian 场景地图。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：其基于可微渲染的 Render-to-track 模块利用 silhouette 掩码在线优化相机轨迹与位姿。
 
 ## 参考来源
 

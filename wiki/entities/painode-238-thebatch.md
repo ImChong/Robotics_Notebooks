@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：该科普型 AI 周报常梳理视觉基础模型与感知算法演进，适合作为理解机器人视觉感知背景的入门读物。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：周报定期解读具身多模态大模型与视觉-语言-动作策略进展，帮助读者跟进领域脉络。
 
 ## 参考来源
 

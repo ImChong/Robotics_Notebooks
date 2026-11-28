@@ -218,6 +218,8 @@ flowchart TD
 - [灵巧运动学](../concepts/dexterous-kinematics.md) — 手部高维动作接口
 - [OmniTacTune](./paper-omnitactune-tactile-residual-adaptation.md) — 对照事后动作残差与 RL 自适应
 - [2026-11-04 具身论文技术地图](../overview/embodied-station-2026-11-04-57-papers-technology-map.md) — 本项目原始入库线索
+- [Manipulation](../tasks/manipulation.md)：在六项仿真与六项真机接触丰富操作任务中通过速度场引导精修动作块。
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：利用触觉世界模型预测未来接触隐特征来引导流匹配动作生成。
 
 ## 参考来源
 

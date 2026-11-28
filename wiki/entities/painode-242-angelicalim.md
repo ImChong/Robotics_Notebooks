@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：其社交机器人与情感计算研究面向自然人机交互场景，与人形机器人多模态语音交互闭环高度相关。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：情感 AI 与社交机器人在面部表情、姿态及用户意图识别上高度依赖实时的机器人视觉感知流程。
 
 ## 参考来源
 

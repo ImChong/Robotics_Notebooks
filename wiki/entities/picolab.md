@@ -96,6 +96,8 @@ sequenceDiagram
 
 - [UART 与串行通信](../concepts/uart-serial-communication.md)
 - [Wokwi](./wokwi.md) — 用于固件和电路仿真；Pico.Lab 用于实物信号观察。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：Pico.Lab 可通过逻辑分析仪解码 UART、I2C、SPI 通信时序并监测模拟波形，辅助机器人传感器板接入与排障。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：Pico.Lab 将下位机总线通信诊断、GPIO/PWM 信号观测和电源监测集成到机器人嵌入式联调流程中。
 
 ## 参考来源
 

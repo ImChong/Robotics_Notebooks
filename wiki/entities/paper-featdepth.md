@@ -169,6 +169,8 @@ sequenceDiagram
 - [LVI-SAM](./paper-lvi-sam.md)
 - [VINS-Fusion](./vins-fusion.md)
 - [KITTI Stereo Benchmark](./kitti-stereo-benchmark.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：FeatDepth 自监督训练 FeatureNet 学习更利于跨视角梯度优化的图像特征表征，从而在低纹理区域显著提升特征度量重投影损失的有效性。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：FeatDepth 联合优化深度估计网络与位姿估计网络，从连续视觉图像中自监督恢复面向机器人几何感知的单目深度图与帧间自运动。
 
 ## 参考来源
 

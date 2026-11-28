@@ -144,6 +144,8 @@ sequenceDiagram
 - [34 篇具身论文空间落地技术地图](../overview/embodied-station-34-papers-spatial-grounding-technology-map.md)
 - [人形多机器人协同](../concepts/humanoid-multi-robot-coordination.md)
 - [人形足球群体智能](./paper-humanoid-soccer-swarm-intelligence.md)
+- [遗传算法（Genetic Algorithm, GA）](../methods/genetic-algorithm.md)：该研究采用遗传算法演化双 e-puck 机器人的 Res-GRU 与 EASA 控制器权重，通过群体适应度筛选探索 1 比特通信信号在何种信息条件下涌现。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：该研究在 PyBullet 双机仿真环境中集成地面传感器、罗盘观测与通信信道，构建可快速复现群体通信演化实验的轻量仿真闭环。
 
 ## 参考来源
 

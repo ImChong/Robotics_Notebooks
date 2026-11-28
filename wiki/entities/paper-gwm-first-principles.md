@@ -176,6 +176,8 @@ flowchart TB
 - [Motus2](./paper-motus2.md)
 - [WAM 实时异步部署](./paper-wam-realtime-async.md)
 - [GWM 闭环 5 篇技术地图](../overview/gwm-closed-loop-5-papers-technology-map.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：该报告以理解–想象–行动闭环定义通用世界模型，并给出从生成视频（L1–L2）走向可行动世界模型（L3 WAM）的演进坐标。
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md)：该报告提出用 Mixture-of-Transformers（MoT）在同一接口中统一理解、生成与行动专家，对应多模态统一表征与交互设计。
 
 ## 参考来源
 

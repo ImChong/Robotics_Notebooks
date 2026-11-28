@@ -59,6 +59,8 @@ flowchart LR
 - [ROBOTIS THORMANG3](./robotis-thormang3.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第01期）索引](../overview/robot-open-source-wechat-issue01-curator.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：ROBOTIS OP3 作为可编程全身关节的小型开源人形平台，常用于教育课程与小型比赛中的双足运动研究。
+- [Humanoid Soccer](../tasks/humanoid-soccer.md)：该小型人形平台具备完整的开源硬件资料与 ROS 接口，是人形机器人足球竞赛与教学场景的典型载体。
 
 ## 推荐继续阅读
 

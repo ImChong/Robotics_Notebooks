@@ -116,6 +116,8 @@ sequenceDiagram
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 对照目标检测、跟踪、语义建图和下游任务接口，区分已公开的 Cutie 跟踪模块与整机系统。
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
+- [目标检测（Object Detection）](../methods/object-detection.md)：该报告在丰田 HSR 家庭服务机器人感知栈中结合封闭集 YOLO 与开放词汇检测方案，以兼顾日常已知物体框选帧率与未知物体泛化。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：该报告展示如何基于 ROS 将目标检测、Cutie 跟踪、RoomPlan 语义建图、LLM 规划与低功耗动作识别集成为整机服务系统。
 
 ## 参考来源
 

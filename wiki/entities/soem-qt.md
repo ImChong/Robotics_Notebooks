@@ -68,6 +68,8 @@ flowchart LR
 - [pysoem](./pysoem.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-opensource-libs-wechat](../overview/ethercat-opensource-libs-wechat.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：soem-qt 作为 Qt C++ 对 SOEM 主站的封装线索，涉及机器人软件系统集成中上位机应用界面与现场总线通信的对接。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：在机器人控制系统架构中，其封装的 EtherCAT 主站协议栈承担连接底层从站执行器与实时控制网络的通信接口角色。
 
 ## 参考来源
 

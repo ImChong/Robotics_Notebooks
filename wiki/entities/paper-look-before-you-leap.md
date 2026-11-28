@@ -83,6 +83,8 @@ LBYL（ViLa）强调计划必须可被观测修正。
 
 - [paper-saycan](./paper-saycan.md)
 - [paper-voxposer](./paper-voxposer.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：ViLa 以 GPT-4V 直接看图生成逐步计划，并在执行首步动作后依据新视觉观测持续开展闭环重规划。
+- [Manipulation](../tasks/manipulation.md)：论文在 8 项真实世界机器人操作任务上对比 SayCan 与开环基线，验证视觉闭环重规划对多步操作成功率的作用。
 
 ## 参考来源
 

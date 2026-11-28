@@ -186,6 +186,8 @@ flowchart TB
 - [MemCompiler](./paper-memcompiler-state-conditioned-memory.md)
 - [Spatial Memory Agent](./paper-spatial-memory-agent.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 多智能体信念评测属相邻的 agent 评测；可对照该闭环中可复现性与指标真实代表性的取舍。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该研究构建含 540 条虚构断言与多类网络拓扑的可控多智能体评测框架，定量比较不同大模型在群体交互下的错误信念接受率与纠错效果。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：该研究揭示了多智能体通过共享 BM25 网页检索工具写入并读取断言时容易形成错误证据循环，凸显工具接口在信息校验与溯源中的关键作用。
 
 ## 参考来源
 

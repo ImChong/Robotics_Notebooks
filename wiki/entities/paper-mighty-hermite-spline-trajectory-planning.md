@@ -115,6 +115,8 @@ flowchart LR
 - [PX4 Autopilot](./px4-autopilot.md) · [MAVSDK](./mavsdk.md) — 常见执行层
 - [Flightmare](./flightmare.md) — 敏捷飞行仿真前端（感知—规划闭环验证）
 - [SANDO](./paper-sando.md) — 同为 MIT ACL 四旋翼规划；以时空安全走廊 + 硬约束 MIQP 处理动态未知障碍，与 MIGHTY 的样条优化路线对照
+- [L-BFGS（Limited-memory BFGS）](../methods/l-bfgs.md)：MIGHTY 使用 L-BFGS 求解基于五次 Hermite 样条与 Bézier 代价评估的联合时空无约束 NLP。
+- [Smooth Navigation Path Generation（平滑导航路径生成）](../methods/smooth-navigation-path-generation.md)：MIGHTY 面向多旋翼快速避障的平滑导航路径生成，并与 EGO-Planner 等 B-spline 软约束规划器直接对照。
 
 ## 方法栈
 

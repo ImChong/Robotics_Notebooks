@@ -181,6 +181,8 @@ sequenceDiagram
 - [RSI Survey：从有界自改写到自主研究闭环](./paper-rsi-survey-2607-07663.md)
 - [AI Auto-Research](../concepts/ai-auto-research.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 自反馈改写只是推理期自评；外部基准与 evaluator 选型见此
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：Self-Refine 在推理阶段构建生成、可执行自反馈与迭代修订的执行闭环，展示了无参数更新的测试时策略改进模式。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文在 7 类文本与代码任务及 GSM8K、PIE 等基准上系统对比了多轮自反馈对不同任务类型的有效边界。
 
 ## 参考来源
 

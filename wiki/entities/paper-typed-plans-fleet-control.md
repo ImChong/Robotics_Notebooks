@@ -148,6 +148,8 @@ flowchart TD
 - [机器人安全状态机](../concepts/robot-safety-state-machine.md)
 - [移动机器人导航规划方法对比](../comparisons/mobile-robot-navigation-planning-methods.md)
 - [自然语言到 Nav2](./paper-natural-language-to-nav2.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：底层由二十套 Nav2 导航栈在仿真中执行经车队协调后的各机器人路径目标。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：追踪自然语言指令经类型化计划生成、确定性校验与车队执行的分层智能体闭环边界。
 
 ## 参考来源
 

@@ -66,6 +66,8 @@ flowchart LR
 - [ResNet](./paper-resnet-deep-residual-learning.md)
 - [Vision Backbones](../concepts/vision-backbones.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：通过规整的 3×3 卷积堆叠学习可迁移的层次化视觉特征，奠定了经典图像分类与迁移学习表征基线。
+- [R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）](../methods/rcnn-family.md)：作为 Faster R-CNN 等早期两阶段目标检测框架的经典共享卷积骨干网络，支撑区域特征提取。
 
 ## 参考来源
 

@@ -99,6 +99,8 @@ GST 给出了从作品集合学习艺术家级风格的路径，但不同指标�
 
 - [扩散模型](../concepts/diffusion-model.md)
 - [自编码器](../concepts/autoencoder.md)
+- [U-Net](../methods/unet.md)：GST 在扩散模型的 U-Net 瓶颈特征空间（h-space）注入轻量风格提取网络输出的残差，从而迁移目标艺术家的总体视觉风格。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：GST 在内容对齐引导阶段利用 CLIP 深层视觉表征构造感知结构损失，以在风格形变的同时保留内容图像语义结构。
 
 ## 参考来源
 

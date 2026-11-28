@@ -57,6 +57,8 @@ flowchart TD
 
 - [JEPA-Anything](./paper-jepa-anything.md)
 - [RSI-Anything](./paper-rsi-anything.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：机构项目 RSI-Anything 围绕预测模型与候选筛选研究受控的迭代自改进规划反馈循环。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：机构提出 DFM 范式与多项独立研究项目，实际系统能力仍需通过明确任务协议和基准评测加以检验。
 
 ## 参考来源
 

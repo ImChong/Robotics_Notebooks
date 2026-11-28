@@ -98,6 +98,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：RoboPrime 是一款低成本 21 自由度 3D 打印双足人形硬件平台，适合入门级人形姿态编排与基础步态动作实验。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：其板载固件按串口指令解析、动作队列规划（BodyMovement）与定时器舵机脉冲驱动分层组织，体现了微控制器级机器人控制架构。
 
 ## 参考来源
 

@@ -96,6 +96,8 @@ sequenceDiagram
 
 - [deep-rl-game-milestones](../concepts/deep-rl-game-milestones.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：QUEEN 在国际象棋任务中联合使用 Elo 棋力评分与落子解释蒸馏评估模型决策及可解释性表现。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：将棋类专家编码器接入语言模型并迭代蒸馏落子解释，为决策与自然语言反馈结合提供了跨领域参考。
 
 ## 参考来源
 

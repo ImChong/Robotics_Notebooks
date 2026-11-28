@@ -185,6 +185,8 @@ SWE-bench Verified 原始 Agent 为 **20.0%**，进化后最好为 **50.0%**。�
 - [Darwin Skill](./darwin-skill.md) — 代码自改的更窄技能层变体
 - [Hyperagents（DGM-H）](./paper-hyperagents.md) — 自修改元层改进者的后续研究与 Genesis Go2 仿真边界
 - [自我改进智能体与具身终身学习](../comparisons/self-improving-agents-embodied-lifelong-learning.md) — 机器人研究迁移边界
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：DGM 让编码智能体依据编程基准测试反馈修改自身工作流与工具代码并保留多分支档案，实现持续自我改进的闭环迭代。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文以 SWE-bench Verified 与 Polyglot 真实编程修复基准作为子代筛选和进化归档的客观度量标准。
 
 ## 参考来源
 

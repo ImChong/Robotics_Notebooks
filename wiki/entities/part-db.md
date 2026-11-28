@@ -110,6 +110,8 @@ sequenceDiagram
 - [KiCad](./kicad.md) — PCB 设计及 BOM 的关联工具。
 - [atopile](./atopile.md) — 电子设计语言与工具链。
 - [Humanoid Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) — 机器人板级硬件背景。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：机器人板卡完成结构与 EDA 设计并导出 BOM 后，可通过 Part-DB 对照元件封装、参数和库存准备装配。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：Part-DB 以自托管服务端和 KiCad HTTP API 将物料数据接入工程工具链与硬件开发流程。
 
 ## 参考来源
 

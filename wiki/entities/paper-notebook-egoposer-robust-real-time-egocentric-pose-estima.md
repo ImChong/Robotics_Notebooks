@@ -185,6 +185,8 @@ sequenceDiagram
 - 前作对照：[AvatarPoser 笔记实体](paper-notebook-avatarposer-articulated-full-body-pose-tracking.md)
 - 同类方法：[MANIKIN 笔记实体](paper-notebook-manikin-biomechanically-accurate-neural-inverse.md) · [FRAME 笔记实体](paper-notebook-frame-floor-aligned-representation-for-avatar-mo.md)
 - 人体模型与状态估计：[SMPL-X 概念页](../concepts/smpl-x.md) · [State Estimation 概念页](../concepts/state-estimation.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：EgoPoser 在真实头显视野手部遮挡与大范围位移下实时输出 SMPL-H 全身姿态，为人形动作重定向提供鲁棒人体运动估计。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：EgoPoser 摆脱对固定室内动捕空间的依赖，以 600+ FPS 实时追踪头手稀疏输入，支撑大空间 VR 第一视角遥操作。
 
 ## 参考来源
 

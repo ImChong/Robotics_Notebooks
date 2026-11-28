@@ -124,6 +124,8 @@ flowchart TB
 - 理论源头：[paper-operational-space-formulation.md](./paper-operational-space-formulation.md)
 - 软件：[controlit.md](./controlit.md)
 - 概念：[whole-body-control.md](../concepts/whole-body-control.md)、[hub-wbc.md](../overview/hub-wbc.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：该框架通过浮基动力学与支撑接触建模将操作空间全身控制扩展至人形机器人移动与平衡场景。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：论文确立了约束、操作任务与姿态三层优先级及运行时可行性监测机制，是分层机器人控制系统架构的经典范式。
 
 ## 参考来源
 

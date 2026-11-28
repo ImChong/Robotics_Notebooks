@@ -92,6 +92,8 @@ README 标注 CUDA/PyTorch/发行版本会变化；部分模型与高性能路�
 - [vLLM｜生产级大模型推理与持续批处理](./painode-103-vllm.md)
 - [SGLang｜大规模语言与多模态模型推理服务框架](./sglang.md)
 - [FlashInfer｜跨框架 GPU 推理 Kernel 库](./flashinfer.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：TensorRT-LLM 提供面向 NVIDIA GPU 的专用 kernel、`GenerationExecutor` 运行时与 KV 缓存管理，服务于大模型高性能推理部署。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：其结合专用 GPU 运行时优化与量化等推理加速技术，在保持生成能力的同时降低显存占用与推理延迟。
 
 ## 参考来源
 

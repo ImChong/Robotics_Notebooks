@@ -133,6 +133,8 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 视觉域随机化与迁移
 - [程序化地形生成](../concepts/procedural-terrain-generation.md) — 与 Mesh Terrain / PCG 邻接
 - [PanoLOG / G²PS](./paper-panolog-ggps.md) — 官方预告 UE 5.8 3DGS 渲染插件的重建侧资产来源
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：依托 Nanite、Lumen 与 PCG 程序化内容生成能力，构建大规模高保真机器人仿真场景与合成数据集。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：作为 AirSim、CARLA、SPEAR 与 MATRiX 等仿真器的视觉与场景宿主，接入机器人控制与物理引擎闭环。
 
 ## 参考来源
 

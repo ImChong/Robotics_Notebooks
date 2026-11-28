@@ -109,6 +109,8 @@ flowchart TB
 - [接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [RL 中的触觉反馈](../queries/tactile-feedback-in-rl.md)
 - [触觉机器人操作综述（力学驱动 + 数据驱动）](./paper-tactile-based-robotic-manipulation-survey.md) — 互补综述：按力学驱动与数据驱动两条路线组织触觉操作
+- [Manipulation](../tasks/manipulation.md)：综述系统梳理触觉与力觉感知在机器人操作与接触控制管线各阶段的作用。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md)：综述将基于触觉反馈的阻抗与柔顺控制纳入底层接触细化与力控阶段。
 
 ## 参考来源
 

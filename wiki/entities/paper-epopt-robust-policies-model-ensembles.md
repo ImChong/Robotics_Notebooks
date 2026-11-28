@@ -99,6 +99,8 @@ flowchart TD
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：EPOpt 在物理参数分布构成的仿真模型集成上以 CVaR 尾部风险更新策略，旨在提升控制策略在模型失配下的 Sim2Real 迁移鲁棒性。
+- [Policy Optimization](../methods/policy-optimization.md)：EPOpt 将策略更新重心从平均回报转向最差表现轨迹子集，属于面向鲁棒控制的概率分布优化方法。
 
 ## 参考来源
 

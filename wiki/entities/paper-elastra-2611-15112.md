@@ -114,6 +114,8 @@ sequenceDiagram
 
 - [本期 29 篇具身论文选型地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder：任务难度分层评测](./paper-maniladder-manipulation-benchmark.md)
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md)：Elastra 在预训练刚体人形起身控制器之上用 PPO 训练残差策略，使既有起身策略能够适应床垫与蹦床等弹性支撑面的形变响应。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Elastra 将竖向弹性单元模型集成进 MuJoCo 仿真并与 HoST 及 ProtoMotions 控制接口对接，形成可运行与评测的软地面起身验证环境。
 
 ## 参考来源
 

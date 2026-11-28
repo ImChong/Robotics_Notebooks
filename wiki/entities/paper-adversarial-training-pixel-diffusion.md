@@ -124,6 +124,8 @@ flowchart TB
 - [Generative Adversarial Network（GAN）](../concepts/generative-adversarial-network.md) — 判别器与 hinge 对抗目标
 - [Autoencoder / VAE](../concepts/autoencoder.md) — latent 路线的冻结解码器边界
 - [PixelUmm](./paper-pixelumm.md) — 另一项直接在图像像素空间建模的工作
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文采用 FID、CMMD、Recall、TOPIQ 与 DPG-Bench 组成多指标评测体系，并设置同起点无 GAN SFT 对照组验证像素扩散对抗后训练收益。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：论文的 DeCo 对抗后训练主配置以带文本条件的 DINOv2 视觉表征作为判别器特征底座，并用 DINOv2 最近邻相似度检验模式覆盖度。
 
 ## 参考来源
 

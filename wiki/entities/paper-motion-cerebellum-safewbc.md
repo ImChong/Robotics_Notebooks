@@ -104,6 +104,8 @@ flowchart LR
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-04-wbt-base.md](../overview/motion-cerebellum-category-04-wbt-base.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：SafeWBC 归属人形全身跟踪基座路线，用于在全身控制命令执行阶段守住关节限位、自碰撞与工作空间安全边界。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：SafeWBC 在 KinWBC 运动学参考与 DynWBC 动力学追踪之间接入 ISSf-CBF 速度安全过滤器，形成解耦的分层控制架构。
 
 ## 参考来源
 

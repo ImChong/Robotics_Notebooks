@@ -167,6 +167,8 @@ flowchart TB
 - [Humanoid Occupancy](./paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md) — 人形占据系统对照
 - [Isaac ROS Nvblox](./isaac-ros-nvblox.md) — 可部署 TSDF/ESDF 对照
 - [GaussianWorld](./paper-sa-2412-04380-gaussianworld-gaussian-world-model-for-streaming.md) — 驾驶侧高斯占据世界模型索引
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：OccAnyScene 从单目或多视角图像恢复室内外统一的三维语义占据表示，属于视觉三维场景重建路线。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：OccAnyScene 将深度基础模型特征聚合为可用于下游导航与规划的 3D 空间占据感知输出。
 
 ## 参考来源
 

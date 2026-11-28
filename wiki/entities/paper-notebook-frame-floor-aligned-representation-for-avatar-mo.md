@@ -192,6 +192,8 @@ FRAME 的回答是：用地面对齐坐标系把单视角预测统一起来，�
 - 同类第一视角人体姿态估计：[EgoPoser](./paper-notebook-egoposer-robust-real-time-egocentric-pose-estima.md)、[AvatarPoser](./paper-notebook-avatarposer-articulated-full-body-pose-tracking.md)、[EventEgo3D（头戴相机 3D 动捕）](./paper-sa-2502-07869-eventego3d-3d-human-motion-capture-from-a-head-m.md)
 - 状态估计背景：[State Estimation](../concepts/state-estimation.md)
 - 机器人侧 egocentric 全身控制（本页推断的关联）：[ZeroWBC](./paper-notebook-zerowbc.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：FRAME 将头显朝下双目鱼眼视觉特征对齐至地面坐标系并做立体时序融合，实现 300 FPS 的第一视角三维全身姿态重建。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：FRAME 显式耦合头显内置 SLAM 输出的 6D 设备位姿状态作为几何参考，显著抑制了第一视角下肢重建的穿地与漂移误差。
 
 ## 参考来源
 

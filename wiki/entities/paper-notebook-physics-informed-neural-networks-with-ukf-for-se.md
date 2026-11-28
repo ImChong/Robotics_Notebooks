@@ -79,6 +79,8 @@ flowchart TD
 
 - 分类父节点：[paper-notebook-category-09-state-estimation](../overview/paper-notebook-category-09-state-estimation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：该工作将 PINN 输出的谐波减速器非线性摩擦估计作为观测量接入 UKF，实现了无关节力矩传感器人形机器人的关节力矩状态估计。
+- [Neural Network Compensation Control（神经网络补偿控制）](../methods/neural-network-compensation-control.md)：论文仅用神经网络学习解析模型最难刻画的传动摩擦残差并与物理动力学模型并联，为模型补偿控制提供了典型范例。
 
 ## 参考来源
 

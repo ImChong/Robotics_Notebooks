@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：其《Robots That See》系列专栏深入探讨了机器人计算机视觉感知链路、传感器算力与产业落地趋势。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：专栏中针对机器人三维视觉、深度感知与空间重建硬件选型的战略分析与该流程直接相关。
 
 ## 参考来源
 

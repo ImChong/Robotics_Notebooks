@@ -113,6 +113,8 @@ flowchart LR
 - [网络协议栈](../concepts/network-protocol-stack.md)
 - [ONNX Runtime](./onnxruntime.md)
 - [通信协议知识链](../overview/hub-communication.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：Protobuf 为机器人系统的边云服务接口、配置持久化与跨语言数据采集桥提供强类型 IDL 与紧凑二进制序列化支持。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：Protobuf 作为 gRPC 默认消息载体以及 ONNX 模型格式的描述基础，广泛应用于具身模型推理服务的接口定义与权重序列化。
 
 ## 参考来源
 

@@ -122,6 +122,8 @@ MiTA 展示了结合全局压缩与局部稀疏读取的可行性，精度和速
 
 - [多头注意力](../concepts/multi-head-attention.md)
 - [Transformer](../concepts/transformer.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：MiTA 作为高效注意力模块在 ImageNet-1K 分类与 ADE20K 语义分割等视觉表征基准上进行了评估。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：MiTA 通过共享压缩专家与稀疏 top-k 路由替代全量注意力查找，以降低模型计算量与训练时间成本。
 
 ## 参考来源
 
