@@ -2,7 +2,7 @@
 type: entity
 tags: [software, omniverse, isaac-sim, visual-scripting, nvidia, ros2, simulation]
 status: complete
-updated: 2026-09-05
+updated: 2026-11-28
 related:
   - ./isaac-sim.md
   - ./nvidia-omniverse.md
@@ -11,8 +11,12 @@ related:
   - ../concepts/ros2-basics.md
   - ../methods/reinforcement-learning.md
 sources:
+  - ../../sources/sites/nvidia_omnigraph_docs_reading.md
   - ../../sources/sites/nvidia-omniverse-omnigraph.md
   - ../../sources/sites/nvidia-isaac-sim-omnigraph.md
+  - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
+original:
+  - ../../sources/sites/nvidia_omnigraph_docs_reading.md
   - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
 summary: "OmniGraph 是 Omniverse 的可视化脚本框架：Action Graph 做事件驱动控制，Push Graph 做连续求值；在 Isaac Sim 中编排 Replicator、ROS 2 bridge、传感器、控制器与外设，并可用 omni.graph.core 纯 Python 建图。"
 ---
@@ -71,7 +75,7 @@ flowchart LR
 
 - **Node**：由 node type 定义；带 input / output / state **Attribute**。
 - **Connection**：有向边，表示 Attribute 间依赖。
-- **Authoring vs Execution**：用户编辑的是 Authoring Graph；运行时映射为 Execution Graph（同一表示可扩展单机到多节点数据中心，见 Omniverse 文档）。
+- **Authoring vs Execution**：用户编辑的是 Authoring Graph；运行时映射为 Execution Graph（同一表示可扩展单机到多节点数据中心，见 Omniverse 文档）。注意图运行期读写的是 **Runtime Data（运行时值）** 而非直接写回磁盘 USD（USD authored 值仅在图初始化时读取）。
 
 ### Isaac Sim 机器人控制主干（Jetbot 教程）
 
@@ -87,6 +91,24 @@ flowchart LR
 - **Articulation Controller**：对带 articulation root 的 prim 施加力/位姿/速度。
 - **Differential Controller**：线速度 + 角速度 → 双轮差速命令。
 - **On Playback Tick**：仅在 timeline **Play** 时每帧触发（与 `OnTick` 脚本节点同类思路）。
+
+## 源码运行时序图
+
+**说明（核心闭源二进制边界）：** `omni.graph.core` 底层 C++ Execution Graph 求值调度引擎随 Omniverse Kit 二进制闭源分发（不在公开 GitHub 仓内），仅 Python 编排 API（`omni.graph.core.Controller`）与节点教程文档公开。以下依据官方 `ext_omnigraph/tutorials/gentle_intro.html`（OmniGraph 108.1）及 Isaac Sim Scripting 文档核对逻辑调用边界：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Script as 作者侧 (Action Graph Editor / og.Controller.edit)
+  participant Auth as Authoring Graph (USD / omni.graph.bundle.action)
+  participant Eval as Execution Evaluator (Kit 闭源 C++ 后端)
+  participant Runtime as Stage Runtime Data (PhysX / RTX / ROS 2)
+
+  Script->>Auth: 创建节点与连接 (如 On Playback Tick → Write Prim Transform)
+  Auth-->>Eval: Timeline Play / evaluate() 时编译为 Execution Graph 并加载初始 USD 值
+  Eval->>Eval: 沿 execution 边向下游遍历并回溯求解上游数据依赖节点
+  Eval->>Runtime: 将计算结果写入运行时 Transform / Articulation / ROS 2 Topic
+```
 
 ## 工程实践
 
@@ -114,9 +136,10 @@ flowchart LR
 ## 局限与风险
 
 - **图冲突无自动检测**：同场景多个图控制同一机器人时，官方 shortcuts **不校验** 重复；需自行禁用/删除旧图。
+- **扩展类型端口重置要求**：修改兼容多种类型的扩展端口时，官方文档指出必须先断开节点全部连线重置类型推导，再重新连线。
 - **不是 RL 环境 API**：OmniGraph 解决 **单场景控制与 IO 编排**；大规模 PPO / IL 仍看 [Isaac Lab](./isaac-lab.md)。
 - **调试可见性**：Print 节点默认 log level 影响终端/控制台是否可见；脚本改 attribute 后可能要等到下一 tick 才生效。
-- **版本绑定 Kit**：文档快照 **Isaac Sim 6.0.1**；节点库与类型名随版本变，迁移时对照 Node Library。
+- **版本绑定 Kit**：文档快照 **OmniGraph 108.1 / Isaac Sim 6.0.1**；节点库与类型名随版本变，迁移时对照 Node Library。
 
 ## 关联页面
 
@@ -130,6 +153,7 @@ flowchart LR
 
 ## 参考来源
 
+- [NVIDIA Omniverse / Isaac Sim OmniGraph 官方文档通读](../../sources/sites/nvidia_omnigraph_docs_reading.md)
 - [Omniverse Extensions — OmniGraph 归档](../../sources/sites/nvidia-omniverse-omnigraph.md)
 - [Isaac Sim 6.0.1 OmniGraph 教程归档](../../sources/sites/nvidia-isaac-sim-omnigraph.md)
 - [Isaac Sim SIL 教程模块](../../sources/sites/nvidia-isaac-sim-sil-tutorial.md)

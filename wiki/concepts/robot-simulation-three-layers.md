@@ -3,6 +3,11 @@ type: concept
 tags: [simulation, mujoco, isaac-lab, genesis, mjlab, soft-body, sim2real, physics-engine, reinforcement-learning]
 status: complete
 updated: 2026-11-28
+original:
+  - ../../sources/blogs/mandarobotics_comparing_physics_engines_reading.md
+  - ../../sources/papers/mujoco_reading_official_docs_computation_overview.md
+  - ../../sources/repos/isaac_sim_reading_docs_readme_is01.md
+  - ../../sources/sites/openusd_usdphysics_spec.md
 related:
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
@@ -21,6 +26,10 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../formalizations/ode-solving-methods.md
 sources:
+  - ../../sources/blogs/mandarobotics_comparing_physics_engines_reading.md
+  - ../../sources/papers/mujoco_reading_official_docs_computation_overview.md
+  - ../../sources/repos/isaac_sim_reading_docs_readme_is01.md
+  - ../../sources/sites/openusd_usdphysics_spec.md
   - ../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md
   - ../../sources/blogs/mandarobotics_comparing_physics_engines_2026-10-05.md
 summary: "机器人仿真按物理计算、场景平台、学习框架三层分工；选型须区分吞吐量与单步延迟、软接触与软体建模，并用 Sim2Real 三问与四问清单衡量真机价值而非峰值 FPS。"
@@ -28,7 +37,9 @@ summary: "机器人仿真按物理计算、场景平台、学习框架三层分�
 
 # 机器人仿真三层分工（Physics / Platform / Learning）
 
-**机器人仿真三层分工**把 Isaac、MuJoCo、Genesis 等工具按职责拆成：**物理引擎**算运动与接触，**仿真平台**组织场景与传感器，**学习框架**连接观测、奖励与训练评测。同一产品可跨层；换物理后端或学习框架时，接口可复用但 **实验结果须重验**。
+## 一句话定义
+
+**机器人仿真三层分工**按职责将仿真栈解耦为 **物理引擎**（动力学/碰撞/接触）、**仿真平台**（资产/传感器/渲染/中间件接口）与 **学习框架**（观测/奖励/课程/策略训练）；渲染逼真不等于物理准确，切换任一层后端都必须重验导出参数与接触特性。
 
 ## 英文缩写速查
 
@@ -178,7 +189,12 @@ flowchart TB
 
 ## 参考来源
 
+- [Manda Robotics 四引擎基准与伴随原理通读](../../sources/blogs/mandarobotics_comparing_physics_engines_reading.md) — 核实三层解耦、软/硬接触源码差异、刚柔耦合参数与单机/GPU 并行性能反转
+- [MuJoCo 官方计算概览文档通读](../../sources/papers/mujoco_reading_official_docs_computation_overview.md)
+- [Isaac Sim 官方 README 与文档首页通读](../../sources/repos/isaac_sim_reading_docs_readme_is01.md)
+- [OpenUSD UsdPhysics 官方规范通读](../../sources/sites/openusd_usdphysics_spec.md)
 - [RealXiaoze：机器人仿真三层分工（微信公众号）](../../sources/blogs/wechat_realxiaoze_robot_simulation_stack_2026-09-20.md)
+- [Manda Robotics 原始条目索引](../../sources/blogs/mandarobotics_comparing_physics_engines_2026-10-05.md)
 
 ## 推荐继续阅读
 

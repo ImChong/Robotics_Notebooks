@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, parametric-modeling, open-source, hardware, urdf, opencascade, manufacturing, freecad]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-28
 related:
   - ./blender.md
   - ./tinkercad.md
@@ -20,12 +20,17 @@ related:
 sources:
   - ../../sources/repos/freecad.md
   - ../../sources/repos/freecad-mcp.md
-summary: "FreeCAD 是 LGPL 开源的参数化机械 CAD：以 OpenCASCADE 为 B-rep 内核，在机器人栈中常作硬件设计上游——导出 STEP/STL 供 URDF 转换，或通过 Robot/CROSS/RobotCAD 等插件直达 ROS 描述包。"
+original:
+  - ../../sources/repos/freecad.md
+  - ../../sources/repos/freecad-mcp.md
+summary: "FreeCAD 是 LGPL-2.1 开源的参数化机械 CAD：以 OpenCASCADE 为 B-rep 内核，支持 GUI 与 freecadcmd 无头 Python 脚本（MainCmd.cpp / App::Document），在机器人栈中常作硬件上游——导出 STEP/STL 或通过 CROSS/RobotCAD 生成 ROS 描述包。"
 ---
 
 # FreeCAD（开源参数化机械 CAD）
 
-**FreeCAD** 是由社区与 [FreeCAD 组织](https://github.com/FreeCAD) 维护的 **免费开源、跨平台参数化 3D CAD**，以 **OpenCASCADE** 为几何内核，覆盖 **约束草图、零件建模、装配、工程图、FEM、CAM** 与内置 **Robot 工作台**。在机器人研究与工程中，它 rarely 充当 RL 训练环境，却频繁出现在 **机械设计 → STEP/网格 → URDF/MJCF → 仿真/控制** 链路的 **CAD 上游**——与 [Blender](./blender.md) 的 DCC/动画层、[step2urdf](./step2urdf.md) 的浏览器端 STEP 转换形成互补。
+## 一句话定义
+
+**FreeCAD** 是基于 **OpenCASCADE** B-rep 内核、Coin3D 场景与 Qt/Python 脚本层的 **LGPL-2.1 开源参数化三维 CAD 软件**，在机器人建模链路中承担零许可成本的机械结构设计、装配与 STEP/网格及 URDF 上游生成。
 
 ## 英文缩写速查
 
@@ -40,15 +45,15 @@ summary: "FreeCAD 是 LGPL 开源的参数化机械 CAD：以 OpenCASCADE 为 B-
 | LGPL | GNU Lesser General Public License | FreeCAD 采用的弱 copyleft 开源许可 |
 | ROS | Robot Operating System | 机器人中间件；社区插件可导出 URDF/xacro 包 |
 
-## 为什么对机器人栈重要
+## 为什么重要
 
 1. **硬件与夹具 authoring**：开源整机、实验室夹具、传感器支架往往从 **参数化 CAD** 起步；FreeCAD 提供 **零许可成本** 的 B-rep 编辑，可导出 **STEP/STL/OBJ** 进入 [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md) 与 [仿真物理保真度](../queries/simulation-physics-fidelity.md) 所强调的 **几何/惯量第 ① 层**。
 2. **CAD→仿真桥接**：官方 **Robot 工作台** 支持连杆-关节建模与运动学预览；社区 **CROSS**、**RobotCAD**、**RobotCreator** 等插件可从装配体生成 **URDF/xacro**、碰撞网格与 ROS2 启动文件——[ROS 2 文档](https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/Exporting-an-URDF-File.html) 将 FreeCAD 生态列为常见 URDF 导出来源之一。
 3. **与 STEP 工具链同族**：FreeCAD 与 [step2urdf](./step2urdf.md) 均基于 **OpenCASCADE** 语义处理 STEP；典型流程为 **FreeCAD 精修装配 → 导出 STEP → step2urdf / URDF-Studio 微调关节与惯量**。
-4. **Python 脚本层**：宏与 **FreeCAD Python API** 可批量改尺寸、导出网格、驱动装配约束——适合 **夹具族系、参数化支架、数据集硬件变体** 的科研复现（与 [Text-to-CAD](../concepts/text-to-cad.md) 中的 **CadQuery/OpenSCAD 脚本 CAD** 路线可串联：LLM 生成脚本 → FreeCAD 审图 → STEP 下游）。
-5. **MCP 代理桥接**：[FreeCAD MCP](./freecad-mcp.md) 通过 Addon RPC + PyPI MCP server 把上述 API 暴露给 Claude 等宿主，支持自然语言建模、`get_view` 审图与 CalculiX FEM——适合本机已装 FreeCAD、希望对话式改模型的硬件迭代。
+4. **Python 脚本与无头自动化层**：宏与 **FreeCAD Python API** 可批量改尺寸、计算实体质量属性并导出网格；配合 `freecadcmd`（`MainCmd.cpp`）可无头运行参数化复现脚本，并与 [Text-to-CAD](../concepts/text-to-cad.md) 中的 **CadQuery/OpenSCAD 脚本 CAD** 串联审图。
+5. **MCP 代理桥接**：[FreeCAD MCP](./freecad-mcp.md) 通过 Addon RPC + PyPI MCP server 把上述 API 暴露给宿主 Agent，支持对话式建模、`get_view` 审图与 CalculiX FEM 迭代。
 
-## 核心工作台（与机器人管线的映射）
+## 核心原理：工作台与机器人管线映射
 
 | 工作台 / 模块 | 机器人相关用法 |
 |---------------|----------------|
@@ -57,43 +62,42 @@ summary: "FreeCAD 是 LGPL 开源的参数化机械 CAD：以 OpenCASCADE 为 B-
 | **Robot** | 内置连杆-关节树、运动学预览；ROS 插件的上游几何 |
 | **FEM** | 结构刚度/应力初评（不替代 SysID 或接触动力学） |
 | **TechDraw** | 2D 工程图，加工与装配沟通 |
-| **Python / Macro** | 批处理导出、尺寸驱动、与外部工具链 glue code |
+| **Python / Macro** | 批处理导出、尺寸驱动、质量/体积查询与 CI 检验 |
 
-## 在知识库生态中的位置
+## 源码运行时序图
+
+以 `FreeCAD/FreeCAD` 仓库无头 CLI 主入口 `src/Main/MainCmd.cpp` 与 Python/OpenCASCADE 文档处理周期为核对入口：
 
 ```mermaid
-flowchart LR
-  subgraph cad["CAD 上游"]
-    FC[FreeCAD]
-    TC[Text-to-CAD / CadQuery 脚本]
-  end
-  subgraph exchange["交换格式"]
-    STEP[STEP / STL]
-  end
-  subgraph sim["仿真与控制"]
-    S2U[step2urdf / URDF-Studio]
-    URDF[URDF / MJCF]
-    PIN[Pinocchio / MuJoCo / MoveIt]
-  end
-  TC -->|STEP| FC
-  FC -->|导出| STEP
-  FC -->|RobotCAD / CROSS 插件| URDF
-  STEP --> S2U
-  S2U --> URDF
-  URDF --> PIN
+sequenceDiagram
+  autonumber
+  participant CLI as freecadcmd (src/Main/MainCmd.cpp)
+  participant App as App::Application + Base::Interpreter
+  participant Doc as App::Document (文档树与特征图)
+  participant OCCT as OpenCASCADE (Part / Mesh 内核)
+
+  CLI->>App: setlocale("C") + 设置 RunMode="Exit" 后调用 Application::init(argc, argv)
+  App-->>CLI: 初始化模块注册、Python 解释器与异常钩子
+  CLI->>App: Application::runApplication() 执行 Python 宏或命令
+  App->>Doc: 读取 .FCStd 装配体 / STEP 导入与参数重算
+  Doc->>OCCT: 求解特征拓扑、质量属性与三角化网格
+  OCCT-->>Doc: 输出校验后 B-rep / STL / STEP 文件
+  CLI->>App: closeAllDocuments() 与 Application::destruct() 安全释放
 ```
 
-- **与 Blender 对照**：[Blender](./blender.md) 擅长 **网格、绑定、动画、渲染**；FreeCAD 擅长 **制造级 B-rep、约束参数与工程图**——动捕与场景可视化偏前者，机械零件与公差沟通偏后者。
-- **与 Tinkercad 对照**：[Tinkercad](./tinkercad.md) 是浏览器端 **积木式草模 + 课堂电路**；适合零门槛定外形，再导出 STL 进入 FreeCAD/Fusion 做参数化与 STEP——二者串联，不互替。
-- **与 [SolidCraft](./solidcraft.md) 对照**：两者都支持草图约束与参数化特征编辑；FreeCAD 的重点是成熟的 B-rep、STEP、装配与工程工作台，SolidCraft 则强调 Rust 实现、即开即用的浏览器版，以及统一命令系统对 GUI、CLI 和 MCP 的支持。SolidCraft 仍属早期项目，使用前应核对所需功能是否已实现。
-- **与 Web URDF 工具对照**：[step2urdf](./step2urdf.md) 适合 **已有 STEP 快速转 URDF**；[URDF-Studio](./urdf-studio.md) 适合 **描述文件深度编辑**；FreeCAD 适合 **从零设计或修改装配体真值**——三者常 **串联** 而非互斥。
-- **与控制实现对照**：[WBC 实现指南](../queries/wbc-implementation-guide.md) 第一步要求 **URDF/MJCF 与 CAD/实机一致**；FreeCAD 是开源团队完成该步的常见桌面工具。
+图依据：`FreeCAD/FreeCAD` `main` 分支 `README.md` 与 `src/Main/MainCmd.cpp`（172 行，2026-11-28 通读）。
 
-## 常见误区或局限
+## 工程实践
+
+- **冻结零位与单位约定：** 导出 STEP 前在装配工作台显式设定机械零位坐标系并保持 SI 米制或统一毫米标注，避免转换 URDF 时出现 $\times 1000$ 尺度错位与 rpy 旋转漂移。
+- **区分显示网格与碰撞体：** 用 Mesh 工作台对外部螺栓孔、Logo 倒角做简化或包络凸包，避免把高面数视觉 STL 直接当作 MuJoCo / PhysX 碰撞网格。
+- **宏脚本可复现化：** 把批量尺寸变更与质心/惯量核对写进 Python 宏并用 `freecadcmd my_export.py` 自动化运行，便于与 [参数化 CAD 建模流程](../methods/parametric-cad-workflow.md) 和版本库对齐。
+
+## 局限与常见误区
 
 - **不是高保真物理仿真器**：FreeCAD 内置 Robot 工作台与插件侧重 **运动学/描述包生成**，不能替代 [MuJoCo](./mujoco.md) / Isaac 的 **接触丰富、千赫兹级动力学**。
 - **URDF 插件成熟度参差**：CROSS/RobotCAD 等由社区维护，版本与 ROS 发行版绑定需自行验证；复杂闭链、柔性体与执行器动力学仍需 **人工核对** 或转 [MoveIt 2](./moveit2.md) / 专用编辑器。
-- **碰撞体与视觉网格**：默认导出网格未必适合仿真碰撞（过细或过简）；进入 RL 栈前应按 [仿真物理保真度](../queries/simulation-physics-fidelity.md) 做 **凸包/简化与惯量复核**。
+- **拓扑命名敏感度**：复杂布尔与长特征历史改参时仍可能触发面/边编号跳变，关键配合基准建议优先挂在草图平面或装配基准轴上。
 - **许可边界**：FreeCAD 本体 LGPL；**第三方工作台** 与 **导出资产** 许可各自独立——集成进商业硬件或数据集时需逐件核对。
 
 ## 关联页面

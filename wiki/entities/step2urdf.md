@@ -3,7 +3,7 @@ type: entity
 title: step2urdf
 tags: [utility, cad, urdf, step, web, opencascade, ros]
 status: complete
-updated: 2026-07-08
+updated: 2026-11-28
 related:
   - ./freecad.md
   - ./urdf-studio.md
@@ -16,12 +16,16 @@ related:
 sources:
   - ../../sources/repos/step2urdf.md
   - ../../sources/sites/step2urdf-top.md
-summary: "step2urdf 是浏览器端 STEP→URDF 转换工具：OpenCascade.js 本地解析 CAD、几何驱动关节识别、惯量/COM 估算与交互式关节调试，面向 ROS/ROS2 仿真模型快速落地。"
+original:
+  - ../../sources/repos/step2urdf.md
+summary: "step2urdf 是 MIT 开源的浏览器端 STEP→URDF 转换工具：用 Comlink Web Worker 运行 OpenCascade.js 解析最高 500MB STEP，推断关节并计算/旋转 link 局部惯量张量（I_local = R·I·Rᵀ），打包二进制 STL 与 URDF ZIP 导出。"
 ---
 
 # step2urdf
 
-**step2urdf**（原 URDFlyS2U）是 [Democratizing-Dexterous/step2urdf](https://github.com/Democratizing-Dexterous/step2urdf) 开源的 **Web STEP→URDF** 工具；官方在线版为 [step2urdf.top](https://step2urdf.top/)。它在浏览器内用 **OpenCascade.js** 解析机械 CAD，自动从几何特征推断关节，并支持导出前交互验证——适合「已有 STEP 装配体、需要尽快得到可仿真 URDF」的硬件链路。
+## 一句话定义
+
+**step2urdf**（原 URDFlyS2U）是 [Democratizing-Dexterous/step2urdf](https://github.com/Democratizing-Dexterous/step2urdf) 以 MIT 许可开源的浏览器端 **STEP → URDF** 工具（在线版 [step2urdf.top](https://step2urdf.top/)），完全在本机 Web Worker 内通过 **OpenCascade.js (WASM)** 解析 CAD 实体、交互配置旋转/移动关节并输出单位校准的 URDF + 二进制 STL 包。
 
 ## 英文缩写速查
 
@@ -58,32 +62,64 @@ summary: "step2urdf 是浏览器端 STEP→URDF 转换工具：OpenCascade.js �
 
 ```mermaid
 flowchart LR
-  STEP["本地 STEP 文件"] --> OCC["OpenCascade.js\n(WASM 解析)"]
-  OCC --> TREE["Solid 层级树\n(link 划分)"]
+  STEP["本地 STEP 文件 (≤500MB)"] --> OCC["StepParseWorker\n(OpenCascade.js WASM)"]
+  OCC --> TREE["Solid 层级树与 BVH\n(link 划分)"]
   TREE --> JOINT["几何关节识别\n(revolute / prismatic)"]
-  JOINT --> MASS["总质量 → 惯量/COM\n(可逐 link 微调)"]
-  MASS --> VIS["Three.js 交互\n关节滑动验证"]
-  VIS --> URDF["导出 URDF"]
+  JOINT --> MASS["InertiaWorker + 总质量分配\n(I_local = R·I·Rᵀ 坐标变换)"]
+  MASS --> VIS["Three.js 交互调试\n关节滑动与轴偏移验证"]
+  VIS --> URDF["ExportWorker\n(robot.urdf + binary STL ZIP)"]
   URDF --> DOWN["下游：robot-viewer / MoveIt / Isaac / MuJoCo 转换"]
 ```
+
+## 源码运行时序图
+
+以 `Democratizing-Dexterous/step2urdf` `main` 分支前端加载、序列化与 Worker 导出管线（`StepLoader.ts`、`URDFSerializer.ts`、`ExportWorker.ts`）为核对入口：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant UI as StepViewer.vue / URDFEditor.vue
+  participant Loader as StepLoader.ts (BVH 加速)
+  participant ParseW as StepParseWorker (opencascade.js)
+  participant InertiaW as InertiaWorker + URDFSerializer.ts
+  participant ExpW as ExportWorker.ts (Comlink + JSZip)
+
+  UI->>Loader: loadFile(file) 调用 validateFile() 校验 .step/.stp 与 500MB 上限
+  Loader->>ParseW: preloadOcct() + parseInWorker(ArrayBuffer) 后台解析 B-rep 几何
+  ParseW-->>Loader: 返回 SerializedSolidData[] 与 Solid 层级树，主线程建 Three.js 与 BVH
+  UI->>InertiaW: 选定关节轴/连杆并输入总质量，计算世界系 COM 与惯量张量
+  UI->>InertiaW: serializeURDF(robot, {linkRestInverses, unitScale}) 变换 COM 并旋转 I_local = R·I·Rᵀ
+  UI->>ExpW: exportURDF(urdfXml, linkSolidMap, linkRestInverseMap, unitScale)
+  ExpW->>ExpW: generateBinarySTL() 写 meshes/<link>.stl 并打包 robot.urdf 为 ZIP
+  ExpW-->>UI: 返回 ZIP ArrayBuffer 下载
+```
+
+图依据：`Democratizing-Dexterous/step2urdf` `main` 分支 `StepLoader.ts`、`URDFSerializer.ts`（第 304–342 行 `rotateInertiaTensor`）与 `ExportWorker.ts`（2026-11-28 通读源码）。
+
+## 工程实践
+
+- **单位系数与坐标系前置检查：** 工程机械 CAD 常以毫米输出 STEP；导出设置中需正确指定 `unitScale`（mm → m 为 `0.001`）与 `baseLinkOrientation`，确保 `URDFSerializer` 将 `InertiaWorker` 计算的惯量按 $I_{\text{local}} = R \cdot I \cdot R^\top$ 正确旋回 Link 局部轴系。
+- **内网与私有模型自托管：** 官方站点 `step2urdf.top` 为客户端 Vue 3 SPA，但涉密硬件仍建议直接拉取仓库运行 `pnpm install && pnpm build` 或用 `python3 -m http.server` 托管 Release 静态包。
+- **导出前逐关节滑块测试：** 利用内置 `JointSlider` 与 `FrameVisualizer` 逐一验证旋转轴正方向是否符合右手定则及相邻连杆网格零位不干涉，再送下游仿真。
 
 ## 与相近工具的对照
 
 | 工具 | 起点 | 强项 | 局限 |
 |------|------|------|------|
 | **step2urdf** | 已有 **STEP** | 浏览器即用、几何驱动关节、本地处理 | 关节类型限于 revolute/prismatic；复杂闭链/柔性体需人工后处理 |
-| [StackForce CAD2URDF](./stackforce.md) | STEP/STP | 国内访问、本地解析、与工作台 **SimReady→Isaac** 一条龙 | Link/Joint **人工配置**为主；非开源 |
-| [URDF-Studio](./urdf-studio.md) | 设计阶段 / 已有 URDF | Skeleton/Detail/Hardware 全流程、MJCF/USD/BOM、AI 辅助 | 不是 STEP 专用转换器；CAD 导入能力与本工具互补 |
+| [StackForce CAD2URDF](./stackforce.md) | STEP/STP / URDF·USD | 国内访问、本地解析、与工作台 **SimReady→MJLab** 一条龙 | Link/Joint 配置偏人工；非开源仓可查 |
+| [URDF-Studio](./urdf-studio.md) | 设计阶段 / 已有 URDF·MJCF·USD | 统一编辑器、MJCF/USD/BOM 导出、AI 辅助 | 不是 STEP 专用转换器；与本工具互补 |
 | [CAD Skills](./cad-skills.md) | 自然语言 → **build123d** | Agent CLI、`gen_urdf()` 与制造链 skill | 依赖 Python/OCP 环境，非「拖 STEP 即转」 |
 | [robot-viewer](./robot-viewer.md) | 已有 URDF/MJCF | 多格式预览、MuJoCo WASM 轻仿真 | 不负责从 STEP 生成模型 |
 
 **推荐衔接：** STEP → **step2urdf** → URDF → [robot-viewer](./robot-viewer.md) / [MoveIt2](./moveit2.md) / 仿真引擎（必要时再转 MJCF）。
 
-## 常见误区
+## 局限与常见误区
 
-- **「在线版 = 文件上传云端」：** 项目 README 声明本地处理；仍建议 F12 看 Network，或 **自托管** 满足合规。
+- **「在线版 = 文件上传云端」：** 项目 README 与源码 `StepLoader` 证明几何解析全在本地 Comlink Worker 运行，文件上限 500MB；合规要求严苛场景建议 F12 验证网络或内网自托管。
 - **「自动关节 = 无需人工」：** 复杂装配、轴系不一致或 CAD 简化不当时，必须 **交互验证 + 轴向微调**。
-- **「URDF 可直接上真机」：** 惯量/COM 来自估算或总质量分配，Sim2Real 前应对照实测或系统辨识（参见 [Sim2Real](../concepts/sim2real.md)）。
+- **「URDF 惯量可直接上真机」：** 按总质量均一密度分配体积估算惯量不含电机转子 `armature`、线束与内部空腔差异，Sim2Real 前应对照 CAD 材质分布、称重或系统辨识复核（参见 [Sim2Real](../concepts/sim2real.md)）。
+- **网格复杂度未经碰撞化减：** 直接导出的三角化二进制 STL 往往顶点数过高，进物理仿真器前建议抽稀或生成凸包碰撞代理。
 
 ## 关联页面
 

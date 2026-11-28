@@ -2,7 +2,9 @@
 type: entity
 tags: [software, simulation, mujoco, web, wasm, rl, onnx, mjlab, demo, deepmind]
 status: complete
-updated: 2026-09-08
+updated: 2026-11-28
+original:
+  - ../../sources/repos/ttktjmt_mjswan_reading.md
 code: https://github.com/ttktjmt/mjswan
 related:
   - ./mujoco-wasm.md
@@ -13,6 +15,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
 sources:
+  - ../../sources/repos/ttktjmt_mjswan_reading.md
   - ../../sources/repos/ttktjmt-mjswan.md
   - ../../sources/repos/mujoco_wasm.md
   - ../../sources/repos/mujoco.md
@@ -45,7 +48,7 @@ summary: "mjswan（Apache-2.0）：浏览器 MuJoCo + ONNX 实时策略闭环；
 - **跨端 + WebXR**：桌面与移动端均可；支持 **VR/AR 手部与物体交互**。
 - **与官方 WASM 对齐**：PyPI/npm 同步发布；文档 [mjswan.readthedocs.io](https://mjswan.readthedocs.io) 覆盖 Builder API 与 demo 列表。
 
-## 核心结构
+## 核心原理与模块结构
 
 | 模块 | 说明 |
 |------|------|
@@ -70,6 +73,36 @@ flowchart LR
   pol --> sim
   sim --> render[Three.js 渲染]
 ```
+
+## 源码运行时序图
+
+以 `ttktjmt/mjswan`（`main` 分支）Python 构建导出入口（`src/mjswan/builder.py` → `src/mjswan/build/pipeline.py`）与浏览器运行帧循环（`ControlStep.ts` / `runtime.ts`）为核对入口：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Py as 用户脚本（Builder / Builder.from_mjlab）
+  participant Pipe as build/pipeline.py:write_app
+  participant Ctrl as 浏览器 ControlStep.spend（runtime.ts）
+  participant ORT as ONNX Runtime Web（getOrt + PolicyRunner）
+  participant WASM as MuJoCo WASM（mj_step）& Three.js
+
+  Py->>Pipe: builder.build() / app.launch()
+  Pipe-->>Ctrl: 产物包：manifest.json + scene.mjz + mdp/policy/*.onnx + SPA（按需写 COOP/COEP _headers）
+  loop 每动画帧按预算步进（budget, stepMs, deadline）
+    alt substep == 0（新控制步起点）
+      Ctrl->>ORT: hooks.begin() 采集 MjData 观测并运行策略与动作 ONNX
+      ORT-->>Ctrl: ActionManager 下发关节控制目标
+    end
+    Ctrl->>WASM: hooks.physics(from, to) 执行 decimation 内 mj_step 与交互/WebXR 外力
+    alt 完成 decimation 步或发散复位
+      Ctrl->>Ctrl: hooks.end(diverged) 评估 TerminationManager / EventManager
+    end
+    Ctrl->>WASM: snapshot() 刷新 Three.js 网格位姿与 WebXR 手部姿态
+  end
+```
+
+图依据：`ttktjmt/mjswan` `main` 分支（2026-11-28 核对 `README.md`、`src/mjswan/builder.py`、`src/mjswan/build/pipeline.py`、`src/mjswan/template/src/core/engine/controlStep.ts` 与 `runtime.ts` 导入/循环接口；未本机运行浏览器构建）。
 
 ## 工程实践
 
@@ -117,5 +150,6 @@ flowchart LR
 
 ## 参考来源
 
+- [ttktjmt/mjswan 官方 README 与前后端运行时源码通读](../../sources/repos/ttktjmt_mjswan_reading.md) — `Builder` / `pipeline.py` 与 `ControlStep.ts` / `runtime.ts` 源码核对（2026-11-28）
 - [ttktjmt/mjswan](../../sources/repos/ttktjmt-mjswan.md)
 - [mujoco_wasm 社区仓](../../sources/repos/mujoco_wasm.md)

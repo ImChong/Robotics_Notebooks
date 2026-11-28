@@ -7,7 +7,8 @@
 - **来源：** Democratizing-Dexterous / step2urdf 项目
 - **链接：** https://step2urdf.top/
 - **入库日期：** 2026-06-18
-- **一句话说明：** step2urdf 的**官方在线实例**：免费浏览器内 STEP→URDF，面向 ROS/ROS2 机器人模型快速生成；页面强调 **无需安装、一键导出**，底层与开源仓同源（OpenCascade.js + Vue）。
+- **核对状态：** 在线地址返回前端 SPA Shell（`<title>step2urdf — STEP 转 URDF 在线工具</title>` + Vue 挂载入口，静态抓取无渲染正文）；对应完整逻辑与静态资源均开源于 [step2urdf GitHub 源码归档](../repos/step2urdf.md)。
+- **一句话说明：** step2urdf 的**官方在线实例**；底层与开源仓同源（OpenCascade.js + Vue 3 Comlink Worker），浏览器内本地解析 STEP。
 - **沉淀到 wiki：** [step2urdf](../../wiki/entities/step2urdf.md)
 
 ---
