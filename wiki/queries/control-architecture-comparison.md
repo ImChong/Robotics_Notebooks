@@ -6,6 +6,9 @@ summary: "> **Query 产物**：本页由以下问题触发：「人形机器人�
 updated: 2026-11-20
 sources:
   - ../../sources/papers/whole_body_control.md
+related:
+  - ../methods/robot-control-architecture.md
+  - ../methods/robot-simulation-integration.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形机器人的主流控制架构有哪些，各有什么优劣和适用场景？」
@@ -292,6 +295,8 @@ flowchart TD
 - [Imitation Learning](../methods/imitation-learning.md) — IL 方法全景
 - [Diffusion Policy](../methods/diffusion-policy.md) — 层次 IL 的现代实现
 - [RL vs IL](../comparisons/rl-vs-il.md) — B vs C 路线对比
+- [机器人控制系统架构](../methods/robot-control-architecture.md) — 传感/状态估计/高层规划/低层实时环与 HAL 分层契约
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md) — 控制接口与仿真器闭环 SIL 验证流程
 
 ## 参考来源
 

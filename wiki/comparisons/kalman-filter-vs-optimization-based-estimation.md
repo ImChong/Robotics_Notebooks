@@ -6,6 +6,7 @@ updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/state-estimation.md
+  - ../methods/robot-state-estimation-workflow.md
   - ../formalizations/mdp.md
   - ../concepts/whole-body-control.md
 sources:
@@ -69,6 +70,7 @@ flowchart LR
 
 ## 关联页面
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
+- [机器人状态估计与定位流程](../methods/robot-state-estimation-workflow.md) — 多频传感器融合、快慢双路估计与漂移监控工作流
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [MDP 形式化](../formalizations/mdp.md)
 

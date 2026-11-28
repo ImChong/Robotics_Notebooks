@@ -182,6 +182,7 @@ flowchart TD
 
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — 三类骨干的概念基础页
 - [视觉表征作为策略输入（概念）](../concepts/visual-representation-for-policy.md) — 通用预训练表征三条路径
+- [视觉表征学习（方法）](../methods/visual-representation-learning.md) — 预训练骨干特征提取、任务微调与下游策略消费方法
 - [CNN vs ViT 视觉骨干对比](../comparisons/cnn-vs-vit-backbones.md) — 骨干族取舍（与接什么头正交）
 - [目标检测模型选型 Query](object-detection-model-selection.md) — 检测头内部单阶段/两阶段细分选型
 - [目标检测（方法）](../methods/object-detection.md) — 检测头方法谱系

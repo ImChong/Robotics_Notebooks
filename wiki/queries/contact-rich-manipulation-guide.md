@@ -168,6 +168,7 @@ flowchart TD
 
 - [人形接触与角色化控制实践指南](./humanoid-contact-character-control-guide.md) — 全身接触、触觉策略与角色平台选型
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览，帮助区分非接触与接触丰富任务
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md) — 机械臂运动规划、末端执行器控制接口与阶段验收方法
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 本 Query 的概念基础页
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂装配与内力协调的代表场景
 - [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层

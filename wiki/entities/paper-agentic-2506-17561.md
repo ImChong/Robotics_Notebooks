@@ -7,7 +7,7 @@ tags:
 - task-planning
 - manipulation
 status: complete
-updated: '2026-11-26'
+updated: '2026-11-28'
 project_id: agentic-2506-17561
 arxiv: '2506.17561'
 project_page: https://github.com/HeegerGao/VLA-OS
@@ -111,7 +111,7 @@ flowchart TD
 | DiT Policy（微调） | 84.2 | 96.3 | 85.4 | 63.8 | 82.4 |
 | $\pi_0$-FAST（微调） | 96.4 | 96.8 | 88.6 | 60.2 | 85.5 |
 | **VLA-OS-A-S（0.5B 从头训练，本文）** | **87.0** | **96.5** | **92.7** | **66.0** | **85.6** |
-| $\pi_0$（微调 SOTA） | 96.8 | 98.8 | 95.8 | 85.2 | 94.2 |
+| $\pi_0$（论文 Table 1 同期微调基线） | 96.8 | 98.8 | 95.8 | 85.2 | 94.2 |
 
 ### 2. 规划表征与范式对比（LIBERO-Long 成功率 %，Table 2，括号为相对 VLA-OS-A 66.0 变化）
 

@@ -8,6 +8,7 @@ related:
   - ../concepts/lidar-sensing.md
   - ../entities/intel-realsense.md
   - ../concepts/sensor-fusion.md
+  - ../methods/robot-sensor-integration.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
@@ -143,6 +144,7 @@ flowchart TD
 - [LiDAR 传感](../concepts/lidar-sensing.md)
 - [Intel RealSense 深度相机](../entities/intel-realsense.md)
 - [传感器融合](../concepts/sensor-fusion.md)
+- [机器人传感器接入与标定](../methods/robot-sensor-integration.md) — 多传感器内外参标定、PTP/PPS 同步与健康降级流水线
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 - [导航纵深](../../roadmap/depth-navigation.md)、[感知越障纵深](../../roadmap/depth-perceptive-locomotion.md)、[整机硬件纵深](../../roadmap/depth-humanoid-hardware-design.md)

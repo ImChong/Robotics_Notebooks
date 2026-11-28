@@ -7,6 +7,8 @@ related:
   - ./ethercat-master-optimization.md
   - ../../roadmap/motion-control.md
   - ../overview/humanoid-motion-control-know-how.md
+  - ../methods/robot-control-architecture.md
+  - ../methods/robot-simulation-integration.md
 sources:
   - ../../sources/sites/ros2_control_hal_docs.md
   - ../../sources/papers/sim2real.md
@@ -118,6 +120,8 @@ flowchart TD
 - [EtherCAT 主站优化](./ethercat-master-optimization.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
 - [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)
+- [机器人控制系统架构](../methods/robot-control-architecture.md) — 高层规划与低层实时控制环的 HAL 接口解耦
+- [机器人仿真环境集成](../methods/robot-simulation-integration.md) — `ros2_control` 与仿真硬件插件闭环切换实践
 
 ## 参考来源
 - 各大主流开源机器人框架（如 OCS2, Drake, ROS2 Control）的设计模式。

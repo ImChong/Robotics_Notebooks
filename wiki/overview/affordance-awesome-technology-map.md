@@ -309,6 +309,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Affordance（概念）](../concepts/affordance.md)
 - [Affordance 学习综述](../entities/paper-affordance-learning-embodied-ai-survey.md)
 - [manipulation](../tasks/manipulation.md)
 - [vla](../methods/vla.md)

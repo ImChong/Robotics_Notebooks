@@ -58,6 +58,7 @@ flowchart LR
 
 - [参数化 CAD](parametric-cad-workflow.md)
 - [结构、公差与仿真工具链](../concepts/structure-tolerance-simulation-toolchain.md)
+- [Query：机器人结构 FEM/FEA 仿真何时该上、如何做收敛与可信度验证？](../queries/engineering-fem-fea-simulation-selection.md)
 
 ## 参考来源
 

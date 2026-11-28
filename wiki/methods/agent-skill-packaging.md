@@ -61,6 +61,7 @@ flowchart LR
 ## 关联页面
 
 - [智能体工具调用接口](agent-tool-use-interface.md)
+- [Agent Skill 封装 vs MCP 工具契约 vs CLI/SDK 调用接口](../comparisons/agent-skill-packaging-vs-mcp-cli-tool-interfaces.md)
 - [规划与反馈执行](agent-planning-feedback.md)
 - [智能体开发工程基础](../concepts/agentic-coding-software-fundamentals.md)
 

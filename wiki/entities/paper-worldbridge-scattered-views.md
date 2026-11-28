@@ -5,7 +5,7 @@ arxiv: "2611.34079"
 project: https://davidyan2001.github.io/WorldBridge/
 tags: [paper, world-generation, novel-view-synthesis, 3d-reconstruction, flow-matching, nus, tencent, cuhk, u-tokyo]
 status: complete
-updated: 2026-11-27
+updated: 2026-11-28
 summary: "WorldBridge 用全局场景 token 和逐图潜变量从离散的带位姿参考生成指定相机路径上的 RGB 与点图；可使用路径外参考，补全区域不是实测几何。"
 original:
   - ../../sources/papers/worldbridge_arxiv_2611_34079.md
@@ -85,6 +85,18 @@ flowchart LR
 | Long | 20 段、每段六参考和 50 个非参考目标；PSNR **17.68 vs 16.43 dB**，AbsRel **0.345 vs 0.454**（GLD） | 深度对比使用 ViPE/DA3 伪真值，按场景对齐尺度；另有附录传感器深度小样本 |
 | Agent On/Off | 20 个合成场景、同路径配对 40 组；ATE **3.278 / 3.303**，几何重投影误差 **0.057 / 0.061** | 从生成图重估相机并作相似变换对齐；未测真值 RGB 或几何准确率 |
 | 消融与额外开销 | 去掉全局条件，Long PSNR **17.68 → 16.61 dB**、Agent Off 几何重投影误差 **0.061 → 0.126**；启用 LRC 后 Long PSNR **17.30 → 17.68 dB** | LRC 在单 H200 生成 41 帧的规定设置中耗时增加 **18.3%**；并非所有指标均改善 |
+
+## 与其他工作对比
+
+以下定量对照出自 [arXiv:2611.34079v1](https://arxiv.org/html/2611.34079v1) 表 2–4（WorldBridge-Short / Long / Agent）：
+
+| 对照路线 | 代表指标（作者报告） | 与 WorldBridge 差异及边界 |
+|---|---|---|
+| **[GAE](./paper-gae-geometry-native-autoencoder.md)（arXiv'26）** | Short PSNR 15.29；Long PSNR 12.86 / AbsRel 0.599 / δ₁ 44.9；Agent Off 几何重投影误差 0.134 | WorldBridge 直接在 GAE 外观-几何双解码潜空间上构建，但新增全局场景条件、时空参考注意力与 LRC，显著改善低重叠长序列一致性和几何对齐 |
+| **GLD（ECCV'26）** | Short PSNR 16.13；Long PSNR 16.43 / AbsRel 0.454 / δ₁ 59.4 / ATE 1.748；Agent ATE 5.680 / 6.257 | 表 2–4 中最接近的原生几何基线；WorldBridge 在 Long 相机 ATE（0.657）与 δ₁（71.0）占优，但均基于 DA3/ViPE 伪真值与逐场景尺度对齐 |
+| **SEVA（ICCV'25） / AnyRecon（SIGA'26）** | SEVA Short 15.66 / Long 15.41；AnyRecon Short 14.76 / Long 15.87（无原生几何输出 `—`） | 二者不直接输出原生深度与三维点图；WorldBridge 在保持 RGB 保真的同时联合解码相机射线与深度 |
+| **Gen3R（CVPR'26） / 3DRAE（NeurIPS'26）** | Gen3R Long AbsRel 0.507；3DRAE Long AbsRel 0.475 / 几何重投影误差 0.106、Agent ATE 4.194 / 4.576 | 3DRAE 在长序列几何重投影一致性（0.106 vs WorldBridge 0.099）最接近，但在离散非轨迹参考（Agent Off）及相机控制 ATE（3.303 vs 4.576）上弱于 WorldBridge |
+| **[同名 WorldBridge（2610.40748）](./paper-worldbridge.md)** | 面向视频生成与动作专家闭环策略 | 二者完全独立：本文仅接收相机轨迹条件输出 RGB 与三维点图草案，不预测机器人动作或闭环动力学 |
 
 ## 结论
 

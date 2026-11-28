@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-22
 related:
   - ./robot-path-planning-five-paradigms-taxonomy.md
+  - ../methods/robot-navigation-workflow.md
   - ../methods/a-star.md
   - ../methods/dwa.md
   - ../methods/smooth-navigation-path-generation.md
@@ -108,4 +109,5 @@ flowchart LR
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — A\* + DWA 分层导航所属的课程主线
 - [iCrowdNav](../entities/paper-icrowdnav.md) — 视觉人群导航 DRL；相对 DWA 的学习型局部社交对照（MIT 源码已开源；USD 场景与权重未随仓）
 - [路径规划五大范式](./robot-path-planning-five-paradigms-taxonomy.md) — 图搜索/采样/APF/MPC/AI 五条路线总览；本页三层栈是其工程子集
+- [机器人导航与路径执行流程](../methods/robot-navigation-workflow.md) — 定位、局部/全局规划与恢复行为的端到端工程工作流
 - [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 越野学习 costmap + A\* LRP；局部 MPPI，不替代本页三层分工

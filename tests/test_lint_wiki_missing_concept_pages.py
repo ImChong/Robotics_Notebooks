@@ -329,6 +329,8 @@ def test_atlas_entity_homonyms_do_not_mask_missing_mechanism(tmp_path, monkeypat
         "在 **BEHAVIOR-1K** 长程家务基准上评测。",
         "接入 `starVLA` 统一代码框架基线。",
         "在 Unitree **H1** 与 `hand` 相机键上评测 **SR**。",
+        "使用 **GPT-4o** 规划 `pick` / `place` / `open` / `Close` 与 **Average** 基线。",
+        "在 `robosuite` 的 `Lift` 任务上比较 **IK**、`mIoU` 与 **AdaLN**。",
     ],
 )
 def test_existing_names_and_runtime_tokens_preserve_new_concept_signal(

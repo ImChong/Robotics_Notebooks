@@ -113,6 +113,7 @@ flowchart TB
 - [MCAP](../entities/mcap-log-format.md)
 - [LeRobotDataset v3.0](../concepts/lerobot-dataset-v3.md)
 - [LeRobot（框架）](../entities/lerobot.md)
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md) — 从采集时间戳记录、格式规范化到 episode 防泄漏切分的端到端管线方法
 - [遥操作（Teleoperation）](../tasks/teleoperation.md)
 
 ## 参考来源

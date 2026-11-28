@@ -7,6 +7,8 @@ summary: "沿观测编码、异步执行、动作生成与云边服务四条链�
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
+  - ../methods/ai-model-compression.md
+  - ../methods/ai-model-serving-inference.md
   - ../concepts/control-inference-frequency-decoupling.md
   - ../concepts/edge-cloud-robotics.md
   - ../entities/paper-real-time-chunking.md
@@ -147,6 +149,8 @@ flowchart TD
 
 - [VLA 方法总览](../methods/vla.md)
 - [Action Chunking](../methods/action-chunking.md)
+- [AI 模型压缩与推理优化](../methods/ai-model-compression.md) — PTQ/QAT 量化定标、敏感层回退与尾延迟验收方法
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md) — 批处理调度、并发 SLO 监控与过期观测保护方法
 - [控制与推理频率解耦](../concepts/control-inference-frequency-decoupling.md)
 - [Edge–Cloud Robotics](../concepts/edge-cloud-robotics.md)
 - [Real-Time Chunking 论文详情](../entities/paper-real-time-chunking.md)

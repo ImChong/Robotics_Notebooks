@@ -157,6 +157,7 @@ gz sdf -p /tmp/robot.urdf > /tmp/robot.sdf
 ## 关联页面
 
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md)
+- [机器人模型描述与资产接入](../methods/robot-model-description-workflow.md) — URDF/SDF/MJCF/USD 转换与运动学/碰撞验收流程
 - [URDF 连杆惯量对照真机检查](./urdf-link-inertia-real-robot-check.md)
 - [连杆惯量与转子惯量](../concepts/robot-link-and-rotor-inertia.md)
 - [URDF-Studio](../entities/urdf-studio.md)

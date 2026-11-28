@@ -6,6 +6,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../concepts/privileged-training.md
+  - ../methods/domain-adaptation-for-sim2real.md
   - ../comparisons/online-vs-offline-rl.md
   - ./sim2real-four-routes-identifiability.md
 sources:
@@ -200,6 +201,7 @@ Real: student π(a|o) → 用观测历史近似特权信息 → 微调
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md) — Sim2Real gap 的成因分析和综合策略
+- [Sim2Real 域适应（Domain Adaptation）](../methods/domain-adaptation-for-sim2real.md) — 视觉/特征/动力学分布对齐与真机保留集验证流程
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — DR 策略的训练基础
 - [Privileged Training](../concepts/privileged-training.md) — 特权训练是 DR + Fine-tuning 的桥梁
 - [Online vs Offline RL](./online-vs-offline-rl.md) — Real fine-tuning 涉及 online/offline RL 的选择

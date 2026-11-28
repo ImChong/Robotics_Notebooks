@@ -120,6 +120,7 @@ flowchart TD
 - [Fast DDS](../entities/fast-dds.md) · [Cyclone DDS](../entities/cyclone-dds.md)
 - [LCM 基础](../concepts/lcm-basics.md)
 - [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)
+- [机器人软件系统集成](../methods/robot-software-integration.md) — 节点通信、状态机契约与故障降级集成方法
 - [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)

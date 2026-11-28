@@ -65,6 +65,7 @@ flowchart LR
 ## 关联页面
 
 - [智能体工具调用接口](agent-tool-use-interface.md)
+- [智能体规划反馈循环 vs 确定性工作流 vs 机器人执行框架](../comparisons/agent-planning-feedback-vs-deterministic-workflow.md)
 - [验证闭环](coding-agent-verification-loops.md)
 - [智能体软件工厂 Harness](../concepts/agentic-software-factory-harness.md)
 

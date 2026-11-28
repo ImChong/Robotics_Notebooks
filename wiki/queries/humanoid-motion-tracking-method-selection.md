@@ -31,6 +31,8 @@ sources:
   - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
   - ../../sources/papers/unitracker_arxiv_2507_07356.md
 original: ../../sources/papers/deepmimic.md
+related:
+  - ../methods/whole-body-motion-tracking.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形运动跟踪与风格先验方法这么多，工程上怎么选、怎么组合？」
@@ -209,7 +211,7 @@ flowchart TD
 
 ## 关联页面
 
-- [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md)
+- [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md)、[全身动作跟踪（Whole-Body Motion Tracking）](../methods/whole-body-motion-tracking.md)
 - [AMP & HumanX](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md)、[CMP](../entities/paper-cmp.md)、[PFM-HR](../entities/paper-pfm-hr.md)
 - [MotionBricks](../methods/motionbricks.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[EGM](../methods/egm-efficient-general-mimic.md)
 - [Switch](../methods/switch-framework.md) — 多技能图 + 缓冲节点的显式技能切换编排层

@@ -17,6 +17,7 @@ related:
   - ../entities/robot-descriptions-py.md
   - ../concepts/text-to-cad.md
   - ../concepts/urdf-robot-description.md
+  - ../methods/parametric-cad-workflow.md
 ---
 
 # 3D-as-Code、网格与机器人仿真描述：如何选择可编辑资产
@@ -93,6 +94,7 @@ flowchart LR
 - [Articraft](../entities/articraft.md) — 可关节资产的 Agent + SDK 管线；也是 Sand3D 的原始数据来源之一。
 - [URDF-Studio](../entities/urdf-studio.md) — 导出 URDF 后继续编辑结构和参数的工作台。
 - [文字生成 CAD](../concepts/text-to-cad.md) — 文本/图像条件重建 CAD 的上游任务。
+- [参数化 CAD 建模流程](../methods/parametric-cad-workflow.md) — CadQuery / OCCT B-Rep 约束历史建模、干涉检查与 STEP 导出流程。
 - [机器人 URDF 描述](../concepts/urdf-robot-description.md) — 理解 link、joint 与视觉/碰撞配置的差异。
 
 ## 参考来源

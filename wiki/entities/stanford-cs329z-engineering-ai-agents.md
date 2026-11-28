@@ -5,7 +5,7 @@ project: https://cs329z.stanford.edu/
 code: https://github.com/cs329z/lecture5-frameworks
 tags: [course, stanford, ai-agent, agent-harness, evaluation]
 status: complete
-updated: 2026-11-27
+updated: 2026-11-28
 summary: "斯坦福 CS 329Z（2026 秋季）从检索、工具与决策循环出发，比较工作流和智能体，并通过两份作业及期末项目练习构建、评估与限定系统行为。"
 original:
   - ../../sources/courses/cs329z-engineering-ai-agents.md
@@ -19,6 +19,7 @@ related:
   - ../methods/ai-benchmark-evaluation.md
   - ./little-book-agent-engineering.md
   - ./cs146s-modern-software-developer.md
+  - ../overview/hub-embodied-eval-benchmark.md
 ---
 
 # CS 329Z: Engineering AI Agents · 斯坦福大学 AI 智能体工程
@@ -125,6 +126,7 @@ sequenceDiagram
 - [AI 基准评测](../methods/ai-benchmark-evaluation.md)
 - [Agent 工程小书](./little-book-agent-engineering.md)
 - [Stanford CS146S：现代软件开发者](./cs146s-modern-software-developer.md)
+- [具身评测基准选型闭环（知识链汇总）](../overview/hub-embodied-eval-benchmark.md)：边界对照——本课程聚焦工具调用、轨迹评分与权限限制等通用 AI 智能体工程，迁移至机器人闭环评测还需补齐物理执行、仿真保真度与 sim↔real 校准。
 
 ## 参考来源
 
