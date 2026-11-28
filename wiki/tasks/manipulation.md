@@ -529,6 +529,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 ### 数据集与基准
 
+- [WACO / LIBERO-PoseShift](../entities/paper-waco-pose-robust-vla.md) — 对操作策略分别注入相机、基座和复合偏移；以基座帧协议测少样本闭环鲁棒性。
+
 - [HandsOn](../entities/paper-handson.md) — 66 项跨具身灵巧操作仿真任务；Core-50 提供示范，Transfer-16 测无目标示范迁移，含 18,000 条 PhysX 示范数据。
 
 - [HRDexDB](../entities/hrdexdb-dataset.md) — 同物体配对的人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉）

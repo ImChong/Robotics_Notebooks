@@ -249,6 +249,7 @@ flowchart LR
 - [Harness VLA](../wiki/entities/paper-harness-vla.md) · [GaP](../wiki/entities/paper-gap-graph-as-policy.md) — 对照固定原语和记忆驱动的冻结 VLA 编排、计算图与仿真排练，分别检查工具接口和复现入口。
 - [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆端到端 VLA，用基础锚点 + 前瞻式关键帧预测解决长程操作的记忆瓶颈，是行为树编排之外的模型内记忆路线
 - [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md) — 在 VLA 层内嵌测试时训练，将 visuomotor 上下文压缩进固定大小 fast weights，扩到约 8K 步且支持部署后在线自纠偏
+- [WACO](../wiki/entities/paper-waco-pose-robust-vla.md) — 少样本 VLA 的部署坐标检查：用机械臂与空场双锚点分辨相机和基座偏移，在 LIBERO-PoseShift 与 UR5e 上验证分通道补偿。
 - [ActFovea](../wiki/entities/paper-actfovea.md) — 不重训、不改权重的 VLA 运行时防护层，用动作条件中央凹 + 时空视觉–动作一致性检测扰动；LIBERO 40 任务上把视觉叠加攻击下的成功率从 49.3% 拉回 90.3%，2000 次重放试验 100% 及时安全失败
 - [RoboHarness](../wiki/entities/paper-robo-harness.md) — 把 VLA / RL / TAMP 等异构策略封装为 agentic skills，用理解/记忆/自进化辅助技能做能力边界路由，Memory Bridge 稳定交接；LIBERO-LoHo 成绩与协议见 v3 实体记录；官方仓暂为项目页镜像
 - [RTCF](../wiki/entities/paper-rtcf.md) — 免训练测试时纠偏（**⚠️ v3 于 2026-10-28 由作者以实验证据暂不足撤稿；归档核对 v2 全文**）：Progressive Memory Alignment 按执行历史对齐成功轨迹，将低频运动残差转移给冻结 PI-FAST；LIBERO 86.4%→88.4%，LIBERO-Long 61.6%→68.6%，CPU 侧约 11 ms/chunk 额外开销；无公开代码
