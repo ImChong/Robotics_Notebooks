@@ -56,6 +56,8 @@ flowchart LR
 
 以 [Agnes 的 SGLang 专用化报告](../entities/paper-agnes-inference-framework-specialization.md) 为例，同样的客户端并发下，服务允许同时执行的请求数从 8 增到 16；吞吐和首 token 改善需要另做固定预算消融才能归因。
 
+[Xing 4 技术报告](../entities/paper-telechat-xing4.md) 则把 KV 压缩、历史访问稀疏化和跨层索引复用分开评估。其 256K 预填充结果来自硬件仿真；部署公开的 Xing4.1-Preview 时，仍需按具体后端核对缓存、并发和延迟预算。
+
 ## 局限与风险
 
 最大吞吐配置未必符合尾延迟目标。网络抖动、批形状不匹配和显存峰值均需单独评估；无法接受超时的实时环应本地独立运行，不能用服务 p50 宣称闭环时序保障。
