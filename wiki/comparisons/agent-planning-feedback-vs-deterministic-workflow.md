@@ -11,6 +11,9 @@ related:
   - ../concepts/agentic-software-factory-harness.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../concepts/behavior-tree-vla-orchestration.md
+original:
+  - ../../sources/sites/method-agent-planning-feedback-primary-20261126.md
+  - ../../sources/papers/saycan_arxiv_2204_01691.md
 sources:
   - ../../sources/sites/method-agent-planning-feedback-primary-20261126.md
   - ../../sources/repos/agentic-design-patterns.md
@@ -62,6 +65,8 @@ flowchart TD
 1. **先做固定工作流基线再决定是否加循环**：先跑通固定链路记录失败分布；只对需要按真实观测分支的环节启用 [Agent Planning and Feedback Loops](../methods/agent-planning-feedback.md)。
 2. **用程序校验替代模型自报成功**：把验收条件写成独立检查（单测、终态断言、物理传感器读数或日志完整性检查），避免把模型输出文本当任务完成的唯一证据。
 3. **高风险副作用与物理动作必须走独立调度门控**：在机器人场景下参考 [Robot Agent Harness](../methods/robot-agent-harness.md)，将规划器（提议技能）与调度器（核对前置条件、数据新鲜度、关节/力矩安全包络）解耦，并记录全链路请求 ID 与状态转移日志。
+
+**一手证据对应：** Anthropic 的工程文区分预定义代码路径与由模型动态选择步骤；两类都可以调用 LLM，区别在于谁决定下一步。SayCan 将语言相关性与当前状态下的技能可行性相乘，展示的是高层技能选择，不是急停、实时控制或安全认证。表中的 FSM、重试上限和独立硬件门控是选型建议，不是 SayCan 实验的安全结论。
 
 ## 局限与风险
 

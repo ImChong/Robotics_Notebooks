@@ -10,6 +10,9 @@ related:
   - ../concepts/structure-tolerance-simulation-toolchain.md
   - ../comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md
   - ../concepts/robot-simulation-three-layers.md
+original:
+  - ../../sources/sites/platform-method-engineering-simulation-workflow.md
+  - ../../sources/blogs/wechat_zane_hub_structure_tolerance_simulation_toolchain_2026-10-17.md
 sources:
   - ../../sources/sites/platform-method-engineering-simulation-workflow.md
   - ../../sources/blogs/wechat_zane_hub_structure_tolerance_simulation_toolchain_2026-10-17.md
@@ -58,6 +61,8 @@ flowchart TD
 2. **粗细网格收敛对比（Mesh Convergence）**：至少跑两到三档网格密度，确认 QoI 随单元加密趋于稳定；若某尖角处应力随加密无限发散，多为直角/点载荷引起的**数值奇异点**而非真实物理屈服。
 3. **全局反力与外载平衡校核**：汇总所有固定端支反力并与施加外载对比，确认静力平衡误差在数值容差内，排除边界条件漏约束或接触穿透异常。
 4. **守住线弹性与单一物理场边界**：线弹性静力分析结果不直接外推为大变形屈曲、接触滑移、热耦合或疲劳寿命结论；需要这些结论时须切换到对应非线性或耦合求解设置并用台架实测标定。
+
+**一手证据对应：** NGSolve 固定版本算例建立带孔三维实体，离散线弹性方程、求位移并后处理应力；显示放大的变形不是实际位移。该算例没有交付该结构件的台架对比或网格收敛报告。上面的关注量、平衡与收敛检查是验收建议；有材料或接触非线性时不能直接沿用该线弹性结论。
 
 ## 局限与风险
 
