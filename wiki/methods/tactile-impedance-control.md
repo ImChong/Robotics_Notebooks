@@ -185,6 +185,8 @@ $$
 
 ## 关联页面
 
+- [TacSlim 多功能触觉夹爪（全文待核验）](../entities/paper-tacslim-multifunctional-tactile-gripper.md)：单伺服连杆构型切换与触觉变阻抗的研究。
+
 - [Impedance Control（阻抗控制）](../concepts/impedance-control.md)
 - [Force Control Basics（力控制基础）](../concepts/force-control-basics.md)
 - [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md)
