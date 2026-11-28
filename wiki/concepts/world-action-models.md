@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-28
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-ar-wam.md
@@ -663,6 +663,10 @@ flowchart TB
 - RCL / MBZUAI **Awesome World-Action Models** — [项目页](https://rcl-robotics.github.io/Awesome-World-Action-Models/) · [GitHub](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [Awesome World Models（sun254667）](https://github.com/sun254667/awesome-world-models) — 更广的 WM 全谱策展对照
 
+
+## 驾驶 WAM 的动作路径：EponaX
+
+[EponaX](../entities/paper-eponax.md) 用未来视觉、深度与语义训练共享表征；车端只生成轨迹，用它对照部署时依赖现场生成未来视频的方案。
 
 ## 近期 3D 灵巧操作实例：PointWAM
 

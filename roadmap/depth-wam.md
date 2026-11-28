@@ -185,6 +185,7 @@ flowchart LR
 
 ### 推荐读什么
 
+- [EponaX：真实道路驾驶 WAM](../wiki/entities/paper-eponax.md) — 六相机与结构化导航共享表征，未来视觉/深度/语义只作训练监督，车端仅解码轨迹；对照 NAVSIM 与实车人工干预。
 - [HOG-WAM](../wiki/entities/paper-hog-wam.md) — 以未来帧方向梯度直方图作为训练期结构监督，部署时保留动作路径。
 - [Entangle](../wiki/entities/paper-entangle-2611-28732.md) — 用人类示范视频作为上下文，对照跨任务与跨上下文的世界–动作联合泛化。
 - [AR-WAM：视觉框 + 原子动作的 Agent-Ready WAM](../wiki/entities/paper-ar-wam.md) — **Stage 3 轻量 Joint WAM / Agent 接口**：冻结 DINOv3 + 共享专家，动作与视觉/语义前瞻联合去噪；目标框替代文字、长程记忆和重试留给外部 Agent。RoboTwin clean/random 87.2/84.2%，真机 71.7%，仅模型 chunk 推理 14.09 ms。
