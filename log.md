@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-29] structural | 新增双/多机器人协作纵深路线（第 32 条）及 3 篇基础概念对比页，7 篇关联实体升级至 3/3 满分，全路线 67/67 节点 3/3 满健康度
+
 ## [2026-11-29] lint | 补齐机器人学习概览的阅读骨架与一手来源
 
 ## [2026-11-29] ingest | 更新 MAWAM v2 全文核对和 NVIDIA 正式项目页
