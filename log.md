@@ -527,6 +527,8 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-28] lint | 基于 #3997 完成剩余全部 569 个历史 wiki/entities 页面方法与任务出边补全，清零 entity_missing_outgoing 基线（631 -> 0），全库出边 < 2 预警正式清零
+
 ## [2026-11-28] lint | 基于 #3997 推进并行出边治理：为 500 个历史 wiki/entities 页面补齐方法与任务出边（含全部 229 个出边=1 与 271 个出边=0 节点），同步缩减 schema/lint-legacy-baseline.json 至 631 条（实时待治理剩余 569 篇）
 
 ## [2026-11-28] ingest | 收录 MoGe-4D：同一 RGB 输入的米制三维重建与稠密轨迹
