@@ -374,4 +374,10 @@
 - [x] 修复 `detail.html`「关联知识图谱」2D 模式节点拖拽后静止不回弹问题（`docs/main.js` `renderDetailMiniMap`）：接入对齐 `graph.html` 2D 的粘滞阻尼与向心回复力（`velocityDecay(0.54)` / `alphaDecay(0.04)` / `alphaMin(0.005)` / `forceX`/`forceY`），拖拽时以 `sim.alphaTarget(0.2).restart()` 联动牵引，松手释放 `fx`/`fy` 平滑回弹。
 - [x] 新增前端回归测试 `tests/tooltip-position-and-detail-rebound.test.cjs`，并通过 headless Chrome 实测验证零左上角闪现与 2D 拖拽回弹。
 
+## 2026-11-28 Modern Web Guidance Tier S 落地（Issue #4311）
+
+- [x] 对照 [`GoogleChrome/modern-web-guidance`](https://github.com/GoogleChrome/modern-web-guidance)（全量 206 篇指南 + `legacy-scan`）输出按 ROI 排序的全站可优化项清单，已归档至 [`modern-web-guidance-optimization-v1.md`](modern-web-guidance-optimization-v1.md)（Issue [#4311](https://github.com/ImChong/Robotics_Notebooks/issues/4311)）。
+- [x] 落地全部 **Tier S（#1–#7）**：IME 组字回车防误提交/误跳转（`kb-chat.js` / `main.js`）、`sponsor.js` 改为 `async fetchpriority="low"` 防阻塞 `defer` 队列、非图谱页底部静态脚本 `defer` 与 `fetchpriority`/`priority: 'low'` 调度、MPA Speculation Rules 悬停预取、屏下重区块 `content-visibility: auto`、Mermaid/Plotly CDN SRI + 全站 `Referrer-Policy`、`.kb-chat-input` `field-sizing: content` 自动增高，以及与主题切换圆形动画隔离的 `@view-transition` 跨文档视图过渡。
+
+
 

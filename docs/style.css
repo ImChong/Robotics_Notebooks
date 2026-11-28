@@ -1178,6 +1178,19 @@ a.hero-stat-num:focus-visible {
   pointer-events: none;
 }
 .home-hub-more { margin-top: 18px; font-size: .9rem; }
+/* 屏下独立重区块：延迟屏外布局与绘制，配 contain-intrinsic-size 避免滚动条跳动 */
+#home-hub-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 520px;
+}
+#detail-related:not([hidden]),
+#detail-recent-ingest-section:not([hidden]),
+#detail-recommended:not([hidden]),
+#detail-sources:not([hidden]),
+#detail-recent:not([hidden]) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 280px;
+}
 /* 仅首页这个入口居中：左对齐时会被左下角的 .home-nav-fab 浮动按钮压住（移动端尤其
    明显）。hubs.html 复用了 .home-hub-more，但那页没有该浮动按钮，保持左对齐。 */
 #home-hub-section .home-hub-more { text-align: center; }
@@ -5394,6 +5407,16 @@ html.is-theme-switching::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
+/* 跨文档视图过渡：仅在非减动偏好且非同文档主题切换时启用轻量交叉淡入 */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  html:not(.is-theme-switching)::view-transition-old(root),
+  html:not(.is-theme-switching)::view-transition-new(root) {
+    animation-duration: 0.18s;
+  }
+}
 html.is-theme-switching *,
 html.is-theme-switching *::before,
 html.is-theme-switching *::after {
@@ -6300,6 +6323,8 @@ a.kb-chat-citation-passage:hover {
 .kb-chat-input {
   flex: 1 1 auto;
   min-width: 0;
+  field-sizing: content;
+  height: auto;
   min-height: 38px;
   max-height: 84px;
   resize: none;

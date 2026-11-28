@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self'; worker-src 'self' blob:; frame-src https://challenges.cloudflare.com; connect-src 'self' data: blob: https://cdn.jsdelivr.net https://challenges.cloudflare.com https://*.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'" />
   <meta name="description" content="Robotics Notebooks 的 GitHub 星标、知识节点与纵深路线随时间变化的交互式趋势图，以及各社区、各纵深路线、各公司 / 实验室的节点数分布与技术路线时间线。" />
   <meta property="og:title" content="增长趋势 | Robotics Notebooks" />
@@ -20,7 +21,7 @@
   <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
-  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" async fetchpriority="low"></script>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0a0b0d" />
@@ -698,11 +699,20 @@
 
       var touch = window.matchMedia('(pointer: coarse)').matches;
       var plotlyPromise = null;
-      function loadScript(src) {
+      var PLOTLY_CDN_URL = 'https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js';
+      var PLOTLY_CDN_INTEGRITY = 'sha384-cCVCZkAjYNxaYKbM8lsArLznDF/SvMFr1jcZrvOpSTCa0W40ZAdLzHCEulnUa5i7';
+      function loadScript(src, attrs) {
         return new Promise(function (resolve, reject) {
           var s = document.createElement('script');
           s.src = src;
           s.async = true;
+          if (attrs && attrs.integrity) {
+            s.integrity = attrs.integrity;
+            s.crossOrigin = attrs.crossOrigin || 'anonymous';
+          }
+          if (attrs && attrs.referrerPolicy) {
+            s.referrerPolicy = attrs.referrerPolicy;
+          }
           s.onload = function () { resolve(); };
           s.onerror = function () { reject(new Error('Failed to load ' + src)); };
           document.head.appendChild(s);
@@ -717,7 +727,11 @@
             throw new Error('Plotly missing after vendor load');
           })
           .catch(function () {
-            return loadScript('https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js')
+            return loadScript(PLOTLY_CDN_URL, {
+              integrity: PLOTLY_CDN_INTEGRITY,
+              crossOrigin: 'anonymous',
+              referrerPolicy: 'no-referrer'
+            })
               .then(function () {
                 if (window.Plotly) return window.Plotly;
                 throw new Error('Plotly missing after CDN fallback');
