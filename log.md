@@ -527,6 +527,10 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-29] ingest | 更新 MAWAM v2 全文核对和 NVIDIA 正式项目页
+
+## [2026-11-29] ingest | 收录 Xing 4 技术报告与 Xing4.1-Preview 模型发布
+
 ## [2026-11-29] ingest | 收录 Contact Harness 与 Contact-4 仿真接触基准
 
 ## [2026-11-28] ingest | sources/papers/waco_arxiv_2611_24360.md — 收录 WACO 双锚点位姿补偿、LIBERO-PoseShift 基准和公开相机轨权重
