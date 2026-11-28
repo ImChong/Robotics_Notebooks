@@ -4,12 +4,12 @@
 - **中文标题：** MAWAM：用于协同操作的多智能体世界–动作模型
 - **机构：** NVIDIA（英伟达）、The University of Hong Kong（香港大学）、MIT（麻省理工学院）
 - **作者：** Xianzhe Fan, Chi-Pin Huang, Fu-En Yang, Jing Wang, Yecheng Wu, Yu-Cheng Chou, Johan Bjorck, Linxi “Jim” Fan, Jan Kautz, Yu-Chiang Frank Wang, Zhiding Yu, Hengshuang Zhao, Zhiqi Li
-- **原文：** https://arxiv.org/abs/2611.25105v1
-- **全文 HTML：** https://arxiv.org/html/2611.25105v1
-- **PDF：** https://arxiv.org/pdf/2611.25105v1
-- **项目页（论文所列）：** https://research-staging.nvidia.com/labs/lpr/mawam/
-- **版本与日期：** arXiv v1，2026-11-18 提交；2026-11-21 入库
-- **核对范围：** 原文 HTML 完整正文 §§1–6、Figure 1–4、Tables 1–3、Appendices A–E（数学与归属、控制接口、训练超参、评测与消融、真机平台和推理时延）。
+- **原文：** https://arxiv.org/abs/2611.25105v2
+- **全文 HTML：** https://arxiv.org/html/2611.25105v2
+- **PDF：** https://arxiv.org/pdf/2611.25105v2
+- **项目页（论文所列）：** https://research.nvidia.com/labs/lpr/mawam/
+- **版本与日期：** 2026-11-18 首次提交；2026-11-20 修订至 arXiv v2；2026-11-29 复核
+- **核对范围：** v2 PDF 与 HTML 正文 §§1–6、Figure 1–4、Tables 1–3、Appendices A–E（数学与归属、控制接口、训练超参、评测与消融、真机平台和推理时延）。
 - **通读：** 已完成
 
 ## 方法与证据摘录
@@ -24,10 +24,12 @@
 8. **推理时的辨析**：测试时冻结未来 token 去噪，很多任务保持接近基线，但彻底移除未来 token，四臂交接 95%→0%；因此“训练未来监督”“保留未来 token”“部署是否生成完整未来画面”并不等价（§4.3 / Table 8）。
 9. **部署/时延（Appendix E）**：真机单 H100、2 步联合去噪中位模型时间 **0.32 s**，执行 8 步约 **0.53 s**，不包含网络/物理执行。仿真单 L40 四步去噪四臂单样本 **1.85 s**，不能按真机时延外推。
 
+10. **协作时序与视频度量**：16 步队友暂停令接收者的启动延迟中位数为 +12 步（独立策略 +6），干预下成功率 99% 对 44%；变化画面上未来预测 PSNR 比复制末帧高 4–7 dB，而整帧分数不占优。参见图 4、附录 C.2 与 D。
+
 ## 局限
 
 - 作者实验只验证固定机器人组（最多 4 个仿真代理/机械臂），不涵盖成员动态增减、异构传感器/本体或人机共同操作；真机测试范围只含 3 任务 × 30 次。
-- 论文摘要和实现描述不等于有公开源码。官方 staging 项目页本次访问不可用；详情见 [项目页核查](../sites/mawam-nvidia-project.md)，不要猜测 GitHub/模型权重。
+- 正式 NVIDIA 项目页已可读取，代码入口仍为待发布；[项目页核查](../sites/mawam-nvidia-project.md) 区分演示与可下载工件。
 
 ## 对 wiki 的映射
 
