@@ -170,6 +170,8 @@ flowchart LR
 
 ### 推荐读什么
 
+- [RoboInF：操作指令保真度](../wiki/entities/paper-roboinf.md) — 同场景更换指令，比较任务达成与全部过程约束联合通过；清晰和随机外观用同一批案例。
+
 - [Embodied First Exam 失败分析](../wiki/entities/embodied-first-exam.md) — **Stage 3 过程指标实例**：用配对模式、阶段图和独立判据分开观察权限、重试、时序与失败归因；提示消融与策略榜单不使用同一分母。
 
 - [Benchmarking Physical Agency (WorldLeague)](../wiki/entities/paper-worldleague.md) — 以轨迹目标项与完整物理条件评测，区分问答、动作完成及最终目标。
