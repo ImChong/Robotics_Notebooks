@@ -3,7 +3,7 @@ type: entity
 project_id: driving-sgdrive
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-28
 arxiv: "2601.05640"
 code: https://github.com/LogosIntelligenceLab/SGDrive
 summary: "SGDrive：场景、关键交通参与者和短期目标的分层认知。在VLM中引入场景/agent/goal分层世界知识查询，通过block-wise attention避免信息泄漏，世界表征作为条件送入DiT扩散规划器，并可进行强化微调。"
@@ -92,6 +92,8 @@ sequenceDiagram
 
 ## 工程实践
 
+**官方发布复核（2026-11-28）：** 官方 HF 文件树已列出 QA 数据与 Stage 1、IL（Stage 2）、RL（Stage 3）权重文件；README 表头的 coming soon 不应当作这些已列文件都未发布的证据。NAVSIM v2 benchmark 发布项仍未勾选。
+
 官方仓库：https://github.com/LogosIntelligenceLab/SGDrive
 
 1. ```sh scripts/training/run_sgdrive_train_multi_node_2b.sh```
@@ -114,7 +116,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-部分权重仍有coming soon标记，需核对HF可得资产；训练缓存需求可达1–2TB；无法由PDMS推导真实道路安全。
+训练缓存需求可达 1–2 TB。NAVSIM v2 论文表格和公开可重跑的基准工具不是同一件事。
 
 真实上路安全和合规均不能由离线分数、仿真结果或开源状态单独证明。
 
@@ -125,6 +127,8 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 
 ## 参考来源
+
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
 
 - [论文核对记录](../../sources/papers/ad_top10_2026_sgdrive.md)
 - [官方源码入口](../../sources/repos/ad_top10_2026_sgdrive.md)

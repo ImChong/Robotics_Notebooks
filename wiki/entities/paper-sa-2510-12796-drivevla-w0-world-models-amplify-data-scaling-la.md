@@ -3,7 +3,7 @@ type: entity
 project_id: driving-drivevla-w0
 tags: [paper, curated-index, awesome-world-models, sun254667-wm, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-28
 arxiv: "2510.12796"
 venue: "arXiv 2025"
 code: https://github.com/BraveGroup/DriveVLA-W0
@@ -32,7 +32,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# DriveVLA-W0
+# DriveVLA-W0：借助世界建模扩展驾驶训练（World Modeling for Driving Data Scaling）
 
 **DriveVLA-W0: World Models Amplify Data Scaling Law in Autonomous Driving** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 422/571** 篇，分组 **82 Autonomous Driving**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
@@ -126,6 +126,8 @@ World models amplify data scaling laws in autonomous driving.
 
 ## 参考来源
 
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
+
 - [`sources/papers/sun_awesome_wm_2510_12796_drivevla-w0-world-models-amplify-data-sc.md`](../../sources/papers/sun_awesome_wm_2510_12796_drivevla-w0-world-models-amplify-data-sc.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
@@ -144,7 +146,7 @@ World models amplify data scaling laws in autonomous driving.
 
 ## 2026-11-18 官方原文复核与复现边界
 
-**训练时加入未来视觉世界监督。** 历史图像、驾驶指令和动作进入VLA；训练期通过VQ或扩散世界模型预测未来图像形成稠密监督；推理时动作专家生成waypoints。
+**训练时加入预测式视觉世界监督。** 历史图像、驾驶指令和动作进入VLA；训练期用 VQ/AR 的当前帧视觉 token 或 ViT/扩散的下一帧潜变量提供稠密监督；推理时动作专家生成waypoints。
 
 - **原始指标：** 公开NAVSIM实验配置及模型权重；脚本名PDMS_87.2是具体配置名称。
 - **开源边界：** 世界模型在训练期辅助学习，不能把视觉生成指标直接当成驾驶规划安全指标。
@@ -183,6 +185,8 @@ sequenceDiagram
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_drivevla-w0.md)和[代码入口](../../sources/repos/ad_top10_2026_drivevla-w0.md)。
 
 ## 工程实践
+
+**官方发布复核（2026-11-28）：** 论文 §3.2 区分两种视觉监督：VQ/AR 根据过去观测和动作预测当前帧的离散视觉 token；ViT/扩散利用当前特征预测下一帧潜变量。驾驶推理通常绕过显式图像生成。公开 quick start 使用 Emu3 flow-matching 动作专家，脚本名的 87.2 与论文表中使用不同训练规模或变体的成绩不可互换。
 
 官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
 

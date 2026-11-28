@@ -3,7 +3,7 @@ type: entity
 project_id: driving-alpamayo-r1
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-28
 arxiv: "2511.00088"
 code: https://github.com/NVlabs/alpamayo
 summary: "Alpamayo 1：因果链推理与扩散动作专家。多相机和自车历史经 Cosmos-Reason VLM 处理，Chain of Causation（CoC）训练场景解释，扩散轨迹专家预测未来 6.4 秒（64 waypoint）。"
@@ -86,6 +86,31 @@ sequenceDiagram
 
 ## 工程实践
 
+**官方发布复核（2026-11-28）：** 推理仓对应 Alpamayo 1（R1-10B），示例调用需获权访问的权重及 Physical AI AV 数据。SFT 和开环 RL 配方迁到独立 Recipes 仓；可训练不等于已下载论文的 RL 后训练权重。
+
+
+### 官方开环 RL 配方调用链
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Dev as 研究者
+  participant CLI as cosmos-rl 与 TOML
+  participant Entry as alpamayo_cosmos_rl_post_training_entry.py
+  participant Roll as Rollout 副本
+  participant Policy as GRPO 策略副本
+  participant Export as convert_cosmos_rl_checkpoint.py
+  Dev->>CLI: 指定初始权重和 rollout 配置
+  CLI->>Entry: 启动运动奖励 Python 入口
+  Entry->>Roll: 注册模型与 rollout，以日志片段生成轨迹
+  Roll-->>CLI: 返回 rollout 与奖励信号
+  CLI->>Policy: 分发训练批次
+  Policy-->>Roll: 经控制器同步策略权重
+  Dev->>Export: 将训练产出的 checkpoint 转为推理目录
+```
+
+此图对应 [Recipes 的 motion-reward 示例](https://github.com/NVlabs/alpamayo-recipes/tree/622f9d23ff9e4961ba8c6aac71367776cdf6b016/recipes/alpamayo1_x_rl)，不是 AlpaSim 闭环，也不是已获得论文后训练权重。
+
 官方仓库：https://github.com/NVlabs/alpamayo
 
 1. ```python src/alpamayo_r1/test_inference.py```
@@ -117,6 +142,8 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 
 ## 参考来源
+
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
 
 - [论文核对记录](../../sources/papers/ad_top10_2026_alpamayo-r1.md)
 - [官方源码入口](../../sources/repos/ad_top10_2026_alpamayo-r1.md)

@@ -3,7 +3,7 @@ type: entity
 project_id: driving-worldengine
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-28
 arxiv: "2606.19836"
 code: https://github.com/OpenDriveLab/WorldEngine
 summary: "WorldEngine：高保真闭环仿真与长尾驾驶强化后训练。真实日志经MTGS三维高斯重建形成SimEngine交互环境，AlgEngine中的VADv2闭环策略产生反馈，失败样本筛选后用于安全约束强化后训练；论文提出Behavior World Model。"
@@ -89,6 +89,8 @@ sequenceDiagram
 
 ## 工程实践
 
+**官方发布复核（2026-11-28）：** 公开 Quick Test 用既有 VADv2 检查点在 navtest_failures 上执行闭环；官方已发布稳定检查点，并在 2026-10-27 更新 navtrain/navtest 缓存。Quick Test 脚本默认读 `ckpts/e2e_vadv2_50pct_ep8.pth`，发布目录实际在 `ckpts/vadv2/` 下；保留原目录下载时，先令脚本路径与实际文件一致。论文完整的 Behavior World Model 集成仍是仓库未完成项，不能用 Quick Test 结果冒充论文全量后训练复现。
+
 官方仓库：https://github.com/OpenDriveLab/WorldEngine
 
 1. ```export WORLDENGINE_ROOT=$(pwd)```
@@ -121,6 +123,8 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 
 ## 参考来源
+
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
 
 - [论文核对记录](../../sources/papers/ad_top10_2026_worldengine.md)
 - [官方源码入口](../../sources/repos/ad_top10_2026_worldengine.md)

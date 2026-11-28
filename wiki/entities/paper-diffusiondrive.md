@@ -10,7 +10,7 @@ tags:
   - navsim
   - hust
 status: complete
-updated: 2026-10-05
+updated: 2026-11-28
 venue: "CVPR 2025"
 arxiv: "2411.15139"
 code: https://github.com/hustvl/DiffusionDrive
@@ -118,7 +118,7 @@ sequenceDiagram
 | 报告点 | **PDMS 88.1**；RTX 4090 约 **45 FPS**；去噪约 **2** 步 |
 | 对照 | 全步扩散规划、其他 E2E / VLA |
 
-## 与相邻路线对比
+## 与其他工作对比
 
 | 路线 | 相对 DiffusionDrive | 取舍 |
 |------|---------------------|------|
@@ -128,6 +128,8 @@ sequenceDiagram
 | [ForeDrive](./paper-foredrive.md) | 同为 HUST 的 DiT 轨迹扩散规划，额外接入 JEPA 式多时域潜在未来与 TAB 注意力偏置 | NAVSIM v1 89.9 PDMS（匹配 current-only Base 88.9）；单卡 H20 约 17 FPS，暂未开源 |
 
 ## 工程实践
+
+**官方发布复核（2026-11-28）：** 原版仓库提供 NAVSIM 和 nuScenes 权重入口。NAVSIM navtest 的 88.1 PDMS 行对应 60M、ResNet-34；nuScenes 的 ResNet-50 权重和轨迹误差表不是该分数的同一配置。不要混用原版与 DiffusionDriveV2。
 
 | 维度 | 记录 |
 |------|------|
@@ -163,6 +165,8 @@ sequenceDiagram
 - [VLA](../methods/vla.md)
 
 ## 参考来源
+
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
 
 - [深蓝AI：端到端自动驾驶十大前沿算法盘点](../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md)
 - [e2e_ad_diffusiondrive.md](../../sources/papers/e2e_ad_diffusiondrive.md) — 论文 source

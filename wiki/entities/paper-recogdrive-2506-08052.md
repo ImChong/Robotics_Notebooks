@@ -3,7 +3,7 @@ type: entity
 project_id: driving-recogdrive
 tags: [paper, autonomous-driving, vla]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-28
 arxiv: "2506.08052"
 code: https://github.com/xiaomi-research/recogdrive
 summary: "ReCogDrive：驾驶认知引导扩散规划与DiffGRPO。三阶段驾驶问答知识生成、提炼、质检微调InternVL3；将VLM隐状态送入DiT连续轨迹规划；DiffGRPO用规划奖励对扩散去噪策略进行后训练。"
@@ -90,6 +90,8 @@ sequenceDiagram
 
 ## 工程实践
 
+**官方发布复核（2026-11-28）：** 官方仓库给出 2B 与 8B 的 VLM、IL、RL 检查点和训练入口；README 仍把 DriveLM、NAVSIM 2.0、DriveBench 的评测框架列为待办。论文或 README 有结果不代表同协议的评测器可重跑。
+
 官方仓库：https://github.com/xiaomi-research/recogdrive
 
 1. ```cd internvl_chat && sh ./shell/internvl3.0/2nd_finetune/internvl3_8b_dynamic_res_2nd_finetune_recogdrive_pretrain.sh```
@@ -124,6 +126,8 @@ sequenceDiagram
 - [生成式世界模型](../methods/generative-world-models.md)
 
 ## 参考来源
+
+- [官方代码、发布资产与固定版本核对](../../sources/repos/autonomous-driving-official-repo-refresh-2026-11-28.md)
 
 - [论文核对记录](../../sources/papers/ad_top10_2026_recogdrive.md)
 - [官方源码入口](../../sources/repos/ad_top10_2026_recogdrive.md)
