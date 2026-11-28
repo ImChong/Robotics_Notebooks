@@ -1019,3 +1019,160 @@ test('KB node trend queries fetch graph-stats.json, inject pre-computed trends, 
     assert.equal((await rFail.json()).code, 'TREND_DATA_UNAVAILABLE');
   });
 });
+
+test('boundedDamerauDistance and selectRelevantPassagesWithMeta handle typos, separators, and Chinese fuzzy queries without false positives', async () => {
+  const mod = await import(workerUrl);
+  assert.equal(mod.boundedDamerauDistance('difusion', 'diffusion', 2), 1);
+  assert.equal(mod.boundedDamerauDistance('humnaoid', 'humanoid', 2), 1);
+  assert.equal(mod.boundedDamerauDistance('sim2rael', 'sim2real', 2), 1);
+  assert.equal(mod.boundedDamerauDistance('全神控制', '全身控制', 1), 1);
+  assert.equal(mod.boundedDamerauDistance('dinner', 'humanoid', 1), 2);
+
+  const bodies = [
+    {
+      version: 'v1',
+      id: 'wiki-concepts-wbc',
+      content_markdown: '# 全身控制（WBC）\n\n## 核心原理\n\n全身控制（Whole-Body Control, WBC）协调双足与人形机器人的质心与接触力。',
+    },
+    {
+      version: 'v1',
+      id: 'wiki-methods-dp',
+      content_markdown: '# Diffusion Policy（扩散策略）\n\n## 机制\n\nDiffusion Policy 使用条件扩散模型迭代去噪预测动作。',
+    },
+    {
+      version: 'v1',
+      id: 'wiki-concepts-sim2real',
+      content_markdown: '# Sim2Real（仿真到真机）\n\n## 域随机化\n\nSim2Real 通过域随机化缩小仿真到真机迁移差距。',
+    },
+  ];
+
+  const rTypo = mod.selectRelevantPassagesWithMeta(bodies, 'What is difusion policy?');
+  assert.ok(rTypo.passages.length >= 1);
+  assert.equal(rTypo.passages[0].id, 'wiki-methods-dp');
+  assert.ok(rTypo.fuzzyMatches.some((m) => m.from === 'difusion' && m.to === 'diffusion'));
+
+  const rSep = mod.selectRelevantPassagesWithMeta(bodies, 'how does sim 2 real work?');
+  assert.ok(rSep.passages.length >= 1);
+  assert.equal(rSep.passages[0].id, 'wiki-concepts-sim2real');
+  assert.ok(rSep.fuzzyMatches.some((m) => m.from === 'sim 2 real' && m.to === 'sim2real'));
+
+  const rCjkTypo = mod.selectRelevantPassagesWithMeta(bodies, '全神控制的原理');
+  assert.ok(rCjkTypo.passages.length >= 1);
+  assert.equal(rCjkTypo.passages[0].id, 'wiki-concepts-wbc');
+  assert.ok(rCjkTypo.fuzzyMatches.some((m) => m.from === '全神控制' && m.to === '全身控制'));
+
+  const rCjkSkip = mod.selectRelevantPassagesWithMeta(bodies, '仿真真机怎么缩小差距');
+  assert.ok(rCjkSkip.passages.length >= 1);
+  assert.equal(rCjkSkip.passages[0].id, 'wiki-concepts-sim2real');
+  assert.ok(rCjkSkip.fuzzyMatches.some((m) => m.from === '仿真真机' && m.to === '仿真到真机'));
+
+  const rExact = mod.selectRelevantPassagesWithMeta(bodies, '什么是全身控制 WBC？');
+  assert.ok(rExact.passages.length >= 1);
+  assert.deepEqual(rExact.fuzzyMatches, []);
+
+  for (const offQ of [
+    '今天晚饭吃什么比较健康',
+    'what is the weather in tokyo tomorrow',
+    'what to eat for dinner today',
+    'how to bake a chocolate cake',
+  ]) {
+    const rOff = mod.selectRelevantPassagesWithMeta(bodies, offQ);
+    assert.deepEqual(rOff.passages, [], `expected 0 passages for "${offQ}"`);
+    assert.deepEqual(rOff.fuzzyMatches, [], `expected 0 fuzzyMatches for "${offQ}"`);
+  }
+});
+
+test('POST /chat recalls fuzzy passages, returns fuzzyMatches, and rejects off-topic queries with 0 AI calls', async () => {
+  const mod = await import(workerUrl);
+  const worker = mod.default;
+  const { env, aiCalls } = makeEnv();
+
+  await withMockFetch(async (url) => {
+    if (String(url).includes('turnstile')) {
+      return new Response(JSON.stringify({ success: true, hostname: 'imchong.github.io' }), { status: 200 });
+    }
+    if (String(url).includes(HASH_A)) {
+      return new Response(
+        JSON.stringify({
+          version: 'v1',
+          id: 'wiki-methods-dp',
+          content_markdown: '# Diffusion Policy\n\n## 核心原理\n\nDiffusion Policy 基于条件扩散去噪生成机器人动作。',
+        }),
+        { status: 200 },
+      );
+    }
+    return new Response(
+      JSON.stringify({
+        version: 'v1',
+        id: 'wiki-concepts-sim2real',
+        content_markdown: '# Sim2Real（仿真到真机）\n\n## 迁移方法\n\nSim2Real 通过域随机化缩小仿真到真机差距，并与人形机器人（Humanoid）全身控制（WBC）配合。',
+      }),
+      { status: 200 },
+    );
+  }, async () => {
+    const fuzzyCases = [
+      { q: 'What is difusion policy?', lang: 'en', expectedFrom: 'difusion', expectedTo: 'diffusion' },
+      { q: 'How does humnaoid wbc work?', lang: 'en', expectedFrom: 'humnaoid', expectedTo: 'humanoid' },
+      { q: 'sim 2 real', lang: 'en', expectedFrom: 'sim 2 real', expectedTo: 'sim2real' },
+      { q: '全神控制的原理', lang: 'zh', expectedFrom: '全神控制', expectedTo: '全身控制' },
+      { q: '仿真真机怎么缩小差距', lang: 'zh', expectedFrom: '仿真真机', expectedTo: '仿真到真机' },
+    ];
+
+    for (let i = 0; i < fuzzyCases.length; i += 1) {
+      const tc = fuzzyCases[i];
+      const resp = await worker.fetch(
+        chatRequest(
+          {
+            question: tc.q,
+            lang: tc.lang,
+            turnstileToken: `tok-fuzzy-${i}`,
+            contentHashes: [HASH_A, HASH_B],
+          },
+          { 'CF-Connecting-IP': `198.51.100.${130 + i}` },
+        ),
+        env,
+        null,
+      );
+      assert.equal(resp.status, 200);
+      const data = await resp.json();
+      assert.equal(data.ok, true);
+      assert.equal(data.mode, 'ai');
+      assert.equal(data.grounded, true);
+      assert.ok(Array.isArray(data.fuzzyMatches) && data.fuzzyMatches.length >= 1);
+      assert.ok(
+        data.fuzzyMatches.some((m) => m.from === tc.expectedFrom && m.to === tc.expectedTo),
+        `expected ${tc.expectedFrom} -> ${tc.expectedTo} in ${JSON.stringify(data.fuzzyMatches)}`,
+      );
+    }
+    assert.equal(aiCalls.length, fuzzyCases.length);
+
+    const callsBeforeOffTopic = aiCalls.length;
+    for (let j = 0; j < 4; j += 1) {
+      const offQs = [
+        '今天晚饭吃什么比较健康',
+        'what is the weather in tokyo tomorrow',
+        'what to eat for dinner today',
+        'how to bake a chocolate cake',
+      ];
+      const offResp = await worker.fetch(
+        chatRequest(
+          {
+            question: offQs[j],
+            lang: j === 0 ? 'zh' : 'en',
+            turnstileToken: `tok-off-${j}`,
+            contentHashes: [HASH_A, HASH_B],
+          },
+          { 'CF-Connecting-IP': `198.51.100.${150 + j}` },
+        ),
+        env,
+        null,
+      );
+      assert.equal(offResp.status, 200);
+      const offData = await offResp.json();
+      assert.equal(offData.mode, 'ungrounded');
+      assert.equal(offData.grounded, false);
+      assert.deepEqual(offData.citations, []);
+    }
+    assert.equal(aiCalls.length, callsBeforeOffTopic);
+  });
+});
