@@ -324,6 +324,7 @@ flowchart LR
 - 完整成长路线参考：[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [Sim2Real](depth-sim2real.md) — 评测 gap 与真机部署对照
+  - [机器人建模与数字孪生](depth-robot-modeling-digital-twin.md) — 本路线所依赖的标定仿真底座与孪生体自身 V&V 验证流程
   - [具身数据](depth-embodied-data.md) — 飞轮的验收侧
   - [VLA](depth-vla.md) — 认知/操作成功率评测的主要对象
   - [RL 运动控制](depth-rl-locomotion.md) — 运控指标与跟踪评测

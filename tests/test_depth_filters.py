@@ -122,6 +122,8 @@ const cases = [
   ['wam', 'wiki/entities/cosmos-3.md'],
   ['cross-embodiment', 'wiki/entities/paper-x-wbc.md'],
   ['loco-manipulation', 'wiki/entities/paper-resmimic.md'],
+  ['robot-modeling-digital-twin', 'wiki/concepts/digital-twin.md'],
+  ['robot-modeling-digital-twin', 'wiki/comparisons/urdf-vs-mjcf-vs-sdf-vs-openusd.md'],
 ];
 const failed = [];
 for (const [depth, id] of cases) {

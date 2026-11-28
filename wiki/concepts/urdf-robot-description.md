@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, urdf, kinematics, dynamics, modeling, ros]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-28
 related:
   - ../entities/freecad.md
   - ../entities/pinocchio.md
@@ -113,6 +113,8 @@ flowchart LR
 - [轮式双臂人形 URDF 建模与工具链](../queries/wheeled-dual-arm-humanoid-urdf-workflow.md) — 从 CAD 零位到 ROS 2 和多仿真器交付的七步流程
 - [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — `<inertial>` 与台秤 / $g(q)$ / 辨识回归的对照清单
 - [URDF2Ontology（arXiv:2611.13850）](../entities/paper-urdf2ontology.md) — 把 URDF 运动学图转成可推理的 OWL 语义本体，补充几何/动力学模型不直接表达的能力关系
+- [URDF vs MJCF vs SDF vs OpenUSD](../comparisons/urdf-vs-mjcf-vs-sdf-vs-openusd.md) — 四大机器人描述格式在拓扑、惯量、执行器、传感器与协作能力上的横向选型
+- [机器人数字孪生](./digital-twin.md) · [机器人建模与数字孪生纵深路线](../../roadmap/depth-robot-modeling-digital-twin.md) — 从 CAD 准备到 URDF/MJCF/USD 与 SIL/HIL 孪生闭环的完整路径
 
 ## 推荐继续阅读
 

@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 30 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 31 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -20,7 +20,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（30 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（31 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'pcb-design',
@@ -29,6 +29,7 @@
     'torque-motor-design',
     'classical-control',
     'humanoid-hardware-design',
+    'robot-modeling-digital-twin',
     'safe-control',
     'rsi',
     'contact-manipulation',
@@ -63,6 +64,7 @@
     'torque-motor-design': 'roadmap/depth-torque-motor-design.md',
     'classical-control': 'roadmap/depth-classical-control.md',
     'humanoid-hardware-design': 'roadmap/depth-humanoid-hardware-design.md',
+    'robot-modeling-digital-twin': 'roadmap/depth-robot-modeling-digital-twin.md',
     'safe-control': 'roadmap/depth-safe-control.md',
     'rsi': 'roadmap/depth-rsi.md',
     'contact-manipulation': 'roadmap/depth-contact-manipulation.md',
@@ -273,6 +275,73 @@
         'wiki/overview/hub-communication.md',
         'wiki/overview/hub-systems-engineering.md',
         'wiki/overview/hub-actuator-drive-chain.md'
+      ])
+    },
+    'robot-modeling-digital-twin': {
+      segments: new Set([
+        'urdf', 'mjcf', 'sdformat', 'openusd', 'usd', 'simready',
+        'digital-twin', 'step2urdf', 'urdf-studio', 'text-to-cad', 'cad',
+        'cadquery', 'gencad', 'freecad', 'openscad', 'armature',
+        'software-in-the-loop', 'hardware-in-the-loop', 'processor-in-the-loop',
+        'parametric-cad', 'robot-model-description', 'robot-simulation-integration',
+        'robot-sensor-integration'
+      ]),
+      ids: mergeIds('robot-modeling-digital-twin', [
+        'wiki/concepts/digital-twin.md',
+        'wiki/comparisons/urdf-vs-mjcf-vs-sdf-vs-openusd.md',
+        'wiki/concepts/urdf-robot-description.md',
+        'wiki/concepts/robot-simulation-three-layers.md',
+        'wiki/concepts/robot-dynamics-simulation-vs-calibration.md',
+        'wiki/concepts/robot-link-and-rotor-inertia.md',
+        'wiki/concepts/armature-modeling.md',
+        'wiki/concepts/humanoid-parallel-joint-kinematics.md',
+        'wiki/concepts/implicit-explicit-actuator-modeling.md',
+        'wiki/concepts/joint-friction-models.md',
+        'wiki/concepts/contact-dynamics.md',
+        'wiki/concepts/differentiable-simulation.md',
+        'wiki/concepts/software-in-the-loop.md',
+        'wiki/concepts/hardware-in-the-loop.md',
+        'wiki/concepts/processor-in-the-loop-sim2real.md',
+        'wiki/concepts/system-identification.md',
+        'wiki/concepts/humanoid-closed-loop-inertia-calibration.md',
+        'wiki/concepts/simulation-evaluation-infrastructure.md',
+        'wiki/concepts/physics-fidelity-sim2real-gap.md',
+        'wiki/comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md',
+        'wiki/comparisons/3d-as-code-to-robot-simulation.md',
+        'wiki/comparisons/robot-description-catalogs.md',
+        'wiki/queries/simulation-physics-fidelity.md',
+        'wiki/queries/simulator-selection-guide.md',
+        'wiki/queries/wheeled-dual-arm-humanoid-urdf-workflow.md',
+        'wiki/queries/urdf-link-inertia-real-robot-check.md',
+        'wiki/methods/parametric-cad-workflow.md',
+        'wiki/methods/robot-model-description-workflow.md',
+        'wiki/methods/robot-simulation-integration.md',
+        'wiki/methods/robot-sensor-integration.md',
+        'wiki/methods/robot-simulation-scene-generation.md',
+        'wiki/entities/adams.md',
+        'wiki/entities/freecad.md',
+        'wiki/entities/nvidia-usd-brep-smlib.md',
+        'wiki/entities/nvidia-learn-openusd.md',
+        'wiki/entities/nvidia-omniverse.md',
+        'wiki/entities/nvidia-simready-central.md',
+        'wiki/entities/lightwheel-simready.md',
+        'wiki/entities/omnigraph.md',
+        'wiki/entities/isaac-sim.md',
+        'wiki/entities/mujoco.md',
+        'wiki/entities/mujoco-sysid.md',
+        'wiki/entities/gazebo-sim.md',
+        'wiki/entities/newton-physics.md',
+        'wiki/entities/genesis-sim.md',
+        'wiki/entities/drake.md',
+        'wiki/entities/pinocchio.md',
+        'wiki/entities/prime-system-id.md',
+        'wiki/entities/g1-pushrod-ankle-closed-loop-modeling.md',
+        'wiki/entities/step2urdf.md',
+        'wiki/entities/urdf-studio.md',
+        'wiki/entities/stackforce.md',
+        'wiki/entities/robot-viewer.md',
+        'wiki/entities/mjswan.md',
+        'wiki/entities/paper-urdd-universal-robot-description-directory.md'
       ])
     },
     'safe-control': {
@@ -810,6 +879,12 @@
       label: '整机硬件（Humanoid Hardware）',
       wikiPath: DEPTH_HUB_IDS['humanoid-hardware-design'],
       description: '指标预算 → 机械 → 电气 → 通信 → 整机验收的硬件交付链。'
+    },
+    'robot-modeling-digital-twin': {
+      icon: 'digital-twin',
+      label: '机器人建模与数字孪生（Robot Modeling & Digital Twin）',
+      wikiPath: DEPTH_HUB_IDS['robot-modeling-digital-twin'],
+      description: 'CAD 准备 → URDF/MJCF/SDF/OpenUSD → 物理与闭链 → 仿真三层 → 标定 V&V → SIL/HIL 与数字孪生。'
     },
     'safe-control': {
       icon: 'shield',

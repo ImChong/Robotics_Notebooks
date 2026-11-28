@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, validation, hardware-in-the-loop, ros2, embedded-systems, isaac-sim, nvidia, physical-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-28
 related:
   - ./software-in-the-loop.md
   - ./sim2real.md
@@ -119,6 +119,7 @@ Martín & Emami（2008）提出 **RHILS** 四子系统：**用户界面、计算
 - [Hybrid Imitation Learning](../methods/hil-hybrid-imitation-learning.md) — **不同含义的 HIL**
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
 - [仿真物理保真度知识链枢纽](../overview/hub-physics-fidelity.md) — HIL 只把「控制器/算力」换成真件，环里的 plant 仍是仿真：几何 → 刚体动力学 → 接触/摩擦 → 执行器四层保真度取舍决定「HIL 通过、真机差一拍」出现在哪一层
+- [机器人数字孪生](./digital-twin.md) — HIL 作为连接实物硬件与仿真数字孪生闭环的验证阶段
 
 ## 参考来源
 

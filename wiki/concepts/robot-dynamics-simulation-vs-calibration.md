@@ -2,7 +2,7 @@
 type: concept
 tags: [robotics, dynamics, simulation, calibration, system-identification, sim2real, force-control]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-28
 original:
   - ../../sources/blogs/wechat_zanehub_dynamics_simulation_vs_calibration_2026-11-10.md
 related:
@@ -103,6 +103,7 @@ flowchart LR
 - [重力补偿](./gravity-compensation.md) · [关节摩擦模型](./joint-friction-models.md) · [摩擦补偿](./friction-compensation.md) · [逆动力学模型](./inverse-dynamics-model.md)
 - [人形闭环惯量标定](./humanoid-closed-loop-inertia-calibration.md) · [物理保真与 sim2real 差距](./physics-fidelity-sim2real-gap.md) · [Sim2Real](./sim2real.md) · [域随机化](./domain-randomization.md)
 - [Adams](../entities/adams.md) · [MuJoCo](../entities/mujoco.md) · [Isaac Sim](../entities/isaac-sim.md)
+- [机器人数字孪生](./digital-twin.md) · [机器人建模与数字孪生纵深路线](../../roadmap/depth-robot-modeling-digital-twin.md) — 正向仿真与反向标定如何闭环交付可信数字孪生
 
 ## 参考来源
 

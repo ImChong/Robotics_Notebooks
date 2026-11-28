@@ -32,13 +32,14 @@
     document: '<path d="M4.2 2.5h5.2l2.6 2.6v8.4H4.2V2.5Z"/><path d="M9.4 2.5v2.6H12M6 8h4M6 10.6h3"/>',
     'code-repo': '<path d="M5.5 4.8L2.5 8l3 3.2M10.5 4.8L13.5 8l-3 3.2M9 3.6L7 12.4"/>',
 
-    // 31 Depth roadmap topic icons (E3)
+    // 32 Depth roadmap topic icons (E3)
     pcb: '<rect x="5" y="5" width="6" height="6" rx="1"/><path d="M6.8 2.5V5M9.2 2.5V5M6.8 11v2.5M9.2 11v2.5M2.5 6.8H5M2.5 9.2H5M11 6.8h2.5M11 9.2h2.5"/>',
     gamepad: '<rect x="2.2" y="5" width="11.6" height="6.6" rx="3.1"/><path d="M5.6 7v2.6M4.3 8.3h2.6"/><circle cx="10.4" cy="7.7" r="0.7" fill="currentColor" stroke="none"/><circle cx="11.7" cy="9" r="0.7" fill="currentColor" stroke="none"/>',
     rocket: '<path d="M9.8 2.5c1.8.2 3.5 1.9 3.7 3.7l-3.9 3.9-3.7-3.7 3.9-3.9Z"/><path d="M5.9 6.4 3.4 7l2 2M9.6 10.1l-.6 2.5-2-2M3.3 12.7l1.8-1.8"/><circle cx="9.8" cy="6.2" r="0.9" fill="currentColor" stroke="none"/>',
     motor: '<circle cx="8" cy="8" r="3.4"/><circle cx="8" cy="8" r="1.1" fill="currentColor" stroke="none"/><path d="M8 2.3v2.1M8 11.6v2.1M2.3 8h2.1M11.6 8h2.1M4 4l1.5 1.5M10.5 10.5 12 12M12 4l-1.5 1.5M5.5 10.5 4 12"/>',
     'ruler-angle': '<path d="M3 13V3l10 10H3Z"/><path d="M5.5 10.5V7.8l2.7 2.7H5.5Z"/>',
     wrench: '<path d="M10.4 2.8a3.2 3.2 0 0 0-3.7 4.4L3 10.9a1.4 1.4 0 0 0 2 2l3.7-3.7a3.2 3.2 0 0 0 4.4-3.7l-1.9 1.9-1.6-1.6 1.8-1.8a3.2 3.2 0 0 0-1-1.2Z"/>',
+    'digital-twin': '<rect x="2.2" y="4.2" width="5.2" height="7.6" rx="1"/><rect x="8.6" y="4.2" width="5.2" height="7.6" rx="1" stroke-dasharray="1.8 1.4"/><path d="M7.4 6.5h1.2M7.4 9.5h1.2"/>',
     shield: '<path d="M8 2.4 12.8 4.2v3.7c0 2.9-2 4.9-4.8 5.8-2.8-.9-4.8-2.9-4.8-5.8V4.2L8 2.4Z"/><path d="M6 8l1.4 1.4L10.3 6.5"/>',
     cycle: '<path d="M12.6 7a4.8 4.8 0 0 0-8.4-2.1M3.4 9a4.8 4.8 0 0 0 8.4 2.1"/><path d="M4.1 2.7v2.3h2.3M11.9 13.3V11H9.6"/>',
     gripper: '<path d="M8 2.5v2.8M5.4 5.3h5.2M5.4 5.3 3.7 9l2 2.7M10.6 5.3l1.7 3.7-2 2.7"/><circle cx="8" cy="11.2" r="1.4"/>',
@@ -72,6 +73,7 @@
     'torque-motor-design': 'motor',
     'classical-control': 'ruler-angle',
     'humanoid-hardware-design': 'wrench',
+    'robot-modeling-digital-twin': 'digital-twin',
     'safe-control': 'shield',
     rsi: 'cycle',
     'contact-manipulation': 'gripper',

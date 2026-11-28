@@ -244,6 +244,7 @@ flowchart LR
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [RL 运动控制](depth-rl-locomotion.md) — 本路线最常见的策略训练上游
   - [Real2Sim](depth-real2sim.md) — 反向补集：修仿真资产 vs 把策略搬上真机
+  - [机器人建模与数字孪生](depth-robot-modeling-digital-twin.md) — 上游正向建模与 V&V 标定底座（Stage 1 执行器与模型对齐直接消费其标定资产）
   - [具身测评](depth-embodied-eval.md) — sim↔real 校准与评测 gap
   - [力矩电机设计](depth-torque-motor-design.md) — 执行器层 gap 的硬件源头
 

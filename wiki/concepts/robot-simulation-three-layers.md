@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, mujoco, isaac-lab, genesis, mjlab, soft-body, sim2real, physics-engine, reinforcement-learning]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-28
 related:
   - ../overview/robot-training-stack-layers-technology-map.md
   - ../queries/simulator-selection-guide.md
@@ -174,6 +174,7 @@ flowchart TB
 - [Sim2Real](sim2real.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) — 同源 GitHub 知识库入口
 - [NIDAR](../entities/paper-nidar.md) — 由 RGB 估计伪 NIR 并校准，为仿真点云合成 LiDAR 强度样信号（传感器渲染层实例）
+- [机器人数字孪生](./digital-twin.md) · [机器人建模与数字孪生纵深路线](../../roadmap/depth-robot-modeling-digital-twin.md) — 三层仿真如何承接 CAD/描述格式并迈向 SIL/HIL 双向孪生闭环
 
 ## 参考来源
 

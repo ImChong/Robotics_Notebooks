@@ -272,6 +272,7 @@ flowchart LR
   - [传统模型控制](depth-classical-control.md) — 消费本路线交付的质心高度与惯量参数
   - [遥操作](depth-teleoperation.md) — 整机通信延迟与力反馈接口的下游用户
   - [Sim2Real](depth-sim2real.md) — 执行器与整机参数如何进仿真
+  - [机器人建模与数字孪生](depth-robot-modeling-digital-twin.md) — 直接消费本路线 Stage 1/6 的 CAD 装配体与实测参数，完成 URDF/MJCF/USD 管线、V&V 与 SIL/HIL 孪生闭环
 - 关联知识页：
   - [Humanoid Hardware 101：七类子系统技术地图](../wiki/overview/humanoid-hardware-101-technology-map.md)
   - [Humanoid 执行器 102：八章技术地图](../wiki/overview/humanoid-actuator-102-technology-map.md)

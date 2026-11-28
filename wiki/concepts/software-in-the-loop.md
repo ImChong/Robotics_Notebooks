@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, isaac-sim, ros2, software-in-the-loop, validation, nvidia, physical-ai]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-28
 related:
   - ../entities/isaac-sim.md
   - ../entities/nvidia-physical-ai-learning.md
@@ -130,6 +130,7 @@ flowchart LR
 - [NVIDIA Spatial Intelligence Lab](../entities/nvidia-spatial-intelligence-lab.md) — **不同含义的 SIL**
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — SIL 通过后仍要逐层核的保真度投资判据
+- [机器人数字孪生](./digital-twin.md) — SIL 在 Digital Model → Shadow → Twin 演进链中的位置
 
 ## 参考来源
 

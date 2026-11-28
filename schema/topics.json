@@ -338,7 +338,8 @@
         "wiki/comparisons/mujoco-vs-isaac-lab.md",
         "wiki/overview/sim-platforms-decade-technology-map.md",
         "wiki/overview/hub-physics-fidelity.md",
-        "wiki/overview/paper-notebook-category-11-simulation-benchmark.md"
+        "wiki/overview/paper-notebook-category-11-simulation-benchmark.md",
+        "roadmap/depth-robot-modeling-digital-twin.md"
       ],
       "tags": [
         "simulation",
