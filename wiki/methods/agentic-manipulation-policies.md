@@ -122,6 +122,8 @@ Apple 的 RoboLab-120 实验同时变更了模型与 harness，报告 AMP1 + Gem
 
 ## 关联页面
 
+- [Boundary-Aware Policy Learning](../entities/paper-bapl-boundary-aware-policy-learning.md) — 训练接触段策略并显式规定交接条件，再用成功轨迹把可接管时点前移。
+
 - [PyRUA-Dex](../entities/paper-pyrua-dex.md) — 把编码 Agent 的任务探索转为可独立执行的双手程序策略；当前 dex 分支仅提供介绍与示意图。
 - [SEEK](../entities/paper-seek.md) — 固定多模态模型，持久积累执行动作及其效果以改进程序策略。
 - [RoboEvo²](../entities/paper-roboevo2-2611-34675.md) — 一起演化上层训练与执行 harness 和下层策略，作为只改提示或仅写入记忆的对照。

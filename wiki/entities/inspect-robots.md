@@ -2,7 +2,11 @@
 type: entity
 tags: [framework, evaluation, benchmark, open-source, physical-ai, vla, llm-agent, rerun, robocurve, ros, isaac-lab, unitree, g1, gr00t]
 status: complete
-updated: 2026-10-04
+updated: 2026-11-28
+project_id: inspect-robots
+project: https://docs.inspectrobots.org/
+original:
+  - ../../sources/repos/robodeltas_inspect_robots.md
 code: https://github.com/robocurve/inspect-robots
 related:
   - ./robocurve.md
@@ -17,13 +21,14 @@ related:
   - ../concepts/sim-vs-real-eval-gap.md
   - ../methods/vla.md
 sources:
+  - ../../sources/repos/robodeltas_inspect_robots.md
   - ../../sources/repos/robocurve_inspect_robots.md
   - ../../sources/repos/robocurve_inspect_robots_unitree_g1.md
   - ../../sources/sites/robocurve-org.md
 summary: "Robocurve 的开源 Physical AI 评测框架：以 Task/Scene、Policy 与 Embodiment 契约组织仿真或真机 rollout；G1 通过独立 GR00T 适配器接入，当前范围聚焦站立双臂操作，不代表全身运动评测。"
 ---
 
-# Inspect Robots
+# 机器人策略评测框架（Inspect Robots）
 
 **Inspect Robots**（[GitHub](https://github.com/robocurve/inspect-robots)，[文档](https://docs.inspectrobots.org/)，MIT）是 [Robocurve](./robocurve.md) 发布的 Physical AI 评测框架。它借鉴 Inspect AI 的任务/策略评测组织方式，将机器人评测中的任务定义、被测策略和机器人/仿真接口拆分，使同一任务能在不同**兼容**的 Policy × Embodiment 组合上执行，并保留可审计的 rollout 记录。
 
@@ -41,6 +46,15 @@ summary: "Robocurve 的开源 Physical AI 评测框架：以 Task/Scene、Policy
 | DDS | Data Distribution Service | G1 适配器使用的机器人通信中间件生态 |
 | EvalLog | Evaluation Log | schema 版本化的评测记录，保存配置、结果、统计和样本 |
 | RRD | Rerun Recording Data | Rerun 可视化录制文件；与主要 JSON EvalLog 分工不同 |
+
+## 核心信息
+
+| 项目 | 内容 |
+|---|---|
+| 框架主仓 | [robocurve/inspect-robots](https://github.com/robocurve/inspect-robots)，MIT，Alpha |
+| 本次核对 | [robodeltas/inspect-robots](https://github.com/robodeltas/inspect-robots) 默认分支 CoRL-harness-rework，提交 [f00acc1](https://github.com/robodeltas/inspect-robots/tree/f00acc1876125dd1ba072e7159ae6944e15ce7a4) |
+| 仓库关系 | 两个 GitHub 仓库 ID 不同，robodeltas 未标为 fork；上次归档的 d08442a 是该分支 HEAD 的共同基点，分支相对它多 9 个提交。不等同于主仓最新版或迁仓。 |
+| 文档 | [托管文档](https://docs.inspectrobots.org/) 在本次环境无法打开，核对使用 [固定版本的仓库文档](https://github.com/robodeltas/inspect-robots/tree/f00acc1876125dd1ba072e7159ae6944e15ce7a4/docs/guide) |
 
 ## 为什么重要
 
@@ -88,7 +102,38 @@ flowchart LR
 3. **记录后评分**：TrialRecord 保存步骤、策略 transcript、推理延迟等；Scorer 读取记录，避免评分器依赖瞬时环境状态。
 4. **留下可复核产物**：EvalLog JSON 保存规范化配置、状态、样本与指标；Rerun 负责时间序列可视化。Rerun 反压时可丢帧或 step，不能替代 JSON 评测日志。
 
-### 3. G1 + GR00T 接入示例：明确策略覆盖边界
+### 3. 源码运行时序（CoRL-harness-rework）
+
+```mermaid
+sequenceDiagram
+    participant U as CLI or Python API
+    participant E as Evaluator
+    participant C as Controller
+    participant P as Policy
+    participant A as Approver
+    participant B as Embodiment
+    participant L as Scorer and log sinks
+    U->>E: Resolve Task, Policy and Embodiment
+    E->>E: Bind spaces and assert compatibility
+    E->>B: Reset scene and obtain first observation
+    loop Each execution step
+      E->>C: Request action for current observation
+      opt Action chunk needs refresh
+        C->>P: Infer new action chunk
+        P-->>C: Return chunk
+      end
+      C-->>E: Return next action
+      E->>A: Review action
+      A-->>E: Pass, clamp or abort
+      E->>B: Step only after action passes checks
+      B-->>E: StepResult and next observation
+    end
+    E->>L: Record trial, score eligible rollouts and write EvalLog
+```
+
+本时序来自[固定提交的评测与执行源码](../../sources/repos/robodeltas_inspect_robots.md)，不意味着每个动作都重新推理。核心循环没有独立的墙钟限速；真实控制节拍要核对具体本体适配层。此分支的 Agent 插件还在绝对动作模式区分持有的命令目标与真实状态读回：两者能比较时显示逐维差值，位移模式不展示固定目标；这只是诊断信号，不是基准评分或接触判定。
+
+### 4. G1 + GR00T 接入示例：明确策略覆盖边界
 
 Robocurve 的 [Unitree G1 adapter](https://github.com/robocurve/inspect-robots-unitree-g1) 是独立于核心仓的插件。README 描述的配置注册 g1_arms 本体和 gr00t policy，将策略与本体映射到 **16 维绝对关节位置**契约；G1 处于站立姿态，臂目标通过 rt/arm_sdk 发布并逐步混入已运行的全身控制器。
 
@@ -142,7 +187,17 @@ flowchart LR
 
 不要将示例命令当成完整 benchmark：可比较结果仍需固定任务、场景生成方式、成功判据、episode horizon、epoch reducer 和 checkpoint。
 
+## 与其他工作对比
+
+| 项目 | 核心职责 | 如何选用 |
+|---|---|---|
+| Inspect Robots | 在兼容的任务、策略、本体组合中执行试验并留存时序、评分与配置 | 需要比较 API 模型/VLA、不同适配层以及仿真和真机的执行证据 |
+| [XPolicyLab](./xpolicylab.md) | 统一接入不同 VLA 策略服务 | 主要问题是接通接口或更换策略，不应把服务适配当成基准或评分定义 |
+| [Isaac Lab-Arena](./isaac-lab-arena.md) | 在 Isaac Lab 内组织仿真任务与策略评测 | 主要问题是复用 Isaac Lab 的模拟场景；结果到真机仍需要另行验证 |
+
 ## 局限与风险
+
+- **分数不等于所有回合的成功率**：异常或中止回合仍有记录，却不作为完整轨迹评分；弃权不纳入平均。比较策略时同时记录计划、尝试、错误、弃权与计分回合，再核对各场景的 epoch reducer。所有尝试都报错时，源码不会把空分数报告成成功。
 
 - **Alpha API 与插件分仓**：核心仓当前标记 alpha；不同 rig、policy 服务端与底层 SDK 版本须显式锁定。
 - **接口兼容性不等于语义正确**：shape、枚举和观测键检查无法识别“看似同维但绝对/相对坐标含义不同”这类错误。
@@ -150,6 +205,10 @@ flowchart LR
 - **预检不验证真机安全**：dry-run 不连接硬件或服务；action 相对性、手指极性、通信连通性和机械空间需单独现场核验。
 - **评测质量取决于任务和评分**：框架不会自动让不同任务、rig、控制时长和 operator verdict 变得可比；任务集合通常来自独立仓。
 - **日志与可视化职责不同**：EvalLog 是评分与审计主记录；Rerun 面向查看，慢连接时允许降级流数据。
+
+## 结论
+
+把任务、策略和本体的契约版本以及计分分母固定下来，再用统一日志横向比较。先核查内置 mock 或仿真路径；真机适配、硬件安全和成功判据仍要独立验证。
 
 ## 关联页面
 
@@ -168,6 +227,7 @@ flowchart LR
 
 ## 参考来源
 
+- [robodeltas 默认分支源码与文档归档](../../sources/repos/robodeltas_inspect_robots.md)
 - [Inspect Robots 主仓归档](../../sources/repos/robocurve_inspect_robots.md)
 - [Unitree G1 adapter 归档](../../sources/repos/robocurve_inspect_robots_unitree_g1.md)
 - [Robocurve 站点归档](../../sources/sites/robocurve-org.md)
