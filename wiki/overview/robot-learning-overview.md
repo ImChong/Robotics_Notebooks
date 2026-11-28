@@ -1,17 +1,27 @@
 ---
 type: overview
-updated: 2026-08-05
+status: complete
+updated: 2026-11-29
 summary: "Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。"
+original:
+  - ../../sources/sites/robot-learning-overview-primary.md
+  - ../../sources/papers/dagger_reading_arxiv_1011_0686.md
+  - ../../sources/papers/domain_randomization_tobin_reading_arxiv_1703_06907.md
 sources:
+  - ../../sources/sites/robot-learning-overview-primary.md
+  - ../../sources/papers/dagger_reading_arxiv_1011_0686.md
+  - ../../sources/papers/domain_randomization_tobin_reading_arxiv_1703_06907.md
   - ../../sources/papers/survey_papers.md
 related:
   - ./china-embodied-ai-labs-landscape-2026.md
   - ./overseas-embodied-ai-labs-landscape-2026.md
 ---
 
-# Robot Learning Overview
+# Robot Learning Overview · 机器人学习概览
 
-**机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。
+## 一句话定义
+
+机器人学习用演示、环境交互或观测数据训练策略或预测模型，并通过控制器和机器人状态反馈，把学到的行为变成可验证的闭环任务执行。
 
 ## 英文缩写速查
 
@@ -25,25 +35,15 @@ related:
 
 ## 为什么重要
 
-传统机器人依赖精确建模和手工控制，缺点：
+当环境、接触状态或任务难以逐一写成规则时，可以用数据补足人工模型。学习策略与传统控制经常互补：策略选择行为，执行层处理稳定性、时效和物理约束。对有浮动基座、输入约束或接触切换的机器人，动作能被模型输出，并不意味着它能被硬件实现。
 
-- 对复杂环境建模困难
-- 手工调参成本高
-- 泛化能力差
-
-机器人学习的优势：
-
-- 从数据中自动提取有效策略
-- 能处理高维状态/动作空间
-- 在仿真中训练，迁移到真实机器人
-
-## 核心组成
+## 核心原理与组成
 
 ### 1. 强化学习（RL）
-从环境交互中学习最优策略。核心是 reward signal。
+用交互产生的轨迹和奖励优化预期累计回报；任务是否真的做成，还要用独立指标复核。
 
 ### 2. 模仿学习（IL）
-从专家演示中学习策略。核心是 demonstration。
+用专家示范学习策略。闭环中策略会改变自己的后续观测，示范拟合良好仍可能因误差累积而失败。
 
 ### 3. 预测模型
 学习环境动态模型，用于 planning 或 model-based RL。
@@ -198,6 +198,16 @@ flowchart TD
 - **计算机视觉**：感知模块的基础
 - **运动控制**：具体执行层面的基础
 
+## 工程实践
+
+以桌面抓取为起点：固定任务、物体范围与初始状态，定义“抓起后能稳定保持”的验收条件。先在仿真同时测任务成功、耗时、干预和失败类别，再用留出的物体摆位复测。移到真机前，对齐观测坐标、单位、关节顺序、动作语义和控制周期；核对超时、限位、停止与回退规则。用 [Sim2Real 工程 Checklist](../queries/sim2real-checklist.md#快速部署检查) 和 [真机调试 Playbook](../queries/robot-policy-debug-playbook.md) 验证整条闭环，而不是只比较训练曲线。
+
+## 局限与风险
+
+- **训练回报不能替代验收。** 奖励与任务成功、节拍或干预成本不一致时，应分别报告。
+- **离线拟合不能替代闭环。** DAgger 说明为什么专家分布上的误差不能直接外推到策略自己访问的状态；补采纠偏示范与重新验证闭环是不同环节。
+- **仿真能过不代表真机能过。** Tobin 等验证的是视觉域随机化对特定定位及抓取设置的迁移，不能据此推出时延、接触参数或执行器误差都能迁移。先辨别是观测偏移、控制接口还是动力学差异，再选择辨识、随机化或数据补采。
+
 ## 知识库维护方法论
 
 本知识库采用 Karpathy LLM Wiki 模式构建：LLM 作为维护者，人类作为 curator，通过 Ingest / Query / Lint 三类操作持续积累知识。
@@ -208,6 +218,9 @@ flowchart TD
 
 ## 参考来源
 
+- [Spinning Up 强化学习入门与 MIT 欠驱动机器人课程导论的原文核对](../../sources/sites/robot-learning-overview-primary.md)
+- [Ross 等：DAgger 与闭环分布偏移](../../sources/papers/dagger_reading_arxiv_1011_0686.md)
+- [Tobin 等：视觉域随机化与 Sim2Real](../../sources/papers/domain_randomization_tobin_reading_arxiv_1703_06907.md)
 - Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材
 - [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com) — 实践入门
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文教材与 PPO/SAC 代码（[hrl.boyuai.com](https://hrl.boyuai.com/)）
@@ -235,7 +248,7 @@ flowchart TD
 
 ## 推荐继续阅读
 
-- [Robot Learning Paper Notebooks 知识库索引](./humanoid-paper-notebooks-index.md) — 137 篇深读笔记按笔记主站 14 类分类的父/子节点总览
+- [Robot Learning Paper Notebooks 知识库索引](./humanoid-paper-notebooks-index.md) — 按论文笔记主站的 14 类主题导航
 - Sutton & Barto, *Reinforcement Learning: An Introduction*
 - [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com)
 - [动手学强化学习在线书](https://hrl.boyuai.com/chapter)
