@@ -170,6 +170,7 @@ flowchart LR
 
 ### 推荐读什么
 
+- [Robots’ Last Exam：长程职业流程仿真评测](../wiki/entities/robots-last-exam.md) — 分开测单步与整链交付，比较两类执行约束，验收交付物、相关过程和稳定性。
 - [Embodied First Exam 失败分析](../wiki/entities/embodied-first-exam.md) — **Stage 3 过程指标实例**：用配对模式、阶段图和独立判据分开观察权限、重试、时序与失败归因；提示消融与策略榜单不使用同一分母。
 
 - [Benchmarking Physical Agency (WorldLeague)](../wiki/entities/paper-worldleague.md) — 以轨迹目标项与完整物理条件评测，区分问答、动作完成及最终目标。
