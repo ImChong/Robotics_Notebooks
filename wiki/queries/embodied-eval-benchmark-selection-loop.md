@@ -153,6 +153,8 @@ flowchart TD
 - **可复现 vs 代表性**：仿真成功率**高吞吐、可复现、可控**，适合 recipe 迭代；但「魔法抓取」这类抽象化实现会**系统性虚高**成功率——ManiSkill-HAB 的意义正是把重排基准**落到真实低层操作**上，缩小这道代表性缺口。榜站聚合视图**不能替代**官方评测脚本与协议脚注；RoboDojo verified 条目另加 **云管线 + 开源产物** 约束。
 - **典型误判**：① **成功率均值掩盖长尾失败模式**——同样 80% 成功率，均匀失败 vs 集中在某类物体/初值上的失败，工程含义天差地别；② 单任务过拟合冒充跨任务泛化，需 Mimicking-Bench 这类**跨任务/跨物体**基准把关；③ 离线回放评测（固定初值重放）≠ 在线闭环评测（策略自己滚出轨迹），后者才暴露复合误差；④ **跨基准直接比榜**（LIBERO vs Meta-World vs RoboTwin）——[VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md) Methodology 明确禁止；⑤ **本地公开布局分 = RoboDojo verified 榜**——官方另有 hidden-layout 与开源门槛；⑥ **只报 SR、看不见过程**——走到 99% 与停在 5% 都叫失败；[PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) 用冻结 PRM 进度曲线给出 OPD（含 FNS/DRR/SQS），在冻结 [RoboDojo](../entities/robodojo.md) 视频上打乱 SR 排名；⑦ **仿真暂停世界掩盖延迟**——静态 LIBERO 高分不蕴含动态任务；[ReflexVLA](../entities/paper-reflexvla.md) 的 ReflexBench 把同步/异步延迟写进评测。
 
+[Contact-4（Contact Harness）](../entities/paper-contact-harness.md) 可对照同种子下的任务成功、耗时及力。论文六项总表和四项消融对力违规的判定不同，比较时先对齐成功条件。
+
 ## 4. ④ sim↔real 评测 gap 校准层：评测结论能否外推真机
 
 前三层多数在仿真里完成，最后必须回答**「仿真里测出来的结论，能不能外推到真机」**——否则再漂亮的仿真榜单也只是自证：
