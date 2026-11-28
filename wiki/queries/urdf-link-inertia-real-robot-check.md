@@ -2,8 +2,13 @@
 type: query
 tags: [urdf, inertia, sysid, sim2real, pinocchio, mujoco, cad, dynamics]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-28
 summary: "URDF 连杆惯量对照真机的分层抽检：约定与书桌物理一致性 → 称重/质心 → 静力学 g(q) → 动力学回归；CAD 数字不是力矩真值，10 参数也不能全部独立辨识。"
+original:
+  - ../../sources/papers/urdf_link_inertia_real_robot_check.md
+  - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
+  - ../../sources/papers/system_identification.md
+  - ../../sources/repos/pinocchio.md
 related:
   - ../concepts/urdf-robot-description.md
   - ../concepts/robot-link-and-rotor-inertia.md

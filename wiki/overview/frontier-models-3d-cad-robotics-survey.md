@@ -2,7 +2,7 @@
 type: overview
 tags: [survey, foundation-model, 3d-modeling, cad, robotics, agent, mcp, mit, csail, harness]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-28
 related:
   - ./hub-embodied-eval-benchmark.md
   - ./hub-state-estimation.md
@@ -18,16 +18,19 @@ sources:
   - ../../sources/papers/dou_frontier_3d_modeling_robotics_mit_csail_2026.md
   - ../../sources/sites/mit-cdfg-survey-ai-3d-modeling-robotics.md
   - ../../sources/repos/awesome-ai-3d-modeling-robotics.md
-summary: "MIT CDFG 2026 living survey：345 帖/243 case  horizon scan 前沿 agent 在 Blender/CAD/仿真/真机上的证据；三条主结论——3D/CAD 草稿工具、机器人离线写控、benchmark 必须固定 harness。"
+original:
+  - ../../sources/sites/mit-cdfg-survey-ai-3d-modeling-robotics.md
+  - ../../sources/repos/awesome-ai-3d-modeling-robotics.md
+summary: "MIT CDFG 2026 living survey（2026-09 243 case → 2026-11 实时版 1,800 帖/755 case/99 benchmark）：系统核验前沿 agent 在 Blender/CAD/仿真/真机上的证据；三条主结论——3D/CAD 草稿工具、机器人离线写控、benchmark 必须固定 harness。"
 ---
 
 # 前沿模型 × 3D / CAD / 机器人（MIT CDFG Living Survey）
 
 > **本页定位**：为 [MIT CDFG 2026 Living Survey](https://mit-cdfg.github.io/Survey-AI-for-3D-modeling-Robotics/) 提供 **按 harness 与开发模式组织的阅读坐标**；不复述 345 帖细节，只保留 **证据范围、三条主结论、接口 taxonomy、机器人离线/在线分界、评测归因与风险** 和本库已有实体的挂接。具身评测总入口见 [hub-embodied-eval-benchmark](./hub-embodied-eval-benchmark.md)。
 
-## 一句话观点
+## 一句话定义
 
-**公开 frontier 多模态模型（未任务微调、以 agent 形式接工具）已能产出工程师可编辑的 3D/CAD 草稿，并在仿真里离线合成可部署控制器；但 benchmark 数字几乎总是「模型 + harness」的系统成绩，真机快闭环与接触精细任务仍不可靠，物理安全与工程验收不能省略。**
+**MIT CDFG Living Survey 是一份按接口形态（Harness）、离线/在线模式与实证可复现等级持续核验前沿多模态模型在 3D 建模、参数化 CAD 与机器人控制中真实边界的实证综述**——核心结论为：**AI 已可胜任可编辑 3D/CAD 初稿与离线仿真写控，但真机快闭环与精细接触仍不可靠，任何得分都代表「模型 + harness」系统而非裸模型**。
 
 ## 英文缩写速查
 
@@ -41,20 +44,20 @@ summary: "MIT CDFG 2026 living survey：345 帖/243 case  horizon scan 前沿 ag
 | RL | Reinforcement Learning | 强化学习；survey 中离线 reward/环境合成与控制器训练 |
 | GUI | Graphical User Interface | Computer use 路径所自动化的桌面交互 |
 
-## 为什么需要单独读这条线
+## 为什么重要
 
 - 机器人社区常把 **「大模型会不会抓」** 与 **「大模型会不会建 sim / 写 reward / 修 CAD」** 混在同一 hype 桶里；本 survey 用 **offline development vs online operation** 和 **harness 表** 强制拆开。
-- 本库已有 [RoboDojo](../entities/robodojo.md)、[GPT 6 Astra 具身策略评测](../entities/paper-gpt-6-astra-embodied-policy.md) 等 **固定接口** 对照；MIT 报告把同一 RoboDojo 进度分（42 任务 **1→29/100**）放进 **更大范围的社区演示 corpus**，适合回答「论文 benchmark 之外 showcase 声称什么、多少可复现」。
-- **Living document**：索引随 frontier 型号与社区帖更新；本页数字以 **2026-09 报告 Executive Summary** 为准，后续维护应 diff [companion 仓库](https://github.com/Frank-ZY-Dou/awesome-ai-3d-modeling-robotics)。
+- 本库已有 [RoboDojo](../entities/robodojo.md)、[GPT 6 Astra 具身策略评测](../entities/paper-gpt-6-astra-embodied-policy.md) 等 **固定接口** 对照；MIT 报告把同一 RoboDojo 进度分（42 任务 **1→29/100**）放进 **更大范围的社区演示与多基准语料库**，适合回答「论文 benchmark 之外 showcase 声称什么、多少可复现」。
+- **Living document**：项目随模型代际与新 benchmark 持续滚动更新——从 **2026-09 初版（345 公开帖 / 243 case / 43 可运行代码）** 已演进至 **2026-11-26 实时版（1,800 公开帖 / 755 独立 case / 99 benchmark 套件）**，维护时须对照 [companion 仓库](https://github.com/Frank-ZY-Dou/awesome-ai-3d-modeling-robotics)。
 
 ## 证据范围（Materials）
 
-| 维度 | 规模 | 读法 |
-|------|------|------|
-| 公开帖 | **345** | 含 X/LinkedIn/厂商帖与开发者报告 |
-| 独立 case | **243** | 去重后的 showcase / 实验叙事 |
-| 可运行代码 case | **43** | Tier 1 级可验证性；**多数结论仍为演示级** |
-| 模型族 | GPT-6 Astra、Claude Opus/Fable、Gemini 等 | 以公开记录中 **有文档** 的系统为主 |
+| 维度 | 2026-09 初版档案 | 2026-11 实时版快照 | 读法 |
+|------|------------------|--------------------|------|
+| 公开帖 | 345 | **1,800** | 含 X/LinkedIn/Bilibili/YouTube/GitHub 与技术报告 |
+| 独立 case | 243 | **755** | 四域：3D(458) · CAD(55) · Robot(120) · Anim(122) |
+| 可复现分级 | 43 可运行 | **Rank 1 (Code) 170 / Rank 2 (Interactive) 188 / Rank 3 (Demo) 397** | **超半数案例仅视频演示**，无代码与失败分母 |
+| 定量基准套件 | — | **99 套件**（69 机器人/具身 + 30 3D/CAD/空间） | 覆盖 BenchCAD 2.0/2.1、RoboDojo、USDCraft 等 |
 
 ## 流程总览：Frontier 模型 → Harness → 领域产出
 
@@ -144,12 +147,14 @@ flowchart TB
 ## 局限
 
 - **MIT CSAIL Research Report（living survey）**，非单一 arXiv 终稿；型号名（GPT-6 Astra 等）随产业迭代 **快速过时**。
-- 本页 **不** 逐条收录 345 帖；细节与更正见 [项目页 Appendix C](https://mit-cdfg.github.io/Survey-AI-for-3D-modeling-Robotics/) 与 GitHub companion。
+- 本页 **不** 逐条收录全部 1,800 帖；细节与更正见 [项目页 Appendix C](https://mit-cdfg.github.io/Survey-AI-for-3D-modeling-Robotics/) 与 GitHub companion。
 - Survey **不包含** 统一训练代码；各 benchmark（RoboDojo、Parametric CAD Bench 等）复现走 **各自仓库**（见 [awesome-ai-3d-modeling-robotics](../../sources/repos/awesome-ai-3d-modeling-robotics.md) 与报告附录）。
 
-## 工程工具项目入口
+## 工程实践：工具接入与检验边界
 
-[CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md) 补充具体的软件接口和技能项目：参数化建模可读 [FreeCAD Automation Skill（Cai-aa）](../entities/cai-aa-freecad-automation-skill.md)，设计到分析的衔接可读 [CAD CAE Copilot](../entities/armpro24-blip-cad-cae-copilot.md)。这些节点用于定位实现与依赖，评估时仍沿用本页的 harness、可编辑性和工程验收边界。
+1. **保留原生可编辑文件（Draft First）：** 让模型生成 Blender 脚本、FreeCAD 特征树、CadQuery 程序或原生 OpenUSD/URDF（见 Artisan / USDCraft / [FreeCAD](../entities/freecad.md)），不要只保留导出后的融合网格；定稿前另拨预算执行公差链、有限元与试制校验。
+2. **机器人默认离线写控、在线加独立安全联锁：** 让模型在仿真里写控制器/reward 并本地闭环执行；若在线规划（单步数秒延迟，见 RT-Safe 实时无暂停测试 collisions 激增、RoboHarm 极低拒答与硬件碰撞中止），必须前置与模型解耦的碰撞检测、速度/力矩上限与安全联锁（§8）。
+3. **对应工程工具技能生态：** [CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md) 补充具体的软件接口和技能项目：参数化建模可读 [FreeCAD Automation Skill（Cai-aa）](../entities/cai-aa-freecad-automation-skill.md)，设计到分析的衔接可读 [CAD CAE Copilot](../entities/armpro24-blip-cad-cae-copilot.md)。这些节点用于定位实现与依赖，评估时仍沿用本页的 harness、可编辑性与工程验收边界（先查 Rank 1 代码，再比固定 harness 成绩）。
 
 ## 关联页面
 

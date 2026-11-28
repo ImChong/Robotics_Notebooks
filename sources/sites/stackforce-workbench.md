@@ -7,7 +7,10 @@
 - **来源：** StackForce 轻量级机器人开发平台（stackforce.cc）
 - **链接：** https://workbench.stackforce.cc/
 - **入库日期：** 2026-07-08
-- **一句话说明：** 按开发者当前资产状态（无模型 / 有 STP / 已有 URDF·USD）分岔引导的 **CAD→URDF→Isaac 强化学习工程→训练→评估→实物部署** 在线向导；内嵌 StackForce 自有 Web 工具（URDF 建模、CAD2URDF、SimReady 工程导出）并串联本地与云训练入口。
+- **全文复核日期：** 2026-11-28
+- **核对范围：** 抓取并完整通读 <https://workbench.stackforce.cc/> 当前渲染页面全部文本（94 条交互文案节点）、`https://cad2urdf.stackforce.cc/upload` 与开源硬件配套仓 `Seeed-Projects/Stackforce_Mini_Wheeled_Legged_Robot` `README.md`；核实平台属于闭源在线 SaaS 工具工作台（源码未公开，仅硬件与轮足课程仓库开源；`stackforce.cc` 根页仅返回 SPA Shell）。
+- **通读：** 已完成
+- **一句话说明：** 按开发者当前资产状态（无模型 / 有 STP / 已有 URDF·USD）分岔引导的 **CAD→URDF→MJLab/Isaac SimReady 在线训练→MuJoCo Sim2Sim 重放→Sim2Real 部署** 在线向导（更新版页面明确支持 **在线 MJLab 训练** 与 **MuJoCo 浏览器版 Sim2Sim 重放**）。
 - **沉淀到 wiki：** [stackforce](../../wiki/entities/stackforce.md)
 
 ---
@@ -53,6 +56,12 @@
 - 工作台面向 **从自定义整机到 Isaac RL** 的软件链路，与硬件模块销售/教程形成 **「硬件套件 + 云工具链」** 组合。
 
 ---
+
+## 2026-11-28 线上页面更新核对
+
+- 原四步向导已显式更新为：**第一步（先建模/转换/直接输入）→ 第二步（在线 MJLab 强化学习训练：SimReady 配置任务、开训与看结果）→ 第三步（Sim2Sim 训练结果重放与评估：StackForce MuJoCo 浏览器版检查迁移）→ 第四步（StackForce Sim2Real 实物部署）**。
+- 工具入口固定为三大在线子系统：`CAD2URDF`（STEP/STP 导入与转换）、`机器人 3D 建模`（从零/模板建模、修正 URDF）、`SimReady`（接收 URDF 资产进入仿真）。
+- **开源边界核对：** 工作台后端、MJLab 训练服务与 Web 建模/转换源码均不公开；仅其轮足硬件示例与课程 PlatformIO 代码开源于 `Seeed-Projects/Stackforce_Mini_Wheeled_Legged_Robot`。
 
 ## 对 wiki 的映射
 

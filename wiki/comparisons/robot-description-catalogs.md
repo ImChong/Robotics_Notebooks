@@ -3,8 +3,11 @@ type: comparison
 title: 机器人描述目录选型（Awesome / robot_descriptions.py / fiveages-sim / URDF Dataset）
 tags: [urdf, mjcf, dataset, comparison, tooling, ros2, pinocchio, mujoco]
 summary: "四类机器人描述入口怎么选：策展发现、Python 加载、ROS2/Isaac 国内机型包、冻结 URDF 研究语料；Menagerie 仍是 MJCF 权威资产源。"
-updated: 2026-09-15
+updated: 2026-11-28
 status: complete
+original:
+  - ../../sources/repos/robot_descriptions_py_reading.md
+  - ../../sources/papers/understanding_urdf_dataset_reading_arxiv_2308_00514.md
 related:
   - ../entities/awesome-robot-descriptions.md
   - ../entities/robot-descriptions-py.md
@@ -18,6 +21,8 @@ related:
   - ../entities/paper-urdd-universal-robot-description-directory.md
   - ../entities/paper-apollo-blender.md
 sources:
+  - ../../sources/repos/robot_descriptions_py_reading.md
+  - ../../sources/papers/understanding_urdf_dataset_reading_arxiv_2308_00514.md
   - ../../sources/repos/awesome-robot-descriptions.md
   - ../../sources/repos/robot-descriptions-py.md
   - ../../sources/repos/fiveages-sim-robot-descriptions.md
@@ -28,9 +33,9 @@ sources:
 
 # 机器人描述目录选型
 
-四份公开入口解决同一问题的不同切片：**发现、Python 加载、ROS 2/Isaac 国内机型、冻结研究语料**。
+## 一句话定义
 
-> **对比问题：** 要一份能跑的 URDF/MJCF 时，该用 **Awesome 列表、Python 包、fiveages-sim ROS 2 仓，还是 URDF Files Dataset？**
+四份公开入口各自承接机器人模型供应链的不同切片：**Awesome** 负责人工发现与许可检索，**robot_descriptions.py** 负责 Python 按名加载与浅克隆缓存，**fiveages-sim** 覆盖国内新机型与 ROS 2 / USD 包树，**URDF Files Dataset** 则作为冻结的 parser 与重复度研究语料。
 
 ## 英文缩写速查
 
@@ -40,6 +45,11 @@ sources:
 | MJCF | MuJoCo XML Format | MuJoCo 原生模型；Menagerie 的主交付 |
 | ROS 2 | Robot Operating System 2 | fiveages-sim 的分发形态 |
 | USD | Universal Scene Description | fiveages `robot_usds` 给 Isaac Sim 的格式 |
+
+## 为什么重要
+
+- **一手供给分散：** Tola & Corke (arXiv:2308.00514) 统计 30 家代表厂商中仅 **16/30** 公开提供 URDF Bundle，且仅 **4/16** 在自家官网检索可见。
+- **构建与解析高度不一致：** 95%（255/270）公开 URDF 依赖 `xacro` 生成，官方 `urdfdom 3.1.0` 对 322 份语料仍有 **11/322（3.4%）** 报错，而 6 种常见解析器通过率从 `urdfpy`（7/322）到 `ROS urdfdom`（311/322）跨度极大——必须把「找资产」「按名加载」「ROS 2 部署」「语料回归」拆开选型。
 
 ## 一句话结论
 
@@ -51,7 +61,7 @@ sources:
 | [URDF Files Dataset](../entities/urdf-files-dataset.md) | **冻结语料**：322 Bundle 做 parser/重复分析，不当日常仿真源 |
 | [MuJoCo Menagerie](../entities/mujoco.md) | **MJCF 权威资产**（本库不另建实体，挂在 MuJoCo 页） |
 
-## 决策路径
+## 核心原理：四类目录的供应链分工与决策路径
 
 ```mermaid
 flowchart TD
@@ -70,7 +80,7 @@ flowchart TD
 |------|---------|----------------------|--------------|--------------|
 | **角色** | 策展目录 | Python 模块 + loader | ROS 2 包树 | 研究快照 |
 | **格式** | 链到 URDF/Xacro/MJCF | URDF + MJCF（Xacro 透明展开） | URDF 包；USD 在姊妹仓 | URDF Bundle |
-| **新鲜度** | 持续 PR（与 py 仓同日更新） | 持续发版（PyPI 3.1.0） | 持续（2026-08 仍推） | **2024-04 冻结** |
+| **新鲜度** | 持续 PR（与 py 仓同日更新） | 持续发版（Release v3.4.0，229 描述） | 持续更新 | **2024-04 冻结** |
 | **机型重心** | 国际学术 + 工业经典 | 覆盖 Awesome 大多数 | 国内人形/臂/轮式 | ROS-I / MATLAB / Drake 等 |
 | **运行方式** | 无代码 | `pip` / `uvx` | `colcon` + submodule | 分析脚本 |
 | **许可（集合）** | CC0 列表 | Apache-2.0 包 | Apache-2.0 仓 | MIT 仓 |
@@ -116,6 +126,8 @@ flowchart TD
 
 ## 参考来源
 
+- [robot_descriptions.py 官方文档与核心加载源码通读](../../sources/repos/robot_descriptions_py_reading.md) — v3.4.0（229 描述）架构与缓存在线核读
+- [Understanding URDF（arXiv:2308.00514）与四大描述目录一线仓库通读](../../sources/papers/understanding_urdf_dataset_reading_arxiv_2308_00514.md) — 论文全文与各仓 README 核读
 - [Awesome 归档](../../sources/repos/awesome-robot-descriptions.md)
 - [robot_descriptions.py 归档](../../sources/repos/robot-descriptions-py.md)
 - [fiveages-sim 归档](../../sources/repos/fiveages-sim-robot-descriptions.md)

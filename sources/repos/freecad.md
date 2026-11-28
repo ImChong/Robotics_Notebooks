@@ -7,7 +7,11 @@
 - **克隆**：`https://github.com/FreeCAD/FreeCAD.git` / `git@github.com:FreeCAD/FreeCAD.git`
 - **官网**：<https://www.freecad.org>
 - **入库日期**：2026-07-03
-- **一句话说明：** FreeCAD 官方 **开源参数化 3D CAD** 源码仓库（C++/Python），以 **OpenCASCADE** 为几何内核，覆盖机械设计、装配、FEM、CAM 与 **Robot 工作台**；整体以 **LGPL-2.1** 许可发布，是机器人硬件链路中 **CAD→STEP/网格→URDF** 的常见零许可成本入口。
+- **通读日期**：2026-11-28
+- **核对范围**：通读 `FreeCAD/FreeCAD` 仓库 `README.md`、无头命令行主入口 `src/Main/MainCmd.cpp`（172 行）与核心应用/文档头文件 `src/App/Application.h`、`src/App/Document.h` 关键接口边界。
+- **通读：** 已完成
+- **一句摘要（旧称保留）**：FreeCAD 官方 **开源参数化 3D CAD** 源码仓库（C++/Python），以 **OpenCASCADE** 为几何内核，覆盖机械设计、装配、FEM、CAM 与 **Robot 工作台**；整体以 **LGPL-2.1** 许可发布，是机器人硬件链路中 **CAD→STEP/网格→URDF** 的常见零许可成本入口。
+- **一句话说明：** FreeCAD 官方 **开源参数化 3D CAD** 源码仓库（LGPL-2.1），以 OpenCASCADE 为 B-rep 内核并通过 `App::Application`（含无头 `freecadcmd` / `MainCmd.cpp`）与 Python API 支持机器人 CAD、装配、FEM 及 STEP/网格导出。
 - **沉淀到 wiki：** 是 → [`wiki/entities/freecad.md`](../../wiki/entities/freecad.md)
 
 ## 仓库概况（2026-07-03 GitHub API / README）
@@ -54,6 +58,10 @@
 
 - 升格页面：[wiki/entities/freecad.md](../../wiki/entities/freecad.md)
 - 交叉引用：[wiki/entities/blender.md](../../wiki/entities/blender.md)、[wiki/entities/step2urdf.md](../../wiki/entities/step2urdf.md)、[wiki/concepts/urdf-robot-description.md](../../wiki/concepts/urdf-robot-description.md)、[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/queries/wbc-implementation-guide.md](../../wiki/queries/wbc-implementation-guide.md)
+
+## 源码运行入口核对（`src/Main/MainCmd.cpp`，2026-11-28）
+
+- Headless CLI（`freecadcmd`）入口 `src/Main/MainCmd.cpp` 配置 `RunMode="Exit"` 与 `LoggingConsole="1"`，调用 `App::Application::init(argc, argv)` 初始化核心库、Python 解释器与插件模块，随后执行 `App::Application::runApplication()` 运行参数化宏或批处理脚本（驱动 `App::Document` 及 OpenCASCADE `Part`/网格导出），结束时经 `closeAllDocuments()` 与 `Application::destruct()` 安全释放文档与上下文。
 
 ## 参考链接
 

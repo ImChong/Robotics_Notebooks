@@ -255,6 +255,7 @@ flowchart LR
 - 姊妹路线：[Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) — 本路线的**反向补集**；Real2Sim 修仿真侧资产，Sim2Real 迁移到真机，工程上常串联
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
   - [Sim2Real](depth-sim2real.md) — 反向补集；工程上常串联
+  - [机器人建模与数字孪生](depth-robot-modeling-digital-twin.md) — 正向 CAD→仿真本体建模镜像路线，在 OpenUSD/SimReady 场景拼装处与本路线汇合
   - [具身数据](depth-embodied-data.md) — 仿真侧资产供给，在扩增阶段汇合
   - [具身测评](depth-embodied-eval.md) — 孪生场景用来回训和评测
   - [接触操作](depth-contact-manipulation.md) — 「接触可信」判据的任务侧

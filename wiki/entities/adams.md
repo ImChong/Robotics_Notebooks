@@ -10,7 +10,9 @@ tags:
   - cadence
   - msc-software
 status: complete
-updated: 2026-09-15
+updated: 2026-11-28
+original:
+  - ../../sources/papers/nasa_adams_ntrs_reading.md
 related:
   - ./mujoco.md
   - ./drake.md
@@ -20,6 +22,7 @@ related:
   - ../queries/simulator-selection-guide.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/papers/nasa_adams_ntrs_reading.md
   - ../../sources/papers/adams_orlandea_primary_refs.md
   - ../../sources/sites/umich-deepblue-orlandea-adams-thesis.md
   - ../../sources/sites/cadence-msc-adams.md
@@ -70,10 +73,10 @@ flowchart LR
   prog --> ex
 ```
 
-1. **列式：** 将三维机构写成带约束的动力学系统；稀疏 tableau（STF）保留大系统稀疏性，使「先列式再数值」与稀疏求解一致。
-2. **数值：** 借用电路仿真成熟的 **稀疏线性求解 + stiff 积分（Gear BDF）**，抑制宽谱特征值带来的不稳定。
-3. **分析类型（Part 2）：** 静力、瞬态、线性化，以及模态相关优化；弹簧/阻尼等力函数进入同一程序框架。
-4. **验证叙事：** 工业机构算例 + 与实验对照（摘要中强调 tabular efficiency / experimental comparison）。
+1. **列式与模型原语（NASA-CR-177927 一手核对）：** 以 Parts（质心、转动惯量与初始位姿）、Markers（体固连正交局部坐标系）、8 类标准 Joints、Forces 与 Generators 组装开/闭环三维机构；每个 Part 由二阶动力学方程与代数约束方程联立 Lagrange 乘子生成 **15 个一阶微分方程**，并先经 **Grübler 自由度准则** 判别系统拓扑（`DOF < 0` 报错、`= 0` 走运动静力学、`> 0` 走动力学）。稀疏 tableau（STF）保持大系统稀疏性，便于直接导出铰链约束反力。
+2. **五种分析模式与刚性积分：** NASA 1985 报告实录 MDI ADAMS 提供五类求解模式——**Kineto-static**（零自由度纯代数求解）、**Static Equilibrium**、**Quasistatic**，以及瞬态动力学默认的 **Gear 变阶变步长刚性预测-校正积分**（抑制宽谱特征值振荡）和面向非刚性系统的 **Adams-Moulton 积分**。
+3. **分析类型（Part 2）与航天/整车验证：** 支持静力、瞬态、线性化与模态优化；NASA CPAS Orion 报告（2013）展示现代 COTS ADAMS 与 6-DOF 球窝接触、90 ms 航电延迟及 Monte Carlo 撒点结合，通过试飞视频叠加标定分离窗口。
+4. **刚体到柔体的历史演进：** 1985 年代 ADAMS 仍受限于刚体假设（NASA 天线展收报告需手工补充简支梁一阶模态估算锁紧弯矩），随后 MDI 引入 Craig-Bampton 模态缩聚柔性体能力并延续至今。
 
 ### 商业化时间线（交叉核对）
 
@@ -95,12 +98,13 @@ flowchart LR
 | 需要 **严谨优化友好多体** | 优先 [Drake](./drake.md)；ADAMS 史作工业对照 |
 | 复现学术配方 | 读 [一手论文索引](../../sources/papers/adams_orlandea_primary_refs.md)；学位论文 PDF 在 Deep Blue **校园限制** |
 
-### 开源状态（2026-07-28 核查）
+### 开源状态（2026-11-28 复核）
 
 | 项 | 结论 |
 |----|------|
-| 方法论文 | **已公开发表**（ASME DOI；摘要可核） |
+| 方法论文与 NASA NTRS 报告 | **NASA 1985 / 2013 报告公开可读**；ASME DOI 摘要可核，全文需订阅 |
 | 1973 学位论文 PDF | Deep Blue **校园限制**；DOI / Handle 可引 |
+| Cadence / Hexagon 官方产品页 | 商业软件宣传与文档门户，2026-11-28 抓取触发 Cloudflare 验证未强行绕过 |
 | 当代 Adams 求解器源码 | **确认未开源**（商业 CAE） |
 | 源码运行时序图 | **不适用**（无可运行公开官方仓） |
 
@@ -126,6 +130,7 @@ flowchart LR
 
 ## 参考来源
 
+- [NASA NTRS ADAMS 一手工程与航天报告通读](../../sources/papers/nasa_adams_ntrs_reading.md) — NASA-CR-177927 (1985) 与 CPAS Orion ADAMS (2013) 公开全文
 - [ADAMS Orlandea 一手学术索引](../../sources/papers/adams_orlandea_primary_refs.md) — 1971 / 1973 / 1977×2 / 2016
 - [U-M Deep Blue 学位论文馆藏页](../../sources/sites/umich-deepblue-orlandea-adams-thesis.md)
 - [Cadence MSC Adams 产品页](../../sources/sites/cadence-msc-adams.md)

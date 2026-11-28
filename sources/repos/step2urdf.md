@@ -9,9 +9,21 @@
 - **在线版：** https://step2urdf.top/
 - **Stars：** ~211（2026-06）
 - **入库日期：** 2026-06-18
+- **通读日期：** 2026-11-28
+- **核对范围：** 通读 `Democratizing-Dexterous/step2urdf`（`main` 分支）`README.md`、完整文件树与核心管线源码 `src/components/StepViewer/core/StepLoader.ts`、`InertiaWorker.ts`、`URDFSerializer.ts`、`ExportWorker.ts` 及 `src/components/StepViewer/components/StepViewer.vue`。
+- **通读：** 已完成
 - **许可证：** MIT
-- **一句话说明：** 浏览器端 **STEP → URDF** 转换工具：基于 **OpenCascade.js** 从 CAD 几何自动识别旋转/移动关节、估算惯量与质心，并提供交互式关节调试与层级树管理；**STEP 文件仅在本地处理，不上传服务器**。
+- **一句话说明：** 浏览器端 **STEP → URDF** 开源转换工具：在 Comlink Web Worker 中用 `opencascade.js` 解析 STEP、计算世界坐标惯量并在序列化阶段按 $I_{\text{local}} = R \cdot I \cdot R^\top$ 旋转到 link 局部轴，最终在 ExportWorker 生成二进制 STL 并打包 URDF ZIP；**STEP 文件仅在本地处理**。
 - **沉淀到 wiki：** [step2urdf](../../wiki/entities/step2urdf.md)
+
+## 一手源码核心机制核对（2026-11-28）
+
+1. **`StepLoader.ts`（STEP 解析与 500MB 防护）：**
+   - `StepLoader.validateFile()` 校验 `.step/.stp` 后缀与 **500MB 上限**；通过 `preloadOcct()` / `parseInWorker()` 在 `StepParseWorker.ts` 后台线程用 OpenCascade.js 解析实体，主线程构造 Three.js 网格并调用 `initBVH()`/`buildBVH()` 加速拾取，避免阻塞 UI。
+2. **`URDFSerializer.ts`（坐标系与惯量旋转）：**
+   - `serializeURDF()` 接受 `unitScale`（常见 mm→m 取 `0.001`）、`linkRestInverses` 与 `basePoseInverse`：首先将 `InertiaWorker` 在 STEP 世界坐标系下积分得到的质心 COM 平移缩放后变换到 link 局部坐标，再调用 **`rotateInertiaTensor(inertiaLocal, restInverse)`** 按 $I_{\text{local}} = R \cdot I \cdot R^\top$ 旋转惯量张量，确保与 `<origin rpy="0 0 0"/>` 的 URDF 局部坐标系语义一致。
+3. **`ExportWorker.ts`（Worker 异步 STL + ZIP 导出）：**
+   - `workerApi.exportURDF()` 遍历 `linkSolidMap`，用 `restInverse` 与 `unitScale` 生成每个 link 的 **binary STL**（`meshes/<linkName>.stl`）并连同 `robot.urdf` 通过 `JSZip` DEFLATE 压缩输出 `ArrayBuffer`。
 
 ---
 

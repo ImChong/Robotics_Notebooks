@@ -2,7 +2,9 @@
 type: entity
 tags: [sim2real, tooling, urdf, mjcf, pinocchio, mujoco, pybullet, repo, inria]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-28
+original:
+  - ../../sources/repos/robot_descriptions_py_reading.md
 summary: "robot_descriptions.py 把 190+ 开源 URDF/MJCF 变成可 pip 安装的 Python 模块：首次 import 下载缓存，再经 Pinocchio/MuJoCo/PyBullet 等 loader 得到可运行模型；包是 Apache-2.0，机型许可证逐条看 README。"
 related:
   - ./awesome-robot-descriptions.md
@@ -15,6 +17,7 @@ related:
   - ./humanoid-motion-intelligence.md
   - ../queries/pinocchio-quick-start.md
 sources:
+  - ../../sources/repos/robot_descriptions_py_reading.md
   - ../../sources/repos/robot-descriptions-py.md
   - ../../sources/repos/awesome-robot-descriptions.md
   - ../../sources/repos/mujoco-menagerie.md
@@ -43,10 +46,10 @@ sources:
 | 字段 | 内容 |
 |------|------|
 | 机构 | 法国国家信息与自动化研究所（INRIA）谱系；GitHub org `robot-descriptions`；CITATION 第一作者 Stéphane Caron |
-| 版本 | PyPI **3.1.0**（2026-08-17 核查） |
+| 版本 | Release / PyPI **v3.4.0**（2026-11-27 发布，要求 `Python >= 3.11` 与 `GitPython >= 3.2.1`） |
 | 许可 | 包 **Apache-2.0**；机型文件 **逐条上游许可证** |
 | 开源 | **已开源、可运行**（PyPI / conda-forge / `uvx`） |
-| 规模 | README 宣称 **190+** 描述；分类含臂、双足、人形、四足、移动操作、无人机等 |
+| 规模 | `_descriptions.py` 已注册 **229 个** 描述条目（README 概览仍写作 **190+**）；分类含臂、双足、人形、四足、移动操作、无人机等 |
 
 ## 为什么重要
 
@@ -95,7 +98,38 @@ CLI：`uvx robot_descriptions pull iiwa14_description`，以及 `show_in_mujoco`
 | 后端 | Pinocchio、MuJoCo、PyBullet、iDynTree、yourdfpy、RoboMeshCat |
 | 真机入口 | 本包 **不提供** SDK；只给描述文件路径 |
 
-源码运行时序图对论文训练仓才强制；本页是库加载器，上图已覆盖运行时数据流。
+## 源码运行时序图
+
+入口：`load_robot_description(...)`（Python API，如 `examples/load_in_mujoco.py`）或 CLI 入口 `robot_descriptions/__main__.py`（`pull` / `show_in_*`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户脚本 / __main__.py
+    participant L as loaders.{pinocchio,mujoco,yourdfpy}
+    participant D as robot_descriptions.<name>（如 a1_description.py）
+    participant C as _cache.clone_to_cache / clone_to_directory
+    participant X as _xacro.get_urdf_path
+    participant S as 物理/运动学后端（Pinocchio / MuJoCo / yourdfpy）
+
+    U->>L: load_robot_description("a1_description", commit=...)
+    L->>L: 若指定 commit，写入 ROBOT_DESCRIPTION_COMMIT
+    L->>D: importlib.import_module("robot_descriptions.<name>")
+    D->>C: 模块顶层调用 _clone_to_cache(repo_key, commit)
+    C->>C: 查 REPOSITORIES 映射，检查 ~/.cache/robot_descriptions/<pkg>
+    alt 本地缓存缺失或未匹配目标 commit
+        C->>C: GitPython depth=1 浅克隆并检出 tag/commit
+    end
+    C-->>D: 返回 REPOSITORY_PATH，拼出 PACKAGE_PATH 与 URDF/MJCF/XACRO_PATH
+    alt 声明 XACRO_PATH（如 Pinocchio / yourdfpy loader）
+        L->>X: get_urdf_path(module, xacro_args) 展开 Xacro 并缓存 URDF
+        X-->>L: 返回实际 urdf_path
+    end
+    L->>S: BuildFromURDF / MjModel.from_xml_path / URDF.load
+    S-->>U: 返回 RobotWrapper / MjModel / URDF 对象
+```
+
+图依据：`robot-descriptions/robot_descriptions.py` `main` 分支（v3.4.0 期间），实际核读 `robot_descriptions/__main__.py`、`robot_descriptions/_cache.py`、`robot_descriptions/_descriptions.py`、`robot_descriptions/a1_description.py` 与 `robot_descriptions/loaders/{mujoco,pinocchio,yourdfpy}.py`（未本机运行）。
 
 ## 局限与风险
 
@@ -121,6 +155,7 @@ CLI：`uvx robot_descriptions pull iiwa14_description`，以及 `show_in_mujoco`
 
 ## 参考来源
 
+- [robot_descriptions.py 官方文档与核心加载源码通读](../../sources/repos/robot_descriptions_py_reading.md) — v3.4.0（229 条描述）`loaders/*`、`_cache.py`、`a1_description.py` 源码核对
 - [robot_descriptions.py 来源归档](../../sources/repos/robot-descriptions-py.md)
 - [Awesome Robot Descriptions 归档](../../sources/repos/awesome-robot-descriptions.md)
 - [MuJoCo Menagerie 归档](../../sources/repos/mujoco-menagerie.md)

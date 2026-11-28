@@ -3,7 +3,9 @@ type: entity
 tags: [cad, generative-ai, llm-agents, skills, build123d, urdf, robotics, hardware, manufacturing]
 status: complete
 date: 2026-06-15
-updated: 2026-10-12
+updated: 2026-11-28
+original:
+  - ../../sources/repos/earthtojake-text-to-cad.md
 related:
   - ../concepts/text-to-cad.md
   - ./multi-agent-cad.md
@@ -89,6 +91,12 @@ flowchart TB
 - **CAD Skills 的增量：** 把该抽象 **产品化为可安装 skills**（安装、handoff、基准、打印链），并 **强制 STEP 真值 + 校验/report 结构**，更接近机器人团队的 **可回归硬件草稿** 工作流，而非 API 黑盒。
 - **不同目标：** 不含 Zoo/Adam 等 **商业 CAD 宿主**；也不等同 [Articraft](./articraft.md) 的 **可关节 3D 资产 agent**（仿真就绪网格 + harness），或 [img2threejs](./img2threejs.md) 的 **图像→程序化 Three.js** skill（浏览器 WebGL prop）——CAD Skills 偏 **制造向 B-rep 与 URDF/MoveIt 描述**。
 - **与 [MAC](./multi-agent-cad.md)：** 后者用本库 **P1–P10** 当单 agent 基线，把 brief/方案收成 JSON、常见特征走确定性翻译器，自报 token 降两个数量级。MAC **不替代** 本页的 URDF/打印 skills；本页也不自带 LangGraph 四段状态机。
+
+## 工程实践
+
+1. **安装与技能分工**：官方 README 推荐以 `npx skills install earthtojake/text-to-cad` 按需安装到 Codex、Claude Code 等代理环境（亦支持 plugin marketplace）；`production` / `main` 为已打包分支，开发贡献走 `develop`。项目需预设 **Python 3.11+、build123d、OCP**，并默认统一采用 **毫米制、XY 基面、Z 轴朝上** 的建模约定。
+2. **STEP 优先与视觉校验闭环**：按 `cad` skill 规约，先用参数化 `build123d` 脚本生成 `STEP` 主模型（`gen_step()`），再用内置 `scripts/step` / `inspect` / `snapshot` 做几何测量、干涉检查与多视角渲染自查，并在交付前强制唤醒 `$cad-viewer` 供人工交互审查；`STL / 3MF / GLB` 仅作次级导出。
+3. **机器人描述与基准验证**：生成运动学包应由 `gen_urdf()` Python 源直接输出 `.urdf`（默认触发 XML/关节/网格校验），并与 `srdf`、`sdf` skill 配合对接 MoveIt 2 / Gazebo 实跑测试；重型基准资产（`benchmarks/01`–`10`）通过 Git LFS 管理，按需 `git lfs pull`。涉及切片与本地打印（`G-code` / `Bambu Labs`）时务必开启 dry-run 预检与人工确认。
 
 ## 常见误区或局限
 

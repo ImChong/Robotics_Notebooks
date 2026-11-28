@@ -2,7 +2,12 @@
 type: comparison
 tags: [simulation, multibody-dynamics, adams, mujoco, isaac-sim, newton, tool-selection]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-28
+original:
+  - ../../sources/papers/nasa_adams_ntrs_reading.md
+  - ../../sources/papers/mujoco_reading_official_docs_computation_overview.md
+  - ../../sources/repos/isaac_sim_reading_docs_readme_is01.md
+  - ../../sources/sites/newton-physics-docs-overview_reading_np1.md
 related:
   - ../entities/adams.md
   - ../entities/mujoco.md
@@ -16,6 +21,10 @@ related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ../concepts/sim2real.md
 sources:
+  - ../../sources/papers/nasa_adams_ntrs_reading.md
+  - ../../sources/papers/mujoco_reading_official_docs_computation_overview.md
+  - ../../sources/repos/isaac_sim_reading_docs_readme_is01.md
+  - ../../sources/sites/newton-physics-docs-overview_reading_np1.md
   - ../../sources/blogs/wechat_zane_hub_adams_vs_isaac_sim_mujoco_2026-11-07.md
   - ../../sources/sites/cadence-msc-adams.md
 summary: "Isaac Sim / MuJoCo 能取代 Adams 吗：不按软件强弱比，而按三类物理问题选型——A 载荷与寿命（Adams）、B 控制与策略（MuJoCo / Isaac Lab）、C 感知与系统集成（Isaac Sim）；含对 Zane Hub 第 385 篇的一手核对（MuJoCo 3.17.0、Newton 1.0、Isaac Sim 许可与 MCP、Cadence 收购）。"
@@ -75,7 +84,7 @@ flowchart TB
 | Cadence 以约 27 亿欧元收购 Hexagon 设计与工程业务 | ✓ 2026-02-23 宣布完成交割；约 27 亿欧元（含约 1.5 亿欧元税费），70% 现金 + 30% 股票；MSC Nastran 与 Adams 并入 Cadence 多物理场产品线 |
 | 文中的 Adams 2026.1 特性、SimReady 工业资产、BMW / Volvo 案例、Atlas / Unitree 训练栈、MJWarp 暂不可微、人形单卡每秒数十万步 | **未核实**，按作者表述转述 |
 
-## 三者的真实位置（作者表述为主）
+## 核心原理：三类物理问题与求解器机制（结合作者表述）
 
 ### Adams：护城河在载荷链路，不在求解器
 
@@ -96,7 +105,7 @@ flowchart TB
 - Newton 以 MuJoCo Warp 为主后端，另有 XPBD、VBD、Featherstone 等求解器后端，在 [Newton 实体页](../entities/newton-physics.md) 有完整说明；它把开源软件锚定在 NVIDIA GPU 生态（图灵及以上）。
 - **许可成本：** 「开源」不等于免费商用：Isaac Sim 的 Kit SDK 与资产受 NVIDIA 附加许可约束；MuJoCo 与 Newton 的 Apache-2.0 更宽松，但省下的许可费会以 GPU、运维与模型资产迁移成本的形式出现（作者观点）。
 
-## 选型与行动清单（作者建议）
+## 工程实践：选型与行动清单（作者建议）
 
 | 工程场景 | 建议 |
 |----------|------|
@@ -134,9 +143,19 @@ flowchart TB
 
 ## 参考来源
 
+- [NASA NTRS ADAMS 一手工程报告通读](../../sources/papers/nasa_adams_ntrs_reading.md) — 核实 ADAMS 五种分析模式、DAE+Lagrange 乘子、刚性 Gear 积分及 6-DOF Monte Carlo V&V
+- [MuJoCo 官方计算概览文档通读](../../sources/papers/mujoco_reading_official_docs_computation_overview.md)
+- [Isaac Sim 官方 README 与文档首页通读](../../sources/repos/isaac_sim_reading_docs_readme_is01.md)
+- [Newton Physics 官方文档 Overview 通读](../../sources/sites/newton-physics-docs-overview_reading_np1.md)
 - [Zane Hub 第 385 篇（微信归档，含一手核对表）](../../sources/blogs/wechat_zane_hub_adams_vs_isaac_sim_mujoco_2026-11-07.md)
 - [Cadence MSC Adams 产品页归档](../../sources/sites/cadence-msc-adams.md)
 - [MuJoCo 更新日志](https://github.com/google-deepmind/mujoco/blob/main/doc/changelog.rst)
 - [Newton 仓库](https://github.com/newton-physics/newton)
 - [Isaac Sim 仓库](https://github.com/isaac-sim/IsaacSim) 与[发布说明](https://docs.isaacsim.omniverse.nvidia.com/latest/overview/release_notes.html)
 - [Cadence 完成收购 Hexagon 设计与工程业务（转载）](https://www.hpcwire.com/off-the-wire/cadence-completes-acquisition-of-hexagons-design-and-engineering-business/)
+
+## 推荐继续阅读
+
+- NASA-CR-177927 (*Application of the ADAMS Program to Deployable Space Truss Structures*) — [NTRS PDF](https://ntrs.nasa.gov/api/citations/19850022054/downloads/19850022054.pdf)
+- MuJoCo Computation Documentation — <https://mujoco.readthedocs.io/en/latest/computation/index.html>
+- NVIDIA Isaac Sim & Newton Overview — <https://docs.isaacsim.omniverse.nvidia.com/latest/index.html> · <https://newton-physics.github.io/newton/stable/guide/overview.html>

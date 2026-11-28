@@ -1,9 +1,12 @@
 ---
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics]
-status: draft
-updated: 2026-11-18
-summary: "Gazebo Sim：在ROS生态中承担场景、物理、传感器和插件运行层，传输与组件接口便于把导航、感知、控制节点接入同一仿真系统；适合验证消息时序和系统集成，不以GPU强化学习吞吐为首要目标。"
+status: complete
+updated: 2026-11-28
+original:
+  - ../../sources/repos/gazebo-sim.md
+  - ../../sources/sites/sdformat_official_spec.md
+summary: "Gazebo Sim：基于 gz-physics / gz-rendering / gz-sensors / gz-transport 插件与 ECS 的开源机器人仿真平台，以 SDFormat 为原生描述，在 ROS 生态承担场景、物理、传感器与消息时序系统集成。"
 related:
   - ../concepts/sim2real.md
   - ../entities/isaac-lab.md
@@ -11,6 +14,7 @@ related:
   - ../queries/hmi-opensource-projects-coverage.md
 sources:
   - ../../sources/repos/gazebo-sim.md
+  - ../../sources/sites/sdformat_official_spec.md
   - ../../sources/repos/humanoid-motion-intelligence.md
 ---
 
@@ -93,10 +97,10 @@ sequenceDiagram
 
 ## 工程实践
 
-1. **先核入口类型**：若是 GitHub/Gitee 仓库，从 README 的安装、训练与部署章节入手；若是项目页/论文，先确认是否已挂代码或权重。
-2. **对齐本体与接口**：人形项目需核对关节顺序、控制频率、观测契约与仿真后端（Isaac / MuJoCo 等）是否与本机栈一致。
-3. **按主表定位做消融**：主表强调的可分拆实验切口（例如只换重定向约束、只换部署层）应优先验证，避免一上来全链路重训。
-4. **记录开源边界**：若仅有权重、Sim2Sim 或说明文档，不要假设训练管线可复现。
+1. **CLI 与库接入**：安装 Gazebo 后直接以 `gz sim <world.sdf>` 或 `gz sim -h` 启动；做 C++ 独立集成时链接 `libgz-sim`。源码与 Debian 包混装时需配置 `GZ_CONFIG_PATH` 指向各 YAML 插件目录；Windows 下需用 `gz sim -s` 与 `gz sim -g` 分终端启停服务端和 GUI。
+2. **描述格式与物理引擎分工**：原生世界、模型与传感器配置使用 [SDFormat](../concepts/urdf-robot-description.md)（参见 [描述格式对比](../comparisons/urdf-vs-mjcf-vs-sdf-vs-openusd.md)），导入 URDF 时底层自动转换为 SDF；通过 `gz-physics` 插件切换 DART（默认）或 Bullet / Bullet Featherstone 后端。
+3. **ROS 2 联调与边界对齐**：经 `ros_gz_bridge` 把 `gz-transport` 话题桥接到 ROS 2，重点核对仿真时钟（`/clock`）、关节命名、传感器频率/噪声模型及控制器周期，勿将其与 GPU 百万步并行训练引擎混淆。
+4. **验证许可与版本**：Apache-2.0 开源；按语义化版本与 Gazebo 年度发行版（如 Harmonic / Ionic 等）对齐配套 `gz-*` 库版本。
 
 | 检查项 | 建议 |
 |--------|------|
@@ -121,7 +125,8 @@ sequenceDiagram
 
 ## 参考来源
 
-- [Gazebo Sim 来源归档](../../sources/repos/gazebo-sim.md)
+- [Gazebo Sim 官方仓库 README 与 C++ 源码通读](../../sources/repos/gazebo-sim.md) — `gazebosim/gz-sim` 架构与 `sim_main.cc` / `Server.cc` / `SimulationRunner.cc` 核对（2026-11-28）
+- [SDFormat 官方 XML 规范通读](../../sources/sites/sdformat_official_spec.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 

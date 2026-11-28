@@ -2,7 +2,7 @@
 type: entity
 tags: [course, nvidia, openusd, usd, omniverse, isaac-sim, asset-pipeline, certification]
 status: complete
-updated: 2026-08-30
+updated: 2026-11-28
 related:
   - ./nvidia-physical-ai-learning.md
   - ./nvidia-omniverse.md
@@ -15,6 +15,8 @@ sources:
   - ../../sources/courses/nvidia_learn_openusd.md
   - ../../sources/repos/learn_openusd.md
   - ../../sources/sites/nvidia-physical-ai-learning.md
+original:
+  - ../../sources/repos/learn_openusd.md
 summary: "NVIDIA 免费开源 Learn OpenUSD 课纲：Stage/Prim 基础 → Composition/LIVERPS → 资产结构与 instancing → data exchange；对接 OpenUSD 开发认证，是 Isaac/Omniverse 资产管线的官方 USD 入门主线。"
 ---
 
@@ -44,24 +46,47 @@ summary: "NVIDIA 免费开源 Learn OpenUSD 课纲：Stage/Prim 基础 → Compo
 - **与 Physical AI 门户并列：** [NVIDIA Physical AI Learning](./nvidia-physical-ai-learning.md) 把 Learn OpenUSD 与 Isaac Lab、SO-101 等路径并列；本页是 **USD 专线的 canonical 入口**。
 - **认证与工程可信度：** 课纲明确服务 **OpenUSD Development Certification**；组织可用同一套开源内容做内训与技能验收。
 
-## 学习路径总览
+## 核心原理与课程路径
 
 ```mermaid
 flowchart TD
   intro[What Is OpenUSD<br/>协作 / 模块化 / 互操作]
   foundations[Setting the Stage<br/>Stage · Prim · 属性 · 时间码]
   schemas[Scene Description Blueprints<br/>Schema · Xform · UsdLux]
-  compBasic[Composition Basics<br/>Layer · LIVRPS · Reference · Variant]
+  compBasic[Composition Basics<br/>Layer · LIVERPS · Reference · Variant]
   beyond[Beyond Basics<br/>Primvars · Hydra · 遍历 · Units]
-  arcs[Creating Composition Arcs<br/>Sublayer · Payload · Inherits · LIVERPS]
+  arcs[Creating Composition Arcs<br/>Sublayer · Payload · Inherits · Relocates]
   asset[Asset Structure<br/>Workstream · Model Kind · Ref/Payload 模式]
   inst[Asset Modularity & Instancing<br/>Scenegraph / Point instancing]
   exchange[Data Exchange Pipelines<br/>抽取 · 变换 · Validation]
-  cert[OpenUSD Development Certification]
+  cert[OpenUSD Development / NCA Certification]
 
   intro --> foundations --> schemas --> compBasic --> beyond
   beyond --> arcs --> asset --> inst --> exchange --> cert
 ```
+
+## 源码运行时序图
+
+以 `NVIDIA-Omniverse/LearnOpenUSD` 开源仓库的本地文档/Notebook 构建流程（`README.md`）与资产入口练习（`docs/exercise_content/asset_structure/exercise_01/make_entry_point_full.py`）为核对入口：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Env as uv + Git LFS 环境
+  participant Sphinx as Sphinx + MyST-NB 构建器
+  participant Script as 练习脚本 make_entry_point_full.py
+  participant USD as pxr.Usd / UsdGeom / NamespaceEditor
+
+  Env->>Env: git lfs install && git lfs pull 拉取教学 USD 与媒体资产
+  Env->>Sphinx: uv run sphinx-build -M html docs/ docs/_build/
+  Sphinx->>Script: MyST-NB 执行代码单元并打包 exercise ZIP
+  Script->>USD: Usd.Stage.Open("export.usd") 加载导出场景
+  Script->>USD: UsdGeom.Xform.Define(stage, "/World") + SetDefaultPrim()
+  Script->>USD: Usd.NamespaceEditor.ReparentPrim() 重挂根 prim 并保持关系绑定
+  Sphinx-->>Env: 提取 Glossary 图谱并生成静态 HTML 站点
+```
+
+图依据：`NVIDIA-Omniverse/LearnOpenUSD` 仓库 `README.md`、`docs/index.md` 与 `docs/exercise_content/asset_structure/exercise_01/make_entry_point_full.py`（2026-11-28 通读源码）。
 
 ## 模块要点（与机器人栈的接点）
 
@@ -78,13 +103,14 @@ flowchart TD
 | 项 | 说明 |
 |----|------|
 | **前置** | Python 3（函数、循环、dict/list）；3D 基础概念 |
-| **工具** | OpenUSD 发行版、`usdview`、Usd Python API |
-| **源码** | [NVIDIA-Omniverse/LearnOpenUSD](https://github.com/NVIDIA-Omniverse/LearnOpenUSD) — 可 fork 做企业内训 |
-| **在线阅读** | https://docs.nvidia.com/learn-openusd/latest/index.html |
-| **认证** | [OpenUSD Development Professional Certification](https://www.nvidia.com/en-us/learn/certification/openusd-development-professional/) |
+| **本地构建与运行** | `git lfs pull` 拉取资产后，用 `uv run sphinx-build -M html docs/ docs/_build/` 构建或 `uv run launch_notebooks` 交互运行练习 |
+| **工具** | OpenUSD 发行版、`usdview`、Usd Python API（含 `Usd.NamespaceEditor`） |
+| **源码** | [NVIDIA-Omniverse/LearnOpenUSD](https://github.com/NVIDIA-Omniverse/LearnOpenUSD) — Apache-2.0，可 fork 做企业内训 |
+| **在线阅读** | <https://docs.nvidia.com/learn-openusd/latest/index.html> |
+| **认证** | [OpenUSD Development Professional Certification](https://www.nvidia.com/en-us/learn/certification/openusd-development-professional/) 与 NCA Foundations Study Guide |
 | **延伸** | [OpenUSD.org](https://openusd.org/) · [NVIDIA OpenUSD Docs](https://docs.omniverse.nvidia.com/usd/latest/index.html) |
 
-## 开源状态（步骤 2.5，截至 2026-08-30）
+## 开源状态（步骤 2.5，截至 2026-11-28 复核）
 
 | 项 | 状态 |
 |----|------|

@@ -51,6 +51,7 @@
 | 设计力矩控制关节电机 | [力矩电机设计（Torque Motor Design）](roadmap/depth-torque-motor-design.md) |
 | 学传统模型控制（MPC/WBC）| [传统控制（Classical Control）](roadmap/depth-classical-control.md) |
 | 设计人形整机硬件（机械 + 电气 + 通信） | [整机硬件（Humanoid Hardware）](roadmap/depth-humanoid-hardware-design.md) |
+| 从 CAD 建出物理可信的机器人仿真资产与数字孪生 | [机器人建模与数字孪生（Robot Modeling & Digital Twin）](roadmap/depth-robot-modeling-digital-twin.md) |
 | 学安全控制（CLF/CBF）| [安全控制（Safe Control）](roadmap/depth-safe-control.md) |
 | 让研发闭环自己变强（递归自我改进） | [递归自我改进（RSI）](roadmap/depth-rsi.md) |
 | 做接触丰富的操作任务 | [接触操作（Contact Manipulation）](roadmap/depth-contact-manipulation.md) |
@@ -78,7 +79,7 @@
 | 浏览所有知识页 | [站点主题与全站导览](https://imchong.github.io/Robotics_Notebooks/hubs.html)（本地可运行 `make catalog` 生成 `catalog.md`） |
 | 搜索特定概念 | [站点搜索](https://imchong.github.io/Robotics_Notebooks/) |
 
-> 三十条纵深路线按各方向**起点里程碑的历史顺序**排列（与首页按钮一致）：PCB 设计（Eisler 印制电路专利，1936）→ 遥操作（Goertz 主从机械手，1954）→ 火箭回收控制（Apollo 登月舱动力下降制导，1969）→ 力矩电机设计（磁场定向控制 FOC，1971）→ 传统控制（ZMP 判据，1972）→ 整机硬件设计（WABOT-1 全尺寸人形整机，1973）→ 安全控制（CLF，1983）→ 递归自我改进（EURISKO 自改启发式，1983）→ 接触操作（阻抗控制，1985）→ 导航（概率 SLAM，1986）→ 模型架构（反向传播，1986）→ 模仿学习（行为克隆，1988）→ 强化学习（Q-learning，1989）→ 移动操作（移动操作臂协调控制，1994）→ 人形足球（首届 RoboCup，1997）→ 动作重定向（Gleicher 动作重定向，1998）→ 人形群控展演（央视春晚 540 台 Alpha 1S 群舞，2016）→ 跨本体迁移（Devin 等模块化多机器人策略迁移，ICRA 2017）→ 仿真到真机（域随机化 DR，2017）→ 人形拳击（MuJoCo 人形对抗自博弈，2017）→ 上下文学习（One-Shot Imitation Learning，NeurIPS 2017）→ 行为基础模型（DeepMimic 动作跟踪谱系，2018）→ 具身模型测评（RLBench 标准化视觉操作评测套件，2019）→ 感知越障（2020s 感知策略浪潮）→ 动作生成（MDM 扩散动作生成，2022）→ 扩散与流匹配策略（Diffusion Policy，2023）→ 视觉–语言–动作（RT-2 确立 VLA，2023）→ 真实到仿真（3D Gaussian Splatting 规模化重建，2023）→ 具身数据（Open X-Embodiment 跨具身数据聚合，2023）→ 世界–动作模型（World Action Models 综述形式化，2026）。越靠前的方向理论积淀越深，越靠后的方向越依赖学习方法与算力。
+> 三十一条纵深路线按各方向**起点里程碑的历史顺序**排列（与首页按钮一致）：PCB 设计（Eisler 印制电路专利，1936）→ 遥操作（Goertz 主从机械手，1954）→ 火箭回收控制（Apollo 登月舱动力下降制导，1969）→ 力矩电机设计（磁场定向控制 FOC，1971）→ 传统控制（ZMP 判据，1972）→ 整机硬件设计（WABOT-1 全尺寸人形整机，1973）→ 机器人建模与数字孪生（Orlandea ADAMS 多体动力学仿真，1973）→ 安全控制（CLF，1983）→ 递归自我改进（EURISKO 自改启发式，1983）→ 接触操作（阻抗控制，1985）→ 导航（概率 SLAM，1986）→ 模型架构（反向传播，1986）→ 模仿学习（行为克隆，1988）→ 强化学习（Q-learning，1989）→ 移动操作（移动操作臂协调控制，1994）→ 人形足球（首届 RoboCup，1997）→ 动作重定向（Gleicher 动作重定向，1998）→ 人形群控展演（央视春晚 540 台 Alpha 1S 群舞，2016）→ 跨本体迁移（Devin 等模块化多机器人策略迁移，ICRA 2017）→ 仿真到真机（域随机化 DR，2017）→ 人形拳击（MuJoCo 人形对抗自博弈，2017）→ 上下文学习（One-Shot Imitation Learning，NeurIPS 2017）→ 行为基础模型（DeepMimic 动作跟踪谱系，2018）→ 具身模型测评（RLBench 标准化视觉操作评测套件，2019）→ 感知越障（2020s 感知策略浪潮）→ 动作生成（MDM 扩散动作生成，2022）→ 扩散与流匹配策略（Diffusion Policy，2023）→ 视觉–语言–动作（RT-2 确立 VLA，2023）→ 真实到仿真（3D Gaussian Splatting 规模化重建，2023）→ 具身数据（Open X-Embodiment 跨具身数据聚合，2023）→ 世界–动作模型（World Action Models 综述形式化，2026）。越靠前的方向理论积淀越深，越靠后的方向越依赖学习方法与算力。
 
 ---
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [platform, utility, cad, urdf, web, reinforcement-learning, isaac, china, hardware]
 status: complete
-updated: 2026-08-28
+updated: 2026-11-28
 related:
   - ./step2urdf.md
   - ./urdf-studio.md
@@ -18,12 +18,17 @@ related:
 sources:
   - ../../sources/sites/stackforce-workbench.md
   - ../../sources/sites/stackforce-cad2urdf.md
-summary: "StackForce 是模块化机器人硬件平台，并提供工作台向导与 CAD2URDF 等 Web 工具，把 CAD/URDF 资产一键导出为 Isaac 强化学习工程（SimReady），并串联本地与 GPUFree 云训练。"
+original:
+  - ../../sources/sites/stackforce-workbench.md
+  - ../../sources/sites/stackforce-cad2urdf.md
+summary: "StackForce 是模块化机器人硬件平台，并提供工作台向导与 CAD2URDF 等闭源 Web SaaS 工具，引导 CAD/URDF 资产转为 SimReady 模型、开展在线 MJLab 强化学习训练、在 MuJoCo 浏览器版做 Sim2Sim 重放与硬件部署。"
 ---
 
 # StackForce
 
-**StackForce**（[stackforce.cc](https://stackforce.cc/)）是面向教育与小整机开发的 **轻量级模块化机器人平台**（堆叠式主控 + 电机/舵机/传感器模块），并扩展出 **Web 工具链**：[`workbench.stackforce.cc`](https://workbench.stackforce.cc/) 按资产状态引导 **建模 → URDF → SimReady Isaac 工程 → 训练/评估 → 实物部署**；[`cad2urdf.stackforce.cc`](https://cad2urdf.stackforce.cc/upload) 提供浏览器端 **STEP/STP→URDF**（本地解析几何 + 人工配置连杆关节）。
+## 一句话定义
+
+**StackForce** 是集成堆叠式模块化硬件套件（[stackforce.cc](https://stackforce.cc/)）与浏览器端工作台向导（[`workbench.stackforce.cc`](https://workbench.stackforce.cc/) + [`cad2urdf.stackforce.cc`](https://cad2urdf.stackforce.cc/upload)）的轻量级机器人开发生态，打通从 **CAD/URDF 准备 → SimReady 配置 → 在线 MJLab/Isaac 训练 → MuJoCo Sim2Sim 验证 → 实物部署** 的教学与工程入门链路。
 
 ## 英文缩写速查
 
@@ -56,59 +61,65 @@ summary: "StackForce 是模块化机器人硬件平台，并提供工作台向�
 
 | 读者状态 | 引导动作 |
 |----------|----------|
-| 无 3D 模型 | StackForce **URDF 网页版**直接建模 |
-| 有 \*.stp | 跳转 **CAD2URDF** |
-| 有 URDF/USD | **直接输入** → 转 Isaac RL 工程 |
+| 没有机器人 3D 模型 | StackForce **URDF 网页版（机器人 3D 建模）** 直接从零或模板构建 |
+| 有 `\*.stp` | 跳转 **CAD2URDF** 网页转换器 |
+| 有 `URDF / USD` | **直接输入** 到 **SimReady** 配置任务 |
 
-后续步骤：**SimReady 导出训练工程** → 本地或 **GPUFree** 开训 → Isaac **重放评估** → **实物部署**。
+工作台主流程（2026-11 页面核对）：**第一步（建模/转换/输入 URDF） → 第二步（在 SimReady 配置并发起在线 MJLab 强化学习训练） → 第三步（在 StackForce MuJoCo 浏览器版做 Sim2Sim 重放评估） → 第四步（StackForce Sim2Real 实物部署）**（亦保留本地脚本 / [GPUFree](./gpufree.md) 云训练对接路径）。
 
 ### 3. CAD2URDF（cad2urdf.stackforce.cc）
 
-- **三步：** 导入 CAD → 配置 Link/关节 → 测试导出
-- **上限：** 单文件 **300MB** STEP/STP
-- **缓存：** 浏览器本地 job；可导入/导出 StackForce cad2urdf **工程文件**
-- **局限：** 几何来自 STEP，**关节拓扑与惯量仍需人工**——导出后应用 [robot-viewer](./robot-viewer.md) 或 Isaac 导入器做 sanity check
+- **三步：** 1. 导入模型或资源包 → 2. 配置 Link/关节 → 3. 测试和导出
+- **格式与大小上限：** 支持 **STEP（最大 500MB）** 与 **URDF / MJCF / USD / 资源 ZIP（最大 200MB）**；引用外部网格时打包为 ZIP，已有 URDF/MJCF/USD 会预填 Link 和关节结构。
+- **缓存：** 浏览器本地解析与 job 缓存；支持导入/导出 StackForce `.cad2urdf` 工程文件。
+- **局限：** 仅导入几何或既有结构，**Link/关节拓扑、坐标朝向与惯量仍需人工复核配置**。
 
 ## 流程总览
 
 ```mermaid
 flowchart TB
-  subgraph asset["资产准备"]
+  subgraph asset["第一步：资产准备"]
     A0[无模型 → URDF 网页建模]
-    A1[有 STP → CAD2URDF]
-    A2[已有 URDF/USD]
+    A1[有 STEP 最大500MB → CAD2URDF]
+    A2[已有 URDF/MJCF/USD/ZIP 最大200MB]
   end
-  subgraph simready["SimReady 工程"]
-    EXP[导出 Isaac RL 训练工程]
+  subgraph simready["第二步：SimReady 与训练"]
+    EXP[SimReady 任务配置 + 在线 MJLab / Isaac 训练]
   end
-  subgraph train["训练与落地"]
-    LOC[本地 conda / 脚本]
-    CLOUD[GPUFree 云镜像]
-    EVAL[Isaac 重放评估]
-    DEPLOY[实物部署]
+  subgraph train["第三–四步：评估与落地"]
+    SIM2SIM[MuJoCo 浏览器版 Sim2Sim 重放]
+    CLOUD[本地脚本 / GPUFree 云镜像]
+    DEPLOY[StackForce 硬件 Sim2Real 部署]
   end
   A0 --> EXP
   A1 --> EXP
   A2 --> EXP
-  EXP --> LOC
-  EXP --> CLOUD
-  LOC --> EVAL
-  CLOUD --> EVAL
-  EVAL --> DEPLOY
+  EXP --> SIM2SIM
+  EXP --> CLOUD --> SIM2SIM
+  SIM2SIM --> DEPLOY
 ```
+
+## 源码运行时序图
+
+**不适用（核心 Web 工作台与云端工具链未开源）：** `workbench.stackforce.cc`、`cad2urdf.stackforce.cc` 与在线 MJLab/SimReady 服务均以闭源在线 Web 应用形态运行，官方未公开前后端转换及训练调度的源代码仓库（唯一公开仓库为 Seeed 联合发布的硬件/课程代码 `Seeed-Projects/Stackforce_Mini_Wheeled_Legged_Robot`，含 CAD 模型、BOM 与 PlatformIO 嵌入式固件）。
+
+## 工程实践
+
+- **涉密 CAD 处理：** 虽宣称 STEP/资源在浏览器本地解析，但对敏感或涉密整机设计，仍建议自托管开源替代方案（[FreeCAD](./freecad.md) + [step2urdf](./step2urdf.md)）并在浏览器 Network 面板确认无外部请求。
+- **ZIP 资源与单位对齐：** 向 `cad2urdf` 提交含 mesh 引用的包时须将 URDF/MJCF 与网格一并打为 `<= 200MB` ZIP，并核对导出的关节轴正方向、质量分配与碰撞简化，不要跳过第三步测试直接开训。
 
 ## 与相近工具的对照
 
 | 工具 | 起点 | 强项 | 局限 |
 |------|------|------|------|
-| **StackForce CAD2URDF** | STEP/STP | 国内访问、本地解析 CAD、与工作台/SimReady **一条龙** | Link/Joint **人工配置**为主；非开源仓可查 |
-| [step2urdf](./step2urdf.md) | STEP | OpenCascade.js **几何驱动关节推断**、MIT 开源 | 关节类型偏 revolute/prismatic；与工作台/Isaac 工程导出无内置绑定 |
-| [URDF-Studio](./urdf-studio.md) | 设计阶段 / 已有 URDF | Skeleton/Detail/Hardware、MJCF/USD/BOM、AI 辅助 | 非 STEP 专用；与 StackForce **URDF 网页版**功能重叠需按 UI 偏好选型 |
+| **StackForce CAD2URDF** | STEP(≤500MB) / URDF·MJCF·USD·ZIP(≤200MB) | 国内访问、一键串联 SimReady → 在线 MJLab / MuJoCo 重放 | Link/Joint 配置偏人工；**工具源码未开源** |
+| [step2urdf](./step2urdf.md) | STEP | OpenCascade.js **几何驱动关节推断**、MIT 开源可自托管 | 关节类型偏 revolute/prismatic；无云端训练集成 |
+| [URDF-Studio](./urdf-studio.md) | 设计阶段 / 已有 URDF·MJCF·USD | 统一工作站、BOM/PDF 报告、AI 辅助、Apache-2.0 开源 | 侧重建模编辑与多格式导出，不提供硬件商城与 MJLab 托管 |
 | [FreeCAD](./freecad.md) | 参数化 CAD | 制造级 B-rep、Robot 工作台与 ROS 插件 | 需桌面安装；导出 STEP 后可进 CAD2URDF 或 step2urdf |
 
-**推荐衔接：** FreeCAD/厂商 STEP → **CAD2URDF 或 step2urdf** → URDF → **工作台 SimReady** → [Isaac Lab](./isaac-lab.md) 训练 → Sim2Real（见 [Sim2Real](../concepts/sim2real.md)）。
+**推荐衔接：** FreeCAD/厂商 STEP → **CAD2URDF 或 step2urdf** → URDF → **工作台 SimReady / Isaac Lab / MJLab** → MuJoCo Sim2Sim 重放 → Sim2Real（见 [Sim2Real](../concepts/sim2real.md)）。
 
-## 常见误区
+## 局限与常见误区
 
 - **「STEP 转完就能训」：** CAD2URDF 只保证几何导入；**关节轴、限位、惯量、碰撞** 不检查清楚会在 Isaac 里表现为爆炸或学不动。
 - **「工作台 = 又一个仿真器」：** StackForce Web 侧核心是 **向导 + 工程导出**；物理仿真与 RL 算法仍在 **Isaac** 生态完成。
