@@ -257,6 +257,7 @@ flowchart LR
 
 - 完整成长路线参考：[主路线：运动控制 → 物理智能全栈成长路线](motion-control.md)
 - 相关纵深路线（按主题邻近，完整目录见 [路线总览](motion-control.md#depth-optional-index)）：
+  - [双/多机器人协作](depth-multi-robot-collaboration.md) — 从单机移动操作拓展到多机闭链共载搬运与协同交接
   - [RL 运动控制](depth-rl-locomotion.md) — 行走底座
   - [接触操作](depth-contact-manipulation.md) — 操作侧的接触力与 IL
   - [遥操作](depth-teleoperation.md) — 上下身解耦采集的常见入口

@@ -128,6 +128,7 @@ flowchart LR
 ## 关联页面
 
 - [人形群控展演纵深路线](../../roadmap/depth-humanoid-swarm-performance.md) — 合作展演侧（群舞同步 → 编队走位 → 群体特技）的学习路径；本页的「预录时间轴 vs 在线战术」分界是其 Stage 0 入口
+- [双/多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md) 与 [多机器人协作概念枢纽](./multi-robot-collaboration.md) — 将人形群控拓展至多机物理搬运、跨机闭链动力学与分布式车队部署
 - [Humanoid Soccer](../tasks/humanoid-soccer.md) — 综合任务；群控是其中「多机协作」子问题
 - [Swarm Intelligence 人形足球论文](../entities/paper-humanoid-soccer-swarm-intelligence.md) — 去中心化 swarm 实体页
 - [ARTEMIS 人形足球系统](../entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md) — 集中式战术层实体页

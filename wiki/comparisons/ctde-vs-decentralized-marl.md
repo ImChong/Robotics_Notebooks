@@ -138,3 +138,5 @@ flowchart TB
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 单体 RL 基础
 - [Whole-body Coordination](../concepts/whole-body-coordination.md) — 单体内部多自由度协调，与多体协调相对照
 - [Gamma-World](../entities/paper-gamma-world-multi-agent.md) — 多智能体生成式交互世界模型（arXiv:2605.28816）
+- [多机器人协同架构对比](./multi-robot-coordination-architectures.md) — 拓展至集中编译优化 vs 混合通信 vs 纯去中心化系统选型
+- [双/多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md) — Stage 3 学习范式选型对比页

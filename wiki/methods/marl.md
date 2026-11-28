@@ -122,6 +122,8 @@ MARL 是人形 **多机战术** 的学习式路线之一（自博弈、CTDE 等�
 - [Humanoid Soccer](../tasks/humanoid-soccer.md) — 多机战术任务语境
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) — 群控范式对比
 - [Swarm Intelligence 人形足球](../entities/paper-humanoid-soccer-swarm-intelligence.md) — ACO+flocking 非 MARL 群控
+- [多机器人协作（Multi-Robot Collaboration）](../concepts/multi-robot-collaboration.md) — 多机协同谱系与力学/通信架构总览
+- [双/多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md) — Stage 3 多智能体控制核心方法节点
 
 ## 参考来源
 - [General Reasoning: How to Train a Swarm（2026-11-02，已核对全文）](../../sources/blogs/gr_how_to_train_a_swarm_2026_11_02.md) — 支撑软件 Agent 共享集体回报、time limit 与通信机制对照；不用于证明机器人效果

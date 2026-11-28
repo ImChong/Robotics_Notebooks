@@ -124,6 +124,9 @@ const cases = [
   ['loco-manipulation', 'wiki/entities/paper-resmimic.md'],
   ['robot-modeling-digital-twin', 'wiki/concepts/digital-twin.md'],
   ['robot-modeling-digital-twin', 'wiki/comparisons/urdf-vs-mjcf-vs-sdf-vs-openusd.md'],
+  ['multi-robot-collaboration', 'wiki/concepts/multi-robot-collaboration.md'],
+  ['multi-robot-collaboration', 'wiki/concepts/collaborative-object-transport.md'],
+  ['multi-robot-collaboration', 'wiki/entities/paper-decentralized-multi-humanoid-pickup.md'],
 ];
 const failed = [];
 for (const [depth, id] of cases) {

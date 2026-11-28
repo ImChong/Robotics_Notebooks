@@ -383,6 +383,7 @@ flowchart TD
 
 ## 关联页面
 
+- [协同物体搬运](../concepts/collaborative-object-transport.md) 与 [双/多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md) — 从单机移动操作拓展至双/多机共同承重搬运与异步交接。
 - [EgoLoAF](../entities/paper-egoloaf.md) — 用胸前手机收集人体示范，从同一记录生成躯干/双手动作与手物相对位姿，训练与真机评测分开核对。
 
 - [PushMimic](../entities/paper-pushmimic.md) — 从一条名义参考生成动力学可行的接触变体，以奖励解耦学习在不同箱重与坡度下调整姿态。

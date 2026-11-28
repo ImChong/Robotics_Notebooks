@@ -4,22 +4,22 @@
 > 数据来自实际 Stage 链接与 `generate_link_graph.compute_health`、
 > `compute_roadmap_health`，不改分值规则；同一 wiki 节点全局只计一次。
 
-- 路线：**31**；关联唯一 wiki 节点：**1365**
-- Wiki 健康度：**3/3 1363**，**2/3 2**，**1/3 0**，**0/3 0**，缺失文件 **0**
+- 路线：**32**；关联唯一 wiki 节点：**1409**
+- Wiki 健康度：**3/3 1407**，**2/3 2**，**1/3 0**，**0/3 0**，缺失文件 **0**
 - 待推进：**2**（含缺失文件）
 
 ## 路线进度（从最新主题向前）
 
 | 纵深路线 | 路线健康度 | Stage | 唯一 wiki | 3/3 | 2/3 | 1/3 | 0/3 | 缺失 | 待办 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| [`roadmap/depth-wam.md`](../../roadmap/depth-wam.md) | 3/3 | 6 | 109 | 109 | 0 | 0 | 0 | 0 | 0 |
+| [`roadmap/depth-wam.md`](../../roadmap/depth-wam.md) | 3/3 | 6 | 110 | 110 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-embodied-data.md`](../../roadmap/depth-embodied-data.md) | 3/3 | 6 | 75 | 75 | 0 | 0 | 0 | 0 | 0 |
-| [`roadmap/depth-real2sim.md`](../../roadmap/depth-real2sim.md) | 3/3 | 6 | 53 | 53 | 0 | 0 | 0 | 0 | 0 |
-| [`roadmap/depth-vla.md`](../../roadmap/depth-vla.md) | 3/3 | 6 | 135 | 135 | 0 | 0 | 0 | 0 | 0 |
+| [`roadmap/depth-real2sim.md`](../../roadmap/depth-real2sim.md) | 3/3 | 6 | 54 | 54 | 0 | 0 | 0 | 0 | 0 |
+| [`roadmap/depth-vla.md`](../../roadmap/depth-vla.md) | 3/3 | 6 | 137 | 137 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-robotics-diffusion-dit-flow.md`](../../roadmap/depth-robotics-diffusion-dit-flow.md) | 3/3 | 8 | 13 | 13 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-motion-generation.md`](../../roadmap/depth-motion-generation.md) | 3/3 | 6 | 42 | 42 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-perceptive-locomotion.md`](../../roadmap/depth-perceptive-locomotion.md) | 3/3 | 5 | 47 | 46 | 1 | 0 | 0 | 0 | 1 |
-| [`roadmap/depth-embodied-eval.md`](../../roadmap/depth-embodied-eval.md) | 3/3 | 7 | 84 | 84 | 0 | 0 | 0 | 0 | 0 |
+| [`roadmap/depth-embodied-eval.md`](../../roadmap/depth-embodied-eval.md) | 3/3 | 7 | 88 | 88 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-bfm.md`](../../roadmap/depth-bfm.md) | 3/3 | 6 | 64 | 64 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-icl.md`](../../roadmap/depth-icl.md) | 3/3 | 6 | 33 | 33 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-humanoid-boxing.md`](../../roadmap/depth-humanoid-boxing.md) | 3/3 | 6 | 22 | 22 | 0 | 0 | 0 | 0 | 0 |
@@ -28,12 +28,13 @@
 | [`roadmap/depth-humanoid-swarm-performance.md`](../../roadmap/depth-humanoid-swarm-performance.md) | 3/3 | 6 | 32 | 32 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-motion-retargeting.md`](../../roadmap/depth-motion-retargeting.md) | 3/3 | 7 | 85 | 85 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-humanoid-soccer.md`](../../roadmap/depth-humanoid-soccer.md) | 3/3 | 6 | 30 | 30 | 0 | 0 | 0 | 0 | 0 |
-| [`roadmap/depth-loco-manipulation.md`](../../roadmap/depth-loco-manipulation.md) | 3/3 | 6 | 67 | 66 | 1 | 0 | 0 | 0 | 1 |
+| [`roadmap/depth-loco-manipulation.md`](../../roadmap/depth-loco-manipulation.md) | 3/3 | 6 | 68 | 67 | 1 | 0 | 0 | 0 | 1 |
 | [`roadmap/depth-rl-locomotion.md`](../../roadmap/depth-rl-locomotion.md) | 3/3 | 6 | 48 | 48 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-imitation-learning.md`](../../roadmap/depth-imitation-learning.md) | 3/3 | 7 | 39 | 39 | 0 | 0 | 0 | 0 | 0 |
+| [`roadmap/depth-multi-robot-collaboration.md`](../../roadmap/depth-multi-robot-collaboration.md) | 3/3 | 7 | 67 | 67 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-model-architecture.md`](../../roadmap/depth-model-architecture.md) | 3/3 | 6 | 87 | 87 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-navigation.md`](../../roadmap/depth-navigation.md) | 3/3 | 6 | 87 | 86 | 1 | 0 | 0 | 0 | 1 |
-| [`roadmap/depth-contact-manipulation.md`](../../roadmap/depth-contact-manipulation.md) | 3/3 | 4 | 54 | 54 | 0 | 0 | 0 | 0 | 0 |
+| [`roadmap/depth-contact-manipulation.md`](../../roadmap/depth-contact-manipulation.md) | 3/3 | 4 | 55 | 55 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-rsi.md`](../../roadmap/depth-rsi.md) | 3/3 | 6 | 49 | 49 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-safe-control.md`](../../roadmap/depth-safe-control.md) | 3/3 | 5 | 33 | 33 | 0 | 0 | 0 | 0 | 0 |
 | [`roadmap/depth-robot-modeling-digital-twin.md`](../../roadmap/depth-robot-modeling-digital-twin.md) | 3/3 | 7 | 59 | 59 | 0 | 0 | 0 | 0 | 0 |
@@ -46,7 +47,7 @@
 
 ## Stage → 节点 → 分值 → 缺项（保留重复引用关系）
 
-### roadmap/depth-wam.md（路线 3/3，节点 3/3: 109/109）
+### roadmap/depth-wam.md（路线 3/3，节点 3/3: 110/110）
 
 #### Stage 0 边界与族谱：什么是 / 不是 WAM
 
@@ -116,6 +117,7 @@
 
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
+| [`wiki/entities/paper-eponax.md`](../../wiki/entities/paper-eponax.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-hog-wam.md`](../../wiki/entities/paper-hog-wam.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-entangle-2611-28732.md`](../../wiki/entities/paper-entangle-2611-28732.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-ar-wam.md`](../../wiki/entities/paper-ar-wam.md) | 3/3 | complete | — |
@@ -305,7 +307,7 @@
 | [`wiki/overview/hub-embodied-eval-benchmark.md`](../../wiki/overview/hub-embodied-eval-benchmark.md) | 3/3 | complete | — |
 | [`wiki/queries/humanoid-robot-data-collection-landscape.md`](../../wiki/queries/humanoid-robot-data-collection-landscape.md) | 3/3 | complete | — |
 
-### roadmap/depth-real2sim.md（路线 3/3，节点 3/3: 53/53）
+### roadmap/depth-real2sim.md（路线 3/3，节点 3/3: 54/54）
 
 #### Stage 0 定位与"可仿真"判据：先钉死什么叫"能仿真"
 
@@ -332,6 +334,7 @@
 | [`wiki/entities/nvidia-nurec.md`](../../wiki/entities/nvidia-nurec.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-instant-nurec.md`](../../wiki/entities/paper-instant-nurec.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-pi4-4d-scene-geometry-motion.md`](../../wiki/entities/paper-pi4-4d-scene-geometry-motion.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-moge-4d.md`](../../wiki/entities/paper-moge-4d.md) | 3/3 | complete | — |
 | [`wiki/entities/tripo-studio.md`](../../wiki/entities/tripo-studio.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-lingbot-map-v2.md`](../../wiki/entities/paper-lingbot-map-v2.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-gensfm.md`](../../wiki/entities/paper-gensfm.md) | 3/3 | complete | — |
@@ -405,7 +408,7 @@
 | [`wiki/entities/articraft.md`](../../wiki/entities/articraft.md) | 3/3 | complete | — |
 | [`wiki/entities/physx-omni.md`](../../wiki/entities/physx-omni.md) | 3/3 | complete | — |
 
-### roadmap/depth-vla.md（路线 3/3，节点 3/3: 135/135）
+### roadmap/depth-vla.md（路线 3/3，节点 3/3: 137/137）
 
 #### Stage 0 具身基础模型全景与前置
 
@@ -532,6 +535,7 @@
 | [`wiki/entities/paper-gap-graph-as-policy.md`](../../wiki/entities/paper-gap-graph-as-policy.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-eventvla-visual-evidence-memory.md`](../../wiki/entities/paper-eventvla-visual-evidence-memory.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-robottt-test-time-training-vla-context.md`](../../wiki/entities/paper-robottt-test-time-training-vla-context.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-waco-pose-robust-vla.md`](../../wiki/entities/paper-waco-pose-robust-vla.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-actfovea.md`](../../wiki/entities/paper-actfovea.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-robo-harness.md`](../../wiki/entities/paper-robo-harness.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-rtcf.md`](../../wiki/entities/paper-rtcf.md) | 3/3 | complete | — |
@@ -551,6 +555,7 @@
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
 | [`wiki/overview/embodied-trends-2026-11-h1.md`](../../wiki/overview/embodied-trends-2026-11-h1.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-clare-continual-vla.md`](../../wiki/entities/paper-clare-continual-vla.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-roboeval-solution.md`](../../wiki/entities/paper-roboeval-solution.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md`](../../wiki/entities/paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-tidybot-2305-05658.md`](../../wiki/entities/paper-tidybot-2305-05658.md) | 3/3 | complete | — |
@@ -784,13 +789,15 @@
 | [`wiki/entities/paper-proof-loco.md`](../../wiki/entities/paper-proof-loco.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md`](../../wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) | 3/3 | complete | — |
 
-### roadmap/depth-embodied-eval.md（路线 3/3，节点 3/3: 84/84）
+### roadmap/depth-embodied-eval.md（路线 3/3，节点 3/3: 88/88）
 
 #### Stage 0 评测目的与四层闭环边界
 
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
 | [`wiki/queries/embodied-eval-benchmark-selection-loop.md`](../../wiki/queries/embodied-eval-benchmark-selection-loop.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-embodied-eval-perception-execution.md`](../../wiki/entities/paper-embodied-eval-perception-execution.md) | 3/3 | complete | — |
+| [`wiki/methods/embodied-agent-benchmarking.md`](../../wiki/methods/embodied-agent-benchmarking.md) | 3/3 | complete | — |
 | [`wiki/entities/openai-robotics-reorganization-aiwang-2026.md`](../../wiki/entities/openai-robotics-reorganization-aiwang-2026.md) | 3/3 | complete | — |
 | [`wiki/overview/hub-embodied-eval-benchmark.md`](../../wiki/overview/hub-embodied-eval-benchmark.md) | 3/3 | complete | — |
 | [`wiki/concepts/sim-vs-real-eval-gap.md`](../../wiki/concepts/sim-vs-real-eval-gap.md) | 3/3 | complete | — |
@@ -834,6 +841,8 @@
 | [`wiki/entities/calvin-benchmark.md`](../../wiki/entities/calvin-benchmark.md) | 3/3 | complete | — |
 | [`wiki/entities/rlbench.md`](../../wiki/entities/rlbench.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-barkour-quadruped-agility-benchmark.md`](../../wiki/entities/paper-barkour-quadruped-agility-benchmark.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-roboinf.md`](../../wiki/entities/paper-roboinf.md) | 3/3 | complete | — |
+| [`wiki/entities/robots-last-exam.md`](../../wiki/entities/robots-last-exam.md) | 3/3 | complete | — |
 | [`wiki/entities/embodied-first-exam.md`](../../wiki/entities/embodied-first-exam.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-worldleague.md`](../../wiki/entities/paper-worldleague.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-agentrobocritic.md`](../../wiki/entities/paper-agentrobocritic.md) | 3/3 | complete | — |
@@ -1582,7 +1591,7 @@
 | [`wiki/methods/table-tennis-strategy-skill-learning.md`](../../wiki/methods/table-tennis-strategy-skill-learning.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-adapt.md`](../../wiki/entities/paper-adapt.md) | 3/3 | complete | — |
 
-### roadmap/depth-loco-manipulation.md（路线 3/3，节点 3/3: 66/67）
+### roadmap/depth-loco-manipulation.md（路线 3/3，节点 3/3: 67/68）
 
 #### Stage 0 全景与前置：行走 × 操作的耦合问题
 
@@ -1618,6 +1627,7 @@
 
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
+| [`wiki/entities/paper-egoloaf.md`](../../wiki/entities/paper-egoloaf.md) | 3/3 | complete | — |
 | [`wiki/tasks/teleoperation.md`](../../wiki/tasks/teleoperation.md) | 3/3 | complete | — |
 | [`wiki/overview/loco-manip-161-category-07-data-teleop.md`](../../wiki/overview/loco-manip-161-category-07-data-teleop.md) | 3/3 | complete | — |
 | [`wiki/overview/loco-manip-8-papers-technology-map.md`](../../wiki/overview/loco-manip-8-papers-technology-map.md) | 3/3 | complete | — |
@@ -1838,6 +1848,110 @@
 | [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-redirectmimic.md`](../../wiki/entities/paper-redirectmimic.md) | 3/3 | complete | — |
 | [`wiki/queries/humanoid-motion-tracking-method-selection.md`](../../wiki/queries/humanoid-motion-tracking-method-selection.md) | 3/3 | complete | — |
+
+### roadmap/depth-multi-robot-collaboration.md（路线 3/3，节点 3/3: 67/67）
+
+#### Stage 0 协作谱系定义、架构分型与任务分配：先画清耦合与通信边界
+
+| 节点 | 分值 | 状态 | 缺项原因 |
+|---|---:|---|---|
+| [`wiki/concepts/multi-robot-collaboration.md`](../../wiki/concepts/multi-robot-collaboration.md) | 3/3 | complete | — |
+| [`wiki/concepts/humanoid-multi-robot-coordination.md`](../../wiki/concepts/humanoid-multi-robot-coordination.md) | 3/3 | complete | — |
+| [`wiki/comparisons/multi-robot-coordination-architectures.md`](../../wiki/comparisons/multi-robot-coordination-architectures.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-typed-plans-fleet-control.md`](../../wiki/entities/paper-typed-plans-fleet-control.md) | 3/3 | complete | — |
+
+#### Stage 1 协同搬运与物理闭链耦合底座：先把“别把队友扯翻”吃透
+
+| 节点 | 分值 | 状态 | 缺项原因 |
+|---|---:|---|---|
+| [`wiki/concepts/floating-base-dynamics.md`](../../wiki/concepts/floating-base-dynamics.md) | 3/3 | complete | — |
+| [`wiki/concepts/collaborative-object-transport.md`](../../wiki/concepts/collaborative-object-transport.md) | 3/3 | complete | — |
+| [`wiki/tasks/loco-manipulation.md`](../../wiki/tasks/loco-manipulation.md) | 3/3 | complete | — |
+| [`wiki/tasks/bimanual-manipulation.md`](../../wiki/tasks/bimanual-manipulation.md) | 3/3 | complete | — |
+| [`wiki/concepts/impedance-control.md`](../../wiki/concepts/impedance-control.md) | 3/3 | complete | — |
+| [`wiki/concepts/force-control-basics.md`](../../wiki/concepts/force-control-basics.md) | 3/3 | complete | — |
+| [`wiki/concepts/hybrid-force-position-control.md`](../../wiki/concepts/hybrid-force-position-control.md) | 3/3 | complete | — |
+| [`wiki/concepts/contact-dynamics.md`](../../wiki/concepts/contact-dynamics.md) | 3/3 | complete | — |
+| [`wiki/concepts/centroidal-dynamics.md`](../../wiki/concepts/centroidal-dynamics.md) | 3/3 | complete | — |
+| [`wiki/concepts/whole-body-control.md`](../../wiki/concepts/whole-body-control.md) | 3/3 | complete | — |
+| [`wiki/concepts/whole-body-coordination.md`](../../wiki/concepts/whole-body-coordination.md) | 3/3 | complete | — |
+
+#### Stage 2 多机协同搬运与互作用代表系统：人形、移动臂与无人机全景拆解
+
+| 节点 | 分值 | 状态 | 缺项原因 |
+|---|---:|---|---|
+| [`wiki/entities/paper-decentralized-multi-humanoid-pickup.md`](../../wiki/entities/paper-decentralized-multi-humanoid-pickup.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-heave-ho-2611-22275.md`](../../wiki/entities/paper-heave-ho-2611-22275.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-rhythm-dual-humanoid-interaction.md`](../../wiki/entities/paper-rhythm-dual-humanoid-interaction.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-amp-survey-17-teamhoi.md`](../../wiki/entities/paper-amp-survey-17-teamhoi.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-sai-sequential-asymmetric-imitation.md`](../../wiki/entities/paper-sai-sequential-asymmetric-imitation.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-chorus.md`](../../wiki/entities/paper-chorus.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-mawam-coordinated-manipulation.md`](../../wiki/entities/paper-mawam-coordinated-manipulation.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-pingpongduo.md`](../../wiki/entities/paper-pingpongduo.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-pave.md`](../../wiki/entities/paper-pave.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-tangrambench-goma.md`](../../wiki/entities/paper-tangrambench-goma.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2609-23997.md`](../../wiki/entities/paper-agentic-2609-23997.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2607-06990.md`](../../wiki/entities/paper-agentic-2607-06990.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-calm-decentralized-aerial-manipulation.md`](../../wiki/entities/paper-calm-decentralized-aerial-manipulation.md) | 3/3 | complete | — |
+
+#### Stage 3 闭链动力学建模、MARL 训练与多主体世界模型：把底层引擎与训练机制跑通
+
+| 节点 | 分值 | 状态 | 缺项原因 |
+|---|---:|---|---|
+| [`wiki/entities/paper-robocompiler-humanoids-composable-dynamics.md`](../../wiki/entities/paper-robocompiler-humanoids-composable-dynamics.md) | 3/3 | complete | — |
+| [`wiki/methods/marl.md`](../../wiki/methods/marl.md) | 3/3 | complete | — |
+| [`wiki/comparisons/ctde-vs-decentralized-marl.md`](../../wiki/comparisons/ctde-vs-decentralized-marl.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-h2marl-hierarchical-heterogeneous-marl-humanoid.md`](../../wiki/entities/paper-h2marl-hierarchical-heterogeneous-marl-humanoid.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-end-of-reward-engineering.md`](../../wiki/entities/paper-end-of-reward-engineering.md) | 3/3 | complete | — |
+| [`wiki/entities/quad-swarm-rl.md`](../../wiki/entities/quad-swarm-rl.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-gamma-world-multi-agent.md`](../../wiki/entities/paper-gamma-world-multi-agent.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-acap.md`](../../wiki/entities/paper-acap.md) | 3/3 | complete | — |
+
+#### Stage 4 协同感知、共享信念与机间通信中间件：跨机状态到底怎么传、怎么信
+
+| 节点 | 分值 | 状态 | 缺项原因 |
+|---|---:|---|---|
+| [`wiki/concepts/ros2-basics.md`](../../wiki/concepts/ros2-basics.md) | 3/3 | complete | — |
+| [`wiki/concepts/dds-communication.md`](../../wiki/concepts/dds-communication.md) | 3/3 | complete | — |
+| [`wiki/comparisons/ros2-vs-lcm.md`](../../wiki/comparisons/ros2-vs-lcm.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-be-my-eye-comind.md`](../../wiki/entities/paper-be-my-eye-comind.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-creg-evidence-grounded-shared-belief.md`](../../wiki/entities/paper-creg-evidence-grounded-shared-belief.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2609-27720.md`](../../wiki/entities/paper-agentic-2609-27720.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2609-08402.md`](../../wiki/entities/paper-agentic-2609-08402.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-humanoid-soccer-swarm-intelligence.md`](../../wiki/entities/paper-humanoid-soccer-swarm-intelligence.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md`](../../wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md) | 3/3 | complete | — |
+| [`wiki/concepts/clock-synchronization-algorithms.md`](../../wiki/concepts/clock-synchronization-algorithms.md) | 3/3 | complete | — |
+
+#### Stage 5 神经符号任务规划、群组运动优化与编队控制：多机长程分解与密集避碰
+
+| 节点 | 分值 | 状态 | 缺项原因 |
+|---|---:|---|---|
+| [`wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md`](../../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md) | 3/3 | complete | — |
+| [`wiki/entities/ego-planner-swarm.md`](../../wiki/entities/ego-planner-swarm.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-nsdl-multirobot-2611-16671.md`](../../wiki/entities/paper-nsdl-multirobot-2611-16671.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2602-21670.md`](../../wiki/entities/paper-agentic-2602-21670.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2603-02669.md`](../../wiki/entities/paper-agentic-2603-02669.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-htrip-distance-index.md`](../../wiki/entities/paper-htrip-distance-index.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-pa-sar.md`](../../wiki/entities/paper-pa-sar.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-srl-mpc.md`](../../wiki/entities/paper-srl-mpc.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-social-force-mpc-cbf-group.md`](../../wiki/entities/paper-social-force-mpc-cbf-group.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-formation-control-tutorial.md`](../../wiki/entities/paper-formation-control-tutorial.md) | 3/3 | complete | — |
+
+#### Stage 6 多机安全护栏、云边推理调度与车队级规模部署：让几十到上千台机器稳跑上线
+
+| 节点 | 分值 | 状态 | 缺项原因 |
+|---|---:|---|---|
+| [`wiki/concepts/control-barrier-function.md`](../../wiki/concepts/control-barrier-function.md) | 3/3 | complete | — |
+| [`wiki/concepts/safety-filter.md`](../../wiki/concepts/safety-filter.md) | 3/3 | complete | — |
+| [`wiki/methods/lwd.md`](../../wiki/methods/lwd.md) | 3/3 | complete | — |
+| [`wiki/entities/crazyswarm2.md`](../../wiki/entities/crazyswarm2.md) | 3/3 | complete | — |
+| [`wiki/concepts/robot-safety-state-machine.md`](../../wiki/concepts/robot-safety-state-machine.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2607-23532.md`](../../wiki/entities/paper-agentic-2607-23532.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2608-00337.md`](../../wiki/entities/paper-agentic-2608-00337.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2609-12075.md`](../../wiki/entities/paper-agentic-2609-12075.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-lwd-fleet-scale-rl.md`](../../wiki/entities/paper-lwd-fleet-scale-rl.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2609-28247.md`](../../wiki/entities/paper-agentic-2609-28247.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-agentic-2609-18520.md`](../../wiki/entities/paper-agentic-2609-18520.md) | 3/3 | complete | — |
 
 ### roadmap/depth-model-architecture.md（路线 3/3，节点 3/3: 87/87）
 
@@ -2083,7 +2197,7 @@
 | [`wiki/entities/paper-commnav.md`](../../wiki/entities/paper-commnav.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-mosu2.md`](../../wiki/entities/paper-mosu2.md) | 3/3 | complete | — |
 
-### roadmap/depth-contact-manipulation.md（路线 3/3，节点 3/3: 54/54）
+### roadmap/depth-contact-manipulation.md（路线 3/3，节点 3/3: 55/55）
 
 #### Stage 0 操作基础
 
@@ -2125,6 +2239,7 @@
 
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
+| [`wiki/entities/paper-avail-dexterous-manipulation-from-images.md`](../../wiki/entities/paper-avail-dexterous-manipulation-from-images.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-pyrua-dex.md`](../../wiki/entities/paper-pyrua-dex.md) | 3/3 | complete | — |
 | [`wiki/entities/mjlab-hand.md`](../../wiki/entities/mjlab-hand.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-psr-vla.md`](../../wiki/entities/paper-psr-vla.md) | 3/3 | complete | — |

@@ -32,7 +32,7 @@
     document: '<path d="M4.2 2.5h5.2l2.6 2.6v8.4H4.2V2.5Z"/><path d="M9.4 2.5v2.6H12M6 8h4M6 10.6h3"/>',
     'code-repo': '<path d="M5.5 4.8L2.5 8l3 3.2M10.5 4.8L13.5 8l-3 3.2M9 3.6L7 12.4"/>',
 
-    // 32 Depth roadmap topic icons (E3)
+    // 33 Depth roadmap topic icons (E3)
     pcb: '<rect x="5" y="5" width="6" height="6" rx="1"/><path d="M6.8 2.5V5M9.2 2.5V5M6.8 11v2.5M9.2 11v2.5M2.5 6.8H5M2.5 9.2H5M11 6.8h2.5M11 9.2h2.5"/>',
     gamepad: '<rect x="2.2" y="5" width="11.6" height="6.6" rx="3.1"/><path d="M5.6 7v2.6M4.3 8.3h2.6"/><circle cx="10.4" cy="7.7" r="0.7" fill="currentColor" stroke="none"/><circle cx="11.7" cy="9" r="0.7" fill="currentColor" stroke="none"/>',
     rocket: '<path d="M9.8 2.5c1.8.2 3.5 1.9 3.7 3.7l-3.9 3.9-3.7-3.7 3.9-3.9Z"/><path d="M5.9 6.4 3.4 7l2 2M9.6 10.1l-.6 2.5-2-2M3.3 12.7l1.8-1.8"/><circle cx="9.8" cy="6.2" r="0.9" fill="currentColor" stroke="none"/>',
@@ -45,6 +45,7 @@
     gripper: '<path d="M8 2.5v2.8M5.4 5.3h5.2M5.4 5.3 3.7 9l2 2.7M10.6 5.3l1.7 3.7-2 2.7"/><circle cx="8" cy="11.2" r="1.4"/>',
     'nav-map': '<path d="M8 2.5a3.5 3.5 0 0 1 3.5 3.5c0 2.6-3.5 6.8-3.5 6.8S4.5 8.6 4.5 6A3.5 3.5 0 0 1 8 2.5Z"/><circle cx="8" cy="6" r="1.2" fill="currentColor" stroke="none"/>',
     blocks: '<rect x="2.6" y="2.8" width="4.4" height="4.4" rx="1"/><rect x="9" y="2.8" width="4.4" height="4.4" rx="1"/><rect x="2.6" y="9" width="10.8" height="4.2" rx="1"/>',
+    'multi-robot': '<rect x="6" y="6.8" width="4" height="3.2" rx="0.6"/><circle cx="3.8" cy="4.2" r="1.4"/><circle cx="12.2" cy="4.2" r="1.4"/><path d="M2.2 13v-4c0-.9.7-1.6 1.6-1.6h.8l1.4 1.2M13.8 13v-4c0-.9-.7-1.6-1.6-1.6h-.8l-1.4 1.2M3.8 9.2V13M12.2 9.2V13"/>',
     graduation: '<path d="M2.2 6.5 8 3.6l5.8 2.9L8 9.4 2.2 6.5Z"/><path d="M4.6 7.8v3.1c0 .9 1.5 1.8 3.4 1.8s3.4-.9 3.4-1.8V7.8M13.5 6.8v3.4"/>',
     walk: '<circle cx="8.6" cy="3.4" r="1.3"/><path d="M8 5.6 6.8 9.2l2.6 1.5.9 2.7M6.8 9.2l-2 4.2M6 6.8l2-1.2 2.4 1.4"/>',
     'robot-arm': '<path d="M3 13h10M5.2 13v-2.2l3.4-3.6 3-2.4M11.6 4.8l1.6-1M11.6 4.8l1 1.6"/><circle cx="5.2" cy="10.8" r="1.1" fill="currentColor" stroke="none"/><circle cx="8.6" cy="7.2" r="1.2" fill="currentColor" stroke="none"/>',
@@ -79,6 +80,7 @@
     'contact-manipulation': 'gripper',
     navigation: 'nav-map',
     'model-architecture': 'blocks',
+    'multi-robot-collaboration': 'multi-robot',
     'imitation-learning': 'graduation',
     'rl-locomotion': 'walk',
     'loco-manipulation': 'robot-arm',

@@ -2,27 +2,34 @@
 type: entity
 tags: [paper, aerial-manipulation, multi-agent, marl, mappo, uav, disturbance-observer, isaac-lab, payload-estimation]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-29
 project_id: calm-decentralized-aerial-manipulation
 arxiv: "2610.18425"
 code: https://github.com/HUOJIAXI/CALM-Cooperative-Aerial-Learned-Manipulation
 project: https://petreric.github.io/CALM/
+original:
+  - ../../sources/papers/calm_arxiv_2610_18425.md
 related:
+  - ../concepts/multi-robot-collaboration.md
+  - ../concepts/collaborative-object-transport.md
   - ../methods/marl.md
   - ../comparisons/ctde-vs-decentralized-marl.md
   - ../methods/ppo.md
   - ../concepts/domain-randomization.md
+  - ../../roadmap/depth-multi-robot-collaboration.md
 sources:
   - ../../sources/papers/calm_arxiv_2610_18425.md
   - ../../sources/sites/calm-aerial-project.md
-summary: "CALM（arXiv:2610.18425）：3 架带双连杆臂的 UAV 共搬篮筐并跟踪移动地面机器人，参数共享 MAPPO 策略 + ESO 扰动观测 + 载荷质量估计 + 编队偏航前馈；仿真保留集位置误差 7.68 对 10.95 cm、姿态 3.3 对 4.7 度；仅仿真，项目页代码链接 2026-10-17 返回 404。"
+summary: "CALM（arXiv:2610.18425）：3 架带双连杆臂的 UAV 共搬篮筐并跟踪移动地面机器人，参数共享 MAPPO 策略 + ESO 扰动观测 + 载荷质量估计 + 编队偏航前馈；仿真保留集位置误差 7.68 对 10.95 cm、姿态 3.3 对 4.7 度；仅仿真，项目页代码链接返回 404。"
 ---
 
 # CALM：多机空中操作的去中心化 MARL 控制
 
-**CALM 为多架带机械臂的无人机共同搬运篮筐并跟踪移动地面机器人提供去中心化控制：参数共享的 MAPPO 策略接收扰动观测、质量估计与目标预测，再叠加按目标转向提前旋转编队的偏航前馈。**
-
 论文 *CALM: Decentralized Control of Cooperative Aerial Manipulation with Multi-Agent Reinforcement Learning*（[arXiv:2610.18425](https://arxiv.org/abs/2610.18425)，[项目页](https://petreric.github.io/CALM/)）。注意：与本库 [paper-bfm-19-calm](./paper-bfm-19-calm.md) 的 CALM 同名不同文，互不相关。
+
+## 一句话定义
+
+**CALM 为多架带机械臂的无人机共同搬运篮筐并跟踪移动地面机器人提供去中心化控制：参数共享的 MAPPO 策略接收扩展状态扰动观测、篮筐质量估计与目标预测，再叠加按目标转向提前旋转编队的偏航前馈。**
 
 ## 英文缩写速查
 
@@ -135,11 +142,14 @@ flowchart TB
 
 ## 关联页面
 
+- [多机器人协作（Multi-Robot Collaboration）](../concepts/multi-robot-collaboration.md) — 空中多机与地面多机闭链共载定位
+- [协同物体搬运（Collaborative Object Transport）](../concepts/collaborative-object-transport.md) — 比较空中臂式抓取、缆绳悬吊与地面闭链搬运
 - [MARL](../methods/marl.md) — 多智能体强化学习总览
 - [CTDE 与去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md) — 集中训练分散执行的取舍
 - [PPO](../methods/ppo.md) — MAPPO 的单智能体基础
 - [域随机化](../concepts/domain-randomization.md) — 风与载荷随机化的训练背景
 - [同名 CALM（人形）](./paper-bfm-19-calm.md) — 同缩写不同论文，避免混淆
+- [多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md) — Stage 2 协同搬运代表节点
 
 ## 参考来源
 

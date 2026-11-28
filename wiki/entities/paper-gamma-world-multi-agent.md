@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: gamma-world-multi-agent
 tags:
   - paper
   - world-models
@@ -9,16 +10,21 @@ tags:
   - diffusion
   - nvidia
 status: complete
-updated: 2026-11-22
+updated: 2026-11-29
 arxiv: "2605.28816"
+project: https://research.nvidia.com/labs/sil/projects/gamma-world/
 code: https://github.com/nv-tlabs/Gamma-World
+original:
+  - ../../sources/papers/gamma_world_arxiv_2605_28816.md
 related:
+  - ../concepts/multi-robot-collaboration.md
   - ../methods/generative-world-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../concepts/video-as-simulation.md
   - ../methods/marl.md
   - ../entities/paper-wem-world-ego-modeling.md
   - ../entities/nvidia-omniverse.md
+  - ../../roadmap/depth-multi-robot-collaboration.md
 sources:
   - ../../sources/papers/gamma_world_arxiv_2605_28816.md
   - ../../sources/sites/nvidia-gamma-world-project.md
@@ -128,18 +134,56 @@ flowchart TB
 | 多智能体 RL | [MARL](../methods/marl.md) | 学策略而非生成 **可控像素未来** |
 | 相邻 2026 预印本 | MultiWorld、ActionParty | 同赛道「多体 / 多主体绑定」；本库尚未单独 ingest |
 
-## 常见误区与局限
+## 源码运行时序图
+
+官方仓库 `nv-tlabs/Gamma-World`（Apache-2.0）在 `scripts/inference.py` 提供多智能体视频生成入口，在 `scripts/train.py` 通过 `cosmos_oss.scripts.train.main` 启动分布式训练（支持 `scripts/convert_checkpoint_to_dcp.py` 将公开 HF 权重转为 PyTorch DCP 格式）：
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 用户 / 评测样本
+  participant I as scripts/inference.py
+  participant Spec as MODEL_SPECS (inference_bidirectional / inference_i2v)
+  participant D as 数据读取 (load_example_sample / load_action)
+  participant M as 生成引擎 (BidirectionalInference / I2VInference)
+  participant V as 输出视频 (save_img_or_video)
+  U->>I: 指定 --mode、--eval-dir、--n-players 与条件帧参数
+  I->>Spec: 查找所选模式（bidirectional / i2v / causal_few_step）权重规范
+  I->>M: 构建多视角与 SRAE 旋转编码推理引擎
+  loop 每个测试目录 sample_dir
+    I->>D: 读取 first_frame.png、prompt.txt 与各主体 action_i.json（23 维键盘 + 2 维相机）
+    D-->>I: 返回条件图像 tensor 与多主体动作流
+    I->>M: engine.build_inference_batch(images, prompt, actions) + clear_cache()
+    alt spec.sampler == "bidirectional"
+      M->>M: engine.generate_single_shot() 全时空双向去噪
+    else 块因果 / 蒸馏自回归模式
+      M->>M: engine.generate_from_batch() 维持 KV cache 流式出帧
+    end
+    M-->>I: 返回生成视频张量
+    I->>V: 保存多机交互未来视角 rollout 视频
+  end
+```
+
+## 工程实践
+
+- **推理输入规范：** 多智能体推理样本目录需提供首帧 `first_frame.png`、`prompt.txt` 与对应人数 `n_players` 的 `action_0.json ... action_{n-1}.json`（兼容双人旧式 `action_left.json` / `action_right.json`）。
+- **权重转换与训练配置：** 微调或从头复现时先调用 `scripts/convert_checkpoint_to_dcp.py` 将 Hugging Face 权重（`chijw/Gamma-World` `.safetensors`）转换为 PyTorch DCP 断点，再通过 `scripts/train.py` 选择 `gamma_world/_src/gamma_world/configs/{causal_cosmos2,self_forcing}/experiment/exp_mc*.py`。
+- **作为多机协作辅助世界模型：** 当前生成结果主要支撑离线想象与多视角外观/协调一致性推演；若直接接入闭环控制或策略微调，仍需对接触力学精度与真实物理约束做下游检验。
+
+## 局限与风险
 
 - **误区：** 把 **24 FPS 生成** 等同于 **可用于 RL 的物理正确模拟器**；仍需检验 **动作–结果对齐** 与 **闭环任务增益**（见 [训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)）。
-- **局限：** 公开材料以 **虚拟多人 + 部分真实多机 demo** 为主；**接触力级精度**、**操纵评测协议** 与 **与 Isaac/MuJoCo 混合管线** 的对接需读全文与代码。
+- **局限：** 公开材料以 **虚拟多人 + 部分真实多机 demo** 为主；**接触力级精度**、**操纵评测协议** 与 **与 Isaac/MuJoCo 混合管线** 的对接需结合代码与实验场景进一步评估。
 
 ## 关联页面
 
+- [多机器人协作（Multi-Robot Collaboration）](../concepts/multi-robot-collaboration.md) — 多主体生成式世界模型在协作系统中的位置
 - [Generative World Models](../methods/generative-world-models.md) — 生成式世界模型总览与工程折中
 - [机器人世界模型：训练闭环与三线 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — ③ 可控视频生成 · 多体案例
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 用生成交互视频作中间环境
 - [MARL](../methods/marl.md) — 多机器人学习语境
 - [WEM（World-Ego Model）](./paper-wem-world-ego-modeling.md) — 单主体长程 world/ego 解耦对照
+- [多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md) — 收录于 Stage 4 多机世界模型节点
 
 ## 参考来源
 
@@ -151,4 +195,5 @@ flowchart TB
 
 - [arXiv 摘要与 PDF](https://arxiv.org/abs/2605.28816)
 - [项目页 Gallery](https://research.nvidia.com/labs/sil/projects/gamma-world/) — 双人 / 四人 / 真实多机定性
+- [多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md)
 - [GitHub 仓库](https://github.com/nv-tlabs/Gamma-World) — 实现与复现入口

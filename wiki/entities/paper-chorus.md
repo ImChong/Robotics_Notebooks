@@ -1,11 +1,17 @@
 ---
 type: entity
+project_id: chorus-decentralized-multi-embodiment
 tags: [paper, vla, multi-robot, multi-embodiment, decentralized, mobile-manipulation, corl-2026, stanford, pi05]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-29
 arxiv: "2606.12352"
 venue: "CoRL 2026"
+project: https://chorus-model.github.io/
+original:
+  - ../../sources/papers/chorus_arxiv_2606_12352.md
 related:
+  - ../concepts/multi-robot-collaboration.md
+  - ../comparisons/multi-robot-coordination-architectures.md
   - ../methods/vla.md
   - ../methods/pi0-policy.md
   - ../tasks/manipulation.md
@@ -13,10 +19,11 @@ related:
   - ../comparisons/ctde-vs-decentralized-marl.md
   - ./paper-pi05-open-world-vla.md
   - ./paper-self-supervised-control.md
+  - ../../roadmap/depth-multi-robot-collaboration.md
 sources:
   - ../../sources/papers/chorus_arxiv_2606_12352.md
   - ../../sources/sites/chorus-model.md
-summary: "CHORUS（arXiv:2606.12352，CoRL 2026）：在 π₀.₅ 上微调单一 VLA 权重，推理时每台机器人独立运行、仅本地观测与身份 prompt，无机间通信；真机多本体协作显著优于从零扩散与集中式 VLA；截至入库日代码未开源。"
+summary: "CHORUS（arXiv:2606.12352，CoRL 2026）：在 π₀.₅ 上微调单一 VLA 权重，推理时每台机器人独立运行、仅本地观测与身份 prompt，无机间通信；真机多本体协作显著优于从零扩散与集中式 VLA；代码未开源。"
 ---
 
 # CHORUS：单一 VLA 权重的去中心化多本体协作
@@ -94,15 +101,17 @@ flowchart TB
 
 ## 实验与评测
 
-| 维度 | 项目页要点 |
-|------|------------|
-| **vs 从零去中心化扩散** | 平均成功率 **+64 pp**；典型失败为队友时序不匹配（提前动作、卷尺配合失败） |
-| **权重共享消融** | 队友扰动下恢复率 **+40 pp**；无共享时常出现 miss / runaway |
-| **vs 集中式 VLA** | 条件信息更少，但 **均值成功率更高** |
-| **三机扩展** | Kinova + YAM 三机搬篮 **90%**；无架构变更 |
-| **任务族** | 洗衣篮对侧抬升、移动卷尺、图书交接、三机搬运；**4×** 加速视频展示 |
+> **实机平台与协议（arXiv `2606.12352` §4 & Appendix B/C）：** 基于 TidyBot 移动操作臂（11-DoF Kinova 15 Hz、10-DoF ARX、10-DoF YAM 30 Hz）；每任务采集 25–45 条联合示范、执行 10–18 次实机 rollout（含未见干扰物测试）。
 
-**读数边界：** 结果来自作者真机协议与项目页表格；独立复现前勿作硬基准。失败模式包括 **视觉遮挡队友**、**异构控制频率下的相位差**。
+| 维度 | 原文量化结果 |
+|------|------------|
+| **vs 从零去中心化扩散** | 跨任务均值成功率 **+64 pp**；从零扩散常因干扰物误抓与伙伴提前动作（如单侧先抬篮）失败 |
+| **权重共享消融（Fig. 5）** | YAM 横向扰动下 Kinova 交接适应恢复率：CHORUS **17/20（85%）** vs 无权重共享 **9/20（45%，约 +40 pp）** |
+| **vs 集中式 VLA（Fig. 6 & Table 3）** | 图书交接任务 CHORUS **0.833** vs `VLA Centralized` 下采样（15 Hz）**0.611** / 上采样（30 Hz）**0.611** |
+| **三机扩展（§4.4）** | Kinova（18 demos）开室门 + YAM-1/YAM-2（34 demos）抬洗衣篮串行过门：**90%** 成功率（无架构变更），并自然利用各机不等数量示范 |
+| **参数与上下文复杂度（Table 1）** | 对 `N` 机每机上下文 `C`：CHORUS 参数量与每机上下文保持 **`O(1)` 恒定**；`VLA Centralized` 上下文按 **`NC`** 线性膨胀；无权重共享参数按 **`N`** 线性倍增 |
+
+**读数边界：** 集中式 VLA 将 `π₀.₅` 四路单机视角（front/back/base/wrist）改填两台异构机器人的多视角，破坏预训练空间语义并提高输入维，造成集中式实际低于理论上限；且瞬时强同步任务（双夹爪微秒级同开同合）仍超出无通信视觉响应边界。
 
 ## 与其他工作对比
 
@@ -145,11 +154,14 @@ flowchart TB
 
 ## 关联页面
 
+- [多机器人协作（Multi-Robot Collaboration）](../concepts/multi-robot-collaboration.md)
+- [多机器人协同架构对比](../comparisons/multi-robot-coordination-architectures.md)
 - [VLA](../methods/vla.md)
 - [π0 Policy](../methods/pi0-policy.md)
 - [Manipulation](../tasks/manipulation.md)
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md)
 - [π₀.₅](./paper-pi05-open-world-vla.md)
+- [多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md)
 
 ## 参考来源
 

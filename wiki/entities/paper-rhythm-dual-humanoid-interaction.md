@@ -1,11 +1,18 @@
 ---
 type: entity
-tags: [paper, humanoid, marl, motion-retargeting, motion-tracking, reinforcement-learning, mappo, sim2real, unitree-g1, dual-humanoid, human-human-interaction, contact-rich, arxiv2026]
+project_id: rhythm-dual-humanoid-interaction
+tags: [paper, humanoid, marl, motion-retargeting, motion-tracking, reinforcement-learning, mappo, sim2real, unitree-g1, dual-humanoid, human-human-interaction, contact-rich, arxiv2026, fudan, tars-robotics, tsinghua, sjtu, shanghai-innovation-institute, casia]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-29
 arxiv: "2603.02856"
 venue: "arXiv preprint"
+project: https://hoshi-no-ai.github.io/Rhythm/
+original:
+  - ../../sources/papers/rhythm_arxiv_2603_02856.md
 related:
+  - ../concepts/multi-robot-collaboration.md
+  - ../concepts/collaborative-object-transport.md
+  - ../comparisons/ctde-vs-decentralized-marl.md
   - ../methods/marl.md
   - ../methods/reinforcement-learning.md
   - ../concepts/whole-body-tracking-pipeline.md
@@ -16,6 +23,7 @@ related:
   - ./paper-assistmimic.md
   - ./phc.md
   - ./unitree-g1.md
+  - ../../roadmap/depth-multi-robot-collaboration.md
 sources:
   - ../../sources/papers/rhythm_arxiv_2603_02856.md
   - ../../sources/sites/hoshi-no-ai-rhythm-github-io.md
@@ -24,7 +32,11 @@ summary: "Rhythm（arXiv:2603.02856）提出双 humanoid 物理交互统一框�
 
 # Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）
 
-**Rhythm** 是面向 **双 humanoid 物理耦合全身交互** 的系统论文（arXiv:2603.02856）：在 **两台 Unitree G1** 真机上首次报告 **拥抱、共舞、问候、肩并肩** 等 **富接触 / 长时域** 交互行为的 **稳健 sim2real**。框架由 **IAMR**（交互感知重定向）、**IGRL**（图奖励多智能体 RL）与 **真机部署栈**（LiDAR 融合定位 + 机间相位同步）三段紧密衔接。
+**Rhythm**（[arXiv:2603.02856](https://arxiv.org/abs/2603.02856)，[项目页](https://hoshi-no-ai.github.io/Rhythm/)）由复旦大学、它石智航（TARS Robotics）、清华大学、上海交通大学、上海创智学院与中科院自动化所联合提出：在 **两台 Unitree G1** 真机上首次实现 **拥抱、共舞、问候、肩并肩** 等 **富接触 / 长时域** 双机全身物理交互的 **稳健 sim2real**。
+
+## 一句话定义
+
+**通过解耦交互感知重定向 IAMR、图奖励多智能体策略 IGRL 与真机 LiDAR 定位/相位软同步三段闭环，使两台同构人形机器人从双人动作数据学习并直接向真机迁移富接触对称全身交互。**
 
 ## 英文缩写速查
 
@@ -95,28 +107,25 @@ flowchart TB
   - $r_{contact}$：接触状态一致 + 力幅正则，抑制穿透与非接触虚假力。
 - **训练技巧**：多目标 **adaptive RSI**（早期偏稳定、后期偏 tracking/交互精度）；**延迟噪声 peer 观测** 与初始位姿扰动模拟无线链路。
 
-### 真机部署
+## 工程实践
 
-- **定位**：POINT-LIO 高频里程计 + GICP 地图配准 + Kalman 融合，支撑动态全身运动下的全局位姿。
-- **观测重建**：LCM 广播全局 $\{P,R\}$，各机转 ego 系得到与仿真一致的 $o_{peer}$。
-- **时间对齐**：以 motion phase $\phi$ 为进度变量，**软同步** $\dot{\phi}_{ego}=1+k(\phi_{peer}-\phi_{ego})$，避免硬重置带来的动作跳变。
+- **建图融合定位：** 真机以 **POINT-LIO** 高频里程计 + **GICP** 预建点云地图配准 + **Kalman 融合** 实时输出双机全局位姿 $\{P, R\}$，避免富接触全身晃动造成纯视觉/里程计漂移。
+- **ego 系伙伴重建与通信降级：** 通过 **LCM** 广播双机全局位姿后在各自本体坐标系重建与仿真一致的 $o_{peer}$，并在训练阶段加入延迟、噪声与初始位姿扰动域随机化。
+- **相位软同步机制：** 真机使用基于运动相位 $\phi$ 的连续比例同步 $\dot{\phi}_{ego}=1+k(\phi_{peer}-\phi_{ego})$ 抑制时钟漂移，避免硬相位重置引发的关节力矩跳变。
 
-## 结论
+## 源码运行时序图
 
-**Rhythm 把双 humanoid 交互从仿真推到真机，难点不在单机跟踪，而在重定向层的 kinematic conflict 与部署层的机间定位/相位对齐——IAMR、IGRL、部署栈三段缺一不可。**
+**不适用**（截至 2026-11-29 复核 `https://hoshi-no-ai.github.io/Rhythm/` 与 arXiv `2603.02856`，官方训练/部署代码与 MAGIC 数据集下载仓库尚未公开挂出 GitHub 链接）。
 
-- 重定向层是真正的胜负手：IAMR 把 Interaction Mesh 边集拆成 self / inter，用距离衰减弹簧（近距变硬、远距变软）在个体流形与统一交互流形之间取舍，并顺带导出交互图与接触图供奖励对齐；Table I 中它在 Intensive Contact 上做到 IPR=0。
-- 策略层的收益来自显式建模伙伴：peer 相对位姿观测 + 继承 IAMR 权重的图奖励；ablation 显示去掉 peer obs、interaction reward 或 contact reward 都显著损伤成功率。
-- 真机能跑靠的是基础设施：POINT-LIO + GICP + Kalman 融合定位、LCM 广播重建 $o_{peer}$、以 motion phase 做软同步——这也是最硬的适用边界，预建地图 LiDAR 定位与可靠机间通信在非结构化野外仍是瓶颈。
-- 前提是双机同构（两台 G1 级人形）；异构双机或人–机混合需重新设计观测与接触图。
-- 与 [AssistMimic](./paper-assistmimic.md) 别混：后者是护理 assistive 力交换、以仿真 avatar 为主证据，Rhythm 是对称社交/协调交互、以真机为主证据；开源侧 MAGIC 声明将公开，但 ingest 时未挂独立 GitHub。
+## 实验与评测
 
-## 常见误区或局限
-
-- **双机同构前提**：框架针对 **两台 G1 级同构人形**；异构双机或人–机混合需重新设计观测与接触图。
-- **基础设施依赖**：真机需要 **预建地图 LiDAR 定位** 与 **可靠机间通信**；非结构化野外场景的定位与同步仍是瓶颈。
-- **与 AssistMimic 勿混淆**：AssistMimic 聚焦 **护理 assistive 力交换** 且在 **仿真 avatar** 主验证；Rhythm 聚焦 **对称双机社交/协调交互** 且 **真机为主证据**——问题设定、奖励与部署栈不同。
-- **代码/数据发布节奏**：论文声明 MAGIC 将公开； ingest 时项目页 **未挂独立 GitHub**，实现细节以 arXiv 与附录为准。
+- **重定向对比（Table I，MAGIC 三组 + Inter-X）：** `GMR` 与 `OR` 在强接触任务（Intensive Contact）交穿率 `IPR` 分别达 `35.2%` 与 `47.3%`；`IAMR` 在四项数据集上 `IPR = 0.00%` 且无穿透（`MPD = 0.0 cm`），在 `MAGIC: Intensive Contact` 下游跟踪成功率 `DSR = 78.3%`（vs `DOR 63.3%`），在未见数据集 `Inter-X` 上 `DSR = 69.9%`（vs `DOR 52.9%`），Contact F1-Strict 从 `DOR` 的 `0.589` 提至 `0.843`（+43%）。
+- **IGRL 策略消融（Table II）：** 相比 `Single Agent`（Collaborate 交互成功率 `ISR = 18.7%`）与去掉伙伴观测 `w/o Peer Obs`（Light Contact 接触成功率 `CSR` 暴跌至 `18.6%`），完整策略在四个场景中均维持 `ISR > 75%`、`CSR > 77%`；去掉接触奖励 `w/o Contact Rew` 虽仍保持表面对齐，但出现穿模“ghosting”，使 `Light Contact CSR` 由 `78.0%` 跌至 `52.1%`。
+- **Unitree G1 真机闭环（Table III，每任务 10 次试验关键帧判定）：**
+  - `Hug`（拥抱）：`26/30 (86.7%)` vs `Single Agent 8/30 (26.7%)`；
+  - `Shoulder`（搭肩）：`24/30 (80.0%)` vs `Single Agent 6/30 (20.0%)`；
+  - `Greeting`（长时域问候）：`74/90 (82.2%)` vs `Single Agent 11/90 (12.2%)`；
+  - 并在外力推、拉、踢腿扰动下（Fig. 6）恢复站立平衡与交互拓扑。
 
 ## 与其他工作对比
 
@@ -127,9 +136,28 @@ flowchart TB
 | **AssistMimic** | 双 avatar 护理 | 动态 hand retargeting | MARL + PHC prior | 仿真 SR 为主 |
 | **Rhythm** | **双 G1 对称交互** | **IAMR 解耦** | **MAPPO + 图奖励** | **双机真机拥抱/共舞** |
 
+## 局限与风险
+
+- **双机同构前提**：框架针对 **两台 G1 级同构人形**；异构双机或人–机混合需重新设计观测与接触图。
+- **基础设施依赖**：真机需要 **预建地图 LiDAR 定位**（POINT-LIO + GICP）与 **可靠机间 LCM 通信**；非结构化无先验地图野外场景仍需过渡到纯 ego 感知。
+- **与 AssistMimic 勿混淆**：AssistMimic 聚焦 **护理 assistive 力交换** 且在 **仿真 avatar** 主验证；Rhythm 聚焦 **对称双机社交/协调交互** 且 **真机为主证据**。
+- **代码/数据发布节奏**：项目页展示了 MAGIC 数据集与 G1 视频，但截至 2026-11-29 未公开独立 GitHub 仓库，工程复现细节需以论文与附录为准。
+
+## 结论
+
+**Rhythm 把双 humanoid 交互从仿真推到真机，难点不在单机跟踪，而在重定向层的 kinematic conflict 与部署层的机间定位/相位对齐——IAMR、IGRL、部署栈三段缺一不可。**
+
+1. **IAMR 解耦重定向消除交穿与空气握手**：把 Interaction Mesh 边集拆为 `E_self` 与距离衰减的 `E_inter`，在强接触任务中实现 `IPR=0.00%` 并比 `DOR` 提升 15–17 个百分点的下游跟踪成功率。
+2. **图结构奖励分层协同**：`r_inter` 先把双机拉入可交互包络，`r_contact` 再抑制穿模鬼影并正则化真实接触力，两项缺一不可。
+3. **工程化定位与相位软同步是 Sim2Real 底座**：真机用 POINT-LIO + GICP 配准与连续相位比例同步，才能在长期问候中压住双机累积漂移。
+4. **适用范围边界**：目前基于双同构 Unitree G1 与先验激光点云地图，且开源代码尚待发布。
+
 ## 关联页面
 
+- [多机器人协作（Multi-Robot Collaboration）](../concepts/multi-robot-collaboration.md) — 双人交互与紧耦合多机协调轴定位
+- [协同物体搬运（Collaborative Object Transport）](../concepts/collaborative-object-transport.md) — 对比无共享负载直接手接触与持物搬运约束
 - [Multi-Agent Reinforcement Learning (MARL)](../methods/marl.md)
+- [CTDE 与去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md)
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 - [AssistMimic](./paper-assistmimic.md) — 双人 assistive MARL tracking（仿真主证据）
@@ -137,20 +165,16 @@ flowchart TB
 - [GMR](../methods/motion-retargeting-gmr.md) — IAMR 重定向基线之一
 - [Sim2Real](../concepts/sim2real.md)
 - [Unitree G1](./unitree-g1.md)
+- [多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md) — 收录于 Stage 2 多人形全身交互节点
+
+## 参考来源
+
+- [Rhythm 论文摘录](../../sources/papers/rhythm_arxiv_2603_02856.md) — 全文 §I–§V 及 Table I–III 精读摘录与机构核对
+- [Rhythm 项目页归档](../../sources/sites/hoshi-no-ai-rhythm-github-io.md)
+- Chen et al., *Rhythm: Learning Interactive Whole-Body Control for Dual Humanoids*, arXiv:2603.02856, 2026. <https://arxiv.org/abs/2603.02856>
 
 ## 推荐继续阅读
 
 - Inter-X 数据集（论文 Inter-X 鲁棒性评测）：<https://github.com/Inter-X-Generation/Inter-X>
 - 项目页演示视频：<https://hoshi-no-ai.github.io/Rhythm/>
-
-## 实验与评测
-
-- **重定向**：IPR、MPD、IEE、Contact F1、下游 DSR；IAMR 在 MAGIC 三类物理分组与 Inter-X 上整体领先 GMR/OR/DOR。
-- **策略 ablation**：去 peer obs、interaction reward、contact reward 均显著损伤成功率。
-- **真机**：项目页展示协调舞蹈、富接触问候/拥抱/肩并肩及扰动鲁棒性；定量真机表见 **原文 PDF** 与 [参考来源](#参考来源)。
-
-## 参考来源
-
-- [Rhythm 论文摘录](../../sources/papers/rhythm_arxiv_2603_02856.md)
-- [Rhythm 项目页归档](../../sources/sites/hoshi-no-ai-rhythm-github-io.md)
-- Chen et al., *Rhythm: Learning Interactive Whole-Body Control for Dual Humanoids*, arXiv:2603.02856, 2026. <https://arxiv.org/abs/2603.02856>
+- [多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md)
