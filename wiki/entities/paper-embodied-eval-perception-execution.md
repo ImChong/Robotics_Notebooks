@@ -13,6 +13,7 @@ sources:
   - ../../sources/papers/embodied_eval_perception_execution_jig_250550.md
 related:
   - ../methods/embodied-agent-benchmarking.md
+  - ../tasks/manipulation.md
   - ../concepts/sim-vs-real-eval-gap.md
   - ./paper-simplerenv-real2sim-eval.md
 ---
@@ -83,6 +84,7 @@ flowchart LR
 ## 关联页面
 
 - [具身智能体评测](../methods/embodied-agent-benchmarking.md)
+- [机器人操作任务](../tasks/manipulation.md) — 对照拾取、放置、按压、拉与推的动作执行。
 - [仿真与真机评测差距](../concepts/sim-vs-real-eval-gap.md)
 
 ## 参考来源
