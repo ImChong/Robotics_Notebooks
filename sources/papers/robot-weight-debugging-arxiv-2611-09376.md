@@ -3,8 +3,10 @@
 - **类型：** paper
 - **论文：** https://arxiv.org/abs/2611.09376
 - **原文全文：** https://arxiv.org/html/2611.09376v1
-- **原文版本：** arXiv v1；核对日期 2026-11-19
-- **核对范围：** arXiv v1 全文、官方 README、edits/pi05-language-c/apply_sparse_rows.py、evidence/audit_new_results.py、公开配对结果协议
+- **原文版本：** arXiv v1；2026-11-28 重核
+- **作者：** Jusheng Zhang、Keze Wang、Liang Lin
+- **机构：** 斯坦福大学（Stanford University）、X-Era AI
+- **核对范围：** arXiv v1 HTML 正文与附录；重点复核 §2 配对协议、§3–5 主要与负结果、附录 A/D/F 的误差审计、留出与候选状态，并对照官方发布 README 与公开配对审计脚本。
 - **通读：** 已完成
 - **代码：** https://github.com/jushengzhang/robot-weight-debugging
 - **wiki：** [唯一论文详情](../../wiki/entities/paper-robot-weight-debugging-2611-09376.md)
@@ -25,3 +27,10 @@
 - 不能把改变 token 嵌入理解为获得新物理动作技能或解决任意长尾任务。
 - 公开的更广泛任务控制、其他策略与真机证据尚不充分；模型基座 checkpoint 需另行获取。
 - Apache-2.0 源码，`apply_sparse_rows.py` 只生成核验过的新 `.npy` 覆盖张量，不实际运行机器人策略。
+
+## 2026-11-28 补充核对
+
+- §2：三个 π0.5 语言会话从同一基座分别探索，作者按任务套件/变体哈希切分练习与留出；留出变体与种子固定，不能视作独立的三次环境抽样。
+- §4、附录 D：是否保留取决于编辑器最终决定，某些撤回指令没有执行、某些候选仍存在于目录。FastWAM 首轮和 PRO A 的未保留候选结果不能视为成功验证。
+- §5：参考指令混入场景和初始状态字段可显著改变 FastWAM 基线；论文独立比较该因素，并未声称所有模型敏感性相同。
+- 附录 A/F：二元结果不变与原始轨迹不变不能互换；公开配方核对的 65 个 token 行与实际变动标量数应分别报告。

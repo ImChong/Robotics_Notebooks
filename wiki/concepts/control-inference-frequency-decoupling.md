@@ -103,6 +103,8 @@ flowchart LR
 
 ## 关联页面
 
+- [SequenceLink](../entities/sequencelink.md) — 远端 GPU 生成动作块，本地按周期执行；分别测单次推理、传输尾延迟和动作队列年龄。
+
 - [VLA 加速 25 法工程对照](../comparisons/vla-acceleration-25-methods-2026.md) — 逐层定位视觉计算、动作头、chunk 交接与云端服务的延迟瓶颈，避免混淆模型延迟与闭环响应。
 
 - [VLA 动作到关节力矩的执行链路](./vla-action-to-joint-torque.md) — 动作解码/IK/阻抗/驱动器电流环的完整物理落地路径。

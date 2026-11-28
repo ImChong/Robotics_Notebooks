@@ -138,6 +138,8 @@ flowchart TB
 
 ## 关联页面
 
+- [Open-Embodied](../entities/open-embodied.md) — 将已公开的 DeepHunch 仿真代码与上层统一接口规划分开看待，不能把目录视为已贯通的真机栈。
+
 - [Real2SimLab](../entities/paper-real2simlab.md) — 以可执行仿真程序为共通交付物，连接数据重建、冻结重跑和原生评分。
 
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位

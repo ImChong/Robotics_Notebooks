@@ -190,6 +190,7 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 - UniSim 原文阅读归档：[unisim_reading_arxiv_2310_06114.md](../../sources/papers/unisim_reading_arxiv_2310_06114.md)。
 
 ## 关联页面
+- [ShowNow](../entities/paper-shownow.md) — 播放时提前生成多个动作分支，用来区分视频吞吐与输入到显示延迟。
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — Geirhos「视频模型即 VFM」与 Wu & Wu「像素生成 ≠ 物理理解」的对张力，用来读本页「视频即仿真」的适用边界
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 ego 视频 + 逐帧控制，动作条件交互世界模型语料

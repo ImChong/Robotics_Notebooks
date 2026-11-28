@@ -4,14 +4,23 @@
 - **代码：** https://github.com/ManfredCh/Lyapunov
 - **项目页：** https://vorynel.com/lyapunov/
 - **手册：** https://vorynel.com/lyapunov/manual.html
-- **版本说明：** https://github.com/ManfredCh/Lyapunov/blob/main/docs/releases/0.2.5.md
-- **核查日期：** 2026-11-20
-- **核对范围：** 官方 README 的部署与操作入口、0.2.5 发布说明、https://vorynel.com/lyapunov/manual.html 手册第 0–15 节及附录 A–C（Scene、Camera/Capture/Recording、RGB-D、标定、world ready、导出、故障排查）并对照仓库结构；未部署/逐个审计全部源码模块
+- **版本说明：** https://github.com/ManfredCh/Lyapunov/blob/60da31056e0b6d47bb2b361f0407e3e481a8536b/docs/releases/0.2.7.md
+- **版本：** 0.2.7，公开源码 `60da31056e0b6d47bb2b361f0407e3e481a8536b`；发布清单标明构建输入 `a8d21e55e1bb4af43eb07376215dcf204b1cc4a2`
+- **核查日期：** 2026-11-28
+- **核对范围：** 官方 README、0.2.7 说明、安装清单、Agent Graph 文档和相机合同；对照组合技能和三项实验的文档、摘要、SO-101 配对和离线评估入口源码；未安装工作台、未运行仿真或审计全仓
 - **通读：** 已完成
 
 ## 原文记录
 
-项目由 Vorynel 维护，Apache-2.0。README 描述 LLM-first 3D 桌面工作区（对话、代码、文件、三维 Viewer、物理引擎）。Linux x64 默认版本 0.2.5 及 MuJoCo 环境；Isaac Sim/Newton 为可选。推荐先 `prepare` → `initialize` → `ready` → 显式执行动作，再观察 world state、相机和数据导出；可见模型并不等于物理已就绪。Guest 模式无默认模型，需自己配置外部供应商；在线模型/积分与本地运行不可混为一谈。0.2.5 原生场景、文件、终端标签与物理引擎碰撞展示更新。**手册重点核对：** Camera 是绑定真实 robot body 的持久机位，Capture 是自由/固定机位的单帧或同物理步 RGB-D 采集，Recording 仅对特定可用的命名机位录制；相机 Depth 是光轴 Z、LiDAR range 是射线欧氏距离，不能混用。Scene revision、world generation/step、camera readback 与采集 frame ID 需一致；无有效深度时应拒绝 3D 标注而不是补值。官方手册中部分 Linux 固定包校验例子、版本核验字段仍指向 **0.2.0-alpha.1**，虽然页眉称 0.2.5：*当前下载版本和 SHA 以正式 0.2.5 release note/manifest 为准，不复用旧 alpha 校验值*。这里的“通读”指已列出的 README/手册/发行说明，不代表逐行审计整个大型 monorepo，也不代表实际安装通过。
+Vorynel 的 Apache-2.0 公开工作台把场景编辑、脚本、Agent 和物理状态放在一个桌面产品中。0.2.7 发布通道列出 Linux x64、WSL2 和 Apple Silicon；官网当前清单与历史 alpha 手册例子的大小、校验和、批次不同。Linux 清单最低 glibc 2.39，macOS 清单最低 macOS 15.0，便携包未公证。游客有本地工作区，没有默认模型；外部模型须由用户单独配置。MuJoCo 为默认产品安装路径，Isaac Sim 等后端另需匹配的软件和硬件。
+
+## 核对入口
+
+- [Agent Graph](https://github.com/ManfredCh/Lyapunov/blob/60da31056e0b6d47bb2b361f0407e3e481a8536b/docs/AGENT_GRAPH.md)与[组合技能范围](https://github.com/ManfredCh/Lyapunov/blob/60da31056e0b6d47bb2b361f0407e3e481a8536b/research/agy-robotics/README.md)：独立会话中的协调、调试、复现与确定性任务判定；上游 AGY 实现锁定 0.1.11，而不是本次并列收录的 0.1.13。
+- [SO-101 配对入口](https://github.com/ManfredCh/Lyapunov/blob/60da31056e0b6d47bb2b361f0407e3e481a8536b/script/gates/run-so101-paired.ts)与[离线策略评估入口](https://github.com/ManfredCh/Lyapunov/blob/60da31056e0b6d47bb2b361f0407e3e481a8536b/research/agy-sim-234/run-policy.ts)：前者比较同条件假设，后者以独立 Python 环境通过 Jobs 回收权重评估结果。配对前须固定 MJCF、网格、扰动和成功谓词。
+- [实验摘要](https://github.com/ManfredCh/Lyapunov/blob/60da31056e0b6d47bb2b361f0407e3e481a8536b/research/agy-sim-234/summary.json)：10 个有效的 SO-101 同种子配对，两种方法各 5 次放入箱中；YAM 标记工位视觉误差约 39.60 → 0.92 px；当前 SO-101 Playground 权重在 6 个保留种子上 0 次达成成功谓词，零动作对照同为 0 次。均为限定场景的仿真证据。
+- [相机合同](https://github.com/ManfredCh/Lyapunov/blob/60da31056e0b6d47bb2b361f0407e3e481a8536b/docs/SCENE_CAMERA_PIPELINE.md)：Camera 管挂载机位；Capture 管拍摄及同帧采集；Recording 管支持的固定来源录制。深度轴向 Z 与射线长度不是同一个量，核对应绑定实际渲染机位、帧和 world 代次。
+- 官网平台清单：[Linux/WSL2](https://vorynel.com/lyapunov/releases/latest/linux-x64.json) · [macOS](https://vorynel.com/lyapunov/releases/latest/darwin-arm64.json)。
 
 ## 对 wiki 的映射
 

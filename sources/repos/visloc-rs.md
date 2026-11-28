@@ -12,7 +12,6 @@
 - **许可证：** MIT OR Apache-2.0（Cargo.toml、LICENSE-MIT、LICENSE-APACHE）
 - **入库日期：** 2026-11-23
 - **核对范围：** 通读官方 README（含完整功能、传感器矩阵、运行指令、对比和已知劣势）；阅读 `Cargo.toml`、`docs/photos_to_splat.md`、`docs/navigation.md`、`crates/gsplat-train/examples/gsplat_photos.rs`、`examples/localize_dummy.rs` 的命令入口与主要代码流程；官方 Web 首页、SfM 和 VIO 演示页面另存于 [站点归档](../sites/visloc-rs.md)。**没有克隆运行、下载测试数据或独立复现 benchmark；未对全仓源码逐行审计。**
-- **通读：** 已完成
 - **代码开放：** **已开源**，Rust 1.88+，主流程依赖 Rust/wgpu；有 Python bindings 和单独 ROS 2 组件，但环境适配需另测。
 - **对应知识页：** [visloc-rs](../../wiki/entities/visloc-rs.md)
 
@@ -70,3 +69,12 @@ cargo run --release --example basalt_euroc_online_slam_demo \
 ## 2026-11-24 增量核查
 
 官方 [README](https://github.com/rsasaki0109/visloc-rs/blob/main/README.md) 已列出 `pip install visloc`；只核查此安装入口，未运行 Python 包。原 2026-11-23 固定版本通读记录仍保留。
+
+## 2026-11-28 增量核查
+
+- **核对版本：** [`e2f416f3cf8e6a069d532c46c8296ec00c0f5fad`](https://github.com/rsasaki0109/visloc-rs/tree/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad)。
+- **核对范围：** 通读固定版 README；核对 `docs/mvs.md` 的输入、算法与 ETH3D 评测口径及 [`crates/mvs/examples/mvs.rs`](https://github.com/rsasaki0109/visloc-rs/blob/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad/crates/mvs/examples/mvs.rs) 的参数、建图工作空间、深度估计和输出流程，并核对 `gsplat_photos.rs`、`examples/localize_dummy.rs` 入口。
+- **通读：** 已完成
+- **MVS 边界：** 读取 COLMAP 稀疏模型及已去畸变的 PINHOLE / SIMPLE_PINHOLE 图像；PatchMatch 恢复深度和法线，跨视角一致性融合得到 `fused.ply`。启用 `--mesh` 时可增做 TSDF 积分和网格提取，和照片训练高斯场后提取表面的路径不同。
+- **实验口径：** 13 个 ETH3D 高分辨率训练场景、3200 px、作者报告约 74 分钟、2 cm 容差下 F1 83.7%。固定真实相机位姿，此数字不能代替从照片估计位姿的端到端成绩。可选 CUDA 后端需要另行构建相应动态库；wgpu/CPU 路线不依赖 CUDA 工具链。
+- **运行状态：** 未下载 ETH3D 数据、编译上游程序或运行性能基准。

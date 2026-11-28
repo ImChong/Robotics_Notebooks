@@ -5,7 +5,7 @@ project: https://rsasaki0109.github.io/visloc-rs/
 code: https://github.com/rsasaki0109/visloc-rs
 tags: [repo, rust, slam, visual-inertial, sfm, 3dgs, gaussian-splatting, mapping, navigation, independent-maintainer]
 status: complete
-updated: 2026-11-24
+updated: 2026-11-28
 related:
   - ./rigvis.md
   - ./orb-slam3.md
@@ -20,10 +20,10 @@ sources:
 original:
   - ../../sources/repos/visloc-rs.md
   - ../../sources/sites/visloc-rs.md
-summary: "visloc-rs 是以 Rust/wgpu 实现的 SfM、Basalt 移植的视觉惯性 SLAM、地图重定位与照片→3DGS→mesh 工具；提供浏览器 Demo 和 ROS 2/Nav2 仿真集成，视觉重建不等于具备通用碰撞物理的仿真世界。"
+summary: "visloc-rs 是以 Rust/wgpu 实现的 SfM、实验性 MVS、Basalt 移植的视觉惯性 SLAM、地图重定位与照片→3DGS→mesh 工具；提供浏览器 Demo 和 ROS 2/Nav2 仿真集成，视觉重建不等于具备通用碰撞物理的仿真世界。"
 ---
 
-# visloc-rs：Rust 视觉定位、SfM 与 3D Gaussian Splatting 重建（Visual Localization & Reconstruction）
+# visloc-rs：Rust 视觉定位、SfM、MVS 与 3DGS 重建 / Visual Localization & Reconstruction
 
 ## 一句话定义
 
@@ -59,6 +59,8 @@ flowchart TD
     B --> C["图像匹配、两视图几何验证"]
     C --> D["增量 SfM + BA / 内参精化"]
     D --> E["COLMAP 相机/稀疏地标"]
+    E --> MVS["可选 MVS：对去畸变多视图做 PatchMatch"]
+    MVS --> Dense["深度与法线融合为稠密点云"]
     E --> F["初始化 3D Gaussians"]
     F --> G["wgpu 可微渲染与训练"]
     G --> H["scene.ply 视觉场景"]
@@ -81,7 +83,8 @@ flowchart TD
 1. **SfM**：SIFT 特征/候选匹配、两视图验证、COLMAP-port 增量 mapper、BA；输出相机姿态与稀疏点云（可写 COLMAP 格式）。
 2. **3DGS + mesh**：对稀疏点初始化 3D Gaussian，采用 wgpu 执行训练并评估 held-out PSNR，渲染深度后经融合提取三角 mesh。
 3. **VIO/地图**：Basalt Rust 移植的紧耦合双目惯性 VIO + 在线 mapper；持久地图支持跨会话匹配，配合 VIO/轮式里程计提供地图坐标系校正。
-4. **系统集成**：支持 Python bindings 与独立 ROS 2 节点；`visual_map_to_occupancy` 给 Nav2 供应 occupancy grid，Nav2 执行规划/控制。
+4. **实验性 MVS**：对 COLMAP 稀疏模型及已去畸变图像执行多尺度 PatchMatch 和几何一致性检查，融合为稠密点云；可选网格，独立于 `gsplat_photos`。
+5. **系统集成**：支持 Python bindings 与独立 ROS 2 节点；`visual_map_to_occupancy` 给 Nav2 供应 occupancy grid，Nav2 执行规划/控制。
 
 ## 源码运行时序图
 
@@ -126,12 +129,37 @@ sequenceDiagram
 
 另一个最小复现入口 `examples/localize_dummy.rs` 实际建立相机 + 3D landmarks + 2D keypoints/descriptors，调用 `localize(query, map)` 返回 PnP 定位结果；它与上图的重建程序不是同一执行路径。
 
+### MVS 命令的独立调用链
+
+依据固定版 `crates/mvs/examples/mvs.rs::main`，以默认的 wgpu 多尺度估计与未保存额外深度图的路径为例：
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant C as examples/mvs.rs main
+    participant W as Workspace
+    participant D as multi_scale_depth_maps
+    participant F as fuse 或 fuse_with
+    participant P as PLY 输出
+    U->>C: 提供 sparse, images, out, gpu
+    C->>C: read_text_model 读取 COLMAP 稀疏模型
+    C->>W: load 模型与已去畸变相片
+    C->>D: 基于图像金字塔估计深度和法线
+    D-->>C: 多视图深度图
+    C->>F: 检查重投影、深度和法线的一致性
+    opt 启用 mesh
+        F->>F: 将一致深度融入 TSDF
+    end
+    C->>P: 写 fused.ply，可选 mesh.ply
+```
+
 ## 实验与评测（作者报告，未独立复现）
 
 | 场景 | 官方结果 | 口径与限制 |
 |---|---|---|
 | SmallCity 3D 重建 | 5,822 图 → 5,583 位姿 → 4.7M 3DGS → 5.9M mesh，2.5 小时 | Colab A100、特定黑色像素 mask / 训练流程；不是“360° 相机走一圈都能在 2.5 h 完成” |
 | ETH3D Electro 1,200 图 | 3.46× 于 COLMAP CPU8，camera-centre RMSE 降 25.2% | 同输入作者测评，不是所有 SfM 数据均占优 |
+| ETH3D 高分辨率 MVS | 13 个训练场景，F1 83.7%（2 cm）、NVIDIA L4 上约 74 分钟 | 用数据集提供的去畸变相机位姿；不能当作未经标定照片端到端成绩或真机实时速率 |
 | EuRoC 双目惯性在线 SLAM | 作者机器 11/11 实时、9/11 ATE 胜 ORB-SLAM3 | MH_04 与 MH_05 仍输；需核对 profile 与标定 |
 | OpenLORIS rig 地图定位 | 1,250 held-out 帧中 98.96% 定位，median 2.9 mm | 特定地图/数据划分，不代表所有机器人定位都达毫米级 |
 | Nav2 仿真闭环 | 公寓 5/5 goals、3.8 cm RMSE；Gazebo 场景也报告 5/5 | **仿真结果**；作者尚未报告真机上用 Nav2 驱动导航 |
@@ -155,13 +183,21 @@ cargo run --release -p visloc-gsplat-train --features gpu,euroc --example gsplat
 
 - **Python 安装入口补充（2026-11-24 README 复核）**：官方 README 给出 `pip install visloc`；本次未实际安装，使用前核对 Python 版本、wheel 平台及所需功能是否已绑定。
 
+## 与其他工作对比
+
+| 方案 | 输入与输出 | 选型边界 |
+|---|---|---|
+| 本项目 MVS vs 同仓 3DGS | MVS 用已定位的去畸变图像估深并融合表面；3DGS 学习用于渲染的高斯场 | 稠密点云质量用几何阈值评估；渲染 PSNR 不等于几何误差 |
+| [ORB-SLAM3](orb-slam3.md) | 在线视觉/惯性定位及稀疏地图 | EuRoC 对比按传感器模式、运行配置和 ATE 口径分列 |
+| [RigVis](rigvis.md) | 立体视觉与惯性状态估计 | 紧/松耦合实现不同；不能以公开 demo 代替目标平台时延和漂移验收 |
+
 ## 局限与风险
 
 1. **视觉重建 ≠ 物理仿真**：3DGS 和 mesh 不自动等于可碰撞/可操作的 USD/MJCF 资产；项目确有 `real2sim.py` 的 360° 街景+Nav2/动态人群仿真演示，但不是任意场景任意物理交互的完整生成器。
 2. **受退化条件影响**：弱纹理、遮挡、运动模糊、错误内参或 IMU 时间偏移会影响位姿和重建；作者对 EuRoC 和 LaMAria 的较弱样本有具体失败报告。
 3. **评测有边界**：SmallCity 2.5 h 是 A100 上指定数据结果；OpenLORIS 98.96% 不能等同普适稳定性；跨论文时不能不控制数据/硬件直接排名。
 4. **ROS 2/真机需要独立验证**：官方说明 ROS 2 节点已在 RustDDS 上测试，但没有真实 ROS 2 安装互通保证；Nav2 目标结果当前来自仿真。
-5. **本次未执行编译或 benchmark**：下述引用记录了原文阅读范围而非执行复现，版本升级应重新核验。
+5. **本次未执行编译或基准测试**：下述引用记录了原文阅读范围而非执行复现，版本升级应重新核验。
 
 ## 结论
 
@@ -184,13 +220,14 @@ visloc-rs 值得作为 **视觉定位 + 几何外观重建** 的单仓多模块�
 
 ## 参考来源
 
-- [官方 GitHub README / 源码及运行时序核对](../../sources/repos/visloc-rs.md) — `rsasaki0109/visloc-rs@6a63f7f`，含评测证据、局限与指令。
+- [官方 GitHub README / 源码及运行时序核对](../../sources/repos/visloc-rs.md) — 2026-11-28 核对 `e2f416f`，含 MVS 新增核验及此前评测的固定版记录。
 - [官方项目站点与 Web 演示核对](../../sources/sites/visloc-rs.md) — SfM / VIO / 3DGS 页面。
-- [官方源码：gsplat_photos](https://github.com/rsasaki0109/visloc-rs/blob/main/crates/gsplat-train/examples/gsplat_photos.rs)
-- [官方导航实验与限制](https://github.com/rsasaki0109/visloc-rs/blob/main/docs/navigation.md)
+- [官方源码：gsplat_photos](https://github.com/rsasaki0109/visloc-rs/blob/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad/crates/gsplat-train/examples/gsplat_photos.rs)
+- [官方 MVS 入口](https://github.com/rsasaki0109/visloc-rs/blob/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad/crates/mvs/examples/mvs.rs) · [算法与 ETH3D 评测](https://github.com/rsasaki0109/visloc-rs/blob/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad/docs/mvs.md)
+- [官方导航实验与限制](https://github.com/rsasaki0109/visloc-rs/blob/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad/docs/navigation.md)
 
 ## 推荐继续阅读
 
-- [visloc-rs Photos to Splat and Mesh 官方文档](https://github.com/rsasaki0109/visloc-rs/blob/main/docs/photos_to_splat.md)
-- [visloc-rs VI-SLAM Benchmarks](https://github.com/rsasaki0109/visloc-rs/blob/main/docs/vi_slam_benchmarks.md)
+- [visloc-rs Photos to Splat and Mesh 官方文档](https://github.com/rsasaki0109/visloc-rs/blob/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad/docs/photos_to_splat.md)
+- [visloc-rs VI-SLAM Benchmarks](https://github.com/rsasaki0109/visloc-rs/blob/e2f416f3cf8e6a069d532c46c8296ec00c0f5fad/docs/vi_slam_benchmarks.md)
 - [Basalt 官方仓库](https://github.com/VladyslavUsenko/basalt)
