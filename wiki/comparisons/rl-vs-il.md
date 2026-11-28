@@ -24,6 +24,7 @@ original:
 related:
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
+  - ../methods/robot-policy-learning.md
   - ../methods/behavior-cloning.md
   - ../methods/dagger.md
   - ../methods/inverse-reinforcement-learning.md
@@ -138,7 +139,7 @@ flowchart TD
 
 ## 与其他页面的关联
 
-- 核心方法枢纽：[强化学习](../methods/reinforcement-learning.md)、[模仿学习](../methods/imitation-learning.md)、[逆强化学习](../methods/inverse-reinforcement-learning.md)
+- 核心方法枢纽：[强化学习](../methods/reinforcement-learning.md)、[模仿学习](../methods/imitation-learning.md)、[逆强化学习](../methods/inverse-reinforcement-learning.md)、[机器人策略学习流程](../methods/robot-policy-learning.md)
 - IL 关键分支：[Behavior Cloning](../methods/behavior-cloning.md)、[DAgger](../methods/dagger.md)、[Learning from Play (Play-LMP)](../methods/learning-from-play-lmp.md)
 - RL 与混合后训练：[策略优化](../methods/policy-optimization.md)、[AMP](../methods/amp-reward.md)、[AWR](../methods/awr.md)、[HIL 混合模仿学习](../methods/hil-hybrid-imitation-learning.md)
 - 核心问题与概念：[奖励设计](../concepts/reward-design.md)、[分布外泛化](../concepts/out-of-distribution-generalization.md)、[Sim2Real](../concepts/sim2real.md)、[MDP](../formalizations/mdp.md)

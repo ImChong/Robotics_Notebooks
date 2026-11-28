@@ -61,6 +61,7 @@ flowchart LR
 ## 关联页面
 
 - [智能体技能封装](agent-skill-packaging.md)
+- [Agent Skill 封装 vs MCP 工具契约 vs CLI/SDK 调用接口](../comparisons/agent-skill-packaging-vs-mcp-cli-tool-interfaces.md)
 - [验证闭环](coding-agent-verification-loops.md)
 - [智能体软件工厂 Harness](../concepts/agentic-software-factory-harness.md)
 

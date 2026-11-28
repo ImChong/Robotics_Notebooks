@@ -81,6 +81,8 @@ related:
   - ../entities/paper-physics-consistent-hrc-benchmark.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md
+  - ../methods/embodied-agent-benchmarking.md
+  - ../methods/ai-benchmark-evaluation.md
   - ../queries/embodied-fm-taxonomy-loop.md
 ---
 
@@ -272,6 +274,8 @@ flowchart TD
 - [XPolicyLab](../entities/xpolicylab.md) — RoboDojo/RoboTwin 策略适配、O(N+M) 契约与 verified 开源口（arXiv:2608.09892）
 - [FabriVLA](../entities/paper-fabrivla.md) — ③层轻量 VLA Meta-World 对照条目
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — ④层可信仿真作闭环评测引擎的前提
+- [具身智能体评测方法](../methods/embodied-agent-benchmarking.md) — ③层协议固定、配对真机评估与跨平台排序校准方法
+- [AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md) — ①–③层共通的能力 vs 回归评测、trial 隔离与分母口径基础方法
 - [HumanoidVLN](../entities/paper-humanoidvln.md) — ③/④ 层：人形物理 VLN 成功率 + FR + 小规模 sim–real 相关（待开源）
 - [Cartpole 问题](../concepts/cartpole.md) — ③层最小经典控制基准（CartPole-v1 / Isaac-Cartpole-v0），不是具身大模型榜
 - [Sim2Real](../concepts/sim2real.md) — ④层评测结论外推真机的迁移背景

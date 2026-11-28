@@ -119,6 +119,8 @@ flowchart LR
 
 ## 关联页面
 
+- [Affordance（概念）](../concepts/affordance.md) — 功能可供性的统一定义、三段接口形式化与部署边界
+
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — affordance 将感知输出连接到可执行交互。
 - [Awesome-Affordance-Learning 技术地图](../overview/affordance-awesome-technology-map.md)
 - [操作任务](../tasks/manipulation.md)：从 affordance 感知与推理延伸到任务条件下的可行性交互与执行。

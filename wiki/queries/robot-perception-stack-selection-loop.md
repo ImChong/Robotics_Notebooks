@@ -28,6 +28,10 @@ related:
   - ../methods/object-detection.md
   - ../methods/stereo-matching-foundation-models.md
   - ../methods/fcn-semantic-segmentation.md
+  - ../methods/robot-sensor-integration.md
+  - ../methods/robot-visual-perception.md
+  - ../methods/visual-3d-reconstruction.md
+  - ../methods/visual-representation-learning.md
   - ../concepts/image-segmentation-taxonomy.md
   - ../entities/ultralytics.md
   - ../entities/tennis-vision.md
@@ -212,6 +216,10 @@ flowchart TD
 - 层内深化：[机器人感知骨干/表征选型 Query](./perception-backbone-selection.md) — ②层骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）
 - 层内案例：[GO2 三维语义建图 SAM 流水线](./go2-3d-semantic-mapping-sam-pipeline.md) — ③层 2D→3D 语义建图端到端案例
 - [目标检测（方法）](../methods/object-detection.md) — ②层检测方法总览
+- [机器人传感器接入与标定（方法）](../methods/robot-sensor-integration.md) — ①层相机/LiDAR/IMU 外参标定与时间同步流程
+- [机器人视觉感知流程（方法）](../methods/robot-visual-perception.md) — ②→④层图像检测、分割到带时间戳坐标输出的完整流水线
+- [视觉三维重建（方法）](../methods/visual-3d-reconstruction.md) — ③层多视角稠密重建、TSDF 与 3DGS 几何表征流程
+- [视觉表征学习（方法）](../methods/visual-representation-learning.md) — ②层通用预训练骨干与策略表征冻结/微调路径
 - [R-CNN 族（两阶段精度基线）](../methods/rcnn-family.md) — ②层 R-CNN → Fast → Faster R-CNN 演进与服务器侧高精度离线参照
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — ②层特征骨干背景
 - [感知坐标后处理](../concepts/perception-coordinate-postprocessing.md) — ④层像素→策略坐标的后处理

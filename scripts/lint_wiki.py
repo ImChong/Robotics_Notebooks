@@ -140,9 +140,10 @@ STALE_CLAIM_OVERREAD_WINDOW = 30
 # 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）。
 # 「画面 / 图像」指策略每步拿到的当前相机输入（「小模型结合最新画面高频出动作」），同属运行时量；
 # 「深度图」同理（「RL 策略依据最新深度图与运动状态追踪 carrot」）。
+# 「环境状态 / 几何状态 / KV Cache」同为推理或规划时刻读取的运行时状态与缓存对象。
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
-    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像|深度图|"
-    r"(?:相机画面|相机图像|语义记忆|缓存|完成版本)(?!算法|模型|方法))"
+    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|(?:环境|几何)?状态(?!算法|模型|方法)|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像|深度图|"
+    r"(?:相机画面|相机图像|语义记忆|(?:可用\s*)?[Kk][Vv]\s*[Cc]ache|缓存|完成版本)(?!算法|模型|方法))"
 )
 # 「SOTA / state-of-the-art + 基线」是对照组的类别名（「相对经典/SOTA 基线，证书
 # 平均收窄 51.6%」），指的是被比较的那批既有方法，不是本页对自身的时效性断言；
@@ -572,6 +573,63 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 灵巧手指标与统一动作空间已由 concepts/dexterous-hand-payload-core-metrics.md 与
     # methods/uhas-unified-hand-action-space.md 承载，不按裸 token 单建概念页。
     "hand",
+    # 原子操作原语/技能动词与行为树/affordance 动作标签：仅作任务原语、动作词表或工具名出现，
+    # 不单独建概念页（操作/规划机制已由 tasks/manipulation.md、methods/agentic-manipulation-policies.md 等承载）。
+    "place",
+    "open",
+    "pick",
+    "close",
+    "push",
+    "observe",
+    "rotate",
+    "move",
+    "pour",
+    "press",
+    "pull",
+    "cut",
+    "walk",
+    "explore",
+    "clean",
+    "release",
+    "wait",
+    # 评测表行/状态/划分/基线/方位/数值精度等通用标签与代码关键字：与 ours / default / done 同类。
+    "random",
+    "average",
+    "success",
+    "human",
+    "bfloat16",
+    "import",
+    "left",
+    "right",
+    "both",
+    "environment",
+    "inside",
+    "object",
+    "baseline",
+    "compile",
+    "engine",
+    "graph",
+    "instruction",
+    "predict",
+    "reasoning",
+    "search",
+    "status",
+    "subtask",
+    "text",
+    "wrist",
+    # gpt-5：闭源商业 LLM API / 评测表对照条目（无实体页，与早期 gpt-4 同类外部基准标识）。
+    "gpt-5",
+    # 小写合并造成的多义碰撞 token（非单一概念）：
+    #   map   → 混合 mAP 指标、ROS `map` 坐标系、MAP 池化与 Map 算子
+    #   s1    → 混合 Skild/Archon S1 模型、状态 s1 与场景编号 S1
+    #   l2    → 混合 L2 范数/硬件 L2 缓存、L2 级测试与手柄 L2 键
+    #   core  → 混合 `core` 目录模块与 CORE/CoRE 论文缩写
+    #   scope → 混合 Scope 表格/字段与 SCOPE 论文实体
+    "map",
+    "s1",
+    "l2",
+    "core",
+    "scope",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -1124,6 +1182,54 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # concepts/motion-control-policy-evaluation-metrics.md、concepts/ai-agent-evaluation.md
     # 与 queries/embodied-eval-benchmark-selection-loop.md 覆盖，与 eval / benchmark 同类。
     "sr",
+    # 外部闭源或版本化 VLM/LLM/编码器模型名：已有实体/方法页或按底座维度记述，不单建概念页。
+    "gpt-4o",
+    "qwen3-vl-8b-instruct",
+    "qwen3-vl-8b",
+    "qwen3-vl-2b",
+    "codex",
+    "gr00t",
+    "pi0",
+    "openvla",
+    "openvla-oft",
+    "gpt-6-astra",
+    "sam",
+    "sam3",
+    # 已有实体/方法/对比页承载的具体系统、仿真器、工具与基准：
+    "anygrasp",
+    "contact-graspnet",
+    "pyroki",
+    "rlinf",
+    "nuscenes",
+    "libero-pro",
+    "robosuite",
+    "robolab",
+    "robotwin",
+    "sglang",
+    "lift",
+    # 已由非同名 stem 的 concepts/methods/formalizations/overview 承载的领域概念与缩写：
+    #   grasp         → methods/grasp-pose-estimation.md + overview/hub-grasp.md + tasks/manipulation.md
+    #   adaln         → concepts/diffusion-transformer.md
+    #   ik            → formalizations/inverse-kinematics.md + comparisons/rl-inverse-kinematics-five-approaches.md
+    #   miou          → concepts/image-segmentation-taxonomy.md
+    #   replan        → concepts/receding-horizon-policy-execution.md + methods/agent-planning-feedback.md
+    #   post-training → concepts/universal-post-training-robotics.md + concepts/supervised-fine-tuning.md
+    #   model-based   → methods/model-based-rl.md + comparisons/model-based-vs-model-free.md
+    #   control       → methods/robot-control-architecture.md + concepts/embodied-three-layer-control-architecture.md
+    #   harness       → methods/robot-agent-harness.md + concepts/agentic-software-factory-harness.md
+    #   agentic       → methods/agentic-manipulation-policies.md + concepts/agentic-coding-software-fundamentals.md
+    #   mimic         → overview/mimic-control-evolution-lineage.md + methods/whole-body-motion-tracking.md
+    "grasp",
+    "adaln",
+    "ik",
+    "miou",
+    "replan",
+    "post-training",
+    "model-based",
+    "control",
+    "harness",
+    "agentic",
+    "mimic",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key

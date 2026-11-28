@@ -7,6 +7,7 @@ summary: "Query：综合深蓝 2026-09-07 公众号，梳理运动重定向三�
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
+  - ../methods/robot-motion-retargeting-workflow.md
   - ../methods/motion-retargeting-gmr.md
   - ../entities/paper-hrl-stack-03-omniretarget.md
   - ../comparisons/gmr-vs-nmr-vs-reactor.md
@@ -100,6 +101,7 @@ flowchart TD
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
+- [机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md) — 三路对齐、限位校验与下游跟踪的统一工程流程
 - [重定向纵深路线](../../roadmap/depth-motion-retargeting.md)
 - [GMR vs NMR vs ReActor](../comparisons/gmr-vs-nmr-vs-reactor.md)
 - [足锁 IK（Orange Duck 配方）](../methods/foot-locking-ik-orangeduck.md) — 三路共有的下游脚滑修补工序

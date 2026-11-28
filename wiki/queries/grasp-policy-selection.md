@@ -205,6 +205,7 @@ flowchart TD
 - [AnyGrasp（抓取感知 SDK）](../entities/anygrasp.md) — GraspNet 系第三代工程化代表
 - [ContactNet](../methods/contact-net.md) — 与 Contact-GraspNet 在「接触面预测」思路同源
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览，抓取是其感知子问题
+- [机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md) — MoveIt 规划场景、轨迹执行与抓手末端协调控制流程
 - [Visual Servoing](../methods/visual-servoing.md) — 抓取最后几厘米的亚毫米级对齐方案
 - [TacRefineNet（论文实体）](../entities/paper-tacrefinenet-tactile-grasp-refinement.md) — 边缘突出物体的纯触觉目标条件精修
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 抓握后的接触阶段执行层

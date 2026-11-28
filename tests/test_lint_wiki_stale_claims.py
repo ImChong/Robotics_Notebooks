@@ -465,3 +465,17 @@ def test_latest_version_claim_is_still_flagged(tmp_path, monkeypatch) -> None:
     results = _run([claim, newer])
     assert len(results["stale_claims"]) == 1
     assert "最新" in results["stale_claims"][0]
+
+
+def test_runtime_kv_cache_and_qualified_state_are_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「最新可用 KV Cache / 最新环境状态 / 最新几何状态」均为运行时缓存与状态量。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["vla"],
+        "双 CUDA 流并行执行，AE 读最新可用 KV Cache；失败时保存最新环境状态，避障依据最新几何状态。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["vla"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []

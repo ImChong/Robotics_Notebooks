@@ -150,6 +150,7 @@ flowchart TD
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md) — 概念总览与工程流程
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md) — 参数随机化、观察历史/特权蒸馏与闭环迁移标准工作流
 - [System Identification](../concepts/system-identification.md) — 物理基准
 - [人形整机闭环惯量标定](../concepts/humanoid-closed-loop-inertia-calibration.md) — 量产出厂 / 在役整机辨识，绑机身序列号
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节分级实验，把 SysID 从「优化器」落到可分离工况
