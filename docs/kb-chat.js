@@ -4098,6 +4098,7 @@
     inputEl.addEventListener('keydown', function (event) {
       if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
+        if (event.isComposing || event.keyCode === 229) return;
         if (!state.busy) submitQuestion();
       }
     });

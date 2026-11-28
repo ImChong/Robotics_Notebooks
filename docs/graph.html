@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-visual" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self'; worker-src 'self' blob:; frame-src https://challenges.cloudflare.com; connect-src 'self' data: blob: https://cdn.jsdelivr.net https://challenges.cloudflare.com https://*.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'" />
   <meta name="description" content="Robotics Notebooks 知识图谱：全站知识节点与互链关系的力导向可视化，支持 2D / 3D 视图、社区着色与路线筛选。" />
   <meta property="og:title" content="知识图谱 | Robotics Notebooks" />
@@ -22,7 +23,7 @@
   <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <meta name="color-scheme" content="dark light" />
   <script src="theme-init.js"></script>
-  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" async fetchpriority="low"></script>
   <link rel="stylesheet" href="style.css" />
   <!-- 首屏关键数据：此前要等 ~750 KB 同步 JS 下载并执行完才发起请求；preload 让它与 HTML 解析同时开始 -->
   <link rel="preload" href="exports/link-graph.json" as="fetch" crossorigin />

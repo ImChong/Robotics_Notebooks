@@ -641,7 +641,7 @@ test('homepage mini-graph preview renders WebGL 3D terrain on 3D toggle with sea
   assert.ok(!indexHtml.includes('id="mini-graph-3d"'), 'obsolete WebGL #mini-graph-3d container removed');
   assert.ok(!miniGraphJs.includes('3d-force-graph'), 'mini-graph.js must not reference 3d-force-graph');
   assert.ok(!miniGraphJs.includes('ForceGraph3D'), 'mini-graph.js must not invoke ForceGraph3D');
-  assert.ok(indexHtml.includes('<script src="graph-perspective.js" defer></script>'));
+  assert.match(indexHtml, /<script\b[^>]*\bsrc="graph-perspective\.js"[^>]*\bdefer\b[^>]*><\/script>/);
 
   const dom = new JSDOM(indexHtml, { url: 'https://example.test/', runScripts: 'outside-only' });
   const w = dom.window;

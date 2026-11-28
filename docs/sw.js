@@ -143,7 +143,7 @@ self.addEventListener('fetch', (event) => {
           // 哈希正文不可变；已缓存的旧版本离线可读，也不必再后台下载。
           if (/\/exports\/page-content\/[a-f0-9]{64}\.json$/.test(url.pathname)) return cached;
           // 后台刷新缓存（stale-while-revalidate）
-          fetch(event.request)
+          fetch(event.request, { priority: 'low' })
             .then((resp) => {
               if (resp && resp.status === 200 && !skipPut) {
                 caches.open(CACHE_NAME).then((cache) => cache.put(putTarget, resp));

@@ -2945,6 +2945,7 @@
   var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
   // Keep this exact version in sync with package.json and the Mermaid CI parser.
   var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@12.3.0/dist/mermaid.min.js';
+  var MERMAID_CDN_INTEGRITY = 'sha384-HHW54r639fK42Ip0coGF3mz8oSiGn0eEoWNTLs75X7H63pLSDBa0Tqs0RwGmLlXE';
   var _externalAssetPromises = {};
 
   /** 同一 URL 只注入一次；失败清除记录，后续渲染可重试。 */
@@ -2963,6 +2964,9 @@
       if (spec.integrity) {
         el.integrity = spec.integrity;
         el.crossOrigin = 'anonymous';
+      }
+      if (spec.referrerPolicy || /^https?:\/\//i.test(spec.url)) {
+        el.referrerPolicy = spec.referrerPolicy || 'no-referrer';
       }
       el.onload = function () { resolve(spec.url); };
       el.onerror = function () {
@@ -2999,7 +3003,7 @@
 
   function ensureMermaidLoaded() {
     if (typeof window.mermaid !== 'undefined') return Promise.resolve();
-    return loadExternalAsset({ url: MERMAID_CDN_URL });
+    return loadExternalAsset({ url: MERMAID_CDN_URL, integrity: MERMAID_CDN_INTEGRITY });
   }
 
   // Mermaid's configuration is global. Apply it when the render starts so
@@ -6071,7 +6075,7 @@
     if (_linkGraphSummariesPromise) return _linkGraphSummariesPromise;
     _linkGraphSummariesPromise = Promise.all([
       ensureLinkGraphData(),
-      fetch('exports/link-graph-summaries.json')
+      fetch('exports/link-graph-summaries.json', { priority: 'low' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .catch(function () { return null; })
     ])
@@ -9398,10 +9402,14 @@
     var SEARCH_INDEX_LITE_URL = 'search-index-lite.json';
     var SEARCH_INDEX_FULL_URL = 'search-index.json';
 
-    function fetchSearchIndexFile(url) {
+    function fetchSearchIndexFile(url, fetchOpts) {
       var controller = new AbortController();
       var timeout = setTimeout(function () { controller.abort(); }, 30000);
-      return fetch(url, { signal: controller.signal })
+      var reqInit = { signal: controller.signal };
+      if (fetchOpts && fetchOpts.priority) {
+        reqInit.priority = fetchOpts.priority;
+      }
+      return fetch(url, reqInit)
         .then(function(r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
@@ -9412,11 +9420,11 @@
     }
 
     /** 当前可用的索引：全文索引已加载就用它，否则加载并返回轻量索引。 */
-    function ensureSearchIndex() {
+    function ensureSearchIndex(opts) {
       if (_fullSearchIndex) return Promise.resolve(_fullSearchIndex);
       if (_searchIndex) return Promise.resolve(_searchIndex);
       if (_searchIndexPromise) return _searchIndexPromise;
-      _searchIndexPromise = fetchSearchIndexFile(SEARCH_INDEX_LITE_URL)
+      _searchIndexPromise = fetchSearchIndexFile(SEARCH_INDEX_LITE_URL, opts)
         .then(function(data) {
           _searchIndex = data;
           return data;
@@ -9467,7 +9475,7 @@
     // 不再无条件 idle 预取整份搜索索引，普通浏览不为搜索付下载与解析成本。
     // 失败静默，不影响后续正式搜索。
     prefetchWikiSearchIndex = function () {
-      ensureSearchIndex().catch(function () {});
+      ensureSearchIndex({ priority: 'low' }).catch(function () {});
     };
     // 深链 #wiki-search：搜索模块就绪后再聚焦并预取
     if (window.location.hash === '#wiki-search') {
@@ -9959,6 +9967,7 @@
         setSelectedIndex(_selectedIndex - 1);
       } else if (ev.key === 'Enter') {
         ev.preventDefault();
+        if (ev.isComposing || ev.keyCode === 229) return;
         var target;
         if (_selectedIndex >= 0 && cards[_selectedIndex]) {
           target = cards[_selectedIndex].getAttribute('data-result-url');
@@ -10631,5 +10640,64 @@
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
+  }
+})();
+
+/* ── 跨页悬停预取（Speculation Rules API，支持则渐进增强，不支持静默跳过）── */
+(function () {
+  'use strict';
+
+  function installSpeculationRules() {
+    if (
+      typeof HTMLScriptElement === 'undefined' ||
+      typeof HTMLScriptElement.supports !== 'function' ||
+      !HTMLScriptElement.supports('speculationrules')
+    ) {
+      return false;
+    }
+    if (!document || !document.head) return false;
+    if (document.querySelector('script[type="speculationrules"][data-rn-speculation]')) {
+      return false;
+    }
+    var script = document.createElement('script');
+    script.type = 'speculationrules';
+    script.setAttribute('data-rn-speculation', '1');
+    script.textContent = JSON.stringify({
+      prefetch: [
+        {
+          tag: 'rn-mpa-prefetch',
+          where: {
+            and: [
+              { href_matches: '/*' },
+              {
+                selector_matches:
+                  "a[href*='detail.html'], a[href*='roadmap.html'], a[href*='company.html'], a[href*='lab.html'], a[href*='hubs.html'], a[href*='change-log.html'], a[href*='discovery.html']",
+              },
+              {
+                not: {
+                  selector_matches:
+                    "[href*='graph.html'], [href*='star-history.html'], [target='_blank'], [rel~='nofollow'], .do-not-prefetch",
+                },
+              },
+            ],
+          },
+          eagerness: 'moderate',
+        },
+      ],
+    });
+    document.head.appendChild(script);
+    return true;
+  }
+
+  if (typeof window !== 'undefined') {
+    window.RNInstallSpeculationRules = installSpeculationRules;
+  }
+
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', installSpeculationRules);
+    } else {
+      installSpeculationRules();
+    }
   }
 })();
