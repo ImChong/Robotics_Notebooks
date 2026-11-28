@@ -5,6 +5,7 @@ tags: [paper, autonomous-driving, world-action-models, navsim, flow-matching]
 status: complete
 updated: 2026-11-28
 project: https://garlicba.github.io/EponaX/
+venue: "Horizon Robotics technical report"
 summary: "地平线机器人 EponaX 用六相机历史和结构化导航学习共享驾驶表征；训练预测未来视觉、深度和语义，车端只运行 TrajLoop 轨迹路径。"
 original:
   - ../../sources/papers/eponax_technical_report.md
@@ -15,6 +16,7 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/flow-matching-embodied-policy.md
   - ../methods/trajectory-optimization.md
+  - ../methods/grpo.md
   - ./paper-sa-2605-14696-eponav2-driving-world-model-with-comprehensive-f.md
   - ../../roadmap/depth-wam.md
 ---
@@ -88,6 +90,7 @@ flowchart LR
 - [世界动作模型](../concepts/world-action-models.md)
 - [流匹配动作策略](../concepts/flow-matching-embodied-policy.md)
 - [轨迹优化](../methods/trajectory-optimization.md)
+- [GRPO](../methods/grpo.md)：对照 NAVSIM 组相对评分的轨迹后训练；报告同时保留模仿项。
 - [世界动作模型路线 · Stage 3](../../roadmap/depth-wam.md)
 
 ## 参考来源
