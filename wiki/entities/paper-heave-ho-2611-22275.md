@@ -160,6 +160,8 @@ flowchart TD
 - [ResMimic 残差控制](./paper-resmimic.md)
 - [Unitree G1](./unitree-g1.md)
 - [Loco-Manipulation 纵深路线](../../roadmap/depth-loco-manipulation.md)
+- [双/多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md)
+- [协同物体搬运](../concepts/collaborative-object-transport.md)
 
 ## 参考来源
 

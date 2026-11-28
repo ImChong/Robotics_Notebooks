@@ -12,6 +12,8 @@
 - **平台：** 两台双臂移动操作臂（bimanual mobile manipulators）；刚体 + 可变形物体协作
 - **开源：** **待发布**（步骤 2.5 核查 2026-09-15，见 [`sources/sites/sai.md`](../sites/sai.md)）
 - **入库日期：** 2026-09-15
+- **核对范围：** 已下载并通读 arXiv `2606.16490` 原文 PDF 全文（§I–§VII 及附录，2,241 行提取文本），核对实验设置、60 次真机试验数据、与 Independent / Partner-Conditioned / Concurrent DAgger 基线对比及伙伴延迟消融。
+- **通读：** 已完成
 
 ## 核心论文摘录
 

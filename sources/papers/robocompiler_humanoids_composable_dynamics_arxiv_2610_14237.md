@@ -11,6 +11,8 @@
 - **PDF：** <https://arxiv.org/pdf/2610.14237>
 - **代码与结果：** <https://github.com/Mehdi-Heydari-Shahna/RoboCompiler-Humanoids>
 - **入库日期：** 2026-10-26
+- **核对范围：** 已通读 arXiv `2610.14237` HTML 原文 §I–§VI 及 Table I–III（状态检验、编译/求值计时、5 人形 MuJoCo 环形/半圆/线形闭链舞蹈与 20 次侧步切换、2 kg 手腕负载局部更新实验），并核对官方仓库 `reproduce.py`、`workflows/dance/run_dance.py`、`dancers/execute.py`、`ipd/compiler.py`。
+- **通读：** 已完成
 - **一句话说明：** 扩展 RoboCompiler，以可复用的成员级动力学和两级约简建模手牵手、接触支撑不断变化的多个人形机器人。
 
 ## 核心摘录（据 arXiv 摘要）

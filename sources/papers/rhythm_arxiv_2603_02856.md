@@ -8,8 +8,11 @@
 - **原始链接：**
   - <https://arxiv.org/abs/2603.02856>
   - 项目页：<https://hoshi-no-ai.github.io/Rhythm/>
-- **机构：** 作者单位含上海交通大学、香港中文大学（深圳）等（见 arXiv 作者脚注）
+- **机构：** 复旦大学（Fudan）、它石智航（TARS Robotics）、清华大学（Tsinghua）、上海交通大学（SJTU）、上海创智学院（Shanghai Innovation Institute）、中国科学院自动化研究所（CASIA）
 - **入库日期：** 2026-06-10
+- **核对范围：** 已提取并通读 arXiv `2603.02856v1` HTML 正文 §I–§V、Table I–III（IAMR/IGRL/真机测试）及 Appendix §V-A/§V-C，并核对项目页 `https://hoshi-no-ai.github.io/Rhythm/`。
+- **通读：** 已完成
+- **开源状态：** **待发布**（步骤 2.5 复核 2026-11-29：项目页 `hoshi-no-ai.github.io/Rhythm/` 返回 HTTP 200，展示了 Unitree G1 实机演示视频与 MAGIC 数据集介绍，但 Code 与 MAGIC 数据下载入口暂未挂出 GitHub/HF 链接）
 - **一句话说明：** 首个在 **真机双 Unitree G1** 上实现 **物理耦合全身交互**（拥抱、共舞、问候等）的统一框架：**IAMR** 解耦自运动与交互几何生成可行双人参考，**IGRL** 以图结构奖励学耦合动力学，**相对定位 + 相位同步** 桥接仿真全局可观与真机 ego-centric 部署；并发布 **MAGIC** 双人交互数据集。
 
 ## 核心论文摘录（MVP）

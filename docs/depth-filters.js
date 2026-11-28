@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 31 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 32 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -20,7 +20,7 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（31 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（32 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'pcb-design',
@@ -35,6 +35,7 @@
     'contact-manipulation',
     'navigation',
     'model-architecture',
+    'multi-robot-collaboration',
     'imitation-learning',
     'rl-locomotion',
     'loco-manipulation',
@@ -70,6 +71,7 @@
     'contact-manipulation': 'roadmap/depth-contact-manipulation.md',
     'navigation': 'roadmap/depth-navigation.md',
     'model-architecture': 'roadmap/depth-model-architecture.md',
+    'multi-robot-collaboration': 'roadmap/depth-multi-robot-collaboration.md',
     'imitation-learning': 'roadmap/depth-imitation-learning.md',
     'rl-locomotion': 'roadmap/depth-rl-locomotion.md',
     'loco-manipulation': 'roadmap/depth-loco-manipulation.md',
@@ -447,6 +449,83 @@
         'wiki/entities/paper-octo.md',
         'wiki/methods/star-vla.md',
         'wiki/overview/hub-vision-backbone.md'
+      ])
+    },
+    'multi-robot-collaboration': {
+      segments: new Set([
+        'multi-robot', 'multi-agent', 'multi-humanoid', 'dual-humanoid',
+        'marl', 'ctde', 'collaborative', 'cooperation', 'swarm', 'fleet',
+        'decentralized-multi', 'calm-decentralized', 'crazyswarm', 'ego-planner',
+        'robocompiler', 'heave-ho', 'chorus', 'sai-sequential'
+      ]),
+      ids: mergeIds('multi-robot-collaboration', [
+        'wiki/concepts/multi-robot-collaboration.md',
+        'wiki/concepts/humanoid-multi-robot-coordination.md',
+        'wiki/comparisons/multi-robot-coordination-architectures.md',
+        'wiki/entities/paper-typed-plans-fleet-control.md',
+        'wiki/concepts/collaborative-object-transport.md',
+        'wiki/tasks/bimanual-manipulation.md',
+        'wiki/tasks/loco-manipulation.md',
+        'wiki/concepts/impedance-control.md',
+        'wiki/concepts/force-control-basics.md',
+        'wiki/concepts/hybrid-force-position-control.md',
+        'wiki/concepts/contact-dynamics.md',
+        'wiki/concepts/centroidal-dynamics.md',
+        'wiki/concepts/floating-base-dynamics.md',
+        'wiki/concepts/whole-body-control.md',
+        'wiki/concepts/whole-body-coordination.md',
+        'wiki/entities/paper-decentralized-multi-humanoid-pickup.md',
+        'wiki/entities/paper-heave-ho-2611-22275.md',
+        'wiki/entities/paper-rhythm-dual-humanoid-interaction.md',
+        'wiki/entities/paper-amp-survey-17-teamhoi.md',
+        'wiki/entities/paper-sai-sequential-asymmetric-imitation.md',
+        'wiki/entities/paper-chorus.md',
+        'wiki/entities/paper-mawam-coordinated-manipulation.md',
+        'wiki/entities/paper-pingpongduo.md',
+        'wiki/entities/paper-pave.md',
+        'wiki/entities/paper-tangrambench-goma.md',
+        'wiki/entities/paper-agentic-2609-23997.md',
+        'wiki/entities/paper-agentic-2607-06990.md',
+        'wiki/entities/paper-calm-decentralized-aerial-manipulation.md',
+        'wiki/entities/paper-robocompiler-humanoids-composable-dynamics.md',
+        'wiki/methods/marl.md',
+        'wiki/comparisons/ctde-vs-decentralized-marl.md',
+        'wiki/entities/paper-h2marl-hierarchical-heterogeneous-marl-humanoid.md',
+        'wiki/entities/paper-end-of-reward-engineering.md',
+        'wiki/entities/quad-swarm-rl.md',
+        'wiki/entities/paper-gamma-world-multi-agent.md',
+        'wiki/entities/paper-acap.md',
+        'wiki/entities/paper-be-my-eye-comind.md',
+        'wiki/entities/paper-creg-evidence-grounded-shared-belief.md',
+        'wiki/entities/paper-agentic-2609-27720.md',
+        'wiki/entities/paper-humanoid-soccer-swarm-intelligence.md',
+        'wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md',
+        'wiki/entities/paper-agentic-2609-08402.md',
+        'wiki/concepts/ros2-basics.md',
+        'wiki/concepts/dds-communication.md',
+        'wiki/comparisons/ros2-vs-lcm.md',
+        'wiki/concepts/clock-synchronization-algorithms.md',
+        'wiki/entities/paper-nsdl-multirobot-2611-16671.md',
+        'wiki/entities/paper-agentic-2602-21670.md',
+        'wiki/entities/paper-agentic-2603-02669.md',
+        'wiki/entities/paper-htrip-distance-index.md',
+        'wiki/entities/paper-pa-sar.md',
+        'wiki/entities/paper-srl-mpc.md',
+        'wiki/entities/paper-social-force-mpc-cbf-group.md',
+        'wiki/entities/paper-formation-control-tutorial.md',
+        'wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md',
+        'wiki/entities/ego-planner-swarm.md',
+        'wiki/concepts/control-barrier-function.md',
+        'wiki/concepts/safety-filter.md',
+        'wiki/concepts/robot-safety-state-machine.md',
+        'wiki/entities/paper-agentic-2607-23532.md',
+        'wiki/entities/paper-agentic-2608-00337.md',
+        'wiki/entities/paper-agentic-2609-12075.md',
+        'wiki/methods/lwd.md',
+        'wiki/entities/paper-lwd-fleet-scale-rl.md',
+        'wiki/entities/crazyswarm2.md',
+        'wiki/entities/paper-agentic-2609-28247.md',
+        'wiki/entities/paper-agentic-2609-18520.md'
       ])
     },
     'imitation-learning': {
@@ -915,6 +994,12 @@
       label: '模型架构（Model Architecture）',
       wikiPath: DEPTH_HUB_IDS['model-architecture'],
       description: '骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署的网络结构选型。'
+    },
+    'multi-robot-collaboration': {
+      icon: 'multi-robot',
+      label: '双/多机器人协作（Multi-Robot Collaboration）',
+      wikiPath: DEPTH_HUB_IDS['multi-robot-collaboration'],
+      description: '协作谱系与架构选型 → 闭链协同搬运力学 → 多机系统（人形/移动臂/UAV）→ MARL/世界模型 → 通信规划与车队安全部署。'
     },
     'imitation-learning': {
       icon: 'graduation',

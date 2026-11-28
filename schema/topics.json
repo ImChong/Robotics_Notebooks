@@ -271,7 +271,8 @@
       "seeds": [
         "wiki/tasks/loco-manipulation.md",
         "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-        "roadmap/depth-loco-manipulation.md"
+        "roadmap/depth-loco-manipulation.md",
+        "roadmap/depth-multi-robot-collaboration.md"
       ],
       "tags": [
         "loco-manipulation",

@@ -229,6 +229,7 @@ flowchart LR
   - [动作生成](depth-motion-generation.md) — 群舞编排的动作来源
   - [动作重定向](depth-motion-retargeting.md) — 把编舞折到多台本体
   - [人形足球](depth-humanoid-soccer.md) — 多机战术协调的对照场景
+  - [双/多机器人协作](depth-multi-robot-collaboration.md) — 跨机物理闭链搬运、MARL 与分布式车队协作主干
   - [导航](depth-navigation.md) — 编队走位与定位
 - 关联知识页：
   - [人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md)

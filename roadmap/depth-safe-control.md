@@ -185,6 +185,7 @@ flowchart LR
   - [Sim2Real](depth-sim2real.md) — Stage 4 真机安全部署的迁移侧（辨识、DR、上机流程）
   - [RL 运动控制](depth-rl-locomotion.md) — Stage 3 Safe RL 的策略训练侧
   - [接触操作](depth-contact-manipulation.md) — 接触力边界是另一类安全约束
+  - [双/多机器人协作](depth-multi-robot-collaboration.md) — 多机协同防碰、机间内力限制与团队安全状态机互锁
 - 关联知识页：
   - [Lyapunov 稳定性](../wiki/formalizations/lyapunov.md)
   - [Control Lyapunov Function](../wiki/formalizations/control-lyapunov-function.md)

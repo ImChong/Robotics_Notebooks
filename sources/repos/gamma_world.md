@@ -10,7 +10,19 @@
 - **项目页：** <https://research.nvidia.com/labs/sil/projects/gamma-world/>
 - **Hugging Face Papers：** <https://huggingface.co/papers/2605.28816>
 - **入库日期：** 2026-05-30
-- **一句话说明：** **γ-World** 配套开源仓库；README 标明论文实现入口，具体训练/推理命令与依赖以克隆时 upstream 为准（不在此重复易过期命令行）。
+- **开源状态：** **已开源**（GitHub 官方仓库 `nv-tlabs/Gamma-World`，Apache-2.0，Hugging Face 模型权重 `chijw/Gamma-World`）
+- **核对范围：** 已核对仓库目录树、`docs/inference.md`、`docs/training.md`、`scripts/inference.py`（全文件入口、`load_action`、`load_example_sample`、`generate_sample`）与 `scripts/train.py`、`scripts/convert_checkpoint_to_dcp.py`。
+- **一句话说明：** **γ-World** 配套开源仓库，提供双向与自回归（causal few-step）多智能体视频世界模型推理与训练脚本。
+
+## 代码入口与模块核对
+
+| 文件路径 | 入口 / 类 / 函数 | 作用 |
+|------|------|------|
+| `scripts/inference.py` | `parse_args()` / `load_example_sample()` / `generate_sample()` | 加载首帧、`prompt.txt` 与每玩家 `action_{idx}.json`（23 维键盘 + 2 维相机），调用 `BidirectionalInference` 或 `I2VInference`（`MODEL_SPECS`）生成多机交互视频 |
+| `scripts/train.py` | `cosmos_oss.scripts.train.main` | 调用 Cosmos 训练主循环，加载 `gamma_world/_src/gamma_world/configs/{causal_cosmos2,self_forcing}/experiment/exp_mc*.py` |
+| `scripts/convert_checkpoint_to_dcp.py` | DCP checkpoint 转换脚本 | 将 Hugging Face `chijw/Gamma-World` `.safetensors` 权重转换为 PyTorch DCP 分布式训练断点 |
+| `gamma_world/_src/gamma_world/inference/` | `BidirectionalInference` / `I2VInference` / `MODEL_SPECS` | 实现多智能体双向全序列生成与 causal few-step 24 FPS 长时序自回归推理 |
+| `gamma_world/_src/gamma_world/datasets/` | `solaris_data.py` / `multiview.py` / `sil_dataset.py` | 多玩家共享世界（Minecraft / 多机多视角）动作解析与数据流读取 |
 
 ## 与本仓库知识的关系
 

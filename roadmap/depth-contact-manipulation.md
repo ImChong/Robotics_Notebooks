@@ -184,6 +184,7 @@ flowchart LR
   - [模仿学习](depth-imitation-learning.md) — contact-rich 任务现在的主流方案是 IL
   - [遥操作](depth-teleoperation.md) — 示范采集与手指接触保持
   - [Loco-Manipulation](depth-loco-manipulation.md) — 本路线向「移动中操作」的扩展
+  - [双/多机器人协作](depth-multi-robot-collaboration.md) — 本路线向跨机器人闭链协作与协同物体搬运的扩展
   - [动作重定向](depth-motion-retargeting.md) — 灵巧手交互重定向的邻接路线
 - 关联知识页：
   - [Manipulation](../wiki/tasks/manipulation.md)

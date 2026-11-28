@@ -1,19 +1,26 @@
 ---
 type: entity
+project_id: sai-sequential-asymmetric-imitation
 tags: [paper, imitation-learning, dual-robot, collaborative-manipulation, mobile-manipulation, bimanual, deformable, act, diffusion-policy, zeno-ai, zju, zjut, usyd]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-29
 arxiv: "2606.16490"
+project: https://cyc0429.github.io/sai-project-page/
+original:
+  - ../../sources/papers/sai_sequential_asymmetric_imitation_arxiv_2606_16490.md
 related:
+  - ../concepts/multi-robot-collaboration.md
+  - ../concepts/collaborative-object-transport.md
   - ../tasks/bimanual-manipulation.md
   - ../methods/imitation-learning.md
   - ../methods/action-chunking.md
   - ./paper-trace-causal-memory.md
   - ./paper-zeno-1-collaborative-intelligence.md
+  - ../../roadmap/depth-multi-robot-collaboration.md
 sources:
   - ../../sources/papers/sai_sequential_asymmetric_imitation_arxiv_2606_16490.md
   - ../../sources/sites/sai.md
-summary: "SAI（arXiv:2606.16490）：单遥操作三阶段课程学双移动操作臂物理耦合协作；去中心化策略；四类真机任务提升成功率、相位同步与伙伴让步；代码待发布。"
+summary: "SAI（arXiv:2606.16490）：单遥操作三阶段课程学双移动操作臂物理耦合协作；去中心化策略；四类真机任务显著提升成功率、相位同步与伙伴让步；代码待发布。"
 ---
 
 # SAI：序贯非对称模仿学习耦合双机策略
@@ -74,20 +81,26 @@ flowchart TB
 
 ## 实验与评测
 
-### 真机任务套件
+### 真机任务套件（Table 1 / 2 / 3，各条件 30 次真实 rollout）
 
-| 任务 | 特点 |
-|------|------|
-| Bed-throw spreading | 可变形物体；交接、后退、搬运、放置多相位 |
-| Tablecloth spreading | 张力与伙伴延迟扰动下的协调抓取展开 |
-| Laundry collection | 异步共享工作区：接近、收集、递送 |
-| Painting transport | 刚体协作搬运：同步抓举、移动、下放 |
+| 任务 | 特点 | SAI 成功率 | Baseline 成功率（Indep. / PCI） | Phase Sync ↑ | Yield/Wait ↑ |
+|------|------|------------|--------------------------------|--------------|--------------|
+| **Bed-throw spreading** | 可变形大毯：交接、后退、搬运、放置多相位 | **53.3%** | 23.3% / 36.7% | **62.5%** | **68.3%** |
+| **Tablecloth spreading** | 张力与伙伴延迟扰动下展开；暂停 B 测试降张力与失稳 | **66.7%** | 43.3% / 60.0% | **68.9%** | **70.0%** |
+| **Laundry collection** | 异步共享工作区收集与递送；含历史防早释放消融 | **70.0%** | 50.0% / 63.3% | **73.3%** | **71.7%** |
+| **Painting transport** | 刚体画框接触搬运（同步抓举、移动、下放） | **56.7%** | 33.3% / 46.7% | **74.7%** | **68.9%** |
 
-### 关键现象
+### 关键消融与骨干通用性
 
-- **任务成功率：** SAI 在四类任务上均高于 Independent Imitation 与 Partner-Conditioned Imitation（项目页与论文报告一致提升）。
-- **伙伴延迟（桌布）：** 暂停 Robot B 时，独立模仿继续拉扯导致布料失稳；SAI **减速、等待、恢复后继续**。
-- **骨干兼容：** 在 ACT 与 Diffusion Policy 上均观察到对 Independent Imitation 的稳定优势。
+- **结构组件消融（Table 2，Laundry Collection）：** 加入时序历史 token 将过早松爪率（Premature release）从 **64.5%** 降至 **16.1%**；级联底盘–机械臂动作头（Cascaded base-arm head）将过早放下率（Premature lowering）从 **51.6%** 降至 **9.7%**。
+- **伙伴延迟测试（Fig. 4，桌布展开）：** 人为暂停 Robot B 时，Independent Imitation 的 Robot A 继续拉扯致使脱手或褶皱；SAI 识别伙伴未推进后自动减速等待并在恢复后继续。
+- **骨干兼容（Table 3，Painting Transport）：** 使用 ACT 时成功率从 `33.3%` 提至 `56.7%`（Phase Sync `42.7% -> 74.7%`）；换成 Diffusion Policy 时成功率从 `23.5%` 提至 `52.9%`，Yield/Wait 从 `30.7%` 提至 `76.9%`；Stage 3 纠错集仅占基线示教规模约 **30%**。
+
+## 工程实践
+
+- **单遥操作三阶段数据管线：** 先用顺从人类/被动伙伴收齐单边技能库 A（Stage 1）；部署冻结策略 A 后只由单名操作员遥操 B 对抗真实 A 的分布波动（Stage 2）；最终仅针对协调失误窗口采集约 30% 规模的稀疏 DAgger 式干预修正 A（Stage 3）。
+- **级联全身输出头与短时历史：** 移动操作臂协同搬运中，手臂动作头需显式条件于底盘预测速度（减少提前下放失稳），且策略须保留历史窗口以区分“中继持物”与“到达放置点”。
+- **避免过度让步偏置：** 论文指出 Stage 3 若过密干预延迟样本，会使策略偏向保守停等；纠错应聚焦真实冲突帧附近。
 
 ## 与其他工作对比
 
@@ -122,10 +135,14 @@ flowchart TB
 
 ## 关联页面
 
+- [多机器人协作（Multi-Robot Collaboration）](../concepts/multi-robot-collaboration.md)
+- [协同物体搬运（Collaborative Object Transport）](../concepts/collaborative-object-transport.md)
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md)
 - [Imitation Learning](../methods/imitation-learning.md)
+- [Action Chunking / ACT](../methods/action-chunking.md)
 - [TRACE](./paper-trace-causal-memory.md)
 - [Zeno-1](./paper-zeno-1-collaborative-intelligence.md)
+- [多机器人协作纵深路线](../../roadmap/depth-multi-robot-collaboration.md)
 
 ## 参考来源
 

@@ -227,6 +227,7 @@ flowchart LR
   - [RL 运动控制](depth-rl-locomotion.md) — 全向行走与踢球技能的训练底座
   - [感知越障](depth-perceptive-locomotion.md) — 追球时的地形与视觉
   - [群控展演](depth-humanoid-swarm-performance.md) — 多机协调的另一条产品线
+  - [双/多机器人协作](depth-multi-robot-collaboration.md) — 多机闭链操作、去中心化通信与任务分配通用纵深
   - [人形拳击](depth-humanoid-boxing.md) — 对抗全身技能的邻接场景
 - 关联知识页：
   - [Humanoid Soccer 任务页](../wiki/tasks/humanoid-soccer.md)
