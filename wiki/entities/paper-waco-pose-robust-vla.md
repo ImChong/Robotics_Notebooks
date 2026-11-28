@@ -146,6 +146,7 @@ WACO 的主要贡献是把相机和基座偏移拆成可分别验证的坐标问
 - [模仿学习](../methods/imitation-learning.md)
 - [机器人操作](../tasks/manipulation.md)
 - [LIBERO 基准](libero-benchmark.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：先区分坐标系扰动、指令变化与任务成功判定，再选择评测协议。
 - [VLA 纵深路线 · Stage 4](../../roadmap/depth-vla.md#stage-4-部署与系统整合)
 
 ## 参考来源
