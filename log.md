@@ -527,6 +527,14 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-28] ingest | 收录无框力矩电机设计与工具链，补充关节级验证与标准核验
+
+## [2026-11-28] ingest | 收录 EgoLoAF：用手机示范与手物可供性学习人形移动操作
+
+## [2026-11-28] ingest | 收录 Robots’ Last Exam：长程职业工作流仿真评测与共建入口
+
+## [2026-11-28] ingest | 收录 AVAIL：用视觉里程碑引导真机灵巧操作，修正任务页论文题录
+
 ## [2026-11-28] ingest | 机器人建模与数字孪生纵深 20 篇节点补齐一手原文通读与阅读骨架，全路线 59/59 节点达成 3/3 满分健康度
 
 ## [2026-11-28] structural | 新增机器人建模与数字孪生纵深路线（roadmap/depth-robot-modeling-digital-twin.md）及 digital-twin / URDF-MJCF-SDF-OpenUSD 两篇基础页并同步全站 31 条纵深入口

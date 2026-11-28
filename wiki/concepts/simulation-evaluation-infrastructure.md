@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-28
 related:
   - ../entities/deepinsight.md
   - ../entities/insight-bench.md
@@ -14,6 +14,7 @@ related:
   - ../entities/paper-sceneagent-real2sim-capture-physics.md
   - ../entities/paper-loco-manip-161-075-simple.md
   - ../entities/robodojo.md
+  - ../entities/robots-last-exam.md
   - ../entities/world-models-as-unit-tests.md
   - ../entities/wwsimbench.md
   - ../entities/xpolicylab.md
@@ -137,6 +138,8 @@ flowchart TB
 - 本页中 Genesis World 的相关性数字为厂商自报，原博客正文未能在本次核对中抓取通读。
 
 ## 关联页面
+
+- [Robots’ Last Exam](../entities/robots-last-exam.md) — 对同一职业任务分别验收独立子任务和完整流程，并对照浮动夹爪与具身仿真约束。
 
 - [Open-Embodied](../entities/open-embodied.md) — 将已公开的 DeepHunch 仿真代码与上层统一接口规划分开看待，不能把目录视为已贯通的真机栈。
 
