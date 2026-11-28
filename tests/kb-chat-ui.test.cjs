@@ -1534,3 +1534,348 @@ test('Cloud node trends support trendGrounded AI answers, silent legacy-worker f
     dom.window.close();
   }
 });
+
+test('Fuzzy search handles English typos, separators, Chinese typos and skipped chars with safe history restore and zero false positives', async () => {
+  const H_WBC = '1'.repeat(64);
+  const H_DP = '2'.repeat(64);
+  const H_SIM = '3'.repeat(64);
+  const H_MPC = '4'.repeat(64);
+  const H_HUM = '5'.repeat(64);
+  const H_ISAAC = '6'.repeat(64);
+  const H_PI0 = '7'.repeat(64);
+  const H_DEX = '8'.repeat(64);
+
+  const fuzzyLiteIndex = {
+    meta: { version: 'v1', tier: 'lite', N: 8 },
+    docs: [
+      {
+        id: 'wiki-concepts-wbc',
+        path: 'wiki/concepts/whole-body-control.md',
+        title: '全身控制（Whole-Body Control, WBC）',
+        summary: '全身控制用于在多接触约束下协调人形机器人动力学与运动任务。',
+        page_type: 'concept',
+        tags: ['wbc', 'humanoid'],
+        search_aliases: ['WBC', 'Whole-Body Control', '全身控制'],
+      },
+      {
+        id: 'wiki-methods-diffusion-policy',
+        path: 'wiki/methods/diffusion-policy.md',
+        title: 'Diffusion Policy（扩散策略）',
+        summary: 'Diffusion Policy 将机器人视觉运动策略建模为条件去噪扩散过程。',
+        page_type: 'method',
+        tags: ['diffusion', 'policy', 'manipulation'],
+        search_aliases: ['Diffusion Policy', '扩散策略'],
+      },
+      {
+        id: 'wiki-concepts-sim2real',
+        path: 'wiki/concepts/sim2real.md',
+        title: 'Sim2Real（仿真到真机）',
+        summary: '通过域随机化与系统辨识缩小仿真到真机（Sim2Real）的性能差距。',
+        page_type: 'concept',
+        tags: ['sim2real', 'domain-randomization'],
+        search_aliases: ['Sim2Real', '仿真到真机'],
+      },
+      {
+        id: 'wiki-concepts-mpc',
+        path: 'wiki/concepts/model-predictive-control.md',
+        title: '模型预测控制（Model Predictive Control, MPC）',
+        summary: '模型预测控制在有限时域内滚动优化机器人轨迹与接触力。',
+        page_type: 'concept',
+        tags: ['mpc', 'control'],
+        search_aliases: ['MPC', '模型预测控制'],
+      },
+      {
+        id: 'wiki-concepts-humanoid',
+        path: 'wiki/concepts/humanoid-robot.md',
+        title: '人形机器人（Humanoid Robot）',
+        summary: '人形机器人结合双足动力学与人形控制实现全身协调移动与操作。',
+        page_type: 'concept',
+        tags: ['humanoid', 'biped'],
+        search_aliases: ['人形机器人', '人形控制', 'Humanoid'],
+      },
+      {
+        id: 'wiki-entities-isaaclab',
+        path: 'wiki/entities/isaaclab.md',
+        title: 'Isaac Lab',
+        summary: 'IsaacLab 是 NVIDIA 基于 Isaac Sim 的模块化机器人学习仿真框架。',
+        page_type: 'entity',
+        tags: ['isaaclab', 'simulation'],
+        search_aliases: ['IsaacLab', 'Isaac Lab'],
+      },
+      {
+        id: 'wiki-entities-pi0',
+        path: 'wiki/entities/pi0.md',
+        title: 'π0（Pi0 Generalist Policy）',
+        summary: 'Pi0 是面向跨本体机器人控制的视觉语言动作基础模型。',
+        page_type: 'entity',
+        tags: ['pi0', 'vla'],
+        search_aliases: ['pi0', 'π0'],
+      },
+      {
+        id: 'wiki-concepts-dexterous',
+        path: 'wiki/concepts/dexterous-manipulation.md',
+        title: '灵巧手操作（Dexterous Manipulation）',
+        summary: '灵巧手通过多指触觉与力反馈完成精细抓握与工具使用。',
+        page_type: 'concept',
+        tags: ['dexterous', '灵巧手', 'manipulation'],
+        search_aliases: ['灵巧手', 'Dexterous Hand'],
+      },
+    ],
+  };
+
+  const fuzzyCatalog = {
+    version: 'v1',
+    content_mode: 'per-page-v1',
+    pages: {
+      detail_pages: {
+        'wiki-concepts-wbc': { title: '全身控制（Whole-Body Control, WBC）', content_url: `exports/page-content/${H_WBC}.json` },
+        'wiki-methods-diffusion-policy': { title: 'Diffusion Policy（扩散策略）', content_url: `exports/page-content/${H_DP}.json` },
+        'wiki-concepts-sim2real': { title: 'Sim2Real（仿真到真机）', content_url: `exports/page-content/${H_SIM}.json` },
+        'wiki-concepts-mpc': { title: '模型预测控制（Model Predictive Control, MPC）', content_url: `exports/page-content/${H_MPC}.json` },
+        'wiki-concepts-humanoid': { title: '人形机器人（Humanoid Robot）', content_url: `exports/page-content/${H_HUM}.json` },
+        'wiki-entities-isaaclab': { title: 'Isaac Lab', content_url: `exports/page-content/${H_ISAAC}.json` },
+        'wiki-entities-pi0': { title: 'π0（Pi0 Generalist Policy）', content_url: `exports/page-content/${H_PI0}.json` },
+        'wiki-concepts-dexterous': { title: '灵巧手操作（Dexterous Manipulation）', content_url: `exports/page-content/${H_DEX}.json` },
+      },
+      roadmap_pages: {},
+      page_aliases: {},
+    },
+  };
+
+  const fuzzyBodies = {
+    [`exports/page-content/${H_WBC}.json`]: {
+      version: 'v1',
+      id: 'wiki-concepts-wbc',
+      content_markdown: '# 全身控制（WBC）\n\n## 核心原理\n\n全身控制（Whole-Body Control, WBC）通过分层 QP 协调人形机器人的质心与接触力约束。',
+    },
+    [`exports/page-content/${H_DP}.json`]: {
+      version: 'v1',
+      id: 'wiki-methods-diffusion-policy',
+      content_markdown: '# Diffusion Policy\n\n## 核心机制\n\nDiffusion Policy 利用扩散去噪生成机器人多模态动作序列。',
+    },
+    [`exports/page-content/${H_SIM}.json`]: {
+      version: 'v1',
+      id: 'wiki-concepts-sim2real',
+      content_markdown: '# Sim2Real（仿真到真机）\n\n## 域随机化\n\nSim2Real 通过域随机化缩小仿真到真机迁移差距。',
+    },
+    [`exports/page-content/${H_MPC}.json`]: {
+      version: 'v1',
+      id: 'wiki-concepts-mpc',
+      content_markdown: '# 模型预测控制（MPC）\n\n## 滚动优化\n\n模型预测控制在有限时域内求解最优落足点与地面反力。',
+    },
+    [`exports/page-content/${H_HUM}.json`]: {
+      version: 'v1',
+      id: 'wiki-concepts-humanoid',
+      content_markdown: '# 人形机器人\n\n## 人形控制\n\n人形机器人通过人形控制与双足步态规划维持动态平衡。',
+    },
+    [`exports/page-content/${H_ISAAC}.json`]: {
+      version: 'v1',
+      id: 'wiki-entities-isaaclab',
+      content_markdown: '# Isaac Lab\n\n## 仿真引擎\n\nIsaacLab 支持 GPU 并行强化学习与模仿学习训练。',
+    },
+    [`exports/page-content/${H_PI0}.json`]: {
+      version: 'v1',
+      id: 'wiki-entities-pi0',
+      content_markdown: '# π0（Pi0）\n\n## 通用策略\n\nPi0 基于流匹配（Flow Matching）生成高频连续机器人动作。',
+    },
+    [`exports/page-content/${H_DEX}.json`]: {
+      version: 'v1',
+      id: 'wiki-concepts-dexterous',
+      content_markdown: '# 灵巧手操作\n\n## 触觉与抓握\n\n灵巧手依靠指尖触觉传感实现接触丰富的物体旋转与操作。',
+    },
+  };
+
+  const { dom, window } = setupDom({
+    withFooter: true,
+    fetchImpl: async (url) => {
+      if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => fuzzyLiteIndex };
+      if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => fuzzyCatalog };
+      if (fuzzyBodies[url]) return { ok: true, status: 200, json: async () => fuzzyBodies[url] };
+      return { ok: false, status: 404, json: async () => ({}) };
+    },
+  });
+  window.eval(fabBlock);
+  window.eval(chatSource);
+  window.RNKbChat.open();
+
+  const cases = [
+    { q: 'difusion policy', expectedId: 'wiki-methods-diffusion-policy', chipPattern: /difusion → diffusion/ },
+    { q: 'humnaoid wbc', expectedId: 'wiki-concepts-wbc', chipPattern: /humnaoid → humanoid/ },
+    { q: 'sim2rael', expectedId: 'wiki-concepts-sim2real', chipPattern: /sim2rael → sim2real/ },
+    { q: 'sim 2 real', expectedId: 'wiki-concepts-sim2real', chipPattern: /sim 2 real → sim2real/ },
+    { q: 'isaac lab', expectedId: 'wiki-entities-isaaclab', chipPattern: /isaac lab → isaaclab/ },
+    { q: 'pi 0', expectedId: 'wiki-entities-pi0', chipPattern: /pi 0 → pi0/ },
+    { q: '什么是全神控制？', expectedId: 'wiki-concepts-wbc', chipPattern: /全神控制 → 全身控制/ },
+    { q: '人行机器人', expectedId: 'wiki-concepts-humanoid', chipPattern: /人行机器人 → 人形机器人/ },
+    { q: '什么是灵巧收', expectedId: 'wiki-concepts-dexterous', chipPattern: /灵巧收 → 灵巧手/ },
+    { q: '请问人形控怎么实现？', expectedId: 'wiki-concepts-humanoid', chipPattern: /人形控 → 人形控制/ },
+    { q: '仿真真机差距怎么缩小？', expectedId: 'wiki-concepts-sim2real', chipPattern: /仿真真机 → 仿真到真机/ },
+    { q: '模预控有什么特点？', expectedId: 'wiki-concepts-mpc', chipPattern: /模预控 → 模型预测控制/ },
+  ];
+
+  for (let i = 0; i < cases.length; i += 1) {
+    const tc = cases[i];
+    await window.RNKbChat.ask(tc.q);
+    const msgs = window.document.querySelectorAll('.kb-chat-msg--assistant');
+    const lastMsg = msgs[msgs.length - 1];
+    const fuzzyNote = lastMsg.querySelector('.kb-chat-fuzzy-note');
+    assert.ok(fuzzyNote, `expected .kb-chat-fuzzy-note for "${tc.q}"`);
+    assert.match(fuzzyNote.textContent, tc.chipPattern, `expected chip match for "${tc.q}"`);
+    const link = lastMsg.querySelector(`a.kb-chat-citation-title[href*="id=${tc.expectedId}"]`);
+    assert.ok(link, `expected citation link to ${tc.expectedId} for "${tc.q}"`);
+  }
+
+  // Exact queries should NOT render .kb-chat-fuzzy-note
+  for (const exactQ of ['什么是全身控制 WBC？', 'How does Whole-Body Control work?']) {
+    await window.RNKbChat.ask(exactQ);
+    const msgs = window.document.querySelectorAll('.kb-chat-msg--assistant');
+    const lastMsg = msgs[msgs.length - 1];
+    assert.equal(lastMsg.querySelector('.kb-chat-fuzzy-note'), null, `no fuzzy banner for exact "${exactQ}"`);
+    assert.ok(lastMsg.querySelector('a.kb-chat-citation-title[href*="id=wiki-concepts-wbc"]'));
+  }
+
+  // Unrelated queries must NOT trigger fuzzy matches or citations
+  for (const offQ of [
+    'completelyunrelatedtopicxyz',
+    '今天晚饭吃什么比较健康',
+    'what to eat for dinner today',
+    'how to bake a chocolate cake',
+  ]) {
+    await window.RNKbChat.ask(offQ);
+    const msgs = window.document.querySelectorAll('.kb-chat-msg--assistant');
+    const lastMsg = msgs[msgs.length - 1];
+    assert.equal(lastMsg.querySelector('.kb-chat-fuzzy-note'), null, `no fuzzy match for off-topic "${offQ}"`);
+    assert.equal(lastMsg.querySelectorAll('.kb-chat-citation-group').length, 0, `no citations for "${offQ}"`);
+    assert.ok(lastMsg.querySelector('a[href="graph.html"]'));
+  }
+
+  // Reload persistence preserves fuzzyMatches chip
+  const savedHistory = window.localStorage.getItem('rn_kb_chat_history_v1');
+  dom.window.close();
+
+  const restored = setupDom({ withFooter: true });
+  restored.window.localStorage.setItem('rn_kb_chat_history_v1', savedHistory);
+  restored.window.eval(fabBlock);
+  restored.window.eval(chatSource);
+  restored.window.RNKbChat.open();
+  const restoredNotes = restored.window.document.querySelectorAll('.kb-chat-fuzzy-note');
+  assert.equal(restoredNotes.length, cases.length);
+  assert.match(restoredNotes[0].textContent, /difusion → diffusion/);
+  restored.dom.window.close();
+});
+
+test('Cloud mode renders sanitized fuzzyMatches and falls back cleanly when legacy Worker returns ungrounded', async () => {
+  const HASH_DP = '9'.repeat(64);
+  const dpLite = {
+    meta: { version: 'v1', tier: 'lite', N: 1 },
+    docs: [
+      {
+        id: 'wiki-methods-diffusion-policy',
+        path: 'wiki/methods/diffusion-policy.md',
+        title: 'Diffusion Policy（扩散策略）',
+        summary: 'Diffusion Policy 将机器人视觉运动策略建模为条件去噪扩散过程。',
+        page_type: 'method',
+        tags: ['diffusion', 'policy'],
+        search_aliases: ['Diffusion Policy'],
+      },
+    ],
+  };
+  const dpCatalog = {
+    version: 'v1',
+    content_mode: 'per-page-v1',
+    pages: {
+      detail_pages: {
+        'wiki-methods-diffusion-policy': {
+          title: 'Diffusion Policy（扩散策略）',
+          content_url: `exports/page-content/${HASH_DP}.json`,
+        },
+      },
+      roadmap_pages: {},
+      page_aliases: {},
+    },
+  };
+  const dpBody = {
+    version: 'v1',
+    id: 'wiki-methods-diffusion-policy',
+    content_markdown: '# Diffusion Policy\n\n## 核心机制\n\nDiffusion Policy 通过条件扩散模型迭代去噪生成动作序列。',
+  };
+
+  for (const scenario of ['cloud-fuzzy', 'legacy-ungrounded']) {
+    const { dom, window } = setupDom({
+      withFooter: true,
+      config: {
+        endpoint: 'https://kb-chat.example.workers.dev/chat',
+        turnstileSiteKey: '1x00000000000000000000AA',
+      },
+      fetchImpl: async (url) => {
+        if (url === 'https://kb-chat.example.workers.dev/chat') {
+          if (scenario === 'cloud-fuzzy') {
+            return {
+              ok: true,
+              status: 200,
+              json: async () => ({
+                ok: true,
+                mode: 'ai',
+                grounded: true,
+                cached: false,
+                answer: 'Diffusion Policy 利用条件扩散模型生成动作 [1]。',
+                fuzzyMatches: [{ from: '<script>window.__fuzzyXss=1</script>difusion', to: 'diffusion' }],
+                citations: [
+                  {
+                    index: 1,
+                    id: 'wiki-methods-diffusion-policy',
+                    title: 'Diffusion Policy（扩散策略）',
+                    heading: '核心机制',
+                    snippet: 'Diffusion Policy 通过条件扩散模型迭代去噪生成动作序列。',
+                    url: 'detail.html?id=wiki-methods-diffusion-policy',
+                  },
+                ],
+              }),
+            };
+          }
+          return {
+            ok: true,
+            status: 200,
+            json: async () => ({
+              ok: true,
+              mode: 'ungrounded',
+              grounded: false,
+              cached: false,
+              answer: 'No direct match found in the wiki.',
+              citations: [],
+            }),
+          };
+        }
+        if (url === 'search-index-lite.json') return { ok: true, status: 200, json: async () => dpLite };
+        if (url === 'exports/site-catalog-v1.json') return { ok: true, status: 200, json: async () => dpCatalog };
+        if (url === `exports/page-content/${HASH_DP}.json`) return { ok: true, status: 200, json: async () => dpBody };
+        return { ok: false, status: 404, json: async () => ({}) };
+      },
+    });
+    window.turnstile = {
+      render: (_el, opts) => {
+        window.__tsCallback = opts.callback;
+        return 'wid-1';
+      },
+      reset: () => {},
+      execute: () => window.__tsCallback(`tok-${scenario}`),
+    };
+    window.eval(fabBlock);
+    window.eval(chatSource);
+    window.RNKbChat.open();
+
+    await window.RNKbChat.ask('What is difusion?');
+    const msg = window.document.querySelector('.kb-chat-msg--assistant');
+    assert.ok(msg);
+    const fuzzyNote = msg.querySelector('.kb-chat-fuzzy-note');
+    assert.ok(fuzzyNote, `fuzzy note visible in ${scenario}`);
+    assert.match(fuzzyNote.textContent, /difusion.*→ diffusion/);
+    assert.equal(window.__fuzzyXss, undefined);
+    assert.equal(msg.querySelectorAll('script').length, 0);
+    assert.ok(msg.querySelector('a.kb-chat-citation-title[href*="id=wiki-methods-diffusion-policy"]'));
+    if (scenario === 'legacy-ungrounded') {
+      assert.equal(window.document.querySelector('.kb-chat-mode-badge').getAttribute('data-mode'), 'local');
+    }
+    dom.window.close();
+  }
+});

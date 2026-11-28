@@ -6025,6 +6025,44 @@ a.card:active { transform: translateY(-1px); }
   color: var(--text-muted);
   border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
 }
+.kb-chat-fuzzy-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 6px;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: var(--quote-bg);
+  color: var(--text-muted);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+}
+.kb-chat-fuzzy-note__tag {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.kb-chat-fuzzy-note__items {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.kb-chat-fuzzy-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
 .kb-chat-cite-pill {
   display: inline-block;
   margin: 0 2px;
@@ -7851,6 +7889,8 @@ a.kb-chat-citation-passage:hover {
 :root:not([data-ui="classic"]) .kb-chat-md-body .mermaid,
 :root:not([data-ui="classic"]) .kb-chat-md-body .mermaid.mermaid-zoomable::after,
 :root:not([data-ui="classic"]) .kb-chat-status-note,
+:root:not([data-ui="classic"]) .kb-chat-fuzzy-note,
+:root:not([data-ui="classic"]) .kb-chat-fuzzy-chip,
 :root:not([data-ui="classic"]) .kb-chat-cite-pill,
 :root:not([data-ui="classic"]) .kb-chat-input,
 :root:not([data-ui="classic"]) .kb-chat-send,
@@ -7867,6 +7907,7 @@ a.kb-chat-citation-passage:hover {
   color: var(--on-accent);
 }
 :root:not([data-ui="classic"]) .kb-chat-mode-badge,
+:root:not([data-ui="classic"]) .kb-chat-fuzzy-note__tag,
 :root:not([data-ui="classic"]) .kb-chat-citations__toggle,
 :root:not([data-ui="classic"]) .kb-chat-cite-pill {
   font-family: var(--font-mono);
