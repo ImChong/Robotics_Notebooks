@@ -3,10 +3,10 @@ type: entity
 project_id: mawam-coordinated-manipulation
 tags: [paper, mawam, world-action-models, wam, multi-agent, multi-robot, robot-manipulation, nvidia, hku, mit]
 status: complete
-updated: 2026-11-21
+updated: 2026-11-29
 arxiv: "2611.25105"
-project: https://research-staging.nvidia.com/labs/lpr/mawam/
-summary: "MAWAM（arXiv:2611.25105v1）通过跨智能体注意力联合生成多机器人私有相机未来和各自动作块；论文报告两台 R1 Pro 真机三任务平均成功率 67.8%，RoboFactory 八任务 90.3%。"
+project: https://research.nvidia.com/labs/lpr/mawam/
+summary: "MAWAM（arXiv:2611.25105v2）通过跨智能体注意力联合生成多机器人私有相机未来和各自动作块；论文报告两台 R1 Pro 真机三任务平均成功率 67.8%，RoboFactory 八任务 90.3%。"
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -47,13 +47,13 @@ original:
 
 | 项 | 论文中的定义 |
 |---|---|
-| 论文 | arXiv:2611.25105v1，2026-11-18 预印本 |
+| 论文 | arXiv:2611.25105v2，2026-11-18 首发，2026-11-20 修订 |
 | 机构 | 英伟达（NVIDIA）、香港大学（The University of Hong Kong）、麻省理工学院（MIT） |
 | 初始化 | 单机器人 GR00T 2 WAM |
 | 真机 | 两台 Galaxea R1 Pro，各 3 路私有相机，无共享全局视角 |
 | 仿真 | RoboFactory，2–4 条 Panda 机械臂；可用只读共享相机 |
 | 输出与闭环 | 每机器人 24 步动作和各私有相机未来 8 帧；同步执行前 8 步再重规划 |
-| 官方代码/权重 | 项目页本次访问失败，**开放状态待核实** |
+| 官方代码/权重 | 正式 NVIDIA 项目页已可访问；代码标为待发布，暂无可核实的 MAWAM 代码、权重或示范数据下载 |
 
 ## 核心原理与方法
 
@@ -101,6 +101,8 @@ flowchart TD
 - 四臂交接去跨智能体注意力：**95%→39%**；去 Warm-up：**95%→34%**；集中式单动作接口基线：**0%**。
 - Place Food 去团队阶段未来视频监督：**78%→47%**；全部机器人使用同一任务角色：**78%→0%**。
 - 测试时**冻结未来视图 token 的去噪**，许多任务仍接近完整模型；**完全删去这些 token** 则四臂交接 **95%→0%**。训练期未来监督、推理保留 token 与推理显式生成视频并不等价。
+- 四臂交接中人为让第二次交接的递送者停 16 步，接收者相对同种子无干预对照的启动延迟中位数为 **+12 步**，独立策略为 **+6 步**；干预下成功率 **99% vs. 44%**。这是特定仿真干预，不等于真实网络延迟下的鲁棒性。
+- 未来画面评估中，至少 5% 像素发生变化的样本上，预测相对复制末帧的 PSNR 高约 **4–7 dB**；全帧评估末帧复制反而更高。该评估执行完整 24 步用于配对，不是闭环成功率测试的 8 步配置。
 
 ## 结论
 
@@ -123,14 +125,30 @@ flowchart TD
 
 ### 源码运行时序图
 
-**不适用：** 当前无法验证官方可运行源码。NVIDIA staging 项目页未成功打开，论文提供的是算法和系统级流程，不等于已核实 Python/C++ 调用栈，故不伪造源码时序图。
+**不适用：** NVIDIA 正式项目页把代码标为待发布。下图按论文附录 E 表示控制链路，不是源码调用栈。
+
+```mermaid
+sequenceDiagram
+    participant R as 两台 R1 Pro
+    participant C as 同步协调器
+    participant M as H100 上的 MAWAM
+    R-->>C: 上传六路私有相机和各自状态
+    C->>M: 提交同步团队观测
+    M-->>C: 联合去噪并返回各自的 24 步动作块
+    alt 双机命令通过时效、归属与安全校验
+        C->>R: 分发各自的前 8 步
+        R->>R: 各自 IK 与关节跟踪同步执行
+    else 有校验未通过
+        C->>R: 协调停止两台机器人
+    end
+```
 
 ## 与其他工作对比
 
 | 对照 | 核心差别 |
 |---|---|
 | [单机器人 WAM](../concepts/world-action-models.md) | MAWAM 联合建模多个本体的动作与各自未来私有视角 |
-| MA-VLA | 用高层任务提示和多臂策略生成动作，不在同一生成样本中联合监督所有未来视图 |
+| [MA-VLA](./paper-ma-vla.md) | 用高层任务提示和多臂策略生成动作，不在同一生成样本中联合监督所有未来视图 |
 | 独立多机器人策略 | 保留独立输出但缺少团队内部 token 交互，长接力时序较弱 |
 | 集中式一向量团队策略 | 把所有动作合成一个控制口；论文四臂长接力集中基线仅 0% |
 | [PrismWAM](./paper-prismwam.md) | 主要研究语义目标/物理未来表征解耦，而非多机器人协调 |
@@ -139,7 +157,7 @@ flowchart TD
 
 - 论文只测试固定团队、最多 4 条仿真机械臂；成员变更、异构传感器、人机联合操作仍是未来工作。
 - 真机三任务各 30 次；论文模型耗时不等于机器人端到端响应时间，必须另外审核网络抖动、动作限幅、安全停止及碰撞保护。
-- **开放状态待核实**：本次抓取官方项目页失败，没有可确认的代码、权重、数据发布入口；不能将架构描述误称为公开可复现实现。
+- 正式 NVIDIA 项目页已发布演示、方法和消融可视化，但未确认 MAWAM 代码、权重或数据下载。页面链接的 GR00T 2 是底座，不是 MAWAM 实现。
 
 ## 关联页面
 
@@ -152,10 +170,10 @@ flowchart TD
 
 ## 参考来源
 
-- [MAWAM v1 全文归档](../../sources/papers/mawam_arxiv_2611_25105.md)
-- [官方项目页访问核查](../../sources/sites/mawam-nvidia-project.md)
+- [MAWAM v2 全文归档](../../sources/papers/mawam_arxiv_2611_25105.md)
+- [官方项目页与开放范围核查](../../sources/sites/mawam-nvidia-project.md)
 
 ## 推荐继续阅读
 
-- [MAWAM arXiv HTML 全文及附录](https://arxiv.org/html/2611.25105v1)
-- [MAWAM 官方项目页](https://research-staging.nvidia.com/labs/lpr/mawam/)
+- [MAWAM arXiv HTML 全文及附录](https://arxiv.org/html/2611.25105v2)
+- [MAWAM 官方项目页](https://research.nvidia.com/labs/lpr/mawam/)
