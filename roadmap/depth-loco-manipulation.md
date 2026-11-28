@@ -122,6 +122,7 @@ flowchart LR
 - 读 HumanoidMimicGen 的技能片段适配管线，画出"1 条演示 → 1000 条轨迹"的数据流图
 
 ### 推荐读什么
+- [EgoLoAF](../wiki/entities/paper-egoloaf.md) — 从胸前手机视频重建躯干与手部动作，无需穿戴式运动跟踪；查看动作监督、显式手物条件与人时对照的边界。
 - [Teleoperation 任务页](../wiki/tasks/teleoperation.md)
 - [数据与遥操作（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-07-data-teleop.md) 与 [Loco-Manip 8 篇数据入口技术地图](../wiki/overview/loco-manip-8-papers-technology-map.md)
 - [HumanoidMimicGen](../wiki/entities/paper-humanoidmimicgen.md) 与 [LEGS](../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)

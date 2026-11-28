@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-11-25
+updated: 2026-11-28
 original:
   - ../../sources/papers/humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md
 sources:
@@ -382,6 +382,8 @@ flowchart TD
 | **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |
 
 ## 关联页面
+
+- [EgoLoAF](../entities/paper-egoloaf.md) — 用胸前手机收集人体示范，从同一记录生成躯干/双手动作与手物相对位姿，训练与真机评测分开核对。
 
 - [PushMimic](../entities/paper-pushmimic.md) — 从一条名义参考生成动力学可行的接触变体，以奖励解耦学习在不同箱重与坡度下调整姿态。
 
