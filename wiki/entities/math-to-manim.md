@@ -72,6 +72,8 @@ README 当前建议使用 Codex 登录运行 Astra；Jev 评审可用 `--review-
 - [Manim（程序化数学动画引擎）](./manim.md) — 实际生成视频的底层动画引擎
 - [arXivisual](./arxivisual.md) — 在论文阅读流程中嵌入 Manim 动画的相邻应用
 - [BotLab / MotionCanvas](./botlab-motioncanvas.md) — 面向浏览器交互仿真与策略演示，交付形态与离线讲解片不同
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：对应将自然语言概念自动编排为分镜、源码生成、实际渲染与抽帧审阅的程序化视频生成流程。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应 Astra 管线把讲解任务拆解为学习简报、数学推导、分镜与渲染审查反馈的智能体编排循环。
 
 ## 参考来源
 

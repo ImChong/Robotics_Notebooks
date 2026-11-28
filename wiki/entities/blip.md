@@ -66,6 +66,8 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [BLIP-2](./paper-blip2.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：通过图文对比、匹配、生成联合目标与 CapFilt 清洗构建通用视觉–语言表征学习。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：为理解视觉–语言骨干网络如何迁移接入具身视觉–语言–动作策略提供基础架构参照。
 
 ## 参考来源
 

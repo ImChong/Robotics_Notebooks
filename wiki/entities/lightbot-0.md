@@ -118,6 +118,8 @@ flowchart LR
 - [Light-O1](./light-o1.md) — 搭载于 Lightbot 0 的全身智能基础模型演示
 - [Light REACT](./light-react.md) — 同机构人形全身韧性控制
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md) — 三篇技术博客交叉技术地图
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：对应 Lightbot 0 作为紧凑型全感知人形载体所验证的高动态攀爬、踏石与复杂地形移动任务。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：对应 Lightbot 0 在 Light-O1 等后续工作中所支撑的真机移动操作应用。
 
 ## 公司路线日期口径
 

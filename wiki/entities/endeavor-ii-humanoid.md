@@ -95,6 +95,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：对应作为 50 cm 级开源双足硬件平台开展步行、敏捷动作与格斗平衡序列实验的任务载体。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对应仓库公开提供用于 3D 打印制造、整机组装与结构定制的 STEP/STL 机械模型与结构迭代流程。
 
 ## 参考来源
 

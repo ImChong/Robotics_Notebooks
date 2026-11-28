@@ -126,6 +126,7 @@ sequenceDiagram
 - [World Action Models](../concepts/world-action-models.md)
 - [GaussianDream++](./paper-gaussiandream-plusplus.md)
 - [WAM / VLA / 跨本体 9 篇技术地图](../overview/wam-vla-cross-embodiment-9-papers-technology-map.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：对照基于稠密置信度风险图进行候选轨迹预筛选、数据划分与加权再训练的数据管线机制。
 
 ## 参考来源
 

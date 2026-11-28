@@ -100,6 +100,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Ansys MCP Server（PyAnsys）](./vorobjewsen30-max-ansys-mcp-server.md)
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 MCP 协议将多款 Ansys CAE 产品操作封装为可由代理调用的工具接口。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：将代理任务流接入 Ansys 工程仿真建模与会话管理流程，实际数值求解需核对工具实现边界。
 
 ## 参考来源
 

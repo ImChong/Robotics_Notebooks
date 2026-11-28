@@ -111,6 +111,7 @@ flowchart TD
 - [GNM 头部](./gnm-head.md)：人形头部平台参照。
 - [VLA 方法](../methods/vla.md)：VLM 与机器人动作生成的上层范式参照。
 - [人形机器人](./humanoid-robot.md)：本文的应用载体类别。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照无标记人类注视与头部录制动作向 11 自由度机器人关节空间映射的重定向流程。
 
 ## 参考来源
 

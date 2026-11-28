@@ -164,6 +164,8 @@ sequenceDiagram
 - [ARGUS：深度伪造鉴伪](./paper-argus-deepfake-forensics.md) — 合成视频真实性检测的对照工作
 - [KeenTools FaceBuilder](./keentools-facebuilder.md) — 二维面部合成与三维几何重建的区别
 - [图像分割方法分类](../concepts/image-segmentation-taxonomy.md) — face mask 与图像合成的基础
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：对应图像与视频中人脸检测、推理替换与掩膜贴回的时序媒体编辑流水线。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：参考其基于 ONNX 运行时与任务队列管理多处理器视觉模型推理的工程结构。
 
 ## 参考来源
 

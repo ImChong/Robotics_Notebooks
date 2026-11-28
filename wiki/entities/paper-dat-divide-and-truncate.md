@@ -189,6 +189,7 @@ sequenceDiagram
 - [仿真物理保真（Query）](../queries/simulation-physics-fidelity.md) — 多物理保真度与接触选型分析
 - [Particles4All](./particles4all.md) — 单环统一粒子 PBD 方案对照
 - [强化学习（Reinforcement Learning）](../methods/reinforcement-learning.md) — 高保真接触仿真服务的策略训练范式
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照刚软多物理耦合无穿透求解器在仿真环境中的集成与运行验证。
 
 ## 参考来源
 

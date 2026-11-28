@@ -198,6 +198,8 @@ FLORA 的工程价值是用专用的时间定位、动作意图描述和三种�
 - [World Action Models](../concepts/world-action-models.md) — 训练数据标注与视频/动作预测模型的分工
 - [灵巧操作数据管线](../queries/dexterous-manipulation-data-pipeline.md) — 与机器人模仿学习、奖励训练和数据工程联系
 - [具身智能论文技术图谱](../overview/embodied-station-2026-10-29-58-papers-technology-map.md) — 项目在数据引擎生态中的位置
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：通过 TempSeg、Captioner 与 Rewarder 自动化标注海量操作视频的时间戳指令与任务质量得分。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：将原始人类与机器人操作视频编译为带过程和结果奖励标签的结构化训练与离线评估数据。
 
 ## 参考来源
 

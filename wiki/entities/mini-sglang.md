@@ -98,6 +98,8 @@ sequenceDiagram
 - [SGLang｜大规模语言与多模态模型推理服务框架](./sglang.md)
 - [Zero to SGLang｜Datawhale × RadixArk 推理课程](./zero-to-sglang.md)
 - [FlashInfer｜跨框架 GPU 推理 Kernel 库](./flashinfer.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照大语言模型在线推理服务的多进程调度、批处理与延迟优化通用方法。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：了解与推理引擎配合使用的量化、编译及显存优化等推理加速技术。
 
 ## 参考来源
 

@@ -194,6 +194,7 @@ MoT 让寄存器与帧走不同权重分支，减轻「画清楚 vs 记清楚」
 - [DWM（Separating World Effects）](./paper-dwm-separating-world-effects.md) — 转移分解对照
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：对照多视角流式自回归视频扩散中维持跨帧时序与镜头外状态一致性的视觉生成流程。
 
 ## 参考来源
 

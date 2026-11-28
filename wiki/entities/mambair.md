@@ -64,6 +64,8 @@ flowchart LR
 - [SSM](../concepts/state-space-model-ssm.md)
 - [架构对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对应以 Mamba/SSM 块构建视觉特征空间长程扫描建模的图像表征与恢复骨干路线。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对应为机器人视觉观测去噪、超分及长序列传感预处理提供低复杂度特征增强的感知支撑。
 
 ## 参考来源
 

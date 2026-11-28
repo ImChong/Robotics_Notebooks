@@ -91,6 +91,8 @@ sequenceDiagram
 - [FreeCAD](./freecad.md) — 具备交互式 CAD 工作流的开源应用，和底层几何内核的产品层级不同。
 - [OpenSCAD](./openscad.md) — 以代码描述参数化几何的脚本 CAD 路线。
 - [CAD Skills](./cad-skills.md) — 将参数化 CAD 操作封装为 Agent 可用技能的示例。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照参数化 CAD 建模流程，理解 SMLib 的 NURBS B-rep 拓扑表示、布尔运算及曲面细分容差控制。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：参考机器人模型描述与资产接入流程，区分精确 B-rep 制造几何与用于仿真渲染及碰撞近似的网格资产转换。
 
 ## 推荐继续阅读
 

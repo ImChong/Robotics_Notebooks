@@ -60,6 +60,8 @@ summary: "libethercat（DLR）：德国宇航中心（DLR）的 EtherCAT C 库�
 - [igh-ethercat-master](./igh-ethercat-master.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-opensource-libs-wechat](../overview/ethercat-opensource-libs-wechat.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对应 EtherCAT 主站库在机器人实时控制架构中承接底层总线通信与执行器周期刷新的位置。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对应将该 C 语言总线主站库集成到机器人实时软件栈并完成通信诊断的系统工程流程。
 
 ## 参考来源
 

@@ -111,6 +111,8 @@ sequenceDiagram
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照将肌电与惯性传感数据经 BLE 接入并发布为多类 ROS 话题的传感器集成流程。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考以 ROS 节点与标准消息接口将穿戴式传感驱动融入机器人软件系统。
 
 ## 参考来源
 

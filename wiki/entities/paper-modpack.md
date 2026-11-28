@@ -86,6 +86,7 @@ sequenceDiagram
 - [paper-hommi](./paper-hommi.md)
 - [realab-14-papers-technology-map-2026](../overview/realab-14-papers-technology-map-2026.md)
 - [REALab 14 篇技术地图](../overview/realab-14-papers-technology-map-2026.md)
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md)：对照面向双臂移动操作数据采集与遥操作部署的双臂协调任务场景。
 
 ## 参考来源
 

@@ -146,6 +146,7 @@ AI2-THOR 全轨迹对照：TSOG 为 80.04% SR / 41.44% SPL，Memory-MambaNav 为
 - [状态空间模型与 Mamba](../concepts/state-space-model-ssm.md) — Mamba 选择性扫描的基本机制
 - [Mamba](../concepts/mamba.md) — 选择性状态空间架构
 - [AI2-THOR](./ai2-thor.md) — 论文使用的室内导航模拟环境
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照结合目标检测、空间关系图推理与在线决策执行的机器人导航工作流。
 
 ## 参考来源
 

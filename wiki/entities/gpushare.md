@@ -74,6 +74,8 @@ flowchart LR
 - [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md)
 - [AutoDL](./autodl.md) — 文档生态更成熟的主要竞品
 - [Featurize](./featurize.md) — 大磁盘本地方案对照
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：为预算敏感的强化学习训练与短期云端实验提供按量及包周 GPU 算力。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：配合个人 OSS 数据空间支持大规模离线数据集上传与云端机器人策略训练。
 
 ## 推荐继续阅读
 

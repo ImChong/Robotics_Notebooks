@@ -83,6 +83,8 @@ System 0 使用超过 **1000 小时重定向人动作**，在超过 **20 万并�
 - [Figure 公司](./figure-ai.md)
 - [Helix 2.5](./helix-25.md)
 - [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：System 0 以大规模重定向人动作在仿真中预训练并实时跟踪 System 1 输出的 200 Hz 全身关节目标。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：通过慢速语义规划、200 Hz 视觉运动策略与 1 kHz 全身控制联合完成移动与灵巧接触操作。
 
 ## 参考来源
 

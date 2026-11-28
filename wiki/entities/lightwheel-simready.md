@@ -251,6 +251,8 @@ sequenceDiagram
 - [NVIDIA SimReady Central](./nvidia-simready-central.md) — 多方仿真资产发现、USD Search 与 Agent 场景编排
 - [物理保真度与 Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
 - [具身数据采集五路线全景](../queries/embodied-data-collection-five-routes-landscape.md) — SimReady 在「场景重建」路线中的位置
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对应以 OpenUSD 规范描述物体物理属性、关节约束及碰撞模型并接入仿真器的资产集成流程。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对应将经物理实测校准的 SimReady 资产与多物理求解器组合为可运行仿真环境的集成方法。
 
 ## 参考来源
 

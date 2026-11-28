@@ -95,6 +95,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Mechanical MCP（PyMechanical gRPC）](./codersag-mechanical-mcp.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：将 Ansys/AGI STK 的轨道、覆盖与可见性仿真分析纳入可复查的工程仿真建模与验证流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 MCP 与 CLI 为智能体暴露控制 STK Desktop/Engine 情景与分析能力的工具接口。
 
 ## 参考来源
 

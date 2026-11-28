@@ -167,6 +167,7 @@ flowchart TB
 - [执行器约束 RL 高速四足](./paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — 高速四足的另一轴（扭矩–转速包络）
 - [仿生多模态机器人综述（Science Robotics 2026）](./paper-bioinspired-multimodal-robotics.md) — 物理智能 × 计算智能总览
 - [Gait Generation](../concepts/gait-generation.md) — 步态与节律概念
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照跨构型尺度建立多参数动力学模型并在仿真与实机上验证机械协同的设计流程。
 
 ## 参考来源
 

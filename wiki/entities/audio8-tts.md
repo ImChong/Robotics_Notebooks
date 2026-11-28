@@ -84,6 +84,7 @@ sequenceDiagram
 
 - [X2Streaming-TTS](./paper-x2streaming-tts.md) — 面向流式文本的语音合成。
 - [人形机器人语音交互](../methods/humanoid-voice-interaction.md) — 机器人语音交互链路。
+- [GRPO（Group Relative Policy Optimization）](../methods/grpo.md)：该模型第二和第三阶段训练采用 GRPO 结合 WER、SIM 与真实性评价器优化语音自然度。
 
 ## 参考来源
 

@@ -108,6 +108,8 @@ sequenceDiagram
 - [GS-Playground](./gs-playground.md)
 - [Lightwheel（光轮智能）](./lightwheel.md) — 另一家仿真 / 数据基础设施公司
 - [公司技术路线对照（2026）](../comparisons/robot-foundation-model-company-paths-2026.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照机器人仿真环境集成流程，理解 MotrixSim 与 MotrixLab 如何把物理引擎、模型与控制接口组合为可运行训练环境。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：参考机器人仿真场景生成方法，了解 MotrixGen、MotrixStudio 与 SimReady 资产如何构建可重置的仿真场景。
 
 ## 参考来源
 

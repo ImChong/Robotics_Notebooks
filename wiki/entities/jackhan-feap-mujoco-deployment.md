@@ -101,6 +101,7 @@ sequenceDiagram
 
 - **[FEAP Vision 部署](./jackhan-feapvision-mujoco-deployment.md)**：同作者的「深度 + TorchScript」变体，观测栈更厚。
 - **[Locomotion](../tasks/locomotion.md)**：README 强调的多地形、多风格与扰动测试直接服务 locomotion 论文复现。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：对照双足人形机器人在多地形与多风格下的平衡与移动任务需求。
 
 ## 参考来源
 

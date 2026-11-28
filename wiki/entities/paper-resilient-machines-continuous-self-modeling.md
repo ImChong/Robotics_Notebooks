@@ -80,6 +80,7 @@ flowchart LR
 - [规划主导型 分类 hub](../overview/embodied-wm-route-planning.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [Locomotion](../tasks/locomotion.md)：对照四足平台在结构损伤后通过自模型更新搜索替代步态的运动控制任务。
 
 ## 参考来源
 

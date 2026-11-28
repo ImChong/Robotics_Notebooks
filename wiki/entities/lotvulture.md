@@ -99,6 +99,8 @@ flowchart LR
 - [Mosquitto](./mosquitto.md)、[MQTT 协议](../concepts/mqtt-protocol.md) — 告警与 IoT 集成。
 - [PlotJuggler](./plotjuggler.md) — 同为 **MQTT 实时流** 消费方，调试时可对照 topic  payload。
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md) — 移动机器人导航与 **固定设施 CV** 的分工边界。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对应通过本地 C++ ONNX Runtime（CPU / GPU EP）在边缘端低延迟部署视觉推理的工程服务栈。
+- [目标检测（Object Detection）](../methods/object-detection.md)：对照其在固定视角俯视场景中执行车位占用识别所关联的视觉检测与区域分类技术脉络。
 
 ## 参考来源
 

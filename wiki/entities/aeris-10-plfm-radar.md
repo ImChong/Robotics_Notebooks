@@ -153,6 +153,8 @@ sequenceDiagram
 - [状态估计（知识链汇总）](../overview/hub-state-estimation.md)
 - [野外机器人排障指南](../queries/field-robotics-troubleshooting.md)
 - [Project Quiver](./project-quiver.md) — 作业级开源机架，高度计是商用 Nanoradar，不是本开源相控阵
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：提供相控阵雷达与 GPS/IMU 协同接入和姿态补偿参考，服务无人机与野外机器人的主动测距感知。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：雷达测距、多普勒与方位观测可与惯性及定位信息融合，用于扩展野外平台的状态估计与目标跟踪能力。
 
 ## 推荐继续阅读
 

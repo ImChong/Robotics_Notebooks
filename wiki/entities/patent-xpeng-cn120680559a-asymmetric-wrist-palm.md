@@ -72,6 +72,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：对照非对称转角掌座与双轴球铰腕部机构对提升末端执行器双向姿态范围与灵巧可达性的结构设计。
 
 ## 参考来源
 

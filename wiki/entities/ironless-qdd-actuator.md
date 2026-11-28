@@ -144,6 +144,8 @@ sequenceDiagram
 - [Internal Cycloidal Actuator](./internal-cycloidal-actuator.md)
 - [FEMM](./femm.md) · [FEMM-FOC-Simulation](./femm-foc-simulation.md) · [PYLEECAN](./pyleecan.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：使用开源 FEMM 二维电磁有限元仿真建模并核验 Halbach 无铁芯转子的磁场与输出特性。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：公开可编辑 CAD 与 pygeartrain 摆线-行星减速结构参数，支持全定制件 3D 打印复现。
 
 ## 参考来源
 

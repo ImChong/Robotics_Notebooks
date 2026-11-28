@@ -86,6 +86,7 @@ flowchart LR
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-01-motion-base-wbt.md](../overview/loco-manip-161-category-01-motion-base-wbt.md)
 - 原始 source：[loco_manip_161_survey_023_uniact.md](../../sources/papers/loco_manip_161_survey_023_uniact.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对应人形全身动作跟踪基座，将高层语言目标统一映射为可跟踪的全身轨迹与底层控制指令。
 
 ## 参考来源
 

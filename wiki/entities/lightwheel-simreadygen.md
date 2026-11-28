@@ -172,6 +172,8 @@ sequenceDiagram
 - [PhysX-Omni](./physx-omni.md) / [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) / [DeformSmith](./paper-deformsmith.md) / [HomeWorld](./paper-homeworld-whole-home-scene-generation.md) — 学术 sim-ready 资产/场景生成对照
 - [Text-to-CAD](../concepts/text-to-cad.md) — 文本生成几何的相邻路线
 - [物理保真度与 Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对应将文本或参考图需求自动编译为带物理属性且可交互的 OpenUSD 仿真资产与场景的生成流程。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对应由多步 Agent 自动补全刚体、关节与可变形物理参数以输出标准 OpenUSD 模型的工作流。
 
 ## 参考来源
 

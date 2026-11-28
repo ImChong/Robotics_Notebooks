@@ -84,6 +84,8 @@ summary: "Infinigen V2 是普林斯顿视觉与学习实验室开源的 Blender/
 - [HomeWorld](./paper-homeworld-whole-home-scene-generation.md) — 面向具身任务的整屋场景生成，可对照程序化场景资产路线。
 - [Blender](./blender.md) — Infinigen 的主要场景编辑与导出宿主。
 - [Sim2Real](../concepts/sim2real.md) — 仿真外观和动力学差异的迁移风险。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：通过可组合的 Blender/Python 生成器程序化构建多样化室内外布局与物体资产。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：为视觉感知模型的训练与评测提供可控布局、材质与真值标注的合成视觉数据。
 
 ## 源码运行时序图
 

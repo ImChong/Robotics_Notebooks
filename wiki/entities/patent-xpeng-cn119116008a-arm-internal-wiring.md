@@ -71,6 +71,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对照机械臂内置控制板及电机、编码器与力矩传感信号经中空关节贯通布线的硬件控制接口架构。
 
 ## 参考来源
 

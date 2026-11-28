@@ -98,6 +98,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [ParaView MCP](./llnl-paraview-mcp.md)
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：以 MCP 工具接口向 AI 代理提供 22 项 VTK 无头渲染、切片、等值面与 OpenFOAM 动画生成能力。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：用于 CAE/CFD 仿真后处理的可视化证据生成与自动化报告流水线。
 
 ## 参考来源
 

@@ -89,6 +89,8 @@ sequenceDiagram
 - [pytorch ](./pytorch.md) — 同领域的基础、工程或应用对照。
 - [nvidia-cuda ](./nvidia-cuda.md) — 同领域的基础、工程或应用对照。
 - [tensorrt-llm ](./tensorrt-llm.md) — 同领域的基础、工程或应用对照。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对应教程中推理优化、TensorRT-LLM 后端对接与性能证据链构建的模型服务实践。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：对应其涵盖算子级优化、系统性能调优与部署成本权衡的模型加速路线。
 
 ## 参考来源
 

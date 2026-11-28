@@ -95,6 +95,8 @@ sequenceDiagram
 - [sim2real](../concepts/sim2real.md)
 - [paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat](./paper-as-130-duckietown-an-open-inexpensive-and-flexible-plat.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对应从 gym-duckietown 仿真环境调试策略后迁移至 Raspberry Pi 真车与真实道路系统的验证工作流。
+- [多智能体强化学习（MARL） | Multi-Agent Reinforcement Learning](../methods/marl.md)：对应基于 dt-core 模块化软件栈与多车道路场景开展多智能体强化学习教学与实验的研究方向。
 
 ## 推荐继续阅读
 

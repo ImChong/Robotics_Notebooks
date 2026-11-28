@@ -106,6 +106,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：对照在可微交通仿真中通过模仿学习训练多智能体联合行为的策略学习范式。
 
 ## 参考来源
 

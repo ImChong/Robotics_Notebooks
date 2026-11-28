@@ -163,6 +163,8 @@ sequenceDiagram
 - [One Policy for 100 Household Tasks](./paper-behavior-2026-one-policy-100-tasks.md)
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对应限定机载 RGB-D 与本体观测、以 BDDL 谓词 Q-score 排名的具身智能体评测协议。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：考察机器人在家庭跨房间长时程任务中结合底盘移动与双手协调的全身移动操作能力。
 
 ## 参考来源
 

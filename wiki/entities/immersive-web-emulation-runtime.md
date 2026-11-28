@@ -108,6 +108,7 @@ sequenceDiagram
 - [Isaac Teleop](./isaac-teleop.md) — CloudXR / WebXR 真机遥操作
 - [mjswan](./mjswan.md) — 浏览器 MuJoCo + WebXR 交互
 - [XRoboToolkit（论文实体）](./paper-xrobotoolkit.md) — OpenXR 原生栈对照
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：可在桌面浏览器中仿真 WebXR 输入与环境交互，辅助 Web 端机器人遥操作与仿真界面回归测试。
 
 ## 参考来源
 

@@ -112,6 +112,8 @@ chest = [e for e in exercises if e["category"] == "chest"]
 - [LaFAN1](./lafan1-dataset.md) — BVH 棚拍小集（对照「有骨架轨迹」）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人体序列 → 机器人参考的必要条件
 - [Motion Data Quality](../concepts/motion-data-quality.md) — 为何 GIF 目录过不了四轴体检
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：对照结构化动作标签数据集与可用于策略训练的时间对齐轨迹管线在数据组织上的差异。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：明确运动重定向工作流所需的骨架与关节时序输入规范，便于区分纯目录索引与可重定向运动源。
 
 ## 参考来源
 

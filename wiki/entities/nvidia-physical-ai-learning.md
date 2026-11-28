@@ -114,6 +114,8 @@ NVIDIA [Robotics Fundamentals Learning page](https://resources.nvidia.com/en-us-
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [LeRobot](./lerobot.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照 Sim2Real 迁移工作流，系统梳理门户中从 Isaac 仿真训练到 SO-101 及人形真机部署的完整实验路径。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：参考机器人策略学习流程，理解 Physical AI 课程中强化学习与模仿学习在观测、动作契约及闭环验证上的共性步骤。
 
 ## 推荐继续阅读
 

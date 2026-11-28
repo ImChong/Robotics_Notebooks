@@ -122,6 +122,8 @@ sequenceDiagram
 - [Humanoid Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) — PCB 在机器人整机硬件中的位置
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — 电路设计中的驱动器总线与接口背景
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — atopile 属驱动链 ① EDA 电路设计层：以代码描述电路与约束，PCB 布局仍落到 KiCad
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照电子硬件声明式约束求解、设计规则校验与可制造性检查的工程验证流程。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：衔接电机驱动与传感控制板代码化电路设计至机器人软件集成与版本管理链路。
 
 ## 参考来源
 

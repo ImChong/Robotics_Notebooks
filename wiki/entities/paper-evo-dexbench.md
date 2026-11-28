@@ -121,6 +121,7 @@ sequenceDiagram
 - [Bench2Dex](./paper-bench2dex.md)
 - [HandEdit](./paper-handedit.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Evo-DexBench 属其 ③ 策略任务成功率层（灵巧相关任务迁移）；SR 与 StageScore 并报，避免只看终局成功率。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照按源任务与泛化任务协议设计灵巧操作跨任务迁移评测基准的方法。
 
 ## 参考来源
 

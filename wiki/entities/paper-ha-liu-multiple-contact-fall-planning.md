@@ -108,6 +108,7 @@ flowchart LR
 - [接触动力学](../concepts/contact-dynamics.md) — 接触冲击、摩擦和多接触建模背景。
 - [Unified Humanoid Fall-Safety Policy](./paper-notebook-unified-humanoid-fall-safety-policy-from-a-few-d.md) — 学习式防摔、减损与起身统一策略。
 - [SafeFall](./paper-hrl-stack-41-safefall.md) — 学习保护控制的对照路线。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：提供人形机器人在失稳与动态移动场景下的全身平衡与跌倒防护任务背景。
 
 ## 参考来源
 

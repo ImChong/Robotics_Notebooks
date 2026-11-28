@@ -197,6 +197,7 @@ sequenceDiagram
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — sim-ready 世界引擎。
 - [Differentiable Simulation](../concepts/differentiable-simulation.md) — 可微仿真总览（与本文视觉形变区分）。
 - [Manipulation](../tasks/manipulation.md) — 操作任务对 **网格/碰撞几何** 的需求语境。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照将编辑后的显式三角网格资产接入可仿真场景构建的仿真场景生成流程。
 
 ## 参考来源
 

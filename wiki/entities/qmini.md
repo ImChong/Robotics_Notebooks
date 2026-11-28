@@ -79,6 +79,7 @@ flowchart LR
 - [Locomotion](../tasks/locomotion.md)
 - [Unitree](./unitree.md)
 - [unitree_sdk2](./unitree-sdk2.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照 Qmini 提供的全零件 STEP、BOM 与 URDF 模型资产接入流程，完成仿真加载与外部控制栈衔接。
 
 ## 参考来源
 

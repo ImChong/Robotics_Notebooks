@@ -182,6 +182,7 @@ sequenceDiagram
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知增强与一致性在栈中的位置
 - [Vision Backbones](../concepts/vision-backbones.md) — VLM + 生成式视觉模块组合语境
 - [U-Net](../methods/unet.md) — 经典图像到图像重建方法谱系（对照扩散/一步 SR 路线）
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对照将该递归超分能力作为远距观测上游增强环节的机器人视觉感知流程。
 
 ## 参考来源
 

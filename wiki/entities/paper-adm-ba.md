@@ -126,6 +126,7 @@ sequenceDiagram
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ADM-BA 落在「2D→3D 提升与几何融合」这一层，输出直接喂切割/避碰规划
 - [接触丰富操作 7 篇地图](../overview/contact-rich-manipulation-7-papers-technology-map.md)
 - [PointDiT](./paper-pointdit.md) — 单帧 RGB→仿射点图；ADM-BA 接多视角深度怎么融成可规划图
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照从多视角深度观测联合优化位姿并恢复可测量三维场景的重建流程。
 
 ## 推荐继续阅读
 

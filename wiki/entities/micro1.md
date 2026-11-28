@@ -57,6 +57,8 @@ flowchart LR
 - [Appen](./appen.md)
 - [Innodata](./innodata.md)
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：了解大规模人类示范采集后进行片段筛选、质量标注与训练数据构造的标准流程。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：对照高质量筛选后的专家示范数据如何支撑下游机器人模仿学习策略训练。
 
 ## 参考来源
 

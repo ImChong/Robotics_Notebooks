@@ -116,6 +116,8 @@ sequenceDiagram
 - [Hermes Agent](./hermes-agent.md)
 - [Deep Agents](./deep-agents.md)
 - [OpenClaw](./openclaw.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照包含持久任务执行、进度展示与人工行动审阅的智能体规划反馈闭环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考通过 AG-UI、浏览器 worker 与隔离 Linux 工作区向智能体提供受控工具接口。
 
 ## 参考来源
 

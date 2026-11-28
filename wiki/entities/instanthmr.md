@@ -162,6 +162,8 @@ sequenceDiagram
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)：将 MHR 姿态映射到机器人骨架
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)：动捕感知数据链
 - [RF-DETR](./rf-detr.md)：demo 的检测阶段
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：输出单目 RGB 估计的 MHR 骨架姿态与 3D 关键点，可作为机器人动作重定向的上游人类动作输入。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：为人形全身动作跟踪管线提供边缘端实时单目人体运动估计参考。
 
 ## 推荐继续阅读
 

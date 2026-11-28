@@ -262,6 +262,8 @@ flowchart TD
 - [磁场定向控制](../concepts/field-oriented-control.md) — 三相 `sin(2πt)` / `±120°` 电流模型的控制侧对应
 - [SimpleFOC](./simplefoc.md) — 社区侧的下游用户群
 - [力矩电机纵深路线](../../roadmap/depth-torque-motor-design.md) — Stage 2「电磁与热设计」的入口工具
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：作为关节电机电磁有限元仿真前的槽极配合、绕组系数谱与谐波预计算验证环节。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：为后续电机定子几何参数化建模与齿槽结构设计提供槽数极数及排布输入。
 
 ## 参考来源
 

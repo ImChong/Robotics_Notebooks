@@ -96,6 +96,8 @@ flowchart TB
 - [RoamFlow](./paper-roamflow.md) — Go2 + Orin NX 16GB 机载 image-goal 导航（~37 ms 推理）
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
 - [Redwood（Architect Labs AI 加速器）](./paper-redwood-architectlabs-accelerator.md) — physical AI 定制推理硅（勿与 1X Redwood WM 混淆）
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：作为机载边缘 GPU 模组运行 CUDA/TensorRT 优化的感知、建图与轻量策略推理。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：在四足与移动机器人上承载 LiDAR/相机融合定位及机载 VLN 导航执行管线。
 
 ## 参考来源
 

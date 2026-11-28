@@ -106,6 +106,8 @@ sequenceDiagram
 - [simplefoc](../entities/simplefoc.md)
 - [field-oriented-control](../concepts/field-oriented-control.md)
 - [cpp-motion-control-open-source-libraries-map](../overview/cpp-motion-control-open-source-libraries-map.md)
+- [Time-Optimal Path Parameterization（TOPP）](../methods/time-optimal-path-parameterization.md)：对照步进电机加减速脉冲规划与受速度及加速度极限约束的时间最优路径参数化思路。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：作为嵌入式底层执行器驱动环节，承接上层位置或速度指令并输出精确步进脉冲。
 
 ## 参考来源
 

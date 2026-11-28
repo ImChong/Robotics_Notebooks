@@ -115,6 +115,8 @@ sequenceDiagram
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [PYLEECAN](./pyleecan.md) · [axfluxmdo](./axfluxmdo.md) · [FEMM-FOC](./femm-foc-simulation.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：将交流电机参数化截面、材料 BH 曲线与 FEMM/JMAG 有限元求解串接为可复查的工程仿真流程。
+- [遗传算法（Genetic Algorithm, GA）](../methods/genetic-algorithm.md)：在优化环节采用 pygmo MOEA/D 等多目标进化群体搜索算法求解电机设计 Pareto 前沿。
 
 ## 参考来源
 

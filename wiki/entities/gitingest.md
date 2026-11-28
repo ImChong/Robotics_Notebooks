@@ -81,6 +81,8 @@ Gitingest 提供 CLI 与 Python 包（包括异步接口），仓库 README 也�
 - [RAG（检索增强生成）](../concepts/retrieval-augmented-generation.md) — 区分上下文打包与检索生成链路
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 将原始来源编译成可追溯知识页
 - [LangChain](./langchain.md) — 可在下游编排模型与检索组件；与 Gitingest 的上下文导出层次不同
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 CLI 与 Python API 为智能体工具链提供仓库目录树及文本上下文打包能力。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：在智能体任务分解与代码分析前提供结构化源码摘要与 token 规模预检。
 
 ## 参考来源
 

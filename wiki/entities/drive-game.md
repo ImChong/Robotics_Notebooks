@@ -80,6 +80,7 @@ sequenceDiagram
 - [nordschleife-racer](./nordschleife-racer.md) — 另一纽北浏览器引擎（多人/排行榜）
 - [starter-kit-racing](./starter-kit-racing.md) — Kenney 街机 GridMap 样板（非纽北）
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：结合真实赛道高程数据与 240 Hz 车辆动力学积分，体现物理仿真建模与验证闭环。
 
 ## 参考来源
 

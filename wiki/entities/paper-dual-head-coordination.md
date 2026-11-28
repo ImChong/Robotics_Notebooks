@@ -95,6 +95,7 @@ sequenceDiagram
 - [manipulation](../tasks/manipulation.md)
 - [online-vs-offline-rl](../comparisons/online-vs-offline-rl.md)
 - [vla-robustness-9-papers-technology-map](../overview/vla-robustness-9-papers-technology-map.md)
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：对照多模态流匹配操作策略的动作分布建模、双头协调与运行时坍缩监测。
 
 ## 参考来源
 

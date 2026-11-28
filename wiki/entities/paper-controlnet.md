@@ -91,6 +91,7 @@ sequenceDiagram
 
 - [generative-world-models](../methods/generative-world-models.md)
 - [cv-best-papers-2023-2026-technology-map](../overview/cv-best-papers-2023-2026-technology-map.md)
+- [U-Net](../methods/unet.md)：了解 Stable Diffusion 去噪网络所采用的 U-Net 编码器–解码器结构与跳跃连接基础。
 
 ## 参考来源
 

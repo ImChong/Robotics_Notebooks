@@ -91,6 +91,8 @@ sequenceDiagram
 - [gguf-quant-internals](./gguf-quant-internals.md) — 关联的工程知识或开源项目。
 - [tensorrt-llm](./tensorrt-llm.md) — 关联的工程知识或开源项目。
 - [nvidia-cuda](./nvidia-cuda.md) — 关联的工程知识或开源项目。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照推理运行时中模型加载、KV cache 管理、请求调度与服务端性能优化的实现。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：关联量化权重布局（如 GGUF）在低延迟本地推理引擎中的部署协同。
 
 ## 参考来源
 

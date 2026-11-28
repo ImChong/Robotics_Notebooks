@@ -88,6 +88,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解将车辆动力学模型、场景规则与仿真器组合为可运行验证平台的仿真集成方法。
 
 ## 参考来源
 

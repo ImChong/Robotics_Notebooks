@@ -127,6 +127,8 @@ sequenceDiagram
 - [NVIDIA Physical AI 工具链技术地图](../overview/nvidia-physical-ai-toolchain-technology-map.md) — 第⑥段部署
 - [TensorRT](./tensorrt.md) — GPU 推理编译与 Jetson 优化
 - [Sim2Real](../concepts/sim2real.md) — 部署环在 Sim2Real 闭环中的位置
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：通过 Triton 运行时加载 LEAPP 导出的 ONNX 策略，在 ROS 2 与 ros2_control 控制环内执行实时推理。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：打通 Isaac Lab 仿真训练策略向机载 C++/ROS 2 真机与仿真环境部署的端到端迁移链路。
 
 ## 推荐继续阅读
 

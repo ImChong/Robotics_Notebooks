@@ -69,6 +69,8 @@ flowchart LR
 - [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md)
 - [Google Cloud GPU](./google-cloud-gpu.md) — 完整 VM/TPU/Vertex 路径
 - [MuJoCo MJX](./mujoco-mjx.md)、[Brax](./brax.md) — 带 Colab 教程
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：常用于 MuJoCo MJX 与 Brax 等轻量强化学习实验的云端交互式验证。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：为课程教程与小规模机器人策略原型提供免配置 GPU/TPU 试验环境。
 
 ## 推荐继续阅读
 

@@ -121,6 +121,7 @@ sequenceDiagram
 - [beyondmimic](../methods/beyondmimic.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：深入人形全身动作跟踪的核心方法要求，对照 TrackerLab 在多本体与多参考表示下的统一实验基线设计。
 
 ## 参考来源
 

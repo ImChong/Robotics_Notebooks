@@ -174,6 +174,8 @@ sequenceDiagram
 - [Isaac ROS Visual SLAM](./isaac-ros-visual-slam.md) — ROS 2 感知链路的另一条工程路线
 - [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)
 - [边缘–云机器人](../concepts/edge-cloud-robotics.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照机器人传感器接口与集成方法，理解 Holoscan 5.0 如何通过时间契约与类型化端口对齐相机、IMU 等多速率传感器。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考机器人软件系统集成方法，了解 Holoscan 的图编排、HoloMQ 跨进程通道与有界队列执行模型。
 
 ## 参考来源
 

@@ -182,6 +182,8 @@ sequenceDiagram
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md) — 本地工具桥与过程调用概念同族
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs Skill/MCP 规约编译
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应通过 drawio-live 等本地 MCP 工具接口直接调用桌面端 draw.io 图模型 API 实现受控交互操作。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：对应以 SKILL.md 封装科研插图重绘指令、工具边界约束与多格式导出流程的技能打包方式。
 
 ## 参考来源
 

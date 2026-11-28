@@ -124,6 +124,7 @@ flowchart TD
 
 - [Manipulation](../tasks/manipulation.md)
 - [VLA·预测·抓取 9 篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照辅助机器人与赛博物理系统在真实场景长期可用性评估和具身评测协议上的关注维度。
 
 ## 参考来源
 

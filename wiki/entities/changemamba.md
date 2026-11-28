@@ -64,6 +64,8 @@ flowchart LR
 - [SSM](../concepts/state-space-model-ssm.md)
 - [架构对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对照基于 SSM/Mamba 块提取双时相长程视觉特征的表征学习方法。
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md)：比较像素级密集预测头与经典全卷积语义分割架构在空间特征恢复上的联系。
 
 ## 参考来源
 

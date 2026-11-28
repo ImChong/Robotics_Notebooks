@@ -97,6 +97,8 @@ sequenceDiagram
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：对照数据手套通过 ROS 2 实时发布双手指关节状态以支撑遥操作示教的典型应用。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：参考双串口手势手套标定并接入 ROS 2 `JointState` 话题的传感器集成模式。
 
 ## 参考来源
 

@@ -89,6 +89,7 @@ flowchart LR
 - [轨迹优化（Trajectory Optimization）](../methods/trajectory-optimization.md)
 - [作动器传动选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [人形作动器：减速比与反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：可切换电气特性与固定传动方案均需标定关节执行器动力学参数，与常规执行器 SysID 路线互补。
 
 ## 参考来源
 

@@ -139,6 +139,8 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
 - [Lot Vulture](./lotvulture.md) — 设施侧边缘 CV：`vulturevision` 以 ORT 做车位占用推理（Community CPU / Commercial GPU）。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照 AI 模型推理与服务部署方法，评估 ONNX Runtime 的 Execution Provider 选型、图优化与机载推理延迟。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：参考机器人控制系统架构，理解 ORT 策略推理会话如何与高频底层运动控制周期及执行器接口协同运行。
 
 ## 参考来源
 

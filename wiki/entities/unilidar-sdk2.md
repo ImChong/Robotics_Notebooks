@@ -77,6 +77,7 @@ cmake .. && make -j2
 - [point_lio_unilidar](./point-lio-unilidar.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Unitree](./unitree.md)
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：了解 UniLidar SDK 提供的点云与 IMU 同步输出及外参坐标定义如何直接对接 Point-LIO 等激光雷达里程计融合定位管线。
 
 ## 源码运行时序图
 

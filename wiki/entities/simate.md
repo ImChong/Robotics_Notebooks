@@ -124,6 +124,7 @@ flowchart LR
 - [XPolicyLab](./xpolicylab.md) — RoboDojo 官方策略集成与 verified 开源门槛
 - [具身评测选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 何时用 sim 榜、何时上真机
 - [VLA](../methods/vla.md) — Sipai 所在方法族与社区模型横评上下文
+- [Manipulation](../tasks/manipulation.md)：对照 Simate 围绕单臂、双臂与移动操作等典型操作任务构建的 DEFINE–VALIDATE–DEPLOY 闭环平台能力。
 
 ## 推荐继续阅读
 

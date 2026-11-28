@@ -60,6 +60,7 @@ flowchart LR
 - [Manipulation](../tasks/manipulation.md)（移动操作与导航常与此类平台绑定）
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第01期）索引](../overview/robot-open-source-wechat-issue01-curator.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：结合 TurtleBot3 作为 ROS 2 教学移动平台的经典应用场景，梳理 SLAM 建图、路径规划与导航闭环执行流程。
 
 ## 推荐继续阅读
 

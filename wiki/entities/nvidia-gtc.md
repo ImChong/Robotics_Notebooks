@@ -141,6 +141,8 @@ flowchart TB
 - [Newton Physics](./newton-physics.md)
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
 - [Isaac Lab](./isaac-lab.md) / [Isaac Sim](./isaac-sim.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照 Sim2Real 迁移工作流，串读 GTC 2025/2026 中仿真训练、数字孪生到真机部署的工程案例。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：关联人形机器人移动任务，索引 GTC Humanoid Developer Day 中围绕全身控制与仿真验证的一手技术分享。
 
 ## 参考来源
 

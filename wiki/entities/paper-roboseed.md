@@ -97,6 +97,7 @@ sequenceDiagram
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [embodied-station-2026-10-30-28-papers-technology-map](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照兼顾能力表现、训练部署成本与复现证据的多维具身模型评测方法。
 
 ## 参考来源
 

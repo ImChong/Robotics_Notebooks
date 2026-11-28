@@ -71,6 +71,8 @@ flowchart LR
 - [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md)
 - [矩池云](./matpool.md)、[恒源云](./gpushare.md) — 磁盘与 OSS 策略不同的竞品
 - [Isaac Lab](./isaac-lab.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：为大规模并行仿真采样与策略梯度强化学习训练提供可复用的云端 GPU 算力环境。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：承载机器人策略模型的云端训练、大容量数据集缓存与长周期实验验证。
 
 ## 推荐继续阅读
 

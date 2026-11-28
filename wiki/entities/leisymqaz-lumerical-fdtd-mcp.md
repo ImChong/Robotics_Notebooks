@@ -97,6 +97,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Ansys AEDT MCP](./laplaceyoung-ansys-aedt-mcp.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对应借助 Lumerical FDTD 接口完成光子器件结构建模、边界设定与输出验证的工程仿真流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应通过 MCP 协议把 Lumerical FDTD 时域仿真能力暴露给 AI 客户端的工具接口。
 
 ## 参考来源
 

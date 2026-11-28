@@ -66,6 +66,8 @@ flowchart TB
 - [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md)：检查物理、场景与学习框架的边界。
 - [Sim2Real](../concepts/sim2real.md)：分析仿真迁移到真机的误差来源。
 - [Eka Robotics VFA](./eka-robotics-vfa.md)：文中提及的仿真强化学习案例。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：讨论了以仿真交互与任务进度奖励驱动物理 AI 策略规模化强化学习训练的发展路径。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：强调从自动生成仿真数据向真实环境部署推进，并通过现场失败反馈闭环缩小迁移误差。
 
 ## 参考来源
 

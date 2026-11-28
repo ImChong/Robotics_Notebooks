@@ -67,6 +67,8 @@ flowchart LR
 - [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md)
 - [RunPod](./runpod.md) — 卡型更全、按秒灵活
 - [AWS EC2 GPU](./aws-ec2-gpu.md) — 企业 AWS 栈内的多节点备选
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：提供多卡 SXM 与 InfiniBand 集群算力，支撑大规模并行强化学习与全身运动跟踪训练。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：适用于需要 16 至 2000+ GPU 互联的多节点 VLA 基础模型预训练与规模化扩展。
 
 ## 推荐继续阅读
 

@@ -109,6 +109,7 @@ sequenceDiagram
 
 - [果蝇启发的人形循环控制器](./paper-humanoid-fly-inspired-rnn.md)：另一项神经科学与控制交叉研究。
 - [强化学习](../methods/reinforcement-learning.md)：本实验的形状选择采用概率回避学习任务；本文未训练机器人策略。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对照视觉与体感预测性神经表征与计算视觉表征学习的跨学科关联。
 
 ## 参考来源
 

@@ -92,6 +92,7 @@ flowchart LR
 - [Orca Hand](./orca-hand.md) / [RUKA-v2 Hand](./ruka-v2-hand.md) — 更高 DoF 开源手对照
 - [Yale OpenHand](./yale-openhand.md) — 欠驱动腱驱开源手族（与全驱动三指对照）
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：该 7-DoF 开源三指末端执行器提供机械法兰、供电通信板与舵机控制接口，可直接集成至操作臂系统。
 
 ## 推荐继续阅读
 

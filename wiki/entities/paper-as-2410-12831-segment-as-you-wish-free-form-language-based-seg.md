@@ -112,6 +112,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对照图文对齐编码与空间规范化表征在像素级语义分割任务中的通用表示方法。
 
 ## 参考来源
 

@@ -194,6 +194,7 @@ sequenceDiagram
 - [INTACT](./paper-intact.md)
 - [潜空间想象](../concepts/latent-imagination.md)
 - [生成式世界模型](../methods/generative-world-models.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：对照在隐空间动力学模型上结合滚动规划的基于模型控制与决策范式。
 
 ## 参考来源
 

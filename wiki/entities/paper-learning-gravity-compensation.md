@@ -134,6 +134,7 @@ flowchart LR
 - [System Identification](../concepts/system-identification.md)
 - [Friction Compensation](../concepts/friction-compensation.md)
 - [Pinocchio](../entities/pinocchio.md)
+- [Iterative Learning Control（迭代学习控制，ILC）](../methods/iterative-learning-control.md)：对照通过迭代更新前馈控制量补偿未建模重力项的经典学习控制路线。
 
 ## 参考来源
 

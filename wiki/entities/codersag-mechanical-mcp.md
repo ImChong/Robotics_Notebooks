@@ -104,6 +104,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [ANSYS Workbench MCP](./hongwenwang36-eng-ansys-workbench-mcp.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照 ANSYS Mechanical 中几何材料、网格划分、边界条件与求解结果验证流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考通过 MCP 协议与 PyMechanical gRPC 向智能体暴露 CAE 求解能力的工具接口。
 
 ## 参考来源
 

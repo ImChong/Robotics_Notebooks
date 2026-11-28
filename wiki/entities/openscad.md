@@ -95,6 +95,8 @@ flowchart TD
 - [FreeCAD](./freecad.md) — 对比 B-rep、STEP、装配与工程化工作流。
 - [Ultimaker Cura](./ultimaker-cura.md) — 把导出的网格交给切片器，生成目标打印机的 G-code。
 - [URDF（统一机器人描述格式）](../concepts/urdf-robot-description.md) — 几何进入机器人描述后的关节与惯性语义。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：通过脚本变量、CSG 布尔树与可版本化几何规则实现可复现的参数化 CAD 零件构建。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：将参数化生成的机械支架与外壳 STL 网格资产接入机器人模型描述与仿真流程。
 
 ## 参考来源
 

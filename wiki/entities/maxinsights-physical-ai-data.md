@@ -115,6 +115,8 @@ Maxinsights 的官方文章讨论了 Dyna-2，并提出“经验规模”和“�
 - [Ego 分类 01：数据采集](../overview/ego-category-01-data-collection.md)
 - [具身 Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Dyna-2](./dyna-2.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：了解将原始多模态采集数据加工为时间对齐且可复现训练集的数据管线规范。
+- [EgoScale](../methods/egoscale.md)：对照利用大规模第一人称人类操作视频预训练具身视觉语言动作策略的方法路线。
 
 ## 参考来源
 

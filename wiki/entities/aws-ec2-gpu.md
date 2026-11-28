@@ -73,6 +73,8 @@ flowchart LR
 - [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md)
 - [Google Cloud GPU](./google-cloud-gpu.md) — 超大规模云对照
 - [Lambda Cloud](./lambda-cloud.md) — 更低价的专用 AI 云
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：支撑基于 g4dn、g5 等 GPU 实例与 SageMaker 的云端模型推理服务部署。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：依托 p4d、p5 多卡实例与 EFA 高速网络满足大规模并行强化学习训练需求。
 
 ## 推荐继续阅读
 

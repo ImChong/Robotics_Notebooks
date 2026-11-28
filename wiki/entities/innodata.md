@@ -55,6 +55,8 @@ flowchart LR
 - [Appen](./appen.md)
 - [Micro1](./micro1.md)
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：为物理 AI 与机器人基础模型提供多模态数据采集、标注、对齐及动捕实验室数据服务。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：承担大模型与强化学习系统的后训练评测、质量检验与对齐评估环节。
 
 ## 参考来源
 

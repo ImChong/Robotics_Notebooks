@@ -90,6 +90,7 @@ flowchart LR
 - [生成式世界模型](../methods/generative-world-models.md) — 生成世界的主要范式
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md) — 区分生成、重建与仿真能力
 - [Sim2Real](../concepts/sim2real.md) — 评估生成场景迁移到机器人训练的约束
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：从稀疏图像重建并扩展 3DGS 场景的过程可与视觉三维重建流程对照几何与碰撞可靠性。
 
 ## 参考来源
 

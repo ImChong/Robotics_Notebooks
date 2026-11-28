@@ -94,6 +94,8 @@ flowchart LR
 - [cuRobo](./curobo.md) — CUDA 端到端运动规划示例
 - [机器人运控开发板选型（按策略网络模型）](../comparisons/robot-policy-deployment-dev-board-selection.md)
 - [VLA 部署指南](../queries/vla-deployment-guide.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照 AI 模型推理与服务部署方法，理解 CUDA Graph 与多 Stream 调度如何降低机载策略推理延迟。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考机器人软件系统集成框架，核对底层 CUDA 驱动、工具链版本与上层感知及控制模块的运行时对齐。
 
 ## 参考来源
 

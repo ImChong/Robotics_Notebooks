@@ -134,6 +134,8 @@ sequenceDiagram
 - [arXiv](./arxiv.md) — 上游预印本档案与本库 `paper-*` 默认外链层
 - [Manim](./manim.md) — 动画引擎；arXivisual 是其 **LLM 驱动批量应用** 实例
 - [机器人学习总览](../overview/robot-learning-overview.md) — 文献阅读与工作流入口
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：参考将 arXiv 论文结构自动转译为 Manim 分镜动画与 TTS 旁白视频的生成流程。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照分段分析、代码生成与四道门禁重试校验的多智能体异步闭环设计。
 
 ## 参考来源
 

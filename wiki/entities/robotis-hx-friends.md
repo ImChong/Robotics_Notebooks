@@ -80,6 +80,7 @@ flowchart LR
 - [ROBOTIS OpenMANIPULATOR 线](./robotis-open-manipulator-line.md)
 - [Yale OpenHand](./yale-openhand.md) — 另一类开放灵巧手机构。
 - [Manipulation](../tasks/manipulation.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：从 DYNAMIXEL 执行器驱动、单指到五指自由度组合及 ROS 2 控制接口视角，对照模块化灵巧手系统构建方案。
 
 ## 参考来源
 

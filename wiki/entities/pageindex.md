@@ -112,6 +112,8 @@ sequenceDiagram
 
 - [DeepTutor](./deeptutor.md)
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应检索智能体沿分层文档树多步推理、选择分支并汇总可追溯证据的执行循环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：作为基于 Python SDK 或云端接口为智能体提供结构化文档检索与原文定位的工具能力。
 
 ## 推荐继续阅读
 

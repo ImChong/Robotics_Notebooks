@@ -116,6 +116,7 @@ summary: "JBE 2026 的 DCNN-GRU 并行注意力肌电手势识别：同一窗口
 - [DexEMG：以肌电连续驱动灵巧手](./paper-dexemg.md)
 - [Teleoperation / 遥操作](../tasks/teleoperation.md)
 - [sEMG 康复机器人轨迹处方](./paper-transformer-trajectory-prescription-semg-rehab.md)
+- [通道与空间注意力（SENet / SE-ResNet / DANet）](../methods/channel-spatial-attention.md)：对照本文在窗口级肌电特征上并行的全局通道加权与位置分辨通道–空间门控注意力机制。
 
 ## 参考来源
 

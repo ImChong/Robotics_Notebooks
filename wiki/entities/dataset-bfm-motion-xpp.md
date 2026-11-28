@@ -144,6 +144,8 @@ sequenceDiagram
 - [动作重定向 Mocap Retarget](mocap-retarget.md)
 - [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md)
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对应通过抑制足底打滑与全局根飘移提升野外视频参考动作向人形机器人重定向的物理可用性。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对应结合 Masked DROID-SLAM 相机轨迹恢复与 SMPLer-X/HAMER 从单目视频重建世界系 3D 人体网格的流程。
 
 ## 参考来源
 

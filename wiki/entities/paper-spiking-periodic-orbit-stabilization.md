@@ -94,6 +94,7 @@ sequenceDiagram
 - [impedance-control](../concepts/impedance-control.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 - [embodied-station-2026-10-28-59-papers-technology-map](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)
+- [LQR / iLQR 算法详解](../methods/lqr-ilqr.md)：对照将非线性系统化为周期线性时变形式进行局部轨道稳定的经典线性二次型轨迹镇定方法。
 
 ## 参考来源
 

@@ -91,6 +91,7 @@ flowchart TD
 - [规划主导型 分类 hub](../overview/embodied-wm-route-planning.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：对照基于隐空间动力学模型进行树搜索规划与策略优化的 Model-Based RL 范式。
 
 ## 参考来源
 

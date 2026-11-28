@@ -178,6 +178,7 @@ $$
 - 扩散式动作生成对照：[diffusion-motion-generation](../methods/diffusion-motion-generation.md)（同为从数据生成动作，但 GenMM 免训练、基于 patch 匹配）
 - 动作数据质量维度：[motion-data-quality](../concepts/motion-data-quality.md)（范例质量与覆盖度直接决定 GenMM 的输出多样性）
 - 动画创作工具对照：[generative-motion-rig](../entities/generative-motion-rig.md)（同属生成式动画制作方向，面向 DCC 工作流）
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照将合成的运动学参考动作映射到目标机器人并检查可行性的动作重定向流程。
 
 ## 参考来源
 

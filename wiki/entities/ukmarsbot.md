@@ -94,6 +94,7 @@ flowchart TB
 - [MuSHR](./mushr.md) — ROS 教育小车对照
 - [PID Control](../methods/pid-control.md)
 - [KiCad](./kicad.md) — 协会后续模块倾向的开源 EDA
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：结合 UKMARSBOT 与 mazerunner-core 的墙传感标定及迷宫探索返航任务，对照底层差速控制与路径导航的衔接。
 
 ## 参考来源
 

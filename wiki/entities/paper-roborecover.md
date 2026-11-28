@@ -100,6 +100,7 @@ flowchart TD
 - [具身研究 12 篇（恢复/WAM）技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Query：具身大模型评测基准选型](../queries/embodied-eval-benchmark-selection-loop.md) — ③ 策略任务成功率评测层：从执行偏差起点测恢复 SR，补「正常起点 SR 均值掩盖出错后能否继续」的盲区
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照从执行偏差中间态出发测试策略恢复率的可复现具身基准评测方法。
 
 ## 参考来源
 

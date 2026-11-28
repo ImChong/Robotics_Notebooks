@@ -117,6 +117,7 @@ flowchart TB
 - [Physical Agentic AI](./paper-physical-agentic-ai.md)
 - [VLA](../methods/vla.md)
 - [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照结合语法与语义约束解码保证智能体任务规划合法性的执行循环。
 
 ## 参考来源
 

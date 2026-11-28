@@ -109,6 +109,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [OpenFOAM Simulation](./ezrajay2333-openfoam-simulation.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：利用 CadQuery 在几何约束与参数空间内自动生成并校验涡流漏斗 STEP/STL 模型。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：将参数化几何接入 OpenFOAM 多相 CFD 仿真与多保真度贝叶斯优化，输出可核对物理指标。
 
 ## 参考来源
 

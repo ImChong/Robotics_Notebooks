@@ -127,6 +127,8 @@ sequenceDiagram
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：了解机器人策略训练过程中超参数追踪、评估指标记录与候选检查点管理的实验工程实践。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照模型注册后接入标准推理服务并跟踪部署版本与性能的生命周期管理流程。
 
 ## 参考来源
 

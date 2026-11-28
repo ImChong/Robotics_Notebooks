@@ -92,6 +92,8 @@ sequenceDiagram
 - [传感器融合](../concepts/sensor-fusion.md) — 多模态融合背景。
 - [状态估计](../concepts/state-estimation.md) — 标定与定位估计的关系。
 - [Ultra-Fusion](./paper-ultra-fusion-multi-sensor-slam.md) — 对照在线时空标定与多传感器 SLAM。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照多传感器外参标定与 `/tf_static` 检查在时间及坐标统一集成中的关键环节。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：理解逐轴可观测的外参标定对多传感器融合状态估计与定位精度的前置保障。
 
 ## 参考来源
 

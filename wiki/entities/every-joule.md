@@ -70,6 +70,8 @@ flowchart LR
 
 - [Claude-shaped science](./claude-shaped-science.md) — 关于 AI 能力与实际工作匹配的实践文章。
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器 Three.js 交互内容的代理开发工作流；用途与本项目不同。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照 AI 代理借助编程与图形工具链生成交互式网页内容的开发模式。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对比交互式物理概念可视化演示与可复查工程物理仿真的设计边界。
 
 ## 参考来源
 

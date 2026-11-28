@@ -158,6 +158,7 @@ sequenceDiagram
 - [HarnessBank](./paper-harnessbank.md) / [SkillCorpus](./paper-skillcorpus.md) — 同 EverMind 线的 agent 外挂层
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化中的可验证训练环
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 基础方法页
+- [GRPO（Group Relative Policy Optimization）](../methods/grpo.md)：对照同为推理后训练的可验证奖励策略优化基线 GRPO 与自蒸馏监督差异。
 
 ## 参考来源
 

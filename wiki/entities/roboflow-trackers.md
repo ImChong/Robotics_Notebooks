@@ -91,6 +91,7 @@ flowchart LR
 - [TrackerLab](./trackerlab.md) — 多目标跟踪方法与评测入口
 - [McByte++](./mcbyte-plus-plus.md) — 面向体育视频长时身份恢复的独立实现
 - [Roboflow Sports](./roboflow-sports.md) — Roboflow 的体育视觉工具与示例
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：在机器人视觉感知流程中承接上游目标检测框，通过统一跟踪接口输出带稳定身份 ID 的跨帧目标轨迹。
 
 ## 参考来源
 

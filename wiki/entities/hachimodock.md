@@ -111,6 +111,8 @@ sequenceDiagram
 
 - [AgentsDock](agentsdock.md)：同样改善 Agent 任务交互，但使用跨端软件工作区；HachimoDock 增加实体反馈终端。
 - [UART 串口通信](../concepts/uart-serial-communication.md)：理解 USB-UART 字节流、消息组装及板端接收路径。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过本机 Bridge 与嵌入式串口协议将主机端编码代理状态同步至实体终端并回传输入。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：展示桌面管理端与 ESP32-P4 固件间通过 USB-UART 协议栈整合状态与交互输入的方法。
 
 ## 参考来源
 

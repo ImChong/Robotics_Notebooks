@@ -202,6 +202,7 @@ CD 为 \(\times10^{-3}\) 量级（与论文表一致）。ABO 上 NC 略低于�
 - [Differentiable Simulation](../concepts/differentiable-simulation.md) — 可微物理总览；与本文「可微等值面」区分。
 - [Sim2Real](../concepts/sim2real.md) — 资产几何/碰撞一致性总提醒。
 - [Manipulation](../tasks/manipulation.md) — 可变形体 / 服装操作任务语境。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照面向薄壳与布料网格的几何表面表示及三维资产重建流程。
 
 ## 参考来源
 

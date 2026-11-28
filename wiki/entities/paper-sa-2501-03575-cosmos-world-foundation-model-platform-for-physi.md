@@ -181,6 +181,7 @@ Awesome 策展索引仍指向本文件名；深度内容以本页与一手 PDF �
 - [Sim2Real](../concepts/sim2real.md)
 - [Cosmos Transfer](./cosmos-transfer.md) — 1.0 条件翻译后继
 - [Transfer1 论文](./paper-cosmos-transfer1.md)
+- [Generative Data Augmentation (生成式数据增强)](../methods/generative-data-augmentation.md)：对照利用世界基础模型生成多样化物理交互与合成数据以辅助下游策略训练的数据增强路线。
 
 ## 参考来源
 

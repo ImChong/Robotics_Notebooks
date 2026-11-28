@@ -79,6 +79,8 @@ flowchart TD
 - [AI Scientists' Last Exam](paper-ai-scientists-last-exam.md) — 科学智能体评价需要可核查的结果与验证器。
 - [Agentic Aptamer Sandbox](paper-agentic-aptamer-sandbox.md) — 分子实验反馈闭环的对照案例。
 - [SimpleX Tetra-1](simplex-tetra-1.md) — 生物科学模型预览；结构假说与真实实验验证应区分，官方技术正文仍待核实。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：了解将科学计算模型调用封装为智能体可复用技能工具的核心方法。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照科学模型与大模型推理服务的部署配置及吞吐性能分析流程。
 
 ## 参考来源
 

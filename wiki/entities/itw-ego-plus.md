@@ -118,6 +118,7 @@ flowchart LR
 - [人形参考运动与操作数据集选型](../comparisons/humanoid-reference-motion-datasets.md)
 - [模仿学习](../methods/imitation-learning.md)
 - [具身数据纵深路线：Stage 1 采集范式](../../roadmap/depth-embodied-data.md)
+- [Manipulation](../tasks/manipulation.md)：可选的腕部视觉、手部压力与全身运动模态直接服务于遮挡与接触密集型机器人操作研究。
 
 ## 推荐继续阅读
 

@@ -77,6 +77,7 @@ flowchart TD
 - [ompl](../entities/ompl.md)
 - [trajectory-optimization](../methods/trajectory-optimization.md)
 - [cpp-motion-control-open-source-libraries-map](../overview/cpp-motion-control-open-source-libraries-map.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：理解 Robotics Library 将运动学动力学、碰撞检测、路径规划与硬件抽象整合为自包含 C++ 控制库的系统架构。
 
 ## 参考来源
 

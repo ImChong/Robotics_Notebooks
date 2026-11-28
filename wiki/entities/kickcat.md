@@ -109,6 +109,8 @@ sequenceDiagram
 - [ethercat-virtual-slave-sim](./ethercat-virtual-slave-sim.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-opensource-libs-wechat](../overview/ethercat-opensource-libs-wechat.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：提供机器人实时控制栈中的 C++ EtherCAT 主站通信层，连接上位控制器与关节执行器。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：集成面向对象的 EtherCAT 主从协议栈与软件模拟从站，支持脱离硬件的上位机联调。
 
 ## 参考来源
 

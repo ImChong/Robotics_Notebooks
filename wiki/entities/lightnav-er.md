@@ -121,6 +121,8 @@ flowchart LR
 - [INSIGHT-Bench](./insight-bench.md) — 同论文发布的 5×5 诊断式 OGN 评测基准
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md) — 亮源新创三篇技术博客交叉技术地图
 - [Light REACT](./light-react.md) — 同机构部署段全身韧性控制
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：对应 LightNav-ER 作为第一阶段空间推理底座所服务的下游视觉–语言导航任务。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对应将空间指代、自由空间定位与多视角时序理解接入端到端机器人导航策略的流程。
 
 ## 参考来源
 

@@ -65,6 +65,8 @@ flowchart LR
 - [MNIST](./dataset-mnist.md)
 - [AlexNet](./alexnet.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对应 LeNet-5 通过交替卷积与下采样层从像素自动提取分层视觉特征的开创性表征范式。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对照将图像像素映射为可识别视觉输出的基础视觉感知流水线与卷积骨干演进脉络。
 
 ## 参考来源
 

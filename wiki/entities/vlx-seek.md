@@ -138,6 +138,7 @@ sequenceDiagram
 - [视觉–语言特征融合](../concepts/vision-language-feature-fusion.md)
 - [统一多模态 token](../methods/unified-multimodal-tokens.md)
 - [Segment Anything（SAM）](./paper-segment-anything.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：为机器人抓取与避障提供实例级、语言条件下的细粒度视觉感知与空间定位锚点。
 
 ## 参考来源
 

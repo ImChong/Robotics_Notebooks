@@ -120,6 +120,7 @@ flowchart LR
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md)：对照本文用于 47 关联合预训练与跨关卡迁移评测的核心策略优化基线 PPO。
 
 ## 参考来源
 

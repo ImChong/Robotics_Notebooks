@@ -164,6 +164,7 @@ sequenceDiagram
 - 列表：[awesome-egocentric-vision.md](../entities/awesome-egocentric-vision.md)
 - 地图：[sun-awesome-ego-technology-map.md](../overview/sun-awesome-ego-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：第一人称跨域 VQA 的推理策略评测，推理增益不自动外推到动作
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照在受限数据与固定模型规模条件下评估分域推理接口有效性的基准评测方法。
 
 ## 参考来源
 

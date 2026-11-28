@@ -141,6 +141,8 @@ Blender 通过统一的数据块（Mesh/Armature/Action/Scene）与内置 Python
 - [Manim（程序化数学动画，讲解层互补）](./manim.md)
 - [APOLLO Blender（URDD 导入 + 论文级出图脚本）](./paper-apollo-blender.md)
 - [HomeWorld 全屋场景生成论文实体](./paper-homeworld-whole-home-scene-generation.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：作为骨骼绑定、动捕数据清理与 BVH 导出进入机器人动作重定向管线的前置 DCC 工具。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：承担网格建模、材质装配与 USD 场景导出以构建 Isaac 和 MuJoCo 仿真场景的工作流。
 
 ## 参考来源
 

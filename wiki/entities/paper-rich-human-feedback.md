@@ -92,6 +92,7 @@ sequenceDiagram
 
 - [generative-world-models](../methods/generative-world-models.md)
 - [cv-best-papers-2023-2026-technology-map](../overview/cv-best-papers-2023-2026-technology-map.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照将细粒度空间缺陷定位与多维评分纳入生成模型质量评测的方法。
 
 ## 参考来源
 

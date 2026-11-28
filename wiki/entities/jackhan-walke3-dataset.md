@@ -57,6 +57,8 @@ flowchart LR
 
 - **[生态总览](./jackhan-walke3-e3-ecosystem.md)**：说明本仓在整条工具链中的位置。
 - **[Motion Retargeting](../concepts/motion-retargeting.md)**：若要把 CSV 运动迁移到其他骨架比例，需要额外的重定向层（本仓未内置）。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：将 28 列原始运动 CSV 通过数值差分与坐标变换处理为 55 维时间对齐的 JSON 运动数据。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：提供体坐标系速度与 21 关节角参考序列，用于人形全身运动跟踪与 MuJoCo 轨迹回放。
 
 ## 参考来源
 

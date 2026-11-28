@@ -82,6 +82,8 @@ LejuBFM 首页同时介绍 OpenLET 小脑动作集：800 多类动作、39,692 �
 - [LET-HumanMotion-Roban2](./openlet-humanmotion-roban2.md) — Roban 小脑动作集及申请边界
 - [乐聚机器人](./leju-robotics.md) — 本体与运营方
 - [运动小脑分类 A：走路底座](../overview/motion-cerebellum-category-01-locomotion-base.md) — 运控底座与相关方法
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对应 LejuBFM 的核心能力——使用配套模型与轨迹在仿真和真机上实现人形全身动作跟踪。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：对应 Roban 2.2 人形平台在全身运动控制与真机部署中所面向的核心移动任务场景。
 
 ## 推荐继续阅读
 

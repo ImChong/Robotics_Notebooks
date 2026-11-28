@@ -102,6 +102,7 @@ sequenceDiagram
 - [机器人的上下文学习](../concepts/robot-in-context-learning.md) — 同一条上下文预算链的前段
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) — 按空间组织的对照记忆形态
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 上下文接入侧的工程对照
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照长程智能体在规划与交互循环中对历史记忆进行压缩、树状分区与检索的上下文管理机制。
 
 ## 参考来源
 

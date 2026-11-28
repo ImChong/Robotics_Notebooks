@@ -117,6 +117,8 @@ flowchart TD
 - [机器人仿真三层分工](../concepts/robot-simulation-three-layers.md) · [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [MuJoCo](./mujoco.md) · [Isaac Sim / PhysX](./isaac-sim.md) · [Newton Physics](./newton-physics.md) · [Genesis](./genesis-sim.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页对应其 ④ sim↔real 评测 gap 校准层：同一 success 标签下跨引擎接触力/轨迹差异，提醒仿真评测分数须限定在具体引擎配置内
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对应在统一机器人模型、控制器与接触场景下对比并验证不同物理仿真器耦合表现的集成评测范式。
+- [Manipulation](../tasks/manipulation.md)：对应文中围绕 Franka Panda 开展的滑动、堆叠推挤、插孔装配与软体抓取等操作基准任务。
 
 ## 参考来源
 

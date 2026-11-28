@@ -64,6 +64,8 @@ STAR-CCM+ 及其许可证由使用者提供；400 步筛查不是最终收敛证
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [sim-plugin-starccm](./svd-ai-lab-sim-plugin-starccm.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照从几何单位检查、网格边界设置到 pilot 残差核验的标准化 CFD 仿真验证闭环。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：将 STAR-CCM+ 螺旋桨敞水仿真步骤、预检规则与报告规范封装为可复用的代理技能。
 
 ## 参考来源
 

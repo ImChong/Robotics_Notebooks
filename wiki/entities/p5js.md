@@ -100,6 +100,8 @@ sequenceDiagram
 - [The Coding Train](./the-coding-train.md) — 官方教学 Track 与大量 p5.js 示例。
 - [ml5.js](./ml5js.md) — 为网页草图提供浏览器端机器学习 API。
 - [计算机视觉骨干网络](../concepts/vision-backbones.md) — 机器人视觉模型与浏览器演示模型的任务边界不同。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：用于快速搭建基于浏览器画布与 DOM 控件的轻量级机器人遥操作交互原型与状态显示界面。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：通过明确边界的 WebSocket 与 API 接口接入机器人遥测数据，实现前端可视监控与交互调试。
 
 ## 参考来源
 

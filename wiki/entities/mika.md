@@ -83,6 +83,8 @@ sequenceDiagram
 - [Agent Autoloop](./agent-autoloop.md)：事件驱动的命令行智能体调度。
 - [LangGraph](./langgraph.md)：有状态智能体工作流编排。
 - [Elephant-Goldfish Model](./elephant-goldfish-model.md)：设计文档与独立审阅工作流。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：理解移动端智能体在任务分解、工具执行与状态反馈循环中的决策机制。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照智能体通过手机端动作接口或 MCP 协议调用外部应用与服务的集成方式。
 
 ## 参考来源
 

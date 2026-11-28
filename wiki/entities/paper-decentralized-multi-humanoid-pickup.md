@@ -96,6 +96,7 @@ flowchart TD
 - [humanoid-multi-robot-coordination](../concepts/humanoid-multi-robot-coordination.md)
 - [loco-manipulation](../tasks/loco-manipulation.md)
 - ./paper-recal-collision-aware-wbc.md
+- [多智能体强化学习（MARL） | Multi-Agent Reinforcement Learning](../methods/marl.md)：对照采用去中心化共享策略与独立 PPO 训练的多智能体协作强化学习范式。
 
 ## 参考来源
 

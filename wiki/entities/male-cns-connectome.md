@@ -95,6 +95,8 @@ flowchart LR
 - [果蝇连接组工具栈](../concepts/fly-connectomics-stack.md)
 - [FlyWire](./flywire.md) — 雌性全脑对照
 - [neuPrint](./neuprint.md) — 查询服务
+- [U-Net](../methods/unet.md)：对照电子显微图像体分割与密集体素预测流程中广泛使用的对称编码器–解码器基础架构。
+- [Locomotion](../tasks/locomotion.md)：对应其覆盖腹神经索（VNC）后在生物感觉–运动与行走控制回路端到端追踪上的参照价值。
 
 ## 参考来源
 

@@ -66,6 +66,8 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [BLIP-2](./paper-blip2.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：了解视觉语言对齐骨干如何进一步扩展为输出机器人动作的视觉-语言-动作策略模型。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对照视觉编码器提取的跨模态表征在下游识别与语言对齐任务中的作用。
 
 ## 参考来源
 

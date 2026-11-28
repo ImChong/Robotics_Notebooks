@@ -89,6 +89,8 @@ sequenceDiagram
 - [hello-rocm](./hello-rocm.md) — 相关概念、工具或工程路线。
 - [pytorch](./pytorch.md) — 相关概念、工具或工程路线。
 - [nvidia-cuda](./nvidia-cuda.md) — 相关概念、工具或工程路线。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：讲授的可信计时、Profiling 与 GEMM/Attention 算子优化直接支撑大模型推理与训练加速。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：课程后半程探索 Agent 驱动的性能剖析、算子调参及复测反馈闭环。
 
 ## 参考来源
 

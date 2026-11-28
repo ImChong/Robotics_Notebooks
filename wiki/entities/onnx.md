@@ -141,6 +141,8 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照 Sim2Real 迁移工作流，理解 `.onnx` 中间表示如何作为仿真训练框架与机载 C++ 控制环之间的模型导出契约。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：参考 AI 模型推理与服务部署方法，明确从算子集版本声明到各推理引擎兼容性的落地检验流程。
 
 ## 参考来源
 

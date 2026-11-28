@@ -154,6 +154,7 @@ sequenceDiagram
 - [ProtoMotions：人形仿真与运动学习框架](./protomotions.md) — 底层框架与通用工具链
 - [Unitree G1](./unitree-g1.md) — 本演示的机器人平台
 - [人形运动](../tasks/humanoid-locomotion.md) — 学习任务背景
+- [Humanoid Soccer](../tasks/humanoid-soccer.md)：该演示围绕人形守门员的动态球体感知、轨迹估计与侧扑救球构建人形足球任务闭环。
 
 ## 参考来源
 

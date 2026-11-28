@@ -105,6 +105,7 @@ fig.write_html("report.html")   # 离线分享
 - [PlotJuggler](./plotjuggler.md) — 真机/仿真高频时序与 rosbag
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 工具链分工
 - [强化学习](../methods/reinforcement-learning.md) — 实验可观测性语境
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：用于对具身智能体评测汇总出的多 seed 成功率、episode 分布及分箱对比指标进行交互式离线可视化。
 
 ## 参考来源
 

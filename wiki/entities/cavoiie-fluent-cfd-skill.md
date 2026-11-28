@@ -66,6 +66,8 @@ flowchart LR
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [FEMIS Skill](./test1card-femis-skill.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照 CFD 仿真中几何网格、边界条件设置与残差收敛判据的工程验证流程。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：参考将 Ansys Fluent 与 PyFluent 建模诊断规则封装为智能体技能的组织规范。
 
 ## 参考来源
 

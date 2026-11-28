@@ -76,6 +76,8 @@ flowchart LR
 - [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md)
 - [算力自由](./gpufree.md) — 具身仿真 RT 核心提示的另一国内平台
 - [Isaac Lab](./isaac-lab.md) — headless 训练 vs GUI 仿真的算力需求
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：提供云主机、裸金属与多卡 NVLink 容器算力池，支撑大规模强化学习策略训练。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：整机独占裸金属与高速互联集群可用于高负载自动驾驶或机器人物理仿真环境运行。
 
 ## 推荐继续阅读
 

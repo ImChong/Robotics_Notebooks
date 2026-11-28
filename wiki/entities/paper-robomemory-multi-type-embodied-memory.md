@@ -86,6 +86,7 @@ flowchart LR
 - [上下文主导型 分类 hub](../overview/embodied-wm-route-context.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照由多类型记忆维护可查询状态以支撑高层任务规划与反馈执行的智能体循环。
 
 ## 参考来源
 

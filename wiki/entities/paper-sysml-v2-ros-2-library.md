@@ -97,6 +97,7 @@ sequenceDiagram
 - [impedance-control](../concepts/impedance-control.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 - [embodied-station-2026-10-28-59-papers-technology-map](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对照面向节点、通信、生命周期与坐标系的 ROS 2 机器人软件系统架构建模与集成规范。
 
 ## 参考来源
 

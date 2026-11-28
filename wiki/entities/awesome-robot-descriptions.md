@@ -93,6 +93,8 @@ flowchart LR
 - [MuJoCo](./mujoco.md)
 - [URDF-Studio](./urdf-studio.md)
 - [fiveages-sim robot_descriptions](./fiveages-sim-robot-descriptions.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照 URDF、MJCF 与 Xacro 的视觉、惯量和碰撞属性字段核查及资产建模规范。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：为 MuJoCo、Isaac 等仿真器集成提供附带许可证与完整性标注的模型目录入口。
 
 ## 参考来源
 

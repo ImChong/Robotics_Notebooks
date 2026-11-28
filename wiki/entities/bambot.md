@@ -100,6 +100,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：对应其浏览器端主臂（leader）定时读取并同步舵机关节角至从臂的遥操作控制链路。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对照 Next.js URDF 三维渲染、关节状态同步与 WebSerial 舵机总线的分层控制接口。
 
 ## 参考来源
 

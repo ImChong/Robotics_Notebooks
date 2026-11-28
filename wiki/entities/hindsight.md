@@ -95,6 +95,8 @@ flowchart TD
 - [ECC](ecc.md) — harness 内 continuous learning
 - [Hermes Agent](hermes-agent.md) — 一体化 Agent OS
 - [Deep Agents](deep-agents.md) — LangChain 系 harness 记忆
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：通过 retain–recall–reflect 机制将历史执行经验转化为可检索记忆以持续改进后续规划。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：提供标准 MCP Server 与 API 接口，使各类智能体可在多会话间持久化读写结构化记忆。
 
 ## 参考来源
 

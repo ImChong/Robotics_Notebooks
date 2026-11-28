@@ -54,6 +54,8 @@ flowchart TD
 
 - [动捕到机器人动作重定向](./mocap-retarget.md) — 检查动捕数据后，仍需单独完成机器人映射。
 - [Low Cost Mocap](./low-cost-mocap.md) — 动捕采集与定位系统，可与本工具的数据检查用途区分。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：在浏览器本地对 C3D 与特定机构 H5 动捕记录进行事件标注、裁剪与格式兼容性检查。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：用于动作重定向前在三维场景中同步检查人类动捕 marker 轨迹与力平台信号。
 
 ## 参考来源
 

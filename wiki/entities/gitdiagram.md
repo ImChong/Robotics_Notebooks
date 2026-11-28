@@ -83,6 +83,8 @@ flowchart LR
 - [Mermaid.js](./mermaid-js.md) — GitDiagram 将已校验图结构编译为 Mermaid 并在浏览器渲染
 - [Archify](./archify.md) — 以类型化 JSON IR 和确定性校验/编译生成系统图；可比较自动推导与作者提供结构
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — GitDiagram 作为远程 MCP 服务的接入协议
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：提供远程 MCP 工具接口，使智能体按结构化方式查询仓库架构组件与连接关系。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：可作为编码智能体修改代码前梳理模块边界与路径证据的辅助理解环节。
 
 ## 参考来源
 
