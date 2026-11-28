@@ -2,8 +2,9 @@
 type: overview
 tags: [motor, actuator, hardware, humanoid, design, foc, simulation]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-28
 original:
+  - ../../sources/blogs/wechat_zanehub_frameless_torque_motor_toolchain_2026-11-28.md
   - ../../sources/sites/simplefoc_documentation.md
   - ../../sources/sites/femm_info.md
   - ../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md
@@ -29,6 +30,7 @@ related:
   - ../concepts/halbach-array.md
   - ../entities/paper-halbach-permanent-multipole-magnets.md
 sources:
+  - ../../sources/blogs/wechat_zanehub_frameless_torque_motor_toolchain_2026-11-28.md
   - ../../sources/sites/ansys_motor_cad_electric_machine_design.md
   - ../../sources/personal/motor_curves_and_em_simulation_faq.md
   - ../../sources/sites/simplefoc_documentation.md
@@ -171,6 +173,31 @@ flowchart TD
 - **样机–仿真闭环标定**：台架实测反电动势 $K_e$（电钻/对拖反拖）、LCR 相电阻与电感以及测功机 TN/TI 曲线，反哺 FEMM/PYLEECAN 槽满率与端部漏磁修正。
 - **CAE / CFD 自动化工具入口**：电磁、结构与热流体分析软件接口可选读 [CAE / CFD 代理工具与技能总览](./cae-cfd-agent-skills-landscape.md)（如 [Ansys AEDT MCP](../entities/laplaceyoung-ansys-aedt-mcp.md)、[Mechanical MCP](../entities/codersag-mechanical-mcp.md)、[OpenFOAM Claude Suite](../entities/swtbkim-openfoam-claude-suite.md)）；自动化结果仍须与台架实测对照。
 
+## 无框力矩电机设计与工具链 / Frameless Torque Motor Design and Toolchain
+
+无框定转子是套件，轴承、壳体、反馈和散热方式决定安装后可交付的能力。先定义安装态工况，再用以下三道闸门决定是否推进样机：
+
+| 闸门 | 输入 → 输出 | 如何验证 |
+|---|---|---|
+| 电磁与可驱动性 | 负载谱、空间和母线 → 热态转矩常数、反电势、电感、损耗分布与可用速度 | 同时对齐相/线、峰值/RMS、机械/电气角速度单位；在规定安装与冷却下，对照转矩–电流和转矩–转速曲线，分别测断电齿槽与通电纹波。 |
+| 热与最小运行气隙 | 电磁损耗、接触热阻、公差与载荷 → 绕组/磁钢温度、最小气隙、连续区与短时过载时间 | 联合核对轴承及支撑变形、偏心、热膨胀，而不是只看冷态名义气隙；将壳温、绕组温升和装配跳动回填模型。 |
+| 驱动与反馈 | 电气参数、编码器误差、采样和驱动约束 → 热态电流环和低速平顺性 | 核对真实母线和电流限幅，区分编码器分辨率与装配后精度；按初始温度、峰值持续时间及占空比分别验收。 |
+
+```mermaid
+flowchart LR
+  DUTY["负载谱、包络和冷却条件"] --> EST["尺寸量级与母线可行域"]
+  EST --> EMG["电磁仿真：损耗、反电势、纹波"]
+  EMG --> THM["热与公差：温升、受载最小气隙"]
+  EMG --> DRV2["驱动与反馈：电压余量、低速精度"]
+  THM --> BENCH["安装态台架：曲线、温升、气隙"]
+  DRV2 --> BENCH
+  BENCH -->|用实测校准| EMG
+```
+
+工具链按问题选：表格或脚本先扫可行域；电磁有限元和集总热网络做损耗—温度传递；结构仿真检查热态受载变形；控制仿真核对母线与采样，最终以台架数据确认。短叠厚件要说明二维模型如何处理端部效应，不能把网格尚未收敛的齿槽结果当验收值。
+
+原文给出的尺寸、热阻、绝缘与平衡示例是量级线索，不是模组通用规范。ISO 官方目录标示 ISO 1940-1:2003 已撤销；刚性转子参照 [ISO 21940-11](https://www.iso.org/standard/54074.html) 的适用范围，实际余量和试验条件按产品、工况与适用标准确认。此段是工程流程整理，原文没有配套运行代码，源码运行时序图不适用。
+
 ## 关节结构工程师的学习与供应商评审边界
 
 - 需要了解无框电机的定子—壳体接触热阻、气隙同轴度、槽极/齿槽转矩、连续 TN 与质量口径，但不必以独立完成电机量产设计为首个目标。
@@ -201,6 +228,8 @@ flowchart TD
 - [关节模组工程师是否需要学习电机设计？](../queries/joint-module-engineer-motor-design-literacy.md) — 学习深度、规格评审与自研/外购决策
 
 ## 参考来源
+
+- [Zane Hub：无框力矩电机设计与工具链](../../sources/blogs/wechat_zanehub_frameless_torque_motor_toolchain_2026-11-28.md)：原文归档、公式口径及安装指南、软件手册、TI 应用报告和 ISO 标准目录的核验。
 
 - [ansys_motor_cad_electric_machine_design.md](../../sources/sites/ansys_motor_cad_electric_machine_design.md)
 - [motor_curves_and_em_simulation_faq.md](../../sources/personal/motor_curves_and_em_simulation_faq.md)
