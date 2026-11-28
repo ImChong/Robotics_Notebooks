@@ -8,7 +8,7 @@ tags:
   - testing
   - human-in-the-loop
 status: complete
-updated: 2026-11-20
+updated: 2026-11-28
 summary: "Coding Agent 验证闭环将 E2E、属性测试、差分测试和独立评审组成有证据的交付门禁；强调在真实系统运行、按 diff 触发可靠性检查、隔离审查规则，并用事故反例持续校准验证器。"
 related:
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
@@ -141,6 +141,8 @@ flowchart TD
 [3D GameDev Arena（arXiv:2611.24073）](../entities/paper-3d-gamedev-arena.md) 将从零构建浏览器游戏的功能规则、代理试玩和人类盲选分成三层；说明功能测试通过与真正的用户体验偏好不能等同。该研究**不是机器人现场安全测试**。
 
 ## 关联页面
+
+- [Gemini 4 Neon 多 Agent 团队教程](../entities/movez-gemini-4-neon-agent-team.md)：共享看板上的分工、只读验收与返工案例。
 
 - [Agent 工程小书](../entities/little-book-agent-engineering.md)：从工具拒绝、停止条件到终态评分的最小教学例子。
 
