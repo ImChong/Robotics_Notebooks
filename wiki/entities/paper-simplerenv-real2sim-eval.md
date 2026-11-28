@@ -15,7 +15,7 @@ tags:
 - eval
 status: complete
 original: ../../sources/papers/simplerenv_arxiv_2405_05941.md
-updated: 2026-11-15
+updated: 2026-11-28
 arxiv: '2405.05941'
 venue: arXiv 2024
 code: https://github.com/simpler-env/SimplerEnv
@@ -39,7 +39,7 @@ summary: SIMPLER / SimplerEnv（arXiv:2405.05941）：real-to-sim 评测通才�
 project_id: simplerenv-real2sim-eval
 ---
 
-# SIMPLER：仿真里评真实数据训练的 manipulation 策略
+# SIMPLER：在仿真中评估真机操作策略 / Evaluating Real-World Robot Manipulation Policies in Simulation
 
 **SIMPLER**（*Evaluating Real-World Robot Manipulation Policies in Simulation*，[arXiv:2405.05941](https://arxiv.org/abs/2405.05941)，[SimplerEnv](https://github.com/simpler-env/SimplerEnv)）提出 **real-to-sim evaluation**：在 purpose-built 仿真中跑 **已在真实数据上训练** 的通才策略，使分数与真机 ** scalable、可复现且强相关**——方向与常见的 sim-to-real **训练** 相反。
 
@@ -125,6 +125,10 @@ sequenceDiagram
 - **实证：** 多个开源策略做 **paired sim-and-real** 评测，约 **1500 episodes**，报告 sim 与真机成功率 **强 Pearson 相关**；sim 同时反映 **分布偏移敏感性** 等行为模式。
 - **读法：** 相关性针对 **策略排序 / 行为诊断**，不承诺绝对成功率可迁移；本库未搬运逐任务数字，以原文表格为准。
 
+### 图 6 与表 IV：看相对排序，也看绝对分数偏差
+
+Google Robot 的四张图覆盖易拉罐拾取、移近、抽屉开合与放入抽屉。Visual Matching 的分任务 Pearson r 有 0.855 至 0.983 的差别；例如放入抽屉为 r=0.969、MMRV=0.000，而 Variant Aggregation 同列为 r=0.235、MMRV=0.148。并非视觉匹配在每一列都更高：移近任务 r 为 0.855 对 0.887，MMRV 均为 0.111。六个策略组中，抽屉开合的 RT‑1（收敛）真机均值 0.870、Visual Matching 0.730，说明排序近并不意味着绝对成功率可以代用。表 IV 不包括 WidowX，后者请另查图 7/表 V。
+
 ## 与其他工作对比
 
 | 对照 | 差异读法 |
@@ -174,7 +178,7 @@ Aligned simulator-based evaluation that correlates with real-robot performance f
 |------|------|
 | 官方入口 | <https://simpler-env.github.io/> |
 | 开源核查 | 以项目页 / GitHub 实际链接为准（清单可能滞后） |
-| 源码运行时序图 | **不适用**（非论文可运行训练仓，或未核 README 入口） |
+| 源码运行时序图 | 见本页同名小节；此处旧清单不是独立的软件项目。 |
 
 使用前先确认链接指向的是官方仓 / 文档，而不是镜像或过期 fork。
 

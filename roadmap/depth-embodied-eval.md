@@ -66,6 +66,8 @@ flowchart LR
 - 写一页"我要回答的评测问题"：给谁看（自己迭代 / 对外发版 / 论文投稿）、能承受多少真机 rollout 成本、可接受多大的外推风险
 
 ### 推荐读什么
+- [具身智能模型评测：从感知到执行](../wiki/entities/paper-embodied-eval-perception-execution.md) — 从静态筛查到仿真和真机验收；对照实验厘清静态分数可代理哪些动作误差。
+- [具身评测六份原文入口](../wiki/methods/embodied-agent-benchmarking.md#六篇原文的互补读法) — 将真机零样本、审计、过程安全、世界模型效用和仿真校准分开。
 - [OpenAI 机器人团队重组：通用模型与专用策略的证据审计](../wiki/entities/openai-robotics-reorganization-aiwang-2026.md) — Stage 0 反例：一次团队调整与 RoboLab 仿真分数不能证明专用 VLA/WAM 必然消失；先核对时延、成本和真机协议。
 - [具身评测基准选型闭环（知识链汇总）](../wiki/overview/hub-embodied-eval-benchmark.md) — 本路线的枢纽页
 - [Query：具身大模型评测基准选型闭环](../wiki/queries/embodied-eval-benchmark-selection-loop.md) — 四层决策树与逐层误判速查

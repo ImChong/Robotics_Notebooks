@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, evaluation, benchmark]
 status: complete
-updated: 2026-11-26
+updated: 2026-11-28
 summary: "固定任务与预算做可复现回归，或用配对盲测比较开放式真机表现；两类评测分别报告成功、进度与失效。"
 sources:
   - ../../sources/papers/roboarena_arxiv_2506_18123.md
@@ -70,6 +70,17 @@ flowchart LR
 ## 局限与风险
 
 RoboArena 的实证覆盖单一 DROID 类配置及其策略池；不能直接推广为异构本体、动态任务或导航的同尺度排行。对子内复位也不是完全相同的物理状态；开放评测还要检查评测员、任务分布和偏好标注变化。此页为方法导航，不是独立评测实现，未重新运行原论文真机实验。
+
+## 六篇原文的互补读法
+
+先分清指标和层级，再用多协议交叉验证。以下各项分别链接独立的全文节点：
+
+- [具身智能模型评测：从感知到执行](../entities/paper-embodied-eval-perception-execution.md)：用静态、仿真、真机分层，静态关键帧对照不等于闭环实证。
+- [WorldArena](../entities/worldarena.md)：先校视频质量，再看它是否帮助数据、仿真评测或规划。
+- [SIMPLER](../entities/paper-simplerenv-real2sim-eval.md)：以真机配对校准仿真策略排名。
+- [机器人操作基准审计](../entities/paper-manipulation-benchmark-audit.md)：检查语言捷径、复测波动与数据来源。
+- [SafeManip](../entities/paper-safemanip.md)：记录规则触发和持续暴露，而非只看终态成功。
+- [RoboChallenge Zero](../entities/paper-robochallenge-zero.md)：报告版本、真机成功、部分进度与执行代价。
 
 ## 关联页面
 

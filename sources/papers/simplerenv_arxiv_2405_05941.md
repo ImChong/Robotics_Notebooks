@@ -46,3 +46,8 @@
   year={2024}
 }
 ```
+
+## 论文原版与表格续读
+
+- **全文 PDF：** [作者项目页版本](https://simpler-env.github.io/simpler.pdf)。
+- **核对范围：** 作者全文，含视觉与控制对齐、Google Robot / WidowX 实验、图 6/7、表 IV/V 及附录。图 6 对应 Google Robot；Pearson 反映相对走势、MMRV 衡量真实差距较大的名次逆转，需搭配看。表 IV 逐任务的绝对成功率不能用相关指数替代。

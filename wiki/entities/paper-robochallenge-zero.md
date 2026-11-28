@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, evaluation, embodied-ai, manipulation, vla, zero-shot, real-robot]
 status: complete
-updated: 2026-11-22
+updated: 2026-11-28
 topic: [evaluation]
 venue: "RoboChallenge Technical Report 2026"
 project_id: robochallenge-zero
@@ -22,7 +22,7 @@ related:
 summary: "RoboChallenge Zero 按月加入新真机操作任务并修改旧任务条件，在不提供任务专属示范或微调的协议下评测固定系统版本。首发 11 个 VLM/LLM Agent 在 6 任务 330 次真机运行中成功 148 次（44.85%）；精细双臂书写 7.27%，线缆解结 0%。"
 ---
 
-# RoboChallenge Zero：持续演化的真机零样本评测基准
+# RoboChallenge Zero：持续演化的真机零样本评测基准 / A Continually Evolving Benchmark for Zero-Shot Evaluation on Real Robots
 
 ## 一句话定义
 
@@ -143,6 +143,14 @@ flowchart TD
 - 报告虽展示失败案例，但**未隔离**推理模型、相机标定、轨迹生成与碰撞处理对故障率的贡献（§3.5）。
 - 任务说明与评分标准公开、每月刷新可缓解**固定测试题过拟合**；不能仅由协议断言所有参评预训练数据都绝无任务污染。
 - 2026-11-20 是否为首次公开日期、Zero 专属数据/评测源码是否可下载，尚需核对官网详情页；不由 PDF 文件名或旧版 Table30 材料推断。
+
+### 从接入到评分：分开记录提交系统、任务进度与执行代价
+
+| 审计项 | 首发技术报告所定义的口径 |
+|---|---|
+| 提交系统（§2.2–2.3） | 原生 VLA、调用工具/技能的 VLM/LLM Agent、组合感知／规划／控制的系统用相同任务目标；首发比较只有 11 个 VLM/LLM Agent，不能说 VLA 已在该报告对照中落败。提示词、工具、技能库或权重改动都算新系统版本。 |
+| 进度（§2.4） | 单回合按任务细则 0–10；某任务五回合相加 0–50，六个任务等权平均，整体仍为 0–50。与达成全目标的二值成功率分列；T3 的一次解开线缆但未摆好仍为 7 分、失败。 |
+| 代价（§3.4） | 执行时间和模型调用次数分别报告；单臂/双臂预算分别最多 40/50 次调用。API 成本估计用成功回合的 token 和模型价格，不能称作含失败、操作者、硬件的部署总成本；首轮 182 次失败中有 30 次超过 60 分钟。 |
 
 ## 关联页面
 
