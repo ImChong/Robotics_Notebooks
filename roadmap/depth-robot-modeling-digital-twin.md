@@ -1,4 +1,4 @@
-# 机器人建模与数字孪生（CAD → 仿真 → 数字孪生）
+# 机器人建模与数字孪生（Robot Modeling & Digital Twin）
 
 **首屏导读**：
 
