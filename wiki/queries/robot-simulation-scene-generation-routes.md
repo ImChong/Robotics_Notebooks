@@ -11,6 +11,10 @@ related:
   - ../entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md
   - ../entities/paper-worldbridge-scattered-views.md
   - ../comparisons/crisp-vs-gs-playground-real2sim.md
+original:
+  - ../../sources/papers/robocasa_scene_generation_reading_arxiv_2406_02523.md
+  - ../../sources/papers/crisp_real2sim_iclr2026.md
+  - ../../sources/papers/worldbridge_arxiv_2611_34079.md
 sources:
   - ../../sources/papers/robocasa_scene_generation_reading_arxiv_2406_02523.md
 ---
@@ -61,6 +65,8 @@ flowchart TD
 3. **固定种子重置与判据防作弊**：用固定随机种子多次复位场景，确认对象不会在步进前自发滑落，且成功判据在未执行动作时不会提前触发。
 4. **按布局、物体家族与任务轴切分防泄漏**：不要把同一厨房布局或同一物体实例同时混入训练集与测试集；评测分布必须与训练布局及纹理/实例严格隔离。
 
+**一手证据对应：** RoboCasa v1 用生成资产和语言模型候选任务扩展规模，但把交互资产、任务实现及成功判据落到仿真器；CRISP 从单目视频及接触约束拟合简化平面，以足部接触一致性服务人形运动跟踪，不代表通用铰接重建；WorldBridge 生成指定相机路径的 RGB 和点图，并未输出经验证的碰撞和关节资产。四道关口是面向采购或交付场景时的核查建议，不是三个项目采用同一测试协议的结论。
+
 ## 局限与风险
 
 - **把「视觉像」当成「物理可交互」**：未经过碰撞网格、惯量与关节约束验收的 3DGS 或生成式世界模型输出（参考 [WorldBridge](./../entities/paper-worldbridge-scattered-views.md)）不能直接代替仿真物理环境。
@@ -78,6 +84,10 @@ flowchart TD
 ## 参考来源
 
 - [RoboCasa 论文与场景生成精读归档](../../sources/papers/robocasa_scene_generation_reading_arxiv_2406_02523.md)
+
+- [CRISP：基于接触的单目视频 Real2Sim 归档](../../sources/papers/crisp_real2sim_iclr2026.md)
+
+- [WorldBridge：离散视图生成 RGB 与点图原文归档](../../sources/papers/worldbridge_arxiv_2611_34079.md)
 
 ## 推荐继续阅读
 

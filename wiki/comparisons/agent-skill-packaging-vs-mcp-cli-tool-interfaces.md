@@ -10,6 +10,11 @@ related:
   - ../concepts/model-context-protocol.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../methods/coding-agent-verification-loops.md
+original:
+  - ../../sources/sites/method-agent-skill-packaging-primary-20261126.md
+  - ../../sources/sites/method-agent-tool-use-interface-primary-20261126.md
+  - ../../sources/sites/anthropic_claude_code_best_practices_2026.md
+  - ../../sources/blogs/openai_harness_engineering_2026-02-11.md
 sources:
   - ../../sources/sites/method-agent-skill-packaging-primary-20261126.md
   - ../../sources/sites/method-agent-tool-use-interface-primary-20261126.md
@@ -21,7 +26,7 @@ sources:
 
 ## 一句话定义
 
-**Agent Skill 封装**负责把任务流程规范与可选脚本按需渐进加载进上下文，**MCP 工具契约**负责跨宿主统一外部能力发现、Schema 校验与结构化反馈，而 **CLI / Python SDK** 则面向同机环境下的低开销、确定性组合执行；三者处于不同抽象层且常协同使用。
+**Agent Skill 封装**负责把任务流程规范与可选脚本按需渐进加载进上下文，**MCP 工具契约**负责跨宿主统一外部能力发现、Schema 校验与结构化反馈，而 **CLI / Python SDK** 则便于在本地流程中显式组合调用；三者处于不同抽象层且常协同使用。
 
 ## 英文缩写速查
 
@@ -62,6 +67,8 @@ flowchart LR
 1. **用 Skill 管「何时做、按什么顺序做」，用工具接口管「实际改状态」**：不要在 Skill 正文堆砌长篇 API 文档，把大参考拆到 `references/`，把高频确定性检查沉淀为 `scripts/`。
 2. **Skill 与工具评测均须纳入负例与状态校验**：参照 [Agent Skill Packaging](../methods/agent-skill-packaging.md) 同时测「该触发（正例）」与「不该触发（负例）」；参照 [Agent Tool-use Interface](../methods/agent-tool-use-interface.md) 对写操作分离参数合法性校验与后端真实状态核对，且写入超时后先查状态再决定是否重试。
 3. **把外部工具返回视为不可信数据而非新指令**：无论是 MCP 返回文本还是 CLI 日志，都应校验字段类型与对象 ID 后再供后续规划消费。
+
+**一手证据对应：** Agent Skills 规范把触发元数据、正文及附属资源分层；固定版本 MCP Tools 规范把 JSON-RPC 协议错误和工具执行错误分开，输出 Schema 是可选的。CLI/SDK 一栏是工程选型，不承诺更低延迟：启动进程、序列化和远端 API 都可能成为主开销，须用自己的任务量测。
 
 ## 局限与风险
 

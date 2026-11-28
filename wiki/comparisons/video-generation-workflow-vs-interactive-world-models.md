@@ -11,6 +11,9 @@ related:
   - ../concepts/video-as-simulation.md
   - ../comparisons/open-source-world-models-11-2026.md
   - ../overview/hub-embodied-eval-benchmark.md
+original:
+  - ../../sources/sites/methods-primary-video-generation-workflow-2026-11-26.md
+  - ../../sources/papers/gigaworld_1_arxiv_2607_02642.md
 sources:
   - ../../sources/sites/methods-primary-video-generation-workflow-2026-11-26.md
 ---
@@ -59,6 +62,8 @@ flowchart LR
 2. **把视觉编辑流程限定在先验与外观增强层**：利用 [Video Generation and Editing Workflow](../methods/video-generation-workflow.md) 生成补充视觉片段时，须与真实遥操作动作轨迹隔离统计，并在评测中对比「无增强 vs 有增强」的真实真机/仿真成功率增量。
 3. **世界模型评估重点看动作忠实而非画质**：参考 [开源世界模型横向对比](./open-source-world-models-11-2026.md) 与 [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) 第②层，在离线评估策略时优先测试 off-expert 与失败动作下的物理响应一致性。
 
+**一手证据对应：** Wan2.1 的 VACE 推理入口使用参考图、源视频或遮罩安排编辑；GigaWorld-1 则把策略动作作为世界推演输入，并在 WMBench 中以真实执行为参照检查评估能力。比较策略时应先对齐初态、动作语义和终止判据，再检查成功率或排序是否一致；画质高低不能替代这些检验。
+
 ## 局限与风险
 
 - **生成视频不等于动力学真值**：像素连贯的视频仍可能出现穿模、物体凭空消失、手-物接触虚浮或重力违背，不能直接作为接触密集型物理验证依据。
@@ -76,6 +81,8 @@ flowchart LR
 ## 参考来源
 
 - [视频生成与编辑流程一手方法归档](../../sources/sites/methods-primary-video-generation-workflow-2026-11-26.md)
+
+- [GigaWorld-1：WMBench、动作接口与评估归档](../../sources/papers/gigaworld_1_arxiv_2607_02642.md)
 
 ## 推荐继续阅读
 
