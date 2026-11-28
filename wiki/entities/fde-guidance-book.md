@@ -78,6 +78,8 @@ flowchart TD
 - [ontology-fde](./ontology-fde.md) — 关联的工程知识或开源项目。
 - [agnes-harness](./agnes-harness.md) — 关联的工程知识或开源项目。
 - [easy-vibe](./easy-vibe.md) — 关联的工程知识或开源项目。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照从现场问题发现、最小可用部署到持续反馈闭环的迭代交付思维。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：参考其强调以真实业务流程指标验收模型与系统交付效果的现场评估视角。
 
 ## 参考来源
 

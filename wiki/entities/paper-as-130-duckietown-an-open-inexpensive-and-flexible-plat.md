@@ -88,6 +88,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照将视觉感知、路径规划与运动控制串联为闭环验证的自主导航工作流。
 
 ## 参考来源
 

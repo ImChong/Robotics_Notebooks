@@ -78,6 +78,8 @@ flowchart LR
 - 「节点图/动画语言进入策略调试」的工具层定位，见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 解释为何同一张画布既能服务角色化人形又能服务通用机器人控制。
 - [BotWorld](./botworld.md) — 资产广场与 BotLab 项目展示入口（`botlab.d-robotics.cc` 亦可从广场跳转）。
 - [Tidewater](./tidewater.md) — 同为浏览器 **WebGPU** 重场景 Demo，但偏实时海洋/大气渲染而非策略–MuJoCo 编排。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照节点图中 MuJoCo 物理步进、机器人模型与控制接口的仿真环境集成流程。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：参考浏览器端 ONNX Runtime（WASM/WebGPU）推理与同步或异步步进调度设计。
 
 ## 推荐继续阅读
 

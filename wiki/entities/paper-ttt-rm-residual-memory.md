@@ -101,6 +101,7 @@ flowchart TD
 - [paper-imprint-multi-stream-latent-memory](./paper-imprint-multi-stream-latent-memory.md)
 - [paper-robottt-test-time-training-vla-context](./paper-robottt-test-time-training-vla-context.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
+- [Manipulation](../tasks/manipulation.md)：对照面向长时程记忆依赖与真机收纳等操作任务的策略记忆补偿需求。
 
 ## 参考来源
 

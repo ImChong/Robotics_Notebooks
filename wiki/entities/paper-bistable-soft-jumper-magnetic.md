@@ -119,6 +119,7 @@ flowchart LR
 
 - [Locomotion 任务页（跳跃运动分类）](../tasks/locomotion.md)
 - [SoftMimic：顺从全身控制（软体/顺从控制对照）](./paper-notebook-softmimic-learning-compliant-whole-body-control.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照利用有限元分析（FEA）建模双稳态结构势能曲面并验证材料与几何边界条件的工程仿真流程。
 
 ## 参考来源
 

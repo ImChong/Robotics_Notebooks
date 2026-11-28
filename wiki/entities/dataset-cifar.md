@@ -80,6 +80,7 @@ flowchart LR
 - [Vision Backbones](../concepts/vision-backbones.md)
 - [Object Detection](../methods/object-detection.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 小规模分类基准只承担算法冒烟，离④sim↔real 代表性最远
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：常用于验证卷积网络与 ViT 等视觉骨干在图像分类任务上的表征学习与正则化效果。
 
 ## 参考来源
 

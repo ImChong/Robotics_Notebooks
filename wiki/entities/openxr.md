@@ -130,6 +130,7 @@ Khronos 将大量 **vendor extensions** 并入 **1.1 core**，降低「功能仅
 - [XRoboToolkit（论文实体）](./paper-xrobotoolkit.md) — OpenXR JSON 中间层实例
 - [Isaac Teleop](./isaac-teleop.md) — 仿真/真机 XR 与 CloudXR
 - [PICO 4 Ultra 第一人称采数](./pico-4-ultra-egocentric-capture.md) — OpenXR 手/身关节字段
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：了解将跨平台头显追踪与输入接口接入机器人软件及遥操作系统的集成规范。
 
 ## 参考来源
 

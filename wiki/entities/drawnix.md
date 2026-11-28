@@ -114,6 +114,8 @@ npm run start
 - [Mermaid.js](./mermaid-js.md) — 可版本管理的文本式图表语言与渲染库；Drawnix 提供转成可编辑画布元素的路径
 - [GitDiagram](./gitdiagram.md) — 根据仓库结构证据生成交互式代码架构图，适合浏览源码关系
 - [Archify](./archify.md) — 将结构化 JSON 图描述编译成可校验的架构、工作流和时序图
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对应在机器人研发中辅助梳理并绘制控制系统分层架构、控制数据流与动作层级关系的图示工具场景。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对应将 Mermaid 与 Markdown 大纲转为交互画布以评审多模块机器人软件系统集成拓扑与节点交互流程。
 
 ## 参考来源
 

@@ -140,6 +140,8 @@ with Diagram("Web Service", show=False):
 - [GitDiagram](./gitdiagram.md) — 用模型辅助分析现有 GitHub 仓库并生成 Mermaid 架构解释；不同于手写 Diagrams 拓扑
 - [Diagram Design](./diagram-design.md) — 架构与演示视觉交付相关 Skill
 - [live-panel-skill](./ythx-101-live-panel-skill.md) — 将 JSON/Excalidraw 架构图渲染成 MP4 或循环网页；与 Diagrams 的静态图互补
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考通过代码化图表精确表达分布式机器人系统与云端服务节点拓扑的工程方法。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：理解自动化脚本或智能体生成并渲染系统架构图时的命令行与接口调用方式。
 
 ## 参考来源
 

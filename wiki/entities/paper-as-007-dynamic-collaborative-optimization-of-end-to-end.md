@@ -88,6 +88,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照在仿真与真实系统迁移中评估和缓解动作及通信延迟的影响流程。
 
 ## 参考来源
 

@@ -73,6 +73,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照虎克铰与双驱动三轴头部机构的几何约束检查及参数化 CAD 机械建模流程。
 
 ## 参考来源
 

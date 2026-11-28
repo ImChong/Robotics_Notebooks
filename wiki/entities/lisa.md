@@ -66,6 +66,8 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [BLIP-2](./paper-blip2.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对应将复杂自然语言推理与像素级掩码分割结合以输出目标空间位置的视觉感知能力。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对应其以多模态语言隐状态桥接视觉编码器与掩码解码器的跨模态表征机制。
 
 ## 参考来源
 

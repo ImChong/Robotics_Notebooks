@@ -82,6 +82,8 @@ flowchart LR
 - [PaperSpine](paperspine.md)：贡献、动机、证据与论文交付的端到端约束。
 - [ARIS](aris-auto-research-in-sleep.md)：更侧重实验和审稿循环。
 - [AI Auto-Research](../concepts/ai-auto-research.md)：应用情境。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：对照智能体技能封装方法，了解 nature-polishing 如何通过 manifest 四轴路由按需加载领域规则与约束。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：参考智能体规划与反馈执行流程，规范学术润色任务中的规则检索、边界核查与多阶段改写循环。
 
 ## 参考来源
 

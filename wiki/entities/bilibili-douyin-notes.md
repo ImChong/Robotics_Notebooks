@@ -122,6 +122,8 @@ sequenceDiagram
 - [Agent Skills（Addy Osmani）](./agent-skills-addyosmani.md) — 通用编码工作流技能包，可与面向视频学习的 Skill 对照。
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md)
 - [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) — 生成笔记如何接入持续维护的知识库。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：遵循 SKILL.md 规范将视频字幕获取、本地转写与笔记模板封装为可复用代理技能。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照字幕优先探测、本地 ASR 兜底与 validate_note.py 校验门禁的多步代理执行流。
 
 ## 参考来源
 

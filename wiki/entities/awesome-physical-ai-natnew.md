@@ -105,6 +105,7 @@ flowchart TD
 - [VLA](../methods/vla.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [LeRobot](./lerobot.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：清单将 World Models 列为与 RFM 并列的独立分类并梳理交互环境建模资源。
 
 ## 参考来源
 

@@ -80,6 +80,7 @@ flowchart LR
 - [Vision Backbones](../concepts/vision-backbones.md)
 - [Object Detection](../methods/object-detection.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 外部不可复现的内部数据源：可复现性 vs 真实代表性取舍的反面样本
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：该大规模弱标签图像集常用于研究 ViT 等大模型的视觉预训练缩放规律。
 
 ## 参考来源
 

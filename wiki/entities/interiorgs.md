@@ -76,6 +76,8 @@ flowchart LR
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：为 LightNav-0 等 Real2Sim2Real 视觉-语言导航引擎提供带标注的室内 3D 高斯泼溅场景。
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md)：提供含官方 3D 边界框或 Molmo2 开放词汇标注的室内环境，支撑零样本目标导航数据合成。
 
 ## 参考来源
 

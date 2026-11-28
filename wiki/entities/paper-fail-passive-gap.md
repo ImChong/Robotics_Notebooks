@@ -165,6 +165,7 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md) — 本文验证平台
 - [Safe-Stop](./paper-safe-stop-humanoid.md) — 学习式可停止性门控；互补认证缺口，不替代本页
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) — 把 \(t_{\mathrm{response}}\) 拆成可加分段的同一思路
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对照安全 PLC、机载软 PLC 与平衡控制器之间保护停反应链的分层控制架构。
 
 ## 参考来源
 

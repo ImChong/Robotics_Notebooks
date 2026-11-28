@@ -80,6 +80,8 @@ flowchart LR
 
 - [前沿模型 × 3D / CAD / 机器人](../overview/frontier-models-3d-cad-robotics-survey.md) — 对照 AI 生成 CAD 与实体制造的证据边界。
 - [人形机器人量产工程能力](../concepts/humanoid-mass-production-engineering.md) — 对照制造工艺、验证与量产成熟度问题。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照从设备 CAD 几何表达到设计与工艺约束验证的参数化建模工作流。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：参考制造前系统仿真验证、实体测量与闭环反馈纠偏的工程验证流程。
 
 ## 参考来源
 

@@ -88,6 +88,8 @@ flowchart LR
 - [开源人形机器人硬件](./open-source-humanoid-hardware.md) — 整机驱动板开源范例
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Altium Designer 是①层商用 EDA 驱动板设计工具
 - [HeyPCB（AI PCB 设计）](./heypcb.md) — AI 辅助生成 PCB 工程的服务入口
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：通过 ECAD-MCAD CoDesigner 与机械参数化 CAD 流程双向同步，协同约束异形机壳与关节板卡空间。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：在统一设计环境中完成原理图、信号/电源完整性分析与 DRC 规则检查，构成板级硬件验证流程。
 
 ## 推荐继续阅读
 

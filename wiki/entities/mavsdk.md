@@ -102,6 +102,8 @@ sequenceDiagram
 - [PX4 Autopilot](./px4-autopilot.md)
 - [EGO-Planner Swarm](./ego-planner-swarm.md)
 - [Project Quiver](./project-quiver.md) — ArduPilot 真机机架，可用本 API 做 Mission / Offboard
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：理解通过标准化 SDK 将感知、规划器与飞控执行模块集成的软件架构。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照上游路径规划器通过 Offboard 设定点与飞控闭环衔接的导航执行流程。
 
 ## 推荐继续阅读
 

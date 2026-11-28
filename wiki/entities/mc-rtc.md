@@ -125,6 +125,8 @@ sequenceDiagram
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Centroidal NMPC + WBC 栈](../methods/centroidal-nmpc-wbc-stack.md)：对照结合质心规划与全身控制实现多接触姿态与行走目标的经典控制栈。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：理解将行为状态机、任务层控制律与真机硬件接口分层的控制系统架构。
 
 ## 参考来源
 

@@ -74,6 +74,8 @@ flowchart LR
 - [RF-DETR](./rf-detr.md)
 - [object-detection 选型](../queries/object-detection-model-selection.md)
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [YOLO26 边缘部署与模型压缩：ONNX、TensorRT、量化、剪枝、蒸馏（YOLO26 Edge Deployment & Compression）](../methods/yolo26-edge-model-optimization.md)：参考边缘部署与模型压缩指南，了解如何通过量化与格式转换将视觉检测模型高效部署至 ncnn 引擎。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照 AI 模型推理与服务部署流程，评估 ncnn 在 ARM CPU 与 Vulkan GPU 机载节点上的推理延迟与资源占用。
 
 ## 参考来源
 

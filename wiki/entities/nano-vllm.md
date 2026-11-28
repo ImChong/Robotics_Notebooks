@@ -95,6 +95,8 @@ README 标称约 1200 行 Python；官方在 RTX 4070 Laptop 8GB、Qwen3-0.6B、
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [Mini-SGLang｜精简但完整的在线 LLM Serving 系统](./mini-sglang.md)
 - [vLLM｜生产级大模型推理与持续批处理](./painode-103-vllm.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照 AI 模型推理与服务部署方法，理解 Nano-vLLM 的调度器、KV cache 分块与推理执行路径。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：参考 AI 模型压缩与推理优化方法，评估 prefix caching、Tensor Parallelism 与 CUDA Graph 等推理加速手段的权衡。
 
 ## 参考来源
 

@@ -100,6 +100,8 @@ flowchart TB
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [MuSHR](./mushr.md) — 低成本 ROS 移动平台对照
 - [大象 myAGV](./elephantrobotics-myagv.md) — 另一类开源移动底盘
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照机器人导航与路径执行流程，梳理 OOMWOO 基于 ROS 2 与 Nav2 的室内建图、定位与清扫导航链路。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：参考里程计与激光雷达融合定位方法，理解 2D LiDAR 与轮速里程计在室内 SLAM 建图及回充定位中的协同作用。
 
 ## 参考来源
 

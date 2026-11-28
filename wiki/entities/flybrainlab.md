@@ -78,6 +78,8 @@ python -m pip install flybrainlab[full] neuromynerva
 - [果蝇连接组工具栈](../concepts/fly-connectomics-stack.md)
 - [FlyWire](./flywire.md)
 - [Male CNS Connectome](./male-cns-connectome.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：构建从连接组结构探索、可执行神经回路编译到 GPU 动力学仿真的验证闭环。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：依托果蝇脑电镜连接组三维重建结构进行空间回路可视化与交互式探索。
 
 ## 参考来源
 

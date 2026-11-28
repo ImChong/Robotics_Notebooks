@@ -89,6 +89,8 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 物理真实场景下的语言条件连续量任务（倒多少水、开多大角度），是该闭环第 ③ 层「均值成功率的陷阱」的典型案例：二值成功率掩盖连续量误差
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：以物理仿真中的语言条件连续状态任务为核心，对具身智能体进行可复现基准评测。
+- [Manipulation](../tasks/manipulation.md)：覆盖抓取、倾倒及关节物体连续状态调节等精细物体操作任务的评测场景。
 
 ## 参考来源
 

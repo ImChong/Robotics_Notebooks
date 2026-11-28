@@ -104,6 +104,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：对照树搜索与自评估奖励机制在序贯决策和策略改进中的基础思路。
 
 ## 参考来源
 

@@ -100,6 +100,8 @@ flowchart TB
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 自然语言/脚本 CAD 与 **几何→program 学习** 对照。
 - [URDF-Studio](./urdf-studio.md) — CAD/网格进入机器人描述的工作流参照。
 - [Sim2Real](../concepts/sim2real.md) — 扫描/CAD/仿真网格一致性提醒。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：面向逆向工程从点云或网格自动恢复可编辑的参数化 CAD 建模命令序列。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：将扫描点云或三维网格几何观测进一步转化为结构化、可复用的参数化三维 CAD 表示。
 
 ## 推荐继续阅读
 

@@ -167,6 +167,7 @@ flowchart LR
 - [RL-GSBridge](./paper-sa-2409-20291-rl-gsbridge-3d-gaussian-splatting-based-real2sim.md) — 3DGS Real2Sim RL
 - [Awesome-Real2Sim2Real](./awesome-real2sim2real.md)
 - [Spark 3DGS Renderer](./spark-3dgs-renderer.md) — Web 大场景 3DGS 渲染对照
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照面向渲染与仿真的三维高斯泼溅（3DGS）场景表示与真实感光照渲染流程。
 
 ## 推荐继续阅读
 

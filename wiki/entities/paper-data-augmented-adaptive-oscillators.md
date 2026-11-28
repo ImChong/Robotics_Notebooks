@@ -103,6 +103,7 @@ DA-AO 的摘要展示了“运动模式感知 + 模型式振荡器参数适配�
 
 - [步态生成与相位组织](../concepts/gait-generation.md)：步态相位在腿式运动控制中的位置与相关方法。
 - [腿式机器人运动控制任务](../tasks/locomotion.md)：运动控制任务中的步态、地形适应与评价背景。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：对照基于传感器观测实时估计步态相位与运动状态的滤波估计流程。
 
 ## 参考来源
 

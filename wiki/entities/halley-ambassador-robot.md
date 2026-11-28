@@ -112,6 +112,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：采用 Unity 上位机姿态调度经串口驱动 Arduino 多路舵机的分层控制结构。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：通过 Unity 骨骼动画、UDP/OSC 表情同步与 Arduino 串口舵机固件实现人机交互系统集成。
 
 ## 参考来源
 

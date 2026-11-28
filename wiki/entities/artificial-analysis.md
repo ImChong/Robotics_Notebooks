@@ -87,6 +87,8 @@ flowchart LR
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — task、grader 与完整 agent harness 的评测方法。
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 机器人认知、世界模型、策略和真机评测的层次。
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 具身策略在可复现实验环境中的评估条件。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对比其能力榜单与模型评测协议在质量、任务集和指标口径上的比较方法。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对照不同推理服务端点的首 token 延迟（TTFT）、吞吐（TPS）与成本评估流程。
 
 ## 参考来源
 

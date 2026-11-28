@@ -114,6 +114,8 @@ sequenceDiagram
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md)
 - [实时运控中间件指南](../queries/real-time-control-middleware-guide.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：作为 ROS 2 默认 RMW 中间件实现分布式节点发现、话题通信与软件系统集成。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：通过 QoS 与共享内存传输支撑分层控制系统各模块间的实时指令与状态传递。
 
 ## 参考来源
 

@@ -298,6 +298,8 @@ sequenceDiagram
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — RoboFinals / BenchHub 在评测选型中的位置
 - [具身数据采集五条路线](../queries/embodied-data-collection-five-routes-landscape.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对应光轮以 SimReady 资产与 Lightwheel Platform 串联仿真采数及工业级评测的仿真集成体系。
+- [Manipulation](../tasks/manipulation.md)：对应光轮通过物理准确物体资产与第一视角人类示范数据重点支撑的机器人抓取与操作任务。
 
 ## 参考来源
 

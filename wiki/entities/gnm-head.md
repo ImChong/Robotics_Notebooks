@@ -116,6 +116,7 @@ sequenceDiagram
 - [SHELLS](./paper-shells-layered-surface-sampling.md) — 多视角前馈注册稠密语义网格；论文展示可作快速建 3DMM 的上游
 - [WiLoR](../methods/wilor.md) — 手部精细 MANO 估计，与头脸模型常并联
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 人体感知 → 机器人参考运动总览
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：可作为单目或四维人脸视觉三维重建管线的参数化头脸先验模型，提供解耦的身份与表情网格表示。
 
 ## 参考来源
 

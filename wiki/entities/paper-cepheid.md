@@ -156,6 +156,7 @@ sequenceDiagram
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 软体与接触交互的任务背景
 - [操作任务](../tasks/manipulation.md) — 软体抓取在任务谱中的位置
 - [运动重定向](../concepts/motion-retargeting.md) — 同样处理跨形态运动，但前提是对应关系
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照无需跨网格对应关系的跨几何族运动补全先验与机器人动作重定向流程的异同。
 
 ## 参考来源
 

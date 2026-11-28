@@ -155,6 +155,7 @@ EdenLive 仓库主代码和实时服务采用 Apache-2.0。官方 README 另指�
 - [生成式世界模型](../methods/generative-world-models.md) — 把生成模型放入交互式世界系统中理解
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频模型承担视觉观察或状态演化时的边界
 - [AgentGarten](./paper-agentgarten.md) — 比较显式引擎状态、共享神经渲染和智能体交互闭环
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：基于分块自回归视频扩散与参考代理视频，实现低延迟交互式时序视觉流生成。
 
 ## 参考来源
 

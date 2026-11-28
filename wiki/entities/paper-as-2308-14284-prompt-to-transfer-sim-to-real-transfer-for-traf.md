@@ -108,6 +108,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / LLM-Enhanced Approaches�
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Sim-to-Real Domain Adaptation · Sim2Real 域适应](../methods/domain-adaptation-for-sim2real.md)：对照如何结合域信息提示与前向/逆向动力学模型缩小仿真与真实环境的转移偏差。
 
 ## 参考来源
 

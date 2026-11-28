@@ -151,6 +151,7 @@ McByte++ 在前作基础上扩展，不等于重新实现通用体育视觉平�
 - [Roboflow Sports](./roboflow-sports.md) — 体育检测与分析工具，可对照其场景化 CV 工作流
 - [TrackerLab](./trackerlab.md) — 多目标跟踪方法与评测入口
 - [目标检测](../methods/object-detection.md) — tracking-by-detection 的前置检测环节
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对照将连续视频观测转换为目标轨迹与身份关联信息的视觉感知流程。
 
 ## 参考来源
 

@@ -99,6 +99,7 @@ flowchart TD
 
 - [具身研究 12 篇（恢复/WAM）技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：对照低成本机械臂本体力矩残差感知与物体操作系统及控制接口结合的工程方法。
 
 ## 参考来源
 

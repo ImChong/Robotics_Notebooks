@@ -80,6 +80,7 @@ flowchart LR
 - [MiniMax H3](./minimax-h3.md) — 基座模型及 FL2VA 任务
 - [MiniMax-H3 ORB360 + CardSpin](./minimax-h3-orb360-cardspin.md) — Ref2VA 条件下的另一种独立实现
 - [生成式数据增广](../methods/generative-data-augmentation.md) — 合成视角的使用与验证
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：了解基于首尾帧条件生成并检查时序视角变换视频的通用生成流程。
 
 ## 参考来源
 

@@ -122,6 +122,8 @@ sequenceDiagram
 - [unitree_sdk2](./unitree-sdk2.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [ROS 2 vs LCM](../comparisons/ros2-vs-lcm.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对应作为 ROS 2 一级 RMW 中间件承担传感器、控制与节点间实时发布订阅通信的系统集成角色。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对应在 Unitree 等真机控制系统架构中衔接高层指令、状态回传与底层执行器通信的实时总线层。
 
 ## 参考来源
 

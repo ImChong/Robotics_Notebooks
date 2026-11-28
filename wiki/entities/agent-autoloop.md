@@ -90,6 +90,8 @@ sequenceDiagram
 - [Multi-Agent CAD](./multi-agent-cad.md)：面向 CAD 的多阶段 Agent 工作流。
 
 - [Octop](./tencent-octop.md)：多用户自托管 Agent 助手平台。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：以事件路由、结构化回执与人工确认卡片构成可持续推进的智能体规划与反馈执行循环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过本地规则调度命令行智能体进程并解析回执，实现可控的工具调用与状态持久化。
 
 ## 参考来源
 

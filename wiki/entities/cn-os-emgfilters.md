@@ -60,6 +60,8 @@ institutions:
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照肌电传感器原始采样的工频陷波与带通滤波在传感器信号接入中的前置处理。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：了解肌电信号去噪与包络提取在穿戴式手势遥操作输入链路中的基础作用。
 
 ## 源码运行时序图
 

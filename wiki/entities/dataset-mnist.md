@@ -80,6 +80,7 @@ flowchart LR
 - [Vision Backbones](../concepts/vision-backbones.md)
 - [Object Detection](../methods/object-detection.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 冒烟级基准：典型的「测得漂亮但离真机最远」上游代理指标
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：作为经典的标准化图像分类小基准，常用于新架构或训练流程的快速冒烟验证。
 
 ## 参考来源
 

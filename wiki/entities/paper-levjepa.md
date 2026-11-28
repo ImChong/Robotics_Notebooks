@@ -213,6 +213,7 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md) — 像素生成路线对照
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 「视频当仿真器」与「视频当表征底物」的分工
 - [世界模型物理保真：输出阅读轴](../overview/world-model-physics-fidelity-outputs.md) — 因果表征是 latent 中间路线的前置
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对照无需像素重建的自监督视频表征学习与时序特征编码路线。
 
 ## 参考来源
 

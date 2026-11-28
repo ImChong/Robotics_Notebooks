@@ -96,6 +96,8 @@ sequenceDiagram
 
 - [3DCodeVerse](./paper-3dcodeverse.md) — 可执行三维代码生成与验证。
 - [Gitingest](./gitingest.md) — 整理仓库上下文以辅助阅读代码。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：结合 LiDAR 几何采集与多视角照片比对，是可编辑室内三维重建的一条工程路径。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：可为机器人仿真场景生成提供真实室内几何布局，接入物理仿真前需补充碰撞体与物理参数。
 
 ## 参考来源
 

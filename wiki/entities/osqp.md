@@ -144,6 +144,8 @@ sequenceDiagram
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：作为滚动时域优化中高频凸 QP 子问题的核心数值求解器，利用热启动支撑实时控制循环。
+- [Centroidal NMPC + WBC 栈](../methods/centroidal-nmpc-wbc-stack.md)：在质心规划与全身控制架构中承担接触力分配与约束逆动力学 QP 的实时求解。
 
 ## 参考来源
 

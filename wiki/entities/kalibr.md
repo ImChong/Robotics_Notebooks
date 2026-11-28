@@ -176,6 +176,8 @@ rosrun kalibr kalibr_calibrate_imu_camera \
 - [VINS-Fusion](./vins-fusion.md)
 - [LIO-SAM](./lio-sam.md)
 - [LVI-SAM](./paper-lvi-sam.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：通过标定板与惯性数据联合标定多相机内外参及相机-IMU 的空间外参与时间偏移。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：为 VIO、LIO 与 LVI-SAM 等多传感器融合状态估计管线提供必需的时空标定参数。
 
 ## 参考来源
 

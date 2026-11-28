@@ -175,6 +175,7 @@ flowchart TB
 - [OSMO 触觉手套](./paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — 人机共用开源磁触觉对照
 - [HRDexDB](./hrdexdb-dataset.md) — 人–机配对抓取多模态集对照
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：系统通过触觉标定、手套质检与 60 Hz 多模态时间同步，将原始穿戴交互流编译为可复现的接触数据集。
 
 ## 参考来源
 

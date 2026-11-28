@@ -57,6 +57,8 @@ flowchart LR
 ## 关联页面
 
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)
+- [Manipulation](../tasks/manipulation.md)：对应机器人社区将该产品高频手–臂–口日常交互轨迹视为潜在操作数据采集形态的讨论语境。
+- [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md)：对应其以 28 fps 口腔宏距相机实时识别齿缝并在 100 ms 内触发精确喷射执行器的闭环视觉引导控制逻辑。
 
 ## 参考来源
 

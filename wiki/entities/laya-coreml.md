@@ -133,6 +133,8 @@ sequenceDiagram
 - [Laya（上游 System 1）](./laya.md)
 - [Laya-MLX（MLX 端口）](./laya-mlx.md)
 - [Jev（TypeSafe System One）](./typesafe-jev.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对应将 Laya 模型接入 Core ML 与 ANE 运行时以实现毫秒级本地结构化决策的服务部署流程。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：对应其通过 FP16 与 e8 嵌入优化及短序列 bucket 调优来降低端侧延迟和能耗的实践。
 
 ## 参考来源
 

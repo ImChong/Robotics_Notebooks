@@ -117,6 +117,8 @@ ScienceDiscovery 的 Explanation 写明 agent 环是 **本仓 TypeScript `native
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究生命周期；ScienceDiscovery 落 S2/S3
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 科学 Connector 与工具总线
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 可执行 Swarm
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应平台内多智能体任务分解、工具调用与环境反馈闭环的编排机制。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：对应其 SkillHub 与 Swarm Skills 中可复用技能封装及按需加载的工程范式。
 
 ## 参考来源
 

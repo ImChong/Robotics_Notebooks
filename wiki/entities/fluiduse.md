@@ -117,6 +117,8 @@ sequenceDiagram
 - [Laya-MLX（MLX 端口）](./laya-mlx.md)
 - [Jev（TypeSafe System One）](./typesafe-jev.md)
 - [CLI-Anything（agent-native CLI）](./cli-anything.md)
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：借助 macOS Accessibility 接口与结构化选项封装为本地智能体提供低延迟界面操作能力。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：展示通过 Core ML 在端侧神经网络引擎运行毫秒级轻量模型推理的本地部署形态。
 
 ## 参考来源
 

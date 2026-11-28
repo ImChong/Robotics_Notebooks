@@ -71,6 +71,8 @@ flowchart TD
 
 - [MOSS-Image](moss-image.md) — 图像生成模型与开放权重。
 - [MOSS-Transcribe-Diarize](paper-moss-transcribe-diarize.md) — 多说话人转写模型。
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：对照基于语音识别与语音合成接口构建人形机器人可打断语音交互闭环的方法。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：了解多模态大模型通过 REST 与 WebSocket 实时流式接口对外提供推理服务的架构。
 
 ## 参考来源
 

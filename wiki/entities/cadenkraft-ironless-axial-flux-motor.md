@@ -96,6 +96,8 @@ flowchart LR
 - [PCB Motor](./pcb-motor.md) · [axfluxmdo](./axfluxmdo.md)
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [电机设计流程](../overview/motor-design-workflow.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照无铁芯与 Halbach 磁路方案在工程仿真建模及实测对标中的验证流程。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：衔接电机绕组与电阻电感测试到执行器动力学参数辨识的工程方法。
 
 ## 参考来源
 

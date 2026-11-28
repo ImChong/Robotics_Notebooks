@@ -131,6 +131,7 @@ CEM 优化 J = L_target + L_spd + L_lim + L_curv；最大归一化损失 ≤1 �
 - [Manipulation 周报汇总（2026-10-05 至 10-09）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [操作任务](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照通过少量真机挥动辨识仿真参数并修正策略动作的 Sim2Real 迁移工作流。
 
 ## 参考来源
 

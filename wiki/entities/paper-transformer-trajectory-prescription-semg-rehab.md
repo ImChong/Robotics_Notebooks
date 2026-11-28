@@ -145,6 +145,7 @@ flowchart LR
 - [模仿学习](../methods/imitation-learning.md)
 - [DexEMG](./paper-dexemg.md)（同样用 sEMG，但用于遥操作的手部姿态估计）
 - [膝关节外骨骼仿真扭矩](./paper-knee-exoskeleton-sim-derived-torque.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照康复机器人系统中表面肌电（sEMG）与六维力传感器多模态信号的同步接入与时间对齐流程。
 
 ## 参考来源
 

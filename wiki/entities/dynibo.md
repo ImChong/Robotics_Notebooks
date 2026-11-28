@@ -151,6 +151,8 @@ sequenceDiagram
 - [ssik（解析逆运动学）](./ssik.md) — 和 Dynibo 固定基 DLS-IK 的解法对照
 - [Pinocchio 快速上手](../queries/pinocchio-quick-start.md) — 同类模型、FK 与动力学工具链对照
 - [重力补偿](../concepts/gravity-compensation.md) — 使用 `gravity` 估计静态补偿项
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md)：对应提供 RNEA 逆动力学、质量矩阵与重力计算原语，作为实现逆动力学前馈与重力补偿控制器的底层库。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对应运行时解析树状 URDF 的连杆、关节与惯量属性并构建固定或浮动基座动力学模型的工作流。
 
 ## 参考来源
 

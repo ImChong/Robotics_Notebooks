@@ -137,6 +137,8 @@ sequenceDiagram
 - [ARGUS：可泛化深度伪造视频鉴伪](./paper-argus-deepfake-forensics.md) — 人脸合成与伪造检测为攻防不同任务
 - [KeenTools FaceBuilder](./keentools-facebuilder.md) — 真实头部几何重建与 2D 换脸的边界
 - [图像分割方法分类](../concepts/image-segmentation-taxonomy.md) — 区域掩膜、边界合成的视觉工程背景
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：对应对离线视频与实时摄像头视频流进行单图身份替换、口部掩膜融合及帧后处理的视觉编辑管线。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对应基于 ONNX Runtime 组织人脸检测、替换与增强模型的本地跨后端实时推理流水线。
 
 ## 参考来源
 

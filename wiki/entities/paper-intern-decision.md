@@ -143,6 +143,7 @@ sequenceDiagram
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 决策模块的 choice/score 准确率属「具身大脑认知」层，须再接任务成功率层验证闭环效果。
 - [多模态基础](../concepts/multimodality-basics.md) — 视觉与语言输入的建模背景。
 - [视觉-语言-动作模型（VLA）](../methods/vla.md) — 对照直接生成机器人动作的策略路线。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照结构化决策模型的准确率、延迟与置信度校准基准评测规范。
 
 ## 参考来源
 

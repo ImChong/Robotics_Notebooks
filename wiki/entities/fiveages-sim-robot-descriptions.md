@@ -97,6 +97,8 @@ flowchart TB
 - [Isaac Sim](./isaac-sim.md)
 - [Isaac Lab](./isaac-lab.md)
 - [宇树](./unitree.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：提供面向国产人形与移动操作平台的多机型 URDF 描述包及资产标准化接入规范。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：通过配套的 ros2_control 与 Isaac Sim USD 资产链路打通模型到仿真的集成验证。
 
 ## 参考来源
 

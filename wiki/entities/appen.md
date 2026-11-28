@@ -53,6 +53,8 @@ flowchart LR
 - [Innodata](./innodata.md)
 - [Micro1](./micro1.md)
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：反映具身数据管线中从第一视角采集、人工质检过滤到仿真任务描述的数据治理分工。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：其经过指令与画面一致性筛选的 egocentric 操作数据主要供给下游机器人模仿学习训练。
 
 ## 参考来源
 

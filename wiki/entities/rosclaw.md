@@ -129,6 +129,7 @@ sequenceDiagram
 - [人形语音交互流水线](../queries/humanoid-voice-interaction-pipeline.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：对照 RosClaw 通过 ROS 2 工具集注册、速度安全校验器与 /estop 旁路连接智能体调用与底层控制边界的执行框架设计。
 
 ## 参考来源
 

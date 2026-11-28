@@ -89,6 +89,8 @@ flowchart LR
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 闭环驾驶评测且强调安全与鲁棒性，属该闭环第 ③ 层「策略任务成功率评测」的闭环（非开环回放）口径参照
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：提供标准化闭环仿真评测协议与安全违规指标，衡量具身驾驶策略在复杂交通中的鲁棒性。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对应闭环环境下结合多传感器感知、路径规划与安全约束执行的自主导航评测流程。
 
 ## 参考来源
 

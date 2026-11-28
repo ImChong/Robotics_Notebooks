@@ -177,6 +177,8 @@ sequenceDiagram
 - [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 减法式部件生成**；Comfy 管线可接整对象 mesh，但 SCULPT 的 latent subtractive 分解需官方代码（截至入库日未开源）。
 - [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) — 具身仿真就绪世界引擎（场景/资产尺度不同）。
 - [Sim2Real](../concepts/sim2real.md) — 几何与动力学一致性提醒。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：工作台产出的 GLB/OBJ 网格资产可作为仿真场景生成的视觉模型输入，用于构建环境外观。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：内置 MCP Server 为智能体提供可调用的文生图、网格生成与编辑工具接口。
 
 ## 参考来源
 

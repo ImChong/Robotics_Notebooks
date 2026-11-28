@@ -87,6 +87,8 @@ flowchart TD
 - [LangGraph](./langgraph.md)
 - [Deep Agents](./deep-agents.md)
 - [langchain-ai](./langchain-ai.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对应平台核心的数据集管理、评分器配置与回归对比评测工作流。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应其分布式 tracing 所记录的智能体节点执行路径、状态变迁与反馈调试闭环。
 
 ## 参考来源
 

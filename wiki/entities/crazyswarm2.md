@@ -96,6 +96,8 @@ sequenceDiagram
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [Crazyflie Firmware](./crazyflie-firmware.md)
 - [gym-pybullet-drones](./gym-pybullet-drones.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对应基于 ROS 2 组织轨迹服务、多通信后端（cflib、cpp、sim）与集群状态监控的系统集成架构。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：对应集群依赖动捕、Lighthouse 或 UWB 注入全局位姿并维持多机定位一致性的状态估计链路。
 
 ## 推荐继续阅读
 

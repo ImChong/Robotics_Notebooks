@@ -65,6 +65,8 @@ flowchart LR
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [CFD SciPaper Agent](./xiuyiw-cfd-scipaper-agent.md)
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：将科研与工程专家人设及工作约束封装为可注入代理上下文的 AGENTS.md 配置集合。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：规范代理在工程仿真与科学分析中的步骤分解与证据核查，仍需配合独立求解器验证。
 
 ## 参考来源
 

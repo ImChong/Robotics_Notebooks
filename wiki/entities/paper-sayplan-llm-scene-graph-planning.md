@@ -94,6 +94,7 @@ flowchart TD
 - [上下文主导型 分类 hub](../overview/embodied-wm-route-context.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照结合场景图子图检索、符号约束校验与文本反馈迭代重规划的智能体规划闭环。
 
 ## 参考来源
 

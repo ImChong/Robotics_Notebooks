@@ -194,6 +194,7 @@ sequenceDiagram
 - [目标检测（Object Detection）](../methods/object-detection.md) — 2D/3D 目标检测与 AP 基础。
 - [MSFP Survey](./paper-msfp-embodied-ai-survey.md) — 具身多传感器融合感知的跨方法分类。
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本数据集对应其 ① 传感与标定层（多模态互补 vs 标定/同步复杂度）与 ② 检测层的按天气/光照分桶评测。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照双目相机、事件相机、热成像、4D 雷达与双激光雷达的多传感器同步标定与集成。
 
 ## 参考来源
 

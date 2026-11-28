@@ -140,6 +140,7 @@ flowchart LR
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Open X-Embodiment](../concepts/open-x-embodiment.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：该模型面向数千种夹爪与工具末端接口训练通用接触策略，支持任务中途换手的末端协同适应。
 
 ## 参考来源
 

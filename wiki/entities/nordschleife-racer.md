@@ -90,6 +90,8 @@ sequenceDiagram
 - [drive-game](./drive-game.md) — OSM 真几何 + 240 Hz 模拟器路线
 - [starter-kit-racing](./starter-kit-racing.md) — Kenney 街机 GridMap 样板
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照机器人仿真环境集成流程，理解如何把车辆动力学、赛道场景与状态输入组织为可运行的仿真闭环。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：参考 Sim2Real 迁移工作流，评估游戏级车辆物理参数与真实车辆动力学之间的模型误差边界。
 
 ## 参考来源
 

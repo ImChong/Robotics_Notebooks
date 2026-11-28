@@ -75,6 +75,8 @@ flowchart LR
 - [SAM 3D Body](./sam-3d-body.md) — 从图像恢复全身人体网格，任务范围更广
 - [FaceAnything（4D 脸重建）](./paper-face-anything-4d-face-reconstruction.md) — 单目视频头脸重建，侧重几何与动态外观
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页感知能力在机器人视觉感知栈中的位置与选型
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：作为视觉感知前端模块，从单目整头图像框中快速回归全角度头部朝向姿态。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：采用 DINOv3 大教师蒸馏至 ViT-T 等轻量学生网络并导出 ONNX/TFLite 以降低推理延迟。
 
 ## 参考来源
 

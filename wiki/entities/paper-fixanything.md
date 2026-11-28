@@ -146,6 +146,7 @@ sequenceDiagram
 - **同轴对比：** [R2S-EGO](./paper-r2s-ego.md) 评测含 Difix3D+ 基线；FixAnything 走 **整段视频时序一致** 而非逐帧增强再蒸馏。
 - **3DGS 资产链：** [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) 用 3DGS 缩小 VLA 视觉 gap；FixAnything 可作为 **渲染后处理** 提升稀疏捕获外观。
 - **概念：** [视频作为仿真媒介](../concepts/video-as-simulation.md)、[生成式世界模型](../methods/generative-world-models.md)。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照为稀疏视角三维高斯溅射、NeRF 与网格重建渲染结果提供跨视角一致后处理的增强流程。
 
 ## 推荐继续阅读
 

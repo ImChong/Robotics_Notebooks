@@ -65,6 +65,8 @@ flowchart LR
 - [VGGNet](./vggnet.md)
 - [ImageNet](./dataset-imagenet.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：确立了基于大数据与 GPU 训练的端到端深度卷积视觉表征学习范式。
+- [目标检测（Object Detection）](../methods/object-detection.md)：为 R-CNN 等早期深度目标检测方法提供了可迁移的深层卷积特征提取骨干基础。
 
 ## 参考来源
 

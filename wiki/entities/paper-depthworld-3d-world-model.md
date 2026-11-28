@@ -100,6 +100,7 @@ sequenceDiagram
 - [world-action-models](../concepts/world-action-models.md)
 - [paper-meco-wam-4d-geometry-cotraining](./paper-meco-wam-4d-geometry-cotraining.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
+- [Manipulation](../tasks/manipulation.md)：对照融合三维几何校准与深度预测的世界模型所服务的机器人操作任务场景。
 
 ## 参考来源
 

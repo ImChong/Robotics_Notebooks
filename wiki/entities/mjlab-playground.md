@@ -128,6 +128,7 @@ README 给出了在 **NVIDIA 5090** 上的粗量级收敛时间（Go1 getup 约 
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 动捕轨迹进入机器人任务前常见映射步骤
 - [FreeMoCap](./freemocap.md) — 低成本开源动捕平台，可与本管线在数据侧衔接
 - [模仿学习](../methods/imitation-learning.md) — 参考轨迹与 RL/BC 结合范式
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：了解该任务仓库基于大规模并行仿真进行策略训练的强化学习范式。
 
 ## 推荐继续阅读
 

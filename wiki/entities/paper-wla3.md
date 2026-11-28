@@ -110,6 +110,7 @@ flowchart TD
 - [paper-act-lam](./paper-act-lam.md)
 - [vla](../methods/vla.md)
 - [paper-dido-wam](./paper-dido-wam.md)
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：对照以潜在动作块为条件流匹配预测未来视觉特征的生成式世界模型预训练阶段（LAC-WM）。
 
 ## 参考来源
 

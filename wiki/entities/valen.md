@@ -154,6 +154,7 @@ sequenceDiagram
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 结构化决策在接口阶梯中的位置
 - [G0.5（Qwen3.5 自回归 VLA）](./paper-galaxea-g05.md) — 同骨干、不同输出形态（token 流动作）
 - [VLA 方法页](../methods/vla.md) — 连续控制主战场
+- [GRPO（Group Relative Policy Optimization）](../methods/grpo.md)：Valen 的 RLCD 校准决策训练采用 GRPO 式组内相对优势优化目标。
 
 ## 参考来源
 

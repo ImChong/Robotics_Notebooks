@@ -123,6 +123,7 @@ sequenceDiagram
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 - [Archify](./archify.md) — 同类 Agent Skill + 确定性 validate 交付范式
 - [Agent Skills（Addy Osmani）](./agent-skills-addyosmani.md) — 技能生态索引
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照 Text2MuJoCo 从自然语言规格生成可校验 MJCF 模型、交互清单与冒烟测试证据的仿真场景生成工作流。
 
 ## 参考来源
 

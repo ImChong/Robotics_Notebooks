@@ -121,6 +121,8 @@ sequenceDiagram
 - [Spark vs Aholo 对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)
 - [GS-Playground](./gs-playground.md)
 - [World Labs](./world-labs.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：用于在浏览器端通过 Chunked Streaming LoD 流式渲染视觉三维重建产出的大规模 3DGS 与 Mesh 场景。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：支持 3DGS 外观与传统三角网格碰撞体同屏可视化，服务数字孪生与仿真场景资产检视。
 
 ## 参考来源
 

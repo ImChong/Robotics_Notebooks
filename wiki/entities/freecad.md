@@ -111,6 +111,8 @@ flowchart LR
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)
 - [WBC 实现指南](../queries/wbc-implementation-guide.md)
 - [仿真物理保真度链路](../queries/simulation-physics-fidelity.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：基于约束草图、特征历史与 OpenCASCADE B-rep 内核实现机器人硬件与夹具的参数化建模。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：承担上游几何设计并导出 STEP、STL 或经插件生成 URDF/xacro 机器人描述资产。
 
 ## 参考来源
 

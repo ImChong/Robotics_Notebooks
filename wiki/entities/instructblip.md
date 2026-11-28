@@ -66,6 +66,8 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [BLIP-2](./paper-blip2.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：通过指令感知 Q-Former 从冻结视觉编码器中提取与当前任务指令相关的视觉表征。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：作为经典视觉-语言多模态桥接架构，为理解 VLM 到 VLA 策略接口的演进提供基础对照。
 
 ## 参考来源
 

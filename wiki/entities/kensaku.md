@@ -167,6 +167,8 @@ MCP 客户端配置示例：`{"mcpServers":{"kensaku":{"command":"kensaku-cli","
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Kensaku 工具暴露采用的互操作协议
 - [Retrieval-Augmented Generation（RAG）](../concepts/retrieval-augmented-generation.md) — Kensaku 只提供检索层，不替代理宿主执行生成
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 对照用：Kensaku 的「语义」指文件文本的静态 embedding 检索、OCR 只读截图文字，不属于机器人语义建图/视觉感知栈
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 MCP 与 CLI 向 AI 编码代理暴露受访问范围约束的本地文件、BM25 与语义只读检索接口。
+- [YOLO26-Text + PP-OCRv6：场景与文档 OCR](../methods/yolo26-ocr-document-parsing.md)：内置本地截图与扫描文档 OCR 文本提取回退，可与专精场景/文档 OCR 流水线对照选型。
 
 ## 参考来源
 

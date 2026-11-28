@@ -127,6 +127,8 @@ flowchart LR
 - [Robot Viewer](./robot-viewer.md) — 另一类多格式 Web 检视器，可与广场资产下载后对照使用
 - [Sim2Real](../concepts/sim2real.md) — 标准化资产包是 sim2real 数据与模型治理的上游
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 资产平台在「数据/模型层」的定位
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照平台托管的 URDF、MJCF 与 SDF 机器人模型描述及仿真接入规范。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：参考广场中动捕、遥操作与 VLA/RL 数据资产的标准化整理及复用管线。
 
 ## 推荐继续阅读
 

@@ -104,6 +104,8 @@ sequenceDiagram
 - [DDS 通信机制](../concepts/dds-communication.md)
 - [实时运控中间件指南](../queries/real-time-control-middleware-guide.md)
 - [通信协议知识链](../overview/hub-communication.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：常用于机器人边云推理、数据工具链与仿真–训练桥接的服务端通信集成。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：在分层控制架构中界定异步服务接口与高频实时控制环之间的通信边界。
 
 ## 参考来源
 

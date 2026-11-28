@@ -99,6 +99,8 @@ flowchart LR
 - [RSI-Harness](paper-metarsi-v1.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [HarnessBank](./paper-harnessbank.md)
 - [karpathy/autoresearch](./karpathy-autoresearch.md) · [SoL-Pi](./sol-pi.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 清单里的 29 条 benchmark 测的是 **agent 自进化**（Online/Offline 演化协议），与该闭环的四层具身评测正交：不要把 RSI 榜位当成具身策略的任一层能力证据
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照清单收录的 29 项基准在在线（Online）与离线（Offline）自进化协议下的评测方法。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：参考智能体通过任务执行反馈持续更新自身 harness、上下文、记忆与技能库的闭环机制。
 
 ## 参考来源
 

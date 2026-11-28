@@ -152,6 +152,8 @@ sequenceDiagram
 - [Get It. Study Companion](get-it-study-companion.md)：对照文档可视化、复习日志与节点评分；LearnHarness 更强调摸底及推理链。
 - [DeepTutor](deeptutor.md)：对照 RAG / Book / Skills 的综合学习平台与诊断式教学 harness。
 - [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md)：比较人工维护的结构化 wiki 与学习会话抽取的个人命题图。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应其通过 Probe 诊断起点、DAG 规划与「预测—解释—检查」推进教学的智能体循环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应其接入模型 API、Claude Code CLI 与图谱检索等外部工具调用的接口规范。
 
 ## 参考来源
 

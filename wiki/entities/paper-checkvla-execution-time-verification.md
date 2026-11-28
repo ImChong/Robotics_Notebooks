@@ -95,6 +95,7 @@ flowchart TD
 - [规划主导型 分类 hub](../overview/embodied-wm-route-planning.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：了解其核心策略骨干视觉–语言–动作模型（VLA）在动作块输出与闭环纠偏中的基础架构。
 
 ## 参考来源
 

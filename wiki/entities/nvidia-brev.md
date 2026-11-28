@@ -91,6 +91,8 @@ flowchart TB
 - [Isaac Sim](./isaac-sim.md)
 - [Isaac Lab](./isaac-lab.md)
 - [边缘–云机器人](../concepts/edge-cloud-robotics.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照机器人仿真环境集成流程，了解如何借助 Brev 预配置 GPU 实例与 Launchable 模板快速拉起 Isaac 仿真栈。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：参考 AI 模型推理与服务部署方法，理解在 Brev 云 GPU 实例上部署 NIM 与推理服务的资源与延迟考量。
 
 ## 参考来源
 

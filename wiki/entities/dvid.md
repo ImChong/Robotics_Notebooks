@@ -106,6 +106,8 @@ sequenceDiagram
 - [Neuroglancer](./neuroglancer.md)
 - [果蝇连接组工具栈](../concepts/fly-connectomics-stack.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对应托管 TB 级电镜体数据、分割 labelmap 与突触注释以支撑三维神经重建与体视化检查的数据基础设施。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对应在果蝇连接组与生物脑仿真基础设施中为三维几何与连接拓扑重建提供分支版本化与可追溯数据源。
 
 ## 参考来源
 

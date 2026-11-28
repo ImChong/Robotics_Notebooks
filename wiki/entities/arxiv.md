@@ -117,6 +117,8 @@ flowchart TB
 - [Weights & Biases](./weights-and-biases.md) — 另一类「研究基础设施」宏观实体（实验追踪，非文献档案）
 - [LeRobot](./lerobot.md) — 开源机器人学习框架；权重/数据常并行出现在 Hugging Face，论文仍多挂 arXiv
 - [arXivisual](./arxivisual.md) — arXiv 之上的 AI Manim scrollytelling 阅读层（非 peer review）
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：追踪 cs.RO 与 cs.LG 预印本档案中机器人策略学习方法的主要文献脉络。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照预印本版本与同行评审最终版中的具身智能体评测协议及实验复现依据。
 
 ## 参考来源
 

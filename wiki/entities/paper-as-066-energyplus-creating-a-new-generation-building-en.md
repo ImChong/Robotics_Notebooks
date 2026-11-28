@@ -88,6 +88,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Other Benchmarks。 本页是清单�
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照面向物理边界条件与系统动态建立可复查工程仿真基准的工作流程。
 
 ## 参考来源
 

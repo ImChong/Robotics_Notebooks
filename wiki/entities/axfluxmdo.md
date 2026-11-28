@@ -120,6 +120,8 @@ sequenceDiagram
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [PYLEECAN](./pyleecan.md) · [PCB Motor](./pcb-motor.md) · [ACMOP](./acmop.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照轴向磁通关节电机早期选型阶段的参数化几何建模与多目标设计空间探索。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：参考解析模型、2.5D 环带计算与 Gmsh/GetDP 有限元求解器联动的多学科仿真流程。
 
 ## 参考来源
 

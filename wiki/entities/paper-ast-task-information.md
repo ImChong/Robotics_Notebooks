@@ -115,6 +115,7 @@ sequenceDiagram
 
 - [robot-safety-state-machine](../concepts/robot-safety-state-machine.md)
 - [vla](../methods/vla.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：对照如何将在线监测的任务进展与信息摩擦信号用作强化学习奖励惩罚或运行时诊断。
 
 ## 参考来源
 

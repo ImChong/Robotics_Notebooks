@@ -134,6 +134,8 @@ sequenceDiagram
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：用于拆分并组合机器人、任务、奖励与训练算法配置，支撑策略学习实验管理。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：在仿真训练管线中统一管理环境参数、命令行覆盖与多运行扫描调度。
 
 ## 参考来源
 

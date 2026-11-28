@@ -100,6 +100,7 @@ flowchart LR
 - **数据与训练栈：** [LeRobot](./lerobot.md)、[imitation-learning](../methods/imitation-learning.md)、[sim2real](../concepts/sim2real.md) — 策略与 Sim2Real 方法论；Tnkr 侧重 **项目级复现与贡献闭环**。
 - **设计与分析工具：** [URDF-Studio](./urdf-studio.md)、[robot-explorer](./robot-explorer.md)、[robot-viewer](./robot-viewer.md) — 描述文件编辑与运动学分析；可与 Tnkr 的 CAD/装配流上下游配合。
 - **开源整机索引：** [humanoid-robot](./humanoid-robot.md)、[机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md) — 发现可 fork 的开源平台后，可用 Tnkr 类工具降低「只拿到 CAD 却装不起来」的摩擦（需项目方主动发布）。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：了解 Tnkr 如何把 CAD 装配、电气线束文档与仿真模型资产纳入同一项目空间，降低机器人硬件与模型复现门槛。
 
 ## 范例项目：Open Duck Mini V2
 

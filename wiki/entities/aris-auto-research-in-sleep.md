@@ -137,6 +137,8 @@ sequenceDiagram
 - [PaperSpine](paperspine.md)：论文贡献、Motivation 与文稿交付。
 - [nature-polishing](nature-polishing.md)：证据约束的语言润色。
 - [AI Auto-Research](../concepts/ai-auto-research.md)：跨阶段科研代理总体风险。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：以可组合的 Markdown Skills 封装文献调研、实验桥接与自动审稿等科研代理工作流。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：通过实验计划执行与多轮跨模型独立评审闭环组织科研智能体的迭代执行与反馈。
 
 ## 参考来源
 

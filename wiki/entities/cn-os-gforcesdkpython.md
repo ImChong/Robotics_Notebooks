@@ -99,6 +99,8 @@ sequenceDiagram
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照基于 Python BLE GATT 订阅四元数、原始肌电与手势数据流的传感器集成方式。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：衔接便携肌电臂环无线数据流与人手动作采集或遥操作指令输入链路。
 
 ## 参考来源
 

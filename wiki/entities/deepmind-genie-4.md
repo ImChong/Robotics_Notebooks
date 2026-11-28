@@ -65,6 +65,7 @@ flowchart LR
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频生成与模拟的关系
 - [生成式世界模型](../methods/generative-world-models.md) — 相关方法
 - [机器人世界模型训练闭环](../overview/robot-world-models-training-loop-taxonomy.md) — 训练和评测接口
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：演示中 Gemini 在生成环境循环内观察画面、分解任务目标并基于反馈调整引导步骤。
 
 ## 参考来源
 

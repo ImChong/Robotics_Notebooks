@@ -94,6 +94,8 @@ sequenceDiagram
 - [agnes-harness](./agnes-harness.md) — 关联的工程知识或开源项目。
 - [hello-agents](./hello-agents.md) — 关联的工程知识或开源项目。
 - [fde-guidance-book](./fde-guidance-book.md) — 关联的工程知识或开源项目。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照智能体规划与反馈执行方法，理解 Read/Draft/Write 分级模式与人工审批节点如何约束业务动作闭环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考智能体工具调用接口设计，了解 RefundEngine 如何把企业规则与审计契约封装为可检查的动作接口。
 
 ## 参考来源
 

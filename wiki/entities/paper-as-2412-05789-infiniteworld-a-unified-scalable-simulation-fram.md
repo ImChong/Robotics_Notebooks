@@ -110,6 +110,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照结合语言生成、Real2Sim 资产重建与语义标注构建可交互仿真场景的系统方法。
 
 ## 参考来源
 

@@ -151,6 +151,7 @@ sequenceDiagram
 - [仿真器选型指南](../queries/simulator-selection-guide.md)
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：参考基于可微 GPU 核函数构建高速物理仿真与验证环境的集成路径。
 
 ## 参考来源
 

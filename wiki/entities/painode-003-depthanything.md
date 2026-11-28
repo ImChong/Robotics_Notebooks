@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：作为通用单目深度估计基础模型，为机器人视觉感知管线提供稠密几何深度先验。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：利用大规模无标注图像表征学习实现跨场景泛化的单目几何深度预测。
 
 ## 参考来源
 

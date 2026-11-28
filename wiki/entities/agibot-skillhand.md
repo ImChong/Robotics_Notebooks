@@ -64,6 +64,8 @@ flowchart LR
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [agibot-world-2026](../entities/agibot-world-2026.md)
 - [dexterous-hand-industry-core-players](../concepts/dexterous-hand-industry-core-players.md)
+- [Manipulation](../tasks/manipulation.md)：通过拧螺丝、倒水、打麻将等真实精细操作任务验证并迭代灵巧手硬件与传感设计。
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：代表本体自研的灵巧末端执行器路线，将视觉与触觉传感集成至操作系统中。
 
 ## 参考来源
 

@@ -71,6 +71,7 @@ flowchart TD
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：对照顶部环形声源定位麦克风阵列、侧面交互麦克风与喇叭布局在人形机器人语音唤醒与交互闭环中的前端采集作用。
 
 ## 参考来源
 

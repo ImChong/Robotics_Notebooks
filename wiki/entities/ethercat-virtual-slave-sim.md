@@ -61,6 +61,8 @@ summary: "EtherCAT 虚拟从站仿真（EtherCAT Master Sim / ethercat-master-si
 - [soem](./soem.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-opensource-libs-wechat](../overview/ethercat-opensource-libs-wechat.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对应在缺乏真实硬件从站时通过软件虚拟从站接入主站代码进行联调与功能验证的仿真集成环节。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对应作为机器人关节现场总线工具链一环在 PC 端打通主站通信协议栈与控制软件接口的系统集成调试。
 
 ## 参考来源
 

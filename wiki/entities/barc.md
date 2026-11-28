@@ -80,6 +80,7 @@ onboard 启动见仓内 `scripts/`；算法开发从 `workspace/` catkin 包入�
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
 - [F1TENTH Gym](./f1tenth-gym.md)
 - [MPC](../methods/model-predictive-control.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对照上层 ROS 控制节点、传感器话题与底层 Arduino 电调舵机执行器之间的分层架构。
 
 ## 参考来源
 

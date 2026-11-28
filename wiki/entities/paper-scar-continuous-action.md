@@ -208,6 +208,7 @@ Shared-Latent 训练误差最低（MSE 0.0766），但 SCAR-kl-grl 在留出数�
 - [世界动作模型](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [跨本体专题枢纽](../overview/hub-cross-embodiment.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对照从时序视觉转移中学习跨本体统一连续潜动作表征的视觉表征学习范式。
 
 ## 参考来源
 

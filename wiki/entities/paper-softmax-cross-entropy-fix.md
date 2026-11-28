@@ -91,6 +91,7 @@ flowchart TD
 
 - [AWR](../methods/awr.md) — 加权交叉熵用于策略更新的机器人学习方法
 - [Scaling Laws for Neural Language Models](./paper-scaling-laws-neural-language-models.md) — 交叉熵作为语言模型预训练评测损失的背景
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：对照离散动作预测、动作 token 训练与策略蒸馏等机器人策略学习环节的数值损失实现。
 
 ## 参考来源
 

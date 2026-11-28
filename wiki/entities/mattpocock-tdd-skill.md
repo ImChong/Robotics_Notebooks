@@ -83,6 +83,8 @@ flowchart TD
 - [mattpocock/skills 总览](mattpocock-skills.md)
 - [improve-codebase-architecture](mattpocock-improve-codebase-architecture-skill.md) — 找 deep module 后再 TDD
 - [Ingest Workflow](../../schema/ingest-workflow.md)
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：对照基于测试门禁与自动化校验的编码智能体交付验证闭环。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：理解将测试驱动开发规约与反模式检查封装为智能体技能的方法。
 
 ## 参考来源
 

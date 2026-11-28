@@ -95,6 +95,8 @@ flowchart TD
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 全 SDLC 25 技能包
 - [Hermes Agent](hermes-agent.md) — 常驻运行时与技能安装位
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 wiki 维护规范
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：聚焦开放代理技能包的目录检索、来源质量核验与按需安装分发规范。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 CLI 工具调用与标准元技能规约让编码代理可靠发现并接入外部技能。
 
 ## 参考来源
 

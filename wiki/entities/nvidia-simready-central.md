@@ -171,6 +171,8 @@ sequenceDiagram
 - [EmbodiChain](./embodichain.md) — 另一套使用 SimReady/生成式资产准备仿真环境的机器人软件栈。
 - [Sim2Real](../concepts/sim2real.md) — 仿真场景与真实部署之间的差距和验证问题。
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md) — Stage 2 中的物性、关节化与可仿真资产验收。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照机器人模型描述与资产接入流程，了解 SimReady OpenUSD 资产包的物理属性、profile 与接入核验要求。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：参考机器人仿真场景生成方法，理解如何检索 SimReady 资产并由人工或 Agent 组合成可重置、可复核的仿真场景。
 
 ## 相关研究与项目补充
 

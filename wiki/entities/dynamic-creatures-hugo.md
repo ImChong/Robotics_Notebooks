@@ -80,6 +80,7 @@ flowchart TD
 - [Boston Dynamics](./boston-dynamics.md) — Dynamic Creatures 的官方合作伙伴与技术生态背景
 - [人形机器人](./humanoid-robot.md) — 对照双足平台的本体与开发流程；Hugo 的公开资料尚不足以确认其完整机构形态
 - [人形语音交互](../methods/humanoid-voice-interaction.md) — 面向游客的语音交互设计可参考的相关方向
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：其 SnowJay 平台协调运动、感知、行为编排与安全停机，体现服务型角色机器人的控制架构分层。
 
 ## 参考来源
 

@@ -94,6 +94,8 @@ sequenceDiagram
 - [PYLEECAN](./pyleecan.md) · [Ironless QDD](./ironless-qdd-actuator.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [FOC 逐步推导](../formalizations/field-oriented-control-derivation.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：遵循从 DXF 几何导入、材料绕组设定、磁场边界配置到转矩扫角验证的电磁仿真流程。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：辅助在电机设计阶段从仿真转矩—角度特性预估关节执行器的电磁力矩常数与脉动特性。
 
 ## 参考来源
 

@@ -71,6 +71,8 @@ flowchart LR
 - [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) — 与 AutoDL、Featurize 等并列对比
 - [AutoDL](./autodl.md)、[Featurize](./featurize.md) — 同类竞品
 - [Isaac Lab](./isaac-lab.md) — 常见高算力训练栈
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：了解在云端 GPU 算力平台上运行大规模并行仿真与强化学习训练的核心方法。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：对照机器人策略训练从数据准备到云端算力调度的完整工作流。
 
 ## 推荐继续阅读
 

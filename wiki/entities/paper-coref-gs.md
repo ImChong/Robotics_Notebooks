@@ -104,6 +104,7 @@ sequenceDiagram
 - [navigation-slam-autonomy-stack](../overview/navigation-slam-autonomy-stack.md)
 - [model-context-protocol](../concepts/model-context-protocol.md)
 - [10 篇技术地图](../overview/contact-wm-10-papers-technology-map.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照多智能体局部高斯溅射建图、几何语义对齐与三维场景重建流程。
 
 ## 参考来源
 

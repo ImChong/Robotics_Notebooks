@@ -80,6 +80,8 @@ flowchart TD
 - [grill-me](mattpocock-grill-me-skill.md)
 - [setup-matt-pocock-skills](mattpocock-setup-skills-skill.md)
 - [tdd](mattpocock-tdd-skill.md) — 测试命名应读 GLOSSARY
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：了解该双技能工作流如何作为可复用的智能体技能进行封装与调度。
+- [Claude Code 动态多 Agent 工作流 / Dynamic Workflows and Task-Specific Harnesses in Claude Code](../methods/claude-code-dynamic-workflows.md)：参考面向复杂研发任务的智能体工作流编排与约束设计实践。
 
 ## 参考来源
 

@@ -128,6 +128,8 @@ sequenceDiagram
 - [逆运动学](../formalizations/inverse-kinematics.md) — 数值 IK / DLS / 零空间基本功
 - [mjbatch](./mjbatch.md) — 同作者 MuJoCo CPU 批量并行库
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：了解利用微分逆运动学与约束优化将参考动作映射到目标机器人关节空间的流程。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对照将逆运动学求解出的可行轨迹衔接至人形全身实时控制与动作跟踪的方法。
 
 ## 参考来源
 

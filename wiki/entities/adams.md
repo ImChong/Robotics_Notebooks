@@ -121,6 +121,8 @@ flowchart LR
 - [Locomotion RL 仿真器选型](../queries/simulator-selection-guide.md) — 明确「不要用工业 Adams 替代 RL 仿真器」
 - [Sim2Real](../concepts/sim2real.md) — 仿真可信度与迁移；工业虚拟样机是另一条验证文化
 - [Adams vs MuJoCo vs Isaac Sim：三类物理问题选型](../comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — Adams / MuJoCo / Isaac Sim 按三类物理问题（载荷寿命 / 控制策略 / 感知集成）选型，含 Cadence 收购核对
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：作为工业多体动力学工程仿真平台，用于带约束三维机械系统的虚拟样机动力学验证。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：可与面向机器人控制和 RL 训练的仿真环境集成流程对照，区分整机 CAE 样机验证与并行物理引擎。
 
 ## 参考来源
 

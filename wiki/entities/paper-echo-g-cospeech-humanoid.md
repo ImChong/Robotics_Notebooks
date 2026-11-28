@@ -89,6 +89,7 @@ flowchart TD
 
 - [SONIC 跟踪](./nvidia-sonic.md)
 - [人形运动](../tasks/humanoid-locomotion.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对照生成式全身共语动作经重定向后由固定全身运动跟踪器执行的控制闭环。
 
 ## 参考来源
 

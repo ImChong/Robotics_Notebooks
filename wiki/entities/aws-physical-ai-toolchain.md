@@ -127,6 +127,8 @@ sequenceDiagram
 - [仿真到真机迁移](../concepts/sim2real.md)
 - [世界-动作模型](../concepts/world-action-models.md)
 - [Video Prediction Policy 2（VPP2）](./video-prediction-policy-2.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对应云端 SIL 仿真验证到真实边缘硬件 HIL 测试的端到端 Sim2Real 闭环工作流。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：衔接数据生成整理、GR00T/Cosmos 策略训练与仿真评测飞轮的数据管线架构。
 
 ## 参考来源
 

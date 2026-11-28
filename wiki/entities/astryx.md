@@ -142,6 +142,8 @@ npx @astryxdesign/cli component Button
 - [React Bits](./react-bits.md)：面向网站动效的可复制组件，与 Astryx 整套应用设计系统定位不同。
 - [GSAP Skills](./gsap-skills.md)：Agent 编写 Web 动效的技能文档，Astryx 侧重 UI 设计与组件规范。
 - [Plotly](./plotly.md)：真实机器人实验数据交互图表；Astryx 可提供承载这些可视化的外围 UI。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考其 CLI 为人类开发者与编码智能体提供统一组件检索与指令注入的接口设计。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对照机器人实验看板及前端控制界面接入底层机器人软件系统的集成边界。
 
 ## 参考来源
 

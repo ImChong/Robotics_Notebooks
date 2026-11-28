@@ -129,6 +129,8 @@ flowchart TB
 - [Isaac Gym / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — GPU 并行仿真背景
 - [仿真选型指南](../queries/simulator-selection-guide.md) — 框架与算力协同决策
 - [ComfyUI](./comfyui.md) — 镜像市场常见的节点式生成引擎；与仿真 GUI 镜像是不同产品面
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：提供面向 Isaac Sim 等图形仿真栈的 GPU 加速容器桌面与预置镜像环境。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：为大规模并行机器人仿真与强化学习策略训练提供按需或包时长的云端算力。
 
 ## 推荐继续阅读
 

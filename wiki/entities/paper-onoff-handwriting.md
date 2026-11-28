@@ -114,6 +114,7 @@ flowchart LR
 - [视觉伺服](../methods/visual-servoing.md) — 真机写字仍要标定接触平面
 - [DigitCode](./paper-digitcode.md) — 另一条「把连续手部运动变成可执行符号」线
 - [Ego2Robot](./paper-ego2robot.md) — 人数据变成机器人可训资产
+- [Manipulation](../tasks/manipulation.md)：对照机械臂持笔接触画布并执行轨迹的精细操作任务语境。
 
 ## 参考来源
 

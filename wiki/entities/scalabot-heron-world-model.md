@@ -84,6 +84,7 @@ flowchart LR
 - [World Action Models](../concepts/world-action-models.md)
 - [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)
 - [noetix_sdk_bumi](./cn-os-noetix-sdk-bumi.md)
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：了解 HERON-World Model 规划的滑窗推演与多候选动作评分如何与模型预测控制结合以驱动真机执行。
 
 ## 参考来源
 

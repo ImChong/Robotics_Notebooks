@@ -93,6 +93,8 @@ flowchart LR
 - [开源 QDD 项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — Ben 自研可背驱 QDD 执行器 + 驱动板固件是驱动链 **①EDA / ②FOC 固件** 层的开源范式
 - [四足机器人](./quadruped-robot.md)
+- [Locomotion](../tasks/locomotion.md)：其主导研发的 MIT Mini Cheetah 可背驱四足平台是腿式动态运动研究的经典实验床。
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：衔接 Mini Cheetah 上广泛采用的凸模型预测控制（MPC）与全身冲量控制运动栈。
 
 ## 参考来源
 

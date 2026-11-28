@@ -130,6 +130,8 @@ sequenceDiagram
 - [Blender](./blender.md) — 更完整的 DCC 工作台，可衔接三维资产与动画制作。
 - [ARDY](./ardy.md) — 学习式交互运动生成；与 CozyClay 确定性 Motion3 编译主路径不同。
 - [ComfyUI](./comfyui.md) — 第三方生成式图像/网格管线，可用于视觉资产制作而非预演编排本身。
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：对照先通过三维预演确定角色动作与机位再导出灰盒片段与关键帧的视频生成流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考通过 MCP 接口支持智能体编辑场景时间线并接收 QA 诊断反馈的调用机制。
 
 ## 参考来源
 

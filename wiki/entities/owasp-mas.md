@@ -99,6 +99,8 @@ flowchart LR
 - [边缘–云端协同](../concepts/edge-cloud-robotics.md)
 - [模型版本管理与 OTA](../concepts/model-versioning-ota.md)
 - [系统工程 Hub](../overview/hub-systems-engineering.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：为机器人移动端伴侣应用与控制端通信链路提供本地存储、API 鉴权与接口集成的安全基线对照。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：针对机器人手机端遥操作与设备配网控制场景，梳理移动客户端抗篡改与安全测试要求。
 
 ## 参考来源
 

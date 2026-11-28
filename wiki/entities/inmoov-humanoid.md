@@ -56,6 +56,7 @@ flowchart LR
 - [人形机器人](./humanoid-robot.md)
 - [Manipulation](../tasks/manipulation.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：该开源 3D 打印人形平台通过 Arduino 固件与 MyRobotLab 软件栈打通传感器与执行器控制集成。
 
 ## 推荐继续阅读
 

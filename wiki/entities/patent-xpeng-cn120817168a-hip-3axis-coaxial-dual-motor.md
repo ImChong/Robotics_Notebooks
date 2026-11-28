@@ -72,6 +72,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [膝侧谐波判据](../concepts/humanoid-knee-harmonic-drive-limits.md)
 - [执行器驱动链](../queries/actuator-drive-chain-selection-loop.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：对照人形机器人双足行走任务对髋关节三轴共心驱动布局与四连杆大可达空间的机构支撑。
 
 ## 参考来源
 

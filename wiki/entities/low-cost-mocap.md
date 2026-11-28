@@ -124,6 +124,8 @@ sequenceDiagram
 - [状态估计](../concepts/state-estimation.md)
 - [传感器融合](../concepts/sensor-fusion.md)
 - [动捕到机器人动作重定向](./mocap-retarget.md)
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：对应利用多视角红外三角化与 SFM 外参标定构建外部位姿状态估计的定位流程。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对应将改装红外相机流同步接入主机并经 ESP32 链路送入飞控回路的传感器集成机制。
 
 ## 参考来源
 

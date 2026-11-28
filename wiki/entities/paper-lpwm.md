@@ -142,6 +142,7 @@ sequenceDiagram
 - [INTACT](./paper-intact.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 - [潜空间想象](../concepts/latent-imagination.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：对照利用稀疏隐空间动力学表征辅助测试时规划的基于模型控制路线。
 
 ## 参考来源
 

@@ -83,6 +83,8 @@ flowchart LR
 - [3D Gen Studio](./3dgenstudio.md) — 多模型 3D 资产生产与编辑工作台，可作为细化模型的上游/编排层。
 - [Meshroom](./meshroom.md) — 从多视图照片进行摄影测量重建的离线路线。
 - [Sim2Real](../concepts/sim2real.md) — 三维网格进入机器人仿真后的尺度、碰撞和物理一致性问题。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：基于参考图像与粗网格生成高分辨率三维物体几何，为视觉重建与资产制作提供几何细化环节。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：生成的高精度网格道具经尺度、碰撞体与物理属性配置后可接入具身仿真场景资产库。
 
 ## 参考来源
 

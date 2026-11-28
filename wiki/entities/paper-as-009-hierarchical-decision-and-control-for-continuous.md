@@ -88,6 +88,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：了解存在动作延迟条件下的分层决策控制与策略评估方法。
 
 ## 参考来源
 

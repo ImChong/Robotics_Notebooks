@@ -96,6 +96,8 @@ flowchart LR
 - [point_lio_unilidar](./point-lio-unilidar.md)
 - [DualMap](./dualmap.md) / [OVO](./ovo-semantic-mapping.md) / [OV-SAM3D](./ov-sam3d.md)
 - [FindAnything](./findanything.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对照将二维检测分割结果经相机外参投影到三维 LiDAR 点云的视觉感知流程。
+- [目标检测（Object Detection）](../methods/object-detection.md)：了解管线前端用于为 SAM 提供实例框提示的 DETR 等二维目标检测方法。
 
 ## 参考来源
 

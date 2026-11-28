@@ -129,6 +129,7 @@ flowchart TB
 - [轨迹优化（Trajectory Optimization）](../methods/trajectory-optimization.md)
 - [最优控制（OCP）](../concepts/optimal-control.md)
 - [作动器传动选型闭环](../queries/actuator-drive-chain-selection-loop.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：组织轨迹规划与执行器驱动模式切换接口的控制系统分层架构。
 
 ## 参考来源
 

@@ -102,6 +102,8 @@ sequenceDiagram
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 - [TensorLean：PTX 级 GPU 算子形式化验证](./tensorlean.md) — 对照 GPU Kernel 正确性证明与 FlashProve 的推理结果证明，保障层级不同。
 - [Anthropic Claude API Skill](anthropic-claude-api-skill.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：面向大模型推理服务提供事后重算与密码学可验证性检查的补充审计思路。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：辅助在模型评测与审计场景中核验远端输出是否忠实来自承诺权重下的指定计算。
 
 ## 参考来源
 

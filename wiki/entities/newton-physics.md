@@ -244,6 +244,7 @@ sequenceDiagram
 - [OmniSim](./omnisim.md) — Newton 唯一后端的代理原生仿真器
 - [RoboSimStudio](./robosimstudio.md) — 基于 Newton、面向机器人操作任务 Real2Sim 的交互式 Agentic Robotics 工具包
 - [Adams vs MuJoCo vs Isaac Sim：三类物理问题选型](../comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — Newton 在 Adams / MuJoCo / Isaac Sim 三类问题选型中的位置
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解将多求解器物理引擎、机器人模型与控制接口集成为仿真环境的方法。
 
 ## 参考来源
 

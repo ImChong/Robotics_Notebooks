@@ -108,6 +108,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [遗传编程（Genetic Programming, GP）](../methods/genetic-programming.md)：对照以程序代码为进化个体并按适应度迭代搜索结构的相关遗传编程范式。
 
 ## 参考来源
 

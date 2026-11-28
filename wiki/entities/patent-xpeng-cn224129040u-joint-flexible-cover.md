@@ -72,6 +72,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [Manipulation](../tasks/manipulation.md)：对照上肢多关节协同操作工况，了解带避让腔的随形柔性包覆如何在保留运动余量的同时实现连续外覆防护。
 
 ## 参考来源
 

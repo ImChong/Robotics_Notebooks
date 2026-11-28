@@ -149,6 +149,7 @@ sequenceDiagram
 - 评测选型：[具身评测与基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 - 重定向技术栈：[运动重定向概念](../concepts/motion-retargeting.md) · [重定向管线](../concepts/motion-retargeting-pipeline.md) · [三类重定向路线](../queries/motion-retargeting-three-routes-landscape.md)
 - 参数化人体与全身操纵：[SMPL-X 概念页](../concepts/smpl-x.md) · [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照将 HUMOTO 动捕人-物交互序列映射至人形机器人骨架并检验可行性的动作重定向流程。
 
 ## 参考来源
 

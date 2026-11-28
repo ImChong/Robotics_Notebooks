@@ -108,6 +108,7 @@ flowchart LR
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本文落在 ③ 执行器建模层：并联弹性使「理想力矩源」假设显式失效
 - [理想力矩源抽象 gap](../concepts/torque-source-abstraction-gap.md) — PEA 让指令力矩 ≠ 关节力矩
 - [开源 QDD 执行器项目](../comparisons/open-source-qdd-actuator-projects.md) — 无弹性件对照路线
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照双凸轮与踝部结构件在工程仿真建模及有限元静力验证中的分析流程。
 
 ## 参考来源
 

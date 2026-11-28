@@ -107,6 +107,7 @@ flowchart LR
 - **盘点：** [国内具身开源 424 覆盖](../queries/china-domestic-opensource-424-coverage.md) — 亮源新创条目
 - **国内公司对照：** [Robbyant（蚂蚁灵波）](./robbyant.md) — 感知→世界模型→VLA 的 LingBot 模型全栈路线
 - **子项目技术地图：** [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：对接其规模化对齐阶段代表成果 LightNav-0 所面向的视觉语言导航任务。
 
 ## 推荐继续阅读
 

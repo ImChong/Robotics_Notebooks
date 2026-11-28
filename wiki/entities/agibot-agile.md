@@ -81,6 +81,8 @@ flowchart LR
 
 - [身体能力底座分类 hub](../overview/agibot-release-category-05-body-foundations.md)
 - [全身控制](../concepts/whole-body-control.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：将实时环境观测与动态可通行性视觉感知直接耦合进人形高频全身运动控制闭环。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：在灵犀 X2 等人形本体上验证移动与上下肢协同操作一体化的高动态视觉闭环任务。
 
 ## 参考来源
 

@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：梳理 3D Gaussian Splatting 生态工具与关键文献，服务高速高保真三维视觉重建流程。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：连接显式三维高斯场景表征与机器人下游空间感知、定位和环境理解需求。
 
 ## 参考来源
 

@@ -68,6 +68,8 @@ flowchart TD
 - [人形机械布局](../concepts/humanoid-mechanical-layout-design.md)
 - [关节轴承选型](../concepts/robot-joint-bearing-selection.md)
 - [公差仿真工具链](../concepts/structure-tolerance-simulation-toolchain.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：衔接结构参数选型计算与可编辑三维几何模型的参数化 CAD 建模流程。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照完成初步尺寸与公差校核后开展力学边界条件设置与仿真验证的工作流。
 
 ## 参考来源
 

@@ -107,6 +107,8 @@ flowchart TB
 
 - [身体能力底座分类 hub](../overview/agibot-release-category-05-body-foundations.md)
 - [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：作为人形运动小脑基座，在动力学与接触约束下实现高稳定性动作过渡与全身运动控制。
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md)：支持从仰躺、趴地或外力扰动等任意姿态动态规划连续恢复轨迹，提升全身平衡恢复能力。
 
 ## 参考来源
 

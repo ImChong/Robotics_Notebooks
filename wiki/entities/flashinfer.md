@@ -92,6 +92,8 @@ README 写明支持 SM75 及以上多代 NVIDIA GPU，但不是每个功能都�
 - [vLLM｜生产级大模型推理与持续批处理](./painode-103-vllm.md)
 - [SGLang｜大规模语言与多模态模型推理服务框架](./sglang.md)
 - [TensorRT-LLM｜NVIDIA 大模型推理运行时与 LLM API](./tensorrt-llm.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：为 vLLM、SGLang 等大模型推理服务框架提供底层高性能注意力与采样 GPU 算子。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：结合 KV 缓存布局与高效算子内核调度优化大模型推理吞吐与显存利用。
 
 ## 参考来源
 

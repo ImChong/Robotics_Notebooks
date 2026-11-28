@@ -91,6 +91,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Abaqus Agent Skills](./1348109517-abaqus-agent-skills.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对照工程仿真建模与验证流程，规范 Abaqus Agent 生成几何、网格、边界条件及核查求解结果的可信度。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考智能体工具调用接口设计，理解该代理如何经 MCP server 与插件接口调用 Abaqus 求解器并回收报错反馈。
 
 ## 参考来源
 

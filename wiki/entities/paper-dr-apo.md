@@ -121,6 +121,7 @@ flowchart TD
 - [DR-WM](./paper-dr-wm.md) · [DR-VLA](./paper-dr-vla.md) — 云深处同批具身导航研究
 - [云深处 rl_training](./deeprobotics-rl-training.md) — 同公司强化学习训练工程栈
 - [轮足四足机器人](../concepts/wheel-legged-quadruped.md) — 真机测试平台 M20 所属形态
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照其后训练扩散导航策略（NavDP）在仿真与四足真机导航闭环中的应用。
 
 ## 参考来源
 

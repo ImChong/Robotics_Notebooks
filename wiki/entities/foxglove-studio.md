@@ -92,6 +92,8 @@ flowchart LR
 - [PlotJuggler](./plotjuggler.md) — 时序曲线与 WebSocket bridge 互通；多模态复盘可与 PJ 分工
 - [MCAP](./mcap-log-format.md) — 常用日志容器
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：通过统一时间轴汇集实时话题与 MCAP 日志，支持机器人软件系统的在线观察与异常复盘。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：在真机部署阶段同步比对策略输出、传感器时序与安全事件，辅助定位 Sim2Real 迁移问题。
 
 ## 参考来源
 

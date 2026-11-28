@@ -112,6 +112,8 @@ OpenPCDet 值得作为 3D 检测的工程**统一复现层**；真正比较 Poin
 - [LIO-SAM](./lio-sam.md)
 - [LVI-SAM](./paper-lvi-sam.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — LiDAR 点云 3D 检测工具箱，跨过 2D 检测直接在 ③ 3D 层出框；KITTI / Waymo 上的检测分数不等于 ④ 下游策略消费层可用的时延与坐标约定
+- [目标检测（Object Detection）](../methods/object-detection.md)：对照点云 3D 目标检测模型在统一特征编码、候选框生成与旋转 NMS 后处理下的检测管线。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：将该工具箱训练的 LiDAR 3D 检测模型接入机器人环境感知与目标定位流程。
 
 ## 参考来源
 

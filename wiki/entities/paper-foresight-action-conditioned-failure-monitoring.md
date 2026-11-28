@@ -80,6 +80,7 @@ flowchart LR
 - [趋势与判断 分类 hub](../overview/embodied-wm-route-outlook.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：对照其所服务的视觉–语言–动作策略在执行期的失败监测与安全闭环语境。
 
 ## 参考来源
 

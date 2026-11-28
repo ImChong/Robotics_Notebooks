@@ -71,6 +71,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [膝侧谐波判据](../concepts/humanoid-knee-harmonic-drive-limits.md)
 - [执行器驱动链](../queries/actuator-drive-chain-selection-loop.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：对照人形机器人动态行走、深蹲与迈步需求，理解前置直线执行器与大角度连杆膝关节对降低小腿惯量的意义。
 
 ## 参考来源
 

@@ -72,6 +72,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照外周空心管电池套覆躯干与四肢时在机器人结构、关节与物理属性模型中的描述与仿真接入。
 
 ## 参考来源
 

@@ -71,6 +71,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [Manipulation](../tasks/manipulation.md)：结合机械臂物体操作过程中的大范围肘部屈伸工况，了解柔性遮挡结构如何兼顾活动避让与外形连续防护。
 
 ## 参考来源
 

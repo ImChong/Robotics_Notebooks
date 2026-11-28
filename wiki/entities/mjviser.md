@@ -147,6 +147,8 @@ Viewer(model, data).run()
 - [MuJoCo](./mujoco.md) — 动力学与 MJCF 模型
 - [mjlab](./mjlab.md) — 训练框架与查看器分工
 - [MuJoCo Warp](./mujoco-warp.md) — 并行仿真相关技术
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解将机器人物理模型、状态步进与交互式可视化调试工具接入仿真流程的方法。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照加载并检验 MJCF 模型几何、关节定义与物理属性的资产接入环节。
 
 ## 参考来源
 

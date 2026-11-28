@@ -125,6 +125,8 @@ sequenceDiagram
 - [BootLoops](./bootloops.md)：计算工具与验证协议的实现边界。
 - [AI Auto-Research](../concepts/ai-auto-research.md)：研究生命周期与人机治理。
 - [Every Joule](./every-joule.md)：使用 Claude 与 Three.js 制作的十课互动 3D 物理书，是 AI 辅助内容制作的独立案例。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照由智能体承担可执行计算并结合外部反馈与专家判断的规划执行闭环。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：参考科研与工程场景下围绕外部可核验结果构建自动化验证闭环的方法论。
 
 ## 参考来源
 

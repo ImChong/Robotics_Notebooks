@@ -132,6 +132,8 @@ flowchart TB
 - [Multi-Agent CAD](./multi-agent-cad.md)
 - [GenCAD](./gencad.md)
 - [Tinkercad](./tinkercad.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照数据集所记录的多款专业 CAD 与 BIM 软件参数化建模流程与工程交付物。
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md)：了解桌面录屏与键鼠操作轨迹用于训练 Computer-Use Agent 模仿学习的基础范式。
 
 ## 参考来源
 

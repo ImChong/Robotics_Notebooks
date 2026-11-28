@@ -162,6 +162,7 @@ sequenceDiagram
 - [LightSplat](./paper-lightsplat.md) — 对照：在已有 3DGS 上增加语义，而非生成完整对象资产
 - [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — 多视图几何基础模型与重建路线的全景背景
 - [生成式世界模型](../methods/generative-world-models.md) — 生成模型在空间重建中的能力边界
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照结合生成先验与深度、可见性及可微 3DGS 渲染约束的物体级三维重建流程。
 
 ## 参考来源
 

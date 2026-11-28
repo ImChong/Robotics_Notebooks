@@ -61,3 +61,5 @@ flowchart LR
 - [GVHMR](./gvhmr.md)：人体运动恢复上游之一。
 - [Motion Retargeting](../concepts/motion-retargeting.md) 与 [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)：所属任务链。
 - 来源：[仓库归档](../../sources/repos/motion2mixamorig.md)。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对照将单目视频恢复的人体骨架序列映射到异构目标骨骼结构并校验可行性的通用重定向流程。
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md)：了解面向异构机器人骨架的高效几何运动重定向算法与动画骨架适配的工程联系。

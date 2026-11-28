@@ -138,6 +138,7 @@ flowchart TD
 - [机器人板载通信架构](../concepts/robot-onboard-communication-architecture.md)：机器人内部通信的背景
 - [VLA 方法页](../methods/vla.md)：VLA 总览
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：协同感知特征的传输时延与截止时间，对应其第④层「感知延迟计入控制带宽预算」
+- [Manipulation](../tasks/manipulation.md)：对照论文在 LIBERO 语言条件操作基准上结合 SmolVLA 开展的受限带宽通信评测场景。
 
 ## 参考来源
 

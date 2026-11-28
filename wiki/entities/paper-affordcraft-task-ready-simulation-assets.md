@@ -100,6 +100,7 @@ sequenceDiagram
 - [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
 - [robot-simulation-three-layers](../concepts/robot-simulation-three-layers.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对接将检索与外观适配后的可交互资产纳入可执行仿真场景的生成流程。
 
 ## 参考来源
 
