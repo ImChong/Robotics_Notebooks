@@ -124,6 +124,7 @@ flowchart LR
 
 ### 推荐读什么
 
+- [AVAIL｜用视觉里程碑引导真机灵巧操作](../wiki/entities/paper-avail-dexterous-manipulation-from-images.md) — 在四指手上把抓取、掉落后重抓与接触操作分成可反复练习的子技能，对照固定顺序与观测驱动切换。
 - [PyRUA-Dex](../wiki/entities/paper-pyrua-dex.md) — 把编码 Agent 的任务探索转为可独立执行的双手程序策略；当前 dex 分支仅提供介绍与示意图。
 - [mjlab_hand｜六种灵巧手的 RL 操作任务与 ContactExplorer](../wiki/entities/mjlab-hand.md) — 可从抓取与手内旋转开始，进一步对照双手交接、保定球、转盘、三球杂耍；README 提供训练、回放和分类评测入口，注意任务间指标不直接可比。
 - [PSR（预测式接触感觉运动表征）](../wiki/entities/paper-psr-vla.md) — 先预测 F/T、关节 effort 与位移，再跨层注入 π0.5；核对六类真机任务与传感同步。
