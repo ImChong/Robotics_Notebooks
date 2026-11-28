@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
-updated: 2026-11-25
+updated: 2026-11-28
 related:
   - ../entities/paper-behavior-spatial.md
   - ../entities/paper-recova.md
@@ -105,6 +105,7 @@ related:
   - ../entities/paper-roboskill.md
   - ../entities/paper-genesis-handover.md
 original:
+  - ../../sources/papers/avail_arxiv_2212_09902.md
   - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
 sources:
   - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
@@ -628,7 +629,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 ## 参考来源
 
-- Zhu et al., *Dexterous Manipulation from Images: Autonomous Grasping, Regrasping, Reorientation* — 视觉操作代表
+- [Xu、Hu 等：AVAIL，基于图像的灵巧操作](../entities/paper-avail-dexterous-manipulation-from-images.md) — 以视觉里程碑学习多指手抓取、掉落后重抓与重定向。
 - [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — IL 操作任务论文集合
 - [Diffusion Policy 项目主页](https://diffusion-policy.cs.columbia.edu/) — 当前 SOTA IL 方法
 - [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP 视触觉主动掌夹爪
