@@ -64,6 +64,8 @@ flowchart LR
 - [SSM](../concepts/state-space-model-ssm.md)
 - [架构对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：通过二维选择性扫描（SS2D）构建分层视觉状态空间主干，为图像与长序列感知学习多尺度视觉特征。
+- [目标检测（Object Detection）](../methods/object-detection.md)：结合 FPN 等检测分割颈部结构，可作为通用视觉骨干服务目标检测与语义分割等密集预测任务。
 
 ## 参考来源
 

@@ -111,6 +111,8 @@ sequenceDiagram
 - [多模态基础概念](../concepts/multimodality-basics.md)
 - [视觉–语言特征融合与语义空间对齐](../concepts/vision-language-feature-fusion.md)
 - [视觉骨干](../concepts/vision-backbones.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：该研究对比独立训练的视觉编码器（如 DINOv2）与语言模型嵌入空间的共享几何结构，探索无需配对样本的跨模态表征对齐。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：这类无配对几何对齐方法可作为构建视觉–语言–动作（VLA）模型上游跨模态表征对齐机制的理论与方法参考。
 
 ## 参考来源
 

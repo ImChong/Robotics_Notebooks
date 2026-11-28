@@ -95,6 +95,7 @@ flowchart TD
 
 - [World Action Models](../concepts/world-action-models.md) — 同时预测视频与动作的模型背景
 - [Generative World Models](../methods/generative-world-models.md) — 视频世界模型方法族
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md)：对照自演化世界动作模型在 RoboTwin 2.0 及真机双臂长时程任务中的评测场景。
 
 ## 参考来源
 

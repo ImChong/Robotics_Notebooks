@@ -59,7 +59,8 @@ PDF 报告躯干相机导航、头部相机近距离操作、五指手触觉反�
 
 - [Day 4：移动操作](../overview/humanoid-motion-intelligence-day4-loco-manipulation.md)
 - [DexRoam：第一视角移动双手操作](./paper-dexroam-mobile-bimanual-manipulation.md)
-
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：按来源文章描述，该方法将第一视角交互先验串联至躯干导航、姿态校准与灵巧操作的移动操作流程（身份与结果待核实）。
+- [Manipulation](../tasks/manipulation.md)：文章报告其通过提取手腕、手指与手物接触信息并结合五指触觉反馈完成近距离抓取与长程物体操作任务（待一手核实）。
 
 ## 参考来源
 

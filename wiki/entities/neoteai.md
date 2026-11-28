@@ -136,6 +136,7 @@ flowchart LR
 - [𝒩₀-Foundation](./paper-n0-foundation.md) · [𝒩₀-VTLA](./paper-n0-vtla.md) · [𝒩₀-TWAM](./paper-n0-twam.md)
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) · [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [触觉知识链](../overview/hub-tactile.md) · [VT-WAM](./paper-vt-wam-visuotactile-contact-rich.md)
+- [Manipulation](../tasks/manipulation.md)：对接其视触觉传感器与 VTLA 模型主要服务的物体操作与接触任务需求。
 
 ## 参考来源
 

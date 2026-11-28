@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：ROS 生态围绕节点通信、驱动接入与诊断工具展开，直接服务于机器人软件系统的模块化集成。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：基于 ROS/Nav2 的感知建图、路径规划与底盘控制联调是该社区最常见的工程实战问题之一。
 
 ## 参考来源
 

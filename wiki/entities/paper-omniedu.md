@@ -118,6 +118,8 @@ sequenceDiagram
 
 - [OpenMAIC](./openmaic.md) — 面向课堂生成的应用系统。
 - [OpenClaw](./openclaw.md) — 可作为不同应用编排层的参照。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：OmniEdu 在 K12-Bench、MathFish、MathTutorBench 与 LongTutor 等多维度教学基准上对比评测了不同参数规模模型。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：OmniEdu 官方 SDK 通过 OpenAIBackend 对接 vLLM 推理服务并提供 FP8 量化权重以支撑不同显存预算部署。
 
 ## 参考来源
 

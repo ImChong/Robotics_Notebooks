@@ -159,6 +159,8 @@ flowchart LR
 - [LIBERO-Dynamic](./paper-libero-dynamic.md)：同样把推理延迟计入评测（操作场景）
 - [Gazebo 仿真](./gazebo-sim.md)：本文工作负载所用仿真器的 wiki 入口（本文用 Gazebo Harmonic）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：本文以任务合同完成度而非单帧精度评测，可作「延迟/资源受限场景选基准」的一个参照。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：EmbodiedIntentBench 以任务合同定义覆盖、时限与电量约束，并在轨迹回放中计入计算延迟挤占效应，用于评测具身智能体运行时策略的整体任务完成度。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：EmbodiedIntentBench 提供了将单帧感知模型开销纳入系统级预算与任务指标比较的标准化评测协议。
 
 ## 参考来源
 

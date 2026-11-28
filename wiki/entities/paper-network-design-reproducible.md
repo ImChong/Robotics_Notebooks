@@ -124,6 +124,7 @@ sequenceDiagram
 - [Manipulation](../tasks/manipulation.md)
 - [BRIDGE](./paper-bridge-humanoid.md)
 - [开源可复现性 9 篇地图](../overview/open-source-reproducibility-9-papers-technology-map.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照在制造与装配前通过结构约束检查工程模型可复现性的参数化设计流程。
 
 ## 参考来源
 

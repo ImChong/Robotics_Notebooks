@@ -100,6 +100,7 @@ flowchart TD
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-31-50-papers-technology-map](../overview/embodied-station-2026-10-31-50-papers-technology-map.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照触觉传感阵列硬件采样、ROS 数据接入与机械臂接触感知任务集成的工程实践。
 
 ## 参考来源
 

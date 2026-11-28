@@ -75,6 +75,8 @@ flowchart TD
 - [ruckig](../entities/ruckig.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [cpp-motion-control-open-source-libraries-map](../overview/cpp-motion-control-open-source-libraries-map.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：RTmotion 实现了 PLCopen 运动控制标准功能块，并与 IgH EtherCAT 主站及 SoftPLC 协同构成工业级运动控制架构。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：在 Intel ECI 体系中，该库可结合 Ruckig、机器视觉与 ROS 2 扩展包集成部署于 AMR 与机械臂系统。
 
 ## 参考来源
 

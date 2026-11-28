@@ -126,6 +126,8 @@ sequenceDiagram
 - [Player-1](./paper-player-1.md) — 从示范初始化到可验证奖励强化学习的游戏智能体路线。
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 任务、试验、评分器与终态指标。
 - [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md) — 游戏智能体训练与评测的历史脉络。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：GameScaling 按训练内、相近未见与远域游戏分层构建评测基准，并在暂停式与实时控制协议下检验持续预训练模型的泛化边界。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：GameScaling 对数据规模、环境多样性与模型容量的受控消融，为机器人多场景策略学习的数据配比与跨域迁移提供对照依据。
 
 ## 参考来源
 

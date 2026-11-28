@@ -142,6 +142,8 @@ sequenceDiagram
 - [Protocol Buffers](./protocol-buffers.md)
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)
 - [系统工程知识链](../overview/hub-systems-engineering.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：对应高速无损压缩在机器人训练数据管线中用于轨迹日志、运动包与 checkpoint 缓冲的底层存储优化。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对应将其接入机器人日志采集与进程间大数据旁路传输以降低带宽与 I/O 延迟的系统集成实践。
 
 ## 参考来源
 

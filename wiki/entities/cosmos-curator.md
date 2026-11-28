@@ -155,6 +155,7 @@ sequenceDiagram
 - [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：该工具的 split-annotate 管线结合 VLM 为海量物理世界视频自动生成字幕与质量标签。
 
 ## 公司路线日期口径
 

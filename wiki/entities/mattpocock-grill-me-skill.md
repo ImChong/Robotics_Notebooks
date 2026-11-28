@@ -82,6 +82,8 @@ flowchart TD
 - [grill-with-docs](mattpocock-grill-with-docs-skill.md) — grilling + domain-modeling
 - [triage](mattpocock-triage-skill.md) — issue 澄清时可选 grilling
 - [Superpowers（obra）](superpowers-obra.md) — 重流程 brainstorm 对照
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：理解将可复用交互流程与约束封装为按需加载技能的标准方式。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照任务分解、多轮澄清与执行前规划反馈循环的设计机制。
 
 ## 参考来源
 

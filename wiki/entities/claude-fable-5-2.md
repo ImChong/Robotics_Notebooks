@@ -77,6 +77,8 @@ flowchart LR
 - [Embodied First Exam](./embodied-first-exam.md)：标准化 coding-agent 具身测评
 - [WICL / RoboScript](./paper-world-in-context-learning-roboscript.md)：明确的仿真反馈与 agent 交互机制
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：厂商公布的具身/agent 基准分数应放回基准选型框架中复核口径
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照 RoboDojo Sim 基准评测口径与具身智能体复现协议的规范化对比方法。
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：对比通用模型在仿真与真机任务中与技能契约、执行状态及控制边界的衔接架构。
 
 ## 参考来源
 

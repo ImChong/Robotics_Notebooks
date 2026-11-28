@@ -111,6 +111,8 @@ flowchart TD
 - 后续工作（同团队）：[NaP-Control](./paper-nap-control.md) — 在冻结 UniPhys 式扩散先验上用 RL 导航初始噪声，替代测试时梯度引导
 - 同作者真机后续：[ADAPT（文本驱动人形）](./paper-adapt-text-driven-humanoid.md) — 把端到端扩散先验接到 G1 在线换 prompt（arXiv:2609.00677，未开源）
 - 原始 source：[bfm_awesome_uniphys_arxiv_2504_12540.md](../../sources/papers/bfm_awesome_uniphys_arxiv_2504_12540.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：UniPhys 用 PULSE 潜在跟踪器将扩散规划器生成的行为序列解码并跟踪执行，是分层人形全身动作跟踪架构的代表工作。
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md)：UniPhys 采用 Diffusion Forcing 联合生成状态与潜动作序列并以引导去噪执行闭环规划，属于基于扩散模型的运动生成路线。
 
 ## 参考来源
 

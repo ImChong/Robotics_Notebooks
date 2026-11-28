@@ -107,6 +107,8 @@ flowchart LR
 - [OVO：在线开放词汇语义建图](./ovo-semantic-mapping.md) — 对比在线实例级语义地图与本文基于高斯语言场的目标细化。
 - [EM-ViT：机器人运动辅助的单目深度在线尺度适配](./paper-emvit-online-metric-depth.md) — 同批入库论文，讨论不同的视觉前端问题。
 - [SPEAR：机器人强化学习中的选择性 VLM 偏好询问](./paper-spear-selective-preference.md) — 同批入库论文，研究 VLM 监督在策略学习中的用法。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：本文在既有 3D Gaussian 语义场景重建地图的基础上，对指定目标区域的语言特征进行免训练局部修正。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：通过闭式强度注入文本嵌入与中心化读出消除公共方向偏差，提升开放词汇三维目标定位的检索精度。
 
 ## 参考来源
 

@@ -98,6 +98,7 @@ sequenceDiagram
 - [reinforcement-learning](../methods/reinforcement-learning.md)
 - [paper-mulligan-performance-guided-data-collection](./paper-mulligan-performance-guided-data-collection.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md)：对照将自主策略、轨迹纠正与代码辅助纳入统一选项框架（Options）的分层强化学习调度思路。
 
 ## 参考来源
 

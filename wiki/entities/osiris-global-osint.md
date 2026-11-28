@@ -93,6 +93,8 @@ flowchart LR
 - [导航·SLAM·自动驾驶开源栈总览](../overview/navigation-slam-autonomy-stack.md) — 机器人定位、建图与规划的职责边界
 - [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) — 机器人传感器空间数据投影与全局地理面板的对照
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md) — 机器人地图与感知表示的任务边界
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考其多源 API 聚合与图层化态势展示架构，用于构建机器人远程运维监控与诊断界面。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照其通过标准化 API 路由按需拉取并归一化外部实时数据源的接口组织方式。
 
 ## 参考来源
 

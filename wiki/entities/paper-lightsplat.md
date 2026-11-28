@@ -160,6 +160,8 @@ flowchart TB
 - [LEGO：层级语言高斯溅射](./paper-lego-leveled-language-gaussian-splatting.md)
 - [OV-SAM3D](./ov-sam3d.md)
 - [FindAnything](./findanything.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：LightSplat 在已重建的 3D Gaussian 场景几何上以 2-byte 语义索引与单步聚类快速注入对象级三维语义。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：该方法融合多视角 SAM 与 CLIP 在秒级完成开放词汇三维分割与文本驱动目标选择，服务机器人场景理解。
 
 ## 参考来源
 

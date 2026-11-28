@@ -155,6 +155,8 @@ flowchart LR
 - [3D 高斯泼溅在机器人中的应用综述](./paper-pai-2410-12262-3dgaussiansplattinginrobotics.md)
 - [LiDAR 传感](../concepts/lidar-sensing.md)
 - [LiDAR SLAM 综述](../concepts/lidar-slam-survey-2026.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：将 LiDAR 与相机彩色点云拟合成层级高斯混合支架以固定 Scaffold-GS 锚点，实现更紧凑且贴合表面的三维重建。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：依赖配准后的 LiDAR 与相机多传感器点云构建位置与颜色六维先验，体现了跨模态传感配准对几何建图质量的支撑。
 
 ## 参考来源
 

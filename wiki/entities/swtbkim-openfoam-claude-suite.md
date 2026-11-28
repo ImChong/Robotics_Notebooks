@@ -98,6 +98,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [OpenFOAM Simulation](./ezrajay2333-openfoam-simulation.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该套件以 `of-sim`、`of-post`、`of-doctor` 与 `of-setup` 串联算例规划、后处理与故障诊断，并引入网格及有限性检查闸门规范仿真验证流程。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：其将 OpenFOAM CFD 工作流按阶段拆分为可组合的专门技能，是智能体技能封装在流体力学自动化中的典型示例。
 
 ## 参考来源
 

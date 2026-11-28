@@ -101,6 +101,8 @@ v2.0 将域知识扩展成单独插件体系。基础技能、`img2` harness 和
 - [CAD Skills](./cad-skills.md) — 面向 STEP / URDF 的制造与机器人描述工作流
 - [Sim2Real](../concepts/sim2real.md) — 仿真模型与真实系统差异及验证原则
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 动画角色与物理机器人控制的任务边界
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：以标准化 Agent Skill 形式封装参考图规格化、阶段代码生成与渲染评审流程。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：采用代码生成范式从单张参考图重建可编辑的 Three.js 程序化三维外观模型。
 
 ## 参考来源
 

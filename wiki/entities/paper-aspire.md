@@ -192,6 +192,8 @@ claims 文件未提任何数字，此处无数字不符。
 - [智能体式编程软件基础](../concepts/agentic-coding-software-fundamentals.md)
 - [物理保真度与 sim2real 差距](../concepts/physics-fidelity-sim2real-gap.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：ASPIRE 让 LLM 智能体在预算约束下读取实验数据、编写辨识代码并依据检查与评估反馈多轮迭代改进非线性动力学模型。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：ASPIRE 的软件 harness 通过封存测试集、模型记录检查与形式化物理要求核验，构成智能体生成辨识代码的独立验证闭环。
 
 ## 参考来源
 

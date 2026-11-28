@@ -149,6 +149,8 @@ flowchart TB
 - [GEN-0](./generalist-gen0.md) — 以真实交互数据为轴的 scaling 叙事
 - [Dyna-2](./dyna-2.md) — 以人视频为预训练轴的闭源 WAM
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 本页 scaling 曲线属其 ③ 策略任务成功率评测层，且为博客自报的真机内部评测：复用结论前先按 ④ sim↔real / 可复现性层校准。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：该研究验证了先用无动作网络视频预训练因果视频模型、再结合机器人演示与逆动力学模型后训练的策略学习路径对真机成功率的影响。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：研究在同一工业拆包任务下开展超 200 小时、按统一超时规则计数的真机评测，为视频规模化策略提供了严谨的实验对比基准。
 
 ## 参考来源
 

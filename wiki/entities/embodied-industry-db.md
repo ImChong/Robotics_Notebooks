@@ -166,6 +166,8 @@ sequenceDiagram
 - [国内具身开源 76 家技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 公司维度策展对照
 - [HMI 开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md) — 工程入口侧读法
 - [Sim2Real](../concepts/sim2real.md) — 常见技术轴取值主题
+- [VLA（Vision-Language-Action）](../methods/vla.md)：对应 11 条受控技术轴中的 VLA 路线记录，单向引用本库技术定义并追踪产业界采用时间线。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对应技术栈轴中持续记录的 Sim2Real 真机落地信号与跨企业部署演进时间序列。
 
 ## 参考来源
 

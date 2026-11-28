@@ -83,6 +83,8 @@ flowchart LR
 
 - [相关方法](../concepts/differentiable-simulation.md)
 - [机器人仿真三层结构](../concepts/robot-simulation-three-layers.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该工作在神经布料预测器后引入估计法向载荷与库仑摩擦修正的模块化接触算子，用于在布料接触工程仿真中提供可调控的摩擦物理响应。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：该工作通过推理期即插即用的显式接触算子增强神经网络仿真器的接触可控性，为可变形物体仿真器模块集成提供高效低耗时方案。
 
 ## 参考来源
 

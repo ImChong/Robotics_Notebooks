@@ -94,6 +94,7 @@ flowchart LR
 - [manipulation](../tasks/manipulation.md)
 - [DeformSmith](./paper-deformsmith.md)
 - [9 篇技术地图](../overview/perception-action-transfer-9-papers-technology-map.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照从真实资产重建、功能保持形变增广与仿真 rollout 到零样本真机部署的 Sim2Real 迁移工作流。
 
 ## 参考来源
 

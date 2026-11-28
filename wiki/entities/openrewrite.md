@@ -144,6 +144,8 @@ sequenceDiagram
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 将可重复重构接入评审、CI 与工程取舍。
 - [软件安全基础](../concepts/software-security-basics.md) — 依赖漏洞修复仍须供应链核验与回归测试。
 - [CodeGraph](./codegraph.md) — 符号关系索引面向代码理解；OpenRewrite 面向可确定执行的源码变换。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：结合自动化测试与独立评审闭环验证可重复源码重构 Recipe 的变更安全性。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考其类型感知重构机制，用于机器人配套后台、配置与跨服务软件系统的依赖升级与规范统一。
 
 ## 参考来源
 

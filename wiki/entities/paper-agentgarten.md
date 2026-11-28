@@ -166,6 +166,7 @@ AgentGarten 的贡献是让显式代码世界、共享神经渲染和跨轮文�
 - [Code-as-World](./paper-code-as-world.md) — MirroS 的另一项可执行世界表示研究
 - [HarnessEval-W](./paper-harnesseval-w.md) — 交互式视觉世界的 agent 化评测
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 生成视频作为交互观察/仿真的边界
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对照智能体在交互环境中执行动作、复盘反馈并迭代更新策略经验的闭环流程。
 
 ## 参考来源
 

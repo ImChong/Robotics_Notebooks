@@ -82,6 +82,8 @@ flowchart LR
 - [AI Worker](./robotis-ai-worker.md) · [OpenMANIPULATOR 线](./robotis-open-manipulator-line.md)
 - [TurtleBot3](./turtlebot3.md) · [OP3](./robotis-op3.md)
 - [cyclo_lab](./cyclo-lab.md) · [MuJoCo](./mujoco.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：该仓库提供 ROBOTIS 多款机型经过整理的 MJCF 资产与网格，可作为 MuJoCo 轻量仿真环境的官方模型入口。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：其官方模型集常与 LeRobot 等教程配合，用于仿真环境下的操作演示与模仿学习数据采集。
 
 ## 参考来源
 

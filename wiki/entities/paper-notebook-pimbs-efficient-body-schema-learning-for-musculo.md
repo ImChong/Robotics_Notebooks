@@ -76,6 +76,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-12-hardware-design](../overview/paper-notebook-category-12-hardware-design.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：PIMBS 用物理信息损失约束神经网络学习肌长映射并求导获得肌肉雅可比，用于肌骨人形的关节状态估计与力矩控制。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：PIMBS 基于实机运动采集的肌长、肌张力与重力补偿力矩数据，高效辨识肌骨执行器间的非线性运动学与力学耦合参数。
 
 ## 参考来源
 

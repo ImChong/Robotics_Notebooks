@@ -95,6 +95,8 @@ flowchart LR
 - [OV-SAM3D](./ov-sam3d.md)
 - [autonomy_stack_go2](./autonomy-stack-go2.md)
 - [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md)
+- [机器人自主探索](../tasks/autonomous-exploration.md)：面向未知三维环境中的自主探索任务，提供可支持自然语言查询的对象级语义子地图。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：将二维开放词汇分割与视觉语言特征融合到三维体素建图中的机器人感知流程。
 
 ## 参考来源
 

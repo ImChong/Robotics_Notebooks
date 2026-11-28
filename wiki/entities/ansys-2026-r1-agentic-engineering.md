@@ -127,6 +127,8 @@ flowchart TD
 - [Ansys AEDT MCP](./laplaceyoung-ansys-aedt-mcp.md) — 对照社区 API 桥接工作流
 - [仿真物理保真度知识链](../overview/hub-physics-fidelity.md) — 物理验证、模型证据与误差边界
 - [电机设计流程](../overview/motor-design-workflow.md) — 机器人关节电机结构/热设计与台架验证
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：将 Mesh Agent 与 Discovery Validation Agent 嵌入 CAE 工程仿真前处理建模与验证流程。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：通过主动检查仿真设置、定位网格故障并给出逐步修复建议，形成人机协同的反馈执行循环。
 
 ## 参考来源
 

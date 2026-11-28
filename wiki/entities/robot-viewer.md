@@ -85,6 +85,8 @@ flowchart LR
 - [robot_descriptions.py](./robot-descriptions-py.md) — 先下载再在 Viewer 里打开
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
 - [Open Duck Mini Viewer](./open-duck-mini-viewer.md) — 单机型产品 GUI（脚本步态，无 MuJoCo WASM）
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：Robot Viewer 可在浏览器中直接解析 URDF、Xacro、MJCF 与 USD 等模型描述文件并实时检查连杆尺寸、碰撞体和惯性参数。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：该工具集成 MuJoCo WASM 物理引擎与交互式视口，支持零本地环境门槛的浏览器内单机动力学仿真调试。
 
 ## 参考来源
 - [Robot Viewer 原始资料](../../sources/repos/robot-viewer.md)

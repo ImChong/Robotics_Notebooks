@@ -75,6 +75,8 @@ flowchart TD
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：Keep on Going 采用非零和选择性对抗强化学习框架，在关键时间步施加受预算约束的扰动以提升预训练运动策略的鲁棒性。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：该工作在 Unitree G1 平台上验证对抗训练对人形机器人全身移动与抗扰动行走技能的增强效果。
 
 ## 参考来源
 

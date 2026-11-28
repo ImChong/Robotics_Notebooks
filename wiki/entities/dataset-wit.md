@@ -100,6 +100,8 @@ flowchart LR
 - [Flickr30K Entities](./dataset-flickr30k-entities.md)
 - [JFT-300M](./dataset-jft-300m.md)
 - [具身评测与基准选择闭环](../queries/embodied-eval-benchmark-selection-loop.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对应利用大规模多语言图文对照语料训练对比学习等跨模态视觉–语言表征的基础方法。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对应在多语言图文检索与跨模态实体对齐评测中检验数据集分布匹配与模型泛化表现的基准评测方法。
 
 ## 参考来源
 

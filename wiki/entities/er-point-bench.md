@@ -79,6 +79,8 @@ flowchart LR
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：pointing 式 affordance 定位，指点准 ≠ 抓得起
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对应在统一评测协议下检验具身多模态模型图像点定位基础能力的基准评测方法。
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：对应作为 LightNav-0 第一阶段空间先验与点定位能力的评测锚点以支撑下游零样本导航任务。
 
 ## 参考来源
 

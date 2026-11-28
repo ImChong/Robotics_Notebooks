@@ -148,6 +148,8 @@ sequenceDiagram
 - [Easy-Vibe](easy-vibe.md)：AI 原生产品构建教程，搭配作品案例学习。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md)：实现前的取舍与交付验收。
 - [Robot Viewer](robot-viewer.md)：浏览器机器人模型查看和物理仿真的用途对照。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：参考 AI 辅助交互作品从浏览器原型构建到源码与可运行性核查的交付闭环。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：区分前端参数交互展示效果与真实机器人仿真物理环境验证的工程职责。
 
 ## 参考来源
 

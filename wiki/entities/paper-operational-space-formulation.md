@@ -122,6 +122,8 @@ OSF 是任务空间控制的源头。把它与相邻页面对照，能看清它�
 - [hybrid-force-position-control](../concepts/hybrid-force-position-control.md)
 - [hqp](../concepts/hqp.md)
 - [paper-hmi-stack-of-tasks](./paper-hmi-stack-of-tasks.md)
+- [Computed Torque Control（计算力矩控制，CTC）](../methods/computed-torque-control.md)：操作空间公式（OSF）将关节空间动力学前馈线性化思路推广到末端任务空间惯量与力矩映射。
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：OSF 为机器人操作系统提供了在末端任务空间统一表达运动跟踪与接触力控制的基础方法。
 
 ## 参考来源
 

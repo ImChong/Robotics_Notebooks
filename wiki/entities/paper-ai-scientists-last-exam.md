@@ -158,6 +158,8 @@ sequenceDiagram
 - [PyLabRobot](pylabrobot.md)
 - [AI Agent Evaluation](../concepts/ai-agent-evaluation.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 以「实验结果而非文本作答」判分的思路，可对照该闭环中「过程 vs 结果」与可复现性取舍。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：AISLE 通过隔离验证器与预算约束协议评测科学智能体，确保以可验证实验结果而非模型自述作为评判依据。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：AISLE 考察智能体在给定预算内自主提出实验、读取环境反馈并调整后续决策的闭环规划与执行能力。
 
 ## 参考来源
 

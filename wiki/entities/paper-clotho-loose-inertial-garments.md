@@ -142,6 +142,8 @@ CLOTHO 的主要贡献是把松散惯性服装的穿戴误差显式变成一个�
 - [EgoExoMoCap](./paper-egoexomocap.md) — ego / exo 多视角稀疏人体动捕
 - [AvatarPoser](./paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — HMD 稀疏输入人体姿态估计
 - [HUMAPS-4D](./paper-humaps4d.md) — 多模态人体运动数据采集
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：CLOTHO 针对宽松穿戴服装中 IMU 随衣物滑移引起的观测漂移，通过掩码编码与残差校正统一异构传感器配置表征。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：该工作将校正后的标准 10-IMU 信号用于全身人体运动恢复，为可穿戴动捕数据驱动的人形运动跟踪提供更稳健的参考源。
 
 ## 推荐继续阅读
 

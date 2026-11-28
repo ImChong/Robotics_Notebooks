@@ -148,6 +148,8 @@ sequenceDiagram
 - [动作重定向 Mocap Retarget](mocap-retarget.md)
 - [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md)
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对应将数据集提供的 322 维 SMPL-X 全身及手部动作映射至人形与灵巧手机器人的重定向管线。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对应以大规模多样化全身人体运动参考序列支撑人形机器人全身动作跟踪与运动先验预训练。
 
 ## 参考来源
 

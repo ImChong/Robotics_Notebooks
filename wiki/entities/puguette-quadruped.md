@@ -67,6 +67,8 @@ flowchart LR
 - [open-source-qdd-actuator-projects](../comparisons/open-source-qdd-actuator-projects.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
+- [Locomotion](../tasks/locomotion.md)：Puguette 作为开源 12 自由度四足机器人整机平台，为腿式运动控制与步态实验提供低成本硬件载体。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：针对其全 3D 打印行星减速器与 BLDC 关节执行器，可通过参数辨识标定反射惯量与摩擦特性以支持仿真建模。
 
 ## 推荐继续阅读
 

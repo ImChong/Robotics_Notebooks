@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Manipulation](../tasks/manipulation.md)：机器人抓取、灵巧操作与自动化装配系统是 ICRA 规模最大且最核心的研究与应用方向之一。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：从高保真仿真训练到真实机器人硬件部署的迁移测量与验证工作流在 ICRA 中广泛出现。
 
 ## 参考来源
 

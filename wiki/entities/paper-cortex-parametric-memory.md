@@ -163,6 +163,8 @@ CR 是**无上下文恢复了多少原先的上下文增益**，不是绝对成�
 - [Robot In-Context Learning](../concepts/robot-in-context-learning.md)
 - [MemCompiler](./paper-memcompiler-state-conditioned-memory.md)
 - [RSI 纵深路线](../../roadmap/depth-rsi.md)
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：Cortex 通过前瞻查询与教师-学生蒸馏将长上下文条件知识固化进 FFN 参数增量，降低推理期重复上下文注入开销。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文提出巩固率与保持率双指标，在连续事实编辑与长程记忆任务上定量评测模型参数化记忆更新与基线能力保持。
 
 ## 参考来源
 

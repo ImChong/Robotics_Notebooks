@@ -239,6 +239,8 @@ sequenceDiagram
 - [运动控制主路线](../../roadmap/motion-control.md)
 - [ergoCub Shared Embodied Intelligence](./paper-ergocub-shared-embodied-intelligence.md) — IIT 系人因 codesign；公开的是优化/控制软件而非 DIY 整机 BOM
 - [Encos Hunter 130（Hunter V2）](./encos-hunter130.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：对照开源人形硬件平台在平衡与复杂地形移动任务中的核心动力学与控制验证场景。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：衔接开源人形硬件执行器接口与上层状态估计、运动控制架构设计。
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)

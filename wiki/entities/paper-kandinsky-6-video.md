@@ -109,6 +109,8 @@ README 标注需要 NVIDIA GPU、Python 3.13/3.14；另有 ComfyUI、Diffusers�
 
 - [UltraText Bench](./paper-ultratext-bench.md) — 图像视觉文本评价
 - [扩散模型](../concepts/diffusion-model.md) — 生成模型基础
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：Kandinsky 6.0 Video 通过双流 CrossDiT 扩散骨干实现文本或图像条件下的同步音视频片段生成与超分辨后处理。
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：该模型体现的同步多模态扩散视频生成技术可用于具身研究中的多模态仿真素材合成与时序视觉生成参考。
 
 ## 参考来源
 

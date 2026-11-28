@@ -126,6 +126,8 @@ RealEstate10K 权重零样本迁移至 DL3DV 的 139 个场景，PSNR 为 24.787
 
 - [SplatSim：高斯渲染与视觉 Sim2Real](./paper-splatsim-gaussian-splatting-sim2real.md)
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：GradSplat 从多视图图像前馈预测三维高斯，并在前向过程中利用输入视图渲染误差的梯度迭代细化几何与新视角重建。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：GradSplat 通过可学习的形状与旋转残差更新提升 3DGS 场景重建质量，属于视觉感知管线中的前馈三维空间表征技术。
 
 ## 参考来源
 

@@ -104,6 +104,8 @@ Go2 开门文档中报告的 0.058 m RMS 是特定场景的定位误差；Mid-36
 - [MuJoCo（物理引擎）](./mujoco.md) — RNE 的可选物理后端及同类引擎对照
 - [Isaac Sim](./isaac-sim.md) — 高保真场景、传感器渲染与 Omniverse 工作流
 - [Sim2Real](../concepts/sim2real.md) — 区分仿真闭环与真机迁移验证
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：RNE 以 ECS 架构整合机器人模型、Rapier/MuJoCo 物理后端、合成传感器与确定性回放，构成完整的模块化仿真集成框架。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：在仿真世界内原生建模了 RGB-D 相机、LiDAR 与 IMU 等传感器观测输出，并与固定仿真时钟及实体坐标系对齐。
 
 ## 参考来源
 

@@ -175,6 +175,8 @@ sequenceDiagram
 - [GS-Playground：Gaussian 场景与物理仿真](./gs-playground.md)
 - [ESI-Bench：3D 感知误差对具身空间推理的影响](./esi-bench.md)
 - [Sim2Real：感知资产与仿真迁移](../concepts/sim2real.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：SplatAnything 通过高斯间距归一化 GSNorm 结合几何先验实现跨物体与多尺度场景的前向 3DGS 重建。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：其导出的前向 3DGS 场景资产在接入 Sim2Real 管线前仍需完成真实米制尺度锚定与碰撞几何校验。
 
 ## 参考来源
 

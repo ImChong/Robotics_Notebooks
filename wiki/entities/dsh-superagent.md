@@ -76,6 +76,8 @@ sequenceDiagram
 
 - [Deep Agents](./deep-agents.md)：另一种包含子代理和上下文管理的 agent harness。
 - [Hermes Agent](./hermes-agent.md)：独立 agent 运行时。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应以事件触发、策略评估、授权建单与独立会话执行并将结果经 Outbox 回传的智能体闭环循环。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：对应在面向代码仓库的编码代理原型中结合策略门禁、人工处理介入与可审查变更的验证闭环思路。
 
 ## 参考来源
 

@@ -146,6 +146,8 @@ sequenceDiagram
 - [Instant NuRec](./paper-instant-nurec.md) — 自动驾驶场景前馈 3DGS 重建
 - [3D Gaussian Splatting 原始工作](./paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md) — 显式高斯表示与原始优化范式
 - [GS-Playground](./gs-playground.md) — 3DGS 与物理仿真耦合
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：CompactSplat 通过纹理分区与层级金字塔采样按图像复杂度自适应分配前馈 3D 高斯原语，实现稀疏度可调的三维重建。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：该方法在单阶段前馈推理中平衡显存占用与新视角合成保真度，可为机器人实时场景理解与仿真资产构建提供紧凑三维视觉表征。
 
 ## 参考来源
 

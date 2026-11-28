@@ -164,6 +164,8 @@ flowchart LR
 - [Cartographer](cartographer.md)
 - [NeuroGPR：类脑位置识别](paper-neurogpr-brain-inspired-place-recognition.md)
 - [激光 SLAM 与 LIO/VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)：Scan Context 为三维激光雷达里程计提供无需训练的全局回环检测与偏航初值估计，辅助消除大范围建图中的轨迹漂移。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：该描述符通过旋转不变的 ring key 与列平移余弦匹配加速位姿图闭环关联与点云配准初始化。
 
 ## 参考来源
 

@@ -132,6 +132,8 @@ sequenceDiagram
 - [MuJoCo WASM](./mujoco-wasm.md) — 浏览器侧刚体物理另一条路径
 - [仿真物理保真（Query）](../queries/simulation-physics-fidelity.md)
 - [角色动画 vs 机器人](../concepts/character-animation-vs-robotics.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：其程序化海洋、植被与实时后处理管线可作为机器人高保真可视化场景构建的浏览器端参照。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：可与机器人物理仿真环境集成路线对照，区分纯前端实时图形渲染与刚体接触或 RL 物理后端的分工。
 
 ## 参考来源
 

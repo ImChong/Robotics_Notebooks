@@ -67,6 +67,8 @@ flowchart LR
 - [TNT](./tnt.md)
 - [CNN vs ViT](../comparisons/cnn-vs-vit-backbones.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对应结合卷积局部归纳偏置与自注意力全局建模以提取分层视觉特征表征的骨干网络设计。
+- [通道与空间注意力（SENet / SE-ResNet / DANet）](../methods/channel-spatial-attention.md)：对照在纯 CNN 中引入通道或空间注意力与 CvT 在 Transformer 中融合卷积投影的两条视觉特征增强路线。
 
 ## 参考来源
 

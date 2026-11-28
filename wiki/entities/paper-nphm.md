@@ -212,6 +212,7 @@ NPHM 是 **完整人头神经 morphable model** 的 CVPR 2023 代表作：用 **
 - [DynHair](./paper-dynhair.md) — 显式发丝动态化身（同作者系）
 - [Humanoid 训练数据管线](../queries/humanoid-training-data-pipeline.md) — 面部/化身资产在数据流中的位置
 - [Face Anything](./paper-face-anything-4d-face-reconstruction.md) — 单目 4D 面部几何对照
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照从三维扫描与点云观测重建参数化三维几何表示的三维重建流程。
 
 ## 参考来源
 

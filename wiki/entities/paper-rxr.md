@@ -114,6 +114,8 @@ flowchart TD
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：RxR 是多语言视觉–语言导航的典型基准数据集，提供带密集时空对齐标注的室内导航轨迹。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：数据集构建的导航图路径采样与指令对齐观测可支持端到端导航策略的监督微调与评测。
 
 ## 参考来源
 

@@ -72,6 +72,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [膝侧谐波判据](../concepts/humanoid-knee-harmonic-drive-limits.md)
 - [执行器驱动链](../queries/actuator-drive-chain-selection-loop.md)
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：对照嵌套式多级行星减速与电机一体化关节模组在建模控制中所需的转子惯量与摩擦参数辨识。
 
 ## 参考来源
 

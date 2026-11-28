@@ -199,6 +199,8 @@ sequenceDiagram
 - [GS-Playground（实体）](./gs-playground.md) — 3DGS 光真实感 **仿真训练** 下游
 - [Spark（实体）](./spark-3dgs-renderer.md) — Web 大场景 splat 浏览
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md) — 辐射场 SLAM 支路索引
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：i3dGS 面向乱序 RGB 图像流提供即时、全局一致的 3D Gaussian Splatting 场景重建与新视角渲染能力。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：i3dGS 结合视觉地点识别（VPR）、共视性图与局部束调整（LBA）从无序图像在线估计相机位姿并维护全局一致的视觉场景表征。
 
 ## 关联
 

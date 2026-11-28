@@ -126,6 +126,8 @@ sequenceDiagram
 
 - [AI 设计物理实验](./paper-designing-physics-experiments-with-ai.md) — 以 AI 建立实验工作流的相邻案例；任务域与指标不同。
 - [AI 自动研究](../concepts/ai-auto-research.md) — 将数据、执行与分析接入研究闭环的上层背景。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该论文通过 144 种 FDA 药物浓度定量、178 个真实反应产率及分离收率对照协议严格评估模型的预测误差边界。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：官方仓库公开了面向 CPU/GPU 的 `predict_by_smiles_list` 推理入口，用于批量预测分子全光谱校正因子。
 
 ## 参考来源
 

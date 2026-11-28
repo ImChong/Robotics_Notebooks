@@ -96,6 +96,8 @@ flowchart LR
 
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：在统一条件专家动作分布下分解容量、目标加权数据与表征信息损失等五类因素，为模仿学习训练配方提供理论分析。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：系统分析优化泛化界与部署占据分布偏移对动作预测损失的影响，指导机器人策略学习中的数据预算与特征选择。
 
 ## 参考来源
 

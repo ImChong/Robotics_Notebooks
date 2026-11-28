@@ -143,6 +143,8 @@ sequenceDiagram
 - [OVO](./ovo-semantic-mapping.md)
 - [point_lio_unilidar](./point-lio-unilidar.md)
 - [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — 通过逐场景优化 3DGS 特征场与层级语言场景图支持复合检索；本页则是训练无关的点云理解路线，不能混用训练成本、表示层级与在线性结论。（[来源复核归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)）
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：将多视角二维分割与开放词汇标签映射为机器人可用的三维场景实例语义感知结果。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：依托多视角图像反投影与点云超点几何融合，在三维重建场景上构建开放词汇实例表征。
 
 ## 参考来源
 

@@ -99,6 +99,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Ansys MCP Server（PyAnsys）](./vorobjewsen30-max-ansys-mcp-server.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对应通过 PyAEDT 驱动电磁、热与电路仿真设置、求解及后处理核验的工程流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应以 MCP 协议向智能体暴露 Ansys AEDT 仿真自动化接口的接入机制。
 
 ## 参考来源
 

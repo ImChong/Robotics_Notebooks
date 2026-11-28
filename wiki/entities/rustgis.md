@@ -114,6 +114,8 @@ sequenceDiagram
 - [导航·SLAM·自动驾驶开源栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [SLAM Toolbox](./slam-toolbox.md)
 - [Geo-Sleuth](./geo-sleuth.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：RustGIS 可在机器人导航流程前期用于离线检查地理参考地图、地形与坐标投影数据，辅助上游环境资料准备。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：该工具提供 CLI、Python 接口以及 MCP Server，便于外部智能体通过标准化工具接口自动化执行空间数据分析。
 
 ## 推荐继续阅读
 

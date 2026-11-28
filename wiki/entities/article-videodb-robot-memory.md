@@ -97,6 +97,8 @@ sequenceDiagram
 
 - [MEM 多尺度具身记忆](./paper-pai-2603-03596-memmultiscaleembodiedmemory.md)：策略内短时视频与长期语言记忆。
 - [MemER](./paper-memer.md)：为机器人控制选择历史关键帧。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：利用带时间戳的事件索引与可回看视频片段，为机器人视觉感知补充长时程外部记忆上下文。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：为需要跨时间检索历史场景信息的 VLA 与 VLM 策略提供模型外记忆接口设计参考。
 
 ## 参考来源
 

@@ -189,6 +189,7 @@ sequenceDiagram
 - [仿真物理保真（Query）](../queries/simulation-physics-fidelity.md) — 可变形地形与接触仿真保真分析
 - [Genesis World 1.0](./genesis-world-10.md) — 同类包含 GPU MPM 后端的多物理平台对照
 - [强化学习（Reinforcement Learning）](../methods/reinforcement-learning.md) — 面向可变形地形的策略训练与应用背景
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解可变形颗粒介质求解器与刚体物理引擎双向耦合的仿真环境集成方式。
 
 ## 参考来源
 

@@ -101,6 +101,8 @@ flowchart TD
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：ContactBench 集成 Pinocchio 刚体动力学与 HPP-FCL 碰撞检测，在统一框架下比较不同物理引擎的接触求解器行为。
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：论文在统一算例与四足 MPC 闭环测试中评测了软约束与互补约束等不同接触近似对控制求解的影响。
 
 ## 参考来源
 

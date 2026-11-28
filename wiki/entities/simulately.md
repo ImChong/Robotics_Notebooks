@@ -105,6 +105,8 @@ GitHub 仓库公开，采用 Apache-2.0 许可证；代码包含 Docusaurus 站�
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — GPU 并行仿真与机器人学习生态。
 - [MuJoCo vs Isaac Lab：仿真器选型对比](../comparisons/mujoco-vs-isaac-lab.md) — 结合吞吐、渲染和研究目标判断候选平台。
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 将仿真器放回机器人训练与部署链路中理解。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Simulately 汇集主流物理仿真器的特性比较与入门片段，可作为搭建机器人仿真验证环境前的选型参考。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：站点整理的演示数据集、物体与场景资料，有助于开展机器人仿真场景搭建前的资产调研。
 
 ## 参考来源
 

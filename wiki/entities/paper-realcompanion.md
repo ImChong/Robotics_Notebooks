@@ -79,6 +79,8 @@ flowchart TB
 - [Self-Retrospection Distillation](./paper-self-retrospection-distillation.md) — 从交互轨迹训练事前预测
 - [WorldScape Policy](./paper-worldscape-policy-2.md) — 带长短期记忆的视频世界模型策略
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属①认知层评测：长期对话中的用户建模与记忆，不等于具身任务执行能力
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：RealCompanion 基于真实长周期对话与消息级证据标注构建评测集，量化模型在记忆调用判定与用户画像重建上的表现。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：该基准检验智能体在长时程交互中判断何时检索历史记忆及权衡推理成本的决策能力。
 
 ## 参考来源
 

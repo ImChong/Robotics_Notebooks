@@ -106,6 +106,8 @@ EgoX-Engine 通过几何验证的物体跟踪与 SLAM 对齐构造多模态监�
 - [Ropedia W0](./paper-ropedia-w0.md) — 跨本体第一视角世界模型。
 - [DONIC](./paper-donic.md) — 从人类示范学习双手跟踪控制。
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 感知栈选型闭环知识链枢纽
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：EgoXperience 通过统一世界坐标系与单次前向多视图注意力，从单目第一视角视频联合重建相机轨迹、稠密深度、MANO 手部与物体 6DoF 位姿。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：EgoXperience 配套的 EgoX-Engine 将双目深度、SLAM 位姿与物体跟踪管线化并验证几何一致性，构建大规模第一视角手物交互数据集。
 
 ## 参考来源
 

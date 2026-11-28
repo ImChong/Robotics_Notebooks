@@ -116,6 +116,8 @@ flowchart TD
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [分布外（OOD）泛化与 OOD 指标怎么读](../concepts/out-of-distribution-generalization.md) — 本页属其「② 部署监控」一义：参考分布是仿真标称执行流形，失败形态是漏报/误报而非任务失败
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：RAPT 在仿真标称流形上训练概率循环模型并在真机部署期实时计算预测偏差，用于 Sim2Real 失配检测与诊断。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：面向 Unitree G1 等人形机器人运动策略的 50 Hz 在线本体感知监控，在行走与动态任务中及时识别异常状态。
 
 ## 参考来源
 

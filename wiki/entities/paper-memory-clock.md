@@ -115,6 +115,7 @@ sequenceDiagram
 
 - [vla](../methods/vla.md)
 - [agent-memory-and-dreaming](../concepts/agent-memory-and-dreaming.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：对照通过零事件干预与受控对照试验检验具身策略时序捷径的评测方法。
 
 ## 参考来源
 

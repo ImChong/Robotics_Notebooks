@@ -113,6 +113,8 @@ flowchart TB
 - [贝叶斯信念分析](../concepts/bayesian-belief-analysis.md) — 对照概念假设空间的贝叶斯更新与 POMDP 状态信念更新
 - [深度学习基础](../concepts/deep-learning-foundations.md) — 机器学习表示及其与结构化归纳机制的关系
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) — 机器人长期语义记忆的工程问题，与人类概念学习的跨域联系
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：该研究基于腹侧枕颞皮层对熟悉物体的神经相似表征构建层级假设空间，揭示视觉概念表征结构如何支撑少样本词义泛化。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文将 Neural Bayesian Model 与行为贝叶斯基线及大语言模型在少样本概念泛化行为拟合上进行系统对比评测。
 
 ## 参考来源
 

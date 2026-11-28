@@ -57,6 +57,8 @@ OpenFOAM Simulation（EzraJay2333/openfoam-simulation）是文章总结为 13 �
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [OpenFOAM Claude Suite](./swtbkim-openfoam-claude-suite.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对应其从几何网格建模、边界设定、求解运行到结果验证的十三步工程仿真规范。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：体现将 OpenFOAM 仿真步骤、模板与检查规则封装为代理可加载技能的组织方式。
 
 ## 源码运行时序图
 

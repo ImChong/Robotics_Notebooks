@@ -81,6 +81,8 @@ flowchart LR
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md)：MAGNet 将 Diffusion Forcing 的逐 token 独立加噪与去噪机制扩展至多人交互序列，统一支持多种多角色运动生成任务。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：MAGNet 合成的多人交互三维全身动作序列可为人机协作或交互式人形全身动作跟踪提供高质量参考运动数据。
 
 ## 参考来源
 

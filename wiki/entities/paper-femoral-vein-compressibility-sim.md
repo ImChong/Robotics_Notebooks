@@ -153,6 +153,8 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [物理保真度与 sim2real 差距](../concepts/physics-fidelity-sim2real-gap.md)
 - [US-VLA 超声论文](../entities/paper-us-vla-ultrasound.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该研究围绕血管解剖几何、Stable Neo-Hookean 本构与 VBD 求解器参数建立可复查的有限元软组织压缩仿真，并与硅胶仿体实验对照检验计算可信度。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：该研究在 Isaac Sim for Healthcare 中将四面体可变形组织求解器、机械臂探头按压控制与 raysim 超声渲染集成为闭环医疗仿真验证环境。
 
 ## 参考来源
 

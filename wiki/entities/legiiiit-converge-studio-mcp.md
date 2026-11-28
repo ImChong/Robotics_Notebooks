@@ -96,6 +96,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [sim-plugin-openfoam](./svd-ai-lab-sim-plugin-openfoam.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对应由 AI 客户端经该 MCP 执行几何、网格与求解设置及核对物理证据的工程仿真流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应将 CONVERGE Studio 自动化功能封装为 MCP 工具供智能体调用的接口层。
 
 ## 参考来源
 

@@ -30,6 +30,7 @@ related:
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ./zest-vs-sonic-vs-vision-soccer.md
   - ../tasks/balance-recovery.md
+  - ../methods/whole-body-motion-tracking.md
 summary: "SONIC / BeyondMimic / SD-AMP / Heracles 四条全身运动跟踪（WBT）方法谱系对比：规模化监督预训练 vs 失败率驱动的精确 tracking vs 状态门控双判别器 AMP vs 状态条件扩散中间件；从参考池规模、训练目标、跨任务一般化、OOD 行为与真机交付五个维度给出选型坐标。"
 ---
 
@@ -255,6 +256,7 @@ flowchart TD
 ## 关联页面
 
 - [Whole-Body Tracking Pipeline（全身运动跟踪流水线）](../concepts/whole-body-tracking-pipeline.md) — 本页四条路线的 6 阶段端到端宿主
+- [全身动作跟踪（Whole-Body Motion Tracking）](../methods/whole-body-motion-tracking.md) — 重定向参考、抗扰跟踪策略与实机平滑执行方法页
 - [Motion Retargeting Pipeline（动作重定向流水线）](../concepts/motion-retargeting-pipeline.md) — WBT 流水线的上游
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md) — 一帧内的全身协调（与 WBT 是两层抽象）
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 与 SONIC 同构的「身体基础模型」叙事

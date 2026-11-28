@@ -128,6 +128,8 @@ flowchart LR
 - [DASH 达芬奇适配器](./paper-dash-da-vinci-adapter.md)
 - [人形外科医生活体腹腔镜](./paper-humanoid-surgeon-in-vivo-laparoscopy.md)
 - [Cosmos-Surg-dVRK](./paper-sa-2510-16240-cosmos-surg-dvrk-world-foundation-model-based-au.md)
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md)：MIRAGE 在达芬奇双目内窥镜视频上默认采用 RAFT-Stereo（及 PSMNet）估计视差并重建三维点云。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：MIRAGE 通过单调时钟同步、位姿插值与 SE(3) 标定将双目内窥镜、光学/电磁追踪及术中超声集成到统一导航框架。
 
 ## 参考来源
 

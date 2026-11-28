@@ -527,6 +527,22 @@ op: ingest
 - **关键节点：** 独立报告节点 [OpenAI 科研加速](../wiki/entities/openai-research-acceleration-jagged-frontier.md)，源记录 [官方报告归档](../sources/sites/openai-research-acceleration-jagged-frontier-2026.md)，与 RSI/Auto-Research 概念页交叉引用，挂载 RSI 纵深 Stage 5。
 - **评估视角：** 人机混合研究闭环仍是现状；内部观察数据不能外推为独立因果或机器人研究测评。
 
+## [2026-11-28] ingest | 机器人建模与数字孪生纵深 20 篇节点补齐一手原文通读与阅读骨架，全路线 59/59 节点达成 3/3 满分健康度
+
+## [2026-11-28] structural | 新增机器人建模与数字孪生纵深路线（roadmap/depth-robot-modeling-digital-twin.md）及 digital-twin / URDF-MJCF-SDF-OpenUSD 两篇基础页并同步全站 31 条纵深入口
+
+## [2026-11-28] lint | 基于 #3997 完成剩余全部 569 个历史 wiki/entities 页面方法与任务出边补全，清零 entity_missing_outgoing 基线（631 -> 0），全库出边 < 2 预警正式清零
+
+## [2026-11-28] lint | 基于 #3997 推进并行出边治理：为 500 个历史 wiki/entities 页面补齐方法与任务出边（含全部 229 个出边=1 与 271 个出边=0 节点），同步缩减 schema/lint-legacy-baseline.json 至 631 条（实时待治理剩余 569 篇）
+
+## [2026-11-28] ingest | 收录 MoGe-4D：同一 RGB 输入的米制三维重建与稠密轨迹
+
+## [2026-11-28] ingest | 收录 CLARE：VLA 持续学习的适配器路由、逐层扩容与官方实现边界
+
+## [2026-11-28] lint | 补齐今日五个新增对比与选型节点的一手来源与证据边界
+
+## [2026-11-28] ingest | 收录 Movez 的 Gemini 4 Neon 多 Agent 团队教程
+
 ## [2026-11-28] ingest | 收录 SequenceLink、Open-Embodied、ShowNow 与边界感知策略学习，复核六个已有项目节点的原文和发布范围
 
 ## [2026-11-28] ingest | 逐个复核 Alpamayo 等十项自动驾驶项目官方发布与复现边界，更新十个已有独立节点

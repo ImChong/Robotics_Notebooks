@@ -94,6 +94,8 @@ sequenceDiagram
 - [cpp-llm-engine](./cpp-llm-engine.md) — 关联的工程知识或开源项目。
 - [tensorrt-llm](./tensorrt-llm.md) — 关联的工程知识或开源项目。
 - [pytorch](./pytorch.md) — 关联的工程知识或开源项目。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：深入剖析低比特量化张量布局、误差来源与量化压缩后的精度及质量验证方法。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：为端侧或离线推理运行时正确解码 GGUF 量化权重并提供格式验证基础。
 
 ## 参考来源
 

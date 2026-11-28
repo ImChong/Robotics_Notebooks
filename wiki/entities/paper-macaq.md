@@ -144,6 +144,8 @@ sequenceDiagram
 - [VLAQuantBench](./paper-vlaquantbench.md) — 机器人 VLA 的真实闭环量化敏感性证据
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 目标部署后端的算子与性能选型
 - [模型架构纵深路线 Stage 5](../../roadmap/depth-model-architecture.md) — 量化与机载时延的学习定位
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：MACaQ 提出逐线性层独立的 MXFP4 W4A4 训练后量化方法，通过局部缩放、块 Hadamard 旋转与 Flip-Refinement 压缩权重与激活。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：该方法面向低比特矩阵乘算子与低显存部署需求评估量化模型在语言与扩散任务中的精度–压缩折中。
 
 ## 参考来源
 

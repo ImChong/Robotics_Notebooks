@@ -319,6 +319,8 @@ sequenceDiagram
 
 - [openclaw](./openclaw.md)
 - [hermes-agent](./hermes-agent.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：MetaRSI-v1 将数据扩增、Harness 编辑与模型训练组织在同一闭环内核上，依据评测反馈迭代调度改进算子。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：MetaRSI-v1 通过代码与闭式科学基准的标准化评测结果驱动双轴优化器与元级调度更新。
 
 ## 参考来源
 

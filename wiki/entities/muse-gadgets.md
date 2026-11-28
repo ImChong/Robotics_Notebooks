@@ -87,6 +87,7 @@ flowchart TD
 - [VLA](../methods/vla.md) — 面向机器人感知与动作的策略接口
 - [Muse Gadget SDK 原始仓库](../../sources/repos/muse-gadget-sdk.md)
 - [Muse Gadgets 项目页归档](../../sources/sites/muse-gadgets.md)
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考将外部硬件外设与本地服务封装为智能体可调用接口的设计模式。
 
 ## 参考来源
 

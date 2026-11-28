@@ -168,6 +168,8 @@ flowchart LR
 - [Agility WBC Foundation Model（Motor Cortex 与 Sim2Real）](./agility-wbc-foundation-model.md) — 在本文论证的闭链脚尖/传动物理基础上做 Isaac Lab 对齐与 `<1M` LSTM 零样本迁移
 - [Agility Robotics（策展节点）](./painode-041-agilityrobotics.md)
 - [Query：执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本文主张的 cycloid 大关节、腱驱 SEA 手决定了 **③ 执行器建模与摩擦辨识层** 要面对的摩擦/惯量/柔顺真值：机械选型在先，「理想力矩源」假设破在哪由硬件定
+- [Locomotion](../tasks/locomotion.md)：从机械动力学第一性原理出发剖析高扭矩密度电机、摆线传动与功能性足部设计对双足与人形移动能力上限的约束。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：论证摆线大关节与腱驱串联弹性手等物理硬件选型直接决定了人形移动操作任务中的力交互带宽与执行边界。
 
 ## 推荐继续阅读
 

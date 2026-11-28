@@ -88,6 +88,7 @@ Instruction2Act 与 CaP 同属 code-as-policy 谱。
 - [paper-pai-2209-07753-codeaspolicies](./paper-pai-2209-07753-codeaspolicies.md)
 - [paper-voxposer](./paper-voxposer.md)
 - [aspire](../methods/aspire.md)
+- [Manipulation](../tasks/manipulation.md)：Instruction2Act 通过生成调用抓取与放置原语的代码完成桌面物体操作任务。
 
 ## 参考来源
 

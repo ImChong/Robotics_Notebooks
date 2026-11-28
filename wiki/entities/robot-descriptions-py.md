@@ -150,6 +150,8 @@ sequenceDiagram
 - [URDF Files Dataset](./urdf-files-dataset.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：robot_descriptions.py 为 URDF 与 MJCF 机器人模型提供了标准化的版本缓存与程序化加载入口，简化了模型描述与资产接入流程。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：通过内置适配层将百余种开源机器人模型直接载入 MuJoCo、PyBullet 与 Pinocchio 等工具，支撑快速仿真环境搭建。
 
 ## 参考来源
 

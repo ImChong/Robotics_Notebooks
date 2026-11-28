@@ -121,6 +121,8 @@ Stack of Tasks 的定位是「速度层广义逆运动学的软件化框架」�
 - [tsid](../concepts/tsid.md)
 - [whole-body-control](../concepts/whole-body-control.md)
 - [paper-operational-space-formulation](./paper-operational-space-formulation.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：Stack of Tasks 将任务、约束、雅可比与求解器组织为可动态插拔的软件任务栈，是人形机器人分层控制架构的经典工程框架。
+- [Newton's Method / Newton–Raphson（牛顿–拉夫森法）](../methods/newtons-method.md)：Stack of Tasks 在速度层通过任务雅可比与零空间递归求解广义逆运动学，与牛顿–拉夫森法及雅可比伪逆迭代同属一阶线性化求解脉络。
 
 ## 参考来源
 

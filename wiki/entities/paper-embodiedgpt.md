@@ -95,6 +95,8 @@ EmbodiedGPT 代表具身专用 LM 规划器方向。
 
 - [paper-palm-e-embodied-language-model](./paper-palm-e-embodied-language-model.md)
 - [paper-saycan](./paper-saycan.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：EmbodiedGPT 通过三阶段对齐与 Embodied-former 在具身思维链数据上微调大语言模型，生成可执行计划交由下游低层控制器执行。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：EmbodiedGPT 将具身规划文本查询出的实例级视觉特征与全局特征接入策略网络输出连续控制动作，连接高层语义规划与低层策略学习。
 
 ## 参考来源
 

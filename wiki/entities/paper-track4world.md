@@ -138,6 +138,8 @@ sequenceDiagram
 - [TAPVid-MV](./paper-tapvid-mv.md) — 多视角 3D 跟踪基准邻域
 - [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — R5 具身/跟踪 reuse 地图
 - [ARROW](./paper-arrow-4d-reconstruction.md) — 无序图像集 / 多视角流的顺序无关查询式 4D 重建与点跟踪；同为前馈 3D 跟踪路线对照（arXiv:2610.01314）
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：从单目视频前馈重建全局场景几何并输出世界坐标系下的稠密三维点轨迹。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：结合全局三维场景表征与跨帧二维到三维相关性计算统一估计长程稠密流。
 
 ## 参考来源
 

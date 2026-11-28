@@ -110,6 +110,8 @@ sequenceDiagram
 
 - **[FEAP MuJoCo 部署](./jackhan-feap-mujoco-deployment.md)**：同一作者的「纯本体 ONNX FEAP」对照组。
 - **[Sim2Real](../concepts/sim2real.md)**：视觉策略在仿真渲染深度上闭环，对 sim2real 的感知域随机化提出更高要求。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：在 MuJoCo 地形场景中验证 E3 21-DoF 人形机器人的深度视觉与本体融合移动策略。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：将 MJCF 地形场景、depth_cam 深度渲染、TorchScript 策略与 PD 控制器集成为闭环仿真部署环境。
 
 ## 参考来源
 

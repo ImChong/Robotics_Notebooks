@@ -108,6 +108,8 @@ sequenceDiagram
 - [stanford-doggo-and-pupper](./stanford-doggo-and-pupper.md)
 - [mini-pupper](./mini-pupper.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
+- [Locomotion](../tasks/locomotion.md)：Bittle 基于 9 自由度舵机和 OpenCat 步态框架演示四足基础行走、自平衡与特技运动控制。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：OpenCat 框架在 ESP32 主控上组织指令解析、姿态平衡与多舵机关节驱动的嵌入式控制架构。
 
 ## 推荐继续阅读
 

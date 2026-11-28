@@ -97,6 +97,7 @@ sequenceDiagram
 - [人形机器人](./humanoid-robot.md)
 - [模仿学习](../methods/imitation-learning.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：了解 Poppy 通过 pypot 配置驱动分层连接舵机硬件、仿真后端与上层 Python 服务的软件集成模式。
 
 ## 推荐继续阅读
 

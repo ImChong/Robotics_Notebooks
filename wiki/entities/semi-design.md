@@ -84,6 +84,8 @@ sequenceDiagram
 
 - [shadcn-admin](shadcn-admin.md) — 提供后台页面布局的另一种复用方式。
 - [Impeccable](impeccable.md) — 用于界面设计与检查。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：Semi Design 提供标准化的 React 组件库与设计 Token，可用于搭建机器人监控、诊断与运维后台等上层软件界面。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：在基于 Web 的机器人遥操作或远程运维控制台中，此类开源 React 组件库可用于构建状态展示与操作交互界面。
 
 ## 参考来源
 

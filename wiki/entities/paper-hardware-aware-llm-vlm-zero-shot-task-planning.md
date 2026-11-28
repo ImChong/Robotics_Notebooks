@@ -98,6 +98,7 @@ sequenceDiagram
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：对照机械臂、末端执行器与确定性几何规划接口的完整操作系统集成。
 
 ## 参考来源
 

@@ -170,6 +170,8 @@ ScanNet200 消融（线性探测）：Sonata/PTv3 **28.3** → Sonata/Volt **29.
 - [DINOv2：图像自蒸馏表征](./paper-dinov2.md)
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)
 - [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：基于单尺度体素 Transformer 骨干开展非对称自蒸馏与掩码预测以学习三维场景语义表征。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：从未标注三维场景与多视角视觉特征中提取可用于下游三维语义理解的稠密特征。
 
 ## 参考来源
 

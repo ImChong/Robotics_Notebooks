@@ -108,6 +108,8 @@ flowchart TD
 
 - [UnifoLM 世界模型动作](../entities/unifolm-world-model-action.md) — 动作模型家族与接口
 - [HINT 长程操作](../entities/paper-hint-robot-manipulation.md) — 基于部署时意图控制的操作方法
+- [VLA（Vision-Language-Action）](../methods/vla.md)：SteerAct 在推理期基于时间描述符动态调节冻结 π0.5 等动作模型的稀疏激活，实现不更新权重的少样本适配。
+- [Manipulation](../tasks/manipulation.md)：该工作在 RoboTwin 2.0、DexJoCo 及真机操作任务上利用每任务 24 条标注轨迹提升了操作策略成功率。
 
 ## 参考来源
 

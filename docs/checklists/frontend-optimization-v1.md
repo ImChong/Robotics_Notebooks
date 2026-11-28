@@ -7,6 +7,8 @@
 
 ## 一、 视觉降噪 (Visual De-cluttering)
 
+- [x] AI 聊天窗口与 Worker 段落打分增加模糊搜索支持（2026-11-28）：在 `docs/kb-chat.js`、`docs/style.css` 与 `workers/kb-chat/src/index.mjs` 中同步实现零外部依赖、零索引体积膨胀的前后端一致模糊检索能力——扩展中英机器人术语同义词词表至约 45 组，支持 ASCII 分隔符/紧凑形态归一化（`sim 2 real` / `sim to real` / `isaac lab` / `open vla` / `ros 2` / `pi 0` / `π 0`）、有界 Damerau-Levenshtein 编辑距离（英文拼写容错，含相邻字母换位与长度/首字母/4 字母纯换位防误触守卫）以及中文 1 字错别字与跳字有序子序列匹配（含问句/虚词切分、DP 精确词覆盖防误判与 `df` 过滤）；问答卡片头部新增无 `innerHTML` 的 `.kb-chat-fuzzy-note` 模糊匹配提示条（`.kb-chat-fuzzy-chip`，适配瑞士工程风与暗/亮主题，并写入 `localStorage` 历史持久化），对精确提问与无关查询保持零误触发；同时保持云端 Worker `POST /chat` schema、10ms CPU 预算与防刷安全边界不变，并兼容未重新部署的旧版 Worker 自动回退本地模糊检索。
+
 - [x] 顶栏/抽屉「榜单 → 枢纽」命名统一（2026-11-27）：将首页与 `discovery.html` 顶栏 `.main-nav` 及移动端抽屉 `#mobileNavSheet` 中的 2 字导航项由「榜单（Rankings）」统一为「枢纽（Hubs）」，与首页 Hero 及区块 04「核心枢纽（Core Hubs）」保持「修饰词 + 2 字核心词」一致结构（保留正文中「查看完整榜单」「论文跟踪榜单」不动），并同步 `docs/home-i18n.js`、`docs/discovery.js` 与 `tests/discovery-page.test.cjs`。
 
 - [x] 新增 Robotics Discovery 推荐网站导航页「研究发现」（2026-11-27，[#4279](https://github.com/ImChong/Robotics_Notebooks/issues/4279)）：在首页顶栏与移动抽屉补充 2 字入口「发现」（`discovery.html`），并同步将顶栏与抽屉内「完整图谱 / 增长趋势」统一为 2 字「图谱 / 趋势」，Hero 行动区保留 4 字「研究发现」；修复窄屏 `.header-start + .header-spacer` 导致顶栏导航与 `GitHub` 链接重叠问题，移动抽屉移除重复的「旧版样式」按钮并在窄屏保留顶栏 `#uiStyleToggle`；新增静态配置 `docs/discovery-sources.json`（按论文、开源项目、模型、数据集 4 类收录 12 个核验源站，已去掉 DailyArxiv 与每日精选），页面采用紧凑列表渲染并在桌面端支持鼠标悬停 / 键盘聚焦浮窗显示站点简介、适用场景与更新节奏（移动端保留行内「详情」展开），完整适配全站瑞士工程风（`data-ui="tech"`）、旧版回退、暗/亮主题、中英双语与移动端响应式，并补齐回归测试与双端截图核验。
@@ -371,5 +373,11 @@
 - [x] 修复图谱页 `graph.html`（3D 地形 / 3D 立体 / 2D）、首页 `mini-graph.js` 与全站 `main.js` `setupGraphHoverTooltip` 悬停浮窗先移除 `.hidden` 或清空 `left`/`top` 再在下一帧定位导致的左上角闪现问题：统一在写入合法 `left`/`top`（且无坐标不显隐、同节点移动不清空重建）之后再取消隐藏；同步修正 `graph-3d.js` `lastPointer` 初值 `(0, 0)` 兜底与 `graph-perspective.js` 冗余空悬停及拖拽视角时清除悬停态。
 - [x] 修复 `detail.html`「关联知识图谱」2D 模式节点拖拽后静止不回弹问题（`docs/main.js` `renderDetailMiniMap`）：接入对齐 `graph.html` 2D 的粘滞阻尼与向心回复力（`velocityDecay(0.54)` / `alphaDecay(0.04)` / `alphaMin(0.005)` / `forceX`/`forceY`），拖拽时以 `sim.alphaTarget(0.2).restart()` 联动牵引，松手释放 `fx`/`fy` 平滑回弹。
 - [x] 新增前端回归测试 `tests/tooltip-position-and-detail-rebound.test.cjs`，并通过 headless Chrome 实测验证零左上角闪现与 2D 拖拽回弹。
+
+## 2026-11-28 Modern Web Guidance Tier S 落地（Issue #4311）
+
+- [x] 对照 [`GoogleChrome/modern-web-guidance`](https://github.com/GoogleChrome/modern-web-guidance)（全量 206 篇指南 + `legacy-scan`）输出按 ROI 排序的全站可优化项清单，已归档至 [`modern-web-guidance-optimization-v1.md`](modern-web-guidance-optimization-v1.md)（Issue [#4311](https://github.com/ImChong/Robotics_Notebooks/issues/4311)）。
+- [x] 落地全部 **Tier S（#1–#7）**：IME 组字回车防误提交/误跳转（`kb-chat.js` / `main.js`）、`sponsor.js` 改为 `async fetchpriority="low"` 防阻塞 `defer` 队列、非图谱页底部静态脚本 `defer` 与 `fetchpriority`/`priority: 'low'` 调度、MPA Speculation Rules 悬停预取、屏下重区块 `content-visibility: auto`、Mermaid/Plotly CDN SRI + 全站 `Referrer-Policy`、`.kb-chat-input` `field-sizing: content` 自动增高，以及与主题切换圆形动画隔离的 `@view-transition` 跨文档视图过渡。
+
 
 

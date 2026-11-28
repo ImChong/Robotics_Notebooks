@@ -134,6 +134,7 @@ sequenceDiagram
 - [LpWM](./paper-lpwm.md)
 - [WCM](./paper-wcm-world-critic-model.md)
 - [生成式世界模型](../methods/generative-world-models.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：对照无标签图像表征学习中的自监督特征约束与坍塌抑制方法。
 
 ## 参考来源
 

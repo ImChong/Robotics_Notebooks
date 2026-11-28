@@ -57,6 +57,8 @@ Embodied Chain of Action Reasoning 的人形机器人学习论文条目，当前
 
 - 分类页：[paper-notebook-category-04-loco-manipulation-and-wbc](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：该条目聚焦多模态基础模型通过动作链推理驱动人形机器人完成移动操作任务。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：将多模态推理与具身动作链结合以输出人形控制指令，属于视觉–语言–动作（VLA）策略接口问题域。
 
 ## 参考来源
 

@@ -76,6 +76,8 @@ flowchart LR
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md)：对照开放词汇视觉定位能力在未见环境中直接支持零样本目标导航的任务场景。
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：了解多模态空间理解与目标接地技术如何赋能基于自然语言指令的三维导航任务。
 
 ## 参考来源
 

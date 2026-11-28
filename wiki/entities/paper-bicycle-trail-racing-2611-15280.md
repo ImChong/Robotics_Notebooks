@@ -118,6 +118,8 @@ sequenceDiagram
 
 - [2026-11-16 具身研究论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ActionCodec2：流式动作编解码](./paper-actioncodec2-streaming-action-tokenizer.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：该研究以融合 RGB 可通行性与 LiDAR 高程的 SemMap 串联局部路径选择与骑行控制，体现感知、规划与执行一体化导航流程。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：论文在程序化生成林道地形与难度课程中训练策略并迁移至真实自行车机器人竞速部署，是典型的 Sim2Real 迁移实践。
 
 ## 参考来源
 

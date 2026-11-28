@@ -163,6 +163,8 @@ flowchart TD
 - [Dependency, Compression, and Synergy：前序信息论框架](./paper-multimodal-information-theory.md)
 - [多模态基础概念](../concepts/multimodality-basics.md)
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：MIIB 通过双视图自监督与信息论交互约束学习包含视觉在内的多模态融合与协同表征。
+- [Manipulation](../tasks/manipulation.md)：MIIB 在 Vision&Touch 机器人操作数据上评测了接触状态预测与末端执行器位姿回归任务。
 
 ## 参考来源
 

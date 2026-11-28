@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：规范欧盟市场机械与机器人系统的物理及软件安全要求，直接约束控制系统架构中的安全边界设计。
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：为工业及协作机械臂等物理操作系统的风险评估、安全防护设计与合规准入提供核心法规依据。
 
 ## 参考来源
 

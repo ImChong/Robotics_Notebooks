@@ -93,6 +93,8 @@ flowchart LR
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）](../methods/sim2real-joint-sysid-experiment-design.md)：该文以 Fisher 信息矩阵可逆性与激励丰富度为判据，为 Sim2Real 动力学辨识中的主动激励与实验设计提供数学基础。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：该文阐明输入激励丰富度与待辨识参数可区分性之间的关系，可指导关节惯量与摩擦参数辨识时的数据采集与信号设计。
 
 ## 参考来源
 

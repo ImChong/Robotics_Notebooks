@@ -65,6 +65,8 @@ VL-JEPA 表明在视觉语言任务上，把“生成 token”换成“预测文
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md)
 - [LeJEPA](./paper-lejepa.md)
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：在联合嵌入预测架构中从视觉表征与文本查询直接预测连续目标语义表征。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：在视频分类、检索与视觉问答等标准基准上对比潜空间预测与自回归词元生成的效率与精度。
 
 ## 参考来源
 

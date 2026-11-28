@@ -245,6 +245,8 @@ sequenceDiagram
 - [paper-epitope-excision-binder-design](./paper-epitope-excision-binder-design.md)：同一博客下的 de novo 结合物设计论文
 - [google-grounding-ai-agents-wet-labs](./google-grounding-ai-agents-wet-labs.md) — Google Research 博客：湿实验自主化的三条研究线（接地到机器人 / 适配体闭环 / 蛋白结合剂）
 - [pylabrobot](./pylabrobot.md) — PyLabRobot：硬件无关的液体处理机器人开源接口
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：论文构建了 LLM 智能体读取湿实验测序富集反馈、诊断失败原因并多轮迭代重新设计序列的闭环规划与反馈执行流程。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该研究以三轮湿实验校正命中率变化为客观验证基准，在低成本分子沙盒中评估科学发现智能体的闭环迭代效果。
 
 ## 参考来源
 

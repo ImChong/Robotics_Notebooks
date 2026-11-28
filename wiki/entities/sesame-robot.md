@@ -102,6 +102,8 @@ sequenceDiagram
 - [quadruped-robot](../entities/quadruped-robot.md)
 - [open-quadruped](../entities/open-quadruped.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)
+- [Locomotion](../tasks/locomotion.md)：Sesame Robot 作为基于 ESP32 与 8 自由度舵机的开源创客四足平台，在固件中通过步态动作序列实现基础行走与姿态切换。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：其固件采用 HTTP/串口指令分派、loop() 状态调度与舵机底层写入的分层结构，展示了轻量级嵌入式机器人控制链路。
 
 ## 参考来源
 

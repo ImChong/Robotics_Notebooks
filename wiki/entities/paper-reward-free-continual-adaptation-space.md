@@ -153,6 +153,8 @@ sequenceDiagram
 - [Space Mining](./paper-space-mining-with-robotics.md) — 地外自主基础设施
 - [RAFT](./paper-raft-thruster-fault.md) — 同机构推进器容错
 - [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：该方法依托 DreamerV3 世界模型在无奖励下仅更新潜转移动态，并在想象轨迹中重训策略以应对硬件故障。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：全部预训练与行星穿越、轨道导航、螺丝装配三类故障适应验证均集成在基于 Isaac Lab 的 Space Robotics Bench 仿真环境中。
 
 ## 参考来源
 

@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：面向物理智能打造通用机器人基础模型时，多模态视觉-语言-动作策略是核心技术路线之一。
+- [Manipulation](../tasks/manipulation.md)：通用机器人基础模型通常以真实场景下的多任务物体抓取与日常操作作为主要验证任务。
 
 ## 参考来源
 

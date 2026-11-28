@@ -154,6 +154,8 @@ sequenceDiagram
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 协议层与传输
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 代理制图工具
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照智能体工具调用接口设计，了解 @next-ai-drawio/mcp-server 如何把建图、改图与导出能力暴露给外部代理。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：参考智能体规划与反馈执行循环，理解聊天制图中的意图解析、XML 生成与画布迭代修改机制。
 
 ## 参考来源
 

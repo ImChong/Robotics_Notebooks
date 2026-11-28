@@ -164,6 +164,7 @@ flowchart TB
 - 模块化 AD 专辑：[autonomous-driving-core-algorithms-series.md](../overview/autonomous-driving-core-algorithms-series.md)
 - VLM 方法背景：[vla.md](../methods/vla.md)
 - Qwen-Drive 对照：[paper-qwen-drive-1-0.md](./paper-qwen-drive-1-0.md)（BEV 作为外接感知头输出，规划专家直接生成轨迹，而非 VLM 输出 key points 再交 PLUTO）
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：对照如何结合视觉语言模型稀疏意图推理与模仿学习规划器（PLUTO）解决长尾闭环驾驶问题。
 
 ## 参考来源
 

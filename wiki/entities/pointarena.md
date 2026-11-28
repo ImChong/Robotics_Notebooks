@@ -117,6 +117,8 @@ sequenceDiagram
 - [RoboRefer](./paper-roborefer.md)
 - [空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：pointing 精度评测，指点正确 ≠ 下游抓取成功
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：PointArena 以语言引导的图像点定位作为可审计评测协议与排行榜，用于横向比较 MLLM 的空间 grounding 能力。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：PointArena 评测模型将自然语言指令锚定到图像像素位置的能力，直接对应机器人抓取与导航上游的视觉感知定位接口。
 
 ## 参考来源
 

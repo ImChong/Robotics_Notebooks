@@ -68,6 +68,8 @@ flowchart TD
 - [open-quadruped](./open-quadruped.md)
 - [mini-pupper](./mini-pupper.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
+- [Locomotion](../tasks/locomotion.md)：SpotMicro 是社区开源的 12 舵机四足机器人入门平台，常用于学习与验证基础四足步态与移动控制。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：社区衍生分支常将 SpotMicro 接入物理仿真环境，用于练习和验证四足机器人的强化学习步态控制方法。
 
 ## 推荐继续阅读
 

@@ -80,6 +80,7 @@ flowchart LR
 - [MiniMax H3](./minimax-h3.md) — 视频生成基座及其 Ref2VA 任务
 - [MiniMax-H3 360° Orbit LoRA（Pablo Dawson）](./minimax-h3-360-orbit-lora.md) — 采用 FL2VA 首尾帧条件的独立实现
 - [生成式数据增广](../methods/generative-data-augmentation.md) — 合成视角的使用与验证
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：对照基于参考图像条件合成并评估多视角环绕视频的生成工作流。
 
 ## 参考来源
 

@@ -225,6 +225,8 @@ sequenceDiagram
 - [KineBench](./paper-kinebench.md)
 - [视觉骨干](../concepts/vision-backbones.md)
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：以纯 ViT 在像素空间做流匹配并支持单步前馈推理，直接从单目 RGB 估计稠密点图以服务机器人视觉几何感知。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：面向单目三维几何重建输出相机系稠密点图，并在细长结构与透明物体边界上保持较高几何锐度。
 
 ## 参考来源
 

@@ -136,6 +136,8 @@ sequenceDiagram
 - [PlotJuggler](./plotjuggler.md) — 以时序曲线分析为主的机器人日志工具，可与 Rerun 对照选型。
 - [Foxglove](./foxglove-studio.md) — ROS / MCAP 多模态可视化工具。
 - [RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 将观测、动作和真机日志结合分析。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：Rerun 支持将多频率机器人传感器与状态日志统一写入列式存储，并通过时间轴对齐、筛选和查询直接服务于训练数据管线准备。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：在机器人软件系统集成中通过 SDK、ROS 2 桥接及 MCAP/URDF 导入器接入多模态实时流与离线记录，支撑跨模块联调与复盘。
 
 ## 参考来源
 

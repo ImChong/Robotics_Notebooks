@@ -114,6 +114,8 @@ flowchart TD
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 - [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 离线 MCQ 轨近似①认知层评测，在线可验证子任务轨对应③任务成功率评测；游戏域结果不直接等价于机器人具身评测
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：GameHorizon Suite 通过离线多选与在线可验证子任务双轨协议评测 47 个模型，用于定位智能体在不同时间尺度上的理解与执行短板。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：GameHorizon Suite 将短时操作、中期目标与长程策略拆分为可逐层核验的任务，为具身及交互智能体的分层评测设计提供对照参考。
 
 ## 参考来源
 

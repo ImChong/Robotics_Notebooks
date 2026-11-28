@@ -87,6 +87,8 @@ sequenceDiagram
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页可归入其 ③ 2D→3D 提升与语义建图层：意图条件的三维部件分割，为下游操作提供部件级语义
 - [图像分割任务分类](../concepts/image-segmentation-taxonomy.md) — 对照二维语义、实例和全景任务。
 - [Segment Anything](paper-segment-anything.md) — 二维可提示分割；输入和输出域不同。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：基于文本或交互点提示输出统一的三维物体部件语义掩码，可为机器人操作感知提供候选部件级几何线索。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：以三维网格形状为输入执行意图条件下的结构分解与部件掩码预测，衔接三维重建后的物体部件语义解析。
 
 ## 参考来源
 

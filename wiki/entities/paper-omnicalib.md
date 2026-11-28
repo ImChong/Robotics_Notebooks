@@ -136,6 +136,7 @@ flowchart TB
 - [感知坐标后处理](../concepts/perception-coordinate-postprocessing.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
 - [Manipulation](../tasks/manipulation.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照多路 RGB-D 与头部相机外参标定及系统坐标变换（tf）核对的传感器集成流程。
 
 ## 参考来源
 

@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：其主导的 Figure 通用人形机器人聚焦工厂与家庭场景中的全身移动操作任务规模化落地。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：规模化人形机器人在复杂语义指令执行与端到端控制上广泛采用视觉-语言-动作大模型路线。
 
 ## 参考来源
 

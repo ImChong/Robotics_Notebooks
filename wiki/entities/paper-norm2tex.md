@@ -110,6 +110,8 @@ flowchart TD
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [sim2real](../concepts/sim2real.md)
 - [embodied-station-2026-10-18-26-papers-technology-map](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Norm2Tex 可作为前置渲染算子直接插拔接入 TACTO 或 Taxim 视触觉仿真管线，为深度图注入高频表面纹理。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：Norm2Tex 通过在仿真触觉深度渲染阶段补充精细纹理，服务于材料分类与触觉控制策略的 Sim2Real 迁移验证。
 
 ## 参考来源
 

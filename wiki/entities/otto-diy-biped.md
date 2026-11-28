@@ -101,6 +101,8 @@ sequenceDiagram
 - [humanoid-robot](./humanoid-robot.md)
 - [open-source-humanoid-hardware](./open-source-humanoid-hardware.md)
 - [机器人开源项目 18 例（微信 GitHubStore）索引](../overview/robot-open-source-wechat-githubstore-18-projects.md)
+- [Locomotion](../tasks/locomotion.md)：以 4 舵机低成本双足结构为入门载体，实践基础步态生成与双足移动控制概念。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：结合全 3D 打印结构件设计，用于定制和修改教育双足机器人的外壳与舵机支架模型。
 
 ## 推荐继续阅读
 

@@ -131,6 +131,7 @@ flowchart TB
 - [actuator-drive-chain-selection-loop](../queries/actuator-drive-chain-selection-loop.md)
 - [hub-actuator-drive-chain](../overview/hub-actuator-drive-chain.md)
 - [locomotion](../tasks/locomotion.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：了解电机驱动、高频电流环延迟补偿与执行器接口在控制系统架构中的定位。
 
 ## 参考来源
 

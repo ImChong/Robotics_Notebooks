@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：规定工业机器人与协作机械臂的工作空间安全准则，是物理操作系统现场部署的基础合规标准。
+- [Admittance Control（导纳控制）](../methods/admittance-control.md)：协作机器人标准中的功率与力限制要求，在工程上常通过导纳控制等柔顺控制策略加以实现。
 
 ## 参考来源
 

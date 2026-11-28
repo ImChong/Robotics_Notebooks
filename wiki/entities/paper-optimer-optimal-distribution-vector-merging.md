@@ -208,6 +208,7 @@ sequenceDiagram
 - [CapVector：VLA 参数空间能力向量](./paper-capvector-capability-vectors-vla.md) — 理解差分向量在机器人模型上的另一种用法。
 - [SLA：空间-语言-动作持续预训练](./paper-sla-spatial-language-action.md) — 对照机器人 VLA 的 CPT 目标，但不可混同评测结果。
 - [VLA 方法总览](../methods/vla.md) — 将 OptiMer 的可迁移假设与当前机器人策略结构区别开来。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对照利用代理任务与全量基准评测反馈指导合并权重搜索的模型评测规范。
 
 ## 参考来源
 

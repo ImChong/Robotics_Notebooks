@@ -101,6 +101,8 @@ flowchart TD
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：BayRn 利用目标域稀疏回报通过贝叶斯优化迭代更新域随机化分布，以系统性缩小 Sim2Real 迁移差距。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：该方法将下层随机化仿真中的强化学习策略优化嵌入上层高斯过程与采集函数驱动的黑盒调参闭环。
 
 ## 参考来源
 

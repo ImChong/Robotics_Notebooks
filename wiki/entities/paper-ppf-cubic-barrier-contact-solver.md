@@ -64,6 +64,8 @@ summary: "TOG 论文：三次障碍接触势 + 弹性包容动态刚度，使 FE
 - [ppf-contact-solver（实现）](./ppf-contact-solver.md) — 代码、部署、Blender/MCP
 - [MuJoCo](./mujoco.md) — 刚体 RL / 控制标准栈
 - [仿真器选型指南](../queries/simulator-selection-guide.md) — locomotion RL 三维对比；可变形离线场景见 ppf 实体
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：将三次障碍接触势与弹性包容动态刚度对齐进同一牛顿求解步，支持大规模可变形有限元网格的无穿透高保真工程仿真。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：其开源求解器为软体操作、柔性夹具等强几何约束场景提供高保真可变形物理仿真参考，与刚体仿真基准形成互补。
 
 ## 方法栈
 

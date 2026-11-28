@@ -120,6 +120,7 @@ flowchart LR
 - [World Action Models](../concepts/world-action-models.md)
 - [仿真评测可复现性与真实代表性](../concepts/sim-vs-real-eval-gap.md)
 - [生成式世界模型](../methods/generative-world-models.md)
+- [Manipulation](../tasks/manipulation.md)：对照第一视角人类操作视频世界模型在手部动作与物体交互物理后果评测中的任务背景。
 
 ## 参考来源
 

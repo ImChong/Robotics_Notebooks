@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Locomotion](../tasks/locomotion.md)：涵盖足式与人形机器人动力学建模、运动控制及复杂地形稳定移动等核心研究方向。
+- [Manipulation](../tasks/manipulation.md)：聚焦机械臂与灵巧手在感知引导下的物体抓取、接触交互与灵巧操作研究。
 
 ## 参考来源
 

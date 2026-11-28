@@ -99,6 +99,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [FreeCAD AI Skill（shanputaoye）](./shanputaoye-freecad-ai-skill.md)
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：该项目将 FreeCAD 操作指引与工具边界封装为可由智能体按需加载的技能模块，属于智能体技能封装的工程实践。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：辅助智能体在 FreeCAD 中执行几何建模与参数检查等操作，服务于参数化 CAD 建模流程的自动化。
 
 ## 参考来源
 

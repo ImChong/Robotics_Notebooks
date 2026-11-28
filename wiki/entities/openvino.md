@@ -157,6 +157,8 @@ sequenceDiagram
 - [Ultralytics](./ultralytics.md)
 - [LeRobot](./lerobot.md)
 - [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：对应其 NNCF 量化、稀疏化及面向 Intel 硬件的模型图优化与压缩流程。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：对应通过 OpenVINO 运行时、OVMS 及 Physical AI 控制环完成模型推理与部署的流程。
 
 ## 参考来源
 

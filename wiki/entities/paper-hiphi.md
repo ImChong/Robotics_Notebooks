@@ -165,6 +165,8 @@ sequenceDiagram
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Motion Data Quality](../concepts/motion-data-quality.md)
 - [OMOMO](./omomo-dataset.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：HiPHI 同步记录人体骨架与交互物体位姿网格，论文分别通过 PyRoki 与物体交互重定向管线将动捕数据映射至 Unitree G1。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：HiPHI 为人形全身模仿与人–物交互（HOI）提供了经语义覆盖设计的高精度动捕基准，用于评估物理跟踪策略的运动恢复效果。
 
 ## 参考来源
 

@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：博客围绕 LeRobot 等开源生态分享机器人数据集标准化、episode 采集与策略训练管线实践。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：其发布的开源机器人文章常聚焦行为克隆与扩散策略等模仿学习方法在真机上的复现与微调。
 
 ## 参考来源
 

@@ -100,6 +100,7 @@ sequenceDiagram
 - [contact-estimation](../concepts/contact-estimation.md)
 - [hierarchical-quadruped-navigation-stack](../concepts/hierarchical-quadruped-navigation-stack.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照结合在线负载几何估计、路径规划与足式运动控制的四足导航流程。
 
 ## 参考来源
 

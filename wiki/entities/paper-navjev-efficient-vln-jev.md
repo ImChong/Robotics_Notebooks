@@ -150,6 +150,7 @@ flowchart LR
 - [视觉–语言导航任务](../tasks/vision-language-navigation.md) — VLN-CE 问题定义
 - [DimOS](./dimensionalos-dimos.md) — Dimensional 导航/sim 栈与 eval 套件
 - [VLN 开源复现范式概览](../overview/vln-open-source-repro-paradigms.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照将环境感知压缩、航点选择与路径执行连成闭环的机器人导航工作流。
 
 ## 参考来源
 

@@ -106,6 +106,8 @@ sequenceDiagram
 
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [Navigation2](./navigation2.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照感知、障碍物预测、行为规划与车辆轨迹控制的自动驾驶导航全链路。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：参考通过 NDT、GNSS 与 INS 多传感器融合实现道路车辆高精定位的状态估计流程。
 
 ## 推荐继续阅读
 

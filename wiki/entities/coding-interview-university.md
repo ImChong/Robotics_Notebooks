@@ -119,6 +119,8 @@ flowchart TB
 - [人形系统学习策展](humanoid-system-curriculum.md) — 课程式系统学习，非 OJ 刷题
 - [深度学习基础](../concepts/deep-learning-foundations.md) — 本库 DL 概念底座
 - [运动控制主路线](../../roadmap/motion-control.md) — 机器人研究主线；CIU 作并行面试补底
+- [A* 全局路径规划](../methods/a-star.md)：衔接图遍历、优先队列与复杂度分析等核心算法在机器人全局路径规划中的应用。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：补充构建与维护复杂机器人软件系统所需的通用数据结构、算法与工程基础。
 
 ## 参考来源
 

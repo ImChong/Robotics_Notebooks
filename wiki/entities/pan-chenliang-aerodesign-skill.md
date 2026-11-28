@@ -68,6 +68,8 @@ flowchart TD
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Claude Engineering Skills](./soljourner-claude-engineering-skills.md)
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：AeroDesign Skill 将飞机概念设计学科知识封装为按工程领域路由、可按需加载的智能体技能文件。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：AeroDesign Skill 在概念设计阶段串联气动、结构与推进等参数约束，与工程仿真建模和物理量核对流程衔接。
 
 ## 参考来源
 

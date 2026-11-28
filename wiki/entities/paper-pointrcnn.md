@@ -114,6 +114,8 @@ PointRCNN 直接在原始点上生成 proposal，处在「PointNet++ 骨干 → 
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)
+- [目标检测（Object Detection）](../methods/object-detection.md)：提出基于原始 LiDAR 点云的两阶段三维目标检测框架，自底向上生成三维候选框并在规范坐标系内完成框精修。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：直接从稀疏点云观测中分割前景并回归三维物体位姿与尺寸，是机器人三维感知流水线中点云检测的代表性路线。
 
 ## 参考来源
 

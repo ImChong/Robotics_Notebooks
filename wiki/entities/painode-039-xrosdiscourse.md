@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：官方 ROS 论坛聚焦中间件发布、功能包维护与系统集成规范，是机器人软件架构演进的重要讨论场所。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：URDF/SDF 建模、运动学描述标准及仿真工具链接入常在该官方论坛发布规范更新与经验交流。
 
 ## 参考来源
 

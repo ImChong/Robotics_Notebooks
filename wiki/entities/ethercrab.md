@@ -114,6 +114,8 @@ sequenceDiagram
 - [igh-ethercat-master](./igh-ethercat-master.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-opensource-libs-wechat](../overview/ethercat-opensource-libs-wechat.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：在机器人软件系统中承担现场总线通信层接入与实时设备驱动集成。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：为底层关节控制环提供确定性周期通信与执行器数据通道。
 
 ## 参考来源
 

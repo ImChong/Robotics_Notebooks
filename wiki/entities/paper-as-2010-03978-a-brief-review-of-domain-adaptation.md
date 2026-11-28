@@ -111,6 +111,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Sim-to-Real Domain Adaptation · Sim2Real 域适应](../methods/domain-adaptation-for-sim2real.md)：对照将无监督域适应分类体系落地到 Sim2Real 迁移场景的域适应方法。
 
 ## 参考来源
 

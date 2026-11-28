@@ -83,6 +83,8 @@ flowchart TD
 
 - [Day 6 导读](../overview/humanoid-motion-intelligence-day6-engineering-deployment.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：TAPESIM 通过刚性簇与可变形前沿的混合刚柔物理仿真建模胶带释放、粘附剥离与切割过程。
+- [Manipulation](../tasks/manipulation.md)：该工作针对机器人胶带分配与贴合这一高难度柔顺物体操作任务提供高效物理仿真验证平台。
 
 ## 参考来源
 

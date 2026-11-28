@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：PyTorch 作为开源深度学习框架支撑了主流机器人策略学习与训练管线的实现。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：开源深度学习框架 PyTorch 为大规模仿真并行强化学习与策略梯度训练提供核心计算底座。
 
 ## 参考来源
 

@@ -130,6 +130,8 @@ sequenceDiagram
 
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md)：开发智能体的流程与验证机制。
 - [CodeGraph](./codegraph.md)：源码符号关系与分析工具的不同侧重点。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：对照以目标采集证据与自动检查结果驱动 coding agent 迭代改进的验证闭环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：参考将软件分析、构建与目标检查工具通过 CLI 和 MCP 开放给外部智能体的接口。
 
 ## 参考来源
 

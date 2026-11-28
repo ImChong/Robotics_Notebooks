@@ -91,6 +91,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：VerifAI 可在闭环仿真环境中执行场景伪证与形式化分析，协助定位自主系统在仿真边界条件下的失效模式。
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：VerifAI 聚焦自主系统与信息物理系统的安全验证与鲁棒性分析，可与安全强化学习的约束满足和边界防护形成互补。
 
 ## 参考来源
 

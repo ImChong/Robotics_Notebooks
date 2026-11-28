@@ -98,6 +98,7 @@ sequenceDiagram
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [embodied-station-2026-10-28-59-papers-technology-map](../overview/embodied-station-2026-10-28-59-papers-technology-map.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：对照掌心视觉感知与附加机械拇指末端执行器协同完成抓握辅助的操作系统架构。
 
 ## 参考来源
 

@@ -91,6 +91,8 @@ flowchart LR
 - [Internal Cycloidal Actuator](./internal-cycloidal-actuator.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：pygeartrain 负责计算摆线与行星齿廓坐标并导出至 SolidWorks 等 CAD 工具，属于参数化 CAD 建模流程的上游几何生成环节。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：导出的参数化齿轮轮廓与传动比方案需在后续工程仿真建模与验证流程中校核接触、强度与运动学表现。
 
 ## 参考来源
 

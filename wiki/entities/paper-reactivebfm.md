@@ -168,6 +168,8 @@ flowchart TB
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Unitree G1](./unitree-g1.md)
 - [AMASS](./amass.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：ReactiveBFM 在通用全身运动跟踪器之上接入在线自回归扩散规划器，将开环参考跟踪升级为可重规划的闭环全身控制。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：在 Unitree G1 真机上实现文本条件全身移动、流式指令切换与外力扰动恢复等人形运动控制任务。
 
 ## 参考来源
 

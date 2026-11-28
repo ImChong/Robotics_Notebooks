@@ -145,6 +145,7 @@ flowchart TB
 - [章鱼软臂仿生（北航文力组 Science Robotics 2023）](./paper-octopus-inspired-esoam-soft-arm.md)
 - [两栖印鱼搭便车机器人（北航文力组 Science Robotics 2022）](./paper-aerial-aquatic-remora-hitchhiking-robot.md)
 - [仿生多模态机器人综述（Science Robotics 2026）](./paper-bioinspired-multimodal-robotics.md) — 软材料 + 多模态切换的上位框架
+- [Hybrid Locomotion (混合运动)](../tasks/hybrid-locomotion.md)：对照融合游泳、爬行与滑翔等多模态切换的混合运动系统设计。
 
 ## 推荐继续阅读
 

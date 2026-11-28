@@ -152,3 +152,5 @@ sequenceDiagram
 
 - [触觉感知](../concepts/tactile-sensing.md) — 模态与传感器路线。
 - [eFlesh](eflesh.md) — 磁性微结构的不同实现。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：覆盖柔性触觉阵列硬件读出、力标定与多通道触觉数据接入机器人系统的集成流程。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md)：将标定后的法向力与剪切力触觉信号反馈至柔顺阻抗控制以适应接触状态变化。

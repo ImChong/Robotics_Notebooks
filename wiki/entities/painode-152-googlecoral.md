@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：Edge TPU 边缘模块高度依赖 INT8 量化与模型编译优化，以在低功耗端侧高效执行神经网络推理。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：作为面向嵌入式与机器人平台的边缘推理加速硬件，用于支撑机载低延迟视觉与感知模型部署。
 
 ## 参考来源
 

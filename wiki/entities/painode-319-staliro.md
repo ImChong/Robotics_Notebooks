@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：S-TaLiRo 通过时序逻辑证伪在仿真模型中自动搜索违背控制需求边界的反例，支撑系统验证闭环。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：适用于对机器人分层控制系统及闭环控制律进行需求级的形式化压力测试与边界核查。
 
 ## 参考来源
 

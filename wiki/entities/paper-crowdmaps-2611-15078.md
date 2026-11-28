@@ -99,6 +99,8 @@ flowchart LR
 
 - [本期 29 篇具身论文选型地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder：任务难度分层评测](./paper-maniladder-manipulation-benchmark.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：CrowdMAPS 通过在 Isaac Lab 重建真机关键状态并众包标注多组可行末端目标动作，在不增加真机试错成本下扩展多峰模仿学习监督。
+- [Manipulation](../tasks/manipulation.md)：论文围绕真实机械臂操作轨迹中的关键帧重建与多可行动作标注，提升桌面及真实物体操作任务上的策略泛化表现。
 
 ## 参考来源
 

@@ -186,6 +186,8 @@ sequenceDiagram
 - [真机策略 Autoresearch Harness](../queries/real-robot-policy-autoresearch-harness.md)：机器人领域如何建立可靠 benchmark 与外部裁判。
 - [Karpathy Autoresearch](./karpathy-autoresearch.md)：相似的固定预算优化闭环，但目标和验收口径不同。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：RBA 的冻结 Judge 只验证训练迭代加速与数值等价，不替代该闭环中的 ③ 策略任务成功率与 ④ sim↔real 校准评测。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：ResearchBoost-Agent 通过冻结不可篡改的 Judge（结构、性能收益、逐比特与统计等效四道门）约束编码智能体优化训练代码，是典型的验证闭环实践。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：将性能剖析、单热点修改、计时初筛与 Judge 核验组织成受控的智能体迭代规划与反馈执行循环。
 
 ## 参考来源
 

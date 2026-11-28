@@ -110,6 +110,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照从真实地图与语义约束构建大规模交互式仿真场景的生成流程。
 
 ## 参考来源
 

@@ -7,7 +7,7 @@ tags:
 - embodied-reasoning
 - multi-embodiment
 status: complete
-updated: '2026-11-26'
+updated: '2026-11-28'
 project_id: agentic-2510-03342
 arxiv: '2510.03342'
 sources:
@@ -135,7 +135,7 @@ flowchart TD
 | 维度 | Gemini Robotics 1.0 / GRoD | 通用前沿 VLM + VLA 拼接 | 单层端到端 Thinking VLA（如 ECoT） | Gemini Robotics 1.5 系统（本文） |
 |---|---|---|---|---|
 | 跨构型统一性 | ALOHA 泛化强，Franka/Apollo 需专精微调或单模型单机 | 取决于底层 VLA | 通常限于单构型或少量桌面构型 | **单检查点开箱控制 ALOHA 2 / Bi-arm Franka / Apollo，支持零样本 MT 迁移** |
-| 高层世界知识与工具 | GR-ER 侧重感知，通用性弱（MMMU/GPQA/Aider 均值 47.5） | 通用能力强但空间与时序成功检测弱（ER 51.2） | 缺乏联网搜索、代码执行与长程记忆 | **GR-ER 1.5 兼具前沿通用性（73.8）与 SOTA 具身推理（59.6）** |
+| 高层世界知识与工具 | GR-ER 侧重感知，通用性弱（MMMU/GPQA/Aider 均值 47.5） | 通用能力强但空间与时序成功检测弱（ER 51.2） | 缺乏联网搜索、代码执行与长程记忆 | **GR-ER 1.5 在 2025-10 报告评测集兼顾通用基准（73.8）与具身推理基准（ER 均值 59.6）** |
 | 长程失败率 | 不支持原生双层工具编排 | 子任务总失败率 44.5%（规划错占 25.5%） | 依赖单模型容量，复杂任务进度上限 ~44% | **总失败率降至 22%（规划错仅 9%），复杂任务进度近 80%** |
 | 安全与评估体系 | ASIMOV 1.0 | 缺少物理安全专项基准 | 较少系统性物理安全评测 | **ASIMOV-2.0（含 Veo 视频）+ 三模型 Auto-Red-Teaming** |
 

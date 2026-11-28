@@ -94,6 +94,8 @@ H1-2 站立推扰试验每控制器 15 次：采样式 MuJoCo-MPC（MJPC）15/15
 - [安全控制纵深路线](../../roadmap/depth-safe-control.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [11.09–11.13 人形／四足 29 篇周报](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：论文在 Unitree H1-2 全尺寸人形行走与抗推扰场景下暴露了传统无力矩急停导致失衡摔倒的部署风险。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：论文讨论了独立运行时安全监控进程与上下身平衡控制器之间的控制权限划分和回退架构。
 
 ## 参考来源
 

@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：博客持续披露 V-JEPA 等自监督视觉表征学习进展，为机器人状态预测与环境理解提供基础表征路线。
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md)：Yann LeCun 团队倡导的 JEPA 与世界模型路线在该博客中有系统阐述，用于支撑物理世界的反事实推演。
 
 ## 参考来源
 

@@ -121,6 +121,8 @@ sequenceDiagram
 - [仿真物理保真（Query）](../queries/simulation-physics-fidelity.md)
 - [Genesis World 1.0](./genesis-world-10.md)
 - [Tidewater](./tidewater.md) — 浏览器 WebGPU 海洋/大气全场景 Demo（非粒子求解器）
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Particles4All 提供浏览器端统一刚–流粒子 PBD 仿真内核，可作为轻量物理仿真与流体交互测试的参考组件。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：Particles4All 在同一 PBD 约束环中建模刚体与流体粒子的浮力和接触耦合，可用于实时工程物理原型验证。
 
 ## 参考来源
 

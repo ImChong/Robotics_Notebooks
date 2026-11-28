@@ -95,6 +95,8 @@ flowchart TD
 - [classical control](../../roadmap/depth-classical-control.md)
 - [humanoid hardware design](../../roadmap/depth-humanoid-hardware-design.md)
 - [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
+- [Locomotion](../tasks/locomotion.md)：本文在带柔顺踝与足底滚动的被动步行模型上分析可持续行走相空间，探讨机械柔顺性对步行动力学的作用。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：该研究通过可行体积与 RKHS 核分布复杂度区分物理可行域与状态分布，反思机械柔顺性对控制负担的影响。
 
 ## 参考来源
 

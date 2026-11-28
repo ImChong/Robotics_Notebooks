@@ -98,6 +98,8 @@ sequenceDiagram
 
 - [Tidy Design](./tidy-design.md) — 同样提供设计画布和 MCP 接口，可对照部署与协作方式。
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 理解智能体与设计工具的连接边界。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应通过本地 MCP 服务与编辑器桥接暴露设计文件检查及编辑接口，使智能体可调用并修改画布状态。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：对应可用于快速构建与验证机器人控制面板或遥操作交互界面原型的工程应用场景。
 
 ## 参考来源
 

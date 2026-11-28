@@ -73,6 +73,8 @@ flowchart LR
 - [lightorigins-3blogs-technology-map](../overview/lightorigins-3blogs-technology-map.md)
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：Qwen3-VL 作为 LightNav-ER 的视觉-语言初始化基座，经具身推理中期训练后支撑视觉–语言导航任务中的多模态理解与推理。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：为具身智能体提供多模态视觉-语言表征与空间语义理解能力，服务于下游导航与场景感知流程。
 
 ## 参考来源
 

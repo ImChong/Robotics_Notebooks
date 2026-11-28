@@ -84,6 +84,8 @@ LLM+P 适合需要可验证规划的长程任务；代价是 PDDL 建模与状�
 - [paper-autotamp](./paper-autotamp.md)
 - [paper-saycan](./paper-saycan.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：LLM+P 由大语言模型将自然语言任务转写为 PDDL 问题，并交由经典符号规划器 Fast Downward 求解可执行动作序列。
+- [Manipulation](../tasks/manipulation.md)：该工作面向机器人长程操作规划场景，探索通过形式化符号规划器保证多步动作序列的语法与可执行性。
 
 ## 参考来源
 

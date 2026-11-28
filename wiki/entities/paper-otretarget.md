@@ -95,6 +95,8 @@ OTRetarget 输出的是逐帧受约束 IK 参考，真机执行依赖在仿真�
 
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 - [HOI-Retarget](./paper-hoi-retarget.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：OTRetarget 通过表面距离与最优传输把人–物交互动作联合重定向到目标机器人并经逐帧 IK 校验运动可行性。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：OTRetarget 在保持手物接触的同时联合优化人形全身与物体轨迹，为全身移动操作提供几何可行参考。
 
 ## 参考来源
 

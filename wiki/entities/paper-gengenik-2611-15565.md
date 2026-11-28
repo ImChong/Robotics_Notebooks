@@ -99,6 +99,8 @@ flowchart LR
 
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
+- [Newton's Method / Newton–Raphson（牛顿–拉夫森法）](../methods/newtons-method.md)：传统数值逆运动学多依赖牛顿–拉夫森与雅可比伪逆局部迭代，而 GenGenIK 离线利用数值 IK 构造可行配置库并改用条件流匹配生成多样解。
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md)：GenGenIK 面向带移动底座的多末端系统，在双臂抬举、开关门抽屉与桌底取物等双臂协调操作约束下评测多目标路径求解能力。
 
 ## 参考来源
 

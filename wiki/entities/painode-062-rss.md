@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md)：结合全身移动与物体操作的统一控制与系统验证是 RSS 会议重点关注的机器人核心任务。
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：基于动力学模型的在线滚动优化与约束控制理论在 RSS 高性能机器人控制论文中占据重要地位。
 
 ## 参考来源
 

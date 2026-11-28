@@ -126,6 +126,8 @@ flowchart TD
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 解析式多接触规划前序工作：[Multiple Contact Planning for Minimizing Damage of Humanoid Falls](./paper-humanoid-multiple-contact-fall-planning.md) — 接触图 + 倒立摆抽象 + 动态规划，优化峰值垂直冲量。
 - 原始 source：[humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md](../../sources/papers/humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md)
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md)：SafeFall 聚焦双足机器人在失衡无法挽回窗口内的保护控制，与主动平衡恢复共同构成全身安全边界。
+- [Safe RL（安全强化学习）](../methods/safe-rl.md)：SafeFall 通过轻量跌倒预测触发与损伤缓解强化学习策略降低硬件峰值冲击力与易损件碰撞风险。
 
 ## 参考来源
 

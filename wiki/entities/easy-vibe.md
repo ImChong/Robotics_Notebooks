@@ -145,6 +145,8 @@ sequenceDiagram
 - [LangChain](langchain.md) — Stage 3 RAG 生态常提及框架
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — llms.txt 导航同构
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应教程 Stage 3 中围绕 MCP 协议接入 GitHub、数据库与外部 API 的智能体工具调用工程实践。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应课程围绕 AI IDE 协作、LangGraph 编排与反馈迭代交付完整软件原型的智能体执行循环。
 
 ## 参考来源
 

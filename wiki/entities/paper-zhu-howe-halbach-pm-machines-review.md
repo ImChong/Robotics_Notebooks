@@ -112,6 +112,8 @@ flowchart TB
 - [Halbach Array 概念](../concepts/halbach-array.md)
 - [Halbach 1980](./paper-halbach-permanent-multipole-magnets.md) · [Mallinson 1973](./paper-mallinson-one-sided-fluxes.md)
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：综述指出烧结分段磁体只是理想 Halbach 磁化的折中方案，电机拓扑选型需经过有限元仿真与台架验证。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：综述讨论径向、轴向与直线等永磁电机拓扑及气隙公差约束，可直接指导电机与执行器结构的参数化建模。
 
 ## 参考来源
 

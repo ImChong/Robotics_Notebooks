@@ -72,6 +72,8 @@ flowchart TD
 
 - [Impeccable](impeccable.md) — 界面设计与检查工具，可辅助打磨复用后的页面。
 - [frontend-design](anthropic-frontend-design-skill.md) — 用于规划和审查前端设计的技能。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：在机器人软件系统集成中，可参考其管理后台界面布局与组件搭建设备台账或实验运维前端，并自行对接业务服务接口。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：用于搭建机器人实验管理或评测结果看板时，可参考其表格与筛选组件展示任务进度与状态数据，后端接口需按需补全。
 
 ## 参考来源
 

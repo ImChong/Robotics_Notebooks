@@ -101,6 +101,8 @@ flowchart TB
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — AI 获取官方上下文后仍需要版本核对与工程测试
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 将有出处的原文编译为可维护知识页
 - [NVIDIA Skills](./nvidia-skills.md) — 另一种向 AI 工具提供官方工程知识的方式；Skills 与 MCP/llms.txt 不是同一种协议或内容形态
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：提供官方知识 MCP 接口与 llms.txt 索引，使智能体能够按文档标识检索并读取带出处的官方原文。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：辅助编码智能体依据目标 HarmonyOS 版本核对 API 签名与权限约束，配合编译与实机测试完成验证。
 
 ## 参考来源
 

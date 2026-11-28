@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：连接传感、通信中间件、控制与上层应用的系统集成实践是该综合机器人社区的高频交流主题。
+- [Manipulation](../tasks/manipulation.md)：机械臂抓取、末端控制与日常物体操作涵盖硬件选型与算法落地，是该社区常见的应用与技术讨论方向。
 
 ## 参考来源
 

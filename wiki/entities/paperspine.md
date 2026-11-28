@@ -121,6 +121,8 @@ sequenceDiagram
 - [nature-polishing](nature-polishing.md)：已有稿件的语言与主张边界修订。
 - [ARIS](aris-auto-research-in-sleep.md)：实际实验迭代和交叉评审。
 - [AI Auto-Research](../concepts/ai-auto-research.md)：研究自动化生命周期。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：PaperSpine5 以 SKILL.md 封装论文构建与审阅工作流，按贡献边界与材料配置约束智能体执行。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：PaperSpine5 将写作拆解为贡献定义、动机对齐、章节映射、草稿生成与评审修订的反馈闭环。
 
 ## 参考来源
 

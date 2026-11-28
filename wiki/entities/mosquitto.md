@@ -61,6 +61,8 @@ mosquitto_sub -t 'robot/#' -v
 - [MQTT 通信协议](../concepts/mqtt-protocol.md)
 - [PlotJuggler](./plotjuggler.md)
 - [Wokwi](./wokwi.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：了解基于轻量级发布/订阅消息代理连接传感器、遥测看板与边端控制节点的软件集成方式。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照通过标准网络消息通道汇总并校验多端传感器状态数据的接入实践。
 
 ## 源码运行时序图
 

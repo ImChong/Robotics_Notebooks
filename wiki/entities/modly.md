@@ -69,6 +69,8 @@ summary: "Modly 是本地运行模型扩展的开源桌面网格生成工具；�
 - [img2threejs](./img2threejs.md)
 - [Articraft](./articraft.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：了解如何将生成的三维网格资产整合进可重置、可验证的机器人仿真场景构建流程。
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：对照外观网格导出后补充碰撞几何与惯性参数并接入机器人仿真资产规范的步骤。
 
 ## 源码运行时序图
 

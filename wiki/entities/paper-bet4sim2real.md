@@ -150,6 +150,8 @@ sequenceDiagram
 - [Isaac GR00T](./isaac-gr00t.md)
 - [具身评测基准枢纽](../overview/hub-embodied-eval-benchmark.md) — ④ 层：把真机评测结论的不确定性量化成证书
 - [48ms WAM / 编排 10 篇地图](../overview/glancewam-vla-crew-10-papers-technology-map.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：Bet4Sim2Real 通过多仿真器库逐次下注构造 anytime-valid 性能证书，在有限真机测试样本下显著收窄具身策略评测置信区间。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：Bet4Sim2Real 面向 Sim2Real 评测验证阶段，在不假设单一仿真器完全准确的前提下量化利用仿真库信息认证真机性能。
 
 ## 参考来源
 

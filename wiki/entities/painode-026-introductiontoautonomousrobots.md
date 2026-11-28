@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：涵盖移动机器人定位、感知与路径规划基础，与该开源教材的自主移动机器人系统教学主线直接对应。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：阐述从传感、状态估计到运动控制的系统分层设计，可作为阅读该教材自主机器人控制章节的工程对照。
 
 ## 参考来源
 

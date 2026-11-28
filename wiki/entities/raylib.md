@@ -115,6 +115,7 @@ Raylib 提供的是窗口、输入和绘图 API；Unity、Unreal 等完整引擎
 - [GenoView-InverseKinematics](./genoview-inverse-kinematics.md) — C + Raylib 动画查看器与足锁 IK 演示
 - [足锁 IK（Orange Duck 配方）](../methods/foot-locking-ik-orangeduck.md) — 被 GenoView 实现的运动学方法
 - [逆运动学](../formalizations/inverse-kinematics.md) — 机器人末端和关节几何求解基础
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：明确 Raylib 作为轻量自定义 3D 显示层与物理仿真器配合的分工边界，由仿真器承担动力学求解、Raylib 负责状态可视化。
 
 ## 参考来源
 

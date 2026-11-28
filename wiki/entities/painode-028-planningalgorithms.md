@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [RRT（Rapidly-exploring Random Tree）](../methods/rrt.md)：LaValle 提出的经典随机采样规划算法，是该教材连续配置空间运动规划章节的核心基础方法。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md)：面向动力学约束与最优控制轨迹求解，与该教材中微分约束规划及最优运动规划内容紧密关联。
 
 ## 参考来源
 

@@ -101,6 +101,8 @@ flowchart LR
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_12_omnitrack_general_motion_tracking_via_physics_co.md](../../sources/papers/humanoid_rl_stack_12_omnitrack_general_motion_tracking_via_physics_co.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：OmniTrack 针对人形全身动作跟踪中重定向参考存在浮空与脚滑等物理瑕疵的问题，先由特权策略清洗参考轨迹再训练通用跟踪器。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：OmniTrack 属于人形强化学习运动控制技术栈，通过解耦特权参考清洗与通用跟踪训练来缓解模仿目标与物理稳定性间的奖励冲突。
 
 ## 参考来源
 

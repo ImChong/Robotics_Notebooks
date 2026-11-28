@@ -106,6 +106,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [CAD CAE Copilot](./armpro24-blip-cad-cae-copilot.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：sim-cli 将既有 CAE 工程文件解析为包含材料、边界、网格与求解设置的结构化文本，服务于工程仿真建模流程中的前置审查与核对。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：其以 CLI 与 lint 工具接口形式向智能体暴露只读工程解析能力，明确区分结构检查与求解器执行边界。
 
 ## 参考来源
 

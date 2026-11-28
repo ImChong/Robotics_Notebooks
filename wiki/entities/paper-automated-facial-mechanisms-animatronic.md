@@ -164,6 +164,7 @@ sequenceDiagram
 
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 机构设计与运动控制的工程基础
 - [MIDAS Hand（软体手部）](../entities/midas-hand.md) — 同类软/仿生机构的代表性工作
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照参数化几何模板、运动学约束优化与可制造 CAD 导出之间的工程设计流程。
 
 ## 参考来源
 

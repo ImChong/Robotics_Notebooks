@@ -140,6 +140,7 @@ flowchart TB
 - [DDS 通信机制](../concepts/dds-communication.md)
 - [Fast DDS](../entities/fast-dds.md) · [Cyclone DDS](../entities/cyclone-dds.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
+- [机器人软件系统集成](../methods/robot-software-integration.md) — 跨进程中间件、QoS/超时契约与确定性集成流程
 - [Locomotion 任务](../tasks/locomotion.md)
 - [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)
 - [技术地图：ROS 2](../../tech-map/modules/system/ros2.md)

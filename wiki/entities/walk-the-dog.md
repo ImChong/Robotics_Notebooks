@@ -52,6 +52,8 @@ flowchart LR
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [PAN Motion Retargeting](./pan-motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：在共享相位流形上无监督对齐人形与四足运动，为跨形态动作重定向提供非逐关节映射的语义对齐思路。
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md)：与基于几何逆运动学的 GMR 通用动作重定向形成对比，前者侧重相位语义对齐，后者侧重骨架几何约束映射。
 
 ## 参考来源
 

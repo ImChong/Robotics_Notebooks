@@ -211,6 +211,8 @@ sequenceDiagram
 - [Self-Refine（2303.17651）](./paper-self-refine-2303-17651.md) — 推理期「生成 → 自反馈 → 改写」的有界 self-refinement 原型，权重不变、evaluator 固定，属本文 deployment 类而非开放式 RSI
 - [The Last AI Built by Humans（2609.11873）](./paper-last-ai-built-by-humans-rsi.md) — 五级改进自治 + HCI 判别框架
 - [Awesome RSI](./awesome-rsi.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [Dream-RSI（2609.14858）](./paper-dream-rsi.md) · [karpathy/autoresearch](./karpathy-autoresearch.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：综述将自评估（self-evaluation）单列为四大技术支柱之一，分析不同验证层级如何决定自改进系统的可靠性上限。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：其两轴分类体系梳理了智能体在部署与执行期间利用环境及评估反馈进行有界自精炼到开放式改进的演化路径。
 
 ## 参考来源
 

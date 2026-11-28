@@ -108,6 +108,8 @@ sequenceDiagram
 - [Male CNS Connectome](./male-cns-connectome.md)
 - [Neuroglancer](./neuroglancer.md)
 - [果蝇连接组工具栈](../concepts/fly-connectomics-stack.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：关联视觉三维重建流程，了解电镜体数据三维重建与神经元形态抽取如何支撑连接组图数据库构建。
+- [U-Net](../methods/unet.md)：参考最初面向生物医学图像分割的 U-Net 架构，理解连接组电镜体素分割产物如何汇聚为 neuPrint 的神经元与突触邻接表。
 
 ## 参考来源
 

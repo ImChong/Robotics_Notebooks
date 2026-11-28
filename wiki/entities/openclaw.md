@@ -109,6 +109,7 @@ flowchart LR
 - [LearnPrompt](learnprompt.md) — 中文 [OpenClaw 架构导读](https://www.learnprompt.pro/agent-frameworks/openclaw-architecture-guide/) 与 Agent Skills 路径
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 - [视觉–语言导航](../tasks/vision-language-navigation.md)
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：对照以技能契约和执行边界连接自然语言规划与机器人控制的执行框架。
 
 ## 参考来源
 

@@ -67,6 +67,8 @@ flowchart LR
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [FreeCAD AI Skill（reyk）](./reyk-freecad-ai-skill.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：该技能将 FreeCAD 建模、Python 脚本与插件开发指向参数化 CAD 建模流程，并强调在执行后核对几何与边界条件。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：其以 WorkBuddy Skill 形式封装 FreeCAD API 与 PySide6 工具链指引，是智能体技能封装在工程建模软件中的具体实践。
 
 ## 参考来源
 

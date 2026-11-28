@@ -91,6 +91,7 @@ flowchart LR
 - [Flow Matching 与具身策略](../concepts/flow-matching-embodied-policy.md)：MOSS 通过源分布塑形控制动作模式。
 - [Diffusion Policy](../methods/diffusion-policy.md)：比较多模态动作生成中随机源分布和采样行为。
 - [Gaussian Is Enough（Flow Matching 先验）](./paper-gaussian-is-enough-flow-matching-priors.md)：两者均关注源分布设计，可对照模式可控性与生成质量。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：对照从多模态专家演示中学习并控制动作生成模式的模仿学习范式。
 
 ## 参考来源
 

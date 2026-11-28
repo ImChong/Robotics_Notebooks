@@ -95,6 +95,7 @@ MCC 是「小脑层」柔顺模块：不替代策略学习，但让接触任务�
 - [paper-prism](./paper-prism.md)
 - [manipulation](../tasks/manipulation.md)
 - [REALab 14 篇技术地图](../overview/realab-14-papers-technology-map-2026.md)
+- [Admittance Control（导纳控制）](../methods/admittance-control.md)：对照以估计外力为输入、输出参考位姿修正的任务空间导纳控制机制。
 
 ## 参考来源
 

@@ -69,6 +69,8 @@ flowchart TD
 - [OpenClaw](openclaw.md) — 常被 Paperclip 编排的「员工」型 Agent
 - [Hermes Agent](hermes-agent.md) — 适配器支持的 harness 之一
 - [ECC](ecc.md) — 单 Agent 工程纪律包
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：Paperclip 围绕项目目标拆分任务、指派多类智能体执行并跟踪预算与反馈状态。
+- [Claude Code 动态多 Agent 工作流 / Dynamic Workflows and Task-Specific Harnesses in Claude Code](../methods/claude-code-dynamic-workflows.md)：Paperclip 在编排层统一调度 Claude Code 等多智能体 harness 的目标分工与成本治理。
 
 ## 参考来源
 

@@ -84,6 +84,8 @@ flowchart LR
 - [Skild AI（公司）](./skild-ai.md)
 - [跨具身迁移](../overview/hub-cross-embodiment.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：Reward AI 强调仅依赖自然人类可穿戴示范数据进行单阶段策略训练，属于以人类示范驱动的模仿学习技术路线。
+- [Manipulation](../tasks/manipulation.md)：其 OM-1 通才策略与 Omnibody 栈面向工业机械臂和人形机器人的跨本体灵巧物体操作任务。
 
 ## 参考来源
 

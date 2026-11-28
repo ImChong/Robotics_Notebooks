@@ -91,6 +91,7 @@ flowchart LR
 - [NVIDIA Omniverse NuRec](../wiki/entities/nvidia-nurec.md) — 官方 USDZ 体积与 Isaac / AV 两条重建入口
 - [Instant NuRec](../wiki/entities/paper-instant-nurec.md) — 驾驶日志单次前向 3DGS（~1.5 s），作逐场景 NuRec 种子；办公室扫描不要套这条 CLI
 - [π⁴（Pi4）：4D 场景几何与运动基础模型](../wiki/entities/paper-pi4-4d-scene-geometry-motion.md) — 未标定单图/图集/视频的场景点图、相机尺度、轨迹与动态掩码；作为 Stage 1 感知上游，**不包含**可直接物理仿真的碰撞/物性资产。
+- [MoGe-4D：双坐标点图的稠密四维重建](../wiki/entities/paper-moge-4d.md) — 从 RGB 恢复相机和物体运动，补充动态感知选型；米制尺度须另验，输出不等于碰撞、惯量和关节资产。
 - [Tripo Studio](../wiki/entities/tripo-studio.md) — 将照片变成视觉道具原型，用来对照生成外观与测量几何的差别；实物尺寸、接触及关节仍须另核验。
 - [LingBot-Map 2.0](../wiki/entities/paper-lingbot-map-v2.md) — 连续 RGB 的相机轨迹和深度可作场景扫描上游；未知尺度点云仍需度量校准和碰撞资产制作。
 - [GenSfM：生成式结构与相机联合恢复](../wiki/entities/paper-gensfm.md) — 2–4 张未标定物体前景视图联合生成 mesh / 3DGS 与相机；论文量化评测采用四视图，适合物体级稀疏重建，不负责碰撞、摩擦和关节化。

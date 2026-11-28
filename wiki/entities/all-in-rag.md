@@ -94,6 +94,8 @@ sequenceDiagram
 - [retrieval-augmented-generation](../concepts/retrieval-augmented-generation.md) — 相关概念、工具或工程路线。
 - [langchain](./langchain.md) — 相关概念、工具或工程路线。
 - [easy-vibe](./easy-vibe.md) — 相关概念、工具或工程路线。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：课程包含检索召回与上下文生成质量的评估章节，对应智能体与模型评测方法。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：展示将文档分块与向量相似检索接入模型问答链路的基础外部知识检索接口。
 
 ## 参考来源
 

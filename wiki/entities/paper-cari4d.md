@@ -150,6 +150,8 @@ CARI4D 将人体、物体与接触放在同一时空重建闭环中，面向未�
 
 - [FORM-HOI 数据集](./dataset-form-hoi.md) — 独立多视角数据与协议。
 - [HOI-Retarget](./paper-hoi-retarget.md) — 下游机器人动作重定向。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：CARI4D 融合姿态假设筛选、render-and-compare 对齐与接触细化，从单目 RGB 视频恢复米制尺度的人–物 4D 时空重建结果。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：CARI4D 面向未见物体类别的野外视频输出时间一致的人体与刚体交互轨迹，为具身操作和动作学习提供视觉感知与数据支撑。
 
 ## 参考来源
 

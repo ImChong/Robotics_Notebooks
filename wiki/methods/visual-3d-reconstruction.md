@@ -2,7 +2,7 @@
 type: method
 tags: [3d, vision, reconstruction]
 status: complete
-updated: 2026-11-26
+updated: 2026-11-28
 summary: "从图像、视频或深度观测恢复可用于测量、渲染或仿真的三维场景表示。"
 sources:
   - ../../sources/sites/methods-primary-visual-3d-reconstruction-2026-11-26.md
@@ -60,6 +60,8 @@ flowchart LR
 镜面、透明、弱纹理和运动物体挑战同视角一致性；可注册相机、低重投影误差和视觉清晰不是几何完整性保证。仿真还需要材质、质量和接触属性。
 
 ## 关联页面
+
+- [MoGe-4D](../entities/paper-moge-4d.md)：从无位姿 RGB 用双坐标点图联合恢复稠密动态几何与相机轨迹。
 
 - [具身感知空间表示](../concepts/embodied-perception-six-spatial-representations.md)
 - [视觉表征学习](visual-representation-learning.md)

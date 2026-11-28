@@ -134,6 +134,8 @@ sequenceDiagram
 - [Diagrams（Python）](./mingrammer-diagrams.md) — 使用 Python 和 Graphviz 组合云服务图标与连接关系；可在 Git 中审查拓扑描述
 - [GitDiagram](./gitdiagram.md) — 从代码仓库证据生成可交互 Mermaid 架构图的工具
 - [Drawnix](./drawnix.md) — 将 Mermaid 流程图转换为 Plait 画布元素，便于继续进行白板式编辑
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：理解文档与知识库维护工具链中自动化生成或校验文本图表的接口模式。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考使用文本式架构图与时序图记录和审查复杂机器人软件系统拓扑的工程实践。
 
 ## 参考来源
 

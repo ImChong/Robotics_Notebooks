@@ -94,6 +94,8 @@ sequenceDiagram
 
 - [NVIDIA CUDA](./nvidia-cuda.md) — GPU 计算与软件栈基础
 - [TensorRT](./tensorrt.md) — NVIDIA 推理运行时；应用性能需单独实测
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：关注底层 SM speed-select 寄存器配置对低精度张量指令吞吐与推理计算性能的影响。
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：聚焦 FP16 与 BF16 等低精度矩阵运算在消费级 GPU 上的实际硬件执行效率。
 
 ## 参考来源
 

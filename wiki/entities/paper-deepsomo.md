@@ -149,6 +149,8 @@ ATE 降幅 32.9% / 23.6%（相对 ResLSTM / ObsPred，IV-D，与表数字复算�
 - [V-JEPA 2](./paper-vjepa2.md)：潜预测范式的大规模代表。
 - [CR-VAE：可变形操作中的部分可观测](./paper-crvae-deformable-manipulation-partial-obs.md)：同为可变形体 + 部分可观测。
 - [SimWeaver：可变形体零样本 sim-to-real](./paper-sa-2606-15338-simweaver-zero-shot-rgb-sim-to-real-for-deformab.md)
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：DeepSoMo 依托软球体内背对背相机图像与 LSTM 潜动力学估计体坐标系位姿增量、表面形状与接触点，对应本体部分可观下的状态估计流程。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：DeepSoMo 采用 ResNet-18 编码内部形变图像并约束 LSTM 潜状态对齐未来步特征，通过自监督预测表征抑制长时程漂移。
 
 ## 参考来源
 

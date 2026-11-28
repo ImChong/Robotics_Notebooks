@@ -115,6 +115,8 @@ Spark-0 的可比主张是“训练期触觉监督能提升仅视觉策略”（
 - [触觉感知](../concepts/tactile-sensing.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [REKI：VLA 的寄存器记忆](./paper-reki-vla-register-memory.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：Spark-0 在 VLA 架构基础上引入接触图空间监督与触觉条件动作专家，构建统一的 VTLA 策略。
+- [Manipulation](../tasks/manipulation.md)：该工作利用大规模手部触觉数据预训练操作策略，并在视觉仿真与真机触觉操作基准 SparkArena 上评测。
 
 ## 参考来源
 

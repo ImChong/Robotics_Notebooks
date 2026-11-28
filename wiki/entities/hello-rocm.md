@@ -89,6 +89,8 @@ sequenceDiagram
 - [hello-gpu](./hello-gpu.md) — 相关概念、工具或工程路线。
 - [pytorch](./pytorch.md) — 相关概念、工具或工程路线。
 - [nvidia-cuda](./nvidia-cuda.md) — 相关概念、工具或工程路线。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：围绕 AMD ROCm 软件栈提供环境验证、本地模型部署及推理基线测试教程。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：强调在模型部署与微调前先建立软硬件兼容基线并通过最小推理测试验证正确性。
 
 ## 参考来源
 

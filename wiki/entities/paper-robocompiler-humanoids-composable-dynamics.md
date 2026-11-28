@@ -112,6 +112,7 @@ sequenceDiagram
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md)
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - [具身智能小站 2026-10-14 论文技术地图](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对照将可组合动力学模块与执行器力接口接入多机全身控制（WBC）的控制系统架构。
 
 ## 参考来源
 

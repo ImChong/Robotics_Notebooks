@@ -118,6 +118,7 @@ sequenceDiagram
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md)：该模型通过 VQ-GAN 与优先级视觉 BPE 将图像与文本统一映射到离散多模态 Token 词表。
 
 ## 参考来源
 

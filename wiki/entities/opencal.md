@@ -85,6 +85,8 @@ flowchart LR
 
 - [Blender](./blender.md) — 可作为网格模型的上游编辑与格式转换工具；打印前仍需按 OpenCAL 流程计算投影序列。
 - [FreeCAD](./freecad.md) — 参数化机械设计工具，可用于制作打印机结构件；与 CAL 打印工艺本身不同。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照面向体积增材制造零件与光学工装结构的参数化 CAD 几何建模流程。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：参考从几何模型与物理边界条件出发开展体积固化光学剂量与结构仿真的验证思路。
 
 ## 参考来源
 

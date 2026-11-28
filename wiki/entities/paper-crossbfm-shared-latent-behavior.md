@@ -94,7 +94,8 @@ CrossBFM把跨机器人复用放在共享行为表示上，同时让各本体保
 
 - [paper-behavior-foundation-model-humanoid](./paper-behavior-foundation-model-humanoid.md)
 - [paper-any2any-cross-embodiment-wbt](./paper-any2any-cross-embodiment-wbt.md)
-
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：CrossBFM 利用跨本体对应动作蒸馏共享潜在行为空间，并保留各人形机器人专用的低层全身跟踪控制器以落实执行。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：该方法借助帧级动作重定向在异构人形平台间建立对应行为数据，从而在极低算力下实现跨本体共享行为接口对齐。
 
 ## 推荐继续阅读
 

@@ -51,6 +51,7 @@ summary: "具身智能每日顶会/arXiv 论文速递 issue 仓库；公众号�
 
 - [embodied-frontier-algorithms-technology-map](../overview/embodied-frontier-algorithms-technology-map.md)
 - [vla](../methods/vla.md)
+- [Manipulation](../tasks/manipulation.md)：仓库每日追踪的 VLA 与具身智能新论文大量聚焦机器人抓取与物体操作基准。
 
 ## 源码运行时序图
 

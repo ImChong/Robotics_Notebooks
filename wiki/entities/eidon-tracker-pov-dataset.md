@@ -85,6 +85,7 @@ flowchart TD
 - [HIW-500](./hiw-500-dataset.md) — 对照机器人本体遥操作数据。
 - [人形机器人数据采集产业地图](../queries/humanoid-robot-data-collection-landscape.md) — 按采集范式定位 Eidon。
 - [人体动作重定向](../concepts/motion-retargeting.md) — 人体运动映射到机器人动作的下游步骤。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：数据集采集的人体上肢 IMU 与手部轨迹需经姿态重建与动作重定向后才能映射到机器人本体。
 
 ## 参考来源
 

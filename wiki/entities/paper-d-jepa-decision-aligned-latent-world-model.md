@@ -136,6 +136,7 @@ Ordinal realization为87.11%，恢复100% relational候选排序和选择，不�
 - [world-action-models](../concepts/world-action-models.md)
 - [paper-vl-jepa](./paper-vl-jepa.md)
 - [embodied-station-2026-10-18-26-papers-technology-map](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md)：对照基于环境世界模型推演与潜空间轨迹评分选优的决策规划路线。
 
 ## 参考来源
 

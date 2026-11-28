@@ -110,6 +110,7 @@ sequenceDiagram
 - [Diffusion Motion Generation（扩散动作生成）](../methods/diffusion-motion-generation.md)：TRACE 利用扩散模型并施加时空编辑约束。
 - [动作生成纵深路线](../../roadmap/depth-motion-generation.md)：定位语言驱动参考动作局部编辑的技术路线。
 - [人体动作论文专题](../overview/paper-notebook-category-14-human-motion.md)：衔接人体与人形动作生成及编辑文献。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对照 TRACE 生成的人形运动学参考轨迹在真机执行时所需的下游全身闭环跟踪控制。
 
 ## 参考来源
 

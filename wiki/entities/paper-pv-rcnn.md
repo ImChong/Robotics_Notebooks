@@ -115,6 +115,8 @@ PV-RCNN 把体素 CNN 的高效主干与点集抽象的灵活感受野合在一�
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)
+- [目标检测（Object Detection）](../methods/object-detection.md)：PV-RCNN 将稀疏体素卷积与关键点聚合结合，是三维点云目标检测领域的代表性二阶段检测方法。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：从 LiDAR 点云中提取多尺度三维特征并输出 IoU 感知的精修检测框，服务于机器人三维环境感知流程。
 
 ## 参考来源
 

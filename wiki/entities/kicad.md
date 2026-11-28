@@ -149,6 +149,8 @@ flowchart TB
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [WolfieMouse](./wolfiemouse.md) — Micromouse 竞赛鼠 KiCad 整板案例
 - [Micromouse](../concepts/micromouse.md) — 自研 PCB 底盘常见场景
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：通过 ERC/DRC 规则检查与集成 SPICE 仿真在投板前验证机器人电路设计正确性。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：处于底层硬件实现层，负责关节驱动板、BMS 与传感器接口板卡的原理图和 PCB 设计。
 
 ## 参考来源
 

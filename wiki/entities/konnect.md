@@ -122,6 +122,8 @@ sequenceDiagram
 - [HeyPCB（AI PCB 设计）](./heypcb.md) — 自然语言到 KiCad 工程的托管式服务
 - [tscircuit](./tscircuit.md) — 以代码描述电路并生成 PCB 设计文件
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（AI/MCP 辅助编辑 KiCad 工程，输出仍需 ERC/DRC 与实测复核）
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：基于 MCP 与 KiCad IPC API 为 AI 助手提供按需加载的原理图编辑、PCB 布局及导出工具接口。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：集成 kicad-cli 自动执行原理图 ERC、PCB DRC 验证及 Gerber/BOM 制造交付物导出。
 
 ## 参考来源
 

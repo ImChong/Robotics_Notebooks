@@ -86,6 +86,7 @@ flowchart LR
 - [manipulation](../tasks/manipulation.md)
 - [paper-cartesian-impedance-controller](./paper-cartesian-impedance-controller.md)
 - [视频–接触–控制 10 篇技术地图](../overview/video-contact-control-10-papers-technology-map.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：对照异步 FCI 通信线程、rate-matching 与 ros2_control 硬件接口在软件系统集成中的工程实现。
 
 ## 参考来源
 

@@ -146,6 +146,8 @@ sequenceDiagram
 - [FrogNano：用在线任务合成训练 4B 编码智能体](./paper-frognano-4b-coding-agent.md) — 训练小模型编码智能体的另一种研究问题。
 - [EmbodiedEvo](./paper-embodied-evo-coding-agent.md) — coding agent 在具身仿真里跨场景复用经验；任务领域与本实验不同。
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 对照：本页评的是纯软件 coding agent（编译失败率 / token / 成本），不进入具身四层评测；借鉴点仅在「固定 harness + 多次试验」的可复现性读法。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该研究以语言无关的九阶段 SQLite 兼容规格与测试作为受控基准，量化评测编程智能体在 MoonBit 与 Rust 上的成本与质量差异。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：实验通过分里程碑编译检查与兼容测试集验证编程智能体产出，量化揭示了编译失败率对代理重试与调试成本的影响。
 
 ## 参考来源
 

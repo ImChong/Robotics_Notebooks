@@ -140,6 +140,7 @@ flowchart TD
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md) — 概念总览
+- [Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md) — 域随机化、教师–学生蒸馏与真机校准闭环方法页
 - [System Identification](../concepts/system-identification.md) — 可建模参数校准
 - [Domain Randomization](../concepts/domain-randomization.md) — 随机化范围与课程
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节实验如何拆开纠缠参数

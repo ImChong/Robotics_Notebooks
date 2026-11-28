@@ -72,6 +72,8 @@ flowchart LR
 - [分割任务分类](../concepts/image-segmentation-taxonomy.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 多提示统一分割对应②层「闭集准 vs 开放词汇泛」的开放侧
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：SEEM 支持点、框、文本与参照实体等统一多提示分割接口，可将自然语言目标直接转化为机器人操作所需的物体掩码。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：该方法将视觉与文本提示映射到统一解码空间，实现开放词汇全景分割与跨图像语义表征对齐。
 
 ## 参考来源
 

@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：将 ROS 2 通信协议延伸至微控制器与实时嵌入式节点，连接底层执行器接口与上层控制系统。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：支持在嵌入式微控制器端直接接入传感器数据并同步发布到 ROS 2 机器人软件系统。
 
 ## 参考来源
 

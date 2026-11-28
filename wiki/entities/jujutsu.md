@@ -118,6 +118,8 @@ sequenceDiagram
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 源码控制与代码评审会成为高吞吐开发的重要基础设施
 - [规格驱动开发（SDD）](../concepts/specification-driven-development.md) — 规格与实现的迭代也需要可审查的版本历史
 - [Gitingest](./gitingest.md) — 将 Git 仓库内容整理为 LLM 上下文；与 jj 的版本管理职责不同
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：以可撤销操作记录和无暂存区 change 模型支持高吞吐代码迭代与验证回滚。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：提供兼容 Git 存储与远端协作的版本控制能力，管理多模块机器人软件演进历史。
 
 ## 参考来源
 

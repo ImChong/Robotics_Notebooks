@@ -141,6 +141,7 @@ sequenceDiagram
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [VLA](../methods/vla.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：了解 Reachy Mini 通过守护进程、WebSocket SDK 与串口或 MuJoCo 后端协同运行的机器人软件集成架构。
 
 ## 参考来源
 

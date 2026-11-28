@@ -90,6 +90,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [COMSOL Multiphysics MCP](./wjc9011-comsol-multiphysics-mcp.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：将 COMSOL Desktop 的几何、网格与物理场仿真操作纳入可追踪的工程仿真建模与验证流程。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：通过 MCP 协议与 Java Shell 桥接正在运行的桌面客户端，为智能体暴露 CAE 仿真工具接口。
 
 ## 参考来源
 

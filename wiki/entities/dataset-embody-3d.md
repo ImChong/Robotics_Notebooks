@@ -135,6 +135,8 @@ sequenceDiagram
 - [运动重定向管线](../concepts/motion-retargeting-pipeline.md)
 - [Motion-X](./dataset-bfm-motion-x.md)
 - [FORM-HOI](./dataset-form-hoi.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对应将数据集中的高精度 SMPL-X 人体全身及手部动作重定向至人形机器人或灵巧手模型的工作流。
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：对应为人形全身控制与交互先验预训练提供含真实手部细节与多主体交互的高保真参考动作源。
 
 ## 参考来源
 

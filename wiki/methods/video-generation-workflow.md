@@ -64,6 +64,7 @@ flowchart LR
 
 - [生成式视觉预训练](../concepts/generative-vision-pretraining.md)
 - [生成式世界模型](generative-world-models.md)
+- [视频生成与编辑流程 vs 动作条件交互式世界模型](../comparisons/video-generation-workflow-vs-interactive-world-models.md)
 - [具身评测与 Benchmark](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源

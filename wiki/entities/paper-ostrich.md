@@ -135,6 +135,8 @@ sequenceDiagram
 
 - [可微仿真](../concepts/differentiable-simulation.md)
 - [Newton Physics](./newton-physics.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md)：Ostrich 利用大步长非光滑 Newton 与隐函数定理提供稳定接触梯度，支撑长视界硬接触轨迹优化。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Ostrich 作为高并行 GPU 可微刚体仿真引擎，可与 MJX 和 Newton 对比并接入梯度优化与控制验证流程。
 
 ## 参考来源
 

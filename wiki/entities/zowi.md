@@ -92,6 +92,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Locomotion](../tasks/locomotion.md)：以四路舵机正弦振荡步态实现教育级双足机器人的前后行走与基础平衡移动任务。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：全机机械结构件采用开源参数化 CAD 工具 FreeCAD 设计并开源源文件，便于按需修改与复刻。
 
 ## 参考来源
 

@@ -188,6 +188,8 @@ flowchart TD
 - [paper-agentic-aptamer-sandbox](./paper-agentic-aptamer-sandbox.md) — 适配体作为 lab-in-the-loop 智能体分子发现的沙盒（Google）
 - [paper-epitope-excision-binder-design](./paper-epitope-excision-binder-design.md) — 智能体引导的表位切除与经济的 de novo 结合剂设计（Google）
 - [pylabrobot](./pylabrobot.md) — PyLabRobot：硬件无关的液体处理机器人开源接口
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：以数字孪生门控与真实实验读出构成科学发现智能体的闭环规划与反馈执行。
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：通过 VERID 状态树与派发前安全门控规范大模型智能体对实验机器人的指令执行。
 
 ## 参考来源
 

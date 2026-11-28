@@ -149,6 +149,8 @@ flowchart TD
 - [EgoMo3R](./paper-egomo3r.md) — 全身人体与场景联合重建，比较输出范围与场景用途。
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 把人体手部运动变成机器人可用动作仍需的独立环节。
 - [动作重定向纵深 Stage 2](../../roadmap/depth-motion-retargeting.md) — 视频参考动作的数据源与质量控制。
+- [Macrodata Egocentric Hand-Action Pipeline](../methods/macrodata-egocentric-hand-action.md)：对照同源团队公开的第一视角 RGB 手部与相机轨迹恢复工程配方及坐标系对齐思路。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对应从第一视角人类手部示范恢复世界系三维关节轨迹并映射为机器人动作数据的上游流程。
 
 ## 参考来源
 

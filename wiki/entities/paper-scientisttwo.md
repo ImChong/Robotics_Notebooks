@@ -122,6 +122,8 @@ flowchart TB
 - [karpathy-autoresearch](./karpathy-autoresearch.md)
 - [paper-rsi-survey-2607-07663](./paper-rsi-survey-2607-07663.md)
 - [recursive-self-improvement](../concepts/recursive-self-improvement.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：ScientistTwo 通过多智能体协作执行复现基线、假设验证、消融改进与审稿反驳的闭环研究流程。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：该系统引入链式证据（CoE）完整性审计，核验代码实现与方法描述一致性及实验分数可复现性。
 
 ## 参考来源
 

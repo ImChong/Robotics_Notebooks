@@ -14,6 +14,7 @@ related:
   - ../entities/fiveages-sim-robot-descriptions.md
   - ../entities/urdf-files-dataset.md
   - ../concepts/urdf-robot-description.md
+  - ../methods/robot-model-description-workflow.md
   - ../entities/mujoco.md
   - ../entities/pinocchio.md
   - ../entities/isaac-sim.md
@@ -116,6 +117,7 @@ flowchart TD
 - [fiveages-sim robot_descriptions](../entities/fiveages-sim-robot-descriptions.md)
 - [URDF Files Dataset](../entities/urdf-files-dataset.md)
 - [URDF](../concepts/urdf-robot-description.md)
+- [机器人模型描述与资产接入](../methods/robot-model-description-workflow.md) — 取得描述目录后如何完成惯量/碰撞/控制接口集成验收
 - [MuJoCo](../entities/mujoco.md)
 - [Pinocchio](../entities/pinocchio.md)
 - [Isaac Sim](../entities/isaac-sim.md)

@@ -91,6 +91,8 @@ flowchart TB
 
 - [sc-datav](./sc-datav.md) — 同属浏览器 Three.js 可视化项目；它做数据大屏，本项目侧重户型编辑与空间漫游。
 - [Three.js Game Skills](./threejs-game-skills.md) — Three.js/WebGL 浏览器交互应用的开发与验证技能参考。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：参考其二维平面图与三维室内布局联动编辑的表达方式，以对比交互式户型展示与仿真场景生成的差异。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：区分手工交互式二维/三维户型布置与基于视觉观测恢复三维空间结构的两条技术路径。
 
 ## 参考来源
 

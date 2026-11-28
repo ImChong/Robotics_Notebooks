@@ -82,6 +82,8 @@ sequenceDiagram
 
 - [paper-sa-2403-09631-3d-vla-a-3d-vision-language-action-generative-wo](./paper-sa-2403-09631-3d-vla-a-3d-vision-language-action-generative-wo.md)
 - [paper-openvla](./paper-openvla.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：SpatialVLA 是面向 3D 空间对齐的 VLA 策略，通过 Adaptive Action Grid 编码空间动作以提升跨本体与视角迁移性。
+- [Manipulation](../tasks/manipulation.md)：该工作将三维空间结构融入视觉–语言–动作对齐，应用于跨本体与跨相机外参的机器人操作任务。
 
 ## 参考来源
 

@@ -91,6 +91,7 @@ flowchart LR
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
 - [VLA](../methods/vla.md)
 - [Isaac Lab](./isaac-lab.md)
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：清单汇总的 Gymnasium、MuJoCo 与 Isaac Lab 等工具可对照机器人仿真环境集成流程。
 
 ## 参考来源
 

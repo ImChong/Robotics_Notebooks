@@ -104,6 +104,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：Genie 2 通过基础世界模型生成可交互、可控的三维环境，可作为仿真场景生成与反事实训练环境构建的前沿探索路径。
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：Genie 2 基于动作条件的时序生成模型实时合成交互式三维世界画面，与可控视频生成流程高度相关。
 
 ## 参考来源
 

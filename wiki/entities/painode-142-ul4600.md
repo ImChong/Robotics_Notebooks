@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：要求为完全自主系统构建结构化安全论证（Safety Case），全面覆盖感知、决策与控制架构的安全性证明。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：可复查的工程仿真与边界工况验证是支撑 UL 4600 自主产品安全论证证据链的重要手段。
 
 ## 参考来源
 

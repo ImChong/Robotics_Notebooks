@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Manipulation](../tasks/manipulation.md)：在仓储分拣、拣选与包裹处理场景中大规模应用视觉感知与自动化物体操作技术。
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：百万级仓储移动机器人车队的调度运行依赖高可靠的环境感知、路径规划与导航执行流程。
 
 ## 参考来源
 

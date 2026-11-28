@@ -122,6 +122,7 @@ sequenceDiagram
 - [Genie Sim 3.0](./genie-sim-3.md) — 仿真训练接口可接 RLinf；RLark 可管跨集群训练部署
 - [强化学习](../methods/reinforcement-learning.md) — 云侧 RL Job 背景
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — ④ 运行时/异构调度层对照
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：参考跨集群控制面与边缘 embodied-runtime 的通信、节点注册与作业编排方式，组织分布式机器人软件系统集成。
 
 ## 参考来源
 

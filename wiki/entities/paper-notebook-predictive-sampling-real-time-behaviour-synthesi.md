@@ -85,6 +85,8 @@ flowchart LR
 
 - 分类页：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md)：Predictive Sampling 作为 MuJoCo MPC 中的异步预测规划器，通过热启动名义样条计划与有限时域滚动优化实现实时行为合成。
+- [Model Predictive Path Integral (MPPI)](../methods/mppi.md)：Predictive Sampling 依靠零阶高斯采样与并行仿真 rollout 评估替代梯度求解，与 MPPI 同属基于采样的实时预测控制范式。
 
 ## 参考来源
 

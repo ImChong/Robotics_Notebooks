@@ -110,6 +110,8 @@ flowchart LR
 - [Isaac Lab](./isaac-lab.md) — 常见高算力训练栈
 - [仿真选型指南](../queries/simulator-selection-guide.md) — 仿真框架与算力侧约束
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 训练基础设施全景
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：为本地算力不足时的多卡强化学习与大规模并行仿真训练提供云端 GPU 容器支撑。
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md)：常作为 Isaac Lab 与 mjlab 上运行人形及足式机器人多卡并行 PPO 训练的算力入口。
 
 ## 推荐继续阅读
 

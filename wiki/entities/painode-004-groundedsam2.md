@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [目标检测（Object Detection）](../methods/object-detection.md)：结合开放词汇文本提示检测与像素级分割跟踪，定位机器人操作与交互中的目标物体。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：为机器人视觉感知提供按语言指代分割并跨帧跟踪任意物体的端到端能力。
 
 ## 参考来源
 

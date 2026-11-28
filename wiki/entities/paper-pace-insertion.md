@@ -134,6 +134,8 @@ PACE 的可迁移证据来自将框架用于 Diffusion Policy 与替代物理反
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 相关任务族
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 跨模态输入组织
 - [ForeTac](./paper-foretac.md) — 预测接触后果并引导生成策略的相邻工作
+- [Action Chunking（动作块输出）](../methods/action-chunking.md)：PACE 在 ACT 与 Diffusion Policy 等动作块输出骨干上，分别以接触状态稳定生成并以突发接触事件即时修正动作块。
+- [Manipulation](../tasks/manipulation.md)：PACE 针对插针与装配等接触丰富型精细操作任务设计多时间尺度触觉融合策略。
 
 ## 参考来源
 

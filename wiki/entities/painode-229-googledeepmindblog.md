@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robotics Transformer（RT-1 / RT-2）](../methods/robotics-transformer-rt-series.md)：Google DeepMind 官方博客持续发布 RT-2 等代表性视觉-语言-动作策略的研究进展与技术解读。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：博客涵盖 Gemini Robotics 与通用具身模型动态，是追踪 VLA 路线演进的重要一手发布渠道。
 
 ## 参考来源
 

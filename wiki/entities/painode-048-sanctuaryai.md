@@ -87,6 +87,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Manipulation](../tasks/manipulation.md)：面向结构化工作场所的通用人形机器人将灵巧抓取与精细物体操作作为核心落地能力。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：通用人形机器人在真实工作场景中的技能开发与数据采集常借助遥操作与人机示范闭环推进。
 
 ## 参考来源
 

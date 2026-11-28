@@ -80,6 +80,8 @@ flowchart TD
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Macrodata Egocentric Hand-Action Pipeline](../methods/macrodata-egocentric-hand-action.md)：WHOLE 与第一视角手部动作重建管线同属从 egocentric RGB 视频恢复世界坐标系 3D 手部与交互轨迹的技术路线。
+- [WiLoR（野外 3D 手部定位与重建）](../methods/wilor.md)：WHOLE 在测试时从第一视角视频提取初始手部姿态并结合手–物联合先验优化，与 WiLoR 单目手部 3D 重建模块处于同一视觉提取链。
 
 ## 参考来源
 

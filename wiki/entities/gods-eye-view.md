@@ -92,6 +92,8 @@ flowchart LR
 - [HyperFrames](hyperframes.md) — Agent 向 HTML→视频
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架
 - [Hermes Agent](hermes-agent.md) — 常驻 Agent 运行时对照
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：内置实时语音分析智能体通过前端工具接口调用空间层过滤、计数、标注与视角控制。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：可作为多源空间态势感知下语音智能体交互与反馈循环的参考实现。
 
 ## 参考来源
 

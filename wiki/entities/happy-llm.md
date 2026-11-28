@@ -76,6 +76,8 @@ flowchart TD
 - [agentic-rl-lab ](./agentic-rl-lab.md) — 同领域的基础、工程或应用对照。
 - [easy-vibe ](./easy-vibe.md) — 同领域的基础、工程或应用对照。
 - [pytorch ](../entities/pytorch.md) — 同领域的基础、工程或应用对照。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：课程讲解的 Transformer 解码器、Tokenizer 与 SFT/LoRA 微调链条是理解 VLA 视觉语言骨干的基础。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：课程末端覆盖大语言模型的模型评估、测试对照与应用落地验证流程。
 
 ## 参考来源
 

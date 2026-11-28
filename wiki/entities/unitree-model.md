@@ -74,6 +74,8 @@ flowchart LR
 - [unitree_ros](./unitree-ros.md)
 - [unitree_mujoco](./unitree-mujoco.md)
 - [Unitree](./unitree.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：指引宇树机器人 USD、URDF 与 MJCF 模型描述文件的当前官方托管位置及导入规范。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：提供经过格式校验的机器人资产来源指引，用于在 Isaac Sim 与 MuJoCo 等仿真环境中完成模型接入。
 
 ## 参考来源
 

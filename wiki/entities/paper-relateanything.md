@@ -154,6 +154,8 @@ sequenceDiagram
 - [空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：开放词汇场景图关系预测，关系 recall 高 ≠ 策略可消费的 3D 语义
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页归其 ③ 2D→3D 提升与语义建图层：场景图给出关系语义，仍需提升到无歧义 3D 才可被策略消费
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：RelateAnything 以像素、任意区域与运行时谓词列表预测开放词汇场景图关系，可即插即用嵌入机器人视觉感知栈。
+- [目标检测（Object Detection）](../methods/object-detection.md)：与 YOLOE、FastSAM 等前端目标检测或分割模块解耦级联，直接消费候选区域框并输出空间与语义关系三元组。
 
 ## 参考来源
 

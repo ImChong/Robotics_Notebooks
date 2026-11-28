@@ -75,6 +75,8 @@ flowchart LR
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：VQA 式具身推理，认知分是下游成功率的必要不充分条件
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对应以 VQA 问答形式定量评估模型具身推理能力及多阶段微调后能力保留比例的基准评测方法。
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：对应在 LightNav-0 具身推理与导航两阶段训练管线中检验多模态空间推理保留度的上游任务锚点。
 
 ## 参考来源
 

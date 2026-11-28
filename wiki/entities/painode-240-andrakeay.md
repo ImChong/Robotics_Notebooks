@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：作为硅谷机器人生态推动者，其关注产业界从原型向可诊断、可部署机器人软件系统集成的转化。
+- [Manipulation](../tasks/manipulation.md)：其对机器人初创生态的长期观察涵盖工业与商业场景下物体操作产品的商业化路径。
 
 ## 参考来源
 

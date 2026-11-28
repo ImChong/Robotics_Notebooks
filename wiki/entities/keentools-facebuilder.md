@@ -122,6 +122,8 @@ flowchart LR
 - [Generative Motion Rig（Disney Blender 插件）](./generative-motion-rig.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：利用少量参考照片在 Blender 内重建带多视角融合纹理与 FACS blendshape 的写实 3D 头部网格。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：用于快速构建遥操作操作员化身与人机协作演示场景中的低成本人类头部视觉资产。
 
 ## 参考来源
 

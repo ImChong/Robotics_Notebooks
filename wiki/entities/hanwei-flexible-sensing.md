@@ -61,6 +61,8 @@ flowchart LR
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [humanoid-hardware-101-sensing-end-effectors](../overview/humanoid-hardware-101-sensing-end-effectors.md)
 - [dexterous-hand-industry-core-players](../concepts/dexterous-hand-industry-core-players.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：柔性触觉传感器件是灵巧手与人形末端执行器获取接触反馈的重要感知硬件基础。
+- [Manipulation](../tasks/manipulation.md)：触觉感知元件支撑灵巧手在物体抓取与接触交互操作中的精细力与接触感知。
 
 ## 参考来源
 

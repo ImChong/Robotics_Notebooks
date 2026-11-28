@@ -81,6 +81,8 @@ MANIKIN 要：**精确对齐输入末端**、**物理/生物力学可信**、且
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：MANIKIN 将神经摆转角预测、解析 IK 末端对齐与人体生物力学自由度约束结合，其结构化对齐思路可迁移至动作重定向。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：MANIKIN 仅凭头与手稀疏末端观测即可快速求解无穿地全身姿态，适合混合现实与 VR 遥操作中的实时人体追踪。
 
 ## 参考来源
 

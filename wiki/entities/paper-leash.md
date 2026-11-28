@@ -126,6 +126,8 @@ sequenceDiagram
 
 - [safety-filter](../concepts/safety-filter.md)
 - [robot-safety-state-machine](../concepts/robot-safety-state-machine.md)
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：LEASH 通过任务门、动作门与提交门三层执行约束在机器人智能体规划与不可逆物理动作之间建立安全护栏。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：论文提出 RoboRisk 基准在 92 项仿真与 13 项真机任务上以 Harm Rate 与 Safe Success Rate 量化智能体的安全执行表现。
 
 ## 参考来源
 

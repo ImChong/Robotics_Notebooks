@@ -130,6 +130,8 @@ sequenceDiagram
 
 - [ReaDy-Go：面向视觉导航的动态 3DGS 仿真](paper-sa-2602-11575-ready-go-real-to-sim-dynamic-3d-gaussian-splatti.md)
 - [3D Gaussian Splatting 原始论文](paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：StreamSplat 从未标定 RGB-D 视频流在线前馈重建动态 3D Gaussian 表示，支持新视角渲染与时序插值。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：其概率高斯编码与双向动态形变模块为处理相机与物体同时运动的动态场景视觉感知提供连续表示。
 
 ## 参考来源
 

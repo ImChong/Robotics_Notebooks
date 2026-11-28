@@ -145,6 +145,8 @@ sequenceDiagram
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
 - [智能体编程软件基础](../concepts/agentic-coding-software-fundamentals.md)
 - [Co-Evolving Harness 与模型](./paper-co-evolving-harness-models.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：Codebook Agent 将多智能体协作通信拓扑压缩为离散码本并按查询动态重排，优化多 Agent 规划与执行协作效率。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文在六个通用推理与决策基准上以效用得分、推理延迟和实测 token 消耗联合评估不同通信拓扑设计方案。
 
 ## 参考来源
 

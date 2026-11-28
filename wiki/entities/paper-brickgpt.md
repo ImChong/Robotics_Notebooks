@@ -93,6 +93,7 @@ sequenceDiagram
 
 - [generative-world-models](../methods/generative-world-models.md)
 - [cv-best-papers-2023-2026-technology-map](../overview/cv-best-papers-2023-2026-technology-map.md)
+- [Manipulation](../tasks/manipulation.md)：对照文本生成物理稳定可搭建结构与机器人装配操作任务之间的可行性约束衔接。
 
 ## 参考来源
 

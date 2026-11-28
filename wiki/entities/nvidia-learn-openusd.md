@@ -133,6 +133,8 @@ sequenceDiagram
 - [Isaac Lab](./isaac-lab.md) — 在 USD stage 上的学习框架
 - [Blender](./blender.md) — 常见 DCC→USD 来源
 - [StackForce](./stackforce.md) — CAD/URDF→SimReady USD 工程向导
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：关联机器人模型描述与资产接入流程，理解 OpenUSD 的 Stage、Prim 与图层组合机制如何支撑仿真资产复用。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照机器人仿真场景生成方法，了解如何运用 OpenUSD 的 Reference、Payload 与 Variant 组织可复用仿真场景。
 
 ## 参考来源
 

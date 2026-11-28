@@ -79,6 +79,8 @@ Redot 是独立维护的 Godot 分支，项目文件、插件、脚本扩展与 
 - [Unity Engine](./unity-engine.md) — 商业许可模式不同、机器人研究中常用于渲染和仿真客户端的实时 3D 引擎
 - [Unreal Engine 5](./unreal-engine-5.md) — 面向高保真实时 3D 场景的另一类引擎
 - [Sim2Real](../concepts/sim2real.md) — 视觉展示与物理/控制保真度是不同验证目标
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：Redot Engine 可作为实时 3D 渲染与交互可视化宿主，通过自定义通信桥接与传感器、机器人状态及物理模块组合成演示或前端仿真环境。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：在机器人项目中可用于构建可交互的遥操作界面原型与训练过程 3D 可视化前端，辅助人机交互与操作监控。
 
 ## 参考来源
 

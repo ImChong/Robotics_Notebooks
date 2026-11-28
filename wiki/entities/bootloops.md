@@ -133,6 +133,8 @@ sequenceDiagram
 - [Claude-shaped science](./claude-shaped-science.md)：选题与领域专家分工。
 - [AI Auto-Research](../concepts/ai-auto-research.md)：科研自动化生命周期。
 - [ScienceDiscovery](./sciencediscovery.md)：带沙箱与来源治理的科研工作台，与工具箱定位不同。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：参考独立数值验证路线、控制测试与可重算记录组成的可核验科学计算门禁闭环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对照以逐包 GUIDE 文档、误差口径与自检清单规范代理调用科学计算工具的接口设计。
 
 ## 参考来源
 

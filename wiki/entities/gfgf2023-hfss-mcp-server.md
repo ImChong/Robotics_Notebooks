@@ -111,6 +111,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [Ansys AEDT MCP](./laplaceyoung-ansys-aedt-mcp.md)
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：借助 MCP 协议将 Ansys HFSS 建模与求解操作封装为可供智能体调用的标准化工具接口。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：服务天线几何、边界激励设定与远场方向图求解等高频电磁仿真建模与核查流程。
 
 ## 参考来源
 

@@ -108,6 +108,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：了解用于对齐仿真与真实状态转移分布的模仿学习基础方法。
 
 ## 参考来源
 

@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：Chelsea Finn 团队在 ALOHA 等低成本遥操作与通用模仿学习方法上做出了多项代表性贡献。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：其研究围绕少样本元学习、多任务策略学习流程以及跨实体机器人技能泛化展开。
 
 ## 参考来源
 

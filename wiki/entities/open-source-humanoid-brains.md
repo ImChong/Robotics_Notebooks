@@ -69,6 +69,8 @@ flowchart LR
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [运动控制主路线](../../roadmap/motion-control.md)
 - [机器人运控开发板选型（按策略网络模型）](../comparisons/robot-policy-deployment-dev-board-selection.md) — 按模型类型给出具体型号、官方指标与机载实测
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：对照机器人控制系统架构，明确高实时底层 WBC/MPC 运控小脑与低频 VLA 感知大脑的计算分工与接口边界。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：关联人形机器人移动任务，理解双足平衡与高频控制环对主控单核性能、总线延迟及双脑通信的具体约束。
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self'; worker-src 'self' blob:; frame-src https://challenges.cloudflare.com; connect-src 'self' data: blob: https://cdn.jsdelivr.net https://challenges.cloudflare.com https://*.workers.dev; object-src 'none'; base-uri 'self'; form-action 'none'" />
   <meta name="color-scheme" content="dark light" />
   <meta name="description" content="Robotics Notebooks - 面向人形机器人与 Physical AI 的技术栈导航，系统梳理运动控制、强化学习、模仿学习、Sim2Real、VLA、世界模型与真机部署。"  data-home-copy/>
@@ -24,7 +25,7 @@
   <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <script src="theme-init.js"></script>
-  <script id="sponsor-js" src="sponsor.js?v=2" defer></script>
+  <script id="sponsor-js" src="sponsor.js?v=2" async fetchpriority="low"></script>
   <link rel="preload" href="exports/home-stats.json" as="fetch" crossorigin />
   <link rel="preload" href="exports/mini-graph.json" as="fetch" crossorigin />
   <link rel="stylesheet" href="style.css" />
@@ -465,17 +466,17 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js"></script>
-  <script src="ui-icons.js"></script>
-  <script src="wiki-type-labels.js"></script>
-  <script src="org-route-order.js"></script>
-  <script src="main.js"></script>
-  <script src="graph-tooltip.js"></script>
-  <script src="depth-filters.js"></script>
-  <script src="graph-node-size.js"></script>
-  <script src="vendor/d3.min.js" defer></script>
-  <script src="graph-perspective.js" defer></script>
-  <script src="mini-graph.js" defer></script>
+  <script src="home-i18n.js" defer></script>
+  <script src="ui-icons.js" defer></script>
+  <script src="wiki-type-labels.js" defer></script>
+  <script src="org-route-order.js" defer></script>
+  <script src="main.js" defer fetchpriority="high"></script>
+  <script src="graph-tooltip.js" defer></script>
+  <script src="depth-filters.js" defer></script>
+  <script src="graph-node-size.js" defer></script>
+  <script src="vendor/d3.min.js" defer fetchpriority="low"></script>
+  <script src="graph-perspective.js" defer fetchpriority="low"></script>
+  <script src="mini-graph.js" defer fetchpriority="low"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

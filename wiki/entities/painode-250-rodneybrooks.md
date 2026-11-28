@@ -90,6 +90,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：Rodney Brooks 提出的包容体系结构（Subsumption Architecture）深刻影响了反应式分层机器人控制系统设计。
+- [Manipulation](../tasks/manipulation.md)：其在 Rethink Robotics 与 Robust.AI 的工程实践长期围绕安全人机协作与真实环境物体操作展开。
 
 ## 参考来源
 

@@ -103,6 +103,8 @@ Get It. 是通用学习应用，不是机器人研究平台。对本知识库读
 - [LearnHarness](./learnharness.md) — 同为桌面 AI 学习工具；LearnHarness 优先摸底诊断、依赖规划与命题推理图，而 Get It. 优先文档概念可视化与复习评估
 - [WikiSkill（论文实体）](./paper-wikiskill.md) — 把研究文献与 agent skill/wiki 连接的研究方向
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 理解代理工作流的可验证边界与人工判断
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：体现多代理协同完成概念检测、可视化生成与复习日志增量评估的交互反馈循环。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：支持通过本地 CLI 与可配置模型 API 接口调用大语言模型完成文档辅导与渲染规格生成。
 
 ## 参考来源
 

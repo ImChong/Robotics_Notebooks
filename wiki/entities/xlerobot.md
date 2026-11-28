@@ -99,6 +99,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md)：基于双 SO-101 机械臂与移动底盘构建低成本双臂家用操作平台，支持双臂协同家居任务实验。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md)：提供键盘、VR、Xbox 与 Joy-Con 等多种遥操作入口，用于双臂移动机器人的交互控制与数据采集。
 
 ## 参考来源
 

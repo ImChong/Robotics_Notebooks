@@ -107,6 +107,8 @@ flowchart TD
 - [TacO 触觉传感器基准](./paper-taco-tactile-sensor-benchmark.md)
 - [Awesome World Models](./awesome-world-models.md) / [Awesome-Real2Sim2Real](./awesome-real2sim2real.md)
 - [TF-ART 触觉/力觉综述](./paper-tf-art-tactile-force-survey.md) — 管线轴 taxonomy，时间窗更宽；不是本清单镜像
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md)：衔接清单收录的视触觉策略与基于指尖触觉反馈的自适应阻抗控制方法。
+- [Manipulation](../tasks/manipulation.md)：聚焦插孔、防滑移与软体接触等高度依赖触觉传感消除视觉盲区的机器人操作任务。
 
 ## 参考来源
 

@@ -99,6 +99,8 @@ sequenceDiagram
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
 - [FEP Agent Hub](./s2mon123-fep-agent-hub.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：围绕参数化 CAD 操作历史与可检查建模依据设计代理工作流，确保几何修改过程可追溯。
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：将 FreeCAD 工程操作规范与 MCP 工具配置打包为可复用的代理技能，限定工具调用与审阅边界。
 
 ## 参考来源
 

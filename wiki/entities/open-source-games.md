@@ -86,6 +86,8 @@ flowchart TD
 - [SuperTuxKart](./supertuxkart.md) — Racing 节代表条目（双仓 GPL 游戏）
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器游戏代理交付；非本列表范围
 - [Sim2Real](../concepts/sim2real.md) — 从游戏/sim 迁真机时的域差概念
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：对照机器人仿真环境集成方法，评估将开源游戏或游戏引擎改造封装为可控闭环仿真环境的接口成本。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：参考 Sim2Real 迁移工作流，审视通用游戏物理与渲染特性在迁移至真实机器人系统时的域差边界。
 
 ## 参考来源
 

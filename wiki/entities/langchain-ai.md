@@ -68,6 +68,8 @@ flowchart TD
 - [LangGraph](./langgraph.md)
 - [Deep Agents](./deep-agents.md)
 - [LangSmith](./langsmith.md)
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：对应组织主线框架（如 LangGraph）用于构建智能体任务分解与状态反馈循环的核心范式。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：对应其大量 `langchain-*` 集成仓库所围绕的模型外部工具调用与接口标准化机制。
 
 ## 参考来源
 

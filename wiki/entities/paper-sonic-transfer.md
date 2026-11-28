@@ -207,6 +207,8 @@ G1 本体对照（去 codec）：演示库从 93.6% 饱和恢复；novel500 **98
 - [LoRA](../concepts/lora.md)、[GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)、[Unitree G1](./unitree-g1.md)
 - [PHUMA](./dataset-bfm-phuma.md) — OOD 切片来源
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [Whole-Body Motion Tracking · 人形全身动作跟踪](../methods/whole-body-motion-tracking.md)：SONIC-Transfer 基于冻结的 GEAR-SONIC 人形全身动作跟踪先验，将其迁移至异构机器人 AgiBot X2 Ultra。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：该方法利用闭式解析关节 codec 完成跨具身关节映射，并配合解码器 LoRA 适配不同本体的动力学特性。
 
 ## 参考来源
 

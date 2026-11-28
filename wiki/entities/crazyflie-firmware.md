@@ -109,6 +109,8 @@ sequenceDiagram
 - [Crazyswarm2](./crazyswarm2.md)
 - [PX4 Autopilot](./px4-autopilot.md)（标准多旋翼飞控对照）
 - [Project Quiver](./project-quiver.md) — 25 kg 户外机架对照（不是微四轴）
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md)：对应机载固件 stabilizerTask 中的姿态与角速率 PID 闭环控制及电机混控逻辑。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：对应飞控融合机载 IMU、气压计与扩展定位甲板观测以估计姿态和位置的状态估计流程。
 
 ## 推荐继续阅读
 

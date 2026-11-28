@@ -120,6 +120,8 @@ Program-synthesis approach that compiles language instructions into executable r
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Agentic Manipulation Policies：可编程的智能体机器人操作策略](../methods/agentic-manipulation-policies.md)：以通用语言模型生成包含控制流的 Python 策略代码并调用感知与控制原语，是可编程智能体操作策略的代表性先驱工作。
+- [Manipulation](../tasks/manipulation.md)：通过将自然语言指令编译为参数化控制原语序列，在桌面物体的感知定位与闭环操作任务上验证策略可执行性。
 
 ## 参考来源
 

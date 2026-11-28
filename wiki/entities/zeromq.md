@@ -108,6 +108,8 @@ flowchart LR
 - 模式与误区详解：[ZeroMQ 消息模式](../concepts/zeromq-messaging.md)
 - 通信知识链入口：[硬件通信与协议 hub](../overview/hub-communication.md)
 - 已用 ZMQ 的实体：[isaac-gr00t](./isaac-gr00t.md)、[rldx-1](./rldx-1.md)、[DexHoldem 部署](./paper-dexholdem.md)、[XR Teleoperate](./xr-teleoperate.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：以无 Broker 的轻量异步 socket 模式连接传感、仿真与控制进程，是机器人分布式软件系统集成的常用通信中间件。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：常用于搭建 GPU 策略推理服务端与仿真/真机客户端之间的低开销消息通道，支撑远程策略实时推理部署。
 
 ## 推荐继续阅读
 

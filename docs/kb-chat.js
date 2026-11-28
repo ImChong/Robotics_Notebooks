@@ -38,23 +38,75 @@
     mpc: ['模型预测控制', 'model-predictive-control'],
     '模型预测控制': ['mpc', 'model-predictive-control', 'predictive'],
     rl: ['强化学习', 'reinforcement-learning'],
-    '强化学习': ['rl', 'reinforcement-learning', 'ppo'],
+    '强化学习': ['rl', 'reinforcement-learning', 'policy', 'ppo'],
     il: ['模仿学习', 'imitation-learning'],
     '模仿学习': ['il', 'imitation-learning', 'behavior-cloning'],
     bc: ['行为克隆', 'behavior-cloning'],
     '行为克隆': ['bc', 'behavior-cloning', 'imitation-learning'],
     sim2real: ['仿真到真机', 'domain-randomization', '域随机化'],
+    'sim-to-real': ['sim2real', '仿真到真机', 'domain-randomization', '域随机化'],
+    simtoreal: ['sim2real', '仿真到真机', 'domain-randomization', '域随机化'],
+    '仿真到真机': ['sim2real', 'domain-randomization', '域随机化'],
+    sim2sim: ['sim-to-sim', '仿真到仿真'],
+    'sim-to-sim': ['sim2sim', '仿真到仿真'],
+    '仿真到仿真': ['sim2sim', 'sim-to-sim'],
     vla: ['视觉语言动作', 'vision-language-action'],
+    vlm: ['视觉语言模型', 'vision-language-model'],
+    '视觉语言模型': ['vlm', 'vision-language-model'],
+    wm: ['world-model', '世界模型'],
+    'world-model': ['wm', '世界模型'],
+    '世界模型': ['wm', 'world-model', 'world'],
+    dp: ['diffusion-policy', 'diffusion', '扩散策略'],
+    'diffusion-policy': ['dp', 'diffusion', '扩散策略'],
+    '扩散策略': ['dp', 'diffusion-policy', 'diffusion'],
+    diffusion: ['扩散', 'diffusion-policy'],
+    '扩散': ['diffusion', 'diffusion-policy'],
     '运动控制': ['locomotion', 'control', 'gait'],
     locomotion: ['运动控制', '步态', 'legged'],
     humanoid: ['人形', 'biped'],
     '人形': ['humanoid', 'biped'],
+    quadruped: ['四足', 'legged'],
+    '四足': ['quadruped', 'legged'],
+    biped: ['双足', 'humanoid'],
+    '双足': ['biped', 'humanoid'],
     manipulation: ['操作', '灵巧手'],
     '操作': ['manipulation', 'grasp'],
+    dexterous: ['灵巧手', 'hand'],
+    '灵巧手': ['dexterous', 'hand', 'manipulation'],
+    grasp: ['grasping', '抓取'],
+    grasping: ['grasp', '抓取'],
+    '抓取': ['grasp', 'grasping', 'manipulation'],
     tactile: ['触觉', '力控'],
     '触觉': ['tactile', 'force'],
     teleoperation: ['遥操', '遥操作'],
     '遥操': ['teleoperation', 'vr'],
+    slam: ['建图', '定位', 'localization', 'mapping'],
+    isaaclab: ['isaac-lab', 'isaac'],
+    'isaac-lab': ['isaaclab', 'isaac'],
+    isaacgym: ['isaac-gym', 'isaac'],
+    'isaac-gym': ['isaacgym', 'isaac'],
+    ros2: ['ros-2', 'ros'],
+    'ros-2': ['ros2', 'ros'],
+    pi0: ['π0', 'physical-intelligence'],
+    'π0': ['pi0', 'physical-intelligence'],
+    cbf: ['control-barrier-function', '控制障碍函数'],
+    '控制障碍函数': ['cbf', 'control-barrier-function'],
+    qp: ['quadratic-programming', '二次规划'],
+    '二次规划': ['qp', 'quadratic-programming'],
+    ik: ['inverse-kinematics', '逆运动学'],
+    '逆运动学': ['ik', 'inverse-kinematics'],
+    fk: ['forward-kinematics', '正运动学'],
+    '正运动学': ['fk', 'forward-kinematics'],
+    amp: ['adversarial-motion-priors', '对抗运动先验'],
+    '对抗运动先验': ['amp', 'adversarial-motion-priors'],
+    ppo: ['proximal-policy-optimization', 'rl'],
+    sac: ['soft-actor-critic', 'rl'],
+    'contact-rich': ['接触丰富', 'contact'],
+    '接触丰富': ['contact-rich', 'contact'],
+    ctrl: ['control'],
+    teleop: ['teleoperation', '遥操', '遥操作'],
+    loco: ['locomotion', '运动控制'],
+    manip: ['manipulation', '操作'],
   };
 
   var STOP_WORDS = new Set([
@@ -99,6 +151,7 @@
       fallbackVerify: '安全校验尚未就绪，已自动切换为站内检索结果。',
       fallbackGeneric: 'AI 助手暂时离线，已自动切换为站内检索结果。',
       cachedTag: '来自常见问答缓存',
+      fuzzyTag: '模糊匹配',
       emptyError: '请输入至少 2 个字的问题。',
       tooLongError: '问题请控制在 {max} 字以内。',
       starters: [
@@ -147,6 +200,7 @@
       fallbackVerify: 'Verification could not complete — showing wiki search results instead.',
       fallbackGeneric: 'AI assistant is unavailable — showing wiki search results instead.',
       cachedTag: 'From popular Q&A cache',
+      fuzzyTag: 'Fuzzy match',
       emptyError: 'Please enter at least 2 characters.',
       tooLongError: 'Please keep your question within {max} characters.',
       starters: [
@@ -293,6 +347,19 @@
       var raw = matches[i];
       var isCjk = raw.charCodeAt(0) >= 0x4e00 && raw.charCodeAt(0) <= 0x9fff;
       if (!isCjk || raw.length <= 4) pushToken(raw);
+      if (!isCjk && raw.indexOf('π') >= 0) {
+        var piNorm = raw.replace(/π/g, 'pi');
+        pushToken(piNorm);
+        if (SYNONYMS[piNorm]) {
+          for (var sp = 0; sp < SYNONYMS[piNorm].length; sp += 1) pushToken(SYNONYMS[piNorm][sp]);
+        }
+      }
+      if (!isCjk && (raw.indexOf('-') >= 0 || raw.indexOf('_') >= 0)) {
+        var parts = raw.split(/[-_]+/);
+        for (var p = 0; p < parts.length; p += 1) {
+          if (parts[p].length >= 2) pushToken(parts[p]);
+        }
+      }
       if (SYNONYMS[raw]) {
         for (var s = 0; s < SYNONYMS[raw].length; s += 1) pushToken(SYNONYMS[raw][s]);
       }
@@ -311,6 +378,795 @@
       }
     }
     return out;
+  }
+
+  var ASCII_TOKEN_RE = /[a-z0-9_+\-.π]+/g;
+  var CJK_RUN_RE = /[\u4e00-\u9fff]+/g;
+  var CJK_TITLE_SPLIT_RE = /[的与和及或]/g;
+  var CJK_BOUNDARY_SPLIT_RE =
+    /(?:请问|介绍一下|介绍下|什么叫|什么是|是什么|怎么缩小|怎么配合|怎么实现|怎么工作|怎么做|如何缩小|如何实现|如何工作|如何配合|为什么|为何|哪些|哪个|关于|一下|的原理|原理|区别|对比|有什么|怎么|怎样|如何|解释|说明|比较|今天|明天|昨天|以及|还是|但是|并且|和|与|及|的|了|吗|呢|吧|啊)/g;
+  var CJK_BOUNDARY_PREFIX_RE =
+    /^(?:请问|想问下|问一下|能告诉我|告诉我|介绍一下|介绍下|什么是|什么叫|是什么|关于|帮我解释|解释一下|解释|说明一下|说明|比较一下|对比一下|帮我)+/;
+  var CJK_BOUNDARY_SUFFIX_RE =
+    /(?:是什么|的原理|原理|是什么原理|怎么实现|怎么工作|怎么配合|怎么缩小|怎么做|如何实现|如何工作|如何配合|如何缩小|怎么用|怎么样|怎么|怎样|如何|为什么|为何|有哪些|哪些|哪个|区别|对比|好吗|吗|呢|吧|啊|的|了)+$/;
+
+  function isAsciiAlnumCode(c) {
+    return (c >= 48 && c <= 57) || (c >= 97 && c <= 122);
+  }
+
+  function isAsciiLowerCode(c) {
+    return c >= 97 && c <= 122;
+  }
+
+  function containsTokenMatch(haystack, tok) {
+    if (!haystack || !tok) return false;
+    var idx = haystack.indexOf(tok);
+    if (idx < 0) return false;
+    var firstCode = tok.charCodeAt(0);
+    if (tok.length > 3 || !isAsciiAlnumCode(firstCode)) {
+      return true;
+    }
+    var len = tok.length;
+    while (idx >= 0) {
+      var prevOk = idx === 0 || !isAsciiAlnumCode(haystack.charCodeAt(idx - 1));
+      var afterPos = idx + len;
+      var nextOk =
+        afterPos >= haystack.length ||
+        (len <= 2
+          ? !isAsciiAlnumCode(haystack.charCodeAt(afterPos))
+          : !isAsciiLowerCode(haystack.charCodeAt(afterPos)));
+      if (prevOk && nextOk) return true;
+      idx = haystack.indexOf(tok, idx + 1);
+    }
+    return false;
+  }
+
+  function boundedDamerauDistance(a, b, maxDist) {
+    if (a === b) return 0;
+    var la = a.length;
+    var lb = b.length;
+    if (Math.abs(la - lb) > maxDist) return maxDist + 1;
+    if (la === 0) return lb <= maxDist ? lb : maxDist + 1;
+    if (lb === 0) return la <= maxDist ? la : maxDist + 1;
+
+    var prev2 = new Array(lb + 1);
+    var prev1 = new Array(lb + 1);
+    var curr = new Array(lb + 1);
+    for (var j = 0; j <= lb; j += 1) {
+      prev1[j] = j;
+      prev2[j] = 0;
+    }
+
+    for (var i = 1; i <= la; i += 1) {
+      curr[0] = i;
+      var rowMin = curr[0];
+      var ca = a.charCodeAt(i - 1);
+      for (var k = 1; k <= lb; k += 1) {
+        var cb = b.charCodeAt(k - 1);
+        var cost = ca === cb ? 0 : 1;
+        var val = prev1[k] + 1;
+        var ins = curr[k - 1] + 1;
+        var sub = prev1[k - 1] + cost;
+        if (ins < val) val = ins;
+        if (sub < val) val = sub;
+        if (
+          i > 1 &&
+          k > 1 &&
+          ca === b.charCodeAt(k - 2) &&
+          a.charCodeAt(i - 2) === cb
+        ) {
+          var trans = prev2[k - 2] + 1;
+          if (trans < val) val = trans;
+        }
+        curr[k] = val;
+        if (val < rowMin) rowMin = val;
+      }
+      if (rowMin > maxDist) return maxDist + 1;
+      var tmp = prev2;
+      prev2 = prev1;
+      prev1 = curr;
+      curr = tmp;
+    }
+    return prev1[lb] <= maxDist ? prev1[lb] : maxDist + 1;
+  }
+
+  function orderedSubsequenceSpan(query, target) {
+    var ql = query.length;
+    var tl = target.length;
+    if (ql === 0 || ql >= tl) return -1;
+    var bestSpan = -1;
+    var firstChar = query.charCodeAt(0);
+    for (var start = 0; start <= tl - ql; start += 1) {
+      if (target.charCodeAt(start) !== firstChar) continue;
+      var qi = 1;
+      var ti = start + 1;
+      while (qi < ql && ti < tl) {
+        if (target.charCodeAt(ti) === query.charCodeAt(qi)) {
+          qi += 1;
+        }
+        ti += 1;
+      }
+      if (qi === ql) {
+        var span = ti - start;
+        if (bestSpan < 0 || span < bestSpan) {
+          bestSpan = span;
+        }
+      }
+    }
+    return bestSpan;
+  }
+
+  function extractCjkPhrases(text) {
+    var rawRuns = String(text || '').match(CJK_RUN_RE);
+    if (!rawRuns) return [];
+    var seen = new Set();
+    var phrases = [];
+    for (var i = 0; i < rawRuns.length; i += 1) {
+      var parts = rawRuns[i].split(CJK_BOUNDARY_SPLIT_RE);
+      for (var j = 0; j < parts.length; j += 1) {
+        var cleaned = parts[j]
+          .replace(CJK_BOUNDARY_PREFIX_RE, '')
+          .replace(CJK_BOUNDARY_SUFFIX_RE, '');
+        if (cleaned.length >= 2 && !STOP_WORDS.has(cleaned) && !seen.has(cleaned)) {
+          seen.add(cleaned);
+          phrases.push(cleaned);
+        }
+      }
+    }
+    return phrases;
+  }
+
+  function isCoveredByExactCjkTerms(phrase, cjkSet) {
+    var n = phrase.length;
+    if (n < 2) return false;
+    // dp[i] stores max segment length used to cover phrase[0..i-1], or 0 if uncovered
+    var dp = new Array(n + 1);
+    for (var z = 0; z <= n; z += 1) dp[z] = 0;
+    dp[0] = 1;
+    for (var i = 2; i <= n; i += 1) {
+      var bestSeg = 0;
+      for (var len = 2; len <= Math.min(12, i); len += 1) {
+        if (dp[i - len] === 0) continue;
+        var sub = phrase.slice(i - len, i);
+        if (cjkSet.has(sub)) {
+          var candMax = Math.max(i - len === 0 ? len : dp[i - len], len);
+          if (candMax > bestSeg) bestSeg = candMax;
+        }
+      }
+      dp[i] = bestSeg;
+    }
+    return dp[n] >= 3;
+  }
+
+  function buildVocabCollector() {
+    return {
+      asciiDf: new Map(),
+      cjkDf: new Map(),
+      compactToTerms: new Map(),
+      singleCompounds: new Set(),
+    };
+  }
+
+  function recordAsciiTerm(collector, rawTerm, seenDocAscii) {
+    var term = String(rawTerm || '').toLowerCase().replace(/^[-_.+]+|[-_.+]+$/g, '');
+    if (!term || term.length < 2) return;
+    var variants = [term];
+    if (term.indexOf('π') >= 0) {
+      variants.push(term.replace(/π/g, 'pi'));
+    }
+    for (var vi = 0; vi < variants.length; vi += 1) {
+      var tVal = variants[vi];
+      if (!tVal || tVal.length < 2) continue;
+      if (!seenDocAscii.has(tVal)) {
+        seenDocAscii.add(tVal);
+        collector.asciiDf.set(tVal, (collector.asciiDf.get(tVal) || 0) + 1);
+      }
+      var compact = tVal.replace(/[-_.+]/g, '').replace(/π/g, 'pi');
+      if (compact.length >= 3 && !/^\d+$/.test(compact)) {
+        if (tVal === compact) {
+          collector.singleCompounds.add(compact);
+        }
+        var bucket = collector.compactToTerms.get(compact);
+        if (!bucket) {
+          bucket = new Set();
+          collector.compactToTerms.set(compact, bucket);
+        }
+        bucket.add(tVal);
+      }
+    }
+    if (/[-_.]/.test(term)) {
+      var parts = term.split(/[-_.]+/);
+      for (var pi = 0; pi < parts.length; pi += 1) {
+        var part = parts[pi];
+        if (part.length >= 2 && !seenDocAscii.has(part)) {
+          seenDocAscii.add(part);
+          collector.asciiDf.set(part, (collector.asciiDf.get(part) || 0) + 1);
+        }
+      }
+    }
+  }
+
+  function recordCjkPhrase(collector, rawCjk, seenDocCjk) {
+    if (!rawCjk || rawCjk.length < 2) return;
+    var trimmedCjk = rawCjk.replace(/^[的与和及或]+|[的与和及或]+$/g, '');
+    var candidates = [];
+    if (trimmedCjk && trimmedCjk.length >= 2 && trimmedCjk.length <= 12) {
+      candidates.push(trimmedCjk);
+    }
+    var parts = rawCjk.split(CJK_TITLE_SPLIT_RE);
+    for (var i = 0; i < parts.length; i += 1) {
+      var p = parts[i];
+      if (p && p.length >= 2 && p.length <= 12) candidates.push(p);
+    }
+    for (var ci = 0; ci < candidates.length; ci += 1) {
+      var phrase = candidates[ci];
+      if (STOP_WORDS.has(phrase) || seenDocCjk.has(phrase)) continue;
+      seenDocCjk.add(phrase);
+      collector.cjkDf.set(phrase, (collector.cjkDf.get(phrase) || 0) + 1);
+    }
+  }
+
+  function hasSameCharMultiset(a, b) {
+    if (a.length !== b.length) return false;
+    var counts = Object.create(null);
+    for (var i = 0; i < a.length; i += 1) {
+      var ca = a.charAt(i);
+      counts[ca] = (counts[ca] || 0) + 1;
+    }
+    for (var j = 0; j < b.length; j += 1) {
+      var cb = b.charAt(j);
+      if (!counts[cb]) return false;
+      counts[cb] -= 1;
+    }
+    return true;
+  }
+
+  function finalizeVocab(collector, maxAsciiTerms, maxCjkTerms) {
+    // Seed SYNONYMS keys and values so cross-lingual / canonical terms remain discoverable
+    var synKeys = Object.keys(SYNONYMS);
+    for (var si = 0; si < synKeys.length; si += 1) {
+      var sk = synKeys[si];
+      var list = [sk].concat(SYNONYMS[sk] || []);
+      for (var sj = 0; sj < list.length; sj += 1) {
+        var entry = String(list[sj] || '').toLowerCase();
+        if (!entry) continue;
+        if (entry.charCodeAt(0) >= 0x4e00 && entry.charCodeAt(0) <= 0x9fff) {
+          if (entry.length >= 2 && entry.length <= 12 && !collector.cjkDf.has(entry)) {
+            collector.cjkDf.set(entry, 0);
+          }
+        } else {
+          if (!collector.asciiDf.has(entry)) {
+            collector.asciiDf.set(entry, 0);
+          }
+          var compact = entry.replace(/[-_.+]/g, '').replace(/π/g, 'pi');
+          if (compact.length >= 3 && !/^\d+$/.test(compact)) {
+            if (entry === compact && (sj > 0 || (collector.asciiDf.get(entry) || 0) > 0)) {
+              collector.singleCompounds.add(compact);
+            }
+            var cBucket = collector.compactToTerms.get(compact);
+            if (!cBucket) {
+              cBucket = new Set();
+              collector.compactToTerms.set(compact, cBucket);
+            }
+            cBucket.add(entry);
+          }
+        }
+      }
+    }
+
+    var asciiSet = new Set(collector.asciiDf.keys());
+    var asciiEntries = [];
+    collector.asciiDf.forEach(function (df, term) {
+      if (term.length >= 4 && !/^\d+$/.test(term)) {
+        asciiEntries.push({ term: term, df: df });
+      }
+    });
+    if (maxAsciiTerms && asciiEntries.length > maxAsciiTerms) {
+      asciiEntries.sort(function (a, b) {
+        return b.df - a.df;
+      });
+      asciiEntries = asciiEntries.slice(0, maxAsciiTerms);
+    }
+    var asciiByLen = new Map();
+    for (var ai = 0; ai < asciiEntries.length; ai += 1) {
+      var ae = asciiEntries[ai];
+      var lenBucket = asciiByLen.get(ae.term.length);
+      if (!lenBucket) {
+        lenBucket = [];
+        asciiByLen.set(ae.term.length, lenBucket);
+      }
+      lenBucket.push(ae);
+    }
+    asciiByLen.forEach(function (arr) {
+      arr.sort(function (a, b) {
+        return b.df - a.df;
+      });
+    });
+
+    var compactResolved = new Map();
+    collector.compactToTerms.forEach(function (setVal, comp) {
+      var arr = Array.from(setVal);
+      arr.sort(function (a, b) {
+        var aSingle = a === comp ? 1 : 0;
+        var bSingle = b === comp ? 1 : 0;
+        if (bSingle !== aSingle) return bSingle - aSingle;
+        return (collector.asciiDf.get(b) || 0) - (collector.asciiDf.get(a) || 0);
+      });
+      compactResolved.set(comp, arr);
+    });
+
+    var cjkSet = new Set(collector.cjkDf.keys());
+    var cjkEntries = [];
+    collector.cjkDf.forEach(function (df, term) {
+      if (term.length >= 3 && term.length <= 12) {
+        cjkEntries.push({ term: term, df: df });
+      }
+    });
+    cjkEntries.sort(function (a, b) {
+      return b.df - a.df || a.term.length - b.term.length;
+    });
+    if (maxCjkTerms && cjkEntries.length > maxCjkTerms) {
+      cjkEntries = cjkEntries.slice(0, maxCjkTerms);
+    }
+
+    var cjkCharIndex = new Map();
+    for (var ti = 0; ti < cjkEntries.length; ti += 1) {
+      var termStr = cjkEntries[ti].term;
+      var seenChars = new Set();
+      for (var chIdx = 0; chIdx < termStr.length; chIdx += 1) {
+        var ch = termStr.charAt(chIdx);
+        if (seenChars.has(ch)) continue;
+        seenChars.add(ch);
+        var idxList = cjkCharIndex.get(ch);
+        if (!idxList) {
+          idxList = [];
+          cjkCharIndex.set(ch, idxList);
+        }
+        idxList.push(ti);
+      }
+    }
+
+    return {
+      asciiSet: asciiSet,
+      asciiByLen: asciiByLen,
+      compactToTerms: compactResolved,
+      singleCompounds: collector.singleCompounds,
+      cjkSet: cjkSet,
+      cjkTerms: cjkEntries,
+      cjkCharIndex: cjkCharIndex,
+    };
+  }
+
+  var _liteVocabDocs = null;
+  var _liteVocabCache = null;
+
+  function ensureLiteVocab(docs) {
+    if (_liteVocabDocs === docs && _liteVocabCache) {
+      return _liteVocabCache;
+    }
+    var collector = buildVocabCollector();
+    for (var i = 0; i < docs.length; i += 1) {
+      var doc = docs[i];
+      if (!doc || !doc.id) continue;
+      var seenDocAscii = new Set();
+      var seenDocCjk = new Set();
+      var titleStr = String(doc.title || '').toLowerCase();
+      var aliasesStr = Array.isArray(doc.search_aliases) ? doc.search_aliases.join(' ').toLowerCase() : '';
+      var tagsStr = Array.isArray(doc.tags) ? doc.tags.join(' ').toLowerCase() : '';
+      var pathStr = String(doc.path || '').replace(/\.md$/i, '').toLowerCase();
+
+      var asciiSrc = [titleStr, aliasesStr, tagsStr, pathStr];
+      for (var sIdx = 0; sIdx < asciiSrc.length; sIdx += 1) {
+        var aMatches = asciiSrc[sIdx].match(ASCII_TOKEN_RE);
+        if (!aMatches) continue;
+        for (var ai = 0; ai < aMatches.length; ai += 1) {
+          recordAsciiTerm(collector, aMatches[ai], seenDocAscii);
+        }
+      }
+
+      var cjkSrc = [titleStr, aliasesStr, tagsStr];
+      for (var cIdx = 0; cIdx < cjkSrc.length; cIdx += 1) {
+        var cMatches = cjkSrc[cIdx].match(CJK_RUN_RE);
+        if (!cMatches) continue;
+        for (var ci = 0; ci < cMatches.length; ci += 1) {
+          recordCjkPhrase(collector, cMatches[ci], seenDocCjk);
+        }
+      }
+    }
+
+    _liteVocabDocs = docs;
+    _liteVocabCache = finalizeVocab(collector, 0, 0);
+    return _liteVocabCache;
+  }
+
+  function buildBodiesVocab(bodies) {
+    var collector = buildVocabCollector();
+    for (var i = 0; i < bodies.length; i += 1) {
+      var body = bodies[i];
+      if (!body || typeof body.content_markdown !== 'string') continue;
+      var seenDocAscii = new Set();
+      var seenDocCjk = new Set();
+      var sections = splitSections(body.content_markdown);
+      var titleLine = '';
+      var h1Match = String(body.content_markdown || '').match(/^#\s+(.+)$/m);
+      if (h1Match) titleLine = cleanMarkdown(h1Match[1]).toLowerCase();
+      var texts = [titleLine];
+      for (var s = 0; s < sections.length; s += 1) {
+        texts.push(sections[s].heading.toLowerCase());
+        texts.push(sections[s].text.toLowerCase());
+      }
+      var joined = texts.join(' ');
+      var aMatches = joined.match(ASCII_TOKEN_RE);
+      if (aMatches) {
+        for (var ai = 0; ai < aMatches.length && seenDocAscii.size < 400; ai += 1) {
+          recordAsciiTerm(collector, aMatches[ai], seenDocAscii);
+        }
+      }
+      var cMatches = joined.match(CJK_RUN_RE);
+      if (cMatches) {
+        for (var ci = 0; ci < cMatches.length && seenDocCjk.size < 250; ci += 1) {
+          recordCjkPhrase(collector, cMatches[ci], seenDocCjk);
+        }
+      }
+    }
+    return finalizeVocab(collector, 600, 400);
+  }
+
+  function extractAsciiRuns(question) {
+    var lower = String(question || '').toLowerCase();
+    var runs = [];
+    var current = [];
+    var re = /([a-z0-9_+\-.π]+)|([\u4e00-\u9fff]+|[?,!.;:()[\]{}"'，。？！；：（）【】「」、/\\]+)/g;
+    var m;
+    while ((m = re.exec(lower)) !== null) {
+      if (m[1]) {
+        current.push(m[1]);
+      } else if (current.length > 0) {
+        runs.push(current);
+        current = [];
+      }
+    }
+    if (current.length > 0) runs.push(current);
+    return runs;
+  }
+
+  function findBestCjkMatches(qStr, vocab) {
+    var ql = qStr.length;
+    if (ql < 3 || ql > 8 || !vocab || !vocab.cjkTerms || vocab.cjkTerms.length === 0) return [];
+    var overlap = new Map();
+    var uniqueQChars = new Set();
+    for (var qi = 0; qi < ql; qi += 1) {
+      var ch = qStr.charAt(qi);
+      if (uniqueQChars.has(ch)) continue;
+      uniqueQChars.add(ch);
+      var postings = vocab.cjkCharIndex.get(ch);
+      if (!postings) continue;
+      for (var pi = 0; pi < postings.length; pi += 1) {
+        var idx = postings[pi];
+        overlap.set(idx, (overlap.get(idx) || 0) + 1);
+      }
+    }
+
+    var hits = [];
+    var needForC1 = Math.max(2, uniqueQChars.size - 1);
+    var needForC2 = uniqueQChars.size;
+    var allowLowDfThreeChar = vocab.cjkTerms.length <= 40;
+    overlap.forEach(function (cnt, termIdx) {
+      var entry = vocab.cjkTerms[termIdx];
+      var cand = entry.term;
+      var cl = cand.length;
+      if (cand === qStr) return;
+
+      // C1: 1-character typo
+      if (cnt >= needForC1) {
+        if (ql >= 4 && Math.abs(cl - ql) <= 1) {
+          if (boundedDamerauDistance(qStr, cand, 1) === 1) {
+            hits.push({
+              term: cand,
+              df: entry.df,
+              tier: cl === ql ? 0 : 1,
+              gap: Math.abs(cl - ql),
+            });
+            return;
+          }
+        } else if (ql === 3 && cl === 3) {
+          var threeCharPopular = entry.df >= 3 || Boolean(SYNONYMS[cand]) || allowLowDfThreeChar;
+          if (
+            threeCharPopular &&
+            (qStr.slice(0, 2) === cand.slice(0, 2) || qStr.slice(1) === cand.slice(1)) &&
+            boundedDamerauDistance(qStr, cand, 1) === 1
+          ) {
+            hits.push({ term: cand, df: entry.df, tier: 0, gap: 0 });
+            return;
+          }
+        }
+      }
+
+      // C2: ordered subsequence with skipped characters
+      if (cnt >= needForC2 && ql >= 3 && ql <= 6 && cl > ql && cl <= Math.min(12, ql * 2)) {
+        var span = orderedSubsequenceSpan(qStr, cand);
+        if (span > 0 && span <= Math.min(ql * 2, ql + 3)) {
+          hits.push({
+            term: cand,
+            df: entry.df,
+            tier: cl === ql + 1 && span === cl ? 1 : 2,
+            gap: span - ql,
+          });
+        }
+      }
+    });
+
+    hits.sort(function (a, b) {
+      if (a.tier !== b.tier) return a.tier - b.tier;
+      if (a.gap !== b.gap) return a.gap - b.gap;
+      if (a.term.length !== b.term.length) return a.term.length - b.term.length;
+      return b.df - a.df;
+    });
+    return hits.slice(0, 2);
+  }
+
+  function expandQueryFuzzy(question, vocab) {
+    var exactTokens = tokenizeQuery(question);
+    var exactSet = new Set(exactTokens);
+    var fuzzyMap = new Map();
+    var candidates = [];
+
+    function addFuzzyToken(tok, weightFactor, matchIdx, isCompact) {
+      if (!tok || STOP_WORDS.has(tok) || exactSet.has(tok)) return;
+      var prev = fuzzyMap.get(tok);
+      if (prev) {
+        if (weightFactor > prev.weightFactor) {
+          prev.weightFactor = weightFactor;
+          if (matchIdx >= 0) prev.matchIdx = matchIdx;
+        }
+        if (isCompact) prev.isCompact = true;
+        return;
+      }
+      fuzzyMap.set(tok, {
+        token: tok,
+        weightFactor: weightFactor,
+        matchIdx: matchIdx,
+        isCompact: Boolean(isCompact),
+      });
+    }
+
+    function addTermAndSynonyms(term, weightFactor, matchIdx, isCompact) {
+      addFuzzyToken(term, weightFactor, matchIdx, isCompact);
+      if (SYNONYMS[term]) {
+        var syns = SYNONYMS[term];
+        for (var i = 0; i < syns.length; i += 1) {
+          addFuzzyToken(syns[i], weightFactor * 0.85, matchIdx, false);
+        }
+      }
+    }
+
+    if (!vocab) {
+      return { exactTokens: exactTokens, fuzzyTokens: [], candidates: [] };
+    }
+
+    // Pass 1: Adjacent ASCII separator merging (sim 2 real, sim to real, isaac lab, open vla, ros 2, pi 0)
+    var asciiRuns = extractAsciiRuns(question);
+    var consumedPositions = new Set();
+    for (var rIdx = 0; rIdx < asciiRuns.length; rIdx += 1) {
+      var run = asciiRuns[rIdx];
+      for (var n = 3; n >= 2; n -= 1) {
+        if (run.length < n) continue;
+        for (var start = 0; start <= run.length - n; start += 1) {
+          var alreadyUsed = false;
+          for (var u = 0; u < n; u += 1) {
+            if (consumedPositions.has(rIdx + ':' + (start + u))) {
+              alreadyUsed = true;
+              break;
+            }
+          }
+          if (alreadyUsed) continue;
+          var slice = run.slice(start, start + n);
+          if (STOP_WORDS.has(slice[0]) || STOP_WORDS.has(slice[n - 1])) continue;
+          var compact = slice
+            .map(function (s) {
+              return s.replace(/π/g, 'pi').replace(/[-_.+]/g, '');
+            })
+            .join('');
+          if (compact.length < 3 || /^\d+$/.test(compact)) continue;
+
+          var mappedTerms = vocab.compactToTerms.get(compact) || [];
+          var synList = SYNONYMS[compact] || null;
+          if (mappedTerms.length === 0 && !synList) continue;
+
+          var phrase = slice.join(' ');
+          var targetTerm = '';
+          if (vocab.singleCompounds.has(compact) || (synList && vocab.singleCompounds.has(synList[0]))) {
+            targetTerm = vocab.singleCompounds.has(compact) ? compact : synList[0];
+          } else if (mappedTerms.length > 0) {
+            targetTerm = mappedTerms[0];
+          } else if (synList && synList.length > 0) {
+            targetTerm = synList[0];
+          }
+          if (!targetTerm) continue;
+
+          var isVisibleCompound =
+            vocab.singleCompounds.has(compact) ||
+            Boolean(synList && vocab.singleCompounds.has(targetTerm));
+          var matchIdx = -1;
+          if (isVisibleCompound && phrase !== targetTerm) {
+            matchIdx = candidates.length;
+            candidates.push({ from: phrase, to: targetTerm, kind: 'separator' });
+            for (var cPos = 0; cPos < n; cPos += 1) {
+              consumedPositions.add(rIdx + ':' + (start + cPos));
+            }
+          }
+          addTermAndSynonyms(compact, 0.95, matchIdx, true);
+          addTermAndSynonyms(targetTerm, 0.95, matchIdx, targetTerm === compact);
+          for (var mt = 0; mt < mappedTerms.length; mt += 1) {
+            addTermAndSynonyms(mappedTerms[mt], 0.95, matchIdx, mappedTerms[mt] === compact);
+          }
+        }
+      }
+    }
+
+    // Pass 2: Single ASCII token normalization & Damerau-Levenshtein typo tolerance
+    for (var r2 = 0; r2 < asciiRuns.length; r2 += 1) {
+      var run2 = asciiRuns[r2];
+      for (var tIdx = 0; tIdx < run2.length; tIdx += 1) {
+        if (consumedPositions.has(r2 + ':' + tIdx)) continue;
+        var tok = run2[tIdx].replace(/π/g, 'pi').replace(/^[-_.+]+|[-_.+]+$/g, '');
+        if (!tok || STOP_WORDS.has(tok) || tok.length < 4 || /^\d+$/.test(tok)) continue;
+        if (vocab.asciiSet.has(tok) || SYNONYMS[tok]) continue;
+
+        // Lightweight plural stem without noisy banner
+        if (tok.length >= 5 && tok.charAt(tok.length - 1) === 's' && !/(?:ss|us|is)$/.test(tok)) {
+          var singular = tok.slice(0, -1);
+          if (vocab.asciiSet.has(singular) || SYNONYMS[singular]) {
+            addTermAndSynonyms(singular, 0.95, -1, false);
+            continue;
+          }
+        }
+
+        // Single-token separator mismatch (e.g. whole_body_control -> whole-body-control, simtoreal -> sim2real)
+        var tokCompact = tok.replace(/[-_.+]/g, '');
+        if (tokCompact.length >= 3 && (vocab.compactToTerms.has(tokCompact) || SYNONYMS[tokCompact])) {
+          var sepTerms = vocab.compactToTerms.get(tokCompact) || [];
+          var sepSyn = SYNONYMS[tokCompact] || [];
+          var sepTarget = vocab.singleCompounds.has(tokCompact)
+            ? tokCompact
+            : sepTerms[0] || sepSyn[0] || '';
+          if (sepTarget && sepTarget !== tok) {
+            var sepMatchIdx = candidates.length;
+            candidates.push({ from: tok, to: sepTarget, kind: 'separator' });
+            addTermAndSynonyms(sepTarget, 0.95, sepMatchIdx, sepTarget === tokCompact);
+            for (var st = 0; st < sepTerms.length; st += 1) {
+              addTermAndSynonyms(sepTerms[st], 0.95, sepMatchIdx, false);
+            }
+            continue;
+          }
+        }
+
+        var maxDist = tok.length >= 8 ? 2 : 1;
+        var typoHits = [];
+        for (var len = tok.length - maxDist; len <= tok.length + maxDist; len += 1) {
+          var bucket = vocab.asciiByLen.get(len);
+          if (!bucket) continue;
+          for (var bi = 0; bi < bucket.length; bi += 1) {
+            var cand = bucket[bi].term;
+            if (tok.length === 4 && !hasSameCharMultiset(tok, cand) && !SYNONYMS[cand]) {
+              continue;
+            }
+            var leadOk =
+              maxDist === 1
+                ? cand.charCodeAt(0) === tok.charCodeAt(0) ||
+                  (cand.charCodeAt(0) === tok.charCodeAt(1) && cand.charCodeAt(1) === tok.charCodeAt(0))
+                : cand.charCodeAt(0) === tok.charCodeAt(0) ||
+                  cand.charCodeAt(0) === tok.charCodeAt(1) ||
+                  cand.charCodeAt(1) === tok.charCodeAt(0);
+            if (!leadOk) continue;
+            var dist = boundedDamerauDistance(tok, cand, maxDist);
+            if (dist <= maxDist) {
+              typoHits.push({ term: cand, dist: dist, df: bucket[bi].df });
+            }
+          }
+        }
+        if (typoHits.length === 0) continue;
+        typoHits.sort(function (a, b) {
+          if (a.dist !== b.dist) return a.dist - b.dist;
+          if (b.df !== a.df) return b.df - a.df;
+          return Math.abs(a.term.length - tok.length) - Math.abs(b.term.length - tok.length);
+        });
+        var bestDist = typoHits[0].dist;
+        var filtered = [];
+        for (var hi = 0; hi < typoHits.length && filtered.length < 2; hi += 1) {
+          if (typoHits[hi].dist === bestDist) filtered.push(typoHits[hi]);
+        }
+        var bestTerm = filtered[0].term;
+        var tMatchIdx = candidates.length;
+        candidates.push({ from: tok, to: bestTerm, kind: 'typo', dist: bestDist });
+        for (var fi = 0; fi < filtered.length; fi += 1) {
+          var weightFactor = filtered[fi].dist === 1 ? 0.75 : 0.55;
+          addTermAndSynonyms(filtered[fi].term, weightFactor, tMatchIdx, false);
+        }
+      }
+    }
+
+    // Pass 3: CJK 1-char typo + skipped-character ordered subsequence
+    var cjkPhrases = extractCjkPhrases(question);
+    for (var ci = 0; ci < cjkPhrases.length; ci += 1) {
+      var phraseCjk = cjkPhrases[ci];
+      if (phraseCjk.length < 3) continue;
+      if (
+        vocab.cjkSet.has(phraseCjk) ||
+        SYNONYMS[phraseCjk] ||
+        isCoveredByExactCjkTerms(phraseCjk, vocab.cjkSet)
+      ) {
+        continue;
+      }
+
+      var directHits = findBestCjkMatches(phraseCjk, vocab);
+      if (directHits.length > 0) {
+        var cMatchIdx = candidates.length;
+        candidates.push({ from: phraseCjk, to: directHits[0].term, kind: 'cjk-fuzzy' });
+        for (var dhi = 0; dhi < directHits.length; dhi += 1) {
+          addTermAndSynonyms(directHits[dhi].term, 0.75, cMatchIdx, false);
+        }
+        continue;
+      }
+
+      if (phraseCjk.length >= 5 && phraseCjk.length <= 8) {
+        var foundWinMatch = false;
+        for (var winLen = 4; winLen >= 3 && !foundWinMatch; winLen -= 1) {
+          for (var pos = 0; pos <= phraseCjk.length - winLen; pos += 1) {
+            var sub = phraseCjk.slice(pos, pos + winLen);
+            if (
+              vocab.cjkSet.has(sub) ||
+              SYNONYMS[sub] ||
+              isCoveredByExactCjkTerms(sub, vocab.cjkSet)
+            ) {
+              continue;
+            }
+            var winHits = findBestCjkMatches(sub, vocab);
+            if (winHits.length > 0) {
+              var wMatchIdx = candidates.length;
+              candidates.push({ from: sub, to: winHits[0].term, kind: 'cjk-fuzzy' });
+              for (var whi = 0; whi < winHits.length; whi += 1) {
+                addTermAndSynonyms(winHits[whi].term, 0.75, wMatchIdx, false);
+              }
+              foundWinMatch = true;
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    return {
+      exactTokens: exactTokens,
+      fuzzyTokens: Array.from(fuzzyMap.values()),
+      candidates: candidates,
+    };
+  }
+
+  function sanitizeFuzzyMatches(list) {
+    if (!Array.isArray(list) || list.length === 0) return [];
+    var out = [];
+    var seen = new Set();
+    for (var i = 0; i < list.length && out.length < 3; i += 1) {
+      var item = list[i];
+      if (!item || typeof item.from !== 'string' || typeof item.to !== 'string') continue;
+      var from = item.from.trim().slice(0, 48);
+      var to = item.to.trim().slice(0, 48);
+      if (!from || !to || from === to) continue;
+      var key = from + '->' + to;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      var entry = { from: from, to: to };
+      if (typeof item.kind === 'string' && item.kind) entry.kind = item.kind;
+      out.push(entry);
+    }
+    return out;
+  }
+
+  function mergeFuzzyMatches(primary, secondary) {
+    var a = Array.isArray(primary) ? primary : [];
+    var b = Array.isArray(secondary) ? secondary : [];
+    return sanitizeFuzzyMatches(a.concat(b));
   }
 
   function cleanMarkdown(text) {
@@ -933,9 +1789,17 @@
     }
   }
 
-  function rankCandidateDocs(docs, question, currentId) {
-    var tokens = tokenizeQuery(question);
-    if (!tokens.length) return [];
+  function rankCandidateDocsWithMeta(docs, question, currentId) {
+    if (!Array.isArray(docs) || docs.length === 0) {
+      return { docs: [], fuzzyMatches: [] };
+    }
+    var vocab = ensureLiteVocab(docs);
+    var expanded = expandQueryFuzzy(question, vocab);
+    var exactTokens = expanded.exactTokens;
+    var fuzzyTokens = expanded.fuzzyTokens;
+    if (!exactTokens.length && !fuzzyTokens.length) {
+      return { docs: [], fuzzyMatches: [] };
+    }
 
     var TOP_K = 6;
     var top = [];
@@ -954,33 +1818,74 @@
         doc._kbTags = tags;
         doc._kbAliases = aliases;
         doc._kbPath = path;
+        doc._kbCompact = (aliases + ' ' + title + ' ' + tags + ' ' + path)
+          .replace(/[-_.+\s]+/g, '')
+          .replace(/π/g, 'pi');
         all = doc._kbAll = aliases + '\n' + title + '\n' + tags + '\n' + summary + '\n' + path;
       }
-
-      var anyHit = false;
-      for (var t0 = 0; t0 < tokens.length; t0 += 1) {
-        if (all.indexOf(tokens[t0]) >= 0) {
-          anyHit = true;
-          break;
-        }
-      }
-      if (!anyHit) continue;
 
       var dAliases = doc._kbAliases;
       var dTitle = doc._kbTitle;
       var dTags = doc._kbTags;
       var dSummary = doc._kbSummary;
       var dPath = doc._kbPath;
-      var score = 0;
-      for (var t = 0; t < tokens.length; t += 1) {
-        var tok = tokens[t];
-        var w = tok.length >= 2 ? (tok.length >= 4 ? 3 : 2) : 0.4;
-        if (dAliases.indexOf(tok) >= 0) score += w * 4.5;
-        if (dTitle.indexOf(tok) >= 0) score += w * 4;
-        if (dTags.indexOf(tok) >= 0) score += w * 2.5;
-        if (dSummary.indexOf(tok) >= 0) score += w * 2;
-        if (dPath.indexOf(tok) >= 0) score += w * 1.5;
+      var dCompact = doc._kbCompact;
+
+      var anyHit = false;
+      for (var t0 = 0; t0 < exactTokens.length; t0 += 1) {
+        if (containsTokenMatch(all, exactTokens[t0])) {
+          anyHit = true;
+          break;
+        }
       }
+      if (!anyHit && fuzzyTokens.length > 0) {
+        for (var f0 = 0; f0 < fuzzyTokens.length; f0 += 1) {
+          var ft0 = fuzzyTokens[f0];
+          if (
+            containsTokenMatch(all, ft0.token) ||
+            (ft0.isCompact && dCompact && dCompact.indexOf(ft0.token) >= 0)
+          ) {
+            anyHit = true;
+            break;
+          }
+        }
+      }
+      if (!anyHit) continue;
+
+      var score = 0;
+      for (var t = 0; t < exactTokens.length; t += 1) {
+        var tok = exactTokens[t];
+        var w = tok.length >= 2 ? (tok.length >= 4 ? 3 : 2) : 0.4;
+        if (containsTokenMatch(dAliases, tok)) score += w * 4.5;
+        if (containsTokenMatch(dTitle, tok)) score += w * 4;
+        if (containsTokenMatch(dTags, tok)) score += w * 2.5;
+        if (containsTokenMatch(dSummary, tok)) score += w * 2;
+        if (containsTokenMatch(dPath, tok)) score += w * 1.5;
+      }
+
+      var matchedIndices = null;
+      for (var f = 0; f < fuzzyTokens.length; f += 1) {
+        var ft = fuzzyTokens[f];
+        var fTok = ft.token;
+        var fw = (fTok.length >= 2 ? (fTok.length >= 4 ? 3 : 2) : 0.4) * ft.weightFactor;
+        var fScore = 0;
+        if (containsTokenMatch(dAliases, fTok)) fScore += fw * 4.5;
+        if (containsTokenMatch(dTitle, fTok)) fScore += fw * 4;
+        if (containsTokenMatch(dTags, fTok)) fScore += fw * 2.5;
+        if (containsTokenMatch(dSummary, fTok)) fScore += fw * 2;
+        if (containsTokenMatch(dPath, fTok)) fScore += fw * 1.5;
+        if (fScore === 0 && ft.isCompact && dCompact && dCompact.indexOf(fTok) >= 0) {
+          fScore += fw * 3.5;
+        }
+        if (fScore > 0) {
+          score += fScore;
+          if (ft.matchIdx >= 0) {
+            if (!matchedIndices) matchedIndices = new Set();
+            matchedIndices.add(ft.matchIdx);
+          }
+        }
+      }
+
       if (currentId && doc.id === currentId && score > 0) {
         score += 3;
       }
@@ -989,20 +1894,66 @@
         var pos = top.length;
         while (pos > 0 && top[pos - 1].score < score) pos -= 1;
         if (pos < TOP_K) {
-          top.splice(pos, 0, { doc: doc, score: score });
+          top.splice(pos, 0, { doc: doc, score: score, matchedIndices: matchedIndices });
           if (top.length > TOP_K) top.pop();
         }
       }
     }
 
-    var out = new Array(top.length);
-    for (var k = 0; k < top.length; k += 1) out[k] = top[k].doc;
-    return out;
+    var outDocs = new Array(top.length);
+    var appliedIndices = new Set();
+    for (var k = 0; k < top.length; k += 1) {
+      outDocs[k] = top[k].doc;
+      if (k < 4 && top[k].matchedIndices) {
+        top[k].matchedIndices.forEach(function (idx) {
+          appliedIndices.add(idx);
+        });
+      }
+    }
+
+    var appliedRaw = [];
+    for (var ci = 0; ci < expanded.candidates.length; ci += 1) {
+      if (appliedIndices.has(ci)) {
+        appliedRaw.push(expanded.candidates[ci]);
+      }
+    }
+    return {
+      docs: outDocs,
+      fuzzyMatches: sanitizeFuzzyMatches(appliedRaw),
+    };
   }
 
-  function selectLocalExcerpts(bodies, docMetaById, question) {
-    var tokens = tokenizeQuery(question);
-    if (!tokens.length) return [];
+  function rankCandidateDocs(docs, question, currentId) {
+    return rankCandidateDocsWithMeta(docs, question, currentId).docs;
+  }
+
+  function selectLocalExcerpts(bodies, docMetaById, question, precomputedFuzzyMatches) {
+    var vocab = buildBodiesVocab(bodies);
+    var expanded = expandQueryFuzzy(question, vocab);
+    var exactTokens = expanded.exactTokens;
+    var fuzzyTokens = expanded.fuzzyTokens.slice();
+
+    if (Array.isArray(precomputedFuzzyMatches) && precomputedFuzzyMatches.length > 0) {
+      var existingSet = new Set(exactTokens);
+      for (var fi = 0; fi < fuzzyTokens.length; fi += 1) {
+        existingSet.add(fuzzyTokens[fi].token);
+      }
+      for (var pi = 0; pi < precomputedFuzzyMatches.length; pi += 1) {
+        var pm = precomputedFuzzyMatches[pi];
+        if (!pm || !pm.to) continue;
+        var pTo = String(pm.to).toLowerCase();
+        var toAdd = [pTo].concat(SYNONYMS[pTo] || []);
+        for (var ai = 0; ai < toAdd.length; ai += 1) {
+          var syn = String(toAdd[ai] || '').toLowerCase();
+          if (syn && !STOP_WORDS.has(syn) && !existingSet.has(syn)) {
+            existingSet.add(syn);
+            fuzzyTokens.push({ token: syn, weightFactor: 0.75, matchIdx: -1, isCompact: false });
+          }
+        }
+      }
+    }
+
+    if (!exactTokens.length && !fuzzyTokens.length) return [];
     var candidates = [];
 
     for (var i = 0; i < bodies.length; i += 1) {
@@ -1018,12 +1969,20 @@
         var hLower = sec.heading.toLowerCase();
         var tLower = sec.text.toLowerCase();
         var score = 0;
-        for (var k = 0; k < tokens.length; k += 1) {
-          var tok = tokens[k];
+        for (var k = 0; k < exactTokens.length; k += 1) {
+          var tok = exactTokens[k];
           var w = tok.length >= 2 ? (tok.length >= 4 ? 3 : 2) : 0.4;
-          if (titleLower.indexOf(tok) >= 0) score += w * 1.6;
-          if (hLower.indexOf(tok) >= 0) score += w * 1.4;
-          if (tLower.indexOf(tok) >= 0) score += w;
+          if (containsTokenMatch(titleLower, tok)) score += w * 1.6;
+          if (containsTokenMatch(hLower, tok)) score += w * 1.4;
+          if (containsTokenMatch(tLower, tok)) score += w;
+        }
+        for (var f = 0; f < fuzzyTokens.length; f += 1) {
+          var ft = fuzzyTokens[f];
+          var fTok = ft.token;
+          var fw = (fTok.length >= 2 ? (fTok.length >= 4 ? 3 : 2) : 0.4) * ft.weightFactor;
+          if (containsTokenMatch(titleLower, fTok)) score += fw * 1.6;
+          if (containsTokenMatch(hLower, fTok)) score += fw * 1.4;
+          if (containsTokenMatch(tLower, fTok)) score += fw;
         }
         if (score >= 1.5) {
           candidates.push({
@@ -2191,6 +3150,27 @@
       msg.appendChild(note);
     }
 
+    var fuzzyMatches = sanitizeFuzzyMatches(options.fuzzyMatches);
+    if (fuzzyMatches.length > 0) {
+      var fuzzyNote = document.createElement('div');
+      fuzzyNote.className = 'kb-chat-fuzzy-note';
+      fuzzyNote.setAttribute('role', 'note');
+      var fuzzyTag = document.createElement('span');
+      fuzzyTag.className = 'kb-chat-fuzzy-note__tag';
+      fuzzyTag.textContent = t('fuzzyTag');
+      fuzzyNote.appendChild(fuzzyTag);
+      var fuzzyItems = document.createElement('span');
+      fuzzyItems.className = 'kb-chat-fuzzy-note__items';
+      for (var fi = 0; fi < fuzzyMatches.length; fi += 1) {
+        var fuzzyChip = document.createElement('span');
+        fuzzyChip.className = 'kb-chat-fuzzy-chip';
+        fuzzyChip.textContent = fuzzyMatches[fi].from + ' → ' + fuzzyMatches[fi].to;
+        fuzzyItems.appendChild(fuzzyChip);
+      }
+      fuzzyNote.appendChild(fuzzyItems);
+      msg.appendChild(fuzzyNote);
+    }
+
     var citations = Array.isArray(options.citations) ? options.citations : [];
     var citationsByIndex = new Map();
     var enrichedCitations = [];
@@ -2224,6 +3204,9 @@
       recordHistoryEntry({
         role: 'assistant',
         statusNote: options.statusNote || '',
+        fuzzyMatches: fuzzyMatches.map(function (fm) {
+          return { from: fm.from, to: fm.to };
+        }),
         text: String(options.text || ''),
         citations: enrichedCitations,
         showGraphLink: Boolean(options.showGraphLink),
@@ -2412,7 +3395,7 @@
     );
   }
 
-  function renderLocalParagraphAnswer(question, candidateDocs, catalog, statusNote) {
+  function collectCandidateTargetUrls(candidateDocs, catalog) {
     var detailPages = (catalog && catalog.pages && catalog.pages.detail_pages) || {};
     var docMetaById = new Map();
     var targetUrls = [];
@@ -2424,10 +3407,25 @@
         targetUrls.push(meta.content_url);
       }
     }
+    return { docMetaById: docMetaById, targetUrls: targetUrls };
+  }
 
-    return Promise.all(targetUrls.map(fetchPageContent)).then(function (bodies) {
-      var citations = selectLocalExcerpts(bodies.filter(Boolean), docMetaById, question);
+  function renderLocalParagraphAnswer(question, candidateDocs, catalog, statusNote, fuzzyMatches, legacyCloudFallback) {
+    var collected = collectCandidateTargetUrls(candidateDocs, catalog);
+    return Promise.all(collected.targetUrls.map(fetchPageContent)).then(function (bodies) {
+      var citations = selectLocalExcerpts(bodies.filter(Boolean), collected.docMetaById, question, fuzzyMatches);
       if (citations.length === 0) {
+        if (legacyCloudFallback) {
+          state.mode = 'ai';
+          updatePanelCopy();
+          appendAssistantMessage({
+            statusNote: legacyCloudFallback.cached ? t('cachedTag') : '',
+            text: legacyCloudFallback.answer,
+            citations: Array.isArray(legacyCloudFallback.citations) ? legacyCloudFallback.citations : [],
+            showGraphLink: legacyCloudFallback.grounded === false,
+          });
+          return;
+        }
         appendAssistantMessage({
           statusNote: statusNote,
           text: t('ungrounded'),
@@ -2437,6 +3435,10 @@
         return;
       }
 
+      if (legacyCloudFallback) {
+        state.mode = 'local';
+        updatePanelCopy();
+      }
       var lines = [t('localAnswerIntro')];
       for (var c = 0; c < citations.length; c += 1) {
         var cite = citations[c];
@@ -2444,6 +3446,7 @@
       }
       appendAssistantMessage({
         statusNote: statusNote,
+        fuzzyMatches: sanitizeFuzzyMatches(fuzzyMatches),
         text: lines.join('\n\n'),
         citations: citations,
       });
@@ -2927,7 +3930,9 @@
         var liteIndex = results[0];
         var catalog = results[1];
         var currentId = currentPageContextId(catalog);
-        var candidateDocs = rankCandidateDocs(liteIndex.docs, question, currentId);
+        var rankResult = rankCandidateDocsWithMeta(liteIndex.docs, question, currentId);
+        var candidateDocs = rankResult.docs;
+        var docFuzzyMatches = rankResult.fuzzyMatches;
 
         if (candidateDocs.length === 0) {
           appendAssistantMessage({
@@ -2955,15 +3960,22 @@
         if (!isCloudConfigured(cfg) || contentHashes.length === 0) {
           state.mode = 'local';
           updatePanelCopy();
-          return renderLocalParagraphAnswer(question, candidateDocs, catalog, '');
+          return renderLocalParagraphAnswer(question, candidateDocs, catalog, '', docFuzzyMatches);
         }
 
         return runCloudRequest(cfg, question, contentHashes).then(function (res) {
           if (res && res.ok && res.data && res.data.ok && typeof res.data.answer === 'string') {
+            if (res.data.grounded === false && docFuzzyMatches.length > 0) {
+              return renderLocalParagraphAnswer(question, candidateDocs, catalog, '', docFuzzyMatches, res.data);
+            }
             state.mode = 'ai';
             updatePanelCopy();
             appendAssistantMessage({
               statusNote: res.data.cached ? t('cachedTag') : '',
+              fuzzyMatches:
+                res.data.grounded === false
+                  ? []
+                  : mergeFuzzyMatches(res.data.fuzzyMatches, docFuzzyMatches),
               text: res.data.answer,
               citations: Array.isArray(res.data.citations) ? res.data.citations : [],
               showGraphLink: res.data.grounded === false,
@@ -2972,7 +3984,13 @@
           }
           state.mode = 'fallback';
           updatePanelCopy();
-          return renderLocalParagraphAnswer(question, candidateDocs, catalog, classifyFallbackNote(res));
+          return renderLocalParagraphAnswer(
+            question,
+            candidateDocs,
+            catalog,
+            classifyFallbackNote(res),
+            docFuzzyMatches,
+          );
         });
       })
       .catch(function () {
@@ -3080,6 +4098,7 @@
     inputEl.addEventListener('keydown', function (event) {
       if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
+        if (event.isComposing || event.keyCode === 229) return;
         if (!state.busy) submitQuestion();
       }
     });
@@ -3146,6 +4165,7 @@
           } else {
             appendAssistantMessage({
               statusNote: entry.statusNote || '',
+              fuzzyMatches: Array.isArray(entry.fuzzyMatches) ? entry.fuzzyMatches : [],
               text: entry.text || '',
               citations: Array.isArray(entry.citations) ? entry.citations : [],
               showGraphLink: Boolean(entry.showGraphLink),
@@ -3233,7 +4253,10 @@
     isOpen: isOpen,
     _internals: {
       tokenizeQuery: tokenizeQuery,
+      boundedDamerauDistance: boundedDamerauDistance,
+      expandQueryFuzzy: expandQueryFuzzy,
       rankCandidateDocs: rankCandidateDocs,
+      rankCandidateDocsWithMeta: rankCandidateDocsWithMeta,
       selectLocalExcerpts: selectLocalExcerpts,
       safeInternalNodeUrl: safeInternalNodeUrl,
       safeChatMarkdownUrl: safeChatMarkdownUrl,

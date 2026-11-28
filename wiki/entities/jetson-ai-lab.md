@@ -114,6 +114,7 @@ flowchart TD
 - [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md)
 - [VLA](../methods/vla.md)
 - [OpenPi π₀.₅ on Jetson Thor](./jetson-openpi-pi05-on-thor.md)
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：参考在 Jetson 边缘设备上接入推理运行时并部署模型服务的工程流程。
 
 ## 参考来源
 

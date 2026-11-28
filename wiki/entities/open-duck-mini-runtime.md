@@ -131,6 +131,8 @@ sequenceDiagram
 - [xpad](./xpad.md) — Linux USB Xbox 手柄驱动（与蓝牙 HID 路径对照）
 - [Sim2Real](../concepts/sim2real.md)
 - [Processor-in-the-Loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：对照 Sim2Real 迁移工作流，了解关节软偏置标定、舵机总线通信与真机前 MuJoCo 预演如何降低部署偏差。
+- [Locomotion](../tasks/locomotion.md)：关联机器人 Locomotion 任务，查看双足行走 ONNX 策略在低算力机载板卡上的控制分频与闭环执行约束。
 
 ## 推荐继续阅读
 

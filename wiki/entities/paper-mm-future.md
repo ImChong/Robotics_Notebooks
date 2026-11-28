@@ -148,6 +148,7 @@ flowchart TB
 - [generative-world-models](../methods/generative-world-models.md)
 - [e2e-autonomous-driving-top10-algorithms](../overview/e2e-autonomous-driving-top10-algorithms.md)
 - [paper-rise-adaptive-imagination-wam](./paper-rise-adaptive-imagination-wam.md)
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：对照将环境感知、未来推演与多模态轨迹规划连接为端到端闭环的导航与驾驶决策流程。
 
 ## 参考来源
 

@@ -104,6 +104,8 @@ sequenceDiagram
 - [DVID](./dvid.md) — 原生数据源之一
 - [Male CNS Connectome](./male-cns-connectome.md) — 典型预置场景
 - [果蝇连接组工具栈](../concepts/fly-connectomics-stack.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照视觉三维重建流程，了解 Neuroglancer 如何将多尺度体素、3D 网格与骨架等重建产物呈现在交互式视图中。
+- [U-Net](../methods/unet.md)：参考生物医学图像分割经典网络 U-Net，理解电镜体数据分割掩码在 Neuroglancer 中的图层叠加可视化与校对场景。
 
 ## 参考来源
 

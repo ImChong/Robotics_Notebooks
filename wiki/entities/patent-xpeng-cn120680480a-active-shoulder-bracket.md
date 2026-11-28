@@ -71,6 +71,7 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [自研关节模组流程](../concepts/joint-module-self-development-workflow.md)
 - [集成执行器](../overview/humanoid-hardware-101-integrated-actuators.md)
+- [Manipulation](../tasks/manipulation.md)：对照活动肩部连接支架扩大机械臂相对躯干工作空间以支撑更大范围操作任务的机构设计。
 
 ## 参考来源
 

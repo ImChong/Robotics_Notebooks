@@ -210,6 +210,8 @@ sequenceDiagram
 - [Unreal Engine 5](./unreal-engine-5.md) — 官方预告 3DGS 插件目标引擎
 - [导航·SLAM 开源栈总览](../overview/navigation-slam-autonomy-stack.md) — 建图/定位工程栈对照
 - [状态估计知识链](../overview/hub-state-estimation.md) — 几何估计在感知链中的位置
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：针对等距圆柱全景图像提出视差 AABB 与梯度重要性分块策略，实现可并行的大规模户外三维高斯重建。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：所重建的户外大规模 3DGS 场景资产面向后续引擎接入与视觉仿真渲染，可服务高保真户外仿真场景构建。
 
 ## 参考来源
 

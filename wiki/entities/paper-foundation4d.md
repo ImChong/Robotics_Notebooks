@@ -167,6 +167,8 @@ $$T_{t,c} = T^{\mathrm{ego}}(\tau_{t,c})\,T^{\mathrm{rig}}_{c}$$
 - [Instant NuRec](paper-instant-nurec.md)
 - [NVIDIA NuRec](nvidia-nurec.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页可归入其 ③ 2D→3D 提升与语义建图层（多相机几何、3D 目标与语义占据）：典型误判是把离线 8 关键帧含未来上下文、逐窗口尺度对齐下的指标当成 ④ 层在线消费时也能拿到的精度与时延。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：Foundation4D 以共享多相机时空特征联合预测深度几何、3D 目标检测与语义占据，构成面向驾驶场景的统一视觉感知骨干。
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：Foundation4D 从多相机视频预测动态三维高斯场景并通过位姿图优化组装长程轨迹，属于动态场景的三维与四维视觉重建路线。
 
 ## 参考来源
 

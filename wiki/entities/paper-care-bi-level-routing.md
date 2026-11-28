@@ -120,6 +120,8 @@ sequenceDiagram
 
 - [人形机器人动作持续学习](./paper-continual-humanoid-motion-learning.md)：同属持续学习，但任务、模型与评测对象不同。
 - [多感官持续学习](./paper-muse-multisensory-continual-learning.md)：关注机器人策略新传感模态与遗忘。
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：CaRE 在冻结 ViT 骨干各层引入双层路由专家与类别感知器，解决长序列类别增量视觉识别中的表征遗忘与检索问题。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文在千类规模的 OmniBenchmark-1K 上按 301 个增量任务序列评测平均准确率与最终保持率，提供长程持续学习基准验证。
 
 ## 参考来源
 

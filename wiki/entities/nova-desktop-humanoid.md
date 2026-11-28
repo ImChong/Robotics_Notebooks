@@ -65,6 +65,8 @@ flowchart LR
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md)：参考人形机器人智能语音交互流程，了解桌面陪伴机器人实现语音对话与交互闭环的典型链路。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照参数化 CAD 建模流程，理解 3D 打印桌面级人形结构件的设计迭代与舵机装配约束。
 
 ## 参考来源
 

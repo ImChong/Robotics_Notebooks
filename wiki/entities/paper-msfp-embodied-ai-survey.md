@@ -180,6 +180,7 @@ flowchart TB
 - [Ultra-Fusion（韧性多传感器 SLAM）](./paper-ultra-fusion-multi-sensor-slam.md)
 - [Object Detection（方法）](../methods/object-detection.md)
 - [Navigation / SLAM 栈概览](../overview/navigation-slam-autonomy-stack.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：对照相机、激光雷达与惯性测量单元等异构传感器的时空对齐、标定与系统集成基础。
 
 ## 参考来源
 

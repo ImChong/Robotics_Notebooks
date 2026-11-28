@@ -82,6 +82,8 @@ flowchart LR
 - [CAD Skills](./cad-skills.md) — AI 代理辅助机械 CAD 的工程校验方法
 
 - [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — EDA 工具也可用于电机驱动与接口板设计。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：生成原理图与 PCB 布局后仍需在 KiCad 中核对网络表与 ERC/DRC 工程规则校验。
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：可用于辅助生成机器人电机驱动、电源管理及传感器接口板卡的早期硬件原理图与布局原型。
 
 ## 参考来源
 

@@ -74,6 +74,8 @@ flowchart LR
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 认知评测层：放置/可通行 affordance 推理，affordance 分 ≠ 放置成功率
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：作为 LightNav-ER 认知评测套件的基准之一，提供可放置与可通行空间 affordance 推理的定量评测协议。
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：为视觉–语言导航中的可通行点推理与 Point CoT 监督提供空间位置基准支撑。
 
 ## 参考来源
 

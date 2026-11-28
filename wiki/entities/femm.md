@@ -125,6 +125,8 @@ sequenceDiagram
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
 - [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：提供开源二维有限元建模、边界设置与脚本化参数扫描求解的基础仿真工作流。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：用于机器人关节电机电磁参数与气隙电感等物理特性在研发前期的仿真评估与校核。
 
 ## 参考来源
 

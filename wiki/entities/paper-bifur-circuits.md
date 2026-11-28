@@ -160,6 +160,7 @@ sequenceDiagram
 - 模块化硬件制造：[Peg-in-Bench](./paper-peg-in-bench.md)（3D 打印模块化 benchmark 另一路线）
 - 灵巧操作数据采集语境：[dexterous-data-collection-guide.md](../queries/dexterous-data-collection-guide.md)
 - 操作任务索引：[manipulation.md](../tasks/manipulation.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：对照通过参数化几何建模与模块化约束设计支撑可重构超材料单元制造与装配的工程流程。
 
 ## 参考来源
 

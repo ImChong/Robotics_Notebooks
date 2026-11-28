@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：规定网联与自动驾驶系统的全生命周期网络安全要求，直接约束车载通信与软件系统集成中的安全防护。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：要求在车辆及自主移动平台的控制系统架构中落实网络隔离、认证与安全边界保护机制。
 
 ## 参考来源
 

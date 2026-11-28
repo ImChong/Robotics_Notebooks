@@ -84,6 +84,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：结合 NeRF 隐式场先验辅助 3D Gaussian Splatting 优化，提升复杂场景三维视觉重建质量。
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：探索高保真神经辐射场与 3DGS 重建场景向机器人视觉仿真验证环境集成的技术路径。
 
 ## 参考来源
 

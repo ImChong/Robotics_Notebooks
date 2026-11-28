@@ -61,6 +61,7 @@ flowchart LR
 - [WorldBridge 稀疏参考三维生成](../entities/paper-worldbridge-scattered-views.md) — 从标定参考补出可漫游的 RGB 与点图；物理可用性仍要单独验收。
 
 - [机器人仿真三层](../concepts/robot-simulation-three-layers.md)
+- [Query：机器人仿真场景生成路线与物理防泄漏验收](../queries/robot-simulation-scene-generation-routes.md)
 - [生成式数据增强](generative-data-augmentation.md)
 - [RoboCasa 论文](../entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md)
 - [Sim2Real 迁移工作流](sim2real-transfer-workflow.md)

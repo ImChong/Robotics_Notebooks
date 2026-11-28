@@ -68,6 +68,8 @@ flowchart LR
 - [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md)
 - [Google Colab](./google-colab.md) — 轻量入口
 - [AWS EC2 GPU](./aws-ec2-gpu.md) — 超大规模云对照
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：Vertex AI 与 L4/A100/H100 云端虚拟机常用于大模型及具身策略的托管训练与推理部署。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：大规模并行强化学习与机器人控制策略训练常借助云端 GPU 与 TPU 算力加速。
 
 ## 推荐继续阅读
 

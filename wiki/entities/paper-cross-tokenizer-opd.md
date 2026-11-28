@@ -79,6 +79,8 @@ flowchart TB
 
 - [Self-Retrospection Distillation](./paper-self-retrospection-distillation.md) — 轨迹监督的策略学习
 - [Shallow-π](./paper-shallow-pi.md) — flow-based VLA 模型蒸馏
+- [AI Model Compression and Inference Optimization · AI 模型压缩与推理优化](../methods/ai-model-compression.md)：该工作研究跨异构分词器的教师-学生同策略知识蒸馏，聚焦严格对齐位置上的分布迁移可靠性。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：论文在三组异构模型配对的数学推理与代码生成基准上对比验证跨分词器同策略蒸馏的准确率与梯度一致性。
 
 ## 参考来源
 

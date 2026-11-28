@@ -72,6 +72,7 @@ flowchart TD
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [膝侧谐波判据](../concepts/humanoid-knee-harmonic-drive-limits.md)
 - [执行器驱动链](../queries/actuator-drive-chain-selection-loop.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：了解足底缓冲、防滑与夹层接地力传感结构如何直接服务于人形机器人步态切换与平衡控制。
 
 ## 参考来源
 

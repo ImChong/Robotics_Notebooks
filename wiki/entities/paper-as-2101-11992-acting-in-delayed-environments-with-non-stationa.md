@@ -103,6 +103,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Value-based Reinforcement Learning（基于值函数的强化学习）](../methods/value-based-reinforcement-learning.md)：对照本文 Delayed-Q 算法所基于的 Q-learning 与值函数强化学习方法。
 
 ## 参考来源
 

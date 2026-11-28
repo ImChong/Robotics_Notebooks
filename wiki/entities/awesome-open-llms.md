@@ -145,6 +145,8 @@ Awesome Open LLMs 的强项是**发布信息组织和初筛**：月度归档、�
 - [开源 LLM 与基础模型](../concepts/llm-robotics-control-interfaces.md) — 模型目录所涵盖对象的技术背景
 - [机器人学习评测](../concepts/ai-agent-evaluation.md) — 为什么信息收录与统一评测应分开看
 - [来源归档](../../sources/repos/liucongg_awesome_open_llms.md) — README、实现和范围记录
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：配合标准化能力基准核验月度归档中开源大模型的实际推理与任务表现。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：追踪可作为具身视觉–语言–动作策略核心底座的上游开源大语言模型演进。
 
 ## 参考来源
 

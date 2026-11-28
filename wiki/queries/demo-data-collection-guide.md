@@ -159,5 +159,6 @@ flowchart TD
 - [Teleoperation](../tasks/teleoperation.md) — 遥操作任务定义与系统设计
 - [Imitation Learning](../methods/imitation-learning.md) — 模仿学习方法全景
 - [Behavior Cloning](../methods/behavior-cloning.md) — BC 算法与局限
+- [机器人学习数据管线](../methods/robot-learning-data-pipelines.md) — 原始示教日志时间对齐、动作契约校验与无泄漏样本切分流程
 - [Generative Data Augmentation](../methods/generative-data-augmentation.md) — 利用生成式 AI 扩充长尾数据
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂操作任务挑战

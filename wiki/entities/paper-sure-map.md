@@ -184,6 +184,7 @@ sequenceDiagram
 - [VGGT 几何状态综述](../overview/vggt-geometric-state-survey.md) — S4 流式/长序列
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [State Estimation](../concepts/state-estimation.md)
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照从流式单目视频观测恢复在线相机位姿与过滤后稠密点云的视觉三维重建流程。
 
 ## 参考来源
 

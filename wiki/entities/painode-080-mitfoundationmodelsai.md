@@ -88,6 +88,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：课程聚焦基础模型与生成式 AI 范式，是理解多模态大模型如何向视觉-语言-动作具身策略迁移的理论基础。
+- [AI Model Inference and Serving · AI 模型推理与服务部署](../methods/ai-model-serving-inference.md)：覆盖大模型从训练走向实际推理运行时与系统部署的工程维度，可与课程基础模型内容配套参考。
 
 ## 参考来源
 

@@ -111,6 +111,8 @@ Franka Panda 的控制模式切换延迟低于 0.1 ms；多阶段任务执行耗
 - [Safety Filter（安全过滤器）](../concepts/safety-filter.md)：区分动作安全修正与控制器级快速反射切换。
 - [控制与推理频率解耦](../concepts/control-inference-frequency-decoupling.md)：对应实时控制路径与响应延迟的系统问题。
 - [安全控制纵深路线](../../roadmap/depth-safe-control.md)：补充接触安全、反射和控制约束背景。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：本文在 ros2_control 中构建多模态控制器驻留与无锁切换架构，支持运动、柔顺与安全反射间的亚毫秒切换。
+- [Admittance Control（导纳控制）](../methods/admittance-control.md)：其安全反射状态机将导纳控制与零重力、回退及停机子控制器集成在实时控制环中以应对物理人机碰撞。
 
 ## 参考来源
 

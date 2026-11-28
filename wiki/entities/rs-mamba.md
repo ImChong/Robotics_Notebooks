@@ -64,6 +64,8 @@ flowchart LR
 - [SSM](../concepts/state-space-model-ssm.md)
 - [架构对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：RS-Mamba 采用选择性状态空间模型替代或混合自注意力，为大幅面图像提供长程空间视觉表征学习能力。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：其面向扫描特征的高效序列建模思路，可为机器人长序列视觉观测与密集分割任务提供骨干网络参考。
 
 ## 参考来源
 

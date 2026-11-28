@@ -76,6 +76,8 @@ flowchart TD
 - [mattpocock/skills 总览](mattpocock-skills.md)
 - [tdd](mattpocock-tdd-skill.md)
 - [grill-me](mattpocock-grill-me-skill.md)
+- [Agent Skill Packaging · 智能体技能封装](../methods/agent-skill-packaging.md)：了解如何将架构扫描与重构引导规则组织为可调用的智能体技能。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：对照通过结构化检查与反馈闭环保障代码重构质量的工程实践。
 
 ## 参考来源
 

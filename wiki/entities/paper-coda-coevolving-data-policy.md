@@ -96,6 +96,8 @@ flowchart LR
 - [具身数据纵深路线](../../roadmap/depth-embodied-data.md)：理解失败驱动仿真生成在数据技术路线中的位置。
 - [PRM4RL（进度奖励）](./paper-prm4rl-progress-reward.md)：都使用势函数信号，但 CoDA 还针对失败模式改变训练场景。
 - [DemoStream（规划示范生成）](./paper-demostream-batched-tamp.md)：比较失败驱动场景生成与批量规划示范两种数据来源。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：CoDA 基于策略 rollout 的失败模式诊断动态生成针对性仿真训练场景，将数据引擎与策略学习纳入同一闭环。
+- [机器人策略学习流程 · Robot Policy Learning](../methods/robot-policy-learning.md)：该框架同步利用失败记忆生成场景与势函数监督信号驱动 SFT 和 RL 训练，提升机器人操作策略的分布外泛化能力。
 
 ## 参考来源
 

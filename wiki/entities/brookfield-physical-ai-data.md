@@ -58,6 +58,8 @@ flowchart LR
 - [Paxini](./paxini.md)
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)
 - [Data Flywheel](../concepts/data-flywheel.md)
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：对照从真实物业场景采集 egocentric 数据到整理为可训练策略数据集的数据管线。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md)：衔接真实建筑运维场景采集数据的下游模仿学习策略训练范式。
 
 ## 参考来源
 

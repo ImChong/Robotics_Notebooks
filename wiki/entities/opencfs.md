@@ -107,6 +107,8 @@ sequenceDiagram
 
 - [FEMM](./femm.md)：已有磁场、静电、热流等有限元工具入口，可对照分析需求与建模方式。
 - [PYLEECAN](./pyleecan.md)：电机设计自动化框架；若目标为电机参数化设计，可结合其工作流评估工具选型。
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：对应从网格、材料与 PDE 边界条件出发建立并核验多物理场有限元仿真的标准工程流程。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：承接上游执行器与传感器参数化几何模型输入，为有限元网格划分与耦合场分析提供几何基础。
 
 ## 参考来源
 

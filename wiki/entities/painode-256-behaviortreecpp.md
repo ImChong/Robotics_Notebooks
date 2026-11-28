@@ -89,6 +89,8 @@ flowchart LR
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Robot Agent Harness · 机器人智能体执行框架](../methods/robot-agent-harness.md)：行为树运行时可为任务调度与技能执行提供确定性的状态流转与恢复编排机制。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：作为机器人软件架构中的经典任务编排引擎，常用于串联感知、规划与控制等运行模块。
 
 ## 参考来源
 

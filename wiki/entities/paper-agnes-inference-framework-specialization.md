@@ -6,7 +6,7 @@ venue: "Agnes AI Labs Technical Report, 2026"
 project_distinction: "独立的 SGLang 推理服务优化报告，区别于 Agnes Harness 的智能体运行时和 Agnes Sys1 的决策模型报告"
 tags: [paper, inference, serving, quantization, agnes-ai-labs]
 status: complete
-updated: 2026-11-27
+updated: 2026-11-28
 related:
   - ../methods/ai-model-serving-inference.md
   - ../methods/ai-model-compression.md
@@ -114,6 +114,15 @@ flowchart TD
 1. 做归因时固定 GPU、版本、活跃请求上限和缓存预算，再分别消融计算、缓存格式及状态快照。
 2. 分开测量冷输入、热缓存、长短混合、不同客户端并发；同时记录首 token、输出间隔、尾延迟、拒绝率和任务质量。
 3. 机器人端不要用数据中心的首 token 或吞吐指标代替控制周期和感知时效；设备、后端或模型形状改变后重新验证，并保留安全回退。
+
+## 与其他工作对比
+
+| 对比对象 | 定位与机制 | 与本工作差异及边界 |
+|---|---|---|
+| **通用开源框架（SGLang / vLLM）** | 提供跨硬件与跨模型的广泛兼容性及通用高性能实现 | 原文 §1 明确指出本工作构建于 SGLang 之上而非替代通用引擎；针对特定 Blackwell + PCIe + 混合注意力负载启用条件式专用路径，条件不满足时回退兼容路径 |
+| **基线 SGLang 配置（报告 §8 对照组）** | FP8 paged KV + BF16 注意力操作数（`QK^T / PV`），活跃请求上限 8、循环状态槽 64 | 集成配置叠加 NVFP4 KV、FP4 预填充、GPU L2 权重预取与 BOLE 并放宽活跃上限至 16（80 槽）；因此 §8 收益为整套配置变化而非单一内核可加和归因 |
+| **[Agnes Sys1 决策模型报告](./paper-agnes-sys1-decision-model-technical-report.md)** | 模型架构侧：基于 3:1 Gated DeltaNet + 全注意力的分块双向候选概率接口及请求内 TTT 提议 | 同用 3:1 混合注意力结构，但 Sys1 聚焦模型输出结构与未实测的 TTT，本页聚焦服务引擎侧长上下文 KV/状态显存与算子调度 |
+| **[模型推理与服务部署](../methods/ai-model-serving-inference.md) / [模型压缩与推理优化](../methods/ai-model-compression.md)** | 通用服务批处理/SLO 观测与 PTQ/QAT 量化范式 | 本页是混合注意力长上下文在特定硬件互连上的特化案例，部署前仍须按通用压测与非劣效门槛做回归验收 |
 
 ## 关联页面
 

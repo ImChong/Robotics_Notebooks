@@ -192,6 +192,8 @@ sequenceDiagram
 - [Robot Viewer](./robot-viewer.md)
 - [Manim（程序化数学动画）](./manim.md)
 - [机器人描述目录选型](../comparisons/robot-description-catalogs.md)
+- [Robot Model Description and Asset Integration · 机器人模型描述与资产接入](../methods/robot-model-description-workflow.md)：APOLLO Blender 基于 URDF 与模块化 URDD 机器人描述目录导入模型与关节结构，服务于论文插图与离线可视化。
+- [Video Generation and Editing Workflow · 视频生成与编辑流程](../methods/video-generation-workflow.md)：APOLLO Blender 提供脚本化的关节位形、材质关键帧与图元标注流程，将机器人运动序列渲染为高质量论文演示视频。
 
 ## 参考来源
 

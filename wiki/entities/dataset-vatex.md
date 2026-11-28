@@ -80,6 +80,7 @@ flowchart LR
 - [Vision Backbones](../concepts/vision-backbones.md)
 - [Object Detection](../methods/object-detection.md)
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — 视频–文本时序对齐评测，对应①认知层的 AV 时序对齐维度
+- [Visual Representation Learning · 视觉表征学习](../methods/visual-representation-learning.md)：提供大规模多语言视频与文本配对样本，支持多模态时序视觉表征对齐研究。
 
 ## 参考来源
 

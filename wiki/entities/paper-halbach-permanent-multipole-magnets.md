@@ -121,6 +121,8 @@ flowchart LR
 - [Halbach Array 概念](../concepts/halbach-array.md)
 - [Mallinson 1973](./paper-mallinson-one-sided-fluxes.md) · [Zhu & Howe 2001](./paper-zhu-howe-halbach-pm-machines-review.md)
 - [Ironless QDD](./ironless-qdd-actuator.md)
+- [Engineering Simulation and Verification Workflow · 工程仿真建模与验证流程](../methods/engineering-simulation-workflow.md)：该文推导的连续易轴多极磁场与分段扇区谐波公式，是关节电机 Halbach 磁路有限元仿真与气隙磁场校核的基础解析基准。
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：该文给出的圆环内外径、磁极对数与分段易轴步进角几何关系，可直接用于永磁多极转子结构的参数化 CAD 建模。
 
 ## 参考来源
 

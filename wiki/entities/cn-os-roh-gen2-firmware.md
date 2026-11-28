@@ -115,6 +115,8 @@ sequenceDiagram
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [Robotic Manipulation Systems · 机器人操作系统与末端执行器](../methods/robotic-manipulation-systems.md)：对照灵巧手末端执行器的固件寄存器协议、位置/力控接口与 ROS 驱动系统集成。
+- [Direct Force Feedback Control（直接力反馈控制）](../methods/direct-force-feedback-control.md)：参考上位机基于 Modbus-RTU 目标力与力传感器寄存器实现的直接力反馈控制。
 
 ## 参考来源
 

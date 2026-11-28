@@ -181,6 +181,7 @@ sequenceDiagram
 - [2D→3D 语义提升 Gap](../concepts/2d-to-3d-semantic-lifting-gap.md) — 掩码进建图链路
 - [GO2 三维语义建图 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 可替换/对照的 2D 分割前端
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页落在其 ② 2D 检测/分割选型层的「开放词汇 + 本体验证」分支：ENEAS 补的正是该层「SAM 掩码强 ≠ 有类别语义」误判的下一步——掩码对了也未必是真实例
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对照开放词汇文本提示分割、时序实例跟踪与误检过滤在机器人视觉感知前端的作用。
 
 ## 参考来源
 

@@ -193,6 +193,7 @@ sequenceDiagram
 - [PICO](./paper-notebook-pico-reconstructing-3d-people-in-contact-with-ob.md) — 接触驱动拟合的直接对照
 - [ECHO](./paper-sa-2508-21556-echo-ego-centric-modeling-of-human-object-intera.md) — 头显稀疏追踪下的 HOI，传感形态不同
 - [CLAP / 跨本体 9 篇技术地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) — 同批次感知—执行接口分工
+- [Visual 3D Reconstruction · 视觉三维重建流程](../methods/visual-3d-reconstruction.md)：对照从单目 RGB 观测恢复人—物联合三维几何与交互网格的视觉三维重建流程。
 
 ## 参考来源
 

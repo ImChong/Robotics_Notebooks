@@ -111,6 +111,7 @@ sequenceDiagram
 - [InfiniteDiffusion / Terrain Diffusion](./paper-infinite-diffusion-terrain-diffusion.md) — 学习式无限 Minecraft 地形 mod
 - [Open Dreamer](./open-dreamer.md) — Minecraft 域世界模型/agent 沙盒
 - [Generative World Models](../methods/generative-world-models.md) — 户外几何与游戏域 WM 索引
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：对照将真实地理矢量与数字高程编译为可控三维仿真场景的生成流程。
 
 ## 参考来源
 

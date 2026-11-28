@@ -157,6 +157,8 @@ Aria 同时记录 RGB、双目 SLAM、eye tracking、IMU、barometer 与 GPS；�
 - [EgoNav](./paper-notebook-egonav.md) — 在 LookOut 的人类数据范式上进一步做多模态扩散与 G1 闭环
 - [FocusNav](./paper-notebook-focusnav.md) — 几何 BEV 到关节控制的真机局部导航对照
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 同样依赖语义–几何接地，但目标是预测动作轨迹而非回答问题
+- [Robot Navigation Workflow · 机器人导航与路径执行](../methods/robot-navigation-workflow.md)：LookOut 通过反投影 DINO 特征构建 3D 隐表征并回归未来 6-DoF 头部轨迹，实现兼顾避障平移与主动观察的导航规划。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md)：LookOut 面向真实复杂动态环境中的第一视角人形移动导航任务，输出可用于驱动行走与头部主动转动的参考轨迹。
 
 ## 参考来源
 

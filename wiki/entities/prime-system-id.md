@@ -187,6 +187,8 @@ build/experiments/G1_real_dance_1/g1_real_dance_1 \
 - [Unitree G1](./unitree-g1.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md)：PRIME 在 MAP 框架下将惯量与摩擦接触力纳入可微接触动力学约束联合估计，面向高精度真机动力学参数辨识。
+- [Sim-to-Real Transfer Workflow · Sim2Real 迁移工作流](../methods/sim2real-transfer-workflow.md)：PRIME 提供的物理一致惯量与接触力辨识结果可缩小刚体仿真模型与宇树 G1、Go2 等真机之间的动力学参数差距。
 
 ## 参考来源
 

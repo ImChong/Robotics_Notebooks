@@ -56,6 +56,7 @@ ml5.js 将常见机器学习任务包装成浏览器可调用的 JavaScript API�
 - [The Coding Train](./the-coding-train.md) — ml5.js 官方课程与示例来源之一。
 - [p5.js](./p5js.md) — 常用的网页画布与交互宿主。
 - [视觉伺服](../methods/visual-servoing.md) — 浏览器关键点交互与机器人视觉闭环控制的技术边界。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：对照将相机视频流转换为姿态关键点与图像类别等感知结果的视觉流程。
 
 ## 源码运行时序图
 

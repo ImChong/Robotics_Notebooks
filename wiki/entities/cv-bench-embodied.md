@@ -76,6 +76,8 @@ flowchart LR
 - [LightNav-0](./paper-lightnav-0.md)
 - [Light REACT](./light-react.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页归其 ① 具身大脑/MLLM 认知评测层：通用视觉/抽象推理 VQA，认知分高不蕴含可下发动作
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：对应作为通用视觉与抽象推理评测项在明确任务协议下评估多模态模型能力边界的基准评测方法。
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md)：对应在 LightNav-0 训练链路中作为第一阶段 ER 能力锚点以支撑下游视觉–语言导航任务。
 
 ## 参考来源
 

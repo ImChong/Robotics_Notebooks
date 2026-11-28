@@ -164,6 +164,8 @@ Go2 训练任务涉及速度跟踪，测试任务涉及跳跃/躯干高度；Tas
 - [SelfImprove-Bench](paper-selfimprove-bench.md) — 检验自改进的跨任务泛化是否成立。
 - [递归自我改进](../concepts/recursive-self-improvement.md) — 从持久自改到可信外部验证的层级边界。
 - [RSI 纵深路线（Stage 4）](../../roadmap/depth-rsi.md) — 同类 harness / 元层演化的学习顺序。
+- [Agent Planning and Feedback Loops · 智能体规划与反馈执行](../methods/agent-planning-feedback.md)：Hyperagents 通过开放档案采样、元智能体改写代码库与外部评测反馈形成可迭代的元级改进执行闭环。
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md)：在 Go2 机器人奖励设计实验中，Meta Agent 生成的奖励函数通过 Genesis 仿真中的 PPO 强化学习训练并获得适应度反馈。
 
 ## 参考来源
 

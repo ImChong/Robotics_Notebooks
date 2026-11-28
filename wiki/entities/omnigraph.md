@@ -150,6 +150,7 @@ sequenceDiagram
 - [NVIDIA Warp](./nvidia-warp.md) — 自定义 OmniGraph 节点可集成 Warp kernel（计算层）
 - [SRU Odin](./sru-odin.md) — 容器 `shm_size` 与 OmniGraph 稳定性
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 训练栈在 Lab，不在图编辑器
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：了解在仿真器内通过节点图编排控制器、传感器与外部接口的集成流程。
 
 ## 参考来源
 

@@ -140,6 +140,8 @@ sequenceDiagram
 - [动作重定向 Mocap Retarget](mocap-retarget.md)
 - [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md)
 - [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md)
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md)：对应利用规则化几何 PoseCode 自动合成大规模姿态文本描述并用于 Motion-X 帧级自动标注的管线方法。
+- [Robot Motion Retargeting Workflow · 机器人动作重定向流程](../methods/robot-motion-retargeting-workflow.md)：对应基于 AMASS SMPL-H 52 关节骨架构建的细粒度姿态语言语料对下游动作检索与具身姿态对齐的支撑。
 
 ## 参考来源
 

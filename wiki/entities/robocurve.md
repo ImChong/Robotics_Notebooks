@@ -138,6 +138,8 @@ sequenceDiagram
 - [XPolicyLab](./xpolicylab.md) — `--policy xpolicylab` 插件
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — `--embodiment isaacsim` 仿真路径
 - [仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：Robocurve 围绕真机优先与可审计日志建立独立第三方能力计量体系，是具身智能体基准评测方法的典型实践者。
+- [VLA（Vision-Language-Action）](../methods/vla.md)：其公开评测与 Inspect Robots 工具链重点覆盖 VLA 等通用视觉-语言-动作策略在真实物理环境下的表现。
 
 ## 参考来源
 

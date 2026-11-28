@@ -105,6 +105,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / Reward Shaping。 本页是�
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md)：了解如何将大语言模型给出的代理奖励接入强化学习策略优化流程。
 
 ## 参考来源
 

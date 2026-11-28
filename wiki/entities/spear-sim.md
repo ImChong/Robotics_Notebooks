@@ -94,6 +94,8 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md) — 合成视觉与域随机化迁移
 - [AirSim](./airsim.md) — 经典 UE 机器人视觉仿真对照
 - [MetaHuman](./metahuman.md) — UE 数字人资产链
+- [Robot Simulation Integration · 机器人仿真环境集成](../methods/robot-simulation-integration.md)：SPEAR 通过 Python 插件与 `begin_frame`/`end_frame` 事务帧模型，将任意 Unreal Engine 项目集成为可确定性步进的具身仿真环境。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：其支持接入现成 UE 场景、MetaHuman 与 PCG 程序化内容生成管线，并输出深度、法线与语义等合成视觉真值。
 
 ## 参考来源
 

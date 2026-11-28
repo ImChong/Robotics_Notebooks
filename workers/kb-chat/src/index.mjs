@@ -133,17 +133,69 @@ const BILINGUAL_SYNONYMS = {
   bc: ['行为克隆', 'behavior-cloning'],
   '行为克隆': ['bc', 'behavior-cloning', 'imitation-learning'],
   sim2real: ['仿真到真机', 'domain-randomization', '域随机化'],
+  'sim-to-real': ['sim2real', '仿真到真机', 'domain-randomization', '域随机化'],
+  simtoreal: ['sim2real', '仿真到真机', 'domain-randomization', '域随机化'],
+  '仿真到真机': ['sim2real', 'domain-randomization', '域随机化'],
+  sim2sim: ['sim-to-sim', '仿真到仿真'],
+  'sim-to-sim': ['sim2sim', '仿真到仿真'],
+  '仿真到仿真': ['sim2sim', 'sim-to-sim'],
   vla: ['视觉语言动作', 'vision-language-action'],
+  vlm: ['视觉语言模型', 'vision-language-model'],
+  '视觉语言模型': ['vlm', 'vision-language-model'],
+  wm: ['world-model', '世界模型'],
+  'world-model': ['wm', '世界模型'],
+  '世界模型': ['wm', 'world-model', 'world'],
+  dp: ['diffusion-policy', 'diffusion', '扩散策略'],
+  'diffusion-policy': ['dp', 'diffusion', '扩散策略'],
+  '扩散策略': ['dp', 'diffusion-policy', 'diffusion'],
+  diffusion: ['扩散', 'diffusion-policy'],
+  '扩散': ['diffusion', 'diffusion-policy'],
   '运动控制': ['locomotion', 'control', 'gait'],
   locomotion: ['运动控制', '步态', 'legged'],
   humanoid: ['人形', 'biped'],
   '人形': ['humanoid', 'biped'],
+  quadruped: ['四足', 'legged'],
+  '四足': ['quadruped', 'legged'],
+  biped: ['双足', 'humanoid'],
+  '双足': ['biped', 'humanoid'],
   manipulation: ['操作', '灵巧手'],
   '操作': ['manipulation', 'grasp'],
+  dexterous: ['灵巧手', 'hand'],
+  '灵巧手': ['dexterous', 'hand', 'manipulation'],
+  grasp: ['grasping', '抓取'],
+  grasping: ['grasp', '抓取'],
+  '抓取': ['grasp', 'grasping', 'manipulation'],
   tactile: ['触觉', '力控'],
   '触觉': ['tactile', 'force'],
   teleoperation: ['遥操', '遥操作'],
   '遥操': ['teleoperation', 'vr'],
+  slam: ['建图', '定位', 'localization', 'mapping'],
+  isaaclab: ['isaac-lab', 'isaac'],
+  'isaac-lab': ['isaaclab', 'isaac'],
+  isaacgym: ['isaac-gym', 'isaac'],
+  'isaac-gym': ['isaacgym', 'isaac'],
+  ros2: ['ros-2', 'ros'],
+  'ros-2': ['ros2', 'ros'],
+  pi0: ['π0', 'physical-intelligence'],
+  'π0': ['pi0', 'physical-intelligence'],
+  cbf: ['control-barrier-function', '控制障碍函数'],
+  '控制障碍函数': ['cbf', 'control-barrier-function'],
+  qp: ['quadratic-programming', '二次规划'],
+  '二次规划': ['qp', 'quadratic-programming'],
+  ik: ['inverse-kinematics', '逆运动学'],
+  '逆运动学': ['ik', 'inverse-kinematics'],
+  fk: ['forward-kinematics', '正运动学'],
+  '正运动学': ['fk', 'forward-kinematics'],
+  amp: ['adversarial-motion-priors', '对抗运动先验'],
+  '对抗运动先验': ['amp', 'adversarial-motion-priors'],
+  ppo: ['proximal-policy-optimization', 'rl'],
+  sac: ['soft-actor-critic', 'rl'],
+  'contact-rich': ['接触丰富', 'contact'],
+  '接触丰富': ['contact-rich', 'contact'],
+  ctrl: ['control'],
+  teleop: ['teleoperation', '遥操', '遥操作'],
+  loco: ['locomotion', '运动控制'],
+  manip: ['manipulation', '操作'],
 };
 
 const STOP_WORDS = new Set([
@@ -477,6 +529,20 @@ function tokenizeForScoring(text) {
     if ((!isCjk || raw.length <= 4) && !STOP_WORDS.has(raw)) {
       out.add(raw);
     }
+    if (!isCjk && raw.includes('π')) {
+      const piNorm = raw.replace(/π/g, 'pi');
+      if (!STOP_WORDS.has(piNorm)) out.add(piNorm);
+      if (BILINGUAL_SYNONYMS[piNorm]) {
+        for (const syn of BILINGUAL_SYNONYMS[piNorm]) {
+          if (!STOP_WORDS.has(syn)) out.add(syn);
+        }
+      }
+    }
+    if (!isCjk && (raw.includes('-') || raw.includes('_'))) {
+      for (const part of raw.split(/[-_]+/)) {
+        if (part.length >= 2 && !STOP_WORDS.has(part)) out.add(part);
+      }
+    }
     if (BILINGUAL_SYNONYMS[raw]) {
       for (const syn of BILINGUAL_SYNONYMS[raw]) {
         if (!STOP_WORDS.has(syn)) out.add(syn);
@@ -499,6 +565,692 @@ function tokenizeForScoring(text) {
     }
   }
   return Array.from(out);
+}
+
+const ASCII_TOKEN_RE = /[a-z0-9_+\-.π]+/g;
+const CJK_RUN_RE = /[\u4e00-\u9fff]+/g;
+const CJK_TITLE_SPLIT_RE = /[的与和及或]/g;
+const CJK_BOUNDARY_SPLIT_RE =
+  /(?:请问|介绍一下|介绍下|什么叫|什么是|是什么|怎么缩小|怎么配合|怎么实现|怎么工作|怎么做|如何缩小|如何实现|如何工作|如何配合|为什么|为何|哪些|哪个|关于|一下|的原理|原理|区别|对比|有什么|怎么|怎样|如何|解释|说明|比较|今天|明天|昨天|以及|还是|但是|并且|和|与|及|的|了|吗|呢|吧|啊)/g;
+const CJK_BOUNDARY_PREFIX_RE =
+  /^(?:请问|想问下|问一下|能告诉我|告诉我|介绍一下|介绍下|什么是|什么叫|是什么|关于|帮我解释|解释一下|解释|说明一下|说明|比较一下|对比一下|帮我)+/;
+const CJK_BOUNDARY_SUFFIX_RE =
+  /(?:是什么|的原理|原理|是什么原理|怎么实现|怎么工作|怎么配合|怎么缩小|怎么做|如何实现|如何工作|如何配合|如何缩小|怎么用|怎么样|怎么|怎样|如何|为什么|为何|有哪些|哪些|哪个|区别|对比|好吗|吗|呢|吧|啊|的|了)+$/;
+
+function isAsciiAlnumCode(c) {
+  return (c >= 48 && c <= 57) || (c >= 97 && c <= 122);
+}
+
+function isAsciiLowerCode(c) {
+  return c >= 97 && c <= 122;
+}
+
+function containsTokenMatch(haystack, tok) {
+  if (!haystack || !tok) return false;
+  let idx = haystack.indexOf(tok);
+  if (idx < 0) return false;
+  if (tok.length > 3 || !isAsciiAlnumCode(tok.charCodeAt(0))) {
+    return true;
+  }
+  const len = tok.length;
+  while (idx >= 0) {
+    const prevOk = idx === 0 || !isAsciiAlnumCode(haystack.charCodeAt(idx - 1));
+    const afterPos = idx + len;
+    const nextOk =
+      afterPos >= haystack.length ||
+      (len <= 2
+        ? !isAsciiAlnumCode(haystack.charCodeAt(afterPos))
+        : !isAsciiLowerCode(haystack.charCodeAt(afterPos)));
+    if (prevOk && nextOk) return true;
+    idx = haystack.indexOf(tok, idx + 1);
+  }
+  return false;
+}
+
+export function boundedDamerauDistance(a, b, maxDist) {
+  if (a === b) return 0;
+  const la = a.length;
+  const lb = b.length;
+  if (Math.abs(la - lb) > maxDist) return maxDist + 1;
+  if (la === 0) return lb <= maxDist ? lb : maxDist + 1;
+  if (lb === 0) return la <= maxDist ? la : maxDist + 1;
+
+  let prev2 = new Array(lb + 1).fill(0);
+  let prev1 = Array.from({ length: lb + 1 }, (_, j) => j);
+  let curr = new Array(lb + 1);
+
+  for (let i = 1; i <= la; i += 1) {
+    curr[0] = i;
+    let rowMin = curr[0];
+    const ca = a.charCodeAt(i - 1);
+    for (let k = 1; k <= lb; k += 1) {
+      const cb = b.charCodeAt(k - 1);
+      const cost = ca === cb ? 0 : 1;
+      let val = Math.min(prev1[k] + 1, curr[k - 1] + 1, prev1[k - 1] + cost);
+      if (i > 1 && k > 1 && ca === b.charCodeAt(k - 2) && a.charCodeAt(i - 2) === cb) {
+        const trans = prev2[k - 2] + 1;
+        if (trans < val) val = trans;
+      }
+      curr[k] = val;
+      if (val < rowMin) rowMin = val;
+    }
+    if (rowMin > maxDist) return maxDist + 1;
+    const tmp = prev2;
+    prev2 = prev1;
+    prev1 = curr;
+    curr = tmp;
+  }
+  return prev1[lb] <= maxDist ? prev1[lb] : maxDist + 1;
+}
+
+function orderedSubsequenceSpan(query, target) {
+  const ql = query.length;
+  const tl = target.length;
+  if (ql === 0 || ql >= tl) return -1;
+  let bestSpan = -1;
+  const firstChar = query.charCodeAt(0);
+  for (let start = 0; start <= tl - ql; start += 1) {
+    if (target.charCodeAt(start) !== firstChar) continue;
+    let qi = 1;
+    let ti = start + 1;
+    while (qi < ql && ti < tl) {
+      if (target.charCodeAt(ti) === query.charCodeAt(qi)) {
+        qi += 1;
+      }
+      ti += 1;
+    }
+    if (qi === ql) {
+      const span = ti - start;
+      if (bestSpan < 0 || span < bestSpan) bestSpan = span;
+    }
+  }
+  return bestSpan;
+}
+
+function extractCjkPhrases(text) {
+  const rawRuns = String(text || '').match(CJK_RUN_RE);
+  if (!rawRuns) return [];
+  const seen = new Set();
+  const phrases = [];
+  for (const run of rawRuns) {
+    for (const part of run.split(CJK_BOUNDARY_SPLIT_RE)) {
+      const cleaned = part.replace(CJK_BOUNDARY_PREFIX_RE, '').replace(CJK_BOUNDARY_SUFFIX_RE, '');
+      if (cleaned.length >= 2 && !STOP_WORDS.has(cleaned) && !seen.has(cleaned)) {
+        seen.add(cleaned);
+        phrases.push(cleaned);
+      }
+    }
+  }
+  return phrases;
+}
+
+function isCoveredByExactCjkTerms(phrase, cjkSet) {
+  const n = phrase.length;
+  if (n < 2) return false;
+  const dp = new Array(n + 1).fill(0);
+  dp[0] = 1;
+  for (let i = 2; i <= n; i += 1) {
+    let bestSeg = 0;
+    for (let len = 2; len <= Math.min(12, i); len += 1) {
+      if (dp[i - len] === 0) continue;
+      const sub = phrase.slice(i - len, i);
+      if (cjkSet.has(sub)) {
+        const candMax = Math.max(i - len === 0 ? len : dp[i - len], len);
+        if (candMax > bestSeg) bestSeg = candMax;
+      }
+    }
+    dp[i] = bestSeg;
+  }
+  return dp[n] >= 3;
+}
+
+function hasSameCharMultiset(a, b) {
+  if (a.length !== b.length) return false;
+  const counts = Object.create(null);
+  for (let i = 0; i < a.length; i += 1) {
+    const ca = a.charAt(i);
+    counts[ca] = (counts[ca] || 0) + 1;
+  }
+  for (let j = 0; j < b.length; j += 1) {
+    const cb = b.charAt(j);
+    if (!counts[cb]) return false;
+    counts[cb] -= 1;
+  }
+  return true;
+}
+
+function buildPageBodiesVocab(parsedBodies) {
+  const asciiDf = new Map();
+  const cjkDf = new Map();
+  const cjkStrong = new Set();
+  const compactToTerms = new Map();
+  const singleCompounds = new Set();
+
+  function recordAscii(rawTerm, seenDocAscii) {
+    const term = String(rawTerm || '').toLowerCase().replace(/^[-_.+]+|[-_.+]+$/g, '');
+    if (!term || term.length < 2) return;
+    const variants = term.includes('π') ? [term, term.replace(/π/g, 'pi')] : [term];
+    for (const tVal of variants) {
+      if (!tVal || tVal.length < 2) continue;
+      if (!seenDocAscii.has(tVal)) {
+        seenDocAscii.add(tVal);
+        asciiDf.set(tVal, (asciiDf.get(tVal) || 0) + 1);
+      }
+      const compact = tVal.replace(/[-_.+]/g, '').replace(/π/g, 'pi');
+      if (compact.length >= 3 && !/^\d+$/.test(compact)) {
+        if (tVal === compact) singleCompounds.add(compact);
+        let bucket = compactToTerms.get(compact);
+        if (!bucket) {
+          bucket = new Set();
+          compactToTerms.set(compact, bucket);
+        }
+        bucket.add(tVal);
+      }
+    }
+    if (/[-_.]/.test(term)) {
+      for (const part of term.split(/[-_.]+/)) {
+        if (part.length >= 2 && !seenDocAscii.has(part)) {
+          seenDocAscii.add(part);
+          asciiDf.set(part, (asciiDf.get(part) || 0) + 1);
+        }
+      }
+    }
+  }
+
+  function recordCjk(rawCjk, seenDocCjk, isStrong) {
+    if (!rawCjk || rawCjk.length < 2) return;
+    const trimmed = rawCjk.replace(/^[的与和及或]+|[的与和及或]+$/g, '');
+    const candidates = [];
+    if (trimmed && trimmed.length >= 2 && trimmed.length <= 12) candidates.push(trimmed);
+    for (const part of rawCjk.split(CJK_TITLE_SPLIT_RE)) {
+      if (part && part.length >= 2 && part.length <= 12) candidates.push(part);
+    }
+    for (const phrase of candidates) {
+      if (STOP_WORDS.has(phrase)) continue;
+      if (isStrong) cjkStrong.add(phrase);
+      if (seenDocCjk.has(phrase)) continue;
+      seenDocCjk.add(phrase);
+      cjkDf.set(phrase, (cjkDf.get(phrase) || 0) + 1);
+    }
+  }
+
+  for (const item of parsedBodies) {
+    const seenDocAscii = new Set();
+    const seenDocCjk = new Set();
+    const strongTexts = [item.titleLower];
+    const bodyTexts = [];
+    for (const sec of item.sections) {
+      strongTexts.push(sec.headingLower);
+      bodyTexts.push(sec.textLower);
+    }
+    for (const txt of strongTexts) {
+      const aMatches = txt.match(ASCII_TOKEN_RE);
+      if (aMatches) {
+        for (const m of aMatches) {
+          if (seenDocAscii.size >= 450) break;
+          recordAscii(m, seenDocAscii);
+        }
+      }
+      const cMatches = txt.match(CJK_RUN_RE);
+      if (cMatches) {
+        for (const m of cMatches) {
+          if (seenDocCjk.size >= 250) break;
+          recordCjk(m, seenDocCjk, true);
+        }
+      }
+    }
+    for (const txt of bodyTexts) {
+      const aMatches = txt.match(ASCII_TOKEN_RE);
+      if (aMatches) {
+        for (const m of aMatches) {
+          if (seenDocAscii.size >= 450) break;
+          recordAscii(m, seenDocAscii);
+        }
+      }
+      const cMatches = txt.match(CJK_RUN_RE);
+      if (cMatches) {
+        for (const m of cMatches) {
+          if (seenDocCjk.size >= 250) break;
+          recordCjk(m, seenDocCjk, false);
+        }
+      }
+    }
+  }
+
+  for (const sk of Object.keys(BILINGUAL_SYNONYMS)) {
+    const list = [sk, ...(BILINGUAL_SYNONYMS[sk] || [])];
+    for (let sj = 0; sj < list.length; sj += 1) {
+      const entry = String(list[sj] || '').toLowerCase();
+      if (!entry) continue;
+      if (entry.charCodeAt(0) >= 0x4e00 && entry.charCodeAt(0) <= 0x9fff) {
+        if (entry.length >= 2 && entry.length <= 12) {
+          cjkStrong.add(entry);
+          if (!cjkDf.has(entry)) cjkDf.set(entry, 0);
+        }
+      } else {
+        if (!asciiDf.has(entry)) asciiDf.set(entry, 0);
+        const compact = entry.replace(/[-_.+]/g, '').replace(/π/g, 'pi');
+        if (compact.length >= 3 && !/^\d+$/.test(compact)) {
+          if (entry === compact && (sj > 0 || (asciiDf.get(entry) || 0) > 0)) {
+            singleCompounds.add(compact);
+          }
+          let bucket = compactToTerms.get(compact);
+          if (!bucket) {
+            bucket = new Set();
+            compactToTerms.set(compact, bucket);
+          }
+          bucket.add(entry);
+        }
+      }
+    }
+  }
+
+  const asciiSet = new Set(asciiDf.keys());
+  let asciiEntries = [];
+  for (const [term, df] of asciiDf.entries()) {
+    if (term.length >= 4 && !/^\d+$/.test(term)) {
+      asciiEntries.push({ term, df });
+    }
+  }
+  if (asciiEntries.length > 600) {
+    asciiEntries.sort((a, b) => b.df - a.df);
+    asciiEntries = asciiEntries.slice(0, 600);
+  }
+  const asciiByLen = new Map();
+  for (const ae of asciiEntries) {
+    let arr = asciiByLen.get(ae.term.length);
+    if (!arr) {
+      arr = [];
+      asciiByLen.set(ae.term.length, arr);
+    }
+    arr.push(ae);
+  }
+  for (const arr of asciiByLen.values()) {
+    arr.sort((a, b) => b.df - a.df);
+  }
+
+  const compactResolved = new Map();
+  for (const [comp, setVal] of compactToTerms.entries()) {
+    const arr = Array.from(setVal);
+    arr.sort((a, b) => {
+      const aSingle = a === comp ? 1 : 0;
+      const bSingle = b === comp ? 1 : 0;
+      if (bSingle !== aSingle) return bSingle - aSingle;
+      return (asciiDf.get(b) || 0) - (asciiDf.get(a) || 0);
+    });
+    compactResolved.set(comp, arr);
+  }
+
+  const cjkSet = new Set(cjkDf.keys());
+  let cjkEntries = [];
+  for (const [term, df] of cjkDf.entries()) {
+    if (term.length >= 3 && term.length <= 12) {
+      cjkEntries.push({ term, df, strong: cjkStrong.has(term) });
+    }
+  }
+  cjkEntries.sort((a, b) => b.df - a.df || a.term.length - b.term.length);
+  if (cjkEntries.length > 400) {
+    cjkEntries = cjkEntries.slice(0, 400);
+  }
+  const cjkCharIndex = new Map();
+  for (let ti = 0; ti < cjkEntries.length; ti += 1) {
+    const termStr = cjkEntries[ti].term;
+    const seenChars = new Set();
+    for (let chIdx = 0; chIdx < termStr.length; chIdx += 1) {
+      const ch = termStr.charAt(chIdx);
+      if (seenChars.has(ch)) continue;
+      seenChars.add(ch);
+      let list = cjkCharIndex.get(ch);
+      if (!list) {
+        list = [];
+        cjkCharIndex.set(ch, list);
+      }
+      list.push(ti);
+    }
+  }
+
+  return {
+    asciiSet,
+    asciiByLen,
+    compactToTerms: compactResolved,
+    singleCompounds,
+    cjkSet,
+    cjkTerms: cjkEntries,
+    cjkCharIndex,
+  };
+}
+
+function extractAsciiRuns(question) {
+  const lower = String(question || '').toLowerCase();
+  const runs = [];
+  let current = [];
+  const re = /([a-z0-9_+\-.π]+)|([\u4e00-\u9fff]+|[?,!.;:()[\]{}"'，。？！；：（）【】「」、/\\]+)/g;
+  let m;
+  while ((m = re.exec(lower)) !== null) {
+    if (m[1]) {
+      current.push(m[1]);
+    } else if (current.length > 0) {
+      runs.push(current);
+      current = [];
+    }
+  }
+  if (current.length > 0) runs.push(current);
+  return runs;
+}
+
+function findBestCjkMatches(qStr, vocab) {
+  const ql = qStr.length;
+  if (ql < 3 || ql > 8 || !vocab || !vocab.cjkTerms || vocab.cjkTerms.length === 0) return [];
+  const overlap = new Map();
+  const uniqueQChars = new Set();
+  for (let qi = 0; qi < ql; qi += 1) {
+    const ch = qStr.charAt(qi);
+    if (uniqueQChars.has(ch)) continue;
+    uniqueQChars.add(ch);
+    const postings = vocab.cjkCharIndex.get(ch);
+    if (!postings) continue;
+    for (const idx of postings) {
+      overlap.set(idx, (overlap.get(idx) || 0) + 1);
+    }
+  }
+
+  const hits = [];
+  const needForC1 = Math.max(2, uniqueQChars.size - 1);
+  const needForC2 = uniqueQChars.size;
+  for (const [termIdx, cnt] of overlap.entries()) {
+    const entry = vocab.cjkTerms[termIdx];
+    const cand = entry.term;
+    const cl = cand.length;
+    if (cand === qStr) continue;
+
+    if (cnt >= needForC1) {
+      if (ql >= 4 && Math.abs(cl - ql) <= 1) {
+        if (boundedDamerauDistance(qStr, cand, 1) === 1) {
+          hits.push({
+            term: cand,
+            df: entry.df,
+            tier: cl === ql ? 0 : 1,
+            gap: Math.abs(cl - ql),
+          });
+          continue;
+        }
+      } else if (ql === 3 && cl === 3) {
+        const threeCharEligible =
+          entry.strong || entry.df >= 2 || Boolean(BILINGUAL_SYNONYMS[cand]);
+        if (
+          threeCharEligible &&
+          (qStr.slice(0, 2) === cand.slice(0, 2) || qStr.slice(1) === cand.slice(1)) &&
+          boundedDamerauDistance(qStr, cand, 1) === 1
+        ) {
+          hits.push({ term: cand, df: entry.df, tier: 0, gap: 0 });
+          continue;
+        }
+      }
+    }
+
+    if (cnt >= needForC2 && ql >= 3 && ql <= 6 && cl > ql && cl <= Math.min(12, ql * 2)) {
+      const span = orderedSubsequenceSpan(qStr, cand);
+      if (span > 0 && span <= Math.min(ql * 2, ql + 3)) {
+        hits.push({
+          term: cand,
+          df: entry.df,
+          tier: cl === ql + 1 && span === cl ? 1 : 2,
+          gap: span - ql,
+        });
+      }
+    }
+  }
+
+  hits.sort((a, b) => {
+    if (a.tier !== b.tier) return a.tier - b.tier;
+    if (a.gap !== b.gap) return a.gap - b.gap;
+    if (a.term.length !== b.term.length) return a.term.length - b.term.length;
+    return b.df - a.df;
+  });
+  return hits.slice(0, 2);
+}
+
+function expandQueryFuzzy(question, vocab) {
+  const exactTokens = tokenizeForScoring(question);
+  const exactSet = new Set(exactTokens);
+  const fuzzyMap = new Map();
+  const candidates = [];
+
+  function addFuzzyToken(tok, weightFactor, matchIdx, isCompact) {
+    if (!tok || STOP_WORDS.has(tok) || exactSet.has(tok)) return;
+    const prev = fuzzyMap.get(tok);
+    if (prev) {
+      if (weightFactor > prev.weightFactor) {
+        prev.weightFactor = weightFactor;
+        if (matchIdx >= 0) prev.matchIdx = matchIdx;
+      }
+      if (isCompact) prev.isCompact = true;
+      return;
+    }
+    fuzzyMap.set(tok, {
+      token: tok,
+      weightFactor,
+      matchIdx,
+      isCompact: Boolean(isCompact),
+    });
+  }
+
+  function addTermAndSynonyms(term, weightFactor, matchIdx, isCompact) {
+    addFuzzyToken(term, weightFactor, matchIdx, isCompact);
+    if (BILINGUAL_SYNONYMS[term]) {
+      for (const syn of BILINGUAL_SYNONYMS[term]) {
+        addFuzzyToken(syn, weightFactor * 0.85, matchIdx, false);
+      }
+    }
+  }
+
+  if (!vocab) {
+    return { exactTokens, fuzzyTokens: [], candidates: [] };
+  }
+
+  const asciiRuns = extractAsciiRuns(question);
+  const consumedPositions = new Set();
+  for (let rIdx = 0; rIdx < asciiRuns.length; rIdx += 1) {
+    const run = asciiRuns[rIdx];
+    for (let n = 3; n >= 2; n -= 1) {
+      if (run.length < n) continue;
+      for (let start = 0; start <= run.length - n; start += 1) {
+        let alreadyUsed = false;
+        for (let u = 0; u < n; u += 1) {
+          if (consumedPositions.has(`${rIdx}:${start + u}`)) {
+            alreadyUsed = true;
+            break;
+          }
+        }
+        if (alreadyUsed) continue;
+        const slice = run.slice(start, start + n);
+        if (STOP_WORDS.has(slice[0]) || STOP_WORDS.has(slice[n - 1])) continue;
+        const compact = slice.map((s) => s.replace(/π/g, 'pi').replace(/[-_.+]/g, '')).join('');
+        if (compact.length < 3 || /^\d+$/.test(compact)) continue;
+
+        const mappedTerms = vocab.compactToTerms.get(compact) || [];
+        const synList = BILINGUAL_SYNONYMS[compact] || null;
+        if (mappedTerms.length === 0 && !synList) continue;
+
+        const phrase = slice.join(' ');
+        let targetTerm = '';
+        if (vocab.singleCompounds.has(compact) || (synList && vocab.singleCompounds.has(synList[0]))) {
+          targetTerm = vocab.singleCompounds.has(compact) ? compact : synList[0];
+        } else if (mappedTerms.length > 0) {
+          targetTerm = mappedTerms[0];
+        } else if (synList && synList.length > 0) {
+          targetTerm = synList[0];
+        }
+        if (!targetTerm) continue;
+
+        const isVisibleCompound =
+          vocab.singleCompounds.has(compact) ||
+          Boolean(synList && vocab.singleCompounds.has(targetTerm));
+        let matchIdx = -1;
+        if (isVisibleCompound && phrase !== targetTerm) {
+          matchIdx = candidates.length;
+          candidates.push({ from: phrase, to: targetTerm, kind: 'separator' });
+          for (let cPos = 0; cPos < n; cPos += 1) {
+            consumedPositions.add(`${rIdx}:${start + cPos}`);
+          }
+        }
+        addTermAndSynonyms(compact, 0.95, matchIdx, true);
+        addTermAndSynonyms(targetTerm, 0.95, matchIdx, targetTerm === compact);
+        for (const mt of mappedTerms) {
+          addTermAndSynonyms(mt, 0.95, matchIdx, mt === compact);
+        }
+      }
+    }
+  }
+
+  for (let r2 = 0; r2 < asciiRuns.length; r2 += 1) {
+    const run2 = asciiRuns[r2];
+    for (let tIdx = 0; tIdx < run2.length; tIdx += 1) {
+      if (consumedPositions.has(`${r2}:${tIdx}`)) continue;
+      const tok = run2[tIdx].replace(/π/g, 'pi').replace(/^[-_.+]+|[-_.+]+$/g, '');
+      if (!tok || STOP_WORDS.has(tok) || tok.length < 4 || /^\d+$/.test(tok)) continue;
+      if (vocab.asciiSet.has(tok) || BILINGUAL_SYNONYMS[tok]) continue;
+
+      if (tok.length >= 5 && tok.endsWith('s') && !/(?:ss|us|is)$/.test(tok)) {
+        const singular = tok.slice(0, -1);
+        if (vocab.asciiSet.has(singular) || BILINGUAL_SYNONYMS[singular]) {
+          addTermAndSynonyms(singular, 0.95, -1, false);
+          continue;
+        }
+      }
+
+      const tokCompact = tok.replace(/[-_.+]/g, '');
+      if (tokCompact.length >= 3 && (vocab.compactToTerms.has(tokCompact) || BILINGUAL_SYNONYMS[tokCompact])) {
+        const sepTerms = vocab.compactToTerms.get(tokCompact) || [];
+        const sepSyn = BILINGUAL_SYNONYMS[tokCompact] || [];
+        const sepTarget = vocab.singleCompounds.has(tokCompact)
+          ? tokCompact
+          : sepTerms[0] || sepSyn[0] || '';
+        if (sepTarget && sepTarget !== tok) {
+          const sepMatchIdx = candidates.length;
+          candidates.push({ from: tok, to: sepTarget, kind: 'separator' });
+          addTermAndSynonyms(sepTarget, 0.95, sepMatchIdx, sepTarget === tokCompact);
+          for (const st of sepTerms) {
+            addTermAndSynonyms(st, 0.95, sepMatchIdx, false);
+          }
+          continue;
+        }
+      }
+
+      const maxDist = tok.length >= 8 ? 2 : 1;
+      const typoHits = [];
+      for (let len = tok.length - maxDist; len <= tok.length + maxDist; len += 1) {
+        const bucket = vocab.asciiByLen.get(len);
+        if (!bucket) continue;
+        for (const item of bucket) {
+          const cand = item.term;
+          if (tok.length === 4 && !hasSameCharMultiset(tok, cand) && !BILINGUAL_SYNONYMS[cand]) {
+            continue;
+          }
+          const leadOk =
+            maxDist === 1
+              ? cand.charCodeAt(0) === tok.charCodeAt(0) ||
+                (cand.charCodeAt(0) === tok.charCodeAt(1) && cand.charCodeAt(1) === tok.charCodeAt(0))
+              : cand.charCodeAt(0) === tok.charCodeAt(0) ||
+                cand.charCodeAt(0) === tok.charCodeAt(1) ||
+                cand.charCodeAt(1) === tok.charCodeAt(0);
+          if (!leadOk) continue;
+          const dist = boundedDamerauDistance(tok, cand, maxDist);
+          if (dist <= maxDist) {
+            typoHits.push({ term: cand, dist, df: item.df });
+          }
+        }
+      }
+      if (typoHits.length === 0) continue;
+      typoHits.sort((a, b) => {
+        if (a.dist !== b.dist) return a.dist - b.dist;
+        if (b.df !== a.df) return b.df - a.df;
+        return Math.abs(a.term.length - tok.length) - Math.abs(b.term.length - tok.length);
+      });
+      const bestDist = typoHits[0].dist;
+      const filtered = typoHits.filter((h) => h.dist === bestDist).slice(0, 2);
+      const tMatchIdx = candidates.length;
+      candidates.push({ from: tok, to: filtered[0].term, kind: 'typo', dist: bestDist });
+      for (const hit of filtered) {
+        const weightFactor = hit.dist === 1 ? 0.75 : 0.55;
+        addTermAndSynonyms(hit.term, weightFactor, tMatchIdx, false);
+      }
+    }
+  }
+
+  const cjkPhrases = extractCjkPhrases(question);
+  for (const phraseCjk of cjkPhrases) {
+    if (phraseCjk.length < 3) continue;
+    if (
+      vocab.cjkSet.has(phraseCjk) ||
+      BILINGUAL_SYNONYMS[phraseCjk] ||
+      isCoveredByExactCjkTerms(phraseCjk, vocab.cjkSet)
+    ) {
+      continue;
+    }
+
+    const directHits = findBestCjkMatches(phraseCjk, vocab);
+    if (directHits.length > 0) {
+      const cMatchIdx = candidates.length;
+      candidates.push({ from: phraseCjk, to: directHits[0].term, kind: 'cjk-fuzzy' });
+      for (const dh of directHits) {
+        addTermAndSynonyms(dh.term, 0.75, cMatchIdx, false);
+      }
+      continue;
+    }
+
+    if (phraseCjk.length >= 5 && phraseCjk.length <= 8) {
+      let foundWinMatch = false;
+      for (let winLen = 4; winLen >= 3 && !foundWinMatch; winLen -= 1) {
+        for (let pos = 0; pos <= phraseCjk.length - winLen; pos += 1) {
+          const sub = phraseCjk.slice(pos, pos + winLen);
+          if (
+            vocab.cjkSet.has(sub) ||
+            BILINGUAL_SYNONYMS[sub] ||
+            isCoveredByExactCjkTerms(sub, vocab.cjkSet)
+          ) {
+            continue;
+          }
+          const winHits = findBestCjkMatches(sub, vocab);
+          if (winHits.length > 0) {
+            const wMatchIdx = candidates.length;
+            candidates.push({ from: sub, to: winHits[0].term, kind: 'cjk-fuzzy' });
+            for (const wh of winHits) {
+              addTermAndSynonyms(wh.term, 0.75, wMatchIdx, false);
+            }
+            foundWinMatch = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    exactTokens,
+    fuzzyTokens: Array.from(fuzzyMap.values()),
+    candidates,
+  };
+}
+
+function sanitizeFuzzyMatches(list) {
+  if (!Array.isArray(list) || list.length === 0) return [];
+  const out = [];
+  const seen = new Set();
+  for (const item of list) {
+    if (out.length >= 3) break;
+    if (!item || typeof item.from !== 'string' || typeof item.to !== 'string') continue;
+    const from = item.from.trim().slice(0, 48);
+    const to = item.to.trim().slice(0, 48);
+    if (!from || !to || from === to) continue;
+    const key = `${from}->${to}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const entry = { from, to };
+    if (typeof item.kind === 'string' && item.kind) entry.kind = item.kind;
+    out.push(entry);
+  }
+  return out;
 }
 
 function cleanMarkdownSnippet(text) {
@@ -557,16 +1309,13 @@ function splitMarkdownSections(markdown) {
   return sections;
 }
 
-export function selectRelevantPassages(
+export function selectRelevantPassagesWithMeta(
   pageBodies,
   question,
   maxPassages = MAX_PASSAGES,
   maxTotalChars = MAX_CONTEXT_CHARS,
 ) {
-  const queryTokens = tokenizeForScoring(question);
-  if (queryTokens.length === 0) return [];
-
-  const candidates = [];
+  const parsedBodies = [];
   for (const body of pageBodies) {
     if (
       !body ||
@@ -579,25 +1328,69 @@ export function selectRelevantPassages(
     }
     const title = extractH1Title(body.content_markdown, body.id);
     const titleLower = title.toLowerCase();
-    const sections = splitMarkdownSections(body.content_markdown);
-
-    for (const sec of sections) {
+    const sections = splitMarkdownSections(body.content_markdown).map((sec) => {
       const headingLower = sec.heading.toLowerCase();
       const textLower = sec.text.toLowerCase();
+      return {
+        heading: sec.heading,
+        text: sec.text,
+        headingLower,
+        textLower,
+        compact: `${titleLower} ${headingLower} ${textLower}`.replace(/[-_.+\s]+/g, '').replace(/π/g, 'pi'),
+      };
+    });
+    parsedBodies.push({ id: body.id, title, titleLower, sections });
+  }
+
+  if (parsedBodies.length === 0) return { passages: [], fuzzyMatches: [] };
+
+  const vocab = buildPageBodiesVocab(parsedBodies);
+  const expanded = expandQueryFuzzy(question, vocab);
+  const exactTokens = expanded.exactTokens;
+  const fuzzyTokens = expanded.fuzzyTokens;
+  if (exactTokens.length === 0 && fuzzyTokens.length === 0) {
+    return { passages: [], fuzzyMatches: [] };
+  }
+
+  const candidates = [];
+  for (const body of parsedBodies) {
+    for (const sec of body.sections) {
       let score = 0;
-      for (const token of queryTokens) {
+      for (const token of exactTokens) {
         const weight = token.length >= 2 ? (token.length >= 4 ? 3 : 2) : 0.4;
-        if (titleLower.includes(token)) score += weight * 1.6;
-        if (headingLower.includes(token)) score += weight * 1.4;
-        if (textLower.includes(token)) score += weight;
+        if (containsTokenMatch(body.titleLower, token)) score += weight * 1.6;
+        if (containsTokenMatch(sec.headingLower, token)) score += weight * 1.4;
+        if (containsTokenMatch(sec.textLower, token)) score += weight;
       }
+
+      let matchedIndices = null;
+      for (const ft of fuzzyTokens) {
+        const fTok = ft.token;
+        const fw = (fTok.length >= 2 ? (fTok.length >= 4 ? 3 : 2) : 0.4) * ft.weightFactor;
+        let fScore = 0;
+        if (containsTokenMatch(body.titleLower, fTok)) fScore += fw * 1.6;
+        if (containsTokenMatch(sec.headingLower, fTok)) fScore += fw * 1.4;
+        if (containsTokenMatch(sec.textLower, fTok)) fScore += fw;
+        if (fScore === 0 && ft.isCompact && sec.compact.includes(fTok)) {
+          fScore += fw * 1.2;
+        }
+        if (fScore > 0) {
+          score += fScore;
+          if (ft.matchIdx >= 0) {
+            if (!matchedIndices) matchedIndices = new Set();
+            matchedIndices.add(ft.matchIdx);
+          }
+        }
+      }
+
       if (score >= 1.5) {
         candidates.push({
           id: body.id,
-          title,
+          title: body.title,
           heading: sec.heading,
           text: sec.text,
           score,
+          matchedIndices,
         });
       }
     }
@@ -606,6 +1399,7 @@ export function selectRelevantPassages(
   candidates.sort((a, b) => b.score - a.score);
   const selected = [];
   const seenKeys = new Set();
+  const appliedIndices = new Set();
   let usedChars = 0;
 
   for (const item of candidates) {
@@ -620,6 +1414,9 @@ export function selectRelevantPassages(
       ? `${item.text.slice(0, Math.min(680, remaining) - 1)}…`
       : item.text;
     usedChars += clipped.length;
+    if (item.matchedIndices) {
+      for (const idx of item.matchedIndices) appliedIndices.add(idx);
+    }
     selected.push({
       id: item.id,
       title: item.title,
@@ -628,7 +1425,23 @@ export function selectRelevantPassages(
     });
   }
 
-  return selected;
+  const appliedRaw = [];
+  for (let ci = 0; ci < expanded.candidates.length; ci += 1) {
+    if (appliedIndices.has(ci)) appliedRaw.push(expanded.candidates[ci]);
+  }
+  return {
+    passages: selected,
+    fuzzyMatches: sanitizeFuzzyMatches(appliedRaw),
+  };
+}
+
+export function selectRelevantPassages(
+  pageBodies,
+  question,
+  maxPassages = MAX_PASSAGES,
+  maxTotalChars = MAX_CONTEXT_CHARS,
+) {
+  return selectRelevantPassagesWithMeta(pageBodies, question, maxPassages, maxTotalChars).passages;
 }
 
 function formatDelta(current, prev) {
@@ -862,7 +1675,7 @@ async function computeCacheKey(modelId, lang, question, contentHashes, extraVers
   const normalizedQuestion = question.toLowerCase().replace(/\s+/g, ' ').trim();
   const sortedHashes = [...contentHashes].sort().join(',');
   const suffix = extraVersion ? `|${extraVersion}` : '';
-  const raw = `v1|${modelId}|${lang}|${normalizedQuestion}|${sortedHashes}${suffix}`;
+  const raw = `v2|${modelId}|${lang}|${normalizedQuestion}|${sortedHashes}${suffix}`;
   const digestBuf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw));
   const hex = Array.from(new Uint8Array(digestBuf))
     .map((b) => b.toString(16).padStart(2, '0'))
@@ -1186,6 +1999,7 @@ export default {
       const isTrend = isKbTrendQuery(question);
       let cacheKey;
       let passages;
+      let fuzzyMatches = [];
 
       if (isTrend) {
         const graphStats = await fetchJsonWithLimit(`${pagesBaseUrl}/exports/graph-stats.json`, {
@@ -1284,12 +2098,14 @@ export default {
           ),
         );
 
-        passages = selectRelevantPassages(
+        const passageResult = selectRelevantPassagesWithMeta(
           pageResults.filter(Boolean),
           question,
           MAX_PASSAGES,
           MAX_CONTEXT_CHARS,
         );
+        passages = passageResult.passages;
+        fuzzyMatches = passageResult.fuzzyMatches;
       }
 
       if (passages.length === 0) {
@@ -1356,6 +2172,7 @@ export default {
         mode: 'ai',
         grounded: true,
         ...(isTrend ? { trendGrounded: true } : {}),
+        ...(fuzzyMatches.length > 0 ? { fuzzyMatches } : {}),
         cached: false,
         answer,
         citations,

@@ -71,6 +71,8 @@ sequenceDiagram
 ## 关联页面
 
 - [容器编排与 CI/CD](../concepts/container-orchestration-cicd.md)
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：通过代码化 Pipeline 自动执行构建与测试门禁，为软件变更与编码代理交付提供回归验证。
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：承担机器人软件仓库的自动化编译、集成测试与持续交付流水线编排。
 
 ## 参考来源
 

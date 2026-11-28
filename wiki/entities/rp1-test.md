@@ -113,6 +113,8 @@ HMI 本地保存 `telemetry/raw.csv`、`analysis/summary.json`、`analysis/repor
 - [机器人安全状态机](../concepts/robot-safety-state-machine.md)
 - [硬件在环](../concepts/hardware-in-the-loop.md)
 - [CAN-FD](../concepts/can-fd.md)
+- [Robot Software System Integration · 机器人软件系统集成](../methods/robot-software-integration.md)：RP1 Test 将 PySide6 上位机、PLC/CAN 通信网关与 FastAPI/PostgreSQL 可靠性服务集成为一体化的测试软件系统。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：其台架系统通过 Modbus TCP 与 SocketCAN 协调动力支路、心跳轮询与状态约束，体现了测试控制层的接口边界。
 
 ## 参考来源
 

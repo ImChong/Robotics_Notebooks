@@ -101,6 +101,8 @@ sequenceDiagram
 - [paper-physimcode-physics-video-to-code](./paper-physimcode-physics-video-to-code.md)
 - [embodied-station-2026-10-13-34-papers-technology-map](../overview/embodied-station-2026-10-13-34-papers-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属 ② 预测保真度层的「视频→仿真」变体：几何、动力学与任务完成分开评，视觉还原好不蕴含交互可靠
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：以可执行仿真任务为评测协议检验编码智能体从具身视频构建交互世界模型的能力。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：要求智能体从视频观测恢复可重置、具备正确几何与动力学约束的交互仿真场景。
 
 ## 参考来源
 

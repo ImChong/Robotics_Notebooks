@@ -181,6 +181,8 @@ flowchart TD
 - [RoboDojo](./robodojo.md)
 - [具身评测纵深路线 Stage 3](../../roadmap/depth-embodied-eval.md)
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
+- [Manipulation](../tasks/manipulation.md)：NimCritic 面向长时程机器人操作任务，将轨迹拆分为物体级子任务并输出可增、可退的稠密过程进度与完成判别。
+- [RoboArena：通用机器人策略分布式真机众包评测方法](../methods/roboarena.md)：NimCritic 在 RoboArena 真机评测轨迹上验证了长程操作成功 rollout 的高召回检索与过程评价能力。
 
 ## 参考来源
 

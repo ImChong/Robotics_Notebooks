@@ -82,6 +82,8 @@ flowchart LR
 - [3D Gen Studio](./3dgenstudio.md) — 独立 AI 网格工作台与编排层。
 - [ComfyUI](./comfyui.md) — 可自托管的节点式生成后端；Scenario 插件则依赖 Scenario 云端模型。
 - [Sim2Real](../concepts/sim2real.md) — 生成资产进入仿真前的物理一致性检查。
+- [Robot Simulation Scene Generation · 机器人仿真场景生成](../methods/robot-simulation-scene-generation.md)：该扩展可在 Blender 中生成网格、PBR 材质与 360 环境布局草模，用于辅助构建仿真场景的视觉资产（入仿真前需校验物理属性）。
+- [Agent Tool-use Interface · 智能体工具调用接口](../methods/agent-tool-use-interface.md)：插件内置本机回环 MCP 服务并暴露 88 个本地工具，使外部智能体能够读取 Blender 场景状态并调用资产生成与编辑接口。
 
 ## 参考来源
 

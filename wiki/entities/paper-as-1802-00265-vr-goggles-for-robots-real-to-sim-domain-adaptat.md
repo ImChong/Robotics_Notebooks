@@ -109,6 +109,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - 列表实体：[AwesomeSim2Real](../entities/awesome-sim2real.md)
 - 技术地图：[AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md)
 - 方法/任务：[sim2real.md](../concepts/sim2real.md)、[locomotion.md](../tasks/locomotion.md)
+- [CycleGAN 与视觉 Sim2Real](../methods/cyclegan-sim2real.md)：深入了解本文用于将真实相机图像翻译为仿真风格以衔接 DRL 策略的 CycleGAN 视觉迁移路线。
 
 ## 参考来源
 

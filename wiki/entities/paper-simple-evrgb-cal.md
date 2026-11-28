@@ -139,6 +139,8 @@ sequenceDiagram
 - [Co-Calib](./paper-co-calib-multi-fisheye-calibration.md) — 另一条多相机标定
 - [感知栈选型](../queries/robot-perception-stack-selection-loop.md)
 - [开源 7 篇系统结构地图](../overview/open-source-7-papers-system-structure-technology-map.md)
+- [Robot Sensor Interface and Integration · 机器人传感器接口与集成](../methods/robot-sensor-integration.md)：本文用显示器调制混合 ChArUco 实现无运动、粗同步的异构事件–RGB 立体外参标定与传感器对齐。
+- [Robot Visual Perception · 机器人视觉感知流程](../methods/robot-visual-perception.md)：低重投影误差的事件–RGB 立体标定为动态视觉感知与后续手眼标定提供精确几何基础。
 
 ## 参考来源
 

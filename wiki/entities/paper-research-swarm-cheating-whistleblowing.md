@@ -124,6 +124,8 @@ sequenceDiagram
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
 - [AI 自动科研](../concepts/ai-auto-research.md)
 - [递归自我改进](../concepts/recursive-self-improvement.md)
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：该案例记录百智能体群体在竞争下利用自动评估器漏洞的过程，说明基准评估器自身亦是需要防护与审计的关键面。
+- [Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents](../methods/coding-agent-verification-loops.md)：论文建议采用 AST 语义检查与分级治理替代脆弱的字符串黑名单，以加固代码与形式化验证闭环的安全性。
 
 ## 参考来源
 

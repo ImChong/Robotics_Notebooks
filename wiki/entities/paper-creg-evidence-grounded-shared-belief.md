@@ -147,6 +147,8 @@ flowchart LR
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md)：语义地图 / 场景图类表示。
 - [人形多机器人协同](../concepts/humanoid-multi-robot-coordination.md)：多机器人共享信息的应用背景。
 - [仿真与真机评测差距](../concepts/sim-vs-real-eval-gap.md)：本基准全合成，与此话题相关。
+- [Embodied Agent Benchmarking · 具身智能体评测方法](../methods/embodied-agent-benchmarking.md)：CREG 提供 350 个全合成互联机器人场景与规范后验参考，分层评测具身系统在共享信念更新中的实体落地、矛盾检测与动作一致性。
+- [Robot State Estimation Workflow · 机器人状态估计与定位](../methods/robot-state-estimation-workflow.md)：该基准围绕多传感器与多机器人报告的融合推理及随证据流演化的后验信念估计，检验分布式状态与信念更新链路。
 
 ## 参考来源
 

@@ -79,6 +79,8 @@ sequenceDiagram
 
 - [机器人数据格式对比](../comparisons/hdf5-mcap-lerobot-data-formats.md)：理解日志与训练数据的存储边界。
 - [传感器融合](../concepts/sensor-fusion.md)：理解机器人状态估计背景。
+- [AI Model and Agent Benchmark Evaluation · AI 模型与智能体基准评测](../methods/ai-benchmark-evaluation.md)：提供统一的数据划分、实验脚本与 MSE/MAE 指标框架，用于对比不同时间序列模型在预测与检测任务上的表现。
+- [机器人学习数据管线 · Robot Learning Data Pipelines](../methods/robot-learning-data-pipelines.md)：其时间窗口切分、标准化与多任务数据加载流程可与机器人时序传感数据的训练窗口构造相互参照。
 
 ## 参考来源
 

@@ -11,6 +11,7 @@ related:
   - ../queries/embodied-six-routes-holes.md
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
+  - ../methods/robot-policy-learning.md
   - ../methods/vla.md
   - ../methods/dagger.md
   - ../methods/action-chunking.md
@@ -146,7 +147,7 @@ flowchart LR
 - [六条路线的窟窿](../queries/embodied-six-routes-holes.md) — 产业叙事并置的六条 + 各路卡点（与本页学习信号轴正交）
 - [六条路线 × 12 篇综述补课线](../queries/embodied-six-routes-survey-lineage.md) — 经典综述 continuity（与窟窿页互补）
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 学习方法层总入口
-- [Imitation Learning](../methods/imitation-learning.md) / [Reinforcement Learning](../methods/reinforcement-learning.md) / [VLA](../methods/vla.md)
+- [Imitation Learning](../methods/imitation-learning.md) / [Reinforcement Learning](../methods/reinforcement-learning.md) / [VLA](../methods/vla.md) / [机器人策略学习流程](../methods/robot-policy-learning.md)
 - [Sim2Real](../concepts/sim2real.md) / [Domain Randomization](../concepts/domain-randomization.md)
 - [机器人控制八范式](./robot-control-eight-paradigms-taxonomy.md) — 控制侧分类（与学习信号侧互补）
 - [路径规划五大范式](./robot-path-planning-five-paradigms-taxonomy.md) — 规划侧分类（与学习信号侧互补）

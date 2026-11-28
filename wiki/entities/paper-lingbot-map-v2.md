@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robbyant, 3d-reconstruction, foundation-model, slam, streaming-perception, pose-estimation, depth-estimation]
 status: complete
-updated: 2026-11-27
+updated: 2026-11-28
 project_id: lingbot-map-v2
 project: https://technology.robbyant.com/lingbot-map-v2
 code: https://github.com/Robbyant/lingbot-map-v2
@@ -105,7 +105,7 @@ sequenceDiagram
 | KITTI 后段 ATE（表 6） | 21.21 m | 14.22 m（75% 触发）；8.40 m（末尾重整合） |
 | Oxford Spires 后段 ATE（表 6） | 6.96 m | 4.33 m（75% 触发）；2.85 m（末尾重整合） |
 
-### 与相关工作对比
+## 与相关工作对比
 
 表 2 的 VBR / Oxford Spires / KITTI 纯在线 ATE 分别是 17.01 / 6.17 / 17.56 m，V1 是 31.12 / 8.25 / 24.07 m。表 4 上 EuRoC 的在线 F1 85.72% 低于 V1 的 88.02%，所以不能把最终重整合模型的收益归到所有在线场景。
 
@@ -129,6 +129,7 @@ sequenceDiagram
 - [LingBot-Map 方法](../methods/lingbot-map.md)
 - [视觉 3D 重建方法](../methods/visual-3d-reconstruction.md)
 - [状态估计](../concepts/state-estimation.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 流式前馈 3D 重建在感知栈「表征层」的定位与选型口径
 - [导航纵深路线](../../roadmap/depth-navigation.md)
 - [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md)
 

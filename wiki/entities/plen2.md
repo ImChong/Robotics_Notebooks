@@ -111,6 +111,8 @@ sequenceDiagram
 - [humanoid-robot](../entities/humanoid-robot.md)
 - [open-source-humanoid-hardware](../entities/open-source-humanoid-hardware.md)
 - [open-source-buildable-humanoids-19-technology-map](../overview/open-source-buildable-humanoids-19-technology-map.md)
+- [Parametric CAD Workflow · 参数化 CAD 建模流程](../methods/parametric-cad-workflow.md)：PLEN2 仓库公开完整 STL 结构模型，可用于研究小型可打印人形机器人的关节结构设计与 3D 打印装配。
+- [Robot Control System Architecture · 机器人控制系统架构](../methods/robot-control-architecture.md)：PLEN2 提供 Arduino 固件与关节零位配置流程，构成小型多舵机人形的基本控制分层。
 
 ## 参考来源
 

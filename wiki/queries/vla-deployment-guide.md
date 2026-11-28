@@ -138,6 +138,8 @@ flowchart TD
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [Action Chunking](../methods/action-chunking.md)
+- [AI 模型压缩与推理优化](../methods/ai-model-compression.md) — 静态/动态 PTQ、QDQ 图审计与敏感层回退方法
+- [AI 模型推理与服务部署](../methods/ai-model-serving-inference.md) — 推理服务化批处理、P95/P99 SLO 与超时保护方法
 - [实时运控中间件配置指南](./real-time-control-middleware-guide.md)
 - [VLA 与低级控制器融合架构](./vla-with-low-level-controller.md)
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md)

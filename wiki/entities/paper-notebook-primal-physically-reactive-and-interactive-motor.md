@@ -105,6 +105,8 @@ PRIMAL 要：一个**生成式运动模型**，从单帧持续生成、实时响
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md)：PRIMAL 采用自回归扩散运动模型从单帧持续生成实时响应外部冲量的 3D 动作。
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md)：PRIMAL 在关节初速度受外部冲量扰动时持续生成物理响应动作，与抗扰恢复任务目标一致。
 
 ## 参考来源
 

@@ -102,6 +102,8 @@ flowchart TD
 - [RT-1](./paper-rt-1.md)
 - [π₀](./paper-pi0.md)
 - [11 篇历史阅读路线](../overview/robot-learning-foundations-11-papers.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md)：系统综述 VLA 模型从视觉语言多模态表征到可执行动作之间的八类动作词元化接口。
+- [Action Chunking（动作块输出）](../methods/action-chunking.md)：讨论离散、连续及潜在动作序列等不同动作表示接口与多步动作块输出之间的组织差异。
 
 ## 参考来源
 

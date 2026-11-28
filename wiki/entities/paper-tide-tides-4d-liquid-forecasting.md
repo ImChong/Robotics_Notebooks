@@ -96,6 +96,7 @@ sequenceDiagram
 - [differentiable-simulation](../concepts/differentiable-simulation.md)
 - [generative-world-models](../methods/generative-world-models.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+- [Manipulation](../tasks/manipulation.md)：对照液体操作任务中对固体运动引发流体速度场响应进行建模的下游控制需求。
 
 ## 参考来源
 
