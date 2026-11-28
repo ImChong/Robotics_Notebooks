@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, robot-learning, benchmarking, evaluation, libero, calvin]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-28
 project_id: manipulation-benchmark-audit
 arxiv: "2606.04233"
 project: https://ripl.github.io/manipulation_benchmark_audit/
@@ -115,6 +115,12 @@ sequenceDiagram
 2. 对自己的模型：固定并公开环境初始化、试次数、策略 checkpoint、成功/失败原始计数、场景扰动协议和训练数据来源。
 3. 排行榜微小提升须有显著性或区间判断，必要时用同一组初始场景开展配对比较。
 4. **开源状态：** [官方仓库](https://github.com/ripl/ManipulationBenchmarkAudit) 已公开四类诊断包、部分训练/评测代码及可重算结果，部分大型权重与数据在独立下载位置；不保证第三方 benchmark 一键复现。
+
+## 与其他工作对比
+
+与 [SIMPLER 原始论文](paper-simplerenv-real2sim-eval.md) 的校准问题不同，本研究问被测高分是否来自目标能力。一个项目可以在校准条件下正确排序候选策略，同时在固定测试集上形成捷径；应单独检查这两件事。
+
+复测示例：LIBERO 的 0.09B 探针仍接受已知任务 ID 对应的可学习向量，不是“完全无任务信息”；Spatial/Object/Goal 得 99.0%/100.0%/98.8%，Long 得 92.4%（表 1）。CALVIN 在训练支持范围内重采积木位姿，平均完成子任务数从 4.17 降到 3.14（满分 5）；换两份官方序列清单时同批策略最大只差 0.11。另一个受测量是 SimplerEnv 的 WidowX 堆叠：反转词序、垫高支撑物、重采方块和手臂分别是三种扰动，不要把后者当成 CALVIN 的操作。
 
 ## 结论
 

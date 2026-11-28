@@ -63,3 +63,8 @@ Table30 V2 以**相对稳定的真实任务套件**跟踪通用策略的迭代�
 - [RoboChallenge Zero 官方 PDF](https://robochallenge.ai/docs/robochallenge_techreport_ZERO.pdf)（本次用户上传同名 PDF 全文，11 页）。
 - [Zero 独立详情页](https://robochallenge.ai/benchmark_detail/zero)（正文访问待核实）。
 - [RoboChallenge 官方 Challenges](https://robochallenge.ai/challenges)（Table30 与 Table30 V2 公共上下文，不代替 Zero 报告）。
+
+## 补充核对：首发协议及其取样边界
+
+- **核对范围：** 对照官方 PDF 正文全篇，§2.2–2.4 定义提交系统、轮换及指标，§3.1–3.4 说明首轮样本和费用，结论给出未来覆盖范围。
+- 多月更新的是真机评测发布版本，跨版同一分数不宜直接比较；系统版本应包含提示、技能与外部 API。对执行经济性，最好把失败重试成本另记，而不是复用图 9 成功样本的 API 单价估计。

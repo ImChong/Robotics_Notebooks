@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, tsinghua]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-28
 summary: "WorldArena 1.0/2.0 评估具身世界模型的视频感知与功能效用；2.0 扩展到视触觉预测、在线 RL 环境和模拟/真机跨平台评估，榜单收录 Xiaomi-Robotics-U0。"
 project_id: worldarena
 arxiv: '2602.08971'
@@ -18,7 +18,10 @@ related:
   - ./worldolympiad.md
   - ./awesome-world-models.md
   - ./humanoid-motion-intelligence.md
+original:
+  - ../../sources/papers/worldarena_arxiv_2602_08971.md
 sources:
+  - ../../sources/papers/worldarena_arxiv_2602_08971.md
   - ../../sources/repos/worldarena.md
   - ../../sources/sites/worldarena.md
   - ../../sources/papers/sun_awesome_wm_2602_08971_worldarena-a-unified-benchmark-for-evalu.md
@@ -28,7 +31,7 @@ sources:
   - ../../sources/sites/worldarena2-challenge-iros2026.md
 ---
 
-# WorldArena（具身世界模型评测）
+# WorldArena：具身世界模型的感知与功能评测 / Evaluating Perception and Functional Utility of Embodied World Models
 
 ## 一句话定义
 
@@ -49,7 +52,7 @@ WorldArena 是具身世界模型统一评测套件：WorldArena 1.0 的 Track 1 
 - **Track 1 可定位生成视频的具体失效类型。** 六个维度覆盖外观、运动、跨帧内容保持、物理交互、3D几何和指令/动作可控性。
 - **Track 2 提供功能侧验证。** 它分别检查合成数据是否能提升策略、世界模型能否对策略排序、以及是否能支持动作规划；这些结果不应被 Track 1 的视频质量分替代。
 
-## 核心结构
+## 核心原理与流程总览
 
 ### WorldArena 1.0 两条赛道
 
@@ -116,6 +119,36 @@ WorldArena 2.0 将评测扩展到三个方向：
 - **WorldArena 2.0 是独立扩展版**，增加视触觉、交互式 RL 环境和模拟/真机平台；不要把 2.0 榜单与 1.0 Track 1 结果当成同一协议。榜单出现 Xiaomi-Robotics-U0 只表示该模型参评，不代表基准归属小米。
 - Challenge 1.0 提交已截止；本地复现以 GitHub 指南与当前公开测试资源为准。
 
+## 1.0 全文补证：感知评分不包含功能得分
+
+EWMScore 将视频的 16 项指标按各自经验边界映射到 0–100 后取均值。人工判断与数据引擎、策略评估器、动作规划器是独立的参照/评测，而非 EWMScore 的加权项。图 5（功能实验只覆盖 14 个模型中的可评估子集）给出三种 Pearson r：人工判断 **0.825**、数据合成 **0.600**、动作规划 **0.360**。策略评估还要检查系统性偏差：图 4 的 CtrlWorld 相对排序拟合更好，但它与 Cosmos-Predict 2.5 都高估 RoboTwin 仿真成功分数。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    participant U as 官方 Track 1 命令
+    participant CLI as video_quality/evaluate.py
+    participant C as 配置与模型依赖
+    participant W as 评测类
+    U->>CLI: 视频目录与待测指标
+    CLI->>C: 装读配置与指标权重文件路径
+    CLI->>W: evaluate 传入维度和数据
+    W-->>CLI: 写分项评测输出
+```
+
+核对 WorldArena 仓库快照 `2da2ae253b8637ba9de3afc7bea4e087f778ee4d`，上图对应公开的视频轨；不是功能轨端到端复现结果。
+
+## 与其他工作对比
+
+[SIMPLER](paper-simplerenv-real2sim-eval.md) 对照真实和仿真的真实策略相对排序；WorldArena 1.0 测世界模型为策略学习、模拟评估及规划提供多少功能效用，两者的代理层级不同。
+
+## 结论
+
+1. 用 EWMScore 对照视频质量，不把它当机器人得分。
+2. 按目标选择下游功能测量，单报相关与绝对校准。
+3. 分开引用 1.0 的原文结论与上文 2.0 的后续扩展，不把版本资产互相代替。
+
 ## 关联页面
 
 - [机器人操作](../tasks/manipulation.md) — 对照真实机器人操作表现与视觉生成质量的评估口径。
@@ -126,6 +159,8 @@ WorldArena 2.0 将评测扩展到三个方向：
 - [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) — 所在研究路线索引。
 
 ## 参考来源
+
+- [WorldArena 1.0 原文通读归档](../../sources/papers/worldarena_arxiv_2602_08971.md)
 
 - [IROS 2026 WorldArena 2.0 Challenge 赛事归档](../../sources/sites/worldarena2-challenge-iros2026.md)
 - [WorldArena 2.0 项目页](../../sources/sites/worldarena2.md)

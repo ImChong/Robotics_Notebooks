@@ -37,3 +37,7 @@
 - [研究组开源仓库 README](https://github.com/ripl/ManipulationBenchmarkAudit/blob/main/README.md)
 - [Claim-to-artifact 证据映射](https://github.com/ripl/ManipulationBenchmarkAudit/blob/main/CLAIMS.md)
 - [复现边界](https://github.com/ripl/ManipulationBenchmarkAudit/blob/main/REPRODUCIBILITY.md)
+
+## 正文复核记录
+
+全文覆盖捷径、显著性、分布与样本两层过拟合、训练数据邻近性。表 1 的探针见任务 ID 不见自然语言；图 1/§5 的 CALVIN 改物体位姿与“重抽官方序列”是不同干预；附录 B 说明重复闭环 rollout 并不完全确定。论文不宣称所有高分均系作弊。
